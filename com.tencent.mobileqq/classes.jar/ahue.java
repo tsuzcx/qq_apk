@@ -1,151 +1,169 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.BitmapFactory;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
+import android.os.Parcelable;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.Arrays;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.zhitu.gate.ZhituSafeGate.GateInfo;
+import tencent.im.zhitu.gate.ZhituSafeGate.RspBody;
 
 public class ahue
-  extends agem
+  extends MSFServlet
 {
-  public static int a;
-  Handler jdField_a_of_type_AndroidOsHandler = new ahuf(this, Looper.getMainLooper());
-  biht jdField_a_of_type_Biht = new ahuh(this, "param_WIFIColorRingDownloadFlow", "param_XGColorRingDownloadFlow");
-  private bihw jdField_a_of_type_Bihw;
-  
-  static
+  private void a(Intent paramIntent, int paramInt, FromServiceMsg paramFromServiceMsg)
   {
-    jdField_a_of_type_Int = 1;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ErrorCode", paramInt);
+    localBundle.putParcelable("FromServerMsg", paramFromServiceMsg);
+    localBundle.putString("UniqueKey", paramIntent.getStringExtra("ZhituReqKey"));
+    notifyObserver(paramIntent, 0, false, localBundle, ahts.class);
   }
   
-  public ahue(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
+  private byte[] a(byte[] paramArrayOfByte)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Bihw = ((bihw)paramQQAppInterface.getManager(47));
+    byte[] arrayOfByte = new byte[paramArrayOfByte.length + 4];
+    PkgTools.DWord2Byte(arrayOfByte, 0, paramArrayOfByte.length + 4);
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 4, paramArrayOfByte.length);
+    return arrayOfByte;
   }
   
-  protected agen a()
+  public String[] getPreferSSOCommands()
   {
-    return new ahui(this);
+    return new String[] { "AIMessage.Text2Image", "MQInference.ZhituReport" };
   }
   
-  protected View a(MessageRecord paramMessageRecord, agen paramagen, View paramView, LinearLayout paramLinearLayout, agjk paramagjk)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    paramagjk = (ahui)paramagen;
-    int i = 0;
-    paramagen = paramMessageRecord.getExtInfoFromExtStr("callId");
-    String str;
-    int j;
-    try
-    {
-      if (!TextUtils.isEmpty(paramagen)) {
-        i = Integer.parseInt(paramagen);
-      }
-      paramagen = paramView;
-      if (paramView == null)
-      {
-        paramagen = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558829, null);
-        paramagjk.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView = ((AnyScaleTypeImageView)paramagen.findViewById(2131364727));
-        paramagjk.b = ((TextView)paramagen.findViewById(2131364730));
-        paramagjk.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramagen.findViewById(2131364726));
-        paramagjk.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(new ahug(this, i));
-      }
-      str = bhlg.i(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord.frienduin);
-      if (i != 0)
-      {
-        paramLinearLayout = paramMessageRecord.getExtInfoFromExtStr("url_call_thum");
-        paramView = biki.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, 8, paramLinearLayout);
-        localFile = new File(paramView);
-        if (!bhmi.a(paramView)) {}
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ZhituServlet", 2, "onReceive with code: " + paramFromServiceMsg.getResultCode());
     }
-    catch (Exception paramagen)
+    Object localObject = paramIntent.getStringExtra("ZhituCMD");
+    if (((String)localObject).equals("MQInference.ZhituReport")) {}
+    int i;
+    do
     {
-      for (;;)
+      do
       {
-        File localFile;
-        try
+        do
         {
-          paramagjk.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageBitmap(BitmapFactory.decodeFile(paramView));
-          paramView = paramMessageRecord.getExtInfoFromExtStr("name");
-          if (!TextUtils.isEmpty(paramView)) {
-            j = 2;
+          return;
+          if (!((String)localObject).equals("ZhituGate.Check")) {
+            break label295;
           }
-          try
-          {
-            paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("tipsType");
-            i = j;
-            if (!TextUtils.isEmpty(paramMessageRecord)) {
-              i = Integer.parseInt(paramMessageRecord);
-            }
-          }
-          catch (Exception paramMessageRecord)
-          {
-            QLog.e("ChatItemBuilder", 1, "ThumbItemBuilder getItemView tipsType err:" + paramMessageRecord.getMessage());
-            i = j;
-            continue;
-            paramagjk.b.setText(str + anzj.a(2131713730) + this.jdField_a_of_type_AndroidContentContext.getString(2131690776, new Object[] { paramView }));
-            return paramagen;
-          }
-          if (2 != i) {
+          if (!paramFromServiceMsg.isSuccess()) {
             break;
           }
-          paramagjk.b.setText(str + anzj.a(2131713729) + this.jdField_a_of_type_AndroidContentContext.getString(2131690776, new Object[] { paramView }));
-          return paramagen;
-          paramagen = paramagen;
-          QLog.e("ChatItemBuilder", 1, "ThumbItemBuilder getItemView err:" + paramagen.getMessage());
-          i = 0;
-        }
-        catch (OutOfMemoryError paramView)
+          paramIntent = getAppRuntime();
+        } while ((paramIntent == null) || (!(paramIntent instanceof AppInterface)));
+        i = paramFromServiceMsg.getWupBuffer().length - 4;
+        localObject = new byte[i];
+        PkgTools.copyData((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+        paramFromServiceMsg.putWupBuffer((byte[])localObject);
+        for (;;)
         {
-          QLog.e("ChatItemBuilder", 1, "decodeFile funcall thum Bitmap OOM.");
-          continue;
+          try
+          {
+            paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
+            localObject = new ZhituSafeGate.RspBody();
+            ((ZhituSafeGate.RspBody)localObject).mergeFrom(paramFromServiceMsg);
+            i = ((ZhituSafeGate.RspBody)localObject).int32_result.get();
+            if (i != 0) {
+              break;
+            }
+            i = ((ZhituSafeGate.GateInfo)((ZhituSafeGate.RspBody)localObject).gate_info.get()).uint32_state.get();
+            paramFromServiceMsg = ahtj.a((QQAppInterface)paramIntent);
+            if (i == 1)
+            {
+              bool = true;
+              paramFromServiceMsg.c(bool);
+              long l = System.currentTimeMillis();
+              ahtj.a((QQAppInterface)paramIntent).a(l);
+              return;
+            }
+          }
+          catch (Exception paramIntent)
+          {
+            QLog.e("ZhituServlet", 2, "onReceive CMD_SAFE_GATE has exception: ", paramIntent);
+            return;
+          }
+          boolean bool = false;
         }
-        catch (Exception paramView)
+      } while (!QLog.isColorLevel());
+      QLog.d("ZhituServlet", 2, "onReceive CMD_SAFE_GATE failed result: " + i);
+      return;
+      i = paramFromServiceMsg.getResultCode();
+    } while (!QLog.isColorLevel());
+    QLog.d("ZhituServlet", 2, "onReceive CMD_SAFE_GATE not Success code is : " + i);
+    return;
+    label295:
+    if (!paramFromServiceMsg.isSuccess())
+    {
+      a(paramIntent, 1, paramFromServiceMsg);
+      return;
+    }
+    localObject = paramFromServiceMsg.getWupBuffer();
+    if (localObject != null)
+    {
+      String str = new String(Arrays.copyOfRange((byte[])localObject, 4, localObject.length));
+      for (;;)
+      {
+        try
         {
-          QLog.e("ChatItemBuilder", 1, "colorRingCover err:" + paramView.getMessage());
-          continue;
+          if (!TextUtils.isEmpty(str))
+          {
+            localObject = (ZhituResponse)bfra.b(new JSONObject(str), ZhituResponse.class);
+            Bundle localBundle = new Bundle();
+            localBundle.putInt("ErrorCode", 0);
+            localBundle.putParcelable("Response", (Parcelable)localObject);
+            localBundle.putString("UniqueKey", paramIntent.getStringExtra("ZhituReqKey"));
+            localBundle.putInt("StartIdx", paramIntent.getIntExtra("StartIdx", 0));
+            localBundle.putString("QueryText", paramIntent.getStringExtra("QueryText"));
+            notifyObserver(paramIntent, 0, true, localBundle, ahts.class);
+            return;
+          }
         }
-        paramagjk.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847086));
-        paramView = paramLinearLayout;
-        if (TextUtils.isEmpty(paramLinearLayout)) {
-          paramView = biki.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, 8, null);
+        catch (JSONException localJSONException)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ZhituServlet", 2, "parse json error with str:\n" + str + "\n" + localJSONException);
+          }
+          a(paramIntent, 3, paramFromServiceMsg);
+          return;
         }
-        paramLinearLayout = new Bundle();
-        paramLinearLayout.putInt("type", 1);
-        paramView = new bihu(paramView, localFile);
-        this.jdField_a_of_type_Bihw.a(1).a(paramView, this.jdField_a_of_type_Biht, paramLinearLayout);
+        ZhituResponse localZhituResponse = new ZhituResponse();
       }
     }
-    paramagjk.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847086));
-    paramagjk.b.setText(str + this.jdField_a_of_type_AndroidContentContext.getString(2131690776, new Object[] { this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690574) }));
-    return paramagen;
+    a(paramIntent, 2, paramFromServiceMsg);
   }
   
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
-  
-  public bhum[] a(View paramView)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return new bhum[0];
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
+    if (paramIntent == null) {
+      return;
+    }
+    String str = paramIntent.getStringExtra("ZhituCMD");
+    paramPacket.setSSOCommand(str);
+    if (QLog.isColorLevel()) {
+      QLog.d("ZhituServlet", 2, "onSend with cmd: " + str);
+    }
+    paramIntent = paramIntent.getByteArrayExtra("ZhituRequestBytes");
+    if (paramIntent != null)
+    {
+      paramPacket.putSendData(a(paramIntent));
+      return;
+    }
+    throw new IllegalArgumentException("no bytes to send");
   }
 }
 

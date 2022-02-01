@@ -1,60 +1,62 @@
 package com.tencent.smtt.utils;
 
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.os.Environment;
-import android.os.StatFs;
-import com.tencent.smtt.sdk.QbSdk;
 import java.io.File;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class o
 {
-  private static File a = null;
+  private o.b a = null;
+  private o.b b = null;
   
-  public static long a()
+  private boolean a(o.b paramb1, o.b paramb2)
   {
-    StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
-    long l = localStatFs.getBlockSize();
-    return localStatFs.getAvailableBlocks() * l;
-  }
-  
-  @TargetApi(9)
-  public static boolean a(Context paramContext)
-  {
-    if (paramContext == null) {}
-    for (;;)
+    if ((paramb1 != null) && (paramb1.a() != null) && (paramb2 != null) && (paramb2.a() != null))
     {
-      return false;
-      if (a == null) {
-        try
+      Object localObject1 = paramb1.a();
+      paramb1 = paramb2.a();
+      paramb2 = ((Map)localObject1).entrySet().iterator();
+      while (paramb2.hasNext())
+      {
+        Object localObject2 = (Map.Entry)paramb2.next();
+        localObject1 = (String)((Map.Entry)localObject2).getKey();
+        localObject2 = (o.a)((Map.Entry)localObject2).getValue();
+        if (paramb1.containsKey(localObject1))
         {
-          if (paramContext.getApplicationInfo().processName.contains("com.tencent.mm"))
-          {
-            paramContext = QbSdk.getTbsFolderDir(paramContext);
-            if ((paramContext != null) && (paramContext.isDirectory()))
-            {
-              paramContext = new File(paramContext, "share");
-              if (paramContext != null)
-              {
-                if ((!paramContext.isDirectory()) && (!paramContext.mkdir())) {
-                  continue;
-                }
-                a = paramContext;
-                paramContext.setExecutable(true, false);
-                return true;
-              }
-            }
+          localObject1 = (o.a)paramb1.get(localObject1);
+          if ((((o.a)localObject2).a() != ((o.a)localObject1).a()) || (((o.a)localObject2).b() != ((o.a)localObject1).b())) {
+            return false;
           }
         }
-        catch (Exception paramContext)
+        else
         {
-          paramContext.printStackTrace();
           return false;
         }
       }
+      return true;
+    }
+    return false;
+  }
+  
+  public void a(File paramFile)
+  {
+    this.a = new o.b(this, paramFile);
+  }
+  
+  public boolean a()
+  {
+    if ((this.b == null) || (this.a == null)) {}
+    while ((this.b.a().size() != this.a.a().size()) || (!a(this.a, this.b))) {
+      return false;
     }
     return true;
+  }
+  
+  public void b(File paramFile)
+  {
+    this.b = new o.b(this, paramFile);
   }
 }
 

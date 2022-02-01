@@ -1,55 +1,58 @@
-import com.tencent.av.random.RandomWebProtocol;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.av.redpacket.AVRedPacketManager.GameStateInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class ltk
-  extends ltg
+  implements ltn
 {
-  public ltk(RandomWebProtocol paramRandomWebProtocol, int paramInt1, long paramLong, int paramInt2, String paramString)
+  public ltk(AVRedPacketManager paramAVRedPacketManager) {}
+  
+  public void a(boolean paramBoolean, int paramInt)
   {
-    super(paramRandomWebProtocol);
-    boolean bool = RandomWebProtocol.b();
-    paramRandomWebProtocol = new JSONObject();
-    try
-    {
-      paramRandomWebProtocol.put("session_type", paramInt1).put("groupid", paramLong);
-      if (4 == paramInt2) {
-        paramRandomWebProtocol.put("peer_enuin", ChatActivityUtils.b(RandomWebProtocol.a(), paramString));
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AVRedPacketManager", 2, "onLoadFinish, isSucc=" + paramBoolean + ",type=" + paramInt);
     }
-    catch (Exception paramString)
+    if (!AVRedPacketManager.a(this.a, true)) {}
+    do
     {
       do
       {
-        for (;;)
-        {
-          paramString.printStackTrace();
-          continue;
-          paramRandomWebProtocol = "https://play.mobile.qq.com/randchat/cgi-bin/chatplay/getroomowner";
-        }
-      } while (paramInt2 != 4);
-      if (!bool) {
-        break label139;
-      }
-    }
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_OrgJsonJSONObject = paramRandomWebProtocol;
-    this.jdField_a_of_type_Boolean = bool;
-    if (paramInt2 == 5) {
-      if (bool)
+        return;
+      } while (paramInt != 1);
+      if ((this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode == 1) && (this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameState == 1))
       {
-        paramRandomWebProtocol = "https://play.mobile.qq.com/randchat_test/cgi-bin/chatplay/getroomowner";
-        this.c = paramRandomWebProtocol;
-        this.d = "[m] RequestMultiRoomOwner";
+        Bundle localBundle = new Bundle();
+        localBundle.putString("key", this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.key);
+        localBundle.putInt("gameState", 1);
+        localBundle.putInt("fromWho", 1);
+        localBundle.putInt("musicId", this.a.g);
+        localBundle.putInt("enterType", this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.enterType);
+        this.a.jdField_a_of_type_Lth.a();
+        this.a.a(1, localBundle);
+        this.a.a(false, 1011, AVRedPacketManager.jdField_a_of_type_Long, null);
+        this.a.a(false, 1021, AVRedPacketManager.c, null);
         return;
       }
-    }
-    label139:
-    for (paramRandomWebProtocol = "https://play.mobile.qq.com/randchat_test/cgi-bin/chatplay/multichatkick";; paramRandomWebProtocol = "https://play.mobile.qq.com/randchat/cgi-bin/chatplay/multichatkick")
+    } while ((this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode != 2) || (this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameState != 1));
+    long l = Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.mRedPacketComeStartTime);
+    paramBoolean = mqa.b(AVRedPacketManager.a(this.a));
+    if (l >= AVRedPacketManager.f)
     {
-      this.c = paramRandomWebProtocol;
-      break;
+      if (paramBoolean)
+      {
+        this.a.d();
+        return;
+      }
+      this.a.f();
+      return;
     }
+    if (paramBoolean)
+    {
+      this.a.a(false, 1028, AVRedPacketManager.f - l, null);
+      return;
+    }
+    this.a.a(false, 1026, AVRedPacketManager.f - l, null);
   }
 }
 

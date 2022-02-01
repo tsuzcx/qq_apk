@@ -1,28 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-final class bjhq
-  implements DialogInterface.OnClickListener
+class bjhq
+  implements bjjj
 {
-  bjhq(bjhv parambjhv, int paramInt) {}
+  bjhq(bjhp parambjhp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    this.jdField_a_of_type_Bjhv.a(3);
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Int == 1) {
-      bjhk.a("0X80094FB");
-    }
-    do
+    if ((paramObject1 != null) && ((paramObject1 instanceof String)) && (paramObject2 != null) && ((paramObject2 instanceof byte[])))
     {
-      return;
-      if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 5))
-      {
-        bjhk.a("0X80094FA");
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.CSP", 2, String.format("Cookie: %08X, cmd: %s", new Object[] { Long.valueOf(paramLong1), paramObject1 }));
       }
-    } while (this.jdField_a_of_type_Int != 3);
-    bjhk.a("0X80094FC");
+      if (paramLong1 == 0L) {
+        break label99;
+      }
+      this.a.a((String)paramObject1, (byte[])paramObject2, new bjht(this.a, paramLong1));
+    }
+    for (;;)
+    {
+      return 0;
+      label99:
+      this.a.a((String)paramObject1, (byte[])paramObject2, null);
+    }
   }
 }
 

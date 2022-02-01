@@ -1,108 +1,60 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
-import oicq.wlogin_sdk.tools.util;
-import org.json.JSONObject;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.tencent.widget.AutoVerticalScrollTextView;
 
-class bjou
-  extends WtloginObserver
+public class bjou
+  extends Animation
 {
-  bjou(bjos parambjos) {}
+  private float jdField_a_of_type_Float;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private final boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private final boolean jdField_b_of_type_Boolean;
   
-  public void onCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  public bjou(AutoVerticalScrollTextView paramAutoVerticalScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QrAgentLoginManager", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt);
-    }
-    paramArrayOfByte1 = BaseActivity.sTopActivity;
-    if (paramInt == 0)
-    {
-      if (bjqq.a(paramArrayOfByte1)) {
-        paramArrayOfByte1.finish();
-      }
-      QIPCClientHelper.getInstance().callServer("QR_LOGIN_QIPC_MODULE_NAME", "QIPC_SHOW_TOAST_ACTION", null, null);
-    }
-    while (!bjqq.a(paramArrayOfByte1)) {
-      return;
-    }
-    paramWUserSigInfo = new Intent(paramArrayOfByte1, QRLoginAuthActivity.class);
-    paramWUserSigInfo.putExtra("QR_CODE_STRING", BaseApplicationImpl.context.getSharedPreferences("SP_QR_AGENT_LOGIN", 4).getString("KEY_QR_AGENT_LOGIN_CODE" + paramString, ""));
-    paramWUserSigInfo.putExtra("KEY_QR_CODE_EXPIRED", true);
-    paramArrayOfByte1.startActivity(paramWUserSigInfo);
-    paramArrayOfByte1.finish();
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
   }
   
-  public void onException(String paramString, int paramInt)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QrAgentLoginManager", 2, "OnException e=" + paramString);
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.jdField_b_of_type_Float;
+    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
+    int i;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      i = 1;
+      paramTransformation = paramTransformation.getMatrix();
+      localCamera.save();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label99;
+      }
+      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
+    }
+    for (;;)
+    {
+      localCamera.getMatrix(paramTransformation);
+      localCamera.restore();
+      paramTransformation.preTranslate(-f1, -f2);
+      paramTransformation.postTranslate(f1, f2);
+      return;
+      i = -1;
+      break;
+      label99:
+      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
     }
   }
   
-  public void onVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QrAgentLoginManager", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt + " appName: " + paramArrayOfByte1);
-    }
-    if (paramInt != 0) {
-      bjos.a(this.a, paramArrayOfByte2);
-    }
-    while ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-      return;
-    }
-    paramInt = 0;
-    while (paramInt < paramArrayList.size()) {
-      try
-      {
-        paramString = HexUtil.hexStr2Bytes((String)paramArrayList.get(paramInt));
-        int i = util.buf_to_int16(paramString, 0);
-        int j = util.buf_to_int16(paramString, 2);
-        if (i == 54)
-        {
-          paramArrayOfByte1 = new byte[j];
-          System.arraycopy(paramString, 4, paramArrayOfByte1, 0, j);
-          paramString = new String(paramArrayOfByte1);
-          if (QLog.isColorLevel()) {
-            QLog.i("QrAgentLoginManager", 2, "OnVerifyCode: invoked.  appidJson: " + paramString);
-          }
-          paramString = new JSONObject(paramString);
-          paramLong = paramString.optLong("open_appid");
-          paramArrayOfByte1 = paramString.optString("comefrom");
-          paramString = paramArrayOfByte1;
-          if ("app".equals(paramArrayOfByte1)) {
-            paramString = "android";
-          }
-          this.a.a(paramLong, paramString);
-          return;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QrAgentLoginManager", 2, "OnVerifyCode: failed. ", paramString);
-        }
-        paramInt += 1;
-      }
-    }
-    paramString = BaseActivity.sTopActivity;
-    paramArrayOfByte1 = new Intent(paramString, QRLoginAuthActivity.class);
-    paramArrayOfByte1.putExtra("QR_CODE_STRING", bjos.a(this.a));
-    if (paramString.getIntent().getBooleanExtra("QRDecode", false) == true)
-    {
-      paramString.startActivityForResult(paramArrayOfByte1, 2);
-      return;
-    }
-    paramString.startActivity(paramArrayOfByte1);
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.getHeight();
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.getWidth();
   }
 }
 

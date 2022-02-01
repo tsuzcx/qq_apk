@@ -1,46 +1,22 @@
-import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bjge
+class bjge
+  implements View.OnClickListener
 {
-  private bjfv[] a = new bjfv[3];
+  bjge(bjgd parambjgd) {}
   
-  public bjfv a(Context paramContext, int paramInt)
+  public void onClick(View paramView)
   {
-    Object localObject1;
-    if ((paramInt < 0) || (paramInt > 3)) {
-      localObject1 = null;
-    }
-    do
+    CheckBox localCheckBox = bjgd.a(this.a);
+    if (!bjgd.a(this.a).isChecked()) {}
+    for (boolean bool = true;; bool = false)
     {
-      do
-      {
-        return localObject1;
-        ??? = this.a[paramInt];
-        localObject1 = ???;
-      } while (??? != null);
-      localObject1 = ???;
-    } while (paramContext == null);
-    synchronized (this.a)
-    {
-      localObject1 = this.a[paramInt];
-      if (localObject1 != null) {
-        return localObject1;
-      }
-    }
-    switch (paramInt)
-    {
-    default: 
-      paramContext = (Context)localObject1;
-    }
-    for (;;)
-    {
-      this.a[paramInt] = paramContext;
-      return paramContext;
-      paramContext = new bjfy(paramContext);
-      continue;
-      paramContext = new bjfw(paramContext);
-      continue;
-      paramContext = new bjgc(paramContext);
+      localCheckBox.setChecked(bool);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
   }
 }

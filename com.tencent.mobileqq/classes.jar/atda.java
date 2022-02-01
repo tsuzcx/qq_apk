@@ -1,25 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class atda
-  implements View.OnClickListener
+public class atda
+  implements CompoundButton.OnCheckedChangeListener
 {
-  atda(Dialog paramDialog) {}
+  public atda(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    bdll.b(null, "dc00898", "", "", "kuolie", "0X80097DF", 0, 0, "", "", "", "");
-    if ((this.a != null) && (this.a.isShowing())) {
-      this.a.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    asgv.a().b(paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atda
  * JD-Core Version:    0.7.0.1
  */

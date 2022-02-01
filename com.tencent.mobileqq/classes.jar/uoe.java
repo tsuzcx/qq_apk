@@ -1,19 +1,19 @@
-public class uoe
-  extends uod
+public abstract class uoe<T>
 {
-  public uoe(int paramInt)
+  protected T a;
+  protected StringBuilder a;
+  
+  public T a()
   {
-    super(paramInt);
+    return this.jdField_a_of_type_JavaLangObject;
   }
   
-  String a()
+  public String a()
   {
-    return "officialacc_weishi";
-  }
-  
-  String b()
-  {
-    return "weishi_share_officialacc";
+    if (this.jdField_a_of_type_JavaLangStringBuilder == null) {
+      return "";
+    }
+    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
   }
 }
 

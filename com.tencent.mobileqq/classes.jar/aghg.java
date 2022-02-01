@@ -1,17 +1,17 @@
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aghg
-  extends QQLruCache<String, aigs>
+class aghg
+  extends aghj
 {
-  public aghg(CustomizeStrategyFactory paramCustomizeStrategyFactory, int paramInt1, int paramInt2, int paramInt3)
+  aghg(agcw paramagcw)
   {
-    super(paramInt1, paramInt2, paramInt3);
+    super(paramagcw, null);
   }
   
-  protected void a(boolean paramBoolean, String paramString, aigs paramaigs1, aigs paramaigs2)
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    super.entryRemoved(paramBoolean, paramString, paramaigs1, paramaigs2);
+    return new agcr(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

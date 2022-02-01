@@ -1,64 +1,54 @@
-import android.content.Intent;
-import android.os.AsyncTask;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.MimeTypeMap;
-import java.io.File;
-import java.io.IOException;
+import java.util.Arrays;
+import java.util.Calendar;
 
-public class bfhi
-  extends AsyncTask<Void, Void, String>
+class bfhi
+  implements bfia
 {
-  public bfhi(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  bfhi(bfhh parambfhh) {}
   
-  protected String a(Void... paramVarArgs)
+  public void a(int paramInt1, int paramInt2)
   {
-    try
+    if (bfhh.a(this.a) != null)
     {
-      str1 = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-      if (str1 != null)
-      {
-        paramVarArgs = null;
-        try
-        {
-          String str2 = MimeTypeMap.getFileExtensionFromUrl(str1);
-          if (str2 != null) {
-            paramVarArgs = MimeTypeMap.getSingleton().getMimeTypeFromExtension(str2);
-          }
-          if ((paramVarArgs != null) && (paramVarArgs.startsWith("image/"))) {
-            bhmq.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, new File(str1));
-          }
-        }
-        catch (IllegalArgumentException paramVarArgs)
-        {
-          for (;;)
-          {
-            QLog.e("TroopAvatarWallPreviewActivity", 2, new Object[] { "savePic2SystemMedia illegalArgumentException ex", paramVarArgs.getMessage() });
-          }
-        }
-        bhmq.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, str1);
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getIntent().getBooleanExtra("from_photo_wall", false)) {
-          return anzj.a(2131713997);
-        }
+      if (paramInt1 != 0) {
+        break label212;
       }
+      if (bfhh.a(this.a) == null) {
+        break label288;
+      }
+      paramInt1 = bfhh.a(this.a).a(bfhh.a(this.a), paramInt2);
+      int i = bfhh.a(this.a).a(bfhh.a(this.a), paramInt2, paramInt1);
+      paramInt2 = paramInt1;
+      paramInt1 = i;
     }
-    catch (IOException paramVarArgs)
+    for (;;)
     {
-      String str1;
-      return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131694369);
-      return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131694371) + " " + str1;
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131694369);
-      return paramVarArgs;
+      bfhh.a(this.a).setSelection(1, paramInt2);
+      bfhh.a(this.a).a(1);
+      bfhh.a(this.a).setSelection(2, paramInt1);
+      bfhh.a(this.a).a(2);
+      label212:
+      do
+      {
+        bfhh.a(this.a, bfhh.a(this.a).a(new int[] { bfhh.a(this.a).a(0), bfhh.a(this.a).a(1), bfhh.a(this.a).a(2) }));
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopPickerViewHelper", 2, Arrays.toString(bfhh.a(this.a).a(bfhh.a(this.a).getTimeInMillis())));
+        }
+        return;
+      } while (paramInt1 != 1);
+      if (bfhh.a(this.a) != null) {}
+      for (paramInt1 = bfhh.a(this.a).a(bfhh.a(this.a), bfhh.a(this.a).a(0), paramInt2);; paramInt1 = 0)
+      {
+        bfhh.a(this.a).setSelection(2, paramInt1);
+        bfhh.a(this.a).a(2);
+        break;
+      }
+      label288:
+      paramInt1 = 0;
+      paramInt2 = 0;
     }
-    catch (OutOfMemoryError paramVarArgs) {}
-    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131694369);
-  }
-  
-  protected void a(String paramString)
-  {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getTitleBarHeight());
   }
 }
 

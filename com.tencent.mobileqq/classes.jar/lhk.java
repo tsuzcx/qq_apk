@@ -1,109 +1,113 @@
-import com.tencent.av.business.manager.magicface.MagicfaceDataAudioJason;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.app.Activity;
+import android.hardware.Sensor;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.shortvideo.panoramicvideo.Sensor.SensorEventHandler.CameraChangedCallBack;
+import com.tencent.mobileqq.shortvideo.util.CameraInterFace;
+import java.lang.ref.WeakReference;
 
 public class lhk
+  implements CameraInterFace
 {
-  private awzc jdField_a_of_type_Awzc;
-  String jdField_a_of_type_JavaLangString;
-  private lhf jdField_a_of_type_Lhf;
-  lhg jdField_a_of_type_Lhg;
-  lhh jdField_a_of_type_Lhh;
-  lhi jdField_a_of_type_Lhi;
-  String jdField_b_of_type_JavaLangString;
-  lhg jdField_b_of_type_Lhg;
-  lhg c = new lhl(this);
+  private static volatile lhk jdField_a_of_type_Lhk;
+  private volatile int jdField_a_of_type_Int = -1;
+  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
+  private WeakReference<SensorEventHandler.CameraChangedCallBack> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public lhk()
+  public static lhk a()
   {
-    a();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Lhf == null)
-    {
-      if (bhlo.d())
-      {
-        this.jdField_a_of_type_Lhf = new lhj();
-        lbj.e("AVMagicfacePlayer", "initDecoder| use [MagicfaceNormalDecoder]");
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Lhf = new lhj();
-    lbj.e("AVMagicfacePlayer", "initDecoder|use [MagicfaceNormalDecoder]");
-  }
-  
-  public void a(long paramLong, String paramString, lhi paramlhi, lhh paramlhh, lhg paramlhg)
-  {
-    if (this.jdField_a_of_type_Lhf.a) {
-      try
-      {
-        this.jdField_b_of_type_JavaLangString = paramString;
-        this.jdField_a_of_type_Lhi = paramlhi;
-        this.jdField_a_of_type_Lhh = paramlhh;
-        this.jdField_a_of_type_Lhg = paramlhg;
-        this.jdField_a_of_type_Lhf.b();
-        return;
-      }
-      finally {}
-    }
-    QLog.w("AVMagicfacePlayer", 1, "playMagicface, srcPath[" + paramString + "], seq[" + paramLong + "]");
+    if (jdField_a_of_type_Lhk == null) {}
     try
     {
-      this.jdField_a_of_type_JavaLangString = (paramString + "audio" + File.separator + paramlhi.a.src);
-      this.jdField_b_of_type_Lhg = paramlhg;
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_a_of_type_Lhi = null;
-      this.jdField_a_of_type_Lhh = null;
-      this.jdField_a_of_type_Lhg = null;
-      if ((paramlhi.a.src != null) && (!paramlhi.a.src.equals("")) && (this.jdField_a_of_type_Awzc == null)) {
-        this.jdField_a_of_type_Awzc = new awzc();
+      if (jdField_a_of_type_Lhk == null) {
+        jdField_a_of_type_Lhk = new lhk();
       }
-      this.jdField_a_of_type_Lhf.a(paramString);
-      this.jdField_a_of_type_Lhf.a(paramlhi);
-      this.jdField_a_of_type_Lhf.a(paramlhh);
-      this.jdField_a_of_type_Lhf.a(this.c);
-      this.jdField_a_of_type_Lhf.a();
-      return;
+      return jdField_a_of_type_Lhk;
     }
     finally {}
   }
   
-  public void a(String paramString)
+  public void a(Activity paramActivity)
   {
-    if (this.jdField_a_of_type_Awzc != null) {
-      this.jdField_a_of_type_Awzc.a(paramString);
+    if (paramActivity == null) {
+      this.jdField_a_of_type_AndroidHardwareSensorManager = null;
     }
+    while (this.jdField_a_of_type_AndroidHardwareSensorManager != null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramActivity.getSystemService("sensor"));
   }
   
-  public void a(String paramString, int paramInt)
+  public void a(SensorEventListener paramSensorEventListener)
   {
-    lbj.c("AVMagicfacePlayer", "playSound soundSrc = " + paramString + ", loop = " + paramInt);
-    if (this.jdField_a_of_type_Awzc != null) {
-      this.jdField_a_of_type_Awzc.a(paramString, paramInt, 0);
+    if ((this.jdField_a_of_type_AndroidHardwareSensorManager == null) || (paramSensorEventListener == null)) {}
+    Sensor localSensor;
+    do
+    {
+      return;
+      localSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(11);
+    } while (localSensor == null);
+    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(paramSensorEventListener, localSensor, 1);
+  }
+  
+  public void a(SensorEventHandler.CameraChangedCallBack paramCameraChangedCallBack)
+  {
+    if (paramCameraChangedCallBack == null) {
+      return;
     }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramCameraChangedCallBack);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    b(paramBoolean);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    SensorEventHandler.CameraChangedCallBack localCameraChangedCallBack;
+    do
+    {
+      return;
+      localCameraChangedCallBack = (SensorEventHandler.CameraChangedCallBack)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localCameraChangedCallBack == null);
+    localCameraChangedCallBack.onCameraChanged(paramBoolean);
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Lhf.a;
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {}
+    while (this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(11) == null) {
+      return false;
+    }
+    return true;
   }
   
-  public void b()
+  public void b(SensorEventListener paramSensorEventListener)
   {
-    try
-    {
-      this.jdField_b_of_type_JavaLangString = null;
-      this.jdField_a_of_type_Lhi = null;
-      this.jdField_a_of_type_Lhh = null;
-      this.jdField_a_of_type_Lhg = null;
-      this.jdField_a_of_type_Lhf.b();
+    if ((this.jdField_a_of_type_AndroidHardwareSensorManager == null) || (paramSensorEventListener == null)) {
       return;
     }
-    finally {}
+    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(paramSensorEventListener);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
+    {
+      this.jdField_a_of_type_Int = i;
+      return;
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int getCameraID()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

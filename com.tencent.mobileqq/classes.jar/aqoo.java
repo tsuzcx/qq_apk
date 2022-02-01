@@ -1,13 +1,6 @@
-public class aqoo
+public abstract interface aqoo
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  public String toString()
-  {
-    return "Label{content='" + this.a + '\'' + ", bgColor='" + this.b + '\'' + ", textColor='" + this.c + '\'' + '}';
-  }
+  public abstract aqoa a(aqoj paramaqoj, int paramInt);
 }
 
 

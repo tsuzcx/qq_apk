@@ -1,19 +1,27 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.qzonevip.gift.particle.ParticleDropView;
+import android.view.View;
 
-class bayt
-  extends AnimatorListenerAdapter
+public abstract interface bayt
+  extends bayq
 {
-  bayt(bayq parambayq) {}
+  public abstract int a();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (bayq.a(this.a) != null) {
-      bayq.a(this.a).c();
-    }
-    bayq.a(this.a, 8);
-  }
+  public abstract CharSequence a();
+  
+  public abstract String a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(View paramView);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract CharSequence b();
+  
+  public abstract CharSequence c();
+  
+  public abstract CharSequence d();
 }
 
 

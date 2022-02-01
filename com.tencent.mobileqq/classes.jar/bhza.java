@@ -1,10 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.open.appstore.js.DownloadInterfaceNew.2;
+import com.tencent.smtt.sdk.ValueCallback;
 
-public abstract interface bhza
+public class bhza
+  implements ValueCallback<String>
 {
-  public abstract void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2);
+  public bhza(DownloadInterfaceNew.2 param2) {}
   
-  public abstract void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3);
+  public void a(String paramString)
+  {
+    bhzm.b("DownloadInterfaceNew", "[jsCallBack]:" + paramString);
+  }
 }
 
 

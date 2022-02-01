@@ -1,10 +1,17 @@
-public abstract interface amyu
+class amyu
+  implements bkil
 {
-  public static final String[] a = { "busId", "gameId", "gameid" };
+  amyu(amyt paramamyt) {}
+  
+  public void a(bkik parambkik)
+  {
+    parambkik.a(this.a.a.a);
+    parambkik.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amyu
  * JD-Core Version:    0.7.0.1
  */

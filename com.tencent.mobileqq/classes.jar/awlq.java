@@ -1,70 +1,32 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class awlq
+  implements bhai<oidb_0x8e4.RspBody>
 {
-  public static final String a;
-  public int a;
-  public long a;
-  public anwh a;
-  public int b = 0;
+  public awlq(GameRoomInviteActivity paramGameRoomInviteActivity, String paramString1, String paramString2) {}
   
-  static
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.ltcfg.name();
-  }
-  
-  private awlq()
-  {
-    this.jdField_a_of_type_Int = 50;
-    this.jdField_a_of_type_Long = 3000L;
-    this.jdField_a_of_type_Anwh = new awlr(this);
-    a();
-    DeviceProfileManager.a(this.jdField_a_of_type_Anwh);
-  }
-  
-  public static awlq a()
-  {
-    return awls.a();
-  }
-  
-  private void a()
-  {
-    String str = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
-    try
+    GameRoomInviteActivity localGameRoomInviteActivity;
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
-      if (!TextUtils.isEmpty(str))
-      {
-        String[] arrayOfString = str.split("\\|");
-        if (arrayOfString.length >= 4)
-        {
-          this.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
-          this.b = Integer.valueOf(arrayOfString[1]).intValue();
-          this.jdField_a_of_type_Long = Long.valueOf(arrayOfString[2]).longValue();
-        }
+      localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+      if ((paramRspBody.uint64_leader_uin.has()) && (paramRspBody.uint64_leader_uin.get() != this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {
+        break label94;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ListenTogether.dpc", 2, String.format("loadDpc, dpcValue: %s, [%s]", new Object[] { str, this }));
-      }
+    }
+    label94:
+    for (boolean bool = true;; bool = false)
+    {
+      localGameRoomInviteActivity.a(bool, paramRspBody.string_invite_id.get().toStringUtf8(), this.jdField_a_of_type_JavaLangString, this.b);
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.d("ListenTogether.dpc", 1, "loadDpc", localException);
-        this.jdField_a_of_type_Int = 50;
-        this.b = 0;
-        this.jdField_a_of_type_Long = 3000L;
-      }
-    }
-  }
-  
-  public String toString()
-  {
-    return "ListenTogetherDPC{maxCacheCount=" + this.jdField_a_of_type_Int + ", preDownloadNetType=" + this.b + ", playingAdjustInterval=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

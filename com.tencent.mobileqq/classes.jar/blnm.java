@@ -1,29 +1,27 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
-
 public class blnm
-  extends ImageSpan
 {
-  public blnm(Drawable paramDrawable, int paramInt)
+  public final blnl a;
+  public final blnn a;
+  
+  private blnm(blnl paramblnl, blnn paramblnn)
   {
-    super(paramDrawable, paramInt);
+    this.jdField_a_of_type_Blnl = paramblnl;
+    this.jdField_a_of_type_Blnn = paramblnn;
   }
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public static blnm a()
   {
-    paramCharSequence = getDrawable();
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt1 = paramPaint.descent;
-    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
-    paramInt2 = paramCharSequence.getBounds().bottom / 2;
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
+    return new blnm(null, blnn.d);
+  }
+  
+  public static blnm a(blnl paramblnl)
+  {
+    return new blnm(paramblnl, blnn.b);
+  }
+  
+  public static blnm b()
+  {
+    return new blnm(null, blnn.c);
   }
 }
 

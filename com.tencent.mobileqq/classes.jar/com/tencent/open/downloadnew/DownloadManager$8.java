@@ -1,15 +1,15 @@
 package com.tencent.open.downloadnew;
 
-import bjtx;
-import bjwq;
-import bjyf;
+import bhzm;
+import biby;
+import bidn;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class DownloadManager$8
   implements Runnable
 {
-  public DownloadManager$8(bjwq parambjwq, String paramString, DownloadInfo paramDownloadInfo) {}
+  public DownloadManager$8(biby parambiby, String paramString, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -17,12 +17,12 @@ public class DownloadManager$8
     {
       this.this$0.a().cancelDownloadTask(this.jdField_a_of_type_JavaLangString);
       this.this$0.a.remove(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c);
-      bjyf.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c);
+      bidn.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c);
       return;
     }
     catch (Exception localException)
     {
-      bjtx.c("DownloadManager_", "downloadSDKClient>>>", localException);
+      bhzm.c("DownloadManager_", "downloadSDKClient>>>", localException);
     }
   }
 }

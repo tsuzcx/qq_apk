@@ -1,27 +1,78 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.comment.DanmuItemBean;
 
-final class apps
-  implements beup
+public class apps
 {
-  public void a(bevl parambevl, bevm parambevm)
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
+  
+  public apps(DanmuItemBean paramDanmuItemBean)
   {
-    if ((parambevl == null) || (parambevm == null)) {}
-    while (!(parambevl instanceof beum)) {
-      return;
+    this.jdField_a_of_type_Long = paramDanmuItemBean.jdField_b_of_type_Long;
+    this.jdField_a_of_type_JavaLangString = String.valueOf(paramDanmuItemBean.jdField_a_of_type_Long);
+    this.jdField_b_of_type_JavaLangString = paramDanmuItemBean.jdField_b_of_type_JavaLangString;
+    this.jdField_c_of_type_JavaLangString = paramDanmuItemBean.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_Long = paramDanmuItemBean.d;
+    this.jdField_c_of_type_Long = paramDanmuItemBean.jdField_c_of_type_Long;
+    this.jdField_a_of_type_Boolean = paramDanmuItemBean.jdField_a_of_type_Boolean;
+    this.d = paramDanmuItemBean.jdField_c_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramDanmuItemBean.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str = this.d;; str = this.jdField_b_of_type_JavaLangString) {
+      return str + " : " + this.jdField_c_of_type_JavaLangString;
     }
-    beum localbeum = (beum)parambevl;
-    localbeum.jdField_a_of_type_Long += parambevm.c;
-    parambevm.c = 0L;
-    parambevm = "bytes=" + localbeum.jdField_a_of_type_Long + "-";
-    localbeum.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
-    parambevm = localbeum.jdField_a_of_type_JavaLangString;
-    if (parambevm.contains("range="))
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof apps))
     {
-      parambevm = parambevm.substring(0, parambevm.lastIndexOf("range="));
-      localbeum.jdField_a_of_type_JavaLangString = (parambevm + "range=" + localbeum.jdField_a_of_type_Long);
+      paramObject = (apps)paramObject;
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long)
+      {
+        bool1 = bool2;
+        if (this.jdField_b_of_type_Long == paramObject.jdField_b_of_type_Long)
+        {
+          bool1 = bool2;
+          if (this.jdField_c_of_type_Long == paramObject.jdField_c_of_type_Long)
+          {
+            bool1 = bool2;
+            if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+            {
+              bool1 = bool2;
+              if (!TextUtils.isEmpty(paramObject.jdField_a_of_type_JavaLangString))
+              {
+                bool1 = bool2;
+                if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
+                  bool1 = true;
+                }
+              }
+            }
+          }
+        }
+      }
     }
-    QLog.i("AREngine_ARPreSoResourceDownload", 1, "IBreakDownFix. url = " + ((beum)parambevl).jdField_a_of_type_JavaLangString + ", offset=" + localbeum.jdField_a_of_type_Long);
+    return bool1;
+  }
+  
+  public int hashCode()
+  {
+    return String.valueOf(this.jdField_a_of_type_Long).hashCode();
   }
 }
 

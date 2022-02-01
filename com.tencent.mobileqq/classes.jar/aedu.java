@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
-class aedu
-  implements axpu
+public class aedu
+  implements DialogInterface.OnDismissListener
 {
-  aedu(aedt paramaedt) {}
+  public aedu(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.jdField_a_of_type_Axqb.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
-    this.a.jdField_a_of_type_Axqb.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
   }
 }
 

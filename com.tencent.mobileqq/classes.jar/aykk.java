@@ -1,12 +1,9 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-
 public class aykk
-  implements ayud
 {
-  public aykk(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
-  
-  public void onClick(View paramView) {}
+  public static String a = "%s更新了个性标签";
+  public static String b = amtj.a(2131701590);
+  public static String c = "https://ti.qq.com/specialtag/index.html?_wv=536884193&_wwv=5";
+  public static String d = "?personality_label_blur=1";
 }
 
 

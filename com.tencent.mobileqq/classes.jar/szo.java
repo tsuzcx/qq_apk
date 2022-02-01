@@ -1,50 +1,96 @@
-import android.app.Activity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.support.v4.util.ArrayMap;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.realtime.RealTimeTemplateFactoryCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class szo
-  extends sxk
+  extends syz
 {
-  private int jdField_a_of_type_Int;
-  private BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-  private szr jdField_a_of_type_Szr;
-  protected boolean b;
+  private static RealTimeTemplateFactoryCache jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache = new RealTimeTemplateFactoryCache();
+  private Map<String, szp> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   
-  public szo(Activity paramActivity, szr paramszr)
+  public szo()
   {
-    super(paramActivity);
-    this.jdField_a_of_type_Szr = paramszr;
+    this.nameTemplateMap = new ConcurrentHashMap();
   }
   
-  public View a(LayoutInflater paramLayoutInflater)
+  public static szo a(String paramString, boolean paramBoolean)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560236, null);
-    paramLayoutInflater.setLayoutParams(new FrameLayout.LayoutParams(-1, agej.a(60.0F, this.jdField_a_of_type_AndroidAppActivity.getResources())));
-    ImageView localImageView = (ImageView)paramLayoutInflater.findViewById(2131368913);
-    localImageView.setImageResource(2130841655);
-    ((TextView)paramLayoutInflater.findViewById(2131368989)).setVisibility(8);
-    ((TextView)paramLayoutInflater.findViewById(2131368993)).setText(anzj.a(2131713032));
-    paramLayoutInflater.findViewById(2131368977).setVisibility(8);
-    paramLayoutInflater.findViewById(2131377371).setVisibility(8);
-    paramLayoutInflater.setOnClickListener(new szp(this));
-    localImageView.setOnClickListener(new szq(this));
-    return paramLayoutInflater;
-  }
-  
-  public void a(View paramView, BaseArticleInfo paramBaseArticleInfo, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
-    this.jdField_a_of_type_Int = paramInt;
-    if (!this.b)
-    {
-      a();
-      this.b = true;
+    if (paramBoolean) {
+      return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache.getAutoCreate(BaseApplicationImpl.getContext(), paramString);
     }
-    a(paramView);
+    return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache.get(paramString);
+  }
+  
+  public static void b()
+  {
+    QLog.d("RealTimeTemplateFactory", 2, "reset: ");
+    jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache.clear();
+  }
+  
+  public Map<String, String> a()
+  {
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator.hasNext())
+    {
+      szp localszp = (szp)localIterator.next();
+      localHashMap.put(localszp.a, localszp.b);
+    }
+    return localHashMap;
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {
+      return;
+    }
+    paramString2 = new szp(paramString1, paramString2, paramString3);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+  }
+  
+  public boolean a(TemplateBean paramTemplateBean)
+  {
+    if (paramTemplateBean == null) {}
+    while ((paramTemplateBean.getId() != getTemplateId()) || (!a().equals(paramTemplateBean.getStyleSource()))) {
+      return true;
+    }
+    return false;
+  }
+  
+  public void d(String paramString)
+  {
+    paramString = (szp)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+    if (paramString != null)
+    {
+      paramString = (TemplateBean)this.nameTemplateMap.remove(paramString.c);
+      QLog.d("RealTimeTemplateFactory", 1, "deleteStyle: " + paramString);
+    }
+  }
+  
+  public Map<String, TemplateBean> getNameTemplateMap()
+  {
+    ArrayMap localArrayMap = new ArrayMap();
+    localArrayMap.putAll(this.nameTemplateMap);
+    return localArrayMap;
+  }
+  
+  public TemplateBean getTemplate(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    paramString = (TemplateBean)this.nameTemplateMap.get(paramString);
+    if (paramString == null) {}
+    for (paramString = null;; paramString = paramString.clone()) {
+      return paramString;
+    }
   }
 }
 

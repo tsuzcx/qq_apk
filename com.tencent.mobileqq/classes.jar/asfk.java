@@ -1,45 +1,47 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class asfk
-  implements URLDrawableDownListener
+  extends asdv
 {
-  asfk(asfd paramasfd, asmu paramasmu, asfl paramasfl) {}
+  asfk(asfj paramasfj, asfo paramasfo, String paramString) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  protected void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, Bundle paramBundle)
   {
-    QLog.e("FavEmosmViewPage", 1, "onLoadFailed: " + this.jdField_a_of_type_Asmu.toString());
-    asfd.a(this.jdField_a_of_type_Asfd, this.jdField_a_of_type_Asfl.a, this.jdField_a_of_type_Asfl);
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.e("FavEmosmViewPage", 1, "onLoadFailed: " + this.jdField_a_of_type_Asmu.toString());
-    asfd.a(this.jdField_a_of_type_Asfd, this.jdField_a_of_type_Asfl.a, this.jdField_a_of_type_Asfl);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    QLog.e("FavEmosmViewPage", 1, "onLoadInterrupted: " + this.jdField_a_of_type_Asmu.toString());
-    asfd.a(this.jdField_a_of_type_Asfd, this.jdField_a_of_type_Asfl.a, this.jdField_a_of_type_Asfl);
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
+    super.a(paramBoolean, paramLong, paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramBundle);
     if (QLog.isColorLevel()) {
-      QLog.i("FavEmosmViewPage", 2, "onLoadProgressed: " + this.jdField_a_of_type_Asmu.toString());
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Asfj.jdField_a_of_type_JavaLangString + " start DiscUploadTaskExcuter isSuccess:" + paramBoolean + " retCode:" + paramLong + " retMsg:" + paramString6);
     }
-    asfd.a(this.jdField_a_of_type_Asfd, this.jdField_a_of_type_Asfl.a, this.jdField_a_of_type_Asfl);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
+    if (!paramBoolean)
+    {
+      if ((paramLong == -100001L) || (paramLong == -100002L))
+      {
+        this.jdField_a_of_type_Asfo.a(ases.a(this.jdField_a_of_type_Asfj.jdField_a_of_type_Long, false), true);
+        return;
+      }
+      this.jdField_a_of_type_Asfo.a(ases.a(this.jdField_a_of_type_Asfj.jdField_a_of_type_Long, false), false);
+      return;
+    }
     if (QLog.isColorLevel()) {
-      QLog.i("FavEmosmViewPage", 2, "onLoadSuccess: " + this.jdField_a_of_type_Asmu.toString());
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Asfj.jdField_a_of_type_JavaLangString + " start upload Discfile");
     }
-    asfd.a(this.jdField_a_of_type_Asfd, this.jdField_a_of_type_Asfl.a, this.jdField_a_of_type_Asfl);
+    paramBoolean = asld.e(ases.a(this.jdField_a_of_type_Asfj.jdField_a_of_type_Ases));
+    paramString2 = "";
+    int i = 0;
+    paramString5 = "";
+    if (paramBundle != null)
+    {
+      paramString2 = paramBundle.getString("strHttpsDomain");
+      i = paramBundle.getShort("httpsPort");
+      paramString5 = paramBundle.getString("strHttpsDomain");
+    }
+    paramString1 = new asdx(ases.a(this.jdField_a_of_type_Asfj.jdField_a_of_type_Ases), paramString3, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Asfj.jdField_a_of_type_Long, paramString4, paramInt, paramBoolean, paramString2, i, this.jdField_a_of_type_Asfj.b, paramString5, new asfl(this, paramString1));
+    if (QLog.isColorLevel()) {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Asfj.jdField_a_of_type_JavaLangString + " add to rsCenter");
+    }
+    asfj.a(this.jdField_a_of_type_Asfj, aszt.a().longValue());
+    ases.a(this.jdField_a_of_type_Asfj.jdField_a_of_type_Ases).getFileManagerRSCenter().a(asfj.a(this.jdField_a_of_type_Asfj), paramString1);
   }
 }
 

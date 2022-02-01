@@ -1,16 +1,26 @@
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
 
-public class aupn
-  implements aumz
+class aupn
+  implements ActionCallback
 {
-  public aupn(QfileEditBottomBar paramQfileEditBottomBar) {}
+  aupn(aupc paramaupc, aupx paramaupx) {}
   
-  public void a()
+  public void onResult(String paramString)
   {
-    QfileEditBottomBar.a(this.a);
+    try
+    {
+      i = Integer.parseInt(paramString);
+      this.jdField_a_of_type_Aupx.a(i, "");
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        int i = -1;
+      }
+    }
   }
-  
-  public void b() {}
 }
 
 

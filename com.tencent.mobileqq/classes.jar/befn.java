@@ -1,42 +1,38 @@
-import com.tencent.widget.AbsListView;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
 
-class befn
-  implements blih
+public class befn
+  implements Callable<List<basn>>
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  befn(befl parambefl) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public befn(befm parambefm, Context paramContext, QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
   {
-    this.b = paramInt3;
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public List<basn> a()
   {
-    for (;;)
+    long l = System.currentTimeMillis();
+    ArrayList localArrayList = new ArrayList();
+    if (basn.E == this.jdField_a_of_type_Long)
     {
-      try
-      {
-        int i = this.jdField_a_of_type_Befl.jdField_a_of_type_Int;
-        if (i > 0) {
-          return;
-        }
-        if ((paramInt != 0) || (this.jdField_a_of_type_Befl.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_Int != this.b - 2)) {
-          continue;
-        }
-        if (this.jdField_a_of_type_Befl.e)
-        {
-          this.jdField_a_of_type_Befl.c(true);
-          continue;
-        }
-        this.jdField_a_of_type_Befl.c(false);
-      }
-      finally {}
-      this.jdField_a_of_type_Befl.a(this.jdField_a_of_type_Befl.jdField_a_of_type_Long, this.jdField_a_of_type_Befl.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Befl.c, 50, 0);
+      this.jdField_a_of_type_Befm.a = this.jdField_a_of_type_Befm.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true);
+      localArrayList.addAll(this.jdField_a_of_type_Befm.a);
+      this.jdField_a_of_type_Befm.b = this.jdField_a_of_type_Befm.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "CallableForSearchData time = " + (System.currentTimeMillis() - l));
+    }
+    return localArrayList;
   }
 }
 

@@ -1,28 +1,46 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.flutter.channel.model.RequestPacket;
+import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.MethodCodec;
+import io.flutter.plugin.common.StandardMethodCodec;
+import java.util.Map;
 
-public class atjd
-  implements URLDrawable.URLDrawableListener
+public abstract class atjd
+  implements MethodChannel.MethodCallHandler
 {
-  public atjd(UniformDownloadActivity paramUniformDownloadActivity, ImageView paramImageView) {}
+  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  protected abstract void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult);
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    String str = paramMethodCall.method;
+    QLog.d("SSOChannelHandler", 1, String.format("onMethodCall: %s", new Object[] { str }));
+    if (TextUtils.isEmpty(str))
+    {
+      paramResult.notImplemented();
+      return;
+    }
+    if (str.equals("sendRequest"))
+    {
+      paramMethodCall = paramMethodCall.argument("req");
+      if ((paramMethodCall instanceof Map))
+      {
+        a(RequestPacket.fromMap((Map)paramMethodCall), paramResult);
+        return;
+      }
+      paramResult.notImplemented();
+      return;
+    }
+    paramResult.notImplemented();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atjd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,39 @@
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewPropertyAnimator;
+import android.view.animation.DecelerateInterpolator;
 
-public abstract interface apmo
+class apmo
+  implements Animator.AnimatorListener
 {
-  public abstract String a();
+  apmo(apmh paramapmh, boolean paramBoolean) {}
   
-  public abstract List<String> a();
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public abstract String b();
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    apmh.b(this.jdField_a_of_type_Apmh).scrollTo(0, 0);
+    apmh.b(this.jdField_a_of_type_Apmh).setAlpha(1.0F);
+    apmh.b(this.jdField_a_of_type_Apmh).setBackgroundColor(apmh.a(this.jdField_a_of_type_Apmh).getResources().getColor(apmh.a()));
+    paramAnimator = this.jdField_a_of_type_Apmh.a;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (float f = -this.jdField_a_of_type_Apmh.a.getMeasuredWidth();; f = this.jdField_a_of_type_Apmh.a.getMeasuredWidth())
+    {
+      paramAnimator.setX(f);
+      this.jdField_a_of_type_Apmh.a.setAlpha(0.0F);
+      this.jdField_a_of_type_Apmh.a.setVisibility(0);
+      this.jdField_a_of_type_Apmh.a.animate().setInterpolator(new DecelerateInterpolator()).alpha(1.0F).translationX(0.0F).setDuration(180L).start();
+      return;
+    }
+  }
   
-  public abstract String c();
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

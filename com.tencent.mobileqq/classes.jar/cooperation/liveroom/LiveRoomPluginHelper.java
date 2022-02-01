@@ -5,15 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import binb;
-import com.tencent.mobileqq.activity.MainFragment;
+import bgtj;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.commons.IReportDelegate;
 import mqq.app.AppRuntime;
-import oix;
-import pfl;
-import tbz;
+import okj;
+import pkx;
+import tgc;
 
 public class LiveRoomPluginHelper
 {
@@ -22,7 +22,7 @@ public class LiveRoomPluginHelper
   
   public static void backToReadInJoy(Context paramContext)
   {
-    oix.a(paramContext, 11);
+    okj.a(paramContext, 11);
   }
   
   public static LiveRoomWebViewBuilder createWebView(Activity paramActivity, Intent paramIntent)
@@ -33,7 +33,7 @@ public class LiveRoomPluginHelper
       paramIntent.putExtra("window_no_title", false);
       paramIntent.putExtra("webview_hide_progress", true);
       paramActivity = new LiveRoomWebViewBuilder(paramActivity, paramActivity, paramIntent, localLiveRoomInterfaceProxy);
-      new binb(paramActivity).a(null, localLiveRoomInterfaceProxy, paramIntent);
+      new bgtj(paramActivity).a(null, localLiveRoomInterfaceProxy, paramIntent);
       return paramActivity;
     }
     QLog.e("LiveRoomPluginHelper", 2, "createWebView: app should be AppInterface");
@@ -67,7 +67,7 @@ public class LiveRoomPluginHelper
     if (!violaSoLoaded)
     {
       violaSoLoaded = true;
-      pfl.a("LiveRoomPluginHelper", new LiveRoomPluginHelper.1(paramInitViolaListener, paramAppRuntime, paramString, paramIReportDelegate));
+      pkx.a("LiveRoomPluginHelper", new LiveRoomPluginHelper.1(paramInitViolaListener, paramAppRuntime, paramString, paramIReportDelegate));
       return;
     }
     initViolaSDKEngine(paramAppRuntime, paramString, paramIReportDelegate, paramInitViolaListener);
@@ -91,7 +91,7 @@ public class LiveRoomPluginHelper
     while ((i != 2) || (TextUtils.isEmpty(paramBundle))) {
       return;
     }
-    tbz.a(paramActivity, str, paramBundle, null);
+    tgc.a(paramActivity, str, paramBundle, null);
   }
 }
 

@@ -1,34 +1,22 @@
-import android.graphics.Bitmap;
+import android.content.Context;
+import android.media.AudioManager;
+import java.lang.reflect.Method;
 
 public class lfg
 {
-  public int a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public int b;
-  public Bitmap b;
-  public String b;
-  public boolean b;
-  public int c = -1;
-  public Bitmap c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public boolean d;
-  public String e;
-  public boolean e;
-  public String f;
-  public boolean f;
-  public String g;
-  public boolean g;
+  static int a = 0;
+  static int b = 0;
   
-  public lfg(lff paramlff)
+  public static boolean a(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_d_of_type_Int = -1;
+    try
+    {
+      paramContext = (AudioManager)paramContext.getSystemService("audio");
+      boolean bool = Boolean.parseBoolean(paramContext.getClass().getMethod("isWiredHeadsetOn", new Class[0]).invoke(paramContext, (Object[])null).toString());
+      return bool;
+    }
+    catch (Exception paramContext) {}
+    return false;
   }
 }
 

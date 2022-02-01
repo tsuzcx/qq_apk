@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.takevideo.tag;
 
 import com.tencent.mobileqq.persistence.Entity;
-import wiq;
+import vkp;
 
 public class TagItemEntry
   extends Entity
-  implements wiq
+  implements vkp
 {
   public String desc;
   public long id;

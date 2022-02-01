@@ -1,23 +1,20 @@
-import UserGrowth.stSchema;
-import android.content.Context;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-public abstract interface uix
+public class uix
+  implements BusinessObserver
 {
-  public abstract stSchema a();
+  protected void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  public abstract Context a();
-  
-  public abstract WSDownloadParams a();
-  
-  public abstract MiniAppLauncher.MiniAppLaunchListener a();
-  
-  public abstract uiw a();
-  
-  public abstract upr a();
-  
-  public abstract boolean a();
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramObject != null)
+    {
+      a(paramBoolean, (Bundle)paramObject);
+      return;
+    }
+    a(paramBoolean, null);
+  }
 }
 
 

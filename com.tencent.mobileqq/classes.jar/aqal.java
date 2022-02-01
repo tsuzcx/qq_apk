@@ -1,20 +1,72 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aqal
-  implements aqau
+public class aqal
+  extends aptq<aqak>
 {
-  aqal(aqai paramaqai, aqas paramaqas, aqau paramaqau) {}
-  
-  public void a(boolean paramBoolean)
+  @NonNull
+  public aqak a(int paramInt)
   {
-    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, local not exists, full update, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.jdField_a_of_type_Aqas.a }));
-    if (paramBoolean) {}
-    this.jdField_a_of_type_Aqau.a(paramBoolean);
+    return new aqak();
+  }
+  
+  @Nullable
+  public aqak a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
+    {
+      aqak localaqak = aqak.a(paramArrayOfaptx[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("PttWithTextSwitchProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
+      }
+      return localaqak;
+    }
+    return null;
+  }
+  
+  public void a(aqak paramaqak)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PttWithTextSwitchProcessor", 2, "onUpdate " + paramaqak.toString());
+    }
+  }
+  
+  public Class<aqak> clazz()
+  {
+    return aqak.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 488;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqal
  * JD-Core Version:    0.7.0.1
  */

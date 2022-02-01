@@ -1,43 +1,32 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-public class bfzo
-  extends Handler
+final class bfzo
+  extends ClickableSpan
 {
-  private WeakReference<BeginnerGuideFragment> a;
+  bfzo(Context paramContext, awqo paramawqo) {}
   
-  public bfzo(BeginnerGuideFragment paramBeginnerGuideFragment, Looper paramLooper)
+  public void onClick(View paramView)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramBeginnerGuideFragment);
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_Awqo.b());
+    if (QLog.isColorLevel()) {
+      QLog.i("TopicHelper", 2, "mVideoData.topicInfo.getTopicJumpUrl() :" + this.jdField_a_of_type_Awqo.b());
+    }
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    super.handleMessage(paramMessage);
-    BeginnerGuideFragment localBeginnerGuideFragment = (BeginnerGuideFragment)this.a.get();
-    if (localBeginnerGuideFragment == null) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 1110: 
-        if (QLog.isColorLevel()) {
-          QLog.d("BeginnerGuideFragment", 2, "parse config from network success");
-        }
-        break;
-      }
-    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String)));
-    BeginnerGuideFragment.a(localBeginnerGuideFragment, (String)paramMessage.obj, paramMessage.arg1);
-    return;
-    BeginnerGuideFragment.a(localBeginnerGuideFragment, paramMessage.what);
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#00aced"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

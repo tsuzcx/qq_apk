@@ -1,58 +1,30 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.data.ShowExternalTroop;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aykw
-  extends aykv
+public class aykw
+  extends BroadcastReceiver
 {
-  public boolean a;
+  public aykw(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
   
-  public aykw(Context paramContext)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramContext);
+    if ((paramIntent != null) && (paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.card.modify_personality_label")))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PersonalityLabelGalleryActivity", 2, "receive broadcast modify pl info");
+      }
+      paramContext = paramIntent.getBundleExtra("key_bundle_data");
+      if ((paramContext != null) && (paramContext.getBoolean("onTagChanged")))
+      {
+        this.a.a = true;
+        PersonalityLabelGalleryActivity.a(this.a);
+      }
+    }
   }
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(String paramString, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean, int paramInt, List<ShowExternalTroop> paramList);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract void b(NearbyPeopleCard paramNearbyPeopleCard);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
-  
-  public abstract void j();
-  
-  public abstract void k();
-  
-  public abstract void l();
 }
 
 

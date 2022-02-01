@@ -4,9 +4,10 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import bibk;
-import bizh;
-import bizi;
+import android.view.View.OnLongClickListener;
+import bghu;
+import bhfj;
+import bhfk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.URLDrawable;
@@ -16,13 +17,14 @@ import com.tencent.widget.URLThemeImageView;
 
 public class VasAvatar
   extends URLThemeImageView
-  implements bizi
+  implements bhfk
 {
   public Drawable a;
-  public bibk a;
-  private bizh jdField_a_of_type_Bizh;
-  private AvatarLayout jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout;
-  private String jdField_a_of_type_JavaLangString;
+  private View.OnLongClickListener a;
+  public bghu a;
+  protected bhfj a;
+  protected AvatarLayout a;
+  protected String a;
   
   public VasAvatar(Context paramContext)
   {
@@ -71,21 +73,26 @@ public class VasAvatar
     }
   }
   
-  public void a(Canvas paramCanvas)
+  public boolean a()
+  {
+    return this.jdField_a_of_type_AndroidViewView$OnLongClickListener != null;
+  }
+  
+  public void b(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
   }
   
-  public void b(Canvas paramCanvas)
+  public void c(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Bizh != null)
+    if (this.jdField_a_of_type_Bhfj != null)
     {
-      this.jdField_a_of_type_Bizh.a(paramCanvas);
+      this.jdField_a_of_type_Bhfj.a(paramCanvas);
       return;
     }
     super.draw(paramCanvas);
@@ -93,9 +100,9 @@ public class VasAvatar
   
   public void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Bizh != null)
+    if (this.jdField_a_of_type_Bhfj != null)
     {
-      this.jdField_a_of_type_Bizh.b(paramCanvas);
+      this.jdField_a_of_type_Bhfj.b(paramCanvas);
       return;
     }
     super.onDraw(paramCanvas);
@@ -114,30 +121,36 @@ public class VasAvatar
   public void setImageDrawable(Drawable paramDrawable)
   {
     super.setImageDrawable(paramDrawable);
-    this.jdField_a_of_type_Bibk = null;
+    this.jdField_a_of_type_Bghu = null;
   }
   
-  public void setLoader(AvatarLayout paramAvatarLayout, bibk parambibk)
+  public void setLoader(AvatarLayout paramAvatarLayout, bghu parambghu)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = parambibk.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    parambibk.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = parambghu.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    parambghu.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
     setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     this.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout = paramAvatarLayout;
-    this.jdField_a_of_type_Bibk = parambibk;
-    this.jdField_a_of_type_JavaLangString = parambibk.jdField_a_of_type_JavaLangString;
-    parambibk.a(this);
+    this.jdField_a_of_type_Bghu = parambghu;
+    this.jdField_a_of_type_JavaLangString = parambghu.jdField_a_of_type_JavaLangString;
+    parambghu.a(this);
   }
   
-  public void setMosaicEffect(bizh parambizh)
+  public void setMosaicEffect(bhfj parambhfj)
   {
-    if (this.jdField_a_of_type_Bizh != null) {
-      this.jdField_a_of_type_Bizh.a(null);
+    if (this.jdField_a_of_type_Bhfj != null) {
+      this.jdField_a_of_type_Bhfj.a(null);
     }
-    this.jdField_a_of_type_Bizh = parambizh;
-    if (this.jdField_a_of_type_Bizh != null) {
-      this.jdField_a_of_type_Bizh.a(this);
+    this.jdField_a_of_type_Bhfj = parambhfj;
+    if (this.jdField_a_of_type_Bhfj != null) {
+      this.jdField_a_of_type_Bhfj.a(this);
     }
     invalidate();
+  }
+  
+  public void setOnLongClickListener(@android.support.annotation.Nullable @androidx.annotation.Nullable View.OnLongClickListener paramOnLongClickListener)
+  {
+    super.setOnLongClickListener(paramOnLongClickListener);
+    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
   }
 }
 

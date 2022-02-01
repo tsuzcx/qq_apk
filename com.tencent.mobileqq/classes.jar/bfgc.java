@@ -1,24 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class bfgc
-  implements bljn
+  implements bfdu
 {
-  public bfgc(MediaPreviewActivity paramMediaPreviewActivity) {}
+  public bfgc(TroopAIORobotLayout paramTroopAIORobotLayout, bffv parambffv) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    if (this.a.a != null)
-    {
-      paramAdapterView = this.a.a.a(paramInt);
-      if ((paramAdapterView == null) || (paramAdapterView.a != 1)) {
-        return false;
-      }
-    }
-    MediaPreviewActivity.a(this.a);
-    return true;
+    if (paramInt == 0) {}
   }
 }
 

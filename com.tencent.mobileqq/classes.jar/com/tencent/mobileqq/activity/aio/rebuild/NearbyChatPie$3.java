@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aimx;
+import ahik;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 public class NearbyChatPie$3
   implements Runnable
 {
-  public NearbyChatPie$3(aimx paramaimx) {}
+  public NearbyChatPie$3(ahik paramahik) {}
   
   public void run()
   {
-    this.this$0.e.setText(this.this$0.a.d);
+    this.this$0.mTitleText.setText(this.this$0.sessionInfo.curFriendNick);
   }
 }
 

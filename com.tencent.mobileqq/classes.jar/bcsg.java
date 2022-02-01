@@ -1,29 +1,22 @@
-import java.util.List;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
 public class bcsg
-  implements bcsf
+  extends bcqw
 {
-  private adbb<bcsi> jdField_a_of_type_Adbb = new adbc();
-  private adbd<Integer, bcsi> jdField_a_of_type_Adbd = new adbe();
+  protected SpriteGLView a;
   
-  public bcsi a(Integer paramInteger)
+  public bcrc a()
   {
-    return (bcsi)this.jdField_a_of_type_Adbd.a(paramInteger);
+    return this.a;
   }
   
-  public List<bcsi> a()
-  {
-    return this.jdField_a_of_type_Adbb.a();
-  }
+  public void ay_() {}
   
-  public void a(Class<? extends bcsi> paramClass)
+  public void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
   {
-    this.jdField_a_of_type_Adbb.a(paramClass);
-  }
-  
-  public void a(Integer paramInteger, Class<? extends bcsi> paramClass)
-  {
-    this.jdField_a_of_type_Adbd.a(paramInteger, paramClass);
+    this.e = paramInt1;
+    this.f = paramInt2;
+    b();
   }
 }
 

@@ -1,29 +1,20 @@
-import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
+import java.util.ArrayList;
 
 public class wbk
-  extends ClickableSpan
+  extends vko
 {
-  public wbk(QCirclePushAsyncTextView paramQCirclePushAsyncTextView) {}
+  public final int a;
+  public ArrayList<wbj> a;
   
-  public void onClick(@NonNull View paramView)
+  public wbk(int paramInt)
   {
-    if (QCirclePushAsyncTextView.a(this.a) != null) {
-      QCirclePushAsyncTextView.a(this.a).b();
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  public String toString()
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#03081A"));
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setTextSize(bdep.a(13.0F));
-    aadv.a(paramTextPaint, false);
+    return "UpdateMemoriesEvent{dateList=" + this.jdField_a_of_type_JavaUtilArrayList + ", source=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

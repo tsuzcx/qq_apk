@@ -1,73 +1,30 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 public class ybq
-  extends wjm<QQStoryShareGroupProfileActivity, wqm>
+  extends JobSegment<Bitmap, Bitmap>
 {
-  public ybq(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public final float a;
+  public final boolean a;
+  
+  public ybq(float paramFloat, boolean paramBoolean)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wqm paramwqm)
+  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
   {
-    if ((paramwqm.b != 3) || (paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null)) {}
-    ArrayList localArrayList;
-    label68:
-    do
+    paramJobContext = yoy.a(paramBitmap, this.jdField_a_of_type_Float, this.jdField_a_of_type_Boolean);
+    if (paramJobContext == null)
     {
+      super.notifyError(new BitmapError("Q.qqstory.publish:ImageAdjustJobSegment", 5));
       return;
-      int i;
-      ycq localycq;
-      HotSortVideoEntry localHotSortVideoEntry;
-      if (paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike == 1)
-      {
-        i = 1;
-        localycq = paramQQStoryShareGroupProfileActivity.a.a;
-        Object localObject = paramQQStoryShareGroupProfileActivity.a.a.a;
-        localArrayList = new ArrayList();
-        localObject = ((List)localObject).iterator();
-        do
-        {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          localHotSortVideoEntry = (HotSortVideoEntry)((Iterator)localObject).next();
-        } while (!localHotSortVideoEntry.feedId.equals(paramwqm.jdField_a_of_type_JavaLangString));
-        if (i == 0) {
-          break label164;
-        }
-      }
-      for (int j = localHotSortVideoEntry.likeCount + 1;; j = localHotSortVideoEntry.likeCount - 1)
-      {
-        localHotSortVideoEntry.likeCount = j;
-        if (localHotSortVideoEntry.likeCount < 0) {
-          localHotSortVideoEntry.likeCount = 0;
-        }
-        localycq.a(localHotSortVideoEntry);
-        localArrayList.add(localHotSortVideoEntry);
-        break label68;
-        i = 0;
-        break;
-      }
-    } while (localArrayList.size() <= 0);
-    label164:
-    ((wso)wth.a(25)).a(localArrayList);
-    paramQQStoryShareGroupProfileActivity.d = true;
+    }
+    super.notifyResult(paramJobContext);
   }
-  
-  public Class acceptEventClass()
-  {
-    return wqm.class;
-  }
-  
-  public void b(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wqm paramwqm) {}
 }
 
 

@@ -4,44 +4,26 @@ import AvatarInfo.DestQQHeadInfo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anys;
 
 public class FriendListHandler$QQHeadDetails
   implements Parcelable
 {
-  public static final Parcelable.Creator<QQHeadDetails> CREATOR = new anys();
-  public byte a;
-  public int a;
-  public long a;
-  public String a;
+  public static final Parcelable.Creator<QQHeadDetails> CREATOR = new FriendListHandler.QQHeadDetails.1();
+  public long headImgTimestamp;
+  public byte level;
+  public int sizeType;
+  public String uinOrMobile;
+  public int userType;
   
   private FriendListHandler$QQHeadDetails() {}
   
-  public FriendListHandler$QQHeadDetails(int paramInt, String paramString, long paramLong, byte paramByte)
+  public FriendListHandler$QQHeadDetails(int paramInt1, String paramString, long paramLong, byte paramByte, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Byte = paramByte;
-  }
-  
-  public DestQQHeadInfo a()
-  {
-    long l1 = 0L;
-    if (this.jdField_a_of_type_Int == 11) {
-      return new DestQQHeadInfo(0L, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
-    }
-    try
-    {
-      long l2 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
-      l1 = l2;
-    }
-    catch (Exception localException)
-    {
-      label38:
-      break label38;
-    }
-    return new DestQQHeadInfo(l1, this.jdField_a_of_type_Long, null);
+    this.userType = paramInt1;
+    this.uinOrMobile = paramString;
+    this.headImgTimestamp = paramLong;
+    this.level = paramByte;
+    this.sizeType = paramInt2;
   }
   
   public int describeContents()
@@ -49,19 +31,38 @@ public class FriendListHandler$QQHeadDetails
     return 0;
   }
   
+  public DestQQHeadInfo getDestQQHeadInfo()
+  {
+    long l1 = 0L;
+    if (this.userType == 11) {
+      return new DestQQHeadInfo(0L, this.headImgTimestamp, this.uinOrMobile);
+    }
+    try
+    {
+      long l2 = Long.parseLong(this.uinOrMobile);
+      l1 = l2;
+    }
+    catch (Exception localException)
+    {
+      label38:
+      break label38;
+    }
+    return new DestQQHeadInfo(l1, this.headImgTimestamp, null);
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{uinOrMobile:").append(this.jdField_a_of_type_JavaLangString).append(",timestamp:").append(this.jdField_a_of_type_Long).append("}");
+    localStringBuilder.append("{uinOrMobile:").append(this.uinOrMobile).append(",timestamp:").append(this.headImgTimestamp).append("}");
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeByte(this.jdField_a_of_type_Byte);
+    paramParcel.writeInt(this.userType);
+    paramParcel.writeString(this.uinOrMobile);
+    paramParcel.writeLong(this.headImgTimestamp);
+    paramParcel.writeByte(this.level);
   }
 }
 

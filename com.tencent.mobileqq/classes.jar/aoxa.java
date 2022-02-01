@@ -1,71 +1,20 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aoxa
-  extends aoxg
+class aoxa
+  implements View.OnClickListener
 {
-  public aoxa(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  aoxa(aowx paramaowx) {}
   
-  private boolean C()
+  public void onClick(View paramView)
   {
-    Object localObject1 = new StringBuilder((String)this.jdField_a_of_type_JavaUtilHashMap.get("url"));
-    ((StringBuilder)localObject1).append("?a=1");
-    Object localObject2 = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      String str1 = (String)((Iterator)localObject2).next();
-      if (!"url".equals(str1))
-      {
-        try
-        {
-          String str2 = URLEncoder.encode((String)this.jdField_a_of_type_JavaUtilHashMap.get(str1), "UTF-8");
-          ((StringBuilder)localObject1).append("&");
-          ((StringBuilder)localObject1).append(str1);
-          ((StringBuilder)localObject1).append("=");
-          ((StringBuilder)localObject1).append(str2);
-        }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException) {}
-        if (QLog.isColorLevel()) {
-          QLog.e("HuaYangAction", 1, localUnsupportedEncodingException, new Object[0]);
-        }
-      }
-    }
-    localObject1 = ((StringBuilder)localObject1).toString();
-    if (QLog.isDevelopLevel()) {
-      QLog.e("HuaYangAction", 4, "gotoHuayang url==" + (String)localObject1);
-    }
-    localObject2 = this.jdField_a_of_type_AndroidContentContext;
-    Intent localIntent = new Intent((Context)localObject2, QQBrowserActivity.class);
-    localIntent.setFlags(536870912);
-    localIntent.putExtra("url", (String)localObject1);
-    ((Context)localObject2).startActivity(localIntent);
-    return true;
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = C();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("HuaYangAction", 1, "doAction error: " + localException.getMessage());
-      a("HuaYangAction");
-    }
-    return false;
+    acmy.a(aowx.a(this.a), -3, "user canceled");
+    aowx.a(this.a).a();
+    aowx.a(this.a).dismiss();
+    aowx.a(this.a, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

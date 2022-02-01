@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor;
 
 import android.widget.EditText;
-import bgfu;
+import bepc;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
 class XMediaEditor$2
   implements Runnable
 {
-  XMediaEditor$2(XMediaEditor paramXMediaEditor, bgfu parambgfu) {}
+  XMediaEditor$2(XMediaEditor paramXMediaEditor, bepc parambepc) {}
   
   public void run()
   {

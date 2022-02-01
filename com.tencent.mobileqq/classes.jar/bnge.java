@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.remote.SendMsg;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public final class bnge
-  implements Parcelable.Creator<SendMsg>
+class bnge
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public SendMsg a(Parcel paramParcel)
-  {
-    return new SendMsg(paramParcel);
-  }
+  bnge(bngd parambngd) {}
   
-  public SendMsg[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new SendMsg[paramInt];
+    this.a.w = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.k();
   }
 }
 

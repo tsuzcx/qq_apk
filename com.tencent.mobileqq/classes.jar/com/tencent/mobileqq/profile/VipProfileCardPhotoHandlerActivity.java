@@ -8,9 +8,9 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import azyw;
-import bhhz;
-import bhmq;
+import aynl;
+import bfrj;
+import bfvo;
 import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
@@ -31,7 +31,7 @@ public class VipProfileCardPhotoHandlerActivity
     localIntent.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
     localIntent.putExtra("Business_Origin", 101);
     localIntent.putExtra("PhotoConst.COMPRESS_QUALITY", 80);
-    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bhhz.b(this), bhhz.a(this), bhhz.b(this), bhhz.a(this), bhhz.c());
+    PhotoUtils.startPhotoListEdit(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bfrj.b(this), bfrj.a(this), bfrj.b(this), bfrj.a(this), bfrj.c());
   }
   
   private void b()
@@ -40,7 +40,7 @@ public class VipProfileCardPhotoHandlerActivity
     {
       if (checkSelfPermission("android.permission.CAMERA") != 0)
       {
-        requestPermissions(new azyw(this), 1, new String[] { "android.permission.CAMERA" });
+        requestPermissions(new aynl(this), 1, new String[] { "android.permission.CAMERA" });
         return;
       }
       this.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this, 5);
@@ -51,11 +51,11 @@ public class VipProfileCardPhotoHandlerActivity
   
   protected void a(Uri paramUri)
   {
-    paramUri = bhmq.b(this, paramUri);
+    paramUri = bfvo.b(this, paramUri);
     Intent localIntent = new Intent();
     localIntent.putExtra("Business_Origin", 101);
     localIntent.putExtra("PhotoConst.COMPRESS_QUALITY", 80);
-    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bhhz.b(this), bhhz.a(this), bhhz.b(this), bhhz.a(this), paramUri, bhhz.c());
+    PhotoUtils.startPhotoEdit(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), bfrj.b(this), bfrj.a(this), bfrj.b(this), bfrj.a(this), paramUri, bfrj.c());
   }
   
   protected void a(String paramString)
@@ -82,8 +82,9 @@ public class VipProfileCardPhotoHandlerActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   

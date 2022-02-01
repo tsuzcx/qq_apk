@@ -1,12 +1,11 @@
-public abstract interface bilm
+import com.tencent.util.Pair;
+import java.util.HashMap;
+
+public class bilm
 {
-  public abstract int getRenderHeight();
+  public static HashMap<Long, Pair<Long, Long>> a = new HashMap();
   
-  public abstract int getRenderWidth();
-  
-  public abstract void onDrawBegin();
-  
-  public abstract void onSetRenderer(biln parambiln);
+  public static void a(long paramLong, String paramString) {}
 }
 
 

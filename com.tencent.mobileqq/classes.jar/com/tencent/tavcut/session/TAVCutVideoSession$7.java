@@ -1,15 +1,14 @@
 package com.tencent.tavcut.session;
 
-import com.tencent.weseevideo.model.effect.StickerModel;
-
 class TAVCutVideoSession$7
   implements Runnable
 {
-  TAVCutVideoSession$7(TAVCutVideoSession paramTAVCutVideoSession, StickerModel paramStickerModel) {}
+  TAVCutVideoSession$7(TAVCutVideoSession paramTAVCutVideoSession, String paramString) {}
   
   public void run()
   {
-    this.this$0.addSticker(this.this$0.getStickerController(), this.val$stickerModel);
+    this.this$0.setMaterial(this.this$0.getMediaModel(), TAVCutVideoSession.access$000(this.this$0), this.val$materialPath);
+    this.this$0.refresh();
   }
 }
 

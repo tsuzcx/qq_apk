@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/mjg" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <android.support.v7.widget.RecyclerView android:id="@id/msm" android:layout_width="@dimen/bci" android:layout_height="wrap_content" />
-        <View android:layout_gravity="center_vertical" android:id="@id/mjk" android:background="@color/al3" android:layout_width="1.0dip" android:layout_height="15.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:scaleType="center" />
-        <android.support.v7.widget.RecyclerView android:id="@id/mka" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <TextView android:textSize="12.0dip" android:textColor="@color/ds" android:id="@id/ns6" android:paddingLeft="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:text="@string/w9l" android:shadowColor="#6e000000" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="2.0" android:layout_above="@id/mjg" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/hxt" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/ge_" android:layout_width="fill_parent" android:layout_height="336.0dip" android:layout_marginBottom="110.0dip">
+        <RelativeLayout android:id="@id/hy3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+            <com.qzone.component.StrokeTextView android:gravity="center" android:id="@id/hy2" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/mym" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="19.0dip" android:layout_marginBottom="16.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+            <com.qzone.homepage.diy.ShadowViewGroup android:layout_gravity="center_horizontal" android:id="@id/myl" android:layout_width="wrap_content" android:layout_height="wrap_content" app:containerCornerRadius="20.0dip" app:containerDeltaLength="11.0dip" app:containerShadowColor="#0f000000" app:containerShadowRadius="5.0dip" app:deltaX="0.0dip" app:deltaY="0.0dip" app:enable="true">
+                <com.tencent.component.media.image.view.AsyncImageView android:id="@id/myk" android:background="@drawable/e_8" android:focusable="true" android:visibility="visible" android:clickable="true" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="6.0dip" android:src="@drawable/gvs" android:layout_centerHorizontal="true" />
+            </com.qzone.homepage.diy.ShadowViewGroup>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

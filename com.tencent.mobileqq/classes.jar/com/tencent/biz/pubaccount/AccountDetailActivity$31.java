@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount;
 
-import ammh;
+import alhb;
 
 class AccountDetailActivity$31
   implements Runnable
@@ -9,7 +9,7 @@ class AccountDetailActivity$31
   
   public void run()
   {
-    ammh.b(this.this$0, this.this$0.a, 4, this.this$0.d);
+    alhb.b(this.this$0, this.this$0.a, 4, this.this$0.d);
     this.this$0.finish();
   }
 }

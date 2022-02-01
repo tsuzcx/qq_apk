@@ -1,16 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+import android.graphics.Canvas;
+import com.tencent.biz.widgets.TabLayout;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class aaeu
-  extends AnimatorListenerAdapter
+  implements Function1<Canvas, Unit>
 {
-  public aaeu(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
+  public aaeu(TabLayout paramTabLayout) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public Unit a(Canvas paramCanvas)
   {
-    FollowedRecommendBannerView.a(this.a).notifyDataSetChanged();
-    this.a.clearAnimation();
+    TabLayout.a(this.a, paramCanvas);
+    return null;
   }
 }
 

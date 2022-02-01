@@ -1,70 +1,67 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentPgcVideo;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeShareView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class qka
-  extends qle
+  implements AdapterView.OnItemClickListener
 {
-  public qka(Context paramContext, aoof paramaoof, sel paramsel)
-  {
-    super(paramContext, paramaoof, paramsel);
-  }
+  public qka(NativeShareView paramNativeShareView) {}
   
-  public qjh a()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return c(this.jdField_a_of_type_Sel, this.jdField_a_of_type_Aoof).q().l().n().g().j();
-  }
-  
-  public qjh c(sel paramsel, aoof paramaoof)
-  {
-    super.c(paramsel, paramaoof);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.c = true;
-    return this;
-  }
-  
-  public qjh d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeShareView", 2, "OnItemClickListener : position = " + paramInt + ", view = " + paramView + ", id = " + paramLong);
     }
-    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout1.setOrientation(1);
-    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish);
+    paramAdapterView = paramView.getTag();
+    if (paramAdapterView == null) {
+      return;
     }
-    if ((this.jdField_a_of_type_Qjg != null) && ((this.jdField_a_of_type_Qjg instanceof ComponentContentBigImageVideo)))
+    if (NativeShareView.a(this.a) != null) {
+      NativeShareView.a(this.a).run();
+    }
+    int i = ((bara)paramAdapterView).a.action;
+    paramInt = 0;
+    switch (i)
     {
-      LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      localLinearLayout2.setOrientation(1);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.setMargins(agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      localLinearLayout2.setLayoutParams(localLayoutParams);
-      localLinearLayout2.addView((ComponentContentBigImageVideo)this.jdField_a_of_type_Qjg);
-      ((ComponentContentBigImageVideo)this.jdField_a_of_type_Qjg).setOnClickListener(new qkb(this));
-      localLinearLayout1.addView(localLinearLayout2);
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
+    for (;;)
+    {
+      paramAdapterView = new JSONObject();
+      try
+      {
+        paramAdapterView.put("channel_type", paramInt);
+        odq.a(null, "", "0X800A3BE", "0X800A3BE", 0, 0, "", "", "", paramAdapterView.toString(), false);
+        return;
+        paramInt = 6;
+        uil.a(NativeShareView.a(this.a));
+        continue;
+        uil.a((Activity)NativeShareView.a(this.a));
+        paramInt = 1;
+        continue;
+        uil.a((BaseActivity)NativeShareView.a(this.a));
+        paramInt = 2;
+        continue;
+        uil.b((Activity)NativeShareView.a(this.a));
+        paramInt = 3;
+        continue;
+        uil.c((Activity)NativeShareView.a(this.a));
+        paramInt = 4;
+      }
+      catch (JSONException paramView)
+      {
+        for (;;)
+        {
+          QLog.e("NativeShareView", 1, paramView, new Object[0]);
+        }
+      }
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout1);
-    return this;
-  }
-  
-  public qjh g()
-  {
-    this.jdField_a_of_type_Qjg = new ComponentContentPgcVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
   }
 }
 

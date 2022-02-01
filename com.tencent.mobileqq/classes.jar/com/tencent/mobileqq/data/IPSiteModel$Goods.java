@@ -3,12 +3,12 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import arwr;
+import aqqn;
 
 public class IPSiteModel$Goods
   implements Parcelable
 {
-  public static final Parcelable.Creator<Goods> CREATOR = new arwr();
+  public static final Parcelable.Creator<Goods> CREATOR = new aqqn();
   public String cover;
   public String goodsTags;
   public String id;

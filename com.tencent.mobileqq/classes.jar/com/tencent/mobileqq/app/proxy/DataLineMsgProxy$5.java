@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app.proxy;
 
-import apas;
+import anuv;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import fb;
 
 public class DataLineMsgProxy$5
   implements Runnable
 {
-  public DataLineMsgProxy$5(apas paramapas, DataLineMsgRecord paramDataLineMsgRecord, fb paramfb) {}
+  public DataLineMsgProxy$5(anuv paramanuv, DataLineMsgRecord paramDataLineMsgRecord, fb paramfb) {}
   
   public void run()
   {
-    apas.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
+    anuv.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
     this.jdField_a_of_type_Fb.a();
   }
 }

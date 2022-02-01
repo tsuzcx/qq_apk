@@ -1,30 +1,6 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-class vtx
-  extends Handler
+public abstract interface vtx<DATA>
 {
-  vtx(vtw paramvtw, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 4097: 
-      vtw.a(this.a);
-      return;
-    }
-    vtw.b(this.a);
-  }
+  public abstract void a(boolean paramBoolean, DATA paramDATA);
 }
 
 

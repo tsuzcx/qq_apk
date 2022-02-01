@@ -1,25 +1,46 @@
-import android.graphics.Rect;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class aqzi
-  implements Comparator<Rect>
+  implements URLDrawableDownListener
 {
-  aqzi(aqzf paramaqzf) {}
+  aqzi(aqzb paramaqzb, EmoticonInfo paramEmoticonInfo, aqzj paramaqzj) {}
   
-  public int a(Rect paramRect1, Rect paramRect2)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
-    do
-    {
-      return -1;
-      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
-        return 1;
-      }
-    } while (paramRect1.width() > paramRect2.width());
-    if (paramRect1.width() < paramRect2.width()) {
-      return 1;
+    QLog.e("FavEmosmViewPage", 1, "onLoadFailed: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
+    aqzb.a(this.jdField_a_of_type_Aqzb, this.jdField_a_of_type_Aqzj.a, this.jdField_a_of_type_Aqzj);
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    QLog.e("FavEmosmViewPage", 1, "onLoadFailed: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
+    aqzb.a(this.jdField_a_of_type_Aqzb, this.jdField_a_of_type_Aqzj.a, this.jdField_a_of_type_Aqzj);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    QLog.e("FavEmosmViewPage", 1, "onLoadInterrupted: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
+    aqzb.a(this.jdField_a_of_type_Aqzb, this.jdField_a_of_type_Aqzj.a, this.jdField_a_of_type_Aqzj);
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FavEmosmViewPage", 2, "onLoadProgressed: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
     }
-    return 0;
+    aqzb.a(this.jdField_a_of_type_Aqzb, this.jdField_a_of_type_Aqzj.a, this.jdField_a_of_type_Aqzj);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FavEmosmViewPage", 2, "onLoadSuccess: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
+    }
+    aqzb.a(this.jdField_a_of_type_Aqzb, this.jdField_a_of_type_Aqzj.a, this.jdField_a_of_type_Aqzj);
   }
 }
 

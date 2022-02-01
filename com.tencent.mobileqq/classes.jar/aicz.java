@@ -1,84 +1,72 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.os.IBinder;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.QZoneClickReport;
-import java.util.ArrayList;
+import android.support.annotation.Nullable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aicz
-  implements bliz
+public class aicz
 {
-  aicz(aicy paramaicy, blir paramblir) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void OnClick(View paramView, int paramInt)
+  public static aicz a(aicz paramaicz)
   {
-    if (paramView != null)
+    aicz localaicz = new aicz();
+    if (paramaicz != null)
     {
-      paramView = this.jdField_a_of_type_Blir.a(paramInt);
-      if (paramView == null) {
-        return;
-      }
-      if (!TextUtils.isEmpty(paramView))
-      {
-        if (!paramView.equals(aicy.a(this.jdField_a_of_type_Aicy).getResources().getString(2131689887))) {
-          break label195;
-        }
-        paramInt = this.jdField_a_of_type_Aicy.a();
-        if (paramInt != 1) {
-          break label94;
-        }
-        this.jdField_a_of_type_Aicy.r();
-        this.jdField_a_of_type_Aicy.a("Multi_Forward_Contacts", this.jdField_a_of_type_Aicy.jdField_a_of_type_JavaUtilArrayList.size());
-      }
+      localaicz.jdField_a_of_type_Int = paramaicz.jdField_a_of_type_Int;
+      localaicz.jdField_a_of_type_JavaLangString = paramaicz.jdField_a_of_type_JavaLangString;
+      localaicz.jdField_b_of_type_Int = paramaicz.jdField_b_of_type_Int;
+      localaicz.jdField_b_of_type_JavaLangString = paramaicz.jdField_b_of_type_JavaLangString;
+      localaicz.c = paramaicz.c;
     }
-    label195:
-    for (;;)
+    return localaicz;
+  }
+  
+  public static aicz a(JSONObject paramJSONObject)
+  {
+    aicz localaicz = new aicz();
+    if (paramJSONObject != null)
     {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      label94:
-      if ((paramInt == 2) && (!this.jdField_a_of_type_Aicy.jdField_a_of_type_JavaUtilArrayList.isEmpty()) && (this.jdField_a_of_type_Aicy.jdField_a_of_type_Aidz.asBinder().pingBinder()))
-      {
-        paramView = (AIOShortVideoData)((aidw)this.jdField_a_of_type_Aicy.jdField_a_of_type_JavaUtilArrayList.get(0)).a;
-        paramView = this.jdField_a_of_type_Aicy.jdField_a_of_type_Aidz.a(paramView.jdField_f_of_type_Long, paramView.jdField_f_of_type_Int, this.jdField_a_of_type_Aicy.c);
-        auxu.a(aicy.b(this.jdField_a_of_type_Aicy), paramView);
-        continue;
-        if (paramView.equals(aicy.c(this.jdField_a_of_type_Aicy).getResources().getString(2131692963)))
-        {
-          if (LocalMultiProcConfig.getInt4Uin(this.jdField_a_of_type_Aicy.jdField_a_of_type_JavaLangString + "__qzone_pic_permission__" + this.jdField_a_of_type_Aicy.b, -1, Long.valueOf(this.jdField_a_of_type_Aicy.jdField_a_of_type_JavaLangString).longValue()) == 0)
-          {
-            paramView = new bhpc(aicy.d(this.jdField_a_of_type_Aicy), 2131755824);
-            paramView.setContentView(2131559008);
-            paramView.setTitle(aicy.e(this.jdField_a_of_type_Aicy).getString(2131696995));
-            paramView.setMessage(aicy.f(this.jdField_a_of_type_Aicy).getString(2131696993));
-            paramView.setNegativeButton(aicy.g(this.jdField_a_of_type_Aicy).getString(2131696994), new aida(this));
-            paramView.setCanceledOnTouchOutside(false);
-            paramView.setCancelable(false);
-            paramView.show();
-            QZoneClickReport.startReportImediately(this.jdField_a_of_type_Aicy.jdField_a_of_type_JavaLangString, "40", "1");
-          }
-          else if (this.jdField_a_of_type_Aicy.jdField_a_of_type_JavaUtilArrayList.size() > 20)
-          {
-            QQToast.a(aicy.i(this.jdField_a_of_type_Aicy), 2131692409, 0).a();
-          }
-          else
-          {
-            this.jdField_a_of_type_Aicy.s();
-          }
-        }
-        else if (paramView.equals(aicy.j(this.jdField_a_of_type_Aicy).getResources().getString(2131692969))) {
-          if (this.jdField_a_of_type_Aicy.jdField_a_of_type_JavaUtilArrayList.size() > 20) {
-            QQToast.a(aicy.k(this.jdField_a_of_type_Aicy), 2131692409, 0).a();
-          } else {
-            this.jdField_a_of_type_Aicy.u();
-          }
-        }
-      }
+      localaicz.jdField_a_of_type_Int = paramJSONObject.optInt("tab_id", -1);
+      localaicz.jdField_b_of_type_Int = paramJSONObject.optInt("recommend_count", 0);
+      localaicz.jdField_a_of_type_JavaLangString = paramJSONObject.optString("tab_name");
+      localaicz.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon_url_select");
+      localaicz.c = paramJSONObject.optString("icon_url_unselect");
     }
+    return localaicz;
+  }
+  
+  public static JSONObject a(aicz paramaicz)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    if (paramaicz != null) {}
+    try
+    {
+      localJSONObject.put("tab_id", paramaicz.jdField_a_of_type_Int);
+      localJSONObject.put("recommend_count", paramaicz.jdField_b_of_type_Int);
+      localJSONObject.put("tab_name", paramaicz.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("icon_url_select", paramaicz.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("icon_url_unselect", paramaicz.c);
+      return localJSONObject;
+    }
+    catch (JSONException paramaicz) {}
+    return localJSONObject;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((paramObject instanceof aicz)) {
+      return this.jdField_a_of_type_Int == ((aicz)paramObject).jdField_a_of_type_Int;
+    }
+    return super.equals(paramObject);
+  }
+  
+  public String toString()
+  {
+    return "tab_id=" + this.jdField_a_of_type_Int + " recommend_count=" + this.jdField_b_of_type_Int + " tab_name=" + this.jdField_a_of_type_JavaLangString + " icon_url_select=" + this.jdField_b_of_type_JavaLangString + " icon_url_unselect=" + this.c;
   }
 }
 

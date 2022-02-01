@@ -1,20 +1,11 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
+import android.widget.TextView;
 
 public class agcc
-  implements agbv
+  extends aexg
 {
-  public agcc(BirthdayActivatePage paramBirthdayActivatePage) {}
+  public TextView b;
   
-  public void a(int paramInt)
-  {
-    if (paramInt > 0)
-    {
-      this.a.a.setEnabled(true);
-      return;
-    }
-    this.a.a.setEnabled(false);
-  }
+  public agcc(agap paramagap) {}
 }
 
 

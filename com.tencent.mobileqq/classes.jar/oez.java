@@ -1,18 +1,9 @@
 public class oez
-  implements anui
 {
-  public void a(Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      return;
-    }
-    a(paramObject);
-  }
+  public long a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
 }
 
 

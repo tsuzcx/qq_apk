@@ -1,24 +1,16 @@
-import org.xmlpull.v1.XmlSerializer;
+import android.graphics.RectF;
 
-final class aois
-  extends bdqo
+public class aois
 {
-  aois(String paramString)
-  {
-    super(paramString);
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "picture");
-    if (this.ac == null) {}
-    for (String str = "";; str = this.ac)
-    {
-      paramXmlSerializer.attribute(null, "cover", str);
-      paramXmlSerializer.endTag(null, "picture");
-      return;
-    }
-  }
+  public double a;
+  public RectF a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
 }
 
 

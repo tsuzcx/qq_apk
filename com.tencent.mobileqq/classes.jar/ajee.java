@@ -1,15 +1,9 @@
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
 
-class ajee
+public class ajee
 {
-  public int a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  
-  ajee(ajec paramajec) {}
+  public ResourcePluginInfo a;
+  public String a;
 }
 
 

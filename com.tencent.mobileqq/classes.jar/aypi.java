@@ -1,40 +1,42 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.widget.ScrollView;
+import com.tencent.widget.XEditTextEx;
 
-class aypi
-  implements aqxy
+public class aypi
+  implements View.OnTouchListener
 {
-  aypi(ayot paramayot, IphonePickerView paramIphonePickerView, blir paramblir) {}
+  public aypi(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Blir != null) && (this.jdField_a_of_type_Blir.isShowing()))
+    if (StickyNotePublishFragment.a(this.a))
     {
-      ayot.a(this.jdField_a_of_type_Ayot, this.jdField_a_of_type_Ayot.c, false);
-      this.jdField_a_of_type_Blir.dismiss();
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      bjmm.b(StickyNotePublishFragment.a(this.a));
+      return false;
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
+    if (StickyNotePublishFragment.a(this.a) == 0)
     {
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.a(this.a).setVisibility(0);
+      StickyNotePublishFragment.a(this.a).requestFocus();
+      bjmm.a(StickyNotePublishFragment.a(this.a));
+      return false;
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null)
-      {
-        if ((paramInt1 == 0) || (paramInt1 == 1)) {
-          this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-        }
-        this.jdField_a_of_type_Ayot.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1), this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2));
-      }
-      return;
-      this.jdField_a_of_type_Ayot.e = paramInt2;
-      continue;
-      this.jdField_a_of_type_Ayot.f = paramInt2;
-      continue;
-      this.jdField_a_of_type_Ayot.g = paramInt2;
-    }
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a, 0);
+    this.a.a(false);
+    this.a.b(false);
+    this.a.c(true);
+    this.a.c(0, 0);
+    return false;
   }
 }
 

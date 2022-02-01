@@ -1,20 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.polymeric.EventCallback;
 
 class qko
-  implements View.OnTouchListener
+  implements bjxm
 {
-  qko(qkj paramqkj, LinearLayout paramLinearLayout) {}
+  qko(qki paramqki) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a() {}
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    int i = qki.a(this.a).a(qki.a(this.a).b());
+    paramViewHolder = qki.a(this.a).getEventCallback();
+    if (paramViewHolder != null) {
+      paramViewHolder.onPagerChange(i);
     }
-    return false;
+    this.a.a(i);
   }
+  
+  public void b(RecyclerView.ViewHolder paramViewHolder) {}
 }
 
 

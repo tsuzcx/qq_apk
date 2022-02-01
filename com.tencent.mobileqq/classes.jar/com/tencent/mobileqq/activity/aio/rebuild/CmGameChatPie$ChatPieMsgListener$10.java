@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aihy;
-import aiik;
-import anac;
-import anaf;
+import ahek;
+import ahew;
+import aluw;
+import aluz;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
@@ -11,28 +11,28 @@ import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 public class CmGameChatPie$ChatPieMsgListener$10
   implements Runnable
 {
-  public CmGameChatPie$ChatPieMsgListener$10(aiik paramaiik, boolean paramBoolean, aihy paramaihy, int paramInt, long paramLong) {}
+  public CmGameChatPie$ChatPieMsgListener$10(ahew paramahew, boolean paramBoolean, ahek paramahek, int paramInt, long paramLong) {}
   
   public void run()
   {
     if (!this.jdField_a_of_type_Boolean) {
-      if (aihy.a(this.jdField_a_of_type_Aihy) != null) {
-        aihy.a(this.jdField_a_of_type_Aihy).dismiss();
+      if (ahek.a(this.jdField_a_of_type_Ahek) != null) {
+        ahek.a(this.jdField_a_of_type_Ahek).dismiss();
       }
     }
-    while (this.jdField_a_of_type_Aihy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    while (this.jdField_a_of_type_Ahek.app == null) {
       return;
     }
-    CmGameStartChecker.StartCheckParam localStartCheckParam = new CmGameStartChecker.StartCheckParam(this.jdField_a_of_type_Int, true, "message", this.jdField_a_of_type_Long, 1, 0, this.jdField_a_of_type_Aihy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, ApolloGameUtil.a(this.jdField_a_of_type_Aihy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aihy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Aihy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Aihy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, aihy.c(this.jdField_a_of_type_Aihy), null);
-    localStartCheckParam.mTempAIOUin = this.jdField_a_of_type_Aihy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    localStartCheckParam.mTempAIONickName = this.jdField_a_of_type_Aihy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d;
+    CmGameStartChecker.StartCheckParam localStartCheckParam = new CmGameStartChecker.StartCheckParam(this.jdField_a_of_type_Int, true, "message", this.jdField_a_of_type_Long, 1, 0, this.jdField_a_of_type_Ahek.sessionInfo.curType, ApolloGameUtil.a(this.jdField_a_of_type_Ahek.app, this.jdField_a_of_type_Ahek.sessionInfo.curType, this.jdField_a_of_type_Ahek.sessionInfo.curFriendUin), this.jdField_a_of_type_Ahek.sessionInfo.curFriendUin, ahek.c(this.jdField_a_of_type_Ahek), null);
+    localStartCheckParam.mTempAIOUin = this.jdField_a_of_type_Ahek.sessionInfo.curFriendUin;
+    localStartCheckParam.mTempAIONickName = this.jdField_a_of_type_Ahek.sessionInfo.curFriendNick;
     localStartCheckParam.disableMinGame = true;
-    ApolloGameUtil.a(this.jdField_a_of_type_Aihy.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, localStartCheckParam);
-    aihy.T = true;
-    if (aihy.a(this.jdField_a_of_type_Aihy) != null) {
-      aihy.a(this.jdField_a_of_type_Aihy).dismiss();
+    ApolloGameUtil.a(this.jdField_a_of_type_Ahek.mActivity, localStartCheckParam);
+    ahek.c = true;
+    if (ahek.a(this.jdField_a_of_type_Ahek) != null) {
+      ahek.a(this.jdField_a_of_type_Ahek).dismiss();
     }
-    anaf.b(this.jdField_a_of_type_Aihy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aihy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aihy.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    aluz.b(this.jdField_a_of_type_Ahek.app, this.jdField_a_of_type_Ahek.sessionInfo.curFriendUin, this.jdField_a_of_type_Ahek.sessionInfo.curType, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
   }
 }
 

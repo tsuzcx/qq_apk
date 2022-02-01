@@ -1,20 +1,18 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.UploadTask;
+import java.util.List;
 
-class abyf
-  implements amhc
+public class abyf
+  implements abye
 {
-  abyf(abye paramabye) {}
+  private abxo<abyd> a = new abxp();
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  public List<abyd> a()
   {
-    if (abye.a(this.a) != null)
-    {
-      abye.a(this.a).md5 = HexUtil.bytes2HexStr(paramArrayOfByte1);
-      new ShortVideoRealItemBuilder.UploadTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, abye.a(this.a), paramString1, this.a).run();
-    }
+    return this.a.a();
+  }
+  
+  public void a(Class<? extends abyd> paramClass)
+  {
+    this.a.a(paramClass);
   }
 }
 

@@ -1,18 +1,310 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.app.Activity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.playfeedback.PlayFeedbackHelper.3;
+import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class shq
-  extends pmr
 {
-  public shq(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Set paramSet, Map paramMap)
+  private static SparseArray<sht> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private static shu jdField_a_of_type_Shu = new shu();
+  
+  private static HashMap<String, String> a(JSONObject paramJSONObject)
   {
-    super(paramString);
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = paramJSONObject.keys();
+    while (localIterator.hasNext())
+    {
+      String str1 = String.valueOf(localIterator.next());
+      String str2 = String.valueOf(paramJSONObject.opt(str1));
+      if (!TextUtils.isEmpty(str1)) {
+        localHashMap.put(str1, str2);
+      }
+    }
+    return localHashMap;
   }
   
-  public void a(pmk parampmk)
+  public static Map<String, String> a(sdj paramsdj)
   {
-    parampmk.a(this.jdField_a_of_type_JavaUtilSet, this.jdField_a_of_type_JavaUtilMap);
+    HashMap localHashMap = new HashMap();
+    if (paramsdj != null)
+    {
+      localHashMap.put("param_url", paramsdj.b());
+      localHashMap.put("param_bitrate", String.valueOf(paramsdj.a));
+      localHashMap.put("param_duration", String.valueOf(paramsdj.b()));
+      localHashMap.put("param_file_size", String.valueOf(paramsdj.d()));
+      localHashMap.put("param_is265", String.valueOf(paramsdj.b));
+    }
+    return localHashMap;
+  }
+  
+  public static void a(int paramInt)
+  {
+    jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+  }
+  
+  private static void a(Activity paramActivity, int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("callAddress", paramInt);
+      localBundle.putString("param", localJSONObject.toString());
+      tgc.a(paramActivity, null, "https://viola.qq.com/js/RIJVideoFeedback.js?_rij_violaUrl=1&v_tid=15&v_bundleName=RIJVideoFeedback&_rij_violaUrl=1&v_present=2&hideNav=1&v_bid=3811&v_nav_immer=1&statusColor=1&v_present_bar=0&v_present_radius=6&v_present_top=" + (DisplayUtil.px2dip(BaseApplicationImpl.context, DisplayUtil.getWindowScreenHeight(BaseApplicationImpl.context)) - 385) + "&v_present_auto_top=0", localBundle, true);
+      return;
+    }
+    catch (JSONException paramActivity)
+    {
+      QLog.e("PlayFeedbackHelper", 2, "PlayFeedbackHelper start failed", paramActivity);
+    }
+  }
+  
+  public static void a(Activity paramActivity, BaseArticleInfo paramBaseArticleInfo, sdj paramsdj, int paramInt1, int paramInt2)
+  {
+    paramBaseArticleInfo = new shr(paramBaseArticleInfo, paramInt1, paramInt2, a(paramsdj), paramActivity);
+    paramInt1 = paramBaseArticleInfo.hashCode();
+    a(paramBaseArticleInfo);
+    a(paramActivity, paramInt1);
+  }
+  
+  private static void a(Activity paramActivity, HashMap<String, String> paramHashMap)
+  {
+    jdField_a_of_type_Shu.a(paramActivity, true, 0.5F, new shs(paramHashMap));
+  }
+  
+  public static void a(Activity paramActivity, HashMap<String, String> paramHashMap, int paramInt)
+  {
+    paramHashMap.put("agree_capture", String.valueOf(paramInt));
+    if (paramInt != 0) {}
+    for (paramInt = 1; paramInt != 0; paramInt = 0)
+    {
+      a(paramActivity, paramHashMap);
+      return;
+    }
+    b(paramHashMap);
+  }
+  
+  public static void a(Activity paramActivity, JSONObject paramJSONObject)
+  {
+    for (;;)
+    {
+      try
+      {
+        int j = new JSONObject(paramJSONObject.optString("extral")).optInt("callAddress", -1);
+        if (j == -1)
+        {
+          i = 1;
+          if (i != 0)
+          {
+            b(paramActivity, paramJSONObject);
+            return;
+          }
+          a(paramJSONObject, j);
+          return;
+        }
+      }
+      catch (Exception paramActivity)
+      {
+        paramActivity.printStackTrace();
+        return;
+      }
+      int i = 0;
+    }
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("video_scene", paramInt);
+      odq.a(null, "", "0X800AA74", "0X800AA74", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentUin(), paramString, "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("PlayFeedbackHelper", 2, "reportPlayFeedbackBtnExpose error", localJSONException);
+      }
+    }
+  }
+  
+  public static void a(String paramString, int paramInt1, int paramInt2)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("video_scene", paramInt1);
+      localJSONObject.put("feedback_entry", paramInt2);
+      odq.a(null, "", "0X800AA75", "0X800AA75", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentUin(), paramString, "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("PlayFeedbackHelper", 2, "reportPlayFeedbackBtnExpose error", localJSONException);
+      }
+    }
+  }
+  
+  public static void a(Map<String, String> paramMap)
+  {
+    paramMap.put("param_uin", ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentUin());
+    paramMap.put("param_platform", String.valueOf(1));
+    paramMap.put("param_sdk_version", TVK_SDKMgr.SDK_Ver);
+    paramMap.put("param_version", "8.4.8.4810");
+    paramMap.put("param_subversion", "8.4.8");
+    paramMap.put("param_videoCodecEnable", String.valueOf(rse.a.c()));
+    paramMap.put("param_isSuperPlayer", String.valueOf(shg.a.a()));
+    paramMap.put("param_app_package", "com.tencent.mobileqq");
+  }
+  
+  public static void a(Map<String, String> paramMap, int paramInt1, int paramInt2, JSONObject paramJSONObject)
+  {
+    JSONArray localJSONArray = paramJSONObject.optJSONArray("feedback_type_list");
+    String str = "";
+    if (localJSONArray != null) {
+      str = localJSONArray.toString();
+    }
+    paramJSONObject = paramJSONObject.optString("feedback_text");
+    paramMap.put("param_video_scene", String.valueOf(paramInt1));
+    paramMap.put("param_feedback_entry", String.valueOf(paramInt2));
+    paramMap.put("param_feedback_type_list", str);
+    paramMap.put("param_feedbackText", paramJSONObject);
+  }
+  
+  private static void a(JSONObject paramJSONObject, int paramInt)
+  {
+    sht localsht = (sht)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localsht != null) {
+      localsht.a(paramJSONObject);
+    }
+    a(paramInt);
+  }
+  
+  public static void a(sht paramsht)
+  {
+    jdField_a_of_type_AndroidUtilSparseArray.put(paramsht.hashCode(), paramsht);
+  }
+  
+  private static void b(Activity paramActivity, JSONObject paramJSONObject)
+  {
+    if (paramJSONObject.optInt("close_type") > 0) {}
+    for (int i = 1; i == 0; i = 0) {
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    JSONObject localJSONObject = paramJSONObject.optJSONObject("extral");
+    a(localHashMap);
+    if (localJSONObject != null) {
+      localHashMap.putAll(a(localJSONObject));
+    }
+    if (paramActivity != null)
+    {
+      a(paramActivity, localHashMap, paramJSONObject.optInt("agree_capture"));
+      return;
+    }
+    QLog.w("PlayFeedbackHelper", 1, "feedbackOnViolaScene but shareEntryActivity is null, don't captureView");
+    b(localHashMap);
+  }
+  
+  private static void b(Activity paramActivity, sht paramsht, JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PlayFeedbackHelper", 2, "feedbackCallback jsonObject:" + paramJSONObject);
+    }
+    HashMap localHashMap = paramsht.jdField_a_of_type_JavaUtilHashMap;
+    a(localHashMap);
+    a(localHashMap, paramsht.jdField_a_of_type_Int, paramsht.b, paramJSONObject);
+    localHashMap.put("param_busiType", String.valueOf(paramsht.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.busiType));
+    localHashMap.put("param_rowkey", String.valueOf(paramsht.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getInnerUniqueID()));
+    localHashMap.put("param_title", paramsht.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mTitle);
+    localHashMap.put("param_vid", paramsht.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getVideoVid());
+    if (paramJSONObject.optInt("close_type") > 0) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      a(paramActivity, localHashMap, paramJSONObject.optInt("agree_capture"));
+      b(paramsht.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getInnerUniqueID(), paramsht.jdField_a_of_type_Int, paramsht.b);
+      return;
+    }
+    c(paramsht.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getInnerUniqueID(), paramsht.jdField_a_of_type_Int, paramsht.b);
+  }
+  
+  public static void b(String paramString, int paramInt)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("video_scene", paramInt);
+      odq.a(null, "", "0X800AA76", "0X800AA76", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentUin(), paramString, "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("PlayFeedbackHelper", 2, "reportPlayFeedbackBtnExpose error", localJSONException);
+      }
+    }
+  }
+  
+  public static void b(String paramString, int paramInt1, int paramInt2)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("video_scene", paramInt1);
+      localJSONObject.put("feedback_entry", paramInt2);
+      odq.a(null, "", "0X800AA77", "0X800AA77", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentUin(), paramString, "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("PlayFeedbackHelper", 2, "reportPlayFeedbackBtnExpose error", localJSONException);
+      }
+    }
+  }
+  
+  private static void b(HashMap<String, String> paramHashMap)
+  {
+    ThreadManager.post(new PlayFeedbackHelper.3(paramHashMap), 5, null, true);
+  }
+  
+  public static void c(String paramString, int paramInt1, int paramInt2)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("video_scene", paramInt1);
+      localJSONObject.put("feedback_entry", paramInt2);
+      odq.a(null, "", "0X800AA78", "0X800AA78", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentUin(), paramString, "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("PlayFeedbackHelper", 2, "reportPlayFeedbackBtnExpose error", localJSONException);
+      }
+    }
   }
 }
 

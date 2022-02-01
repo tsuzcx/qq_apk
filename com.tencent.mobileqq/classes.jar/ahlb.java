@@ -1,17 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahlb
-  implements bizc
+class ahlb
+  implements View.OnClickListener
 {
-  public ahlb(LightVideoItemBuilder paramLightVideoItemBuilder, ahld paramahld) {}
+  ahlb(ahkz paramahkz) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ahld.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahld.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Ahld.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    int i;
+    switch (this.a.sessionInfo.curType)
+    {
+    default: 
+      i = 0;
+    }
+    for (;;)
+    {
+      bcef.b(this.a.app, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(i), "", "", "");
+      afcm.a(this.a.app, this.a.mActivity, this.a.sessionInfo, true, null, this.a);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
     }
   }
 }

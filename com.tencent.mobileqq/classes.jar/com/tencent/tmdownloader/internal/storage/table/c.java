@@ -1,14 +1,19 @@
 package com.tencent.tmdownloader.internal.storage.table;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.tencent.tmassistant.common.a.d;
 import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmdownloader.internal.downloadservice.a.b;
 import com.tencent.tmdownloader.internal.storage.a.a;
+import java.util.ArrayList;
 
 public class c
   implements com.tencent.tmassistant.common.a.c
 {
+  private static final Object a = new Object();
+  
   private static int a(com.tencent.tmdownloader.internal.downloadservice.c paramc, SQLiteDatabase paramSQLiteDatabase)
   {
     int i;
@@ -37,124 +42,68 @@ public class c
     return -2;
   }
   
-  /* Error */
-  public static java.util.ArrayList<com.tencent.tmdownloader.internal.downloadservice.c> a()
+  public static ArrayList<com.tencent.tmdownloader.internal.downloadservice.c> a()
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aconst_null
-    //   3: astore_1
-    //   4: ldc 2
-    //   6: monitorenter
-    //   7: new 55	java/util/ArrayList
-    //   10: dup
-    //   11: invokespecial 56	java/util/ArrayList:<init>	()V
-    //   14: astore 4
-    //   16: invokestatic 61	com/tencent/tmdownloader/internal/storage/a/a:c	()Lcom/tencent/tmassistant/common/a/d;
-    //   19: invokevirtual 67	com/tencent/tmassistant/common/a/d:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   22: astore_3
-    //   23: aload_3
-    //   24: ifnull +67 -> 91
-    //   27: aload_3
-    //   28: ldc 69
-    //   30: aconst_null
-    //   31: invokevirtual 73	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   34: astore_3
-    //   35: aload_3
-    //   36: ifnull +45 -> 81
-    //   39: aload_3
-    //   40: astore_1
-    //   41: aload_3
-    //   42: astore_2
-    //   43: aload_3
-    //   44: invokeinterface 79 1 0
-    //   49: ifeq +32 -> 81
-    //   52: aload_3
-    //   53: astore_1
-    //   54: aload_3
-    //   55: astore_2
-    //   56: aload 4
-    //   58: aload_3
-    //   59: invokestatic 82	com/tencent/tmdownloader/internal/downloadservice/c:a	(Landroid/database/Cursor;)Lcom/tencent/tmdownloader/internal/downloadservice/c;
-    //   62: invokevirtual 86	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   65: pop
-    //   66: aload_3
-    //   67: astore_1
-    //   68: aload_3
-    //   69: astore_2
-    //   70: aload_3
-    //   71: invokeinterface 89 1 0
-    //   76: istore_0
-    //   77: iload_0
-    //   78: ifne -26 -> 52
-    //   81: aload_3
-    //   82: ifnull +9 -> 91
-    //   85: aload_3
-    //   86: invokeinterface 92 1 0
-    //   91: ldc 2
-    //   93: monitorexit
-    //   94: aload 4
-    //   96: areturn
-    //   97: astore_3
-    //   98: aload_1
-    //   99: astore_2
-    //   100: ldc 41
-    //   102: ldc 43
-    //   104: aload_3
-    //   105: invokestatic 49	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   108: aload_1
-    //   109: astore_2
-    //   110: aload_3
-    //   111: invokevirtual 52	java/lang/Exception:printStackTrace	()V
-    //   114: aload_1
-    //   115: ifnull -24 -> 91
-    //   118: aload_1
-    //   119: invokeinterface 92 1 0
-    //   124: goto -33 -> 91
-    //   127: astore_1
-    //   128: ldc 2
-    //   130: monitorexit
-    //   131: aload_1
-    //   132: athrow
-    //   133: astore_1
-    //   134: aload_2
-    //   135: ifnull +9 -> 144
-    //   138: aload_2
-    //   139: invokeinterface 92 1 0
-    //   144: aload_1
-    //   145: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   76	2	0	bool	boolean
-    //   3	116	1	localObject1	Object
-    //   127	5	1	localObject2	Object
-    //   133	12	1	localObject3	Object
-    //   1	138	2	localObject4	Object
-    //   22	64	3	localObject5	Object
-    //   97	14	3	localException	Exception
-    //   14	81	4	localArrayList	java.util.ArrayList
-    // Exception table:
-    //   from	to	target	type
-    //   27	35	97	java/lang/Exception
-    //   43	52	97	java/lang/Exception
-    //   56	66	97	java/lang/Exception
-    //   70	77	97	java/lang/Exception
-    //   7	23	127	finally
-    //   85	91	127	finally
-    //   118	124	127	finally
-    //   138	144	127	finally
-    //   144	146	127	finally
-    //   27	35	133	finally
-    //   43	52	133	finally
-    //   56	66	133	finally
-    //   70	77	133	finally
-    //   100	108	133	finally
-    //   110	114	133	finally
+    Object localObject4 = null;
+    Object localObject1 = null;
+    ArrayList localArrayList;
+    Object localObject5;
+    synchronized (a)
+    {
+      localArrayList = new ArrayList();
+      localObject5 = a.c().getReadableDatabase();
+      if (localObject5 == null) {}
+    }
+    try
+    {
+      localObject5 = ((SQLiteDatabase)localObject5).rawQuery("select * from downloadInfo", null);
+      if (localObject5 != null)
+      {
+        localObject1 = localObject5;
+        localObject4 = localObject5;
+        if (((Cursor)localObject5).moveToFirst())
+        {
+          boolean bool;
+          do
+          {
+            localObject1 = localObject5;
+            localObject4 = localObject5;
+            localArrayList.add(com.tencent.tmdownloader.internal.downloadservice.c.a((Cursor)localObject5));
+            localObject1 = localObject5;
+            localObject4 = localObject5;
+            bool = ((Cursor)localObject5).moveToNext();
+          } while (bool);
+        }
+      }
+      if (localObject5 != null) {
+        ((Cursor)localObject5).close();
+      }
+      return localArrayList;
+    }
+    catch (Exception localException)
+    {
+      localObject4 = localObject1;
+      ab.c("DownloadInfoTable", "exception: ", localException);
+      localObject4 = localObject1;
+      localException.printStackTrace();
+      if (localObject1 != null) {
+        localObject1.close();
+      }
+      return localArrayList;
+      localObject2 = finally;
+      throw localObject2;
+    }
+    finally
+    {
+      if (localObject4 != null) {
+        localObject4.close();
+      }
+    }
   }
   
   public static void a(com.tencent.tmdownloader.internal.downloadservice.c paramc)
   {
+    localObject = a;
     if (paramc != null) {}
     try
     {
@@ -196,412 +145,306 @@ public class c
   }
   
   /* Error */
-  public static void a(java.util.ArrayList<com.tencent.tmdownloader.internal.downloadservice.c> paramArrayList)
+  public static void a(ArrayList<com.tencent.tmdownloader.internal.downloadservice.c> paramArrayList)
   {
     // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_0
-    //   4: ifnull +92 -> 96
-    //   7: invokestatic 61	com/tencent/tmdownloader/internal/storage/a/a:c	()Lcom/tencent/tmassistant/common/a/d;
-    //   10: invokevirtual 98	com/tencent/tmassistant/common/a/d:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   13: astore_1
-    //   14: aload_1
-    //   15: ifnull +81 -> 96
-    //   18: aload_1
-    //   19: invokevirtual 117	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
-    //   22: aload_0
-    //   23: invokevirtual 121	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   26: astore_0
-    //   27: aload_0
-    //   28: invokeinterface 126 1 0
-    //   33: ifeq +67 -> 100
-    //   36: aload_0
-    //   37: invokeinterface 130 1 0
-    //   42: checkcast 20	com/tencent/tmdownloader/internal/downloadservice/c
-    //   45: astore_2
-    //   46: aload_2
-    //   47: aload_1
-    //   48: invokestatic 100	com/tencent/tmdownloader/internal/storage/table/c:a	(Lcom/tencent/tmdownloader/internal/downloadservice/c;Landroid/database/sqlite/SQLiteDatabase;)I
-    //   51: ifgt -24 -> 27
-    //   54: new 17	android/content/ContentValues
-    //   57: dup
-    //   58: invokespecial 18	android/content/ContentValues:<init>	()V
-    //   61: astore_3
-    //   62: aload_3
-    //   63: aload_2
-    //   64: invokestatic 23	com/tencent/tmdownloader/internal/downloadservice/c:a	(Landroid/content/ContentValues;Lcom/tencent/tmdownloader/internal/downloadservice/c;)V
-    //   67: aload_1
-    //   68: ldc 25
-    //   70: aconst_null
-    //   71: aload_3
-    //   72: invokevirtual 104	android/database/sqlite/SQLiteDatabase:insert	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
-    //   75: pop2
-    //   76: goto -49 -> 27
-    //   79: astore_0
-    //   80: ldc 41
-    //   82: ldc 43
-    //   84: aload_0
-    //   85: invokestatic 49	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   88: aload_0
-    //   89: invokevirtual 52	java/lang/Exception:printStackTrace	()V
-    //   92: aload_1
-    //   93: invokevirtual 133	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   96: ldc 2
-    //   98: monitorexit
-    //   99: return
-    //   100: aload_1
-    //   101: invokevirtual 136	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
-    //   104: aload_1
-    //   105: invokevirtual 133	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   108: goto -12 -> 96
-    //   111: astore_0
-    //   112: aload_0
-    //   113: invokevirtual 52	java/lang/Exception:printStackTrace	()V
-    //   116: goto -20 -> 96
-    //   119: astore_0
-    //   120: ldc 2
-    //   122: monitorexit
-    //   123: aload_0
-    //   124: athrow
-    //   125: astore_0
-    //   126: aload_1
-    //   127: invokevirtual 133	android/database/sqlite/SQLiteDatabase:endTransaction	()V
-    //   130: aload_0
-    //   131: athrow
+    //   0: getstatic 15	com/tencent/tmdownloader/internal/storage/table/c:a	Ljava/lang/Object;
+    //   3: astore_1
+    //   4: aload_1
+    //   5: monitorenter
+    //   6: aload_0
+    //   7: ifnull +95 -> 102
+    //   10: invokestatic 65	com/tencent/tmdownloader/internal/storage/a/a:c	()Lcom/tencent/tmassistant/common/a/d;
+    //   13: invokevirtual 102	com/tencent/tmassistant/common/a/d:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   16: astore_2
+    //   17: aload_2
+    //   18: ifnull +84 -> 102
+    //   21: aload_2
+    //   22: invokevirtual 121	android/database/sqlite/SQLiteDatabase:beginTransaction	()V
+    //   25: aload_0
+    //   26: invokevirtual 125	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   29: astore_0
+    //   30: aload_0
+    //   31: invokeinterface 130 1 0
+    //   36: ifeq +69 -> 105
+    //   39: aload_0
+    //   40: invokeinterface 134 1 0
+    //   45: checkcast 24	com/tencent/tmdownloader/internal/downloadservice/c
+    //   48: astore_3
+    //   49: aload_3
+    //   50: aload_2
+    //   51: invokestatic 104	com/tencent/tmdownloader/internal/storage/table/c:a	(Lcom/tencent/tmdownloader/internal/downloadservice/c;Landroid/database/sqlite/SQLiteDatabase;)I
+    //   54: ifgt -24 -> 30
+    //   57: new 21	android/content/ContentValues
+    //   60: dup
+    //   61: invokespecial 22	android/content/ContentValues:<init>	()V
+    //   64: astore 4
+    //   66: aload 4
+    //   68: aload_3
+    //   69: invokestatic 27	com/tencent/tmdownloader/internal/downloadservice/c:a	(Landroid/content/ContentValues;Lcom/tencent/tmdownloader/internal/downloadservice/c;)V
+    //   72: aload_2
+    //   73: ldc 29
+    //   75: aconst_null
+    //   76: aload 4
+    //   78: invokevirtual 108	android/database/sqlite/SQLiteDatabase:insert	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    //   81: pop2
+    //   82: goto -52 -> 30
+    //   85: astore_0
+    //   86: ldc 45
+    //   88: ldc 47
+    //   90: aload_0
+    //   91: invokestatic 53	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   94: aload_0
+    //   95: invokevirtual 56	java/lang/Exception:printStackTrace	()V
+    //   98: aload_2
+    //   99: invokevirtual 137	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   102: aload_1
+    //   103: monitorexit
+    //   104: return
+    //   105: aload_2
+    //   106: invokevirtual 140	android/database/sqlite/SQLiteDatabase:setTransactionSuccessful	()V
+    //   109: aload_2
+    //   110: invokevirtual 137	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   113: goto -11 -> 102
+    //   116: astore_0
+    //   117: aload_0
+    //   118: invokevirtual 56	java/lang/Exception:printStackTrace	()V
+    //   121: goto -19 -> 102
+    //   124: astore_0
+    //   125: aload_1
+    //   126: monitorexit
+    //   127: aload_0
+    //   128: athrow
+    //   129: astore_0
+    //   130: aload_2
+    //   131: invokevirtual 137	android/database/sqlite/SQLiteDatabase:endTransaction	()V
+    //   134: aload_0
+    //   135: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	132	0	paramArrayList	java.util.ArrayList<com.tencent.tmdownloader.internal.downloadservice.c>
-    //   13	114	1	localSQLiteDatabase	SQLiteDatabase
-    //   45	19	2	localc	com.tencent.tmdownloader.internal.downloadservice.c
-    //   61	11	3	localContentValues	ContentValues
+    //   0	136	0	paramArrayList	ArrayList<com.tencent.tmdownloader.internal.downloadservice.c>
+    //   3	123	1	localObject	Object
+    //   16	115	2	localSQLiteDatabase	SQLiteDatabase
+    //   48	21	3	localc	com.tencent.tmdownloader.internal.downloadservice.c
+    //   64	13	4	localContentValues	ContentValues
     // Exception table:
     //   from	to	target	type
-    //   18	27	79	java/lang/Exception
-    //   27	76	79	java/lang/Exception
-    //   100	104	79	java/lang/Exception
-    //   7	14	111	java/lang/Exception
-    //   92	96	111	java/lang/Exception
-    //   104	108	111	java/lang/Exception
-    //   126	132	111	java/lang/Exception
-    //   7	14	119	finally
-    //   92	96	119	finally
-    //   104	108	119	finally
-    //   112	116	119	finally
-    //   126	132	119	finally
-    //   18	27	125	finally
-    //   27	76	125	finally
-    //   80	92	125	finally
-    //   100	104	125	finally
+    //   21	30	85	java/lang/Exception
+    //   30	82	85	java/lang/Exception
+    //   105	109	85	java/lang/Exception
+    //   10	17	116	java/lang/Exception
+    //   98	102	116	java/lang/Exception
+    //   109	113	116	java/lang/Exception
+    //   130	136	116	java/lang/Exception
+    //   10	17	124	finally
+    //   98	102	124	finally
+    //   102	104	124	finally
+    //   109	113	124	finally
+    //   117	121	124	finally
+    //   125	127	124	finally
+    //   130	136	124	finally
+    //   21	30	129	finally
+    //   30	82	129	finally
+    //   86	98	129	finally
+    //   105	109	129	finally
   }
   
   /* Error */
   public static com.tencent.tmdownloader.internal.downloadservice.c b(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: ldc 2
-    //   4: monitorenter
-    //   5: aload_3
-    //   6: astore_1
-    //   7: aload_0
-    //   8: ifnull +76 -> 84
-    //   11: aload_3
-    //   12: astore_1
-    //   13: aload_0
-    //   14: invokevirtual 109	java/lang/String:length	()I
-    //   17: ifle +67 -> 84
-    //   20: invokestatic 61	com/tencent/tmdownloader/internal/storage/a/a:c	()Lcom/tencent/tmassistant/common/a/d;
-    //   23: invokevirtual 67	com/tencent/tmassistant/common/a/d:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   26: astore_2
-    //   27: aload_3
-    //   28: astore_1
-    //   29: aload_2
-    //   30: ifnull +54 -> 84
-    //   33: aload_2
-    //   34: ldc 140
-    //   36: iconst_1
-    //   37: anewarray 29	java/lang/String
-    //   40: dup
-    //   41: iconst_0
-    //   42: aload_0
-    //   43: aastore
-    //   44: invokevirtual 73	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   47: astore_0
-    //   48: aload_0
-    //   49: ifnull +40 -> 89
-    //   52: aload_0
-    //   53: astore_1
-    //   54: aload_0
-    //   55: invokeinterface 79 1 0
-    //   60: ifeq +29 -> 89
-    //   63: aload_0
-    //   64: astore_1
-    //   65: aload_0
-    //   66: invokestatic 82	com/tencent/tmdownloader/internal/downloadservice/c:a	(Landroid/database/Cursor;)Lcom/tencent/tmdownloader/internal/downloadservice/c;
-    //   69: astore_2
-    //   70: aload_2
-    //   71: astore_1
-    //   72: aload_0
-    //   73: ifnull +11 -> 84
-    //   76: aload_0
-    //   77: invokeinterface 92 1 0
-    //   82: aload_2
-    //   83: astore_1
-    //   84: ldc 2
-    //   86: monitorexit
-    //   87: aload_1
-    //   88: areturn
+    //   0: getstatic 15	com/tencent/tmdownloader/internal/storage/table/c:a	Ljava/lang/Object;
+    //   3: astore_3
+    //   4: aload_3
+    //   5: monitorenter
+    //   6: aload_0
+    //   7: ifnull +82 -> 89
+    //   10: aload_0
+    //   11: invokevirtual 113	java/lang/String:length	()I
+    //   14: ifle +75 -> 89
+    //   17: invokestatic 65	com/tencent/tmdownloader/internal/storage/a/a:c	()Lcom/tencent/tmassistant/common/a/d;
+    //   20: invokevirtual 71	com/tencent/tmassistant/common/a/d:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   23: astore_1
+    //   24: aload_1
+    //   25: ifnull +64 -> 89
+    //   28: aload_1
+    //   29: ldc 144
+    //   31: iconst_1
+    //   32: anewarray 33	java/lang/String
+    //   35: dup
+    //   36: iconst_0
+    //   37: aload_0
+    //   38: aastore
+    //   39: invokevirtual 77	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   42: astore_1
+    //   43: aload_1
+    //   44: ifnull +35 -> 79
+    //   47: aload_1
+    //   48: astore_0
+    //   49: aload_1
+    //   50: invokeinterface 83 1 0
+    //   55: ifeq +24 -> 79
+    //   58: aload_1
+    //   59: astore_0
+    //   60: aload_1
+    //   61: invokestatic 86	com/tencent/tmdownloader/internal/downloadservice/c:a	(Landroid/database/Cursor;)Lcom/tencent/tmdownloader/internal/downloadservice/c;
+    //   64: astore_2
+    //   65: aload_1
+    //   66: ifnull +9 -> 75
+    //   69: aload_1
+    //   70: invokeinterface 96 1 0
+    //   75: aload_3
+    //   76: monitorexit
+    //   77: aload_2
+    //   78: areturn
+    //   79: aload_1
+    //   80: ifnull +9 -> 89
+    //   83: aload_1
+    //   84: invokeinterface 96 1 0
     //   89: aload_3
-    //   90: astore_1
-    //   91: aload_0
-    //   92: ifnull -8 -> 84
-    //   95: aload_0
-    //   96: invokeinterface 92 1 0
-    //   101: aload_3
-    //   102: astore_1
-    //   103: goto -19 -> 84
-    //   106: astore_0
-    //   107: ldc 2
-    //   109: monitorexit
-    //   110: aload_0
-    //   111: athrow
-    //   112: astore_2
-    //   113: aconst_null
-    //   114: astore_0
-    //   115: aload_0
-    //   116: astore_1
-    //   117: ldc 41
-    //   119: ldc 43
-    //   121: aload_2
-    //   122: invokestatic 49	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   125: aload_0
-    //   126: astore_1
-    //   127: aload_2
-    //   128: invokevirtual 52	java/lang/Exception:printStackTrace	()V
-    //   131: aload_3
-    //   132: astore_1
-    //   133: aload_0
-    //   134: ifnull -50 -> 84
-    //   137: aload_0
-    //   138: invokeinterface 92 1 0
-    //   143: aload_3
-    //   144: astore_1
-    //   145: goto -61 -> 84
-    //   148: aload_1
-    //   149: ifnull +9 -> 158
-    //   152: aload_1
-    //   153: invokeinterface 92 1 0
-    //   158: aload_0
-    //   159: athrow
-    //   160: astore_0
-    //   161: goto -13 -> 148
-    //   164: astore_2
-    //   165: goto -50 -> 115
-    //   168: astore_0
-    //   169: aconst_null
-    //   170: astore_1
-    //   171: goto -23 -> 148
+    //   90: monitorexit
+    //   91: aconst_null
+    //   92: areturn
+    //   93: astore_0
+    //   94: aload_3
+    //   95: monitorexit
+    //   96: aload_0
+    //   97: athrow
+    //   98: astore_2
+    //   99: aconst_null
+    //   100: astore_1
+    //   101: aload_1
+    //   102: astore_0
+    //   103: ldc 45
+    //   105: ldc 47
+    //   107: aload_2
+    //   108: invokestatic 53	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   111: aload_1
+    //   112: astore_0
+    //   113: aload_2
+    //   114: invokevirtual 56	java/lang/Exception:printStackTrace	()V
+    //   117: aload_1
+    //   118: ifnull -29 -> 89
+    //   121: aload_1
+    //   122: invokeinterface 96 1 0
+    //   127: goto -38 -> 89
+    //   130: aload_0
+    //   131: ifnull +9 -> 140
+    //   134: aload_0
+    //   135: invokeinterface 96 1 0
+    //   140: aload_1
+    //   141: athrow
+    //   142: astore_1
+    //   143: goto -13 -> 130
+    //   146: astore_2
+    //   147: goto -46 -> 101
+    //   150: astore_1
+    //   151: aconst_null
+    //   152: astore_0
+    //   153: goto -23 -> 130
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	174	0	paramString	String
-    //   6	165	1	localObject1	Object
-    //   26	57	2	localObject2	Object
-    //   112	16	2	localException1	Exception
-    //   164	1	2	localException2	Exception
-    //   1	143	3	localObject3	Object
+    //   0	156	0	paramString	String
+    //   23	118	1	localObject1	Object
+    //   142	1	1	localObject2	Object
+    //   150	1	1	localObject3	Object
+    //   64	14	2	localc	com.tencent.tmdownloader.internal.downloadservice.c
+    //   98	16	2	localException1	Exception
+    //   146	1	2	localException2	Exception
+    //   3	92	3	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   13	27	106	finally
-    //   76	82	106	finally
-    //   95	101	106	finally
-    //   137	143	106	finally
-    //   152	158	106	finally
-    //   158	160	106	finally
-    //   33	48	112	java/lang/Exception
-    //   54	63	160	finally
-    //   65	70	160	finally
-    //   117	125	160	finally
-    //   127	131	160	finally
-    //   54	63	164	java/lang/Exception
-    //   65	70	164	java/lang/Exception
-    //   33	48	168	finally
+    //   10	24	93	finally
+    //   69	75	93	finally
+    //   75	77	93	finally
+    //   83	89	93	finally
+    //   89	91	93	finally
+    //   94	96	93	finally
+    //   121	127	93	finally
+    //   134	140	93	finally
+    //   140	142	93	finally
+    //   28	43	98	java/lang/Exception
+    //   49	58	142	finally
+    //   60	65	142	finally
+    //   103	111	142	finally
+    //   113	117	142	finally
+    //   49	58	146	java/lang/Exception
+    //   60	65	146	java/lang/Exception
+    //   28	43	150	finally
   }
   
-  /* Error */
-  public static java.util.ArrayList<com.tencent.tmdownloader.internal.downloadservice.a.b> b()
+  public static ArrayList<b> b()
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aconst_null
-    //   3: astore_2
-    //   4: ldc 2
-    //   6: monitorenter
-    //   7: new 55	java/util/ArrayList
-    //   10: dup
-    //   11: invokespecial 56	java/util/ArrayList:<init>	()V
-    //   14: astore 5
-    //   16: invokestatic 61	com/tencent/tmdownloader/internal/storage/a/a:c	()Lcom/tencent/tmassistant/common/a/d;
-    //   19: invokevirtual 67	com/tencent/tmassistant/common/a/d:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   22: astore 4
-    //   24: aload 4
-    //   26: ifnull +180 -> 206
-    //   29: aload 4
-    //   31: ldc 142
-    //   33: aconst_null
-    //   34: invokevirtual 73	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   37: astore 4
-    //   39: aload 4
-    //   41: ifnull +153 -> 194
-    //   44: aload 4
-    //   46: astore_2
-    //   47: aload 4
-    //   49: astore_3
-    //   50: aload 4
-    //   52: invokeinterface 79 1 0
-    //   57: ifeq +137 -> 194
-    //   60: aload 4
-    //   62: astore_2
-    //   63: aload 4
-    //   65: astore_3
-    //   66: aload 4
-    //   68: aload 4
-    //   70: ldc 144
-    //   72: invokeinterface 148 2 0
-    //   77: invokeinterface 152 2 0
-    //   82: astore 6
-    //   84: aload 4
-    //   86: astore_2
-    //   87: aload 4
-    //   89: astore_3
-    //   90: aload 4
-    //   92: aload 4
-    //   94: ldc 154
-    //   96: invokeinterface 148 2 0
-    //   101: invokeinterface 152 2 0
-    //   106: astore 7
-    //   108: aload 4
-    //   110: astore_2
-    //   111: aload 4
-    //   113: astore_3
-    //   114: aload 4
-    //   116: aload 4
-    //   118: ldc 156
-    //   120: invokeinterface 148 2 0
-    //   125: invokeinterface 160 2 0
-    //   130: istore_0
-    //   131: aload 4
-    //   133: astore_2
-    //   134: aload 4
-    //   136: astore_3
-    //   137: new 162	com/tencent/tmdownloader/internal/downloadservice/a/b
-    //   140: dup
-    //   141: aload 6
-    //   143: aload 7
-    //   145: invokespecial 165	com/tencent/tmdownloader/internal/downloadservice/a/b:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   148: astore 6
-    //   150: aload 4
-    //   152: astore_2
-    //   153: aload 4
-    //   155: astore_3
-    //   156: aload 6
-    //   158: iload_0
-    //   159: putfield 168	com/tencent/tmdownloader/internal/downloadservice/a/b:c	I
-    //   162: aload 4
-    //   164: astore_2
-    //   165: aload 4
-    //   167: astore_3
-    //   168: aload 5
-    //   170: aload 6
-    //   172: invokevirtual 86	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   175: pop
-    //   176: aload 4
-    //   178: astore_2
-    //   179: aload 4
-    //   181: astore_3
-    //   182: aload 4
-    //   184: invokeinterface 89 1 0
-    //   189: istore_1
-    //   190: iload_1
-    //   191: ifne -131 -> 60
-    //   194: aload 4
-    //   196: ifnull +10 -> 206
-    //   199: aload 4
-    //   201: invokeinterface 92 1 0
-    //   206: ldc 2
-    //   208: monitorexit
-    //   209: aload 5
-    //   211: areturn
-    //   212: astore 4
-    //   214: aload_2
-    //   215: astore_3
-    //   216: ldc 41
-    //   218: ldc 43
-    //   220: aload 4
-    //   222: invokestatic 49	com/tencent/tmassistantbase/util/ab:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   225: aload_2
-    //   226: astore_3
-    //   227: aload 4
-    //   229: invokevirtual 52	java/lang/Exception:printStackTrace	()V
-    //   232: aload_2
-    //   233: ifnull -27 -> 206
-    //   236: aload_2
-    //   237: invokeinterface 92 1 0
-    //   242: goto -36 -> 206
-    //   245: astore_2
-    //   246: ldc 2
-    //   248: monitorexit
-    //   249: aload_2
-    //   250: athrow
-    //   251: astore_2
-    //   252: aload_3
-    //   253: ifnull +9 -> 262
-    //   256: aload_3
-    //   257: invokeinterface 92 1 0
-    //   262: aload_2
-    //   263: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   130	29	0	i	int
-    //   189	2	1	bool	boolean
-    //   3	234	2	localObject1	Object
-    //   245	5	2	localObject2	Object
-    //   251	12	2	localObject3	Object
-    //   1	256	3	localObject4	Object
-    //   22	178	4	localObject5	Object
-    //   212	16	4	localException	Exception
-    //   14	196	5	localArrayList	java.util.ArrayList
-    //   82	89	6	localObject6	Object
-    //   106	38	7	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   29	39	212	java/lang/Exception
-    //   50	60	212	java/lang/Exception
-    //   66	84	212	java/lang/Exception
-    //   90	108	212	java/lang/Exception
-    //   114	131	212	java/lang/Exception
-    //   137	150	212	java/lang/Exception
-    //   156	162	212	java/lang/Exception
-    //   168	176	212	java/lang/Exception
-    //   182	190	212	java/lang/Exception
-    //   7	24	245	finally
-    //   199	206	245	finally
-    //   236	242	245	finally
-    //   256	262	245	finally
-    //   262	264	245	finally
-    //   29	39	251	finally
-    //   50	60	251	finally
-    //   66	84	251	finally
-    //   90	108	251	finally
-    //   114	131	251	finally
-    //   137	150	251	finally
-    //   156	162	251	finally
-    //   168	176	251	finally
-    //   182	190	251	finally
-    //   216	225	251	finally
-    //   227	232	251	finally
+    Object localObject4 = null;
+    Object localObject1 = null;
+    ArrayList localArrayList;
+    Object localObject5;
+    synchronized (a)
+    {
+      localArrayList = new ArrayList();
+      localObject5 = a.c().getReadableDatabase();
+      if (localObject5 == null) {}
+    }
+    try
+    {
+      localObject5 = ((SQLiteDatabase)localObject5).rawQuery("select a.taskUrl,a.status,b.clientId from downloadInfo as a left outer join clientinfo as b on a.taskUrl = b.taskUrl where b.clientId is not null and (a.status = 2 or a.status = 1)", null);
+      if (localObject5 != null)
+      {
+        localObject1 = localObject5;
+        localObject4 = localObject5;
+        if (((Cursor)localObject5).moveToFirst())
+        {
+          boolean bool;
+          do
+          {
+            localObject1 = localObject5;
+            localObject4 = localObject5;
+            Object localObject7 = ((Cursor)localObject5).getString(((Cursor)localObject5).getColumnIndex("clientId"));
+            localObject1 = localObject5;
+            localObject4 = localObject5;
+            String str = ((Cursor)localObject5).getString(((Cursor)localObject5).getColumnIndex("taskUrl"));
+            localObject1 = localObject5;
+            localObject4 = localObject5;
+            int i = ((Cursor)localObject5).getInt(((Cursor)localObject5).getColumnIndex("status"));
+            localObject1 = localObject5;
+            localObject4 = localObject5;
+            localObject7 = new b((String)localObject7, str);
+            localObject1 = localObject5;
+            localObject4 = localObject5;
+            ((b)localObject7).c = i;
+            localObject1 = localObject5;
+            localObject4 = localObject5;
+            localArrayList.add(localObject7);
+            localObject1 = localObject5;
+            localObject4 = localObject5;
+            bool = ((Cursor)localObject5).moveToNext();
+          } while (bool);
+        }
+      }
+      if (localObject5 != null) {
+        ((Cursor)localObject5).close();
+      }
+      return localArrayList;
+    }
+    catch (Exception localException)
+    {
+      localObject4 = localObject1;
+      ab.c("DownloadInfoTable", "exception: ", localException);
+      localObject4 = localObject1;
+      localException.printStackTrace();
+      if (localObject1 != null) {
+        localObject1.close();
+      }
+      return localArrayList;
+      localObject2 = finally;
+      throw localObject2;
+    }
+    finally
+    {
+      if (localObject4 != null) {
+        localObject4.close();
+      }
+    }
   }
   
   public String createTableSQL()

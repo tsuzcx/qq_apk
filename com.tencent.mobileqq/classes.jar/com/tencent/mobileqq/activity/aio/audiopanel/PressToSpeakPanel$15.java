@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
+import amtj;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
@@ -8,9 +9,8 @@ import android.os.SystemClock;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
-import anzj;
-import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
@@ -43,33 +43,33 @@ class PressToSpeakPanel$15
       PressToSpeakPanel.a(true);
       PressToChangeVoicePanel.a(PressToSpeakPanel.a(this.this$0), false, "0X8006385");
     }
-    Object localObject = PressToSpeakPanel.a(this.this$0).a();
-    int i = PressToSpeakPanel.a(this.this$0).a().getTitleBarHeight();
-    bewa.a = SystemClock.uptimeMillis();
+    Object localObject = PressToSpeakPanel.a(this.this$0).getRecorderParam();
+    int i = PressToSpeakPanel.a(this.this$0).getActivity().getTitleBarHeight();
+    com.tencent.mobileqq.transfile.PttInfoCollector.sCostUntilPrepare = SystemClock.uptimeMillis();
     if (!QQRecorder.a(((QQRecorder.RecorderParam)localObject).c))
     {
-      QQToast.a(BaseApplication.getContext(), 2131693066, 0).b(i);
+      QQToast.a(BaseApplication.getContext(), 2131693124, 0).b(i);
       return;
     }
-    if (PressToSpeakPanel.a(this.this$0).n())
+    if (PressToSpeakPanel.a(this.this$0).isRecording())
     {
-      QQToast.a(BaseApplication.getContext(), anzj.a(2131707287), 0).b(i);
+      QQToast.a(BaseApplication.getContext(), amtj.a(2131707519), 0).b(i);
       return;
     }
-    if (PressToSpeakPanel.a(this.this$0).d())
+    if (PressToSpeakPanel.a(this.this$0).isVideoChatting())
     {
-      QQToast.a(BaseApplication.getContext(), 2131694616, 0).b(i);
+      QQToast.a(BaseApplication.getContext(), 2131694732, 0).b(i);
       return;
     }
     if (AudioHelper.b(1))
     {
-      ChatActivityUtils.a(PressToSpeakPanel.a(this.this$0).a());
+      ChatActivityUtils.a(PressToSpeakPanel.a(this.this$0).getActivity());
       return;
     }
     PressToSpeakPanel.a(this.this$0).setStatus(2);
     this.this$0.a(this.a);
-    PressToSpeakPanel.a(this.this$0).l(0);
-    PressToSpeakPanel.a(this.this$0).a(this.this$0, true, (QQRecorder.RecorderParam)localObject);
+    PressToSpeakPanel.a(this.this$0).setFateOfRecorder(0);
+    PressToSpeakPanel.a(this.this$0).recorderInit(this.this$0, true, (QQRecorder.RecorderParam)localObject);
     this.this$0.g();
     localObject = new Rect();
     this.this$0.getWindowVisibleDisplayFrame((Rect)localObject);
@@ -92,14 +92,14 @@ class PressToSpeakPanel$15
       i = j - ((Rect)localObject).top;
     }
     if (localRect.top <= this.this$0.getResources().getDisplayMetrics().heightPixels) {
-      PressToSpeakPanel.a(this.this$0, AudioPanel.a(PressToSpeakPanel.a(this.this$0).a(), ((Rect)localObject).width(), i, this.this$0, 0, 0, 0));
+      PressToSpeakPanel.a(this.this$0, AudioPanel.a(PressToSpeakPanel.a(this.this$0).getActivity(), ((Rect)localObject).width(), i, this.this$0, 0, 0, 0));
     }
-    PressToSpeakPanel.a(this.this$0, AudioPanel.a(PressToSpeakPanel.a(this.this$0).a(), PressToSpeakPanel.b(this.this$0), this.this$0.a));
+    PressToSpeakPanel.a(this.this$0, AudioPanel.a(PressToSpeakPanel.a(this.this$0).getActivity(), PressToSpeakPanel.b(this.this$0), this.this$0.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel.15
  * JD-Core Version:    0.7.0.1
  */

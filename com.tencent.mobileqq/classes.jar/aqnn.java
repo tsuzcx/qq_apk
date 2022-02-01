@@ -1,21 +1,57 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.lang.reflect.Field;
 
 public class aqnn
-  implements View.OnClickListener
+  implements aqnm
 {
-  public aqnn(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  private Handler a;
   
-  public void onClick(View paramView)
+  public Resources a()
   {
-    String str = (String)paramView.getTag();
-    if (!TextUtils.isEmpty(str)) {
-      this.a.a(str);
+    return BaseApplicationImpl.getApplication().getResources();
+  }
+  
+  public Handler a()
+  {
+    if (this.a == null) {
+      this.a = new Handler(Looper.getMainLooper());
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return this.a;
+  }
+  
+  public Object a(Class<?> paramClass, String paramString, Object paramObject)
+  {
+    try
+    {
+      paramClass = paramClass.getDeclaredField(paramString);
+      paramClass.setAccessible(true);
+      paramClass = paramClass.get(paramObject);
+      return paramClass;
+    }
+    catch (Exception paramClass)
+    {
+      paramClass.printStackTrace();
+    }
+    return null;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return Build.VERSION.SDK_INT >= 26;
+  }
+  
+  public boolean c()
+  {
+    return Build.VERSION.SDK_INT >= 11;
   }
 }
 

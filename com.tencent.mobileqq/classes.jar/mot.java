@@ -1,276 +1,128 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Typeface;
-import android.text.TextUtils;
-import com.tencent.av.ui.funchat.zimu.ZimuView;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
 
-public abstract class mot
-  implements mor
+class mot
+  implements ImageAssetDelegate
 {
-  protected float a;
-  protected int a;
-  protected Context a;
-  protected Bitmap a;
-  protected Canvas a;
-  protected Paint a;
-  final String jdField_a_of_type_JavaLangString = getClass().getSimpleName() + "_" + AudioHelper.b();
-  WeakReference<ZimuView> jdField_a_of_type_JavaLangRefWeakReference;
-  public lgi a;
-  protected mos a;
-  protected boolean a;
-  protected int b = 255;
-  protected int c;
-  protected int d;
-  protected int e;
-  protected int f;
-  protected int g;
-  protected int h;
+  mot(mos parammos) {}
   
-  public mot(Context paramContext, WeakReference<ZimuView> paramWeakReference, int paramInt1, int paramInt2, float paramFloat)
+  /* Error */
+  @android.support.annotation.Nullable
+  public android.graphics.Bitmap fetchBitmap(com.tencent.mobileqq.dinifly.LottieImageAsset paramLottieImageAsset)
   {
-    this.jdField_a_of_type_Int = 24;
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_a_of_type_Float = paramFloat;
-    this.g = paramInt1;
-    this.h = paramInt2;
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-  }
-  
-  public int a()
-  {
-    return this.e;
-  }
-  
-  protected int a(Paint paramPaint)
-  {
-    paramPaint = paramPaint.getFontMetrics();
-    float f1 = paramPaint.descent;
-    float f2 = paramPaint.ascent;
-    return (int)(paramPaint.leading + (f1 - f2));
-  }
-  
-  protected int a(Paint paramPaint, String paramString)
-  {
-    float f3 = 0.0F;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      int j = paramString.length();
-      float[] arrayOfFloat = new float[j + 1];
-      paramPaint.getTextWidths(paramString, arrayOfFloat);
-      int i = 0;
-      for (f1 = 0.0F;; f1 = f2 + f1)
-      {
-        f2 = f1;
-        if (i >= j) {
-          break;
-        }
-        f2 = arrayOfFloat[i];
-        i += 1;
-      }
-    }
-    float f2 = 0.0F;
-    float f1 = f3;
-    if (this.jdField_a_of_type_Mos != null) {
-      f1 = this.jdField_a_of_type_Mos.jdField_a_of_type_Float;
-    }
-    return (int)Math.ceil(f2 + f1 / 2.0F);
-  }
-  
-  public Bitmap a()
-  {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = b();
-    }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
-      ((ZimuView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).e();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.e = paramInt1;
-    this.f = paramInt2;
-  }
-  
-  public void a(long paramLong)
-  {
-    lbj.c(this.jdField_a_of_type_JavaLangString, "start:" + paramLong);
-  }
-  
-  protected abstract void a(Canvas paramCanvas, int paramInt1, int paramInt2);
-  
-  public void a(Typeface paramTypeface, int paramInt, mos parammos)
-  {
-    Typeface localTypeface = this.jdField_a_of_type_AndroidGraphicsPaint.getTypeface();
-    if ((localTypeface != paramTypeface) || (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getTextSize())) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setFontAttr, Typeface[" + localTypeface + "->" + paramTypeface + "], TextSize[" + this.jdField_a_of_type_AndroidGraphicsPaint.getTextSize() + "->" + paramInt + "]");
-    }
-    if (paramTypeface != null) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
-    }
-    this.jdField_a_of_type_Mos = parammos;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramInt);
-    d();
-    if (this.jdField_a_of_type_Lgi != null) {}
-    for (paramTypeface = this.jdField_a_of_type_Lgi.a;; paramTypeface = null)
-    {
-      paramTypeface = (String)paramTypeface;
-      this.c = a(this.jdField_a_of_type_AndroidGraphicsPaint, paramTypeface);
-      this.d = a(this.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
-    }
-  }
-  
-  public void a(lgi paramlgi)
-  {
-    d();
-    Object localObject;
-    if (this.jdField_a_of_type_Lgi != null)
-    {
-      localObject = this.jdField_a_of_type_Lgi.b;
-      localObject = (String)localObject;
-      this.jdField_a_of_type_Lgi = paramlgi;
-      if ((this.jdField_a_of_type_Lgi != null) && (!this.jdField_a_of_type_Lgi.a()) && (paramlgi != null) && (TextUtils.isEmpty(paramlgi.b)) && (localObject != null) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-        this.jdField_a_of_type_Lgi.b = ((CharSequence)localObject);
-      }
-      if (this.jdField_a_of_type_Lgi == null) {
-        break label124;
-      }
-    }
-    label124:
-    for (paramlgi = this.jdField_a_of_type_Lgi.a;; paramlgi = null)
-    {
-      paramlgi = (String)paramlgi;
-      this.c = a(this.jdField_a_of_type_AndroidGraphicsPaint, paramlgi);
-      return;
-      localObject = null;
-      break;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int b()
-  {
-    return this.f;
-  }
-  
-  Bitmap b()
-  {
-    Object localObject3 = null;
-    Object localObject4 = null;
-    Object localObject1 = null;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_Lgi.a)) {
-      localObject3 = localObject1;
-    }
-    do
-    {
-      for (;;)
-      {
-        return localObject3;
-        lbj.c(this.jdField_a_of_type_JavaLangString, "build:" + toString());
-        localObject1 = localObject3;
-        Object localObject2 = localObject4;
-        try
-        {
-          int i = c();
-          localObject1 = localObject3;
-          localObject2 = localObject4;
-          int j = d();
-          localObject1 = localObject3;
-          localObject2 = localObject4;
-          localObject3 = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-          localObject1 = localObject3;
-          localObject2 = localObject3;
-          this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap((Bitmap)localObject3);
-          localObject1 = localObject3;
-          localObject2 = localObject3;
-          a(this.jdField_a_of_type_AndroidGraphicsCanvas, i, j);
-          return localObject3;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          localObject3 = localObject1;
-          if (QLog.isColorLevel())
-          {
-            QLog.e(this.jdField_a_of_type_JavaLangString, 2, localOutOfMemoryError.getMessage());
-            return localObject1;
-          }
-        }
-        catch (Exception localException)
-        {
-          localObject3 = localOutOfMemoryError;
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e(this.jdField_a_of_type_JavaLangString, 2, localException.getMessage());
-    return localOutOfMemoryError;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(null);
-    this.jdField_a_of_type_AndroidGraphicsPaint = null;
-    d();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    return this.c;
-  }
-  
-  public void c() {}
-  
-  public boolean c()
-  {
-    return true;
-  }
-  
-  public int d()
-  {
-    if (this.d == 0) {
-      this.d = a(this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    return this.d;
-  }
-  
-  public void d()
-  {
-    lbj.c(this.jdField_a_of_type_JavaLangString, "releaseBitmap:" + this.jdField_a_of_type_AndroidGraphicsBitmap);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      if (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    }
-  }
-  
-  public String toString()
-  {
-    return "ZimuItemView{mFontPara=" + this.jdField_a_of_type_Mos.toString() + ", getTypeface=" + this.jdField_a_of_type_AndroidGraphicsPaint.getTypeface() + ", mTextSize=" + this.jdField_a_of_type_Int + ", mAlpha=" + this.b + ", mWidth=" + this.c + ", mHeight=" + this.d + ", mCurrentX=" + this.e + ", mCurrentY=" + this.f + ", mSentenceInfo=" + this.jdField_a_of_type_Lgi.toString() + ", mBitmapCache=" + this.jdField_a_of_type_AndroidGraphicsBitmap + '}';
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: aload_0
+    //   3: getfield 12	mot:a	Lmos;
+    //   6: getfield 28	mos:a	Landroid/content/Context;
+    //   9: invokevirtual 34	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   12: new 36	java/lang/StringBuilder
+    //   15: dup
+    //   16: invokespecial 37	java/lang/StringBuilder:<init>	()V
+    //   19: getstatic 43	com/tencent/av/ui/guide/GuideHelper:b	Ljava/lang/String;
+    //   22: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: aload_1
+    //   26: invokevirtual 53	com/tencent/mobileqq/dinifly/LottieImageAsset:getFileName	()Ljava/lang/String;
+    //   29: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: invokevirtual 56	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   35: invokevirtual 62	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   38: astore_1
+    //   39: aload_1
+    //   40: astore_2
+    //   41: aload_2
+    //   42: astore_1
+    //   43: new 64	android/graphics/BitmapFactory$Options
+    //   46: dup
+    //   47: invokespecial 65	android/graphics/BitmapFactory$Options:<init>	()V
+    //   50: astore_3
+    //   51: aload_2
+    //   52: astore_1
+    //   53: aload_3
+    //   54: iconst_0
+    //   55: putfield 69	android/graphics/BitmapFactory$Options:inScaled	Z
+    //   58: aload_2
+    //   59: astore_1
+    //   60: aload_2
+    //   61: aconst_null
+    //   62: checkcast 71	android/graphics/Rect
+    //   65: aload_3
+    //   66: invokestatic 77	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   69: astore_3
+    //   70: aload_2
+    //   71: astore_1
+    //   72: aload_2
+    //   73: invokevirtual 82	java/io/InputStream:close	()V
+    //   76: aload_2
+    //   77: ifnull +7 -> 84
+    //   80: aload_2
+    //   81: invokevirtual 82	java/io/InputStream:close	()V
+    //   84: aload_3
+    //   85: areturn
+    //   86: astore_3
+    //   87: aconst_null
+    //   88: astore_2
+    //   89: aload_2
+    //   90: astore_1
+    //   91: ldc 84
+    //   93: iconst_2
+    //   94: ldc 86
+    //   96: aload_3
+    //   97: invokestatic 92	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   100: aload_2
+    //   101: ifnull +7 -> 108
+    //   104: aload_2
+    //   105: invokevirtual 82	java/io/InputStream:close	()V
+    //   108: aconst_null
+    //   109: areturn
+    //   110: astore_1
+    //   111: aload_2
+    //   112: ifnull +7 -> 119
+    //   115: aload_2
+    //   116: invokevirtual 82	java/io/InputStream:close	()V
+    //   119: aload_1
+    //   120: athrow
+    //   121: astore_1
+    //   122: aload_3
+    //   123: areturn
+    //   124: astore_1
+    //   125: goto -17 -> 108
+    //   128: astore_2
+    //   129: goto -10 -> 119
+    //   132: astore_3
+    //   133: aload_1
+    //   134: astore_2
+    //   135: aload_3
+    //   136: astore_1
+    //   137: goto -26 -> 111
+    //   140: astore_3
+    //   141: goto -52 -> 89
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	144	0	this	mot
+    //   0	144	1	paramLottieImageAsset	com.tencent.mobileqq.dinifly.LottieImageAsset
+    //   1	115	2	localLottieImageAsset1	com.tencent.mobileqq.dinifly.LottieImageAsset
+    //   128	1	2	localException	java.lang.Exception
+    //   134	1	2	localLottieImageAsset2	com.tencent.mobileqq.dinifly.LottieImageAsset
+    //   50	35	3	localObject1	Object
+    //   86	37	3	localThrowable1	java.lang.Throwable
+    //   132	4	3	localObject2	Object
+    //   140	1	3	localThrowable2	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   2	39	86	java/lang/Throwable
+    //   2	39	110	finally
+    //   80	84	121	java/lang/Exception
+    //   104	108	124	java/lang/Exception
+    //   115	119	128	java/lang/Exception
+    //   43	51	132	finally
+    //   53	58	132	finally
+    //   60	70	132	finally
+    //   72	76	132	finally
+    //   91	100	132	finally
+    //   43	51	140	java/lang/Throwable
+    //   53	58	140	java/lang/Throwable
+    //   60	70	140	java/lang/Throwable
+    //   72	76	140	java/lang/Throwable
   }
 }
 

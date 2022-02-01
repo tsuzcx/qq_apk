@@ -1,32 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.download_action.AdDownloadUtil.1;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.SheetItemClickProcessor.JuBaoAction.1;
 import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
 public class tkk
+  extends tkf
 {
-  public static void a(tqt paramtqt, tkl paramtkl)
+  tkk(tkc paramtkc1, Activity paramActivity, tkc paramtkc2, JSONObject paramJSONObject)
   {
-    if (paramtqt == null)
-    {
-      paramtkl.a(false);
-      return;
-    }
-    ThreadManager.getSubThreadHandler().post(new AdDownloadUtil.1(paramtqt, paramtkl));
+    super(paramtkc1, paramActivity, paramtkc2, paramJSONObject);
   }
   
-  public static boolean a(String paramString)
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
   {
-    return nzq.a(BaseApplicationImpl.getContext(), paramString);
-  }
-  
-  public static boolean a(tqt paramtqt)
-  {
-    if ((paramtqt == null) || (TextUtils.isEmpty(paramtqt.d))) {
-      return false;
-    }
-    return a(paramtqt.d);
+    ThreadManager.executeOnSubThread(new SheetItemClickProcessor.JuBaoAction.1(this, paramString1));
   }
 }
 

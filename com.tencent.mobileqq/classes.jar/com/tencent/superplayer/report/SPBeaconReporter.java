@@ -1,5 +1,6 @@
 package com.tencent.superplayer.report;
 
+import android.os.Handler;
 import com.tencent.superplayer.api.SuperPlayerSDKMgr;
 import com.tencent.superplayer.utils.ThreadUtil;
 import com.tencent.thumbplayer.tplayer.plugins.report.BeaconAdapter;
@@ -18,7 +19,8 @@ public class SPBeaconReporter
   
   public static void report(String paramString, Map<String, String> paramMap)
   {
-    ThreadUtil.runOnThreadPool(new SPBeaconReporter.1(paramString, new HashMap(paramMap)));
+    paramMap = new HashMap(paramMap);
+    ThreadUtil.getSubThreadHandler().post(new SPBeaconReporter.1(paramString, paramMap));
   }
 }
 

@@ -1,24 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class nhd
-  implements View.OnTouchListener
+public class nhd
 {
-  nhd(nhb paramnhb) {}
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public String toString()
   {
-    switch (paramMotionEvent.getActionMasked())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    return "AVGameMediaFileInfo{mMediaFileUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mMediaFormat=" + this.jdField_a_of_type_Int + ", mMediaFileDuration=" + this.jdField_a_of_type_Long + ", mMediaFileSize=" + this.jdField_b_of_type_Long + ", mMediaFileMd5='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 

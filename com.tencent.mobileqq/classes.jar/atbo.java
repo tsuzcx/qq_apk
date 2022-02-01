@@ -1,71 +1,68 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.extendfriend.pulltorefresh.LoadingLayoutBase;
-import java.util.HashSet;
-import java.util.Iterator;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class atbo
-  implements atbn
+class atbo
+  implements View.OnClickListener
 {
-  private final HashSet<LoadingLayoutBase> a = new HashSet();
+  atbo(atbn paramatbn) {}
   
-  public void a(LoadingLayoutBase paramLoadingLayoutBase)
+  public void onClick(View paramView)
   {
-    if (paramLoadingLayoutBase != null) {
-      this.a.add(paramLoadingLayoutBase);
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-  }
-  
-  public void setLastUpdatedLabel(CharSequence paramCharSequence)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setLastUpdatedLabel(paramCharSequence);
+    int i = 4;
+    if (atbn.a(this.a) == 1)
+    {
+      i = 2;
+      label33:
+      if ((atbn.a(this.a) == null) || (!atbn.a(this.a).equals(AppConstants.DATALINE_PC_UIN))) {
+        break label240;
+      }
+      i = 3;
     }
-  }
-  
-  public void setLoadingDrawable(Drawable paramDrawable)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setLoadingDrawable(paramDrawable);
-    }
-  }
-  
-  public void setPullLabel(CharSequence paramCharSequence)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setPullLabel(paramCharSequence);
-    }
-  }
-  
-  public void setRefreshResultLabel(CharSequence paramCharSequence)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setRefreshResultLabel(paramCharSequence);
-    }
-  }
-  
-  public void setRefreshingLabel(CharSequence paramCharSequence)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setRefreshingLabel(paramCharSequence);
-    }
-  }
-  
-  public void setReleaseLabel(CharSequence paramCharSequence)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((LoadingLayoutBase)localIterator.next()).setReleaseLabel(paramCharSequence);
+    label240:
+    for (;;)
+    {
+      long l = aslg.b();
+      bcef.b(null, "dc00898", "", "", "0X800AA92", "0X800AA92", i, 0, "" + l, "0", "", "");
+      if (atbn.a(this.a) == 1101)
+      {
+        Object localObject = new ArrayList();
+        ((ArrayList)localObject).addAll(aslg.a());
+        Intent localIntent = new Intent();
+        localIntent.putExtra("file_choose_search_result_code", "file_choose_search_result_code");
+        localIntent.putParcelableArrayListExtra("reslut_select_file_info_list", (ArrayList)localObject);
+        localObject = (Activity)this.a.jdField_a_of_type_AndroidContentContext;
+        ((Activity)localObject).setResult(-1, localIntent);
+        ((Activity)localObject).finish();
+        break;
+        if (atbn.a(this.a) != 0) {
+          break label33;
+        }
+        i = 1;
+        break label33;
+      }
+      if (atbn.a(this.a) == 1)
+      {
+        atbn.a(this.a);
+        break;
+      }
+      atbn.b(this.a);
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atbo
  * JD-Core Version:    0.7.0.1
  */

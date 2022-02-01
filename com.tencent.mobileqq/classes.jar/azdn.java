@@ -1,20 +1,102 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
+import android.content.Intent;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import java.nio.ByteBuffer;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
+import tencent.im.oidb.oidb_0xebe.CleanSessionReq;
+import tencent.im.oidb.oidb_0xebe.CleanSessionRsp;
+import tencent.im.oidb.oidb_0xebe.ReqBody;
+import tencent.im.oidb.oidb_0xebe.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-class azdn
-  implements ValueAnimator.AnimatorUpdateListener
+public class azdn
+  extends MSFServlet
 {
-  azdn(azdh paramazdh) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (azdh.a(this.a) != null)
+    QQAppInterface localQQAppInterface = azeu.a();
+    Object localObject2 = localQQAppInterface.getCurrentAccountUin();
+    Object localObject1 = new oidb_0xebe.CleanSessionReq();
+    ((oidb_0xebe.CleanSessionReq)localObject1).uint64_uin.set(Long.parseLong((String)localObject2));
+    ((oidb_0xebe.CleanSessionReq)localObject1).uint32_version.set(1);
+    localObject2 = new oidb_0xebe.ReqBody();
+    ((oidb_0xebe.ReqBody)localObject2).msg_clean_session_req.set((MessageMicro)localObject1);
+    localObject1 = new NewIntent(localQQAppInterface.getApp(), azdn.class);
+    ((NewIntent)localObject1).putExtra("reqBody", ((oidb_0xebe.ReqBody)localObject2).toByteArray());
+    localQQAppInterface.startServlet((NewIntent)localObject1);
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    int i = paramFromServiceMsg.getResultCode();
+    azeu.a("AssistantServlet", "AssistantServlet#onReceive, oidbCode:" + i);
+    if (!paramFromServiceMsg.isSuccess()) {}
+    for (;;)
     {
-      azdh.a(this.a).setAlpha(f);
-      azdh.a(this.a).setTranslationY((1.0F - f) * agej.a(25.0F, azdh.a(this.a)));
+      return;
+      paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
+      if ((paramFromServiceMsg == null) || (paramFromServiceMsg.length == 0)) {
+        continue;
+      }
+      try
+      {
+        paramIntent = new oidb_sso.OIDBSSOPkg();
+        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg);
+        byte[] arrayOfByte = new byte[paramFromServiceMsg.getInt() - 4];
+        paramFromServiceMsg.get(arrayOfByte);
+        paramIntent.mergeFrom(arrayOfByte);
+        paramFromServiceMsg = paramIntent.bytes_bodybuffer.get().toByteArray();
+        azeu.a("AssistantServlet", String.format("oidbHeader:%s, error:%s", new Object[] { Integer.valueOf(paramIntent.uint32_result.get()), paramIntent.str_error_msg.get() }));
+        paramIntent = new oidb_0xebe.RspBody();
+        paramIntent.mergeFrom(paramFromServiceMsg);
+        paramIntent = (oidb_0xebe.CleanSessionRsp)paramIntent.msg_clean_session_rsp.get();
+        if (paramIntent == null) {
+          continue;
+        }
+        i = paramIntent.int32_ret_code.get();
+        azeu.a("AssistantServlet", "ret code:" + i);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramIntent)
+      {
+        for (;;)
+        {
+          azeu.a("AssistantServlet", paramIntent.getMessage());
+          paramIntent.printStackTrace();
+          paramIntent = null;
+        }
+      }
     }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    paramIntent = paramIntent.getByteArrayExtra("reqBody");
+    Object localObject = new oidb_sso.OIDBSSOPkg();
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_command.set(3774);
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.set(0);
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.set(0);
+    ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent));
+    ((oidb_sso.OIDBSSOPkg)localObject).str_client_version.set(AppSetting.f());
+    paramIntent = ((oidb_sso.OIDBSSOPkg)localObject).toByteArray();
+    localObject = new byte[paramIntent.length + 4];
+    PkgTools.DWord2Byte((byte[])localObject, 0, paramIntent.length + 4);
+    PkgTools.copyData((byte[])localObject, 4, paramIntent, paramIntent.length);
+    paramPacket.setSSOCommand("OidbSvc.0xebe");
+    paramPacket.putSendData((byte[])localObject);
+    azeu.a("AssistantServlet", "AssistantServlet#onSend");
   }
 }
 

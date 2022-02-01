@@ -1,27 +1,20 @@
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 
+@Deprecated
 public class waj
-  implements bliz
+  extends wal
 {
-  public waj(QCircleFollowView paramQCircleFollowView, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public waj(ViewGroup paramViewGroup)
   {
-    if (!aazb.a("showUnFollowUserActionSheetClick")) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      if (QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView) != null) {
-        QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView).a();
-      }
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.b(false);
-    }
+    super(paramViewGroup, 2131561663);
+  }
+  
+  public void a(vxd paramvxd)
+  {
+    super.a(paramvxd);
+    this.a.setDisplayState(5);
+    this.a.setNodeName(amtj.a(2131706064), false);
   }
 }
 

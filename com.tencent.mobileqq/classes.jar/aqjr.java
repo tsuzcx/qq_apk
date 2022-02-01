@@ -1,81 +1,65 @@
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderTask;
-import com.tencent.mobileqq.data.RockDownloadInfo;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-final class aqjr
-  implements DownloadListener
+public class aqjr
+  extends aptq<aqjq>
 {
-  aqjr(RockDownloaderTask paramRockDownloaderTask, boolean paramBoolean) {}
-  
-  public void installSucceed(String paramString1, String paramString2)
+  public static aqjq a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RockDownloader", 2, new Object[] { "installSucceed: appid=", paramString1, " packageName=", paramString2 });
+    return (aqjq)apub.a().a(342);
+  }
+  
+  @NonNull
+  public aqjq a(int paramInt)
+  {
+    return new aqjq();
+  }
+  
+  @Nullable
+  public aqjq a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return aqjq.a(paramArrayOfaptx);
     }
+    return null;
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  public void a(aqjq paramaqjq) {}
+  
+  public Class<aqjq> clazz()
   {
-    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {
-      return;
-    }
-    aqjp.a(paramDownloadInfo, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask);
-    bjsz.a().b(this);
+    return aqjq.class;
   }
   
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  public boolean isNeedCompressed()
   {
-    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {
-      return;
-    }
-    aqjp.a(paramDownloadInfo, paramInt1, paramString, paramInt2, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask);
-    bjsz.a().b(this);
+    return true;
   }
   
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  public boolean isNeedStoreLargeFile()
   {
-    if ((paramDownloadInfo.e == null) || (!paramDownloadInfo.e.equals(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask.getDownloadInfo().getPackageName()))) {
-      return;
-    }
-    aqjp.a(this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask, paramDownloadInfo, this.jdField_a_of_type_Boolean);
-    bjsz.a().b(this);
+    return false;
   }
   
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  public int migrateOldVersion()
   {
-    aqjp.a(paramDownloadInfo, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask);
+    return 0;
   }
   
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  public void onReqFailed(int paramInt)
   {
-    aqjp.a(paramList, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask);
+    QLog.d("TencentDocAIOShowGuideDialogProcessor", 1, "TENCENT_DOC_AIO_SHOW_GUIDE_DIALOG failed, resultCode:" + paramInt);
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  public int type()
   {
-    aqjp.a(paramDownloadInfo, this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloaderTask, this.jdField_a_of_type_Boolean);
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RockDownloader", 2, new Object[] { "packageReplaced: appid=", paramString1, " packageName=", paramString2 });
-    }
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RockDownloader", 2, new Object[] { "uninstallSucceed: appid=", paramString1, " packageName=", paramString2 });
-    }
+    return 342;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqjr
  * JD-Core Version:    0.7.0.1
  */

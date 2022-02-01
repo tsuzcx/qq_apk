@@ -12,10 +12,10 @@ public class CookieSyncManager
   
   private CookieSyncManager(Context paramContext)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_createInstance", new Class[] { Context.class }, new Object[] { paramContext });
+      localx.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_createInstance", new Class[] { Context.class }, new Object[] { paramContext });
       c = true;
     }
   }
@@ -49,10 +49,10 @@ public class CookieSyncManager
   
   public void startSync()
   {
-    Object localObject = v.a();
-    if ((localObject != null) && (((v)localObject).b()))
+    Object localObject = x.a();
+    if ((localObject != null) && (((x)localObject).b()))
     {
-      ((v)localObject).c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_startSync", new Class[0], new Object[0]);
+      ((x)localObject).c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_startSync", new Class[0], new Object[0]);
       return;
     }
     a.startSync();
@@ -60,7 +60,7 @@ public class CookieSyncManager
     {
       localObject = Class.forName("android.webkit.WebSyncManager").getDeclaredField("mSyncThread");
       ((Field)localObject).setAccessible(true);
-      ((Thread)((Field)localObject).get(a)).setUncaughtExceptionHandler(new e());
+      ((Thread)((Field)localObject).get(a)).setUncaughtExceptionHandler(new g());
       return;
     }
     catch (Exception localException) {}
@@ -68,10 +68,10 @@ public class CookieSyncManager
   
   public void stopSync()
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_stopSync", new Class[0], new Object[0]);
+      localx.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_stopSync", new Class[0], new Object[0]);
       return;
     }
     a.stopSync();
@@ -79,10 +79,10 @@ public class CookieSyncManager
   
   public void sync()
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_Sync", new Class[0], new Object[0]);
+      localx.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_Sync", new Class[0], new Object[0]);
       return;
     }
     a.sync();

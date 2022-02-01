@@ -1,15 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
 
-class nxu
-  implements DialogInterface.OnClickListener
+public class nxu
+  implements View.OnTouchListener
 {
-  nxu(nxo paramnxo, JsResult paramJsResult) {}
+  public nxu(VideoCoverFragment paramVideoCoverFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
+    if (paramMotionEvent.getAction() == 0)
+    {
+      VideoCoverFragment.a(this.a).b();
+      if (!this.a.a())
+      {
+        if (!VideoCoverFragment.a(this.a)) {
+          break label47;
+        }
+        this.a.a(false);
+      }
+    }
+    return false;
+    label47:
+    this.a.a(true);
+    return false;
   }
 }
 

@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.troop.data;
 
+import amtj;
 import android.content.Context;
 import android.content.Intent;
-import anzj;
-import bdll;
-import bfqz;
+import bcef;
+import beaj;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.data.AccountDetail;
-import tzq;
+import ugf;
 
 public class TroopEntranceBar$2
   implements Runnable
 {
-  public TroopEntranceBar$2(bfqz parambfqz) {}
+  public TroopEntranceBar$2(beaj parambeaj) {}
   
   public void run()
   {
     Object localObject2 = "";
     Object localObject1 = "";
-    Object localObject4 = tzq.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    Object localObject4 = ugf.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
     if (localObject4 != null)
     {
       localObject3 = ((AccountDetail)localObject4).uin;
@@ -30,18 +30,18 @@ public class TroopEntranceBar$2
       {
         localObject1 = localObject4;
         localObject2 = localObject3;
-        if (((String)localObject4).endsWith(anzj.a(2131714088)))
+        if (((String)localObject4).endsWith(amtj.a(2131714320)))
         {
           localObject1 = ((String)localObject4).substring(0, ((String)localObject4).length() - 3);
           localObject2 = localObject3;
         }
       }
     }
-    localObject1 = String.format("https://buluo.qq.com/mobile/relativegroup.html?from=%s&scode=%s&keyword=%s&channel=1&_wv=1027&_bid=128", new Object[] { "qun_aio", this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localObject1 });
+    localObject1 = String.format("https://buluo.qq.com/mobile/relativegroup.html?from=%s&scode=%s&keyword=%s&channel=1&_wv=1027&_bid=128", new Object[] { "qun_aio", this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, localObject1 });
     Object localObject3 = new Intent(this.this$0.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
     ((Intent)localObject3).putExtra("url", (String)localObject1);
     this.this$0.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject3);
-    bdll.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "clk_tribechat_aio", "exp_tribechat_aio", 0, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (String)localObject2, "", "");
+    bcef.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "clk_tribechat_aio", "exp_tribechat_aio", 0, 0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, (String)localObject2, "", "");
   }
 }
 

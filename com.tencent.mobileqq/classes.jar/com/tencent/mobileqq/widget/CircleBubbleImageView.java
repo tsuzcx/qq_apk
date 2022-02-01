@@ -104,7 +104,7 @@ public class CircleBubbleImageView
         }
       }
       paramCanvas.drawCircle(j, j, j, this.jdField_a_of_type_AndroidGraphicsPaint);
-    } while (!this.d);
+    } while ((!this.d) || (this.jdField_b_of_type_AndroidGraphicsPath == null));
     paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   

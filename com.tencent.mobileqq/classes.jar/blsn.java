@@ -1,46 +1,20 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
 
-class blsn
-  extends GestureDetector.SimpleOnGestureListener
+public class blsn
+  extends bmtc
 {
-  blsn(blsg paramblsg) {}
+  public blsn(AEMaterialProviderView paramAEMaterialProviderView) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void a()
   {
-    return true;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    Object localObject = this.a.findChildView(paramMotionEvent);
-    if (localObject != null)
-    {
-      localObject = this.a.mRecyclerView.getChildViewHolder((View)localObject);
-      if ((localObject != null) && (this.a.mCallback.hasDragFlag(this.a.mRecyclerView, (RecyclerView.ViewHolder)localObject))) {
-        break label57;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AEMaterialProviderView", 2, "material list updated!");
     }
-    label57:
-    do
-    {
-      do
-      {
-        return;
-      } while (paramMotionEvent.getPointerId(0) != this.a.mActivePointerId);
-      int i = paramMotionEvent.findPointerIndex(this.a.mActivePointerId);
-      float f1 = paramMotionEvent.getX(i);
-      float f2 = paramMotionEvent.getY(i);
-      this.a.mInitialTouchX = f1;
-      this.a.mInitialTouchY = f2;
-      paramMotionEvent = this.a;
-      this.a.mDy = 0.0F;
-      paramMotionEvent.mDx = 0.0F;
-    } while (!this.a.mCallback.isLongPressDragEnabled());
-    this.a.select((RecyclerView.ViewHolder)localObject, 2);
+    if (AEMaterialProviderView.a(this.a)) {
+      return;
+    }
+    this.a.a(true);
   }
 }
 

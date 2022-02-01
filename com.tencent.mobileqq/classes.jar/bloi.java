@@ -1,28 +1,14 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.PinnedHeaderExpandableListView;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 
-public class bloi
-  implements View.OnTouchListener
+class bloi
+  implements Observer<Boolean>
 {
-  public bloi(PinnedHeaderExpandableListView paramPinnedHeaderExpandableListView) {}
+  bloi(bloe parambloe) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      long l = this.a.a(this.a.getFirstVisiblePosition());
-      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
-      {
-        int i = ExpandableListView.c(l);
-        if ((PinnedHeaderExpandableListView.a(this.a) == null) || (!PinnedHeaderExpandableListView.a(this.a).a(this.a, paramView, i, PinnedHeaderExpandableListView.a(this.a).getGroupId(i)))) {
-          this.a.b(i);
-        }
-      }
-    }
-    return true;
+    bloe.b(this.a);
   }
 }
 

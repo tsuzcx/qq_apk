@@ -1,12 +1,77 @@
-import android.view.View;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.manager.Manager;
 
-public abstract class bggf
+public class bggf<V>
+  implements Manager
 {
-  public final View a;
+  private final ArrayList<bggh<V>> a = new ArrayList();
   
-  protected bggf(View paramView)
+  static
   {
-    this.a = paramView;
+    bglg.a.a();
+  }
+  
+  public static <E> bggg<E> a(bggg<E> parambggg)
+  {
+    return new bggi(parambggg);
+  }
+  
+  public void a(String arg1, bggg<V> parambggg, Object paramObject)
+  {
+    if (parambggg != null)
+    {
+      parambggg = new bggh(parambggg, paramObject, ???);
+      synchronized (this.a)
+      {
+        this.a.add(parambggg);
+        return;
+      }
+    }
+  }
+  
+  public void a(String paramString, V paramV)
+  {
+    if (paramString == null) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    for (;;)
+    {
+      int i;
+      synchronized (this.a)
+      {
+        i = this.a.size() - 1;
+        if (i >= 0)
+        {
+          bggh localbggh = (bggh)this.a.get(i);
+          if (paramString.equals(localbggh.jdField_a_of_type_JavaLangString))
+          {
+            this.a.remove(i);
+            localArrayList.add(localbggh);
+          }
+        }
+        else
+        {
+          paramString = localArrayList.iterator();
+          if (!paramString.hasNext()) {
+            break;
+          }
+          ??? = (bggh)paramString.next();
+          ((bggh)???).jdField_a_of_type_Bggg.a(paramV, ((bggh)???).jdField_a_of_type_JavaLangObject);
+        }
+      }
+      i -= 1;
+    }
+  }
+  
+  public void onDestroy()
+  {
+    synchronized (this.a)
+    {
+      this.a.clear();
+      return;
+    }
   }
 }
 

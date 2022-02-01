@@ -1,76 +1,77 @@
 import android.os.Bundle;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.open.downloadnew.DownloaderGetCodeClient.1;
+import eipc.EIPCResultCallback;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/gldrawable/VideoOptions;", "Lcom/tencent/mobileqq/vas/gldrawable/GLDrawableOptions;", "filePath", "", "needThumbnail", "", "videoType", "", "isLoop", "(Ljava/lang/String;ZIZ)V", "getFilePath", "()Ljava/lang/String;", "()Z", "getNeedThumbnail", "getVideoType", "()I", "component1", "component2", "component3", "component4", "copy", "equals", "other", "", "hashCode", "name", "toString", "translate", "Landroid/os/Bundle;", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class bicg
-  implements bibv
+public class bicg
 {
-  public static final bich a;
-  private final int jdField_a_of_type_Int;
-  @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean;
-  private final boolean b;
+  private static volatile bicg jdField_a_of_type_Bicg;
+  private EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new bich(this);
+  private Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, List<bibp>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, String> b = new ConcurrentHashMap();
   
-  static
+  public static bicg a()
   {
-    jdField_a_of_type_Bich = new bich(null);
-  }
-  
-  public bicg(@NotNull String paramString, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramBoolean2;
-  }
-  
-  @NotNull
-  public Bundle a()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("className", a());
-    localBundle.putString("filePath", this.jdField_a_of_type_JavaLangString);
-    localBundle.putBoolean("needThumbnail", this.jdField_a_of_type_Boolean);
-    localBundle.putInt("videoType", this.jdField_a_of_type_Int);
-    localBundle.putBoolean("isLoop", this.b);
-    return localBundle;
-  }
-  
-  @NotNull
-  public String a()
-  {
-    return "VideoDrawable";
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if (this != paramObject)
+    if (jdField_a_of_type_Bicg == null) {}
+    try
     {
-      if ((paramObject instanceof bicg))
-      {
-        paramObject = (bicg)paramObject;
-        if ((!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Boolean != paramObject.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {}
+      if (jdField_a_of_type_Bicg == null) {
+        jdField_a_of_type_Bicg = new bicg();
       }
+      return jdField_a_of_type_Bicg;
     }
-    else {
-      return true;
-    }
-    return false;
+    finally {}
   }
   
-  public int hashCode()
+  private String a(String paramString, int paramInt)
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    return paramString + "_" + paramInt;
   }
   
-  @NotNull
-  public String toString()
+  private void a(String paramString, bibp parambibp)
   {
-    return "VideoOptions(filePath=" + this.jdField_a_of_type_JavaLangString + ", needThumbnail=" + this.jdField_a_of_type_Boolean + ", videoType=" + this.jdField_a_of_type_Int + ", isLoop=" + this.b + ")";
+    if ((TextUtils.isEmpty(paramString)) || (parambibp == null)) {}
+    List localList1;
+    do
+    {
+      return;
+      List localList2 = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      localList1 = localList2;
+      if (localList2 == null) {
+        localList1 = Collections.synchronizedList(new ArrayList());
+      }
+    } while (localList1.contains(parambibp));
+    localList1.add(parambibp);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localList1);
+  }
+  
+  public void a(String paramString, int paramInt, bibp parambibp)
+  {
+    a(a(paramString, paramInt), parambibp);
+    parambibp = new Bundle();
+    parambibp.putString("PackageName", paramString);
+    parambibp.putInt("VersionCode", paramInt);
+    bhzm.c("DownloaderGetCodeClient", paramString + "_" + paramInt + " begin getApkCode ......");
+    this.jdField_a_of_type_JavaUtilMap.put(a(paramString, paramInt), Boolean.valueOf(true));
+    QIPCClientHelper.getInstance().callServer("Module_DownloaderGetCodeServer", "DownloaderWriteCodeIPC_Action__GetCode", parambibp, this.jdField_a_of_type_EipcEIPCResultCallback);
+    ThreadManager.getSubThreadHandler().postDelayed(new DownloaderGetCodeClient.1(this, paramString, paramInt, parambibp), 3000L);
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt, bibp parambibp)
+  {
+    if (!TextUtils.isEmpty(paramString1)) {
+      this.b.put(a(paramString2, paramInt), paramString1);
+    }
+    a(paramString2, paramInt, parambibp);
   }
 }
 

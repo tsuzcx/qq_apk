@@ -1,12 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-
-class aica
-  implements DialogInterface.OnCancelListener
+public class aica
 {
-  aica(aibr paramaibr) {}
+  public String a;
+  public String b;
   
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  public aica(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
 }
 
 

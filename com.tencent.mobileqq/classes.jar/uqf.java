@@ -1,98 +1,50 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.ttpic.baseutils.collection.CollectionUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class uqf
 {
-  private static final String a = "weishi" + "8.4.5".replaceAll("\\.", "");
+  private static final int jdField_a_of_type_Int = ScreenUtil.dip2px(240.0F);
+  private static final int b = ScreenUtil.dip2px(240.0F);
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public static void a(String paramString)
+  public void a()
   {
-    b(a, 4, paramString);
-  }
-  
-  public static void a(String paramString1, int paramInt, String paramString2)
-  {
-    String str = a + "-" + paramString1;
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
-    }
-    QLog.i(str, paramInt, paramString1);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    a(paramString1, 4, paramString2);
-  }
-  
-  public static void b(String paramString)
-  {
-    d(a, 1, paramString);
-  }
-  
-  public static void b(String paramString1, int paramInt, String paramString2)
-  {
-    String str = a + "-" + paramString1;
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
-    }
-    QLog.d(str, paramInt, paramString1);
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    b(paramString1, 4, paramString2);
-  }
-  
-  public static void c(String paramString1, int paramInt, String paramString2)
-  {
-    String str = a + "-" + paramString1;
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
-    }
-    QLog.w(str, paramInt, paramString1);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    c(paramString1, 4, paramString2);
-  }
-  
-  public static void d(String paramString1, int paramInt, String paramString2)
-  {
-    String str = a + "-" + paramString1;
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
-    }
-    QLog.e(str, paramInt, paramString1);
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    d(paramString1, 1, paramString2);
-  }
-  
-  public static void e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      a(paramString1, 2, paramString2);
+    if ((!CollectionUtils.isEmpty(this.jdField_a_of_type_JavaUtilList)) && (this.jdField_a_of_type_AndroidViewViewGroup != null))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        View localView = (View)localIterator.next();
+        if ((localView instanceof DiniFlyAnimationView))
+        {
+          ((DiniFlyAnimationView)localView).cancelAnimation();
+          this.jdField_a_of_type_AndroidViewViewGroup.removeView(localView);
+        }
+      }
+      this.jdField_a_of_type_JavaUtilList.clear();
     }
   }
   
-  public static void f(String paramString1, String paramString2)
+  public void a(ViewGroup paramViewGroup, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      b(paramString1, 2, paramString2);
-    }
-  }
-  
-  public static void g(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      c(paramString1, 2, paramString2);
-    }
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    paramViewGroup = new DiniFlyAnimationView(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
+    paramViewGroup.setAnimation("wsdoublelike/data.json");
+    paramViewGroup.setSpeed(2.0F);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(jdField_a_of_type_Int, b);
+    localLayoutParams.setMargins(paramInt1 - jdField_a_of_type_Int / 2, paramInt2 - b / 2, 0, 0);
+    this.jdField_a_of_type_AndroidViewViewGroup.addView(paramViewGroup, localLayoutParams);
+    this.jdField_a_of_type_JavaUtilList.add(paramViewGroup);
+    paramViewGroup.addAnimatorListener(new uqg(this, paramViewGroup));
+    paramViewGroup.playAnimation();
   }
 }
 

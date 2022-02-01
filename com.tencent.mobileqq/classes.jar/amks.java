@@ -1,39 +1,14 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.mobileqq.data.ApolloActionData;
 
-class amks
-  implements amjs
+public class amks
 {
-  amks(amkr paramamkr, String paramString) {}
+  public void a() {}
   
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    try
-    {
-      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Amkr.mRuntime.a().getCurrentAccountUin();
-      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
-      amkr.a(this.jdField_a_of_type_Amkr, this.jdField_a_of_type_JavaLangString, (List)localObject);
-      return;
-    }
-    catch (Exception localException1)
-    {
-      localException1.printStackTrace();
-      try
-      {
-        amkr.a(this.jdField_a_of_type_Amkr, this.jdField_a_of_type_JavaLangString, null);
-        return;
-      }
-      catch (Exception localException2)
-      {
-        localException2.printStackTrace();
-      }
-    }
-    amkr.a(this.jdField_a_of_type_Amkr, this.jdField_a_of_type_JavaLangString, null);
-    return;
-  }
+  public void a(ApolloActionData paramApolloActionData) {}
+  
+  public void a(Boolean paramBoolean) {}
+  
+  public void b(ApolloActionData paramApolloActionData) {}
 }
 
 

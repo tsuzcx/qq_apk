@@ -1,21 +1,6 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
-
-public class tba
-  extends AnimatorListenerAdapter
+public abstract interface tba
 {
-  public tba(ReadInJoyColorBandEntranceButton paramReadInJoyColorBandEntranceButton) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.a();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a();
-  }
+  public abstract void a(float paramFloat);
 }
 
 

@@ -1,14 +1,19 @@
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.6.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public abstract interface wkt
+public final class wkt
+  implements vqp<wea, wfy>
 {
-  public abstract void a();
+  wkt(wla paramwla) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(List<wkq> paramList, boolean paramBoolean);
-  
-  public abstract void a(wku paramwku);
+  public void a(@NonNull wea paramwea, @Nullable wfy paramwfy, @NonNull ErrorMessage paramErrorMessage)
+  {
+    ThreadManager.getUIHandler().post(new PlayModeUtils.6.1(this, paramwfy, paramErrorMessage));
+  }
 }
 
 

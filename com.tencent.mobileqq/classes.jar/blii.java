@@ -1,338 +1,177 @@
-import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.core.AECameraManager;
+import dov.com.qq.im.ae.mode.AECaptureMode;
+import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import dov.com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
+import java.io.File;
 
 public class blii
+  extends bljy
 {
-  private int jdField_a_of_type_Int;
-  private blij jdField_a_of_type_Blij;
-  private ArrayList<View> jdField_a_of_type_JavaUtilArrayList;
-  private View[] jdField_a_of_type_ArrayOfAndroidViewView = new View[0];
-  private ArrayList<View>[] jdField_a_of_type_ArrayOfJavaUtilArrayList;
-  private int b;
+  public static int a;
+  public static int b;
+  private BroadcastReceiver a;
+  private String b;
+  private int f;
   
-  public blii(AbsListView paramAbsListView) {}
-  
-  private void d()
+  static
   {
-    int m = this.jdField_a_of_type_ArrayOfAndroidViewView.length;
-    int n = this.b;
-    ArrayList[] arrayOfArrayList = this.jdField_a_of_type_ArrayOfJavaUtilArrayList;
-    int i = 0;
-    while (i < n)
-    {
-      ArrayList localArrayList = arrayOfArrayList[i];
-      int i1 = localArrayList.size();
-      int j = i1 - 1;
-      int k = 0;
-      while (k < i1 - m)
-      {
-        AbsListView.access$4400(this.jdField_a_of_type_ComTencentWidgetAbsListView, (View)localArrayList.remove(j), false);
-        k += 1;
-        j -= 1;
-      }
-      i += 1;
-    }
+    jdField_b_of_type_Int = 1;
   }
   
-  public View a(int paramInt)
+  public blii(bnbp parambnbp, bnbo parambnbo)
   {
-    paramInt -= this.jdField_a_of_type_Int;
-    View[] arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
-    if ((paramInt >= 0) && (paramInt < arrayOfView.length))
-    {
-      View localView = arrayOfView[paramInt];
-      arrayOfView[paramInt] = null;
-      return localView;
-    }
-    return null;
+    super(parambnbp, parambnbo);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new blij(this);
+    this.jdField_a_of_type_Bnbh = new bnbh(10007, this.jdField_a_of_type_Blit.d(), 6);
+    this.d = 5;
   }
   
-  public void a()
+  private Bundle a(Intent paramIntent)
   {
-    int i = 0;
-    ArrayList localArrayList;
-    int j;
-    if (this.b == 1)
-    {
-      localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-      j = localArrayList.size();
-      while (i < j)
-      {
-        ((View)localArrayList.get(i)).forceLayout();
-        i += 1;
-      }
-    }
-    int k = this.b;
-    i = 0;
-    while (i < k)
-    {
-      localArrayList = this.jdField_a_of_type_ArrayOfJavaUtilArrayList[i];
-      int m = localArrayList.size();
-      j = 0;
-      while (j < m)
-      {
-        ((View)localArrayList.get(j)).forceLayout();
-        j += 1;
-      }
-      i += 1;
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("dynamic_text", paramIntent.getStringExtra("dynamic_text"));
+    return localBundle;
   }
   
-  public void a(int paramInt)
+  public static Bundle a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, String paramString1, String paramString2, boolean paramBoolean6, int paramInt2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt3)
   {
-    if (paramInt < 1) {
-      throw new IllegalArgumentException("Can't have a viewTypeCount < 1");
-    }
-    ArrayList[] arrayOfArrayList = new ArrayList[paramInt];
-    int i = 0;
-    while (i < paramInt)
-    {
-      arrayOfArrayList[i] = new ArrayList();
-      i += 1;
-    }
-    this.b = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList = arrayOfArrayList[0];
-    this.jdField_a_of_type_ArrayOfJavaUtilArrayList = arrayOfArrayList;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_ArrayOfAndroidViewView.length < paramInt1) {
-      this.jdField_a_of_type_ArrayOfAndroidViewView = new View[paramInt1];
-    }
-    this.jdField_a_of_type_Int = paramInt2;
-    View[] arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
-    paramInt2 = 0;
-    while (paramInt2 < paramInt1)
-    {
-      View localView = this.jdField_a_of_type_ComTencentWidgetAbsListView.getChildAt(paramInt2);
-      AbsListView.LayoutParams localLayoutParams = (AbsListView.LayoutParams)localView.getLayoutParams();
-      if ((localLayoutParams != null) && (localLayoutParams.jdField_a_of_type_Int != -2)) {
-        arrayOfView[paramInt2] = localView;
-      }
-      paramInt2 += 1;
-    }
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    AbsListView.LayoutParams localLayoutParams = (AbsListView.LayoutParams)paramView.getLayoutParams();
-    if (localLayoutParams == null) {}
-    for (;;)
-    {
-      return;
-      int i = localLayoutParams.jdField_a_of_type_Int;
-      if (!a(i))
-      {
-        if (i != -2) {
-          AbsListView.access$4100(this.jdField_a_of_type_ComTencentWidgetAbsListView, paramView, false);
-        }
-      }
-      else
-      {
-        localLayoutParams.b = paramInt;
-        if (this.b == 1)
-        {
-          AbsListView.access$4200(this.jdField_a_of_type_ComTencentWidgetAbsListView, paramView);
-          this.jdField_a_of_type_JavaUtilArrayList.add(paramView);
-        }
-        while (this.jdField_a_of_type_Blij != null)
-        {
-          this.jdField_a_of_type_Blij.b(paramView);
-          return;
-          AbsListView.access$4200(this.jdField_a_of_type_ComTencentWidgetAbsListView, paramView);
-          if (i < this.jdField_a_of_type_ArrayOfJavaUtilArrayList.length) {
-            this.jdField_a_of_type_ArrayOfJavaUtilArrayList[i].add(paramView);
-          }
-        }
-      }
-    }
-  }
-  
-  public void a(List<View> paramList)
-  {
-    if (this.b == 1) {
-      paramList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    }
-    for (;;)
-    {
-      return;
-      int j = this.b;
-      ArrayList[] arrayOfArrayList = this.jdField_a_of_type_ArrayOfJavaUtilArrayList;
-      int i = 0;
-      while (i < j)
-      {
-        paramList.addAll(arrayOfArrayList[i]);
-        i += 1;
-      }
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return paramInt >= 0;
-  }
-  
-  public View b(int paramInt)
-  {
-    if (this.b == 1) {
-      return AbsListView.retrieveFromScrap(this.jdField_a_of_type_JavaUtilArrayList, paramInt);
-    }
-    int i = this.jdField_a_of_type_ComTencentWidgetAbsListView.mAdapter.getItemViewType(paramInt);
-    if ((i >= 0) && (this.jdField_a_of_type_ArrayOfJavaUtilArrayList != null) && (i < this.jdField_a_of_type_ArrayOfJavaUtilArrayList.length)) {
-      return AbsListView.retrieveFromScrap(this.jdField_a_of_type_ArrayOfJavaUtilArrayList[i], paramInt);
-    }
-    return null;
-  }
-  
-  public void b()
-  {
-    ArrayList localArrayList;
-    int j;
-    if (this.b == 1)
-    {
-      localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-      j = localArrayList.size();
-      i = 0;
-      while (i < j)
-      {
-        AbsListView.access$3900(this.jdField_a_of_type_ComTencentWidgetAbsListView, (View)localArrayList.remove(j - 1 - i), false);
-        i += 1;
-      }
-    }
-    int k = this.b;
-    int i = 0;
-    while (i < k)
-    {
-      localArrayList = this.jdField_a_of_type_ArrayOfJavaUtilArrayList[i];
-      int m = localArrayList.size();
-      j = 0;
-      while (j < m)
-      {
-        AbsListView.access$4000(this.jdField_a_of_type_ComTencentWidgetAbsListView, (View)localArrayList.remove(m - 1 - j), false);
-        j += 1;
-      }
-      i += 1;
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.b == 1)
-    {
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
-      j = ((ArrayList)localObject1).size();
-      i = 0;
-      while (i < j)
-      {
-        ((View)((ArrayList)localObject1).get(i)).setDrawingCacheBackgroundColor(paramInt);
-        i += 1;
-      }
-    }
-    int k = this.b;
-    int i = 0;
-    while (i < k)
-    {
-      localObject1 = this.jdField_a_of_type_ArrayOfJavaUtilArrayList[i];
-      int m = ((ArrayList)localObject1).size();
-      j = 0;
-      while (j < m)
-      {
-        ((View)((ArrayList)localObject1).get(j)).setDrawingCacheBackgroundColor(paramInt);
-        j += 1;
-      }
-      i += 1;
-    }
-    Object localObject1 = this.jdField_a_of_type_ArrayOfAndroidViewView;
-    int j = localObject1.length;
-    i = 0;
-    while (i < j)
-    {
-      Object localObject2 = localObject1[i];
-      if (localObject2 != null) {
-        localObject2.setDrawingCacheBackgroundColor(paramInt);
-      }
-      i += 1;
-    }
-  }
-  
-  public void c()
-  {
-    View[] arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
+    paramString1 = new Bundle();
+    int j = 1;
     int i;
-    int j;
-    label25:
-    Object localObject1;
-    int k;
-    label37:
-    View localView;
-    Object localObject2;
-    int m;
-    if (this.jdField_a_of_type_Blij != null)
+    if ((paramBoolean2) && (!paramBoolean1))
     {
-      i = 1;
-      if (this.b <= 1) {
-        break label128;
-      }
-      j = 1;
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
-      k = arrayOfView.length - 1;
-      if (k < 0) {
-        break label200;
-      }
-      localView = arrayOfView[k];
-      localObject2 = localObject1;
-      if (localView != null)
+      i = 2;
+      paramString1.putInt("ability_flag", i);
+      paramString1.putInt("PeakConstants.ARG_FORCE_CAMERA", paramInt1);
+      paramString1.putBoolean("PeakConstants.ARG_BEAUTY", paramBoolean3);
+      paramString1.putBoolean("PeakConstants.ARG_SHARP_FACE", paramBoolean3);
+      paramString1.putBoolean("PeakConstants.ARG_SUPPORT_DD", paramBoolean4);
+      if ((paramBoolean4) && (paramBoolean5))
       {
-        localObject2 = (AbsListView.LayoutParams)localView.getLayoutParams();
-        m = ((AbsListView.LayoutParams)localObject2).jdField_a_of_type_Int;
-        arrayOfView[k] = null;
-        if (a(m)) {
-          break label133;
-        }
-        localObject2 = localObject1;
-        if (m != -2)
-        {
-          AbsListView.access$4300(this.jdField_a_of_type_ComTencentWidgetAbsListView, localView, false);
-          localObject2 = localObject1;
-        }
+        paramString1.putString("KEY_CURRENT_TAB", AECaptureMode.NORMAL.name);
+        paramString1.putString("KEY_CURRENT_SELECT_ID", paramString2);
       }
+      paramString1.putBoolean("PeakConstants.ARG_SUPPORT_FILTER", paramBoolean6);
+      paramString1.putInt("ARG_DEAL_TYPE", paramInt2);
+      paramString1.putString("ARG_WEB_CALLBACK", paramString3);
+      paramString1.putString("arg_topic_id", paramString4);
+      paramString1.putString("arg_topic_name", paramString5);
+      paramString1.putString("arg_ad_tag", paramString6);
+      paramString1.putString("arg_callback", paramString3);
+      paramString1.putInt("edit_video_type", 10007);
+      paramString1.putInt("entrance_type", paramInt3);
+      paramString1.putBoolean("PeakConstants.ARG_ALBUM", false);
+      paramInt1 = blvr.F.a();
+      if (paramInt3 != 107) {
+        break label241;
+      }
+      paramInt1 = blvr.G.a();
     }
     for (;;)
     {
-      k -= 1;
-      localObject1 = localObject2;
-      break label37;
-      i = 0;
-      break;
-      label128:
-      j = 0;
-      break label25;
-      label133:
-      if (j != 0) {
-        localObject1 = this.jdField_a_of_type_ArrayOfJavaUtilArrayList[m];
+      paramString1.putInt("VIDEO_STORY_FROM_TYPE", paramInt1);
+      return paramString1;
+      i = j;
+      if (paramBoolean2) {
+        break;
       }
-      AbsListView.access$4200(this.jdField_a_of_type_ComTencentWidgetAbsListView, localView);
-      ((AbsListView.LayoutParams)localObject2).b = (this.jdField_a_of_type_Int + k);
-      ((ArrayList)localObject1).add(localView);
-      localObject2 = localObject1;
-      if (i != 0)
-      {
-        this.jdField_a_of_type_Blij.b(localView);
-        localObject2 = localObject1;
+      i = j;
+      if (!paramBoolean1) {
+        break;
+      }
+      i = 3;
+      break;
+      label241:
+      if (paramInt3 == 108) {
+        paramInt1 = blvr.D.a();
       }
     }
-    label200:
-    d();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.a(paramInt1, paramInt2, paramIntent);
+    PublishParam localPublishParam;
+    Activity localActivity;
+    Object localObject;
+    if ((paramInt1 == 10007) && (paramInt2 == -1) && (paramIntent != null))
+    {
+      localPublishParam = (PublishParam)paramIntent.getParcelableExtra(PublishParam.a);
+      if (localPublishParam.jdField_j_of_type_Int == 1)
+      {
+        localActivity = this.jdField_a_of_type_Bnbp.a();
+        localActivity.getIntent().putExtra("ab_test_send_btn_click_time", SystemClock.uptimeMillis());
+        localObject = localPublishParam.c;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("QIMWebEffectCameraCaptureUnit", 2, "hwEncodeVideo videoMergeThumbPath =" + (String)localObject);
+          QLog.d("QIMWebEffectCameraCaptureUnit", 2, "publishParam =" + localPublishParam.toString());
+        }
+        PtvFilterUtils.a(new File(localPublishParam.jdField_j_of_type_JavaLangString).getParent(), localPublishParam.jdField_b_of_type_JavaLangString);
+        if (this.jdField_a_of_type_Bnbh.b() != 107) {
+          break label244;
+        }
+      }
+    }
+    label244:
+    for (paramInt1 = 15;; paramInt1 = 32)
+    {
+      localActivity.getIntent().putExtra("param_entrance", paramInt1);
+      localActivity.getIntent().putExtra("fake_id", localPublishParam.jdField_b_of_type_JavaLangString);
+      paramIntent = a(paramIntent);
+      localObject = new SessionInfo();
+      ((SessionInfo)localObject).curFriendUin = "0";
+      blil.a(localActivity, (SessionInfo)localObject, localPublishParam, paramIntent, null);
+      this.jdField_a_of_type_Blnv.i();
+      return;
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+    paramBundle = this.jdField_a_of_type_Bnbp.a().getIntent().getExtras();
+    this.f = paramBundle.getInt("ARG_DEAL_TYPE");
+    this.jdField_b_of_type_JavaLangString = paramBundle.getString("ARG_WEB_CALLBACK");
+    paramBundle = new IntentFilter();
+    paramBundle.addAction("tencent.video.q2v.startUploadPTV");
+    this.jdField_a_of_type_Bnbp.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      localObject = new bnbn().b(3).a();
+      if (this.f == jdField_a_of_type_Int)
+      {
+        ((bnbl)localObject).d = true;
+        ((bnbl)localObject).a = this.jdField_b_of_type_JavaLangString;
+      }
+      this.jdField_a_of_type_Bnbh.a((bnbl)localObject);
+      return;
+    }
+    Object localObject = new bnbk(this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraManager.getSelectedCamera()).a(3).b(this.jdField_b_of_type_JavaLangString).b(this.f).a();
+    this.jdField_a_of_type_Bnbh.a((bnbi)localObject);
+  }
+  
+  public void e()
+  {
+    super.e();
+    this.jdField_a_of_type_Bnbp.a().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blii
  * JD-Core Version:    0.7.0.1
  */

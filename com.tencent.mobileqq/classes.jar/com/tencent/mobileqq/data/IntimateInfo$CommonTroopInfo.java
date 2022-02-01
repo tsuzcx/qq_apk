@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import arwu;
+import aqqq;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -16,7 +16,7 @@ import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.OneGroupInfo;
 public class IntimateInfo$CommonTroopInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CommonTroopInfo> CREATOR = new arwu();
+  public static final Parcelable.Creator<CommonTroopInfo> CREATOR = new aqqq();
   public long recentMsgTime;
   public String troopCode;
   public String troopName;

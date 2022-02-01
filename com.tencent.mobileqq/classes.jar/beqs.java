@@ -1,58 +1,12 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.BaseWriteTogetherMsg;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.WriteTogetherDecodeFactory;
-import mqq.app.AppRuntime;
-import okio.ByteString;
-
-public class beqs
+class beqs
+  implements beza
 {
-  private static final String jdField_a_of_type_JavaLangString = "WriteTogether." + beqs.class.getSimpleName();
-  private WriteTogetherDecodeFactory jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgWriteTogetherDecodeFactory = new WriteTogetherDecodeFactory();
+  beqs(beqp parambeqp) {}
   
-  private void b(String paramString)
+  public void a(int paramInt)
   {
-    String[] arrayOfString = paramString.split("\n");
-    int i = 0;
-    if (i < arrayOfString.length)
-    {
-      WriteTogetherDecodeFactory localWriteTogetherDecodeFactory = this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgWriteTogetherDecodeFactory;
-      String str = arrayOfString[i];
-      if (i + 1 < arrayOfString.length)
-      {
-        paramString = arrayOfString[(i + 1)];
-        label40:
-        paramString = localWriteTogetherDecodeFactory.decode(str, paramString);
-        if (paramString != null) {
-          break label65;
-        }
-      }
-      for (;;)
-      {
-        i += 2;
-        break;
-        paramString = null;
-        break label40;
-        label65:
-        a(paramString);
-      }
-    }
+    this.a.a(beyy.b(paramInt));
   }
-  
-  void a(BaseWriteTogetherMsg paramBaseWriteTogetherMsg)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      ((bemr)((QQAppInterface)localAppRuntime).getManager(377)).a(paramBaseWriteTogetherMsg);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    b(paramString);
-  }
-  
-  public void a(ByteString paramByteString) {}
 }
 
 

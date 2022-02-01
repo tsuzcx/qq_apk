@@ -1,33 +1,57 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqtx
-  implements CompoundButton.OnCheckedChangeListener
+  extends aqsw
 {
-  public aqtx(ColorNoteSettingFragment paramColorNoteSettingFragment, QQAppInterface paramQQAppInterface) {}
+  public aqty a;
+  public String b;
+  public boolean b;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static aqtx a(JSONObject paramJSONObject)
   {
-    aqre.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
-    if (!paramBoolean) {
-      new aqrf().c(null);
-    }
-    ((aqrw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(168)).a(paramBoolean);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
+    aqtx localaqtx = new aqtx();
+    localaqtx.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
+    localaqtx.jdField_b_of_type_JavaLangString = paramJSONObject.optString("action");
+    localaqtx.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isChecked", true);
+    localaqtx.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("isAddByUser");
+    return localaqtx;
+  }
+  
+  public JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      bdll.b(null, "dc00898", "", "", "0X800A8B0", "0X800A8B0", i, 0, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
+      localJSONObject.put("name", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("action", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
+      localJSONObject.put("isAddByUser", this.jdField_b_of_type_Boolean);
+      return localJSONObject;
     }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return localJSONObject;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_Aqty == null) {
+      return this.jdField_a_of_type_Boolean;
+    }
+    return this.jdField_a_of_type_Aqty.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqtx
  * JD-Core Version:    0.7.0.1
  */

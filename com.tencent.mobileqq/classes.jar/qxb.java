@@ -1,24 +1,24 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemMulti;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class qxb
-  implements Cloneable
+  implements View.OnClickListener
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c = -1;
-  public int d = -1;
-  public int e = -1;
-  public int f = -1;
+  public qxb(ComponentTopicItemMulti paramComponentTopicItemMulti) {}
   
-  public qxb()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-  }
-  
-  public String toString()
-  {
-    return "VideoExtraRepoerData{JumpWayWhich=" + this.jdField_a_of_type_Int + ", InOneThreeSource=" + this.jdField_b_of_type_Int + ", videoTimePosition=" + this.d + ", videoDuration=" + this.e + ", needWhetherClickIn=" + this.jdField_b_of_type_Boolean + ", whetherClickIn=" + this.jdField_a_of_type_Boolean + ", InVideoChannelSource=" + this.c + ", videoFromType=" + this.f + '}';
+    pay.a = ComponentTopicItemMulti.a(this.a);
+    pay.a(this.a.getContext(), this.a.a.b);
+    String str1 = uhv.b(ComponentTopicItemMulti.a(this.a));
+    String str2 = pay.a(ComponentTopicItemMulti.a(this.a).mAlgorithmID, pay.a(ComponentTopicItemMulti.a(this.a)), ComponentTopicItemMulti.a(this.a), 0, 0, NetworkUtil.isWifiConnected(this.a.getContext()), ComponentTopicItemMulti.a(this.a).mSubscribeID, null, ComponentTopicItemMulti.a(this.a).innerUniqueID, null, ComponentTopicItemMulti.a(this.a));
+    odq.a(null, ComponentTopicItemMulti.a(this.a).mSubscribeID, str1, str1, 0, 0, ComponentTopicItemMulti.a(this.a).mFeedId + "", String.valueOf(this.a.a.a), String.valueOf(ComponentTopicItemMulti.a(this.a).mAlgorithmID), str2, false);
+    pay.a(ComponentTopicItemMulti.a(this.a), ComponentTopicItemMulti.a(this.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

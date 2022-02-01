@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
+import amtj;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anzj;
-import beyq;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
 
 class EmojiRedPackPreviewFragment$5
   implements Runnable
@@ -29,15 +29,15 @@ class EmojiRedPackPreviewFragment$5
         this.this$0.sendBtn.setVisibility(0);
         this.this$0.viewOpenAnim.setVisibility(0);
         Object localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = beyq.a;
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = beyq.a;
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
         ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
         localObject = URLDrawable.getFileDrawable(this.val$gifPath, (URLDrawable.URLDrawableOptions)localObject);
         this.this$0.previewImg.setImageDrawable((Drawable)localObject);
         AbstractGifImage.resumeAll();
         return;
       }
-      this.this$0.tips.setText(anzj.a(2131702915));
+      this.this$0.tips.setText(amtj.a(2131703145));
       this.this$0.reCaptureBtn.setVisibility(0);
       this.this$0.numberProbar.setVisibility(8);
       this.this$0.sendBtn.setVisibility(8);

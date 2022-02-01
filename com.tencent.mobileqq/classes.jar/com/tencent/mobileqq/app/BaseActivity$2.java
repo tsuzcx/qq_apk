@@ -17,7 +17,7 @@ class BaseActivity$2
         if (QLog.isColorLevel()) {
           QLog.d("notification", 2, "BaseActivity doOnWindowFocusChanged removeNotification Xiaomi-MI 5");
         }
-        this.this$0.app.j();
+        this.this$0.app.removeNotification();
       }
     }
   }

@@ -1,88 +1,39 @@
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.viola.core.ViolaEnvironment;
 
 public class tos
+  implements tox
 {
-  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
+  public tos(ViolaBaseView paramViolaBaseView, boolean paramBoolean, long paramLong) {}
+  
+  public void a()
   {
-    int k = 1;
-    for (;;)
+    ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, 5, this.jdField_a_of_type_Boolean);
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView)))
     {
-      try
+      if (!TextUtils.isEmpty(paramString))
       {
-        if (paramAdData.a == null) {
-          return paramJSONObject;
-        }
-        paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_inner_game_cell");
-        if (!TextUtils.isEmpty(paramAdData.a.k)) {
-          paramJSONObject.put("id_inner_small_img", new JSONObject());
-        }
-        JSONObject localJSONObject;
-        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_JavaLangString))
+        ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, paramString);
+        if (this.jdField_a_of_type_Boolean)
         {
-          localJSONObject = new JSONObject();
-          localJSONObject.put("text", paramAdData.a.jdField_a_of_type_JavaLangString);
-          paramJSONObject.put("id_inner_title", localJSONObject);
+          ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.KEY_MAIN, ViolaEnvironment.MAIN_END_NET);
+          ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_MAIN_JS_NET, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+          ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).sendEmptyMessageDelayed(3, 0L);
         }
-        if ((!tpp.c(paramAdData)) && (!TextUtils.isEmpty(paramAdData.a.h)))
-        {
-          localJSONObject = new JSONObject();
-          localJSONObject.put("text", paramAdData.a.h);
-          paramJSONObject.put("id_inner_category", localJSONObject);
-        }
-        if (TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Tls.d)) {
-          break label424;
-        }
-        paramJSONObject.put("id_inner_game_img1", new JSONObject());
-        paramJSONObject.put("id_game_img1_container1", new JSONObject());
-        i = 1;
-        j = 1;
-        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Tls.e))
-        {
-          paramJSONObject.put("id_inner_game_img2", new JSONObject());
-          paramJSONObject.put("id_game_img2_container2", new JSONObject());
-          i = 1;
-          j = 1;
-        }
-        if (TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Tls.f)) {
-          break label421;
-        }
-        paramJSONObject.put("id_inner_game_img3", new JSONObject());
-        paramJSONObject.put("id_game_img3_container3", new JSONObject());
-        i = 0;
-        j = 1;
-        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Tls.g))
-        {
-          localJSONObject = new JSONObject();
-          localJSONObject.put("text", paramAdData.a.jdField_a_of_type_Tls.g);
-          paramJSONObject.put("id_inner_ad_name", localJSONObject);
-          j = k;
-          if (j != 0) {
-            paramJSONObject.put("id_bottom_operation", new JSONObject());
-          }
-          if (i != 0) {
-            paramJSONObject.put("id_game_img_right_space", new JSONObject());
-          }
-          localJSONObject = new JSONObject();
-          localJSONObject.put("innerGameModel", paramAdData);
-          paramJSONObject.put("id_view_AdDownloadView", localJSONObject);
-          return paramJSONObject;
-        }
+        ThreadManager.post(new ViolaBaseView.3.1(this), 8, null, true);
       }
-      catch (JSONException paramAdData)
-      {
-        paramAdData.printStackTrace();
-        return paramJSONObject;
-      }
-      continue;
-      label421:
-      continue;
-      label424:
-      int i = 0;
-      int j = 0;
     }
+    else {
+      return;
+    }
+    ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView, 10, this.jdField_a_of_type_Boolean);
   }
 }
 

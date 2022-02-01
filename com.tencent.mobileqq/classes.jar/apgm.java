@@ -1,47 +1,47 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-class apgm
-  extends BroadcastReceiver
+public class apgm
+  implements bjoe
 {
-  apgm(apgl paramapgl) {}
+  public apgm(BusinessCardEditActivity paramBusinessCardEditActivity, String paramString, bjnw parambjnw) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    do
+    switch (paramInt)
     {
-      int i;
-      int j;
-      do
-      {
-        do
-        {
-          return;
-        } while ((!"tencent.businessnotify.qq.to.subprocess".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("bussinessType", 0) != 2));
-        switch (paramIntent.getIntExtra("event", 0))
-        {
-        default: 
-          return;
-        case 1: 
-          paramContext = paramIntent.getStringExtra("bussinessSubName");
-          i = paramIntent.getIntExtra("download_Index", 0);
-          j = paramIntent.getIntExtra("download_Progress", 0);
-          if (AudioHelper.f()) {
-            QLog.w(this.a.c, 1, "receive notify, index[" + i + "], progress[" + j + "]");
-          }
-          break;
-        }
-      } while (this.a.a == null);
-      this.a.a.b(paramContext, i, j);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.e();
       return;
-      paramContext = paramIntent.getStringExtra("config_Content");
-      this.a.b(paramContext);
-    } while (this.a.a == null);
-    this.a.a.b();
+      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
+      {
+        paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
+        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.app.getCallFacade().b(this.jdField_a_of_type_JavaLangString);
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131693064, 1);
+        continue;
+        if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
+        {
+          paramView = new Intent();
+          paramView.setAction("android.intent.action.SENDTO");
+          paramView.setData(Uri.parse("smsto:" + this.jdField_a_of_type_JavaLangString));
+          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131693064, 1);
+        }
+      }
+    }
   }
 }
 

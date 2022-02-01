@@ -1,19 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
 
 class ajpg
-  implements View.OnClickListener
+  extends nmf
 {
-  ajpg(ajpe paramajpe) {}
+  ajpg(ajpd paramajpd) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
-    bguq.a(ajpe.a(this.a), localRecommendTroopItem, 10001);
-    bhju.a("Grp_contacts_news", "notice", "recom_clk_add", 0, 0, new String[] { localRecommendTroopItem.uin, localRecommendTroopItem.recomAlgol });
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((ajpd.a(this.a).isFinishing()) || (this.a.a)) {
+      return;
+    }
+    this.a.d();
+    if (ajpd.a(this.a) != null) {
+      ajpd.a(this.a).removeCallbacks(ajpd.b(this.a));
+    }
+    if (paramInt == 16)
+    {
+      this.a.e();
+      return;
+    }
+    ajpd.a(this.a, ajpd.a(this.a));
   }
 }
 

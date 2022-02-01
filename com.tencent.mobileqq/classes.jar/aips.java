@@ -1,47 +1,64 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.AssetManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.HashMap;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
+@SuppressLint({"UseSparseArrays"})
 public class aips
-  extends anyu
 {
-  public aips(TroopChatPie paramTroopChatPie) {}
+  private static aips jdField_a_of_type_Aips;
+  HashMap<Integer, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  private aips(Context paramContext)
   {
-    int i;
-    if (QLog.isColorLevel())
+    a(paramContext);
+  }
+  
+  public static aips a()
+  {
+    try
     {
-      String str = this.a.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder().append("onSetGenralSettingsTroopFilter: isSuc = ").append(paramBoolean).append(", size = ");
-      if (paramMap == null)
-      {
-        i = 0;
-        QLog.d(str, 2, i);
+      if (jdField_a_of_type_Aips == null) {
+        jdField_a_of_type_Aips = new aips(BaseApplicationImpl.getContext());
       }
+      return jdField_a_of_type_Aips;
     }
-    else
+    finally {}
+  }
+  
+  private void a(Context paramContext)
+  {
+    try
     {
-      if ((paramMap != null) && (paramMap.size() != 0)) {
-        break label83;
-      }
-    }
-    label83:
-    while (!this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())
-    {
-      return;
-      i = paramMap.size();
-      break;
-    }
-    if (paramBoolean)
-    {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131718984), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+      SAXParser localSAXParser = SAXParserFactory.newInstance().newSAXParser();
+      aipt localaipt = new aipt(this);
+      localSAXParser.parse(paramContext.getAssets().open("online_status_icon_config.xml"), localaipt);
       return;
     }
-    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131718983), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+    catch (Exception paramContext) {}
+  }
+  
+  public int a(int paramInt)
+  {
+    return a(paramInt, 1);
+  }
+  
+  public int a(int paramInt1, int paramInt2)
+  {
+    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+    if (localInteger == null) {
+      return paramInt2;
+    }
+    return localInteger.intValue();
+  }
+  
+  public boolean a(int paramInt)
+  {
+    paramInt = a(paramInt);
+    return (paramInt == 3) || (paramInt == 2);
   }
 }
 

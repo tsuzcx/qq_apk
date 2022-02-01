@@ -1,106 +1,74 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.startup.step.ProcessInfoUtil.1;
+import android.util.Log;
+import com.tencent.mobileqq.together.writetogether.websocket.msg.ConnClosedMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.io.EOFException;
+import java.net.SocketException;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.annotation.Nullable;
+import javax.net.ssl.SSLException;
+import okhttp3.Response;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
+import okio.ByteString;
 
-public class bdjl
+class bdjl
+  extends WebSocketListener
 {
-  public static int a(Context paramContext, String paramString)
+  bdjl(bdjk parambdjk) {}
+  
+  public void onClosed(WebSocket paramWebSocket, int paramInt, String paramString)
   {
-    if (paramContext != null)
+    QLog.d("WriteTogether.WriteTogetherWebSocketEngine", 1, "onClosed");
+    bdjk.a(this.a).set(false);
+    bdjk.a(this.a, null);
+    if (this.a.a != null) {
+      this.a.a.onClosed(paramWebSocket, paramInt, paramString);
+    }
+  }
+  
+  public void onFailure(WebSocket paramWebSocket, Throwable paramThrowable, @Nullable Response paramResponse)
+  {
+    QLog.e("WriteTogether.WriteTogetherWebSocketEngine", 1, "openWebSocketConn onFailure, e = " + Log.getStackTraceString(paramThrowable));
+    if (this.a.a != null) {
+      this.a.a.onFailure(paramWebSocket, paramThrowable, paramResponse);
+    }
+    if (((paramThrowable instanceof EOFException)) || ((paramThrowable instanceof SocketException)) || ((paramThrowable instanceof SSLException)))
     {
-      paramContext = (ActivityManager)paramContext.getSystemService("activity");
-      if (paramContext != null)
-      {
-        paramContext = paramContext.getRunningAppProcesses();
-        if (paramContext != null)
-        {
-          paramContext = paramContext.iterator();
-          while (paramContext.hasNext())
-          {
-            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-            if (paramString.compareTo(localRunningAppProcessInfo.processName) == 0) {
-              return localRunningAppProcessInfo.pid;
-            }
-          }
-        }
+      this.a.b();
+      bdjk.a(this.a).a(new ConnClosedMsg());
+    }
+  }
+  
+  public void onMessage(WebSocket paramWebSocket, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WriteTogether.WriteTogetherWebSocketEngine", 2, new Object[] { "onMessage: ", paramString });
+    }
+    bdjk.a(this.a).a(paramString);
+    if (this.a.a != null) {
+      this.a.a.onMessage(paramWebSocket, paramString);
+    }
+  }
+  
+  public void onMessage(WebSocket paramWebSocket, ByteString paramByteString)
+  {
+    bdjk.a(this.a).a(paramByteString);
+    if (this.a.a != null) {
+      this.a.a.onMessage(paramWebSocket, paramByteString);
+    }
+  }
+  
+  public void onOpen(WebSocket paramWebSocket, Response paramResponse)
+  {
+    QLog.d("WriteTogether.WriteTogetherWebSocketEngine", 1, "onOpen");
+    bdjk.a(this.a, paramWebSocket);
+    if (!bdjk.a(this.a).get())
+    {
+      bdjk.a(this.a).set(true);
+      if (this.a.a != null) {
+        this.a.a.onOpen(paramWebSocket, paramResponse);
       }
     }
-    return -1;
-  }
-  
-  public static int a(String paramString)
-  {
-    int i = -1;
-    SharedPreferences localSharedPreferences = b();
-    if (localSharedPreferences != null) {
-      i = localSharedPreferences.getInt("pid" + paramString, -1);
-    }
-    return i;
-  }
-  
-  public static long a(String paramString)
-  {
-    long l2 = 0L;
-    int i = a(BaseApplicationImpl.getContext(), paramString);
-    long l1;
-    if (i == -1) {
-      l1 = l2;
-    }
-    do
-    {
-      long l3;
-      do
-      {
-        int j;
-        do
-        {
-          do
-          {
-            return l1;
-            j = a(paramString);
-            l1 = l2;
-          } while (j == -1);
-          l1 = l2;
-        } while (i != j);
-        l3 = b(paramString);
-        l1 = l2;
-      } while (l3 == -1L);
-      l2 = System.currentTimeMillis() - l3;
-      l1 = l2;
-    } while (!QLog.isColorLevel());
-    QLog.d("ProcessUtils", 2, "getProcessRunningTime - " + paramString + ":" + l2);
-    return l2;
-  }
-  
-  public static void a(String paramString)
-  {
-    ThreadManager.post(new ProcessInfoUtil.1(paramString), 5, null, true);
-  }
-  
-  public static long b(String paramString)
-  {
-    long l = -1L;
-    SharedPreferences localSharedPreferences = b();
-    if (localSharedPreferences != null) {
-      l = localSharedPreferences.getLong("start_time" + paramString, -1L);
-    }
-    return l;
-  }
-  
-  private static SharedPreferences b()
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null) {
-      return localBaseApplicationImpl.getSharedPreferences("process_info_pref", 4);
-    }
-    return null;
   }
 }
 

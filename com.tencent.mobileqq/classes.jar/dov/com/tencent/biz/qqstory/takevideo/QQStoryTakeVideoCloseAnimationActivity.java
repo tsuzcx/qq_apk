@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.ImageView;
-import antf;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.os.MqqHandler;
@@ -23,14 +23,15 @@ public class QQStoryTakeVideoCloseAnimationActivity
   
   static
   {
-    jdField_a_of_type_JavaLangString = antf.br + "qqstory/animation_cover.jpg";
+    jdField_a_of_type_JavaLangString = AppConstants.SDCARD_FILE_SAVE_TMP_PATH + "qqstory/animation_cover.jpg";
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   

@@ -1,17 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class adrj
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adrj(AccountManageActivity paramAccountManageActivity) {}
+  public adrj(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.i();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface = MoveToGroupActivity.a(this.a).getInputValue();
+    if (paramDialogInterface.equals("")) {
+      paramDialogInterface = this.a.getResources().getString(2131692849);
+    }
+    for (;;)
+    {
+      if (MoveToGroupActivity.a(this.a).size() > 0) {}
+      for (byte b = (byte)(((Groups)MoveToGroupActivity.a(this.a).get(MoveToGroupActivity.a(this.a).size() - 1)).seqid + 1);; b = 1)
+      {
+        MoveToGroupActivity.b(this.a, this.a.a(b, paramDialogInterface));
+        if (QLog.isColorLevel()) {
+          QLog.d("MoveToGroupActivity", 2, "AddFriendGroup needShowDialog = " + MoveToGroupActivity.a(this.a));
+        }
+        if (MoveToGroupActivity.a(this.a)) {
+          this.a.a(2131692883);
+        }
+        return;
+      }
+    }
   }
 }
 

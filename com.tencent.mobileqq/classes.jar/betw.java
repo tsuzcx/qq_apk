@@ -1,86 +1,221 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.transfile.GroupPicUploadProcessor.2.1;
-import com.tencent.mobileqq.transfile.GroupPicUploadProcessor.2.2;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class betw
-  implements ITransactionCallback
 {
-  betw(betv parambetv) {}
+  public static boolean a;
+  public static boolean b;
+  public static int c = 1;
+  public int a;
+  public ArrayList<Integer> a;
+  public int b;
+  public ArrayList<Integer> b;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public betw()
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupPicUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l1 - betv.a(this.a)) + "ms");
-    }
-    this.a.b(paramHashMap);
-    ThreadManager.post(new GroupPicUploadProcessor.2.2(this, l2, l3, l4, l5), 5, null, false);
-    this.a.a(paramInt, "OnFailed.", "", this.a.jdField_b_of_type_Berr);
-    this.a.d();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_Boolean = false;
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public static betw a(aptx[] paramArrayOfaptx)
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupPicUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l1 - betv.a(this.a)) + "ms ,fileSize:" + this.a.jdField_a_of_type_Bete.a + " transInfo:" + (String)paramHashMap.get("rep_bdhTrans"));
-    }
-    this.a.b(paramHashMap);
-    this.a.jdField_b_of_type_Berr.b();
-    this.a.jdField_b_of_type_Berr.a = 1;
-    this.a.s = this.a.jdField_q_of_type_Long;
-    this.a.jdField_b_of_type_Boolean = true;
-    this.a.s();
-    ThreadManager.post(new GroupPicUploadProcessor.2.1(this, l2, l3, l4, l5), 5, null, false);
-    this.a.jdField_a_of_type_Bete.a();
-    paramArrayOfByte = (String)paramHashMap.get("ip");
-    paramHashMap = (String)paramHashMap.get("port");
-    this.a.a(true, 0, paramArrayOfByte, paramHashMap);
-  }
-  
-  public void onSwitch2BackupChannel()
-  {
-    long l = SystemClock.uptimeMillis();
-    this.a.d("<BDH_LOG> onSwitch2BackupChannel() switch to HTTP channel");
-    this.a.jdField_a_of_type_JavaUtilHashMap.put("param_switchChannel", String.valueOf(l - betv.a(this.a)));
-  }
-  
-  public void onTransStart()
-  {
-    this.a.jdField_b_of_type_Berr.a();
-  }
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    betv localbetv = this.a;
-    bete localbete = this.a.jdField_a_of_type_Bete;
-    long l = paramInt;
-    localbete.e = l;
-    localbetv.s = l;
-    if ((paramInt < this.a.jdField_q_of_type_Long) && (!this.a.jdField_q_of_type_Boolean) && (!this.a.m))
+    boolean bool2 = true;
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    int i4 = 0;
+    int i2 = 0;
+    int i3 = 0;
+    int i1 = 0;
+    int n = 0;
+    if (i4 < paramArrayOfaptx.length)
     {
-      this.a.j();
-      if (betv.a(this.a)) {
-        bpxo.a(betv.a(this.a), 1002, this.a.f());
+      Object localObject = paramArrayOfaptx[i4].a;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+      for (;;)
+      {
+        i4 += 1;
+        break;
+        localArrayList1.clear();
+        localArrayList2.clear();
+        int i = i2;
+        int j = i3;
+        int k = i1;
+        int m = n;
+        try
+        {
+          localObject = new JSONObject((String)localObject);
+          i = i2;
+          j = i3;
+          k = i1;
+          m = n;
+          int i5 = ((JSONObject)localObject).optInt("globalOpen", 0);
+          i = i2;
+          j = i3;
+          k = i1;
+          m = i5;
+          int i6 = ((JSONObject)localObject).optInt("globalOpenStudyMode", 0);
+          i = i2;
+          j = i3;
+          k = i6;
+          m = i5;
+          int i7 = ((JSONObject)localObject).optInt("groupShortcutBarSwitchWithoutAdmin", 0);
+          i = i2;
+          j = i7;
+          k = i6;
+          m = i5;
+          int i8 = ((JSONObject)localObject).optInt("groupAppHotRecommendSwitch", 0);
+          i = i8;
+          j = i7;
+          k = i6;
+          m = i5;
+          JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("enabledGroupTypes");
+          if (localJSONArray != null)
+          {
+            i = i8;
+            j = i7;
+            k = i6;
+            m = i5;
+            if (localJSONArray.length() > 0)
+            {
+              n = 0;
+              for (;;)
+              {
+                i = i8;
+                j = i7;
+                k = i6;
+                m = i5;
+                if (n >= localJSONArray.length()) {
+                  break;
+                }
+                i = i8;
+                j = i7;
+                k = i6;
+                m = i5;
+                localArrayList1.add(Integer.valueOf(localJSONArray.getInt(n)));
+                n += 1;
+              }
+            }
+          }
+          i = i8;
+          j = i7;
+          k = i6;
+          m = i5;
+          localObject = ((JSONObject)localObject).optJSONArray("enabledGroupTypesStudyMode");
+          i2 = i8;
+          i3 = i7;
+          i1 = i6;
+          n = i5;
+          if (localObject != null)
+          {
+            i2 = i8;
+            i3 = i7;
+            i1 = i6;
+            n = i5;
+            i = i8;
+            j = i7;
+            k = i6;
+            m = i5;
+            if (((JSONArray)localObject).length() > 0)
+            {
+              int i9 = 0;
+              for (;;)
+              {
+                i2 = i8;
+                i3 = i7;
+                i1 = i6;
+                n = i5;
+                i = i8;
+                j = i7;
+                k = i6;
+                m = i5;
+                if (i9 >= ((JSONArray)localObject).length()) {
+                  break;
+                }
+                i = i8;
+                j = i7;
+                k = i6;
+                m = i5;
+                localArrayList2.add(Integer.valueOf(((JSONArray)localObject).getInt(i9)));
+                i9 += 1;
+              }
+            }
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+          i2 = i;
+          i3 = j;
+          i1 = k;
+          n = m;
+        }
       }
     }
+    paramArrayOfaptx = new betw();
+    if (paramArrayOfaptx != null)
+    {
+      if (n != 1) {
+        break label591;
+      }
+      bool1 = true;
+      jdField_a_of_type_Boolean = bool1;
+      if (i1 != 1) {
+        break label597;
+      }
+    }
+    label591:
+    label597:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      jdField_b_of_type_Boolean = bool1;
+      paramArrayOfaptx.jdField_a_of_type_JavaUtilArrayList = localArrayList1;
+      paramArrayOfaptx.jdField_a_of_type_Int = i3;
+      paramArrayOfaptx.jdField_b_of_type_Int = i2;
+      paramArrayOfaptx.jdField_b_of_type_JavaUtilArrayList = localArrayList2;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopShortcutBarConfig", 2, "parse:" + paramArrayOfaptx.toString());
+      }
+      return paramArrayOfaptx;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_b_of_type_Int > 0;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return (true == jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt)));
+  }
+  
+  public boolean b(int paramInt)
+  {
+    return (true == jdField_b_of_type_Boolean) || (this.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt)));
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isGlobalOpen:").append(jdField_a_of_type_Boolean).append("\r\n");
+    localStringBuilder.append("isGlobalStudyModeOpen:").append(jdField_b_of_type_Boolean).append("\r\n");
+    localStringBuilder.append("mTroopShortCutBarSwitchList:").append(this.jdField_a_of_type_JavaUtilArrayList).append("\r\n");
+    localStringBuilder.append("mStudyModeTroopSwitchList:").append(this.jdField_b_of_type_JavaUtilArrayList).append("\r\n");
+    localStringBuilder.append("groupShortcutBarSwitchWithoutAdmin:").append(this.jdField_a_of_type_Int).append("\r\n");
+    localStringBuilder.append("groupAppHotRecommendSwitch:").append(this.jdField_b_of_type_Int).append("\r\n");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     betw
  * JD-Core Version:    0.7.0.1
  */

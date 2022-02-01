@@ -1,24 +1,10 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class afgv
-  implements View.OnClickListener
+public abstract interface afgv
 {
-  public afgv(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
+  public abstract boolean a();
   
-  public void onClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.finish();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

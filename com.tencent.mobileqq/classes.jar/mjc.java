@@ -1,15 +1,34 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-class mjc
-  implements zye
+public class mjc
+  implements mih
 {
-  mjc(mjb parammjb, Activity paramActivity, long paramLong) {}
+  public mjc(VideoControlUI paramVideoControlUI) {}
+  
+  public long a()
+  {
+    return this.a.a();
+  }
   
   public void a()
   {
-    this.jdField_a_of_type_Mjb.b(this.jdField_a_of_type_AndroidAppActivity);
-    QLog.d("QavSharpnessSVIPHelper", 2, "launchQQPayFunction time end: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    this.a.C(AudioHelper.b());
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.a.c(paramBoolean1, paramBoolean2);
+  }
+  
+  public boolean a()
+  {
+    return this.a.g();
+  }
+  
+  public boolean b()
+  {
+    return true;
   }
 }
 

@@ -1,58 +1,89 @@
-import com.tencent.hlyyb.downloader.Downloader;
-import com.tencent.hlyyb.downloader.DownloaderTask;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-class bdvw
-  implements bdvu
+public class bdvw
 {
-  bdvw(bdvv parambdvv) {}
-  
-  public void a(DownloaderTask paramDownloaderTask)
+  public static void a(Context paramContext)
   {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskCompleted url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSavePath() }));
-    if (bdvv.a(this.a) != null) {
-      bdvv.a(this.a).deleteTask(paramDownloaderTask, false);
+    String str = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.4.8", Integer.valueOf(0) });
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", str);
+    localIntent.putExtra("isShowAd", false);
+    localIntent.putExtra("hide_more_button", true);
+    localIntent.putExtra("hide_operation_bar", true);
+    paramContext.startActivity(localIntent);
+    ((Activity)paramContext).overridePendingTransition(2130771992, 2130771993);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.troopCreate", 2, "enterTroopCreate");
     }
-    if ((bdvv.a(this.a) != null) && (bdvv.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (bdvv.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((bdvt)bdvv.a(this.a).get(paramDownloaderTask.getUrl())).a();
-    }
-    bdvv.a(this.a, paramDownloaderTask.getUrl());
   }
   
-  public void b(DownloaderTask paramDownloaderTask)
+  public static void a(Context paramContext, int paramInt)
   {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskDetected url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
-  }
-  
-  public void c(DownloaderTask paramDownloaderTask)
-  {
-    QLog.e("DownloadManager_Now_for_qq", 1, String.format("onTaskFailed url=%s failCode=%s failInfo=%s", new Object[] { paramDownloaderTask.getUrl(), Integer.valueOf(paramDownloaderTask.getFailCode()), paramDownloaderTask.getFailInfo() }));
-    if (bdvv.a(this.a) != null) {
-      bdvv.a(this.a).deleteTask(paramDownloaderTask, false);
+    if ((paramInt == 1) || (paramInt == 2)) {}
+    for (String str = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.4.8", Integer.valueOf(1) });; str = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.4.8", Integer.valueOf(0) }))
+    {
+      Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", str);
+      localIntent.putExtra("isShowAd", false);
+      localIntent.putExtra("hide_more_button", true);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("troop_create_from", paramInt);
+      ((BaseActivity)paramContext).startActivityForResult(localIntent, 51);
+      ((Activity)paramContext).overridePendingTransition(2130771992, 2130771993);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.troopCreate", 2, "enterTroopCreateForResult");
+      }
+      return;
     }
-    if ((bdvv.a(this.a) != null) && (bdvv.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (bdvv.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((bdvt)bdvv.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getFailCode(), paramDownloaderTask.getFailCode(), "failed");
+  }
+  
+  public static void a(Context paramContext, Bundle paramBundle, String paramString)
+  {
+    if ((paramContext == null) || (paramBundle == null)) {
+      return;
     }
-    bdvv.a(this.a, paramDownloaderTask.getUrl());
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtras(paramBundle);
+    localIntent.putExtra("url", paramString);
+    localIntent.putExtra("isShowAd", false);
+    paramContext.startActivity(localIntent);
   }
   
-  public void d(DownloaderTask paramDownloaderTask)
+  public static void a(Context paramContext, String paramString)
   {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskPending url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
-  }
-  
-  public void e(DownloaderTask paramDownloaderTask)
-  {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskStarted url=%s filePath=%s", new Object[] { paramDownloaderTask.getUrl(), paramDownloaderTask.getSaveDir() }));
-  }
-  
-  public void f(DownloaderTask paramDownloaderTask)
-  {
-    QLog.d("DownloadManager_Now_for_qq", 1, String.format("onTaskReceived url=%s percent=%s", new Object[] { paramDownloaderTask.getUrl(), Integer.valueOf(paramDownloaderTask.getPercentage()) }));
-    if ((bdvv.a(this.a) != null) && (bdvv.a(this.a).containsKey(paramDownloaderTask.getUrl())) && (bdvv.a(this.a).get(paramDownloaderTask.getUrl()) != null)) {
-      ((bdvt)bdvv.a(this.a).get(paramDownloaderTask.getUrl())).a(paramDownloaderTask.getReceivedLength(), paramDownloaderTask.getTotalLength(), paramDownloaderTask.getPercentage());
+    Object localObject = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.4.8", Integer.valueOf(0) });
+    paramString = (String)localObject + String.format("&initgrouptype=%s", new Object[] { paramString });
+    localObject = new Intent(paramContext, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", paramString);
+    ((Intent)localObject).putExtra("isShowAd", false);
+    ((Intent)localObject).putExtra("hide_more_button", true);
+    ((Intent)localObject).putExtra("hide_operation_bar", true);
+    paramContext.startActivity((Intent)localObject);
+    ((Activity)paramContext).overridePendingTransition(2130771992, 2130771993);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.troopCreate", 2, "enterTroopCreateFromH5");
     }
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramString1);
+    localIntent.putExtra("uin", paramString2);
+    localIntent.putExtra("portraitOnly", true);
+    localIntent.putExtra("hide_more_button", true);
+    localIntent.putExtra("hide_operation_bar", false);
+    localIntent.putExtra("isShowAd", false);
+    paramContext.startActivity(localIntent);
   }
 }
 

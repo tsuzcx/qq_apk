@@ -1,52 +1,28 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyScrollViewSwitcher;
+import java.lang.ref.WeakReference;
 
-class tdj
-  implements tby
+public class tdj
+  extends Handler
 {
-  tdj(tdi paramtdi, FrameLayout paramFrameLayout) {}
+  private WeakReference a;
   
-  public void a() {}
-  
-  public void a(int paramInt)
+  public tdj(ReadInJoyScrollViewSwitcher paramReadInJoyScrollViewSwitcher)
   {
-    if (tdi.a(this.jdField_a_of_type_Tdi) != null) {
-      tdi.a(this.jdField_a_of_type_Tdi).a(paramInt);
-    }
+    this.a = new WeakReference(paramReadInJoyScrollViewSwitcher);
   }
   
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt2 == 5)
+    super.handleMessage(paramMessage);
+    paramMessage = (ReadInJoyScrollViewSwitcher)this.a.get();
+    if (paramMessage != null)
     {
-      Intent localIntent = new Intent();
-      localIntent.setAction("float_layer_finsh_action");
-      tdi.a(this.jdField_a_of_type_Tdi).getActivity().sendBroadcast(localIntent);
-    }
-    tdi.a(this.jdField_a_of_type_Tdi).getActivity().doOnBackPressed();
-    tdi.a(this.jdField_a_of_type_Tdi).getActivity().overridePendingTransition(0, 0);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 0) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+      paramMessage.a();
+      paramMessage.b();
     }
   }
-  
-  public void b(int paramInt)
-  {
-    if ((paramInt == 2) && (tdi.a(this.jdField_a_of_type_Tdi).b()) && (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 8)) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    }
-  }
-  
-  public void c() {}
 }
 
 

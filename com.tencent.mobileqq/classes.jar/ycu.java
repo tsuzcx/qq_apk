@@ -1,18 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
 class ycu
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  ycu(yct paramyct, String paramString) {}
+  ycu(ycr paramycr) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_Yct.jdField_a_of_type_Ycn != null) {
-      this.jdField_a_of_type_Yct.jdField_a_of_type_Ycn.a(null, 0, this.jdField_a_of_type_Yct.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    xvv.b("TextLayer", "scaleAnimator cancel!");
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    xvv.b("TextLayer", "scaleAnimator end!");
+    this.a.p = 1.0F;
+    this.a.c = false;
+    this.a.a.g();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    xvv.b("TextLayer", "scaleAnimator start!");
+    this.a.c = true;
   }
 }
 

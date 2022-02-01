@@ -1,17 +1,20 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.1;
 
 public class aowe
-  extends aoxg
 {
-  public aowe(QQAppInterface paramQQAppInterface, Context paramContext)
+  protected static boolean a = false;
+  
+  public static void a()
   {
-    super(paramQQAppInterface, paramContext);
+    if (!a) {
+      a = true;
+    }
   }
   
-  public boolean a()
+  public static void a(aowg paramaowg)
   {
-    return true;
+    ThreadManager.post(new ArkMessageServerLogic.1(paramaowg), 5, null, true);
   }
 }
 

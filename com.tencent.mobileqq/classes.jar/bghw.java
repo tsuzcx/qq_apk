@@ -1,176 +1,107 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import android.util.SparseArray;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.URLThemeImageView;
-import java.util.List;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
+import android.view.Gravity;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class bghw
-  implements bghu
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/gldrawable/AbsBaseDrawable;", "Landroid/graphics/drawable/Drawable;", "()V", "clipArea", "Landroid/graphics/RectF;", "drawRect", "Landroid/graphics/Rect;", "forceLockWH", "", "viewRect", "calculateClipArea", "dstBounds", "calculateLockWH", "width", "", "height", "draw", "", "canvas", "Landroid/graphics/Canvas;", "getResID", "", "isRecyclyed", "onDraw", "left", "top", "right", "bottom", "onTouch", "x", "", "y", "recycle", "setDrawArea", "x0", "y0", "x1", "y1", "setLockWH", "b", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract class bghw
+  extends Drawable
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SparseArray<bghr> jdField_a_of_type_AndroidUtilSparseArray;
-  private bgia jdField_a_of_type_Bgia;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private boolean jdField_a_of_type_Boolean;
+  private final Rect b = new Rect();
   
-  bghw(QQAppInterface paramQQAppInterface, Context paramContext, bgia parambgia, SessionInfo paramSessionInfo)
+  private final Rect a(int paramInt1, int paramInt2, Rect paramRect)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bgia = parambgia;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    a();
-  }
-  
-  public int a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-      return ((bghr)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).a(paramInt);
-    }
-    return 0;
-  }
-  
-  public bghr a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-      return ((bghr)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).a(paramInt);
-    }
-    return null;
-  }
-  
-  @Nullable
-  public bghs a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1) != null) {
-      return ((bghr)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1)).a(paramInt1, paramList, paramLong1, paramObject, paramLong2, paramLong3, paramInt2);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    Object localObject = new bghx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bghy(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bghz(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgic(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgid(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgie(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgif(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgig(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgih(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgii(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgij(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgik(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgil(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgim(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgin(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgip(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgiq(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgir(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgis(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgit(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgiu(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    localObject = new bgio(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bgia, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((bghr)localObject).a(), localObject);
-    int i = 0;
-    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
+    float f1 = paramRect.width() / this.jdField_a_of_type_AndroidGraphicsRect.width();
+    float f2 = paramRect.height() / this.jdField_a_of_type_AndroidGraphicsRect.height();
+    if (f1 > f2)
     {
-      ((bghr)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).a();
-      i += 1;
+      this.jdField_a_of_type_AndroidGraphicsRect.right = paramRect.width();
+      this.jdField_a_of_type_AndroidGraphicsRect.bottom = ((int)(f1 * this.jdField_a_of_type_AndroidGraphicsRect.bottom));
     }
-  }
-  
-  public void a(int paramInt, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView, String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-      ((bghr)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).a(paramInt, paramTextView1, paramTextView2, paramImageView, paramString);
-    }
-  }
-  
-  public void a(int paramInt1, bfpe parambfpe, String paramString, int paramInt2, TextView paramTextView1, TextView paramTextView2, long paramLong)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1) != null) {
-      ((bghr)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1)).a(paramInt1, parambfpe, paramString, paramInt2, paramTextView1, paramTextView2, paramLong);
-    }
-  }
-  
-  public void a(int paramInt, Object paramObject, String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-      ((bghr)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).a(paramInt, paramObject, paramString);
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-      return ((bghr)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).a(paramInt);
-    }
-    return paramInt == 103;
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1) != null) {
-      return ((bghr)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1)).a(paramInt1, paramInt2);
-    }
-    return false;
-  }
-  
-  public boolean a(int paramInt, URLThemeImageView paramURLThemeImageView, String paramString)
-  {
-    paramInt = a(paramInt);
-    if (paramInt != 0)
+    for (;;)
     {
-      paramURLThemeImageView.setImageDrawable(null);
-      paramURLThemeImageView.setImageResource(paramInt);
-      return true;
+      Gravity.apply(17, this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height(), paramRect, this.jdField_a_of_type_AndroidGraphicsRect);
+      return this.jdField_a_of_type_AndroidGraphicsRect;
+      this.jdField_a_of_type_AndroidGraphicsRect.bottom = paramRect.height();
+      this.jdField_a_of_type_AndroidGraphicsRect.right = ((int)(f2 * this.jdField_a_of_type_AndroidGraphicsRect.right));
     }
-    return false;
   }
   
-  public void b()
+  private final Rect a(Rect paramRect)
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    if (localRectF != null)
     {
-      ((bghr)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).b();
-      i += 1;
+      float f1 = localRectF.width();
+      float f2 = localRectF.height();
+      f1 = paramRect.width() / f1;
+      f2 = paramRect.height() / f2;
+      this.jdField_a_of_type_AndroidGraphicsRect.left = ((int)(paramRect.left - localRectF.left * f1));
+      Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+      float f3 = paramRect.right;
+      localRect.right = ((int)(f1 * (1.0F - localRectF.right) + f3));
+      this.jdField_a_of_type_AndroidGraphicsRect.top = ((int)(paramRect.top - localRectF.top * f2));
+      localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+      f1 = paramRect.bottom;
+      localRect.bottom = ((int)((1.0F - localRectF.bottom) * f2 + f1));
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    return this.jdField_a_of_type_AndroidGraphicsRect;
   }
   
-  public void b(int paramInt, Object paramObject, String paramString)
+  public final void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-      ((bghr)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).b(paramInt, paramObject, paramString);
+    if ((paramFloat1 < 0.0F) || (paramFloat2 < 0.0F) || (paramFloat3 < 0.0F) || (paramFloat4 < 0.0F) || (paramFloat1 > 1.0F) || (paramFloat2 > 1.0F) || (paramFloat3 > 1.0F) || (paramFloat4 > 1.0F)) {
+      this.jdField_a_of_type_AndroidGraphicsRectF = ((RectF)null);
     }
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+  }
+  
+  public abstract void a(@NotNull Canvas paramCanvas, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public final void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public final void draw(@NotNull Canvas paramCanvas)
+  {
+    Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
+    Rect localRect = getBounds();
+    Intrinsics.checkExpressionValueIsNotNull(localRect, "bounds");
+    if (localRect.isEmpty()) {
+      this.b.set(0, 0, paramCanvas.getWidth(), paramCanvas.getHeight());
+    }
+    while (this.b.isEmpty())
+    {
+      return;
+      this.b.set(localRect);
+    }
+    if ((getIntrinsicHeight() > 0) && (getIntrinsicWidth() > 0))
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        localRect = a(getIntrinsicWidth(), getIntrinsicHeight(), this.b);
+        a(paramCanvas, localRect.left, localRect.top, localRect.right, localRect.bottom);
+        return;
+      }
+      if (this.jdField_a_of_type_AndroidGraphicsRectF != null)
+      {
+        localRect = a(this.b);
+        a(paramCanvas, localRect.left, localRect.top, localRect.right, localRect.bottom);
+        return;
+      }
+      a(paramCanvas, this.b.left, this.b.top, this.b.right, this.b.bottom);
+      return;
+    }
+    a(paramCanvas, this.b.left, this.b.top, this.b.right, this.b.bottom);
   }
 }
 

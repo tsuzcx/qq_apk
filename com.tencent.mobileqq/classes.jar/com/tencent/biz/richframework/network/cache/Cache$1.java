@@ -1,13 +1,13 @@
 package com.tencent.biz.richframework.network.cache;
 
-import aaap;
-
-public class Cache$1
+class Cache$1
   implements Runnable
 {
+  Cache$1(Cache paramCache) {}
+  
   public void run()
   {
-    this.this$0.b();
+    this.this$0.runJob();
   }
 }
 

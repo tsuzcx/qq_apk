@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
+import amst;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.ViewGroup;
-import anyl;
-import bhhz;
-import blgu;
+import bfrj;
+import bjmj;
 import com.tencent.mobileqq.activity.recent.DrawerFrame;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.widget.RandomCoverView;
@@ -22,19 +22,19 @@ class FrameHelperActivity$7
     if ((this.this$0.jdField_a_of_type_AndroidViewViewGroup == null) || (FrameHelperActivity.a(this.this$0) == null)) {
       return;
     }
-    RandomCoverView localRandomCoverView = (RandomCoverView)this.this$0.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379156);
+    RandomCoverView localRandomCoverView = (RandomCoverView)this.this$0.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378926);
     Object localObject = this.a.getCurrentAccountUin();
-    localObject = bhhz.a(this.a, (String)localObject);
+    localObject = bfrj.a(this.a, (String)localObject);
     String str = (String)localObject.getCoverData(0)[0];
     if (QLog.isColorLevel()) {
       QLog.d("Q.profilecard.", 2, "[getCoverData] getCovertUrl from cache,url:" + str);
     }
-    if ((!TextUtils.isEmpty(str)) && (!blgu.b()))
+    if ((!TextUtils.isEmpty(str)) && (!bjmj.b()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.recent", 2, "card.isNoCover()=" + ((Card)localObject).isNoCover());
       }
-      if ((!blgu.a(this.a, (Card)localObject)) && (((Card)localObject).isNoCover()))
+      if ((!bjmj.a(this.a, (Card)localObject)) && (((Card)localObject).isNoCover()))
       {
         FrameHelperActivity.a(this.this$0).a(false);
         ThreadManager.getUIHandler().post(new FrameHelperActivity.7.1(this, localRandomCoverView));
@@ -42,7 +42,7 @@ class FrameHelperActivity$7
       }
       FrameHelperActivity.a(this.this$0).a(true);
       ThreadManager.getUIHandler().post(new FrameHelperActivity.7.2(this, localRandomCoverView));
-      FrameHelperActivity.a(this.this$0, blgu.a(this.this$0.getActivity(), this.a, (Card)localObject, localRandomCoverView, str, FrameHelperActivity.a(this.this$0), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame.a()));
+      FrameHelperActivity.a(this.this$0, bjmj.a(this.this$0.getActivity(), this.a, (Card)localObject, localRandomCoverView, str, FrameHelperActivity.a(this.this$0), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame.a()));
       return;
     }
     this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(new FrameHelperActivity.7.3(this, (Card)localObject), 3000L);

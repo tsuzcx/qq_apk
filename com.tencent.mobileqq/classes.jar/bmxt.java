@@ -1,30 +1,25 @@
-import android.content.Context;
-import android.view.animation.Interpolator;
-import android.widget.Scroller;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.animation.Transformation;
+import com.tencent.qphone.base.util.QLog;
 
-public class bmxt
-  extends Scroller
+final class bmxt
+  implements bfzz<Float>
 {
-  public int a;
+  bmxt(View paramView) {}
   
-  public bmxt(Context paramContext, Interpolator paramInterpolator)
+  @TargetApi(11)
+  public void a(bfzt<Float> parambfzt, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    super(paramContext, paramInterpolator);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+    if (QLog.isColorLevel()) {
+      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
+    }
+    paramFloat = paramFloat1.floatValue();
+    if (this.a != null)
+    {
+      this.a.setAlpha(paramFloat);
+      this.a.invalidate();
+    }
   }
 }
 

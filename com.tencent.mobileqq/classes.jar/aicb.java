@@ -1,18 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.widget.immersive.ImmersiveUtils;
-
-class aicb
-  implements DialogInterface.OnDismissListener
+public abstract interface aicb
 {
-  aicb(aibr paramaibr) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (aibr.a(this.a) != null)) {
-      this.a.r();
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 

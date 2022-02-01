@@ -1,23 +1,29 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.widget.Scroller;
 
-final class bhkn
-  implements axcc
+public class bhkn
+  extends Scroller
 {
+  private int a = 150;
+  
+  public bhkn(Context paramContext)
+  {
+    super(paramContext, new bhko());
+  }
+  
   public void a(int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    AppRuntime localAppRuntime;
-    do
-    {
-      return;
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    } while (!(localAppRuntime instanceof QQAppInterface));
-    MediaPlayerManager.a((QQAppInterface)localAppRuntime).a(false);
+    this.a = paramInt;
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
   }
 }
 

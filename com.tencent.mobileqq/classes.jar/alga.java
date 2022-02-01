@@ -1,10 +1,24 @@
-public abstract interface alga
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+
+class alga
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  alga(alfz paramalfz) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bcef.b(null, "dc00898", "", "", "0X800A0C7", "0X800A0C7", 0, 0, String.valueOf(SessionClearFragment.b(this.a.a)), String.valueOf(SessionClearFragment.c(this.a.a)), "", "");
+    SessionClearFragment.a(this.a.a);
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("extra_delete_total_file_size", SessionClearFragment.a(this.a.a).a());
+    Activity localActivity = SessionClearFragment.a(this.a.a);
+    SessionClearFragment.a(this.a.a);
+    localActivity.setResult(-1, paramDialogInterface);
+  }
 }
 
 

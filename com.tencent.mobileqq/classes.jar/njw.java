@@ -1,18 +1,50 @@
-import android.app.Dialog;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
 public class njw
-  implements View.OnClickListener
 {
-  public njw(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
+  public int a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b = "";
+  public int c;
+  public int d;
+  public int e;
   
-  public void onClick(View paramView)
+  public njw()
   {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public static njw a(View paramView)
+  {
+    Object localObject1 = null;
+    Object localObject2 = null;
+    Bitmap localBitmap;
+    if (paramView.getVisibility() == 0)
+    {
+      paramView.setDrawingCacheEnabled(true);
+      localBitmap = paramView.getDrawingCache();
+      if (localBitmap != null) {
+        break label42;
+      }
+      QLog.e("GameImageData", 1, "mTipsWrapper, get drawingCache return null");
+      localObject1 = localObject2;
+    }
+    for (;;)
+    {
+      paramView.setDrawingCacheEnabled(false);
+      return localObject1;
+      label42:
+      localObject1 = new njw();
+      ((njw)localObject1).jdField_a_of_type_AndroidGraphicsBitmap = localBitmap.copy(Bitmap.Config.ARGB_8888, false);
+      ((njw)localObject1).c = paramView.getLeft();
+      ((njw)localObject1).d = paramView.getTop();
+    }
   }
 }
 

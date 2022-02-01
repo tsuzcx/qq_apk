@@ -1,40 +1,10 @@
-import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
-import java.io.File;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
-
-public final class avyv
-  implements PluginManagerUpdater
+public abstract interface avyv
 {
-  private final File a;
+  public abstract void a();
   
-  public avyv(String paramString)
-  {
-    this.a = new File("/data/local/tmp/" + paramString + "PluginManager.apk");
-  }
+  public abstract void a(int paramInt);
   
-  public File getLatest()
-  {
-    if (this.a.exists()) {
-      return this.a;
-    }
-    return null;
-  }
-  
-  public Future<Boolean> isAvailable(File paramFile)
-  {
-    return aoik.a(16).submit(new avyx(this, paramFile));
-  }
-  
-  public Future<File> update()
-  {
-    return aoik.a(16).submit(new avyw(this));
-  }
-  
-  public boolean wasUpdating()
-  {
-    return false;
-  }
+  public abstract boolean a();
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.anim.friendship.impl.base;
 
-import agnb;
+import afga;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 public class FriendShipLayout
   extends FrameLayout
 {
-  agnb a;
+  afga a;
   
   public FriendShipLayout(Context paramContext)
   {
@@ -31,14 +31,14 @@ public class FriendShipLayout
     return super.dispatchKeyEvent(paramKeyEvent);
   }
   
-  public void setBackListener(agnb paramagnb)
+  public void setBackListener(afga paramafga)
   {
-    this.a = paramagnb;
+    this.a = paramafga;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.base.FriendShipLayout
  * JD-Core Version:    0.7.0.1
  */

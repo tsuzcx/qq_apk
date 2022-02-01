@@ -1,10 +1,24 @@
-import cooperation.plugin.PluginInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.transfile.predownload.HttpEngineTask;
+import com.tencent.mobileqq.transfile.predownload.HttpEngineTask.IHttpEngineTask;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment.8;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment.8.1.1;
 
-public abstract interface bmht
+public class bmht
+  implements HttpEngineTask.IHttpEngineTask
 {
-  public abstract void a(boolean paramBoolean);
+  public bmht(AEEditorCommonEditFragment.8 param8) {}
   
-  public abstract boolean a(PluginInfo paramPluginInfo);
+  public void onPreDownloadStart(HttpEngineTask paramHttpEngineTask) {}
+  
+  public void onResp(NetResp paramNetResp)
+  {
+    ThreadManager.excute(new AEEditorCommonEditFragment.8.1.1(this, paramNetResp), 64, null, true);
+  }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

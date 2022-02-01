@@ -1,13 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Calendar;
 
-public class bfhj
-  implements DialogInterface.OnClickListener
+class bfhj
+  implements View.OnClickListener
 {
-  public bfhj(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  bfhj(bfhh parambfhh, bfhl parambfhl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    if ((bfhh.a(this.jdField_a_of_type_Bfhh) != null) && (bfhh.a(this.jdField_a_of_type_Bfhh).isShowing())) {
+      bfhh.a(this.jdField_a_of_type_Bfhh).dismiss();
+    }
+    if ((this.jdField_a_of_type_Bfhl != null) && (bfhh.a(this.jdField_a_of_type_Bfhh) != null)) {
+      this.jdField_a_of_type_Bfhl.a(bfhh.a(this.jdField_a_of_type_Bfhh).getTimeInMillis());
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aerc
-  implements aqxy
+  implements View.OnClickListener
 {
-  public aerc(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public aerc(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
+    if (this.a.a != null) {
+      this.a.a.b();
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 == 0) {}
-    for (paramInt1 = 0;; paramInt1 = 1)
-    {
-      this.a.c = true;
-      this.a.a(paramInt1, true);
-      return;
-    }
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,37 +1,163 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.qzonevip.gift.QzoneGiftUtil.1;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.search.activity.MessageSearchDetailActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bayx
-  implements QzoneZipCacheHelperCallBack
+  extends bayu
 {
-  public bayx(QzoneGiftUtil.1 param1) {}
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private FullMessageSearchResult.SearchResultItem jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private String jdField_a_of_type_JavaLangString;
+  private CharSequence jdField_b_of_type_JavaLangCharSequence;
+  private String jdField_b_of_type_JavaLangString;
   
-  public void onResult(boolean paramBoolean)
+  public bayx(QQAppInterface paramQQAppInterface, String paramString, FullMessageSearchResult.SearchResultItem paramSearchResultItem)
   {
-    if (paramBoolean)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem = paramSearchResultItem;
+    int i;
+    if (paramSearchResultItem.user.getType() == 3000)
     {
-      QzoneGiftUtil.1.a(this.a);
-      QLog.i("QzoneGiftUtil", 1, "downloadGiftZip onResult mLoadSuccessTimes = " + QzoneGiftUtil.1.c(this.a) + " mLoadFailTimes = " + QzoneGiftUtil.1.d(this.a));
-      if (this.a.jdField_a_of_type_Bayz != null)
-      {
-        if (QzoneGiftUtil.1.c(this.a) != this.a.jdField_a_of_type_Int) {
-          break label109;
-        }
-        this.a.jdField_a_of_type_Bayz.a();
+      i = ((amrb)paramQQAppInterface.getManager(53)).a(paramSearchResultItem.user.uin);
+      if (i <= 0) {
+        this.jdField_b_of_type_JavaLangString = "";
       }
     }
-    label109:
-    while (QzoneGiftUtil.1.c(this.a) + QzoneGiftUtil.1.d(this.a) != this.a.jdField_a_of_type_Int)
+    else
     {
       return;
-      QzoneGiftUtil.1.b(this.a);
-      break;
     }
-    this.a.jdField_a_of_type_Bayz.b();
+    this.jdField_b_of_type_JavaLangString = String.valueOf(i);
   }
   
-  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
+  public CharSequence a()
+  {
+    if (this.jdField_a_of_type_JavaLangCharSequence == null) {
+      this.jdField_a_of_type_JavaLangCharSequence = ContactUtils.getNick(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.uin, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.getType());
+    }
+    return this.jdField_a_of_type_JavaLangCharSequence;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(View paramView)
+  {
+    batc localbatc;
+    QQAppInterface localQQAppInterface;
+    JSONObject localJSONObject;
+    if (((paramView.getContext() instanceof UniteSearchActivity)) && (batb.b.containsKey(this)))
+    {
+      localbatc = (batc)batb.b.get(this);
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("project", bbda.a());
+      localJSONObject.put("event_src", "client");
+      localJSONObject.put("obj_lct", localbatc.jdField_a_of_type_Int);
+      localJSONObject.put("get_src", "native");
+      bbda.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localbatc.jdField_a_of_type_Long + "").obj2(localbatc.jdField_b_of_type_JavaLangString).ver1(localbatc.jdField_a_of_type_JavaLangString).ver2(bbda.a(UniteSearchActivity.d)).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + batb.jdField_a_of_type_Long));
+      if (this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.size() == 1)
+      {
+        akms.jdField_a_of_type_Boolean = true;
+        akms.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = (MessageRecord)this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageList.get(0);
+        akms.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.uin, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.getType(), ContactUtils.getNick(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.uin, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.getType()), false);
+        anap.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+        bbgk.a(this.jdField_a_of_type_JavaLangString, 40, paramView, false);
+        bbgk.a(this.jdField_a_of_type_JavaLangString, 40, 0, paramView);
+        return;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("MessageSearchResultModel", 2, "e = " + localJSONException);
+        continue;
+        MessageSearchDetailActivity.a(paramView.getContext(), a(), this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem);
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public CharSequence b()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.getType() == 3000) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {
+      return bbgk.a(this.jdField_b_of_type_JavaLangString);
+    }
+    return "";
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.uin;
+  }
+  
+  public int c()
+  {
+    switch (this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.getType())
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("MessageSearchResultModel", 2, "Face type is illegal. type = " + this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user.getType());
+      }
+    case 0: 
+      return 1;
+    case 1: 
+      return 4;
+    }
+    return 101;
+  }
+  
+  public CharSequence c()
+  {
+    int i;
+    if (this.jdField_b_of_type_JavaLangCharSequence == null)
+    {
+      i = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.size();
+      if (i != 1) {
+        break label60;
+      }
+    }
+    label60:
+    SpannableStringBuilder localSpannableStringBuilder;
+    for (this.jdField_b_of_type_JavaLangCharSequence = bbgk.a(((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageList.get(0)).msg, this.jdField_a_of_type_JavaLangString);; this.jdField_b_of_type_JavaLangCharSequence = localSpannableStringBuilder)
+    {
+      return this.jdField_b_of_type_JavaLangCharSequence;
+      localSpannableStringBuilder = new SpannableStringBuilder(i + amtj.a(2131705785) + "\"");
+      localSpannableStringBuilder.append(bbgk.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString));
+      localSpannableStringBuilder.append("\"").append("相关记录");
+    }
+  }
+  
+  public CharSequence d()
+  {
+    return null;
+  }
 }
 
 

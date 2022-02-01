@@ -1,9 +1,22 @@
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+
 public class omm
+  implements bjoe
 {
-  public static void a(int paramInt)
+  public omm(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramInt == 41516) || (paramInt == 41522)) {
-      ocd.a(null, "", "0X8009EF4", "0X8009EF4", 0, 0, "", "", "", new omk().a().a(paramInt).a(), false);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadInJoySettingActivity.a(this.a).cancel();
+      return;
+      ReadInJoySettingActivity.a(this.a, false);
+      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
     }
   }
 }

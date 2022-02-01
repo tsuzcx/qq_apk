@@ -1,17 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import UserGrowth.stFeed;
+import com.tencent.widget.pull2refresh.XRecyclerView;
+import java.util.List;
 
-class uud
-  implements View.OnClickListener
+public abstract interface uud
+  extends uuf<List<stFeed>>
 {
-  uud(uub paramuub) {}
+  public abstract XRecyclerView a();
   
-  public void onClick(View paramView)
-  {
-    uub.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract ujh a();
+  
+  public abstract void a(List<stFeed> paramList, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, List<stFeed> paramList, boolean paramBoolean3);
+  
+  public abstract void b(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

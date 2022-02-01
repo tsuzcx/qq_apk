@@ -1,16 +1,41 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
 public class smc
-  implements View.OnLongClickListener
+  implements slj
 {
-  public smc(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public smc(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(Bundle paramBundle)
   {
-    ReadinjoyTabFrame.b(this.a);
-    return true;
+    String str = paramBundle.getString("mTaskID");
+    ReadInJoyBaseListViewGroup.a(this.a, str);
+    rgs.b(paramBundle);
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    paramString = this.a.a();
+    Intent localIntent;
+    if ((paramBundle != null) && (paramString != null))
+    {
+      localIntent = new Intent();
+      localIntent.putExtras(paramBundle);
+      localIntent.setClass(paramString, KandianVideoUploadService.class);
+    }
+    try
+    {
+      paramString.startService(localIntent);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.d("KandianVideoUpload", 1, "Kandian retryFail", paramString);
+    }
   }
 }
 

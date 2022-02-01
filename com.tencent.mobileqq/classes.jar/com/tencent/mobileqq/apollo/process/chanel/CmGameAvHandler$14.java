@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import anbd;
-import anbz;
-import anlu;
-import annv;
+import alvx;
+import alwt;
+import amgo;
+import amip;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -11,14 +11,14 @@ import com.tencent.qphone.base.util.QLog;
 public class CmGameAvHandler$14
   implements Runnable
 {
-  public CmGameAvHandler$14(anbz paramanbz, int paramInt1, int paramInt2) {}
+  public CmGameAvHandler$14(alwt paramalwt, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    QLog.e("CmGameAvHandler", 1, "initAudioRoom ApolloConstant.sGameAVSoUrl=" + annv.af + ", ApolloConstant.sGameAVSoMd5=" + annv.ag);
-    anlu.a().a(this.this$0.a);
-    anlu.a().a(0, annv.af, annv.ag);
-    anlu.a().a(BaseApplicationImpl.getContext(), anbd.a().getCurrentAccountUin(), "" + this.a, "" + this.b);
+    QLog.e("CmGameAvHandler", 1, "initAudioRoom ApolloConstant.sGameAVSoUrl=" + amip.af + ", ApolloConstant.sGameAVSoMd5=" + amip.ag);
+    amgo.a().a(this.this$0.a);
+    amgo.a().a(0, amip.af, amip.ag);
+    amgo.a().a(BaseApplicationImpl.getContext(), alvx.a().getCurrentAccountUin(), "" + this.a, "" + this.b);
   }
 }
 

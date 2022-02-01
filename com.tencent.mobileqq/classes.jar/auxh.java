@@ -1,28 +1,8 @@
-public class auxh
+import android.view.View;
+
+public abstract interface auxh
 {
-  public int a;
-  public auxi a;
-  public boolean a;
-  public boolean b;
-  
-  public auxh(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-  }
-  
-  public void a(auxi paramauxi)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Auxi = paramauxi;
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 0;
-  }
+  public abstract void a(View paramView, aqmf paramaqmf, auxr paramauxr);
 }
 
 

@@ -1,6 +1,8 @@
-class bhkh
+public abstract interface bhkh
 {
-  static bhkf a = new bhkf(null);
+  public abstract void a(int paramInt);
+  
+  public abstract void b(int paramInt);
 }
 
 

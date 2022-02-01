@@ -1,34 +1,40 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.apollo.FriendCardApolloViewController;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class alqg
-  extends alqi
+  extends bggc
 {
-  public alqg(Context paramContext)
+  private java.lang.ref.WeakReference<FriendCardApolloViewController> a;
+  
+  public alqg(FriendCardApolloViewController paramFriendCardApolloViewController)
   {
-    this.jdField_a_of_type_JavaLangString = anzj.a(2131696567);
-    this.b = this.jdField_a_of_type_JavaLangString;
+    this.a = new mqq.util.WeakReference(paramFriendCardApolloViewController);
   }
   
-  public Object a(int paramInt, bfoy parambfoy, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  protected void onGetExploreMsg(boolean paramBoolean, Object paramObject)
   {
-    if ((paramObject instanceof alqg))
-    {
-      paramObject = (alqg)paramObject;
-      paramObject.jdField_a_of_type_Bfoz.a(parambfoy.jdField_a_of_type_Bfoz);
-    }
-    for (parambfoy = paramObject;; parambfoy = paramObject)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(bfoy.class.getSimpleName() + ".troop.special_msg.at_all_msg", 2, "updateMsgInfo");
+    if (paramBoolean) {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendCardApolloViewController", 1, "[onGetExploreMsg] get info end");
+        }
+        paramObject = new JSONObject((String)paramObject);
+        if (paramObject.optInt("entry_id", -1) != 2) {
+          return;
+        }
+        FriendCardApolloViewController localFriendCardApolloViewController = (FriendCardApolloViewController)this.a.get();
+        if (localFriendCardApolloViewController == null) {
+          return;
+        }
+        FriendCardApolloViewController.a(localFriendCardApolloViewController, paramObject.optString("icon_url"));
+        QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] iconUrl:" + FriendCardApolloViewController.a(localFriendCardApolloViewController));
+        return;
       }
-      return parambfoy;
-      paramObject = new alqg(BaseApplication.getContext());
-      paramObject.a(paramMessageRecord.senderuin);
-      paramObject.jdField_a_of_type_Bfoz = new bfoz(parambfoy.jdField_a_of_type_Bfoz);
+      catch (Exception paramObject) {}
+    } else if (QLog.isColorLevel()) {
+      QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] result:" + paramBoolean);
     }
   }
 }

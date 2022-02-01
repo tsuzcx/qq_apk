@@ -14,7 +14,7 @@ class MediaJsPlugin$3
   
   public void run()
   {
-    CoverView localCoverView = CoverViewAction.obtain(MediaJsPlugin.access$1000(this.this$0)).get(this.val$videoPlayerId);
+    CoverView localCoverView = CoverViewAction.obtain(MediaJsPlugin.access$900(this.this$0)).get(this.val$videoPlayerId);
     if ((localCoverView instanceof CoverVideoView))
     {
       ((CoverVideoView)localCoverView).updateVideoPlayerSettings(this.val$jsonObject);

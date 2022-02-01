@@ -1,24 +1,20 @@
-public class aklj
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+final class aklj
+  implements Animation.AnimationListener
 {
-  public int a;
-  private String a;
-  private String b;
+  aklj(View paramView, Animation paramAnimation) {}
   
-  public aklj(String paramString1, String paramString2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
   
-  public String a()
-  {
-    return this.a;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public String b()
-  {
-    return this.b;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

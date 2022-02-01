@@ -1,170 +1,210 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentAccountSummary;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentDivider;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService.1;
+import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService.2;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.lang.ref.WeakReference;
+import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
 
 public class qli
-  extends qjh
 {
-  private qob a;
+  private static qli jdField_a_of_type_Qli;
+  private int jdField_a_of_type_Int;
+  private DecimalFormat jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("0.00");
+  private ConcurrentHashMap<Integer, WeakReference<pwd>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public qli(Context paramContext, aoof paramaoof, sel paramsel)
+  public static qli a()
   {
-    super(paramContext, paramaoof, paramsel);
+    if (jdField_a_of_type_Qli == null) {
+      jdField_a_of_type_Qli = new qli();
+    }
+    return jdField_a_of_type_Qli;
   }
   
-  public qjh a()
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return a(this.jdField_a_of_type_Sel, this.jdField_a_of_type_Aoof).f().g().q().l().n().j();
-  }
-  
-  public qjh d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout1.setOrientation(1);
-    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial);
-    }
-    LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout2.setOrientation(1);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    localLinearLayout2.setBackgroundColor(Color.parseColor("#F8F8F8"));
-    localLinearLayout2.setLayoutParams(localLayoutParams);
-    oxr.a(localLinearLayout2, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841694));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary != null) {
-      localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary);
-    }
-    if ((this.jdField_a_of_type_Qjg != null) && ((this.jdField_a_of_type_Qjg instanceof ComponentContentGridImage)))
+    Object localObject = (Integer)paramToServiceMsg.getAttributes().get("seq");
+    if (localObject == null) {}
+    do
     {
-      localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.setMargins(agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ((ComponentContentGridImage)this.jdField_a_of_type_Qjg).setLayoutParams(localLayoutParams);
-      ((ComponentContentGridImage)this.jdField_a_of_type_Qjg).setDuplicateParentStateEnabled(true);
-      oxr.a((ComponentContentGridImage)this.jdField_a_of_type_Qjg, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841694));
-      ((ComponentContentGridImage)this.jdField_a_of_type_Qjg).setOnNoItemClickListener(new qlj(this));
-      localLinearLayout2.addView((ComponentContentGridImage)this.jdField_a_of_type_Qjg);
-    }
-    localLinearLayout2.setOnClickListener(new qlk(this));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
-    }
-    if (localLinearLayout2.getChildCount() > 0) {
-      localLinearLayout1.addView(localLinearLayout2);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout1);
-    return this;
+      do
+      {
+        return;
+        localObject = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      } while (localObject == null);
+      localObject = (pwd)((WeakReference)localObject).get();
+    } while (localObject == null);
+    ((pwd)localObject).a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
   
-  public qjh e()
+  private boolean a(ToServiceMsg paramToServiceMsg)
   {
-    LinearLayout.LayoutParams localLayoutParams;
-    if ((this.jdField_a_of_type_Qob != null) && (this.jdField_a_of_type_Qjg != null) && ((this.jdField_a_of_type_Qjg instanceof ComponentContentGridImage)))
+    int i;
+    int k;
+    if (paramToServiceMsg.getAttribute(pwd.f) != null)
     {
-      if (!(((ComponentContentGridImage)this.jdField_a_of_type_Qjg).getLayoutParams() instanceof LinearLayout.LayoutParams)) {
-        break label122;
+      i = ((Integer)paramToServiceMsg.getAttribute(pwd.f)).intValue();
+      if (i == 2)
+      {
+        k = 1;
+        QLog.d("ReadInJoyMSFService", 1, new Object[] { "is68bRetryReq = ", Boolean.valueOf(k), ", retryTimes = ", Integer.valueOf(i) });
       }
-      localLayoutParams = (LinearLayout.LayoutParams)((ComponentContentGridImage)this.jdField_a_of_type_Qjg).getLayoutParams();
-      if ((this.jdField_a_of_type_Qob.a() != null) && (this.jdField_a_of_type_Qob.a().size() != 0)) {
-        break label136;
-      }
-      localLayoutParams.setMargins(agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
     }
     for (;;)
     {
-      ((ComponentContentGridImage)this.jdField_a_of_type_Qjg).setLayoutParams(localLayoutParams);
-      return this;
-      label122:
-      localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      break;
-      label136:
-      localLayoutParams.setMargins(agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      int n = k;
+      int j;
+      if (paramToServiceMsg.getAttribute("retryIndex") != null)
+      {
+        j = ((Integer)paramToServiceMsg.getAttribute("retryIndex")).intValue();
+        if (j <= 0) {
+          break label162;
+        }
+      }
+      label162:
+      for (i = 1;; i = 0)
+      {
+        n = k | i;
+        QLog.d("ReadInJoyMSFService", 1, new Object[] { "is68bRetryReq = ", Boolean.valueOf(n), ", fastResendRetryIndex = ", Integer.valueOf(j) });
+        if (n != 0) {
+          QLog.d("ReadInJoyMSFService", 1, " isRetryRequest | 68b Retry");
+        }
+        return n;
+        m = 0;
+        break;
+      }
+      int m = 0;
     }
   }
   
-  public qjh f()
+  public void a()
   {
-    super.f();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary.jdField_a_of_type_Boolean = true;
-    return this;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
   
-  public qjh g()
+  public void a(ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_Qjg = new ComponentContentGridImage(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    paramToServiceMsg = new ReadInJoyMSFService.2(this, paramToServiceMsg);
+    pay.a().post(paramToServiceMsg);
   }
   
-  public qjh o()
+  public final void a(ToServiceMsg paramToServiceMsg, pwd parampwd)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null)
+    if ((paramToServiceMsg == null) || (parampwd == null)) {
+      return;
+    }
+    paramToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
+    parampwd = new WeakReference(parampwd);
+    pay.a().post(new ReadInJoyMSFService.1(this, paramToServiceMsg, parampwd));
+    a(paramToServiceMsg);
+  }
+  
+  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Exception paramException)
+  {
+    Object localObject = null;
+    if (paramToServiceMsg == null) {
+      return;
+    }
+    float f = (float)(System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey")) / 1000.0F;
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a(this.jdField_a_of_type_JavaLangObject);
-      if ((this.jdField_a_of_type_JavaLangObject instanceof ppu))
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyMSFService", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + " app seq:" + paramFromServiceMsg.getAppSeq() + " during " + this.jdField_a_of_type_JavaTextDecimalFormat.format(f) + "sec.");
+      }
+      boolean bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("ReadInJoy", 4, "bPbResp:" + bool);
+      }
+      paramException = localObject;
+      if (paramBoolean)
       {
-        ppu localppu = (ppu)this.jdField_a_of_type_JavaLangObject;
-        if (localppu.a() != null) {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.setReadedStatus(this.jdField_a_of_type_Sel.a(localppu.e(), localppu.a().mArticleID));
+        if (!bool) {
+          break label477;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyMSFService", 2, "PB cmd: recv cmd: " + paramFromServiceMsg.getServiceCmd());
+        }
+        paramException = localObject;
+        if (paramFromServiceMsg.getWupBuffer() != null)
+        {
+          int i = paramFromServiceMsg.getWupBuffer().length - 4;
+          paramException = new byte[i];
+          PkgTools.copyData(paramException, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+          paramFromServiceMsg.putWupBuffer(paramException);
+          paramException = paramFromServiceMsg.getWupBuffer();
         }
       }
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_Qjg != null)
+    for (;;)
     {
-      if ((this.jdField_a_of_type_Qjg instanceof ComponentContentGridImage)) {
-        ((ComponentContentGridImage)this.jdField_a_of_type_Qjg).setMIReadInJoyModel(this.jdField_a_of_type_JavaLangObject);
+      a(paramToServiceMsg, paramFromServiceMsg, paramException);
+      return;
+      if (paramFromServiceMsg.getResultCode() == 2008)
+      {
+        paramFromServiceMsg = BaseActivity.sTopActivity;
+        paramToServiceMsg = paramFromServiceMsg;
+        if (paramFromServiceMsg == null) {
+          paramToServiceMsg = pay.a().getApplication();
+        }
+        paramFromServiceMsg = new Intent(paramToServiceMsg, NotificationActivity.class);
+        paramFromServiceMsg.setFlags(872415232);
+        paramFromServiceMsg.putExtra("type", 2);
+        paramToServiceMsg.startActivity(paramFromServiceMsg);
+        return;
       }
-      this.jdField_a_of_type_Qob = ComponentContentGridImage.a(this.jdField_a_of_type_JavaLangObject, 0);
-      this.jdField_a_of_type_Qjg.a(this.jdField_a_of_type_Qob);
+      if (paramException != null)
+      {
+        ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+        paramException.printStackTrace(new PrintStream(localByteArrayOutputStream));
+        paramException = new String(localByteArrayOutputStream.toByteArray());
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("ReadInJoyMSFService", 2, "[NOT SEND]cmd=" + paramFromServiceMsg.getServiceCmd() + ", " + paramException);
+        break;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.w("ReadInJoyMSFService", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + ",CODE=" + paramFromServiceMsg.getResultCode() + " during " + this.jdField_a_of_type_JavaTextDecimalFormat.format(f) + "sec.");
+      break;
+      label477:
+      if (0 != 0) {}
+      try
+      {
+        throw new NullPointerException();
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        paramException = localObject;
+      }
+      paramException = localObject;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ReadInJoyMSFService", 2, "bpc null");
+        paramException = localObject;
+        continue;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ReadInJoyMSFService", 2, "", localException);
+          paramException = localObject;
+        }
+      }
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
-    }
-    try
-    {
-      e();
-      return this;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return this;
   }
 }
 

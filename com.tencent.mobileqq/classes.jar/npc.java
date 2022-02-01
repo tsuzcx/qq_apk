@@ -1,17 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import android.app.Activity;
+import android.view.View;
 
-public class npc
-  implements aasd
+class npc
+  implements bjoe
 {
-  public npc(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  npc(noy paramnoy, Activity paramActivity, String paramString, bjnw parambjnw) {}
   
-  public void callback(Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramBundle != null)
+    switch (paramInt)
     {
-      paramBundle = paramBundle.getString("music");
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      noy.b(this.jdField_a_of_type_Noy, this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      noy.a(this.jdField_a_of_type_Noy, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

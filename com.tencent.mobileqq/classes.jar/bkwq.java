@@ -1,21 +1,12 @@
-import com.tencent.oskplayer.OskPlayerCore;
-import com.tencent.oskplayer.proxy.VideoManager;
-import com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayerUtil;
-
-class bkwq
-  implements IMediaPlayerUtil
+public class bkwq
 {
-  bkwq(bkwo parambkwo) {}
-  
-  public int getContentFlag(String paramString)
-  {
-    return VideoManager.getInstance().probeContentFlag(paramString);
-  }
-  
-  public String getUrl(String paramString)
-  {
-    return OskPlayerCore.getInstance().getUrl(paramString);
-  }
+  public float a;
+  public int a;
+  public boolean a;
+  public float b;
+  public int b;
+  public boolean b = true;
+  public boolean c = true;
 }
 
 

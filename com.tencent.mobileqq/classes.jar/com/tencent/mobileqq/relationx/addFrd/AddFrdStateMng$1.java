@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.relationx.addFrd;
 
-import bbbq;
+import azwd;
 
 public class AddFrdStateMng$1
   implements Runnable
 {
-  public AddFrdStateMng$1(bbbq parambbbq) {}
+  public AddFrdStateMng$1(azwd paramazwd) {}
   
   public void run()
   {
-    bbbq.a(this.this$0);
+    azwd.a(this.this$0);
     this.this$0.c = false;
   }
 }

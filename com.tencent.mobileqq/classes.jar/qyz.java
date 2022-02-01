@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.reportTaskCompleted.1;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/reward/aidl/RIJAidlClientRedPacketModule$reportTaskCompleted$1$1", "Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IReportTaskProgressCallback$Stub;", "onReportFailed", "", "errorCode", "", "errorMsg", "", "onReportSucceed", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class qyz
-  implements Parcelable.Creator<TopicInfo>
+  extends qyu
 {
-  public TopicInfo a(Parcel paramParcel)
+  public void a()
   {
-    return new TopicInfo(paramParcel);
+    qxx localqxx = this.a.$callback;
+    if (localqxx != null) {
+      localqxx.a();
+    }
   }
   
-  public TopicInfo[] a(int paramInt)
+  public void a(int paramInt, @Nullable String paramString)
   {
-    return new TopicInfo[paramInt];
+    qxx localqxx = this.a.$callback;
+    if (localqxx != null) {
+      localqxx.a(paramInt, paramString);
+    }
   }
 }
 

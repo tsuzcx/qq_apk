@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import bfva;
+import beel;
 
 public class TroopFileDataCenter$1
   implements Runnable
 {
   public void run()
   {
-    bfva.a(this.this$0);
+    beel.a(this.this$0);
   }
 }
 

@@ -1,18 +1,43 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.text.DecimalFormat;
 
 public class akfb
-  implements View.OnClickListener
 {
-  public akfb(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public static String a;
+  public static DecimalFormat a;
+  private static boolean a;
+  public static String b;
+  public static String c;
+  private static String d;
+  public int a;
+  public long a;
+  public int b;
+  public long b;
   
-  public void onClick(View paramView)
+  static
   {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    jdField_a_of_type_JavaLangString = "https://i.gtimg.cn/channel/exclusive_hb/socialpay_makehb_ani_";
+    jdField_b_of_type_JavaLangString = "https://i.gtimg.cn/channel/exclusive_hb/socialpay_aio_ani_";
+    c = jdField_a_of_type_JavaLangString;
+    d = jdField_b_of_type_JavaLangString;
+    jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#0.00");
+  }
+  
+  public static String a()
+  {
+    if (!jdField_a_of_type_Boolean)
+    {
+      QQAppInterface localQQAppInterface = akgd.a();
+      if (localQQAppInterface != null) {
+        d = ((ajyg)localQQAppInterface.getManager(245)).a("hb_exclusive", jdField_b_of_type_JavaLangString, new String[] { "aio_red", "prefix" });
+      }
+    }
+    return d;
+  }
+  
+  public String toString()
+  {
+    return "SpecifyAnimInfo{aId=" + this.jdField_a_of_type_Int + ", minPrice=" + this.jdField_a_of_type_Long + ", maxPrice=" + this.jdField_b_of_type_Long + ", skinId=" + this.jdField_b_of_type_Int + '}';
   }
 }
 

@@ -11,6 +11,7 @@ import android.telephony.CellLocation;
 import android.telephony.TelephonyManager;
 import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.gsm.GsmCellLocation;
+import com.tencent.mobileqq.msf.core.MsfCoreUtil;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.QLog;
 
@@ -29,7 +30,8 @@ public class HwNetworkUtil
   
   public static int getCarrierOperatorType(Context paramContext)
   {
-    paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getSubscriberId();
+    paramContext = (TelephonyManager)paramContext.getSystemService("phone");
+    paramContext = MsfCoreUtil.getImsi();
     if (paramContext != null)
     {
       if ((paramContext.startsWith("46000")) || (paramContext.startsWith("46002"))) {

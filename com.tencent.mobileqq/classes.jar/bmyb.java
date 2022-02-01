@@ -1,43 +1,25 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.annotation.TargetApi;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.contentbox.PlusMenuContainer;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.view.animation.Transformation;
+import dov.com.qq.im.capture.view.AdvancedProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class bmyb
-  implements View.OnClickListener
+  implements bfzz<Float>
 {
-  public bmyb(PlusMenuContainer paramPlusMenuContainer) {}
+  public bmyb(AdvancedProviderView paramAdvancedProviderView, QIMProviderContainerView paramQIMProviderContainerView, View paramView) {}
   
-  public void onClick(View paramView)
+  @TargetApi(11)
+  public void a(bfzt<Float> parambfzt, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    String str;
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof String)))
-    {
-      str = (String)paramView.getTag();
-      Intent localIntent = new Intent();
-      localIntent.putExtra("cmd", "Schema");
-      localIntent.putExtra("schema", str);
-      bmtd.a((Activity)this.a.a, bmtk.a(), localIntent);
-      if (!str.equals(PlusMenuContainer.b[0])) {
-        break label101;
-      }
-      LpReportInfo_pf00064.report(133, 2);
+    paramFloat = paramFloat1.floatValue();
+    if (this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView != null) {
+      this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setBackGroundAlpha(paramFloat);
     }
-    for (;;)
-    {
-      this.a.b();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label101:
-      if (str.equals(PlusMenuContainer.b[1])) {
-        LpReportInfo_pf00064.report(133, 3);
-      } else if (str.equals(PlusMenuContainer.b[2])) {
-        LpReportInfo_pf00064.report(133, 4);
-      }
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat);
     }
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, paramFloat);
   }
 }
 

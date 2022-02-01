@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qqreader.js.JsCallParams;
+import android.graphics.Bitmap;
+import com.tencent.tav.coremedia.CMTime;
+import com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbListener;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
 
-public final class bmpq
-  implements Parcelable.Creator<JsCallParams>
+public class bmpq
+  implements VideoThumbListener
 {
-  public JsCallParams a(Parcel paramParcel)
-  {
-    return new JsCallParams(paramParcel, null);
-  }
+  public bmpq(VideoTrackContainerView paramVideoTrackContainerView) {}
   
-  public JsCallParams[] a(int paramInt)
+  public void onThumbGenerated(Object paramObject, CMTime paramCMTime, Bitmap paramBitmap)
   {
-    return new JsCallParams[paramInt];
+    if ((paramObject instanceof String)) {
+      this.a.a((String)paramObject);
+    }
   }
 }
 

@@ -1,18 +1,17 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mfsdk.impls.memory.MemoryDumpHelper.1;
 
 public class acio
-  implements TouchWebView.OnScrollChangedListener
+  implements DialogInterface.OnClickListener
 {
-  public acio(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
+  public acio(MemoryDumpHelper.1 param1) {}
   
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (GameCenterAPIJavaScript.access$000(this.a) != null) {
-      GameCenterAPIJavaScript.access$000(this.a).scrollBy(0, paramInt2 - paramInt4);
-    }
+    acin.a(this.a.this$0);
+    acin.a(this.a.this$0, false, null, this.a.b, this.a.a, false);
+    acin.b(this.a.this$0);
   }
 }
 

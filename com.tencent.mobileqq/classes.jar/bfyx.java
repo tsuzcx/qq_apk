@@ -1,423 +1,221 @@
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import mqq.app.AppRuntime;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build.VERSION;
+import android.text.Layout.Alignment;
+import android.text.StaticLayout;
+import android.text.TextPaint;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.widgets.ElasticHorScrView;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemAdapter;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.AdViewManager;
+import com.tencent.mobileqq.utils.ShareWithPictureActionSheetBuilder.2;
+import com.tencent.mobileqq.utils.ViewUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bfyx
-  extends JobSegment<Bitmap, String>
-  implements bnsp
+  extends ShareActionSheetBuilder
 {
-  private int jdField_a_of_type_Int;
-  private bfyp jdField_a_of_type_Bfyp;
-  private String jdField_a_of_type_JavaLangString;
-  private int b;
+  protected Bitmap a;
   
-  public bfyx(String paramString, bfyp parambfyp, int paramInt)
+  public bfyx(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bfyp = parambfyp;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramContext, false);
   }
   
-  private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, Canvas paramCanvas, int paramInt5, Bitmap paramBitmap, Paint paramPaint)
+  public void a(Bitmap paramBitmap)
   {
-    paramCanvas.drawRoundRect(new RectF(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4), paramInt5, paramInt5, paramPaint);
-    paramCanvas.drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(paramInt1 + paramInt3 + this.b * 2, paramInt4 / 4 + paramInt2, paramInt1 + paramInt3 + this.b * 3 + paramInt4 / 2, paramInt4 * 3 / 4 + paramInt2), null);
+    this.a = paramBitmap;
+    this.mIsDataChanged = true;
   }
   
-  /* Error */
-  private boolean a(Bitmap paramBitmap, String paramString)
+  public View createViewFlipper()
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: aconst_null
-    //   4: astore 6
-    //   6: aconst_null
-    //   7: astore 4
-    //   9: aload 6
-    //   11: astore_3
-    //   12: new 63	java/io/File
-    //   15: dup
-    //   16: aload_2
-    //   17: invokespecial 66	java/io/File:<init>	(Ljava/lang/String;)V
-    //   20: astore_2
-    //   21: aload 6
-    //   23: astore_3
-    //   24: aload_2
-    //   25: invokevirtual 70	java/io/File:exists	()Z
-    //   28: ifne +147 -> 175
-    //   31: aload 6
-    //   33: astore_3
-    //   34: aload_2
-    //   35: invokevirtual 74	java/io/File:getParentFile	()Ljava/io/File;
-    //   38: invokevirtual 70	java/io/File:exists	()Z
-    //   41: ifne +71 -> 112
-    //   44: aload 6
-    //   46: astore_3
-    //   47: aload_2
-    //   48: invokevirtual 74	java/io/File:getParentFile	()Ljava/io/File;
-    //   51: invokevirtual 77	java/io/File:mkdirs	()Z
-    //   54: ifne +58 -> 112
-    //   57: aload 6
-    //   59: astore_3
-    //   60: ldc 79
-    //   62: ldc 81
-    //   64: invokestatic 87	yuk:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   67: iconst_0
-    //   68: ifeq +11 -> 79
-    //   71: new 89	java/lang/NullPointerException
-    //   74: dup
-    //   75: invokespecial 90	java/lang/NullPointerException:<init>	()V
-    //   78: athrow
-    //   79: iconst_0
-    //   80: ireturn
-    //   81: astore_1
-    //   82: ldc 79
-    //   84: new 92	java/lang/StringBuilder
-    //   87: dup
-    //   88: invokespecial 93	java/lang/StringBuilder:<init>	()V
-    //   91: ldc 95
-    //   93: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   96: aload_1
-    //   97: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   100: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   103: invokestatic 87	yuk:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   106: aload_1
-    //   107: invokevirtual 109	java/io/IOException:printStackTrace	()V
-    //   110: iconst_0
-    //   111: ireturn
-    //   112: aload 6
-    //   114: astore_3
-    //   115: aload_2
-    //   116: invokevirtual 112	java/io/File:createNewFile	()Z
-    //   119: ifne +56 -> 175
-    //   122: aload 6
-    //   124: astore_3
-    //   125: ldc 79
-    //   127: ldc 114
-    //   129: invokestatic 87	yuk:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   132: iconst_0
-    //   133: ifeq -54 -> 79
-    //   136: new 89	java/lang/NullPointerException
-    //   139: dup
-    //   140: invokespecial 90	java/lang/NullPointerException:<init>	()V
-    //   143: athrow
-    //   144: astore_1
-    //   145: ldc 79
-    //   147: new 92	java/lang/StringBuilder
-    //   150: dup
-    //   151: invokespecial 93	java/lang/StringBuilder:<init>	()V
-    //   154: ldc 95
-    //   156: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: aload_1
-    //   160: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   163: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   166: invokestatic 87	yuk:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   169: aload_1
-    //   170: invokevirtual 109	java/io/IOException:printStackTrace	()V
-    //   173: iconst_0
-    //   174: ireturn
-    //   175: aload 6
-    //   177: astore_3
-    //   178: new 116	java/io/BufferedOutputStream
-    //   181: dup
-    //   182: new 118	java/io/FileOutputStream
-    //   185: dup
-    //   186: aload_2
-    //   187: invokespecial 121	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   190: invokespecial 124	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   193: astore_2
-    //   194: aload_1
-    //   195: getstatic 130	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   198: bipush 100
-    //   200: aload_2
-    //   201: invokevirtual 134	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   204: pop
-    //   205: aload_2
-    //   206: ifnull +7 -> 213
-    //   209: aload_2
-    //   210: invokevirtual 137	java/io/BufferedOutputStream:close	()V
-    //   213: iconst_1
-    //   214: ireturn
-    //   215: astore_1
-    //   216: ldc 79
-    //   218: new 92	java/lang/StringBuilder
-    //   221: dup
-    //   222: invokespecial 93	java/lang/StringBuilder:<init>	()V
-    //   225: ldc 95
-    //   227: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   230: aload_1
-    //   231: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   234: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   237: invokestatic 87	yuk:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   240: aload_1
-    //   241: invokevirtual 109	java/io/IOException:printStackTrace	()V
-    //   244: goto -31 -> 213
-    //   247: astore_2
-    //   248: aload 4
-    //   250: astore_1
-    //   251: aload_1
-    //   252: astore_3
-    //   253: aload_2
-    //   254: invokevirtual 138	java/io/FileNotFoundException:printStackTrace	()V
-    //   257: aload_1
-    //   258: astore_3
-    //   259: ldc 79
-    //   261: new 92	java/lang/StringBuilder
-    //   264: dup
-    //   265: invokespecial 93	java/lang/StringBuilder:<init>	()V
-    //   268: ldc 140
-    //   270: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   273: aload_2
-    //   274: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   277: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   280: invokestatic 87	yuk:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   283: aload_1
-    //   284: ifnull -205 -> 79
-    //   287: aload_1
-    //   288: invokevirtual 137	java/io/BufferedOutputStream:close	()V
-    //   291: iconst_0
-    //   292: ireturn
-    //   293: astore_1
-    //   294: ldc 79
-    //   296: new 92	java/lang/StringBuilder
-    //   299: dup
-    //   300: invokespecial 93	java/lang/StringBuilder:<init>	()V
-    //   303: ldc 95
-    //   305: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   308: aload_1
-    //   309: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   312: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   315: invokestatic 87	yuk:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   318: aload_1
-    //   319: invokevirtual 109	java/io/IOException:printStackTrace	()V
-    //   322: iconst_0
-    //   323: ireturn
-    //   324: astore_2
-    //   325: aload 5
-    //   327: astore_1
-    //   328: aload_1
-    //   329: astore_3
-    //   330: aload_2
-    //   331: invokevirtual 109	java/io/IOException:printStackTrace	()V
-    //   334: aload_1
-    //   335: astore_3
-    //   336: ldc 79
-    //   338: new 92	java/lang/StringBuilder
-    //   341: dup
-    //   342: invokespecial 93	java/lang/StringBuilder:<init>	()V
-    //   345: ldc 140
-    //   347: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   350: aload_2
-    //   351: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   354: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   357: invokestatic 87	yuk:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   360: aload_1
-    //   361: ifnull -148 -> 213
-    //   364: aload_1
-    //   365: invokevirtual 137	java/io/BufferedOutputStream:close	()V
-    //   368: goto -155 -> 213
-    //   371: astore_1
-    //   372: ldc 79
-    //   374: new 92	java/lang/StringBuilder
-    //   377: dup
-    //   378: invokespecial 93	java/lang/StringBuilder:<init>	()V
-    //   381: ldc 95
-    //   383: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   386: aload_1
-    //   387: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   390: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   393: invokestatic 87	yuk:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   396: aload_1
-    //   397: invokevirtual 109	java/io/IOException:printStackTrace	()V
-    //   400: goto -187 -> 213
-    //   403: astore_1
-    //   404: aload_3
-    //   405: ifnull +7 -> 412
-    //   408: aload_3
-    //   409: invokevirtual 137	java/io/BufferedOutputStream:close	()V
-    //   412: aload_1
-    //   413: athrow
-    //   414: astore_2
-    //   415: ldc 79
-    //   417: new 92	java/lang/StringBuilder
-    //   420: dup
-    //   421: invokespecial 93	java/lang/StringBuilder:<init>	()V
-    //   424: ldc 95
-    //   426: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   429: aload_2
-    //   430: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   433: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   436: invokestatic 87	yuk:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   439: aload_2
-    //   440: invokevirtual 109	java/io/IOException:printStackTrace	()V
-    //   443: goto -31 -> 412
-    //   446: astore_1
-    //   447: aload_2
-    //   448: astore_3
-    //   449: goto -45 -> 404
-    //   452: astore_3
-    //   453: aload_2
-    //   454: astore_1
-    //   455: aload_3
-    //   456: astore_2
-    //   457: goto -129 -> 328
-    //   460: astore_3
-    //   461: aload_2
-    //   462: astore_1
-    //   463: aload_3
-    //   464: astore_2
-    //   465: goto -214 -> 251
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	468	0	this	bfyx
-    //   0	468	1	paramBitmap	Bitmap
-    //   0	468	2	paramString	String
-    //   11	438	3	localObject1	java.lang.Object
-    //   452	4	3	localIOException	java.io.IOException
-    //   460	4	3	localFileNotFoundException	java.io.FileNotFoundException
-    //   7	242	4	localObject2	java.lang.Object
-    //   1	325	5	localObject3	java.lang.Object
-    //   4	172	6	localObject4	java.lang.Object
-    // Exception table:
-    //   from	to	target	type
-    //   71	79	81	java/io/IOException
-    //   136	144	144	java/io/IOException
-    //   209	213	215	java/io/IOException
-    //   12	21	247	java/io/FileNotFoundException
-    //   24	31	247	java/io/FileNotFoundException
-    //   34	44	247	java/io/FileNotFoundException
-    //   47	57	247	java/io/FileNotFoundException
-    //   60	67	247	java/io/FileNotFoundException
-    //   115	122	247	java/io/FileNotFoundException
-    //   125	132	247	java/io/FileNotFoundException
-    //   178	194	247	java/io/FileNotFoundException
-    //   287	291	293	java/io/IOException
-    //   12	21	324	java/io/IOException
-    //   24	31	324	java/io/IOException
-    //   34	44	324	java/io/IOException
-    //   47	57	324	java/io/IOException
-    //   60	67	324	java/io/IOException
-    //   115	122	324	java/io/IOException
-    //   125	132	324	java/io/IOException
-    //   178	194	324	java/io/IOException
-    //   364	368	371	java/io/IOException
-    //   12	21	403	finally
-    //   24	31	403	finally
-    //   34	44	403	finally
-    //   47	57	403	finally
-    //   60	67	403	finally
-    //   115	122	403	finally
-    //   125	132	403	finally
-    //   178	194	403	finally
-    //   253	257	403	finally
-    //   259	283	403	finally
-    //   330	334	403	finally
-    //   336	360	403	finally
-    //   408	412	414	java/io/IOException
-    //   194	205	446	finally
-    //   194	205	452	java/io/IOException
-    //   194	205	460	java/io/FileNotFoundException
-  }
-  
-  public void a(int paramInt)
-  {
-    yuk.b("QQ.Troop.homework.UploadImageSegment", "onProgress");
-  }
-  
-  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
-  {
-    yuk.d("QQ.Troop.homework.UploadImageSegment", "runSegment source w=" + paramBitmap.getWidth() + ",h=" + paramBitmap.getHeight());
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    this.b = zps.a(BaseApplicationImpl.getApplication().getBaseContext(), 1.0F);
-    try
+    View localView = View.inflate(this.mOutAct, 2131562798, null);
+    this.mAdViewManager.setAdContainer((RelativeLayout)localView.findViewById(2131362216));
+    this.mTitleTv = ((TextView)localView.findViewById(2131361974));
+    Object localObject2;
+    Object localObject1;
+    if (this.showTitle)
     {
-      paramJobContext = paramBitmap.copy(paramBitmap.getConfig(), true);
-      if (paramJobContext == null)
-      {
-        yuk.e("QQ.Troop.homework.UploadImageSegment", "bitmap is null");
-        return;
+      this.mTitleTv.setVisibility(0);
+      if (this.dialogTitle != null) {
+        this.mTitleTv.setText(this.dialogTitle);
+      }
+      this.mScrollView1 = ((ElasticHorScrView)localView.findViewById(2131376872));
+      this.mScrollView2 = ((ElasticHorScrView)localView.findViewById(2131376873));
+      localObject2 = getActionSheetItems();
+      if (localObject2.length <= 0) {
+        break label390;
+      }
+      localObject1 = localObject2[0];
+      label122:
+      if (!((List)localObject1).isEmpty()) {
+        break label1203;
       }
     }
-    catch (OutOfMemoryError paramJobContext)
+    label147:
+    label1186:
+    label1192:
+    label1195:
+    label1198:
+    label1203:
+    for (int j = 0;; j = 1)
     {
-      for (;;)
+      if (localObject2.length > 1)
       {
-        yuk.e("QQ.Troop.homework.UploadImageSegment", "draw bitmap out of memory");
-        notifyError(new ErrorMessage(-97, "QQ.Troop.homework.UploadImageSegment draw bitmap out of memory"));
-        paramJobContext = null;
+        localObject2 = localObject2[1];
+        if (!((List)localObject2).isEmpty()) {
+          break label1198;
+        }
       }
-      paramBitmap = new Canvas(paramJobContext);
-      Paint localPaint = new Paint();
-      localPaint.setStyle(Paint.Style.STROKE);
-      localPaint.setColor(-65536);
-      localPaint.setAntiAlias(true);
-      localPaint.setStrokeWidth(this.b);
-      for (;;)
+      for (int k = 0;; k = 1)
       {
-        Bitmap localBitmap;
-        bfyq localbfyq;
-        try
+        Object localObject3 = new TextPaint();
+        ((TextPaint)localObject3).setTextSize(this.mOutAct.getResources().getDimensionPixelSize(2131299004));
+        Object localObject4 = new StaticLayout(breakLabel2((TextPaint)localObject3, this.itemTextWidth, getLongestLabel((List)localObject1), 5), (TextPaint)localObject3, this.itemTextWidth, Layout.Alignment.ALIGN_CENTER, 1.0F, this.textSpacingExtra, true);
+        StaticLayout localStaticLayout = new StaticLayout(breakLabel2((TextPaint)localObject3, this.itemTextWidth, getLongestLabel((List)localObject2), 5), (TextPaint)localObject3, this.itemTextWidth, Layout.Alignment.ALIGN_CENTER, 1.0F, this.textSpacingExtra, true);
+        localObject3 = localStaticLayout;
+        if (((StaticLayout)localObject4).getHeight() >= localStaticLayout.getHeight()) {
+          localObject3 = localObject4;
+        }
+        int m = this.mOutAct.getResources().getDimensionPixelOffset(2131296794);
+        int i;
+        if (j != 0)
         {
-          localBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130846202);
-          int i = 0;
-          if (i >= this.jdField_a_of_type_Bfyp.a()) {
-            break;
+          this.grid_row_view1 = ((GridView)localView.findViewById(2131367715));
+          if (Build.VERSION.SDK_INT >= 9) {
+            this.mScrollView1.setOverScrollMode(2);
           }
-          localbfyq = this.jdField_a_of_type_Bfyp.a(i);
-          if (localbfyq.a)
+          localObject4 = ((List)localObject1).iterator();
+          i = 0;
+          label350:
+          if (((Iterator)localObject4).hasNext())
           {
+            if (((ShareActionSheetBuilder.ActionSheetItem)((Iterator)localObject4).next()).visibility != 0) {
+              break label1195;
+            }
             i += 1;
-            continue;
           }
-          j = localbfyq.b;
         }
-        catch (OutOfMemoryError paramJobContext)
+        for (;;)
         {
-          yuk.e("QQ.Troop.homework.UploadImageSegment", "draw maskBmp out of memory");
-          notifyError(new ErrorMessage(-97, "QQ.Troop.homework.UploadImageSegment draw maskBmp out of memory"));
-          return;
+          break label350;
+          hideTitle();
+          break;
+          localObject1 = new ArrayList(0);
+          break label122;
+          localObject2 = new ArrayList(0);
+          break label147;
+          int n = this.itemMargin + getIconWidth() + this.itemMargin;
+          this.grid_row_view1.setColumnWidth(n);
+          this.grid_row_view1.setNumColumns(i);
+          localObject4 = this.grid_row_view1.getLayoutParams();
+          this.grid_row_view1.setPadding(this.scrollViewMargin, this.grid_row_view1.getPaddingTop(), this.scrollViewMargin, this.grid_row_view1.getPaddingBottom());
+          ((ViewGroup.LayoutParams)localObject4).width = (n * i + this.scrollViewMargin + this.scrollViewMargin);
+          this.mGridView1Length = ((ViewGroup.LayoutParams)localObject4).width;
+          ((ViewGroup.LayoutParams)localObject4).height = (this.itemImageSize + this.itemTextMargin + ((StaticLayout)localObject3).getHeight() + m);
+          this.grid_row_view1.setLayoutParams((ViewGroup.LayoutParams)localObject4);
+          this.grid_row_view1.setAdapter(new ShareActionSheetBuilder.ActionSheetItemAdapter(this.mOutAct, (List)localObject1));
+          this.grid_row_view1.setSelector(new ColorDrawable(0));
+          this.grid_row_view1.setOnItemClickListener(this.clickListener);
+          if (k != 0)
+          {
+            this.grid_row_view2 = ((GridView)localView.findViewById(2131367716));
+            if (Build.VERSION.SDK_INT >= 9) {
+              this.mScrollView2.setOverScrollMode(2);
+            }
+            this.grid_row_view2.setSmoothScrollbarEnabled(false);
+            localObject1 = ((List)localObject2).iterator();
+            i = 0;
+            if (((Iterator)localObject1).hasNext())
+            {
+              if (((ShareActionSheetBuilder.ActionSheetItem)((Iterator)localObject1).next()).visibility != 0) {
+                break label1192;
+              }
+              i += 1;
+            }
+          }
+          for (;;)
+          {
+            break;
+            n = this.itemMargin + getIconWidth() + this.itemMargin;
+            this.grid_row_view2.setColumnWidth(n);
+            this.grid_row_view2.setNumColumns(i);
+            localObject1 = this.grid_row_view2.getLayoutParams();
+            this.grid_row_view2.setPadding(this.scrollViewMargin, this.grid_row_view2.getPaddingTop(), this.scrollViewMargin, this.grid_row_view2.getPaddingBottom());
+            ((ViewGroup.LayoutParams)localObject1).width = (n * i + this.scrollViewMargin + this.scrollViewMargin);
+            this.mGridView2Length = ((ViewGroup.LayoutParams)localObject1).width;
+            ((ViewGroup.LayoutParams)localObject1).height = (this.itemImageSize + this.itemTextMargin + ((StaticLayout)localObject3).getHeight() + m);
+            this.grid_row_view2.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+            this.grid_row_view2.setNumColumns(i);
+            this.grid_row_view2.setAdapter(new ShareActionSheetBuilder.ActionSheetItemAdapter(this.mOutAct, (List)localObject2));
+            this.grid_row_view2.setSelector(new ColorDrawable(0));
+            this.grid_row_view2.setOnItemClickListener(this.clickListener);
+            localObject1 = (TextView)localView.findViewById(2131361966);
+            ((TextView)localObject1).setText(2131690620);
+            ((TextView)localObject1).setOnClickListener(new bfyy(this));
+            if (j == 0) {
+              this.mScrollView1.setVisibility(8);
+            }
+            if (k == 0) {
+              this.mScrollView2.setVisibility(8);
+            }
+            localView.post(new ShareWithPictureActionSheetBuilder.2(this));
+            j = ViewUtils.dip2px(90.0F);
+            i = j;
+            if (this.grid_row_view1 != null) {
+              i = j + this.grid_row_view1.getLayoutParams().height;
+            }
+            if (this.grid_row_view2 != null) {
+              i += this.grid_row_view2.getLayoutParams().height;
+            }
+            for (;;)
+            {
+              k = this.mOutAct.getResources().getDisplayMetrics().widthPixels;
+              j = this.mOutAct.getResources().getDisplayMetrics().heightPixels;
+              localObject1 = (RelativeLayout)localView.findViewById(2131377280);
+              localObject2 = ((RelativeLayout)localObject1).getLayoutParams();
+              ((ViewGroup.LayoutParams)localObject2).height = (j - i);
+              ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+              if (this.a != null)
+              {
+                m = ViewUtils.dip2px(20.0F);
+                j = j - i - ViewUtils.dip2px(30.0F) * 2;
+                i = this.a.getWidth() * j / this.a.getHeight();
+                if (i <= k - m * 2) {
+                  break label1186;
+                }
+                i = k - m * 2;
+                j = this.a.getHeight() * i / this.a.getWidth();
+              }
+              for (;;)
+              {
+                localObject1 = (ImageView)localView.findViewById(2131377279);
+                localObject2 = (RelativeLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
+                ((RelativeLayout.LayoutParams)localObject2).height = j;
+                ((RelativeLayout.LayoutParams)localObject2).width = i;
+                ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+                ((ImageView)localObject1).setImageBitmap(this.a);
+                return localView;
+              }
+            }
+          }
         }
-        int j;
-        int k = this.b;
-        int m = localbfyq.c;
-        int n = this.b;
-        int i1 = localbfyq.d;
-        int i2 = this.b;
-        int i3 = localbfyq.e;
-        a(j - k, m - n, i1 + i2 * 2, this.b * 2 + i3, paramBitmap, this.jdField_a_of_type_Int, localBitmap, localPaint);
       }
-      paramBitmap = bfyo.b + "temp.png";
-      if (!a(paramJobContext, paramBitmap))
-      {
-        notifyError(new ErrorMessage(-1, "save file to sdCard error!"));
-        return;
-      }
-      paramJobContext = new bnsq(localAppRuntime, paramBitmap, this.jdField_a_of_type_JavaLangString);
-      paramJobContext.a(this);
-      paramJobContext.a();
     }
-  }
-  
-  public void a(String paramString)
-  {
-    yuk.d("QQ.Troop.homework.UploadImageSegment", "upload file completed");
-    notifyResult(paramString);
-  }
-  
-  public void b(int paramInt)
-  {
-    yuk.e("QQ.Troop.homework.UploadImageSegment", "upload file failed,code=" + paramInt);
-    notifyError(new ErrorMessage(-2, "upload error !!return error code=" + paramInt));
   }
 }
 

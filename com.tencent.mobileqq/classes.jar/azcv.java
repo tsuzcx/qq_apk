@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.olympic.ShuayishuaConfig;
-import java.util.Comparator;
-
-public final class azcv
-  implements Comparator<ShuayishuaConfig>
+public class azcv
 {
-  public int a(ShuayishuaConfig paramShuayishuaConfig1, ShuayishuaConfig paramShuayishuaConfig2)
+  public int a;
+  public byte[] a;
+  public int b;
+  
+  public azcv(byte[] paramArrayOfByte, int paramInt)
   {
-    long l = paramShuayishuaConfig1.realBegin - paramShuayishuaConfig2.realBegin;
-    if (l > 0L) {
-      return 1;
-    }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.b = 0;
+  }
+  
+  public azcv(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.b = paramInt1;
   }
 }
 

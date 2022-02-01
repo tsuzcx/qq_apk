@@ -1,46 +1,33 @@
 import android.text.TextUtils;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 public class pcc
-  extends SimpleConfigHandler
   implements AladdinConfigHandler
 {
-  public static String a = "ViolaPicDetailConfigHandler";
-  
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    Map localMap = pan.a(paramString);
-    Object localObject = localMap.keySet();
-    try
+    QLog.d("AdNativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = pbt.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str1 = (String)((Iterator)localObject).next();
-        String str2 = (String)localMap.get(str1);
-        if (TextUtils.equals(str1, "viola_pic_detail_switch")) {
-          bnrf.c(Integer.parseInt(str2));
-        }
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("AdNativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "commercialAdDetails_feeds")) {
+        bkwm.a("ad_native_proteus_offline_bid", str2);
       }
-      return true;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString + " , error= " + localThrowable.getMessage());
-    }
+    return true;
   }
   
   public void onWipeConfig(int paramInt)
   {
-    super.onWipeConfig(paramInt);
-    bnrf.c(0);
+    bkwm.a("ad_native_proteus_offline_bid", "0");
   }
 }
 

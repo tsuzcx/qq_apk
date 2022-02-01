@@ -1,76 +1,42 @@
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
+import org.json.JSONObject;
 
-final class ahnx
-  implements beuq
+public class ahnx
+  extends ahny
 {
-  ahnx(String paramString1, String paramString2) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onResp(bevm parambevm)
+  public JSONObject a()
   {
-    if (parambevm.jdField_a_of_type_Int == 3)
+    JSONObject localJSONObject1 = new JSONObject();
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmo", 2, "pe res download repeating ");
-      }
-      return;
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("user_id", this.a);
+      localJSONObject2.put("keyword", this.b);
+      localJSONObject2.put("appid", this.e);
+      localJSONObject2.put("expose_md5s", this.f);
+      localJSONObject2.put("expose_urls", this.g);
+      localJSONObject2.put("click_md5", this.h);
+      localJSONObject2.put("click_url", this.i);
+      localJSONObject2.put("aio_type", this.c);
+      localJSONObject2.put("mobile_type", this.j);
+      localJSONObject2.put("to_user_id", this.d);
+      localJSONObject2.put("passthough", this.k);
+      localJSONObject1.put("dcId", this.l);
+      localJSONObject1.put("data", localJSONObject2);
+      return localJSONObject1;
     }
-    boolean bool;
-    if (parambevm.jdField_a_of_type_Int == 0)
+    catch (Exception localException)
     {
-      parambevm = parambevm.jdField_a_of_type_Bevl.c;
-      String str1 = bhmi.c(parambevm);
-      String str2 = this.a;
-      if ((str1 != null) && (str1.equalsIgnoreCase(this.b)))
-      {
-        try
-        {
-          bhmi.a(parambevm, str2, false);
-          brgs.a(str2);
-          bool = true;
-        }
-        catch (IOException localIOException)
-        {
-          for (;;)
-          {
-            label83:
-            if (QLog.isColorLevel()) {
-              QLog.d("PokeEmo", 2, "downloadRes.onResp download succ but unzip is failed");
-            }
-            bool = false;
-          }
-        }
-        bhmi.d(parambevm);
-        if (!bool) {
-          break label189;
-        }
-        bhsi.a(true);
-        ahnt.b = true;
-      }
+      while (!QLog.isColorLevel()) {}
+      QLog.e("StickerRecReportData", 2, "convert error:" + localException);
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmo", 2, "downloadRes.onResp download result = " + bool);
-      }
-      ahnt.c = false;
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmo", 2, "downloadRes.onResp download succ but md5 is mismatched");
-      }
-      bool = false;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmo", 2, "downloadRes.onResp failed ");
-      }
-      bool = false;
-      break label83;
-      label189:
-      ahnt.o += 1;
-    }
+    return localJSONObject1;
   }
-  
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

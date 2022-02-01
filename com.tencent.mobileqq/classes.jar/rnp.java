@@ -1,42 +1,30 @@
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
 class rnp
-  implements TVK_IMediaPlayer.OnInfoListener
+  implements INetInfoHandler
 {
-  rnp(rnl paramrnl) {}
+  rnp(rno paramrno) {}
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(rnl.a(), 2, "播放器状态回调 onInfo what = " + paramInt + ", extra = " + paramObject);
-    }
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return false;
-      } while (rnl.a(this.a) == null);
-      localrnr = rnl.a(this.a);
-      if ((paramObject instanceof String)) {}
-      for (paramTVK_IMediaPlayer = (String)paramObject;; paramTVK_IMediaPlayer = null)
-      {
-        localrnr.a(2, paramTVK_IMediaPlayer, null, 0L);
-        break;
-      }
-    } while (rnl.a(this.a) == null);
-    rnr localrnr = rnl.a(this.a);
-    if ((paramObject instanceof String)) {}
-    for (paramTVK_IMediaPlayer = (String)paramObject;; paramTVK_IMediaPlayer = null)
-    {
-      localrnr.a(5, paramTVK_IMediaPlayer, null, 0L);
-      break;
-    }
+    QLog.i("RIJUGC.RIJUgcVideoPublishManager", 1, "onNetNone2Mobile");
+    rno.a(this.a);
   }
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    QLog.i("RIJUGC.RIJUgcVideoPublishManager", 1, "onNetWifi2Mobile");
+    rno.a(this.a);
+  }
+  
+  public void onNetWifi2None() {}
 }
 
 

@@ -1,18 +1,9 @@
-import android.app.Activity;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
-class bbrl
-  implements EIPCResultCallback
+public class bbrl
 {
-  bbrl(bbrb parambbrb) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if (-102 == paramEIPCResult.code) {
-      this.a.mContext.finish();
-    }
-  }
+  public int a;
+  public aydp a;
+  public bbqx a;
+  public Object a;
 }
 
 

@@ -1,149 +1,96 @@
-import android.os.Handler;
+import android.content.Context;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.pts.core.PTSAppInstance;
-import com.tencent.pts.core.PTSComposer;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import tencent.im.oidb.cmd0xebf.oidb_cmd0xebf.ReqBody;
-import tencent.im.oidb.cmd0xebf.oidb_cmd0xebf.RspBody;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/network/PTSGeneralRequestModule;", "Lcom/tencent/biz/pubaccount/readinjoy/model/ReadInJoyEngineModule;", "app", "Lcom/tencent/common/app/AppInterface;", "entityManager", "Lcom/tencent/mobileqq/persistence/EntityManager;", "executor", "Ljava/util/concurrent/ExecutorService;", "msfService", "Lcom/tencent/biz/pubaccount/readinjoy/protocol/ReadInJoyMSFService;", "mainThreadHandler", "Landroid/os/Handler;", "(Lcom/tencent/common/app/AppInterface;Lcom/tencent/mobileqq/persistence/EntityManager;Ljava/util/concurrent/ExecutorService;Lcom/tencent/biz/pubaccount/readinjoy/protocol/ReadInJoyMSFService;Landroid/os/Handler;)V", "ptsComposerMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/pts/core/PTSComposer;", "addRequestAttributes", "", "request", "Lcom/tencent/qphone/base/remote/ToServiceMsg;", "ptsComposer", "handleReceivePtsData", "req", "res", "Lcom/tencent/qphone/base/remote/FromServiceMsg;", "data", "", "onReceive", "requestPtsBusinessData", "businessType", "requestParamsJson", "", "extendInfoJson", "unInitialize", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qhm
-  extends pqj
+public class qhm
+  extends ViewBase
 {
-  public static final qhn a;
-  private final ConcurrentHashMap<Integer, PTSComposer> a;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  static
+  public qhm(VafContext paramVafContext)
   {
-    jdField_a_of_type_Qhn = new qhn(null);
+    super(paramVafContext);
+    a(paramVafContext);
   }
   
-  public qhm(@Nullable AppInterface paramAppInterface, @Nullable EntityManager paramEntityManager, @Nullable ExecutorService paramExecutorService, @Nullable qfo paramqfo, @Nullable Handler paramHandler)
+  private void a(VafContext paramVafContext)
   {
-    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqfo, paramHandler);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(paramVafContext.getContext());
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramVafContext.getContext());
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, Utils.dp2px(20.0D));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
+    this.jdField_a_of_type_AndroidWidgetTextView.setPadding(Utils.dp2px(5.0D), 0, Utils.dp2px(5.0D), 0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 12.0F);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(paramVafContext.getContext().getResources().getDrawable(2130842718), null, null, null);
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(Utils.dp2px(2.0D));
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130842688));
+    paramVafContext = new RelativeLayout.LayoutParams(-2, Utils.dp2px(20.0D));
+    paramVafContext.addRule(11);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, Utils.dp2px(12.0D), 0);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, paramVafContext);
   }
   
-  private final void a(ToServiceMsg paramToServiceMsg, PTSComposer paramPTSComposer)
+  public int getComMeasuredHeight()
   {
-    PTSAppInstance localPTSAppInstance = paramPTSComposer.getPtsAppInstance();
-    if (localPTSAppInstance != null) {}
-    for (int i = localPTSAppInstance.getUniqueID();; i = -1)
+    return this.jdField_a_of_type_AndroidWidgetRelativeLayout.getMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return (int)(float)DeviceInfoUtil.getPortraitWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.measure(paramInt1, paramInt2);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    return false;
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    boolean bool = true;
+    switch (paramInt)
     {
-      paramToServiceMsg = paramToServiceMsg.getAttributes();
-      Intrinsics.checkExpressionValueIsNotNull(paramToServiceMsg, "request.attributes");
-      ((Map)paramToServiceMsg).put("key_pts_app_instance_id", Integer.valueOf(i));
-      ((Map)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).put(Integer.valueOf(i), paramPTSComposer);
-      QLog.i("PTSGeneralRequestModule", 1, "[addRequestAttributes] uniqueId = " + i);
-      return;
+    default: 
+      bool = super.setAttribute(paramInt, paramString);
     }
-  }
-  
-  private final void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    int j = -1;
-    oidb_cmd0xebf.RspBody localRspBody = new oidb_cmd0xebf.RspBody();
-    int k = qfq.a(paramFromServiceMsg, paramObject, (MessageMicro)localRspBody);
-    int i;
-    if (paramToServiceMsg != null)
+    do
     {
-      paramToServiceMsg = paramToServiceMsg.getAttribute("key_pts_app_instance_id");
-      if (paramToServiceMsg != null) {
-        if ((paramToServiceMsg instanceof Integer))
-        {
-          i = ((Number)paramToServiceMsg).intValue();
-          paramToServiceMsg = Integer.valueOf(i);
-          label61:
-          paramFromServiceMsg = (PTSComposer)((Map)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).get(paramToServiceMsg);
-          QLog.i("PTSGeneralRequestModule", 1, "[handleReceivePtsData], result = " + k);
-          if (k == 0)
-          {
-            paramToServiceMsg = localRspBody.business_type;
-            if (paramToServiceMsg == null) {
-              break label227;
-            }
-            i = paramToServiceMsg.get();
-            label125:
-            paramToServiceMsg = localRspBody.ret_code;
-            if (paramToServiceMsg != null) {
-              j = paramToServiceMsg.get();
-            }
-            paramToServiceMsg = localRspBody.result_json;
-            if (paramToServiceMsg == null) {
-              break label233;
-            }
-            paramToServiceMsg = paramToServiceMsg.get();
-            if (paramToServiceMsg == null) {
-              break label233;
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      QLog.i("PTSGeneralRequestModule", 1, "[handleReceivePtsData], businessType = " + i + ", retCode = " + j + ", resultJson = " + paramToServiceMsg);
-      if (paramFromServiceMsg != null) {
-        paramFromServiceMsg.updateData(paramToServiceMsg);
-      }
-      return;
-      i = -1;
-      break;
-      paramToServiceMsg = null;
-      break label61;
-      label227:
-      i = -1;
-      break label125;
-      label233:
-      paramToServiceMsg = "";
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-  }
-  
-  public final void a(@NotNull PTSComposer paramPTSComposer, int paramInt, @NotNull String paramString1, @NotNull String paramString2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramPTSComposer, "ptsComposer");
-    Intrinsics.checkParameterIsNotNull(paramString1, "requestParamsJson");
-    Intrinsics.checkParameterIsNotNull(paramString2, "extendInfoJson");
-    Object localObject = new oidb_cmd0xebf.ReqBody();
-    ((oidb_cmd0xebf.ReqBody)localObject).business_type.set(paramInt);
-    ((oidb_cmd0xebf.ReqBody)localObject).request_params_json.set(paramString1);
-    ((oidb_cmd0xebf.ReqBody)localObject).extend_info_json.set(paramString2);
-    localObject = qfq.a("OidbSvc.0xebf", 3775, 0, ((oidb_cmd0xebf.ReqBody)localObject).toByteArray());
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "ReadInJoyOidbHelper.make…T, reqBody.toByteArray())");
-    a((ToServiceMsg)localObject, paramPTSComposer);
-    a((ToServiceMsg)localObject);
-    QLog.i("PTSGeneralRequestModule", 1, "[requestPtsBusinessData], businessType = " + paramInt + ", requestParamsJson = " + paramString1 + ", extendInfoJson = " + paramString2);
-  }
-  
-  public void a(@Nullable ToServiceMsg paramToServiceMsg, @Nullable FromServiceMsg paramFromServiceMsg, @Nullable Object paramObject)
-  {
-    if (paramFromServiceMsg != null) {}
-    for (String str = paramFromServiceMsg.getServiceCmd();; str = null)
-    {
-      if (TextUtils.equals((CharSequence)str, (CharSequence)"OidbSvc.0xebf")) {
-        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-      }
-      return;
-    }
+      do
+      {
+        return bool;
+      } while (TextUtils.isEmpty(paramString));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+      return true;
+      paramInt = obg.a(paramString, 0);
+    } while (paramInt <= 0);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, Utils.dp2px(paramInt), 0);
+    return true;
   }
 }
 

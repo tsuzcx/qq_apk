@@ -1,13 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import org.json.JSONObject;
 
 public class tsk
-  implements ViewBase.IBuilder
 {
-  public ViewBase build(VafContext paramVafContext)
+  public long a;
+  public String a;
+  public String b;
+  public String c;
+  
+  tsk(tsf paramtsf, JSONObject paramJSONObject)
   {
-    return new tsj(paramVafContext);
+    if (paramJSONObject == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("sActivityId");
+    this.b = paramJSONObject.optString("sGiftName");
+    this.c = paramJSONObject.optString("sNeedRole");
+    this.jdField_a_of_type_Long = paramJSONObject.optInt("iGiftId");
   }
 }
 

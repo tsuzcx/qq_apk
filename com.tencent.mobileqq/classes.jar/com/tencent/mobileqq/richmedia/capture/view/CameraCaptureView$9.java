@@ -7,7 +7,7 @@ class CameraCaptureView$9
   
   public void run()
   {
-    this.this$0.t();
+    this.this$0.l();
   }
 }
 

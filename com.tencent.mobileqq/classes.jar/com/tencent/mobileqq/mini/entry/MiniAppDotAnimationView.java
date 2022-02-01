@@ -7,8 +7,8 @@ import android.graphics.Paint.Style;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import bhtq;
 import com.tencent.mobileqq.mini.util.ColorUtils;
+import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
 public class MiniAppDotAnimationView
   extends View
 {
-  private static final int DEFAULT_OFFSET = bhtq.b(-20.0F);
+  private static final int DEFAULT_OFFSET = ViewUtils.dpToPx(-20.0F);
   private static final int MARGIN_LEFT_RIGHT;
   private static final int MAX_DOT_SIZE;
   private static final int MIN_DOT_SIZE;
@@ -31,13 +31,13 @@ public class MiniAppDotAnimationView
   
   static
   {
-    SCROLL_ANIMATION_OPEN_START = bhtq.b(-20.0F);
-    SCROLL_ANIMATION_OPEN_END = bhtq.b(-50.0F);
-    SCROLL_ANIMATION_CLOSE_START = bhtq.b(-70.0F);
-    SCROLL_ANIMATION_CLOSE_END = bhtq.b(-95.0F);
-    MIN_DOT_SIZE = bhtq.b(3.0F);
-    MAX_DOT_SIZE = bhtq.b(6.0F);
-    MARGIN_LEFT_RIGHT = bhtq.b(30.0F);
+    SCROLL_ANIMATION_OPEN_START = ViewUtils.dpToPx(-20.0F);
+    SCROLL_ANIMATION_OPEN_END = ViewUtils.dpToPx(-50.0F);
+    SCROLL_ANIMATION_CLOSE_START = ViewUtils.dpToPx(-70.0F);
+    SCROLL_ANIMATION_CLOSE_END = ViewUtils.dpToPx(-95.0F);
+    MIN_DOT_SIZE = ViewUtils.dpToPx(3.0F);
+    MAX_DOT_SIZE = ViewUtils.dpToPx(6.0F);
+    MARGIN_LEFT_RIGHT = ViewUtils.dpToPx(30.0F);
   }
   
   public MiniAppDotAnimationView(Context paramContext)

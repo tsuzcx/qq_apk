@@ -1,86 +1,153 @@
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class auoy
+  extends WebViewPlugin
 {
-  private static Calendar a = ;
+  private int jdField_a_of_type_Int;
+  private zon jdField_a_of_type_Zon;
+  final zop jdField_a_of_type_Zop = new auoz(this);
+  private int b;
   
-  public static String a(long paramLong)
+  public auoy()
   {
-    Calendar localCalendar1 = Calendar.getInstance();
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar1.setTimeInMillis(bcrg.a() * 1000L);
-    localCalendar2.setTimeInMillis(paramLong);
-    int k = localCalendar1.get(1);
-    int i = localCalendar1.get(6) - localCalendar2.get(6);
-    int j = i;
-    if (localCalendar2.get(1) != k)
-    {
-      localCalendar1 = (Calendar)localCalendar2.clone();
-      do
-      {
-        j = i + localCalendar1.getActualMaximum(6);
-        localCalendar1.add(1, 1);
-        i = j;
-      } while (localCalendar1.get(1) != k);
-    }
-    if (j <= 7) {
-      return "7天内";
-    }
-    return a(paramLong, "yyyy年MM月");
+    this.mPluginNameSpace = "nowlive";
   }
   
-  public static String a(long paramLong, String paramString)
+  private void a(int paramInt1, int paramInt2)
   {
-    if (paramLong == 0L) {
-      return "";
-    }
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      paramString = new SimpleDateFormat(paramString).format(new Date(paramLong));
-      return paramString;
+      localJSONObject.put("state", paramInt1);
+      localJSONObject.put("progress", paramInt2);
+      callJs("window.__WEBVIEW_GETPLUGININFO && window.__WEBVIEW_GETPLUGININFO(" + localJSONObject.toString() + ");");
+      return;
     }
-    catch (Exception paramString)
+    catch (JSONException localJSONException)
     {
-      paramString = new SimpleDateFormat("yyyy-MM-dd");
-      try
-      {
-        paramString = paramString.format(new Date(paramLong));
-        return paramString;
-      }
-      catch (Exception paramString) {}
+      localJSONException.printStackTrace();
     }
-    return null;
   }
   
-  public static String b(long paramLong)
+  private void a(int paramInt, String paramString)
   {
-    a.setTimeInMillis(System.currentTimeMillis());
-    int i = a.get(1);
-    int j = a.get(2);
-    int k = a.get(5);
-    a.setTimeInMillis(paramLong);
-    int m = a.get(1);
-    int n = a.get(2);
-    int i1 = a.get(5);
-    if (i != m) {
-      return new SimpleDateFormat("yyyy-MM-dd ", BaseApplicationImpl.getContext().getResources().getConfiguration().locale).format(new Date(paramLong));
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("errcode", paramInt);
+      localJSONObject.put("desc", paramString);
+      callJs("window.__WEBVIEW_INSTALL && window.__WEBVIEW_INSTALL(" + localJSONObject.toString() + ");");
+      return;
     }
-    if (j != n) {
-      return new SimpleDateFormat("MM-dd ", BaseApplicationImpl.getContext().getResources().getConfiguration().locale).format(new Date(paramLong));
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
-    if (k == i1) {
-      return new SimpleDateFormat("HH:mm ", BaseApplicationImpl.getContext().getResources().getConfiguration().locale).format(new Date(paramLong));
+  }
+  
+  public zon a()
+  {
+    return this.jdField_a_of_type_Zon;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("NowWebViewPlugin", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
     }
-    if (k - i1 <= 1) {
-      return anzj.a(2131708590);
+    if ((this.jdField_a_of_type_Zon == null) || (paramString1 == null) || (!"nowlive".equals(paramString2)) || (paramString3 == null)) {}
+    label337:
+    do
+    {
+      return false;
+      if ("getPluginInfo".equals(paramString3))
+      {
+        this.jdField_a_of_type_Zon.i();
+        a(this.jdField_a_of_type_Int, this.b);
+      }
+      for (;;)
+      {
+        return true;
+        if ("openRoom".equals(paramString3))
+        {
+          if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("NowWebViewPlugin", 2, "handleJsRequest arg = " + paramVarArgs[0]);
+          }
+          paramJsBridgeListener = paramVarArgs[0];
+          if (TextUtils.isEmpty(paramJsBridgeListener)) {
+            break;
+          }
+          this.jdField_a_of_type_Zon.a(Long.valueOf(paramJsBridgeListener).longValue());
+          continue;
+        }
+        if ("install".equals(paramString3))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("NowWebViewPlugin", 2, "handleJsRequest install arg = " + paramVarArgs[0]);
+          }
+          if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+            paramJsBridgeListener = paramVarArgs[0];
+          }
+          for (;;)
+          {
+            try
+            {
+              i = Integer.valueOf(paramJsBridgeListener).intValue();
+              paramJsBridgeListener = this.jdField_a_of_type_Zon;
+              if (i == 1) {
+                bool = true;
+              }
+              paramJsBridgeListener.b(bool);
+            }
+            catch (NumberFormatException paramJsBridgeListener)
+            {
+              paramJsBridgeListener.printStackTrace();
+            }
+            int i = 0;
+          }
+        }
+        if ("preload".equals(paramString3))
+        {
+          this.jdField_a_of_type_Zon.g();
+        }
+        else
+        {
+          if (!"audioRoomSetting".equals(paramString3)) {
+            break label337;
+          }
+          auqo.a(this, paramVarArgs);
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("NowWebViewPlugin", 2, "NOT support method " + paramString3 + " yet!!");
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_Zon = zon.a();
+    this.jdField_a_of_type_Zon.a();
+    this.jdField_a_of_type_Zon.g(this.jdField_a_of_type_Zop);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_Zon != null)
+    {
+      this.jdField_a_of_type_Zon.b();
+      this.jdField_a_of_type_Zon.h();
     }
-    return new SimpleDateFormat("MM-dd ", BaseApplicationImpl.getContext().getResources().getConfiguration().locale).format(new Date(paramLong));
   }
 }
 

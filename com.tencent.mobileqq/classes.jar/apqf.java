@@ -1,98 +1,88 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-class apqf
-  implements nmg
+public class apqf
+  implements DialogInterface.OnDismissListener
 {
-  apqf(apqd paramapqd, apqg paramapqg, ArrayList paramArrayList, apqc paramapqc) {}
+  public apqf(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QLog.d("AREngine_ARResourceManagerTools", 2, "Load offline package finish, code = " + paramInt + "param1" + paramString);
-    if (paramInt == 0) {
-      if (paramString == null) {
-        if (this.jdField_a_of_type_Apqg != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearchFriendActivity", 2, "onDismiss|pickerType : " + this.a.i);
+    }
+    if (this.a.i == 0)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
+      this.a.jdField_a_of_type_Ampm.a(this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int);
+      paramDialogInterface = this.a.jdField_a_of_type_Ampm.a(this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int);
+      if (AppSetting.c)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(amtj.a(2131701500) + paramDialogInterface);
+        bfpm.a(this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem, amtj.a(2131701503) + paramDialogInterface);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ConditionSearchFriendActivity", 2, "onDismiss|mCurAgeIndex1 : " + this.a.f + ", mCurAgeIndex2 : " + this.a.g + ", mAgeSelectIndex1 : " + this.a.jdField_b_of_type_Int + ", mAgeSelectIndex2 : " + this.a.jdField_c_of_type_Int);
+      }
+      bcef.b(this.a.app, "CliOper", "", "", "0X8004243", "0X8004243", 0, 0, this.a.jdField_b_of_type_Int + "", this.a.jdField_c_of_type_Int + "", "", "");
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = null;
+      if (ConditionSearchFriendActivity.a(this.a) > 0)
+      {
+        this.a.jdField_e_of_type_AndroidViewView.scrollBy(0, -ConditionSearchFriendActivity.a(this.a));
+        ConditionSearchFriendActivity.c(this.a, 0);
+      }
+      return;
+      if (this.a.i == 3)
+      {
+        this.a.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
+        this.a.jdField_a_of_type_Ampm.b(this.a.jdField_d_of_type_Int);
+        if (AppSetting.c)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Apqc);
-          if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+          this.a.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(amtj.a(2131701502) + ampm.c[this.a.jdField_d_of_type_Int]);
+          bfpm.a(this.a.jdField_e_of_type_ComTencentMobileqqWidgetFormSimpleItem, amtj.a(2131701513) + ampm.c[this.a.jdField_d_of_type_Int]);
+        }
+        bcef.b(this.a.app, "CliOper", "", "", "0X8006F0B", "0X8006F0B", 0, 0, this.a.jdField_d_of_type_Int + "", "", "", "");
+      }
+      else
+      {
+        this.a.jdField_d_of_type_AndroidWidgetTextView = null;
+        paramDialogInterface = ConditionSearchFriendActivity.a(this.a);
+        String[] arrayOfString = new String[4];
+        arrayOfString[0] = this.a.jdField_b_of_type_JavaLangString;
+        arrayOfString[1] = this.a.jdField_a_of_type_ArrayOfJavaLangString[0];
+        arrayOfString[2] = this.a.jdField_a_of_type_ArrayOfJavaLangString[1];
+        arrayOfString[3] = this.a.jdField_a_of_type_ArrayOfJavaLangString[2];
+        if (this.a.i == 1)
+        {
+          this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
+          this.a.jdField_a_of_type_Ampm.a(0, paramDialogInterface);
+          this.a.jdField_a_of_type_Ampm.b(arrayOfString);
+          if (AppSetting.c)
           {
-            this.jdField_a_of_type_Apqg.a(true);
-            this.jdField_a_of_type_Apqg.a(4, true);
-            this.jdField_a_of_type_Apqd.a();
+            this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(amtj.a(2131701499) + paramDialogInterface);
+            bfpm.a(this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem, amtj.a(2131701498) + paramDialogInterface);
+          }
+        }
+        else if (this.a.i == 2)
+        {
+          this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightTextColor(2);
+          this.a.jdField_a_of_type_Ampm.a(1, paramDialogInterface);
+          this.a.jdField_a_of_type_Ampm.c(arrayOfString);
+          if (AppSetting.c)
+          {
+            this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(amtj.a(2131701509) + paramDialogInterface);
+            bfpm.a(this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem, amtj.a(2131701510) + paramDialogInterface);
           }
         }
       }
-    }
-    label244:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              for (;;)
-              {
-                return;
-                try
-                {
-                  paramString = new JSONObject(paramString);
-                  if (!paramString.has("data")) {
-                    break label244;
-                  }
-                  paramString = paramString.getJSONArray("data");
-                  if (((paramString.length() == 0) || (!paramString.getJSONObject(0).has("bid"))) || (this.jdField_a_of_type_Apqg != null))
-                  {
-                    this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Apqc);
-                    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
-                    {
-                      this.jdField_a_of_type_Apqg.a(true);
-                      this.jdField_a_of_type_Apqg.a(4, true);
-                      this.jdField_a_of_type_Apqd.a();
-                      return;
-                    }
-                  }
-                }
-                catch (JSONException paramString)
-                {
-                  paramString.printStackTrace();
-                }
-              }
-            } while (this.jdField_a_of_type_Apqg == null);
-            this.jdField_a_of_type_Apqg.a(false);
-            this.jdField_a_of_type_Apqg.a(4, false);
-            this.jdField_a_of_type_Apqd.a();
-            return;
-            paramString = this.jdField_a_of_type_Apqg;
-          } while (paramString == null);
-          return;
-          if (paramInt != 7) {
-            break;
-          }
-        } while (this.jdField_a_of_type_Apqg == null);
-        this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Apqc);
-      } while (this.jdField_a_of_type_JavaUtilArrayList.size() != 0);
-      this.jdField_a_of_type_Apqg.a(true);
-      this.jdField_a_of_type_Apqg.a(4, true);
-      this.jdField_a_of_type_Apqd.a();
-      return;
-    } while (this.jdField_a_of_type_Apqg == null);
-    this.jdField_a_of_type_Apqg.a(false);
-    this.jdField_a_of_type_Apqg.a(4, false);
-    this.jdField_a_of_type_Apqd.a();
-  }
-  
-  public void progress(int paramInt)
-  {
-    QLog.d("AREngine_ARResourceManagerTools", 2, "Load offline progress  = " + paramInt);
-    if (this.jdField_a_of_type_Apqg != null) {
-      this.jdField_a_of_type_Apqg.a(apqd.a(this.jdField_a_of_type_Apqd, 0L, paramInt));
     }
   }
 }

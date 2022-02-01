@@ -1,30 +1,18 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.content.Context;
+import android.widget.ScrollView;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 
 public class afkf
-  implements ActionMode.Callback
+  extends ScrollView
 {
-  public afkf(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
-  
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public afkf(TroopChatPie paramTroopChatPie, Context paramContext)
   {
-    return false;
+    super(paramContext);
   }
   
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public void setOverScrollMode(int paramInt)
   {
-    paramMenu.clear();
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    super.setOverScrollMode(2);
   }
 }
 

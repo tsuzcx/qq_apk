@@ -1,75 +1,83 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CameraEmotionData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aisy
-  extends aisj
+class aisy
+  extends BaseAdapter
 {
-  private Collection<String> a;
+  private aisy(aisw paramaisw) {}
   
-  public aisy(QQAppInterface paramQQAppInterface)
+  public int getCount()
   {
-    super(paramQQAppInterface);
+    return 6;
   }
   
-  private List<aisx> a(String paramString)
+  public Object getItem(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = LayoutInflater.from(aisw.a(this.a)).inflate(2131562913, null);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerRecCameraEmoticonHandleListener", 2, "camera emoticon search start.");
-    }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = (asgf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(333);
-    aiti localaiti = aiti.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    localObject = ((asgf)localObject).a();
-    if (localObject != null)
+    for (;;)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      int k;
+      int j;
+      int i;
+      switch (paramInt)
       {
-        CameraEmotionData localCameraEmotionData = (CameraEmotionData)((Iterator)localObject).next();
-        if (("normal".equals(localCameraEmotionData.RomaingType)) && (paramString.equals(localaiti.b(localCameraEmotionData.strContext)))) {
-          localArrayList.add(new aisx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localCameraEmotionData));
+      case 4: 
+      default: 
+        k = 2130839122;
+        j = 2131718391;
+        i = 2131718788;
+      }
+      for (;;)
+      {
+        ImageView localImageView = (ImageView)paramView.findViewById(2131362830);
+        TextView localTextView = (TextView)paramView.findViewById(2131362842);
+        localImageView.setImageResource(k);
+        localTextView.setText(j);
+        if (AppSetting.c) {
+          paramView.setContentDescription(aisw.a(this.a).getString(i));
         }
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        j = 2131718405;
+        k = 2130839126;
+        i = 2131718804;
+        continue;
+        j = 2131718407;
+        k = 2130839127;
+        i = 2131718805;
+        continue;
+        j = 2131718412;
+        k = 2130839130;
+        i = 2131718812;
+        continue;
+        j = 2131718403;
+        k = 2130839124;
+        i = 2131718795;
+        continue;
+        i = 2131716154;
+        j = 2131716154;
+        k = 2130842473;
       }
     }
-    if (localArrayList.isEmpty())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecCameraEmoticonHandleListener", 2, "findMatchCameraEmoticons matchList is null or empty,keyWord: " + bhjx.a(paramString));
-      }
-      return null;
-    }
-    return localArrayList;
-  }
-  
-  public List<aisx> a(String paramString, SessionInfo paramSessionInfo)
-  {
-    return a(paramString);
-  }
-  
-  public void a()
-  {
-    aiti localaiti = aiti.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (localaiti != null) {
-      this.jdField_a_of_type_JavaUtilCollection = localaiti.a();
-    }
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilCollection == null) {
-      a();
-    }
-    return (this.jdField_a_of_type_JavaUtilCollection != null) && (this.jdField_a_of_type_JavaUtilCollection.contains(paramString));
   }
 }
 

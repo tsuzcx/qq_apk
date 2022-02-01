@@ -7,8 +7,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import yuk;
-import zps;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import xvv;
 
 public class FullScreenImageView
   extends ImageView
@@ -28,7 +28,7 @@ public class FullScreenImageView
     Drawable localDrawable = getDrawable();
     if (((localDrawable instanceof BitmapDrawable)) && (((BitmapDrawable)localDrawable).getBitmap().isRecycled()))
     {
-      yuk.e("", "can not draw a bitmap which is recycled " + this);
+      xvv.e("", "can not draw a bitmap which is recycled " + this);
       return;
     }
     super.onDraw(paramCanvas);
@@ -36,7 +36,7 @@ public class FullScreenImageView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    setMeasuredDimension(zps.a(super.getContext()), zps.d(super.getContext()));
+    setMeasuredDimension(UIUtils.getWindowScreenWidth(super.getContext()), UIUtils.getWindowScreenHeight(super.getContext()));
   }
 }
 

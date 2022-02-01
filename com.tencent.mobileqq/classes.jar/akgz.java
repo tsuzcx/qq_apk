@@ -1,10 +1,32 @@
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public abstract interface akgz
+class akgz
+  implements WtTicketPromise
 {
-  public abstract void a();
+  akgz(akgt paramakgt, akha paramakha) {}
   
-  public abstract void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo);
+  public void Done(Ticket paramTicket)
+  {
+    if ((paramTicket != null) && (paramTicket._sig != null) && (paramTicket._sig.length != 0))
+    {
+      paramTicket = new String(paramTicket._sig);
+      this.jdField_a_of_type_Akha.a(paramTicket);
+      return;
+    }
+    this.jdField_a_of_type_Akgt.c("get skey is null");
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    this.jdField_a_of_type_Akgt.c("get skey failed");
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    this.jdField_a_of_type_Akgt.c("get skey time out");
+  }
 }
 
 

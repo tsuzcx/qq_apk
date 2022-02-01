@@ -1,22 +1,13 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.dataline.util.widget.AsyncImageView;
+import com.tencent.mobileqq.customviews.MessageProgressTextView;
 
 public class afyy
-  implements TextWatcher
+  extends aezf
 {
-  private afyy(TroopTransferActivity paramTroopTransferActivity) {}
+  public AsyncImageView a;
+  public MessageProgressTextView a;
   
-  public void afterTextChanged(Editable paramEditable)
-  {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.a(paramEditable);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public afyy(afyv paramafyv) {}
 }
 
 

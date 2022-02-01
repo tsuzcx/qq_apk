@@ -1,40 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
-
 class ascb
+  implements ascz
 {
-  ascb(asca paramasca, boolean paramBoolean) {}
+  ascb(asbj paramasbj) {}
   
-  @QQPermissionDenied(1818)
-  public void denied()
+  public void a(Object[] paramArrayOfObject)
   {
-    QLog.e("VoiceInputHelper", 1, "checkPermission user denied");
-    asca.a(this.jdField_a_of_type_Asca);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Asca.onGetError(1830001);
-      return;
-    }
-    asca.a(this.jdField_a_of_type_Asca, false, 1830001);
-  }
-  
-  @QQPermissionGrant(1818)
-  public void grant()
-  {
-    QLog.d("VoiceInputHelper", 1, "checkPermission user grant");
-    asca.a(this.jdField_a_of_type_Asca);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      asca.b(this.jdField_a_of_type_Asca);
-      return;
-    }
-    asca.a(this.jdField_a_of_type_Asca, true, 0);
+    asbj.access$1500(this.a, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ascb
  * JD-Core Version:    0.7.0.1
  */

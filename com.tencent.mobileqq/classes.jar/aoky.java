@@ -1,19 +1,42 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoky
-  implements BusinessObserver
 {
-  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static aokw a(aokz paramaokz, int paramInt)
   {
-    switch (paramInt)
+    if (paramaokz == null) {
+      throw new RuntimeException("params can not be null!");
+    }
+    Object localObject;
+    switch (paramaokz.jdField_a_of_type_Int)
     {
     default: 
-      return;
+      localObject = new aolb(paramInt);
     }
-    a(paramBoolean, paramBundle.getInt("msgType", 0), paramBundle);
+    for (;;)
+    {
+      QLog.i("KeyingManager", 1, "getKeying keying: " + localObject + "  params: " + paramaokz.toString());
+      return localObject;
+      localObject = new aokq(paramInt);
+      continue;
+      localObject = new aold(paramInt);
+      continue;
+      localObject = new aoku(paramInt);
+      continue;
+      localObject = new aokv(paramInt);
+      continue;
+      if (TextUtils.isEmpty(paramaokz.jdField_a_of_type_JavaLangString)) {
+        break;
+      }
+      localObject = new aokr(paramInt, paramaokz.jdField_a_of_type_JavaLangString);
+    }
+    throw new RuntimeException("fragmentShader can not be empty!");
+  }
+  
+  public static aokz a(int paramInt)
+  {
+    return new aokz(paramInt);
   }
 }
 

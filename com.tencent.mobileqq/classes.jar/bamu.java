@@ -1,10 +1,9 @@
-public abstract interface bamu
+public class bamu
 {
-  public abstract bamv a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public int a;
+  public String a;
+  public int b;
+  public int c;
 }
 
 

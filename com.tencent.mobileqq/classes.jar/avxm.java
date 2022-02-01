@@ -1,53 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.identification.IdentificationPoseReflect.5.1;
-import com.tencent.mobileqq.identification.IdentificationPoseReflect.5.2;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitFrameworkEventListener;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitNetResponseParser;
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
 
 public class avxm
-  implements YtSDKKitFramework.IYtSDKKitFrameworkEventListener
+  extends AnimatorListenerAdapter
 {
-  avxm(avxk paramavxk) {}
+  public avxm(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView) {}
   
-  public void onFrameworkEvent(HashMap<String, Object> paramHashMap)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    avxk.a(this.a, new IdentificationPoseReflect.5.1(this, paramHashMap));
+    super.onAnimationCancel(paramAnimator);
+    MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment, this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
-  public void onNetworkRequestEvent(String paramString1, String paramString2, HashMap<String, String> paramHashMap, YtSDKKitFramework.IYtSDKKitNetResponseParser paramIYtSDKKitNetResponseParser)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramHashMap = avxt.a().a(5);
-    if (paramHashMap == null) {
-      QLog.e("qq_Identification.Model", 1, "post face data error : config is empty");
-    }
-    do
-    {
-      return;
-      paramHashMap = paramHashMap.optString("result_api_url", "");
-      if (TextUtils.isEmpty(paramHashMap))
-      {
-        QLog.e("qq_Identification.Model", 1, "post face data error : config url is empty");
-        return;
-      }
-    } while (!paramHashMap.equals(paramString1));
-    QLog.d("qq_Identification.Model", 1, "start upload face data");
-    if (this.a.jdField_a_of_type_Avwp == null) {
-      this.a.jdField_a_of_type_Avwp = new avwn(avxk.a(this.a), paramString2, this.a.jdField_a_of_type_Avxp);
-    }
-    for (;;)
-    {
-      avxk.a(this.a, new IdentificationPoseReflect.5.2(this));
-      if (!bhnv.g(BaseApplicationImpl.getApplication())) {
-        break;
-      }
-      ((avwn)this.a.jdField_a_of_type_Avwp).b();
-      return;
-      ((avwn)this.a.jdField_a_of_type_Avwp).a(paramString2);
-    }
+    super.onAnimationEnd(paramAnimator);
+    MultiAIOFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOFragment, this.jdField_a_of_type_AndroidWidgetImageView);
   }
 }
 

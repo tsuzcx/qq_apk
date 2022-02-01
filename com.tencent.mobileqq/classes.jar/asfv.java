@@ -1,26 +1,109 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
+
 public class asfv
 {
-  public static int a = 300;
+  private amop jdField_a_of_type_Amop = new asfx(this);
+  private asbj jdField_a_of_type_Asbj = new asfw(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ConcurrentHashMap<String, asxz> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private boolean jdField_a_of_type_Boolean;
   
-  public static String a(String paramString)
+  public asfv(QQAppInterface paramQQAppInterface)
   {
-    if (bhsr.a(paramString)) {
-      return "";
-    }
-    paramString = paramString.split("_");
-    if (paramString.length > 2) {
-      return paramString[1];
-    }
-    return "";
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public static String a(String paramString1, String paramString2)
+  private void c()
   {
-    if ((bhsr.a(paramString1)) || (bhsr.a(paramString2))) {
-      return "";
+    if (this.jdField_a_of_type_Asbj != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_Asbj);
     }
-    paramString2 = bjty.a(paramString2);
-    return antf.bm + paramString2 + paramString1;
+    if (this.jdField_a_of_type_Amop != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Amop);
+    }
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_Asbj != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_Asbj);
+    }
+    if (this.jdField_a_of_type_Amop != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amop);
+    }
+  }
+  
+  public asxz a(String paramString1, String paramString2, String paramString3)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)
+    {
+      QLog.e("QFileMultiControlManager<QFile>", 1, "req map is null.if you forget init manager?");
+      return null;
+    }
+    paramString1 = asxz.a(paramString1, paramString2, paramString3);
+    return (asxz)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    QLog.i("QFileMultiControlManager<QFile>", 1, "initFileControlManager");
+    this.jdField_a_of_type_Boolean = true;
+    c();
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  }
+  
+  public void a(asxz paramasxz)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)
+    {
+      QLog.e("QFileMultiControlManager<QFile>", 1, "req map is null.if you forget init manager?");
+      return;
+    }
+    if (paramasxz == null)
+    {
+      QLog.e("QFileMultiControlManager<QFile>", 1, "req is null.");
+      return;
+    }
+    String str = paramasxz.a();
+    if (TextUtils.isEmpty(str))
+    {
+      QLog.e("QFileMultiControlManager<QFile>", 1, "controlKey is null.");
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramasxz.a(), paramasxz);
+    QLog.e("QFileMultiControlManager<QFile>", 1, "addFileControlReq: controlKey[" + str + "]");
+  }
+  
+  public void b()
+  {
+    QLog.i("QFileMultiControlManager<QFile>", 1, "clearFileControlManager");
+    this.jdField_a_of_type_Boolean = false;
+    d();
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
+  }
+  
+  public void b(asxz paramasxz)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)
+    {
+      QLog.e("QFileMultiControlManager<QFile>", 1, "req map is null.if you forget init manager?");
+      return;
+    }
+    paramasxz = paramasxz.a();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramasxz);
+    QLog.e("QFileMultiControlManager<QFile>", 1, "removeFileContolReq: controlKey[" + paramasxz + "]");
   }
 }
 

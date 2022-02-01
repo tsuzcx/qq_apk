@@ -1,24 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
 class ngx
-  implements View.OnTouchListener
+  implements biiu
 {
-  ngx(ngv paramngv) {}
+  ngx(ngu paramngu) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean isMultiVideoMsgSupport(int paramInt)
   {
-    switch (paramMotionEvent.getActionMasked())
+    if (paramInt - 32 == 2) {}
+    for (boolean bool = true;; bool = false)
     {
+      bija.c("AVGameBusinessCtrl", String.format("isMultiVideoMsgSupport type=0x%X support=%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) }));
+      return bool;
     }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+  }
+  
+  public boolean isSharpVideoMsgSupport(int paramInt)
+  {
+    return false;
   }
 }
 

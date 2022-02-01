@@ -1,29 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.intervideo.nowproxy.customized_interface.IShadow;
+import com.tencent.mobileqq.app.ThreadManagerExecutor;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.1;
+import com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.2;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import java.util.concurrent.ExecutorService;
 
 public class auqc
-  implements View.OnClickListener
+  implements IShadow
 {
-  public auqc(SendBottomBar paramSendBottomBar) {}
+  private aumc a;
   
-  public void onClick(View paramView)
+  private void a(String paramString)
   {
-    if (SendBottomBar.a(this.a).isChecked())
+    try
     {
-      SendBottomBar.b(this.a, true);
-      aunh.a("0X800942B");
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      auqe.a().a().b("enter_shadow_err").c(paramString).b();
+      ThreadManagerV2.getUIHandlerV2().post(new NowShadowImpl.2(this));
       return;
-      SendBottomBar.c(this.a, false);
-      SendBottomBar.b(this.a, false);
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
+  
+  public aumc a(Context paramContext, String paramString1, String paramString2)
+  {
+    return auml.a(paramContext, paramString1, paramString2);
+  }
+  
+  public void enter(Context paramContext, long paramLong, String paramString1, String paramString2, Bundle paramBundle, EnterCallback paramEnterCallback)
+  {
+    ThreadManagerExecutor.getSingleThreadExecutorService(192).execute(new NowShadowImpl.1(this, paramContext, paramString1, paramString2, paramLong, paramBundle, paramEnterCallback));
+  }
+  
+  public boolean hasPluginManager()
+  {
+    return this.a != null;
+  }
+  
+  public void setILoggerFactory() {}
 }
 
 

@@ -1,30 +1,24 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.core.FriendChatPie.6.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afjm
-  extends MqqHandler
+  implements View.OnClickListener
 {
-  public afjm(RegisterActivity paramRegisterActivity) {}
+  afjm(afiw paramafiw) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
+    if (this.a.freeTalkImg.getVisibility() == 0) {
+      ThreadManager.post(new FriendChatPie.6.1(this), 5, null, false);
     }
-    do
-    {
-      return;
-      paramMessage = (String)paramMessage.obj;
-      if (!TextUtils.isEmpty(paramMessage))
-      {
-        RegisterActivity.b(this.a, paramMessage);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("IphoneTitleBarActivity", 2, "captcha sig is empty");
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    bcef.b(this.a.app, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
+    afcm.a(this.a.app, this.a.mActivity, this.a.sessionInfo, true, null, this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

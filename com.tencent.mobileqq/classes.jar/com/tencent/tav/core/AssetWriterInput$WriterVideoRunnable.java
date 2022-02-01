@@ -2,9 +2,8 @@ package com.tencent.tav.core;
 
 import android.support.annotation.RequiresApi;
 import com.tencent.tav.coremedia.CMSampleBuffer;
-import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.decoder.EncoderWriter;
-import com.tencent.tav.decoder.IDecoder;
 
 class AssetWriterInput$WriterVideoRunnable
   implements Runnable
@@ -20,21 +19,30 @@ class AssetWriterInput$WriterVideoRunnable
   public void run()
   {
     if (AssetWriterInput.access$500(this.this$0) != null) {}
-    try
+    for (;;)
     {
-      AssetWriterInput.access$300(this.this$0).writeVideoSample();
-      if ((this.sampleBuffer != null) && (this.sampleBuffer.getTime().equalsTo(IDecoder.SAMPLE_TIME_FINISH))) {
-        AssetWriterInput.access$300(this.this$0).endWriteVideoSample();
+      try
+      {
+        AssetWriterInput.access$300(this.this$0).writeVideoSample();
+        if (this.sampleBuffer != null) {
+          if (this.sampleBuffer.getState().stateMatchingTo(new long[] { -1L })) {
+            AssetWriterInput.access$300(this.this$0).endWriteVideoSample();
+          }
+        }
+        if (AssetWriterInput.access$400(this.this$0) != null) {
+          AssetWriterInput.access$400(this.this$0).onProgressChanged(this.this$0, AssetWriterInput.access$300(this.this$0).getVideoPresentationTimeUs());
+        }
+        return;
       }
-      if (AssetWriterInput.access$400(this.this$0) != null) {
-        AssetWriterInput.access$400(this.this$0).onProgressChanged(this.this$0, AssetWriterInput.access$300(this.this$0).getVideoPresentationTimeUs());
+      catch (Throwable localThrowable)
+      {
+        if (!(localThrowable instanceof ExportRuntimeException)) {}
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (AssetWriterInput.access$400(this.this$0) == null) {}
-      AssetWriterInput.access$400(this.this$0).onError(new ExportErrorStatus(-121, localThrowable));
+      for (ExportErrorStatus localExportErrorStatus = ((ExportRuntimeException)localThrowable).getErrorStatus(); AssetWriterInput.access$400(this.this$0) != null; localExportErrorStatus = new ExportErrorStatus(-121, localExportErrorStatus))
+      {
+        AssetWriterInput.access$400(this.this$0).onError(localExportErrorStatus);
+        return;
+      }
     }
   }
 }

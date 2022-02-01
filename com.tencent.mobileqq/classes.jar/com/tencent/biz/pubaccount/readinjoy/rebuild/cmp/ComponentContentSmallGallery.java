@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import ppu;
+import pvc;
 
 public class ComponentContentSmallGallery
   extends ComponentContentSmall
@@ -30,21 +30,21 @@ public class ComponentContentSmallGallery
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560114, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560121, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.a = ((TextView)paramView.findViewById(2131367345));
+    this.a = ((TextView)paramView.findViewById(2131367369));
   }
   
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof ppu))
+    if ((paramObject instanceof pvc))
     {
-      paramObject = ((ppu)paramObject).a();
+      paramObject = ((pvc)paramObject).a();
       this.a.setText(String.valueOf(paramObject.mGalleryPicNumber));
     }
   }

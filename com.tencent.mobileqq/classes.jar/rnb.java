@@ -1,55 +1,115 @@
-import android.animation.Animator;
-import android.animation.ValueAnimator;
-import android.view.View;
-import android.view.ViewPropertyAnimator;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$performAnim$1$2", "Lcom/tencent/mobileqq/activity/richmedia/AnimatorAdapter;", "onAnimationEnd", "", "animator", "Landroid/animation/Animator;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rnb
-  extends also
+public class rnb
+  implements rmw
 {
-  rnb(roq paramroq, ValueAnimator paramValueAnimator) {}
+  private rmv jdField_a_of_type_Rmv;
+  private rmx jdField_a_of_type_Rmx;
   
-  public void onAnimationEnd(@Nullable Animator paramAnimator)
+  public rnb(rmv paramrmv)
   {
-    this.jdField_a_of_type_Roq.e.setTextColor(-16578534);
-    this.jdField_a_of_type_Roq.jdField_f_of_type_AndroidWidgetTextView.setTextColor(-16578534);
-    paramAnimator = this.jdField_a_of_type_Roq.a;
-    if (paramAnimator != null)
+    this.jdField_a_of_type_Rmv = paramrmv;
+  }
+  
+  public int a()
+  {
+    return rha.d();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Rmx = null;
+  }
+  
+  public void a(int paramInt, @NotNull rml paramrml)
+  {
+    if (QLog.isColorLevel())
     {
-      paramAnimator = paramAnimator.a;
-      if (paramAnimator != null)
-      {
-        paramAnimator = paramAnimator.a;
-        if ((paramAnimator != null) && (paramAnimator.a == true)) {
-          rpt.a((View)this.jdField_a_of_type_Roq.jdField_f_of_type_AndroidWidgetImageView, 0, (int)200L);
-        }
+      QLog.i("RIJUGC.ManageColumnPresenter", 2, "ManageColumnPresenter: editTopic srcColumnInfo.columnId : " + paramInt);
+      QLog.i("RIJUGC.ManageColumnPresenter", 2, "ManageColumnPresenter: editTopic columnPublishInfo : " + paramrml.toString());
+    }
+    paramrml = new ColumnInfo(paramrml);
+    paramrml.columnID = paramInt;
+    paramrml.source = 5;
+    if (this.jdField_a_of_type_Rmx == null)
+    {
+      QLog.i("RIJUGC.ManageColumnPresenter", 1, "ManageColumnPresenter: editColumn view is null!");
+      return;
+    }
+    this.jdField_a_of_type_Rmx.c();
+    this.jdField_a_of_type_Rmv.b(paramrml, new rne(this, paramrml));
+  }
+  
+  public void a(@NotNull rml paramrml)
+  {
+    ColumnInfo localColumnInfo = new ColumnInfo(paramrml);
+    this.jdField_a_of_type_Rmv.a(localColumnInfo);
+    if (QLog.isColorLevel()) {
+      QLog.i("RIJUGC.ManageColumnPresenter", 2, "ManageColumnPresenter: saveColumnSketch column = " + paramrml.toString());
+    }
+  }
+  
+  public void a(rmx paramrmx)
+  {
+    this.jdField_a_of_type_Rmx = paramrmx;
+  }
+  
+  public void a(@NotNull rqy paramrqy, @NotNull String paramString)
+  {
+    if (this.jdField_a_of_type_Rmx != null) {
+      this.jdField_a_of_type_Rmx.a();
+    }
+    paramrqy.a(new rnc(this, paramString));
+    paramrqy.a();
+  }
+  
+  public int b()
+  {
+    return rha.e();
+  }
+  
+  public void b()
+  {
+    ColumnInfo localColumnInfo = this.jdField_a_of_type_Rmv.a();
+    if ((localColumnInfo != null) && (this.jdField_a_of_type_Rmx != null)) {
+      this.jdField_a_of_type_Rmx.a(localColumnInfo);
+    }
+    if (QLog.isColorLevel())
+    {
+      if (localColumnInfo != null) {
+        QLog.i("RIJUGC.ManageColumnPresenter", 2, "ManageColumnPresenter: initFromSketch bindTopicData column = " + localColumnInfo.toString());
       }
     }
-    for (;;)
-    {
-      rpt.a((View)this.jdField_a_of_type_Roq.c, 8, (int)200L);
-      rpt.a((View)this.jdField_a_of_type_Roq.d, 0, (int)200L);
-      rpt.a((View)this.jdField_a_of_type_Roq.g, 0, (int)200L);
-      rpt.a((View)this.jdField_a_of_type_Roq.h, 0, (int)200L);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    else {
       return;
-      paramAnimator = this.jdField_a_of_type_Roq.i;
-      Intrinsics.checkExpressionValueIsNotNull(paramAnimator, "videoHolder.columnBannerSubscribeBtn");
-      paramAnimator.setVisibility(0);
-      paramAnimator = this.jdField_a_of_type_Roq.i;
-      Intrinsics.checkExpressionValueIsNotNull(paramAnimator, "videoHolder.columnBannerSubscribeBtn");
-      paramAnimator.setScaleX(0.0F);
-      paramAnimator = this.jdField_a_of_type_Roq.i;
-      Intrinsics.checkExpressionValueIsNotNull(paramAnimator, "videoHolder.columnBannerSubscribeBtn");
-      paramAnimator.setScaleY(0.0F);
-      this.jdField_a_of_type_Roq.i.animate().scaleX(1.0F).scaleY(1.0F).setDuration(200L).start();
     }
+    QLog.i("RIJUGC.ManageColumnPresenter", 2, "ManageColumnPresenter: initFromSketch bindTopicData column is null.");
+  }
+  
+  public void b(@NotNull rml paramrml)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RIJUGC.ManageColumnPresenter", 2, "ManageColumnPresenter: createColumn columnPublishInfo : " + paramrml.toString());
+    }
+    if (this.jdField_a_of_type_Rmx == null)
+    {
+      QLog.i("RIJUGC.ManageColumnPresenter", 1, "ManageColumnPresenter: createColumn view is null!");
+      return;
+    }
+    paramrml = new ColumnInfo(paramrml);
+    paramrml.source = 5;
+    this.jdField_a_of_type_Rmx.c();
+    this.jdField_a_of_type_Rmv.a(paramrml, new rnd(this, paramrml));
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RIJUGC.ManageColumnPresenter", 2, "ManageColumnPresenter: clearColumnSketch.");
+    }
+    this.jdField_a_of_type_Rmv.a();
   }
 }
 

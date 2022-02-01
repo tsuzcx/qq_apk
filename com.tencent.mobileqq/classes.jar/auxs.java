@@ -1,18 +1,12 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.forward.ForwardArkH5StructOption;
-import com.tencent.qphone.base.util.QLog;
-
 public class auxs
-  implements apwf
 {
-  public auxs(ForwardArkH5StructOption paramForwardArkH5StructOption) {}
+  public int a;
+  public int b;
   
-  public void a(boolean paramBoolean)
+  public auxs(int paramInt1, int paramInt2)
   {
-    QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 1, new Object[] { "ShareArkFromH5 checkUrlFromNormal CheckShareUrl = ", Boolean.valueOf(paramBoolean) });
-    if (paramBoolean) {
-      this.a.a.putBoolean("forward_ark_from_h5_success", true);
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

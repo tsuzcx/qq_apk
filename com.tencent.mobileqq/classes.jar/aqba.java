@@ -1,16 +1,18 @@
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+
 class aqba
-  implements aqbh
+  implements bmxi
 {
-  aqba(aqay paramaqay) {}
+  aqba(aqaz paramaqaz) {}
   
-  public void a(aqbk paramaqbk, boolean paramBoolean, byte[] paramArrayOfByte)
+  public void a(String paramString)
   {
-    aqay.a(this.a, (aqbm)paramaqbk, paramBoolean, paramArrayOfByte);
+    ((QIMMusicConfigManager)bmql.a(2)).a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqba
  * JD-Core Version:    0.7.0.1
  */

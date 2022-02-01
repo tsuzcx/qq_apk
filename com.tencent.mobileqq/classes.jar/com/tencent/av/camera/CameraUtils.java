@@ -17,20 +17,20 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observer;
-import ljf;
-import ljj;
-import ljk;
-import ljm;
-import ljn;
-import ljo;
-import ljv;
-import lpc;
-import lpk;
-import mrk;
-import mtv;
+import liz;
+import ljd;
+import lje;
+import ljg;
+import ljh;
+import lji;
+import ljp;
+import lok;
+import los;
+import mqt;
+import mte;
 
 public class CameraUtils
-  implements ljf
+  implements liz
 {
   static volatile CameraUtils jdField_a_of_type_ComTencentAvCameraCameraUtils;
   private int jdField_a_of_type_Int;
@@ -43,11 +43,11 @@ public class CameraUtils
   private CameraUtils.OpenCameraRunnable jdField_a_of_type_ComTencentAvCameraCameraUtils$OpenCameraRunnable = new CameraUtils.OpenCameraRunnable(this);
   private CameraUtils.SwitchCameraRunnable jdField_a_of_type_ComTencentAvCameraCameraUtils$SwitchCameraRunnable = new CameraUtils.SwitchCameraRunnable(this);
   private Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap(2);
-  private ljj jdField_a_of_type_Ljj;
-  private ljk jdField_a_of_type_Ljk;
-  private ljn jdField_a_of_type_Ljn;
-  private ljo jdField_a_of_type_Ljo;
-  private ljv jdField_a_of_type_Ljv;
+  private ljd jdField_a_of_type_Ljd;
+  private lje jdField_a_of_type_Lje;
+  private ljh jdField_a_of_type_Ljh;
+  private lji jdField_a_of_type_Lji;
+  private ljp jdField_a_of_type_Ljp;
   boolean jdField_a_of_type_Boolean = false;
   private Handler jdField_b_of_type_AndroidOsHandler;
   private HandlerThread jdField_b_of_type_AndroidOsHandlerThread;
@@ -60,49 +60,49 @@ public class CameraUtils
       this.jdField_b_of_type_Boolean = true;
     }
     this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_Ljv = new ljv(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_Ljv.h();
+    this.jdField_a_of_type_Ljp = new ljp(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_Ljp.h();
     if (this.jdField_a_of_type_Int > 0)
     {
       paramContext = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("cameracfg", 0);
       int i = paramContext.getInt("frontCameraRotation", 0);
       int j = paramContext.getInt("backCameraRotation", 0);
-      this.jdField_a_of_type_Ljv.a(true, i);
-      this.jdField_a_of_type_Ljv.a(false, j);
+      this.jdField_a_of_type_Ljp.a(true, i);
+      this.jdField_a_of_type_Ljp.a(false, j);
     }
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_b_of_type_AndroidOsHandlerThread = new HandlerThread("AppStoreWorkThread");
     this.jdField_b_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_Ljo = new ljo(this, this.jdField_b_of_type_AndroidOsHandlerThread.getLooper());
+    this.jdField_a_of_type_Lji = new lji(this, this.jdField_b_of_type_AndroidOsHandlerThread.getLooper());
     this.jdField_a_of_type_JavaUtilMap.put("0", Integer.valueOf(1));
     this.jdField_a_of_type_JavaUtilMap.put("1", Integer.valueOf(1));
     if ((this.c) && (this.jdField_a_of_type_AndroidOsHandlerThread == null))
     {
       this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("QAV_Camera_Handler_Thread", 0);
       this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_b_of_type_AndroidOsHandler = new ljm(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      this.jdField_b_of_type_AndroidOsHandler = new ljg(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
     }
   }
   
   private SurfaceTexture a(int paramInt)
   {
     int i = 0;
-    boolean bool2 = lpk.b();
+    boolean bool2 = los.b();
     boolean bool1 = bool2;
     if (bool2) {
-      bool1 = mtv.a(0);
+      bool1 = mte.a(0);
     }
     if (bool1) {
       i = 1;
     }
     if ((i == 1) && (paramInt == 1))
     {
-      if (!lpc.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture)) {
+      if (!lok.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture)) {
         QLog.i("CameraUtils", 1, "getSurfaceTexture, frame is not deal right.");
       }
-      lpc.c(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+      lok.c(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
     }
-    this.jdField_a_of_type_Ljv.a(i, this);
+    this.jdField_a_of_type_Ljp.a(i, this);
     if (QLog.isColorLevel()) {
       QLog.i("SurfaceTag", 2, "getSurfaceTexture, isUseSurface[" + bool1 + "], cameraMode[" + i + "]");
     }
@@ -122,12 +122,12 @@ public class CameraUtils
     finally {}
   }
   
-  private ljk a()
+  private lje a()
   {
-    if (this.jdField_a_of_type_Ljk == null) {
-      this.jdField_a_of_type_Ljk = new ljk();
+    if (this.jdField_a_of_type_Lje == null) {
+      this.jdField_a_of_type_Lje = new lje();
     }
-    return this.jdField_a_of_type_Ljk;
+    return this.jdField_a_of_type_Lje;
   }
   
   private SurfaceTexture b()
@@ -137,8 +137,8 @@ public class CameraUtils
   
   private void b(long paramLong, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Ljv != null) {}
-    for (boolean bool = this.jdField_a_of_type_Ljv.a(paramLong, b(), paramInt1, paramInt2);; bool = false)
+    if (this.jdField_a_of_type_Ljp != null) {}
+    for (boolean bool = this.jdField_a_of_type_Ljp.a(paramLong, b(), paramInt1, paramInt2);; bool = false)
     {
       if (bool) {
         a(paramLong, "reopenCameraInSubThread");
@@ -154,47 +154,47 @@ public class CameraUtils
   
   private void b(long paramLong, boolean paramBoolean)
   {
-    QLog.w("CameraUtils", 1, "closeCamera begin, mCamera[" + this.jdField_a_of_type_Ljv + "], seq[" + paramLong + "]");
+    QLog.w("CameraUtils", 1, "closeCamera begin, mCamera[" + this.jdField_a_of_type_Ljp + "], seq[" + paramLong + "]");
     a().a(new Object[] { Integer.valueOf(3), Long.valueOf(paramLong) });
-    if (this.jdField_a_of_type_Ljj != null) {
-      this.jdField_a_of_type_Ljj.d();
+    if (this.jdField_a_of_type_Ljd != null) {
+      this.jdField_a_of_type_Ljd.d();
     }
-    if (this.jdField_a_of_type_Ljv != null) {
-      this.jdField_a_of_type_Ljv.c(paramLong);
+    if (this.jdField_a_of_type_Ljp != null) {
+      this.jdField_a_of_type_Ljp.c(paramLong);
     }
     a("CloseCameraRunnable.run");
-    if (this.jdField_a_of_type_Ljj != null) {
-      this.jdField_a_of_type_Ljj.a(paramLong, paramBoolean);
+    if (this.jdField_a_of_type_Ljd != null) {
+      this.jdField_a_of_type_Ljd.a(paramLong, paramBoolean);
     }
     a().a(new Object[] { Integer.valueOf(4), Boolean.valueOf(true), Long.valueOf(paramLong) });
     e();
-    QLog.w("CameraUtils", 1, "closeCamera end, mCamera[" + this.jdField_a_of_type_Ljv + "], seq[" + paramLong + "]");
+    QLog.w("CameraUtils", 1, "closeCamera end, mCamera[" + this.jdField_a_of_type_Ljp + "], seq[" + paramLong + "]");
   }
   
   private void c(long paramLong, int paramInt)
   {
-    if ((AudioHelper.f()) || (this.jdField_a_of_type_Ljv == null)) {
-      QLog.w("CameraUtils", 1, "setCameraParaInSubThread begin, mCamera[" + this.jdField_a_of_type_Ljv + "], seq[" + paramLong + "]");
+    if ((AudioHelper.f()) || (this.jdField_a_of_type_Ljp == null)) {
+      QLog.w("CameraUtils", 1, "setCameraParaInSubThread begin, mCamera[" + this.jdField_a_of_type_Ljp + "], seq[" + paramLong + "]");
     }
-    if (this.jdField_a_of_type_Ljv == null) {
+    if (this.jdField_a_of_type_Ljp == null) {
       return;
     }
-    this.jdField_a_of_type_Ljv.a(paramLong, paramInt);
+    this.jdField_a_of_type_Ljp.a(paramLong, paramInt);
   }
   
   private void e(long paramLong)
   {
     if (AudioHelper.f()) {
-      QLog.w("CameraUtils", 1, "switchCamera begin, mCamera[" + this.jdField_a_of_type_Ljv + "], seq[" + paramLong + "]");
+      QLog.w("CameraUtils", 1, "switchCamera begin, mCamera[" + this.jdField_a_of_type_Ljp + "], seq[" + paramLong + "]");
     }
-    mrk.a("switch_camera", "SwitchCameraRunnable", 3, new Object[] { Long.valueOf(paramLong) });
+    mqt.a("switch_camera", "SwitchCameraRunnable", 3, new Object[] { Long.valueOf(paramLong) });
     a().a(new Object[] { Integer.valueOf(5) });
-    if (this.jdField_a_of_type_Ljv != null) {}
-    for (boolean bool = this.jdField_a_of_type_Ljv.b(paramLong, b());; bool = false)
+    if (this.jdField_a_of_type_Ljp != null) {}
+    for (boolean bool = this.jdField_a_of_type_Ljp.b(paramLong, b());; bool = false)
     {
       a().a(new Object[] { Integer.valueOf(6), Boolean.valueOf(bool) });
       if (AudioHelper.f()) {
-        QLog.w("CameraUtils", 1, "switchCamera end, result[" + bool + "], mCamera[" + this.jdField_a_of_type_Ljv + "], seq[" + paramLong + "]");
+        QLog.w("CameraUtils", 1, "switchCamera end, result[" + bool + "], mCamera[" + this.jdField_a_of_type_Ljp + "], seq[" + paramLong + "]");
       }
       return;
     }
@@ -203,22 +203,22 @@ public class CameraUtils
   private void f(long paramLong)
   {
     long l1 = System.currentTimeMillis();
-    QLog.w("CameraUtils", 1, "openCamera begin, mCamera[" + this.jdField_a_of_type_Ljv + "], seq[" + paramLong + "]");
-    a().a(new Object[] { Integer.valueOf(1), Boolean.valueOf(this.jdField_a_of_type_Ljv.d()), Long.valueOf(paramLong) });
-    if (this.jdField_a_of_type_Ljj != null) {
-      this.jdField_a_of_type_Ljj.e();
+    QLog.w("CameraUtils", 1, "openCamera begin, mCamera[" + this.jdField_a_of_type_Ljp + "], seq[" + paramLong + "]");
+    a().a(new Object[] { Integer.valueOf(1), Boolean.valueOf(this.jdField_a_of_type_Ljp.d()), Long.valueOf(paramLong) });
+    if (this.jdField_a_of_type_Ljd != null) {
+      this.jdField_a_of_type_Ljd.e();
     }
-    boolean bool2 = this.jdField_a_of_type_Ljv.a(paramLong, b());
+    boolean bool2 = this.jdField_a_of_type_Ljp.a(paramLong, b());
     if (bool2) {
       a(paramLong, "OpenCameraRunnable.run");
     }
     boolean bool1;
-    if (this.jdField_a_of_type_Ljj != null) {
-      if (this.jdField_a_of_type_Ljv.i() != 0) {
+    if (this.jdField_a_of_type_Ljd != null) {
+      if (this.jdField_a_of_type_Ljp.i() != 0) {
         bool1 = true;
       }
     }
-    for (int i = this.jdField_a_of_type_Ljj.a(paramLong, bool2, bool1);; i = 0)
+    for (int i = this.jdField_a_of_type_Ljd.a(paramLong, bool2, bool1);; i = 0)
     {
       a().a(new Object[] { Integer.valueOf(2), Boolean.valueOf(bool2), Integer.valueOf(i), Long.valueOf(paramLong) });
       if (bool2) {
@@ -240,7 +240,7 @@ public class CameraUtils
   public SurfaceTexture a()
   {
     SurfaceTexture localSurfaceTexture = a(2);
-    int i = this.jdField_a_of_type_Ljv.a();
+    int i = this.jdField_a_of_type_Ljp.a();
     if (i != 1) {
       localSurfaceTexture = null;
     }
@@ -252,39 +252,39 @@ public class CameraUtils
   
   public Camera.Parameters a()
   {
-    if (this.jdField_a_of_type_Ljv != null) {
-      return this.jdField_a_of_type_Ljv.a();
+    if (this.jdField_a_of_type_Ljp != null) {
+      return this.jdField_a_of_type_Ljp.a();
     }
     return null;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Ljv != null) && (this.jdField_a_of_type_Int > 0))
+    if ((this.jdField_a_of_type_Ljp != null) && (this.jdField_a_of_type_Int > 0))
     {
-      if ((this.jdField_a_of_type_Int == 1) || (!this.jdField_a_of_type_Ljv.b()))
+      if ((this.jdField_a_of_type_Int == 1) || (!this.jdField_a_of_type_Ljp.b()))
       {
-        i = this.jdField_a_of_type_Ljv.c(false);
-        this.jdField_a_of_type_Ljv.a(false, i + 90);
+        i = this.jdField_a_of_type_Ljp.c(false);
+        this.jdField_a_of_type_Ljp.a(false, i + 90);
       }
     }
     else {
       return;
     }
-    int i = this.jdField_a_of_type_Ljv.c(true);
-    this.jdField_a_of_type_Ljv.a(true, i + 90);
+    int i = this.jdField_a_of_type_Ljp.c(true);
+    this.jdField_a_of_type_Ljp.a(true, i + 90);
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Ljv != null) {
-      this.jdField_a_of_type_Ljv.a(paramInt);
+    if (this.jdField_a_of_type_Ljp != null) {
+      this.jdField_a_of_type_Ljp.a(paramInt);
     }
   }
   
   public void a(long paramLong)
   {
-    QLog.w("CameraUtils", 1, "openCamera, seq[" + paramLong + "], openCamera[" + this.jdField_a_of_type_ComTencentAvCameraCameraUtils$OpenCameraRunnable + "], closeCamera[" + this.jdField_a_of_type_ComTencentAvCameraCameraUtils$CloseCameraRunnable + "], mCamera[" + this.jdField_a_of_type_Ljv + "]");
+    QLog.w("CameraUtils", 1, "openCamera, seq[" + paramLong + "], openCamera[" + this.jdField_a_of_type_ComTencentAvCameraCameraUtils$OpenCameraRunnable + "], closeCamera[" + this.jdField_a_of_type_ComTencentAvCameraCameraUtils$CloseCameraRunnable + "], mCamera[" + this.jdField_a_of_type_Ljp + "]");
     if (this.c)
     {
       if (Build.MODEL.equalsIgnoreCase("HWI-AL00"))
@@ -373,10 +373,10 @@ public class CameraUtils
     if (this.c) {
       a(paramLong, paramInt1, paramInt2);
     }
-    while (this.jdField_a_of_type_Ljo == null) {
+    while (this.jdField_a_of_type_Lji == null) {
       return;
     }
-    this.jdField_a_of_type_Ljo.a(paramString, paramLong, paramInt1, paramInt2);
+    this.jdField_a_of_type_Lji.a(paramString, paramLong, paramInt1, paramInt2);
   }
   
   public void a(Observer paramObserver)
@@ -386,45 +386,45 @@ public class CameraUtils
     }
   }
   
-  public void a(ljj paramljj)
+  public void a(ljd paramljd)
   {
-    this.jdField_a_of_type_Ljj = paramljj;
+    this.jdField_a_of_type_Ljd = paramljd;
   }
   
-  public void a(lpc paramlpc)
+  public void a(lok paramlok)
   {
-    ljj localljj = this.jdField_a_of_type_Ljj;
-    if (localljj != null)
+    ljd localljd = this.jdField_a_of_type_Ljd;
+    if (localljd != null)
     {
-      a("onPreviewData_" + paramlpc.c);
+      a("onPreviewData_" + paramlok.c);
       if (this.jdField_b_of_type_Boolean) {
-        a(-1019L, "onPreviewData_" + paramlpc.c);
+        a(-1019L, "onPreviewData_" + paramlok.c);
       }
-      localljj.a(paramlpc);
+      localljd.a(paramlok);
       return;
     }
-    paramlpc.b();
+    paramlok.b();
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Ljv != null)
+    if (this.jdField_a_of_type_Ljp != null)
     {
-      if (this.jdField_a_of_type_Ljv.e != paramBoolean) {
-        QLog.w("CameraUtils", 1, "setSupportLandscape, value[" + this.jdField_a_of_type_Ljv.e + "->" + paramBoolean + "]");
+      if (this.jdField_a_of_type_Ljp.e != paramBoolean) {
+        QLog.w("CameraUtils", 1, "setSupportLandscape, value[" + this.jdField_a_of_type_Ljp.e + "->" + paramBoolean + "]");
       }
-      this.jdField_a_of_type_Ljv.e = paramBoolean;
+      this.jdField_a_of_type_Ljp.e = paramBoolean;
     }
   }
   
   public boolean a()
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Ljv != null) {
-      bool = this.jdField_a_of_type_Ljv.b();
+    if (this.jdField_a_of_type_Ljp != null) {
+      bool = this.jdField_a_of_type_Ljp.b();
     }
     if (QLog.isColorLevel()) {
-      QLog.w("CameraUtils", 1, "isFrontCamera[" + bool + "], mCamera[" + this.jdField_a_of_type_Ljv + "]");
+      QLog.w("CameraUtils", 1, "isFrontCamera[" + bool + "], mCamera[" + this.jdField_a_of_type_Ljp + "]");
     }
     return bool;
   }
@@ -432,13 +432,13 @@ public class CameraUtils
   public boolean a(long paramLong)
   {
     boolean bool2 = false;
-    if (this.jdField_a_of_type_Ljv != null) {}
-    for (boolean bool1 = this.jdField_a_of_type_Ljv.c();; bool1 = false)
+    if (this.jdField_a_of_type_Ljp != null) {}
+    for (boolean bool1 = this.jdField_a_of_type_Ljp.c();; bool1 = false)
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder().append("isCameraOpening[").append(bool1).append("], mCamera[");
-        if (this.jdField_a_of_type_Ljv != null) {
+        if (this.jdField_a_of_type_Ljp != null) {
           bool2 = true;
         }
         QLog.w("CameraUtils", 2, bool2 + "], seq[" + paramLong + "]");
@@ -450,14 +450,14 @@ public class CameraUtils
   public boolean a(long paramLong, boolean paramBoolean)
   {
     String str = "null";
-    if (this.jdField_a_of_type_Ljv != null) {
-      str = this.jdField_a_of_type_Ljv.d() + "";
+    if (this.jdField_a_of_type_Ljp != null) {
+      str = this.jdField_a_of_type_Ljp.d() + "";
     }
     if (QLog.isColorLevel()) {}
     for (Throwable localThrowable = new Throwable();; localThrowable = null)
     {
       QLog.w("CameraUtils", 1, "closeCamera, changeStatus[" + paramBoolean + "], isCameraOpened[" + str + "], openCamera[" + this.jdField_a_of_type_ComTencentAvCameraCameraUtils$OpenCameraRunnable + "], seq[" + paramLong + "]", localThrowable);
-      if ((this.jdField_a_of_type_Ljv != null) && (this.jdField_a_of_type_Ljv.d()))
+      if ((this.jdField_a_of_type_Ljp != null) && (this.jdField_a_of_type_Ljp.d()))
       {
         if (this.c) {
           a(paramLong, paramBoolean);
@@ -478,8 +478,8 @@ public class CameraUtils
   public void b()
   {
     SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("cameracfg", 0).edit();
-    int i = this.jdField_a_of_type_Ljv.c(true);
-    int j = this.jdField_a_of_type_Ljv.c(false);
+    int i = this.jdField_a_of_type_Ljp.c(true);
+    int j = this.jdField_a_of_type_Ljp.c(false);
     localEditor.putInt("frontCameraRotation", i);
     localEditor.putInt("backCameraRotation", j);
     localEditor.commit();
@@ -495,7 +495,7 @@ public class CameraUtils
   
   public void b(long paramLong, int paramInt)
   {
-    if ((this.jdField_a_of_type_Ljv != null) && (this.jdField_a_of_type_Ljv.d()))
+    if ((this.jdField_a_of_type_Ljp != null) && (this.jdField_a_of_type_Ljp.d()))
     {
       if (this.c) {
         a(paramLong, paramInt);
@@ -504,7 +504,7 @@ public class CameraUtils
     else {
       return;
     }
-    this.jdField_a_of_type_Ljv.a(paramLong, paramInt);
+    this.jdField_a_of_type_Ljp.a(paramLong, paramInt);
   }
   
   public void b(Observer paramObserver)
@@ -515,8 +515,8 @@ public class CameraUtils
   public boolean b(long paramLong)
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Ljv != null) {
-      bool = this.jdField_a_of_type_Ljv.d();
+    if (this.jdField_a_of_type_Ljp != null) {
+      bool = this.jdField_a_of_type_Ljp.d();
     }
     QLog.w("CameraUtils", 1, "isCameraOpened, isCameraOpened[" + bool + "], seq[" + paramLong + "]");
     return bool;
@@ -541,18 +541,18 @@ public class CameraUtils
   
   void d()
   {
-    if (this.jdField_a_of_type_Ljn == null)
+    if (this.jdField_a_of_type_Ljh == null)
     {
-      this.jdField_a_of_type_Ljn = new ljn(this);
+      this.jdField_a_of_type_Ljh = new ljh(this);
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("com.tencent.mobileqq.qav.camera.availability");
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Ljn, localIntentFilter);
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Ljh, localIntentFilter);
     }
   }
   
   public void d(long paramLong)
   {
-    if (this.jdField_a_of_type_Ljv.d())
+    if (this.jdField_a_of_type_Ljp.d())
     {
       if (this.c) {
         c(paramLong);
@@ -567,11 +567,11 @@ public class CameraUtils
   
   void e()
   {
-    if (this.jdField_a_of_type_Ljn != null) {}
+    if (this.jdField_a_of_type_Ljh != null) {}
     try
     {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Ljn);
-      this.jdField_a_of_type_Ljn = null;
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Ljh);
+      this.jdField_a_of_type_Ljh = null;
       return;
     }
     catch (Exception localException)
@@ -588,7 +588,7 @@ public class CameraUtils
     try
     {
       a("finalize");
-      this.jdField_a_of_type_Ljj = null;
+      this.jdField_a_of_type_Ljd = null;
       return;
     }
     finally

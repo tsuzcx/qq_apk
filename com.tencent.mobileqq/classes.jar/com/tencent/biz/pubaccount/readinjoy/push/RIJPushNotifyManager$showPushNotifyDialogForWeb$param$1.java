@@ -8,17 +8,17 @@ import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.functions.Function3;
 import kotlin.jvm.internal.Lambda;
-import qig;
-import qii;
-import qij;
-import qik;
+import qoj;
+import qol;
+import qom;
+import qon;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "isOpenPushNotify", "", "isDefaultOpen", "buttonId", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJPushNotifyManager$showPushNotifyDialogForWeb$param$1
   extends Lambda
   implements Function3<Boolean, Boolean, Integer, Unit>
 {
-  public RIJPushNotifyManager$showPushNotifyDialogForWeb$param$1(qig paramqig, BaseActivity paramBaseActivity, String paramString, int paramInt1, qii paramqii, int paramInt2)
+  public RIJPushNotifyManager$showPushNotifyDialogForWeb$param$1(qoj paramqoj, BaseActivity paramBaseActivity, String paramString, int paramInt1, qol paramqol, int paramInt2)
   {
     super(3);
   }
@@ -27,13 +27,13 @@ public final class RIJPushNotifyManager$showPushNotifyDialogForWeb$param$1
   {
     if ((paramInt != 0) && (paramInt != 3))
     {
-      qig.a(this.this$0, paramBoolean1, paramBoolean2, (Activity)this.$topActivity);
-      qij.a.a().a(paramBoolean1, paramBoolean2, this.$uniqueId, this.$bizType, (Function1)new RIJPushNotifyManager.showPushNotifyDialogForWeb.param.1.1(this, paramInt));
-      qig.a(this.this$0, this.$bizType, this.$uniqueId, this.$guideType, paramInt, paramBoolean2);
+      qoj.a(this.this$0, paramBoolean1, paramBoolean2, (Activity)this.$topActivity);
+      qom.a.a().a(paramBoolean1, paramBoolean2, this.$uniqueId, this.$bizType, (Function1)new RIJPushNotifyManager.showPushNotifyDialogForWeb.param.1.1(this, paramInt));
+      qoj.a(this.this$0, this.$bizType, this.$uniqueId, this.$guideType, paramInt, paramBoolean2);
       return;
     }
     if (paramInt == 3) {
-      qig.a(this.this$0, this.$bizType, this.$uniqueId, this.$guideType);
+      qoj.a(this.this$0, this.$bizType, this.$uniqueId, this.$guideType);
     }
     this.$callback.a(0, -1);
     QLog.i("RIJPushNotifyManager", 1, " resultCallback buttonId: " + paramInt + " errorCode: -1");

@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aibr;
+import agyh;
 import android.app.Activity;
 import android.util.Pair;
 import android.util.SparseArray;
-import bdll;
+import bcef;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zxx;
+import yxi;
 
 public class AIOGalleryScene$21
   implements Runnable
 {
-  public AIOGalleryScene$21(aibr paramaibr, int paramInt, SparseArray paramSparseArray, ArrayList paramArrayList) {}
+  public AIOGalleryScene$21(agyh paramagyh, int paramInt, SparseArray paramSparseArray, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if ((aibr.y(this.this$0) == null) || (aibr.z(this.this$0).isFinishing())) {
+    if ((agyh.y(this.this$0) == null) || (agyh.z(this.this$0).isFinishing())) {
       return;
     }
     Object localObject;
     String str1;
     String str2;
-    if (zxx.a(this.jdField_a_of_type_Int))
+    if (yxi.a(this.jdField_a_of_type_Int))
     {
       localObject = this.jdField_a_of_type_AndroidUtilSparseArray.get(1);
       if (!(localObject instanceof Pair)) {
@@ -55,9 +55,9 @@ public class AIOGalleryScene$21
             if (localObject == null)
             {
               localObject = "";
-              aibr.a(this.this$0, 2131692532, 2130840159, 55, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
-              bdll.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
-              if (zxx.b(this.jdField_a_of_type_Int))
+              agyh.a(this.this$0, 2131692580, 2130840196, 55, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
+              bcef.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
+              if (yxi.b(this.jdField_a_of_type_Int))
               {
                 localObject = this.jdField_a_of_type_AndroidUtilSparseArray.get(2);
                 if (!(localObject instanceof String)) {
@@ -92,8 +92,8 @@ public class AIOGalleryScene$21
             break label285;
           }
           localObject = "";
-          aibr.a(this.this$0, 2131692531, 2130840158, 56, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
-          bdll.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 1, 0, "", "", "", "");
+          agyh.a(this.this$0, 2131692579, 2130840195, 56, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
+          bcef.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 1, 0, "", "", "", "");
           this.this$0.a.updateUI();
           return;
         }

@@ -1,20 +1,45 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController;
+import android.animation.ObjectAnimator;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.SystemClock;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.vas.qvip.fragment.QQVipFeedWedFragment;
+import com.tencent.mobileqq.vas.qvip.view.QQVipWebview;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
 
-class bgjh
-  implements View.OnTouchListener
+public class bgjh
+  extends bgjt
 {
-  bgjh(bgjf parambgjf, View paramView1, View paramView2) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bgjh(QQVipFeedWedFragment paramQQVipFeedWedFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
   {
-    if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {}
-    for (int i = 1; (paramMotionEvent.getAction() == 4) && (AtPanelTouchController.a(this.b, paramMotionEvent)) && ((i == 0) || ((i != 0) && (!AtPanelTouchController.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent)))); i = 0) {
-      return true;
-    }
-    return false;
+    super(paramContext, paramActivity, paramAppInterface, paramTouchWebView);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+    QQVipFeedWedFragment.a(this.a).onPageFinish(paramString);
+    paramWebView = ObjectAnimator.ofFloat(QQVipFeedWedFragment.a(this.a), "alpha", new float[] { 0.0F, 1.0F });
+    paramWebView.setDuration(300L);
+    paramWebView.start();
+    QLog.d("QQVipFeedWedFragment", 1, "onPageFinished : " + (SystemClock.elapsedRealtime() - this.a.b));
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    this.a.b = SystemClock.elapsedRealtime();
+    this.a.c = (this.a.b - this.a.a);
+    QLog.d("QQVipFeedWedFragment", 1, "loadUrlTime : " + this.a.c);
+    QQVipFeedWedFragment.a(this.a).setVisibility(0);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 

@@ -1,6 +1,10 @@
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+
 public abstract interface boay
 {
-  public abstract void a(boag paramboag, boolean paramBoolean, int paramInt, String paramString);
+  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt);
+  
+  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean);
 }
 
 

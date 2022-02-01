@@ -1,19 +1,16 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.view.View;
 
-class bdme
-  implements Comparator<Map.Entry<String, Integer>>
+public class bdme
+  extends bdmd
 {
-  bdme(bdmd parambdmd) {}
-  
-  public int a(Map.Entry<String, Integer> paramEntry1, Map.Entry<String, Integer> paramEntry2)
+  bdme(View paramView)
   {
-    return -((Integer)paramEntry1.getValue()).compareTo((Integer)paramEntry2.getValue());
+    super(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdme
  * JD-Core Version:    0.7.0.1
  */

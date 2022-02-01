@@ -1,16 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
-class blju
-  implements View.OnClickListener
+public class blju
 {
-  blju(bljt parambljt) {}
+  protected static final String a = BaseApplicationImpl.getContext().getCacheDir().getPath();
+  protected static final String b;
+  protected static final String c = BaseApplicationImpl.getContext().getFilesDir().getParent();
   
-  public void onClick(View paramView)
+  static
   {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((BaseApplicationImpl.getContext().getExternalFilesDir(null) != null) && (BaseApplicationImpl.getContext().getExternalCacheDir() != null)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      b = BaseApplicationImpl.getContext().getExternalFilesDir(null).getPath();
+      a = BaseApplicationImpl.getContext().getExternalCacheDir().getPath();
+      return;
+    }
+    b = BaseApplicationImpl.getContext().getFilesDir().getPath();
   }
 }
 

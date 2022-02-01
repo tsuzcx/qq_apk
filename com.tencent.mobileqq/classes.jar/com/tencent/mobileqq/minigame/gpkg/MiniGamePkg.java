@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.minigame.gpkg;
 
 import android.text.TextUtils;
-import bhsr;
 import com.tencent.mobileqq.mini.apkg.ApkgBaseInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.NetworkTimeoutInfo;
 import com.tencent.mobileqq.mini.network.http.MiniOkHttpClientFactory;
 import com.tencent.mobileqq.mini.utils.FileUtils;
 import com.tencent.mobileqq.minigame.manager.GamePreConnectManager;
+import com.tencent.mobileqq.utils.StringUtil;
 import java.io.File;
 import java.util.HashMap;
 import org.json.JSONArray;
@@ -104,7 +104,7 @@ public class MiniGamePkg
   
   public String getRootPath(String paramString)
   {
-    if (bhsr.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return "";
     }
     if (this.subPackRoots != null)

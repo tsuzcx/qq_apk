@@ -1,6 +1,12 @@
-public abstract interface xvs
+public class xvs
 {
-  public abstract boolean a_(xvo paramxvo, int paramInt1, int paramInt2);
+  public static String a(String paramString)
+  {
+    if (paramString != null) {
+      return "file://" + paramString;
+    }
+    return null;
+  }
 }
 
 

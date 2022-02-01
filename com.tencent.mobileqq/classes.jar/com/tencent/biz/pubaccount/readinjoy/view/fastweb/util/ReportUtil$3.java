@@ -6,8 +6,8 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ozs;
-import ssy;
+import pay;
+import swy;
 
 public final class ReportUtil$3
   implements Runnable
@@ -45,7 +45,7 @@ public final class ReportUtil$3
         break label148;
       }
     }
-    JSONObject localJSONObject = ozs.a(localBaseActivity, localArticleInfo, (int)localArticleInfo.mChannelID, "2");
+    JSONObject localJSONObject = pay.a(localBaseActivity, localArticleInfo, (int)localArticleInfo.mChannelID, "2");
     label148:
     for (;;)
     {
@@ -53,7 +53,7 @@ public final class ReportUtil$3
       {
         localJSONObject.put("rowkey", localArticleInfo.innerUniqueID);
         localJSONObject.put("duration", l1 - l2);
-        ssy.a(localArticleInfo, "0X800A732", localJSONObject.toString());
+        swy.a(localArticleInfo, "0X800A732", localJSONObject.toString());
         return;
       }
       catch (JSONException localJSONException)
@@ -65,7 +65,7 @@ public final class ReportUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil.3
  * JD-Core Version:    0.7.0.1
  */

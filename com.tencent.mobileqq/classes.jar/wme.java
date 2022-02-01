@@ -1,30 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.VideoCompositeRec.1;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
 
 public class wme
-  extends QQUIEventReceiver<wlt, wmw>
+  extends AnimatorListenerAdapter
 {
-  public wme(@NonNull wlt paramwlt)
-  {
-    super(paramwlt);
-  }
+  public wme(StoryPlayerActivity paramStoryPlayerActivity) {}
   
-  public void a(@NonNull wlt paramwlt, @NonNull wmw paramwmw)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramwmw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      yuk.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "get event update  vid:%s video path:%s", paramwmw.jdField_a_of_type_JavaLangString, paramwmw.b);
-      Bosses.get().postLightWeightJob(new StoryVideoUploadManager.VideoCompositeRec.1(this, paramwlt, paramwmw), 0);
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wmw.class;
+    super.onAnimationEnd(paramAnimator);
+    StoryPlayerActivity.a(this.a);
+    StoryPlayerActivity.a(this.a, 0, 0);
   }
 }
 

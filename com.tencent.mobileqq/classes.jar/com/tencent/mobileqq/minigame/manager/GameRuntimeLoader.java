@@ -2,7 +2,6 @@ package com.tencent.mobileqq.minigame.manager;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bhlo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
@@ -21,6 +20,7 @@ import com.tencent.mobileqq.minigame.utils.GameLog;
 import com.tencent.mobileqq.triton.TritonEngine;
 import com.tencent.mobileqq.triton.TritonPlatform;
 import com.tencent.mobileqq.triton.model.Version;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -157,7 +157,7 @@ public class GameRuntimeLoader
         }
       }
     }
-    GameLog.getInstance().i(this.TAG, "TritonEngine 初始化配置:" + paramTritonEngineInitTask.getEnginePackage() + ", 机器性能:" + bhlo.f());
+    GameLog.getInstance().i(this.TAG, "TritonEngine 初始化配置:" + paramTritonEngineInitTask.getEnginePackage() + ", 机器性能:" + DeviceInfoUtil.getPerfLevel());
     Object localObject = new ArrayList(this.mRuntimeListeners).iterator();
     while (((Iterator)localObject).hasNext()) {
       ((GameRuntimeLoader.GameRuntimeListener)((Iterator)localObject).next()).onEngineLoad(paramTritonEngineInitTask.isSucceed(), paramTritonEngineInitTask.msg, paramTritonEngineInitTask.retCode);

@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-class bkvc
-  implements DialogInterface.OnClickListener
+public final class bkvc
 {
-  bkvc(bkuw parambkuw, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static String a(Context paramContext)
   {
-    paramDialogInterface.dismiss();
-    bngf.a().a().d(this.jdField_a_of_type_JavaLangString);
+    return paramContext.getSharedPreferences("SETTING", 0).getString("debug_h5_test_env", null);
+  }
+  
+  public static void a(Context paramContext, boolean paramBoolean, String paramString)
+  {
+    paramContext.getSharedPreferences("SETTING", 0).edit().putBoolean("debug_h5_test_mode", paramBoolean).putString("debug_h5_test_env", paramString).apply();
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("SETTING", 0).getBoolean("debug_h5_test_mode", false);
   }
 }
 

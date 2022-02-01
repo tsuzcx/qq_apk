@@ -1,353 +1,588 @@
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.opengl.GLES20;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.opengl.utils.AVGLUtils;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.initializer.PagInitializer;
-import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
+import com.tencent.sveffects.SvEffectSdkInitor;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 
-public final class loy
+@TargetApi(17)
+public class loy
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static long jdField_a_of_type_Long;
-  private static Boolean jdField_a_of_type_JavaLangBoolean;
-  private static boolean jdField_a_of_type_Boolean;
-  private static Boolean b;
+  int jdField_a_of_type_Int = 0;
+  protected Context a;
+  final String jdField_a_of_type_JavaLangString = "FilterProcessRender_" + AudioHelper.b();
+  protected FloatBuffer a;
+  private loc jdField_a_of_type_Loc;
+  private loh jdField_a_of_type_Loh;
+  private loi jdField_a_of_type_Loi;
+  private lov jdField_a_of_type_Lov;
+  final lox jdField_a_of_type_Lox = new lox();
+  protected loz a;
+  protected lpa a;
+  protected lpf a;
+  private lpg jdField_a_of_type_Lpg;
+  protected lpj a;
+  protected lpk a;
+  private lpo jdField_a_of_type_Lpo = new lpo();
+  protected final lpu a;
+  protected msh a;
+  protected boolean a;
+  int jdField_b_of_type_Int = 0;
+  protected lpf b;
+  private boolean jdField_b_of_type_Boolean;
+  int c = -1;
+  int d = -1;
+  private int e = 0;
   
-  /* Error */
-  public static boolean a()
+  public loy(Context paramContext, loz paramloz, loi paramloi)
   {
-    // Byte code:
-    //   0: ldc 19
-    //   2: fstore_0
-    //   3: iconst_1
-    //   4: istore 8
-    //   6: getstatic 21	loy:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
-    //   9: ifnonnull +135 -> 144
-    //   12: invokestatic 26	bhlo:b	()I
-    //   15: istore 7
-    //   17: ldc 28
-    //   19: invokestatic 33	mtl:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   22: astore 9
-    //   24: ldc 34
-    //   26: fstore_2
-    //   27: ldc 35
-    //   29: fstore 5
-    //   31: aload 9
-    //   33: invokestatic 41	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   36: ifne +224 -> 260
-    //   39: aload 9
-    //   41: ldc 43
-    //   43: invokevirtual 49	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   46: astore 9
-    //   48: aload 9
-    //   50: arraylength
-    //   51: iconst_4
-    //   52: if_icmplt +208 -> 260
-    //   55: aload 9
-    //   57: iconst_0
-    //   58: aaload
-    //   59: invokestatic 55	java/lang/Float:parseFloat	(Ljava/lang/String;)F
-    //   62: fstore_1
-    //   63: fload_0
-    //   64: fstore_3
-    //   65: aload 9
-    //   67: iconst_1
-    //   68: aaload
-    //   69: invokestatic 55	java/lang/Float:parseFloat	(Ljava/lang/String;)F
-    //   72: fstore 4
-    //   74: fload_0
-    //   75: fstore_3
-    //   76: fload 4
-    //   78: fstore_2
-    //   79: aload 9
-    //   81: iconst_2
-    //   82: aaload
-    //   83: invokestatic 55	java/lang/Float:parseFloat	(Ljava/lang/String;)F
-    //   86: fstore_0
-    //   87: fload_0
-    //   88: fstore_3
-    //   89: fload 4
-    //   91: fstore_2
-    //   92: aload 9
-    //   94: iconst_3
-    //   95: aaload
-    //   96: invokestatic 55	java/lang/Float:parseFloat	(Ljava/lang/String;)F
-    //   99: fstore 6
-    //   101: fload 6
-    //   103: fstore_3
-    //   104: fload 4
-    //   106: fstore_2
-    //   107: invokestatic 59	bhlo:d	()J
-    //   110: l2f
-    //   111: fconst_1
-    //   112: fmul
-    //   113: ldc 60
-    //   115: fdiv
-    //   116: fstore 4
-    //   118: invokestatic 63	llk:d	()J
-    //   121: l2f
-    //   122: ldc 64
-    //   124: fdiv
-    //   125: fstore 5
-    //   127: iload 7
-    //   129: iconst_4
-    //   130: if_icmpge +37 -> 167
-    //   133: new 66	java/lang/Boolean
-    //   136: dup
-    //   137: iconst_0
-    //   138: invokespecial 70	java/lang/Boolean:<init>	(Z)V
-    //   141: putstatic 21	loy:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
-    //   144: getstatic 21	loy:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
-    //   147: invokevirtual 73	java/lang/Boolean:booleanValue	()Z
-    //   150: ireturn
-    //   151: astore 9
-    //   153: ldc 19
-    //   155: fstore_1
-    //   156: aload 9
-    //   158: invokevirtual 76	java/lang/NumberFormatException:printStackTrace	()V
-    //   161: fload 5
-    //   163: fstore_3
-    //   164: goto -57 -> 107
-    //   167: iload 7
-    //   169: iconst_4
-    //   170: if_icmplt +48 -> 218
-    //   173: iload 7
-    //   175: bipush 8
-    //   177: if_icmpge +41 -> 218
-    //   180: fload 4
-    //   182: fload_1
-    //   183: fcmpl
-    //   184: iflt +28 -> 212
-    //   187: fload 5
-    //   189: fload_2
-    //   190: fcmpl
-    //   191: iflt +21 -> 212
-    //   194: iconst_1
-    //   195: istore 8
-    //   197: new 66	java/lang/Boolean
-    //   200: dup
-    //   201: iload 8
-    //   203: invokespecial 70	java/lang/Boolean:<init>	(Z)V
-    //   206: putstatic 21	loy:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
-    //   209: goto -65 -> 144
-    //   212: iconst_0
-    //   213: istore 8
-    //   215: goto -18 -> 197
-    //   218: fload 4
-    //   220: fload_0
-    //   221: fcmpl
-    //   222: iflt +25 -> 247
-    //   225: fload 5
-    //   227: fload_3
-    //   228: fcmpl
-    //   229: iflt +18 -> 247
-    //   232: new 66	java/lang/Boolean
-    //   235: dup
-    //   236: iload 8
-    //   238: invokespecial 70	java/lang/Boolean:<init>	(Z)V
-    //   241: putstatic 21	loy:jdField_a_of_type_JavaLangBoolean	Ljava/lang/Boolean;
-    //   244: goto -100 -> 144
-    //   247: iconst_0
-    //   248: istore 8
-    //   250: goto -18 -> 232
-    //   253: astore 9
-    //   255: fload_3
-    //   256: fstore_0
-    //   257: goto -101 -> 156
-    //   260: ldc 19
-    //   262: fstore_1
-    //   263: fload 5
-    //   265: fstore_3
-    //   266: goto -159 -> 107
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   2	255	0	f1	float
-    //   62	201	1	f2	float
-    //   26	164	2	f3	float
-    //   64	202	3	f4	float
-    //   72	147	4	f5	float
-    //   29	235	5	f6	float
-    //   99	3	6	f7	float
-    //   15	163	7	i	int
-    //   4	245	8	bool	boolean
-    //   22	71	9	localObject	Object
-    //   151	6	9	localNumberFormatException1	NumberFormatException
-    //   253	1	9	localNumberFormatException2	NumberFormatException
-    // Exception table:
-    //   from	to	target	type
-    //   55	63	151	java/lang/NumberFormatException
-    //   65	74	253	java/lang/NumberFormatException
-    //   79	87	253	java/lang/NumberFormatException
-    //   92	101	253	java/lang/NumberFormatException
+    this.jdField_a_of_type_Lpu = new lpu();
+    if (QLog.isColorLevel()) {
+      this.jdField_a_of_type_Msh = new msh();
+    }
+    this.jdField_a_of_type_Loz = paramloz;
+    this.jdField_a_of_type_Loi = paramloi;
+    SvEffectSdkInitor.init();
+    bljd.a();
+    this.jdField_a_of_type_Lpu.a = null;
+    this.c = -1;
+    lpr.a();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    paramContext = CameraUtils.a(this.jdField_a_of_type_AndroidContentContext).a();
+    if (paramContext != null) {}
+    for (this.jdField_a_of_type_Lpk = new lpt(paramContext);; this.jdField_a_of_type_Lpk = new lpv())
+    {
+      this.jdField_a_of_type_Lpj = new lpw(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Lov = new lov(this);
+      return;
+    }
   }
   
-  public static boolean a(VideoAppInterface paramVideoAppInterface)
+  private void a(lok paramlok)
   {
-    int i;
-    if (!jdField_a_of_type_Boolean)
+    if (this.jdField_b_of_type_Lpf == null)
     {
-      i = bork.a(borf.c);
-      if (i != 2) {
-        break label26;
+      this.jdField_b_of_type_Lpf = lpf.a(this.d, this.c);
+      if ((this.jdField_a_of_type_Lpk != null) && (!this.jdField_a_of_type_Lpk.a(paramlok)))
+      {
+        this.jdField_a_of_type_Lpk.c();
+        this.jdField_a_of_type_Lpk.b();
+        this.jdField_a_of_type_Lpk = null;
+        if (QLog.isDevelopLevel()) {
+          QLog.i("SurfaceTag", 4, "preRender, not match frame.");
+        }
       }
-      jdField_a_of_type_Boolean = false;
+      if (this.jdField_a_of_type_Lpk == null)
+      {
+        if (!paramlok.b()) {
+          break label213;
+        }
+        this.jdField_a_of_type_Lpk = new lpv();
+        this.jdField_a_of_type_Lpk.a();
+        this.jdField_a_of_type_Lpk.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      }
     }
     for (;;)
     {
-      return jdField_a_of_type_Boolean;
-      label26:
-      if (i == 1) {
-        jdField_a_of_type_Boolean = true;
-      } else if (i == 0) {
-        jdField_a_of_type_Boolean = true;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("SurfaceTag", 4, "preRender, new render for frame.");
+      }
+      if ((this.jdField_a_of_type_Lpk != null) && (this.jdField_a_of_type_Lpk.a(paramlok)))
+      {
+        c();
+        this.jdField_b_of_type_Lpf = this.jdField_a_of_type_Lpk.a(this, paramlok, this.jdField_a_of_type_Lpf);
+      }
+      return;
+      this.jdField_b_of_type_Lpf.jdField_a_of_type_Int = this.d;
+      this.jdField_b_of_type_Lpf.jdField_b_of_type_Int = this.c;
+      break;
+      label213:
+      if (paramlok.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null)
+      {
+        this.jdField_a_of_type_Lpk = new lpt(paramlok.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+        this.jdField_a_of_type_Lpk.a();
+        this.jdField_a_of_type_Lpk.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       }
     }
   }
   
-  public static boolean b()
+  private void a(lok paramlok, lpp paramlpp, boolean paramBoolean1, mrk parammrk, boolean paramBoolean2)
   {
-    Object localObject;
-    float f1;
-    if (b == null)
+    boolean bool2 = true;
+    c();
+    boolean bool1;
+    boolean bool3;
+    boolean bool4;
+    if ((this.jdField_a_of_type_Loc != null) && ((paramBoolean2) || (paramlpp.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc != null) || (paramlpp.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) || (paramlpp.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial != null) || (paramBoolean1)))
     {
-      localObject = mtl.a("ptuAfterTreamentLimit");
-      f3 = 3.0F;
-      j = 4;
-      f4 = 1.1F;
-      f2 = f4;
-      i = j;
-      f1 = f3;
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+      if (this.jdField_a_of_type_Msh != null) {
+        this.jdField_a_of_type_Msh.a("drawFrameInGL");
+      }
+      int i = this.jdField_a_of_type_Int;
+      int j = this.jdField_b_of_type_Int;
+      if (this.jdField_a_of_type_Lov != null)
       {
-        localObject = ((String)localObject).split(";");
-        f2 = f4;
-        i = j;
-        f1 = f3;
-        if (localObject.length >= 3)
-        {
-          i = j;
-          f1 = f3;
+        this.jdField_a_of_type_Lov.a(paramlok, paramlpp, this.jdField_a_of_type_Lpf, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        lox locallox = this.jdField_a_of_type_Lox;
+        if (this.jdField_a_of_type_Lov.jdField_a_of_type_Int == 0) {
+          break label462;
+        }
+        bool1 = true;
+        locallox.jdField_a_of_type_Boolean = bool1;
+      }
+      this.jdField_a_of_type_Loc.b(i, j);
+      bool3 = this.jdField_a_of_type_Loc.d();
+      this.jdField_a_of_type_Loc.a(paramlpp.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc);
+      this.jdField_a_of_type_Loc.a(paramlpp.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem, paramlpp.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial);
+      this.jdField_a_of_type_Loc.a(paramBoolean1);
+      this.jdField_a_of_type_Loc.c(this.d, this.c);
+      this.jdField_b_of_type_Lpf = lpf.a(this.jdField_a_of_type_Lpf.jdField_a_of_type_Int, this.jdField_a_of_type_Lpf.jdField_b_of_type_Int);
+      this.jdField_b_of_type_Lpf.jdField_b_of_type_Int = this.jdField_a_of_type_Loc.a(this.jdField_a_of_type_Lpf.jdField_b_of_type_Int, false, this.jdField_a_of_type_Lox, paramlpp.jdField_b_of_type_Boolean);
+      bool4 = this.jdField_a_of_type_Loc.d();
+      if (this.jdField_a_of_type_Loc.a()) {
+        a(128);
+      }
+      if (paramlpp.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc != null) {
+        a(16);
+      }
+      if ((paramlpp.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) || (paramlpp.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial != null)) {
+        a(32);
+      }
+      if (this.jdField_a_of_type_Loc.b()) {
+        a(64);
+      }
+      if (paramBoolean2) {
+        a(8);
+      }
+      if (this.jdField_a_of_type_Msh != null) {
+        this.jdField_a_of_type_Msh.b("drawFrameInGL");
+      }
+      if (parammrk != null)
+      {
+        if (paramlpp.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc == null) {
+          break label468;
+        }
+        bool1 = true;
+        label383:
+        if (paramlpp.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial == null) {
+          break label474;
         }
       }
     }
-    try
+    for (;;)
     {
-      f2 = Float.parseFloat(localObject[0]);
-      i = j;
-      f1 = f2;
-      j = Integer.parseInt(localObject[1]);
-      i = j;
-      f1 = f2;
-      f3 = Float.parseFloat(localObject[2]);
-      f1 = f2;
-      i = j;
-      f2 = f3;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        int k;
-        localNumberFormatException.printStackTrace();
-        f2 = f4;
-        continue;
-        b = new Boolean(false);
-        continue;
-        i = 0;
-        continue;
-        boolean bool = false;
+      parammrk.a(bool1, bool2, paramBoolean1, paramBoolean2);
+      a(2, this.jdField_a_of_type_Lpf, this.jdField_b_of_type_Lpf);
+      if (this.jdField_a_of_type_Lov != null) {
+        this.jdField_a_of_type_Lov.a(this.jdField_b_of_type_Lpf, bool3, bool4, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       }
-    }
-    float f3 = (float)bhlo.d() * 1.0F / 1.073742E+009F;
-    int j = bhlo.b();
-    f4 = (float)llk.d() / 1048576.0F;
-    if ((f1 <= f3) && (i <= j) && (f2 <= f4))
-    {
-      b = new Boolean(true);
-      k = b.booleanValue();
-      if (bork.a(borf.c) == 0) {
-        break label246;
+      if (this.jdField_a_of_type_Lov != null) {
+        this.jdField_a_of_type_Lov.a(paramlok, paramlpp);
       }
-      i = 1;
-      if (((i & k) == 0) || (Build.VERSION.SDK_INT < 21)) {
-        break label252;
-      }
-      bool = true;
-      b = Boolean.valueOf(bool);
-      return b.booleanValue();
+      return;
+      label462:
+      bool1 = false;
+      break;
+      label468:
+      bool1 = false;
+      break label383;
+      label474:
+      bool2 = false;
     }
   }
   
-  public static boolean b(VideoAppInterface paramVideoAppInterface)
+  private void a(lok paramlok, lpq paramlpq, long paramLong)
   {
-    int i;
-    if (!jdField_a_of_type_Boolean)
+    if (this.jdField_a_of_type_Lpj != null) {
+      this.jdField_a_of_type_Lpj.a(this, paramlok, this.jdField_b_of_type_Lpf, this.jdField_a_of_type_Lox, paramlpq);
+    }
+    this.jdField_b_of_type_Boolean = false;
+    if (paramlpq.a == null) {
+      paramlpq.a = paramlok;
+    }
+    long l = System.currentTimeMillis();
+    paramlpq.a.f = ((int)(l - paramLong));
+    paramlpq.a.g = this.e;
+    if (this.jdField_a_of_type_Msh != null) {
+      this.jdField_a_of_type_Msh.a(paramlok.c);
+    }
+    lse.a().a(this.e);
+  }
+  
+  private void a(lpp paramlpp, lor paramlor, boolean paramBoolean)
+  {
+    if ((paramBoolean) || (paramlpp.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial != null))
     {
-      i = bork.a(borf.c);
-      if (i != 2) {
-        break label123;
+      if (this.jdField_a_of_type_Msh != null) {
+        this.jdField_a_of_type_Msh.a("faceDetect");
       }
-      long l1 = System.currentTimeMillis();
-      if (l1 <= jdField_a_of_type_Long) {
-        break label106;
+      if (this.jdField_a_of_type_Loz != null) {
+        this.jdField_a_of_type_Loz.a(this.jdField_a_of_type_Lox, this.c, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       }
-      long l2 = AudioHelper.c();
-      paramVideoAppInterface.h();
-      long l3 = AudioHelper.c();
-      QLog.w("AEKitAbilityInfo", 1, "checkAEKitPagSoReady, getEffectLibPagSoLoadIsOk[" + jdField_a_of_type_Boolean + "], cost[" + (l3 - l2) + "]");
-      jdField_a_of_type_Long = l1 + 30000L;
-      jdField_a_of_type_Boolean = false;
+      if (this.jdField_a_of_type_Loc != null) {
+        this.jdField_a_of_type_Loc.a(paramlor, this.jdField_a_of_type_Lox);
+      }
+      if (this.jdField_a_of_type_Msh != null) {
+        this.jdField_a_of_type_Msh.b("faceDetect");
+      }
+    }
+  }
+  
+  private void b(long paramLong, int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 == 0) || (paramInt2 == 0) || ((this.jdField_a_of_type_Int == paramInt1) && (this.jdField_b_of_type_Int == paramInt2))) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "innerUpdatePreviewSize, width[" + this.jdField_a_of_type_Int + "->" + paramInt1 + "], height[" + this.jdField_b_of_type_Int + "->" + paramInt2 + "], seq[" + paramLong + "]");
+    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.d = AVGLUtils.initFrameBuffer(paramInt1, paramInt2, this.c);
+    if (this.jdField_a_of_type_Lpk != null) {
+      this.jdField_a_of_type_Lpk.a(paramInt1, paramInt2);
+    }
+    if (this.jdField_a_of_type_Lpj != null) {
+      this.jdField_a_of_type_Lpj.a(paramInt1, paramInt2);
+    }
+    d();
+    SvEffectSdkInitor.init();
+  }
+  
+  private void b(lok paramlok, lpq paramlpq, long paramLong)
+  {
+    paramlok.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    paramlok.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Lpa != null)
+    {
+      this.jdField_a_of_type_Lpa.a(this, 5, paramlok, null);
+      this.jdField_a_of_type_Lpa.d();
+    }
+    this.jdField_b_of_type_Boolean = false;
+    paramlok.f = ((int)(System.currentTimeMillis() - paramLong));
+    paramlok.g = this.e;
+    if (this.jdField_a_of_type_Lpk != null) {
+      this.jdField_a_of_type_Lpk.b();
+    }
+    if (this.jdField_a_of_type_Lpj != null) {
+      this.jdField_a_of_type_Lpj.b();
+    }
+    if (this.jdField_a_of_type_Msh != null) {
+      this.jdField_a_of_type_Msh.a(paramlok.c);
+    }
+    lse.a().a(this.e);
+    paramlpq.a(paramlok, null, null, null, (short)0, (short)0);
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_JavaNioFloatBuffer != null) {
+      return;
+    }
+    float[] arrayOfFloat = new float[8];
+    arrayOfFloat[0] = (-0.5F + 0.0F);
+    arrayOfFloat[1] = (-0.5F + 0.0F);
+    arrayOfFloat[2] = (0.5F + 0.0F);
+    arrayOfFloat[3] = (-0.5F + 0.0F);
+    arrayOfFloat[4] = (-0.5F + 0.0F);
+    arrayOfFloat[5] = (0.5F + 0.0F);
+    arrayOfFloat[6] = (0.5F + 0.0F);
+    arrayOfFloat[7] = (0.5F + 0.0F);
+    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(arrayOfFloat.length * 4);
+    localByteBuffer.order(ByteOrder.nativeOrder());
+    this.jdField_a_of_type_JavaNioFloatBuffer = localByteBuffer.asFloatBuffer();
+    this.jdField_a_of_type_JavaNioFloatBuffer.put(arrayOfFloat);
+    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
+  }
+  
+  void a()
+  {
+    if (this.jdField_a_of_type_Loc != null) {
+      this.jdField_a_of_type_Loc.c();
+    }
+  }
+  
+  protected void a(int paramInt)
+  {
+    this.e |= paramInt;
+  }
+  
+  public void a(int paramInt, lpf paramlpf1, lpf paramlpf2)
+  {
+    if ((this.jdField_a_of_type_Lpa != null) && (this.jdField_a_of_type_Lpa.jdField_a_of_type_Boolean))
+    {
+      this.jdField_a_of_type_Lpa.a(this, paramInt, null, paramlpf2);
+      this.jdField_a_of_type_Lpa.a(paramInt, paramlpf2.jdField_a_of_type_Int, paramlpf2.jdField_b_of_type_Int);
+      if (QLog.isDevelopLevel()) {
+        QLog.i(this.jdField_a_of_type_JavaLangString, 4, String.format("%s, fbo[%s --> %s], textureid[%s --> %s]", new Object[] { lpa.a(paramInt), Integer.valueOf(paramlpf1.jdField_a_of_type_Int), Integer.valueOf(paramlpf2.jdField_a_of_type_Int), Integer.valueOf(paramlpf1.jdField_b_of_type_Int), Integer.valueOf(paramlpf2.jdField_b_of_type_Int) }));
+      }
+    }
+  }
+  
+  void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Loc != null)
+    {
+      this.jdField_a_of_type_Loc.a(paramLong);
+      return;
+    }
+    this.jdField_a_of_type_Lpu.a(paramLong);
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    if (AudioHelper.f()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "initial, szie[" + this.jdField_a_of_type_Int + ", " + this.jdField_b_of_type_Int + "], id[" + this.c + "], seq[" + paramLong + "]");
+    }
+    if (this.jdField_a_of_type_Lpa != null) {
+      this.jdField_a_of_type_Lpa.a();
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = false;
+    if (this.c != -1) {
+      return;
+    }
+    if (los.b())
+    {
+      if (this.jdField_a_of_type_Loc == null)
+      {
+        this.jdField_a_of_type_Loc = new lod(this.jdField_a_of_type_Lpu, paramInt);
+        this.jdField_a_of_type_Loc.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      }
+      if (this.jdField_a_of_type_Loc.c()) {
+        if (this.jdField_a_of_type_Loh == null) {
+          this.jdField_a_of_type_Loh = new loh();
+        }
+      }
     }
     for (;;)
     {
-      return jdField_a_of_type_Boolean;
-      label106:
-      if (!QLog.isDevelopLevel()) {
+      int[] arrayOfInt = new int[1];
+      GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
+      this.c = arrayOfInt[0];
+      if (this.jdField_a_of_type_Lpk != null) {
+        this.jdField_a_of_type_Lpk.a();
+      }
+      if (this.jdField_a_of_type_Lpj != null) {
+        this.jdField_a_of_type_Lpj.a();
+      }
+      this.e = 0;
+      if (this.jdField_a_of_type_Lov == null) {
         break;
       }
-      QLog.w("AEKitAbilityInfo", 1, "tryDownloadPTULibPagSo, 频繁调用");
-      break;
-      label123:
-      if (i == 1) {
-        jdField_a_of_type_Boolean = true;
-      } else if (i == 0) {
-        jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Lov.a();
+      return;
+      if (this.jdField_a_of_type_Loh != null) {
+        this.jdField_a_of_type_Loh.a();
       }
+      this.jdField_a_of_type_Loh = null;
+      continue;
+      this.jdField_a_of_type_Loh = new loh();
     }
   }
   
-  public static boolean c(VideoAppInterface paramVideoAppInterface)
+  public void a(long paramLong, int paramInt1, int paramInt2) {}
+  
+  public void a(lok paramlok, lpp paramlpp, lor paramlor, lpq paramlpq)
   {
-    boolean bool = true;
-    if (!b())
-    {
-      QLog.w("AEKitAbilityInfo", 1, "hasLoadSoSuccess machine power not support");
-      return false;
+    if (this.jdField_a_of_type_Lpa != null) {
+      this.jdField_a_of_type_Lpa.a();
     }
-    if (jdField_a_of_type_Int != -1)
+    if (this.jdField_a_of_type_Msh != null) {
+      this.jdField_a_of_type_Msh.b();
+    }
+    long l = System.currentTimeMillis();
+    paramlpq.a = paramlok;
+    b(0L, paramlok.jdField_b_of_type_Int, paramlok.jdField_a_of_type_Int);
+    int i = paramlok.jdField_a_of_type_Int;
+    int k = paramlok.jdField_b_of_type_Int;
+    int m = lpr.a(paramlok.jdField_a_of_type_Boolean);
+    boolean bool1 = paramlpp.jdField_a_of_type_Boolean;
+    if (this.jdField_a_of_type_Loz != null) {
+      bool1 |= this.jdField_a_of_type_Loz.a();
+    }
+    for (;;)
     {
-      if (jdField_a_of_type_Int == 0) {}
+      int j = this.jdField_a_of_type_Loi.a("BEAUTY_SKIN");
+      this.jdField_a_of_type_Lpo.a(this.jdField_a_of_type_JavaLangString, paramlok.c, i, k, paramlok.d, paramlpp.jdField_a_of_type_Boolean, paramlpp.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc, paramlpp.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial, paramlpp.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem, paramlok, j);
+      if ((this.jdField_a_of_type_Int == 0) || (this.jdField_b_of_type_Int == 0) || (paramlok.a()) || (this.d == -1) || (!this.jdField_a_of_type_Boolean)) {
+        return;
+      }
+      this.jdField_b_of_type_Boolean = true;
+      mrk localmrk = paramlok.jdField_a_of_type_Mrk;
+      if (localmrk != null) {
+        localmrk.a(m);
+      }
+      this.jdField_a_of_type_Lox.a(i, k);
+      if ((paramlok.b()) && (this.jdField_a_of_type_Lpa != null))
+      {
+        this.jdField_a_of_type_Lpa.c();
+        this.jdField_a_of_type_Lpa.a(this, 0, paramlok, null);
+      }
+      boolean bool4 = false;
+      boolean bool3 = false;
+      boolean bool2;
+      if (this.jdField_a_of_type_Loh != null)
+      {
+        this.jdField_a_of_type_Loh.a(j);
+        if (this.jdField_a_of_type_Loc != null) {
+          this.jdField_a_of_type_Loc.a(null);
+        }
+        bool2 = this.jdField_a_of_type_Loh.a(j);
+        if ((paramlpp.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc == null) && (paramlpp.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial == null)) {
+          break label503;
+        }
+        i = 1;
+        label325:
+        boolean bool5 = false;
+        bool4 = bool5;
+        if (paramlok.b())
+        {
+          bool4 = bool5;
+          if (this.jdField_a_of_type_Lpg != null)
+          {
+            this.jdField_a_of_type_Lpg.a(this.jdField_a_of_type_Msh, paramlok, localmrk);
+            bool4 = this.jdField_a_of_type_Lpg.jdField_a_of_type_Boolean;
+          }
+        }
+        if ((paramlok.b()) && (this.jdField_a_of_type_Loh != null)) {
+          this.jdField_a_of_type_Loh.a(this, this.jdField_a_of_type_Msh, paramlok, localmrk, paramlpp, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, j);
+        }
+        if ((i == 0) && (!bool1) && (!bool2) && (!bool3) && (!bool4)) {
+          break label509;
+        }
+        i = 1;
+      }
       for (;;)
       {
-        return bool;
-        bool = false;
+        if ((!paramlpp.c) || (i == 0))
+        {
+          if (paramlok.b())
+          {
+            b(paramlok, paramlpq, l);
+            return;
+            bool2 = bool4;
+            if (this.jdField_a_of_type_Loc == null) {
+              break;
+            }
+            bool3 = this.jdField_a_of_type_Loc.a(this.jdField_a_of_type_Loi);
+            bool2 = bool4;
+            break;
+            label503:
+            i = 0;
+            break label325;
+            label509:
+            i = 0;
+            continue;
+          }
+          a(paramlok);
+          a(paramlok, paramlpq, l);
+          return;
+        }
       }
+      a(paramlok);
+      if ((paramlok.b()) && (this.jdField_a_of_type_Lpg != null)) {
+        this.jdField_a_of_type_Lpg.a(this.jdField_a_of_type_Msh, localmrk);
+      }
+      if ((paramlok.b()) && (this.jdField_a_of_type_Lpg != null)) {
+        this.jdField_a_of_type_Lpg.b(this.jdField_a_of_type_Msh, paramlok, localmrk);
+      }
+      if ((paramlok.b()) && (this.jdField_a_of_type_Loh != null)) {
+        this.jdField_a_of_type_Loh.a(this, this.jdField_a_of_type_Msh, localmrk, paramlpp, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, j);
+      }
+      a(paramlok, paramlpp, bool1, localmrk, bool3);
+      a(paramlpp, paramlor, bool1);
+      a(paramlok, paramlpq, l);
+      return;
     }
-    if (!b(paramVideoAppInterface))
+  }
+  
+  void b()
+  {
+    long l = AudioHelper.b();
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "uninit, mIsInited[" + this.jdField_a_of_type_Boolean + "], mIsRendering[" + this.jdField_b_of_type_Boolean + "], seq[" + l + "]");
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
     {
-      QLog.w("AEKitAbilityInfo", 1, "hasLoadSoSuccess machine so not ready");
-      return false;
-    }
-    long l = AudioHelper.c();
-    bool = FeatureManager.Features.PAG.init();
-    QLog.w("AEKitAbilityInfo", 1, "loadLibPag[" + jdField_a_of_type_Boolean + "], cost[" + (AudioHelper.c() - l) + "]");
-    if (!bool) {}
-    for (jdField_a_of_type_Int = 1;; jdField_a_of_type_Int = 0)
+      return;
+      this.jdField_a_of_type_Boolean = false;
+      if (this.jdField_a_of_type_Lpa != null) {
+        this.jdField_a_of_type_Lpa.b();
+      }
+      if (this.jdField_a_of_type_Lpj != null) {
+        this.jdField_a_of_type_Lpj.b();
+      }
+      if (this.jdField_a_of_type_Lpk != null) {
+        this.jdField_a_of_type_Lpk.b();
+      }
+      a(l);
+      if (this.jdField_a_of_type_Loh != null) {
+        this.jdField_a_of_type_Loh.b();
+      }
+      if (this.jdField_a_of_type_Loc != null) {
+        this.jdField_a_of_type_Loc.a();
+      }
+    } while (this.jdField_a_of_type_Msh == null);
+    this.jdField_a_of_type_Msh.a();
+  }
+  
+  public void b(long paramLong)
+  {
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "clear, seq[" + paramLong + "]");
+    if (this.jdField_a_of_type_Lpk != null)
     {
-      QLog.w("AEKitAbilityInfo", 1, "hasLoadSoSuccess result:=" + jdField_a_of_type_Int);
-      return bool;
+      this.jdField_a_of_type_Lpk.b();
+      this.jdField_a_of_type_Lpk.c();
     }
+    if (this.d != -1)
+    {
+      GLES20.glDeleteFramebuffers(1, new int[] { this.d }, 0);
+      this.d = -1;
+    }
+    if (this.c != -1)
+    {
+      int[] arrayOfInt = new int[1];
+      arrayOfInt[0] = this.c;
+      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+      this.c = -1;
+    }
+    if (this.jdField_a_of_type_Lpj != null) {
+      this.jdField_a_of_type_Lpj.c();
+    }
+    if (this.jdField_a_of_type_Lpg != null)
+    {
+      this.jdField_a_of_type_Lpg.a();
+      this.jdField_a_of_type_Lpg = null;
+    }
+    if (this.jdField_a_of_type_Loh != null)
+    {
+      this.jdField_a_of_type_Loh.a();
+      this.jdField_a_of_type_Loh = null;
+    }
+    if (this.jdField_a_of_type_Loc != null)
+    {
+      this.jdField_a_of_type_Loc.b();
+      this.jdField_a_of_type_Loc = null;
+    }
+    if (this.jdField_a_of_type_Lov != null) {
+      this.jdField_a_of_type_Lov.b();
+    }
+    this.jdField_a_of_type_Lpu.a(paramLong);
+  }
+  
+  protected void c()
+  {
+    if ((this.jdField_a_of_type_Lpf != this.jdField_b_of_type_Lpf) && (this.jdField_a_of_type_Lpf != null))
+    {
+      this.jdField_a_of_type_Lpf.a();
+      this.jdField_a_of_type_Lpf = null;
+    }
+    this.jdField_a_of_type_Lpf = this.jdField_b_of_type_Lpf;
   }
 }
 

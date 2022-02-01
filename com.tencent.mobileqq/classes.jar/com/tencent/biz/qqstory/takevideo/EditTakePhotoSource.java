@@ -5,12 +5,12 @@ import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import java.io.File;
-import yvz;
+import xxk;
 
 public class EditTakePhotoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditTakePhotoSource> CREATOR = new yvz();
+  public static final Parcelable.Creator<EditTakePhotoSource> CREATOR = new xxk();
   public final double a;
   public final int a;
   @NonNull
@@ -42,29 +42,13 @@ public class EditTakePhotoSource
     this.c = paramInt3;
     this.jdField_a_of_type_Double = paramDouble1;
     this.jdField_b_of_type_Double = paramDouble2;
-    paramString = b();
+    paramString = checkParam();
     if (paramString != null) {
       throw new IllegalArgumentException(paramString);
     }
   }
   
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  @NonNull
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int b()
-  {
-    return this.c;
-  }
-  
-  public String b()
+  public String checkParam()
   {
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return "sourcePath is empty";
@@ -78,6 +62,22 @@ public class EditTakePhotoSource
   public int describeContents()
   {
     return 0;
+  }
+  
+  public int getHeight()
+  {
+    return this.c;
+  }
+  
+  @NonNull
+  public String getSourcePath()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int getWidth()
+  {
+    return this.jdField_b_of_type_Int;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

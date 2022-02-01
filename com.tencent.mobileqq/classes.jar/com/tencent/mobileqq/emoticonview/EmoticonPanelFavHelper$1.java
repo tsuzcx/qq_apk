@@ -1,43 +1,41 @@
 package com.tencent.mobileqq.emoticonview;
 
-import asnt;
-import aspt;
 import java.util.List;
 
-public class EmoticonPanelFavHelper$1
+class EmoticonPanelFavHelper$1
   implements Runnable
 {
-  public EmoticonPanelFavHelper$1(asnt paramasnt) {}
+  EmoticonPanelFavHelper$1(EmoticonPanelFavHelper paramEmoticonPanelFavHelper) {}
   
   public void run()
   {
-    List localList = this.this$0.a.b;
+    List localList = this.this$0.mPanelController.panelDataList;
     int i;
-    aspt localaspt;
+    EmotionPanelInfo localEmotionPanelInfo;
     if (localList != null)
     {
       i = 0;
       if (i < localList.size())
       {
-        localaspt = (aspt)localList.get(i);
-        if ((localaspt == null) || (localaspt.a != 4)) {}
+        localEmotionPanelInfo = (EmotionPanelInfo)localList.get(i);
+        if ((localEmotionPanelInfo == null) || (localEmotionPanelInfo.type != 4)) {}
       }
     }
     for (;;)
     {
-      if ((localaspt != null) && (this.this$0.a.a != null)) {
-        this.this$0.a.a.a(localaspt);
+      if ((localEmotionPanelInfo != null) && (this.this$0.mPanelController.pageAdapter != null)) {
+        this.this$0.mPanelController.pageAdapter.refreshListViewAdapter(localEmotionPanelInfo);
       }
       return;
       i += 1;
       break;
-      localaspt = null;
+      localEmotionPanelInfo = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelFavHelper.1
  * JD-Core Version:    0.7.0.1
  */

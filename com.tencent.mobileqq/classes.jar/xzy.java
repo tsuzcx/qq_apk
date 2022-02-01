@@ -1,23 +1,52 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.settings.QGSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import java.util.ArrayList;
+import java.util.List;
 
-public class xzy
-  implements CompoundButton.OnCheckedChangeListener
+class xzy
+  implements vwv
 {
-  public xzy(QGSettingFragment paramQGSettingFragment) {}
+  xzy(xzw paramxzw, String paramString) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(int paramInt, vww paramvww, List<TroopBarPOI> paramList)
   {
-    if (paramBoolean) {
-      QGSettingFragment.a(true);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    this.jdField_a_of_type_Xzw.jdField_a_of_type_Vww = paramvww;
+    if (!this.jdField_a_of_type_Xzw.isValidate()) {
       return;
-      QGSettingFragment.a(false);
+    }
+    if (paramInt == 0) {
+      if (paramvww.a()) {
+        break label210;
+      }
+    }
+    label210:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Xzw.d.setVisibility(0);
+      this.jdField_a_of_type_Xzw.a(bool);
+      if (this.jdField_a_of_type_Xzw.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_Xzw.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      if (this.jdField_a_of_type_Xzw.jdField_a_of_type_Vww.b()) {
+        this.jdField_a_of_type_Xzw.jdField_a_of_type_JavaUtilArrayList.clear();
+      }
+      this.jdField_a_of_type_Xzw.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+      if (this.jdField_a_of_type_Xzw.jdField_a_of_type_Yje != null)
+      {
+        this.jdField_a_of_type_Xzw.jdField_a_of_type_Yje.a(this.jdField_a_of_type_Xzw.jdField_a_of_type_JavaUtilArrayList, null);
+        this.jdField_a_of_type_Xzw.jdField_a_of_type_Yje.notifyDataSetChanged();
+        if (this.jdField_a_of_type_Xzw.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+        {
+          this.jdField_a_of_type_Xzw.a(this.jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_Xzw.d.setVisibility(4);
+        }
+      }
+      int i = paramInt;
+      if (paramInt == 0) {
+        i = 0;
+      }
+      xwa.b("edit_video", "poi_list_success", 0, i, new String[0]);
+      return;
     }
   }
 }

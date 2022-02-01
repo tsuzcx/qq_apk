@@ -1,21 +1,4 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import androidx.annotation.RequiresApi;
-
-class veb
-  extends AnimatorListenerAdapter
-{
-  veb(vdr paramvdr) {}
-  
-  @RequiresApi(api=16)
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    vdr.a(this.a).setAlpha(1.0F);
-    vdr.a(this.a).setVisibility(8);
-  }
-}
+class veb {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

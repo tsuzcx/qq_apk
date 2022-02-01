@@ -1,17 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
 
-class bmpt
+public class bmpt
   implements View.OnClickListener
 {
-  bmpt(bmpr parambmpr) {}
+  public bmpt(VideoTrackContainerView paramVideoTrackContainerView, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.mRuntime.a() != null) {
-      this.a.mRuntime.a().loadUrl("javascript:" + bmpr.a(this.a) + "()");
+    if (!paramView.isSelected()) {
+      paramView.setSelected(true);
+    }
+    if (VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView) != null) {
+      VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).a(this.jdField_a_of_type_Int);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

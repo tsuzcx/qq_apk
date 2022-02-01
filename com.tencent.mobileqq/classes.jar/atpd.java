@@ -1,16 +1,29 @@
-class atpd
-  implements atqq
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.widget.QQToast;
+
+public class atpd
+  extends Handler
 {
-  atpd(atpa paramatpa) {}
+  public atpd(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
-  public void a(Object[] paramArrayOfObject)
+  public void handleMessage(Message paramMessage)
   {
-    atpa.e(this.a, paramArrayOfObject);
+    if (paramMessage.what == 0) {
+      QQToast.a(this.a.a, amtj.a(2131703943), 0).a();
+    }
+    while (1 != paramMessage.what) {
+      return;
+    }
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atpd
  * JD-Core Version:    0.7.0.1
  */

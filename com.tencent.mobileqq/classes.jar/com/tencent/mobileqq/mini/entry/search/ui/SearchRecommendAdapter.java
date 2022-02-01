@@ -80,11 +80,11 @@ public class SearchRecommendAdapter
     default: 
       return null;
     case 1: 
-      return new SearchRecommendAdapter.TitleViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559413, paramViewGroup, false));
+      return new SearchRecommendAdapter.TitleViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559415, paramViewGroup, false));
     case 2: 
-      return new SearchRecommendAdapter.PlayingViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559411, paramViewGroup, false));
+      return new SearchRecommendAdapter.PlayingViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559413, paramViewGroup, false));
     }
-    return new SearchRecommendAdapter.LiveViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559410, paramViewGroup, false));
+    return new SearchRecommendAdapter.LiveViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559412, paramViewGroup, false));
   }
   
   public void onHotSearchDataChanged()

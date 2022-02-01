@@ -1,55 +1,47 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
+import android.content.res.ColorStateList;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import java.io.File;
 
 public class znm
-  extends zno
+  extends ClickableSpan
 {
-  public znm(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  private int jdField_a_of_type_Int;
+  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  private String jdField_a_of_type_JavaLangString;
+  private znn jdField_a_of_type_Znn;
+  
+  public znm(String paramString, int paramInt, znn paramznn)
   {
-    super(paramTroopStoryMemoriesListAdapter, paramView);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Znn = paramznn;
   }
   
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
+  public znm(String paramString, ColorStateList paramColorStateList, znn paramznn)
   {
-    TroopStoryMemoriesListAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter, paramTroopStoryItemInfo, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(zof.d(paramTroopStoryItemInfo.publishTime));
-    Drawable localDrawable = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130846902);
-    try
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = localDrawable;
-      localURLDrawableOptions.mFailedDrawable = localDrawable;
-      localURLDrawableOptions.mMemoryCacheKeySuffix = "troop_story_message";
-      paramTroopStoryItemInfo = URLDrawable.getDrawable(new File(paramTroopStoryItemInfo.videoThumbUrl), localURLDrawableOptions);
-      paramTroopStoryItemInfo.setTag(bhez.b(zps.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 50.0F), zps.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 70.0F), zps.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 3.0F)));
-      paramTroopStoryItemInfo.setDecodeHandler(bhez.j);
-      this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(paramTroopStoryItemInfo);
-      paramTroopStoryItemInfo = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130839410);
-      paramTroopStoryItemInfo.setBounds(0, 0, 26, 26);
-      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(paramTroopStoryItemInfo, null, null, null);
-      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(anzj.a(2131714574));
-      ((Animatable)paramTroopStoryItemInfo).start();
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new znn(this));
-      return;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
+    this.jdField_a_of_type_Znn = paramznn;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Znn != null)) {
+      this.jdField_a_of_type_Znn.onClick(this.jdField_a_of_type_JavaLangString);
     }
-    catch (Exception paramTroopStoryItemInfo)
-    {
-      for (;;)
-      {
-        this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
-      }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    if (this.jdField_a_of_type_Int > 0) {
+      paramTextPaint.setColor(this.jdField_a_of_type_Int);
     }
+    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
+      paramTextPaint.setColor(this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(paramTextPaint.drawableState, 0));
+    }
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

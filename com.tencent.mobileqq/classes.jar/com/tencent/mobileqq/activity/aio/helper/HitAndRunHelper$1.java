@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agnx;
-import aguz;
+import afgw;
+import afqz;
 
 public class HitAndRunHelper$1
   implements Runnable
 {
-  public HitAndRunHelper$1(aguz paramaguz) {}
+  public HitAndRunHelper$1(afqz paramafqz) {}
   
   public void run()
   {
-    agnx.a().b();
+    afqz.a(this.this$0);
+    afgw.a().b();
   }
 }
 

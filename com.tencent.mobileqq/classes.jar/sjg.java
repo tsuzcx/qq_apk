@@ -1,12 +1,15 @@
-import android.view.View;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.jetbrains.annotations.NotNull;
 
-public abstract interface sjg
-  extends blnt
+class sjg
+  extends uha
 {
-  public abstract void a(int paramInt1, View paramView, ListView paramListView, int paramInt2);
+  sjg(sig paramsig) {}
   
-  public abstract void a(View paramView, ListView paramListView, int paramInt);
+  public boolean a(int paramInt, @NotNull ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    return this.a.a(paramInt, paramActionSheetItem);
+  }
 }
 
 

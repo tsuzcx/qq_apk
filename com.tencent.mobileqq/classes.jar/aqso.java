@@ -1,117 +1,44 @@
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Parcel;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
-public class aqso
-  implements aqsi
+class aqso
+  implements DialogInterface.OnClickListener
 {
-  public static String a;
-  public static String b;
+  aqso(aqsk paramaqsk) {}
   
-  static
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = "videofeeds:";
-    jdField_b_of_type_JavaLangString = "mainFeeds:";
-  }
-  
-  private void a(Context paramContext, ColorNote paramColorNote)
-  {
-    Object localObject1 = paramColorNote.getReserve();
-    if (localObject1 == null) {}
-    do
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.a.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + ".db");
+    boolean bool = false;
+    if ((paramDialogInterface.exists()) && ((float)paramDialogInterface.length() * 1.7F > FileUtils.getAvailableInnernalMemorySize()))
     {
+      bool = true;
+      aqsk.a(this.a);
+      paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
+      String str = paramDialogInterface.getString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, "");
+      paramDialogInterface.edit().putString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, str + "_MemoryAlert").commit();
+    }
+    for (;;)
+    {
+      paramDialogInterface = new HashMap();
+      paramDialogInterface.put("isMemAlert", String.valueOf(bool));
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, DBFixManager.n, true, -1L, 0L, paramDialogInterface, null, false);
+      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, aqsk.c, aqsk.c, 0, 0, "", "", "", "");
       return;
-      Object localObject2 = Parcel.obtain();
-      ((Parcel)localObject2).unmarshall((byte[])localObject1, 0, localObject1.length);
-      ((Parcel)localObject2).setDataPosition(0);
-      localObject1 = new VideoInfo((Parcel)localObject2);
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putLong("VIDEO_PLAY_POSITION", paramColorNote.mExtLong);
-      ((Bundle)localObject2).putBoolean("FLAG_ACTIVITY_NEW_TASK", true);
-      rpt.a(paramContext, (Bundle)localObject2, 32, ((VideoInfo)localObject1).g, ((VideoInfo)localObject1).jdField_a_of_type_Int, ((VideoInfo)localObject1).jdField_a_of_type_JavaLangString, ((VideoInfo)localObject1).b(), ((VideoInfo)localObject1).c(), ((VideoInfo)localObject1).a(), ((VideoInfo)localObject1).c, ((VideoInfo)localObject1).jdField_b_of_type_JavaLangString, ((VideoInfo)localObject1).f, ((VideoInfo)localObject1).k, ((VideoInfo)localObject1).j, ((VideoInfo)localObject1).jdField_b_of_type_Long, ((VideoInfo)localObject1).jdField_b_of_type_Boolean, ((VideoInfo)localObject1).jdField_d_of_type_Long, ((VideoInfo)localObject1).h, ((VideoInfo)localObject1).r, ((VideoInfo)localObject1).jdField_d_of_type_JavaLangString, ((VideoInfo)localObject1).o, ((VideoInfo)localObject1).p, ((VideoInfo)localObject1).e);
-    } while (!QLog.isColorLevel());
-    QLog.d("ReadInJoyLauncher", 2, "colorNote handleVideoFeedsJump() videoInfo=" + ((VideoInfo)localObject1).b());
-  }
-  
-  private void b(Context paramContext, ColorNote paramColorNote)
-  {
-    paramColorNote = paramColorNote.getReserve();
-    if (paramColorNote == null) {
-      return;
+      aqsk.b(this.a);
     }
-    try
-    {
-      Parcel localParcel = Parcel.obtain();
-      localParcel.unmarshall(paramColorNote, 0, paramColorNote.length);
-      localParcel.setDataPosition(0);
-      paramColorNote = new ArticleInfo(localParcel);
-      if (paramColorNote == null)
-      {
-        QLog.d("ReadInJoyLauncher", 2, "init color error something is null");
-        return;
-      }
-    }
-    catch (Exception paramColorNote)
-    {
-      for (;;)
-      {
-        QLog.e("ReadInJoyLauncher", 2, "unmarshall error");
-        paramColorNote.printStackTrace();
-        paramColorNote = null;
-      }
-      QLog.d("ReadInJoyLauncher", 2, "articleInfo From ColorNote :\n" + paramColorNote.toString());
-      paramColorNote = pac.b(paramContext, paramColorNote);
-      paramColorNote.addFlags(268435456);
-      paramColorNote.putExtra("from_color_note", true);
-      paramColorNote.putExtra("native_article_launch_from", 1004);
-      paramContext.startActivity(paramColorNote);
-    }
-  }
-  
-  private void c(Context paramContext, ColorNote paramColorNote)
-  {
-    if ((paramContext == null) || (paramColorNote == null) || (paramColorNote.getReserve() == null)) {
-      return;
-    }
-    try
-    {
-      paramColorNote = new String(paramColorNote.getReserve());
-      Object localObject = new JSONObject(paramColorNote);
-      String str1 = ((JSONObject)localObject).optString("url");
-      String str2 = ((JSONObject)localObject).optString("param");
-      boolean bool = ((JSONObject)localObject).optBoolean("useTransParentFragment");
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("param", str2);
-      ((Bundle)localObject).putString("colorBallData", paramColorNote);
-      ((Bundle)localObject).putBoolean("from_color_note", true);
-      tbz.a(paramContext, null, str1, (Bundle)localObject, bool);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QLog.e("ReadInJoyLauncher", 1, "error: " + paramContext.getMessage());
-    }
-  }
-  
-  public void launch(Context paramContext, ColorNote paramColorNote)
-  {
-    if (paramColorNote.mSubType.startsWith(jdField_a_of_type_JavaLangString))
-    {
-      a(paramContext, paramColorNote);
-      return;
-    }
-    if (paramColorNote.mSubType.startsWith("viola:"))
-    {
-      c(paramContext, paramColorNote);
-      return;
-    }
-    b(paramContext, paramColorNote);
   }
 }
 

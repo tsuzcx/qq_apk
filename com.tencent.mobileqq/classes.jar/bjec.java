@@ -1,29 +1,27 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.Intent;
+import com.tencent.mobileqq.mini.utils.TroopApplicationListUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
 
-final class bjec
-  implements Animation.AnimationListener
+class bjec
+  implements IActivityResultListener
 {
-  bjec(View paramView1, View paramView2) {}
+  bjec(bjdt parambjdt, IActivityResultManager paramIActivityResultManager, IMiniAppContext paramIMiniAppContext) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    paramAnimation = new bjcp(this.a);
-    paramAnimation.setDuration(bjeb.a());
-    paramAnimation.setFillAfter(true);
-    this.a.startAnimation(paramAnimation);
-    this.a.setVisibility(0);
-    this.b.clearAnimation();
-    this.b.setVisibility(4);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.clearAnimation();
-    this.a.setVisibility(4);
+    if ((paramInt1 == 1002) && (paramInt2 == -1))
+    {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
+      String str = paramIntent.getStringExtra("uin");
+      paramIntent = paramIntent.getStringExtra("uinname");
+      QLog.d("MiniAppProxyImpl", 1, "group uin: " + str + ", group name: " + paramIntent);
+      TroopApplicationListUtil.addMiniAppToTroopApplicationList(str, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.getMiniAppInfo().appId, null);
+    }
+    return true;
   }
 }
 

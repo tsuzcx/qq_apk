@@ -2,7 +2,7 @@ package com.tencent.mobileqq.bubble;
 
 import android.os.Handler;
 import android.os.Looper;
-import aqkq;
+import apeb;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -10,7 +10,7 @@ class BubbleManager$HandleBubbleConfigRunnable
   implements Runnable
 {
   int jdField_a_of_type_Int;
-  aqkq jdField_a_of_type_Aqkq;
+  apeb jdField_a_of_type_Apeb;
   boolean jdField_a_of_type_Boolean;
   
   public BubbleManager$HandleBubbleConfigRunnable(BubbleManager paramBubbleManager, int paramInt, boolean paramBoolean)
@@ -22,12 +22,12 @@ class BubbleManager$HandleBubbleConfigRunnable
   public void run()
   {
     Object localObject = this.this$0.a(this.jdField_a_of_type_Int).getAbsolutePath() + File.separatorChar + "config.json";
-    this.jdField_a_of_type_Aqkq = this.this$0.a(this.jdField_a_of_type_Int, (String)localObject);
+    this.jdField_a_of_type_Apeb = this.this$0.a(this.jdField_a_of_type_Int, (String)localObject);
     if (QLog.isColorLevel()) {
-      QLog.d("BubbleManager", 2, "getBubbleConfig bubbleId=" + this.jdField_a_of_type_Int + ",filePath=" + (String)localObject + ",bubbleConfig=" + this.jdField_a_of_type_Aqkq);
+      QLog.d("BubbleManager", 2, "getBubbleConfig bubbleId=" + this.jdField_a_of_type_Int + ",filePath=" + (String)localObject + ",bubbleConfig=" + this.jdField_a_of_type_Apeb);
     }
-    if (this.jdField_a_of_type_Aqkq != null) {
-      this.this$0.a.put(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_Aqkq);
+    if (this.jdField_a_of_type_Apeb != null) {
+      this.this$0.a.put(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_Apeb);
     }
     for (;;)
     {

@@ -1,188 +1,82 @@
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.ApolloPanelListView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.XListView;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class amnh
-  extends BaseAdapter
-  implements aoog, bbzw, blih
+public class amnh
+  extends amnk
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private aoof jdField_a_of_type_Aoof;
-  protected bbzn a;
-  private bbzr jdField_a_of_type_Bbzr;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private List<? extends bbzg> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean = false;
-  private List<bbzg> b;
-  
-  public amnh(Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, List<? extends bbzg> paramList)
+  public amnh(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this);
-    this.jdField_a_of_type_Aoof = new aoof(paramContext, paramQQAppInterface);
-    this.jdField_a_of_type_Aoof.a(this);
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = new ArrayList();
+    super(paramQQAppInterface, paramContext);
+    this.c = 4;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.f = 2;
   }
   
-  protected Bitmap a(String paramString, int paramInt)
+  public amlu a(String paramString)
   {
-    Bitmap localBitmap = this.jdField_a_of_type_Aoof.a(paramInt, paramString);
-    if (localBitmap != null) {
-      return localBitmap;
+    return new amlx(paramString);
+  }
+  
+  public View a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView = new ApolloPanelListView(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setDivider(null);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setVerticalScrollBarEnabled(true);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setEdgeEffectEnabled(false);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.setSelector(2130850608);
     }
-    if (!this.jdField_a_of_type_Aoof.a()) {
-      this.jdField_a_of_type_Aoof.a(paramString, paramInt, true);
+    return this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView;
+  }
+  
+  public ArrayList<amlu> a(int paramInt)
+  {
+    if ((this.b != 9) || (this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {}
+    do
+    {
+      return null;
+      i = a();
+    } while ((paramInt < 0) || (paramInt >= i) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView == null));
+    paramInt = this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.getFirstVisiblePosition() * this.f;
+    int i = this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanelListView.getLastVisiblePosition();
+    int j = this.f;
+    ArrayList localArrayList = new ArrayList();
+    while ((paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (paramInt <= (i + 1) * j - 1))
+    {
+      localArrayList.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      paramInt += 1;
     }
-    if (paramInt == 1) {
-      return bhmq.a();
-    }
-    if (paramInt == 101) {
-      return bhmq.h();
-    }
-    if (paramInt == 4) {
-      return bhmq.f();
-    }
-    if (paramInt == 11) {
-      return bhmq.b();
-    }
-    if (paramInt == 110) {
-      return bhmq.d();
-    }
-    if (paramInt == 111) {
-      return bhmq.e();
-    }
-    return bhmq.a();
+    return localArrayList;
   }
   
   public void a()
   {
-    if (this.b != null)
-    {
-      this.b.clear();
-      notifyDataSetChanged();
-    }
+    this.jdField_a_of_type_JavaUtilList = null;
   }
   
-  public void a(int paramInt, List<? extends bbzg> paramList)
+  public void a(View paramView, int paramInt)
   {
-    this.b.clear();
-    this.b.addAll(paramList);
-    paramList.clear();
-    if (this.jdField_a_of_type_Bbzn != null) {
-      this.jdField_a_of_type_Bbzn.a(paramInt);
-    }
-    notifyDataSetChanged();
+    c(paramView);
   }
   
-  public void a(List<? extends bbzg> paramList)
+  public void a(BaseChatPie paramBaseChatPie)
   {
-    this.b.addAll(paramList);
-    notifyDataSetChanged();
-  }
-  
-  protected boolean a(amni paramamni)
-  {
-    return (paramamni != null) && (!TextUtils.isEmpty(paramamni.jdField_a_of_type_JavaLangString));
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Bbzr != null) {
-      this.jdField_a_of_type_Bbzr.cancel(true);
-    }
-    if (this.jdField_a_of_type_Aoof != null) {
-      this.jdField_a_of_type_Aoof.d();
-    }
-    this.jdField_a_of_type_ComTencentWidgetXListView = null;
-  }
-  
-  public int getCount()
-  {
-    if (this.b != null) {
-      return this.b.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((this.b != null) && (paramInt < this.b.size())) {
-      return this.b.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    int i;
-    if ((!this.jdField_a_of_type_Aoof.a()) && ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1)))
-    {
-      i = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-      paramInt1 = 0;
-    }
-    for (;;)
-    {
-      if (paramInt1 < i)
-      {
-        Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt1).getTag();
-        if ((localObject != null) && ((localObject instanceof amni)))
-        {
-          localObject = (amni)localObject;
-          if ((localObject != null) && (!TextUtils.isEmpty(((amni)localObject).jdField_a_of_type_JavaLangString)) && (((amni)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) && (paramInt2 == ((amni)localObject).jdField_a_of_type_Int)) {
-            ((amni)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-          }
-        }
-      }
-      else
-      {
-        return;
-      }
-      paramInt1 += 1;
+    super.a(paramBaseChatPie);
+    if (this.jdField_a_of_type_Amnd != null) {
+      this.jdField_a_of_type_Amnd.a(paramBaseChatPie);
     }
   }
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetXListView == null) {}
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_Int = paramInt;
-      if ((paramInt != 0) && (paramInt != 1)) {
-        break;
-      }
-      if (this.jdField_a_of_type_Aoof.a()) {
-        this.jdField_a_of_type_Aoof.b();
-      }
-      int i = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        paramAbsListView = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt).getTag();
-        if ((paramAbsListView != null) && ((paramAbsListView instanceof amni)))
-        {
-          paramAbsListView = (amni)paramAbsListView;
-          if (a(paramAbsListView)) {
-            paramAbsListView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(a(paramAbsListView.jdField_a_of_type_JavaLangString, paramAbsListView.jdField_a_of_type_Int));
-          }
-        }
-        paramInt += 1;
-      }
-    }
-    this.jdField_a_of_type_Aoof.a();
-    this.jdField_a_of_type_Aoof.c();
-  }
+  public void onClick(View paramView) {}
 }
 
 

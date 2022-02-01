@@ -1,12 +1,14 @@
-import com.tencent.superplayer.api.ISuperPlayer;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public abstract class vxr
+class vxr
+  implements wkl
 {
-  public void a() {}
-  
-  public void a(ISuperPlayer paramISuperPlayer) {}
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex <= 0L);
+  }
 }
 
 

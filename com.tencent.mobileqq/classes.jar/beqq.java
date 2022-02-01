@@ -1,64 +1,35 @@
-import com.tencent.mobileqq.together.writetogether.websocket.msg.BaseToWriteTogetherMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-import javax.annotation.Nullable;
-import okhttp3.OkHttpClient;
-import okhttp3.OkHttpClient.Builder;
-import okhttp3.Request;
-import okhttp3.Request.Builder;
-import okhttp3.WebSocket;
-import okhttp3.WebSocketListener;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-public class beqq
+class beqq
+  implements View.OnClickListener
 {
-  private beqs jdField_a_of_type_Beqs = new beqs();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private OkHttpClient jdField_a_of_type_Okhttp3OkHttpClient;
-  @Nullable
-  private WebSocket jdField_a_of_type_Okhttp3WebSocket;
-  WebSocketListener jdField_a_of_type_Okhttp3WebSocketListener;
+  beqq(beqp parambeqp) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    QLog.d("WriteTogether.WriteTogetherWebSocketEngine", 1, "openWebSocketConn, url = " + "wss://writetogether.3g.qq.com/websocket");
-    Request localRequest = new Request.Builder().url("wss://writetogether.3g.qq.com/websocket").build().newBuilder().build();
-    this.jdField_a_of_type_Okhttp3OkHttpClient = new OkHttpClient().newBuilder().connectTimeout(30L, TimeUnit.SECONDS).writeTimeout(30L, TimeUnit.SECONDS).readTimeout(30L, TimeUnit.SECONDS).build();
-    this.jdField_a_of_type_Okhttp3OkHttpClient.newWebSocket(localRequest, new beqr(this));
-  }
-  
-  public void a(BaseToWriteTogetherMsg paramBaseToWriteTogetherMsg)
-  {
-    if (!a()) {
-      a();
-    }
-    if ((a()) && (this.jdField_a_of_type_Okhttp3WebSocket != null))
+    BaseActivity localBaseActivity = (BaseActivity)beqp.a(this.a).get();
+    if (localBaseActivity != null)
     {
-      paramBaseToWriteTogetherMsg = paramBaseToWriteTogetherMsg.toJson();
-      if (QLog.isColorLevel()) {
-        QLog.d("WriteTogether.WriteTogetherWebSocketEngine", 2, new Object[] { "sendData: ", paramBaseToWriteTogetherMsg });
-      }
-      this.jdField_a_of_type_Okhttp3WebSocket.send(paramBaseToWriteTogetherMsg);
+      beyy.a(beqp.b(this.a), beqp.c(this.a).curFriendUin);
+      Object localObject1 = bfcx.a();
+      Object localObject2 = ((bfcx)localObject1).a("troop_list_homework");
+      bfcy localbfcy = new bfcy();
+      localbfcy.a = beqp.d(this.a).curFriendUin;
+      localbfcy.c = "aio";
+      localObject1 = ((bfcx)localObject1).a((String)localObject2, localbfcy);
+      localObject2 = new Intent(localBaseActivity, QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      localBaseActivity.startActivity((Intent)localObject2);
+      bftc.a(beqp.c(this.a), beqp.e(this.a).curFriendUin, "homework", "AioSee_Clk", 0, 0, new String[] { beqp.f(this.a).curFriendUin, "", "", bftc.a(beqp.d(this.a), beqp.g(this.a).curFriendUin) });
     }
-  }
-  
-  public void a(WebSocketListener paramWebSocketListener)
-  {
-    this.jdField_a_of_type_Okhttp3WebSocketListener = paramWebSocketListener;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Okhttp3WebSocket != null)
-    {
-      this.jdField_a_of_type_Okhttp3WebSocket.close(1000, null);
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,81 +1,69 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class oyy
-  extends RecyclerView.Adapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<pqc> jdField_a_of_type_JavaUtilList = new ArrayList();
-  sxm jdField_a_of_type_Sxm;
-  private List<pqc> b = new ArrayList();
+  HashMap<String, HashSet<Object>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  oyz jdField_a_of_type_Oyz;
   
-  public oyy(Context paramContext, List<pqc> paramList1, List<pqc> paramList2)
+  public oyy(oyz paramoyz)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList1;
-    this.b = paramList2;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Oyz = paramoyz;
   }
   
-  private void a(int paramInt, pqc parampqc)
+  private void b(String paramString, Object paramObject)
   {
-    if (paramInt == 0) {
-      bnrf.a("readinjoy_show_recommend_reason_in_title_b", parampqc.c);
-    }
-  }
-  
-  public int getItemCount()
-  {
-    int j = 0;
-    if (this.jdField_a_of_type_JavaUtilList != null) {}
-    for (int i = this.jdField_a_of_type_JavaUtilList.size();; i = 0)
-    {
-      if (this.b != null) {
-        j = this.b.size();
-      }
-      return i + 0 + j;
-    }
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt < this.b.size()) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    ozb localozb = (ozb)paramViewHolder;
-    pqc localpqc;
-    if (paramInt >= this.b.size())
-    {
-      paramInt -= this.b.size();
-      localpqc = (pqc)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      localozb.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
-    {
-      localozb.jdField_a_of_type_AndroidWidgetTextView.setText(localpqc.b);
-      localozb.b.setText(localpqc.d);
-      localozb.itemView.setOnClickListener(new oyz(this, localozb, localpqc, paramInt));
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+    HashSet localHashSet2 = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if ((localHashSet2 != null) && (localHashSet2.contains(paramObject))) {
       return;
-      localpqc = (pqc)this.b.get(paramInt);
-      localozb.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
+    HashSet localHashSet1 = localHashSet2;
+    if (localHashSet2 == null) {
+      localHashSet1 = new HashSet();
+    }
+    localHashSet1.add(paramObject);
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localHashSet1);
   }
   
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  public void a()
   {
-    return new ozb(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560206, null));
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    a(paramString, paramObject, true);
+  }
+  
+  public void a(String paramString, Object paramObject, boolean paramBoolean)
+  {
+    b(paramString, paramObject);
+    if (paramBoolean) {}
+    while (this.jdField_a_of_type_Oyz == null) {
+      return;
+    }
+    this.jdField_a_of_type_Oyz.a(paramString, paramObject);
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Oyz != null) && (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
+    {
+      Iterator localIterator1 = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      while (localIterator1.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator1.next();
+        Iterator localIterator2 = ((HashSet)localEntry.getValue()).iterator();
+        while (localIterator2.hasNext())
+        {
+          Object localObject = localIterator2.next();
+          this.jdField_a_of_type_Oyz.a((String)localEntry.getKey(), localObject);
+        }
+      }
+    }
   }
 }
 

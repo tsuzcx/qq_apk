@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aiqx;
+import ahlf;
 
 public class UpComingMsgChatPie$1
   implements Runnable
 {
-  public UpComingMsgChatPie$1(aiqx paramaiqx) {}
+  public UpComingMsgChatPie$1(ahlf paramahlf) {}
   
   public void run()
   {
-    aiqx.a(this.this$0);
+    ahlf.a(this.this$0);
   }
 }
 

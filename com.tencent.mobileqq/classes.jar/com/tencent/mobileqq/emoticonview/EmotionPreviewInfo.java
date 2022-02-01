@@ -3,24 +3,23 @@ package com.tencent.mobileqq.emoticonview;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import asqa;
 
 public class EmotionPreviewInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<EmotionPreviewInfo> CREATOR = new asqa();
-  public String a;
-  public boolean a;
+  public static final Parcelable.Creator<EmotionPreviewInfo> CREATOR = new EmotionPreviewInfo.1();
+  public boolean isCheck;
+  public String path;
   
   public EmotionPreviewInfo() {}
   
   public EmotionPreviewInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.path = paramParcel.readString();
     if (paramParcel.readByte() == 1) {}
     for (;;)
     {
-      this.jdField_a_of_type_Boolean = bool;
+      this.isCheck = bool;
       return;
       bool = false;
     }
@@ -35,15 +34,15 @@ public class EmotionPreviewInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
-    localStringBuilder.append(" path: ").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" path: ").append(this.path);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean) {}
+    paramParcel.writeString(this.path);
+    if (this.isCheck) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
@@ -53,7 +52,7 @@ public class EmotionPreviewInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPreviewInfo
  * JD-Core Version:    0.7.0.1
  */

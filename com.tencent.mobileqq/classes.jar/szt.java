@@ -1,24 +1,55 @@
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
+import android.content.Context;
+import android.content.res.AssetManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class szt
-  implements taf
 {
-  private boolean jdField_a_of_type_Boolean;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+  private Map<String, String[]> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public szt(TabLayoutCompat paramTabLayoutCompat) {}
-  
-  public void a(ViewPager paramViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2)
+  public szt(Context paramContext, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a == paramViewPager) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a(paramPagerAdapter2, this.jdField_a_of_type_Boolean);
-    }
+    a(paramContext, paramString);
   }
   
-  public void a(boolean paramBoolean)
+  private void a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    b(paramContext, paramString);
+  }
+  
+  private boolean a(String paramString)
+  {
+    return (paramString == null) || (paramString.endsWith(".geojson")) || (paramString.equals("manifest"));
+  }
+  
+  private void b(Context paramContext, String paramString)
+  {
+    try
+    {
+      String[] arrayOfString = paramContext.getAssets().list(paramString);
+      if (arrayOfString != null)
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, arrayOfString);
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          String str = arrayOfString[i];
+          if (!a(str)) {
+            b(paramContext, paramString + "/" + str);
+          }
+          i += 1;
+        }
+      }
+      return;
+    }
+    catch (IOException paramContext)
+    {
+      QLog.e("Q.readinjoy.proteus", 1, "addFolderChild", paramContext);
+    }
   }
 }
 

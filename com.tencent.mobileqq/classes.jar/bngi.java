@@ -1,508 +1,188 @@
-import NS_QMALL_COVER.AlbumThemeSkin;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.music.SongInfo;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.DashPathEffect;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.graphics.PointF;
+import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.album.QzonePhotoInfo;
-import cooperation.qzone.remote.logic.RemoteRequestSender.1;
-import java.util.ArrayList;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 
 public class bngi
+  extends bngv
 {
-  private static final String jdField_a_of_type_JavaLangString = bngi.class.getName();
-  private bngf jdField_a_of_type_Bngf;
+  public int a;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private Path jdField_a_of_type_AndroidGraphicsPath;
+  private PointF jdField_a_of_type_AndroidGraphicsPointF;
+  private bnnn jdField_a_of_type_Bnnn;
+  private boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float = 45.0F;
+  public int b;
+  private Paint jdField_b_of_type_AndroidGraphicsPaint;
+  public int c;
+  private boolean c;
+  public int d;
+  int e = 0;
+  int f = 0;
+  private int g;
   
-  public bngi(bngf parambngf)
+  public bngi(DoodleView paramDoodleView)
   {
-    this.jdField_a_of_type_Bngf = parambngf;
+    super(paramDoodleView);
+    c();
   }
   
-  public int a()
+  private void c()
   {
-    return this.jdField_a_of_type_Bngf.a("cmd.qzoneFeedSkinSwitchChanged", null, false);
-  }
-  
-  public int a(long paramLong)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("uin", paramLong);
-    return this.jdField_a_of_type_Bngf.a("cmd.pre.getpassivefeeds", localBundle, true);
-  }
-  
-  public int a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param.customPraiseData", paramString);
-    return this.jdField_a_of_type_Bngf.a("cmd.qzoneUpdateCustomPraise", localBundle, false);
-  }
-  
-  public int a(String paramString1, String paramString2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param.tmpLocalFile", paramString1);
-    localBundle.putString("param.jsBid", paramString2);
-    return this.jdField_a_of_type_Bngf.a("cmd.qzoneUploadUps", localBundle, true);
-  }
-  
-  public int a(boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("value", paramBoolean);
-    return this.jdField_a_of_type_Bngf.a("cmd.qzoneFontChanged", localBundle, false);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bngf.a("cmd.resumePlay", null, false);
-  }
-  
-  public void a(long paramLong)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("startTime", paramLong);
-    this.jdField_a_of_type_Bngf.a("cmd.getTravelGroup", localBundle, true);
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("uin", paramLong);
-    localBundle.putInt("isHide", paramInt);
-    this.jdField_a_of_type_Bngf.a("cmd.refreshWeishiMedalStatus", localBundle, false);
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("param.uin", paramLong);
-    localBundle.putInt("param.playModeRandom", paramInt1);
-    localBundle.putInt("param.playModeAuto", paramInt2);
-    localBundle.putInt("param.playModeLoop", paramInt3);
-    this.jdField_a_of_type_Bngf.a("cmd.savePlayMode", localBundle, false);
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, ArrayList<SongInfo> paramArrayList)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("param.uin", paramLong);
-    localBundle.putInt("param.origin", paramInt1);
-    localBundle.putInt("param.index", paramInt2);
-    localBundle.putSerializable("param.songList", paramArrayList);
-    this.jdField_a_of_type_Bngf.a("cmd.playMusicList", localBundle, false);
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, ArrayList<SongInfo> paramArrayList, int paramInt3)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("param.uin", paramLong);
-    localBundle.putInt("param.origin", paramInt1);
-    localBundle.putInt("param.index", paramInt2);
-    localBundle.putSerializable("param.songList", paramArrayList);
-    localBundle.putInt("param.playMode", paramInt3);
-    this.jdField_a_of_type_Bngf.a("cmd.playAudioList", localBundle, false);
-  }
-  
-  public void a(long paramLong, AlbumThemeSkin paramAlbumThemeSkin)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("param.uin", paramLong);
-    localBundle.putSerializable("param.album_theme", paramAlbumThemeSkin);
-    this.jdField_a_of_type_Bngf.a("cmd.alumb.theme", localBundle, false);
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("param.uin", paramLong);
-    localBundle.putString("param.payKey", paramString);
-    this.jdField_a_of_type_Bngf.a("cmd.qzoneSetRedKeyData", localBundle, true);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Bngf.a("cmd.setLocalPhotoSwitcher", paramBundle, false);
-  }
-  
-  public void a(Bundle paramBundle, String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      LocalMultiProcConfig.putString4Uin("qzone_campusInfo_name", paramBundle.getString("name"), Long.valueOf(paramString).longValue());
-      LocalMultiProcConfig.putString4Uin("qzone_campusInfo_school_id", paramBundle.getString("schoolid"), Long.valueOf(paramString).longValue());
-      LocalMultiProcConfig.putString4Uin("qzone_campusInfo_school_idx", paramBundle.getString("idx"), Long.valueOf(paramString).longValue());
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#12B7F5"));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
+    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#12B7F5"));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setPathEffect(new DashPathEffect(new float[] { 5.0F, 5.0F, 5.0F, 5.0F }, 1.0F));
+    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+    DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.getResources().getDisplayMetrics();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = localDisplayMetrics.widthPixels;
+    this.jdField_c_of_type_Int = 0;
+    this.d = localDisplayMetrics.heightPixels;
+    if (LiuHaiUtils.b()) {
+      this.d = (localDisplayMetrics.heightPixels - LiuHaiUtils.e - LiuHaiUtils.jdField_a_of_type_Int);
     }
+    double d1 = Math.pow(localDisplayMetrics.heightPixels, 2.0D);
+    this.g = ((int)Math.sqrt(Math.pow(localDisplayMetrics.widthPixels, 2.0D) + d1));
+    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(this.jdField_b_of_type_Int / 2, this.d / 2);
+    this.jdField_a_of_type_Bnnn = new bnnn();
+    this.jdField_a_of_type_Bnnn.a(true);
+    this.jdField_a_of_type_Bnnn.a(18.0F);
+    this.jdField_a_of_type_Bnnn.b(0.5F);
   }
   
-  public void a(String paramString)
+  public String a()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param.DynamicCmd", paramString);
-    this.jdField_a_of_type_Bngf.a("cmd.getDynamicPhoto", localBundle, true);
+    return "GuideLineLayer";
   }
   
-  public void a(String paramString, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param.FirstDynamicPhotoPath", paramString);
-    localBundle.putInt("param.DynamicTotalPhotoNum", paramInt);
-    this.jdField_a_of_type_Bngf.a("cmd.UploadFirstDynamicPhoto", localBundle, true);
-  }
+  public void a() {}
   
-  public void a(String paramString1, String paramString2)
+  public void a(float paramFloat)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("GiftId_FullScreen", paramString1);
-    localBundle.putString("GiftUrl_FullScreen", paramString2);
-    this.jdField_a_of_type_Bngf.a("cmd.downloadPassivePraise", localBundle, true);
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("type", paramString1);
-    localBundle.putString("value", paramString2);
-    localBundle.putLong("uin", paramLong);
-    this.jdField_a_of_type_Bngf.a("cmd.update.friendsetting", localBundle, false);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    if (TextUtils.isEmpty(paramString3)) {}
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
-        {
-          if (new JSONObject(paramString1).optInt("certificateResult") == 1) {
-            if (paramString2.equals("notifyCampusFriendCertificateResult"))
-            {
-              LocalMultiProcConfig.putInt4Uin("qzone_campusInfo_verfyStatus", 2, Long.valueOf(paramString3).longValue());
-              return;
-            }
-          }
-        }
-        catch (JSONException paramString1)
-        {
-          QLog.i(jdField_a_of_type_JavaLangString, 1, "updateSchoolCertificate exception", paramString1);
-          return;
-        }
-      }
-    } while (!paramString2.equals("notifyUploadSutudentIDResult"));
-    LocalMultiProcConfig.putInt4Uin("qzone_campusInfo_verfyStatus", 1, Long.valueOf(paramString3).longValue());
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param.DynamicCloudPhotolistAlbumId", paramString1);
-    localBundle.putString("param.DynamicCloudPhotolistlloc", paramString2);
-    localBundle.putString("param.DynamicCloudPhotolist", paramString3);
-    localBundle.putBoolean("param.DynamicIsFromAlbum", true);
-    localBundle.putInt("param.DynamicTotalPhotoNum", paramInt);
-    this.jdField_a_of_type_Bngf.a("cmd.UploadFirstDynamicPhoto", localBundle, true);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param.textContent", paramString1);
-    localBundle.putString("param.signInPictureUrl", paramString2);
-    localBundle.putString("param.fontId", paramString3);
-    localBundle.putString("param.fontUrl", paramString4);
-    this.jdField_a_of_type_Bngf.a("cmd.SyncWechatWithSignIn", localBundle, false);
-  }
-  
-  public void a(ArrayList<QzonePhotoInfo> paramArrayList)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelableArrayList("param.DynamicCloudPhotolist", paramArrayList);
-    this.jdField_a_of_type_Bngf.a("cmd.DynamicCloudPhotoSendSuccess", localBundle, true);
-  }
-  
-  public void a(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("param.videoRemoteUrls", paramArrayList1);
-    localBundle.putStringArrayList("param.videoId", paramArrayList2);
-    this.jdField_a_of_type_Bngf.a("cmd.videoGetLocalProxyUrl", localBundle, true);
-  }
-  
-  public void a(Map<Integer, String> paramMap, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
-  {
-    Bundle localBundle = new Bundle();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramMap);
-    localBundle.putSerializable("param.feedDataCookie", localArrayList);
-    localBundle.putInt("param.reportPosi", paramInt1);
-    localBundle.putInt("param.actionExpectation", paramInt2);
-    localBundle.putLong("costTime", paramLong1);
-    localBundle.putLong("error_code", paramLong2);
-    ThreadManager.post(new RemoteRequestSender.1(this, localBundle), 2, null, false);
-  }
-  
-  public int b()
-  {
-    Bundle localBundle = new Bundle();
-    return this.jdField_a_of_type_Bngf.a("cmd.qzoneUpdateFontList", localBundle, false);
-  }
-  
-  public int b(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param.ploymorphicPraise", paramString);
-    return this.jdField_a_of_type_Bngf.a("cmd.qzoneUpdatePloymorphicPraise", localBundle, false);
-  }
-  
-  public int b(boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("value", paramBoolean);
-    return this.jdField_a_of_type_Bngf.a("cmd.qzoneBarrageEffectChanged", localBundle, false);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bngf.a("cmd.pausePlay", null, false);
-  }
-  
-  public void b(long paramLong, int paramInt1, int paramInt2, ArrayList<SongInfo> paramArrayList)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("param.uin", paramLong);
-    localBundle.putInt("param.origin", paramInt1);
-    localBundle.putInt("param.index", paramInt2);
-    localBundle.putSerializable("param.songList", paramArrayList);
-    this.jdField_a_of_type_Bngf.a("cmd.playFMBroadCastList", localBundle, false);
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Bngf.a("cmd.setEventVideoAlbumState", paramBundle, false);
-  }
-  
-  public void b(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param.DynamicCmd", paramString);
-    this.jdField_a_of_type_Bngf.a("cmd.getDynamicSelnum", localBundle, true);
-  }
-  
-  public void b(String paramString1, String paramString2, String paramString3)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("GiftId_FullScreen", paramString1);
-    localBundle.putString("GiftUrl_FullScreen", paramString2);
-    localBundle.putString("GiftMd5_FullScreen", paramString3);
-    this.jdField_a_of_type_Bngf.a("cmd.downloadGift", localBundle, true);
-  }
-  
-  public void b(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("music_id", paramString1);
-    localBundle.putString("lrc_id", paramString2);
-    localBundle.putString("climax_start", paramString3);
-    localBundle.putString("climax_endure", paramString4);
-    this.jdField_a_of_type_Bngf.a("cmd.UpdateDynamicAlbumInfo", localBundle, true);
-  }
-  
-  public void b(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("param.videoRemoteUrls", paramArrayList1);
-    localBundle.putStringArrayList("param.videoStates", paramArrayList2);
-    this.jdField_a_of_type_Bngf.a("cmd.videoSetState", localBundle, false);
-  }
-  
-  public int c(boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("value", paramBoolean);
-    return this.jdField_a_of_type_Bngf.a("cmd.qzoneUpdateCustomBrowserInfo", localBundle, false);
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Bngf.a("cmd.stopPlay", null, false);
-  }
-  
-  public void c(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Bngf.a("cmd.setQuickMakeDynamicStatus", paramBundle, false);
-  }
-  
-  public void c(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param.CloudDynamicCmd", paramString);
-    this.jdField_a_of_type_Bngf.a("cmd.getDynamicCloudPhoto", localBundle, true);
-  }
-  
-  public void c(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("DeviceStrDiyMemo", paramString1);
-    localBundle.putString("DeviceStrDeviceTail", paramString2);
-    localBundle.putString("DeviceStrDeviceIcon", paramString3);
-    localBundle.putString("DeviceStrIdentifySqua", paramString4);
-    this.jdField_a_of_type_Bngf.a("cmd.setUserTail", localBundle, true);
-  }
-  
-  public int d(boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("value", paramBoolean);
-    return this.jdField_a_of_type_Bngf.a("cmd.qzoneSuperFontChanged", localBundle, false);
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Bngf.a("cmd.getPlayingSong", null, true);
-  }
-  
-  public void d(Bundle paramBundle)
-  {
-    if (paramBundle != null)
-    {
-      this.jdField_a_of_type_Bngf.a("cmd.setHistoryEventTag", paramBundle, false);
+    if (paramFloat < 0.0F) {
       return;
     }
-    this.jdField_a_of_type_Bngf.a("cmd.setHistoryEventTag", null, false);
+    this.jdField_b_of_type_Float = paramFloat;
   }
   
-  public void d(String paramString)
+  public void a(int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("json", paramString);
-    this.jdField_a_of_type_Bngf.a("cmd.troop.download.photo", localBundle, true);
+    this.e = paramInt;
   }
   
-  public void e()
+  protected void a(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_Bngf.a("cmd.getLivingInfo", null, true);
+    paramCanvas.save();
+    if (QLog.isColorLevel()) {
+      QLog.d("GuideLineLayer", 2, "onLayerDraw  showGuideLine : " + this.jdField_c_of_type_Boolean + " currentDegree : " + this.jdField_b_of_type_Float + " centerPoint.x " + this.jdField_a_of_type_AndroidGraphicsPointF.x + " centerPoint.y : " + this.jdField_a_of_type_AndroidGraphicsPointF.y + " isDualFinger : " + this.jdField_a_of_type_Boolean + " transX : " + this.e + " transY : " + this.f + " maxLength : " + this.g);
+    }
+    if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Boolean) && (Math.abs((int)this.jdField_b_of_type_Float % 45) < 3))
+    {
+      paramCanvas.translate(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
+      paramCanvas.translate(this.e, this.f);
+      int i = Math.round(this.jdField_b_of_type_Float / 45.0F) * 45;
+      if (QLog.isColorLevel()) {
+        QLog.d("GuideLineLayer", 2, "currentDegree : " + this.jdField_b_of_type_Float + "   guideLine Angle : " + i);
+      }
+      paramCanvas.rotate(i);
+      this.jdField_a_of_type_AndroidGraphicsPath.reset();
+      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(-this.g, 0.0F);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.g, 0.0F);
+      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
+      if (QLog.isColorLevel()) {
+        QLog.d("GuideLineLayer", 2, "draw angle guide line");
+      }
+    }
+    paramCanvas.restore();
+    paramCanvas.save();
+    if ((this.jdField_c_of_type_Boolean) && (Math.abs(this.jdField_a_of_type_AndroidGraphicsPointF.x + this.e - (this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) / 2) < 4.0F))
+    {
+      this.jdField_a_of_type_AndroidGraphicsPath.reset();
+      this.jdField_a_of_type_AndroidGraphicsPath.moveTo((this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) / 2, 0.0F);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo((this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) / 2, this.d);
+      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      if (QLog.isColorLevel()) {
+        QLog.d("GuideLineLayer", 2, "draw X guide line");
+      }
+    }
+    if ((this.jdField_c_of_type_Boolean) && (Math.abs(this.jdField_a_of_type_AndroidGraphicsPointF.y + this.f - (this.jdField_c_of_type_Int + this.d) / 2) < 4.0F))
+    {
+      this.jdField_a_of_type_AndroidGraphicsPath.reset();
+      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.jdField_a_of_type_Int, (this.jdField_c_of_type_Int + this.d) / 2);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_b_of_type_Int, (this.jdField_c_of_type_Int + this.d) / 2);
+      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      if (QLog.isColorLevel()) {
+        QLog.d("GuideLineLayer", 2, "draw Y guide line");
+      }
+    }
+    paramCanvas.restore();
   }
   
-  public void e(Bundle paramBundle)
+  public void a(PointF paramPointF)
   {
-    this.jdField_a_of_type_Bngf.a("cmd.selectEventTag", paramBundle, false);
+    if (paramPointF == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidGraphicsPointF.set(paramPointF);
   }
   
-  public void e(String paramString)
+  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param.videoRemoteUrls", paramString);
-    this.jdField_a_of_type_Bngf.a("cmd.videoDownload", localBundle, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("GuideLineLayer", 2, "GuideLineLayer refreshed, entrance : " + paramInt3);
+    }
+    this.jdField_c_of_type_Boolean = paramBoolean1;
+    a(paramFloat);
+    a(paramInt1);
+    b(paramInt2);
+    a(paramPointF);
+    this.jdField_a_of_type_Boolean = paramBoolean2;
+    k();
   }
   
-  public void f()
+  public boolean a()
   {
-    this.jdField_a_of_type_Bngf.a("cmd.getPlayMode", null, true);
+    return true;
   }
   
-  public void f(String paramString)
+  public boolean a(long paramLong)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param.videoClientKey", paramString);
-    this.jdField_a_of_type_Bngf.a("cmd.videoGetFakeFeedCover", localBundle, true);
+    return true;
   }
   
-  public void g()
+  protected boolean a(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Bngf.a("cmd.initUserInfo", null, false);
+    return false;
   }
   
-  public void g(String paramString)
+  public void b(int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param.recordTempVideoPath", paramString);
-    this.jdField_a_of_type_Bngf.a("cmd.qzoneDeleteTempVideo", localBundle, false);
+    this.f = paramInt;
   }
   
-  public void h()
-  {
-    this.jdField_a_of_type_Bngf.a("cmd.notifyPlayListChange", null, false);
-  }
+  public void b(Canvas paramCanvas) {}
   
-  public void h(String paramString)
+  public boolean b(MotionEvent paramMotionEvent)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("param.videoForH5Json", paramString);
-    this.jdField_a_of_type_Bngf.a("cmd.videoUploadForH5", localBundle, false);
-  }
-  
-  public void i()
-  {
-    this.jdField_a_of_type_Bngf.a("cmd.dynamicDestroy", null, true);
-  }
-  
-  public void j()
-  {
-    Bundle localBundle = new Bundle();
-    this.jdField_a_of_type_Bngf.a("cmd.deletePrePostPhoto", localBundle, true);
-  }
-  
-  public void k()
-  {
-    Bundle localBundle = new Bundle();
-    this.jdField_a_of_type_Bngf.a("cmd.cancelAllpreLoad", localBundle, true);
-  }
-  
-  public void l()
-  {
-    Bundle localBundle = new Bundle();
-    this.jdField_a_of_type_Bngf.a("cmd.enableUploadFirstDynamicPhoto", localBundle, true);
-  }
-  
-  public void m()
-  {
-    this.jdField_a_of_type_Bngf.a("cmd.getDeviceInfos", null, true);
-  }
-  
-  public void n()
-  {
-    this.jdField_a_of_type_Bngf.a("cmd.videoStopAll", null, false);
-  }
-  
-  public void o()
-  {
-    this.jdField_a_of_type_Bngf.a("cmd.getRecommedPhoto", null, true);
-  }
-  
-  public void p()
-  {
-    this.jdField_a_of_type_Bngf.a("cmd.getLocalPhotoSwitcher", null, true);
-  }
-  
-  public void q()
-  {
-    this.jdField_a_of_type_Bngf.a("cmd.getEventVideoAlbumState", null, true);
-  }
-  
-  public void r()
-  {
-    this.jdField_a_of_type_Bngf.a("cmd.getQuickMakeDynamicStatus", null, true);
-  }
-  
-  public void s()
-  {
-    this.jdField_a_of_type_Bngf.a("cmd.getHistoryEventTag", null, true);
-  }
-  
-  public void t()
-  {
-    this.jdField_a_of_type_Bngf.a("cmd.deleteTimerShuoShuo", null, false);
-  }
-  
-  public void u()
-  {
-    this.jdField_a_of_type_Bngf.a("cmd.refreshPassiveFeeds", null, false);
+    return false;
   }
 }
 

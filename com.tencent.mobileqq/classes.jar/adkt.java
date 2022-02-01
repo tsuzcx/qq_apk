@@ -1,9 +1,21 @@
-public abstract interface adkt
-  extends adks
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class adkt
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void a(String paramString);
+  public adkt(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public abstract void b(String paramString);
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    bdai.a(paramBoolean);
+    if (paramBoolean) {
+      bdai.a(new adlk(this.a.jdField_a_of_type_Aegj, this.a.jdField_a_of_type_AndroidViewView));
+    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
 }
 
 

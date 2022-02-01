@@ -1,33 +1,39 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.qidian.QidianProfileCardActivity;
 
 public class bimn
+  implements bjoe
 {
-  public static binq a(birg parambirg)
+  public bimn(QidianProfileCardActivity paramQidianProfileCardActivity, bjnw parambjnw, URLDrawable paramURLDrawable, String paramString) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    int j = 0;
-    int i = j;
-    if (parambirg.a != null)
+    if (paramView == null) {
+      this.jdField_a_of_type_Bjnw.dismiss();
+    }
+    do
     {
-      i = j;
-      if (parambirg.a.getIntent() != null) {
-        i = parambirg.a.getIntent().getIntExtra("titleBarStyle", 0);
+      return;
+      paramView = this.jdField_a_of_type_Bjnw.a(paramInt);
+      if (TextUtils.isEmpty(paramView))
+      {
+        this.jdField_a_of_type_Bjnw.dismiss();
+        return;
       }
-    }
-    bmqw.d("SwiftWebTitleBuilder", "title bar style is" + i);
-    if (i == 1) {
-      return new bmct(parambirg);
-    }
-    if (i == 2) {
-      return new bioa(parambirg);
-    }
-    if (i == 3) {
-      return new bmrh(parambirg);
-    }
-    if (i == 4) {
-      return new vnz(parambirg);
-    }
-    return new binq(parambirg);
+      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131693017)))
+      {
+        QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
+        return;
+      }
+      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131693023)))
+      {
+        QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
+        return;
+      }
+    } while (!paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131697703)));
+    QidianProfileCardActivity.c(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_JavaLangString);
   }
 }
 

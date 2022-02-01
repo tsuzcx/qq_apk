@@ -1,6 +1,5 @@
 package com.tencent.biz.subscribe.comment;
 
-import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -9,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class ReplyActionView
   extends RelativeLayout
@@ -34,14 +34,14 @@ public class ReplyActionView
   
   private void a()
   {
-    Object localObject = LayoutInflater.from(getContext()).inflate(2131558763, this, true);
-    this.a = ((TextView)((View)localObject).findViewById(2131371426));
-    this.b = ((TextView)((View)localObject).findViewById(2131369884));
-    int i = agej.a(12.0F, getContext().getResources());
-    localObject = getResources().getDrawable(2130850870);
+    Object localObject = LayoutInflater.from(getContext()).inflate(2131558771, this, true);
+    this.a = ((TextView)((View)localObject).findViewById(2131371394));
+    this.b = ((TextView)((View)localObject).findViewById(2131369878));
+    int i = AIOUtils.dp2px(12.0F, getContext().getResources());
+    localObject = getResources().getDrawable(2130850806);
     ((Drawable)localObject).setBounds(0, 0, i, i);
     this.a.setCompoundDrawables(null, null, (Drawable)localObject, null);
-    localObject = getResources().getDrawable(2130850871);
+    localObject = getResources().getDrawable(2130850807);
     ((Drawable)localObject).setBounds(0, 0, i, i);
     this.b.setCompoundDrawables(null, null, (Drawable)localObject, null);
   }

@@ -1,12 +1,8 @@
+import android.view.View;
+
 public abstract interface bjsm
 {
-  public abstract void a(bjsn parambjsn);
-  
-  public abstract void b(bjsn parambjsn);
-  
-  public abstract void c(bjsn parambjsn);
-  
-  public abstract void d(bjsn parambjsn);
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

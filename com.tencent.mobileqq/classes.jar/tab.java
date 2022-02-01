@@ -1,23 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class tab
-  implements szu
+  implements SoundPool.OnLoadCompleteListener
 {
-  private final ViewPagerCompat a;
+  public tab(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager, long paramLong) {}
   
-  public tab(ViewPagerCompat paramViewPagerCompat)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    this.a = paramViewPagerCompat;
+    long l = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySkinAnimManager", 1, "setSoundPool onLoadComplete time = " + (l - this.jdField_a_of_type_Long));
+    }
+    bcef.b(null, "dc00899", "BizTechReport", "", "kan_dian_skin_pull_refresh", "sound_load_time", 0, 0, ReadInJoySkinAnimManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoySkinAnimManager), String.valueOf(l - this.jdField_a_of_type_Long), null, null);
+    ReadInJoySkinAnimManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoySkinAnimManager, true);
   }
-  
-  public void a(szz paramszz)
-  {
-    this.a.setCurrentItem(paramszz.a());
-  }
-  
-  public void b(szz paramszz) {}
-  
-  public void c(szz paramszz) {}
 }
 
 

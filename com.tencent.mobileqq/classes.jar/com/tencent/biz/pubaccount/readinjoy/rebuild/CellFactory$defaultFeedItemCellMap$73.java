@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild;
 
 import android.content.Context;
-import aoof;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function3;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import qlq;
-import sel;
+import qrt;
+import slt;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/biz/pubaccount/readinjoy/rebuild/FeedItemCellTypePolymericBigImage;", "context", "Landroid/content/Context;", "faceDecoder", "Lcom/tencent/mobileqq/app/face/FaceDecoder;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "invoke"}, k=3, mv={1, 1, 16})
 public final class CellFactory$defaultFeedItemCellMap$73
   extends Lambda
-  implements Function3<Context, aoof, sel, qlq>
+  implements Function3<Context, FaceDecoder, slt, qrt>
 {
   public static final 73 INSTANCE = new 73();
   
@@ -24,10 +24,10 @@ public final class CellFactory$defaultFeedItemCellMap$73
   }
   
   @NotNull
-  public final qlq invoke(@NotNull Context paramContext, @Nullable aoof paramaoof, @Nullable sel paramsel)
+  public final qrt invoke(@NotNull Context paramContext, @Nullable FaceDecoder paramFaceDecoder, @Nullable slt paramslt)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    return new qlq(paramContext, paramaoof, paramsel);
+    return new qrt(paramContext, paramFaceDecoder, paramslt);
   }
 }
 

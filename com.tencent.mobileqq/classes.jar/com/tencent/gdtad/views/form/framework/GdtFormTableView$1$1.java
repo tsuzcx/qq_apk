@@ -1,12 +1,12 @@
 package com.tencent.gdtad.views.form.framework;
 
-import acwz;
+import abti;
 import android.view.ViewTreeObserver;
 
 public class GdtFormTableView$1$1
   implements Runnable
 {
-  public GdtFormTableView$1$1(acwz paramacwz) {}
+  public GdtFormTableView$1$1(abti paramabti) {}
   
   public void run()
   {

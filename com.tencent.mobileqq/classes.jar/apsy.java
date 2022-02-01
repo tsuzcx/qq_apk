@@ -1,25 +1,69 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import android.widget.TextView;
+import com.tencent.mobileqq.confess.ConfessNewsBgView;
+import com.tencent.mobileqq.confess.data.TroopConfessMsg;
+import com.tencent.mobileqq.confess.data.TroopConfessMsgItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class apsy
-  implements View.OnTouchListener
+class apsy
+  extends aezf
 {
-  public apsy(ARScanEntryView paramARScanEntryView) {}
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ConfessNewsBgView jdField_a_of_type_ComTencentMobileqqConfessConfessNewsBgView;
+  private TextView b;
+  private View jdField_c_of_type_AndroidViewView;
+  private TextView jdField_c_of_type_AndroidWidgetTextView;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(TroopConfessMsg paramTroopConfessMsg)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (paramTroopConfessMsg == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopConfessItemBuilder", 2, "TroopConfessViewHolder bindData null is troopConfessMsgItem.");
+      }
     }
-    for (;;)
+    do
     {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+      return;
+      if ((paramTroopConfessMsg.items != null) && (!paramTroopConfessMsg.items.isEmpty())) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("TroopConfessItemBuilder", 2, "TroopConfessViewHolder bindData items is null or empty.");
+    return;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopConfessMsg.getConfessToNick());
+    this.b.setText(((TroopConfessMsgItem)paramTroopConfessMsg.items.get(0)).topic);
+    String str2 = ((TroopConfessMsgItem)paramTroopConfessMsg.items.get(0)).topic;
+    float f = apsn.a(str2);
+    int i;
+    if (f > 8.0F)
+    {
+      this.b.setTextSize(1, 24.0F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 18.0F);
+      this.b.setLineSpacing(0.0F, 1.1F);
+      str1 = str2;
+      if (f <= 12.0F)
+      {
+        str1 = str2;
+        if (apsn.a(str2)) {
+          i = (int)(f * 0.7D);
+        }
+      }
     }
+    for (String str1 = str2.substring(0, i) + "\n" + str2.substring(i, str2.length());; str1 = str2)
+    {
+      this.b.setText(str1);
+      if (paramTroopConfessMsg.totalCount > 1) {
+        break;
+      }
+      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      return;
+      this.b.setTextSize(1, 24.0F);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 18.0F);
+      this.b.setLineSpacing(0.0F, 1.0F);
+    }
+    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(String.format(amtj.a(2131714292), new Object[] { Integer.valueOf(paramTroopConfessMsg.totalCount - 1) }));
   }
 }
 

@@ -1,9 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class aheo
-  implements bljb
+  implements View.OnClickListener
 {
-  aheo(ahen paramahen) {}
+  aheo(ahek paramahek) {}
   
-  public void onDismiss() {}
+  public void onClick(View paramView)
+  {
+    this.a.d(true);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

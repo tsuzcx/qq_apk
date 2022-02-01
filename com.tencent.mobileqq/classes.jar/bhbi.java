@@ -1,6 +1,6 @@
 public abstract interface bhbi
 {
-  public abstract void a();
+  public abstract int a();
 }
 
 

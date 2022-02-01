@@ -1,21 +1,45 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import org.json.JSONObject;
 
-public final class bjdu
-  implements ValueAnimator.AnimatorUpdateListener
+class bjdu
+  extends BroadcastReceiver
 {
-  private final TabDragAnimationView a;
+  bjdu(bjdt parambjdt, AsyncResult paramAsyncResult) {}
   
-  public bjdu(TabDragAnimationView paramTabDragAnimationView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = paramTabDragAnimationView;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(f, 0.0F, true);
+    String str = paramIntent.getStringExtra("com.tencent.mobileqq.mini.out.plugins.scanResultData");
+    paramIntent = paramIntent.getStringExtra("com.tencent.mobileqq.mini.out.plugins.scanResultType");
+    QLog.d("MiniAppProxyImpl", 2, "scanResult: " + str + "----scan_type: " + paramIntent);
+    try
+    {
+      JSONObject localJSONObject1 = new JSONObject();
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("result", str);
+      localJSONObject2.put("scanType", paramIntent);
+      localJSONObject2.put("rawData", bhzn.a(str));
+      localJSONObject2.put("charSet", "utf-8");
+      localJSONObject1.put("detail", localJSONObject2);
+      localJSONObject1.put("result", str);
+      localJSONObject1.put("scanType", paramIntent);
+      localJSONObject1.put("rawData", bhzn.a(str));
+      localJSONObject1.put("charSet", "utf-8");
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, localJSONObject1);
+      paramContext.unregisterReceiver(bjdt.a(this.jdField_a_of_type_Bjdt));
+      bjdt.a(this.jdField_a_of_type_Bjdt, null);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        QLog.e("MiniAppProxyImpl", 1, "scan result error." + paramContext);
+      }
+    }
   }
 }
 

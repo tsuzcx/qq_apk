@@ -1,116 +1,45 @@
-import android.content.Context;
-import android.os.Bundle;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Card;
 
-public class ayry
+class ayry
+  implements bjoe
 {
-  public static <T> T a(View paramView, Class<T> paramClass)
+  ayry(ayrt paramayrt, String paramString1, String paramString2, int paramInt, boolean paramBoolean, bjnw parambjnw) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramView == null) {}
-    do
+    if ((paramInt == 0) && (ayrt.b(this.jdField_a_of_type_Ayrt) != null))
     {
-      return null;
-      if (!(paramView.getParent() instanceof AbsListView)) {
-        break;
+      paramView = new Intent(ayrt.c(this.jdField_a_of_type_Ayrt), EditInfoActivity.class);
+      paramView.putExtra("title", this.jdField_a_of_type_JavaLangString);
+      paramView.putExtra("default_text", this.b);
+      paramView.putExtra("uin", ((aymg)ayrt.a(this.jdField_a_of_type_Ayrt)).jdField_a_of_type_ComTencentMobileqqDataCard.uin);
+      paramView.putExtra("edit_action", this.jdField_a_of_type_Int);
+      paramView.putExtra("max_limit_mode", 1);
+      paramView.putExtra("edit_type", 2);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label169;
       }
-    } while (!a(paramView.getTag().getClass(), paramClass));
-    return paramView.getTag();
-    return a((View)paramView.getParent(), paramClass);
-  }
-  
-  public static String a(long paramLong)
-  {
-    long l1 = NetConnInfoCenter.getServerTimeMillis();
-    long l2 = l1 - paramLong;
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(l1);
-    int i = localCalendar.get(5);
-    int j = localCalendar.get(1);
-    localCalendar.setTimeInMillis(paramLong);
-    int k = localCalendar.get(5);
-    int m = localCalendar.get(1);
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat();
-    if (l2 < 600000L) {
-      return anzj.a(2131706112);
+      paramView.putExtra("max_num", 60);
+      paramView.putExtra("isTroopNick", true);
+      paramView.putExtra("troopUin", ((aymg)ayrt.b(this.jdField_a_of_type_Ayrt)).jdField_a_of_type_JavaLangString);
     }
-    if (l2 < 3600000L) {
-      return l2 / 60L / 1000L + 1L + anzj.a(2131706105);
-    }
-    if ((l2 < 21600000L) && (k == i)) {
-      return l2 / 60L / 60L / 1000L + anzj.a(2131706099);
-    }
-    if ((l2 < 86400000L) && (k == i))
+    for (;;)
     {
-      localSimpleDateFormat.applyPattern("HH:mm");
-      return localSimpleDateFormat.format(localCalendar.getTime());
-    }
-    if ((l2 < 86400000L) && (k != i))
-    {
-      localSimpleDateFormat.applyPattern("HH:mm");
-      return anzj.a(2131706110) + localSimpleDateFormat.format(localCalendar.getTime());
-    }
-    if (m == j)
-    {
-      localSimpleDateFormat.applyPattern("MM-dd");
-      return localSimpleDateFormat.format(localCalendar.getTime());
-    }
-    localSimpleDateFormat.applyPattern("yyyy-MM-dd");
-    return localSimpleDateFormat.format(localCalendar.getTime());
-  }
-  
-  public static void a(Context paramContext, PublishVideoEntry paramPublishVideoEntry, int paramInt)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    File localFile1 = new File(paramPublishVideoEntry.mLocalRawVideoDir + "");
-    File localFile2 = new File(paramPublishVideoEntry.thumbPath + "");
-    paramPublishVideoEntry = new File(paramPublishVideoEntry.doodlePath + "");
-    try
-    {
-      localJSONObject.put("videoUrl", localFile1.toURI() + "");
-      localJSONObject.put("coverUrl", localFile2.toURI() + "");
-      localJSONObject.put("doodleUrl", paramPublishVideoEntry.toURI() + "");
-      localJSONObject.put("is_local", "1");
-      paramPublishVideoEntry = new Bundle();
-      paramPublishVideoEntry.putString("preLoadParams", localJSONObject.toString());
-      paramPublishVideoEntry.putBoolean("scroll_to_comment", false);
-      paramPublishVideoEntry.putString("isLocal", "1");
-      paramPublishVideoEntry.putString("_from", "3");
-      paramPublishVideoEntry.putString("play_mode", String.valueOf(2));
-      paramPublishVideoEntry.putBoolean("is_multi_progress_bar", false);
-      paramPublishVideoEntry.putString("feed_type", String.valueOf(paramInt));
-      SmallVideoFragment.a(paramContext, paramPublishVideoEntry);
+      ayrt.d(this.jdField_a_of_type_Ayrt).startActivityForResult(paramView, 1034);
+      this.jdField_a_of_type_Bjnw.dismiss();
       return;
-    }
-    catch (JSONException paramPublishVideoEntry)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("NearbyMomentUtils", 2, "getPreviewPage, e=" + paramPublishVideoEntry.toString());
-        }
+      label169:
+      paramInt = 36;
+      if (this.jdField_a_of_type_Int == 2) {
+        paramInt = 60;
       }
+      paramView.putExtra("max_num", paramInt);
+      paramView.putExtra("support_emotion", true);
     }
-  }
-  
-  private static boolean a(Class paramClass1, Class paramClass2)
-  {
-    if ((paramClass1 == Object.class) || (paramClass1 == null)) {
-      return false;
-    }
-    if (paramClass1 == paramClass2) {
-      return true;
-    }
-    return a(paramClass1.getSuperclass(), paramClass2);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.selectmember;
 
 import android.text.TextUtils;
-import bdll;
+import bcef;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 
 final class TroopAddFrdsInnerFrame$6
   implements Runnable
@@ -20,7 +20,7 @@ final class TroopAddFrdsInnerFrame$6
     {
       str2 = "multiMode_add";
       localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      str3 = this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.troopuin;
+      str3 = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.troopuin;
       if (!this.jdField_a_of_type_Boolean) {
         break label63;
       }
@@ -28,12 +28,12 @@ final class TroopAddFrdsInnerFrame$6
     }
     for (;;)
     {
-      bdll.b(localQQAppInterface, "dc00899", "Grp_addFrd", "", "frd_select", str2, 0, 0, str3, str1, "", "");
+      bcef.b(localQQAppInterface, "dc00899", "Grp_addFrd", "", "frd_select", str2, 0, 0, str3, str1, "", "");
       return;
       str2 = "singleMode_add";
       break;
       label63:
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.recommendRemark)) {
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.recommendRemark)) {
         str1 = "0";
       } else {
         str1 = "1";

@@ -1,100 +1,124 @@
+import android.content.Context;
 import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.util.AttributeSet;
+import android.view.View;
+import android.widget.AutoCompleteTextView;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.widget.DropdownView;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 public class bhds
+  extends AutoCompleteTextView
 {
-  public static String a(String paramString1, String paramString2)
+  private boolean jdField_a_of_type_Boolean;
+  
+  public bhds(DropdownView paramDropdownView, Context paramContext)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    for (;;)
+    super(paramContext);
+    setId(526);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public bhds(DropdownView paramDropdownView, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    super(paramContext, paramAttributeSet);
+    setId(526);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public bhds(DropdownView paramDropdownView, Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  {
+    super(paramContext, paramAttributeSet, paramInt);
+    setId(526);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public boolean enoughToFilter()
+  {
+    return true;
+  }
+  
+  public boolean isPopupShowing()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return super.isPopupShowing();
+    }
+    return false;
+  }
+  
+  public void onEditorAction(int paramInt)
+  {
+    if (paramInt == 5)
     {
-      return null;
-      try
-      {
-        paramString1 = bhmi.a(new File(new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config"), paramString1 + paramString2));
-        if ((paramString1 == null) || (paramString1.length <= 0)) {
-          continue;
-        }
-        if (Build.VERSION.SDK_INT <= 8)
-        {
-          paramString1 = new String(paramString1);
-          return paramString1;
-        }
+      View localView = focusSearch(130);
+      if ((localView != null) && (!localView.requestFocus(130))) {
+        throw new IllegalStateException("focus search returned a view that wasn't able to take focus!");
       }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            paramString1.printStackTrace();
-          }
-          paramString1 = null;
-          continue;
-          try
-          {
-            paramString1 = new String(paramString1, "UTF-8");
-          }
-          catch (Exception paramString1)
-          {
-            if (QLog.isDevelopLevel()) {
-              paramString1.printStackTrace();
-            }
-            paramString1 = null;
-          }
-        }
-      }
+    }
+    else
+    {
+      super.onEditorAction(paramInt);
     }
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3)
+  protected void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      if (QLog.isColorLevel()) {
-        QLog.i("UpgradeConfigManager", 2, "save Config to file failed，content is empty----" + paramString1);
-      }
-    }
-    do
+    super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
+    try
     {
+      if (isPopupShowing()) {
+        dismissDropDown();
+      }
       return;
-      File localFile = new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config");
-      bhmi.a(localFile.getAbsolutePath() + "/", paramString1 + paramString2, paramString3);
-    } while (!QLog.isColorLevel());
-    QLog.i("UpgradeConfigManager", 2, "save Config to file finish.");
+    }
+    catch (Exception paramCharSequence) {}
   }
   
-  public static boolean a(String paramString1, String paramString2)
+  protected void performFiltering(CharSequence paramCharSequence, int paramInt) {}
+  
+  public void showDropDown()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fileName=%s uin=%s", new Object[] { paramString1, paramString2 }));
-    }
-    File localFile;
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    try
     {
-      localFile = new File(new File(BaseApplicationImpl.getApplication().getFilesDir(), "upgrade_config"), paramString1 + paramString2);
-      if (!localFile.exists()) {}
+      super.showDropDown();
+      if (Build.VERSION.SDK_INT <= 8) {
+        return;
+      }
     }
-    for (;;)
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      localOutOfMemoryError.printStackTrace();
+      return;
+    }
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      return;
+    }
+    try
+    {
+      Object localObject1 = getClass().getSuperclass().getDeclaredField("mDropDownList");
+      ((Field)localObject1).setAccessible(true);
+      localObject1 = ((Field)localObject1).get(this);
+      localObject1.getClass().getSuperclass().getMethod("setDividerHeight", new Class[] { Integer.TYPE }).invoke(localObject1, new Object[] { Integer.valueOf(0) });
+      return;
+    }
+    catch (Exception localException2)
     {
       try
       {
-        bool = localFile.delete();
-        if (QLog.isColorLevel()) {
-          QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fileName=%s uin=%s result=%s", new Object[] { paramString1, paramString2, Boolean.valueOf(bool) }));
-        }
-        return bool;
+        Object localObject2 = getClass().getSuperclass().getDeclaredField("mPopup");
+        ((Field)localObject2).setAccessible(true);
+        localObject2 = ((Field)localObject2).get(this);
+        Object localObject3 = localObject2.getClass().getDeclaredField("mDropDownList");
+        ((Field)localObject3).setAccessible(true);
+        localObject3 = ((Field)localObject3).get(localObject2);
+        localObject3.getClass().getSuperclass().getMethod("setDividerHeight", new Class[] { Integer.TYPE }).invoke(localObject3, new Object[] { Integer.valueOf(0) });
+        ((PopupWindow)localObject2).setAnimationStyle(2130772301);
+        return;
       }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fail! fileName=%s uin=%s", new Object[] { paramString1, paramString2 }), localException);
-        }
-        bool = false;
-        continue;
-      }
-      boolean bool = false;
+      catch (Exception localException3) {}
     }
   }
 }

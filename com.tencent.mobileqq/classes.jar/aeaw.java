@@ -1,18 +1,79 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.QQSettingMe.34.1;
+import com.tencent.mobileqq.activity.QQSettingMe.34.2;
+import com.tencent.mobileqq.activity.QQSettingMe.34.3;
+import com.tencent.mobileqq.activity.QQSettingMe.34.4;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public final class aeaw
-  implements DialogInterface.OnClickListener
+public class aeaw
+  extends CardObserver
 {
-  public aeaw(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, aebz paramaebz, Bundle paramBundle) {}
+  public aeaw(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnonymousSettingMeRedPoint(boolean paramBoolean1, boolean paramBoolean2)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Aebz, this.jdField_a_of_type_AndroidOsBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, String.format("onAnonymousSettingMeRedPoint success=%s enable=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) }));
+    }
+    if ((paramBoolean1) && (this.a.c)) {
+      QQSettingMe.a(this.a, false);
+    }
+  }
+  
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      return;
+      if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && ((paramObject instanceof Card)) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((Card)paramObject).uin)))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new QQSettingMe.34.1(this));
+        ThreadManager.post(new QQSettingMe.34.2(this), 5, null, true);
+        return;
+      }
+    } while ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (!(paramObject instanceof Card)) || (this.a.c) || (!this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((Card)paramObject).uin)));
+    ThreadManager.post(new QQSettingMe.34.3(this, (Card)paramObject), 5, null, true);
+  }
+  
+  public void onGetMedal(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (this.a.c)) {
+      QQSettingMe.a(this.a, false);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, String.format("onGetMedal [%b, %b] medalSwitchDisable= ", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(this.a.c), Boolean.valueOf(paramBoolean2) }));
+    }
+  }
+  
+  public void onGetSignInInfo(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      ThreadManager.getUIHandler().post(new QQSettingMe.34.4(this));
+    }
+  }
+  
+  public void onSetMedal(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.a.c)) {
+      QQSettingMe.a(this.a, false);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, String.format("onSetMedal [%b %b]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.a.c) }));
+    }
+  }
+  
+  public void onUpdateAvatar(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if ((paramBoolean) && (this.a.c) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (bftf.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
+      this.a.b(paramString);
+    }
   }
 }
 

@@ -1,14 +1,20 @@
-import android.animation.ValueAnimator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface zdh
+class zdh
+  implements View.OnClickListener
 {
-  public abstract void a(ValueAnimator paramValueAnimator);
+  zdh(zdg paramzdg) {}
   
-  public abstract void b(ValueAnimator paramValueAnimator);
-  
-  public abstract void c(ValueAnimator paramValueAnimator);
-  
-  public abstract void d(ValueAnimator paramValueAnimator);
+  public void onClick(View paramView)
+  {
+    if ((this.a.a() instanceof SubscribeBaseFragment)) {
+      ((SubscribeBaseFragment)this.a.a()).a(this.a.a(2));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

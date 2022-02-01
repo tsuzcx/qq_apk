@@ -1,53 +1,48 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView.1.1;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView.1.2;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.mp.mobileqq_mp.SubscribeRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import mqq.app.NewIntent;
 
 public class agpl
-  implements agpb
+  implements bjsz
 {
-  public agpl(DoodleMsgView paramDoodleMsgView) {}
+  public agpl(StructingMsgItemBuilder paramStructingMsgItemBuilder, ChatMessage paramChatMessage, Activity paramActivity, AbsStructMsg paramAbsStructMsg) {}
   
-  public void a(String paramString, int paramInt)
+  public void a(bjsy parambjsy)
   {
-    QLog.d("DoodleMsgView", 2, "onDataState:" + paramInt + " - " + paramString);
-    this.a.a(new DoodleMsgView.1.2(this, paramInt));
-  }
-  
-  public void a(String arg1, long paramLong, Bitmap paramBitmap)
-  {
-    if (DoodleMsgView.a(this.a) == null) {}
-    for (;;)
-    {
+    if (StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {
       return;
-      if (paramBitmap != null) {
-        if (DoodleMsgView.a(this.a, paramBitmap.getWidth(), paramBitmap.getHeight())) {
-          if (DoodleMsgView.a(this.a) == null)
-          {
-            DoodleMsgView.a(this.a, new Paint());
-            DoodleMsgView.a(this.a).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
-            DoodleMsgView.a(this.a).setAntiAlias(true);
-          }
-        }
-      }
-      synchronized (this.a)
-      {
-        DoodleMsgView.a(this.a).drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(0, 0, DoodleMsgView.a(this.a).getWidth(), DoodleMsgView.a(this.a).getHeight()), DoodleMsgView.a(this.a));
-        this.a.postInvalidate();
-        if ((!DoodleMsgView.a(this.a)) || (paramLong < DoodleMsgView.a(this.a).a()) || (DoodleMsgView.a(this.a) < DoodleMsgView.a(this.a).a())) {
-          continue;
-        }
-        this.a.d();
-        this.a.a(new DoodleMsgView.1.1(this));
-        return;
-      }
     }
+    String str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("msg_template_id");
+    int i = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop;
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_AndroidAppActivity, odw.class);
+    localNewIntent.putExtra("cmd", "PubAccountFollowSvc.subscribe");
+    mobileqq_mp.SubscribeRequest localSubscribeRequest = new mobileqq_mp.SubscribeRequest();
+    localSubscribeRequest.msg_id.set(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId);
+    localSubscribeRequest.index.set(parambjsy.a);
+    long l1 = 0L;
+    try
+    {
+      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin);
+      l1 = l2;
+    }
+    catch (Exception parambjsy)
+    {
+      label108:
+      break label108;
+    }
+    localSubscribeRequest.template_id.set(str);
+    localSubscribeRequest.puin.set(l1);
+    localNewIntent.setObserver(new agpm(this, str));
+    localNewIntent.putExtra("data", localSubscribeRequest.toByteArray());
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a.startServlet(localNewIntent);
+    StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
   }
 }
 

@@ -1,20 +1,89 @@
-public abstract interface aupb
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
+import java.util.List;
+
+public class aupb
+  extends anax
 {
-  public abstract void a();
+  public aupb(ShareToQQActivity paramShareToQQActivity) {}
   
-  public abstract void a(boolean paramBoolean);
+  protected void a(boolean paramBoolean, List<Long> paramList)
+  {
+    if (this.a.a == null)
+    {
+      this.a.finish();
+      return;
+    }
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.i(this.a.a)) {
+      str = this.a.a();
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      int k;
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        k = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (bftf.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k != 0)
+      {
+        paramList = new Intent();
+        paramList.putExtra("isSuccess", paramBoolean);
+        paramList.putExtra("isCancelShield", false);
+        this.a.setResult(-1, paramList);
+      }
+      this.a.finish();
+      return;
+    }
+  }
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
+  protected void b(boolean paramBoolean, List<Long> paramList)
+  {
+    int k = 0;
+    if (this.a.a == null)
+    {
+      this.a.finish();
+      return;
+    }
+    String str = this.a.a.a;
+    if (ProfileActivity.AllInOne.i(this.a.a)) {
+      str = this.a.a();
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (bftf.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k != 0)
+      {
+        paramList = new Intent();
+        paramList.putExtra("isSuccess", paramBoolean);
+        paramList.putExtra("isCancelShield", true);
+        this.a.setResult(-1, paramList);
+      }
+      this.a.finish();
+      return;
+    }
+  }
 }
 
 

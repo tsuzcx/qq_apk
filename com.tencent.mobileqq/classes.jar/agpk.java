@@ -1,11 +1,15 @@
-import msg.aio_doodle.DoodleMsgProto.DoodleData;
-import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
-public abstract interface agpk
+public class agpk
+  implements PopupWindow.OnDismissListener
 {
-  public abstract boolean a(DoodleMsgProto.DoodleData paramDoodleData);
+  public agpk(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public abstract boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader);
+  public void onDismiss()
+  {
+    StructingMsgItemBuilder.a(this.a, false);
+  }
 }
 
 

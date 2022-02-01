@@ -1,51 +1,34 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.widget.PagingScrollView;
 
-final class bhfw
-  implements DownloadParams.DecodeHandler
+public class bhfw
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public bhfw(PagingScrollView paramPagingScrollView) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (paramBitmap == null) {
-      localObject1 = null;
-    }
-    Object localObject2;
-    do
+    if (PagingScrollView.access$000(this.a))
     {
-      do
+      PagingScrollView.access$002(this.a, false);
+      paramFloat1 = Math.abs(paramFloat1);
+      paramFloat2 = Math.abs(paramFloat2);
+      if (paramFloat2 > paramFloat1)
       {
-        return localObject1;
-        localObject2 = paramDownloadParams.tag;
-        localObject1 = paramBitmap;
-      } while (!(localObject2 instanceof int[]));
-      localObject1 = paramBitmap;
-    } while (((int[])localObject2).length != 3);
-    Object localObject1 = (int[])localObject2;
-    int j = localObject1[0];
-    int i = j;
-    if (j == 0)
-    {
-      if (paramDownloadParams.reqWidth == 0) {
-        i = paramBitmap.getWidth();
-      }
-    }
-    else
-    {
-      int k = localObject1[1];
-      j = k;
-      if (k == 0) {
-        if (paramDownloadParams.reqHeight != 0) {
-          break label128;
+        if (paramFloat1 >= 0.01F) {
+          break label62;
         }
+        PagingScrollView.access$002(this.a, true);
       }
     }
-    label128:
-    for (j = paramBitmap.getHeight();; j = paramDownloadParams.reqHeight)
+    for (;;)
     {
-      return bhmq.d(paramBitmap, localObject1[2], i, j);
-      i = paramDownloadParams.reqWidth;
-      break;
+      return PagingScrollView.access$000(this.a);
+      label62:
+      if (paramFloat2 / paramFloat1 > 1.73205F) {
+        PagingScrollView.access$002(this.a, true);
+      }
     }
   }
 }

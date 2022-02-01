@@ -1,44 +1,108 @@
 import android.app.Activity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.1;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.2;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.3;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aumr
-  implements aumn
+  implements View.OnClickListener
 {
-  aumr(aumq paramaumq) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView c;
+  private TextView d;
+  private TextView e;
+  private TextView f;
+  
+  public static String a(long paramLong)
+  {
+    if (paramLong > 107374182.40000001D) {
+      return String.format("%.1f G", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F / 1024.0F) });
+    }
+    if (paramLong > 104857.60000000001D) {
+      return String.format("%.1f M", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F) });
+    }
+    return String.format("%.1f K", new Object[] { Float.valueOf((float)paramLong / 1024.0F) });
+  }
   
   public void a()
   {
-    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.3(this));
-    aumo.a(this.a.a.this$0);
-    aunh.a("0X8005BE2");
-    synchronized (BaseApplicationImpl.getContext())
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  public void a(int paramInt, long paramLong)
+  {
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    if (paramLong == 0L) {
+      this.e.setVisibility(4);
+    }
+    for (;;)
     {
-      this.a.a.this$0.b = false;
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
       return;
+      this.e.setText(String.format("%1$s/%2$s", new Object[] { a(paramInt * paramLong / 100L), a(paramLong) }));
     }
   }
   
-  public void a(int paramInt)
+  public void a(Activity paramActivity, View paramView)
   {
-    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.2(this));
-    aumo.a(this.a.a.this$0);
-    synchronized (BaseApplicationImpl.getContext())
-    {
-      this.a.a.this$0.b = false;
-      return;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367845));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367852));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367853));
+    this.c = ((TextView)paramView.findViewById(2131367846));
+    this.d = ((TextView)paramView.findViewById(2131367851));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367847));
+    this.e = ((TextView)paramView.findViewById(2131367848));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131367849));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131367850));
+    this.f = ((TextView)paramView.findViewById(2131367844));
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+  }
+  
+  public void a(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(paramString);
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.c.setText(paramString1);
+    this.d.setText(paramString2);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((paramView == this.jdField_a_of_type_AndroidWidgetLinearLayout) || (paramView == this.jdField_a_of_type_AndroidWidgetTextView)) {
+      this.jdField_a_of_type_AndroidAppActivity.finish();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.1(this, paramLong1, paramLong2));
-  }
-  
-  public void a(String paramString1, String paramString2) {}
 }
 
 

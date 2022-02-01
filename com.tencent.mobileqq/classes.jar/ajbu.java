@@ -1,14 +1,33 @@
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajbu
-  implements blkc
+  implements View.OnTouchListener
 {
-  public ajbu(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment, View paramView) {}
+  public ajbu(Conversation paramConversation) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder().append("statusTitle onTouch event :").append(paramMotionEvent.toString()).append(", mGestureDetector is null ");
+      if (this.a.a == null) {
+        break label81;
+      }
+    }
+    label81:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("Q.recent", 2, bool);
+      if (this.a.a != null) {
+        this.a.a.onTouchEvent(paramMotionEvent);
+      }
+      return true;
+    }
   }
 }
 

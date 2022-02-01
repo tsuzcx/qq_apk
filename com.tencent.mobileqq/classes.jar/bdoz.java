@@ -1,21 +1,23 @@
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bdoz
-  implements View.OnLongClickListener
+  implements View.OnClickListener
 {
-  public bdoz(StructMsgForGeneralShare paramStructMsgForGeneralShare, agjk paramagjk) {}
+  int jdField_a_of_type_Int;
+  public TextView a;
+  TextView b;
   
-  public boolean onLongClick(View paramView)
+  public bdoz(bdox parambdox) {}
+  
+  public void onClick(View paramView)
   {
-    StructMsgForGeneralShare.clickedItemIndex = 0;
-    bdol localbdol = (bdol)paramView.getTag();
-    if (!TextUtils.isEmpty(localbdol.aa)) {
-      StructMsgForGeneralShare.clickedItemIndex = Integer.valueOf(localbdol.aa).intValue();
+    if (this.jdField_a_of_type_Bdox.a != null) {
+      this.jdField_a_of_type_Bdox.a.a(paramView, this.jdField_a_of_type_Int, this);
     }
-    return this.jdField_a_of_type_Agjk.onLongClick(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

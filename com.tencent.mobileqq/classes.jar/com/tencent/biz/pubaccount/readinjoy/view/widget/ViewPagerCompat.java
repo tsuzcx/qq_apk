@@ -9,16 +9,16 @@ import android.view.MotionEvent;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import taf;
-import tag;
+import tef;
+import teg;
 
 public class ViewPagerCompat
   extends ViewPager
 {
   private List<ViewPager.OnPageChangeListener> jdField_a_of_type_JavaUtilList;
-  private tag jdField_a_of_type_Tag;
+  private teg jdField_a_of_type_Teg;
   private boolean jdField_a_of_type_Boolean = true;
-  private List<taf> b;
+  private List<tef> b;
   
   public ViewPagerCompat(Context paramContext)
   {
@@ -34,16 +34,16 @@ public class ViewPagerCompat
   
   private void a()
   {
-    this.jdField_a_of_type_Tag = new tag(this, null);
-    super.setOnPageChangeListener(this.jdField_a_of_type_Tag);
+    this.jdField_a_of_type_Teg = new teg(this, null);
+    super.setOnPageChangeListener(this.jdField_a_of_type_Teg);
   }
   
-  public void a(taf paramtaf)
+  public void a(tef paramtef)
   {
     if (this.b == null) {
       this.b = new ArrayList();
     }
-    this.b.add(paramtaf);
+    this.b.add(paramtef);
   }
   
   public void addOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
@@ -54,10 +54,10 @@ public class ViewPagerCompat
     this.jdField_a_of_type_JavaUtilList.add(paramOnPageChangeListener);
   }
   
-  public void b(taf paramtaf)
+  public void b(tef paramtef)
   {
     if (this.b != null) {
-      this.b.remove(paramtaf);
+      this.b.remove(paramtef);
     }
   }
   
@@ -117,7 +117,7 @@ public class ViewPagerCompat
       int i = 0;
       while (i < j)
       {
-        ((taf)this.b.get(i)).a(this, localPagerAdapter, paramPagerAdapter);
+        ((tef)this.b.get(i)).a(this, localPagerAdapter, paramPagerAdapter);
         i += 1;
       }
     }
@@ -136,7 +136,7 @@ public class ViewPagerCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat
  * JD-Core Version:    0.7.0.1
  */

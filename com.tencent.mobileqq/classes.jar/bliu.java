@@ -1,4 +1,9 @@
-// INTERNAL ERROR //
+class bliu
+  implements bliw
+{
+  bliu(blit paramblit) {}
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bliu

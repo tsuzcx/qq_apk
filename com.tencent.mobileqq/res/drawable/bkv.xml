@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/common_favorite_gray_normal" />
-    <item android:state_enabled="false" android:drawable="@drawable/common_favorite_gray_press" />
-    <item android:drawable="@drawable/common_favorite_gray_normal" />
-</selector>
+    <corners android:radius="8.0dip" />
+    <solid android:color="#ff2d2d2d" />
+</shape>

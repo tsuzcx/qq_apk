@@ -1,51 +1,45 @@
-import android.content.Intent;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqer
-  extends aktq
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
+  private int a;
   
-  public aqer(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  public aqer()
   {
-    super(paramNewPhotoPreviewActivity);
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public void initData(Intent paramIntent)
+  public static aqer a(aptx paramaptx)
   {
-    super.initData(paramIntent);
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("key_ark_app_res_path");
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("key_should_compress", false);
-    this.b = paramIntent.getStringExtra("key_ark_app_engine_res_dir");
-  }
-  
-  public void initUI()
-  {
-    super.initUI();
-    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new aqes(this));
-  }
-  
-  public void onBackPressed(boolean paramBoolean)
-  {
-    if ("FROM_PHOTO_LIST".equals(this.jdField_a_of_type_Aktn.from))
-    {
-      Intent localIntent = ((NewPhotoPreviewActivity)this.mActivity).getIntent();
-      localIntent.putExtra("PhotoConst.ALWAYS_SHOW_NUMBER_WHEN_ONLY_ONE_IMAGE", true);
-      localIntent.putExtra("key_ark_app_res_path", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("key_should_compress", this.jdField_a_of_type_Boolean);
-      localIntent.putExtra("key_ark_app_engine_res_dir", this.b);
-      localIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
-      localIntent.putExtra("enter_from", 3);
+    aqer localaqer = new aqer();
+    if (paramaptx != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SysSuspiciousConfBean", 2, "parse taskid->" + paramaptx.jdField_a_of_type_Int + " content->" + paramaptx.jdField_a_of_type_JavaLangString);
+      }
     }
-    super.onBackPressed(paramBoolean);
+    try
+    {
+      localaqer.jdField_a_of_type_Int = new JSONObject(paramaptx.jdField_a_of_type_JavaLangString).optInt("suspiciousSwitch", 1);
+      return localaqer;
+    }
+    catch (JSONException paramaptx)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("SysSuspiciousConfBean", 2, "parse error->" + paramaptx.toString());
+    }
+    return localaqer;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqer
  * JD-Core Version:    0.7.0.1
  */

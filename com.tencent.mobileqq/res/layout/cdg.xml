@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/eqn" android:layout_width="@dimen/ba2" android:layout_height="@dimen/ba2"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:id="@id/mj9" android:layout_width="@dimen/ba3" android:layout_height="@dimen/ba3" android:layout_centerInParent="true" app:qqArMapGuideRadius="6">
-        <ImageView android:id="@id/dce" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" />
-        <ImageView android:id="@id/nm_" android:background="@color/mk" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/ekl" android:scaleType="center" />
-        <ImageView android:layout_gravity="right" android:id="@id/nxe" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/env" />
-        <ImageView android:layout_gravity="right" android:id="@id/nxf" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/enw" />
-        <dov.com.qq.im.ae.view.AEDownLoadingView android:layout_gravity="right" android:id="@id/g2d" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
-    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
+<RelativeLayout android:gravity="center" android:layout_gravity="center" android:id="@id/fie" android:background="@drawable/tips_popup_win_bg" android:layout_width="160.0dip" android:layout_height="170.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/dx0" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/al3" android:id="@id/np4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:text="@string/cuy" android:layout_below="@id/dx0" android:layout_centerHorizontal="true" />
+    <Button android:textColor="@color/al3" android:gravity="center" android:id="@id/afr" android:background="@drawable/bl8" android:paddingLeft="16.0dip" android:paddingTop="6.0dip" android:paddingRight="16.0dip" android:paddingBottom="6.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="取消" android:layout_below="@id/np4" android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -1,14 +1,12 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class awyw
-  implements awys
+  implements DialogInterface.OnClickListener
 {
-  awyw(awyt paramawyt) {}
+  awyw(awyf paramawyf) {}
   
-  public void a(int paramInt)
-  {
-    if (this.a.jdField_a_of_type_Awxz != null) {
-      this.a.jdField_a_of_type_Awxz.a(paramInt, this.a.jdField_a_of_type_Awyz);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

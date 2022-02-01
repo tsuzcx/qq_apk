@@ -19,8 +19,18 @@ class SPlayerTextureView$1
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    LogUtil.i(SPlayerTextureView.access$000(this.this$0), "SPlayerTextureView = " + System.identityHashCode(this.this$0) + ", onSurfaceTextureDestroyed() surface = " + paramSurfaceTexture.toString());
-    return (SPlayerTextureView.access$100(this.this$0) == null) || (SPlayerTextureView.access$100(this.this$0).onViewDestroyed(paramSurfaceTexture));
+    String str2 = SPlayerTextureView.access$000(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder().append("SPlayerTextureView = ").append(System.identityHashCode(this.this$0)).append(", onSurfaceTextureDestroyed() surface = ");
+    if (paramSurfaceTexture != null) {}
+    for (String str1 = paramSurfaceTexture.toString();; str1 = "null")
+    {
+      LogUtil.i(str2, str1);
+      if ((SPlayerTextureView.access$100(this.this$0) != null) && (!SPlayerTextureView.access$100(this.this$0).onViewDestroyed(paramSurfaceTexture))) {
+        break;
+      }
+      return true;
+    }
+    return false;
   }
   
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)

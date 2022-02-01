@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
+import amtj;
 import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
-import anzj;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.widget.QQToast;
 
 class AIOLongShotHelper$1
@@ -13,7 +13,7 @@ class AIOLongShotHelper$1
   
   public void run()
   {
-    FragmentActivity localFragmentActivity = AIOLongShotHelper.a(this.this$0).jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    FragmentActivity localFragmentActivity = AIOLongShotHelper.a(this.this$0).mActivity;
     if ((localFragmentActivity != null) && (!localFragmentActivity.isFinishing())) {
       if (!this.jdField_a_of_type_Boolean) {
         break label41;
@@ -26,7 +26,7 @@ class AIOLongShotHelper$1
       label41:
       if (!this.b)
       {
-        QQToast.a(AIOLongShotHelper.a(this.this$0).jdField_a_of_type_AndroidContentContext, 1, anzj.a(2131699022), 0).a();
+        QQToast.a(AIOLongShotHelper.a(this.this$0).mContext, 1, amtj.a(2131699257), 0).a();
         AIOLongShotHelper.a("0X800A50D");
       }
     }

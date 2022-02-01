@@ -1,13 +1,6 @@
-class airh
-  extends aogx
+public abstract interface airh
 {
-  airh(airg paramairg) {}
-  
-  public void a(String paramString, int paramInt)
-  {
-    super.a(paramString, paramInt);
-    airg.a(this.a).b();
-  }
+  public abstract void a();
 }
 
 

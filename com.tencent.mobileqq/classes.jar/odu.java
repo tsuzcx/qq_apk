@@ -1,6 +1,22 @@
 public class odu
 {
-  public static final String a = anzj.a(2131715198);
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  
+  public odu(odr paramodr, String paramString1, String paramString2, long paramLong, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String toString()
+  {
+    return "PublicAccountSearchHistoryItem->uin:" + this.jdField_a_of_type_JavaLangString + ", name:" + this.b + ", isPublicAccount:" + this.jdField_a_of_type_Boolean + ", time:" + this.jdField_a_of_type_Long;
+  }
 }
 
 

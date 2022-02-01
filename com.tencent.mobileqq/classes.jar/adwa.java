@@ -1,32 +1,58 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.PhoneUnityPhoneLoginActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class adwa
-  implements DialogInterface.OnClickListener
+  extends anau
 {
-  public adwa(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  public adwa(PhoneUnityPhoneLoginActivity paramPhoneUnityPhoneLoginActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountActivity", 2, "switchFail -> to LoginActivity which=" + paramInt);
+    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
+    {
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
+      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(true);
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
+      return;
     }
-    paramDialogInterface = new Intent();
-    paramDialogInterface.setPackage(this.a.getPackageName());
-    paramDialogInterface.setClass(this.a, LoginActivity.class);
-    paramDialogInterface.putExtra("is_change_account", true);
-    paramDialogInterface.putExtra("fromsubaccount", true);
-    if (this.a.a != null) {
-      paramDialogInterface.putExtra("uin", this.a.a);
+    if (paramInt == 39)
+    {
+      bcef.b(this.a.app, "CliOper", "", "", "0X8005BFD", "0X8005BFD", 0, 0, "", "", "", "");
+      bfur.a(this.a, 230, this.a.getString(2131694348), this.a.getString(2131694347), null, this.a.getString(2131691879), new adwb(this), null).show();
+      return;
     }
-    paramDialogInterface.putExtra("befault_uin", this.a.app.getCurrentAccountUin());
-    this.a.startActivityForResult(paramDialogInterface, 1011);
-    this.a.a = null;
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = this.a.getString(2131694346);
+    }
+    QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
+    {
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
+      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(false);
+      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
+      return;
+    }
+    String str;
+    if (paramInt == 36) {
+      str = this.a.getString(2131694352);
+    }
+    for (;;)
+    {
+      QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
+      return;
+      str = paramString;
+      if (TextUtils.isEmpty(paramString)) {
+        str = this.a.getString(2131694351);
+      }
+    }
   }
 }
 

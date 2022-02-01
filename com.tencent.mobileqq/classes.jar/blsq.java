@@ -1,8 +1,20 @@
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
-public abstract interface blsq
+public class blsq
+  implements Animation.AnimationListener
 {
-  public abstract void a(View paramView1, View paramView2, int paramInt1, int paramInt2);
+  public blsq(AEProviderContainerView paramAEProviderContainerView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.setVisibility(0);
+  }
 }
 
 

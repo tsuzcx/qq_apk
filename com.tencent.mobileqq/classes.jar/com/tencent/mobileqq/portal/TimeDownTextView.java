@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.portal;
 
-import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -12,6 +11,7 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class TimeDownTextView
   extends View
@@ -51,9 +51,9 @@ public class TimeDownTextView
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     this.jdField_b_of_type_AndroidTextTextPaint = new TextPaint(1);
     this.jdField_b_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#FFFFFF"));
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(agej.a(16.0F, getResources()));
+    this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(AIOUtils.dp2px(16.0F, getResources()));
     this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-    this.k = agej.a(5.0F, getResources());
+    this.k = AIOUtils.dp2px(5.0F, getResources());
   }
   
   public void draw(Canvas paramCanvas)

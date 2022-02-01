@@ -1,16 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.widget.ImageView;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.biz.ui.CustomMenuBar;
 
 public class zuv
-  implements ValueAnimator.AnimatorUpdateListener
+  implements PopupWindow.OnDismissListener
 {
-  public zuv(RotateCircleImageView paramRotateCircleImageView) {}
+  public zuv(CustomMenuBar paramCustomMenuBar, ImageView paramImageView, TextView paramTextView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onDismiss()
   {
-    RotateCircleImageView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843275);
+    if (CustomMenuBar.a()) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131166070));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = true;
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable, 50L);
+      return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131166069));
+    }
   }
 }
 

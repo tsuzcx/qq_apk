@@ -1,54 +1,59 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFriendStoryFeedVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFriendStoryFeedVideoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class xcu
-  extends wpa<xeo>
+  extends JobSegment<List<String>, List<Bitmap>>
 {
-  public String a = "";
-  public String b = "";
-  public int c;
+  private int jdField_a_of_type_Int;
+  private final Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private String jdField_a_of_type_JavaLangString = "story.icon.UrlListToBitmapListSegment";
+  private xcs jdField_a_of_type_Xcs;
+  private String b;
   
-  public String a()
+  public xcu(@Nullable Bitmap paramBitmap, String paramString, int paramInt, xcs paramxcs)
   {
-    return wnu.a("StorySvc.homepage_feed_loadmore_720");
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "[" + paramString + "]");
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Xcs = paramxcs;
   }
   
-  public wov a(byte[] paramArrayOfByte)
+  protected void a(JobContext paramJobContext, List<String> paramList)
   {
-    qqstory_service.RspFriendStoryFeedVideoList localRspFriendStoryFeedVideoList = new qqstory_service.RspFriendStoryFeedVideoList();
-    try
+    if ((paramList == null) || (paramList.isEmpty())) {
+      notifyError(new ErrorMessage(-1, "url list is empty"));
+    }
+    for (;;)
     {
-      localRspFriendStoryFeedVideoList.mergeFrom(paramArrayOfByte);
-      return new xeo(localRspFriendStoryFeedVideoList);
+      return;
+      paramJobContext = Collections.unmodifiableList(paramList);
+      int i = paramJobContext.size();
+      paramList = new Bitmap[i];
+      Arrays.fill(paramList, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      xcb.b(this.jdField_a_of_type_JavaLangString, "bitmapListSize = %d, stubBitmap = %s", Integer.valueOf(i), this.jdField_a_of_type_AndroidGraphicsBitmap);
+      Handler localHandler = new Handler(ThreadManager.getSubThreadLooper(), new xcw(this, null));
+      localHandler.sendMessageDelayed(Message.obtain(localHandler, 0, paramList), 300L);
+      i = this.jdField_a_of_type_Int / 2;
+      Iterator localIterator = paramJobContext.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (!"stub_url".equals(str)) {
+          this.jdField_a_of_type_Xcs.a(str, i, i, new xcv(this, paramJobContext, paramList, localHandler));
+        }
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      yuk.d("Q.qqstory:GetFeedVideoListRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqFriendStoryFeedVideoList localReqFriendStoryFeedVideoList = new qqstory_service.ReqFriendStoryFeedVideoList();
-    if (!TextUtils.isEmpty(this.a)) {
-      localReqFriendStoryFeedVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      localReqFriendStoryFeedVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
-    localReqFriendStoryFeedVideoList.pull_type.set(this.c);
-    return localReqFriendStoryFeedVideoList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetFeedVideoListRequest{, feedId='" + this.b + '\'' + ", startCookie='" + this.a + '\'' + ", pullType=" + this.c + '}';
   }
 }
 

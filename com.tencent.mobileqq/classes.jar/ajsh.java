@@ -1,16 +1,25 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
 
-public class ajsh
-  implements bbst
+class ajsh
+  extends ajqv
 {
-  private ajsh(AlphabetFriendFragment paramAlphabetFriendFragment) {}
-  
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  protected ajsh(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    if ((AlphabetFriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
-      AlphabetFriendFragment.a(this.a, 1400L, false);
-    }
+    super(paramNewPhotoListActivity);
+  }
+  
+  public String getExceedMaxSelectNumStr(LocalMediaInfo paramLocalMediaInfo)
+  {
+    int i = this.mPhotoCommonData.maxSelectNum;
+    return ((NewPhotoListActivity)this.mActivity).getString(2131694424, new Object[] { Integer.valueOf(i) });
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
   }
 }
 

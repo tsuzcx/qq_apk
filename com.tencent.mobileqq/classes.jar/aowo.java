@@ -1,76 +1,16 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public class aowo
-  extends aoxg
+class aowo
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public aowo(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  aowo(aown paramaown) {}
   
-  private boolean C()
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    int i = 0;
-    if (!bhnv.g(BaseApplicationImpl.getApplication()))
-    {
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131693966, 1).a();
-      return false;
+    if (paramBitmap != null) {
+      aowk.a(this.a.jdField_a_of_type_Aowk, paramBitmap, this.a.jdField_a_of_type_AndroidContentContext);
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("params")) {
-      str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("params");
-    }
-    try
-    {
-      String str2;
-      long[] arrayOfLong;
-      for (;;)
-      {
-        localObject = new JSONObject(new String(bhkv.decode(str1, 0)));
-        str2 = ((JSONObject)localObject).optString("keyword");
-        JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("groupmask");
-        arrayOfLong = new long[localJSONArray.length()];
-        while (i < localJSONArray.length())
-        {
-          arrayOfLong[i] = localJSONArray.optLong(i);
-          i += 1;
-        }
-        str1 = "";
-      }
-      Object localObject = ((JSONObject)localObject).optString("groupname");
-      ActiveEntitySearchActivity.a(this.jdField_a_of_type_AndroidContentContext, str2, (String)localObject, arrayOfLong);
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("FTSSearchTabActionQ.uniteSearch.", 2, "参数解析成json错误.  params=" + str1);
-      }
-    }
-    return true;
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = C();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("FTSSearchTabAction", 1, "doAction error: " + localException.getMessage());
-      a("FTSSearchTabAction");
-    }
-    return false;
   }
 }
 

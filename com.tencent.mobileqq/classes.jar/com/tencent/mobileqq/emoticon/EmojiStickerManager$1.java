@@ -37,7 +37,7 @@ class EmojiStickerManager$1
         }
       }
       if (this.jdField_a_of_type_JavaUtilList != null) {}
-      for (localObject1 = this.jdField_a_of_type_JavaUtilList;; localObject1 = localQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean))
+      for (localObject1 = this.jdField_a_of_type_JavaUtilList;; localObject1 = localQQAppInterface.getMessageFacade().getAIOList(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean))
       {
         localObject1 = ((List)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
@@ -90,7 +90,7 @@ class EmojiStickerManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmojiStickerManager.1
  * JD-Core Version:    0.7.0.1
  */

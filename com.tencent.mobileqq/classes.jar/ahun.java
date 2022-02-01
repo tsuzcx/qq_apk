@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
 
-class ahun
-  implements View.OnClickListener
+public class ahun
+  extends BroadcastReceiver
 {
-  ahun(ahum paramahum) {}
+  public ahun(BlessActivity paramBlessActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ahum.a(this.a);
-    bdll.b(null, "dc00898", "", "", "0X800B1A9", "0X800B1A9", 0, 0, "", "", ahum.a(this.a), "空间");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) {
+      BlessActivity.a(this.a, true);
+    }
   }
 }
 

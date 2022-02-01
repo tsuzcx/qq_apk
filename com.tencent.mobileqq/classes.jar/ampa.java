@@ -1,6 +1,16 @@
-public abstract interface ampa
+import java.nio.ByteBuffer;
+
+public class ampa
 {
-  public abstract boolean a(arsh paramarsh);
+  public int a;
+  public long a;
+  public ByteBuffer a;
+  public int b;
+  
+  private ampa(amov paramamov)
+  {
+    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(1000);
+  }
 }
 
 

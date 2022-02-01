@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aihb;
+import ahdr;
 import com.tencent.ark.ArkDebugger;
 
 public class ArkDebugChatPie$2
   implements Runnable
 {
-  public ArkDebugChatPie$2(aihb paramaihb) {}
+  public ArkDebugChatPie$2(ahdr paramahdr) {}
   
   public void run()
   {
-    aihb.b(this.this$0);
-    aihb.c(this.this$0);
+    ahdr.b(this.this$0);
+    ahdr.c(this.this$0);
     ArkDebugger.Destroy();
   }
 }

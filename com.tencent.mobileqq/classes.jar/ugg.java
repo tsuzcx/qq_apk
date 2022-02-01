@@ -1,33 +1,22 @@
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil.10.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
-public class ugg
-  extends ugc
+public final class ugg
+  implements BusinessObserver
 {
-  public boolean a;
+  ugg(QQAppInterface paramQQAppInterface) {}
   
-  public ugg(JSONObject paramJSONObject)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramJSONObject);
-  }
-  
-  public static ugg a(JSONObject paramJSONObject)
-  {
-    return new ugg(paramJSONObject);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null)
-    {
-      this.a = paramJSONObject.optBoolean("isImmediatelyUpload");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
     }
-    this.a = false;
-  }
-  
-  public String toString()
-  {
-    return "WeSeeBeaconReportConfigInfo{mIsImmediatelyUpload=" + this.a + "}";
+    ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountUtil.10.1(this, paramBoolean, paramBundle), 10L);
   }
 }
 

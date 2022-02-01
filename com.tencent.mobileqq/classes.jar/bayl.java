@@ -1,266 +1,68 @@
-import NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp;
-import android.annotation.TargetApi;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
+import android.content.Context;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.automator.step.GetQZoneFeeds;
-import com.tencent.mobileqq.qzonestatus.QzoneContactsFeedManager.1;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import common.qzone.component.util.SecurityUtil;
-import java.util.ArrayList;
-import mqq.app.NewIntent;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.search.activity.PublicAcntSearchActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import java.util.List;
 
 public class bayl
-  implements Manager
+  implements bays
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static int b = -1;
-  private static int c = -1;
-  private static int d = -1;
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
-  private int e = 0;
-  private int f;
-  private int g;
+  public static final String a;
+  private int jdField_a_of_type_Int;
+  private final List<bayt> jdField_a_of_type_JavaUtilList;
+  private final String b;
   
-  public bayl(QQAppInterface paramQQAppInterface)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    jdField_a_of_type_JavaLangString = amtj.a(2131704491);
   }
   
-  private SharedPreferences a()
+  public bayl(List<bayt> paramList, String paramString, int paramInt)
   {
-    String str = SecurityUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) + "GetQZoneFeeds";
-    return BaseApplication.getContext().getSharedPreferences(str, 0);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private void a(ArrayList<Long> paramArrayList, int paramInt)
+  public int a()
   {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty()) || (paramInt >= paramArrayList.size()))
-    {
-      e();
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "refreshAllInner(" + paramInt + ")...");
-    }
-    int j = c() + paramInt;
-    int i = j;
-    if (j >= paramArrayList.size()) {
-      i = paramArrayList.size();
-    }
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), bayn.class);
-    paramArrayList = new ArrayList(paramArrayList.subList(paramInt, i));
-    bayo.a(localNewIntent, bayo.a(1, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue(), paramArrayList, 0L, null));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-  }
-  
-  @TargetApi(9)
-  private void b(long paramLong, String paramString)
-  {
-    SharedPreferences.Editor localEditor = a().edit();
-    localEditor.putLong("last_request_time", paramLong);
-    localEditor.putString("last_attach_info", paramString);
-    if (Build.VERSION.SDK_INT < 9)
-    {
-      localEditor.commit();
-      return;
-    }
-    localEditor.apply();
-  }
-  
-  private static int c()
-  {
-    if (jdField_a_of_type_Int < 0) {
-      jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("QZoneSetting", "NewestFeedsUinNum", 100);
-    }
-    return jdField_a_of_type_Int;
-  }
-  
-  private static int d()
-  {
-    if (b < 0) {
-      b = QzoneConfig.getInstance().getConfig("QZoneSetting", "NewestFeedsRetryNum", 2);
-    }
-    return b;
-  }
-  
-  private static int e()
-  {
-    if (c < 0)
-    {
-      c = QzoneConfig.getInstance().getConfig("QZoneSetting", "NewestFeedsMinTimeCell", 900);
-      c *= 1000;
-    }
-    return c;
-  }
-  
-  private static int f()
-  {
-    if (d < 0)
-    {
-      d = QzoneConfig.getInstance().getConfig("QZoneSetting", "NewestFeedsMinRefreshTimeCell", 604800);
-      d *= 1000;
-    }
-    return d;
-  }
-  
-  public long a()
-  {
-    return a().getLong("last_request_time", 0L);
+    return bass.a("pref_fts_native_search_public_account_max_num", 3);
   }
   
   public String a()
   {
-    return a().getString("last_attach_info", "");
+    if (this.jdField_a_of_type_Int == 12) {
+      return amtj.a(2131704516) + uex.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext());
+    }
+    return jdField_a_of_type_JavaLangString;
   }
   
-  @TargetApi(9)
-  public void a()
+  public List<bayt> a()
   {
-    if (!GetQZoneFeeds.a) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneContactsFeedManager", 2, "GetQZoneFeeds 此step尚未执行，此次调用就此返回，等待自动机中GetQZoneFeeds执行此方法");
-      }
-    }
-    while (!bhnv.g(BaseApplication.getContext())) {
-      return;
-    }
-    ThreadManager.getSubThreadHandler().post(new QzoneContactsFeedManager.1(this));
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public void a(long paramLong)
+  public void a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "updateFriend(" + this.e + ")...");
+    bbgk.a(this.b, 50, 0, paramView);
+    Context localContext = paramView.getContext();
+    if ((localContext != null) && ((localContext instanceof BaseActivity))) {
+      bcef.b(((BaseActivity)localContext).app, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D1C", "0X8005D1C", 0, 1, 0, "0", "", this.b, "");
     }
-    if (this.e != 0) {
-      return;
-    }
-    this.e = 3;
-    this.f = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
-    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
-    a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "updateAll(" + this.e + ")...");
-    }
-    if (this.e != 0) {
-      return;
-    }
-    this.e = 2;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), bayn.class);
-    bayo.a(localNewIntent, bayo.a(2, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue(), null, paramLong, paramString));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-  }
-  
-  public void a(newest_feeds_rsp paramnewest_feeds_rsp)
-  {
-    if (paramnewest_feeds_rsp == null) {}
-    while ((this.e == 3) || (((this.e != 1) || (this.f != 0)) && (this.e != 2))) {
-      return;
-    }
-    b(paramnewest_feeds_rsp.last_feed_time, paramnewest_feeds_rsp.str_attach);
-  }
-  
-  public void b()
-  {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "refreshAll(" + this.e + ")...");
-    }
-    if (this.e != 0) {
-      return;
-    }
-    this.e = 1;
-    this.f = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = bayo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (QLog.isColorLevel())
+    if ((paramView.getContext() instanceof UniteSearchActivity))
     {
-      anyw localanyw = (anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        i = this.jdField_a_of_type_JavaUtilArrayList.size();
-      }
-      QLog.d("QzoneContactsFeedManager", 2, new Object[] { "allFriends.size:", Integer.valueOf(i), ",getAllFreindsCount:", Integer.valueOf(localanyw.a()) });
+      bbgk.a("all_result", "clk_public_uin_more", new String[] { "" + this.b });
+      bbda.a(null, 0, this.jdField_a_of_type_Int, "0X8009D53", 0, 0, null, null);
     }
-    a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
+    PublicAcntSearchActivity.a(paramView.getContext(), this.b, this.jdField_a_of_type_Int);
   }
   
-  public void c()
+  public String b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "retry(" + this.g + ")...");
-    }
-    this.g += 1;
-    if (this.g >= d())
-    {
-      this.g = 0;
-      if (this.e == 1) {
-        b(0L, null);
-      }
-      d();
-      return;
-    }
-    if ((this.e == 1) || (this.e == 3))
-    {
-      a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
-      return;
-    }
-    if (this.e == 2)
-    {
-      this.e = 0;
-      a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    e();
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "doNextRequest(" + this.f + ")...");
-    }
-    if ((this.e != 1) && (this.e != 3))
-    {
-      e();
-      return;
-    }
-    this.f += c();
-    a(this.jdField_a_of_type_JavaUtilArrayList, this.f);
-  }
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "close...");
-    }
-    this.e = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.f = 0;
-    this.g = 0;
-  }
-  
-  public void onDestroy()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "onDestroy...");
-    }
-    e();
-    GetQZoneFeeds.a = false;
+    return this.b;
   }
 }
 

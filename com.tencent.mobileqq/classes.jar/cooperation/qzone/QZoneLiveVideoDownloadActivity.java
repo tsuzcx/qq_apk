@@ -8,8 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bmtd;
-import bnez;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
@@ -19,51 +18,48 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.plugin.QZonePluginManager;
 import cooperation.qzone.report.lp.LpReportInfo_dc00321;
 import cooperation.qzone.report.lp.LpReportInfo_dc01500;
 import cooperation.qzone.util.NetworkState;
 import cooperation.qzone.util.QZLog;
-import nnr;
 
 public class QZoneLiveVideoDownloadActivity
   extends QZoneLiveVideoBaseDownLoadActivty
   implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public PluginManagerClient a;
-  
-  protected PluginBaseInfo a(String paramString)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.queryPlugin(paramString);
-  }
-  
-  protected String a()
-  {
-    return "qzone_live_video_plugin.apk";
-  }
-  
-  protected void b()
-  {
-    super.b();
-    if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient == null)
-    {
-      QZLog.e("QZoneLiveVideoDownloadActivity", "[installPlugin] mPluginManager is null");
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin(a());
-  }
-  
-  protected void c()
-  {
-    QLog.d("QZoneLiveVideoDownloadActivity", 1, "installPluginSilence");
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin(a());
-  }
+  public static final String TAG = "QZoneLiveVideoDownloadActivity";
+  public PluginManagerClient mPluginManager;
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
+  }
+  
+  protected String getPluginid()
+  {
+    return "qzone_live_video_plugin.apk";
+  }
+  
+  protected void installPlugin()
+  {
+    super.installPlugin();
+    if (this.mPluginManager == null)
+    {
+      QZLog.e("QZoneLiveVideoDownloadActivity", "[installPlugin] mPluginManager is null");
+      return;
+    }
+    this.mPluginManager.installPlugin(getPluginid());
+  }
+  
+  protected void installPluginSilence()
+  {
+    QLog.d("QZoneLiveVideoDownloadActivity", 1, "installPluginSilence");
+    this.mPluginManager.installPlugin(getPluginid());
   }
   
   @Override
@@ -76,15 +72,15 @@ public class QZoneLiveVideoDownloadActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    if (!a()) {
+    if (!canEnterLiveVideo()) {
       return;
     }
     try
     {
       paramBundle = new IntentFilter();
       paramBundle.addAction("action_launch_completed");
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new QZoneLiveVideoBaseDownLoadActivty.LaunchCompletedObserver(this, "QZoneLiveVideo", "qzone_live_video_plugin.apk");
-      registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
+      this.mReceiver = new QZoneLiveVideoBaseDownLoadActivty.LaunchCompletedObserver(this, "QZoneLiveVideo", "qzone_live_video_plugin.apk");
+      registerReceiver(this.mReceiver, paramBundle);
       PluginManagerHelper.getPluginInterface(this, this);
       return;
     }
@@ -102,22 +98,22 @@ public class QZoneLiveVideoDownloadActivity
     if (paramPluginManagerClient == null)
     {
       QZLog.w("QZoneLiveVideoDownloadActivity", "[onPluginManagerLoaded] pInterface is null");
-      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131716588);
+      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131716822);
       QQToast.a(BaseApplicationImpl.getContext(), paramPluginManagerClient, 1).a();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient = paramPluginManagerClient;
-    if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.isPluginInstalled(a()))
+    this.mPluginManager = paramPluginManagerClient;
+    if (this.mPluginManager.isPluginInstalled(getPluginid()))
     {
       QLog.d("QZoneLiveVideoDownloadActivity", 2, "[onPluginManagerLoaded] plugin installed already");
-      e();
+      launchLiveVideo();
       return;
     }
-    paramPluginManagerClient = this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.queryPlugin(a());
+    paramPluginManagerClient = this.mPluginManager.queryPlugin(getPluginid());
     if (paramPluginManagerClient == null)
     {
-      QLog.w("QZoneLiveVideoDownloadActivity", 2, "[onPluginManagerLoaded] PluginBaseInfo is null, isReady=" + this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.isReady());
-      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131716588);
+      QLog.w("QZoneLiveVideoDownloadActivity", 2, "[onPluginManagerLoaded] PluginBaseInfo is null, isReady=" + this.mPluginManager.isReady());
+      paramPluginManagerClient = BaseApplicationImpl.getContext().getString(2131716822);
       QQToast.a(BaseApplicationImpl.getContext(), paramPluginManagerClient, 1).a();
       return;
     }
@@ -127,36 +123,41 @@ public class QZoneLiveVideoDownloadActivity
     if (2 == paramPluginManagerClient.mState)
     {
       QLog.d("QZoneLiveVideoDownloadActivity", 2, "[onPluginManagerLoaded] plugin downloaded, continue to install");
-      this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin(a());
+      this.mPluginManager.installPlugin(getPluginid());
       return;
     }
     QLog.d("QZoneLiveVideoDownloadActivity", 2, "[onPluginManagerLoaded] plugin not downloaded");
-    LpReportInfo_dc01500.reportLaunch(a(), "", (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D, 7, this.c + "");
-    if ((3 == this.c) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (nnr.a(this.jdField_a_of_type_JavaLangString)))
+    LpReportInfo_dc01500.reportLaunch(getPluginid(), "", (System.currentTimeMillis() - this.mLaunchTime) / 1000.0D, 7, this.mMode + "");
+    if ((3 == this.mMode) && (!TextUtils.isEmpty(this.mBackupUrl)) && (HttpUtil.isValidUrl(this.mBackupUrl)))
     {
-      paramPluginManagerClient = this.jdField_a_of_type_JavaLangString + "&stayin=1";
+      paramPluginManagerClient = this.mBackupUrl + "&stayin=1";
       QLog.d("QZoneLiveVideoDownloadActivity", 1, "watch mode, jump to H5, " + paramPluginManagerClient);
-      bmtd.a(this, paramPluginManagerClient, -1, null, null);
-      if (bnez.b()) {
-        c();
+      QZoneHelper.forwardToBrowser(this, paramPluginManagerClient, -1, null, null);
+      if (QZonePluginManager.canDownloadPlugin()) {
+        installPluginSilence();
       }
-      a();
+      doFinish();
       return;
     }
-    if (1 == this.c) {
+    if (1 == this.mMode) {
       LpReportInfo_dc00321.report(8, 128, 3, false, false, null);
     }
     int i = NetworkState.getNetworkType();
     QLog.d("QZoneLiveVideoDownloadActivity", 1, "network type = " + i);
     if ((2 != i) && (i != 0))
     {
-      b();
+      installPlugin();
       return;
     }
     paramPluginManagerClient = Message.obtain();
     paramPluginManagerClient.what = 1000;
     paramPluginManagerClient.arg1 = 1;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramPluginManagerClient);
+    this.mHandler.sendMessage(paramPluginManagerClient);
+  }
+  
+  protected PluginBaseInfo queryPlugin(String paramString)
+  {
+    return this.mPluginManager.queryPlugin(paramString);
   }
 }
 

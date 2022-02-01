@@ -5,47 +5,56 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.annotation.NonNull;
-import bojj;
-import bpam;
+import bmbx;
 
 public class AEEditorUIBroadcastReceiver
   extends BroadcastReceiver
 {
-  private bojj jdField_a_of_type_Bojj;
-  private boolean jdField_a_of_type_Boolean;
+  private static final String TAG = "AEEditorUIBroadcastReceiver";
+  private AEEditorUIBroadcastReceiver.AEEditorUIListener mAEUIListener;
+  private boolean mReceiverActive;
   
-  public AEEditorUIBroadcastReceiver(bojj parambojj)
+  public AEEditorUIBroadcastReceiver(AEEditorUIBroadcastReceiver.AEEditorUIListener paramAEEditorUIListener)
   {
-    this.jdField_a_of_type_Bojj = parambojj;
+    this.mAEUIListener = paramAEEditorUIListener;
   }
   
-  private IntentFilter a()
+  private IntentFilter getBroadcastIntentFilter()
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("AEEDITOR_GENERATE_STATUS_DELETE");
     return localIntentFilter;
   }
   
-  public void a(@NonNull Context paramContext)
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (paramContext != null))
-    {
-      paramContext.registerReceiver(this, a());
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
     if (paramContext == null) {
-      bpam.d("AEEditorUIBroadcastReceiver", "[onReceive] : action is null");
+      bmbx.d("AEEditorUIBroadcastReceiver", "[onReceive] : action is null");
     }
     while (!"AEEDITOR_GENERATE_STATUS_DELETE".equals(paramContext)) {
       return;
     }
     int i = paramIntent.getIntExtra("delete_position", 0);
-    this.jdField_a_of_type_Bojj.a(i);
+    this.mAEUIListener.deteleMedia(i);
+  }
+  
+  public void registerSelf(@NonNull Context paramContext)
+  {
+    if ((!this.mReceiverActive) && (paramContext != null))
+    {
+      paramContext.registerReceiver(this, getBroadcastIntentFilter());
+      this.mReceiverActive = true;
+    }
+  }
+  
+  public void unRegisterSelf(@NonNull Context paramContext)
+  {
+    if ((this.mReceiverActive) && (paramContext != null))
+    {
+      paramContext.unregisterReceiver(this);
+      this.mReceiverActive = false;
+    }
   }
 }
 

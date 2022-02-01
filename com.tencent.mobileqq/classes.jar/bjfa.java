@@ -1,15 +1,17 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.StateListDrawable;
+import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnPreparedListener;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
+import tv.danmaku.ijk.media.player.IMediaPlayer.OnPreparedListener;
 
-public class bjfa
-  extends StateListDrawable
+class bjfa
+  implements IMediaPlayer.OnPreparedListener
 {
-  public bjfa(int paramInt1, int paramInt2)
+  bjfa(bjey parambjey, ReliableVideoPlayer.OnPreparedListener paramOnPreparedListener) {}
+  
+  public void onPrepared(IMediaPlayer paramIMediaPlayer)
   {
-    ColorDrawable localColorDrawable = new ColorDrawable(paramInt1);
-    addState(new int[] { 16842919 }, localColorDrawable);
-    localColorDrawable = new ColorDrawable(paramInt2);
-    addState(new int[] { 16842921 }, localColorDrawable);
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnPreparedListener != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnPreparedListener.onPrepared(this.jdField_a_of_type_Bjey);
+    }
   }
 }
 

@@ -1,17 +1,41 @@
-import java.util.Comparator;
+import android.os.Bundle;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import com.tencent.qphone.base.util.QLog;
 
-final class axss
-  implements Comparator<String>
+public class axss
+  extends axvm
 {
-  public int a(String paramString1, String paramString2)
+  public axss(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramString1.length() > paramString2.length()) {
-      return -1;
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountOnlineStateActivity", 2, new Object[] { "onSetOnlineStatus, isSuccess: ", Boolean.valueOf(paramBoolean), " , mIsUpdateStatus: ", Boolean.valueOf(AccountOnlineStateActivity.a(this.a)) });
     }
-    if (paramString1.length() < paramString2.length()) {
-      return 1;
+    if (AccountOnlineStateActivity.a(this.a))
+    {
+      AccountOnlineStateActivity.a(this.a, false);
+      if (paramBoolean) {
+        AccountOnlineStateActivity.a(this.a, true, 0);
+      }
     }
-    return 0;
+    else
+    {
+      return;
+    }
+    AccountOnlineStateActivity.a(this.a, false, -1);
+  }
+  
+  public void b(boolean paramBoolean, Bundle paramBundle)
+  {
+    super.b(paramBoolean, paramBundle);
+    int i = paramBundle.getInt("StatusId");
+    if (!paramBoolean) {
+      AccountOnlineStateActivity.a(this.a, false, -1);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountOnlineStateActivity", 2, new Object[] { "onSetExtInfo: invoked. ", " isSuccess: ", Boolean.valueOf(paramBoolean), " statusId", Integer.valueOf(i) });
+    }
   }
 }
 

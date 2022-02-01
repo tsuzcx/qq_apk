@@ -1,32 +1,30 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Dialog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class aowv
-  extends aoxh
+class aowv
+  implements View.OnClickListener
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  aowv(aowu paramaowu) {}
+  
+  public void onClick(View paramView)
   {
-    paramQQAppInterface = new aowu(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "troop_homework";
-    paramQQAppInterface.c = "publish";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {}
-    for (;;)
+    if ((aowu.a(this.a) == 0) && (!TextUtils.isEmpty(aowu.a(this.a))))
     {
-      return paramQQAppInterface;
-      paramContext = paramContext[1].split("&");
-      int j = paramContext.length;
-      int i = 0;
-      while (i < j)
-      {
-        paramString = paramContext[i].split("=");
-        if (paramString.length == 2) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
+      aowu.a(this.a).put(aowu.b(this.a), Integer.valueOf(1));
+      WebViewFragment localWebViewFragment = this.a.mRuntime.a();
+      if (localWebViewFragment != null) {
+        localWebViewFragment.webView.loadUrl(aowu.a(this.a));
       }
+      aowu.a(this.a, null);
     }
+    aowu.a(this.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

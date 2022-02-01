@@ -1,38 +1,45 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.gaudio.GaInviteActivity;
 
 public class lna
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  final long jdField_a_of_type_Long = AudioHelper.b();
-  public int b;
-  public long b;
-  public int c;
-  public long c;
-  public int d;
-  public int e;
-  public int f;
+  int jdField_a_of_type_Int;
   
-  public lna(AVNotifyCenter paramAVNotifyCenter) {}
-  
-  public boolean a()
+  public lna(GaInviteActivity paramGaInviteActivity, int paramInt)
   {
-    return (this.jdField_b_of_type_Int == 2) && (this.d == 2) && (this.e == 4) && (this.jdField_c_of_type_Int == 0);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public boolean b()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (this.jdField_b_of_type_Int == 2) && (this.d == 2) && (this.e == 5) && (this.jdField_c_of_type_Int == 0);
-  }
-  
-  public String toString()
-  {
-    return "seq[" + this.jdField_a_of_type_Long + "], relationId[" + this.jdField_b_of_type_Long + "], avtype[" + this.jdField_b_of_type_Int + "], roomMode[" + this.d + "], gameId[" + this.e + "], liveExtraMode[" + this.jdField_c_of_type_Int + "], memberNum[" + this.jdField_a_of_type_Int + "], event[" + this.f + "], time[" + this.jdField_c_of_type_Long + "]";
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.l()) {
+        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.g(true);
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.d();
+        break;
+        if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.e) {
+          this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.l();
+        }
+      }
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lna
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,101 @@
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pluginsdk.exception.ExceptionTracker;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
-public abstract class bcdg
-  extends bcfs
+public class bcdg
 {
-  public int a;
-  protected QQAppInterface a;
-  protected CharSequence a;
-  protected String a;
-  protected ArrayList<String> a;
-  protected List<? extends FTSEntity> a;
-  public int b;
-  protected CharSequence b;
-  protected String b;
-  public int c = -1;
-  protected CharSequence c;
-  public int d = -1;
-  protected CharSequence d;
-  
-  public bcdg(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ArrayList<String> paramArrayList, List<? extends FTSEntity> paramList)
+  private static String a(QQAppInterface paramQQAppInterface, bcfq parambcfq, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (parambcfq == null) {
+      return null;
+    }
+    return parambcfq.a(paramInt);
   }
   
-  public String a()
+  public static void a(QQAppInterface paramQQAppInterface, bcfp parambcfp)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    a("dc03309", paramQQAppInterface, parambcfp);
   }
   
-  public boolean a()
+  private static void a(String paramString, QQAppInterface paramQQAppInterface, bcfq parambcfq)
   {
-    return false;
+    if (parambcfq == null)
+    {
+      ExceptionTracker.trackException("EXReportController", "[EXReport runtime] Tag(" + paramString + ") report item is null");
+      if (QLog.isColorLevel()) {}
+    }
+    do
+    {
+      return;
+      QLog.d("EXReportController", 2, "[EXReport runtime] tag = " + paramString + "  report item is null");
+      return;
+      if ((!TextUtils.isEmpty(parambcfq.i)) && (!TextUtils.isEmpty(parambcfq.k)) && (!TextUtils.isEmpty(parambcfq.j))) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("EXReportController", 2, "[EXReport runtime] tag = " + paramString + " item.sopType must not empty");
+    return;
+    parambcfq.b = NetConnInfoCenter.getServerTime();
+    if (!QLog.isColorLevel()) {}
+    Object localObject;
+    for (;;)
+    {
+      localObject = paramQQAppInterface;
+      if (paramQQAppInterface == null)
+      {
+        localObject = paramQQAppInterface;
+        if (BaseApplicationImpl.sProcessId == 1)
+        {
+          AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+          localObject = paramQQAppInterface;
+          if (localAppRuntime != null)
+          {
+            localObject = paramQQAppInterface;
+            if ((localAppRuntime instanceof QQAppInterface)) {
+              localObject = (QQAppInterface)localAppRuntime;
+            }
+          }
+        }
+      }
+      if (localObject != null) {
+        break;
+      }
+      paramQQAppInterface = a((QQAppInterface)localObject, parambcfq, 1);
+      localObject = new Intent();
+      ((Intent)localObject).setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      ((Intent)localObject).putExtra("reporting_tag", paramString);
+      ((Intent)localObject).putExtra("reporting_detail", paramQQAppInterface);
+      ((Intent)localObject).putExtra("reporting_count", parambcfq.c);
+      ((Intent)localObject).putExtra("is_runtime", 1);
+      BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject);
+      return;
+      QLog.d("EXReportController", 2, "[EXReport runtime] tag = " + paramString + ", content = " + parambcfq.toString());
+    }
+    a(paramString, (QQAppInterface)localObject, a((QQAppInterface)localObject, parambcfq, 1));
   }
   
-  public CharSequence d()
+  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
   {
-    return null;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      String str = paramString2;
+      if (paramString2.contains("${count_unknown}")) {
+        str = paramString2.replace("${count_unknown}", "1");
+      }
+      paramString2 = new NewIntent(paramQQAppInterface.getApplication(), bbpj.class);
+      paramString2.putExtra("sendType", 2);
+      paramString2.putExtra("tag", paramString1);
+      paramString2.putExtra("content", str);
+      paramString2.setWithouLogin(true);
+      paramQQAppInterface.startServlet(paramString2);
+    }
   }
-  
-  public abstract CharSequence e();
-  
-  public abstract CharSequence f();
 }
 
 

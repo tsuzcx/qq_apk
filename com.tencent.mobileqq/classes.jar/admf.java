@@ -1,124 +1,108 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import android.os.Environment;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mfsdk.config.APMModuleConfig;
-import com.tencent.qapmsdk.QAPM;
-import com.tencent.qapmsdk.base.listener.IInspectorListener;
-import com.tencent.qapmsdk.base.meta.DumpResult;
-import com.tencent.qapmsdk.memory.leakdetect.LeakInspector;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.data.Groups;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.io.File;
-import mqq.app.MobileQQ;
-import org.json.JSONException;
+import java.util.Arrays;
+import java.util.List;
 
 public class admf
-  extends adle
-  implements adkx, Application.ActivityLifecycleCallbacks
+  implements arbx
 {
-  static boolean jdField_a_of_type_Boolean;
-  static boolean b;
-  IInspectorListener jdField_a_of_type_ComTencentQapmsdkBaseListenerIInspectorListener = new adme();
+  public admf(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public admf()
+  public void a_(int paramInt1, int paramInt2)
   {
-    MobileQQ.sMobileQQ.registerActivityLifecycleCallbacks(this);
-  }
-  
-  public static void a()
-  {
-    if ((new File(bigv.a(Environment.getExternalStorageDirectory().getPath() + "/tencent/AutoTestFlag_02")).exists()) || (new File(bigv.a(Environment.getExternalStorageDirectory().getPath() + "/tencent/AutoTestFlag_03")).exists())) {}
-    for (jdField_a_of_type_Boolean = false; new File(bigv.a(Environment.getExternalStorageDirectory().getPath() + "/tencent/AutoTestFlag_03")).exists(); jdField_a_of_type_Boolean = true)
-    {
-      b = false;
+    if (paramInt1 == paramInt2) {
       return;
     }
-    b = true;
-  }
-  
-  public DumpResult a(String paramString, adkz paramadkz)
-  {
-    try
+    int j = this.a.jdField_a_of_type_JavaUtilList.size();
+    this.a.jdField_a_of_type_ArrayOfByte = new byte[j];
+    this.a.b = new byte[j];
+    int i = 0;
+    while (i < j)
     {
-      QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "dumpMemory " + paramString);
-      paramString = LeakInspector.dumpMemory(paramString, true, new admg(this, paramadkz));
-      return paramString;
+      this.a.jdField_a_of_type_ArrayOfByte[i] = ((byte)((Groups)this.a.jdField_a_of_type_JavaUtilList.get(i)).group_id);
+      i += 1;
     }
-    catch (Exception paramString)
+    if (paramInt2 < paramInt1)
     {
-      QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "", paramString);
+      i = j - 1;
+      if (i >= 0)
+      {
+        if ((paramInt2 < i) && (i <= paramInt1)) {
+          this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[(i - 1)];
+        }
+        for (;;)
+        {
+          i -= 1;
+          break;
+          if (i == paramInt2) {
+            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[paramInt1];
+          } else {
+            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[i];
+          }
+        }
+      }
     }
-    return new DumpResult();
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    try
+    else if (paramInt1 < paramInt2)
     {
-      QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "dumpMemory " + paramString);
-      LeakInspector.report(paramLong, paramString);
+      i = 0;
+      if (i < j)
+      {
+        if ((i < paramInt1) || (paramInt2 < i)) {
+          this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[i];
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (i == paramInt2) {
+            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[paramInt1];
+          } else {
+            this.a.b[i] = this.a.jdField_a_of_type_ArrayOfByte[(i + 1)];
+          }
+        }
+      }
+    }
+    i = 0;
+    while (i < j)
+    {
+      this.a.jdField_a_of_type_ArrayOfByte[i] = ((byte)i);
+      i += 1;
+    }
+    Groups localGroups;
+    if (paramInt2 < paramInt1)
+    {
+      localGroups = (Groups)this.a.jdField_a_of_type_JavaUtilList.remove(paramInt1);
+      this.a.jdField_a_of_type_JavaUtilList.add(paramInt2, localGroups);
+      GroupManagerActivity.a(this.a).notifyDataSetChanged();
+      if (QLog.isColorLevel())
+      {
+        QLog.d("GroupManagerActivity", 2, "DragSortListView.DropListener onDrop groupIdList = " + Arrays.toString(this.a.b));
+        QLog.d("GroupManagerActivity", 2, "DragSortListView.DropListener onDrop sortIdList = " + Arrays.toString(this.a.jdField_a_of_type_ArrayOfByte));
+      }
+      GroupManagerActivity.a(this.a, this.a.a(this.a.b, this.a.jdField_a_of_type_ArrayOfByte));
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupManagerActivity", 2, "SortFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
+      }
+      if (!GroupManagerActivity.a(this.a)) {
+        break label586;
+      }
+      this.a.a(2131692888);
+    }
+    for (;;)
+    {
+      bcef.b(this.a.app, "CliOper", "", "", "category", "Move_category", 0, 0, "", "", "", "");
       return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  protected void a(APMModuleConfig paramAPMModuleConfig)
-  {
-    if (((2 == BaseApplicationImpl.sProcessId) || (8 == BaseApplicationImpl.sProcessId)) && (!LocalMultiProcConfig.getBool("Qzone_setApm_MemLeak", true))) {}
-  }
-  
-  public void a(Object paramObject, String paramString)
-  {
-    if (e())
-    {
-      LeakInspector.startInspect(paramObject, paramString);
-      return;
-    }
-    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "startInspect failedNoStart");
-  }
-  
-  protected void b()
-  {
-    a();
-    LeakInspector.setKeepUuidWhenLeak(true);
-    com.tencent.qapmsdk.memory.MemoryLeakMonitor.enableFragmentInspect = false;
-    QAPM.setProperty(107, this.jdField_a_of_type_ComTencentQapmsdkBaseListenerIInspectorListener);
-  }
-  
-  public String c()
-  {
-    return "leak";
-  }
-  
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity)
-  {
-    try
-    {
-      adlq.a(paramActivity);
-      return;
-    }
-    catch (Exception paramActivity)
-    {
-      QLog.e("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "onActivityDestroyed ", paramActivity);
+      if (paramInt1 >= paramInt2) {
+        break;
+      }
+      localGroups = (Groups)this.a.jdField_a_of_type_JavaUtilList.remove(paramInt1);
+      this.a.jdField_a_of_type_JavaUtilList.add(paramInt2, localGroups);
+      break;
+      label586:
+      this.a.a();
     }
   }
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity) {}
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity) {}
-  
-  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

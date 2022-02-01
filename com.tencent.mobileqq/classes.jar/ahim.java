@@ -1,17 +1,84 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Context;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
 class ahim
-  extends ahkx
+  extends anax
 {
-  ahim(ahgk paramahgk)
+  ahim(ahik paramahik) {}
+  
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    super(paramahgk, null);
+    ChatActivityUtils.b();
+    Object localObject = this.a.mContext;
+    Context localContext = this.a.mContext;
+    int i;
+    if (paramBoolean)
+    {
+      i = 2131718430;
+      QQToast.a((Context)localObject, 2, localContext.getString(i), 0).b(this.a.getTitleBarHeight());
+      if (this.a.sessionInfo != null) {
+        break label69;
+      }
+    }
+    label69:
+    do
+    {
+      int k;
+      do
+      {
+        return;
+        i = 2131718419;
+        break;
+        localObject = this.a.sessionInfo.curFriendUin;
+        if (paramList == null) {}
+        for (i = 0;; i = paramList.size())
+        {
+          int j = 0;
+          k = 0;
+          while ((k == 0) && (j < i))
+          {
+            if (bftf.a(String.valueOf(paramList.get(j)), localObject)) {
+              k = 1;
+            }
+            j += 1;
+          }
+        }
+      } while (k == 0);
+      ChatActivityUtils.a(this.a.mActivity, paramBoolean, false);
+    } while (!paramBoolean);
+    this.a.updateAddFriendAndShieldView();
   }
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  protected void b(boolean paramBoolean, List<Long> paramList)
   {
-    return new ahcx(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    int k = 0;
+    ChatActivityUtils.b();
+    if (this.a.sessionInfo == null) {}
+    do
+    {
+      do
+      {
+        return;
+        String str = this.a.sessionInfo.curFriendUin;
+        if (paramList == null) {}
+        for (int i = 0;; i = paramList.size())
+        {
+          int j = 0;
+          while ((k == 0) && (j < i))
+          {
+            if (bftf.a(String.valueOf(paramList.get(j)), str)) {
+              k = 1;
+            }
+            j += 1;
+          }
+        }
+      } while (k == 0);
+      ChatActivityUtils.b();
+    } while (!paramBoolean);
+    this.a.updateAddFriendAndShieldView();
   }
 }
 

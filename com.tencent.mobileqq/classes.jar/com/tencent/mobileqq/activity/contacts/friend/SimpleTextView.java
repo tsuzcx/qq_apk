@@ -14,7 +14,7 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bhmg;
+import bfvh;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.theme.ISkinTypeface;
 
@@ -44,7 +44,7 @@ public class SimpleTextView
     if (paramAttributeSet != null)
     {
       paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.SimpleTextView);
-      paramInt = paramAttributeSet.getDimensionPixelSize(0, (int)bhmg.a(paramContext, 12.0F));
+      paramInt = paramAttributeSet.getDimensionPixelSize(0, (int)bfvh.a(paramContext, 12.0F));
       localObject = paramAttributeSet.getColorStateList(1);
       paramContext = paramAttributeSet.getString(2);
       this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramInt);

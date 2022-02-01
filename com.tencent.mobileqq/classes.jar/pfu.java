@@ -1,54 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import android.view.View;
+import com.tencent.widget.ListView;
 
 class pfu
+  extends pse
 {
-  private List<oidb_cmd0x80a.AttributeList> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  public pfu(List<oidb_cmd0x80a.AttributeList> paramList)
+  pfu(pey parampey, String paramString, View paramView, ListView paramListView)
   {
-    Object localObject;
-    if (localObject != null) {
-      this.jdField_a_of_type_JavaUtilList = localObject;
-    }
+    super(paramString);
   }
   
-  public List<oidb_cmd0x80a.AttributeList> a()
+  public void a(prx paramprx)
   {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public pfu a(int paramInt, String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString2))
-    {
-      QLog.d("CommonAttrBulder", 1, "attr value is Empty ! id : " + paramInt + ", name : " + paramString1);
-      return this;
-    }
-    oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
-    localAttributeList.att_id.set(paramInt);
-    localAttributeList.att_name.set(paramString1);
-    localAttributeList.att_value.set(paramString2);
-    this.jdField_a_of_type_JavaUtilList.add(localAttributeList);
-    return this;
-  }
-  
-  public pfu a(int paramInt, String paramString, boolean paramBoolean)
-  {
-    return a(paramInt, paramString, pgi.a(paramBoolean, "1", "0"));
-  }
-  
-  public pfu a(oidb_cmd0x80a.AttributeList paramAttributeList)
-  {
-    if (paramAttributeList != null) {
-      this.jdField_a_of_type_JavaUtilList.add(paramAttributeList);
-    }
-    return this;
+    paramprx.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentWidgetListView);
   }
 }
 

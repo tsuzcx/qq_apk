@@ -1,44 +1,14 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.util.Pair;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public abstract class avsx
+class avsx
+  implements avtc<Pair<String, Integer>, EmoticonPackage>
 {
-  protected int a;
-  protected Context a;
-  protected Bitmap a;
-  protected avsr a;
+  avsx(avsq paramavsq) {}
   
-  public avsx(Context paramContext, int paramInt)
+  public EmoticonPackage a(Pair<String, Integer> paramPair)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public avsx(Context paramContext, int paramInt, avsr paramavsr)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Avsr = paramavsr;
-  }
-  
-  public Bitmap a()
-  {
-    if (this.jdField_a_of_type_Avsr != null) {
-      a(this.jdField_a_of_type_Avsr.a());
-    }
-    return null;
-  }
-  
-  public void a(avst paramavst)
-  {
-    paramavst.c = 1.0F;
-  }
-  
-  public Drawable[] a(QQAppInterface paramQQAppInterface)
-  {
-    return null;
+    return this.a.a((String)paramPair.first, ((Integer)paramPair.second).intValue());
   }
 }
 

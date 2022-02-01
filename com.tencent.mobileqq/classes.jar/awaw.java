@@ -1,136 +1,132 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.widget.Toast;
-import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
-import com.tencent.mobileqq.intervideo.huayang.HuayangDowanloadHelper.GetLoginKeyDataListener.1;
+import com.tencent.mobileqq.data.IntimateInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 
-public class awaw
-  implements avzh
+class awaw
+  extends atuh
 {
-  private final long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private final InstalledPlugin jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin;
-  private final IVPluginInfo jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo;
-  private final String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean;
-  private volatile boolean b;
-  
-  public awaw(awat paramawat, String paramString, IVPluginInfo paramIVPluginInfo, InstalledPlugin paramInstalledPlugin, boolean paramBoolean, long paramLong)
+  protected void a(boolean paramBoolean, long paramLong, ArrayList<Long> paramArrayList)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo = paramIVPluginInfo;
-    this.jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin = paramInstalledPlugin;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  private void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (!paramBoolean2))
+    Object localObject2;
+    if (QLog.isColorLevel())
     {
-      awat.a(this.jdField_a_of_type_Awat).a(5, new Object[] { "" });
-      return;
+      localObject2 = new StringBuilder().append("onGetIntimateGroupRecommendUinList ").append(paramBoolean).append(" ").append(paramLong).append(" ");
+      if (paramArrayList == null) {
+        break label200;
+      }
+      ??? = paramArrayList.toString();
     }
-    if (paramBoolean1) {}
-    for (long l = 0L;; l = 2000L)
+    for (;;)
     {
-      if (!this.b) {
-        break label66;
+      QLog.d("MultiCardManager", 2, (String)???);
+      if ((paramLong == awas.a(this.a)) && (awas.d(this.a) != null)) {
+        if (paramArrayList != null) {
+          synchronized (awas.a(this.a))
+          {
+            awas.a(this.a).put(Long.valueOf(paramLong), (ArrayList)paramArrayList.clone());
+          }
+        }
       }
-      if (!QLog.isColorLevel()) {
-        break;
+      synchronized (awas.d(this.a))
+      {
+        localObject2 = (WeakReference)awas.d(this.a).get(Long.valueOf(paramLong));
+        if (localObject2 != null)
+        {
+          ??? = (awav)((WeakReference)localObject2).get();
+          if (??? != null)
+          {
+            if (paramBoolean) {
+              break;
+            }
+            awas.a(this.a, paramLong, (awav)???);
+          }
+        }
+        return;
+        label200:
+        ??? = "null";
+        continue;
+        paramArrayList = finally;
+        throw paramArrayList;
       }
-      QLog.d("HuayangPluginNewDownloader", 2, "需要stop");
-      return;
     }
-    label66:
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new HuayangDowanloadHelper.GetLoginKeyDataListener.1(this, paramBoolean1, paramBoolean2), l);
+    ((awav)???).a(paramLong, paramArrayList);
   }
   
-  public void a()
+  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object arg3)
   {
-    this.b = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    int j = 1;
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder().append("onGetGroupIntimateInfos ").append(paramBoolean).append(" ");
+      if (paramHashMap == null) {
+        break label284;
+      }
+    }
     long l1;
-    label99:
-    String str;
-    if (paramBoolean) {
-      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_Int == 1)
+    label284:
+    for (paramHashMap = paramHashMap.size() + paramHashMap.toString();; paramHashMap = "null")
+    {
+      QLog.d("MultiCardManager", 2, paramHashMap);
+      paramHashMap = new ArrayList(0);
+      if (!(??? instanceof HashMap)) {
+        break label393;
+      }
+      Object localObject2 = (HashMap)???;
+      ??? = (ArrayList)((HashMap)localObject2).get("alreadyRequest");
+      ??? = (ArrayList)((HashMap)localObject2).get("notRequest");
+      localObject2 = (ArrayList)((HashMap)localObject2).get("groupUin");
+      if ((localObject2 == null) || (((ArrayList)localObject2).size() <= 0)) {
+        break label387;
+      }
+      l1 = ((Long)((ArrayList)localObject2).get(0)).longValue();
+      if (??? != null) {
+        paramHashMap.addAll((Collection)???);
+      }
+      l2 = l1;
+      if (??? == null) {
+        break label297;
+      }
+      paramHashMap.addAll(???);
+      l2 = l1;
+      if (paramBoolean) {
+        break label297;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiCardManager", 2, "onGetGroupIntimateInfos false remove sendRequest  " + ???.toString());
+      }
+      synchronized (awas.e(this.a))
       {
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_AndroidOsBundle = awat.a(this.jdField_a_of_type_Awat).a().a.getExtras();
-        if ("Hy".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
-          awbj.a("2653752");
+        ??? = ???.iterator();
+        if (!???.hasNext()) {
+          break;
         }
-        a(this.jdField_a_of_type_Boolean, paramBoolean);
-        long l2 = System.currentTimeMillis();
-        if (!"Hy".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
-          break label421;
-        }
-        l1 = awat.a(this.jdField_a_of_type_Awat);
-        l1 = l2 - l1;
-        if (QLog.isColorLevel()) {
-          QLog.d("HuayangPluginNewDownloader", 2, "拉取票据完成 耗时：" + l1 + "appId = " + paramString + " isSuccess =  " + paramBoolean + " code = " + paramInt);
-        }
-        if (!awbj.jdField_a_of_type_Boolean) {
-          break label433;
-        }
-        str = "huayang";
-        label175:
-        if (!paramBoolean) {
-          break label440;
-        }
-        i = 1;
-        label182:
-        yup.a(str, "getLoginKey", i, (int)l1, new String[] { awat.c(this.jdField_a_of_type_Awat), paramInt + "", paramString, "8.4.5" });
-        paramString = awat.a(this.jdField_a_of_type_Awat).opName(awat.a(this.jdField_a_of_type_Awat)).opType("getLoginKey");
-        if (!paramBoolean) {
-          break label446;
-        }
+        localObject2 = (Long)???.next();
+        awas.e(this.a).remove(localObject2);
       }
     }
-    label421:
-    label433:
-    label440:
-    label446:
-    for (int i = j;; i = 0)
+    label387:
+    label393:
+    for (long l2 = l1;; l2 = 0L)
     {
-      paramString.opIn(i).opResult(paramInt).report();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_Int != 2) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_AndroidOsBundle = awdu.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo, awat.a(this.jdField_a_of_type_Awat));
-      if (!"Od".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
-        break;
-      }
-      awbj.a("2691711");
-      break;
-      if ("Hy".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
-        awbj.a("2653753");
-      }
-      for (;;)
+      label297:
+      if ((l2 == awas.a(this.a)) && (awas.f(this.a) != null)) {}
+      synchronized (awas.f(this.a))
       {
-        Toast.makeText(awat.a(this.jdField_a_of_type_Awat), anzj.a(2131704530) + paramInt, 0).show();
-        break;
-        if ("Od".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
-          awbj.a("2691712");
+        ??? = (WeakReference)awas.f(this.a).get(Long.valueOf(l2));
+        if (??? != null)
+        {
+          ??? = (awat)((WeakReference)???).get();
+          if (??? != null) {
+            awas.a(this.a, l2, paramHashMap, ???);
+          }
         }
+        return;
       }
-      l1 = awat.b(this.jdField_a_of_type_Awat);
-      break label99;
-      str = "group_video";
-      break label175;
-      i = 0;
-      break label182;
+      l1 = 0L;
+      break;
     }
   }
 }

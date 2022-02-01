@@ -1,58 +1,62 @@
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class auem
 {
-  public static int a(int paramInt)
+  public int a;
+  public long a;
+  public Bitmap a;
+  public String a;
+  public AtomicBoolean a;
+  public boolean a;
+  public int b;
+  public Bitmap b;
+  public String b;
+  public boolean b;
+  public int c;
+  
+  public auem()
   {
-    int j = 9;
-    int i = j;
-    switch (paramInt)
-    {
-    default: 
-      i = j;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  }
+  
+  public int a()
+  {
+    int i = 1;
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      if (!this.jdField_b_of_type_JavaLangString.startsWith("act")) {}
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("QFileBrowserUtils", 1, "getVideoQRReportFromType: reportFromType[" + i + "]");
+        QLog.d("HiBoomFont.Item", 2, "getTagType id = " + this.jdField_a_of_type_Int + " type = " + i);
       }
       return i;
-      i = 8;
-      continue;
-      i = 7;
-      continue;
-      i = 6;
-      continue;
-      i = 5;
-      continue;
-      i = 4;
+      if (this.jdField_b_of_type_JavaLangString.startsWith("free"))
+      {
+        String[] arrayOfString = this.jdField_b_of_type_JavaLangString.split("-");
+        if ((arrayOfString.length >= 3) && (!TextUtils.isEmpty(arrayOfString[1])) && (TextUtils.isDigitsOnly(arrayOfString[1])) && (!TextUtils.isEmpty(arrayOfString[2])) && (TextUtils.isDigitsOnly(arrayOfString[2])))
+        {
+          long l1 = Long.parseLong(arrayOfString[1]);
+          long l2 = Long.parseLong(arrayOfString[2]);
+          long l3 = NetConnInfoCenter.getServerTime();
+          if ((l3 > l1) && (l3 < l2))
+          {
+            i = 2;
+            continue;
+          }
+        }
+      }
+      i = 0;
     }
   }
   
-  public static void a(long paramLong)
+  public String toString()
   {
-    int i;
-    if (paramLong < 51200L) {
-      i = 1;
-    }
-    for (;;)
-    {
-      bdll.b(null, "dc00898", "", "", "0X800ADC0", "0X800ADC0", i, 0, "", "", "", "");
-      return;
-      if (paramLong < 102400L) {
-        i = 2;
-      } else if (paramLong < 512000L) {
-        i = 3;
-      } else if (paramLong < 1024000L) {
-        i = 4;
-      } else if (paramLong < 3072000L) {
-        i = 5;
-      } else if (paramLong < 10240000L) {
-        i = 6;
-      } else {
-        i = 7;
-      }
-    }
+    return "HiBoomItem: id = " + this.jdField_a_of_type_Int + " name = " + this.jdField_a_of_type_JavaLangString + " engine = " + this.jdField_b_of_type_Int;
   }
 }
 

@@ -1,26 +1,53 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import pttcenterservice.PttShortVideo.PttShortVideoUploadResp;
 
-public class bfik
-  implements TextWatcher
+class bfik
+  implements ITransactionCallback
 {
-  public bfik(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  bfik(bfij parambfij) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    if ((!TextUtils.isEmpty(this.a.a.b)) && (paramInt1 > 0) && (paramInt1 < this.a.a.b.length() + this.a.a.c.length() + this.a.a.a.length() + this.a.A.length()) && (paramInt2 > paramInt3))
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "upload onFailed errn:" + paramInt);
+    }
+    this.a.e();
+  }
+  
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "upload onSuccess");
+    }
+    paramHashMap = new PttShortVideo.PttShortVideoUploadResp();
+    try
     {
-      this.a.e(false);
+      paramArrayOfByte = (PttShortVideo.PttShortVideoUploadResp)paramHashMap.mergeFrom(paramArrayOfByte);
+      if (paramArrayOfByte.str_fileid.has()) {
+        this.a.c = paramArrayOfByte.str_fileid.get();
+      }
+      this.a.b = true;
+      this.a.b();
       return;
     }
-    TroopBarPublishActivity.b(this.a);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
   }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart() {}
+  
+  public void onUpdateProgress(int paramInt) {}
 }
 
 

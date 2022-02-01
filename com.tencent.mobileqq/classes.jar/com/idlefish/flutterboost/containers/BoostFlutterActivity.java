@@ -26,6 +26,7 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LifecycleRegistry;
 import com.idlefish.flutterboost.FlutterBoost;
 import com.idlefish.flutterboost.XFlutterView;
+import com.idlefish.flutterboost.XPlatformPlugin;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import io.flutter.Log;
 import io.flutter.embedding.android.DrawableSplashScreen;
@@ -34,7 +35,6 @@ import io.flutter.embedding.android.FlutterView.TransparencyMode;
 import io.flutter.embedding.android.SplashScreen;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.FlutterShellArgs;
-import io.flutter.plugin.platform.PlatformPlugin;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -155,8 +155,9 @@ public class BoostFlutterActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -336,12 +337,9 @@ public class BoostFlutterActivity
   }
   
   @Nullable
-  public PlatformPlugin providePlatformPlugin(@Nullable Activity paramActivity, @NonNull FlutterEngine paramFlutterEngine)
+  public XPlatformPlugin providePlatformPlugin(@NonNull FlutterEngine paramFlutterEngine)
   {
-    if (paramActivity != null) {
-      return new PlatformPlugin(getActivity(), paramFlutterEngine.getPlatformChannel());
-    }
-    return null;
+    return new XPlatformPlugin(paramFlutterEngine.getPlatformChannel());
   }
   
   @Nullable
@@ -361,7 +359,7 @@ public class BoostFlutterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.idlefish.flutterboost.containers.BoostFlutterActivity
  * JD-Core Version:    0.7.0.1
  */

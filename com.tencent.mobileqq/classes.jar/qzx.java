@@ -1,15 +1,7 @@
-import android.os.Bundle;
+import kotlin.Metadata;
 
-public abstract interface qzx
-{
-  public abstract void a(Bundle paramBundle, float paramFloat);
-  
-  public abstract void a(Bundle paramBundle, int paramInt, float paramFloat);
-  
-  public abstract void a(Bundle paramBundle, String paramString);
-  
-  public abstract void a(String paramString);
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJReadWatchWordModel$Companion;", "", "()V", "EXPIRED_OR_DELETED", "", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qzx {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

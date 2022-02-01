@@ -1,21 +1,12 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
-class bexm
-  implements ITransCallbackForReport
+public class bexm
 {
-  bexm(bexk parambexk) {}
-  
-  public void onFailed(int paramInt, String paramString1, String paramString2)
-  {
-    bexk localbexk = this.a;
-    String str2 = this.a.d;
-    if (this.a.f == null) {}
-    for (String str1 = this.a.l;; str1 = this.a.f)
-    {
-      localbexk.a("actRichMediaNetMonitor_videoUp", false, paramInt, paramString1, paramString2, str2, str1, this.a.x + "");
-      return;
-    }
-  }
+  public View a;
+  public CheckBox a;
+  public TextView a;
 }
 
 

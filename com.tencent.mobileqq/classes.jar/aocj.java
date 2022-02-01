@@ -1,924 +1,383 @@
-import QQService.RespTmpChatPicDownload;
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageForDanceMachine;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.opengl.GLES20;
+import android.os.Build;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import msf.msgsvc.msg_svc.TransSvrInfo;
 
 public class aocj
-  implements anui
 {
-  private HashMap<Integer, aouy> a = new HashMap();
+  public static final float[] a;
+  public static final short[] a;
+  public static final float[] b;
   
-  public aocj()
+  static
   {
-    n();
+    jdField_a_of_type_ArrayOfFloat = new float[] { -0.5F, 0.5F, 0.0F, 0.0F, 1.0F, -0.5F, -0.5F, 0.0F, 0.0F, 0.0F, 0.5F, -0.5F, 0.0F, 1.0F, 0.0F, 0.5F, 0.5F, 0.0F, 1.0F, 1.0F };
+    b = new float[] { -0.5F, 0.5F, 0.0F, 0.0F, 0.0F, -0.5F, -0.5F, 0.0F, 0.0F, 1.0F, 0.5F, -0.5F, 0.0F, 1.0F, 1.0F, 0.5F, 0.5F, 0.0F, 1.0F, 0.0F };
+    jdField_a_of_type_ArrayOfShort = new short[] { 0, 1, 2, 2, 3, 0 };
   }
   
-  private void n()
+  public static int a(aoci paramaoci)
   {
-    this.a.put(Integer.valueOf(999), new aovd());
-    this.a.put(Integer.valueOf(1000), new aovd());
-    this.a.put(Integer.valueOf(1003), new aovd());
-    this.a.put(Integer.valueOf(1004), new aovd());
-    this.a.put(Integer.valueOf(1005), new aovd());
-    this.a.put(Integer.valueOf(2000), new aovd());
-    this.a.put(Integer.valueOf(1002), new aovd());
-    this.a.put(Integer.valueOf(2001), new aovd());
-    this.a.put(Integer.valueOf(2002), new aovd());
-    this.a.put(Integer.valueOf(3012), new aovd());
-    this.a.put(Integer.valueOf(3011), new aovd());
-    this.a.put(Integer.valueOf(4003), new aouw());
-    this.a.put(Integer.valueOf(4005), new aouw());
-    this.a.put(Integer.valueOf(4006), new aouw());
-    this.a.put(Integer.valueOf(4011), new aouw());
-    this.a.put(Integer.valueOf(4012), new aouw());
-    this.a.put(Integer.valueOf(4001), new aouw());
-    this.a.put(Integer.valueOf(4004), new aouw());
-    this.a.put(Integer.valueOf(4002), new aouw());
-    this.a.put(Integer.valueOf(4013), new aouw());
-    this.a.put(Integer.valueOf(3021), new aouw());
-    this.a.put(Integer.valueOf(3001), new aova());
-    this.a.put(Integer.valueOf(3002), new aova());
-    this.a.put(Integer.valueOf(3013), new aova());
-    this.a.put(Integer.valueOf(3008), new aova());
-    this.a.put(Integer.valueOf(6000), new aova());
-    this.a.put(Integer.valueOf(6009), new aova());
-    this.a.put(Integer.valueOf(8002), new aova());
-    this.a.put(Integer.valueOf(7000), new aova());
-    this.a.put(Integer.valueOf(8006), new aova());
-    this.a.put(Integer.valueOf(8005), new aova());
-    this.a.put(Integer.valueOf(6010), new aova());
-    this.a.put(Integer.valueOf(6012), new aova());
-    this.a.put(Integer.valueOf(6013), new aova());
-    this.a.put(Integer.valueOf(8010), new aova());
-    this.a.put(Integer.valueOf(8012), new aova());
-    this.a.put(Integer.valueOf(8014), new aova());
-    this.a.put(Integer.valueOf(8028), new aova());
-    this.a.put(Integer.valueOf(8032), new aova());
-    this.a.put(Integer.valueOf(8042), new aova());
-    this.a.put(Integer.valueOf(8043), new aova());
-    this.a.put(Integer.valueOf(8044), new aova());
-    this.a.put(Integer.valueOf(8045), new aova());
-    this.a.put(Integer.valueOf(8037), new aova());
-    this.a.put(Integer.valueOf(8040), new aova());
-    this.a.put(Integer.valueOf(8041), new aova());
-    this.a.put(Integer.valueOf(4019), new aoux());
-    this.a.put(Integer.valueOf(4016), new aoux());
-    this.a.put(Integer.valueOf(4017), new aoux());
-    this.a.put(Integer.valueOf(4018), new aoux());
-    this.a.put(Integer.valueOf(5002), new aoux());
-    this.a.put(Integer.valueOf(5003), new aoux());
-    this.a.put(Integer.valueOf(5004), new aoux());
-    this.a.put(Integer.valueOf(5005), new aoux());
-    this.a.put(Integer.valueOf(4014), new aoux());
-    this.a.put(Integer.valueOf(4015), new aoux());
-    this.a.put(Integer.valueOf(6005), new aouv());
-    this.a.put(Integer.valueOf(6004), new aouv());
-    this.a.put(Integer.valueOf(6006), new aouv());
-    this.a.put(Integer.valueOf(6003), new aouv());
-    this.a.put(Integer.valueOf(6001), new aouv());
-    this.a.put(Integer.valueOf(6002), new aouv());
-    this.a.put(Integer.valueOf(6007), new aouv());
-    this.a.put(Integer.valueOf(5006), new aouv());
-    this.a.put(Integer.valueOf(5012), new aouv());
-    this.a.put(Integer.valueOf(5010), new aouv());
-    this.a.put(Integer.valueOf(6008), new aovc());
-    this.a.put(Integer.valueOf(8015), new aovc());
-    this.a.put(Integer.valueOf(6014), new aovc());
-    this.a.put(Integer.valueOf(6016), new aovc());
-    this.a.put(Integer.valueOf(8003), new aovc());
-    this.a.put(Integer.valueOf(8011), new aovc());
-    this.a.put(Integer.valueOf(8004), new aovc());
-    this.a.put(Integer.valueOf(8007), new aovc());
-    this.a.put(Integer.valueOf(8013), new aovc());
-    this.a.put(Integer.valueOf(6015), new aovc());
-    this.a.put(Integer.valueOf(8017), new aouz());
-    this.a.put(Integer.valueOf(8024), new aouz());
-    this.a.put(Integer.valueOf(8016), new aouz());
-    this.a.put(Integer.valueOf(8018), new aouz());
-    this.a.put(Integer.valueOf(8019), new aouz());
-    this.a.put(Integer.valueOf(8020), new aouz());
-    this.a.put(Integer.valueOf(8022), new aouz());
-    this.a.put(Integer.valueOf(8023), new aouz());
-    this.a.put(Integer.valueOf(8030), new aouz());
-    this.a.put(Integer.valueOf(8031), new aouz());
-    this.a.put(Integer.valueOf(8033), new aovb());
-    this.a.put(Integer.valueOf(8038), new aovb());
-    this.a.put(Integer.valueOf(8034), new aovb());
-    this.a.put(Integer.valueOf(8035), new aovb());
-    this.a.put(Integer.valueOf(8036), new aovb());
-    this.a.put(Integer.valueOf(8039), new aovb());
-    this.a.put(Integer.valueOf(8046), new aovb());
-  }
-  
-  protected void a() {}
-  
-  protected void a(int paramInt) {}
-  
-  protected void a(int paramInt1, int paramInt2) {}
-  
-  protected void a(int paramInt1, int paramInt2, int paramInt3) {}
-  
-  protected void a(int paramInt, byte[] paramArrayOfByte) {}
-  
-  public void a(long paramLong, int paramInt) {}
-  
-  public void a(long paramLong1, int paramInt, long paramLong2) {}
-  
-  public void a(MessageForDanceMachine paramMessageForDanceMachine) {}
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    a((String)paramToServiceMsg.getAttribute("_tag_LOGSTR"));
-  }
-  
-  public void a(Object paramObject)
-  {
-    if ((paramObject != null) && ((paramObject instanceof List))) {
-      a((List)paramObject);
-    }
-  }
-  
-  protected void a(String paramString) {}
-  
-  protected void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2) {}
-  
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2, int paramInt3) {}
-  
-  public void a(List<MessageRecord> paramList) {}
-  
-  protected void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2) {}
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2) {}
-  
-  public void a(boolean paramBoolean, long paramLong, aock paramaock) {}
-  
-  protected void a(boolean paramBoolean, RespTmpChatPicDownload paramRespTmpChatPicDownload) {}
-  
-  protected void a(boolean paramBoolean, bcrp parambcrp) {}
-  
-  protected void a(boolean paramBoolean, bcrp parambcrp, aock paramaock) {}
-  
-  protected void a(boolean paramBoolean, bcrr parambcrr) {}
-  
-  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg)
-  {
-    String str2 = (String)paramToServiceMsg.getAttribute("_tag_LOGSTR");
-    int i = paramToServiceMsg.extraData.getInt("system_msg_action_type");
-    Object localObject1 = paramToServiceMsg.extraData.getString("system_msg_action_resp_key");
-    Object localObject2 = paramToServiceMsg.extraData.getString("system_msg_action_resp_error_key");
-    int j = paramToServiceMsg.extraData.getInt("system_msg_action_resp_result_code_key");
-    int k = paramToServiceMsg.extraData.getInt("system_msg_action_resp_type_key");
-    String str1 = paramToServiceMsg.extraData.getString("system_msg_action_resp_invalid_decided_key");
-    int m = paramToServiceMsg.extraData.getInt("system_msg_action_resp_remark_result_key");
-    paramToServiceMsg = (ToServiceMsg)localObject1;
-    if (localObject1 == null) {
-      paramToServiceMsg = "";
-    }
-    localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = "";
-    }
-    localObject2 = str1;
-    if (str1 == null) {
-      localObject2 = "";
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageObserver", 2, "sendSystemMsgActionResult logStr=" + str2 + ";actionType=" + i + ";msgDetail=" + paramToServiceMsg + ";resultCode=" + j + ";respType=" + k + ";msgFail=" + (String)localObject1 + ";msgInvalidDecided=" + (String)localObject2 + ";remarkRet=" + m);
-    }
-    a(paramBoolean, str2, i, paramToServiceMsg, j, k, (String)localObject1, (String)localObject2, m);
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject) {}
-  
-  protected void a(boolean paramBoolean, String paramString) {}
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt1, long paramLong, int paramInt2) {}
-  
-  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2) {}
-  
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4) {}
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong) {}
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong, aocg paramaocg) {}
-  
-  public void a(boolean paramBoolean, String paramString, bdxd parambdxd) {}
-  
-  public void a(boolean paramBoolean, String paramString, bdxe parambdxe) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4) {}
-  
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2) {}
-  
-  protected void a(boolean paramBoolean, msg_svc.TransSvrInfo paramTransSvrInfo) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, String paramString3, String paramString4, ArrayList<String> paramArrayList) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList) {}
-  
-  protected void a(boolean paramBoolean, byte[] paramArrayOfByte, aock paramaock) {}
-  
-  protected void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  public void a(boolean paramBoolean, Object[] paramArrayOfObject, aock paramaock)
-  {
-    aock localaock = null;
-    if (paramBoolean)
-    {
-      localObject = localaock;
-      if (paramArrayOfObject != null)
-      {
-        localObject = localaock;
-        if (paramArrayOfObject.length >= 1) {
-          localObject = (byte[])paramArrayOfObject[0];
-        }
-      }
-      localaock = paramaock;
-      if (paramArrayOfObject != null)
-      {
-        localaock = paramaock;
-        if (paramArrayOfObject.length >= 2) {
-          localaock = (aock)paramArrayOfObject[1];
-        }
-      }
-      a(paramBoolean, (byte[])localObject, localaock);
-      return;
-    }
-    Object localObject = paramaock;
-    if (paramArrayOfObject != null)
-    {
-      localObject = paramaock;
-      if (paramArrayOfObject.length >= 2) {
-        localObject = (aock)paramArrayOfObject[1];
-      }
-    }
-    a(paramBoolean, null, (aock)localObject);
-  }
-  
-  protected void a(boolean paramBoolean, String[] paramArrayOfString) {}
-  
-  public void a(Long[] paramArrayOfLong)
-  {
-    if (paramArrayOfLong[0].longValue() == 1L)
-    {
-      a(paramArrayOfLong[1].longValue(), 0);
-      return;
-    }
-    a(paramArrayOfLong[1].longValue(), 0, paramArrayOfLong[2].longValue());
-  }
-  
-  public void a(Object[] paramArrayOfObject)
-  {
-    String str2;
-    int i;
-    int j;
-    SendMessageHandler localSendMessageHandler;
-    long l1;
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 2))
-    {
-      str2 = (String)paramArrayOfObject[0];
-      i = ((Integer)paramArrayOfObject[1]).intValue();
-      j = ((Integer)paramArrayOfObject[2]).intValue();
-      if (paramArrayOfObject.length < 6) {
-        break label112;
-      }
-      localSendMessageHandler = (SendMessageHandler)paramArrayOfObject[3];
-      l1 = ((Long)paramArrayOfObject[4]).longValue();
-    }
-    for (long l2 = ((Long)paramArrayOfObject[5]).longValue();; l2 = 0L)
-    {
-      String str1 = "";
-      if (paramArrayOfObject.length >= 7) {
-        str1 = (String)paramArrayOfObject[6];
-      }
-      a(str2, i, j, localSendMessageHandler, l1, l2, str1);
-      return;
-      label112:
-      localSendMessageHandler = null;
-      l1 = 96000L;
-    }
-  }
-  
-  protected void b() {}
-  
-  public void b(int paramInt) {}
-  
-  protected void b(int paramInt1, int paramInt2) {}
-  
-  public void b(Object paramObject)
-  {
-    if ((paramObject instanceof MessageForDanceMachine)) {
-      a((MessageForDanceMachine)paramObject);
-    }
-  }
-  
-  public void b(String paramString) {}
-  
-  protected void b(boolean paramBoolean) {}
-  
-  protected void b(boolean paramBoolean, int paramInt) {}
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  protected void b(boolean paramBoolean, String paramString) {}
-  
-  public void b(boolean paramBoolean, String paramString, bdxd parambdxd) {}
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList) {}
-  
-  public void b(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
-    {
-      String[] arrayOfString = new String[paramArrayOfObject.length];
-      int i = 0;
-      while (i < arrayOfString.length)
-      {
-        arrayOfString[i] = ((String)paramArrayOfObject[i]);
-        i += 1;
-      }
-      a(paramBoolean, arrayOfString);
-      return;
-    }
-    a(paramBoolean, null);
-  }
-  
-  public void b(boolean paramBoolean, Object[] paramArrayOfObject, aock paramaock)
-  {
-    aock localaock = null;
-    if (paramBoolean)
-    {
-      localObject = localaock;
-      if (paramArrayOfObject != null)
-      {
-        localObject = localaock;
-        if (paramArrayOfObject.length >= 1) {
-          localObject = (bcrp)paramArrayOfObject[0];
-        }
-      }
-      localaock = paramaock;
-      if (paramArrayOfObject != null)
-      {
-        localaock = paramaock;
-        if (paramArrayOfObject.length >= 2) {
-          localaock = (aock)paramArrayOfObject[1];
-        }
-      }
-      a(paramBoolean, (bcrp)localObject, localaock);
-      return;
-    }
-    Object localObject = paramaock;
-    if (paramArrayOfObject != null)
-    {
-      localObject = paramaock;
-      if (paramArrayOfObject.length >= 2) {
-        localObject = (aock)paramArrayOfObject[1];
-      }
-    }
-    a(paramBoolean, null, (aock)localObject);
-  }
-  
-  public void b(Long[] paramArrayOfLong)
-  {
-    if (paramArrayOfLong[0].longValue() == 1L)
-    {
-      a(paramArrayOfLong[1].longValue(), paramArrayOfLong[2].intValue());
-      return;
-    }
-    a(paramArrayOfLong[1].longValue(), paramArrayOfLong[2].intValue(), 0L);
-  }
-  
-  public void b(Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 2)) {
-      a((String)paramArrayOfObject[0], ((Integer)paramArrayOfObject[1]).intValue(), ((Integer)paramArrayOfObject[2]).intValue());
-    }
-  }
-  
-  protected void c() {}
-  
-  protected void c(int paramInt1, int paramInt2) {}
-  
-  public void c(String paramString) {}
-  
-  protected void c(boolean paramBoolean) {}
-  
-  protected void c(boolean paramBoolean, Object paramObject) {}
-  
-  protected void c(boolean paramBoolean, String paramString) {}
-  
-  public void c(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
-  {
-    a(paramBoolean1, paramBoolean2, paramList);
-  }
-  
-  public void c(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    Object localObject2 = null;
-    if (paramBoolean)
-    {
-      Object localObject1 = localObject2;
-      if (paramArrayOfObject != null)
-      {
-        localObject1 = localObject2;
-        if (paramArrayOfObject.length > 0) {
-          localObject1 = (RespTmpChatPicDownload)paramArrayOfObject[0];
-        }
-      }
-      a(paramBoolean, (RespTmpChatPicDownload)localObject1);
-      return;
-    }
-    a(paramBoolean, null);
-  }
-  
-  public void c(boolean paramBoolean, Object[] paramArrayOfObject, aock paramaock)
-  {
-    long l;
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 2))
-    {
-      l = ((Long)paramArrayOfObject[0]).longValue();
-      paramaock = (aock)paramArrayOfObject[1];
-    }
+    if ((paramaoci == null) || (paramaoci.a == null)) {}
     for (;;)
     {
-      a(paramBoolean, l, paramaock);
-      return;
-      l = 0L;
-    }
-  }
-  
-  public void c(Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 1)) {
-      a(((Byte)paramArrayOfObject[0]).byteValue(), ((Byte)paramArrayOfObject[1]).byteValue());
-    }
-  }
-  
-  public void d() {}
-  
-  protected void d(boolean paramBoolean) {}
-  
-  protected void d(boolean paramBoolean, Object paramObject) {}
-  
-  public void d(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if (paramArrayOfObject != null)
-    {
-      if (paramArrayOfObject.length >= 3) {
-        a(paramBoolean, (String)paramArrayOfObject[0], Long.parseLong((String)paramArrayOfObject[1]), (aocg)paramArrayOfObject[2]);
-      }
-      a(paramBoolean, (String)paramArrayOfObject[0], Long.parseLong((String)paramArrayOfObject[1]));
-    }
-  }
-  
-  public void d(Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 1)) {
-      b(((Byte)paramArrayOfObject[0]).byteValue(), ((Byte)paramArrayOfObject[1]).byteValue());
-    }
-  }
-  
-  protected void e() {}
-  
-  protected void e(boolean paramBoolean) {}
-  
-  public void e(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject instanceof String))
-    {
-      c(paramBoolean, (String)paramObject);
-      return;
-    }
-    c(paramBoolean, "");
-  }
-  
-  public void e(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    Object localObject2 = null;
-    if (paramBoolean)
-    {
-      Object localObject1 = localObject2;
-      if (paramArrayOfObject != null)
+      return 0;
+      try
       {
-        localObject1 = localObject2;
-        if (paramArrayOfObject.length >= 1) {
-          localObject1 = (bcrp)paramArrayOfObject[0];
+        int i = ((ArVideoResourceInfo)paramaoci.a.a.get(0)).jdField_b_of_type_Int;
+        if (i >= 0) {}
+        for (;;)
+        {
+          return i;
+          i = 0;
+        }
+        if (!QLog.isColorLevel()) {}
+      }
+      catch (Throwable paramaoci) {}
+    }
+    paramaoci.printStackTrace();
+    return 0;
+  }
+  
+  public static aoex a(String paramString)
+  {
+    aoex localaoex = new aoex();
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = paramString.split("\\|");
+      if (paramString != null)
+      {
+        if (paramString.length >= 1) {
+          localaoex.jdField_a_of_type_Int = Integer.valueOf(paramString[0]).intValue();
+        }
+        if (paramString.length >= 2) {
+          localaoex.jdField_b_of_type_Int = Integer.valueOf(paramString[1]).intValue();
         }
       }
-      a(paramBoolean, (bcrp)localObject1);
-      return;
     }
-    a(paramBoolean, null);
+    return localaoex;
   }
   
-  public void e(Object[] paramArrayOfObject)
+  public static aoex a(String paramString, int paramInt1, int paramInt2)
   {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 1)) {
-      a(((Byte)paramArrayOfObject[0]).byteValue());
+    paramString = a(paramString);
+    if ((paramString.jdField_a_of_type_Int == 0) || (paramString.jdField_b_of_type_Int == 0)) {
+      return paramString;
     }
-  }
-  
-  protected void f() {}
-  
-  protected void f(boolean paramBoolean) {}
-  
-  public void f(boolean paramBoolean, Object paramObject)
-  {
-    a(paramBoolean, paramObject);
-  }
-  
-  public void f(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 2))
+    int i = paramString.jdField_a_of_type_Int;
+    int j = paramString.jdField_b_of_type_Int;
+    if (paramInt2 * 1.0F / j > paramInt1 * 1.0F / i)
     {
-      a(paramBoolean, ((Long)paramArrayOfObject[0]).longValue(), ((Long)paramArrayOfObject[1]).longValue());
-      return;
+      paramInt1 = j * 1 * paramInt1 / i;
+      paramString.jdField_a_of_type_Float = 2.0F;
     }
-    a(paramBoolean, 0L, 0L);
-  }
-  
-  public void f(Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 1)) {
-      b((String)paramArrayOfObject[0]);
-    }
-  }
-  
-  protected void g() {}
-  
-  protected void g(boolean paramBoolean) {}
-  
-  public void g(boolean paramBoolean, Object paramObject)
-  {
-    c(paramBoolean, paramObject);
-  }
-  
-  public void g(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 1)) {
-      a(paramBoolean, (bcrr)paramArrayOfObject[0]);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    if ("Stream ptt:UploadStreamStruct : arrayLength:" + paramArrayOfObject == null) {}
-    for (paramArrayOfObject = "null";; paramArrayOfObject = paramArrayOfObject.length + "")
+    for (paramString.jdField_b_of_type_Float = (paramInt1 * 2.0F / paramInt2);; paramString.jdField_b_of_type_Float = 2.0F)
     {
-      QLog.d("streamptt.send", 2, paramArrayOfObject);
-      return;
+      paramString.c = 0.0F;
+      paramString.d = 0.0F;
+      paramString.e = 0.0F;
+      return paramString;
+      paramString.jdField_a_of_type_Float = (i * 1 * paramInt2 / j * 2.0F / paramInt1);
     }
   }
   
-  public void g(Object[] paramArrayOfObject)
+  public static aoex a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 1)) {
-      c(((Byte)paramArrayOfObject[0]).byteValue(), ((Byte)paramArrayOfObject[1]).byteValue());
-    }
-  }
-  
-  public void h()
-  {
-    g();
-  }
-  
-  protected void h(boolean paramBoolean) {}
-  
-  public void h(boolean paramBoolean, Object paramObject)
-  {
-    d(paramBoolean, paramObject);
-  }
-  
-  public void h(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 2))
+    aoex localaoex = a(paramString);
+    if ((localaoex.jdField_a_of_type_Int == 0) || (localaoex.jdField_b_of_type_Int == 0))
     {
-      b(paramBoolean, (String)paramArrayOfObject[0]);
-      a(paramBoolean, (String)paramArrayOfObject[0], ((Integer)paramArrayOfObject[1]).intValue());
+      localaoex.jdField_a_of_type_Int = paramInt1;
+      localaoex.jdField_b_of_type_Int = paramInt2;
     }
-  }
-  
-  public void h(Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 2)) {
-      a(((Byte)paramArrayOfObject[0]).byteValue(), ((Byte)paramArrayOfObject[1]).byteValue(), ((Integer)paramArrayOfObject[2]).intValue());
-    }
-  }
-  
-  public void i()
-  {
-    f();
-  }
-  
-  protected void i(boolean paramBoolean) {}
-  
-  public void i(boolean paramBoolean, Object paramObject)
-  {
-    b(paramBoolean, false, (List)paramObject);
-  }
-  
-  public void i(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 2))
+    float f7 = paramInt1 * 1.0F / Math.max(1, paramInt2);
+    float f8 = localaoex.jdField_a_of_type_Int;
+    float f9 = localaoex.jdField_b_of_type_Int;
+    float f2 = 1.0F;
+    float f1 = 1.0F;
+    float f3 = 0.0F;
+    float f4 = 0.0F;
+    float f10 = 1.0F * f8 / f9;
+    float f5;
+    if (!TextUtils.isEmpty(paramString))
     {
-      Integer localInteger = (Integer)paramArrayOfObject[0];
-      String str = (String)paramArrayOfObject[1];
-      paramArrayOfObject = (String)paramArrayOfObject[2];
-      a(paramBoolean, str, localInteger.intValue(), paramArrayOfObject);
-    }
-  }
-  
-  public void i(Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 2) && ((paramArrayOfObject[0] instanceof Integer)) && ((paramArrayOfObject[1] instanceof byte[]))) {
-      a(((Integer)paramArrayOfObject[0]).intValue(), (byte[])paramArrayOfObject[1]);
-    }
-  }
-  
-  public void j()
-  {
-    a();
-    b();
-  }
-  
-  protected void j(boolean paramBoolean) {}
-  
-  public void j(boolean paramBoolean, Object paramObject)
-  {
-    b(paramBoolean, paramObject);
-  }
-  
-  public void j(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 6))
-    {
-      Boolean localBoolean = (Boolean)paramArrayOfObject[0];
-      String str1 = (String)paramArrayOfObject[1];
-      String str2 = (String)paramArrayOfObject[2];
-      String str3 = (String)paramArrayOfObject[3];
-      String str4 = (String)paramArrayOfObject[4];
-      paramArrayOfObject = (ArrayList)paramArrayOfObject[5];
-      a(paramBoolean, localBoolean.booleanValue(), str1, str2, str3, str4, paramArrayOfObject);
-    }
-  }
-  
-  public void k()
-  {
-    b();
-  }
-  
-  protected void k(boolean paramBoolean) {}
-  
-  public void k(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject instanceof String)) {
-      a(paramBoolean, (String)paramObject);
-    }
-  }
-  
-  public void k(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 4)) {
-      a(paramBoolean, (String)paramArrayOfObject[0], (String)paramArrayOfObject[1], (String)paramArrayOfObject[2], (String)paramArrayOfObject[3]);
-    }
-  }
-  
-  public void l()
-  {
-    c();
-  }
-  
-  public void l(boolean paramBoolean)
-  {
-    e(paramBoolean);
-  }
-  
-  public void l(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject instanceof Object[])) {
-      a(paramBoolean, (Object[])paramObject);
-    }
-  }
-  
-  public void l(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    boolean bool;
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 2))
-    {
-      List localList = (List)paramArrayOfObject[0];
-      bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
-      paramArrayOfObject = localList;
-    }
-    for (;;)
-    {
-      a(paramBoolean, paramArrayOfObject, bool);
-      return;
-      paramArrayOfObject = null;
-      bool = true;
-    }
-  }
-  
-  public void m()
-  {
-    e();
-  }
-  
-  public void m(boolean paramBoolean)
-  {
-    d(paramBoolean);
-  }
-  
-  public void m(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageObserver", 2, "onUpdate NOTIFY_TYPE_SUBACCOUNT_GET_MSG");
-    }
-    String str = null;
-    if (paramObject != null) {
-      str = ((bdxd)paramObject).c;
-    }
-    b(paramBoolean, str, (bdxd)paramObject);
-  }
-  
-  public void m(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    int j = 0;
-    int i = j;
-    if (paramArrayOfObject != null)
-    {
-      i = j;
-      if (paramArrayOfObject.length == 1) {
-        i = ((Integer)paramArrayOfObject[0]).intValue();
-      }
-    }
-    a(paramBoolean, i);
-  }
-  
-  public void n(boolean paramBoolean)
-  {
-    k(paramBoolean);
-  }
-  
-  public void n(boolean paramBoolean, Object paramObject)
-  {
-    Object localObject1 = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageObserver", 2, "onUpdate NOTIFY_TYPE_SUBACCOUNT_MSG_NUM_READED_CONFIRM isSucc=" + paramBoolean + " data=" + String.valueOf(paramObject));
-    }
-    if ((paramObject instanceof String[]))
-    {
-      paramObject = (String[])paramObject;
-      if (paramObject.length == 2)
+      paramString = paramString.split("\\|");
+      if (paramString != null)
       {
-        localObject1 = paramObject[0];
-        paramObject = paramObject[1];
+        if (paramString.length >= 3) {
+          f2 = Float.valueOf(paramString[2]).floatValue();
+        }
+        if (paramString.length >= 4) {
+          f1 = Float.valueOf(paramString[3]).floatValue();
+        }
+        if (paramString.length >= 5) {
+          f3 = Float.valueOf(paramString[4]).floatValue();
+        }
+        if (paramString.length >= 6) {
+          f4 = -Float.valueOf(paramString[5]).floatValue();
+        }
+        f5 = f4;
+        paramInt2 = 1;
+        f4 = f3;
+        f3 = f5;
       }
     }
     for (;;)
     {
-      a(paramBoolean, (String)localObject1, paramObject);
-      return;
-      Object localObject2 = null;
-      paramObject = localObject1;
-      localObject1 = localObject2;
-    }
-  }
-  
-  public void n(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 3)) {
-      a(paramBoolean, ((Integer)paramArrayOfObject[0]).intValue(), ((Long)paramArrayOfObject[1]).longValue(), ((Boolean)paramArrayOfObject[2]).booleanValue());
-    }
-  }
-  
-  public void o(boolean paramBoolean)
-  {
-    b(paramBoolean);
-  }
-  
-  public void o(boolean paramBoolean, Object paramObject)
-  {
-    String str = null;
-    if (paramObject != null) {
-      str = ((bdxd)paramObject).c;
-    }
-    a(paramBoolean, str, (bdxd)paramObject);
-  }
-  
-  public void o(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if ((paramBoolean) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 1)) {
-      c((String)paramArrayOfObject[0]);
-    }
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject instanceof Object[])) {}
-    for (Object[] arrayOfObject = (Object[])paramObject;; arrayOfObject = null)
-    {
-      aouy localaouy = (aouy)this.a.get(Integer.valueOf(paramInt));
-      if (localaouy != null) {
-        localaouy.a(this, paramInt, paramBoolean, paramObject, arrayOfObject, null);
+      paramInt1 = 1;
+      f5 = f1;
+      float f6 = f2;
+      if (paramInt2 != 0)
+      {
+        if ((f2 <= 0.05F) || (f1 <= 0.05F)) {
+          break label385;
+        }
+        if (f10 > f7)
+        {
+          paramInt1 = 1;
+          f6 = f2;
+          f5 = f1;
+        }
       }
-      return;
-    }
-  }
-  
-  public void p(boolean paramBoolean)
-  {
-    c(paramBoolean);
-  }
-  
-  public void p(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject instanceof msg_svc.TransSvrInfo)) {
-      a(paramBoolean, (msg_svc.TransSvrInfo)paramObject);
-    }
-  }
-  
-  public void p(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 1)) {
-      b(paramBoolean, ((Integer)paramArrayOfObject[0]).intValue());
-    }
-  }
-  
-  public void q(boolean paramBoolean)
-  {
-    f(paramBoolean);
-  }
-  
-  public void q(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if (paramBoolean) {
-      if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 8)) {
-        a((String)paramArrayOfObject[0], ((Integer)paramArrayOfObject[1]).intValue(), ((Integer)paramArrayOfObject[2]).intValue(), (SendMessageHandler)paramArrayOfObject[3], ((Long)paramArrayOfObject[4]).longValue(), ((Long)paramArrayOfObject[5]).longValue(), (String)paramArrayOfObject[6], ((Integer)paramArrayOfObject[7]).intValue());
+      else
+      {
+        if (!paramBoolean) {
+          break label500;
+        }
+        localaoex.jdField_a_of_type_Float = (10.0F * f7);
+        localaoex.jdField_b_of_type_Float = 10.0F;
+        localaoex.c = 0.0F;
+        localaoex.d = 0.0F;
+        localaoex.e = -5.0F;
+        if (paramInt2 != 0)
+        {
+          if (paramInt1 == 0) {
+            break label459;
+          }
+          localaoex.jdField_a_of_type_Float *= f6;
+          localaoex.jdField_b_of_type_Float = (localaoex.jdField_a_of_type_Float * (f9 / f8));
+          f1 = localaoex.jdField_a_of_type_Float / 2.0F;
+          label320:
+          localaoex.c = (f4 * f7 / f1);
+          localaoex.d = (f3 / f1);
+        }
       }
-    }
-    while ((paramArrayOfObject == null) || (paramArrayOfObject.length < 8))
-    {
+      label385:
+      label459:
+      label500:
       do
       {
-        return;
-      } while ((paramArrayOfObject == null) || (paramArrayOfObject.length < 4));
-      a(true, (String)paramArrayOfObject[0], ((Integer)paramArrayOfObject[1]).intValue(), ((Long)paramArrayOfObject[2]).longValue(), ((Integer)paramArrayOfObject[3]).intValue());
-      return;
+        QLog.i("ARVideoUtil", 1, "parseVideoLayout layout = " + localaoex);
+        return localaoex;
+        paramInt1 = 0;
+        f5 = f1;
+        f6 = f2;
+        break;
+        if (f2 > 0.05F)
+        {
+          paramInt1 = 1;
+          f5 = f1;
+          f6 = f2;
+          break;
+        }
+        if (f1 > 0.05F)
+        {
+          paramInt1 = 0;
+          f5 = f1;
+          f6 = f2;
+          break;
+        }
+        if (f10 > f7)
+        {
+          paramInt1 = 1;
+          f6 = 1.0F;
+          f5 = f1;
+          break;
+        }
+        paramInt1 = 0;
+        f5 = 1.0F;
+        f6 = f2;
+        break;
+        localaoex.jdField_b_of_type_Float *= f5;
+        localaoex.jdField_a_of_type_Float = (localaoex.jdField_b_of_type_Float * (f8 / f9));
+        f1 = localaoex.jdField_b_of_type_Float / 2.0F;
+        break label320;
+        localaoex.jdField_a_of_type_Float = 2.0F;
+        localaoex.jdField_b_of_type_Float = 2.0F;
+        localaoex.c = 0.0F;
+        localaoex.d = 0.0F;
+        localaoex.e = 0.0F;
+      } while (paramInt2 == 0);
+      if (paramInt1 != 0)
+      {
+        localaoex.jdField_a_of_type_Float *= f6;
+        localaoex.jdField_b_of_type_Float = (localaoex.jdField_a_of_type_Float * f7 * (f9 / f8));
+      }
+      for (f1 = localaoex.jdField_a_of_type_Float / 2.0F;; f1 = localaoex.jdField_b_of_type_Float / 2.0F)
+      {
+        localaoex.c = (f4 / f1);
+        localaoex.d = (f3 / f1);
+        break;
+        localaoex.jdField_b_of_type_Float *= f5;
+        localaoex.jdField_a_of_type_Float = (localaoex.jdField_b_of_type_Float / f7 * (f8 / f9));
+      }
+      f4 = 0.0F;
+      f2 = 1.0F;
+      f3 = 0.0F;
+      paramInt2 = 0;
     }
-    a((String)paramArrayOfObject[0], ((Integer)paramArrayOfObject[1]).intValue(), ((Integer)paramArrayOfObject[2]).intValue(), (SendMessageHandler)paramArrayOfObject[3], ((Long)paramArrayOfObject[4]).longValue(), ((Long)paramArrayOfObject[5]).longValue(), (String)paramArrayOfObject[6], ((Integer)paramArrayOfObject[7]).intValue());
   }
   
-  public void r(boolean paramBoolean)
+  public static Pair<Integer, aokz> a(aoci paramaoci)
   {
-    a(paramBoolean);
+    int k = 0;
+    aokz localaokz = aoky.a(0);
+    if (paramaoci.a.d == 2) {}
+    for (;;)
+    {
+      int j;
+      try
+      {
+        j = Integer.parseInt(((ArVideoResourceInfo)paramaoci.a.a.get(0)).jdField_a_of_type_JavaLangString);
+        if (j < 0)
+        {
+          i = k;
+          return new Pair(Integer.valueOf(i), localaokz);
+        }
+      }
+      catch (Throwable paramaoci)
+      {
+        j = 0;
+        continue;
+        if (j != 0)
+        {
+          i = k;
+          if (j != 1) {
+            continue;
+          }
+        }
+        i = j;
+        continue;
+      }
+      if (paramaoci.a.d != 3)
+      {
+        i = k;
+        if (paramaoci.a.d != 4) {}
+      }
+      else if ((paramaoci.a.d == 4) && ("circle".equalsIgnoreCase(((ArVideoResourceInfo)paramaoci.a.a.get(0)).jdField_a_of_type_JavaLangString)))
+      {
+        i = 1;
+      }
+      else
+      {
+        try
+        {
+          paramaoci = ((ArVideoResourceInfo)paramaoci.a.a.get(0)).jdField_a_of_type_JavaLangString.split("\\|");
+          if ((paramaoci == null) || (paramaoci.length < 5)) {
+            break;
+          }
+          i = Integer.parseInt(paramaoci[0]);
+          j = Integer.parseInt(paramaoci[1]);
+          int m = Integer.parseInt(paramaoci[2]);
+          int n = Integer.parseInt(paramaoci[3]);
+          int i1 = Integer.parseInt(paramaoci[4]);
+          if ((i > 255) || (j > 255) || (m > 255) || (n > 255) || (i < 0) || (j < 0) || (m < 0) || (n < 0) || (i1 < 0) || (i1 > 100)) {
+            break label601;
+          }
+          localaokz.a(i / 255.0F, j / 255.0F, m / 255.0F);
+          localaokz.jdField_a_of_type_Int = 1;
+          localaokz.d = (n / 255.0F);
+          localaokz.e = (i1 / 100.0F);
+          if ((paramaoci != null) && (paramaoci.length >= 6) && (Integer.parseInt(paramaoci[5]) == 1)) {
+            localaokz.jdField_a_of_type_Int = 2;
+          }
+          if ((paramaoci != null) && (paramaoci.length >= 8))
+          {
+            i = Integer.parseInt(paramaoci[6]);
+            paramaoci = paramaoci[7];
+            if ((i == 2) && (!TextUtils.isEmpty(paramaoci)))
+            {
+              paramaoci = paramaoci.split(";");
+              if ((paramaoci == null) || (paramaoci.length != 3)) {
+                break label606;
+              }
+              localaokz.f = Float.valueOf(paramaoci[0]).floatValue();
+              localaokz.g = Float.valueOf(paramaoci[1]).floatValue();
+              localaokz.h = Float.valueOf(paramaoci[2]).floatValue();
+              localaokz.jdField_a_of_type_Int = 3;
+              break label606;
+            }
+            if ((i == 3) && (!TextUtils.isEmpty(paramaoci)))
+            {
+              paramaoci = paramaoci.split(";");
+              if ((paramaoci == null) || (paramaoci.length != 3)) {
+                break label611;
+              }
+              localaokz.f = Float.valueOf(paramaoci[0]).floatValue();
+              localaokz.g = Float.valueOf(paramaoci[1]).floatValue();
+              localaokz.h = Float.valueOf(paramaoci[2]).floatValue();
+              localaokz.jdField_a_of_type_Int = 4;
+              break label611;
+            }
+            if ((i == 4) && (!TextUtils.isEmpty(paramaoci)))
+            {
+              localaokz.jdField_a_of_type_JavaLangString = aokr.a(paramaoci, "uniform int uDisplayType;\n", null, "    if(uDisplayType == 1){\n        // 需要渲染成圆形\n        float x = vTextureCoord.x;\n        float y = vTextureCoord.y;\n        // 圆心(0.5, 0.5), 0.25=0.5*0.5\n        if(pow(abs(x-0.5), 2.0) + pow(abs(y-0.5), 2.0) >= 0.25) {\n            gl_FragColor[3] = 0.0;\n        }\n    }\n");
+              localaokz.jdField_a_of_type_Int = 5;
+            }
+          }
+          i = 2;
+        }
+        catch (Throwable paramaoci)
+        {
+          i = k;
+        }
+        if (QLog.isColorLevel())
+        {
+          paramaoci.printStackTrace();
+          i = k;
+        }
+      }
+    }
+    int i = 0;
+    break label603;
+    label601:
+    i = 0;
+    for (;;)
+    {
+      label603:
+      break;
+      label606:
+      i = 2;
+      continue;
+      label611:
+      i = 2;
+    }
   }
   
-  public void s(boolean paramBoolean)
+  public static void a(String paramString)
   {
-    h(paramBoolean);
+    for (;;)
+    {
+      int i = GLES20.glGetError();
+      if (i == 0) {
+        break;
+      }
+      QLog.d("ARVideoUtil", 1, paramString + ": glError " + i);
+    }
   }
   
-  public void t(boolean paramBoolean)
+  public static boolean a()
   {
-    i(paramBoolean);
-  }
-  
-  public void u(boolean paramBoolean)
-  {
-    j(paramBoolean);
-  }
-  
-  public void v(boolean paramBoolean)
-  {
-    g(paramBoolean);
-  }
-  
-  public void w(boolean paramBoolean)
-  {
-    a(paramBoolean, false);
+    String str = Build.MODEL.toLowerCase();
+    return (Build.MANUFACTURER.toLowerCase().contains("meizu")) && (str.contains("m040"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aocj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class bkhn
-  implements View.OnClickListener
+class bkhn
+  extends AVAudioCtrl.EnableMicCompleteCallback
 {
-  public bkhn(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  bkhn(bkhk parambkhk) {}
   
-  public void onClick(View paramView)
+  public void onComplete(boolean paramBoolean, int paramInt)
   {
-    boolean bool = true;
-    Object localObject = QidianProfileCardActivity.a(this.a);
-    int i;
-    if (QidianProfileCardActivity.a(this.a))
-    {
-      i = 1;
-      ((TextView)localObject).setMaxLines(i);
-      localObject = this.a;
-      if (QidianProfileCardActivity.a(this.a)) {
-        break label65;
-      }
-    }
-    for (;;)
-    {
-      QidianProfileCardActivity.a((QidianProfileCardActivity)localObject, bool);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      i = 3;
-      break;
-      label65:
-      bool = false;
+    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean, paramInt);
     }
   }
 }

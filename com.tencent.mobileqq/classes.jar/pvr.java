@@ -1,36 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import org.jetbrains.annotations.NotNull;
 
-class pvr
-  implements ViewBase.OnClickListener
+public class pvr
 {
-  pvr(pvl parampvl, qwn paramqwn, ArticleInfo paramArticleInfo) {}
+  public long a;
+  public pvp a;
   
-  public void onClick(ViewBase paramViewBase)
+  @NotNull
+  public String toString()
   {
-    boolean bool = true;
-    int i;
-    ArticleInfo localArticleInfo;
-    if (this.jdField_a_of_type_Qwn.a)
-    {
-      i = 2;
-      pvl.a(this.jdField_a_of_type_Pvl, this.jdField_a_of_type_Qwn, i);
-      paramViewBase = this.jdField_a_of_type_Pvl;
-      localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-      if (this.jdField_a_of_type_Qwn.a) {
-        break label60;
-      }
-    }
-    for (;;)
-    {
-      pvl.a(paramViewBase, localArticleInfo, bool);
-      return;
-      i = 1;
-      break;
-      label60:
-      bool = false;
-    }
+    return "UserInfoItem{uin='" + this.jdField_a_of_type_Long + '\'' + ", liveStatus='" + this.jdField_a_of_type_Pvp + '\'' + '}';
   }
 }
 

@@ -1,29 +1,29 @@
 package dov.com.qq.im.ae.data;
 
-import boqm;
+import blut;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
 import java.util.List;
 
 public class AEGifMaterialManager$2
   implements Runnable
 {
-  public AEGifMaterialManager$2(boqm paramboqm) {}
+  public AEGifMaterialManager$2(blut paramblut) {}
   
   public void run()
   {
     for (;;)
     {
-      synchronized (boqm.a(this.this$0))
+      synchronized (blut.a(this.this$0))
       {
-        List localList = boqm.a(this.this$0);
+        List localList = blut.a(this.this$0);
         if (!CollectionUtils.isEmpty(localList)) {
-          boqm.a(this.this$0, localList);
+          blut.a(this.this$0, localList);
         }
-        boqm localboqm = this.this$0;
+        blut localblut = this.this$0;
         if (!CollectionUtils.isEmpty(localList))
         {
           bool = true;
-          boqm.a(localboqm, bool);
+          blut.a(localblut, bool);
           return;
         }
       }

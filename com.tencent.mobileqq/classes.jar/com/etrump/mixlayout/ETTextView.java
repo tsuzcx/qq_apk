@@ -1,8 +1,7 @@
 package com.etrump.mixlayout;
 
-import agej;
-import ahql;
-import ahtx;
+import agmy;
+import agql;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -19,7 +18,6 @@ import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.text.Spannable;
 import android.text.TextPaint;
-import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 import android.util.AttributeSet;
 import android.util.SparseArray;
@@ -29,21 +27,21 @@ import android.view.View.MeasureSpec;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import anxh;
-import aqkt;
-import aqmm;
-import behh;
-import bhzz;
-import biaa;
-import biuy;
+import apee;
+import apfx;
+import bggj;
+import bggk;
+import bhba;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.ToolAppRuntime;
-import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForText;
@@ -51,7 +49,8 @@ import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import com.tencent.widget.XListView;
-import fo;
+import fn;
+import ft;
 import fu;
 import fv;
 import fw;
@@ -59,12 +58,11 @@ import fx;
 import fy;
 import fz;
 import g;
-import ga;
-import gc;
-import gg;
+import gb;
+import gf;
+import gi;
 import gj;
-import gl;
-import go;
+import gm;
 import h;
 import java.util.concurrent.atomic.AtomicBoolean;
 import k;
@@ -91,8 +89,8 @@ public class ETTextView
   private boolean hasComputeComplexScript;
   public boolean isFounderAnimating;
   public boolean isParsingMagicFont;
-  public fz mAnimationListener;
-  private final fv mBitmapLocker = new fv(this, null);
+  public fy mAnimationListener;
+  private final fu mBitmapLocker = new fu(this, null);
   private boolean mCacheMeasureResult = true;
   public int mClickEpId = -1;
   public int mClickcEId = -1;
@@ -106,7 +104,7 @@ public class ETTextView
   public ETFont mFont;
   public o mFounderColorLayout;
   public boolean mHasClickedArkSpan;
-  public fo mLayout;
+  public fn mLayout;
   private int mLinkBackcolor;
   public boolean mMagicFont;
   public int mMaxWidth = 2147483647;
@@ -114,7 +112,7 @@ public class ETTextView
   private int mMinHeight;
   private int mMinWidth;
   public long mMsgId;
-  private fy mOnBeforeTextOrFontChangeListener;
+  private fx mOnBeforeTextOrFontChangeListener;
   private boolean mPauseAnimation;
   private MotionEvent mPreviousUpEvent;
   private Paint mSelectPaint;
@@ -123,8 +121,8 @@ public class ETTextView
   private float mShadowDx;
   private float mShadowDy;
   private float mShadowRadius;
-  private gl mTextGraphMap;
-  private fu mTextSelection;
+  private gj mTextGraphMap;
+  private ft mTextSelection;
   Runnable mTimerForSecondClick = new ETTextView.1(this);
   public boolean shouldStartAnimation;
   
@@ -192,33 +190,33 @@ public class ETTextView
   
   private void dealSmallEmojiClick(int paramInt1, int paramInt2)
   {
-    aqkt localaqkt;
+    apee localapee;
     Object localObject;
     Resources localResources;
     boolean bool;
     if (this.mLayout.a(paramInt1, paramInt2) != null)
     {
-      localaqkt = (aqkt)getTag(2131363997);
-      localObject = (ChatMessage)getTag(2131364467);
+      localapee = (apee)getTag(2131364021);
+      localObject = (ChatMessage)getTag(2131364486);
       localResources = getResources();
       bool = false;
       if (localObject != null) {
         bool = ((ChatMessage)localObject).isSend();
       }
       localObject = getBackground();
-      if ((localObject == null) || (!(localObject instanceof aqmm))) {
+      if ((localObject == null) || (!(localObject instanceof apfx))) {
         break label82;
       }
-      ((aqmm)localObject).jdField_a_of_type_Boolean = true;
+      ((apfx)localObject).jdField_a_of_type_Boolean = true;
     }
     label82:
-    while ((localObject == null) || (localaqkt == null)) {
+    while ((localObject == null) || (localapee == null)) {
       return;
     }
     if (bool) {}
-    for (paramInt1 = 2130850000;; paramInt1 = 2130849824)
+    for (paramInt1 = 2130849917;; paramInt1 = 2130849741)
     {
-      localaqkt.a(this, localResources.getDrawable(paramInt1));
+      localapee.a(this, localResources.getDrawable(paramInt1));
       return;
     }
   }
@@ -237,13 +235,13 @@ public class ETTextView
     Object localObject;
     if (mCreateDecorationHandler == null)
     {
-      mUIHandler = new ga(null);
+      mUIHandler = new fz(null);
       if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
         break label86;
       }
-      localObject = (gc)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(42);
-      if ((localObject != null) && (((gc)localObject).a != null) && (((gc)localObject).a.getLooper() != null)) {
-        mCreateDecorationHandler = new fw(((gc)localObject).a.getLooper());
+      localObject = (gb)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(42);
+      if ((localObject != null) && (((gb)localObject).a != null) && (((gb)localObject).a.getLooper() != null)) {
+        mCreateDecorationHandler = new fv(((gb)localObject).a.getLooper());
       }
     }
     label86:
@@ -253,9 +251,9 @@ public class ETTextView
       {
         return;
       } while (!(BaseApplicationImpl.getApplication().getRuntime() instanceof ToolAppRuntime));
-      localObject = gg.a();
+      localObject = gf.a();
     } while (localObject == null);
-    mCreateDecorationHandler = new fw(((gg)localObject).a.getLooper());
+    mCreateDecorationHandler = new fv(((gf)localObject).a.getLooper());
   }
   
   private void setFont(ETFont paramETFont, long paramLong, int paramInt)
@@ -280,7 +278,7 @@ public class ETTextView
       }
       this.mMsgId = paramLong;
       if (this.mLayout == null) {
-        this.mLayout = new fo();
+        this.mLayout = new fn();
       }
       this.mFont.setColor(getCurrentTextColor());
       if (this.mOnBeforeTextOrFontChangeListener != null) {
@@ -325,15 +323,15 @@ public class ETTextView
     super.clearHighlightContent();
   }
   
-  public fo getETLayout()
+  public fn getETLayout()
   {
     return this.mLayout;
   }
   
-  public gl getTextGraphMap()
+  public gj getTextGraphMap()
   {
     if (this.mTextGraphMap == null) {
-      this.mTextGraphMap = new gl(getText());
+      this.mTextGraphMap = new gj(getText());
     }
     return this.mTextGraphMap;
   }
@@ -418,7 +416,7 @@ public class ETTextView
   
   public boolean isDrawDefaultByHY()
   {
-    return (this.mFont != null) && (this.mFont.mFontId == 9999) && (!TextUtils.isEmpty(this.mFont.mFontPath)) && (go.jdField_a_of_type_Int == 4);
+    return (this.mFont != null) && (this.mFont.mFontId == 9999) && (!android.text.TextUtils.isEmpty(this.mFont.mFontPath)) && (gm.jdField_a_of_type_Int == 4);
   }
   
   public boolean isUseExpressFont()
@@ -449,7 +447,7 @@ public class ETTextView
   {
     if (!this.hasComputeComplexScript)
     {
-      this.hasComplexScript = behh.b(getText().toString());
+      this.hasComplexScript = com.tencent.mobileqq.text.TextUtils.isContainComplexScript(getText().toString());
       this.hasComputeComplexScript = true;
     }
     return (this.mFont != null) && (this.mFont.mFontId != 0) && (this.mFont.mFontType == 4) && (!this.hasComplexScript);
@@ -470,26 +468,26 @@ public class ETTextView
     if ((getContext() instanceof FragmentActivity))
     {
       Object localObject1 = ((FragmentActivity)getContext()).getChatFragment();
-      if ((localObject1 != null) && (((ChatFragment)localObject1).a() != null) && (((ChatFragment)localObject1).a().a != null))
+      if ((localObject1 != null) && (((ChatFragment)localObject1).a() != null) && (((ChatFragment)localObject1).a().listView != null))
       {
-        localObject1 = ((ChatFragment)localObject1).a().a;
-        localObject1 = agej.a((ListView)localObject1, agej.a(this.mMsgId, ((XListView)localObject1).getAdapter()));
+        localObject1 = ((ChatFragment)localObject1).a().listView;
+        localObject1 = AIOUtils.getViewByPostion((ListView)localObject1, AIOUtils.findMessagePosition(this.mMsgId, ((XListView)localObject1).getAdapter()));
         Object localObject2;
-        if ((localObject1 != null) && ((((View)localObject1).getTag() instanceof ahtx)))
+        if ((localObject1 != null) && ((((View)localObject1).getTag() instanceof agql)))
         {
-          localObject2 = (ahtx)((View)localObject1).getTag();
-          if ((((ahtx)localObject2).d == null) || (((ahtx)localObject2).d.getTop() + ((View)localObject1).getBottom() < getContext().getResources().getDimensionPixelSize(2131299011))) {}
+          localObject2 = (agql)((View)localObject1).getTag();
+          if ((((agql)localObject2).d == null) || (((agql)localObject2).d.getTop() + ((View)localObject1).getBottom() < getContext().getResources().getDimensionPixelSize(2131299076))) {}
         }
         else
         {
           do
           {
             return true;
-            if ((localObject1 == null) || (!(agej.a((View)localObject1) instanceof ahql))) {
+            if ((localObject1 == null) || (!(AIOUtils.getHolder((View)localObject1) instanceof agmy))) {
               break;
             }
-            localObject2 = (ahql)agej.a((View)localObject1);
-          } while (((View)localObject1).getTop() + ((View)localObject1).getBottom() >= getContext().getResources().getDimensionPixelSize(2131299011));
+            localObject2 = (agmy)AIOUtils.getHolder((View)localObject1);
+          } while (((View)localObject1).getTop() + ((View)localObject1).getBottom() >= getContext().getResources().getDimensionPixelSize(2131299076));
         }
       }
     }
@@ -531,7 +529,7 @@ public class ETTextView
   
   public void onDraw(Canvas paramCanvas)
   {
-    if (TextUtils.isEmpty(getText()))
+    if (android.text.TextUtils.isEmpty(getText()))
     {
       super.onDraw(paramCanvas);
       return;
@@ -622,7 +620,7 @@ public class ETTextView
         else
         {
           l2 = System.currentTimeMillis();
-          gj.a("action_draw", this.mFont.mFontId, this.mFont.mFontType, getText().length(), l2 - l1);
+          gi.a("action_draw", this.mFont.mFontId, this.mFont.mFontType, getText().length(), l2 - l1);
           return;
         }
         ETEngine localETEngine = ETEngine.getInstance();
@@ -660,7 +658,7 @@ public class ETTextView
         startFounderDecorAnimation(false, false);
         return;
         l2 = System.currentTimeMillis();
-        gj.a("action_draw", this.mFont.mFontId, 4, getText().length(), l2 - l1);
+        gi.a("action_draw", this.mFont.mFontId, 4, getText().length(), l2 - l1);
       }
       break;
       label677:
@@ -670,7 +668,7 @@ public class ETTextView
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
-    if (TextUtils.isEmpty(getText()))
+    if (android.text.TextUtils.isEmpty(getText()))
     {
       super.onMeasure(paramInt1, paramInt2);
       return;
@@ -711,8 +709,8 @@ public class ETTextView
         this.mLayout.jdField_a_of_type_Long = -1L;
         if ((!mReportError) && (localThrowable.getMessage().contains("textlayout")))
         {
-          biaa.a(null, "individual_v2_font_measure_error", "font_measure_error", localThrowable.getMessage(), localThrowable.getMessage(), 0.0F);
-          bhzz.a("individual_v2_font_measure_error", "font_measure_error");
+          bggk.a(null, "individual_v2_font_measure_error", "font_measure_error", localThrowable.getMessage(), localThrowable.getMessage(), 0.0F);
+          bggj.a("individual_v2_font_measure_error", "font_measure_error");
           mReportError = true;
         }
         super.onMeasure(paramInt1, paramInt2);
@@ -751,8 +749,8 @@ public class ETTextView
     if ((this.mLayout == null) || (this.mLayout.jdField_a_of_type_Long != this.mMsgId) || ((this.mFont != null) && (!this.mFont.equals(this.mLayout.jdField_a_of_type_ComEtrumpMixlayoutETFont))) || (!this.mCacheMeasureResult) || (this.mLayout.jdField_b_of_type_Boolean != this.mMagicFont))
     {
       this.mDecorRunning = false;
-      this.mLayout = new fo();
-      this.mTextSelection = new fu(this, this.mLayout);
+      this.mLayout = new fn();
+      this.mTextSelection = new ft(this, this.mLayout);
       if (this.mDecoration != null)
       {
         this.mDecoration.deleteDescriptor();
@@ -798,9 +796,9 @@ public class ETTextView
         }
         if (this.mLayout.jdField_b_of_type_Boolean)
         {
-          f1 = gc.c;
-          if (anxh.a() == 18.0F) {
-            f1 = gc.e;
+          f1 = gb.c;
+          if (FontSettingManager.getFontLevel() == 18.0F) {
+            f1 = gb.e;
           }
           ((ETFont)localObject2).setSize(f1 * getTextSize());
         }
@@ -849,7 +847,7 @@ public class ETTextView
         i += i4 + i5;
         j += i2 + i3;
         label1187:
-        fv.a(this.mBitmapLocker, i, j);
+        fu.a(this.mBitmapLocker, i, j);
         label1198:
         if (this.mDecoration != null)
         {
@@ -1062,10 +1060,10 @@ public class ETTextView
   public void setDefaultFont(Typeface paramTypeface, long paramLong)
   {
     setTypeface(paramTypeface);
-    if (go.jdField_a_of_type_Int == 4) {
+    if (gm.jdField_a_of_type_Int == 4) {
       if (this.mFont == null)
       {
-        this.mFont = new ETFont(9999, go.a(), getTextSize());
+        this.mFont = new ETFont(9999, gm.a(), getTextSize());
         this.mMsgId = paramLong;
         this.mFont.mFontType = -1;
       }
@@ -1077,7 +1075,7 @@ public class ETTextView
       }
       return;
       this.mFont.mFontId = 9999;
-      this.mFont.setPath(go.a());
+      this.mFont.setPath(gm.a());
       this.mFont.setSize(getTextSize());
       break;
       this.mFont = null;
@@ -1114,10 +1112,10 @@ public class ETTextView
     if ((paramETFont.mText == null) && ((paramChatMessage instanceof MessageForText)))
     {
       localObject = (MessageForText)paramChatMessage;
-      if (TextUtils.isEmpty(((MessageForText)localObject).sb)) {
+      if (android.text.TextUtils.isEmpty(((MessageForText)localObject).sb)) {
         break label114;
       }
-      if (TextUtils.isEmpty(((MessageForText)localObject).sb2)) {
+      if (android.text.TextUtils.isEmpty(((MessageForText)localObject).sb2)) {
         break label104;
       }
       localObject = ((MessageForText)localObject).sb2;
@@ -1127,7 +1125,7 @@ public class ETTextView
       paramETFont.mText = ((CharSequence)localObject);
       localObject = paramChatMessage.getExtInfoFromExtStr("vip_sub_font_id");
       int i = 0;
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      if (!android.text.TextUtils.isEmpty((CharSequence)localObject)) {
         i = Integer.parseInt((String)localObject);
       }
       setFont(paramETFont, paramChatMessage.uniseq, i);
@@ -1160,9 +1158,9 @@ public class ETTextView
     super.setMinWidth(paramInt);
   }
   
-  public void setOnTextOrFontChangeListener(fy paramfy)
+  public void setOnTextOrFontChangeListener(fx paramfx)
   {
-    this.mOnBeforeTextOrFontChangeListener = paramfy;
+    this.mOnBeforeTextOrFontChangeListener = paramfx;
   }
   
   public void setShadowLayer(float paramFloat1, float paramFloat2, float paramFloat3, int paramInt)
@@ -1182,9 +1180,9 @@ public class ETTextView
     super.setText(paramCharSequence, paramBufferType);
   }
   
-  public void setTextAnimationListener(fz paramfz)
+  public void setTextAnimationListener(fy paramfy)
   {
-    this.mAnimationListener = paramfz;
+    this.mAnimationListener = paramfy;
   }
   
   public final void setTextMsg(CharSequence paramCharSequence)
@@ -1245,7 +1243,7 @@ public class ETTextView
       }
       this.mDecorRunning = true;
       this.shouldStartAnimation = false;
-      mUIHandler.obtainMessage(0, fx.a(this)).sendToTarget();
+      mUIHandler.obtainMessage(0, fw.a(this)).sendToTarget();
       if ((paramBoolean2) || (this.mAnimationListener == null)) {
         break;
       }
@@ -1290,8 +1288,8 @@ public class ETTextView
                   if (localObject == null) {
                     break;
                   }
-                  localObject = (gc)((QQAppInterface)localObject).getManager(42);
-                } while ((localObject != null) && (!((gc)localObject).b()));
+                  localObject = (gb)((QQAppInterface)localObject).getManager(42);
+                } while ((localObject != null) && (!((gb)localObject).b()));
                 if ((!enableAnimation) || (this.mPauseAnimation)) {
                   break;
                 }
@@ -1373,7 +1371,7 @@ public class ETTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.etrump.mixlayout.ETTextView
  * JD-Core Version:    0.7.0.1
  */

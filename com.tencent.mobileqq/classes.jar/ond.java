@@ -1,17 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarFragment;
 
 public class ond
-  implements View.OnClickListener
+  extends Handler
 {
-  public ond(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
-  
-  public void onClick(View paramView)
+  public ond(ReadInJoyUploadAvatarFragment paramReadInJoyUploadAvatarFragment, Looper paramLooper)
   {
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if (localFragmentActivity == null) {
+      return;
+    }
+    Intent localIntent = localFragmentActivity.getIntent();
+    Bundle localBundle = new Bundle();
+    switch (paramMessage.what)
+    {
+    default: 
+      localBundle.putString("msg", amtj.a(2131712138));
+      localBundle.putInt("retCode", 3);
+      localIntent.putExtra("Bundle", localBundle);
+      localFragmentActivity.setResult(-1, localIntent);
+    }
+    for (;;)
+    {
+      localFragmentActivity.finish();
+      return;
+      localBundle.putString("url", (String)paramMessage.obj);
+      localBundle.putInt("retCode", 0);
+      localBundle.putString("msg", amtj.a(2131712197));
+      localIntent.putExtra("Bundle", localBundle);
+      localFragmentActivity.setResult(-1, localIntent);
+    }
   }
 }
 

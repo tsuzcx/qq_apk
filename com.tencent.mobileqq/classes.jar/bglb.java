@@ -1,19 +1,41 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.graphics.Rect;
 
-class bglb
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class bglb
 {
-  bglb(bgkx parambgkx) {}
+  private bgkw jdField_a_of_type_Bgkw;
+  private bgky jdField_a_of_type_Bgky;
   
-  public void onGlobalLayout()
+  public bglb(bgkw parambgkw, bgky parambgky)
   {
-    bgkx.a(this.a, this.a.jdField_a_of_type_JavaUtilArrayList);
-    if ((bgkx.a(this.a) != null) && (bgkx.a(this.a).getViewTreeObserver() != null) && (Build.VERSION.SDK_INT > 16) && (this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener != null)) {
-      bgkx.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-    }
+    this.jdField_a_of_type_Bgkw = parambgkw;
+    this.jdField_a_of_type_Bgky = parambgky;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bgkw.a(new bglc(this));
+    b();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Bgky.a(new Rect(0, 0, paramInt1, paramInt2));
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Bgkw.a();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Bgkw.b();
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Bgkw.a(null);
+    this.jdField_a_of_type_Bgky.a();
   }
 }
 

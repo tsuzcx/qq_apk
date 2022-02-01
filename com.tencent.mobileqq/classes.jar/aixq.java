@@ -1,29 +1,24 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttProcessController.1.1;
-import com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttProcessController.1.2;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.support.v4.app.FragmentActivity;
 
 public class aixq
-  implements INetInfoHandler
+  extends aiwz
 {
-  aixq(aixp paramaixp) {}
+  public static final int[] a = { 2131690702 };
+  public static final int[] b = { 2131364429 };
   
-  public void onNetMobile2None()
+  public aixq(FragmentActivity paramFragmentActivity)
   {
-    aixp.a(this.a).post(new VoiceTextSttProcessController.1.1(this));
+    super(paramFragmentActivity);
   }
   
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
+  protected int[] a()
   {
-    aixp.a(this.a).post(new VoiceTextSttProcessController.1.2(this));
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return a;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.addon;
 
-import amrx;
+import almr;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
@@ -13,11 +13,11 @@ import java.util.List;
 public class DiyPendantFetcher$5
   implements Runnable
 {
-  public DiyPendantFetcher$5(amrx paramamrx, QQAppInterface paramQQAppInterface) {}
+  public DiyPendantFetcher$5(almr paramalmr, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    List localList = this.a.a().createEntityManager().query(DiyPendantEntity.class, true, null, null, null, null, null, " 20 ");
+    List localList = this.a.getEntityManagerFactory().createEntityManager().query(DiyPendantEntity.class, true, null, null, null, null, null, " 20 ");
     if ((localList != null) && (localList.size() > 0))
     {
       Iterator localIterator = localList.iterator();

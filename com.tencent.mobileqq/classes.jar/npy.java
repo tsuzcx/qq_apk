@@ -1,19 +1,58 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.view.Window;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import java.nio.ByteBuffer;
 
 public class npy
-  implements View.OnLayoutChangeListener
+  extends nqa
 {
-  public npy(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
+  public int a;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public byte a(int paramInt)
   {
-    paramInt1 = this.a.getWindow().getDecorView().getBottom() - this.a.getWindow().getDecorView().getTop();
-    if (paramInt1 != this.a.b) {
-      LebaSearchPluginManagerActivity.a(this.a, paramInt1);
+    paramInt = this.c + paramInt;
+    if (a(paramInt, 1)) {
+      return this.jdField_a_of_type_JavaNioByteBuffer.get(paramInt);
     }
+    return 0;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return a(this.c - 4, true);
+  }
+  
+  public String a(int paramInt)
+  {
+    return b(this.c + paramInt * 4);
+  }
+  
+  public npy a(int paramInt, ByteBuffer paramByteBuffer)
+  {
+    if ((paramInt < 0) || (paramByteBuffer.capacity() < paramInt + 4)) {
+      return null;
+    }
+    this.jdField_a_of_type_Int = paramByteBuffer.getInt(paramInt);
+    this.c = (paramInt + 4);
+    this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
+    return this;
+  }
+  
+  public npy a(int paramInt, npy paramnpy)
+  {
+    return paramnpy.a(a(this.c + paramInt * 4), this.jdField_a_of_type_JavaNioByteBuffer);
+  }
+  
+  public npz a(int paramInt)
+  {
+    return a(paramInt, new npz());
+  }
+  
+  public npz a(int paramInt, npz paramnpz)
+  {
+    return paramnpz.a(a(this.c + paramInt * 4), this.jdField_a_of_type_JavaNioByteBuffer);
   }
 }
 

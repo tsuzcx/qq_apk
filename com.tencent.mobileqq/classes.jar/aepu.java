@@ -1,51 +1,37 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class aepu
-  implements DialogInterface.OnClickListener
+  extends bfaq
 {
-  public aepu(FriendProfileCardActivity paramFriendProfileCardActivity, Context paramContext) {}
+  public aepu(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.dismiss();
-      com.tencent.mobileqq.activity.AddFriendLogicActivity.b = false;
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog back");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getIntExtra("source_id", 3999) == 3090) {}
+    if ((paramBoolean) && (paramBundle != null)) {
       try
       {
-        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getStringExtra("extra");
-        ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, true, "action_game_make_friend", Long.valueOf(paramDialogInterface).longValue(), -1, anzj.a(2131703808));
-        if ((this.jdField_a_of_type_AndroidContentContext == null) || (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity))) {
-          continue;
-        }
-        ((Activity)this.jdField_a_of_type_AndroidContentContext).moveTaskToBack(true);
+        paramBundle = paramBundle.getByteArray("structMsg");
+        new structmsg.StructMsg().mergeFrom(paramBundle);
+        TroopRequestActivity.a(this.a, 1);
+        return;
       }
-      catch (Exception paramDialogInterface)
+      catch (InvalidProtocolBufferMicroException paramBundle)
       {
-        for (;;)
-        {
-          QLog.e("FriendProfileCardActivity", 1, "feedBackToGameSDK error = " + paramDialogInterface);
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.systemmsg.TroopRequestActivity", 2, "structMsg merge error");
         }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog stay");
+        this.a.h();
+        QQToast.a(this.a, this.a.getString(2131696843), 0).b(this.a.getTitleBarHeight());
+        return;
       }
     }
+    this.a.h();
+    QQToast.a(this.a, this.a.getString(2131696843), 0).b(this.a.getTitleBarHeight());
   }
 }
 

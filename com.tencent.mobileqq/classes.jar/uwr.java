@@ -1,20 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionActivity;
+import NS_KING_INTERFACE.stPostFeedDingReq;
+import NS_KING_INTERFACE.stPostFeedDingRsp;
 
 public class uwr
-  extends Handler
+  extends urg<stPostFeedDingRsp>
 {
-  public uwr(PublicAccountImageCollectionActivity paramPublicAccountImageCollectionActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public uwr(String paramString, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    PublicAccountImageCollectionActivity.a(this.a);
+    super("PostFeedDing");
+    this.a = new stPostFeedDingReq(paramString, null, paramInt);
   }
 }
 

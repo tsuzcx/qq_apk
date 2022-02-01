@@ -1,20 +1,15 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class adfu
-  implements adci
+  implements View.OnLongClickListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    aivu.a(paramQQAppInterface, paramMsgType0x210.vProtobuf);
-  }
+  public adfu(EditInfoActivity paramEditInfoActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public boolean onLongClick(View paramView)
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    return true;
   }
 }
 

@@ -1,22 +1,41 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ToggleButton;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import java.util.List;
 
 public class adwo
-  implements View.OnClickListener
+  implements ayqr
 {
-  public adwo(AuthDevActivity paramAuthDevActivity) {}
+  public adwo(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void onClick(View paramView)
+  public void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton, Boolean paramBoolean)
   {
-    AuthDevActivity.h(this.a);
-    Intent localIntent = new Intent(this.a, AuthDevOpenUgActivity.class);
-    localIntent.putExtra("DevlockInfo", AuthDevActivity.a(this.a));
-    this.a.startActivityForResult(localIntent, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramBoolean.booleanValue())
+    {
+      if ((this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) || (this.a.a(this.a.jdField_a_of_type_JavaUtilList)))
+      {
+        if (this.a.a(this.a.jdField_a_of_type_JavaUtilList)) {
+          this.a.b(2131693104);
+        }
+        return;
+      }
+      bcef.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "1", "", "", "");
+      this.a.jdField_a_of_type_JavaUtilList.add(paramProfileLabelInfo);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Ayqs.c(paramProfileLabelInfo, paramToggleButton);
+      this.a.a(this.a.jdField_a_of_type_JavaUtilList.size());
+      if (this.a.jdField_a_of_type_Adws == null) {
+        break;
+      }
+      this.a.jdField_a_of_type_Adws.notifyDataSetChanged();
+      return;
+      if (!this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) {
+        break;
+      }
+      this.a.a(paramProfileLabelInfo, this.a.jdField_a_of_type_JavaUtilList);
+    }
   }
 }
 

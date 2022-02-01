@@ -1,18 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.WnsConfigProxy;
+import common.config.service.QzoneConfig;
+import java.util.List;
 
+@ProxyService(proxy=WnsConfigProxy.class)
 public class bjgz
-  implements DialogInterface.OnCancelListener
+  extends WnsConfigProxy
 {
-  public bjgz(ShareActionSheetV2 paramShareActionSheetV2) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public List<String> getApiReportConfig()
   {
-    ShareActionSheetV2.b(this.a);
-    if (ShareActionSheetV2.a(this.a) != null) {
-      ShareActionSheetV2.a(this.a).onCancel(paramDialogInterface);
+    List localList = null;
+    try
+    {
+      apyq localapyq = apyr.a();
+      if (localapyq != null) {
+        localList = localapyq.a();
+      }
+      return localList;
     }
+    catch (Exception localException) {}
+    return null;
+  }
+  
+  public String getConfig(String paramString1, String paramString2)
+  {
+    return QzoneConfig.getInstance().getConfig(paramString1, paramString2);
   }
 }
 

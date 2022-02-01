@@ -1,44 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class pya
-  implements View.OnAttachStateChangeListener
+  implements zop
 {
-  pya(pxl parampxl, ppu paramppu, VideoView paramVideoView, pyc parampyc, BroadcastReceiver paramBroadcastReceiver) {}
+  pya(pxw parampxw, String paramString) {}
   
-  public void onViewAttachedToWindow(View paramView)
+  public void callback(Bundle paramBundle)
   {
-    sel localsel = this.jdField_a_of_type_Ppu.a();
-    pyb localpyb = new pyb(this);
-    localsel.b(localpyb);
-    paramView.setTag(2131376187, localpyb);
-    paramView = new IntentFilter();
-    paramView.addAction("android.media.VOLUME_CHANGED_ACTION");
-    BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramView);
-  }
-  
-  public void onViewDetachedFromWindow(View paramView)
-  {
-    this.jdField_a_of_type_Pyc.a(false);
-    sel localsel = this.jdField_a_of_type_Ppu.a();
-    paramView = (sdz)paramView.getTag(2131376187);
-    if (paramView != null) {
-      localsel.c(paramView);
-    }
+    QLog.d("ReadInJoyWebviewPlugin", 4, "receive readSkinAndSound callback resp:" + paramBundle.toString());
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      BaseApplicationImpl.getApplication().getBaseContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", paramBundle.getString("skinId")).put("volumeIsOn", paramBundle.getInt("volumeIsOn"));
+      this.jdField_a_of_type_Pxw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
       return;
     }
-    catch (Exception paramView)
+    catch (JSONException paramBundle)
     {
-      QLog.e("PgcShortContentProteusItem", 2, QLog.getStackTraceString(paramView));
+      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
+      this.jdField_a_of_type_Pxw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
     }
   }
 }

@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
-
-public class atbp
-  implements atbu
+class atbp
+  implements aszj
 {
-  public atbp(PullToRefreshBase paramPullToRefreshBase) {}
+  atbp(atbn paramatbn) {}
   
-  public void a()
+  public void onNo() {}
+  
+  public void onYes()
   {
-    PullToRefreshBase.a(this.a);
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atbp
  * JD-Core Version:    0.7.0.1
  */

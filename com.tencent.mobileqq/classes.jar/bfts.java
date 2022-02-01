@@ -1,13 +1,32 @@
-import java.util.Comparator;
-
-class bfts
-  implements Comparator<bftv>
+public class bfts
 {
-  bfts(bftr parambftr) {}
+  public int a;
+  public boolean a;
+  public int b;
   
-  public int a(bftv parambftv1, bftv parambftv2)
+  public bfts(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    return parambftv2.b - parambftv1.b;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == this) {}
+    do
+    {
+      return true;
+      if (paramObject == null) {
+        return false;
+      }
+      if (!(paramObject instanceof bfts)) {
+        break;
+      }
+      paramObject = (bfts)paramObject;
+    } while ((paramObject.b == this.b) && (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_a_of_type_Boolean == this.jdField_a_of_type_Boolean));
+    return false;
+    return false;
   }
 }
 

@@ -3,13 +3,13 @@ package com.tencent.av.business.manager.report;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import lie;
-import lig;
+import lhy;
+import lia;
 
 public class VideoNodeReporter$3
   implements Runnable
 {
-  public VideoNodeReporter$3(lie paramlie, int paramInt, long paramLong) {}
+  public VideoNodeReporter$3(lhy paramlhy, int paramInt, long paramLong) {}
   
   public void run()
   {
@@ -19,8 +19,8 @@ public class VideoNodeReporter$3
       Iterator localIterator = this.this$0.a.iterator();
       while (localIterator.hasNext())
       {
-        lig locallig = (lig)localIterator.next();
-        this.this$0.a(locallig.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+        lia locallia = (lia)localIterator.next();
+        this.this$0.a(locallia.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
       }
     }
     QLog.d("VideoNodeReporter", 1, " report ,node = " + this.jdField_a_of_type_Int + ",value = " + this.jdField_a_of_type_Long + ",seesionRecordList is empty");

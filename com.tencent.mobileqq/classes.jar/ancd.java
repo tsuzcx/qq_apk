@@ -1,13 +1,23 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
+import org.xmlpull.v1.XmlSerializer;
 
-class ancd
-  extends AVVideoCtrl.EnableCameraCompleteCallback
+final class ancd
+  extends bciz
 {
-  ancd(anbz paramanbz) {}
-  
-  public void onComplete(boolean paramBoolean, int paramInt)
+  ancd(String paramString)
   {
-    if (paramInt == 0) {}
+    super(paramString);
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "picture");
+    if (this.ac == null) {}
+    for (String str = "";; str = this.ac)
+    {
+      paramXmlSerializer.attribute(null, "cover", str);
+      paramXmlSerializer.endTag(null, "picture");
+      return;
+    }
   }
 }
 

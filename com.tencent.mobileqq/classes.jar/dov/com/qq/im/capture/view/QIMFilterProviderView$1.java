@@ -16,7 +16,7 @@ class QIMFilterProviderView$1
     if (localGridView != null)
     {
       localGridView.setSelection(this.a);
-      localGridView.smoothScrollToPosition(this.a / localGridView.c());
+      localGridView.smoothScrollToPosition(this.a / localGridView.getNumColumns());
     }
     while (!QLog.isColorLevel()) {
       return;

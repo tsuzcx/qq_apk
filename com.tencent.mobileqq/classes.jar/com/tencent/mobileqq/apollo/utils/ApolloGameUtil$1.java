@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import agye;
-import agyh;
-import agzk;
+import afuq;
+import afut;
+import afvw;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -56,17 +56,17 @@ final class ApolloGameUtil$1
         if (localObject != null)
         {
           localObject = ((View)localObject).getTag();
-          if ((localObject instanceof agzk))
+          if ((localObject instanceof afvw))
           {
-            localObject = (agyh)localObject;
-            localMessageForApollo = (MessageForApollo)((agyh)localObject).a;
+            localObject = (afut)localObject;
+            localMessageForApollo = (MessageForApollo)((afut)localObject).a;
             if ((ApolloGameUtil.a(localMessageForApollo.msgType)) && (localMessageForApollo.roomId == this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.roomId))
             {
               if (QLog.isColorLevel()) {
                 QLog.d("ApolloGameUtil", 2, new Object[] { "find the view with the same roomId,", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo.roomId) });
               }
               if ((this.jdField_a_of_type_AndroidOsBundle != null) && (this.jdField_a_of_type_AndroidOsBundle.getInt("type") == 1)) {
-                agye.a((agyh)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidOsBundle.getInt("gameId"), this.jdField_a_of_type_AndroidOsBundle.getInt("process"));
+                afuq.a((afut)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMessageForApollo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidOsBundle.getInt("gameId"), this.jdField_a_of_type_AndroidOsBundle.getInt("process"));
               }
             }
           }

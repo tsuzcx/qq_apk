@@ -1,28 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-final class awxt
-  extends Handler
+public class awxt
+  implements ampq
 {
-  java.lang.ref.WeakReference<awxj> a;
+  public awxt(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public awxt(awxj paramawxj)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    super(Looper.getMainLooper());
-    this.a = new mqq.util.WeakReference(paramawxj);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a == null) {}
-    awxj localawxj;
-    do
-    {
+    this.a.b();
+    if (!paramBoolean) {
+      this.a.b(this.a.getString(2131690945));
+    }
+    while ((this.a.e != 1) || (paramInt != 2)) {
       return;
-      localawxj = (awxj)this.a.get();
-    } while (localawxj == null);
-    localawxj.a(paramMessage);
+    }
+    NearbyPeopleProfileActivity.a(this.a).c();
   }
 }
 

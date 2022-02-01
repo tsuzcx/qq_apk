@@ -1,22 +1,8 @@
-import android.text.TextUtils;
-import cooperation.qzone.util.MultiHashMap;
+import java.util.List;
 
-class vih
-  implements bmzb
+public abstract interface vih
 {
-  vih(vig paramvig, int paramInt) {}
-  
-  public void a(int paramInt, String paramString1, String arg3)
-  {
-    if (TextUtils.isEmpty(paramString1)) {}
-    synchronized (vig.a())
-    {
-      vig.a(this.jdField_a_of_type_Vig).remove(Integer.valueOf(this.jdField_a_of_type_Int));
-      vig.a(this.jdField_a_of_type_Vig, null);
-      vig.a(this.jdField_a_of_type_Vig, paramInt, paramString1);
-      return;
-    }
-  }
+  public abstract void a(List<vil> paramList, List<vim> paramList1);
 }
 
 

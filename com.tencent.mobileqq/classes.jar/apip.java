@@ -1,20 +1,6 @@
-import android.opengl.GLES20;
-
-class apip
-  implements aprk
+public abstract interface apip
 {
-  apip(apio paramapio) {}
-  
-  public void a()
-  {
-    GLES20.glUniform1i(apio.a(this.a), apio.b(this.a));
-  }
-  
-  public void a(int paramInt)
-  {
-    apio.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
-    apiw.a("glGetUniformLocation uDisplayType");
-  }
+  public abstract void a(int paramInt, aphw paramaphw);
 }
 
 

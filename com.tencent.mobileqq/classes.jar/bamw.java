@@ -1,8 +1,13 @@
-public abstract interface bamw
+public class bamw
 {
-  public abstract void a(bamu parambamu, bamv parambamv);
+  public int a;
+  public int b;
   
-  public abstract void b(bamu parambamu, bamv parambamv);
+  public bamw(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

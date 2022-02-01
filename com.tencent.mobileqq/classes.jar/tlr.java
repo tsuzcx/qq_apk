@@ -1,60 +1,7 @@
-import org.json.JSONObject;
+import kotlin.Metadata;
 
-public class tlr
-{
-  public double a;
-  public int a;
-  public long a;
-  public String a;
-  public double b;
-  public int b;
-  public long b;
-  public String b;
-  public double c;
-  public long c;
-  public String c;
-  public double d;
-  
-  public static tlr a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return null;
-    }
-    try
-    {
-      tlr localtlr = new tlr();
-      try
-      {
-        localtlr.jdField_a_of_type_Int = paramJSONObject.optInt("showGesturesAdType");
-        localtlr.jdField_a_of_type_Long = paramJSONObject.optLong("showGesturesAd_beginTime");
-        localtlr.jdField_b_of_type_Long = paramJSONObject.optLong("showGesturesAd_endTime");
-        localtlr.jdField_a_of_type_JavaLangString = paramJSONObject.optString("DragGoods");
-        localtlr.jdField_a_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateH");
-        localtlr.jdField_b_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateW");
-        localtlr.jdField_c_of_type_Double = paramJSONObject.optDouble("DragGoodsCoordinateX");
-        localtlr.d = paramJSONObject.optDouble("DragGoodsCoordinateY");
-        localtlr.jdField_b_of_type_JavaLangString = paramJSONObject.optString("LongPressColor");
-        localtlr.jdField_c_of_type_Long = paramJSONObject.optLong("LongPressTime");
-        localtlr.jdField_c_of_type_JavaLangString = paramJSONObject.optString("slideColor");
-        localtlr.jdField_b_of_type_Int = paramJSONObject.optInt("validSlideLength");
-        return localtlr;
-      }
-      catch (Exception localException1)
-      {
-        paramJSONObject = localtlr;
-      }
-    }
-    catch (Exception localException2)
-    {
-      for (;;)
-      {
-        paramJSONObject = null;
-      }
-    }
-    localException1.printStackTrace();
-    return paramJSONObject;
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/RIJBridgeInvokeHandler$Companion;", "", "()V", "CLEAR_MESSAGE_BOX_DATA", "", "FEEDS_REFRESH_MESSAGE", "GET_ALDCONFIG_PARAMS", "GET_BIU_TRIGGER_TYPE", "HAS_RED_PACKET_PERMISSION", "HAS_RED_PACKET_SHARE_PERMISSION", "HIDE_FOLLOW_ALERTVIEW", "IS_IN_KAN_DIAN_TAB", "NS_RIJ", "OPEN_ACCOUNT_PAGE_MORE", "OPEN_PRIVATE_LETTER", "OPEN_VIDEO", "Q_REPORT", "REQUEST_RED_PACKET_CONTENT_SHARE_TOAST", "SELECT_AND_INVITE_FRIEND", "SELECT_AND_UPLOAD_AVATAR", "SHOW_COMMENT_EDITOR", "SHOW_COMMENT_EDITOR_NATIVE", "SHOW_FOLLOW_ALERTVIEW", "SHOW_MULTI_BIU_EDIT_PAGE", "SHOW_PICTURE", "SHOW_RIJ_SHARE_MENU", "SHOW_UGC_EDIT_PAGE", "SHOW_UGC_VIDEO_RECORD_PAGE", "SHOW_VISIBLE_USER_LIST", "SOCIALIZE_FEEDS_UPDATE", "UPDATE_ACCOUNT_CARD_FOLLOW_INFO", "UPDATE_RED_PACKET_SHARE_TIME", "UPDATE_TOPIC_CARD_FOLLOW_INFO", "UPLOAD_TOPIC_PIC", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tlr {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -1,17 +1,19 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.6.1;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class yti
-  implements yqd
+class yti
+  implements Animation.AnimationListener
 {
-  yti(ysw paramysw) {}
+  yti(ytg paramytg) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    yuk.d("NewMyStorySegment", "finish get all data from server steps");
-    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.6.1(this));
+    this.a.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

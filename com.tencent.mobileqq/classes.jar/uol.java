@@ -1,13 +1,22 @@
-import UserGrowth.stFollowReq;
-import UserGrowth.stFollowRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class uol
-  extends ukl<stFollowRsp>
+class uol
+  implements View.OnClickListener
 {
-  public uol(String paramString, int paramInt)
+  uol(uok paramuok, uon paramuon, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    super("Follow");
-    this.a = new stFollowReq(paramString, paramInt);
+    if (uyo.b()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      uok.a(this.jdField_a_of_type_Uok, this.jdField_a_of_type_Uon);
+      uok.a(this.jdField_a_of_type_Uok, this.jdField_a_of_type_Uon, this.jdField_a_of_type_Int);
+    }
   }
 }
 

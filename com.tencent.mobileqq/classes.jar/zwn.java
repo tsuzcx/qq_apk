@@ -1,37 +1,30 @@
-import android.os.CountDownTimer;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
+import java.lang.ref.WeakReference;
 
 public class zwn
-  extends CountDownTimer
+  extends Handler
 {
-  public zwn(QRDisplayActivity paramQRDisplayActivity, long paramLong1, long paramLong2)
+  private WeakReference<SquareRoundImageView> a;
+  
+  private zwn(Looper paramLooper, SquareRoundImageView paramSquareRoundImageView)
   {
-    super(paramLong1, paramLong2);
+    super(paramLooper);
+    this.a = new WeakReference(paramSquareRoundImageView);
   }
   
-  public void onFinish()
+  public void handleMessage(Message paramMessage)
   {
-    QRDisplayActivity.a(this.a, true);
-    if (QRDisplayActivity.a(this.a) == null)
+    if (paramMessage.what == 1)
     {
-      QRDisplayActivity.b(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QRDisplayActivity", 4, "enter longclick");
+      paramMessage = (SquareRoundImageView)this.a.get();
+      if (paramMessage != null) {
+        SquareRoundImageView.a(paramMessage);
       }
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (QRDisplayActivity.a(this.a) == null);
-      QRDisplayActivity.c(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("QRDisplayActivity", 4, "enter longclickstop");
   }
-  
-  public void onTick(long paramLong) {}
 }
 
 

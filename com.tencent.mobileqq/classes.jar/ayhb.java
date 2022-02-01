@@ -1,13 +1,20 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-class ayhb
-  implements xvr
+public class ayhb
+  extends ayhc
 {
-  ayhb(aygz paramaygz, aygp paramaygp, Object paramObject) {}
-  
-  public boolean a(xvo paramxvo, int paramInt1, int paramInt2)
+  void b(BaseChatPie paramBaseChatPie)
   {
-    return this.jdField_a_of_type_Aygp.a(this.jdField_a_of_type_Aygz, 0, paramInt1, this.jdField_a_of_type_Aygz.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
+    a(paramBaseChatPie.sessionInfo.curType, 201);
+    a(paramBaseChatPie.sessionInfo.curType, 202);
+    if (augn.a(paramBaseChatPie.app).b()) {
+      a(paramBaseChatPie.sessionInfo.curType, 204);
+    }
+    a(paramBaseChatPie.sessionInfo.curType, 206);
+    a(paramBaseChatPie.sessionInfo.curType, 208);
+    a(paramBaseChatPie.sessionInfo.curType, 205);
+    a(paramBaseChatPie.sessionInfo.curType, 212);
   }
 }
 

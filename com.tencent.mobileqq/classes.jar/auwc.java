@@ -1,46 +1,66 @@
-import com.tencent.feedback.eup.CrashReport;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 import com.tencent.qphone.base.util.QLog;
-import io.flutter.plugin.common.MethodChannel.Result;
-import java.util.HashMap;
+import org.json.JSONObject;
 
-class auwc
-  extends auwd
+public class auwc
+  implements IMiniMsgUnreadCallback
 {
-  auwc(auwb paramauwb) {}
+  public auwc(UiApiPlugin paramUiApiPlugin) {}
   
-  protected void a(String paramString, MethodChannel.Result paramResult)
+  public void destroy() {}
+  
+  public void hide() {}
+  
+  public void hideUnread()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("flutter.APMChannel", 2, String.format("recordPageView: %s", new Object[] { paramString }));
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("unReadHide", true);
+      this.a.a("UnRead", localJSONObject);
+      return;
     }
-    auxn.b(paramString);
-    paramResult.success(null);
+    catch (Exception localException)
+    {
+      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
+    }
   }
   
-  protected void a(String paramString, Integer paramInteger, MethodChannel.Result paramResult)
+  public boolean show(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("flutter.APMChannel", 2, String.format("reportPageLoadTime: pathPath: %s, loadTime: %s", new Object[] { paramString, paramInteger }));
-    }
-    auxn.a(paramString, paramInteger.intValue());
-    paramResult.success(null);
+    return false;
   }
   
-  protected void a(String paramString, Integer paramInteger, Double paramDouble, MethodChannel.Result paramResult)
+  public void updateOnBackFromMiniAIO(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("flutter.APMChannel", 2, String.format("recordFPS: pathPath: %s, fps: %s, dropRate: %s", new Object[] { paramString, paramInteger, paramDouble }));
+    try
+    {
+      paramBundle = new JSONObject();
+      this.a.a("backFromMiniAIO", paramBundle);
+      return;
     }
-    auxn.a(paramString, paramInteger.intValue(), paramDouble.doubleValue());
-    paramResult.success(null);
+    catch (Exception paramBundle)
+    {
+      QLog.d("UiApiPlugin", 1, paramBundle, new Object[0]);
+    }
   }
   
-  protected void a(String paramString1, Integer paramInteger, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, MethodChannel.Result paramResult)
+  public void updateUnreadCount(int paramInt, boolean paramBoolean)
   {
-    QLog.e("flutter.APMChannel", 1, String.format("reportException, msg: %s, stack: %s", new Object[] { paramString3, paramString4 }));
-    CrashReport.postException(paramInteger.intValue(), paramString2, paramString3, paramString4, paramHashMap);
-    auxn.a(paramString1);
-    paramResult.success(null);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("unReadC", paramInt);
+      localJSONObject.put("unReadHide", paramBoolean);
+      this.a.a("updateUnreadCount", localJSONObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("UiApiPlugin", 2, "mini_msg uiApiPlugin undateUnreadCount = " + paramInt);
+      }
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 

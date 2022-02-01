@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.utils;
 
-import aksj;
+import ajpz;
 import android.text.TextUtils;
-import bgup;
-import bguu;
-import bguw;
-import bjhg;
+import bfed;
+import bfef;
+import bfeh;
+import bhmx;
 import com.tencent.mobileqq.activity.photo.TroopClipPic;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
@@ -25,8 +25,8 @@ import java.util.Set;
 public class TroopUploadingThread
   extends Thread
 {
-  protected bguw a;
-  protected ArrayList<bguu> a;
+  protected bfeh a;
+  protected ArrayList<bfef> a;
   protected boolean a;
   
   public TroopUploadingThread()
@@ -34,7 +34,7 @@ public class TroopUploadingThread
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public int a(HttpURLConnection paramHttpURLConnection, bgup parambgup, bguu parambguu)
+  public int a(HttpURLConnection paramHttpURLConnection, bfed parambfed, bfef parambfef)
   {
     int k = -1;
     Object localObject1 = Integer.valueOf(-1);
@@ -87,7 +87,7 @@ public class TroopUploadingThread
         }
         localObject4 = ((List)localObject2).get(0);
         if ((localObject4 != null) && ((localObject4 instanceof String))) {
-          parambgup.c = Integer.parseInt((String)((List)localObject2).get(0));
+          parambfed.c = Integer.parseInt((String)((List)localObject2).get(0));
         }
       }
       if (!localObject4.equals("FileName")) {
@@ -106,7 +106,7 @@ public class TroopUploadingThread
       {
         localObject4 = ((List)localObject2).get(0);
         if ((localObject4 != null) && ((localObject4 instanceof String))) {
-          parambgup.jdField_a_of_type_JavaLangString = new String(bjhg.a((String)((List)localObject2).get(0), 0));
+          parambfed.jdField_a_of_type_JavaLangString = new String(bhmx.a((String)((List)localObject2).get(0), 0));
         }
         break;
       }
@@ -115,8 +115,8 @@ public class TroopUploadingThread
         localObject4 = ((List)localObject2).get(0);
         if ((localObject4 != null) && ((localObject4 instanceof String)))
         {
-          parambgup.e = Integer.parseInt((String)((List)localObject2).get(0));
-          localObject1 = Integer.valueOf(parambgup.e);
+          parambfed.e = Integer.parseInt((String)((List)localObject2).get(0));
+          localObject1 = Integer.valueOf(parambfed.e);
           break;
           label440:
           int i = localObject4.intValue();
@@ -140,16 +140,16 @@ public class TroopUploadingThread
           {
             try
             {
-              parambgup.jdField_b_of_type_Int = Integer.parseInt(localObject1[1]);
+              parambfed.jdField_b_of_type_Int = Integer.parseInt(localObject1[1]);
               j = i;
-              if (!parambguu.jdField_a_of_type_Boolean) {
+              if (!parambfef.jdField_a_of_type_Boolean) {
                 break;
               }
               return 104;
             }
-            catch (NumberFormatException parambgup)
+            catch (NumberFormatException parambfed)
             {
-              parambgup.printStackTrace();
+              parambfed.printStackTrace();
               i = -1;
               continue;
             }
@@ -166,7 +166,7 @@ public class TroopUploadingThread
   }
   
   /* Error */
-  public int a(byte[] paramArrayOfByte, HttpURLConnection paramHttpURLConnection, bguu parambguu, int paramInt)
+  public int a(byte[] paramArrayOfByte, HttpURLConnection paramHttpURLConnection, bfef parambfef, int paramInt)
   {
     // Byte code:
     //   0: aload_2
@@ -196,7 +196,7 @@ public class TroopUploadingThread
     //   45: iload 8
     //   47: if_icmpge +253 -> 300
     //   50: aload_3
-    //   51: getfield 158	bguu:jdField_a_of_type_Boolean	Z
+    //   51: getfield 158	bfef:jdField_a_of_type_Boolean	Z
     //   54: ifeq +77 -> 131
     //   57: aload_0
     //   58: getfield 181	com/tencent/mobileqq/troop/utils/TroopUploadingThread:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
@@ -207,14 +207,14 @@ public class TroopUploadingThread
     //   68: invokevirtual 189	java/io/DataOutputStream:flush	()V
     //   71: bipush 104
     //   73: ireturn
-    //   74: astore_1
+    //   74: astore_3
     //   75: invokestatic 168	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   78: ifeq +14 -> 92
     //   81: ldc 82
     //   83: iconst_1
-    //   84: aload_1
+    //   84: aload_3
     //   85: invokevirtual 192	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   88: aload_1
+    //   88: aload_3
     //   89: invokestatic 195	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   92: iconst_0
     //   93: ifeq +11 -> 104
@@ -231,8 +231,8 @@ public class TroopUploadingThread
     //   115: if_icmpge +14 -> 129
     //   118: bipush 252
     //   120: ireturn
-    //   121: astore_3
-    //   122: aload_1
+    //   121: astore_1
+    //   122: aload_3
     //   123: invokevirtual 199	java/io/IOException:printStackTrace	()V
     //   126: goto -22 -> 104
     //   129: iconst_m1
@@ -263,29 +263,29 @@ public class TroopUploadingThread
     //   175: ifle +58 -> 233
     //   178: aload_3
     //   179: iload 6
-    //   181: putfield 205	bguu:jdField_a_of_type_Int	I
-    //   184: new 94	bgup
+    //   181: putfield 205	bfef:jdField_a_of_type_Int	I
+    //   184: new 94	bfed
     //   187: dup
-    //   188: invokespecial 206	bgup:<init>	()V
+    //   188: invokespecial 206	bfed:<init>	()V
     //   191: astore 10
     //   193: aload 10
     //   195: iconst_0
-    //   196: putfield 207	bgup:jdField_a_of_type_Int	I
+    //   196: putfield 207	bfed:jdField_a_of_type_Int	I
     //   199: aload 10
     //   201: iload 6
-    //   203: putfield 155	bgup:jdField_b_of_type_Int	I
+    //   203: putfield 155	bfed:jdField_b_of_type_Int	I
     //   206: aload 10
     //   208: aload_3
-    //   209: getfield 210	bguu:jdField_a_of_type_Long	J
-    //   212: putfield 211	bgup:jdField_a_of_type_Long	J
+    //   209: getfield 210	bfef:jdField_a_of_type_Long	J
+    //   212: putfield 211	bfed:jdField_a_of_type_Long	J
     //   215: aload 10
     //   217: aload_3
-    //   218: getfield 212	bguu:jdField_b_of_type_Int	I
-    //   221: putfield 214	bgup:d	I
+    //   218: getfield 212	bfef:jdField_b_of_type_Int	I
+    //   221: putfield 214	bfed:d	I
     //   224: aload_0
-    //   225: getfield 216	com/tencent/mobileqq/troop/utils/TroopUploadingThread:jdField_a_of_type_Bguw	Lbguw;
+    //   225: getfield 216	com/tencent/mobileqq/troop/utils/TroopUploadingThread:jdField_a_of_type_Bfeh	Lbfeh;
     //   228: aload 10
-    //   230: invokevirtual 222	bguw:notifyObservers	(Ljava/lang/Object;)V
+    //   230: invokevirtual 222	bfeh:notifyObservers	(Ljava/lang/Object;)V
     //   233: iload 5
     //   235: bipush 100
     //   237: imul
@@ -339,14 +339,14 @@ public class TroopUploadingThread
     //   0	319	0	this	TroopUploadingThread
     //   0	319	1	paramArrayOfByte	byte[]
     //   0	319	2	paramHttpURLConnection	HttpURLConnection
-    //   0	319	3	parambguu	bguu
+    //   0	319	3	parambfef	bfef
     //   0	319	4	paramInt	int
     //   38	213	5	i	int
     //   41	201	6	j	int
     //   145	107	7	k	int
     //   35	216	8	m	int
     //   31	275	9	localDataOutputStream	java.io.DataOutputStream
-    //   191	38	10	localbgup	bgup
+    //   191	38	10	localbfed	bfed
     // Exception table:
     //   from	to	target	type
     //   20	33	74	java/io/IOException
@@ -381,47 +381,47 @@ public class TroopUploadingThread
     //   27: aload_2
     //   28: sipush 1024
     //   31: sipush 1024
-    //   34: invokestatic 256	aksj:a	(Landroid/graphics/BitmapFactory$Options;II)I
+    //   34: invokestatic 256	ajpz:a	(Landroid/graphics/BitmapFactory$Options;II)I
     //   37: putfield 259	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   40: aload_2
     //   41: iconst_0
     //   42: putfield 245	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   45: aload_1
     //   46: aload_2
-    //   47: invokestatic 263	bhmq:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   47: invokestatic 263	bfvo:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   50: astore_2
     //   51: aload_2
     //   52: ifnonnull +5 -> 57
     //   55: aconst_null
     //   56: areturn
-    //   57: new 265	bezd
+    //   57: new 265	com/tencent/mobileqq/transfile/bitmapcreator/ExifBitmapCreator
     //   60: dup
     //   61: aload_1
-    //   62: invokespecial 268	bezd:<init>	(Ljava/lang/String;)V
+    //   62: invokespecial 268	com/tencent/mobileqq/transfile/bitmapcreator/ExifBitmapCreator:<init>	(Ljava/lang/String;)V
     //   65: aload_2
-    //   66: invokevirtual 271	bezd:a	(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+    //   66: invokevirtual 272	com/tencent/mobileqq/transfile/bitmapcreator/ExifBitmapCreator:creatBitmap	(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
     //   69: astore_2
     //   70: aload_2
     //   71: ifnull +143 -> 214
-    //   74: new 273	java/io/ByteArrayOutputStream
+    //   74: new 274	java/io/ByteArrayOutputStream
     //   77: dup
-    //   78: invokespecial 274	java/io/ByteArrayOutputStream:<init>	()V
+    //   78: invokespecial 275	java/io/ByteArrayOutputStream:<init>	()V
     //   81: astore_1
     //   82: aload_2
-    //   83: getstatic 280	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   83: getstatic 281	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   86: bipush 100
     //   88: aload_1
-    //   89: invokevirtual 286	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   89: invokevirtual 287	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   92: pop
     //   93: aload_1
     //   94: ifnull +7 -> 101
     //   97: aload_1
-    //   98: invokevirtual 287	java/io/ByteArrayOutputStream:close	()V
+    //   98: invokevirtual 288	java/io/ByteArrayOutputStream:close	()V
     //   101: aload_2
-    //   102: invokevirtual 290	android/graphics/Bitmap:isRecycled	()Z
+    //   102: invokevirtual 291	android/graphics/Bitmap:isRecycled	()Z
     //   105: ifne +7 -> 112
     //   108: aload_2
-    //   109: invokevirtual 293	android/graphics/Bitmap:recycle	()V
+    //   109: invokevirtual 294	android/graphics/Bitmap:recycle	()V
     //   112: aload_1
     //   113: areturn
     //   114: astore_3
@@ -438,17 +438,17 @@ public class TroopUploadingThread
     //   134: new 123	java/lang/StringBuilder
     //   137: dup
     //   138: invokespecial 124	java/lang/StringBuilder:<init>	()V
-    //   141: ldc_w 295
+    //   141: ldc_w 296
     //   144: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   147: aload_2
-    //   148: invokevirtual 296	java/lang/Exception:toString	()Ljava/lang/String;
+    //   148: invokevirtual 297	java/lang/Exception:toString	()Ljava/lang/String;
     //   151: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   154: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   157: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   160: aload_1
     //   161: ifnull +53 -> 214
     //   164: aload_1
-    //   165: invokevirtual 287	java/io/ByteArrayOutputStream:close	()V
+    //   165: invokevirtual 288	java/io/ByteArrayOutputStream:close	()V
     //   168: aconst_null
     //   169: areturn
     //   170: astore_1
@@ -462,7 +462,7 @@ public class TroopUploadingThread
     //   180: aload_1
     //   181: ifnull +7 -> 188
     //   184: aload_1
-    //   185: invokevirtual 287	java/io/ByteArrayOutputStream:close	()V
+    //   185: invokevirtual 288	java/io/ByteArrayOutputStream:close	()V
     //   188: aload_2
     //   189: athrow
     //   190: astore_1
@@ -518,7 +518,7 @@ public class TroopUploadingThread
     //   7: ifeq +12 -> 19
     //   10: ldc 82
     //   12: iconst_2
-    //   13: ldc_w 303
+    //   13: ldc_w 304
     //   16: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   19: aconst_null
     //   20: areturn
@@ -529,45 +529,45 @@ public class TroopUploadingThread
     //   30: new 123	java/lang/StringBuilder
     //   33: dup
     //   34: invokespecial 124	java/lang/StringBuilder:<init>	()V
-    //   37: ldc_w 305
+    //   37: ldc_w 306
     //   40: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   43: aload_1
-    //   44: invokevirtual 308	java/net/URL:toString	()Ljava/lang/String;
+    //   44: invokevirtual 309	java/net/URL:toString	()Ljava/lang/String;
     //   47: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   50: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   53: invokestatic 142	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   56: aload_1
-    //   57: invokevirtual 308	java/net/URL:toString	()Ljava/lang/String;
-    //   60: ldc_w 310
-    //   63: invokevirtual 314	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   57: invokevirtual 309	java/net/URL:toString	()Ljava/lang/String;
+    //   60: ldc_w 311
+    //   63: invokevirtual 315	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   66: ifeq +54 -> 120
     //   69: aload_1
-    //   70: invokevirtual 318	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   73: checkcast 320	javax/net/ssl/HttpsURLConnection
+    //   70: invokevirtual 319	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   73: checkcast 321	javax/net/ssl/HttpsURLConnection
     //   76: astore_1
     //   77: aload_1
     //   78: iconst_1
-    //   79: invokevirtual 324	javax/net/ssl/HttpsURLConnection:setInstanceFollowRedirects	(Z)V
+    //   79: invokevirtual 325	javax/net/ssl/HttpsURLConnection:setInstanceFollowRedirects	(Z)V
     //   82: aload_1
-    //   83: ldc_w 326
-    //   86: ldc_w 328
-    //   89: invokevirtual 332	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   83: ldc_w 327
+    //   86: ldc_w 329
+    //   89: invokevirtual 333	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   92: aload_1
-    //   93: new 334	bgpn
+    //   93: new 335	bezb
     //   96: dup
     //   97: aload_1
-    //   98: invokespecial 337	bgpn:<init>	(Ljavax/net/ssl/HttpsURLConnection;)V
-    //   101: invokevirtual 341	javax/net/ssl/HttpsURLConnection:setSSLSocketFactory	(Ljavax/net/ssl/SSLSocketFactory;)V
+    //   98: invokespecial 338	bezb:<init>	(Ljavax/net/ssl/HttpsURLConnection;)V
+    //   101: invokevirtual 342	javax/net/ssl/HttpsURLConnection:setSSLSocketFactory	(Ljavax/net/ssl/SSLSocketFactory;)V
     //   104: aload_1
-    //   105: new 343	bguo
+    //   105: new 344	bfec
     //   108: dup
     //   109: aload_0
     //   110: aload_1
-    //   111: invokespecial 346	bguo:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopUploadingThread;Ljavax/net/ssl/HttpsURLConnection;)V
-    //   114: invokevirtual 350	javax/net/ssl/HttpsURLConnection:setHostnameVerifier	(Ljavax/net/ssl/HostnameVerifier;)V
+    //   111: invokespecial 347	bfec:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopUploadingThread;Ljavax/net/ssl/HttpsURLConnection;)V
+    //   114: invokevirtual 351	javax/net/ssl/HttpsURLConnection:setHostnameVerifier	(Ljavax/net/ssl/HostnameVerifier;)V
     //   117: goto +200 -> 317
     //   120: aload_1
-    //   121: invokevirtual 318	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   121: invokevirtual 319	java/net/URL:openConnection	()Ljava/net/URLConnection;
     //   124: checkcast 29	java/net/HttpURLConnection
     //   127: astore_1
     //   128: goto +189 -> 317
@@ -576,53 +576,53 @@ public class TroopUploadingThread
     //   135: ifeq +13 -> 148
     //   138: ldc 82
     //   140: iconst_2
-    //   141: ldc_w 352
+    //   141: ldc_w 353
     //   144: aload_1
     //   145: invokestatic 195	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   148: aconst_null
     //   149: areturn
     //   150: aload_1
     //   151: iconst_1
-    //   152: invokevirtual 355	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   152: invokevirtual 356	java/net/HttpURLConnection:setDoInput	(Z)V
     //   155: aload_1
     //   156: iconst_1
-    //   157: invokevirtual 358	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   157: invokevirtual 359	java/net/HttpURLConnection:setDoOutput	(Z)V
     //   160: lload_2
     //   161: l2i
     //   162: istore 4
     //   164: aload_1
     //   165: iload 4
-    //   167: invokevirtual 362	java/net/HttpURLConnection:setFixedLengthStreamingMode	(I)V
+    //   167: invokevirtual 363	java/net/HttpURLConnection:setFixedLengthStreamingMode	(I)V
     //   170: aload_1
     //   171: iconst_0
-    //   172: invokevirtual 365	java/net/HttpURLConnection:setUseCaches	(Z)V
-    //   175: getstatic 370	android/os/Build$VERSION:SDK	Ljava/lang/String;
+    //   172: invokevirtual 366	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   175: getstatic 371	android/os/Build$VERSION:SDK	Ljava/lang/String;
     //   178: ifnull +126 -> 304
-    //   181: getstatic 373	android/os/Build$VERSION:SDK_INT	I
+    //   181: getstatic 374	android/os/Build$VERSION:SDK_INT	I
     //   184: bipush 13
     //   186: if_icmple +118 -> 304
     //   189: aload_1
-    //   190: ldc_w 375
-    //   193: ldc_w 376
-    //   196: invokevirtual 377	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   190: ldc_w 376
+    //   193: ldc_w 377
+    //   196: invokevirtual 378	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   199: aload_1
-    //   200: ldc_w 379
-    //   203: invokevirtual 382	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   200: ldc_w 380
+    //   203: invokevirtual 383	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   206: aload_1
-    //   207: ldc_w 384
-    //   210: ldc_w 386
-    //   213: invokevirtual 377	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   207: ldc_w 385
+    //   210: ldc_w 387
+    //   213: invokevirtual 378	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   216: aload_1
-    //   217: ldc_w 388
+    //   217: ldc_w 389
     //   220: new 123	java/lang/StringBuilder
     //   223: dup
     //   224: invokespecial 124	java/lang/StringBuilder:<init>	()V
-    //   227: ldc_w 390
+    //   227: ldc_w 391
     //   230: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   233: ldc_w 392
+    //   233: ldc_w 393
     //   236: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   239: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   242: invokevirtual 377	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   242: invokevirtual 378	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   245: aload_1
     //   246: areturn
     //   247: astore_1
@@ -630,7 +630,7 @@ public class TroopUploadingThread
     //   251: ifeq +13 -> 264
     //   254: ldc 82
     //   256: iconst_2
-    //   257: ldc_w 394
+    //   257: ldc_w 395
     //   260: aload_1
     //   261: invokestatic 195	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   264: aconst_null
@@ -640,7 +640,7 @@ public class TroopUploadingThread
     //   270: ifeq +13 -> 283
     //   273: ldc 82
     //   275: iconst_2
-    //   276: ldc_w 396
+    //   276: ldc_w 397
     //   279: aload_1
     //   280: invokestatic 195	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   283: aconst_null
@@ -650,15 +650,15 @@ public class TroopUploadingThread
     //   289: ifeq +13 -> 302
     //   292: ldc 82
     //   294: iconst_2
-    //   295: ldc_w 398
+    //   295: ldc_w 399
     //   298: aload_1
     //   299: invokestatic 195	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   302: aconst_null
     //   303: areturn
     //   304: aload_1
-    //   305: ldc_w 400
-    //   308: ldc_w 402
-    //   311: invokevirtual 377	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   305: ldc_w 401
+    //   308: ldc_w 403
+    //   311: invokevirtual 378	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   314: goto -115 -> 199
     //   317: aload_1
     //   318: ifnonnull -168 -> 150
@@ -681,7 +681,7 @@ public class TroopUploadingThread
     //   164	175	285	java/lang/Exception
   }
   
-  public ArrayList<bguu> a()
+  public ArrayList<bfef> a()
   {
     return this.jdField_a_of_type_JavaUtilArrayList;
   }
@@ -707,10 +707,10 @@ public class TroopUploadingThread
         }
       }
       Object localObject = paramList;
-      paramList = (String)localObject + "&subcmd=" + aksj.b(paramTroopClipPic.type);
+      paramList = (String)localObject + "&subcmd=" + ajpz.b(paramTroopClipPic.type);
       paramList = paramList + "&subver=101";
       if (!TextUtils.isEmpty(paramTroopClipPic.clipInfo)) {}
-      for (paramList = paramList + "&clip=" + paramTroopClipPic.clipInfo;; paramList = paramList + "&clip=" + aksj.a(0, 0, 0, 0))
+      for (paramList = paramList + "&clip=" + paramTroopClipPic.clipInfo;; paramList = paramList + "&clip=" + ajpz.a(0, 0, 0, 0))
       {
         localArrayList.add(paramList);
         break;
@@ -722,13 +722,13 @@ public class TroopUploadingThread
     return localArrayList;
   }
   
-  public void a(bguu parambguu)
+  public void a(bfef parambfef)
   {
-    Object localObject1 = a(parambguu.jdField_a_of_type_JavaLangString);
+    Object localObject1 = a(parambfef.jdField_a_of_type_JavaLangString);
     int m;
     byte[] arrayOfByte;
     int n;
-    bgup localbgup;
+    bfed localbfed;
     int j;
     int i;
     label58:
@@ -738,9 +738,9 @@ public class TroopUploadingThread
       m = -1;
       arrayOfByte = null;
       n = 1;
-      localbgup = new bgup();
-      localbgup.jdField_a_of_type_Long = parambguu.jdField_a_of_type_Long;
-      localbgup.d = parambguu.jdField_b_of_type_Int;
+      localbfed = new bfed();
+      localbfed.jdField_a_of_type_Long = parambfef.jdField_a_of_type_Long;
+      localbfed.d = parambfef.jdField_b_of_type_Int;
       localObject1 = null;
       j = 0;
       i = -1;
@@ -757,13 +757,13 @@ public class TroopUploadingThread
       if (k != 0) {
         break label332;
       }
-      localbgup.jdField_a_of_type_Int = 1;
+      localbfed.jdField_a_of_type_Int = 1;
     }
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(parambguu);
+      this.jdField_a_of_type_JavaUtilArrayList.remove(parambfef);
       if (k != 104) {
-        this.jdField_a_of_type_Bguw.notifyObservers(localbgup);
+        this.jdField_a_of_type_Bfeh.notifyObservers(localbfed);
       }
       return;
       arrayOfByte = ((ByteArrayOutputStream)localObject1).toByteArray();
@@ -775,7 +775,7 @@ public class TroopUploadingThread
       Object localObject3 = localObject1;
       try
       {
-        localObject4 = new URL(parambguu.a(j - 1) + "&filesize=" + arrayOfByte);
+        localObject4 = new URL(parambfef.a(j - 1) + "&filesize=" + arrayOfByte);
         localObject1 = localObject4;
       }
       catch (MalformedURLException localMalformedURLException)
@@ -807,7 +807,7 @@ public class TroopUploadingThread
       }
       k = i;
       localObject3 = localObject2;
-      i = a(arrayOfByte, localMalformedURLException, parambguu, j);
+      i = a(arrayOfByte, localMalformedURLException, parambfef, j);
       if (i == -4) {
         break label58;
       }
@@ -821,42 +821,42 @@ public class TroopUploadingThread
       }
       k = i;
       localObject3 = localObject2;
-      i = a(localMalformedURLException, localbgup, parambguu);
+      i = a(localMalformedURLException, localbfed, parambfef);
       k = i;
       break label79;
       label332:
-      localbgup.jdField_a_of_type_Int = 2;
-      localbgup.jdField_b_of_type_Int = k;
+      localbfed.jdField_a_of_type_Int = 2;
+      localbfed.jdField_b_of_type_Int = k;
     }
   }
   
-  public void a(ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList, bguw parambguw)
+  public void a(ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList, bfeh parambfeh)
   {
-    this.jdField_a_of_type_Bguw = parambguw;
+    this.jdField_a_of_type_Bfeh = parambfeh;
     if (this.jdField_a_of_type_JavaUtilArrayList == null) {
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     }
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
-      parambguw = (TroopClipPic)paramArrayList.next();
-      new File(parambguw.id);
-      bguu localbguu = new bguu();
-      localbguu.jdField_a_of_type_JavaUtilList = a(paramHashMap, paramList, parambguw);
-      localbguu.jdField_a_of_type_JavaLangString = parambguw.id;
-      localbguu.jdField_b_of_type_Int = parambguw.type;
-      localbguu.jdField_a_of_type_Long = parambguw.ts;
-      localbguu.jdField_b_of_type_JavaLangString = parambguw.clipInfo;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localbguu);
+      parambfeh = (TroopClipPic)paramArrayList.next();
+      new File(parambfeh.id);
+      bfef localbfef = new bfef();
+      localbfef.jdField_a_of_type_JavaUtilList = a(paramHashMap, paramList, parambfeh);
+      localbfef.jdField_a_of_type_JavaLangString = parambfeh.id;
+      localbfef.jdField_b_of_type_Int = parambfeh.type;
+      localbfef.jdField_a_of_type_Long = parambfeh.ts;
+      localbfef.jdField_b_of_type_JavaLangString = parambfeh.clipInfo;
+      this.jdField_a_of_type_JavaUtilArrayList.add(localbfef);
     }
   }
   
   public void run()
   {
     while ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      a((bguu)this.jdField_a_of_type_JavaUtilArrayList.get(0));
+      a((bfef)this.jdField_a_of_type_JavaUtilArrayList.get(0));
     }
-    this.jdField_a_of_type_Bguw = null;
+    this.jdField_a_of_type_Bfeh = null;
   }
 }
 

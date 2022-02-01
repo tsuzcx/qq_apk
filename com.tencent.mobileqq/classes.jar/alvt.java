@@ -1,22 +1,33 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import java.util.List;
 
-public class alvt
-  implements bdbf
+class alvt
+  implements amdz
 {
-  public alvt(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  alvt(alvp paramalvp, int paramInt) {}
   
-  public void a(Exception paramException)
+  public void a(boolean paramBoolean, String paramString, List<amdx> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PTV.NewFlowCameraActivity", 2, "[onCameraException]", paramException);
+    if (paramBoolean) {}
+    for (int i = 0;; i = -1)
+    {
+      paramString = EIPCResult.createResult(i, null);
+      this.jdField_a_of_type_Alvp.callbackResult(this.jdField_a_of_type_Int, paramString);
+      QLog.i("cmgame_process.CmGameServerQIPCModule", 2, "onDownLoadFinish onDownLoadFinish sucess:" + paramBoolean);
+      return;
     }
   }
   
-  public void a(RuntimeException paramRuntimeException)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PTV.NewFlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
+    if (paramBoolean) {}
+    for (paramInt1 = 0;; paramInt1 = -1)
+    {
+      paramString = EIPCResult.createResult(paramInt1, null);
+      this.jdField_a_of_type_Alvp.callbackResult(this.jdField_a_of_type_Int, paramString);
+      QLog.i("cmgame_process.CmGameServerQIPCModule", 2, "onDownLoadFinish onDownLoadFinish sucess:" + paramBoolean);
+      return;
     }
   }
 }

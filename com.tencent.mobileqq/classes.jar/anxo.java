@@ -1,103 +1,148 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class anxo
-  extends anzi
+  implements BusinessObserver
 {
-  protected long a;
-  private String a;
-  protected long b;
+  public static final String TAG = "AppletsObserver";
   
-  protected void a()
+  protected void onAppletsSettingSwitchChange(int paramInt) {}
+  
+  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList) {}
+  
+  protected void onGetAppletsPushUnreadInfo(Object paramObject) {}
+  
+  protected void onGetAppletsSettingSwitch(boolean paramBoolean, List<anxx> paramList)
   {
-    boolean bool2 = true;
-    super.a();
-    this.jdField_a_of_type_Long += 1L;
-    this.b += 1L;
-    if (this.d >= 3L)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) {
-        break label203;
-      }
-      bool1 = true;
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, new String[] { "com.tencent.mobileqq:tool", "com.tencent.mobileqq:qzone", "com.tencent.mobileqq:mini", this.jdField_a_of_type_JavaLangString });
-      this.d = 0L;
-      if (!bool1) {
-        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletsObserver", 2, "onGetAppletsSettingSwitch:  isSuccess: " + paramBoolean);
     }
-    if ((this.jdField_a_of_type_Long >= 15L) && (!DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.disable_qzone_kill.name())))
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject1 instanceof QQAppInterface)) {}
+    for (localObject1 = (akhg)((QQAppInterface)localObject1).getManager(315);; localObject1 = null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString != null)
+      if (localObject1 == null) {
+        return;
+      }
+      HashSet localHashSet = new HashSet();
+      if ((paramList != null) && (paramBoolean) && (paramList.size() > 0))
       {
-        bool1 = true;
-        label139:
-        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, "com.tencent.mobileqq:qzone");
-        bdml.a().d(bdml.a());
-        this.jdField_a_of_type_Long = 0L;
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          Object localObject2 = (anxx)paramList.next();
+          if ((((anxx)localObject2).a != null) && (((anxx)localObject2).a.size() > 0) && (((anxx)localObject2).a.get(0) != null) && (((AppletItem)((anxx)localObject2).a.get(0)).a() == 1L))
+          {
+            localObject2 = (AppletItem)((anxx)localObject2).a.get(0);
+            if (((AppletItem)localObject2).b() == 1) {}
+            for (paramBoolean = true;; paramBoolean = false)
+            {
+              ((akhg)localObject1).a(paramBoolean);
+              onAppletsSettingSwitchChange(((AppletItem)localObject2).b());
+              break;
+            }
+          }
+          if ((((anxx)localObject2).a != null) && (((anxx)localObject2).a.size() > 0))
+          {
+            localObject2 = ((anxx)localObject2).a.iterator();
+            while (((Iterator)localObject2).hasNext())
+            {
+              AppletItem localAppletItem = (AppletItem)((Iterator)localObject2).next();
+              if ((localAppletItem.a() != 1L) && (localAppletItem.b() != 1)) {
+                localHashSet.add(String.valueOf(localAppletItem.a()));
+              }
+            }
+          }
+        }
       }
-    }
-    else if (this.b >= GuardManager.d) {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) {
-        break label213;
-      }
-    }
-    label203:
-    label213:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, "com.tencent.mobileqq:tool");
-      this.b = 0L;
+      ((akhg)localObject1).a(localHashSet);
       return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label139;
     }
   }
   
-  protected void a(String paramString)
+  protected void onReceiveAppletsMessageUnreadInfo(Map<String, Integer> paramMap) {}
+  
+  protected void onSetAppletsSettingSwitch(boolean paramBoolean, List<AppletItem> paramList)
   {
-    if (!"com.tencent.mobileqq".equals(paramString))
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletsObserver", 2, "onSetAppletsSettingSwitch:  isSuccess: " + paramBoolean);
+    }
+    akhg localakhg = null;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface)) {
+      localakhg = (akhg)((QQAppInterface)localObject).getManager(315);
+    }
+    if (localakhg == null) {}
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
-      aqcr.a();
+      return;
+      if ((paramList != null) && (paramBoolean))
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localObject = (AppletItem)paramList.next();
+          int i = ((AppletItem)localObject).b();
+          if (((AppletItem)localObject).a() == 1L)
+          {
+            if (i == 1) {}
+            for (paramBoolean = true;; paramBoolean = false)
+            {
+              localakhg.a(paramBoolean);
+              onAppletsSettingSwitchChange(i);
+              break;
+            }
+          }
+          if (localakhg != null) {
+            if (i == 0) {
+              localakhg.c(String.valueOf(((AppletItem)localObject).a()));
+            } else {
+              localakhg.d(String.valueOf(((AppletItem)localObject).a()));
+            }
+          }
+        }
+      }
     }
   }
   
-  protected void b(String paramString)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    super.b(paramString);
-    QQAppInterface.a().c();
-    anxi.a().a(paramString);
-    aquy.a(true);
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    CoreService.startCoreService(anzg.a().a);
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b();
-  }
-  
-  protected void c(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  protected void d(String paramString)
-  {
-    if ("com.tencent.mobileqq".equals(paramString))
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
-      aqcr.b();
-      aquy.a(false);
+    case 4: 
+    case 5: 
+    case 6: 
+    case 7: 
+    default: 
+      return;
+    case 1: 
+      onGetAppletsDetail(paramBoolean, (List)paramObject);
+      return;
+    case 2: 
+      onGetAppletsSettingSwitch(paramBoolean, (List)paramObject);
+      return;
+    case 3: 
+      onSetAppletsSettingSwitch(paramBoolean, (List)paramObject);
+      return;
+    case 8: 
+      onReceiveAppletsMessageUnreadInfo((Map)paramObject);
+      return;
     }
+    onGetAppletsPushUnreadInfo(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anxo
  * JD-Core Version:    0.7.0.1
  */

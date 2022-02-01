@@ -1,55 +1,15 @@
-import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import android.text.Editable;
+import android.text.Editable.Factory;
 
-public class bczw
+final class bczw
+  extends Editable.Factory
 {
-  private static bczw jdField_a_of_type_Bczw = new bczw();
-  private static String jdField_a_of_type_JavaLangString;
-  private bczx jdField_a_of_type_Bczx;
-  
-  private bczw()
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-  }
-  
-  public static bczw a()
-  {
-    return jdField_a_of_type_Bczw;
-  }
-  
-  private void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2)
-  {
-    if (this.jdField_a_of_type_Bczx != null)
-    {
-      if (paramBoolean1) {
-        this.jdField_a_of_type_Bczx.a(paramInt, paramString, paramBoolean2);
-      }
+    if ((paramCharSequence instanceof bczv)) {
+      return (Editable)paramCharSequence;
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Bczx.b(paramInt, paramString, paramBoolean2);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bczx = null;
-  }
-  
-  public void a(bczx parambczx)
-  {
-    this.jdField_a_of_type_Bczx = parambczx;
-  }
-  
-  public boolean a(Object paramObject, int paramInt, String paramString)
-  {
-    if ((paramObject instanceof AudioCapture)) {}
-    switch (paramInt)
-    {
-    default: 
-      return true;
-    }
-    a(true, 2001, anzj.a(2131703096) + 2001 + "）", true);
-    return false;
+    return new bczv(paramCharSequence, 32);
   }
 }
 

@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.5;
 
-public final class aszc
-  implements Parcelable.Creator<ExtendFriendProfileEditFragment.ExtendFriendInfo>
+public class aszc
+  implements DialogInterface.OnClickListener
 {
-  public ExtendFriendProfileEditFragment.ExtendFriendInfo a(Parcel paramParcel)
-  {
-    return new ExtendFriendProfileEditFragment.ExtendFriendInfo(paramParcel);
-  }
+  public aszc(FMSettings.5 param5) {}
   
-  public ExtendFriendProfileEditFragment.ExtendFriendInfo[] a(int paramInt)
+  public void onClick(DialogInterface arg1, int paramInt)
   {
-    return new ExtendFriendProfileEditFragment.ExtendFriendInfo[paramInt];
+    synchronized ()
+    {
+      this.a.this$0.b = false;
+      return;
+    }
   }
 }
 

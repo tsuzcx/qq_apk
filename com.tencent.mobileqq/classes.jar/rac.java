@@ -1,14 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-final class rac
-  implements DialogInterface.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJWatchWordJumpDialog$dismiss$1", "Lcom/tencent/util/AnimateUtils$AnimationAdapter;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rac
+  extends bjmc
 {
-  rac(raf paramraf) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(@NotNull Animation paramAnimation)
   {
-    this.a.a(false);
+    Intrinsics.checkParameterIsNotNull(paramAnimation, "animation");
+    try
+    {
+      this.a.a().removeView(this.a.a());
+      return;
+    }
+    catch (Exception paramAnimation)
+    {
+      QLog.d("RIJWatchWordJumpDialog", 2, QLog.getStackTraceString((Throwable)paramAnimation));
+    }
   }
 }
 

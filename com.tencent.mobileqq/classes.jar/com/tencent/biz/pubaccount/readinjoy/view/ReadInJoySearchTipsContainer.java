@@ -15,22 +15,22 @@ import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import bhmg;
-import bhtq;
+import bfvh;
 import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Iterator;
 import java.util.List;
-import sjx;
-import sjy;
+import sny;
+import snz;
 
 public class ReadInJoySearchTipsContainer
   extends ViewGroup
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = bhtq.a(260.0F);
+  private int jdField_a_of_type_Int = ViewUtils.dip2px(260.0F);
   private List<ReadInJoySearchTipsContainer.TipsInfo> jdField_a_of_type_JavaUtilList;
-  public sjy a;
+  public snz a;
   private int jdField_b_of_type_Int = 5;
   private List<SearchProtocol.WordItem> jdField_b_of_type_JavaUtilList;
   
@@ -57,12 +57,12 @@ public class ReadInJoySearchTipsContainer
       return;
     }
     Button localButton = new Button(getContext());
-    localButton.setBackgroundResource(2130849480);
+    localButton.setBackgroundResource(2130849392);
     GradientDrawable localGradientDrawable = (GradientDrawable)((android.graphics.drawable.DrawableContainer.DrawableContainerState)((android.graphics.drawable.StateListDrawable)localButton.getBackground()).getConstantState()).getChildren()[1];
     if (paramInt2 != 0)
     {
       localGradientDrawable.setStroke(1, paramInt2);
-      localButton.setPadding(bhtq.a(15.0F), bhtq.a(5.0F), bhtq.a(15.0F), bhtq.a(6.0F));
+      localButton.setPadding(ViewUtils.dip2px(15.0F), ViewUtils.dip2px(5.0F), ViewUtils.dip2px(15.0F), ViewUtils.dip2px(6.0F));
       localButton.setText(paramString1);
       localButton.setTextSize(14.0F);
       localButton.setSingleLine();
@@ -91,12 +91,12 @@ public class ReadInJoySearchTipsContainer
   
   protected int a(int paramInt)
   {
-    int i6 = (int)bhmg.a(getContext(), 7.0F);
-    int i1 = (int)bhmg.a(getContext(), 10.0F);
-    int i7 = (int)bhmg.a(getContext(), 10.0F);
-    int i8 = (int)bhmg.a(getContext(), 4.0F);
-    int m = (int)bhmg.a(getContext(), 12.0F);
-    int i9 = (int)bhmg.a(getContext(), 12.0F);
+    int i6 = (int)bfvh.a(getContext(), 7.0F);
+    int i1 = (int)bfvh.a(getContext(), 10.0F);
+    int i7 = (int)bfvh.a(getContext(), 10.0F);
+    int i8 = (int)bfvh.a(getContext(), 4.0F);
+    int m = (int)bfvh.a(getContext(), 12.0F);
+    int i9 = (int)bfvh.a(getContext(), 12.0F);
     int i10 = getChildCount();
     int n = 0;
     int k = m;
@@ -168,20 +168,20 @@ public class ReadInJoySearchTipsContainer
   
   public void onClick(View paramView)
   {
-    sjx localsjx = new sjx(this, Looper.getMainLooper());
-    Message localMessage = localsjx.obtainMessage();
+    sny localsny = new sny(this, Looper.getMainLooper());
+    Message localMessage = localsny.obtainMessage();
     localMessage.obj = paramView.getTag();
-    localsjx.sendMessage(localMessage);
+    localsny.sendMessage(localMessage);
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i2 = (int)bhmg.a(getContext(), 7.0F);
-    int k = (int)bhmg.a(getContext(), 10.0F);
-    int i3 = (int)bhmg.a(getContext(), 4.0F);
-    paramInt4 = (int)bhmg.a(getContext(), 12.0F);
-    int i4 = (int)bhmg.a(getContext(), 12.0F);
+    int i2 = (int)bfvh.a(getContext(), 7.0F);
+    int k = (int)bfvh.a(getContext(), 10.0F);
+    int i3 = (int)bfvh.a(getContext(), 4.0F);
+    paramInt4 = (int)bfvh.a(getContext(), 12.0F);
+    int i4 = (int)bfvh.a(getContext(), 12.0F);
     int i5 = getChildCount();
     int i = 0;
     int j = 1;
@@ -254,14 +254,14 @@ public class ReadInJoySearchTipsContainer
     this.jdField_b_of_type_Int = paramInt;
   }
   
-  public void setOnTipsClickListener(sjy paramsjy)
+  public void setOnTipsClickListener(snz paramsnz)
   {
-    this.jdField_a_of_type_Sjy = paramsjy;
+    this.jdField_a_of_type_Snz = paramsnz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer
  * JD-Core Version:    0.7.0.1
  */

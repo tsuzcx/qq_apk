@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.pts.nativemodule.IPTSAllInOneJump;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class qhc
-  implements IPTSAllInOneJump
+  implements ViewBase.IBuilder
 {
-  public void allInOneJump(String paramString)
+  public ViewBase build(VafContext paramVafContext)
   {
-    QLog.i("PTSAllInOneJumpModule", 1, "[allInOneJump], url = " + paramString);
-    if (BaseActivity.sTopActivity != null) {
-      ozs.a(BaseActivity.sTopActivity, paramString);
-    }
+    return new qhb(paramVafContext);
   }
 }
 

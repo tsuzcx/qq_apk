@@ -1,71 +1,61 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
-import com.tencent.mobileqq.widget.NewStyleDropdownView.2.1;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqmini.sdk.annotation.JsEvent;
+import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import org.json.JSONObject;
 
+@JsPlugin(secondary=true)
 public class bizl
-  implements View.OnClickListener
+  extends BaseJsPlugin
 {
-  public bizl(NewStyleDropdownView paramNewStyleDropdownView) {}
-  
-  public void onClick(View paramView)
+  @JsEvent({"checkGameBuddyType"})
+  public void checkGameBuddyType(RequestEvent paramRequestEvent)
   {
-    this.a.jdField_a_of_type_Bizm.clearFocus();
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Bizm.getWindowToken(), 0);
-    boolean bool;
-    if ((this.a.jdField_a_of_type_Bizm.getAdapter() != null) && (this.a.jdField_a_of_type_Bizm.getAdapter().getCount() > 0))
-    {
-      int i = this.a.jdField_a_of_type_Bizm.getAdapter().getCount();
-      if (i >= 5) {
-        break label334;
-      }
-      int j = agej.a(7.5F, this.a.getResources());
-      int k = agej.a(40.0F, this.a.getResources());
-      this.a.jdField_a_of_type_Bizm.setDropDownHeight(i * (j * 2 + k) + j * 2);
-      Object localObject = ((ImageView)paramView).getDrawable();
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder().append("arrow clicked, drawable is down=");
-        if (localObject != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) {
-          break label359;
-        }
-        bool = true;
-        label177:
-        QLog.d("NewStyleDropdownView", 2, bool + ", isLastDropDown=" + this.a.jdField_a_of_type_Boolean);
-      }
-      if ((localObject != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) || (this.a.jdField_a_of_type_Boolean)) {
-        break label365;
-      }
-      if (this.a.jdField_a_of_type_Bizn != null) {
-        this.a.jdField_a_of_type_Bizn.c(false);
-      }
-      NewStyleDropdownView.a(this.a).postDelayed(new NewStyleDropdownView.2.1(this, paramView), 500L);
-      localObject = paramView.getContext();
-      if ((localObject != null) && ((localObject instanceof LoginActivity))) {
-        bdll.a(((LoginActivity)localObject).app, "dc00898", "", "", "0X8007367", "0X8007367", 0, 0, "", "", "", "");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("GameBuddyPlugin", 2, new Object[] { "[checkGameBuddyType 2.0], req:", paramRequestEvent });
     }
-    for (;;)
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label334:
-      this.a.jdField_a_of_type_Bizm.setDropDownHeight(agej.a(251.5F, this.a.getResources()));
-      break;
-      label359:
-      bool = false;
-      break label177;
-      label365:
-      if (this.a.jdField_a_of_type_Bizn != null) {
-        this.a.jdField_a_of_type_Bizn.c(true);
+      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
+      if ("checkGameBuddyType".equals(((JSONObject)localObject).optString("api_name")))
+      {
+        localObject = ((JSONObject)localObject).optJSONObject("data").optString("uid");
+        Bundle localBundle = new Bundle();
+        localBundle.putString("uin_value", (String)localObject);
+        QIPCClientHelper.getInstance().callServer("module_game_buddy", "action_check_aio_type", localBundle, new bizm(this, paramRequestEvent));
       }
-      this.a.jdField_a_of_type_Bizm.dismissDropDown();
+      return;
+    }
+    catch (Throwable paramRequestEvent)
+    {
+      QLog.e("GameBuddyPlugin", 1, paramRequestEvent, new Object[0]);
+    }
+  }
+  
+  @JsEvent({"invokeGameBuddyAio"})
+  public void invokeGameBuddyAio(RequestEvent paramRequestEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameBuddyPlugin", 2, new Object[] { "[invokeGameBuddyAio 2.0], req:", paramRequestEvent });
+    }
+    try
+    {
+      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
+      if ("invokeGameBuddyAio".equals(((JSONObject)localObject).optString("api_name")))
+      {
+        localObject = ((JSONObject)localObject).optJSONObject("data").optString("uid");
+        Bundle localBundle = new Bundle();
+        localBundle.putString("uin_value", (String)localObject);
+        QIPCClientHelper.getInstance().callServer("module_game_buddy", "action_check_aio_type", localBundle, new bizn(this, paramRequestEvent, (String)localObject));
+      }
+      return;
+    }
+    catch (Throwable paramRequestEvent)
+    {
+      QLog.e("GameBuddyPlugin", 1, paramRequestEvent, new Object[0]);
     }
   }
 }

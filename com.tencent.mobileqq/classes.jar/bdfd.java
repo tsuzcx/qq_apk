@@ -1,63 +1,39 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class bdfd
 {
-  public static void a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt, float paramFloat5, float paramFloat6)
+  char jdField_a_of_type_Char;
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString = "";
+  int b;
+  
+  void a()
   {
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(paramFloat5, paramFloat6);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0, paramFloat1, 0, paramFloat2, 0, paramFloat3, 0, paramFloat4);
-    localAnimationSet.addAnimation(localAlphaAnimation);
-    localAnimationSet.addAnimation(localTranslateAnimation);
-    localAnimationSet.setDuration(paramInt);
-    localAnimationSet.setFillEnabled(true);
-    localAnimationSet.setFillBefore(true);
-    localAnimationSet.setFillAfter(true);
-    paramView.startAnimation(localAnimationSet);
+    this.jdField_a_of_type_Char = '\000';
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public static void a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt, Animation.AnimationListener paramAnimationListener)
+  public boolean equals(@Nullable Object paramObject)
   {
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(paramFloat1, paramFloat2, paramFloat3, paramFloat4, 1, 0.5F, 1, 0.5F);
-    localScaleAnimation.setDuration(paramInt);
-    localScaleAnimation.setFillEnabled(true);
-    localScaleAnimation.setFillBefore(true);
-    localScaleAnimation.setFillAfter(true);
-    if (paramAnimationListener != null) {
-      localScaleAnimation.setAnimationListener(paramAnimationListener);
-    }
-    paramView.startAnimation(localScaleAnimation);
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if (!(paramObject instanceof bdfd)) {
+        return false;
+      }
+      paramObject = (bdfd)paramObject;
+    } while ((this.jdField_a_of_type_Char == paramObject.jdField_a_of_type_Char) && (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b) && ((this.jdField_a_of_type_JavaLangString == paramObject.jdField_a_of_type_JavaLangString) || ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)))));
+    return false;
   }
   
-  public static void a(View paramView, boolean paramBoolean)
+  @NonNull
+  public String toString()
   {
-    a(paramView, paramBoolean, 200);
-  }
-  
-  public static void a(View paramView, boolean paramBoolean, int paramInt)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.2F, 1.0F);
-    localAlphaAnimation.setDuration(paramInt);
-    localAlphaAnimation.setFillAfter(paramBoolean);
-    paramView.startAnimation(localAlphaAnimation);
-  }
-  
-  public static void b(View paramView, boolean paramBoolean)
-  {
-    b(paramView, paramBoolean, 200);
-  }
-  
-  public static void b(View paramView, boolean paramBoolean, int paramInt)
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.2F);
-    localAlphaAnimation.setFillAfter(paramBoolean);
-    localAlphaAnimation.setDuration(paramInt);
-    paramView.startAnimation(localAlphaAnimation);
+    return "[opcode=" + this.jdField_a_of_type_Char + ", chars=" + this.jdField_a_of_type_Int + ",lines=" + this.b + ", attribs=" + this.jdField_a_of_type_JavaLangString + "]";
   }
 }
 

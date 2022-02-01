@@ -1,55 +1,38 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotSearch;
-import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class qkt
-  extends qjh
+class qkt
+  implements ViewFactory.FoundClickableViewListener
 {
-  public qkt(Context paramContext, aoof paramaoof, sel paramsel)
-  {
-    super(paramContext, paramaoof, paramsel);
-  }
+  qkt(qks paramqks, int paramInt, TemplateBean paramTemplateBean) {}
   
-  public qjh a()
+  public void onFound(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return g().l().n();
-  }
-  
-  public qjh d()
-  {
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if ((this.jdField_a_of_type_Qjg != null) && ((this.jdField_a_of_type_Qjg instanceof ComponentContentHotSearch))) {
-      localLinearLayout.addView((ComponentContentHotSearch)this.jdField_a_of_type_Qjg);
+    if (qks.a(this.jdField_a_of_type_Qks) != null) {
+      paramViewBase.setOnClickListener(new qku(this));
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
-  }
-  
-  public qjh e()
-  {
-    return this;
-  }
-  
-  public qjh g()
-  {
-    this.jdField_a_of_type_Qjg = new ComponentContentHotSearch(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Sel);
-    return this;
-  }
-  
-  public qjh o()
-  {
-    super.o();
-    return this;
+    do
+    {
+      return;
+      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+      {
+      default: 
+        return;
+      case 1038: 
+        paramViewBase.setOnClickListener(new qkw(this));
+        return;
+      case 1040: 
+        paramViewBase.setOnClickListener(new qkv(this));
+        return;
+      case 1130: 
+        paramViewBase.setOnClickListener(new qkx(this));
+        return;
+      }
+    } while ((this.jdField_a_of_type_Qks.a == null) || (this.jdField_a_of_type_Qks.a.a() == null));
+    paramViewBase.setOnClickListener(new qff(this.jdField_a_of_type_Qks.a, qks.a(this.jdField_a_of_type_Qks).getContext(), 1115, this.jdField_a_of_type_Qks.a.e(), this.jdField_a_of_type_Int));
   }
 }
 

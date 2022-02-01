@@ -1,24 +1,41 @@
-import eipc.EIPCResult;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class apya
-  implements apyv
+public class apya
 {
-  apya(apxv paramapxv, apyu paramapyu) {}
+  private boolean a;
   
-  public void a(EIPCResult paramEIPCResult)
+  public static apya a(String paramString)
   {
-    apyu localapyu = this.jdField_a_of_type_Apyu;
-    if (paramEIPCResult.code == 0) {}
-    for (boolean bool = true;; bool = false)
+    if (paramString == null) {}
+    do
     {
-      localapyu.a(bool, paramEIPCResult.data);
-      return;
-    }
+      return null;
+      try
+      {
+        apya localapya = new apya();
+        localapya.a = new JSONObject(paramString).optBoolean("needSeparatePersonWithGroup", false);
+        return localapya;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("GlobalSearchConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public boolean a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    return "needSeparate:" + this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apya
  * JD-Core Version:    0.7.0.1
  */

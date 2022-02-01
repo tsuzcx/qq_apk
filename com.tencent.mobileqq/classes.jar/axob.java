@@ -1,21 +1,22 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
 public class axob
-  extends RecyclerView.ItemDecoration
+  implements TextWatcher
 {
-  private final int jdField_a_of_type_Int = agej.a(12.0F, this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRecommendFragment.getResources());
+  private axob(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  private axob(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void afterTextChanged(Editable paramEditable)
   {
-    paramRect.top = this.jdField_a_of_type_Int;
+    paramEditable = this.a.a.getText().toString();
+    this.a.b(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

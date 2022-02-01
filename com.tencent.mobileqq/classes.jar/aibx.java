@@ -1,18 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aibx
-  implements DialogInterface.OnClickListener
+public abstract interface aibx
 {
-  aibx(aibr paramaibr) {}
+  public abstract Activity a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOGalleryScene", 2, "showSaveFileTips cancel");
-    }
-  }
+  public abstract QQAppInterface a();
 }
 
 

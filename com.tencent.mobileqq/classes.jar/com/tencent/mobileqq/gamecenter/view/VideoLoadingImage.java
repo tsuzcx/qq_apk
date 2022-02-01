@@ -42,13 +42,13 @@ public class VideoLoadingImage
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130840181);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130840218);
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
       this.c = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
       this.d = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
     }
-    this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130840182);
+    this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130840219);
     if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
     {
       this.e = this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight();

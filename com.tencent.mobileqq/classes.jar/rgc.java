@@ -1,29 +1,12 @@
-import org.jetbrains.annotations.NotNull;
-
-class rgc
-  implements rjx
+public class rgc
 {
-  rgc(rgb paramrgb, String paramString) {}
-  
-  public void a(float paramFloat) {}
-  
-  public void a(int paramInt, @NotNull String paramString)
-  {
-    if (rgb.a(this.jdField_a_of_type_Rgb) != null)
-    {
-      rgb.a(this.jdField_a_of_type_Rgb).b();
-      rgb.a(this.jdField_a_of_type_Rgb).a(2131717034);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (rgb.a(this.jdField_a_of_type_Rgb) != null)
-    {
-      rgb.a(this.jdField_a_of_type_Rgb).b();
-      rgb.a(this.jdField_a_of_type_Rgb).a(paramString, this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public int a;
+  public String a = "";
+  public int b;
+  public String b = "";
+  public int c;
+  public String c = "";
+  public String d = "";
 }
 
 

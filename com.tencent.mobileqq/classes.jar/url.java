@@ -1,46 +1,47 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.media.AudioManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class url
-  extends uej<Object>
 {
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new urm(this);
+  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
+  private Handler jdField_a_of_type_AndroidOsHandler = new urn(Looper.getMainLooper(), this);
   
-  public url(Context paramContext, WSVerticalPageFragment paramWSVerticalPageFragment)
+  public static url a()
   {
-    super(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
+    return uro.a();
   }
   
-  protected void a()
+  private void a()
   {
-    if ((a() != null) && ((a() instanceof stSimpleMetaFeed))) {
-      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)a());
+    if (this.jdField_a_of_type_AndroidMediaAudioManager == null) {
+      this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)BaseApplicationImpl.getApplication().getSystemService("audio"));
     }
+    this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 2);
   }
   
-  protected int b()
+  private void b()
   {
-    return 2131560000;
-  }
-  
-  protected void b() {}
-  
-  protected void c() {}
-  
-  protected void e()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment == null) {
+    if (this.jdField_a_of_type_AndroidMediaAudioManager == null) {
       return;
     }
-    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131380700);
-    usd.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getActivity(), localRelativeLayout);
-    a(2131380701).setOnClickListener(new urm(this));
-    a(2131380702).setOnClickListener(new urn(this));
+    this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    uya.e("WSPlayerAudioControlLog", "[WSPlayerAudioControl.java][requestOrAbandonAudioFocus] isFocus:" + paramBoolean);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 1500L);
   }
 }
 

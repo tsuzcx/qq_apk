@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
+import amtj;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
-import anzj;
 import com.tencent.biz.pubaccount.VideoInfo;
-import rlm;
-import rsr;
+import rsm;
+import rzv;
 
 public class VideoFeedsNormalFollowBtn
   extends TextView
-  implements rlm
+  implements rsm
 {
   public VideoFeedsNormalFollowBtn(Context paramContext)
   {
@@ -43,13 +43,13 @@ public class VideoFeedsNormalFollowBtn
   {
     if (paramBoolean)
     {
-      setText(anzj.a(2131714986));
-      setBackgroundDrawable(rsr.a(getContext(), 2130843111));
+      setText(amtj.a(2131715220));
+      setBackgroundDrawable(rzv.a(getContext(), 2130843169));
       setCompoundDrawables(null, null, null, null);
       return;
     }
-    setText(anzj.a(2131715008));
-    setBackgroundDrawable(rsr.a(getContext(), 2130842952));
+    setText(amtj.a(2131715242));
+    setBackgroundDrawable(rzv.a(getContext(), 2130843006));
   }
 }
 

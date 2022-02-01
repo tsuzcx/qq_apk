@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.utils;
 
-import bhqp;
-import blgx;
+import bjmm;
 
-public class QQCustomDialogWtihInputAndChoose$5
+class QQCustomDialogWtihInputAndChoose$5
   implements Runnable
 {
-  public QQCustomDialogWtihInputAndChoose$5(bhqp parambhqp) {}
+  QQCustomDialogWtihInputAndChoose$5(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose) {}
   
   public void run()
   {
-    blgx.a(this.this$0.a);
+    bjmm.a(this.this$0.inputView);
   }
 }
 

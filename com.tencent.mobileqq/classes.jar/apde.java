@@ -1,18 +1,35 @@
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.2;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class apde
+  extends apcz
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
+  public apde(RockDownloaderManager.2 param2) {}
   
-  public apde(String paramString, int paramInt1, int paramInt2)
+  public void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloaderManager", 2, new Object[] { "onFail: RockDownloadInfo=", paramRockDownloadInfo, " errorMsg=", paramString, " errorCode=", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void a(ArrayList<RockDownloadInfo> paramArrayList)
+  {
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)paramArrayList.next();
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloaderManager", 2, new Object[] { "onSuccess:", localRockDownloadInfo });
+      }
+      boolean bool = apdf.b(localRockDownloadInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloaderManager", 2, new Object[] { "install success=", Boolean.valueOf(bool) });
+      }
+    }
   }
 }
 

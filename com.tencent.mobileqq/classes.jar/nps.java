@@ -1,8 +1,25 @@
-public abstract interface nps
+import android.view.View;
+import com.tencent.mobileqq.text.QQText.LinkSpan;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class nps
+  extends QQText.LinkSpan
 {
-  public abstract void a();
+  public nps(npr paramnpr, String paramString)
+  {
+    super(paramnpr, paramString);
+  }
   
-  public abstract void a(String paramString);
+  public void onClick(View paramView)
+  {
+    if (npt.a.matcher(this.mUrl).find())
+    {
+      npr.a(paramView, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      return;
+    }
+    super.onClick(paramView);
+  }
 }
 
 

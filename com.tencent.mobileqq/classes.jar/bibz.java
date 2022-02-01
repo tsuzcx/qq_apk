@@ -1,17 +1,17 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import com.tencent.open.base.img.ImageCache;
+import com.tencent.open.downloadnew.DownloadInfo;
 
 class bibz
-  implements Handler.Callback
+  implements biaj
 {
-  bibz(bibw parambibw) {}
+  bibz(biby parambiby, DownloadInfo paramDownloadInfo) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(String paramString1, String paramString2, String paramString3) {}
+  
+  public void b(String paramString1, String paramString2, String paramString3)
   {
-    if ((paramMessage != null) && (paramMessage.obj != null)) {
-      bibw.a().a(paramMessage.obj.toString());
-    }
-    return false;
+    bhzm.d("DownloadManager_", ">>download apk icon err,should load another size icon");
+    ImageCache.a("app", bhzk.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c, 75), null);
   }
 }
 

@@ -27,15 +27,15 @@ public class ReadInJoyTipsView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = 0;
-    inflate(paramContext, 2131560286, this);
+    inflate(paramContext, 2131560293, this);
   }
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376220));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376223));
-    this.b = ((ImageView)findViewById(2131376222));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376221));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375986));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375989));
+    this.b = ((ImageView)findViewById(2131375988));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131375987));
   }
   
   protected void onFinishInflate()
@@ -56,7 +56,7 @@ public class ReadInJoyTipsView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyTipsView
  * JD-Core Version:    0.7.0.1
  */

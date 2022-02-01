@@ -1,68 +1,52 @@
-import android.app.Activity;
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 
-class akrh
-  implements admy
+public class akrh
+  implements View.OnTouchListener
 {
-  akrh(akrf paramakrf, String paramString) {}
+  public akrh(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void onComplete()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, "check api, onComplete");
+    int i = paramMotionEvent.getAction();
+    paramMotionEvent.getX();
+    float f = paramMotionEvent.getY();
+    if (i == 0) {
+      this.a.jdField_b_of_type_AndroidWidgetButton.setText(null);
     }
-  }
-  
-  public void onFailure(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
+    do
+    {
+      return false;
+      if (i == 2)
+      {
+        if (f < this.a.jdField_b_of_type_Int * -1)
+        {
+          this.a.a(false, false);
+          return true;
+        }
+        this.a.a(true, false);
+        return true;
+      }
+      if (i == 3)
+      {
+        this.a.a(false, true);
+        return false;
+      }
+    } while (i != 1);
+    if (f < this.a.jdField_b_of_type_Int * -1)
+    {
+      this.a.k = false;
+      this.a.a(false, true);
     }
-    if ((akrf.a(this.jdField_a_of_type_Akrf).isFinishing()) || (this.jdField_a_of_type_Akrf.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Akrf.d();
-    if (akrf.a(this.jdField_a_of_type_Akrf) != null) {
-      akrf.a(this.jdField_a_of_type_Akrf).removeCallbacks(akrf.a(this.jdField_a_of_type_Akrf));
-    }
-    this.jdField_a_of_type_Akrf.a(anzj.a(2131712470), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
-    }
-    if ((akrf.a(this.jdField_a_of_type_Akrf).isFinishing()) || (this.jdField_a_of_type_Akrf.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Akrf.d();
-    if (akrf.a(this.jdField_a_of_type_Akrf) != null) {
-      akrf.a(this.jdField_a_of_type_Akrf).removeCallbacks(akrf.a(this.jdField_a_of_type_Akrf));
-    }
-    this.jdField_a_of_type_Akrf.a(anzj.a(2131712474), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, "check api, onSuccess");
-    }
-    if ((akrf.a(this.jdField_a_of_type_Akrf).isFinishing()) || (this.jdField_a_of_type_Akrf.b)) {
-      return;
-    }
-    if (akrf.a(this.jdField_a_of_type_Akrf) != null) {
-      akrf.a(this.jdField_a_of_type_Akrf).removeCallbacks(akrf.a(this.jdField_a_of_type_Akrf));
-    }
-    akrf.a(this.jdField_a_of_type_Akrf);
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDKAvatarSettingManager", 2, "check api, onTrigger");
+    for (;;)
+    {
+      this.a.jdField_b_of_type_AndroidWidgetButton.setText(2131692337);
+      return false;
+      this.a.k = true;
+      this.a.a(true, true);
     }
   }
 }

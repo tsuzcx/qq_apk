@@ -1,18 +1,16 @@
-import android.os.Handler;
-import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class yth
-  implements yqb<ypi>
+  implements View.OnTouchListener
 {
-  yth(ytg paramytg, String paramString) {}
+  yth(ytg paramytg) {}
   
-  public void a(ypi paramypi)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramypi.a != null) && (TextUtils.equals(paramypi.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
-    {
-      ysw.a(this.jdField_a_of_type_Ytg.a).a = paramypi.a;
-      ysw.a(this.jdField_a_of_type_Ytg.a).sendMessage(ysw.a(this.jdField_a_of_type_Ytg.a).obtainMessage(0, ysw.a(this.jdField_a_of_type_Ytg.a)));
-    }
+    ytg.a(this.a);
+    return true;
   }
 }
 

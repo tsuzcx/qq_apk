@@ -1,27 +1,56 @@
-import com.tencent.biz.qqcircle.requests.QCircleDoLikeRequest;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudWrite.StDoLikeRsp;
-import qqcircle.QQCircleFeedBase.StPolyLike;
+import android.view.View;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
 
-class vsm
-  implements aaav<FeedCloudWrite.StDoLikeRsp>
+public class vsm
+  extends vrl
 {
-  vsm(vsj paramvsj, QCircleDoLikeRequest paramQCircleDoLikeRequest, int paramInt, FeedCloudMeta.StFeed paramStFeed, QQCircleFeedBase.StPolyLike paramStPolyLike1, QQCircleFeedBase.StPolyLike paramStPolyLike2) {}
+  ShareGroupItem jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem;
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoLikeRsp paramStDoLikeRsp)
+  public vsm(vrr paramvrr, ShareGroupItem paramShareGroupItem)
   {
-    QLog.d(vsj.a(), 1, "onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleDoLikeRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleDoLikeRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString);
-    if ((paramBoolean) && (paramLong == 0L))
+    super(paramvrr);
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = paramShareGroupItem;
+    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isOwner();
+    this.b = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isPublic();
+  }
+  
+  protected void a(View paramView, CommentEntry paramCommentEntry, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem == null) {
+      super.a(paramView, paramCommentEntry, paramInt);
+    }
+    paramView = QQStoryContext.a().b();
+    bjnw localbjnw = bjnw.a(this.jdField_a_of_type_Vrr.a);
+    if (paramCommentEntry.authorUnionId.equals(paramView)) {
+      if (paramCommentEntry.status == 2)
+      {
+        localbjnw.c(amtj.a(2131713038));
+        localbjnw.a(amtj.a(2131713032), 3);
+      }
+    }
+    for (;;)
     {
-      vsj.b(this.jdField_a_of_type_Vsj, true);
-      if ((!vsj.b(this.jdField_a_of_type_Vsj)) && (this.jdField_a_of_type_Int != 21)) {
-        this.jdField_a_of_type_Vsj.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Int, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike, this.b);
+      localbjnw.d(amtj.a(2131713014));
+      localbjnw.a(new vro(this, localbjnw, paramCommentEntry, paramInt));
+      localbjnw.show();
+      return;
+      localbjnw.c(amtj.a(2131713015));
+      break;
+      if ((this.b) && (this.jdField_a_of_type_Boolean))
+      {
+        localbjnw.c(amtj.a(2131713026));
+        localbjnw.a(amtj.a(2131713035), 3);
+        localbjnw.c(amtj.a(2131713042));
       }
-      if (this.jdField_a_of_type_Int == 21) {
-        vsj.a(this.jdField_a_of_type_Vsj, paramStDoLikeRsp);
+      else
+      {
+        localbjnw.c(amtj.a(2131713025));
+        localbjnw.c(amtj.a(2131713033));
       }
-      vsj.a(this.jdField_a_of_type_Vsj, true);
     }
   }
 }

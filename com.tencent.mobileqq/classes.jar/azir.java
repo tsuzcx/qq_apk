@@ -1,36 +1,50 @@
-import kotlin.Metadata;
-import kotlin.jvm.JvmOverloads;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.qcall.QCallCardInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"to898", "", "tValue", "", "from", "", "revFlag1", "revFlag4", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
 public final class azir
+  implements Parcelable.Creator<QCallCardInfo>
 {
-  @JvmOverloads
-  public static final void a(@NotNull String paramString)
+  public QCallCardInfo a(Parcel paramParcel)
   {
-    a(paramString, 0, null, null, 14, null);
+    QCallCardInfo localQCallCardInfo = new QCallCardInfo();
+    localQCallCardInfo.uin = paramParcel.readString();
+    localQCallCardInfo.nickname = paramParcel.readString();
+    localQCallCardInfo.gender = paramParcel.readInt();
+    localQCallCardInfo.birthday = paramParcel.readInt();
+    localQCallCardInfo.in_use_flag = paramParcel.readInt();
+    localQCallCardInfo.pre_recycle_flag = paramParcel.readInt();
+    localQCallCardInfo.recycle_flag = paramParcel.readInt();
+    localQCallCardInfo.reg_time = paramParcel.readInt();
+    localQCallCardInfo.reg_ip = paramParcel.readString();
+    localQCallCardInfo.recycle_time = paramParcel.readInt();
+    localQCallCardInfo.recycle_ip = paramParcel.readString();
+    localQCallCardInfo.remark = paramParcel.readString();
+    localQCallCardInfo.netstatus = paramParcel.readInt();
+    localQCallCardInfo.qq = paramParcel.readString();
+    localQCallCardInfo.phonenum = paramParcel.readString();
+    localQCallCardInfo.phone_mask = paramParcel.readInt();
+    localQCallCardInfo.freeStatus = paramParcel.readInt();
+    localQCallCardInfo.pstn_freeStatus = paramParcel.readInt();
+    localQCallCardInfo.is_ever_pstn = paramParcel.readInt();
+    localQCallCardInfo.vip_all_free_time = paramParcel.readInt();
+    localQCallCardInfo.vip_left_free_time = paramParcel.readInt();
+    localQCallCardInfo.normal_all_free_time = paramParcel.readInt();
+    localQCallCardInfo.normal_left_free_time = paramParcel.readInt();
+    localQCallCardInfo.used_free_time = paramParcel.readInt();
+    localQCallCardInfo.identity = paramParcel.readInt();
+    localQCallCardInfo.autoRemark = paramParcel.readString();
+    localQCallCardInfo.card_type = paramParcel.readInt();
+    localQCallCardInfo.isPopup = paramParcel.readInt();
+    localQCallCardInfo.qqUin2 = paramParcel.readString();
+    localQCallCardInfo.qid_qq_status = paramParcel.readInt();
+    localQCallCardInfo.contact_qq_status = paramParcel.readInt();
+    return localQCallCardInfo;
   }
   
-  @JvmOverloads
-  public static final void a(@NotNull String paramString, int paramInt)
+  public QCallCardInfo[] a(int paramInt)
   {
-    a(paramString, paramInt, null, null, 12, null);
-  }
-  
-  @JvmOverloads
-  public static final void a(@NotNull String paramString1, int paramInt, @NotNull String paramString2)
-  {
-    a(paramString1, paramInt, paramString2, null, 8, null);
-  }
-  
-  @JvmOverloads
-  public static final void a(@NotNull String paramString1, int paramInt, @NotNull String paramString2, @NotNull String paramString3)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString1, "tValue");
-    Intrinsics.checkParameterIsNotNull(paramString2, "revFlag1");
-    Intrinsics.checkParameterIsNotNull(paramString3, "revFlag4");
-    bdll.b(null, "dc00898", "", "", paramString1, paramString1, paramInt, 0, paramString2, "", "", "");
+    return new QCallCardInfo[paramInt];
   }
 }
 

@@ -1,72 +1,31 @@
-import android.content.Context;
-import android.view.View;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.UUID;
 
-public class asgk
-  extends asnw
+class asgk
+  implements DialogInterface.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private avse jdField_a_of_type_Avse;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String b;
+  asgk(asgi paramasgi, long paramLong, UUID paramUUID, ChatMessage paramChatMessage, Activity paramActivity) {}
   
-  public asgk(QQAppInterface paramQQAppInterface, Context paramContext, avse paramavse)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Avse = paramavse;
-  }
-  
-  public int a()
-  {
-    return 2;
-  }
-  
-  public Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
-  
-  public String a()
-  {
-    return "RichTextPanelEmoticonSearchLayoutHelper";
-  }
-  
-  public void a() {}
-  
-  public void a(ListView paramListView, aslt paramaslt)
-  {
-    b(paramListView, paramaslt);
-    paramaslt = b();
-    if (paramaslt.getParent() == null) {
-      paramListView.addFooterView(paramaslt);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      paramDialogInterface = bfbb.a(this.jdField_a_of_type_Asgi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+      paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaUtilUUID));
+      this.jdField_a_of_type_Asgi.c(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      this.jdField_a_of_type_Asgi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().onCurrentMessageDeleted(this.jdField_a_of_type_Asgi.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_Asgi.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
+      return;
     }
-  }
-  
-  public void a(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Avse.n();
-  }
-  
-  public void c()
-  {
-    this.b = null;
+    new bebp(this.jdField_a_of_type_Long, this.jdField_a_of_type_Asgi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity).a(this.jdField_a_of_type_JavaUtilUUID);
   }
 }
 

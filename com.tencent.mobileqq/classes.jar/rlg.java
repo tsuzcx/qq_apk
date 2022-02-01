@@ -1,11 +1,57 @@
-import com.google.gson.reflect.TypeToken;
-import java.util.List;
-import kotlin.Metadata;
+import android.support.v4.util.Pools.SynchronizedPool;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/CodecReuseHelper$Companion$getTargetList$1$1", "Lcom/google/gson/reflect/TypeToken;", "", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rlg
-  extends TypeToken<List<? extends String>>
-{}
+public class rlg
+  extends rle<rlk, rlj, rli>
+{
+  private static final Pools.SynchronizedPool<rli> jdField_a_of_type_AndroidSupportV4UtilPools$SynchronizedPool = new Pools.SynchronizedPool(10);
+  private static final rlf<rlk, rlj, rli> jdField_a_of_type_Rlf = new rlh();
+  
+  public rlg()
+  {
+    super(jdField_a_of_type_Rlf);
+  }
+  
+  private static rli a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    rli localrli2 = (rli)jdField_a_of_type_AndroidSupportV4UtilPools$SynchronizedPool.acquire();
+    rli localrli1 = localrli2;
+    if (localrli2 == null) {
+      localrli1 = new rli();
+    }
+    localrli1.a = paramInt1;
+    localrli1.c = paramInt2;
+    localrli1.b = paramInt3;
+    return localrli1;
+  }
+  
+  public void a(rlj paramrlj, int paramInt1, int paramInt2)
+  {
+    a(paramrlj, 1, a(paramInt1, 0, paramInt2));
+  }
+  
+  public void a(rlj paramrlj, int paramInt, rli paramrli)
+  {
+    try
+    {
+      super.a(paramrlj, paramInt, paramrli);
+      if (paramrli != null) {
+        jdField_a_of_type_AndroidSupportV4UtilPools$SynchronizedPool.release(paramrli);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void b(rlj paramrlj, int paramInt1, int paramInt2)
+  {
+    a(paramrlj, 2, a(paramInt1, 0, paramInt2));
+  }
+  
+  public void c(rlj paramrlj, int paramInt1, int paramInt2)
+  {
+    a(paramrlj, 4, a(paramInt1, 0, paramInt2));
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

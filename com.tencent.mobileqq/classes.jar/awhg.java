@@ -1,38 +1,19 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
 
-class awhg
-  implements nlu
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class awhg
+  implements View.OnClickListener
 {
-  awhg(awhf paramawhf) {}
+  awhg(Function0 paramFunction0) {}
   
-  public void a(Bundle paramBundle)
+  public final void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(this.a.a))
-    {
-      paramBundle = paramBundle.getString("info");
-      localJSONObject = new JSONObject();
-    }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        JSONObject localJSONObject;
-        localJSONObject.put("data", paramBundle);
-        this.a.callJs(this.a.a, new String[] { localJSONObject.toString() });
-        if (QLog.isColorLevel()) {
-          QLog.d("PushApiPlugin", 2, new Object[] { "handleJsRequest callback:", paramBundle });
-        }
-        return;
-      }
-      catch (Throwable paramBundle)
-      {
-        QLog.e("PushApiPlugin", 1, paramBundle, new Object[0]);
-        return;
-      }
-    }
-    QLog.d("PushApiPlugin", 2, "handleJsRequest callback is empty");
+    this.a.invoke();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

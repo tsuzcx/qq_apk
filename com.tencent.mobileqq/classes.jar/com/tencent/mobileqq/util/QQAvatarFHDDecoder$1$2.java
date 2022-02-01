@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.util;
 
-import bhie;
-import bhif;
+import bfro;
+import bfrp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Setting;
 
 public class QQAvatarFHDDecoder$1$2
   implements Runnable
 {
-  public QQAvatarFHDDecoder$1$2(bhif parambhif, String paramString) {}
+  public QQAvatarFHDDecoder$1$2(bfrp parambfrp, String paramString) {}
   
   public void run()
   {
-    if (bhie.a(this.jdField_a_of_type_Bhif.a)) {
+    if (bfro.a(this.jdField_a_of_type_Bfrp.a)) {
       return;
     }
-    Setting localSetting = bhie.a(this.jdField_a_of_type_Bhif.a).c(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Bhif.a.a(localSetting);
+    Setting localSetting = bfro.a(this.jdField_a_of_type_Bfrp.a).getQQHeadSettingFromDB(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bfrp.a.a(localSetting);
   }
 }
 

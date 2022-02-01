@@ -1,22 +1,10 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.loginwelcome.LoginUserGuideHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
 
-class awwe
-  implements View.OnClickListener
+public final class awwe
 {
-  awwe(awwb paramawwb, Activity paramActivity) {}
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
-  {
-    LoginUserGuideHelper.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Awwb.a.a, awwb.a(this.jdField_a_of_type_Awwb));
-    this.jdField_a_of_type_Awwb.g();
-    bdll.b(this.jdField_a_of_type_Awwb.a.a, "dc00898", "", "", "0X8009F4A", "0X8009F4A", 2, 0, "2", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  private awwe(StartLiveTopicLabelListView paramStartLiveTopicLabelListView) {}
 }
 
 

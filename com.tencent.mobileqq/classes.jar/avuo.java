@@ -1,11 +1,19 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.hotpic.HotPicTab;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
-public class avuo
+public final class avuo
+  implements Parcelable.Creator<MsgBackupUserData>
 {
-  public TextView a;
+  public MsgBackupUserData a(Parcel paramParcel)
+  {
+    return new MsgBackupUserData(paramParcel);
+  }
   
-  avuo(HotPicTab paramHotPicTab) {}
+  public MsgBackupUserData[] a(int paramInt)
+  {
+    return new MsgBackupUserData[paramInt];
+  }
 }
 
 

@@ -1,34 +1,16 @@
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.TroopManager;
 
-class ancr
-  implements admy
+public final class ancr
+  implements DialogInterface.OnClickListener
 {
-  ancr(ancn paramancn, String paramString, long paramLong, adnb paramadnb, CmGameInitParams paramCmGameInitParams) {}
+  public ancr(TroopManager paramTroopManager, String paramString) {}
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ancn.a(this.jdField_a_of_type_Ancn, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
   }
-  
-  public void onPermission(int paramInt)
-  {
-    ancn.a(this.jdField_a_of_type_Ancn, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    String str = paramJSONObject.optString("openid");
-    paramJSONObject = paramJSONObject.optString("access_token", "");
-    ancn.a(this.jdField_a_of_type_Ancn, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adnb);
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.openId = str;
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessToken = paramJSONObject;
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessTokenRet = 1;
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

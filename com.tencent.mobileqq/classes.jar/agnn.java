@@ -1,16 +1,30 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agnn
-  implements bdxo
+  implements awdh
 {
-  agnn(agnj paramagnj) {}
+  agnn(agnj paramagnj, String paramString, agnu paramagnu) {}
   
   public void a()
   {
-    bdxu localbdxu = new bdxu(3000, 360, 0);
-    localbdxu.a = true;
-    this.a.a.g.a(new bdxn[] { localbdxu });
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Agnu.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Agnu.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Agnu.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
+    }
   }
+  
+  public void a(awde paramawde)
+  {
+    agnj.a(this.jdField_a_of_type_Agnj, paramawde, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agnu, this);
+  }
+  
+  public void a(awde paramawde, int paramInt)
+  {
+    this.jdField_a_of_type_Agnj.a(this.jdField_a_of_type_Agnu, paramInt, false);
+  }
+  
+  public void b(awde paramawde) {}
 }
 
 

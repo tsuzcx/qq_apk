@@ -1,16 +1,23 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import bpgi;
+import bmhy;
 import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel;
 
 public class AEEditorImageEditFragment$16$3
   implements Runnable
 {
-  public AEEditorImageEditFragment$16$3(bpgi parambpgi) {}
+  public AEEditorImageEditFragment$16$3(bmhy parambmhy) {}
   
   public void run()
   {
     this.a.a.a.b(false);
+    this.a.a.a.a(1);
+    if (this.a.a.a(1))
+    {
+      this.a.a.a.a(true);
+      return;
+    }
+    this.a.a.a.a(false);
   }
 }
 

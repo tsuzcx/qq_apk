@@ -1,9 +1,6 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-
 public abstract interface see
 {
-  public abstract void a(@NonNull View paramView, int paramInt);
+  public abstract void a(sdg paramsdg);
 }
 
 

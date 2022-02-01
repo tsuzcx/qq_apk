@@ -1,45 +1,34 @@
-import PayMQQ.UniPayRequest;
-import PayMQQ.UniPayResponse;
-import android.os.Bundle;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class bcui
-  extends abiv
+class bcui
+  implements WtTicketPromise
 {
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  bcui(bcuh parambcuh, Runnable paramRunnable) {}
+  
+  public void Done(Ticket paramTicket)
   {
-    if (paramFromServiceMsg == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("TeamWorkFileExportHandler", 2, "--- pskey invalid retry ---  ");
     }
-    paramToServiceMsg = new UniPacket(true);
-    try
-    {
-      paramToServiceMsg.setEncodeName("utf-8");
-      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
-      paramToServiceMsg = (UniPayResponse)paramToServiceMsg.getByClass("stResponse", new UniPayResponse());
-      return paramToServiceMsg;
-    }
-    catch (RuntimeException paramToServiceMsg)
-    {
-      return null;
-    }
-    catch (Exception paramToServiceMsg) {}
-    return null;
+    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public void Failed(ErrMsg paramErrMsg)
   {
-    paramUniPacket.setServantName("MQQ.VipSTCheckServer.VipSTCheckObj");
-    paramUniPacket.setFuncName("mobileUniPayCheck");
-    paramUniPacket.put("stRequest", (UniPayRequest)paramToServiceMsg.extraData.getSerializable("UniPayRequest"));
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.e("TeamWorkFileExportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
+    }
   }
   
-  public String[] a()
+  public void Timeout(ErrMsg paramErrMsg)
   {
-    return new String[] { "VipSTCheckServer" };
+    if (QLog.isColorLevel()) {
+      QLog.e("TeamWorkFileExportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
+    }
   }
 }
 

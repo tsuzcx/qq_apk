@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import ajyf;
+import aitf;
+import amtj;
 import android.widget.TextView;
-import anzj;
 import java.util.List;
 
 class EmoticonGroupStoreFragment$11
@@ -14,7 +14,7 @@ class EmoticonGroupStoreFragment$11
   {
     EmoticonGroupStoreFragment.a(this.this$0).a(EmoticonGroupStoreFragment.a(this.this$0));
     EmoticonGroupStoreFragment.a(this.this$0).notifyDataSetChanged();
-    EmoticonGroupStoreFragment.b(this.this$0).setText(anzj.a(2131702958) + EmoticonGroupStoreFragment.c(this.this$0).size() + anzj.a(2131702946));
+    EmoticonGroupStoreFragment.b(this.this$0).setText(amtj.a(2131703188) + EmoticonGroupStoreFragment.c(this.this$0).size() + amtj.a(2131703176));
   }
 }
 

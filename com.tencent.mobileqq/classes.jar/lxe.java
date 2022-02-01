@@ -1,57 +1,35 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.LBSInfo;
+import java.lang.ref.WeakReference;
 
-public abstract class lxe
-  extends Binder
-  implements lxd
+public class lxe
+  implements ampq
 {
-  public static lxd a(IBinder paramIBinder)
+  private WeakReference<lxh> a;
+  private WeakReference<ampm> b;
+  private WeakReference<lwo> c;
+  
+  public lxe(lxh paramlxh, ampm paramampm, lwo paramlwo)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IQQServiceLocationCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof lxd))) {
-      return (lxd)localIInterface;
-    }
-    return new lxf(paramIBinder);
+    this.a = new WeakReference(paramlxh);
+    this.b = new WeakReference(paramampm);
+    this.c = new WeakReference(paramlwo);
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.av.service.IQQServiceLocationCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceLocationCallback");
-      a(paramParcel1.readInt(), paramParcel1.readString());
-      return true;
+    Object localObject = (ampm)this.b.get();
+    if (localObject != null) {
+      ((ampm)localObject).d(this);
     }
-    paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceLocationCallback");
-    boolean bool;
-    if (paramParcel1.readInt() != 0)
-    {
-      bool = true;
-      if (paramParcel1.readInt() == 0) {
-        break label125;
-      }
+    localObject = (lxh)this.a.get();
+    lwo locallwo = (lwo)this.c.get();
+    if ((localObject != null) && (locallwo != null)) {
+      ((lxh)localObject).a(paramBoolean, locallwo);
     }
-    label125:
-    for (paramParcel1 = (LBSInfo)LBSInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(bool, paramParcel1);
-      return true;
-      bool = false;
-      break;
-    }
+  }
+  
+  public void a(lwo paramlwo)
+  {
+    this.c = new WeakReference(paramlwo);
   }
 }
 

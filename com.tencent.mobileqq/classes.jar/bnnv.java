@@ -1,19 +1,52 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import mqq.app.QQPermissionCallback;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class bnnv
-  implements QQPermissionCallback
+public class bnnv
+  extends bnnr<bnnu>
 {
-  bnnv(bnnu parambnnu) {}
+  public final ImageView a;
+  public final TextView a;
+  public final TextView b = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378444);
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  bnnv(bnnu parambnnu, @NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    bhlq.b(this.a.a.mRuntime.a());
+    super(paramContext, paramViewGroup);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378367));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368344));
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    bnnu.a(this.a);
+    return LayoutInflater.from(paramContext).inflate(2131561616, paramViewGroup, false);
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+  }
+  
+  public void a(bnnu parambnnu, int paramInt)
+  {
+    super.a(parambnnu, paramInt);
+    if ((this.jdField_a_of_type_Bnnq != null) && (((bnnu)this.jdField_a_of_type_Bnnq).c != 0) && (((bnnu)this.jdField_a_of_type_Bnnq).a != null))
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(((bnnu)this.jdField_a_of_type_Bnnq).c);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(((bnnu)this.jdField_a_of_type_Bnnq).a);
+      this.b.setText(((bnnu)this.jdField_a_of_type_Bnnq).b);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.b.setText("");
   }
 }
 

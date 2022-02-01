@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.minigame.publicaccount;
 
-import aldq;
+import akbj;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniGamePublicAccountWebFragment$3
-  implements aldq
+  implements akbj
 {
   MiniGamePublicAccountWebFragment$3(MiniGamePublicAccountWebFragment paramMiniGamePublicAccountWebFragment) {}
   

@@ -1,6 +1,13 @@
-public abstract interface rxa
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class rxa
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(rwc paramrwc);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

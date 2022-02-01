@@ -1,38 +1,121 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import android.util.Xml;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import java.io.StringReader;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
+import org.xmlpull.v1.XmlPullParser;
 
 public class pbt
-  implements AladdinConfigHandler
 {
-  public static boolean a()
+  public static Map<String, String> a(String paramString)
   {
-    return ((Boolean)bnrf.a("use_new_report_channel_for_1160", Boolean.valueOf(false))).booleanValue();
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("RIJNewReportChannelConfigHandler", 2, "[onReceiveConfig] " + paramString);
-    paramString = pan.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    HashMap localHashMap = new HashMap();
+    label159:
+    for (;;)
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("RIJNewReportChannelConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "enable_1160_use_new_report_service")) {
-        bnrf.a("use_new_report_channel_for_1160", Boolean.valueOf(TextUtils.equals(str2, "1")));
+      try
+      {
+        XmlPullParser localXmlPullParser = Xml.newPullParser();
+        localXmlPullParser.setFeature("http://xmlpull.org/v1/doc/features.html#process-namespaces", false);
+        localXmlPullParser.setInput(new StringReader(paramString));
+        int i = localXmlPullParser.getEventType();
+        if (i != 1)
+        {
+          if (localXmlPullParser.getEventType() == 0)
+          {
+            QLog.d("AladdinParseUtils", 2, "[parseContentXml] START_DOCUMENT");
+            i = localXmlPullParser.next();
+            continue;
+          }
+          if (localXmlPullParser.getEventType() != 2) {
+            continue;
+          }
+          QLog.d("AladdinParseUtils", 2, "[parseContentXml] START_TAG");
+          paramString = localXmlPullParser.getName();
+          if (!"configs".equals(paramString)) {
+            break label159;
+          }
+          a(localXmlPullParser, localHashMap);
+          continue;
+        }
+        QLog.e("AladdinParseUtils", 1, "[parseContentXml] unknown tag: " + paramString);
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("AladdinParseUtils", 1, "[parseContentXml] ", paramString);
+        if (QLog.isColorLevel()) {
+          QLog.d("AladdinParseUtils", 2, "[parseContentXml] result=" + localHashMap);
+        }
+        return localHashMap;
       }
     }
-    return true;
   }
   
-  public void onWipeConfig(int paramInt)
+  private static void a(XmlPullParser paramXmlPullParser)
   {
-    bnrf.a("use_new_report_channel_for_1160", Boolean.valueOf(false));
+    if (paramXmlPullParser.getEventType() != 2) {
+      throw new IllegalStateException();
+    }
+    int i = 1;
+    while (i != 0) {
+      switch (paramXmlPullParser.next())
+      {
+      default: 
+        break;
+      case 1: 
+        throw new IllegalStateException();
+      case 3: 
+        i -= 1;
+        break;
+      case 2: 
+        QLog.d("AladdinParseUtils", 2, "[skip] " + paramXmlPullParser.getName());
+        i += 1;
+      }
+    }
+  }
+  
+  private static void a(XmlPullParser paramXmlPullParser, Map<String, String> paramMap)
+  {
+    paramXmlPullParser.require(2, null, "configs");
+    int i = paramXmlPullParser.next();
+    if ((i != 3) && (i != 1))
+    {
+      if (i == 2) {
+        b(paramXmlPullParser, paramMap);
+      }
+      for (;;)
+      {
+        i = paramXmlPullParser.next();
+        break;
+        QLog.e("AladdinParseUtils", 1, "[readConfigs] unknown event type: " + i);
+      }
+    }
+    paramXmlPullParser.require(3, null, "configs");
+  }
+  
+  private static void b(XmlPullParser paramXmlPullParser, Map<String, String> paramMap)
+  {
+    if (paramXmlPullParser.getEventType() != 2) {
+      throw new IllegalStateException();
+    }
+    String str = paramXmlPullParser.getName();
+    int i = paramXmlPullParser.next();
+    if ((i != 3) && (i != 1))
+    {
+      if (i == 4) {
+        paramMap.put(str, paramXmlPullParser.getText());
+      }
+      for (;;)
+      {
+        i = paramXmlPullParser.next();
+        break;
+        if (i == 2)
+        {
+          QLog.d("AladdinParseUtils", 2, "[readTag] unexpected nested tag: " + paramXmlPullParser.getName() + ", skip.");
+          a(paramXmlPullParser);
+        }
+      }
+    }
   }
 }
 

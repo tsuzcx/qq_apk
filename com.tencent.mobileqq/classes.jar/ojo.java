@@ -1,18 +1,64 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class ojo
-  extends Editable.Factory
+class ojo
+  implements pty
 {
-  public ojo(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  ojo(ojm paramojm, ptv paramptv) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  private long a(List<ArticleInfo> paramList)
   {
-    if ((paramCharSequence instanceof omv)) {
-      return (Editable)paramCharSequence;
+    paramList = paramList.iterator();
+    long l = 0L;
+    if (paramList.hasNext())
+    {
+      ArticleInfo localArticleInfo = (ArticleInfo)paramList.next();
+      if (l >= localArticleInfo.mRecommendSeq) {
+        break label50;
+      }
+      l = localArticleInfo.mRecommendSeq;
     }
-    return new omv(paramCharSequence, 3, 20);
+    label50:
+    for (;;)
+    {
+      break;
+      return l;
+    }
+  }
+  
+  public List<ArticleInfo> a(int paramInt, List<ArticleInfo> paramList1, List<ArticleInfo> paramList2)
+  {
+    if ((!pcl.c(paramInt)) || (paramList2 == null) || (paramList1 == null) || (paramList2.isEmpty())) {
+      return null;
+    }
+    long l = a(paramList2);
+    if (l < 1000L)
+    {
+      QLog.d("ReadInJoyDailyViewController", 1, "onPreDeal : " + l);
+      return null;
+    }
+    paramList2 = new ArrayList();
+    if (!ojm.a())
+    {
+      paramList1 = paramList1.iterator();
+      while (paramList1.hasNext())
+      {
+        ArticleInfo localArticleInfo = (ArticleInfo)paramList1.next();
+        if ((localArticleInfo.mRecommendSeq > 0L) && (localArticleInfo.mRecommendSeq < 1000L))
+        {
+          localArticleInfo.mRecommendSeq += l;
+          paramList2.add(localArticleInfo);
+          QLog.d("ReadInJoyDailyViewController", 1, "onPreDeal : " + l + "  seq: " + localArticleInfo.mRecommendSeq);
+        }
+      }
+    }
+    bkwm.a(ojm.a(), Boolean.valueOf(true));
+    ojm.a(true);
+    this.jdField_a_of_type_Ptv.a(null);
+    return paramList2;
   }
 }
 

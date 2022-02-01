@@ -5,12 +5,12 @@ import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import bhtq;
-import bpij;
-import bpin;
-import bpis;
-import bpja;
-import bpje;
+import bmlf;
+import bmlj;
+import bmlo;
+import bmlw;
+import bmma;
+import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,8 +18,8 @@ public class VideoControlPanel
   extends AEEditorControlPanelContainer
 {
   private int jdField_a_of_type_Int;
-  private bpij jdField_a_of_type_Bpij;
-  private bpja jdField_a_of_type_Bpja;
+  private bmlf jdField_a_of_type_Bmlf;
+  private bmlw jdField_a_of_type_Bmlw;
   private int b;
   private int c;
   
@@ -39,65 +39,65 @@ public class VideoControlPanel
   }
   
   @NonNull
-  public List<bpis> a()
+  public List<bmlo> a()
   {
-    if (this.jdField_a_of_type_Bpja != null) {
-      return this.jdField_a_of_type_Bpja.a();
+    if (this.jdField_a_of_type_Bmlw != null) {
+      return this.jdField_a_of_type_Bmlw.a();
     }
     return new LinkedList();
   }
   
   void a()
   {
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296277);
-    this.b = bhtq.a();
-    this.c = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296299);
-    this.jdField_a_of_type_Bpja = new bpja(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bpij = new bpij(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296278);
+    this.b = ViewUtils.getScreenWidth();
+    this.c = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296352);
+    this.jdField_a_of_type_Bmlw = new bmlw(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bmlf = new bmlf(this.jdField_a_of_type_AndroidContentContext);
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bpja != null) {
-      this.jdField_a_of_type_Bpja.a(paramInt);
+    if (this.jdField_a_of_type_Bmlw != null) {
+      this.jdField_a_of_type_Bmlw.a(paramInt);
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Bpij != null) {
-      this.jdField_a_of_type_Bpij.c(paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Bmlf != null) {
+      this.jdField_a_of_type_Bmlf.c(paramInt1, paramInt2);
     }
   }
   
-  public void a(@NonNull bpis parambpis)
+  public void a(@NonNull bmlo parambmlo)
   {
-    if (this.jdField_a_of_type_Bpja != null) {
-      this.jdField_a_of_type_Bpja.a(parambpis);
+    if (this.jdField_a_of_type_Bmlw != null) {
+      this.jdField_a_of_type_Bmlw.a(parambmlo);
     }
   }
   
-  public void a(@NonNull bpis parambpis, @Nullable Integer paramInteger, int paramInt, boolean paramBoolean)
+  public void a(@NonNull bmlo parambmlo, @Nullable Integer paramInteger, int paramInt, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Bpij != null) && (!this.jdField_a_of_type_Bpij.isShowing())) {
+    if ((this.jdField_a_of_type_Bmlf != null) && (!this.jdField_a_of_type_Bmlf.isShowing())) {
       if (paramInteger == null) {
         break label66;
       }
     }
     label66:
-    for (int i = paramInteger.intValue();; i = parambpis.a())
+    for (int i = paramInteger.intValue();; i = parambmlo.a())
     {
-      this.jdField_a_of_type_Bpij.a(parambpis, i, paramInt, this.b, this.c, paramBoolean);
+      this.jdField_a_of_type_Bmlf.a(parambmlo, i, paramInt, this.b, this.c, paramBoolean);
       a(i, i + paramInt);
-      this.jdField_a_of_type_Bpij.show();
+      this.jdField_a_of_type_Bmlf.show();
       return;
     }
   }
   
-  public void a(@NonNull List<bpis> paramList)
+  public void a(@NonNull List<bmlo> paramList)
   {
-    if (this.jdField_a_of_type_Bpja != null) {
-      this.jdField_a_of_type_Bpja.a(paramList);
+    if (this.jdField_a_of_type_Bmlw != null) {
+      this.jdField_a_of_type_Bmlw.a(paramList);
     }
   }
   
@@ -110,85 +110,85 @@ public class VideoControlPanel
   
   public void b(int paramInt)
   {
-    if ((this.jdField_a_of_type_Bpij != null) && (this.jdField_a_of_type_Bpij.isShowing())) {
-      this.jdField_a_of_type_Bpij.b(paramInt);
+    if ((this.jdField_a_of_type_Bmlf != null) && (this.jdField_a_of_type_Bmlf.isShowing())) {
+      this.jdField_a_of_type_Bmlf.b(paramInt);
     }
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Bpij != null) && (this.jdField_a_of_type_Bpij.isShowing())) {
-      this.jdField_a_of_type_Bpij.b(paramInt1, paramInt2);
+    if ((this.jdField_a_of_type_Bmlf != null) && (this.jdField_a_of_type_Bmlf.isShowing())) {
+      this.jdField_a_of_type_Bmlf.b(paramInt1, paramInt2);
     }
   }
   
   public void c()
   {
-    if ((this.jdField_a_of_type_Bpja != null) && (!this.jdField_a_of_type_Bpja.isShowing())) {
-      this.jdField_a_of_type_Bpja.show();
+    if ((this.jdField_a_of_type_Bmlw != null) && (!this.jdField_a_of_type_Bmlw.isShowing())) {
+      this.jdField_a_of_type_Bmlw.show();
     }
   }
   
   public void d()
   {
-    if ((this.jdField_a_of_type_Bpja != null) && (this.jdField_a_of_type_Bpja.isShowing())) {
-      this.jdField_a_of_type_Bpja.dismiss();
+    if ((this.jdField_a_of_type_Bmlw != null) && (this.jdField_a_of_type_Bmlw.isShowing())) {
+      this.jdField_a_of_type_Bmlw.dismiss();
     }
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_Bpja != null) {
-      this.jdField_a_of_type_Bpja.b();
+    if (this.jdField_a_of_type_Bmlw != null) {
+      this.jdField_a_of_type_Bmlw.b();
     }
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_Bpja != null) {
-      this.jdField_a_of_type_Bpja.a(false);
+    if (this.jdField_a_of_type_Bmlw != null) {
+      this.jdField_a_of_type_Bmlw.a(false);
     }
   }
   
   public void g()
   {
-    if ((this.jdField_a_of_type_Bpij != null) && (this.jdField_a_of_type_Bpij.isShowing())) {
-      this.jdField_a_of_type_Bpij.dismiss();
+    if ((this.jdField_a_of_type_Bmlf != null) && (this.jdField_a_of_type_Bmlf.isShowing())) {
+      this.jdField_a_of_type_Bmlf.dismiss();
     }
   }
   
   public void h()
   {
-    if (this.jdField_a_of_type_Bpij != null) {
-      this.jdField_a_of_type_Bpij.c();
+    if (this.jdField_a_of_type_Bmlf != null) {
+      this.jdField_a_of_type_Bmlf.c();
     }
   }
   
   public void i()
   {
-    if (this.jdField_a_of_type_Bpja != null) {
-      this.jdField_a_of_type_Bpja.a();
+    if (this.jdField_a_of_type_Bmlw != null) {
+      this.jdField_a_of_type_Bmlw.a();
     }
   }
   
   public void setBgmPlayed(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_Bpja != null) {
-      this.jdField_a_of_type_Bpja.a(paramBoolean1, paramBoolean2);
+    if (this.jdField_a_of_type_Bmlw != null) {
+      this.jdField_a_of_type_Bmlw.a(paramBoolean1, paramBoolean2);
     }
   }
   
-  public void setMusicListOperationCallback(@Nullable bpje parambpje)
+  public void setMusicListOperationCallback(@Nullable bmma parambmma)
   {
-    if (this.jdField_a_of_type_Bpja != null) {
-      this.jdField_a_of_type_Bpja.a(parambpje);
+    if (this.jdField_a_of_type_Bmlw != null) {
+      this.jdField_a_of_type_Bmlw.a(parambmma);
     }
   }
   
-  public void setMusicLyricOperationCallback(@Nullable bpin parambpin)
+  public void setMusicLyricOperationCallback(@Nullable bmlj parambmlj)
   {
-    if (this.jdField_a_of_type_Bpij != null) {
-      this.jdField_a_of_type_Bpij.a(parambpin);
+    if (this.jdField_a_of_type_Bmlf != null) {
+      this.jdField_a_of_type_Bmlf.a(parambmlj);
     }
   }
 }

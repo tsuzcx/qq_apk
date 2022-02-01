@@ -1,15 +1,65 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qrcode.activity.QRJumpActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class zxa
-  implements DialogInterface.OnCancelListener
+  extends aptq<zwz>
 {
-  public zxa(QRJumpActivity paramQRJumpActivity) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  @NonNull
+  public zwz a(int paramInt)
   {
-    this.a.finish();
+    return new zwz();
+  }
+  
+  @Nullable
+  public zwz a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return zwz.a(paramArrayOfaptx[0].a);
+    }
+    return null;
+  }
+  
+  public void a(zwz paramzwz)
+  {
+    bltp.a().a(true);
+  }
+  
+  public Class<zwz> clazz()
+  {
+    return zwz.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public void onReqNoReceive()
+  {
+    super.onReqNoReceive();
+    bltp.a().a(false);
+  }
+  
+  public int type()
+  {
+    return 406;
   }
 }
 

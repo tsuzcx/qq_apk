@@ -2,9 +2,9 @@ package com.tencent.mobileqq.mini.appbrand.page;
 
 import Override;
 import android.graphics.Bitmap;
-import bhsr;
 import com.tencent.mobileqq.mini.app.AppLoaderFactory;
 import com.tencent.mobileqq.mini.app.BaseAppLoaderManager;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
@@ -23,10 +23,10 @@ class PageWebview$2
     if (QLog.isColorLevel()) {
       QLog.d("miniapp-start", 1, "---PageWebView finish loadHtml--- webviewid:" + this.this$0.pageWebviewId);
     }
-    if (bhsr.a(PageWebview.access$200(this.this$0))) {
+    if (StringUtil.isEmpty(PageWebview.access$200(this.this$0))) {
       PageWebview.access$202(this.this$0, AppLoaderFactory.getAppLoaderManager().waWebviewJsStr());
     }
-    if (bhsr.a(PageWebview.access$300(this.this$0))) {
+    if (StringUtil.isEmpty(PageWebview.access$300(this.this$0))) {
       PageWebview.access$302(this.this$0, AppLoaderFactory.getAppLoaderManager().waRemoteDebugJsStr());
     }
     QLog.i("miniapp-start", 1, "---PageWebView begin run js defaultConfig --- webviewid:" + this.this$0.pageWebviewId);

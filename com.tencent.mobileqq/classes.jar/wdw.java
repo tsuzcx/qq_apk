@@ -1,47 +1,33 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StTagInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.MessageMicro;
 
-class wdw
-  extends RecyclerView.Adapter<wdx>
+public class wdw<REQ extends MessageMicro>
+  extends vqr<wfu>
 {
-  public List<FeedCloudMeta.StTagInfo> a;
+  public final Bundle a;
+  public final REQ a;
+  public final String a;
   
-  private wdw(wdu paramwdu)
+  public wdw(String paramString, REQ paramREQ, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramREQ;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  public wdx a(ViewGroup paramViewGroup, int paramInt)
+  public String a()
   {
-    return new wdx(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560721, paramViewGroup, false));
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(List<FeedCloudMeta.StTagInfo> paramList)
+  public vqm a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
+    return new wfu(paramArrayOfByte);
   }
   
-  public void a(wdx paramwdx, int paramInt)
+  protected byte[] a()
   {
-    paramwdx.a((FeedCloudMeta.StTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramwdx, paramInt, getItemId(paramInt));
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
+    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro.toByteArray();
   }
 }
 

@@ -1,45 +1,15 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.List;
+import java.util.HashMap;
 
-public class wil
-  extends QQUIEventReceiver<wik, wfz>
+class wil
+  extends whs
 {
-  public wil(@NonNull wik paramwik)
-  {
-    super(paramwik);
-  }
+  wil(wif paramwif, wjj paramwjj) {}
   
-  public void a(@NonNull wik paramwik, @NonNull wfz paramwfz)
+  public boolean b()
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramwfz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
-    {
-      yuk.a("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "on receiver scan data ,error! code = %d", Integer.valueOf(paramwfz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode));
-      paramwik.d();
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      wik.a(paramwik).a(bool1);
-      return;
-      yuk.a("Q.qqstory.recommendAlbum.ui.AlbumVideoGalleryAdapter", "on receiver scan data ,size = %d", Integer.valueOf(paramwfz.jdField_a_of_type_JavaUtilList.size()));
-      bool1 = bool2;
-      if (paramwik.a(paramwfz.jdField_a_of_type_JavaUtilList))
-      {
-        bool1 = bool2;
-        if (paramwfz.jdField_a_of_type_JavaUtilList.size() > 0) {
-          bool1 = true;
-        }
-      }
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wfz.class;
+    HashMap localHashMap = (HashMap)a("ShortenUrlJob_shortenedUrls");
+    this.jdField_a_of_type_Wjj.a = ((String)localHashMap.get(this.jdField_a_of_type_Wjj.a));
+    return true;
   }
 }
 

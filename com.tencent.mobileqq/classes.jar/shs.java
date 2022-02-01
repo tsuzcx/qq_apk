@@ -1,16 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.HashMap;
+import org.jetbrains.annotations.NotNull;
 
-public class shs
-  extends pmr
+final class shs
+  implements rqx
 {
-  public shs(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean, int paramInt)
+  shs(HashMap paramHashMap) {}
+  
+  public void a(float paramFloat) {}
+  
+  public void a(int paramInt, @NotNull String paramString)
   {
-    super(paramString);
+    shq.a(this.a);
   }
   
-  public void a(pmk parampmk)
+  public void a(String paramString)
   {
-    parampmk.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    this.a.put("capture_url", paramString);
+    shq.a(this.a);
   }
 }
 

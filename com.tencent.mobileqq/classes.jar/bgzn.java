@@ -1,8 +1,9 @@
-import android.graphics.Bitmap;
-
 public abstract interface bgzn
+  extends bguj
 {
-  public abstract Bitmap a(String paramString1, String paramString2);
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

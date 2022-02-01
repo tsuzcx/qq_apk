@@ -1,77 +1,17 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
 class beca
-  implements ShareActionSheet.OnItemClickListener
+  implements DialogInterface.OnClickListener
 {
-  private TeamWorkFileImportInfo jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
-  private ShareActionSheet.OnItemClickListener jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet$OnItemClickListener;
-  private WeakReference<QQBrowserActivity> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<WebView> b;
+  beca(bebp parambebp, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
   
-  beca(QQBrowserActivity paramQQBrowserActivity, WebView paramWebView, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, ShareActionSheet.OnItemClickListener paramOnItemClickListener)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQBrowserActivity);
-    this.b = new WeakReference(paramWebView);
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo = paramTeamWorkFileImportInfo;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet$OnItemClickListener = paramOnItemClickListener;
-  }
-  
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
-  {
-    QLog.w("TeamWorkShareActionSheetBuilder", 1, "inner on item click");
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet$OnItemClickListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet$OnItemClickListener.onItemClick(paramActionSheetItem, null);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo == null) {}
-    do
-    {
-      return;
-      QLog.w("TeamWorkShareActionSheetBuilder", 1, "info exist");
-    } while (!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d());
-    QLog.w("TeamWorkShareActionSheetBuilder", 1, "from online preview");
-    int i = paramActionSheetItem.action;
-    if ((i == 1) || (i == 2) || (i == 9) || (i == 10))
-    {
-      paramActionSheetItem = (WebView)this.b.get();
-      if (paramActionSheetItem == null) {
-        break label216;
-      }
-    }
-    label216:
-    for (paramActionSheetItem = paramActionSheetItem.getUrl();; paramActionSheetItem = "")
-    {
-      becb.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, paramActionSheetItem, "0X8009F34");
-      paramActionSheetItem = (QQBrowserActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramActionSheetItem == null) {
-        break;
-      }
-      if (i == 1)
-      {
-        becb.a(paramActionSheetItem.getIntent(), "0X800A16F");
-        return;
-      }
-      if ((i == 2) || (i == 9) || (i == 10) || (i == 3) || (i == 12))
-      {
-        becb.a(paramActionSheetItem.getIntent(), "0X800A16E");
-        return;
-      }
-      if (i == 6)
-      {
-        becb.a(paramActionSheetItem.getIntent(), "0X800A170");
-        return;
-      }
-      if (i != 5) {
-        break;
-      }
-      becb.a(paramActionSheetItem.getIntent(), "0X800A171");
-      return;
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.c(this.jdField_a_of_type_JavaUtilUUID);
     }
   }
 }

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.utils;
 
 import Wallet.GetMiniAppRsp;
 import android.os.Bundle;
-import bhsr;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.observer.BusinessObserver;
@@ -15,7 +15,7 @@ final class MiniLogManager$6
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     paramBundle = (GetMiniAppRsp)paramBundle.getSerializable("rsp");
-    if ((paramBundle != null) && (!bhsr.a(paramBundle.extra)))
+    if ((paramBundle != null) && (!StringUtil.isEmpty(paramBundle.extra)))
     {
       paramBundle = paramBundle.extra;
       MiniLogManager.access$800(paramBundle, this.val$filePath);

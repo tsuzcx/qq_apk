@@ -1,31 +1,35 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class allc
   implements View.OnClickListener
 {
-  allc(aljw paramaljw) {}
+  allc(allb paramallb) {}
   
   public void onClick(View paramView)
   {
-    aljw.a(this.a).app.getPreferences();
-    bhdu.a().a();
-    if (bhdu.a().a() == 4)
+    Object localObject = paramView.getTag();
+    if ((localObject != null) && ((localObject instanceof alli)))
     {
-      bhdu.a().a(aljw.a(this.a));
-      bdll.b(aljw.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, bhdt.b(), bhdu.b(), bhdu.a(), "1");
+      localObject = (alli)localObject;
+      bezm.a(allb.a(this.a), allb.a(this.a), ((alli)localObject).a);
+      bfdm localbfdm = (bfdm)allb.a(this.a).getManager(203);
+      if ((localbfdm != null) && (localbfdm.a(allb.a(this.a), ((alli)localObject).a, allb.a(this.a)))) {
+        localbfdm.a(allb.a(this.a), ((alli)localObject).a);
+      }
+      if (allb.a(this.a) != null) {
+        break label121;
+      }
     }
     for (;;)
     {
-      this.a.a(-1, null);
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      UpgradeDetailActivity.a(aljw.a(this.a), bhdu.a().a(), true, true, true);
-      bdll.b(aljw.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, bhdt.b(), bhdu.b(), bhdu.a(), "1");
+      label121:
+      bcef.b(allb.a(this.a).app, "dc00898", "", "", "", "0X8009F9F", 0, 0, ((alli)localObject).a, "", "", "");
     }
   }
 }

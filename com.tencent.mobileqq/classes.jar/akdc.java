@@ -1,27 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
 
 public class akdc
-  implements View.OnClickListener
 {
-  public akdc(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (ChatHistoryTroopFileFragment.a(this.a) != null) {
-        ChatHistoryTroopFileFragment.a(this.a).setVisibility(8);
-      }
-    }
-  }
+  public static final IRedPacket a = new RedPacketManager();
 }
 
 

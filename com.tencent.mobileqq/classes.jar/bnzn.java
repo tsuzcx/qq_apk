@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-
-final class bnzn
-  implements aumz
+public abstract interface bnzn
 {
-  bnzn(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
+  public abstract int a();
   
-  public void a()
-  {
-    aunj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, BaseActivity.sTopActivity);
-  }
+  public abstract void a();
   
-  public void b() {}
+  public abstract void a(int paramInt);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void b(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

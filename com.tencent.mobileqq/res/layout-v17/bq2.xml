@@ -110,8 +110,8 @@
                             <LinearLayout android:gravity="center" android:id="@id/dwc" android:visibility="gone" android:descendantFocusability="blocksDescendants" android:layout_width="39.0dip" android:layout_height="39.0dip" android:layout_toRightOf="@id/iv0" android:layout_centerVertical="true">
                                 <com.qzone.widget.QZoneCheckBox android:id="@id/dw9" android:focusable="false" android:layout_width="wrap_content" android:layout_height="24.0dip" android:contentDescription="@string/vxj" style="@style/g9" />
                             </LinearLayout>
-                            <LinearLayout android:gravity="center" android:id="@id/nnk" android:visibility="gone" android:descendantFocusability="blocksDescendants" android:layout_width="39.0dip" android:layout_height="39.0dip">
-                                <com.qzone.widget.QZoneCheckBox android:id="@id/nnj" android:focusable="false" android:layout_width="wrap_content" android:layout_height="24.0dip" android:contentDescription="@string/x5i" style="@style/a02" />
+                            <LinearLayout android:gravity="center" android:id="@id/niv" android:visibility="gone" android:descendantFocusability="blocksDescendants" android:layout_width="39.0dip" android:layout_height="39.0dip">
+                                <com.qzone.widget.QZoneCheckBox android:id="@id/niu" android:focusable="false" android:layout_width="wrap_content" android:layout_height="24.0dip" android:contentDescription="@string/xb4" style="@style/a03" />
                             </LinearLayout>
                         </LinearLayout>
                     </RelativeLayout>

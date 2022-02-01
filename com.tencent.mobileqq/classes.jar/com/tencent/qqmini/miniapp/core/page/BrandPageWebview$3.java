@@ -2,6 +2,7 @@ package com.tencent.qqmini.miniapp.core.page;
 
 import Override;
 import android.app.Activity;
+import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -50,23 +51,7 @@ class BrandPageWebview$3
     if (this.this$0.customViewCallback == null) {
       return;
     }
-    QMLog.d("miniapp-embedded", "onHideCustomView begin");
-    this.this$0.customContainer.setVisibility(8);
-    this.this$0.customViewCallback.onCustomViewHidden();
-    try
-    {
-      this.this$0.customContainer.removeAllViews();
-      label78:
-      this.this$0.customContainer = null;
-      this.this$0.mFullscreenView = null;
-      this.this$0.customViewCallback = null;
-      QMLog.d("miniapp-embedded", "onHideCustomView end");
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label78;
-    }
+    BrandPageWebview.access$600(this.this$0).postDelayed(new BrandPageWebview.3.1(this), 200L);
   }
   
   @Override

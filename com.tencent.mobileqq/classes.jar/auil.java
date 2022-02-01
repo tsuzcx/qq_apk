@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class auil
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  auil(auik paramauik) {}
+  auil(auij paramauij) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.m();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.k();
   }
 }
 

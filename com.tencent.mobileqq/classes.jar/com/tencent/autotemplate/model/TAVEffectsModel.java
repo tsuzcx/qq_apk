@@ -9,8 +9,12 @@ public class TAVEffectsModel
 {
   @SerializedName("filters")
   public List<TAVEffectAutomaticEffect> filterEffects;
+  @SerializedName("lyricsStyles")
+  public List<TAVEffectAutomaticEffect> lyricsStyles;
   @SerializedName("overlays")
   public List<TAVEffectAutomaticEffect> overlayEffects;
+  @SerializedName("text")
+  public List<TAVEffectAutomaticEffect> textStickers;
   
   public void setAllFileDir(String paramString)
   {
@@ -25,6 +29,20 @@ public class TAVEffectsModel
     if (!CollectionUtil.isEmptyList(this.overlayEffects))
     {
       localIterator = this.overlayEffects.iterator();
+      while (localIterator.hasNext()) {
+        ((TAVEffectAutomaticEffect)localIterator.next()).fileDir = paramString;
+      }
+    }
+    if (!CollectionUtil.isEmptyList(this.lyricsStyles))
+    {
+      localIterator = this.lyricsStyles.iterator();
+      while (localIterator.hasNext()) {
+        ((TAVEffectAutomaticEffect)localIterator.next()).fileDir = paramString;
+      }
+    }
+    if (!CollectionUtil.isEmptyList(this.textStickers))
+    {
+      localIterator = this.textStickers.iterator();
       while (localIterator.hasNext()) {
         ((TAVEffectAutomaticEffect)localIterator.next()).fileDir = paramString;
       }

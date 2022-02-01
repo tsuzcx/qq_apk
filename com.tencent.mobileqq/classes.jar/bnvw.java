@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.vip.manager.FileBannerTianshuManger.4;
+import dov.com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
 
 public class bnvw
-  implements View.OnClickListener
 {
-  public bnvw(FileBannerTianshuManger.4 param4) {}
+  public int a;
   
-  public void onClick(View paramView)
-  {
-    this.a.this$0.a.setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  private bnvw(GLVideoClipUtil paramGLVideoClipUtil) {}
 }
 
 

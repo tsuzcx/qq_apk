@@ -1,103 +1,74 @@
-import android.annotation.SuppressLint;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.view.ViewGroup;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class rkd
-  implements rka
+  extends bjwv<rgo, rke>
 {
-  private long jdField_a_of_type_Long;
-  @SuppressLint({"HandlerLeak"})
-  private beyf jdField_a_of_type_Beyf = new rke(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private rjz<String> jdField_a_of_type_Rjz;
+  private int jdField_a_of_type_Int = -1;
+  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(BaseApplication.getContext().getResources().getColor(2131167303));
+  private rkg jdField_a_of_type_Rkg;
   
-  public rkd(QQAppInterface paramQQAppInterface)
+  public rkd(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(paramContext);
   }
   
-  private void b()
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Beyf);
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a()
+  public int a(int paramInt)
   {
-    QLog.i("RIJUGC.RIJUgcVideoUploader", 1, "pause, path=" + this.jdField_a_of_type_JavaLangString + ",uniSeq=" + this.jdField_a_of_type_Long);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if (localObject != null)
+    rgo localrgo = (rgo)a(paramInt);
+    if ((localrgo != null) && (localrgo.a)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public rke a(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (paramInt == 0) {
+      return new rke(this, paramViewGroup, 2131559992);
+    }
+    return new rkh(this, paramViewGroup, 2131559993);
+  }
+  
+  public void a(int paramInt)
+  {
+    rgo localrgo = (rgo)a(paramInt);
+    if ((this.jdField_a_of_type_Rkg == null) || (this.jdField_a_of_type_Rkg.a(paramInt, localrgo))) {}
+    for (int i = 1;; i = 0)
     {
-      localObject = (berp)((beyb)localObject).a("0", this.jdField_a_of_type_Long);
-      if (localObject != null) {
-        ((berp)localObject).c();
+      if ((this.jdField_a_of_type_Int != paramInt) && (i != 0))
+      {
+        i = this.jdField_a_of_type_Int;
+        this.jdField_a_of_type_Int = paramInt;
+        if (this.jdField_a_of_type_Rkg != null) {
+          this.jdField_a_of_type_Rkg.a((rgo)a(this.jdField_a_of_type_Int));
+        }
+        notifyItemChanged(i);
+        notifyItemChanged(this.jdField_a_of_type_Int);
       }
+      return;
     }
-    b();
   }
   
-  public void a(String paramString)
+  public void a(rke paramrke, int paramInt)
   {
-    beyb localbeyb = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if (this.jdField_a_of_type_Beyf.getFilter().size() == 0) {
-      this.jdField_a_of_type_Beyf.addFilter(new Class[] { berh.class });
+    paramrke.a(paramInt, (rgo)a(paramInt));
+    if (this.jdField_a_of_type_Rkg != null) {
+      this.jdField_a_of_type_Rkg.a(paramInt);
     }
-    localbeyb.a(this.jdField_a_of_type_Beyf);
-    beyg localbeyg = new beyg();
-    localbeyg.jdField_a_of_type_Boolean = true;
-    localbeyg.jdField_c_of_type_Int = 54;
-    localbeyg.i = paramString;
-    localbeyg.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-    localbeyg.jdField_c_of_type_JavaLangString = "0";
-    localbeyg.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    localbeyg.jdField_b_of_type_Int = 24;
-    localbeyg.jdField_a_of_type_JavaLangString = "KandianUGCVideoUpload";
-    localbeyb.a(localbeyg);
-    this.jdField_a_of_type_Long = localbeyg.jdField_a_of_type_Long;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    QLog.i("RIJUGC.RIJUgcVideoUploader", 1, "upload, path=" + paramString + ",uniSeq=" + this.jdField_a_of_type_Long);
   }
   
-  public void a(rjz<String> paramrjz)
+  public void a(rkg paramrkg)
   {
-    this.jdField_a_of_type_Rjz = paramrjz;
-  }
-  
-  public void b(String paramString)
-  {
-    QLog.i("RIJUGC.RIJUgcVideoUploader", 1, "resume, uploadKey=" + paramString);
-    if (this.jdField_a_of_type_Beyf.getFilter().isEmpty()) {
-      this.jdField_a_of_type_Beyf.addFilter(new Class[] { berh.class });
-    }
-    beyb localbeyb = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    localbeyb.a(this.jdField_a_of_type_Beyf);
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if (this.jdField_a_of_type_Long == 0L)
-      {
-        this.jdField_a_of_type_Long = paramString.optInt("uniseq", 0);
-        this.jdField_a_of_type_JavaLangString = paramString.optString("localPath", "");
-        QLog.i("RIJUGC.RIJUgcVideoUploader", 1, "resume from app reboot");
-      }
-      paramString = (berp)localbeyb.a("0", this.jdField_a_of_type_Long);
-      if (paramString != null)
-      {
-        paramString.b();
-        return;
-      }
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        QLog.e("RIJUGC.RIJUgcVideoUploader", 1, "resume, e=" + QLog.getStackTraceString(paramString));
-      }
-      a(this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_Rkg = paramrkg;
   }
 }
 

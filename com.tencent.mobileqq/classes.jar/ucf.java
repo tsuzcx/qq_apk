@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.ImageView;
+import java.lang.ref.WeakReference;
 
-final class ucf
-  implements DialogInterface.OnClickListener
+class ucf
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<ucg> b;
+  
+  private ucf(ucd paramucd) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ucf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,18 @@
-import android.text.TextPaint;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.utils.InviteBaseData;
 
-public class msa
+public final class msa
+  implements Parcelable.Creator<InviteBaseData>
 {
-  public static float a(String paramString, TextPaint paramTextPaint)
+  public InviteBaseData a(Parcel paramParcel)
   {
-    return paramTextPaint.measureText(paramString);
+    return new InviteBaseData(paramParcel);
   }
   
-  public static float a(StringBuilder paramStringBuilder, String paramString, TextPaint paramTextPaint, float paramFloat)
+  public InviteBaseData[] a(int paramInt)
   {
-    float f1;
-    if (paramString == null)
-    {
-      f1 = paramFloat;
-      return f1;
-    }
-    paramString = paramString.toCharArray();
-    int i = 0;
-    for (;;)
-    {
-      f1 = paramFloat;
-      if (i >= paramString.length) {
-        break;
-      }
-      float f2 = paramTextPaint.measureText(paramString, i, 1);
-      f1 = paramFloat;
-      if (f2 >= paramFloat) {
-        break;
-      }
-      paramFloat -= f2;
-      paramStringBuilder.append(paramString[i]);
-      i += 1;
-    }
-  }
-  
-  public static float b(StringBuilder paramStringBuilder, String paramString, TextPaint paramTextPaint, float paramFloat)
-  {
-    float f = paramTextPaint.measureText("...");
-    if (f > a(paramStringBuilder, paramString, paramTextPaint, paramFloat - f)) {
-      paramStringBuilder.append("...");
-    }
-    return f;
+    return new InviteBaseData[paramInt];
   }
 }
 

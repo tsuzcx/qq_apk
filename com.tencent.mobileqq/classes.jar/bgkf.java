@@ -1,44 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.vas.update.business.BaseUpdateBusiness;
+import com.tencent.vas.update.entity.BusinessItemInfo;
+import java.io.File;
 
 public class bgkf
+  extends BaseUpdateBusiness
 {
-  private static bgkf jdField_a_of_type_Bgkf = new bgkf();
-  String jdField_a_of_type_JavaLangString;
-  
-  public static bgkf a()
+  private String a(String paramString)
   {
-    return jdField_a_of_type_Bgkf;
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    return localBaseApplication.getFilesDir() + File.separator + "test_dir" + File.separator + paramString + ".zip";
   }
   
-  public void a() {}
-  
-  public void a(BaseChatPie paramBaseChatPie) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, bgkg parambgkg) {}
-  
-  public void a(String paramString1, String paramString2, String paramString3) {}
-  
-  public boolean a()
+  public long getBid()
   {
-    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+    return 1000000L;
   }
   
-  public boolean a(String paramString)
+  public BusinessItemInfo getBusinessItemInfo(long paramLong, String paramString)
   {
-    return true;
+    paramString = new BusinessItemInfo();
+    paramString.mSaveInDir = false;
+    paramString.mSavePath = a("test");
+    return paramString;
   }
   
-  public void b() {}
-  
-  public boolean b(String paramString)
+  public String getFrom()
   {
-    if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      return false;
-    }
-    return paramString.equals(this.jdField_a_of_type_JavaLangString);
+    return "TestUpdateBusinessV2";
   }
 }
 

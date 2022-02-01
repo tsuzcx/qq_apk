@@ -1,36 +1,74 @@
-import com.tencent.av.random.RandomWebProtocol;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.C2CGameInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class lti
-  extends ltg
+class lti
+  implements lfm
 {
-  boolean jdField_b_of_type_Boolean;
-  int c;
+  lti(lth paramlth) {}
   
-  public lti(RandomWebProtocol paramRandomWebProtocol, ltg paramltg, String paramString, boolean paramBoolean, int paramInt)
+  public boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    super(paramRandomWebProtocol, paramltg);
-    this.a = 2;
-    this.c = paramString;
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.c = paramInt;
-    this.d = "[m] RequestMulti";
-  }
-  
-  String a()
-  {
-    this.a = null;
+    bool2 = false;
+    String str = mqa.a();
+    if ((paramArrayOfByte == null) || (TextUtils.isEmpty(str)) || (paramInt1 != 9))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AVRedPacketHandler", 2, "onC2CDataCome error return, msgType=" + paramInt1);
+      }
+      return false;
+    }
+    localAVRedPacketManager = (AVRedPacketManager)this.a.a.a(6);
+    localC2CGameInfo = new AVRedPacketGameSyncInfo.C2CGameInfo();
     try
     {
-      this.a = new JSONObject().put("session_type", this.c);
-      return super.a();
+      localC2CGameInfo.mergeFrom(paramArrayOfByte);
+      bool1 = true;
     }
-    catch (Exception localException)
+    catch (Exception paramArrayOfByte)
     {
       for (;;)
       {
-        localException.printStackTrace();
+        boolean bool1 = bool2;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("AVRedPacketHandler", 2, "onC2CDataCome,", paramArrayOfByte);
+          bool1 = bool2;
+          continue;
+          if ((paramInt2 == 2) || (paramInt2 == 3)) {
+            localAVRedPacketManager.b(paramInt2);
+          } else if (paramInt2 == 4) {
+            localAVRedPacketManager.c(localC2CGameInfo.exceptionType.get());
+          }
+        }
       }
+    }
+    if (paramInt2 == 1)
+    {
+      paramArrayOfByte = new Bundle();
+      paramArrayOfByte.putString("key", localC2CGameInfo.key.get());
+      paramArrayOfByte.putInt("gameState", localC2CGameInfo.state.get());
+      paramArrayOfByte.putString("peerUin", str);
+      paramArrayOfByte.putInt("fromWho", localC2CGameInfo.fromWho.get());
+      paramArrayOfByte.putString("money", localC2CGameInfo.money.get());
+      paramArrayOfByte.putInt("resultCode", localC2CGameInfo.resultCode.get());
+      paramArrayOfByte.putString("resultState", localC2CGameInfo.resultState.get());
+      paramArrayOfByte.putInt("musicId", localC2CGameInfo.musicId.get());
+      paramArrayOfByte.putInt("hitScore", localC2CGameInfo.scores.get());
+      paramArrayOfByte.putInt("enterType", localC2CGameInfo.enterType.get());
+      paramArrayOfByte.putInt("maxScore", localC2CGameInfo.maxScore.get());
+      paramArrayOfByte.putInt("totalEmojiNum", localC2CGameInfo.totalEmojiNum.get());
+      localAVRedPacketManager.a(bool1, paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.d("AVRedPacketHandler", 2, "onC2CDataCome, isSucc: " + bool1 + ", subType=" + paramInt2);
+      }
+      return true;
     }
   }
 }

@@ -1,25 +1,48 @@
-import com.tencent.biz.qqcircle.events.QCircleCommentUpdateEvent;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudWrite.StDoTopRsp;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import com.tencent.biz.qqstory.album.view.AlbumImageView;
+import java.util.List;
 
 class vkb
-  implements aaav<FeedCloudWrite.StDoTopRsp>
+  extends Handler
 {
-  vkb(vjy paramvjy, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, int paramInt) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoTopRsp paramStDoTopRsp)
+  public vkb(vjx paramvjx, Looper paramLooper)
   {
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoTopRsp == null))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      QLog.e("QCircleCommentBusiness", 1, "cancelStickyFeedComment error:" + paramLong + "  errorMsg:" + paramString);
+    }
+    do
+    {
+      return;
+      xvv.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop");
+    } while ((vjx.a(this.a) != 1) || (vjx.a(this.a) == null));
+    Object localObject = vjx.a(this.a);
+    int i = vjx.a(this.a, (List)localObject, vjx.c(this.a));
+    int j = vjx.a(this.a, (List)localObject, i + 1);
+    if ((((List)localObject).size() <= 1) || (i == j) || (i < 0))
+    {
+      vjx.b(this.a);
+      xvv.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop, pick count not enougth , dont play loop");
       return;
     }
-    QLog.d("QCircleCommentBusiness", 1, "cancelStickyFeedComment Success");
-    vjy.a(this.jdField_a_of_type_Vjy, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), "");
-    aaak.a().a(new QCircleCommentUpdateEvent(8, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Vjy.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get()), this.jdField_a_of_type_Int));
+    vjx.a(this.a, j);
+    paramMessage = (vim)((List)localObject).get(i);
+    localObject = (vim)((List)localObject).get(j);
+    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setVisibility(0);
+    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setLocalDrawable(paramMessage.a, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, vjx.a(this.a));
+    this.a.jdField_a_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setLocalDrawable(((vim)localObject).a, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, vjx.a(this.a));
+    paramMessage = AnimationUtils.loadAnimation(vjx.a(this.a), 2130772242);
+    paramMessage.setAnimationListener(new vkc(this));
+    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.startAnimation(paramMessage);
+    xvv.a("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop, start play loop , ani index = %d , rear index = %d", Integer.valueOf(i), Integer.valueOf(j));
   }
 }
 

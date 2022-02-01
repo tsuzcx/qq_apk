@@ -1,13 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
 
-public class qdj
-  implements ViewBase.IBuilder
+class qdj
+  implements View.OnAttachStateChangeListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  qdj(qdf paramqdf) {}
+  
+  public void onViewAttachedToWindow(View paramView) {}
+  
+  public void onViewDetachedFromWindow(View paramView)
   {
-    return new qdi(paramVafContext);
+    if (qdf.a(this.a) != null)
+    {
+      qdf.a(this.a).b();
+      qdf.a(this.a, null);
+    }
+    if (qdf.a(this.a) != null)
+    {
+      qdf.a(this.a).a();
+      qdf.a(this.a, null);
+    }
   }
 }
 

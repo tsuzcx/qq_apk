@@ -1,159 +1,308 @@
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.ResourcePluginListener;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emosm.MultiEmotionSaveManager.1;
+import com.tencent.mobileqq.emoticonview.CustomEmoticonInfoBase;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.io.File;
 import java.util.Iterator;
 import java.util.List;
-import mqq.observer.ServerConfigObserver;
-import protocol.KQQConfig.GetResourceRespInfoV2;
-import protocol.KQQConfig.GetResourceRespV2;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
-class aqzr
-  extends ServerConfigObserver
+public class aqzr
+  implements Handler.Callback, Manager
 {
-  aqzr(aqzq paramaqzq) {}
+  private volatile int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private aqzs jdField_a_of_type_Aqzs;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private volatile ConcurrentLinkedQueue<aqza> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private volatile CopyOnWriteArrayList<aqza> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private volatile int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
   
-  public void onGetPluginConfig(boolean paramBoolean, int paramInt, GetResourceRespV2 paramGetResourceRespV2)
+  public aqzr(QQAppInterface paramQQAppInterface)
   {
-    int i = 0;
-    int m = 0;
-    if ((paramInt & 0x20) == 0) {
-      return;
-    }
-    paramInt = i;
-    Object localObject1;
-    Object localObject2;
-    int j;
-    label60:
-    GetResourceRespInfoV2 localGetResourceRespInfoV2;
-    if (paramBoolean)
-    {
-      paramInt = i;
-      if (paramGetResourceRespV2 != null)
-      {
-        localObject1 = aqzq.a(this.a).a().createEntityManager();
-        localObject2 = paramGetResourceRespV2.vecAddedResInfo.iterator();
-        paramInt = 0;
-        j = 0;
-        i = 0;
-        while (((Iterator)localObject2).hasNext())
-        {
-          localGetResourceRespInfoV2 = (GetResourceRespInfoV2)((Iterator)localObject2).next();
-          if (localGetResourceRespInfoV2.iPluginType == 32)
-          {
-            if ((localGetResourceRespInfoV2.sResSubType != 0) && (localGetResourceRespInfoV2.sResSubType != 2)) {
-              break label524;
-            }
-            if (aqzy.a((EntityManager)localObject1, aqzq.a(this.a), localGetResourceRespInfoV2).cDefaultState != 0) {
-              break label515;
-            }
-            paramInt = 1;
-            i = 1;
-            j = 1;
-          }
-        }
-      }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+  }
+  
+  private void a(String paramString1, String paramString2, aqza paramaqza)
+  {
+    this.jdField_a_of_type_Int += 1;
+    int i;
+    if (TextUtils.isEmpty(paramString1)) {
+      i = 10001;
     }
     for (;;)
     {
-      for (;;)
+      if (i != 0)
       {
-        k = j;
-        j = i;
-        i = k;
-        break label60;
-        localObject2 = paramGetResourceRespV2.vecDeletedResInfo.iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localGetResourceRespInfoV2 = (GetResourceRespInfoV2)((Iterator)localObject2).next();
-          if ((localGetResourceRespInfoV2.iPluginType == 32) && ((localGetResourceRespInfoV2.sResSubType == 0) || (localGetResourceRespInfoV2.sResSubType == 2)))
-          {
-            ResourcePluginInfo.remove((EntityManager)localObject1, localGetResourceRespInfoV2.strPkgName);
-            i = 1;
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("MultiEmotionSaveManager", 2, "realSaveEmo failed! errorCode = " + i);
         }
-        paramGetResourceRespV2 = paramGetResourceRespV2.vecUpdatedResInfo.iterator();
-        while (paramGetResourceRespV2.hasNext())
+        if (paramaqza != null)
         {
-          localObject2 = (GetResourceRespInfoV2)paramGetResourceRespV2.next();
-          if ((((GetResourceRespInfoV2)localObject2).iPluginType == 32) && ((((GetResourceRespInfoV2)localObject2).sResSubType == 0) || (((GetResourceRespInfoV2)localObject2).sResSubType == 2)))
-          {
-            aqzy.a((EntityManager)localObject1, aqzq.a(this.a), (GetResourceRespInfoV2)localObject2);
-            i = 1;
-          }
+          paramaqza.jdField_a_of_type_Int = -1;
+          paramaqza.jdField_b_of_type_Int = i;
+          paramaqza.c = awdc.a(i);
+          paramString1 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
+          paramString1.obj = paramaqza;
+          this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString1);
         }
-        ((EntityManager)localObject1).close();
-        this.a.a(true, false);
-        k = m;
-        if (i != 0)
+        return;
+        if (TextUtils.isEmpty(paramString2))
         {
-          paramGetResourceRespV2 = new ArrayList(aqzq.a(this.a)).iterator();
-          while (paramGetResourceRespV2.hasNext())
-          {
-            localObject1 = (ResourcePluginListener)paramGetResourceRespV2.next();
-            if (j != 0)
-            {
-              ResourcePluginListener.a((ResourcePluginListener)localObject1, (byte)3, 2);
-              if (paramInt != 0)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("AboutConfig", 2, "inform STATE_NEW_OPEN_PLUGIN");
-                }
-                ResourcePluginListener.a((ResourcePluginListener)localObject1, (byte)4, 2);
-              }
-            }
-            else
-            {
-              ResourcePluginListener.a((ResourcePluginListener)localObject1, (byte)2, 2);
-            }
-          }
-          break;
+          i = 10002;
+          continue;
         }
-        label415:
-        if (k >= aqzq.a(this.a).size()) {
-          break;
-        }
-        try
-        {
-          ResourcePluginListener.a((ResourcePluginListener)aqzq.a(this.a).get(k), (byte)1, 2);
-          label454:
-          k += 1;
-          break label415;
-          while (paramInt < aqzq.a(this.a).size()) {
-            try
-            {
-              ResourcePluginListener.a((ResourcePluginListener)aqzq.a(this.a).get(paramInt), (byte)-1, 2);
-              label500:
-              paramInt += 1;
-            }
-            catch (Exception paramGetResourceRespV2)
-            {
-              break label500;
-            }
-          }
-        }
-        catch (Exception paramGetResourceRespV2)
-        {
-          break label454;
+        if (!FileUtils.fileExists(paramString1)) {
+          i = 10003;
         }
       }
-      label515:
-      j = 1;
-      i = 1;
-      continue;
-      label524:
-      int k = i;
-      i = j;
-      j = k;
+      else
+      {
+        i = 0;
+        Object localObject1 = paramString2;
+        File localFile;
+        do
+        {
+          if (i > 0) {
+            localObject1 = paramString2 + "_" + i;
+          }
+          Object localObject2 = localObject1;
+          if (!((String)localObject1).contains("."))
+          {
+            localObject2 = FileUtils.estimateFileType(paramString1);
+            localObject2 = (String)localObject1 + "." + (String)localObject2;
+          }
+          localFile = new File(aqyz.jdField_a_of_type_JavaLangString, (String)localObject2);
+          i += 1;
+          localObject1 = localObject2;
+        } while (localFile.exists());
+        paramString2 = new File(paramString1);
+        ThreadManager.getFileThreadHandler().post(new MultiEmotionSaveManager.1(this, localFile, paramString2, paramString1, paramaqza));
+        return;
+      }
+      i = 0;
     }
+  }
+  
+  private void b(aqza paramaqza)
+  {
+    String str = System.nanoTime() + "";
+    a(paramaqza.jdField_b_of_type_JavaLangString, str, paramaqza);
+  }
+  
+  private void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MultiEmotionSaveManager", 2, "clearCatch");
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_Aqzs != null) {
+      this.jdField_a_of_type_Aqzs.b();
+    }
+  }
+  
+  private void e()
+  {
+    if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_a_of_type_Aqzs == null)) {}
+    int i;
+    do
+    {
+      return;
+      i = (int)(this.jdField_b_of_type_Int * 100.0D / this.jdField_a_of_type_Long);
+      if (this.jdField_b_of_type_Int == this.jdField_a_of_type_Long) {
+        i = 100;
+      }
+    } while (this.jdField_a_of_type_Aqzs == null);
+    this.jdField_a_of_type_Aqzs.a(i);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MultiEmotionSaveManager", 2, "cancelMultiEmoSave");
+    }
+    c();
+    if (this.jdField_a_of_type_Aqzs != null) {
+      this.jdField_a_of_type_Aqzs.a();
+    }
+  }
+  
+  public void a(aqza paramaqza)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MultiEmotionSaveManager", 2, "saveComplete");
+    }
+    if (this.jdField_a_of_type_Aqzs != null) {
+      this.jdField_a_of_type_Aqzs.a(paramaqza);
+    }
+    c();
+  }
+  
+  public void a(aqzs paramaqzs)
+  {
+    this.jdField_a_of_type_Aqzs = paramaqzs;
+  }
+  
+  public void a(List<EmoticonInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiEmotionSaveManager", 2, "saveMultiRichMedialFile emoSaveReqList is empty!");
+      }
+      paramList = new aqza();
+      paramList.jdField_a_of_type_Int = -1;
+      paramList.jdField_b_of_type_Int = 10006;
+      paramList.c = awdc.a(10006);
+      a(paramList);
+    }
+    for (;;)
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiEmotionSaveManager", 2, "saveMultiRichMedialFile emoSaveReqList count is :" + paramList.size());
+      }
+      c();
+      paramList = paramList.iterator();
+      Object localObject;
+      while (paramList.hasNext())
+      {
+        localObject = (EmoticonInfo)paramList.next();
+        if ((localObject instanceof CustomEmoticonInfoBase))
+        {
+          localObject = (CustomEmoticonInfoBase)localObject;
+          aqza localaqza = new aqza();
+          localaqza.jdField_a_of_type_JavaLangString = ((CustomEmoticonInfoBase)localObject).resID;
+          localaqza.jdField_b_of_type_JavaLangString = ((CustomEmoticonInfoBase)localObject).path;
+          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localaqza);
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("MultiEmotionSaveManager", 2, "temp is not CustomEmoticonInfoBase class is " + localObject.getClass());
+        }
+      }
+      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MultiEmotionSaveManager", 2, "saveMultiRichMedialFile emoReqList is empty!");
+        }
+        paramList = new aqza();
+        paramList.jdField_a_of_type_Int = -1;
+        paramList.jdField_b_of_type_Int = 10006;
+        paramList.c = awdc.a(10006);
+        a(paramList);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiEmotionSaveManager", 2, "saveMultiRichMedialFile emoReqList count is :" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+      }
+      d();
+      this.jdField_a_of_type_Long = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
+      paramList = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (paramList.hasNext())
+      {
+        localObject = (aqza)paramList.next();
+        if (this.jdField_a_of_type_Int < 1) {
+          b((aqza)localObject);
+        } else {
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(localObject);
+        }
+      }
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Aqzs = null;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    aqza localaqza;
+    if ((paramMessage.obj instanceof aqza))
+    {
+      localaqza = (aqza)paramMessage.obj;
+      if (localaqza != null) {
+        switch (paramMessage.what)
+        {
+        }
+      }
+    }
+    do
+    {
+      return false;
+      this.jdField_a_of_type_Int -= 1;
+      if (paramMessage.what == 2)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        if (QLog.isColorLevel()) {
+          QLog.i("MultiEmotionSaveManager", 2, "MSG_TYPE_SAVE_FAIL errorCode = " + localaqza.jdField_b_of_type_Int + ", errorMsg = " + localaqza.c);
+        }
+      }
+      for (;;)
+      {
+        this.jdField_b_of_type_Int += 1;
+        e();
+        paramMessage = (aqza)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+        if (paramMessage == null) {
+          break;
+        }
+        b(paramMessage);
+        return false;
+        this.jdField_b_of_type_Boolean = true;
+      }
+    } while (this.jdField_a_of_type_Int != 0);
+    paramMessage = new aqza();
+    if (this.jdField_b_of_type_Boolean) {
+      paramMessage.jdField_a_of_type_Int = 0;
+    }
+    for (;;)
+    {
+      a(paramMessage);
+      return false;
+      paramMessage.jdField_a_of_type_Int = -1;
+      paramMessage.jdField_b_of_type_Int = localaqza.jdField_b_of_type_Int;
+      paramMessage.c = localaqza.c;
+    }
+  }
+  
+  public void onDestroy()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MultiEmotionSaveManager", 2, "onDestroy");
+    }
+    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqzr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,20 @@
-public abstract interface wul
+import android.database.DataSetObserver;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+
+public class wul
+  extends DataSetObserver
 {
-  public abstract String getName();
+  private wul(XViewPager paramXViewPager) {}
   
-  public abstract int getRelationType();
+  public void onChanged()
+  {
+    this.a.b();
+  }
   
-  public abstract String getUnionId();
-  
-  public abstract boolean isFriend();
-  
-  public abstract boolean isMe();
-  
-  public abstract boolean isSubscribe();
-  
-  public abstract boolean isSubscribeButNoFriend();
-  
-  public abstract boolean isVip();
-  
-  public abstract boolean isVipButNoFriend();
+  public void onInvalidated()
+  {
+    this.a.b();
+  }
 }
 
 

@@ -1,92 +1,24 @@
-import NS_MOBILE_QBOSS_PROTO.tMobileQbossFeedBackInfo;
-import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.teamwork.TeamWorkUtils.TDFileQIPCModule.1;
+import eipc.EIPCResult;
 
 public class bcvu
-  extends MSFServlet
+  extends QIPCModule
 {
-  private tMobileQbossFeedBackInfo a(String paramString1, int paramInt1, int paramInt2, String paramString2, long paramLong, String paramString3, int paramInt3)
+  public bcvu()
   {
-    tMobileQbossFeedBackInfo localtMobileQbossFeedBackInfo = new tMobileQbossFeedBackInfo();
-    localtMobileQbossFeedBackInfo.uiUin = paramLong;
-    localtMobileQbossFeedBackInfo.sQBosstrace = paramString1;
-    localtMobileQbossFeedBackInfo.iOperType = paramInt1;
-    localtMobileQbossFeedBackInfo.iOperSource = paramInt2;
-    localtMobileQbossFeedBackInfo.sQua = paramString3;
-    localtMobileQbossFeedBackInfo.sUserID = paramString2;
-    localtMobileQbossFeedBackInfo.iOperTimes = paramInt3;
-    return localtMobileQbossFeedBackInfo;
+    super("Module_TDFileChangeNameQIPCModule");
   }
   
-  private ArrayList<tMobileQbossFeedBackInfo> a(String paramString1, int paramInt, String paramString2, long paramLong, String paramString3)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    paramString1 = a(paramString1, paramInt, 2, paramString2, paramLong, paramString3, 1);
-    paramString2 = new ArrayList(1);
-    paramString2.add(paramString1);
-    return paramString2;
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg != null) {}
-    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
-    {
-      paramIntent = new Bundle();
-      paramIntent.putString("msg", "servlet result code is " + i);
-      QLog.d("QbossReportServlet", 2, "qboss onReceive onSend");
-      if (i != 1000) {
-        break label152;
-      }
-      paramFromServiceMsg = bnfy.a(paramFromServiceMsg.getWupBuffer());
-      if (paramFromServiceMsg == null) {
-        break;
-      }
-      paramIntent.putInt("ret", 0);
-      paramIntent.putSerializable("data", paramFromServiceMsg);
-      QLog.d("QbossReportServlet", 2, "qboss onReceive ret");
-      notifyObserver(null, 1008, true, paramIntent, ayxo.class);
-      return;
+    bhzm.c(bcvs.a(), "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
+    if (paramString.equals("Action_url_2_fmdb")) {
+      ThreadManager.postImmediately(new TeamWorkUtils.TDFileQIPCModule.1(this, paramBundle.getString("url")), null, true);
     }
-    QLog.d("QbossReportServlet", 2, "qboss onReceive ok");
-    if (QLog.isColorLevel()) {
-      QLog.d("QbossReportServlet", 2, "QZONE_REPORT_QBOSS fail, decode result is null");
-    }
-    paramIntent.putInt("ret", -2);
-    notifyObserver(null, 1008, false, paramIntent, ayxo.class);
-    return;
-    label152:
-    if (QLog.isColorLevel()) {
-      QLog.d("QbossReportServlet", 2, "QZONE_REPORT_QBOSS fail, resultCode=" + i);
-    }
-    QLog.d("QbossReportServlet", 2, "qboss onReceive not ok");
-    paramIntent.putInt("ret", -3);
-    notifyObserver(null, 1008, false, paramIntent, ayxo.class);
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    Object localObject1 = paramIntent.getStringExtra("sQBosstrace");
-    int i = paramIntent.getIntExtra("iOperType", 0);
-    Object localObject2 = paramIntent.getStringExtra("sUserID");
-    long l = paramIntent.getLongExtra("uin", 0L);
-    paramIntent = paramIntent.getStringExtra("qua");
-    QLog.d("QbossReportServlet", 2, "qboss onSend");
-    localObject2 = new bnfy(a((String)localObject1, i, (String)localObject2, l, paramIntent));
-    localObject1 = ((bnfy)localObject2).encode();
-    paramIntent = (Intent)localObject1;
-    if (localObject1 == null)
-    {
-      QLog.e("QbossReportServlet", 1, "onSend request encode result is null.cmd=" + ((bnfy)localObject2).uniKey());
-      paramIntent = new byte[4];
-    }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + ((bnfy)localObject2).uniKey());
-    paramPacket.putSendData(paramIntent);
+    return null;
   }
 }
 

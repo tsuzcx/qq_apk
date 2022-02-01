@@ -1,23 +1,19 @@
-import android.view.View;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class noj
-  extends begx
+  implements non
 {
-  public noj(noi paramnoi, String paramString)
+  public void a(Runnable paramRunnable)
   {
-    super(paramnoi, paramString);
+    new Thread(paramRunnable).start();
   }
   
-  public void onClick(View paramView)
+  public void b(Runnable paramRunnable)
   {
-    if (nok.a.matcher(this.jdField_a_of_type_JavaLangString).find())
-    {
-      noi.a(paramView, this.jdField_a_of_type_Noi.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Noi.b, this.jdField_a_of_type_Noi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
-    }
-    super.onClick(paramView);
+    new Thread(paramRunnable).start();
+  }
+  
+  public void c(Runnable paramRunnable)
+  {
+    new Thread(paramRunnable).start();
   }
 }
 

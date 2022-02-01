@@ -1,40 +1,28 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class adzx
-  implements DialogInterface.OnClickListener
+public class adzx
+  implements View.OnClickListener
 {
-  adzx(aeca paramaeca, int paramInt, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, aebz paramaebz) {}
+  public adzx(QQMapActivity paramQQMapActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Aeca.a)
+    if (this.a.a == null)
     {
-      if (this.jdField_a_of_type_Int != 2) {
-        break label130;
-      }
-      bdll.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "1", "", "", "");
+      this.a.a = ((bjnw)bjon.a(this.a, null));
+      this.a.a.b(2131697561);
+      this.a.a.b(2131692036);
+      this.a.a.c(2131690620);
+      this.a.a.a(new adzy(this));
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aeca.b = false;
-      this.jdField_a_of_type_Aeca.c = false;
-      this.jdField_a_of_type_Aeca.e = false;
-      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aebz, this.jdField_a_of_type_Aeca);
-      if (QLog.isColorLevel()) {
-        QLog.d("chenlong", 2, "" + (System.currentTimeMillis() - l));
-      }
-      return;
-      label130:
-      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
-        bdll.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "1", "", "", "");
-      }
+    if (!this.a.a.isShowing()) {
+      this.a.a.show();
     }
+    bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_menu", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

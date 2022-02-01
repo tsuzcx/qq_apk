@@ -1,42 +1,15 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
 
-class bblc
-  implements GLSurfaceView.EGLContextFactory
+public class bblc
 {
-  private int jdField_a_of_type_Int = 12440;
+  public MessageForReplyText.SourceMsgInfo a;
+  public MessageForText.AtTroopMemberInfo a;
+  public String a;
+  public byte[] a;
+  public String b;
   
-  bblc(bblb parambblb) {}
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
-  {
-    int[] arrayOfInt = new int[3];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
-    arrayOfInt[1] = FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Bblb.a);
-    arrayOfInt[2] = 12344;
-    yuk.d("FlowEdit_FlowDecodeScreenSurfaceBase", "createContext, display=%s, config=%s, shaContext=%s", new Object[] { paramEGLDisplay, paramEGLConfig, FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Bblb.a) });
-    EGLContext localEGLContext = FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Bblb.a);
-    if (FlowDecodeScreenSurfaceBase.a(this.jdField_a_of_type_Bblb.a) != 0) {}
-    for (;;)
-    {
-      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
-      arrayOfInt = null;
-    }
-  }
-  
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
-    {
-      yuk.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
-      yuk.c("DefaultContextFactory", "tid=" + Thread.currentThread().getId());
-      bblf.a("eglDestroyContex", paramEGL10.eglGetError());
-    }
-  }
+  public bblc(bblb parambblb) {}
 }
 
 

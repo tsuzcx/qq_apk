@@ -1,16 +1,18 @@
 package dov.com.qq.im.ae;
 
-import bofh;
-import bojx;
+import bljy;
+import blnv;
+import bloc;
 
 public class AEPituCameraUnit$8
   implements Runnable
 {
-  public AEPituCameraUnit$8(bofh parambofh) {}
+  public AEPituCameraUnit$8(bljy parambljy) {}
   
   public void run()
   {
-    bofh.a(this.this$0).a(true);
+    this.this$0.jdField_a_of_type_Blnv.c();
+    this.this$0.jdField_a_of_type_Bloc.b(true);
   }
 }
 

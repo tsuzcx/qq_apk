@@ -1,27 +1,12 @@
-import android.text.TextUtils;
-
-public class bhyb
-  extends bhye
+public abstract interface bhyb
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c = 20;
+  public abstract void a(bhyc parambhyc);
   
-  public bhyb()
-  {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 100;
-  }
+  public abstract void b(bhyc parambhyc);
   
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.a)) {
-      return "";
-    }
-    return this.a;
-  }
+  public abstract void c(bhyc parambhyc);
+  
+  public abstract void d(bhyc parambhyc);
 }
 
 

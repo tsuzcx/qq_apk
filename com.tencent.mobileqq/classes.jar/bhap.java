@@ -1,50 +1,30 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.BusinessObserver;
+import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody;
 
 public class bhap
+  implements BusinessObserver
 {
-  public int a;
-  public bhap a;
-  public String a;
-  public ArrayList<bhap> a;
-  public String b;
+  public void a(int paramInt) {}
   
-  private bhap() {}
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean) {}
   
-  public bhap(int paramInt, String paramString1, String paramString2)
+  public void a(submsgtype0xdd.MsgBody paramMsgBody) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-  }
-  
-  public String a()
-  {
-    String str = this.jdField_a_of_type_JavaLangString;
-    bhap localbhap = this;
-    while (localbhap.jdField_a_of_type_Bhap != null)
+    switch (paramInt)
     {
-      localbhap = localbhap.jdField_a_of_type_Bhap;
-      str = localbhap.jdField_a_of_type_JavaLangString + "-" + str;
+    default: 
+      return;
+    case 1: 
+      a((submsgtype0xdd.MsgBody)paramObject);
+      return;
+    case 2: 
+      paramObject = (Object[])paramObject;
+      a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue());
+      return;
     }
-    return str;
-  }
-  
-  public void a(bhap parambhap)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambhap);
-  }
-  
-  public boolean a(bhap parambhap)
-  {
-    if ((parambhap != null) && (parambhap.jdField_a_of_type_Int + 1 == this.jdField_a_of_type_Int))
-    {
-      this.jdField_a_of_type_Bhap = parambhap;
-      return true;
-    }
-    return false;
+    a(((Integer)paramObject).intValue());
   }
 }
 

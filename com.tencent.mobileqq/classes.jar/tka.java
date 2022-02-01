@@ -1,10 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.WormholeView;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
-public abstract interface tka
+class tka
+  implements WXShareHelper.WXShareListener
 {
-  public abstract void a(WormholeView paramWormholeView);
+  tka(tjz paramtjz) {}
   
-  public abstract void b(WormholeView paramWormholeView);
+  public void onWXShareResp(BaseResp paramBaseResp)
+  {
+    boolean bool = true;
+    if ((tjz.a(this.a) == null) || (!tjz.a(this.a).equals(paramBaseResp.transaction))) {
+      return;
+    }
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      yyi.a(1, 2131718380);
+      bool = false;
+    }
+    for (;;)
+    {
+      uhd.a.a(bool);
+      return;
+      yyi.a(2, 2131718398);
+      continue;
+      bool = false;
+    }
+  }
 }
 
 

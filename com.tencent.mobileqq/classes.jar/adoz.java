@@ -1,25 +1,22 @@
-import android.support.annotation.NonNull;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.32.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class adoz
-  extends adnc
+  extends awib
 {
-  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull admy paramadmy)
+  public adoz(Leba paramLeba) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 31: 
-      adqf.a(paramadmy, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.redpoint", 2, "NearbyEnterUpdateObserver onReceive");
     }
-    for (;;)
-    {
-      return true;
-      adqf.a(paramadmy, null);
-      continue;
-      adqf.a(paramadmy, null);
+    if (Leba.a(this.a) == null) {
+      return;
     }
+    this.a.a.post(new Leba.32.1(this));
   }
 }
 

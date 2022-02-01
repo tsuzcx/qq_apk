@@ -1,44 +1,91 @@
-public final class apkp
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import mqq.util.WeakReference;
+
+class apkp
+  extends Handler
 {
-  public static final int A = bhtq.a(45.0F);
-  public static final int B = bhtq.a(48.0F);
-  public static final int C = bhtq.a(60.0F);
-  public static final int D = bhtq.a(64.0F);
-  public static final int E = bhtq.a(74.0F);
-  public static final int F = bhtq.a(76.0F);
-  public static final int G = bhtq.a(77.5F);
-  public static final int H = bhtq.a(87.5F);
-  public static final int I = bhtq.a(92.5F);
-  public static final int J = bhtq.a(93.0F);
-  public static final int K = bhtq.a(100.0F);
-  public static final int L = bhtq.a(105.5F);
-  public static final int M = bhtq.a(120.0F);
-  public static final int a = bhtq.a(0.5F);
-  public static final int b = bhtq.a(1.0F);
-  public static final int c = bhtq.a(1.5F);
-  public static final int d = bhtq.a(1.75F);
-  public static final int e = bhtq.a(2.0F);
-  public static final int f = bhtq.a(3.0F);
-  public static final int g = bhtq.a(4.0F);
-  public static final int h = bhtq.a(5.0F);
-  public static final int i = bhtq.a(6.0F);
-  public static final int j = bhtq.a(8.0F);
-  public static final int k = bhtq.a(10.0F);
-  public static final int l = bhtq.a(11.0F);
-  public static final int m = bhtq.a(12.0F);
-  public static final int n = bhtq.a(14.0F);
-  public static final int o = bhtq.a(15.0F);
-  public static final int p = bhtq.a(16.0F);
-  public static final int q = bhtq.a(16.5F);
-  public static final int r = bhtq.a(18.0F);
-  public static final int s = bhtq.a(20.0F);
-  public static final int t = bhtq.a(25.0F);
-  public static final int u = bhtq.a(30.0F);
-  public static final int v = bhtq.a(34.0F);
-  public static final int w = bhtq.a(35.0F);
-  public static final int x = bhtq.a(36.0F);
-  public static final int y = bhtq.a(38.0F);
-  public static final int z = bhtq.a(40.0F);
+  private WeakReference<apko> a;
+  
+  apkp(apko paramapko)
+  {
+    this.a = new WeakReference(paramapko);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    Object localObject1 = (apko)this.a.get();
+    if (localObject1 == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            localObject1 = apko.a((apko)localObject1);
+            switch (paramMessage.what)
+            {
+            case 7: 
+            case 8: 
+            default: 
+              return;
+            }
+          } while (localObject1 == null);
+          localObject2 = (Bundle)paramMessage.obj;
+          if (paramMessage.what == 3) {}
+          for (bool1 = true;; bool1 = false)
+          {
+            ((apkq)localObject1).onAddColorNote((Bundle)localObject2, bool1);
+            return;
+          }
+        } while (localObject1 == null);
+        try
+        {
+          localObject2 = (Pair)paramMessage.obj;
+          int i = ((Integer)((Pair)localObject2).first).intValue();
+          localObject2 = (String)((Pair)localObject2).second;
+          if (paramMessage.what != 5)
+          {
+            ((apkq)localObject1).onDeleteColorNote(i, (String)localObject2, bool1);
+            return;
+          }
+        }
+        catch (ClassCastException paramMessage)
+        {
+          for (;;)
+          {
+            QLog.e("ColorNoteCurd", 2, paramMessage, new Object[0]);
+            return;
+            bool1 = false;
+          }
+        }
+        catch (Exception paramMessage)
+        {
+          QLog.e("ColorNoteCurd", 2, paramMessage, new Object[0]);
+          return;
+        }
+      } while ((localObject1 == null) || (paramMessage.obj == null));
+      paramMessage = (Bundle)paramMessage.obj;
+      ((apkq)localObject1).onUpdateColorNoteState(paramMessage.getInt("key_service_type"), paramMessage.getString("key_sub_type"), paramMessage);
+      return;
+    } while ((localObject1 == null) || (paramMessage.obj == null));
+    Object localObject2 = (ColorNote)paramMessage.obj;
+    if (paramMessage.what == 10) {}
+    for (bool1 = bool2;; bool1 = false)
+    {
+      ((apkq)localObject1).onUpdateColorNote((ColorNote)localObject2, bool1);
+      return;
+    }
+  }
 }
 
 

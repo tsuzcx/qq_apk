@@ -12,10 +12,10 @@ import android.view.animation.AlphaAnimation;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import baph;
-import bapi;
-import bfea;
-import bfeb;
+import azjm;
+import azjn;
+import bdmo;
+import bdmp;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
@@ -30,7 +30,7 @@ public class TribeVideoPreviewFragment
   
   private void a(View paramView)
   {
-    paramView = paramView.findViewById(2131379310);
+    paramView = paramView.findViewById(2131379080);
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setFillAfter(true);
     localAlphaAnimation.setDuration(500L);
@@ -40,14 +40,14 @@ public class TribeVideoPreviewFragment
   
   private void a(View paramView, String paramString)
   {
-    paramView = (RelativeLayout)paramView.findViewById(2131380935);
+    paramView = (RelativeLayout)paramView.findViewById(2131380661);
     VideoPlayParam localVideoPlayParam = new VideoPlayParam();
     localVideoPlayParam.mVideoPath = paramString;
     localVideoPlayParam.mIsLocal = true;
     localVideoPlayParam.mIsLoop = true;
     localVideoPlayParam.mSceneId = 111;
-    localVideoPlayParam.mSceneName = bapi.a(111);
-    this.a = ((BaseVideoView)baph.b(paramView.getContext(), 0L, localVideoPlayParam, null));
+    localVideoPlayParam.mSceneName = azjn.a(111);
+    this.a = ((BaseVideoView)azjm.b(paramView.getContext(), 0L, localVideoPlayParam, null));
     paramString = new RelativeLayout.LayoutParams(-1, -1);
     this.a.setLayoutParams(paramString);
     paramView.addView(this.a, 0);
@@ -61,7 +61,7 @@ public class TribeVideoPreviewFragment
   
   private void b(View paramView, String paramString)
   {
-    ((ImageButton)paramView.findViewById(2131377007)).setOnClickListener(new bfeb(this, paramString));
+    ((ImageButton)paramView.findViewById(2131376757)).setOnClickListener(new bdmp(this, paramString));
   }
   
   public void a(String paramString)
@@ -88,12 +88,12 @@ public class TribeVideoPreviewFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131563007, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131562887, paramViewGroup, false);
     paramViewGroup = getActivity().getIntent().getStringExtra("path");
     a(paramLayoutInflater, paramViewGroup);
     a(paramLayoutInflater);
     b(paramLayoutInflater, paramViewGroup);
-    paramLayoutInflater.setOnTouchListener(new bfea(this));
+    paramLayoutInflater.setOnTouchListener(new bdmo(this));
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -107,7 +107,7 @@ public class TribeVideoPreviewFragment
   public void onFinish()
   {
     super.onFinish();
-    getActivity().overridePendingTransition(0, 2130772332);
+    getActivity().overridePendingTransition(0, 2130772330);
   }
 }
 

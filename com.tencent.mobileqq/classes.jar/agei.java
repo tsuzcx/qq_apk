@@ -1,6 +1,18 @@
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
+
 class agei
+  extends aghj
 {
-  private static ageg a = new ageg("aio_client_module", null);
+  agei(agcw paramagcw)
+  {
+    super(paramagcw, null);
+  }
+  
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new aaux(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, agcw.a(this.a));
+  }
 }
 
 

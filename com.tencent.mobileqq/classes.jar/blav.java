@@ -1,30 +1,41 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.appbrand.page.embedded.VideoEmbeddedWidgetClient;
-import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
-import com.tencent.oskplayer.OskPlayerCore;
-import com.tencent.qqmini.sdk.annotation.ProxyService;
-import com.tencent.qqmini.sdk.launcher.core.proxy.VideoPlayerProviderProxy;
-import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer;
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_PAIR.sweet_pair_check_req;
+import android.content.Intent;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QUA;
+import cooperation.qzone.QzoneExternalRequest;
 
-@ProxyService(proxy=VideoPlayerProviderProxy.class)
-public class blav
-  implements VideoPlayerProviderProxy
+class blav
+  extends QzoneExternalRequest
 {
-  private boolean a;
+  blav(blau paramblau, Intent paramIntent) {}
   
-  public String getUrl(String paramString)
+  public String getCmdString()
   {
-    return OskPlayerCore.getInstance().getUrl(MiniAppFileManager.getInstance().getAbsolutePath(paramString));
+    return "SweetQzoneService.getPairState";
   }
   
-  public ReliableVideoPlayer getVideoPlayer()
+  public JceStruct getReq()
   {
-    if (!this.a)
+    sweet_pair_check_req localsweet_pair_check_req = new sweet_pair_check_req();
+    if (this.jdField_a_of_type_AndroidContentIntent != null)
     {
-      VideoEmbeddedWidgetClient.initOskOnce(BaseApplicationImpl.getContext());
-      this.a = true;
+      long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
+      sweet_req_comm localsweet_req_comm = new sweet_req_comm();
+      localsweet_req_comm.opuin = l;
+      localsweet_req_comm.uin = l;
+      localsweet_req_comm.loveuin = 0L;
+      localsweet_req_comm.qua = QUA.getQUA3();
+      localsweet_req_comm.pf = 1;
+      localsweet_req_comm.src = 3;
+      localsweet_pair_check_req.req_comm = localsweet_req_comm;
     }
-    return new bkzb();
+    return localsweet_pair_check_req;
+  }
+  
+  public String uniKey()
+  {
+    return "getPairState";
   }
 }
 

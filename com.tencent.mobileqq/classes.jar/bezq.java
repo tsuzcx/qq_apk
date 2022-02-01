@@ -1,11 +1,40 @@
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.troop.utils.RollangleImageView;
+import java.lang.ref.WeakReference;
 
 public class bezq
-  extends bezo
+  extends AsyncTask<Boolean, Void, Bitmap>
 {
-  protected ArrayList a(ArrayList paramArrayList1, ArrayList paramArrayList2)
+  private WeakReference<RollangleImageView> a;
+  
+  public bezq(RollangleImageView paramRollangleImageView)
   {
-    return c(paramArrayList1, paramArrayList2);
+    this.a = new WeakReference(paramRollangleImageView);
+  }
+  
+  protected Bitmap a(Boolean... paramVarArgs)
+  {
+    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
+    if (localRollangleImageView != null) {
+      return RollangleImageView.a(localRollangleImageView, paramVarArgs[0].booleanValue());
+    }
+    return null;
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
+    if (localRollangleImageView != null)
+    {
+      if (paramBitmap != null) {
+        localRollangleImageView.setImageBitmap(paramBitmap);
+      }
+    }
+    else {
+      return;
+    }
+    localRollangleImageView.setImageResource(aszt.b(localRollangleImageView.a));
   }
 }
 

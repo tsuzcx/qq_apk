@@ -1,15 +1,13 @@
 public class bgej
-  extends bgeg
 {
-  public int a()
-  {
-    return 0;
-  }
-  
-  public int b()
-  {
-    return -1;
-  }
+  public float a;
+  public int a;
+  public String a;
+  public String[] a;
+  public float b;
+  public int b;
+  public float c;
+  public float d;
 }
 
 

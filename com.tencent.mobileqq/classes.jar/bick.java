@@ -1,82 +1,41 @@
-import java.lang.ref.WeakReference;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import java.util.Map;
 
-public class bick<E>
+class bick
+  extends ampv
 {
-  private HashMap<String, CopyOnWriteArrayList<E>> a = new HashMap();
+  private bick(bici parambici) {}
   
-  public List<E> a(String paramString)
+  protected void onGetAuthCode(boolean paramBoolean, String paramString1, String paramString2)
   {
-    try
-    {
-      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.get(paramString);
-      paramString = localCopyOnWriteArrayList;
-      if (localCopyOnWriteArrayList == null) {
-        paramString = Collections.emptyList();
-      }
-      return paramString;
-    }
-    finally {}
-  }
-  
-  public void a(String paramString, E paramE)
-  {
-    try
-    {
-      CopyOnWriteArrayList localCopyOnWriteArrayList2 = (CopyOnWriteArrayList)this.a.get(paramString);
-      CopyOnWriteArrayList localCopyOnWriteArrayList1 = localCopyOnWriteArrayList2;
-      if (localCopyOnWriteArrayList2 == null)
-      {
-        localCopyOnWriteArrayList1 = new CopyOnWriteArrayList();
-        this.a.put(paramString, localCopyOnWriteArrayList1);
-      }
-      localCopyOnWriteArrayList1.add(paramE);
+    bhzm.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver onGetAuthCode isSuccess|" + paramBoolean + " code|" + paramString1 + " reqId|" + paramString2);
+    if (paramString2 == null) {
       return;
     }
-    finally {}
-  }
-  
-  public void a(String paramString, Object paramObject, boolean paramBoolean)
-  {
-    try
+    Bundle localBundle = (Bundle)bici.a(this.a).get(paramString2);
+    if (localBundle == null)
     {
-      paramString = (CopyOnWriteArrayList)this.a.get(paramString);
-      if (paramString != null)
-      {
-        if (paramBoolean)
-        {
-          Iterator localIterator = paramString.iterator();
-          while (localIterator.hasNext())
-          {
-            Object localObject1 = localIterator.next();
-            Object localObject2 = ((WeakReference)localObject1).get();
-            if ((localObject2 == null) || (localObject2 == paramObject)) {
-              paramString.remove(localObject1);
-            }
-          }
-        }
-        paramString.remove(paramObject);
-      }
+      bhzm.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver reqId|" + paramString2 + "  but params context is null");
+      return;
     }
-    finally {}
-  }
-  
-  public List<E> b(String paramString)
-  {
-    try
+    int i = localBundle.getInt("CallbackId");
+    paramString2 = new Bundle();
+    paramString2.putString("PackageName", localBundle.getString("PackageName"));
+    paramString2.putInt("VersionCode", localBundle.getInt("VersionCode"));
+    if (paramBoolean)
     {
-      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.remove(paramString);
-      paramString = localCopyOnWriteArrayList;
-      if (localCopyOnWriteArrayList == null) {
-        paramString = Collections.emptyList();
-      }
-      return paramString;
+      paramString2.putBoolean("IsSuccess", true);
+      paramString2.putString("Code", paramString1);
     }
-    finally {}
+    for (;;)
+    {
+      bhzm.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver callbackId|" + i + " result|" + paramString2);
+      bici.a(this.a).callbackResult(i, EIPCResult.createSuccessResult(paramString2));
+      return;
+      paramString2.putBoolean("IsSuccess", false);
+    }
   }
 }
 

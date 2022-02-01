@@ -1,13 +1,8 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-
-public class aaez
-  extends RecyclerView.ViewHolder
+public abstract interface aaez
 {
-  public aaez(aaey paramaaey, View paramView)
-  {
-    super(paramView);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 

@@ -1,92 +1,81 @@
-import android.util.Log;
-import java.util.LinkedList;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
 
-public abstract class lri
+public class lri
+  extends lrk
 {
-  private String jdField_a_of_type_JavaLangString = getClass().getSimpleName() + "-" + Integer.toHexString(hashCode());
-  private List<lrh> jdField_a_of_type_JavaUtilList = new LinkedList();
-  lrk jdField_a_of_type_Lrk;
-  private lrn jdField_a_of_type_Lrn;
+  protected final Context a;
+  protected final int k;
   
-  public lri()
+  public lri(Context paramContext, int paramInt)
   {
-    Log.d(this.jdField_a_of_type_JavaLangString, "ImageSource: ");
+    bjmd.a(paramContext);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.k = paramInt;
+    a(false);
   }
   
-  public lri a(lrh paramlrh)
+  protected Bitmap a()
   {
-    Log.d(this.jdField_a_of_type_JavaLangString, "addTarget: " + paramlrh);
-    this.jdField_a_of_type_JavaUtilList.add(paramlrh);
-    paramlrh.a(this.jdField_a_of_type_Lrn);
-    return this;
-  }
-  
-  protected abstract void a();
-  
-  public void a(lrk paramlrk)
-  {
-    this.jdField_a_of_type_Lrk = paramlrk;
-  }
-  
-  protected abstract void b();
-  
-  protected void b(List<lrl> paramList, long paramLong)
-  {
-    int k = 0;
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {}
-    for (;;)
+    Object localObject = null;
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
+    localOptions.inScaled = false;
+    int i = mum.a(this.jdField_a_of_type_AndroidContentContext);
+    localOptions.inSampleSize = 1;
+    if (i <= 480) {
+      localOptions.inSampleSize = 2;
+    }
+    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+    try
     {
-      return;
-      int i = 0;
-      int j;
-      for (;;)
+      Bitmap localBitmap2 = BitmapFactory.decodeResource(localResources, this.k, localOptions);
+      localObject = localBitmap2;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError3)
+    {
+      do
       {
-        j = k;
-        if (i >= paramList.size()) {
-          break;
+        localOptions.inSampleSize *= 2;
+      } while (localResources == null);
+      try
+      {
+        localObject = BitmapFactory.decodeResource(localResources, this.k, localOptions);
+        return localObject;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError1)
+      {
+        localOptions.inSampleSize *= 2;
+        i = this.k;
+        try
+        {
+          Bitmap localBitmap1 = BitmapFactory.decodeResource(localResources, i, localOptions);
+          return localBitmap1;
         }
-        ((lrl)paramList.get(i)).a(this.jdField_a_of_type_JavaUtilList.size());
-        i += 1;
-      }
-      while (j < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        ((lrh)this.jdField_a_of_type_JavaUtilList.get(j)).a(paramList, paramLong);
-        j += 1;
+        catch (OutOfMemoryError localOutOfMemoryError2) {}
       }
     }
+    return localObject;
+    return null;
   }
   
-  public void c()
+  protected void a(Bitmap paramBitmap)
   {
-    Log.d(this.jdField_a_of_type_JavaLangString, "isolated: ");
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void d()
-  {
-    Log.d(this.jdField_a_of_type_JavaLangString, "init");
-    this.jdField_a_of_type_Lrn = new lrn();
-    this.jdField_a_of_type_Lrn.a = this;
-    a();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ((lrh)this.jdField_a_of_type_JavaUtilList.get(i)).a(this.jdField_a_of_type_Lrn);
-      i += 1;
+    if (!d()) {
+      paramBitmap.recycle();
     }
   }
   
-  public void e()
+  public int[] a(lqb paramlqb)
   {
-    Log.d(this.jdField_a_of_type_JavaLangString, "destroy");
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ((lrh)this.jdField_a_of_type_JavaUtilList.get(i)).c();
-      i += 1;
+    if (!c()) {
+      b(paramlqb);
     }
-    b();
+    return this.jdField_a_of_type_ArrayOfInt;
   }
 }
 

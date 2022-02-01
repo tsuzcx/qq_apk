@@ -1,8 +1,6 @@
 public abstract interface alju
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void b(int paramInt);
+  public abstract boolean a(aqmf paramaqmf);
 }
 
 

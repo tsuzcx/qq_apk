@@ -1,68 +1,43 @@
+import com.tencent.YTFace.model.FaceStatus;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.List;
 
 public class aohi
-  implements anui
 {
-  protected void a() {}
+  public int a;
+  public String a;
+  public ArrayList<aohj> a;
+  public FaceStatus[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
   
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean, List<Long> paramList) {}
-  
-  protected void a(boolean paramBoolean, List<Long> paramList, int paramInt) {}
-  
-  protected void b(boolean paramBoolean, List<Long> paramList) {}
-  
-  protected void b(boolean paramBoolean, List<Long> paramList, int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public static boolean a(aohi paramaohi)
   {
-    int j = 0;
-    int i;
-    if (paramObject != null)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramaohi != null)
     {
-      ArrayList localArrayList = new ArrayList();
-      if ((paramObject instanceof long[])) {
-        paramObject = (long[])paramObject;
-      }
-      Object[] arrayOfObject;
-      for (i = 0;; i = ((Integer)arrayOfObject[1]).intValue())
+      bool1 = bool2;
+      if (paramaohi.jdField_a_of_type_Int == 0)
       {
-        int k = paramObject.length;
-        while (j < k)
-        {
-          localArrayList.add(Long.valueOf(paramObject[j]));
-          j += 1;
+        bool1 = bool2;
+        if (paramaohi.jdField_b_of_type_Int == 0) {
+          bool1 = true;
         }
-        arrayOfObject = (Object[])paramObject;
-        paramObject = (long[])arrayOfObject[0];
       }
-      paramObject = localArrayList;
     }
-    for (;;)
-    {
-      switch (paramInt)
-      {
-      default: 
-        return;
-      case 1: 
-        a(paramBoolean);
-        return;
-      case 2: 
-        a(paramBoolean, paramObject);
-        a(paramBoolean, paramObject, i);
-        return;
-      case 3: 
-        b(paramBoolean, paramObject);
-        b(paramBoolean, paramObject, i);
-        return;
-      }
-      a();
-      return;
-      paramObject = null;
-      i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ARRspFaceResult", 2, "[ScanStarFace]isRecogSuccess result = " + bool1);
     }
+    return bool1;
+  }
+  
+  public String toString()
+  {
+    return "ARCloudRecogRspFaceResult{errCode_MQ=" + this.jdField_a_of_type_Int + ", errMsg_MQ='" + this.jdField_a_of_type_JavaLangString + '\'' + ", errCode_YT=" + this.jdField_b_of_type_Int + ", errMsg_YT=" + this.jdField_b_of_type_JavaLangString + ", time_ms_YT=" + this.jdField_c_of_type_Int + ", group_size_YT=" + this.d + ", sessionID='" + this.jdField_c_of_type_JavaLangString + '\'' + ", starInfoList=" + this.jdField_a_of_type_JavaUtilArrayList + ", faceStatus[]=" + this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus + '}';
   }
 }
 

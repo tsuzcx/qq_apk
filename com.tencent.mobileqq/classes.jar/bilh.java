@@ -1,7 +1,39 @@
+import com.tencent.qg.sdk.invoke.BaseJsModule;
+import com.tencent.qg.sdk.invoke.InvokeCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class bilh
-  implements anui
+  extends BaseJsModule
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  public String getModuleName()
+  {
+    return "mqq";
+  }
+  
+  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
+  {
+    boolean bool = false;
+    if ("getQQVersion".equals(paramString)) {
+      paramString = new JSONObject();
+    }
+    while (!"getQQVersionSync".equals(paramString)) {
+      try
+      {
+        paramString.putOpt("version", "8.4.8");
+        bool = paramInvokeCallback.exec(0, paramString);
+        return bool;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        for (;;)
+        {
+          paramJSONObject.printStackTrace();
+        }
+      }
+    }
+    return false;
+  }
 }
 
 

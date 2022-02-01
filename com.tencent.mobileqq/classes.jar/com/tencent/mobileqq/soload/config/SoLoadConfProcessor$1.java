@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.soload.config;
 
-import bdhg;
+import bbzv;
 
 public class SoLoadConfProcessor$1
   implements Runnable
 {
-  public SoLoadConfProcessor$1(bdhg parambdhg) {}
+  public SoLoadConfProcessor$1(bbzv parambbzv) {}
   
   public void run()
   {
-    bdhg.a(this.this$0, -1);
+    bbzv.a(this.this$0, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.soload.config.SoLoadConfProcessor.1
  * JD-Core Version:    0.7.0.1
  */

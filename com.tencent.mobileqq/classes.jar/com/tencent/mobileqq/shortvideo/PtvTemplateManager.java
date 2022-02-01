@@ -4,25 +4,25 @@ import android.annotation.TargetApi;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import android.text.TextUtils;
-import antf;
-import bcwl;
-import bcwm;
-import bcwn;
-import bcwo;
-import bdax;
-import beum;
-import beuo;
-import bevn;
-import bezs;
-import bezv;
-import bezw;
-import bhmi;
-import bhnv;
+import bbpw;
+import bbpx;
+import bbpy;
+import bbpz;
+import bbub;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.ptvfilter.material.QQTemplateParser;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.transfile.predownload.RunnableTask;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 import java.io.File;
@@ -35,7 +35,7 @@ import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import nof;
+import npo;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -54,7 +54,7 @@ public class PtvTemplateManager
   private static boolean g;
   public static String h;
   public static String i;
-  public bcwo a;
+  public bbpz a;
   public PtvTemplateManager.PtvTemplateInfo a;
   public ArrayList<PtvTemplateManager.PtvTemplateInfo> a;
   Object b;
@@ -96,14 +96,14 @@ public class PtvTemplateManager
       break label62;
     }
     if (j != 0) {}
-    for (localFile = new File(antf.ba);; localFile = BaseApplicationImpl.getApplication().getCacheDir())
+    for (localFile = new File(AppConstants.SDCARD_PATH);; localFile = BaseApplicationImpl.getApplication().getCacheDir())
     {
       jdField_a_of_type_JavaIoFile = new File(localFile, "ptv_template");
       jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaIoFile.getPath() + File.separator + jdField_a_of_type_JavaLangString + File.separator;
       jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaIoFile.getPath() + File.separator + jdField_b_of_type_JavaLangString;
       jdField_b_of_type_JavaIoFile = new File(localFile, "doodle_template");
       jdField_c_of_type_JavaLangString = jdField_b_of_type_JavaIoFile.getPath() + File.separator + jdField_c_of_type_JavaLangString + File.separator;
-      jdField_g_of_type_Boolean = bdax.b(bdax.E);
+      jdField_g_of_type_Boolean = bbub.b(bbub.E);
       return;
     }
   }
@@ -133,7 +133,7 @@ public class PtvTemplateManager
     //   17: astore_0
     //   18: aload_0
     //   19: ldc 173
-    //   21: invokestatic 178	bhhq:a	(Lorg/json/JSONObject;Ljava/lang/Class;)Ljava/lang/Object;
+    //   21: invokestatic 178	bfra:a	(Lorg/json/JSONObject;Ljava/lang/Class;)Ljava/lang/Object;
     //   24: checkcast 173	com/tencent/mobileqq/shortvideo/PtvTemplateManager$PtvTemplateInfo
     //   27: astore_3
     //   28: aload_0
@@ -174,7 +174,7 @@ public class PtvTemplateManager
     //   89: iload_1
     //   90: invokevirtual 203	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
     //   93: ldc 205
-    //   95: invokestatic 178	bhhq:a	(Lorg/json/JSONObject;Ljava/lang/Class;)Ljava/lang/Object;
+    //   95: invokestatic 178	bfra:a	(Lorg/json/JSONObject;Ljava/lang/Class;)Ljava/lang/Object;
     //   98: checkcast 205	com/tencent/mobileqq/shortvideo/PtvTemplateManager$DoodleInfo
     //   101: astore 4
     //   103: aload 4
@@ -270,7 +270,7 @@ public class PtvTemplateManager
   
   public static String a(File paramFile)
   {
-    paramFile = bhmi.a(paramFile);
+    paramFile = FileUtils.fileToBytes(paramFile);
     if ((paramFile == null) || (paramFile.length <= 0)) {
       return null;
     }
@@ -401,8 +401,8 @@ public class PtvTemplateManager
   
   private void d()
   {
-    if (this.jdField_a_of_type_Bcwo != null) {
-      this.jdField_a_of_type_Bcwo.k();
+    if (this.jdField_a_of_type_Bbpz != null) {
+      this.jdField_a_of_type_Bbpz.f();
     }
   }
   
@@ -547,9 +547,9 @@ public class PtvTemplateManager
     return paramAppInterface;
   }
   
-  public void a(bcwo parambcwo)
+  public void a(bbpz parambbpz)
   {
-    this.jdField_a_of_type_Bcwo = parambcwo;
+    this.jdField_a_of_type_Bbpz = parambbpz;
   }
   
   @TargetApi(9)
@@ -575,7 +575,7 @@ public class PtvTemplateManager
     ThreadManager.postImmediately((Runnable)localObject, null, false);
   }
   
-  public void a(AppInterface paramAppInterface, bcwm parambcwm, boolean paramBoolean)
+  public void a(AppInterface paramAppInterface, bbpx parambbpx, boolean paramBoolean)
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo != null) && (!this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.doodleInfos.isEmpty()))
     {
@@ -597,34 +597,34 @@ public class PtvTemplateManager
     } while (!QLog.isColorLevel());
     QLog.d("Doodle_Strokes_PtvTemplateManager", 2, "initLocalDoodleInfo config file not exist.");
     return;
-    parambcwm = new PtvTemplateManager.12(this, localFile, paramBoolean, parambcwm, paramAppInterface instanceof QQAppInterface);
+    parambbpx = new PtvTemplateManager.12(this, localFile, paramBoolean, parambbpx, paramAppInterface instanceof QQAppInterface);
     if (QLog.isDevelopLevel()) {
-      QLog.d("Doodle_Strokes_PtvTemplateManager", 4, String.format("initLocalDoodleInfo async, runnable[%s]", new Object[] { Integer.valueOf(parambcwm.hashCode()) }));
+      QLog.d("Doodle_Strokes_PtvTemplateManager", 4, String.format("initLocalDoodleInfo async, runnable[%s]", new Object[] { Integer.valueOf(parambbpx.hashCode()) }));
     }
     if ((paramAppInterface instanceof QQAppInterface))
     {
-      ThreadManager.getFileThreadHandler().postDelayed(parambcwm, jdField_a_of_type_JavaLangLong.longValue());
+      ThreadManager.getFileThreadHandler().postDelayed(parambbpx, jdField_a_of_type_JavaLangLong.longValue());
       return;
     }
-    ThreadManager.postImmediately(parambcwm, null, false);
+    ThreadManager.postImmediately(parambbpx, null, false);
   }
   
-  public void a(AppInterface paramAppInterface, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, bcwn parambcwn)
+  public void a(AppInterface paramAppInterface, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, bbpy parambbpy)
   {
     if (paramPtvTemplateInfo == null) {}
     for (;;)
     {
       return;
       paramPtvTemplateInfo.startDownloadTime = System.currentTimeMillis();
-      beum localbeum = new beum();
-      localbeum.jdField_a_of_type_Beuq = new bcwl(this, paramPtvTemplateInfo, parambcwn);
-      localbeum.jdField_a_of_type_JavaLangString = paramPtvTemplateInfo.resurl;
-      localbeum.jdField_a_of_type_Int = 0;
-      localbeum.jdField_c_of_type_JavaLangString = new File(jdField_a_of_type_JavaIoFile, paramPtvTemplateInfo.name).getPath();
-      localbeum.b = bhnv.a(bevn.a().a());
+      HttpNetReq localHttpNetReq = new HttpNetReq();
+      localHttpNetReq.mCallback = new bbpw(this, paramPtvTemplateInfo, parambbpy);
+      localHttpNetReq.mReqUrl = paramPtvTemplateInfo.resurl;
+      localHttpNetReq.mHttpMethod = 0;
+      localHttpNetReq.mOutPath = new File(jdField_a_of_type_JavaIoFile, paramPtvTemplateInfo.name).getPath();
+      localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
       try
       {
-        paramAppInterface.getNetEngine(0).a(localbeum);
+        paramAppInterface.getNetEngine(0).sendReq(localHttpNetReq);
         if (!QLog.isColorLevel()) {
           continue;
         }
@@ -788,7 +788,7 @@ public class PtvTemplateManager
         else {
           try
           {
-            localObject = bhmi.c(((File)localObject).getPath());
+            localObject = FileUtils.calcMd5(((File)localObject).getPath());
             if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equalsIgnoreCase(paramDoodleInfo.doodleMd5)))
             {
               if ((!paramBoolean) || (new File(jdField_c_of_type_JavaLangString + paramDoodleInfo.doodleName + File.separator, "params.json").exists())) {
@@ -804,7 +804,7 @@ public class PtvTemplateManager
           {
             try
             {
-              nof.a(new File(jdField_b_of_type_JavaIoFile, paramDoodleInfo.doodleName), jdField_c_of_type_JavaLangString);
+              npo.a(new File(jdField_b_of_type_JavaIoFile, paramDoodleInfo.doodleName), jdField_c_of_type_JavaLangString);
               if (QLog.isColorLevel()) {
                 QLog.d("Doodle_Strokes_PtvTemplateManager", 2, "isDoodleTemplateUsable|unZipFile->>" + paramDoodleInfo.doodleName);
               }
@@ -844,19 +844,19 @@ public class PtvTemplateManager
     //   27: invokespecial 96	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   30: astore_2
     //   31: aload_2
-    //   32: invokevirtual 331	java/io/File:exists	()Z
+    //   32: invokevirtual 332	java/io/File:exists	()Z
     //   35: ifeq -21 -> 14
     //   38: aload_2
     //   39: invokevirtual 104	java/io/File:getPath	()Ljava/lang/String;
-    //   42: invokestatic 657	bhmi:c	(Ljava/lang/String;)Ljava/lang/String;
+    //   42: invokestatic 669	com/tencent/mobileqq/utils/FileUtils:calcMd5	(Ljava/lang/String;)Ljava/lang/String;
     //   45: astore_2
     //   46: aload_2
     //   47: invokestatic 168	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   50: ifne -36 -> 14
     //   53: aload_2
     //   54: aload_1
-    //   55: getfield 679	com/tencent/mobileqq/shortvideo/PtvTemplateManager$PtvTemplateInfo:md5	Ljava/lang/String;
-    //   58: invokevirtual 663	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   55: getfield 691	com/tencent/mobileqq/shortvideo/PtvTemplateManager$PtvTemplateInfo:md5	Ljava/lang/String;
+    //   58: invokevirtual 675	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   61: ifeq -47 -> 14
     //   64: new 100	java/lang/StringBuilder
     //   67: dup
@@ -873,20 +873,20 @@ public class PtvTemplateManager
     //   94: new 83	java/io/File
     //   97: dup
     //   98: aload_3
-    //   99: ldc_w 665
-    //   102: invokespecial 666	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   99: ldc_w 677
+    //   102: invokespecial 678	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   105: astore_2
     //   106: new 83	java/io/File
     //   109: dup
     //   110: aload_3
-    //   111: ldc_w 681
-    //   114: invokespecial 666	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   111: ldc_w 693
+    //   114: invokespecial 678	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   117: astore_3
     //   118: aload_2
-    //   119: invokevirtual 331	java/io/File:exists	()Z
+    //   119: invokevirtual 332	java/io/File:exists	()Z
     //   122: ifne +58 -> 180
     //   125: aload_3
-    //   126: invokevirtual 331	java/io/File:exists	()Z
+    //   126: invokevirtual 332	java/io/File:exists	()Z
     //   129: ifne +51 -> 180
     //   132: new 83	java/io/File
     //   135: dup
@@ -895,21 +895,21 @@ public class PtvTemplateManager
     //   140: getfield 400	com/tencent/mobileqq/shortvideo/PtvTemplateManager$PtvTemplateInfo:name	Ljava/lang/String;
     //   143: invokespecial 96	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   146: getstatic 42	com/tencent/mobileqq/shortvideo/PtvTemplateManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   149: invokestatic 672	nof:a	(Ljava/io/File;Ljava/lang/String;)V
+    //   149: invokestatic 684	npo:a	(Ljava/io/File;Ljava/lang/String;)V
     //   152: iconst_1
     //   153: ireturn
     //   154: astore_1
     //   155: invokestatic 214	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   158: ifeq -144 -> 14
     //   161: aload_1
-    //   162: invokevirtual 675	java/lang/UnsatisfiedLinkError:printStackTrace	()V
+    //   162: invokevirtual 687	java/lang/UnsatisfiedLinkError:printStackTrace	()V
     //   165: iconst_0
     //   166: ireturn
     //   167: astore_1
     //   168: invokestatic 214	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   171: ifeq -157 -> 14
     //   174: aload_1
-    //   175: invokevirtual 574	java/lang/Exception:printStackTrace	()V
+    //   175: invokevirtual 585	java/lang/Exception:printStackTrace	()V
     //   178: iconst_0
     //   179: ireturn
     //   180: iconst_1
@@ -993,11 +993,11 @@ public class PtvTemplateManager
         if ((localDoodleInfo != null) && (!TextUtils.isEmpty(localDoodleInfo.doodleUrl)) && (!localDoodleInfo.doodleUsable))
         {
           Object localObject = new PtvTemplateManager.15(this, localDoodleInfo);
-          bezv localbezv = (bezv)localQQAppInterface.getManager(193);
-          if (localbezv.a())
+          PreDownloadController localPreDownloadController = (PreDownloadController)localQQAppInterface.getManager(193);
+          if (localPreDownloadController.isEnable())
           {
-            localObject = new bezw(localQQAppInterface, "qq_doodle_res", (Runnable)localObject, 4000L);
-            localbezv.a(10020, null, localDoodleInfo.doodleName, 0, localDoodleInfo.doodleUrl, new File(jdField_b_of_type_JavaIoFile, localDoodleInfo.doodleName).getPath(), 2, 0, true, (bezs)localObject);
+            localObject = new RunnableTask(localQQAppInterface, "qq_doodle_res", (Runnable)localObject, 4000L);
+            localPreDownloadController.requestPreDownload(10020, null, localDoodleInfo.doodleName, 0, localDoodleInfo.doodleUrl, new File(jdField_b_of_type_JavaIoFile, localDoodleInfo.doodleName).getPath(), 2, 0, true, (AbsPreDownloadTask)localObject);
           }
           else
           {
@@ -1109,7 +1109,7 @@ public class PtvTemplateManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager
  * JD-Core Version:    0.7.0.1
  */

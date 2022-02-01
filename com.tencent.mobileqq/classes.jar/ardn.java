@@ -1,110 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.theme.diy.ResData;
+import java.lang.ref.WeakReference;
 
-public class ardn
-  extends arac<ardo>
+class ardn
+  implements bdbx
 {
-  public static boolean a;
-  private static boolean b;
+  ardn(arcu paramarcu) {}
   
-  public static boolean a()
+  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
   {
-    if (b) {
-      return a;
-    }
-    b = true;
-    a = b();
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean isSwitchOpened = " + a);
-    }
-    return a;
-  }
-  
-  private static boolean b()
-  {
-    ardo localardo2 = (ardo)aran.a().a(531);
-    ardo localardo1 = localardo2;
-    if (localardo2 == null)
+    paramResData = (MessengerService)this.a.a.get();
+    Bundle localBundle;
+    if (paramResData != null)
     {
-      localardo2 = new ardo();
-      localardo1 = localardo2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean = null, general new bean, so switch default");
-        localardo1 = localardo2;
+      localBundle = new Bundle();
+      localBundle.putString("themeId", paramBundle.getString("themeId"));
+      if (paramInt2 != 4) {
+        break label73;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeConfigProcessor", 2, "DarkModeConfigBean switch isOpened = " + localardo1);
-    }
-    return localardo1.a();
-  }
-  
-  @NonNull
-  public ardo a(int paramInt)
-  {
-    return new ardo();
-  }
-  
-  @Nullable
-  public ardo a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    label73:
+    for (paramInt1 = 0;; paramInt1 = -2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeConfigProcessor", 2, "onParsed : " + paramArrayOfaraj[0].a);
-      }
-      return ardo.a(paramArrayOfaraj[0].a);
+      localBundle.putInt("themeStatus", paramInt1);
+      paramBundle.putBundle("response", localBundle);
+      paramResData.a(paramBundle);
+      return 1;
     }
-    return new ardo();
-  }
-  
-  public void a(ardo paramardo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeConfigProcessor", 2, "onUpdate : " + paramardo);
-    }
-    if (paramardo != null) {
-      a = paramardo.a();
-    }
-  }
-  
-  public Class<ardo> clazz()
-  {
-    return ardo.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 531;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardn
  * JD-Core Version:    0.7.0.1
  */

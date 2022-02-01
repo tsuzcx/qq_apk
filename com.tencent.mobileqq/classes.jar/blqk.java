@@ -1,12 +1,11 @@
-import android.graphics.Canvas;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-public abstract interface blqk
+public abstract interface blqk<T extends RecyclerView.ViewHolder>
 {
-  public abstract void a_(Canvas paramCanvas);
+  public abstract void a(@Nullable T paramT, int paramInt);
   
-  public abstract int getHeight();
-  
-  public abstract int getWidth();
+  public abstract void a(@Nullable T paramT, boolean paramBoolean);
 }
 
 

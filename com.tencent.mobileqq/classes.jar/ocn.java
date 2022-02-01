@@ -1,8 +1,17 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
-public abstract interface ocn<T>
+public class ocn
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, boolean paramBoolean, T paramT, Bundle paramBundle);
+  public ocn(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
+  }
 }
 
 

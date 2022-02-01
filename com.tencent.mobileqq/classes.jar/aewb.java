@@ -1,18 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.Leba.42;
+import Wallet.AcsMsg;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class aewb
-  implements DialogInterface.OnClickListener
 {
-  public aewb(Leba.42 param42) {}
+  public long a;
+  public AcsMsg a;
+  public MessageRecord a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String toString()
   {
-    this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.b, true).apply();
-    this.a.jdField_a_of_type_Aewe.a();
+    return "QQReminderOrderModel{messageRecord=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord + ", acsMsg=" + this.jdField_a_of_type_WalletAcsMsg + ", orderTime=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.widget.media;
 
-import bhsr;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.utils.StringUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,7 +16,7 @@ class MiniAppCamera$1
   
   public void onGetPhoto(String paramString)
   {
-    if (bhsr.a(paramString))
+    if (StringUtil.isEmpty(paramString))
     {
       paramString = ApiUtil.wrapCallbackFail(this.val$event, null);
       if (paramString != null) {}

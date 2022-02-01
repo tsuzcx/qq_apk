@@ -1,98 +1,10 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-class bjsb
-  implements DownloadListener
+public abstract interface bjsb
 {
-  bjsb(bjrz parambjrz) {}
-  
-  public void installSucceed(String paramString1, String paramString2)
-  {
-    Iterator localIterator = bjrz.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bjsc)localIterator.next()).installSucceed(paramString1, paramString2);
-    }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    Iterator localIterator = bjrz.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bjsc)localIterator.next()).onDownloadCancel(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    Iterator localIterator = bjrz.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bjsc)localIterator.next()).onDownloadError(paramDownloadInfo, paramInt1, paramString, paramInt2);
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if (awbx.a(paramDownloadInfo.l, paramDownloadInfo.c, paramDownloadInfo.e))
-    {
-      if (!awbx.b().equals(paramDownloadInfo.l))
-      {
-        awbx.a(paramDownloadInfo.l);
-        paramDownloadInfo.l = awbx.b();
-      }
-      bjwq.a().e(paramDownloadInfo);
-    }
-    Iterator localIterator = bjrz.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bjsc)localIterator.next()).onDownloadFinish(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    Iterator localIterator = bjrz.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bjsc)localIterator.next()).onDownloadPause(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    Iterator localIterator = bjrz.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bjsc)localIterator.next()).onDownloadUpdate(paramList);
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    Iterator localIterator = bjrz.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bjsc)localIterator.next()).onDownloadWait(paramDownloadInfo);
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    Iterator localIterator = bjrz.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bjsc)localIterator.next()).packageReplaced(paramString1, paramString2);
-    }
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    Iterator localIterator = bjrz.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bjsc)localIterator.next()).uninstallSucceed(paramString1, paramString2);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjsb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,174 +1,90 @@
-import android.content.Intent;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.ArrowKeyMovementMethod;
-import android.text.style.ImageSpan;
-import android.view.MotionEvent;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.ilive_feeds_read.ReadNearUserFeedsRsp;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
-import mqq.util.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
-public class axex
-  extends ArrowKeyMovementMethod
-  implements blqz
+final class axex
+  implements awqs
 {
-  private static axex jdField_a_of_type_Axex;
-  private int jdField_a_of_type_Int;
-  private Class jdField_a_of_type_JavaLangClass;
-  private WeakReference<aguk> jdField_a_of_type_MqqUtilWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private WeakReference<BaseChatPie> jdField_b_of_type_MqqUtilWeakReference;
-  private int c;
+  axex(int paramInt, axfd paramaxfd) {}
   
-  public static axex a(int paramInt, Class<? extends ImageSpan> paramClass)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (jdField_a_of_type_Axex == null) {
-      jdField_a_of_type_Axex = new axex();
+    boolean bool3 = false;
+    bool2 = false;
+    bool1 = true;
+    paramBundle = new ArrayList();
+    int i = this.jdField_a_of_type_Int;
+    ilive_feeds_read.ReadNearUserFeedsRsp localReadNearUserFeedsRsp;
+    if (paramInt == 0) {
+      localReadNearUserFeedsRsp = new ilive_feeds_read.ReadNearUserFeedsRsp();
     }
-    jdField_a_of_type_Axex.c = paramInt;
-    jdField_a_of_type_Axex.jdField_a_of_type_JavaLangClass = paramClass;
-    return jdField_a_of_type_Axex;
-  }
-  
-  public static void a()
-  {
-    if (jdField_a_of_type_Axex != null) {
-      jdField_a_of_type_Axex.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public static void a(aguk paramaguk)
-  {
-    if (jdField_a_of_type_Axex != null)
+    for (;;)
     {
-      if (paramaguk != null) {
-        jdField_a_of_type_Axex.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramaguk);
-      }
-    }
-    else {
-      return;
-    }
-    jdField_a_of_type_Axex.jdField_a_of_type_MqqUtilWeakReference = null;
-  }
-  
-  public static void a(BaseChatPie paramBaseChatPie)
-  {
-    if (jdField_a_of_type_Axex != null)
-    {
-      if (paramBaseChatPie != null) {
-        jdField_a_of_type_Axex.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(paramBaseChatPie);
-      }
-    }
-    else {
-      return;
-    }
-    jdField_a_of_type_Axex.jdField_b_of_type_MqqUtilWeakReference = null;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_Int = ((int)paramMotionEvent.getX());
-      this.jdField_b_of_type_Int = ((int)paramMotionEvent.getY());
-    }
-    int j;
-    int m;
-    int k;
-    Object[] arrayOfObject;
-    int n;
-    int i1;
-    boolean bool;
-    if (paramMotionEvent.getAction() == 1)
-    {
-      i = (int)paramMotionEvent.getX();
-      j = (int)paramMotionEvent.getY();
-      if ((Math.abs(this.jdField_a_of_type_Int - i) < 10) && (Math.abs(this.jdField_b_of_type_Int - j) < 10))
+      try
       {
-        m = paramTextView.getTotalPaddingLeft();
-        k = paramTextView.getTotalPaddingTop();
-        i = i - m + paramTextView.getScrollX();
-        j = j - k + paramTextView.getScrollY();
-        Layout localLayout = paramTextView.getLayout();
-        m = localLayout.getLineForVertical(j);
-        k = localLayout.getOffsetForHorizontal(m, i);
-        arrayOfObject = paramSpannable.getSpans(k, k, this.jdField_a_of_type_JavaLangClass);
-        if (arrayOfObject.length > 0)
+        localReadNearUserFeedsRsp.mergeFrom(paramArrayOfByte);
+        if (!localReadNearUserFeedsRsp.result.has())
         {
-          Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(arrayOfObject[0]), paramSpannable.getSpanEnd(arrayOfObject[0]));
-          paramSpannable = (BaseChatPie)this.jdField_b_of_type_MqqUtilWeakReference.get();
-          if ((!(arrayOfObject[0] instanceof ImageSpan)) || (paramSpannable == null)) {
-            return false;
+          QLog.i("NearbyMomentProtocol", 1, "getMomentList, don't has result");
+          paramInt = i;
+          if (this.jdField_a_of_type_Axfd != null) {
+            this.jdField_a_of_type_Axfd.a(bool2, paramBundle, bool1, paramInt);
           }
-          k = localLayout.getLineTop(m);
-          m = localLayout.getLineBottom(m);
-          n = paramTextView.getTotalPaddingLeft();
-          paramMotionEvent = ((ImageSpan)arrayOfObject[0]).getDrawable().getBounds();
-          i1 = paramMotionEvent.width();
-          if ((i < this.c) || (i > i1 + this.c)) {
-            return false;
-          }
-          if ((j < k) || (j > m)) {
-            return false;
-          }
-          i1 = m - paramMotionEvent.height() - paramTextView.getScrollY() + paramTextView.getTotalPaddingTop() + LiuHaiUtils.a(BaseApplicationImpl.getContext());
-          if ((this.jdField_a_of_type_MqqUtilWeakReference != null) && (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) && (((aguk)this.jdField_a_of_type_MqqUtilWeakReference.get()).a()))
-          {
-            bool = true;
-            if (bool) {
-              break label730;
-            }
-            j = bhgr.a(BaseApplicationImpl.getApplication()).jdField_b_of_type_Int;
+          return;
+        }
+        if (localReadNearUserFeedsRsp.result.get() == 0) {
+          if (QLog.isColorLevel()) {
+            QLog.i("NearbyMomentProtocol", 2, "endFlag=" + localReadNearUserFeedsRsp.end_flag.get() + ",size=" + localReadNearUserFeedsRsp.infos.size() + ",total=" + localReadNearUserFeedsRsp.total.get());
           }
         }
       }
-    }
-    for (int i = agej.a(50.0F, BaseApplicationImpl.getApplication().getResources());; i = 0)
-    {
-      if (bool) {}
-      for (paramTextView = new Rect(paramMotionEvent.left + n, paramMotionEvent.top + i1, paramMotionEvent.left + n + paramMotionEvent.width(), i1 + (paramMotionEvent.top + paramMotionEvent.height()));; paramTextView = new Rect(paramMotionEvent.left + n, j - paramMotionEvent.height() - i, paramMotionEvent.left + n + paramMotionEvent.width(), j - i))
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("LinkMovementMethodExt", 2, "fullState:" + bool + ", top:" + k + ", bottom:" + m + ",padLeft:" + n + ", screenH:" + j + ", panelH:" + i + ", bounds:" + paramMotionEvent + ", rect:" + paramTextView);
-        }
-        if (paramSpannable.a != null)
-        {
-          paramMotionEvent = new Intent(paramSpannable.a, NewPhotoPreviewActivity.class);
-          paramMotionEvent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", ((ImageSpan)arrayOfObject[0]).getSource());
-          paramMotionEvent.putExtra("input_full_screen_click", true);
-          paramMotionEvent.putExtra("PhotoConst.SHOW_ALBUM", false);
-          paramMotionEvent.putExtra("PhotoConst.SHOULD_SEND_RAW_PHOTO", false);
-          paramMotionEvent.putExtra("PhotoConst.SHOW_MAGIC_USE_PASTER", false);
-          paramMotionEvent.putExtra("showFlashPic", false);
-          paramMotionEvent.putExtra("KEY_THUMBNAL_BOUND", paramTextView);
-          paramMotionEvent.putExtra("enter_from", 1);
-          paramMotionEvent.addFlags(603979776);
-          paramSpannable.a.startActivity(paramMotionEvent);
-          paramSpannable.aJ();
-        }
-        this.jdField_a_of_type_Boolean = false;
-        return true;
-        bool = false;
-        break;
+        bool2 = false;
+        bool1 = true;
       }
-      this.jdField_a_of_type_Boolean = true;
-      return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
-      label730:
-      j = 0;
+      try
+      {
+        paramBundle.addAll(localReadNearUserFeedsRsp.infos.get());
+        paramInt = localReadNearUserFeedsRsp.end_flag.get();
+        bool1 = bool3;
+        if (paramInt == 1) {
+          bool1 = true;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          bool2 = true;
+          bool1 = true;
+        }
+      }
+      try
+      {
+        paramInt = localReadNearUserFeedsRsp.pos.get();
+        bool2 = true;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        bool2 = true;
+        break label281;
+      }
+      QLog.i("NearbyMomentProtocol", 1, "getMomentList error, result =" + localReadNearUserFeedsRsp.result.get() + ",errMsg=" + localReadNearUserFeedsRsp.err_msg.get());
+      paramInt = i;
+      continue;
+      label281:
+      QLog.i("NearbyMomentProtocol", 1, "getMomentList, e=" + paramArrayOfByte.toString());
+      paramInt = i;
+      continue;
+      QLog.i("NearbyMomentProtocol", 1, "getMomentList, 0xada_0 errorCode=" + paramInt);
+      paramInt = i;
     }
   }
 }

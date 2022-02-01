@@ -12,6 +12,8 @@ public final class TPReportKeys$PlayerStep
   public static final String PLAYER_CGI_PROXY_IP = "ip";
   public static final String PLAYER_END_TIME = "etime";
   public static final String PLAYER_ERROR_CODE = "code";
+  public static final String PLAYER_FIRST_OPEN_TIME = "fileopenedtime";
+  public static final String PLAYER_FIRST_PACKET_READ_TIME = "firstpacketreadtime";
   public static final String PLAYER_FORMAT = "format";
   public static final String PLAYER_PLAY_DURATION = "playduration";
   public static final String PLAYER_PRESENT_TIME = "ptime";

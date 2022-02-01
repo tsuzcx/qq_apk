@@ -1,11 +1,14 @@
 package com.tencent.qqmini.minigame.plugins;
 
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import androidx.annotation.VisibleForTesting;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
 import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.utils.NativeBuffer;
 import com.tencent.qqmini.sdk.launcher.core.IJsService;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
@@ -13,6 +16,7 @@ import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
+import com.tencent.qqmini.sdk.utils.DomainUtil;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -60,6 +64,56 @@ public class UDPJsPlugin
     return StorageUtil.getPreference().getBoolean(paramString + "_debug", false);
   }
   
+  @Nullable
+  private InetAddress getInetAddress(@NonNull String paramString)
+  {
+    try
+    {
+      InetAddress localInetAddress = InetAddress.getByName(paramString);
+      return localInetAddress;
+    }
+    catch (UnknownHostException localUnknownHostException)
+    {
+      QMLog.d("UDPPlugin", "getInetAddress address:" + paramString, localUnknownHostException);
+      return null;
+    }
+    catch (SecurityException localSecurityException)
+    {
+      for (;;)
+      {
+        QMLog.d("UDPPlugin", "getInetAddress address:" + paramString, localSecurityException);
+      }
+    }
+  }
+  
+  @Nullable
+  private InetAddress getInetAddressByDomain(@NonNull String paramString, int paramInt, boolean paramBoolean)
+  {
+    String str = paramString + ":" + paramInt;
+    if (DomainUtil.isDomainValid(getMiniAppInfo(), paramBoolean, str, 5)) {
+      return getInetAddress(paramString);
+    }
+    return null;
+  }
+  
+  @Nullable
+  private InetAddress getInetAddressByIp(@NonNull String paramString, boolean paramBoolean)
+  {
+    InetAddress localInetAddress = getInetAddress(paramString);
+    if (localInetAddress == null) {}
+    do
+    {
+      do
+      {
+        return null;
+      } while ((localInetAddress.isLoopbackAddress()) || (localInetAddress.isAnyLocalAddress()) || (localInetAddress.isMulticastAddress()));
+      if (localInetAddress.isSiteLocalAddress()) {
+        return localInetAddress;
+      }
+    } while ((!paramBoolean) && (!isUdpIpValid(paramString)));
+    return localInetAddress;
+  }
+  
   private void handleTaskOperation(IJsService paramIJsService, JSONObject paramJSONObject1, JSONObject paramJSONObject2, String paramString, int paramInt, UDPJsPlugin.UDPTask paramUDPTask)
   {
     if ("bind".equals(paramString)) {
@@ -75,75 +129,73 @@ public class UDPJsPlugin
         return;
       }
     } while (!"send".equals(paramString));
-    performSend(paramIJsService, paramJSONObject1, paramJSONObject2, paramUDPTask);
+    ThreadManager.executeOnNetworkIOThreadPool(new UDPJsPlugin.1(this, paramIJsService, paramJSONObject2, paramUDPTask, paramInt));
   }
   
-  private void performSend(IJsService paramIJsService, JSONObject paramJSONObject1, JSONObject paramJSONObject2, UDPJsPlugin.UDPTask paramUDPTask)
+  private void performSend(IJsService paramIJsService, JSONObject paramJSONObject, UDPJsPlugin.UDPTask paramUDPTask)
   {
+    int j = 0;
     Object localObject2 = null;
-    String str = paramJSONObject2.optString("address");
-    int n = paramJSONObject2.optInt("port", -1);
-    if (!paramJSONObject2.isNull("message")) {}
-    for (Object localObject1 = paramJSONObject2.optString("message", null);; localObject1 = null)
+    String str = paramJSONObject.optString("address");
+    int n = paramJSONObject.optInt("port", -1);
+    boolean bool = paramJSONObject.optBoolean("__skipDomainCheck__", false);
+    if (!paramJSONObject.isNull("message")) {}
+    for (Object localObject1 = paramJSONObject.optString("message", null);; localObject1 = null)
     {
-      int j;
       int i;
       if (localObject1 != null)
       {
         paramIJsService = ((String)localObject1).getBytes("UTF-8");
-        j = 0;
         i = paramIJsService.length;
       }
-      for (;;)
+      while (n < 0)
       {
-        paramJSONObject2 = validAddress(str);
-        if (paramJSONObject2 != null) {
-          break;
-        }
-        paramJSONObject1.put("errMsg", "invalid address :[" + str + "]");
-        QMLog.d("UDPPlugin", "invalid address :[" + str + "]");
+        callbackError("invalid port", paramUDPTask.taskId);
         return;
-        localObject1 = NativeBuffer.unpackNativeBuffer(paramIJsService, paramJSONObject2, "message");
-        int k = paramJSONObject2.optInt("offset");
-        int m = paramJSONObject2.optInt("length", -1);
+        localObject1 = NativeBuffer.unpackNativeBuffer(paramIJsService, paramJSONObject, "message");
+        int k = paramJSONObject.optInt("offset");
+        int m = paramJSONObject.optInt("length", -1);
         i = m;
         j = k;
         paramIJsService = localObject2;
         if (localObject1 != null)
         {
-          paramJSONObject2 = ((NativeBuffer)localObject1).buf;
+          paramJSONObject = ((NativeBuffer)localObject1).buf;
           i = m;
           j = k;
-          paramIJsService = paramJSONObject2;
+          paramIJsService = paramJSONObject;
           if (m == -1)
           {
-            i = paramJSONObject2.length;
+            i = paramJSONObject.length;
             j = k;
-            paramIJsService = paramJSONObject2;
+            paramIJsService = paramJSONObject;
           }
         }
       }
-      if (n < 0)
+      paramJSONObject = validAddress(str, n, bool);
+      if (paramJSONObject == null)
       {
-        paramJSONObject1.put("errMsg", "invalid port");
+        paramIJsService = "invalid address :[" + str + "]";
+        QMLog.d("UDPPlugin", paramIJsService);
+        callbackError(paramIJsService, paramUDPTask.taskId);
         return;
       }
       if (paramIJsService == null)
       {
-        paramJSONObject1.put("errMsg", "undefined message");
+        callbackError("undefined message", paramUDPTask.taskId);
         return;
       }
       if ((j < 0) || (j >= i))
       {
-        paramJSONObject1.put("errMsg", "invalid offset");
+        callbackError("invalid offset", paramUDPTask.taskId);
         return;
       }
       if (i > paramIJsService.length)
       {
-        paramJSONObject1.put("errMsg", "invalid length");
+        callbackError("invalid length", paramUDPTask.taskId);
         return;
       }
-      paramUDPTask.send(paramIJsService, j, i, new InetSocketAddress(paramJSONObject2, n));
+      paramUDPTask.send(paramIJsService, j, i, new InetSocketAddress(paramJSONObject, n));
       return;
     }
   }
@@ -261,35 +313,17 @@ public class UDPJsPlugin
     }
   }
   
+  @Nullable
   @VisibleForTesting
-  public InetAddress validAddress(String paramString)
+  public InetAddress validAddress(String paramString, int paramInt, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      if ((IPV4_ADDRESS_REGEX.matcher(paramString).matches()) || (IPV6_ADDRESS_REGEX.matcher(paramString).matches())) {
-        try
-        {
-          InetAddress localInetAddress = InetAddress.getByName(paramString);
-          if ((!localInetAddress.isLoopbackAddress()) && (!localInetAddress.isAnyLocalAddress()) && (!localInetAddress.isMulticastAddress()))
-          {
-            if (localInetAddress.isSiteLocalAddress()) {
-              return localInetAddress;
-            }
-            boolean bool = isUdpIpValid(paramString);
-            if (bool) {
-              return localInetAddress;
-            }
-          }
-        }
-        catch (UnknownHostException localUnknownHostException)
-        {
-          QMLog.d("UDPPlugin", "valid address [" + paramString + "]", localUnknownHostException);
-        }
-      }
     }
-    return null;
+    if ((IPV4_ADDRESS_REGEX.matcher(paramString).matches()) || (IPV6_ADDRESS_REGEX.matcher(paramString).matches())) {
+      return getInetAddressByIp(paramString, paramBoolean);
+    }
+    return getInetAddressByDomain(paramString, paramInt, paramBoolean);
   }
 }
 

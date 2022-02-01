@@ -1,31 +1,15 @@
-import android.text.TextUtils;
+import kotlin.Metadata;
 import org.json.JSONObject;
 
-public class tlp
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "callBackId", "", "kotlin.jvm.PlatformType", "json", "Lorg/json/JSONObject;", "callJsMethod", "com/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/PublicAccountNewBridgeInvokeHandler$showReadInJoyNativeCommentView$1$1"}, k=3, mv={1, 1, 16})
+final class tlp
+  implements tiu
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  tlp(tlm paramtlm, String paramString) {}
   
-  public void a(JSONObject paramJSONObject)
+  public final void a(String paramString, JSONObject paramJSONObject)
   {
-    if (paramJSONObject != null)
-    {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("adDownloadApiUrl");
-      this.b = paramJSONObject.optString("pkg_name");
-      this.c = paramJSONObject.optString("appid");
-      this.d = paramJSONObject.optString("appname");
-      this.e = paramJSONObject.optString("pkgurl");
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("business_type", 0);
-      paramJSONObject = paramJSONObject.optString("apk_url");
-      if (!TextUtils.isEmpty(paramJSONObject)) {
-        this.e = paramJSONObject;
-      }
-    }
+    this.jdField_a_of_type_Tlm.a(paramString, paramJSONObject);
   }
 }
 

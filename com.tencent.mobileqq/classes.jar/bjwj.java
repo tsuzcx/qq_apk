@@ -1,320 +1,388 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.os.Build.VERSION;
+import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemAnimator;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.animation.Interpolator;
+import java.util.List;
 
-public class bjwj
+public abstract class bjwj
 {
-  public static long a()
-  {
-    return bjvf.a(bjjo.a().a(), null).a("Common_tips_dialog_interval");
-  }
+  private static final int ABS_HORIZONTAL_DIR_FLAGS = 789516;
+  public static final int DEFAULT_DRAG_ANIMATION_DURATION = 200;
+  public static final int DEFAULT_SWIPE_ANIMATION_DURATION = 250;
+  private static final long DRAG_SCROLL_ACCELERATION_LIMIT_TIME_MS = 2000L;
+  static final int RELATIVE_DIR_FLAGS = 3158064;
+  private static final Interpolator sDragScrollInterpolator = new bjwk();
+  private static final Interpolator sDragViewScrollCapInterpolator = new bjwl();
+  private static final bjwr sUICallback = new bjwt();
+  private int mCachedMaxScrollSpeed = -1;
   
-  public static String a()
+  static
   {
-    return bjvf.a(bjjo.a().a(), null).b("Common_myapp_download_url");
-  }
-  
-  public static String a(int paramInt, String paramString)
-  {
-    if ("biz_src_zf_games".equals(paramString)) {
-      switch (paramInt)
-      {
-      default: 
-        paramString = "Common_GC_InstallYYB_Install_Words";
-      }
-    }
-    for (;;)
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      return bjvf.a(bjjo.a().a(), null).b(paramString);
-      paramString = "Common_GC_InstallYYB_Install_Words";
-      continue;
-      paramString = "Common_GC_InstallYYB_Update_Words";
-      continue;
-      paramString = "Common_GC_UpdateYYB_Install_Words";
-      continue;
-      paramString = "Common_GC_UpdateYYB_Update_Words";
-      continue;
-      if ("biz_src_jc_update".equals(paramString)) {
-        switch (paramInt)
-        {
-        case 2: 
-        default: 
-          paramString = null;
-          break;
-        case 1: 
-          paramString = "Common_QQUpdate_InstallYYB_Update_Words";
-          break;
-        case 3: 
-          paramString = "Common_QQUpdate_UpdateYYB_Update_Words";
-          break;
-        }
-      } else {
-        switch (paramInt)
-        {
-        default: 
-          paramString = "Common_InstallYYB_Install_Words";
-          break;
-        case 1: 
-          paramString = "Common_InstallYYB_Install_Words";
-          break;
-        case 2: 
-          paramString = "Common_InstallYYB_Update_Words";
-          break;
-        case 3: 
-          paramString = "Common_UpdateYYB_Install_Words";
-          break;
-        case 4: 
-          paramString = "Common_UpdateYYB_Update_Words";
-        }
-      }
-    }
-  }
-  
-  public static void a()
-  {
-    int i = 1;
-    if (!bjvf.a(bjjo.a().a(), null).b("Common_Show_Dialog_Flag")) {}
-    SharedPreferences.Editor localEditor;
-    do
-    {
+      sUICallback = new bjwu();
       return;
-      localObject = bjjo.a().a().getSharedPreferences("share_myAppApi", 0);
-      localEditor = ((SharedPreferences)localObject).edit();
-      if (bjvf.a(bjjo.a().a(), null).a("Common_Dialog_Only_Once_Flag"))
-      {
-        localEditor.putBoolean("SP_Has_shown_Dialog", true);
-        localEditor.commit();
-        return;
-      }
-      j = bjvf.a(bjjo.a().a(), null).a("Common_Max_Count");
-    } while ((j == -1) || (j == 0));
-    int j = ((SharedPreferences)localObject).getInt("SP_Show_Dialog_Count", 0);
-    Object localObject = ((SharedPreferences)localObject).getString("SP_Show_Dialog_Date", "");
-    String str = new SimpleDateFormat("yyyy年MM月dd日").format(new Date(System.currentTimeMillis()));
-    if (str.equals(localObject)) {
-      i = j + 1;
     }
-    localEditor.putInt("SP_Show_Dialog_Count", i);
-    localEditor.putString("SP_Show_Dialog_Date", str);
-    localEditor.commit();
   }
   
-  public static void a(long paramLong)
+  public static int convertToRelativeDirection(int paramInt1, int paramInt2)
   {
-    SharedPreferences.Editor localEditor = bjjo.a().a().getSharedPreferences("share_myAppApi", 0).edit();
-    localEditor.putLong("SP_Lastest_require_time", paramLong);
-    localEditor.commit();
+    int i = paramInt1 & 0xC0C0C;
+    if (i == 0) {
+      return paramInt1;
+    }
+    paramInt1 = (i ^ 0xFFFFFFFF) & paramInt1;
+    if (paramInt2 == 0) {
+      return paramInt1 | i << 2;
+    }
+    return paramInt1 | i << 1 & 0xFFF3F3F3 | (i << 1 & 0xC0C0C) << 2;
   }
   
-  public static boolean a()
+  public static bjwr getDefaultUIUtil()
+  {
+    return sUICallback;
+  }
+  
+  private int getMaxDragScroll(RecyclerView paramRecyclerView)
+  {
+    if (this.mCachedMaxScrollSpeed == -1) {
+      this.mCachedMaxScrollSpeed = paramRecyclerView.getResources().getDimensionPixelSize(2131297259);
+    }
+    return this.mCachedMaxScrollSpeed;
+  }
+  
+  public static int makeFlag(int paramInt1, int paramInt2)
+  {
+    return paramInt2 << paramInt1 * 8;
+  }
+  
+  public static int makeMovementFlags(int paramInt1, int paramInt2)
+  {
+    return makeFlag(0, paramInt2 | paramInt1) | makeFlag(1, paramInt2) | makeFlag(2, paramInt1);
+  }
+  
+  public boolean canDropOver(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
   {
     return true;
   }
   
-  public static boolean a(long paramLong)
+  public RecyclerView.ViewHolder chooseDropTarget(RecyclerView.ViewHolder paramViewHolder, List<RecyclerView.ViewHolder> paramList, int paramInt1, int paramInt2)
   {
-    SharedPreferences localSharedPreferences = bjjo.a().a().getSharedPreferences("share_myAppApi", 0);
-    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-    long l = localSharedPreferences.getLong("SP_Lastest_require_time", paramLong);
-    if (paramLong - l >= b())
+    int m = paramViewHolder.itemView.getWidth();
+    int n = paramViewHolder.itemView.getHeight();
+    Object localObject2 = null;
+    int i = -1;
+    int i1 = paramInt1 - paramViewHolder.itemView.getLeft();
+    int i2 = paramInt2 - paramViewHolder.itemView.getTop();
+    int i3 = paramList.size();
+    int j = 0;
+    Object localObject1;
+    int k;
+    if (j < i3)
     {
-      localEditor.putLong("SP_Lastest_require_time", paramLong);
-      localEditor.commit();
+      localObject1 = (RecyclerView.ViewHolder)paramList.get(j);
+      if (i1 <= 0) {
+        break label346;
+      }
+      k = ((RecyclerView.ViewHolder)localObject1).itemView.getRight() - (paramInt1 + m);
+      if ((k >= 0) || (((RecyclerView.ViewHolder)localObject1).itemView.getRight() <= paramViewHolder.itemView.getRight())) {
+        break label346;
+      }
+      k = Math.abs(k);
+      if (k <= i) {
+        break label346;
+      }
+      i = k;
+      localObject2 = localObject1;
+      label143:
+      if (i1 >= 0) {
+        break label359;
+      }
+      k = ((RecyclerView.ViewHolder)localObject1).itemView.getLeft() - paramInt1;
+      if ((k <= 0) || (((RecyclerView.ViewHolder)localObject1).itemView.getLeft() >= paramViewHolder.itemView.getLeft())) {
+        break label359;
+      }
+      k = Math.abs(k);
+      if (k <= i) {
+        break label359;
+      }
+      localObject2 = localObject1;
+      i = k;
     }
-    while (paramLong == l) {
-      return true;
-    }
-    return false;
-  }
-  
-  public static long b()
-  {
-    return bjvf.a(bjjo.a().a(), null).a("Common_require_root_interval");
-  }
-  
-  public static void b()
-  {
-    int i = 0;
-    SharedPreferences localSharedPreferences = bjjo.a().a().getSharedPreferences("share_myAppApi", 0);
-    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-    int j = localSharedPreferences.getInt("tmast_wake_times", 0);
-    if (!b(localSharedPreferences.getLong("tmast_wake_last_time", 0L))) {}
+    label346:
+    label359:
     for (;;)
     {
-      localEditor.putInt("tmast_wake_times", i + 1);
-      localEditor.putLong("tmast_wake_last_time", System.currentTimeMillis());
-      return;
-      i = j;
+      if (i2 < 0)
+      {
+        k = ((RecyclerView.ViewHolder)localObject1).itemView.getTop() - paramInt2;
+        if ((k > 0) && (((RecyclerView.ViewHolder)localObject1).itemView.getTop() < paramViewHolder.itemView.getTop()))
+        {
+          k = Math.abs(k);
+          if (k > i)
+          {
+            localObject2 = localObject1;
+            i = k;
+          }
+        }
+      }
+      for (;;)
+      {
+        if (i2 > 0)
+        {
+          k = ((RecyclerView.ViewHolder)localObject1).itemView.getBottom() - (paramInt2 + n);
+          if ((k < 0) && (((RecyclerView.ViewHolder)localObject1).itemView.getBottom() > paramViewHolder.itemView.getBottom()))
+          {
+            k = Math.abs(k);
+            if (k > i) {
+              i = k;
+            }
+          }
+        }
+        for (;;)
+        {
+          j += 1;
+          localObject2 = localObject1;
+          break;
+          return localObject2;
+          break label143;
+          localObject1 = localObject2;
+        }
+      }
     }
   }
   
-  public static boolean b()
+  public void clearView(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
   {
-    DownloadInfo localDownloadInfo = bjwq.a().a("1101070898");
-    Object localObject = "";
-    if (localDownloadInfo != null) {
-      localObject = localDownloadInfo.l;
+    sUICallback.a(paramViewHolder.itemView);
+  }
+  
+  public int convertToAbsoluteDirection(int paramInt1, int paramInt2)
+  {
+    int i = paramInt1 & 0x303030;
+    if (i == 0) {
+      return paramInt1;
     }
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    paramInt1 = (i ^ 0xFFFFFFFF) & paramInt1;
+    if (paramInt2 == 0) {
+      return paramInt1 | i >> 2;
+    }
+    return paramInt1 | i >> 1 & 0xFFCFCFCF | (i >> 1 & 0x303030) >> 2;
+  }
+  
+  final int getAbsoluteMovementFlags(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  {
+    return convertToAbsoluteDirection(getMovementFlags(paramRecyclerView, paramViewHolder), ViewCompat.getLayoutDirection(paramRecyclerView));
+  }
+  
+  public long getAnimationDuration(RecyclerView paramRecyclerView, int paramInt, float paramFloat1, float paramFloat2)
+  {
+    paramRecyclerView = paramRecyclerView.getItemAnimator();
+    if (paramRecyclerView == null)
     {
-      localObject = new File((String)localObject);
-      if ((localObject != null) && (((File)localObject).exists())) {
-        return false;
+      if (paramInt == 8) {
+        return 200L;
       }
+      return 250L;
     }
+    if (paramInt == 8) {
+      return paramRecyclerView.getMoveDuration();
+    }
+    return paramRecyclerView.getRemoveDuration();
+  }
+  
+  public int getBoundingBoxMargin()
+  {
+    return 0;
+  }
+  
+  public float getMoveThreshold(RecyclerView.ViewHolder paramViewHolder)
+  {
+    return 0.5F;
+  }
+  
+  public abstract int getMovementFlags(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder);
+  
+  public float getSwipeEscapeVelocity(float paramFloat)
+  {
+    return paramFloat;
+  }
+  
+  public float getSwipeThreshold(RecyclerView.ViewHolder paramViewHolder)
+  {
+    return 0.5F;
+  }
+  
+  public float getSwipeVelocityThreshold(float paramFloat)
+  {
+    return paramFloat;
+  }
+  
+  boolean hasDragFlag(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  {
+    return (getAbsoluteMovementFlags(paramRecyclerView, paramViewHolder) & 0xFF0000) != 0;
+  }
+  
+  boolean hasSwipeFlag(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  {
+    return (getAbsoluteMovementFlags(paramRecyclerView, paramViewHolder) & 0xFF00) != 0;
+  }
+  
+  public int interpolateOutOfBoundsScroll(RecyclerView paramRecyclerView, int paramInt1, int paramInt2, int paramInt3, long paramLong)
+  {
+    float f1 = 1.0F;
+    paramInt3 = getMaxDragScroll(paramRecyclerView);
+    int i = Math.abs(paramInt2);
+    int j = (int)Math.signum(paramInt2);
+    float f2 = Math.min(1.0F, i * 1.0F / paramInt1);
+    paramInt1 = (int)(paramInt3 * j * sDragViewScrollCapInterpolator.getInterpolation(f2));
+    if (paramLong > 2000L) {}
+    for (;;)
+    {
+      f2 = paramInt1;
+      paramInt3 = (int)(sDragScrollInterpolator.getInterpolation(f1) * f2);
+      paramInt1 = paramInt3;
+      if (paramInt3 == 0)
+      {
+        if (paramInt2 <= 0) {
+          break;
+        }
+        paramInt1 = 1;
+      }
+      return paramInt1;
+      f1 = (float)paramLong / 2000.0F;
+    }
+    return -1;
+  }
+  
+  public boolean isItemViewSwipeEnabled()
+  {
     return true;
   }
   
-  public static boolean b(long paramLong)
+  public boolean isLongPressDragEnabled()
   {
-    Calendar localCalendar1 = Calendar.getInstance();
-    localCalendar1.setTime(new Date(System.currentTimeMillis()));
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar2.setTime(new Date(paramLong));
-    return (localCalendar2.get(1) == localCalendar1.get(1)) && (localCalendar2.get(6) - localCalendar1.get(6) == 0);
+    return true;
   }
   
-  public static boolean c()
+  public void onChildDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
   {
-    return bjvf.a(bjjo.a().a(), null).a("Common_root_autoinstall_flag") <= 0;
+    sUICallback.a(paramCanvas, paramRecyclerView, paramViewHolder.itemView, paramFloat1, paramFloat2, paramInt, paramBoolean);
   }
   
-  public static boolean d()
+  public void onChildDrawOver(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (bjva.a("com.tencent.android.qqdownloader") > 4001126)
-    {
-      bool1 = bool2;
-      if (bjvf.a(bjjo.a().a(), null).b("Common_QQ_CARRY_IDENTITY")) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    sUICallback.b(paramCanvas, paramRecyclerView, paramViewHolder.itemView, paramFloat1, paramFloat2, paramInt, paramBoolean);
   }
   
-  public static boolean e()
+  void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder, List<bjwn> paramList, int paramInt, float paramFloat1, float paramFloat2)
   {
-    Object localObject = bjvf.a(bjjo.a().a(), null).b("Common_Release_Control").trim();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    do
-    {
-      do
-      {
-        return true;
-      } while (((String)localObject).equals("-1"));
-      if (((String)localObject).equals("-2")) {
-        return false;
-      }
-      localObject = ((String)localObject).split(";");
-    } while (localObject == null);
-    String str1 = String.valueOf(bjjo.a().a());
-    if (str1 == null) {
-      return false;
-    }
-    int j = localObject.length;
+    int j = paramList.size();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label115;
-      }
-      String str2 = localObject[i];
-      if ((str2.length() == 2) && (str1.endsWith(str2))) {
-        break;
-      }
+      bjwn localbjwn = (bjwn)paramList.get(i);
+      localbjwn.c();
+      int k = paramCanvas.save();
+      onChildDraw(paramCanvas, paramRecyclerView, localbjwn.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, localbjwn.e, localbjwn.f, localbjwn.jdField_b_of_type_Int, false);
+      paramCanvas.restoreToCount(k);
       i += 1;
     }
-    label115:
-    return false;
+    if (paramViewHolder != null)
+    {
+      i = paramCanvas.save();
+      onChildDraw(paramCanvas, paramRecyclerView, paramViewHolder, paramFloat1, paramFloat2, paramInt, true);
+      paramCanvas.restoreToCount(i);
+    }
   }
   
-  public static boolean f()
+  void onDrawOver(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder, List<bjwn> paramList, int paramInt, float paramFloat1, float paramFloat2)
   {
-    if (!bjvf.a(bjjo.a().a(), null).b("Common_Show_Dialog_Flag")) {}
-    int i;
-    int j;
+    int j = paramList.size();
+    int i = 0;
+    while (i < j)
+    {
+      bjwn localbjwn = (bjwn)paramList.get(i);
+      int k = paramCanvas.save();
+      onChildDrawOver(paramCanvas, paramRecyclerView, localbjwn.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder, localbjwn.e, localbjwn.f, localbjwn.jdField_b_of_type_Int, false);
+      paramCanvas.restoreToCount(k);
+      i += 1;
+    }
+    if (paramViewHolder != null)
+    {
+      i = paramCanvas.save();
+      onChildDrawOver(paramCanvas, paramRecyclerView, paramViewHolder, paramFloat1, paramFloat2, paramInt, true);
+      paramCanvas.restoreToCount(i);
+    }
+    paramInt = 0;
+    i = j - 1;
+    if (i >= 0)
+    {
+      paramCanvas = (bjwn)paramList.get(i);
+      if ((paramCanvas.c) && (!paramCanvas.a)) {
+        paramList.remove(i);
+      }
+    }
+    for (;;)
+    {
+      i -= 1;
+      break;
+      if (!paramCanvas.c)
+      {
+        paramInt = 1;
+        continue;
+        if (paramInt != 0) {
+          paramRecyclerView.invalidate();
+        }
+        return;
+      }
+    }
+  }
+  
+  public abstract boolean onMove(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2);
+  
+  public void onMoved(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder1, int paramInt1, RecyclerView.ViewHolder paramViewHolder2, int paramInt2, int paramInt3, int paramInt4)
+  {
+    RecyclerView.LayoutManager localLayoutManager = paramRecyclerView.getLayoutManager();
+    if ((localLayoutManager instanceof bjwq)) {
+      ((bjwq)localLayoutManager).a(paramViewHolder1.itemView, paramViewHolder2.itemView, paramInt3, paramInt4);
+    }
     do
     {
-      boolean bool;
       do
       {
-        return false;
-        localObject = bjjo.a().a().getSharedPreferences("share_myAppApi", 0);
-        bool = ((SharedPreferences)localObject).getBoolean("SP_Has_shown_Dialog", false);
-        if (!bjvf.a(bjjo.a().a(), null).a("Common_Dialog_Only_Once_Flag")) {
-          break;
-        }
-      } while (bool);
-      return true;
-      i = bjvf.a(bjjo.a().a(), null).a("Common_Max_Count");
-      bjtx.c("OpenConfig-MyAppApi", " maxCount = " + i);
-      if ((i == -1) || (i == 0)) {
-        return true;
-      }
-      j = ((SharedPreferences)localObject).getInt("SP_Show_Dialog_Count", 0);
-      Object localObject = ((SharedPreferences)localObject).getString("SP_Show_Dialog_Date", "");
-      if (!new SimpleDateFormat("yyyy年MM月dd日").format(new Date(System.currentTimeMillis())).equals(localObject)) {
-        break;
-      }
-    } while (j >= i);
-    return true;
-    return true;
-  }
-  
-  public static boolean g()
-  {
-    return bjvf.a(bjjo.a().a(), null).b("Common_MyAppDownload_Flag");
-  }
-  
-  public static boolean h()
-  {
-    return bjvf.a(bjjo.a().a(), null).b("Common_Detail_Page");
-  }
-  
-  public static boolean i()
-  {
-    boolean bool2 = false;
-    boolean bool3 = bjvf.a(bjjo.a().a(), null).c("Common_tmast_wake");
-    long l1 = bjvf.a(bjjo.a().a(), null).a("Common_wake_limite");
-    long l2 = bjvf.a(bjjo.a().a(), null).a("Common_wake_interval") * 1000L;
-    SharedPreferences localSharedPreferences = bjjo.a().a().getSharedPreferences("share_myAppApi", 0);
-    int i = localSharedPreferences.getInt("tmast_wake_times", 0);
-    long l3 = localSharedPreferences.getLong("tmast_wake_last_time", 0L);
-    boolean bool4 = b(l3);
-    if (!bool4) {
-      i = 0;
-    }
-    bjtx.c("TAMST_WAKE", ">>allowTmastWake allowWake = " + bool3 + " wakeLimit = " + l1 + " wakeInterval = " + l2 + " wakeTimes = " + i + " isToday = " + bool4);
-    boolean bool1 = bool2;
-    if (bool3)
-    {
-      bool1 = bool2;
-      if (i < l1) {
-        if (System.currentTimeMillis() - l3 <= l2)
+        return;
+        if (localLayoutManager.canScrollHorizontally())
         {
-          bool1 = bool2;
-          if (bool4) {}
+          if (localLayoutManager.getDecoratedLeft(paramViewHolder2.itemView) <= paramRecyclerView.getPaddingLeft()) {
+            paramRecyclerView.scrollToPosition(paramInt2);
+          }
+          if (localLayoutManager.getDecoratedRight(paramViewHolder2.itemView) >= paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight()) {
+            paramRecyclerView.scrollToPosition(paramInt2);
+          }
         }
-        else
-        {
-          bool1 = true;
-        }
+      } while (!localLayoutManager.canScrollVertically());
+      if (localLayoutManager.getDecoratedTop(paramViewHolder2.itemView) <= paramRecyclerView.getPaddingTop()) {
+        paramRecyclerView.scrollToPosition(paramInt2);
       }
-    }
-    return bool1;
+    } while (localLayoutManager.getDecoratedBottom(paramViewHolder2.itemView) < paramRecyclerView.getHeight() - paramRecyclerView.getPaddingBottom());
+    paramRecyclerView.scrollToPosition(paramInt2);
   }
   
-  public static boolean j()
+  public void onSelectedChanged(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    return bjvf.a(bjjo.a().a(), null).b("Common_yyb_wifi_download_Switch");
+    if (paramViewHolder != null) {
+      sUICallback.b(paramViewHolder.itemView);
+    }
   }
+  
+  public abstract void onSwiped(RecyclerView.ViewHolder paramViewHolder, int paramInt);
 }
 
 

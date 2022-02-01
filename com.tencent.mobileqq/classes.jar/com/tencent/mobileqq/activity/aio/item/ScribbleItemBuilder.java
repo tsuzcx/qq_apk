@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aean;
-import agej;
-import aggk;
-import aggl;
-import agid;
-import agif;
-import agjk;
-import agph;
-import agqv;
-import ahov;
-import ahqn;
-import ahqo;
-import ahqp;
-import ahqq;
+import acvv;
+import aeze;
+import aezf;
+import afaz;
+import afbb;
+import afce;
+import aflb;
+import afmp;
+import agli;
+import agna;
+import agnb;
+import agnc;
+import agnd;
+import amtj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -26,22 +26,17 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anzj;
-import auog;
-import bbxk;
-import bbxm;
-import bcrg;
-import berp;
-import bete;
-import beyb;
-import bhnv;
-import bhuk;
-import bhum;
-import bjbh;
-import blir;
-import blji;
+import barf;
+import barh;
+import bbko;
+import bgaz;
+import bgbb;
+import bhhi;
+import bjnw;
+import bjon;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
@@ -51,15 +46,20 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForScribble;
 import com.tencent.mobileqq.data.MessageForScribble.FileExistInfo;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.transfile.BaseTransProcessor;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.BubbleImageView;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ScribbleItemBuilder
-  extends ahov
-  implements aggk, agif, agph
+  extends agli
+  implements aeze, afbb, aflb
 {
   public static int c;
   protected static int d;
@@ -72,23 +72,23 @@ public class ScribbleItemBuilder
   public ScribbleItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ahqn(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new agna(this);
     if (c == 0)
     {
-      jdField_f_of_type_Int = BaseChatItemLayout.k + paramContext.getResources().getDimensionPixelSize(2131296341);
-      jdField_e_of_type_Int = BaseChatItemLayout.j + paramContext.getResources().getDimensionPixelSize(2131296342);
-      d = BaseChatItemLayout.i + paramContext.getResources().getDimensionPixelSize(2131296343);
-      c = BaseChatItemLayout.h + paramContext.getResources().getDimensionPixelSize(2131296344);
+      jdField_f_of_type_Int = BaseChatItemLayout.k + paramContext.getResources().getDimensionPixelSize(2131296394);
+      jdField_e_of_type_Int = BaseChatItemLayout.j + paramContext.getResources().getDimensionPixelSize(2131296395);
+      d = BaseChatItemLayout.i + paramContext.getResources().getDimensionPixelSize(2131296396);
+      c = BaseChatItemLayout.h + paramContext.getResources().getDimensionPixelSize(2131296397);
     }
   }
   
-  private int a(MessageForScribble paramMessageForScribble, ahqq paramahqq, View paramView)
+  private int a(MessageForScribble paramMessageForScribble, agnd paramagnd, View paramView)
   {
     if (paramMessageForScribble.isSendFromLocal())
     {
       boolean bool = paramMessageForScribble.mExistInfo.mLocalPathExist;
       if (!paramMessageForScribble.mExistInfo.mInit) {
-        bool = auog.a(paramMessageForScribble.localFildPath);
+        bool = FileUtil.isFileExists(paramMessageForScribble.localFildPath);
       }
       if (bool)
       {
@@ -106,14 +106,14 @@ public class ScribbleItemBuilder
         if (i == 3)
         {
           QLog.d("ScribbleItemBuilder", 2, "发送涂鸦数据发送中");
-          paramahqq = (berp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessageForScribble.frienduin, paramMessageForScribble.uniseq);
-          agid localagid = agid.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          if (localagid != null) {
-            localagid.a(paramView, this);
+          paramagnd = (BaseTransProcessor)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().findProcessor(paramMessageForScribble.frienduin, paramMessageForScribble.uniseq);
+          afaz localafaz = afaz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          if (localafaz != null) {
+            localafaz.a(paramView, this);
           }
-          if (paramahqq != null)
+          if (paramagnd != null)
           {
-            i = paramahqq.f();
+            i = paramagnd.getProgress();
             QLog.d("ScribbleItemBuilder", 2, "发送涂鸦数据进行中 progress 为：" + i);
             return 1;
           }
@@ -124,15 +124,15 @@ public class ScribbleItemBuilder
         return 3;
       }
       QLog.i("ScribbleItemBuilder", 2, "发送MessageForScribble NOT EXIST");
-      paramahqq = agid.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (paramahqq != null) {
-        paramahqq.a(paramView, this);
+      paramagnd = afaz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (paramagnd != null) {
+        paramagnd.a(paramView, this);
       }
       QLog.d("ScribbleItemBuilder", 2, "发送涂鸦数据开始下载");
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramMessageForScribble);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getScribbleDownloader().b(paramMessageForScribble);
       return 4;
     }
-    if (bbxm.a(paramMessageForScribble) == bbxm.c)
+    if (barh.a(paramMessageForScribble) == barh.c)
     {
       QLog.i("ScribbleItemBuilder", 2, "MessageForScribble EXIST");
       return 6;
@@ -141,32 +141,32 @@ public class ScribbleItemBuilder
     if (paramMessageForScribble.fileDownloadStatus == 2) {
       return 5;
     }
-    paramahqq = agid.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (paramahqq != null) {
-      paramahqq.a(paramView, this);
+    paramagnd = afaz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (paramagnd != null) {
+      paramagnd.a(paramView, this);
     }
     QLog.i("ScribbleItemBuilder", 2, "涂鸦数据开始下载");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramMessageForScribble);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getScribbleDownloader().b(paramMessageForScribble);
     return 4;
   }
   
-  private static bjbh a(Context paramContext, Handler paramHandler)
+  private static bhhi a(Context paramContext, Handler paramHandler)
   {
-    bjbh localbjbh = new bjbh(paramContext);
-    localbjbh.a(agej.a(50.0F, paramContext.getResources()));
-    localbjbh.a(true);
-    localbjbh.c(false);
-    localbjbh.g(-1);
-    localbjbh.f(0);
-    localbjbh.d(-15550475);
-    localbjbh.i(3);
-    localbjbh.jdField_f_of_type_Boolean = true;
-    localbjbh.jdField_f_of_type_Int = 2;
-    localbjbh.a(new ahqp(paramHandler));
-    return localbjbh;
+    bhhi localbhhi = new bhhi(paramContext);
+    localbhhi.a(AIOUtils.dp2px(50.0F, paramContext.getResources()));
+    localbhhi.a(true);
+    localbhhi.c(false);
+    localbhhi.g(-1);
+    localbhhi.f(0);
+    localbhhi.d(-15550475);
+    localbhhi.i(3);
+    localbhhi.jdField_f_of_type_Boolean = true;
+    localbhhi.jdField_f_of_type_Int = 2;
+    localbhhi.a(new agnc(paramHandler));
+    return localbhhi;
   }
   
-  public static bjbh a(MessageForScribble paramMessageForScribble, Context paramContext, Handler paramHandler)
+  public static bhhi a(MessageForScribble paramMessageForScribble, Context paramContext, Handler paramHandler)
   {
     if (paramMessageForScribble.mProgressPie != null) {
       return paramMessageForScribble.mProgressPie;
@@ -181,55 +181,55 @@ public class ScribbleItemBuilder
     return new DoodleMsgLayout(paramContext, null);
   }
   
-  private void a(ahqq paramahqq, MessageForScribble paramMessageForScribble, boolean paramBoolean)
+  private void a(agnd paramagnd, MessageForScribble paramMessageForScribble, boolean paramBoolean)
   {
-    if ((paramahqq == null) || (paramMessageForScribble == null)) {}
+    if ((paramagnd == null) || (paramMessageForScribble == null)) {}
     do
     {
       return;
       QLog.i("ScribbleItemBuilder", 2, "onRecvingState MessageForScribble NOT EXIST");
-      agqv.a().a(agqv.b(paramMessageForScribble), agqv.a(paramMessageForScribble), paramahqq.b, paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout);
-      paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setFailedIconVisable(false, null);
+      afmp.a().a(afmp.b(paramMessageForScribble), afmp.a(paramMessageForScribble), paramagnd.b, paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout);
+      paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setFailedIconVisable(false, null);
     } while (paramBoolean);
-    paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(null, 0, false);
+    paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(null, 0, false);
   }
   
-  private void a(ahqq paramahqq, MessageForScribble paramMessageForScribble, boolean paramBoolean, int paramInt)
+  private void a(agnd paramagnd, MessageForScribble paramMessageForScribble, boolean paramBoolean, int paramInt)
   {
     boolean bool = false;
-    if ((paramahqq == null) || (paramMessageForScribble == null)) {}
+    if ((paramagnd == null) || (paramMessageForScribble == null)) {}
     label143:
     label145:
     label148:
     for (;;)
     {
       return;
-      agqv.a().a(agqv.b(paramMessageForScribble), agqv.a(paramMessageForScribble), paramahqq.b, paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout);
-      paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setFailedIconVisable(false, null);
+      afmp.a().a(afmp.b(paramMessageForScribble), afmp.a(paramMessageForScribble), paramagnd.b, paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout);
+      paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setFailedIconVisable(false, null);
       if ((paramInt == 0) || (paramInt == -1))
       {
-        paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.b();
+        paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.b();
         label61:
         if (paramBoolean) {
           break label143;
         }
-        if (!agqv.a().a(agqv.b(paramMessageForScribble), agqv.a(paramMessageForScribble))) {
+        if (!afmp.a().a(afmp.b(paramMessageForScribble), afmp.a(paramMessageForScribble))) {
           break label145;
         }
       }
       for (paramBoolean = bool;; paramBoolean = true)
       {
-        if ((paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(bbxm.b(paramMessageForScribble), paramMessageForScribble.gifId, paramBoolean)) || (paramInt != 1)) {
+        if ((paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(barh.b(paramMessageForScribble), paramMessageForScribble.gifId, paramBoolean)) || (paramInt != 1)) {
           break label148;
         }
-        paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.b();
+        paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.b();
         return;
         if (paramInt == 1)
         {
-          paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a();
+          paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a();
           break label61;
         }
-        paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(false);
+        paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(false);
         break label61;
         break;
       }
@@ -238,21 +238,21 @@ public class ScribbleItemBuilder
   
   private void a(View paramView, MessageForScribble paramMessageForScribble)
   {
-    blir localblir = (blir)blji.a(this.jdField_a_of_type_AndroidContentContext, null);
-    localblir.a(2131689933, 5);
-    localblir.c(2131690580);
-    localblir.a(new ahqo(this, paramView, paramMessageForScribble, localblir));
-    localblir.show();
+    bjnw localbjnw = (bjnw)bjon.a(this.jdField_a_of_type_AndroidContentContext, null);
+    localbjnw.a(2131689947, 5);
+    localbjnw.c(2131690620);
+    localbjnw.a(new agnb(this, paramView, paramMessageForScribble, localbjnw));
+    localbjnw.show();
   }
   
-  protected static void a(MessageForScribble paramMessageForScribble, ahqq paramahqq, int paramInt, boolean paramBoolean, Context paramContext, Handler paramHandler)
+  protected static void a(MessageForScribble paramMessageForScribble, agnd paramagnd, int paramInt, boolean paramBoolean, Context paramContext, Handler paramHandler)
   {
-    paramahqq.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
-    paramahqq.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramInt, paramMessageForScribble.frienduin + paramMessageForScribble.uniseq);
+    paramagnd.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
+    paramagnd.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramInt, paramMessageForScribble.frienduin + paramMessageForScribble.uniseq);
     paramContext = a(paramMessageForScribble, paramContext, paramHandler);
     paramContext.a();
-    paramahqq.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(0);
-    paramInt = ShortVideoUtils.a(paramInt, 10);
+    paramagnd.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(0);
+    paramInt = ShortVideoUtils.getDisplayProgress(paramInt, 10);
     if (paramBoolean) {
       paramContext.b(paramInt);
     }
@@ -270,62 +270,62 @@ public class ScribbleItemBuilder
     }
   }
   
-  private static void a(MessageForScribble paramMessageForScribble, bete parambete)
+  private static void a(MessageForScribble paramMessageForScribble, FileMsg paramFileMsg)
   {
-    if ((parambete != null) && (parambete.a > 0L))
+    if ((paramFileMsg != null) && (paramFileMsg.fileSize > 0L))
     {
-      paramMessageForScribble.mRealProgress = ((int)(parambete.e * 100L / parambete.a));
+      paramMessageForScribble.mRealProgress = ((int)(paramFileMsg.transferedSize * 100L / paramFileMsg.fileSize));
       paramMessageForScribble.mUiProgress = paramMessageForScribble.mRealProgress;
     }
   }
   
-  private void b(ahqq paramahqq, MessageForScribble paramMessageForScribble, boolean paramBoolean)
+  private void b(agnd paramagnd, MessageForScribble paramMessageForScribble, boolean paramBoolean)
   {
-    if ((paramahqq == null) || (paramMessageForScribble == null)) {}
+    if ((paramagnd == null) || (paramMessageForScribble == null)) {}
     do
     {
       return;
-      agqv.a().a(agqv.b(paramMessageForScribble), agqv.a(paramMessageForScribble), paramahqq.b, paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout);
-      paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(false);
-      paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setFailedIconVisable(true, this);
+      afmp.a().a(afmp.b(paramMessageForScribble), afmp.a(paramMessageForScribble), paramagnd.b, paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout);
+      paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(false);
+      paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setFailedIconVisable(true, this);
     } while (paramBoolean);
-    paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(null, 0, false);
+    paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(null, 0, false);
   }
   
-  private void b(ahqq paramahqq, MessageForScribble paramMessageForScribble, boolean paramBoolean, int paramInt)
+  private void b(agnd paramagnd, MessageForScribble paramMessageForScribble, boolean paramBoolean, int paramInt)
   {
     boolean bool = false;
-    if ((paramahqq == null) || (paramMessageForScribble == null)) {}
+    if ((paramagnd == null) || (paramMessageForScribble == null)) {}
     label145:
     label148:
     for (;;)
     {
       return;
-      agqv.a().a(agqv.b(paramMessageForScribble), agqv.a(paramMessageForScribble), paramahqq.b, paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout);
+      afmp.a().a(afmp.b(paramMessageForScribble), afmp.a(paramMessageForScribble), paramagnd.b, paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout);
       if ((paramInt == 0) || (paramInt == -1))
       {
-        paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.b();
-        paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setFailedIconVisable(true, this);
+        paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.b();
+        paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setFailedIconVisable(true, this);
         if (paramBoolean) {
           continue;
         }
-        if (!agqv.a().a(agqv.b(paramMessageForScribble), agqv.a(paramMessageForScribble))) {
+        if (!afmp.a().a(afmp.b(paramMessageForScribble), afmp.a(paramMessageForScribble))) {
           break label145;
         }
       }
       for (paramBoolean = bool;; paramBoolean = true)
       {
-        if ((paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(bbxm.b(paramMessageForScribble), paramMessageForScribble.gifId, paramBoolean)) || (paramInt != 1)) {
+        if ((paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(barh.b(paramMessageForScribble), paramMessageForScribble.gifId, paramBoolean)) || (paramInt != 1)) {
           break label148;
         }
-        paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.b();
+        paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.b();
         return;
         if (paramInt == 1)
         {
-          paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a();
+          paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a();
           break;
         }
-        paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(false);
+        paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(false);
         break;
       }
     }
@@ -334,46 +334,46 @@ public class ScribbleItemBuilder
   private static void b(MessageForScribble paramMessageForScribble)
   {
     int i = Math.max(paramMessageForScribble.mRealProgress, 68);
-    if ((bhnv.d(BaseApplicationImpl.getContext())) && (paramMessageForScribble.mUiProgress < i)) {
+    if ((NetworkUtil.isNetSupport(BaseApplicationImpl.getContext())) && (paramMessageForScribble.mUiProgress < i)) {
       paramMessageForScribble.mUiProgress += 1;
     }
   }
   
-  private void c(ahqq paramahqq, MessageForScribble paramMessageForScribble, boolean paramBoolean, int paramInt)
+  private void c(agnd paramagnd, MessageForScribble paramMessageForScribble, boolean paramBoolean, int paramInt)
   {
     boolean bool = false;
-    if ((paramahqq == null) || (paramMessageForScribble == null)) {}
+    if ((paramagnd == null) || (paramMessageForScribble == null)) {}
     label171:
     label174:
     for (;;)
     {
       return;
       QLog.d("ScribbleItemBuilder", 2, "onSendOkState:" + paramBoolean);
-      agqv.a().a(agqv.b(paramMessageForScribble), agqv.a(paramMessageForScribble), paramahqq.b, paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout);
+      afmp.a().a(afmp.b(paramMessageForScribble), afmp.a(paramMessageForScribble), paramagnd.b, paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout);
       if ((paramInt == 0) || (paramInt == -1))
       {
-        paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.b();
-        paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setFailedIconVisable(false, null);
+        paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.b();
+        paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setFailedIconVisable(false, null);
         if (paramBoolean) {
           continue;
         }
-        if (!agqv.a().a(agqv.b(paramMessageForScribble), agqv.a(paramMessageForScribble))) {
+        if (!afmp.a().a(afmp.b(paramMessageForScribble), afmp.a(paramMessageForScribble))) {
           break label171;
         }
       }
       for (paramBoolean = bool;; paramBoolean = true)
       {
-        if ((paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(bbxm.b(paramMessageForScribble), paramMessageForScribble.gifId, paramBoolean)) || (paramInt != 1)) {
+        if ((paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(barh.b(paramMessageForScribble), paramMessageForScribble.gifId, paramBoolean)) || (paramInt != 1)) {
           break label174;
         }
-        paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.b();
+        paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.b();
         return;
         if (paramInt == 1)
         {
-          paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a();
+          paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a();
           break;
         }
-        paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(false);
+        paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(false);
         break;
       }
     }
@@ -388,40 +388,40 @@ public class ScribbleItemBuilder
     paramMessageForScribble.mUpdateProgressRunnable = null;
   }
   
-  private void d(ahqq paramahqq, MessageForScribble paramMessageForScribble, boolean paramBoolean, int paramInt)
+  private void d(agnd paramagnd, MessageForScribble paramMessageForScribble, boolean paramBoolean, int paramInt)
   {
     boolean bool = false;
-    if ((paramahqq == null) || (paramMessageForScribble == null)) {}
+    if ((paramagnd == null) || (paramMessageForScribble == null)) {}
     label145:
     label148:
     for (;;)
     {
       return;
-      agqv.a().a(agqv.b(paramMessageForScribble), agqv.a(paramMessageForScribble), paramahqq.b, paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout);
+      afmp.a().a(afmp.b(paramMessageForScribble), afmp.a(paramMessageForScribble), paramagnd.b, paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout);
       if ((paramInt == 0) || (paramInt == -1))
       {
-        paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.b();
-        paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setFailedIconVisable(false, null);
+        paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.b();
+        paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setFailedIconVisable(false, null);
         if (paramBoolean) {
           continue;
         }
-        if (!agqv.a().a(agqv.b(paramMessageForScribble), agqv.a(paramMessageForScribble))) {
+        if (!afmp.a().a(afmp.b(paramMessageForScribble), afmp.a(paramMessageForScribble))) {
           break label145;
         }
       }
       for (paramBoolean = bool;; paramBoolean = true)
       {
-        if ((paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(bbxm.b(paramMessageForScribble), paramMessageForScribble.gifId, paramBoolean)) || (paramInt != 1)) {
+        if ((paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(barh.b(paramMessageForScribble), paramMessageForScribble.gifId, paramBoolean)) || (paramInt != 1)) {
           break label148;
         }
-        paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.b();
+        paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.b();
         return;
         if (paramInt == 1)
         {
-          paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a();
+          paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a();
           break;
         }
-        paramahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(false);
+        paramagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(false);
         break;
       }
     }
@@ -432,19 +432,19 @@ public class ScribbleItemBuilder
     return 0;
   }
   
-  public aggk a(View paramView)
+  public aeze a(View paramView)
   {
     return this;
   }
   
-  public aggl a()
+  public aezf a()
   {
-    return new ahqq(this);
+    return new agnd(this);
   }
   
-  public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, agjk paramagjk)
+  public View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, afce paramafce)
   {
-    paramViewGroup = super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramagjk);
+    paramViewGroup = super.a(paramInt1, paramInt2, paramChatMessage, paramView, paramViewGroup, paramafce);
     paramView = paramViewGroup;
     if ((paramViewGroup instanceof BaseChatItemLayout))
     {
@@ -454,11 +454,11 @@ public class ScribbleItemBuilder
     return paramView;
   }
   
-  public View a(ChatMessage paramChatMessage, aggl paramaggl, View paramView, BaseChatItemLayout paramBaseChatItemLayout, agjk paramagjk)
+  public View a(ChatMessage paramChatMessage, aezf paramaezf, View paramView, BaseChatItemLayout paramBaseChatItemLayout, afce paramafce)
   {
     try
     {
-      paramBaseChatItemLayout = (ahqq)paramaggl;
+      paramBaseChatItemLayout = (agnd)paramaezf;
       if ((paramChatMessage instanceof MessageForScribble))
       {
         localMessageForScribble = (MessageForScribble)paramChatMessage;
@@ -470,34 +470,34 @@ public class ScribbleItemBuilder
         }
       }
     }
-    catch (Exception paramaggl)
+    catch (Exception paramaezf)
     {
       for (;;)
       {
-        QLog.e("ScribbleItemBuilder", 2, "scribbleitem holer Exception e= " + paramaggl);
+        QLog.e("ScribbleItemBuilder", 2, "scribbleitem holer Exception e= " + paramaezf);
         paramBaseChatItemLayout = null;
         continue;
         if (paramView == null)
         {
-          paramaggl = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-          paramaggl.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+          paramaezf = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+          paramaezf.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
           paramView = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-          paramView.setId(2131362478);
+          paramView.setId(2131362482);
           paramView.setLayoutParams(new RelativeLayout.LayoutParams(-2, -2));
           paramBaseChatItemLayout.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout = a(this.jdField_a_of_type_AndroidContentContext);
-          paramBaseChatItemLayout.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.setOperateListener(this, paramagjk, paramagjk, this);
+          paramBaseChatItemLayout.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.setOperateListener(this, paramafce, paramafce, this);
           paramView.addView(paramBaseChatItemLayout.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout);
-          paramaggl.addView(paramView);
+          paramaezf.addView(paramView);
           paramBaseChatItemLayout.jdField_a_of_type_AndroidWidgetRelativeLayout = paramView;
-          paramagjk = new MessageProgressView(this.jdField_a_of_type_AndroidContentContext);
-          paramaggl.addView(paramagjk);
-          RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramagjk.getLayoutParams();
-          localLayoutParams.addRule(8, 2131362478);
-          localLayoutParams.addRule(5, 2131362478);
-          localLayoutParams.addRule(6, 2131362478);
-          localLayoutParams.addRule(7, 2131362478);
-          paramagjk.setLayoutParams(localLayoutParams);
-          paramBaseChatItemLayout.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = paramagjk;
+          paramafce = new MessageProgressView(this.jdField_a_of_type_AndroidContentContext);
+          paramaezf.addView(paramafce);
+          RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramafce.getLayoutParams();
+          localLayoutParams.addRule(8, 2131362482);
+          localLayoutParams.addRule(5, 2131362482);
+          localLayoutParams.addRule(6, 2131362482);
+          localLayoutParams.addRule(7, 2131362482);
+          paramafce.setLayoutParams(localLayoutParams);
+          paramBaseChatItemLayout.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = paramafce;
           paramBaseChatItemLayout.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setRadius(15.0F, true);
           paramBaseChatItemLayout.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(true);
           paramBaseChatItemLayout.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setSharpCornerCor(BubbleImageView.a);
@@ -509,7 +509,7 @@ public class ScribbleItemBuilder
             this.b.removeCallbacks(localMessageForScribble.mUpdateProgressRunnable);
           }
           localMessageForScribble.mUpdateProgressRunnable = new ScribbleItemBuilder.ProgressRunnable(localMessageForScribble, paramBaseChatItemLayout, this.b, this.jdField_a_of_type_AndroidContentContext);
-          int i = a(localMessageForScribble, paramBaseChatItemLayout, paramaggl);
+          int i = a(localMessageForScribble, paramBaseChatItemLayout, paramaezf);
           if (QLog.isColorLevel()) {
             QLog.i("ScribbleItemBuilder", 2, "ScribbleItemBuilder pos:" + paramBaseChatItemLayout.b + " State:" + i);
           }
@@ -519,30 +519,30 @@ public class ScribbleItemBuilder
         }
         for (;;)
         {
-          paramView = paramaggl;
+          paramView = paramaezf;
           if (!jdField_e_of_type_Boolean) {
             break;
           }
-          paramaggl.setContentDescription(a(paramChatMessage));
+          paramaezf.setContentDescription(a(paramChatMessage));
           paramBaseChatItemLayout.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setContentDescription(a(paramChatMessage));
-          paramView = paramaggl;
+          paramView = paramaezf;
           if (paramBaseChatItemLayout.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout == null) {
             break;
           }
           paramBaseChatItemLayout.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.setTalkBack(a(paramChatMessage));
-          return paramaggl;
-          paramagjk = (MessageForScribble)paramBaseChatItemLayout.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getTag();
-          paramaggl = paramView;
-          if (paramagjk == null) {
+          return paramaezf;
+          paramafce = (MessageForScribble)paramBaseChatItemLayout.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getTag();
+          paramaezf = paramView;
+          if (paramafce == null) {
             break label330;
           }
-          paramaggl = paramView;
-          if (paramagjk.mUpdateProgressRunnable == null) {
+          paramaezf = paramView;
+          if (paramafce.mUpdateProgressRunnable == null) {
             break label330;
           }
-          this.b.removeCallbacks(paramagjk.mUpdateProgressRunnable);
-          paramagjk.mUpdateProgressRunnable = null;
-          paramaggl = paramView;
+          this.b.removeCallbacks(paramafce.mUpdateProgressRunnable);
+          paramafce.mUpdateProgressRunnable = null;
+          paramaezf = paramView;
           break label330;
           a(paramBaseChatItemLayout, localMessageForScribble, false, 1);
           this.b.post(localMessageForScribble.mUpdateProgressRunnable);
@@ -569,7 +569,7 @@ public class ScribbleItemBuilder
   
   public String a(ChatMessage paramChatMessage)
   {
-    return anzj.a(2131712469);
+    return amtj.a(2131712701);
   }
   
   public void a()
@@ -585,23 +585,23 @@ public class ScribbleItemBuilder
     default: 
       super.a(paramInt, paramContext, paramChatMessage);
       return;
-    case 2131365352: 
-      aean.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+    case 2131365382: 
+      acvv.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
     }
     super.a(paramChatMessage);
   }
   
-  protected void a(ahqq paramahqq)
+  protected void a(agnd paramagnd)
   {
     QLog.i("ScribbleItemBuilder", 2, "disProgress.");
-    paramahqq.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
+    paramagnd.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    if (agej.a(paramView).isMultiMsg) {}
+    if (AIOUtils.getMessage(paramView).isMultiMsg) {}
     Object localObject;
     int i;
     do
@@ -610,77 +610,87 @@ public class ScribbleItemBuilder
       do
       {
         return;
-        localObject = (ahqq)agej.a(paramView);
-        localMessageForScribble = (MessageForScribble)((ahqq)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-        i = a(localMessageForScribble, (ahqq)localObject, ((ahqq)localObject).jdField_a_of_type_AndroidViewView);
+        localObject = (agnd)AIOUtils.getHolder(paramView);
+        localMessageForScribble = (MessageForScribble)((agnd)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        i = a(localMessageForScribble, (agnd)localObject, ((agnd)localObject).jdField_a_of_type_AndroidViewView);
         if (!localMessageForScribble.isSendFromLocal()) {
           break;
         }
         if (i == 2)
         {
-          a(((ahqq)localObject).jdField_a_of_type_AndroidViewView, localMessageForScribble);
+          a(((agnd)localObject).jdField_a_of_type_AndroidViewView, localMessageForScribble);
           return;
         }
       } while ((i != 1) && (i != 3));
-      ((ahqq)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.e();
+      ((agnd)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.e();
       return;
       if (i == 5)
       {
         QLog.i("ScribbleItemBuilder", 2, "涂鸦数据重新下载");
-        localObject = agid.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        localObject = afaz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
         if (localObject != null) {
-          ((agid)localObject).a(paramView, this);
+          ((afaz)localObject).a(paramView, this);
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localMessageForScribble);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getScribbleDownloader().b(localMessageForScribble);
         return;
       }
     } while ((i != 4) && (i != 6));
-    ((ahqq)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.e();
+    ((agnd)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.e();
   }
   
   public void a(View paramView, int paramInt)
   {
-    ahqq localahqq = (ahqq)agej.a(paramView);
-    if (localahqq == null)
+    agnd localagnd = (agnd)AIOUtils.getHolder(paramView);
+    if (localagnd == null)
     {
       QLog.e("ScribbleItemBuilder", 2, "onResult: holder is null");
       return;
     }
-    MessageForScribble localMessageForScribble = (MessageForScribble)localahqq.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-    if (localahqq.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null)
+    MessageForScribble localMessageForScribble = (MessageForScribble)localagnd.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+    if (localagnd.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null)
     {
       QLog.e("ScribbleItemBuilder", 2, "onResult: holder.mMessage is null");
       return;
     }
     QLog.e("ScribbleItemBuilder", 2, "onResult: holder.mMessage state is: " + paramInt);
-    switch (a(localMessageForScribble, localahqq, paramView))
+    switch (a(localMessageForScribble, localagnd, paramView))
     {
     default: 
       return;
     case 1: 
-      a(localahqq, localMessageForScribble, true, paramInt);
+      a(localagnd, localMessageForScribble, true, paramInt);
       return;
     case 2: 
-      b(localahqq, localMessageForScribble, true, paramInt);
+      b(localagnd, localMessageForScribble, true, paramInt);
       return;
     case 3: 
-      c(localahqq, localMessageForScribble, true, paramInt);
+      c(localagnd, localMessageForScribble, true, paramInt);
       return;
     case 4: 
-      a(localahqq, localMessageForScribble, true);
+      a(localagnd, localMessageForScribble, true);
       return;
     case 5: 
-      b(localahqq, localMessageForScribble, true);
+      b(localagnd, localMessageForScribble, true);
       return;
     }
-    d(localahqq, localMessageForScribble, true, paramInt);
+    d(localagnd, localMessageForScribble, true, paramInt);
   }
   
   public void a(View paramView, MotionEvent paramMotionEvent) {}
   
-  public void a(View paramView, bete parambete, int paramInt1, int paramInt2)
+  public void a(View paramView, ChatMessage paramChatMessage)
   {
-    paramView = (ahqq)agej.a(paramView);
+    if (paramChatMessage.isSend())
+    {
+      paramView.setPadding(jdField_f_of_type_Int, c, jdField_e_of_type_Int, d);
+      return;
+    }
+    paramView.setPadding(jdField_e_of_type_Int, c, jdField_f_of_type_Int, d);
+  }
+  
+  public void a(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2)
+  {
+    paramView = (agnd)AIOUtils.getHolder(paramView);
     if (paramView == null) {
       QLog.e("ScribbleItemBuilder", 2, "handleMessage(): holder is null");
     }
@@ -694,21 +704,21 @@ public class ScribbleItemBuilder
         QLog.e("ScribbleItemBuilder", 2, "handleMessage(): holder.mMessage is null");
         return;
       }
-    } while (localMessageForScribble.uniseq != parambete.b);
-    a(localMessageForScribble, parambete);
-    QLog.e("ScribbleItemBuilder", 2, "handleMessage begin progress is: " + localMessageForScribble.mRealProgress + " status is: " + parambete.d + " uinSeq: " + localMessageForScribble.uniseq);
+    } while (localMessageForScribble.uniseq != paramFileMsg.uniseq);
+    a(localMessageForScribble, paramFileMsg);
+    QLog.e("ScribbleItemBuilder", 2, "handleMessage begin progress is: " + localMessageForScribble.mRealProgress + " status is: " + paramFileMsg.status + " uinSeq: " + localMessageForScribble.uniseq);
     paramInt1 = paramView.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a();
     if (localMessageForScribble.isSendFromLocal()) {
-      switch (parambete.d)
+      switch (paramFileMsg.status)
       {
       default: 
-        QLog.e("ScribbleItemBuilder", 2, "涂鸦数据传输状态 isSendFromLocal ：" + parambete.d);
+        QLog.e("ScribbleItemBuilder", 2, "涂鸦数据传输状态 isSendFromLocal ：" + paramFileMsg.status);
         a(paramView, localMessageForScribble, true, paramInt1);
       }
     }
     for (;;)
     {
-      QLog.i("ScribbleItemBuilder", 2, "Scribble file transfer status = " + parambete.d + " issendFromLocal " + localMessageForScribble.isSendFromLocal());
+      QLog.i("ScribbleItemBuilder", 2, "Scribble file transfer status = " + paramFileMsg.status + " issendFromLocal " + localMessageForScribble.isSendFromLocal());
       QLog.i("ScribbleItemBuilder", 2, "handleMessage end");
       return;
       QLog.e("ScribbleItemBuilder", 2, "涂鸦数据开始发送");
@@ -733,12 +743,12 @@ public class ScribbleItemBuilder
         c(localMessageForScribble);
         a(paramView);
         continue;
-        switch (parambete.d)
+        switch (paramFileMsg.status)
         {
         case 2002: 
         case 2004: 
         default: 
-          QLog.e("ScribbleItemBuilder", 2, "涂鸦数据传输状态 isNotSendFromLocal：" + parambete.d);
+          QLog.e("ScribbleItemBuilder", 2, "涂鸦数据传输状态 isNotSendFromLocal：" + paramFileMsg.status);
           a(paramView, localMessageForScribble, false);
           break;
         case 2001: 
@@ -746,7 +756,7 @@ public class ScribbleItemBuilder
           a(paramView, localMessageForScribble, true);
           break;
         case 2003: 
-          if (auog.a(bbxm.b(localMessageForScribble))) {
+          if (FileUtil.isFileExists(barh.b(localMessageForScribble))) {
             d(paramView, localMessageForScribble, false, 1);
           }
           while (localMessageForScribble.mRealProgress != 100)
@@ -768,23 +778,13 @@ public class ScribbleItemBuilder
     }
   }
   
-  public void a(View paramView, ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage.isSend())
-    {
-      paramView.setPadding(jdField_f_of_type_Int, c, jdField_e_of_type_Int, d);
-      return;
-    }
-    paramView.setPadding(jdField_e_of_type_Int, c, jdField_f_of_type_Int, d);
-  }
-  
   public void a(View paramView, boolean paramBoolean)
   {
-    paramView = agej.a(paramView);
+    paramView = AIOUtils.getHolder(paramView);
     Drawable localDrawable;
-    if ((paramView instanceof ahqq))
+    if ((paramView instanceof agnd))
     {
-      paramView = (ahqq)paramView;
+      paramView = (agnd)paramView;
       if ((paramView != null) && (paramView.jdField_a_of_type_AndroidWidgetRelativeLayout != null))
       {
         localDrawable = paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.getBackground();
@@ -804,36 +804,36 @@ public class ScribbleItemBuilder
     }
   }
   
-  public void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, aggl paramaggl, int paramInt1, int paramInt2)
+  public void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, aezf paramaezf, int paramInt1, int paramInt2)
   {
-    super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramaggl, paramInt1, paramInt2);
+    super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramaezf, paramInt1, paramInt2);
     if (!(paramChatMessage instanceof MessageForScribble)) {}
-    while (!(paramaggl instanceof ahqq)) {
+    while (!(paramaezf instanceof agnd)) {
       return;
     }
-    paramContext = (ahqq)paramaggl;
-    paramInt1 = paramaggl.jdField_a_of_type_AndroidViewView.getPaddingLeft();
-    paramInt2 = paramaggl.jdField_a_of_type_AndroidViewView.getPaddingRight();
-    int i = paramaggl.jdField_a_of_type_AndroidViewView.getPaddingTop();
-    int j = paramaggl.jdField_a_of_type_AndroidViewView.getPaddingBottom();
+    paramContext = (agnd)paramaezf;
+    paramInt1 = paramaezf.jdField_a_of_type_AndroidViewView.getPaddingLeft();
+    paramInt2 = paramaezf.jdField_a_of_type_AndroidViewView.getPaddingRight();
+    int i = paramaezf.jdField_a_of_type_AndroidViewView.getPaddingTop();
+    int j = paramaezf.jdField_a_of_type_AndroidViewView.getPaddingBottom();
     paramBaseChatItemLayout = (RelativeLayout.LayoutParams)paramContext.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getLayoutParams();
     if (paramChatMessage.isSend())
     {
-      paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130850006);
-      paramBaseChatItemLayout.topMargin = agej.a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      paramBaseChatItemLayout.leftMargin = agej.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      paramBaseChatItemLayout.rightMargin = agej.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130849923);
+      paramBaseChatItemLayout.topMargin = AIOUtils.dp2px(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      paramBaseChatItemLayout.leftMargin = AIOUtils.dp2px(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      paramBaseChatItemLayout.rightMargin = AIOUtils.dp2px(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     }
-    for (paramBaseChatItemLayout.bottomMargin = agej.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());; paramBaseChatItemLayout.bottomMargin = agej.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()))
+    for (paramBaseChatItemLayout.bottomMargin = AIOUtils.dp2px(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());; paramBaseChatItemLayout.bottomMargin = AIOUtils.dp2px(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()))
     {
       paramContext.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setLayoutParams(paramBaseChatItemLayout);
       paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(paramInt1, i, paramInt2, j);
       paramContext.jdField_a_of_type_AndroidViewView.setPadding(0, 0, 0, 0);
       return;
-      paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130849830);
-      paramBaseChatItemLayout.topMargin = agej.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      paramBaseChatItemLayout.leftMargin = agej.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      paramBaseChatItemLayout.rightMargin = agej.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130849747);
+      paramBaseChatItemLayout.topMargin = AIOUtils.dp2px(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      paramBaseChatItemLayout.leftMargin = AIOUtils.dp2px(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      paramBaseChatItemLayout.rightMargin = AIOUtils.dp2px(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     }
   }
   
@@ -852,10 +852,10 @@ public class ScribbleItemBuilder
     if (i == 3)
     {
       QLog.d("ScribbleItemBuilder", 2, "isFailed 发送涂鸦数据发送中");
-      paramBaseChatItemLayout = (berp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramChatMessage.frienduin, paramChatMessage.uniseq);
+      paramBaseChatItemLayout = (BaseTransProcessor)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().findProcessor(paramChatMessage.frienduin, paramChatMessage.uniseq);
       if (paramBaseChatItemLayout != null)
       {
-        i = paramBaseChatItemLayout.f();
+        i = paramBaseChatItemLayout.getProgress();
         QLog.d("ScribbleItemBuilder", 2, "isFailed 发送涂鸦数据进行中 progress 为：" + i);
         return false;
       }
@@ -865,23 +865,23 @@ public class ScribbleItemBuilder
     return false;
   }
   
-  public bhum[] a(View paramView)
+  public bgbb[] a(View paramView)
   {
-    paramView = agej.a(paramView);
-    bhuk localbhuk = new bhuk();
+    paramView = AIOUtils.getMessage(paramView);
+    bgaz localbgaz = new bgaz();
     if ((paramView instanceof MessageForScribble))
     {
       MessageForScribble localMessageForScribble = (MessageForScribble)paramView;
-      if ((localMessageForScribble != null) && (localMessageForScribble.fileUploadStatus == 1) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramView))) {
-        a(localbhuk, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramView);
+      if ((localMessageForScribble != null) && (localMessageForScribble.fileUploadStatus == 1) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().b(paramView))) {
+        a(localbgaz, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramView);
       }
     }
     if (paramView.istroop == 0) {
-      a(paramView, localbhuk);
+      a(paramView, localbgaz);
     }
-    a(localbhuk, paramView);
-    super.e(localbhuk, this.jdField_a_of_type_AndroidContentContext);
-    return localbhuk.a();
+    a(localbgaz, paramView);
+    super.e(localbgaz, this.jdField_a_of_type_AndroidContentContext);
+    return localbgaz.a();
   }
   
   public void c(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout)
@@ -898,15 +898,15 @@ public class ScribbleItemBuilder
       return;
       if (((paramView instanceof DoodleMsgView)) || ((paramView instanceof URLImageView)))
       {
-        ahqq localahqq = (ahqq)agej.a(paramView);
-        if (localahqq == null)
+        agnd localagnd = (agnd)AIOUtils.getHolder(paramView);
+        if (localagnd == null)
         {
           QLog.e("ScribbleItemBuilder", 2, "onclick(): holder is null");
           continue;
         }
-        if ((localahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout != null) && (localahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(paramView)))
+        if ((localagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout != null) && (localagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(paramView)))
         {
-          agqv.a().a(localahqq.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout, true);
+          afmp.a().a(localagnd.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout, true);
           continue;
         }
       }

@@ -1,32 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoPresenter.5.1;
+import java.util.List;
 
-class rqo
-  implements View.OnClickListener
+public class rqo
+  implements rgy
 {
-  rqo(rqm paramrqm) {}
+  rqo(rqj paramrqj) {}
   
-  public void onClick(View paramView)
+  public List a(int paramInt1, int paramInt2)
   {
-    rpt.a(rqm.a(this.a), rqm.a(this.a).a);
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("uin", rqm.a(this.a).getCurrentAccountUin());
-      label45:
-      ocd.a(null, null, "0X8009BF2", "0X8009BF2", 0, 0, "", "", "", odr.a(null, null, rqm.a(this.a).a.a.a, rqm.a(this.a).a.a.g, localJSONObject), false);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label45;
-    }
+    return rgn.a(paramInt1, paramInt2);
+  }
+  
+  public void a(List paramList, boolean paramBoolean)
+  {
+    rqj.a(this.a).a(paramList, paramBoolean);
+    bijk.c(new SelectVideoPresenter.5.1(this));
   }
 }
 

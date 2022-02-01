@@ -1,25 +1,20 @@
-import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class xvk
+class xvk
+  implements View.OnClickListener
 {
-  public static boolean a(int paramInt)
+  xvk(xvj paramxvj) {}
+  
+  public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    switch (paramInt)
-    {
-    default: 
-      bool1 = false;
-    case 3: 
-    case 1: 
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (Build.VERSION.SDK_INT >= 21);
-      return false;
+    xvj.a(this.a, false);
+    this.a.notifyDataSetChanged();
+    if (xvj.a(this.a) != null) {
+      xvj.a(this.a).f();
     }
-    return false;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

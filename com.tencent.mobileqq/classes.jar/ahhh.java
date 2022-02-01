@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-final class ahhh
-  implements ahky
+class ahhh
+  implements DialogInterface.OnClickListener
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  ahhh(ahgz paramahgz) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramQQAppInterface = (MessageForDeviceFile)paramChatMessage;
-    if (paramQQAppInterface.nFileMsgType == 2) {
-      return 36;
-    }
-    if (paramQQAppInterface.nFileMsgType == 1) {
-      return 37;
-    }
-    return -1;
+    paramDialogInterface = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", "https://qun.qq.com/qqweb/m/nearby/charm_level/index.html?_wv=1027&_bid=2747");
+    this.a.mContext.startActivity(paramDialogInterface);
   }
 }
 

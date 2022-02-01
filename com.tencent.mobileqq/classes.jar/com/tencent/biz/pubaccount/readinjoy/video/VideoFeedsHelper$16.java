@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import pfa;
+import pkm;
 
 public final class VideoFeedsHelper$16
   implements Runnable
@@ -9,7 +9,7 @@ public final class VideoFeedsHelper$16
   
   public void run()
   {
-    pfa.a().b(this.a, 2);
+    pkm.a().c(this.a, 2);
   }
 }
 

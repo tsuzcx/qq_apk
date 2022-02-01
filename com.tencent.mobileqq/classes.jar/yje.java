@@ -1,42 +1,89 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetYearNodeListReceiver.1;
-import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class yje
-  extends QQUIEventReceiver<yja, yju>
+  extends bjuw
 {
-  public yje(yja paramyja)
+  public static final TroopBarPOI a;
+  protected LayoutInflater a;
+  protected ArrayList<TroopBarPOI> a;
+  protected TroopBarPOI b;
+  
+  static
   {
-    super(paramyja);
+    jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI = new TroopBarPOI("-1", "", amtj.a(2131710099), 0, "", 0, "");
   }
   
-  public void a(@NonNull yja paramyja, @NonNull yju paramyju)
+  public yje(Context paramContext)
   {
-    if (paramyju.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      paramyju = paramyju.jdField_a_of_type_JavaUtilList.iterator();
-      for (int i = 0; paramyju.hasNext(); i = ((MomeriesYearNode)paramyju.next()).videoCount + i) {}
-      if (i >= 0)
-      {
-        yuk.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(i));
-        yja.a(paramyja, i);
-        if (paramyja.a != null)
-        {
-          paramyja.a.videoCount = yja.a(paramyja);
-          ThreadManager.post(new MemoriesProfilePresenter.GetYearNodeListReceiver.1(this, paramyja), 5, null, false);
-        }
-      }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+  }
+  
+  public void a(ArrayList<TroopBarPOI> paramArrayList, TroopBarPOI paramTroopBarPOI)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    if (paramTroopBarPOI != null) {
+      this.b = new TroopBarPOI(paramTroopBarPOI);
     }
   }
   
-  public Class acceptEventClass()
+  public int getCount()
   {
-    return yju.class;
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    TroopBarPOI localTroopBarPOI;
+    if (paramView == null)
+    {
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561699, null);
+      localObject = new yjf();
+      ((yjf)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377056));
+      ((yjf)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369790));
+      paramView.setTag(localObject);
+      localTroopBarPOI = (TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      ((yjf)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(localTroopBarPOI.c);
+      localObject = ((yjf)localObject).jdField_a_of_type_AndroidWidgetImageView;
+      if (!localTroopBarPOI.equals(this.b)) {
+        break label160;
+      }
+    }
+    label160:
+    for (int i = 0;; i = 8)
+    {
+      ((ImageView)localObject).setVisibility(i);
+      paramView.setContentDescription(localTroopBarPOI.c);
+      paramView.setFocusable(true);
+      paramView.setFocusableInTouchMode(true);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      localObject = (yjf)paramView.getTag();
+      break;
+    }
   }
 }
 

@@ -1,152 +1,198 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.util.DisplayMetrics;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.AIORelatedEmotionHelper.1;
+import com.tencent.mobileqq.activity.aio.helper.AIORelatedEmotionHelper.2;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.emoticonview.relateemo.RelatedEmotionPanel;
+import com.tencent.mobileqq.emoticonview.relateemo.RelatedEmotionPanel.IAIORelatedEmotionExpandHelper;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
+import mqq.os.MqqHandler;
 
 public class afpc
-  extends aoib
+  implements afrb, afrc, RelatedEmotionPanel.IAIORelatedEmotionExpandHelper
 {
-  public afpc(SubAccountBindActivity paramSubAccountBindActivity) {}
+  private int jdField_a_of_type_Int = 0;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  protected RelatedEmotionPanel a;
+  private boolean jdField_a_of_type_Boolean = true;
+  private int b;
+  private int c;
+  private int d;
   
-  protected void b(boolean paramBoolean, bdxd parambdxd)
+  public afpc(BaseChatPie paramBaseChatPie)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("SUB_ACCOUNT", 2, "SubAccountBindActivity.onBindSubAccount() isSucc=" + paramBoolean);
-      if (parambdxd != null) {
-        QLog.d("SUB_ACCOUNT", 2, "SubAccountBindActivity.onBindSubAccount() mainAccount=" + parambdxd.jdField_b_of_type_JavaLangString + " subAccount=" + parambdxd.c + " errType=" + parambdxd.jdField_a_of_type_Int + " errMsg=" + parambdxd.jdField_a_of_type_JavaLangString);
-      }
+    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.mContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.d = ((int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels * 0.6D));
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_AndroidViewView = null;
+    a();
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmotionPanel = null;
+  }
+  
+  public int a()
+  {
+    int i = 0;
+    if (!ThemeUtil.isNowThemeIsNight(null, false, null)) {
+      i = ViewUtils.dip2px(15.0F);
     }
-    this.a.e();
-    Object localObject2;
-    if (paramBoolean)
-    {
-      this.a.c(this.a.getString(2131718409));
-      bdws.a(this.a.app);
-      this.a.getActivity().setTitle("");
-      this.a.finish();
-      if ((QLog.isColorLevel()) && (parambdxd != null))
-      {
-        localObject2 = new StringBuilder().append("onBindSubAccount:");
-        if (!paramBoolean) {
-          break label873;
-        }
-      }
+    return i + (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.panelicons.getHeight() + this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mInputBar.getHeight() - this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mInputBar.getPaddingTop());
+  }
+  
+  public View a()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      this.jdField_a_of_type_AndroidViewView = new View(this.jdField_a_of_type_AndroidContentContext);
     }
-    label873:
-    for (Object localObject1 = "..success";; localObject1 = "...failed..")
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIORelatedEmotionHelper", 4, " resetLastStatus ");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmotionPanel == null) {}
+    do
     {
-      QLog.d("SUB_ACCOUNT", 2, (String)localObject1 + " ...errorMsg = " + parambdxd.jdField_a_of_type_JavaLangString + "...errorType = " + parambdxd.jdField_a_of_type_Int);
-      do
+      return;
+      if ((this.b >= this.d) || (this.b <= this.c)) {
+        this.b = this.c;
+      }
+      XPanelContainer.jdField_a_of_type_Int = this.b;
+      if (this.jdField_a_of_type_Int == 0)
       {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getRoot().a(false);
         return;
-      } while (parambdxd == null);
-      switch (parambdxd.jdField_a_of_type_Int)
+      }
+    } while (this.jdField_a_of_type_Int != 1);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getRoot().a(false);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 6) {
+      ThreadManager.getFileThreadHandler().post(new AIORelatedEmotionHelper.1(this));
+    }
+    while (paramInt != 13) {
+      return;
+    }
+    b();
+  }
+  
+  public void a(ChatMessage paramChatMessage, URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AIORelatedEmotionHelper", 4, " showSearchRelatedEmotionPanel ");
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getRoot() == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.panelicons == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mInputBar == null)) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmotionPanel == null) {
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmotionPanel = ((RelatedEmotionPanel)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131558639, null));
+      }
+      this.c = ((Integer)bfyz.a(BaseApplication.getContext(), "", "sp_key_input_height", Integer.valueOf(0))).intValue();
+      if (this.c == 0) {
+        this.c = ((int)(XPanelContainer.b() * this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density));
+      }
+      this.b = XPanelContainer.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmotionPanel.init(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this);
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getCurrentPanel();
+      int i = this.d;
+      int j = a();
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmotionPanel.showEmotionSearchWindow(paramChatMessage, paramURLDrawable, i + j);
+      this.jdField_a_of_type_Boolean = true;
+      if (this.jdField_a_of_type_Int == 1)
       {
-      default: 
-        localObject2 = this.a.getString(2131718400);
-        localObject1 = localObject2;
-        if (parambdxd != null)
-        {
-          localObject1 = localObject2;
-          if (!TextUtils.isEmpty(parambdxd.jdField_a_of_type_JavaLangString)) {
-            localObject1 = parambdxd.jdField_a_of_type_JavaLangString;
-          }
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getRoot().a(37);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 0);
+    XPanelContainer.jdField_a_of_type_Int = this.d;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getRoot().postDelayed(new AIORelatedEmotionHelper.2(this), 150L);
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 13, 6 };
+  }
+  
+  public void onClosePanel()
+  {
+    a();
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmotionPanel = null;
+  }
+  
+  public void updatePanelDistance(float paramFloat)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmotionPanel == null) {}
+    label186:
+    for (;;)
+    {
+      return;
+      int j = (int)(this.d - paramFloat);
+      int i;
+      if (j >= this.d)
+      {
+        i = this.d;
+        if (!this.jdField_a_of_type_Boolean) {
+          break label101;
         }
-        this.a.b((String)localObject1);
-        break;
-      case 1002: 
-        bdwt.a(this.a.app, this.a);
-        break;
-      case 1003: 
-        this.a.b(this.a.getString(2131718401));
-        break;
-      case 1004: 
-        switch (parambdxd.jdField_b_of_type_Int)
+        if ((this.jdField_a_of_type_Int != 0) && (i >= this.b) && (XPanelContainer.jdField_a_of_type_Int <= this.d))
         {
-        default: 
-          localObject2 = parambdxd.jdField_a_of_type_JavaLangString;
-          localObject1 = localObject2;
-          if (TextUtils.isEmpty((CharSequence)localObject2))
+          XPanelContainer.jdField_a_of_type_Int = i;
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getRoot().requestLayout();
+        }
+      }
+      for (;;)
+      {
+        if (i < this.d) {
+          break label186;
+        }
+        this.jdField_a_of_type_Boolean = false;
+        return;
+        i = j;
+        if (j > 0) {
+          break;
+        }
+        i = 0;
+        break;
+        label101:
+        if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1))
+        {
+          XPanelContainer.jdField_a_of_type_Int = i;
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getRoot().requestLayout();
+        }
+        else if (i <= this.c)
+        {
+          if (XPanelContainer.jdField_a_of_type_Int != this.c)
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onBindSubAccount:bind error happen but msg is null shit, ");
-            }
-            localObject1 = this.a.getString(2131718400);
+            XPanelContainer.jdField_a_of_type_Int = this.c;
+            this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getRoot().requestLayout();
           }
-          this.a.b((String)localObject1);
-          break;
-        case 1200: 
-        case 1214: 
-        case 1215: 
-          localObject1 = this.a.getString(2131718434);
-          localObject2 = this.a.getString(2131718403);
-          this.a.a((String)localObject1, (String)localObject2, new afpd(this, parambdxd));
-          break;
-        case 1218: 
-          if (!TextUtils.isEmpty(parambdxd.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131717562);
-          this.a.b((String)localObject1);
-          break;
-        case 1232: 
-          if (!TextUtils.isEmpty(parambdxd.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131718404);
-          this.a.b((String)localObject1);
-          break;
-        case 1233: 
-          if (!TextUtils.isEmpty(parambdxd.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131718399);
-          this.a.b((String)localObject1);
-          break;
-        case 1240: 
-          if (!TextUtils.isEmpty(parambdxd.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131718405);
-          this.a.b((String)localObject1);
-          break;
-        case 1241: 
-          if (!TextUtils.isEmpty(parambdxd.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131718398);
-          this.a.b((String)localObject1);
-          break;
-        case 1242: 
-          if (!TextUtils.isEmpty(parambdxd.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localObject1 = this.a.app.getApp().getResources().getString(2131718407);
-          this.a.b((String)localObject1);
         }
-        break;
-      case 1011: 
-        localObject2 = this.a.getString(2131718400);
-        localObject1 = localObject2;
-        if (parambdxd != null)
+        else
         {
-          localObject1 = localObject2;
-          if (!TextUtils.isEmpty(parambdxd.jdField_a_of_type_JavaLangString)) {
-            localObject1 = parambdxd.jdField_a_of_type_JavaLangString;
-          }
+          XPanelContainer.jdField_a_of_type_Int = i;
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getRoot().requestLayout();
         }
-        this.a.b((String)localObject1);
-        localObject1 = new Intent(this.a, SubLoginActivity.class);
-        ((Intent)localObject1).putExtra("subuin", parambdxd.c);
-        ((Intent)localObject1).putExtra("fromWhere", this.a.jdField_b_of_type_JavaLangString);
-        this.a.startActivity((Intent)localObject1);
-        break;
       }
     }
   }

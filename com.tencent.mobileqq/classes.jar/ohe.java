@@ -1,22 +1,83 @@
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-class ohe
-  implements ViewBase.OnClickListener
+public class ohe
+  implements ohf
 {
-  ohe(ohc paramohc) {}
+  private CustomTabView a;
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(Context paramContext)
   {
-    if (paramViewBase.getEventAttachedData() == null) {
-      return;
+    if (paramContext != null) {
+      paramContext.sendBroadcast(new Intent("com.tencent.biz.pubaccount.ecshop.tabpage.finish"));
     }
-    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(paramViewBase.getEventAttachedData()));
-    paramViewBase.getNativeView().getContext().startActivity(localIntent);
+    if (this.a != null) {
+      this.a.a();
+    }
+  }
+  
+  public void a(MessageRecord paramMessageRecord) {}
+  
+  public void a(List<ChatMessage> paramList, ohg paramohg)
+  {
+    if (paramList.size() > 0)
+    {
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        ChatMessage localChatMessage = (ChatMessage)localIterator.next();
+        localChatMessage.removeExtInfoToExtStr("add_title");
+        if (ohm.a(localChatMessage) == 1) {
+          localIterator.remove();
+        }
+      }
+    }
+    if (paramohg != null) {
+      paramohg.a(paramList);
+    }
+  }
+  
+  public boolean a(Context paramContext, RelativeLayout paramRelativeLayout)
+  {
+    ohh localohh = ohj.a();
+    if (ohk.a(localohh))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EcshopMinusViewChatPie", 2, "initPublicAccountMenu new qqshop pubaccount return");
+      }
+      this.a = new CustomTabView(paramContext);
+      if (this.a.a(localohh))
+      {
+        this.a.setTag("echopCustomTabView");
+        this.a.a(1);
+        paramRelativeLayout.addView(this.a);
+        paramContext = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
+        if (paramContext != null)
+        {
+          paramContext.width = -1;
+          paramContext.height = -2;
+          paramContext.addRule(12);
+        }
+        paramContext = oho.a();
+        oho.a(paramContext);
+        this.a.a(paramContext);
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(RelativeLayout paramRelativeLayout)
+  {
+    return (ohk.a()) && (paramRelativeLayout != null) && (paramRelativeLayout.findViewWithTag("echopCustomTabView") != null);
   }
 }
 

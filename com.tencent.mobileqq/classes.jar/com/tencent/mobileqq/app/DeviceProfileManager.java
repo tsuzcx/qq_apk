@@ -1,5 +1,10 @@
 package com.tencent.mobileqq.app;
 
+import amqp;
+import amqq;
+import amqr;
+import amqs;
+import amtj;
 import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
@@ -8,14 +13,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
-import anwg;
-import anwh;
-import anwi;
-import anwj;
-import anzj;
-import arta;
-import bhlo;
-import bhrq;
+import aqmy;
+import bfym;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.CPU;
@@ -36,6 +35,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.SecUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
@@ -59,13 +59,13 @@ public class DeviceProfileManager
   private static volatile DeviceProfileManager jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager;
   public static ConfigurationService.ReqGetConfig a;
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static List<anwh> jdField_a_of_type_JavaUtilList;
+  private static List<amqq> jdField_a_of_type_JavaUtilList;
   public static boolean a;
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "featureValue" };
   private static Field[] jdField_a_of_type_ArrayOfJavaLangReflectField;
   public static boolean b;
   public int a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new anwg(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new amqp(this);
   private HashMap<String, DeviceProfileManager.DPCConfigInfo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
   private HashMap<String, DeviceProfileManager.DPCConfigInfo> b;
@@ -84,7 +84,7 @@ public class DeviceProfileManager
   }
   
   /* Error */
-  public static <T> int a(String paramString, T[] paramArrayOfT, anwl<T> paramanwl)
+  public static <T> int a(String paramString, T[] paramArrayOfT, amqu<T> paramamqu)
   {
     // Byte code:
     //   0: iconst_0
@@ -154,7 +154,7 @@ public class DeviceProfileManager
     //   start	length	slot	name	signature
     //   0	114	0	paramString	String
     //   0	114	1	paramArrayOfT	T[]
-    //   0	114	2	paramanwl	anwl<T>
+    //   0	114	2	paramamqu	amqu<T>
     //   32	71	3	i	int
     //   34	72	4	j	int
     //   1	60	5	k	int
@@ -207,31 +207,31 @@ public class DeviceProfileManager
     Object localObject1 = new ConfigurationService.OS();
     ((ConfigurationService.OS)localObject1).setHasFlag(true);
     ((ConfigurationService.OS)localObject1).type.set(2);
-    ((ConfigurationService.OS)localObject1).kernel.set(bhlo.m());
-    ((ConfigurationService.OS)localObject1).sdk.set(String.valueOf(bhlo.a()));
-    ((ConfigurationService.OS)localObject1).version.set(bhlo.e());
-    ((ConfigurationService.OS)localObject1).rom.set(bhlo.j());
+    ((ConfigurationService.OS)localObject1).kernel.set(DeviceInfoUtil.getKernelVersion());
+    ((ConfigurationService.OS)localObject1).sdk.set(String.valueOf(DeviceInfoUtil.getOsVersion()));
+    ((ConfigurationService.OS)localObject1).version.set(DeviceInfoUtil.getDeviceOSVersion());
+    ((ConfigurationService.OS)localObject1).rom.set(DeviceInfoUtil.getRomInfo());
     ConfigurationService.CPU localCPU = new ConfigurationService.CPU();
     localCPU.setHasFlag(true);
-    localCPU.model.set(bhlo.g());
-    localCPU.cores.set(bhlo.b());
-    localCPU.frequency.set((int)bhlo.a());
+    localCPU.model.set(DeviceInfoUtil.getCpuType());
+    localCPU.cores.set(DeviceInfoUtil.getCpuNumber());
+    localCPU.frequency.set((int)DeviceInfoUtil.getCpuFrequency());
     ConfigurationService.Memory localMemory = new ConfigurationService.Memory();
     localMemory.setHasFlag(true);
-    localMemory.total.set(bhlo.d());
-    localMemory.process.set(bhlo.f());
+    localMemory.total.set(DeviceInfoUtil.getSystemTotalMemory());
+    localMemory.process.set(DeviceInfoUtil.getMemoryClass());
     ConfigurationService.Storage localStorage = new ConfigurationService.Storage();
     localStorage.setHasFlag(true);
-    localStorage.builtin.set(bhlo.c());
-    Object localObject2 = bhlo.b();
+    localStorage.builtin.set(DeviceInfoUtil.getTotalInternalMemorySize());
+    Object localObject2 = DeviceInfoUtil.getSDCardMemory();
     localStorage.external.set(localObject2[0] * 1048576L + localObject2[1] * 1024L * 1024L);
     localObject2 = new ConfigurationService.Screen();
     ((ConfigurationService.Screen)localObject2).setHasFlag(true);
     ((ConfigurationService.Screen)localObject2).model.set("");
-    ((ConfigurationService.Screen)localObject2).width.set((int)bhlo.g());
-    ((ConfigurationService.Screen)localObject2).height.set((int)bhlo.h());
-    ((ConfigurationService.Screen)localObject2).dpi.set(bhlo.d());
-    ((ConfigurationService.Screen)localObject2).multi_touch.set(bhlo.c());
+    ((ConfigurationService.Screen)localObject2).width.set((int)DeviceInfoUtil.getDispalyWidth());
+    ((ConfigurationService.Screen)localObject2).height.set((int)DeviceInfoUtil.getDispalyHeight());
+    ((ConfigurationService.Screen)localObject2).dpi.set(DeviceInfoUtil.getDispalyDpi());
+    ((ConfigurationService.Screen)localObject2).multi_touch.set(DeviceInfoUtil.isSupportMultiTouch());
     ConfigurationService.Camera localCamera = new ConfigurationService.Camera();
     localCamera.setHasFlag(true);
     localCamera.primary.set(0L);
@@ -241,9 +241,9 @@ public class DeviceProfileManager
     ((ConfigurationService.ConfigSeq)localObject3).setHasFlag(true);
     ((ConfigurationService.ConfigSeq)localObject3).type.set(4);
     long l1 = System.currentTimeMillis();
-    SharedPreferences localSharedPreferences = bhrq.a(BaseApplicationImpl.getContext(), "dpcConfig_account");
+    SharedPreferences localSharedPreferences = bfym.a(BaseApplicationImpl.getContext(), "dpcConfig_account");
     long l2 = localSharedPreferences.getLong(DeviceProfileManager.AccountDpcManager.a(paramAppInterface, "last_update_time"), 0L);
-    int k = arta.a(BaseApplicationImpl.getContext());
+    int k = aqmy.a(BaseApplicationImpl.getContext());
     int m = localSharedPreferences.getInt("key_versioncode", 0);
     if (QLog.isColorLevel()) {
       QLog.d("DeviceProfileManager", 2, "DeviceProfileManager.KEY_LAST_UPDATE_TIME=" + l2 + ",nowSystemTime=" + l1 + "versionCode=" + k + ",key_versioncode=" + m);
@@ -262,8 +262,8 @@ public class DeviceProfileManager
     paramAppInterface.add(localObject3);
     localObject3 = new ConfigurationService.DeviceInfo();
     ((ConfigurationService.DeviceInfo)localObject3).setHasFlag(true);
-    ((ConfigurationService.DeviceInfo)localObject3).brand.set(bhlo.h());
-    ((ConfigurationService.DeviceInfo)localObject3).model.set(bhlo.d());
+    ((ConfigurationService.DeviceInfo)localObject3).brand.set(DeviceInfoUtil.getManufactureInfo());
+    ((ConfigurationService.DeviceInfo)localObject3).model.set(DeviceInfoUtil.getDeviceModel());
     ((ConfigurationService.DeviceInfo)localObject3).os = ((ConfigurationService.OS)localObject1);
     ((ConfigurationService.DeviceInfo)localObject3).cpu = localCPU;
     ((ConfigurationService.DeviceInfo)localObject3).memory = localMemory;
@@ -297,10 +297,10 @@ public class DeviceProfileManager
     new DeviceProfileManager.DPCConfigInfo().featureValue = "1";
     this.jdField_b_of_type_JavaUtilHashMap.put(DeviceProfileManager.DpcNames.aio_eggs.name(), localObject);
     localObject = new DeviceProfileManager.DPCConfigInfo();
-    ((DeviceProfileManager.DPCConfigInfo)localObject).featureValue = anzj.a(2131702104);
+    ((DeviceProfileManager.DPCConfigInfo)localObject).featureValue = amtj.a(2131702339);
     this.jdField_b_of_type_JavaUtilHashMap.put(DeviceProfileManager.DpcNames.OneyWayDateMsgNotifyCfg.name(), localObject);
     localObject = new DeviceProfileManager.DPCConfigInfo();
-    ((DeviceProfileManager.DPCConfigInfo)localObject).featureValue = anzj.a(2131702099);
+    ((DeviceProfileManager.DPCConfigInfo)localObject).featureValue = amtj.a(2131702334);
     this.jdField_b_of_type_JavaUtilHashMap.put(DeviceProfileManager.DpcNames.OneyWayLBSFriendMsgNotifyCfg.name(), localObject);
   }
   
@@ -333,15 +333,15 @@ public class DeviceProfileManager
     }
   }
   
-  public static void a(anwh paramanwh)
+  public static void a(amqq paramamqq)
   {
     synchronized (jdField_a_of_type_JavaLangObject)
     {
       if (jdField_a_of_type_JavaUtilList == null) {
         jdField_a_of_type_JavaUtilList = new ArrayList();
       }
-      if ((paramanwh != null) && (!jdField_a_of_type_JavaUtilList.contains(paramanwh))) {
-        jdField_a_of_type_JavaUtilList.add(paramanwh);
+      if ((paramamqq != null) && (!jdField_a_of_type_JavaUtilList.contains(paramamqq))) {
+        jdField_a_of_type_JavaUtilList.add(paramamqq);
       }
       return;
     }
@@ -408,7 +408,7 @@ public class DeviceProfileManager
     }
     jdField_b_of_type_Boolean = true;
     a();
-    SharedPreferences localSharedPreferences = bhrq.a(BaseApplicationImpl.getApplication(), "dpcConfig");
+    SharedPreferences localSharedPreferences = bfym.a(BaseApplicationImpl.getApplication(), "dpcConfig");
     this.jdField_a_of_type_Int = localSharedPreferences.getInt("ab_rand", -1);
     Object localObject;
     if (this.jdField_a_of_type_Int == -1)
@@ -484,7 +484,7 @@ public class DeviceProfileManager
       paramEditor2.putInt(DeviceProfileManager.AccountDpcManager.a(jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager$AccountDpcManager.jdField_a_of_type_ComTencentCommonAppAppInterface, "server_version"), paramConfig.version.get());
     }
     int i = paramSharedPreferences.getInt("key_versioncode", 0);
-    int j = arta.a(BaseApplicationImpl.getApplication());
+    int j = aqmy.a(BaseApplicationImpl.getApplication());
     if (i < j) {
       paramEditor2.putInt("key_versioncode", j);
     }
@@ -542,12 +542,12 @@ public class DeviceProfileManager
     finally {}
   }
   
-  public static void b(anwh paramanwh)
+  public static void b(amqq paramamqq)
   {
     synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if ((jdField_a_of_type_JavaUtilList != null) && (paramanwh != null)) {
-        jdField_a_of_type_JavaUtilList.remove(paramanwh);
+      if ((jdField_a_of_type_JavaUtilList != null) && (paramamqq != null)) {
+        jdField_a_of_type_JavaUtilList.remove(paramamqq);
       }
       return;
     }
@@ -566,11 +566,11 @@ public class DeviceProfileManager
         i = jdField_a_of_type_JavaUtilList.size() - 1;
         if (i >= 0)
         {
-          anwh localanwh = (anwh)jdField_a_of_type_JavaUtilList.get(i);
-          if (localanwh == null) {
+          amqq localamqq = (amqq)jdField_a_of_type_JavaUtilList.get(i);
+          if (localamqq == null) {
             break label68;
           }
-          localanwh.a(paramBoolean);
+          localamqq.onDpcPullFinished(paramBoolean);
         }
       }
       return;
@@ -698,7 +698,7 @@ public class DeviceProfileManager
         localObject2 = null;
         return localObject2;
       }
-      localObject1 = bhrq.a(BaseApplicationImpl.getApplication(), "dpcConfig_account");
+      localObject1 = bfym.a(BaseApplicationImpl.getApplication(), "dpcConfig_account");
       localObject2 = DeviceProfileManager.AccountDpcManager.a(jdField_a_of_type_ComTencentMobileqqAppDeviceProfileManager$AccountDpcManager, paramString);
       String str = ((SharedPreferences)localObject1).getString((String)localObject2, "");
       if ("".equals(str))
@@ -723,7 +723,7 @@ public class DeviceProfileManager
         b((DeviceProfileManager.DPCConfigInfo)localObject1, str);
       }
     }
-    Object localObject2 = bhrq.a(BaseApplicationImpl.getApplication(), "dpcConfig").getString(paramString, "");
+    Object localObject2 = bfym.a(BaseApplicationImpl.getApplication(), "dpcConfig").getString(paramString, "");
     if ("".equals(localObject2))
     {
       localObject1 = (DeviceProfileManager.DPCConfigInfo)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
@@ -750,24 +750,24 @@ public class DeviceProfileManager
     //   1: monitorenter
     //   2: aload_0
     //   3: aload_1
-    //   4: invokespecial 837	com/tencent/mobileqq/app/DeviceProfileManager:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/DeviceProfileManager$DPCConfigInfo;
+    //   4: invokespecial 852	com/tencent/mobileqq/app/DeviceProfileManager:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/DeviceProfileManager$DPCConfigInfo;
     //   7: astore_2
     //   8: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   11: ifeq +50 -> 61
     //   14: new 102	java/lang/StringBuilder
     //   17: dup
     //   18: invokespecial 103	java/lang/StringBuilder:<init>	()V
-    //   21: ldc_w 839
+    //   21: ldc_w 854
     //   24: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: aload_1
     //   28: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   31: ldc_w 669
+    //   31: ldc_w 682
     //   34: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   37: astore_3
     //   38: aload_2
     //   39: ifnull +51 -> 90
     //   42: aload_2
-    //   43: invokevirtual 670	com/tencent/mobileqq/app/DeviceProfileManager$DPCConfigInfo:toString	()Ljava/lang/String;
+    //   43: invokevirtual 683	com/tencent/mobileqq/app/DeviceProfileManager$DPCConfigInfo:toString	()Ljava/lang/String;
     //   46: astore_1
     //   47: ldc 100
     //   49: iconst_2
@@ -779,23 +779,23 @@ public class DeviceProfileManager
     //   61: aload_2
     //   62: ifnull +20 -> 82
     //   65: aload_2
-    //   66: getfield 482	com/tencent/mobileqq/app/DeviceProfileManager$DPCConfigInfo:featureValue	Ljava/lang/String;
+    //   66: getfield 493	com/tencent/mobileqq/app/DeviceProfileManager$DPCConfigInfo:featureValue	Ljava/lang/String;
     //   69: ifnull +13 -> 82
     //   72: aload_2
-    //   73: getfield 482	com/tencent/mobileqq/app/DeviceProfileManager$DPCConfigInfo:featureValue	Ljava/lang/String;
-    //   76: invokevirtual 756	java/lang/String:length	()I
+    //   73: getfield 493	com/tencent/mobileqq/app/DeviceProfileManager$DPCConfigInfo:featureValue	Ljava/lang/String;
+    //   76: invokevirtual 771	java/lang/String:length	()I
     //   79: ifne +18 -> 97
-    //   82: ldc_w 286
+    //   82: ldc_w 292
     //   85: astore_1
     //   86: aload_0
     //   87: monitorexit
     //   88: aload_1
     //   89: areturn
-    //   90: ldc_w 841
+    //   90: ldc_w 856
     //   93: astore_1
     //   94: goto -47 -> 47
     //   97: aload_2
-    //   98: getfield 482	com/tencent/mobileqq/app/DeviceProfileManager$DPCConfigInfo:featureValue	Ljava/lang/String;
+    //   98: getfield 493	com/tencent/mobileqq/app/DeviceProfileManager$DPCConfigInfo:featureValue	Ljava/lang/String;
     //   101: astore_1
     //   102: goto -16 -> 86
     //   105: astore_1
@@ -826,15 +826,15 @@ public class DeviceProfileManager
     //   1: monitorenter
     //   2: aload_0
     //   3: aload_1
-    //   4: invokevirtual 843	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   4: invokevirtual 858	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;)Ljava/lang/String;
     //   7: astore 4
     //   9: aload_2
     //   10: astore_1
     //   11: aload 4
     //   13: ifnull +18 -> 31
-    //   16: ldc_w 286
+    //   16: ldc_w 292
     //   19: aload 4
-    //   21: invokevirtual 658	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   21: invokevirtual 671	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   24: istore_3
     //   25: iload_3
     //   26: ifeq +9 -> 35
@@ -976,13 +976,13 @@ public class DeviceProfileManager
     return a(paramString);
   }
   
-  public boolean a(String paramString, HashMap<String, anwj> paramHashMap)
+  public boolean a(String paramString, HashMap<String, amqs> paramHashMap)
   {
-    QLog.i("DeviceProfileManager", 1, "dpcStart{" + SecUtil.xor(paramString, "8.4.5") + "}dpcEnd");
+    QLog.i("DeviceProfileManager", 1, "dpcStart{" + SecUtil.xor(paramString, "8.4.8") + "}dpcEnd");
     if ((paramString == null) || (paramString.length() == 0)) {
       return false;
     }
-    paramHashMap = new anwi(paramHashMap);
+    paramHashMap = new amqr(paramHashMap);
     try
     {
       SAXParserFactory.newInstance().newSAXParser().parse(new InputSource(new ByteArrayInputStream(paramString.getBytes("utf-8"))), paramHashMap);

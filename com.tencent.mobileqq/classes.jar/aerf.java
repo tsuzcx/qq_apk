@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class aerf
-  extends aqmy
+  implements DialogInterface.OnClickListener
 {
-  public aerf(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public aerf(TroopTransferActivity paramTroopTransferActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      aqmx localaqmx = (aqmx)this.a.app.getManager(112);
-      this.a.a = localaqmx.a(paramString);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
   }
 }
 

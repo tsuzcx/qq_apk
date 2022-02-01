@@ -1,36 +1,47 @@
-import android.arch.lifecycle.Observer;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Collections;
-import qqcircle.QQCircleFeedBase.StTabInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import org.json.JSONObject;
 
-public class vln
-  implements Observer<vbb>
+class vln
+  extends SimpleJob<Object>
 {
-  public vln(QCircleBaseTabFragment paramQCircleBaseTabFragment) {}
-  
-  public void a(@Nullable vbb paramvbb)
+  vln(vlm paramvlm, String paramString)
   {
-    if ((this.a.jdField_a_of_type_Uzw != null) && (this.a.jdField_a_of_type_Vbe != null) && (this.a.jdField_a_of_type_Vbe.a != null))
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
+  {
+    Object localObject = (String)((vuq)vux.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", "");
+    synchronized (this.a.b)
     {
-      if (paramvbb == null) {
-        break label119;
-      }
-      paramvbb.a(uyw.a(this.a.jdField_a_of_type_Vbe.a.urlInfo.get(), "NoticeListUrl"));
-      boolean bool = paramvbb.a();
-      this.a.jdField_a_of_type_Uzw.a(bool);
-      if (bool)
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        vtq.a("", 18, 1);
-        this.a.jdField_a_of_type_Uzw.setDatas(new ArrayList(Collections.singletonList(paramvbb)));
-        vtd.a(paramvbb.c());
+        long l = this.a.a.jdField_a_of_type_Long;
+        if (l != 0L) {}
+      }
+      try
+      {
+        paramVarArgs = new vlq();
+        localObject = new JSONObject((String)localObject);
+        paramVarArgs.jdField_a_of_type_Long = ((JSONObject)localObject).getLong("t");
+        paramVarArgs.jdField_a_of_type_ArrayOfByte = HexUtil.hexStr2Bytes(((JSONObject)localObject).getString("ak"));
+        this.a.a = paramVarArgs;
+        xvv.a("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init success -> %s", localObject);
+        return null;
+      }
+      catch (Exception paramVarArgs)
+      {
+        for (;;)
+        {
+          xvv.b("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init error , %s", paramVarArgs);
+        }
       }
     }
-    return;
-    label119:
-    this.a.jdField_a_of_type_Uzw.a(false);
   }
 }
 

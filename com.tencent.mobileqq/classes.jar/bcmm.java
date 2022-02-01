@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
-import java.util.Set;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import java.lang.ref.WeakReference;
 
 public class bcmm
-  extends bclc
+  extends Handler
 {
-  public final bcmn a;
+  private WeakReference<bcme> a;
   
-  public bcmm(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
+  public bcmm(bcme parambcme)
   {
-    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
-    this.a = new bcmn(paramQQAppInterface);
+    this.a = new WeakReference(parambcme);
   }
   
-  public Comparator<bcfn> a()
+  public void handleMessage(Message paramMessage)
   {
-    return this.a;
+    if ((bcme)this.a.get() != null) {
+      ((AnyScaleTypeImageView)paramMessage.obj).setImageResource(2130845310);
+    }
   }
 }
 

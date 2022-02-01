@@ -1,17 +1,10 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.vas.avatar.VasAvatar;
+import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
 
-public class amnc
+public abstract interface amnc
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public VasAvatar a;
-  public ImageView b;
+  public abstract void a(ApolloPanelGuideView paramApolloPanelGuideView);
   
-  public amnc(amnb paramamnb) {}
+  public abstract void b(ApolloPanelGuideView paramApolloPanelGuideView);
 }
 
 

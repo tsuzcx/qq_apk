@@ -1,151 +1,46 @@
-import android.net.Uri;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.guidingchannel.ReadInJoyChannelGuidingManager.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyLockScreenJumpDelegate;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URLDecoder;
-import java.util.List;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.InnerMsg;
+import org.jetbrains.annotations.NotNull;
 
 public class pmh
+  extends pmb
 {
-  private static SparseArray<pmi> a = new SparseArray();
-  private static SparseArray<String> b = new SparseArray();
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private boolean jdField_a_of_type_Boolean;
   
-  private static void a(int paramInt)
+  public pmh(@NotNull pmc parampmc, Activity paramActivity)
   {
-    QLog.i("ReadInJoyChannelGuidingManager", 1, "[clearInsertedArticleInfo], channelID = " + paramInt);
-    a.remove(paramInt);
+    super(parampmc, "RIJLockScreenPopupStep");
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public static void a(BaseArticleInfo paramBaseArticleInfo, ReadInJoyXListView paramReadInJoyXListView, sel paramsel)
+  private boolean b()
   {
-    if ((paramBaseArticleInfo == null) || (paramReadInJoyXListView == null) || (paramsel == null))
+    if (this.jdField_a_of_type_AndroidAppActivity != null)
     {
-      QLog.e("ReadInJoyChannelGuidingManager", 1, "[openFirstInsertedArticle], articleInfo is null or listView is null, or adapter is null.");
-      return;
-    }
-    int i = (int)paramBaseArticleInfo.mChannelID;
-    String str = (String)b.get(i);
-    b.remove(i);
-    if (!TextUtils.equals(paramBaseArticleInfo.innerUniqueID, str))
-    {
-      QLog.i("ReadInJoyChannelGuidingManager", 1, "[openFirstInsertedArticle], rowKey not equal, do not open; channelID = " + i + ", lastRowKey = " + str + ", innerUniqueID = " + paramBaseArticleInfo.innerUniqueID);
-      return;
-    }
-    QLog.i("ReadInJoyChannelGuidingManager", 1, "[openFirstInsertedArticle], click first article.");
-    ozs.b().post(new ReadInJoyChannelGuidingManager.1(paramReadInJoyXListView, paramsel));
-  }
-  
-  public static void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return;
-      paramString = Uri.parse(paramString);
-      String str1 = paramString.getQueryParameter("channelid");
-      Object localObject = paramString.getQueryParameter("algorithmid");
-      String str2 = paramString.getQueryParameter("rowkey");
-      QLog.i("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], channelid = " + str1 + ", algorithmID = " + (String)localObject + ", rowKey = " + str2);
-      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.isEmpty(str2))) {
-        continue;
-      }
-      localObject = new pmi((String)localObject, str2);
-      try
+      Intent localIntent = this.jdField_a_of_type_AndroidAppActivity.getIntent();
+      if ((localIntent != null) && (localIntent.hasExtra("launch_from")) && (localIntent.hasExtra("kan_dian_lock_screen_flag")) && (localIntent.getIntExtra("launch_from", 0) == 9))
       {
-        int i = Integer.valueOf(str1).intValue();
-        a.put(i, localObject);
-        b.put(i, str2);
-        try
-        {
-          str1 = paramString.getQueryParameter("article_url");
-          paramString = paramString.getQueryParameter("show_floating_window");
-          str2 = URLDecoder.decode(str1, "utf-8");
-          if ((i == 0) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (TextUtils.equals("1", paramString)) && (bnrf.h()))
-          {
-            b.remove(i);
-            QLog.i("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], remove last rowKey.");
-          }
-          if ((i != 0) || (bnrf.h())) {
-            continue;
-          }
-          a.remove(i);
-          b.remove(i);
-          QLog.i("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], remove insertInfo and last rowKey.");
-          return;
-        }
-        catch (Exception paramString)
-        {
-          QLog.e("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], e = " + paramString);
-          return;
-        }
-        return;
-      }
-      catch (NumberFormatException paramString)
-      {
-        QLog.e("ReadInJoyChannelGuidingManager", 1, "[parseJumpToChannelScheme], e = " + paramString);
+        ReadInJoyLockScreenJumpDelegate.a(this.jdField_a_of_type_AndroidAppActivity, localIntent);
+        localIntent.removeExtra("kan_dian_lock_screen_flag");
+        QLog.i("RIJDailyPopupStep", 1, "RIJLockScreenPopupStep handleLockScreenJump!");
+        return true;
       }
     }
-  }
-  
-  public static void a(qft paramqft, List<oidb_cmd0x68b.InnerMsg> paramList)
-  {
-    if ((paramqft == null) || (paramList == null)) {
-      QLog.i("ReadInJoyChannelGuidingManager", 1, "[addRequestParams], params is null or innerMsgList is null.");
-    }
-    int i;
-    do
-    {
-      return;
-      if (paramqft.a != -1L)
-      {
-        QLog.i("ReadInJoyChannelGuidingManager", 1, "[addRequestParams], is not pull down refresh, do not insert.");
-        return;
-      }
-      i = paramqft.b;
-    } while (!a(i));
-    paramqft = (pmi)a.get(i);
-    oidb_cmd0x68b.InnerMsg localInnerMsg = new oidb_cmd0x68b.InnerMsg();
-    localInnerMsg.uint32_jump_src_type.set(12);
-    localInnerMsg.bytes_inner_uniq_id.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramqft.b)));
-    if (i == 0) {
-      localInnerMsg.uint32_jump_src_type.set(13);
-    }
-    try
-    {
-      localInnerMsg.uint64_algorithm_id.set(Long.valueOf(paramqft.a).longValue());
-      QLog.i("ReadInJoyChannelGuidingManager", 1, "[addRequestParams], insertArticle = " + paramqft);
-      paramList.add(0, localInnerMsg);
-      a(i);
-      return;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        QLog.e("ReadInJoyChannelGuidingManager", 1, "[addRequestParams], e = " + localNumberFormatException);
-      }
-    }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    pmi localpmi = (pmi)a.get(paramInt);
-    if (localpmi != null)
-    {
-      QLog.i("ReadInJoyChannelGuidingManager", 1, "[isNeedToInsertArticle], " + localpmi);
-      return localpmi.a();
-    }
-    QLog.i("ReadInJoyChannelGuidingManager", 1, "[isNeedToInsertArticle], channelID = " + paramInt + ", insertArticle is null.");
     return false;
+  }
+  
+  protected void g()
+  {
+    a(this.jdField_a_of_type_Boolean);
+  }
+  
+  protected void h()
+  {
+    this.jdField_a_of_type_Boolean = b();
+    a(this.jdField_a_of_type_Boolean);
   }
 }
 

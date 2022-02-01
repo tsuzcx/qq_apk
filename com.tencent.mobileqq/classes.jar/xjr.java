@@ -1,21 +1,88 @@
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher.1;
+import android.content.Context;
+import android.text.SpannableStringBuilder;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailListView;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import java.util.List;
 
 public class xjr
-  implements brhs
+  extends ysg<xhh>
 {
-  public xjr(FollowCaptureLauncher.1 param1) {}
+  public static final String KEY = "DetailLikeListSegment";
+  private xgr jdField_a_of_type_Xgr;
+  private xhh jdField_a_of_type_Xhh;
+  private xjh jdField_a_of_type_Xjh = new xjh(2);
+  private xji jdField_a_of_type_Xji = new xji();
+  private boolean b;
   
-  public void a()
+  public xjr(Context paramContext)
   {
-    FollowCaptureLauncher.a(this.a.this$0).sendEmptyMessage(65541);
+    super(paramContext);
   }
   
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void b()
+  public void N_()
   {
-    FollowCaptureLauncher.a(this.a.this$0).sendEmptyMessage(65542);
+    if (((StoryDetailListView)a()).a())
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public int a()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Xhh != null) && (this.jdField_a_of_type_Xhh.b(this.b).size() > 0)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View a(int paramInt, xsh paramxsh, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (TextView)paramxsh.a(2131369925);
+    SpannableStringBuilder localSpannableStringBuilder = xho.a(this.jdField_a_of_type_Xhh.a, this.jdField_a_of_type_Xhh.b(this.b), this.jdField_a_of_type_Xjh);
+    if (localSpannableStringBuilder.length() == 0)
+    {
+      paramViewGroup.setVisibility(8);
+      return paramxsh.a();
+    }
+    if ((this.jdField_a_of_type_Xhh.b(this.b) >= 30) && (this.jdField_a_of_type_Xhh.b(this.b) > this.jdField_a_of_type_Xhh.b(this.b).size())) {
+      localSpannableStringBuilder.append(String.format("等%s人赞了", new Object[] { UIUtils.formatCount(this.jdField_a_of_type_Xhh.b(this.b)) }));
+    }
+    for (;;)
+    {
+      paramViewGroup.setVisibility(0);
+      paramViewGroup.setText(localSpannableStringBuilder);
+      paramViewGroup.setOnTouchListener(this.jdField_a_of_type_Xji);
+      break;
+      localSpannableStringBuilder.append("赞了");
+    }
+  }
+  
+  public String a()
+  {
+    return "DetailLikeListSegment";
+  }
+  
+  public xsh a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new xsh(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561584, paramViewGroup, false));
+  }
+  
+  public void a(xgr paramxgr)
+  {
+    this.jdField_a_of_type_Xgr = paramxgr;
+    this.jdField_a_of_type_Xjh.a(paramxgr);
+  }
+  
+  public void a(xhh paramxhh, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Xhh = paramxhh;
+    this.b = paramBoolean;
   }
 }
 

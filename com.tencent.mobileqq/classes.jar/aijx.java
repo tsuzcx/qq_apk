@@ -1,16 +1,17 @@
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+
 class aijx
-  extends bebs
+  implements BusinessObserver
 {
-  aijx(aijm paramaijm) {}
+  aijx(aijw paramaijw) {}
   
-  public void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    becb.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, aijm.e(this.a), paramBoolean, paramArrayOfObject);
-  }
-  
-  public void b(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    becb.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, aijm.f(this.a), paramBoolean, paramArrayOfObject);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("RecommendTroopAdapter", 4, "delRecommendTroop");
+    }
   }
 }
 

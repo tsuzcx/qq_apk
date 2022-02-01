@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pfd;
+import pkp;
 
 public class SubscriptionInfoModule$4
   implements Runnable
 {
   public void run()
   {
-    pfd.a().b(this.a);
+    pkp.a().b(this.a);
   }
 }
 

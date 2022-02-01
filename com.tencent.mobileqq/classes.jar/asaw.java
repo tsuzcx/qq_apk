@@ -1,25 +1,39 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTencentDocFileTabView;
 
 public class asaw
-  implements Handler.Callback
+  extends ataq
 {
-  private String a;
+  public asaw(QfileRecentTencentDocFileTabView paramQfileRecentTencentDocFileTabView) {}
   
-  public asaw(String paramString)
+  public void a()
   {
-    this.a = paramString;
+    this.a.a.a().b();
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void b()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    }
-    axwe.a(this.a, 1);
-    return true;
+    this.a.a.a().o();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().E();
   }
 }
 

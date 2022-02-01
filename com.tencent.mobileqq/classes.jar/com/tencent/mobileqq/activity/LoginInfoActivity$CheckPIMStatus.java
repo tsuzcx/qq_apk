@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.app.Activity;
-import bhnj;
+import bfwh;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import java.lang.ref.WeakReference;
 import mqq.app.MobileQQ;
@@ -20,8 +20,8 @@ class LoginInfoActivity$CheckPIMStatus
   
   public void run()
   {
-    boolean bool1 = bhnj.a(MobileQQ.sMobileQQ);
-    boolean bool2 = bhnj.b(MobileQQ.sMobileQQ);
+    boolean bool1 = bfwh.a(MobileQQ.sMobileQQ);
+    boolean bool2 = bfwh.b(MobileQQ.sMobileQQ);
     if (!bool1)
     {
       i = LoginInfoActivity.a();
@@ -30,7 +30,7 @@ class LoginInfoActivity$CheckPIMStatus
       }
     }
     label85:
-    for (int i = 2131717809;; i = 2131717811)
+    for (int i = 2131718047;; i = 2131718049)
     {
       Activity localActivity = (Activity)this.b.get();
       if (localActivity != null) {
@@ -49,7 +49,7 @@ class LoginInfoActivity$CheckPIMStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.CheckPIMStatus
  * JD-Core Version:    0.7.0.1
  */

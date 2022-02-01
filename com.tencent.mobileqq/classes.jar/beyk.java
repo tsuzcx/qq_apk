@@ -1,18 +1,11 @@
-public class beyk
+class beyk
+  implements bfja
 {
-  public int a;
-  public beyi a;
-  public boolean a;
-  public boolean b;
+  beyk(beyh parambeyh) {}
   
-  public String toString()
+  public void a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mUinType:" + this.jdField_a_of_type_Int);
-    localStringBuilder.append(",mIsRaw:" + this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(",mIsShareAppPic:" + this.b);
-    localStringBuilder.append(",mShareAppInfo:{" + this.jdField_a_of_type_Beyi + "}");
-    return localStringBuilder.toString();
+    this.a.e();
   }
 }
 

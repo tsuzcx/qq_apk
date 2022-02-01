@@ -1,52 +1,38 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.ConversationInfo;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class bfml
-  implements adbl
 {
-  public int a(StringBuilder paramStringBuilder)
-  {
-    return 0;
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public boolean a(ConversationInfo paramConversationInfo)
-  {
-    return false;
-  }
+  public bfml(bfmf parambfmf) {}
   
-  public boolean a(ConversationInfo paramConversationInfo, boolean[] paramArrayOfBoolean)
+  public JSONObject a()
   {
-    if (paramConversationInfo.type == 1)
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface == null) {
-        return false;
-      }
-      Object localObject = (RecentUser)localQQAppInterface.a().a().findRecentUser(paramConversationInfo.uin, paramConversationInfo.type);
-      if ((localObject != null) && ((((RecentUser)localObject).lFlag & 1L) != 0L))
-      {
-        localObject = localQQAppInterface.a(true);
-        if ((localObject != null) && (!((HotChatManager)localObject).b(paramConversationInfo.uin)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopBlockUnreadMsgNumCallback", 2, "getUnreadMsgsNum invalide hotchat!");
-          }
-          paramArrayOfBoolean[0] = true;
-          return true;
-        }
-      }
-      if (bfmf.a(localQQAppInterface, paramConversationInfo.uin))
-      {
-        paramArrayOfBoolean[0] = true;
-        return true;
-      }
-    }
-    return false;
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("mobile_mode", this.jdField_a_of_type_JavaLangString);
+    localJSONObject.put("os_version", this.jdField_b_of_type_JavaLangString);
+    localJSONObject.put("app_version", this.c);
+    localJSONObject.put("net_type", this.d);
+    localJSONObject.put("carrier_type", this.e);
+    localJSONObject.put("cpu_num", this.jdField_a_of_type_Int);
+    localJSONObject.put("cpu_freq", this.jdField_a_of_type_Long);
+    localJSONObject.put("total_ram", this.jdField_b_of_type_Long);
+    localJSONObject.put("cpu_type", this.f);
+    localJSONObject.put("is_proxy", this.jdField_a_of_type_Boolean);
+    localJSONObject.put("is_X5_support", this.jdField_b_of_type_Boolean);
+    localJSONObject.put("X5_version", this.jdField_b_of_type_Int);
+    return localJSONObject;
   }
 }
 

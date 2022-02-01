@@ -1,69 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class oxs
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/helper/RIJCommentNetworkHelper$RIJCreateCommentObserver;", "", "onCreateCommentResult", "", "seq", "", "success", "", "errorCode", "", "commentType", "commentId", "", "commentJsonStr", "feedsType", "isFeeds", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface oxs
 {
-  public static long a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    long l1;
-    if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.mSocialFeedInfo == null)) {
-      l1 = 0L;
-    }
-    long l2;
-    do
-    {
-      return l1;
-      if (paramBaseArticleInfo.mSocialFeedInfo.a == null) {
-        break;
-      }
-      l2 = paramBaseArticleInfo.mSocialFeedInfo.a.a;
-      l1 = l2;
-    } while (l2 != 0L);
-    for (;;)
-    {
-      try
-      {
-        l1 = Long.parseLong(paramBaseArticleInfo.mSubscribeID);
-        return l1;
-      }
-      catch (NumberFormatException paramBaseArticleInfo)
-      {
-        paramBaseArticleInfo.printStackTrace();
-        return l2;
-      }
-      l2 = 0L;
-    }
-  }
-  
-  public static boolean a(ArticleInfo paramArticleInfo)
-  {
-    if ((paramArticleInfo == null) || (paramArticleInfo.mSocialFeedInfo == null)) {}
-    while ((!paramArticleInfo.mSocialFeedInfo.a()) || (sel.f(paramArticleInfo)) || (b(paramArticleInfo))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    if ((paramBaseArticleInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.a()))
-    {
-      if (sel.f((ArticleInfo)paramBaseArticleInfo)) {
-        return true;
-      }
-      if (!b(paramBaseArticleInfo)) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
-      }
-    }
-    return false;
-  }
-  
-  public static boolean b(BaseArticleInfo paramBaseArticleInfo)
-  {
-    return a(paramBaseArticleInfo) == ozs.a();
-  }
+  public abstract void a(long paramLong, boolean paramBoolean1, int paramInt1, int paramInt2, @Nullable String paramString1, @Nullable String paramString2, int paramInt3, boolean paramBoolean2);
 }
 
 

@@ -1,40 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkChangeReceiver.1;
+import org.jetbrains.annotations.NotNull;
 
-class sff
-  extends rwt
+public final class sff
+  extends BroadcastReceiver
 {
-  sff(sfe paramsfe, BaseArticleInfo paramBaseArticleInfo) {}
+  private sff(sfc paramsfc) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public void onReceive(@NotNull Context paramContext, @NotNull Intent paramIntent)
   {
-    if (paramBoolean3)
-    {
-      if (paramBoolean4) {
-        this.jdField_a_of_type_Sfe.a.jdField_a_of_type_Rvy.c();
-      }
-    }
-    else
-    {
-      if (paramBoolean1) {
-        break label92;
-      }
-      this.jdField_a_of_type_Sfe.a.b = false;
-    }
-    for (;;)
-    {
-      if ((paramBoolean2) && (this.jdField_a_of_type_Sfe.a.jdField_a_of_type_Rwr != null)) {
-        this.jdField_a_of_type_Sfe.a.jdField_a_of_type_Rwr.a(2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, 0L, 0L);
-      }
-      return;
-      this.jdField_a_of_type_Sfe.a.jdField_a_of_type_Rvy.b(2);
-      break;
-      label92:
-      if (this.jdField_a_of_type_Sfe.a.b)
-      {
-        this.jdField_a_of_type_Sfe.a.jdField_a_of_type_Rvy.c();
-        this.jdField_a_of_type_Sfe.a.b = false;
-      }
-    }
+    sfc.a(this.a).post(new BandwidthPredictor.NetworkChangeReceiver.1(this));
   }
 }
 

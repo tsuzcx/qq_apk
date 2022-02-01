@@ -1,0 +1,122 @@
+package com.tencent.mobileqq.activity.main;
+
+import aicl;
+import aiej;
+import airj;
+import ajey;
+import amzp;
+import android.os.Handler;
+import android.os.Message;
+import apub;
+import apus;
+import bcsz;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.qphone.base.util.QLog;
+
+public class MainAssistObserver$15
+  implements Runnable
+{
+  public MainAssistObserver$15(ajey paramajey, QQAppInterface paramQQAppInterface) {}
+  
+  public void run()
+  {
+    label411:
+    label493:
+    for (;;)
+    {
+      Object localObject3;
+      try
+      {
+        Object localObject1 = (airj)this.a.getManager(295);
+        localObject3 = (aiej)this.a.getManager(34);
+        int i = ((aiej)localObject3).d();
+        if (QLog.isColorLevel()) {
+          QLog.d("MainAssistObserver", 1, "updateTabContactNotify, totalCount = " + i);
+        }
+        apus localapus = (apus)apub.a().a(691);
+        if ((localapus == null) || (!localapus.a(this.a.getCurrentAccountUin()))) {
+          break label493;
+        }
+        int k = amzp.b(this.a);
+        int m = bcsz.a().a(this.a);
+        int j = i + k + m;
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("MainAssistObserver", 1, "updateTabContactNotify, totalCount = " + j + " recommendUnreadCount" + k + " notificationUnreadCount" + m);
+          i = j;
+        }
+        if (i > 0)
+        {
+          localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
+          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(5);
+          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_content.set(i + "");
+          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_desc.set("{'cn':'#FF0000'}");
+          localObject1 = localObject3;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("UndealCount.updateTabContactNotify", 2, "unread=" + i);
+            localObject1 = localObject3;
+          }
+          localObject3 = this.this$0.a.obtainMessage(3);
+          ((Message)localObject3).obj = localObject1;
+          this.this$0.a.sendMessage((Message)localObject3);
+          return;
+        }
+        if (((aiej)localObject3).a())
+        {
+          localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
+          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(0);
+          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_content.set("");
+          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_desc.set("");
+          localObject1 = localObject3;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("UndealCount.updateTabContactNotify", 2, "redpoint");
+          localObject1 = localObject3;
+          continue;
+        }
+        if (localException == null) {
+          break label411;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+      Object localObject2;
+      if (localException.a())
+      {
+        localObject2 = null;
+      }
+      else if (aicl.a(this.a).a())
+      {
+        localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
+        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(0);
+        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_content.set("");
+        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_desc.set("");
+        localObject2 = localObject3;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("NewFriendVerification.manager", 2, "updateTabContactNotify redpoint");
+          localObject2 = localObject3;
+        }
+      }
+      else
+      {
+        localObject2 = null;
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.15
+ * JD-Core Version:    0.7.0.1
+ */

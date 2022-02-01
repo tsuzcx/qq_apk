@@ -1,79 +1,177 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class baif
+public class baif
 {
-  private long jdField_a_of_type_Long;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private CopyOnWriteArrayList<Integer> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private final Object jdField_b_of_type_JavaLangObject = new Object();
+  private AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(10);
   
-  public baif(baid parambaid, long paramLong, String paramString, Drawable paramDrawable)
+  public int a()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
   }
   
-  public Drawable a()
+  public void a()
   {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  public baif a()
-  {
-    String str;
-    boolean bool;
-    if (aroa.c().a())
+    synchronized (this.jdField_b_of_type_JavaLangObject)
     {
-      str = azxs.a(baid.a(this.jdField_a_of_type_Baid), this.jdField_a_of_type_Long) + "dynamicVideo.mp4";
-      if (new File(str).exists()) {
-        bool = true;
+      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) {
+        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
       }
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(10);
+      return;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+  }
+  
+  public void b(int paramInt)
+  {
+    synchronized (this.jdField_b_of_type_JavaLangObject)
+    {
+      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
+      return;
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1;
+  }
+  
+  public int c()
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()))
+    {
+      int i;
+      synchronized (this.jdField_b_of_type_JavaLangObject)
+      {
+        i = ((Integer)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(0)).intValue();
+        if (!QLog.isColorLevel()) {
+          break label160;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+        if (localIterator.hasNext())
+        {
+          int j = ((Integer)localIterator.next()).intValue();
+          localStringBuilder.append(j + ",");
+        }
+      }
+      QLog.d("PeakAudioTransHandler ChannelStateManager", 2, "getRecentTopEvent lastevent = " + i + "， eventlist = " + localObject2.toString());
+      label160:
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+      return i;
+    }
+    return -1;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(0, Integer.valueOf(paramInt));
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 12;
+  }
+  
+  public boolean e()
+  {
+    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 11;
+  }
+  
+  public boolean f()
+  {
+    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 10;
+  }
+  
+  public boolean g()
+  {
+    boolean bool3 = true;
+    boolean bool1 = true;
+    boolean bool2 = false;
+    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    int j = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    switch (i)
+    {
+    default: 
+      bool1 = bool2;
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_Baid.b(), 2, String.format("initProfileCardBackground videoPath=%s videoExists=%s", new Object[] { str, Boolean.valueOf(bool) }));
+      if ((!bool1) && (QLog.isColorLevel())) {
+        QLog.e("PeakAudioTransHandler ChannelStateManager", 2, "isLegalState , currentSessionState = " + i + " currentTCPState = " + j);
       }
-      if (bool)
+      return bool1;
+      switch (j)
       {
-        if ((baid.a(this.jdField_a_of_type_Baid) != null) && (TextUtils.equals(baid.a(this.jdField_a_of_type_Baid), str)) && (bicd.a(baid.a(this.jdField_a_of_type_Baid))))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i(this.jdField_a_of_type_Baid.b(), 2, "initProfileCardBackground use old video-drawable");
-          }
-          this.jdField_a_of_type_Boolean = true;
-          return this;
-          str = this.jdField_a_of_type_JavaLangString + "/video.mp4";
-          if (!new File(str).exists()) {
-            break label276;
-          }
-          bool = true;
-          continue;
-        }
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bicd.a().a(new File(str), true);
-        if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-        {
-          bicd.a().a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true);
-          baid.a(this.jdField_a_of_type_Baid, str);
-          if (QLog.isColorLevel()) {
-            QLog.i(this.jdField_a_of_type_Baid.b(), 2, "initProfileCardBackground use new video-drawable");
-          }
-        }
       }
-      this.jdField_a_of_type_Boolean = false;
-      return this;
-      label276:
-      bool = false;
+      for (bool1 = false;; bool1 = false) {
+        break;
+      }
+      bool1 = bool2;
+      switch (j)
+      {
+      case 11: 
+      case 12: 
+      case 13: 
+      default: 
+        bool1 = bool2;
+        break;
+      case 10: 
+        bool1 = true;
+        continue;
+        bool1 = bool3;
+        switch (j)
+        {
+        default: 
+          bool1 = false;
+        }
+        continue;
+        bool1 = bool2;
+        switch (j)
+        {
+        case 11: 
+        case 12: 
+        case 13: 
+        default: 
+          bool1 = bool2;
+          break;
+        case 10: 
+          bool1 = true;
+        }
+        break;
+      }
     }
-  }
-  
-  boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 

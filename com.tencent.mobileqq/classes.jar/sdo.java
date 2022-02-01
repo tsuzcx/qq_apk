@@ -1,17 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.SDKInstallListener.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
-class sdo
-  implements View.OnClickListener
+public class sdo
+  implements shd
 {
-  sdo(sdn paramsdn, ohz paramohz) {}
+  private Handler a;
   
-  public void onClick(View paramView)
+  public sdo(Handler paramHandler)
   {
-    this.jdField_a_of_type_Ohz.j();
-    this.jdField_a_of_type_Sdn.b();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramHandler;
+  }
+  
+  private void a(boolean paramBoolean, int paramInt)
+  {
+    ThreadManager.excute(new VideoPluginInstall.SDKInstallListener.1(this, paramBoolean, paramInt), 16, null, true);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video", 2, "onInstalledSuccessed: ");
+    }
+    a(true, 0);
+    if (this.a != null) {
+      this.a.sendEmptyMessage(0);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video", 2, "onInstalledFailed: code=" + paramInt);
+    }
+    a(false, paramInt);
+    if (this.a != null) {
+      this.a.sendEmptyMessage(1);
+    }
   }
 }
 

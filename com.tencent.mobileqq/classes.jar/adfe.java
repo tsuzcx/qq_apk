@@ -1,36 +1,24 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.s2c.msgtype0x210.submsgtype0x98.submsgtype0x98.ModBlock;
-import tencent.im.s2c.msgtype0x210.submsgtype0x98.submsgtype0x98.MsgBody;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adfe
-  implements adci
+  implements View.OnClickListener
 {
-  private static void a(MsgType0x210 paramMsgType0x210)
-  {
-    submsgtype0x98.MsgBody localMsgBody = new submsgtype0x98.MsgBody();
-    try
-    {
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      label17:
-      localMsgBody.uint64_uin.get();
-      localMsgBody.uint32_sub_cmd.get();
-      ((submsgtype0x98.ModBlock)localMsgBody.msg_mod_block.get()).uint32_op.get();
-      return;
-    }
-    catch (Throwable paramMsgType0x210)
-    {
-      break label17;
-    }
-  }
+  public adfe(EditInfoActivity paramEditInfoActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onClick(View paramView)
   {
-    a(paramMsgType0x210);
-    return null;
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847816);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(amtj.a(2131702760));
+    this.a.jdField_a_of_type_Boolean = false;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

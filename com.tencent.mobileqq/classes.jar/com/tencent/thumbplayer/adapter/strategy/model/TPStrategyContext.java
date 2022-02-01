@@ -2,15 +2,22 @@ package com.tencent.thumbplayer.adapter.strategy.model;
 
 public class TPStrategyContext
 {
+  private String definition;
   private int errorCode;
   private int errorType;
   int lastPlayerType = 0;
   
-  public TPStrategyContext(int paramInt1, int paramInt2, int paramInt3)
+  public TPStrategyContext(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
     this.errorCode = paramInt3;
     this.errorType = paramInt2;
     this.lastPlayerType = paramInt1;
+    this.definition = paramString;
+  }
+  
+  public String getDefinition()
+  {
+    return this.definition;
   }
   
   public int getErrorCode()

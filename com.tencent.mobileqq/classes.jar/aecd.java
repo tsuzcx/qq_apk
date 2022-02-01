@@ -1,28 +1,16 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.statistics.thread.SuspendThreadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class aecd
+  implements DialogInterface.OnClickListener
 {
-  public aecd(ChatFragment paramChatFragment) {}
+  public aecd(RegisterActivity paramRegisterActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((ChatFragment.b()) && (this.a.jdField_a_of_type_Boolean))
-    {
-      bhsq.b("AIO_Start_cost", null);
-      SuspendThreadManager.a().d();
-      bhsq.a("AIO_onDrawView", "AIO_SysMsgCost");
-      ChatFragment.a(this.a);
-      if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("uintype", -1) == 1008)
-      {
-        String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
-        bhnx.a("pubAcc_aio_open", null, str);
-        bhnx.a("pubAcc_structMsg_display", null, str);
-      }
-      ChatFragment.a(false);
-    }
+    this.a.a = 0;
+    this.a.finish();
   }
 }
 

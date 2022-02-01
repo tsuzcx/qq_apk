@@ -1,29 +1,13 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-class bftz
-  implements View.OnTouchListener
+final class bftz
+  implements MediaPlayer.OnCompletionListener
 {
-  bftz(bftx parambftx, String paramString, bfug parambfug) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      paramView = new Intent(this.jdField_a_of_type_Bftx.a.getContext(), QQBrowserActivity.class);
-      paramMotionEvent = bhyk.a("troopEnterEffect");
-      paramView.putExtra("url", paramMotionEvent + "&gc=" + this.jdField_a_of_type_Bftx.b);
-      this.jdField_a_of_type_Bftx.a.getContext().startActivity(paramView);
-      bfui.a("Grp_AIO", "action_clk", new String[] { this.jdField_a_of_type_Bftx.b });
-      VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_JavaLangString, "style", "0X8008E63", "", 1, 0, 0, "", Integer.toString(this.jdField_a_of_type_Bfug.a), "");
-    }
-    return true;
+    paramMediaPlayer.release();
+    bftt.a = null;
   }
 }
 

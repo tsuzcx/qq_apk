@@ -1,15 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.part.QIMTemplateItem;
 
-public class bmtn
-  extends Handler
+public final class bmtn
+  implements Parcelable.Creator<QIMTemplateItem>
 {
-  public bmtn(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
-  
-  public void handleMessage(Message paramMessage)
+  public QIMTemplateItem a(Parcel paramParcel)
   {
-    this.a.a(this.a.a, paramMessage);
+    return new QIMTemplateItem(paramParcel);
+  }
+  
+  public QIMTemplateItem[] a(int paramInt)
+  {
+    return new QIMTemplateItem[paramInt];
   }
 }
 

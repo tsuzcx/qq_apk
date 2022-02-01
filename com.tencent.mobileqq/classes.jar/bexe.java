@@ -1,50 +1,21 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import java.util.List;
 
-class bexe
-  implements ITransactionCallback
+public class bexe
+  implements bjoe
 {
-  bexe(bexd parambexd, String paramString, long paramLong) {}
+  public bexe(BulkSendMessageFragment paramBulkSendMessageFragment, bjnw parambjnw) {}
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Bexd.a(paramInt, paramHashMap, this.jdField_a_of_type_Long);
-  }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    this.jdField_a_of_type_Bexd.a(paramArrayOfByte, paramHashMap, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-  }
-  
-  public void onSwitch2BackupChannel()
-  {
-    long l = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_Bexd.d("<BDH_LOG> onSwitch2BackupChannel()");
-    this.jdField_a_of_type_Bexd.jdField_a_of_type_JavaUtilHashMap.put("param_switchChannel", String.valueOf(l - this.jdField_a_of_type_Long));
-  }
-  
-  public void onTransStart()
-  {
-    this.jdField_a_of_type_Bexd.d("<BDH_LOG> onTransStart()");
-    this.jdField_a_of_type_Bexd.b.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Bexd.b.a();
-  }
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    bexd localbexd = this.jdField_a_of_type_Bexd;
-    bete localbete = this.jdField_a_of_type_Bexd.jdField_a_of_type_Bete;
-    long l = paramInt;
-    localbete.e = l;
-    localbexd.s = l;
-    if ((paramInt < this.jdField_a_of_type_Bexd.jdField_q_of_type_Long) && (!this.jdField_a_of_type_Bexd.jdField_q_of_type_Boolean) && (!this.jdField_a_of_type_Bexd.m))
+    if (paramInt < this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaUtilList.size())
     {
-      this.jdField_a_of_type_Bexd.j();
-      if (this.jdField_a_of_type_Bexd.g) {
-        bpxo.a(this.jdField_a_of_type_Bexd.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, 1002, this.jdField_a_of_type_Bexd.f());
-      }
+      paramView = (String)this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_JavaUtilList.get(paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqTroopTroop_appsEntryUiBulkSendMessageFragment.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(paramView);
     }
+    this.jdField_a_of_type_Bjnw.dismiss();
   }
 }
 

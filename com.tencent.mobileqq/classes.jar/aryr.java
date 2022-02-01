@@ -1,42 +1,77 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.Intent;
+import android.os.Bundle;
+import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import cooperation.weiyun.AlbumBackupProxyActivity;
 
-class aryr
-  implements DialogInterface.OnClickListener
+public class aryr
+  implements bjsz
 {
-  aryr(aryn paramaryn) {}
+  public aryr(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(bjsy parambjsy)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.a.jdField_a_of_type_AndroidContentContext.getDatabasePath(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + ".db");
-    boolean bool = false;
-    if ((paramDialogInterface.exists()) && ((float)paramDialogInterface.length() * 1.7F > bhmi.a()))
+    switch (parambjsy.a)
     {
-      bool = true;
-      aryn.a(this.a);
-      paramDialogInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
-      String str = paramDialogInterface.getString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, "");
-      paramDialogInterface.edit().putString(this.a.jdField_a_of_type_JavaLangString + DBFixManager.k, str + "_MemoryAlert").commit();
-    }
-    for (;;)
-    {
-      paramDialogInterface = new HashMap();
-      paramDialogInterface.put("isMemAlert", String.valueOf(bool));
-      bdmc.a(BaseApplication.getContext()).a(null, DBFixManager.n, true, -1L, 0L, paramDialogInterface, null, false);
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, aryn.c, aryn.c, 0, 0, "", "", "", "");
+    default: 
       return;
-      aryn.b(this.a);
+    case 0: 
+      parambjsy = new Intent(this.a.getApplicationContext(), LiteActivity.class);
+      if (this.a.l) {
+        aszr.a("0X8005534");
+      }
+      for (;;)
+      {
+        try
+        {
+          Bundle localBundle = new Bundle();
+          localBundle.putLong("category", 12);
+          parambjsy.putExtra("bundle", localBundle);
+          parambjsy.putExtra("from", "FileAssistant");
+          this.a.startActivityForResult(parambjsy, 101);
+          return;
+        }
+        catch (Exception parambjsy)
+        {
+          parambjsy.printStackTrace();
+          return;
+        }
+        aszr.a("0X800681A");
+      }
+    case 1: 
+      if (this.a.l) {
+        aszr.a("0X8005535");
+      }
+      for (;;)
+      {
+        FileAssistantActivity.b(this.a);
+        return;
+        aszr.a("0X800681B");
+      }
+    case 2: 
+      if (this.a.l) {
+        aszr.a("0X8005536");
+      }
+      for (;;)
+      {
+        AlbumBackupProxyActivity.a(this.a, this.a.app.getCurrentAccountUin(), "source_qfile_assistant", 10001);
+        FileAssistantActivity.a(this.a, this.a.c, "100160.100162");
+        return;
+        aszr.a("0X800681C");
+      }
+    case 3: 
+      aszr.a("0X800A15F");
+      parambjsy = new Bundle();
+      parambjsy.putString("url", "https://docs.qq.com/desktop/m/templates_list.html?padtype=0&_wv=2&_wwv=512");
+      parambjsy.putString("tdsourcetag", "s_qq_myfile_menu_create");
+      TeamWorkDocEditBrowserActivity.a(this.a, parambjsy, false);
+      return;
     }
+    aszr.a("0X8005532");
+    aszt.a(this.a.app, this.a, "_is_from_qfile_shortcut", this.a.getString(2131692143), 2130844246);
+    aszk.b(2131692188);
   }
 }
 

@@ -1,25 +1,23 @@
-import android.view.KeyEvent;
-import android.view.Window;
-import android.view.WindowManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-class auzx
-  implements asna
+public class auzx
+  implements DialogInterface.OnDismissListener
 {
-  auzx(auzt paramauzt) {}
+  public auzx(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, avau paramavau) {}
   
-  public boolean a(KeyEvent paramKeyEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (auzt.a(this.a)))
-    {
-      auzt.a(this.a).removeView(auzt.a(this.a));
-      auzt.a(this.a, false);
-      paramKeyEvent = this.a.getWindow().getAttributes();
-      paramKeyEvent.y = 0;
-      this.a.getWindow().setAttributes(paramKeyEvent);
-      auzt.a(this.a);
-      return true;
+    this.jdField_a_of_type_Avau.b(false);
+    this.jdField_a_of_type_Avau.d = false;
+    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
     }
-    return false;
+    if (this.jdField_a_of_type_Avau.e) {
+      this.jdField_a_of_type_Avau.f();
+    }
   }
 }
 

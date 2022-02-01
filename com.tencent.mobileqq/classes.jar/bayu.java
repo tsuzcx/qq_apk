@@ -1,42 +1,36 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
-public class bayu
+public abstract class bayu
+  implements bayt
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  private int a;
+  private int b;
+  public boolean g = true;
+  public int u;
+  public int v;
   
-  public static bayu a(String paramString)
+  public int a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    bayu localbayu = new bayu();
-    try
-    {
-      paramString = new JSONObject(paramString);
-      localbayu.jdField_a_of_type_Int = paramString.optInt("animationType");
-      localbayu.jdField_a_of_type_JavaLangString = paramString.optString("boxZipUrl", null);
-      localbayu.b = paramString.optString("giftZipUrl", null);
-      localbayu.c = paramString.optString("giftParticleUrl", null);
-      localbayu.d = paramString.optString("lottieUrl", null);
-      return localbayu;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      QLog.e("QzoneGiftManager", 1, "handleFlashChatConfig failed" + paramString);
-    }
-    return localbayu;
+    return this.a;
   }
   
-  public String toString()
+  public Object a(String paramString)
   {
-    return " mBoxZipUrl = " + this.jdField_a_of_type_JavaLangString + " mGiftZipUrl = " + this.b + " mGiftUrl = " + this.c;
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.v = paramInt;
   }
 }
 

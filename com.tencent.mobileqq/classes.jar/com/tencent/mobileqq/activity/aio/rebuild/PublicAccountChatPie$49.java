@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ainh;
+import ahiu;
 import android.text.TextUtils;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -10,20 +10,20 @@ import com.tencent.mobileqq.data.MessageForPubAccount;
 import com.tencent.mobileqq.data.MessageForStructing;
 import java.util.Iterator;
 import java.util.List;
-import obj;
+import ocw;
 
 public class PublicAccountChatPie$49
   implements Runnable
 {
-  public PublicAccountChatPie$49(ainh paramainh) {}
+  public PublicAccountChatPie$49(ahiu paramahiu) {}
   
   public void run()
   {
-    if (obj.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString) != 0L) {}
+    if (ocw.a().a(this.this$0.app, this.this$0.sessionInfo.curFriendUin) != 0L) {}
     for (;;)
     {
       return;
-      Object localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+      Object localObject1 = this.this$0.app.getMessageFacade().getAIOList(this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType);
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
         localObject1 = ((List)localObject1).iterator();
@@ -39,7 +39,7 @@ public class PublicAccountChatPie$49
                 long l = Long.parseLong((String)localObject2);
                 if (l > 0L)
                 {
-                  obj.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, l);
+                  ocw.a().a(this.this$0.app, this.this$0.sessionInfo.curFriendUin, l);
                   return;
                 }
               }

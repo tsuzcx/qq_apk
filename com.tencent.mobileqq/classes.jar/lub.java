@@ -1,137 +1,49 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.redpacket.AVRedPacketManager.GameStateInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalEmojiInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalFocusInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalFrameSyncInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalHitInfo;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.Emoji;
-import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.FocusInfo;
-import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.FrameSyncInfo;
-import com.tencent.protofile.avredpacket.AVRedPacketGameSyncInfo.HitInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-
-class lub
-  implements lfu
+public class lub
+  extends ltz
 {
-  lub(ltz paramltz) {}
-  
-  public loo a()
+  public void a(long paramLong)
   {
+    paramLong -= this.a;
+    int j = 0;
+    float f2 = 1.0F;
+    int i;
+    float f1;
+    if ((paramLong > 3099L) && (paramLong < 3432L))
+    {
+      i = (int)(255L * (paramLong - 3099L) / 333L);
+      f1 = (0.5F * (float)(paramLong + 3432L) - 3099.0F) / 333.0F;
+    }
     for (;;)
     {
-      AVRedPacketManager.LocalFrameSyncInfo localLocalFrameSyncInfo;
-      AVRedPacketGameSyncInfo.FrameSyncInfo localFrameSyncInfo;
-      int i;
-      try
+      a(i);
+      b(f1);
+      return;
+      if ((paramLong >= 3432L) && (paramLong <= 3865L))
       {
-        System.currentTimeMillis();
-        Object localObject1 = (AVRedPacketManager)this.a.a.a(6);
-        if (!((AVRedPacketManager)localObject1).a()) {
-          return null;
-        }
-        localObject1 = ((AVRedPacketManager)localObject1).a();
-        localLocalFrameSyncInfo = ((AVRedPacketManager.GameStateInfo)localObject1).currLocalFrameSyncInfo;
-        if (QLog.isColorLevel()) {}
-        localFrameSyncInfo = new AVRedPacketGameSyncInfo.FrameSyncInfo();
-        localFrameSyncInfo.currScores.set(localLocalFrameSyncInfo.curScore);
-        i = localLocalFrameSyncInfo.localEmojiInfos.size() - 1;
-        if (i >= 0)
+        i = 255;
+        f1 = f2;
+      }
+      else
+      {
+        f1 = f2;
+        i = j;
+        if (paramLong > 3865L)
         {
-          localObject3 = (AVRedPacketManager.LocalEmojiInfo)localLocalFrameSyncInfo.localEmojiInfos.get(i);
-          if (localObject3 == null) {
-            break label412;
+          f1 = f2;
+          i = j;
+          if (paramLong < 4032L)
+          {
+            i = (int)(255L * (4032L - paramLong) / 167L);
+            f1 = (167.0F - (float)(3865L - paramLong) * 0.5F) / 167.0F;
           }
-          AVRedPacketGameSyncInfo.Emoji localEmoji = new AVRedPacketGameSyncInfo.Emoji();
-          localEmoji.emojiTypeId.set(((AVRedPacketManager.LocalEmojiInfo)localObject3).emojiType);
-          localEmoji.startTime.set(((AVRedPacketManager.LocalEmojiInfo)localObject3).startTime);
-          localEmoji.trackNum.set(((AVRedPacketManager.LocalEmojiInfo)localObject3).trackNum);
-          localEmoji.id.set(((AVRedPacketManager.LocalEmojiInfo)localObject3).emojiId);
-          localEmoji.isBigEmoji.set(((AVRedPacketManager.LocalEmojiInfo)localObject3).isBigEmoji);
-          localEmoji.fallDownDuration.set(((AVRedPacketManager.LocalEmojiInfo)localObject3).fallDownDuration);
-          localFrameSyncInfo.emojis.add(localEmoji);
         }
       }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("AVRedPacketHandler", 2, "OnFrameDataGet ", localException);
-        }
-        return null;
-      }
-      Object localObject3 = new AVRedPacketGameSyncInfo.FocusInfo();
-      ((AVRedPacketGameSyncInfo.FocusInfo)localObject3).id.set(localLocalFrameSyncInfo.localFocusInfo.emojiId);
-      localFrameSyncInfo.focusInfo.set((MessageMicro)localObject3);
-      localObject3 = new AVRedPacketGameSyncInfo.HitInfo();
-      ((AVRedPacketGameSyncInfo.HitInfo)localObject3).id.set(localLocalFrameSyncInfo.localHitInfo.emojiId);
-      ((AVRedPacketGameSyncInfo.HitInfo)localObject3).startTime.set(localLocalFrameSyncInfo.localHitInfo.hitStartTime);
-      ((AVRedPacketGameSyncInfo.HitInfo)localObject3).comboCnt.set(localLocalFrameSyncInfo.localHitInfo.comboCnt);
-      ((AVRedPacketGameSyncInfo.HitInfo)localObject3).newAddScore.set(localLocalFrameSyncInfo.localHitInfo.newAddScore);
-      ((AVRedPacketGameSyncInfo.HitInfo)localObject3).topWordTipType.set(localLocalFrameSyncInfo.localHitInfo.topWordTipType);
-      localFrameSyncInfo.hitInfo.set((MessageMicro)localObject3);
-      localFrameSyncInfo.frameSyncGameState.set(localLocalFrameSyncInfo.frameSyncGameState);
-      localException.count_OnFrameDataSend += 1;
-      localFrameSyncInfo.seq.set(localException.count_OnFrameDataSend);
-      Object localObject2 = localFrameSyncInfo.toByteArray();
-      if (QLog.isColorLevel()) {}
-      localObject2 = new loo((short)5, (short)localObject2.length, (byte[])localObject2);
-      return localObject2;
-      label412:
-      i -= 1;
     }
   }
   
-  public void a(String paramString, loo paramloo)
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    boolean bool;
-    if ((!QLog.isColorLevel()) || (paramloo != null))
-    {
-      try
-      {
-        if (paramloo.a() == null) {
-          return;
-        }
-        localAVRedPacketManager = (AVRedPacketManager)this.a.a.a(6);
-        if (!localAVRedPacketManager.b()) {
-          return;
-        }
-        localFrameSyncInfo = new AVRedPacketGameSyncInfo.FrameSyncInfo();
-        paramString = null;
-      }
-      catch (Exception paramString)
-      {
-        AVRedPacketManager localAVRedPacketManager;
-        AVRedPacketGameSyncInfo.FrameSyncInfo localFrameSyncInfo;
-        label78:
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.e("AVRedPacketHandler", 2, "onFrameDataCome ", paramString);
-        return;
-      }
-      try
-      {
-        localFrameSyncInfo.mergeFrom(paramloo.a());
-        paramloo = ltz.a(this.a, localFrameSyncInfo);
-        paramString = paramloo;
-        bool = true;
-      }
-      catch (Exception paramloo)
-      {
-        bool = false;
-        break label78;
-      }
-      if (QLog.isColorLevel()) {}
-      localAVRedPacketManager.a(bool, paramString);
-      return;
-    }
+    a(paramInt1 * 548 / 1500, paramInt2 - paramInt1 * 1032 / 1500, paramInt1 * 952 / 1500, paramInt2 - paramInt1 * 472 / 1500);
   }
 }
 

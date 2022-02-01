@@ -1,17 +1,17 @@
-class aofd
-  implements lya
+import android.os.IInterface;
+
+public abstract interface aofd
+  extends IInterface
 {
-  aofd(aofb paramaofb) {}
+  public abstract void a(int paramInt);
   
-  public void a(lxz paramlxz)
-  {
-    paramlxz.a(this.a.a.a);
-    paramlxz.a();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aofd
  * JD-Core Version:    0.7.0.1
  */

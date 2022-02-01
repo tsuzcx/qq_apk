@@ -1,56 +1,21 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import android.content.Context;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-public abstract class aplu
-  extends Binder
-  implements aplt
+public class aplu
+  implements aplr
 {
-  public aplu()
+  public void launch(Context paramContext, ColorNote paramColorNote)
   {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
-  }
-  
-  public static aplt a(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
+    String str = paramColorNote.getSubType();
+    Object localObject = str.split("-");
+    if (localObject.length > 0) {
+      str = localObject[0];
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
-    if ((localIInterface != null) && ((localIInterface instanceof aplt))) {
-      return (aplt)localIInterface;
+    if (localObject.length > 1) {
+      localObject = localObject[1];
     }
-    return new aplv(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
-    paramParcel1 = a();
-    paramParcel2.writeNoException();
-    if (paramParcel1 != null)
-    {
-      paramParcel2.writeInt(1);
-      paramParcel1.writeToParcel(paramParcel2, 1);
-      return true;
-    }
-    paramParcel2.writeInt(0);
-    return true;
+    paramColorNote = paramColorNote.getReserve();
+    bkox.a(paramContext, "", Long.parseLong(str), paramColorNote);
   }
 }
 

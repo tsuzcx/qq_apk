@@ -1,16 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-public final class nqi
-  implements DialogInterface.OnClickListener
+public class nqi
 {
-  public nqi(Handler paramHandler) {}
+  public nqi(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    paramDialogInterface.dismiss();
-    this.a.sendEmptyMessage(-1);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.TAG, 1, "CheckPermission user denied = ");
+    }
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "false", "{result: -10, msg: 'no permission to record'}" });
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.TAG, 1, "CheckPermission user grant = ");
+    }
+    SensorAPIJavaScript.a(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript, this.jdField_a_of_type_JavaLangString);
   }
 }
 

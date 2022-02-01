@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import adab;
+import abwp;
 import android.content.Context;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -25,7 +25,7 @@ public class RecentYanZhiItem
     if ((paramQQAppInterface == null) || (paramContext == null)) {
       return;
     }
-    Object localObject1 = paramQQAppInterface.a().b(this.mData.senderuin, this.mData.istroop);
+    Object localObject1 = paramQQAppInterface.getMessageFacade().getLastMsgForMsgTab(this.mData.senderuin, this.mData.istroop);
     if ((localObject1 instanceof MessageForYanZhi)) {}
     for (localObject1 = (MessageForYanZhi)localObject1;; localObject1 = null)
     {
@@ -38,11 +38,11 @@ public class RecentYanZhiItem
         return;
       }
       ((MessageForYanZhi)localObject1).parse();
-      this.mTitleName = paramContext.getString(2131693845);
-      Object localObject2 = paramQQAppInterface.a();
+      this.mTitleName = paramContext.getString(2131693944);
+      Object localObject2 = paramQQAppInterface.getConversationFacade();
       if (localObject2 != null)
       {
-        this.mUnreadNum = ((adab)localObject2).a(((MessageForYanZhi)localObject1).frienduin, ((MessageForYanZhi)localObject1).istroop);
+        this.mUnreadNum = ((abwp)localObject2).a(((MessageForYanZhi)localObject1).frienduin, ((MessageForYanZhi)localObject1).istroop);
         if (this.mUnreadNum <= 1) {}
       }
       for (this.mUnreadNum = 1;; this.mUnreadNum = 0)
@@ -50,7 +50,7 @@ public class RecentYanZhiItem
         this.mUnreadFlag = 1;
         this.mDisplayTime = ((MessageForYanZhi)localObject1).time;
         localObject2 = getMsgSummaryTemp();
-        ((MsgSummary)localObject2).strContent = (((MessageForYanZhi)localObject1).likeCount + paramContext.getString(2131693846));
+        ((MsgSummary)localObject2).strContent = (((MessageForYanZhi)localObject1).likeCount + paramContext.getString(2131693945));
         extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
         if (!AppSetting.c) {
           break;

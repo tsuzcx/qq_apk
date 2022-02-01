@@ -1,19 +1,33 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeSummaryView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-class qkd
-  implements View.OnClickListener
+public class qkd
+  extends qjj
 {
-  qkd(qkc paramqkc) {}
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  
+  public qkd(NativeSummaryView paramNativeSummaryView, ArticleInfo paramArticleInfo, int paramInt)
+  {
+    super(-15504151, 13421772, 860716207);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+  }
   
   public void onClick(View paramView)
   {
-    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
-    if (localsgf != null) {
-      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    if ((pgb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.getContext() instanceof Activity)))
+    {
+      pay.b((Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      pgw.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (pgb.i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {}
+    for (int i = 2;; i = 3)
+    {
+      pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeSummaryView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, i);
+      return;
+    }
   }
 }
 

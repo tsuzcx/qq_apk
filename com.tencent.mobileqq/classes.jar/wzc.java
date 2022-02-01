@@ -1,31 +1,17 @@
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 class wzc
-  extends wyv
+  implements DialogInterface.OnDismissListener
 {
-  public wzc(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup, 2131561785);
-  }
+  wzc(wzb paramwzb) {}
   
-  public void a(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    b(paramString);
-  }
-  
-  public void a(wvn paramwvn)
-  {
-    super.a(paramwvn);
-    yuk.a("Q.qqstory.msgTab.WeiShiRecommendNodeViewHolder", "bindData %s", paramwvn);
-    a(zpp.b(paramwvn.g));
-    this.a.setNodeName(paramwvn.c, 2130846658);
-  }
-  
-  protected void b(wvn paramwvn)
-  {
-    this.a.setDisplayState(6);
-    this.a.a(paramwvn);
+    if (this.a.a != null) {
+      this.a.a.c(false);
+    }
   }
 }
 

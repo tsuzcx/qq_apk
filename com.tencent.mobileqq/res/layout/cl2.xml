@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/nxs" android:paddingLeft="16.0dip" android:paddingRight="25.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:background="@drawable/h7c" android:layout_width="16.0dip" android:layout_height="16.0dip" />
-    <TextView android:background="@drawable/h7d" android:layout_width="51.0dip" android:layout_height="20.0dip" android:layout_marginLeft="4.0dip" />
-    <TextView android:textSize="@dimen/aym" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/nxt" android:layout_width="0.0dip" android:layout_height="28.0dip" android:layout_marginLeft="7.0dip" android:singleLine="true" android:layout_weight="1.0" />
-    <TextView android:background="@drawable/h_j" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="25.0dip" />
+    <View android:layout_width="fill_parent" android:layout_height="60.0dip" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.widget.pull2refresh.XRecyclerView android:orientation="vertical" android:id="@id/nxy" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <include android:id="@id/mt8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/acb" />
+        <include android:id="@id/eep" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/acc" />
+        <FrameLayout android:id="@id/muo" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
 </LinearLayout>

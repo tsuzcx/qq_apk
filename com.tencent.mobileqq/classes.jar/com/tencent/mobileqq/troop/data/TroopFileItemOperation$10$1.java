@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.troop.data;
 
 import android.app.Activity;
-import bfrs;
-import bfsf;
-import bfsh;
-import bfsi;
-import bgsk;
-import bhlq;
-import bhpc;
+import bebc;
+import bebp;
+import bebr;
+import bebs;
+import bfby;
+import bfur;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class TroopFileItemOperation$10$1
   implements Runnable
 {
-  public TroopFileItemOperation$10$1(bfsh parambfsh) {}
+  public TroopFileItemOperation$10$1(bebr parambebr) {}
   
   public void run()
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.a.jdField_a_of_type_Bfrs.a);
+    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.a.jdField_a_of_type_Bebc.a);
     if ((localObject != null) && (((TroopFileTransferManager.Item)localObject).ErrorCode == -136))
     {
-      this.a.jdField_a_of_type_Bfsf.a(this.a.jdField_a_of_type_Bfrs, this.a.jdField_a_of_type_Bfsf.a.getString(2131697093), this.a.jdField_a_of_type_Bfsf.a.getString(2131697094));
+      this.a.jdField_a_of_type_Bebp.a(this.a.jdField_a_of_type_Bebc, this.a.jdField_a_of_type_Bebp.a.getString(2131697235), this.a.jdField_a_of_type_Bebp.a.getString(2131697236));
       return;
     }
-    int i = bfsf.a(this.a.jdField_a_of_type_Bfsf, false);
-    bfsi localbfsi = new bfsi(this);
+    int i = bebp.a(this.a.jdField_a_of_type_Bebp, false);
+    bebs localbebs = new bebs(this);
     if (i == 1) {}
-    for (localObject = bfsf.a(2131696720, new Object[] { bgsk.a(this.a.jdField_a_of_type_Bfrs.c), this.a.jdField_a_of_type_Bfrs.a() });; localObject = bfsf.a(2131697026, new Object[] { bgsk.a(this.a.jdField_a_of_type_Bfrs.c) }))
+    for (localObject = bebp.a(2131696861, new Object[] { bfby.a(this.a.jdField_a_of_type_Bebc.c), this.a.jdField_a_of_type_Bebc.a() });; localObject = bebp.a(2131697168, new Object[] { bfby.a(this.a.jdField_a_of_type_Bebc.c) }))
     {
-      bhlq.a(this.a.jdField_a_of_type_Bfsf.a, 230, bfsf.a(2131697028), (String)localObject, 2131690580, 2131697027, localbfsi, localbfsi).show();
+      bfur.a(this.a.jdField_a_of_type_Bebp.a, 230, bebp.a(2131697170), (String)localObject, 2131690620, 2131697169, localbebs, localbebs).show();
       return;
     }
   }

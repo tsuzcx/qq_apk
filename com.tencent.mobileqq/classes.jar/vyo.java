@@ -1,15 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleCommentListView;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
+import java.util.Queue;
 
 class vyo
-  implements DialogInterface.OnClickListener
+  extends SimpleJob<Void>
 {
-  vyo(vyl paramvyl) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  vyo(vyn paramvyn, String paramString, Context paramContext, List paramList)
   {
-    QCircleCommentListView.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView).b(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView.getContext().hashCode(), QCircleCommentListView.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    if (!vyn.a(this.jdField_a_of_type_Vyn, this.jdField_a_of_type_AndroidContentContext)) {
+      QLog.i("MsgTabStoryVideoPreloader", 2, "当前网络状态, 不启动预下载");
+    }
+    do
+    {
+      return null;
+      QLog.i("MsgTabStoryVideoPreloader", 2, "启动消息TAB节点预加载器");
+      paramJobContext = vyn.a(this.jdField_a_of_type_Vyn, this.jdField_a_of_type_JavaUtilList);
+    } while ((paramJobContext.isEmpty()) || (!this.jdField_a_of_type_Vyn.a()));
+    vyn.a(this.jdField_a_of_type_Vyn);
+    vyn.a(this.jdField_a_of_type_Vyn, paramJobContext);
+    this.jdField_a_of_type_Vyn.b();
+    return null;
   }
 }
 

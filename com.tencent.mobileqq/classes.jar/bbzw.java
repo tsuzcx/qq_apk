@@ -1,8 +1,6 @@
-import java.util.List;
-
 public abstract interface bbzw
 {
-  public abstract void a(int paramInt, List<? extends bbzg> paramList);
+  public abstract void a(int paramInt);
 }
 
 

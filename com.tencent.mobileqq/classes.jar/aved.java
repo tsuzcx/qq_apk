@@ -1,18 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.5;
 
 public class aved
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aved(LangSettingFragment paramLangSettingFragment) {}
+  public aved(LocationDialogUtil.5 param5) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LangSettingFragment.a(this.a).dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.finish();
   }
 }
 

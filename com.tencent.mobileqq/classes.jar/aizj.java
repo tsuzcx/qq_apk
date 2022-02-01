@@ -1,13 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable;
 
 public class aizj
-  extends RecyclerView.ViewHolder
+  implements DialogInterface.OnDismissListener
 {
-  public aizj(ZhituPanelView paramZhituPanelView, View paramView)
+  public aizj(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramView);
+    this.a.b.postDelayed(new ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable(this.a), 150L);
   }
 }
 

@@ -1,7 +1,15 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsTitleTextView$Companion;", "", "()V", "END_DOT", "", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rvk {}
+public abstract interface rvk
+{
+  public abstract void a(long paramLong);
+  
+  public abstract void a(VideoInfo paramVideoInfo, boolean paramBoolean);
+  
+  public abstract void a(rvv paramrvv);
+  
+  public abstract void d();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

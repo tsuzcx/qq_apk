@@ -14,7 +14,7 @@ class BaseLibManager$1
   public void run()
   {
     String str1 = StorageUtil.getPreference().getString("downloadUrl", null);
-    String str2 = StorageUtil.getPreference().getString("version", "1.18.0.00132");
+    String str2 = StorageUtil.getPreference().getString("version", "1.19.0.00043");
     QMLog.i("miniapp-process_BaseLibManager", "updateBaseLib start. baseLibVersion=" + str2);
     QMLog.i("miniapp-process_BaseLibManager", "forceUpdateBaseLib current requestVersion is:" + str2);
     ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).updateBaseLib(str2, true, true, new BaseLibManager.1.1(this, str2, str1));
@@ -22,7 +22,7 @@ class BaseLibManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.BaseLibManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,47 @@
-import android.graphics.Bitmap;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCaptureImageListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCaptureImageListener;
+import android.content.Context;
+import android.view.View.OnClickListener;
 
-class bkvu
-  implements TVK_IMediaPlayer.OnCaptureImageListener
+public class bkvu
 {
-  bkvu(bkvm parambkvm, AbsVideoPlayer.OnCaptureImageListener paramOnCaptureImageListener) {}
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean = true;
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean = true;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean = true;
+  private String d;
   
-  public void onCaptureImageFailed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2)
+  public bkvu(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnCaptureImageListener.onCaptureImageFailed(this.jdField_a_of_type_Bkvm);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void onCaptureImageSucceed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
+  public bkvr a()
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnCaptureImageListener.onCaptureImageSucceed(this.jdField_a_of_type_Bkvm, paramBitmap);
+    return new bkvr(this, null);
+  }
+  
+  public bkvu a(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public bkvu a(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    this.d = paramString;
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return this;
+  }
+  
+  public bkvu b(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    return this;
   }
 }
 

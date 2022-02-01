@@ -1,345 +1,161 @@
-import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelBoard;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
-import com.tencent.mobileqq.profilecard.bussiness.personalitylabel.ProfilePersonalityLabelComponent.2;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.ProfileCardFavorShowView;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.concurrent.ConcurrentHashMap;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.opengl.GLES20;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import java.io.IOException;
 
 public class bagy
-  extends badd
-  implements View.OnClickListener
+  extends bagv
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private azwy jdField_a_of_type_Azwy = new bagz(this);
+  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230756);
+  private float jdField_a_of_type_Float = 30.0F;
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private float jdField_c_of_type_Float;
+  private int jdField_c_of_type_Int;
+  private int d = -1;
+  private int e;
   
-  public bagy(baei parambaei, azxr paramazxr)
+  public bagy()
   {
-    super(parambaei, paramazxr);
+    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
+    this.mTextureType = 3553;
+    this.mFilterType = 106;
   }
   
-  private void a(ProfileCardFavorShowView paramProfileCardFavorShowView, PersonalityLabelBoard paramPersonalityLabelBoard)
+  public void a(float paramFloat)
   {
-    a(paramProfileCardFavorShowView.jdField_a_of_type_AndroidWidgetTextView, null, paramProfileCardFavorShowView.jdField_a_of_type_AndroidWidgetImageView);
-    int i = -16777216;
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    a(paramBitmap, 0);
+  }
+  
+  public void a(@NonNull Bitmap paramBitmap, int paramInt)
+  {
+    if (paramBitmap == null) {
+      return;
+    }
+    if ((paramInt == 0) || (paramInt == 180))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      return;
+    }
+    Matrix localMatrix = new Matrix();
+    localMatrix.setRotate(360 - paramInt);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), localMatrix, false);
+    }
     for (;;)
     {
-      try
+      this.jdField_a_of_type_Boolean = true;
+      return;
+      Canvas localCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      Rect localRect = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+      RectF localRectF1 = new RectF(0.0F, 0.0F, paramBitmap.getWidth(), paramBitmap.getHeight());
+      RectF localRectF2 = new RectF();
+      localMatrix.mapRect(localRectF2, localRectF1);
+      localCanvas.translate(-localRectF2.left, -localRectF2.top);
+      localCanvas.concat(localMatrix);
+      localCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+      localCanvas.drawBitmap(paramBitmap, localRect, localRectF1, new Paint());
+      localCanvas.setBitmap(null);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    try
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = yoy.a(paramString, null);
+      return;
+    }
+    catch (IOException paramString)
+    {
+      xvv.c("Q.qqstory.publish.edit GPUImagePixelationFilter", "setMosaicPath OutOfMemoryError", paramString);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      xvv.b("Q.qqstory.publish.edit GPUImagePixelationFilter", "mosaic bitmap recycle");
+    }
+    if (this.d != -1) {
+      GlUtil.deleteTexture(this.d);
+    }
+  }
+  
+  public void onDrawTexture()
+  {
+    super.onDrawTexture();
+    GLES20.glUniform1f(this.jdField_a_of_type_Int, this.jdField_b_of_type_Float);
+    GLES20.glUniform1f(this.jdField_b_of_type_Int, this.jdField_c_of_type_Float);
+    GLES20.glUniform1f(this.jdField_c_of_type_Int, this.jdField_a_of_type_Float);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    {
+      xvv.e("Q.qqstory.publish.edit GPUImagePixelationFilter", "mosaic bitmap can't be null");
+      return;
+    }
+    GLES20.glActiveTexture(33985);
+    if ((this.d == -1) || (this.jdField_a_of_type_Boolean))
+    {
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())
       {
-        localObject = ((azxr)this.b).jdField_a_of_type_Azxy;
-        if ((localObject != null) && (((azxy)localObject).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (((azxy)localObject).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0))
-        {
-          localObject = ((azxy)localObject).jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("commonItemContentColor");
-          if (localObject == null) {
-            break label379;
-          }
-          if ((localObject instanceof ColorStateList)) {
-            localObject = (ColorStateList)localObject;
-          }
-        }
-      }
-      catch (Exception localException1)
-      {
-        boolean bool2;
-        localObject = null;
-        QLog.e("ProfilePersonalityLabelComponent", 1, "updatePersonalityLabelTheme fail.", localException1);
-        continue;
-        int j = 0;
-        continue;
-        int k = 0;
-        continue;
-        boolean bool1 = false;
-        continue;
-        paramPersonalityLabelBoard.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setBackgroundResource(2130839442);
-        continue;
-        paramPersonalityLabelBoard.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setTextColor(i);
-        continue;
-        paramPersonalityLabelBoard.setTextColors(ColorStateList.valueOf(i));
+        xvv.e("Q.qqstory.publish.edit GPUImagePixelationFilter", "mosaic bitmap is recycled");
         return;
       }
-      try
-      {
-        if (paramPersonalityLabelBoard.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView == null) {
-          break label373;
-        }
-        j = paramPersonalityLabelBoard.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.a();
-        i = j;
+      if (this.d != -1) {
+        GlUtil.deleteTexture(this.d);
       }
-      catch (Exception localException2)
-      {
-        continue;
-        label373:
-        i = -16777216;
-        continue;
-      }
-      if (((azxr)this.b).jdField_a_of_type_Long != azxy.jdField_a_of_type_Long)
-      {
-        j = 1;
-        if (j != 0) {
-          paramProfileCardFavorShowView.setClickable(true);
-        }
-        bool2 = ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        if (((azxr)this.b).jdField_a_of_type_Azxy == null) {
-          continue;
-        }
-        k = 1;
-        if ((bool2) || (k != 0)) {
-          continue;
-        }
-        bool1 = true;
-        paramPersonalityLabelBoard.setIsNormalTheme(bool1);
-        if (paramPersonalityLabelBoard.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView != null)
-        {
-          if (j == 0) {
-            continue;
-          }
-          paramPersonalityLabelBoard.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setBackgroundDrawable(null);
-          if (localObject == null) {
-            continue;
-          }
-          paramPersonalityLabelBoard.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setTextColor((ColorStateList)localObject);
-        }
-        if ((bool2) && (j != 0)) {
-          a(paramPersonalityLabelBoard.jdField_a_of_type_AndroidWidgetTextView, paramPersonalityLabelBoard.jdField_a_of_type_AndroidWidgetButton, null);
-        }
-        if (localObject == null) {
-          continue;
-        }
-        paramPersonalityLabelBoard.setTextColors((ColorStateList)localObject);
-        return;
-        if (!(localObject instanceof String)) {
-          break label379;
-        }
-        localObject = (String)localObject;
-        if (!((String)localObject).startsWith("#")) {
-          break label379;
-        }
-        Color.parseColor((String)localObject);
-        localObject = null;
-        continue;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColorStateList(2131166990);
-      }
-      label379:
-      Object localObject = null;
-    }
-  }
-  
-  private boolean a(Card paramCard, boolean paramBoolean)
-  {
-    boolean bool7 = ProfileActivity.AllInOne.i(((azxr)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-    boolean bool8 = bhjx.b(((azxr)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-    boolean bool2;
-    label67:
-    boolean bool3;
-    label101:
-    boolean bool4;
-    label151:
-    boolean bool5;
-    if ((this.jdField_a_of_type_Bjaz != null) && (!this.jdField_a_of_type_Bjaz.a(3)))
-    {
-      bool1 = true;
-      if ((paramCard == null) || (paramCard.personalityLabel != null)) {
-        break label328;
-      }
-      bool2 = true;
-      if ((paramCard == null) || (paramCard.personalityLabel == null) || (paramCard.personalityLabel.getSize() != 0) || (paramCard.personalityLabel.remainCount > 0)) {
-        break label334;
-      }
-      bool3 = true;
-      if ((paramCard == null) || (paramCard.personalityLabel == null) || (paramCard.personalityLabel.getSize() != 0) || (bhjx.a(((azxr)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-        break label340;
-      }
-      bool4 = true;
-      if ((paramCard == null) || (paramCard.personalityLabel == null) || (paramCard.personalityLabel.isCloseByUser != 1)) {
-        break label346;
-      }
-      bool5 = true;
-      label176:
-      if ((!bool7) && (!bool8) && (!bool1) && (!bool2) && (!bool3) && (!bool4) && (!bool5)) {
-        break label352;
+      this.d = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_Boolean = false;
+      if (this.jdField_b_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
       }
     }
-    label328:
-    label334:
-    label340:
-    label346:
-    label352:
-    for (boolean bool6 = true;; bool6 = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfilePersonalityLabelComponent", 2, String.format("makeOrRefreshPersonalityLabel shouldNotShow=%s isStrangerInContact=%s isBabyQ=%s configDisable=%s dataIsNull=%s dataIsEmpty=%s dataIsEmptyForGuest=%s closeByUser=%s", new Object[] { Boolean.valueOf(bool6), Boolean.valueOf(bool7), Boolean.valueOf(bool8), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5) }));
-      }
-      if ((paramCard != null) && (!bool6)) {
-        break label358;
-      }
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        break label567;
-      }
-      this.jdField_a_of_type_JavaLangObject = null;
-      return true;
-      bool1 = false;
-      break;
-      bool2 = false;
-      break label67;
-      bool3 = false;
-      break label101;
-      bool4 = false;
-      break label151;
-      bool5 = false;
-      break label176;
-    }
-    label358:
-    Object localObject2;
-    Object localObject1;
-    if (this.jdField_a_of_type_JavaLangObject == null)
-    {
-      localObject2 = (ProfileCardFavorShowView)this.jdField_a_of_type_Baiy.a(a_());
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject2 = new PersonalityLabelBoard(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((azxr)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-        localObject1 = new ProfileCardFavorShowView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-        ((ProfileCardFavorShowView)localObject1).setTitle(anzj.a(2131707307));
-        ((ProfileCardFavorShowView)localObject1).setVisibility(8);
-        ((ProfileCardFavorShowView)localObject1).addView((View)localObject2);
-      }
-      this.jdField_a_of_type_JavaLangObject = localObject1;
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      localObject1 = (ProfileCardFavorShowView)this.jdField_a_of_type_JavaLangObject;
-      localObject2 = (PersonalityLabelBoard)((ProfileCardFavorShowView)localObject1).a(0);
-      ((PersonalityLabelBoard)localObject2).setNick(ProfileCardMoreInfoView.a((azxr)this.b));
-      ((PersonalityLabelBoard)localObject2).a(paramCard.personalityLabel, paramBoolean, false);
-      ((PersonalityLabelBoard)localObject2).setPersonalityLabelComponent(this);
-      paramCard = new azvr(86, ((ProfileCardFavorShowView)localObject1).a(0));
-      ((ProfileCardFavorShowView)localObject1).b.setTag(paramCard);
-      ((ProfileCardFavorShowView)localObject1).b.setOnClickListener(this);
-      a((ProfileCardFavorShowView)localObject1, (PersonalityLabelBoard)localObject2);
-      return bool1;
-    }
-    label567:
-    return false;
+    GLES20.glBindTexture(3553, this.d);
+    GLES20.glUniform1i(this.e, 1);
   }
   
-  private void i()
+  public void onInitialized()
   {
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
-    {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new baha(this);
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("com.tencent.mobileqq.card.modify_personality_label");
-      localIntentFilter.setPriority(2147483647);
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-    }
+    super.onInitialized();
+    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "imageWidthFactor");
+    checkLocation(this.jdField_a_of_type_Int, "imageWidthFactor");
+    this.jdField_b_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "imageHeightFactor");
+    checkLocation(this.jdField_b_of_type_Int, "imageHeightFactor");
+    this.jdField_c_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "pixel");
+    checkLocation(this.jdField_c_of_type_Int, "mPixelLocation");
+    this.e = GLES20.glGetUniformLocation(getProgram(), "sTexture2");
+    a(this.jdField_a_of_type_Float);
   }
   
-  private void j()
+  public void onOutputSizeChanged(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-    }
-  }
-  
-  public int a()
-  {
-    return 1010;
-  }
-  
-  public String a()
-  {
-    return "ProfilePersonalityLabelComponent";
-  }
-  
-  public void a()
-  {
-    ThreadManager.postImmediately(new ProfilePersonalityLabelComponent.2(this), null, true);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    if (paramInt1 == 1029)
-    {
-      if ((((azxr)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) && (((azxr)this.b).jdField_a_of_type_ComTencentMobileqqDataCard != null) && (((azxr)this.b).jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel != null) && (((azxr)this.b).jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel.unreadCount > 0))
-      {
-        ((azxr)this.b).jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel.unreadCount = 0;
-        if (this.jdField_a_of_type_JavaLangObject != null) {
-          ((PersonalityLabelBoard)((ProfileCardFavorShowView)this.jdField_a_of_type_JavaLangObject).a(0)).a(((azxr)this.b).jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel, false, false);
-        }
-        a();
-      }
-      if (paramInt2 == -1) {
-        ((azww)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(112)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-      }
-    }
-  }
-  
-  public void a(@NonNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
-  {
-    super.a(paramBaseActivity, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Azwy);
-    i();
-  }
-  
-  public boolean a(azxr paramazxr)
-  {
-    boolean bool = super.a(paramazxr);
-    return a(((azxr)this.b).jdField_a_of_type_ComTencentMobileqqDataCard, ((azxr)this.b).d) | bool;
-  }
-  
-  public String a_()
-  {
-    return "map_key_personality_label";
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.jdField_a_of_type_JavaLangObject != null) {
-      ((PersonalityLabelBoard)((ProfileCardFavorShowView)this.jdField_a_of_type_JavaLangObject).a(0)).a();
-    }
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Azwy);
-    j();
-    super.f();
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((paramView.getTag() instanceof azvr))
-    {
-      azvr localazvr = (azvr)paramView.getTag();
-      if ((localazvr.jdField_a_of_type_Int == 86) && ((localazvr.jdField_a_of_type_JavaLangObject instanceof PersonalityLabelBoard))) {
-        ((PersonalityLabelBoard)localazvr.jdField_a_of_type_JavaLangObject).a(false);
-      }
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.onOutputSizeChanged(paramInt1, paramInt2);
+    xvv.a("Q.qqstory.publish.edit GPUImagePixelationFilter", "onOutputSizeChanged width=%s, height=%s", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+    this.jdField_b_of_type_Float = 0.0009259259F;
+    this.jdField_c_of_type_Float = 0.0005208334F;
   }
 }
 

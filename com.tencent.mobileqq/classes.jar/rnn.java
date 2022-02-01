@@ -1,21 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import java.util.List;
 
 class rnn
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements rmg
 {
-  rnn(rnl paramrnl) {}
+  rnn(rnm paramrnm, UgcVideo paramUgcVideo) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void a(List<String> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(rnl.a(), 2, "播放器状态回调 onError model = " + paramInt1 + ", what = " + paramInt2 + ", detailInfo = " + paramString);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.rowkey = ((String)paramList.get(0));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.coverProgress = 100;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.videoProgress = 100;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.compressProgress = 100;
     }
-    if (rnl.a(this.a) != null) {
-      rnl.a(this.a).a(3, paramInt1 + "-" + paramInt2, null, 0L);
-    }
-    return false;
+    rnm.a(this.jdField_a_of_type_Rnm, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo);
   }
 }
 

@@ -1,8 +1,7 @@
-import java.util.List;
-
 public abstract interface zcm
+  extends zbk
 {
-  public abstract void a(int paramInt, List<wum> paramList);
+  public abstract void a();
 }
 
 

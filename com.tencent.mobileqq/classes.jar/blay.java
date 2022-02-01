@@ -1,117 +1,13 @@
-import com.tencent.qav.QavDef.MultiUserInfo;
-import com.tencent.qqmini.sdk.launcher.core.proxy.VoIPProxy.MultiUserInfo;
-import com.tencent.qqmini.sdk.launcher.core.proxy.VoIPProxy.VoIPListener;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 
 class blay
-  extends bkdo
+  implements blbv
 {
-  blay(blaw paramblaw) {}
+  blay(blax paramblax) {}
   
-  public void onEnterRoom()
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    if (blaw.a(this.a) != null) {
-      blaw.a(this.a).onEnterRoom();
-    }
-  }
-  
-  public void onError(int paramInt)
-  {
-    if (blaw.a(this.a) != null) {
-      blaw.a(this.a).onError(paramInt);
-    }
-  }
-  
-  public void onUserAudioAvailable(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
-  {
-    if (blaw.a(this.a) != null)
-    {
-      VoIPProxy.MultiUserInfo localMultiUserInfo = null;
-      if (paramMultiUserInfo != null)
-      {
-        localMultiUserInfo = new VoIPProxy.MultiUserInfo();
-        localMultiUserInfo.mMicOn = paramMultiUserInfo.mMicOn;
-        localMultiUserInfo.mOpenId = paramMultiUserInfo.mOpenId;
-        localMultiUserInfo.mUin = paramMultiUserInfo.mUin;
-      }
-      blaw.a(this.a).onUserAudioAvailable(localMultiUserInfo, paramBoolean);
-    }
-  }
-  
-  public void onUserEnter(QavDef.MultiUserInfo paramMultiUserInfo)
-  {
-    if (blaw.a(this.a) != null)
-    {
-      VoIPProxy.MultiUserInfo localMultiUserInfo = null;
-      if (paramMultiUserInfo != null)
-      {
-        localMultiUserInfo = new VoIPProxy.MultiUserInfo();
-        localMultiUserInfo.mMicOn = paramMultiUserInfo.mMicOn;
-        localMultiUserInfo.mOpenId = paramMultiUserInfo.mOpenId;
-        localMultiUserInfo.mUin = paramMultiUserInfo.mUin;
-      }
-      blaw.a(this.a).onUserEnter(localMultiUserInfo);
-    }
-  }
-  
-  public void onUserExit(QavDef.MultiUserInfo paramMultiUserInfo)
-  {
-    if (blaw.a(this.a) != null)
-    {
-      VoIPProxy.MultiUserInfo localMultiUserInfo = null;
-      if (paramMultiUserInfo != null)
-      {
-        localMultiUserInfo = new VoIPProxy.MultiUserInfo();
-        localMultiUserInfo.mMicOn = paramMultiUserInfo.mMicOn;
-        localMultiUserInfo.mOpenId = paramMultiUserInfo.mOpenId;
-        localMultiUserInfo.mUin = paramMultiUserInfo.mUin;
-      }
-      blaw.a(this.a).onUserExit(localMultiUserInfo);
-    }
-  }
-  
-  public void onUserSpeaking(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
-  {
-    if (blaw.a(this.a) != null)
-    {
-      VoIPProxy.MultiUserInfo localMultiUserInfo = null;
-      if (paramMultiUserInfo != null)
-      {
-        localMultiUserInfo = new VoIPProxy.MultiUserInfo();
-        localMultiUserInfo.mMicOn = paramMultiUserInfo.mMicOn;
-        localMultiUserInfo.mOpenId = paramMultiUserInfo.mOpenId;
-        localMultiUserInfo.mUin = paramMultiUserInfo.mUin;
-      }
-      blaw.a(this.a).onUserSpeaking(localMultiUserInfo, paramBoolean);
-    }
-  }
-  
-  public void onUserUpdate(List<QavDef.MultiUserInfo> paramList)
-  {
-    if (blaw.a(this.a) != null)
-    {
-      ArrayList localArrayList = null;
-      if (paramList != null)
-      {
-        localArrayList = new ArrayList();
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          QavDef.MultiUserInfo localMultiUserInfo = (QavDef.MultiUserInfo)paramList.next();
-          if (localMultiUserInfo != null)
-          {
-            VoIPProxy.MultiUserInfo localMultiUserInfo1 = new VoIPProxy.MultiUserInfo();
-            localMultiUserInfo1.mMicOn = localMultiUserInfo.mMicOn;
-            localMultiUserInfo1.mOpenId = localMultiUserInfo.mOpenId;
-            localMultiUserInfo1.mUin = localMultiUserInfo.mUin;
-            localArrayList.add(localMultiUserInfo1);
-          }
-        }
-      }
-      blaw.a(this.a).onUserUpdate(localArrayList);
-    }
+    this.a.a(paramBoolean, paramGetAdsRsp);
   }
 }
 

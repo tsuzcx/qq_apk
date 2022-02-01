@@ -1,234 +1,71 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.troop.aioapp.GrayGroupAppsDbHelper.1;
+import com.tencent.mobileqq.troop.aioapp.data.GrayGroupAppEntity;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bduy
 {
-  private static ArrayList<bduz> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private static boolean jdField_a_of_type_Boolean = true;
-  private static ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private static boolean jdField_b_of_type_Boolean;
-  private static boolean c;
-  private static boolean d;
+  private final QQAppInterface a;
   
-  static
+  bduy(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
+    this.a = paramQQAppInterface;
   }
   
-  public static void a()
+  private void a(boolean paramBoolean)
   {
-    try
+    EntityManager localEntityManager = this.a.getEntityManagerFactory().createEntityManager();
+    bduw localbduw = bduw.a(this.a);
+    Object localObject = localEntityManager.query(GrayGroupAppEntity.class);
+    if (!bdvb.a((Collection)localObject))
     {
-      bdux localbdux = bduw.a();
-      if (localbdux.jdField_a_of_type_Boolean) {
-        jdField_a_of_type_Boolean = bdux.a(localbdux);
-      }
-      ArrayList localArrayList = bdva.a().jdField_a_of_type_JavaUtilArrayList;
-      if ((localArrayList != null) && (localArrayList.size() > 0))
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        jdField_b_of_type_JavaUtilArrayList.clear();
-        jdField_b_of_type_JavaUtilArrayList.addAll(localArrayList);
-      }
-      jdField_b_of_type_Boolean = ((Boolean)bhsi.a("study_mode_key_user_switch", Boolean.valueOf(false))).booleanValue();
-      c = ((Boolean)bhsi.a("study_mode_key_student_mask", Boolean.valueOf(false))).booleanValue();
-      d = bdvg.a.a();
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      if (QLog.isColorLevel()) {
-        QLog.d("StudyModeManager", 2, String.format("init ,sStudyModeConfigSwitch = %b,sStudyModeSwitch = %b,sStudentMask = %b,sBlackIds = %s,configHas = %b,sShowStudyModeSwitchDialog = %b", new Object[] { Boolean.valueOf(jdField_a_of_type_Boolean), Boolean.valueOf(jdField_b_of_type_Boolean), Boolean.valueOf(c), "sBlackIds.toString()", Boolean.valueOf(localbdux.jdField_a_of_type_Boolean), Boolean.valueOf(d) }));
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public static void a(bduz parambduz)
-  {
-    try
-    {
-      if (!jdField_a_of_type_JavaUtilArrayList.contains(parambduz)) {
-        jdField_a_of_type_JavaUtilArrayList.add(parambduz);
-      }
-      return;
-    }
-    finally
-    {
-      parambduz = finally;
-      throw parambduz;
-    }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    try
-    {
-      Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        ((bduz)localIterator.next()).a(paramBoolean);
-      }
-    }
-    finally {}
-  }
-  
-  /* Error */
-  public static void a(boolean paramBoolean, com.tencent.mobileqq.app.QQAppInterface paramQQAppInterface)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: invokestatic 107	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   6: ifeq +25 -> 31
-    //   9: ldc 109
-    //   11: iconst_2
-    //   12: ldc 150
-    //   14: iconst_1
-    //   15: anewarray 4	java/lang/Object
-    //   18: dup
-    //   19: iconst_0
-    //   20: iload_0
-    //   21: invokestatic 72	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   24: aastore
-    //   25: invokestatic 119	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   28: invokestatic 122	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   31: getstatic 24	bduy:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   34: invokevirtual 153	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   37: istore_2
-    //   38: iload_2
-    //   39: ifne +7 -> 46
-    //   42: ldc 2
-    //   44: monitorexit
-    //   45: return
-    //   46: getstatic 83	bduy:jdField_b_of_type_Boolean	Z
-    //   49: iload_0
-    //   50: if_icmpeq -8 -> 42
-    //   53: ldc 66
-    //   55: iload_0
-    //   56: invokestatic 72	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   59: invokestatic 156	bhsi:a	(Ljava/lang/String;Ljava/lang/Object;)V
-    //   62: iload_0
-    //   63: putstatic 83	bduy:jdField_b_of_type_Boolean	Z
-    //   66: getstatic 17	bduy:jdField_a_of_type_Boolean	Z
-    //   69: ifeq +7 -> 76
-    //   72: iload_0
-    //   73: invokestatic 157	bduy:a	(Z)V
-    //   76: aload_1
-    //   77: ifnull -35 -> 42
-    //   80: aload_1
-    //   81: bipush 87
-    //   83: invokevirtual 162	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lanud;
-    //   86: checkcast 164	aogf
-    //   89: iconst_1
-    //   90: iconst_0
-    //   91: invokevirtual 167	aogf:a	(ZZ)V
-    //   94: goto -52 -> 42
-    //   97: astore_1
-    //   98: ldc 2
-    //   100: monitorexit
-    //   101: aload_1
-    //   102: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	103	0	paramBoolean	boolean
-    //   0	103	1	paramQQAppInterface	com.tencent.mobileqq.app.QQAppInterface
-    //   37	2	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   3	31	97	finally
-    //   31	38	97	finally
-    //   46	76	97	finally
-    //   80	94	97	finally
-  }
-  
-  public static boolean a()
-  {
-    if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      a();
-    }
-    if (jdField_a_of_type_Boolean) {
-      return jdField_b_of_type_Boolean;
-    }
-    return false;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      return false;
-    }
-    if (a()) {}
-    for (;;)
-    {
-      try
-      {
-        if (jdField_b_of_type_JavaUtilArrayList.size() > 0)
+        GrayGroupAppEntity localGrayGroupAppEntity = (GrayGroupAppEntity)((Iterator)localObject).next();
+        if (paramBoolean)
         {
-          bool = jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt));
-          if (QLog.isColorLevel()) {
-            QLog.d("StudyModeManager", 2, String.format("init ,studyModeSwitch = %b,notifyID = %d,blackResult = %b,sBlackIds = %s", new Object[] { Boolean.valueOf(jdField_a_of_type_Boolean), Integer.valueOf(paramInt), Boolean.valueOf(bool), jdField_b_of_type_JavaUtilArrayList.toString() }));
-          }
-          return bool;
+          localGrayGroupAppEntity.updatedTimestamp = 0L;
+          b(localGrayGroupAppEntity);
         }
+        localbduw.a.put(Long.valueOf(localGrayGroupAppEntity.groupUin), localGrayGroupAppEntity);
       }
-      catch (Throwable localThrowable)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("StudyModeManager", 2, localThrowable, new Object[0]);
-        }
-      }
-      boolean bool = false;
     }
+    localEntityManager.close();
   }
   
-  public static void b(bduz parambduz)
+  private void b(GrayGroupAppEntity paramGrayGroupAppEntity)
   {
-    try
-    {
-      if (jdField_a_of_type_JavaUtilArrayList.contains(parambduz)) {
-        jdField_a_of_type_JavaUtilArrayList.remove(parambduz);
-      }
-      return;
-    }
-    finally
-    {
-      parambduz = finally;
-      throw parambduz;
-    }
+    EntityManager localEntityManager = this.a.getEntityManagerFactory().createEntityManager();
+    paramGrayGroupAppEntity.setStatus(1000);
+    localEntityManager.persistOrReplace(paramGrayGroupAppEntity);
+    localEntityManager.close();
   }
   
-  public static void b(boolean paramBoolean)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StudyModeManager", 2, String.format("setstudent mask = %b", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    bhsi.a("study_mode_key_student_mask", Boolean.valueOf(paramBoolean));
+    a(false);
   }
   
-  public static boolean b()
+  void a(GrayGroupAppEntity paramGrayGroupAppEntity)
   {
-    return jdField_a_of_type_Boolean;
+    ThreadManagerV2.excute(new GrayGroupAppsDbHelper.1(this, paramGrayGroupAppEntity), 32, null, false);
   }
   
-  public static void c(boolean paramBoolean)
+  public void b()
   {
-    try
-    {
-      jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    a(true);
   }
   
-  public static boolean c()
+  void c()
   {
-    d = bdvg.a.a();
-    return d;
+    this.a.getEntityManagerFactory().createEntityManager().delete(GrayGroupAppEntity.class.getSimpleName(), null, null);
   }
 }
 

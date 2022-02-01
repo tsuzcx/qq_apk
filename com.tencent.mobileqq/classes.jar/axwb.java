@@ -1,16 +1,67 @@
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import org.jetbrains.annotations.NotNull;
 
-class axwb
-  extends aogi
+public class axwb
 {
-  axwb(axwa paramaxwa) {}
+  public int a;
+  private long a;
   
-  public void a(boolean paramBoolean)
+  public axwb(int paramInt)
   {
-    QLog.d("NearbyNewRedDotManager", 1, "RedpointObserver.onDataChange: isSucc=" + paramBoolean);
-    List localList = this.a.a(axwa.a(this.a));
-    axwa.a(this.a, axwa.a(this.a), localList);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  private boolean a()
+  {
+    return System.currentTimeMillis() - this.jdField_a_of_type_Long > axwj.O;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 40001;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool = a();
+    if ((QLog.isColorLevel()) && (bool)) {
+      QLog.d("AutoStatus", 2, "[status] resetIfDead from: " + paramString + " hasDead: " + true + " status: " + toString());
+    }
+    if (bool) {
+      a();
+    }
+    return bool;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (axwb)paramObject;
+    } while (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int);
+    return false;
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "AutoStatus{status=" + axwj.a(this.jdField_a_of_type_Int) + ", updateTime=" + new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_Long)) + '}';
   }
 }
 

@@ -1,6 +1,10 @@
-public abstract interface zye
+public class zye
+  implements zyf
 {
-  public abstract void a();
+  public avjt a(String paramString)
+  {
+    return new avkc(paramString).a();
+  }
 }
 
 

@@ -1,47 +1,40 @@
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
-import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.utils.UIUtils;
 
 public class xmc
+  extends ysg
 {
-  private xmq jdField_a_of_type_Xmq;
-  private xms jdField_a_of_type_Xms;
-  private xmu jdField_a_of_type_Xmu = new xmd(this);
-  public xno a;
-  private xzt jdField_a_of_type_Xzt;
-  private xmu b = new xme(this);
+  public static final String KEY = "MemoriesPlaceHolderSegment";
   
-  public void a(MsgTabPlayInfo paramMsgTabPlayInfo)
+  public xmc(Context paramContext)
   {
-    this.jdField_a_of_type_Xno = new xno(new xnf(paramMsgTabPlayInfo));
-    this.jdField_a_of_type_Xzt = new xzt(this.jdField_a_of_type_Xno);
-    this.jdField_a_of_type_Xzt.b();
+    super(paramContext);
   }
   
-  public void a(HomeFeedPlayInfo paramHomeFeedPlayInfo)
+  public int a()
   {
-    this.jdField_a_of_type_Xno = new xno(new xml(paramHomeFeedPlayInfo));
-    this.jdField_a_of_type_Xzt = new xzt(this.jdField_a_of_type_Xno);
+    return 1;
   }
   
-  public void onClickTestDown(View paramView)
+  public View a(int paramInt, xsh paramxsh, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_Xno != null)
-    {
-      this.jdField_a_of_type_Xno.a(this.b);
-      this.jdField_a_of_type_Xno.b(this.jdField_a_of_type_Xmu);
-      this.jdField_a_of_type_Xno.a(this.jdField_a_of_type_Xms, 2, 1, null);
-    }
+    paramInt = UIUtils.getWindowScreenHeight(this.a);
+    int i = UIUtils.getStatusBarHeight(this.a);
+    paramxsh.a().getLayoutParams().height = (paramInt - i);
+    return paramxsh.a();
   }
   
-  public void onClickTestUp(View paramView)
+  public String a()
   {
-    if (this.jdField_a_of_type_Xno != null)
-    {
-      this.jdField_a_of_type_Xno.b(this.b);
-      this.jdField_a_of_type_Xno.a(this.jdField_a_of_type_Xmu);
-      this.jdField_a_of_type_Xno.a(this.jdField_a_of_type_Xms, 0, 1, null);
-    }
+    return "MemoriesPlaceHolderSegment";
+  }
+  
+  public xsh a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new xsh(LayoutInflater.from(this.a).inflate(2131561656, paramViewGroup, false));
   }
 }
 

@@ -1,80 +1,169 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.MaxHeightRelativelayout;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class aval
+public class aval
+  extends QIPCModule
 {
-  protected Context a;
-  protected View a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected bhpc a;
-  protected MaxHeightRelativelayout a;
+  private ArrayList<avao> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  public aval(bhpc parambhpc)
+  private aval()
   {
-    this.jdField_a_of_type_Bhpc = parambhpc;
-    this.jdField_a_of_type_AndroidContentContext = parambhpc.getContext();
-    a();
-    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.setMaxHeight(Math.max(parambhpc.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297056), agej.a(a(), this.jdField_a_of_type_AndroidContentContext.getResources())));
+    super("ListenTogetherIPCModuleWebClient");
   }
   
-  protected int a()
+  public static aval a()
   {
-    return 380;
+    return avan.a();
   }
   
-  protected abstract View a();
-  
-  protected void a()
+  private EIPCResult a(String arg1, Bundle paramBundle, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558989, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380327));
-    this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout = ((MaxHeightRelativelayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376774));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368581));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376811));
-    View localView = a();
-    if (localView != null) {
-      this.jdField_a_of_type_ComTencentWidgetMaxHeightRelativelayout.addView(localView);
+    if ((!"action_status_changed".equals(???)) || (paramBundle == null)) {}
+    for (;;)
+    {
+      return null;
+      paramBundle = paramBundle.getString("data");
+      try
+      {
+        paramBundle = new JSONObject(paramBundle);
+        if (QLog.isColorLevel()) {
+          QLog.d("ListenTogetherIPCModuleWebClient", 2, "statusChanged action:" + ??? + " data=" + paramBundle);
+        }
+        if (paramBundle != null) {
+          synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+          {
+            Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+            while (localIterator.hasNext())
+            {
+              avao localavao = (avao)localIterator.next();
+              if (localavao != null) {
+                localavao.a(paramBundle);
+              }
+            }
+          }
+        }
+      }
+      catch (JSONException paramBundle)
+      {
+        for (;;)
+        {
+          QLog.i("ListenTogetherIPCModuleWebClient", 1, "statusChanged error:" + paramBundle.getMessage());
+          paramBundle = null;
+        }
+        ??? = new EIPCResult();
+        ???.code = 0;
+      }
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new avam(this));
-    int i = bhtq.a(15.0F);
-    agej.a(this.jdField_a_of_type_AndroidWidgetImageView, i, i, i, i);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anzj.a(2131703667));
+    return ???;
   }
   
-  public void a(String paramString)
+  public static void a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("data", paramJSONObject.toString());
+    QIPCClientHelper.getInstance().getClient().callServer("ListenTogetherIPCModuleMainServer", "action_status_changed", localBundle, null);
   }
   
-  public View b()
+  public static void a(JSONObject paramJSONObject, String paramString, EIPCResultCallback paramEIPCResultCallback)
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("data", paramJSONObject.toString());
+    QIPCClientHelper.getInstance().getClient().callServer("ListenTogetherIPCModuleMainServer", paramString, localBundle, paramEIPCResultCallback);
   }
   
-  public void b()
+  public void a(avao paramavao)
   {
-    c();
-    this.jdField_a_of_type_Bhpc.removePreviewView();
+    if (QLog.isColorLevel()) {
+      QLog.d("ListenTogetherIPCModuleWebClient", 2, "register callback:" + paramavao);
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramavao)) {}
+    for (;;)
+    {
+      return;
+      if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+        ??? = a();
+      }
+      try
+      {
+        QIPCClientHelper.getInstance().register((QIPCModule)???);
+        this.jdField_a_of_type_Boolean = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("ListenTogetherIPCModuleWebClient", 2, "register real");
+        }
+      }
+      catch (Exception localException)
+      {
+        synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.add(paramavao);
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("ListenTogetherIPCModuleWebClient", 2, "register mListenTogetherClient2WebCallbacks.size:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+          return;
+          localException = localException;
+          QLog.e("ListenTogetherIPCModuleWebClient", 1, "register ipc module error.", localException);
+        }
+      }
+    }
   }
   
-  protected void c() {}
-  
-  protected void d()
+  public void b(avao paramavao)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("ListenTogetherIPCModuleWebClient", 2, "unregister callback:" + paramavao + " mHasRegistered:" + this.jdField_a_of_type_Boolean);
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramavao)) {}
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(paramavao);
+      if (QLog.isColorLevel()) {
+        QLog.d("ListenTogetherIPCModuleWebClient", 2, "unregister mListenTogetherClient2WebCallbacks.size:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+      }
+      if ((!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) || (!this.jdField_a_of_type_Boolean)) {}
+    }
+    try
+    {
+      if (QIPCClientHelper.getInstance().getClient() != null)
+      {
+        QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
+        this.jdField_a_of_type_Boolean = false;
+        if (QLog.isColorLevel()) {
+          QLog.d("ListenTogetherIPCModuleWebClient", 2, "unregister real");
+        }
+      }
+      return;
+    }
+    catch (Exception paramavao)
+    {
+      QLog.e("ListenTogetherIPCModuleWebClient", 1, "unregister ipc module error.", paramavao);
+    }
+    paramavao = finally;
+    throw paramavao;
   }
   
-  public void e()
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("ListenTogetherIPCModuleWebClient", 2, "onCall, params=" + paramBundle + ", action=" + paramString + ", callBackId=" + paramInt);
+    }
+    if (paramBundle == null) {
+      QLog.i("ListenTogetherIPCModuleWebClient", 1, "onCall, param is null, action=" + paramString + ", callBackId=" + paramInt);
+    }
+    while (!"action_status_changed".equals(paramString)) {
+      return null;
+    }
+    return a(paramString, paramBundle, paramInt);
   }
 }
 

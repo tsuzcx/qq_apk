@@ -1,506 +1,295 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.Looper;
-import android.support.annotation.Nullable;
-import android.text.TextPaint;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.animation.Animation;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.text.format.Time;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.qassistant.util.CommandUtils.4;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class azgj
-  extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private azgs jdField_a_of_type_Azgs;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ArrayList<AutoReplyText> jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public azgj(QQAppInterface paramQQAppInterface, Context paramContext, Drawable paramDrawable)
+  public static int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-  }
-  
-  private View a(LayoutInflater paramLayoutInflater, int paramInt, ViewGroup paramViewGroup)
-  {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558424, paramViewGroup, false);
-    paramViewGroup = (TextView)paramLayoutInflater.findViewById(2131365046);
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramViewGroup.getLayoutParams();
-    if (getItemViewType(paramInt) == 0)
+    try
     {
-      localMarginLayoutParams.topMargin = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298375);
-      localMarginLayoutParams.bottomMargin = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298372);
-      paramViewGroup.setText(2131690189);
-      paramViewGroup.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131690189));
-    }
-    for (;;)
-    {
-      paramViewGroup.setLayoutParams(localMarginLayoutParams);
-      return paramLayoutInflater;
-      localMarginLayoutParams.bottomMargin = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298375);
-      localMarginLayoutParams.topMargin = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298372);
-      paramViewGroup.setText(2131690191);
-      paramViewGroup.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131690191));
-    }
-  }
-  
-  private azgt a(LayoutInflater paramLayoutInflater, int paramInt, View paramView, ViewGroup paramViewGroup, AutoReplyText paramAutoReplyText)
-  {
-    if ((paramView == null) || (paramView.getTag() == null) || (paramView.getVisibility() == 8))
-    {
-      paramView = paramLayoutInflater.inflate(2131558420, paramViewGroup, false);
-      paramLayoutInflater = paramView.findViewById(2131365627);
-      if (ThemeUtil.isDefaultTheme())
+      String str = BaseActivity.sTopActivity.getActivityName();
+      if ("SplashActivity_MainFragment".equals(str))
       {
-        paramInt = 0;
-        paramLayoutInflater.setVisibility(paramInt);
-        if ((!ThemeUtil.isDefaultTheme()) && (!ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null))) {
-          paramView.findViewById(2131376518).setBackgroundResource(2130839450);
+        if (FrameHelperActivity.b()) {
+          return 8;
         }
-        paramView.findViewById(2131369851).setPadding(0, 0, 0, 0);
-        paramView.findViewById(2131376701).setVisibility(8);
-        paramViewGroup = (TextView)paramView.findViewById(2131369875);
-        paramViewGroup.setEditableFactory(new azgl(this, paramViewGroup));
-        paramLayoutInflater = new azgt(null);
-        paramLayoutInflater.jdField_a_of_type_AndroidViewView = paramView;
-        paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView = paramViewGroup;
-        paramLayoutInflater.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376675));
-        paramLayoutInflater.b = paramView.findViewById(2131365765);
-        paramLayoutInflater.c = paramView.findViewById(2131365766);
-        paramLayoutInflater.d = paramView.findViewById(2131378633);
-        paramLayoutInflater.jdField_a_of_type_AndroidViewView.setTag(paramLayoutInflater);
-        label200:
-        paramLayoutInflater.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new azgm(this, paramAutoReplyText));
-        paramLayoutInflater.b.setOnClickListener(new azgn(this, paramAutoReplyText));
-        boolean bool = paramAutoReplyText.getExtra().getBoolean("AutoReplyAdapter:in_use", false);
-        if (paramAutoReplyText.getTextId() != 2147483647) {
-          break label557;
+        int i = MainFragment.a().a();
+        if (i == MainFragment.jdField_b_of_type_Int) {
+          return 1;
         }
-        paramInt = 1;
-        label259:
-        paramView = AutoReplyText.trimRawString(paramAutoReplyText.getRawText(), true);
-        int i = (int)(paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView.getTextSize() / paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView.getPaint().density);
-        paramView = behh.a(paramView, paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView.getPaint(), 3, i, bdep.a - bdep.a(67.0F), true);
-        if (QLog.isColorLevel()) {
-          QLog.d("AutoReplyAdapter", 2, "Truncate subText: " + paramView);
+        if (i == MainFragment.d) {
+          return 2;
         }
-        paramViewGroup = new begp(paramView, 3, i);
-        paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup);
-        paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramViewGroup);
-        paramLayoutInflater.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(new begp(anzj.a(2131699773) + paramView, 3, i));
-        paramLayoutInflater.c.setOnClickListener(new azgo(this, paramAutoReplyText, bool));
-        paramLayoutInflater.jdField_a_of_type_AndroidViewView.findViewById(2131376518).setOnClickListener(new azgp(this, paramAutoReplyText));
-        paramViewGroup = paramLayoutInflater.jdField_a_of_type_AndroidWidgetImageView;
-        if (!bool) {
-          break label562;
+        if (i == MainFragment.h) {
+          return 9;
         }
-        paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        label475:
-        paramViewGroup.setImageDrawable(paramView);
-        paramView = paramLayoutInflater.jdField_a_of_type_AndroidViewView;
-        if (paramInt == 0) {
-          break label567;
+        if (i == MainFragment.e) {
+          return 10;
         }
       }
-    }
-    label557:
-    label562:
-    label567:
-    for (paramInt = 0;; paramInt = bdep.a(200.0F))
-    {
-      paramView.setTag(-3, Integer.valueOf(paramInt));
-      paramView = (RelativeLayout.LayoutParams)paramLayoutInflater.d.getLayoutParams();
-      if (paramView.leftMargin > 0)
+      else if (!"SplashActivity_ChatFragment".equals(str)) {}
+      switch (ChatFragment.a().a.sessionInfo.curType)
       {
-        paramView.leftMargin = 0;
-        paramLayoutInflater.d.setLayoutParams(paramView);
+      default: 
+        if ("FriendProfileCardActivity".equals(str)) {
+          return 7;
+        }
+        if ("UniteSearchActivity".equals(str)) {
+          return 12;
+        }
+        if ("QQSettingSettingActivity".equals(str)) {
+          return 13;
+        }
+        boolean bool = "AssistantSettingActivity".equals(str);
+        if (bool) {
+          return 14;
+        }
+        break;
       }
-      return paramLayoutInflater;
-      paramInt = 8;
-      break;
-      paramLayoutInflater = (azgt)paramView.getTag();
-      paramLayoutInflater.jdField_a_of_type_AndroidViewView = paramView;
-      break label200;
-      paramInt = 0;
-      break label259;
-      paramView = null;
-      break label475;
     }
+    catch (Exception localException) {}
+    return 15;
+    return 5;
+    return 4;
+    return 3;
+    return 6;
   }
   
-  private void a()
+  public static int a(long paramLong)
   {
-    HashSet localHashSet = new HashSet(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(localHashSet);
-    Collections.sort(this.jdField_a_of_type_JavaUtilArrayList);
+    Time localTime = new Time();
+    localTime.set(paramLong);
+    return localTime.hour;
   }
   
-  private void a(View paramView, int paramInt)
+  private static long a(Set<FileInfo> paramSet, ArrayList<ForwardFileInfo> paramArrayList, ArrayList<Uri> paramArrayList1)
   {
-    if (paramInt == 2147483647) {}
-    while ((paramView == null) || (!a())) {
-      return;
-    }
-    azgq localazgq = new azgq(this, paramView, paramView.getMeasuredHeight());
-    localazgq.setAnimationListener(new azgr(this, paramInt));
-    localazgq.setDuration(150L);
-    paramView.startAnimation(localazgq);
-  }
-  
-  private View b(LayoutInflater paramLayoutInflater, int paramInt, ViewGroup paramViewGroup)
-  {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558418, paramViewGroup, false);
-    paramLayoutInflater.setOnClickListener(new azgk(this));
-    return paramLayoutInflater;
-  }
-  
-  private void b(int paramInt)
-  {
-    if (paramInt == 2147483647) {
-      break label6;
-    }
-    label6:
-    while (!a()) {
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    int j = 0;
-    int k = 0;
-    int i = 0;
-    label30:
-    AutoReplyText localAutoReplyText;
-    boolean bool;
-    label110:
-    int m;
-    if (((Iterator)localObject).hasNext())
+    paramSet = paramSet.iterator();
+    long l1 = 0L;
+    if (paramSet.hasNext())
     {
-      localAutoReplyText = (AutoReplyText)((Iterator)localObject).next();
-      if (localAutoReplyText.getTextId() == paramInt)
+      FileInfo localFileInfo = (FileInfo)paramSet.next();
+      FileManagerEntity localFileManagerEntity = aszt.a(localFileInfo);
+      ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
+      localForwardFileInfo.b(10000);
+      localForwardFileInfo.d(localFileManagerEntity.getCloudType());
+      localForwardFileInfo.b(localFileManagerEntity.nSessionId);
+      localForwardFileInfo.d(localFileManagerEntity.fileName);
+      localForwardFileInfo.c(localFileManagerEntity.uniseq);
+      localForwardFileInfo.c(localFileManagerEntity.WeiYunFileId);
+      localForwardFileInfo.d(localFileManagerEntity.fileSize);
+      localForwardFileInfo.a(localFileManagerEntity.getFilePath());
+      localForwardFileInfo.b(localFileManagerEntity.Uuid);
+      if (!TextUtils.isEmpty(localFileManagerEntity.strLargeThumPath)) {
+        localForwardFileInfo.f(localFileManagerEntity.strLargeThumPath);
+      }
+      for (;;)
       {
-        if (localAutoReplyText.getExtra().getBoolean("AutoReplyAdapter:in_use", false)) {
-          i = 1;
-        }
-        ((Iterator)localObject).remove();
-        if (this.jdField_a_of_type_Azgs != null)
-        {
-          azgs localazgs = this.jdField_a_of_type_Azgs;
-          if (localAutoReplyText.getTextId() == 2147483647)
-          {
-            bool = true;
-            localazgs.a(localAutoReplyText, bool);
-          }
-        }
-        else
-        {
-          m = j;
-          j = 1;
-          k = i;
-          i = m;
+        paramArrayList1.add(Uri.parse(localFileInfo.c()));
+        long l2 = localForwardFileInfo.d();
+        paramArrayList.add(localForwardFileInfo);
+        l1 = l2 + l1;
+        break;
+        if (!TextUtils.isEmpty(localFileManagerEntity.strMiddleThumPath)) {
+          localForwardFileInfo.f(localFileManagerEntity.strMiddleThumPath);
+        } else {
+          localForwardFileInfo.f(localFileManagerEntity.strThumbPath);
         }
       }
     }
-    for (;;)
+    return l1;
+  }
+  
+  public static azfk a()
+  {
+    return new azfk(12, BaseApplicationImpl.getContext().getString(2131719582));
+  }
+  
+  public static azfk a(azfm paramazfm, boolean paramBoolean)
+  {
+    if (paramazfm != null)
     {
-      m = k;
-      k = j;
-      j = i;
-      i = m;
-      break label30;
-      bool = false;
-      break label110;
-      if (localAutoReplyText.mTextId != 2147483647)
+      azfo localazfo = new azfo(115);
+      localazfo.jdField_a_of_type_JavaLangString = paramazfm.jdField_a_of_type_JavaLangString;
+      localazfo.jdField_b_of_type_JavaLangString = paramazfm.jdField_b_of_type_JavaLangString;
+      localazfo.jdField_b_of_type_Int = paramazfm.jdField_a_of_type_Int;
+      localazfo.jdField_a_of_type_Boolean = false;
+      localazfo.jdField_b_of_type_Boolean = paramBoolean;
+      if (paramBoolean)
       {
-        localAutoReplyText.mTextId = j;
-        m = j + 1;
-        j = k;
-        k = i;
-        i = m;
-        continue;
-        if ((i != 0) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
-        {
-          localObject = (AutoReplyText)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-          if (localObject != null) {
-            a(((AutoReplyText)localObject).getTextId());
-          }
+        paramazfm = String.format(BaseApplicationImpl.getContext().getString(2131719572), new Object[] { paramazfm.jdField_b_of_type_JavaLangString });
+        paramazfm = new azfk(1, paramazfm, localazfo);
+        if (paramBoolean) {
+          break label126;
         }
-        if (k == 0) {
-          break;
-        }
-        this.b = true;
-        notifyDataSetChanged();
-        return;
       }
-      m = i;
-      i = j;
-      j = k;
-      k = m;
-    }
-  }
-  
-  public ArrayList<AutoReplyText> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1;
-    if (a())
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      localObject1 = null;
-      if (localIterator.hasNext())
+      label126:
+      for (paramBoolean = true;; paramBoolean = false)
       {
-        AutoReplyText localAutoReplyText = (AutoReplyText)localIterator.next();
-        Object localObject3 = localObject1;
-        Bundle localBundle;
-        if (localAutoReplyText != null)
-        {
-          localBundle = localAutoReplyText.getExtra();
-          bool = localBundle.getBoolean("AutoReplyAdapter:in_use", false);
-          if (bool) {
-            localObject1 = localAutoReplyText;
-          }
-          if (localAutoReplyText.getTextId() == paramInt)
-          {
-            localObject3 = localObject1;
-            if (bool) {
-              break label128;
-            }
-            localBundle.putBoolean("AutoReplyAdapter:in_use", true);
-            localObject2 = localObject1;
-            localObject1 = localAutoReplyText;
-          }
-        }
-        for (;;)
-        {
-          localObject3 = localObject2;
-          localObject2 = localObject1;
-          localObject1 = localObject3;
-          break;
-          localBundle.putBoolean("AutoReplyAdapter:in_use", false);
-          localObject3 = localObject1;
-          label128:
-          localObject1 = localObject2;
-          localObject2 = localObject3;
-        }
+        paramazfm.jdField_a_of_type_Boolean = paramBoolean;
+        return paramazfm;
+        paramazfm = String.format(BaseApplicationImpl.getContext().getString(2131719575), new Object[] { paramazfm.jdField_b_of_type_JavaLangString });
+        break;
       }
-      if (localObject2 != null) {
-        if (localObject1 == null) {
-          break label178;
-        }
-      }
-    }
-    label178:
-    for (boolean bool = true;; bool = false)
-    {
-      this.b = bool;
-      if (this.jdField_a_of_type_Azgs != null) {
-        this.jdField_a_of_type_Azgs.a(localObject2, localObject1);
-      }
-      notifyDataSetChanged();
-      return;
-    }
-  }
-  
-  public void a(@Nullable azgs paramazgs)
-  {
-    this.jdField_a_of_type_Azgs = paramazgs;
-  }
-  
-  public void a(@Nullable AutoReplyText paramAutoReplyText)
-  {
-    if ((!a()) || (paramAutoReplyText == null) || (paramAutoReplyText.getTextId() == 2147483647)) {
-      return;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    Object localObject = null;
-    if (localIterator.hasNext())
-    {
-      AutoReplyText localAutoReplyText = (AutoReplyText)localIterator.next();
-      if ((localAutoReplyText == null) || (localAutoReplyText.getTextId() != paramAutoReplyText.getTextId())) {
-        break label157;
-      }
-      localIterator.remove();
-      localObject = localAutoReplyText;
-    }
-    label157:
-    for (;;)
-    {
-      break;
-      paramAutoReplyText.getExtra().putBoolean("AutoReplyAdapter:in_use", false);
-      if ((localObject != null) && (localObject.getExtra().getBoolean("AutoReplyAdapter:in_use", false))) {
-        paramAutoReplyText.getExtra().putBoolean("AutoReplyAdapter:in_use", true);
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramAutoReplyText);
-      if (this.jdField_a_of_type_Azgs != null) {
-        this.jdField_a_of_type_Azgs.a(paramAutoReplyText);
-      }
-      a();
-      this.b = true;
-      notifyDataSetChanged();
-      return;
-    }
-  }
-  
-  public void a(List<AutoReplyText> paramList)
-  {
-    int i;
-    if (a())
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      if ((paramList == null) || (paramList.isEmpty())) {
-        break label108;
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      paramList = paramList.iterator();
-      i = 0;
-      while (paramList.hasNext())
-      {
-        AutoReplyText localAutoReplyText = (AutoReplyText)paramList.next();
-        if (localAutoReplyText.isChecked()) {
-          i = localAutoReplyText.mTextId;
-        }
-        localAutoReplyText.getExtra().putBoolean("AutoReplyAdapter:in_use", false);
-      }
-      a();
-    }
-    for (;;)
-    {
-      notifyDataSetChanged();
-      a(i);
-      this.b = false;
-      return;
-      label108:
-      i = 0;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (a())
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      notifyDataSetChanged();
-    }
-  }
-  
-  public boolean a()
-  {
-    return Looper.getMainLooper() == Looper.myLooper();
-  }
-  
-  public boolean areAllItemsEnabled()
-  {
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return this.jdField_a_of_type_JavaUtilArrayList.size() + 1 + 1 + 1;
-    }
-    return 0;
-  }
-  
-  @Nullable
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 1) && (paramInt <= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt - 1);
     }
     return null;
   }
   
-  public long getItemId(int paramInt)
+  public static azfk a(azfr paramazfr)
   {
-    return paramInt;
+    return new azfk(9, BaseApplicationImpl.getContext().getString(2131719593), paramazfr);
   }
   
-  public int getItemViewType(int paramInt)
+  public static azfk a(String paramString)
   {
-    int j = 1;
-    int i;
-    if ((paramInt >= 0) && (paramInt < 1)) {
-      i = 0;
+    return new azfk(2, paramString);
+  }
+  
+  public static azfk a(String paramString1, String paramString2, String paramString3)
+  {
+    paramString1 = new azfp(paramString1, paramString2, paramString3);
+    paramString2 = new azfk(5, "");
+    paramString2.jdField_a_of_type_Azfp = paramString1;
+    return paramString2;
+  }
+  
+  public static azfk a(String paramString, List<azfm> paramList)
+  {
+    return new azfk(7, String.format(BaseApplicationImpl.getContext().getString(2131719576), new Object[] { paramString }), paramList);
+  }
+  
+  public static azfk a(String paramString, boolean paramBoolean)
+  {
+    paramString = new azfk(3, paramString);
+    paramString.jdField_a_of_type_Boolean = paramBoolean;
+    return paramString;
+  }
+  
+  public static azfk a(boolean paramBoolean)
+  {
+    azfk localazfk = new azfk(10, "");
+    localazfk.jdField_b_of_type_Boolean = paramBoolean;
+    return localazfk;
+  }
+  
+  public static String a(long paramLong)
+  {
+    Time localTime = new Time();
+    localTime.set(paramLong);
+    return localTime.year + "-" + (localTime.month + 1) + "-" + localTime.monthDay;
+  }
+  
+  public static void a(List<String> paramList, Activity paramActivity)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return;
     }
-    do
+    Bundle localBundle;
+    Intent localIntent;
+    long l;
+    ArrayList localArrayList;
+    HashSet localHashSet;
+    try
     {
-      do
-      {
-        return i;
-        if (paramInt == this.jdField_a_of_type_JavaUtilArrayList.size() + 1) {
-          return 3;
-        }
-        if (paramInt < 1) {
-          break;
-        }
-        i = j;
-      } while (paramInt <= this.jdField_a_of_type_JavaUtilArrayList.size());
-      i = j;
-    } while (paramInt != this.jdField_a_of_type_JavaUtilArrayList.size() + 1 + 1);
-    return 4;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    LayoutInflater localLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    if ((getItemViewType(paramInt) == 0) || (getItemViewType(paramInt) == 4)) {
-      paramView = a(localLayoutInflater, paramInt, paramViewGroup);
+      localBundle = new Bundle();
+      localIntent = new Intent();
+      l = 0L;
+      localArrayList = new ArrayList();
+      localHashSet = new HashSet();
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        localHashSet.add(new FileInfo((String)paramList.next()));
+      }
+      paramList = new ArrayList();
+    }
+    catch (FileNotFoundException paramList)
+    {
+      paramList.printStackTrace();
+      return;
+    }
+    if (localHashSet.size() > 0) {
+      l = a(localHashSet, localArrayList, paramList) + 0L;
+    }
+    localBundle.putInt("forward_type", 0);
+    localBundle.putParcelableArrayList("fileinfo_array", localArrayList);
+    localBundle.putBoolean("not_forward", true);
+    localIntent.putExtra("sendMultiple", true);
+    localBundle.putParcelableArrayList("android.intent.extra.STREAM", paramList);
+    localIntent.putExtras(localBundle);
+    localIntent.putExtra("foward_editbar", true);
+    localIntent.putExtra("forward_type", 0);
+    paramList = amtj.a(2131708740);
+    if (localArrayList.size() == 1) {
+      paramList = amtj.a(2131708742) + aszt.d(((ForwardFileInfo)localArrayList.get(0)).d()) + amtj.a(2131708739) + FileUtil.filesizeToString(((ForwardFileInfo)localArrayList.get(0)).d()) + "。";
     }
     for (;;)
     {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      if (getItemViewType(paramInt) == 3)
-      {
-        paramView = b(localLayoutInflater, paramInt, paramViewGroup);
-      }
-      else
-      {
-        AutoReplyText localAutoReplyText = (AutoReplyText)getItem(paramInt);
-        if (localAutoReplyText != null) {
-          paramView = a(localLayoutInflater, paramInt, paramView, paramViewGroup, localAutoReplyText).jdField_a_of_type_AndroidViewView;
-        }
+      localIntent.putExtra("forward_text", paramList);
+      localIntent.putExtra("k_favorites", false);
+      atky.a(paramActivity, localIntent, 103);
+      return;
+      if (localArrayList.size() > 1) {
+        paramList = amtj.a(2131708743) + aszt.d(((ForwardFileInfo)localArrayList.get(0)).d()) + amtj.a(2131708744) + localArrayList.size() + amtj.a(2131708745) + FileUtil.filesizeToString(l) + "。";
       }
     }
   }
   
-  public boolean isEnabled(int paramInt)
+  public static azfk b()
   {
-    return (paramInt != 0) && (paramInt != getCount() - 1);
+    return new azfk(6, BaseApplicationImpl.getContext().getString(2131719593));
+  }
+  
+  public static azfk b(String paramString)
+  {
+    return new azfk(4, paramString);
+  }
+  
+  public static void b(List<String> paramList, Activity paramActivity)
+  {
+    QLog.flushLog();
+    ShareAppLogHelper localShareAppLogHelper = new ShareAppLogHelper(paramActivity);
+    localShareAppLogHelper.a(new azgk(paramList, paramActivity));
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - 600000L;
+    Object localObject = String.format("%02d", new Object[] { Integer.valueOf(a(l2)) });
+    paramList = String.format("%02d", new Object[] { Integer.valueOf(a(l1)) });
+    String str = a(l2);
+    paramActivity = a(l1);
+    localObject = ShareAppLogHelper.a(str + "-" + (String)localObject, "-");
+    paramList = ShareAppLogHelper.a(paramActivity + "-" + paramList, "-");
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new CommandUtils.4(localShareAppLogHelper, (Time)localObject, paramList), 500L);
+  }
+  
+  public static azfk c()
+  {
+    return new azfk(0, BaseApplicationImpl.getContext().getString(2131719583));
   }
 }
 

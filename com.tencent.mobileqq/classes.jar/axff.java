@@ -1,21 +1,6 @@
-import android.os.Bundle;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.theme.diy.ResData;
-
-public class axff
-  implements bejb
+public abstract interface axff
 {
-  public axff(ChatBackgroundManager paramChatBackgroundManager) {}
-  
-  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
-  {
-    if (paramInt2 == 4) {
-      BaseApplicationImpl.sImageCache.evictAll();
-    }
-    return 0;
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

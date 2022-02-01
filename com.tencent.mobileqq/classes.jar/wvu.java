@@ -1,17 +1,58 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
-class wvu
-  implements woy<wxi, wxj>
+public class wvu
+  implements TVK_SDKMgr.OnLogListener
 {
-  wvu(wvs paramwvs) {}
+  public int a;
   
-  public void a(@NonNull wxi paramwxi, @Nullable wxj paramwxj, @NonNull ErrorMessage paramErrorMessage)
+  public int d(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, "requestQQStoryGuide onCmdRespond = " + paramwxj + " ,errorMsg = " + paramErrorMessage);
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if ((paramString2 != null) && (paramString2.contains("INFO_TRY_AGAIN_LATER"))) {}
+    try
+    {
+      this.a = Integer.parseInt(paramString2.substring(paramString2.lastIndexOf("=") + 1));
+      label32:
+      if (QLog.isColorLevel()) {
+        QLog.w(paramString1, 2, paramString2);
+      }
+      return 0;
+    }
+    catch (Exception localException)
+    {
+      break label32;
     }
   }
 }

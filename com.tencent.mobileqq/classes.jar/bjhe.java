@@ -1,66 +1,22 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.MiniAppInterface;
+import com.tencent.mobileqq.mini.app.AppLoaderFactory;
+import com.tencent.mobileqq.mini.app.BaseAppLoaderManager;
+import com.tencent.mobileqq.mini.launch.AppBrandProxy;
+import com.tencent.qphone.base.util.QLog;
 
-public class bjhe
+class bjhe
+  implements DialogInterface.OnClickListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  bjhe(bjha parambjha) {}
   
-  private void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null))
-    {
-      if (this.jdField_a_of_type_AndroidViewView.getParent() != null) {
-        ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
-      }
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
-    }
-  }
-  
-  private void a(View paramView)
-  {
-    if (paramView != null)
-    {
-      paramView = paramView.getParent();
-      if ((paramView != null) && ((paramView instanceof ViewGroup))) {
-        a((ViewGroup)paramView);
-      }
-    }
-  }
-  
-  private void a(ViewGroup paramViewGroup)
-  {
-    if (paramViewGroup != null) {
-      paramViewGroup.removeAllViews();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(paramInt);
-    }
-  }
-  
-  public void a(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
-  {
-    a(this.jdField_a_of_type_AndroidViewView);
-    a(paramView);
-    if (paramView != null) {
-      paramView.setLayoutParams(paramLayoutParams);
-    }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    a();
-  }
-  
-  public void a(RelativeLayout paramRelativeLayout)
-  {
-    a(this.jdField_a_of_type_AndroidViewViewGroup);
-    a(paramRelativeLayout);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
-    a();
+    QLog.e("minisdk_X5UpdateGuard", 2, "confirm");
+    AppBrandProxy.g().sendCmd("cmd_exit_qq", new Bundle(), null);
+    AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().exitProcess();
   }
 }
 

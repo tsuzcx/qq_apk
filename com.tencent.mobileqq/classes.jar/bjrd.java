@@ -1,30 +1,61 @@
-import com.tencent.open.appcommon.JsWebWorker;
-import java.lang.reflect.Method;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.NegativeChildrenLayout;
 
-public class bjrd
+class bjrd
+  implements View.OnClickListener
 {
-  public Class a;
-  public String a;
-  public Map<Integer, Object> a;
-  public Map<String, Method> b = new HashMap();
+  bjrd(bjrb parambjrb) {}
   
-  public bjrd(JsWebWorker paramJsWebWorker)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      localIterator.next();
+    switch (paramView.getId())
+    {
+    default: 
+      this.a.dismiss();
     }
-    this.jdField_a_of_type_JavaUtilMap = null;
-    this.b = null;
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setData(this.a.jdField_a_of_type_JavaUtilArrayList, amtj.a(2131705057), this.a.jdField_a_of_type_Bjrg);
+      this.a.a(true);
+      this.a.r = 1;
+      this.a.c = amtj.a(2131705062);
+      bjrb.a(this.a, paramView.getTag(), false);
+      continue;
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getParent();
+      this.a.jdField_a_of_type_ComTencentWidgetNegativeChildrenLayout.setData(this.a.jdField_b_of_type_JavaUtilArrayList, amtj.a(2131705056), this.a.jdField_a_of_type_Bjrg);
+      this.a.a(true);
+      this.a.r = 2;
+      this.a.c = amtj.a(2131705065);
+      bjrb.a(this.a, paramView.getTag(), false);
+      continue;
+      this.a.c(paramView);
+      this.a.c();
+      this.a.r = 3;
+      this.a.c = amtj.a(2131705061);
+      bjrb.a(this.a, paramView.getTag(), true);
+      continue;
+      this.a.c(paramView);
+      this.a.c();
+      this.a.r = 4;
+      this.a.c = this.a.jdField_b_of_type_JavaLangString;
+      bjrb.a(this.a, paramView.getTag(), false);
+      continue;
+      this.a.c(paramView);
+      this.a.c();
+      this.a.r = 5;
+      this.a.c = BaseApplicationImpl.getContext().getString(2131717406);
+      bjrb.a(this.a, paramView.getTag(), false);
+      continue;
+      this.a.a(false);
+    }
   }
 }
 

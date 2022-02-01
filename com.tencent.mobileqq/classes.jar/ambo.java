@@ -1,15 +1,39 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class ambo
-  implements ValueAnimator.AnimatorUpdateListener
+public final class ambo
+  implements EIPCResultCallback
 {
-  public ambo(RotationSeekBar paramRotationSeekBar) {}
+  public ambo(amkm paramamkm) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    RotationSeekBar.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    CmShowRenderView.a(true);
+    paramEIPCResult = paramEIPCResult.data;
+    if (paramEIPCResult == null)
+    {
+      this.a.a(1);
+      QLog.i("CmShow_CmShowRenderView", 1, "initSdk resp == null");
+      return;
+    }
+    amip.au = paramEIPCResult.getString("sApolloBaseScriptId");
+    alnr.q = paramEIPCResult.getBoolean("sDisableCreateRenderThread");
+    alnr.r = paramEIPCResult.getBoolean("sApolloEngineLockEnable");
+    amip.av = amip.a + "/script/" + amip.au + "/";
+    if (amkk.a()) {
+      this.a.a(0);
+    }
+    for (;;)
+    {
+      QLog.i("CmShow_CmShowRenderView", 1, "initSdk");
+      return;
+      amkk.b(this.a);
+      amkk.a(this.a);
+      amkk.a("sdk");
+    }
   }
 }
 

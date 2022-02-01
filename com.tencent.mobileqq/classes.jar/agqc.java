@@ -1,8 +1,15 @@
-public abstract interface agqc
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class agqc
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  agqc(agqa paramagqa) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

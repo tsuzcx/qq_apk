@@ -1,29 +1,19 @@
-import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XListView;
 
 public class aelw
-  extends anxe
+  implements View.OnClickListener
 {
-  public aelw(EditActivity paramEditActivity) {}
+  public aelw(TroopInfoActivity paramTroopInfoActivity, XListView paramXListView) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    EditActivity.a(this.a);
-    if (paramBoolean)
-    {
-      paramObject = (CustomEmotionData)paramObject;
-      if (paramObject != null)
-      {
-        ((ashd)this.a.app.getManager(103)).c(paramObject);
-        EditActivity.b(this.a);
-      }
-    }
-    while (!(paramObject instanceof String)) {
-      return;
-    }
-    QQToast.a(this.a, 1, (String)paramObject, 1).a();
+    this.jdField_a_of_type_ComTencentWidgetXListView.removeHeaderView(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.b);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.b = null;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

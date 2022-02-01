@@ -1,17 +1,59 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class ahjk
-  extends ahkx
+  implements BusinessObserver
 {
-  ahjk(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahjk(ahiu paramahiu, String paramString) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return new ahue(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_Ahiu.tag, 2, "success:" + String.valueOf(paramBoolean));
+    }
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Ahiu.b(2131694775);
+    }
+    for (;;)
+    {
+      ahiu.c(this.jdField_a_of_type_Ahiu);
+      if (ahiu.d(this.jdField_a_of_type_Ahiu) == 0) {
+        this.jdField_a_of_type_Ahiu.b();
+      }
+      return;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
+          localUnFollowResponse.mergeFrom(paramBundle);
+          if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() == 0)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d(this.jdField_a_of_type_Ahiu.tag, 2, "unfollow success");
+            }
+            ahiu.a(this.jdField_a_of_type_Ahiu, ahiu.a(this.jdField_a_of_type_Ahiu));
+            odq.a(this.jdField_a_of_type_Ahiu.app, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
+            StructLongMessageDownloadProcessor.deleteTask(this.jdField_a_of_type_Ahiu.app, this.jdField_a_of_type_JavaLangString);
+            ((bfas)this.jdField_a_of_type_Ahiu.app.getManager(132)).a(this.jdField_a_of_type_Ahiu.sessionInfo.curFriendUin);
+            ahiu.b(this.jdField_a_of_type_Ahiu, false);
+          }
+          else
+          {
+            this.jdField_a_of_type_Ahiu.b(2131694775);
+          }
+        }
+      }
+      catch (Exception paramBundle) {}
+    }
   }
 }
 

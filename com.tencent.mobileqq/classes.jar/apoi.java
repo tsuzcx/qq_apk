@@ -1,6 +1,6 @@
 public abstract interface apoi
 {
-  public abstract void a(long paramLong, apoz paramapoz);
+  public abstract void g();
 }
 
 

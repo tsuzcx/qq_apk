@@ -1,40 +1,29 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.activity.GesturePWDManualGuideActivity;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeso
-  implements View.OnClickListener
+  extends aycd
 {
-  public aeso(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  public aeso(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  public void onClick(View paramView)
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    switch (paramView.getId())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
     }
-    for (;;)
+    this.a.a();
+    if (paramBoolean1)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      if (paramBoolean2)
+      {
+        VerifyPhoneNumActivity.a(this.a, true);
+        VerifyPhoneNumActivity.c(this.a);
+        return;
+      }
+      VerifyPhoneNumActivity.c(this.a);
       return;
-      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 20);
-      this.a.a();
-      continue;
-      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 21);
-      this.a.a();
-      continue;
-      Intent localIntent = new Intent(this.a, GesturePWDManualGuideActivity.class);
-      this.a.startActivity(localIntent);
-      continue;
-      localIntent = new Intent(this.a, GesturePWDCreateActivity.class);
-      this.a.startActivityForResult(localIntent, 11);
-      this.a.overridePendingTransition(2130771997, 2130771990);
     }
+    VerifyPhoneNumActivity.c(this.a);
   }
 }
 

@@ -1,39 +1,60 @@
-import android.content.Context;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import cooperation.qzone.util.QZLog;
+import java.util.Map;
 
-public abstract class zfz<T extends zfy>
+public class zfz
+  extends QQUIEventReceiver<zfs, zfo>
 {
-  protected int a;
-  public final View a;
-  public T a;
-  
-  protected zfz(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public zfz(@NonNull zfs paramzfs)
   {
-    this.jdField_a_of_type_AndroidViewView = a(paramContext, paramViewGroup);
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      throw new NullPointerException("onCreateView can not return null");
+    super(paramzfs);
+  }
+  
+  public void a(@NonNull zfs paramzfs, @NonNull zfo paramzfo)
+  {
+    switch (paramzfo.jdField_a_of_type_Int)
+    {
+    case 4: 
+    case 5: 
+    default: 
+    case 1: 
+    case 2: 
+    case 3: 
+      CertifiedAccountMeta.StFeed localStFeed;
+      int i;
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramzfs.i();
+            return;
+            paramzfs.j();
+            return;
+            zfs.a(paramzfs, false);
+            zfs.a(paramzfs, null);
+            zfs.a(paramzfs, null);
+          } while (!(paramzfo.jdField_a_of_type_JavaLangObject instanceof Object[]));
+          paramzfo = (Object[])paramzfo.jdField_a_of_type_JavaLangObject;
+        } while ((paramzfo.length < 2) || (!(paramzfo[0] instanceof CertifiedAccountMeta.StFeed)) || (!(paramzfo[1] instanceof Integer)));
+        localStFeed = (CertifiedAccountMeta.StFeed)paramzfo[0];
+        i = ((Integer)paramzfo[1]).intValue();
+      } while (!paramzfs.a(localStFeed));
+      zfs.c(paramzfs).put(Integer.valueOf(i), localStFeed);
+      QZLog.i(this.TAG, 1, "EVENT_SET_COMMENT_DATA, position:" + i + ", cellId:" + localStFeed.id.get());
+      return;
     }
+    zfs.a(paramzfs, (Object[])paramzfo.jdField_a_of_type_JavaLangObject);
   }
   
-  protected abstract View a(@NonNull Context paramContext, ViewGroup paramViewGroup);
-  
-  public void a()
+  public Class acceptEventClass()
   {
-    this.jdField_a_of_type_Zfy = null;
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void a(T paramT, int paramInt)
-  {
-    this.jdField_a_of_type_Zfy = paramT;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Zfy != null) && (this.jdField_a_of_type_Zfy.a());
+    return zfo.class;
   }
 }
 

@@ -1,29 +1,50 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import kotlin.jvm.internal.Intrinsics;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xe33.oidb_0xe33.RspBody;
+import tencent.im.oidb.cmd0xe33.oidb_0xe33.TopicInfoSetRsp;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$performAnim$1$1"}, k=3, mv={1, 1, 16})
-final class rna
-  implements ValueAnimator.AnimatorUpdateListener
+class rna
+  extends nmf
 {
-  rna(roq paramroq, ValueAnimator paramValueAnimator) {}
+  rna(rmz paramrmz, rmt paramrmt, int paramInt) {}
   
-  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    Object localObject = this.jdField_a_of_type_Roq.j;
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "videoHolder.columnBanner");
-    localObject = ((ViewGroup)localObject).getLayoutParams();
-    Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "it");
-    paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if (paramValueAnimator == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
+    if (paramArrayOfByte != null) {
+      try
+      {
+        paramBundle = new oidb_0xe33.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (paramBundle.topic_info_set_rsp.has())
+        {
+          paramArrayOfByte = paramBundle.topic_info_set_rsp;
+          this.jdField_a_of_type_Rmt.a(paramInt, paramArrayOfByte.err_msg.get(), paramArrayOfByte.ret_code.get(), paramArrayOfByte.topic_id.get());
+          return;
+        }
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        if (QLog.isColorLevel())
+        {
+          if (this.jdField_a_of_type_Int != 1) {
+            break label123;
+          }
+          QLog.d("RIJUGC.ManagerColumnModel", 1, "ManageColumnModel createColumn failed." + paramArrayOfByte.toString());
+        }
+      }
     }
-    ((ViewGroup.LayoutParams)localObject).height = ((Integer)paramValueAnimator).intValue();
-    this.jdField_a_of_type_Roq.j.requestLayout();
+    for (;;)
+    {
+      this.jdField_a_of_type_Rmt.a(paramInt, "", -1, 0);
+      return;
+      label123:
+      if (this.jdField_a_of_type_Int == 2) {
+        QLog.d("RIJUGC.ManagerColumnModel", 1, "ManageColumnModel editColumn failed." + paramArrayOfByte.toString());
+      }
+    }
   }
 }
 

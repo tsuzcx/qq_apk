@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function0;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-public final class acre
-  implements View.OnClickListener
+public class acre
+  implements afvl
 {
-  public acre(Function0 paramFunction0) {}
+  public acre(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public final void onClick(View paramView)
+  public boolean closeView(afvi paramafvi)
   {
-    this.a.invoke();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.finish();
+    if (ArkFullScreenAppActivity.a(this.a)) {
+      this.a.overridePendingTransition(2130771997, 2130772001);
+    }
+    return false;
+  }
+  
+  public boolean openCardView(afvi paramafvi, String paramString1, String paramString2)
+  {
+    return false;
   }
 }
 

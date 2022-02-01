@@ -12,47 +12,46 @@ import com.tencent.qphone.base.util.QLog;
 public class QQViewPager
   extends ViewPager
 {
-  private byte jdField_a_of_type_Byte = 0;
-  private final int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
+  private static final byte SLIDE_DIR_DEFAULT = 0;
+  private static final byte SLIDE_DIR_HORIZONTAL = 1;
+  private static final byte SLIDE_DIR_VERTICAL = 2;
+  private static final String TAG = "QQViewPager";
+  private boolean disable;
+  private int downX;
+  private int downY;
+  private byte mSlideDir = 0;
+  private boolean requestParentDisallowInterceptTouchEvent;
+  private final int scaledTouchSlop;
   
   public QQViewPager(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.scaledTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
   }
   
   public QQViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.scaledTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
   }
   
-  private void a(float paramFloat1, float paramFloat2)
+  private void doInterceptTouchEvent(boolean paramBoolean)
   {
-    if ((paramFloat1 > this.jdField_a_of_type_Int) || (paramFloat2 > this.jdField_a_of_type_Int)) {
-      if ((paramFloat1 <= this.jdField_a_of_type_Int) || (paramFloat2 / paramFloat1 >= 0.6F)) {
-        break label79;
-      }
-    }
-    label79:
-    for (this.jdField_a_of_type_Byte = 1;; this.jdField_a_of_type_Byte = 2)
+    ViewGroup localViewGroup = (ViewGroup)getParent();
+    if (localViewGroup != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QQViewPager", 2, "judgeScrollDirection : mSlideDir -> " + this.jdField_a_of_type_Byte);
+        QLog.d("QQViewPager", 2, "doInterceptTouchEvent : " + paramBoolean);
       }
-      return;
+      localViewGroup.requestDisallowInterceptTouchEvent(paramBoolean);
     }
   }
   
-  private void a(MotionEvent paramMotionEvent)
+  private void handleEvent(MotionEvent paramMotionEvent)
   {
     int i;
     int j;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.disable)
     {
       i = (int)paramMotionEvent.getRawX();
       j = (int)paramMotionEvent.getRawY();
@@ -65,46 +64,46 @@ public class QQViewPager
       do
       {
         return;
-        this.jdField_b_of_type_Int = i;
-        this.c = j;
+        this.downX = i;
+        this.downY = j;
         return;
-        if (this.jdField_a_of_type_Byte == 0) {
-          a(Math.abs(i - this.jdField_b_of_type_Int), Math.abs(j - this.c));
+        if (this.mSlideDir == 0) {
+          judgeScrollDirection(Math.abs(i - this.downX), Math.abs(j - this.downY));
         }
-      } while (this.jdField_a_of_type_Byte != 1);
-      c(true);
+      } while (this.mSlideDir != 1);
+      doInterceptTouchEvent(true);
       return;
     }
-    this.jdField_a_of_type_Byte = 0;
-    c(false);
+    this.mSlideDir = 0;
+    doInterceptTouchEvent(false);
   }
   
-  private void c(boolean paramBoolean)
+  private void judgeScrollDirection(float paramFloat1, float paramFloat2)
   {
-    ViewGroup localViewGroup = (ViewGroup)getParent();
-    if (localViewGroup != null)
+    if ((paramFloat1 > this.scaledTouchSlop) || (paramFloat2 > this.scaledTouchSlop)) {
+      if ((paramFloat1 <= this.scaledTouchSlop) || (paramFloat2 / paramFloat1 >= 0.6F)) {
+        break label79;
+      }
+    }
+    label79:
+    for (this.mSlideDir = 1;; this.mSlideDir = 2)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QQViewPager", 2, "doInterceptTouchEvent : " + paramBoolean);
+        QLog.d("QQViewPager", 2, "judgeScrollDirection : mSlideDir -> " + this.mSlideDir);
       }
-      localViewGroup.requestDisallowInterceptTouchEvent(paramBoolean);
+      return;
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void disableGesture(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.disable = paramBoolean;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      a(paramMotionEvent);
+    if (this.disable) {
+      handleEvent(paramMotionEvent);
     }
     for (;;)
     {
@@ -118,13 +117,13 @@ public class QQViewPager
         int i;
         paramMotionEvent.printStackTrace();
       }
-      if (this.jdField_b_of_type_Boolean)
+      if (this.requestParentDisallowInterceptTouchEvent)
       {
         i = paramMotionEvent.getAction();
         if (i == 0) {
-          c(true);
+          doInterceptTouchEvent(true);
         } else if ((i == 1) || (i == 3)) {
-          c(false);
+          doInterceptTouchEvent(false);
         }
       }
     }
@@ -134,7 +133,7 @@ public class QQViewPager
   @SuppressLint({"ClickableViewAccessibility"})
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    a(paramMotionEvent);
+    handleEvent(paramMotionEvent);
     try
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
@@ -145,6 +144,11 @@ public class QQViewPager
       paramMotionEvent.printStackTrace();
     }
     return false;
+  }
+  
+  public void requestParentDisallowInterecptTouchEvent(boolean paramBoolean)
+  {
+    this.requestParentDisallowInterceptTouchEvent = paramBoolean;
   }
 }
 

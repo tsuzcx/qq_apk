@@ -1,36 +1,22 @@
 package com.tencent.thumbplayer.adapter.player.systemplayer;
 
-import android.media.MediaPlayer;
-import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnErrorListener;
-import com.tencent.thumbplayer.utils.TPLogUtil;
+import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleDataListener;
+import com.tencent.thumbplayer.api.TPSubtitleData;
 
 class TPSystemMediaPlayer$1
-  implements Runnable
+  implements ITPSysPlayerExternalSubtitle.IOnSubTitleListener
 {
   TPSystemMediaPlayer$1(TPSystemMediaPlayer paramTPSystemMediaPlayer) {}
   
-  public void run()
+  public void onEventInfo() {}
+  
+  public void onSubtileInfo(ITPSysPlayerExternalSubtitle.SubtileData paramSubtileData)
   {
-    if (TPSystemMediaPlayer.access$300(this.this$0) == TPSystemMediaPlayer.PlayerState.PREPARING) {
-      TPLogUtil.e(TPSystemMediaPlayer.access$400(this.this$0), "startCheckPrepareTimeoutTimer, post error");
-    }
-    try
-    {
-      TPSystemMediaPlayer.access$500(this.this$0).reset();
-      TPSystemMediaPlayer.access$500(this.this$0).release();
-      TPSystemMediaPlayer.access$302(this.this$0, TPSystemMediaPlayer.PlayerState.ERROR);
-      TPSystemMediaPlayer.access$600(this.this$0);
-      if (TPSystemMediaPlayer.access$700(this.this$0) != null) {
-        TPSystemMediaPlayer.access$700(this.this$0).onError(2001, TPSystemMediaPlayer.access$800(this.this$0, -110), 0L, 0L);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        TPLogUtil.e(TPSystemMediaPlayer.access$400(this.this$0), localException);
-      }
+    TPSubtitleData localTPSubtitleData = new TPSubtitleData();
+    localTPSubtitleData.subtitleData = paramSubtileData.text;
+    paramSubtileData = TPSystemMediaPlayer.access$200(this.this$0);
+    if (paramSubtileData != null) {
+      paramSubtileData.onSubtitleData(localTPSubtitleData);
     }
   }
 }

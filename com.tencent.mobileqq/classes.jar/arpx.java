@@ -1,65 +1,14 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView.TipsType;
 
-public class arpx
-  extends arac<arpw>
+public abstract interface arpx
 {
-  public static arpw a()
-  {
-    return (arpw)aran.a().a(261);
-  }
+  public abstract void a(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType);
   
-  @NonNull
-  public arpw a(int paramInt)
-  {
-    return new arpw();
-  }
-  
-  @Nullable
-  public arpw a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arpw.a(paramArrayOfaraj);
-    }
-    return null;
-  }
-  
-  public void a(arpw paramarpw) {}
-  
-  public Class<arpw> clazz()
-  {
-    return arpw.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TencentDocConvertConfigProcessor", 1, "TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 261;
-  }
+  public abstract void b(ExtendFriendCampusVerifyTipsView.TipsType paramTipsType);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arpx
  * JD-Core Version:    0.7.0.1
  */

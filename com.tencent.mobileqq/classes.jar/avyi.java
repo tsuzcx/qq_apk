@@ -1,35 +1,42 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class avyi
-  extends arac<avyj>
+  extends aptq<avyh>
 {
   @NonNull
-  public avyj a(int paramInt)
+  public avyh a(int paramInt)
   {
-    return new avyj();
+    return new avyh();
   }
   
   @Nullable
-  public avyj a(araj[] paramArrayOfaraj)
+  public avyh a(aptx[] paramArrayOfaptx)
   {
-    avyj localavyj = new avyj();
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null)) {
-      avyj.a(localavyj, paramArrayOfaraj[0].a);
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiAIOEntranceConfigProcessor", 2, "onParsed : " + paramArrayOfaptx[0].a);
+      }
+      return avyh.a(paramArrayOfaptx[0].a);
     }
-    return localavyj;
+    return new avyh();
   }
   
-  public void a(avyj paramavyj) {}
-  
-  public Class<avyj> clazz()
+  public void a(avyh paramavyh)
   {
-    return avyj.class;
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAIOEntranceConfigProcessor", 2, "onUpdate : " + paramavyh);
+    }
+    ((avyj)BaseApplicationImpl.getApplication().getRuntime().getManager(325)).a(paramavyh);
   }
   
-  public boolean isAccountRelated()
+  public Class<avyh> clazz()
   {
-    return false;
+    return avyh.class;
   }
   
   public boolean isNeedCompressed()
@@ -47,13 +54,16 @@ public class avyi
     return 0;
   }
   
-  public void onReqFailed(int paramInt) {}
-  
-  public void onReqNoReceive() {}
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAIOEntranceConfigProcessor", 2, "onUpdate : " + paramInt);
+    }
+  }
   
   public int type()
   {
-    return 445;
+    return 478;
   }
 }
 

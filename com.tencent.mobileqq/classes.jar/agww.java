@@ -1,27 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.aio.panel.PEPanel;
+import com.tencent.widget.ListView;
+import com.tencent.widget.XPanelContainer;
 
 public class agww
-  implements agvc
+  implements Handler.Callback
 {
-  private BaseChatPie a;
+  public agww(PEPanel paramPEPanel) {}
   
-  public agww(BaseChatPie paramBaseChatPie)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  public void a(int paramInt)
-  {
-    String str = this.a.c();
-    if (!TextUtils.isEmpty(str)) {
-      bidn.a(this.a.a).a(str);
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
     }
-  }
-  
-  public int[] a()
-  {
-    return new int[7];
+    PEPanel.a(this.a).setVisibility(0);
+    paramMessage = new TranslateAnimation(0.0F, 0.0F, XPanelContainer.a, 0.0F);
+    paramMessage.setDuration(200L);
+    PEPanel.a(this.a).startAnimation(paramMessage);
+    return true;
   }
 }
 

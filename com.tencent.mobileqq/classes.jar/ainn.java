@@ -1,25 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contacts.base.Contacts;
 
-class ainn
-  implements Animation.AnimationListener
+public class ainn
+  extends axkt
 {
-  ainn(ainh paramainh) {}
+  public ainn(Contacts paramContacts) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.V = false;
-    this.a.s = 0;
-    this.a.W = false;
-    this.a.af = false;
-    this.a.ae = false;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a(this.a.n, ainh.b(this.a));
+    if (Contacts.a(this.a)) {
+      Contacts.a(this.a);
+    }
   }
 }
 

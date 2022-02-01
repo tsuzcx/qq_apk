@@ -1,30 +1,75 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
 
 public class bazn
-  implements View.OnLongClickListener
+  extends bazc
 {
-  private WeakReference<ReceiptMessageDetailFragment> a;
+  public static final String a;
+  public List<bazy> a;
+  public String b;
+  public boolean b;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
   
-  private bazn(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  static
   {
-    this.a = new WeakReference(paramReceiptMessageDetailFragment);
+    jdField_a_of_type_JavaLangString = bazm.class.getSimpleName();
   }
   
-  public boolean onLongClick(View paramView)
+  public bazn(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    paramView = (ReceiptMessageDetailFragment)this.a.get();
-    if ((paramView == null) || (!paramView.isAdded())) {
-      return false;
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  private List<bazy> a(JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONArray != null)
+    {
+      int i = 0;
+      while (i < paramJSONArray.length())
+      {
+        Object localObject = paramJSONArray.optJSONObject(i);
+        localObject = new bazy(((JSONObject)localObject).optString("word"), ((JSONObject)localObject).optString("url"));
+        if (((bazy)localObject).a()) {
+          localArrayList.add(localObject);
+        }
+        i += 1;
+      }
     }
-    blir localblir = blir.a(paramView.getActivity());
-    localblir.b(2131691137);
-    localblir.c(2131690580);
-    localblir.a(new bazo(this, paramView, localblir));
-    localblir.show();
-    return true;
+    return localArrayList;
+  }
+  
+  public void a(String paramString)
+  {
+    this.g = false;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_b_of_type_JavaLangString = paramString.optString("leftIconUrl");
+      this.j = paramString.optString("title");
+      this.k = paramString.optString("summary");
+      this.jdField_b_of_type_Boolean = paramString.optBoolean("isShowArrow");
+      this.l = paramString.optString("jumpUrl");
+      this.m = paramString.optString("subItemLeftIconUrl");
+      paramString = paramString.optJSONArray("itemList");
+      if (paramString != null) {
+        this.jdField_a_of_type_JavaUtilList = a(paramString);
+      }
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+    }
   }
 }
 

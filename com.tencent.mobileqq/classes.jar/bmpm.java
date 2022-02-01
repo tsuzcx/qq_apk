@@ -1,31 +1,22 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.aeeditor.view.timebar.ScaleTimeBar;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackTimeLineView;
 
-class bmpm
-  extends bmqd
+public class bmpm
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bmpm(bmpk parambmpk) {}
+  public bmpm(VideoTrackContainerView paramVideoTrackContainerView, bmod parambmod, int paramInt1, int paramInt2) {}
   
-  public void a(bmqc parambmqc)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    parambmqc = parambmqc.a();
-    if (parambmqc == null) {
-      bmqw.a("ReaderTabConfigDataHelper", "Response json is null");
-    }
-    do
-    {
-      return;
-      if (parambmqc.length() == 0)
-      {
-        bmqw.a("ReaderTabConfigDataHelper", "后台数据异常");
-        return;
-      }
-    } while (!bmpk.a(this.a, parambmqc, false));
-    bmpk.a(this.a).getSharedPreferences("CGI_RESPONSE", 0).edit().putString("SP_TAB_CONFIG_DATA" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), parambmqc.toString()).apply();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    ((VideoTrackTimeLineView)this.jdField_a_of_type_Bmod).c(i);
+    VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).scrollTo(this.jdField_a_of_type_Int + VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).a(-(this.b - i)), 0);
+    paramValueAnimator = this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView;
+    int j = this.jdField_a_of_type_Int;
+    paramValueAnimator.scrollTo(VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).a(-(this.b - i)) + j, 0);
   }
 }
 

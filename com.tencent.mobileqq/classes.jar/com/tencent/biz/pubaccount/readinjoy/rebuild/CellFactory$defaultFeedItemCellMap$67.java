@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild;
 
 import android.content.Context;
-import aoof;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function3;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import qmu;
-import sel;
+import qsx;
+import slt;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "Lcom/tencent/biz/pubaccount/readinjoy/rebuild/FeedItemCellTypeTopicRecommendUgcImage;", "context", "Landroid/content/Context;", "faceDecoder", "Lcom/tencent/mobileqq/app/face/FaceDecoder;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "invoke"}, k=3, mv={1, 1, 16})
 public final class CellFactory$defaultFeedItemCellMap$67
   extends Lambda
-  implements Function3<Context, aoof, sel, qmu>
+  implements Function3<Context, FaceDecoder, slt, qsx>
 {
   public static final 67 INSTANCE = new 67();
   
@@ -24,10 +24,10 @@ public final class CellFactory$defaultFeedItemCellMap$67
   }
   
   @NotNull
-  public final qmu invoke(@NotNull Context paramContext, @Nullable aoof paramaoof, @Nullable sel paramsel)
+  public final qsx invoke(@NotNull Context paramContext, @Nullable FaceDecoder paramFaceDecoder, @Nullable slt paramslt)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    return new qmu(paramContext, paramaoof, paramsel);
+    return new qsx(paramContext, paramFaceDecoder, paramslt);
   }
 }
 

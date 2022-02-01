@@ -1,93 +1,56 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskHttpUpload;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import java.util.UUID;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.ResendRspBody;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class bgry
-  extends aavp
 {
-  public bgry(TroopFileTransferManager paramTroopFileTransferManager) {}
+  private static bgry jdField_a_of_type_Bgry;
+  private ArrayList<bgrw> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
+  private LinkedList<bgrv> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.ResendRspBody paramResendRspBody, Bundle paramBundle)
+  private bgrw a(int paramInt1, int paramInt2)
   {
-    long l = paramBundle.getLong("troopUin");
-    TroopFileTransferManager localTroopFileTransferManager;
-    Object localObject;
+    return new bgrw(paramInt1, paramInt2);
+  }
+  
+  public static bgry a()
+  {
+    if (jdField_a_of_type_Bgry == null) {}
     try
     {
-      localTroopFileTransferManager = (TroopFileTransferManager)TroopFileTransferManager.a().get(Long.valueOf(l));
-      if (localTroopFileTransferManager == null)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("TroopFileTransferManager", 4, "bad troopUin" + l);
-        }
-        return;
+      if (jdField_a_of_type_Bgry == null) {
+        jdField_a_of_type_Bgry = new bgry();
       }
-      paramBundle = paramBundle.getString("itemKey");
-      if (paramBundle == null) {
-        return;
-      }
-      localObject = UUID.fromString(paramBundle);
-      try
-      {
-        localObject = (TroopFileTransferManager.Item)localTroopFileTransferManager.jdField_a_of_type_JavaUtilMap.get(localObject);
-        if (localObject == null)
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("TroopFileTransferManager", 4, "bad item key" + paramBundle);
-          }
-          return;
-        }
-      }
-      finally {}
+      return jdField_a_of_type_Bgry;
     }
     finally {}
-    if (!paramBoolean)
+  }
+  
+  public bgrw a(bgrv parambgrv, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 5)
     {
-      paramResendRspBody = new bgrk(((TroopFileTransferManager.Item)localObject).FileName, this.a.e, 3, 207);
-      this.a.a((TroopFileTransferManager.Item)localObject, 3, paramResendRspBody);
-      if (QLog.isDevelopLevel()) {
-        QLog.w("TroopFileTransferManager", 2, "onReqResendFileResult,erroCode=" + paramInt);
-      }
+      this.jdField_a_of_type_JavaUtilLinkedList.add(parambgrv);
+      return null;
     }
-    else
+    bgrw localbgrw = a(paramInt1, paramInt2);
+    localbgrw.a(parambgrv);
+    this.jdField_a_of_type_JavaUtilArrayList.add(localbgrw);
+    return localbgrw;
+  }
+  
+  public void a(bgrw parambgrw)
+  {
+    if (parambgrw != null)
     {
-      if (paramResendRspBody.int32_ret_code.get() < 0)
+      parambgrw.c();
+      this.jdField_a_of_type_JavaUtilArrayList.remove(parambgrw);
+      if ((this.jdField_a_of_type_JavaUtilArrayList.size() < 5) && (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()))
       {
-        paramInt = 1;
-        switch (paramResendRspBody.int32_ret_code.get())
-        {
-        }
-        for (;;)
-        {
-          this.a.a((TroopFileTransferManager.Item)localObject, 3, paramInt);
-          return;
-          paramInt = 101;
-          continue;
-          paramInt = 102;
-          continue;
-          TroopFileTransferManager.a(this.a, (TroopFileTransferManager.Item)localObject, 206);
-          TroopFileTransferManager.a(this.a, (TroopFileTransferManager.Item)localObject);
-          return;
-          paramInt = -136;
-          TroopFileTransferManager.a(this.a, (TroopFileTransferManager.Item)localObject);
-          continue;
-          paramInt = -138;
-          TroopFileTransferManager.a(this.a, (TroopFileTransferManager.Item)localObject);
-        }
-      }
-      ((TroopFileTransferManager.Item)localObject).UploadIp = paramResendRspBody.str_upload_ip.get();
-      ((TroopFileTransferManager.Item)localObject).CheckKey = paramResendRspBody.bytes_check_key.get().toByteArray();
-      if (!this.a.b((TroopFileTransferManager.Item)localObject)) {
-        this.a.jdField_a_of_type_ArrayOfBgsh[2].a(new TroopFileTransferManager.TaskHttpUpload(this.a, (TroopFileTransferManager.Item)localObject));
+        parambgrw = (bgrv)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
+        bgrw localbgrw = a(parambgrw.getRenderWidth(), parambgrw.getRenderHeight());
+        localbgrw.a(parambgrw);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localbgrw);
+        parambgrw.onSetRenderer(localbgrw);
       }
     }
   }

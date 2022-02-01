@@ -1,30 +1,27 @@
-public abstract class wiu<T>
-  implements wiv<T>
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+
+class wiu
+  extends whh
 {
-  private wiw<T> a;
-  
-  public void a()
+  wiu(wif paramwif, StoryVideoItem paramStoryVideoItem, wjn paramwjn)
   {
-    Object localObject = this.a.a();
-    if (localObject != null)
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    String str = (String)a("result");
+    yos.a(str);
+    yos.a(this.jdField_a_of_type_Wjn.d);
+    if (this.jdField_a_of_type_Wjn.d == null)
     {
-      a(localObject);
-      yuk.a("Q.qqstory.home.data.Producer", "start one consumer:%s", localObject);
-      return;
+      this.jdField_a_of_type_Wjn.d = "";
+      xvv.c(this.b, "imageLocalPath is null", new Throwable());
     }
-    yuk.d("Q.qqstory.home.data.Producer", "no data return");
-  }
-  
-  public abstract void a(T paramT);
-  
-  public void a(wiw<T> paramwiw)
-  {
-    this.a = paramwiw;
-  }
-  
-  public void b()
-  {
-    a();
+    a("DownloadPic2FileJob_iiu", str);
+    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Wjn.d);
+    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Wjn.a));
+    return true;
   }
 }
 

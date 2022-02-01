@@ -1,16 +1,35 @@
-import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.LikeSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class adpx
-  extends adpz
+  extends awjx
 {
-  public adpx(TestAppFragment paramTestAppFragment) {}
+  public adpx(LikeSettingActivity paramLikeSettingActivity) {}
   
-  public void onSuccess(JSONObject paramJSONObject)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    super.onSuccess(paramJSONObject);
-    paramJSONObject.optString("openid", "");
-    this.a.a.a("getAppFriends", null, new adpy(this));
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onGetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (paramBoolean1) {
+      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean2);
+    }
+  }
+  
+  public void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onSetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (!paramBoolean1)
+    {
+      QQToast.a(this.a, 1, 2131718207, 0).b(this.a.getTitleBarHeight());
+      paramBoolean1 = ((awhr)this.a.app.getManager(161)).a();
+      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean1);
+    }
   }
 }
 

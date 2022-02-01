@@ -1,19 +1,21 @@
-import android.bluetooth.BluetoothGatt;
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattService;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acao
+  implements abzb
 {
-  public int a;
-  public BluetoothGatt a;
-  public BluetoothGattCharacteristic a;
-  public BluetoothGattService a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public BluetoothGattCharacteristic b;
-  public int c;
-  public BluetoothGattCharacteristic c;
+  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  {
+    ((bcmt)paramQQAppInterface.getManager(17)).a(paramMsgType0x210.vProtobuf);
+  }
+  
+  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  {
+    a(paramabxc.a(), paramMsgType0x210);
+    return null;
+  }
 }
 
 

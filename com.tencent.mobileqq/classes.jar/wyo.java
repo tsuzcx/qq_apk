@@ -1,13 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class wyo
-  implements View.OnClickListener
+public final class wyo
+  extends QQUIEventReceiver<wyc, xnu>
 {
-  public wyo(MsgTabStoryNodeView paramMsgTabStoryNodeView) {}
+  public wyo(@NonNull wyc paramwyc)
+  {
+    super(paramwyc);
+  }
   
-  public void onClick(View paramView) {}
+  public void a(@NonNull wyc paramwyc, @NonNull xnu paramxnu)
+  {
+    if ((paramxnu.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramxnu.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramwyc.a != null) && (TextUtils.equals(paramxnu.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramwyc.a.b)))
+    {
+      xvv.a(paramwyc.b, "refresh feed item , feed id :%s", paramwyc.a.b);
+      paramwyc.i();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xnu.class;
+  }
 }
 
 

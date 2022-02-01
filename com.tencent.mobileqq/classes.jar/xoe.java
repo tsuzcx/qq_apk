@@ -1,19 +1,37 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class xoe
-  implements Animation.AnimationListener
+public class xoe
+  extends xnk
 {
-  xoe(xoa paramxoa) {}
+  public List<xpe> b = new ArrayList();
+  public boolean e;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public xoe(ErrorMessage paramErrorMessage)
   {
-    this.a.dismiss();
+    super(paramErrorMessage);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext())
+    {
+      xpe localxpe = (xpe)localIterator.next();
+      localStringBuilder.append("feedId:").append(localxpe.a().feedId);
+      localStringBuilder.append("unionId:").append(localxpe.a().getOwner().getUnionId());
+    }
+    return localStringBuilder.toString();
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String toString()
+  {
+    return "FeedData{" + super.toString() + "mFeedItems=" + this.b + '}';
+  }
 }
 
 

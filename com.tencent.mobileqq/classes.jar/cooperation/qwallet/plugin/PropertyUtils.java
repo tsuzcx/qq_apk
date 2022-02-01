@@ -10,8 +10,8 @@ import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import bhmg;
-import bhnv;
+import bfvh;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class PropertyUtils
 {
@@ -29,7 +29,7 @@ public class PropertyUtils
     if (!TextUtils.isEmpty(mNetworkType)) {
       return mNetworkType;
     }
-    int i = bhnv.a(paramContext.getApplicationContext());
+    int i = NetworkUtil.getSystemNetwork(paramContext.getApplicationContext());
     if (i == 1) {
       mNetworkType = "WIFI";
     }
@@ -80,7 +80,7 @@ public class PropertyUtils
     if (mTitleBarHeight > 0) {
       return mTitleBarHeight;
     }
-    mTitleBarHeight = paramActivity.getResources().getDimensionPixelSize(2131299011);
+    mTitleBarHeight = paramActivity.getResources().getDimensionPixelSize(2131299076);
     return mTitleBarHeight;
   }
   
@@ -89,7 +89,7 @@ public class PropertyUtils
     if (mToastOffset > 0) {
       return mToastOffset;
     }
-    mToastOffset = paramContext.getResources().getDimensionPixelSize(2131299011) - (int)bhmg.a(paramContext, 5.0F);
+    mToastOffset = paramContext.getResources().getDimensionPixelSize(2131299076) - (int)bfvh.a(paramContext, 5.0F);
     return mToastOffset;
   }
 }

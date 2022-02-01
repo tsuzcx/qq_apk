@@ -1,6 +1,6 @@
 public abstract interface blqf
 {
-  public abstract String a(int paramInt);
+  public abstract int a();
 }
 
 

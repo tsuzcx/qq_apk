@@ -1,21 +1,16 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment$handleVideoAddToTopicResult$1$1"}, k=3, mv={1, 1, 16})
-public final class riq
-  implements View.OnClickListener
+public class riq
+  extends pkt
 {
-  public riq(FragmentActivity paramFragmentActivity, int paramInt) {}
+  public riq(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public final void onClick(View paramView)
+  public void a(List<String> paramList, List<TopicInfo> paramList1)
   {
-    String str = rab.a() + this.jdField_a_of_type_Int;
-    tbz.a((Context)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, "", str, null, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ReadInJoyUgcSearchTopicFragment.a(this.a, paramList, paramList1);
+    rgz.g();
   }
 }
 

@@ -1,29 +1,26 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ujl
-  implements Animator.AnimatorListener
+public class ujl
+  implements View.OnClickListener
 {
-  ujl(ujk paramujk, DiniFlyAnimationView paramDiniFlyAnimationView) {}
+  public ujl(WSFollowFragment paramWSFollowFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.removeAnimatorListener(this);
+    if (WSFollowFragment.a(this.a) != null) {
+      WSFollowFragment.a(this.a).b();
+    }
+    ((utp)this.a.b()).a(true, true);
+    WSFollowFragment.a(this.a).setVisibility(8);
+    this.a.c();
+    uvi.a(136, 1, null);
+    uvr.b(true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ujk.a(this.jdField_a_of_type_Ujk).removeView(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.removeAnimatorListener(this);
-    ujk.a(this.jdField_a_of_type_Ujk).remove(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

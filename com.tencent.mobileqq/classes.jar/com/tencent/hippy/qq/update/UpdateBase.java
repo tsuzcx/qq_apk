@@ -2,19 +2,20 @@ package com.tencent.hippy.qq.update;
 
 import android.text.TextUtils;
 import com.tencent.hippy.qq.update.sign.MD5;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 
 public abstract class UpdateBase
   implements HippyQQFileUtil.DownLoadCallBack
 {
   private static final String TAG = "UpdateBase";
-  String mMd5;
-  String mModule;
+  protected String mMd5;
+  protected String mModule;
   protected String mModuleFilePath;
-  String mPatchMd5;
+  protected String mPatchMd5;
   protected HippyQQUpdateManager.PackageUpdateListener mUpdateListener;
-  String mUrl;
-  int mVersion;
+  protected String mUrl;
+  protected int mVersion;
   
   public UpdateBase(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, HippyQQUpdateManager.PackageUpdateListener paramPackageUpdateListener)
   {
@@ -26,6 +27,51 @@ public abstract class UpdateBase
     this.mUpdateListener = paramPackageUpdateListener;
   }
   
+  void checkAndResetLocalVersion()
+  {
+    int i = UpdateSetting.getInstance().getModuleVersion(this.mModule);
+    if ((i > 0) && (i < this.mVersion)) {
+      cleanHistoryVersion(HippyQQFileUtil.getModuleFile(this.mModule, -1), i);
+    }
+    UpdateSetting.getInstance().setModuleVersion(this.mModule, this.mVersion);
+  }
+  
+  void cleanHistoryVersion(File paramFile, int paramInt)
+  {
+    int i = 0;
+    if ((paramFile == null) || (!paramFile.exists()) || (!paramFile.isDirectory())) {}
+    do
+    {
+      return;
+      paramFile = paramFile.listFiles();
+    } while (paramFile == null);
+    int j = paramFile.length;
+    while (i < j)
+    {
+      Object localObject = paramFile[i];
+      String str;
+      if ((localObject != null) && (localObject.exists()) && (localObject.isDirectory())) {
+        str = localObject.getName();
+      }
+      try
+      {
+        if (Integer.parseInt(str) < paramInt) {
+          FileUtils.delete(localObject.getAbsolutePath(), false);
+        }
+        label91:
+        i += 1;
+      }
+      catch (Exception localException)
+      {
+        break label91;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        break label91;
+      }
+    }
+  }
+  
   void doAfterDownLoadBusiness(File paramFile)
   {
     int i;
@@ -33,7 +79,7 @@ public abstract class UpdateBase
       if (patch(paramFile)) {
         if (unzipFile(paramFile))
         {
-          UpdateSetting.getInstance().setModuleVersion(this.mModule, this.mVersion);
+          checkAndResetLocalVersion();
           i = 0;
         }
       }

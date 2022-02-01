@@ -1,43 +1,22 @@
-import UserGrowth.stFeed;
-import UserGrowth.stSplitBlock;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
-public class uim
-  extends blsy<stFeed>
+final class uim
+  implements WXShareHelper.WXShareListener
 {
-  private TextView a;
-  
-  private uim(ViewGroup paramViewGroup, ucr paramucr)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    super(paramViewGroup, 2131560397);
-    b();
-  }
-  
-  public static uim a(ViewGroup paramViewGroup, ucr paramucr)
-  {
-    return new uim(paramViewGroup, paramucr);
-  }
-  
-  private void b()
-  {
-    this.a = ((TextView)a(2131381501));
-  }
-  
-  public void a()
-  {
-    uns.a(2);
-  }
-  
-  public void a(stFeed paramstFeed)
-  {
-    if (paramstFeed == null) {}
-    do
+    switch (paramBaseResp.errCode)
     {
+    case -1: 
+    default: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131718380, 1).a();
+    case -2: 
       return;
-      paramstFeed = paramstFeed.recommend_splitter;
-    } while (paramstFeed == null);
-    this.a.setText(paramstFeed.tips);
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 2, 2131718398, 1).a();
   }
 }
 

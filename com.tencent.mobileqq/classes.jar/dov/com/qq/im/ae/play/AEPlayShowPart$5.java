@@ -1,16 +1,14 @@
 package dov.com.qq.im.ae.play;
 
-import boxb;
-
-public class AEPlayShowPart$5
+class AEPlayShowPart$5
   implements Runnable
 {
-  public AEPlayShowPart$5(boxb paramboxb) {}
+  AEPlayShowPart$5(AEPlayShowPart paramAEPlayShowPart) {}
   
   public void run()
   {
-    boxb.a(this.this$0);
-    boxb.b(this.this$0);
+    AEPlayShowPart.access$400(this.this$0);
+    AEPlayShowPart.access$500(this.this$0);
   }
 }
 

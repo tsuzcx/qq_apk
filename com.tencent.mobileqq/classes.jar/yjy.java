@@ -1,51 +1,18 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
-public class yjy
-  implements IEventReceiver
+public final class yjy
+  implements Parcelable.Creator<PublishParam>
 {
-  public int a;
-  public QQUserUIItem a;
-  private StoryMemoriesFragment jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment;
-  public String a;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  protected wjd a;
-  private yka jdField_a_of_type_Yka;
-  private ykb jdField_a_of_type_Ykb;
-  
-  public yjy(int paramInt, String paramString, StoryMemoriesFragment paramStoryMemoriesFragment)
+  public PublishParam a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Wjd = new yjz(this);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment = paramStoryMemoriesFragment;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return new PublishParam(paramParcel);
   }
   
-  public void a()
+  public PublishParam[] a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((wtt)wth.a(2)).b(this.jdField_a_of_type_JavaLangString);
-    xiz.a().addObserver(this.jdField_a_of_type_Wjd);
-    this.jdField_a_of_type_Yka = new yka(this);
-    wjj.a().registerSubscriber(this.jdField_a_of_type_Yka);
-    this.jdField_a_of_type_Ykb = new ykb(this);
-    wjj.a().registerSubscriber(this.jdField_a_of_type_Ykb);
-  }
-  
-  public void b()
-  {
-    xiz.a().removeObserver(this.jdField_a_of_type_Wjd);
-    wjj.a().unRegisterSubscriber(this.jdField_a_of_type_Yka);
-    wjj.a().unRegisterSubscriber(this.jdField_a_of_type_Ykb);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-  }
-  
-  public boolean isValidate()
-  {
-    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return new PublishParam[paramInt];
   }
 }
 

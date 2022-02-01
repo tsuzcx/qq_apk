@@ -1,99 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.proto.lbsshare.LBSShare.GetShopsByIdsResp;
-import com.tencent.proto.lbsshare.LBSShare.LocationResp;
-import com.tencent.proto.lbsshare.LBSShare.NearByShopsResp;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioTransitionAnimManager.1;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import java.util.Set;
 
 public class afgx
-  extends BroadcastReceiver
+  implements OnCompositionLoadedListener
 {
-  public afgx(QQMapActivity paramQQMapActivity) {}
+  public afgx(AudioTransitionAnimManager.1 param1) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqmap", 2, "activiy.receiver.onReceive:" + paramContext);
-    }
-    if (paramContext.equals("com.tencent.mobileqq.onGetStreetViewUrl"))
+    if (paramLottieComposition == null)
     {
-      this.a.j = paramIntent.getStringExtra("streetViewUrl");
-      this.a.n();
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (paramContext.equals("com.tencent.mobileqq.onGetLbsShareSearch"))
-          {
-            byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-            localObject = new LBSShare.LocationResp();
-            paramContext = (Context)localObject;
-            if (arrayOfByte != null) {}
-            try
-            {
-              paramContext = (LBSShare.LocationResp)((LBSShare.LocationResp)localObject).mergeFrom(arrayOfByte);
-              paramIntent = paramIntent.getExtras().getBundle("req");
-              this.a.a(paramContext, paramIntent);
-              return;
-            }
-            catch (InvalidProtocolBufferMicroException paramContext)
-            {
-              for (;;)
-              {
-                if (QLog.isColorLevel()) {
-                  paramContext.printStackTrace();
-                }
-                paramContext = null;
-              }
-            }
-          }
-          if (!paramContext.equals("com.tencent.mobileqq.onGetLbsShareShop")) {
-            break;
-          }
-          paramContext = paramIntent.getByteArrayExtra("data");
-        } while (paramContext == null);
-        Object localObject = new LBSShare.NearByShopsResp();
-        try
-        {
-          paramContext = (LBSShare.NearByShopsResp)((LBSShare.NearByShopsResp)localObject).mergeFrom(paramContext);
-          paramIntent = paramIntent.getExtras().getBundle("req");
-          this.a.a(paramContext, paramIntent);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramContext)
-        {
-          if (QLog.isColorLevel()) {
-            paramContext.printStackTrace();
-          }
-          this.a.a(null, null);
-          return;
-        }
-      } while (!paramContext.equals("com.tencent.mobileqq.onGetShareShopDetail"));
-      paramContext = paramIntent.getByteArrayExtra("data");
-    } while (paramContext == null);
-    paramIntent = new LBSShare.GetShopsByIdsResp();
-    try
-    {
-      paramContext = (LBSShare.GetShopsByIdsResp)paramIntent.mergeFrom(paramContext);
-      this.a.a(paramContext);
+      QLog.e("AudioTransitionAnimManager", 2, "getDrawable onCompositionLoaded lottieComposition is null or mIsDestroyed:");
       return;
     }
-    catch (InvalidProtocolBufferMicroException paramContext)
-    {
-      if (QLog.isColorLevel()) {
-        paramContext.printStackTrace();
-      }
-      this.a.a(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel getDrawable finish type" + this.a.jdField_a_of_type_Int);
     }
+    afgw.a(this.a.this$0).remove(Integer.valueOf(this.a.jdField_a_of_type_Int));
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    afhc localafhc = new afhc(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_JavaLangString);
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.setImageAssetDelegate(localafhc);
+    afgw.a(this.a.this$0).put(this.a.jdField_a_of_type_JavaLangString, localLottieDrawable);
+    afgw.a(this.a.this$0, localLottieDrawable, this.a.jdField_a_of_type_Int);
   }
 }
 

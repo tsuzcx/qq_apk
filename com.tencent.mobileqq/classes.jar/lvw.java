@@ -1,10 +1,19 @@
-import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVRedPacketConfig.ExpressionInfo;
 
-public abstract interface lvw
+public final class lvw
+  implements Parcelable.Creator<AVRedPacketConfig.ExpressionInfo>
 {
-  public abstract void a(Bitmap paramBitmap);
+  public AVRedPacketConfig.ExpressionInfo a(Parcel paramParcel)
+  {
+    return new AVRedPacketConfig.ExpressionInfo(paramParcel);
+  }
   
-  public abstract void b();
+  public AVRedPacketConfig.ExpressionInfo[] a(int paramInt)
+  {
+    return new AVRedPacketConfig.ExpressionInfo[paramInt];
+  }
 }
 
 

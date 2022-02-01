@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.richmediabrowser.presenter;
 
-import asle;
-import bbpq;
+import bajl;
+import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
 
 public class AIOBrowserPresenter$1
   implements Runnable
 {
-  public AIOBrowserPresenter$1(bbpq parambbpq) {}
+  public AIOBrowserPresenter$1(bajl parambajl) {}
   
   public void run() {}
 }

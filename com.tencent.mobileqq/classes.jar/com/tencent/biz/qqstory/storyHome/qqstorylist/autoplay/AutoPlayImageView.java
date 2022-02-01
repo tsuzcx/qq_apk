@@ -16,7 +16,7 @@ import android.os.Build.VERSION;
 import android.support.annotation.ColorInt;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import ascz;
+import aqww;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.image.QQLiveDrawable;
 import com.tencent.image.QQLiveDrawable.OnStateListener;
@@ -25,8 +25,8 @@ import com.tencent.image.RegionDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.widget.PAVideoView;
-import yok;
-import yuk;
+import xpv;
+import xvv;
 
 public class AutoPlayImageView
   extends ImageView
@@ -100,7 +100,7 @@ public class AutoPlayImageView
     {
       Object localObject = paramString;
       if (paramString == null) {
-        localObject = new ascz(-2631721, paramInt1, paramInt2);
+        localObject = new aqww(-2631721, paramInt1, paramInt2);
       }
       return localObject;
     }
@@ -129,7 +129,7 @@ public class AutoPlayImageView
     paramOnStateListener.mDataSourceType = 3;
     paramOnStateListener.mDataSource = paramString2;
     paramOnStateListener.mCoverUrl = paramString1;
-    paramOnStateListener.mCoverLoadingDrawable = new ascz(-2631721, i, paramInt1);
+    paramOnStateListener.mCoverLoadingDrawable = new aqww(-2631721, i, paramInt1);
     paramOnStateListener.mLoopback = true;
     paramOnStateListener.msgUniseq = paramLong;
     return paramOnStateListener;
@@ -142,7 +142,7 @@ public class AutoPlayImageView
   
   public void a()
   {
-    yuk.b("AutoPlayImageView", "pausePlay last mState=" + this.jdField_a_of_type_Int);
+    xvv.b("AutoPlayImageView", "pausePlay last mState=" + this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Int == 3) {}
     do
     {
@@ -154,7 +154,7 @@ public class AutoPlayImageView
   
   public void a(String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2)
   {
-    yuk.a("AutoPlayImageView", "doPlay last mState=%s", Integer.valueOf(this.jdField_a_of_type_Int));
+    xvv.a("AutoPlayImageView", "doPlay last mState=%s", Integer.valueOf(this.jdField_a_of_type_Int));
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_Int = 1;
     paramString1 = a(paramInt1, paramInt2, paramLong, paramString1, paramString2, this);
@@ -162,7 +162,7 @@ public class AutoPlayImageView
     paramString2.mExtraInfo = paramString1;
     paramString2.mLoadingDrawable = a(paramString1.mCoverUrl, paramInt1, paramInt2);
     paramString1 = URLDrawable.getDrawable(PAVideoView.a(paramLong), paramString2);
-    paramString1.setURLDrawableListener(new yok(this));
+    paramString1.setURLDrawableListener(new xpv(this));
     setImageDrawable(paramString1);
   }
   
@@ -180,7 +180,7 @@ public class AutoPlayImageView
   
   public void b()
   {
-    yuk.b("AutoPlayImageView", "resumePlay last mState=" + this.jdField_a_of_type_Int);
+    xvv.b("AutoPlayImageView", "resumePlay last mState=" + this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Int == 3) {}
     do
     {
@@ -201,7 +201,7 @@ public class AutoPlayImageView
   
   public void c()
   {
-    yuk.b("AutoPlayImageView", "pausePlay last mState=" + this.jdField_a_of_type_Int);
+    xvv.b("AutoPlayImageView", "pausePlay last mState=" + this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Int == 1) {
       this.jdField_a_of_type_Boolean = false;
     }
@@ -242,7 +242,7 @@ public class AutoPlayImageView
       this.jdField_a_of_type_AndroidGraphicsPath.reset();
       this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(localRectF, i, i, Path.Direction.CCW);
       if (QQStoryContext.a()) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getContext().getResources().getColor(2131166481));
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getContext().getResources().getColor(2131166500));
       }
       paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
       return;

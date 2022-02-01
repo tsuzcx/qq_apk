@@ -1,10 +1,19 @@
-import android.util.Pair;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-public abstract interface awqb
+public final class awqb
+  implements Parcelable.Creator<Comments.Comment>
 {
-  public abstract Pair<Integer, String> a();
+  public Comments.Comment a(Parcel paramParcel)
+  {
+    return new Comments.Comment(paramParcel);
+  }
   
-  public abstract awpi a();
+  public Comments.Comment[] a(int paramInt)
+  {
+    return new Comments.Comment[paramInt];
+  }
 }
 
 

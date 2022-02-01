@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class tms
-  implements svw
+public abstract interface tms
 {
-  tms(tmr paramtmr, sel paramsel) {}
+  public abstract void D_();
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (sel.a() != null)
-    {
-      tnt localtnt = (tnt)sel.a().getManager(307);
-      if (localtnt != null) {
-        localtnt.a(this.jdField_a_of_type_Sel, this.jdField_a_of_type_Sel.a(), true, paramInt1);
-      }
-    }
-  }
+  public abstract void E_();
+  
+  public abstract void F_();
 }
 
 

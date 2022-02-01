@@ -1,23 +1,28 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.ocr.TranslateFragment;
-import java.util.List;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-public class ayzt
-  implements PopupWindow.OnDismissListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$ActionSheetPrivacySelectBean;", "", "state", "", "privacySelectDes", "", "(ILjava/lang/String;)V", "getPrivacySelectDes", "()Ljava/lang/String;", "setPrivacySelectDes", "(Ljava/lang/String;)V", "getState", "()I", "setState", "(I)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ayzt
 {
-  public ayzt(TranslateFragment paramTranslateFragment, ayyd paramayyd) {}
+  private int jdField_a_of_type_Int;
+  @NotNull
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onDismiss()
+  public ayzt(int paramInt, @NotNull String paramString)
   {
-    TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, null);
-    if ((this.jdField_a_of_type_Ayyd.b != null) && (this.jdField_a_of_type_Ayyd.b.size() > 1))
-    {
-      Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment.getResources().getDrawable(2130846171);
-      TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment).setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public final int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @NotNull
+  public final String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

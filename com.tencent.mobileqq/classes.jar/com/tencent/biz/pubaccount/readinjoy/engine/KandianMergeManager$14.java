@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import antf;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
-import ozs;
+import pay;
 
 class KandianMergeManager$14
   implements Runnable
@@ -13,14 +13,14 @@ class KandianMergeManager$14
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.b(antf.aA, 7220);
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.getLastMsgForMsgTab(AppConstants.KANDIAN_MERGE_UIN, 7220);
     if (localMessageRecord != null) {}
     for (localMessageRecord = KandianMergeManager.a(this.this$0, localMessageRecord, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);; localMessageRecord = KandianMergeManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int))
     {
       if (localMessageRecord != null)
       {
-        ozs.a(localMessageRecord);
-        this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(localMessageRecord, KandianMergeManager.a(this.this$0).c());
+        pay.a(localMessageRecord);
+        this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.addMessage(localMessageRecord, KandianMergeManager.a(this.this$0).getCurrentUin());
       }
       return;
     }

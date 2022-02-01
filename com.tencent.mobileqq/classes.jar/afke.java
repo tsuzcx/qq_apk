@@ -1,24 +1,47 @@
-import android.view.MotionEvent;
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
 public class afke
-  implements View.OnTouchListener
+  implements Animation.AnimationListener
 {
-  public afke(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public afke(TroopChatPie paramTroopChatPie) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMotionEvent.getAction())
+    this.a.c.setVisibility(8);
+    this.a.d.setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.afRoot.setBackgroundDrawable(this.a.sessionInfo.chatBg.a);
+    if (!this.a.isThemeDefault)
     {
+      this.a.mCustomTitleView.setBackgroundResource(2130850016);
+      this.a.titleBgView.setVisibility(8);
+      paramAnimation = this.a.mContext.getResources().getColorStateList(2131167009);
+      this.a.mTitleText.setTextColor(paramAnimation);
     }
     for (;;)
     {
-      return false;
-      paramView.setAlpha(0.7F);
-      continue;
-      paramView.setAlpha(1.0F);
+      AIOUtils.setViewDrawalbe(this.a.mInputBar, 2130849759);
+      return;
+      this.a.mCustomTitleView.setBackgroundResource(2130850017);
+      this.a.titleBgView.setVisibility(8);
+      paramAnimation = this.a.mContext.getResources().getColorStateList(2131167010);
+      this.a.mTitleText.setTextColor(paramAnimation);
     }
   }
 }

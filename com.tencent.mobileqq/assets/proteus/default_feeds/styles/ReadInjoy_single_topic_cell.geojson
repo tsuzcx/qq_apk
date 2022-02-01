@@ -22,7 +22,6 @@
           "type": "match_parent"
         },
         "attributes": {
-          "setFrameString:": "-1",
           "setImageWithURLString:lineup:": [
             "-1",
             "-1"
@@ -41,7 +40,6 @@
           "type": "match_parent"
         },
         "attributes": {
-          "setFrameString:": "-1",
           "setBackgroundColorString:": "#66000000"
         }
       },
@@ -58,7 +56,6 @@
           "type": "wrap_content"
         },
         "attributes": {
-          "setFrameString:": "-1",
           "setText:lineSpace:": [
             "",
             "2"
@@ -82,7 +79,6 @@
           "type": "wrap_content"
         },
         "attributes": {
-          "setFrameString:": "-1",
           "setText:": "-1",
           "setTextColorString:": "#FFFFFF",
           "setFontSizeString:": "12",
@@ -101,7 +97,6 @@
           "type": "match_parent"
         },
         "attributes": {
-          "setFrameString:": "-1",
           "setBackgroundColorString:": "#eaeaea"
         }
       }

@@ -1,12 +1,15 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
 
-final class awln
-  implements Comparator<MessageRecord>
+class awln
+  implements bhaa
 {
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  awln(awlm paramawlm) {}
+  
+  public void a()
   {
-    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
+    this.a.a.a.setVisibility(8);
+    this.a.a.a(true);
   }
 }
 

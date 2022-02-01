@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.utils;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bisp;
+import bgyr;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -17,16 +17,16 @@ final class TroopApplicationListUtil$3
   
   public void handleMessage(Message paramMessage)
   {
-    if ((paramMessage.obj instanceof bisp))
+    if ((paramMessage.obj instanceof bgyr))
     {
-      paramMessage = (bisp)paramMessage.obj;
+      paramMessage = (bgyr)paramMessage.obj;
       if (paramMessage.c == 0) {
         try
         {
           QLog.d("TroopApplicationListUtil", 1, new Object[] { "handleMessage cgiState.htmlBody: ", paramMessage.d });
           int i = new JSONObject(paramMessage.d).optInt("ec", -1);
-          TroopApplicationListUtil.access$000(i);
-          TroopApplicationListUtil.access$100(i, this.val$groupUin, this.val$appId);
+          TroopApplicationListUtil.showToast(i);
+          TroopApplicationListUtil.access$000(i, this.val$groupUin, this.val$appId);
           return;
         }
         catch (Exception paramMessage)

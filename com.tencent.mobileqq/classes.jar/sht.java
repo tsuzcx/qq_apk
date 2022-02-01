@@ -1,17 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
-public class sht
-  extends pmr
+public abstract class sht
 {
-  public sht(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
+  public int a;
+  public BaseArticleInfo a;
+  public HashMap<String, String> a;
+  public int b;
+  
+  public sht(BaseArticleInfo paramBaseArticleInfo, int paramInt1, int paramInt2, Map<String, String> paramMap)
   {
-    super(paramString);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaUtilHashMap.putAll(paramMap);
   }
   
-  public void a(pmk parampmk)
-  {
-    parampmk.e();
-  }
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 

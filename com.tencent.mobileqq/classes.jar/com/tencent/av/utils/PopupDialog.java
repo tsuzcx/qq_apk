@@ -1,7 +1,7 @@
 package com.tencent.av.utils;
 
 import Override;
-import afez;
+import adxr;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -12,48 +12,48 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.Window;
-import bhlq;
-import bhpc;
+import bfur;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import lzq;
+import lzb;
 import mqq.app.BaseActivity;
-import mte;
-import mtf;
-import mtg;
+import msn;
+import mso;
+import msp;
 
 public class PopupDialog
   extends BaseActivity
 {
-  public static mtg a;
-  bhpc jdField_a_of_type_Bhpc = null;
+  public static msp a;
+  QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
   boolean jdField_a_of_type_Boolean = true;
   
   static
   {
-    jdField_a_of_type_Mtg = new mtg();
+    jdField_a_of_type_Msp = new msp();
   }
   
-  public static bhpc a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  public static QQCustomDialog a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    bhpc localbhpc2;
+    QQCustomDialog localQQCustomDialog2;
     try
     {
       if (paramContext != BaseApplicationImpl.getApplication()) {
-        localbhpc1 = bhlq.a(paramContext, 230, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
+        localQQCustomDialog1 = bfur.a(paramContext, 230, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
       }
     }
     catch (Exception localException1)
     {
-      bhpc localbhpc1;
-      localbhpc2 = null;
+      QQCustomDialog localQQCustomDialog1;
+      localQQCustomDialog2 = null;
     }
     try
     {
-      localbhpc1.show();
-      return localbhpc1;
+      localQQCustomDialog1.show();
+      return localQQCustomDialog1;
     }
     catch (Exception localException2)
     {
@@ -63,7 +63,7 @@ public class PopupDialog
     return null;
     label56:
     a(paramContext, paramInt1, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
-    return localbhpc2;
+    return localQQCustomDialog2;
   }
   
   public static void a()
@@ -71,14 +71,14 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "hideCustomDialog");
     }
-    jdField_a_of_type_Mtg.jdField_a_of_type_Boolean = false;
-    mtg localmtg = jdField_a_of_type_Mtg;
-    if (mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    jdField_a_of_type_Msp.jdField_a_of_type_Boolean = false;
+    msp localmsp = jdField_a_of_type_Msp;
+    if (msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      localmtg = jdField_a_of_type_Mtg;
-      mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
-      localmtg = jdField_a_of_type_Mtg;
-      mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
+      localmsp = jdField_a_of_type_Msp;
+      msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
+      localmsp = jdField_a_of_type_Msp;
+      msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
     }
   }
   
@@ -107,7 +107,7 @@ public class PopupDialog
       paramString1.putExtra("public_fragment_window_feature", 1);
       paramString1.putExtra("request", localBundle);
       paramString1.addFlags(268435456);
-      afez.a(paramContext, paramString1, PublicTransFragmentActivity.class, PopupDialogQQSide.class);
+      adxr.a(paramContext, paramString1, PublicTransFragmentActivity.class, PopupDialogQQSide.class);
       return;
     }
   }
@@ -117,18 +117,18 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "changeDialogText");
     }
-    Object localObject = jdField_a_of_type_Mtg;
-    if (mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    Object localObject = jdField_a_of_type_Msp;
+    if (msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      paramContext = jdField_a_of_type_Mtg;
-      mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog.a(paramString1, paramString2);
+      paramContext = jdField_a_of_type_Msp;
+      msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog.a(paramString1, paramString2);
       return;
     }
     localObject = new Intent(paramContext, PopupDialog.class);
     ((Intent)localObject).putExtra("invoke_type", "changeText");
     ((Intent)localObject).addFlags(268435456);
-    jdField_a_of_type_Mtg.jdField_a_of_type_JavaLangString = paramString1;
-    jdField_a_of_type_Mtg.jdField_b_of_type_JavaLangString = paramString2;
+    jdField_a_of_type_Msp.jdField_a_of_type_JavaLangString = paramString1;
+    jdField_a_of_type_Msp.jdField_b_of_type_JavaLangString = paramString2;
     paramContext.startActivity((Intent)localObject);
   }
   
@@ -138,28 +138,28 @@ public class PopupDialog
       QLog.d("PopupDialog", 2, "sendIsResumeBroadcast isResume = " + paramBoolean);
     }
     if (this.jdField_a_of_type_Boolean) {
-      lzq.a(BaseApplicationImpl.getContext(), paramBoolean);
+      lzb.a(BaseApplicationImpl.getContext(), paramBoolean);
     }
   }
   
-  public static bhpc b(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  public static QQCustomDialog b(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    bhpc localbhpc2;
+    QQCustomDialog localQQCustomDialog2;
     try
     {
       if (paramContext != BaseApplicationImpl.getApplication()) {
-        localbhpc1 = bhlq.a(paramContext, 230, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
+        localQQCustomDialog1 = bfur.a(paramContext, 230, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
       }
     }
     catch (Exception localException1)
     {
-      bhpc localbhpc1;
-      localbhpc2 = null;
+      QQCustomDialog localQQCustomDialog1;
+      localQQCustomDialog2 = null;
     }
     try
     {
-      localbhpc1.show();
-      return localbhpc1;
+      localQQCustomDialog1.show();
+      return localQQCustomDialog1;
     }
     catch (Exception localException2)
     {
@@ -169,7 +169,7 @@ public class PopupDialog
     return null;
     label56:
     b(paramContext, paramInt1, paramString1, paramString2, paramInt2, paramInt3, paramOnClickListener1, paramOnClickListener2);
-    return localbhpc2;
+    return localQQCustomDialog2;
   }
   
   public static void b(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
@@ -181,81 +181,82 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "showCustomDialog");
     }
-    jdField_a_of_type_Mtg.jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_Mtg.jdField_a_of_type_Int = paramInt1;
-    jdField_a_of_type_Mtg.jdField_a_of_type_JavaLangString = paramString1;
-    jdField_a_of_type_Mtg.jdField_b_of_type_JavaLangString = paramString2;
-    jdField_a_of_type_Mtg.jdField_b_of_type_Int = paramInt2;
-    jdField_a_of_type_Mtg.c = paramInt3;
-    jdField_a_of_type_Mtg.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener2;
-    jdField_a_of_type_Mtg.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener1;
+    jdField_a_of_type_Msp.jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_Msp.jdField_a_of_type_Int = paramInt1;
+    jdField_a_of_type_Msp.jdField_a_of_type_JavaLangString = paramString1;
+    jdField_a_of_type_Msp.jdField_b_of_type_JavaLangString = paramString2;
+    jdField_a_of_type_Msp.jdField_b_of_type_Int = paramInt2;
+    jdField_a_of_type_Msp.c = paramInt3;
+    jdField_a_of_type_Msp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener2;
+    jdField_a_of_type_Msp.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener1;
     paramContext.startActivity(localIntent);
   }
   
   void a(String paramString1, String paramString2)
   {
-    jdField_a_of_type_Mtg.jdField_a_of_type_JavaLangString = paramString1;
-    jdField_a_of_type_Mtg.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Bhpc.setTitle(paramString1);
-    this.jdField_a_of_type_Bhpc.setMessage(paramString2);
-    if (!this.jdField_a_of_type_Bhpc.isShowing()) {
-      this.jdField_a_of_type_Bhpc.show();
+    jdField_a_of_type_Msp.jdField_a_of_type_JavaLangString = paramString1;
+    jdField_a_of_type_Msp.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(paramString1);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(paramString2);
+    if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
     }
   }
   
   void b()
   {
     Object localObject1 = super.getIntent().getStringExtra("invoke_type");
-    if ((TextUtils.equals((CharSequence)localObject1, "reshow")) && (this.jdField_a_of_type_Bhpc != null)) {
-      if (!this.jdField_a_of_type_Bhpc.isShowing()) {
-        this.jdField_a_of_type_Bhpc.show();
+    if ((TextUtils.equals((CharSequence)localObject1, "reshow")) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)) {
+      if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       }
     }
     do
     {
       return;
-      if ((!TextUtils.equals((CharSequence)localObject1, "changeText")) || (this.jdField_a_of_type_Bhpc == null)) {
+      if ((!TextUtils.equals((CharSequence)localObject1, "changeText")) || (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)) {
         break;
       }
-      localObject1 = jdField_a_of_type_Mtg.jdField_a_of_type_JavaLangString;
-      localObject2 = jdField_a_of_type_Mtg.jdField_b_of_type_JavaLangString;
-      this.jdField_a_of_type_Bhpc.setTitle((String)localObject1);
-      this.jdField_a_of_type_Bhpc.setMessage((CharSequence)localObject2);
-    } while (this.jdField_a_of_type_Bhpc.isShowing());
-    this.jdField_a_of_type_Bhpc.show();
+      localObject1 = jdField_a_of_type_Msp.jdField_a_of_type_JavaLangString;
+      localObject2 = jdField_a_of_type_Msp.jdField_b_of_type_JavaLangString;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle((String)localObject1);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage((CharSequence)localObject2);
+    } while (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing());
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
     return;
-    int k = jdField_a_of_type_Mtg.jdField_a_of_type_Int;
-    String str1 = jdField_a_of_type_Mtg.jdField_a_of_type_JavaLangString;
-    String str2 = jdField_a_of_type_Mtg.jdField_b_of_type_JavaLangString;
-    int i = jdField_a_of_type_Mtg.jdField_b_of_type_Int;
-    int j = jdField_a_of_type_Mtg.c;
-    if (this.jdField_a_of_type_Bhpc != null)
+    int k = jdField_a_of_type_Msp.jdField_a_of_type_Int;
+    String str1 = jdField_a_of_type_Msp.jdField_a_of_type_JavaLangString;
+    String str2 = jdField_a_of_type_Msp.jdField_b_of_type_JavaLangString;
+    int i = jdField_a_of_type_Msp.jdField_b_of_type_Int;
+    int j = jdField_a_of_type_Msp.c;
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
     {
-      this.jdField_a_of_type_Bhpc.dismiss();
-      this.jdField_a_of_type_Bhpc = null;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
-    localObject1 = new mte(this);
-    Object localObject2 = new mtf(this);
-    if ((i == 0) || (jdField_a_of_type_Mtg.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null))
+    localObject1 = new msn(this);
+    Object localObject2 = new mso(this);
+    if ((i == 0) || (jdField_a_of_type_Msp.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null))
     {
       localObject1 = null;
-      i = 2131719223;
+      i = 2131719509;
     }
-    if ((j == 0) || (jdField_a_of_type_Mtg.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener == null))
+    if ((j == 0) || (jdField_a_of_type_Msp.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener == null))
     {
       localObject2 = null;
-      j = 2131719223;
+      j = 2131719509;
     }
-    this.jdField_a_of_type_Bhpc = bhlq.a(this, k, str1, str2, i, j, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject1);
-    this.jdField_a_of_type_Bhpc.setCancelable(false);
-    this.jdField_a_of_type_Bhpc.show();
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this, k, str1, str2, i, j, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject1);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -274,19 +275,19 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "onCreate");
     }
-    getWindow().setBackgroundDrawableResource(2130850683);
-    paramBundle = jdField_a_of_type_Mtg;
-    if (mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    getWindow().setBackgroundDrawableResource(2130850608);
+    paramBundle = jdField_a_of_type_Msp;
+    if (msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      paramBundle = jdField_a_of_type_Mtg;
-      if (mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
+      paramBundle = jdField_a_of_type_Msp;
+      if (msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
       {
-        paramBundle = jdField_a_of_type_Mtg;
-        mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
+        paramBundle = jdField_a_of_type_Msp;
+        msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
       }
     }
-    paramBundle = jdField_a_of_type_Mtg;
-    mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
+    paramBundle = jdField_a_of_type_Msp;
+    msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
   }
   
   public void onDestroy()
@@ -294,13 +295,13 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "onDestroy");
     }
-    if (this.jdField_a_of_type_Bhpc != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
     {
-      this.jdField_a_of_type_Bhpc.dismiss();
-      this.jdField_a_of_type_Bhpc = null;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
-    mtg localmtg = jdField_a_of_type_Mtg;
-    mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
+    msp localmsp = jdField_a_of_type_Msp;
+    msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog = null;
     super.onDestroy();
   }
   
@@ -321,18 +322,18 @@ public class PopupDialog
     if (QLog.isColorLevel()) {
       QLog.d("PopupDialog", 2, "onNewIntent");
     }
-    paramIntent = jdField_a_of_type_Mtg;
-    if (mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    paramIntent = jdField_a_of_type_Msp;
+    if (msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      paramIntent = jdField_a_of_type_Mtg;
-      if (mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
+      paramIntent = jdField_a_of_type_Msp;
+      if (msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
       {
-        paramIntent = jdField_a_of_type_Mtg;
-        mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
+        paramIntent = jdField_a_of_type_Msp;
+        msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
       }
     }
-    paramIntent = jdField_a_of_type_Mtg;
-    mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
+    paramIntent = jdField_a_of_type_Msp;
+    msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
   }
   
   public void onPause()
@@ -345,21 +346,21 @@ public class PopupDialog
   {
     super.onResume();
     b();
-    mtg localmtg = jdField_a_of_type_Mtg;
-    if (mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
+    msp localmsp = jdField_a_of_type_Msp;
+    if (msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog != null)
     {
-      localmtg = jdField_a_of_type_Mtg;
-      if (mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
+      localmsp = jdField_a_of_type_Msp;
+      if (msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
       {
-        localmtg = jdField_a_of_type_Mtg;
-        mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
+        localmsp = jdField_a_of_type_Msp;
+        msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog.finish();
       }
     }
-    localmtg = jdField_a_of_type_Mtg;
-    if (mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
+    localmsp = jdField_a_of_type_Msp;
+    if (msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog != this)
     {
-      localmtg = jdField_a_of_type_Mtg;
-      mtg.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
+      localmsp = jdField_a_of_type_Msp;
+      msp.jdField_a_of_type_ComTencentAvUtilsPopupDialog = this;
     }
     a(true);
   }

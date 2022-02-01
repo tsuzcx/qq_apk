@@ -1,82 +1,39 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
+import android.widget.ImageView;
 
 public class xpp
-  extends xpo
+  extends yru<xps>
 {
-  protected Map<String, xpo> a = new HashMap();
+  private LruCache<xps, Drawable> a = new xpq(this, 5242880);
   
-  public xpp(@NonNull ViewGroup paramViewGroup)
+  public LruCache<xps, Drawable> a()
   {
-    super(paramViewGroup);
+    return this.a;
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public yrv a(ImageView paramImageView, xps paramxps)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561874, paramViewGroup, false);
+    return new xpt(paramImageView, paramxps);
   }
   
-  public void a(int paramInt, xmt paramxmt, @NonNull ArrayList<xqz> paramArrayList)
+  public void a()
   {
-    super.a(paramInt, paramxmt, paramArrayList);
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xpo)localIterator.next()).a(paramInt, paramxmt, paramArrayList);
-    }
+    super.a();
+    b();
   }
   
-  public void a(@NonNull xpo paramxpo)
-  {
-    this.a.put(paramxpo.getClass().getName(), paramxpo);
-  }
-  
-  public void a(xpp paramxpp)
-  {
-    super.a(paramxpp);
-    paramxpp = this.a.values().iterator();
-    while (paramxpp.hasNext()) {
-      ((xpo)paramxpp.next()).a(this);
-    }
-  }
-  
-  public void a(xqn paramxqn)
-  {
-    super.a(paramxqn);
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xpo)localIterator.next()).a(paramxqn);
-    }
-  }
-  
-  @Nullable
-  public xpo b(Class<? extends xpo> paramClass)
-  {
-    return (xpo)this.a.get(paramClass.getName());
-  }
-  
-  protected void b()
+  public void b()
   {
     super.b();
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xpo)localIterator.next()).b();
+    try
+    {
+      this.a.evictAll();
+      return;
     }
-  }
-  
-  public void c()
-  {
-    super.c();
-    Iterator localIterator = this.a.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xpo)localIterator.next()).c();
+    catch (Exception localException)
+    {
+      this.a = new xpr(this, 5242880);
     }
   }
 }

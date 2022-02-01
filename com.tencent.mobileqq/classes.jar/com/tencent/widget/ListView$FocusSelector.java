@@ -3,21 +3,21 @@ package com.tencent.widget;
 class ListView$FocusSelector
   implements Runnable
 {
-  private int a;
-  private int b;
+  private int mPosition;
+  private int mPositionTop;
   
   private ListView$FocusSelector(ListView paramListView) {}
   
-  public FocusSelector a(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    return this;
-  }
-  
   public void run()
   {
-    this.this$0.setSelectionFromTop(this.a, this.b);
+    this.this$0.setSelectionFromTop(this.mPosition, this.mPositionTop);
+  }
+  
+  public FocusSelector setup(int paramInt1, int paramInt2)
+  {
+    this.mPosition = paramInt1;
+    this.mPositionTop = paramInt2;
+    return this;
   }
 }
 

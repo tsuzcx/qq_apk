@@ -1,64 +1,38 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.avgame.ipc.UserInfo;
+import com.tencent.mobileqq.app.BusinessObserver;
+import java.util.HashMap;
 
-class myf
-  implements Application.ActivityLifecycleCallbacks
+public class myf
+  implements BusinessObserver
 {
-  myf(mya parammya) {}
+  public void a(int paramInt1, String paramString, int paramInt2) {}
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  public void a(int paramInt, String paramString, UserInfo paramUserInfo) {}
   
-  public void onActivityDestroyed(Activity paramActivity)
+  public void a(boolean paramBoolean, int paramInt, HashMap<String, String> paramHashMap) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatWindowController", 2, "onActivityDestroyed: " + paramActivity.getClass().getName());
-    }
-  }
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatWindowController", 2, "onActivityResumed: " + paramActivity.getClass().getName() + " mHoldByPermission: " + this.a.b + " mIsFloatWindowShowing: " + mya.b(this.a) + " mIgnoreByOpenSdkForeGround: " + mya.c(this.a));
-    }
-    if ((this.a.b) && (!mya.b(this.a)))
+    switch (paramInt)
     {
-      ThreadManager.getUIHandlerV2().removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      ThreadManager.getUIHandlerV2().postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1000L);
-      paramActivity.finish();
-    }
-    while (!mya.c(this.a)) {
+    default: 
+      return;
+    case 0: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], (UserInfo)paramObject[2]);
+      return;
+    case 1: 
+      paramObject = (Object[])paramObject;
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], ((Integer)paramObject[2]).intValue());
       return;
     }
-    mya.a(this.a, false);
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.a(true);
-  }
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatWindowController", 2, "onActivityStarted: " + paramActivity.getClass().getName());
-    }
-  }
-  
-  public void onActivityStopped(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatWindowController", 2, "onActivityStopped: " + paramActivity.getClass().getName());
-    }
+    paramObject = (Object[])paramObject;
+    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (HashMap)paramObject[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     myf
  * JD-Core Version:    0.7.0.1
  */

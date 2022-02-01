@@ -1,64 +1,25 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class aeha
-  implements CompoundButton.OnCheckedChangeListener
+  extends ClickableSpan
 {
-  public aeha(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aeha(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (((Boolean)paramCompoundButton.getTag()).booleanValue()) {
-      paramCompoundButton.setTag(Boolean.FALSE);
-    }
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-          return;
-        } while (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null);
-        i = this.a.app.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      } while (i == -1);
-      if (!paramBoolean) {
-        break;
-      }
-    } while (i != 1);
-    ChatSettingForTroop.a(this.a, 4);
-    label82:
-    if (ChatSettingForTroop.a(this.a) != null) {
-      ChatSettingForTroop.d(this.a);
-    }
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean)
-    {
-      str = "msg_open";
-      label116:
-      bdll.b(localQQAppInterface, "dc00899", "Grp_msg", "", "Grp_data", str, 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "", "", "");
-      if (!paramBoolean) {
-        break label224;
-      }
-    }
-    label224:
-    for (String str = "msg_open";; str = "msg_close")
-    {
-      bhju.a("Grp_msg", "grpData_admin", str, 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bhju.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
-      break;
-      if (i == 1) {
-        break;
-      }
-      ChatSettingForTroop.a(this.a, 1);
-      break label82;
-      str = "msg_close";
-      break label116;
-    }
+    SoundAndVibrateActivity.a(this.a);
+    VipUtils.a(this.a.app, "Vip_SpecialCare", "0X80049EE", "0X80049EE", 0, 1, null);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setColor(this.a.getResources().getColor(2131167020));
   }
 }
 

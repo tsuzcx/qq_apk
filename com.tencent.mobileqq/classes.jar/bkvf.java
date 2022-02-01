@@ -1,76 +1,128 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.JsEvent;
-import com.tencent.qqmini.sdk.annotation.JsPlugin;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import cooperation.qqreader.utils.QRDebugEnvUrlUtils;
+import java.util.HashMap;
+import java.util.Map;
 
-@JsPlugin(secondary=true)
-public class bkvf
-  extends BaseJsPlugin
+public final class bkvf
 {
-  private bkvi a;
+  private static Map<String, String> a = new HashMap();
   
-  private JSONObject a(RequestEvent paramRequestEvent)
+  static
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("[mini] WeiyunDownloadFilePlugin", 1, "Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
-    }
-    return null;
+    a.put("qqreaderMan", "https://cdn.vip.qq.com/club/client/read/6/rel/index.html?isV2=1");
+    a.put("qqreaderWoman", "https://cdn.vip.qq.com/club/client/read/6/rel/index.html?isV2=1");
+    a.put("qqreaderPublish", "https://cdn.vip.qq.com/club/client/read/6/rel/index.html?isV2=1");
+    a.put("qqreaderBookShelfIndex", "https://cdn.vip.qq.com/club/client/read/6/rel/bookShelf_index.html");
+    a.put("qqreaderBookShelfBookList", "https://cdn.vip.qq.com/club/client/read/6/rel/man.html");
+    a.put("qqreaderBookShelfFm", "https://cdn.vip.qq.com/club/client/read/6/rel/bookShelf_fm.html");
+    a.put("qqreaderBookShelfFollow", "https://cdn.vip.qq.com/club/client/read/6/rel/bookShelf_follow.html");
+    a.put("qqreaderBookShelfDelete", "https://cdn.vip.qq.com/club/client/read/6/rel/bookShelf_delete.html");
+    a.put("qqreaderTribe", "https://cdn.vip.qq.com/club/client/read/6/rel/tribe.html");
+    a.put("qqreaderSearchResult", "https://cdn.vip.qq.com/club/client/read/6/rel/new_search.html");
+    a.put("qqreaderAccount", "https://cdn.vip.qq.com/club/client/read/6/rel/mine_index.html");
+    a.put("qqreaderAppdown", "https://cdn.vip.qq.com/club/client/read/6/rel/appdown.html");
+    a.put("qqreaderInteract", "https://cdn.vip.qq.com/club/client/read/6/rel/interact.html");
+    a.put("qqreaderComment", "https://cdn.vip.qq.com/club/client/read/6/rel/comment.html");
+    a.put("qqreaderReadover", "https://cdn.vip.qq.com/club/client/read/6/rel/readover.html");
+    a.put("qqreaderBookFont", "https://cdn.vip.qq.com/club/client/read/6/rel/bookFont.html");
+    a.put("qqreaderBookDetails", "https://cdn.vip.qq.com/club/client/read/6/rel/bookDetails.html");
+    a.put("qqreaderOffShelf", "https://cdn.vip.qq.com/club/client/read/6/rel/book_offShelf.html");
+    a.put("qqreaderBookOutDetail", "https://cdn.vip.qq.com/club/client/read/6/rel/book_outDetail.html");
+    a.put("qqreaderQQMoreState", "https://cdn.vip.qq.com/club/client/read/6/rel/userstate.html");
   }
   
-  @JsEvent({"weiyunDownload"})
-  public void weiyunDownload(RequestEvent paramRequestEvent)
+  public static String a(String paramString)
   {
-    JSONObject localJSONObject;
+    return a(paramString, true);
+  }
+  
+  public static String a(String paramString, boolean paramBoolean)
+  {
+    Object localObject;
+    if (paramBoolean)
+    {
+      localObject = d(paramString);
+      paramString = (String)localObject;
+      if (localObject == null) {
+        paramString = "https://cdn.vip.qq.com/club/client/read/6/rel/index.html";
+      }
+      localObject = new StringBuilder().append(paramString);
+      if (!paramString.contains("?")) {
+        break label170;
+      }
+    }
+    label170:
+    for (paramString = "&";; paramString = "?")
+    {
+      paramString = paramString;
+      localObject = paramString + "_bid=2036&refer=qqreader";
+      paramString = (String)localObject;
+      if (!((String)localObject).contains("&ChannelID=")) {
+        paramString = (String)localObject + "&ChannelID=" + bkvi.a();
+      }
+      localObject = paramString;
+      if (QRDebugEnvUrlUtils.isDebugEnv()) {
+        localObject = QRDebugEnvUrlUtils.getTestUrl(paramString);
+      }
+      bkvd.e("ReaderUrlHelper", "getUrlWithBid = " + (String)localObject);
+      return localObject;
+      paramString = "https://cdn.vip.qq.com/club/client/read/6/rel/" + paramString;
+      break;
+    }
+  }
+  
+  public static String b(String paramString)
+  {
     String str;
-    try
+    if (paramString == null) {
+      str = a("index.html", false);
+    }
+    do
     {
-      localJSONObject = new JSONObject(a(paramRequestEvent).optString("data"));
-      str = localJSONObject.getString("action");
-      if ((TextUtils.isEmpty(str)) || ((!str.equals("createDownloadTask")) && (!str.equals("pauseDownloadTask")) && (!str.equals("cancelDownloadTask")))) {
-        return;
-      }
-      QLog.d("[mini] WeiyunDownloadFilePlugin", 2, "create weiyun Download");
-      if (this.a == null) {
-        this.a = new bkvi(this.mMiniAppContext);
-      }
-      localJSONObject = new JSONObject(localJSONObject.getString("data"));
-      if (str.equals("createDownloadTask"))
+      do
       {
-        if (this.a.a(localJSONObject))
-        {
-          this.a.a(localJSONObject, localJSONObject.getString("file_id"), paramRequestEvent);
-          paramRequestEvent.ok();
-          return;
+        return str;
+        str = paramString;
+      } while (paramString.toLowerCase().startsWith("http://"));
+      str = paramString;
+    } while (paramString.toLowerCase().startsWith("file://"));
+    return c(paramString);
+  }
+  
+  public static String c(String paramString)
+  {
+    if ((paramString != null) && (!paramString.equals(""))) {
+      if ((paramString.startsWith("http://")) || (paramString.startsWith("https://")))
+      {
+        String str = paramString;
+        if (QRDebugEnvUrlUtils.isDebugEnv()) {
+          str = QRDebugEnvUrlUtils.getTestUrl(paramString);
         }
-        paramRequestEvent.fail("download params illegal.");
-        return;
+        return str;
       }
     }
-    catch (JSONException paramRequestEvent)
-    {
-      paramRequestEvent.printStackTrace();
-      return;
+    for (paramString = a(paramString, false);; paramString = a("index.html", false)) {
+      return paramString;
     }
-    if (str.equals("pauseDownloadTask"))
-    {
-      QLog.d("[mini] WeiyunDownloadFilePlugin", 2, "pause weiyun Download");
-      this.a.a(localJSONObject.getString("file_id"), paramRequestEvent);
-      return;
+  }
+  
+  private static String d(String paramString)
+  {
+    String str2 = null;
+    String str1;
+    if ((bktu.a != null) && (bktu.a.size() > 0)) {
+      str1 = (String)bktu.a.get(paramString);
     }
-    if (str.equals("cancelDownloadTask"))
+    for (;;)
     {
-      QLog.d("[mini] WeiyunDownloadFilePlugin", 2, "cacel weiyun Download");
-      this.a.b(localJSONObject.getString("file_id"), paramRequestEvent);
+      bkvd.d("ReaderUrlHelper", "getUrl = " + str1);
+      return str1;
+      if (bktu.a != null) {
+        str2 = (String)bktu.a.get(paramString);
+      }
+      str1 = str2;
+      if (str2 == null) {
+        str1 = (String)a.get(paramString);
+      }
     }
   }
 }

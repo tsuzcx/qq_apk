@@ -1,42 +1,32 @@
-import org.json.JSONObject;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadRegulator;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class anby
-  implements ancm
+  extends MqqHandler
 {
-  private int a;
-  
-  public anby()
+  public anby(ThreadRegulator paramThreadRegulator, Looper paramLooper)
   {
-    int i = ancl.a;
-    ancl.a = i + 1;
-    this.a = i;
+    super(paramLooper);
   }
   
-  public String a()
+  public void handleMessage(Message paramMessage)
   {
-    return null;
-  }
-  
-  public JSONObject a(ancl paramancl, JSONObject paramJSONObject)
-  {
-    if ("cs.audio_create.local".equals(paramJSONObject.optString("N_R_CMD")))
+    paramMessage = (anbz)paramMessage.obj;
+    if (paramMessage != null)
     {
-      paramJSONObject = new anbl(paramJSONObject.optInt("N_R_OBJ"), paramJSONObject.optInt("id"), paramJSONObject.optString("type"));
-      if (paramancl != null) {
-        paramancl.a(paramJSONObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("ThreadManager.Regulaotr", 2, paramMessage.jdField_a_of_type_Int + " cost " + (paramMessage.b - paramMessage.jdField_a_of_type_Long) + ", paused " + paramMessage.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
       }
+      paramMessage.recycle();
     }
-    return null;
-  }
-  
-  public int c()
-  {
-    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anby
  * JD-Core Version:    0.7.0.1
  */

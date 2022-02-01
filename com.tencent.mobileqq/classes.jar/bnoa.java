@@ -1,15 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.2.1;
+import android.annotation.TargetApi;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.util.Log;
 
 public class bnoa
-  implements DialogInterface.OnClickListener
 {
-  public bnoa(QzoneQunFeedJsPlugin.2.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @TargetApi(16)
+  public static int a(MediaExtractor paramMediaExtractor)
   {
-    paramDialogInterface.dismiss();
+    int j = paramMediaExtractor.getTrackCount();
+    int i = 0;
+    while (i < j)
+    {
+      MediaFormat localMediaFormat = paramMediaExtractor.getTrackFormat(i);
+      String str = localMediaFormat.getString("mime");
+      if (str.startsWith("video/"))
+      {
+        Log.d("VideoUtils", "Extractor selected track " + i + " (" + str + "): " + localMediaFormat);
+        return i;
+      }
+      i += 1;
+    }
+    return -1;
   }
 }
 

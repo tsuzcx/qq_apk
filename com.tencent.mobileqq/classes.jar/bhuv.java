@@ -1,44 +1,37 @@
-import android.util.Pair;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.open.agent.SocialFriendChooser;
 
 public class bhuv
+  extends Handler
 {
-  public int a;
-  public Pair<CharSequence, CharSequence> a;
-  public String a;
+  public bhuv(SocialFriendChooser paramSocialFriendChooser) {}
   
-  public bhuv(String paramString, int paramInt, Pair<CharSequence, CharSequence> paramPair)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidUtilPair = paramPair;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder1 = new StringBuilder().append("MsgSearchContactInfo{uin='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", uinType=").append(this.jdField_a_of_type_Int).append(", matchTitle=[");
-    if (this.jdField_a_of_type_AndroidUtilPair == null)
+    switch (paramMessage.what)
     {
-      localObject = "null";
-      return (String)localObject + "]" + '}';
+    default: 
+      return;
+    case 10001: 
+      paramMessage = new Bundle(this.a.jdField_a_of_type_AndroidOsBundle);
+      paramMessage.putString("agentversion", bhpc.a().e());
+      paramMessage.putString("facetype", "mqqface");
+      String str = biex.a().a("https://fusion.qq.com/cgi-bin/appstage/get_image_update");
+      bhtw.a().a(str, paramMessage, new bhuw(this));
+      return;
     }
-    StringBuilder localStringBuilder2 = new StringBuilder();
-    if (this.jdField_a_of_type_AndroidUtilPair.first == null)
-    {
-      localObject = "null";
-      label92:
-      localStringBuilder2 = localStringBuilder2.append(localObject).append(", ");
-      if (this.jdField_a_of_type_AndroidUtilPair.second != null) {
-        break label142;
-      }
+    if ((this.a.jdField_a_of_type_Biae != null) && (!this.a.jdField_a_of_type_Biae.isCancelled())) {
+      this.a.jdField_a_of_type_Biae.cancel(true);
     }
-    label142:
-    for (Object localObject = "null";; localObject = (CharSequence)this.jdField_a_of_type_AndroidUtilPair.second)
-    {
-      localObject = localObject;
-      break;
-      localObject = (CharSequence)this.jdField_a_of_type_AndroidUtilPair.first;
-      break label92;
-    }
+    this.a.l();
+    paramMessage = new Intent();
+    paramMessage.putExtra("key_error_code", -7);
+    paramMessage.putExtra("key_error_msg", bian.e);
+    this.a.setResult(-1, paramMessage);
+    this.a.finish();
   }
 }
 

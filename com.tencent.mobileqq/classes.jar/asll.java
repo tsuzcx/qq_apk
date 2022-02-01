@@ -1,58 +1,58 @@
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
-
-class asll
-  extends anwy
+public class asll
 {
-  final WeakReference<aslh> a;
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b = true;
+  public int c;
+  public String c;
+  public boolean c = false;
+  public int d;
+  public int e;
+  public int f;
   
-  public asll(aslh paramaslh)
+  public static int a(int paramInt)
   {
-    this.a = new WeakReference(paramaslh);
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SogouEmoji", 2, "func onEmosmBack begins, isSuccess:" + paramBoolean + ",type:" + paramInt);
-    }
-    if ((!paramBoolean) || (paramObject == null) || (paramInt != 3)) {}
-    do
+    switch (paramInt)
     {
-      aslh localaslh;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            localaslh = (aslh)this.a.get();
-            if (localaslh == null)
-            {
-              QLog.d("SogouEmoji", 2, "WeakReference error");
-              return;
-            }
-            paramObject = (EmoticonResp)paramObject;
-          } while (paramObject.data == null);
-          paramObject = (ArrayList)paramObject.data;
-        } while (paramObject.size() == 0);
-        paramBoolean = localaslh.a.a(localaslh.b);
-        if (QLog.isColorLevel()) {
-          QLog.d("SogouEmoji", 2, "func onEmojiKeyBack begins, isTaskExist:" + paramBoolean);
-        }
-        if (paramBoolean) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SogouEmoji", 2, "func onEmojiKeyBack ends, task CANCELLED by user.");
-      return;
-      localaslh.a((Emoticon)paramObject.get(0));
-    } while (!QLog.isColorLevel());
-    QLog.d("SogouEmoji", 2, "func onEmojiKeyBack ends, Ready to send.");
+    case 1: 
+    case 12: 
+    case 13: 
+    case 14: 
+    case 15: 
+    case 16: 
+    case 17: 
+    case 18: 
+    case 19: 
+    case 20: 
+    case 21: 
+    case 22: 
+    default: 
+      return 2131692142;
+    case 2: 
+      return 2131692211;
+    case 3: 
+      return 2131692133;
+    case 4: 
+      return 2131692112;
+    case 5: 
+      return 2131692150;
+    case 6: 
+      return 2131692156;
+    case 7: 
+      return 2131692141;
+    case 8: 
+      return 2131692168;
+    case 11: 
+      return 2131692167;
+    case 9: 
+      return 2131692154;
+    case 10: 
+      return 2131692153;
+    }
+    return 2131692128;
   }
 }
 

@@ -1,12 +1,36 @@
-public class zqc
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+
+class zqc
+  implements zpy
 {
-  public long a;
-  public long b;
+  zqc(zqb paramzqb, zqa paramzqa) {}
   
-  public zqc(long paramLong1, long paramLong2)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "combineVideos end! isSuccess:" + paramBoolean + " path = " + paramString1);
+    }
+    File localFile = new File(paramString1);
+    if ((paramBoolean) && (localFile.exists()))
+    {
+      if (this.jdField_a_of_type_Zqa.a)
+      {
+        this.jdField_a_of_type_Zqb.jdField_a_of_type_Zqp.b(this.jdField_a_of_type_Zqb);
+        return;
+      }
+      if (this.jdField_a_of_type_Zqb.jdField_a_of_type_JavaLangString != null)
+      {
+        l = System.currentTimeMillis();
+        this.jdField_a_of_type_Zqb.jdField_a_of_type_Zpq.a(paramString1, this.jdField_a_of_type_Zqb.jdField_a_of_type_JavaLangString, new zqd(this, l));
+        return;
+      }
+      long l = System.currentTimeMillis();
+      this.jdField_a_of_type_Zqb.a(localFile, this.jdField_a_of_type_Zqb.b, new zqf(this, l));
+      return;
+    }
+    this.jdField_a_of_type_Zqb.d = paramString2;
+    this.jdField_a_of_type_Zqb.jdField_a_of_type_Zqp.a(this.jdField_a_of_type_Zqb);
   }
 }
 

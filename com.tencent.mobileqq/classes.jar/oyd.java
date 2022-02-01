@@ -1,18 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.Comparator;
+import android.content.Context;
+import android.content.res.Resources;
 
-final class oyd
-  implements Comparator<ArticleInfo>
+class oyd
+  implements bjoy
 {
-  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
+  oyd(oyc paramoyc) {}
+  
+  public void a()
   {
-    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
-      return 0;
-    }
-    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
-      return -1;
-    }
-    return 1;
+    oyc.a(this.a, oyc.a(this.a).getResources().getColor(2131167337));
   }
 }
 

@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardTroopListFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import java.util.Comparator;
 
 public class aepc
-  implements View.OnClickListener
+  implements Comparator<aeox>
 {
-  public aepc(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  public aepc(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(View paramView)
+  public int a(aeox paramaeox1, aeox paramaeox2)
   {
-    ForwardTroopListFragment.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return paramaeox1.f.compareToIgnoreCase(paramaeox2.f);
   }
 }
 

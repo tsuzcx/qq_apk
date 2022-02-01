@@ -1,48 +1,34 @@
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import java.util.List;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewStub;
 
-public abstract class vbk
-  extends aabd
-  implements aabg<QCircleReportBean>
+public class vbk
+  extends vbc
 {
-  protected QCircleReportBean a;
+  private ukz<vaq> a;
   
-  public vbk() {}
-  
-  public vbk(int paramInt1, List<aabp> paramList, int paramInt2, int paramInt3)
+  public vbk(Context paramContext, vct paramvct)
   {
-    super(paramInt1, paramList, paramInt2, paramInt3);
+    super(paramContext, paramvct);
   }
   
-  public QCircleReportBean a()
+  private void e()
   {
-    if (this.a == null) {
-      this.a = new QCircleReportBean();
-    }
-    return QCircleReportBean.getReportBean(a(), this.a.setModuleIdStr(b()));
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131380722);
+    this.jdField_a_of_type_Ukz = new vav(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vct);
+    this.jdField_a_of_type_Ukz.a(localViewStub);
+    a(this.jdField_a_of_type_Ukz);
   }
   
-  public void a(QCircleReportBean paramQCircleReportBean)
+  public boolean a()
   {
-    this.a = QCircleReportBean.setReportBean(a(), paramQCircleReportBean);
+    return false;
   }
   
-  protected int b()
+  public void d()
   {
-    return QCircleReportBean.getParentPageId(a(), this.a);
-  }
-  
-  protected String b()
-  {
-    if (this.a != null) {
-      return this.a.getModuleIdStr();
-    }
-    return null;
-  }
-  
-  public int c()
-  {
-    return QCircleReportBean.getPageId(a(), this.a);
+    super.d();
+    e();
   }
 }
 

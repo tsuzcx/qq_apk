@@ -1,78 +1,44 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.widget.ProfileCardVideoCoverShowView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnControllerClickListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo.RecommadInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnControllerClickListener;
 
-public class bjaw
-  extends BaseAdapter
+class bjaw
+  implements TVK_IMediaPlayer.OnControllerClickListener
 {
-  public bjaw(ProfileCardVideoCoverShowView paramProfileCardVideoCoverShowView) {}
+  bjaw(bjau parambjau, AbsVideoPlayer.OnControllerClickListener paramOnControllerClickListener) {}
   
-  public bjay a(int paramInt)
+  public void onAttationClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    return (bjay)ProfileCardVideoCoverShowView.a(this.a).get(paramInt);
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnControllerClickListener.onAttationClick(this.jdField_a_of_type_Bjau);
   }
   
-  public int getCount()
+  public void onBackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    return ProfileCardVideoCoverShowView.a(this.a).size();
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnControllerClickListener.onBackClick(this.jdField_a_of_type_Bjau);
   }
   
-  public long getItemId(int paramInt)
+  public void onBackOnFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    return paramInt;
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnControllerClickListener.onBackOnFullScreenClick(this.jdField_a_of_type_Bjau);
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void onCacheClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    Object localObject;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131561416, null, false);
-      paramView.setTag((ImageView)paramView.findViewById(2131368320));
-      localObject = new StateListDrawable();
-      ((StateListDrawable)localObject).addState(ProfileCardVideoCoverShowView.a(), new ColorDrawable(855638016));
-      ((StateListDrawable)localObject).addState(ProfileCardVideoCoverShowView.b(), new ColorDrawable(0));
-      paramView.findViewById(2131379247).setBackgroundDrawable((Drawable)localObject);
-    }
-    for (;;)
-    {
-      localObject = (ImageView)paramView.getTag();
-      bjay localbjay = a(paramInt);
-      if (TextUtils.isEmpty(localbjay.a))
-      {
-        ((ImageView)localObject).setImageDrawable(null);
-        if (paramInt != 0) {
-          break label240;
-        }
-        paramView.setPadding(agej.a(12.0F, this.a.getResources()), 0, 0, 0);
-      }
-      for (;;)
-      {
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
-        localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
-        localURLDrawableOptions.mRequestHeight = agej.a(178.0F, this.a.getResources());
-        localURLDrawableOptions.mRequestWidth = agej.a(100.0F, this.a.getResources());
-        ((ImageView)localObject).setImageDrawable(URLDrawable.getDrawable(localbjay.a, localURLDrawableOptions));
-        break;
-        label240:
-        paramView.setPadding(0, 0, 0, 0);
-      }
-    }
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnControllerClickListener.onCacheClick(this.jdField_a_of_type_Bjau);
   }
+  
+  public void onFeedbackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnControllerClickListener.onFeedbackClick(this.jdField_a_of_type_Bjau);
+  }
+  
+  public void onFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnControllerClickListener.onFullScreenClick(this.jdField_a_of_type_Bjau);
+  }
+  
+  public void onReopenClick(TVK_NetVideoInfo.RecommadInfo paramRecommadInfo) {}
 }
 
 

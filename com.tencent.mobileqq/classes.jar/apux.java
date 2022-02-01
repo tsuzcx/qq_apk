@@ -1,76 +1,41 @@
-import android.os.Build;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.commonsdk.util.MD5Coding;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class apux
-  implements apum
 {
-  private apux(apuk paramapuk) {}
+  private boolean a;
   
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public static apux a(String paramString)
   {
-    if (!apuj.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.DEVICE_INFORMATION")) {}
-    do
+    if (paramString == null) {}
+    for (;;)
     {
-      return false;
-      if ("GetModelName".equals(paramString))
+      return null;
+      try
       {
-        paramVariantWrapper.SetString(Build.MODEL);
-        return true;
+        apux localapux = new apux();
+        if (new JSONObject(paramString).optInt("showTakeSameEntrance", 0) == 1) {}
+        for (boolean bool = true;; bool = false)
+        {
+          localapux.a = bool;
+          return localapux;
+        }
+        if (!QLog.isColorLevel()) {}
       }
-      if ("GetScreenWidth".equals(paramString))
-      {
-        paramString = aqbx.a;
-        paramVariantWrapper.SetInt((int)(paramString.widthPixels / paramString.density));
-        return true;
-      }
-      if ("GetScreenHeight".equals(paramString))
-      {
-        paramString = aqbx.a;
-        paramVariantWrapper.SetInt((int)(paramString.heightPixels / paramString.density));
-        return true;
-      }
-      if ("GetPixelRatio".equals(paramString))
-      {
-        paramVariantWrapper.SetDouble(aqbx.a());
-        return true;
-      }
-    } while (!"GetIdentifier".equals(paramString));
-    paramArrayOfVariantWrapper = bhlo.a();
-    paramString = paramArrayOfVariantWrapper;
-    if (TextUtils.isEmpty(paramArrayOfVariantWrapper)) {}
-    try
-    {
-      paramString = blhc.a("6973c4");
-      paramArrayOfVariantWrapper = paramString;
-      if (paramString == null)
-      {
-        paramArrayOfVariantWrapper = "";
-        QLog.e("ArkAppDeviceModule", 1, "get identifer: null, fix it with empty string");
-      }
-      paramString = paramArrayOfVariantWrapper;
-      if (this.a.jdField_a_of_type_Long != 0L) {
-        paramString = MD5Coding.encodeHexStr(paramArrayOfVariantWrapper);
-      }
-      paramVariantWrapper.SetString(paramString);
-      return true;
+      catch (Exception paramString) {}
     }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        QLog.e("ArkAppDeviceModule", 1, "get identifer: exception, catch it");
-        paramString = paramArrayOfVariantWrapper;
-      }
-    }
+    QLog.e("PttAutoChangeProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public boolean a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apux
  * JD-Core Version:    0.7.0.1
  */

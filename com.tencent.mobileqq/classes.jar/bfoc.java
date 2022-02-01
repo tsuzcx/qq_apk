@@ -1,18 +1,19 @@
-class bfoc
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+
+public class bfoc
+  implements DialogInterface.OnKeyListener
 {
-  final float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  float b = 0.0F;
+  public bfoc(UpgradeActivity paramUpgradeActivity) {}
   
-  public bfoc(bfnz parambfnz, float paramFloat)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Int * this.jdField_a_of_type_Float * 0.4F + this.b * 0.6F;
+    if (paramInt == 4) {
+      this.a.finish();
+    }
+    return false;
   }
 }
 

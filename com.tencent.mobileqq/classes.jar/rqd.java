@@ -1,18 +1,6 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-
-final class rqd
-  extends AnimatorListenerAdapter
+public abstract interface rqd<V>
 {
-  rqd(View paramView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.setLayerType(0, null);
-    this.a.setVisibility(8);
-    this.a.setTranslationY(0.0F);
-  }
+  public abstract boolean a(V paramV);
 }
 
 

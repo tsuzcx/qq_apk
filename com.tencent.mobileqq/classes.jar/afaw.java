@@ -1,75 +1,76 @@
-import android.content.res.Resources;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.MultiImageTextView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import tencent.im.s2c.msgtype0x210.submsgtype0xc7.submsgtype0xc7.RelationalChainInfo;
 
 public class afaw
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public afaw(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public int a;
+  public afax a;
+  public afay a;
+  public byte[] a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static afaw a(submsgtype0xc7.RelationalChainInfo paramRelationalChainInfo)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    int j = nnr.a();
-    int i = j;
-    if (j == -1) {
-      i = 2;
-    }
-    Object localObject;
-    if (i == 0)
+    if (paramRelationalChainInfo != null)
     {
-      QQToast.a(this.a.getActivity(), 1, 2131695458, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299011));
-      localObject = this.a;
-      if (!paramBoolean) {
-        NotifyPushSettingActivity.a((NotifyPushSettingActivity)localObject, bool1);
+      afaw localafaw = new afaw();
+      localafaw.jdField_a_of_type_Int = paramRelationalChainInfo.uint64_type.get();
+      if (paramRelationalChainInfo.bytes_attr.has()) {
+        localafaw.jdField_a_of_type_Afay = afay.a(localafaw.jdField_a_of_type_Int, paramRelationalChainInfo.bytes_attr.get().toByteArray());
       }
+      if (paramRelationalChainInfo.bytes_intimate_info.has()) {
+        localafaw.jdField_a_of_type_Afax = afax.a(paramRelationalChainInfo.bytes_intimate_info.get().toByteArray());
+      }
+      if (paramRelationalChainInfo.bytes_mutualmark_alienation.has()) {
+        localafaw.jdField_a_of_type_ArrayOfByte = paramRelationalChainInfo.bytes_mutualmark_alienation.get().toByteArray();
+      }
+      return localafaw;
     }
-    for (;;)
+    return null;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Afay != null) {
+      return (int)this.jdField_a_of_type_Afay.b;
+    }
+    if ((this.jdField_a_of_type_Afax != null) && ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 26) || (this.jdField_a_of_type_Int == 3))) {
+      return this.jdField_a_of_type_Afax.jdField_a_of_type_Int;
+    }
+    return 0;
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_Afay != null) {
+      return (int)this.jdField_a_of_type_Afay.h;
+    }
+    return 0;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ExtSnsRelationalChainPushInfo{");
+    localStringBuilder.append("relation_type:").append(this.jdField_a_of_type_Int).append(", ");
+    localStringBuilder.append("mutualMarkInfo:").append(this.jdField_a_of_type_Afay).append(", ");
+    localStringBuilder.append("intimateInfo:").append(this.jdField_a_of_type_Afax).append(", ");
+    localStringBuilder.append("relationIconFlag:");
+    if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length > 0))
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bool1 = false;
-      break;
-      if (NotifyPushSettingActivity.a(this.a).compareAndSet(true, true))
+      int i = 0;
+      while ((i < this.jdField_a_of_type_ArrayOfByte.length) && (i < 10))
       {
-        QQToast.a(this.a.getActivity(), 1, 2131697606, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299011));
-        localObject = this.a;
-        if (!paramBoolean) {}
-        for (bool1 = bool2;; bool1 = false)
-        {
-          NotifyPushSettingActivity.a((NotifyPushSettingActivity)localObject, bool1);
-          break;
-        }
-      }
-      NotifyPushSettingActivity.a(this.a, paramBoolean);
-      if (paramBoolean)
-      {
-        localObject = anzj.a(2131706521) + afbt.a(3600000L);
-        NotifyPushSettingActivity.a(this.a).setRightText((CharSequence)localObject);
-        NotifyPushSettingActivity.a(this.a).set(true);
-        long l = NetConnInfoCenter.getServerTime();
-        ((anum)this.a.app.a(2)).a((int)(3600L + l), "", "not_disturb_from_notify_push_setting_activity");
-        bdll.b(this.a.app, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 1, 60L + "", "0", "", "");
-      }
-      else
-      {
-        localObject = NotifyPushSettingActivity.a(this.a).a().getText().toString();
-        NotifyPushSettingActivity.a(this.a).a().setText("");
-        NotifyPushSettingActivity.a(this.a).set(true);
-        ((anum)this.a.app.a(2)).a(0, (String)localObject, "not_disturb_from_notify_push_setting_activity");
-        bdll.b(this.a.app, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 2, "0", "0", "", "");
+        localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte[0]).append(" ");
+        i += 1;
       }
     }
+    localStringBuilder.append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

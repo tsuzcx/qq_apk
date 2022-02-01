@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.OverloadTipsActivity;
 
 public class adup
-  implements View.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
-  public adup(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  public adup(OverloadTipsActivity paramOverloadTipsActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.finish();
-    this.a.overridePendingTransition(2130771997, 2130772001);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt == 4) {
+      this.a.finish();
+    }
+    return false;
   }
 }
 

@@ -1,31 +1,37 @@
-import android.app.Activity;
-import android.os.Bundle;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.2.1;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-class ajzk
-  extends nkq
+public class ajzk
+  implements ajvb
 {
-  ajzk(ajyt paramajyt) {}
+  public ajzk(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a()
   {
-    QLog.i("SDKEmotionSettingManager", 1, " checkJumpAction checkOpenidDiff errorCode =" + paramInt);
-    if ((ajyt.a(this.a).isFinishing()) || (this.a.a))
+    ThemeHbFragment.a(this.a, null);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (ThemeHbFragment.a(this.a) == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back context is null");
+      }
+    }
+    do
     {
-      QLog.i("SDKEmotionSettingManager", 1, " checkJumpAction activity finishing or timeout");
       return;
+      if (QLog.isColorLevel()) {
+        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back drawable = " + paramObject);
+      }
+    } while (!(paramObject instanceof Drawable));
+    if (QLog.isColorLevel()) {
+      QLog.i("ThemeHbFragment", 2, "setImageBgProcess image set...");
     }
-    this.a.c();
-    if (ajyt.a(this.a) != null) {
-      ajyt.a(this.a).removeCallbacks(ajyt.b(this.a));
-    }
-    if (paramInt == 16)
-    {
-      this.a.d();
-      return;
-    }
-    ajyt.c(this.a);
+    ThemeHbFragment.a(this.a).post(new ThemeHbFragment.2.1(this, paramObject));
   }
 }
 

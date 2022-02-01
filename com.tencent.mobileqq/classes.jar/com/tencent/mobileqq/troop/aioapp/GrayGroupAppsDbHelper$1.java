@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.aioapp;
 
-import bfly;
+import bduy;
 import com.tencent.mobileqq.troop.aioapp.data.GrayGroupAppEntity;
 
 public class GrayGroupAppsDbHelper$1
   implements Runnable
 {
-  public GrayGroupAppsDbHelper$1(bfly parambfly, GrayGroupAppEntity paramGrayGroupAppEntity) {}
+  public GrayGroupAppsDbHelper$1(bduy parambduy, GrayGroupAppEntity paramGrayGroupAppEntity) {}
   
   public void run()
   {
-    bfly.a(this.this$0, this.a);
+    bduy.a(this.this$0, this.a);
   }
 }
 

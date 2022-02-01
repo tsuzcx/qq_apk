@@ -1,76 +1,15 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.SyncLoadTask.1;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityFragment;
 
-public abstract class bhss
+public class bhss
+  implements DialogInterface.OnClickListener
 {
-  public final String TAG;
-  int mTaskStatus = 1;
+  public bhss(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public bhss(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.TAG = (paramString + "_" + AudioHelper.b());
-  }
-  
-  public static void requestSyncTask(Resources paramResources, ArrayList<bhss> paramArrayList, bhst parambhst)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      bhss localbhss = (bhss)localIterator.next();
-      if (localbhss.isNeedRunTask()) {
-        localArrayList.add(localbhss);
-      }
-    }
-    localIterator = localArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((bhss)localIterator.next()).setRunning();
-    }
-    ThreadManager.post(new SyncLoadTask.1(localArrayList, paramResources, parambhst, paramArrayList), 8, null, true);
-  }
-  
-  public final void clean()
-  {
-    this.mTaskStatus = 1;
-    innerClean();
-  }
-  
-  public abstract void innerClean();
-  
-  public final boolean isNeedRunTask()
-  {
-    return (this.mTaskStatus != 20) && (this.mTaskStatus != 2);
-  }
-  
-  final boolean isRunning()
-  {
-    return (this.mTaskStatus & 0x2) == 2;
-  }
-  
-  final boolean isSuc()
-  {
-    return (this.mTaskStatus & 0x14) == 20;
-  }
-  
-  public abstract boolean runOnSubThread(Resources paramResources);
-  
-  public final void setComplete(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.mTaskStatus = 20;
-      return;
-    }
-    this.mTaskStatus = 36;
-  }
-  
-  final void setRunning()
-  {
-    this.mTaskStatus = 2;
+    paramDialogInterface.dismiss();
   }
 }
 

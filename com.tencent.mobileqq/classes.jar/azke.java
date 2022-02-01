@@ -1,11 +1,32 @@
-class azke
-  implements azjk
+import NS_MOBILE_PHOTO.operation_red_touch_req;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+
+public class azke
+  extends QzoneExternalRequest
 {
-  azke(azkc paramazkc) {}
+  public JceStruct a;
   
-  public void a(double paramDouble1, double paramDouble2)
+  public azke(long paramLong, operation_red_touch_req paramoperation_red_touch_req)
   {
-    this.a.a(paramDouble1);
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    this.a = paramoperation_red_touch_req;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.asy_photo.OperationRedTouch";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "OperationRedTouch";
   }
 }
 

@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.webkit.JavascriptInterface;
-import bmsv;
-import bmsw;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -27,6 +25,8 @@ import com.tencent.mobileqq.mini.webview.BaseAppBrandWebview;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.ValueCallback;
 import common.config.service.QzoneConfig;
+import cooperation.qzone.PlatformInfor;
+import cooperation.qzone.QUA;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -86,7 +86,7 @@ public class ServiceOriginalWebview
           }
         }
       }
-      localObject2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s;  __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='" + (String)localObject1 + "'; __qqConfig.deviceinfo='" + bmsv.a().f() + "'; __qqConfig.miniapp_version='" + (String)localObject2 + "';", new Object[] { paramApkgInfo.mConfigStr, localJSONObject.toString() });
+      localObject2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s;  __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='" + (String)localObject1 + "'; __qqConfig.deviceinfo='" + PlatformInfor.g().getSimpleDeviceInfor() + "'; __qqConfig.miniapp_version='" + (String)localObject2 + "';", new Object[] { paramApkgInfo.mConfigStr, localJSONObject.toString() });
       localObject1 = localObject2;
       if (StorageUtil.getPreference().getBoolean(paramApkgInfo.appId + "_debug", false)) {
         localObject1 = (String)localObject2 + "__qqConfig.debug=true;";
@@ -152,7 +152,7 @@ public class ServiceOriginalWebview
       localJSONObject.put("env", localObject);
       localJSONObject.put("preload", paramBoolean);
       int i = QzoneConfig.getInstance().getConfig("qqminiapp", "xprof_api_report", 0);
-      StringBuilder localStringBuilder = new StringBuilder().append("function extend(obj, src) {\n    for (var key in src) {\n        if (src.hasOwnProperty(key)) obj[key] = src[key];\n    }\n    return obj;\n}\nif (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = %1$s; __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.appContactInfo = {};__qqConfig.appContactInfo.operationInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo.apiAvailable = {'navigateToMiniProgramConfig':0,'shareCustomImageUrl':1,'share':0,'authorize':0,'navigateToMiniProgram':1,'getUserInfo':0,'openSetting':0};__qqConfig.platform = 'android';__qqConfig.QUA='").append(bmsw.a()).append("';__qqConfig.frameworkInfo = {};__qqConfig.frameworkInfo.isAlpha=");
+      StringBuilder localStringBuilder = new StringBuilder().append("function extend(obj, src) {\n    for (var key in src) {\n        if (src.hasOwnProperty(key)) obj[key] = src[key];\n    }\n    return obj;\n}\nif (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = %1$s; __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.appContactInfo = {};__qqConfig.appContactInfo.operationInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo.apiAvailable = {'navigateToMiniProgramConfig':0,'shareCustomImageUrl':1,'share':0,'authorize':0,'navigateToMiniProgram':1,'getUserInfo':0,'openSetting':0};__qqConfig.platform = 'android';__qqConfig.QUA='").append(QUA.getQUA3()).append("';__qqConfig.frameworkInfo = {};__qqConfig.frameworkInfo.isAlpha=");
       if (i == 0) {}
       for (localObject = "false";; localObject = "true")
       {

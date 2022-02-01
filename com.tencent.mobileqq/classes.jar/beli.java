@@ -1,20 +1,23 @@
-public abstract interface beli
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
+import java.lang.ref.WeakReference;
+
+class beli
+  implements bcrz
 {
-  public abstract beko a();
+  final WeakReference<SpriteVideoView> a;
   
-  public abstract belt a(String paramString);
+  private beli(SpriteVideoView paramSpriteVideoView)
+  {
+    this.a = new WeakReference(paramSpriteVideoView);
+  }
   
-  public abstract void a();
-  
-  public abstract void a(bekn parambekn, String paramString);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString1, String paramString2, beko parambeko);
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
+  public void a()
+  {
+    SpriteVideoView localSpriteVideoView = (SpriteVideoView)this.a.get();
+    if (localSpriteVideoView != null) {
+      localSpriteVideoView.setVisibility(8);
+    }
+  }
 }
 
 

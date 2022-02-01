@@ -1,85 +1,171 @@
-import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class auhq
-  extends auhw
+public class auhq
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public static auhq a;
+  public int a;
+  public boolean a;
+  public int b = 1;
+  public int c = 256;
   
-  public auhq(QQAppInterface paramQQAppInterface, Context paramContext)
+  public auhq()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  protected abstract int a();
-  
-  protected abstract long a();
-  
-  public SessionInfo a()
+  public static int a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  }
-  
-  public ChatMessage a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-  }
-  
-  protected abstract String a();
-  
-  public void a(SessionInfo paramSessionInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-  }
-  
-  public void a(ChatMessage paramChatMessage)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected abstract String b();
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    String str = a();
-    long l = a();
-    if (bhmi.b(b())) {
-      return false;
+    auhq localauhq = a();
+    if (localauhq != null) {
+      return localauhq.c;
     }
-    int i = a();
-    if ((i == 2) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1) && (i == 8))) {
-      return false;
+    return 256;
+  }
+  
+  public static int a(String paramString, int paramInt)
+  {
+    if (paramString == null) {}
+    do
+    {
+      return paramInt;
+      try
+      {
+        int i = Integer.valueOf(paramString).intValue();
+        return i;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("HotVideoDPC", 2, "StringToInt Exception! " + paramString);
+    return paramInt;
+  }
+  
+  public static auhq a()
+  {
+    if ((jdField_a_of_type_Auhq == null) || (jdField_a_of_type_Auhq.jdField_a_of_type_Boolean)) {
+      jdField_a_of_type_Auhq = b();
     }
-    if (aunj.a(str) != 2) {
-      return false;
+    return jdField_a_of_type_Auhq;
+  }
+  
+  public static boolean a()
+  {
+    auhq localauhq = a();
+    return (localauhq != null) && (localauhq.b == 1);
+  }
+  
+  public static auhq b()
+  {
+    int i1 = 256;
+    boolean bool = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("HotVideoDPC", 2, "loadHotVideoDPC!");
     }
-    if (!aunj.a()) {
-      return false;
+    String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.HotVCfg.name());
+    QLog.i("HotVideoDPC", 2, "loadHotVideoDPC dpcValue: " + str);
+    if (!TextUtils.isEmpty(str)) {}
+    for (;;)
+    {
+      int k;
+      int m;
+      int i;
+      int j;
+      int n;
+      try
+      {
+        localObject = str.split("\\|");
+        if ((localObject != null) && (localObject.length >= 3))
+        {
+          k = a(localObject[0], 0);
+          m = k;
+        }
+      }
+      catch (Exception localException2)
+      {
+        Object localObject;
+        m = 0;
+        j = 1;
+        continue;
+      }
+      try
+      {
+        i = a(localObject[1], 0);
+        j = i;
+        m = k;
+        try
+        {
+          n = a(localObject[2], 256);
+          localObject = new auhq();
+          ((auhq)localObject).jdField_a_of_type_Int = k;
+          ((auhq)localObject).b = i;
+          ((auhq)localObject).c = n;
+          if ((str == null) || (str.isEmpty())) {
+            bool = true;
+          }
+          ((auhq)localObject).jdField_a_of_type_Boolean = bool;
+          return localObject;
+        }
+        catch (Exception localException1) {}
+        if ((localObject != null) && (localObject.length == 1)) {
+          k = a(localObject[0], 0);
+        }
+      }
+      catch (Exception localException3)
+      {
+        j = 1;
+        continue;
+      }
+      try
+      {
+        QLog.i("HotVideoDPC", 2, "loadHotVideoDPC configs.length == 1");
+        i = 1;
+        n = i1;
+      }
+      catch (Exception localException4)
+      {
+        m = k;
+        j = 1;
+        continue;
+      }
+      if ((localObject != null) && (localObject.length == 2))
+      {
+        k = a(localObject[0], 0);
+        m = k;
+        i = a(localObject[1], 0);
+        j = i;
+        m = k;
+        QLog.i("HotVideoDPC", 2, "loadHotVideoDPC configs.length == 2");
+        n = i1;
+        continue;
+        n = i1;
+        i = j;
+        k = m;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("HotVideoDPC", 2, "loadHotVideoDPC exception:", localException1);
+          n = i1;
+          i = j;
+          k = m;
+        }
+      }
+      else
+      {
+        i = 1;
+        k = 0;
+        n = i1;
+      }
     }
-    if ((!TextUtils.isEmpty(str)) && (l > 0L) && (l > ((atsh)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317)).a(bgpk.a(str)).b)) {
-      return true;
-    }
-    return l > 1048576L;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("hotVideoSwitch: ").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" hotVideoBlurSwitch: ").append(this.b);
+    localStringBuilder.append(" hotVideoBlurMemory: ").append(this.c);
+    return localStringBuilder.toString();
   }
 }
 

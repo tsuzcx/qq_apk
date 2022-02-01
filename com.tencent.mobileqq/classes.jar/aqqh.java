@@ -1,18 +1,12 @@
-import android.hardware.Camera.ShutterCallback;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.ShutterCallbackForward.1;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
 
-public class aqqh
-  implements Camera.ShutterCallback
+public abstract interface aqqh
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final aqpx jdField_a_of_type_Aqpx;
-  private final aqpy jdField_a_of_type_Aqpy;
+  public abstract boolean getHasPulledSourceMsg();
   
-  public void onShutter()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.ShutterCallbackForward.1(this));
-  }
+  public abstract MessageForReplyText.SourceMsgInfo getSourceMsgInfo();
+  
+  public abstract void setPulledSourceMsg();
 }
 
 

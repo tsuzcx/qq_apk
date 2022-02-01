@@ -1,18 +1,30 @@
-import com.tencent.mobileqq.activity.Conversation;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
 public class aeik
-  extends atpa
+  implements bhfc
 {
-  public aeik(Conversation paramConversation) {}
+  public aeik(SubLoginActivity paramSubLoginActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    this.a.a(8, paramString, -2147483648);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.a(8, paramString1, -2147483648);
+    if (paramBoolean)
+    {
+      int[] arrayOfInt = new int[2];
+      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
+      paramInt1 = arrayOfInt[1];
+      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
+      paramInt1 = paramInt1 - arrayOfInt[1] + SubLoginActivity.a(this.a).getHeight() - paramInt2;
+      if (paramInt1 > 0) {
+        SubLoginActivity.a(this.a).setPadding(SubLoginActivity.a(this.a).getPaddingLeft(), SubLoginActivity.a(this.a).getPaddingTop() - paramInt1, SubLoginActivity.a(this.a).getPaddingRight(), SubLoginActivity.a(this.a).getPaddingBottom());
+      }
+      SubLoginActivity.b(this.a).setVisibility(8);
+      return;
+    }
+    SubLoginActivity.b(this.a).setVisibility(0);
+    SubLoginActivity.a(this.a).setPadding(0, 0, 0, 0);
   }
 }
 

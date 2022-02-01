@@ -1,22 +1,26 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aues
-  implements aqrn
+  extends amwl
 {
-  public ColorNote getColorNote()
+  private WeakReference<Context> a;
+  
+  public aues(Context paramContext)
   {
-    aqrv localaqrv = new aqrv();
-    localaqrv.a(17039360);
-    String str = auoo.b(-1, "");
+    this.a = new WeakReference(paramContext);
+  }
+  
+  protected void onHiBoomAuthResult(int paramInt, byte[] paramArrayOfByte)
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("DefaultFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+      QLog.d("HiBoomFont.HiBoomManager", 2, "onHiBoomAuthResult errorCode = " + paramInt);
     }
-    localaqrv.a(str);
-    localaqrv.b("default_file");
-    localaqrv.c("0MB");
-    localaqrv.d("resdrawable://2130844389");
-    return localaqrv.a();
+    Context localContext = (Context)this.a.get();
+    if ((paramInt != 0) && (localContext != null)) {
+      auen.a(localContext, paramArrayOfByte, 0);
+    }
   }
 }
 

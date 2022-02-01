@@ -1,23 +1,7 @@
-import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
 
-class pss
-  implements pgb
-{
-  pss(psr parampsr) {}
-  
-  public void l()
-  {
-    if (!psv.b())
-    {
-      QLog.d("FeedsPreloadManager", 1, "foreground, feeds preload.");
-      this.a.a(false);
-      return;
-    }
-    QLog.d("FeedsPreloadManager", 1, "lock screen enter foreground, no need to preload.");
-  }
-  
-  public void m() {}
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/imageopt/RIJSharpPDecoder$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pss {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

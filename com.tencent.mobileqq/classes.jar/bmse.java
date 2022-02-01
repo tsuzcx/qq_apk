@@ -1,36 +1,43 @@
-import QzoneCombine.ClientOnlineNotfiyReq;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import dov.com.qq.im.capture.data.LockedCategory;
 
-public class bmse
-  extends QzoneExternalRequest
+class bmse
+  implements DialogInterface.OnClickListener
 {
-  ClientOnlineNotfiyReq a;
+  bmse(bmsd parambmsd, Context paramContext) {}
   
-  public bmse(long paramLong, byte[] paramArrayOfByte)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.needCompress = false;
-    this.a = new ClientOnlineNotfiyReq(paramArrayOfByte, paramLong);
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService." + uniKey();
-  }
-  
-  public byte[] getEncodedUniParameter()
-  {
-    return bmah.a(this.a);
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "MqqOnlineNtf";
+    this.jdField_a_of_type_Bmsd.b(this.jdField_a_of_type_Bmsd.a.a);
+    this.jdField_a_of_type_Bmsd.a = null;
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_Bmsd.c = true;
+      if ((BaseActivity.sTopActivity instanceof SplashActivity))
+      {
+        paramDialogInterface = (SplashActivity)BaseActivity.sTopActivity;
+        Intent localIntent = new Intent();
+        localIntent.putExtra("main_tab_id", 8);
+        localIntent.putExtra("fragment_id", 1);
+        localIntent.putExtra("switch_anim", true);
+        paramDialogInterface.b(localIntent);
+      }
+    }
+    else
+    {
+      return;
+    }
+    paramDialogInterface = new Intent(BaseActivity.sTopActivity, SplashActivity.class);
+    paramDialogInterface.putExtra("tab_index", MainFragment.b);
+    paramDialogInterface.putExtra("fragment_id", 1);
+    paramDialogInterface.setFlags(67108864);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
   }
 }
 

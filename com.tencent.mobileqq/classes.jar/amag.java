@@ -1,67 +1,14 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.widget.Scroller;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class amag
-  implements GestureDetector.OnGestureListener
+  implements DialogInterface.OnClickListener
 {
-  amag(amaf paramamaf) {}
+  amag(amad paramamad) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    amaf.a(this.a).forceFinished(true);
-    return true;
-  }
-  
-  public boolean onFling(MotionEvent arg1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    synchronized (this.a)
-    {
-      amaf.a(this.a).fling((int)amaf.a(this.a), 0, (int)-paramFloat1, 0, (int)amaf.b(this.a), (int)amaf.c(this.a), 0, 0);
-      amaf.b(this.a);
-      return true;
-    }
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent arg1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    do
-    {
-      synchronized (this.a)
-      {
-        amaf.a(this.a, amaf.a(this.a) + paramFloat1);
-        if (amaf.a(this.a) < amaf.b(this.a)) {
-          amaf.a(this.a, amaf.b(this.a));
-        }
-        if (amaf.a(this.a) > amaf.c(this.a)) {
-          amaf.a(this.a, amaf.c(this.a));
-        }
-        paramFloat1 = amaf.a(this.a);
-        paramFloat2 = amaf.d(this.a);
-        amaf.b(this.a, amaf.a(this.a));
-        if (amaf.a(this.a, paramFloat1 - paramFloat2, 0.0F)) {
-          return true;
-        }
-      }
-      amaf.a(this.a);
-      if (amaf.a(this.a) != null) {
-        amaf.a(this.a).a(amaf.a(this.a), amaf.b(this.a));
-      }
-      if (amaf.a(this.a) != null) {
-        amaf.a(this.a).invalidate();
-      }
-    } while (amaf.a(this.a) == null);
-    amaf.a(this.a).a(amaf.a(this.a), -amaf.a(this.a), amaf.e(this.a) - amaf.a(this.a));
-    return true;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
+    amad.a(this.a);
   }
 }
 

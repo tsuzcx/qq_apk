@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import qno;
+import qtr;
 
 public class ComponentWhiteSpace
   extends ComponentDivider
@@ -31,7 +31,7 @@ public class ComponentWhiteSpace
   
   public void a(Context paramContext)
   {
-    setBackgroundResource(2131166876);
+    setBackgroundResource(2131166895);
   }
   
   public void b()

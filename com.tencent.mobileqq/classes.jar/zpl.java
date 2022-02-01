@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
-public class zpl
+class zpl
+  extends bgod
 {
-  public static void a(QQAppInterface paramQQAppInterface)
+  zpl(zpf paramzpf, Bundle paramBundle) {}
+  
+  public void onDone(bgoe parambgoe)
   {
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      return;
-      paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
-    } while (paramQQAppInterface == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("StoryAIOUtils", 2, "refreshAIOStoryMessages");
-    }
-    paramQQAppInterface.removeMessages(267387141);
-    paramQQAppInterface.sendMessageDelayed(paramQQAppInterface.obtainMessage(267387141), 500L);
+    this.jdField_a_of_type_AndroidOsBundle.putBoolean("down", true);
+    this.jdField_a_of_type_Zpf.a.a(86, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

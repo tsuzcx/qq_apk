@@ -1,10 +1,15 @@
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface avwz
+class avwz
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, String paramString);
+  avwz(avwv paramavwv) {}
   
-  public abstract void a(FaceDetectForThirdPartyManager.AppConf paramAppConf);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

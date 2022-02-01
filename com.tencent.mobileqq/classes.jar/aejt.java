@@ -1,16 +1,16 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
 
-class aejt
-  implements View.OnLongClickListener
+public class aejt
+  implements DialogInterface.OnDismissListener
 {
-  aejt(aejr paramaejr) {}
+  public aejt(TranslucentTRansferFragment paramTranslucentTRansferFragment) {}
   
-  public boolean onLongClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return this.a.a.a.b.performLongClick();
+    this.a.getActivity().finish();
   }
 }
 

@@ -1,23 +1,90 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.29.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-public class sfh
-  implements sga
+class sfh
+  extends sfj
 {
-  sfh(sel paramsel) {}
+  private final float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private final ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
+  private sfk jdField_a_of_type_Sfk;
+  private int b;
   
-  public void onClick(View paramView)
+  public sfh(float paramFloat)
   {
-    pmz localpmz = (pmz)paramView.getTag();
-    BaseArticleInfo localBaseArticleInfo = this.a.b(localpmz.jdField_a_of_type_Int);
-    if (localBaseArticleInfo == null) {
-      return;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.b = 500;
+    this.jdField_a_of_type_Sfk = new sfk((int)paramFloat);
+    a(this.jdField_a_of_type_Sfk);
+  }
+  
+  private void c()
+  {
+    int i = (int)(Math.sqrt(this.jdField_a_of_type_Sfk.a) * this.jdField_a_of_type_Float);
+    if (i > 0) {
+      this.b = i;
     }
-    this.a.a(localpmz.jdField_a_of_type_Rwc, localBaseArticleInfo, true);
-    ThreadManager.executeOnSubThread(new ReadInJoyBaseAdapter.29.1(this, localBaseArticleInfo));
-    pms.a(paramView);
+  }
+  
+  public long a(long paramLong)
+  {
+    long l2 = 0L;
+    double d = Math.sqrt(paramLong);
+    long l1;
+    while ((this.jdField_a_of_type_Int + d > this.b) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    {
+      l1 = ((Long)this.jdField_a_of_type_JavaUtilArrayList.remove(0)).longValue();
+      this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int - Math.sqrt(l1)));
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
+    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int + d));
+    int i = this.b / 2;
+    Object localObject = (List)this.jdField_a_of_type_JavaUtilArrayList.clone();
+    Collections.sort((List)localObject);
+    Long localLong;
+    if (this.jdField_a_of_type_Int > i)
+    {
+      localObject = ((List)localObject).iterator();
+      l1 = 0L;
+      do
+      {
+        paramLong = l2;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        localLong = (Long)((Iterator)localObject).next();
+        paramLong = (l1 + Math.sqrt(localLong.longValue()));
+        l1 = paramLong;
+      } while (paramLong <= i);
+    }
+    for (paramLong = localLong.longValue();; paramLong = ((Long)((List)localObject).get(((List)localObject).size() - 1)).longValue())
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Float) {
+        c();
+      }
+      return paramLong;
+    }
+  }
+  
+  public void a()
+  {
+    c();
+    super.a();
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public String toString()
+  {
+    return "ExoPredictor(" + this.b + ')';
   }
 }
 

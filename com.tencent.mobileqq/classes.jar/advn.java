@@ -1,89 +1,144 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class advn
-  implements CompoundButton.OnCheckedChangeListener
+  extends anau
 {
-  public advn(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public advn(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(int paramInt, String paramString)
   {
-    if (AssistantSettingActivity.a(this.a))
+    PhoneUnityBindInfoActivity.a(this.a).setOnCheckedChangeListener(null);
+    if (paramInt != 0) {
+      if (paramInt == 39)
+      {
+        bfur.a(this.a, 230, this.a.getString(2131694363), this.a.getString(2131694366), null, this.a.getString(2131691879), new advo(this), null).show();
+        PhoneUnityBindInfoActivity.a(this.a).a = false;
+        PhoneUnityBindInfoActivity.a(this.a).setChecked(false);
+        bcef.b(this.a.app, "dc00898", "", "", "0X800B320", "0X800B320", 0, 0, "", "", "", "");
+      }
+    }
+    for (;;)
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      PhoneUnityBindInfoActivity.a(this.a).setOnCheckedChangeListener(this.a);
+      return;
+      String str = paramString;
+      if (TextUtils.isEmpty(paramString)) {
+        str = this.a.getString(2131694346);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SecSvcObserver", 4, "bindPhoneNumLogin fail retCode: " + paramInt);
+      }
+      QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
+      break;
+      PhoneUnityBindInfoActivity.a(this.a).a = true;
+      PhoneUnityBindInfoActivity.a(this.a).setChecked(true);
+      bcef.b(this.a.app, "dc00898", "", "", "0X800B31E", "0X800B31E", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (this.a.isFinishing()) {
       return;
     }
-    if (!bhnv.g(this.a))
+    QLog.i("SecSvcObserver", 1, "onGetPhoneUnityInfo, success=" + paramBoolean);
+    if (paramBoolean)
     {
-      QQToast.a(BaseApplication.getContext(), 1, 2131694009, 0).b(this.a.getTitleBarHeight());
-      localObject = this.a.e;
-      if (!paramBoolean) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ((FormMultiLineSwitchItem)localObject).setChecked(bool);
+      bjnw localbjnw = this.a.a;
+      if (localbjnw != null) {
+        localbjnw.dismiss();
+      }
+    }
+    for (;;)
+    {
+      PhoneUnityBindInfoActivity.a(this.a, paramBoolean, paramBundle);
+      return;
+      PhoneUnityBindInfoActivity.a(this.a, 2131694263);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    boolean bool = true;
+    PhoneUnityBindInfoActivity.b(this.a).setOnCheckedChangeListener(null);
+    if (paramBoolean2)
+    {
+      PhoneUnityBindInfoActivity.b(this.a).setChecked(paramBoolean1);
+      PhoneUnityBindInfoActivity.a(this.a).c = paramBoolean1;
+      PhoneUnityBindInfoActivity.a(this.a).b = paramBoolean1;
+      if (paramBoolean1) {
+        bcef.b(this.a.app, "dc00898", "", "", "0X800B31A", "0X800B31A", 0, 0, "", "", "", "");
+      }
+      PhoneUnityBindInfoActivity.b(this.a).setOnCheckedChangeListener(this.a);
+      return;
+    }
+    Object localObject = PhoneUnityBindInfoActivity.b(this.a);
+    if (!paramBoolean1)
+    {
+      paramBoolean2 = true;
+      label114:
+      ((FormSwitchItem)localObject).setChecked(paramBoolean2);
+      localObject = PhoneUnityBindInfoActivity.a(this.a);
+      if (paramBoolean1) {
+        break label183;
+      }
+    }
+    label183:
+    for (paramBoolean2 = bool;; paramBoolean2 = false)
+    {
+      ((aihq)localObject).b = paramBoolean2;
+      if (!paramBoolean1) {
         break;
       }
-    }
-    Object localObject = arms.c();
-    label131:
-    label212:
-    label233:
-    QQAppInterface localQQAppInterface;
-    if ((paramBoolean) && (((armr)localObject).a <= 1))
-    {
-      if (!biik.a(this.a.app, "have_show_ptt_tip", false))
-      {
-        QLog.e("vip_ptt.AssistantSettingActivity", 1, "open the ptt check box and tip to user");
-        AssistantSettingActivity.a(this.a);
-      }
-      if ((!paramBoolean) && (((armr)localObject).a <= 1)) {
-        biik.b(this.a.app, "have_add_ptt_gray_msg", false);
-      }
-      AssistantSettingActivity.a(this.a, paramBoolean);
-      ((anum)this.a.app.a(2)).p(paramBoolean);
-      if (!paramBoolean) {
-        break label322;
-      }
-      bdll.b(null, "dc00898", "", "", "0X8009DF4", "0X8009DF4", 1, 0, "", "", "", "");
-      localObject = "normal";
-      if (!VipUtils.c(this.a.app)) {
-        break label349;
-      }
-      localObject = "vip";
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label369;
-      }
-    }
-    label322:
-    label349:
-    label369:
-    for (int i = 1;; i = 2)
-    {
-      bdll.b(localQQAppInterface, "dc00898", "", "", "", "0X800A415", i, 0, "", "", "", (String)localObject);
+      bcef.b(this.a.app, "dc00898", "", "", "0X800B31B", "0X800B31B", 0, 0, "", "", "", "");
       break;
-      if ((!paramBoolean) || (VipUtils.b(this.a.app))) {
-        break label131;
+      paramBoolean2 = false;
+      break label114;
+    }
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    super.b(paramInt, paramString);
+    PhoneUnityBindInfoActivity.a(this.a).setOnCheckedChangeListener(null);
+    PhoneUnityBindInfoActivity.a(this.a);
+    if (paramInt == 0)
+    {
+      PhoneUnityBindInfoActivity.a(this.a).setChecked(false);
+      PhoneUnityBindInfoActivity.a(this.a).a = false;
+      bcef.b(this.a.app, "dc00898", "", "", "0X800B31F", "0X800B31F", 0, 0, "", "", "", "");
+      PhoneUnityBindInfoActivity.a(this.a).setOnCheckedChangeListener(this.a);
+      PhoneUnityBindInfoActivity.c(this.a);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneUnityBindInfoActivity", 2, "UnbindPhoneNumLogin error " + paramInt + " errMsg: " + paramString);
+    }
+    if (!PhoneUnityBindInfoActivity.a(this.a))
+    {
+      if (paramInt != 36) {
+        break label220;
       }
-      QLog.e("vip_ptt.AssistantSettingActivity", 1, "open the ptt check box but u r not svip");
-      AssistantSettingActivity.b(this.a);
-      this.a.e.setChecked(false);
+      PhoneUnityBindInfoActivity.b(this.a);
+    }
+    for (;;)
+    {
+      PhoneUnityBindInfoActivity.a(this.a).setChecked(true);
+      PhoneUnityBindInfoActivity.a(this.a).a = true;
+      bcef.b(this.a.app, "dc00898", "", "", "0X800B321", "0X800B321", 0, 0, "", "", "", "");
       break;
-      bdll.b(null, "dc00898", "", "", "0X8009DF4", "0X8009DF4", 2, 0, "", "", "", "");
-      break label212;
-      if (!VipUtils.b(this.a.app)) {
-        break label233;
+      label220:
+      String str = paramString;
+      if (TextUtils.isEmpty(paramString)) {
+        str = this.a.getString(2131694361);
       }
-      localObject = "svip";
-      break label233;
+      QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
     }
   }
 }

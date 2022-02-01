@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MotionEvent;
-import atzt;
+import asmd;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -20,22 +20,23 @@ import java.util.List;
 public class FileSearchDetailActivity
   extends IphoneTitleBarActivity
 {
-  static atzt a;
-  atzt b;
+  static asmd a;
+  asmd b;
   
-  public static void a(Context paramContext, String paramString, atzt paramatzt)
+  public static void a(Context paramContext, String paramString, asmd paramasmd)
   {
-    a = paramatzt;
-    paramatzt = new Intent(paramContext, FileSearchDetailActivity.class);
-    paramatzt.putExtra("keyword", paramString);
-    paramContext.startActivity(paramatzt);
+    a = paramasmd;
+    paramasmd = new Intent(paramContext, FileSearchDetailActivity.class);
+    paramasmd.putExtra("keyword", paramString);
+    paramContext.startActivity(paramasmd);
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -59,12 +60,12 @@ public class FileSearchDetailActivity
         }
       }
     }
-    super.setContentView(2131558928);
+    super.setContentView(2131558936);
     super.setTitle(((FileManagerEntity)this.b.a.get(0)).fileName);
     Object localObject = getSupportFragmentManager();
     paramBundle = FileSearchDetailFragment.a(getIntent().getStringExtra("keyword"), this.b);
     localObject = ((FragmentManager)localObject).beginTransaction();
-    ((FragmentTransaction)localObject).replace(2131365060, paramBundle);
+    ((FragmentTransaction)localObject).replace(2131365087, paramBundle);
     ((FragmentTransaction)localObject).commit();
     return true;
   }
@@ -78,7 +79,7 @@ public class FileSearchDetailActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.FileSearchDetailActivity
  * JD-Core Version:    0.7.0.1
  */

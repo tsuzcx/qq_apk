@@ -1,17 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class awlp
+  implements DialogInterface.OnClickListener
 {
-  public static String a = new File(BaseApplicationImpl.getApplication().getFilesDir(), "ListenTogether_v828").getAbsolutePath();
+  public awlp(GameRoomInviteActivity paramGameRoomInviteActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  static
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (bhjr.a())
-    {
-      a = new File(antf.ba, "ListenTogether_v828").getAbsolutePath();
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

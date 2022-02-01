@@ -1,19 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class aetl
-  implements View.OnTouchListener
+  implements bhjm
 {
-  public aetl(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  public aetl(VisitorsActivity paramVisitorsActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    return false;
+    this.a.a(paramInt2);
   }
 }
 

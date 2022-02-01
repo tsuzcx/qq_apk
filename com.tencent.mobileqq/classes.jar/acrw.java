@@ -1,16 +1,25 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class acrw
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  public acrw(AssistantSettingActivity paramAssistantSettingActivity, aqwg paramaqwg) {}
   
-  public acrw(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    this.jdField_a_of_type_Aqwg.a(paramBoolean);
+    if (!paramBoolean) {
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081DD", "0X80081DD", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081F1", "0X80081F1", 0, 0, "", "", "", "");
+    }
   }
 }
 

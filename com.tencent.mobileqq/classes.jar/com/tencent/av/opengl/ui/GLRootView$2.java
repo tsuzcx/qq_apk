@@ -1,6 +1,6 @@
 package com.tencent.av.opengl.ui;
 
-import lsk;
+import lrs;
 
 class GLRootView$2
   implements Runnable
@@ -9,7 +9,7 @@ class GLRootView$2
   
   public void run()
   {
-    ((lsk)this.this$0.a).k();
+    ((lrs)this.this$0.a).k();
   }
 }
 

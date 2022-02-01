@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.store;
 
-import anjn;
+import ameh;
 import com.tencent.mobileqq.apollo.ApolloEngine;
 import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.mobileqq.apollo.ApolloTextureView;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.apollo.ApolloTextureView;
 public class ApolloVoiceDIYHelper$1
   implements Runnable
 {
-  public ApolloVoiceDIYHelper$1(anjn paramanjn, ApolloTextureView paramApolloTextureView, double paramDouble) {}
+  public ApolloVoiceDIYHelper$1(ameh paramameh, ApolloTextureView paramApolloTextureView, double paramDouble) {}
   
   public void run()
   {

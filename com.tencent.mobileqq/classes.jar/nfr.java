@@ -1,25 +1,16 @@
-import com.tencent.avgame.qav.AVGameCameraAssistant;
-import com.tencent.avgame.qav.AVGameCameraAssistant.3;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
 
-public class nfr
-  extends mxr
+public abstract interface nfr
 {
-  public nfr(AVGameCameraAssistant.3 param3) {}
+  public abstract void a(TPAudioFrameBuffer paramTPAudioFrameBuffer);
   
-  public void a(int paramInt, boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameCameraAssistant", 2, "notifyEvent, id[" + paramInt + "], result[" + paramBoolean + "]");
-    }
-    if ((paramInt == 1) && (paramBoolean))
-    {
-      if (AVGameCameraAssistant.a(this.a.this$0) != null) {
-        AVGameCameraAssistant.a(this.a.this$0).g();
-      }
-      AVGameCameraAssistant.a(this.a.this$0);
-    }
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void c(String paramString);
+  
+  public abstract void d(String paramString);
 }
 
 

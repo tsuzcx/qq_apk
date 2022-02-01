@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import aquy;
-import aqva;
+import apoh;
+import apoj;
 import com.tencent.common.app.BaseApplicationImpl;
 
 class GameActivity$26
-  implements aqva
+  implements apoj
 {
   GameActivity$26(GameActivity paramGameActivity) {}
   
   public void onServiceSyncSucc(boolean paramBoolean)
   {
-    aquy.a(BaseApplicationImpl.getContext(), 2, false);
+    apoh.a(BaseApplicationImpl.getContext(), 2, false);
   }
 }
 

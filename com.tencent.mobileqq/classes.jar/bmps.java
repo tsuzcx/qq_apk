@@ -1,24 +1,17 @@
-import android.text.TextUtils;
-import cooperation.qqreader.host.webview.ReaderBaseWebViewPlugin;
-import cooperation.qqreader.proxy.ReaderJsCallback;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.weseevideo.camera.mvauto.redo.CutModelKt;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
 
-class bmps
-  implements ReaderJsCallback
+public class bmps
+  implements View.OnLongClickListener
 {
-  bmps(bmpr parambmpr) {}
+  public bmps(VideoTrackContainerView paramVideoTrackContainerView, CutModelKt paramCutModelKt) {}
   
-  public void onCallback(String paramString1, String paramString2)
+  public boolean onLongClick(View paramView)
   {
-    if (!TextUtils.isEmpty(paramString1)) {
-      bmpr.a(this.a, paramString1, new String[] { paramString2 });
-    }
-  }
-  
-  public void onInitPluginCallBack(ReaderBaseWebViewPlugin paramReaderBaseWebViewPlugin)
-  {
-    if (paramReaderBaseWebViewPlugin != null) {
-      paramReaderBaseWebViewPlugin.init(this.a.mRuntime, bmpr.a(this.a));
-    }
+    VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).a(this.jdField_a_of_type_ComTencentWeseevideoCameraMvautoRedoCutModelKt);
+    return true;
   }
 }
 

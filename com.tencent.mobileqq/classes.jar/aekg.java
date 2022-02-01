@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
-class aekg
-  implements DialogInterface.OnClickListener
+public class aekg
+  extends MqqHandler
 {
-  aekg(aeke paramaeke) {}
+  public aekg(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.a();
-    DevlockQuickLoginActivity.c(this.a.a);
-    DevlockQuickLoginActivity.c(this.a.a, 0, 2130772001);
+    if (!this.a.app.isLogin()) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.c();
+      return;
+    }
+    this.a.c();
   }
 }
 

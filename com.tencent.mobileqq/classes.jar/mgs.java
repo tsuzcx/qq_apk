@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
 
-public class mgs
-  implements DialogInterface.OnClickListener
+class mgs
+  implements View.OnLayoutChangeListener
 {
-  public mgs(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  mgs(mgr parammgr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    mru.e(false, false);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if (paramInt4 - paramInt2 != paramInt8 - paramInt6) {
+      this.a.notifyDataSetChanged();
     }
   }
 }

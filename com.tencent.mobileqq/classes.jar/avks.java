@@ -1,26 +1,125 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.util.DisplayMetrics;
+import com.tencent.qphone.base.util.QLog;
 
 public class avks
-  extends GestureDetector.SimpleOnGestureListener
+  extends Drawable
+  implements avkr
 {
-  public avks(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private avku jdField_a_of_type_Avku;
+  private avld jdField_a_of_type_Avld;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  private avks(avku paramavku, Resources paramResources)
   {
-    this.a.d();
-    return super.onDoubleTap(paramMotionEvent);
+    this.jdField_a_of_type_Avku = paramavku;
+    if (paramResources != null) {}
+    for (this.jdField_a_of_type_Int = paramResources.getDisplayMetrics().densityDpi;; this.jdField_a_of_type_Int = paramavku.d)
+    {
+      a();
+      return;
+    }
   }
   
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  public avks(avlf paramavlf, Resources paramResources)
   {
-    return super.onDoubleTapEvent(paramMotionEvent);
+    this(new avku(paramavlf), paramResources);
   }
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  private void a()
   {
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    if (QLog.isColorLevel()) {
+      QLog.d("PngFrameDrawable", 2, "func initGifEngine");
+    }
+    avle localavle = new avle();
+    localavle.jdField_a_of_type_Avkr = this;
+    localavle.jdField_a_of_type_Int = this.jdField_a_of_type_Avku.jdField_b_of_type_Int;
+    localavle.jdField_b_of_type_Int = this.jdField_a_of_type_Avku.jdField_a_of_type_Int;
+    if (!this.jdField_a_of_type_Avku.jdField_a_of_type_Boolean) {}
+    for (localavle.jdField_a_of_type_ArrayOfJavaLangString = null;; localavle.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_Avku.jdField_a_of_type_ArrayOfJavaLangString)
+    {
+      this.jdField_a_of_type_Avld = new avld();
+      this.jdField_a_of_type_Avld.a(localavle);
+      return;
+    }
+  }
+  
+  public Bitmap a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Avld == null) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Avku.jdField_b_of_type_ArrayOfJavaLangString != null) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_Avku.jdField_b_of_type_ArrayOfJavaLangString.length)) {
+      this.jdField_a_of_type_Avld.a(this.jdField_a_of_type_Avku.jdField_b_of_type_ArrayOfJavaLangString[paramInt]);
+    }
+    this.jdField_a_of_type_Avld.a();
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PngFrameDrawable", 2, "func onBitmapReady,bitmap:" + paramBitmap);
+    }
+    if (paramBitmap == null) {
+      return;
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    }
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    invalidateSelf();
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled());
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PngFrameDrawable", 2, "func draw,bitmap:" + this.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, getBounds(), this.jdField_a_of_type_Avku.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+  }
+  
+  public Drawable.ConstantState getConstantState()
+  {
+    return this.jdField_a_of_type_Avku;
+  }
+  
+  public int getOpacity()
+  {
+    return 0;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (paramInt != this.jdField_a_of_type_Avku.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    {
+      this.jdField_a_of_type_Avku.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      invalidateSelf();
+    }
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.jdField_a_of_type_Avku.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    invalidateSelf();
   }
 }
 

@@ -1,14 +1,36 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import android.content.Context;
+import com.idlefish.flutterboost.interfaces.INativeRouter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public abstract interface atjq
+public class atjq
+  implements INativeRouter
 {
-  public abstract String a(FileInfo paramFileInfo);
+  private static atjq a;
   
-  public abstract void a(FileInfo paramFileInfo, boolean paramBoolean);
+  public static atjq a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new atjq();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public void openContainer(Context paramContext, String paramString, Map<String, Object> paramMap1, int paramInt, Map<String, Object> paramMap2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.router", 2, String.format("openContainer: %s", new Object[] { paramString }));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atjq
  * JD-Core Version:    0.7.0.1
  */

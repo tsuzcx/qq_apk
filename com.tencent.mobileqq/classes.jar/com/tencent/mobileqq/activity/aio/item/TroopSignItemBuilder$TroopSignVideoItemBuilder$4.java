@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahwi;
-import ahwo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import agsw;
+import agtc;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
 
 public class TroopSignItemBuilder$TroopSignVideoItemBuilder$4
   implements Runnable
 {
-  public TroopSignItemBuilder$TroopSignVideoItemBuilder$4(ahwi paramahwi, ahwo paramahwo) {}
+  public TroopSignItemBuilder$TroopSignVideoItemBuilder$4(agsw paramagsw, agtc paramagtc) {}
   
   public void run()
   {
-    if ((this.this$0.a != null) && (!this.this$0.a.al)) {
+    if ((this.this$0.a != null) && (!this.this$0.a.u)) {
       this.a.a.m();
     }
   }

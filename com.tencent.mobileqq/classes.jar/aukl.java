@@ -1,29 +1,15 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.3;
+import android.graphics.ColorMatrixColorFilter;
+import com.tencent.mobileqq.identification.IdentificationPoseReflect.3.1;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYTReflectListener;
 
 public class aukl
-  implements auub
+  implements YtSDKKitFramework.IYTReflectListener
 {
-  public aukl(SimpleFileViewer.3 param3, QQAppInterface paramQQAppInterface) {}
+  aukl(aukk paramaukk) {}
   
-  public void a(int paramInt)
+  public void onReflectEvent(ColorMatrixColorFilter paramColorMatrixColorFilter)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      beaj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.a, new aukm(this));
-      return;
-    }
-    SimpleFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.a);
-  }
-  
-  public void a(ImageView paramImageView)
-  {
-    SimpleFileViewer.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0, paramImageView);
+    aukk.a(this.a, new IdentificationPoseReflect.3.1(this, paramColorMatrixColorFilter));
   }
 }
 

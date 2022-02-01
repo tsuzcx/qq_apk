@@ -1,45 +1,58 @@
-import ProfileLogic.QC.setUserProfileRsp;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseArray;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class aqns
-  extends aogx
 {
-  public aqns(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  private final SparseArray<BlockingQueue<aqoa>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private aqoj jdField_a_of_type_Aqoj;
+  private final BlockingQueue<aqoa> jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
   
-  public void e(boolean paramBoolean, Object paramObject)
+  public aqns(aqoj paramaqoj)
   {
-    if ((paramBoolean) && ((paramObject instanceof setUserProfileRsp)))
-    {
-      i = ((setUserProfileRsp)paramObject).ret;
-      if (QLog.isColorLevel()) {
-        QLog.d("qqBaseActivity", 2, "mSvipObserver: [setUserProfileRsp] ret=" + i);
-      }
-      if (i == 0)
-      {
-        if (this.a.app != null)
-        {
-          paramObject = new ProfileActivity.AllInOne(this.a.app.getCurrentAccountUin(), 0);
-          paramObject.g = 1;
-          paramObject.h = 8;
-          ProfileActivity.b(this.a, paramObject);
-          QQToast.a(this.a, 0, 2131718981, 0).a();
-        }
-        this.a.finish();
-      }
+    this.jdField_a_of_type_Aqoj = paramaqoj;
+  }
+  
+  protected int a()
+  {
+    return 300;
+  }
+  
+  public aqoa a(int paramInt, Object paramObject)
+  {
+    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = localBlockingQueue;
+    if (localBlockingQueue == null) {
+      localObject = new LinkedBlockingQueue();
     }
-    while (!"profilelogic.setUserProfile".equals(paramObject))
+    localObject = (aqoa)((BlockingQueue)localObject).poll();
+    if (localObject == null)
     {
-      int i;
-      return;
-      QQToast.a(this.a, 1, 2131718978, 0).a();
-      return;
+      localObject = this.jdField_a_of_type_Aqoj.a(paramInt);
+      aqqb.a("DanmakuFactory", new Object[] { localObject, " is created " });
     }
-    QQToast.a(this.a, 1, 2131718978, 0).a();
+    for (;;)
+    {
+      ((aqoa)localObject).e();
+      ((aqoa)localObject).a(paramObject);
+      return localObject;
+      aqqb.a("DanmakuFactory", new Object[] { localObject, " is reused " });
+    }
+  }
+  
+  public void a(aqoa paramaqoa)
+  {
+    int i = paramaqoa.a();
+    BlockingQueue localBlockingQueue = (BlockingQueue)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+    Object localObject = localBlockingQueue;
+    if (localBlockingQueue == null)
+    {
+      localObject = new LinkedBlockingQueue();
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localObject);
+    }
+    if (a() > ((BlockingQueue)localObject).size()) {
+      ((BlockingQueue)localObject).add(paramaqoa);
+    }
   }
 }
 

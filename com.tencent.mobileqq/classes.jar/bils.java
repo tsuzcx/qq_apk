@@ -1,17 +1,55 @@
-class bils
+import android.annotation.TargetApi;
+import android.media.MediaCodec;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaFormat;
+import android.view.Surface;
+
+@TargetApi(16)
+public class bils
+  extends bilp
 {
-  int jdField_a_of_type_Int;
-  char[] jdField_a_of_type_ArrayOfChar = new char[4];
+  private Surface a;
   
-  private void a(byte[] paramArrayOfByte)
+  protected String a()
   {
-    this.jdField_a_of_type_Int = bilq.a(paramArrayOfByte);
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfChar.length)
+    return "Q.qqstory.mediadecoderMediaCodecVideoRender";
+  }
+  
+  protected void a(MediaCodec paramMediaCodec, MediaCodec.BufferInfo paramBufferInfo)
+  {
+    boolean bool = true;
+    int i = paramMediaCodec.dequeueOutputBuffer(paramBufferInfo, 10000L);
+    switch (i)
     {
-      this.jdField_a_of_type_ArrayOfChar[i] = ((char)paramArrayOfByte[(i + 4)]);
-      i += 1;
+    default: 
+      if ((paramBufferInfo.flags & 0x4) != 0)
+      {
+        xvv.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "output EOS");
+        this.jdField_b_of_type_Boolean = true;
+      }
+      if (paramBufferInfo.size == 0) {
+        break;
+      }
     }
+    for (;;)
+    {
+      paramMediaCodec.releaseOutputBuffer(i, bool);
+      xvv.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "dequeueOutputBuffer render");
+      return;
+      xvv.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "INFO_OUTPUT_BUFFERS_CHANGED");
+      this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = paramMediaCodec.getOutputBuffers();
+      return;
+      xvv.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "New format " + this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat());
+      return;
+      xvv.b("Q.qqstory.mediadecoderMediaCodecVideoRender", "dequeueOutputBuffer timed out!");
+      return;
+      bool = false;
+    }
+  }
+  
+  protected void a(bilq parambilq, MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
+  {
+    paramMediaCodec.configure(paramMediaFormat, this.jdField_a_of_type_AndroidViewSurface, null, 0);
   }
 }
 

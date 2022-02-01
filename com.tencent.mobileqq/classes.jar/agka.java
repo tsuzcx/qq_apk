@@ -1,10 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.SystemClock;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForPokeEmo;
 
-final class agka
-  implements DialogInterface.OnClickListener
+class agka
+  implements bjoe
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  agka(agjz paramagjz, MessageForPokeEmo paramMessageForPokeEmo, bjnw parambjnw) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      long l;
+      do
+      {
+        return;
+        l = SystemClock.uptimeMillis();
+      } while (l - this.jdField_a_of_type_Agjz.c < 500L);
+      this.jdField_a_of_type_Agjz.c = l;
+      acvv.b(this.jdField_a_of_type_Agjz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agjz.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agjz.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPokeEmo.uniseq);
+    }
+  }
 }
 
 

@@ -1,27 +1,56 @@
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
-import com.tencent.qphone.base.util.QLog;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.RemoteException;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import java.util.HashMap;
 
-class awfb
-  extends bekg
+public class awfb
+  implements ServiceConnection
 {
-  awfb(awfa paramawfa) {}
+  public awfb(MusicPlayerActivity paramMusicPlayerActivity) {}
   
-  protected void a(boolean paramBoolean, bekj parambekj, int paramInt, String paramString)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if ((!paramBoolean) || (parambekj == null)) {}
-    do
+    MusicPlayerActivity.a(this.a, awea.a(paramIBinder));
+    try
     {
-      do
+      MusicPlayerActivity.a(this.a).a(MusicPlayerActivity.a(this.a));
+      paramComponentName = MusicPlayerActivity.a(this.a).a();
+      paramIBinder = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramComponentName, -1L);
+      if (paramComponentName != null)
       {
-        return;
-        QLog.i("WatchTogetherManager", 1, "onGetPlayState  groupuin = " + parambekj.e);
-      } while (!(parambekj instanceof WatchTogetherSession));
-      paramString = awfa.a(this.a, (WatchTogetherSession)parambekj);
-    } while (paramString == null);
-    this.a.b(parambekj.e, paramString);
-    paramInt = paramString.a;
-    this.a.a("100", paramInt, null);
+        String str = MusicPlayerActivity.a(this.a, paramComponentName);
+        if (MusicPlayerActivity.b().containsKey(str)) {
+          MusicPlayerActivity.a(this.a, (awfi)MusicPlayerActivity.b().get(str), paramIBinder);
+        }
+        for (;;)
+        {
+          int i = MusicPlayerActivity.a(this.a).a();
+          Message.obtain(MusicPlayerActivity.a(this.a), 50, i, 0).sendToTarget();
+          MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramComponentName.c, paramComponentName.h, paramComponentName.g, String.valueOf(paramComponentName.a), paramComponentName.d, MusicPlayerActivity.a(this.a).c());
+          return;
+          MusicPlayerActivity.a(this.a, paramComponentName.c, paramComponentName.h, paramComponentName.e, paramIBinder, false, false);
+        }
+      }
+      return;
+    }
+    catch (Exception paramComponentName) {}
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    paramComponentName = MusicPlayerActivity.a(this.a);
+    if (paramComponentName != null) {}
+    try
+    {
+      paramComponentName.b(MusicPlayerActivity.a(this.a));
+      return;
+    }
+    catch (RemoteException paramComponentName) {}
   }
 }
 

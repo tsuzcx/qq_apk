@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.forward;
 
 import android.widget.ImageView;
-import avan;
+import atnr;
 import com.tencent.image.URLDrawable;
 
 public class ForwardPreviewMixedMsgController$1
   implements Runnable
 {
-  public ForwardPreviewMixedMsgController$1(avan paramavan, ImageView paramImageView, URLDrawable paramURLDrawable) {}
+  public ForwardPreviewMixedMsgController$1(atnr paramatnr, ImageView paramImageView, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    avan.a(this.this$0);
+    atnr.a(this.this$0);
   }
 }
 

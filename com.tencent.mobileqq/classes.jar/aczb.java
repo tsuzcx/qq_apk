@@ -1,45 +1,32 @@
-import android.os.Build;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.util.Iterator;
+import java.util.List;
 
 public class aczb
+  implements bhnm
 {
-  public static void a(QQAppInterface paramQQAppInterface)
+  public aczb(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, asdg paramasdg) {}
+  
+  public void a(int paramInt)
   {
-    Object localObject = blhc.a("406d43");
-    int i;
-    HashMap localHashMap;
-    if ((!TextUtils.isEmpty(((blhe)localObject).a)) && (((blhe)localObject).a.startsWith("66666")))
+    if (paramInt == 2)
     {
-      i = 1;
-      boolean bool = Build.FINGERPRINT.contains("generic/vbox86tp/");
-      if ((i != 0) || (bool))
+      aszk.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131692493));
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        localHashMap = new HashMap();
-        if (i == 0) {
-          break label115;
-        }
-        localObject = "1";
-        label63:
-        localHashMap.put("imei_match", localObject);
-        if (!bool) {
-          break label121;
+        FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+        if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+          if (FileUtils.fileExistsAndNotEmpty(localFileManagerEntity.getFilePath())) {
+            this.jdField_a_of_type_Asdg.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
+          } else {
+            this.jdField_a_of_type_Asdg.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+          }
         }
       }
-    }
-    label115:
-    label121:
-    for (localObject = "1";; localObject = "0")
-    {
-      localHashMap.put("finger_print_match", localObject);
-      bdmc.a(BaseApplicationImpl.getContext()).a(paramQQAppInterface.getCurrentAccountUin(), "game_assist_vbox_stat", true, 0L, 0L, localHashMap, null);
-      return;
-      i = 0;
-      break;
-      localObject = "0";
-      break label63;
     }
   }
 }

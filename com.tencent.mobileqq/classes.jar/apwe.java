@@ -1,72 +1,53 @@
 import android.text.TextUtils;
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.ark.ModuleCallbackWrapper;
-import com.tencent.ark.ark.ModuleRegister;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class apwe
+  implements apts<String>
 {
-  public static long a(String paramString)
+  public HashMap<String, String> a = new HashMap();
+  
+  public void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (paramString.indexOf("com.tencent.", 0) == -1) {
-      return 1L;
+    if (TextUtils.isEmpty(paramString)) {
+      ArkAppCenter.c("ArkAIKeyWordSDKShareConfig", "onParse,fileOrRes is null");
     }
-    return 0L;
-  }
-  
-  private static QQAppInterface a()
-  {
-    return apxt.a();
-  }
-  
-  public static void a(ark.ModuleRegister paramModuleRegister, ark.Application paramApplication)
-  {
-    Object localObject1 = paramApplication.GetSpecific("appName");
-    if ((localObject1 != null) && (((String)localObject1).indexOf("com.tencent.", 0) == -1)) {}
-    for (long l = 1L;; l = 0L)
+    for (;;)
     {
-      Object localObject2 = a();
-      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (localObject2 != null))
+      return;
+      try
       {
-        localObject1 = (ArkAppCenter)((QQAppInterface)localObject2).getManager(121);
-        if (localObject1 == null) {}
-      }
-      for (localObject1 = ((ArkAppCenter)localObject1).a();; localObject1 = null)
-      {
-        localObject2 = new ArrayList();
-        ((List)localObject2).add(new apwn(paramApplication, l));
-        ((List)localObject2).add(new apuk(paramApplication, l));
-        ((List)localObject2).add(new apuy(paramApplication, l));
-        if (1 == BaseApplicationImpl.sProcessId) {
-          ((List)localObject2).add(new apxm(paramApplication, l));
-        }
-        if (l == 0L) {
-          ((List)localObject2).add(new apwg(paramApplication, l));
-        }
-        paramApplication = ((List)localObject2).iterator();
-        while (paramApplication.hasNext())
+        paramString = new JSONObject(paramString).optJSONArray("ark_ai_keyword_sdk_share_app_info");
+        if (paramString != null)
         {
-          localObject2 = (apvx)paramApplication.next();
-          if (localObject1 != null) {
-            ((apvx)localObject2).a((List)apzu.a.get(((apvx)localObject2).GetTypeName()));
+          int i = 0;
+          while (i < paramString.length())
+          {
+            Object localObject = (JSONObject)paramString.get(i);
+            String str = ((JSONObject)localObject).getString("appID");
+            localObject = ((JSONObject)localObject).getString("appName");
+            QLog.i("ArkAIKeyWordSDKShareConfig", 1, "onParse ark_ai_keyword_sdk_share_app_info id=" + str + ", name=" + (String)localObject);
+            this.a.put(str, localObject);
+            i += 1;
           }
-          paramModuleRegister.RegCallbackWrapper((ark.ModuleCallbackWrapper)localObject2);
         }
+        ArkAppCenter.c("ArkAIKeyWordSDKShareConfig", "getArkShareConfig,ark_ai_keyword_sdk_share_app_info is empty");
         return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("ArkAIKeyWordSDKShareConfig", 1, "onParse error e = ", paramString);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apwe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,7 @@
-import android.graphics.Bitmap;
-
-public abstract interface amax
+public class amax
 {
-  public abstract void a(Bitmap paramBitmap);
+  public int a;
+  public int b;
 }
 
 

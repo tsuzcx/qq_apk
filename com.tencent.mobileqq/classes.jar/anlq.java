@@ -1,6 +1,46 @@
-public abstract interface anlq
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.filemanager.data.FMTransC2CMsgInfo;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
+
+class anlq
+  implements abvz
 {
-  public abstract void a();
+  anlq(anlp paramanlp, String paramString, FMTransC2CMsgInfo paramFMTransC2CMsgInfo, int paramInt, byte[] paramArrayOfByte) {}
+  
+  public ToServiceMsg a()
+  {
+    ToServiceMsg localToServiceMsg = anlp.a(this.jdField_a_of_type_Anlp).createToServiceMsg("MessageSvc.PbSendMsg");
+    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putLong("msgsize", 0L);
+    localToServiceMsg.extraData.putLong("uniseq", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.uniseq);
+    localToServiceMsg.extraData.putInt("SEND_MSG_CMD_MSG_TYPE", 1);
+    localToServiceMsg.extraData.putString("uuid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.uuid);
+    localToServiceMsg.extraData.putByte("cmd", (byte)0);
+    localToServiceMsg.extraData.putByte("keyType", (byte)0);
+    localToServiceMsg.extraData.putInt("busiType", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.busiType);
+    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putLong("queueSeq", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.queueSeq);
+    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.sessionId);
+    localToServiceMsg.extraData.putInt("random", bblk.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgUid));
+    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgSeq));
+    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 13);
+    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_a_of_type_Int);
+    bbln localbbln = new bbln();
+    localbbln.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.subCmd;
+    localbbln.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    msg_svc.PbSendMsgReq localPbSendMsgReq = bblf.a(anlp.a(this.jdField_a_of_type_Anlp), 13, this.jdField_a_of_type_JavaLangString, localbbln, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgSeq, bblk.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.msgUid));
+    anlp.a(this.jdField_a_of_type_Anlp, localPbSendMsgReq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo);
+    anlp.a(this.jdField_a_of_type_Anlp, localPbSendMsgReq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo, localbbln);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.entity != null) {
+      localToServiceMsg.extraData.putLong("tmpSessionType", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.entity.tmpSessionType);
+    }
+    localToServiceMsg.putWupBuffer(localPbSendMsgReq.toByteArray());
+    localToServiceMsg.extraData.putLong(asdv.class.getName(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo.observerSeq);
+    return localToServiceMsg;
+  }
 }
 
 

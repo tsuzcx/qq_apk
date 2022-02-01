@@ -30,33 +30,33 @@ public class WsStickerEditView
 {
   String ADJUST_TIME_TEXT = "调整时长";
   int CLICK_DURATION = 200;
-  float DEFAULT_BORDER_STROKE_WIDTH = ViewUtils.dip2px(1.5F);
-  float OPERATION_BUTTON_SCALE = 0.5F;
-  float STICKER_CORNER_RADIUS = ViewUtils.dip2px(3.0F);
+  protected float DEFAULT_BORDER_STROKE_WIDTH = ViewUtils.dip2px(1.5F);
+  protected float OPERATION_BUTTON_SCALE = 0.5F;
+  protected float STICKER_CORNER_RADIUS = ViewUtils.dip2px(3.0F);
   private final String TAG = WsStickerEditView.class.getSimpleName();
   int TOUCH_SLOP = 16;
   private RectF adjustTimeBtnRect = new RectF();
   private Bitmap bmpAdjustTimeRange;
-  private Bitmap bmpDelete;
-  private Bitmap bmpEdit;
-  private Bitmap bmpZoom;
-  private Paint borderPaint = new Paint();
-  private Paint btnPaint = new Paint();
+  protected Bitmap bmpDelete;
+  protected Bitmap bmpEdit;
+  protected Bitmap bmpZoom;
+  protected Paint borderPaint = new Paint();
+  protected Paint btnPaint = new Paint();
   private int btnTextColor = Color.parseColor("#1E1E22");
   private Paint btnTextPaint = new Paint();
   private int clickPadding = ViewUtils.dip2px(5.0F);
-  private RectF deleteBtnRect = new RectF();
+  protected RectF deleteBtnRect = new RectF();
   private int drawMask = 63;
-  private RectF editBtnRect = new RectF();
+  protected RectF editBtnRect = new RectF();
   boolean isStickerSelected = false;
   private boolean isStickerTouching = false;
   private WsStickerEditView.OnBtnTouchListener onBtnTouchListener = null;
   private TAVStickerOperationMode operationMode = TAVStickerOperationMode.OP_NONE;
-  private RectF stickerBorderRect = new RectF();
+  protected RectF stickerBorderRect = new RectF();
   private WsStickerEditView.OnStickerEditButtonClickListener stickerEditButtonClickListener = null;
   private StickerEditViewIconConfig stickerEditViewIconConfig;
-  private Matrix stickerMatrix = new Matrix();
-  private RectF zoomBtnRect = new RectF();
+  protected Matrix stickerMatrix = new Matrix();
+  protected RectF zoomBtnRect = new RectF();
   
   public WsStickerEditView(Context paramContext, TAVSticker paramTAVSticker, StickerEditViewIconConfig paramStickerEditViewIconConfig)
   {
@@ -81,44 +81,6 @@ public class WsStickerEditView
       paramCanvas.drawBitmap(this.bmpAdjustTimeRange, (Rect)localObject, this.adjustTimeBtnRect, null);
     }
     paramCanvas.getMatrix().mapRect(this.adjustTimeBtnRect);
-    paramCanvas.restore();
-  }
-  
-  private void drawBorder(Canvas paramCanvas)
-  {
-    PointF[] arrayOfPointF = getOriginalVertexPoints();
-    if (arrayOfPointF == null) {}
-    while ((arrayOfPointF == null) || (arrayOfPointF.length < 4)) {
-      return;
-    }
-    paramCanvas.save();
-    this.stickerMatrix.reset();
-    this.stickerMatrix.postTranslate(this.centerX - this.originalCenterX, this.centerY - this.originalCenterY);
-    this.stickerMatrix.postRotate(getSticker().getRotate(), this.centerX, this.centerY);
-    this.stickerMatrix.postScale(getSticker().getScale(), getSticker().getScale(), this.centerX, this.centerY);
-    paramCanvas.concat(this.stickerMatrix);
-    this.stickerBorderRect.set(arrayOfPointF[0].x, arrayOfPointF[0].y, arrayOfPointF[2].x, arrayOfPointF[3].y);
-    updateBorderPaint();
-    paramCanvas.drawRoundRect(this.stickerBorderRect, this.STICKER_CORNER_RADIUS, this.STICKER_CORNER_RADIUS, this.borderPaint);
-    paramCanvas.restore();
-  }
-  
-  private void drawDeleteBtn(Canvas paramCanvas)
-  {
-    paramCanvas.save();
-    Object localObject = this.vertexPoints;
-    if ((localObject != null) && (localObject.length >= 4))
-    {
-      float f1 = localObject[0].x;
-      float f2 = localObject[0].y;
-      paramCanvas.rotate(getSticker().getRotate(), f1, f2);
-      paramCanvas.scale(this.OPERATION_BUTTON_SCALE, this.OPERATION_BUTTON_SCALE, f1, f2);
-      localObject = new Rect(0, 0, this.bmpDelete.getWidth(), this.bmpDelete.getHeight());
-      this.deleteBtnRect = new RectF(f1 - this.bmpDelete.getWidth(), f2 - this.bmpDelete.getHeight(), f1 + this.bmpDelete.getWidth(), f2 + this.bmpDelete.getHeight());
-      paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
-      paramCanvas.drawBitmap(this.bmpDelete, (Rect)localObject, this.deleteBtnRect, null);
-    }
-    paramCanvas.getMatrix().mapRect(this.deleteBtnRect);
     paramCanvas.restore();
   }
   
@@ -161,7 +123,85 @@ public class WsStickerEditView
     paramCanvas.restore();
   }
   
-  private void init()
+  private void initStickerEventListener()
+  {
+    super.setOnStickerEventListener(new WsStickerEditView.1(this));
+  }
+  
+  private boolean isTouchAdjustTimeBtn(int paramInt1, int paramInt2)
+  {
+    return (this.adjustTimeBtnRect.left < this.adjustTimeBtnRect.right) && (this.adjustTimeBtnRect.top < this.adjustTimeBtnRect.bottom) && (paramInt1 >= this.adjustTimeBtnRect.left - this.clickPadding) && (paramInt1 < this.adjustTimeBtnRect.right + this.clickPadding) && (paramInt2 >= this.adjustTimeBtnRect.top - this.clickPadding) && (paramInt2 < this.adjustTimeBtnRect.bottom + this.clickPadding);
+  }
+  
+  private boolean isTouchDeleteBtn(int paramInt1, int paramInt2)
+  {
+    return this.deleteBtnRect.contains(paramInt1, paramInt2);
+  }
+  
+  private boolean isTouchEditBtn(float paramFloat1, float paramFloat2)
+  {
+    return this.editBtnRect.contains(paramFloat1, paramFloat2);
+  }
+  
+  protected void dispatchDraw(Canvas paramCanvas)
+  {
+    super.dispatchDraw(paramCanvas);
+    if (paramCanvas != null)
+    {
+      if (StickerDrawingOperationMask.isDrawBorder(this.drawMask)) {
+        drawBorder(paramCanvas);
+      }
+      if ((StickerDrawingOperationMask.isDrawLeftTop(this.drawMask)) && (BitmapUtil.isValidBitmap(this.bmpDelete))) {
+        drawDeleteBtn(paramCanvas);
+      }
+      if ((StickerDrawingOperationMask.isDrawRightBottom(this.drawMask)) && (BitmapUtil.isValidBitmap(this.bmpZoom))) {
+        drawZoomBtn(paramCanvas);
+      }
+      if ((StickerDrawingOperationMask.isDrawLeftBottom(this.drawMask)) && (BitmapUtil.isValidBitmap(this.bmpAdjustTimeRange))) {
+        drawAdjustTimeBtn(paramCanvas);
+      }
+    }
+  }
+  
+  protected void drawBorder(Canvas paramCanvas)
+  {
+    PointF[] arrayOfPointF = getOriginalVertexPoints();
+    if (arrayOfPointF == null) {}
+    while ((arrayOfPointF == null) || (arrayOfPointF.length < 4)) {
+      return;
+    }
+    paramCanvas.save();
+    this.stickerMatrix.reset();
+    this.stickerMatrix.postTranslate(this.centerX - this.originalCenterX, this.centerY - this.originalCenterY);
+    this.stickerMatrix.postRotate(getSticker().getRotate(), this.centerX, this.centerY);
+    this.stickerMatrix.postScale(getSticker().getScale(), getSticker().getScale(), this.centerX, this.centerY);
+    paramCanvas.concat(this.stickerMatrix);
+    this.stickerBorderRect.set(arrayOfPointF[0].x, arrayOfPointF[0].y, arrayOfPointF[2].x, arrayOfPointF[3].y);
+    updateBorderPaint();
+    paramCanvas.drawRoundRect(this.stickerBorderRect, this.STICKER_CORNER_RADIUS, this.STICKER_CORNER_RADIUS, this.borderPaint);
+    paramCanvas.restore();
+  }
+  
+  protected void drawDeleteBtn(Canvas paramCanvas)
+  {
+    paramCanvas.save();
+    Object localObject = this.vertexPoints;
+    if ((localObject != null) && (localObject.length >= 4))
+    {
+      float f1 = localObject[0].x;
+      float f2 = localObject[0].y;
+      paramCanvas.rotate(getSticker().getRotate(), f1, f2);
+      paramCanvas.scale(this.OPERATION_BUTTON_SCALE, this.OPERATION_BUTTON_SCALE, f1, f2);
+      localObject = new Rect(0, 0, this.bmpDelete.getWidth(), this.bmpDelete.getHeight());
+      this.deleteBtnRect = new RectF(f1 - this.bmpDelete.getWidth(), f2 - this.bmpDelete.getHeight(), f1 + this.bmpDelete.getWidth(), f2 + this.bmpDelete.getHeight());
+      paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
+      paramCanvas.drawBitmap(this.bmpDelete, (Rect)localObject, this.deleteBtnRect, null);
+    }
+    paramCanvas.getMatrix().mapRect(this.deleteBtnRect);
+    paramCanvas.restore();
+  }
+  
+  protected void init()
   {
     if ((this.stickerEditViewIconConfig != null) && (this.stickerEditViewIconConfig.getDeleteIconResId() != -1)) {
       this.bmpDelete = BitmapFactory.decodeResource(getResources(), this.stickerEditViewIconConfig.getDeleteIconResId());
@@ -193,54 +233,6 @@ public class WsStickerEditView
     initStickerEventListener();
     if (getSticker().getMode() == TAVStickerMode.ACTIVE) {
       this.isStickerSelected = true;
-    }
-  }
-  
-  private void initStickerEventListener()
-  {
-    super.setOnStickerEventListener(new WsStickerEditView.1(this));
-  }
-  
-  private boolean isTouchAdjustTimeBtn(int paramInt1, int paramInt2)
-  {
-    return (this.adjustTimeBtnRect.left < this.adjustTimeBtnRect.right) && (this.adjustTimeBtnRect.top < this.adjustTimeBtnRect.bottom) && (paramInt1 >= this.adjustTimeBtnRect.left - this.clickPadding) && (paramInt1 < this.adjustTimeBtnRect.right + this.clickPadding) && (paramInt2 >= this.adjustTimeBtnRect.top - this.clickPadding) && (paramInt2 < this.adjustTimeBtnRect.bottom + this.clickPadding);
-  }
-  
-  private boolean isTouchDeleteBtn(int paramInt1, int paramInt2)
-  {
-    return this.deleteBtnRect.contains(paramInt1, paramInt2);
-  }
-  
-  private boolean isTouchEditBtn(float paramFloat1, float paramFloat2)
-  {
-    return this.editBtnRect.contains(paramFloat1, paramFloat2);
-  }
-  
-  private void updateBorderPaint()
-  {
-    float f = getSticker().getScale();
-    if (0.0F != f) {
-      this.borderPaint.setStrokeWidth(this.DEFAULT_BORDER_STROKE_WIDTH / f);
-    }
-  }
-  
-  protected void dispatchDraw(Canvas paramCanvas)
-  {
-    super.dispatchDraw(paramCanvas);
-    if (paramCanvas != null)
-    {
-      if (StickerDrawingOperationMask.isDrawBorder(this.drawMask)) {
-        drawBorder(paramCanvas);
-      }
-      if ((StickerDrawingOperationMask.isDrawLeftTop(this.drawMask)) && (BitmapUtil.isValidBitmap(this.bmpDelete))) {
-        drawDeleteBtn(paramCanvas);
-      }
-      if ((StickerDrawingOperationMask.isDrawRightBottom(this.drawMask)) && (BitmapUtil.isValidBitmap(this.bmpZoom))) {
-        drawZoomBtn(paramCanvas);
-      }
-      if ((StickerDrawingOperationMask.isDrawLeftBottom(this.drawMask)) && (BitmapUtil.isValidBitmap(this.bmpAdjustTimeRange))) {
-        drawAdjustTimeBtn(paramCanvas);
-      }
     }
   }
   
@@ -322,6 +314,14 @@ public class WsStickerEditView
   }
   
   public void setOnStickerEventListener(ITAVStickerEventListener paramITAVStickerEventListener) {}
+  
+  protected void updateBorderPaint()
+  {
+    float f = getSticker().getScale();
+    if (0.0F != f) {
+      this.borderPaint.setStrokeWidth(this.DEFAULT_BORDER_STROKE_WIDTH / f);
+    }
+  }
 }
 
 

@@ -1,28 +1,30 @@
+import android.text.TextUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+
 class awrn
-  implements awrj
+  implements WXShareHelper.WXShareListener
 {
-  awrn(awrk paramawrk) {}
+  awrn(awrl paramawrl) {}
   
-  public void a(int paramInt)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    switch (paramInt)
+    if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
     {
-    default: 
-      return;
-    case 0: 
-      awrk.b(this.a);
-      return;
-    case 1: 
-      awrk.c(this.a);
-      return;
-    case 2: 
-      awrk.a(this.a);
-      return;
-    case 3: 
-      awrk.d(this.a);
+      WXShareHelper.getInstance().removeObserver(this);
+      if (paramBaseResp.errCode != 0) {
+        break label59;
+      }
+      if (this.a.jdField_a_of_type_Awro != null) {
+        this.a.jdField_a_of_type_Awro.a(true);
+      }
+    }
+    label59:
+    while (this.a.jdField_a_of_type_Awro == null) {
       return;
     }
-    awrk.e(this.a);
+    this.a.jdField_a_of_type_Awro.a(false);
   }
 }
 

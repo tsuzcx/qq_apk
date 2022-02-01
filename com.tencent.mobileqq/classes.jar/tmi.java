@@ -1,59 +1,40 @@
-import kotlin.Metadata;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
+import java.util.List;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/experiment/AdExperimentData$VideoGuide;", "", "secondStateTime", "", "thirdStateTime", "(II)V", "getSecondStateTime", "()I", "getThirdStateTime", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tmi
+final class tmi
+  implements rnw
 {
-  private final int a;
-  private final int b;
+  tmi(String paramString1, QQAppInterface paramQQAppInterface, int paramInt1, BridgeModule paramBridgeModule, int paramInt2, String paramString2) {}
   
-  public tmi()
+  public void a(@NotNull List<UgcVideo> paramList)
   {
-    this(0, 0, 3, null);
-  }
-  
-  public tmi(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public final int a()
-  {
-    return this.a;
-  }
-  
-  public final int b()
-  {
-    return this.b;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if (this != paramObject)
+    Iterator localIterator = paramList.iterator();
+    UgcVideo localUgcVideo;
+    do
     {
-      if ((paramObject instanceof tmi))
-      {
-        paramObject = (tmi)paramObject;
-        if ((this.a != paramObject.a) || (this.b != paramObject.b)) {}
+      if (!localIterator.hasNext()) {
+        break;
       }
+      localUgcVideo = (UgcVideo)localIterator.next();
+    } while (!TextUtils.equals(localUgcVideo.seqId, this.jdField_a_of_type_JavaLangString));
+    for (;;)
+    {
+      if (localUgcVideo != null)
+      {
+        odq.a("0X800AC61", rha.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, localUgcVideo.publicType).a());
+        rno.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(localUgcVideo);
+        tmd.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, 0, "");
+        return;
+      }
+      tmd.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, -1, "ugcVideo not exist");
+      return;
+      localUgcVideo = null;
     }
-    else {
-      return true;
-    }
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.a * 31 + this.b;
-  }
-  
-  @NotNull
-  public String toString()
-  {
-    return "VideoGuide(secondStateTime=" + this.a + ", thirdStateTime=" + this.b + ")";
   }
 }
 

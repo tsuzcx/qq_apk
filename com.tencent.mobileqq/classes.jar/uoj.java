@@ -1,18 +1,24 @@
-import UserGrowth.stWeishiDengtaReportReq;
-import UserGrowth.stWeishiDengtaReportRsp;
-import java.util.Map;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.BottomDialog.3.1;
 
 public class uoj
-  extends ukl<stWeishiDengtaReportRsp>
+  implements Animation.AnimationListener
 {
-  public uoj(String paramString, Map<String, String> paramMap)
+  uoj(uog paramuog) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super("WeishiDengtaReport");
-    stWeishiDengtaReportReq localstWeishiDengtaReportReq = new stWeishiDengtaReportReq();
-    localstWeishiDengtaReportReq.eventName = paramString;
-    localstWeishiDengtaReportReq.params = paramMap;
-    this.a = localstWeishiDengtaReportReq;
-    uqf.b("BeaconSendRequest", "BeaconSendRequest = " + localstWeishiDengtaReportReq.toString());
+    uog.a(this.a, false);
+    uog.a(this.a).post(new BottomDialog.3.1(this));
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    uog.a(this.a, true);
   }
 }
 

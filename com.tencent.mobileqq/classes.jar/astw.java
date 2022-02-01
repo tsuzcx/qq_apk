@@ -1,28 +1,54 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
 
-public class astw
-  implements axfu<EmoticonPackage>
+class astw
+  implements asrk
 {
-  public astw(AIOEmotionFragment paramAIOEmotionFragment, QQAppInterface paramQQAppInterface) {}
+  astw(astk paramastk) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void a(assv paramassv)
   {
-    if ((paramEmoticonPackage != null) && (paramEmoticonPackage.name != null) && ((paramEmoticonPackage.mobileFeetype != 0) || (paramEmoticonPackage.downloadCount != 0)))
+    paramassv = ((asrn)paramassv).a();
+    if (paramassv == null) {}
+    Object localObject;
+    do
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getInt("emosm_json_last_download_timestamp", 0);
-      int j = (int)(System.currentTimeMillis() / 1000L);
-      if ((j - i > 86400) || (j < i))
+      do
       {
-        AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6);
+        return;
+      } while ((aszt.a(paramassv.a()) != 0) || (TextUtils.isEmpty(paramassv.a())) || (!TextUtils.isEmpty(paramassv.g())));
+      FileManagerEntity localFileManagerEntity = paramassv.a();
+      if (localFileManagerEntity == null)
+      {
+        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb : can not get the troop file entity, return.");
         return;
       }
-      ahlt.a(6, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a, null, true);
-      return;
-    }
-    AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6);
+      localObject = bfby.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin, localFileManagerEntity.strTroopFileID, localFileManagerEntity.strTroopFilePath, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, localFileManagerEntity.busId);
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb : troopUin[" + localFileManagerEntity.TroopUin + "] troopFileId[" + localFileManagerEntity.strTroopFileID + "] troopFilePath[" + localFileManagerEntity.strTroopFilePath + "]");
+      }
+      if (TextUtils.isEmpty(((becp)localObject).c))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb :  can not find local thumb file, download.");
+        }
+        localObject = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin);
+        if (localFileManagerEntity.strTroopFileID == null)
+        {
+          ((TroopFileTransferManager)localObject).a(localFileManagerEntity.strTroopFilePath, paramassv.a(), localFileManagerEntity.busId, 640);
+          return;
+        }
+        ((TroopFileTransferManager)localObject).a(UUID.fromString(localFileManagerEntity.strTroopFileID), 640);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb :  can find local thumb file, refresh the picture browser.");
+      }
+    } while (this.a.jdField_a_of_type_Assy == null);
+    this.a.jdField_a_of_type_Assy.a(((becp)localObject).e, ((becp)localObject).c);
   }
 }
 

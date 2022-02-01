@@ -1,51 +1,43 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qphone.base.util.MD5;
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 import org.json.JSONObject;
 
 public class awiv
-  implements bcnj
+  implements BusinessObserver
 {
-  public awiv(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  public awiv(NearbyJsInterface paramNearbyJsInterface, String paramString) {}
   
-  public void a(String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramString == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-4}" });
-      return;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    for (;;)
-    {
+    if (paramBoolean) {
       try
       {
-        byte[] arrayOfByte = bhmi.a(paramString);
-        if (arrayOfByte == null) {
-          break;
-        }
-        localJSONObject.put("code", 0);
-        StringBuilder localStringBuilder = new StringBuilder("data:");
-        if (azru.a(paramString))
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
         {
-          str = "image/gif;";
-          localStringBuilder.append(str);
-          localStringBuilder.append("base64,");
-          localStringBuilder.append(bhkv.encodeToString(arrayOfByte, 0));
-          localJSONObject.put("imgData", localStringBuilder);
-          localJSONObject.put("md5", MD5.toMD5(arrayOfByte));
-          localJSONObject.put("imagePath", paramString);
-          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+          localWebSsoResponseBody.mergeFrom(paramBundle);
+          paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
+          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.callJs(new JSONObject(this.jdField_a_of_type_JavaLangString).getString("callback"), new String[] { paramBundle.toString() });
+          return;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.w("followUser js api", 2, " no data!");
           return;
         }
       }
-      catch (Exception paramString)
+      catch (Exception paramBundle)
       {
-        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
-        return;
+        if (QLog.isColorLevel()) {
+          QLog.w("followUser js api", 2, " no data! error");
+        }
       }
-      String str = "image/jpg;";
     }
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
   }
 }
 

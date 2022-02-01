@@ -1,23 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl;
+import android.widget.ImageView;
 
-public class nee
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface nee
 {
-  public nee(AVGameControlUIImpl paramAVGameControlUIImpl) {}
+  public abstract ImageView a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if ((AVGameControlUIImpl.a(this.a)) && (this.a.a != null)) {
-      this.a.a.a(i);
-    }
-  }
+  public abstract void a(mzq parammzq);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nee
  * JD-Core Version:    0.7.0.1
  */

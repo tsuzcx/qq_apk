@@ -1,125 +1,30 @@
-import UserGrowth.stOpVideo;
-import UserGrowth.stSchema;
-import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import org.json.JSONObject;
 
 public class uui
-  extends uej<usv>
-  implements View.OnClickListener
 {
-  private stOpVideo jdField_a_of_type_UserGrowthStOpVideo;
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+  public String mAbTest;
+  public int mType;
   
-  public uui(Context paramContext, uuy paramuuy)
+  protected uui(Parcel paramParcel)
   {
-    super(paramContext);
-    if (paramuuy != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramuuy.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-    }
+    this.mType = paramParcel.readInt();
+    this.mAbTest = paramParcel.readString();
   }
   
-  private static WSDownloadParams a(WSVerticalPageFragment paramWSVerticalPageFragment, int paramInt, String paramString)
+  protected uui(JSONObject paramJSONObject)
   {
-    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
-    localWSDownloadParams.mScene = usd.a(paramWSVerticalPageFragment.a());
-    localWSDownloadParams.mLinkStrategyType = ugd.a().a();
-    localWSDownloadParams.mEventId = paramInt;
-    localWSDownloadParams.mTestId = uqt.a(localWSDownloadParams.mScene);
-    localWSDownloadParams.mScheme = paramString;
-    return localWSDownloadParams;
+    this.mType = paramJSONObject.optInt("type");
+    this.mAbTest = paramJSONObject.optString("qq_abtest");
+    parseJson(paramJSONObject);
   }
   
-  private void f()
+  protected void parseJson(JSONObject paramJSONObject) {}
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    String str2;
-    String str3;
-    uje localuje;
-    WSVerticalPageFragment localWSVerticalPageFragment;
-    if (this.jdField_a_of_type_UserGrowthStOpVideo != null)
-    {
-      str2 = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a();
-      str3 = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b();
-      localuje = new uje(a()).a(this.jdField_a_of_type_UserGrowthStOpVideo.jump);
-      localWSVerticalPageFragment = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-      if (this.jdField_a_of_type_UserGrowthStOpVideo.jump == null) {
-        break label103;
-      }
-    }
-    label103:
-    for (String str1 = this.jdField_a_of_type_UserGrowthStOpVideo.jump.schema;; str1 = "")
-    {
-      localuje.a(a(localWSVerticalPageFragment, 17, str1)).a(new uuj(this, str2, str3)).a();
-      return;
-    }
-  }
-  
-  protected void a() {}
-  
-  protected int b()
-  {
-    return 2131560028;
-  }
-  
-  protected void b()
-  {
-    Object localObject = (usv)a();
-    if (localObject == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (!(((usv)localObject).a() instanceof stSimpleMetaFeed));
-        this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)((usv)localObject).a());
-        this.jdField_a_of_type_UserGrowthStOpVideo = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.opVideo;
-      } while (this.jdField_a_of_type_UserGrowthStOpVideo == null);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStOpVideo.img_url))
-      {
-        localObject = BaseApplicationImpl.getContext().getResources().getDrawable(2130841690);
-        uqt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, this.jdField_a_of_type_UserGrowthStOpVideo.img_url, (Drawable)localObject);
-        uvv.a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b());
-      }
-    } while (TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStOpVideo.text));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStOpVideo.text);
-  }
-  
-  protected void c() {}
-  
-  protected void e()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)a(2131369450));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380202));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setOnClickListener(this);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      f();
-    }
+    paramParcel.writeInt(this.mType);
+    paramParcel.writeString(this.mAbTest);
   }
 }
 

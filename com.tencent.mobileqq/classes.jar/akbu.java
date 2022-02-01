@@ -1,52 +1,61 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
 
 public class akbu
-  implements View.OnClickListener
 {
-  public akbu(ChatHistoryC2CLinkFragment paramChatHistoryC2CLinkFragment) {}
+  private static volatile akbu jdField_a_of_type_Akbu;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void onClick(View paramView)
+  public static akbu a()
   {
-    if ((paramView.getTag() instanceof String))
+    if (jdField_a_of_type_Akbu == null) {}
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      if (jdField_a_of_type_Akbu == null) {
+        jdField_a_of_type_Akbu = new akbu();
+      }
+      return jdField_a_of_type_Akbu;
     }
-    Object localObject1 = (ChatMessage)((akbs)paramView.getTag()).a;
-    if (this.a.c)
-    {
-      this.a.jdField_a_of_type_Akfq.a(localObject1);
-      this.a.jdField_a_of_type_Akbo.notifyDataSetChanged();
+    finally {}
+  }
+  
+  private void b()
+  {
+    this.b = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "begin connect:");
     }
-    while ((!(localObject1 instanceof MessageForStructing)) || (((MessageForStructing)localObject1).structingMsg == null) || (!(((MessageForStructing)localObject1).structingMsg instanceof AbsShareMsg)))
-    {
-      this.a.jdField_a_of_type_Akbo.notifyDataSetChanged();
-      break;
+    QIPCClientHelper.getInstance().getClient().addListener(new akbv(this));
+    long l = System.currentTimeMillis();
+    QIPCClientHelper.getInstance().getClient().connect(new akbw(this, l));
+  }
+  
+  public void a()
+  {
+    if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
+      b();
     }
-    localObject1 = (AbsShareMsg)((MessageForStructing)localObject1).structingMsg;
-    Object localObject2;
-    if ((localObject1 instanceof StructMsgForGeneralShare))
-    {
-      localObject2 = (StructMsgForGeneralShare)localObject1;
-      bdpi localbdpi = new bdpi(this.a.b, paramView, (StructMsgForGeneralShare)localObject2);
-      StructMsgForGeneralShare.onClickEvent(this.a.b, this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForGeneralShare)localObject2, paramView, localbdpi);
-    }
-    for (;;)
-    {
-      ((AbsShareMsg)localObject1).getOnClickListener().onClick(paramView);
-      break;
-      if ((localObject1 instanceof StructMsgForAudioShare))
+    if (!this.jdField_a_of_type_Boolean) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        localObject2 = (StructMsgForAudioShare)localObject1;
-        StructMsgForAudioShare.onClickEvent(this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForAudioShare)localObject2);
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (!bool) {}
+        try
+        {
+          this.jdField_a_of_type_JavaLangObject.wait(500L);
+          return;
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+        }
       }
     }
   }

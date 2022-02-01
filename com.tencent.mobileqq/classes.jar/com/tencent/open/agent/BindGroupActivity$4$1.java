@@ -2,15 +2,15 @@ package com.tencent.open.agent;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import bhlq;
-import bhpc;
-import bjky;
-import bjkz;
+import bfur;
+import bhqm;
+import bhqn;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class BindGroupActivity$4$1
   implements Runnable
 {
-  public BindGroupActivity$4$1(bjky parambjky) {}
+  public BindGroupActivity$4$1(bhqm parambhqm) {}
   
   public void run()
   {
@@ -22,10 +22,10 @@ public class BindGroupActivity$4$1
     do
     {
       return;
-      this.a.a.a = bhlq.a(this.a.a, 230);
-      this.a.a.a.setMessage(this.a.a.getActivity().getResources().getString(2131718921));
-      bjkz localbjkz = new bjkz(this);
-      this.a.a.a.setPositiveButton(2131690912, localbjkz);
+      this.a.a.a = bfur.a(this.a.a, 230);
+      this.a.a.a.setMessage(this.a.a.getActivity().getResources().getString(2131719181));
+      bhqn localbhqn = new bhqn(this);
+      this.a.a.a.setPositiveButton(2131690952, localbhqn);
     } while (this.a.a.a.isShowing());
     this.a.a.a.show();
   }

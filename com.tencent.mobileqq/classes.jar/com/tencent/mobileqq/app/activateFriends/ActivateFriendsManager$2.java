@@ -2,27 +2,27 @@ package com.tencent.mobileqq.app.activateFriends;
 
 import android.content.SharedPreferences;
 import android.os.Handler;
-import aolc;
-import aold;
-import bcrg;
+import anen;
+import aneo;
+import bbko;
 import com.tencent.qphone.base.util.QLog;
 
 public class ActivateFriendsManager$2
   implements Runnable
 {
-  public ActivateFriendsManager$2(aold paramaold) {}
+  public ActivateFriendsManager$2(aneo paramaneo) {}
   
   public void run()
   {
-    long l = aold.a(this.this$0).getLong("key_last_birth_msg_stamp", 0L);
+    long l = aneo.a(this.this$0).getLong("key_last_birth_msg_stamp", 0L);
     if (QLog.isColorLevel()) {
       QLog.d("ActivateFriends.Manager", 2, "local birth timestamp = " + l);
     }
-    if (bcrg.a() - l > 259200L)
+    if (bbko.a() - l > 259200L)
     {
-      aold.a(this.this$0).removeCallbacks(aold.a(this.this$0));
-      this.this$0.a = aold.b(this.this$0);
-      aolc.a(aold.a(this.this$0), false, true, false, true);
+      aneo.a(this.this$0).removeCallbacks(aneo.a(this.this$0));
+      this.this$0.a = aneo.b(this.this$0);
+      anen.a(aneo.a(this.this$0), false, true, false, true);
     }
   }
 }

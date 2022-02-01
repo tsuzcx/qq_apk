@@ -1,7 +1,23 @@
-import kotlin.Metadata;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AgeSelectionActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingTitle$Companion;", "", "()V", "CLOSE_IMAGE_HEIGHT", "", "COUNT_DOWN_CORNER", "COUNT_DOWN_DIVIDER_HORIZONTAL_MARGIN", "COUNT_DOWN_HEIGHT", "COUNT_DOWN_HORIZONTAL_PADDING", "COUNT_DOWN_STROKE", "COUNT_DOWN_STROKE_COLOR_NORMAL", "", "COUNT_DOWN_TEXT_SIZE", "TITLE_HEIGHT", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class acrc {}
+public class acrc
+  implements View.OnClickListener
+{
+  public acrc(AgeSelectionActivity paramAgeSelectionActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    AgeSelectionActivity.a(this.a);
+    this.a.finish();
+    if ("VAL_FROM_STATUS_MSG_TAB".equals(AgeSelectionActivity.a(this.a))) {
+      axvz.a("0X800AF47");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pfd;
-import pqd;
-import pqe;
-import taz;
+import pkp;
+import pvx;
+import pvy;
+import tfc;
 
 public class ReadInJoyDianDianEntranceModule$1
   implements Runnable
 {
-  public ReadInJoyDianDianEntranceModule$1(pqd parampqd, taz paramtaz) {}
+  public ReadInJoyDianDianEntranceModule$1(pvx parampvx, tfc paramtfc) {}
   
   public void run()
   {
-    pfd.a().a(new pqe(this));
+    pkp.a().a(new pvy(this));
   }
 }
 

@@ -1,19 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
 
-class bmis
-  implements DialogInterface.OnDismissListener
+public class bmis
+  implements DialogInterface.OnClickListener
 {
-  bmis(bmim parambmim) {}
+  public bmis(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    bmim.a(this.a, null);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmis
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+
 public class belr
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  public belr(ReciteFragment paramReciteFragment) {}
   
-  public belr(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  private void b(int paramInt)
-  {
-    if (paramInt <= a()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      beks.a(bool, new Object[] { "!(", Integer.valueOf(paramInt), " <= ", Integer.valueOf(a()), ")" });
-      return;
-    }
-  }
-  
-  int a()
-  {
-    return this.jdField_a_of_type_JavaLangString.length() - this.jdField_a_of_type_Int;
-  }
-  
-  String a(int paramInt)
-  {
-    b(paramInt);
-    String str = this.jdField_a_of_type_JavaLangString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + paramInt);
-    this.jdField_a_of_type_Int += paramInt;
-    return str;
-  }
-  
-  void a(int paramInt)
-  {
-    b(paramInt);
-    this.jdField_a_of_type_Int += paramInt;
-  }
-  
-  String b(int paramInt)
-  {
-    b(paramInt);
-    return this.jdField_a_of_type_JavaLangString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + paramInt);
+    paramDialogInterface.dismiss();
   }
 }
 

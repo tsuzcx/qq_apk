@@ -4,6 +4,7 @@ public class IPCConst
 {
   public static final String BUNDLE_KEY_MESSENGER = "mini_process_messenger";
   public static final String BUNDLE_KEY_PROCESS_NAME = "mini_process_name";
+  public static final String CMD_ADD_QQ_FAVORITES = "cmd_add_qq_favorites";
   public static final String CMD_DC_REPORT_LOG_KEY_DATA = "cmd_dc_report_log_key_data";
   public static final String CMD_EXIT_QQ = "cmd_exit_qq";
   public static final String CMD_LAUNCH_REPORT = "launch_report";
@@ -80,7 +81,7 @@ public class IPCConst
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ipc.IPCConst
  * JD-Core Version:    0.7.0.1
  */

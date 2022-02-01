@@ -2,8 +2,8 @@ package com.tencent.mobileqq.msgbackup.transport;
 
 import android.os.Looper;
 import android.util.Log;
-import axjc;
-import axjd;
+import avwj;
+import avwk;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
 
@@ -18,7 +18,7 @@ public class MsgBackupNotifier
     }
     try
     {
-      paramString = axjd.a().a(paramString);
+      paramString = avwk.a().a(paramString);
       return paramString;
     }
     catch (Exception paramString)
@@ -33,7 +33,7 @@ public class MsgBackupNotifier
     if (QLog.isColorLevel()) {
       Log.d("MsgBackup-Notifier", "onHttpRequest ip = " + paramString1 + ", port = " + paramInt + ", url = " + paramString2);
     }
-    axjc.a().a(new MsgBackupNotifier.12(this, paramLong, paramString1, paramInt, paramString2));
+    avwj.a().a(new MsgBackupNotifier.12(this, paramLong, paramString1, paramInt, paramString2));
   }
   
   public void onLog(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
@@ -58,7 +58,7 @@ public class MsgBackupNotifier
     if (QLog.isColorLevel()) {
       Log.d("MsgBackup-Notifier", "onRecvComplete fid = " + paramLong1 + ", url = " + paramString1 + ", errCode = " + paramInt1 + ", path = " + paramString2 + ", speedByteIn = " + paramInt2 + ", speedByteOut = " + paramInt3);
     }
-    axjc.a().a(new MsgBackupNotifier.11(this, paramLong1, paramString1, paramInt1, paramString2, paramArrayOfByte, paramInt2, paramInt3, paramLong2));
+    avwj.a().a(new MsgBackupNotifier.11(this, paramLong1, paramString1, paramInt1, paramString2, paramArrayOfByte, paramInt2, paramInt3, paramLong2));
   }
   
   public void onRecvMessage(String paramString1, int paramInt1, int paramInt2, String paramString2, long paramLong)
@@ -66,7 +66,7 @@ public class MsgBackupNotifier
     if (QLog.isColorLevel()) {
       Log.d("MsgBackup-Notifier", "onRecvMessage ip = " + paramString1 + ", port = " + paramInt1 + ", cmd = " + paramInt2 + ", data = " + paramString2 + ", cookie = " + paramLong);
     }
-    axjc.a().a(new MsgBackupNotifier.8(this, paramString1, paramInt1, paramInt2, paramString2, paramLong));
+    avwj.a().a(new MsgBackupNotifier.8(this, paramString1, paramInt1, paramInt2, paramString2, paramLong));
   }
   
   public void onRecvProgress(long paramLong1, String paramString, long paramLong2, long paramLong3, int paramInt1, long paramLong4, int paramInt2, int paramInt3, long paramLong5)
@@ -74,7 +74,7 @@ public class MsgBackupNotifier
     if (QLog.isColorLevel()) {
       Log.d("MsgBackup-Notifier", "onRecvProgress fid = " + paramLong1 + ", url = " + paramString + ", uPos = " + paramLong2 + ", totalLen = " + paramLong3 + ", speed = " + paramInt1 + ", incrementLen = " + paramLong4 + ", speedByteIn = " + paramInt2 + ", speedByteOut = " + paramInt3);
     }
-    axjc.a().a(new MsgBackupNotifier.10(this, paramLong1, paramLong3, paramLong4));
+    avwj.a().a(new MsgBackupNotifier.10(this, paramLong1, paramLong3, paramLong4));
   }
   
   public void onRecvStart(long paramLong1, String paramString, long paramLong2, long paramLong3, long paramLong4)
@@ -82,7 +82,7 @@ public class MsgBackupNotifier
     if (QLog.isColorLevel()) {
       Log.d("MsgBackup-Notifier", "onRecvStart fid = " + paramLong1 + ", url = " + paramString + ", dwResume = " + paramLong2 + ", totalLen = " + paramLong3 + ", context = " + paramLong4);
     }
-    axjc.a().a(new MsgBackupNotifier.9(this, paramLong1, paramString, paramLong2, paramLong3, paramLong4));
+    avwj.a().a(new MsgBackupNotifier.9(this, paramLong1, paramString, paramLong2, paramLong3, paramLong4));
   }
   
   public void onSendComplete(long paramLong1, boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, long paramLong2)
@@ -90,7 +90,7 @@ public class MsgBackupNotifier
     if (QLog.isColorLevel()) {
       Log.d("MsgBackup-Notifier", "onSendComplete fid = " + paramLong1 + ", success = " + paramBoolean + ", errCode = " + paramInt1 + ", speedByteIn = " + paramInt2 + ", speedByteOut = " + paramInt3 + ", context = " + paramLong2);
     }
-    axjc.a().a(new MsgBackupNotifier.14(this, paramLong1, paramBoolean, paramInt1, paramString, paramInt2, paramInt3, paramLong2));
+    avwj.a().a(new MsgBackupNotifier.14(this, paramLong1, paramBoolean, paramInt1, paramString, paramInt2, paramInt3, paramLong2));
   }
   
   public void onSendMessage(boolean paramBoolean, long paramLong1, long paramLong2)
@@ -98,7 +98,7 @@ public class MsgBackupNotifier
     if (QLog.isColorLevel()) {
       Log.d("MsgBackup-Notifier", "onSendMessage success = " + paramBoolean + ". cookie = " + paramLong1 + ", context = " + paramLong2);
     }
-    axjc.a().a(new MsgBackupNotifier.7(this, paramBoolean, paramLong1, paramLong2));
+    avwj.a().a(new MsgBackupNotifier.7(this, paramBoolean, paramLong1, paramLong2));
   }
   
   public void onSendProgress(long paramLong1, String paramString, long paramLong2, long paramLong3, int paramInt1, long paramLong4, int paramInt2, int paramInt3, long paramLong5)
@@ -106,7 +106,7 @@ public class MsgBackupNotifier
     if (QLog.isColorLevel()) {
       Log.d("MsgBackup-Notifier", "onSendProgress fid = " + paramLong1 + ", path = " + paramString + ", uPos = " + paramLong2 + ", totalLen = " + paramLong3 + ", speed = " + paramInt1 + ", incrementLen = " + paramLong4 + ", speedByteIn = " + paramInt2 + ", speedByteOut = " + paramInt3);
     }
-    axjc.a().a(new MsgBackupNotifier.13(this, paramLong1, paramString, paramLong2, paramLong3, paramInt1, paramLong4, paramInt2, paramInt3, paramLong5));
+    avwj.a().a(new MsgBackupNotifier.13(this, paramLong1, paramString, paramLong2, paramLong3, paramInt1, paramLong4, paramInt2, paramInt3, paramLong5));
   }
   
   public void onServoPortChanged(String paramString, int paramInt)
@@ -114,7 +114,7 @@ public class MsgBackupNotifier
     if (QLog.isColorLevel()) {
       Log.d("MsgBackup-Notifier", "onServoPortChanged ip = " + paramString + ", port = " + paramInt);
     }
-    axjc.a().a(new MsgBackupNotifier.5(this, paramString, paramInt));
+    avwj.a().a(new MsgBackupNotifier.5(this, paramString, paramInt));
   }
   
   public void onTcpConnStateChanged(int paramInt)
@@ -131,7 +131,7 @@ public class MsgBackupNotifier
     for (boolean bool = true;; bool = false)
     {
       Log.d("MsgBackup-Notifier", bool);
-      axjc.a().a(new MsgBackupNotifier.6(this, paramInt));
+      avwj.a().a(new MsgBackupNotifier.6(this, paramInt));
       return;
     }
   }
@@ -141,7 +141,7 @@ public class MsgBackupNotifier
     if (QLog.isColorLevel()) {
       Log.d("MsgBackup-Notifier", "onUdpDetected success = " + paramBoolean);
     }
-    axjc.a().a(new MsgBackupNotifier.1(this, paramBoolean));
+    avwj.a().a(new MsgBackupNotifier.1(this, paramBoolean));
   }
   
   public void onUdpPortChanged(String paramString, int paramInt)
@@ -149,7 +149,7 @@ public class MsgBackupNotifier
     if (QLog.isColorLevel()) {
       Log.d("MsgBackup-Notifier", "onUdpPortChanged ip = " + paramString + ", port = " + paramInt);
     }
-    axjc.a().a(new MsgBackupNotifier.2(this, paramString, paramInt));
+    avwj.a().a(new MsgBackupNotifier.2(this, paramString, paramInt));
   }
   
   public void onVersoBind(String paramString, int paramInt)
@@ -157,7 +157,7 @@ public class MsgBackupNotifier
     if (QLog.isColorLevel()) {
       Log.d("MsgBackup-Notifier", "onVersoBind ip = " + paramString + ", port = " + paramInt);
     }
-    axjc.a().a(new MsgBackupNotifier.3(this, paramString, paramInt));
+    avwj.a().a(new MsgBackupNotifier.3(this, paramString, paramInt));
   }
   
   public void onVersoPortChanged(String paramString, int paramInt)
@@ -165,7 +165,7 @@ public class MsgBackupNotifier
     if (QLog.isColorLevel()) {
       Log.d("MsgBackup-Notifier", "onVersoPortChanged ip = " + paramString + ", port = " + paramInt);
     }
-    axjc.a().a(new MsgBackupNotifier.4(this, paramString, paramInt));
+    avwj.a().a(new MsgBackupNotifier.4(this, paramString, paramInt));
   }
 }
 

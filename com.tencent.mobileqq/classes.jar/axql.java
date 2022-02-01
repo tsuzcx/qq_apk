@@ -1,45 +1,52 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
 
-class axql
-  extends bcyj
+public class axql
+  implements INetInfoHandler
 {
-  axql(axqb paramaxqb, String paramString, axpw paramaxpw) {}
+  private axql(OlympicToolAppInterface paramOlympicToolAppInterface) {}
   
-  public void a(int paramInt)
+  public void onNetMobile2None()
   {
-    if (this.jdField_a_of_type_Axpw.a != null)
-    {
-      String str = this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_Axpw.a.a);
-      axpx localaxpx = this.jdField_a_of_type_Axqb.a(str);
-      if ((localaxpx != null) && (!localaxpx.a))
-      {
-        localaxpx.c = (paramInt / 100);
-        this.jdField_a_of_type_Axqb.a(str, localaxpx);
-        axqb.a(this.jdField_a_of_type_Axqb, localaxpx, paramInt / 100);
-      }
+    if (OlympicToolAppInterface.i(this.a) != null) {
+      OlympicToolAppInterface.j(this.a).onNetMobile2None();
     }
   }
   
-  public void a(int paramInt, bcyb parambcyb)
+  public void onNetMobile2Wifi(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadShortVideo key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt);
+    if (OlympicToolAppInterface.g(this.a) != null) {
+      OlympicToolAppInterface.h(this.a).onNetMobile2Wifi(paramString);
     }
-    int j = 0;
-    String str2 = "";
-    String str1 = str2;
-    int i = j;
-    if (parambcyb != null)
-    {
-      str1 = str2;
-      i = j;
-      if (parambcyb.a != null)
-      {
-        i = parambcyb.a.a;
-        str1 = parambcyb.a.b;
-      }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (OlympicToolAppInterface.a(this.a) != null) {
+      OlympicToolAppInterface.b(this.a).onNetNone2Mobile(paramString);
     }
-    this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_Axpw, paramInt, i, str1);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (OlympicToolAppInterface.e(this.a) != null) {
+      OlympicToolAppInterface.f(this.a).onNetNone2Wifi(paramString);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (OlympicToolAppInterface.c(this.a) != null) {
+      OlympicToolAppInterface.d(this.a).onNetWifi2Mobile(paramString);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (OlympicToolAppInterface.k(this.a) != null) {
+      OlympicToolAppInterface.l(this.a).onNetWifi2None();
+    }
   }
 }
 

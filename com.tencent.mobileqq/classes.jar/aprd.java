@@ -1,34 +1,35 @@
-import android.opengl.GLES20;
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class aprd
-  extends aprj
+  implements AdapterView.OnItemSelectedListener
 {
-  public int a;
-  public int b;
+  public aprd(IphonePickerView paramIphonePickerView) {}
   
-  public aprd(int paramInt)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super(paramInt);
-    this.e = "uniform float uA;\nuniform float uD;\n";
-    this.j = "    if(abs(gl_FragColor[0]-u_screenColor[0]) < uD && abs(gl_FragColor[1]-u_screenColor[1]) < uD  && abs(gl_FragColor[2]-u_screenColor[2]) < uD ){\n        gl_FragColor[3] = uA;\n        if(uA < 0.01){\n            gl_FragColor[0] = 0.0;\n            gl_FragColor[1] = 0.0;\n            gl_FragColor[2] = 0.0;\n        }\n    }\n";
-  }
-  
-  protected void a()
-  {
-    this.a = GLES20.glGetUniformLocation(this.d, "uA");
-    aprn.a("glGetAttribLocation uA");
-    this.b = GLES20.glGetUniformLocation(this.d, "uD");
-    aprn.a("glGetAttribLocation uD");
-  }
-  
-  protected void a(aprm paramaprm)
-  {
-    if (paramaprm == null) {
-      return;
+    IphonePickerView.a(this.a, paramView, 1);
+    IphonePickerView.a(this.a, paramView, true);
+    if ((paramView != null) && (paramView.getTag() != null))
+    {
+      int i = Integer.parseInt(paramView.getTag().toString());
+      int j = paramAdapterView.getChildCount();
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        if (i != paramInt)
+        {
+          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
+          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), false);
+        }
+        paramInt += 1;
+      }
     }
-    GLES20.glUniform1f(this.a, paramaprm.d);
-    GLES20.glUniform1f(this.b, paramaprm.e);
   }
+  
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

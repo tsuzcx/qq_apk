@@ -1,148 +1,50 @@
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
 
 public class adke
+  extends amsu
 {
-  public int a;
-  public String a;
-  public ArrayList<Integer> a;
-  public ArrayList<String> b = new ArrayList();
-  public ArrayList<Integer> c = new ArrayList();
-  public ArrayList<Integer> d = new ArrayList();
+  public adke(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public adke()
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public static ArrayList<adke> a(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    try
-    {
-      paramString = new JSONArray(adki.a(paramString));
-      int i = 0;
-      while (i < paramString.length())
-      {
-        adjv.b("KingKongSubPatch", "Parsing sub patch " + i);
-        adke localadke = new adke();
-        if (localadke.a(paramString.getJSONObject(i)))
-        {
-          localadke.a();
-          localArrayList.add(localadke);
-          i += 1;
-        }
-        else
-        {
-          adjv.a("KingKongSubPatch", "Parse sub patch failed, give up");
-          return null;
-        }
-      }
-      return localArrayList;
-    }
-    catch (Exception paramString)
-    {
-      adjv.a("KingKongSubPatch", "Parse SubPatch List exception : " + paramString);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    int k = 0;
-    int i = 0;
-    while (i < this.c.size())
-    {
-      adjv.b("KingKongSubPatch", "--> HookPoints : " + this.c.get(i));
-      i += 1;
-    }
-    i = 0;
-    int j;
+    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(paramString1)) || (!ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))) {}
     for (;;)
     {
-      j = k;
-      if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break;
+      return;
+      if (paramBoolean)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = paramString2;
+        return;
       }
-      adjv.b("KingKongSubPatch", "--> Parameters : " + ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).toString());
-      i += 1;
-    }
-    while (j < this.b.size())
-    {
-      adjv.b("KingKongSubPatch", "--> FingerPrint : " + (String)this.b.get(j) + ", " + this.d.get(j));
-      j += 1;
+      paramString1 = (amsw)this.a.app.getManager(51);
+      if (paramString1 == null) {}
+      for (paramString1 = null; (paramString1 != null) && (paramString1.remark != null) && (paramString1.isRemark == 1); paramString1 = paramString1.e(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = paramString1.remark;
+        return;
+      }
     }
   }
   
-  public boolean a(JSONObject paramJSONObject)
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i;
-    for (;;)
+    if ((paramBoolean1) && (paramBoolean2) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a != null) && (ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))
     {
-      try
-      {
-        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("patch_file").trim();
-        JSONArray localJSONArray1 = paramJSONObject.getJSONArray("parameters");
-        localJSONArray2 = paramJSONObject.getJSONArray("fingerprints");
-        localJSONArray3 = paramJSONObject.getJSONArray("hook_point");
-        localJSONArray4 = paramJSONObject.getJSONArray("fingerprints_value");
-        int m = localJSONArray1.length();
-        k = localJSONArray2.length();
-        int n = localJSONArray4.length();
-        j = localJSONArray3.length();
-        i = 0;
-        if (i < m)
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(localJSONArray1.getInt(i)));
-          i += 1;
-          continue;
-        }
-        if (n == k) {
-          break;
-        }
-        adjv.a("KingKongSubPatch", "Fingerprint value count mismatch " + n + ", " + k);
-        return false;
+      localObject = (amsw)this.a.app.getManager(51);
+      if (localObject != null) {
+        break label90;
       }
-      catch (JSONException paramJSONObject)
-      {
-        JSONArray localJSONArray2;
-        JSONArray localJSONArray3;
-        JSONArray localJSONArray4;
-        int k;
-        int j;
-        adjv.a("KingKongSubPatch", "Parse SubPatch error : " + paramJSONObject);
-        return false;
-      }
-      catch (Exception paramJSONObject)
-      {
-        return false;
-      }
-      if (i >= k) {
-        break label272;
-      }
-      this.b.add(localJSONArray2.getString(i).trim());
-      this.d.add(Integer.valueOf(localJSONArray4.getInt(i)));
-      i += 1;
     }
-    for (;;)
+    label90:
+    for (Object localObject = null;; localObject = ((amsw)localObject).e(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))
     {
-      if (i < j)
-      {
-        this.c.add(Integer.valueOf(localJSONArray3.getInt(i)));
-        i += 1;
+      if ((localObject != null) && (((Friends)localObject).remark != null) && (((Friends)localObject).isRemark == 1)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = ((Friends)localObject).remark;
       }
-      else
-      {
-        this.jdField_a_of_type_Int = paramJSONObject.optInt("isThumb2", 1);
-        return true;
-        i = 0;
-        break;
-        label272:
-        i = 0;
-      }
+      return;
     }
   }
 }

@@ -107,7 +107,6 @@
                                                         "$column_left_item_cover_url",
                                                         "0"
                                                     ],
-                                                    "setFrameString:": "-1",
                                                     "setAttatchInfo": "$column_card_left_item_jumpurl"
                                                 }
                                             },
@@ -282,7 +281,6 @@
                                                         "$column_right_item_cover_url",
                                                         "0"
                                                     ],
-                                                    "setFrameString:": "-1",
                                                     "setAttatchInfo": "$column_card_right_item_jumpurl"
                                                 }
                                             },
@@ -471,7 +469,6 @@
                                                         "$column_left_item_cover_url",
                                                         "0"
                                                     ],
-                                                    "setFrameString:": "-1",
                                                     "setAttatchInfo": "$column_card_left_item_jumpurlr"
                                                 }
                                             },
@@ -630,7 +627,6 @@
                                                         "$column_right_item_cover_url",
                                                         "0"
                                                     ],
-                                                    "setFrameString:": "-1",
                                                     "setAttatchInfo": "$column_card_right_item_jumpurl"
                                                 }
                                             },
@@ -831,8 +827,7 @@
                                                     "setImageWithURLString:lineup:": [
                                                         "$column_bottom_icon_url",
                                                         "0"
-                                                    ],
-                                                    "setFrameString:": "-1"
+                                                    ]
                                                 }
                                             },
                                             {
@@ -969,7 +964,6 @@
                     "value": "363"
                 },
                 "attributes": {
-                    "setFrameString:": "-1",
                     "setBackgroundColorString:": "#E5E5E5"
                 }
             }

@@ -2,16 +2,16 @@ package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
 import android.content.res.Resources;
-import arry;
-import bbav;
+import aqlw;
+import azvi;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.qphone.base.util.QLog;
 import mqq.manager.Manager;
-import tug;
-import tyi;
+import uaw;
+import uex;
 
 public class RecentItemServiceAccountFolderData
   extends AbsRecentUserBusinessBaseData
@@ -32,32 +32,32 @@ public class RecentItemServiceAccountFolderData
       return;
     }
     super.a(paramQQAppInterface, paramContext);
-    boolean bool = tyi.a;
+    boolean bool = uex.a;
     label35:
-    tug localtug;
+    uaw localuaw;
     if (bool)
     {
       this.mMenuFlag |= 0x1;
       if (QLog.isColorLevel()) {
-        QLog.d("RecentItemServiceAccountFolderData", 2, "uin:" + paramQQAppInterface.c() + ", canDelete:" + bool + ", mMenuFlag:" + this.mMenuFlag);
+        QLog.d("RecentItemServiceAccountFolderData", 2, "uin:" + paramQQAppInterface.getCurrentUin() + ", canDelete:" + bool + ", mMenuFlag:" + this.mMenuFlag);
       }
-      localtug = tug.a();
-      this.mTitleName = tug.a(paramQQAppInterface);
-      this.mDisplayTime = localtug.a(paramQQAppInterface);
-      this.mUnreadNum = localtug.b();
+      localuaw = uaw.a();
+      this.mTitleName = uaw.a(paramQQAppInterface);
+      this.mDisplayTime = localuaw.a(paramQQAppInterface);
+      this.mUnreadNum = localuaw.b();
       Manager localManager = paramQQAppInterface.getManager(36);
-      if ((localManager instanceof bbav))
+      if ((localManager instanceof azvi))
       {
-        int i = ((bbav)localManager).a("104000.104001", 100);
+        int i = ((azvi)localManager).a("104000.104001", 100);
         if (i > 0) {
           this.mUnreadNum += i;
         }
-        QLog.d("RecentItemServiceAccountFolderData", 2, "uin:" + paramQQAppInterface.c() + "getSubscribeAccountRedDotNum  numRedNumByAppIdAndMsgType:" + i + "   mUnreadNum: " + this.mUnreadNum);
+        QLog.d("RecentItemServiceAccountFolderData", 2, "uin:" + paramQQAppInterface.getCurrentUin() + "getSubscribeAccountRedDotNum  numRedNumByAppIdAndMsgType:" + i + "   mUnreadNum: " + this.mUnreadNum);
       }
       if (this.mUnreadNum > 0) {
         break label665;
       }
-      if ((!localtug.a()) || (this.mDisplayTime <= localtug.b())) {
+      if ((!localuaw.a()) || (this.mDisplayTime <= localuaw.b())) {
         break label657;
       }
       this.mUnreadFlag = 2;
@@ -68,9 +68,9 @@ public class RecentItemServiceAccountFolderData
       }
       this.mShowTime = TimeManager.getInstance().getMsgDisplayTime(getRecentUserUin(), this.mDisplayTime);
       label280:
-      this.mReportKeyBytesOacMsgxtend = localtug.b();
-      this.mLastMsg = localtug.a(paramQQAppInterface);
-      if (!localtug.b()) {
+      this.mReportKeyBytesOacMsgxtend = localuaw.b();
+      this.mLastMsg = localuaw.a(paramQQAppInterface);
+      if (!localuaw.b()) {
         break label686;
       }
       this.mStatus = 4;
@@ -78,8 +78,8 @@ public class RecentItemServiceAccountFolderData
       if ((this.mUnreadNum <= 0) || (this.mUnreadFlag != 1)) {
         break label694;
       }
-      this.mMsgExtroInfo = localtug.c();
-      this.mExtraInfoColor = paramContext.getResources().getColor(2131167102);
+      this.mMsgExtroInfo = localuaw.c();
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131167124);
     }
     for (;;)
     {
@@ -103,7 +103,7 @@ public class RecentItemServiceAccountFolderData
         break label35;
       }
       QLog.d("RecentItemServiceAccountFolderData", 1, "canDelete:" + bool + ", mMenuFlag:" + this.mMenuFlag + " tryResetServiceAccountFolderDeleteFlag = " + tryResetServiceAccountFolderDeleteFlag);
-      arry.c(paramQQAppInterface, paramQQAppInterface.c());
+      aqlw.c(paramQQAppInterface, paramQQAppInterface.getCurrentUin());
       tryResetServiceAccountFolderDeleteFlag += 1;
       break label35;
       label657:
@@ -113,7 +113,7 @@ public class RecentItemServiceAccountFolderData
       this.mUnreadFlag = 1;
       break label253;
       label673:
-      this.mShowTime = localtug.b(paramQQAppInterface);
+      this.mShowTime = localuaw.b(paramQQAppInterface);
       break label280;
       label686:
       this.mStatus = 0;

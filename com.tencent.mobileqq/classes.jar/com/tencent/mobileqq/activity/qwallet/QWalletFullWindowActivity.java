@@ -18,8 +18,9 @@ public class QWalletFullWindowActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -50,7 +51,7 @@ public class QWalletFullWindowActivity
   public boolean showPreview()
   {
     boolean bool = super.showPreview();
-    if (findViewById(2131363678) != null) {}
+    if (findViewById(2131363709) != null) {}
     return bool;
   }
 }

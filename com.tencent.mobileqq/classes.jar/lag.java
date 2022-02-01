@@ -1,17 +1,16 @@
-public class lag
-  extends kzz
+import android.support.v4.util.LruCache;
+
+class lag
+  extends LruCache<String, String>
 {
-  private String jdField_a_of_type_JavaLangString = "qqi_android";
-  private byte[] jdField_a_of_type_ArrayOfByte = { -124, -103, -119, 53, -84, -31, 44, -41, 18, 66, -17, 11, -91, -20, 57, -47, 11, -75, -75, 104, 32, 86, -43, -40, -17, 110, -103, -69, -10, -60, 125, 94, 113, -10, -57, -17, 56, 34, 69, -69, -13, -5, -102, -37, 9, -125, 124, -87, -89, -122, 103, 57, 119, -111, 83, -38 };
-  
-  public String a()
+  lag(laf paramlaf, int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    super(paramInt);
   }
   
-  public String b()
+  protected int a(String paramString1, String paramString2)
   {
-    return a(this.jdField_a_of_type_ArrayOfByte, a());
+    return paramString2.length() + 1;
   }
 }
 

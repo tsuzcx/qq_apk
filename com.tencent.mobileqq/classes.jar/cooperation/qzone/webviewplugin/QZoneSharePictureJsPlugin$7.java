@@ -3,23 +3,22 @@ package cooperation.qzone.webviewplugin;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
-import bioy;
-import bmtd;
-import bmud;
-import bnmr;
+import bgve;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneShareManager;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import org.json.JSONObject;
 
-public class QZoneSharePictureJsPlugin$7
+class QZoneSharePictureJsPlugin$7
   implements Runnable
 {
-  public QZoneSharePictureJsPlugin$7(bnmr parambnmr, JSONObject paramJSONObject, String paramString, bioy parambioy) {}
+  QZoneSharePictureJsPlugin$7(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, JSONObject paramJSONObject, String paramString, bgve parambgve) {}
   
   public void run()
   {
-    String str1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("base64UBBText");
+    String str1 = this.val$jsonObject.optString("base64UBBText");
     if (!TextUtils.isEmpty(str1)) {}
     for (;;)
     {
@@ -29,19 +28,19 @@ public class QZoneSharePictureJsPlugin$7
         boolean bool = TextUtils.isEmpty(str1);
         if (!bool)
         {
-          String str2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("shareSource");
+          String str2 = this.val$jsonObject.optString("shareSource");
           ArrayList localArrayList = new ArrayList();
-          localArrayList.add(URLDecoder.decode(this.jdField_a_of_type_JavaLangString));
+          localArrayList.add(URLDecoder.decode(this.val$filePath));
           Bundle localBundle = new Bundle();
           localBundle.putStringArrayList("images", localArrayList);
           localBundle.putInt("req_type", 1);
           localBundle.putBoolean("key_need_save_draft", false);
           localBundle.putString("shareSource", str2);
-          int i = bmtd.a(this.this$0.a, this.jdField_a_of_type_Bioy, 5);
+          int i = QZoneHelper.generateRequestCode(this.this$0.parentPlugin, this.val$runtime, 5);
           if (!TextUtils.isEmpty(str1)) {
             localBundle.putString("summary", str1);
           }
-          bmud.a(this.jdField_a_of_type_Bioy.a(), this.jdField_a_of_type_Bioy.a(), localBundle, null, i);
+          QZoneShareManager.publishToQzone(this.val$runtime.a(), this.val$runtime.a(), localBundle, null, i);
           return;
         }
       }

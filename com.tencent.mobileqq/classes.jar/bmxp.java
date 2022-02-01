@@ -1,29 +1,16 @@
-import com.tencent.component.network.utils.thread.ThreadPool.Job;
-import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.Random;
 
-class bmxp
-  implements ThreadPool.Job<Object>
+public class bmxp
 {
-  bmxp(bmxl parambmxl, boolean paramBoolean) {}
+  private static Random a = new Random();
   
-  public Object run(ThreadPool.JobContext paramJobContext)
+  public static bmxq a()
   {
-    paramJobContext.setMode(1);
-    paramJobContext = bmxl.a(this.jdField_a_of_type_Bmxl).a();
-    if (paramJobContext != null)
-    {
-      paramJobContext = paramJobContext.iterator();
-      while (paramJobContext.hasNext())
-      {
-        Object localObject = (bmxj)paramJobContext.next();
-        int i = ((bmxj)localObject).a(this.jdField_a_of_type_Boolean);
-        localObject = ((bmxj)localObject).a();
-        this.jdField_a_of_type_Bmxl.a((String)localObject, i);
-      }
-    }
-    return null;
+    int i = bodx.a / 4;
+    int j = a.nextInt(bodx.a / 2);
+    int k = bodx.a / 4;
+    int m = a.nextInt(bodx.a / 2);
+    return new bmxq(i - j + bodx.a / 2, k - m + (bodx.b - bodx.a(249.0F)) / 2);
   }
 }
 

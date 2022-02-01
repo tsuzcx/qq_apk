@@ -1,125 +1,197 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUGCVoice;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcImage;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButtonImp;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class pyp
-  implements pye
 {
-  protected View a(int paramInt, Context paramContext)
+  public static final AtomicLong a = new AtomicLong(0L);
+  
+  public static long a(qln paramqln)
   {
-    switch (paramInt)
+    if (!a())
     {
-    default: 
-      return null;
-    case 22: 
-    case 80: 
-      return new ComponentContentUgcImage(paramContext);
-    case 36: 
-      return new ComponentContentGridImage(paramContext);
-    case 23: 
-    case 120: 
-      return new ComponentContentUgcVideo(paramContext);
+      QLog.d("FeedsPreloadHelper", 1, "updateRequestVersionAndGet = -1, preloadSwitch is off.");
+      return -1L;
     }
-    return new ComponentContentUGCVoice(paramContext);
-  }
-  
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
-  
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    long l2 = 0L;
-    long l1 = l2;
-    if (paramBaseArticleInfo.mSocialFeedInfo != null)
+    if (paramqln == null)
     {
-      l1 = l2;
-      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
-        l1 = paramBaseArticleInfo.mSocialFeedInfo.a.a;
+      QLog.d("FeedsPreloadHelper", 1, "updateRequestVersionAndGet = -1, params is null.");
+      return -1L;
+    }
+    QLog.d("FeedsPreloadHelper", 1, new Object[] { "updateRequestVersionAndGet, channelID = ", Integer.valueOf(paramqln.b), ", beginSeq = ", Long.valueOf(paramqln.a) });
+    if ((paramqln.b == 0) && (paramqln.a == -1L))
+    {
+      QLog.d("FeedsPreloadHelper", 1, new Object[] { "feedsRequestVersion = ", Long.valueOf(a.incrementAndGet()) });
+      return a.get();
+    }
+    QLog.d("FeedsPreloadHelper", 1, "not recommend feeds or pull down request, return -1");
+    return -1L;
+  }
+  
+  public static void a()
+  {
+    long l = System.currentTimeMillis();
+    QLog.d("FeedsPreloadHelper", 1, new Object[] { "enterKDTab, time = ", Long.valueOf(l) });
+    bkwm.a("sp_key_readinjoy_feeds_preload_last_enter_kd_millisecond", Long.valueOf(l));
+  }
+  
+  public static void a(long paramLong, boolean paramBoolean) {}
+  
+  public static boolean a()
+  {
+    if (!bkwm.i())
+    {
+      QLog.d("FeedsPreloadHelper", 1, "isPreloadSwitchOn: NO, not independent kd tab.");
+      return false;
+    }
+    if (!((Boolean)bkwm.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(false))).booleanValue())
+    {
+      QLog.d("FeedsPreloadHelper", 1, "isPreloadSwitchOn: NO, switch is off.");
+      return false;
+    }
+    QLog.d("FeedsPreloadHelper", 1, "isPreloadSwitchOn: YES.");
+    return true;
+  }
+  
+  public static boolean a(ToServiceMsg paramToServiceMsg)
+  {
+    if ((paramToServiceMsg != null) && (paramToServiceMsg.getAttributes() != null))
+    {
+      paramToServiceMsg = (Boolean)paramToServiceMsg.getAttributes().get("isFeedsPreload");
+      if (paramToServiceMsg != null)
+      {
+        QLog.d("FeedsPreloadHelper", 1, new Object[] { "isFeedsPreloadRequest, isFeedsPreload = ", paramToServiceMsg });
+        return paramToServiceMsg.booleanValue();
       }
     }
-    return new ptl().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l1).f(paramBaseArticleInfo).o(paramBaseArticleInfo).g(paramBaseArticleInfo).h(paramBaseArticleInfo).i(paramBaseArticleInfo).j(paramBaseArticleInfo).B(paramBaseArticleInfo).p(paramBaseArticleInfo).q(paramBaseArticleInfo).u(paramBaseArticleInfo).v(paramBaseArticleInfo).w(paramBaseArticleInfo).x(paramBaseArticleInfo).z(paramBaseArticleInfo).A(paramBaseArticleInfo).C(paramBaseArticleInfo).a("ReadInjoy_original_cell").D(paramBaseArticleInfo).G(paramBaseArticleInfo).K(paramBaseArticleInfo).k(paramBaseArticleInfo).H(paramBaseArticleInfo).s(paramBaseArticleInfo).t(paramBaseArticleInfo).N(paramBaseArticleInfo).O(paramBaseArticleInfo).a();
+    QLog.d("FeedsPreloadHelper", 1, "isFeedsPreloadRequest, isFeedsPreload = false.");
+    return false;
   }
   
-  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2)
+  public static boolean a(qln paramqln)
   {
-    ViewBase localViewBase = paramContainer.getVirtualView();
-    qcb localqcb = (qcb)localViewBase.findViewBaseByName("id_middle_body_content");
-    if (localqcb != null)
+    if ((paramqln != null) && (a()) && (paramqln.b == 0) && (paramqln.a == -1L))
     {
-      NativeMiddleBodyView localNativeMiddleBodyView = (NativeMiddleBodyView)localqcb.getNativeView();
-      if (localNativeMiddleBodyView.a() == null)
+      QLog.d("FeedsPreloadHelper", 1, "isAvailableToHitCache: YES");
+      return true;
+    }
+    QLog.d("FeedsPreloadHelper", 1, "isAvailableToHitCache: NO");
+    return false;
+  }
+  
+  public static boolean a(boolean paramBoolean)
+  {
+    if (!bkwm.i())
+    {
+      QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload : NO, not independent kd tab.");
+      return false;
+    }
+    if (!((Boolean)bkwm.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(false))).booleanValue())
+    {
+      QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload: NO, switch is off.");
+      return false;
+    }
+    long l1 = ((Long)bkwm.a("sp_key_readinjoy_feeds_preload_last_enter_kd_millisecond", Long.valueOf(-1L))).longValue();
+    if (l1 == -1L)
+    {
+      QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload: NO, have not entered kd yet.");
+      return false;
+    }
+    long l2 = System.currentTimeMillis();
+    long l3 = ((Long)bkwm.a("sp_key_readinjoy_feeds_preload_last_enter_kd_day", Long.valueOf(90L))).longValue();
+    long l4 = (l2 - l1) / 1000L / 60L / 60L / 24L;
+    QLog.d("FeedsPreloadHelper", 1, new Object[] { "have left kd for ", Long.valueOf((l2 - l1) / 1000L / 60L), " minute(s), ", Long.valueOf(l4), " day(s), config days = ", Long.valueOf(l3) });
+    if (l4 > l3)
+    {
+      QLog.d("FeedsPreloadHelper", 1, new Object[] { "isAbleToPreload: NO, have left kd for more than ", Long.valueOf(l3), " day(s)." });
+      return false;
+    }
+    if (paramBoolean)
+    {
+      QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload: YES, red point preload.");
+      return true;
+    }
+    l2 = ((Long)bkwm.a("sp_key_readinjoy_feeds_preload_last_preload_millisecond", Long.valueOf(-1L))).longValue();
+    if (l2 != -1L)
+    {
+      l3 = System.currentTimeMillis();
+      l1 = ((Long)bkwm.a("sp_key_readinjoy_feeds_preload_interval", Long.valueOf(30L))).longValue();
+      l2 = (l3 - l2) / 1000L / 60L;
+      QLog.d("FeedsPreloadHelper", 1, new Object[] { "it has been ", Long.valueOf(l2), " minute(s) since last feeds preload, config minutes = ", Long.valueOf(l1) });
+      if (l2 < l1)
       {
-        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-        localqcb.a(localLayoutParams);
-        paramContainer = a(paramInt1, paramContainer.getContext());
-        if (paramContainer != null) {
-          localNativeMiddleBodyView.a(paramContainer, localLayoutParams);
+        QLog.d("FeedsPreloadHelper", 1, new Object[] { "isAbleToPreload: NO, it has been less than ", Long.valueOf(l1), " minute(s) since last feeds preload." });
+        return false;
+      }
+    }
+    QLog.d("FeedsPreloadHelper", 1, "isAbleToPreload: YES.");
+    return true;
+  }
+  
+  public static void b()
+  {
+    long l = System.currentTimeMillis();
+    QLog.d("FeedsPreloadHelper", 1, new Object[] { "preload succeed, time = ", Long.valueOf(l) });
+    bkwm.a("sp_key_readinjoy_feeds_preload_last_preload_millisecond", Long.valueOf(l));
+  }
+  
+  public static boolean b()
+  {
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if (!(localBaseActivity instanceof SplashActivity)) {
+      QLog.d("FeedsPreloadHelper", 1, "isFromLockScreenPush = false, is not splashActivity.");
+    }
+    for (;;)
+    {
+      return false;
+      try
+      {
+        int i = localBaseActivity.getIntent().getIntExtra("launch_from", 5);
+        QLog.d("FeedsPreloadHelper", 1, new Object[] { "isFromLockScreenPush, launchFrom = ", Integer.valueOf(i) });
+        if ((i == 6) || (i == 9)) {
+          return true;
         }
       }
-      a(paramInt1, paramppu, localNativeMiddleBodyView);
+      catch (Throwable localThrowable)
+      {
+        QLog.d("FeedsPreloadHelper", 1, "isFromLockScreenPush, t = ", localThrowable);
+        QLog.d("FeedsPreloadHelper", 1, "isFromLockScreenPush = false");
+      }
     }
-    qdk.e(localViewBase, paramppu);
-    paramContainer = (NativeButton)localViewBase.findViewBaseByName("id_super_topic_button");
-    if ((paramContainer != null) && (paramContainer.getNativeView() != null) && ((paramContainer.getNativeView() instanceof NativeButtonImp))) {
-      ((NativeButtonImp)paramContainer.getNativeView()).setTextColor(-1);
-    }
-    paramContainer = (qat)localViewBase.findViewBaseByName("id_article_comment");
-    if (paramContainer != null) {
-      paramContainer.a(paramppu);
-    }
-    qdk.a(localViewBase, paramppu.a());
-    puo.a(localViewBase, paramppu);
-    qdk.a(localViewBase, paramppu);
-    qdk.b(localViewBase, paramppu);
+    return false;
   }
   
-  protected void a(int paramInt, ppu paramppu, NativeMiddleBodyView paramNativeMiddleBodyView)
+  public static boolean b(ToServiceMsg paramToServiceMsg)
   {
-    if ((paramNativeMiddleBodyView.a() == null) || (paramppu.a() == null)) {
-      return;
-    }
-    sel localsel = paramppu.a();
-    switch (paramInt)
+    if (paramToServiceMsg != null)
     {
-    default: 
-      throw new IllegalArgumentException("" + paramInt);
-    case 22: 
-    case 80: 
-      ((ComponentContentUgcImage)paramNativeMiddleBodyView.a()).a(paramppu);
-      return;
-    case 36: 
-      paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.a();
-      ((ComponentContentGridImage)paramNativeMiddleBodyView).setMIReadInJoyModel(paramppu);
-      paramNativeMiddleBodyView.a(ComponentContentGridImage.a(paramppu.a()));
-      ((ComponentContentGridImage)paramNativeMiddleBodyView).setOnNoItemClickListener(new pyq(this, paramppu, localsel));
-      return;
-    case 23: 
-    case 120: 
-      paramNativeMiddleBodyView = (ComponentContentUgcVideo)paramNativeMiddleBodyView.a();
-      paramNativeMiddleBodyView.a(paramppu);
-      ((ComponentContentUgcVideo)paramNativeMiddleBodyView).setOnClickListener(new pyr(this, paramInt, localsel, paramppu));
-      return;
+      paramToServiceMsg = (Long)paramToServiceMsg.getAttribute("feedsRequestVersion");
+      if (paramToServiceMsg != null)
+      {
+        QLog.d("FeedsPreloadHelper", 1, new Object[] { "isLatestRequestVersion, reqVersion = ", Long.valueOf(paramToServiceMsg.longValue()), ", latestVersion = ", Long.valueOf(a.get()) });
+        return paramToServiceMsg.longValue() == a.get();
+      }
     }
-    ((ComponentContentUGCVoice)paramNativeMiddleBodyView.a()).a(paramppu);
+    QLog.d("FeedsPreloadHelper", 1, "is not latest request version.");
+    return false;
   }
   
-  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
+  public static boolean b(qln paramqln)
   {
+    if (paramqln != null)
+    {
+      if ((paramqln.i & 0x100) != 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        QLog.d("FeedsPreloadHelper", 1, new Object[] { "isFeedsPreloadRequest, isFeedsPreload = ", Boolean.valueOf(bool) });
+        return bool;
+      }
+    }
+    QLog.d("FeedsPreloadHelper", 1, "isFeedsPreloadRequest, isFeedsPreload = false.");
     return false;
   }
 }

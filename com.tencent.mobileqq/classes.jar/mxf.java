@@ -1,20 +1,45 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.Random;
 
-class mxf
-  implements DialogInterface.OnClickListener
+public class mxf
+  extends bbjd
 {
-  mxf(mxc parammxc, Activity paramActivity, int paramInt, String paramString1, String paramString2) {}
+  private AVGameAppInterface jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
+  private ngs jdField_a_of_type_Ngs;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public mxf(AVGameAppInterface paramAVGameAppInterface)
   {
-    if (paramInt == 1)
+    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface = paramAVGameAppInterface;
+    jdField_a_of_type_Int = Math.abs(new Random().nextInt());
+  }
+  
+  public AppInterface a()
+  {
+    return this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
+  }
+  
+  protected void a()
+  {
+    try
     {
-      this.jdField_a_of_type_Mxc.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+      super.a();
+      this.jdField_a_of_type_Ngs = new ngs();
+      super.a(this.jdField_a_of_type_Ngs);
+      super.d();
       return;
     }
-    this.jdField_a_of_type_Mxc.a(this.jdField_a_of_type_AndroidAppActivity);
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    super.b(paramToServiceMsg, null, mxg.class);
   }
 }
 

@@ -1,35 +1,12 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class bcoh
-  extends bcog
+@Metadata(bv={1, 0, 3}, k=3, mv={1, 1, 16})
+public final class bcoh
 {
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public static void a(bcog parambcog, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt) {}
   
-  public bcoh(ViewGroup paramViewGroup, int paramInt)
-  {
-    super(paramViewGroup, paramInt);
-  }
-  
-  protected void a()
-  {
-    super.a();
-    View localView = a(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131369629));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131363417));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131368212));
-    this.b = ((TextView)localView.findViewById(2131366690));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377227));
-    this.d = ((TextView)localView.findViewById(2131362008));
-  }
+  public static void a(bcog parambcog, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, @Nullable String paramString) {}
 }
 
 

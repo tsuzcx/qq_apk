@@ -1,78 +1,185 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.widgets.QCircleBaseWidgetView;
-import com.tencent.biz.qqcircle.widgets.QCircleTagRecommendWidget;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.1;
+import com.tribe.async.dispatch.Dispatcher;
+import java.lang.ref.SoftReference;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
-import qqcircle.QQCircleDitto.StItemInfo;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class wcg
-  extends vae
+  extends wbb
+  implements vqp<wdx, wfv>
 {
-  public wcg(QCircleTagRecommendWidget paramQCircleTagRecommendWidget) {}
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  public String a;
+  public SoftReference<wch> a;
+  public List<vwe> a;
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public int b;
+  private List<vwe> b;
   
-  public wch a(ViewGroup paramViewGroup, int paramInt)
+  public wcg()
   {
-    return new wch(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560813, paramViewGroup, false));
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a(FeedCloudMeta.StFeed paramStFeed, int paramInt, List<QQCircleDitto.StItemInfo> paramList)
+  public wcg(int paramInt, List<vwe> paramList)
   {
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
-    this.jdField_a_of_type_Int = paramInt;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseWidgetView != null))
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public wcg(wch paramwch)
+  {
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramwch);
+  }
+  
+  public static void d()
+  {
+    wcg localwcg = new wcg();
+    if (TextUtils.isEmpty(QQStoryContext.a().b()))
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(vwk.b(paramList));
-      paramStFeed = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseWidgetView;
-      if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-        break label140;
-      }
+      long l = QQStoryContext.a().a();
+      localwcg.a(0, new vwe(String.valueOf(l), ""), String.valueOf(l));
+      return;
     }
-    label140:
-    for (paramInt = 8;; paramInt = 0)
+    String str = QQStoryContext.a().b();
+    localwcg.a(1, new vwe("", str), str);
+  }
+  
+  public void a()
+  {
+    wdx localwdx = new wdx();
+    localwdx.jdField_c_of_type_Int = this.jdField_b_of_type_Int;
+    localwdx.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
+    vqn.a().a(localwdx, this);
+  }
+  
+  public void a(int paramInt, List<vwe> paramList)
+  {
+    if (paramInt == 1) {}
+    for (Object localObject = "unionId";; localObject = "uin")
     {
-      paramStFeed.setVisibility(paramInt);
-      a();
-      QLog.d("QCircleTagPageRecommendWidget", 4, "stItemInfos size = " + paramList.size());
-      QLog.d("QCircleTagPageRecommendWidget", 4, "mDatas size = " + this.jdField_a_of_type_JavaUtilList.size());
+      xvv.d("Q.qqstory.user.GetUserInfoHandler", "start get user id: %s , convert from %s", new Object[] { paramList, localObject });
+      localObject = new wdx();
+      ((wdx)localObject).jdField_c_of_type_Int = paramInt;
+      ((wdx)localObject).jdField_a_of_type_JavaUtilList.addAll(paramList);
+      vqn.a().a((vqr)localObject, this);
       return;
     }
   }
   
-  public int getItemCount()
+  public void a(int paramInt, vwe paramvwe, String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    a(paramInt, paramvwe, paramString, false, false);
   }
   
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public void a(int paramInt, vwe paramvwe, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((this.jdField_a_of_type_JavaUtilList.size() > paramInt) && ((paramViewHolder instanceof wch)))
+    if (paramInt == 1) {}
+    for (Object localObject = "unionId";; localObject = "uin")
     {
-      Object localObject = (wch)paramViewHolder;
-      ((wch)localObject).a(this);
-      ((wch)localObject).a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed);
-      ((wch)localObject).a(this.jdField_a_of_type_Int);
-      ((wch)localObject).b(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTagRecommendWidget.d());
-      ((wch)localObject).a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTagRecommendWidget.a());
-      ((wch)localObject).a(this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
-      localObject = (QQCircleDitto.StItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(vtt.a("ext1", ((QQCircleDitto.StItemInfo)localObject).name.get()));
-      localArrayList.add(vtt.a("ext2", this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()));
-      localArrayList.add(vtt.a("ext3", (String)((QQCircleDitto.StItemInfo)localObject).des.get().get(0)));
-      localArrayList.add(vtt.a("ext4", ((QQCircleDitto.StItemInfo)localObject).id.get()));
-      vtn.a(((QQCircleDitto.StItemInfo)localObject).id.get(), 3, 3, 96, 1, this.jdField_a_of_type_Int, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), "", this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.id.get(), paramInt, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, localArrayList, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleTagRecommendWidget.d(), -1);
+      xvv.d("Q.qqstory.user.GetUserInfoHandler", "start get user id: %s , convert from %s, needMetal:%s, needGradeSpeed:%s", new Object[] { paramvwe, localObject, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+      localObject = new wdx();
+      ((wdx)localObject).jdField_a_of_type_JavaLangString = paramString;
+      ((wdx)localObject).jdField_c_of_type_Int = paramInt;
+      ((wdx)localObject).jdField_a_of_type_JavaUtilList.add(paramvwe);
+      ((wdx)localObject).jdField_c_of_type_Boolean = paramvwe.a();
+      ((wdx)localObject).jdField_a_of_type_Boolean = paramBoolean1;
+      ((wdx)localObject).b = paramBoolean2;
+      vqn.a().a((vqr)localObject, this);
+      return;
     }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+  }
+  
+  public void a(@NonNull String paramString)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (!this.jdField_a_of_type_JavaUtilSet.contains(paramString))
+      {
+        this.jdField_b_of_type_JavaUtilList.add(new vwe("", paramString));
+        this.jdField_a_of_type_JavaUtilSet.add(paramString);
+      }
+      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+        new Handler().postDelayed(new GetUserInfoHandler.1(this), 600L);
+      }
+      return;
+    }
+  }
+  
+  public void a(@NonNull wdx paramwdx, @Nullable wfv arg2, @NonNull ErrorMessage paramErrorMessage)
+  {
+    wci localwci = new wci();
+    localwci.b = this.jdField_a_of_type_JavaLangString;
+    if (paramErrorMessage.isSuccess())
+    {
+      Object localObject = ???.jdField_a_of_type_JavaUtilList;
+      ??? = new ArrayList();
+      vvj localvvj = (vvj)vux.a(2);
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        QQUserUIItem localQQUserUIItem = (QQUserUIItem)((Iterator)localObject).next();
+        if (TextUtils.isEmpty(localQQUserUIItem.nickName)) {
+          localQQUserUIItem.nickName = "QQ用户";
+        }
+        ???.add(localvvj.a(localQQUserUIItem));
+      }
+      localwci.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      localwci.jdField_a_of_type_JavaUtilList = ???;
+      localwci.jdField_a_of_type_JavaLangString = paramwdx.jdField_a_of_type_JavaLangString;
+      if (???.size() == 1)
+      {
+        ??? = (QQUserUIItem)???.get(0);
+        localwci.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ???;
+        if (paramwdx.jdField_c_of_type_Boolean)
+        {
+          ((vuq)vux.a(10)).b("qqstory_my_uin", ???.qq);
+          QQStoryContext.a().a(???.uid);
+        }
+      }
+      vli.a().dispatch(localwci);
+      b();
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if ((paramwdx.jdField_c_of_type_Int != 1) || (paramwdx.jdField_a_of_type_JavaUtilList == null)) {
+          break;
+        }
+        paramwdx = paramwdx.jdField_a_of_type_JavaUtilList.iterator();
+        if (!paramwdx.hasNext()) {
+          break;
+        }
+        paramErrorMessage = ((vwe)paramwdx.next()).b;
+        if (TextUtils.isEmpty(paramErrorMessage)) {
+          continue;
+        }
+        this.jdField_a_of_type_JavaUtilSet.remove(paramErrorMessage);
+      }
+      xvv.c("Q.qqstory.user.GetUserInfoHandler", "get server info fail , %s, time :%d", paramErrorMessage);
+      localwci.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      localwci.jdField_a_of_type_JavaLangString = paramwdx.jdField_a_of_type_JavaLangString;
+      vli.a().dispatch(localwci);
+      c();
+    }
+    if ((this.jdField_a_of_type_JavaLangRefSoftReference != null) && (this.jdField_a_of_type_JavaLangRefSoftReference.get() != null)) {
+      ((wch)this.jdField_a_of_type_JavaLangRefSoftReference.get()).a(localwci);
+    }
   }
 }
 

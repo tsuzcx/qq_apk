@@ -1,34 +1,36 @@
 package com.tencent.qqmini.miniapp.task;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.util.Log;
 import com.tencent.qqmini.miniapp.core.service.AbsAppBrandService;
 import com.tencent.qqmini.miniapp.core.service.AppBrandRemoteService;
 import com.tencent.qqmini.miniapp.core.service.AppBrandService;
 import com.tencent.qqmini.miniapp.core.service.AppBrandWebviewService;
 import com.tencent.qqmini.miniapp.core.service.AppV8JsService;
+import com.tencent.qqmini.miniapp.util.V8Utils;
 import com.tencent.qqmini.sdk.annotation.ClassTag;
-import com.tencent.qqmini.sdk.core.utils.WnsConfig;
-import com.tencent.qqmini.sdk.ipc.AppBrandCmdProxy;
-import com.tencent.qqmini.sdk.launcher.MiniSDKConst;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.DebugInfo;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.report.MiniProgramReportHelper;
 import com.tencent.qqmini.sdk.report.MiniReportManager;
 import com.tencent.qqmini.sdk.runtime.BaseRuntimeLoader;
 import com.tencent.qqmini.sdk.task.AsyncTask;
 import com.tencent.smtt.sdk.JsVirtualMachine;
 import com.tencent.smtt.sdk.QbSdk;
-import java.io.File;
 
 @ClassTag(tag="ServiceCreateTask")
 public class ServiceCreateTask
   extends AsyncTask
 {
+  public static final String SERVICE_TYPE_V8 = "v8";
+  public static final String SERVICE_TYPE_WEBVIEW = "webview";
+  public static final String SERVICE_TYPE_X5 = "x5";
   public static final String TAG = "ServiceCreateTask";
   BaseRuntime appBrandRuntime;
   private AbsAppBrandService customJsService;
@@ -52,22 +54,6 @@ public class ServiceCreateTask
     return true;
   }
   
-  private static boolean checkEnableV8()
-  {
-    boolean bool = false;
-    if (WnsConfig.getConfig("qqminiapp", "mini_app_enable_v8_service", 0) > 0)
-    {
-      if (v8rtExist()) {
-        bool = true;
-      }
-    }
-    else {
-      return bool;
-    }
-    AppBrandCmdProxy.g().sendCmd("cmd_update_v8rt", new Bundle(), new ServiceCreateTask.3());
-    return false;
-  }
-  
   private void createWebviewService()
   {
     try
@@ -83,9 +69,9 @@ public class ServiceCreateTask
     }
   }
   
-  private static boolean v8rtExist()
+  private void reportServiceType(int paramInt, String paramString)
   {
-    return new File(MiniSDKConst.getMiniAppV8rtPath()).exists();
+    ThreadManager.getSubThreadHandler().post(new ServiceCreateTask.3(this, paramInt, paramString));
   }
   
   public void executeAsync()
@@ -103,14 +89,13 @@ public class ServiceCreateTask
     }
     int i;
     int j;
-    boolean bool;
     label131:
     for (Object localObject = ((RuntimeCreateTask)localObject).getAppBrandRuntime();; localObject = null)
     {
       this.appBrandRuntime = ((BaseRuntime)localObject);
       i = QbSdk.getTbsVersion(getContext());
       j = QbSdk.getTmpDirTbsVersion(getContext());
-      bool = checkEnableV8();
+      bool = V8Utils.checkEnableV8();
       if (!canDebug(this.appBrandRuntime)) {
         break label137;
       }
@@ -121,18 +106,29 @@ public class ServiceCreateTask
       break;
     }
     label137:
-    if (bool)
-    {
-      QMLog.i("ServiceCreateTask", "AppV8JsService create start");
-      onServiceCreateSucc(new AppV8JsService(this.appBrandRuntime));
-      return;
+    if (bool) {
+      try
+      {
+        QMLog.i("ServiceCreateTask", "AppV8JsService create start");
+        onServiceCreateSucc(new AppV8JsService(this.appBrandRuntime));
+        reportServiceType(650, "v8");
+        return;
+      }
+      catch (Exception localException)
+      {
+        QMLog.i("ServiceCreateTask", "run service by v8 failed", localException);
+        MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 151, "0", "", "", "", Log.getStackTraceString(localException));
+      }
     }
+    boolean bool = isTbsFallback(getContext());
+    QMLog.i("ServiceCreateTask", "tbsVersion=" + i + " tmpDirTbsVersion=" + j + ",isTbsFallback:" + Boolean.valueOf(bool));
     if (((i > 0) || (j > 0)) && (!isTbsFallback(getContext()))) {
       try
       {
         QMLog.i("ServiceCreateTask", "AppBrandService create start");
-        localObject = new AppBrandService(this.appBrandRuntime, null);
-        ((AppBrandService)localObject).initFramework(getContext(), new ServiceCreateTask.1(this, (AppBrandService)localObject));
+        AppBrandService localAppBrandService = new AppBrandService(this.appBrandRuntime, null);
+        localAppBrandService.initFramework(getContext(), new ServiceCreateTask.1(this, localAppBrandService));
+        reportServiceType(650, "x5");
         return;
       }
       catch (Throwable localThrowable)

@@ -3,6 +3,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.data.PrinterItemMsgRecord;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ew
@@ -13,11 +14,11 @@ class ew
   @SuppressLint({"NewApi"})
   public void onClick(View paramView)
   {
-    if (2131365358 == paramView.getId())
+    if (2131365391 == paramView.getId())
     {
       ex localex = new ex(this);
       ey localey = new ey(this);
-      bhlq.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131693340), this.jdField_a_of_type_AndroidContentContext.getString(2131693319), 2131690580, 2131693359, localex, localey).show();
+      bfur.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131693435), this.jdField_a_of_type_AndroidContentContext.getString(2131693414), 2131690620, 2131693454, localex, localey).show();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

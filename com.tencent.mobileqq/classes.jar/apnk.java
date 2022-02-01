@@ -1,42 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import cooperation.qqreader.QRBridgeActivity;
 
 public class apnk
+  implements apnn
 {
-  public float a;
-  public int a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public int c = -1;
-  
-  public apnk()
+  public String a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
+    return amtj.a(2131716061);
   }
   
-  public String toString()
+  public void a(View paramView, int paramInt)
   {
-    try
+    if (paramView == null) {}
+    Context localContext;
+    do
     {
-      String str1 = new String(this.jdField_a_of_type_ArrayOfByte, "utf-8");
-      return "ImageTag{imageId = " + this.jdField_a_of_type_JavaLangString + ", tagName = " + this.jdField_b_of_type_JavaLangString + ", tagConfidence = " + this.jdField_a_of_type_Int + ", tagConfidence_f = " + this.jdField_a_of_type_Float + ", need_check_lbs = " + this.jdField_b_of_type_Int + ", cdbRetCode = " + this.c + ", cdbRes = " + str1 + '}';
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ARCloudObjectClassifyResult", 2, "toString error, msg:" + localException.getMessage());
-        }
-        String str2 = "";
-      }
-    }
+        return;
+      } while (paramInt != 16908289);
+      localContext = paramView.getContext();
+    } while (localContext == null);
+    paramView = new Intent(paramView.getContext(), QRBridgeActivity.class);
+    paramView.putExtra("readtype", "18");
+    paramView.addFlags(268435456);
+    localContext.startActivity(paramView);
+    bcef.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 3, 0, "", "", "", "");
   }
 }
 

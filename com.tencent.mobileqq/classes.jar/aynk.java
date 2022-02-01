@@ -1,30 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class aynk
-  implements View.OnClickListener
+public class aynk
 {
-  aynk(aymj paramaymj, String paramString) {}
-  
-  public void onClick(View paramView)
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Aymj.a, QQBrowserActivity.class);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
-    Object localObject = this.jdField_a_of_type_Aymj.a;
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Aymj.a.j)) {}
-    for (localObject = "1";; localObject = "2")
-    {
-      localIntent.putExtra("url", (String)localObject);
-      this.jdField_a_of_type_Aymj.a.startActivity(localIntent);
-      bdll.b(this.jdField_a_of_type_Aymj.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_fans", 0, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-  }
+  public static Integer a = Integer.valueOf(1);
+  public static Integer b = Integer.valueOf(2);
+  public static Integer c = Integer.valueOf(3);
+  public static Integer d = Integer.valueOf(4);
+  public Long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
+  public Integer e = Integer.valueOf(0);
+  public Integer f = Integer.valueOf(0);
+  public Integer g = a;
 }
 
 

@@ -1,21 +1,21 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class auxx
-  implements auyi
+  implements View.OnClickListener
 {
-  auxx(auxu paramauxu) {}
+  auxx(auxv paramauxv, auxu paramauxu, auxz paramauxz) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a.setProgressBarVisibility(0);
-  }
-  
-  public void b()
-  {
-    this.a.a.setProgressBarVisibility(8);
+    auxv.a(this.jdField_a_of_type_Auxv).b(auxv.a(this.jdField_a_of_type_Auxv), this.jdField_a_of_type_Auxv, this.jdField_a_of_type_Auxu, this.jdField_a_of_type_Auxz);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auxx
  * JD-Core Version:    0.7.0.1
  */

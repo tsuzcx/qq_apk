@@ -1,14 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.qrcode.ipc.VoiceScan.1;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
-class yxv
-  implements DialogInterface.OnClickListener
+public class yxv
+  implements bhbx
 {
-  yxv(yxt paramyxt) {}
+  public yxv(VoiceScan.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    this.a.c();
+    paramClickableColorSpanTextView = new Intent(yxu.a(this.a.this$0), QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    yxu.a(this.a.this$0).startActivity(paramClickableColorSpanTextView);
   }
 }
 

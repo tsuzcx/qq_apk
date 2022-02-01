@@ -1,41 +1,56 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.1;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.2;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class sdl
-  implements View.OnClickListener
+public class sdl
 {
-  sdl(sdk paramsdk, ViewGroup paramViewGroup) {}
+  private static boolean b;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new sdm(this));
+  private sdn jdField_a_of_type_Sdn;
+  private she jdField_a_of_type_She = shg.a.a();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public sdl()
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    if (ChannelClassificationListView.a(this.jdField_a_of_type_Sdk.a) != null) {
-      ChannelClassificationListView.a(this.jdField_a_of_type_Sdk.a).onItemClick((AdapterView)this.jdField_a_of_type_AndroidViewViewGroup, paramView, i, this.jdField_a_of_type_Sdk.getItemId(i));
-    }
-    JSONObject localJSONObject = new JSONObject();
+    ThreadManager.executeOnSubThread(new VideoPluginInstall.1(this));
+  }
+  
+  private void c()
+  {
     try
     {
-      localJSONObject.put("subchannelid", this.jdField_a_of_type_Sdk.a(i).b());
-      localJSONObject.put("subchannelname", this.jdField_a_of_type_Sdk.a(i).a());
-      localJSONObject.put("channelid", ChannelClassificationListView.a(this.jdField_a_of_type_Sdk.a));
-      ocd.a(null, ozs.a() + "", "0X8009933", "0X8009933", 0, 0, "", "", "", localJSONObject.toString(), false);
-      EventCollector.getInstance().onViewClicked(paramView);
+      if (!b)
+      {
+        this.jdField_a_of_type_She.a();
+        b = true;
+      }
       return;
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+    finally {}
+  }
+  
+  public void a()
+  {
+    if ((!a()) && (!this.jdField_a_of_type_Boolean)) {
+      ThreadManager.post(new VideoPluginInstall.2(this), 8, null, true);
     }
+  }
+  
+  public void a(sdn paramsdn)
+  {
+    this.jdField_a_of_type_Sdn = paramsdn;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_She.a();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Sdn = null;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
   }
 }
 

@@ -1,43 +1,33 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.widget.AbsListView;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ansu
-  implements blih
+public class ansu
+  extends anri
 {
-  ansu(anst paramanst) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      paramInt = paramAbsListView.getFirstVisiblePosition();
-      if (paramInt > anst.a(this.a)) {
-        paramInt = 0;
-      }
-      break;
+    paramQQAppInterface = new ansq(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "wallet";
+    paramQQAppInterface.c = "modify_pass";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-    while ((paramInt >= 0) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
     {
-      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "slideupdown", "", ApolloUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), this.a.d, new String[] { String.valueOf(paramInt) });
-      return;
-      if (anst.a(this.a) > paramInt)
+      int i = 0;
+      while (i < paramContext.length)
       {
-        paramInt = 1;
-        continue;
-        anst.a(this.a, paramAbsListView.getFirstVisiblePosition());
-      }
-      else
-      {
-        paramInt = -1;
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
       }
     }
+    return paramQQAppInterface;
   }
 }
 

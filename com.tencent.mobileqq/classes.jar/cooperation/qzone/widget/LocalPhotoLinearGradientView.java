@@ -15,10 +15,10 @@ import android.view.View;
 public class LocalPhotoLinearGradientView
   extends View
 {
-  private float jdField_a_of_type_Float;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Shader jdField_a_of_type_AndroidGraphicsShader = new LinearGradient(0.0F, 0.0F, 0.0F, 0.0F, 0, 0, Shader.TileMode.CLAMP);
+  private Paint mPaint = new Paint();
+  private float mRadius;
+  private RectF mRect = new RectF();
+  private Shader mShader = new LinearGradient(0.0F, 0.0F, 0.0F, 0.0F, 0, 0, Shader.TileMode.CLAMP);
   
   public LocalPhotoLinearGradientView(Context paramContext)
   {
@@ -33,25 +33,25 @@ public class LocalPhotoLinearGradientView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setShader(this.jdField_a_of_type_AndroidGraphicsShader);
-    paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.mPaint.setShader(this.mShader);
+    paramCanvas.drawRoundRect(this.mRect, this.mRadius, this.mRadius, this.mPaint);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
+    this.mRect = new RectF(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
   }
   
   public void setRadius(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.mRadius = paramFloat;
     requestLayout();
   }
   
   public void setShader(@NonNull Shader paramShader)
   {
-    this.jdField_a_of_type_AndroidGraphicsShader = paramShader;
+    this.mShader = paramShader;
     requestLayout();
   }
 }

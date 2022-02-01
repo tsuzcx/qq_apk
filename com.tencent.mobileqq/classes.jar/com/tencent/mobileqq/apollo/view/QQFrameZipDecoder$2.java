@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ansz;
-import bihu;
-import bihw;
+import amnq;
+import bgoe;
+import bgog;
 
 public class QQFrameZipDecoder$2
   implements Runnable
 {
-  public QQFrameZipDecoder$2(ansz paramansz, bihu parambihu) {}
+  public QQFrameZipDecoder$2(amnq paramamnq, bgoe parambgoe) {}
   
   public void run()
   {
-    bihw.a(this.a, null);
+    bgog.a(this.a, null);
   }
 }
 

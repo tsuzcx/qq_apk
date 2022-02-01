@@ -1,10 +1,26 @@
-class ayip
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.portal.ImageAlphaSwitchView;
+
+public class ayip
+  implements bfzz<Float>
 {
-  public String a;
-  public String b;
-  public String c;
+  public ayip(ImageAlphaSwitchView paramImageAlphaSwitchView) {}
   
-  private ayip(ayhj paramayhj) {}
+  public void a(bfzt<Float> parambfzt, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  {
+    this.a.jdField_a_of_type_Float = paramFloat1.floatValue();
+    if (paramFloat1.floatValue() >= 255.0F)
+    {
+      this.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.b;
+      this.a.b = null;
+      this.a.jdField_a_of_type_Float = 0.0F;
+      if (this.a.jdField_a_of_type_Bfzt != null)
+      {
+        this.a.jdField_a_of_type_Bfzt.cancel();
+        this.a.jdField_a_of_type_Bfzt = null;
+      }
+    }
+  }
 }
 
 

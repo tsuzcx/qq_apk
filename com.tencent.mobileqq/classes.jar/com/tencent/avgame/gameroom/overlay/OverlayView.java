@@ -1,6 +1,5 @@
 package com.tencent.avgame.gameroom.overlay;
 
-import agej;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
@@ -21,30 +20,31 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bhtq;
 import com.tencent.avgame.ui.AVGameText;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.contact.addcontact.findtroop.BubbleLayout;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.richstatus.sign.RoundCornerRelativeLayout;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
-import myk;
-import mze;
-import mzj;
-import mzu;
-import naw;
-import nbo;
-import nbp;
-import nci;
-import ncj;
-import nck;
-import ncl;
-import ncm;
-import ncn;
+import mzl;
+import naf;
+import nak;
+import nav;
+import nbx;
+import ncp;
+import ncq;
+import ndn;
+import ndo;
+import ndp;
+import ndq;
+import ndr;
+import nds;
 
 public class OverlayView
   extends RelativeLayout
-  implements ncj
+  implements ndo
 {
   private int jdField_a_of_type_Int = -855638016;
   private View jdField_a_of_type_AndroidViewView;
@@ -58,7 +58,7 @@ public class OverlayView
   private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
   private RoundCornerRelativeLayout jdField_a_of_type_ComTencentMobileqqRichstatusSignRoundCornerRelativeLayout;
   Runnable jdField_a_of_type_JavaLangRunnable = new OverlayView.1(this);
-  protected nck a;
+  protected ndp a;
   private boolean jdField_a_of_type_Boolean;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
@@ -93,40 +93,40 @@ public class OverlayView
   public OverlayView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Nck = new nck(this);
-    LayoutInflater.from(getContext()).inflate(2131558709, this, true);
-    this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout = ((BubbleLayout)findViewById(2131372796));
+    this.jdField_a_of_type_Ndp = new ndp(this);
+    LayoutInflater.from(getContext()).inflate(2131558714, this, true);
+    this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout = ((BubbleLayout)findViewById(2131372764));
     this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setSelected(true);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.getLayoutParams());
-    this.g = ((TextView)findViewById(2131372795));
+    this.g = ((TextView)findViewById(2131372763));
     this.g.setSelected(true);
     this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setVisibility(8);
-    this.f = ((TextView)findViewById(2131362713));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367651);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364207));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362705));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367905));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362706));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362708));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370120));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362013));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362015));
+    this.f = ((TextView)findViewById(2131362718));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367683);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131364226));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362710));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367937));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362711));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362713));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370116));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362012));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362014));
     this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(AVGameText.a());
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362712));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362717));
     this.jdField_b_of_type_AndroidWidgetTextView.setTypeface(AVGameText.a());
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131364767));
+    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131364798));
     this.jdField_a_of_type_ComTencentAvgameUiAVGameText.setAttribute("#FFC000", "#FFFFFF");
-    ((TextView)findViewById(2131365085)).setTypeface(AVGameText.a());
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362711));
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignRoundCornerRelativeLayout = ((RoundCornerRelativeLayout)findViewById(2131372784));
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignRoundCornerRelativeLayout.setRadius(agej.a(12.0F, getResources()));
-    this.jdField_b_of_type_ComTencentMobileqqRichstatusSignRoundCornerRelativeLayout = ((RoundCornerRelativeLayout)findViewById(2131362014));
-    this.jdField_b_of_type_ComTencentMobileqqRichstatusSignRoundCornerRelativeLayout.setRadius(agej.a(12.0F, getResources()));
-    this.e = ((TextView)findViewById(2131377084));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372789));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372783));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout = ((BubbleLayout)findViewById(2131365385));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365384));
+    ((TextView)findViewById(2131365112)).setTypeface(AVGameText.a());
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362716));
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignRoundCornerRelativeLayout = ((RoundCornerRelativeLayout)findViewById(2131372752));
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignRoundCornerRelativeLayout.setRadius(AIOUtils.dp2px(12.0F, getResources()));
+    this.jdField_b_of_type_ComTencentMobileqqRichstatusSignRoundCornerRelativeLayout = ((RoundCornerRelativeLayout)findViewById(2131362013));
+    this.jdField_b_of_type_ComTencentMobileqqRichstatusSignRoundCornerRelativeLayout.setRadius(AIOUtils.dp2px(12.0F, getResources()));
+    this.e = ((TextView)findViewById(2131376836));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372757));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372751));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout = ((BubbleLayout)findViewById(2131365417));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365416));
     this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setSelected(true);
     this.jdField_a_of_type_AndroidViewView.setVisibility(4);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
@@ -136,11 +136,11 @@ public class OverlayView
   
   private Drawable a()
   {
-    mzj localmzj = myk.a().a().a();
-    if ((localmzj == null) || (TextUtils.isEmpty(localmzj.f))) {
-      return mzu.a("avgame_answer_bg_self@2x.png");
+    nak localnak = mzl.a().a().a();
+    if ((localnak == null) || (TextUtils.isEmpty(localnak.f))) {
+      return nav.a("avgame_answer_bg_self@2x.png");
     }
-    return URLDrawable.getDrawable(localmzj.f);
+    return URLDrawable.getDrawable(localnak.f);
   }
   
   private void a(String paramString, float paramFloat)
@@ -152,22 +152,22 @@ public class OverlayView
     int i;
     if (paramFloat != 0.0F)
     {
-      localLayoutParams.width = agej.a(199.0F, getResources());
-      localLayoutParams.height = agej.a(170.0F, getResources());
+      localLayoutParams.width = AIOUtils.dp2px(199.0F, getResources());
+      localLayoutParams.height = AIOUtils.dp2px(170.0F, getResources());
       localLayoutParams.addRule(13, 0);
       localLayoutParams.addRule(12, -1);
-      localLayoutParams.bottomMargin = agej.a(70.0F, getResources());
+      localLayoutParams.bottomMargin = AIOUtils.dp2px(70.0F, getResources());
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
       localLayoutParams = (RelativeLayout.LayoutParams)this.f.getLayoutParams();
       i = paramString.length();
       if (i < 6) {
         break label292;
       }
-      localLayoutParams.topMargin = agej.a(110.0F - paramFloat, getResources());
+      localLayoutParams.topMargin = AIOUtils.dp2px(110.0F - paramFloat, getResources());
       if (i == 6) {
-        localLayoutParams.topMargin = agej.a(129.0F - paramFloat, getResources());
+        localLayoutParams.topMargin = AIOUtils.dp2px(129.0F - paramFloat, getResources());
       }
-      localLayoutParams.width = agej.a(140.0F, getResources());
+      localLayoutParams.width = AIOUtils.dp2px(140.0F, getResources());
       this.f.setTextSize(1, 22.0F);
     }
     for (;;)
@@ -177,33 +177,33 @@ public class OverlayView
       }
       this.f.setLayoutParams(localLayoutParams);
       return;
-      localLayoutParams.width = agej.a(198.0F, getResources());
-      localLayoutParams.height = agej.a(198.0F, getResources());
+      localLayoutParams.width = AIOUtils.dp2px(198.0F, getResources());
+      localLayoutParams.height = AIOUtils.dp2px(198.0F, getResources());
       localLayoutParams.addRule(13, -1);
       localLayoutParams.addRule(12, 0);
       localLayoutParams.bottomMargin = 0;
       break;
       label292:
-      localLayoutParams.topMargin = agej.a(124.0F - paramFloat, getResources());
-      localLayoutParams.width = agej.a(150.0F, getResources());
+      localLayoutParams.topMargin = AIOUtils.dp2px(124.0F - paramFloat, getResources());
+      localLayoutParams.width = AIOUtils.dp2px(150.0F, getResources());
       this.f.setTextSize(1, 28.0F);
     }
   }
   
   private void c()
   {
-    naw.a(getContext(), "avgame_answer_card_star/data.json", "avgame_answer_card_star/images/", 300, 300, new ncl(this));
-    naw.a(getContext(), "avgame_answer_head_cheer_friend/data.json", "avgame_answer_head_cheer_friend/images/", 275, 275, new ncm(this));
-    naw.a(getContext(), "avgame_answer_head_cheer_self/data.json", "avgame_answer_head_cheer_self/images/", 275, 275, new ncn(this));
+    nbx.a(getContext(), "avgame_answer_card_star/data.json", "avgame_answer_card_star/images/", 300, 300, new ndq(this));
+    nbx.a(getContext(), "avgame_answer_head_cheer_friend/data.json", "avgame_answer_head_cheer_friend/images/", 275, 275, new ndr(this));
+    nbx.a(getContext(), "avgame_answer_head_cheer_self/data.json", "avgame_answer_head_cheer_self/images/", 275, 275, new nds(this));
   }
   
   private void c(RectF paramRectF)
   {
     this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setTriangleOffset(0);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = ((int)paramRectF.top - bhtq.b(42.0F));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = ((int)paramRectF.top - ViewUtils.dpToPx(42.0F));
     int k = (int)(paramRectF.left + paramRectF.right) / 2;
     int i = k - this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width / 2;
-    int m = bhtq.b(12.0F);
+    int m = ViewUtils.dpToPx(12.0F);
     int j;
     if (i < m)
     {
@@ -212,7 +212,7 @@ public class OverlayView
     }
     for (;;)
     {
-      int n = bhtq.a() - (k + this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width / 2);
+      int n = ViewUtils.getScreenWidth() - (k + this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width / 2);
       k = j;
       j = i;
       if (n < m)
@@ -236,9 +236,9 @@ public class OverlayView
   private void d()
   {
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    localLayoutParams.topMargin = nbo.o;
-    localLayoutParams.width = nbo.q;
-    localLayoutParams.height = nbo.p;
+    localLayoutParams.topMargin = ncp.k;
+    localLayoutParams.width = ncp.m;
+    localLayoutParams.height = ncp.l;
     if (QLog.isColorLevel()) {
       QLog.d("OverlayView", 2, "updateCardAnimWrapperLP topMargin = " + localLayoutParams.topMargin + ",width = " + localLayoutParams.width + ",height = " + localLayoutParams.height);
     }
@@ -255,9 +255,9 @@ public class OverlayView
     return this.jdField_b_of_type_AndroidWidgetRelativeLayout;
   }
   
-  public nci a()
+  public ndn a()
   {
-    return this.jdField_a_of_type_Nck;
+    return this.jdField_a_of_type_Ndp;
   }
   
   public void a()
@@ -279,9 +279,9 @@ public class OverlayView
     }
     this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setVisibility(0);
     this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setSelected(true);
-    this.g.setText(2131690251);
+    this.g.setText(2131690276);
     this.g.setTextSize(1, 14.0F);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = bhtq.b(76.0F);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = ViewUtils.dpToPx(76.0F);
     c(paramRectF);
     this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.postDelayed(new OverlayView.6(this), 3000L);
   }
@@ -308,7 +308,7 @@ public class OverlayView
     }
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     this.jdField_a_of_type_AndroidViewView.setAlpha(0.8F);
-    paramLottieDrawable = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetRelativeLayout, "translationY", new float[] { agej.a(-76.0F, getResources()), agej.a(11.0F, getResources()), 0.0F });
+    paramLottieDrawable = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetRelativeLayout, "translationY", new float[] { AIOUtils.dp2px(-76.0F, getResources()), AIOUtils.dp2px(11.0F, getResources()), 0.0F });
     paramLottieDrawable.setDuration(360L);
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setAlpha(0.0F);
     ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 0.0F, 1.0F });
@@ -324,8 +324,8 @@ public class OverlayView
     paramLottieDrawable.setDuration(170L);
     localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignRoundCornerRelativeLayout, "alpha", new float[] { 0.0F, 1.0F });
     localObjectAnimator1.setDuration(280L);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignRoundCornerRelativeLayout.setPivotX(bhtq.b(100.0F) / 2);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignRoundCornerRelativeLayout.setPivotY(bhtq.b(100.0F));
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignRoundCornerRelativeLayout.setPivotX(ViewUtils.dpToPx(100.0F) / 2);
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignRoundCornerRelativeLayout.setPivotY(ViewUtils.dpToPx(100.0F));
     localObject = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignRoundCornerRelativeLayout, "scaleX", new float[] { 0.74F, 1.1F, 1.0F });
     ((ObjectAnimator)localObject).setDuration(440L);
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignRoundCornerRelativeLayout, "scaleY", new float[] { 0.74F, 1.1F, 1.0F });
@@ -337,7 +337,7 @@ public class OverlayView
     this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setAlpha(0.0F);
     ObjectAnimator localObjectAnimator4 = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout, "alpha", new float[] { 0.0F, 1.0F });
     localObjectAnimator4.setDuration(240L);
-    ObjectAnimator localObjectAnimator5 = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout, "translationY", new float[] { agej.a(8.5F, getResources()), agej.a(-6.5F, getResources()), 0.0F });
+    ObjectAnimator localObjectAnimator5 = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout, "translationY", new float[] { AIOUtils.dp2px(8.5F, getResources()), AIOUtils.dp2px(-6.5F, getResources()), 0.0F });
     localObjectAnimator5.setDuration(480L);
     localObjectAnimator5.setInterpolator(new AccelerateDecelerateInterpolator());
     AnimatorSet localAnimatorSet = new AnimatorSet();
@@ -360,7 +360,7 @@ public class OverlayView
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
     this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(mzu.a("avgame_answer_bg_timeout@2x.png"));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(nav.a("avgame_answer_bg_timeout@2x.png"));
     b();
   }
   
@@ -403,7 +403,7 @@ public class OverlayView
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       break;
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(mzu.a("avgame_answer_bg_friend@2x.png"));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(nav.a("avgame_answer_bg_friend@2x.png"));
       this.jdField_b_of_type_AndroidWidgetTextView.setText("好友答对了");
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -432,14 +432,14 @@ public class OverlayView
     this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setSelected(true);
     this.g.setText(paramString);
     this.g.setTextSize(1, 14.0F);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = bhtq.b(paramInt);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = ViewUtils.dpToPx(paramInt);
     c(paramRectF);
     this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
   }
   
-  public void a(nbp paramnbp)
+  public void a(ncq paramncq)
   {
-    this.jdField_a_of_type_Nck.a(paramnbp);
+    this.jdField_a_of_type_Ndp.a(paramncq);
   }
   
   void b()
@@ -451,7 +451,7 @@ public class OverlayView
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     this.jdField_a_of_type_AndroidViewView.setAlpha(0.8F);
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetRelativeLayout, "translationY", new float[] { agej.a(-76.0F, getResources()), agej.a(11.0F, getResources()), 0.0F });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetRelativeLayout, "translationY", new float[] { AIOUtils.dp2px(-76.0F, getResources()), AIOUtils.dp2px(11.0F, getResources()), 0.0F });
     localObjectAnimator1.setDuration(360L);
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setAlpha(0.0F);
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidWidgetRelativeLayout, "alpha", new float[] { 0.0F, 1.0F });
@@ -473,9 +473,9 @@ public class OverlayView
     }
     this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setVisibility(0);
     this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setSelected(true);
-    this.g.setText(2131690273);
+    this.g.setText(2131690298);
     this.g.setTextSize(1, 14.0F);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = bhtq.b(244.0F);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = ViewUtils.dpToPx(244.0F);
     c(paramRectF);
     this.jdField_b_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.postDelayed(new OverlayView.7(this), 3000L);
   }
@@ -498,7 +498,7 @@ public class OverlayView
     String str = this.g.getText().toString();
     if ((this.jdField_a_of_type_Boolean) && (str != null) && (str.equals(paramString)))
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = bhtq.b(147.0F);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = ViewUtils.dpToPx(147.0F);
       c(paramRectF);
     }
   }

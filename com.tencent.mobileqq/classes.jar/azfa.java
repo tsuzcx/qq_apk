@@ -1,17 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
-
-public class azfa
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface azfa
 {
-  public azfa(ScanIconAnimateView paramScanIconAnimateView) {}
+  public abstract void a(azfk paramazfk);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.e = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
-  }
+  public abstract void b(azfk paramazfk);
+  
+  public abstract void c(azfk paramazfk);
+  
+  public abstract void d(azfk paramazfk);
+  
+  public abstract void e(azfk paramazfk);
+  
+  public abstract void f(azfk paramazfk);
+  
+  public abstract void g(azfk paramazfk);
+  
+  public abstract void h(azfk paramazfk);
+  
+  public abstract void i(azfk paramazfk);
+  
+  public abstract void j(azfk paramazfk);
+  
+  public abstract void k(azfk paramazfk);
+  
+  public abstract void l(azfk paramazfk);
+  
+  public abstract void m(azfk paramazfk);
 }
 
 

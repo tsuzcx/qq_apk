@@ -1,23 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.app.CardObserver;
 
 class ajfk
-  extends RecyclerView.ViewHolder
+  extends CardObserver
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  String jdField_a_of_type_JavaLangString;
+  ajfk(ajey paramajey) {}
   
-  public ajfk(ajfh paramajfh, View paramView)
+  public void onGetMedal(boolean paramBoolean1, boolean paramBoolean2)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)paramView.findViewById(2131376963));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368212));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371647));
+    if (paramBoolean1) {
+      this.a.e();
+    }
+  }
+  
+  public void onGetSignInInfo(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.e();
+    }
   }
 }
 

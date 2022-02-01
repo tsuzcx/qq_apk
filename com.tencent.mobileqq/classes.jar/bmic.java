@@ -1,10 +1,18 @@
-import android.os.IInterface;
-import cooperation.qappcenter.remote.SendMsg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.tavcut.exporter.ImageExporter;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment.20;
 
-public abstract interface bmic
-  extends IInterface
+public class bmic
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(SendMsg paramSendMsg);
+  public bmic(AEEditorImageEditFragment.20 param20) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    AEEditorImageEditFragment.a(this.a.this$0).cancel();
+  }
 }
 
 

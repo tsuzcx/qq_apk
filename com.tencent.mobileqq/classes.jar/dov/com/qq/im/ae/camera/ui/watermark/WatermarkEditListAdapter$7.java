@@ -1,12 +1,12 @@
 package dov.com.qq.im.ae.camera.ui.watermark;
 
 import android.widget.EditText;
-import bopo;
+import bltv;
 
 public class WatermarkEditListAdapter$7
   implements Runnable
 {
-  public WatermarkEditListAdapter$7(bopo parambopo, EditText paramEditText) {}
+  public WatermarkEditListAdapter$7(bltv parambltv, EditText paramEditText) {}
   
   public void run()
   {

@@ -1,27 +1,19 @@
-import android.os.Message;
-import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class auvs
-  implements ahag
+public class auvs
+  implements View.OnClickListener
 {
-  auvs(auvq paramauvq, auvt paramauvt, int paramInt) {}
+  public auvs(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    FlashChatTextEffectView.a(this.jdField_a_of_type_Auvt);
-    Message localMessage = Message.obtain();
-    localMessage.obj = this.jdField_a_of_type_Auvt;
-    localMessage.what = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Int < FlashChatTextEffectView.a().length)
-    {
-      auvq.a(this.jdField_a_of_type_Auvq).sendMessageDelayed(localMessage, FlashChatTextEffectView.a()[this.jdField_a_of_type_Int]);
-      return;
-    }
-    auvq.a(this.jdField_a_of_type_Auvq).sendMessageDelayed(localMessage, 7000L);
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void b() {}
 }
 
 

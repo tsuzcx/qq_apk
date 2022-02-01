@@ -1,31 +1,19 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class qda
-  extends NativeTextImp
+  implements ViewBase.OnClickListener
 {
-  qda(qcz paramqcz, Context paramContext)
-  {
-    super(paramContext);
-  }
+  qda(qcy paramqcy, Container paramContainer, pvc parampvc, int paramInt) {}
   
-  public void draw(Canvas paramCanvas)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (!TextUtils.isEmpty(getText()))
-    {
-      this.a.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getWidth(), getHeight());
-      this.a.b.set(0.0F, 0.0F, getWidth() * qcz.a(this.a) / 100.0F, getHeight());
-      this.a.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(qcz.a(this.a)));
-      paramCanvas.drawRoundRect(this.a.jdField_a_of_type_AndroidGraphicsRectF, agej.a(2.0F, getResources()), agej.a(2.0F, getResources()), this.a.jdField_a_of_type_AndroidGraphicsPaint);
-      this.a.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(qcz.b(this.a)));
-      paramCanvas.drawRoundRect(this.a.b, agej.a(2.0F, getResources()), agej.a(2.0F, getResources()), this.a.jdField_a_of_type_AndroidGraphicsPaint);
+    qcy.a(this.jdField_a_of_type_Qcy, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Pvc, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("PgcProteusItem", 2, "click gallery comment for jumping to gallery articleinfo = " + this.jdField_a_of_type_Pvc.a() + " position = " + this.jdField_a_of_type_Int);
     }
-    super.draw(paramCanvas);
   }
 }
 

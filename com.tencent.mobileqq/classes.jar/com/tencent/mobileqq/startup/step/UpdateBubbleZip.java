@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.startup.step;
 
-import ajpz;
-import bhmi;
+import aiku;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 
 public class UpdateBubbleZip
@@ -10,8 +10,8 @@ public class UpdateBubbleZip
 {
   protected boolean doStep()
   {
-    ajpz.a();
-    bhmi.a(BaseApplicationImpl.sApplication.getDir("classic_emoticon", 0).getPath());
+    aiku.a();
+    FileUtils.deleteDirectory(BaseApplicationImpl.sApplication.getDir("classic_emoticon", 0).getPath());
     return true;
   }
 }

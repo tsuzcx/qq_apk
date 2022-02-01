@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import aean;
-import aggr;
-import ajka;
-import bcrg;
+import acvv;
+import aezm;
+import aiej;
+import bbko;
 import com.tencent.mobileqq.activity.aio.BeancurdMsg;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -18,36 +18,36 @@ public final class ChatActivityFacade$7
   public void run()
   {
     long l1;
-    if (aean.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false))
+    if (acvv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false))
     {
       l1 = this.jdField_a_of_type_OrgJsonJSONObject.optLong("fromuin");
-      if (!String.valueOf(l1).equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
+      if (!String.valueOf(l1).equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin)) {
         break label250;
       }
       long l2 = this.jdField_a_of_type_OrgJsonJSONObject.optLong("time");
       QLog.i("ChatActivityFacade.QZoneFeeds", 1, "add new feeds publishTime:" + l2);
       if (this.jdField_a_of_type_Boolean) {
-        ((ajka)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).a(this.jdField_a_of_type_OrgJsonJSONObject.toString(), String.valueOf(l1));
+        ((aiej)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).a(this.jdField_a_of_type_OrgJsonJSONObject.toString(), String.valueOf(l1));
       }
     }
     else
     {
       return;
     }
-    aggr localaggr = (aggr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(282);
+    aezm localaezm = (aezm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(282);
     BeancurdMsg localBeancurdMsg = new BeancurdMsg();
     localBeancurdMsg.buffer = this.jdField_a_of_type_OrgJsonJSONObject.toString();
     localBeancurdMsg.busiid = 2;
     localBeancurdMsg.frienduin = String.valueOf(l1);
     localBeancurdMsg.isNeedDelHistory = true;
     localBeancurdMsg.ispush = this.jdField_a_of_type_ArrayOfBoolean[0];
-    localBeancurdMsg.startTime = bcrg.a();
+    localBeancurdMsg.startTime = bbko.a();
     localBeancurdMsg.validTime = 604800L;
     localBeancurdMsg.token = this.jdField_a_of_type_ArrayOfLong[0];
     if (QLog.isColorLevel()) {
       QLog.i("ChatActivityFacade.QZoneFeeds", 2, "addQzoneFeedMessageV2l receiveBeancurd:" + String.valueOf(localBeancurdMsg));
     }
-    localaggr.a(localBeancurdMsg);
+    localaezm.a(localBeancurdMsg);
     return;
     label250:
     QLog.e("ChatActivityFacade.QZoneFeeds", 1, "当前获取到的feeds的发表人不匹配，忽略不插入");
@@ -55,7 +55,7 @@ public final class ChatActivityFacade$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.7
  * JD-Core Version:    0.7.0.1
  */

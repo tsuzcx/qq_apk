@@ -1,31 +1,15 @@
-import android.app.Activity;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideotab.SelectVideoTabFragment;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.CoverSelectTabFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.GalleryFragment;
 
 public class rjv
-  extends FragmentPagerAdapter
+  implements rkc
 {
-  public rjv(SelectVideoTabFragment paramSelectVideoTabFragment, FragmentManager paramFragmentManager)
-  {
-    super(paramFragmentManager);
-  }
+  public rjv(CoverSelectTabFragment paramCoverSelectTabFragment) {}
   
-  public int getCount()
+  public void a(Bitmap paramBitmap)
   {
-    return SelectVideoTabFragment.a(this.a).size();
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    return (Fragment)SelectVideoTabFragment.a(this.a).get(paramInt);
-  }
-  
-  public CharSequence getPageTitle(int paramInt)
-  {
-    return SelectVideoTabFragment.a(this.a).getString(SelectVideoTabFragment.a()[paramInt]);
+    CoverSelectTabFragment.a(this.a).a(paramBitmap);
   }
 }
 

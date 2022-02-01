@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bdll;
+import bcef;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
@@ -23,18 +23,18 @@ public class ExtendFriendPublicFragmentActivity
   {
     String str = "";
     Object localObject = "";
-    SosoInterface.SosoLbsInfo localSosoLbsInfo = SosoInterface.b();
-    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.a != null))
+    SosoInterface.SosoLbsInfo localSosoLbsInfo = SosoInterface.getSosoInfo();
+    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.mLocation != null))
     {
-      localObject = localSosoLbsInfo.a;
-      if (!TextUtils.isEmpty(((SosoInterface.SosoLocation)localObject).e)) {
-        str = ((SosoInterface.SosoLocation)localObject).e;
+      localObject = localSosoLbsInfo.mLocation;
+      if (!TextUtils.isEmpty(((SosoInterface.SosoLocation)localObject).city)) {
+        str = ((SosoInterface.SosoLocation)localObject).city;
       }
-      localObject = String.format("%s;%s", new Object[] { Double.valueOf(((SosoInterface.SosoLocation)localObject).a), Double.valueOf(((SosoInterface.SosoLocation)localObject).b) });
+      localObject = String.format("%s;%s", new Object[] { Double.valueOf(((SosoInterface.SosoLocation)localObject).mLat02), Double.valueOf(((SosoInterface.SosoLocation)localObject).mLon02) });
     }
     for (;;)
     {
-      bdll.b(null, "dc00898", "", "", "0X800AD99", "0X800AD99", paramInt, 0, "", "", str, (String)localObject);
+      bcef.b(null, "dc00898", "", "", "0X800AD99", "0X800AD99", paramInt, 0, "", "", str, (String)localObject);
       return;
       str = "";
     }
@@ -69,8 +69,9 @@ public class ExtendFriendPublicFragmentActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -83,7 +84,7 @@ public class ExtendFriendPublicFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.ExtendFriendPublicFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

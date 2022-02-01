@@ -1,53 +1,29 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class axrg
-  implements DownloadParams.DecodeHandler
+  implements View.OnClickListener
 {
-  private static final HashMap<String, ArrayList<Integer>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  Object jdField_a_of_type_JavaLangObject;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<axrh> jdField_a_of_type_JavaLangRefWeakReference;
+  public axrg(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
   
-  public axrg(String paramString, axrh paramaxrh, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramaxrh != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaxrh);
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public static List<Integer> a(String paramString)
-  {
-    return (List)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    for (paramDownloadParams = null;; paramDownloadParams = (axrh)this.jdField_a_of_type_JavaLangRefWeakReference.get())
+    switch (paramView.getId())
     {
-      if (paramDownloadParams != null)
-      {
-        int[] arrayOfInt = axrj.a(Bitmap.createBitmap(paramBitmap, 0, paramBitmap.getHeight() / 2, paramBitmap.getWidth(), paramBitmap.getHeight() / 2));
-        if ((arrayOfInt != null) && (arrayOfInt.length >= 2))
-        {
-          ArrayList localArrayList = new ArrayList();
-          localArrayList.add(Integer.valueOf(arrayOfInt[0]));
-          localArrayList.add(Integer.valueOf(arrayOfInt[1]));
-          if (!jdField_a_of_type_JavaUtilHashMap.containsKey(this.jdField_a_of_type_JavaLangString)) {
-            jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, localArrayList);
-          }
-        }
-        paramDownloadParams.a(this.jdField_a_of_type_JavaLangString, arrayOfInt[0], arrayOfInt[1], this.jdField_a_of_type_JavaLangObject);
-      }
-      return paramBitmap;
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.b();
+      continue;
+      this.a.c();
+      continue;
+      this.a.d();
+      continue;
+      this.a.doOnBackPressed();
     }
   }
 }

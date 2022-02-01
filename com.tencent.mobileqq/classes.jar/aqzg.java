@@ -1,32 +1,23 @@
-import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.List;
 
 class aqzg
-  implements Comparator<Rect>
+  implements aqyr
 {
-  aqzg(aqzf paramaqzf) {}
+  aqzg(aqzb paramaqzb) {}
   
-  public int a(Rect paramRect1, Rect paramRect2)
+  public void a(List<EmoticonInfo> paramList)
   {
-    if (this.a.g.contains(paramRect1)) {}
-    do
-    {
-      do
-      {
-        return 1;
-        if (this.a.g.contains(paramRect2)) {
-          return -1;
-        }
-        if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {
-          return -1;
-        }
-      } while (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width());
-      if (paramRect1.width() > paramRect2.width()) {
-        return -1;
-      }
-    } while (paramRect1.width() < paramRect2.width());
-    return 0;
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList();
+    }
+    if (aqzb.a(this.a) != null) {
+      aqzb.a(this.a).obtainMessage(206, localObject).sendToTarget();
+    }
   }
 }
 

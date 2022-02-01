@@ -1,15 +1,21 @@
-import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
+import com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
 public class ykk
-  implements blmh
+  implements Comparator<RecentUser>
 {
-  public ykk(MemoriesInnerListView paramMemoriesInnerListView) {}
+  public ykk(ShareToActivity paramShareToActivity) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    if ((paramInt == 4097) && (this.a.a != null)) {
-      this.a.a.a(MemoriesInnerListView.a(this.a).a);
+    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
+      return -1;
     }
+    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
+      return 1;
+    }
+    return 0;
   }
 }
 

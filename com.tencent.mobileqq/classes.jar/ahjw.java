@@ -1,17 +1,31 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 class ahjw
-  extends ahkx
+  implements odm
 {
-  ahjw(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahjw(ahiu paramahiu) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(boolean paramBoolean)
   {
-    return new ahcr(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    this.a.b();
+    if (!paramBoolean)
+    {
+      this.a.b(2131694775);
+      return;
+    }
+    EntityManager localEntityManager = this.a.app.getEntityManagerFactory().createEntityManager();
+    AccountDetail localAccountDetail = (AccountDetail)localEntityManager.find(AccountDetail.class, this.a.sessionInfo.curFriendUin);
+    if (localAccountDetail != null) {
+      localEntityManager.remove(localAccountDetail);
+    }
+    localEntityManager.close();
+    this.a.app.getMessageFacade().clearHistory(this.a.sessionInfo.curFriendUin, 1008);
+    this.a.finish();
   }
 }
 

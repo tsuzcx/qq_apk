@@ -1,41 +1,41 @@
 package com.tencent.mobileqq.intervideo.now;
 
 import Override;
-import agej;
+import amsu;
+import anax;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import anyu;
-import aohi;
-import auxu;
-import awca;
-import awcb;
-import axad;
-import bdwq;
-import bhbx;
-import bhhz;
-import bhlg;
+import atky;
+import aupa;
+import aupb;
+import avnk;
+import bcqh;
+import bflj;
+import bfrj;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForQQStory;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
-import win;
+import vkm;
 
 public class ShareToQQActivity
   extends BaseActivity
 {
   static boolean jdField_a_of_type_Boolean;
-  anyu jdField_a_of_type_Anyu = new awca(this);
-  aohi jdField_a_of_type_Aohi = new awcb(this);
+  amsu jdField_a_of_type_Amsu = new aupa(this);
+  anax jdField_a_of_type_Anax = new aupb(this);
   public ProfileActivity.AllInOne a;
   public String a;
   String b;
@@ -52,7 +52,7 @@ public class ShareToQQActivity
     Object localObject = null;
     try
     {
-      String str = bhlg.e(this.app, this.b);
+      String str = ContactUtils.getUinByPhoneNum(this.app, this.b);
       localObject = str;
     }
     catch (Exception localException)
@@ -67,8 +67,9 @@ public class ShareToQQActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -78,12 +79,12 @@ public class ShareToQQActivity
     String str = getIntent().getStringExtra("sourceFrom");
     if ((TextUtils.equals(this.c, "share_from_troop_member_card")) && (paramInt2 == -1))
     {
-      paramIntent.putExtra("selfSet_leftViewText", getString(2131718523));
+      paramIntent.putExtra("selfSet_leftViewText", getString(2131718771));
       new Intent(this, SplashActivity.class);
-      localObject = agej.a(paramIntent, null);
+      localObject = AIOUtils.setOpenAIOIntent(paramIntent, null);
       ((Intent)localObject).putExtras(new Bundle(paramIntent.getExtras()));
-      paramIntent = ForwardUtils.a((Intent)localObject);
-      ForwardUtils.a(this.app, this, paramIntent, (Intent)localObject);
+      paramIntent = ForwardUtils.sessionFromIntent((Intent)localObject);
+      ForwardUtils.handleAppShareAction(this.app, this, paramIntent, (Intent)localObject);
     }
     for (;;)
     {
@@ -91,13 +92,13 @@ public class ShareToQQActivity
       finish();
       return;
       if (TextUtils.equals(str, "OD")) {
-        bhbx.c(this.app, this, paramInt2, paramIntent);
+        bflj.c(this.app, this, paramInt2, paramIntent);
       } else if ((TextUtils.equals(str, "StudyRoom")) || (TextUtils.equals(str, "now_qqlive")) || (TextUtils.equals(str, "StudyRoomQzone"))) {
-        bdwq.a(this.app, this, paramInt2, paramIntent, str);
+        bcqh.a(this.app, this, paramInt2, paramIntent, str);
       } else if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        bhbx.a(this.app, this, paramInt2, paramIntent);
+        bflj.a(this.app, this, paramInt2, paramIntent);
       } else {
-        bhbx.b(this.app, this, paramInt2, paramIntent);
+        bflj.b(this.app, this, paramInt2, paramIntent);
       }
     }
   }
@@ -119,10 +120,10 @@ public class ShareToQQActivity
     long l;
     if ("shiel_uin".equals(this.c))
     {
-      addObserver(this.jdField_a_of_type_Anyu);
+      addObserver(this.jdField_a_of_type_Amsu);
       bool = paramBundle.getBooleanExtra("isCancelShield", false);
       this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("uin");
-      paramBundle = (FriendListHandler)this.app.a(1);
+      paramBundle = (FriendListHandler)this.app.getBusinessHandler(1);
       for (;;)
       {
         try
@@ -132,7 +133,7 @@ public class ShareToQQActivity
             continue;
           }
           bool = true;
-          paramBundle.a(l, bool);
+          paramBundle.changeFriendShieldFlag(l, bool);
         }
         catch (NumberFormatException paramBundle)
         {
@@ -145,11 +146,11 @@ public class ShareToQQActivity
     }
     if ("source_from_operate_shiel_uin_list".equals(this.c))
     {
-      addObserver(this.jdField_a_of_type_Aohi);
+      addObserver(this.jdField_a_of_type_Anax);
       bool = paramBundle.getBooleanExtra("isCancelShield", false);
       this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("uin");
       this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne = ((ProfileActivity.AllInOne)paramBundle.getParcelableExtra("allinone"));
-      localObject = (axad)this.app.getManager(16);
+      localObject = (avnk)this.app.getManager(16);
       if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null))
       {
         try
@@ -161,11 +162,11 @@ public class ShareToQQActivity
           l = Long.parseLong(paramBundle);
           paramBundle = new ArrayList();
           paramBundle.add(Long.valueOf(l));
-          int i = bhhz.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
+          int i = bfrj.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
           if (bool) {
-            ((axad)localObject).b(i, paramBundle);
+            ((avnk)localObject).b(i, paramBundle);
           } else {
-            ((axad)localObject).a(i, paramBundle);
+            ((avnk)localObject).a(i, paramBundle);
           }
         }
         catch (NumberFormatException paramBundle)
@@ -188,22 +189,22 @@ public class ShareToQQActivity
     {
       if ("share_from_troop_member_card".equals(this.c))
       {
-        auxu.a(this, paramBundle, 21);
+        atky.a(this, paramBundle, 21);
         return true;
       }
       if (TextUtils.equals(this.c, "OD"))
       {
-        bhbx.b(this, paramBundle.getExtras(), 1001);
+        bflj.b(this, paramBundle.getExtras(), 1001);
         return true;
       }
       if ((TextUtils.equals(this.c, "StudyRoom")) || (TextUtils.equals(this.c, "now_qqlive")))
       {
-        bdwq.a(this, paramBundle.getExtras(), 1001);
+        bcqh.a(this, paramBundle.getExtras(), 1001);
         return true;
       }
       if (TextUtils.equals(this.c, "StudyRoomQzone"))
       {
-        bdwq.a(this, this.app.getCurrentAccountUin(), paramBundle.getExtras(), 1001);
+        bcqh.a(this, this.app.getCurrentAccountUin(), paramBundle.getExtras(), 1001);
         return true;
       }
       if (!TextUtils.isEmpty((CharSequence)localObject))
@@ -211,19 +212,19 @@ public class ShareToQQActivity
         localObject = new MessageForQQStory();
         ((MessageForQQStory)localObject).coverImgUrl = paramBundle.getStringExtra("imageUrl");
         ((MessageForQQStory)localObject).brief = paramBundle.getStringExtra("summary");
-        ((MessageForQQStory)localObject).srcName = win.jdField_a_of_type_JavaLangString;
+        ((MessageForQQStory)localObject).srcName = vkm.jdField_a_of_type_JavaLangString;
         ((MessageForQQStory)localObject).srcAction = "mqqapi://qstory/opendiscovery?src_type=internal&version=1";
         ((MessageForQQStory)localObject).msgAction = String.format("nowmqqapi://now/openroom?src_type=app&version=1&roomid=%s&first=%d&bid=1&contentType=2&unionid=%s", new Object[] { Long.valueOf(paramBundle.getLongExtra("roomid", 0L)), Integer.valueOf(2), paramBundle.getStringExtra("unionid") });
         ((MessageForQQStory)localObject).authorName = paramBundle.getStringExtra("anchorname");
         ((MessageForQQStory)localObject).logoImgUrl = "https://p.qpic.cn/qqstory_pic/hb4ycQ6NORNib7icgbswTvTCmkTyROl41Rcw9UeasFKzLwevbfJVhMRA/";
         ((MessageForQQStory)localObject).briefBgColor = -16395392;
         ((MessageForQQStory)localObject).type = 0;
-        bhbx.a(this, (MessageForQQStory)localObject, 1001);
+        bflj.a(this, (MessageForQQStory)localObject, 1001);
       }
       for (;;)
       {
         return true;
-        bhbx.a(this, paramBundle.getExtras(), 1001);
+        bflj.a(this, paramBundle.getExtras(), 1001);
       }
     }
     label680:
@@ -235,12 +236,12 @@ public class ShareToQQActivity
     super.doOnDestroy();
     jdField_a_of_type_Boolean = false;
     if ("shiel_uin".equals(this.c)) {
-      removeObserver(this.jdField_a_of_type_Anyu);
+      removeObserver(this.jdField_a_of_type_Amsu);
     }
     while (!"source_from_operate_shiel_uin_list".equals(this.c)) {
       return;
     }
-    removeObserver(this.jdField_a_of_type_Aohi);
+    removeObserver(this.jdField_a_of_type_Anax);
   }
   
   @Override

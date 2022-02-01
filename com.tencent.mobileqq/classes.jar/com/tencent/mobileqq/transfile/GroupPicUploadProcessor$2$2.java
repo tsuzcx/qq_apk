@@ -1,16 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
-import betv;
-import betw;
-
-public class GroupPicUploadProcessor$2$2
+class GroupPicUploadProcessor$2$2
   implements Runnable
 {
-  public GroupPicUploadProcessor$2$2(betw parambetw, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  GroupPicUploadProcessor$2$2(GroupPicUploadProcessor.2 param2, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Betw.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 1);
+    this.this$1.this$0.reportDataFlow(this.val$upFlow_Wifi, this.val$dwFlow_Wifi, this.val$upFlow_Xg, this.val$dwFlow_Xg, 1);
   }
 }
 

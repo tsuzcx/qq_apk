@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class agrd
-  implements agri
+class agrd
+  implements View.OnClickListener
 {
-  public agrd(ColorPicker paramColorPicker, agrg paramagrg) {}
+  agrd(agra paramagra) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.onClick(this.jdField_a_of_type_Agrg.a);
+    agra.b(this.a);
+    bcef.b(null, "dc00898", "", "", "0X800B1A9", "0X800B1A9", 0, 0, "", "", agra.a(this.a), "个性签名");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

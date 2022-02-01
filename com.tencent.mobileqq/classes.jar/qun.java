@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.AdReport;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentNotIntrest;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class qun
+  implements View.OnClickListener
 {
-  public String a;
+  public qun(ComponentContentNoteCard paramComponentContentNoteCard) {}
   
-  public static qun a(oidb_0x5bd.AdReport paramAdReport)
+  public void onClick(View paramView)
   {
-    qun localqun = new qun();
-    localqun.a = paramAdReport.bytes_report_url.get().toStringUtf8();
-    return localqun;
+    ComponentContentNoteCard.a(this.a).onClick(ComponentContentNoteCard.a(this.a).a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

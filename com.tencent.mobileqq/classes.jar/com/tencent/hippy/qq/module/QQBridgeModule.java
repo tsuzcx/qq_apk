@@ -1,16 +1,17 @@
 package com.tencent.hippy.qq.module;
 
+import amtj;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import anzj;
-import bhmr;
-import bhni;
-import bhny;
+import bfvp;
+import bfwg;
+import bfwv;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 import com.tencent.hippy.qq.app.HippyQQEngine;
@@ -22,12 +23,11 @@ import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import nnr;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ozs;
-import sas;
-import zqd;
+import pay;
+import shq;
+import yqu;
 
 public class QQBridgeModule
   extends BridgeModule
@@ -203,7 +203,7 @@ public class QQBridgeModule
   
   public void getNetType(Promise paramPromise, boolean paramBoolean)
   {
-    int i = nnr.a();
+    int i = HttpUtil.getNetWorkType();
     if (QLog.isColorLevel()) {
       QLog.d(TAG, 2, "getNetType,netType:" + i);
     }
@@ -257,7 +257,7 @@ public class QQBridgeModule
     }
     boolean bool;
     if (("weishi://feed".equals(paramString)) || ("weishi".equals(paramString))) {
-      bool = zqd.a(localBaseActivity);
+      bool = yqu.a(localBaseActivity);
     }
     for (;;)
     {
@@ -281,7 +281,7 @@ public class QQBridgeModule
       }
       QLog.e(TAG, 2, "hasApp error" + paramString.getMessage());
       return;
-      bool = bhny.a(localBaseActivity, paramString);
+      bool = bfwv.a(localBaseActivity, paramString);
       continue;
       label123:
       int i = 0;
@@ -297,7 +297,7 @@ public class QQBridgeModule
     String str2 = paramJSONObject.optString("method");
     if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
     {
-      invokeErrorCallJS(paramPromise, anzj.a(2131700113));
+      invokeErrorCallJS(paramPromise, amtj.a(2131700348));
       QLog.d(TAG, 1, "ns or method not exists");
     }
     Object localObject;
@@ -333,11 +333,11 @@ public class QQBridgeModule
         break label334;
       }
       localObject = ((Fragment)localObject).getActivity();
-      QQAppInterface localQQAppInterface = (QQAppInterface)ozs.a();
+      QQAppInterface localQQAppInterface = (QQAppInterface)pay.a();
       if ((localObject != null) && (localQQAppInterface != null)) {
         try
         {
-          paramJSONObject = bhni.a(localQQAppInterface, (Context)localObject, paramJSONObject.getString("schema"));
+          paramJSONObject = bfwg.a(localQQAppInterface, (Context)localObject, paramJSONObject.getString("schema"));
           if (paramJSONObject != null)
           {
             paramJSONObject.b("viola");
@@ -349,7 +349,7 @@ public class QQBridgeModule
         catch (JSONException paramJSONObject)
         {
           paramJSONObject.printStackTrace();
-          invokeErrorCallJS(paramPromise, "ns:" + str1 + anzj.a(2131700109) + str2 + anzj.a(2131700104));
+          invokeErrorCallJS(paramPromise, "ns:" + str1 + amtj.a(2131700344) + str2 + amtj.a(2131700339));
           return;
         }
       }
@@ -501,7 +501,7 @@ public class QQBridgeModule
   
   public void vaNetworkChange(Promise paramPromise)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)ozs.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)pay.a();
     if (localQQAppInterface == null) {}
     while (this.netInfoHandler != null) {
       return;
@@ -515,7 +515,7 @@ public class QQBridgeModule
     if (QLog.isColorLevel()) {
       QLog.d(TAG, 2, "do videoPlayFeedback start data: " + paramJSONObject.toString());
     }
-    sas.a(null, paramJSONObject);
+    shq.a(null, paramJSONObject);
     if (getViolaInstance() != null) {
       paramJSONObject = new JSONObject();
     }

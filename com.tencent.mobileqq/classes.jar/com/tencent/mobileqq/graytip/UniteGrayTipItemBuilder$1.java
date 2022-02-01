@@ -2,22 +2,22 @@ package com.tencent.mobileqq.graytip;
 
 import android.os.Handler;
 import android.os.Looper;
-import avoy;
-import beqz;
-import beyq;
+import auca;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import java.io.File;
 import java.net.URL;
 
 public class UniteGrayTipItemBuilder$1
   implements Runnable
 {
-  public UniteGrayTipItemBuilder$1(avoy paramavoy, MessageRecord paramMessageRecord) {}
+  public UniteGrayTipItemBuilder$1(auca paramauca, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    File localFile = beqz.a(beyq.a((MessageForPic)this.a, 1, null).toString());
+    File localFile = AbsDownloader.getFile(URLDrawableHelper.getURL((MessageForPic)this.a, 1, null).toString());
     if ((localFile == null) || (!localFile.exists())) {
       new Handler(Looper.getMainLooper()).post(new UniteGrayTipItemBuilder.1.1(this));
     }

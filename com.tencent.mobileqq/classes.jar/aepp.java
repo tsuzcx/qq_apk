@@ -1,28 +1,59 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class aepp
-  implements atcr
+  implements View.OnClickListener
 {
-  public aepp(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public aepp(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    atck.a(this.a);
-  }
-  
-  public void a(int paramInt)
-  {
-    atck.a(this.a, this.a.getString(paramInt));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    atck.a(this.a, paramString1, paramString2);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
-  {
-    atck.a(this.a, paramBoolean, paramInt, paramString1, paramString2);
+    long l = System.currentTimeMillis();
+    if ((l - TroopRequestActivity.c > 0L) && (l - TroopRequestActivity.c < 800L))
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    TroopRequestActivity.c = l;
+    if (((amsw)this.a.app.getManager(51)).b(this.a.m)) {
+      localAllInOne = new ProfileActivity.AllInOne(this.a.m, 1);
+    }
+    for (;;)
+    {
+      bcef.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.a.a.msg.group_code.get() + "", "3", "", "");
+      ProfileActivity.b(this.a, localAllInOne);
+      break;
+      if ((this.a.a.msg.group_msg_type.get() != 2) || (this.a.a.msg.sub_type.get() != 3)) {
+        break label224;
+      }
+      localAllInOne = new ProfileActivity.AllInOne(this.a.m, 26);
+      localAllInOne.d = 1;
+    }
+    label224:
+    ProfileActivity.AllInOne localAllInOne = new ProfileActivity.AllInOne(this.a.m, 24);
+    TroopUtils.prepareTroopNotifyData(this.a.a, localAllInOne);
+    switch (this.a.b)
+    {
+    }
+    for (;;)
+    {
+      break;
+      localAllInOne.l = 3;
+      break;
+      localAllInOne.l = 1;
+      break;
+      localAllInOne.l = 2;
+    }
   }
 }
 

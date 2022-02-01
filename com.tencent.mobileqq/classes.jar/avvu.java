@@ -1,38 +1,37 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
 
-class avvu
-  extends RecyclerView.AdapterDataObserver
+public class avvu
+  implements DialogInterface.OnClickListener
 {
-  avvu(avvt paramavvt) {}
+  public avvu(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
   
-  public void onChanged()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onChanged();
-    this.a.notifyDataSetChanged();
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
-  {
-    super.onItemRangeChanged(paramInt1, paramInt2);
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2);
-  }
-  
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
-  {
-    super.onItemRangeInserted(paramInt1, paramInt2);
-    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    super.onItemRangeMoved(paramInt1, paramInt2, paramInt3);
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2 + paramInt3);
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    super.onItemRangeRemoved(paramInt1, paramInt2);
-    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
+    paramInt = avwk.a().e();
+    if (1 == paramInt)
+    {
+      this.a.l();
+      if (this.a.a) {
+        avwr.a("0X800A253", 3);
+      }
+    }
+    while (2 != paramInt)
+    {
+      return;
+      avwr.a("0X800A253", 1);
+      return;
+    }
+    if (this.a.d) {
+      avwr.a("0X800A244", 2);
+    }
+    for (;;)
+    {
+      this.a.l();
+      return;
+      avwr.a("0X800A244", 1);
+    }
   }
 }
 

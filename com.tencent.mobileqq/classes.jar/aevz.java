@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.qphone.base.util.QLog;
-
-public class aevz
-  extends asvt
+public abstract interface aevz
 {
-  public aevz(Leba paramLeba) {}
+  public abstract void a();
   
-  protected void l_(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.lebatab.leba", 2, "onUpdateRedPoint " + paramInt);
-    }
-    if (Leba.a(this.a) != null) {
-      Leba.a(this.a).b();
-    }
-  }
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c(int paramInt, String paramString);
 }
 
 

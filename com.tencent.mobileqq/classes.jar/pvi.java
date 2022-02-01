@@ -1,25 +1,50 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJCoinInfoModule.CoinQueryRequestHandler.1;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.CoinQueryReq;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.MetaData;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.ReqBody;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.RspBody;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.UserCoin;
 
-class pvi
-  implements View.OnClickListener
+public class pvi
+  implements pvm
 {
-  pvi(pvh parampvh, ArticleInfo paramArticleInfo, Context paramContext) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if (sel.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {}
-    for (int i = 3;; i = 2)
+    return 1;
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, oidb_cmd0xed4.RspBody paramRspBody, int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramRspBody.retobj.has())
     {
-      ozs.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-      ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, i, false, 2, false);
-      sel.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
-      EventCollector.getInstance().onViewClicked(paramView);
+      paramToServiceMsg = new pvn();
+      paramToServiceMsg.a = ((int)paramRspBody.retobj.platformCoin.get());
+      paramToServiceMsg.b = ((int)paramRspBody.retobj.userCoin.get());
+      if ((paramInt1 != 0) || (paramInt2 != 0)) {
+        break label84;
+      }
+    }
+    label84:
+    for (boolean bool = true;; bool = false)
+    {
+      bijk.c(new RIJCoinInfoModule.CoinQueryRequestHandler.1(this, bool, paramInt2, paramString, paramToServiceMsg));
+      return;
+      paramToServiceMsg = null;
+      break;
+    }
+  }
+  
+  public void a(qlr paramqlr, oidb_cmd0xed4.ReqBody paramReqBody)
+  {
+    if ((paramqlr == null) || (paramReqBody == null)) {
       return;
     }
+    paramReqBody.meta.type.set(1);
+    paramReqBody.query_req.setHasFlag(true);
+    paramReqBody.query_req.uin.set(pay.a());
   }
 }
 

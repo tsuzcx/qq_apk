@@ -1,34 +1,64 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troop.file.MoveFileActivity;
+import android.view.View;
+import com.tencent.device.msg.data.MessageForDevLittleVideo;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import mqq.app.MobileQQ;
 
-public class aauq
-  implements DialogInterface.OnClickListener
+class aauq
+  implements bjoe
 {
-  public aauq(MoveFileActivity paramMoveFileActivity) {}
+  aauq(aaun paramaaun, MessageForDevLittleVideo paramMessageForDevLittleVideo, agok paramagok, bjnw parambjnw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramDialogInterface = (abhn)paramDialogInterface;
-    this.a.jdField_a_of_type_JavaLangString = paramDialogInterface.getInputValue().trim();
-    if (this.a.jdField_a_of_type_JavaLangString.length() > bgsk.a)
+    int i = 1;
+    switch (paramInt)
     {
-      paramDialogInterface.a(this.a.getString(2131696699), -65536);
-      bdll.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "over_num", 0, 0, this.a.jdField_a_of_type_Long + "", "", "", "");
     }
+    boolean bool;
+    label64:
     do
     {
+      this.jdField_a_of_type_Bjnw.dismiss();
       return;
-      if (bgsk.a(this.a.jdField_a_of_type_JavaLangString))
-      {
-        paramDialogInterface.a(this.a.getString(2131696700), -65536);
-        bdll.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "sensitive", 0, 0, this.a.jdField_a_of_type_Long + "", "0", "", "");
-        return;
+      bool = NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_Aaun.a.getApplication().getApplicationContext());
+      paramView = this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo;
+      if (!bool) {
+        break;
       }
-      paramDialogInterface.dismiss();
-    } while (bgsk.a(this.a.app, this.a, this.a.jdField_a_of_type_Long) == 0);
-    aauw.a(this.a.app, this.a.jdField_a_of_type_Long, "/", this.a.jdField_a_of_type_JavaLangString, MoveFileActivity.a(this.a));
-    this.a.a(2131696628);
+      paramInt = 2002;
+      paramView.videoFileStatus = paramInt;
+      this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.videoFileProgress = 0;
+      this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.serial();
+      this.jdField_a_of_type_Aaun.a.getMessageFacade().updateMsgContentByUniseq(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.frienduin, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.istroop, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.uniseq, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.msgData);
+    } while (!bool);
+    if (!FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.mThumbFilePath)) {
+      this.jdField_a_of_type_Aaun.c(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo);
+    }
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if (!FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.videoFileName))
+      {
+        this.jdField_a_of_type_Aaun.b(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo);
+        paramInt = i;
+      }
+      for (;;)
+      {
+        if (paramInt == 0) {
+          break label235;
+        }
+        this.jdField_a_of_type_Agok.a.setFailedIconVisable(false, this.jdField_a_of_type_Aaun);
+        aaun.b(this.jdField_a_of_type_Aaun, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo, this.jdField_a_of_type_Agok, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.videoFileProgress, false);
+        break;
+        paramInt = 2005;
+        break label64;
+      }
+      label235:
+      break;
+    }
   }
 }
 

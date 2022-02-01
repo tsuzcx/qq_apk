@@ -1,31 +1,20 @@
-import android.view.MotionEvent;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nwj
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public nwj(VideoCoverFragment paramVideoCoverFragment) {}
+  public nwj(AccountDetailActivity paramAccountDetailActivity, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      VideoCoverFragment.a(this.a).b();
-      if (!this.a.a())
-      {
-        if (!VideoCoverFragment.a(this.a)) {
-          break label47;
-        }
-        this.a.a(false);
-      }
-    }
-    return false;
-    label47:
-    this.a.a(true);
-    return false;
+    Intent localIntent = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

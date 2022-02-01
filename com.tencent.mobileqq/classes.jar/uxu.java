@@ -1,27 +1,21 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class uxu
-  extends oam
+final class uxu
+  extends ClickableSpan
 {
-  public uxu(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, long paramLong) {}
+  uxu(String paramString) {}
   
-  public void a(boolean paramBoolean, uyc paramuyc, byte[] paramArrayOfByte, String paramString)
+  public void onClick(@NonNull View paramView)
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(true, this.jdField_a_of_type_Long);
-      if (paramuyc != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetPhotoCollectionInfoRespond isSuccess=" + paramBoolean + " ;articleID = " + paramuyc.a);
-        }
-        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(paramuyc, paramArrayOfByte);
-        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.b(paramuyc);
-      }
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(false, this.jdField_a_of_type_Long);
+    uyc.a(uxr.a(), "biz_src_jc_gzh_weishi", "weishi://profile?person_id=" + this.a);
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

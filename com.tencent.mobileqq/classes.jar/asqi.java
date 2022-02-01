@@ -1,36 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
-import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService.1;
 
 public class asqi
-  implements Animator.AnimatorListener
+  implements MediaPlayer.OnPreparedListener
 {
-  public asqi(EmotionSearchPanel paramEmotionSearchPanel) {}
+  public asqi(FileViewMusicService.1 param1, MediaPlayer paramMediaPlayer) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionSearchPanel", 2, "upAndDownAnim onAnimationEnd=");
-    }
-    agej.a(this.a.jdField_a_of_type_AndroidWidgetEditText);
-    this.a.c();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionSearchPanel", 2, "upAndDownAnim start animStartBottom=" + EmotionSearchPanel.b(this.a));
-    }
-    EmotionSearchPanel.c(this.a, EmotionSearchPanel.b(this.a));
-    ((asnw)this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a().a(7)).c(4);
+    int i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService$1.a.a(i);
   }
 }
 

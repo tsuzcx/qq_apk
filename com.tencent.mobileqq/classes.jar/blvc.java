@@ -1,66 +1,64 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.utils.StringUtil;
 
-class blvc
-  implements blva
+public class blvc
 {
-  private IBinder a;
+  private String a;
+  private String b;
   
-  blvc(IBinder paramIBinder)
+  public blvc(@Nullable String paramString1, @Nullable String paramString2)
   {
-    this.a = paramIBinder;
+    this.a = paramString1;
+    this.b = paramString2;
   }
   
+  @Nullable
   public String a()
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      String str = localParcel2.readString();
-      return str;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool = false;
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      if (i != 0) {
-        bool = true;
-      }
-      return bool;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
     return this.a;
+  }
+  
+  @Nullable
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((paramObject != null) && (!(paramObject instanceof blvc))) {}
+    do
+    {
+      return false;
+      paramObject = (blvc)paramObject;
+    } while ((StringUtil.isEmpty(this.a)) || (StringUtil.isEmpty(this.b)) || (paramObject == null) || (!this.a.equals(paramObject.a())) || (!this.b.equals(paramObject.b())));
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    int j = 0;
+    int i;
+    if (this.b == null)
+    {
+      i = 0;
+      if (this.a != null) {
+        break label40;
+      }
+    }
+    for (;;)
+    {
+      return (i + 527) * 31 + j;
+      i = this.b.hashCode();
+      break;
+      label40:
+      j = this.a.hashCode();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blvc
  * JD-Core Version:    0.7.0.1
  */

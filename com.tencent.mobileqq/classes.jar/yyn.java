@@ -1,27 +1,15 @@
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
+import com.tencent.biz.richframework.animation.drawable.AnimationDrawableFactory.2;
+import java.io.File;
+import java.util.Comparator;
 
-class yyn
-  implements blih
+public class yyn
+  implements Comparator<File>
 {
-  int jdField_a_of_type_Int = 0;
+  public yyn(AnimationDrawableFactory.2 param2) {}
   
-  yyn(yym paramyym) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public int a(File paramFile1, File paramFile2)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt == 1) {
-      blgx.b(this.jdField_a_of_type_Yym.a().a());
-    }
-    while ((paramInt != 0) || (this.jdField_a_of_type_Yym.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_Yym.a.size())) {
-      return;
-    }
-    yym.a(this.jdField_a_of_type_Yym);
+    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
   }
 }
 

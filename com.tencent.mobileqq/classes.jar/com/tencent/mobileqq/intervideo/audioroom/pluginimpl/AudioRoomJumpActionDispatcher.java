@@ -71,6 +71,7 @@ public final class AudioRoomJumpActionDispatcher
     Intrinsics.checkExpressionValueIsNotNull(paramString, "BaseApplicationImpl.getApplication()");
     paramString = paramString.getBaseContext();
     Intent localIntent = new Intent(paramString, ChatActivity.class);
+    localIntent.addFlags(268435456);
     localIntent.putExtra("uin", str);
     localIntent.putExtra("uintype", 10010);
     paramString.startActivity(localIntent);

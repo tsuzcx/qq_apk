@@ -1,44 +1,25 @@
-final class aral
+import android.app.Activity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class aral
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  private final String c;
+  aral(araj paramaraj, Dialog paramDialog) {}
   
-  public aral(int paramInt, String paramString1, long paramLong, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = paramString2;
-    this.c = (this.jdField_a_of_type_Int + "-" + this.jdField_a_of_type_JavaLangString + "-" + this.jdField_a_of_type_Long);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (!(paramObject instanceof aral)) {}
-    do
-    {
-      return false;
-      paramObject = (aral)paramObject;
-    } while ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    return this.c.hashCode();
-  }
-  
-  public String toString()
-  {
-    return "Entry{type=" + this.jdField_a_of_type_Int + ", key='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin=" + this.jdField_a_of_type_Long + ", path='" + this.b + '\'' + '}';
+    if ((!((Activity)this.jdField_a_of_type_Araj.a).isFinishing()) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aral
  * JD-Core Version:    0.7.0.1
  */

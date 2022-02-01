@@ -1,27 +1,24 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.animation.Animation;
 
-public class aagb
+class aagb
+  extends bjmc
 {
-  public int a;
-  public CertifiedAccountMeta.StFeed a;
-  public CertifiedAccountMeta.StUser a;
+  aagb(aafy paramaafy) {}
   
-  public aagb(CertifiedAccountMeta.StFeed paramStFeed)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
-    this.jdField_a_of_type_Int = 2;
+    this.a.a.a().i();
+    this.a.a.a().a();
   }
   
-  public aagb(CertifiedAccountMeta.StUser paramStUser)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = paramStUser;
-    this.jdField_a_of_type_Int = 1;
+    this.a.a.a().h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aagb
  * JD-Core Version:    0.7.0.1
  */

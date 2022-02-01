@@ -1,45 +1,65 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
+import SummaryCardTaf.SSummaryCardRsp;
+import android.util.Pair;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.vas.component.header.AbsVasProfileHeaderComponent.4.1;
 
 public class ayye
-  implements bizx
+  extends CardObserver
 {
-  public ayye(OCRResultActivity paramOCRResultActivity) {}
+  ayye(ayyb paramayyb) {}
   
-  public void a()
+  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
   {
-    if (OCRResultActivity.a(this.a) == 0) {
-      OCRResultActivity.a(this.a);
-    }
-    while (OCRResultActivity.a(this.a) != 1) {
+    try
+    {
+      if (!ayyb.e(this.a).isFinishing())
+      {
+        ayyb.a(this.a).removeCallbacks(ayyb.a(this.a));
+        ayyb.a(this.a);
+        if ((paramBoolean) && (paramObject != null))
+        {
+          if ((paramObject instanceof Card))
+          {
+            ThreadManager.post(new AbsVasProfileHeaderComponent.4.1(this, (Card)paramObject), 5, null, true);
+            return;
+          }
+          if ((paramObject instanceof Pair))
+          {
+            paramObject = (Pair)paramObject;
+            if (((Integer)paramObject.first).intValue() == 101107) {
+              ayyb.a(this.a, 1);
+            }
+            for (;;)
+            {
+              ayyb.b(this.a);
+              return;
+              if (((Integer)paramObject.first).intValue() == 101108)
+              {
+                ayyb.a(this.a, 2);
+              }
+              else if (((Integer)paramObject.first).intValue() == 101111)
+              {
+                ayyb.a(this.a, 3);
+              }
+              else
+              {
+                if (((Integer)paramObject.first).intValue() != 12002) {
+                  break;
+                }
+                ayyb.a(this.a, 4);
+              }
+            }
+            ayyb.a(this.a, 5);
+            ayyb.a(this.a, (SSummaryCardRsp)paramObject.second);
+          }
+        }
+      }
       return;
     }
-    OCRResultActivity.b(this.a);
-  }
-  
-  public void a(String paramString)
-  {
-    behj.a(paramString, "OCR_Participle_copy");
-  }
-  
-  public void b(String paramString)
-  {
-    OCRResultActivity.a(this.a, paramString);
-  }
-  
-  public void c(String paramString)
-  {
-    behj.a(this.a, this.a.app, paramString);
-  }
-  
-  public void d(String paramString)
-  {
-    Intent localIntent = new Intent(this.a, TextPreviewTranslateActivity.class);
-    localIntent.putExtra("TranslateText", paramString);
-    localIntent.putExtra("WhereAreYouFrom", "OCR_RESULT");
-    this.a.startActivityForResult(localIntent, 1);
-    OCRResultActivity.a(this.a, true);
+    catch (Exception paramObject) {}
   }
 }
 

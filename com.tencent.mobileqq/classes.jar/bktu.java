@@ -1,27 +1,108 @@
-import android.text.Editable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bktu
-  implements View.OnTouchListener
 {
-  public bktu(Login paramLogin) {}
+  public static Map<String, String> a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bkuh jdField_a_of_type_Bkuh = new bktv(this);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  static
   {
-    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText) {
-      if ((paramMotionEvent.getAction() == 0) && (this.a.jdField_b_of_type_AndroidWidgetEditText.getText().length() > 0)) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public bktu(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private boolean a(JSONObject paramJSONObject)
+  {
+    for (;;)
+    {
+      try
+      {
+        paramJSONObject = paramJSONObject.getJSONArray("readerUrls");
+        int i;
+        if (paramJSONObject == null)
+        {
+          i = 0;
+          if (i == 0)
+          {
+            bkvd.a("ReaderUrlConfigDataHelper", "jsonDataToTabItemData ,size=0");
+            return false;
+          }
+        }
+        else
+        {
+          i = paramJSONObject.length();
+          continue;
+        }
+        jdField_a_of_type_JavaUtilMap.clear();
+        int j = 0;
+        if (j >= i) {
+          break;
+        }
+        JSONObject localJSONObject = paramJSONObject.getJSONObject(j);
+        Iterator localIterator = localJSONObject.keys();
+        if (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          if (!TextUtils.isEmpty(str)) {
+            jdField_a_of_type_JavaUtilMap.put(str, localJSONObject.getString(str));
+          }
+        }
+        else
+        {
+          j += 1;
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        bkvd.a("ReaderUrlConfigDataHelper", paramJSONObject.getMessage());
+        return false;
       }
     }
-    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramMotionEvent.getAction() != 0) || (this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length() <= 0)) {
-      return false;
+    return true;
+  }
+  
+  private void b()
+  {
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    str = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("CGI_RESPONSE", 0).getString("SP_URL_CONFIG_DATA" + str, "");
+    if (TextUtils.isEmpty(str)) {
+      return;
     }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    return false;
+    try
+    {
+      a(new JSONObject(str));
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      bkvd.a("ReaderUrlConfigDataHelper", "getQQReaderUrlConfigDataFromDB," + localJSONException.getMessage());
+    }
+  }
+  
+  private void c()
+  {
+    bkvv.a(bkvv.c, this.jdField_a_of_type_Bkuh);
+  }
+  
+  public void a()
+  {
+    b();
+    c();
   }
 }
 

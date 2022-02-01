@@ -1,15 +1,8 @@
-import com.tencent.biz.qqcircle.events.QCircleContentImmersiveEvent;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
-
-public class vmd
-  implements wey
+public abstract interface vmd
 {
-  public vmd(QCircleContentImage paramQCircleContentImage) {}
+  public abstract int a(String paramString1, String paramString2, long paramLong);
   
-  public void a(float paramFloat)
-  {
-    aaak.a().a(new QCircleContentImmersiveEvent(2));
-  }
+  public abstract void a(vlr paramvlr);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import aghd;
+import aezy;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
@@ -9,8 +9,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import askm;
-import askn;
+import arek;
+import arel;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
 import com.tencent.qphone.base.util.QLog;
@@ -20,13 +20,13 @@ import java.util.Iterator;
 public class StickerGrayTipLayout
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int;
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  public askn a;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  private ArrayList<askm> jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private boolean autoDismiss;
+  private int bubbleLeft;
+  private boolean doubleClicked;
+  private MotionEvent lastUpEvent;
+  MessageRecord message;
+  public arel stickerDoubleClickListener;
+  private ArrayList<arek> stickers;
   
   public StickerGrayTipLayout(Context paramContext)
   {
@@ -43,34 +43,87 @@ public class StickerGrayTipLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private boolean a(float paramFloat1, float paramFloat2)
+  private void doAutomaticDismiss()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    boolean bool;
+    arek localarek;
+    if ((this.autoDismiss) && (this.stickers != null) && (this.stickers.size() > 0))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      Iterator localIterator = this.stickers.iterator();
+      bool = false;
+      if (localIterator.hasNext())
       {
-        askm localaskm = (askm)localIterator.next();
-        int j = localaskm.jdField_a_of_type_Int;
-        int k = this.jdField_a_of_type_Int;
-        int m = (int)((localaskm.jdField_a_of_type_Float - 1.0F) * localaskm.c);
-        int i = (int)((localaskm.jdField_a_of_type_Float - 1.0F) * localaskm.d);
-        j = j + k + localaskm.e - m / 2;
-        i = localaskm.b - i / 2;
-        if ((paramFloat1 > j) && (paramFloat1 < j + localaskm.jdField_a_of_type_Float * localaskm.c) && (paramFloat2 > i))
-        {
-          float f1 = i;
-          float f2 = localaskm.jdField_a_of_type_Float;
-          if (paramFloat2 < localaskm.d * f2 + f1) {
-            return true;
+        localarek = (arek)localIterator.next();
+        if (localarek.jdField_a_of_type_Int + this.bubbleLeft + localarek.c / 2 < getMeasuredWidth() / 2) {
+          if (Math.abs(localarek.e) > 200)
+          {
+            localarek.e -= EmojiStickerManager.i;
+            localarek.f -= Math.abs(EmojiStickerManager.i / 2);
+            localarek.f = Math.min(255, Math.max(0, localarek.f));
+            label138:
+            if (localarek.e > 0)
+            {
+              localarek.e = 0;
+              localarek.f = 255;
+              this.autoDismiss = false;
+              bool = false;
+            }
+            label164:
+            if (localarek.e < -400)
+            {
+              localarek.e = -400;
+              localarek.f = 0;
+              this.autoDismiss = false;
+              bool = true;
+            }
+            if (localarek.e <= 400) {
+              break label434;
+            }
+            localarek.e = 400;
+            localarek.f = 0;
+            this.autoDismiss = false;
+            bool = true;
           }
         }
       }
     }
-    return false;
+    label412:
+    label434:
+    for (;;)
+    {
+      break;
+      localarek.f += Math.abs(EmojiStickerManager.i / 2);
+      localarek.f = Math.min(255, Math.max(0, localarek.f));
+      localarek.e += EmojiStickerManager.i;
+      break label138;
+      if (Math.abs(localarek.e) < 200)
+      {
+        localarek.f += Math.abs(EmojiStickerManager.i / 2);
+        localarek.f = Math.min(255, Math.max(0, localarek.f));
+      }
+      for (localarek.e -= EmojiStickerManager.i;; localarek.e += EmojiStickerManager.i)
+      {
+        if (localarek.e >= 0) {
+          break label412;
+        }
+        localarek.e = 0;
+        localarek.f = 255;
+        this.autoDismiss = false;
+        bool = false;
+        break;
+        localarek.f -= Math.abs(EmojiStickerManager.i / 2);
+        localarek.f = Math.min(255, Math.max(0, localarek.f));
+      }
+      break label164;
+      if (this.message != null) {
+        this.message.stickerHidden = bool;
+      }
+      invalidate();
+      return;
+    }
   }
   
-  private boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2)
+  private boolean isConsideredDoubleTap(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2)
   {
     if (paramMotionEvent2.getEventTime() - paramMotionEvent1.getEventTime() > 200L) {}
     int i;
@@ -84,145 +137,156 @@ public class StickerGrayTipLayout
     return true;
   }
   
-  private void c()
+  private boolean isTouchedOnStickers(float paramFloat1, float paramFloat2)
   {
-    boolean bool;
-    askm localaskm;
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    if ((this.stickers != null) && (this.stickers.size() > 0))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      bool = false;
-      if (localIterator.hasNext())
+      Iterator localIterator = this.stickers.iterator();
+      while (localIterator.hasNext())
       {
-        localaskm = (askm)localIterator.next();
-        if (localaskm.jdField_a_of_type_Int + this.jdField_a_of_type_Int + localaskm.c / 2 < getMeasuredWidth() / 2) {
-          if (Math.abs(localaskm.e) > 200)
-          {
-            localaskm.e -= EmojiStickerManager.i;
-            localaskm.f -= Math.abs(EmojiStickerManager.i / 2);
-            localaskm.f = Math.min(255, Math.max(0, localaskm.f));
-            label138:
-            if (localaskm.e > 0)
-            {
-              localaskm.e = 0;
-              localaskm.f = 255;
-              this.jdField_a_of_type_Boolean = false;
-              bool = false;
-            }
-            label164:
-            if (localaskm.e < -400)
-            {
-              localaskm.e = -400;
-              localaskm.f = 0;
-              this.jdField_a_of_type_Boolean = false;
-              bool = true;
-            }
-            if (localaskm.e <= 400) {
-              break label434;
-            }
-            localaskm.e = 400;
-            localaskm.f = 0;
-            this.jdField_a_of_type_Boolean = false;
-            bool = true;
+        arek localarek = (arek)localIterator.next();
+        int j = localarek.jdField_a_of_type_Int;
+        int k = this.bubbleLeft;
+        int m = (int)((localarek.jdField_a_of_type_Float - 1.0F) * localarek.c);
+        int i = (int)((localarek.jdField_a_of_type_Float - 1.0F) * localarek.d);
+        j = j + k + localarek.e - m / 2;
+        i = localarek.b - i / 2;
+        if ((paramFloat1 > j) && (paramFloat1 < j + localarek.jdField_a_of_type_Float * localarek.c) && (paramFloat2 > i))
+        {
+          float f1 = i;
+          float f2 = localarek.jdField_a_of_type_Float;
+          if (paramFloat2 < localarek.d * f2 + f1) {
+            return true;
           }
         }
       }
     }
-    label412:
-    label434:
-    for (;;)
-    {
-      break;
-      localaskm.f += Math.abs(EmojiStickerManager.i / 2);
-      localaskm.f = Math.min(255, Math.max(0, localaskm.f));
-      localaskm.e += EmojiStickerManager.i;
-      break label138;
-      if (Math.abs(localaskm.e) < 200)
-      {
-        localaskm.f += Math.abs(EmojiStickerManager.i / 2);
-        localaskm.f = Math.min(255, Math.max(0, localaskm.f));
-      }
-      for (localaskm.e -= EmojiStickerManager.i;; localaskm.e += EmojiStickerManager.i)
-      {
-        if (localaskm.e >= 0) {
-          break label412;
-        }
-        localaskm.e = 0;
-        localaskm.f = 255;
-        this.jdField_a_of_type_Boolean = false;
-        bool = false;
-        break;
-        localaskm.f -= Math.abs(EmojiStickerManager.i / 2);
-        localaskm.f = Math.min(255, Math.max(0, localaskm.f));
-      }
-      break label164;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.stickerHidden = bool;
-      }
-      invalidate();
-      return;
-    }
+    return false;
   }
   
-  public void a()
+  public boolean addSticker(Drawable paramDrawable, int paramInt1, int paramInt2, int paramInt3, int paramInt4, double paramDouble, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.stickers == null) {
+      this.stickers = new ArrayList();
     }
+    if (this.stickers.size() < EmojiStickerManager.f)
+    {
+      arek localarek = new arek();
+      if (paramDrawable != null)
+      {
+        localarek.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable.mutate();
+        paramDrawable.setCallback(this);
+      }
+      localarek.jdField_a_of_type_Int = paramInt1;
+      localarek.b = paramInt2;
+      localarek.c = paramInt3;
+      localarek.d = paramInt4;
+      localarek.jdField_a_of_type_Double = paramDouble;
+      localarek.jdField_a_of_type_JavaLangString = paramString;
+      this.stickers.add(localarek);
+      return true;
+    }
+    return false;
   }
   
-  public void a(int paramInt)
+  public void adjustStickersVerticalPosition(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    if (this.stickers != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.stickers.iterator();
       while (localIterator.hasNext())
       {
-        askm localaskm = (askm)localIterator.next();
-        localaskm.b += paramInt;
+        arek localarek = (arek)localIterator.next();
+        localarek.b += paramInt;
       }
     }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    super.dispatchDraw(paramCanvas);
+    Object localObject = getParent();
+    if (((localObject instanceof ViewGroup)) && ((((ViewGroup)localObject).getTag() instanceof aezy))) {
+      this.message = ((aezy)((ViewGroup)localObject).getTag()).a;
+    }
+    int i = getChildCount() - 1;
+    while (i >= 0)
+    {
+      localObject = getChildAt(i);
+      if (((View)localObject).getId() == 2131367701) {
+        this.bubbleLeft = ((View)localObject).getLeft();
+      }
+      i -= 1;
+    }
+    if (this.stickers != null)
+    {
+      i = 0;
+      if (i <= this.stickers.size() - 1)
+      {
+        localObject = (arek)this.stickers.get(i);
+        if ((this.message != null) && (this.message.stickerHidden)) {
+          if (((arek)localObject).jdField_a_of_type_Int + this.bubbleLeft + ((arek)localObject).c / 2 >= getMeasuredWidth() / 2) {
+            break label307;
+          }
+        }
+        label307:
+        for (int j = -400;; j = 400)
+        {
+          ((arek)localObject).e = j;
+          ((arek)localObject).f = 0;
+          j = paramCanvas.getSaveCount();
+          paramCanvas.save();
+          paramCanvas.translate(((arek)localObject).jdField_a_of_type_Int + this.bubbleLeft + ((arek)localObject).e, ((arek)localObject).b);
+          paramCanvas.rotate((float)((arek)localObject).jdField_a_of_type_Double, ((arek)localObject).c / 2, ((arek)localObject).d / 2);
+          ((arek)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(((arek)localObject).f);
+          ((arek)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ((arek)localObject).c, ((arek)localObject).d);
+          ((arek)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+          paramCanvas.restoreToCount(j);
+          i += 1;
+          break;
+        }
+      }
+    }
+    doAutomaticDismiss();
+  }
+  
+  public void doDismiss(int paramInt1, int paramInt2)
+  {
+    if ((this.stickers != null) && (this.stickers.size() > 0))
     {
       int i;
       label45:
-      askm localaskm;
+      arek localarek;
       int j;
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.stickerHidden))
+      if ((this.message != null) && (this.message.stickerHidden))
       {
         i = 1;
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        Iterator localIterator = this.stickers.iterator();
         if (!localIterator.hasNext()) {
           break label447;
         }
-        localaskm = (askm)localIterator.next();
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (i != 0))
+        localarek = (arek)localIterator.next();
+        if ((this.message != null) && (i != 0))
         {
-          if (localaskm.jdField_a_of_type_Int + this.jdField_a_of_type_Int + localaskm.c / 2 >= getMeasuredWidth() / 2) {
+          if (localarek.jdField_a_of_type_Int + this.bubbleLeft + localarek.c / 2 >= getMeasuredWidth() / 2) {
             break label279;
           }
           j = -400;
           label110:
-          localaskm.e = j;
-          localaskm.f = 0;
+          localarek.e = j;
+          localarek.f = 0;
         }
-        if ((paramInt2 != EmojiStickerManager.h) || (localaskm.e != 0))
+        if ((paramInt2 != EmojiStickerManager.h) || (localarek.e != 0))
         {
           if (paramInt2 != EmojiStickerManager.g) {
             break label302;
           }
-          if (localaskm.jdField_a_of_type_Int + this.jdField_a_of_type_Int + localaskm.c / 2 >= getMeasuredWidth() / 2) {
+          if (localarek.jdField_a_of_type_Int + this.bubbleLeft + localarek.c / 2 >= getMeasuredWidth() / 2) {
             break label287;
           }
-          localaskm.e -= paramInt1;
-          localaskm.f -= Math.abs(paramInt1 / 2);
-          localaskm.f = Math.min(255, Math.max(0, localaskm.f));
+          localarek.e -= paramInt1;
+          localarek.f -= Math.abs(paramInt1 / 2);
+          localarek.f = Math.min(255, Math.max(0, localarek.f));
         }
       }
       label279:
@@ -231,135 +295,64 @@ public class StickerGrayTipLayout
       while (paramInt2 != EmojiStickerManager.h) {
         for (;;)
         {
-          if (localaskm.e < -400)
+          if (localarek.e < -400)
           {
-            localaskm.e = -400;
-            localaskm.f = 0;
+            localarek.e = -400;
+            localarek.f = 0;
           }
-          if (localaskm.e <= 400) {
+          if (localarek.e <= 400) {
             break label45;
           }
-          localaskm.e = 400;
-          localaskm.f = 0;
+          localarek.e = 400;
+          localarek.f = 0;
           break label45;
           i = 0;
           break;
           j = 400;
           break label110;
-          localaskm.e += paramInt1;
+          localarek.e += paramInt1;
         }
       }
-      if (localaskm.jdField_a_of_type_Int + this.jdField_a_of_type_Int + localaskm.c / 2 < getMeasuredWidth() / 2)
+      if (localarek.jdField_a_of_type_Int + this.bubbleLeft + localarek.c / 2 < getMeasuredWidth() / 2)
       {
-        localaskm.e += paramInt1;
-        if (localaskm.e > 0)
+        localarek.e += paramInt1;
+        if (localarek.e > 0)
         {
-          localaskm.e = 0;
-          localaskm.f = 255;
+          localarek.e = 0;
+          localarek.f = 255;
         }
       }
       for (;;)
       {
-        localaskm.f += Math.abs(paramInt1 / 2);
-        localaskm.f = Math.min(255, Math.max(0, localaskm.f));
+        localarek.f += Math.abs(paramInt1 / 2);
+        localarek.f = Math.min(255, Math.max(0, localarek.f));
         break;
-        localaskm.e -= paramInt1;
-        if (localaskm.e < 0)
+        localarek.e -= paramInt1;
+        if (localarek.e < 0)
         {
-          localaskm.e = 0;
-          localaskm.f = 255;
+          localarek.e = 0;
+          localarek.f = 255;
         }
       }
       label447:
-      if ((i != 0) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.stickerHidden = false;
+      if ((i != 0) && (this.message != null)) {
+        this.message.stickerHidden = false;
       }
       invalidate();
     }
   }
   
-  public boolean a()
+  public int getStickerCount()
   {
-    return (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0);
+    if (this.stickers == null) {
+      return 0;
+    }
+    return this.stickers.size();
   }
   
-  public boolean a(Drawable paramDrawable, int paramInt1, int paramInt2, int paramInt3, int paramInt4, double paramDouble, String paramString)
+  public boolean haveStickers()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() < EmojiStickerManager.f)
-    {
-      askm localaskm = new askm();
-      if (paramDrawable != null)
-      {
-        localaskm.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable.mutate();
-        paramDrawable.setCallback(this);
-      }
-      localaskm.jdField_a_of_type_Int = paramInt1;
-      localaskm.b = paramInt2;
-      localaskm.c = paramInt3;
-      localaskm.d = paramInt4;
-      localaskm.jdField_a_of_type_Double = paramDouble;
-      localaskm.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localaskm);
-      return true;
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    invalidate();
-  }
-  
-  protected void dispatchDraw(Canvas paramCanvas)
-  {
-    super.dispatchDraw(paramCanvas);
-    Object localObject = getParent();
-    if (((localObject instanceof ViewGroup)) && ((((ViewGroup)localObject).getTag() instanceof aghd))) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((aghd)((ViewGroup)localObject).getTag()).a;
-    }
-    int i = getChildCount() - 1;
-    while (i >= 0)
-    {
-      localObject = getChildAt(i);
-      if (((View)localObject).getId() == 2131367669) {
-        this.jdField_a_of_type_Int = ((View)localObject).getLeft();
-      }
-      i -= 1;
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      i = 0;
-      if (i <= this.jdField_a_of_type_JavaUtilArrayList.size() - 1)
-      {
-        localObject = (askm)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.stickerHidden)) {
-          if (((askm)localObject).jdField_a_of_type_Int + this.jdField_a_of_type_Int + ((askm)localObject).c / 2 >= getMeasuredWidth() / 2) {
-            break label307;
-          }
-        }
-        label307:
-        for (int j = -400;; j = 400)
-        {
-          ((askm)localObject).e = j;
-          ((askm)localObject).f = 0;
-          j = paramCanvas.getSaveCount();
-          paramCanvas.save();
-          paramCanvas.translate(((askm)localObject).jdField_a_of_type_Int + this.jdField_a_of_type_Int + ((askm)localObject).e, ((askm)localObject).b);
-          paramCanvas.rotate((float)((askm)localObject).jdField_a_of_type_Double, ((askm)localObject).c / 2, ((askm)localObject).d / 2);
-          ((askm)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(((askm)localObject).f);
-          ((askm)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ((askm)localObject).c, ((askm)localObject).d);
-          ((askm)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-          paramCanvas.restoreToCount(j);
-          i += 1;
-          break;
-        }
-      }
-    }
-    c();
+    return (this.stickers != null) && (this.stickers.size() > 0);
   }
   
   public void invalidateDrawable(Drawable paramDrawable)
@@ -369,7 +362,7 @@ public class StickerGrayTipLayout
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (a(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+    if (isTouchedOnStickers(paramMotionEvent.getX(), paramMotionEvent.getY())) {
       return true;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
@@ -378,22 +371,22 @@ public class StickerGrayTipLayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    if ((this.stickers != null) && (this.stickers.size() > 0))
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.autoDismiss = false;
       paramInt2 = getMeasuredHeight();
       paramInt1 = 0;
       int j = 0;
-      while (paramInt1 < this.jdField_a_of_type_JavaUtilArrayList.size())
+      while (paramInt1 < this.stickers.size())
       {
-        askm localaskm = (askm)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
-        localaskm.f = 255;
-        localaskm.e = 0;
+        arek localarek = (arek)this.stickers.get(paramInt1);
+        localarek.f = 255;
+        localarek.e = 0;
         int i = paramInt2;
-        if (localaskm.b + localaskm.d > paramInt2)
+        if (localarek.b + localarek.d > paramInt2)
         {
           j = 1;
-          i = localaskm.b + localaskm.d;
+          i = localarek.b + localarek.d;
         }
         paramInt1 += 1;
         paramInt2 = i;
@@ -410,14 +403,14 @@ public class StickerGrayTipLayout
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (a(paramMotionEvent.getX(), paramMotionEvent.getY()))
+    if (isTouchedOnStickers(paramMotionEvent.getX(), paramMotionEvent.getY()))
     {
       if (paramMotionEvent.getAction() == 0) {
-        if ((this.jdField_a_of_type_AndroidViewMotionEvent != null) && (a(this.jdField_a_of_type_AndroidViewMotionEvent, paramMotionEvent)))
+        if ((this.lastUpEvent != null) && (isConsideredDoubleTap(this.lastUpEvent, paramMotionEvent)))
         {
-          this.b = true;
-          if (this.jdField_a_of_type_Askn != null) {
-            this.jdField_a_of_type_Askn.a(this);
+          this.doubleClicked = true;
+          if (this.stickerDoubleClickListener != null) {
+            this.stickerDoubleClickListener.a(this);
           }
         }
       }
@@ -427,18 +420,33 @@ public class StickerGrayTipLayout
         {
           return true;
         } while (paramMotionEvent.getAction() != 1);
-        this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-      } while (!this.b);
-      this.b = false;
-      this.jdField_a_of_type_AndroidViewMotionEvent = null;
+        this.lastUpEvent = MotionEvent.obtain(paramMotionEvent);
+      } while (!this.doubleClicked);
+      this.doubleClicked = false;
+      this.lastUpEvent = null;
       return true;
     }
     return super.onTouchEvent(paramMotionEvent);
   }
+  
+  public void removeAllStickers()
+  {
+    if (this.stickers != null)
+    {
+      this.autoDismiss = false;
+      this.stickers.clear();
+    }
+  }
+  
+  public void startAutoDismiss()
+  {
+    this.autoDismiss = true;
+    invalidate();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.StickerGrayTipLayout
  * JD-Core Version:    0.7.0.1
  */

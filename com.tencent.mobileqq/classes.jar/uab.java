@@ -1,39 +1,33 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyCutImageView;
 
-final class uab
-  extends apee
+class uab
+  implements txe
 {
-  uab(aoeg paramaoeg, String paramString, AppInterface paramAppInterface, Context paramContext) {}
+  uab(tzy paramtzy) {}
   
-  public int a()
+  public void a()
   {
-    return 4;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (this.jdField_a_of_type_Aoeg != null) {
-      this.jdField_a_of_type_Aoeg.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+    if (tzy.a(this.a).booleanValue())
+    {
+      if ((tzy.a(this.a).isShown()) && (tzy.a(this.a).getWindowVisibility() == 0))
+      {
+        tzy.a(this.a, tzy.a(this.a));
+        tzy.a(this.a).removeCallbacks(tzy.a(this.a));
+        tzy.a(this.a).postDelayed(tzy.a(this.a), tzy.a(this.a).mAdvertisementExtInfo.p);
+      }
     }
-    tzq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
-  {
-    if (this.jdField_a_of_type_Aoeg != null) {
-      this.jdField_a_of_type_Aoeg.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    else {
+      return;
     }
-    tzq.a(this.jdField_a_of_type_AndroidContentContext, 2131694659);
+    tzy.a(this.a, Boolean.valueOf(false));
+    tzy.a(this.a, tzy.a(this.a));
   }
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uab
  * JD-Core Version:    0.7.0.1
  */

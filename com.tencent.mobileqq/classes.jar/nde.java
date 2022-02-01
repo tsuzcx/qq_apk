@@ -1,20 +1,17 @@
-import android.view.View;
-import com.tencent.avgame.gameroom.stage.StageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.avgame.gameroom.gamelist.GameListView.1;
 
 public class nde
-  implements ndl
+  implements DialogInterface.OnClickListener
 {
-  public nde(StageView paramStageView) {}
+  public nde(GameListView.1 param1) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.a().a();
-    bdll.b(null, "dc00898", "", "", "0X800B04A", "0X800B04A", 1, 0, "", "", "", "");
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nde
  * JD-Core Version:    0.7.0.1
  */

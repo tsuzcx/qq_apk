@@ -1,6 +1,6 @@
-class vug
+public abstract interface vug
 {
-  private static vud a = new vud(null);
+  public abstract void a(int paramInt);
 }
 
 

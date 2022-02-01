@@ -1,60 +1,10 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
 
-public class bffa
-  extends arac<bfez>
+public abstract interface bffa
 {
-  @NonNull
-  public bfez a(int paramInt)
-  {
-    QLog.d("TroopActiveRankingConfigProcessor", 2, "migrateOldOrDefaultContent, type = " + paramInt);
-    return new bfez();
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
   
-  @Nullable
-  public bfez a(araj[] paramArrayOfaraj)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopActiveRankingConfigProcessor", 2, "onParsed");
-    }
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return bfez.a(paramArrayOfaraj[0].a);
-    }
-    return null;
-  }
-  
-  public void a(bfez parambfez) {}
-  
-  public Class<bfez> clazz()
-  {
-    return bfez.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TroopActiveRankingConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 664;
-  }
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

@@ -1,32 +1,28 @@
-import android.view.View;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import qqcircle.QQCircleFeedBase.StTabInfo;
+import com.tencent.biz.qcircleshadow.lib.delegate.IPluginInfoDelegate;
+import java.util.List;
 
-class vgj
-  implements bliz
+public class vgj
+  implements IPluginInfoDelegate
 {
-  vgj(vgi paramvgi, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public List<String> getAllPluginInitInfo()
   {
-    if (!aazb.a("showEnterAuthActionSheetClick")) {
-      switch (paramInt)
-      {
-      }
+    return vgp.a().a();
+  }
+  
+  public String getCurrentPluginInfo()
+  {
+    if ((vgw.a().a() == null) || (vgw.a().a().a() == null)) {
+      return "";
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      if (vgi.a(this.jdField_a_of_type_Vgi) != null)
-      {
-        uyx.a(this.jdField_a_of_type_Vgi.a(), uyw.a(vgi.a(this.jdField_a_of_type_Vgi).a.urlInfo.get(), "authSchoolUrl"), null, -1);
-        continue;
-        if (vgi.a(this.jdField_a_of_type_Vgi) != null) {
-          uyx.a(this.jdField_a_of_type_Vgi.a(), uyw.a(vgi.a(this.jdField_a_of_type_Vgi).a.urlInfo.get(), "authCampanyUrl"), null, -1);
-        }
-      }
+    return vgw.a().a().a().toString();
+  }
+  
+  public int getCurrentPluginVersion()
+  {
+    if ((vgw.a().a() == null) || (vgw.a().a().a() == null)) {
+      return -1;
     }
+    return vgw.a().a().a().a();
   }
 }
 

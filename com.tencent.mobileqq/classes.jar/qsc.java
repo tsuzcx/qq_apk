@@ -1,9 +1,20 @@
-import android.os.IInterface;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmallGallery;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 
-public abstract interface qsc
-  extends IInterface
+public class qsc
+  extends qsd
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public qsc(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
+  {
+    super(paramContext, paramFaceDecoder, paramslt);
+  }
+  
+  public qpk g()
+  {
+    this.jdField_a_of_type_Qpj = new ComponentContentSmallGallery(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
 }
 
 

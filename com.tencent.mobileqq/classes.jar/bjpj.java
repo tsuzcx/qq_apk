@@ -1,41 +1,20 @@
-import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.open.agent.SwitchAccountActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.DynamicGridView;
 
 public class bjpj
-  implements View.OnTouchListener
+  implements AdapterView.OnItemClickListener
 {
-  protected GestureDetector.SimpleOnGestureListener a;
-  protected GestureDetector a;
-  View jdField_a_of_type_AndroidViewView;
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  public bjpj(DynamicGridView paramDynamicGridView) {}
   
-  public bjpj(SwitchAccountActivity paramSwitchAccountActivity)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new bjpk(this);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("AccountManage", 2, "action = " + i);
+    if ((!this.a.a()) && (this.a.isEnabled()) && (DynamicGridView.a(this.a) != null)) {
+      DynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
     }
-    if (i == 0)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      if (this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a == true) {
-        this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = false;
-      }
-    }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    return false;
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

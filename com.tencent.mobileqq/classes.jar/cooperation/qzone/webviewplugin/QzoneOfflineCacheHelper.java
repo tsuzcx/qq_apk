@@ -1,14 +1,14 @@
 package cooperation.qzone.webviewplugin;
 
 import android.text.TextUtils;
-import bmxh;
-import bmxj;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.URLUtil;
 import com.tencent.smtt.sdk.WebView;
 import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.cache.CacheManager;
+import cooperation.qzone.cache.FileCacheService;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 import java.io.File;
@@ -23,7 +23,7 @@ public class QzoneOfflineCacheHelper
   private static final int UPDATE_LRU_FILE_DELAY_TIME = 20000;
   private static final byte[] URL_LOCK = new byte[0];
   private static ConcurrentHashMap<String, ArrayList<Object>> downloadindUrlMap = new ConcurrentHashMap();
-  private static bmxj mFileCache;
+  private static FileCacheService mFileCache;
   
   public static boolean checkFileIfExist(String paramString)
   {
@@ -33,7 +33,7 @@ public class QzoneOfflineCacheHelper
     {
       return false;
       str = urlKey2FileName(paramString, true);
-      str = getFileCache().a(str);
+      str = getFileCache().getPath(str);
       if (new File(str).exists())
       {
         if (QLog.isDevelopLevel()) {
@@ -59,7 +59,7 @@ public class QzoneOfflineCacheHelper
         str2 = urlKey2FileName(paramString1, true);
         if (!paramBoolean)
         {
-          str1 = bmxh.e().a("dressup");
+          str1 = CacheManager.getQzoneWidgetAICacheService().getPath("dressup");
           localFile1 = new File(str1);
           if (!localFile1.exists()) {
             localFile1.mkdirs();
@@ -89,7 +89,7 @@ public class QzoneOfflineCacheHelper
         QLog.e("QzoneOfflineCacheHelper", 1, paramAppInterface, new Object[0]);
         return null;
       }
-      String str2 = getFileCache().a(str2);
+      String str2 = getFileCache().getPath(str2);
       String str1 = "";
       continue;
       label245:
@@ -154,10 +154,10 @@ public class QzoneOfflineCacheHelper
     }
   }
   
-  private static bmxj getFileCache()
+  private static FileCacheService getFileCache()
   {
     if (mFileCache == null) {
-      mFileCache = bmxh.b();
+      mFileCache = CacheManager.getWebviewOfflineFileCacheService();
     }
     return mFileCache;
   }

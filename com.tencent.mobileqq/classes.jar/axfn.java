@@ -1,17 +1,59 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class axfn
-  extends aogx
+public class axfn
+  extends axdo
 {
-  axfn(axfj paramaxfj) {}
-  
-  public void a()
+  public axfn(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonManager", 2, "mVipStatusObserver vip change");
+    super(paramContext, paramQQAppInterface);
+  }
+  
+  public int a(axdv paramaxdv)
+  {
+    return 5;
+  }
+  
+  public View a(ViewGroup paramViewGroup, axdv paramaxdv)
+  {
+    paramViewGroup = (axfo)paramaxdv;
+    paramaxdv = new TextView(this.a);
+    paramaxdv.setTextColor(this.a.getResources().getColor(2131165351));
+    paramaxdv.setTextSize(1, 16.0F);
+    paramaxdv.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+    paramViewGroup.g = paramaxdv;
+    return paramaxdv;
+  }
+  
+  public axdv a()
+  {
+    return new axfo(this);
+  }
+  
+  public void f(axdv paramaxdv)
+  {
+    paramaxdv = (axfo)paramaxdv;
+    Object localObject = (axfw)paramaxdv.a;
+    String str = ((axfw)localObject).n;
+    localObject = bfzn.a(this.a, ((axfw)localObject).a, str);
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      paramaxdv.g.setVisibility(8);
+      return;
     }
-    super.a();
-    this.a.d();
+    paramaxdv.g.setVisibility(0);
+    if ((localObject instanceof SpannableString)) {
+      paramaxdv.g.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+    paramaxdv.g.setText((CharSequence)localObject);
   }
 }
 

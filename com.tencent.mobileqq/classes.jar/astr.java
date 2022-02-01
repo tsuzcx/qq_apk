@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class astr
-  implements axfu<EmoticonPackage>
+class astr
+  implements View.OnClickListener
 {
-  public astr(AIOEmotionFragment paramAIOEmotionFragment, QQAppInterface paramQQAppInterface) {}
+  astr(astk paramastk) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void onClick(View paramView)
   {
-    if (paramEmoticonPackage == null)
-    {
-      AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 32);
-      return;
-    }
-    AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, true);
+    aszt.a(this.a.a, this.a.d());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

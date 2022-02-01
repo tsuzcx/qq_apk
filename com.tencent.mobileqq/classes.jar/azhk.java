@@ -1,21 +1,27 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.qassistant.wake.WakeManager.ServiceHelloQQCallback.1;
 
 public class azhk
-  implements BusinessObserver
+  implements azgx
 {
-  public void a(int paramInt) {}
+  azhk(azhh paramazhh) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    int i = 0;
-    if (paramInt == 0)
+    azhh.a(this.a).post(new WakeManager.ServiceHelloQQCallback.1(this));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.b = false;
+    if (paramBoolean) {
+      this.a.a("ServiceHelloQQCallback onInit success");
+    }
+    for (;;)
     {
-      paramInt = i;
-      if (paramBundle != null) {
-        paramInt = paramBundle.getInt("KEY_BATTERY", 0);
-      }
-      a(paramInt);
+      azeu.a("HelloQQWake", "HelloQQHelper init isMonitor：" + this.a.b);
+      return;
+      azeu.a("HelloQQWake", "HelloQQHelper init failure");
     }
   }
 }

@@ -35,7 +35,7 @@ class NavigationPlugin$9
       return;
       QLog.e("[mini] NavigationPlugin", 1, "navigateBackMiniApp failed");
     } while (this.val$listener == null);
-    this.val$listener.onLaunchResult(false, null);
+    this.val$listener.onLaunchResult(false, new Bundle());
   }
 }
 

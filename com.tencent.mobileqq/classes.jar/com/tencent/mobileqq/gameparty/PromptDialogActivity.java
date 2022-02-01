@@ -21,12 +21,11 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-import avoj;
-import bcqt;
-import bhlq;
-import bhpc;
-import bhrl;
-import bjqh;
+import aubl;
+import bbkb;
+import bfur;
+import bfyg;
+import bhvw;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
@@ -34,6 +33,7 @@ import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.QQLSUnlockActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -45,12 +45,12 @@ public class PromptDialogActivity
   SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = null;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  bhpc jdField_a_of_type_Bhpc = null;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
   private String jdField_a_of_type_JavaLangString = "";
   private Button jdField_b_of_type_AndroidWidgetButton;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  bhpc jdField_b_of_type_Bhpc = null;
+  QQCustomDialog jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
   private String jdField_b_of_type_JavaLangString = "";
   private String c = "";
   private String d = "";
@@ -78,7 +78,7 @@ public class PromptDialogActivity
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    bcqt localbcqt = new bcqt();
+    bbkb localbbkb = new bbkb();
     j = 268435456;
     try
     {
@@ -106,7 +106,7 @@ public class PromptDialogActivity
     if ((k & 0x400000) == 4194304) {
       j = i | 0x400000;
     }
-    localbcqt.a(this.app, this, paramString1, paramString2, paramString3, j);
+    localbbkb.a(this.app, this, paramString1, paramString2, paramString3, j);
   }
   
   private void a(boolean paramBoolean)
@@ -116,13 +116,13 @@ public class PromptDialogActivity
       if (QLog.isColorLevel()) {
         QLog.d("PromptDialogActivity", 2, "startGame directStart = " + paramBoolean + ", app installed");
       }
-      Object localObject = (avoj)this.app.getManager(156);
-      ((avoj)localObject).b();
-      ((avoj)localObject).a("https://openmobile.qq.com/gameteam/start_game?uin=" + this.app.getCurrentAccountUin(), null);
+      Object localObject = (aubl)this.app.getManager(156);
+      ((aubl)localObject).b();
+      ((aubl)localObject).a("https://openmobile.qq.com/gameteam/start_game?uin=" + this.app.getCurrentAccountUin(), null);
       if (paramBoolean) {}
       for (localObject = this.d;; localObject = String.format("platform=qq_m&current_uin=$OPID$&launchfrom=&gamedata=%s&platformdata=&openid=$OPID$&atoken=$AT$&ptoken=$PT$", new Object[] { this.c }))
       {
-        if (bhrl.a(super.getApplicationContext()))
+        if (bfyg.a(super.getApplicationContext()))
         {
           if (QLog.isColorLevel()) {
             QLog.d("PromptDialogActivity", 2, "startGame screen is locked, need unlock");
@@ -133,7 +133,7 @@ public class PromptDialogActivity
           QLog.d("PromptDialogActivity", 2, "startGame launch Game now");
         }
         a(this.jdField_a_of_type_JavaLangString, (String)localObject, this.jdField_b_of_type_JavaLangString, "0");
-        bjqh.a().a(this.app.getCurrentAccountUin(), "", "", "2000", "2036", "0", false);
+        bhvw.a().a(this.app.getCurrentAccountUin(), "", "", "2000", "2036", "0", false);
         finish();
         return;
       }
@@ -141,15 +141,15 @@ public class PromptDialogActivity
     if (QLog.isColorLevel()) {
       QLog.d("PromptDialogActivity", 2, "startGame directStart = " + paramBoolean + ", app not installed");
     }
-    this.jdField_a_of_type_Bhpc = bhlq.a(this, 230);
-    this.jdField_a_of_type_Bhpc.setTitle(this.app.getApp().getString(2131692564));
-    this.jdField_a_of_type_Bhpc.setMessage(this.app.getApp().getString(2131692561));
-    this.jdField_a_of_type_Bhpc.setPositiveButton(this.app.getApp().getString(2131692563), this);
-    this.jdField_a_of_type_Bhpc.setNegativeButton(this.app.getApp().getString(2131692562), this);
-    this.jdField_a_of_type_Bhpc.setOnCancelListener(this);
-    this.jdField_a_of_type_Bhpc.show();
-    bjqh.a().a(this.app.getCurrentAccountUin(), "", "", "2000", "2036", "1", false);
-    bjqh.a().a(this.app.getCurrentAccountUin(), "", "", "2000", "2039", "0", false);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this, 230);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(this.app.getApp().getString(2131692612));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(this.app.getApp().getString(2131692609));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(this.app.getApp().getString(2131692611), this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(this.app.getApp().getString(2131692610), this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    bhvw.a().a(this.app.getCurrentAccountUin(), "", "", "2000", "2036", "1", false);
+    bhvw.a().a(this.app.getCurrentAccountUin(), "", "", "2000", "2039", "0", false);
   }
   
   private boolean a(Context paramContext, String paramString)
@@ -171,8 +171,9 @@ public class PromptDialogActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -224,23 +225,23 @@ public class PromptDialogActivity
     super.getWindow().addFlags(128);
     super.getWindow().addFlags(2097152);
     super.getWindow().addFlags(1024);
-    setContentView(2131559210);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368311));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131377945));
+    setContentView(2131559217);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368335));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131377714));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131368212));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378936));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378243));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131368236));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378707));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378011));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(str2);
     try
     {
       localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = super.getResources().getDimensionPixelSize(2131297093);
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = super.getResources().getDimensionPixelSize(2131297092);
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = super.getResources().getDrawable(2130839149);
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = super.getResources().getDrawable(2130839149);
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = super.getResources().getDimensionPixelSize(2131297148);
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = super.getResources().getDimensionPixelSize(2131297147);
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = super.getResources().getDrawable(2130839184);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = super.getResources().getDrawable(2130839184);
       paramBundle = URLDrawable.getDrawable(paramBundle, (URLDrawable.URLDrawableOptions)localObject);
       this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramBundle);
       return true;
@@ -249,7 +250,7 @@ public class PromptDialogActivity
     {
       for (;;)
       {
-        this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(super.getResources().getDrawable(2130839149));
+        this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(super.getResources().getDrawable(2130839184));
       }
     }
   }
@@ -261,7 +262,7 @@ public class PromptDialogActivity
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDialogInterface == this.jdField_b_of_type_Bhpc) {
+    if (paramDialogInterface == this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog) {
       if (paramInt == 1)
       {
         a(true);
@@ -279,11 +280,11 @@ public class PromptDialogActivity
         paramDialogInterface.dismiss();
         finish();
         return;
-      } while (paramDialogInterface != this.jdField_a_of_type_Bhpc);
+      } while (paramDialogInterface != this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog);
       if (paramInt == 1)
       {
-        bjqh.a().a(this.app.getCurrentAccountUin(), "", "", "2000", "2041", "0", false);
-        if (bhrl.a(super.getApplicationContext()))
+        bhvw.a().a(this.app.getCurrentAccountUin(), "", "", "2000", "2041", "0", false);
+        if (bfyg.a(super.getApplicationContext()))
         {
           if (QLog.isColorLevel()) {
             QLog.d("PromptDialogActivity", 2, "on click download button, need unlock screen");
@@ -307,7 +308,7 @@ public class PromptDialogActivity
         }
       }
     } while (paramInt != 0);
-    bjqh.a().a(this.app.getCurrentAccountUin(), "", "", "2000", "2040", "0", false);
+    bhvw.a().a(this.app.getCurrentAccountUin(), "", "", "2000", "2040", "0", false);
     paramDialogInterface.dismiss();
     finish();
   }
@@ -321,10 +322,10 @@ public class PromptDialogActivity
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bjqh.a().a(this.app.getCurrentAccountUin(), "", "", "2000", "2046", "0", false);
+      bhvw.a().a(this.app.getCurrentAccountUin(), "", "", "2000", "2046", "0", false);
       finish();
       continue;
-      bjqh.a().a(this.app.getCurrentAccountUin(), "", "", "2000", "2045", "0", false);
+      bhvw.a().a(this.app.getCurrentAccountUin(), "", "", "2000", "2045", "0", false);
       a(false);
     }
   }

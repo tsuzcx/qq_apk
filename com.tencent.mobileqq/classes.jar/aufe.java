@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.ViewParent;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.hiboom.RichTextPanel;
 
 public class aufe
-  extends aufd
+  extends RelativeLayout
 {
-  public aufe(auei paramauei)
+  public aufe(RichTextPanel paramRichTextPanel, Context paramContext)
   {
-    super(paramauei);
+    super(paramContext);
   }
   
-  public boolean a(String paramString)
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    FileManagerEntity localFileManagerEntity = this.a.a();
-    if (localFileManagerEntity == null) {
-      return false;
+    if ((paramMotionEvent.getAction() == 0) && (getParent() != null)) {
+      getParent().requestDisallowInterceptTouchEvent(true);
     }
-    return paramString.equals(String.valueOf(localFileManagerEntity.nSessionId));
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
 }
 

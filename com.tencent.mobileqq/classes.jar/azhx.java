@@ -1,159 +1,36 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AutoReplyText;
-import mqq.app.AppRuntime.Status;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.OldHttpEngine;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class azhx
+class azhx
+  extends AbsPreDownloadTask
 {
-  public static void a(QQAppInterface paramQQAppInterface)
+  azhx(azhw paramazhw, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if (paramQQAppInterface != null) {
-      bdll.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDA", "0X8009DDA", 0, 0, "", "", "", "");
-    }
+    super(paramQQAppInterface, paramString1);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong)
+  public void realCancel()
   {
-    int i;
-    if ((paramQQAppInterface != null) && (paramStatus != null)) {
-      switch (azhy.a[paramStatus.ordinal()])
-      {
-      default: 
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      int j = i;
-      if (i == 1)
-      {
-        j = i;
-        if (paramLong > 0L) {
-          j = (int)paramLong;
-        }
-      }
-      if (j != 0) {
-        bdll.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDB", "0X8009DDB", j, 0, "", "", "", "");
-      }
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
-      continue;
-      i = 5;
-      continue;
-      i = 6;
-    }
+    QLog.i("QbossPreDownloadManager", 1, "ctrl realCancel");
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong, AutoReplyText paramAutoReplyText)
+  public void realStart()
   {
-    if ((paramQQAppInterface != null) && (paramAutoReplyText != null) && (azhv.a(paramStatus)))
-    {
-      int i = 1;
-      if (paramAutoReplyText.getTextId() == 2147483647) {
-        i = 2;
-      }
-      bdll.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDC", "0X8009DDC", i, 0, "", "", "", "");
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    String str1;
-    if (paramQQAppInterface != null)
-    {
-      if (!paramBoolean) {
-        break label41;
-      }
-      str1 = "0X8009DDE";
-      if (!paramBoolean) {
-        break label47;
-      }
-    }
-    label41:
-    label47:
-    for (String str2 = "0X8009DDE";; str2 = "0X8009DDF")
-    {
-      bdll.b(paramQQAppInterface, "dc00898", "", "", str1, str2, 0, 0, "", "", "", "");
-      return;
-      str1 = "0X8009DDF";
-      break;
-    }
-  }
-  
-  public static void a(AppRuntime.Status paramStatus, long paramLong)
-  {
-    int i = -1;
-    switch (azhy.a[paramStatus.ordinal()])
-    {
-    }
-    for (;;)
-    {
-      int j = i;
-      if (i == 1)
-      {
-        j = i;
-        if (paramLong > 0L) {
-          j = (int)paramLong;
-        }
-      }
-      azir.a("0X800AF3D", j);
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
-      continue;
-      i = 5;
-      continue;
-      i = 6;
-    }
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface != null) {
-      bdll.b(paramQQAppInterface, "dc00898", "", "", "0X8009DDD", "0X8009DDD", 0, 0, "", "", "", "");
-    }
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, AppRuntime.Status paramStatus, long paramLong)
-  {
-    int i = -1;
-    switch (azhy.a[paramStatus.ordinal()])
-    {
-    }
-    for (;;)
-    {
-      int j = i;
-      if (i == 1)
-      {
-        j = i;
-        if (paramLong > 0L) {
-          j = (int)paramLong;
-        }
-      }
-      bdll.b(paramQQAppInterface, "dc00898", "", "", "0X8009DE0", "0X8009DE0", j, 0, "", "", "", "");
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
-      continue;
-      i = 5;
-      continue;
-      i = 6;
-    }
+    QLog.i("QbossPreDownloadManager", 1, "downloadRes realStart packagename:" + this.jdField_a_of_type_JavaLangString + ",path" + this.b);
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("Qboss_PreDownload_PackageName", this.jdField_a_of_type_JavaLangString);
+    azhw.a("Qboss_PreDownload_Start", (HashMap)localObject);
+    localObject = new HttpNetReq();
+    ((HttpNetReq)localObject).mCallback = new azhy(this.app, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d);
+    ((HttpNetReq)localObject).mReqUrl = this.c;
+    ((HttpNetReq)localObject).mHttpMethod = 0;
+    ((HttpNetReq)localObject).mOutPath = this.b;
+    ((OldHttpEngine)this.app.getNetEngine(0)).sendReq((NetReq)localObject);
   }
 }
 

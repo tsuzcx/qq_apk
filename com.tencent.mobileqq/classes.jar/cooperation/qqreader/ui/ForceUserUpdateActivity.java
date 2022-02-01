@@ -10,20 +10,20 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.TextView;
-import bhnv;
-import bmpi;
-import bmqa;
-import bmql;
-import bmqm;
-import bmqn;
-import bmqo;
-import bmqp;
-import bmqu;
-import bmqw;
-import bmrk;
-import bmrn;
-import bmro;
+import bktp;
+import bkuh;
+import bkus;
+import bkut;
+import bkuu;
+import bkuv;
+import bkuw;
+import bkvb;
+import bkvd;
+import bkvr;
+import bkvu;
+import bkvv;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qqreader.net.BusinessTask;
 import cooperation.qqreader.view.FrameLoading;
@@ -36,12 +36,12 @@ public class ForceUserUpdateActivity
   private long jdField_a_of_type_Long = -1L;
   private Context jdField_a_of_type_AndroidContentContext;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bmqa jdField_a_of_type_Bmqa = new bmql(this);
-  private bmrk jdField_a_of_type_Bmrk;
+  private bkuh jdField_a_of_type_Bkuh = new bkus(this);
+  private bkvr jdField_a_of_type_Bkvr;
   private LoadingImageView jdField_a_of_type_CooperationQqreaderViewLoadingImageView;
   private boolean jdField_a_of_type_Boolean;
-  private bmqa b = new bmqm(this);
-  private bmqa c = new bmqn(this);
+  private bkuh b = new bkut(this);
+  private bkuh c = new bkuu(this);
   
   private void a()
   {
@@ -58,38 +58,38 @@ public class ForceUserUpdateActivity
   
   private void a(String paramString)
   {
-    bmqw.a("ForceUserUpdateActivity", paramString);
+    bkvd.a("ForceUserUpdateActivity", paramString);
     b("哎呀，升级出了点问题，再试试看吧~");
   }
   
   private void b()
   {
-    if (!bhnv.a()) {
+    if (!NetworkUtil.isNetworkAvailable()) {
       b("网络连接异常，请检查网络后重试");
     }
     do
     {
       return;
-      if (!bmpi.a()) {
+      if (!bktp.a()) {
         c();
       }
-    } while (bmqu.d(this));
+    } while (bkvb.d(this));
     e();
   }
   
   private void b(String paramString)
   {
     if ((isFinishing()) || ((Build.VERSION.SDK_INT >= 17) && (isDestroyed()))) {
-      bmqw.c("ForceUserUpdateActivity", "showRetryDialog: activity 已经销毁，不显示Dialog");
+      bkvd.c("ForceUserUpdateActivity", "showRetryDialog: activity 已经销毁，不显示Dialog");
     }
     do
     {
       return;
-      if (this.jdField_a_of_type_Bmrk == null) {
-        this.jdField_a_of_type_Bmrk = new bmrn(this).a(paramString).a("退出", new bmqp(this)).b("重试", new bmqo(this)).a();
+      if (this.jdField_a_of_type_Bkvr == null) {
+        this.jdField_a_of_type_Bkvr = new bkvu(this).a(paramString).a("退出", new bkuw(this)).b("重试", new bkuv(this)).a();
       }
-    } while (this.jdField_a_of_type_Bmrk.isShowing());
-    this.jdField_a_of_type_Bmrk.show();
+    } while (this.jdField_a_of_type_Bkvr.isShowing());
+    this.jdField_a_of_type_Bkvr.show();
   }
   
   private void c()
@@ -108,12 +108,12 @@ public class ForceUserUpdateActivity
   
   private void e()
   {
-    bmro.a(bmro.a, this.jdField_a_of_type_Bmqa);
+    bkvv.a(bkvv.a, this.jdField_a_of_type_Bkuh);
   }
   
   private void f()
   {
-    bmqu.b(this.jdField_a_of_type_AndroidContentContext, 1);
+    bkvb.b(this.jdField_a_of_type_AndroidContentContext, 1);
     g();
   }
   
@@ -121,7 +121,7 @@ public class ForceUserUpdateActivity
   {
     long l2 = 1000L;
     long l1;
-    if ((!this.jdField_a_of_type_Boolean) && (bmpi.a()) && (bmqu.d(this.jdField_a_of_type_AndroidContentContext)))
+    if ((!this.jdField_a_of_type_Boolean) && (bktp.a()) && (bkvb.d(this.jdField_a_of_type_AndroidContentContext)))
     {
       if (this.jdField_a_of_type_Long <= 0L) {
         break label74;
@@ -146,8 +146,9 @@ public class ForceUserUpdateActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -172,16 +173,16 @@ public class ForceUserUpdateActivity
     this.jdField_a_of_type_AndroidWidgetTextView.setText("正在升级到新书城，请稍等...");
     a();
     b();
-    bmqw.c("cost_time_tag", "ForceUserUpdateActivity mClickToOnCreateTime=" + (System.currentTimeMillis() - getIntent().getLongExtra("key_click_leba_start_time", 0L)));
+    bkvd.c("cost_time_tag", "ForceUserUpdateActivity mClickToOnCreateTime=" + (System.currentTimeMillis() - getIntent().getLongExtra("key_click_leba_start_time", 0L)));
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    if ((this.jdField_a_of_type_Bmrk != null) && (this.jdField_a_of_type_Bmrk.isShowing()))
+    if ((this.jdField_a_of_type_Bkvr != null) && (this.jdField_a_of_type_Bkvr.isShowing()))
     {
-      this.jdField_a_of_type_Bmrk.dismiss();
-      this.jdField_a_of_type_Bmrk = null;
+      this.jdField_a_of_type_Bkvr.dismiss();
+      this.jdField_a_of_type_Bkvr = null;
     }
   }
 }

@@ -1,130 +1,29 @@
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.RemoteException;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.1;
-import java.lang.ref.WeakReference;
-import java.util.HashSet;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import mqq.app.AppRuntime;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextBean;
 
-public class bmno
+final class bmno
+  implements bmfg
 {
-  private ServiceConnection a;
-  protected bmne a;
-  public final String a;
-  protected WeakReference<AppRuntime> a;
-  protected HashSet<String> a;
-  public ConcurrentLinkedQueue<bmnq> a;
-  protected boolean a;
-  public final String b = "com.qqindividuality.ipc.QQIndividualityRemoteProxyService";
+  bmno(AEEditorTextBean paramAEEditorTextBean, bmnq parambmnq) {}
   
-  public bmno(AppRuntime paramAppRuntime)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "QQIndividualityRemoteProxy";
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_AndroidContentServiceConnection = new bmnp(this);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppRuntime);
-    a("qqindividuality_signature");
-  }
-  
-  private boolean a()
-  {
-    if ((this.jdField_a_of_type_Bmne == null) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
-    {
-      AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localAppRuntime != null)
-      {
-        QQIndividualityPluginProxyService.a(localAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection, "com.qqindividuality.ipc.QQIndividualityRemoteProxyService");
-        this.jdField_a_of_type_Boolean = true;
-        return true;
-      }
+    if (this.jdField_a_of_type_Bmnq != null) {
+      this.jdField_a_of_type_Bmnq.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, (int)(0.66D * paramInt));
     }
-    return false;
   }
   
-  private boolean a(bmnq parambmnq)
+  public void a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(parambmnq);
-  }
-  
-  private boolean b()
-  {
-    if ((this.jdField_a_of_type_Bmne != null) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
+    if (paramBoolean)
     {
-      AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localAppRuntime != null)
-      {
-        QQIndividualityPluginProxyService.a(localAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection);
-        this.jdField_a_of_type_Bmne = null;
-        this.jdField_a_of_type_Boolean = false;
-      }
-    }
-    return true;
-  }
-  
-  public void a(bmnq parambmnq)
-  {
-    if ((this.jdField_a_of_type_Bmne != null) && (parambmnq != null))
-    {
-      Looper localLooper = Looper.getMainLooper();
-      if (Thread.currentThread() != localLooper.getThread()) {
-        new Handler(localLooper).post(new QQIndividualityRemoteProxy.1(this, parambmnq));
-      }
-    }
-    else
-    {
+      bmnn.b(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, this.jdField_a_of_type_Bmnq);
+      bmnn.c(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, this.jdField_a_of_type_Bmnq);
       return;
     }
-    try
-    {
-      this.jdField_a_of_type_Bmne.a(parambmnq.jdField_a_of_type_Int, parambmnq.jdField_a_of_type_AndroidOsBundle);
-      return;
+    if (this.jdField_a_of_type_Bmnq != null) {
+      this.jdField_a_of_type_Bmnq.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, paramBoolean, "ERROR_PAG_ZIP_DOWNLOAD_FAILED");
     }
-    catch (RemoteException parambmnq) {}
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (!this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
-    {
-      this.jdField_a_of_type_JavaUtilHashSet.add(paramString);
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString, int paramInt, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
-    {
-      paramString = new bmnq(this, paramInt, paramBundle);
-      if (this.jdField_a_of_type_Bmne != null) {
-        a(paramString);
-      }
-      for (;;)
-      {
-        return true;
-        a(paramString);
-        a();
-      }
-    }
-    return false;
-  }
-  
-  public boolean b(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
-    {
-      this.jdField_a_of_type_JavaUtilHashSet.remove(paramString);
-      if (this.jdField_a_of_type_JavaUtilHashSet.isEmpty()) {
-        b();
-      }
-    }
-    return false;
+    bmbx.a("AEEditorPagStickerUtil", "[downloadPagZip] download pag zip failed");
   }
 }
 

@@ -1,32 +1,44 @@
-import android.app.Dialog;
-import android.graphics.Color;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.activity.TroopGagActivity;
+import com.tencent.mobileqq.activity.TroopGagActivity.3.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aele
-  implements bixa
+  extends andd
 {
-  public aele(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public aele(TroopGagActivity paramTroopGagActivity) {}
   
-  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
+  protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    this.a.app.a().a(DiscussionInfoCardActivity.a(this.a), 3000);
-    this.a.app.a().e(DiscussionInfoCardActivity.a(this.a), 3000);
-    anfz.a(this.a.app, "chat_history_confirm_del_msg");
-    paramDialog = this.a.app.getHandler(Conversation.class);
-    paramView = paramDialog.obtainMessage(1017);
-    paramView.obj = DiscussionInfoCardActivity.a(this.a);
-    paramView.arg1 = 3000;
-    paramDialog.sendMessage(paramView);
-    QQToast.a(this.a, 2, this.a.getString(2131690718), 0).a();
-    if (this.a.a != null) {
-      ((TextView)this.a.a.findViewById(2131378936)).setTextColor(Color.parseColor("#cccccc"));
+    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_Aelg.notifyDataSetChanged();
+      if (this.a.jdField_a_of_type_Aelg.getCount() != 0) {
+        break label209;
+      }
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    for (;;)
+    {
+      this.a.getSharedPreferences("last_update_time" + this.a.app.getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + this.a.jdField_a_of_type_JavaLangString, System.currentTimeMillis()).commit();
+      ThreadManager.post(new TroopGagActivity.3.1(this, (bfbz)this.a.app.getManager(48)), 8, null, false);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("TroopGagActivity", 2, "onUpdateTroopGetMemberList: isSuccess=" + paramBoolean);
+      return;
+      label209:
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
   }
 }

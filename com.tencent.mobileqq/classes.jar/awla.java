@@ -1,38 +1,8 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.theme.ThemeUtil;
-
-public class awla
-  extends RecyclerView.ViewHolder
+public abstract interface awla
 {
-  private TextView a;
+  public abstract void g();
   
-  public awla(Context paramContext, View paramView)
-  {
-    super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131378936));
-    if (ThemeUtil.isNowThemeIsNight(null, false, null))
-    {
-      this.a.setTextColor(paramContext.getResources().getColor(2131165756));
-      return;
-    }
-    this.a.setTextColor(paramContext.getResources().getColor(2131165755));
-  }
-  
-  public void a(awkq paramawkq)
-  {
-    if (TextUtils.isEmpty(paramawkq.a))
-    {
-      this.a.setVisibility(8);
-      return;
-    }
-    this.a.setVisibility(0);
-    this.a.setText(paramawkq.a);
-  }
+  public abstract void h();
 }
 
 

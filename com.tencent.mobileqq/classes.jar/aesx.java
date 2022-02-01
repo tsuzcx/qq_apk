@@ -1,46 +1,25 @@
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.app.proxy.GroupActionResp;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class aesx
-  extends anyu
+  implements DialogInterface.OnClickListener
 {
-  public aesx(GroupManagerActivity paramGroupManagerActivity) {}
+  public aesx(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  protected void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onAddGroupResp isSuccess = " + paramBoolean);
+    this.a.l();
+    this.a.b(this.a.n);
+    if (VipUtils.b(this.a.app)) {}
+    for (paramDialogInterface = "4";; paramDialogInterface = "3")
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), paramDialogInterface, "1");
+      return;
     }
-    this.a.a(paramBoolean);
-    GroupManagerActivity.c(this.a, true);
-  }
-  
-  protected void onDeleteGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onDeleteGroupResp isSuccess = " + paramBoolean);
-    }
-    this.a.a(paramBoolean);
-    GroupManagerActivity.c(this.a, true);
-  }
-  
-  protected void onRenameGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onRenameGroupResp isSuccess = " + paramBoolean);
-    }
-    this.a.a(paramBoolean);
-    GroupManagerActivity.c(this.a, true);
-  }
-  
-  protected void onResortGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onResortGroupResp isSuccess = " + paramBoolean);
-    }
-    this.a.a(true);
-    GroupManagerActivity.c(this.a, true);
   }
 }
 

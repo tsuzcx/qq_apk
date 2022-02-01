@@ -1,270 +1,138 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
+import android.content.Context;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.avgame.ipc.MapParcelable;
-import com.tencent.avgame.ipc.UserInfo;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class new
-  extends QIPCModule
+  implements ned
 {
-  private final AVGameAppInterface jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
-  private final ney jdField_a_of_type_Ney;
+  nee jdField_a_of_type_Nee;
+  neg jdField_a_of_type_Neg;
   
-  public new(AVGameAppInterface paramAVGameAppInterface)
+  public new(nee paramnee)
   {
-    super("AVGameClientQIPCModule");
-    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface = paramAVGameAppInterface;
-    this.jdField_a_of_type_Ney = new ney(this, null);
-    QIPCClientHelper.getInstance().register(this);
-    QIPCClientHelper.getInstance().getClient().addListener(this.jdField_a_of_type_Ney);
-    b();
+    this.jdField_a_of_type_Nee = paramnee;
   }
   
-  private void a(Bundle paramBundle)
+  public String a(Context paramContext, naf paramnaf)
   {
-    if (paramBundle == null) {
-      return;
-    }
-    int i = paramBundle.getInt("key_event_id");
-    boolean bool = paramBundle.getBoolean("key_event_ret");
-    paramBundle = paramBundle.getString("key_event_msg");
-    if (QLog.isDevelopLevel()) {
-      QLog.i("AVGameClientQIPCModule", 4, "notifyEvent, eventId[" + i + "], result[" + bool + "], msg[" + paramBundle + "]");
-    }
-    mxt.a().a(mxr.class, i, bool, paramBundle);
-  }
-  
-  private void a(Bundle paramBundle, AVGameAppInterface paramAVGameAppInterface)
-  {
-    if ((paramBundle == null) || (paramAVGameAppInterface == null)) {}
-    int i;
-    String str;
-    do
+    paramContext = "";
+    Object localObject = paramnaf.a();
+    if (localObject == null)
     {
-      return;
-      i = paramBundle.getInt("key_type");
-      str = paramBundle.getString("key_uin");
-      paramBundle.setClassLoader(UserInfo.class.getClassLoader());
-      paramBundle = (UserInfo)paramBundle.getParcelable("key_result");
-      paramAVGameAppInterface = (mxo)paramAVGameAppInterface.a(2);
-      if (paramAVGameAppInterface != null) {
-        paramAVGameAppInterface.a(i, str, paramBundle);
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.i("AVGameClientQIPCModule", 4, "notifyUserInfoChange, uinType[" + i + "], uin[" + str + "], info[" + paramBundle + "]");
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Ney.a()) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameClientQIPCModule", 2, "connect, [" + this.jdField_a_of_type_Ney.a.get() + "]");
-    }
-    QIPCClientHelper.getInstance().getClient().connect(this.jdField_a_of_type_Ney);
-  }
-  
-  private void b(Bundle paramBundle, AVGameAppInterface paramAVGameAppInterface)
-  {
-    if ((paramBundle == null) || (paramAVGameAppInterface == null)) {}
-    int i;
-    String str;
-    int j;
-    do
-    {
-      return;
-      i = paramBundle.getInt("key_face_type");
-      str = paramBundle.getString("key_uin");
-      j = paramBundle.getInt("key_id_type");
-      paramBundle = (mxo)paramAVGameAppInterface.a(2);
-      if (paramBundle != null) {
-        paramBundle.notifyUI(1, true, new Object[] { Integer.valueOf(i), str, Integer.valueOf(j) });
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.i("AVGameClientQIPCModule", 4, "notifyUserHeadChange, faceType[" + i + "], uin[" + str + "], idType[" + j + "]");
-  }
-  
-  private void c(Bundle paramBundle, AVGameAppInterface paramAVGameAppInterface)
-  {
-    if ((paramBundle == null) || (paramAVGameAppInterface == null)) {
-      return;
-    }
-    boolean bool = paramBundle.getBoolean("key_event_ret");
-    String str = paramBundle.getString("key_play_game_id");
-    int i = paramBundle.getInt("key_file_type");
-    paramBundle = paramBundle.getString("key_file_url");
-    if (QLog.isDevelopLevel()) {
-      QLog.i("AVGameClientQIPCModule_GameRC", 4, "notifyGameResultUpload, playId[" + str + "], fileType[" + i + "], fileUrl[" + paramBundle + "]");
-    }
-    ((nac)paramAVGameAppInterface.a(3)).notifyUI(11, bool, new Object[] { str, Integer.valueOf(i), paramBundle });
-  }
-  
-  public Bitmap a(int paramInt1, String paramString, byte paramByte, int paramInt2)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      b();
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("key_face_type", paramInt1);
-      localBundle.putString("key_uin", paramString);
-      localBundle.putByte("key_shape", paramByte);
-      localBundle.putInt("key_id_type", paramInt2);
-      paramString = QIPCClientHelper.getInstance().callServer("AVGameServerIPCModule", "action_get_user_head", localBundle);
-    } while ((paramString == null) || (!paramString.isSuccess()) || (paramString.data == null));
-    return (Bitmap)paramString.data.getParcelable("key_result");
-  }
-  
-  public UserInfo a(int paramInt, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      b();
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("key_type", paramInt);
-      localBundle.putString("key_uin", paramString);
-      paramString = QIPCClientHelper.getInstance().callServer("AVGameServerIPCModule", "action_get_user_info", localBundle);
-    } while ((paramString == null) || (!paramString.isSuccess()) || (paramString.data == null));
-    paramString.data.setClassLoader(UserInfo.class.getClassLoader());
-    return (UserInfo)paramString.data.getParcelable("key_result");
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameClientQIPCModule", 2, "disconnect");
-    }
-    QIPCClientHelper.getInstance().disconnect();
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVGameClientQIPCModule", 2, "setCurrentAvGameStatus nCurrentStatus:" + paramInt + " roomId:" + paramString, new Throwable("not crash, print stack"));
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("status", paramInt);
-    localBundle.putString("key_room_id", paramString);
-    QIPCClientHelper.getInstance().callServer("AVGameServerIPCModule", "action_set_cur_av_game_status", localBundle, new nex(this, paramString, paramInt));
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVGameClientQIPCModule", 2, "notifySendMsg shareType:" + paramInt + " friendUin:" + paramString1 + " roomId:" + paramString2, new Throwable("print stack"));
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("key_type", paramInt);
-    localBundle.putString("key_uin", paramString1);
-    localBundle.putString("key_room_id", paramString2);
-    QIPCClientHelper.getInstance().callServer("AVGameServerIPCModule", "action_notify_send_msg", localBundle, null);
-  }
-  
-  public void a(int paramInt, List<String> paramList, HashMap<String, String> paramHashMap)
-  {
-    if ((paramList == null) || (paramList.size() == 0) || (paramHashMap == null)) {}
-    do
-    {
-      do
+      QLog.e("GuessPictureStagePresenter", 1, "getGamePrepareBottomTip null gameItem");
+      localObject = paramContext;
+      if (TextUtils.isEmpty(paramContext))
       {
-        return;
-        b();
-        ArrayList localArrayList = new ArrayList(paramList.size());
-        localArrayList.addAll(paramList);
-        paramList = new Bundle();
-        paramList.putInt("key_type", paramInt);
-        paramList.putStringArrayList("key_uin_list", localArrayList);
-        paramList = QIPCClientHelper.getInstance().callServer("AVGameServerIPCModule", "action_get_nicks", paramList);
-      } while ((paramList == null) || (!paramList.isSuccess()) || (paramList.data == null));
-      paramList.data.setClassLoader(MapParcelable.class.getClassLoader());
-      paramList = (MapParcelable)paramList.data.getParcelable("key_result");
-    } while (paramList == null);
-    paramHashMap.putAll(paramList.a);
+        localObject = BaseApplicationImpl.getContext().getResources().getString(2131690302);
+        QLog.e("GuessPictureStagePresenter", 1, "getGamePrepareBottomTip tips isEmpty");
+      }
+      paramContext = paramnaf.c();
+      if (TextUtils.isEmpty(paramContext)) {
+        break label98;
+      }
+      paramContext = paramContext + "\n";
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(paramContext)) {
+        break label109;
+      }
+      return localObject;
+      paramContext = ((nak)localObject).m;
+      break;
+      label98:
+      QLog.e("GuessPictureStagePresenter", 1, "songTypeString tips isEmpty");
+    }
+    label109:
+    return paramContext + (String)localObject;
   }
   
-  public void a(String paramString)
+  public String a(Context paramContext, boolean paramBoolean)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("key_play_game_id", paramString);
-    QIPCClientHelper.getInstance().callServer("AVGameServerIPCModule", "action_upload_game_result_video", localBundle, null);
+    if (paramContext == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GuessPictureStagePresenter", 2, "getGameRuleAnswerTip null context");
+      }
+      return "";
+    }
+    return paramContext.getResources().getString(2131690301);
   }
   
-  public void a(String paramString1, String paramString2, String paramString3)
+  public neg a()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("key_play_game_id", paramString1);
-    localBundle.putString("key_pic_path", paramString2);
-    localBundle.putString("key_video_path", paramString3);
-    QIPCClientHelper.getInstance().callServer("AVGameServerIPCModule", "action_upload_game_result_resources", localBundle, null);
+    return this.jdField_a_of_type_Neg;
+  }
+  
+  public void a(mzq parammzq)
+  {
+    this.jdField_a_of_type_Nee.a(parammzq);
+  }
+  
+  public void a(naf paramnaf)
+  {
+    a(mzl.a(paramnaf), false);
+    this.jdField_a_of_type_Neg.a().d(false);
+  }
+  
+  public void a(neg paramneg)
+  {
+    this.jdField_a_of_type_Neg = paramneg;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Nee.a(paramBoolean);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_Nee.a(paramBoolean1, paramBoolean2);
   }
   
   public boolean a()
   {
-    boolean bool2 = false;
-    b();
-    Object localObject = new Bundle();
-    localObject = QIPCClientHelper.getInstance().callServer("AVGameServerIPCModule", "action_check_ptv_so_load_ok", (Bundle)localObject);
-    boolean bool1 = bool2;
-    if (localObject != null)
-    {
-      bool1 = bool2;
-      if (((EIPCResult)localObject).isSuccess()) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return false;
   }
   
-  public void b(String paramString)
+  public boolean a(boolean paramBoolean)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("key_play_game_id", paramString);
-    QIPCClientHelper.getInstance().callServer("AVGameServerIPCModule", "action_clean_game_result_resources", localBundle, null);
+    return false;
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void b(naf paramnaf)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("AVGameClientQIPCModule", 4, "onCall, action[" + paramString + "]");
-    }
-    if ("action_notify_user_info_change".equals(paramString)) {
-      a(paramBundle, this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface);
-    }
-    do
-    {
-      return null;
-      if ("action_notify_user_head_change".equals(paramString))
-      {
-        b(paramBundle, this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface);
-        return null;
-      }
-      if ("action_notify_event".equals(paramString))
-      {
-        a(paramBundle);
-        return null;
-      }
-    } while (!"action_notify_game_result_upload".equals(paramString));
-    c(paramBundle, this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface);
-    return null;
+    a(mzl.a(paramnaf), true);
+    a(paramnaf.a());
+    this.jdField_a_of_type_Neg.a().d(true);
+    String str = paramnaf.e() + 1 + "/" + paramnaf.f();
+    this.jdField_a_of_type_Neg.a().b(str);
+    this.jdField_a_of_type_Neg.a(this.jdField_a_of_type_Nee.a(), paramnaf.a().f(), paramnaf.a().d());
+    this.jdField_a_of_type_Neg.a().k(paramnaf);
   }
+  
+  public void c(naf paramnaf)
+  {
+    a(mzl.a(paramnaf), true);
+    a(paramnaf.a());
+    this.jdField_a_of_type_Neg.a(this.jdField_a_of_type_Nee.a(), paramnaf.a().f(), paramnaf.a().d());
+    String str = paramnaf.e() + 1 + "/" + paramnaf.f();
+    this.jdField_a_of_type_Neg.a().b(str);
+    this.jdField_a_of_type_Neg.a().k(paramnaf);
+  }
+  
+  public void d(naf paramnaf) {}
+  
+  public void e(naf paramnaf) {}
+  
+  public void f(naf paramnaf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     new
  * JD-Core Version:    0.7.0.1
  */

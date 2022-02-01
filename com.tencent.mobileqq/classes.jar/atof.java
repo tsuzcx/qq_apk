@@ -1,30 +1,29 @@
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public class atof
-  implements Cloneable
+class atof
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public View a;
-  public CheckBox a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public Object a;
-  public int b;
-  public TextView b;
-  public int c;
+  atof(atoe paramatoe, int paramInt, String paramString) {}
   
-  public atof(atod paramatod) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      atpn.a(atoe.a(this.jdField_a_of_type_Atoe), "shareToQQ", atoe.a(this.jdField_a_of_type_Atoe), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      npn.a(atoe.a(this.jdField_a_of_type_Atoe), 0, "", "");
+      if (atoe.a(this.jdField_a_of_type_Atoe) != null) {
+        atoe.a(this.jdField_a_of_type_Atoe).finish(1);
+      }
+      atoe.a(this.jdField_a_of_type_Atoe).moveTaskToBack(true);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atof
  * JD-Core Version:    0.7.0.1
  */

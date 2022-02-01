@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.managers;
 
-import awzu;
+import avnb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DraftTextInfo;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
@@ -10,11 +10,11 @@ import com.tencent.mobileqq.persistence.EntityTransaction;
 public class DraftTextManager$1
   implements Runnable
 {
-  public DraftTextManager$1(awzu paramawzu, QQAppInterface paramQQAppInterface, DraftTextInfo paramDraftTextInfo) {}
+  public DraftTextManager$1(avnb paramavnb, QQAppInterface paramQQAppInterface, DraftTextInfo paramDraftTextInfo) {}
   
   public void run()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
     localEntityTransaction = localEntityManager.getTransaction();
     try
     {

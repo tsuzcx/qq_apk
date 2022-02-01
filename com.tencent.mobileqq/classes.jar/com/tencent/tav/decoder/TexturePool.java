@@ -50,7 +50,7 @@ public class TexturePool
           l += localTextureInfo.width * localTextureInfo.height;
           if (l > this.MaxCacheSize)
           {
-            Logger.d("TexturePool", "texture: release " + localTextureInfo + " - " + Thread.currentThread());
+            Logger.v("TexturePool", "texture: release " + localTextureInfo + " - " + Thread.currentThread());
             localTextureInfo.release();
             this.textureInfoList.remove(i);
             i -= 1;
@@ -90,7 +90,7 @@ public class TexturePool
     //   30: checkcast 78	com/tencent/tav/coremedia/TextureInfo
     //   33: astore 5
     //   35: aload 5
-    //   37: getfield 103	com/tencent/tav/coremedia/TextureInfo:textureType	I
+    //   37: getfield 106	com/tencent/tav/coremedia/TextureInfo:textureType	I
     //   40: iload_1
     //   41: if_icmpne +70 -> 111
     //   44: aload 5
@@ -105,13 +105,13 @@ public class TexturePool
     //   64: new 34	java/lang/StringBuilder
     //   67: dup
     //   68: invokespecial 35	java/lang/StringBuilder:<init>	()V
-    //   71: ldc 105
+    //   71: ldc 108
     //   73: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   76: aload 5
-    //   78: getfield 108	com/tencent/tav/coremedia/TextureInfo:textureID	I
-    //   81: invokevirtual 111	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   78: getfield 111	com/tencent/tav/coremedia/TextureInfo:textureID	I
+    //   81: invokevirtual 114	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   84: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   87: invokestatic 64	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   87: invokestatic 101	com/tencent/tav/decoder/logger/Logger:v	(Ljava/lang/String;Ljava/lang/String;)V
     //   90: aload_0
     //   91: getfield 26	com/tencent/tav/decoder/TexturePool:textureInfoList	Ljava/util/List;
     //   94: iload 4
@@ -128,12 +128,12 @@ public class TexturePool
     //   115: istore 4
     //   117: goto -112 -> 5
     //   120: iload_1
-    //   121: invokestatic 117	com/tencent/tav/decoder/RenderContext:createTexture	(I)I
+    //   121: invokestatic 120	com/tencent/tav/decoder/RenderContext:createTexture	(I)I
     //   124: istore_1
     //   125: aload_0
-    //   126: invokespecial 119	com/tencent/tav/decoder/TexturePool:adaptCacheSize	()V
+    //   126: invokespecial 122	com/tencent/tav/decoder/TexturePool:adaptCacheSize	()V
     //   129: aload_0
-    //   130: invokespecial 121	com/tencent/tav/decoder/TexturePool:adapterCacheMemorySize	()V
+    //   130: invokespecial 124	com/tencent/tav/decoder/TexturePool:adapterCacheMemorySize	()V
     //   133: new 78	com/tencent/tav/coremedia/TextureInfo
     //   136: dup
     //   137: iload_1
@@ -142,7 +142,7 @@ public class TexturePool
     //   142: iload_3
     //   143: aconst_null
     //   144: iconst_0
-    //   145: invokespecial 124	com/tencent/tav/coremedia/TextureInfo:<init>	(IIIILandroid/graphics/Matrix;I)V
+    //   145: invokespecial 127	com/tencent/tav/coremedia/TextureInfo:<init>	(IIIILandroid/graphics/Matrix;I)V
     //   148: astore 5
     //   150: goto -44 -> 106
     //   153: astore 5
@@ -185,26 +185,26 @@ public class TexturePool
     //   27: checkcast 78	com/tencent/tav/coremedia/TextureInfo
     //   30: astore_3
     //   31: aload_3
-    //   32: getfield 103	com/tencent/tav/coremedia/TextureInfo:textureType	I
+    //   32: getfield 106	com/tencent/tav/coremedia/TextureInfo:textureType	I
     //   35: aload_1
-    //   36: getfield 103	com/tencent/tav/coremedia/TextureInfo:textureType	I
+    //   36: getfield 106	com/tencent/tav/coremedia/TextureInfo:textureType	I
     //   39: if_icmpne +48 -> 87
     //   42: aload_3
-    //   43: getfield 108	com/tencent/tav/coremedia/TextureInfo:textureID	I
+    //   43: getfield 111	com/tencent/tav/coremedia/TextureInfo:textureID	I
     //   46: aload_1
-    //   47: getfield 108	com/tencent/tav/coremedia/TextureInfo:textureID	I
+    //   47: getfield 111	com/tencent/tav/coremedia/TextureInfo:textureID	I
     //   50: if_icmpne +37 -> 87
     //   53: ldc 10
     //   55: new 34	java/lang/StringBuilder
     //   58: dup
     //   59: invokespecial 35	java/lang/StringBuilder:<init>	()V
-    //   62: ldc 128
+    //   62: ldc 131
     //   64: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   67: aload_3
-    //   68: getfield 108	com/tencent/tav/coremedia/TextureInfo:textureID	I
-    //   71: invokevirtual 111	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   68: getfield 111	com/tencent/tav/coremedia/TextureInfo:textureID	I
+    //   71: invokevirtual 114	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   74: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   77: invokestatic 64	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   77: invokestatic 101	com/tencent/tav/decoder/logger/Logger:v	(Ljava/lang/String;Ljava/lang/String;)V
     //   80: aload_1
     //   81: invokevirtual 81	com/tencent/tav/coremedia/TextureInfo:release	()V
     //   84: aload_0
@@ -219,21 +219,21 @@ public class TexturePool
     //   96: new 34	java/lang/StringBuilder
     //   99: dup
     //   100: invokespecial 35	java/lang/StringBuilder:<init>	()V
-    //   103: ldc 130
+    //   103: ldc 133
     //   105: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   108: aload_1
-    //   109: getfield 108	com/tencent/tav/coremedia/TextureInfo:textureID	I
-    //   112: invokevirtual 111	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   109: getfield 111	com/tencent/tav/coremedia/TextureInfo:textureID	I
+    //   112: invokevirtual 114	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   115: ldc 98
     //   117: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   120: invokestatic 47	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   123: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   126: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   129: invokestatic 64	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   129: invokestatic 101	com/tencent/tav/decoder/logger/Logger:v	(Ljava/lang/String;Ljava/lang/String;)V
     //   132: aload_0
     //   133: getfield 26	com/tencent/tav/decoder/TexturePool:textureInfoList	Ljava/util/List;
     //   136: aload_1
-    //   137: invokeinterface 134 2 0
+    //   137: invokeinterface 137 2 0
     //   142: pop
     //   143: goto -59 -> 84
     //   146: astore_1

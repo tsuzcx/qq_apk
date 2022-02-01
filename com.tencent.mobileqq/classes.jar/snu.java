@@ -1,29 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.30.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.animation.Interpolator;
 
-public class snu
-  implements blrf
+public final class snu
+  implements Interpolator
 {
-  public snu(FastWebActivity paramFastWebActivity) {}
-  
-  public void a()
+  public float getInterpolation(float paramFloat)
   {
-    if (FastWebActivity.f(this.a))
-    {
-      FastWebActivity.a(this.a).a(FastWebActivity.a(this.a).getWidth());
-      FastWebActivity.d(this.a, false);
-      FastWebActivity.h(this.a);
-      FastWebActivity.a(this.a, new spb(FastWebActivity.a(this.a), FastWebActivity.a(this.a).getFirstVisiblePosition(), FastWebActivity.a(this.a).getLastVisiblePosition()));
-      long l = std.a("FastWebActivity.show");
-      std.b("fast_web_show_light_house_draw_finish");
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(FastWebActivity.a(this.a));
-      ThreadManager.post(new FastWebActivity.30.1(this, l, localArrayList), 5, null, false);
-    }
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

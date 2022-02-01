@@ -1,8 +1,17 @@
-import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface agza
+class agza
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(agyw paramagyw, ArkAppLoadLayout paramArkAppLoadLayout);
+  agza(agyh paramagyh) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.a.a != null) {
+      this.a.a.n();
+    }
+  }
 }
 
 

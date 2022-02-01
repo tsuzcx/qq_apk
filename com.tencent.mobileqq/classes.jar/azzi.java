@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
-class azzi
-  implements View.OnClickListener
+public class azzi
 {
-  azzi(azzh paramazzh, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public static int a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Azzh.a != null) {
-      this.jdField_a_of_type_Azzh.a.a(paramView, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, "##" + paramString2);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return 0;
+  }
+  
+  public static int b(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 2, "##" + paramString2);
+    return 0;
   }
 }
 

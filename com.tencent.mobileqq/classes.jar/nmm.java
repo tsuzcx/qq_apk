@@ -1,36 +1,19 @@
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.biz.common.offline.HtmlOffline.6;
+import com.tencent.qphone.base.util.QLog;
 
-public class nmm
-  implements nmg
+class nmm
+  extends amwl
 {
-  public nmm(HtmlOffline.6 param6) {}
+  nmm(nmj paramnmj) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    long l = System.currentTimeMillis() - this.a.jdField_a_of_type_Long;
-    if (nmj.a.a()) {
-      nmj.a.a("HtmlCheckUpdate", 2, "js call downloadUpdate callback:" + paramInt + ", time:" + l);
-    }
-    if (paramInt == 0) {
-      if (nmj.b(this.a.b)) {
-        this.a.jdField_a_of_type_Nmg.loaded(null, 0);
-      }
-    }
-    for (;;)
+    if (105 == paramInt)
     {
-      BidDownloader.b(this.a.b);
-      nmj.a(this.a.b, paramInt, l, nny.a(this.a.jdField_a_of_type_AndroidContentContext));
-      return;
-      this.a.jdField_a_of_type_Nmg.loaded(null, 6);
-      continue;
-      this.a.jdField_a_of_type_Nmg.loaded(null, 2);
+      if (QLog.isColorLevel()) {
+        QLog.i("storyRedDotDebug", 2, "mGetRedPointPushObserver");
+      }
+      this.a.notifyUI(105, true, paramObject);
     }
-  }
-  
-  public void progress(int paramInt)
-  {
-    this.a.jdField_a_of_type_Nmg.progress(paramInt);
   }
 }
 

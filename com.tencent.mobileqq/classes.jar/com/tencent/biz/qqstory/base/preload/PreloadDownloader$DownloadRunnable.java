@@ -4,12 +4,12 @@ import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.List;
-import wjt;
-import wkb;
-import wkq;
-import wku;
-import wlc;
-import wth;
+import vls;
+import vma;
+import vmp;
+import vmt;
+import vnb;
+import vux;
 
 class PreloadDownloader$DownloadRunnable
   implements Runnable
@@ -41,15 +41,15 @@ class PreloadDownloader$DownloadRunnable
       }
       else
       {
-        if ((this.this$0.jdField_a_of_type_Wlc != null) && (!this.this$0.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue.isBusy())) {
-          this.this$0.jdField_a_of_type_Wlc.a(this.this$0.a());
+        if ((this.this$0.jdField_a_of_type_Vnb != null) && (!this.this$0.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue.isBusy())) {
+          this.this$0.jdField_a_of_type_Vnb.a(this.this$0.a());
         }
         ??? = this.this$0.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue;
-        this.this$0.jdField_a_of_type_Wkq = ((PreloadQueue)???).getFirstAndBlockIfLowestPriority();
-        wkq localwkq1 = this.this$0.jdField_a_of_type_Wkq;
-        if (localwkq1 != null)
+        this.this$0.jdField_a_of_type_Vmp = ((PreloadQueue)???).getFirstAndBlockIfLowestPriority();
+        vmp localvmp1 = this.this$0.jdField_a_of_type_Vmp;
+        if (localvmp1 != null)
         {
-          localwkq1.c = ((PreloadQueue)???).getId();
+          localvmp1.c = ((PreloadQueue)???).getId();
           for (;;)
           {
             Iterator localIterator;
@@ -59,25 +59,25 @@ class PreloadDownloader$DownloadRunnable
               if (!localIterator.hasNext()) {
                 break;
               }
-              wku localwku = (wku)((WeakReference)localIterator.next()).get();
-              if (localwku != null) {
-                localwku.a(localwkq1.jdField_b_of_type_JavaLangString, localwkq1.jdField_a_of_type_Int, localwkq1);
+              vmt localvmt = (vmt)((WeakReference)localIterator.next()).get();
+              if (localvmt != null) {
+                localvmt.a(localvmp1.jdField_b_of_type_JavaLangString, localvmp1.jdField_a_of_type_Int, localvmp1);
               }
             }
             localIterator.remove();
           }
-          localwkq2.jdField_b_of_type_Int = 1;
-          if (TextUtils.isEmpty(localwkq2.d))
+          localvmp2.jdField_b_of_type_Int = 1;
+          if (TextUtils.isEmpty(localvmp2.d))
           {
-            ??? = ((wjt)wth.a(28)).a(localwkq2.jdField_b_of_type_JavaLangString, localwkq2.jdField_a_of_type_Int);
-            localwkq2.d = ((wkb)???).jdField_b_of_type_JavaLangString;
-            localwkq2.jdField_a_of_type_Boolean = ((wkb)???).jdField_a_of_type_Boolean;
-            localwkq2.f = ((wkb)???).c;
-            this.this$0.b(localwkq2);
+            ??? = ((vls)vux.a(28)).a(localvmp2.jdField_b_of_type_JavaLangString, localvmp2.jdField_a_of_type_Int);
+            localvmp2.d = ((vma)???).jdField_b_of_type_JavaLangString;
+            localvmp2.jdField_a_of_type_Boolean = ((vma)???).jdField_a_of_type_Boolean;
+            localvmp2.f = ((vma)???).c;
+            this.this$0.b(localvmp2);
           }
           else
           {
-            this.this$0.b(localwkq2);
+            this.this$0.b(localvmp2);
           }
         }
       }
@@ -86,7 +86,7 @@ class PreloadDownloader$DownloadRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.PreloadDownloader.DownloadRunnable
  * JD-Core Version:    0.7.0.1
  */

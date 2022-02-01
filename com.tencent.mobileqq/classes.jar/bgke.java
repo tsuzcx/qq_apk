@@ -1,124 +1,162 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.TextView;
+import android.text.TextUtils;
+import androidx.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.mobileqq.vas.VasQuickUpdateEngine.TagItemInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
+import com.tencent.vas.update.business.BaseUpdateBusiness;
+import com.tencent.vas.update.entity.BusinessItemInfo;
+import com.tencent.vas.update.entity.BusinessUpdateParams;
+import com.tencent.vas.update.entity.UpdateListenerParams;
 
 public class bgke
-  extends ajnu
+  extends BaseUpdateBusiness
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  View jdField_a_of_type_AndroidViewView;
-  ArrayList<RecommendTroopItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  TextView b;
-  
-  public bgke(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, ajnx paramajnx, String paramString, boolean paramBoolean, TextView paramTextView, View paramView)
+  private QQAppInterface a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_Ajnx = paramajnx;
-    this.e = false;
-    this.c = paramBoolean;
-    this.b = paramTextView;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    try
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject != null) {}
+    for (localObject = ((BaseApplicationImpl)localObject).getRuntime();; localObject = null) {
+      return (QQAppInterface)localObject;
+    }
+  }
+  
+  private void a(@NonNull UpdateListenerParams paramUpdateListenerParams)
+  {
+    Object localObject = paramUpdateListenerParams.mBusinessUpdateParams;
+    if (localObject == null) {}
+    long l;
+    String str;
+    int i;
+    int j;
+    do
     {
-      this.jdField_a_of_type_Long = Long.parseLong(paramString);
-      d();
       return;
+      l = ((BusinessUpdateParams)localObject).mBid;
+      str = ((BusinessUpdateParams)localObject).mScid;
+      localObject = ((BusinessUpdateParams)localObject).mFrom;
+      i = paramUpdateListenerParams.mErrorCode;
+      j = paramUpdateListenerParams.mHttpCode;
+      paramUpdateListenerParams = paramUpdateListenerParams.mErrorMessage;
+      QLog.d("VasUpdate_NativeUpdateBusiness", 1, "onCompleted bid = " + l + " scid = " + str + " from = " + (String)localObject + " message = " + paramUpdateListenerParams + " errorCode = " + i + " httpCode = " + j);
+      paramUpdateListenerParams = bgjd.a(l);
+    } while (paramUpdateListenerParams == null);
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface == null) {
+      QLog.e("VasUpdate_NativeUpdateBusiness", 1, "onCompleted: get null app " + str);
     }
-    catch (NumberFormatException paramQQAppInterface)
-    {
-      for (;;)
-      {
-        QLog.d("TroopDataCardRecomTroopListWrapper", 1, "TroopDataCardRecomTroopListWrapper NumberFormatException ", paramQQAppInterface);
-      }
-    }
+    paramUpdateListenerParams.onCompleted(localQQAppInterface, l, str, "", (String)localObject, i, j);
   }
   
-  protected ajno a()
+  public void deleteFile(@NonNull BusinessUpdateParams paramBusinessUpdateParams, BusinessItemInfo paramBusinessItemInfo)
   {
-    return new bgkd(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-  }
-  
-  protected void a(boolean paramBoolean1, long paramLong, int paramInt, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int j = paramArrayList.size();
+    long l = paramBusinessUpdateParams.mBid;
+    paramBusinessUpdateParams = paramBusinessUpdateParams.mScid;
     if (QLog.isColorLevel()) {
-      QLog.d("TroopDataCardRecomTroopListWrapper", 2, "onGetTroopDataCardRecommendTroopList isSuccess = " + paramBoolean1 + ",troopUIN = " + paramLong + ",serverPageID = " + paramInt + ",dataListSize = " + i + ",newDataListSize = " + j);
+      QLog.d("VasUpdate_NativeUpdateBusiness", 2, "deleteFiles bid = " + l + " scid = " + paramBusinessUpdateParams);
     }
-    this.jdField_a_of_type_Boolean = paramBoolean2;
-    if ((paramBoolean1) && (this.jdField_a_of_type_Long == paramLong))
+    paramBusinessItemInfo = bgjd.a(l);
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface == null) {
+      QLog.e("VasUpdate_NativeUpdateBusiness", 1, "deleteFiles: get null app " + paramBusinessUpdateParams);
+    }
+    if (paramBusinessItemInfo != null) {
+      paramBusinessItemInfo.deleteFiles(localQQAppInterface, l, paramBusinessUpdateParams);
+    }
+  }
+  
+  public long getBid()
+  {
+    return 0L;
+  }
+  
+  public BusinessItemInfo getBusinessItemInfo(long paramLong, String paramString)
+  {
+    Object localObject = bgjd.a(paramLong);
+    if (localObject == null) {
+      return null;
+    }
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface == null) {
+      QLog.e("VasUpdate_NativeUpdateBusiness", 1, "canUpdate: get null app " + paramString);
+    }
+    BusinessItemInfo localBusinessItemInfo = new BusinessItemInfo();
+    localBusinessItemInfo.mIsCanUpdate = ((bgfh)localObject).canUpdate(localQQAppInterface, paramLong, paramString, "");
+    if (QLog.isColorLevel()) {
+      QLog.d("VasUpdate_NativeUpdateBusiness", 2, "canUpdate bid = " + paramLong + " scid = " + paramString + " mIsCanUpdate = " + localBusinessItemInfo.mIsCanUpdate);
+    }
+    localObject = ((bgfh)localObject).getItemInfo(localQQAppInterface, paramLong, paramString);
+    if (localObject != null)
     {
-      if (j + i < 50) {
-        break label221;
+      localBusinessItemInfo.mSavePath = ((VasQuickUpdateEngine.TagItemInfo)localObject).strSavePath;
+      localBusinessItemInfo.mSaveInDir = ((VasQuickUpdateEngine.TagItemInfo)localObject).bSaveInDir;
+      if (TextUtils.isEmpty(localBusinessItemInfo.mSavePath))
+      {
+        QLog.e("VasUpdate_NativeUpdateBusiness", 1, "getBusinessItemInfo doesn't set savePath , bid = " + paramLong + " , scid = " + paramString);
+        return null;
       }
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList.subList(0, 50 - i));
-      this.jdField_a_of_type_Boolean = true;
+      return localBusinessItemInfo;
+    }
+    return null;
+  }
+  
+  public String getFrom()
+  {
+    return "NativeUpdateBusiness";
+  }
+  
+  public boolean isFileExist(@NonNull BusinessUpdateParams paramBusinessUpdateParams, BusinessItemInfo paramBusinessItemInfo)
+  {
+    long l = paramBusinessUpdateParams.mBid;
+    paramBusinessUpdateParams = paramBusinessUpdateParams.mScid;
+    if (QLog.isColorLevel()) {
+      QLog.d("VasUpdate_NativeUpdateBusiness", 2, "isFileExists bid = " + l + " scid = " + paramBusinessUpdateParams);
+    }
+    paramBusinessItemInfo = bgjd.a(l);
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface == null) {
+      QLog.e("VasUpdate_NativeUpdateBusiness", 1, "isFileExists: get null app " + paramBusinessUpdateParams);
+    }
+    return (paramBusinessItemInfo != null) && (paramBusinessItemInfo.isFileExists(localQQAppInterface, l, paramBusinessUpdateParams));
+  }
+  
+  public void onLoadFail(@NonNull UpdateListenerParams paramUpdateListenerParams)
+  {
+    super.onLoadFail(paramUpdateListenerParams);
+    a(paramUpdateListenerParams);
+  }
+  
+  public void onLoadSuccess(@NonNull UpdateListenerParams paramUpdateListenerParams)
+  {
+    super.onLoadSuccess(paramUpdateListenerParams);
+    a(paramUpdateListenerParams);
+  }
+  
+  public void onProgress(@NonNull UpdateListenerParams paramUpdateListenerParams)
+  {
+    super.onProgress(paramUpdateListenerParams);
+    Object localObject = paramUpdateListenerParams.mBusinessUpdateParams;
+    if (localObject == null) {}
+    long l1;
+    long l2;
+    long l3;
+    do
+    {
+      return;
+      l1 = ((BusinessUpdateParams)localObject).mBid;
+      localObject = ((BusinessUpdateParams)localObject).mScid;
+      l2 = paramUpdateListenerParams.mProgress;
+      l3 = paramUpdateListenerParams.mProgressMax;
       if (QLog.isColorLevel()) {
-        QLog.d("TroopDataCardRecomTroopListWrapper", 2, "onGetTroopDataCardRecommendTroopList reach limit,this.dataList.size() = " + this.jdField_a_of_type_JavaUtilArrayList.size());
+        QLog.d("VasUpdate_NativeUpdateBusiness", 2, "onProgress bid = " + l1 + " scid = " + (String)localObject + " dwProgress = " + l2 + " dwProgressMax = " + l3);
       }
+      paramUpdateListenerParams = bgjd.a(l1);
+    } while (paramUpdateListenerParams == null);
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface == null) {
+      QLog.e("VasUpdate_NativeUpdateBusiness", 1, "onProgress: get null app " + (String)localObject);
     }
-    for (;;)
-    {
-      b();
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        if (this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText("没有更多内容了");
-        }
-      }
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-      label221:
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    }
-  }
-  
-  protected boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected void b()
-  {
-    this.jdField_a_of_type_Ajno.a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Ajno.notifyDataSetChanged();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopDataCardRecomTroopListWrapper", 2, "refreshListView,this.dataList.size() = " + this.jdField_a_of_type_JavaUtilArrayList.size());
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-    {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-      this.b.setVisibility(0);
-      return;
-    }
-    this.b.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    ((aoip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, 25);
-  }
-  
-  protected void d()
-  {
-    super.d();
-    if (this.c)
-    {
-      this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(this.b);
-      this.b.setVisibility(8);
-    }
-    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidViewView);
+    paramUpdateListenerParams.onProgress(localQQAppInterface, l1, (String)localObject, "", l2, l3);
   }
 }
 

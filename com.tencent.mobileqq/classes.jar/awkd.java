@@ -1,8 +1,36 @@
-import android.view.View;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.transfile.BaseTransFileController;
+import com.tencent.mobileqq.transfile.BaseTransProcessor;
+import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface awkd
+public class awkd
+  extends BaseTransFileController
 {
-  public abstract void a(View paramView, arsh paramarsh, awkn paramawkn);
+  private NearbyAppInterface a;
+  
+  public awkd(NearbyAppInterface paramNearbyAppInterface)
+  {
+    super(paramNearbyAppInterface);
+    this.a = paramNearbyAppInterface;
+  }
+  
+  public void destroy() {}
+  
+  public BaseTransProcessor getProcessor(TransferRequest paramTransferRequest)
+  {
+    if (paramTransferRequest == null) {}
+    do
+    {
+      return null;
+      if ((paramTransferRequest.mFileType == 8) || (paramTransferRequest.mFileType == 64) || (paramTransferRequest.mFileType == 21)) {
+        return new NearbyPeoplePhotoUploadProcessor(this, paramTransferRequest);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.richmedia.TransFileController", 2, paramTransferRequest.toString());
+    return null;
+  }
 }
 
 

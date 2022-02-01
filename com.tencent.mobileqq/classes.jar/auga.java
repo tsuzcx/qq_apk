@@ -1,62 +1,37 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
 
-class auga
-  implements atib
+public class auga
 {
-  auga(aufz paramaufz, int paramInt) {}
+  protected Context a;
+  protected aufy a;
+  protected aufy b;
+  protected aufy c;
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3, String paramString4, String paramString5, String paramString6, Bundle paramBundle)
+  public auga(Context paramContext)
   {
-    if (!paramBoolean)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public aufy a(int paramInt, aufs paramaufs)
+  {
+    switch (paramInt)
     {
-      QLog.e("FileBrowserModelBase", 1, "sending cs to get preview url but failed, retCode[" + paramLong + "], retMeg[" + paramString3 + "]");
-      if (this.jdField_a_of_type_Aufz.jdField_a_of_type_Augq != null) {
-        this.jdField_a_of_type_Aufz.jdField_a_of_type_Augq.a(paramLong);
+    default: 
+      if (this.jdField_a_of_type_Aufy == null) {
+        this.jdField_a_of_type_Aufy = new aufz(this.jdField_a_of_type_AndroidContentContext, 2130845791, paramaufs);
       }
-      if (this.jdField_a_of_type_Aufz.jdField_a_of_type_Auef != null) {
-        this.jdField_a_of_type_Aufz.jdField_a_of_type_Auef.c();
+      return this.jdField_a_of_type_Aufy;
+    case 2: 
+      if (this.c == null) {
+        this.c = new PayLikeFloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130842613, paramaufs);
       }
-      this.jdField_a_of_type_Aufz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_Aufz.jdField_a_of_type_Auei.a());
-      return;
+      return this.c;
     }
-    this.jdField_a_of_type_Aufz.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Aufz.b = paramString2;
-    this.jdField_a_of_type_Aufz.c = paramString4;
-    this.jdField_a_of_type_Aufz.d = paramString5;
-    paramString2 = "";
-    short s;
-    if (paramBundle != null) {
-      if (this.jdField_a_of_type_Int == 3000)
-      {
-        paramBoolean = atyt.g(this.jdField_a_of_type_Aufz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        paramString1 = paramBundle.getString("httpsdomain");
-        if ((TextUtils.isEmpty(paramString1)) || (!paramBoolean)) {
-          break label316;
-        }
-        paramBoolean = true;
-        s = paramBundle.getShort("httpsport");
-        label210:
-        paramString2 = paramBundle.getString("ipv6domain", "");
-      }
+    if (this.b == null) {
+      this.b = new aufz(this.jdField_a_of_type_AndroidContentContext, 2130845795, paramaufs);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aufz.a(this.jdField_a_of_type_Aufz.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aufz.b, this.jdField_a_of_type_Aufz.c, aunj.c(this.jdField_a_of_type_Aufz.jdField_a_of_type_Auei.a()), "/", this.jdField_a_of_type_Aufz.d, this.jdField_a_of_type_Aufz.jdField_a_of_type_Auei.a(), paramBoolean, paramString1, s, paramString2, new augb(this, paramBoolean, paramString1, s));
-      return;
-      paramBoolean = atyt.c(this.jdField_a_of_type_Aufz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      break;
-      label316:
-      paramString1 = null;
-      s = 0;
-      paramBoolean = false;
-      break label210;
-      paramString1 = null;
-      s = 0;
-      paramBoolean = false;
-    }
+    return this.b;
   }
 }
 

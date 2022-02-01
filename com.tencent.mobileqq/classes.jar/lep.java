@@ -1,38 +1,130 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
 
-class lep
-  extends BroadcastReceiver
+public class lep
+  implements INetInfoHandler
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private leq a;
+  
+  public lep(leq paramleq)
   {
-    if (paramIntent == null) {}
-    do
+    this.a = paramleq;
+  }
+  
+  public static int a()
+  {
+    int j = 1;
+    int i;
+    if (AppNetConnInfo.isWifiConn()) {
+      i = 1;
+    }
+    for (;;)
     {
-      return;
-      paramContext = paramIntent.getAction();
-      if (paramContext.equals("android.intent.action.SCREEN_ON"))
-      {
-        QLog.d("GScreenActionMonitor", 1, "avideo ACTION_SCREEN_ON");
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("MSFNetInfoMonitor", 2, "getApn: " + i + " mobileType:" + j);
       }
-      if (paramContext.equals("android.intent.action.SCREEN_OFF"))
+      return i;
+      if (AppNetConnInfo.isMobileConn())
       {
-        QLog.d("GScreenActionMonitor", 1, "avideo ACTION_SCREEN_OFF");
-        lic.a(19, 1L);
-        return;
+        j = AppNetConnInfo.getMobileInfo();
+        switch (j)
+        {
+        default: 
+          i = 100;
+          break;
+        case 1: 
+          i = 3;
+          break;
+        case 2: 
+          i = 9;
+          break;
+        case 3: 
+          i = 11;
+          break;
+        case 4: 
+          i = 14;
+          break;
+        }
       }
-      if (paramContext.equals("android.intent.action.USER_PRESENT"))
+      else
       {
-        QLog.d("GScreenActionMonitor", 1, "avideACTION_USER_PRESENT");
-        lic.a(19, 2L);
-        return;
+        j = -1;
+        i = 0;
       }
-    } while (!paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"));
-    paramContext = paramIntent.getStringExtra("reason");
-    QLog.d("GScreenActionMonitor", 1, "avideo ACTION_CLOSE_SYSTEM_DIALOGS, reason[" + paramContext + "]");
+    }
+  }
+  
+  public static int b()
+  {
+    int i = -1;
+    if (AppNetConnInfo.isWifiConn()) {
+      i = 1;
+    }
+    while (!AppNetConnInfo.isMobileConn()) {
+      return i;
+    }
+    return AppNetConnInfo.getMobileInfo();
+  }
+  
+  public void onNetMobile2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2None");
+    }
+    if (this.a != null) {
+      this.a.a(0);
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2Wifi");
+    }
+    if (this.a != null) {
+      this.a.a(1);
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Mobile");
+    }
+    if (this.a != null) {
+      this.a.a(2);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Wifi");
+    }
+    if (this.a != null) {
+      this.a.a(1);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2Mobile");
+    }
+    if (this.a != null) {
+      this.a.a(2);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2None");
+    }
+    if (this.a != null) {
+      this.a.a(0);
+    }
   }
 }
 

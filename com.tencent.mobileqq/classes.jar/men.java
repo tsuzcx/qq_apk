@@ -1,99 +1,137 @@
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
-import com.tencent.av.ui.GAudioMembersCtrlActivity.7.1;
-import com.tencent.av.ui.GAudioMembersCtrlActivity.7.2;
-import com.tencent.av.ui.GAudioMembersCtrlActivity.7.3;
-import com.tencent.av.ui.GAudioMembersCtrlActivity.7.4;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import tencent.im.s2c.msgtype0x210.submsgtype0x116.submsgtype0x116.MemberInfo;
+import tencent.im.s2c.msgtype0x210.submsgtype0x116.submsgtype0x116.MsgBody;
 
 public class men
-  extends lef
+  extends BroadcastReceiver
 {
-  public men(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  public men(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  protected void a(long paramLong)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GAudioMembersCtrlActivity", 2, "onDestroyUI");
+    paramContext = paramIntent.getAction();
+    long l1 = paramIntent.getLongExtra("groupId", 0L);
+    long l2 = paramIntent.getLongExtra("roomId", 0L);
+    boolean bool;
+    if ((this.a.jdField_a_of_type_Long == l1) && (MultiIncomingCallsActivity.a(this.a) == l2)) {
+      bool = true;
     }
-    this.a.finish();
-  }
-  
-  protected void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("GAudioMembersCtrlActivity", 2, "onGAudioMemberMicChanged-->uin=" + paramLong + ",isMicOff=" + paramBoolean);
-    }
-    GAudioMembersCtrlActivity.c(this.a, new GAudioMembersCtrlActivity.7.3(this, paramLong, paramInt1, paramInt2, paramBoolean));
-  }
-  
-  protected void a(long paramLong1, long paramLong2, boolean paramBoolean)
-  {
-    if (this.a.jdField_a_of_type_Long != paramLong1)
+    Object localObject;
+    for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.e("GAudioMembersCtrlActivity", 2, "onMemberJoin,wrong group uin.GroupUin = " + paramLong1 + " ,mGroupId = " + this.a.jdField_a_of_type_Long + " ,isQQUser = " + paramBoolean);
+        QLog.d(this.a.jdField_b_of_type_JavaLangString, 2, "handleMsgType0x210SuMsgType0x116 mMemberChangeEventReceiver fit=" + bool + ";current roomId=" + MultiIncomingCallsActivity.a(this.a) + ";groupId=" + this.a.jdField_a_of_type_Long);
       }
-      return;
+      if ("tencent.video.q2v.GvideoMemInviteUpdate".equals(paramContext)) {
+        mqu.a(paramIntent);
+      }
+      if ((paramContext.equalsIgnoreCase("tencent.video.q2v.GvideoMemInviteUpdate")) && (bool))
+      {
+        paramContext = new submsgtype0x116.MsgBody();
+        try
+        {
+          paramContext.mergeFrom(paramIntent.getByteArrayExtra("pushData"));
+          paramIntent = new HashSet();
+          localObject = MultiIncomingCallsActivity.a(this.a).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            paramIntent.add(Long.valueOf(((lnl)((Iterator)localObject).next()).jdField_a_of_type_Long));
+            continue;
+            bool = false;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramContext)
+        {
+          paramContext.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.d(this.a.jdField_b_of_type_JavaLangString, 2, "mMemberChangeEventReceiver throw exception");
+          }
+        }
+      }
     }
-    super.a(paramLong1, paramLong2, paramBoolean);
-    this.a.a(paramLong2, 1, true, 71);
-  }
-  
-  protected void a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    super.a(paramLong1, paramLong2, paramBoolean1, paramBoolean2);
-    if (this.a.jdField_a_of_type_Long != paramLong1)
+    int j;
+    do
     {
+      return;
+      int n = paramContext.enum_event_type.get();
       if (QLog.isColorLevel()) {
-        QLog.e("GAudioMembersCtrlActivity", 2, "onMemberJoin,wrong group uin.GroupUin = " + paramLong1 + " ,mGroupId = " + this.a.jdField_a_of_type_Long + " ,isQQUser = " + paramBoolean2);
+        QLog.d(this.a.jdField_b_of_type_JavaLangString, 2, "mMemberChangeEventReceiver before totalCount:" + paramContext.uint32_invite_list_total_count.get() + ";currentInviteMembers=" + MultiIncomingCallsActivity.a(this.a).size() + ";eventType=" + paramContext.enum_event_type.get());
       }
-      return;
-    }
-    this.a.a(paramLong2, 0, paramBoolean1, 70);
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("GAudioMembersCtrlActivity", 2, "onGAudioRoomMicModeChanged-->uin=" + paramLong + ",isRoomMicOff=" + paramBoolean1);
-    }
-    GAudioMembersCtrlActivity.b(this.a, new GAudioMembersCtrlActivity.7.2(this));
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    super.a(paramLong, paramBoolean1, paramBoolean2, paramInt);
-    if (paramBoolean1) {}
-    for (paramInt = 42;; paramInt = 43)
-    {
-      this.a.a(paramLong, 2, paramBoolean2, paramInt);
-      return;
-    }
-  }
-  
-  protected void a(ArrayList<lnd> paramArrayList)
-  {
-    GAudioMembersCtrlActivity.d(this.a, new GAudioMembersCtrlActivity.7.4(this, paramArrayList));
-  }
-  
-  protected void b(long paramLong, boolean paramBoolean)
-  {
-    this.a.jdField_a_of_type_Meb.b(paramLong, paramBoolean);
-  }
-  
-  protected void c(long paramLong1, long paramLong2, boolean paramBoolean)
-  {
-    this.a.finish();
-  }
-  
-  protected void d()
-  {
-    super.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("GAudioMembersCtrlActivity", 2, "onUpdatePstnInfo --> Start");
-    }
-    GAudioMembersCtrlActivity.a(this.a, new GAudioMembersCtrlActivity.7.1(this));
+      int i = 0;
+      j = 0;
+      if (j < paramContext.rpt_msg_member_join.size())
+      {
+        localObject = (submsgtype0x116.MemberInfo)paramContext.rpt_msg_member_join.get(j);
+        l1 = ((submsgtype0x116.MemberInfo)localObject).uint64_member_uin.get();
+        if ((l1 != this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin()) && (l1 != this.a.jdField_b_of_type_Long)) {}
+        for (int m = 1;; m = 0)
+        {
+          k = i;
+          if (!paramIntent.contains(Long.valueOf(l1)))
+          {
+            k = i;
+            if (m != 0)
+            {
+              MultiIncomingCallsActivity.a(this.a).add(new lnl(((submsgtype0x116.MemberInfo)localObject).uint64_member_uin.get(), ((submsgtype0x116.MemberInfo)localObject).uint32_invite_timestamp.get()));
+              i = 1;
+              k = i;
+              if (QLog.isColorLevel())
+              {
+                QLog.d(this.a.jdField_b_of_type_JavaLangString, 2, "mMemberChangeEventReceiver add member UIN:" + l1);
+                k = i;
+              }
+            }
+          }
+          j += 1;
+          i = k;
+          break;
+        }
+      }
+      int k = 0;
+      j = i;
+      i = k;
+      while (i < paramContext.rpt_msg_member_quit.size())
+      {
+        l1 = ((submsgtype0x116.MemberInfo)paramContext.rpt_msg_member_quit.get(i)).uint64_member_uin.get();
+        paramIntent = MultiIncomingCallsActivity.a(this.a).iterator();
+        do
+        {
+          k = j;
+          if (!paramIntent.hasNext()) {
+            break;
+          }
+          localObject = (lnl)paramIntent.next();
+        } while (((lnl)localObject).jdField_a_of_type_Long != l1);
+        MultiIncomingCallsActivity.a(this.a).remove(localObject);
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.jdField_b_of_type_JavaLangString, 2, "mMemberChangeEventReceiver remove member UIN:" + ((lnl)localObject).jdField_a_of_type_Long);
+        }
+        k = j;
+        if (n != 2) {
+          k = 1;
+        }
+        i += 1;
+        j = k;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_b_of_type_JavaLangString, 2, "mMemberChangeEventReceiver after totalCount:" + paramContext.uint32_invite_list_total_count.get() + ";currentInviteMembers=" + MultiIncomingCallsActivity.a(this.a).size() + ";eventType=" + paramContext.enum_event_type.get());
+      }
+    } while (j == 0);
+    MultiIncomingCallsActivity.a(this.a);
   }
 }
 

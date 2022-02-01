@@ -1,22 +1,24 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.OperationView;
+import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
+import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
 
-class awti
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class awti
 {
-  awti(awth paramawth) {}
+  public int a;
+  public View a;
+  public ViewGroup a;
+  public RelativeLayout a;
+  public VideoData a;
+  public OperationView a;
+  public QQStoryVideoPlayerErrorView a;
+  public ImageDisplayView a;
   
-  public void onGlobalLayout()
-  {
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    CameraPosition localCameraPosition = this.a.a.a.getCameraPosition();
-    if (localCameraPosition != null) {
-      MapWidget.a(this.a.a).a(localCameraPosition.target);
-    }
-  }
+  public awti(VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter) {}
 }
 
 

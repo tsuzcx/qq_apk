@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import bhjx;
+import bftf;
 import com.tencent.mobileqq.medalwall.MedalID;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
@@ -54,23 +54,23 @@ public class MedalInfo
     }
     long l2 = this.lObtainTimeLevel1;
     long l1 = l2;
-    if (bhjx.b(l2, this.lObtainTimeLevel2) < 0) {
+    if (bftf.b(l2, this.lObtainTimeLevel2) < 0) {
       l1 = this.lObtainTimeLevel2;
     }
     l2 = l1;
-    if (bhjx.b(l1, this.lObtainTimeLevel3) < 0) {
+    if (bftf.b(l1, this.lObtainTimeLevel3) < 0) {
       l2 = this.lObtainTimeLevel3;
     }
     long l3 = paramMedalInfo.lObtainTimeLevel1;
     l1 = l3;
-    if (bhjx.b(l3, paramMedalInfo.lObtainTimeLevel2) < 0) {
+    if (bftf.b(l3, paramMedalInfo.lObtainTimeLevel2) < 0) {
       l1 = paramMedalInfo.lObtainTimeLevel2;
     }
     l3 = l1;
-    if (bhjx.b(l1, paramMedalInfo.lObtainTimeLevel3) < 0) {
+    if (bftf.b(l1, paramMedalInfo.lObtainTimeLevel3) < 0) {
       l3 = paramMedalInfo.lObtainTimeLevel3;
     }
-    if (bhjx.b(l2, l3) > 0) {}
+    if (bftf.b(l2, l3) > 0) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }

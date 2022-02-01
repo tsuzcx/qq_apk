@@ -1,23 +1,26 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class aeol
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnTouchListener
 {
-  public aeol(ForwardRecentActivity paramForwardRecentActivity) {}
+  public aeol(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onGlobalLayout()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.getWindow().getDecorView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    ForwardRecentActivity.a(this.a);
+    if (paramMotionEvent.getAction() == 4)
+    {
+      this.a.a.dismiss();
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeol
  * JD-Core Version:    0.7.0.1
  */

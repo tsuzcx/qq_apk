@@ -1,23 +1,72 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
 
-public class algl
-  implements View.OnClickListener
+final class algl
+  extends LbsManagerService.OnLocationChangeListener
 {
-  public algl(DrawHbFragment paramDrawHbFragment) {}
-  
-  public void onClick(View paramView)
+  algl(String paramString, boolean paramBoolean, NewIntent paramNewIntent, QQAppInterface paramQQAppInterface)
   {
-    if ((paramView instanceof TextView))
-    {
-      DrawHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
-      DrawHbFragment.a(this.a).c("draw.wrappacket.choose");
+    super(paramString, paramBoolean);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    int j = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("weatherManager", 2, "startLocation onLocationFinish");
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    StringBuilder localStringBuilder;
+    boolean bool;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("errCode ：").append(paramInt).append(" info is null ---> ");
+      if (paramSosoLbsInfo != null) {
+        break label158;
+      }
+      bool = true;
+    }
+    for (;;)
+    {
+      QLog.d("weatherManager", 2, bool);
+      int i = j;
+      if (paramInt == 0)
+      {
+        i = j;
+        if (paramSosoLbsInfo != null)
+        {
+          i = j;
+          if (paramSosoLbsInfo.mLocation == null) {}
+        }
+      }
+      try
+      {
+        i = Integer.parseInt(paramSosoLbsInfo.mLocation.cityCode);
+        if (QLog.isColorLevel()) {
+          QLog.d("weatherManager", 2, "LocalInfo" + i);
+        }
+        this.jdField_a_of_type_MqqAppNewIntent.putExtra("adcode", i);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(this.jdField_a_of_type_MqqAppNewIntent);
+        return;
+        label158:
+        bool = false;
+      }
+      catch (Throwable paramSosoLbsInfo)
+      {
+        for (;;)
+        {
+          i = j;
+          if (QLog.isColorLevel())
+          {
+            QLog.e("weatherManager", 2, paramSosoLbsInfo, new Object[0]);
+            i = j;
+          }
+        }
+      }
+    }
   }
 }
 

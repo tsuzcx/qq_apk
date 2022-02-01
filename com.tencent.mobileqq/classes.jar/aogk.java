@@ -1,35 +1,45 @@
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 import com.tencent.qphone.base.util.QLog;
 
 class aogk
-  extends Handler
+  extends SosoInterface.OnLocationListener
 {
-  aogk(aogj paramaogj, Looper paramLooper)
+  aogk(aogg paramaogg, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    super(paramLooper);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    switch (paramMessage.what)
-    {
+    aogg.f(this.a, false);
+    if (aogg.a(this.a) != null) {
+      aogg.a(this.a).removeMessages(2);
     }
-    do
-    {
+    if (aogg.a(this.a)) {
       return;
-      this.a.b();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterProxySvcPack", 2, new Object[] { "real notify pcStatus:", Integer.valueOf(aogj.a(this.a)), " ,devStatus:", Integer.valueOf(aogj.b(this.a)), " ,clientType:", Long.valueOf(aogj.a(this.a)), " ,appid:", Long.valueOf(aogj.b(this.a)) });
-      }
-      this.a.notifyUI(2, true, new Object[] { Integer.valueOf(aogj.b(this.a)) });
-    } while (aogj.b(this.a) != 0);
-    if (!this.a.a.hasMessages(101)) {
-      this.a.a.sendEmptyMessageDelayed(101, 3000L);
     }
-    bhhv.a(false);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    {
+      paramSosoLbsInfo = paramSosoLbsInfo.mLocation;
+      paramInt = (int)(paramSosoLbsInfo.mLat02 * 1000000.0D);
+      int i = (int)(paramSosoLbsInfo.mLon02 * 1000000.0D);
+      QLog.i("AREngine_ARCloudControl", 1, "GetLBSLocation. onLocationFinish. gps info. Lat_02 = " + paramSosoLbsInfo.mLat02 + ", Lon_02 = " + paramSosoLbsInfo.mLon02 + ", latitude = " + paramInt + ", longitude = " + i + ", altitude = " + paramSosoLbsInfo.altitude + ", accuracy = " + paramSosoLbsInfo.accuracy + ", name = " + paramSosoLbsInfo.name + ", address = " + paramSosoLbsInfo.address);
+      paramSosoLbsInfo = aohg.a(this.a.a.recognitions, aogg.a(this.a));
+      aogg.a(this.a, paramSosoLbsInfo, paramInt, i);
+      return;
+    }
+    QLog.i("AREngine_ARCloudControl", 1, "GetLBSLocation. onLocationFinish. gps info failed. errCode = " + paramInt);
+    paramSosoLbsInfo = new aogo();
+    paramSosoLbsInfo.a = 2;
+    aohg.a(this.a.a.recognitions, aogg.a(this.a), paramSosoLbsInfo);
+    if (aogg.a(this.a) != null) {
+      aogg.a(this.a).a(0, aogg.a(this.a));
+    }
+    aogg.a(this.a, null);
   }
 }
 

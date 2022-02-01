@@ -1,40 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
-import com.tencent.qphone.base.util.QLog;
 
 class TaskManager$8
   implements JSContext.Callback
 {
-  TaskManager$8(TaskManager paramTaskManager, Task paramTask) {}
+  TaskManager$8(TaskManager paramTaskManager) {}
   
   public Object invoke(JSContext paramJSContext, int paramInt, Object[] paramArrayOfObject)
   {
-    paramInt = 0;
-    Task.ConfigItem[] arrayOfConfigItem = this.this$0.getNextScript(paramJSContext, (String)paramArrayOfObject[0]);
-    if (arrayOfConfigItem != null) {
-      while (paramInt < arrayOfConfigItem.length)
-      {
-        String str1 = arrayOfConfigItem[paramInt].value;
-        String str2 = (String)paramArrayOfObject[1];
-        StringBuffer localStringBuffer = new StringBuffer();
-        str1 = str1 + "('" + str2 + "'," + TaskManager.access$600(this.this$0, arrayOfConfigItem[paramInt].args) + ")";
-        if (paramJSContext != null)
-        {
-          paramJSContext.evaluteStringWithException(str1, localStringBuffer);
-          if (!TextUtils.isEmpty(localStringBuffer))
-          {
-            this.this$0.markTaskFail(this.val$task);
-            QLog.d("kandianreport.taskmanager", 1, "evaluate js exception: " + str1 + " " + localStringBuffer);
-            TaskException.reportException(this.val$task.id, "evaluate js exception: " + str1 + " " + localStringBuffer);
-          }
-        }
-        paramInt += 1;
-      }
-    }
-    return null;
+    return Boolean.valueOf(true);
   }
 }
 

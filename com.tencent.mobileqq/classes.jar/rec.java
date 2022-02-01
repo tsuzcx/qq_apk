@@ -1,20 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import tencent.im.oidb.articlesummary.articlesummary.BiuMultiLevel;
 
-class rec
-  extends Handler
+public final class rec
+  implements psw<articlesummary.BiuMultiLevel, rep>
 {
-  rec(reb paramreb) {}
+  public rec(SocializeFeedsInfo paramSocializeFeedsInfo) {}
   
-  public void handleMessage(Message paramMessage)
+  public rep a(articlesummary.BiuMultiLevel paramBiuMultiLevel)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    reb.a(this.a);
+    return this.a.a(paramBiuMultiLevel);
   }
 }
 

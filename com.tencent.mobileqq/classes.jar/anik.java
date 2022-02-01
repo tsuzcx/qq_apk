@@ -1,194 +1,49 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import friendlist.FriendInfo;
+import java.util.ArrayList;
 
 public class anik
-  extends amxi
 {
-  public anik(ApolloGameActivity paramApolloGameActivity, AppInterface paramAppInterface)
+  alnr jdField_a_of_type_Alnr;
+  ArrayList<ApolloBaseInfo> jdField_a_of_type_JavaUtilArrayList;
+  
+  public anik(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    super(paramAppInterface, false);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramInt);
+    this.jdField_a_of_type_Alnr = ((alnr)paramQQAppInterface.getManager(153));
   }
   
-  public void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, amxj paramamxj, long paramLong)
+  public void a()
   {
-    if (ApolloGameActivity.a(this.a)) {}
-    do
-    {
-      do
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.contacttab.friend.ApolloBaseInfoBatchUpdater", 2, "saveInBatch size=" + this.jdField_a_of_type_JavaUtilArrayList.size());
+    }
+    this.jdField_a_of_type_Alnr.b(this.jdField_a_of_type_JavaUtilArrayList);
+  }
+  
+  public void a(Friends paramFriends, FriendInfo paramFriendInfo)
+  {
+    ApolloBaseInfo localApolloBaseInfo = this.jdField_a_of_type_Alnr.b(paramFriends.uin);
+    if (localApolloBaseInfo != null) {
+      if ((localApolloBaseInfo.apolloStatus != paramFriendInfo.cApolloFlag) || (localApolloBaseInfo.apolloServerTS != paramFriendInfo.uApolloTimestamp) || (localApolloBaseInfo.apolloSignValidTS != paramFriendInfo.uApolloSignTime) || (localApolloBaseInfo.cmshow3dFlag != paramFriendInfo.cCentiShow3DFlag))
       {
-        do
-        {
-          do
-          {
-            return;
-            if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null)) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d(this.a.b, 2, "onDownloadConfirm mStartCheckParam == null || mStartCheckParam.game == null");
-          return;
-          if ((ApolloGameActivity.a(this.a) == null) || (paramStartCheckParam.requestCode == ApolloGameActivity.a(this.a).requestCode)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d(this.a.b, 2, "onDownloadConfirm startCheckParam.requestCode != mStartCheckParam.requestCode");
-        return;
-        if (paramLong > 0L) {
-          break;
-        }
-        QLog.d(this.a.b, 2, new Object[] { "[onDownloadConfirm] packageSize is invalid, packageSize=", Long.valueOf(paramLong) });
-      } while (paramamxj == null);
-      paramamxj.a(paramStartCheckParam);
-      return;
-      if ((ApolloGameActivity.a(this.a) != null) && (ApolloGameActivity.a(this.a).statMap != null)) {
-        ApolloGameActivity.a(this.a).statMap.put("download_confirm", Long.valueOf(1L));
+        localApolloBaseInfo.apolloStatus = paramFriendInfo.cApolloFlag;
+        localApolloBaseInfo.apolloServerTS = paramFriendInfo.uApolloTimestamp;
+        localApolloBaseInfo.apolloSignValidTS = paramFriendInfo.uApolloSignTime;
+        localApolloBaseInfo.apolloSignStr = "";
+        localApolloBaseInfo.cmshow3dFlag = paramFriendInfo.cCentiShow3DFlag;
+        localApolloBaseInfo.apolloUpdateTime = NetConnInfoCenter.getServerTime();
+        this.jdField_a_of_type_JavaUtilArrayList.add(localApolloBaseInfo);
       }
-    } while (ApolloGameActivity.a(this.a) == null);
-    ApolloGameActivity.a(this.a).a(paramStartCheckParam, paramamxj, paramLong);
-  }
-  
-  public void onDownloadGameResDown(CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    super.onDownloadGameResDown(paramStartCheckParam);
-    if ((ApolloGameActivity.a(this.a) != null) && (ApolloGameActivity.a(this.a).statMap != null)) {
-      ApolloGameActivity.a(this.a).statMap.put("download_game_res", Long.valueOf(1L));
     }
-  }
-  
-  public void onDownloadGameResFail(CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    QLog.d(this.a.b, 1, "[onDownloadGameResFail]");
-    onGameFailed(paramStartCheckParam, -12L);
-  }
-  
-  public void onDownloadGameResProgress(CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt)
-  {
-    if (ApolloGameActivity.a(this.a) != null) {
-      ApolloGameActivity.a(this.a).a(paramStartCheckParam, paramInt);
-    }
-  }
-  
-  public void onGameCheckFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
-  {
-    if (ApolloGameActivity.a(this.a)) {}
-    do
-    {
-      return;
-      QLog.d(this.a.b, 1, new Object[] { "[onCheckGameFinish] resultCode=", Long.valueOf(paramLong) });
-      if (paramStartCheckParam == null)
-      {
-        QLog.e(this.a.b, 1, "onCheckGameFinish mStartCheckParam == null");
-        return;
-      }
-      if (paramLong != 0L)
-      {
-        onGameFailed(paramStartCheckParam, paramLong);
-        return;
-      }
-    } while (ApolloGameActivity.a(this.a) == null);
-    ApolloGameActivity.a(this.a).a(paramLong, paramStartCheckParam);
-  }
-  
-  public void onGameCheckRetry(int paramInt)
-  {
-    if (ApolloGameActivity.a(this.a)) {}
-    while (ApolloGameActivity.a(this.a) == null) {
+    while (!QLog.isColorLevel()) {
       return;
     }
-    ApolloGameActivity.a(this.a).a(paramInt, ApolloGameActivity.a(this.a));
-  }
-  
-  public void onGameFailed(CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong)
-  {
-    if (ApolloGameActivity.a(this.a) != null) {
-      ApolloGameActivity.a(this.a).b(paramStartCheckParam, paramLong);
-    }
-  }
-  
-  public void onGameLifeTipShow(CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    if (ApolloGameActivity.a(this.a)) {
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      if (paramStartCheckParam != null) {
-        break label43;
-      }
-      QLog.d(this.a.b, 2, "showGameLifeTip mStartCheckParam is null");
-    }
-    for (;;)
-    {
-      onGameFailed(paramStartCheckParam, -1L);
-      return;
-      label43:
-      QLog.d(this.a.b, 2, new Object[] { "showGameLifeTip mStartCheckParam:", paramStartCheckParam });
-    }
-  }
-  
-  public void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam)
-  {
-    super.onGetGameData(paramStartCheckParam);
-    if ((paramStartCheckParam == null) || (paramStartCheckParam.game == null)) {
-      QLog.e(this.a.b, 1, "onGetGameData startCheckParam == null or game is null");
-    }
-    do
-    {
-      return;
-      ApolloGameActivity.a(this.a).game = paramStartCheckParam.game;
-      if (ApolloGameActivity.a(this.a) != null) {
-        ApolloGameActivity.a(this.a).a(ApolloGameActivity.a(this.a));
-      }
-    } while (ApolloGameActivity.a(this.a) == null);
-    ApolloGameActivity.a(this.a).b(paramStartCheckParam);
-  }
-  
-  public void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
-  {
-    if (ApolloGameActivity.a(this.a)) {}
-    do
-    {
-      do
-      {
-        return;
-        QLog.d(this.a.b, 1, new Object[] { "[onVerifyGameFinish] resultCode=", Long.valueOf(paramLong) });
-        if (paramStartCheckParam != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(this.a.b, 2, "onVerifyGameFinish mStartCheckParam == null");
-      return;
-      if ((ApolloGameActivity.a(this.a) == null) || (paramStartCheckParam.requestCode == ApolloGameActivity.a(this.a).requestCode)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.a.b, 2, "onVerifyGameFinish startCheckParam.requestCode != mStartCheckParam.requestCode");
-    return;
-    if (ApolloGameActivity.a(this.a) != null) {
-      ApolloGameActivity.a(this.a).a(paramStartCheckParam, paramLong);
-    }
-    if (paramLong != 0L)
-    {
-      onGameFailed(paramStartCheckParam, paramLong);
-      return;
-    }
-    if (paramCmGameInitParams != null)
-    {
-      paramCmGameInitParams.appId = ApolloGameActivity.a(this.a).game.appId;
-      paramCmGameInitParams.commFlag = ApolloGameActivity.a(this.a).commFlag;
-      paramCmGameInitParams.rpUrl = ApolloGameActivity.a(this.a).rpUrl;
-      paramCmGameInitParams.rpIconUrl = ApolloGameActivity.a(this.a).rpIconUrl;
-    }
-    if (paramCmGameInitParams != null) {
-      paramCmGameInitParams.accessTokenRet = 0;
-    }
-    this.a.a(paramCmGameInitParams);
+    QLog.e("Q.contacttab.friend.ApolloBaseInfoBatchUpdater", 2, "apolloBaseInfo return null uin: " + paramFriends.uin);
   }
 }
 

@@ -1,25 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
 import com.tencent.qphone.base.util.QLog;
 
 public class prb
-  implements pql
+  implements sdn
 {
-  public prb(UserOperationModule.1 param1) {}
+  public prb(VideoView paramVideoView) {}
   
-  public void onLoadUserInfoFailed(String paramString1, String paramString2)
+  public void a(boolean paramBoolean)
   {
-    QLog.e("UserOperationModule", 1, "handle0x978Resp onLoadUserInfoFailed, uin=" + paramString1 + ", errMsg=" + paramString2);
-    pra.a(this.a.this$0, this.a.jdField_a_of_type_Int, "", this.a.b, 2, this.a.jdField_a_of_type_Boolean);
-  }
-  
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
-  {
-    paramString = "";
-    if (paramReadInJoyUserInfo != null) {
-      paramString = paramReadInJoyUserInfo.faceUrl;
+    if (paramBoolean)
+    {
+      QLog.d("gifvideo.VideoView", 1, "install success");
+      VideoView.access$000(this.a, 2);
+      VideoView.access$100(this.a);
+      return;
     }
-    pra.a(this.a.this$0, this.a.jdField_a_of_type_Int, paramString, this.a.b, 2, this.a.jdField_a_of_type_Boolean);
+    QLog.d("gifvideo.VideoView", 1, "install fail");
+    VideoView.access$000(this.a, -1);
   }
 }
 

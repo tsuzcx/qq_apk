@@ -1,69 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-public class ahrp
+class ahrp
+  implements Handler.Callback
 {
-  public static int a;
-  public static boolean a;
-  public static int b;
-  public static boolean b;
+  ahrp(ahro paramahro) {}
   
-  static
+  public boolean handleMessage(Message paramMessage)
   {
-    jdField_b_of_type_Boolean = true;
-    jdField_a_of_type_Int = 15;
-    jdField_b_of_type_Int = 20;
-  }
-  
-  public static void a()
-  {
-    Object localObject;
-    if (!jdField_a_of_type_Boolean)
+    switch (paramMessage.what)
     {
-      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.PtvConfig.name(), null);
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideo.PtvPlayConfig", 2, "initConfig(), ptvConfig=" + (String)localObject);
-      }
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label211;
-      }
-      localObject = ((String)localObject).split("\\|");
-      if ((localObject != null) && (localObject.length >= 3) && (TextUtils.isEmpty(localObject[0]))) {}
     }
-    try
+    for (;;)
     {
-      jdField_b_of_type_Int = Integer.parseInt(localObject[0]);
-      label93:
-      if (!TextUtils.isEmpty(localObject[1])) {
-        jdField_b_of_type_Boolean = localObject[1].equals("1");
-      }
-      if (!TextUtils.isEmpty(localObject[2])) {}
-      for (;;)
+      return true;
+      if ((paramMessage.obj instanceof ColorNote))
       {
-        try
-        {
-          jdField_a_of_type_Int = Integer.parseInt(localObject[2]);
-          jdField_a_of_type_Boolean = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideo.PtvPlayConfig", 2, "initConfig(), sReadFromDPC=" + jdField_a_of_type_Boolean + ", sAutoPlayInAIO:" + jdField_b_of_type_Boolean + ", sRequestedFPS:" + jdField_a_of_type_Int + ",sPtvMaxTime:" + jdField_b_of_type_Int);
-          }
-          return;
-        }
-        catch (Exception localException1)
-        {
-          jdField_a_of_type_Int = 15;
-          continue;
-        }
-        label211:
-        jdField_b_of_type_Boolean = true;
-        jdField_a_of_type_Int = 15;
+        paramMessage = (ColorNote)paramMessage.obj;
+        ahro.a(this.a, paramMessage);
+        ahro.b(this.a, paramMessage);
       }
-    }
-    catch (Exception localException2)
-    {
-      break label93;
     }
   }
 }

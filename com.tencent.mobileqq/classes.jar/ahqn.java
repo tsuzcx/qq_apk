@@ -1,23 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Looper;
+import android.text.TextUtils;
+import androidx.annotation.UiThread;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.tips.StudyRoomTipBarHelper.2.1;
+import mqq.os.MqqHandler;
 
 public class ahqn
-  implements View.OnClickListener
+  implements bcpe
 {
-  public ahqn(ScribbleItemBuilder paramScribbleItemBuilder) {}
+  ahqn(ahql paramahql) {}
   
-  public void onClick(View paramView)
+  @UiThread
+  private void a(int paramInt)
   {
-    MessageRecord localMessageRecord = (MessageRecord)paramView.getTag();
-    if (localMessageRecord != null) {
-      ((FlashChatManager)this.a.a.getManager(217)).a(paramView.getContext(), localMessageRecord);
+    if (paramInt <= 0)
+    {
+      this.a.c();
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.b();
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (!TextUtils.equals(paramString, ahql.a(this.a).sessionInfo.curFriendUin)) {
+      return;
+    }
+    if (Thread.currentThread() != Looper.getMainLooper().getThread())
+    {
+      ahql.a(this.a).post(new StudyRoomTipBarHelper.2.1(this, paramInt));
+      return;
+    }
+    a(paramInt);
   }
 }
 

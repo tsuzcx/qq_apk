@@ -1,27 +1,16 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
 
-class aixe
-  implements Handler.Callback
+public class aixe
+  implements aczg
 {
-  aixe(aixd paramaixd) {}
+  public aixe(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public boolean a(boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
+    if (paramBoolean) {
+      bler.a(this.a.getActivity());
     }
-    for (;;)
-    {
-      return true;
-      if ((paramMessage.obj instanceof ColorNote))
-      {
-        paramMessage = (ColorNote)paramMessage.obj;
-        aixd.a(this.a, paramMessage);
-        aixd.b(this.a, paramMessage);
-      }
-    }
+    return false;
   }
 }
 

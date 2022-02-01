@@ -1,17 +1,13 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-
 public class tfl
-  extends tfp
 {
-  public tfl(BridgeModule paramBridgeModule)
+  public static String a()
   {
-    super(paramBridgeModule);
+    return "0123456789";
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public static String b()
   {
-    BridgeModule.access$900(this.a, paramInt2, paramIntent);
+    return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   }
 }
 

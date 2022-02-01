@@ -1,584 +1,323 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import android.graphics.Color;
+import android.graphics.LightingColorFilter;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.troop.data.TroopEntranceBar.1;
+import com.tencent.mobileqq.troop.data.TroopEntranceBar.2;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.Observable;
+import java.util.Observer;
+import tencent.im.oidb.cmd0x487.oidb_0x487.ReqBody;
 
 public class beaj
+  extends Observable
+  implements View.OnClickListener
 {
-  public static bjbs a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public int a;
+  public long a;
+  public aezn a;
+  protected amsu a;
+  public Context a;
+  private LightingColorFilter jdField_a_of_type_AndroidGraphicsLightingColorFilter;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  protected View a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public RelativeLayout a;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public SessionInfo a;
+  public QQAppInterface a;
+  protected FaceDecoder a;
+  public ChatXListView a;
+  public List<TroopInfo> a;
+  public Map<String, Integer> a;
+  public Observer a;
+  public boolean a;
+  public int b;
+  private LightingColorFilter jdField_b_of_type_AndroidGraphicsLightingColorFilter;
+  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+  View jdField_b_of_type_AndroidViewView;
+  public List<String> b;
+  public int c;
+  private Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable;
+  View jdField_c_of_type_AndroidViewView;
+  private int d;
+  private int e;
+  
+  public beaj()
   {
-    beav localbeav = (beav)paramQQAppInterface.a(120);
-    if ((paramContext == null) || (localbeav == null) || (paramTeamWorkFileImportInfo == null) || (paramTeamWorkFileImportInfo.jdField_a_of_type_Int != 1)) {
-      return null;
-    }
-    paramTeamWorkFileImportInfo.g = 6;
-    return a(paramQQAppInterface, paramTeamWorkFileImportInfo, paramContext, paramString);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_Amsu = new beam(this, null);
   }
   
-  public static bjbs a(QQAppInterface paramQQAppInterface, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, Context paramContext, String paramString)
+  public void a()
   {
-    paramQQAppInterface = (beav)paramQQAppInterface.a(120);
-    if ((paramQQAppInterface == null) || (paramTeamWorkFileImportInfo == null) || (!a(paramTeamWorkFileImportInfo))) {}
-    do
-    {
-      return null;
-      paramTeamWorkFileImportInfo.jdField_e_of_type_Boolean = true;
-      paramTeamWorkFileImportInfo.jdField_d_of_type_Boolean = true;
-      if ((!paramQQAppInterface.a(paramTeamWorkFileImportInfo)) && (TextUtils.isEmpty(paramQQAppInterface.a(paramTeamWorkFileImportInfo))) && (paramTeamWorkFileImportInfo.jdField_d_of_type_Boolean))
-      {
-        paramQQAppInterface.a(paramTeamWorkFileImportInfo);
-        a(paramContext, paramTeamWorkFileImportInfo, null);
-        return null;
-      }
-      if ((paramQQAppInterface.a(paramTeamWorkFileImportInfo)) && (paramTeamWorkFileImportInfo.jdField_d_of_type_Boolean))
-      {
-        a(paramContext, paramTeamWorkFileImportInfo, null);
-        return null;
-      }
-    } while ((TextUtils.isEmpty(paramQQAppInterface.a(paramTeamWorkFileImportInfo))) || (!paramTeamWorkFileImportInfo.jdField_d_of_type_Boolean));
-    paramString = new Bundle();
-    paramString.putString("url", paramQQAppInterface.a(paramTeamWorkFileImportInfo));
-    paramString.putBoolean("temp_preview_from_qq", true);
-    paramString.putParcelable("key_team_work_file_import_info", paramTeamWorkFileImportInfo);
-    if (paramTeamWorkFileImportInfo.d()) {
-      paramString.putString("tdsourcetag", "s_qq_file_preview");
-    }
-    for (;;)
-    {
-      TeamWorkDocEditBrowserActivity.a(paramContext, paramString, false);
-      return null;
-      paramString.putString("tdsourcetag", "s_qq_file_edit");
-    }
+    deleteObservers();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amsu);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+    this.jdField_a_of_type_Aezn = null;
+    this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = null;
+    this.jdField_a_of_type_JavaUtilObserver = null;
   }
   
-  public static bjbs a(QQAppInterface paramQQAppInterface, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
+  public void a(long paramLong, int paramInt)
   {
-    beav localbeav = (beav)paramQQAppInterface.a(120);
-    if ((localbeav == null) || (paramTeamWorkFileImportInfo == null) || (TextUtils.isEmpty(paramString2))) {}
-    do
+    oidb_0x487.ReqBody localReqBody = new oidb_0x487.ReqBody();
+    localReqBody.uint32_channel.set(1);
+    localReqBody.uint64_subscribe_code.set(paramLong);
+    nmb.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new beak(this, paramLong), localReqBody.toByteArray(), "OidbSvc.0x487_0", 1159, paramInt);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if ((this.jdField_b_of_type_Int <= 0) && (this.jdField_a_of_type_Int <= 0))
     {
-      return null;
-      paramTeamWorkFileImportInfo.jdField_e_of_type_Boolean = true;
-      if (paramString2.equals(paramContext.getString(2131718622))) {}
-      for (paramTeamWorkFileImportInfo.jdField_d_of_type_Boolean = true;; paramTeamWorkFileImportInfo.jdField_d_of_type_Boolean = false)
+      this.jdField_c_of_type_Int = -1;
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_b_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
+    Object localObject1 = ((TroopManager)paramQQAppInterface.getManager(52)).b();
+    try
+    {
+      long l = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin).longValue();
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localbeav.a(paramTeamWorkFileImportInfo, paramBoolean);
-        if ((localbeav.a(paramTeamWorkFileImportInfo)) || (!TextUtils.isEmpty(localbeav.a(paramTeamWorkFileImportInfo))) || (!paramTeamWorkFileImportInfo.jdField_d_of_type_Boolean)) {
-          break;
-        }
-        localbeav.a(paramTeamWorkFileImportInfo);
-        a(paramContext, paramTeamWorkFileImportInfo, null);
-        return null;
-      }
-      if ((localbeav.a(paramTeamWorkFileImportInfo)) && (paramTeamWorkFileImportInfo.jdField_d_of_type_Boolean))
-      {
-        a(paramContext, paramTeamWorkFileImportInfo, null);
-        return null;
-      }
-      if ((!TextUtils.isEmpty(localbeav.a(paramTeamWorkFileImportInfo))) && (paramTeamWorkFileImportInfo.jdField_d_of_type_Boolean))
-      {
-        paramQQAppInterface = new Bundle();
-        paramQQAppInterface.putString("url", localbeav.a(paramTeamWorkFileImportInfo));
-        paramQQAppInterface.putBoolean("temp_preview_from_qq", true);
-        paramQQAppInterface.putParcelable("key_team_work_file_import_info", paramTeamWorkFileImportInfo);
-        if (paramTeamWorkFileImportInfo.d()) {
-          paramQQAppInterface.putString("tdsourcetag", "s_qq_file_preview");
-        }
-        for (;;)
+        Object localObject2 = (Entity)((Iterator)localObject1).next();
+        if ((localObject2 instanceof TroopInfo))
         {
-          TeamWorkDocEditBrowserActivity.a(paramContext, paramQQAppInterface, false);
-          return null;
-          paramQQAppInterface.putString("tdsourcetag", "s_qq_file_edit");
-        }
-      }
-    } while (paramTeamWorkFileImportInfo.jdField_d_of_type_Boolean);
-    a(paramQQAppInterface, paramTeamWorkFileImportInfo, paramContext, paramString1, paramString2, paramBoolean);
-    return null;
-  }
-  
-  public static String a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
-  {
-    if (paramTeamWorkFileImportInfo.jdField_a_of_type_Int == 1) {
-      return paramTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString;
-    }
-    return paramTeamWorkFileImportInfo.o;
-  }
-  
-  public static void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 0) {}
-    for (String str = "0X800A750";; str = "0X800A751")
-    {
-      bdll.b(null, "dc00898", "", "", str, str, paramInt2, 0, "", "", "", "");
-      do
-      {
-        return;
-      } while (paramInt1 != 1);
-    }
-  }
-  
-  public static void a(Context paramContext, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, String paramString)
-  {
-    int i = 1;
-    paramString = new Intent(paramContext, TeamWorkDocEditBrowserActivity.class);
-    paramString.putExtra("key_team_work_file_import_info", paramTeamWorkFileImportInfo);
-    paramString.putExtra("temp_preview_from_qq", true);
-    paramString.putExtra("temp_preview_show_loading", true);
-    if (paramTeamWorkFileImportInfo != null) {
-      if (paramTeamWorkFileImportInfo.jdField_d_of_type_Int == 1)
-      {
-        paramString.putExtra("tdsourcetag", "s_qq_aio_edit");
-        i = 0;
-        j = i;
-        if (becb.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramTeamWorkFileImportInfo.jdField_d_of_type_Int))) {
-          paramString.putExtra("tdsourcetag", (String)becb.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramTeamWorkFileImportInfo.jdField_d_of_type_Int)));
-        }
-      }
-    }
-    for (int j = i;; j = 0)
-    {
-      TeamWorkDocEditBrowserActivity.a(paramString, null, paramContext);
-      paramString.addFlags(536870912);
-      if (((paramContext instanceof Activity)) && (j != 0) && (b(paramString.getStringExtra("tdsourcetag"))))
-      {
-        ((Activity)paramContext).startActivityForResult(paramString, 14002);
-        return;
-        if (paramTeamWorkFileImportInfo.jdField_d_of_type_Int == 5)
-        {
-          paramString.putExtra("tdsourcetag", "s_QQ_file_share_edit");
-          break;
-        }
-        if (paramTeamWorkFileImportInfo.d())
-        {
-          paramString.putExtra("tdsourcetag", "s_qq_file_preview");
-          i = 0;
-          break;
-        }
-        paramString.putExtra("tdsourcetag", "s_qq_file_edit");
-        break;
-      }
-      paramContext.startActivity(paramString);
-      return;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, bean parambean)
-  {
-    if (paramContext == null) {
-      QLog.w(paramString, 1, "no context to show dialog");
-    }
-    do
-    {
-      return;
-      if (b(paramTeamWorkFileImportInfo)) {
-        break;
-      }
-      a(paramQQAppInterface, paramTeamWorkFileImportInfo);
-      c(paramTeamWorkFileImportInfo);
-      paramQQAppInterface = a(paramQQAppInterface, paramTeamWorkFileImportInfo, paramContext, paramString, paramContext.getString(2131718622), true);
-    } while (parambean == null);
-    parambean.a(paramQQAppInterface);
-    return;
-    blir localblir = (blir)blji.a(paramContext, null);
-    String str3;
-    String str2;
-    if (paramTeamWorkFileImportInfo.d())
-    {
-      str3 = paramContext.getString(2131691696);
-      str2 = paramContext.getString(2131691692);
-    }
-    for (String str1 = paramContext.getString(2131691694);; str1 = paramContext.getString(2131691693))
-    {
-      localblir.a(2131691697);
-      localblir.b(str3);
-      localblir.a(str2, 5);
-      localblir.a(str1, 5);
-      localblir.c(2131690580);
-      localblir.a(new beak(paramTeamWorkFileImportInfo, localblir, paramQQAppInterface, paramContext, paramString, parambean));
-      localblir.show();
-      if (!paramTeamWorkFileImportInfo.d()) {
-        break;
-      }
-      bedq.a(paramQQAppInterface, "0X8009ED0");
-      return;
-      str3 = paramContext.getString(2131691695);
-      str2 = paramContext.getString(2131691690);
-    }
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
-  {
-    if ((paramQQAppInterface == null) || (paramTeamWorkFileImportInfo == null)) {}
-    do
-    {
-      return;
-      paramQQAppInterface = (beav)paramQQAppInterface.a(120);
-    } while ((paramQQAppInterface == null) || (!paramQQAppInterface.a(paramTeamWorkFileImportInfo)) || ((paramTeamWorkFileImportInfo.g != 1) && (paramTeamWorkFileImportInfo.g != 2)));
-    paramQQAppInterface.c(paramTeamWorkFileImportInfo);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    beav localbeav = (beav)paramQQAppInterface.a(120);
-    if ((localbeav == null) || (paramTeamWorkFileImportInfo == null) || (TextUtils.isEmpty(paramString2))) {}
-    for (;;)
-    {
-      return;
-      String str1 = String.format(paramContext.getString(2131718652), new Object[] { paramString2 });
-      int k = arpx.a().a();
-      int m = arpx.a().b();
-      int j = 1;
-      int i;
-      if (!bhny.b(paramQQAppInterface.getApp(), "com.tencent.tim", "775E696D09856872FDD8AB4F3F06B1E0"))
-      {
-        paramString2 = String.format(paramContext.getString(2131718652), new Object[] { paramString2 });
-        if (QLog.isColorLevel()) {
-          QLog.d(paramString1, 2, "jumpTimLogin tim not install ");
-        }
-        i = 0;
-        if (i == 0) {
-          break label399;
-        }
-        paramContext = new Bundle();
-        if (paramBoolean) {
-          break label388;
-        }
-        if (k == -1) {
-          QLog.i(paramString1, 1, "tim entry not defined");
-        }
-        paramContext.putBoolean("isOpenTeamWork", false);
-        paramContext.putInt("timEntry", k);
-      }
-      for (;;)
-      {
-        for (;;)
-        {
-          paramContext.putString("teamworkUrl", localbeav.a(paramTeamWorkFileImportInfo));
-          paramContext.putInt("peerType", paramTeamWorkFileImportInfo.jdField_a_of_type_Int);
-          paramContext.putString("peerUin", paramTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString);
-          paramContext.putInt("busId", paramTeamWorkFileImportInfo.jdField_b_of_type_Int);
-          paramContext.putLong("uniSeq", paramTeamWorkFileImportInfo.jdField_a_of_type_Long);
-          ((axai)paramQQAppInterface.getManager(242)).a(paramContext);
-          return;
-          String str2 = bhny.a(paramQQAppInterface.getApp(), "com.tencent.tim");
-          if (QLog.isColorLevel()) {
-            QLog.d(paramString1, 2, "jumpTimLogin tim timVersion=" + str2);
-          }
-          try
+          localObject2 = (TroopInfo)localObject2;
+          if (((TroopInfo)localObject2).associatePubAccount == l)
           {
-            int n = Integer.parseInt(str2.replace(".", ""));
-            if (n == 0)
-            {
-              paramString2 = String.format(paramContext.getString(2131718652), new Object[] { paramString2 });
-              i = 0;
-              break;
+            this.jdField_b_of_type_Int += 1;
+            this.jdField_a_of_type_JavaUtilList.add(localObject2);
+            if (paramQQAppInterface.getTroopMask(((TroopInfo)localObject2).troopuin) == 3) {
+              this.jdField_b_of_type_JavaUtilList.add(((TroopInfo)localObject2).troopuin);
             }
-            i = j;
-            paramString2 = str1;
-            if (n >= m) {
-              break;
-            }
-            paramString2 = paramContext.getString(2131718697);
-            i = 0;
-          }
-          catch (Exception paramString2)
-          {
-            QLog.w(paramString1, 1, paramString2.toString());
-            i = j;
-            paramString2 = str1;
+            this.jdField_a_of_type_JavaUtilMap.put(((TroopInfo)localObject2).troopuin, Integer.valueOf(paramQQAppInterface.getConversationFacade().a(((TroopInfo)localObject2).troopuin, 1)));
           }
         }
-        break;
-        label388:
-        paramContext.putBoolean("isOpenTeamWork", true);
       }
-      label399:
-      paramQQAppInterface = bhlq.a(paramContext, 0);
-      paramQQAppInterface.setMessage(paramString2);
-      paramQQAppInterface.setPositiveButton(paramContext.getString(2131691651), new beal(paramContext, paramString1));
-      paramQQAppInterface.setNegativeButton(paramContext.getString(2131692956), new beam(paramQQAppInterface));
-      try
-      {
-        if (!paramQQAppInterface.isShowing())
-        {
-          paramQQAppInterface.show();
-          return;
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        QLog.e(paramString1, 1, "mDialog.show() exception" + paramQQAppInterface.toString());
-      }
+      return;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      QLog.d(".troop.troop_pubaccount", 2, "publicAccount uin format exception. sessionInfo.curFriendUin is not long. value is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
+      d();
+      e();
+      paramQQAppInterface.getMsgHandler().b(this.jdField_b_of_type_JavaUtilList);
     }
   }
   
-  public static void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, Observer paramObserver, SessionInfo paramSessionInfo, RelativeLayout paramRelativeLayout, aezn paramaezn, ChatXListView paramChatXListView)
   {
-    if ((paramTeamWorkFileImportInfo == null) || (paramTeamWorkFileImportInfo.jdField_a_of_type_Int != 1)) {}
-    label65:
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374032);
+    }
+    this.jdField_a_of_type_Aezn = paramaezn;
+    this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = paramChatXListView;
+    this.jdField_a_of_type_JavaUtilObserver = paramObserver;
+    deleteObservers();
+    addObserver(paramObserver);
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Amsu);
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder(paramContext, paramQQAppInterface);
+    this.d = paramContext.getResources().getColor(2131166249);
+    this.e = paramContext.getResources().getColor(2131166250);
+    this.jdField_a_of_type_AndroidGraphicsLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), this.d);
+    this.jdField_b_of_type_AndroidGraphicsLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), this.e);
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (this.jdField_a_of_type_Boolean)) {
+      return;
+    }
+    if (this.jdField_c_of_type_AndroidViewView == null) {
+      this.jdField_c_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560576, null);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.jdField_c_of_type_AndroidViewView) == -1)
+    {
+      localObject = new RelativeLayout.LayoutParams(-2, -2);
+      ((RelativeLayout.LayoutParams)localObject).topMargin = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 18.0F);
+      ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131374032);
+      ((RelativeLayout.LayoutParams)localObject).addRule(11);
+      ((RelativeLayout.LayoutParams)localObject).height = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 41.0F);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
+    }
+    if (this.jdField_b_of_type_AndroidViewView == null) {
+      this.jdField_b_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131379096);
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379099));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379097));
+    Object localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    ((LinearLayout.LayoutParams)localObject).leftMargin = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 4.0F);
+    ((LinearLayout.LayoutParams)localObject).rightMargin = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 5.0F);
+    int i = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 18.0F);
+    ((LinearLayout.LayoutParams)localObject).height = i;
+    ((LinearLayout.LayoutParams)localObject).width = i;
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130850611);
+    }
     for (;;)
     {
+      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843705);
+      this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+      this.jdField_a_of_type_Boolean = true;
+      c();
+      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
+      ThreadManager.post(new TroopEntranceBar.1(this), 8, null, true);
       return;
-      Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-      if ((localObject instanceof QQAppInterface)) {}
-      for (localObject = (QQAppInterface)localObject;; localObject = null)
-      {
-        if (localObject == null) {
-          break label65;
-        }
-        localObject = (beav)((QQAppInterface)localObject).a(120);
-        if (localObject == null) {
-          break;
-        }
-        paramTeamWorkFileImportInfo.g = 7;
-        ((beav)localObject).a(paramTeamWorkFileImportInfo);
-        return;
-      }
+      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130850612);
     }
   }
   
-  public static void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, String paramString)
+  public void c()
   {
-    if (paramTeamWorkFileImportInfo == null) {}
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    ImageView localImageView = (ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379098);
+    localImageView.setVisibility(0);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
+    localLayoutParams.height = -2;
+    localLayoutParams.width = -2;
+    localLayoutParams.leftMargin = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 3.0F);
+    localLayoutParams.rightMargin = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 8.0F);
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843706);
+    localLayoutParams.leftMargin = DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 11.0F);
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localDrawable.getConstantState().newDrawable(this.jdField_a_of_type_AndroidContentContext.getResources()).mutate();
+    }
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(this.jdField_a_of_type_AndroidGraphicsLightingColorFilter);
+    localImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.d);
+    if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) {
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable(this.jdField_a_of_type_AndroidContentContext.getResources()).mutate();
+    }
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(this.jdField_a_of_type_AndroidGraphicsLightingColorFilter);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697145);
+  }
+  
+  public void d()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    for (long l = 0L; localIterator.hasNext(); l = ((Integer)localIterator.next()).intValue() + l) {}
+    this.jdField_a_of_type_Long = l;
+  }
+  
+  public void e()
+  {
+    String str1;
     QQAppInterface localQQAppInterface;
-    do
+    if (this.jdField_b_of_type_Int <= 0)
     {
-      return;
-      QLog.d(paramString, 2, "try pre import");
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      beav localbeav = (beav)localQQAppInterface.a(120);
-      if ((!localbeav.a(paramTeamWorkFileImportInfo)) && (TextUtils.isEmpty(localbeav.a(paramTeamWorkFileImportInfo))))
-      {
-        QLog.i(paramString, 1, " parseFileImportTendoc: no cache");
-        paramTeamWorkFileImportInfo.g = 1;
-        localbeav.a(paramTeamWorkFileImportInfo);
-        return;
+      this.jdField_c_of_type_Int = 0;
+      str1 = "entry_none";
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
+        break label128;
       }
-      if (paramTeamWorkFileImportInfo.d())
+    }
+    label128:
+    for (String str2 = "";; str2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin)
+    {
+      bcef.b(localQQAppInterface, "P_CliOper", "Grp_public", "", "oper", str1, 0, 0, "", "", "", str2);
+      return;
+      if (this.jdField_b_of_type_Int == 1)
       {
-        QLog.i(paramString, 1, " parseFileImportTendoc: has cache, but online preview, drop it");
-        localbeav.c(paramTeamWorkFileImportInfo);
-        localbeav.e(paramTeamWorkFileImportInfo);
-        paramTeamWorkFileImportInfo.g = 1;
-        localbeav.a(paramTeamWorkFileImportInfo);
-        return;
+        if (this.jdField_a_of_type_Long <= 0L) {}
+        for (this.jdField_c_of_type_Int = 3;; this.jdField_c_of_type_Int = 1)
+        {
+          str1 = "entry_one";
+          break;
+        }
       }
-      QLog.i(paramString, 1, " parseFileImportTendoc: has cache");
-      paramTeamWorkFileImportInfo.g = 2;
-      paramTeamWorkFileImportInfo.h = 1;
-    } while (!paramTeamWorkFileImportInfo.d());
-    bedq.a(localQQAppInterface, "0X8009ECF");
-  }
-  
-  public static boolean a(FileManagerEntity paramFileManagerEntity, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramFileManagerEntity == null) {
-      return false;
-    }
-    TeamWorkFileImportInfo localTeamWorkFileImportInfo = new TeamWorkFileImportInfo();
-    localTeamWorkFileImportInfo.jdField_c_of_type_JavaLangString = paramFileManagerEntity.getFilePath();
-    localTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString = paramFileManagerEntity.fileName;
-    localTeamWorkFileImportInfo.jdField_e_of_type_Int = paramFileManagerEntity.nFileType;
-    localTeamWorkFileImportInfo.jdField_b_of_type_Boolean = true;
-    localTeamWorkFileImportInfo.jdField_d_of_type_Int = paramInt;
-    localTeamWorkFileImportInfo.jdField_d_of_type_Long = paramFileManagerEntity.fileSize;
-    if (paramInt == 6)
-    {
-      localTeamWorkFileImportInfo.jdField_b_of_type_Boolean = false;
-      localTeamWorkFileImportInfo.jdField_c_of_type_Boolean = true;
-    }
-    localTeamWorkFileImportInfo.jdField_a_of_type_Int = paramFileManagerEntity.peerType;
-    localTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString = paramFileManagerEntity.peerUin;
-    localTeamWorkFileImportInfo.jdField_e_of_type_JavaLangString = String.valueOf(paramFileManagerEntity.TroopUin);
-    localTeamWorkFileImportInfo.jdField_b_of_type_Int = paramFileManagerEntity.busId;
-    localTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString = paramFileManagerEntity.strTroopFilePath;
-    localTeamWorkFileImportInfo.jdField_a_of_type_Long = paramFileManagerEntity.uniseq;
-    if (paramFileManagerEntity.status != 16) {
-      localTeamWorkFileImportInfo.jdField_a_of_type_Boolean = true;
-    }
-    return a(localTeamWorkFileImportInfo, paramContext, paramQQAppInterface, paramInt);
-  }
-  
-  public static boolean a(FileManagerEntity paramFileManagerEntity, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
-  {
-    if (paramFileManagerEntity == null) {
-      return false;
-    }
-    TeamWorkFileImportInfo localTeamWorkFileImportInfo = new TeamWorkFileImportInfo();
-    localTeamWorkFileImportInfo.jdField_c_of_type_JavaLangString = paramFileManagerEntity.getFilePath();
-    localTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString = paramFileManagerEntity.fileName;
-    localTeamWorkFileImportInfo.jdField_e_of_type_Int = paramFileManagerEntity.nFileType;
-    localTeamWorkFileImportInfo.jdField_b_of_type_Boolean = true;
-    localTeamWorkFileImportInfo.jdField_d_of_type_Int = paramInt1;
-    localTeamWorkFileImportInfo.jdField_d_of_type_Long = paramFileManagerEntity.fileSize;
-    localTeamWorkFileImportInfo.jdField_c_of_type_Int = paramInt2;
-    if (paramInt1 == 6)
-    {
-      localTeamWorkFileImportInfo.jdField_b_of_type_Boolean = false;
-      localTeamWorkFileImportInfo.jdField_c_of_type_Boolean = true;
-    }
-    localTeamWorkFileImportInfo.jdField_a_of_type_Int = paramFileManagerEntity.peerType;
-    localTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString = paramFileManagerEntity.peerUin;
-    localTeamWorkFileImportInfo.jdField_e_of_type_JavaLangString = String.valueOf(paramFileManagerEntity.TroopUin);
-    localTeamWorkFileImportInfo.jdField_b_of_type_Int = paramFileManagerEntity.busId;
-    localTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString = paramFileManagerEntity.strTroopFilePath;
-    localTeamWorkFileImportInfo.jdField_a_of_type_Long = paramFileManagerEntity.uniseq;
-    if (paramFileManagerEntity.status != 16) {
-      localTeamWorkFileImportInfo.jdField_a_of_type_Boolean = true;
-    }
-    return a(localTeamWorkFileImportInfo, paramContext, paramQQAppInterface, paramInt1);
-  }
-  
-  public static boolean a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
-  {
-    return (paramTeamWorkFileImportInfo != null) && ((paramTeamWorkFileImportInfo.g == 6) || (paramTeamWorkFileImportInfo.g == 7)) && (paramTeamWorkFileImportInfo.jdField_a_of_type_Int == 1);
-  }
-  
-  public static boolean a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (!bhnv.d(BaseApplicationImpl.getContext()))
-    {
-      QQToast.a(paramContext, anzj.a(2131713577), 1).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299011));
-      return false;
-    }
-    if (paramInt == 9) {
-      paramTeamWorkFileImportInfo.jdField_d_of_type_Int = paramInt;
-    }
-    beav localbeav = (beav)paramQQAppInterface.a(120);
-    paramQQAppInterface = null;
-    if (!TextUtils.isEmpty(localbeav.a(paramTeamWorkFileImportInfo))) {
-      paramQQAppInterface = localbeav.a(paramTeamWorkFileImportInfo);
-    }
-    if (!localbeav.a(paramTeamWorkFileImportInfo)) {
-      localbeav.a(paramTeamWorkFileImportInfo);
-    }
-    if (!paramTeamWorkFileImportInfo.a()) {
-      a(paramContext, paramTeamWorkFileImportInfo, paramQQAppInterface);
-    }
-    return true;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (arri.a(Uri.parse(paramString).getHost()));
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return false;
-    }
-    TeamWorkFileImportInfo localTeamWorkFileImportInfo = new TeamWorkFileImportInfo();
-    String str = paramString2;
-    if (paramString2 == null) {
-      str = "";
-    }
-    localTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString = str;
-    localTeamWorkFileImportInfo.f = paramString1;
-    localTeamWorkFileImportInfo.jdField_c_of_type_Long = SystemClock.elapsedRealtime();
-    localTeamWorkFileImportInfo.jdField_a_of_type_Boolean = true;
-    localTeamWorkFileImportInfo.jdField_d_of_type_Int = 12;
-    paramString1 = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramString1 instanceof QQAppInterface)) {
-      a(localTeamWorkFileImportInfo, BaseApplicationImpl.getContext(), (QQAppInterface)paramString1, localTeamWorkFileImportInfo.jdField_d_of_type_Int);
-    }
-    for (;;)
-    {
-      return true;
-      paramString1 = new Bundle();
-      paramString1.putParcelable("key_team_work_file_import_info", localTeamWorkFileImportInfo);
-      paramString1 = asev.a("ipc_cmd_convert_team_work_url_2_doc", "", -1, paramString1);
-      asjw.a().a(paramString1);
-    }
-  }
-  
-  public static boolean a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    return (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString4)) && (!TextUtils.isEmpty(paramString5));
-  }
-  
-  public static boolean a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return false;
-    }
-    Object localObject = paramJSONObject.optJSONArray("urls");
-    if (localObject == null) {}
-    for (localObject = null;; localObject = ((JSONArray)localObject).optString(0)) {
-      return a((String)localObject, paramJSONObject.optString("filename"), paramJSONObject.optString("cookie"), paramJSONObject.optString("filetype"), paramJSONObject.optString("fileid"));
-    }
-  }
-  
-  public static void b(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
-  {
-    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject == null) {}
-      do
+      if (this.jdField_a_of_type_Long <= 0L) {}
+      for (this.jdField_c_of_type_Int = 4;; this.jdField_c_of_type_Int = 2)
       {
-        return;
-        localObject = (beav)((QQAppInterface)localObject).a(120);
-      } while (localObject == null);
-      paramTeamWorkFileImportInfo.g = 1;
-      ((beav)localObject).a(paramTeamWorkFileImportInfo);
+        str1 = "entry_more";
+        break;
+      }
+    }
+  }
+  
+  public void f()
+  {
+    Object localObject1 = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b();
+    try
+    {
+      long l = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin).longValue();
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = (Entity)((Iterator)localObject1).next();
+        if ((localObject2 instanceof TroopInfo))
+        {
+          localObject2 = (TroopInfo)localObject2;
+          if (((TroopInfo)localObject2).associatePubAccount == l)
+          {
+            this.jdField_b_of_type_Int += 1;
+            this.jdField_a_of_type_JavaUtilList.add(localObject2);
+          }
+        }
+      }
       return;
     }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      QLog.d(".troop.troop_pubaccount", 2, "publicAccount uin format exception. sessionInfo.curFriendUin is not long. value is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
+    }
   }
   
-  private static boolean b(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public void onClick(View paramView)
   {
-    if (paramTeamWorkFileImportInfo == null) {}
-    while ((paramTeamWorkFileImportInfo.d()) || ((paramTeamWorkFileImportInfo.h != 2) && (paramTeamWorkFileImportInfo.h != 1))) {
-      return false;
-    }
-    return true;
-  }
-  
-  private static boolean b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    paramString = (String)becb.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (paramString == null) {
-      return false;
-    }
-    arjh localarjh = (arjh)aran.a().a(418);
-    if (localarjh == null) {
-      return false;
-    }
-    paramString = (arji)localarjh.a().get(paramString);
-    if (paramString == null) {
-      return false;
-    }
-    return paramString.a();
-  }
-  
-  private static void c(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
-  {
-    if (paramTeamWorkFileImportInfo == null) {}
-    while ((paramTeamWorkFileImportInfo.g == 0) || (paramTeamWorkFileImportInfo.g == 4)) {
-      return;
-    }
-    paramTeamWorkFileImportInfo.g = 0;
+    ThreadManager.post(new TroopEntranceBar.2(this), 8, null, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

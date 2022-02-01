@@ -1,29 +1,21 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.text.style.ImageSpan;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.image.URLDrawable;
 
 public class aegm
-  extends ImageSpan
 {
-  public aegm(ChatSettingForTroop paramChatSettingForTroop, Drawable paramDrawable, int paramInt)
-  {
-    super(paramDrawable, paramInt);
-  }
+  int jdField_a_of_type_Int;
+  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
   
-  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  public aegm(aegj paramaegj, String paramString1, String paramString2, int paramInt)
   {
-    paramCanvas.save();
-    paramCanvas.translate(bdep.a(5.0F), -bdep.a(2.0F));
-    super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
-    paramCanvas.restore();
-  }
-  
-  public Drawable getDrawable()
-  {
-    return super.getDrawable();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 

@@ -1,12 +1,19 @@
-import android.widget.ImageView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-class aenu
+public class aenu
+  implements View.OnTouchListener
 {
-  aens jdField_a_of_type_Aens;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  String jdField_a_of_type_JavaLangString;
+  public aenu(TroopMemberListActivity paramTroopMemberListActivity, InputMethodManager paramInputMethodManager) {}
   
-  aenu(aent paramaent) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
+  }
 }
 
 

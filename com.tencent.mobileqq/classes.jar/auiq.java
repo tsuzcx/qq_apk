@@ -1,36 +1,21 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.qphone.base.util.QLog;
 
 class auiq
-  implements SeekBar.OnSeekBarChangeListener
+  implements DialogInterface.OnClickListener
 {
-  auiq(auip paramauip) {}
+  auiq(auij paramauij) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (this.a.a != null))
-    {
-      this.a.a.a(paramInt);
-      this.a.b(paramInt);
-    }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    auip.a(this.a, false);
-    if ((this.a.a != null) && (!this.a.a.b(auip.a(this.a)))) {
-      this.a.a.d();
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    auip.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+    auij.jdField_a_of_type_Boolean = false;
+    auij.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), false);
+    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.b(-11);
+    QLog.d("PresenceInterfaceImpl", 2, "User disallowed downd");
   }
 }
 

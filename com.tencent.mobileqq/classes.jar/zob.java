@@ -1,40 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
+import android.widget.ProgressBar;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
-class zob
-  extends Handler
+public class zob
 {
-  zob(zoa paramzoa) {}
-  
-  zob(zoa paramzoa, Handler paramHandler)
-  {
-    super(paramHandler.getLooper());
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      throw new RuntimeException("Unknown message " + paramMessage);
-    case 1: 
-      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onShowPress(this.a.jdField_a_of_type_AndroidViewMotionEvent);
-    }
-    do
-    {
-      return;
-      this.a.a();
-      return;
-    } while (this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener == null);
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onSingleTapConfirmed(this.a.jdField_a_of_type_AndroidViewMotionEvent);
-      return;
-    }
-    this.a.b = true;
-  }
+  private int jdField_a_of_type_Int = 0;
+  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ProgressBar jdField_b_of_type_AndroidWidgetProgressBar;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView c;
 }
 
 

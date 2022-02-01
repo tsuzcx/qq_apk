@@ -1,36 +1,54 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AutoCompleteTextView;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import java.util.Locale;
 
 public class aeii
-  extends aohy
+  implements bjoe
 {
-  public aeii(Conversation paramConversation) {}
+  public aeii(SubLoginActivity paramSubLoginActivity) {}
   
-  public void a(List<String> paramList)
+  public void OnClick(View paramView, int paramInt)
   {
-    apaw localapaw;
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      localapaw = this.a.a.a();
-      if (localapaw != null) {
-        break label37;
-      }
-      QLog.d("Q.recent", 1, "onBatchDelete, proxy == null");
-    }
-    for (;;)
-    {
+    if (this.a.jdField_b_of_type_Boolean) {
       return;
-      label37:
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+    }
+    if (paramInt == 0)
+    {
+      bcef.a(this.a.app, "dc00898", "", "", "0X800B290", "0X800B290", 0, 0, "", "", "", "");
+      paramView = null;
+      if (SubLoginActivity.a(this.a) != null) {
+        paramView = SubLoginActivity.a(this.a).getText().toString();
+      }
+      if (TextUtils.isEmpty(paramView)) {
+        break label265;
+      }
+    }
+    label265:
+    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://ti.qq.com/safe/forgetpw?source_id=2756", paramView });; paramView = "https://ti.qq.com/safe/forgetpw?source_id=2756")
+    {
+      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+      localIntent.putExtra("uin", SubLoginActivity.a(this.a));
+      localIntent.putExtra("reqType", 3);
+      localIntent.putExtra("url", paramView);
+      this.a.startActivity(localIntent);
+      for (;;)
       {
-        RecentUser localRecentUser = (RecentUser)localapaw.findRecentUserByUin((String)paramList.next(), 0);
-        if (localRecentUser != null) {
-          localapaw.delRecentUser(localRecentUser);
+        this.a.jdField_b_of_type_Boolean = true;
+        this.a.a.dismiss();
+        return;
+        if (paramInt == 1)
+        {
+          bcef.a(this.a.app, "dc00898", "", "", "0X800AFDF", "0X800AFDF", 0, 0, "", "", "", "");
+          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
+          paramView.putExtra("isSubaccount", true);
+          paramView.putExtra("fromWhere", this.a.jdField_b_of_type_JavaLangString);
+          paramView.putExtra("entrance", SubLoginActivity.class.getName());
+          this.a.startActivity(paramView);
         }
       }
     }

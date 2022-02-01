@@ -1,35 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.Adapter;
+import com.tencent.qphone.base.util.QLog;
 
-public final class twp
-  implements txi
+public class twp
 {
-  @NonNull
-  private final RecyclerView.Adapter a;
-  
-  public twp(@NonNull RecyclerView.Adapter paramAdapter)
+  private static int a()
   {
-    this.a = paramAdapter;
+    return 2;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public static void a(String paramString1, String paramString2)
   {
-    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
+    if (a()) {
+      QLog.d(paramString1, a(), paramString2);
+    }
   }
   
-  public void a(int paramInt1, int paramInt2, Object paramObject)
+  private static boolean a()
   {
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2, paramObject);
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
-  }
-  
-  public void c(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemMoved(paramInt1, paramInt2);
+    return QLog.isColorLevel();
   }
 }
 

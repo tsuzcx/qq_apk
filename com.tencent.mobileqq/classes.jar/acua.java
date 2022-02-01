@@ -1,49 +1,17 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class acua
-  implements acun
+public class acua
+  implements View.OnClickListener
 {
-  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
+  public acua(AuthDevActivity paramAuthDevActivity) {}
+  
+  public void onClick(View paramView)
   {
-    Object localObject = null;
-    if (paramacts != null) {}
-    for (paramVarArgs = paramacts.a(); (paramacts == null) || (paramVarArgs == null); paramVarArgs = null)
-    {
-      acvc.d("GdtCarrierJsCallHandler", "handleJsCallRequest error");
-      return true;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("carrier", acwe.a(paramVarArgs));
-    }
-    catch (JSONException localJSONException)
-    {
-      try
-      {
-        for (;;)
-        {
-          paramacts.callJs(paramString, new String[] { localJSONObject.toString() });
-          paramString = localObject;
-          if (paramacts != null) {
-            paramString = paramacts.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getCarrier", paramString);
-          return true;
-          localJSONException = localJSONException;
-          acvc.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", localJSONException);
-        }
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          acvc.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", paramString);
-        }
-      }
-    }
+    AuthDevActivity.h(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,22 +1,12 @@
-public class qfu
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class qfu
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
-  public boolean k;
-  public boolean l;
+  qfu(qft paramqft) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

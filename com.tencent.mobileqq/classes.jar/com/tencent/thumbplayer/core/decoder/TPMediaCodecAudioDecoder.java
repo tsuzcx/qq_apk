@@ -66,7 +66,7 @@ public class TPMediaCodecAudioDecoder
     return true;
   }
   
-  public boolean initDecoder(String paramString, int paramInt1, int paramInt2, int paramInt3, Surface paramSurface, int paramInt4)
+  public boolean initDecoder(String paramString, int paramInt1, int paramInt2, int paramInt3, Surface paramSurface, int paramInt4, int paramInt5, int paramInt6)
   {
     return false;
   }

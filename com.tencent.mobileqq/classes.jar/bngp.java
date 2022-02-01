@@ -1,37 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.report.lp.MachineLearingSmartReport;
+import android.graphics.PointF;
 
 public class bngp
-  implements ModuleDownloadListener
 {
-  public bngp(MachineLearingSmartReport paramMachineLearingSmartReport, String paramString1, String paramString2, String paramString3) {}
+  public final float a;
+  public final PointF a;
+  public final float b;
+  public final float c;
+  public final float d;
+  public final float e;
+  public final float f;
   
-  public void onDownloadCanceled(String paramString)
+  public bngp(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadCanceled " + paramString);
-    }
-  }
-  
-  public void onDownloadFailed(String paramString)
-  {
-    MachineLearingSmartReport.access$100(this.jdField_a_of_type_CooperationQzoneReportLpMachineLearingSmartReport, 10, "Module onDownloadFailed " + paramString);
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadProgress " + paramString + ",progress=" + Float.toString(paramFloat));
-    }
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadSucceed " + paramString);
-    }
-    MachineLearingSmartReport.access$000(this.jdField_a_of_type_CooperationQzoneReportLpMachineLearingSmartReport, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Float = paramFloat3;
+    this.b = paramFloat4;
+    this.c = paramFloat5;
+    this.d = paramFloat6;
+    this.e = paramFloat7;
+    this.f = paramFloat8;
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.upgrade.activity;
 
-import bhek;
+import bfnw;
 
 public class UpgradeActivity$15$1
   implements Runnable
 {
-  public UpgradeActivity$15$1(bhek parambhek) {}
+  public UpgradeActivity$15$1(bfnw parambfnw) {}
   
   public void run()
   {

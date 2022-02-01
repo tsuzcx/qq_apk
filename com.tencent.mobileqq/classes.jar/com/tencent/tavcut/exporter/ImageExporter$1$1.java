@@ -2,6 +2,7 @@ package com.tencent.tavcut.exporter;
 
 import com.tencent.tav.core.composition.VideoComposition.RenderLayoutMode;
 import com.tencent.tav.coremedia.CGSize;
+import com.tencent.tavcut.util.CompositionUtils;
 import com.tencent.tavcut.util.DurationUtil;
 import com.tencent.tavkit.composition.TAVComposition;
 import com.tencent.weseevideo.composition.VideoRenderChainManager;
@@ -24,6 +25,7 @@ class ImageExporter$1$1
     this.val$stickerController.restoreSticker(this.val$exportMediaModel.getMediaEffectModel().getStickerModelList());
     paramVideoRenderChainManager.getComposition().setRenderSize(this.val$size);
     paramVideoRenderChainManager.getComposition().setRenderLayoutMode(VideoComposition.RenderLayoutMode.aspectFill);
+    CompositionUtils.removeTAVAspectEffect(paramVideoRenderChainManager.getComposition());
     paramMediaBuilderOutput = new WSImageRender();
     DurationUtil.start("imageRender.init");
     paramMediaBuilderOutput.init(paramVideoRenderChainManager.getComposition(), paramVideoRenderChainManager.getComposition().getRenderSize());

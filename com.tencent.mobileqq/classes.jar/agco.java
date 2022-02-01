@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1;
-import cooperation.qwallet.plugin.FakeUrl.FakeInfo;
-import cooperation.qwallet.plugin.FakeUrl.FakeListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
 public class agco
-  implements FakeUrl.FakeListener
+  extends AnimatorListenerAdapter
 {
-  public agco(QQNotifySettingBaseFragment.2.1 param1) {}
+  public agco(HeartCombolEffectView paramHeartCombolEffectView) {}
   
-  public boolean onBlHandleFakeurl(FakeUrl.FakeInfo paramFakeInfo, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return false;
+    super.onAnimationCancel(paramAnimator);
+    this.a.setVisibility(8);
   }
   
-  public boolean onClickUrl(String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return false;
+    super.onAnimationEnd(paramAnimator);
+    this.a.setVisibility(8);
   }
 }
 

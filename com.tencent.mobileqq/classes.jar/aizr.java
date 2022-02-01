@@ -1,83 +1,57 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.datarecv.pb.ZhituReportMsg.ReqBody;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.40.1;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aizr
+  extends amrc
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  @Nullable
-  public String f;
-  @Nullable
-  public String g;
+  public aizr(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public ZhituReportMsg.ReqBody a()
+  protected void onCollectDiscussion(boolean paramBoolean, Long paramLong)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = "";
+    if (this.a.c != null) {
+      this.a.c.dismiss();
     }
-    if (this.c == null) {
-      this.c = "";
-    }
-    if (this.b == null) {
-      this.b = "";
-    }
-    if (this.d == null) {
-      this.d = "";
-    }
-    if (this.e == null) {
-      this.e = "";
-    }
-    if (this.f == null) {
-      this.f = "";
-    }
-    if (this.g == null) {
-      this.g = "";
-    }
-    ZhituReportMsg.ReqBody localReqBody = new ZhituReportMsg.ReqBody();
-    localReqBody.bytes_pass.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    localReqBody.bytes_pic_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    localReqBody.bytes_style.set(ByteStringMicro.copyFromUtf8(this.c));
-    localReqBody.uint32_action.set(this.jdField_a_of_type_Int);
-    localReqBody.bytes_aio_type.set(ByteStringMicro.copyFromUtf8(this.d));
-    localReqBody.bytes_mobile_type.set(ByteStringMicro.copyFromUtf8("android"));
-    localReqBody.bytes_current_text.set(ByteStringMicro.copyFromUtf8(this.e));
-    return localReqBody;
   }
   
-  public String toString()
+  protected void onGetDiscAtAllRemianCount(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("ZhituReportData{pass='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", imgId='").append(this.b).append('\'').append(", styles='").append(this.c).append('\'').append(", action=").append(this.jdField_a_of_type_Int).append(", aioType='").append(this.d).append('\'').append(", queryText='");
-    if (this.e != null)
+    this.a.getActivity().runOnUiThread(new ChatHistoryTroopMemberFragment.40.1(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2, paramBoolean3));
+  }
+  
+  protected void onKickoutDiscussionMember(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  {
+    if (paramBoolean)
     {
-      str = blev.a(this.e);
-      localStringBuilder = localStringBuilder.append(str).append('\'').append(", lastMessage='");
-      if (this.f == null) {
-        break label207;
+      bcef.b(this.a.b, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
+      this.a.a(paramLong2 + "");
+      if (this.a.jdField_a_of_type_Ajae != null) {
+        this.a.jdField_a_of_type_Ajae.a();
       }
-      str = blev.a(this.f);
-      label139:
-      localStringBuilder = localStringBuilder.append(str).append('\'').append(", lastTwoMessage='");
-      if (this.g == null) {
-        break label213;
+      if (this.a.k)
+      {
+        this.a.d(paramLong2 + "");
+        if (this.a.jdField_a_of_type_Ajag != null) {
+          this.a.jdField_a_of_type_Ajag.notifyDataSetChanged();
+        }
       }
     }
-    label207:
-    label213:
-    for (String str = blev.a(this.g);; str = "null")
+    for (;;)
     {
-      return str + '\'' + ", isReported=" + this.jdField_a_of_type_Boolean + '}';
-      str = "null";
-      break;
-      str = "null";
-      break label139;
+      if (this.a.c != null) {
+        this.a.c.dismiss();
+      }
+      return;
+      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131693246), 0).b(this.a.getActivity().getTitleBarHeight());
+    }
+  }
+  
+  protected void onUncollectDiscussion(boolean paramBoolean, Long paramLong)
+  {
+    if (this.a.c != null) {
+      this.a.c.dismiss();
     }
   }
 }

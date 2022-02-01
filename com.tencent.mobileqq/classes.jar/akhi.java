@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.recent.AppletsFolderManager.2;
 
-class akhi
-  implements DialogInterface.OnCancelListener
+public class akhi
+  implements bjog
 {
-  akhi(akhg paramakhg) {}
+  public akhi(AppletsFolderManager.2 param2) {}
   
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  public void onDismiss()
+  {
+    akhg.a(this.a.this$0, false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhi
  * JD-Core Version:    0.7.0.1
  */

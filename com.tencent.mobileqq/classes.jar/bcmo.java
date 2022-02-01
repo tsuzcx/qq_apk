@@ -1,17 +1,26 @@
-import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
-import java.util.Comparator;
+import android.text.TextUtils;
 
-public final class bcmo
-  implements Comparator<bcgv>
+public class bcmo
 {
-  public int a(bcgv parambcgv1, bcgv parambcgv2)
+  String jdField_a_of_type_JavaLangString;
+  String b;
+  
+  public bcmo(bcmn parambcmn, bcin parambcin)
   {
-    int j = Long.signum(parambcgv2.b() - parambcgv1.b());
-    int i = j;
-    if (j == 0) {
-      i = PublicAccountSearchEngine.a(parambcgv1, parambcgv2);
+    if (parambcin == null) {
+      return;
     }
-    return i;
+    this.jdField_a_of_type_JavaLangString = parambcin.a("c");
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_JavaLangString = parambcin.a("r");
+    }
+    this.b = bblk.a(bchh.a(parambcin), false);
+  }
+  
+  public bcmo(bcmn parambcmn, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 

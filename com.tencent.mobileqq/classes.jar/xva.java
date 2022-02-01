@@ -1,195 +1,111 @@
-import android.util.Log;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class xva
+  extends ysg
 {
-  private List<xvc> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private xvb jdField_a_of_type_Xvb;
-  private xvf jdField_a_of_type_Xvf;
+  public static final String KEY = "PlaceholderSegment";
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private xsh jdField_a_of_type_Xsh;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public long a()
+  public xva(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    long l1 = 9223372036854775807L;
-    if (localIterator.hasNext())
+    super(paramContext);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public void N_()
+  {
+    O_();
+  }
+  
+  protected void O_()
+  {
+    ysg localysg = a().a(this.jdField_b_of_type_JavaLangString);
+    if ((localysg == null) || (localysg.a() == 0))
     {
-      long l2 = ((xvc)localIterator.next()).a();
-      if ((l2 == -9223372036854775808L) || (l1 <= l2)) {
-        break label60;
-      }
-      l1 = l2;
-    }
-    label60:
-    for (;;)
-    {
-      break;
-      return l1;
-    }
-  }
-  
-  public List<xvc> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public xvd a(boolean paramBoolean)
-  {
-    Object localObject2 = null;
-    int i = 0;
-    Object localObject1;
-    label24:
-    xvc localxvc;
-    label46:
-    xvd localxvd;
-    if (i == 0)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      localObject1 = null;
-      i = 0;
-      if (localIterator.hasNext())
-      {
-        localxvc = (xvc)localIterator.next();
-        localxvd = localxvc.a();
-        if (localxvd == null) {
-          break label151;
-        }
-        if (localxvc == this.jdField_a_of_type_Xvf)
-        {
-          localObject1 = localxvd;
-          label70:
-          if (localxvc.a(false)) {
-            break label152;
-          }
-          if (!localxvc.b()) {
-            break label154;
-          }
-          i += 1;
-        }
-      }
-    }
-    label151:
-    label152:
-    label154:
-    for (;;)
-    {
-      break label24;
-      localxvc.a(localxvd, 0L);
-      break label46;
-      if (localObject1 != null) {}
-      do
-      {
-        return localObject1;
-        localObject1 = localObject2;
-      } while (!paramBoolean);
-      if (i == this.jdField_a_of_type_JavaUtilList.size())
-      {
-        i = 1;
-        break;
-      }
-      i = 0;
-      break;
-      Log.d("Decoders", "EOS NULL");
-      return null;
-      break label70;
-      break label70;
-    }
-  }
-  
-  public xvf a()
-  {
-    return this.jdField_a_of_type_Xvf;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((xvc)localIterator.next()).e();
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void a(xvc paramxvc)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramxvc);
-    if ((paramxvc instanceof xvf)) {
-      this.jdField_a_of_type_Xvf = ((xvf)paramxvc);
-    }
-    while (!(paramxvc instanceof xvb)) {
+      d_(true);
       return;
     }
-    this.jdField_a_of_type_Xvb = ((xvb)paramxvc);
+    d_(false);
   }
   
-  public void a(xvj paramxvj, long paramLong)
+  public int a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((xvc)localIterator.next()).a(paramxvj, paramLong);
-    }
+    return 1;
   }
   
-  public boolean a()
+  public View a(int paramInt, xsh paramxsh, ViewGroup paramViewGroup)
   {
-    boolean bool = false;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
-    if (localIterator.hasNext())
+    paramViewGroup = (TextView)paramxsh.a(2131374420);
+    ImageView localImageView = (ImageView)paramxsh.a(2131374421);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      if (!((xvc)localIterator.next()).b()) {
-        break label62;
+      paramViewGroup.setText(amtj.a(2131707300) + vkm.jdField_a_of_type_JavaLangString + "\n拍摄一段小视频，分享眼前的世界");
+      QQStoryContext.a();
+      if (!ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+        break label104;
       }
-      i += 1;
+      localImageView.setImageResource(this.jdField_b_of_type_Int);
     }
-    label62:
     for (;;)
     {
+      return paramxsh.a();
+      paramViewGroup.setText(this.jdField_a_of_type_JavaLangString);
       break;
-      if (i == this.jdField_a_of_type_JavaUtilList.size()) {
-        bool = true;
-      }
-      return bool;
+      label104:
+      localImageView.setImageResource(this.jdField_a_of_type_Int);
     }
   }
   
-  public long b()
+  public String a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (long l1 = 9223372036854775807L; localIterator.hasNext(); l1 = Math.min(((xvc)localIterator.next()).b(), l1)) {}
-    long l2 = l1;
-    if (l1 == 9223372036854775807L) {
-      l2 = -1L;
-    }
-    return l2;
+    return "PlaceholderSegment";
   }
   
-  public void b()
+  public xsh a(int paramInt, ViewGroup paramViewGroup)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((xvc)localIterator.next()).c();
-    }
+    this.jdField_a_of_type_Xsh = new xsh(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561595, paramViewGroup, false));
+    return this.jdField_a_of_type_Xsh;
   }
   
-  public boolean b()
+  protected void c()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      if (!((xvc)localIterator.next()).d()) {
-        return false;
-      }
-    }
-    return true;
+    O_();
   }
   
-  public void c()
+  public void e()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((xvc)localIterator.next()).d();
+    super.e();
+    if (this.jdField_a_of_type_Xsh == null) {}
+    ImageView localImageView;
+    do
+    {
+      return;
+      localImageView = (ImageView)this.jdField_a_of_type_Xsh.a(2131374421);
+    } while (localImageView == null);
+    QQStoryContext.a();
+    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))
+    {
+      localImageView.setImageResource(this.jdField_b_of_type_Int);
+      return;
     }
+    localImageView.setImageResource(this.jdField_a_of_type_Int);
   }
 }
 

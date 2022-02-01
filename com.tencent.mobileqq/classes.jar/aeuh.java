@@ -1,33 +1,41 @@
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.QQPermissionCallback;
+import Wallet.AcsMsg;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aeuh
-  implements QQPermissionCallback
+  implements Handler.Callback
 {
-  public aeuh(JumpActivity paramJumpActivity, boolean paramBoolean) {}
+  public aeuh(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    QLog.i("JumpAction", 1, "system share.doShare denied sd grant");
-    bhlq.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, new aeui(this));
-    paramArrayOfString = new HashMap();
-    bdmc.a(BaseApplication.getContext()).a("", "noSDPermissionShareDeny", true, 0L, 0L, paramArrayOfString, "");
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.i("JumpAction", 1, "system share.doShare user grant");
-    JumpActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, this.jdField_a_of_type_Boolean);
-    paramArrayOfString = new HashMap();
-    bdmc.a(BaseApplication.getContext()).a("", "noSDPermissionShareGrant", true, 0L, 0L, paramArrayOfString, "");
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (ActivateFriendActivity.a(this.a) != null)
+      {
+        ActivateFriendActivity.a(this.a).e();
+        continue;
+        paramMessage = (Bundle)paramMessage.obj;
+        ActivateFriendActivity.a(this.a, (ArrayList)paramMessage.getSerializable("models"), (List)paramMessage.getSerializable("list"), paramMessage.getInt("count"));
+        continue;
+        paramMessage = (Bundle)paramMessage.obj;
+        this.a.a((AcsMsg)paramMessage.getSerializable("acsMsg"));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeuh
  * JD-Core Version:    0.7.0.1
  */

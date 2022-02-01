@@ -1,22 +1,15 @@
-public abstract interface arla
+import android.widget.TextView;
+
+public class arla
 {
-  public abstract arlb a();
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract boolean a();
-  
-  public abstract String b();
-  
-  public abstract void b();
-  
-  public abstract void c();
+  protected arla(arkz paramarkz) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arla
  * JD-Core Version:    0.7.0.1
  */

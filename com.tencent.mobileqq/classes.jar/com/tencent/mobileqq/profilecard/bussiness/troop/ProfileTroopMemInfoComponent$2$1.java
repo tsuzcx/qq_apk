@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.profilecard.bussiness.troop;
 
-import bahr;
-import baht;
+import ayxi;
+import ayxk;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class ProfileTroopMemInfoComponent$2$1
   implements Runnable
 {
-  public ProfileTroopMemInfoComponent$2$1(baht parambaht) {}
+  public ProfileTroopMemInfoComponent$2$1(ayxk paramayxk) {}
   
   public void run()
   {
-    if (bahr.e(this.a.jdField_a_of_type_Bahr) == null) {}
-    while (!bahr.f(this.a.jdField_a_of_type_Bahr).isResume()) {
+    if (ayxi.e(this.a.jdField_a_of_type_Ayxi) == null) {}
+    while (!ayxi.f(this.a.jdField_a_of_type_Ayxi).isResume()) {
       return;
     }
-    bahr.a(bahr.a(this.a.jdField_a_of_type_Bahr), this.a.jdField_a_of_type_Azxr, this.a.jdField_a_of_type_Bahr);
+    ayxi.a(ayxi.a(this.a.jdField_a_of_type_Ayxi), this.a.jdField_a_of_type_Aymg, this.a.jdField_a_of_type_Ayxi);
   }
 }
 

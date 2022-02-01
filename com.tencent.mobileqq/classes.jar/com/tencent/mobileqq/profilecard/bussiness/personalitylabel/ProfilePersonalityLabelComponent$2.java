@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.profilecard.bussiness.personalitylabel;
 
-import azww;
-import azxr;
-import bagy;
+import ayll;
+import aymg;
+import aywp;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.data.Card;
 
 public class ProfilePersonalityLabelComponent$2
   implements Runnable
 {
-  public ProfilePersonalityLabelComponent$2(bagy parambagy) {}
+  public ProfilePersonalityLabelComponent$2(aywp paramaywp) {}
   
   public void run()
   {
-    if ((bagy.f(this.this$0) != null) && (((azxr)bagy.g(this.this$0)).jdField_a_of_type_ComTencentMobileqqDataCard != null)) {
-      azww.a(bagy.a(this.this$0), ((azxr)bagy.h(this.this$0)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, bagy.a(this.this$0), ((azxr)bagy.i(this.this$0)).jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel, (azxr)bagy.j(this.this$0));
+    if ((aywp.f(this.this$0) != null) && (((aymg)aywp.g(this.this$0)).jdField_a_of_type_ComTencentMobileqqDataCard != null)) {
+      ayll.a(aywp.a(this.this$0), ((aymg)aywp.h(this.this$0)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, aywp.a(this.this$0), ((aymg)aywp.i(this.this$0)).jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel, (aymg)aywp.j(this.this$0));
     }
   }
 }

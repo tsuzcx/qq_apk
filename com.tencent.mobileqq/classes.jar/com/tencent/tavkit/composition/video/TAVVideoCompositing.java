@@ -30,7 +30,6 @@ import java.util.List;
 public class TAVVideoCompositing
   implements VideoCompositing
 {
-  public static boolean LOG_VERBOSE = false;
   private final String TAG = "TAVVideoCompositing@" + Integer.toHexString(hashCode());
   @Nullable
   private CIContext ciContext;
@@ -88,9 +87,7 @@ public class TAVVideoCompositing
   
   private void applySourceTransform(TAVVideoConfiguration paramTAVVideoConfiguration, CIImage paramCIImage, RenderInfo paramRenderInfo)
   {
-    if (LOG_VERBOSE) {
-      Logger.v(this.TAG, "applySourceTransform() called with: config = [" + paramTAVVideoConfiguration + "]");
-    }
+    Logger.v(this.TAG, "applySourceTransform() called with: config = [" + paramTAVVideoConfiguration + "]");
     if (paramTAVVideoConfiguration.frameEnable()) {
       paramCIImage.applyFillInFrame(paramTAVVideoConfiguration.getFrame(), paramTAVVideoConfiguration.getContentMode());
     }
@@ -141,37 +138,27 @@ public class TAVVideoCompositing
   @Nullable
   private CIImage convertLayerToImage(AsynchronousVideoCompositionRequest paramAsynchronousVideoCompositionRequest, RenderInfo paramRenderInfo, TAVVideoCompositionLayerInstruction paramTAVVideoCompositionLayerInstruction, TAVVideoEffect paramTAVVideoEffect)
   {
-    Object localObject = null;
     if (!paramTAVVideoCompositionLayerInstruction.getTimeRange().containsTime(paramRenderInfo.getTime())) {
-      paramAsynchronousVideoCompositionRequest = (AsynchronousVideoCompositionRequest)localObject;
+      return null;
     }
-    do
+    CIImage localCIImage2 = paramTAVVideoCompositionLayerInstruction.getImageSource().sourceImageAtTime(paramRenderInfo.getTime().sub(paramTAVVideoCompositionLayerInstruction.getTimeRange().getStart()), paramRenderInfo.getRenderSize());
+    CIImage localCIImage1 = localCIImage2;
+    if (localCIImage2 == null)
     {
-      return paramAsynchronousVideoCompositionRequest;
-      CIImage localCIImage = paramTAVVideoCompositionLayerInstruction.getImageSource().sourceImageAtTime(paramRenderInfo.getTime().sub(paramTAVVideoCompositionLayerInstruction.getTimeRange().getStart()), paramRenderInfo.getRenderSize());
-      localObject = localCIImage;
-      if (localCIImage == null)
-      {
-        paramAsynchronousVideoCompositionRequest = getImageWithRequest(paramAsynchronousVideoCompositionRequest, paramTAVVideoCompositionLayerInstruction);
-        localObject = paramAsynchronousVideoCompositionRequest;
-        if (LOG_VERBOSE)
-        {
-          Logger.v(this.TAG, "convertLayerToImage: begin sourceImage by request, sourceImage = " + paramAsynchronousVideoCompositionRequest);
-          localObject = paramAsynchronousVideoCompositionRequest;
-        }
-      }
-      if (localObject == null)
-      {
-        Logger.w(this.TAG, "convertLayerToImage: begin sourceImage by request, sourceImage is null ");
-        return null;
-      }
-      ((CIImage)localObject).applyPreferRotation(paramTAVVideoCompositionLayerInstruction.getVideoConfiguration().getPreferRotation());
-      applySourceTransform(paramTAVVideoCompositionLayerInstruction.getVideoConfiguration(), (CIImage)localObject, paramRenderInfo);
-      paramRenderInfo = applyCompositionSourceEffect(paramRenderInfo, applyClipSourceEffect(paramRenderInfo, (CIImage)localObject, paramTAVVideoCompositionLayerInstruction.getVideoConfiguration().getEffects()), paramTAVVideoEffect);
-      paramAsynchronousVideoCompositionRequest = paramRenderInfo;
-    } while (!LOG_VERBOSE);
-    Logger.v(this.TAG, "convertLayerToImage: end, returned: " + paramRenderInfo);
-    return paramRenderInfo;
+      localCIImage1 = getImageWithRequest(paramAsynchronousVideoCompositionRequest, paramTAVVideoCompositionLayerInstruction);
+      Logger.v(this.TAG, "convertLayerToImage: begin sourceImage by request, sourceImage = " + localCIImage1);
+    }
+    if (localCIImage1 == null)
+    {
+      Logger.w(this.TAG, "convertLayerToImage: begin sourceImage by request, sourceImage is null ");
+      return null;
+    }
+    paramRenderInfo.addTrack(paramTAVVideoCompositionLayerInstruction.getImageSource());
+    localCIImage1.applyPreferRotation(paramTAVVideoCompositionLayerInstruction.getVideoConfiguration().getPreferRotation());
+    applySourceTransform(paramTAVVideoCompositionLayerInstruction.getVideoConfiguration(), localCIImage1, paramRenderInfo);
+    paramAsynchronousVideoCompositionRequest = applyCompositionSourceEffect(paramRenderInfo, applyClipSourceEffect(paramRenderInfo, localCIImage1, paramTAVVideoCompositionLayerInstruction.getVideoConfiguration().getEffects()), paramTAVVideoEffect);
+    Logger.v(this.TAG, "convertLayerToImage: end, returned: " + paramAsynchronousVideoCompositionRequest);
+    return paramAsynchronousVideoCompositionRequest;
   }
   
   @NonNull
@@ -202,9 +189,7 @@ public class TAVVideoCompositing
         localImageCollection.addOverlayImage((CIImage)localObject2, ((TAVVideoCompositionLayerInstruction)localObject1).getImageSource());
       }
     }
-    if (LOG_VERBOSE) {
-      Logger.d(this.TAG, "convertToImageCollection: result imageCollection = " + localImageCollection);
-    }
+    Logger.v(this.TAG, "convertToImageCollection: result imageCollection = " + localImageCollection);
     return localImageCollection;
   }
   
@@ -348,9 +333,7 @@ public class TAVVideoCompositing
       this.reportSession = new CompositingReportSession(paramAsynchronousVideoCompositionRequest.getRenderContext().getSize().width, paramAsynchronousVideoCompositionRequest.getRenderContext().getSize().height);
     }
     long l = System.nanoTime();
-    if (LOG_VERBOSE) {
-      Logger.d(this.TAG, "startVideoCompositionRequest: begin, currentThread = " + Thread.currentThread().getName() + ", request = [" + paramAsynchronousVideoCompositionRequest + "]");
-    }
+    Logger.v(this.TAG, "startVideoCompositionRequest: begin, currentThread = " + Thread.currentThread().getName() + ", request = [" + paramAsynchronousVideoCompositionRequest + "]");
     if (this.ciContext == null) {
       this.ciContext = new CIContext(paramAsynchronousVideoCompositionRequest.getRenderContext().getRenderContext());
     }
@@ -373,9 +356,7 @@ public class TAVVideoCompositing
     if (localObject != null)
     {
       localObject = this.ciContext.renderToSampleBuffer((CIImage)localObject, paramAsynchronousVideoCompositionRequest.getCompositionTime(), paramAsynchronousVideoCompositionRequest.getRenderContext().getRenderContext());
-      if (LOG_VERBOSE) {
-        Logger.d(this.TAG, "startVideoCompositionRequest: end, resultPixels = [" + localObject + "]");
-      }
+      Logger.v(this.TAG, "startVideoCompositionRequest: end, resultPixels = [" + localObject + "]");
       this.reportSession.tickSuccess(System.nanoTime() - l);
       paramAsynchronousVideoCompositionRequest.finishWithComposedVideoFrame((CMSampleBuffer)localObject);
     }

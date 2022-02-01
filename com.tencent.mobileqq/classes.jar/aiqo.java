@@ -1,27 +1,15 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
 
 public class aiqo
-  implements bgwh
+  extends amsu
 {
-  public aiqo(TroopChatPie paramTroopChatPie) {}
+  public aiqo(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    if ((paramBoolean) && (this.a.g.equals(paramString)))
-    {
-      TroopChatPie.b(this.a, true);
-      paramString = (agwy)this.a.a(23);
-      if (paramString != null) {
-        paramString.a(true);
-      }
+    if (paramBoolean) {
+      this.a.i();
     }
-    do
-    {
-      return;
-      TroopChatPie.b(this.a, false);
-      paramString = (agwy)this.a.a(23);
-    } while (paramString == null);
-    paramString.a(false);
   }
 }
 

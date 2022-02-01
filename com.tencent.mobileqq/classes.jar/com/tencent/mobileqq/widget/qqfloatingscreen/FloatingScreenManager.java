@@ -5,14 +5,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.View;
-import bjfq;
-import bjfr;
-import bjfs;
-import bjft;
-import bjfv;
-import bjfw;
-import bjgc;
-import bjge;
+import bhlw;
+import bhlx;
+import bhly;
+import bhlz;
+import bhmb;
+import bhmc;
+import bhmi;
+import bhmk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingView;
 import com.tencent.mobileqq.widget.QQToast;
@@ -29,7 +29,7 @@ public class FloatingScreenManager
   public static final String QQFS_SP_NAME = "qqfs_floating_sp";
   private static final String TAG = "FloatingScreenManager";
   private static FloatingScreenManager mFloatingManager;
-  private bjge mWrapperFactory = new bjge();
+  private bhmk mWrapperFactory = new bhmk();
   
   public static FloatingScreenManager getInstance()
   {
@@ -66,7 +66,7 @@ public class FloatingScreenManager
       return i;
       try
       {
-        bjfq.b(paramInt);
+        bhlw.b(paramInt);
         if (!FloatingScreenPermission.checkPermission(paramContext)) {
           continue;
         }
@@ -74,7 +74,7 @@ public class FloatingScreenManager
           QLog.d("FloatingScreenManager", 2, new Object[] { "enterFloatingScree:", paramView.toString() });
         }
         sendWindowClosedBroadcastWithId(paramContext, paramInt);
-        bjfr.a(BaseApplicationImpl.getContext(), 50, 2);
+        bhlx.a(BaseApplicationImpl.getContext(), 50, 2);
         FloatingScreenParams localFloatingScreenParams = paramFloatingScreenParams;
         if (paramFloatingScreenParams == null) {
           localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().setShapeType(2).build();
@@ -98,7 +98,7 @@ public class FloatingScreenManager
         if (j != 0) {
           continue;
         }
-        bjfq.a(paramInt);
+        bhlw.a(paramInt);
         i = j;
       }
       finally {}
@@ -132,8 +132,8 @@ public class FloatingScreenManager
           i = 3;
           continue;
         }
-        if ((paramContext instanceof bjfw)) {
-          ((bjfw)paramContext).a(localFloatingScreenParams);
+        if ((paramContext instanceof bhmc)) {
+          ((bhmc)paramContext).a(localFloatingScreenParams);
         }
         i = paramContext.a(localFloatingScreenParams, paramView);
       }
@@ -157,7 +157,7 @@ public class FloatingScreenManager
         }
         if (!BaseApplicationImpl.getApplication().getQQProcessName().endsWith(":tool"))
         {
-          QQToast.a(paramContext, 2131698488, 0).a();
+          QQToast.a(paramContext, 2131698677, 0).a();
           i = -1;
           continue;
         }
@@ -174,8 +174,8 @@ public class FloatingScreenManager
           i = 3;
           continue;
         }
-        if ((paramContext instanceof bjgc)) {
-          ((bjgc)paramContext).a(localFloatingScreenParams);
+        if ((paramContext instanceof bhmi)) {
+          ((bhmi)paramContext).a(localFloatingScreenParams);
         }
         i = paramContext.a(localFloatingScreenParams, paramWatchTogetherFloatingView);
       }
@@ -185,17 +185,17 @@ public class FloatingScreenManager
   
   public void quitFloatingScreen()
   {
-    bjfv localbjfv = this.mWrapperFactory.a(null, 0);
-    if (localbjfv != null) {
-      localbjfv.b(4);
+    bhmb localbhmb = this.mWrapperFactory.a(null, 0);
+    if (localbhmb != null) {
+      localbhmb.b(4);
     }
   }
   
   public void quitFloatingScreen(int paramInt)
   {
-    bjfv localbjfv = this.mWrapperFactory.a(null, paramInt);
-    if (localbjfv != null) {
-      localbjfv.b(4);
+    bhmb localbhmb = this.mWrapperFactory.a(null, paramInt);
+    if (localbhmb != null) {
+      localbhmb.b(4);
     }
   }
   
@@ -210,9 +210,9 @@ public class FloatingScreenManager
   public IVideoOuterStatusListener setFloatingVideoListener(IVideoInnerStatusListener paramIVideoInnerStatusListener)
   {
     IVideoOuterStatusListener localIVideoOuterStatusListener = null;
-    bjfv localbjfv = this.mWrapperFactory.a(null, 0);
-    if (localbjfv != null) {
-      localIVideoOuterStatusListener = localbjfv.a(paramIVideoInnerStatusListener);
+    bhmb localbhmb = this.mWrapperFactory.a(null, 0);
+    if (localbhmb != null) {
+      localIVideoOuterStatusListener = localbhmb.a(paramIVideoInnerStatusListener);
     }
     return localIVideoOuterStatusListener;
   }
@@ -220,9 +220,9 @@ public class FloatingScreenManager
   public IVideoOuterStatusListener setFloatingVideoListener(IVideoInnerStatusListener paramIVideoInnerStatusListener, int paramInt)
   {
     IVideoOuterStatusListener localIVideoOuterStatusListener = null;
-    bjfv localbjfv = this.mWrapperFactory.a(null, paramInt);
-    if (localbjfv != null) {
-      localIVideoOuterStatusListener = localbjfv.a(paramIVideoInnerStatusListener);
+    bhmb localbhmb = this.mWrapperFactory.a(null, paramInt);
+    if (localbhmb != null) {
+      localIVideoOuterStatusListener = localbhmb.a(paramIVideoInnerStatusListener);
     }
     return localIVideoOuterStatusListener;
   }
@@ -230,41 +230,41 @@ public class FloatingScreenManager
   @Deprecated
   public void setFullScreenListener(IFullScreenEnterListener paramIFullScreenEnterListener)
   {
-    bjfv localbjfv = this.mWrapperFactory.a(null, 0);
-    if (localbjfv != null) {
-      localbjfv.a(paramIFullScreenEnterListener);
+    bhmb localbhmb = this.mWrapperFactory.a(null, 0);
+    if (localbhmb != null) {
+      localbhmb.a(paramIFullScreenEnterListener);
     }
   }
   
-  public void setFullScreenViewClickListener(bjfs parambjfs)
+  public void setFullScreenViewClickListener(bhly parambhly)
   {
-    bjfv localbjfv = this.mWrapperFactory.a(null, 0);
-    if (localbjfv != null) {
-      localbjfv.a(parambjfs);
+    bhmb localbhmb = this.mWrapperFactory.a(null, 0);
+    if (localbhmb != null) {
+      localbhmb.a(parambhly);
     }
   }
   
-  public void setWindowClickListener(int paramInt, bjft parambjft)
+  public void setWindowClickListener(int paramInt, bhlz parambhlz)
   {
-    bjfv localbjfv = this.mWrapperFactory.a(null, paramInt);
-    if (localbjfv != null) {
-      localbjfv.a(parambjft);
+    bhmb localbhmb = this.mWrapperFactory.a(null, paramInt);
+    if (localbhmb != null) {
+      localbhmb.a(parambhlz);
     }
   }
   
   public void updateFloatingWindowRatio(float paramFloat, int paramInt)
   {
-    bjfv localbjfv = this.mWrapperFactory.a(null, paramInt);
-    if (localbjfv != null) {
-      localbjfv.a(paramFloat);
+    bhmb localbhmb = this.mWrapperFactory.a(null, paramInt);
+    if (localbhmb != null) {
+      localbhmb.a(paramFloat);
     }
   }
   
   public void updateFloatingWindowShape(int paramInt1, int paramInt2)
   {
-    bjfv localbjfv = this.mWrapperFactory.a(null, paramInt2);
-    if (localbjfv != null) {
-      localbjfv.a(paramInt1);
+    bhmb localbhmb = this.mWrapperFactory.a(null, paramInt2);
+    if (localbhmb != null) {
+      localbhmb.a(paramInt1);
     }
   }
 }

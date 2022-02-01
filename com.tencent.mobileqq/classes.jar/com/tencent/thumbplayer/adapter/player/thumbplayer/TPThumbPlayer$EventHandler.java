@@ -70,13 +70,13 @@ class TPThumbPlayer$EventHandler
   {
     if ((TPThumbPlayer)this.mWeakRef.get() == null)
     {
-      TPLogUtil.e(TPThumbPlayer.access$000(), "mWeakRef is null");
+      TPLogUtil.e(TPThumbPlayer.access$000(this.this$0), "mWeakRef is null");
       return;
     }
     switch (paramMessage.what)
     {
     default: 
-      TPLogUtil.w(TPThumbPlayer.access$000(), "message :" + paramMessage.what + "  not recognition");
+      TPLogUtil.w(TPThumbPlayer.access$000(this.this$0), "message :" + paramMessage.what + "  not recognition");
       return;
     case 1: 
       handleOnAsyncCallResult((TPThumbPlayer.OnASyncCallResultInfo)paramMessage.obj);

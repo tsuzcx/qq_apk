@@ -1,12 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.QQSettingMe.37.1;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public final class aeaz
-  implements DialogInterface.OnClickListener
+public class aeaz
+  extends amvn
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aeaz(QQSettingMe paramQQSettingMe) {}
+  
+  public void a(Object paramObject)
   {
-    paramDialogInterface.dismiss();
+    this.a.a.runOnUiThread(new QQSettingMe.37.1(this));
   }
 }
 

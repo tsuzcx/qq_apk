@@ -1,80 +1,106 @@
-import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
 import android.os.Message;
-import android.widget.Button;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import com.tencent.open.model.GetVirtualListResult;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import cooperation.qqfav.util.HandlerPlus;
+import com.tencent.widget.ARMapHongBaoListView;
 
 public class bjno
-  implements bjzx
+  implements Handler.Callback
 {
-  public bjno(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  public bjno(ARMapHongBaoListView paramARMapHongBaoListView) {}
   
-  public void a()
+  public boolean handleMessage(Message paramMessage)
   {
-    if (!OpenAuthorityFragment.b(this.a))
+    int j;
+    int k;
+    switch (paramMessage.what)
     {
-      QLog.e("SDK_LOGIN.OpenAuthorityFragment", 1, "updatePreAuthFromServer onSuccess for activity is finished");
-      return;
-    }
-    Object localObject1 = OpenAuthorityFragment.a(this.a).a().a(OpenAuthorityFragment.a(this.a));
-    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, new Object[] { "updatePreAuthFromServer use cached realAppid=", OpenAuthorityFragment.a(this.a), ", appInfo=", ((auxp)localObject1).toString() });
-    Object localObject2 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-    ((Message)localObject2).what = 3;
-    ((Message)localObject2).obj = localObject1;
-    this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject2);
-    localObject1 = OpenAuthorityFragment.a(this.a).a().a(OpenAuthorityFragment.a(this.a));
-    boolean bool;
-    if (localObject1 != null)
-    {
-      QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "updatePreAuthFromServer onSuccess null != virtualResult");
-      localObject2 = this.a.jdField_a_of_type_Bjpq;
-      if (((GetVirtualListResult)localObject1).a == 0)
+    default: 
+      return false;
+    case 1: 
+      this.a.setIsShowingPreguide(true);
+      boolean bool1 = paramMessage.getData().getBoolean("isFirstCall", false);
+      boolean bool2 = paramMessage.getData().getBoolean("isListViewSpring", false);
+      boolean bool3 = paramMessage.getData().getBoolean("isPendantBounce", false);
+      j = paramMessage.getData().getInt("pendantBountCnt", 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMapHongBaoListView", 2, "ARMapHongBaoListView handleMessage MSG_WHAT_GUIDE_SHOW, " + bool1 + "," + bool2 + "," + bool3 + "," + j);
+      }
+      if ((bool1) && (bool2))
       {
-        bool = true;
-        ((bjpq)localObject2).a(bool, (GetVirtualListResult)localObject1);
+        this.a.jdField_a_of_type_Aozm.a(-this.a.d);
+        if ((ARMapHongBaoListView.a(this.a) != null) && (this.a.b)) {
+          ARMapHongBaoListView.a(this.a).b(false);
+        }
       }
-    }
-    for (;;)
-    {
-      if (!OpenAuthorityFragment.c(this.a)) {
-        OpenAuthorityFragment.a(this.a).setEnabled(true);
+      if ((bool3) && (j > 0))
+      {
+        float f = j * 1.0F / 6.0F;
+        if (this.a.jdField_a_of_type_Aozk != null) {
+          this.a.jdField_a_of_type_Aozk.a((int)(f * this.a.d), j * 300L);
+        }
+        k = j - 1;
+        i = k;
+        if (k > 0)
+        {
+          paramMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 1);
+          paramMessage.getData().putBoolean("isFirstCall", false);
+          paramMessage.getData().putBoolean("isListViewSpring", false);
+          paramMessage.getData().putBoolean("isPendantBounce", bool3);
+          paramMessage.getData().putInt("pendantBountCnt", k);
+          ARMapHongBaoListView.a(this.a).sendMessageDelayed(paramMessage, j * 300L + 200L);
+        }
       }
-      localObject1 = OpenAuthorityFragment.a(this.a).a().a(OpenAuthorityFragment.a(this.a));
-      localObject2 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-      ((Message)localObject2).what = 0;
-      ((Message)localObject2).obj = localObject1;
-      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject2);
-      return;
-      bool = false;
       break;
-      QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, "updatePreAuthFromServer onSuccess null == virtualResult");
-      this.a.jdField_a_of_type_Bjpq.a(false, null);
     }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, new Object[] { "updatePreAuthFromServer | onFail: | uin : *" + bjqq.a(OpenAuthorityFragment.a(this.a).a), ", errorCode=", Integer.valueOf(paramInt), ", errorMsg=", paramString });
-    if (!OpenAuthorityFragment.b(this.a))
+    for (int i = k;; i = j)
     {
-      QLog.e("SDK_LOGIN.OpenAuthorityFragment", 1, "updatePreAuthFromServer onFail for activity is finished");
-      return;
+      if (i == 0)
+      {
+        paramMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 2);
+        ARMapHongBaoListView.a(this.a).sendMessageDelayed(paramMessage, 1200L);
+      }
+      this.a.invalidate();
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMapHongBaoListView", 2, "ARMapHongBaoListView handleMessage MSG_WHAT_GUIDE_HIDE");
+      }
+      if (ARMapHongBaoListView.a(this.a) != null) {
+        ARMapHongBaoListView.a(this.a).a(false);
+      }
+      ARMapHongBaoListView.a(this.a, paramMessage.what);
+      ARMapHongBaoListView.a(this.a).sendEmptyMessageDelayed(5, 300L);
+      return false;
+      this.a.setIsShowingPreguide(true);
+      i = this.a.d;
+      if (paramMessage.arg1 != 0) {
+        i = paramMessage.arg1;
+      }
+      this.a.jdField_a_of_type_Aozm.a(-i);
+      if (this.a.jdField_a_of_type_Aozk != null) {
+        this.a.jdField_a_of_type_Aozk.a(this.a.d / 3, 300L);
+      }
+      Message localMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 4);
+      localMessage.obj = paramMessage.obj;
+      ARMapHongBaoListView.a(this.a).sendMessageDelayed(localMessage, 2000L);
+      if ((ARMapHongBaoListView.a(this.a) == null) || (!this.a.b)) {
+        break;
+      }
+      ARMapHongBaoListView.a(this.a).b(false);
+      return false;
+      if (((Bundle)paramMessage.obj).getBoolean("isSpringBack")) {
+        ARMapHongBaoListView.a(this.a, paramMessage.what);
+      }
+      ARMapHongBaoListView.a(this.a).sendEmptyMessageDelayed(5, 300L);
+      if (ARMapHongBaoListView.a(this.a) == null) {
+        break;
+      }
+      ARMapHongBaoListView.a(this.a).a(false);
+      return false;
+      this.a.setIsShowingPreguide(false);
+      return false;
     }
-    if (OpenAuthorityFragment.a(this.a, paramInt, false))
-    {
-      QLog.e("SDK_LOGIN.OpenAuthorityFragment", 1, "updatePreAuthFromServer handle110537");
-      return;
-    }
-    this.a.jdField_a_of_type_Bjpq.a(false, null);
-    OpenAuthorityFragment.a(this.a, null);
-    paramString = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-    paramString.what = 6;
-    paramString.arg1 = 3001;
-    paramString.obj = this.a.getResources().getString(2131694152);
-    this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramString);
   }
 }
 

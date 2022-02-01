@@ -1,60 +1,6 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2.1;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-
-public class amgz
-  implements amha
+public abstract interface amgz
 {
-  amgz(amgx paramamgx) {}
-  
-  public void a(int paramInt)
-  {
-    if (amgx.a(this.a) != null) {
-      amgx.a(this.a).a(paramInt);
-    }
-  }
-  
-  public void a(int paramInt, String paramString1, PublishVideoEntry paramPublishVideoEntry, String paramString2, long paramLong)
-  {
-    if ((paramInt == 0) && (paramPublishVideoEntry != null) && (paramString2 != null)) {
-      amgx.a(this.a).a(paramPublishVideoEntry, paramString2);
-    }
-    for (;;)
-    {
-      ThreadManager.excute(new EncodeVideoTask.2.2(this, paramInt, paramPublishVideoEntry, paramLong), 64, null, true);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EncodeVideoTask", 2, new Object[] { "composite error, fakeVid:", amgx.e(this.a), ", errorCode:", Integer.valueOf(paramInt), ", errorMsg:", paramString1 });
-      }
-      amgx.a(this.a).a(paramInt);
-    }
-  }
-  
-  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("EncodeVideoTask", 2, "generate files|onNext file: " + paramString);
-    }
-    if (amgx.b(this.a))
-    {
-      b(paramPublishVideoEntry, paramString);
-      return;
-    }
-    if ((paramPublishVideoEntry != null) && (!TextUtils.isEmpty(paramPublishVideoEntry.doodlePath)) && (bhmi.b(paramPublishVideoEntry.doodlePath)))
-    {
-      amgx.a(paramString, paramPublishVideoEntry, amgx.a(this.a));
-      return;
-    }
-    b(paramPublishVideoEntry, paramString);
-  }
-  
-  public void b(PublishVideoEntry paramPublishVideoEntry, String paramString)
-  {
-    ThreadManager.excute(new EncodeVideoTask.2.1(this, paramString, paramPublishVideoEntry), 64, null, true);
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

@@ -1,16 +1,30 @@
-public abstract interface aixt
+import android.content.Context;
+import java.util.ArrayList;
+
+public class aixt
 {
-  public abstract void a();
+  public ArrayList<aixu> a;
+  public int[] a;
+  public String[] a;
   
-  public abstract void a(int paramInt);
+  public aixt()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void a(Context paramContext, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
+  {
+    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt1;
+    String[] arrayOfString = new String[paramArrayOfInt2.length];
+    int i = 0;
+    while (i < paramArrayOfInt2.length)
+    {
+      arrayOfString[i] = paramContext.getString(paramArrayOfInt2[i]);
+      this.jdField_a_of_type_JavaUtilArrayList.add(new aixu(paramArrayOfInt1[i], arrayOfString[i]));
+      i += 1;
+    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = arrayOfString;
+  }
 }
 
 

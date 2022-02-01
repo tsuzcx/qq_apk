@@ -1,14 +1,16 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.viola.lottie.KdLottieView;
-import com.tencent.viola.ui.view.lottie.IVLottieViewProxy;
-import com.tencent.viola.ui.view.lottie.IVlottieViewCreater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class tdq
-  implements IVlottieViewCreater
+class tdq
+  implements View.OnClickListener
 {
-  public IVLottieViewProxy createLottieView(Context paramContext)
+  tdq(tdo paramtdo) {}
+  
+  public void onClick(View paramView)
   {
-    return new KdLottieView(paramContext);
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

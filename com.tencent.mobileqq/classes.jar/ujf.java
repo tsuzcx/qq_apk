@@ -1,20 +1,36 @@
-import UserGrowth.stSchema;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
 
-public class ujf
-  extends uiv
+class ujf
+  implements URLDrawableDownListener
 {
-  public ujf(uix paramuix)
+  ujf(ujd paramujd) {}
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    super(paramuix);
+    uya.c("RichBlockDialog", "onLoadCanceled - ");
+    if (ujd.a(this.a) != null) {
+      ujd.a(this.a).setImageResource(2130841730);
+    }
   }
   
-  public boolean a(uix paramuix)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    ueg.a(paramuix.a(), paramuix.a().H5Url);
-    if (paramuix.a() != null) {
-      paramuix.a().c();
+    if (ujd.a(this.a) != null) {
+      ujd.a(this.a).setImageResource(2130841730);
     }
-    return true;
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    ujd.a(this.a);
+    unt.b(3);
   }
 }
 

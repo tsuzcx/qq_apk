@@ -6,7 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import bdep;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class PttTextTransitionAnim
@@ -53,16 +53,16 @@ public class PttTextTransitionAnim
   {
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166979));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(bdep.a(16.0F));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167001));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(ScreenUtil.dip2px(16.0F));
     this.jdField_d_of_type_Int = 255;
     this.jdField_e_of_type_Int = 0;
     this.jdField_e_of_type_Float = 0.0F;
     this.jdField_f_of_type_Float = 0.0F;
     this.jdField_g_of_type_Float = 0.0F;
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131689927);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131689929);
-    this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131697748);
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131689941);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131689943);
+    this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidContentContext.getString(2131697894);
     this.jdField_b_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString);
     this.jdField_c_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_b_of_type_JavaLangString);
     this.jdField_d_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_c_of_type_JavaLangString);
@@ -148,7 +148,7 @@ public class PttTextTransitionAnim
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PttTextTransitionAnim
  * JD-Core Version:    0.7.0.1
  */

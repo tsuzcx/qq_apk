@@ -1,30 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.graphics.Canvas;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class tet
-  implements rgy
+  implements Function1<Canvas, Unit>
 {
-  public tet(BridgeModule paramBridgeModule) {}
+  public tet(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
   
-  public void a(UgcVideo paramUgcVideo)
+  public Unit a(Canvas paramCanvas)
   {
-    QQAppInterface localQQAppInterface = ozs.a();
-    QLog.i(BridgeModule.TAG, 1, "onPublish, title =" + paramUgcVideo.title);
-    if (localQQAppInterface == null) {}
-    String str;
-    do
-    {
-      return;
-      str = (String)BridgeModule.access$1600(this.a).get(Long.valueOf(0L));
-      if ((str != null) && (!str.isEmpty())) {
-        rgo.a(localQQAppInterface).a(0L, new teu(this, str));
-      }
-      str = (String)BridgeModule.access$1600(this.a).get(Long.valueOf(paramUgcVideo.columnId));
-    } while ((str == null) || (str.isEmpty()));
-    rgo.a(localQQAppInterface).a(paramUgcVideo.columnId, new tev(this, paramUgcVideo, str));
+    ColorBandVideoEntranceButton.a(this.a, paramCanvas);
+    return null;
   }
 }
 

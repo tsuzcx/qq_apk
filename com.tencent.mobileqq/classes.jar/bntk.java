@@ -1,27 +1,24 @@
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceStruct;
+import android.os.Bundle;
 
-public class bntk
+class bntk
+  implements bmru
 {
-  public static <T extends JceStruct> T a(Class<T> paramClass, byte[] paramArrayOfByte)
+  bntk(bntj parambntj) {}
+  
+  public void a(bmsh parambmsh) {}
+  
+  public void a(bmsh parambmsh, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
+  
+  public void a(bmsk parambmsk, boolean paramBoolean, int paramInt, Bundle paramBundle)
   {
-    if (paramArrayOfByte == null) {
-      return null;
+    if (paramBoolean) {
+      this.a.a(4001, null);
     }
-    try
-    {
-      paramClass = (JceStruct)paramClass.newInstance();
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
-      paramArrayOfByte.setServerEncoding("utf8");
-      paramClass.readFrom(paramArrayOfByte);
-      return paramClass;
-    }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
   }
+  
+  public void a(bmsr parambmsr, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
+  
+  public void a(bnuc parambnuc) {}
 }
 
 

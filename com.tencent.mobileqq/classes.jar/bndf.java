@@ -1,27 +1,18 @@
-import cooperation.qzone.panorama.widget.PanoramaView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
 
-public class bndf
-  implements bncl
+public final class bndf
+  implements Parcelable.Creator<EditTakeVideoSource>
 {
-  public bndf(PanoramaView paramPanoramaView) {}
-  
-  public void a()
+  public EditTakeVideoSource a(Parcel paramParcel)
   {
-    if (PanoramaView.a(this.a) != null) {
-      PanoramaView.a(this.a).onPanoramaClick();
-    }
+    return new EditTakeVideoSource(paramParcel);
   }
   
-  public void a(float paramFloat)
+  public EditTakeVideoSource[] a(int paramInt)
   {
-    if (PanoramaView.a(this.a) != null) {
-      PanoramaView.a(this.a).a(paramFloat);
-    }
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    this.a.a(paramFloat1, paramFloat2);
+    return new EditTakeVideoSource[paramInt];
   }
 }
 

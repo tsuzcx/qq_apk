@@ -1,59 +1,23 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.LayoutInflater.Factory;
-import android.view.LayoutInflater.Factory2;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class zmn
-  implements LayoutInflater.Factory2
+class zmn
+  implements View.OnClickListener
 {
-  private final LayoutInflater.Factory2 jdField_a_of_type_AndroidViewLayoutInflater$Factory2;
-  private final LayoutInflater.Factory jdField_a_of_type_AndroidViewLayoutInflater$Factory;
-  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  zmn(zmm paramzmm, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public zmn(@NonNull LayoutInflater paramLayoutInflater)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
-    this.jdField_a_of_type_AndroidViewLayoutInflater$Factory = paramLayoutInflater.getFactory();
-    this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2 = paramLayoutInflater.getFactory2();
-  }
-  
-  protected View a(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
-  {
-    zmo.a("LayoutModifier", "onCreateViewPrivate " + paramString);
-    return null;
-  }
-  
-  public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
-  {
-    View localView2 = a(paramView, paramString, paramContext, paramAttributeSet);
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = localView2;
-      if (this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2 != null) {
-        localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
-      }
-    }
-    zmo.a("LayoutModifier", "onCreateView " + localView1);
-    return localView1;
-  }
-  
-  public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
-  {
-    View localView2 = a(null, paramString, paramContext, paramAttributeSet);
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = localView2;
-      if (this.jdField_a_of_type_AndroidViewLayoutInflater$Factory != null) {
-        localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater$Factory.onCreateView(paramString, paramContext, paramAttributeSet);
-      }
-    }
-    zmo.a("LayoutModifier", "onCreateView " + localView1);
-    return localView1;
+    zbh.a(this.jdField_a_of_type_Zmm.a.getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, 0, zjc.a(zmm.a(this.jdField_a_of_type_Zmm), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.width.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.cover.height.get()));
+    zxp.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "blank_content_clk", 0, 0, new String[] { "", zmm.a(this.jdField_a_of_type_Zmm) + "", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.title.get() });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,57 +1,26 @@
-import android.graphics.Canvas;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import android.widget.ImageView;
 
 public class blsu
-  extends blst
+  extends RecyclerView.ViewHolder
 {
-  private float a(RecyclerView paramRecyclerView, View paramView)
+  public ImageView a;
+  
+  public blsu(View paramView)
   {
-    int j = paramRecyclerView.getChildCount();
-    int i = 0;
-    float f1 = 0.0F;
-    if (i < j)
-    {
-      View localView = paramRecyclerView.getChildAt(i);
-      float f2;
-      if (localView == paramView) {
-        f2 = f1;
-      }
-      for (;;)
-      {
-        i += 1;
-        f1 = f2;
-        break;
-        float f3 = ViewCompat.getElevation(localView);
-        f2 = f1;
-        if (f3 > f1) {
-          f2 = f3;
-        }
-      }
-    }
-    return f1;
+    super(paramView);
+    this.a = ((ImageView)paramView.findViewById(2131378584));
   }
   
-  public void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
+  public void a()
   {
-    if ((paramBoolean) && (paramView.getTag(2131368994) == null))
-    {
-      float f = ViewCompat.getElevation(paramView);
-      ViewCompat.setElevation(paramView, 1.0F + a(paramRecyclerView, paramView));
-      paramView.setTag(2131368994, Float.valueOf(f));
-    }
-    super.a(paramCanvas, paramRecyclerView, paramView, paramFloat1, paramFloat2, paramInt, paramBoolean);
+    this.a.setImageResource(2130845849);
   }
   
-  public void a(View paramView)
+  public void b()
   {
-    Object localObject = paramView.getTag(2131368994);
-    if ((localObject != null) && ((localObject instanceof Float))) {
-      ViewCompat.setElevation(paramView, ((Float)localObject).floatValue());
-    }
-    paramView.setTag(2131368994, null);
-    super.a(paramView);
+    this.a.setImageResource(2130845850);
   }
 }
 

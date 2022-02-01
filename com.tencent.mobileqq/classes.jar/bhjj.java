@@ -1,69 +1,44 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class bhjj
-  extends Drawable
+  extends Handler
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private int b;
-  private int c;
+  public bhjj(TabBarView paramTabBarView) {}
   
-  public bhjj(int paramInt1, int paramInt2, int paramInt3)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramInt2 > 0) && (paramInt3 > 0))
-    {
-      this.b = paramInt2;
-      this.c = paramInt3;
-      this.jdField_a_of_type_AndroidGraphicsPath = bhjg.a(this.b, this.c);
-    }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-  }
-  
-  public void draw(@NonNull Canvas paramCanvas)
-  {
-    Rect localRect = getBounds();
-    int i = localRect.right - localRect.left;
-    int j = localRect.bottom - localRect.top;
-    if ((i != this.b) && (j != this.c))
-    {
-      this.b = i;
-      this.c = j;
-      this.jdField_a_of_type_AndroidGraphicsPath = bhjg.a(this.b, this.c);
-    }
-    paramCanvas.save();
-    paramCanvas.translate(localRect.left, localRect.top);
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.restore();
-  }
-  
-  public int getOpacity()
-  {
-    switch (this.jdField_a_of_type_Int >>> 24)
+    switch (paramMessage.what)
     {
     default: 
-      return -3;
-    case 255: 
-      return -1;
+      return;
+    case 0: 
+      this.a.a = 0.0F;
+      paramMessage = this.a;
+      paramMessage.a = ((float)(paramMessage.a + 0.1D));
+      this.a.invalidate();
+      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
+      return;
+    case 1: 
+      if (this.a.a < 1.0F)
+      {
+        paramMessage = this.a;
+        paramMessage.a = ((float)(paramMessage.a + 0.1D));
+        this.a.invalidate();
+        sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
+        return;
+      }
+      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(2), 10L);
+      return;
     }
-    return -2;
+    TabBarView.a(this.a, this.a.o, this.a.n);
+    this.a.a = 1.0F;
+    TabBarView.b(this.a, this.a.o, this.a.n);
+    this.a.o = this.a.n;
+    this.a.invalidate();
+    TabBarView.a(this.a);
   }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
 }
 
 

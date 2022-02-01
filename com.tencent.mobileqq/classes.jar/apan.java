@@ -1,43 +1,81 @@
 import android.content.Context;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import java.util.List;
 
 public class apan
-  extends aoxg
+  extends apap
 {
-  public apan(QQAppInterface paramQQAppInterface, Context paramContext)
+  private float jdField_a_of_type_Float = -1.0F;
+  boolean jdField_a_of_type_Boolean = false;
+  private float b = -1.0F;
+  private float c = -1.0F;
+  private float[] d = new float[3];
+  private float[] e = new float[3];
+  private float[] f = new float[16];
+  
+  public apan(Context paramContext, int paramInt, SensorManager paramSensorManager, apah paramapah)
   {
-    super(paramQQAppInterface, paramContext);
+    super(paramContext, paramInt, paramSensorManager, paramapah);
+    paramContext = paramSensorManager.getDefaultSensor(1);
+    if (paramContext != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramContext);
+      return;
+    }
+    throw new OrientationProviderNotFound(String.valueOf(1));
   }
   
-  public boolean a()
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    try
+    if (this.jdField_a_of_type_Apah == null) {
+      return;
+    }
+    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
     {
-      if ((!(this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)) || (((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment() == null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("WriteTogetherJumpAction", 2, "not clicked inside aio");
-        }
+      this.jdField_a_of_type_Float = paramFloat1;
+      this.jdField_a_of_type_Apah.updateAzimuth(paramFloat1);
+    }
+    if (Math.abs(paramFloat2 - this.b) > 1.0F)
+    {
+      this.b = paramFloat2;
+      this.jdField_a_of_type_Apah.updatePitch(paramFloat2);
+    }
+    if (Math.abs(paramFloat3 - this.c) > 1.0F)
+    {
+      this.c = paramFloat3;
+      this.jdField_a_of_type_Apah.updateRoll(paramFloat3);
+    }
+    this.jdField_a_of_type_Apah.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+  }
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    if (paramSensorEvent.sensor.getType() == 1)
+    {
+      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
+      float f1 = this.jdField_a_of_type_ArrayOfFloat[0];
+      float f2 = this.jdField_a_of_type_ArrayOfFloat[1];
+      float f3 = this.jdField_a_of_type_ArrayOfFloat[2];
+      this.d[1] = (-(float)Math.atan2(f2, f3));
+      this.d[2] = ((float)Math.atan2(-f1, Math.sqrt(f2 * f2 + f3 * f3)));
+      if (this.jdField_a_of_type_Boolean) {
+        this.d = apai.a(this.d, this.e);
       }
-      else
-      {
-        Object localObject = Uri.parse(this.jdField_a_of_type_JavaLangString);
-        String str = ((Uri)localObject).getQueryParameter("docid");
-        localObject = ((Uri)localObject).getQueryParameter("groupcode");
-        bemp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, str, (String)localObject, 7);
-        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AF36", "0X800AF36", 0, 0, "", "", "", "");
-        return true;
+      System.arraycopy(this.d, 0, this.e, 0, 3);
+      this.jdField_a_of_type_Boolean = true;
+      apaj.a(apaj.a(this.d), this.f);
+      if (this.jdField_a_of_type_Int != 1) {
+        super.a(this.f);
       }
     }
-    catch (RuntimeException localRuntimeException)
+    else
     {
-      QLog.e("WriteTogetherJumpAction", 1, localRuntimeException, new Object[0]);
-      return false;
+      return;
     }
-    return false;
+    a(0.0F, (float)(this.d[1] * 180.0F / 3.141592653589793D), (float)(this.d[2] * 180.0F / 3.141592653589793D));
   }
 }
 

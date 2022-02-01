@@ -1,8 +1,6 @@
-public abstract interface bnqb
+class bnqb
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  private static final bnqa a = new bnqa(null);
 }
 
 

@@ -1,23 +1,18 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class lbk
 {
-  private static beuo jdField_a_of_type_Beuo;
-  private static bhvb jdField_a_of_type_Bhvb = new lbl();
-  
-  public static beuo a()
-  {
-    if (jdField_a_of_type_Beuo == null) {}
-    try
-    {
-      if (jdField_a_of_type_Beuo == null)
-      {
-        bhuw localbhuw = new bhuw(jdField_a_of_type_Bhvb, 128);
-        localbhuw.a();
-        jdField_a_of_type_Beuo = new bevo(localbhuw, true);
-      }
-      return jdField_a_of_type_Beuo;
-    }
-    finally {}
-  }
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<Integer> a;
+  public HashMap<String, lbj> a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

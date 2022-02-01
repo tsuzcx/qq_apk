@@ -1,25 +1,21 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.FriendListHandler;
-import mqq.os.MqqHandler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
 
-public class anym
-  extends MqqHandler
+class anym
+  implements Animation.AnimationListener
 {
-  public anym(FriendListHandler paramFriendListHandler, Looper paramLooper)
+  anym(anyj paramanyj) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramLooper);
+    this.a.a.setVisibility(8);
+    this.a.dismiss();
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    FriendListHandler.a(this.a);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

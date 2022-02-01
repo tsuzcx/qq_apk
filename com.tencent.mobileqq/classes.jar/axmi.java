@@ -1,14 +1,38 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
-import com.tencent.widget.RecentDynamicAvatarView;
+import android.app.Activity;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.1;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.2;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.3;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.4;
+import mqq.os.MqqHandler;
 
 public class axmi
+  extends bcvx
 {
-  public int a;
-  public ImageView a;
-  public DragTextView a;
-  public RecentDynamicAvatarView a;
-  public String a;
+  public axmi(OCRResultFragmentNew paramOCRResultFragmentNew, Activity paramActivity)
+  {
+    super(paramActivity);
+  }
+  
+  public void a()
+  {
+    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.1(this));
+  }
+  
+  public void a(int paramInt)
+  {
+    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.4(this, paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.3(this));
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.2(this, paramString));
+  }
 }
 
 

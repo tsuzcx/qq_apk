@@ -1,33 +1,17 @@
-import android.os.PowerManager;
-import android.os.PowerManager.WakeLock;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import com.tencent.qapmsdk.battery.BatteryMonitor;
-import com.tencent.qapmsdk.battery.monitor.HookMethodCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class adlm
-  extends adlj
+public class adlm
+  implements View.OnClickListener
 {
-  public HookMethodCallback a()
-  {
-    return BatteryMonitor.getInstance().getWakeLockHook();
-  }
+  public adlm(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    try
-    {
-      JavaHookBridge.findAndHookMethod(PowerManager.class, "newWakeLock", new Object[] { Integer.TYPE, String.class, this });
-      JavaHookBridge.findAndHookMethod(PowerManager.WakeLock.class, "acquire", new Object[] { this });
-      JavaHookBridge.findAndHookMethod(PowerManager.WakeLock.class, "acquire", new Object[] { Long.TYPE, this });
-      JavaHookBridge.findAndHookMethod(PowerManager.WakeLock.class, "release", new Object[] { Integer.TYPE, this });
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MagnifierSDK.QAPM.QAPMBatteryWrapper", 2, "", localThrowable);
-    }
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

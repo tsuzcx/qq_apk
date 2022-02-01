@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.vas;
 
+import anaj;
+import anam;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,14 +11,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import aogu;
-import aogx;
-import bhnv;
-import bhxw;
-import bhxx;
-import bjbv;
+import bgeh;
+import bgei;
+import bhhw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -27,11 +27,11 @@ public class FriendCloneSettingFragment
   implements View.OnClickListener
 {
   public int a;
-  private DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new bhxw(this);
+  private anam jdField_a_of_type_Anam = new bgei(this);
+  private DialogInterface.OnCancelListener jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener = new bgeh(this);
   public FragmentActivity a;
   View jdField_a_of_type_AndroidViewView;
-  private aogx jdField_a_of_type_Aogx = new bhxx(this);
-  public bjbv a;
+  public bhhw a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public AtomicBoolean a;
   public int b;
@@ -70,30 +70,30 @@ public class FriendCloneSettingFragment
       return;
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app;
     } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
-    setTitle(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698341));
-    this.leftView.setText(2131690384);
-    this.mContentView.findViewById(2131368854).setOnClickListener(this);
-    this.mContentView.findViewById(2131368938).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131368855);
-    this.jdField_b_of_type_AndroidViewView = this.mContentView.findViewById(2131368939);
-    this.jdField_a_of_type_Bjbv = new bjbv(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2131561501);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aogx);
-    if (!bhnv.g(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity)) {
-      QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131691989, 0).b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+    setTitle(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131698510));
+    this.leftView.setText(2131690424);
+    this.mContentView.findViewById(2131368879).setOnClickListener(this);
+    this.mContentView.findViewById(2131368964).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131368880);
+    this.jdField_b_of_type_AndroidViewView = this.mContentView.findViewById(2131368965);
+    this.jdField_a_of_type_Bhhw = new bhhw(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 2131561385);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anam);
+    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity)) {
+      QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131692035, 0).b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
     }
     for (;;)
     {
       VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "friendscloning", "friendscloning3", "", 1, 0, 0, "", "", "");
       return;
-      ((aogu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true, 257);
+      ((anaj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(13)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true, 257);
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      this.jdField_a_of_type_Bjbv.a(0, getString(2131717414), 0, this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
+      this.jdField_a_of_type_Bhhw.a(0, getString(2131717646), 0, this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
     }
   }
   
   public int getContentLayoutId()
   {
-    return 2131561992;
+    return 2131561869;
   }
   
   public void onClick(View paramView)
@@ -105,27 +105,27 @@ public class FriendCloneSettingFragment
       {
         EventCollector.getInstance().onViewClicked(paramView);
         return;
-        if (bhnv.g(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity)) {
+        if (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity)) {
           break;
         }
-        QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131691989, 0).b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+        QQToast.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131692035, 0).b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
       }
     } while (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-    aogu localaogu = (aogu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13);
+    anaj localanaj = (anaj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(13);
     switch (paramView.getId())
     {
     }
     for (;;)
     {
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      this.jdField_a_of_type_Bjbv.a(0, getString(2131717414), 0, this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
+      this.jdField_a_of_type_Bhhw.a(0, getString(2131717646), 0, this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener);
       break;
       VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "friendscloning", "friendscloning4", "", 1, 0, 0, "", "", "");
-      localaogu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false, 258);
+      localanaj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false, 258);
       a(0);
       continue;
       VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "friendscloning", "friendscloning5", "", 1, 0, 0, "", "", "");
-      localaogu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true, 258);
+      localanaj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true, 258);
       a(1);
     }
   }
@@ -134,7 +134,7 @@ public class FriendCloneSettingFragment
   {
     super.onDestroy();
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aogx);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anam);
     }
   }
 }

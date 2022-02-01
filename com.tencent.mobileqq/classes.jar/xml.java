@@ -1,53 +1,82 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.ErrorInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.RspDelOneMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class xml
-  extends xmg<HomeFeedPlayInfo>
+  extends nmd
 {
-  private int a;
-  public yma b = new yma();
+  public xml(StoryMessageListActivity paramStoryMessageListActivity) {}
   
-  public xml(HomeFeedPlayInfo paramHomeFeedPlayInfo)
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(paramHomeFeedPlayInfo);
-    paramHomeFeedPlayInfo = (yme)wth.a(11);
-    if (paramHomeFeedPlayInfo.b != null) {
-      this.b = paramHomeFeedPlayInfo.b;
+    int j = -1;
+    paramBundle = new qqstory_struct.ErrorInfo();
+    qqstory_710_del_message.RspDelOneMessage localRspDelOneMessage;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      localRspDelOneMessage = new qqstory_710_del_message.RspDelOneMessage();
     }
-  }
-  
-  public ylw a(String paramString)
-  {
-    Iterator localIterator = this.b.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      ylw localylw = (ylw)localIterator.next();
-      if (localylw.a.equals(paramString)) {
-        return localylw;
+      int m;
+      int k;
+      try
+      {
+        localRspDelOneMessage.mergeFrom(paramArrayOfByte);
+        if (!localRspDelOneMessage.errinfo.error_code.has()) {
+          break label239;
+        }
+        i = localRspDelOneMessage.errinfo.error_code.get();
+        j = i;
+        if (j == 0) {
+          i = 1;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        m = 0;
+        k = j;
+      }
+      try
+      {
+        paramBundle.error_code.set(localRspDelOneMessage.errinfo.error_code.get());
+        paramBundle.error_desc.set(localRspDelOneMessage.errinfo.error_desc.get());
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.qqstory.msgList", 2, "receive delete one msg, code=" + paramInt + " bizCode=" + j);
+        }
+        if (i == 0) {
+          QQToast.a(this.a.getApplicationContext(), 1, amtj.a(2131713564), 0).a();
+        }
+        return paramBundle;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          k = j;
+          m = i;
+        }
+      }
+      int i = 0;
+      continue;
+      j = k;
+      i = m;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("Q.qqstory.msgList", 2, "error parse RspDelOneMessage", paramArrayOfByte);
+        j = k;
+        i = m;
+        continue;
+        label239:
+        i = 0;
       }
     }
-    return null;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, xmy paramxmy)
-  {
-    Object localObject1 = this.b.jdField_a_of_type_JavaUtilList;
-    if ((paramBoolean) && (((List)localObject1).size() > 0))
-    {
-      localObject2 = b((List)localObject1);
-      paramxmy.a(new ErrorMessage(), (List)localObject2, this.b.jdField_a_of_type_Boolean);
-      yuk.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject1).size()));
-      return;
-    }
-    localObject1 = (yme)wth.a(11);
-    Object localObject2 = new xdh();
-    ((xdh)localObject2).a = ((yme)localObject1).a;
-    ((xdh)localObject2).b = this.b.a();
-    yuk.a("Q.qqstory.player.data.HomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((xdh)localObject2).b);
-    this.a = 0;
-    wow.a().a((wpa)localObject2, new xmm(this, paramxmy));
   }
 }
 

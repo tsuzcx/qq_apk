@@ -1,72 +1,46 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController.6.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class ucu
-  extends RecyclerView.OnScrollListener
+  implements View.OnClickListener
 {
-  public ucu(WSFollowFragment paramWSFollowFragment) {}
+  ucu(ucp paramucp) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onClick(View paramView)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 1) {
-      WSFollowFragment.a(this.a, true);
+    bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005733", "0X8005733", 0, 0, "", "", "", "");
+    bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006430", "0X8006430", 0, 0, "", "", "", "");
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setEnabled(false);
+    ThreadManager.getSubThreadHandler().post(new SubscriptRecommendController.6.1(this));
+    if (this.a.jdField_a_of_type_Int == 1) {
+      ucp.a(this.a);
     }
-    switch (paramInt)
+    for (;;)
     {
-    default: 
-      adlb.a().a("weishi_follow_list");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    adlb.a().a("weishi_follow_list", false);
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    boolean bool2 = false;
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if (WSFollowFragment.a(this.a).a == null)
-    {
-      paramInt1 = WSFollowFragment.a(this.a).findFirstVisibleItemPosition();
-      paramRecyclerView = WSFollowFragment.a(this.a, paramInt1, false);
-      uqf.d("WSFollowContinuePlayLog", "mAdapter.mPlayingHolder is null. startPosition:" + paramInt1 + ", lastOrNextVideoHolder:" + paramRecyclerView);
-      if (WSFollowFragment.a(this.a, paramRecyclerView))
+      if (this.a.jdField_a_of_type_Int == 3)
       {
-        if (!WSFollowFragment.a(this.a)) {
-          break label149;
+        MqqHandler localMqqHandler = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
+        if ((localMqqHandler != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((this.a.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof SubscriptFeedsActivity))) {
+          localMqqHandler.sendEmptyMessage(1006);
         }
-        uqf.d("WSFollowContinuePlayLog", "[WSFollowFragment.java][onScrolled] mIsHandlingBackFromVertical true.");
       }
     }
-    else
-    {
-      paramRecyclerView = this.a;
-      localObject = WSFollowFragment.a(this.a).a;
-      if (paramInt2 > 0) {}
-      for (bool1 = true;; bool1 = false)
-      {
-        paramRecyclerView = paramRecyclerView.a((uiu)localObject, bool1, false);
-        break;
-      }
-    }
-    label149:
-    uqf.g("WSFollowContinuePlayLog", "[WSFollowFragment.java][onScrolled] playVideo title:" + paramRecyclerView.a.d + ", mPlayingHolder:" + paramRecyclerView);
-    WSFollowFragment.a(this.a, paramRecyclerView);
-    Object localObject = this.a;
-    boolean bool1 = bool2;
-    if (paramInt2 > 0) {
-      bool1 = true;
-    }
-    paramRecyclerView = ((WSFollowFragment)localObject).a(paramRecyclerView, bool1, true);
-    uqf.a("WS_VIDEO_PRE_PLAY", "[WSFollowFragment.java][onScrolled] setPrePlayingHolder prePlayHolder:" + paramRecyclerView);
-    WSFollowFragment.a(this.a).b(paramRecyclerView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ucu
  * JD-Core Version:    0.7.0.1
  */

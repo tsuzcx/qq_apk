@@ -1,19 +1,19 @@
 package com.tencent.biz.subscribe.bizdapters;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import aagg;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import java.util.ArrayList;
+import zde;
 
 public class CommodityAdapter$2
   implements Runnable
 {
-  public CommodityAdapter$2(aagg paramaagg) {}
+  public CommodityAdapter$2(zde paramzde) {}
   
   public void run()
   {
-    this.this$0.setDatas((ArrayList)aagg.a(this.this$0).goods.get());
-    this.this$0.a(aagg.a(this.this$0));
+    this.this$0.a((ArrayList)zde.a(this.this$0).goods.get());
+    this.this$0.a(zde.a(this.this$0));
   }
 }
 

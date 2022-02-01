@@ -1,27 +1,16 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class xyx
-  implements wlh
+  implements View.OnClickListener
 {
-  xyx(xyw paramxyw) {}
+  xyx(xyv paramxyv) {}
   
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    yuk.d(this.a.a.b, "save -info download suc , start watermark ,vid:%s", new Object[] { xyw.a(this.a).mVid });
-    xiz.a(xyw.a(this.a), xyw.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
-  }
-  
-  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
-  {
-    yuk.d(this.a.a.b, "save video -info download error , vid:%s , error :%s", new Object[] { xyw.a(this.a).mVid, paramErrorMessage.toString() });
-    xiz.a(xyw.a(this.a), xyw.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    yuk.d(this.a.a.b, "save video -info download cancel , vid:%s ", new Object[] { xyw.a(this.a).mVid });
-    xiz.a(xyw.a(this.a), xyw.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
+    this.a.a.a(0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

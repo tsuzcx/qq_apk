@@ -1,21 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class avvq
-  implements DialogInterface.OnClickListener
+public class avvq
+  implements avtj
 {
-  avvq(avvj paramavvj) {}
+  public avvq(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(List<RecentBaseData> paramList)
   {
-    avvj.jdField_a_of_type_Boolean = false;
-    avvj.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), false);
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.b(-11);
-    QLog.d("PresenceInterfaceImpl", 2, "User disallowed downd");
+    MsgBackupSelectionFragment.a(this.a, true);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      this.a.a.clear();
+      this.a.a.addAll(paramList);
+    }
+    for (;;)
+    {
+      paramList = MsgBackupSelectionFragment.a(this.a).obtainMessage(10000);
+      MsgBackupSelectionFragment.a(this.a).sendMessage(paramList);
+      return;
+      if (MsgBackupSelectionFragment.a(this.a) == 0) {
+        avwr.a("0X800A232");
+      } else if (avtq.c) {
+        avwr.a("0X800A257");
+      }
+    }
   }
 }
 

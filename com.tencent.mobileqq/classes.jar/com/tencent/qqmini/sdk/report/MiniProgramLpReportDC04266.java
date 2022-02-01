@@ -38,7 +38,7 @@ public class MiniProgramLpReportDC04266
   
   public static void report(MiniAppInfo paramMiniAppInfo, int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, long paramLong1, String paramString5, long paramLong2, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
   {
-    MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04266.1(paramInt1, paramMiniAppInfo, paramInt2, paramString2, paramLong2, paramLong1, paramString1, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10));
+    MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04266.1(paramInt1, paramMiniAppInfo, paramInt2, paramString2, paramLong2, paramLong1, paramString6, paramString7, paramString1, paramString3, paramString4, paramString5, paramString8, paramString9, paramString10));
   }
   
   public static void reportCostTimeEvent(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, int paramInt, long paramLong1, long paramLong2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)

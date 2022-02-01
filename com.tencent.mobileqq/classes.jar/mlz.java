@@ -1,25 +1,15 @@
-import com.tencent.av.ui.VideoLayerUIBase;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.beauty.BeautyView;
 
 public class mlz
-  implements Observer
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<VideoLayerUIBase> a;
+  public mlz(BeautyView paramBeautyView) {}
   
-  public mlz(VideoLayerUIBase paramVideoLayerUIBase)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramVideoLayerUIBase);
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    VideoLayerUIBase localVideoLayerUIBase = (VideoLayerUIBase)this.a.get();
-    if (localVideoLayerUIBase == null) {
-      return;
-    }
-    VideoLayerUIBase.a(localVideoLayerUIBase, paramObservable, paramObject);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,6 +1,19 @@
-public abstract interface bdyg
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.JoinGroupInfo;
+
+public final class bdyg
+  implements Parcelable.Creator<JoinGroupInfo>
 {
-  public abstract void a(bdxj parambdxj);
+  public JoinGroupInfo a(Parcel paramParcel)
+  {
+    return new JoinGroupInfo(paramParcel);
+  }
+  
+  public JoinGroupInfo[] a(int paramInt)
+  {
+    return new JoinGroupInfo[paramInt];
+  }
 }
 
 

@@ -1,42 +1,21 @@
-import android.content.Context;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.Set;
+import android.os.Bundle;
+import com.tencent.mobileqq.ark.image.ChooseImageIPCModule.2;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class aoxy
-  extends aoxh
+  extends bgod
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  public aoxy(ChooseImageIPCModule.2 param2, String paramString) {}
+  
+  public void onDone(bgoe parambgoe)
   {
-    paramQQAppInterface = new aoxx(paramQQAppInterface, paramContext);
-    paramContext = paramString.split("\\?");
-    if (paramContext.length < 1) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[0].substring("mqqapi://".length()).split("/");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = paramContext[0];
-    paramQQAppInterface.c = paramContext[1];
-    paramContext = Uri.parse(paramString);
-    paramaoxk = paramContext.getQueryParameterNames().iterator();
-    while (paramaoxk.hasNext())
-    {
-      String str1 = (String)paramaoxk.next();
-      if (!TextUtils.isEmpty(str1))
-      {
-        String str2 = paramContext.getQueryParameter(str1);
-        if (!TextUtils.isEmpty(str2)) {
-          paramQQAppInterface.a(str1.toLowerCase(), str2);
-        }
-      }
-    }
-    paramQQAppInterface.a("key_scheme", paramString);
-    return paramQQAppInterface;
+    super.onDone(parambgoe);
+    QLog.d("ArkApp.ChooseImageIPCModule", 1, String.format("ArkMultiProc.download finish, url=%s, err=%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(parambgoe.a) }));
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("code", parambgoe.a);
+    parambgoe = EIPCResult.createResult(0, localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqArkImageChooseImageIPCModule$2.this$0.callbackResult(this.jdField_a_of_type_ComTencentMobileqqArkImageChooseImageIPCModule$2.a, parambgoe);
   }
 }
 

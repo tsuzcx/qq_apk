@@ -1,19 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.IntimateInfo;
+import com.tencent.mobileqq.relationx.friendclue.FriendClueCommonGroupHelper.2.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class azwl
-  implements ValueAnimator.AnimatorUpdateListener
+  extends atuh
 {
-  public azwl(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ValueAnimator paramValueAnimator, View paramView) {}
+  azwl(azwk paramazwk) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void a(boolean paramBoolean, String paramString, IntimateInfo paramIntimateInfo)
   {
-    int i = ((Integer)this.jdField_a_of_type_AndroidAnimationValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.height = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "onGetIntimateInfo");
+    }
+    azwk.a(this.a).removeObserver(this.a.a);
+    azwk.a(this.a).removeMessages(1);
+    if (paramBoolean)
+    {
+      azwk.a(this.a, paramIntimateInfo);
+      this.a.a();
+      return;
+    }
+    azwk.a(this.a).post(new FriendClueCommonGroupHelper.2.1(this));
+    QLog.e("FriendClueCommonGroupHelper", 1, "get intimateInfo failed");
   }
 }
 

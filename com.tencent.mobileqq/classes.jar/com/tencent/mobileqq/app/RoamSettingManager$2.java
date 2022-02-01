@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import aogt;
+import anai;
 import com.tencent.mobileqq.data.RoamSetting;
 
 public class RoamSettingManager$2
   implements Runnable
 {
-  public RoamSettingManager$2(aogt paramaogt, RoamSetting paramRoamSetting) {}
+  public RoamSettingManager$2(anai paramanai, RoamSetting paramRoamSetting) {}
   
   public void run()
   {

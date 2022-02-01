@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import adab;
-import agkq;
+import abwp;
+import afdj;
+import amxz;
 import android.content.Context;
 import android.text.TextUtils;
-import aody;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -100,19 +100,19 @@ public class RecentPubAccountAssistantItem
     } while ((localQQAppInterface == null) || (paramContext == null));
     Object localObject2 = getRecentUserUin();
     int i = getRecentUserType();
-    paramIMCoreAppRuntime = localQQAppInterface.a();
+    paramIMCoreAppRuntime = localQQAppInterface.getMessageFacade();
     if (paramIMCoreAppRuntime != null) {}
-    for (QQMessageFacade.Message localMessage = paramIMCoreAppRuntime.a((String)localObject2, i);; localMessage = null)
+    for (QQMessageFacade.Message localMessage = paramIMCoreAppRuntime.getLastMessage((String)localObject2, i);; localMessage = null)
     {
       String str;
       if (localMessage != null)
       {
         this.mDisplayTime = localMessage.time;
-        paramIMCoreAppRuntime = localQQAppInterface.a();
+        paramIMCoreAppRuntime = localQQAppInterface.getConversationFacade();
         if (paramIMCoreAppRuntime != null)
         {
           this.mUnreadNum = paramIMCoreAppRuntime.a(localMessage.frienduin, localMessage.istroop);
-          paramIMCoreAppRuntime = (aody)localQQAppInterface.getManager(56);
+          paramIMCoreAppRuntime = (amxz)localQQAppInterface.getManager(56);
           if (paramIMCoreAppRuntime == null) {
             break label455;
           }
@@ -164,7 +164,7 @@ public class RecentPubAccountAssistantItem
           this.mUnreadNum = 0;
           break;
           ((MsgSummary)localObject1).strContent = "";
-          localObject2 = agkq.a(localMessage);
+          localObject2 = afdj.a(localMessage);
           if ((localObject2 == null) || (((PAMessage)localObject2).items == null) || (((PAMessage)localObject2).items.size() == 0))
           {
             buildMessageBody(localMessage, i, localQQAppInterface, paramContext, (MsgSummary)localObject1);

@@ -1,24 +1,30 @@
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class acpl
-  extends acot
+public class acpl
+  implements URLDrawable.URLDrawableListener
 {
-  public int a;
-  public long a;
-  public GdtDwellTimeStatisticsAfterClick a;
-  public int b = -2147483648;
-  public int c = -2147483648;
+  public acpl(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public acpl()
-  {
-    this.jdField_a_of_type_Int = -2147483648;
-    this.jdField_a_of_type_Long = -2147483648L;
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public boolean a()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return (super.a()) && (this.jdField_a_of_type_Int != -2147483648) && (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.b()) && (this.b > 0) && (this.c > 0);
+    if (paramURLDrawable != null)
+    {
+      paramURLDrawable = bfvo.a(paramURLDrawable);
+      QQAppInterface localQQAppInterface = this.a.app;
+      paramURLDrawable = QQAppInterface.getCircleFaceBitmap(paramURLDrawable, 50, 50);
+      this.a.a.setImageDrawable(new BitmapDrawable(paramURLDrawable));
+    }
   }
 }
 

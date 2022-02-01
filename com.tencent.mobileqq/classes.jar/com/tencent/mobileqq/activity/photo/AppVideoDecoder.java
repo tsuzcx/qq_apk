@@ -3,11 +3,11 @@ package com.tencent.mobileqq.activity.photo;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
-import bezb;
+import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
 import java.net.URL;
 
 public class AppVideoDecoder
-  implements bezb
+  implements BitmapDecoder
 {
   Context mContext;
   LocalMediaInfo mLocalMediaInfo;

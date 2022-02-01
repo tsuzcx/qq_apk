@@ -1,22 +1,29 @@
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
-import com.tencent.mobileqq.matchchat.MatchChatSettingFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class axat
+class axat
   implements View.OnClickListener
 {
-  public axat(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
+  axat(awzr paramawzr, String paramString) {}
   
   public void onClick(View paramView)
   {
-    bdll.b(this.a.a, "dc00898", "", "", "0X800A698", "0X800A698", 0, 0, "", "", "", "");
-    Intent localIntent = new Intent();
-    PublicFragmentActivity.a(this.a.getActivity(), localIntent, MatchChatSettingFragment.class);
-    EventCollector.getInstance().onViewClicked(paramView);
+    Intent localIntent = new Intent(this.jdField_a_of_type_Awzr.a, QQBrowserActivity.class);
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
+    Object localObject = this.jdField_a_of_type_Awzr.a;
+    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Awzr.a.j)) {}
+    for (localObject = "1";; localObject = "2")
+    {
+      localIntent.putExtra("url", (String)localObject);
+      bcef.b(this.jdField_a_of_type_Awzr.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_focus", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Awzr.a.startActivity(localIntent);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

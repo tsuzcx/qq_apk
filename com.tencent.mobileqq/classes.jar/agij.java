@@ -1,18 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionPic;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
-public final class agij
-  implements Parcelable.Creator<ForwardUtils.SectionPic>
+final class agij
+  implements DialogInterface.OnClickListener
 {
-  public ForwardUtils.SectionPic a(Parcel paramParcel)
-  {
-    return new ForwardUtils.SectionPic(paramParcel);
-  }
+  agij(Emoticon paramEmoticon, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  public ForwardUtils.SectionPic[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new ForwardUtils.SectionPic[paramInt];
+    boolean bool;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 4)
+    {
+      bool = true;
+      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
+      if (agif.a != null)
+      {
+        if (7 != this.jdField_a_of_type_Int) {
+          break label80;
+        }
+        agif.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, agif.a.frienduin, "ep_mall", "Clk_pkg_forward", 0);
+      }
+    }
+    label80:
+    while (6 != this.jdField_a_of_type_Int)
+    {
+      return;
+      bool = false;
+      break;
+    }
+    agif.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, agif.a.frienduin, "ep_mall", "Clk_collect_more", 0);
   }
 }
 

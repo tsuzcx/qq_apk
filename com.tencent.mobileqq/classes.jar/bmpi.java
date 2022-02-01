@@ -1,15 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import dov.com.qq.im.aeeditor.view.timeline.TimelineView;
 
-public final class bmpi
+public class bmpi
+  implements bmpe
 {
-  public static int a()
+  public bmpi(TimelineView paramTimelineView) {}
+  
+  public void a()
   {
-    return bmqu.a(BaseApplicationImpl.context);
+    this.a.c();
   }
   
-  public static boolean a()
+  public void a(float paramFloat)
   {
-    return (bmqu.b(BaseApplicationImpl.context) == 1) || (bmqu.c(BaseApplicationImpl.context));
+    this.a.b(paramFloat);
+  }
+  
+  public void b()
+  {
+    TimelineView.a(this.a, false);
   }
 }
 

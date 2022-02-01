@@ -1,36 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
-
-public final class avjs
-  implements Parcelable.Creator<GameCenterSessionInfo>
+public class avjs
 {
-  public GameCenterSessionInfo a(Parcel paramParcel)
-  {
-    GameCenterSessionInfo localGameCenterSessionInfo = new GameCenterSessionInfo();
-    localGameCenterSessionInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localGameCenterSessionInfo.e = paramParcel.readString();
-    localGameCenterSessionInfo.f = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localGameCenterSessionInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.g = paramParcel.readString();
-    localGameCenterSessionInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localGameCenterSessionInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.jdField_d_of_type_Int = paramParcel.readInt();
-    localGameCenterSessionInfo.h = paramParcel.readString();
-    localGameCenterSessionInfo.i = paramParcel.readString();
-    localGameCenterSessionInfo.j = paramParcel.readString();
-    localGameCenterSessionInfo.k = paramParcel.readString();
-    return localGameCenterSessionInfo;
-  }
+  public final int a;
+  public final long a;
+  public final int b;
+  public final long b;
   
-  public GameCenterSessionInfo[] a(int paramInt)
+  public avjs(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    return new GameCenterSessionInfo[paramInt];
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 

@@ -1,18 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
+import android.graphics.drawable.Drawable;
+import android.text.Html.ImageGetter;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public class afqk
-  implements bhcl
+class afqk
+  implements Html.ImageGetter
 {
-  public afqk(TextPreviewActivity paramTextPreviewActivity) {}
+  afqk(afqj paramafqj) {}
   
-  public void a() {}
-  
-  public void b()
+  public Drawable getDrawable(String paramString)
   {
-    Message localMessage = this.a.a.obtainMessage(20);
-    this.a.a.sendMessage(localMessage);
+    return this.a.a(afqj.a(this.a).mContext, paramString);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.util;
 
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import nnr;
 
 public final class ProteusReportUtil$2
   implements Runnable
@@ -13,7 +13,7 @@ public final class ProteusReportUtil$2
   {
     try
     {
-      nnr.a(BaseActivity.sTopActivity, this.a, "GET", null, null);
+      HttpUtil.openUrl(BaseActivity.sTopActivity, this.a, "GET", null, null);
       return;
     }
     catch (Exception localException)
@@ -24,7 +24,7 @@ public final class ProteusReportUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ProteusReportUtil.2
  * JD-Core Version:    0.7.0.1
  */

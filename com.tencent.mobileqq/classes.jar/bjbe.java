@@ -1,44 +1,25 @@
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoViewInitListener;
+import com.tencent.superplayer.api.SuperPlayerFactory;
 
-public class bjbe
-  implements URLDrawableDownListener
+class bjbe
+  implements SDKInitListener
 {
-  final String jdField_a_of_type_JavaLangString;
-  final WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  final String b;
+  bjbe(bjbd parambjbd, AbsVideoPlayer.OnVideoViewInitListener paramOnVideoViewInitListener) {}
   
-  public bjbe(View paramView, String paramString1, String paramString2)
+  public void onSDKInited(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-  }
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    paramView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramView != null)
+    QLog.e("MiniAppVideoPlayer_SuperPlayer", 1, "superPlayer onSDKInited :" + paramBoolean);
+    if (paramBoolean)
     {
-      QLog.e("Q.profilecard.FrdProfileCard", 1, this.jdField_a_of_type_JavaLangString + this.b);
-      paramView.setVisibility(8);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    paramView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramView != null) {
-      paramView.setVisibility(0);
+      bjbd.a(this.jdField_a_of_type_Bjbd, SuperPlayerFactory.createPlayerVideoView(BaseApplicationImpl.getContext()));
+      bjbd.a(this.jdField_a_of_type_Bjbd, SuperPlayerFactory.createMediaPlayer(BaseApplicationImpl.getContext(), 102, bjbd.a(this.jdField_a_of_type_Bjbd)));
+      if ((this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnVideoViewInitListener != null) && ((bjbd.a(this.jdField_a_of_type_Bjbd) instanceof View))) {
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnVideoViewInitListener.onVideoViewInit((View)bjbd.a(this.jdField_a_of_type_Bjbd));
+      }
     }
   }
 }

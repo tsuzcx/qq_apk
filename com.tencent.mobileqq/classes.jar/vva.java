@@ -1,37 +1,192 @@
-import com.tencent.biz.qqcircle.requests.QCircleDoRecommendRequest;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudWrite.StDoPushReq;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.TagEntry;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityTransaction;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.List<Ljava.lang.String;>;
+import java.util.Set;
 
 public class vva
-  extends aadn<QCircleDoRecommendRequest, vuz>
+  implements vuf
 {
-  public long a(QCircleDoRecommendRequest paramQCircleDoRecommendRequest)
+  private long jdField_a_of_type_Long;
+  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  private Set<String> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
+  
+  private QQStoryContext a()
   {
-    return 1500L;
+    return QQStoryContext.a();
   }
   
-  public QCircleDoRecommendRequest a(QCircleDoRecommendRequest paramQCircleDoRecommendRequest1, QCircleDoRecommendRequest paramQCircleDoRecommendRequest2)
+  public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
   {
-    FeedCloudWrite.StDoPushReq localStDoPushReq = paramQCircleDoRecommendRequest1.getReq();
-    paramQCircleDoRecommendRequest2 = paramQCircleDoRecommendRequest2.getReq();
-    int i = localStDoPushReq.comboCount.get();
-    int j = paramQCircleDoRecommendRequest2.comboCount.get();
-    localStDoPushReq.comboCount.set(j + i);
-    paramQCircleDoRecommendRequest1.setReq(localStDoPushReq);
-    return paramQCircleDoRecommendRequest1;
+    return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
   }
   
-  public String a()
+  public List<yml> a(String paramString)
   {
-    return "QCirclePushMergeReqInterceptor";
+    Object localObject = a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, TagEntry.class, TagEntry.class.getSimpleName(), "feedId=?", new String[] { paramString });
+    paramString = (String)localObject;
+    if (localObject == null) {
+      paramString = new ArrayList();
+    }
+    localObject = new ArrayList();
+    paramString = paramString.iterator();
+    while (paramString.hasNext()) {
+      ((List)localObject).add(new yml((TagEntry)paramString.next()));
+    }
+    return localObject;
   }
   
-  public String a(QCircleDoRecommendRequest paramQCircleDoRecommendRequest)
+  public List<yml> a(String paramString, List<StoryVideoItem> paramList)
   {
-    FeedCloudWrite.StDoPushReq localStDoPushReq = paramQCircleDoRecommendRequest.getReq();
-    return paramQCircleDoRecommendRequest.getCmdName() + localStDoPushReq.feed.id.get();
+    try
+    {
+      paramString = a(paramList, a(paramString));
+      return paramString;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public List<yml> a(List<StoryVideoItem> paramList, List<yml> paramList1)
+  {
+    ArrayList localArrayList;
+    HashSet localHashSet;
+    try
+    {
+      localArrayList = new ArrayList();
+      localHashSet = new HashSet();
+      if (paramList != null)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramList.next();
+          if ((localStoryVideoItem.mTagInfoBase != null) && (!localHashSet.contains(localStoryVideoItem.mTagInfoBase)))
+          {
+            localArrayList.add(localStoryVideoItem.mTagInfoBase);
+            localHashSet.add(localStoryVideoItem.mTagInfoBase);
+          }
+        }
+      }
+      if (paramList1 == null) {
+        break label167;
+      }
+    }
+    finally {}
+    paramList = paramList1.iterator();
+    while (paramList.hasNext())
+    {
+      paramList1 = (yml)paramList.next();
+      if (!localHashSet.contains(paramList1))
+      {
+        localArrayList.add(paramList1);
+        localHashSet.add(paramList1);
+      }
+    }
+    label167:
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = a().a().createEntityManager();
+  }
+  
+  public void a(String paramString, List<yml> paramList)
+  {
+    if (paramList == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        Object localObject = a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, TagEntry.class, TagEntry.class.getSimpleName(), "feedId=?", new String[] { paramString });
+        if (localObject != null)
+        {
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            TagEntry localTagEntry = (TagEntry)((Iterator)localObject).next();
+            localTagEntry.setStatus(1001);
+            this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localTagEntry);
+          }
+        }
+      }
+      finally
+      {
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().end();
+          throw paramString;
+        }
+        finally {}
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().begin();
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localObject = ((yml)paramList.next()).a();
+          ((TagEntry)localObject).feedId = paramString;
+          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace((Entity)localObject);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().commit();
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().end();
+      }
+    }
+  }
+  
+  public void a(List<String> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    Object localObject = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
+    if (Math.abs(this.jdField_a_of_type_Long - System.currentTimeMillis()) > 60000L) {
+      this.jdField_a_of_type_JavaUtilSet.clear();
+    }
+    for (;;)
+    {
+      if (localArrayList.size() > 0) {
+        xvv.d("Q.qqstory:TagManager", "request still waiting , %s", new Object[] { localArrayList });
+      }
+      if (paramList.size() == 0) {
+        break;
+      }
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      localObject = new weh();
+      ((weh)localObject).a = paramList;
+      vqn.a().a((vqr)localObject, new vvb(this));
+      xvv.d("Q.qqstory:TagManager", "request tag list :%s", new Object[] { paramList });
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = (String)paramList.next();
+        if (this.jdField_a_of_type_JavaUtilSet.contains(str)) {
+          localArrayList.add(str);
+        } else {
+          ((List)localObject).add(str);
+        }
+      }
+      paramList = (List<String>)localObject;
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
   }
 }
 

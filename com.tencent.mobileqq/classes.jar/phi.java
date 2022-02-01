@@ -1,37 +1,16 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
+import android.view.View.OnClickListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class phi
-  implements ost
+final class phi
+  implements View.OnClickListener
 {
-  public phi(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (!paramBoolean)
-    {
-      this.a.onBackEvent();
-      return;
-    }
-    this.a.a(this.a.a);
-  }
+  phi(String paramString) {}
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.onBackEvent();
-    }
+    odq.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.a, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

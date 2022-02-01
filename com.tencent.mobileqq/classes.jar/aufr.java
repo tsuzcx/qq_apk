@@ -1,20 +1,9 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class aufr
-  implements aumz
+public class aufr
 {
-  aufr(aufq paramaufq) {}
-  
-  public void a()
-  {
-    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(this.a.a.d());
-    if (this.a.a.a != null) {
-      this.a.a.a.d();
-    }
-  }
-  
-  public void b() {}
+  public int a;
+  public long a;
+  public String a;
+  public String b;
 }
 
 

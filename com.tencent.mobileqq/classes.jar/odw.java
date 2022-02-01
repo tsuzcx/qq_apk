@@ -1,186 +1,245 @@
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.os.Bundle;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.biz.pubaccount.AccountDetail.jce.GetRecvMsgStateReq;
+import com.tencent.biz.pubaccount.AccountDetail.jce.SetRecvMsgStateReq;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoRequest;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoRequest;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class odw
-  implements View.OnClickListener
+  extends MSFServlet
 {
-  public static String a;
-  long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private View[] jdField_a_of_type_ArrayOfAndroidViewView = { this.jdField_a_of_type_AndroidViewView, this.b };
-  private View b;
+  private String a = "com.tencent.biz.pubaccount.PublicAccountServlet";
   
-  static
+  public static void a(Intent paramIntent)
   {
-    jdField_a_of_type_JavaLangString = "tag_on_nearby_tips_click";
+    paramIntent.putExtra("need_handler", true);
   }
   
-  public odw(Context paramContext)
+  protected byte[] a(FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public View a(String paramString, View.OnClickListener paramOnClickListener)
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (TextUtils.isEmpty(paramString))) {
-      return null;
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramFromServiceMsg != null)
     {
-      this.jdField_a_of_type_AndroidViewView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      ((TextView)this.jdField_a_of_type_AndroidViewView).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167302));
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130847103);
-      ((TextView)this.jdField_a_of_type_AndroidViewView).setGravity(16);
-      this.jdField_a_of_type_AndroidViewView.setTag(jdField_a_of_type_JavaLangString);
-      ((TextView)this.jdField_a_of_type_AndroidViewView).setTextSize(this.jdField_a_of_type_AndroidContentContext.getResources().getInteger(2131427337));
-    }
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.topMargin = bhgr.a(this.jdField_a_of_type_AndroidContentContext, 18.0F);
-    localLayoutParams.addRule(3, 2131374287);
-    localLayoutParams.addRule(11);
-    localLayoutParams.rightMargin = bhgr.b(this.jdField_a_of_type_AndroidContentContext, 20.0F);
-    ((TextView)this.jdField_a_of_type_AndroidViewView).setText(paramString);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a()
-  {
-    if (this.b != null)
-    {
-      ViewGroup localViewGroup = (ViewGroup)this.b.getParent();
-      if (localViewGroup != null) {
-        localViewGroup.removeView(this.b);
+      localObject1 = localObject2;
+      if (paramFromServiceMsg.isSuccess()) {
+        localObject1 = bgau.b(paramFromServiceMsg.getWupBuffer());
       }
     }
+    return localObject1;
   }
   
-  public void a(ViewGroup paramViewGroup, View paramView)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if ((paramViewGroup == null) || (paramView == null)) {}
-    do
-    {
-      return;
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfAndroidViewView.length)
-      {
-        if ((this.jdField_a_of_type_ArrayOfAndroidViewView[i] != null) && (this.jdField_a_of_type_ArrayOfAndroidViewView[i] != paramView) && (paramViewGroup.indexOfChild(this.jdField_a_of_type_ArrayOfAndroidViewView[i]) != -1)) {
-          paramViewGroup.removeView(this.jdField_a_of_type_ArrayOfAndroidViewView[i]);
-        }
-        i += 1;
-      }
-    } while (paramViewGroup.indexOfChild(paramView) != -1);
-    paramViewGroup.addView(paramView);
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    label55:
-    do
-    {
-      return;
-      Object localObject1 = null;
-      try
-      {
-        localObject2 = (ViewGroup)((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().c.findViewById(2131364389);
-        localObject1 = localObject2;
-      }
-      catch (Exception localException)
-      {
-        Object localObject2;
-        int i;
-        break label55;
-      }
-    } while (localObject1 == null);
-    if (this.b == null)
-    {
-      this.b = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-      this.b.setId(2131362542);
-      i = bhgr.a(this.jdField_a_of_type_AndroidContentContext, 62.0F);
-      localObject2 = new RelativeLayout.LayoutParams(i, i);
-      ((RelativeLayout.LayoutParams)localObject2).topMargin = bhgr.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
-      ((RelativeLayout.LayoutParams)localObject2).rightMargin = bhgr.a(this.jdField_a_of_type_AndroidContentContext, 15.0F);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131374287);
-      ((RelativeLayout.LayoutParams)localObject2).addRule(11);
-      this.b.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a, 2, "onReceive");
     }
-    this.b.setTag(2131362545, paramString2);
-    this.b.setTag(2131362543, String.valueOf(paramInt1));
-    this.b.setTag(2131362544, String.valueOf(paramInt2));
-    this.b.setTag(2131362546, Integer.valueOf(paramInt3));
-    this.b.setOnClickListener(this);
-    paramString2 = URLDrawable.URLDrawableOptions.obtain();
-    paramString2.mPlayGifImage = true;
-    try
+    byte[] arrayOfByte = a(paramFromServiceMsg);
+    udz.a(paramFromServiceMsg);
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putByteArray("data", arrayOfByte);
+    ((Bundle)localObject).putInt("respones_code", paramFromServiceMsg.getBusinessFailCode());
+    ((Bundle)localObject).putInt("type", paramIntent.getIntExtra("type", 0));
+    if (paramIntent.getBooleanExtra("need_handler", false))
     {
-      paramString1 = URLDrawable.getDrawable(new URL(paramString1), paramString2);
-      ((URLImageView)this.b).setImageDrawable(paramString1);
-      if (paramString1.getStatus() == 2)
-      {
-        paramString1.restartDownload();
-        this.b.setVisibility(8);
+      localObject = (PublicAccountHandler)((QQAppInterface)super.getAppRuntime()).getBusinessHandler(11);
+      if (localObject != null) {
+        ((PublicAccountHandler)localObject).a(paramIntent, paramFromServiceMsg, arrayOfByte);
       }
-      ((URLImageView)this.b).setURLDrawableDownListener(new odx(this));
-    }
-    catch (MalformedURLException paramString1)
-    {
-      label298:
-      break label298;
-    }
-    a(localObject1, this.b);
-    bdll.b(null, "dc00899", "Pb_account_lifeservice", "1", "0X80075A0", "0X80075A0", 0, 0, "", "", String.valueOf(paramInt1), String.valueOf(paramInt2));
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L) {}
-    do
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-    } while ((paramView.getId() != 2131362542) || (this.jdField_a_of_type_AndroidContentContext == null));
-    String str1 = (String)paramView.getTag(2131362545);
-    String str2 = (String)paramView.getTag(2131362543);
-    String str3 = (String)paramView.getTag(2131362544);
-    Intent localIntent;
-    if (((Integer)paramView.getTag(2131362546)).intValue() == 1)
-    {
-      localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", str1);
-      localIntent.putExtra("fromAio", true);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
     }
     for (;;)
     {
-      bdll.b(null, "dc00899", "Pb_account_lifeservice", "1", "0X80075A1", "0X80075A1", 0, 0, "", "", str2, str3);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a, 2, "onReceive exit");
+      }
+      return;
+      super.notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), (Bundle)localObject, null);
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a, 2, "onSend");
+    }
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    Object localObject = paramIntent.getStringExtra("cmd");
+    udz.a(arrayOfByte, (String)localObject);
+    if (((String)localObject).equals("get_business_recommend"))
+    {
+      paramPacket.setSSOCommand("PubAccBusiRecSvc." + (String)localObject);
+      paramIntent = arrayOfByte;
+    }
+    for (;;)
+    {
+      if (paramIntent != null) {
+        paramPacket.putSendData(bgau.a(paramIntent));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a, 2, "onSend exit");
+      }
+      return;
+      if (((String)localObject).equals("post_punchcard_info"))
+      {
+        paramPacket.setSSOCommand("PubAccountSSOProxySvc." + (String)localObject);
+        paramIntent = arrayOfByte;
+      }
+      else if ((((String)localObject).equals("PubAccountFollowSvc.follow")) || (((String)localObject).equals("PubAccountFollowSvc.subscribe")))
+      {
+        paramPacket.setTimeout(10000L);
+        paramPacket.setSSOCommand((String)localObject);
+        paramIntent = arrayOfByte;
+      }
+      else if (((String)localObject).equals("PubAccountAdSvc.recent_list_report"))
+      {
+        paramPacket.setSSOCommand((String)localObject);
+        paramIntent = arrayOfByte;
+      }
+      else if ((((String)localObject).equals("PubAccountArticleCenter.GetUrlByVid")) || (((String)localObject).equals("PubAccountArticleCenter.GetVidByUrl")) || (((String)localObject).equals("SQQShopAdSvr.GetUrlByVid")))
+      {
+        paramPacket.setTimeout(15000L);
+        paramPacket.setSSOCommand((String)localObject);
+        paramIntent = arrayOfByte;
+      }
+      else if (((String)localObject).equals("PubAccountAdSvc."))
+      {
+        paramPacket.setSSOCommand("PubAccountAdSvc.ad_report");
+        paramIntent = arrayOfByte;
+      }
+      else if ((((String)localObject).equals("PubAccountSvc.net_connect_info")) || (((String)localObject).equals("PubAccountArticleCenter.GetRecommendPubAccount")) || (((String)localObject).equals("KdAdReportSsoSvr.kandian_ad")) || (((String)localObject).equals("KdAdReportSsoSvr.kandian_ad_report")) || (((String)localObject).equals("KdAdReportSsoSvr.kandian_ad_native")) || (((String)localObject).equals("KdAdReportSsoSvr.kandian_ad_report_new")) || (((String)localObject).equals("KdAdReportSsoSvr.kandian_ad_report_test")) || (((String)localObject).equals("MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_fetch")) || (((String)localObject).equals("MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_create")) || (((String)localObject).equals("MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_delete")) || (((String)localObject).equals("MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_like")) || (((String)localObject).equals("MQUpdateSvc_com_qq_mp.web.tcpproxy.comment_report")) || (((String)localObject).equals("MQUpdateSvc_com_qq_kandian.web.firstCommentRead.getNewestList")) || (((String)localObject).equals("FeedsContentCenter.QualityReport")))
+      {
+        paramPacket.setTimeout(15000L);
+        paramPacket.setSSOCommand((String)localObject);
+        paramIntent = arrayOfByte;
+      }
+      else if (((String)localObject).equals("getGuideFriends"))
+      {
+        paramPacket.setSSOCommand("KandianSvc_biu_guide." + (String)localObject);
+        paramIntent = arrayOfByte;
+      }
+      else if (((String)localObject).equals("ConfigSvc.getRecvMsgState"))
+      {
+        try
+        {
+          localObject = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getName());
+          paramIntent = ((ToServiceMsg)localObject).getServiceCmd();
+          localObject = (GetRecvMsgStateReq)((ToServiceMsg)localObject).getAttribute("GetRecvMsgStateReq");
+          paramPacket.setServantName("QQMP.ConfigServer.ConfigObj");
+          paramPacket.setFuncName("getRecvMsgState");
+          paramPacket.addRequestPacket("req", (JceStruct)localObject);
+          paramPacket.setSSOCommand(paramIntent);
+          paramPacket.setTimeout(15000L);
+          paramIntent = arrayOfByte;
+        }
+        catch (Exception paramIntent)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i(this.a, 2, "onSend exception");
+          }
+          paramIntent = arrayOfByte;
+        }
+      }
+      else
+      {
+        if (!((String)localObject).equals("ConfigSvc.setRecvMsgState")) {
+          break;
+        }
+        try
+        {
+          localObject = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getName());
+          paramIntent = ((ToServiceMsg)localObject).getServiceCmd();
+          localObject = (SetRecvMsgStateReq)((ToServiceMsg)localObject).getAttribute("SetRecvMsgStateReq");
+          paramPacket.setServantName("QQMP.ConfigServer.ConfigObj");
+          paramPacket.setFuncName("setRecvMsgState");
+          paramPacket.addRequestPacket("req", (JceStruct)localObject);
+          paramPacket.setSSOCommand(paramIntent);
+          paramPacket.setTimeout(15000L);
+          paramIntent = arrayOfByte;
+        }
+        catch (Exception paramIntent)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i(this.a, 2, "onSend exception");
+          }
+          paramIntent = arrayOfByte;
+        }
+      }
+    }
+    if ("CertifiedAccountSvc.certified_account_read.GetFollowList".equals(localObject))
+    {
+      paramPacket.setSSOCommand((String)localObject);
+      paramPacket.setTimeout(30000L);
+      paramPacket.autoResend = true;
+      label719:
+      if (!((String)localObject).equals("get_detail_info")) {
+        break label1083;
+      }
+      localObject = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
+    }
+    label1083:
+    label1089:
+    for (;;)
+    {
+      try
+      {
+        ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).mergeFrom(arrayOfByte);
+        oidb_cmd0xcf8.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new oidb_cmd0xcf8.GetPublicAccountDetailInfoRequest();
+        long l = ((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).uin.get();
+        if (l >= 0L) {
+          break label1089;
+        }
+        l = -(-2147483648L - l) + 2147483647L + 1L;
+        if ((paramIntent.getBooleanExtra("useNewProtocol", false)) || (((super.getAppRuntime() instanceof QQAppInterface)) && (ugf.a((QQAppInterface)super.getAppRuntime(), l + "") != -4)))
+        {
+          paramIntent.putExtra("type", 1);
+          localGetPublicAccountDetailInfoRequest.luin.set(l);
+          localGetPublicAccountDetailInfoRequest.seqno.set(((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).seqno.get());
+          localGetPublicAccountDetailInfoRequest.version.set(((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).version.get());
+          localGetPublicAccountDetailInfoRequest.versionInfo.set(((mobileqq_mp.GetPublicAccountDetailInfoRequest)localObject).versionInfo.get());
+          paramIntent = new oidb_sso.OIDBSSOPkg();
+          paramIntent.uint32_command.set(3320);
+          paramIntent.uint32_result.set(0);
+          paramIntent.uint32_service_type.set(1);
+          paramIntent.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localGetPublicAccountDetailInfoRequest.toByteArray()));
+          paramIntent = paramIntent.toByteArray();
+          paramPacket.setSSOCommand("OidbSvc.0xcf8");
+          break;
+          if ("get_follow_list".equals(localObject))
+          {
+            paramPacket.autoResend = true;
+            paramPacket.setSSOCommand("PubAccountSvc." + (String)localObject);
+            break label719;
+          }
+          if (("CertifiedAccountSvc.certified_account_read.GetAccountMenu".equals(localObject)) || ("CertifiedAccountSvc.certified_account_write.SendMenuEvent".equals(localObject)))
+          {
+            paramPacket.setSSOCommand((String)localObject);
+            break label719;
+          }
+          paramPacket.setSSOCommand("PubAccountSvc." + (String)localObject);
+        }
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        localInvalidProtocolBufferMicroException.printStackTrace();
+        continue;
+      }
+      paramIntent = arrayOfByte;
       break;
-      localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, JumpActivity.class);
-      localIntent.setData(Uri.parse(str1));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
     }
   }
 }

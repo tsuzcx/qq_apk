@@ -1,26 +1,26 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.qphone.base.util.QLog;
-import rwh;
-import rwk;
-import saa;
+import sdl;
+import sdo;
+import she;
 
 public class VideoPluginInstall$2
   implements Runnable
 {
-  public VideoPluginInstall$2(rwh paramrwh) {}
+  public VideoPluginInstall$2(sdl paramsdl) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video", 2, "start install video sdk in subThread");
     }
-    if (!rwh.b()) {
-      rwh.a(this.this$0);
+    if (!sdl.b()) {
+      sdl.a(this.this$0);
     }
     try
     {
-      rwh.a(this.this$0).a(new rwk(rwh.a(this.this$0)));
+      sdl.a(this.this$0).a(new sdo(sdl.a(this.this$0)));
       return;
     }
     catch (Exception localException)

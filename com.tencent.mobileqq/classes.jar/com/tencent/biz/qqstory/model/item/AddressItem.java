@@ -12,12 +12,12 @@ import com.tencent.mobileqq.troop.data.TroopBarPOI;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
-import wiq;
-import yuk;
+import vkp;
+import xvv;
 
 public class AddressItem
   extends BaseUIItem
-  implements wiq
+  implements vkp
 {
   public String building;
   public String city;
@@ -44,7 +44,7 @@ public class AddressItem
       localJSONObject.put("latitude", paramAddressItem.latitude);
       localJSONObject.put("coordinate", paramAddressItem.coordinate);
       localJSONObject.put("district", paramAddressItem.district);
-      yuk.b("AddressItem convertFromItem: ", localJSONObject.toString());
+      xvv.b("AddressItem convertFromItem: ", localJSONObject.toString());
       return localJSONObject.toString();
     }
     catch (JSONException paramAddressItem)
@@ -114,7 +114,7 @@ public class AddressItem
       }
       return localAddressItem;
     }
-    yuk.b("AddressItem :getAddressFromProtoObject()", "address is null");
+    xvv.b("AddressItem :getAddressFromProtoObject()", "address is null");
     return null;
   }
   
@@ -249,7 +249,7 @@ public class AddressItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.AddressItem
  * JD-Core Version:    0.7.0.1
  */

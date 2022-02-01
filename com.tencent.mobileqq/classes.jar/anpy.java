@@ -1,14 +1,31 @@
-import com.tencent.mobileqq.data.ApolloActionData;
+import android.content.Context;
+import com.tencent.avgame.ui.AVGameRoomCenterFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class anpy
+  extends anrh
 {
-  public void a() {}
+  public anpy(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    super(paramQQAppInterface, paramContext);
+  }
   
-  public void a(ApolloActionData paramApolloActionData) {}
-  
-  public void a(Boolean paramBoolean) {}
-  
-  public void b(ApolloActionData paramApolloActionData) {}
+  public boolean a()
+  {
+    try
+    {
+      PublicFragmentActivity.a(this.a, AVGameRoomCenterFragment.class);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("AVGameShareEntryLobbyAction", 1, "doAction error: " + localException.getMessage());
+      a("AVGameShareEntryLobbyAction");
+    }
+    return true;
+  }
 }
 
 

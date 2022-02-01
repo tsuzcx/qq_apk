@@ -1,11 +1,17 @@
-public final class bobs
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.voicechanger.common.audio.VoiceTextRecognizer.VRErrorListener;
+
+class bobs
+  implements VoiceTextRecognizer.VRErrorListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public Throwable a = null;
-  public long b;
-  public long c;
+  bobs(bobr parambobr) {}
+  
+  public void onError(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ShortVideoVoiceRecognizer", 1, "VoiceTextRecognizer error! errorCode = " + paramInt);
+    }
+  }
 }
 
 

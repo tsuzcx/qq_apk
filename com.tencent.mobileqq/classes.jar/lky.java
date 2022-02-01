@@ -1,31 +1,29 @@
-public class lky
+import com.tencent.av.AVFunChat.AVFunChatMessage;
+
+public abstract interface lky
+  extends mwk
 {
-  public static final lky a;
-  public int a;
-  public long a;
-  public boolean a;
-  public int b = 720;
+  public abstract void a(long paramLong1, long paramLong2, long paramLong3);
   
-  static
-  {
-    jdField_a_of_type_Lky = new lky();
-  }
+  public abstract void a(String paramString, int paramInt, byte[] paramArrayOfByte);
   
-  public lky()
-  {
-    this.jdField_a_of_type_Int = 1280;
-  }
+  public abstract void a(String paramString, AVFunChat.AVFunChatMessage paramAVFunChatMessage);
   
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("ChipAbilityInfo{");
-    localStringBuffer.append("mChipPowerMark = '").append(lkx.a(this.jdField_a_of_type_Long)).append('\'');
-    localStringBuffer.append("mPowerSupport = '").append(this.jdField_a_of_type_Boolean).append('\'');
-    localStringBuffer.append("mMaxWidth = '").append(this.jdField_a_of_type_Int).append('\'');
-    localStringBuffer.append("mMaxHeight = '").append(this.b).append('\'');
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
-  }
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2);
+  
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract void c(int paramInt, String paramString);
+  
+  public abstract void d(int paramInt, String paramString);
+  
+  public abstract void q(String paramString);
+  
+  public abstract void r(String paramString);
+  
+  public abstract void s(String paramString);
 }
 
 

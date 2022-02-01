@@ -1,11 +1,22 @@
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.MsgProxyUtils.Proxy;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
-public final class bdiw
-  implements IMCoreProxyRoute.MsgProxyUtils.Proxy
+class bdiw
+  extends bdji<UserState>
 {
-  public boolean isSaveConversation(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  bdiw(bdiu parambdiu, UserState paramUserState, List paramList)
   {
-    return adak.a(paramString1, paramString2, paramInt1, paramInt2);
+    super(paramUserState, paramList);
+  }
+  
+  public void a(UserState paramUserState)
+  {
+    bdiu.a(this.a).a();
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

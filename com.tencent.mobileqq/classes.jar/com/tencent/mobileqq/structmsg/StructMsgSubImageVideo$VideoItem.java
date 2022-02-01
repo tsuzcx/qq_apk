@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.structmsg;
 
 import android.util.Log;
-import bdok;
-import bdqc;
+import bcgv;
+import bcin;
 import java.io.Externalizable;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -19,23 +19,23 @@ public class StructMsgSubImageVideo$VideoItem
   public String videoUrl;
   public int width;
   
-  private static VideoItem a(bdqc parambdqc)
+  private static VideoItem a(bcin parambcin)
   {
-    Iterator localIterator = parambdqc.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = parambcin.jdField_a_of_type_JavaUtilList.iterator();
     Object localObject1 = null;
     Object localObject2 = null;
     Object localObject3;
     if (localIterator.hasNext())
     {
-      localObject3 = (bdqc)localIterator.next();
-      if ("title".equals(((bdqc)localObject3).b)) {
+      localObject3 = (bcin)localIterator.next();
+      if ("title".equals(((bcin)localObject3).b)) {
         localObject2 = localObject3;
       }
     }
     for (;;)
     {
       break;
-      if ("video".equals(((bdqc)localObject3).b))
+      if ("video".equals(((bcin)localObject3).b))
       {
         localObject1 = localObject3;
         continue;
@@ -45,11 +45,11 @@ public class StructMsgSubImageVideo$VideoItem
           return null;
         }
         localObject3 = new VideoItem();
-        ((VideoItem)localObject3).schema = parambdqc.a("url");
+        ((VideoItem)localObject3).schema = parambcin.a("url");
         if (localObject2 == null) {}
-        for (parambdqc = "";; parambdqc = localObject2.jdField_a_of_type_JavaLangString)
+        for (parambcin = "";; parambcin = localObject2.jdField_a_of_type_JavaLangString)
         {
-          ((VideoItem)localObject3).title = parambdqc;
+          ((VideoItem)localObject3).title = parambcin;
           ((VideoItem)localObject3).coverUrl = localObject1.a("cover");
           ((VideoItem)localObject3).videoUrl = localObject1.a("url");
           try
@@ -58,9 +58,9 @@ public class StructMsgSubImageVideo$VideoItem
             ((VideoItem)localObject3).height = Integer.parseInt(localObject1.a("height"));
             return localObject3;
           }
-          catch (NumberFormatException parambdqc)
+          catch (NumberFormatException parambcin)
           {
-            Log.w("StructMsgSubImageVideo", "parseVideoNode: wrong width or height param", parambdqc);
+            Log.w("StructMsgSubImageVideo", "parseVideoNode: wrong width or height param", parambcin);
             return localObject3;
           }
         }
@@ -78,25 +78,25 @@ public class StructMsgSubImageVideo$VideoItem
     this.height = paramObjectInput.readInt();
   }
   
-  public void toXml(bdok parambdok)
+  public void toXml(bcgv parambcgv)
   {
-    parambdok.startTag(null, "item");
-    parambdok.attribute(null, "apptype", "10");
-    parambdok.attribute(null, "type", "0");
-    parambdok.attribute(null, "url", this.schema);
-    parambdok.startTag(null, "title");
+    parambcgv.startTag(null, "item");
+    parambcgv.attribute(null, "apptype", "10");
+    parambcgv.attribute(null, "type", "0");
+    parambcgv.attribute(null, "url", this.schema);
+    parambcgv.startTag(null, "title");
     if (this.title == null)
     {
       str = "";
-      parambdok.text(str);
-      parambdok.endTag(null, "title");
-      parambdok.startTag(null, "video");
+      parambcgv.text(str);
+      parambcgv.endTag(null, "title");
+      parambcgv.startTag(null, "video");
       if (this.coverUrl != null) {
         break label173;
       }
       str = "";
       label90:
-      parambdok.attribute(null, "cover", str);
+      parambcgv.attribute(null, "cover", str);
       if (this.videoUrl != null) {
         break label181;
       }
@@ -105,11 +105,11 @@ public class StructMsgSubImageVideo$VideoItem
     label181:
     for (String str = "";; str = this.videoUrl)
     {
-      parambdok.attribute(null, "url", str);
-      parambdok.attribute(null, "width", Integer.toString(this.width));
-      parambdok.attribute(null, "height", Integer.toString(this.height));
-      parambdok.endTag(null, "video");
-      parambdok.endTag(null, "item");
+      parambcgv.attribute(null, "url", str);
+      parambcgv.attribute(null, "width", Integer.toString(this.width));
+      parambcgv.attribute(null, "height", Integer.toString(this.height));
+      parambcgv.endTag(null, "video");
+      parambcgv.endTag(null, "item");
       return;
       str = this.title;
       break;
@@ -160,7 +160,7 @@ public class StructMsgSubImageVideo$VideoItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgSubImageVideo.VideoItem
  * JD-Core Version:    0.7.0.1
  */

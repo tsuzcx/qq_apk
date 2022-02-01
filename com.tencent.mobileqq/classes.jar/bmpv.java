@@ -1,11 +1,23 @@
-class bmpv
-  implements bmoq
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.aeeditor.view.playtrack.view.PlayTrackExpandWidthView;
+import dov.com.qq.im.aeeditor.view.timebar.ScaleTimeBar;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackTimeLineView;
+
+public class bmpv
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bmpv(bmpu parambmpu) {}
+  public bmpv(VideoTrackContainerView paramVideoTrackContainerView, bmod parambmod, int paramInt1, int paramInt2) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    bmpu.a(this.a);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    ((VideoTrackTimeLineView)this.jdField_a_of_type_Bmod).a(i);
+    int j = this.jdField_a_of_type_Int;
+    i = VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).a(-(this.b - i)) + j;
+    ((VideoTrackTimeLineView)this.jdField_a_of_type_Bmod).a().scrollTo((int)(i - VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView)), 0);
+    VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).scrollTo(i, 0);
   }
 }
 

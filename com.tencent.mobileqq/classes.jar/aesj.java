@@ -1,47 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import mqq.util.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aesj
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  WeakReference<GeneralSettingActivity> a;
-  WeakReference<CompoundButton> b;
+  public aesj(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public aesj(GeneralSettingActivity paramGeneralSettingActivity, CompoundButton paramCompoundButton)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramGeneralSettingActivity);
-    this.b = new WeakReference(paramCompoundButton);
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    CompoundButton localCompoundButton = null;
-    if (this.a == null)
-    {
-      paramDialogInterface = null;
-      if (this.b != null) {
-        break label47;
-      }
+    String str = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
+    if ((str == null) || (str.length() == 0)) {
+      Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131691823), 0).show();
     }
     for (;;)
     {
-      if ((paramDialogInterface != null) && (localCompoundButton != null)) {
-        paramDialogInterface.a(localCompoundButton, false);
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      paramDialogInterface = (GeneralSettingActivity)this.a.get();
-      break;
-      label47:
-      localCompoundButton = (CompoundButton)this.b.get();
+      if (str != null)
+      {
+        this.a.a(str);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+        VerifyCodeActivity.b(this.a, false);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aesj
  * JD-Core Version:    0.7.0.1
  */

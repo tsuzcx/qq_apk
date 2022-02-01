@@ -1,47 +1,34 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.hardware.Camera;
-import android.view.TextureView.SurfaceTextureListener;
-import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.theme.effect.QEffectLottieImageView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.effect.engine.QEffectData;
 
-@TargetApi(14)
 public class bdca
-  extends PreviewContext
-  implements TextureView.SurfaceTextureListener, bdbn
+  implements OnCompositionLoadedListener
 {
-  public bdca(bdbg parambdbg, int paramInt1, int paramInt2)
-  {
-    super(parambdbg, paramInt1, paramInt2);
-  }
+  public bdca(QEffectLottieImageView paramQEffectLottieImageView) {}
   
-  public void a(byte[] paramArrayOfByte, Camera paramCamera)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    getPreviewFrame(paramArrayOfByte, paramCamera);
-  }
-  
-  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-  {
-    this.mCamera.a();
-    this.mCamera.a(0, paramInt1, paramInt2);
-    this.mCamera.a(paramSurfaceTexture, null, this, true);
-  }
-  
-  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
-  {
-    if (this.mCamera != null)
-    {
-      this.mCamera.b();
-      this.mCamera.b(true);
-      if (this.mActivtiyDestory) {
-        this.mCamera = null;
-      }
+    if ((QLog.isColorLevel()) || (paramLottieComposition == null)) {
+      QLog.e("QEffectLottieImageView", 1, "onCompositionLoaded: composition= " + paramLottieComposition);
     }
-    return true;
+    if (paramLottieComposition == null) {
+      return;
+    }
+    if (QEffectLottieImageView.a(this.a))
+    {
+      QLog.e("QEffectLottieImageView", 1, "onCompositionLoaded: mIsStop " + QEffectLottieImageView.a(this.a));
+      return;
+    }
+    this.a.cancelAnimation();
+    this.a.setComposition(paramLottieComposition);
+    this.a.setProgress(0.0F);
+    this.a.setRepeatCount(QEffectLottieImageView.a(this.a).repeat);
+    this.a.setVisibility(0);
+    this.a.playAnimation();
   }
-  
-  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2) {}
-  
-  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
 }
 
 

@@ -1,43 +1,43 @@
 package cooperation.wadl.sso;
 
-import acik;
-import bnyy;
+import abet;
+import blec;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class WadlCmdUtil$1
   implements Runnable
 {
-  public WadlCmdUtil$1(bnyy parambnyy, boolean paramBoolean, long paramLong) {}
+  public WadlCmdUtil$1(blec paramblec, boolean paramBoolean, long paramLong) {}
   
   public void run()
   {
-    long l1 = acik.a("LAST_GET_CONF_VERSION");
+    long l1 = abet.a("LAST_GET_CONF_VERSION");
     if (QLog.isColorLevel()) {
-      QLog.d(bnyy.a, 2, "checkConfigUpdate isForce=" + this.jdField_a_of_type_Boolean + ",newVersion=" + this.jdField_a_of_type_Long + ",currVersion=" + l1);
+      QLog.d(blec.a, 2, "checkConfigUpdate isForce=" + this.jdField_a_of_type_Boolean + ",newVersion=" + this.jdField_a_of_type_Long + ",currVersion=" + l1);
     }
-    if ((this.jdField_a_of_type_Long > -1L) && (this.jdField_a_of_type_Long == l1) && (bnyy.a().exists())) {}
+    if ((this.jdField_a_of_type_Long > -1L) && (this.jdField_a_of_type_Long == l1) && (blec.a().exists())) {}
     long l2;
     do
     {
       return;
       if (this.jdField_a_of_type_Boolean)
       {
-        bnyy.a(this.this$0, l1);
+        blec.a(this.this$0, l1);
         return;
       }
-      if (bnyy.a(this.this$0) >= 3)
+      if (blec.a(this.this$0) >= 3)
       {
-        bnyy.a(this.this$0, System.currentTimeMillis());
-        bnyy.a(this.this$0, (short)0);
+        blec.a(this.this$0, System.currentTimeMillis());
+        blec.a(this.this$0, (short)0);
         return;
       }
-      if (bnyy.a(this.this$0) == -1L) {
-        bnyy.a(this.this$0, acik.a("LAST_GET_CONF_TIME"));
+      if (blec.a(this.this$0) == -1L) {
+        blec.a(this.this$0, abet.a("LAST_GET_CONF_TIME"));
       }
       l2 = System.currentTimeMillis();
-    } while ((bnyy.a(this.this$0) + 86400000L >= l2) && (bnyy.a(this.this$0) <= l2));
-    bnyy.a(this.this$0, l1);
+    } while ((blec.a(this.this$0) + 86400000L >= l2) && (blec.a(this.this$0) <= l2));
+    blec.a(this.this$0, l1);
   }
 }
 

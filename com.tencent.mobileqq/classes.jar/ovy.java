@@ -1,7 +1,18 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/AuthorDeleteCommentHandler$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ovy {}
+class ovy
+  extends owd
+{
+  ovy(ouu paramouu, BaseCommentData paramBaseCommentData)
+  {
+    super(paramouu, null);
+  }
+  
+  void a(owg paramowg)
+  {
+    paramowg.onCommentReply(true, new ouo(0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, ouu.a(this.jdField_a_of_type_Ouu)));
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

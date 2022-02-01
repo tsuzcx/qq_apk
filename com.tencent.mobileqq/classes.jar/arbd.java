@@ -1,72 +1,35 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager.2.1;
+import java.util.List;
 
 public class arbd
-  extends arac<arbc>
+  extends amrn
 {
-  @NonNull
-  public arbc a(int paramInt)
-  {
-    QLog.d("TroopNotificationConfigProcessor.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
-    return new arbc();
-  }
+  arbd(arbb paramarbb) {}
   
-  @Nullable
-  public arbc a(araj[] paramArrayOfaraj)
+  public void onDelEmoResponse(boolean paramBoolean)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arbc.a(paramArrayOfaraj[0].a);
+    if (arbb.e(this.a) == null) {}
+    while (!paramBoolean) {
+      return;
     }
-    return null;
+    this.a.b();
   }
   
-  public void a(arbc paramarbc)
+  public void onUploadReq(List<CustomEmotionData> paramList)
   {
-    QLog.d("TroopNotificationConfigProcessor.config", 1, "onUpdate, newConf = " + paramarbc);
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-  }
-  
-  public Class<arbc> clazz()
-  {
-    return arbc.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TroopNotificationConfigProcessor.config", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 634;
+    if (arbb.f(this.a) == null) {
+      return;
+    }
+    arbb.g(this.a).removeObserver(arbb.a(this.a));
+    ThreadManager.excute(new FavroamingManager.2.1(this, paramList), 128, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbd
  * JD-Core Version:    0.7.0.1
  */

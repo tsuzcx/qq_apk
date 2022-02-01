@@ -1,13 +1,13 @@
 package com.tencent.biz.webviewbase;
 
 import Override;
-import abdp;
-import abdq;
-import abdr;
-import abds;
-import abdt;
-import abdu;
-import agdz;
+import aaaa;
+import aaab;
+import aaac;
+import aaad;
+import aaae;
+import aaaf;
+import aewt;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -36,19 +36,17 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import binq;
-import bioy;
-import bioz;
-import bipn;
-import bips;
-import bipt;
-import biqp;
-import biqx;
-import birg;
-import birj;
-import birw;
-import birz;
-import bitb;
+import bgtw;
+import bgve;
+import bgvf;
+import bgvt;
+import bgvy;
+import bgvz;
+import bgwv;
+import bgxd;
+import bgxy;
+import bgyb;
+import bgzd;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
@@ -66,6 +64,8 @@ import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -88,35 +88,35 @@ import java.util.Map;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import niz;
-import nnj;
-import nnw;
-import noe;
-import nxo;
+import nko;
+import noy;
+import npg;
+import npn;
+import nyz;
 import org.json.JSONObject;
 
 public abstract class AbsBaseWebViewActivity
   extends IphoneTitleBarActivity
-  implements View.OnClickListener, View.OnTouchListener, bioz, bips, bipt
+  implements View.OnClickListener, View.OnTouchListener, bgvf, bgvy, bgvz
 {
   public static final HashSet<String> a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public binq a;
-  public final bipn a;
-  protected final biqp a;
-  public final biqx a;
-  public final birg a;
-  public final birj a;
+  public bgtw a;
+  public final bgvt a;
+  protected final bgwv a;
+  public final bgxd a;
   public TouchWebView a;
   public volatile AppInterface a;
   public SonicClientImpl a;
   protected JsBridgeListener a;
   protected volatile WebViewPluginEngine a;
+  public final SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle a;
+  public final SwiftBrowserUIStyleHandler a;
   private WebViewClient jdField_a_of_type_ComTencentSmttSdkWebViewClient;
   protected final Object a;
-  public niz a;
-  public nnj a;
-  public nxo a;
+  public nko a;
+  public noy a;
+  public nyz a;
   private boolean jdField_a_of_type_Boolean;
   public long b;
   public final Handler b;
@@ -151,11 +151,11 @@ public abstract class AbsBaseWebViewActivity
     this.jdField_d_of_type_JavaLangString = "";
     this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_Bipn = a();
-    this.jdField_a_of_type_Birg = ((birg)this.jdField_a_of_type_Bipn.a(2));
-    this.jdField_a_of_type_Birj = this.jdField_a_of_type_Birg.jdField_a_of_type_Birj;
-    this.jdField_a_of_type_Biqp = ((biqp)this.jdField_a_of_type_Bipn.a(-1));
-    this.jdField_a_of_type_Biqx = ((biqx)this.jdField_a_of_type_Bipn.a(-2));
+    this.jdField_a_of_type_Bgvt = a();
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler = ((SwiftBrowserUIStyleHandler)this.jdField_a_of_type_Bgvt.a(2));
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.mUIStyle;
+    this.jdField_a_of_type_Bgwv = ((bgwv)this.jdField_a_of_type_Bgvt.a(-1));
+    this.jdField_a_of_type_Bgxd = ((bgxd)this.jdField_a_of_type_Bgvt.a(-2));
   }
   
   public static int a(WebViewPlugin paramWebViewPlugin, byte paramByte)
@@ -224,20 +224,20 @@ public abstract class AbsBaseWebViewActivity
     {
       this.jdField_d_of_type_Boolean = true;
       String str = getIntent().getStringExtra("url");
-      if (bitb.b(str)) {
+      if (bgzd.b(str)) {
         ThreadManager.postImmediately(new AbsBaseWebViewActivity.7(this, str), null, false);
       }
     }
   }
   
-  public bipn a()
+  public bgvt a()
   {
-    return new bipn(this, 127, null);
+    return new bgvt(this, 127, null);
   }
   
   public final TouchWebView a(ViewGroup paramViewGroup)
   {
-    noe.a("Web_qqbrowser_init_only_webview");
+    npn.a("Web_qqbrowser_init_only_webview");
     Object localObject2 = getIntent();
     long l = System.currentTimeMillis();
     Object localObject1;
@@ -253,11 +253,11 @@ public abstract class AbsBaseWebViewActivity
       WebSettings localWebSettings;
       if ((localObject1 instanceof SwiftReuseTouchWebView))
       {
-        localObject3 = this.jdField_a_of_type_Biqx;
+        localObject3 = this.jdField_a_of_type_Bgxd;
         if (1 == ((SwiftReuseTouchWebView)localObject1).b)
         {
           bool = true;
-          ((biqx)localObject3).u = bool;
+          ((bgxd)localObject3).u = bool;
         }
       }
       else
@@ -266,7 +266,7 @@ public abstract class AbsBaseWebViewActivity
           QLog.d("webviewinit", 2, "TouchWebView cost = " + (System.currentTimeMillis() - l));
         }
         ((TouchWebView)localObject1).setIntent((Intent)localObject2);
-        noe.b("Web_qqbrowser_init_only_webview");
+        npn.b("Web_qqbrowser_init_only_webview");
         if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) && (QLog.isColorLevel())) {
           QLog.w("WebLog_WebViewBase", 2, "Caution! AppRuntime is null!");
         }
@@ -276,22 +276,22 @@ public abstract class AbsBaseWebViewActivity
           this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl.bindWebView((CustomWebView)localObject1);
         }
         System.currentTimeMillis();
-        if (this.jdField_a_of_type_Nxo == null) {
-          this.jdField_a_of_type_Nxo = new abdp(this);
+        if (this.jdField_a_of_type_Nyz == null) {
+          this.jdField_a_of_type_Nyz = new aaaa(this);
         }
-        ((TouchWebView)localObject1).setWebChromeClient(this.jdField_a_of_type_Nxo);
+        ((TouchWebView)localObject1).setWebChromeClient(this.jdField_a_of_type_Nyz);
         if (this.jdField_a_of_type_ComTencentSmttSdkWebViewClient == null)
         {
           if (Build.VERSION.SDK_INT < 21) {
             break label740;
           }
-          this.jdField_a_of_type_ComTencentSmttSdkWebViewClient = new abdq(this);
+          this.jdField_a_of_type_ComTencentSmttSdkWebViewClient = new aaab(this);
         }
         ((TouchWebView)localObject1).setWebViewClient(this.jdField_a_of_type_ComTencentSmttSdkWebViewClient);
         ((TouchWebView)localObject1).setScrollBarStyle(0);
-        noe.a("Web_AdjustSettings");
+        npn.a("Web_AdjustSettings");
         localWebSettings = ((TouchWebView)localObject1).getSettings();
-        noe.a("Web_SetUserAgent");
+        npn.a("Web_SetUserAgent");
         localObject2 = localWebSettings.getUserAgentString();
         localObject3 = a();
         if (((TouchWebView)localObject1).getX5WebViewExtension() == null) {
@@ -299,8 +299,8 @@ public abstract class AbsBaseWebViewActivity
         }
         bool = true;
         label294:
-        localWebSettings.setUserAgentString(birz.a((String)localObject2, (String)localObject3, bool));
-        noe.b("Web_SetUserAgent");
+        localWebSettings.setUserAgentString(bgyb.a((String)localObject2, (String)localObject3, bool));
+        npn.b("Web_SetUserAgent");
         localWebSettings.setSavePassword(false);
         localWebSettings.setSaveFormData(false);
         localWebSettings.setBuiltInZoomControls(true);
@@ -359,13 +359,13 @@ public abstract class AbsBaseWebViewActivity
           ((TouchWebView)localObject1).requestFocus();
           label605:
           ((TouchWebView)localObject1).setFocusableInTouchMode(true);
-          ((TouchWebView)localObject1).setDownloadListener(new abds(this, (TouchWebView)localObject1));
+          ((TouchWebView)localObject1).setDownloadListener(new aaad(this, (TouchWebView)localObject1));
           CookieSyncManager.createInstance(getApplicationContext());
           if (((TouchWebView)localObject1).getX5WebViewExtension() != null)
           {
             this.h = true;
-            ((TouchWebView)localObject1).getX5WebViewExtension().setWebViewClientExtension(new abdu(this, (TouchWebView)localObject1));
-            agdz.b(getIntent(), "use_x5", "1");
+            ((TouchWebView)localObject1).getX5WebViewExtension().setWebViewClientExtension(new aaaf(this, (TouchWebView)localObject1));
+            aewt.b(getIntent(), "use_x5", "1");
           }
           for (;;)
           {
@@ -373,7 +373,7 @@ public abstract class AbsBaseWebViewActivity
             if (this.jdField_f_of_type_Boolean) {
               ((TouchWebView)localObject1).setMask(true);
             }
-            noe.b("Web_AdjustSettings");
+            npn.b("Web_AdjustSettings");
             if (paramViewGroup != null) {
               paramViewGroup.addView((View)localObject1);
             }
@@ -383,7 +383,7 @@ public abstract class AbsBaseWebViewActivity
             bool = false;
             break label64;
             label740:
-            this.jdField_a_of_type_ComTencentSmttSdkWebViewClient = new abdr(this);
+            this.jdField_a_of_type_ComTencentSmttSdkWebViewClient = new aaac(this);
             break label236;
             label755:
             bool = false;
@@ -396,7 +396,7 @@ public abstract class AbsBaseWebViewActivity
             label773:
             bool = false;
             break label393;
-            agdz.b(getIntent(), "use_x5", "2");
+            aewt.b(getIntent(), "use_x5", "2");
           }
         }
         catch (Exception localException)
@@ -465,7 +465,7 @@ public abstract class AbsBaseWebViewActivity
       if (!paramBoolean) {
         break label70;
       }
-      this.jdField_a_of_type_Birj.jdField_e_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.hideMore = true;
       this.rightViewText.setVisibility(8);
       this.rightViewImg.setVisibility(8);
       if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
@@ -503,10 +503,10 @@ public abstract class AbsBaseWebViewActivity
             this.rightViewImg.setOnClickListener(this);
             this.rightViewText.setOnClickListener(this);
             this.jdField_e_of_type_JavaLangString = paramString1.trim();
-            if ((this.jdField_a_of_type_Birj.a == null) || (!this.jdField_a_of_type_Birj.a.has("txtclr"))) {
+            if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.transparentTitlebarConfig == null) || (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.transparentTitlebarConfig.has("txtclr"))) {
               continue;
             }
-            paramString2 = this.jdField_a_of_type_Birj.a.optString("txtclr", "");
+            paramString2 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.transparentTitlebarConfig.optString("txtclr", "");
             if (TextUtils.isEmpty(paramString2)) {
               continue;
             }
@@ -517,7 +517,7 @@ public abstract class AbsBaseWebViewActivity
             try
             {
               paramInt1 = Color.parseColor(paramString1);
-              paramString1 = nnw.a(this.rightViewImg.getDrawable(), paramInt1);
+              paramString1 = npg.a(this.rightViewImg.getDrawable(), paramInt1);
               if (paramString1 != null) {
                 this.rightViewImg.setImageDrawable(paramString1);
               }
@@ -545,12 +545,12 @@ public abstract class AbsBaseWebViewActivity
     }
     this.rightViewText.setVisibility(8);
     this.rightViewImg.setVisibility(0);
-    paramString3 = this.jdField_a_of_type_Birj;
+    paramString3 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle;
     if (paramInt1 != 4)
     {
       paramBoolean = true;
       label380:
-      paramString3.jdField_e_of_type_Boolean = paramBoolean;
+      paramString3.hideMore = paramBoolean;
       switch (paramInt1)
       {
       case 6: 
@@ -562,10 +562,10 @@ public abstract class AbsBaseWebViewActivity
           if (this.jdField_a_of_type_AndroidWidgetImageView == null)
           {
             this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this);
-            paramString3 = (RelativeLayout)findViewById(2131376875);
+            paramString3 = (RelativeLayout)findViewById(2131376632);
             RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-            localLayoutParams.addRule(7, 2131369056);
-            localLayoutParams.addRule(6, 2131369056);
+            localLayoutParams.addRule(7, 2131369082);
+            localLayoutParams.addRule(6, 2131369082);
             localLayoutParams.setMargins(0, 0, 0, 0);
             this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
             paramString3.addView(this.jdField_a_of_type_AndroidWidgetImageView);
@@ -595,35 +595,35 @@ public abstract class AbsBaseWebViewActivity
       break;
       paramBoolean = false;
       break label380;
-      this.jdField_a_of_type_Birg.a(this.rightViewImg, false, 2130843831, 2130843831);
-      this.rightViewImg.setContentDescription(getResources().getString(2131692391));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.setDefaultThemeIcon(this.rightViewImg, false, 2130843893, 2130843893);
+      this.rightViewImg.setContentDescription(getResources().getString(2131692439));
       break label457;
-      this.jdField_a_of_type_Birg.a(this.rightViewImg, false, 2130843830, 2130843830);
-      this.rightViewImg.setContentDescription(getResources().getString(2131692390));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.setDefaultThemeIcon(this.rightViewImg, false, 2130843892, 2130843892);
+      this.rightViewImg.setContentDescription(getResources().getString(2131692438));
       break label457;
-      this.jdField_a_of_type_Birg.a(this.rightViewImg, false, 2130840295, 2130840291);
-      this.rightViewImg.setContentDescription(getResources().getString(2131692392));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.setDefaultThemeIcon(this.rightViewImg, false, 2130840333, 2130840329);
+      this.rightViewImg.setContentDescription(getResources().getString(2131692440));
       break label457;
-      this.jdField_a_of_type_Birg.a(this.rightViewImg, false, 2130839377, 2130839369);
-      this.rightViewImg.setContentDescription(getResources().getString(2131692394));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.setDefaultThemeIcon(this.rightViewImg, false, 2130839412, 2130839404);
+      this.rightViewImg.setContentDescription(getResources().getString(2131692442));
       break label457;
-      this.rightViewImg.setImageResource(2130843875);
-      this.rightViewImg.setContentDescription(getResources().getString(2131692395));
+      this.rightViewImg.setImageResource(2130843937);
+      this.rightViewImg.setContentDescription(getResources().getString(2131692443));
       ((AnimationDrawable)this.rightViewImg.getDrawable()).start();
       break label457;
-      this.jdField_a_of_type_Birg.a(this.rightViewImg, false, 2130842491, 2130842494);
-      this.rightViewImg.setContentDescription(getResources().getString(2131689551));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.setDefaultThemeIcon(this.rightViewImg, false, 2130842537, 2130842540);
+      this.rightViewImg.setContentDescription(getResources().getString(2131689550));
       break label457;
-      this.jdField_a_of_type_Birg.a(this.rightViewImg, false, 2130850135, 2130850139);
-      this.rightViewImg.setContentDescription(getResources().getString(2131689551));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.setDefaultThemeIcon(this.rightViewImg, false, 2130850052, 2130850056);
+      this.rightViewImg.setContentDescription(getResources().getString(2131689550));
       break label457;
-      this.jdField_a_of_type_Birg.a(this.rightViewImg, false, 2130838914, 2130838914);
-      this.rightViewImg.setContentDescription(getResources().getString(2131692393));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.setDefaultThemeIcon(this.rightViewImg, false, 2130838942, 2130838942);
+      this.rightViewImg.setContentDescription(getResources().getString(2131692441));
       break label457;
-      this.jdField_a_of_type_Birg.a(this.rightViewImg, false, 2130850312, 2130850312);
-      this.rightViewImg.setContentDescription(getResources().getString(2131692393));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.setDefaultThemeIcon(this.rightViewImg, false, 2130850233, 2130850233);
+      this.rightViewImg.setContentDescription(getResources().getString(2131692441));
       break label457;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843653);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843715);
       break label589;
       if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
         break label589;
@@ -696,8 +696,9 @@ public abstract class AbsBaseWebViewActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -745,7 +746,7 @@ public abstract class AbsBaseWebViewActivity
           } while (!QLog.isColorLevel());
           QLog.w("WebLog_WebViewBase", 2, "Caution! activity result not handled!");
           return;
-          if ((this.jdField_a_of_type_Nnj == null) || (!this.jdField_a_of_type_Nnj.a(paramInt1, paramInt2, paramIntent))) {
+          if ((this.jdField_a_of_type_Noy == null) || (!this.jdField_a_of_type_Noy.a(paramInt1, paramInt2, paramIntent))) {
             break;
           }
         } while (!QLog.isColorLevel());
@@ -806,10 +807,10 @@ public abstract class AbsBaseWebViewActivity
     QQBrowserActivity.d += 1;
     this.jdField_f_of_type_Boolean = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
     setTheme(2131755152);
-    this.jdField_a_of_type_Niz = niz.a();
+    this.jdField_a_of_type_Nko = nko.a();
     WebAccelerateHelper.isWebViewCache = true;
     QLog.d("WebLog_WebViewBase", 1, "doOnCreate, WebAccelerateHelper.isWebViewCache = true");
-    paramBundle = this.jdField_a_of_type_Biqx;
+    paramBundle = this.jdField_a_of_type_Bgxd;
     this.jdField_c_of_type_Boolean = false;
     paramBundle.l = false;
     this.jdField_f_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
@@ -825,11 +826,11 @@ public abstract class AbsBaseWebViewActivity
       QLog.d("WebLog_WebViewBase", 2, "onDestroy");
     }
     QQBrowserActivity.d -= 1;
-    Object localObject = this.jdField_a_of_type_Biqx;
+    Object localObject = this.jdField_a_of_type_Bgxd;
     this.jdField_c_of_type_Boolean = true;
-    ((biqx)localObject).l = true;
-    if (this.jdField_a_of_type_Nxo != null) {
-      this.jdField_a_of_type_Nxo.a();
+    ((bgxd)localObject).l = true;
+    if (this.jdField_a_of_type_Nyz != null) {
+      this.jdField_a_of_type_Nyz.a();
     }
     if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
     {
@@ -964,8 +965,8 @@ public abstract class AbsBaseWebViewActivity
     if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {
       this.jdField_a_of_type_ComTencentBizUiTouchWebView.onPause();
     }
-    if ((this.jdField_a_of_type_Nxo != null) && (this.jdField_e_of_type_Boolean)) {
-      this.jdField_a_of_type_Nxo.onHideCustomView();
+    if ((this.jdField_a_of_type_Nyz != null) && (this.jdField_e_of_type_Boolean)) {
+      this.jdField_a_of_type_Nyz.onHideCustomView();
     }
     a(8589934597L, null);
     String str = BridgeHelper.a(getActivity(), this.jdField_f_of_type_JavaLangString).a("buscard_registerNFC");
@@ -1020,9 +1021,9 @@ public abstract class AbsBaseWebViewActivity
     }
   }
   
-  public bipn getComponentProvider()
+  public bgvt getComponentProvider()
   {
-    return this.jdField_a_of_type_Bipn;
+    return this.jdField_a_of_type_Bgvt;
   }
   
   public Activity getHostActivity()
@@ -1049,20 +1050,20 @@ public abstract class AbsBaseWebViewActivity
   {
     super.init(paramIntent);
     if (this.vg != null) {
-      this.vg.setOnTouchListener(new abdt(this));
+      this.vg.setOnTouchListener(new aaae(this));
     }
     removeWebViewLayerType();
-    this.jdField_a_of_type_Binq.jdField_a_of_type_AndroidWidgetTextView = this.leftView;
-    this.jdField_a_of_type_Binq.b = this.centerView;
-    this.jdField_a_of_type_Binq.c = this.rightViewText;
-    this.jdField_a_of_type_Binq.jdField_a_of_type_AndroidWidgetImageView = this.rightViewImg;
-    this.jdField_a_of_type_Binq.jdField_a_of_type_AndroidViewViewGroup = this.vg;
+    this.jdField_a_of_type_Bgtw.leftView = this.leftView;
+    this.jdField_a_of_type_Bgtw.centerView = this.centerView;
+    this.jdField_a_of_type_Bgtw.rightViewText = this.rightViewText;
+    this.jdField_a_of_type_Bgtw.rightViewImg = this.rightViewImg;
+    this.jdField_a_of_type_Bgtw.titleContainer = this.vg;
   }
   
   public boolean onBackEvent()
   {
-    if ((this.jdField_a_of_type_Nxo != null) && (this.jdField_e_of_type_Boolean)) {
-      this.jdField_a_of_type_Nxo.onHideCustomView();
+    if ((this.jdField_a_of_type_Nyz != null) && (this.jdField_e_of_type_Boolean)) {
+      this.jdField_a_of_type_Nyz.onHideCustomView();
     }
     WebViewPluginEngine localWebViewPluginEngine;
     do
@@ -1092,9 +1093,9 @@ public abstract class AbsBaseWebViewActivity
     if ((localObject != null) && (getCurrentFocus() != null)) {
       ((InputMethodManager)localObject).hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
     }
-    if ((this.jdField_a_of_type_Nxo != null) && (this.jdField_e_of_type_Boolean))
+    if ((this.jdField_a_of_type_Nyz != null) && (this.jdField_e_of_type_Boolean))
     {
-      this.jdField_a_of_type_Nxo.onHideCustomView();
+      this.jdField_a_of_type_Nyz.onHideCustomView();
       return true;
     }
     finish();
@@ -1119,13 +1120,13 @@ public abstract class AbsBaseWebViewActivity
   public void onCreate(Bundle paramBundle)
   {
     c();
-    birw.a().a();
-    String str = birz.a(getIntent());
+    bgxy.a().a();
+    String str = bgyb.a(getIntent());
     WebAccelerateHelper.getInstance().preGetKey(str, getIntent(), this.jdField_a_of_type_ComTencentCommonAppAppInterface);
     WebAccelerateHelper.getInstance().preCheckOffline(str);
     WebAccelerateHelper.getInstance().preFetchResource(str);
-    this.jdField_a_of_type_Birg.c();
-    this.jdField_a_of_type_Binq = this.jdField_a_of_type_Birg.jdField_a_of_type_Binq;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.createUI();
+    this.jdField_a_of_type_Bgtw = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.mSwiftTitleUI;
     boolean bool = WebAccelerateHelper.isWebViewCache;
     a(str);
     ThreadManager.getFileThreadHandler().post(new AbsBaseWebViewActivity.6(this, bool));
@@ -1153,9 +1154,9 @@ public abstract class AbsBaseWebViewActivity
       this.jdField_f_of_type_Boolean = ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
       a(8589934604L, null);
     }
-    if ((this.mSystemBarComp != null) && (!this.jdField_a_of_type_Birj.i))
+    if ((this.mSystemBarComp != null) && (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.mUsingCustomTitleBarColor))
     {
-      int i = getResources().getColor(2131167048);
+      int i = getResources().getColor(2131167070);
       this.mSystemBarComp.setStatusColor(i);
       this.mSystemBarComp.setStatusBarColor(i);
     }
@@ -1190,8 +1191,8 @@ public abstract class AbsBaseWebViewActivity
       this.mSystemBarComp.init();
     }
     overridePendingTransition(0, 0);
-    setContentViewNoTitle(2131558753);
-    ((TextView)findViewById(2131371450)).setText(2131691926);
+    setContentViewNoTitle(2131558761);
+    ((TextView)findViewById(2131371418)).setText(2131691972);
     return true;
   }
   

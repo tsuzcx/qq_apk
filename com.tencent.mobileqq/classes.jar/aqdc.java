@@ -1,23 +1,69 @@
-import android.content.Context;
-import com.tencent.ark.open.ArkAppCacheMgr;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aqdc
-  implements ArkAppMgr.IGetAppPathByNameCallback
+public class aqdc
+  extends aptq<aqda>
 {
-  aqdc(aqcz paramaqcz, String paramString, Context paramContext) {}
-  
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  @NonNull
+  public aqda a(int paramInt)
   {
-    if ((paramInt == 0) && (paramAppPathInfo.path != null)) {
-      ArkAppCacheMgr.getAppIcon(this.jdField_a_of_type_JavaLangString, new aqdd(this));
+    return new aqda();
+  }
+  
+  @Nullable
+  public aqda a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    {
+      new aqda();
+      return aqda.a(paramArrayOfaptx);
     }
+    return null;
+  }
+  
+  public void a(aqda paramaqda)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocsPushProcessor", 2, "onUpdate " + paramaqda.toString());
+    }
+  }
+  
+  public Class<aqda> clazz()
+  {
+    return aqda.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 418;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqdc
  * JD-Core Version:    0.7.0.1
  */

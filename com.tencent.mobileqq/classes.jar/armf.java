@@ -1,93 +1,45 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.graphics.Rect;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
-public abstract class armf<T>
-  extends arac<T>
+public class armf
+  extends RecyclerView.ItemDecoration
 {
-  @NonNull
-  public abstract T a();
+  private int a;
+  private int b;
+  private int c;
+  private int d;
   
-  @NonNull
-  public abstract T a(@NonNull araj[] paramArrayOfaraj);
-  
-  @NonNull
-  public abstract T b();
-  
-  public boolean isAccountRelated()
+  public armf(Fragment paramFragment)
   {
-    return true;
+    this.a = AIOUtils.dp2px(11.0F, paramFragment.getResources());
+    this.b = AIOUtils.dp2px(11.0F, paramFragment.getResources());
+    this.c = AIOUtils.dp2px(8.0F, paramFragment.getResources());
+    this.d = AIOUtils.dp2px(8.0F, paramFragment.getResources());
   }
   
-  public boolean isNeedCompressed()
+  public void getItemOffsets(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
   {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  @NonNull
-  public T migrateOldOrDefaultContent(int paramInt)
-  {
-    Object localObject1 = null;
-    if (paramInt == 1) {
-      localObject1 = b();
-    }
-    for (;;)
+    int i = paramRecyclerView.getAdapter().getItemCount();
+    if (paramRecyclerView.getAdapter().getItemViewType(paramInt) == 6)
     {
-      Object localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        znw.a(getClass().getName() + ".migrateOldOrDefaultContent return null!! type=" + paramInt, new Object[0]);
-        localObject2 = a();
-      }
-      return localObject2;
-      if (paramInt == 0) {
-        localObject1 = a();
-      } else {
-        znw.a(getClass().getName() + ".migrateOldOrDefaultContent illegal type: " + paramInt, new Object[0]);
-      }
+      paramRect.set(0, this.a, 0, 0);
+      return;
     }
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  @Nullable
-  public T onParsed(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0))
+    if (paramInt == i - 1)
     {
-      yuk.e("QVipConfigProcessor", getClass().getName() + ".onParsed error: confFiles is empty");
-      paramArrayOfaraj = a();
-      if (paramArrayOfaraj != null) {}
-      for (boolean bool = true;; bool = false)
-      {
-        znw.a(bool, getClass().getName() + ".onParsed error: confFiles is empty");
-        return paramArrayOfaraj;
-      }
+      paramRect.set(this.c, this.a, this.d, this.b);
+      return;
     }
-    yuk.d("QVipConfigProcessor", getClass().getName() + ".parsed content count=" + paramArrayOfaraj.length);
-    return a(paramArrayOfaraj);
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    yuk.e("QVipConfigProcessor", getClass().getName() + ".onReqFailed: " + paramInt);
-  }
-  
-  public void onUpdate(T paramT)
-  {
-    yuk.d("QVipConfigProcessor", getClass().getName() + ".onUpdate: " + paramT);
+    paramRect.set(this.c, this.a, this.d, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     armf
  * JD-Core Version:    0.7.0.1
  */

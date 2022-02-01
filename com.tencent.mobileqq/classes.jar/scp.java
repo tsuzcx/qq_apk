@@ -1,36 +1,46 @@
-import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGDownloadListener.1;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGDownloadListener.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.util.HashMap;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class scp
-  implements sct
+public class scp
+  implements DownloadListener
 {
-  scp(sco paramsco) {}
+  private HashMap<String, scq> a = new HashMap();
   
-  public void a(scv paramscv)
+  public void a(String paramString, scq paramscq)
   {
-    sco.a(this.a, 2);
-    sco localsco = this.a;
-    String str;
-    if (paramscv.jdField_a_of_type_JavaLangString == null)
-    {
-      str = "";
-      sco.a(localsco, str);
-      if (paramscv.jdField_a_of_type_Int != 1) {
-        break label78;
-      }
-      sco.b(this.a, 1);
-    }
-    for (;;)
-    {
-      if (sco.a(this.a) != null) {
-        sco.a(this.a).onPrepared();
-      }
-      return;
-      str = paramscv.jdField_a_of_type_JavaLangString;
-      break;
-      label78:
-      sco.b(this.a, 0);
-    }
+    this.a.remove(paramString);
+    this.a.put(paramString, paramscq);
   }
+  
+  public void installSucceed(String paramString1, String paramString2)
+  {
+    ThreadManager.getUIHandler().postDelayed(new VideoFeedsUGDownloadListener.2(this, paramString2), 1000L);
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2) {}
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    ThreadManager.getUIHandler().post(new VideoFeedsUGDownloadListener.1(this, paramDownloadInfo));
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo) {}
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList) {}
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo) {}
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

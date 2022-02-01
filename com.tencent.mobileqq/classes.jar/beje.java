@@ -1,33 +1,25 @@
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.theme.effect.QEffectLottieImageView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.effect.engine.QEffectData;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
 
 public class beje
-  implements OnCompositionLoadedListener
+  implements QQPermissionCallback
 {
-  public beje(QEffectLottieImageView paramQEffectLottieImageView) {}
+  public beje(PublishHomeWorkFragment paramPublishHomeWorkFragment, int paramInt) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((QLog.isColorLevel()) || (paramLottieComposition == null)) {
-      QLog.e("QEffectLottieImageView", 1, "onCompositionLoaded: composition= " + paramLottieComposition);
-    }
-    if (paramLottieComposition == null) {
-      return;
-    }
-    if (QEffectLottieImageView.a(this.a))
-    {
-      QLog.e("QEffectLottieImageView", 1, "onCompositionLoaded: mIsStop " + QEffectLottieImageView.a(this.a));
-      return;
-    }
-    this.a.cancelAnimation();
-    this.a.setComposition(paramLottieComposition);
-    this.a.setProgress(0.0F);
-    this.a.setRepeatCount(QEffectLottieImageView.a(this.a).repeat);
-    this.a.setVisibility(0);
-    this.a.playAnimation();
+    bfur.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    paramArrayOfString = TroopHWJsPlugin.a(10 - this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a.getCurrentAccountUin());
+    paramArrayOfString.putExtra("HomeWorkConstants:homework_request_code_key", 259);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.startActivityForResult(paramArrayOfString, 259);
+    bjmm.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity());
   }
 }
 

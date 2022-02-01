@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.debug.activities;
 
-import wry;
-import wtf;
+import vto;
+import vuv;
 
 public class DebugPromoteTaskCode$3
   implements Runnable
 {
-  public DebugPromoteTaskCode$3(wry paramwry) {}
+  public DebugPromoteTaskCode$3(vto paramvto) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class DebugPromoteTaskCode$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.3
  * JD-Core Version:    0.7.0.1
  */

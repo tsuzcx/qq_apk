@@ -1,27 +1,59 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSLiteSwitchManager.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class qny
-  implements View.OnClickListener
 {
-  public qny(ComponentContentGalleryBiu paramComponentContentGalleryBiu, ArticleInfo paramArticleInfo, long paramLong, String paramString, int paramInt) {}
+  private static volatile qny jdField_a_of_type_Qny;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b = true;
   
-  public void onClick(View paramView)
+  public static qny a()
   {
-    if (ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu) == null) {}
-    for (;;)
+    if (jdField_a_of_type_Qny == null) {}
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      int i = ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu));
-      sgc localsgc = ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu).a();
-      if (localsgc != null) {
-        localsgc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, i, ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu), this.jdField_a_of_type_Int);
+      if (jdField_a_of_type_Qny == null) {
+        jdField_a_of_type_Qny = new qny();
       }
+      return jdField_a_of_type_Qny;
     }
+    finally {}
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.b = true;
+    qnr.c();
+  }
+  
+  private boolean c()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  private boolean d()
+  {
+    return this.b;
+  }
+  
+  void a()
+  {
+    b();
+    PTSLiteSwitchManager.1 local1 = new PTSLiteSwitchManager.1(this);
+    ThreadManager.getFileThreadHandler().post(local1);
+  }
+  
+  public boolean a()
+  {
+    return (d()) && (qnb.a().a());
+  }
+  
+  @Deprecated
+  public boolean b()
+  {
+    return (c()) && (qnb.a().a());
   }
 }
 

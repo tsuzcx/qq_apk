@@ -1,73 +1,34 @@
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import tencent.mobileim.structmsg.structmsg.RspHead;
+import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
 
 class anmn
-  implements beuq
+  implements ProtoReqManager.IProtoRespBack
 {
-  anmn(anmm paramanmm, String paramString, anmk paramanmk) {}
+  anmn(anmf paramanmf, long paramLong1, long paramLong2, long paramLong3) {}
   
-  public void onResp(bevm parambevm)
+  public void onProtoResp(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
   {
-    beum localbeum = (beum)parambevm.jdField_a_of_type_Bevl;
-    if (this.jdField_a_of_type_Anmm.jdField_a_of_type_Beum == localbeum) {
-      this.jdField_a_of_type_Anmm.jdField_a_of_type_Beum = null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("TMG_Downloader", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localbeum.jdField_a_of_type_JavaLangString, Integer.valueOf(parambevm.jdField_a_of_type_Int), Integer.valueOf(parambevm.c), this.jdField_a_of_type_JavaLangString }));
-    }
-    if (parambevm.jdField_a_of_type_Int == 0)
+    try
     {
-      parambevm = new File(localbeum.c);
-      if (!parambevm.exists()) {}
-    }
-    do
-    {
-      for (;;)
-      {
-        try
-        {
-          parambevm = parambevm.getParent();
-          bhmi.a(localbeum.c, parambevm, false);
-          anml.a(this.jdField_a_of_type_Anmk.b);
-          i = 1;
-          if (i == 0) {
-            break;
-          }
-          if (this.jdField_a_of_type_Anmm.jdField_a_of_type_Anmo != null)
-          {
-            this.jdField_a_of_type_Anmm.jdField_a_of_type_Anmo.a(100);
-            this.jdField_a_of_type_Anmm.jdField_a_of_type_Anmo.a(0, "Download Complete!!!");
-          }
-          this.jdField_a_of_type_Anmm.jdField_a_of_type_Boolean = false;
-          return;
-        }
-        catch (Exception parambevm)
-        {
-          parambevm.printStackTrace();
-        }
-        int i = 0;
-      }
-    } while (this.jdField_a_of_type_Anmm.jdField_a_of_type_Anmo == null);
-    this.jdField_a_of_type_Anmm.jdField_a_of_type_Anmo.a(2, "");
-  }
-  
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2)
-  {
-    int i;
-    if (paramLong2 == 0L) {
-      i = 0;
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Anmm.jdField_a_of_type_Anmo != null) {
-        this.jdField_a_of_type_Anmm.jdField_a_of_type_Anmo.a(i);
+      paramProtoResp = paramProtoResp.resp.getWupBuffer();
+      paramProtoReq = new structmsg.RspSystemMsgRead();
+      paramProtoReq.mergeFrom(paramProtoResp);
+      int i = paramProtoReq.head.result.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.systemmsg.", 2, "sendGroupSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
       }
       return;
-      if (paramLong1 >= paramLong2) {
-        i = 99;
-      } else {
-        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-      }
+    }
+    catch (Exception paramProtoResp)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramProtoResp);
     }
   }
 }

@@ -1,19 +1,7 @@
 package com.tencent.biz.troop.file;
 
 import Override;
-import aaun;
-import aauo;
-import aaup;
-import aauq;
-import aaur;
-import aaus;
-import aaut;
-import aauu;
-import aauw;
-import aavc;
-import aavg;
-import abhn;
-import agej;
+import aady;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -33,38 +21,50 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import bdll;
-import bfrs;
-import bgrn;
-import bgsk;
-import bjbs;
-import bljm;
+import bcef;
+import bebc;
+import bfbb;
+import bfby;
+import bhht;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
+import zra;
+import zrb;
+import zrc;
+import zrd;
+import zre;
+import zrf;
+import zrg;
+import zrh;
+import zrj;
+import zrp;
+import zrt;
 
 public class MoveFileActivity
   extends IphoneTitleBarActivity
-  implements View.OnClickListener, bljm
+  implements View.OnClickListener, AdapterView.OnItemClickListener
 {
   public int a;
   public long a;
-  private aauu jdField_a_of_type_Aauu = new aauu(this, null);
-  private aavc jdField_a_of_type_Aavc = new aaut(this);
-  private aavg jdField_a_of_type_Aavg = new aaup(this);
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bgrn jdField_a_of_type_Bgrn;
-  private bjbs jdField_a_of_type_Bjbs;
+  private bfbb jdField_a_of_type_Bfbb;
+  private bhht jdField_a_of_type_Bhht;
   private ByteStringMicro jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = ByteStringMicro.copyFromUtf8("");
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   public String a;
-  private ArrayList<bfrs> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<bebc> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private zrh jdField_a_of_type_Zrh = new zrh(this, null);
+  private zrp jdField_a_of_type_Zrp = new zrg(this);
+  private zrt jdField_a_of_type_Zrt = new zrc(this);
   public boolean a;
   private int jdField_b_of_type_Int = -1;
   private String jdField_b_of_type_JavaLangString;
@@ -108,19 +108,19 @@ public class MoveFileActivity
   
   public void a()
   {
-    aauw.a(this.app, this.jdField_a_of_type_Long, this.jdField_d_of_type_Int, 0, this.jdField_c_of_type_Int, 3, 1, "/", 1, 0L, this.e, this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro, this.jdField_a_of_type_Aavg);
+    zrj.a(this.app, this.jdField_a_of_type_Long, this.jdField_d_of_type_Int, 0, this.jdField_c_of_type_Int, 3, 1, "/", 1, 0L, this.e, this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro, this.jdField_a_of_type_Zrt);
   }
   
   public void a(int paramInt)
   {
     try
     {
-      if (this.jdField_a_of_type_Bjbs == null) {
-        this.jdField_a_of_type_Bjbs = new bjbs(this, getTitleBarHeight());
+      if (this.jdField_a_of_type_Bhht == null) {
+        this.jdField_a_of_type_Bhht = new bhht(this, getTitleBarHeight());
       }
-      this.jdField_a_of_type_Bjbs.c(paramInt);
-      this.jdField_a_of_type_Bjbs.c(false);
-      this.jdField_a_of_type_Bjbs.show();
+      this.jdField_a_of_type_Bhht.c(paramInt);
+      this.jdField_a_of_type_Bhht.c(false);
+      this.jdField_a_of_type_Bhht.show();
       return;
     }
     catch (Exception localException)
@@ -132,19 +132,19 @@ public class MoveFileActivity
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    paramString1 = abhn.a(this, paramString1, "", 2131690580, 2131690912, new aauq(this), new aaur(this));
+    paramString1 = aady.a(this, paramString1, "", 2131690620, 2131690952, new zrd(this), new zre(this));
     paramString2 = paramString1.getEditText();
     if (!TextUtils.isEmpty(paramString3)) {
       paramString2.setText(paramString3);
     }
     paramString2.setFilters(new InputFilter[] { new InputFilter.LengthFilter(48) });
-    paramString2.setHint(2131696940);
-    paramString2.addTextChangedListener(new aaus(this, paramString2, paramString1));
+    paramString2.setHint(2131697082);
+    paramString2.addTextChangedListener(new zrf(this, paramString2, paramString1));
     if (!TextUtils.isEmpty(paramString4)) {
       paramString1.a(paramString4, -65536);
     }
     paramString1.getBtnight().setEnabled(false);
-    paramString1.getBtnight().setTextColor(getResources().getColor(2131165613));
+    paramString1.getBtnight().setTextColor(getResources().getColor(2131165621));
     paramString1.show();
     new Handler(getMainLooper()).post(new MoveFileActivity.7(this, paramString2));
   }
@@ -162,8 +162,8 @@ public class MoveFileActivity
       return;
     }
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718364);
-    Drawable localDrawable = getResources().getDrawable(2130839410);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718606);
+    Drawable localDrawable = getResources().getDrawable(2130839445);
     localDrawable.setBounds(0, 0, localDrawable.getMinimumWidth(), localDrawable.getMinimumHeight());
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
     ((Animatable)localDrawable).start();
@@ -173,8 +173,8 @@ public class MoveFileActivity
   {
     try
     {
-      if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing())) {
-        this.jdField_a_of_type_Bjbs.dismiss();
+      if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing())) {
+        this.jdField_a_of_type_Bhht.dismiss();
       }
       return;
     }
@@ -188,8 +188,9 @@ public class MoveFileActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -222,37 +223,37 @@ public class MoveFileActivity
       finish();
       return false;
     }
-    this.jdField_a_of_type_Bgrn = bgrn.a(this.app, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Bfbb = bfbb.a(this.app, this.jdField_a_of_type_Long);
     paramBundle = (LayoutInflater)getSystemService("layout_inflater");
-    localObject = paramBundle.inflate(2131560606, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)((View)localObject).findViewById(2131364907));
+    localObject = paramBundle.inflate(2131560616, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)((View)localObject).findViewById(2131364934));
     this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetXListView.setFocusable(false);
     this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
-    TextView localTextView = (TextView)((View)localObject).findViewById(2131365198);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)((View)localObject).findViewById(2131364956));
+    TextView localTextView = (TextView)((View)localObject).findViewById(2131365223);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)((View)localObject).findViewById(2131364983));
     localTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     setContentView((View)localObject);
-    setTitle(2131696930);
-    localTextView = (TextView)findViewById(2131369073);
-    localTextView.setText(2131690580);
+    setTitle(2131697072);
+    localTextView = (TextView)findViewById(2131369099);
+    localTextView.setText(2131690620);
     localTextView.setOnClickListener(this);
     localTextView.setVisibility(0);
     this.leftView.setVisibility(8);
-    localObject = (TextView)((View)localObject).findViewById(2131366640);
-    TextUtils.ellipsize(this.jdField_d_of_type_JavaLangString, ((TextView)localObject).getPaint(), agej.a(230.0F, getResources()), TextUtils.TruncateAt.MIDDLE, false, new aaun(this, (TextView)localObject));
-    this.jdField_a_of_type_AndroidViewView = paramBundle.inflate(2131560611, null);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131373853).setBackgroundResource(2130838778);
+    localObject = (TextView)((View)localObject).findViewById(2131366667);
+    TextUtils.ellipsize(this.jdField_d_of_type_JavaLangString, ((TextView)localObject).getPaint(), AIOUtils.dp2px(230.0F, getResources()), TextUtils.TruncateAt.MIDDLE, false, new zra(this, (TextView)localObject));
+    this.jdField_a_of_type_AndroidViewView = paramBundle.inflate(2131560621, null);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131373775).setBackgroundResource(2130838891);
     this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidViewView);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373854));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131166990));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this.jdField_a_of_type_Aauu);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Aauu);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373776));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167012));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this.jdField_a_of_type_Zrh);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Zrh);
     c();
-    bdll.b(this.app, "P_CliOper", "Grp_files", "", "file", "move_file", 0, 0, Long.toString(this.jdField_a_of_type_Long), "", "", "");
+    bcef.b(this.app, "P_CliOper", "Grp_files", "", "file", "move_file", 0, 0, Long.toString(this.jdField_a_of_type_Long), "", "", "");
     return true;
   }
   
@@ -270,16 +271,16 @@ public class MoveFileActivity
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bdll.b(this.app, "P_CliOper", "Grp_files", "", "file", "move_cancel", 0, 0, Long.toString(this.jdField_a_of_type_Long), "", "", "");
+      bcef.b(this.app, "P_CliOper", "Grp_files", "", "file", "move_cancel", 0, 0, Long.toString(this.jdField_a_of_type_Long), "", "", "");
       finish();
       overridePendingTransition(0, 2130772001);
       continue;
-      if (bgsk.a(this.app, this, this.jdField_a_of_type_Long) != 0)
+      if (bfby.a(this.app, this, this.jdField_a_of_type_Long) != 0)
       {
-        a(getResources().getString(2131696864), null, this.jdField_a_of_type_JavaLangString, "");
+        a(getResources().getString(2131697005), null, this.jdField_a_of_type_JavaLangString, "");
         continue;
-        bfrs localbfrs = (bfrs)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int);
-        if (this.jdField_b_of_type_JavaLangString.equals(localbfrs.jdField_b_of_type_JavaLangString))
+        bebc localbebc = (bebc)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_b_of_type_Int);
+        if (this.jdField_b_of_type_JavaLangString.equals(localbebc.jdField_b_of_type_JavaLangString))
         {
           finish();
           overridePendingTransition(0, 2130772001);
@@ -288,10 +289,10 @@ public class MoveFileActivity
         {
           try
           {
-            if (bgsk.a(this.app, this, this.jdField_a_of_type_Long) != 0)
+            if (bfby.a(this.app, this, this.jdField_a_of_type_Long) != 0)
             {
-              aauw.a(this.app, this.jdField_a_of_type_Long, localbfrs.jdField_a_of_type_Int, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, localbfrs.jdField_b_of_type_JavaLangString, new aauo(this, localbfrs));
-              a(2131696931);
+              zrj.a(this.app, this.jdField_a_of_type_Long, localbebc.jdField_a_of_type_Int, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, localbebc.jdField_b_of_type_JavaLangString, new zrb(this, localbebc));
+              a(2131697073);
             }
           }
           catch (NumberFormatException localNumberFormatException) {}
@@ -313,10 +314,10 @@ public class MoveFileActivity
       return;
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839312);
-    this.jdField_a_of_type_AndroidWidgetButton.setTextAppearance(getActivity(), 2131755342);
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130839347);
+    this.jdField_a_of_type_AndroidWidgetButton.setTextAppearance(getActivity(), 2131755343);
     this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_Aauu.notifyDataSetChanged();
+    this.jdField_a_of_type_Zrh.notifyDataSetChanged();
   }
 }
 

@@ -1,38 +1,22 @@
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
 
 public class bhlj
-  extends MqqHandler
+  implements Animator.AnimatorListener
 {
-  private final WeakReference<Handler.Callback> a;
+  public bhlj(FloatingScreenContainer paramFloatingScreenContainer) {}
   
-  public bhlj(Handler.Callback paramCallback)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a = new WeakReference(paramCallback);
+    paramAnimator.removeAllListeners();
   }
   
-  public bhlj(Looper paramLooper, Handler.Callback paramCallback)
-  {
-    super(paramLooper);
-    this.a = new WeakReference(paramCallback);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    if (localCallback != null) {
-      localCallback.handleMessage(paramMessage);
-    }
-  }
-  
-  public String toString()
-  {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    return super.toString() + " " + localCallback;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

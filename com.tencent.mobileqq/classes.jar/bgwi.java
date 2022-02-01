@@ -1,11 +1,12 @@
-import android.view.View;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class bgwi
-  extends agrq
+class bgwi
+  implements DialogInterface.OnDismissListener
 {
-  public View a;
-  public TextView a;
+  bgwi(bgwg parambgwg) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

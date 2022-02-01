@@ -1,32 +1,41 @@
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.4;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.theme.SkinnableColorStateList;
+import java.util.ArrayList;
+import java.util.List;
 
 public class azyy
-  extends biht
+  extends azza
 {
-  public azyy(VipProfileCardPreviewActivity.4 param4) {}
-  
-  public void onDone(bihu parambihu)
+  public List<azys> a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style end download, url : %s, resultCode : %d ", new Object[] { parambihu.jdField_a_of_type_JavaLangString, Integer.valueOf(parambihu.jdField_a_of_type_Int) }));
+    ArrayList localArrayList = new ArrayList();
+    if ((paramView instanceof ImageView)) {
+      a(((ImageView)paramView).getDrawable(), localArrayList, 1);
     }
-  }
-  
-  public void onProgress(bihu parambihu)
-  {
-    int i = (int)parambihu.jdField_a_of_type_Float;
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style progress, url : %s, progress : %d", new Object[] { parambihu.jdField_a_of_type_JavaLangString, Integer.valueOf(i) }));
-    }
-  }
-  
-  public boolean onStart(bihu parambihu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style start download, url : %s, position : %s ", new Object[] { parambihu.jdField_a_of_type_JavaLangString, Integer.valueOf(this.a.jdField_a_of_type_Int) }));
-    }
-    return true;
+    do
+    {
+      do
+      {
+        return localArrayList;
+      } while (!(paramView instanceof TextView));
+      localObject = ((TextView)paramView).getCompoundDrawables();
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        a(localObject[i], localArrayList, 2);
+        i += 1;
+      }
+      localObject = ((TextView)paramView).getTextColors();
+    } while (!(localObject instanceof SkinnableColorStateList));
+    paramView = (SkinnableColorStateList)localObject;
+    Object localObject = new azys(3, ((SkinnableColorStateList)localObject).skinData);
+    ((azys)localObject).jdField_a_of_type_Array2dOfInt = paramView.getStateSpecs();
+    ((azys)localObject).jdField_a_of_type_ArrayOfInt = paramView.getColors();
+    localArrayList.add(localObject);
+    return localArrayList;
   }
 }
 

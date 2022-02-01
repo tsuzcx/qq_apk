@@ -1,22 +1,15 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class acsl
+  implements DialogInterface.OnClickListener
 {
-  public float a;
-  public float b;
-  public View f;
-  public View g;
-  public View h;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
-  public int o;
+  public acsl(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public String toString()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return " \nvideoViewScaleXby " + this.a + " videoViewScaleYby " + this.b + " videoViewXBy " + this.l + " videoViewYBy " + this.m + " btnTopMarginOffset " + this.j + " btnLeftMarginOffset " + this.k;
+    this.a.a();
   }
 }
 

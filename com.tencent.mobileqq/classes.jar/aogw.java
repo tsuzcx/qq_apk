@@ -1,48 +1,82 @@
-import com.tencent.mobileqq.addon.DiyPendantEntity;
-import com.tencent.mobileqq.addon.DiyPendantSticker;
-import com.tencent.mobileqq.app.SVIPHandler.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArraySet;
-
 public class aogw
-  implements anui
+  extends aohh
+  implements aogu
 {
-  public aogw(SVIPHandler.2 param2, amrx paramamrx) {}
+  public int a;
+  public String a;
+  public aogx[] a;
+  public int b = -1;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e = 0;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public aogw()
   {
-    try
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfAogx = null;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_Int = 0;
+  }
+  
+  public static boolean a(aogw paramaogw)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramaogw != null)
     {
-      if ((paramObject instanceof List))
+      bool1 = bool2;
+      if (paramaogw.jdField_a_of_type_Int == 0)
       {
-        paramObject = (List)paramObject;
-        if (paramObject.size() > 0)
+        bool1 = bool2;
+        if (paramaogw.b == 0)
         {
-          paramObject = paramObject.iterator();
-          while (paramObject.hasNext())
+          bool1 = bool2;
+          if (paramaogw.jdField_a_of_type_ArrayOfAogx != null)
           {
-            Iterator localIterator = ((DiyPendantEntity)paramObject.next()).getStickerInfoList().iterator();
-            while (localIterator.hasNext())
+            bool1 = bool2;
+            if (paramaogw.jdField_a_of_type_ArrayOfAogx[0].jdField_c_of_type_Int == 0)
             {
-              Object localObject = (DiyPendantSticker)localIterator.next();
-              localObject = this.jdField_a_of_type_Amrx.a((DiyPendantSticker)localObject);
-              this.jdField_a_of_type_Amrx.b.add(localObject);
+              bool1 = bool2;
+              if (paramaogw.jdField_a_of_type_ArrayOfAogx[0].a != null) {
+                bool1 = true;
+              }
             }
           }
         }
       }
-      return;
     }
-    catch (Exception paramObject)
+    return bool1;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfAogx[0].a;
+  }
+  
+  public String toString()
+  {
+    if (this.jdField_a_of_type_ArrayOfAogx != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("SVIPHandler", 2, paramObject.getMessage());
+      String str1 = "ImageTags{";
+      int i = 0;
+      for (;;)
+      {
+        str2 = str1;
+        if (i >= this.jdField_a_of_type_ArrayOfAogx.length) {
+          break;
+        }
+        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfAogx[i];
+        i += 1;
       }
     }
-    this.jdField_a_of_type_Amrx.b();
+    String str2 = "null";
+    return "ARCloudObjectClassifyResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
   }
 }
 

@@ -1,23 +1,18 @@
-import android.content.Context;
-import android.content.Intent;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
-import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class akpk
-  implements akot
+  implements adra
 {
-  public akpk(PhoneLaunchActivity paramPhoneLaunchActivity) {}
+  public akpk(LoginView paramLoginView) {}
   
-  public void a(Context paramContext, boolean paramBoolean)
+  public void a()
   {
-    PhoneLaunchActivity.a(this.a).setEnabled(true);
-    if ((!paramBoolean) && (paramContext != null))
-    {
-      Intent localIntent = new Intent(paramContext, GuideBindPhoneActivity.class);
-      localIntent.putExtra("fromKeyForContactBind", 2);
-      paramContext.startActivity(localIntent);
-    }
+    LoginView.a(this.a);
+  }
+  
+  public void b()
+  {
+    LoginView.a(this.a);
   }
 }
 

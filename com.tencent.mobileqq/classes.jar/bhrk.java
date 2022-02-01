@@ -1,83 +1,136 @@
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ProviderInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.tencent.open.agent.ChallengeBragBase;
+import com.tencent.open.base.http.HttpBaseUtil.HttpStatusException;
+import com.tencent.open.base.http.HttpBaseUtil.NetworkUnavailableException;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.SocketTimeoutException;
+import org.apache.http.conn.ConnectTimeoutException;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhrk
+  implements biaf
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "com.android.launcher.permission.READ_SETTINGS", "com.android.launcher2.permission.READ_SETTINGS", "com.android.launcher3.permission.READ_SETTINGS", "com.google.android.launcher.permission.READ_SETTINGS", "com.huawei.android.launcher.permission.READ_SETTINGS", "com.huawei.launcher2.permission.READ_SETTINGS", "com.huawei.launcher3.permission.READ_SETTINGS", "com.bbk.launcher2.permission.READ_SETTINGS", "com.huaqin.launcherEx.permission.READ_SETTINGS", "com.htc.launcher.permission.READ_SETTINGS", "com.htc.launcher.settings", "com.oppo.launcher.permission.READ_SETTINGS", "com.meizu.android.launcher.permission.READ_SETTINGS", "com.meizu.launcher2.permission.READ_SETTINGS", "com.meizu.android.launcher3.permission.READ_SETTINGS", "com.lenovo.launcher.permission.READ_SETTINGS", "com.ebproductions.android.launcher.permission.READ_SETTINGS", "com.android.mylauncher.permission.READ_SETTINGS", "com.sec.android.app.twlauncher.settings.READ_SETTINGS", "com.fede.launcher.permission.READ_SETTINGS", "net.qihoo.launcher.permission.READ_SETTINGS", "com.qihoo360.launcher.permission.READ_SETTINGS", "com.lge.launcher.permission.READ_SETTINGS", "org.adw.launcher.permission.READ_SETTINGS", "telecom.mdesk.permission.READ_SETTINGS" };
+  public bhrk(ChallengeBragBase paramChallengeBragBase) {}
   
-  public static String a(Context paramContext)
+  protected void a(Intent paramIntent)
   {
-    if (jdField_a_of_type_JavaLangString == null)
+    int i = paramIntent.getIntExtra("key_error_code", -6);
+    if (i != 0)
     {
-      jdField_a_of_type_JavaLangString = a(paramContext, jdField_a_of_type_ArrayOfJavaLangString);
-      if (jdField_a_of_type_JavaLangString == null) {
-        break label88;
-      }
+      Toast.makeText(this.a, paramIntent.getStringExtra("key_error_msg"), 0).show();
+      bhzm.e("qqBaseActivity", "onGetNickNameError{KEY_ERROR_CODE:" + i + "; KEY_ERROR_MSG:" + paramIntent.getStringExtra("key_error_msg") + "}");
     }
-    label88:
-    for (jdField_a_of_type_JavaLangString = "content://" + jdField_a_of_type_JavaLangString + "/favorites?notify=true";; jdField_a_of_type_JavaLangString = "empty")
+    this.a.setResult(-1, paramIntent);
+    this.a.finish();
+  }
+  
+  public void a(Exception paramException)
+  {
+    this.a.d();
+    bhzm.c("qqBaseActivity", "GetNickNameCallback exception." + paramException.getMessage(), paramException);
+    Intent localIntent = new Intent();
+    if ((paramException instanceof ConnectTimeoutException))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.shortcut", 2, "getShortcutUri.shortcutUri=" + jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("key_error_code", -7);
+      localIntent.putExtra("key_error_msg", bian.e);
+    }
+    for (;;)
+    {
+      a(localIntent);
+      return;
+      if ((paramException instanceof SocketTimeoutException))
+      {
+        localIntent.putExtra("key_error_code", -8);
+        localIntent.putExtra("key_error_msg", bian.f);
       }
-      return jdField_a_of_type_JavaLangString;
+      else if ((paramException instanceof MalformedURLException))
+      {
+        localIntent.putExtra("key_error_code", -3);
+        localIntent.putExtra("key_error_msg", "访问url有误!");
+      }
+      else if ((paramException instanceof HttpBaseUtil.HttpStatusException))
+      {
+        localIntent.putExtra("key_error_code", -10);
+        localIntent.putExtra("key_error_msg", "Http返回码异常!");
+      }
+      else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException))
+      {
+        localIntent.putExtra("key_error_code", -9);
+        localIntent.putExtra("key_error_msg", bian.g);
+      }
+      else if ((paramException instanceof IOException))
+      {
+        localIntent.putExtra("key_error_code", -2);
+        localIntent.putExtra("key_error_msg", bian.a);
+      }
+      else
+      {
+        localIntent.putExtra("key_error_code", -6);
+        localIntent.putExtra("key_error_msg", bian.d);
+      }
     }
   }
   
-  private static String a(Context paramContext, String[] paramArrayOfString)
+  public void a(JSONObject paramJSONObject)
   {
     try
     {
-      paramContext = paramContext.getPackageManager().getInstalledPackages(10);
-      if (paramContext != null)
+      this.a.d();
+      int i = paramJSONObject.getInt("ret");
+      String str = paramJSONObject.getString("msg");
+      if (i != 0)
       {
-        paramContext = paramContext.iterator();
-        while (paramContext.hasNext())
-        {
-          ProviderInfo[] arrayOfProviderInfo = ((PackageInfo)paramContext.next()).providers;
-          if (arrayOfProviderInfo != null)
-          {
-            int k = arrayOfProviderInfo.length;
-            int i = 0;
-            while (i < k)
-            {
-              ProviderInfo localProviderInfo = arrayOfProviderInfo[i];
-              if (localProviderInfo != null)
-              {
-                int m = paramArrayOfString.length;
-                int j = 0;
-                while (j < m)
-                {
-                  if (paramArrayOfString[j].equals(localProviderInfo.readPermission))
-                  {
-                    paramContext = localProviderInfo.authority;
-                    return paramContext;
-                  }
-                  j += 1;
-                }
-              }
-              i += 1;
-            }
-          }
-        }
+        Intent localIntent = new Intent();
+        localIntent.putExtra("key_error_code", i);
+        localIntent.putExtra("key_error_msg", str);
+        localIntent.putExtra("key_response", paramJSONObject.toString());
+        a(localIntent);
+        return;
       }
-      return null;
+      paramJSONObject = paramJSONObject.getJSONArray("data");
+      if (paramJSONObject.length() == 0)
+      {
+        paramJSONObject = new Intent();
+        paramJSONObject.putExtra("key_error_code", -5);
+        paramJSONObject.putExtra("key_error_msg", bian.c);
+        paramJSONObject.putExtra("key_error_detail", amtj.a(2131700657));
+        a(paramJSONObject);
+        return;
+      }
     }
-    catch (RuntimeException paramContext)
+    catch (JSONException paramJSONObject)
     {
-      paramContext.printStackTrace();
+      bhzm.c("qqBaseActivity", "GetNickNameCallback exception." + paramJSONObject.getMessage(), paramJSONObject);
+      paramJSONObject = new Intent();
+      paramJSONObject.putExtra("key_error_code", -4);
+      paramJSONObject.putExtra("key_error_msg", bian.b);
+      a(paramJSONObject);
+      return;
+      paramJSONObject = bhzp.a(bhzp.a(paramJSONObject.getJSONObject(0).getString("nick")), 12, true, true);
+      if ("action_brag".equals(this.a.p))
+      {
+        this.a.a.setText(this.a.getString(2131689824, new Object[] { paramJSONObject }));
+        return;
+      }
+    }
+    catch (Exception paramJSONObject)
+    {
+      a(paramJSONObject);
+      return;
+    }
+    if ("action_challenge".equals(this.a.p)) {
+      this.a.a.setText(this.a.getString(2131689828, new Object[] { paramJSONObject }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhrk
  * JD-Core Version:    0.7.0.1
  */

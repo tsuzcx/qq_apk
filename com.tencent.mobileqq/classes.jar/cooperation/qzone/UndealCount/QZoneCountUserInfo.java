@@ -8,38 +8,37 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bmwj;
-import bnjr;
 import com.qq.taf.jce.JceInputStream;
+import cooperation.qzone.util.JceUtils;
 import java.util.ArrayList;
 
 public class QZoneCountUserInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<QZoneCountUserInfo> CREATOR = new bmwj();
-  public byte a;
-  public int a;
-  public long a;
-  public PassiveFeedsPush a;
-  public String a;
-  public ArrayList<feed_info> a;
-  public int b;
+  public static final Parcelable.Creator<QZoneCountUserInfo> CREATOR = new QZoneCountUserInfo.1();
+  public int iYellowLevel;
+  public int iYellowType;
+  public byte isAnnualVip;
+  public String nickName;
+  public PassiveFeedsPush pushData;
+  public long uin;
+  public ArrayList<feed_info> vec_feedInfos;
   
   public QZoneCountUserInfo() {}
   
-  public QZoneCountUserInfo(Parcel paramParcel)
+  protected QZoneCountUserInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.b = paramParcel.readInt();
-    this.jdField_a_of_type_Byte = paramParcel.readByte();
-    this.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush = ((PassiveFeedsPush)bnjr.a(PassiveFeedsPush.class, paramParcel.createByteArray()));
-    this.jdField_a_of_type_JavaUtilArrayList = a(paramParcel);
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.uin = paramParcel.readLong();
+    this.iYellowType = paramParcel.readInt();
+    this.iYellowLevel = paramParcel.readInt();
+    this.isAnnualVip = paramParcel.readByte();
+    this.pushData = ((PassiveFeedsPush)JceUtils.decodeWup(PassiveFeedsPush.class, paramParcel.createByteArray()));
+    this.vec_feedInfos = getFeed_infos(paramParcel);
+    this.nickName = paramParcel.readString();
   }
   
   @NonNull
-  private ArrayList<feed_info> a(Parcel paramParcel)
+  private ArrayList<feed_info> getFeed_infos(Parcel paramParcel)
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new feed_info());
@@ -73,7 +72,7 @@ public class QZoneCountUserInfo
     if ((paramObject instanceof QZoneCountUserInfo))
     {
       paramObject = (QZoneCountUserInfo)paramObject;
-      if ((this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long) || (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.jdField_a_of_type_Byte == paramObject.jdField_a_of_type_Byte) || (this.b == paramObject.b)) {
+      if ((this.uin != paramObject.uin) || (this.iYellowType != paramObject.iYellowType) || (this.isAnnualVip == paramObject.isAnnualVip) || (this.iYellowLevel == paramObject.iYellowLevel)) {
         bool = false;
       }
       do
@@ -81,17 +80,17 @@ public class QZoneCountUserInfo
         do
         {
           return bool;
-          if ((this.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush != null) && (paramObject.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush != null)) {
+          if ((this.pushData != null) && (paramObject.pushData != null)) {
             break;
           }
-        } while (this.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush == paramObject.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush);
+        } while (this.pushData == paramObject.pushData);
         return false;
-        if ((this.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush.stBubbleSkin != null) && (paramObject.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush.stBubbleSkin != null)) {
+        if ((this.pushData.stBubbleSkin != null) && (paramObject.pushData.stBubbleSkin != null)) {
           break;
         }
-      } while (this.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush.stBubbleSkin == paramObject.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush.stBubbleSkin);
+      } while (this.pushData.stBubbleSkin == paramObject.pushData.stBubbleSkin);
       return false;
-      return TextUtils.equals(this.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush.stBubbleSkin.strBubbleZipUrl, paramObject.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush.stBubbleSkin.strBubbleZipUrl);
+      return TextUtils.equals(this.pushData.stBubbleSkin.strBubbleZipUrl, paramObject.pushData.stBubbleSkin.strBubbleZipUrl);
     }
     return false;
   }
@@ -99,25 +98,25 @@ public class QZoneCountUserInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     Object localObject2 = null;
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.b);
-    paramParcel.writeByte(this.jdField_a_of_type_Byte);
-    if (this.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush == null)
+    paramParcel.writeLong(this.uin);
+    paramParcel.writeInt(this.iYellowType);
+    paramParcel.writeInt(this.iYellowLevel);
+    paramParcel.writeByte(this.isAnnualVip);
+    if (this.pushData == null)
     {
       localObject1 = null;
       paramParcel.writeByteArray((byte[])localObject1);
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      if (this.vec_feedInfos != null) {
         break label84;
       }
     }
     label84:
-    for (Object localObject1 = localObject2;; localObject1 = bnjr.a(this.jdField_a_of_type_JavaUtilArrayList))
+    for (Object localObject1 = localObject2;; localObject1 = JceUtils.encodeWup(this.vec_feedInfos))
     {
       paramParcel.writeByteArray((byte[])localObject1);
-      paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+      paramParcel.writeString(this.nickName);
       return;
-      localObject1 = bnjr.a(this.jdField_a_of_type_NS_QMALL_COVERPassiveFeedsPush);
+      localObject1 = JceUtils.encodeWup(this.pushData);
       break;
     }
   }

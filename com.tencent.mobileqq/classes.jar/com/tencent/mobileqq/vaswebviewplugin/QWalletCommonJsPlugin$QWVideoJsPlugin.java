@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import aldt;
+import akbm;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -17,8 +17,8 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bioy;
-import blhq;
+import bgve;
+import bjng;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -67,16 +67,16 @@ public class QWalletCommonJsPlugin$QWVideoJsPlugin
   private Handler mHandler;
   private String mVid;
   final HashMap<String, QWalletCommonJsPlugin.QWVideoJsPlugin.MyVideoView> mVideoViews = new HashMap();
-  private aldt preloadManager;
+  private akbm preloadManager;
   private ViewGroup videoLayout;
   private ViewGroup videoParent;
   
   public QWalletCommonJsPlugin$QWVideoJsPlugin(QWalletCommonJsPlugin paramQWalletCommonJsPlugin, Context paramContext, WebViewPlugin paramWebViewPlugin, AppInterface paramAppInterface)
   {
     this.mContext = paramContext;
-    this.mHandler = new blhq(this);
+    this.mHandler = new bjng(this);
     this.mExtPlugin = paramWebViewPlugin;
-    this.preloadManager = aldt.a(paramAppInterface);
+    this.preloadManager = akbm.a(paramAppInterface);
   }
   
   private void callbackJs(String paramString1, String paramString2, JSONObject paramJSONObject)
@@ -748,15 +748,15 @@ public class QWalletCommonJsPlugin$QWVideoJsPlugin
     }
   }
   
-  protected void onWebViewCreated(bioy parambioy)
+  protected void onWebViewCreated(bgve parambgve)
   {
-    this.videoParent = ((ViewGroup)parambioy.a().findViewById(2131381335));
+    this.videoParent = ((ViewGroup)parambgve.a().findViewById(2131381053));
     if (this.videoParent != null)
     {
       this.videoLayout = new FrameLayout(this.mContext);
-      parambioy = new FrameLayout.LayoutParams(this.mContext.getResources().getDisplayMetrics().widthPixels, this.mContext.getResources().getDisplayMetrics().heightPixels);
-      parambioy.setMargins(0, 0, 0, 0);
-      this.videoParent.addView(this.videoLayout, parambioy);
+      parambgve = new FrameLayout.LayoutParams(this.mContext.getResources().getDisplayMetrics().widthPixels, this.mContext.getResources().getDisplayMetrics().heightPixels);
+      parambgve.setMargins(0, 0, 0, 0);
+      this.videoParent.addView(this.videoLayout, parambgve);
       this.videoLayout.setBackgroundColor(0);
       this.videoLayout.setVisibility(4);
     }

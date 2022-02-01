@@ -1,10 +1,10 @@
-import com.tencent.TMG.sdk.AVContext.StartParam;
-
 public class anlt
-  extends AVContext.StartParam
 {
   public int a;
-  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
 }
 
 

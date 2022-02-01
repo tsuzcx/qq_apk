@@ -1,84 +1,26 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.proxyimpl.WebSocketProxyImpl.1;
-import com.tencent.qqmini.sdk.annotation.ProxyService;
-import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy;
-import com.tencent.qqmini.sdk.launcher.core.proxy.WebSocketProxy.WebSocketListener;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
-import okhttp3.MediaType;
-import okhttp3.WebSocket;
-import okio.ByteString;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import cooperation.qzone.util.QZLog;
 
-@ProxyService(proxy=WebSocketProxy.class)
-public class blaz
-  extends WebSocketProxy
+class blaz
+  implements URLDrawable.URLDrawableListener
 {
-  public ConcurrentHashMap<Integer, blba> a = new ConcurrentHashMap();
+  blaz(blax paramblax) {}
   
-  public boolean closeSocket(int paramInt1, int paramInt2, String paramString)
-  {
-    blba localblba = (blba)this.a.get(Integer.valueOf(paramInt1));
-    if ((localblba != null) && (localblba.a != null)) {}
-    try
-    {
-      localblba.a.close(paramInt2, paramString);
-      ThreadManager.getSubThreadHandler().postDelayed(new WebSocketProxyImpl.1(this, localblba, paramInt1, paramInt2, paramString), 1000L);
-      this.a.remove(Integer.valueOf(paramInt1));
-      return false;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        QLog.e("WebSocketProxyImpl", 1, "closeSocket error:", paramString);
-      }
-    }
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public boolean connectSocket(int paramInt1, String paramString1, Map<String, String> paramMap, String paramString2, int paramInt2, WebSocketProxy.WebSocketListener paramWebSocketListener)
-  {
-    paramString1 = new blba(this, paramInt1, paramString1, paramMap, paramInt2, paramWebSocketListener);
-    this.a.put(Integer.valueOf(paramInt1), paramString1);
-    return true;
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public boolean send(int paramInt, String paramString)
-  {
-    blba localblba = (blba)this.a.get(Integer.valueOf(paramInt));
-    if ((localblba != null) && (localblba.a != null)) {
-      try
-      {
-        MediaType.parse("application/vnd.okhttp.websocket+text; charset=utf-8");
-        localblba.a.send(paramString);
-        return true;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("WebSocketProxyImpl", 1, "sendStringMessage error:", paramString);
-        return false;
-      }
-    }
-    return false;
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public boolean send(int paramInt, byte[] paramArrayOfByte)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    blba localblba = (blba)this.a.get(Integer.valueOf(paramInt));
-    if ((localblba != null) && (localblba.a != null)) {
-      try
-      {
-        localblba.a.send(ByteString.of(paramArrayOfByte));
-        return true;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        QLog.e("WebSocketProxyImpl", 1, "sendBinaryMessage error:", paramArrayOfByte);
-        return false;
-      }
+    QZLog.i("FileBannerTianshuManger", "onLoadSuccessed picUrlDrawable ");
+    this.a.a(this.a.jdField_a_of_type_JavaLangString, paramURLDrawable);
+    this.a.a(this.a.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, 101);
+    if (this.a.b == 1) {
+      this.a.a(this.a.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem, 137);
     }
-    return false;
   }
 }
 

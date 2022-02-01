@@ -1,78 +1,47 @@
-import android.content.Context;
-import android.view.ViewConfiguration;
+import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import org.json.JSONObject;
 
 public class lsr
+  extends lso
 {
-  private int jdField_a_of_type_Int;
-  private lso jdField_a_of_type_Lso;
-  private boolean jdField_a_of_type_Boolean;
+  long jdField_b_of_type_Long;
+  int c;
+  int d;
+  int e;
+  String f;
   
-  public lsr(Context paramContext)
+  public lsr(RandomWebProtocol paramRandomWebProtocol, lso paramlso, String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, long paramLong)
   {
-    this.jdField_a_of_type_Lso = new lso(paramContext);
-    this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledOverflingDistance();
+    super(paramRandomWebProtocol, paramlso);
+    this.a = 3;
+    this.c = paramString1;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.f = paramString2;
+    this.e = paramInt3;
+    this.jdField_b_of_type_Long = paramLong;
+    this.d = ("[p]" + paramInt1 + paramInt2 + paramString2 + paramInt3 + paramLong);
   }
   
-  public int a()
+  String a()
   {
-    return this.jdField_a_of_type_Lso.a();
-  }
-  
-  public int a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    int j = this.jdField_a_of_type_Lso.a();
-    if (this.jdField_a_of_type_Lso.a()) {}
-    for (int i = j;; i = this.jdField_a_of_type_Lso.b())
+    this.a = null;
+    try
     {
-      paramInt2 = lsv.a(i + paramInt1, paramInt2, paramInt3);
-      if (paramInt2 != j) {
-        this.jdField_a_of_type_Lso.a(j, 0, paramInt2 - j, 0, 0);
+      this.a = new JSONObject().put("session_type", this.c).put("reqtype", this.d).put("groupid", this.jdField_b_of_type_Long);
+      if (2 == this.d) {
+        this.a.put("peer_enuin", ChatActivityUtils.b(RandomWebProtocol.a(), this.f)).put("peer_gender", this.e);
       }
-      return i + paramInt1 - paramInt2;
+      return super.a();
     }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Lso.a(true);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = Math.max(paramInt, this.jdField_a_of_type_Int);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    int j = a();
-    lso locallso = this.jdField_a_of_type_Lso;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = 0)
+    catch (Exception localException)
     {
-      locallso.a(j, 0, paramInt1, 0, paramInt2, paramInt3, 0, 0, i, 0);
-      return;
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Lso.a();
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return this.jdField_a_of_type_Lso.b();
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Lso.a(paramInt, 0, 0, 0, 0);
-    this.jdField_a_of_type_Lso.a();
   }
 }
 

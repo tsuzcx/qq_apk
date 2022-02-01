@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount;
 
-import bdmc;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
 
 public final class PublicAccountReportUtils$3
@@ -30,7 +30,7 @@ public final class PublicAccountReportUtils$3
     {
       l1 = 0L;
     }
-    bdmc.a(BaseApplication.getContext()).a(null, "actPubAccMsgReceipt", true, l1, 0L, localHashMap, null);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actPubAccMsgReceipt", true, l1, 0L, localHashMap, null);
   }
 }
 

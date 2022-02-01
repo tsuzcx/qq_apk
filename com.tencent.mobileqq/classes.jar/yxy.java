@@ -1,20 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class yxy
-  extends SimpleJob<Object>
+  implements View.OnClickListener
 {
-  yxy(yxt paramyxt, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
-  {
-    super(paramString1);
-  }
+  yxy(yxw paramyxw, yyc paramyyc) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    yup.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
-    return null;
+    if (yxw.a(this.jdField_a_of_type_Yxw) != null) {
+      yxw.a(this.jdField_a_of_type_Yxw).b(this.jdField_a_of_type_Yyc);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

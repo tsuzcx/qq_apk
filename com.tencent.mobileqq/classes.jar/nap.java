@@ -1,196 +1,202 @@
-import android.app.Activity;
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.avgame.gamelogic.data.GameRecordInfo;
-import com.tencent.avgame.gamelogic.data.RoomInfo;
-import com.tencent.avgame.util.AVGameNodeReportUtil;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import javax.annotation.Nullable;
+import trpc.qq_vgame.common.AvGameCommon.CommonQuestionInfo;
+import trpc.qq_vgame.common.AvGameCommon.GameQuestionInfo;
+import trpc.qq_vgame.common.AvGameCommon.QuestionFeedbackInfo;
+import trpc.qq_vgame.common.AvGameCommon.QuestionItemInfo;
+import trpc.qq_vgame.common.AvGameCommon.QuestionTipsInfo;
 
-public class nap
-  implements naf, nau
+public abstract class nap
+  extends nan
+  implements mzr
 {
-  protected nav a;
+  public ArrayList<Pair<Integer, String>> a;
+  List<nap> a;
+  public nae a;
+  protected int b;
+  public ArrayList<nae> b;
+  public nae b;
+  public int c;
   
-  public nap(nav paramnav)
+  public nap()
   {
-    this.a = paramnav;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Nae = new nae();
+    this.jdField_b_of_type_Nae = new nae();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  private void a(GameRecordInfo paramGameRecordInfo)
+  @Nullable
+  public String a()
   {
-    Object localObject1 = null;
-    if (paramGameRecordInfo.extraJsonData != null) {}
+    return this.jdField_b_of_type_Nae.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<nap> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public mzq a()
+  {
+    nap localnap = a();
+    try
+    {
+      localnap.a(this);
+      return localnap;
+    }
+    catch (Exception localException) {}
+    return localnap;
+  }
+  
+  public nae a(int paramInt)
+  {
+    if (this.jdField_b_of_type_JavaUtilArrayList.size() > paramInt) {
+      return (nae)this.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
+    }
+    return null;
+  }
+  
+  protected abstract nap a();
+  
+  protected void a(nap paramnap)
+  {
+    this.jdField_a_of_type_Boolean = paramnap.jdField_a_of_type_Boolean;
+    this.jdField_b_of_type_Int = paramnap.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Int = paramnap.jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaLangString = paramnap.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramnap.jdField_b_of_type_JavaLangString;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramnap.jdField_a_of_type_ArrayOfJavaLangString;
+    this.jdField_a_of_type_Nae.a(paramnap.jdField_a_of_type_Nae);
+    this.jdField_b_of_type_Nae.a(paramnap.jdField_b_of_type_Nae);
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramnap.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_b_of_type_JavaUtilArrayList.addAll(paramnap.jdField_b_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_JavaUtilList.addAll(paramnap.jdField_a_of_type_JavaUtilList);
+    this.c = paramnap.c;
+  }
+  
+  protected void a(AvGameCommon.CommonQuestionInfo paramCommonQuestionInfo)
+  {
+    Object localObject1 = (AvGameCommon.QuestionItemInfo)paramCommonQuestionInfo.item.get();
+    if (localObject1 != null)
+    {
+      this.jdField_a_of_type_Nae.a(((AvGameCommon.QuestionItemInfo)localObject1).question_content.get(), ((AvGameCommon.QuestionItemInfo)localObject1).question_md5.get(), ((AvGameCommon.QuestionItemInfo)localObject1).question_duration.get());
+      this.jdField_b_of_type_Nae.a(((AvGameCommon.QuestionItemInfo)localObject1).answer_content.get(), ((AvGameCommon.QuestionItemInfo)localObject1).answer_md5.get(), ((AvGameCommon.QuestionItemInfo)localObject1).answer_duration.get());
+      this.jdField_a_of_type_ArrayOfJavaLangString[0] = ((AvGameCommon.QuestionItemInfo)localObject1).reward_type.get();
+      this.jdField_a_of_type_ArrayOfJavaLangString[1] = ((AvGameCommon.QuestionItemInfo)localObject1).extra_reward.get();
+      this.jdField_a_of_type_ArrayOfJavaLangString[2] = ((AvGameCommon.QuestionItemInfo)localObject1).reward_stroke_color.get();
+    }
+    localObject1 = paramCommonQuestionInfo.feedbacks.get();
+    Object localObject2;
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
+    {
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (AvGameCommon.QuestionFeedbackInfo)((Iterator)localObject1).next();
+        nae localnae = new nae();
+        localnae.a((AvGameCommon.QuestionFeedbackInfo)localObject2);
+        this.jdField_b_of_type_JavaUtilArrayList.add(localnae);
+      }
+    }
+    localObject1 = paramCommonQuestionInfo.tips.get();
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
+    {
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (AvGameCommon.QuestionTipsInfo)((Iterator)localObject1).next();
+        localObject2 = new Pair(Integer.valueOf(((AvGameCommon.QuestionTipsInfo)localObject2).show_delay_ts.get()), ((AvGameCommon.QuestionTipsInfo)localObject2).tips.get());
+        this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+      }
+    }
+    this.c = paramCommonQuestionInfo.size.get();
+  }
+  
+  public void a(AvGameCommon.GameQuestionInfo paramGameQuestionInfo)
+  {
+    this.jdField_a_of_type_Int = paramGameQuestionInfo.id.get();
+    this.jdField_b_of_type_Int = Math.max(0, paramGameQuestionInfo.index.get() - 1);
+    if (paramGameQuestionInfo.questions.get() != null)
+    {
+      paramGameQuestionInfo = paramGameQuestionInfo.questions.get().iterator();
+      while (paramGameQuestionInfo.hasNext())
+      {
+        AvGameCommon.CommonQuestionInfo localCommonQuestionInfo = (AvGameCommon.CommonQuestionInfo)paramGameQuestionInfo.next();
+        nap localnap = a();
+        localnap.a(localCommonQuestionInfo);
+        localnap.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+        localnap.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+        localnap.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_JavaUtilList.add(localnap);
+      }
+    }
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
+      a((nap)this.jdField_a_of_type_JavaUtilList.get(0));
+    }
+  }
+  
+  public boolean a(mzq parammzq)
+  {
+    if (parammzq == null) {}
+    while ((!bftf.a(b(), parammzq.b())) || (!bftf.a(a(), parammzq.a()))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_Nae.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int c()
+  {
+    if (this.jdField_a_of_type_Nae == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_Nae.jdField_a_of_type_Int;
+  }
+  
+  public String c()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localStringBuilder.append("\n【题库】:");
+      localStringBuilder.append("topicsCount").append("=").append(this.jdField_a_of_type_JavaUtilList.size()).append("|");
+      localStringBuilder.append("【题目列表】").append("=").append(Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray())).append("|");
+    }
     for (;;)
     {
-      try
-      {
-        localObject2 = new JSONObject(paramGameRecordInfo.extraJsonData);
-        paramGameRecordInfo = ((JSONObject)localObject2).optString("textContent", null);
-      }
-      catch (JSONException paramGameRecordInfo)
-      {
-        Object localObject2;
-        paramGameRecordInfo = null;
-        continue;
-      }
-      try
-      {
-        localObject2 = ((JSONObject)localObject2).optString("bgUrl", null);
-        localObject1 = localObject2;
-      }
-      catch (JSONException localJSONException)
-      {
-        continue;
-      }
-      this.a.a(paramGameRecordInfo, localObject1);
-      return;
-      paramGameRecordInfo = null;
+      return localStringBuilder.toString();
+      localStringBuilder.append("\n【题目】:");
+      localStringBuilder.append("id").append("=").append(this.jdField_a_of_type_Int).append("|");
+      localStringBuilder.append("gameType").append("=").append(b()).append("|");
+      localStringBuilder.append("index").append("=").append(this.jdField_b_of_type_Int).append("|");
+      localStringBuilder.append("contentRes").append("=").append(this.jdField_a_of_type_Nae).append("|");
+      localStringBuilder.append("answerRes").append("=").append(this.jdField_b_of_type_Nae).append("|");
+      localStringBuilder.append("tips").append("=").append(mzo.a(this.jdField_a_of_type_JavaUtilArrayList)).append("|");
+      localStringBuilder.append("feedBacks").append("=").append(Arrays.toString(this.jdField_b_of_type_JavaUtilArrayList.toArray())).append("|");
     }
   }
   
-  private void g()
+  public int f_()
   {
-    mze localmze = myk.a().a();
-    myk.a().a(localmze.b());
-  }
-  
-  public void a()
-  {
-    myk.a().a(this);
-    GameRecordInfo localGameRecordInfo = myk.a().a().a();
-    if (localGameRecordInfo.gameType == 5)
-    {
-      a(localGameRecordInfo);
-      return;
-    }
-    String str1 = localGameRecordInfo.photoFilePath;
-    String str2 = localGameRecordInfo.videoFilePath;
-    if (QLog.isColorLevel()) {
-      QLog.i("GameResultPresenterImp_GameRC", 1, "pic:" + str1 + ",\nvod:" + str2);
-    }
-    myk.a().a(str1, str2);
-    this.a.a(localGameRecordInfo.gameType, str1, str2);
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("GameResultPresenterImp", 1, "uploadRes:" + paramInt + " " + paramString1 + " " + paramString2);
-    }
-    this.a.a(paramInt, paramString2, paramString1);
-    myk.a().a(paramString2, paramString1);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    QLog.i("GameResultPresenterImp", 1, "onChangeUserStatusFailed " + paramString + " and from = " + paramInt2);
-    if (paramInt2 == 4) {
-      this.a.a(paramString);
-    }
-  }
-  
-  public void a(String paramString, int paramInt, mze parammze)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameResultPresenterImp", 2, "pushOnChangeUserStatus uin = " + paramString);
-    }
-    if ((paramString.equals(myk.a().a().getAccount())) && (paramInt == 1)) {
-      this.a.b(parammze);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    if (this.a != null) {
-      this.a.a(paramString1, paramString2, paramString3);
-    }
-  }
-  
-  public void a(mze parammze, int paramInt)
-  {
-    QLog.i("GameResultPresenterImp", 1, "onChangeUserStatusSuccess " + parammze + " and from = " + paramInt);
-    if (paramInt == 4) {
-      this.a.b(parammze);
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
-  {
-    if (QLog.isDebugVersion()) {
-      QLog.i("GameResultPresenterImp_GameRC", 1, String.format("onGameResultUpload isSucc[%b],playId[%s],fileType[%d],fileUrl[%s]", new Object[] { Boolean.valueOf(paramBoolean), paramString1, Integer.valueOf(paramInt), paramString2 }));
-    }
-    if ((paramBoolean) && (paramInt == 0)) {
-      aono.a().a(paramString1, paramString2);
-    }
-  }
-  
-  public boolean a()
-  {
-    return myk.a().c();
-  }
-  
-  public void b()
-  {
-    if (this.a != null) {
-      mya.a().a(this.a.a(), false, true);
-    }
-  }
-  
-  public void c()
-  {
-    g();
-    QLog.i("GameResultPresenterImp", 1, "exitGameRoom from result.");
-    myk.a().a(false, 1);
-    if (this.a.a() != null) {
-      this.a.a().finish();
-    }
-  }
-  
-  public void d()
-  {
-    myk.a().c();
-    AVGameAppInterface localAVGameAppInterface = myk.a().a();
-    String str1 = localAVGameAppInterface.getCurrentAccountUin();
-    mze localmze = myk.a().a();
-    long l = localmze.a();
-    String str2 = localmze.a().getNick(str1);
-    String str3 = localmze.b();
-    int i = localmze.c();
-    int j = localmze.d();
-    if ((i == 2) || (i == 4) || (i == 5))
-    {
-      this.a.a(localAVGameAppInterface, l, str1, j, str2, str3);
-      return;
-    }
-    aono.a().a(localAVGameAppInterface, this.a.a(), l, Long.valueOf(str1).longValue(), str2, str3, j);
-  }
-  
-  public void e()
-  {
-    mze localmze = myk.a().a();
-    myk.a().a(localmze.a(), myk.a().a().getAccount(), 1, 4);
-    g();
-    myk.a().a().a(null, null, 0L);
-    myk.a().a().a(null);
-    AVGameNodeReportUtil.f();
-  }
-  
-  public void f()
-  {
-    myk.a().b(this);
-  }
-  
-  public void i(mze parammze)
-  {
-    if (this.a != null) {
-      this.a.a(parammze);
-    }
+    return this.jdField_b_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nap
  * JD-Core Version:    0.7.0.1
  */

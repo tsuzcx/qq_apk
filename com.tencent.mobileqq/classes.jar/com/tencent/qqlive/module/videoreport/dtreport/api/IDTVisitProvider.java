@@ -2,6 +2,8 @@ package com.tencent.qqlive.module.videoreport.dtreport.api;
 
 public abstract interface IDTVisitProvider
 {
+  public abstract String getActiveInfo();
+  
   public abstract String getCallFrom();
   
   public abstract String getCallScheme();

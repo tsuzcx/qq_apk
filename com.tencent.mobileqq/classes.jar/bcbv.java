@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import com.tencent.mobileqq.activity.recent.MsgSummary;
+import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.MsgUtils.Proxy;
 
-class bcbv
-  implements View.OnClickListener
+public final class bcbv
+  implements RecentRoute.MsgUtils.Proxy
 {
-  bcbv(bcbs parambcbs) {}
-  
-  public void onClick(View paramView)
+  public void buildMsgSummaryForMsg(Context paramContext, IMCoreAppRuntime paramIMCoreAppRuntime, IMCoreMessageStub paramIMCoreMessageStub, int paramInt, MsgSummary paramMsgSummary, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.a.b(this.a.a.b);
-    this.a.a.f.setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
+    bfwr.a(paramContext, paramIMCoreAppRuntime, paramIMCoreMessageStub, paramInt, paramMsgSummary, paramBoolean1, paramBoolean2);
   }
 }
 

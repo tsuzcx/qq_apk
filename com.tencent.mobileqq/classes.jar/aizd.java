@@ -1,14 +1,18 @@
-import android.os.MessageQueue.IdleHandler;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aizd
-  implements MessageQueue.IdleHandler
+public class aizd
+  implements View.OnClickListener
 {
-  aizd(aiyz paramaiyz) {}
+  public aizd(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public boolean queueIdle()
+  public void onClick(View paramView)
   {
-    this.a.b();
-    return false;
+    this.a.d.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

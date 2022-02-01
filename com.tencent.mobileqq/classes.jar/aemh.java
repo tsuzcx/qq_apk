@@ -1,19 +1,50 @@
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.13.1;
+import com.tencent.mobileqq.activity.TroopInviteStatusFragment;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class aemh
-  extends anyu
+  implements aikv
 {
-  public aemh(EditInfoActivity paramEditInfoActivity) {}
+  public aemh(TroopInviteStatusFragment paramTroopInviteStatusFragment) {}
   
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
   {
-    if (!this.a.f.equals(paramString1)) {}
-    while (!this.a.j) {
+    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512))) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopInviteStatusFragment", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
+      }
+      aiku.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString, "");
+      aiku.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if ((this.a.jdField_a_of_type_Bhht != null) && (this.a.jdField_a_of_type_Bhht.isShowing())) {
+        this.a.jdField_a_of_type_Bhht.dismiss();
+      }
       return;
     }
-    this.a.j = false;
-    this.a.runOnUiThread(new EditInfoActivity.13.1(this, paramBoolean, paramString2));
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopInviteStatusFragment", 2, "onTroopPrivilege normalTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt + ", sendSystemMsgAction-----");
+    }
+    TroopInviteStatusFragment.a(this.a, 2);
+  }
+  
+  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
+  {
+    if ((this.a.jdField_a_of_type_Bhht != null) && (this.a.jdField_a_of_type_Bhht.isShowing())) {
+      this.a.jdField_a_of_type_Bhht.dismiss();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("TroopInviteStatusFragment", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
+    }
+    paramString1 = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    if (paramInt1 == 72) {}
+    for (paramInt1 = 2131689994;; paramInt1 = 2131689993)
+    {
+      QQToast.a(paramString1, paramInt1, 1).a();
+      return;
+    }
   }
 }
 

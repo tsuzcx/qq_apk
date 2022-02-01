@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
 import android.os.Bundle;
-import apck;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.CountDownLatch;
 
 class IVCommonInterfaceImpl$1$1
-  extends apck
+  extends LbsManagerService.OnLocationChangeListener
 {
   IVCommonInterfaceImpl$1$1(IVCommonInterfaceImpl.1 param1, String paramString, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch)
   {
@@ -26,17 +26,17 @@ class IVCommonInterfaceImpl$1$1
       }
     }
     label186:
-    for (Object localObject = null;; localObject = paramSosoLbsInfo.a)
+    for (Object localObject = null;; localObject = paramSosoLbsInfo.mLocation)
     {
       QLog.i("IVCommonInterfaceImpl", 2, localObject);
       localObject = new Bundle();
-      if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+      if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
       {
-        ((Bundle)localObject).putDouble("lat", paramSosoLbsInfo.a.a);
-        ((Bundle)localObject).putDouble("lon", paramSosoLbsInfo.a.b);
-        ((Bundle)localObject).putString("nation", IVCommonInterfaceImpl.access$000(this.this$1.this$0, paramSosoLbsInfo.a.c));
-        ((Bundle)localObject).putString("province", IVCommonInterfaceImpl.access$000(this.this$1.this$0, paramSosoLbsInfo.a.d));
-        ((Bundle)localObject).putString("city", IVCommonInterfaceImpl.access$000(this.this$1.this$0, paramSosoLbsInfo.a.e));
+        ((Bundle)localObject).putDouble("lat", paramSosoLbsInfo.mLocation.mLat02);
+        ((Bundle)localObject).putDouble("lon", paramSosoLbsInfo.mLocation.mLon02);
+        ((Bundle)localObject).putString("nation", IVCommonInterfaceImpl.access$000(this.this$1.this$0, paramSosoLbsInfo.mLocation.nation));
+        ((Bundle)localObject).putString("province", IVCommonInterfaceImpl.access$000(this.this$1.this$0, paramSosoLbsInfo.mLocation.province));
+        ((Bundle)localObject).putString("city", IVCommonInterfaceImpl.access$000(this.this$1.this$0, paramSosoLbsInfo.mLocation.city));
       }
       ((Bundle)localObject).putInt("code", paramInt);
       this.val$result[0] = localObject;

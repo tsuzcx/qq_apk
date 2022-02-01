@@ -1,20 +1,53 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
-import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class sky
-  extends RecyclerViewWithHeaderFooterFix
+class sky
+  implements View.OnClickListener
 {
-  public sky(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, Context paramContext)
-  {
-    super(paramContext);
-  }
+  sky(skv paramskv, Activity paramActivity) {}
   
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public void onClick(View paramView)
   {
-    super.a(paramViewHolder, paramInt);
-    this.a.a(paramViewHolder, paramInt);
+    int i;
+    Bundle localBundle;
+    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    {
+      QLog.d("DailyFeedsDiandianEntranceManager", 2, "jump to config feeds");
+      i = bkwm.f();
+      localBundle = new Bundle();
+      if ((paramView instanceof ReadInJoyColorBandEntranceButton))
+      {
+        localObject = ((ReadInJoyColorBandEntranceButton)paramView).a();
+        if (!(localObject instanceof Parcelable)) {
+          break label93;
+        }
+        localBundle.putParcelable("daily_bottom_entry_data", (Parcelable)localObject);
+      }
+    }
+    label93:
+    while ((i != 3) && (i != 4))
+    {
+      localBundle.putInt("daily_bottom_triger_src", 1);
+      smd.a(this.jdField_a_of_type_AndroidAppActivity, localBundle);
+      this.jdField_a_of_type_Skv.b();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    RecommendFeedsDiandianEntranceManager.EntranceIconInfo localEntranceIconInfo = new RecommendFeedsDiandianEntranceManager.EntranceIconInfo();
+    if (i == 4) {}
+    for (Object localObject = "https://buluo.qq.com/mobile/v2/buluoindex.html?_wv=16778243&_bid=128&_wwv=1&_wvSb=0&_nav_txtclr=00000&from=kdybrk&target=hot&_nav_titleclr=000000&_wvNlb=0xffffff";; localObject = "mqqapi://readinjoy/open?src_type=internal&ispush=1&target=2&readinjoyNotDecodeUrl=1&version=1&channelid=70&channelname=看点关注&channelType=0&changeChannelOrder=true&moveChannelFromSource=0")
+    {
+      localEntranceIconInfo.c = ((String)localObject);
+      localBundle.putParcelable("daily_bottom_entry_data", localEntranceIconInfo);
+      break;
+    }
   }
 }
 

@@ -1,25 +1,27 @@
 import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
 public class tkj
+  extends tkf
 {
-  public static void a(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity, int paramInt1, int paramInt2, int paramInt3, tkr paramtkr)
+  tkj(tkc paramtkc1, Activity paramActivity, tkc paramtkc2, JSONObject paramJSONObject)
   {
-    if (paramAdvertisementInfo == null) {
-      return;
-    }
-    ubd.a(paramActivity);
-    int i = paramAdvertisementInfo.clickPos;
-    boolean bool = tkq.a(paramAdvertisementInfo, paramActivity, paramtkr);
-    if (bool)
+    super(paramtkc1, paramActivity, paramtkc2, paramJSONObject);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  {
+    if (!TextUtils.isEmpty(paramString3))
     {
-      paramInt1 = nzq.T;
-      paramAdvertisementInfo.clickPos = i;
-    }
-    for (;;)
-    {
-      tku.a(bool, paramActivity, paramAdvertisementInfo, paramInt1, paramInt2, paramInt3);
-      return;
+      paramString1 = AIOUtils.setOpenAIOIntent(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
+      paramString1.putExtra("uin", paramString3);
+      paramString1.putExtra("uintype", 0);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString1);
     }
   }
 }

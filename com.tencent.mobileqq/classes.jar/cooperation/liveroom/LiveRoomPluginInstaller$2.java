@@ -1,11 +1,11 @@
 package cooperation.liveroom;
 
-import bmgk;
+import bkkq;
 
 class LiveRoomPluginInstaller$2
   implements Runnable
 {
-  LiveRoomPluginInstaller$2(LiveRoomPluginInstaller paramLiveRoomPluginInstaller, bmgk parambmgk, String paramString) {}
+  LiveRoomPluginInstaller$2(LiveRoomPluginInstaller paramLiveRoomPluginInstaller, bkkq parambkkq, String paramString) {}
   
   public void run()
   {

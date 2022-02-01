@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo;
 
-import amur;
-import annr;
+import alpl;
+import amil;
 
 public class ApolloStoreStabilityReportManager$1
   implements Runnable
 {
-  public ApolloStoreStabilityReportManager$1(amur paramamur) {}
+  public ApolloStoreStabilityReportManager$1(alpl paramalpl) {}
   
   public void run()
   {
-    annr.a(null);
-    amur.a(this.this$0, System.currentTimeMillis());
+    amil.a(null);
+    alpl.a(this.this$0, System.currentTimeMillis());
   }
 }
 

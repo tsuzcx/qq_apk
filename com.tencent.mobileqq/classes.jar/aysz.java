@@ -1,41 +1,124 @@
-import android.util.SparseIntArray;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.SparseArray;
+import android.view.View;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aysz
+public abstract class aysz<VIEW, DATA>
+  implements aysw<VIEW, DATA>
 {
-  public static final SparseIntArray a = new SparseIntArray(4);
-  public static final SparseIntArray b = new SparseIntArray(4);
+  protected SparseArray<aysw<? extends View, DATA>> a;
+  protected aysx a;
+  public BaseActivity a;
+  public QQAppInterface a;
+  protected VIEW a;
+  protected DATA b;
   
-  static
+  public aysz(aysx paramaysx, DATA paramDATA)
   {
-    a.put(1, 0);
-    a.put(2, 5);
-    a.put(3, 3);
-    a.put(4, 4);
-    b.put(0, 1);
-    b.put(5, 2);
-    b.put(3, 3);
-    b.put(4, 4);
+    this.jdField_a_of_type_Aysx = paramaysx;
+    this.b = paramDATA;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  public static int a(int paramInt)
+  public aysw<? extends View, DATA> a(int paramInt)
   {
-    if ((paramInt >= 1) && (paramInt <= 4)) {
-      return a.get(paramInt);
+    return (aysw)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+  }
+  
+  public VIEW a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(Intent paramIntent) {}
+  
+  public void a(aysw<? extends View, DATA> paramaysw)
+  {
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramaysw.a(), paramaysw);
+  }
+  
+  public void a(@NonNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseActivity.app;
+  }
+  
+  public void a(VIEW paramVIEW)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramVIEW;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(DATA paramDATA)
+  {
+    this.b = paramDATA;
+    int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
+    int i = 0;
+    boolean bool = false;
+    if (i < j)
+    {
+      aysw localaysw = (aysw)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+      if (localaysw == null) {
+        break label64;
+      }
+      bool = localaysw.a(paramDATA) | bool;
     }
-    return a.get(1);
+    label64:
+    for (;;)
+    {
+      i += 1;
+      break;
+      return bool;
+    }
   }
   
-  public static void a(RedTouchItem paramRedTouchItem1, RedTouchItem paramRedTouchItem2)
+  public void b() {}
+  
+  public void b(aysw<? extends View, DATA> paramaysw)
   {
-    paramRedTouchItem1.count = paramRedTouchItem2.count;
-    paramRedTouchItem1.receiveTime = paramRedTouchItem2.receiveTime;
-    paramRedTouchItem1.redtouchType = paramRedTouchItem2.redtouchType;
-    paramRedTouchItem1.curSeq = paramRedTouchItem2.curSeq;
-    paramRedTouchItem1.icon = paramRedTouchItem2.icon;
-    paramRedTouchItem1.unReadFlag = paramRedTouchItem2.unReadFlag;
-    paramRedTouchItem1.validTimeRemained = paramRedTouchItem2.validTimeRemained;
-    paramRedTouchItem1.isClosed = paramRedTouchItem2.isClosed;
+    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramaysw.a());
+  }
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  }
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_Aysx != null) {
+      this.jdField_a_of_type_Aysx.a(this);
+    }
+  }
+  
+  public void h()
+  {
+    if (this.jdField_a_of_type_Aysx != null) {
+      this.jdField_a_of_type_Aysx.b(this);
+    }
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return String.format("Component@%s{componentType=%s componentName=%s}", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(a()), a() });
   }
 }
 

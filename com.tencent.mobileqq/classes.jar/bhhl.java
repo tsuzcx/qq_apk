@@ -1,9 +1,20 @@
-import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.PublicMenuBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bhhl
+public class bhhl
+  implements View.OnClickListener
 {
-  public abstract void a(View paramView, Drawable paramDrawable);
+  public bhhl(PublicMenuBar paramPublicMenuBar, String paramString, int paramInt) {}
+  
+  public void onClick(View paramView)
+  {
+    if (PublicMenuBar.a(this.jdField_a_of_type_ComTencentMobileqqWidgetPublicMenuBar) != null) {
+      PublicMenuBar.b(this.jdField_a_of_type_ComTencentMobileqqWidgetPublicMenuBar).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

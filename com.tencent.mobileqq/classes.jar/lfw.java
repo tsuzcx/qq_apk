@@ -1,78 +1,96 @@
-import android.annotation.SuppressLint;
+import android.text.TextUtils;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.zimu.ZimuItem;
+import com.tencent.avcore.jni.data.NetAddr;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
+import java.util.List;
 
 public class lfw
+  extends lfv
 {
-  private static lfw a = new lfw();
-  
-  private static int a(byte[] paramArrayOfByte)
+  public lfw(AppInterface paramAppInterface)
   {
-    return paramArrayOfByte[3] & 0xFF | (paramArrayOfByte[2] & 0xFF) << 8 | (paramArrayOfByte[1] & 0xFF) << 16 | (paramArrayOfByte[0] & 0xFF) << 24;
+    super(paramAppInterface);
   }
   
-  @SuppressLint({"DefaultLocale"})
-  public static String a(int paramInt)
+  protected int a()
   {
-    return String.format("%d.%d.%d.%d", new Object[] { Integer.valueOf(paramInt >> 24 & 0xFF), Integer.valueOf(paramInt >> 16 & 0xFF), Integer.valueOf(paramInt >> 8 & 0xFF), Integer.valueOf(paramInt & 0xFF) });
-  }
-  
-  public static String a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    char[] arrayOfChar1 = "0123456789ABCDEF".toCharArray();
-    char[] arrayOfChar2 = new char[paramArrayOfByte.length * 2];
-    int i = 0;
-    while (i < paramArrayOfByte.length)
+    Object localObject = (VideoAppInterface)this.mApp;
+    if (((VideoAppInterface)localObject).a(0))
     {
-      int j = paramArrayOfByte[i] & 0xFF;
-      arrayOfChar2[(i * 2)] = arrayOfChar1[(j >>> 4)];
-      arrayOfChar2[(i * 2 + 1)] = arrayOfChar1[(j & 0xF)];
-      i += 1;
+      localObject = (lir)((VideoAppInterface)localObject).a(0);
+      if (localObject != null) {
+        return ((lir)localObject).b();
+      }
     }
-    return new String(arrayOfChar2);
+    return 4;
   }
   
-  public static lfw a()
+  protected void a(long paramLong1, boolean paramBoolean, List<NetAddr> paramList, long paramLong2)
   {
-    return a;
+    VideoController localVideoController = ((VideoAppInterface)this.mApp).a();
+    lez locallez = localVideoController.a();
+    StringBuilder localStringBuilder = new StringBuilder().append("requestRecordingAudio, isStart[").append(paramBoolean).append("], sessionid[").append(paramLong2).append("], seq[").append(paramLong1).append("], iplist[");
+    if (paramList == null)
+    {
+      localObject = "null";
+      localStringBuilder = localStringBuilder.append(localObject).append("], peerUin[");
+      if (locallez != null) {
+        break label159;
+      }
+    }
+    label159:
+    for (Object localObject = "null";; localObject = locallez.d)
+    {
+      QLog.w("AudioTransClientInterfaceHandlerExtend.runhw", 1, (String)localObject + "]");
+      if ((localVideoController != null) && (locallez != null)) {
+        localVideoController.a(lcs.a(locallez.d), paramBoolean, paramList, paramLong2);
+      }
+      return;
+      localObject = Integer.valueOf(paramList.size());
+      break;
+    }
   }
   
-  public static lfx a(byte[] paramArrayOfByte)
+  protected void a(Integer paramInteger, Object paramObject)
   {
-    int i = paramArrayOfByte.length;
-    int j = paramArrayOfByte[0];
-    j = paramArrayOfByte[(i - 1)];
-    Object localObject = new byte[4];
-    byte[] arrayOfByte = new byte[4];
-    QLog.d("AudioTrans runhw", 2, "rspBodyBytes = " + a(paramArrayOfByte));
-    System.arraycopy(paramArrayOfByte, 1, localObject, 0, 4);
-    System.arraycopy(paramArrayOfByte, 5, arrayOfByte, 0, 4);
-    j = a((byte[])localObject);
-    int k = a(arrayOfByte);
-    QLog.d("AudioTrans runhw", 2, "rspBytesLen = " + i + ", lengthOfHead = " + j + ", lengthOfBody = " + k);
-    localObject = new lfx(j, k);
-    System.arraycopy(paramArrayOfByte, 9, ((lfx)localObject).a, 0, j);
-    System.arraycopy(paramArrayOfByte, j + 9, ((lfx)localObject).b, 0, k);
-    return localObject;
+    lba.f("AudioTransClientInterfaceHandlerExtend.runhw", "notifyEvent :" + paramInteger + "|" + paramObject);
+    ((VideoAppInterface)this.mApp).a(new Object[] { paramInteger, paramObject });
   }
   
-  public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  protected void a(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    int i = paramArrayOfByte1.length;
-    int j = paramArrayOfByte2.length;
-    byte[] arrayOfByte1 = ByteBuffer.allocate(4).putInt(i).array();
-    byte[] arrayOfByte2 = ByteBuffer.allocate(4).putInt(j).array();
-    byte[] arrayOfByte3 = new byte[i + 9 + j + 1];
-    arrayOfByte3[0] = 40;
-    System.arraycopy(arrayOfByte1, 0, arrayOfByte3, 1, 4);
-    System.arraycopy(arrayOfByte2, 0, arrayOfByte3, 5, 4);
-    System.arraycopy(paramArrayOfByte1, 0, arrayOfByte3, 9, i);
-    System.arraycopy(paramArrayOfByte2, 0, arrayOfByte3, i + 9, j);
-    arrayOfByte3[(arrayOfByte3.length - 1)] = 41;
-    return arrayOfByte3;
+    a(Integer.valueOf(6008), new lgc(paramString1, paramString2, paramString3, paramInt));
+  }
+  
+  protected boolean a()
+  {
+    boolean bool2 = false;
+    Object localObject = (VideoAppInterface)this.mApp;
+    boolean bool1 = bool2;
+    if (((VideoAppInterface)localObject).a(0))
+    {
+      localObject = (lir)((VideoAppInterface)localObject).a(0);
+      bool1 = bool2;
+      if (localObject != null)
+      {
+        localObject = (ZimuItem)((lir)localObject).a();
+        bool1 = bool2;
+        if (localObject != null)
+        {
+          localObject = ((ZimuItem)localObject).getId();
+          if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).equalsIgnoreCase("film"))) {
+            break label74;
+          }
+        }
+      }
+    }
+    label74:
+    for (bool1 = true;; bool1 = false) {
+      return bool1;
+    }
   }
 }
 

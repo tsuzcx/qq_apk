@@ -10,18 +10,18 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.DisplayMetrics;
-import bdmc;
-import beyq;
-import bezb;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.SafeBitmapFactory.SafeDecodeOption;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.HashMap;
 
 public class ThumbDecoder
-  implements bezb
+  implements BitmapDecoder
 {
   private static final String TAG = "ThumbDecoder";
   private float mDensity;
@@ -96,11 +96,11 @@ public class ThumbDecoder
             {
               localObject1 = localSafeDecodeOption.getInfo();
               ((HashMap)localObject1).put("from", "ThumbDecoder");
-              localObject2 = bdmc.a(BaseApplication.getContext());
+              localObject2 = StatisticCollector.getInstance(BaseApplication.getContext());
               bool = localSafeDecodeOption.isGetBitmap;
               l = localSafeDecodeOption.runTime;
               i = localSafeDecodeOption.rawHeight;
-              ((bdmc)localObject2).a(null, "safeDecode", bool, l, localSafeDecodeOption.rawWidth * i, (HashMap)localObject1, "");
+              ((StatisticCollector)localObject2).collectPerformance(null, "safeDecode", bool, l, localSafeDecodeOption.rawWidth * i, (HashMap)localObject1, "");
             }
             if (paramURL != null) {
               break;
@@ -124,7 +124,7 @@ public class ThumbDecoder
           localObject1 = localOutOfMemoryError2;
         }
       }
-      i = beyq.a(localLocalMediaInfo.path);
+      i = URLDrawableHelper.getExifRotation(localLocalMediaInfo.path);
       if ((i == 0) && (paramURL.getWidth() == localLocalMediaInfo.thumbWidth) && (paramURL.getHeight() == localLocalMediaInfo.thumbWidth) && (paramURL.getConfig() == Bitmap.Config.RGB_565)) {
         return paramURL;
       }

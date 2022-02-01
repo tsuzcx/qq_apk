@@ -1,98 +1,32 @@
-import android.app.Activity;
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.text.Editable;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
 
-@Deprecated
 public class uag
-  implements Handler.Callback, AdapterView.OnItemClickListener
+  implements TextWatcher
 {
-  public Activity a;
-  private blhq jdField_a_of_type_Blhq;
-  public ShareActionSheetBuilder a;
-  private uah jdField_a_of_type_Uah;
-  protected uai a;
+  public uag(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void a(String paramString)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (TextUtils.isEmpty(paramString))
+    if (TextUtils.isEmpty(ReadInJoyNewSearchActivity.a(this.a).getText().toString()))
     {
-      zyx.a(1, 2131694685);
+      ReadInJoyNewSearchActivity.a(this.a).setVisibility(8);
       return;
     }
-    paramString = EditPicActivity.a(this.jdField_a_of_type_AndroidAppActivity, paramString, true, true, true, true, true, 4);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
+    ReadInJoyNewSearchActivity.a(this.a).setVisibility(0);
   }
   
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      if (paramMessage.obj != null) {
-        a((String)paramMessage.obj);
-      }
-    }
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    Object localObject = paramView.getTag();
-    boolean bool;
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("onItemClick, tag = ");
-      if (localObject != null)
-      {
-        bool = true;
-        QLog.d("ReadInJoyShareHelper", 2, bool);
-      }
-    }
-    else
-    {
-      if (localObject != null) {
-        break label73;
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
-      bool = false;
-      break;
-      label73:
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
-      localObject = (uaj)((bhsc)localObject).a;
-      int i = ((uaj)localObject).action;
-      if (this.jdField_a_of_type_Uah != null) {
-        if (((uaj)localObject).a)
-        {
-          this.jdField_a_of_type_Uah.a(Integer.valueOf(i));
-        }
-        else
-        {
-          localObject = this.jdField_a_of_type_Uai.a(i);
-          if (localObject != null) {
-            this.jdField_a_of_type_Uah.a((Integer)localObject);
-          }
-        }
-      }
-    }
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uag
  * JD-Core Version:    0.7.0.1
  */

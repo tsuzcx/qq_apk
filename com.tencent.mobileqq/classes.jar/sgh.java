@@ -1,18 +1,12 @@
-import android.util.Pair;
-import java.net.URL;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class sgh
+public abstract interface sgh
 {
-  public Pair<Integer, Integer> a;
-  public URL a;
+  public abstract void b(VideoInfo paramVideoInfo);
   
-  public static sgh a(URL paramURL, Pair<Integer, Integer> paramPair)
-  {
-    sgh localsgh = new sgh();
-    localsgh.jdField_a_of_type_JavaNetURL = paramURL;
-    localsgh.jdField_a_of_type_AndroidUtilPair = paramPair;
-    return localsgh;
-  }
+  public abstract void b(String paramString);
+  
+  public abstract void d(VideoInfo paramVideoInfo);
 }
 
 

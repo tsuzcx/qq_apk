@@ -1,19 +1,17 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBottomView;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
+import android.content.Intent;
+import android.util.SparseIntArray;
+import mqq.app.MSFServlet;
 
 public class vpo
-  implements Observer<vxq<List<FeedCloudMeta.StFeed>>>
 {
-  public vpo(QCirclePersonalBottomView paramQCirclePersonalBottomView) {}
-  
-  public void a(@Nullable vxq<List<FeedCloudMeta.StFeed>> paramvxq)
+  public static void a(SparseIntArray paramSparseIntArray)
   {
-    if (QCirclePersonalBottomView.a(this.a) != null) {
-      this.a.removeView(QCirclePersonalBottomView.a(this.a));
-    }
+    vqh.a(paramSparseIntArray);
+  }
+  
+  public static void a(MSFServlet paramMSFServlet, Intent paramIntent, boolean paramBoolean)
+  {
+    vqh.a(paramMSFServlet, paramIntent, paramBoolean);
   }
 }
 

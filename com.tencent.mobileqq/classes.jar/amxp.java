@@ -1,12 +1,11 @@
-public class amxp
+class amxp
+  extends anaa
 {
-  public int a;
-  public int b;
+  amxp(amxn paramamxn) {}
   
-  public amxp(int paramInt1, int paramInt2)
+  protected void a(int paramInt1, int paramInt2)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this.a.a();
   }
 }
 

@@ -1,8 +1,17 @@
-import android.os.Bundle;
+import java.util.List;
 
-public abstract interface pfq
+class pfq
+  extends pse
 {
-  public abstract int a(Bundle paramBundle);
+  pfq(pey parampey, String paramString, List paramList)
+  {
+    super(paramString);
+  }
+  
+  public void a(prx paramprx)
+  {
+    paramprx.a(this.jdField_a_of_type_JavaUtilList);
+  }
 }
 
 

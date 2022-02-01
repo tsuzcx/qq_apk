@@ -1,26 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awvr
-  extends aoeg
+class awvr
+  implements View.OnClickListener
 {
-  public awvr(LoginWelcomeManager paramLoginWelcomeManager, Bundle paramBundle) {}
+  awvr(awur paramawur) {}
   
-  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
-    }
-    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localBundle.putInt("result", i);
-      this.jdField_a_of_type_AndroidOsBundle.putString("uin", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeManager.b();
-      return;
-    }
+    this.a.g(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

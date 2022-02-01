@@ -1,19 +1,24 @@
-import android.content.Context;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
-class arma
-  implements arlb
+public class arma
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  arma(arlz paramarlz) {}
+  public arma(ExtendFriendSquareFragment paramExtendFriendSquareFragment, View paramView) {}
   
-  public void a(Context paramContext)
+  public void onGlobalLayout()
   {
-    VasWebviewUtil.openQQBrowserWithoutAD(paramContext, arlz.a(this.a), -1L, null, false, 0);
+    int[] arrayOfInt = new int[2];
+    this.jdField_a_of_type_AndroidViewView.getLocationInWindow(arrayOfInt);
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment.e = arrayOfInt[1];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arma
  * JD-Core Version:    0.7.0.1
  */

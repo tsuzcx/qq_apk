@@ -1,6 +1,6 @@
 package com.tencent.gdtad.api.motivebrowsing;
 
-import acrj;
+import abns;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "p1", "Lcom/tencent/gdtad/api/motivebrowsing/MotiveBrowsingData;", "Lkotlin/ParameterName;", "name", "browsingData", "invoke"}, k=3, mv={1, 1, 16})
 final class GdtMotiveBrowsingFragment$initData$1
   extends FunctionReference
-  implements Function1<acrj, Unit>
+  implements Function1<abns, Unit>
 {
   GdtMotiveBrowsingFragment$initData$1(GdtMotiveBrowsingFragment arg1) {}
   
@@ -21,7 +21,7 @@ final class GdtMotiveBrowsingFragment$initData$1
   
   public final String getSignature() {}
   
-  public final void invoke(@NotNull acrj arg1) {}
+  public final void invoke(@NotNull abns arg1) {}
 }
 
 

@@ -1,22 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.SingleFeedPlayInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-class wpf
-  extends Job<Object, Object, Object>
+public class wpf
+  extends wnr<SingleFeedPlayInfo>
 {
-  wpf(wpe paramwpe, String paramString, QQStoryCmdHandler.IllegalUinException paramIllegalUinException)
+  public wpf(SingleFeedPlayInfo paramSingleFeedPlayInfo)
   {
-    super(paramString);
+    super(paramSingleFeedPlayInfo);
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public xnh a(String paramString)
   {
-    yuk.d("Q.qqstory.net:QQStoryCmdHandler", "uin convert error");
-    this.jdField_a_of_type_Wpe.a.a().a(880002, this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler$IllegalUinException.getMessage(), null);
-    return null;
+    paramString = new xnh(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
+    paramString.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
+    return paramString;
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, woj paramwoj)
+  {
+    ArrayList localArrayList = new ArrayList();
+    wns localwns = new wns(((SingleFeedPlayInfo)this.a).mFeedFeedId, new xnh(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
+    localwns.a.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
+    localArrayList.add(localwns);
+    paramwoj.a(new ErrorMessage(), localArrayList, true);
   }
 }
 

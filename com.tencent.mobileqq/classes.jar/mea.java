@@ -1,88 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.magicface.FaceItem;
-import com.tencent.av.business.manager.voiceRecog.VoiceRecogTips;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.FaceToolbar;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
-public class mea
-  implements mho
+class mea
 {
-  public mea(FaceToolbar paramFaceToolbar) {}
+  int jdField_a_of_type_Int = 0;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = 0;
+  boolean jdField_b_of_type_Boolean = false;
+  int jdField_c_of_type_Int = 0;
+  boolean jdField_c_of_type_Boolean = false;
+  int jdField_d_of_type_Int = 0;
+  boolean jdField_d_of_type_Boolean = false;
+  int e = 0;
+  int f = 0;
+  int g = 0;
+  int h = 0;
+  int i = 0;
+  int j = 0;
+  int k;
+  int l;
+  int m = 0;
+  int n = 0;
+  int o = 0;
   
-  public void a(long paramLong)
+  void a(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, float paramFloat1, float paramFloat2, int paramInt11, int paramInt12, int paramInt13, int paramInt14, int paramInt15)
   {
-    EffectSettingUi.a(this.a.mApp, paramLong);
-  }
-  
-  public void a(long paramLong, mii parammii)
-  {
-    boolean bool = false;
-    int j = 1;
-    if (AudioHelper.f()) {
-      QLog.w(FaceToolbar.TAG, 1, "onEffectClick, seq[" + paramLong + "], id[" + parammii.jdField_a_of_type_JavaLangString + "]");
-    }
-    EffectSettingUi.a(this.a.mApp, paramLong);
-    Object localObject = this.a.mApp.a();
-    if (this.a.checkDimmStatus(parammii)) {}
-    do
-    {
+    if (!QLog.isColorLevel()) {}
+    while ((this.jdField_c_of_type_Boolean == paramBoolean3) && (this.jdField_d_of_type_Boolean == paramBoolean4) && (this.jdField_a_of_type_Boolean == paramBoolean1) && (this.jdField_b_of_type_Boolean == paramBoolean2) && (this.jdField_a_of_type_Int == paramInt1) && (this.jdField_b_of_type_Int == paramInt2) && (this.jdField_c_of_type_Int == paramInt3) && (this.jdField_d_of_type_Int == paramInt4) && (this.e == paramInt5) && (this.f == paramInt6) && (this.g == paramInt7) && (this.h == paramInt8) && (this.i == paramInt9) && (this.j == paramInt10) && (this.k == paramInt11) && (this.l == paramInt12) && (this.m == paramInt13) && (this.n == paramInt14)) {
       return;
-      localObject = ((VideoController)localObject).a(this.a.mApp.a().a().d) + "";
-      VoiceRecogTips.a(this.a.mApp, parammii);
-      if (!parammii.jdField_a_of_type_JavaLangString.equals("0")) {
-        break;
-      }
-      this.a.notifyEvent(Integer.valueOf(6101), null, Boolean.valueOf(true));
-      lha.a(2, (String)localObject);
-      lha.a(2);
-    } while (!this.a.mApp.a(13));
-    ((lhm)this.a.mApp.a(13)).a(paramLong, "onEffectClick2");
-    return;
-    AudioHelper.a(parammii.jdField_a_of_type_JavaLangString, false);
-    if ((parammii.jdField_a_of_type_Int == 1) && (!mcy.c) && (mcy.b == 4) && (TextUtils.equals(mcy.d, parammii.jdField_a_of_type_JavaLangString)) && (this.a.mAdapterPendant.a() != parammii)) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(FaceToolbar.TAG, 2, "onEffectClick_Check, type[" + parammii.jdField_a_of_type_Int + "], sLastSenderFlag[" + mcy.c + "], sLastItemId[" + mcy.d + "], sLastFrom[" + mcy.b + "], id[" + parammii.jdField_a_of_type_JavaLangString + "], isSender[" + bool + "], click[" + this.a.mAdapterPendant.a() + "], info[" + parammii + "]");
-      }
-      new mcy(paramLong, parammii.jdField_a_of_type_JavaLangString, bool, 1).a(this.a.mApp);
-      FaceItem localFaceItem = (FaceItem)this.a.mFaceManager.a(parammii.jdField_a_of_type_JavaLangString);
-      int i = j;
-      if (localFaceItem != null)
-      {
-        if (!localFaceItem.getType().equalsIgnoreCase("face")) {
-          break label488;
-        }
-        i = j;
-      }
-      for (;;)
-      {
-        lha.a(parammii.jdField_a_of_type_JavaLangString, i, (String)localObject);
-        lha.a(parammii.jdField_a_of_type_JavaLangString, i);
-        return;
-        label488:
-        if (localFaceItem.getType().equalsIgnoreCase("pendant"))
-        {
-          i = 2;
-        }
-        else if (localFaceItem.getType().equalsIgnoreCase("voicesticker"))
-        {
-          i = 3;
-        }
-        else
-        {
-          i = j;
-          if (localFaceItem.getType().equalsIgnoreCase("creativecop")) {
-            i = 4;
-          }
-        }
-      }
-      bool = true;
     }
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_c_of_type_Boolean = paramBoolean3;
+    this.jdField_d_of_type_Boolean = paramBoolean4;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_d_of_type_Int = paramInt4;
+    this.e = paramInt5;
+    this.f = paramInt6;
+    this.g = paramInt7;
+    this.h = paramInt8;
+    this.i = paramInt9;
+    this.j = paramInt10;
+    this.k = paramInt11;
+    this.l = paramInt12;
+    this.m = paramInt13;
+    this.n = paramInt14;
+    this.o = paramInt15;
+    QLog.w(paramString, 1, "rendView, self[" + paramBoolean1 + "], mirror[" + paramBoolean2 + "], bForceGround[" + paramBoolean3 + "], pt[" + paramInt1 + ", " + paramInt2 + "], dst[" + paramInt3 + ", " + paramInt4 + "], src[" + paramInt5 + ", " + paramInt6 + "], t1[" + paramInt7 + ", " + paramInt8 + "], t2[" + paramInt9 + ", " + paramInt10 + "], sR[" + paramFloat1 + "], tR[" + paramFloat2 + "], border[" + paramBoolean4 + "], sAngle[" + paramInt11 + "], yuvAngle[" + paramInt12 + "], mRotation[" + paramInt13 + "], rotation[" + paramInt14 + "], scaleType[" + paramInt15 + "]");
   }
 }
 

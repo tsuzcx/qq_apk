@@ -1,26 +1,4 @@
-class yhd
-  implements yhi
-{
-  yhd(yhc paramyhc) {}
-  
-  public void a(int paramInt)
-  {
-    if (yhc.a(this.a) == null) {
-      return;
-    }
-    if (paramInt == 1) {
-      yhc.a(this.a);
-    }
-    for (;;)
-    {
-      this.a.h();
-      return;
-      if (paramInt == 2) {
-        yhc.b(this.a);
-      }
-    }
-  }
-}
+class yhd {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

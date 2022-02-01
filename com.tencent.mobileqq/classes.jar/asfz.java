@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.data.CameraEmotionData;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import java.util.List;
 
-class asfz
-  extends anul
+public abstract class asfz
 {
-  asfz(asfy paramasfy) {}
+  long jdField_a_of_type_Long;
+  List<FavFileInfo> jdField_a_of_type_JavaUtilList;
   
-  protected void a(int paramInt, CameraEmotionData paramCameraEmotionData)
+  public asfz()
   {
-    this.a.a(paramInt, paramCameraEmotionData);
+    this.a = 0L;
   }
+  
+  protected abstract void a(int paramInt, List<FavFileInfo> paramList, Bundle paramBundle);
 }
 
 

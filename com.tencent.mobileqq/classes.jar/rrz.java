@@ -1,18 +1,33 @@
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import java.lang.ref.WeakReference;
 
-public class rrz
-  extends rld
+class rrz
+  implements MediaPlayer.OnPreparedListener
 {
-  private VideoInfo a;
+  rrz(rry paramrry) {}
   
-  public VideoInfo a()
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    return this.a;
-  }
-  
-  public String a()
-  {
-    return this.a.g;
+    try
+    {
+      paramMediaPlayer.start();
+      rry.a(this.a).a = true;
+      paramMediaPlayer = (rsb)rry.a(this.a).get();
+      if (paramMediaPlayer != null)
+      {
+        paramMediaPlayer.a(rry.a(this.a));
+        this.a.a(true, "ugc voice play");
+      }
+      return;
+    }
+    catch (Exception paramMediaPlayer)
+    {
+      for (;;)
+      {
+        paramMediaPlayer.printStackTrace();
+      }
+    }
   }
 }
 

@@ -1,18 +1,25 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bqeq;
-import bqlg;
-import java.util.Collections;
+import bndn;
+import bnee;
 
 public class EditVideoDoodle$7
   implements Runnable
 {
-  public EditVideoDoodle$7(bqeq parambqeq) {}
+  public EditVideoDoodle$7(bndn parambndn) {}
   
   public void run()
   {
-    if (!this.this$0.jdField_a_of_type_Boolean) {
-      this.this$0.jdField_a_of_type_Bqlg.a(1, Collections.EMPTY_LIST);
+    if (this.this$0.jdField_a_of_type_Int == 2) {
+      this.this$0.jdField_a_of_type_Bnee.f();
+    }
+    for (;;)
+    {
+      this.this$0.jdField_a_of_type_Int = 1;
+      return;
+      if (this.this$0.jdField_a_of_type_Int == 3) {
+        this.this$0.jdField_a_of_type_Bnee.s();
+      }
     }
   }
 }

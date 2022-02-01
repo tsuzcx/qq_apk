@@ -53,7 +53,7 @@ public class ProfileCardFavorShowView
     if (this.jdField_a_of_type_Int > 0) {
       return this.jdField_a_of_type_Int;
     }
-    return 2131559516;
+    return 2131559518;
   }
   
   public View a(int paramInt)
@@ -69,14 +69,14 @@ public class ProfileCardFavorShowView
   protected void a()
   {
     LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(a(), this, true);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((LinearLayout)findViewById(2131376935));
-    this.b = ((ViewGroup)findViewById(2131364897));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378759));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368360));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131373025));
-    this.c = ((RelativeLayout)findViewById(2131367798));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166990));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839281);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((LinearLayout)findViewById(2131376689));
+    this.b = ((ViewGroup)findViewById(2131364924));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378524));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368384));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131372995));
+    this.c = ((RelativeLayout)findViewById(2131367830));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131167012));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839316);
   }
   
   public void a(int paramInt)
@@ -115,7 +115,7 @@ public class ProfileCardFavorShowView
       }
     }
     label50:
-    for (int i = getResources().getDimensionPixelSize(2131297478);; i = 0)
+    for (int i = getResources().getDimensionPixelSize(2131297533);; i = 0)
     {
       FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
       if (localLayoutParams != null)
@@ -138,7 +138,7 @@ public class ProfileCardFavorShowView
       }
     }
     label24:
-    for (int i = 0;; i = 8)
+    for (int i = 0;; i = 4)
     {
       localImageView.setVisibility(i);
       return;

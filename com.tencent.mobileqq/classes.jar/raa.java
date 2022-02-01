@@ -1,124 +1,172 @@
-public class raa
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/RIJWatchWordJumpDialog;", "Landroid/view/View$OnClickListener;", "parent", "Landroid/view/ViewGroup;", "jumpAction", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "clickType", "", "(Landroid/view/ViewGroup;Lkotlin/jvm/functions/Function1;)V", "closeButton", "Landroid/widget/ImageView;", "contentView", "Landroid/view/View;", "getContentView", "()Landroid/view/View;", "dialogLayout", "Landroid/widget/RelativeLayout;", "isShowing", "", "getJumpAction", "()Lkotlin/jvm/functions/Function1;", "maskView", "moreButton", "Landroid/widget/TextView;", "getParent", "()Landroid/view/ViewGroup;", "createView", "dismiss", "needAnimation", "findViewById", "T", "id", "(I)Landroid/view/View;", "initOnClickListener", "onClick", "v", "show", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract class raa
+  implements View.OnClickListener
 {
-  public static void a()
+  public static final rab a;
+  @Nullable
+  private final View jdField_a_of_type_AndroidViewView;
+  @NotNull
+  private final ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private final ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private final RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private final TextView jdField_a_of_type_AndroidWidgetTextView;
+  @Nullable
+  private final Function1<Integer, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
+  private boolean jdField_a_of_type_Boolean;
+  private final View b;
+  
+  static
   {
-    ocd.a(null, "", "0X800B26E", "0X800B26E", 0, 0, "", "", "", "", false);
+    jdField_a_of_type_Rab = new rab(null);
   }
   
-  public static void a(String paramString)
+  public raa(@NotNull ViewGroup paramViewGroup, @Nullable Function1<? super Integer, Unit> paramFunction1)
   {
-    ocd.a(null, "", "0X800B25C", "0X800B25C", 0, 0, paramString, "", "", "", false);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+    this.jdField_a_of_type_AndroidViewView = b();
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364630));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371361));
+    this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131370613);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365574));
+    c();
   }
   
-  public static void a(String paramString1, int paramInt, String paramString2)
+  private final void c()
   {
-    ocd.a(null, "", "0X800B26D", "0X800B26D", 0, 0, paramString1, String.valueOf(paramInt), "", paramString2, false);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    ocd.a(null, "", "0X800B264", "0X800B264", 0, 0, paramString1, paramString2, "", "", false);
-  }
-  
-  public static boolean a(char paramChar)
-  {
-    return (paramChar == 0) || (paramChar == '\t') || (paramChar == '\n') || (paramChar == '\r') || ((paramChar >= ' ') && (paramChar <= 55295)) || ((paramChar >= 57344) && (paramChar <= 65533)) || ((paramChar >= 65536) && (paramChar <= 1114111));
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    int j = paramString.length();
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (!a(paramString.charAt(i))) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
+    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localObject != null) {
+      ((TextView)localObject).setOnClickListener((View.OnClickListener)this);
+    }
+    localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (localObject != null) {
+      ((ImageView)localObject).setOnClickListener((View.OnClickListener)this);
+    }
+    localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    if (localObject != null) {
+      ((RelativeLayout)localObject).setOnClickListener((View.OnClickListener)this);
     }
   }
   
-  public static void b()
+  @Nullable
+  protected final View a()
   {
-    ocd.a(null, "", "0X800B25D", "0X800B25D", 0, 0, "", "", "", "", false);
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public static void b(String paramString)
+  @Nullable
+  protected final <T extends View> T a(int paramInt)
   {
-    ocd.a(null, "", "0X800B262", "0X800B262", 0, 0, paramString, "", "", "", false);
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null) {
+      return localView.findViewById(paramInt);
+    }
+    return null;
   }
   
-  public static void c()
+  @NotNull
+  protected final ViewGroup a()
   {
-    ocd.a(null, "", "0X800B25E", "0X800B25E", 0, 0, "", "", "", "", false);
+    return this.jdField_a_of_type_AndroidViewViewGroup;
   }
   
-  public static void c(String paramString)
+  @Nullable
+  protected final Function1<Integer, Unit> a()
   {
-    ocd.a(null, "", "0X800B267", "0X800B267", 0, 0, paramString, "", "", "", false);
+    return this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
   }
   
-  public static void d()
+  public final void a()
   {
-    ocd.a(null, "", "0X800B25F", "0X800B25F", 0, 0, "", "", "", "", false);
+    a(true);
   }
   
-  public static void d(String paramString)
+  public final void a(boolean paramBoolean)
   {
-    ocd.a(null, "", "0X800B26C", "0X800B26C", 0, 0, paramString, "", "", "", false);
+    this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
+    if (paramBoolean)
+    {
+      AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+      localAlphaAnimation.setDuration(250L);
+      localAlphaAnimation.setFillAfter(true);
+      View localView = this.b;
+      if (localView != null) {
+        localView.startAnimation((Animation)localAlphaAnimation);
+      }
+    }
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public static void e()
+  @NotNull
+  protected abstract View b();
+  
+  public final void b()
   {
-    ocd.a(null, "", "0X800B260", "0X800B260", 0, 0, "", "", "", "", false);
+    b(true);
   }
   
-  public static void f()
+  public final void b(boolean paramBoolean)
   {
-    ocd.a(null, "", "0X800B261", "0X800B261", 0, 0, "", "", "", "", false);
+    if (paramBoolean)
+    {
+      AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+      localAlphaAnimation.setDuration(250L);
+      localAlphaAnimation.setFillAfter(true);
+      localAlphaAnimation.setAnimationListener((Animation.AnimationListener)new rac(this));
+      View localView = this.jdField_a_of_type_AndroidViewView;
+      if (localView != null) {
+        localView.startAnimation((Animation)localAlphaAnimation);
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      return;
+      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidViewView);
+    }
   }
   
-  public static void g()
+  public void onClick(@Nullable View paramView)
   {
-    ocd.a(null, "", "0X800B263", "0X800B263", 0, 0, "", "", "", "", false);
-  }
-  
-  public static void h()
-  {
-    ocd.a(null, "", "0X800B265", "0X800B265", 0, 0, "", "", "", "", false);
-  }
-  
-  public static void i()
-  {
-    ocd.a(null, "", "0X800B266", "0X800B266", 0, 0, "", "", "", "", false);
-  }
-  
-  public static void j()
-  {
-    ocd.a(null, "", "0X800B268", "0X800B268", 0, 0, "", "", "", "", false);
-  }
-  
-  public static void k()
-  {
-    ocd.a(null, "", "0X800B269", "0X800B269", 0, 0, "", "", "", "", false);
-  }
-  
-  public static void l()
-  {
-    ocd.a(null, "", "0X800B26A", "0X800B26A", 0, 0, "", "", "", "", false);
-  }
-  
-  public static void m()
-  {
-    ocd.a(null, "", "0X800B26B", "0X800B26B", 0, 0, "", "", "", "", false);
+    Object localObject;
+    if (Intrinsics.areEqual(paramView, this.jdField_a_of_type_AndroidWidgetImageView))
+    {
+      localObject = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+      if (localObject != null) {
+        localObject = (Unit)((Function1)localObject).invoke(Integer.valueOf(0));
+      }
+      b();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (Intrinsics.areEqual(paramView, this.jdField_a_of_type_AndroidWidgetTextView))
+      {
+        localObject = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+        if (localObject != null) {
+          localObject = (Unit)((Function1)localObject).invoke(Integer.valueOf(1));
+        }
+        b(false);
+      }
+    }
   }
 }
 

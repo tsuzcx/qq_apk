@@ -1,18 +1,23 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.tencentmap.mapsdk.maps.model.Polyline;
+import android.os.Handler;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public class awtm
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class awtm
+  implements awtv
 {
-  public awtm(MapWidget paramMapWidget, ViewTreeObserver paramViewTreeObserver) {}
+  awtm(awtj paramawtj) {}
   
-  public void onGlobalLayout()
+  public void a(awtu paramawtu)
   {
-    this.jdField_a_of_type_AndroidViewViewTreeObserver.removeGlobalOnLayoutListener(this);
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a != null) {
-      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget, this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a.getPoints());
+    if (this.a.jdField_a_of_type_Awts != null) {
+      this.a.jdField_a_of_type_Awts.a();
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
+    paramawtu = awtj.a(this.a).a;
+    if (this.a.c()) {}
+    for (int i = 1;; i = 2)
+    {
+      awrt.a(paramawtu, i);
+      return;
     }
   }
 }

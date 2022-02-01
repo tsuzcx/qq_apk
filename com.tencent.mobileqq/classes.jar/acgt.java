@@ -1,179 +1,127 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.device.utils.LightAppSettingInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.observer.BusinessObserver;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Iterator;
 
-class acgt
-  implements BusinessObserver
+public class acgt
 {
-  acgt(acgs paramacgs) {}
+  private static acgt jdField_a_of_type_Acgt;
+  private SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  public String a;
+  private ArrayList<acha> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private acgt()
   {
-    if ((this.a.jdField_a_of_type_Bjbs != null) && (!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
-      this.a.jdField_a_of_type_Bjbs.dismiss();
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  private acgt(Context paramContext)
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_AndroidContentSharedPreferences = paramContext.getSharedPreferences("SHARED_PREFERENCE_KINGKONG_PATCH", 0);
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    paramContext = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("PATCH_LIST", "").split(";");
+    int j = paramContext.length;
+    while (i < j)
+    {
+      Object localObject = paramContext[i];
+      if (!((String)localObject).equals(""))
+      {
+        localObject = new acha(this.jdField_a_of_type_AndroidContentSharedPreferences, (String)localObject);
+        acgp.a("KingKongMainConfig", "--> " + localObject);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+      }
+      i += 1;
     }
-    if (!paramBoolean)
+  }
+  
+  public static acgt a(Context paramContext)
+  {
+    if (jdField_a_of_type_Acgt != null) {
+      return jdField_a_of_type_Acgt;
+    }
+    try
     {
-      bjuh.a().a(2131691385);
-      if (this.a.jdField_a_of_type_Acgu != null) {
-        this.a.jdField_a_of_type_Acgu.a(false);
+      if (jdField_a_of_type_Acgt != null)
+      {
+        paramContext = jdField_a_of_type_Acgt;
+        return paramContext;
       }
     }
-    do
+    finally {}
+    jdField_a_of_type_Acgt = new acgt(paramContext);
+    paramContext = jdField_a_of_type_Acgt;
+    return paramContext;
+  }
+  
+  private void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    acha localacha;
+    for (String str = ""; localIterator.hasNext(); str = str + localacha.jdField_a_of_type_JavaLangString + ";") {
+      localacha = (acha)localIterator.next();
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putString("PATCH_LIST", str);
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+  }
+  
+  public acha a(String paramString)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      return;
-      if (paramBundle.getInt("cgiResultCode", -1) == 0) {
-        break;
+      acha localacha = (acha)localIterator.next();
+      if (localacha.jdField_a_of_type_JavaLangString.equals(paramString)) {
+        return localacha;
       }
-      bjuh.a().a(2131691385);
-    } while (this.a.jdField_a_of_type_Acgu == null);
-    this.a.jdField_a_of_type_Acgu.a(false);
-    return;
-    int j;
-    for (;;)
-    {
-      try
-      {
-        paramBundle = new JSONObject(new String(paramBundle.getByteArray("data")));
-        j = paramBundle.optInt("ret", -1);
-        if (j != 0)
-        {
-          bjtx.a("LightAppUtil", "GETLightAppSettingCallBack failed,resultCode=" + j);
-          bjuh.a().a(2131691385);
-          if (this.a.jdField_a_of_type_Acgu != null) {
-            this.a.jdField_a_of_type_Acgu.a(false);
-          }
-          if (this.a.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo == null) {
-            break label920;
-          }
-          paramInt = this.a.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.productId;
-          label223:
-          if (!this.a.c) {
-            break label909;
-          }
-          achd.a(this.a.jdField_a_of_type_MqqAppAppRuntime, "Net_Get_LiteappSetting", 0, j, paramInt);
-          return;
-        }
-      }
-      catch (JSONException paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
-      try
-      {
-        paramBundle = paramBundle.getJSONArray("list");
-        if (((paramBundle != null) && (paramBundle.length() != 0)) || (!this.a.b)) {
-          break label429;
-        }
-        bjuh.a().a(2131691385);
-        if ((this.a.jdField_a_of_type_Bjbs != null) && (this.a.jdField_a_of_type_Bjbs.isShowing()) && (this.a.jdField_a_of_type_AndroidAppActivity != null) && (!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
-          this.a.jdField_a_of_type_Bjbs.dismiss();
-        }
-        if (this.a.jdField_a_of_type_Acgu != null) {
-          this.a.jdField_a_of_type_Acgu.a(true);
-        }
-        achd.a(null, "Net_LiteApp_Setting", 0, 1, this.a.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.productId);
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        bjuh.a().a(2131691385);
-      }
-      if (this.a.jdField_a_of_type_Acgu != null)
-      {
-        this.a.jdField_a_of_type_Acgu.a(false);
-        continue;
-        label429:
-        if (paramBundle != null) {
-          paramInt = 0;
-        }
-      }
+    }
+    return null;
+  }
+  
+  public ArrayList<acha> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(acha paramacha)
+  {
+    int i = 0;
+    if (i < this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      if (!((acha)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString.equals(paramacha.jdField_a_of_type_JavaLangString)) {}
     }
     for (;;)
     {
-      if (paramInt < paramBundle.length())
-      {
-        Object localObject1 = paramBundle.getJSONObject(paramInt);
-        LightAppSettingInfo localLightAppSettingInfo = new LightAppSettingInfo();
-        localLightAppSettingInfo.jdField_c_of_type_Int = ((JSONObject)localObject1).optInt("pid");
-        localLightAppSettingInfo.jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("template_type");
-        localLightAppSettingInfo.jdField_b_of_type_Int = ((JSONObject)localObject1).optInt("has_own_app");
-        localLightAppSettingInfo.jdField_d_of_type_JavaLangString = ((JSONObject)localObject1).optString("h5_url");
-        localLightAppSettingInfo.jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).optString("public_url");
-        localLightAppSettingInfo.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("own_appid");
-        localLightAppSettingInfo.jdField_d_of_type_Int = ((JSONObject)localObject1).optInt("device_type");
-        localLightAppSettingInfo.jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("own_pkgname");
-        localLightAppSettingInfo.jdField_e_of_type_JavaLangString = ((JSONObject)localObject1).optString("openid");
-        localLightAppSettingInfo.f = ((JSONObject)localObject1).optString("openkey");
-        localLightAppSettingInfo.g = ((JSONObject)localObject1).optString("appname");
-        localLightAppSettingInfo.jdField_e_of_type_Int = ((JSONObject)localObject1).optInt("bindtype", 1);
-        Object localObject2 = ((JSONObject)localObject1).optString("pub_propertyids");
-        JSONArray localJSONArray = ((JSONObject)localObject1).getJSONArray("config_list");
-        localLightAppSettingInfo.jdField_a_of_type_JavaUtilHashMap = this.a.a(localJSONArray);
-        localLightAppSettingInfo.h = ((JSONObject)localObject1).optString("comment");
-        localObject1 = ((String)localObject2).split(",");
-        if (localObject1 != null)
-        {
-          localObject2 = new ArrayList();
-          int k = localObject1.length;
-          int i = 0;
-          while (i < k)
-          {
-            ((ArrayList)localObject2).add(Integer.valueOf(localObject1[i]));
-            i += 1;
-          }
-          localLightAppSettingInfo.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject2);
-        }
-        for (;;)
-        {
-          if (!acgs.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(localLightAppSettingInfo.jdField_c_of_type_Int)))
-          {
-            acgs.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(localLightAppSettingInfo.jdField_c_of_type_Int), localLightAppSettingInfo);
-            acgs.jdField_a_of_type_JavaUtilArrayList.add(localLightAppSettingInfo);
-          }
-          if ((!this.a.b) || (this.a.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.productId != localLightAppSettingInfo.jdField_c_of_type_Int)) {
-            break;
-          }
-          this.a.a(this.a.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo, this.a.jdField_a_of_type_AndroidOsBundle, this.a.d);
-          break label925;
-          bjtx.e("LightAppUtil", "no ids!");
-        }
-        if (this.a.jdField_a_of_type_Acgu != null) {
-          this.a.jdField_a_of_type_Acgu.a(false);
-        }
+      if (i != -1) {
+        this.jdField_a_of_type_JavaUtilArrayList.set(i, paramacha);
       }
-      else
+      for (;;)
       {
-        if ((this.a.c) || (acgs.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
-          break;
-        }
-        paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-        if (!(paramBundle instanceof QQAppInterface)) {
-          break;
-        }
-        ((abur)((QQAppInterface)paramBundle).a(51)).a(acgs.jdField_a_of_type_JavaUtilArrayList);
-        break;
-        label909:
-        achd.a(null, "Net_Get_LiteappSetting", 0, j, paramInt);
+        paramacha.b(this.jdField_a_of_type_AndroidContentSharedPreferences$Editor);
         return;
-        label920:
-        paramInt = 0;
-        break label223;
+        i += 1;
+        break;
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramacha);
+        a();
       }
-      label925:
-      paramInt += 1;
+      i = -1;
     }
+  }
+  
+  public void a(String paramString)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      acha localacha = (acha)localIterator.next();
+      if (localacha.jdField_a_of_type_JavaLangString.equals(paramString))
+      {
+        localacha.a(this.jdField_a_of_type_AndroidContentSharedPreferences$Editor);
+        this.jdField_a_of_type_JavaUtilArrayList.remove(localacha);
+      }
+    }
+    a();
   }
 }
 

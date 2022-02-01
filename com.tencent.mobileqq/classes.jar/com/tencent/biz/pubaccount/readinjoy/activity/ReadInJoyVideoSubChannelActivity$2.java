@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import ocd;
-import odr;
+import odq;
+import ofe;
 
 class ReadInJoyVideoSubChannelActivity$2
   implements Runnable
@@ -10,7 +10,7 @@ class ReadInJoyVideoSubChannelActivity$2
   
   public void run()
   {
-    ocd.a(null, "", "0X8007413", "0X8007413", 0, 0, "", "1", "", odr.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
+    odq.a(null, "", "0X8007413", "0X8007413", 0, 0, "", "1", "", ofe.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
   }
 }
 

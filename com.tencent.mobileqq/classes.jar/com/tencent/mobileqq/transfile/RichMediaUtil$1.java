@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.transfile;
 
-import bews;
 import java.util.TimerTask;
 
-public final class RichMediaUtil$1
+final class RichMediaUtil$1
   extends TimerTask
 {
-  public RichMediaUtil$1(String paramString) {}
+  RichMediaUtil$1(String paramString) {}
   
   public void run()
   {
-    bews.a(this.a, false, null);
+    RichMediaUtil.stopReport(this.val$name, false, null);
   }
 }
 

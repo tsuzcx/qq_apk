@@ -1,10 +1,17 @@
-public abstract interface bdou
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+
+public class bdou
+  implements DialogInterface.OnClickListener
 {
-  public static final String an = anzj.a(2131713413);
-  public static final String ao = anzj.a(2131713405);
-  public static final String ap = anzj.a(2131713398);
-  public static final String aq = anzj.a(2131713409);
-  public static final String ar = antf.ba + "photo" + "/temp/";
+  public bdou(MediaPreviewActivity paramMediaPreviewActivity, URLDrawable paramURLDrawable, String paramString) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

@@ -1,28 +1,17 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.teamworkforgroup.GroupPadTemplateInfo;
 
 public class bcxs
-  implements INetInfoHandler
 {
-  public bcxs(ShortVideoResourceManager paramShortVideoResourceManager) {}
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public AsyncImageView a;
+  public GroupPadTemplateInfo a;
   
-  public void onNetMobile2None()
-  {
-    ShortVideoResourceManager.a(this.a);
-  }
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
-  {
-    ShortVideoResourceManager.a(this.a);
-  }
+  public bcxs(bcxq parambcxq) {}
 }
 
 

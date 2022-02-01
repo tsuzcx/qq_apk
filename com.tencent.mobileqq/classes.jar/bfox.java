@@ -1,19 +1,27 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class bfox
+final class bfox
+  implements DownloadParams.DecodeHandler
 {
-  public static final int ITEM_TYPE_AUDIO = 2;
-  public static final int ITEM_TYPE_MUSIC = 3;
-  public static final int ITEM_TYPE_NONE = 0;
-  public static final int ITEM_TYPE_PIC = 1;
-  public static final int ITEM_TYPE_VIDEO = 4;
-  protected static final String TAG = "publish_mediaInfo";
-  
-  public abstract String getJsonText();
-  
-  public abstract View getView(Context paramContext, View.OnClickListener paramOnClickListener);
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("URLDrawableDecodeHandler", 4, "ROUND_FACE_DECODER");
+    }
+    if (paramBitmap == null) {
+      return null;
+    }
+    paramDownloadParams = paramDownloadParams.tag;
+    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
+    {
+      paramDownloadParams = (int[])paramDownloadParams;
+      return bfvo.a(paramBitmap, 0.0F, paramDownloadParams[0], paramDownloadParams[1]);
+    }
+    return bfvo.c(paramBitmap, 50, 50);
+  }
 }
 
 

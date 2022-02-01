@@ -1,8 +1,18 @@
-import com.tencent.mobileqq.startup.step.RecordTracer;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.together.writetogether.websocket.WriteTogetherWebSocketSender;
+import com.tencent.mobileqq.together.writetogether.websocket.WriteTogetherWebSocketSender.MyNetInfoHandler.1;
 
-public final class bdjo
+public class bdjo
+  extends bdjj
 {
-  public static final RecordTracer a = new RecordTracer();
+  private bdjo(WriteTogetherWebSocketSender paramWriteTogetherWebSocketSender) {}
+  
+  protected void a()
+  {
+    ThreadManagerV2.excute(new WriteTogetherWebSocketSender.MyNetInfoHandler.1(this), 128, null, true);
+  }
+  
+  protected void b() {}
 }
 
 

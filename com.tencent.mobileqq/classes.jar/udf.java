@@ -1,16 +1,40 @@
-import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.Adapter;
 
-public class udf
-  implements bhgv
+public final class udf
+  implements udx
 {
-  public void onInfo(long paramLong, double paramDouble)
+  @NonNull
+  private final RecyclerView.Adapter a;
+  
+  public udf(@NonNull RecyclerView.Adapter paramAdapter)
   {
-    WSHomeFragment.a(this.a, paramDouble);
+    this.a = paramAdapter;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Object paramObject)
+  {
+    this.a.notifyItemRangeChanged(paramInt1, paramInt2, paramObject);
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemMoved(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     udf
  * JD-Core Version:    0.7.0.1
  */

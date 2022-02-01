@@ -1,35 +1,90 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.5;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 
 public class bcwk
-  implements beuq
+  extends bcvj
 {
-  public bcwk(PtvTemplateManager.5 param5) {}
+  public bcwk(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
   
-  public void onResp(bevm parambevm)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "onResp url: " + this.a.a.resurl + " resultcode: " + parambevm.c);
+    this.a.stopTitleProgress();
+    if (!paramBoolean) {
+      aszk.a(amtj.a(2131713836));
     }
-    this.a.a.usable = this.a.this$0.a(this.a.a);
-    if (this.a.a.usable) {}
-    try
-    {
-      nof.a(new File(PtvTemplateManager.jdField_a_of_type_JavaIoFile, this.a.a.name), PtvTemplateManager.jdField_a_of_type_JavaLangString);
+    while ((this.a.jdField_a_of_type_Int != paramInt) && (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString))) {
       return;
     }
-    catch (IOException parambevm)
+    if ((0 == 0) && (QLog.isDevelopLevel())) {
+      QLog.i("TeamWorkAuthorizeSettingFragment", 1, "padInfo is null, maybe is newpad");
+    }
+    this.a.jdField_a_of_type_JavaUtilList.clear();
+    if (0 != 0) {
+      throw new NullPointerException();
+    }
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      parambevm.printStackTrace();
+      TeamWorkAuthorizeSettingFragment.a(this.a, this.a.b);
+      TeamWorkAuthorizeSettingFragment.a(this.a);
+      TeamWorkAuthorizeSettingFragment.a(this.a, true);
+      return;
+      this.a.b = 2;
     }
   }
   
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
+  public void a(boolean paramBoolean, String paramString, int paramInt, List<TimDocSSOMsg.UinRightInfo> paramList)
+  {
+    this.a.stopTitleProgress();
+    if (!paramBoolean) {
+      aszk.a(amtj.a(2131713824));
+    }
+    while (!paramString.equalsIgnoreCase(this.a.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    this.a.jdField_a_of_type_JavaUtilList.clear();
+    paramString = paramList.iterator();
+    while (paramString.hasNext())
+    {
+      paramList = (TimDocSSOMsg.UinRightInfo)paramString.next();
+      bcty localbcty = new bcty();
+      localbcty.jdField_a_of_type_JavaLangString = String.valueOf(paramList.uint64_uin.get());
+      localbcty.jdField_a_of_type_ComTencentPbTeamworkTimDocSSOMsg$UinRightInfo = paramList;
+      this.a.jdField_a_of_type_Bctw.a(localbcty);
+    }
+    this.a.b = paramInt;
+    TeamWorkAuthorizeSettingFragment.a(this.a, this.a.b);
+    TeamWorkAuthorizeSettingFragment.a(this.a);
+    TeamWorkAuthorizeSettingFragment.a(this.a, true);
+  }
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt)
+  {
+    TeamWorkAuthorizeSettingFragment.a(this.a, true);
+    this.a.getRightTextView().setEnabled(true);
+    this.a.stopTitleProgress();
+    if (!paramBoolean) {
+      aszk.a(amtj.a(2131713779));
+    }
+    Intent localIntent;
+    do
+    {
+      return;
+      aszk.b(amtj.a(2131713781));
+      this.a.stopTitleProgress();
+      localIntent = new Intent();
+      localIntent.putExtra("url", paramString);
+      localIntent.putExtra("type", paramInt);
+    } while (!this.a.isAdded());
+    this.a.getActivity().setResult(1122, localIntent);
+    this.a.getActivity().finish();
+  }
 }
 
 

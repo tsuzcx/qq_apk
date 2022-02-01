@@ -1,6 +1,6 @@
 package cooperation.qzone.webviewplugin;
 
-import bmxj;
+import cooperation.qzone.cache.FileCacheService;
 
 final class QzoneOfflineCacheHelper$1
   implements Runnable
@@ -9,7 +9,7 @@ final class QzoneOfflineCacheHelper$1
   
   public void run()
   {
-    QzoneOfflineCacheHelper.access$000().a(this.a, true);
+    QzoneOfflineCacheHelper.access$000().updateLruFile(this.val$path, true);
   }
 }
 

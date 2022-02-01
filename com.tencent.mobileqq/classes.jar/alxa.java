@@ -1,6 +1,11 @@
-public abstract interface alxa
+import com.tencent.TMG.sdk.AVCallback;
+
+class alxa
+  implements AVCallback
 {
-  public abstract void a(String paramString, int paramInt);
+  alxa(alwt paramalwt) {}
+  
+  public void onComplete(int paramInt, String paramString) {}
 }
 
 

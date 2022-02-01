@@ -1,9 +1,8 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
 
 public abstract interface aivg
-  extends aiwj
 {
-  public abstract MessageRecord a(Object... paramVarArgs);
+  public abstract boolean a(TencentDocItem paramTencentDocItem);
 }
 
 

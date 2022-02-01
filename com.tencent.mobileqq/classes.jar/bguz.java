@@ -1,43 +1,34 @@
-import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troop.widget.AddedRobotView;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
-public class bguz
-  implements aoog
+class bguz
+  implements bgxq
 {
-  public bguz(AddedRobotView paramAddedRobotView) {}
+  bguz(bguy parambguy) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public int a(Bundle paramBundle)
   {
-    QLog.i("AddedRobotView", 1, "onDecodeTaskCompleted uin: " + paramString);
-    if (AddedRobotView.a(this.a) == null) {}
+    int j = this.a.a;
+    int i = -1;
+    long l = System.currentTimeMillis();
+    switch (this.a.a)
+    {
+    }
     for (;;)
     {
-      return;
-      if (!AddedRobotView.a(this.a).a())
-      {
-        paramInt2 = AddedRobotView.a(this.a).getChildCount();
-        paramInt1 = 0;
-        while (paramInt1 < paramInt2)
-        {
-          Object localObject = AddedRobotView.a(this.a).getChildViewHolder(AddedRobotView.a(this.a).getChildAt(paramInt1));
-          if ((localObject instanceof bgvc))
-          {
-            localObject = (bgvc)localObject;
-            if ((!TextUtils.isEmpty(((bgvc)localObject).jdField_a_of_type_JavaLangString)) && (((bgvc)localObject).jdField_a_of_type_JavaLangString.equals(paramString))) {
-              ((bgvc)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-            }
-          }
-          else
-          {
-            QLog.i("AddedRobotView", 2, "onDecodeTaskCompleted viewHolder correct uin not found ! ");
-          }
-          paramInt1 += 1;
-        }
-      }
+      QLog.i("WebViewModule", 1, "CreateLoop:step[" + j + "] -> step[" + this.a.a + "] cost" + (System.currentTimeMillis() - l) + " ms.");
+      return i;
+      i = this.a.a(paramBundle);
+      continue;
+      i = this.a.b(paramBundle);
+      continue;
+      i = this.a.c(paramBundle);
+      continue;
+      i = this.a.d(paramBundle);
+      continue;
+      i = this.a.e(paramBundle);
+      continue;
+      i = this.a.f(paramBundle);
     }
   }
 }

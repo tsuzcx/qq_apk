@@ -1,189 +1,172 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.util.QZLog;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tribe.async.async.JobContext;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
+import java.lang.ref.WeakReference;
 
 public class bnov
-  extends bnnn
+  extends bnph<bnot, bnot>
+  implements vpk
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bnow(this);
-  private volatile boolean jdField_a_of_type_Boolean;
+  public final int a;
+  public final String a;
+  public final WeakReference<bnca> a;
+  public final WeakReference<bncb> b;
   
-  private void b()
+  public bnov(bnca parambnca, bncb parambncb, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {}
+    this(parambnca, parambncb, null, paramInt);
+  }
+  
+  public bnov(bnca parambnca, bncb parambncb, String paramString, int paramInt)
+  {
+    if (parambnca == null) {
+      throw new NullPointerException("doodleLayout should not be null");
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambnca);
+    this.b = new WeakReference(parambncb);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected void a(JobContext paramJobContext, bnot parambnot)
+  {
+    long l1 = SystemClock.uptimeMillis();
+    paramJobContext = parambnot.jdField_a_of_type_JavaLangString;
+    if (TextUtils.isEmpty(paramJobContext))
+    {
+      super.notifyError(new ErrorMessage(-1, "should generate video thumb first !"));
+      xwa.b("take_video", "create_doodle_result", 0, -1, new String[0]);
+      return;
+    }
+    bnca localbnca = (bnca)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (bncb)this.b.get();
+    Bitmap localBitmap;
+    String str;
+    if ((localbnca != null) && ((!localbnca.a(this.jdField_a_of_type_Int)) || ((localObject != null) && (((bncb)localObject).a(this.jdField_a_of_type_Int)))))
+    {
+      localBitmap = localbnca.a(this.jdField_a_of_type_Int, true);
+      str = this.jdField_a_of_type_JavaLangString;
+      if (str != null) {
+        break label682;
+      }
+      str = bnpk.a(parambnot.jdField_a_of_type_Int, parambnot.b, ".png");
+      if (localBitmap != null) {
+        if (localObject == null) {}
+      }
+    }
     for (;;)
     {
-      return;
       try
       {
-        QZLog.i("QzoneWanbaJsPlugin", "registerBroadcast");
-        IntentFilter localIntentFilter = new IntentFilter();
-        localIntentFilter.addAction("QZONE.ACTION_NOTIFY_ADV_PLAY");
-        Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (bool) {
-          continue;
+        if (((bncb)localObject).a(this.jdField_a_of_type_Int)) {
+          ((bncb)localObject).a(this.jdField_a_of_type_Int, new Canvas(localBitmap), localBitmap.getWidth(), localBitmap.getHeight());
         }
+        localObject = new BitmapFactory.Options();
+        ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
         try
         {
-          localActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-          this.jdField_a_of_type_Boolean = true;
-          return;
-        }
-        catch (Exception localException1)
-        {
-          QZLog.e("QzoneWanbaJsPlugin", "regist receiver error:", localException1);
-          return;
-        }
-        return;
-      }
-      catch (Exception localException2)
-      {
-        QZLog.e("QzoneWanbaJsPlugin", "registerBroadcast error", localException2);
-      }
-    }
-  }
-  
-  private void c()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        QZLog.i("QzoneWanbaJsPlugin", "removeBroadcast");
-        Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-        try
-        {
-          localActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-          this.jdField_a_of_type_Boolean = false;
-          return;
-        }
-        catch (Exception localException1)
-        {
-          for (;;)
-          {
-            QZLog.e("QzoneWanbaJsPlugin", "unregisterReceiver error ", localException1);
+          bfvo.a(paramJobContext, (BitmapFactory.Options)localObject);
+          m = ((BitmapFactory.Options)localObject).outWidth;
+          n = ((BitmapFactory.Options)localObject).outHeight;
+          if ((parambnot.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 14) && (parambnot.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.d()) && (parambnot.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a() < parambnot.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b())) {
+            break label685;
+          }
+          if (parambnot.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 14) {
+            continue;
           }
         }
+        catch (OutOfMemoryError paramJobContext)
+        {
+          int m;
+          int n;
+          int k;
+          int i;
+          long l2;
+          xvv.b("Q.qqstory.publish.edit.GenerateDynamicDoodleImage", "decode video thumb failed %s", paramJobContext);
+          super.notifyError(new BitmapError("Q.qqstory.publish.edit.GenerateDynamicDoodleImage", 6));
+          return;
+        }
+        k = n;
+        i = m;
+        if (m > n)
+        {
+          k = n;
+          i = m;
+          if (j != 0)
+          {
+            i = ((BitmapFactory.Options)localObject).outHeight;
+            k = ((BitmapFactory.Options)localObject).outWidth;
+          }
+        }
+        paramJobContext = yoy.c(localBitmap, i, k, true, false);
+        i = bnpd.a(parambnot);
+        if (i != 0)
+        {
+          paramJobContext = UIUtils.rotateBitmap(paramJobContext, i);
+          if (paramJobContext == null) {
+            break label673;
+          }
+          bool = yoy.a(paramJobContext, Bitmap.CompressFormat.PNG, 60, str);
+          localbnca.a(localBitmap);
+          if (paramJobContext != localBitmap) {
+            yoy.a(paramJobContext);
+          }
+          if ((paramJobContext != null) && (bool))
+          {
+            xvv.b("Q.qqstory.publish.edit.GenerateDynamicDoodleImage", "resize and crop original doodle image success");
+            l2 = SystemClock.uptimeMillis();
+            xwa.b("take_video", "create_doodle_time", 0, 0, new String[] { "" + (l2 - l1) });
+            xwa.b("take_video", "create_doodle_result", 0, 0, new String[0]);
+            parambnot.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.putExtra("dynamic_Sticker_image_path", str);
+            super.notifyResult(parambnot);
+            return;
+            j = 0;
+          }
+        }
+        else
+        {
+          if ((((BitmapFactory.Options)localObject).outWidth <= ((BitmapFactory.Options)localObject).outHeight) || ((parambnot.jdField_a_of_type_Int != 12) && (parambnot.jdField_a_of_type_Int != 11))) {
+            break label679;
+          }
+          paramJobContext = UIUtils.rotateBitmap(paramJobContext, 270.0F);
+          continue;
+        }
+        xvv.d("Q.qqstory.publish.edit.GenerateDynamicDoodleImage", "resize and save doodle image failed");
       }
+      finally
+      {
+        localbnca.a(localBitmap);
+      }
+      xwa.b("take_video", "create_doodle_result", 0, -2, new String[0]);
+      super.notifyError(new ErrorMessage(-1, "Resize or store doodle failed"));
       return;
+      xvv.d("Q.qqstory.publish.edit.GenerateDynamicDoodleImage", "get doodle bitmap failed");
+      xwa.b("take_video", "create_doodle_result", 0, -2, new String[0]);
+      super.notifyError(new ErrorMessage(-1, "DoodleLayout get bitmap failed"));
+      return;
+      xvv.d("Q.qqstory.publish.edit.GenerateDynamicDoodleImage", "do not generate doodle image because doodle is empty");
+      super.notifyResult(parambnot);
+      return;
+      label673:
+      boolean bool = false;
+      continue;
+      label679:
+      continue;
+      label682:
+      break;
+      label685:
+      int j = 1;
     }
-    catch (Exception localException2)
-    {
-      QZLog.e("QzoneWanbaJsPlugin", "removeBroadcast error", localException2);
-    }
-  }
-  
-  public void a()
-  {
-    c();
-    super.a();
-  }
-  
-  /* Error */
-  public boolean a(com.tencent.mobileqq.webview.swift.JsBridgeListener paramJsBridgeListener, java.lang.String paramString1, java.lang.String paramString2, java.lang.String paramString3, java.lang.String... paramVarArgs)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: ldc 93
-    //   5: aload_3
-    //   6: invokevirtual 99	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   9: ifne +5 -> 14
-    //   12: iconst_0
-    //   13: ireturn
-    //   14: ldc 101
-    //   16: aload 4
-    //   18: invokevirtual 99	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   21: ifeq -9 -> 12
-    //   24: aload 5
-    //   26: arraylength
-    //   27: iconst_1
-    //   28: if_icmpge +12 -> 40
-    //   31: ldc 26
-    //   33: ldc 103
-    //   35: invokestatic 105	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   38: iconst_1
-    //   39: ireturn
-    //   40: aload 5
-    //   42: iconst_0
-    //   43: aaload
-    //   44: astore_3
-    //   45: new 107	org/json/JSONObject
-    //   48: dup
-    //   49: aload_3
-    //   50: invokespecial 109	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   53: astore_1
-    //   54: aload_1
-    //   55: ldc 111
-    //   57: invokevirtual 115	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   60: astore_2
-    //   61: aload_2
-    //   62: invokestatic 121	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   65: ifeq +33 -> 98
-    //   68: ldc 26
-    //   70: ldc 123
-    //   72: invokestatic 105	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   75: iconst_1
-    //   76: ireturn
-    //   77: aload_2
-    //   78: invokevirtual 126	org/json/JSONException:printStackTrace	()V
-    //   81: aload 6
-    //   83: astore_2
-    //   84: goto -23 -> 61
-    //   87: astore_1
-    //   88: ldc 26
-    //   90: ldc 128
-    //   92: aload_1
-    //   93: invokestatic 71	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   96: iconst_1
-    //   97: ireturn
-    //   98: ldc 26
-    //   100: new 130	java/lang/StringBuilder
-    //   103: dup
-    //   104: invokespecial 131	java/lang/StringBuilder:<init>	()V
-    //   107: ldc 133
-    //   109: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   112: aload_1
-    //   113: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   116: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   119: invokestatic 34	cooperation/qzone/util/QZLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   122: aload_0
-    //   123: invokespecial 146	bnov:b	()V
-    //   126: aload_0
-    //   127: getfield 46	bnov:jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin;
-    //   130: getfield 52	com/tencent/mobileqq/webview/swift/WebViewPlugin:mRuntime	Lbioy;
-    //   133: invokevirtual 57	bioy:a	()Landroid/app/Activity;
-    //   136: aload_3
-    //   137: invokestatic 151	bmtd:b	(Landroid/app/Activity;Ljava/lang/String;)V
-    //   140: goto -44 -> 96
-    //   143: astore_2
-    //   144: goto -67 -> 77
-    //   147: astore_2
-    //   148: aconst_null
-    //   149: astore_1
-    //   150: goto -73 -> 77
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	153	0	this	bnov
-    //   0	153	1	paramJsBridgeListener	com.tencent.mobileqq.webview.swift.JsBridgeListener
-    //   0	153	2	paramString1	java.lang.String
-    //   0	153	3	paramString2	java.lang.String
-    //   0	153	4	paramString3	java.lang.String
-    //   0	153	5	paramVarArgs	java.lang.String[]
-    //   1	81	6	localObject	java.lang.Object
-    // Exception table:
-    //   from	to	target	type
-    //   24	38	87	java/lang/Exception
-    //   45	54	87	java/lang/Exception
-    //   54	61	87	java/lang/Exception
-    //   61	75	87	java/lang/Exception
-    //   77	81	87	java/lang/Exception
-    //   98	140	87	java/lang/Exception
-    //   54	61	143	org/json/JSONException
-    //   45	54	147	org/json/JSONException
   }
 }
 

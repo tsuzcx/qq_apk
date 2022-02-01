@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.ocr.TranslateFragment;
+import java.util.List;
 
 public class axnd
-  implements View.OnClickListener
+  implements PopupWindow.OnDismissListener
 {
-  public axnd(MultiCardFragment paramMultiCardFragment) {}
+  public axnd(TranslateFragment paramTranslateFragment, axll paramaxll) {}
   
-  public void onClick(View paramView)
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "indicator onClick() called with: v = [" + paramView + "]");
+    TranslateFragment.b(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, null);
+    if ((this.jdField_a_of_type_Axll.c != null) && (this.jdField_a_of_type_Axll.c.size() > 1))
+    {
+      Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment.getResources().getDrawable(2130846062);
+      TranslateFragment.b(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment).setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

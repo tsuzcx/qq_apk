@@ -1,219 +1,350 @@
-import com.tencent.mobileqq.app.FriendListHandler;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.QQSchemeHandler.1;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.QQSchemeHandler.2;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.QQSchemeHandler.3;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0xd69.oidb_cmd0xd69.DoubtInfo;
-import tencent.im.oidb.cmd0xd69.oidb_cmd0xd69.GetListRspBody;
-import tencent.im.oidb.cmd0xd69.oidb_cmd0xd69.GetUnreadNumRspBody;
-import tencent.im.oidb.cmd0xd69.oidb_cmd0xd69.RspBody;
-import tencent.im.oidb.cmd0xd72.oidb_cmd0xd72.RspBody;
+import cooperation.vip.ar.VipARShowActivity;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aoqu
-  extends aoqf
+  implements aoqs
 {
-  public aoqu(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
+  private void a(String paramString1, String paramString2)
   {
-    super(paramQQAppInterface, paramFriendListHandler);
-  }
-  
-  private void a(ToServiceMsg paramToServiceMsg, oidb_cmd0xd69.RspBody paramRspBody, int paramInt, StringBuilder paramStringBuilder, ajka paramajka)
-  {
-    ArrayList localArrayList = null;
-    Object localObject = paramToServiceMsg.getAttribute("exactData");
-    boolean bool;
-    if (paramRspBody.msg_get_list_body.has()) {
-      if (paramRspBody.msg_get_list_body.bytes_cookies.has())
-      {
-        paramToServiceMsg = paramRspBody.msg_get_list_body.bytes_cookies.get().toByteArray();
-        oidb_cmd0xd69.GetListRspBody localGetListRspBody = (oidb_cmd0xd69.GetListRspBody)paramRspBody.msg_get_list_body.get();
-        paramRspBody = paramToServiceMsg;
-        if (localGetListRspBody.rpt_msg_list.has())
-        {
-          paramRspBody = localGetListRspBody.rpt_msg_list.get();
-          localArrayList = new ArrayList(paramRspBody.size());
-          paramRspBody = paramRspBody.iterator();
-          while (paramRspBody.hasNext()) {
-            localArrayList.add(SysSuspiciousMsg.covertFrom((oidb_cmd0xd69.DoubtInfo)paramRspBody.next()));
-          }
-          if (paramToServiceMsg != null) {
-            break label243;
-          }
-          bool = true;
-          paramajka.a(localArrayList, bool);
-        }
-      }
-    }
-    for (paramRspBody = paramToServiceMsg;; paramRspBody = null)
+    Map localMap;
+    try
     {
-      paramajka = paramStringBuilder.append("CMD_GET_LIST unread=").append("|");
-      if (localArrayList != null)
-      {
-        paramToServiceMsg = Integer.valueOf(localArrayList.size());
-        label180:
-        paramajka.append(paramToServiceMsg);
-        paramStringBuilder = paramStringBuilder.append("|");
-        if (paramRspBody == null) {
-          break label255;
-        }
+      QLog.i("QQSchemeHandler", 1, "handleTogether " + paramString1 + paramString2);
+      paramString1 = bjnd.a(paramString1);
+      localMap = aoqp.a(new JSONObject(paramString2));
+      Object localObject = localMap.get("type");
+      if ((localObject == null) || (!(localObject instanceof String))) {
+        break label165;
       }
-      label243:
-      label255:
-      for (paramToServiceMsg = " has cookie";; paramToServiceMsg = " no cookie")
+      paramString2 = ((String)localObject).toLowerCase();
+      if ("watch".equals(paramString2))
       {
-        paramStringBuilder.append(paramToServiceMsg);
-        a(125, true, new Object[] { Integer.valueOf(paramInt), localArrayList, paramRspBody, localObject });
+        a(localMap, paramString1);
         return;
-        bool = false;
-        break;
-        paramToServiceMsg = " no list";
-        break label180;
       }
-      paramToServiceMsg = null;
-      break;
+      if ("sing".equals(paramString2))
+      {
+        b(localMap, paramString1);
+        return;
+      }
     }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return ("OidbSvc.0xd69".equals(paramString)) || ("OidbSvc.0xd72".equals(paramString));
-  }
-  
-  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if ("OidbSvc.0xd69".equals(str)) {
-      c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-    while (!"OidbSvc.0xd72".equals(str)) {
+    catch (Exception paramString1)
+    {
+      QLog.e("QQSchemeHandler", 1, paramString1, new Object[0]);
       return;
     }
-    d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    if ("listen".equals(paramString2))
+    {
+      c(localMap, paramString1);
+      return;
+    }
+    QLog.i("QQSchemeHandler", 1, "handleTogether type no support" + paramString2);
+    return;
+    label165:
+    QLog.i("QQSchemeHandler", 1, "handleTogether metaJson error" + paramString2);
   }
   
-  public void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void a(Map<String, Object> paramMap, Map<String, String> paramMap1)
   {
-    int j = ((Integer)paramToServiceMsg.getAttribute("cmd", Integer.valueOf(0))).intValue();
-    oidb_cmd0xd69.RspBody localRspBody = new oidb_cmd0xd69.RspBody();
-    FriendListHandler localFriendListHandler = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-    int k = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
-    int m = localRspBody.cmd_type.get();
-    paramFromServiceMsg = new StringBuilder(1024);
-    if (k == 0)
+    paramMap = new ArkAppSchemeCenter.QQSchemeHandler.1(this, paramMap, paramMap1);
+    if (Looper.myLooper() != Looper.getMainLooper())
     {
-      paramObject = (ajka)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34);
-      if (m == 2) {
-        if (!localRspBody.msg_get_unread_num_body.has()) {
-          break label647;
-        }
+      ThreadManagerV2.getUIHandlerV2().post(paramMap);
+      return;
+    }
+    paramMap.run();
+  }
+  
+  private void b(String paramString1, String paramString2)
+  {
+    Object localObject;
+    try
+    {
+      paramString2 = new JSONObject(paramString2);
+      paramString1 = paramString2.optString("jumpType");
+      localObject = paramString2.optString("feed");
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        QLog.i("terry_ark", 1, "handleArkJump: err, strFeed = " + (String)localObject);
+        bhzt.a().a("请求失败，请稍后再试");
+        return;
+      }
+      localObject = uyw.a((String)localObject);
+      if ((localObject == null) || (TextUtils.isEmpty(((stSimpleMetaFeed)localObject).id)) || (TextUtils.isEmpty(((stSimpleMetaFeed)localObject).poster_id)))
+      {
+        QLog.i("terry_ark", 1, "handleArkJump: err, feed is err.");
+        bhzt.a().a("请求失败，请稍后再试");
+        return;
       }
     }
-    label647:
-    for (int i = ((oidb_cmd0xd69.GetUnreadNumRspBody)localRspBody.msg_get_unread_num_body.get()).doubt_unread_num.get();; i = 0)
+    catch (JSONException paramString1)
     {
-      paramFromServiceMsg.append("CMD_GET_UNREAD unread=").append(i);
-      paramObject.b(i);
-      a(124, true, new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
+      paramString1.printStackTrace();
+      return;
+    }
+    String str = paramString2.optString("groupNum");
+    paramString2 = paramString2.optString("schema");
+    QLog.i("terry_ark", 1, "handleArkJump: schema = " + paramString2);
+    if ((paramString1.equals("jumpApp")) && (!TextUtils.isEmpty(paramString2)) && (paramString2.startsWith("weishi://")) && (yqu.a(BaseActivity.sTopActivity)))
+    {
+      uyc.a(BaseActivity.sTopActivity, "biz_src_jc_gzh_weishi", paramString2);
+      vdp.a(str, 1000003, (stSimpleMetaFeed)localObject);
+      return;
+    }
+    uyw.a((stSimpleMetaFeed)localObject, BaseActivity.sTopActivity);
+    vdp.a(str, 1000001, (stSimpleMetaFeed)localObject);
+    WSPublicAccReport.getInstance().enterPublicAccReport(null, 2);
+  }
+  
+  private void b(Map<String, Object> paramMap, Map<String, String> paramMap1)
+  {
+    paramMap = new ArkAppSchemeCenter.QQSchemeHandler.2(this, paramMap, paramMap1);
+    if (Looper.myLooper() != Looper.getMainLooper())
+    {
+      ThreadManagerV2.getUIHandlerV2().post(paramMap);
+      return;
+    }
+    paramMap.run();
+  }
+  
+  private void c(Map<String, Object> paramMap, Map<String, String> paramMap1)
+  {
+    paramMap = new ArkAppSchemeCenter.QQSchemeHandler.3(this, paramMap, paramMap1);
+    if (Looper.myLooper() != Looper.getMainLooper())
+    {
+      ThreadManagerV2.getUIHandlerV2().post(paramMap);
+      return;
+    }
+    paramMap.run();
+  }
+  
+  protected QQAppInterface a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
+  
+  protected void a(String paramString)
+  {
+    String str1 = null;
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    String str2;
+    String str3;
+    if ((localBaseActivity instanceof FragmentActivity))
+    {
+      str2 = "";
+      str3 = "";
+    }
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramString);
+        if (!localJSONObject.has("lat")) {
+          break label205;
+        }
+        paramString = localJSONObject.getString("lat");
+        if (localJSONObject.has("lon")) {
+          str1 = localJSONObject.getString("lon");
+        }
+        if (localJSONObject.has("title")) {
+          str2 = localJSONObject.getString("title");
+        }
+        if (localJSONObject.has("loc")) {
+          str3 = localJSONObject.getString("loc");
+        }
+        if ((paramString == null) || (str1 == null)) {
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("ArkApp", 1, "QQ.showQMapView parameter error: " + paramString.getMessage());
+        return;
+      }
+      paramString = bfwg.a(a(), localBaseActivity, String.format("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.PoiMapActivity&type=sharedmap&lat=%s&lon=%s&title=%s&loc=%s&dpid=null", new Object[] { paramString, str1, str2, str3 }));
+      if (paramString != null)
+      {
+        paramString.a();
+        return;
+        label205:
+        paramString = null;
+      }
+    }
+  }
+  
+  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
+  {
+    if (paramLong != 0L) {
+      return false;
+    }
+    if (paramString1.equals("pubaccount/pendant"))
+    {
+      if ((BaseActivity.sTopActivity instanceof FragmentActivity))
+      {
+        paramString1 = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+        if (paramString1 != null)
+        {
+          paramString1 = paramString1.a();
+          if ((paramString1 != null) && ((paramString1 instanceof ahiu))) {
+            ((ahiu)paramString1).a(paramString2);
+          }
+        }
+      }
+      return true;
+    }
+    if (paramString1.equals("map"))
+    {
+      a(paramString2);
+      return true;
+    }
+    if ("cmshow/openGame".equals(paramString1))
+    {
+      paramString1 = a();
+      if (paramString1 != null) {
+        ((alnr)paramString1.getManager(153)).a().a(paramString2);
+      }
+      return true;
+    }
+    if ("readinjoy/groupopen".equals(paramString1)) {}
+    label265:
+    do
+    {
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("FriendListHandler.BaseHandlerReceiver", 2, "handleGetSuspiciousMsg cmd:" + m + " localCmd:" + j + " result:" + k + " |" + paramFromServiceMsg.toString());
-        }
-        return;
-        if (m == 1)
+        try
         {
-          a(paramToServiceMsg, localRspBody, k, paramFromServiceMsg, paramObject);
+          paramString1 = new JSONObject(paramString2);
+          paramLong = paramString1.getLong("troopUin");
+          long l = paramString1.getLong("appId");
+          paramString1 = paramString1.optString("jumpData");
+          paramString2.printStackTrace();
+        }
+        catch (JSONException paramString2)
+        {
+          try
+          {
+            paramString2 = a();
+            if (paramString2 != null) {
+              ((anca)paramString2.getBusinessHandler(20)).b(paramLong + "", l);
+            }
+            bftc.a("Grp_AIO", "Grp_aio_subscription", "Grp_aio_clk", 1, 0, new String[] { String.valueOf(paramLong) });
+            okj.a(BaseActivity.sTopActivity, paramString1, 1);
+            return false;
+          }
+          catch (JSONException paramString2)
+          {
+            break label265;
+          }
+          paramString2 = paramString2;
+          paramString1 = null;
+        }
+        continue;
+        if ("troop/openManage".equals(paramString1))
+        {
+          aota.a().a(paramString2);
+        }
+        else if ("troop/report".equals(paramString1))
+        {
+          bftc.a(paramString2);
+          if (QLog.isColorLevel()) {
+            QLog.d("navigate report", 2, "rags are:" + paramString2);
+          }
+        }
+        else if ("gift/predownload".equals(paramString1))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("VipARPreDownload", 2, "predownload path = " + paramString2);
+          }
+          paramString1 = a();
+          if (paramString1 != null)
+          {
+            paramString1 = (aztc)paramString1.getManager(312);
+            paramString1.a(paramString2);
+            paramString1 = paramString1.a(paramString2);
+            if ((paramString1 != null) && (!TextUtils.isEmpty(paramString1.b)) && (blad.a().a()))
+            {
+              bkzx.a().b();
+              bkzx.a().a();
+              bilc.a("1018", true, null);
+              blad.a().a(paramString1, null);
+            }
+            else
+            {
+              QLog.i("VipARPreDownload", 1, "predownload vipARConfig not match ARgift or isEnableOpen3D = " + blad.a().a());
+            }
+          }
         }
         else
         {
-          long l;
-          if (m == 3)
-          {
-            l = ((Long)paramToServiceMsg.getAttribute("uin", Long.valueOf(0L))).longValue();
-            paramFromServiceMsg.append("CMD_DELETE uin=").append(l);
-            paramObject.a(l);
-            a(126, true, new Object[] { Integer.valueOf(k), Long.valueOf(l) });
+          if (!"gift/playAnimation".equals(paramString1)) {
+            break;
           }
-          else if (m == 4)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("FriendListHandler.BaseHandlerReceiver", 2, "handleGetSuspiciousClear ");
-            }
-            paramFromServiceMsg.append("CMD_CLEAR unread=");
-            paramObject.l();
-            a(127, true, new Object[] { Integer.valueOf(k) });
+          if (QLog.isColorLevel()) {
+            QLog.i("VipARPreDownload", 2, "playAnimation path = " + paramString2);
           }
-          else if (m == 5)
+          paramString1 = a();
+          if (paramString1 != null)
           {
-            paramFromServiceMsg.append("CMD_REPORT");
-            a(128, true, new Object[] { Integer.valueOf(k) });
-            continue;
-            if (m == 2)
+            paramJSONObject = (aztc)paramString1.getManager(312);
+            paramString1 = paramJSONObject.a(paramString2);
+            if ((paramString1 != null) && (!TextUtils.isEmpty(paramString1.b)) && (blad.a().a()))
             {
-              paramFromServiceMsg.append("CMD_GET_UNREAD failed");
-              a(124, false, new Object[] { Integer.valueOf(k), Integer.valueOf(0) });
+              if (bkzx.a(600))
+              {
+                paramString2 = new Intent(BaseActivity.sTopActivity, VipARShowActivity.class);
+                paramString2.putExtra("modelResUrl", paramString1.b);
+                paramString2.putExtra("modelResMd5", paramString1.c);
+                paramString2.putExtra("key_refer", "value_refer_aio");
+                BaseActivity.sTopActivity.startActivity(paramString2);
+              }
+              else
+              {
+                QLog.i("VipARPreDownload", 1, "playAnimation isClickEnable = false ");
+              }
             }
-            else if (m == 1)
+            else
             {
-              paramFromServiceMsg.append("CMD_GET_LIST failed");
-              a(125, false, new Object[] { Integer.valueOf(k), null, null, paramToServiceMsg.getAttribute("exactData") });
-            }
-            else if (m == 3)
-            {
-              l = ((Long)paramToServiceMsg.getAttribute("uin", Long.valueOf(0L))).longValue();
-              paramFromServiceMsg.append("CMD_DELETE failed ").append(l);
-              a(126, false, new Object[] { Integer.valueOf(k), Long.valueOf(l) });
-            }
-            else if (m == 4)
-            {
-              paramFromServiceMsg.append("CMD_CLEAR failed");
-              a(127, false, new Object[] { Integer.valueOf(k) });
-            }
-            else if (m == 5)
-            {
-              paramFromServiceMsg.append("CMD_REPORT failed");
-              a(128, false, new Object[] { Integer.valueOf(k) });
+              QLog.i("VipARPreDownload", 1, "playAnimation vipARConfig not match ARgift or isEnableOpen3D = " + blad.a().a());
+              paramJSONObject.b(paramString2);
             }
           }
         }
       }
-    }
-  }
-  
-  public void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
-      return;
-    }
-    long l = ((Long)paramToServiceMsg.getAttribute("toUin", Long.valueOf(0L))).longValue();
-    if (QLog.isColorLevel()) {
-      QLog.i("FriendListHandler.BaseHandlerReceiver", 2, "handleAgreeSuspiciousMsg " + l);
-    }
-    paramToServiceMsg = new oidb_cmd0xd72.RspBody();
-    FriendListHandler localFriendListHandler = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-    int i = FriendListHandler.parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
-    if (i == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendListHandler.BaseHandlerReceiver", 2, "handleAgreeSuspiciousMsg suc " + l);
+      if (paramString1.startsWith("together?"))
+      {
+        a(paramString1, paramString2);
+        return true;
       }
-      ((ajka)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).a(l);
-      a(129, true, new Object[] { Integer.valueOf(i), Long.valueOf(l) });
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("FriendListHandler.BaseHandlerReceiver", 2, "handleAgreeSuspiciousMsg failed result:" + i);
-    }
-    a(129, false, new Object[] { Integer.valueOf(i), Long.valueOf(l) });
+    } while (!paramString1.startsWith("weishi"));
+    b(paramString1, paramString2);
+    return true;
   }
 }
 

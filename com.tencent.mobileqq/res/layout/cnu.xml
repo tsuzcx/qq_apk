@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:id="@id/na5" android:background="@color/ag4" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/mgt" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="bottom" android:id="@id/nau" android:layout_width="fill_parent" android:layout_height="30.0dip">
-        <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/bp" android:id="@id/n_s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="可能感兴趣的人" android:layout_centerVertical="true" />
-        <TextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="@color/bp" android:id="@id/n_r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="28.0dip" android:text="更多" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        <ImageView android:id="@id/na6" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="14.0dip" android:src="@drawable/gq5" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <android.support.v7.widget.RecyclerView android:id="@id/na4" android:layout_width="fill_parent" android:layout_height="@dimen/b2l" android:layout_marginTop="30.0dip" />
-</FrameLayout>
+    <com.tencent.image.URLImageView android:id="@id/mgu" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ImageView android:id="@id/mgs" android:layout_width="20.0dip" android:layout_height="fill_parent" android:layout_marginRight="4.0dip" android:layout_alignParentRight="true" />
+</RelativeLayout>

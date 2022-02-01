@@ -1,13 +1,6 @@
-public class bgdg
+public abstract interface bgdg
 {
-  @bhhr(a="type")
-  public int a;
-  @bhhr(a="title")
-  public String a;
-  @bhhr(a="content_text")
-  public String b;
-  @bhhr(a="kid")
-  public String c;
+  public abstract void a(bgdd parambgdd);
 }
 
 

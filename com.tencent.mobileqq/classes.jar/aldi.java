@@ -1,45 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class aldi
-  extends biht
+  implements DialogInterface.OnClickListener
 {
-  public aldi(PreloadManager paramPreloadManager, aldl paramaldl) {}
+  public aldi(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onDoneFile(bihu parambihu)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = -5;
-    super.onDoneFile(parambihu);
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadManager", 2, "downloadRes|done" + parambihu.jdField_a_of_type_JavaLangString + "|" + parambihu.jdField_a_of_type_Int);
-    }
-    Object localObject = parambihu.a();
-    PreloadModule localPreloadModule = (PreloadModule)((Bundle)localObject).getSerializable("module");
-    localObject = (PreloadResource)((Bundle)localObject).getSerializable("resource");
-    if (parambihu.jdField_a_of_type_Int == 0)
-    {
-      i = 0;
-      if (localObject != null) {
-        break label146;
-      }
-    }
-    label146:
-    for (localObject = null;; localObject = ((PreloadResource)localObject).getResInfo(localPreloadModule))
-    {
-      this.jdField_a_of_type_Aldl.onDownloadResFinished(localPreloadModule.mid, i, ((File)parambihu.jdField_a_of_type_JavaUtilMap.get(parambihu.jdField_a_of_type_JavaLangString)).getAbsolutePath(), (ResourceInfo)localObject);
-      return;
-      if (parambihu.jdField_a_of_type_Int == -5) {
-        break;
-      }
-      i = -6;
-      break;
-    }
+    Object localObject = ShortVideoPreviewActivity.a(this.a);
+    paramDialogInterface = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+    localObject = ((Intent)localObject).getStringExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME");
+    Intent localIntent = new Intent();
+    localIntent.setClassName((String)localObject, paramDialogInterface);
+    localIntent.addFlags(603979776);
+    localIntent.putExtra("file_send_path", this.a.c);
+    localIntent.putExtra("file_send_size", this.a.a);
+    localIntent.putExtra("file_send_duration", this.a.jdField_b_of_type_Long);
+    localIntent.putExtra("file_source", this.a.jdField_b_of_type_JavaLangString);
+    this.a.startActivity(localIntent);
+    ShortVideoPreviewActivity.a(this.a);
+    localObject = new Intent("key_video_select_confirm_ok_click");
+    ((Intent)localObject).putExtra("className", paramDialogInterface);
+    this.a.sendBroadcast((Intent)localObject);
   }
 }
 

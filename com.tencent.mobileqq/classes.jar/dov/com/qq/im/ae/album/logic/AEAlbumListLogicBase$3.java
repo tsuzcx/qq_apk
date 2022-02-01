@@ -1,9 +1,9 @@
 package dov.com.qq.im.ae.album.logic;
 
-import bhnn;
-import bogf;
-import bogi;
-import boha;
+import bfwl;
+import blky;
+import bllc;
+import bllw;
 import com.tencent.mobileqq.activity.photo.MediaFileFilter;
 import com.tencent.mobileqq.activity.photo.album.AlbumListBaseData;
 import com.tencent.mobileqq.data.QQAlbumInfo;
@@ -13,24 +13,24 @@ import mqq.util.WeakReference;
 public class AEAlbumListLogicBase$3
   implements Runnable
 {
-  public AEAlbumListLogicBase$3(boha paramboha, bogf parambogf, MediaFileFilter paramMediaFileFilter) {}
+  public AEAlbumListLogicBase$3(bllw parambllw, blky paramblky, MediaFileFilter paramMediaFileFilter) {}
   
   public void run()
   {
-    bhnn.a();
-    QQAlbumInfo localQQAlbumInfo = this.jdField_a_of_type_Bogf.b(((bogi)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.recentImagesLimitSize, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.recentImagesMaxCount, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.recentImagesLimitWidth, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.isBothwidthheight, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.recentImagesBlockPaths);
-    this.jdField_a_of_type_Bogf.c(localQQAlbumInfo);
-    bhnn.a("PEAK", "queryRecentBucket");
-    bhnn.a();
+    bfwl.a();
+    QQAlbumInfo localQQAlbumInfo = this.jdField_a_of_type_Blky.b(((bllc)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.recentImagesLimitSize, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.recentImagesMaxCount, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.recentImagesLimitWidth, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.isBothwidthheight, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData.recentImagesBlockPaths);
+    this.jdField_a_of_type_Blky.c(localQQAlbumInfo);
+    bfwl.a("PEAK", "queryRecentBucket");
+    bfwl.a();
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter.showVideo()))
     {
-      localQQAlbumInfo = this.jdField_a_of_type_Bogf.a(((bogi)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity());
-      this.jdField_a_of_type_Bogf.e(localQQAlbumInfo);
+      localQQAlbumInfo = this.jdField_a_of_type_Blky.a(((bllc)this.this$0.jdField_a_of_type_MqqUtilWeakReference.get()).getActivity());
+      this.jdField_a_of_type_Blky.e(localQQAlbumInfo);
       if (QLog.isColorLevel()) {
         QLog.d("AlbumModule", 2, "queryAlbumList() run postVideoAlbum()， videoAlbumInfo.count=" + localQQAlbumInfo.mMediaFileCount);
       }
     }
-    bhnn.a("PEAK", "queryVideoBucket");
+    bfwl.a("PEAK", "queryVideoBucket");
   }
 }
 

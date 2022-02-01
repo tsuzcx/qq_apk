@@ -1,58 +1,52 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public abstract class apmd
-  extends Binder
-  implements apmc
+class apmd
+  implements View.OnClickListener
 {
-  public apmd()
+  apmc jdField_a_of_type_Apmc;
+  apmg jdField_a_of_type_Apmg;
+  
+  apmd(apmc paramapmc, apmg paramapmg)
   {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArSoCallback");
+    this.jdField_a_of_type_Apmc = paramapmc;
+    this.jdField_a_of_type_Apmg = paramapmg;
   }
   
-  public static apmc a(IBinder paramIBinder)
+  public void onClick(View paramView)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof apmc))) {
-      return (apmc)localIInterface;
-    }
-    return new apme(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    int i = this.jdField_a_of_type_Apmg.getAdapterPosition();
+    ColorNote localColorNote = (ColorNote)apmc.a(this.jdField_a_of_type_Apmc).get(i);
+    apkr.b(localColorNote.mServiceType, localColorNote.mSubType);
+    apmc.a(this.jdField_a_of_type_Apmc).remove(i);
+    this.jdField_a_of_type_Apmc.notifyDataSetChanged();
+    switch (localColorNote.getServiceType())
     {
     default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      a();
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      b();
-      paramParcel2.writeNoException();
-      return true;
+      if (aplm.b(localColorNote))
+      {
+        if ((apll.a().a()) && (apku.b())) {
+          apmc.a(this.jdField_a_of_type_Apmc).a(paramView);
+        }
+        bcef.b(null, "dc00898", "", "", "0X800A8AC", "0X800A8AC", apkm.b(aplm.a(localColorNote.getServiceType())), 0, "", "", "", "");
+      }
+      break;
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-    a(paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_Apmc.getItemCount() == 0) && (apmc.a(this.jdField_a_of_type_Apmc) != null)) {
+        apmc.a(this.jdField_a_of_type_Apmc).b();
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QQPlayerService.c(paramView.getContext());
+      break;
+      bcef.b(null, "dc00898", "", "", "0X800A747", "0X800A747", apkm.a(localColorNote.getServiceType()), 0, "", "", "", "");
+    }
   }
 }
 

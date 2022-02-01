@@ -1,55 +1,23 @@
-import android.app.Dialog;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import android.view.animation.Interpolator;
 
 class ayhv
-  implements bliz
+  implements Interpolator
 {
-  ayhv(ayhj paramayhj, BaseActivity paramBaseActivity, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public float getInterpolation(float paramFloat)
   {
-    switch (paramInt)
-    {
+    if (paramFloat < 0.2094D) {
+      return (float)(-34.0D * (paramFloat - 0.18D) * (paramFloat - 0.18D) + 1.08D);
     }
-    do
-    {
-      for (;;)
-      {
-        if (this.jdField_a_of_type_Blir != null) {
-          this.jdField_a_of_type_Blir.dismiss();
-        }
-        return;
-        if (!ayhj.e(this.jdField_a_of_type_Ayhj)) {
-          break;
-        }
-        ayhj.a(this.jdField_a_of_type_Ayhj, bhlq.a(this.jdField_a_of_type_Ayhj.jdField_a_of_type_AndroidViewView.getContext(), 230, anzj.a(2131707116), null, anzj.a(2131707124), anzj.a(2131707119), new ayhw(this), new ayhy(this)));
-        ayhj.a(this.jdField_a_of_type_Ayhj).show();
-        bdll.b(this.jdField_a_of_type_Ayhj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "grp_lbs", "", "comment", "delete_comment", 0, 0, "", "", "", "");
-      }
-    } while ((this.jdField_a_of_type_Ayhj.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) || (this.jdField_a_of_type_Ayhj.b == null) || (this.jdField_a_of_type_Ayhj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null));
-    String str = String.valueOf(this.jdField_a_of_type_Ayhj.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Long);
-    if ((TextUtils.isEmpty(str)) || ("0".equals(str)))
-    {
-      QQToast.a(BaseApplicationImpl.getContext(), 2, anzj.a(2131707115), 0).a();
-      return;
+    if (paramFloat < 0.404D) {
+      return (float)(5.9D * (paramFloat - 0.34D) * (paramFloat - 0.34D) + 0.95D);
     }
-    paramView = "";
-    if (this.jdField_a_of_type_Ayhj.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_j_of_type_Int == 4) {
-      if (this.jdField_a_of_type_Ayhj.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaUtilArrayList.get(0) == null) {}
+    if (paramFloat < 0.6045D) {
+      return (float)(-3.0D * (paramFloat - 0.53D) * (paramFloat - 0.53D) + 1.02D);
     }
-    for (paramView = ((aycu)this.jdField_a_of_type_Ayhj.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaUtilArrayList.get(0)).a;; paramView = this.jdField_a_of_type_Ayhj.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.c)
-    {
-      paramView = new bhia().b(this.jdField_a_of_type_Ayhj.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.c).d(paramView).a(this.jdField_a_of_type_Ayhj.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_j_of_type_JavaLangString).a();
-      bhhz.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0L, str, null, 20006, "", paramView);
-      bdll.b(this.jdField_a_of_type_Ayhj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "grp_lbs", "", "comment", "report_comment", 0, 0, "", "", "", "");
-      break;
+    if (paramFloat < 0.8064D) {
+      return (float)((paramFloat - 0.72D) * (paramFloat - 0.72D) + 0.99D);
     }
+    return (float)(-0.3D * (paramFloat - 0.915D) * (paramFloat - 0.915D) + 1.001D);
   }
 }
 

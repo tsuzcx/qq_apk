@@ -1,190 +1,64 @@
+import android.content.Intent;
 import android.text.TextUtils;
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import mqq.app.AppRuntime;
+import mqq.manager.AccountManager;
+import mqq.manager.WtloginManager;
 
 public class bgpr
 {
-  public static long a(byte[] paramArrayOfByte)
+  private AppRuntime a;
+  
+  public bgpr(AppRuntime paramAppRuntime)
   {
-    long l = 0L;
-    int i = 0;
-    while (i < 4)
-    {
-      l += ((paramArrayOfByte[i] & 0xFF) << (3 - i) * 8);
-      i += 1;
-    }
-    return l;
+    this.a = paramAppRuntime;
   }
   
-  public static ArrayList<bgps> a(long paramLong, DataInputStream paramDataInputStream, int paramInt1, int paramInt2)
+  public void a(Intent paramIntent, String paramString, bgpu parambgpu)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramDataInputStream.read(new byte[10]);
-    paramDataInputStream.read(new byte[3]);
-    paramDataInputStream.readByte();
-    paramDataInputStream.readInt();
-    paramDataInputStream.readInt();
-    paramDataInputStream.readInt();
-    paramDataInputStream.readInt();
-    paramDataInputStream.readByte();
-    paramDataInputStream.readByte();
-    paramDataInputStream.readByte();
-    paramDataInputStream.readByte();
-    int i = paramDataInputStream.readShort();
-    paramDataInputStream.read(new byte[i]);
-    int j = paramDataInputStream.readShort();
-    paramDataInputStream.read(new byte[j]);
-    int m;
-    for (i = i + 36 + 2 + j; i < paramInt1; i = i + 3 + m)
-    {
-      int k = paramDataInputStream.readByte();
-      m = paramDataInputStream.readShort();
-      j = 0;
-      Object localObject1 = null;
-      Object localObject4 = null;
-      if (j < m)
-      {
-        int i1 = paramDataInputStream.readByte();
-        int n = paramDataInputStream.readShort();
-        Object localObject5 = new byte[n];
-        paramDataInputStream.read((byte[])localObject5);
-        Object localObject2;
-        Object localObject3;
-        if (k == 3) {
-          if (i1 == 2)
-          {
-            localObject5 = new String((byte[])localObject5);
-            if (((String)localObject5).startsWith("{"))
-            {
-              i1 = ((String)localObject5).lastIndexOf('}');
-              localObject2 = localObject4;
-              localObject3 = localObject1;
-              if (i1 != -1)
-              {
-                localObject2 = localObject4;
-                localObject3 = localObject1;
-                if (((String)localObject5).length() > 1)
-                {
-                  localObject2 = ((String)localObject5).substring(1, i1).replaceAll("-", "").toUpperCase();
-                  localObject3 = localObject1;
-                }
-              }
-            }
-          }
-        }
-        for (;;)
-        {
-          j = j + 3 + n;
-          localObject4 = localObject2;
-          localObject1 = localObject3;
-          break;
-          i1 = ((String)localObject5).lastIndexOf('.');
-          localObject2 = localObject4;
-          localObject3 = localObject1;
-          if (i1 != -1)
-          {
-            localObject2 = localObject4;
-            localObject3 = localObject1;
-            if (((String)localObject5).length() > 1)
-            {
-              localObject2 = ((String)localObject5).substring(0, i1).toUpperCase();
-              localObject3 = localObject1;
-              continue;
-              localObject2 = localObject4;
-              localObject3 = localObject1;
-              if (i1 == 4)
-              {
-                long l = a((byte[])localObject5);
-                localObject2 = localObject4;
-                localObject3 = localObject1;
-                if (!TextUtils.isEmpty(localObject4))
-                {
-                  localObject2 = localObject4;
-                  localObject3 = localObject1;
-                  if (l != -1L)
-                  {
-                    localObject3 = localObject1;
-                    if (localObject1 == null) {
-                      localObject3 = new bgps();
-                    }
-                    ((bgps)localObject3).jdField_a_of_type_Long = paramLong;
-                    ((bgps)localObject3).jdField_a_of_type_Int = paramInt2;
-                    ((bgps)localObject3).b = l;
-                    ((bgps)localObject3).jdField_a_of_type_JavaLangString = localObject4;
-                    localArrayList.add(localObject3);
-                    localObject2 = localObject4;
-                    continue;
-                    if (k == 5)
-                    {
-                      localObject2 = localObject4;
-                      localObject3 = localObject1;
-                      if (i1 == 255)
-                      {
-                        localObject2 = localObject4;
-                        localObject3 = localObject1;
-                      }
-                    }
-                    else
-                    {
-                      localObject2 = localObject4;
-                      localObject3 = localObject1;
-                      if (k == 6)
-                      {
-                        localObject2 = localObject4;
-                        localObject3 = localObject1;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+    if ((paramIntent == null) || (TextUtils.isEmpty(paramString))) {
+      if (parambgpu != null) {
+        parambgpu.a(paramIntent, false, paramString, null, null);
       }
     }
-    return localArrayList;
-  }
-  
-  public static ArrayList<bgps> a(long paramLong, byte[] paramArrayOfByte, int paramInt)
-  {
-    ArrayList localArrayList1 = new ArrayList();
-    HashMap localHashMap = new HashMap();
-    paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte);
-    DataInputStream localDataInputStream = new DataInputStream(paramArrayOfByte);
-    int i = 0;
-    while (i < paramInt)
+    for (;;)
     {
-      localDataInputStream.readShort();
-      localDataInputStream.readShort();
-      localDataInputStream.readInt();
-      localDataInputStream.readInt();
-      localDataInputStream.readInt();
-      localDataInputStream.readByte();
-      localDataInputStream.readInt();
-      localDataInputStream.readInt();
-      int j = localDataInputStream.readInt();
-      localDataInputStream.readInt();
-      ArrayList localArrayList2 = a(paramLong, localDataInputStream, localDataInputStream.readShort(), j);
-      int k = localArrayList2.size();
-      j = 0;
-      while (j < k)
-      {
-        bgps localbgps = (bgps)localArrayList2.get(j);
-        if (!localHashMap.containsKey(Long.valueOf(localbgps.b)))
-        {
-          localArrayList1.add(localbgps);
-          localHashMap.put(Long.valueOf(localbgps.b), Boolean.valueOf(true));
-        }
-        j += 1;
+      return;
+      if (QLog.isDevelopLevel()) {
+        bgpv.a("LHLoginMng -- lockLH", paramIntent);
       }
-      i += 1;
+      Object localObject2 = paramIntent.getStringExtra("key_register_smscode");
+      Object localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      Object localObject3 = paramIntent.getStringExtra("key_register_nick");
+      localObject2 = localObject3;
+      if (localObject3 == null) {
+        localObject2 = "";
+      }
+      String str = paramIntent.getStringExtra("key_register_password");
+      localObject3 = str;
+      if (str == null) {
+        localObject3 = "";
+      }
+      boolean bool = paramIntent.getBooleanExtra("key_register_chose_bind_phone", false);
+      if (bool)
+      {
+        paramIntent = new bgpt(paramIntent, paramString, parambgpu);
+        ((WtloginManager)this.a.getManager(1)).regGetSMSVerifyLoginAccountWithLH(((String)localObject1).getBytes(), ((String)localObject2).getBytes(), paramString, "8.4.8", paramIntent);
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.i("LHLoginMng", 2, String.format(Locale.getDefault(), "lockLH, lhUin: %s, isBindPhoneNum: %s", new Object[] { paramString, Boolean.valueOf(bool) }));
+        return;
+        paramIntent = new bgps(paramIntent, paramString, parambgpu);
+        parambgpu = (AccountManager)this.a.getManager(0);
+        aych.a().a(this.a, false);
+        parambgpu.sendRegisterBySetPassWithLH((String)localObject3, (String)localObject2, (String)localObject1, paramString, false, "8.4.8", paramIntent);
+      }
     }
-    localDataInputStream.close();
-    paramArrayOfByte.close();
-    localHashMap.clear();
-    return localArrayList1;
   }
 }
 

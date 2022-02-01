@@ -1,35 +1,18 @@
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.share.AVSchema;
 
 public class lxt
-  implements anvi
+  implements DialogInterface.OnDismissListener
 {
-  private WeakReference<lxw> a;
-  private WeakReference<anve> b;
-  private WeakReference<lxd> c;
+  public lxt(AVSchema paramAVSchema) {}
   
-  public lxt(lxw paramlxw, anve paramanve, lxd paramlxd)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a = new WeakReference(paramlxw);
-    this.b = new WeakReference(paramanve);
-    this.c = new WeakReference(paramlxd);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    Object localObject = (anve)this.b.get();
-    if (localObject != null) {
-      ((anve)localObject).d(this);
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
-    localObject = (lxw)this.a.get();
-    lxd locallxd = (lxd)this.c.get();
-    if ((localObject != null) && (locallxd != null)) {
-      ((lxw)localObject).a(paramBoolean, locallxd);
-    }
-  }
-  
-  public void a(lxd paramlxd)
-  {
-    this.c = new WeakReference(paramlxd);
+    this.a.b();
   }
 }
 

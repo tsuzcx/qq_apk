@@ -1,18 +1,17 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class anzf
-  implements anui
 {
-  public void a(boolean paramBoolean, ArrayList<ArrayList<String>> paramArrayList, ArrayList<String> paramArrayList1) {}
+  public long a;
+  public String a;
+  public long b;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public String toString()
   {
-    if (paramInt == 1)
-    {
-      paramObject = (HashMap)paramObject;
-      a(paramBoolean, (ArrayList)paramObject.get("mq_kandian_svc_results"), (ArrayList)paramObject.get("mq_kandian_svc_sentences"));
-    }
+    StringBuffer localStringBuffer = new StringBuffer("PlayGuideShowInfo{");
+    localStringBuffer.append("nStartTime=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", nEndTime=").append(this.b);
+    localStringBuffer.append(", strShow=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

@@ -1,8 +1,31 @@
-public abstract interface waf
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class waf
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public waf(MsgTabStoryNodeView paramMsgTabStoryNodeView, Context paramContext) {}
   
-  public abstract void a(int paramInt);
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeView.a.isShown()) {}
+    for (int i = 1;; i = 0)
+    {
+      xwa.a("msg_tab", "clk_all", 0, i, new String[0]);
+      bfvp localbfvp = bfwg.a(QQStoryContext.a(), this.jdField_a_of_type_AndroidContentContext, "qqstory://qstory/open?from=msgTab");
+      yos.a(localbfvp);
+      if (localbfvp != null) {
+        localbfvp.a();
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+  }
 }
 
 

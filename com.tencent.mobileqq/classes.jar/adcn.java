@@ -1,34 +1,25 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x104.submsgtype0x104.MsgBody;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public class adcn
-  implements adci
+public final class adcn
+  implements Comparator<PhoneContact>
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    submsgtype0x104.MsgBody localMsgBody = new submsgtype0x104.MsgBody();
-    try
+    boolean bool1 = TextUtils.isEmpty(paramPhoneContact1.pinyinFirst);
+    boolean bool2 = TextUtils.isEmpty(paramPhoneContact2.pinyinFirst);
+    if ((bool1) || (bool2))
     {
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      paramQQAppInterface.a().a().a(localMsgBody);
-      return;
+      if ((bool1) && (bool2)) {
+        return 0;
+      }
+      if (bool2) {
+        return -1;
+      }
+      return 1;
     }
-    catch (Exception paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x104 wrong:" + paramQQAppInterface.toString());
-    }
-  }
-  
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    return paramPhoneContact1.pinyinFirst.toLowerCase().charAt(0) - paramPhoneContact2.pinyinFirst.toLowerCase().charAt(0);
   }
 }
 

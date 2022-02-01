@@ -1,46 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.NearbyTribeAppController.2.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.Map;
+import java.io.File;
 
-class awkf
-  implements View.OnClickListener
+public class awkf
+  implements atgr
 {
   awkf(awke paramawke) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, long paramLong)
   {
-    int i = ((Integer)paramView.getTag(-1)).intValue();
-    arsh localarsh = (arsh)awke.a(this.a).getItem(i);
-    if (localarsh == null) {
-      QLog.i("Q.lebatab.LebaListController", 1, "item == null ");
-    }
-    Map localMap;
+    if ((TextUtils.isEmpty(paramString)) || (paramLong <= 0L)) {}
     do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      localMap = awke.a(this.a).a();
-    } while (awke.a(this.a) == null);
-    awkn localawkn = new awkn();
-    localawkn.jdField_a_of_type_Boolean = false;
-    localawkn.jdField_a_of_type_Long = localarsh.jdField_a_of_type_Long;
-    Integer localInteger = null;
-    if (localMap != null) {
-      localInteger = (Integer)localMap.get(Long.valueOf(localarsh.jdField_a_of_type_Long));
-    }
-    if (localInteger == null) {}
-    for (i = 0;; i = localInteger.intValue())
-    {
-      localawkn.jdField_a_of_type_Int = i;
-      if ((paramView instanceof RedTouch)) {
-        localawkn.b = awkp.a((RedTouch)paramView);
+      localObject = asyy.a().b() + paramString;
+      if (!new File((String)localObject).exists()) {
+        break;
       }
-      awke.a(this.a).a(paramView, localarsh, localawkn);
-      break;
-    }
+      atgn.a((String)localObject);
+    } while (!QLog.isColorLevel());
+    QLog.d(awke.a(this.a), 2, "UniformDownloadUtil.installAPK,savePath=" + (String)localObject);
+    return;
+    awke.a(this.a).post(new NearbyTribeAppController.2.1(this));
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("_filename_from_dlg", paramString);
+    ((Bundle)localObject).putLong("_filesize_from_dlg", paramLong);
+    ((Bundle)localObject).putString("_notify_name_dialog", amtj.a(2131706500));
+    ((Bundle)localObject).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_hdsp_nearby");
+    QLog.e(awke.a(this.a), 1, "这里已经下架，如果依然发现该log，异常case");
+    atdm.a().a("https://pub.idqqimg.com/pc/misc/files/20170706/c221bf304be44e5a9e0441768beacff0.apk", (Bundle)localObject, null);
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.view;
 
-import angf;
-import anpx;
-import ansv;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import amaz;
+import amkr;
+import amnm;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -12,7 +12,7 @@ import java.lang.ref.WeakReference;
 public class ChatApolloViewListener$1
   implements Runnable
 {
-  public ChatApolloViewListener$1(ansv paramansv) {}
+  public ChatApolloViewListener$1(amnm paramamnm) {}
   
   public void run()
   {
@@ -25,10 +25,10 @@ public class ChatApolloViewListener$1
       return;
       localBaseChatPie = (BaseChatPie)this.this$0.a.get();
     } while (localBaseChatPie == null);
-    if ((localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-      ((angf)localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(249)).a(localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    if ((localBaseChatPie.app != null) && (localBaseChatPie.sessionInfo != null)) {
+      ((amaz)localBaseChatPie.app.getManager(249)).a(localBaseChatPie.sessionInfo.curFriendUin, localBaseChatPie.sessionInfo.curType);
     }
-    anpx.b("TraceReport_initApolloSurfaceView_PreLoadJS");
+    amkr.b("TraceReport_initApolloSurfaceView_PreLoadJS");
   }
 }
 

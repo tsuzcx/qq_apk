@@ -1,28 +1,28 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.richframework.network.request.SubscribeGetRecommendUserListRequest;
 
-class zbm
-  extends AnimatorListenerAdapter
+public class zbm
 {
-  zbm(zbj paramzbj) {}
+  private long jdField_a_of_type_Long;
+  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  private zbo jdField_a_of_type_Zbo;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public COMM.StCommonExt a()
   {
-    yuk.b("TextLayer", "scaleAnimator cancel!");
+    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(String paramString)
   {
-    yuk.b("TextLayer", "scaleAnimator end!");
-    this.a.p = 1.0F;
-    this.a.c = false;
-    this.a.a.g();
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    paramString = new SubscribeGetRecommendUserListRequest(paramString, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt, 0, 1);
+    VSNetworkHelper.getInstance().sendRequest(paramString, new zbn(this));
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(zbo paramzbo)
   {
-    yuk.b("TextLayer", "scaleAnimator start!");
-    this.a.c = true;
+    this.jdField_a_of_type_Zbo = paramzbo;
   }
 }
 

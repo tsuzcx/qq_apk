@@ -1,76 +1,131 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.manager.Manager;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.base.http.AvatarUpdateService.1;
+import com.tencent.qphone.base.util.QLog;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
-public class bhzv<V>
-  implements Manager
+public class bhzv
+  implements biah
 {
-  private final ArrayList<bhzx<V>> a = new ArrayList();
+  private static bhzv a;
+  public SharedPreferences a;
+  public HashMap<String, bhzw> a;
   
-  static
+  protected bhzv()
   {
-    biev.a.a();
+    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("uin_avatarurl", 0);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public static <E> bhzw<E> a(bhzw<E> parambhzw)
+  public static bhzv a()
   {
-    return new bhzy(parambhzw);
-  }
-  
-  public void a(String arg1, bhzw<V> parambhzw, Object paramObject)
-  {
-    if (parambhzw != null)
+    try
     {
-      parambhzw = new bhzx(parambhzw, paramObject, ???);
-      synchronized (this.a)
-      {
-        this.a.add(parambhzw);
-        return;
+      if (jdField_a_of_type_Bhzv == null) {
+        jdField_a_of_type_Bhzv = new bhzv();
       }
+      return jdField_a_of_type_Bhzv;
     }
+    finally {}
   }
   
-  public void a(String paramString, V paramV)
+  public void a(Context paramContext, String paramString1, String paramString2, String paramString3, biah parambiah)
   {
-    if (paramString == null) {
+    QLog.d("AvatarUpdateService", 1, "-->updateAvatar--uin = " + bhwf.a(paramString1));
+    String str2 = "https://openmobile.qq.com/getface?appid=716027609&imgtype=3&encrytype=0&devtype=0&keytype=0&uin=" + paramString1;
+    for (String str1 = paramString1; str1.length() < 10; str1 = "0" + str1) {}
+    str1 = "o" + str1;
+    ThreadManager.post(new AvatarUpdateService.1(this, str2, "uin=" + str1 + "; skey=" + paramString2, paramString1, paramString3, paramContext, parambiah), 5, null, true);
+  }
+  
+  protected void a(Bitmap paramBitmap, String paramString)
+  {
+    if (paramBitmap == null) {}
+    do
+    {
       return;
-    }
-    ArrayList localArrayList = new ArrayList();
+      paramString = bfvo.a(paramString);
+    } while (paramString == null);
+    paramString = new FileOutputStream(paramString);
+    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, paramString);
+    paramString.flush();
+    paramString.close();
+  }
+  
+  public void a(String paramString, Bitmap arg2)
+  {
+    boolean bool2 = true;
+    Object localObject1;
     for (;;)
     {
-      int i;
-      synchronized (this.a)
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
       {
-        i = this.a.size() - 1;
-        if (i >= 0)
+        localObject1 = (bhzw)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        if (QLog.isColorLevel())
         {
-          bhzx localbhzx = (bhzx)this.a.get(i);
-          if (paramString.equals(localbhzx.jdField_a_of_type_JavaLangString))
+          ??? = new StringBuilder().append("-->onTaskCompleted--identifier = ").append(paramString).append(", bitmap = null ? ");
+          if (??? == null)
           {
-            this.a.remove(i);
-            localArrayList.add(localbhzx);
+            bool1 = true;
+            ??? = ((StringBuilder)???).append(bool1).append(", task = null ? ");
+            if (localObject1 != null) {
+              break label116;
+            }
+            bool1 = bool2;
+            QLog.d("AvatarUpdateService", 2, bool1);
           }
         }
         else
         {
-          paramString = localArrayList.iterator();
-          if (!paramString.hasNext()) {
+          if (localObject1 != null) {
             break;
           }
-          ??? = (bhzx)paramString.next();
-          ((bhzx)???).jdField_a_of_type_Bhzw.a(paramV, ((bhzx)???).jdField_a_of_type_JavaLangObject);
+          return;
         }
       }
-      i -= 1;
+      boolean bool1 = false;
+      continue;
+      label116:
+      bool1 = false;
     }
-  }
-  
-  public void onDestroy()
-  {
-    synchronized (this.a)
+    ??? = (Context)((bhzw)localObject1).jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((??? != null) && (??? != null))
     {
-      this.a.clear();
-      return;
+      ??? = bhwf.a((Context)???, ???, 63, 63);
+      if (??? == null) {}
+    }
+    try
+    {
+      a(???, ((bhzw)localObject1).jdField_b_of_type_JavaLangString);
+      ??? = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      ((SharedPreferences.Editor)???).putString(((bhzw)localObject1).jdField_a_of_type_JavaLangString, ((bhzw)localObject1).c);
+      ((SharedPreferences.Editor)???).commit();
+      label205:
+      localObject1 = (biah)((bhzw)localObject1).jdField_b_of_type_JavaLangRefWeakReference.get();
+      if (localObject1 != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AvatarUpdateService", 2, "-->onTaskCompleted--callback not null, invoke it");
+        }
+        ((biah)localObject1).a(paramString, ???);
+      }
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+        return;
+      }
+    }
+    catch (IOException localIOException)
+    {
+      break label205;
     }
   }
 }

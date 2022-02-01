@@ -1,23 +1,22 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
 
 public class adcj
-  implements adci
+  extends ScaleAnimation
 {
-  private static MessageRecord a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
+  public adcj(ContactBindedActivity paramContactBindedActivity, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, float paramFloat5, int paramInt2, float paramFloat6)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x100");
-    }
-    return asag.a(paramQQAppInterface, paramMsgType0x210.vProtobuf, paramMsgInfo);
+    super(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramFloat5, paramInt2, paramFloat6);
   }
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    return a(paramadan.a(), paramMsgInfo, paramMsgType0x210);
+    if (paramTransformation == null) {
+      return;
+    }
+    super.applyTransformation(paramFloat, paramTransformation);
+    paramTransformation.setAlpha(0.0F + 1.0F * paramFloat);
   }
 }
 

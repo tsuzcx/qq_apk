@@ -1,33 +1,8 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
 
-class oob
-  implements wmr
+public abstract interface oob
 {
-  oob(ooa paramooa, long paramLong, PublishVideoEntry paramPublishVideoEntry) {}
-  
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    long l1 = System.currentTimeMillis();
-    if (QLog.isColorLevel())
-    {
-      long l2 = (l1 - this.jdField_a_of_type_Long) / 1000L;
-      l1 = this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.isLocalPublish) {
-        l1 = this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeEnd - this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeStart;
-      }
-      QLog.d("Q.readinjoy.videocapture.ReadInJoyVideoCompositeManager", 2, "CameraCaptureMerge: duration: " + l1 + ", time cost: " + l2 + "s");
-    }
-    if (paramInt == 0)
-    {
-      ooa.a(this.jdField_a_of_type_Ooa, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, paramString2);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.readinjoy.videocapture.ReadInJoyVideoCompositeManager", 2, new Object[] { "doCompositeCameraCaptureVideo: errorcode=%s, errorMsg=%s", Integer.valueOf(paramInt), paramString1 });
-    }
-    ooa.a(this.jdField_a_of_type_Ooa, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, paramInt, paramString1);
-  }
+  public abstract void a(@NotNull String paramString1, @NotNull String paramString2);
 }
 
 

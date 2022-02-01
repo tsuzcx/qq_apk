@@ -1,76 +1,82 @@
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.subscribe.event.FollowUpdateEvent;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/config/business/BrowserOpenConfProcessor;", "Lcom/tencent/mobileqq/config/IQConfigProcessor;", "Lcom/tencent/mobileqq/config/business/BrowserOpenBean;", "()V", "clazz", "Ljava/lang/Class;", "isNeedCompressed", "", "isNeedStoreLargeFile", "migrateOldOrDefaultContent", "type", "", "migrateOldVersion", "onParsed", "confFiles", "", "Lcom/tencent/mobileqq/config/QConfItem;", "([Lcom/tencent/mobileqq/config/QConfItem;)Lcom/tencent/mobileqq/config/business/BrowserOpenBean;", "onReqFailed", "", "failCode", "onUpdate", "newConf", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ardj
-  extends arac<ardi>
+class ardj
+  extends amyh
 {
-  @NotNull
-  public ardi a(int paramInt)
-  {
-    return new ardi();
-  }
+  ardj(arcu paramarcu, Bundle paramBundle, MessengerService paramMessengerService, boolean paramBoolean) {}
   
-  @Nullable
-  public ardi a(@NotNull araj[] paramArrayOfaraj)
+  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
   {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfaraj, "confFiles");
-    if ((paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
+    int i = 1;
+    super.onFollowPublicAccount(paramBoolean, paramString);
+    try
     {
-      ardi localardi = ardk.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("[BrowserOpt] H5BrowserOpenConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
+      Object localObject = new Bundle();
+      if (paramBoolean) {}
+      for (;;)
+      {
+        ((Bundle)localObject).putInt("retCode", i);
+        this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+        if (QLog.isColorLevel()) {
+          QLog.d("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW success! isFollow: " + this.jdField_a_of_type_Boolean + "  uin: " + paramString);
+        }
+        localObject = new Intent("com.tencent.mobileqq.PublicAccountObserver");
+        ((Intent)localObject).putExtra("action", "follow");
+        ((Intent)localObject).putExtra("isSuccess", paramBoolean);
+        ((Intent)localObject).putExtra("uin", paramString);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext().sendBroadcast((Intent)localObject);
+        SimpleEventBus.getInstance().dispatchEvent(new FollowUpdateEvent(1, paramString));
+        return;
+        i = 0;
       }
-      return localardi;
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("[BrowserOpt] H5BrowserOpenConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public void a(@NotNull ardi paramardi)
-  {
-    Intrinsics.checkParameterIsNotNull(paramardi, "newConf");
-    if (QLog.isColorLevel()) {
-      QLog.d("[BrowserOpt] H5BrowserOpenConfProcessor", 2, "onUpdate " + paramardi);
+    catch (Throwable paramString)
+    {
+      QLog.e("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! " + QLog.getStackTraceString(paramString));
     }
   }
   
-  @NotNull
-  public Class<ardi> clazz()
+  public void onUnfollowPublicAccount(boolean paramBoolean, String paramString)
   {
-    return ardi.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 627;
+    int i = 0;
+    super.onUnfollowPublicAccount(paramBoolean, paramString);
+    try
+    {
+      Object localObject = new Bundle();
+      if (paramBoolean) {
+        i = 1;
+      }
+      ((Bundle)localObject).putInt("retCode", i);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      if (QLog.isColorLevel()) {
+        QLog.d("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! isFollow: " + this.jdField_a_of_type_Boolean + "  uin: " + paramString);
+      }
+      localObject = new Intent("com.tencent.mobileqq.PublicAccountObserver");
+      ((Intent)localObject).putExtra("action", "unFollow");
+      ((Intent)localObject).putExtra("isSuccess", paramBoolean);
+      ((Intent)localObject).putExtra("uin", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext().sendBroadcast((Intent)localObject);
+      SimpleEventBus.getInstance().dispatchEvent(new FollowUpdateEvent(0, paramString));
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! " + QLog.getStackTraceString(paramString));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardj
  * JD-Core Version:    0.7.0.1
  */

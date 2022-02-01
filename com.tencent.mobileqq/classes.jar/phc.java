@@ -1,28 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
 
-public class phc
-  implements View.OnClickListener
+public final class phc
 {
-  public phc(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
+  int jdField_a_of_type_Int;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  ReadInJoyXListView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView;
   
-  public void onClick(View paramView)
+  public int a()
   {
-    this.a.doOnBackEvent();
-    if (ReadInJoyAdIMAXBrowserFragment.a(this.a)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ReadInJoyAdIMAXBrowserFragment.a(this.a, true);
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("stat_src", "5");
-      nzq.a(new tlx().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(nzq.u).b(nzq.ag).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(nzq.a(localHashMap)).a());
-    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Activity a()
+  {
+    return this.jdField_a_of_type_AndroidAppActivity;
+  }
+  
+  public ReadInJoyXListView a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView;
+  }
+  
+  public phc a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public phc a(Activity paramActivity)
+  {
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    return this;
+  }
+  
+  public phc a(ReadInJoyXListView paramReadInJoyXListView)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView = paramReadInJoyXListView;
+    return this;
   }
 }
 

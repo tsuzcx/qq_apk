@@ -3,29 +3,29 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
-import rwc;
-import rwu;
-import sar;
-import sas;
+import sdg;
+import sdy;
+import shp;
+import shq;
 
 public class VideoUIManager$5
   implements Runnable
 {
-  public VideoUIManager$5(rwu paramrwu, int paramInt, String paramString1, String paramString2) {}
+  public VideoUIManager$5(sdy paramsdy, int paramInt, String paramString1, String paramString2) {}
   
   public void run()
   {
-    rwu.a(this.this$0).setVisibility(8);
-    rwu.f(this.this$0);
-    rwu.a(this.this$0).setVisibility(8);
-    rwu.a(this.this$0).setVisibility(8);
-    rwu.b(this.this$0).setVisibility(8);
+    sdy.a(this.this$0).setVisibility(8);
+    sdy.f(this.this$0);
+    sdy.a(this.this$0).setVisibility(8);
+    sdy.a(this.this$0).setVisibility(8);
+    sdy.b(this.this$0).setVisibility(8);
     if (this.jdField_a_of_type_Int == 1) {
-      rwu.g(this.this$0);
+      sdy.g(this.this$0);
     }
-    rwu.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    sdy.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
     if (this.jdField_a_of_type_Int == 1) {
-      sas.a(rwu.a(this.this$0).a(), 0);
+      shq.a(sdy.a(this.this$0).a(), 0);
     }
   }
 }

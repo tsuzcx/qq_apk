@@ -2,7 +2,7 @@ package com.tencent.mobileqq.msf.core.auth;
 
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ak;
+import com.tencent.mobileqq.msf.core.al;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.VerifyCodeInfo;
@@ -377,7 +377,7 @@ public class n
     try
     {
       byte[] arrayOfByte = l.e.GetPictureData(paramFromServiceMsg.getUin(), paramLong);
-      ak.a(paramFromServiceMsg);
+      al.a(paramFromServiceMsg);
       VerifyCodeInfo localVerifyCodeInfo = new VerifyCodeInfo();
       localVerifyCodeInfo.ssoSeq = paramFromServiceMsg.getRequestSsoSeq();
       localVerifyCodeInfo.verifyimage = arrayOfByte;

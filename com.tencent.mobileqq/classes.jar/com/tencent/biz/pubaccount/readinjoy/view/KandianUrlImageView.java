@@ -4,14 +4,14 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
-import see;
-import sul;
+import slm;
+import syl;
 
 public class KandianUrlImageView
   extends ResizeURLImageView
 {
   private boolean mIsRecyclerView;
-  private see mVisibilityChangedListener;
+  private slm mVisibilityChangedListener;
   
   public KandianUrlImageView(Context paramContext)
   {
@@ -55,9 +55,9 @@ public class KandianUrlImageView
     this.mIsRecyclerView = paramBoolean;
   }
   
-  public void setVisibilityChangedListener(see paramsee)
+  public void setVisibilityChangedListener(slm paramslm)
   {
-    this.mVisibilityChangedListener = paramsee;
+    this.mVisibilityChangedListener = paramslm;
   }
 }
 

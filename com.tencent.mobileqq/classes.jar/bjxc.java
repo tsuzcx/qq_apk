@@ -1,41 +1,45 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
-import java.util.Map;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-class bjxc
-  extends anvn
+public class bjxc
+  extends GridLayoutManager.SpanSizeLookup
 {
-  private bjxc(bjxa parambjxa) {}
+  private GridLayoutManager.SpanSizeLookup jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager$SpanSizeLookup;
+  private final GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
+  private final bjxq jdField_a_of_type_Bjxq;
   
-  protected void a(boolean paramBoolean, String paramString1, String paramString2)
+  public bjxc(bjxq parambjxq, GridLayoutManager paramGridLayoutManager)
   {
-    bjtx.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver onGetAuthCode isSuccess|" + paramBoolean + " code|" + paramString1 + " reqId|" + paramString2);
-    if (paramString2 == null) {
-      return;
-    }
-    Bundle localBundle = (Bundle)bjxa.a(this.a).get(paramString2);
-    if (localBundle == null)
+    this.jdField_a_of_type_Bjxq = parambjxq;
+    this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = paramGridLayoutManager;
+  }
+  
+  public void a(GridLayoutManager.SpanSizeLookup paramSpanSizeLookup)
+  {
+    this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager$SpanSizeLookup = paramSpanSizeLookup;
+  }
+  
+  public int getSpanSize(int paramInt)
+  {
+    int j = 1;
+    int i;
+    if ((this.jdField_a_of_type_Bjxq.a(paramInt)) || (this.jdField_a_of_type_Bjxq.b(paramInt)))
     {
-      bjtx.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver reqId|" + paramString2 + "  but params context is null");
-      return;
+      i = 1;
+      if (i == 0) {
+        break label45;
+      }
+      i = this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.getSpanCount();
     }
-    int i = localBundle.getInt("CallbackId");
-    paramString2 = new Bundle();
-    paramString2.putString("PackageName", localBundle.getString("PackageName"));
-    paramString2.putInt("VersionCode", localBundle.getInt("VersionCode"));
-    if (paramBoolean)
+    label45:
+    do
     {
-      paramString2.putBoolean("IsSuccess", true);
-      paramString2.putString("Code", paramString1);
-    }
-    for (;;)
-    {
-      bjtx.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver callbackId|" + i + " result|" + paramString2);
-      bjxa.a(this.a).callbackResult(i, EIPCResult.createSuccessResult(paramString2));
-      return;
-      paramString2.putBoolean("IsSuccess", false);
-    }
+      return i;
+      i = 0;
+      break;
+      i = j;
+    } while (this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager$SpanSizeLookup == null);
+    return this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager$SpanSizeLookup.getSpanSize(paramInt - this.jdField_a_of_type_Bjxq.a());
   }
 }
 

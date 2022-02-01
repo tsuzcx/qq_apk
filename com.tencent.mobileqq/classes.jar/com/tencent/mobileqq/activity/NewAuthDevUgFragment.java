@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aezf;
-import aezg;
-import aezh;
-import agej;
+import adrw;
+import adrx;
+import adry;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,24 +15,25 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import asvb;
-import asvf;
-import awvg;
-import awvm;
-import bdll;
-import bdmc;
-import bhlo;
-import bhnv;
-import bixz;
+import arhb;
+import arhf;
+import avin;
+import avit;
+import bcef;
+import bheb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.GatewayVerifyFailedFragment;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -49,7 +49,7 @@ import mqq.app.MobileQQ;
 import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
 import mqq.os.MqqHandler;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import plw;
+import pri;
 import tencent.im.login.GatewayVerify.ReqBody;
 import tencent.im.login.GatewayVerify.ReqBodySelfPhone;
 import tencent.im.login.GatewayVerify.ReqBodySelfPhoneGetUrl;
@@ -61,13 +61,13 @@ public class NewAuthDevUgFragment
   public static final ArrayList<String> a;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private aezg jdField_a_of_type_Aezg;
+  private adrx jdField_a_of_type_Adrx;
   private View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private awvg jdField_a_of_type_Awvg;
-  private bixz jdField_a_of_type_Bixz;
+  private avin jdField_a_of_type_Avin;
+  private bheb jdField_a_of_type_Bheb;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private String jdField_a_of_type_JavaLangString;
@@ -78,7 +78,7 @@ public class NewAuthDevUgFragment
   private long jdField_b_of_type_Long;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private String jdField_b_of_type_JavaLangString;
-  private VerifyDevLockManager.VerifyDevLockObserver jdField_b_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new aezf(this);
+  private VerifyDevLockManager.VerifyDevLockObserver jdField_b_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new adrw(this);
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int;
   private TextView jdField_c_of_type_AndroidWidgetTextView;
@@ -120,7 +120,7 @@ public class NewAuthDevUgFragment
       if ("V_RET_SUCCESS".equals(paramString1)) {
         localHashMap.put("K_REDIRECT_TIME", String.valueOf(this.jdField_c_of_type_Int));
       }
-      bdmc.a(BaseApplicationImpl.getApplication()).a((String)localObject, "TGatewayVerifyResult", "V_RET_SUCCESS".equals(paramString1), 0L, 0L, localHashMap, "");
+      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance((String)localObject, "TGatewayVerifyResult", "V_RET_SUCCESS".equals(paramString1), 0L, 0L, localHashMap, "");
       return;
     }
   }
@@ -143,13 +143,13 @@ public class NewAuthDevUgFragment
       startActivityForResult((Intent)localObject, 1002);
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
       if (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-        break label190;
+        break label191;
       }
     }
-    label190:
+    label191:
     for (Object localObject = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface;; localObject = null)
     {
-      bdll.a((QQAppInterface)localObject, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800ADDE", "0X800ADDE", 0, 0, "", "", "", "");
+      bcef.a((QQAppInterface)localObject, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800ADDE", "0X800ADDE", 0, 0, "", "", "", "");
       return;
       localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, AuthDevVerifyCodeActivity.class);
       break;
@@ -183,23 +183,23 @@ public class NewAuthDevUgFragment
     localReqBodySelfPhoneGetUrl.uint32_get_upload_url.set(1);
     try
     {
-      i = bhlo.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+      i = DeviceInfoUtil.getNetworkOperatorCode(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
       QLog.d("NewAuthDevUgFragment", 1, new Object[] { "carrier ：", Integer.valueOf(i) });
       localReqBodySelfPhoneGetUrl.uint32_isp_type.set(i);
-      String str = plw.a();
-      if ((!bhnv.h(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) && (!"0.0.0.0".equals(str)))
+      String str = pri.a();
+      if ((!NetworkUtil.isWifiConnected(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) && (!"0.0.0.0".equals(str)))
       {
         localReqBodySelfPhoneGetUrl.str_cell_ip.set(str);
         localReqBodySelfPhone.msg_req_get_url.set(localReqBodySelfPhoneGetUrl);
         ((GatewayVerify.ReqBody)localObject).msg_req_self_phone.set(localReqBodySelfPhone);
         localObject = ((GatewayVerify.ReqBody)localObject).toByteArray();
-        i = asvf.a().a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppInterface(), (byte[])localObject, this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver);
+        i = arhf.a().a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppInterface(), (byte[])localObject, this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver);
         if (i != 0) {
           break label227;
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697969);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131698126);
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_a_of_type_Bixz.b();
+        this.jdField_a_of_type_Bheb.b();
       }
     }
     catch (Exception localException)
@@ -286,7 +286,7 @@ public class NewAuthDevUgFragment
           if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {}
           for (localObject1 = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface;; localObject1 = null)
           {
-            bdll.a((QQAppInterface)localObject1, "dc00898", "", "", "0X800A413", "0X800A413", 0, 0, "", "", "", "");
+            bcef.a((QQAppInterface)localObject1, "dc00898", "", "", "0X800A413", "0X800A413", 0, 0, "", "", "", "");
             return;
             ((StringBuilder)localObject1).append("?");
             break;
@@ -401,14 +401,14 @@ public class NewAuthDevUgFragment
                 this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile = ((String)localObject);
                 if (!TextUtils.isEmpty(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile))
                 {
-                  paramIntent = getString(2131691840) + ":" + this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile;
+                  paramIntent = getString(2131691886) + ":" + this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile;
                   this.e.setText(paramIntent);
-                  this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131691801));
+                  this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131691847));
                   this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
                 }
               }
             } while (!bool);
-            asvf.a().a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), true);
+            arhf.a().a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), true);
             paramIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, AuthDevActivity.class);
             paramIntent.putExtra("phone_num", (String)localObject);
             if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null) {
@@ -416,7 +416,7 @@ public class NewAuthDevUgFragment
             }
             paramIntent.putExtra("auth_dev_open", true);
             startActivity(paramIntent);
-            QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, getString(2131691797), 0).a();
+            QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, getString(2131691843), 0).a();
             Object localObject = new Intent();
             ((Intent)localObject).putExtra("auth_dev_open", true);
             ((Intent)localObject).putExtra("allow_set", true);
@@ -437,14 +437,14 @@ public class NewAuthDevUgFragment
           QLog.d("NewAuthDevUgFragment", 2, "onActivityResult.resultCode= RESULT_CANCELED resultMobileMask =" + paramIntent);
         }
         if (!TextUtils.isEmpty(paramIntent)) {
-          asvf.a().a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), null);
+          arhf.a().a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), null);
         }
       } while (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo == null);
       this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile = paramIntent;
     } while (TextUtils.isEmpty(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile));
-    paramIntent = getString(2131691840) + ":" + this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile;
+    paramIntent = getString(2131691886) + ":" + this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile;
     this.e.setText(paramIntent);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131691801));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131691847));
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
@@ -465,14 +465,14 @@ public class NewAuthDevUgFragment
           {
           default: 
             break;
-          case 2131369137: 
+          case 2131369165: 
             this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
-            bdll.a(localQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800ADDA", "0X800ADDA", 0, 0, "", "", "", "");
+            bcef.a(localQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800ADDA", "0X800ADDA", 0, 0, "", "", "", "");
             break;
           }
         }
-        bdll.a(localQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800AA34", "0X800AA34", AuthDevUgActivity.a(), 0, "", "", "", "");
-        bdll.a(localQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800ADDD", "0X800ADDD", 0, 0, "", "", "", "");
+        bcef.a(localQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800AA34", "0X800AA34", AuthDevUgActivity.a(), 0, "", "", "", "");
+        bcef.a(localQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800ADDD", "0X800ADDD", 0, 0, "", "", "", "");
         this.jdField_a_of_type_ComTencentCommonAppAppInterface.sendWirelessMeibaoReq(1);
         if (BaseActivity.mAppForground)
         {
@@ -484,7 +484,7 @@ public class NewAuthDevUgFragment
             if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (QLog.isColorLevel())) {
               QLog.d("NewAuthDevUgFragment", 2, "mUin is empty.");
             }
-            asvb.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, asvb.jdField_a_of_type_Int);
+            arhb.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, arhb.jdField_a_of_type_Int);
           }
           else
           {
@@ -494,24 +494,24 @@ public class NewAuthDevUgFragment
             if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (QLog.isColorLevel())) {
               QLog.d("NewAuthDevUgFragment", 2, "mUin is empty.");
             }
-            asvb.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, asvb.jdField_a_of_type_Int);
+            arhb.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, arhb.jdField_a_of_type_Int);
           }
         }
         else
         {
-          asvb.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentCommonAppAppInterface, asvb.jdField_a_of_type_Int);
+          arhb.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentCommonAppAppInterface, arhb.jdField_a_of_type_Int);
           continue;
           if ((this.jdField_b_of_type_Long <= 0L) || (System.currentTimeMillis() - this.jdField_b_of_type_Long <= 0L) || (System.currentTimeMillis() - this.jdField_b_of_type_Long >= 3000L))
           {
             this.jdField_b_of_type_Long = System.currentTimeMillis();
-            bdll.a(localQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800AA36", "0X800AA36", AuthDevUgActivity.a(), 0, "", "", "", "");
-            bdll.a(localQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800ADDC", "0X800ADDC", 0, 0, "", "", "", "");
+            bcef.a(localQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800AA36", "0X800AA36", AuthDevUgActivity.a(), 0, "", "", "", "");
+            bcef.a(localQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800ADDC", "0X800ADDC", 0, 0, "", "", "", "");
             f();
           }
         }
       }
     } while (this.jdField_b_of_type_Boolean);
-    awvm.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localQQAppInterface, 2, this.jdField_a_of_type_JavaLangString);
+    avit.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localQQAppInterface, 2, this.jdField_a_of_type_JavaLangString);
     boolean bool3 = this.jdField_a_of_type_Boolean;
     boolean bool1;
     label603:
@@ -528,7 +528,7 @@ public class NewAuthDevUgFragment
       if ((this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo == null) || (!this.jdField_a_of_type_Boolean)) {
         break label786;
       }
-      bdll.a(localQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800AA35", "0X800AA35", AuthDevUgActivity.a(), 0, "", "", "", "");
+      bcef.a(localQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800AA35", "0X800AA35", AuthDevUgActivity.a(), 0, "", "", "", "");
       if (!TextUtils.isEmpty(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile)) {
         break label779;
       }
@@ -536,7 +536,7 @@ public class NewAuthDevUgFragment
     }
     for (;;)
     {
-      bdll.a(localQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800ADDB", "0X800ADDB", 0, 0, "", "", "", "");
+      bcef.a(localQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800ADDB", "0X800ADDB", 0, 0, "", "", "", "");
       break;
       bool1 = false;
       break label603;
@@ -549,7 +549,7 @@ public class NewAuthDevUgFragment
       label786:
       if ((this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile)))
       {
-        bdll.b(null, "CliOper", "", "", "My_eq_lock", "My_eq_lock_open", 0, 0, "1", "", "", "");
+        bcef.b(null, "CliOper", "", "", "My_eq_lock", "My_eq_lock_open", 0, 0, "1", "", "", "");
         Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, AuthDevVerifyCodeActivity.class);
         localIntent.putExtra("phone_num", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile);
         localIntent.putExtra("country_code", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.CountryCode);
@@ -557,7 +557,7 @@ public class NewAuthDevUgFragment
       }
       else
       {
-        asvb.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentCommonAppAppInterface, asvb.jdField_a_of_type_Int, 1003, null);
+        arhb.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentCommonAppAppInterface, arhb.jdField_a_of_type_Int, 1003, null);
       }
     }
   }
@@ -572,17 +572,17 @@ public class NewAuthDevUgFragment
       if (i != 0) {
         ImmersiveUtils.a(true, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow());
       }
-      paramViewGroup = paramLayoutInflater.inflate(2131561162, paramViewGroup, false);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131380185));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131379986));
-      this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131369137);
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131379730));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131380103));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131376896));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131369116));
-      this.jdField_a_of_type_Bixz = new bixz();
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Bixz);
-      paramViewGroup.findViewById(2131369137).setOnClickListener(this);
+      paramViewGroup = paramLayoutInflater.inflate(2131561035, paramViewGroup, false);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131379915));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131379749));
+      this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131369165);
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131379514));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131379849));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131376650));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131369144));
+      this.jdField_a_of_type_Bheb = new bheb();
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_Bheb);
+      paramViewGroup.findViewById(2131369165).setOnClickListener(this);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
       this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -595,7 +595,7 @@ public class NewAuthDevUgFragment
       return paramViewGroup;
     }
     paramBundle = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramBundle.topMargin = (agej.a(6.0F, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources()) + ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity));
+    paramBundle.topMargin = (AIOUtils.dp2px(6.0F, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources()) + ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity));
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramBundle);
     for (;;)
     {
@@ -612,8 +612,8 @@ public class NewAuthDevUgFragment
         this.jdField_c_of_type_JavaLangString = paramLayoutInflater.getString("mainaccount");
         if ((this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null) && (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile != null))
         {
-          this.e = ((TextView)paramViewGroup.findViewById(2131379989));
-          this.e.setText(getString(2131697967, new Object[] { this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile }));
+          this.e = ((TextView)paramViewGroup.findViewById(2131379752));
+          this.e.setText(getString(2131698124, new Object[] { this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile }));
           if (!TextUtils.isEmpty(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.VerifyReason)) {
             this.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.VerifyReason);
           }
@@ -637,7 +637,7 @@ public class NewAuthDevUgFragment
         paramLayoutInflater = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface;
         this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().setFormat(-3);
         if (this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setTheme(2131755573);
+          this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setTheme(2131755575);
         }
         if (this.jdField_a_of_type_Boolean)
         {
@@ -646,16 +646,16 @@ public class NewAuthDevUgFragment
             paramBundle.sendEmptyMessage(20140107);
           }
         }
-        this.jdField_a_of_type_Awvg = awvg.a();
-        this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new aezh(this.jdField_b_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver);
+        this.jdField_a_of_type_Avin = avin.a();
+        this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new adry(this.jdField_b_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver);
         this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver.setSeq(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Aezg = new aezg(this);
-        bdll.a(paramLayoutInflater, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800AA33", "0X800AA33", AuthDevUgActivity.a(), 0, "", "", "", "");
-        bdll.a(paramLayoutInflater, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800ADD9", "0X800ADD9", 0, 0, "", "", "", "");
+        this.jdField_a_of_type_Adrx = new adrx(this);
+        bcef.a(paramLayoutInflater, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800AA33", "0X800AA33", AuthDevUgActivity.a(), 0, "", "", "", "");
+        bcef.a(paramLayoutInflater, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800ADD9", "0X800ADD9", 0, 0, "", "", "", "");
         if (AuthDevUgActivity.a() == 1) {
-          bdll.a(paramLayoutInflater, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800AC0B", "0X800AC0B", AuthDevUgActivity.a(), 0, "", "", "", "");
+          bcef.a(paramLayoutInflater, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800AC0B", "0X800AC0B", AuthDevUgActivity.a(), 0, "", "", "", "");
         }
-        awvm.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramLayoutInflater, 1, this.jdField_a_of_type_JavaLangString);
+        avit.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramLayoutInflater, 1, this.jdField_a_of_type_JavaLangString);
       }
       catch (Exception paramLayoutInflater)
       {
@@ -671,11 +671,11 @@ public class NewAuthDevUgFragment
   public void onDetach()
   {
     super.onDetach();
-    if (this.jdField_a_of_type_Aezg != null) {
-      aezg.a(this.jdField_a_of_type_Aezg).clear();
+    if (this.jdField_a_of_type_Adrx != null) {
+      adrx.a(this.jdField_a_of_type_Adrx).clear();
     }
-    this.jdField_a_of_type_Awvg.a();
-    this.jdField_a_of_type_Bixz.c();
+    this.jdField_a_of_type_Avin.a();
+    this.jdField_a_of_type_Bheb.c();
   }
   
   public void onResume()
@@ -683,15 +683,15 @@ public class NewAuthDevUgFragment
     super.onResume();
     if (!this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131697966));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131698123));
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_Bixz.c();
+      this.jdField_a_of_type_Bheb.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NewAuthDevUgFragment
  * JD-Core Version:    0.7.0.1
  */

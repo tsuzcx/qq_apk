@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.richmediabrowser;
 
-import bbot;
-import bbpq;
+import baio;
+import bajl;
 
 public class AIOGalleryActivity$2$2
   implements Runnable
 {
-  public AIOGalleryActivity$2$2(bbot parambbot, long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean) {}
+  public AIOGalleryActivity$2$2(baio parambaio, long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean) {}
   
   public void run()
   {
-    if (AIOGalleryActivity.a(this.jdField_a_of_type_Bbot.a) != null) {
-      AIOGalleryActivity.a(this.jdField_a_of_type_Bbot.a).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean);
+    if (AIOGalleryActivity.a(this.jdField_a_of_type_Baio.a) != null) {
+      AIOGalleryActivity.a(this.jdField_a_of_type_Baio.a).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean);
     }
   }
 }

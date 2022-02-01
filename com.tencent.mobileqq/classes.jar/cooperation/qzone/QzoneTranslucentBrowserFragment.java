@@ -8,7 +8,6 @@ import android.util.DisplayMetrics;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bmvr;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.smtt.sdk.WebView;
@@ -16,35 +15,38 @@ import com.tencent.smtt.sdk.WebView;
 public class QzoneTranslucentBrowserFragment
   extends QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
 {
-  private boolean a = true;
+  public static final String BUNDLE_KEY_INTENT = "intent";
+  public static final String CONTENT_BACKGROUND_COLOR = "CONTENT_BACKGROUND_COLOR";
+  public static final String KEY_SHOW_CLOSE_BTN = "show_close_btn";
+  private boolean mIsShowCloseBtn = true;
   
-  private int a(float paramFloat)
+  private int dpToPx(float paramFloat)
   {
     return (int)(getResources().getDisplayMetrics().density * paramFloat + 0.5F);
   }
   
-  public static QzoneTranslucentBrowserFragment a(Intent paramIntent)
+  private void initCloseButton(RelativeLayout paramRelativeLayout)
+  {
+    if ((paramRelativeLayout != null) && (getHostActivity() != null))
+    {
+      ImageView localImageView = new ImageView(getHostActivity());
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+      localLayoutParams.topMargin = dpToPx(11.5F);
+      localLayoutParams.rightMargin = dpToPx(15.0F);
+      localLayoutParams.addRule(11);
+      paramRelativeLayout.addView(localImageView, localLayoutParams);
+      localImageView.setImageDrawable(getResources().getDrawable(2130848507));
+      localImageView.setOnClickListener(new QzoneTranslucentBrowserFragment.1(this));
+    }
+  }
+  
+  public static QzoneTranslucentBrowserFragment newInstance(Intent paramIntent)
   {
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("intent", paramIntent);
     paramIntent = new QzoneTranslucentBrowserFragment();
     paramIntent.setArguments(localBundle);
     return paramIntent;
-  }
-  
-  private void a(RelativeLayout paramRelativeLayout)
-  {
-    if ((paramRelativeLayout != null) && (getHostActivity() != null))
-    {
-      ImageView localImageView = new ImageView(getHostActivity());
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.topMargin = a(11.5F);
-      localLayoutParams.rightMargin = a(15.0F);
-      localLayoutParams.addRule(11);
-      paramRelativeLayout.addView(localImageView, localLayoutParams);
-      localImageView.setImageDrawable(getResources().getDrawable(2130848596));
-      localImageView.setOnClickListener(new bmvr(this));
-    }
   }
   
   public void activityFinish()
@@ -58,14 +60,14 @@ public class QzoneTranslucentBrowserFragment
   public int doCreateLoopStep_InitUIContent(Bundle paramBundle)
   {
     if (this.mUIStyleHandler != null) {
-      this.mUIStyleHandler.d = true;
+      this.mUIStyleHandler.disableProgress = true;
     }
     int i = super.doCreateLoopStep_InitUIContent(paramBundle);
     if (this.intent != null)
     {
       int j = this.intent.getIntExtra("CONTENT_BACKGROUND_COLOR", 0);
       this.contentView.setBackgroundColor(j);
-      this.a = this.intent.getBooleanExtra("show_close_btn", true);
+      this.mIsShowCloseBtn = this.intent.getBooleanExtra("show_close_btn", true);
     }
     return i;
   }
@@ -73,8 +75,8 @@ public class QzoneTranslucentBrowserFragment
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
-    if (this.a) {
-      a(this.contentView);
+    if (this.mIsShowCloseBtn) {
+      initCloseButton(this.contentView);
     }
   }
 }

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import agps;
-import bbxm;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import aflm;
+import barh;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class DoodlePanel$5$1
   implements Runnable
 {
-  public DoodlePanel$5$1(agps paramagps, int paramInt) {}
+  public DoodlePanel$5$1(aflm paramaflm, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Agps.a.d();
-    if (this.jdField_a_of_type_Int == bbxm.d)
+    this.jdField_a_of_type_Aflm.a.d();
+    if (this.jdField_a_of_type_Int == barh.d)
     {
-      this.jdField_a_of_type_Agps.a.c();
+      this.jdField_a_of_type_Aflm.a.c();
       return;
     }
-    QQToast.a(this.jdField_a_of_type_Agps.a.getContext(), 2131689851, 0).b(DoodlePanel.a(this.jdField_a_of_type_Agps.a).a());
+    QQToast.a(this.jdField_a_of_type_Aflm.a.getContext(), 2131689863, 0).b(DoodlePanel.a(this.jdField_a_of_type_Aflm.a).getTitleBarHeight());
   }
 }
 

@@ -1,76 +1,88 @@
-import android.media.MediaFormat;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.subscribe.utils.TimeAndCountHelper.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Timer;
+import mqq.app.AppRuntime;
 
 public class zkn
-  extends anud
 {
-  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
-  private ConcurrentHashMap<String, LocalMediaInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private static volatile zkn jdField_a_of_type_Zkn;
+  private Map<String, Timer> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public zkn(AppInterface paramAppInterface)
+  private String a(String paramString)
   {
-    super(paramAppInterface);
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    return paramString + "_" + str;
   }
   
-  public MediaFormat a()
+  public static zkn a()
   {
-    return this.jdField_a_of_type_AndroidMediaMediaFormat;
-  }
-  
-  public LocalMediaInfo a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      return (LocalMediaInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (jdField_a_of_type_Zkn == null) {}
+    try
+    {
+      if (jdField_a_of_type_Zkn == null) {
+        jdField_a_of_type_Zkn = new zkn();
+      }
+      return jdField_a_of_type_Zkn;
     }
-    return null;
+    finally {}
   }
   
-  public void a()
+  private void a(Context paramContext, String paramString, zko paramzko)
   {
-    this.jdField_a_of_type_AndroidMediaMediaFormat = null;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowProcessor", 2, "clearCatcheMediaInfo");
+    paramContext = zkm.a(paramContext);
+    if (paramContext != null)
+    {
+      int i = paramContext.getInt(a(paramString), 0);
+      if (paramzko != null) {
+        paramzko.a(i + 1);
+      }
     }
   }
   
-  public void a(MediaFormat paramMediaFormat)
+  public int a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+    return zkm.a(paramContext).getInt(a(paramString), 0);
+  }
+  
+  @SuppressLint({"NewApi"})
+  public void a(Context paramContext, String paramString, int paramInt)
+  {
+    paramContext = zkm.a(paramContext);
+    SharedPreferences.Editor localEditor = paramContext.edit();
+    paramString = a(paramString);
+    localEditor.putInt(paramString, paramContext.getInt(paramString, 0) + paramInt);
+    localEditor.apply();
+  }
+  
+  public void a(Context paramContext, String paramString, int paramInt, zko paramzko)
+  {
+    if (paramInt > 0)
+    {
+      a(paramString);
+      Timer localTimer = new Timer();
+      localTimer.schedule(new TimeAndCountHelper.1(this, paramContext, paramString, paramzko), paramInt);
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, localTimer);
+      return;
+    }
+    a(paramContext, paramString, paramzko);
   }
   
   public void a(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    Timer localTimer = (Timer)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (localTimer != null)
+    {
+      localTimer.cancel();
+      localTimer.purge();
+      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
     }
   }
-  
-  public void a(String paramString, LocalMediaInfo paramLocalMediaInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowProcessor", 2, "setCatcheMediaInfo path : " + paramString);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramLocalMediaInfo);
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
-  }
-  
-  protected Class<? extends anui> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

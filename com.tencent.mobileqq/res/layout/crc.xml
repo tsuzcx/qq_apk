@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:id="@id/nii" android:layout_width="fill_parent" android:layout_height="40.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/idz" layout="@layout/is" />
-    <ImageView android:layout_gravity="center" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="105.0dip" android:src="@drawable/hvs" />
-    <TextView android:textSize="18.0sp" android:textColor="@color/skin_black" android:layout_gravity="center_horizontal" android:id="@id/md_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="29.0dip" android:text="@string/b01" />
-    <TextView android:textSize="14.0sp" android:textColor="@color/skin_chat_nick" android:layout_gravity="center_horizontal" android:id="@id/kbr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/wzs" />
-    <TextView android:id="@id/nup" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="29.0dip" android:layout_marginRight="15.0dip" android:text="@string/io6" style="@style/b9" />
+    <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/nim" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="6.0dip" />
+    <TextView android:textSize="14.0dip" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/nin" android:layout_width="96.0dip" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:text="班级投票聚餐" android:maxEms="6" android:singleLine="true" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/nij" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/gtc" />
 </LinearLayout>

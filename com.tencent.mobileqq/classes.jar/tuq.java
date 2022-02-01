@@ -1,23 +1,53 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.vip.pb.TianShuAccess.AdItem;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class tuq
-  implements View.OnClickListener
+public class tuq
 {
-  tuq(tup paramtup, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
   {
-    beke localbeke = (beke)tup.a(this.jdField_a_of_type_Tup).get(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Tup.a((beke)tup.a(this.jdField_a_of_type_Tup).get(this.jdField_a_of_type_Int), paramView.getContext());
-    if (localbeke != null) {
-      FolderRecommendTabFragment.a("227", "227", localbeke.a.iAdId + "", 102, 1);
+    try
+    {
+      paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_pk_cell");
+      if (paramAdData.M != null) {
+        twr.a(paramJSONObject, paramAdData.a);
+      }
+      if (!TextUtils.isEmpty(paramAdData.b))
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("text", paramAdData.b);
+        paramJSONObject.put("id_tv_title", localObject);
+      }
+      if (!TextUtils.isEmpty(paramAdData.d))
+      {
+        localObject = uet.a(paramAdData.d, 4);
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("image_url", ((URL)localObject).toString());
+        paramJSONObject.put("id_ad_banner_bottom_imge", localJSONObject);
+      }
+      Object localObject = new JSONObject();
+      if (!TextUtils.isEmpty(paramAdData.D))
+      {
+        ((JSONObject)localObject).put("text", paramAdData.D);
+        paramJSONObject.put("id_ad_dislike_button", localObject);
+      }
+      if (!TextUtils.isEmpty(paramAdData.i))
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("text", paramAdData.i);
+        paramJSONObject.put("id_tv_author", localObject);
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (JSONException paramAdData)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ReadInjoy_ad_banner_pk_cell", 2, "JSONException = " + paramAdData.getMessage());
+    }
+    return paramJSONObject;
+    return paramJSONObject;
   }
 }
 

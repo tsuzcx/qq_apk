@@ -1,20 +1,24 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
 public class adyh
-  implements bivv
+  implements babp
 {
-  public adyh(BaseChatPie paramBaseChatPie) {}
+  public adyh(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void a(float paramFloat)
   {
-    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.a.startActivity(paramClickableColorSpanTextView);
+    if (paramFloat < 0.0F)
+    {
+      this.a.a(this.a.getString(2131693959));
+      return;
+    }
+    if (paramFloat > 175.0F)
+    {
+      this.a.a(this.a.getString(2131693958));
+      return;
+    }
+    QQIdentiferActivity.a(this.a).setText("");
   }
 }
 

@@ -1,65 +1,23 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadProgressManager.ProgressStatus.1;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wmg
+  extends QQUIEventReceiver<StoryPlayerActivity, wmf>
 {
-  public int a;
-  private Runnable a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  private boolean b;
-  
-  private wmg(wmf paramwmf)
+  public wmg(@NonNull StoryPlayerActivity paramStoryPlayerActivity)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new StoryVideoUploadProgressManager.ProgressStatus.1(this);
+    super(paramStoryPlayerActivity);
   }
   
-  private void c()
+  public void a(@NonNull StoryPlayerActivity paramStoryPlayerActivity, @NonNull wmf paramwmf)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 3: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            this.jdField_b_of_type_Int = 0;
-            return;
-            this.jdField_b_of_type_Int += 1;
-          } while (this.jdField_b_of_type_Int < 60);
-          this.jdField_b_of_type_Int = 59;
-          return;
-          this.jdField_b_of_type_Int += 1;
-        } while (this.jdField_b_of_type_Int < 95);
-        this.jdField_b_of_type_Int = 94;
-        return;
-        this.jdField_b_of_type_Int += 1;
-      } while (this.jdField_b_of_type_Int < 100);
-      this.jdField_b_of_type_Int = 99;
-      return;
-    }
-    this.jdField_b_of_type_Int = 100;
+    paramStoryPlayerActivity.b = paramwmf.a;
   }
   
-  public void a()
+  public Class acceptEventClass()
   {
-    this.jdField_b_of_type_Boolean = false;
-    wmf.a(this.jdField_a_of_type_Wmf).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
-  }
-  
-  public void b()
-  {
-    this.jdField_b_of_type_Boolean = true;
-    wmf.a(this.jdField_a_of_type_Wmf).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    return wmf.class;
   }
 }
 

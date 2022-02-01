@@ -1,212 +1,180 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import android.graphics.Point;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Set;
+import mqq.util.WeakReference;
 
-public abstract class aplo
-  extends Binder
-  implements apln
+public class aplo
 {
-  public aplo()
-  {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArConfigManager");
-  }
+  private static aplo jdField_a_of_type_Aplo;
+  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private static final byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aplp(this);
+  private Point jdField_a_of_type_AndroidGraphicsPoint = new Point();
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private WeakReference<apkq> jdField_a_of_type_MqqUtilWeakReference;
+  private boolean jdField_a_of_type_Boolean = true;
+  private WeakReference<apoj> jdField_b_of_type_MqqUtilWeakReference;
+  private boolean jdField_b_of_type_Boolean = true;
   
-  public static apln a(IBinder paramIBinder)
+  public static aplo a()
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-    if ((localIInterface != null) && ((localIInterface instanceof apln))) {
-      return (apln)localIInterface;
-    }
-    return new aplp(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    int j = 0;
-    int k = 0;
-    int m = 0;
-    int i = 0;
-    boolean bool;
-    switch (paramInt1)
+    if (jdField_a_of_type_Aplo == null) {}
+    synchronized (jdField_a_of_type_ArrayOfByte)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      a(apma.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      b(apma.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      paramParcel1 = a();
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
+      if (jdField_a_of_type_Aplo == null)
       {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-        return true;
+        jdField_a_of_type_Aplo = new aplo();
+        if (QLog.isColorLevel()) {
+          QLog.d("ColorNoteQIPCModule", 2, "create ColorNoteQIPCModule");
+        }
       }
-      paramParcel2.writeInt(0);
-      return true;
-    case 4: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      paramParcel1 = a();
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-        return true;
-      }
-      paramParcel2.writeInt(0);
-      return true;
-    case 5: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      paramParcel1 = a();
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-        return true;
-      }
-      paramParcel2.writeInt(0);
-      return true;
-    case 6: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      a();
-      paramParcel2.writeNoException();
-      return true;
-    case 7: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      b();
-      paramParcel2.writeNoException();
-      return true;
-    case 8: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      a(aplr.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 9: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      b(aplr.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 10: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      a(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 11: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      bool = a();
-      paramParcel2.writeNoException();
-      paramInt1 = i;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 12: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      a(aplx.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 13: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      b(aplx.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 14: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      b(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 15: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      bool = b();
-      paramParcel2.writeNoException();
-      paramInt1 = j;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 16: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      if (paramParcel1.readInt() != 0) {}
-      for (paramParcel1 = (ArConfigInfo)ArConfigInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-      {
-        a(paramParcel1);
-        paramParcel2.writeNoException();
-        return true;
-      }
-    case 17: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      bool = c();
-      paramParcel2.writeNoException();
-      paramInt1 = k;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 18: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      c();
-      paramParcel2.writeNoException();
-      return true;
-    case 19: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      a(apmd.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 20: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      b(apmd.a(paramParcel1.readStrongBinder()));
-      paramParcel2.writeNoException();
-      return true;
-    case 21: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      bool = d();
-      paramParcel2.writeNoException();
-      paramInt1 = m;
-      if (bool) {
-        paramInt1 = 1;
-      }
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 22: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      d();
-      paramParcel2.writeNoException();
-      return true;
+      return jdField_a_of_type_Aplo;
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-    c(paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+  }
+  
+  public Point a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsPoint;
+  }
+  
+  public void a()
+  {
+    IntentFilter localIntentFilter = new IntentFilter("key_float_window_position");
+    localIntentFilter.addAction("key_delete_item_call");
+    localIntentFilter.addAction("key_after_sync_msg");
+    try
+    {
+      BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorNoteQIPCModule", 1, "register broadcast");
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("ColorNoteQIPCModule", 2, "register failed", localException);
+      }
+    }
+  }
+  
+  public void a(int paramInt, String paramString, boolean paramBoolean)
+  {
+    a(paramInt, paramString, paramBoolean, 0);
+  }
+  
+  public void a(int paramInt1, String paramString, boolean paramBoolean, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteQIPCModule", 2, "[updateColorNoteSet] " + aplm.a());
+    }
+    if (paramInt2 == 2) {
+      return;
+    }
+    paramString = paramInt1 + paramString + paramInt2;
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_JavaUtilSet.add(paramString);
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilSet.remove(paramString);
+  }
+  
+  public void a(Point paramPoint)
+  {
+    if ((paramPoint != null) && (paramPoint.x != 0) && (paramPoint.y != 0)) {
+      this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    }
+  }
+  
+  public void a(apkq paramapkq)
+  {
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramapkq);
+  }
+  
+  public void a(apoj paramapoj)
+  {
+    this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(paramapoj);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    apku.a(paramBoolean);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    apku.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return apku.a();
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    return a(paramInt, paramString, 0);
+  }
+  
+  public boolean a(int paramInt1, String paramString, int paramInt2)
+  {
+    return (paramInt2 != 2) && (this.jdField_a_of_type_JavaUtilSet.contains(paramInt1 + paramString + paramInt2));
+  }
+  
+  public void b()
+  {
+    try
+    {
+      BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorNoteQIPCModule", 1, "unregister broadcast");
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("ColorNoteQIPCModule", 2, "unregister failed", localException);
+      }
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteQIPCModule", 2, "[setSyncState] " + aplm.a());
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteQIPCModule", 2, "[setCanAddColorNote] " + aplm.a());
+    }
+  }
+  
+  public boolean c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteQIPCModule", 2, "[getCanAddColorNote] " + aplm.a());
+    }
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

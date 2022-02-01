@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.store;
 
+import amec;
 import android.content.Intent;
-import anji;
 import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.mobileqq.apollo.ApolloTextureView;
 

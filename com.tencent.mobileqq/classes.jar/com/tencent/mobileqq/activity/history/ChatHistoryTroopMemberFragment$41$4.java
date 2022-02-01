@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.history;
 
-import akes;
+import aizs;
 import android.os.Handler;
 import android.os.Message;
-import bhsr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
@@ -15,12 +15,12 @@ import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 public class ChatHistoryTroopMemberFragment$41$4
   implements Runnable
 {
-  public ChatHistoryTroopMemberFragment$41$4(akes paramakes, List paramList) {}
+  public ChatHistoryTroopMemberFragment$41$4(aizs paramaizs, List paramList) {}
   
   public void run()
   {
-    Object localObject1 = (TroopManager)this.jdField_a_of_type_Akes.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-    TroopInfo localTroopInfo = ((TroopManager)localObject1).b(this.jdField_a_of_type_Akes.a.c);
+    Object localObject1 = (TroopManager)this.jdField_a_of_type_Aizs.a.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+    TroopInfo localTroopInfo = ((TroopManager)localObject1).b(this.jdField_a_of_type_Aizs.a.c);
     if (localTroopInfo == null) {}
     label68:
     label124:
@@ -29,7 +29,7 @@ public class ChatHistoryTroopMemberFragment$41$4
       do
       {
         return;
-      } while (bhsr.a(localTroopInfo.troopowneruin));
+      } while (StringUtil.isEmpty(localTroopInfo.troopowneruin));
       localTroopInfo.Administrator = "";
       int i;
       int j;
@@ -58,10 +58,10 @@ public class ChatHistoryTroopMemberFragment$41$4
         }
       }
       ((TroopManager)localObject1).b(localTroopInfo);
-      localObject1 = this.jdField_a_of_type_Akes.a.jdField_b_of_type_AndroidOsHandler.obtainMessage();
+      localObject1 = this.jdField_a_of_type_Aizs.a.jdField_b_of_type_AndroidOsHandler.obtainMessage();
       ((Message)localObject1).what = 11;
       ((Message)localObject1).obj = localTroopInfo;
-      this.jdField_a_of_type_Akes.a.jdField_b_of_type_AndroidOsHandler.sendMessage((Message)localObject1);
+      this.jdField_a_of_type_Aizs.a.jdField_b_of_type_AndroidOsHandler.sendMessage((Message)localObject1);
     } while (!QLog.isColorLevel());
     label204:
     QLog.i("Q.history.BaseFragment", 2, localTroopInfo.Administrator);

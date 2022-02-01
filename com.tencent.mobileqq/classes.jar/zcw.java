@@ -1,19 +1,21 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class zcw
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class zcw
+  implements View.OnClickListener
 {
-  private zcw(zcn paramzcn) {}
+  public zcw(BaseWidgetView paramBaseWidgetView) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom() - this.a.c > this.a.b)
+    if ((this.a.a() != null) && (!this.a.a(paramView)))
     {
-      this.a.dismiss();
-      return;
+      this.a.a(this.a.a());
+      this.a.a().onClick(paramView);
     }
-    this.a.jdField_a_of_type_Zcu.a(this.a.a());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

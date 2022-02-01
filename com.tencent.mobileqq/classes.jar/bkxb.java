@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-final class bkxb
-  implements MiniAppCmdInterface
+class bkxb
+  implements DialogInterface.OnDismissListener
 {
-  bkxb(AsyncResult paramAsyncResult) {}
+  bkxb(bkxa parambkxa, DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a != null) {
-      this.a.onReceiveResult(paramBoolean, paramJSONObject);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
     }
   }
 }

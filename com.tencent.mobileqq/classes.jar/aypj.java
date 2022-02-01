@@ -1,11 +1,17 @@
-class aypj
-  implements bljb
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class aypj
+  implements CompoundButton.OnCheckedChangeListener
 {
-  aypj(ayot paramayot) {}
+  public aypj(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public void onDismiss()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ayot.a(this.a, this.a.c, false);
+    StickyNotePublishFragment.a(this.a, paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

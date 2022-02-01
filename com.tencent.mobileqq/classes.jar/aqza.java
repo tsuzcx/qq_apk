@@ -1,21 +1,10 @@
 public class aqza
 {
-  public float a;
   public int a;
-  public boolean a;
+  public String a;
   public int b;
-  public int c;
-  
-  public aqza(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, float paramFloat)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Float = paramFloat;
-  }
+  public String b;
+  public String c;
 }
 
 

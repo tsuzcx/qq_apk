@@ -4,13 +4,13 @@ import android.content.Context;
 import android.graphics.Paint;
 import android.text.style.ForegroundColorSpan;
 import android.util.SparseIntArray;
-import begd;
-import swi;
-import swk;
+import com.tencent.mobileqq.text.EmotcationConstants;
+import tai;
+import tak;
 
 public class BiuNicknameSpan
   extends ForegroundColorSpan
-  implements swi, swk
+  implements tai, tak
 {
   private int a;
   public long a;
@@ -63,7 +63,7 @@ public class BiuNicknameSpan
         i = j + 1;
         break;
         j = i;
-      } while (begd.a.get(k, -1) < 0);
+      } while (EmotcationConstants.EMOJI_MAP.get(k, -1) < 0);
       if ((k > 65535) && (paramCharSequence.length() >= i + 2)) {
         paramCharSequence.delete(i, i + 2);
       }

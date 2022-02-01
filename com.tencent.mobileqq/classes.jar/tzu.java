@@ -1,27 +1,43 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyPatchAdView;
+import com.tencent.qphone.base.util.QLog;
 
-final class tzu
-  implements DialogInterface.OnCancelListener
+public class tzu
+  extends Handler
 {
-  tzu(Activity paramActivity, ProfileParams paramProfileParams) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public tzu(ReadInJoyPatchAdView paramReadInJoyPatchAdView, Looper paramLooper)
   {
-    if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
-    {
-      ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
-      this.jdField_a_of_type_AndroidAppActivity.setResult(0);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyPatchAdView", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
     }
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      int i = 0;
+      if ((paramMessage.obj instanceof Integer)) {
+        i = ((Integer)paramMessage.obj).intValue();
+      }
+      ReadInJoyPatchAdView.a(this.a, i);
+      return;
+      ReadInJoyPatchAdView.a(this.a);
+      return;
+    } while (this.a.a == null);
+    this.a.a.b(ReadInJoyPatchAdView.a(this.a), ReadInJoyPatchAdView.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tzu
  * JD-Core Version:    0.7.0.1
  */

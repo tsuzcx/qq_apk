@@ -1,36 +1,30 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class amqi
-  implements View.OnClickListener
+  extends amwl
 {
-  amqi(amqh paramamqh) {}
+  amqi(amqd paramamqd) {}
   
-  public void onClick(View paramView)
+  protected void onSelfIpadOnlineStatusUpdateNotify(int paramInt1, int paramInt2)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject != null) && ((localObject instanceof amqo)))
+    if ((paramInt1 == 1) && (this.a.b()))
     {
-      localObject = (amqo)localObject;
-      bgpy.a(amqh.a(this.a), amqh.a(this.a), ((amqo)localObject).a);
-      bgty localbgty = (bgty)amqh.a(this.a).getManager(203);
-      if ((localbgty != null) && (localbgty.a(amqh.a(this.a), ((amqo)localObject).a, amqh.a(this.a)))) {
-        localbgty.a(amqh.a(this.a), ((amqo)localObject).a);
-      }
-      if (amqh.a(this.a) != null) {
-        break label121;
-      }
+      this.a.b(true);
+      amqd.b(this.a, bbko.a());
+      this.a.app.getMessageFacade().getDatalineMessageManager(1).b();
     }
-    for (;;)
+  }
+  
+  protected void onSelfPcOnlineStatusUpdateNotify(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 == 1) && (this.a.a()))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label121:
-      bdll.b(amqh.a(this.a).app, "dc00898", "", "", "", "0X8009F9F", 0, 0, ((amqo)localObject).a, "", "", "");
+      this.a.a(true);
+      amqd.a(this.a, bbko.a());
+      this.a.app.getMessageFacade().getDatalineMessageManager(0).b();
     }
+    this.a.a.a(this.a);
   }
 }
 

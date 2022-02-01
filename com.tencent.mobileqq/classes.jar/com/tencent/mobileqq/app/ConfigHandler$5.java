@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import antf;
-import anvl;
+import ampt;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import java.io.File;
 import java.net.MalformedURLException;
@@ -11,14 +10,14 @@ import protocol.KQQConfig.GetResourceRespInfo;
 public class ConfigHandler$5
   implements Runnable
 {
-  public ConfigHandler$5(anvl paramanvl, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public ConfigHandler$5(ampt paramampt, String paramString, GetResourceRespInfo paramGetResourceRespInfo) {}
   
   public void run()
   {
-    File localFile = new File(antf.ch);
+    File localFile = new File(AppConstants.PATH_SYSTEM_BACKGROUND_CONFIG);
     try
     {
-      if (HttpDownloadUtil.a(this.this$0.app, new URL(this.jdField_a_of_type_JavaLangString), localFile))
+      if (HttpDownloadUtil.download(this.this$0.app, new URL(this.jdField_a_of_type_JavaLangString), localFile))
       {
         this.this$0.notifyUI(1, true, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
         return;

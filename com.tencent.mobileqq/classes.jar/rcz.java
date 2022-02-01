@@ -1,15 +1,59 @@
-import android.support.v7.widget.RecyclerView;
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.GalleryFragment;
-import org.jetbrains.annotations.NotNull;
-
 public class rcz
-  extends rdl
 {
-  public rcz(GalleryFragment paramGalleryFragment) {}
+  private Integer jdField_a_of_type_JavaLangInteger;
+  private Long jdField_a_of_type_JavaLangLong;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private String b;
   
-  public rdm a(int paramInt, @NotNull RecyclerView paramRecyclerView)
+  public Long a()
   {
-    return a(paramInt, GalleryFragment.a(this.a).getItemCount(), 4, bhgr.a(this.a.a, 8.0F));
+    return this.jdField_a_of_type_JavaLangLong;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(Integer paramInteger)
+  {
+    this.jdField_a_of_type_JavaLangInteger = paramInteger;
+  }
+  
+  public void a(Long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangLong = paramLong;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public void b(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public String toString()
+  {
+    return "FollowingMember{uin='" + this.jdField_a_of_type_JavaLangLong + '\'' + ", nickname='" + this.jdField_a_of_type_JavaLangString + '\'' + ", headUrl='" + this.b + '\'' + '}';
   }
 }
 

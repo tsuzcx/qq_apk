@@ -1,10 +1,14 @@
-public class bnrp
+public abstract interface bnrp
 {
-  protected void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2) {}
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bnrp
  * JD-Core Version:    0.7.0.1
  */

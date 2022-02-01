@@ -1,27 +1,22 @@
-public class axmq
+import android.hardware.Camera.Size;
+import java.util.Comparator;
+
+class axmq
+  implements Comparator<Camera.Size>
 {
-  public String a;
-  public String b;
+  axmq(axmo paramaxmo) {}
   
-  public axmq(String paramString1, String paramString2)
+  public int a(Camera.Size paramSize1, Camera.Size paramSize2)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public int a()
-  {
+    int i = paramSize1.height * paramSize1.width;
+    int j = paramSize2.height * paramSize2.width;
+    if (j < i) {
+      return 1;
+    }
+    if (j > i) {
+      return -1;
+    }
     return 0;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
   }
 }
 

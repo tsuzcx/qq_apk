@@ -1,13 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
 
-public class zxe
-  implements DialogInterface.OnClickListener
+class zxe
+  implements Animation.AnimationListener
 {
-  public zxe(QRLoginAuthActivity paramQRLoginAuthActivity) {}
+  zxe(zxb paramzxb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (zxb.a(this.a) != null) {
+      zxb.a(this.a).setVisibility(4);
+    }
+    if (zxb.a(this.a) != null) {
+      zxb.a(this.a).setAlpha(1.0F);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

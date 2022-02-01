@@ -1,23 +1,9 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-
-final class auns
-  extends ClickableSpan
+public class auns
 {
-  auns(aunx paramaunx) {}
-  
-  public void onClick(View paramView)
+  public static void a(Throwable paramThrowable)
   {
-    if (this.a != null) {
-      this.a.onClick(paramView);
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
-    paramTextPaint.setUnderlineText(false);
+    auoj.a("2490056");
+    bcdb.a(paramThrowable);
   }
 }
 

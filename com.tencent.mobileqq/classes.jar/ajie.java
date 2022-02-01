@@ -1,15 +1,17 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ajie
-  extends anyu
+  implements View.OnClickListener
 {
-  ajie(ajic paramajic) {}
+  ajie(ajhz paramajhz) {}
   
-  protected void onAddFriendSecCheck(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    ajic.a(this.a, paramBoolean2, paramBundle);
+    ajhz.a(this.a, paramView);
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

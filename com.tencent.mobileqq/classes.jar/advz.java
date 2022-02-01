@@ -1,21 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class advz
-  implements bliz
+class advz
+  extends aycd
 {
-  public advz(AssociatedAccountActivity paramAssociatedAccountActivity, blir paramblir) {}
+  advz(advy paramadvy) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(boolean paramBoolean)
   {
-    switch (paramInt)
+    super.a(paramBoolean);
+    PhoneUnityChangeActivity.a(this.a.a.a);
+    this.a.a.a.app.unRegistObserver(this);
+    if (paramBoolean)
     {
-    default: 
-      return;
+      ((aihp)this.a.a.a.app.getManager(102)).a(null);
+      this.a.a.a.setResult(4001);
+      this.a.a.a.finish();
     }
-    this.jdField_a_of_type_Blir.cancel();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.getString(2131690709));
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "dc00898", "", "", "0X800AC3E", "0X800AC3E", 0, 0, "", "", "", "");
   }
 }
 

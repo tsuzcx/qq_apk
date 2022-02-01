@@ -1,47 +1,36 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-public class aiah
-  implements aiaq<HongBaoPanel>
+public abstract interface aiah
 {
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private HongBaoPanel jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public abstract void a();
   
-  public aiah(BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  }
+  public abstract void a(int paramInt);
   
-  public int a()
-  {
-    return 10;
-  }
+  public abstract void a(String paramString);
   
-  public HongBaoPanel a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel;
-  }
+  public abstract void a(String paramString, List<aiag> paramList);
   
-  public HongBaoPanel a(Context paramContext)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel = ((HongBaoPanel)View.inflate(paramContext, 2131560494, null));
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
-    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel;
-  }
+  public abstract void a(List<String> paramList);
   
-  public void a() {}
+  public abstract void b();
   
-  public void a(int paramInt1, int paramInt2) {}
+  public abstract void b(int paramInt);
   
-  public boolean a()
-  {
-    return false;
-  }
+  public abstract void b(String paramString);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

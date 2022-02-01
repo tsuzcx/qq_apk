@@ -1,54 +1,44 @@
-import com.tencent.mobileqq.data.MedalList;
-import com.tencent.mobileqq.data.MedalList.Info;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy.ICommandListenr;
 
-public class bjci
+class bjci
+  implements FFmpegExecuteResponseCallback
 {
-  private MedalList a;
+  bjci(bjce parambjce, ChannelProxy.ICommandListenr paramICommandListenr) {}
   
-  public int a()
+  public void onFailure(String paramString)
   {
-    if (this.a != null) {
-      return this.a.infoList.size();
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr.onFailure(paramString);
     }
-    return 0;
   }
   
-  public int a(int paramInt)
+  public void onFinish(boolean paramBoolean)
   {
-    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
-      return ((MedalList.Info)this.a.infoList.get(paramInt)).type;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr.onFinish(paramBoolean);
     }
-    return 0;
   }
   
-  public String a(int paramInt)
+  public void onProgress(String paramString)
   {
-    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
-      return ((MedalList.Info)this.a.infoList.get(paramInt)).value;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr.onProgress(paramString);
     }
-    return null;
   }
   
-  public void a(MedalList paramMedalList)
+  public void onStart()
   {
-    this.a = paramMedalList;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr.onStart();
+    }
   }
   
-  public int b(int paramInt)
+  public void onSuccess(String paramString)
   {
-    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
-      return ((MedalList.Info)this.a.infoList.get(paramInt)).isRemind;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr.onSuccess(paramString);
     }
-    return 0;
-  }
-  
-  public int c(int paramInt)
-  {
-    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
-      return ((MedalList.Info)this.a.infoList.get(paramInt)).tipsTimes;
-    }
-    return 0;
   }
 }
 

@@ -1,29 +1,18 @@
 import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
 
-public class aown
-  extends aoxh
+class aown
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  aown(aowk paramaowk, String paramString, Context paramContext) {}
+  
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    paramQQAppInterface = new aowm(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "ftssearch";
-    paramQQAppInterface.c = "openmixweb";
-    paramContext = paramString.replace("mqqapi://ftssearch/openmixweb?", "").replace("^?", "").split("&");
-    if (paramContext != null)
-    {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
-      }
+    if ((paramInt == 0) && (paramAppPathInfo.path != null)) {
+      ArkAppCacheMgr.getAppIcon(this.jdField_a_of_type_JavaLangString, new aowo(this));
     }
-    return paramQQAppInterface;
   }
 }
 

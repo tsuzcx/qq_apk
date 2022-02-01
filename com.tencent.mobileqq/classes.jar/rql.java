@@ -1,23 +1,11 @@
-import com.tencent.mobileqq.qipc.QIPCModule;
-
-public class rql
+class rql
+  implements rqd<rgo>
 {
-  private static rql a;
+  rql(rqj paramrqj) {}
   
-  public static rql a()
+  public boolean a(rgo paramrgo)
   {
-    if (a == null) {}
-    try
-    {
-      a = new rql();
-      return a;
-    }
-    finally {}
-  }
-  
-  public QIPCModule a()
-  {
-    return null;
+    return paramrgo.d >= 5000L;
   }
 }
 

@@ -1,14 +1,26 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
 public class addv
-  implements adci
+  implements WXShareHelper.WXShareListener
 {
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public addv(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    addo.a(paramadan.a(), paramMsgType0x210);
-    return null;
+    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      yyi.a(1, 2131718380);
+      return;
+    }
+    yyi.a(2, 2131718398);
   }
 }
 

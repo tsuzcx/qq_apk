@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import agej;
+import amtj;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -24,16 +24,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import anzj;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.redtouch.RedTouch;
 import com.tencent.qphone.base.util.QLog;
-import oii;
-import sld;
-import sle;
-import slf;
-import slg;
+import ojv;
+import spe;
+import spf;
+import spg;
+import sph;
 
 @TargetApi(14)
 public class ReadinjoySlidingIndicator
@@ -45,7 +45,7 @@ public class ReadinjoySlidingIndicator
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private slg jdField_a_of_type_Slg;
+  private sph jdField_a_of_type_Sph;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private int jdField_b_of_type_Int;
   private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
@@ -90,7 +90,7 @@ public class ReadinjoySlidingIndicator
     b();
     a(paramContext);
     if (Build.VERSION.SDK_INT >= 14) {
-      setAccessibilityDelegate(new sld(this));
+      setAccessibilityDelegate(new spe(this));
     }
   }
   
@@ -102,7 +102,7 @@ public class ReadinjoySlidingIndicator
   
   private void a(int paramInt1, String paramString, int paramInt2)
   {
-    int k = oii.d;
+    int k = ojv.d;
     TextView localTextView = new TextView(getContext());
     localTextView.setGravity(17);
     localTextView.setMaxLines(1);
@@ -186,7 +186,7 @@ public class ReadinjoySlidingIndicator
       {
         localObject = ValueAnimator.ofInt(new int[] { ((View)localObject).getLeft(), localView.getLeft() });
         ((ValueAnimator)localObject).setDuration(200L);
-        ((ValueAnimator)localObject).addUpdateListener(new sle(this));
+        ((ValueAnimator)localObject).addUpdateListener(new spf(this));
         ((ValueAnimator)localObject).start();
       }
       return;
@@ -201,10 +201,10 @@ public class ReadinjoySlidingIndicator
     {
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
       d();
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849530);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(agej.a(7.0F, getResources()), agej.a(7.0F, getResources()));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849442);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(AIOUtils.dp2px(7.0F, getResources()), AIOUtils.dp2px(7.0F, getResources()));
       localLayoutParams.gravity = 16;
-      localLayoutParams.leftMargin = (-agej.a(11.0F, getResources()));
+      localLayoutParams.leftMargin = (-AIOUtils.dp2px(11.0F, getResources()));
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     }
     return this.jdField_a_of_type_AndroidWidgetImageView;
@@ -225,13 +225,13 @@ public class ReadinjoySlidingIndicator
       a(k, this.jdField_a_of_type_ArrayOfJavaLangString[k], this.jdField_b_of_type_ArrayOfInt[k]);
       k += 1;
     }
-    getViewTreeObserver().addOnGlobalLayoutListener(new slf(this));
+    getViewTreeObserver().addOnGlobalLayoutListener(new spg(this));
   }
   
   public void a(int paramInt)
   {
     RedTouch localRedTouch = (RedTouch)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(paramInt);
-    if ((localRedTouch != null) && (localRedTouch.b())) {
+    if ((localRedTouch != null) && (localRedTouch.c())) {
       localRedTouch.d();
     }
   }
@@ -262,8 +262,8 @@ public class ReadinjoySlidingIndicator
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Slg != null) {
-        this.jdField_a_of_type_Slg.a(this.c, this.jdField_b_of_type_Int, paramBoolean2);
+      if (this.jdField_a_of_type_Sph != null) {
+        this.jdField_a_of_type_Sph.a(this.c, this.jdField_b_of_type_Int, paramBoolean2);
       }
       return;
       label87:
@@ -275,7 +275,7 @@ public class ReadinjoySlidingIndicator
   public boolean a(int paramInt)
   {
     RedTouch localRedTouch = (RedTouch)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(this.jdField_b_of_type_ArrayOfInt[paramInt]);
-    return (localRedTouch != null) && (localRedTouch.b());
+    return (localRedTouch != null) && (localRedTouch.c());
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -298,10 +298,10 @@ public class ReadinjoySlidingIndicator
         View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(k);
         if (localView != null)
         {
-          String str2 = this.jdField_a_of_type_ArrayOfJavaLangString[k] + anzj.a(2131711854);
+          String str2 = this.jdField_a_of_type_ArrayOfJavaLangString[k] + amtj.a(2131712086);
           String str1 = str2;
           if (k == this.jdField_b_of_type_Int) {
-            str1 = str2 + anzj.a(2131712000);
+            str1 = str2 + amtj.a(2131712232);
           }
           localView.setContentDescription(str1);
         }
@@ -315,9 +315,9 @@ public class ReadinjoySlidingIndicator
     a(paramInt, paramBoolean, false);
   }
   
-  public void setOnIndicatorChangeListener(slg paramslg)
+  public void setOnIndicatorChangeListener(sph paramsph)
   {
-    this.jdField_a_of_type_Slg = paramslg;
+    this.jdField_a_of_type_Sph = paramsph;
   }
   
   public void setOverScrollMode(int paramInt)
@@ -337,7 +337,7 @@ public class ReadinjoySlidingIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator
  * JD-Core Version:    0.7.0.1
  */

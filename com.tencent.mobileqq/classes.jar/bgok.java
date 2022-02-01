@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
+import android.os.Bundle;
 
-public class bgok
-  extends aojs
+public abstract class bgok
 {
-  public bgok(TroopAppShortcutContainer paramTroopAppShortcutContainer) {}
+  public void a(long paramLong, int paramInt, Bundle paramBundle) {}
   
-  public void a(boolean paramBoolean, Object paramObject1, Object paramObject2, int paramInt)
-  {
-    TroopAppShortcutContainer.a(this.a, paramBoolean, paramObject1, paramObject2, paramInt);
-  }
+  public void a(Bundle paramBundle) {}
 }
 
 

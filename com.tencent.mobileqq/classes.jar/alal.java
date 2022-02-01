@@ -1,89 +1,66 @@
-import org.json.JSONArray;
-import org.json.JSONObject;
+import QQService.EVIPSPEC;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.Comparator;
 
-public class alal
+class alal
+  implements Comparator<alaj>
 {
-  public static int a(JSONObject paramJSONObject, int paramInt, String... paramVarArgs)
+  public int a(alaj paramalaj)
   {
-    int i = paramInt;
-    if (paramJSONObject != null) {
-      i = 0;
+    if (paramalaj.jdField_a_of_type_Int != -1) {
+      return paramalaj.jdField_a_of_type_Int;
     }
-    try
+    Friends localFriends = paramalaj.jdField_a_of_type_ComTencentMobileqqDataFriends;
+    int k = ContactUtils.getFriendStatus(localFriends.detalStatusFlag, localFriends.iTermType);
+    int j;
+    int i;
+    if ((k != 6) && (k != 0))
     {
-      while (i < paramVarArgs.length - 1)
-      {
-        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
-        i += 1;
+      j = 65536;
+      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
+        break label132;
       }
-      i = paramJSONObject.getInt(paramVarArgs[(paramVarArgs.length - 1)]);
+      i = 4096;
+      switch (k)
+      {
+      case 5: 
+      case 6: 
+      default: 
+        label64:
+        i = j | i | (int)localFriends.getLastLoginType();
+      }
+    }
+    for (;;)
+    {
+      paramalaj.jdField_a_of_type_Int = i;
       return i;
+      j = 131072;
+      break;
+      label132:
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
+      {
+        i = 8192;
+        break label64;
+      }
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
+      {
+        i = 12288;
+        break label64;
+      }
+      i = 16384;
+      break label64;
+      i = j | i | 0x1;
+      continue;
+      i = j | i | 0x2;
+      continue;
+      i = j | i | 0x3;
     }
-    catch (Throwable paramJSONObject) {}
-    return paramInt;
   }
   
-  public static String a(JSONObject paramJSONObject, String paramString, String... paramVarArgs)
+  public int a(alaj paramalaj1, alaj paramalaj2)
   {
-    String str = paramString;
-    int i;
-    if (paramJSONObject != null) {
-      i = 0;
-    }
-    try
-    {
-      while (i < paramVarArgs.length - 1)
-      {
-        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
-        i += 1;
-      }
-      str = paramJSONObject.getString(paramVarArgs[(paramVarArgs.length - 1)]);
-      return str;
-    }
-    catch (Throwable paramJSONObject) {}
-    return paramString;
-  }
-  
-  public static JSONArray a(JSONObject paramJSONObject, String... paramVarArgs)
-  {
-    JSONArray localJSONArray = null;
-    int i;
-    if (paramJSONObject != null) {
-      i = 0;
-    }
-    try
-    {
-      while (i < paramVarArgs.length - 1)
-      {
-        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
-        i += 1;
-      }
-      localJSONArray = paramJSONObject.getJSONArray(paramVarArgs[(paramVarArgs.length - 1)]);
-      return localJSONArray;
-    }
-    catch (Throwable paramJSONObject) {}
-    return null;
-  }
-  
-  public static JSONObject a(JSONObject paramJSONObject, String... paramVarArgs)
-  {
-    JSONObject localJSONObject = null;
-    int i;
-    if (paramJSONObject != null) {
-      i = 0;
-    }
-    try
-    {
-      while (i < paramVarArgs.length - 1)
-      {
-        paramJSONObject = paramJSONObject.getJSONObject(paramVarArgs[i]);
-        i += 1;
-      }
-      localJSONObject = paramJSONObject.getJSONObject(paramVarArgs[(paramVarArgs.length - 1)]);
-      return localJSONObject;
-    }
-    catch (Throwable paramJSONObject) {}
-    return null;
+    return a(paramalaj1) - a(paramalaj2);
   }
 }
 

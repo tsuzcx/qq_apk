@@ -1,75 +1,103 @@
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.jsp.QQApiPlugin.3;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class awhj
-  implements pak
 {
-  public awhj(QQApiPlugin.3 param3) {}
+  public String a;
+  private boolean a;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
   
-  public void a(BaseResp paramBaseResp)
+  public awhj()
   {
-    if ((this.a.this$0.c == null) || (!this.a.this$0.c.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    boolean bool;
-    switch (paramBaseResp.errCode)
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public static awhj a(Context paramContext, String paramString, int paramInt)
+  {
+    try
     {
-    case -1: 
-    default: 
-      zyx.a(1, 2131718139);
-      bool = false;
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(this.a.this$0.jdField_a_of_type_JavaLangString))
+      paramString = (String)awka.a(paramString, "cike_guide_content", "");
+      if (!TextUtils.isEmpty(paramString))
       {
-        this.a.this$0.callJs(this.a.this$0.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(bool) });
-        return;
-        zyx.a(2, 2131718157);
-        if ((this.a.this$0.jdField_a_of_type_Bitp != null) && (this.a.this$0.jdField_a_of_type_Bits != null))
+        paramString = new JSONObject(paramString);
+        if (paramInt == 0) {
+          paramString = paramString.optJSONObject("publish_menu_alert_config");
+        }
+        for (;;)
         {
-          int i;
-          label171:
-          String str1;
-          String str2;
-          String str3;
-          if ("2".equals(this.a.jdField_a_of_type_JavaLangString))
-          {
-            i = 1009;
-            paramBaseResp = this.a.this$0.jdField_a_of_type_Bitp.getMsgid();
-            str1 = this.a.this$0.jdField_a_of_type_Bitp.getPublicUin();
-            str2 = this.a.b;
-            str3 = AccountDetailActivity.a(this.a.this$0.jdField_a_of_type_Bits.getCurrentUrl());
-            String str4 = this.a.this$0.jdField_a_of_type_Bitp.getSourcePuin();
-            if ((str4 == null) || ("".equals(str4))) {
-              break label314;
-            }
-            ocd.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, paramBaseResp, this.a.this$0.jdField_a_of_type_Bits.getCurrentUrl(), str3, false);
+          return a(paramContext, paramString);
+          if (paramInt == 1) {
+            paramString = paramString.optJSONObject("sendmsg_alert_config");
+          } else {
+            paramString = paramString.optJSONObject("authenticated_user_alert_config");
           }
-          for (;;)
-          {
-            bool = true;
-            break;
-            i = 1004;
-            break label171;
-            label314:
-            if ("2".equals(this.a.jdField_a_of_type_JavaLangString)) {
-              i = 1003;
-            }
-            ocd.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str1, paramBaseResp, str2, str3, false);
-          }
-          bool = false;
         }
       }
-      else
-      {
-        this.a.this$0.callJs4OpenApiIfNeeded("shareMsg", 0, String.valueOf(bool));
-        return;
-      }
-      bool = true;
+      QLog.e("CikeConfigData", 1, "parseManageConfig, get config failed");
     }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        QLog.e("CikeConfigData", 1, "parseManageConfig, exception: " + paramContext.getMessage());
+      }
+    }
+    return null;
+  }
+  
+  public static awhj a(Context paramContext, JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null)
+    {
+      awhj localawhj = new awhj();
+      localawhj.jdField_a_of_type_JavaLangString = paramJSONObject.optString("iconurl");
+      localawhj.b = paramJSONObject.optString("title_text");
+      if (a(paramContext))
+      {
+        localawhj.jdField_a_of_type_Boolean = true;
+        localawhj.c = paramJSONObject.optString("download_installapp_text");
+      }
+      for (localawhj.d = paramJSONObject.optString("jump_app_scheme");; localawhj.d = paramJSONObject.optString("download_url_android"))
+      {
+        localawhj.e = paramJSONObject.optString("moreurl");
+        return localawhj;
+        localawhj.jdField_a_of_type_Boolean = false;
+        localawhj.c = paramJSONObject.optString("download_text");
+      }
+    }
+    QLog.e("CikeConfigData", 1, "parseJson, config is null");
+    return null;
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return bfwv.a(paramContext, "com.tencent.litenow");
+  }
+  
+  public void a(long paramLong)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (paramLong != 0L) && (!TextUtils.isEmpty(this.d)))
+    {
+      if (this.d.contains("?")) {
+        this.d = (this.d + "&uid=" + paramLong);
+      }
+    }
+    else {
+      return;
+    }
+    this.d = (this.d + "?uid=" + paramLong);
+  }
+  
+  public String toString()
+  {
+    return "imageUrl:" + this.jdField_a_of_type_JavaLangString + " titleTxt:" + this.b + " btnTxt:" + this.c + " btnUrl:" + this.d + " moreUrl:" + this.e + " d1:" + this.f + " toUin: " + this.g;
   }
 }
 

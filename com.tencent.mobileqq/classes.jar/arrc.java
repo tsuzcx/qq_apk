@@ -1,61 +1,32 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView;
+import com.tencent.qphone.base.util.QLog;
 
 public class arrc
-  extends arac<arrb>
+  implements apfu
 {
-  public static arrb a()
-  {
-    return (arrb)aran.a().a(348);
-  }
+  public arrc(SignalBombAnimationView paramSignalBombAnimationView) {}
   
-  @NonNull
-  public arrb a(int paramInt)
+  public void a()
   {
-    return new arrb();
-  }
-  
-  @Nullable
-  public arrb a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arrb.a(paramArrayOfaraj);
+    SignalBombAnimationView.a(this.a).setVisibility(4);
+    if (SignalBombAnimationView.a(this.a) != null) {
+      SignalBombAnimationView.a(this.a).b();
     }
-    return null;
+    QLog.d("SignalBombAnimationViewExtendFriendLimitChat", 2, "onAnimationEnd");
+    if (SignalBombAnimationView.a(this.a) != null) {
+      SignalBombAnimationView.a(this.a).sendEmptyMessage(1);
+    }
   }
   
-  public void a(arrb paramarrb) {}
+  public void a(int paramInt) {}
   
-  public Class<arrb> clazz()
-  {
-    return arrb.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 348;
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arrc
  * JD-Core Version:    0.7.0.1
  */

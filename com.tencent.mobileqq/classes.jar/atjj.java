@@ -1,39 +1,49 @@
-import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import io.flutter.embedding.android.SplashScreen;
 
 public class atjj
-  extends atpa
+  implements SplashScreen
 {
-  public atjj(VerifyPwdView paramVerifyPwdView) {}
+  private atjk a;
   
-  protected void a(int paramInt, String paramString)
+  public atjj(atjk paramatjk)
   {
-    auna.a(paramString);
+    this.a = paramatjk;
   }
   
-  protected void a(boolean paramBoolean)
+  @Nullable
+  public View createSplashView(@NonNull Context paramContext, @Nullable Bundle paramBundle)
   {
-    if (!paramBoolean)
-    {
-      VerifyPwdView.a(this.a);
-      return;
+    return LayoutInflater.from(paramContext).inflate(2131560824, null);
+  }
+  
+  public boolean doesSplashViewRememberItsTransition()
+  {
+    return false;
+  }
+  
+  @Nullable
+  public Bundle saveSplashScreenState()
+  {
+    return null;
+  }
+  
+  public void transitionToFlutter(@NonNull Runnable paramRunnable)
+  {
+    paramRunnable.run();
+    if (this.a != null) {
+      this.a.b();
     }
-    VerifyPwdView.b(this.a);
-  }
-  
-  protected void b(int paramInt, String paramString)
-  {
-    auna.a(paramString);
-    VerifyPwdView.c(this.a);
-  }
-  
-  protected void e()
-  {
-    VerifyPwdView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atjj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.AuthTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class adiy
-  implements adbw
+  implements bjoe
 {
-  public int a()
-  {
-    return 1022;
-  }
+  public adiy(FriendProfileCardActivity paramFriendProfileCardActivity, bjnw parambjnw) {}
   
-  public boolean a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.AuthTmp localAuthTmp = new msg_svc.AuthTmp();
-    localAuthTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramMessageRecord = paramQQAppInterface.a().i(paramMessageRecord.frienduin);
-    if (paramMessageRecord != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendValidationRoutingType", 2, "friendValidation------>" + bhml.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
-      }
-      localAuthTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt == null) || (paramInt >= this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt.length)) {
+      return;
     }
-    paramRoutingHead.auth_tmp.set(localAuthTmp);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 6013;
+    switch (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ArrayOfInt[paramInt])
+    {
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Bjnw.dismiss();
+        this.jdField_a_of_type_Bjnw.a(null);
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$CardContactInfo);
+    }
   }
 }
 

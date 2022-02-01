@@ -1,13 +1,8 @@
-public abstract interface ljc
-  extends liu
+public class ljc
 {
-  public abstract void a(float paramFloat1, float paramFloat2, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean);
-  
-  public abstract void setDrawParticle(boolean paramBoolean);
+  int a;
+  int b;
+  int c;
 }
 
 

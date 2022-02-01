@@ -1,55 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0xb6f.Identity;
-import tencent.im.oidb.oidb_0xb6f.ReportFreqRspBody;
-import tencent.im.oidb.oidb_0xb6f.RspBody;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 class adpp
-  extends nkq
+  implements Animation.AnimationListener
 {
-  adpp(adpo paramadpo, String paramString1, String paramString2, int paramInt) {}
+  adpp(adpo paramadpo, boolean paramBoolean) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.report", 2, "onResult key=" + this.jdField_a_of_type_JavaLangString + ", api=" + this.b + ", count=" + this.jdField_a_of_type_Int + ", code=" + paramInt);
+    if ((this.jdField_a_of_type_Boolean) && (adpo.a(this.jdField_a_of_type_Adpo) != null) && (adpo.a(this.jdField_a_of_type_Adpo).size() >= 2)) {
+      adpo.a(this.jdField_a_of_type_Adpo).sendEmptyMessageDelayed(1688002, 1400L);
     }
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("DoraemonOpenAPI.report", 2, "req error");
-      }
-    }
-    do
+    if (adpo.a(this.jdField_a_of_type_Adpo) != null)
     {
-      for (;;)
-      {
-        return;
-        paramBundle = new oidb_0xb6f.RspBody();
-        try
-        {
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if (paramBundle.report_freq_rsp.has()) {
-            break label146;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.i("DoraemonOpenAPI.report", 2, "rsp invalid");
-            return;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("DoraemonOpenAPI.report", 2, "parse rsp error", paramArrayOfByte);
-    return;
-    label146:
-    adpo.a(this.jdField_a_of_type_Adpo, this.jdField_a_of_type_JavaLangString, paramBundle.report_freq_rsp.identity.apptype.get(), String.valueOf(paramBundle.report_freq_rsp.identity.appid.get()), paramBundle.report_freq_rsp.identity.apiName.get(), paramBundle.report_freq_rsp.remain_times.get(), paramBundle.report_freq_rsp.expire_time.get() * 1000L);
+      adpo.a(this.jdField_a_of_type_Adpo).a();
+      adpo.a(this.jdField_a_of_type_Adpo, null);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,75 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class atbh
+public abstract class atbh
+  implements View.OnClickListener
 {
-  private int a;
-  private int b;
+  private long a;
   
-  public static atbh a(araj paramaraj)
+  public abstract void a(View paramView);
+  
+  public void b(View paramView) {}
+  
+  public void onClick(View paramView)
   {
-    atbh localatbh = new atbh();
-    if (paramaraj != null)
+    long l = System.currentTimeMillis();
+    if (l - this.a >= 500L)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("limitChatOnPlusConfBean", 2, "parse taskid->" + paramaraj.jdField_a_of_type_Int + " content->" + paramaraj.jdField_a_of_type_JavaLangString);
-      }
-      try
-      {
-        paramaraj = paramaraj.jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(paramaraj))
-        {
-          paramaraj = new JSONObject(paramaraj);
-          localatbh.a(paramaraj.optInt("business_switch", 0));
-          localatbh.b(paramaraj.optInt("showInRecentView", 0));
-          return localatbh;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.e("limitChatOnPlusConfBean", 2, "parse content is null ");
-          return localatbh;
-        }
-      }
-      catch (JSONException paramaraj)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("limitChatOnPlusConfBean", 2, "parse error->" + paramaraj.toString());
-        }
-      }
+      a(paramView);
+      this.a = l;
     }
-    return localatbh;
-  }
-  
-  void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  void b(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public boolean b()
-  {
-    return this.b == 1;
-  }
-  
-  public String toString()
-  {
-    return String.format("mBusinessSwitch:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      b(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atbh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
-public final class akqu
-  implements Parcelable.Creator<PhotoSendParams>
+public class akqu
+  implements DialogInterface.OnDismissListener
 {
-  public PhotoSendParams a(Parcel paramParcel)
-  {
-    return new PhotoSendParams(paramParcel);
-  }
+  public akqu(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public PhotoSendParams[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new PhotoSendParams[paramInt];
+    if (EditLocalVideoActivity.a(this.a) != null) {
+      EditLocalVideoActivity.a(this.a).setVisibility(0);
+    }
+    if (EditLocalVideoActivity.a(this.a) != null) {
+      EditLocalVideoActivity.a(this.a).setVisibility(0);
+    }
+    if ((EditLocalVideoActivity.a(this.a) != null) && (EditLocalVideoActivity.a(this.a) != 1)) {
+      EditLocalVideoActivity.a(this.a, false);
+    }
   }
 }
 

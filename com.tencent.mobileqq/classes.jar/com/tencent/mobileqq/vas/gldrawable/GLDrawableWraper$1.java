@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vas.gldrawable;
 
-import bicd;
-import bicf;
+import bgio;
+import bgiq;
 import java.util.ArrayList;
 
 public final class GLDrawableWraper$1
@@ -9,10 +9,10 @@ public final class GLDrawableWraper$1
 {
   public void run()
   {
-    if (!bicf.a("video/avc").isEmpty()) {}
+    if (!bgiq.a("video/avc").isEmpty()) {}
     for (boolean bool = true;; bool = false)
     {
-      bicd.a(bool);
+      bgio.a(bool);
       return;
     }
   }

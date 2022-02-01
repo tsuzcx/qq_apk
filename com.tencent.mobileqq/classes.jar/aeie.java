@@ -1,30 +1,40 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.data.AppShareID;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeie
-  extends anvn
+  extends amwl
 {
-  public aeie(Conversation paramConversation) {}
+  public aeie(SubAccountUgActivity paramSubAccountUgActivity) {}
   
-  protected void a(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3)
+  public void onPushSubAccountMsg(boolean paramBoolean, String paramString, bcqu parambcqu)
   {
-    if ((!paramBoolean1.booleanValue()) && (paramBoolean2.booleanValue()) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
+    if (QLog.isColorLevel())
     {
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008272", "0X8008272", 0, 0, "", "", "", "");
-      if (!this.a.h) {
-        this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1134068, new String[] { paramString1, paramString2, paramString3 }).sendToTarget();
+      QLog.i("IphoneTitleBarActivity", 2, "onPushSubAccountMsg() isSuccess=" + paramBoolean + "  subAccount=" + paramString);
+      if (parambcqu != null) {
+        QLog.i("IphoneTitleBarActivity", 2, "onPushSubAccountMsg() data.errorType=" + parambcqu.jdField_a_of_type_Int + "  errorMsg=" + parambcqu.jdField_a_of_type_JavaLangString + " mainAccount=" + parambcqu.jdField_b_of_type_JavaLangString + "  subAccount=" + parambcqu.c + " isNeedStartGetMsg=" + parambcqu.jdField_b_of_type_Boolean);
       }
     }
-  }
-  
-  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
-  {
-    if (paramBoolean) {
-      this.a.a(0L);
-    }
+    if ((parambcqu == null) || (paramString == null) || (paramString.length() < 5)) {}
+    bcqk localbcqk;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (this.a.isFinishing());
+        localbcqk = (bcqk)this.a.app.getManager(62);
+        if (parambcqu.jdField_a_of_type_Int != 1) {
+          break;
+        }
+      } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramString)));
+      SubAccountUgActivity.a(this.a, localbcqk, paramString);
+      return;
+    } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramString)));
+    localbcqk.a(this.a.jdField_a_of_type_JavaLangString, 1, true);
   }
 }
 

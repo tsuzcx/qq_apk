@@ -1,58 +1,134 @@
-import com.tencent.image.URLDrawable.DownloadListener;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.AccountDetailActivity.8.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class nwn
-  implements URLDrawable.DownloadListener
+public class nwn
+  implements BusinessObserver
 {
-  nwn(nwm paramnwm) {}
+  public nwn(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onFileDownloadFailed(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    synchronized ()
-    {
-      String str = (String)nwm.a(this.a).get(0);
-      nwm.a(this.a).remove(0);
-      if (nwm.b(this.a) != null)
-      {
-        if (!nwm.b(this.a).contains(str)) {
-          break label119;
-        }
-        nwm.b(this.a).remove(str);
-        if (QLog.isColorLevel()) {
-          QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadFailed(delete) url:" + str);
-        }
-      }
-      label119:
-      do
-      {
-        nwm.a(this.a, null);
-        nwm.a(this.a);
-        return;
-        nwm.a(this.a).add(str);
-        nwm.b(this.a).add(str);
-      } while (!QLog.isColorLevel());
-      QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadFailed(retry) url:" + str);
+    if (QLog.isColorLevel()) {
+      QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "follow isSuccess:" + String.valueOf(paramBoolean));
     }
-  }
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    synchronized ()
+    if (!paramBoolean) {
+      this.a.d(2131694775);
+    }
+    for (;;)
     {
-      String str = (String)nwm.a(this.a).get(0);
-      nwm.a(this.a).remove(0);
-      if ((nwm.b(this.a) != null) && (nwm.b(this.a).contains(str))) {
-        nwm.b(this.a).remove(str);
+      paramBundle = this.a;
+      paramBundle.jdField_c_of_type_Int -= 1;
+      if (this.a.jdField_c_of_type_Int == 0) {
+        this.a.M();
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadSucceed url:" + str);
-      }
-      nwm.a(this.a, null);
-      nwm.a(this.a);
+      this.a.jdField_b_of_type_AndroidViewView.postDelayed(new AccountDetailActivity.8.1(this), 2000L);
       return;
+      Object localObject = new JSONObject();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) {}
+      try
+      {
+        ((JSONObject)localObject).put("uin", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+        ((JSONObject)localObject).put("name", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name);
+        ((JSONObject)localObject).put("summary", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary);
+        ((JSONObject)localObject).put("certified", this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.certifiedGrade);
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add("find.mp.qq.com");
+        localArrayList.add("post.mp.qq.com");
+        localArrayList.add("article.mp.qq.com");
+        autn.a("follow", (JSONObject)localObject, localArrayList, null);
+        if (!paramBoolean) {
+          break label748;
+        }
+        try
+        {
+          paramBundle = paramBundle.getByteArray("data");
+          if (paramBundle == null) {
+            continue;
+          }
+          localObject = new mobileqq_mp.FollowResponse();
+          ((mobileqq_mp.FollowResponse)localObject).mergeFrom(paramBundle);
+          paramInt = ((mobileqq_mp.RetInfo)((mobileqq_mp.FollowResponse)localObject).ret_info.get()).ret_code.get();
+          if (paramInt == 0) {
+            if (this.a.f)
+            {
+              if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null)
+              {
+                paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin;
+                bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.e, "mp_msg_sys_12", "scan_via", 0, 0, paramBundle, "", "", this.a.jdField_g_of_type_JavaLangString);
+              }
+            }
+            else
+            {
+              this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType = 1;
+              this.a.jdField_b_of_type_AndroidViewView.setEnabled(false);
+              this.a.I();
+              this.a.i();
+              this.a.z();
+              AccountDetailActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e, this.a.jdField_a_of_type_AndroidContentIntent);
+              if ((!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.a.jdField_c_of_type_JavaLangString)))
+              {
+                bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", this.a.jdField_b_of_type_JavaLangString, this.a.jdField_c_of_type_JavaLangString, 0, 0, "", "", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.e);
+                if (QLog.isColorLevel()) {
+                  QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "----[follow report done]----");
+                }
+              }
+              if (this.a.jdField_g_of_type_Int == 50) {
+                AccountDetailActivity.a(this.a, 1);
+              }
+              if ((this.a.h == 115) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+                ((ogr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(88)).a(134247140, this.a.e, null, null, null, 0L, false);
+              }
+              if (!this.a.jdField_a_of_type_AndroidContentIntent.hasExtra("report_business_tvalue")) {
+                continue;
+              }
+              paramInt = this.a.jdField_a_of_type_AndroidContentIntent.getIntExtra("report_business_tvalue", -1);
+              paramBundle = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("strp1");
+              if (paramInt == -1) {
+                continue;
+              }
+              ((ogr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(88)).a(paramInt, this.a.e, paramBundle, null, null, 0L, false);
+            }
+          }
+        }
+        catch (Exception paramBundle) {}
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+          continue;
+          paramBundle = "";
+        }
+        if (paramInt == 58)
+        {
+          this.a.d(2131694772);
+          continue;
+        }
+        if (paramInt == 65)
+        {
+          this.a.d(2131694749);
+          continue;
+        }
+        this.a.d(2131694775);
+      }
+      continue;
+      label748:
+      this.a.d(2131694775);
     }
   }
 }

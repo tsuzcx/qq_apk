@@ -1,66 +1,34 @@
-import android.os.Process;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.MemoryManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
 
-public class aobd
-  extends anzi
+public abstract interface aobd
 {
-  protected void a()
-  {
-    super.a();
-    if (this.c >= anzg.a().a(this.a.jdField_a_of_type_Array2dOfLong, this.a.jdField_a_of_type_Int, this.a.b, MemoryManager.a(Process.myPid())) / 12000L) {
-      this.a.a(7, null);
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (this.d != 1L);
-        MemoryManager.a().a("LITE_GUARD");
-        localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      } while (localObject == null);
-      localObject = (bezz)((QQAppInterface)localObject).getManager(233);
-    } while (localObject == null);
-    ((bezz)localObject).a(true);
-  }
+  public abstract Context a();
   
-  protected void a(String paramString)
-  {
-    GuardManager localGuardManager = this.a;
-    if ("com.tencent.mobileqq".equals(paramString)) {}
-    for (int i = 2;; i = 3)
-    {
-      localGuardManager.a(i, paramString);
-      return;
-    }
-  }
+  public abstract aobi a();
   
-  protected void b()
-  {
-    if (this.c > 2L) {
-      this.c -= 2L;
-    }
-  }
+  public abstract aoly a();
   
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    CoreService.startCoreService(anzg.a().a);
-    this.a.b();
-    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(3, 0L, 0L);
-  }
+  public abstract Object a(int paramInt);
+  
+  public abstract void a();
+  
+  public abstract void a(aobb paramaobb, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject);
+  
+  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo);
+  
+  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, aobd paramaobd);
+  
+  public abstract void a(Runnable paramRunnable);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aobd
  * JD-Core Version:    0.7.0.1
  */

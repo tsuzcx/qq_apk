@@ -1,68 +1,67 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 
-public abstract class muk
+public class muk
 {
-  public static long a(Intent paramIntent)
+  public static int a(AppInterface paramAppInterface, String paramString1, String paramString2)
   {
-    return paramIntent.getLongExtra("log_seq", 0L);
-  }
-  
-  public static long a(Bundle paramBundle)
-  {
-    long l = 0L;
-    if (paramBundle != null) {
-      l = paramBundle.getLong("log_seq");
+    if ((paramAppInterface instanceof QQAppInterface)) {
+      return a((QQAppInterface)paramAppInterface, paramString1, paramString2);
     }
-    return l;
+    return c(paramAppInterface, paramString1, paramString2);
   }
   
-  public static long a(ToServiceMsg paramToServiceMsg)
+  private static int a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    return a(paramToServiceMsg.getAttribute("log_seq"));
-  }
-  
-  public static long a(Object paramObject)
-  {
-    long l = 0L;
-    if ((paramObject instanceof Long)) {
-      l = ((Long)paramObject).longValue();
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
+      if (paramQQAppInterface != null)
+      {
+        if (paramQQAppInterface.b(paramString2, paramString1) == null) {
+          return 3;
+        }
+        paramQQAppInterface = paramQQAppInterface.b(paramString2);
+        if ((paramQQAppInterface != null) && (paramQQAppInterface.isTroopOwner(paramString1))) {
+          return 0;
+        }
+        if ((paramQQAppInterface != null) && (paramQQAppInterface.isTroopAdmin(paramString1))) {
+          return 1;
+        }
+        if (paramQQAppInterface != null) {
+          return 2;
+        }
+        return -1;
+      }
+      return -1;
     }
-    return l;
+    return -1;
   }
   
-  public static long a(HashMap<String, Object> paramHashMap)
+  public static int b(AppInterface paramAppInterface, String paramString1, String paramString2)
   {
-    if ((paramHashMap != null) && (paramHashMap.containsKey("log_seq"))) {
-      return a(paramHashMap.get("log_seq"));
+    switch (a(paramAppInterface, paramString1, paramString2))
+    {
+    default: 
+      return 4;
+    case 0: 
+      return 3;
+    case 1: 
+      return 2;
+    case 2: 
+      return 1;
     }
-    return 0L;
+    return 0;
   }
   
-  public static long a(Object[] paramArrayOfObject, int paramInt)
+  private static int c(AppInterface paramAppInterface, String paramString1, String paramString2)
   {
-    long l = 0L;
-    if (paramArrayOfObject.length > paramInt) {
-      l = a(paramArrayOfObject[paramInt]);
+    if ((paramAppInterface instanceof mul)) {
+      return ((mul)paramAppInterface).a(paramString1, paramString2);
     }
-    return l;
-  }
-  
-  public static void a(Intent paramIntent, long paramLong)
-  {
-    paramIntent.putExtra("log_seq", paramLong);
-  }
-  
-  public static void a(Bundle paramBundle, long paramLong)
-  {
-    paramBundle.putLong("log_seq", paramLong);
-  }
-  
-  public static void a(HashMap<String, Object> paramHashMap, long paramLong)
-  {
-    paramHashMap.put("log_seq", Long.valueOf(paramLong));
+    return -1;
   }
 }
 

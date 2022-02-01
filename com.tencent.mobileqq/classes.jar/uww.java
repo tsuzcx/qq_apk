@@ -1,16 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import UserGrowth.eConfigBit;
+import UserGrowth.stUserConfigReq;
+import UserGrowth.stUserConfigRsp;
+import android.support.annotation.NonNull;
 
-class uww
-  implements View.OnClickListener
+public class uww
+  extends urg<stUserConfigRsp>
 {
-  uww(uwt paramuwt) {}
-  
-  public void onClick(View paramView)
+  public uww(@NonNull eConfigBit parameConfigBit)
   {
-    this.a.a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super("UserConfig", 10005);
+    stUserConfigReq localstUserConfigReq = new stUserConfigReq();
+    localstUserConfigReq.config_set = parameConfigBit.value();
+    this.a = localstUserConfigReq;
   }
 }
 

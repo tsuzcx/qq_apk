@@ -1,18 +1,6 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class aktt
-  implements View.OnClickListener
+public abstract interface aktt
 {
-  aktt(aktq paramaktq) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.onMagicStickClick(paramView, -1, new Bundle(), 2, null);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2);
 }
 
 

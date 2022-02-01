@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
-public class mgt
-  implements View.OnClickListener
+class mgt
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public mgt(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  mgt(mgr parammgr) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(int paramInt)
   {
-    bdll.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_video", 0, 0, this.a.b, "", "", "");
-    this.a.d(2);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramInt == 4097) && (this.a.a != null)) {
+      this.a.a.a(0L);
+    }
   }
 }
 

@@ -1,20 +1,11 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.appstore.component.CommonTitleBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.PinnedHeadAndFootExpandableListView;
 
-public class bjsq
-  implements View.OnClickListener
+public abstract interface bjsq
 {
-  public bjsq(CommonTitleBar paramCommonTitleBar) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if (CommonTitleBar.a(this.a) != null) {
-      CommonTitleBar.a(this.a).a();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView, View paramView, int paramInt);
 }
 
 

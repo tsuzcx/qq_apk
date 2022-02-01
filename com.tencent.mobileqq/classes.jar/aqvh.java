@@ -1,146 +1,188 @@
-import android.app.Activity;
-import android.app.ActivityOptions;
-import android.os.Build.VERSION;
-import android.support.annotation.RequiresApi;
+import OnlinePushPack.MsgInfo;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForYanZhi;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import tencent.im.s2c.msgtype0x210.submsgtype0x108.SubMsgType0x108.MsgBody;
 
 public class aqvh
 {
-  private static Class<?> jdField_a_of_type_JavaLangClass;
-  private static Method jdField_a_of_type_JavaLangReflectMethod;
-  private static boolean jdField_a_of_type_Boolean;
-  private static Method jdField_b_of_type_JavaLangReflectMethod;
-  private static boolean jdField_b_of_type_Boolean;
-  
-  @RequiresApi(api=16)
-  private static void a()
+  public static MessageRecord a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    if (jdField_a_of_type_Boolean) {
-      return;
-    }
-    try
+    if (paramArrayOfByte != null)
     {
-      jdField_a_of_type_JavaLangReflectMethod = Activity.class.getDeclaredMethod("getActivityOptions", new Class[0]);
-      jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
-      arrayOfClass = Activity.class.getDeclaredClasses();
-      jdField_a_of_type_JavaLangClass = null;
-      j = arrayOfClass.length;
-      i = 0;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      try
       {
-        Class[] arrayOfClass;
-        int j;
-        int i;
-        Class localClass;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("SwipeLayoutUtils", 2, localThrowable, new Object[0]);
-          continue;
-          i += 1;
+        SubMsgType0x108.MsgBody localMsgBody = new SubMsgType0x108.MsgBody();
+        localMsgBody.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (MessageForYanZhi)bbli.a(-2070);
+        paramArrayOfByte.type = localMsgBody.uint32_type.get();
+        paramArrayOfByte.pushUin = localMsgBody.uint64_push_uin.get();
+        paramArrayOfByte.likeCount = localMsgBody.uint32_like_count.get();
+        paramArrayOfByte.pushTime = localMsgBody.push_time.get();
+        paramArrayOfByte.msg = (localMsgBody.uint32_like_count.get() + BaseApplicationImpl.getContext().getString(2131693945));
+        long l2 = localMsgBody.push_time.get();
+        long l1 = l2;
+        if (l2 <= 0L) {
+          l1 = paramMsgInfo.uRealMsgTime;
         }
+        paramArrayOfByte.time = l1;
+        paramArrayOfByte.msgseq = l1;
+        paramArrayOfByte.shmsgseq = paramMsgInfo.shMsgSeq;
+        paramArrayOfByte.msgUid = paramMsgInfo.lMsgUid;
+        paramArrayOfByte.selfuin = paramQQAppInterface.getCurrentAccountUin();
+        paramArrayOfByte.istroop = 1001;
+        paramArrayOfByte.isread = false;
+        paramArrayOfByte.frienduin = AppConstants.LBS_HELLO_UIN;
+        paramArrayOfByte.senderuin = AppConstants.MSG_BOX_YANZHI_UIN;
+        paramArrayOfByte.getBytes();
+        a(paramQQAppInterface, paramArrayOfByte);
+        QLog.i("Q.msg_box.YanZhiHelper", 1, "decodePush0x210_0x108 decode error, e=" + paramArrayOfByte.toString());
       }
-    }
-    if (i < j)
-    {
-      localClass = arrayOfClass[i];
-      if (localClass.getSimpleName().contains("TranslucentConversionListener")) {
-        jdField_a_of_type_JavaLangClass = localClass;
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        try
+        {
+          if (QLog.isColorLevel())
+          {
+            paramQQAppInterface = new StringBuilder();
+            paramQQAppInterface.append("decodePush0x210_0x108,decode MessageForYanZhi").append("type=").append(localMsgBody.uint32_type.get()).append(",pushUin=").append(localMsgBody.uint64_push_uin.get()).append(",likeCount=").append(localMsgBody.uint32_like_count.get()).append(",pushTime=").append(localMsgBody.push_time.get());
+            QLog.i("Q.msg_box.YanZhiHelper", 2, paramQQAppInterface.toString());
+          }
+          return paramArrayOfByte;
+        }
+        catch (InvalidProtocolBufferMicroException paramMsgInfo)
+        {
+          for (;;)
+          {
+            paramQQAppInterface = paramArrayOfByte;
+            paramArrayOfByte = paramMsgInfo;
+          }
+        }
+        paramArrayOfByte = paramArrayOfByte;
+        paramQQAppInterface = null;
       }
+      return paramQQAppInterface;
     }
     else
     {
-      jdField_b_of_type_JavaLangReflectMethod = Activity.class.getDeclaredMethod("convertToTranslucent", new Class[] { jdField_a_of_type_JavaLangClass, ActivityOptions.class });
-      jdField_b_of_type_JavaLangReflectMethod.setAccessible(true);
-      jdField_b_of_type_Boolean = true;
-      jdField_a_of_type_Boolean = true;
-      return;
+      QLog.i("Q.msg_box.YanZhiHelper", 1, "decodePush0x210_0x108 pbData = null");
+      return null;
     }
   }
   
-  public static void a(Activity paramActivity)
+  public static MessageRecord a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, msg_comm.Msg paramMsg)
   {
-    try
+    if (paramArrayOfByte != null)
     {
-      Method localMethod = Activity.class.getDeclaredMethod("convertFromTranslucent", new Class[0]);
-      localMethod.setAccessible(true);
-      localMethod.invoke(paramActivity, new Object[0]);
-      return;
-    }
-    catch (Throwable paramActivity) {}
-  }
-  
-  public static void a(Activity paramActivity, InvocationHandler paramInvocationHandler)
-  {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      b(paramActivity, paramInvocationHandler);
-      return;
-    }
-    b(paramActivity);
-  }
-  
-  public static boolean a()
-  {
-    if (Build.VERSION.SDK_INT < 21) {
-      return false;
-    }
-    a();
-    return jdField_b_of_type_Boolean;
-  }
-  
-  public static void b(Activity paramActivity)
-  {
-    Object localObject = null;
-    for (;;)
-    {
-      int i;
       try
       {
-        Class[] arrayOfClass = Activity.class.getDeclaredClasses();
-        int j = arrayOfClass.length;
-        i = 0;
-        if (i < j)
+        SubMsgType0x108.MsgBody localMsgBody = new SubMsgType0x108.MsgBody();
+        localMsgBody.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (MessageForYanZhi)bbli.a(-2070);
+        paramArrayOfByte.type = localMsgBody.uint32_type.get();
+        paramArrayOfByte.pushUin = localMsgBody.uint64_push_uin.get();
+        paramArrayOfByte.likeCount = localMsgBody.uint32_like_count.get();
+        paramArrayOfByte.pushTime = localMsgBody.push_time.get();
+        paramArrayOfByte.msg = (localMsgBody.uint32_like_count.get() + BaseApplicationImpl.getContext().getString(2131693945));
+        long l2 = localMsgBody.push_time.get();
+        long l1 = l2;
+        if (l2 <= 0L) {
+          l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
+        }
+        paramArrayOfByte.time = l1;
+        paramArrayOfByte.msgseq = l1;
+        paramArrayOfByte.shmsgseq = paramMsg.msg_head.msg_seq.get();
+        paramArrayOfByte.msgUid = paramMsg.msg_head.msg_uid.get();
+        paramArrayOfByte.selfuin = paramQQAppInterface.getCurrentAccountUin();
+        paramArrayOfByte.istroop = 1001;
+        paramArrayOfByte.isread = false;
+        paramArrayOfByte.frienduin = AppConstants.LBS_HELLO_UIN;
+        paramArrayOfByte.senderuin = AppConstants.MSG_BOX_YANZHI_UIN;
+        paramArrayOfByte.getBytes();
+        a(paramQQAppInterface, paramArrayOfByte);
+        QLog.i("Q.msg_box.YanZhiHelper", 1, "decodePull0x210_0x108 decode error, e=" + paramArrayOfByte.toString());
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        try
         {
-          Class localClass = arrayOfClass[i];
-          if (localClass.getSimpleName().contains("TranslucentConversionListener")) {
-            localObject = localClass;
+          if (QLog.isColorLevel())
+          {
+            paramQQAppInterface = new StringBuilder();
+            paramQQAppInterface.append("decodePull0x210_0x108,decode MessageForYanZhi").append("type=").append(localMsgBody.uint32_type.get()).append(",pushUin=").append(localMsgBody.uint64_push_uin.get()).append(",likeCount=").append(localMsgBody.uint32_like_count.get()).append(",pushTime=").append(localMsgBody.push_time.get());
+            QLog.i("Q.msg_box.YanZhiHelper", 2, paramQQAppInterface.toString());
+          }
+          return paramArrayOfByte;
+        }
+        catch (InvalidProtocolBufferMicroException paramMsg)
+        {
+          for (;;)
+          {
+            paramQQAppInterface = paramArrayOfByte;
+            paramArrayOfByte = paramMsg;
           }
         }
-        else
-        {
-          localObject = Activity.class.getDeclaredMethod("convertToTranslucent", new Class[] { localObject });
-          ((Method)localObject).setAccessible(true);
-          ((Method)localObject).invoke(paramActivity, new Object[] { null });
-          return;
-        }
+        paramArrayOfByte = paramArrayOfByte;
+        paramQQAppInterface = null;
       }
-      catch (Throwable paramActivity)
-      {
-        return;
-      }
-      i += 1;
+      return paramQQAppInterface;
+    }
+    else
+    {
+      QLog.i("Q.msg_box.YanZhiHelper", 1, "decodePull0x210_0x108 pbData = null");
+      return null;
     }
   }
   
-  @RequiresApi(api=16)
-  private static void b(Activity paramActivity, InvocationHandler paramInvocationHandler)
+  public static String a(AppInterface paramAppInterface)
   {
-    
+    paramAppInterface = (String)awka.a(paramAppInterface.getCurrentAccountUin(), "key_banner_enter_items", "");
     try
     {
-      Object localObject = jdField_a_of_type_JavaLangReflectMethod.invoke(paramActivity, new Object[0]);
-      Class localClass = jdField_a_of_type_JavaLangClass;
-      paramInvocationHandler = Proxy.newProxyInstance(jdField_a_of_type_JavaLangClass.getClassLoader(), new Class[] { localClass }, paramInvocationHandler);
-      jdField_b_of_type_JavaLangReflectMethod.invoke(paramActivity, new Object[] { paramInvocationHandler, localObject });
-      return;
+      paramAppInterface = new JSONArray(paramAppInterface);
+      int i = 0;
+      while (i < paramAppInterface.length())
+      {
+        Object localObject = paramAppInterface.optJSONObject(i);
+        int j = ((JSONObject)localObject).optInt("id");
+        localObject = ((JSONObject)localObject).optString("jumpUrl");
+        if ((j == 2) && (!TextUtils.isEmpty((CharSequence)localObject)))
+        {
+          paramAppInterface = (String)localObject + "5";
+          return paramAppInterface;
+        }
+        i += 1;
+      }
+      return "https://nearby.qq.com/face_score/index.html?_wv=16781319&_wwv=1&_nav_txtclr=000000&_bid=2543&source=5";
     }
-    catch (Throwable paramActivity) {}
+    catch (Exception paramAppInterface)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.msg_box.YanZhiHelper", 2, "getYanzhiUrl:" + paramAppInterface.toString());
+      }
+    }
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, MessageForYanZhi paramMessageForYanZhi)
+  {
+    paramMessageForYanZhi = paramQQAppInterface.getMessageFacade().getLastMsgForMsgTab(paramMessageForYanZhi.senderuin, paramMessageForYanZhi.istroop);
+    if (paramMessageForYanZhi != null) {
+      paramQQAppInterface.getMessageFacade().removeMsgByUniseq(paramMessageForYanZhi.senderuin, paramMessageForYanZhi.istroop, paramMessageForYanZhi.uniseq);
+    }
   }
 }
 

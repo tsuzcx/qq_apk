@@ -1,36 +1,16 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.io.Closeable;
 
-public class ypl
-  extends wov
+public final class ypl
 {
-  public List<String> a = new ArrayList();
-  public int b;
-  
-  public ypl(qqstory_service.RspGetPhotographyGuide paramRspGetPhotographyGuide)
+  public static void a(Closeable paramCloseable)
   {
-    super(paramRspGetPhotographyGuide.result);
-    Object localObject = paramRspGetPhotographyGuide.word.get();
-    if (localObject != null)
+    if (paramCloseable != null) {}
+    try
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        ByteStringMicro localByteStringMicro = (ByteStringMicro)((Iterator)localObject).next();
-        this.a.add(localByteStringMicro.toStringUtf8());
-      }
+      paramCloseable.close();
+      return;
     }
-    this.b = paramRspGetPhotographyGuide.seqno.get();
-  }
-  
-  public String toString()
-  {
-    return "GetPhotographyGuideResponse{, wordList=" + this.a.size() + ", seqno=" + this.b + '}';
+    catch (Exception paramCloseable) {}
   }
 }
 

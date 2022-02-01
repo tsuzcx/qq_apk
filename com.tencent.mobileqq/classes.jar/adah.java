@@ -1,59 +1,16 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import org.jetbrains.annotations.NotNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class adah
+  extends arht
 {
-  protected ConcurrentHashMap<String, Lock> a;
-  private ConcurrentHashMap<String, List<MessageRecord>> b;
-  private ConcurrentHashMap<String, List<MessageRecord>> c;
+  public adah(ChatSettingActivity paramChatSettingActivity) {}
   
-  public adah()
+  protected void a(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgPool", 2, "MsgPool() called " + this);
+    if (TextUtils.equals(paramString, ChatSettingActivity.a(this.a))) {
+      armh.a(this.a.app, this.a, paramBoolean1, paramInt, paramString, paramBoolean2, this.a);
     }
-    this.c = new ConcurrentHashMap();
-    this.a = new ConcurrentHashMap();
-    this.b = a();
-  }
-  
-  public Map<String, List<MessageRecord>> a()
-  {
-    return this.c;
-  }
-  
-  @NotNull
-  protected ConcurrentHashMap<String, List<MessageRecord>> a()
-  {
-    return new ConcurrentHashMap();
-  }
-  
-  public Lock a(String paramString)
-  {
-    if (!this.a.containsKey(paramString)) {}
-    synchronized (this.a)
-    {
-      if (!this.a.containsKey(paramString)) {
-        this.a.put(paramString, new ReentrantLock());
-      }
-      return (Lock)this.a.get(paramString);
-    }
-  }
-  
-  public Lock a(String paramString, int paramInt)
-  {
-    return a(adak.a(paramString, paramInt));
-  }
-  
-  public ConcurrentHashMap<String, List<MessageRecord>> b()
-  {
-    return this.b;
   }
 }
 

@@ -1,17 +1,29 @@
-import java.util.Comparator;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
-final class axsj
-  implements Comparator<axtj>
+public class axsj
+  implements Animator.AnimatorListener
 {
-  public int a(axtj paramaxtj1, axtj paramaxtj2)
+  public axsj(ScanIconAnimateView paramScanIconAnimateView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramaxtj1.a < paramaxtj2.a) {
-      return -1;
+    ScanIconAnimateView.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.b();
     }
-    if (paramaxtj1.a > paramaxtj2.a) {
-      return 1;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.a.a != null) {
+      this.a.a.a();
     }
-    return 0;
   }
 }
 

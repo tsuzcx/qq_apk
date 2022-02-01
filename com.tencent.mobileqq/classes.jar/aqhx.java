@@ -1,72 +1,133 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x74b.oidb_0x74b.HeadInfo;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aqhx
 {
-  public int a;
-  public String a;
-  public ArrayList<aqhy> a;
-  public int b;
-  public int c;
-  public int d;
+  public int a = 2;
+  public int b = 1;
+  public int c = 1;
+  public int d = 1;
+  public int e = 15;
+  private int f = 1;
+  private int g = 1;
+  private int h = 1;
+  private int i;
+  private int j = 16;
+  private int k;
+  private int l = 1;
   
-  public static aqhx a(oidb_0x74b.HeadInfo paramHeadInfo)
+  @NonNull
+  public static aqhx a()
   {
-    Object localObject;
-    if (paramHeadInfo == null) {
-      localObject = null;
-    }
-    aqhx localaqhx;
-    do
-    {
-      return localObject;
-      localaqhx = new aqhx();
-      if (paramHeadInfo.uint32_id.has()) {
-        localaqhx.jdField_a_of_type_Int = paramHeadInfo.uint32_id.get();
-      }
-      if (paramHeadInfo.str_photohead.has()) {
-        localaqhx.jdField_a_of_type_JavaLangString = paramHeadInfo.str_photohead.get();
-      }
-      if (paramHeadInfo.uint32_invalid.has()) {
-        localaqhx.b = paramHeadInfo.uint32_invalid.get();
-      }
-      if (paramHeadInfo.uint32_timestamp.has()) {
-        localaqhx.c = paramHeadInfo.uint32_timestamp.get();
-      }
-      if (paramHeadInfo.uint32_type.has()) {
-        localaqhx.d = paramHeadInfo.uint32_type.get();
-      }
-      localObject = localaqhx;
-    } while (!paramHeadInfo.rpt_videoheadlist.has());
-    localaqhx.jdField_a_of_type_JavaUtilArrayList = aqhy.a(paramHeadInfo.rpt_videoheadlist.get());
-    return localaqhx;
+    return new aqhx();
   }
   
-  public static ArrayList<aqhx> a(List<oidb_0x74b.HeadInfo> paramList)
+  @NonNull
+  public static aqhx a(@Nullable String paramString)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    aqhx localaqhx = new aqhx();
+    try
     {
-      aqhx localaqhx = a((oidb_0x74b.HeadInfo)paramList.next());
-      if (localaqhx != null) {
-        localArrayList.add(localaqhx);
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramString = new JSONObject(paramString);
+        localaqhx.a = paramString.optInt("kingcard", localaqhx.a);
+        localaqhx.f = paramString.optInt("gldrawable", localaqhx.f);
+        localaqhx.b = paramString.optInt("webso_preload", localaqhx.b);
+        localaqhx.c = paramString.optInt("webso_screenshot", localaqhx.c);
+        localaqhx.g = paramString.optInt("etcdrawable", localaqhx.g);
+        localaqhx.h = paramString.optInt("gldrawableEtcApng", localaqhx.h);
+        localaqhx.d = paramString.optInt("livePreload", localaqhx.d);
+        localaqhx.e = paramString.optInt("liveAllowSdk", localaqhx.e);
+        localaqhx.i = paramString.optInt("limitTime", localaqhx.i);
+        localaqhx.j = paramString.optInt("gldrawableMinSdk", localaqhx.j);
+        localaqhx.k = paramString.optInt("supportVideoTheme", localaqhx.k);
+        localaqhx.l = paramString.optInt("optimizeTheme", localaqhx.l);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("QVIP.SDK.ConfigProcessor", 1, " : " + localaqhx.toString());
+      }
+      return localaqhx;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        QLog.e("QVIP.SDK.ConfigProcessor", 1, "json parse error:" + paramString);
       }
     }
-    return localArrayList;
+  }
+  
+  public int a()
+  {
+    return this.e;
+  }
+  
+  public boolean a()
+  {
+    return this.f > 0;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return paramInt >= this.j;
+  }
+  
+  public int b()
+  {
+    return this.i;
+  }
+  
+  public boolean b()
+  {
+    return this.g > 0;
+  }
+  
+  public boolean c()
+  {
+    return this.h > 0;
+  }
+  
+  public boolean d()
+  {
+    return this.d > 0;
+  }
+  
+  public boolean e()
+  {
+    int m;
+    if (this.k > 0) {
+      m = 1;
+    }
+    while ((bgio.a()) && (m != 0))
+    {
+      return true;
+      if ((bgio.b()) && (!DeviceInfoUtil.isLowPerfDevice())) {
+        m = 1;
+      } else {
+        m = 0;
+      }
+    }
+    return false;
+  }
+  
+  public boolean f()
+  {
+    return (bgio.a()) && (this.l > 0);
+  }
+  
+  public String toString()
+  {
+    return "QVipSDKConfig{gldrawable=" + this.f + ", etcdrawable=" + this.g + ", gldrawableEtcApng=" + this.h + ", kingCard=" + this.a + ", websoPreload=" + this.b + ", websoScreenshot=" + this.c + ", livePreload=" + this.d + ", liveAllowSdk=" + this.e + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqhx
  * JD-Core Version:    0.7.0.1
  */

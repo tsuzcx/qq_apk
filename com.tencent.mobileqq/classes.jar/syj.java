@@ -1,23 +1,11 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Comparator;
 
-class syj
-  extends blgm
+final class syj
+  implements Comparator<byte[]>
 {
-  syj(syi paramsyi) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    super.onAnimationEnd(paramAnimation);
-    if (syh.a(this.a.a) != null)
-    {
-      paramAnimation = new ArrayList();
-      paramAnimation.add(syh.a(this.a.a));
-      syh.a(this.a.a).a(paramAnimation, syh.a(this.a.a));
-      QQToast.a(this.a.a.a, 2, 2131717140, 0).a();
-    }
+    return paramArrayOfByte1.length - paramArrayOfByte2.length;
   }
 }
 

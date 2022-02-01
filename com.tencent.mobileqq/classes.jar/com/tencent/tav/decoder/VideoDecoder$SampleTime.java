@@ -1,25 +1,26 @@
 package com.tencent.tav.decoder;
 
+import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 
 class VideoDecoder$SampleTime
 {
-  private CMTime cmTime;
+  private CMSampleState sampleState;
   private long timeUs;
   
   private VideoDecoder$SampleTime(VideoDecoder paramVideoDecoder) {}
   
   private void fixCMTime()
   {
-    if (!this.cmTime.smallThan(CMTime.CMTimeZero)) {
+    if (!this.sampleState.getTime().smallThan(CMTime.CMTimeZero)) {
       return;
     }
-    this.cmTime = CMTime.fromUs(VideoDecoder.access$1100(this.this$0));
+    this.sampleState = new CMSampleState(CMTime.fromUs(VideoDecoder.access$1000(this.this$0)));
   }
   
   public String toString()
   {
-    return "SampleTime{cmTime=" + this.cmTime + ", timeUs=" + this.timeUs + '}';
+    return "SampleTime{sampleState=" + this.sampleState + ", timeUs=" + this.timeUs + '}';
   }
 }
 

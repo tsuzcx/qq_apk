@@ -1,129 +1,68 @@
-import com.tencent.biz.qqcircle.beans.QCircleFakeFeed;
-import cooperation.qzone.LbsDataV2.PoiInfo;
-import cooperation.qzone.model.LabelInfo;
-import java.util.ArrayList;
+import UserGrowth.stNewIconStyle;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import android.view.ViewStub;
 
 public class vaz
+  extends ukz<vaq>
 {
-  private QCircleFakeFeed a = new QCircleFakeFeed();
+  private ViewStub jdField_a_of_type_AndroidViewViewStub;
+  private vba jdField_a_of_type_Vba;
+  private vct jdField_a_of_type_Vct;
   
-  public QCircleFakeFeed a()
+  public vaz(Context paramContext, vct paramvct)
   {
-    return this.a;
+    super(paramContext);
+    this.jdField_a_of_type_Vct = paramvct;
   }
   
-  public vaz a(int paramInt)
+  private stSimpleMetaFeed a()
   {
-    QCircleFakeFeed.a(this.a, paramInt);
-    return this;
+    vaq localvaq = (vaq)a();
+    if ((localvaq != null) && ((localvaq.a() instanceof stSimpleMetaFeed))) {
+      return (stSimpleMetaFeed)localvaq.a();
+    }
+    return null;
   }
   
-  public vaz a(long paramLong)
+  private void b(vaq paramvaq)
   {
-    QCircleFakeFeed.a(this.a, paramLong);
-    return this;
+    if ((a() != null) && (a().new_icon != null) && (a().new_icon.tag_type == 0))
+    {
+      if (this.jdField_a_of_type_Vba == null)
+      {
+        this.jdField_a_of_type_Vba = new vba(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vct);
+        this.jdField_a_of_type_Vba.a(this.jdField_a_of_type_AndroidViewViewStub);
+      }
+      this.jdField_a_of_type_Vba.a(paramvaq);
+    }
   }
   
-  public vaz a(LbsDataV2.PoiInfo paramPoiInfo)
+  protected void a() {}
+  
+  public void a(vaq paramvaq)
   {
-    QCircleFakeFeed.a(this.a, paramPoiInfo);
-    return this;
+    super.a(paramvaq);
+    b(paramvaq);
   }
   
-  public vaz a(String paramString)
+  protected int b()
   {
-    QCircleFakeFeed.a(this.a, paramString);
-    return this;
+    return 2131560041;
   }
   
-  public vaz a(ArrayList<String> paramArrayList)
+  protected void b() {}
+  
+  protected void c()
   {
-    QCircleFakeFeed.a(this.a, paramArrayList);
-    return this;
+    if (this.jdField_a_of_type_Vba != null) {
+      this.jdField_a_of_type_Vba.c();
+    }
   }
   
-  public vaz b(int paramInt)
+  protected void e()
   {
-    QCircleFakeFeed.b(this.a, paramInt);
-    return this;
-  }
-  
-  public vaz b(String paramString)
-  {
-    QCircleFakeFeed.b(this.a, paramString);
-    return this;
-  }
-  
-  public vaz b(ArrayList<LabelInfo> paramArrayList)
-  {
-    QCircleFakeFeed.b(this.a, paramArrayList);
-    return this;
-  }
-  
-  public vaz c(int paramInt)
-  {
-    QCircleFakeFeed.c(this.a, paramInt);
-    return this;
-  }
-  
-  public vaz c(String paramString)
-  {
-    QCircleFakeFeed.c(this.a, paramString);
-    return this;
-  }
-  
-  public vaz c(ArrayList<String> paramArrayList)
-  {
-    QCircleFakeFeed.c(this.a, paramArrayList);
-    return this;
-  }
-  
-  public vaz d(int paramInt)
-  {
-    QCircleFakeFeed.d(this.a, paramInt);
-    return this;
-  }
-  
-  public vaz d(String paramString)
-  {
-    QCircleFakeFeed.d(this.a, paramString);
-    return this;
-  }
-  
-  public vaz d(ArrayList<String> paramArrayList)
-  {
-    QCircleFakeFeed.d(this.a, paramArrayList);
-    return this;
-  }
-  
-  public vaz e(String paramString)
-  {
-    QCircleFakeFeed.e(this.a, paramString);
-    return this;
-  }
-  
-  public vaz e(ArrayList<String> paramArrayList)
-  {
-    QCircleFakeFeed.e(this.a, paramArrayList);
-    return this;
-  }
-  
-  public vaz f(String paramString)
-  {
-    QCircleFakeFeed.f(this.a, paramString);
-    return this;
-  }
-  
-  public vaz f(ArrayList<String> paramArrayList)
-  {
-    QCircleFakeFeed.f(this.a, paramArrayList);
-    return this;
-  }
-  
-  public vaz g(String paramString)
-  {
-    QCircleFakeFeed.g(this.a, paramString);
-    return this;
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131380430));
   }
 }
 

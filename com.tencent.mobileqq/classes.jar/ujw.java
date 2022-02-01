@@ -1,38 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
+import android.graphics.Rect;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
+import android.view.View;
 
 public class ujw
-  implements IMiniMsgUnreadCallback
+  extends RecyclerView.ItemDecoration
 {
-  public void destroy()
-  {
-    uqf.a("AIOLog", 1, "MiniMsgUser destroy");
-  }
+  public static final int a = uxr.a(5.0F);
   
-  public void hide()
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    uqf.a("AIOLog", 1, "MiniMsgUser hide");
-  }
-  
-  public void hideUnread()
-  {
-    uqf.a("AIOLog", 1, "MiniMsgUser hideUnread");
-  }
-  
-  public boolean show(int paramInt)
-  {
-    uqf.a("AIOLog", 1, "MiniMsgUser show = " + paramInt);
-    return false;
-  }
-  
-  public void updateOnBackFromMiniAIO(Bundle paramBundle)
-  {
-    uqf.a("AIOLog", 1, "MiniMsgUser updateOnBackFromMiniAIO");
-  }
-  
-  public void updateUnreadCount(int paramInt, boolean paramBoolean)
-  {
-    uqf.a("AIOLog", 1, "MiniMsgUser updateUnreadCount i = " + paramInt + ", b = " + paramBoolean);
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+    {
+      paramView = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
+      i = paramView.getSpanIndex();
+      if (paramView.isFullSpan())
+      {
+        paramRect.left = a;
+        paramRect.right = a;
+        paramRect.top = a;
+      }
+    }
+    while ((!(paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) || (((LinearLayoutManager)paramRecyclerView.getLayoutManager()).getOrientation() != 0)) {
+      for (;;)
+      {
+        int i;
+        return;
+        if (i % 2 == 0)
+        {
+          paramRect.left = a;
+          paramRect.right = (a / 2);
+        }
+        else
+        {
+          paramRect.left = (a / 2);
+          paramRect.right = a;
+        }
+      }
+    }
+    paramRect.right = a;
   }
 }
 

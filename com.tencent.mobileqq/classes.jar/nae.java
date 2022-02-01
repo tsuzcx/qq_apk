@@ -1,162 +1,64 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import OnlinePushPack.SvcReqPushMsg;
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
+import androidx.annotation.NonNull;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import tencent.im.oidb.submsgtype0x138.Submsgtype0x138.MsgBody;
-import trpc.qq_vgame.nofity.AvGameNotify.NotifyMsg;
+import trpc.qq_vgame.common.AvGameCommon.QuestionFeedbackInfo;
 
 public class nae
-  extends mxl
 {
-  public nae(AppInterface paramAppInterface)
+  public int a;
+  public String a;
+  public String b = "";
+  
+  public nae()
   {
-    super(paramAppInterface);
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  private AvGameNotify.NotifyMsg a(MsgType0x210 paramMsgType0x210)
+  public String a()
   {
-    localObject3 = null;
-    localObject2 = null;
-    Object localObject1 = new Submsgtype0x138.MsgBody();
-    try
-    {
-      ((Submsgtype0x138.MsgBody)localObject1).mergeFrom(paramMsgType0x210.vProtobuf);
-      if ((((Submsgtype0x138.MsgBody)localObject1).uint32_bussi_type.get() == 1) && (((Submsgtype0x138.MsgBody)localObject1).bytes_msg_data.get() != null)) {
-        paramMsgType0x210 = new AvGameNotify.NotifyMsg();
-      }
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
-    {
-      paramMsgType0x210 = localObject2;
-      QLog.d("avgame_logic.GameRoomPushHandler", 1, new Object[] { "parseNotifyMsg ex=", localInvalidProtocolBufferMicroException1.getMessage(), localInvalidProtocolBufferMicroException1 });
-      return paramMsgType0x210;
-    }
-    catch (Exception localException1)
-    {
-      paramMsgType0x210 = localObject3;
-      QLog.d("avgame_logic.GameRoomPushHandler", 1, new Object[] { "parseNotifyMsg ex=", localException1.getMessage(), localException1 });
-      return paramMsgType0x210;
-    }
-    try
-    {
-      localObject1 = (AvGameNotify.NotifyMsg)paramMsgType0x210.mergeFrom(((Submsgtype0x138.MsgBody)localObject1).bytes_msg_data.get().toByteArray());
-      return localObject1;
-    }
-    catch (Exception localException2)
-    {
-      break label146;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
-    {
-      break label114;
-    }
-    QLog.d("avgame_logic.GameRoomPushHandler", 1, String.format("parseNotifyMsg err %d %s", new Object[] { Integer.valueOf(((Submsgtype0x138.MsgBody)localObject1).uint32_bussi_type.get()), ((Submsgtype0x138.MsgBody)localObject1).bytes_msg_data.get() }));
-    return null;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    paramObject = (SvcReqPushMsg)decodePacket(paramFromServiceMsg.getWupBuffer(), "req", new SvcReqPushMsg());
-    if (paramObject == null)
-    {
-      paramToServiceMsg = null;
-      if ((paramToServiceMsg == null) || (paramToServiceMsg.size() <= 0)) {
-        break label63;
-      }
-    }
-    label63:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        break label69;
-      }
-      QLog.d("avgame_logic.GameRoomPushHandler", 1, "handleOnlinePush doesn't has msgInfos return");
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected void a(nae paramnae)
+  {
+    this.jdField_a_of_type_JavaLangString = paramnae.jdField_a_of_type_JavaLangString;
+    this.b = paramnae.b;
+    this.jdField_a_of_type_Int = paramnae.jdField_a_of_type_Int;
+  }
+  
+  public void a(AvGameCommon.QuestionFeedbackInfo paramQuestionFeedbackInfo)
+  {
+    if (paramQuestionFeedbackInfo == null) {
       return;
-      paramToServiceMsg = paramObject.vMsgInfos;
-      break;
     }
-    label69:
-    Iterator localIterator = paramToServiceMsg.iterator();
-    label75:
-    Object localObject;
-    while (localIterator.hasNext())
-    {
-      localObject = (MsgInfo)localIterator.next();
-      i = ((MsgInfo)localObject).shMsgType;
-      long l = paramObject.lUin;
-      if (paramFromServiceMsg.getUin() != null) {
-        break label231;
-      }
-      paramToServiceMsg = Long.valueOf(this.app.getAccount());
-      label128:
-      paramToServiceMsg.longValue();
-      if (528 == i)
-      {
-        paramToServiceMsg = adan.a(((MsgInfo)localObject).vMsg);
-        if ((paramToServiceMsg.vProtobuf != null) && (paramToServiceMsg.uSubMsgType == 312L))
-        {
-          localObject = a(paramToServiceMsg);
-          if (localObject == null) {
-            break label242;
-          }
-        }
-      }
-    }
-    label231:
-    label242:
-    for (paramToServiceMsg = myn.a(((AvGameNotify.NotifyMsg)localObject).type.get());; paramToServiceMsg = "null")
-    {
-      QLog.d("avgame_logic.GameRoomPushHandler", 1, new Object[] { "handleOnlinePush type=", paramToServiceMsg });
-      if (localObject == null) {
-        break label75;
-      }
-      myr.a((AVGameAppInterface)this.mApp, (AvGameNotify.NotifyMsg)localObject);
-      break label75;
-      break;
-      paramToServiceMsg = Long.valueOf(paramFromServiceMsg.getUin());
-      break label128;
-    }
+    this.jdField_a_of_type_JavaLangString = paramQuestionFeedbackInfo.content.get();
+    this.jdField_a_of_type_Int = paramQuestionFeedbackInfo.duration.get();
+    this.b = paramQuestionFeedbackInfo.content_md5.get();
   }
   
-  protected boolean msgCmdFilter(String paramString)
+  public String b()
   {
-    if (this.allowCmdSet == null)
-    {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("OnlinePush.ReqPush");
-    }
-    return !this.allowCmdSet.contains(paramString);
+    return this.b;
   }
   
-  protected Class<? extends anui> observerClass()
+  @NonNull
+  public String toString()
   {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("OnlinePush.ReqPush".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.b).append(",").append(this.jdField_a_of_type_Int).append("s").append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nae
  * JD-Core Version:    0.7.0.1
  */

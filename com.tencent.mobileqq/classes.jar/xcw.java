@@ -1,35 +1,45 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetMusicListConfig;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMusicListConfig;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import android.graphics.Bitmap;
+import android.os.Handler.Callback;
+import android.os.Message;
+import java.util.Arrays;
 
-public class xcw
-  extends wpa<xeq>
+class xcw
+  implements Handler.Callback
 {
-  private static final String a = wnu.a("StorySvc.video_music_get");
+  private xcw(xcu paramxcu) {}
   
-  public String a()
+  public boolean handleMessage(Message paramMessage)
   {
-    return a;
-  }
-  
-  public xeq a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetMusicListConfig localRspGetMusicListConfig = new qqstory_service.RspGetMusicListConfig();
-    try
+    int k = 0;
+    switch (paramMessage.what)
     {
-      localRspGetMusicListConfig.mergeFrom(paramArrayOfByte);
-      return new xeq(localRspGetMusicListConfig);
+    default: 
+      return false;
+    case 1: 
+      xcu.a(this.a, new Error((Throwable)paramMessage.obj));
+      return true;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    paramMessage = (Bitmap[])paramMessage.obj;
+    int m = paramMessage.length;
+    int i = 0;
+    for (;;)
     {
-      paramArrayOfByte.printStackTrace();
+      int j = k;
+      if (i < m)
+      {
+        if (paramMessage[i] == null) {
+          j = 1;
+        }
+      }
+      else
+      {
+        if (j == 0) {
+          xcu.a(this.a, Arrays.asList(paramMessage));
+        }
+        return true;
+      }
+      i += 1;
     }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return new qqstory_service.ReqGetMusicListConfig().toByteArray();
   }
 }
 

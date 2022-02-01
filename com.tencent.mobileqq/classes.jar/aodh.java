@@ -1,240 +1,198 @@
-import KQQ.ReqItem;
-import KQQ.RespItem;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.pb.getpreload.PreloadInfoCheckUpdate.AppBehavior;
-import com.tencent.pb.getpreload.PreloadInfoCheckUpdate.ControlReqHead;
-import com.tencent.pb.getpreload.PreloadInfoCheckUpdate.ControlRspHead;
-import com.tencent.pb.getpreload.PreloadInfoCheckUpdate.PreloadInfoReq;
-import com.tencent.pb.getpreload.PreloadInfoCheckUpdate.PreloadInfoRsp;
-import com.tencent.pb.getpreload.PreloadInfoCheckUpdate.PreloadResult;
+import android.util.Xml;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map.Entry;
 import java.util.Set;
+import org.xmlpull.v1.XmlPullParser;
 
 public class aodh
-  implements bcuc
 {
-  QQAppInterface a;
-  
-  public aodh(QQAppInterface paramQQAppInterface)
+  public static int a(String paramString)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  private boolean a(bcuy parambcuy, String paramString)
-  {
-    if (parambcuy == null) {}
-    while (parambcuy.a(paramString) == -1) {
-      return false;
-    }
-    return true;
-  }
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  public ReqItem a(int paramInt)
-  {
-    ReqItem localReqItem = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadInfoCheckUpdateItem", 2, "getCheckUpdateItemData");
-    }
-    Object localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("web_process_preload_file", 4);
-    paramInt = ((SharedPreferences)localObject1).getInt("key_check_update_interval" + this.a.getCurrentAccountUin(), 259200);
-    int i = ((SharedPreferences)localObject1).getInt("key_last_check_update_timestamp" + this.a.getCurrentAccountUin(), 0);
-    int j = (int)(System.currentTimeMillis() / 1000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadInfoCheckUpdateItem", 2, "getPreloadInfo:lastCheckTime=" + i + ",nowSystemTime=" + j);
-    }
-    if ((j - i > paramInt) || (j < i))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadInfoCheckUpdateItem", 2, "getPreloadInfo:start send check update new info update time.");
-      }
-      ((SharedPreferences)localObject1).edit().putInt("key_last_check_update_timestamp" + this.a.getCurrentAccountUin(), (int)(System.currentTimeMillis() / 1000L)).commit();
-      localReqItem = new ReqItem();
-      localReqItem.eServiceID = 123;
-      Object localObject2 = new PreloadInfoCheckUpdate.PreloadInfoReq();
-      Object localObject3 = new PreloadInfoCheckUpdate.ControlReqHead();
-      ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).protocol_ver.set(1);
-      ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).client_plat_id.set(109);
-      ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).client_ver.set("8.4.5");
-      ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).os_ver.set(Build.VERSION.SDK);
-      ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).uin.set(this.a.getLongAccountUin());
-      ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).mem.set((int)bhlo.d() / 1048576);
-      ((PreloadInfoCheckUpdate.ControlReqHead)localObject3).ext1.set("nothing");
-      ((PreloadInfoCheckUpdate.PreloadInfoReq)localObject2).head.set((MessageMicro)localObject3);
-      Object localObject4 = bhsj.a((SharedPreferences)localObject1, "key_web_plugin_list" + this.a.getCurrentAccountUin(), null);
-      if ((localObject4 != null) && (!((Set)localObject4).isEmpty()))
+      int i = aocy.a("arsdk2", a(), aocy.b("arsdk2", a(), "arsdk2"), paramString);
+      return i;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public static int a(String paramString1, String paramString2)
+  {
+    int i = -5;
+    for (;;)
+    {
+      try
       {
-        localObject3 = (bcuy)this.a.getManager(12);
-        localObject4 = ((Set)localObject4).iterator();
-        if (((Iterator)localObject4).hasNext())
-        {
-          String str = (String)((Iterator)localObject4).next();
-          PreloadInfoCheckUpdate.AppBehavior localAppBehavior = new PreloadInfoCheckUpdate.AppBehavior();
-          localAppBehavior.appid.set(Integer.parseInt(str));
-          localAppBehavior.click_num.set(((SharedPreferences)localObject1).getInt("key_web_plugin_click_num" + str + this.a.getCurrentAccountUin(), 0));
-          localAppBehavior.click_red_num.set(((SharedPreferences)localObject1).getInt("key_web_plugin_click_red_num" + str + this.a.getCurrentAccountUin(), 0));
-          PBInt32Field localPBInt32Field = localAppBehavior.red_state;
-          if (a((bcuy)localObject3, str)) {}
-          for (paramInt = 2;; paramInt = 1)
-          {
-            localPBInt32Field.set(paramInt);
-            ((PreloadInfoCheckUpdate.PreloadInfoReq)localObject2).app_behavior.add(localAppBehavior);
-            break;
-          }
-        }
-      }
-      localObject1 = ((PreloadInfoCheckUpdate.PreloadInfoReq)localObject2).toByteArray();
-      paramInt = localObject1.length;
-      i = paramInt + 4;
-      localObject2 = new byte[i];
-      System.arraycopy(bhgs.b(i), 0, localObject2, 0, 4);
-      System.arraycopy(localObject1, 0, localObject2, 4, paramInt);
-      localReqItem.vecParam = ((byte[])localObject2);
-    }
-    return localReqItem;
-  }
-  
-  public void a(RespItem paramRespItem)
-  {
-    if (paramRespItem != null)
-    {
-      i = paramRespItem.cResult;
-      localObject1 = paramRespItem.vecUpdate;
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadInfoCheckUpdateItem", 2, "handleCheckUpdateItemData result=" + i + ",dataLen=" + localObject1.length);
-      }
-      if (i == 2) {
+        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. soResFilename = " + paramString1 + ", soResMd5FromConfig = " + paramString2);
+        aocy.a("arsdk2", a(), "arsdk2", paramString2);
         try
         {
-          if (localObject1.length > 4)
-          {
-            i = (int)bhvd.a((byte[])localObject1, 0);
-            paramRespItem = new byte[i - 4];
-            bhvd.a(paramRespItem, 0, (byte[])localObject1, 4, i - 4);
-            localObject1 = new PreloadInfoCheckUpdate.PreloadInfoRsp();
-            ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).mergeFrom(paramRespItem);
-            if (localObject1 != null)
-            {
-              paramRespItem = (PreloadInfoCheckUpdate.ControlRspHead)((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).head.get();
-              if (paramRespItem != null)
-              {
-                i = paramRespItem.code.get();
-                if (QLog.isColorLevel()) {
-                  QLog.d("PreloadInfoCheckUpdateItem", 2, "PreloadInfoCheckUpdateItem preloadInfoRsp data code=" + i);
-                }
-                if (i != 0) {
-                  break label1188;
-                }
-                paramRespItem = BaseApplicationImpl.getApplication().getSharedPreferences("web_process_preload_file", 4).edit();
-                paramRespItem.putInt("key_preload_strategy" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).preload_switch.get());
-                if (QLog.isColorLevel()) {
-                  QLog.d("PreloadInfoCheckUpdateItem", 2, "preload_switch=" + ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).preload_switch.get());
-                }
-                paramRespItem.putBoolean("key_preload_flag" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).preload.get());
-                if (QLog.isColorLevel()) {
-                  QLog.d("PreloadInfoCheckUpdateItem", 2, "preload=" + ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).preload.get());
-                }
-                paramRespItem.putInt("key_check_update_interval" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).interval.get());
-                if (QLog.isColorLevel()) {
-                  QLog.d("PreloadInfoCheckUpdateItem", 2, "interval=" + ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).interval.get());
-                }
-                localObject3 = ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).applist.get();
-                if ((localObject3 == null) || (((List)localObject3).isEmpty())) {
-                  break label651;
-                }
-                localObject2 = new HashSet();
-                localObject3 = ((List)localObject3).iterator();
-                while (((Iterator)localObject3).hasNext())
-                {
-                  str = (String)((Iterator)localObject3).next();
-                  ((Set)localObject2).add(str);
-                  paramRespItem.putInt("key_web_plugin_click_num" + str + this.a.getCurrentAccountUin(), 0);
-                  paramRespItem.putInt("key_web_plugin_click_red_num" + str + this.a.getCurrentAccountUin(), 0);
-                }
-              }
-            }
+          aocu.a(paramString1, aocy.a("arsdk2", a(), aocy.b("arsdk2", a(), "arsdk2")));
+          paramString2 = aocy.a("arsdk2", a(), aocy.b("arsdk2", a(), "arsdk2")) + File.separator + "md5_config.xml";
+          localObject = new File(paramString2);
+          if (!((File)localObject).exists()) {
+            break label654;
           }
-          return;
+          new HashMap();
         }
-        catch (Throwable paramRespItem)
+        catch (IOException paramString2)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("PreloadInfoCheckUpdateItem", 2, "PreloadInfoCheckUpdateItem Exception msg=" + paramRespItem.getMessage());
+          Object localObject;
+          File localFile;
+          String str;
+          i = -6;
+          FileUtils.delete(aocy.a("arsdk2", a(), aocy.b("arsdk2", a(), "arsdk2")), false);
+          paramString2 = new File(paramString1);
+          if (paramString2.exists()) {
+            paramString2.delete();
           }
-          paramRespItem.printStackTrace();
+          QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. unzip failed. result = " + -6 + ", soResFilename = " + paramString1);
+          continue;
+        }
+      }
+      finally {}
+      try
+      {
+        paramString2 = a(FileUtils.readFileToString((File)localObject));
+        if (paramString2.size() <= 0) {
+          break label624;
+        }
+        paramString2 = paramString2.entrySet().iterator();
+        if (!paramString2.hasNext()) {
+          break label695;
+        }
+        localObject = (Map.Entry)paramString2.next();
+        paramString1 = "";
+        if (((String)((Map.Entry)localObject).getKey()).equalsIgnoreCase("libAlphaAR"))
+        {
+          paramString1 = aocy.a("arsdk2", a(), aocy.b("arsdk2", a(), "arsdk2")) + File.separator + (String)((Map.Entry)localObject).getKey() + ".so";
+          aocy.a("arsdk2", a(), "libAlphaAR", (String)((Map.Entry)localObject).getValue());
+        }
+        localFile = new File(paramString1);
+        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. soFilename = " + paramString1);
+        if (!localFile.exists()) {
+          break label583;
+        }
+        str = ayja.a(paramString1);
+        localObject = (String)((Map.Entry)localObject).getValue();
+        if (((String)localObject).equalsIgnoreCase(str)) {
+          continue;
+        }
+        localFile.delete();
+        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. check md5 failed. result = " + -3 + ", filename = " + paramString1 + ", md5FromCalc = " + str + ", md5FromConfig = " + (String)localObject);
+        i = -3;
+      }
+      catch (IOException paramString2)
+      {
+        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
+        continue;
+      }
+      catch (OutOfMemoryError paramString2)
+      {
+        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. parse xml failed. result = " + -5 + ", soResFilename = " + paramString1);
+        continue;
+        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", filename = " + paramString1);
+        i = -2;
+        continue;
+        i = -1;
+        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. sSoMd5ListFromConfig.size() == 0. result = " + -1);
+        continue;
+      }
+      return i;
+      label583:
+      label624:
+      QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. so file not exist. result = " + -2 + ", configFilename = " + paramString2);
+      label654:
+      i = -2;
+      continue;
+      label695:
+      QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "doOnDownloadSuccess. result = " + 0);
+      i = 0;
+    }
+  }
+  
+  public static String a()
+  {
+    return "v8.4.5.1";
+  }
+  
+  private static HashMap<String, String> a(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    for (;;)
+    {
+      try
+      {
+        localXmlPullParser = Xml.newPullParser();
+        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
+        i = localXmlPullParser.getEventType();
+      }
+      catch (Exception localException)
+      {
+        XmlPullParser localXmlPullParser;
+        QLog.e("AREngine_ArSDK2NativeSoLoader", 2, "parseSoMd5FromXmlConfig failed. error = " + localException.getMessage() + ", xmlConfigContent = " + paramString);
+        return localHashMap;
+      }
+      int i = localXmlPullParser.next();
+      if (localXmlPullParser.getName().equalsIgnoreCase("libAlphaAR"))
+      {
+        localHashMap.put("libAlphaAR", localXmlPullParser.nextText());
+        while (i == 1)
+        {
+          QLog.d("AREngine_ArSDK2NativeSoLoader", 2, "parseSoMd5FromXmlConfig successfully. soMd5List = " + localHashMap);
+          return localHashMap;
+        }
+        switch (i)
+        {
         }
       }
     }
-    label651:
-    label1188:
-    while (!QLog.isColorLevel())
+  }
+  
+  public static boolean a()
+  {
+    return new File(aocy.a("arsdk2", a(), aocy.b("arsdk2", a(), "arsdk2")) + File.separator + "libAlphaAR" + ".so").exists();
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool1 = false;
+    for (;;)
     {
-      do
+      try
       {
-        do
+        String str = aocy.a("arsdk2", a(), aocy.b("arsdk2", a(), "arsdk2")) + File.separator + paramString + ".so";
+        Object localObject = new File(str);
+        if (QLog.isColorLevel()) {
+          QLog.d("AREngine_ArSDK2NativeSoLoader", 2, "isSoFileExist soFile=" + str + ", exist=" + ((File)localObject).exists());
+        }
+        if (((File)localObject).exists())
         {
-          int i;
-          Object localObject1;
-          Object localObject3;
-          String str;
-          Object localObject2 = ((Set)localObject2).toArray();
-          bhsj.a(paramRespItem, "key_web_plugin_list" + this.a.getCurrentAccountUin(), (Object[])localObject2);
-          paramRespItem.putInt("key_red_ram" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).red_ram.get());
-          if (QLog.isColorLevel()) {
-            QLog.d("PreloadInfoCheckUpdateItem", 2, "red_ram=" + ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).red_ram.get());
-          }
-          paramRespItem.putInt("key_click_ram" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).click_ram.get());
-          if (QLog.isColorLevel()) {
-            QLog.d("PreloadInfoCheckUpdateItem", 2, "click_ram=" + ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).click_ram.get());
-          }
-          localObject2 = ((PreloadInfoCheckUpdate.PreloadInfoRsp)localObject1).preload_result.get();
-          if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
+          paramString = aocy.b("arsdk2", a(), paramString);
+          localObject = ayja.a(str);
+          boolean bool2 = paramString.equalsIgnoreCase((String)localObject);
+          if (bool2)
           {
-            localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("ppp_profile", 4).edit();
-            localObject2 = ((List)localObject2).iterator();
-            while (((Iterator)localObject2).hasNext())
-            {
-              localObject3 = (PreloadInfoCheckUpdate.PreloadResult)((Iterator)localObject2).next();
-              i = ((PreloadInfoCheckUpdate.PreloadResult)localObject3).appid.get();
-              ((SharedPreferences.Editor)localObject1).putInt(i + "preload_switch" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadResult)localObject3).preload_switch.get());
-              ((SharedPreferences.Editor)localObject1).putBoolean(i + "preload" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadResult)localObject3).preload.get());
-              ((SharedPreferences.Editor)localObject1).putBoolean(i + "preload_data" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadResult)localObject3).preload_data.get());
-              ((SharedPreferences.Editor)localObject1).putInt(i + "mem_limit" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadResult)localObject3).mem_limit.get());
-              ((SharedPreferences.Editor)localObject1).putString(i + "ext1" + this.a.getCurrentAccountUin(), ((PreloadInfoCheckUpdate.PreloadResult)localObject3).ext1.get());
-            }
+            bool1 = true;
+            return bool1;
           }
-          paramRespItem.putInt("key_last_check_update_timestamp" + this.a.getCurrentAccountUin(), (int)(System.currentTimeMillis() / 1000L));
-          paramRespItem.commit();
-          paramRespItem = (WebProcessManager)this.a.getManager(13);
-        } while (paramRespItem == null);
-        paramRespItem.a();
-        paramRespItem.b();
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("PreloadInfoCheckUpdateItem", 2, "PreloadInfoCheckUpdateItem preloadInfoRsp erro msg=" + paramRespItem.err_msg.get());
-      return;
+          QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "isSoFileExist. check md5 failed. soFilename = " + str + ", md5FromConfig = " + paramString + ", md5FromCalc = " + (String)localObject);
+          continue;
+        }
+        QLog.i("AREngine_ArSDK2NativeSoLoader", 2, "isSoFileExist. so not exist. soFilename = " + str);
+      }
+      finally {}
     }
-    QLog.d("PreloadInfoCheckUpdateItem", 2, "PreloadInfoCheckUpdateItem handleCheckUpdateItemData respitem is null");
   }
 }
 

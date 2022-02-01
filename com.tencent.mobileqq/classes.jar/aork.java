@@ -1,27 +1,23 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import android.text.TextUtils;
+import java.util.ArrayList;
 
-class aork
-  implements View.OnClickListener
+final class aork
+  extends aosv
 {
-  aork(aori paramaori, boolean paramBoolean, Activity paramActivity, QQAppInterface paramQQAppInterface) {}
-  
-  public void onClick(View paramView)
+  aork(String paramString, ArrayList paramArrayList)
   {
-    aori.a(this.jdField_a_of_type_Aori).dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      AccountManageActivity.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "0X800B276";; str = "0X800B273")
+    super(paramString);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBoolean)
     {
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      paramBundle = paramBundle.getString("userInfo", null);
+      if (!TextUtils.isEmpty(paramBundle)) {
+        this.a.add(paramBundle);
+      }
     }
   }
 }

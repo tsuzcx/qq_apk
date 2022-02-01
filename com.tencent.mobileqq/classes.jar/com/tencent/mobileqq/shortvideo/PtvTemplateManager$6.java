@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import lbw;
-import lbx;
-import mvd;
+import lbo;
+import lbp;
+import mum;
 
 class PtvTemplateManager$6
   implements Runnable
@@ -20,7 +20,7 @@ class PtvTemplateManager$6
     if (QLog.isColorLevel()) {
       QLog.i("PtvTemplateManager", 2, String.format("双人挂件加载 start, rebuildTemplateInfos, runnable[%s]", new Object[] { Integer.valueOf(hashCode()) }));
     }
-    Object localObject1 = lbx.b(106).a;
+    Object localObject1 = lbp.b(106).a;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {}
     for (;;)
     {
@@ -30,7 +30,7 @@ class PtvTemplateManager$6
         continue;
       }
       localObject1 = new ArrayList();
-      int i = mvd.b();
+      int i = mum.a();
       if (QLog.isColorLevel()) {
         QLog.d("PtvTemplateManager", 2, "cur version:" + i);
       }
@@ -79,7 +79,7 @@ class PtvTemplateManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.6
  * JD-Core Version:    0.7.0.1
  */

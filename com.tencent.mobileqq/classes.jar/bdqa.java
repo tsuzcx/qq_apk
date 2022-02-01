@@ -1,47 +1,13 @@
-import android.content.Context;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 public class bdqa
-  extends bdon
+  implements DialogInterface.OnClickListener
 {
-  public bdqa()
-  {
-    this(null);
-  }
+  public bdqa(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public bdqa(String paramString)
-  {
-    super(paramString, "tips");
-  }
-  
-  public TextView a(Context paramContext)
-  {
-    paramContext = super.a(paramContext);
-    paramContext.setBackgroundResource(2130844785);
-    paramContext.setPadding(20, 5, 20, 5);
-    paramContext.setGravity(17);
-    return paramContext;
-  }
-  
-  public String a()
-  {
-    return "tips";
-  }
-  
-  protected int c()
-  {
-    return 2131380137;
-  }
-  
-  public int e()
-  {
-    return -1;
-  }
-  
-  public int f()
-  {
-    return 28;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,1930 +1,632 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.lang.reflect.Array;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.DoubleBuffer;
-import java.nio.IntBuffer;
-import java.nio.ShortBuffer;
-import java.util.Random;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.commonsdk.util.HexUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.UUID;
+import msf.msgsvc.msg_ctrl.MsgCtrl;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.cs.group_file_common.group_file_common.FeedsInfo;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DeleteFileReqBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileReqBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.MoveFileReqBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.ReqBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.ResendReqBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileReqBody;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.CreateFolderReqBody;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.DeleteFolderReqBody;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RenameFolderReqBody;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.ReqBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileCountReqBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileInfoReqBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileListReqBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFilePreviewReqBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetSpaceReqBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.ReqBody;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.CopyToReqBody;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.FeedsReqBody;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.ReqBody;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.TransFileReqBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class zrj
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt;
-  private static final double[][] jdField_a_of_type_Array2dOfDouble;
-  private static final double[] jdField_b_of_type_ArrayOfDouble;
-  private static final int[] jdField_b_of_type_ArrayOfInt;
-  private static final int[] jdField_c_of_type_ArrayOfInt;
-  private double jdField_a_of_type_Double = 150.0D;
-  private int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long;
-  private ByteOrder jdField_a_of_type_JavaNioByteOrder = ByteOrder.LITTLE_ENDIAN;
-  private zrk jdField_a_of_type_Zrk = new zrk();
-  private double[] jdField_a_of_type_ArrayOfDouble;
-  private double jdField_b_of_type_Double = 200.0D;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private double[][] jdField_b_of_type_Array2dOfDouble;
-  private int jdField_c_of_type_Int;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
-  
-  static
+  public static beep a(QQAppInterface paramQQAppInterface, long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, boolean paramBoolean1, boolean paramBoolean2, zsa paramzsa)
   {
-    if (!zrj.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramLong == 0L) || (paramItem == null)) {
+      return null;
+    }
+    int i = aszt.a(FileUtil.getExtension(paramItem.FileName));
+    oidb_0x6d6.DownloadFileReqBody localDownloadFileReqBody = new oidb_0x6d6.DownloadFileReqBody();
+    localDownloadFileReqBody.uint32_bus_id.set(paramItem.BusId);
+    localDownloadFileReqBody.uint32_app_id.set(3);
+    localDownloadFileReqBody.uint64_group_code.set(paramLong);
+    localDownloadFileReqBody.str_file_id.set(paramItem.FilePath);
+    Object localObject = localDownloadFileReqBody.bool_thumbnail_req;
+    boolean bool;
+    if (paramInt != 0)
     {
-      jdField_a_of_type_Boolean = bool;
-      jdField_a_of_type_ArrayOfInt = new int[] { 0, 48000, 44100, 37800, 32000, 22050, 48000, 44100 };
-      jdField_b_of_type_ArrayOfInt = new int[] { 1, 16, 20, 16, 16, 15, 16, 15 };
-      jdField_c_of_type_ArrayOfInt = new int[] { 8, 18, 27, 8, 8, 8, 10, 9 };
-      jdField_a_of_type_Array2dOfDouble = new double[][] { { -1.0D }, { -2.87207293510437D, 5.041323184967041D, -6.244299411773682D, 5.848398685455322D, -3.706754207611084D, 1.049511909484863D, 1.183023691177368D, -2.112679243087769D, 1.90945315361023D, -0.9991308450698853D, 0.1709080636501312D, 0.3261560201644898D, -0.3912764489650726D, 0.2687646150588989D, -0.0976761057972908D, 0.02347384579479694D }, { -2.677319765090942D, 4.830892562866211D, -6.570110321044922D, 7.457201480865479D, -6.726327419281006D, 4.848165035247803D, -2.041208982467651D, -0.7006359100341797D, 2.95375657081604D, -4.080038547515869D, 4.184521675109863D, -3.331181287765503D, 2.117992639541626D, -0.879302978515625D, 0.03175914660096169D, 0.423827886581421D, -0.478821039199829D, 0.3549081385135651D, -0.1749683916568756D, 0.060908168554306D }, { -1.633599281311035D, 2.261549234390259D, -2.407702922821045D, 2.634171724319458D, -2.144036293029785D, 1.815325856208801D, -1.08162248134613D, 0.7030265331268311D, -0.1599199324846268D, -0.04154951870441437D, 0.2941657602787018D, -0.2518316805362701D, 0.2776647806167603D, -0.1578540354967117D, 0.1016589403152466D, -0.01683389209210873D }, { -0.8290129899978638D, 0.989226579666138D, -0.5982571244239807D, 1.002880930900574D, -0.5993821620941162D, 0.7950245141983032D, -0.4272331595420837D, 0.544925272464752D, -0.3079260587692261D, 0.3687179982662201D, -0.187920480966568D, 0.2261127084493637D, -0.1057334169745445D, 0.1143549084663391D, -0.038800679147244D, 0.0408421978354454D }, { -0.06522997468709946D, 0.5498126149177551D, 0.4027854800224304D, 0.3178376853466034D, 0.2820179760456085D, 0.1698519438505173D, 0.1543336361646652D, 0.1250714063644409D, 0.08903945237398148D, 0.06441012024879456D, 0.04714600369334221D, 0.03280523791909218D, 0.02849519439041615D, 0.01169500593096018D, 0.01183183863759041D }, { -2.392577409744263D, 3.435029745101929D, -3.185370922088623D, 1.811727166175842D, 0.2012477070093155D, -1.475990772247315D, 1.721090435981751D, -0.9774670004844666D, 0.1379013806581497D, 0.3818590342998505D, -0.2742124199867249D, -0.06658421456813812D, 0.3522330224514008D, -0.376723438501358D, 0.2396427690982819D, -0.06867482513189316D }, { -2.083391666412354D, 3.041845083236694D, -3.204789876937866D, 2.757192611694336D, -1.497863054275513D, 0.3427594602108002D, 0.7173374891281128D, -1.073705792427063D, 1.022581577301025D, -0.5664999485015869D, 0.2096869200468063D, 0.06537853181362152D, -0.1032243818044663D, 0.06744202226400375D, 0.00495197344571352D } };
-      jdField_b_of_type_ArrayOfDouble = new double[] { 0.7D, 0.9D, 0.18D };
-      return;
-    }
-  }
-  
-  public zrj() {}
-  
-  public zrj(InputStream paramInputStream, OutputStream paramOutputStream, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, double paramDouble, int paramInt7, boolean paramBoolean)
-  {
-    double[] arrayOfDouble = new double[1];
-    arrayOfDouble[0] = 0.0D;
-    if ((paramInt7 < 0) || (paramInt7 > 4)) {
-      throw new IllegalArgumentException("unrecognized dither type : " + paramInt7);
-    }
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    if (!this.jdField_b_of_type_Boolean) {
-      System.err.printf("Shibatch sampling rate converter version 1.30(high precision/nio)\n\n", new Object[0]);
-    }
-    if ((paramInt3 != 1) && (paramInt3 != 2) && (paramInt3 != 3) && (paramInt3 != 4)) {
-      throw new IllegalStateException("Error : Only 8bit, 16bit, 24bit and 32bit PCM are supported.");
-    }
-    int i;
-    if (paramInt4 == -1) {
-      if (paramInt3 != 1)
+      bool = true;
+      ((PBBoolField)localObject).set(bool);
+      localDownloadFileReqBody.bool_preview_req.set(paramBoolean1);
+      if (i == 2)
       {
-        i = paramInt3;
-        paramInt4 = i;
-        if (i == 4) {
-          paramInt4 = 3;
+        if (!paramBoolean2) {
+          break label250;
         }
+        localDownloadFileReqBody.uint32_src.set(1);
+        label127:
+        if (paramInt == 0) {
+          break label262;
+        }
+        localDownloadFileReqBody.bool_thumbnail_req.set(false);
+        localDownloadFileReqBody.bool_preview_req.set(true);
       }
     }
     for (;;)
     {
-      if (paramInt2 == -1) {}
-      for (int j = paramInt1;; j = paramInt2)
-      {
-        if (paramInt7 == -1) {
-          if (paramInt4 < paramInt3) {
-            if (paramInt4 == 1) {
-              paramInt2 = 4;
-            }
-          }
-        }
-        for (;;)
-        {
-          label213:
-          if (!this.jdField_b_of_type_Boolean)
-          {
-            System.err.printf("frequency : %d -> %d\n", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(j) });
-            System.err.printf("attenuation : %gdB\n", new Object[] { Double.valueOf(paramDouble) });
-            System.err.printf("bits per sample : %d -> %d\n", new Object[] { Integer.valueOf(paramInt3 * 8), Integer.valueOf(paramInt4 * 8) });
-            System.err.printf("nchannels : %d\n", new Object[] { Integer.valueOf(paramInt5) });
-            System.err.printf("length : %d bytes, %g secs\n", new Object[] { Integer.valueOf(paramInt6), Double.valueOf(paramInt6 / paramInt3 / paramInt5 / paramInt1) });
-            if (paramInt2 == 0)
-            {
-              System.err.printf("dither type : none\n", new Object[0]);
-              System.err.printf("\n", new Object[0]);
-            }
-          }
-          else
-          {
-            if (paramInt2 != 0)
-            {
-              i = 0;
-              paramInt7 = 0;
-              if (paramInt4 == 1)
-              {
-                i = -128;
-                paramInt7 = 127;
-              }
-              if (paramInt4 == 2)
-              {
-                i = -32768;
-                paramInt7 = 32767;
-              }
-              if (paramInt4 == 3)
-              {
-                i = -8388608;
-                paramInt7 = 8388607;
-              }
-              if (paramInt4 == 4)
-              {
-                i = -2147483648;
-                paramInt7 = 2147483647;
-              }
-              a(j, paramInt5, i, paramInt7, paramInt2, 0, 0.18D);
-            }
-            if (paramInt1 >= j) {
-              break label736;
-            }
-            arrayOfDouble[0] = a(paramInputStream, paramOutputStream, paramInt5, paramInt3, paramInt4, paramInt1, j, Math.pow(10.0D, -paramDouble / 20.0D), paramInt6 / paramInt3 / paramInt5, false, paramInt2);
-          }
-          for (;;)
-          {
-            label390:
-            if (!this.jdField_b_of_type_Boolean) {
-              System.err.printf("\n", new Object[0]);
-            }
-            if (paramInt2 != 0) {
-              a(paramInt5);
-            }
-            if ((arrayOfDouble[0] > 1.0D) && (!this.jdField_b_of_type_Boolean)) {
-              System.err.printf("clipping detected : %gdB\n", new Object[] { Double.valueOf(20.0D * Math.log10(arrayOfDouble[0])) });
-            }
-            return;
-            i = 2;
-            break;
-            paramInt2 = 3;
-            break label213;
-            paramInt2 = 1;
-            break label213;
-            System.err.printf("dither type : %s, %s p.d.f, amp = %g\n", new Object[] { new String[] { "none", "no noise shaping", "triangular spectral shape", "ATH based noise shaping", "ATH based noise shaping(less amplitude)" }[paramInt2], new String[] { "rectangular", "triangular", "gaussian" }[0], Double.valueOf(0.18D) });
-            break label390;
-            label736:
-            if (paramInt1 > j) {
-              arrayOfDouble[0] = b(paramInputStream, paramOutputStream, paramInt5, paramInt3, paramInt4, paramInt1, j, Math.pow(10.0D, -paramDouble / 20.0D), paramInt6 / paramInt3 / paramInt5, false, paramInt2);
-            } else {
-              arrayOfDouble[0] = a(paramInputStream, paramOutputStream, paramInt5, paramInt3, paramInt4, Math.pow(10.0D, -paramDouble / 20.0D), paramInt6 / paramInt3 / paramInt5, false, paramInt2);
-            }
-          }
-          paramInt2 = paramInt7;
-        }
-      }
+      localDownloadFileReqBody.uint32_url_type.set(0);
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("itemKey", paramItem.Id.toString());
+      ((Bundle)localObject).putLong("troopUin", paramLong);
+      ((Bundle)localObject).putInt("thumbNail", paramInt);
+      ((Bundle)localObject).putBoolean("isPreview", paramBoolean1);
+      paramItem = new oidb_0x6d6.ReqBody();
+      paramItem.download_file_req.set(localDownloadFileReqBody);
+      return a(paramQQAppInterface, paramzsa, paramItem.toByteArray(), "OidbSvc.0x6d6_2", 1750, 2, (Bundle)localObject);
+      bool = false;
+      break;
+      label250:
+      localDownloadFileReqBody.uint32_src.set(0);
+      break label127;
+      label262:
+      localDownloadFileReqBody.bool_thumbnail_req.set(false);
+      localDownloadFileReqBody.bool_preview_req.set(false);
     }
   }
   
-  private double a(double paramDouble)
+  public static beep a(QQAppInterface paramQQAppInterface, long paramLong, TroopFileTransferManager.Item paramItem, zsc paramzsc)
   {
-    if (paramDouble <= 21.0D) {
-      return 0.0D;
+    if ((paramLong == 0L) || (paramItem == null)) {
+      return null;
     }
-    if (paramDouble <= 50.0D) {
-      return 0.5842000000000001D * Math.pow(paramDouble - 21.0D, 0.4D) + 0.07886D * (paramDouble - 21.0D);
+    Object localObject = new oidb_0x6d6.ResendReqBody();
+    ((oidb_0x6d6.ResendReqBody)localObject).uint32_bus_id.set(paramItem.BusId);
+    ((oidb_0x6d6.ResendReqBody)localObject).uint32_app_id.set(3);
+    ((oidb_0x6d6.ResendReqBody)localObject).uint64_group_code.set(paramLong);
+    ((oidb_0x6d6.ResendReqBody)localObject).str_file_id.set(paramItem.FilePath);
+    ((oidb_0x6d6.ResendReqBody)localObject).bytes_sha.set(ByteStringMicro.copyFrom(paramItem.Sha));
+    oidb_0x6d6.ReqBody localReqBody = new oidb_0x6d6.ReqBody();
+    localReqBody.resend_file_req.set((MessageMicro)localObject);
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("itemKey", paramItem.Id.toString());
+    ((Bundle)localObject).putLong("troopUin", paramLong);
+    return a(paramQQAppInterface, paramzsc, localReqBody.toByteArray(), "OidbSvc.0x6d6_1", 1750, 1, (Bundle)localObject);
+  }
+  
+  public static beep a(QQAppInterface paramQQAppInterface, long paramLong, TroopFileTransferManager.Item paramItem, zse paramzse)
+  {
+    if ((paramLong == 0L) || (paramItem == null)) {
+      return null;
     }
-    return 0.1102D * (paramDouble - 8.699999999999999D);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("itemKey", paramItem.Id.toString());
+    localBundle.putLong("troopUin", paramLong);
+    localBundle.putBoolean("bExtfTransfer", paramItem.bExtfTransfer);
+    return a(paramQQAppInterface, paramLong, paramItem.FileName, paramItem.LocalFile, paramItem.ProgressTotal, paramItem.isFromAIO, paramItem.Md5, paramItem.Sha, paramItem.Sha3, paramItem.BusId, paramItem.mParentId, localBundle, paramzse);
   }
   
-  private double a(double paramDouble1, int paramInt, double paramDouble2, double paramDouble3)
+  public static beep a(QQAppInterface paramQQAppInterface, long paramLong, String paramString, int paramInt, zru paramzru)
   {
-    return zri.a(Math.sqrt(1.0D - 4.0D * paramDouble1 * paramDouble1 / ((paramInt - 1.0D) * (paramInt - 1.0D))) * paramDouble2) / paramDouble3;
-  }
-  
-  private double a(int paramInt, double paramDouble1, double paramDouble2)
-  {
-    paramDouble2 = 1.0D / paramDouble2;
-    return b(paramDouble2 * (6.283185307179586D * paramDouble1 * paramInt)) * (2.0D * paramDouble1 * paramDouble2);
-  }
-  
-  private int a(double paramDouble)
-  {
-    if (paramDouble >= 0.0D) {
-      return (int)(paramDouble + 0.5D);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("TroopFileProtocol", 4, "getFilePreviewList" + paramLong + ",filePath:" + paramString + ",busId:" + paramInt);
     }
-    return (int)(paramDouble - 0.5D);
+    oidb_0x6d8.GetFilePreviewReqBody localGetFilePreviewReqBody = new oidb_0x6d8.GetFilePreviewReqBody();
+    localGetFilePreviewReqBody.uint64_group_code.set(paramLong);
+    localGetFilePreviewReqBody.uint32_app_id.set(3);
+    localGetFilePreviewReqBody.uint32_bus_id.set(paramInt);
+    localGetFilePreviewReqBody.str_file_id.set(paramString);
+    paramString = new oidb_0x6d8.ReqBody();
+    paramString.file_preview_req.set(localGetFilePreviewReqBody);
+    return a(paramQQAppInterface, paramzru, paramString.toByteArray(), "OidbSvc.0x6d8_4", 1752, 4, null);
   }
   
-  private int a(int paramInt1, int paramInt2)
+  public static beep a(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, boolean paramBoolean, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String paramString3, int paramInt, String paramString4, Bundle paramBundle, zse paramzse)
   {
-    int i;
-    for (;;)
+    oidb_0x6d6.UploadFileReqBody localUploadFileReqBody = new oidb_0x6d6.UploadFileReqBody();
+    localUploadFileReqBody.uint32_bus_id.set(paramInt);
+    localUploadFileReqBody.uint32_app_id.set(3);
+    localUploadFileReqBody.uint64_group_code.set(paramLong1);
+    localUploadFileReqBody.bytes_md5.set(ByteStringMicro.copyFrom(paramArrayOfByte1));
+    localUploadFileReqBody.bytes_sha.set(ByteStringMicro.copyFrom(paramArrayOfByte2));
+    if (paramString3 != null)
     {
-      i = paramInt1;
-      if (paramInt2 == 0) {
-        break;
-      }
-      paramInt1 = paramInt2;
-      paramInt2 = i % paramInt2;
+      paramArrayOfByte1 = HexUtil.hexStr2Bytes(paramString3);
+      localUploadFileReqBody.bytes_sha3.set(ByteStringMicro.copyFrom(paramArrayOfByte1));
     }
-    return i;
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_b_of_type_Long = 0L;
-    this.g = -1;
-  }
-  
-  private void a(double paramDouble)
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    if (paramDouble == 0.0D) {}
-    for (int i = 0;; i = (int)(l * (1.0D - paramDouble) / paramDouble))
+    if (TextUtils.isEmpty(paramString4))
     {
-      int j = (int)(100.0D * paramDouble);
-      if ((j != this.g) || (l != this.jdField_b_of_type_Long))
-      {
-        System.err.printf(" %3d%% processed", new Object[] { Integer.valueOf(j) });
-        this.g = j;
+      localUploadFileReqBody.str_parent_folder_id.set("/");
+      localUploadFileReqBody.str_file_name.set(paramString1);
+      localUploadFileReqBody.str_local_path.set(paramString2);
+      paramString1 = localUploadFileReqBody.uint32_entrance;
+      if (!paramBoolean) {
+        break label238;
       }
-      if (l != this.jdField_b_of_type_Long)
-      {
-        System.err.printf(", ETA =%4dmsec", new Object[] { Integer.valueOf(i) });
-        this.jdField_b_of_type_Long = l;
-      }
-      System.err.printf("\r", new Object[0]);
-      System.err.flush();
-      return;
     }
-  }
-  
-  private void a(int paramInt) {}
-  
-  private double b(double paramDouble)
-  {
-    if (paramDouble == 0.0D) {
-      return 1.0D;
-    }
-    return Math.sin(paramDouble) / paramDouble;
-  }
-  
-  public double a(InputStream paramInputStream, OutputStream paramOutputStream, int paramInt1, int paramInt2, int paramInt3, double paramDouble, int paramInt4, boolean paramBoolean, int paramInt5)
-  {
-    double[] arrayOfDouble = new double[1];
-    arrayOfDouble[0] = 0.0D;
-    int i = 0;
-    a();
-    ByteBuffer localByteBuffer = null;
-    if (paramBoolean) {
-      localByteBuffer = ByteBuffer.allocate(8);
-    }
-    Object localObject = ByteBuffer.allocate(4);
-    int j = 0;
-    double d2;
-    for (;;)
+    label238:
+    for (paramInt = 5;; paramInt = 4)
     {
-      if (j < paramInt4 * paramInt1)
-      {
-        d1 = 0.0D;
-        switch (paramInt2)
-        {
-        }
+      paramString1.set(paramInt);
+      localUploadFileReqBody.uint64_file_size.set(paramLong2);
+      paramBoolean = false;
+      if (paramBundle != null) {
+        paramBoolean = paramBundle.getBoolean("bExtfTransfer", false);
       }
-      while (paramInputStream.available() == 0)
-      {
-        a(1.0D);
-        return arrayOfDouble[0];
-        ((ByteBuffer)localObject).position(0);
-        ((ByteBuffer)localObject).limit(1);
-        localObject = new byte[((ByteBuffer)localObject).limit()];
-        paramInputStream.read((byte[])localObject);
-        localObject = ByteBuffer.wrap((byte[])localObject);
-        ((ByteBuffer)localObject).position(((ByteBuffer)localObject).limit());
-        ((ByteBuffer)localObject).flip();
-        d1 = 0.0078740157480315D * (((ByteBuffer)localObject).get(0) - 128);
-        continue;
-        ((ByteBuffer)localObject).position(0);
-        ((ByteBuffer)localObject).limit(2);
-        localObject = new byte[((ByteBuffer)localObject).limit()];
-        paramInputStream.read((byte[])localObject);
-        localObject = ByteBuffer.wrap((byte[])localObject);
-        ((ByteBuffer)localObject).position(((ByteBuffer)localObject).limit());
-        ((ByteBuffer)localObject).flip();
-        d1 = ((ByteBuffer)localObject).order(this.jdField_a_of_type_JavaNioByteOrder).asShortBuffer().get(0) * 3.051850947599719E-005D;
-        continue;
-        ((ByteBuffer)localObject).position(0);
-        ((ByteBuffer)localObject).limit(3);
-        localObject = new byte[((ByteBuffer)localObject).limit()];
-        paramInputStream.read((byte[])localObject);
-        localObject = ByteBuffer.wrap((byte[])localObject);
-        ((ByteBuffer)localObject).position(((ByteBuffer)localObject).limit());
-        ((ByteBuffer)localObject).flip();
-        d1 = 1.192093037616377E-007D * ((((ByteBuffer)localObject).get(0) & 0xFF) << 0 | (((ByteBuffer)localObject).get(1) & 0xFF) << 8 | (((ByteBuffer)localObject).get(2) & 0xFF) << 16);
-        continue;
-        ((ByteBuffer)localObject).position(0);
-        ((ByteBuffer)localObject).limit(4);
-        localObject = new byte[((ByteBuffer)localObject).limit()];
-        paramInputStream.read((byte[])localObject);
-        localObject = ByteBuffer.wrap((byte[])localObject);
-        ((ByteBuffer)localObject).position(((ByteBuffer)localObject).limit());
-        ((ByteBuffer)localObject).flip();
-        d1 = ((ByteBuffer)localObject).order(this.jdField_a_of_type_JavaNioByteOrder).asIntBuffer().get(0) * 4.656612875245797E-010D;
-      }
-      d2 = d1 * paramDouble;
       if (paramBoolean) {
-        break;
+        localUploadFileReqBody.bool_support_multi_upload.set(true);
       }
-      switch (paramInt3)
-      {
-      default: 
-        k = i + 1;
-        i = k;
-        if (k == paramInt1) {
-          i = 0;
-        }
-        j += 1;
-        if ((0x3FFFF & j) == 0) {
-          a(j / (paramInt4 * paramInt1));
-        }
-        break;
-      }
-    }
-    double d1 = 127.0D * d2;
-    if (paramInt5 != 0) {}
-    for (int k = a(d1, arrayOfDouble, paramInt5, i);; k = a(d1))
-    {
-      ((ByteBuffer)localObject).position(0);
-      ((ByteBuffer)localObject).limit(1);
-      ((ByteBuffer)localObject).put(0, (byte)(k + 128));
-      ((ByteBuffer)localObject).flip();
-      a(paramOutputStream, (ByteBuffer)localObject);
+      paramString1 = new oidb_0x6d6.ReqBody();
+      paramString1.upload_file_req.set(localUploadFileReqBody);
+      return a(paramQQAppInterface, paramzse, paramString1.toByteArray(), "OidbSvc.0x6d6_0", 1750, 0, paramBundle);
+      localUploadFileReqBody.str_parent_folder_id.set(paramString4);
       break;
-    }
-    d1 = 32767.0D * d2;
-    if (paramInt5 != 0) {}
-    for (k = a(d1, arrayOfDouble, paramInt5, i);; k = a(d1))
-    {
-      ((ByteBuffer)localObject).position(0);
-      ((ByteBuffer)localObject).limit(2);
-      ((ByteBuffer)localObject).asShortBuffer().put(0, (short)k);
-      ((ByteBuffer)localObject).flip();
-      a(paramOutputStream, (ByteBuffer)localObject);
-      break;
-    }
-    d1 = 8388607.0D * d2;
-    if (paramInt5 != 0) {}
-    for (k = a(d1, arrayOfDouble, paramInt5, i);; k = a(d1))
-    {
-      ((ByteBuffer)localObject).position(0);
-      ((ByteBuffer)localObject).limit(3);
-      ((ByteBuffer)localObject).put(0, (byte)(k & 0xFF));
-      k >>= 8;
-      ((ByteBuffer)localObject).put(1, (byte)(k & 0xFF));
-      ((ByteBuffer)localObject).put(2, (byte)(k >> 8 & 0xFF));
-      ((ByteBuffer)localObject).flip();
-      a(paramOutputStream, (ByteBuffer)localObject);
-      break;
-    }
-    if (d2 > 0.0D)
-    {
-      d1 = d2;
-      label824:
-      if (arrayOfDouble[0] >= d1) {
-        break label879;
-      }
-    }
-    for (;;)
-    {
-      arrayOfDouble[0] = d1;
-      localByteBuffer.position(0);
-      localByteBuffer.putDouble(d2);
-      localByteBuffer.flip();
-      a(paramOutputStream, localByteBuffer);
-      break;
-      d1 = -d2;
-      break label824;
-      label879:
-      d1 = arrayOfDouble[0];
     }
   }
   
-  public double a(InputStream paramInputStream, OutputStream paramOutputStream, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, double paramDouble, int paramInt6, boolean paramBoolean, int paramInt7)
+  public static beep a(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt, String paramString3, Bundle paramBundle, zse paramzse)
   {
-    double[] arrayOfDouble1 = new double[1];
-    arrayOfDouble1[0] = 0.0D;
-    int i5 = 0;
-    int i1 = this.jdField_a_of_type_Int;
-    double d4 = this.jdField_a_of_type_Double;
-    int i13 = a(paramInt4, paramInt5);
-    int i14 = paramInt4 / i13 * paramInt5;
-    int n;
-    double d5;
-    double d3;
-    if (i14 / paramInt5 == 1)
-    {
-      n = 1;
-      d5 = (paramInt5 * n / 2 - paramInt4 / 2) * 2 / 2.0D;
-      d2 = paramInt4 / 2;
-      d3 = (paramInt5 * n / 2 - paramInt4 / 2) / 2.0D;
-      if (d4 > 21.0D) {
-        break label360;
-      }
+    if (paramLong1 == 0L) {
+      return null;
     }
-    int i15;
-    int i16;
-    int[] arrayOfInt1;
-    label360:
-    for (double d1 = 0.9222D;; d1 = (d4 - 7.95D) / 14.359999999999999D)
-    {
-      i = (int)(d1 * (i14 / d5) + 1.0D);
-      j = i;
-      if (i % 2 == 0) {
-        j = i + 1;
-      }
-      d1 = a(d4);
-      d4 = zri.a(d1);
-      i15 = i14 / paramInt4;
-      i16 = j / i15 + 1;
-      arrayOfInt1 = new int[i15 * n];
-      i = 0;
-      while (i < i15 * n)
-      {
-        arrayOfInt1[i] = (i14 / paramInt4 - i14 / (paramInt5 * n) * i % (i14 / paramInt4));
-        if (arrayOfInt1[i] == i14 / paramInt4) {
-          arrayOfInt1[i] = 0;
-        }
-        i += 1;
-      }
-      if (i14 / paramInt5 % 2 == 0)
-      {
-        n = 2;
-        break;
-      }
-      if (i14 / paramInt5 % 3 == 0)
-      {
-        n = 3;
-        break;
-      }
-      throw new IllegalArgumentException(String.format("Resampling from %dHz to %dHz is not supported.\n%d/gcd(%d,%d)=%d must be divided by 2 or 3.\n", new Object[] { Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt4), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(i14 / paramInt5) }));
-    }
-    int[] arrayOfInt2 = new int[i15 * n];
-    int i = 0;
-    if (i < i15 * n)
-    {
-      if (arrayOfInt1[i] < i14 / (paramInt5 * n)) {}
-      for (k = paramInt1;; k = 0)
-      {
-        arrayOfInt2[i] = k;
-        if (arrayOfInt1[i] == i14 / paramInt4) {
-          arrayOfInt1[i] = 0;
-        }
-        i += 1;
-        break;
-      }
-    }
-    double[][] arrayOfDouble2 = (double[][])Array.newInstance(Double.TYPE, new int[] { i15, i16 });
-    i = -(j / 2);
-    while (i <= j / 2)
-    {
-      arrayOfDouble2[((j / 2 + i) % i15)][((j / 2 + i) / i15)] = (a(i, j, d1, d4) * a(i, d2 + d3, i14) * i14 / paramInt4);
-      i += 1;
-    }
-    double d2 = this.jdField_a_of_type_Double;
-    if (d2 <= 21.0D)
-    {
-      d1 = 0.9222D;
-      i2 = paramInt5 * n;
-      i = 1;
-    }
-    for (;;)
-    {
-      m = i1 * i;
-      k = m;
-      if (m % 2 == 0) {
-        k = m - 1;
-      }
-      d4 = i2 * d1 / (k - 1);
-      d3 = paramInt4 / 2;
-      if (d4 < this.jdField_b_of_type_Double)
-      {
-        d1 = a(d2);
-        d2 = zri.a(d1);
-        i = 1;
-        while (i < k) {
-          i *= 2;
-        }
-        d1 = (d2 - 7.95D) / 14.359999999999999D;
-        break;
-      }
-      i *= 2;
-    }
-    int i17 = i * 2;
-    double[] arrayOfDouble3 = new double[i17];
-    i = -(k / 2);
-    while (i <= k / 2)
-    {
-      arrayOfDouble3[(k / 2 + i)] = (a(i, k, d1, d2) * a(i, d3, i2) / i17 * 2.0D);
-      i += 1;
-    }
-    int[] arrayOfInt3 = new int[(int)(2.0D + Math.sqrt(i17))];
-    arrayOfInt3[0] = 0;
-    double[] arrayOfDouble4 = new double[i17 / 2];
-    this.jdField_a_of_type_Zrk.a(i17, 1, arrayOfDouble3, arrayOfInt3, arrayOfDouble4);
-    a();
-    int i11 = i17 / 2;
-    int m = i11 / n;
-    double[][] arrayOfDouble5 = (double[][])Array.newInstance(Double.TYPE, new int[] { paramInt1, m + 1 });
-    double[][] arrayOfDouble6 = (double[][])Array.newInstance(Double.TYPE, new int[] { paramInt1, i17 });
-    ByteBuffer localByteBuffer1 = ByteBuffer.allocate((i11 + i16 + 2) * paramInt1 * paramInt2);
-    ByteBuffer localByteBuffer2 = ByteBuffer.allocate((i11 / n + 1) * paramInt1 * paramInt3);
-    double[] arrayOfDouble7 = new double[(i11 + i16 + 2) * paramInt1];
-    double[] arrayOfDouble8 = new double[(i11 / n + 1) * paramInt1];
-    m = j / 2 / (i14 / paramInt4);
-    int j = (int)(k / 2.0D / (i2 / paramInt5));
-    int i4 = 0;
-    i1 = 1;
-    int i7 = m + 1;
-    int i2 = 0;
-    m = 0;
-    int k = 0;
-    int i8 = 0;
-    int i3 = 0;
-    int i6 = paramInt6;
-    paramInt6 = i;
-    i = i1;
-    i1 = i3;
-    int i9 = (int)(Math.ceil(i11 * paramInt4 / (paramInt5 * n)) + 1.0D + i16 - i7);
-    if (i9 + i4 > i6) {}
-    label2181:
-    label3846:
-    for (i3 = i6 - i4;; i3 = i9)
-    {
-      localByteBuffer1.position(0);
-      localByteBuffer1.limit(i3 * (paramInt2 * paramInt1));
-      byte[] arrayOfByte = new byte[localByteBuffer1.limit()];
-      int i10 = paramInputStream.read(arrayOfByte);
-      i3 = i10;
-      if (i10 < 0) {
-        i3 = 0;
-      }
-      if (i3 < localByteBuffer1.limit()) {
-        i6 = i4 + i3 / paramInt2 * paramInt1;
-      }
-      localByteBuffer1.limit(i3);
-      localByteBuffer1 = ByteBuffer.wrap(arrayOfByte);
-      localByteBuffer1.position(i3);
-      localByteBuffer1.flip();
-      i10 = i3 / (paramInt2 * paramInt1);
-      switch (paramInt2)
-      {
-      }
-      while (paramInt6 < paramInt1 * i9)
-      {
-        arrayOfDouble7[(paramInt1 * i7 + paramInt6)] = 0.0D;
-        paramInt6 += 1;
-        continue;
-        i3 = 0;
-        for (;;)
-        {
-          paramInt6 = i3;
-          if (i3 >= i10 * paramInt1) {
-            break;
-          }
-          arrayOfDouble7[(paramInt1 * i7 + i3)] = (0.0078740157480315D * (localByteBuffer1.get(i3) - 128.0D));
-          i3 += 1;
-        }
-        i3 = 0;
-        for (;;)
-        {
-          paramInt6 = i3;
-          if (i3 >= i10 * paramInt1) {
-            break;
-          }
-          arrayOfDouble7[(paramInt1 * i7 + i3)] = (3.051850947599719E-005D * localByteBuffer1.order(this.jdField_a_of_type_JavaNioByteOrder).asShortBuffer().get(i3));
-          i3 += 1;
-        }
-        i3 = 0;
-        for (;;)
-        {
-          paramInt6 = i3;
-          if (i3 >= i10 * paramInt1) {
-            break;
-          }
-          arrayOfDouble7[(paramInt1 * i7 + i3)] = (1.192093037616377E-007D * (localByteBuffer1.get(i3 * 3) << 0 | localByteBuffer1.get(i3 * 3 + 1) << 8 | localByteBuffer1.get(i3 * 3 + 2) << 16));
-          i3 += 1;
-        }
-        i3 = 0;
-        for (;;)
-        {
-          paramInt6 = i3;
-          if (i3 >= i10 * paramInt1) {
-            break;
-          }
-          arrayOfDouble7[(paramInt1 * i7 + i3)] = (4.656612875245797E-010D * localByteBuffer1.order(this.jdField_a_of_type_JavaNioByteOrder).asIntBuffer().get(i3));
-          i3 += 1;
-        }
-      }
-      int i18 = i7 + i9;
-      int i12 = i10 + i4;
-      int i19;
-      if (i12 >= i6)
-      {
-        i7 = 1;
-        i19 = ((i8 - 1) * paramInt4 + i14) / i14;
-        i9 = 0;
-        i4 = k;
-        i3 = m;
-      }
-      for (;;)
-      {
-        if (i9 >= paramInt1) {
-          break label2586;
-        }
-        int i20 = i15 * n;
-        i3 = i19 * paramInt1 + i9;
-        switch (i16)
-        {
-        case 8: 
-        default: 
-          i4 = 0;
-          i2 = k;
-        }
-        for (;;)
-        {
-          paramInt6 = i2;
-          if (i4 >= i11) {
-            break label2181;
-          }
-          d1 = 0.0D;
-          int i21 = arrayOfInt1[i2];
-          paramInt6 = 0;
-          i10 = i3;
-          for (;;)
-          {
-            if (paramInt6 < i16)
-            {
-              d1 += arrayOfDouble2[i21][paramInt6] * arrayOfDouble7[i10];
-              i10 += paramInt1;
-              paramInt6 += 1;
-              continue;
-              i7 = 0;
-              break;
-              paramInt6 = 0;
-              i2 = k;
-              i4 = i3;
-              i3 = paramInt6;
-              for (;;)
-              {
-                paramInt6 = i2;
-                if (i3 >= i11) {
-                  break;
-                }
-                paramInt6 = arrayOfInt1[i2];
-                arrayOfDouble6[i9][i3] = (arrayOfDouble2[paramInt6][0] * arrayOfDouble7[(paramInt1 * 0 + i4)] + arrayOfDouble2[paramInt6][1] * arrayOfDouble7[(paramInt1 * 1 + i4)] + arrayOfDouble2[paramInt6][2] * arrayOfDouble7[(paramInt1 * 2 + i4)] + arrayOfDouble2[paramInt6][3] * arrayOfDouble7[(paramInt1 * 3 + i4)] + arrayOfDouble2[paramInt6][4] * arrayOfDouble7[(paramInt1 * 4 + i4)] + arrayOfDouble2[paramInt6][5] * arrayOfDouble7[(paramInt1 * 5 + i4)] + arrayOfDouble2[paramInt6][6] * arrayOfDouble7[(paramInt1 * 6 + i4)]);
-                i4 += arrayOfInt2[i2];
-                paramInt6 = i2 + 1;
-                i2 = paramInt6;
-                if (paramInt6 == i20) {
-                  i2 = 0;
-                }
-                i3 += 1;
-              }
-              paramInt6 = 0;
-              i2 = k;
-              i4 = i3;
-              i3 = paramInt6;
-              for (;;)
-              {
-                paramInt6 = i2;
-                if (i3 >= i11) {
-                  break;
-                }
-                paramInt6 = arrayOfInt1[i2];
-                arrayOfDouble6[i9][i3] = (arrayOfDouble2[paramInt6][0] * arrayOfDouble7[(paramInt1 * 0 + i4)] + arrayOfDouble2[paramInt6][1] * arrayOfDouble7[(paramInt1 * 1 + i4)] + arrayOfDouble2[paramInt6][2] * arrayOfDouble7[(paramInt1 * 2 + i4)] + arrayOfDouble2[paramInt6][3] * arrayOfDouble7[(paramInt1 * 3 + i4)] + arrayOfDouble2[paramInt6][4] * arrayOfDouble7[(paramInt1 * 4 + i4)] + arrayOfDouble2[paramInt6][5] * arrayOfDouble7[(paramInt1 * 5 + i4)] + arrayOfDouble2[paramInt6][6] * arrayOfDouble7[(paramInt1 * 6 + i4)] + arrayOfDouble2[paramInt6][7] * arrayOfDouble7[(paramInt1 * 7 + i4)] + arrayOfDouble2[paramInt6][8] * arrayOfDouble7[(paramInt1 * 8 + i4)]);
-                i4 += arrayOfInt2[i2];
-                paramInt6 = i2 + 1;
-                i2 = paramInt6;
-                if (paramInt6 == i20) {
-                  i2 = 0;
-                }
-                i3 += 1;
-              }
-            }
-          }
-          arrayOfDouble6[i9][i4] = d1;
-          i3 += arrayOfInt2[i2];
-          paramInt6 = i2 + 1;
-          i2 = paramInt6;
-          if (paramInt6 == i20) {
-            i2 = 0;
-          }
-          i4 += 1;
-        }
-        i2 = i11;
-        while (i2 < i17)
-        {
-          arrayOfDouble6[i9][i2] = 0L;
-          i2 += 1;
-        }
-        this.jdField_a_of_type_Zrk.a(i17, 1, arrayOfDouble6[i9], arrayOfInt3, arrayOfDouble4);
-        arrayOfDouble6[i9][0] = (arrayOfDouble3[0] * arrayOfDouble6[i9][0]);
-        arrayOfDouble6[i9][1] = (arrayOfDouble3[1] * arrayOfDouble6[i9][1]);
-        i2 = 1;
-        while (i2 < i17 / 2)
-        {
-          d1 = arrayOfDouble3[(i2 * 2)];
-          d2 = arrayOfDouble6[i9][(i2 * 2)];
-          d3 = arrayOfDouble3[(i2 * 2 + 1)];
-          d4 = arrayOfDouble6[i9][(i2 * 2 + 1)];
-          d5 = arrayOfDouble3[(i2 * 2 + 1)];
-          double d6 = arrayOfDouble6[i9][(i2 * 2)];
-          double d7 = arrayOfDouble3[(i2 * 2)];
-          double d8 = arrayOfDouble6[i9][(i2 * 2 + 1)];
-          arrayOfDouble6[i9][(i2 * 2)] = (d1 * d2 - d3 * d4);
-          arrayOfDouble6[i9][(i2 * 2 + 1)] = (d5 * d6 + d7 * d8);
-          i2 += 1;
-        }
-        this.jdField_a_of_type_Zrk.a(i17, -1, arrayOfDouble6[i9], arrayOfInt3, arrayOfDouble4);
-        i3 = 0;
-        i2 = m;
-        while (i2 < i11)
-        {
-          arrayOfDouble8[(i3 * paramInt1 + i9)] = (arrayOfDouble5[i9][i3] + arrayOfDouble6[i9][i2]);
-          i2 += n;
-          i3 += 1;
-        }
-        i10 = 0;
-        i4 = i2;
-        while (i4 < i17)
-        {
-          arrayOfDouble5[i9][i10] = arrayOfDouble6[i9][i4];
-          i4 += n;
-          i10 += 1;
-        }
-        i10 = i9 + 1;
-        i9 = i3;
-        i3 = i2 - i11;
-        i2 = paramInt6;
-        paramInt6 = i4;
-        i4 = i2;
-        i2 = i9;
-        i9 = i10;
-      }
-      label2586:
-      i10 = i8 + paramInt4 / i13 * i11 / n;
-      localByteBuffer2.clear();
-      if (paramBoolean)
-      {
-        k = 0;
-        paramInt6 = k;
-        if (k < i2 * paramInt1)
-        {
-          if (arrayOfDouble8[k] > 0.0D)
-          {
-            d1 = arrayOfDouble8[k];
-            label2646:
-            if (arrayOfDouble1[0] >= d1) {
-              break label2698;
-            }
-          }
-          for (;;)
-          {
-            arrayOfDouble1[0] = d1;
-            localByteBuffer2.asDoubleBuffer().put(k, arrayOfDouble8[k]);
-            k += 1;
-            break;
-            d1 = -arrayOfDouble8[k];
-            break label2646;
-            label2698:
-            d1 = arrayOfDouble1[0];
-          }
-        }
-      }
-      else
-      {
-        switch (paramInt3)
-        {
-        }
-      }
-      label3213:
-      label3480:
-      label4012:
-      for (;;)
-      {
-        if (i == 0) {
-          if (i7 != 0) {
-            if (i12 * paramInt5 / paramInt4 + 2.0D > i1 + i2)
-            {
-              localByteBuffer2.position(0);
-              localByteBuffer2.limit(paramInt3 * paramInt1 * i2);
-              a(paramOutputStream, localByteBuffer2);
-              i1 += i2;
-              m = j;
-              k = i;
-              j = i1;
-              i = m;
-            }
-          }
-        }
-        for (;;)
-        {
-          m = (i10 - 1) / (i14 / paramInt4);
-          if ((jdField_a_of_type_Boolean) || (i18 >= m)) {
-            break label3907;
-          }
-          throw new AssertionError();
-          d2 = paramDouble * 127.0D;
-          i8 = 0;
-          paramInt6 = 0;
-          if (paramInt6 < i2 * paramInt1)
-          {
-            if (paramInt7 != 0) {
-              m = a(arrayOfDouble8[paramInt6] * d2, arrayOfDouble1, paramInt7, i8);
-            }
-            label2993:
-            do
-            {
-              localByteBuffer2.put(paramInt6, (byte)(m + 128));
-              m = i8 + 1;
-              k = m;
-              if (m == paramInt1) {
-                k = 0;
-              }
-              paramInt6 += 1;
-              i8 = k;
-              break;
-              m = a(arrayOfDouble8[paramInt6] * d2);
-              k = m;
-              if (m < -128)
-              {
-                d1 = m / -128.0D;
-                if (arrayOfDouble1[0] >= d1) {
-                  break label3046;
-                }
-                arrayOfDouble1[0] = d1;
-                k = -128;
-              }
-              m = k;
-            } while (127 >= k);
-            d1 = k / 127.0D;
-            if (arrayOfDouble1[0] < d1) {}
-            for (;;)
-            {
-              arrayOfDouble1[0] = d1;
-              m = 127;
-              break;
-              label3046:
-              d1 = arrayOfDouble1[0];
-              break label2993;
-              d1 = arrayOfDouble1[0];
-            }
-          }
-          break;
-          d2 = paramDouble * 32767.0D;
-          i8 = 0;
-          paramInt6 = 0;
-          if (paramInt6 < i2 * paramInt1)
-          {
-            if (paramInt7 != 0) {
-              m = a(arrayOfDouble8[paramInt6] * d2, arrayOfDouble1, paramInt7, i8);
-            }
-            do
-            {
-              localByteBuffer2.order(this.jdField_a_of_type_JavaNioByteOrder).asShortBuffer().put(paramInt6, (short)m);
-              m = i8 + 1;
-              k = m;
-              if (m == paramInt1) {
-                k = 0;
-              }
-              paramInt6 += 1;
-              i8 = k;
-              break;
-              m = a(arrayOfDouble8[paramInt6] * d2);
-              k = m;
-              if (m < -32768)
-              {
-                d1 = m / -32768.0D;
-                if (arrayOfDouble1[0] >= d1) {
-                  break label3269;
-                }
-                arrayOfDouble1[0] = d1;
-                k = -32768;
-              }
-              m = k;
-            } while (32767 >= k);
-            d1 = k / 32767.0D;
-            if (arrayOfDouble1[0] < d1) {}
-            for (;;)
-            {
-              arrayOfDouble1[0] = d1;
-              m = 32767;
-              break;
-              label3269:
-              d1 = arrayOfDouble1[0];
-              break label3213;
-              d1 = arrayOfDouble1[0];
-            }
-          }
-          break;
-          d2 = paramDouble * 8388607.0D;
-          i8 = 0;
-          paramInt6 = 0;
-          if (paramInt6 >= i2 * paramInt1) {
-            break label4012;
-          }
-          if (paramInt7 != 0) {
-            m = a(arrayOfDouble8[paramInt6] * d2, arrayOfDouble1, paramInt7, i8);
-          }
-          do
-          {
-            localByteBuffer2.put(paramInt6 * 3, (byte)(m & 0xFF));
-            k = m >> 8;
-            localByteBuffer2.put(paramInt6 * 3 + 1, (byte)(k & 0xFF));
-            localByteBuffer2.put(paramInt6 * 3 + 2, (byte)(k >> 8 & 0xFF));
-            m = i8 + 1;
-            k = m;
-            if (m == paramInt1) {
-              k = 0;
-            }
-            paramInt6 += 1;
-            i8 = k;
-            break;
-            m = a(arrayOfDouble8[paramInt6] * d2);
-            k = m;
-            if (m < -8388608)
-            {
-              d1 = m / -8388608.0D;
-              if (arrayOfDouble1[0] >= d1) {
-                break label3536;
-              }
-              arrayOfDouble1[0] = d1;
-              k = -8388608;
-            }
-            m = k;
-          } while (8388607 >= k);
-          d1 = k / 8388607.0D;
-          if (arrayOfDouble1[0] < d1) {}
-          for (;;)
-          {
-            arrayOfDouble1[0] = d1;
-            m = 8388607;
-            break;
-            label3536:
-            d1 = arrayOfDouble1[0];
-            break label3480;
-            d1 = arrayOfDouble1[0];
-          }
-          localByteBuffer2.position(0);
-          paramInt1 = (int)(paramInt3 * paramInt1 * (Math.floor(i12 * paramInt5 / paramInt4) + 2.0D - i1));
-          if (paramInt1 > 0)
-          {
-            localByteBuffer2.limit(paramInt1);
-            a(paramOutputStream, localByteBuffer2);
-          }
-          for (;;)
-          {
-            a(1.0D);
-            return arrayOfDouble1[0];
-            localByteBuffer2.position(0);
-            localByteBuffer2.limit(paramInt3 * paramInt1 * i2);
-            a(paramOutputStream, localByteBuffer2);
-            m = i1 + i2;
-            k = i;
-            i = j;
-            j = m;
-            break;
-            if (i2 < j)
-            {
-              m = j - i2;
-              j = i1;
-              k = i;
-              i = m;
-              break;
-            }
-            if (i7 == 0) {
-              break label3846;
-            }
-            if (i12 * paramInt5 / paramInt4 + 2.0D > i1 + i2 - j)
-            {
-              localByteBuffer2.position(paramInt3 * paramInt1 * j);
-              localByteBuffer2.limit(paramInt3 * paramInt1 * i2);
-              a(paramOutputStream, localByteBuffer2);
-              m = i1 + (i2 - j);
-              k = i;
-              i = j;
-              j = m;
-              break;
-            }
-            localByteBuffer2.position(paramInt3 * paramInt1 * j);
-            localByteBuffer2.limit((int)(paramInt3 * paramInt1 * (Math.floor(i12 * paramInt5 / paramInt4) + 2.0D - i1)));
-            a(paramOutputStream, localByteBuffer2);
-          }
-          localByteBuffer2.position(paramInt3 * paramInt1 * j);
-          localByteBuffer2.limit(paramInt3 * paramInt1 * i2);
-          a(paramOutputStream, localByteBuffer2);
-          k = i1 + (i2 - j);
-          i = j;
-          m = 0;
-          j = k;
-          k = m;
-        }
-        label3907:
-        System.arraycopy(arrayOfDouble7, paramInt1 * m, arrayOfDouble7, 0, (i18 - m) * paramInt1);
-        i8 = i14 / paramInt4;
-        if ((i5 & 0x7) == 7) {
-          a(i12 / i6);
-        }
-        i1 = j;
-        i9 = k;
-        i5 += 1;
-        j = i12;
-        k = i4;
-        i7 = i18 - m;
-        i8 = i10 - m * i8;
-        m = i3;
-        i4 = j;
-        j = i;
-        i = i9;
-        break;
-      }
-    }
+    return a(paramQQAppInterface, paramLong1, paramString1, paramString2, paramLong2, true, paramArrayOfByte1, paramArrayOfByte2, null, paramInt, paramString3, paramBundle, paramzse);
   }
   
-  public int a(double paramDouble, double[] paramArrayOfDouble, int paramInt1, int paramInt2)
+  private static beep a(QQAppInterface paramQQAppInterface, nmf paramnmf, byte[] paramArrayOfByte, String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if (paramInt1 == 1)
-    {
-      arrayOfDouble = this.jdField_a_of_type_ArrayOfDouble;
-      paramInt1 = this.f;
-      this.f = (paramInt1 + 1);
-      d1 = arrayOfDouble[(paramInt1 & 0xFFFF)] + paramDouble;
-      paramDouble = d1;
-      if (d1 < this.d)
-      {
-        paramDouble = d1 / this.d;
-        if (paramArrayOfDouble[0] < paramDouble)
-        {
-          paramArrayOfDouble[0] = paramDouble;
-          paramDouble = this.d;
-        }
-      }
-      else
-      {
-        d1 = paramDouble;
-        if (paramDouble > this.e)
-        {
-          paramDouble /= this.e;
-          if (paramArrayOfDouble[0] >= paramDouble) {
-            break label134;
-          }
-        }
-      }
-      for (;;)
-      {
-        paramArrayOfDouble[0] = paramDouble;
-        d1 = this.e;
-        return a(d1);
-        paramDouble = paramArrayOfDouble[0];
-        break;
-        label134:
-        paramDouble = paramArrayOfDouble[0];
-      }
+    if (paramQQAppInterface == null) {
+      return null;
     }
-    double d1 = 0.0D;
-    paramInt1 = 0;
-    while (paramInt1 < this.jdField_c_of_type_Int)
-    {
-      d1 += jdField_a_of_type_Array2dOfDouble[this.jdField_b_of_type_Int][paramInt1] * this.jdField_b_of_type_Array2dOfDouble[paramInt2][paramInt1];
-      paramInt1 += 1;
-    }
-    double d2 = d1 + paramDouble;
-    double[] arrayOfDouble = this.jdField_a_of_type_ArrayOfDouble;
-    paramInt1 = this.f;
-    this.f = (paramInt1 + 1);
-    paramDouble = d2 + arrayOfDouble[(paramInt1 & 0xFFFF)];
-    paramInt1 = this.jdField_c_of_type_Int - 2;
-    while (paramInt1 >= 0)
-    {
-      this.jdField_b_of_type_Array2dOfDouble[paramInt2][(paramInt1 + 1)] = this.jdField_b_of_type_Array2dOfDouble[paramInt2][paramInt1];
-      paramInt1 -= 1;
-    }
-    if (paramDouble < this.d)
-    {
-      paramDouble /= this.d;
-      if (paramArrayOfDouble[0] < paramDouble)
-      {
-        paramArrayOfDouble[0] = paramDouble;
-        d1 = this.d;
-        this.jdField_b_of_type_Array2dOfDouble[paramInt2][0] = (d1 - d2);
-        if (this.jdField_b_of_type_Array2dOfDouble[paramInt2][0] > 1.0D) {
-          this.jdField_b_of_type_Array2dOfDouble[paramInt2][0] = 4607182418800017408L;
-        }
-        paramDouble = d1;
-        if (this.jdField_b_of_type_Array2dOfDouble[paramInt2][0] < -1.0D)
-        {
-          this.jdField_b_of_type_Array2dOfDouble[paramInt2][0] = -4616189618054758400L;
-          paramDouble = d1;
-        }
-      }
-    }
-    for (;;)
-    {
-      return (int)paramDouble;
-      paramDouble = paramArrayOfDouble[0];
-      break;
-      if (paramDouble > this.e)
-      {
-        paramDouble /= this.e;
-        if (paramArrayOfDouble[0] < paramDouble) {}
-        for (;;)
-        {
-          paramArrayOfDouble[0] = paramDouble;
-          d1 = this.e;
-          this.jdField_b_of_type_Array2dOfDouble[paramInt2][0] = (d1 - d2);
-          if (this.jdField_b_of_type_Array2dOfDouble[paramInt2][0] > 1.0D) {
-            this.jdField_b_of_type_Array2dOfDouble[paramInt2][0] = 4607182418800017408L;
-          }
-          paramDouble = d1;
-          if (this.jdField_b_of_type_Array2dOfDouble[paramInt2][0] >= -1.0D) {
-            break;
-          }
-          this.jdField_b_of_type_Array2dOfDouble[paramInt2][0] = -4616189618054758400L;
-          paramDouble = d1;
-          break;
-          paramDouble = paramArrayOfDouble[0];
-        }
-      }
-      paramDouble = a(paramDouble);
-      this.jdField_b_of_type_Array2dOfDouble[paramInt2][0] = (paramDouble - d2);
-    }
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(paramInt1);
+    localOIDBSSOPkg.uint32_service_type.set(paramInt2);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
+    localOIDBSSOPkg.str_client_version.set(AppSetting.f());
+    paramArrayOfByte = new beep();
+    paramArrayOfByte.jdField_a_of_type_JavaLangString = paramString;
+    paramArrayOfByte.jdField_a_of_type_ArrayOfByte = localOIDBSSOPkg.toByteArray();
+    paramArrayOfByte.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    paramArrayOfByte.jdField_a_of_type_Nmf = paramnmf;
+    paramQQAppInterface.getTroopFileProtoReqMgr().a(paramArrayOfByte);
+    return paramArrayOfByte;
   }
   
-  public int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, double paramDouble)
-  {
-    int[] arrayOfInt = new int[97];
-    int i = 1;
-    for (;;)
-    {
-      if ((i >= 6) || (paramInt1 == jdField_a_of_type_ArrayOfInt[i]))
-      {
-        if (((paramInt5 == 3) || (paramInt5 == 4)) && (i == 6)) {
-          System.err.printf("Warning: ATH based noise shaping for destination frequency %dHz is not available, using triangular dither\n", new Object[] { Integer.valueOf(paramInt1) });
-        }
-        if (paramInt5 != 2)
-        {
-          paramInt1 = i;
-          if (i != 6) {}
-        }
-        else
-        {
-          paramInt1 = 0;
-        }
-        i = paramInt1;
-        if (paramInt5 == 4) {
-          if (paramInt1 != 1)
-          {
-            i = paramInt1;
-            if (paramInt1 != 2) {}
-          }
-          else
-          {
-            i = paramInt1 + 5;
-          }
-        }
-        this.jdField_b_of_type_Int = i;
-        this.jdField_b_of_type_Array2dOfDouble = new double[paramInt2][];
-        this.jdField_c_of_type_Int = jdField_b_of_type_ArrayOfInt[this.jdField_b_of_type_Int];
-        paramInt1 = 0;
-        while (paramInt1 < paramInt2)
-        {
-          this.jdField_b_of_type_Array2dOfDouble[paramInt1] = new double[this.jdField_c_of_type_Int];
-          paramInt1 += 1;
-        }
-      }
-      i += 1;
-    }
-    this.d = paramInt3;
-    this.e = paramInt4;
-    this.jdField_a_of_type_ArrayOfDouble = new double[65536];
-    Random localRandom = new Random(System.currentTimeMillis());
-    paramInt1 = 0;
-    while (paramInt1 < 97)
-    {
-      arrayOfInt[paramInt1] = localRandom.nextInt();
-      paramInt1 += 1;
-    }
-    switch (paramInt6)
-    {
-    default: 
-      this.f = 0;
-      if ((paramInt5 == 0) || (paramInt5 == 1)) {
-        return 1;
-      }
-      break;
-    case 0: 
-      paramInt1 = 0;
-      while (paramInt1 < 65536)
-      {
-        paramInt2 = localRandom.nextInt() % 97;
-        paramInt3 = arrayOfInt[paramInt2];
-        arrayOfInt[paramInt2] = localRandom.nextInt();
-        this.jdField_a_of_type_ArrayOfDouble[paramInt1] = ((paramInt3 / 2147483647.0D - 0.5D) * paramDouble);
-        paramInt1 += 1;
-      }
-    case 1: 
-      paramInt1 = 0;
-      while (paramInt1 < 65536)
-      {
-        paramInt3 = localRandom.nextInt() % 97;
-        paramInt2 = arrayOfInt[paramInt3];
-        arrayOfInt[paramInt3] = localRandom.nextInt();
-        paramInt3 = localRandom.nextInt() % 97;
-        paramInt4 = arrayOfInt[paramInt3];
-        arrayOfInt[paramInt3] = localRandom.nextInt();
-        this.jdField_a_of_type_ArrayOfDouble[paramInt1] = ((paramInt2 / 2147483647.0D - paramInt4 / 2147483647.0D) * paramDouble);
-        paramInt1 += 1;
-      }
-    case 2: 
-      paramInt1 = 0;
-      double d1 = 0.0D;
-      double d2 = 0.0D;
-      paramInt2 = 0;
-      label428:
-      if (paramInt2 < 65536)
-      {
-        if (paramInt1 != 0) {
-          break label561;
-        }
-        paramInt1 = 1;
-        paramInt3 = localRandom.nextInt() % 97;
-        d2 = arrayOfInt[paramInt3] / 2147483647.0D;
-        arrayOfInt[paramInt3] = localRandom.nextInt();
-        d1 = d2;
-        if (d2 == 1.0D) {
-          d1 = 0.0D;
-        }
-        d1 = Math.sqrt(Math.log(1.0D - d1) * -2.0D);
-        paramInt3 = localRandom.nextInt() % 97;
-        d2 = arrayOfInt[paramInt3] / 2147483647.0D;
-        arrayOfInt[paramInt3] = localRandom.nextInt();
-        d2 = 6.283185307179586D * d2;
-        this.jdField_a_of_type_ArrayOfDouble[paramInt2] = (paramDouble * d1 * Math.cos(d2));
-      }
-      for (;;)
-      {
-        paramInt2 += 1;
-        break label428;
-        break;
-        label561:
-        paramInt1 = 0;
-        this.jdField_a_of_type_ArrayOfDouble[paramInt2] = (paramDouble * d1 * Math.sin(d2));
-      }
-    }
-    return jdField_c_of_type_ArrayOfInt[this.jdField_b_of_type_Int];
-  }
-  
-  protected void a(OutputStream paramOutputStream, ByteBuffer paramByteBuffer)
+  private static String a(TroopFileTransferManager.Item paramItem)
   {
     try
     {
-      paramOutputStream.write(a(paramByteBuffer));
+      if (!audj.a().i())
+      {
+        if (!QLog.isColorLevel()) {
+          break label179;
+        }
+        QLog.i("IMG_FILE", 1, "choushane false!");
+        break label179;
+      }
+      if (paramItem.strQRUrl != null) {
+        return paramItem.strQRUrl;
+      }
+      Object localObject;
+      if (ypi.c(paramItem.middleThumbnailFile)) {
+        localObject = new File(paramItem.middleThumbnailFile);
+      }
+      for (String str = "mid";; str = "larg")
+      {
+        localObject = aucy.a(BaseApplicationImpl.getContext(), (File)localObject);
+        if (localObject == null) {
+          break label175;
+        }
+        paramItem.strQRUrl = ((StringBuilder)((Pair)localObject).first).toString();
+        if (QLog.isDevelopLevel()) {
+          QLog.i("IMG_FILE_QR", 1, "reqFeeds getImageUrl success:" + paramItem.strQRUrl + " use:" + str);
+        }
+        return paramItem.strQRUrl;
+        if (!ypi.c(paramItem.largeThumbnailFile)) {
+          break;
+        }
+        localObject = new File(paramItem.largeThumbnailFile);
+      }
+      return null;
+    }
+    catch (Throwable paramItem) {}
+    label175:
+    return "";
+    label179:
+    return "";
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString, int paramInt6, long paramLong2, int paramInt7, ByteStringMicro paramByteStringMicro, zrt paramzrt)
+  {
+    boolean bool;
+    oidb_0x6d8.GetFileListReqBody localGetFileListReqBody;
+    if (paramInt7 == 0)
+    {
+      bool = true;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("TroopFileProtocol", 4, "getFileList" + paramLong1 + ",reqFor:" + paramInt2 + ",reqFrom:" + paramInt4 + ",count:" + paramInt3 + ",firstPage:" + bool);
+      }
+      localGetFileListReqBody = new oidb_0x6d8.GetFileListReqBody();
+      localGetFileListReqBody.uint32_all_file_count.set(paramInt1);
+      localGetFileListReqBody.uint32_file_count.set(paramInt3);
+      localGetFileListReqBody.uint32_req_from.set(paramInt4);
+      localGetFileListReqBody.uint64_group_code.set(paramLong1);
+      localGetFileListReqBody.uint32_app_id.set(3);
+      localGetFileListReqBody.str_folder_id.set(paramString);
+      localGetFileListReqBody.uint32_sort_by.set(paramInt5);
+      localGetFileListReqBody.uint32_filter_code.set(paramInt6);
+      localGetFileListReqBody.uint64_uin.set(paramLong2);
+      localGetFileListReqBody.uint32_start_index.set(paramInt7);
+      if (paramByteStringMicro != null) {
+        break label343;
+      }
+      localGetFileListReqBody.bytes_context.set(ByteStringMicro.copyFromUtf8(""));
+      label209:
+      if ((paramInt6 != 2) && (paramInt6 != 3)) {
+        break label356;
+      }
+      localGetFileListReqBody.uint32_show_onlinedoc_folder.set(0);
+    }
+    for (;;)
+    {
+      paramByteStringMicro = new Bundle();
+      paramByteStringMicro.putLong("troopUin", paramLong1);
+      paramByteStringMicro.putInt("reqFor", paramInt2);
+      paramByteStringMicro.putInt("reqFrom", paramInt4);
+      paramByteStringMicro.putBoolean("isFirstPage", bool);
+      paramByteStringMicro.putString("parentFileId", paramString);
+      paramByteStringMicro.putLong("uin_filter", paramLong2);
+      paramString = new oidb_0x6d8.ReqBody();
+      paramString.file_list_info_req.set(localGetFileListReqBody);
+      nmb.b(paramQQAppInterface, paramzrt, paramString.toByteArray(), "OidbSvc.0x6d8_1", 1752, 1, paramByteStringMicro);
+      return;
+      bool = false;
+      break;
+      label343:
+      localGetFileListReqBody.bytes_context.set(paramByteStringMicro);
+      break label209;
+      label356:
+      localGetFileListReqBody.uint32_show_onlinedoc_folder.set(1);
+    }
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, Bundle paramBundle, msg_ctrl.MsgCtrl paramMsgCtrl, zsb paramzsb)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.i("TroopFileProtocol", 1, "reqFeeds error.filePath is null ");
       return;
     }
-    catch (IOException paramOutputStream) {}
-  }
-  
-  protected byte[] a(ByteBuffer paramByteBuffer)
-  {
-    byte[] arrayOfByte = new byte[paramByteBuffer.limit() - paramByteBuffer.position()];
-    paramByteBuffer.get(arrayOfByte, 0, arrayOfByte.length);
-    return arrayOfByte;
-  }
-  
-  public double b(InputStream paramInputStream, OutputStream paramOutputStream, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, double paramDouble, int paramInt6, boolean paramBoolean, int paramInt7)
-  {
-    double[] arrayOfDouble2 = new double[1];
-    arrayOfDouble2[0] = 0.0D;
-    int i1 = this.jdField_a_of_type_Int;
-    double d2 = this.jdField_a_of_type_Double;
-    int n = a(paramInt4, paramInt5);
-    int m;
-    int i17;
-    double d1;
-    if (paramInt5 / n == 1)
-    {
-      m = 1;
-      i17 = paramInt4 * m;
-      if (d2 > 21.0D) {
-        break label264;
-      }
-      d1 = 0.9222D;
-      label65:
-      i = 1;
-    }
-    int j;
-    int k;
-    double d4;
-    double d3;
-    for (;;)
-    {
-      j = i1 * i;
-      k = j;
-      if (j % 2 == 0) {
-        k = j - 1;
-      }
-      d4 = i17 * d1 / (k - 1);
-      d3 = (paramInt5 - d4) / 2.0D;
-      if (d4 < this.jdField_b_of_type_Double)
-      {
-        d1 = a(d2);
-        d2 = zri.a(d1);
-        i = 1;
-        while (i < k) {
-          i *= 2;
-        }
-        if (paramInt5 / n % 2 == 0)
-        {
-          m = 2;
-          break;
-        }
-        if (paramInt5 / n % 3 == 0)
-        {
-          m = 3;
-          break;
-        }
-        throw new IllegalArgumentException(String.format("Resampling from %dHz to %dHz is not supported.\n%d/gcd(%d,%d)=%d must be divided by 2 or 3.", new Object[] { Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt5), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt5 / n) }));
-        label264:
-        d1 = (d2 - 7.95D) / 14.359999999999999D;
-        break label65;
-      }
-      i *= 2;
-    }
-    int i18 = i * 2;
-    double[] arrayOfDouble3 = new double[i18];
-    int i = -(k / 2);
-    while (i <= k / 2)
-    {
-      arrayOfDouble3[(i + k / 2)] = (a(i, k, d1, d2) * a(i, d3, i17) * i17 / paramInt4 / i18 * 2.0D);
-      i += 1;
-    }
-    int[] arrayOfInt3 = new int[(int)(2.0D + Math.sqrt(i18))];
-    arrayOfInt3[0] = 0;
-    double[] arrayOfDouble4 = new double[i18 / 2];
-    this.jdField_a_of_type_Zrk.a(i18, 1, arrayOfDouble3, arrayOfInt3, arrayOfDouble4);
-    double[][] arrayOfDouble1;
-    int[] arrayOfInt1;
-    int[] arrayOfInt2;
-    int i5;
-    int i6;
-    int i7;
-    if (m == 1)
-    {
-      j = paramInt4 / n;
-      n = paramInt4 / paramInt5;
-      arrayOfDouble1 = (double[][])Array.newInstance(Double.TYPE, new int[] { 1, 1 });
-      arrayOfDouble1[0][0] = 4607182418800017408L;
-      arrayOfInt1 = new int[] { n };
-      arrayOfInt2 = new int[] { 0 };
-      i5 = 1;
-      i6 = 1;
-      i7 = j * paramInt5;
-      j = 1;
+    group_file_common.FeedsInfo localFeedsInfo = new group_file_common.FeedsInfo();
+    localFeedsInfo.str_file_id.set(paramString);
+    localFeedsInfo.uint32_bus_id.set(paramInt1);
+    localFeedsInfo.uint32_msg_random.set(paramInt2);
+    if (paramBoolean) {
+      localFeedsInfo.uint32_feed_flag.set(1);
     }
     for (;;)
     {
-      a();
-      int i8 = i18 / 2;
-      double[][] arrayOfDouble5 = (double[][])Array.newInstance(Double.TYPE, new int[] { paramInt1, i18 });
-      double[][] arrayOfDouble6 = (double[][])Array.newInstance(Double.TYPE, new int[] { paramInt1, i6 + 1 + i8 });
-      ByteBuffer localByteBuffer1 = ByteBuffer.allocate((i8 / m + m + 1) * paramInt1 * paramInt2);
-      ByteBuffer localByteBuffer2 = ByteBuffer.allocate((int)((i8 * paramInt5 / paramInt4 + 1.0D) * (paramInt3 * paramInt1)));
-      double[] arrayOfDouble7 = new double[(i8 / m + m + 1) * paramInt1];
-      double[] arrayOfDouble8 = new double[(int)(paramInt1 * (i8 * paramInt5 / paramInt4 + 1.0D))];
-      int i3 = 0;
-      int i12 = 0;
-      n = 1;
-      d1 = k / 2.0D / (i17 / paramInt5);
-      j = (int)(j / 2.0D / (i7 / paramInt5) + d1);
-      k = 0;
-      int i2 = 0;
-      int i4 = 0;
-      int i9 = 0;
-      i1 = i;
-      i = j;
-      int i11 = 0;
-      int i10 = paramInt6;
-      j = n;
-      n = k;
-      k = i3;
-      paramInt6 = i1;
-      i1 = i4;
-      i4 = i11;
-      i3 = (i8 - 0 - 1) / m + 1;
-      i11 = i3;
-      if (i3 + i4 > i10) {
-        i11 = i10 - i4;
+      if (paramMsgCtrl != null) {
+        localFeedsInfo.msg_ctrl.set(paramMsgCtrl);
       }
-      localByteBuffer1.position(0);
-      localByteBuffer1.limit(paramInt2 * paramInt1 * i11);
-      Object localObject = new byte[localByteBuffer1.limit()];
-      int i13 = paramInputStream.read((byte[])localObject);
-      i3 = i13;
-      if (i13 < 0) {
-        i3 = 0;
-      }
-      if (i3 < localByteBuffer1.limit()) {
-        i10 = i4 + i3 / paramInt2 * paramInt1;
-      }
-      localByteBuffer1.limit(i3);
-      localByteBuffer1 = ByteBuffer.wrap((byte[])localObject);
-      localByteBuffer1.position(i3);
-      localByteBuffer1.flip();
-      i13 = i3 / (paramInt2 * paramInt1);
-      switch (paramInt2)
+      try
       {
+        paramString = new JSONObject();
+        if (paramBundle.containsKey("yyb_apk_package_name_key")) {
+          paramString.put("yyb_apk_package_name_key", paramBundle.getString("yyb_apk_package_name_key"));
+        }
+        if (paramBundle.containsKey("yyb_apk_name_key")) {
+          paramString.put("yyb_apk_name_key", paramBundle.getString("yyb_apk_name_key"));
+        }
+        if (paramBundle.containsKey("yyb_apk_icon_url_key")) {
+          paramString.put("yyb_apk_icon_url_key", paramBundle.getString("yyb_apk_icon_url_key"));
+        }
+        if ((paramInt3 != 0) && (paramInt4 != 0))
+        {
+          paramString.put("width", paramInt3);
+          paramString.put("height", paramInt4);
+          paramString.put("duration", paramInt5);
+        }
+        if (paramString.length() > 0) {
+          localFeedsInfo.bytes_ext.set(ByteStringMicro.copyFromUtf8(paramString.toString()));
+        }
       }
-      double d5;
-      while (paramInt6 < paramInt1 * i11)
+      catch (JSONException paramString)
       {
-        arrayOfDouble7[paramInt6] = 0.0D;
-        paramInt6 += 1;
-        continue;
-        d4 = this.jdField_a_of_type_Double;
-        i7 = paramInt4 / n * paramInt5;
-        d5 = (i17 / 2 - paramInt4 / 2) * 2 / 2.0D;
-        d2 = paramInt4 / 2;
-        d3 = (i17 / 2 - paramInt4 / 2) / 2.0D;
-        if (d4 <= 21.0D) {}
-        for (d1 = 0.9222D;; d1 = (d4 - 7.95D) / 14.359999999999999D)
-        {
-          j = (int)(d1 * (i7 / d5) + 1.0D);
-          i = j;
-          if (j % 2 == 0) {
-            i = j + 1;
-          }
-          d1 = a(d4);
-          d4 = zri.a(d1);
-          i5 = i7 / i17;
-          i6 = i / i5 + 1;
-          arrayOfInt2 = new int[i5];
-          j = 0;
-          while (j < i5)
-          {
-            arrayOfInt2[j] = (i7 / i17 - i7 / paramInt5 * j % (i7 / i17));
-            if (arrayOfInt2[j] == i7 / i17) {
-              arrayOfInt2[j] = 0;
-            }
-            j += 1;
-          }
-        }
-        arrayOfInt1 = new int[i5];
-        j = 0;
-        if (j < i5)
-        {
-          arrayOfInt1[j] = ((i7 / paramInt5 - arrayOfInt2[j]) / (i7 / i17) + 1);
-          if (j + 1 == i5) {}
-          for (n = 0;; n = j + 1)
-          {
-            if (arrayOfInt2[n] == 0) {
-              arrayOfInt1[j] -= 1;
-            }
-            j += 1;
-            break;
-          }
-        }
-        arrayOfDouble1 = (double[][])Array.newInstance(Double.TYPE, new int[] { i5, i6 });
-        j = -(i / 2);
-        while (j <= i / 2)
-        {
-          arrayOfDouble1[((i / 2 + j) % i5)][((i / 2 + j) / i5)] = (a(j, i, d1, d4) * a(j, d2 + d3, i7) * i7 / i17);
-          j += 1;
-        }
-        i3 = 0;
         for (;;)
         {
-          paramInt6 = i3;
-          if (i3 >= i13 * paramInt1) {
-            break;
-          }
-          arrayOfDouble7[(paramInt1 * 0 + i3)] = (0.0078740157480315D * ((localByteBuffer1.get(i3) & 0xFF) - 128));
-          i3 += 1;
-        }
-        i3 = 0;
-        for (;;)
-        {
-          paramInt6 = i3;
-          if (i3 >= i13 * paramInt1) {
-            break;
-          }
-          arrayOfDouble7[(paramInt1 * 0 + i3)] = (3.051850947599719E-005D * localByteBuffer1.order(this.jdField_a_of_type_JavaNioByteOrder).asShortBuffer().get(i3));
-          i3 += 1;
-        }
-        i3 = 0;
-        for (;;)
-        {
-          paramInt6 = i3;
-          if (i3 >= i13 * paramInt1) {
-            break;
-          }
-          arrayOfDouble7[(paramInt1 * 0 + i3)] = (1.192093037616377E-007D * ((localByteBuffer1.get(i3 * 3) & 0xFF) << 0 | (localByteBuffer1.get(i3 * 3 + 1) & 0xFF) << 8 | (localByteBuffer1.get(i3 * 3 + 2) & 0xFF) << 16));
-          i3 += 1;
-        }
-        i3 = 0;
-        for (;;)
-        {
-          paramInt6 = i3;
-          if (i3 >= i13 * paramInt1) {
-            break;
-          }
-          arrayOfDouble7[(paramInt1 * 0 + i3)] = (4.656612875245797E-010D * localByteBuffer1.order(this.jdField_a_of_type_JavaNioByteOrder).getInt(i3));
-          i3 += 1;
+          paramString.printStackTrace();
         }
       }
-      int i16 = i4 + i13;
-      if ((paramInputStream.available() < 0) || (i16 >= i10))
-      {
-        i11 = 1;
-        i13 = 0;
+      paramString = new oidb_0x6d9.FeedsReqBody();
+      paramString.uint32_app_id.set(3);
+      paramString.uint64_group_code.set(paramLong);
+      paramString.rpt_feeds_info_list.add(localFeedsInfo);
+      paramMsgCtrl = new oidb_0x6d9.ReqBody();
+      paramMsgCtrl.feeds_info_req.set(paramString);
+      nmb.b(paramQQAppInterface, paramzsb, paramMsgCtrl.toByteArray(), "OidbSvc.0x6d9_4", 1753, 4, paramBundle);
+      return;
+      localFeedsInfo.uint32_feed_flag.set(3);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, Bundle paramBundle, zsb paramzsb)
+  {
+    a(paramQQAppInterface, paramLong, paramInt1, paramString, paramInt2, paramInt3, paramInt4, paramInt5, paramBoolean, paramBundle, null, paramzsb);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, String paramString, long paramLong2, int paramInt2, Bundle paramBundle, zrz paramzrz)
+  {
+    oidb_0x6d9.CopyToReqBody localCopyToReqBody = new oidb_0x6d9.CopyToReqBody();
+    localCopyToReqBody.uint32_app_id.set(3);
+    localCopyToReqBody.uint64_group_code.set(paramLong1);
+    localCopyToReqBody.uint64_dst_uin.set(paramLong2);
+    localCopyToReqBody.uint32_src_bus_id.set(paramInt1);
+    localCopyToReqBody.str_src_file_id.set(paramString);
+    localCopyToReqBody.uint32_dst_bus_id.set(paramInt2);
+    paramString = new oidb_0x6d9.ReqBody();
+    paramString.copy_to_req.set(localCopyToReqBody);
+    nmb.b(paramQQAppInterface, paramzrz, paramString.toByteArray(), "OidbSvc.0x6d9_2", 1753, 2, paramBundle);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, zrq paramzrq)
+  {
+    if ((paramLong == 0L) || (TextUtils.isEmpty(paramString1))) {
+      return;
+    }
+    Object localObject = new oidb_0x6d6.DeleteFileReqBody();
+    ((oidb_0x6d6.DeleteFileReqBody)localObject).uint32_bus_id.set(paramInt1);
+    ((oidb_0x6d6.DeleteFileReqBody)localObject).str_file_id.set(paramString1);
+    ((oidb_0x6d6.DeleteFileReqBody)localObject).uint32_app_id.set(3);
+    ((oidb_0x6d6.DeleteFileReqBody)localObject).uint64_group_code.set(paramLong);
+    ((oidb_0x6d6.DeleteFileReqBody)localObject).str_parent_folder_id.set(paramString2);
+    if (paramInt2 != 0) {
+      ((oidb_0x6d6.DeleteFileReqBody)localObject).uint32_msgdb_seq.set(paramInt2);
+    }
+    if (paramInt3 != 0) {
+      ((oidb_0x6d6.DeleteFileReqBody)localObject).uint32_msg_rand.set(paramInt3);
+    }
+    paramString2 = new oidb_0x6d6.ReqBody();
+    paramString2.delete_file_req.set((MessageMicro)localObject);
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("fileId", paramString1);
+    nmb.b(paramQQAppInterface, paramzrq, paramString2.toByteArray(), "OidbSvc.0x6d6_3", 1750, 3, (Bundle)localObject);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt, String paramString1, String paramString2, String paramString3, zrx paramzrx)
+  {
+    if ((paramLong == 0L) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {}
+    while (paramString2.equals(paramString3)) {
+      return;
+    }
+    oidb_0x6d6.MoveFileReqBody localMoveFileReqBody = new oidb_0x6d6.MoveFileReqBody();
+    localMoveFileReqBody.uint32_bus_id.set(paramInt);
+    localMoveFileReqBody.str_file_id.set(paramString1);
+    localMoveFileReqBody.uint32_app_id.set(3);
+    localMoveFileReqBody.uint64_group_code.set(paramLong);
+    localMoveFileReqBody.str_parent_folder_id.set(paramString2);
+    localMoveFileReqBody.str_dest_folder_id.set(paramString3);
+    paramString1 = new oidb_0x6d6.ReqBody();
+    paramString1.move_file_req.set(localMoveFileReqBody);
+    nmb.b(paramQQAppInterface, paramzrx, paramString1.toByteArray(), "OidbSvc.0x6d6_5", 1750, 5);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt, String paramString, zrw paramzrw)
+  {
+    if ((paramQQAppInterface == null) || (paramLong == 0L) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    oidb_0x6d8.GetFileInfoReqBody localGetFileInfoReqBody = new oidb_0x6d8.GetFileInfoReqBody();
+    localGetFileInfoReqBody.uint64_group_code.set(paramLong);
+    localGetFileInfoReqBody.uint32_app_id.set(3);
+    localGetFileInfoReqBody.uint32_bus_id.set(paramInt);
+    localGetFileInfoReqBody.str_file_id.set(paramString);
+    paramString = new oidb_0x6d8.ReqBody();
+    paramString.file_info_req.set(localGetFileInfoReqBody);
+    nmb.b(paramQQAppInterface, paramzrw, paramString.toByteArray(), "OidbSvc.0x6d8_0", 1752, 0);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, bebc parambebc, zsd paramzsd)
+  {
+    if ((paramLong == 0L) || (parambebc == null)) {
+      return;
+    }
+    oidb_0x6d9.TransFileReqBody localTransFileReqBody = new oidb_0x6d9.TransFileReqBody();
+    localTransFileReqBody.uint32_app_id.set(3);
+    localTransFileReqBody.uint64_group_code.set(paramLong);
+    localTransFileReqBody.uint32_bus_id.set(parambebc.a);
+    localTransFileReqBody.str_file_id.set(parambebc.b);
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("troopUin", paramLong);
+    localBundle.putString("fileId", parambebc.b);
+    parambebc = new oidb_0x6d9.ReqBody();
+    parambebc.trans_file_req.set(localTransFileReqBody);
+    nmb.b(paramQQAppInterface, paramzsd, parambebc.toByteArray(), "OidbSvc.0x6d9_0", 1753, 0, localBundle);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, TroopFileTransferManager.Item paramItem, zsb paramzsb)
+  {
+    if ((paramLong == 0L) || (paramItem == null)) {
+      return;
+    }
+    QLog.i("TroopFileProtocol", 1, "reqFeeds, waterTest.");
+    Bundle localBundle = new Bundle();
+    localBundle.putString("itemKey", paramItem.Id.toString());
+    localBundle.putLong("troopUin", paramLong);
+    localBundle.putString("fileId", paramItem.FilePath);
+    QLog.i("TroopFileProtocol", 1, "reqFeeds, waterTest.pkgName[" + paramItem.yybApkPackageName + "]");
+    if (!TextUtils.isEmpty(paramItem.yybApkPackageName)) {
+      localBundle.putString("yyb_apk_package_name_key", paramItem.yybApkPackageName);
+    }
+    if (!TextUtils.isEmpty(paramItem.yybApkName)) {
+      localBundle.putString("yyb_apk_name_key", paramItem.yybApkName);
+    }
+    if (!TextUtils.isEmpty(paramItem.yybApkIconUrl)) {
+      localBundle.putString("yyb_apk_icon_url_key", paramItem.yybApkIconUrl);
+    }
+    Object localObject = a(paramItem);
+    localObject = aucy.a(paramItem.LocalFile, paramItem.width, paramItem.height, (String)localObject);
+    a(paramQQAppInterface, paramLong, paramItem.BusId, paramItem.FilePath, paramItem.RandomNum, paramItem.width, paramItem.height, paramItem.duration, true, localBundle, (msg_ctrl.MsgCtrl)localObject, paramzsb);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, zrp paramzrp)
+  {
+    if ((paramLong == 0L) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return;
+    }
+    oidb_0x6d7.CreateFolderReqBody localCreateFolderReqBody = new oidb_0x6d7.CreateFolderReqBody();
+    localCreateFolderReqBody.str_parent_folder_id.set(paramString1);
+    localCreateFolderReqBody.str_folder_name.set(paramString2);
+    localCreateFolderReqBody.uint32_app_id.set(3);
+    localCreateFolderReqBody.uint64_group_code.set(paramLong);
+    paramString1 = new oidb_0x6d7.ReqBody();
+    paramString1.create_folder_req.set(localCreateFolderReqBody);
+    nmb.b(paramQQAppInterface, paramzrp, paramString1.toByteArray(), "OidbSvc.0x6d7_0", 1751, 0);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, zry paramzry)
+  {
+    if ((paramLong == 0L) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return;
+    }
+    Object localObject = new oidb_0x6d7.RenameFolderReqBody();
+    ((oidb_0x6d7.RenameFolderReqBody)localObject).str_folder_id.set(paramString1);
+    ((oidb_0x6d7.RenameFolderReqBody)localObject).str_new_folder_name.set(paramString2);
+    ((oidb_0x6d7.RenameFolderReqBody)localObject).uint32_app_id.set(3);
+    ((oidb_0x6d7.RenameFolderReqBody)localObject).uint64_group_code.set(paramLong);
+    oidb_0x6d7.ReqBody localReqBody = new oidb_0x6d7.ReqBody();
+    localReqBody.rename_folder_req.set((MessageMicro)localObject);
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("folderId", paramString1);
+    ((Bundle)localObject).putString("folderName", paramString2);
+    nmb.b(paramQQAppInterface, paramzry, localReqBody.toByteArray(), "OidbSvc.0x6d7_2", 1751, 2, (Bundle)localObject);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, String paramString, zrr paramzrr)
+  {
+    if ((paramLong == 0L) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    oidb_0x6d7.DeleteFolderReqBody localDeleteFolderReqBody = new oidb_0x6d7.DeleteFolderReqBody();
+    localDeleteFolderReqBody.str_folder_id.set(paramString);
+    localDeleteFolderReqBody.uint32_app_id.set(3);
+    localDeleteFolderReqBody.uint64_group_code.set(paramLong);
+    paramString = new oidb_0x6d7.ReqBody();
+    paramString.delete_folder_req.set(localDeleteFolderReqBody);
+    nmb.b(paramQQAppInterface, paramzrr, paramString.toByteArray(), "OidbSvc.0x6d7_1", 1751, 1);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, zrs paramzrs)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("TroopFileProtocol", 4, "getFileList" + paramLong);
+    }
+    oidb_0x6d8.GetFileCountReqBody localGetFileCountReqBody = new oidb_0x6d8.GetFileCountReqBody();
+    localGetFileCountReqBody.uint64_group_code.set(paramLong);
+    localGetFileCountReqBody.uint32_app_id.set(3);
+    localGetFileCountReqBody.uint32_bus_id.set(0);
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("troopUin", paramLong);
+    oidb_0x6d8.ReqBody localReqBody = new oidb_0x6d8.ReqBody();
+    localReqBody.group_file_cnt_req.set(localGetFileCountReqBody);
+    nmb.b(paramQQAppInterface, paramzrs, localReqBody.toByteArray(), "OidbSvc.0x6d8_1", 1752, 2, localBundle);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, zrv paramzrv)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("TroopFileProtocol", 4, "getFileList" + paramLong);
+    }
+    oidb_0x6d8.GetSpaceReqBody localGetSpaceReqBody = new oidb_0x6d8.GetSpaceReqBody();
+    localGetSpaceReqBody.uint64_group_code.set(paramLong);
+    localGetSpaceReqBody.uint32_app_id.set(3);
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("troopUin", paramLong);
+    oidb_0x6d8.ReqBody localReqBody = new oidb_0x6d8.ReqBody();
+    localReqBody.group_space_req.set(localGetSpaceReqBody);
+    nmb.a(paramQQAppInterface, paramzrv, localReqBody.toByteArray(), "OidbSvc.0x6d8_3", 1752, 3, localBundle);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, beep parambeep)
+  {
+    if ((paramQQAppInterface == null) || (parambeep == null)) {
+      return;
+    }
+    paramQQAppInterface.getTroopFileProtoReqMgr().b(parambeep);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, FileManagerEntity paramFileManagerEntity, zrl paramzrl)
+  {
+    paramString1 = new beze("http://" + paramString1 + ":" + paramString2 + "/ftn_compress_list/rkey=" + paramString3 + "&filetype=" + paramInt + "&path=" + bjnd.a(paramString4) + "&", "GET", new zrk(new ArrayList(), paramString4, paramFileManagerEntity, paramQQAppInterface, paramInt, paramzrl), 1000, null);
+    paramString2 = new Bundle();
+    paramString2.putString("version", DeviceInfoUtil.getQQVersion());
+    paramString2.putString("Cookie", paramString5);
+    paramString3 = new HashMap();
+    paramString3.put("BUNDLE", paramString2);
+    paramString3.put("CONTEXT", paramQQAppInterface.getApp().getApplicationContext());
+    paramString1.a(paramString3);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, long paramLong1, TroopFileTransferManager.Item paramItem, long paramLong2, long paramLong3, zrz paramzrz)
+  {
+    if ((paramLong1 == 0L) || (paramItem == null)) {
+      return;
+    }
+    Object localObject = new oidb_0x6d9.CopyToReqBody();
+    ((oidb_0x6d9.CopyToReqBody)localObject).uint32_app_id.set(3);
+    if (paramBoolean) {
+      ((oidb_0x6d9.CopyToReqBody)localObject).uint64_group_code.set(paramLong1);
+    }
+    for (;;)
+    {
+      ((oidb_0x6d9.CopyToReqBody)localObject).uint64_dst_uin.set(paramLong2);
+      ((oidb_0x6d9.CopyToReqBody)localObject).uint32_src_bus_id.set(paramItem.ForwardBusId);
+      if (!TextUtils.isEmpty(paramItem.ForwardPath)) {
+        ((oidb_0x6d9.CopyToReqBody)localObject).str_src_file_id.set(paramItem.ForwardPath);
       }
-      for (i3 = k;; i3 = i4)
-      {
-        if (i13 >= paramInt1) {
-          break label2416;
-        }
-        int i14 = 0;
-        paramInt6 = 0;
-        for (;;)
-        {
-          if (paramInt6 >= i8) {
-            break label1773;
-          }
-          if ((!jdField_a_of_type_Boolean) && (i14 >= (i8 - 0 - 1) / m + 1))
-          {
-            throw new AssertionError();
-            i11 = 0;
-            break;
-          }
-          arrayOfDouble5[i13][paramInt6] = arrayOfDouble7[(i14 * paramInt1 + i13)];
-          i2 = paramInt6 + 1;
-          while (i2 < paramInt6 + m)
-          {
-            arrayOfDouble5[i13][i2] = 0L;
-            i2 += 1;
-          }
-          paramInt6 += m;
-          i14 += 1;
-        }
-        label1773:
-        if ((!jdField_a_of_type_Boolean) && (i14 != (i8 - 0 - 1) / m + 1)) {
-          throw new AssertionError();
-        }
-        paramInt6 = i8;
-        while (paramInt6 < i18)
-        {
-          arrayOfDouble5[i13][paramInt6] = 0L;
-          paramInt6 += 1;
-        }
-        this.jdField_a_of_type_Zrk.a(i18, 1, arrayOfDouble5[i13], arrayOfInt3, arrayOfDouble4);
-        arrayOfDouble5[i13][0] = (arrayOfDouble3[0] * arrayOfDouble5[i13][0]);
-        arrayOfDouble5[i13][1] = (arrayOfDouble3[1] * arrayOfDouble5[i13][1]);
-        paramInt6 = 1;
-        while (paramInt6 < i8)
-        {
-          d1 = arrayOfDouble3[(paramInt6 * 2)];
-          d2 = arrayOfDouble5[i13][(paramInt6 * 2)];
-          d3 = arrayOfDouble3[(paramInt6 * 2 + 1)];
-          d4 = arrayOfDouble5[i13][(paramInt6 * 2 + 1)];
-          d5 = arrayOfDouble3[(paramInt6 * 2 + 1)];
-          double d6 = arrayOfDouble5[i13][(paramInt6 * 2)];
-          double d7 = arrayOfDouble3[(paramInt6 * 2)];
-          double d8 = arrayOfDouble5[i13][(paramInt6 * 2 + 1)];
-          arrayOfDouble5[i13][(paramInt6 * 2)] = (d1 * d2 - d3 * d4);
-          arrayOfDouble5[i13][(paramInt6 * 2 + 1)] = (d5 * d6 + d7 * d8);
-          paramInt6 += 1;
-        }
-        this.jdField_a_of_type_Zrk.a(i18, -1, arrayOfDouble5[i13], arrayOfInt3, arrayOfDouble4);
-        paramInt6 = 0;
-        while (paramInt6 < i8)
-        {
-          localObject = arrayOfDouble6[i13];
-          i2 = i6 + 1 + paramInt6;
-          localObject[i2] += arrayOfDouble5[i13][paramInt6];
-          paramInt6 += 1;
-        }
-        i3 = i12 / (i7 / i17);
-        i2 = i3;
-        if (i12 % (i7 / i17) != 0) {
-          i2 = i3 + 1;
-        }
-        i3 = arrayOfDouble6[0].length;
-        i2 = i3 * i13 + i2;
-        int i15 = 0;
-        i4 = k;
-        i3 = paramInt6;
-        paramInt6 = i15;
-        while (i2 - arrayOfDouble6[0].length * i13 < i8 + 1)
-        {
-          int i20 = arrayOfInt2[i4];
-          int i19 = arrayOfInt1[i4];
-          i4 += 1;
-          i3 = i4;
-          if (i4 == i5) {
-            i3 = 0;
-          }
-          if ((!jdField_a_of_type_Boolean) && ((i2 - arrayOfDouble6[0].length * i13) * (i7 / i17) - (i7 / paramInt5 * paramInt6 + i12) != i20)) {
-            throw new AssertionError();
-          }
-          i4 = 0;
-          d1 = 0.0D;
-          i15 = i2;
-          while (i4 < i6)
-          {
-            d1 += arrayOfDouble1[i20][i4] * arrayOfDouble6[(i15 / arrayOfDouble6[0].length)][(i15 % arrayOfDouble6[0].length)];
-            i15 += 1;
-            i4 += 1;
-          }
-          arrayOfDouble8[(paramInt6 * paramInt1 + 0 + i13)] = d1;
-          paramInt6 += 1;
-          i15 = i4;
-          i2 = i19 + i2;
-          i4 = i3;
-          i3 = i15;
-        }
-        i13 += 1;
-        i2 = paramInt6;
-        i1 += i14;
-        paramInt6 = i3;
+      ((oidb_0x6d9.CopyToReqBody)localObject).uint32_dst_bus_id.set(paramItem.BusId);
+      oidb_0x6d9.ReqBody localReqBody = new oidb_0x6d9.ReqBody();
+      localReqBody.copy_to_req.set((MessageMicro)localObject);
+      localObject = new Bundle();
+      ((Bundle)localObject).putLong("troopUin", paramLong1);
+      ((Bundle)localObject).putString("itemKey", paramItem.Id.toString());
+      ((Bundle)localObject).putLong("sessionId", paramLong3);
+      if (paramItem.BusId == 25) {
+        bleg.a();
       }
-      label2416:
-      i13 = i12 + i7 / paramInt5 * i2;
-      localByteBuffer2.clear();
-      if (paramBoolean)
-      {
-        k = 0;
-        paramInt6 = k;
-        if (k < i2 * paramInt1)
-        {
-          if (arrayOfDouble8[k] > 0.0D)
-          {
-            d1 = arrayOfDouble8[k];
-            label2473:
-            if (arrayOfDouble2[0] >= d1) {
-              break label2525;
-            }
-          }
-          for (;;)
-          {
-            arrayOfDouble2[0] = d1;
-            localByteBuffer2.asDoubleBuffer().put(k, arrayOfDouble8[k]);
-            k += 1;
-            break;
-            d1 = -arrayOfDouble8[k];
-            break label2473;
-            label2525:
-            d1 = arrayOfDouble2[0];
-          }
-        }
-      }
-      else
-      {
-        switch (paramInt3)
-        {
-        }
-      }
-      label3338:
-      label3858:
-      for (;;)
-      {
-        if (j == 0) {
-          if (i11 != 0) {
-            if (i16 * paramInt5 / paramInt4 + 2.0D > n + i2)
-            {
-              localByteBuffer2.position(0);
-              localByteBuffer2.limit(paramInt3 * paramInt1 * i2);
-              a(paramOutputStream, localByteBuffer2);
-              n += i2;
-              k = j;
-              j = n;
-            }
-          }
-        }
-        for (;;)
-        {
-          i4 = (i13 - 1) / (i7 / i17);
-          n = i4;
-          if (i4 > i8) {
-            n = i8;
-          }
-          i4 = 0;
-          while (i4 < paramInt1)
-          {
-            System.arraycopy(arrayOfDouble6[i4], n, arrayOfDouble6[i4], 0, i6 + 1 + i8 - n);
-            i4 += 1;
-          }
-          d2 = paramDouble * 127.0D;
-          i12 = 0;
-          paramInt6 = 0;
-          if (paramInt6 < i2 * paramInt1)
-          {
-            if (paramInt7 != 0) {
-              i4 = a(arrayOfDouble8[paramInt6] * d2, arrayOfDouble2, paramInt7, i12);
-            }
-            label2851:
-            do
-            {
-              localByteBuffer2.put(paramInt6, (byte)(i4 + 128));
-              i4 = i12 + 1;
-              k = i4;
-              if (i4 == paramInt1) {
-                k = 0;
-              }
-              paramInt6 += 1;
-              i12 = k;
-              break;
-              i4 = a(arrayOfDouble8[paramInt6] * d2);
-              k = i4;
-              if (i4 < -128)
-              {
-                d1 = i4 / -128.0D;
-                if (arrayOfDouble2[0] >= d1) {
-                  break label2904;
-                }
-                arrayOfDouble2[0] = d1;
-                k = -128;
-              }
-              i4 = k;
-            } while (127 >= k);
-            d1 = k / 127.0D;
-            if (arrayOfDouble2[0] < d1) {}
-            for (;;)
-            {
-              arrayOfDouble2[0] = d1;
-              i4 = 127;
-              break;
-              label2904:
-              d1 = arrayOfDouble2[0];
-              break label2851;
-              d1 = arrayOfDouble2[0];
-            }
-          }
-          break;
-          d2 = paramDouble * 32767.0D;
-          i12 = 0;
-          paramInt6 = 0;
-          if (paramInt6 < i2 * paramInt1)
-          {
-            if (paramInt7 != 0) {
-              i4 = a(arrayOfDouble8[paramInt6] * d2, arrayOfDouble2, paramInt7, i12);
-            }
-            label3071:
-            do
-            {
-              localByteBuffer2.order(this.jdField_a_of_type_JavaNioByteOrder).asShortBuffer().put(paramInt6, (short)i4);
-              i4 = i12 + 1;
-              k = i4;
-              if (i4 == paramInt1) {
-                k = 0;
-              }
-              paramInt6 += 1;
-              i12 = k;
-              break;
-              i4 = a(arrayOfDouble8[paramInt6] * d2);
-              k = i4;
-              if (i4 < -32768)
-              {
-                d1 = i4 / -32768.0D;
-                if (arrayOfDouble2[0] >= d1) {
-                  break label3127;
-                }
-                arrayOfDouble2[0] = d1;
-                k = -32768;
-              }
-              i4 = k;
-            } while (32767 >= k);
-            d1 = k / 32767.0D;
-            if (arrayOfDouble2[0] < d1) {}
-            for (;;)
-            {
-              arrayOfDouble2[0] = d1;
-              i4 = 32767;
-              break;
-              label3127:
-              d1 = arrayOfDouble2[0];
-              break label3071;
-              d1 = arrayOfDouble2[0];
-            }
-          }
-          break;
-          d2 = paramDouble * 8388607.0D;
-          i12 = 0;
-          paramInt6 = 0;
-          if (paramInt6 >= i2 * paramInt1) {
-            break label3858;
-          }
-          if (paramInt7 != 0) {
-            i4 = a(arrayOfDouble8[paramInt6] * d2, arrayOfDouble2, paramInt7, i12);
-          }
-          do
-          {
-            localByteBuffer2.put(paramInt6 * 3, (byte)(i4 & 0xFF));
-            k = i4 >> 8;
-            localByteBuffer2.put(paramInt6 * 3 + 1, (byte)(k & 0xFF));
-            localByteBuffer2.put(paramInt6 * 3 + 2, (byte)(k >> 8 & 0xFF));
-            i4 = i12 + 1;
-            k = i4;
-            if (i4 == paramInt1) {
-              k = 0;
-            }
-            paramInt6 += 1;
-            i12 = k;
-            break;
-            i4 = a(arrayOfDouble8[paramInt6] * d2);
-            k = i4;
-            if (i4 < -8388608)
-            {
-              d1 = i4 / -8388608.0D;
-              if (arrayOfDouble2[0] >= d1) {
-                break label3394;
-              }
-              arrayOfDouble2[0] = d1;
-              k = -8388608;
-            }
-            i4 = k;
-          } while (8388607 >= k);
-          d1 = k / 8388607.0D;
-          if (arrayOfDouble2[0] < d1) {}
-          for (;;)
-          {
-            arrayOfDouble2[0] = d1;
-            i4 = 8388607;
-            break;
-            label3394:
-            d1 = arrayOfDouble2[0];
-            break label3338;
-            d1 = arrayOfDouble2[0];
-          }
-          localByteBuffer2.position(0);
-          paramInt1 = (int)(paramInt3 * paramInt1 * (Math.floor(i16 * paramInt5 / paramInt4) + 2.0D - n));
-          if (paramInt1 > 0)
-          {
-            localByteBuffer2.limit(paramInt1);
-            a(paramOutputStream, localByteBuffer2);
-          }
-          for (;;)
-          {
-            a(1.0D);
-            return arrayOfDouble2[0];
-            localByteBuffer2.position(0);
-            localByteBuffer2.limit(paramInt3 * paramInt1 * i2);
-            a(paramOutputStream, localByteBuffer2);
-            n += i2;
-            k = j;
-            j = n;
-            break;
-            if (i2 < i)
-            {
-              i -= i2;
-              k = j;
-              j = n;
-              break;
-            }
-            if (i11 == 0) {
-              break label3703;
-            }
-            if (i16 * paramInt5 / paramInt4 + 2.0D > n + i2 - i)
-            {
-              localByteBuffer2.position(paramInt3 * paramInt1 * i);
-              localByteBuffer2.limit(paramInt3 * paramInt1 * (i2 - i));
-              a(paramOutputStream, localByteBuffer2);
-              n = i2 - i + n;
-              k = j;
-              j = n;
-              break;
-            }
-            localByteBuffer2.position(paramInt3 * paramInt1 * i);
-            localByteBuffer2.limit((int)(paramInt3 * paramInt1 * (Math.floor(i16 * paramInt5 / paramInt4) + 2.0D + n + i2 - i)));
-            a(paramOutputStream, localByteBuffer2);
-          }
-          label3703:
-          localByteBuffer2.position(paramInt3 * paramInt1 * i);
-          localByteBuffer2.limit(paramInt3 * paramInt1 * i2);
-          a(paramOutputStream, localByteBuffer2);
-          k = 0;
-          j = i2 - i + n;
-        }
-        i12 = i7 / i17;
-        i4 = 0;
-        while (i4 < paramInt1)
-        {
-          System.arraycopy(arrayOfDouble5[i4], i8, arrayOfDouble6[i4], i6 + 1, i8);
-          i4 += 1;
-        }
-        if ((i9 & 0x7) == 7) {
-          a(i16 / i10);
-        }
-        i11 = k;
-        i9 += 1;
-        k = i3;
-        i4 = i16;
-        i12 = i13 - n * i12;
-        n = j;
-        j = i11;
-        break;
-      }
-      n = j;
-      j = i;
-      i = n;
+      nmb.b(paramQQAppInterface, paramzrz, localReqBody.toByteArray(), "OidbSvc.0x6d9_2", 1753, 2, (Bundle)localObject);
+      return;
+      ((oidb_0x6d9.CopyToReqBody)localObject).uint64_group_code.set(paramItem.ForwardTroopuin);
     }
   }
 }

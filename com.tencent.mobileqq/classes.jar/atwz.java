@@ -1,12 +1,19 @@
-class atwz
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
+
+public final class atwz
+  implements Parcelable.Creator<PadFaceAd>
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  boolean jdField_b_of_type_Boolean = false;
-  boolean c = false;
+  public PadFaceAd a(Parcel paramParcel)
+  {
+    return new PadFaceAd(paramParcel);
+  }
   
-  atwz(atwy paramatwy) {}
+  public PadFaceAd[] a(int paramInt)
+  {
+    return new PadFaceAd[paramInt];
+  }
 }
 
 

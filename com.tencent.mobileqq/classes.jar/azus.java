@@ -1,10 +1,19 @@
-import com.tencent.mobileqq.data.PrecoverResource;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
 
-public abstract interface azus
+public final class azus
+  implements Parcelable.Creator<ReceiptMessageReadMemberListFragment.MemberInfo>
 {
-  public abstract void a(int paramInt, String paramString, PrecoverResource paramPrecoverResource, Object paramObject);
+  public ReceiptMessageReadMemberListFragment.MemberInfo a(Parcel paramParcel)
+  {
+    return new ReceiptMessageReadMemberListFragment.MemberInfo(paramParcel);
+  }
   
-  public abstract void a(PrecoverResource paramPrecoverResource, Object paramObject, long paramLong1, long paramLong2);
+  public ReceiptMessageReadMemberListFragment.MemberInfo[] a(int paramInt)
+  {
+    return new ReceiptMessageReadMemberListFragment.MemberInfo[paramInt];
+  }
 }
 
 

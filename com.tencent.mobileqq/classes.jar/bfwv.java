@@ -1,96 +1,225 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.lang.ref.WeakReference;
-import java.net.URL;
-import java.util.List;
+import com.tencent.qphone.base.util.MD5;
+import com.tencent.qphone.base.util.QLog;
 
-class bfwv
-  extends aavh
+public class bfwv
 {
-  bfwv(bfwu parambfwu) {}
+  private static String a = "PackageUtil";
   
-  public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle)
+  public static String a(Context paramContext, String paramString)
   {
-    if (!paramBoolean)
+    try
     {
-      bfvr.a("TroopZipInnerFileDownloadWorker", bfvr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult isSuccess:false  errCode:" + paramInt1);
-      this.a.jdField_a_of_type_Bfvc.c = 2;
-      this.a.a(true, bguk.b, bguk.A, 103);
-      return;
-    }
-    bfvr.c("TroopZipInnerFileDownloadWorker", bfvr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult isSuccess:true  int32_ret_code:" + paramInt1);
-    if ((paramInt1 == 0) || ((TextUtils.isEmpty(paramString3)) && (paramInt2 == 0)))
-    {
-      bfvr.a("TroopZipInnerFileDownloadWorker", bfvr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult. no host");
-      this.a.jdField_a_of_type_Bfvc.c = 1;
-      this.a.jdField_a_of_type_Bfvc.d = 101;
-      this.a.a(true, bguk.c, bguk.x, 1);
-      return;
-    }
-    paramString1 = aunj.a(paramByteStringMicro1);
-    if (TextUtils.isEmpty(paramString1))
-    {
-      bfvr.a("TroopZipInnerFileDownloadWorker", bfvr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult. no string_download_url");
-      this.a.jdField_a_of_type_Bfvc.c = 1;
-      this.a.jdField_a_of_type_Bfvc.d = 102;
-      this.a.a(true, bguk.b, bguk.w, 1);
-      return;
-    }
-    paramString2 = blhn.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.zipInnerPath);
-    paramByteStringMicro1 = (QQAppInterface)this.b.get();
-    if ((paramByteStringMicro1 != null) && (bgsk.b(paramByteStringMicro1)) && (bgsk.c(paramByteStringMicro1)) && (paramBundle != null))
-    {
-      paramByteStringMicro1 = paramBundle.getString("strHttpsDomain");
-      if (!TextUtils.isEmpty(paramByteStringMicro1))
-      {
-        this.a.jdField_a_of_type_Boolean = true;
-        this.a.g = paramByteStringMicro1;
-        int i = (short)paramBundle.getInt("httpsPort", 0);
-        paramInt1 = i;
-        if (i != 0) {}
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString.trim(), 0);
+      if (paramContext == null) {
+        return "0";
       }
+      paramContext = paramContext.versionName;
+      return paramContext;
     }
-    for (paramInt1 = 443;; paramInt1 = 0)
+    catch (Exception paramContext) {}
+    return "0";
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
     {
-      if (this.a.jdField_a_of_type_Boolean) {}
-      for (;;)
+      return false;
+      try
       {
-        this.a.f = ("/ftn_compress_getfile/rkey=" + paramString1 + "&filetype=" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.zipType + "&path=" + paramString2 + "&mType=Other");
-        paramString1 = paramString3 + ":" + paramInt1;
-        this.a.jdField_a_of_type_JavaUtilList.add(paramString1);
-        if (paramInt2 != 0)
+        paramContext = paramContext.getPackageManager().getPackageInfo(paramString.trim(), 0);
+        if (paramContext != null) {
+          return true;
+        }
+      }
+      catch (Exception paramContext) {}
+    }
+    return false;
+  }
+  
+  public static boolean a(Context paramContext, String paramString1, String paramString2)
+  {
+    return a(paramContext, paramString1, paramString2, null, 0);
+  }
+  
+  public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "<--startAppWithPkgName pkgName=" + paramString1 + ",openid=" + paramString2);
+      }
+      paramString1 = paramContext.getPackageManager().getLaunchIntentForPackage(paramString1.trim());
+      paramString1.setFlags(268435456);
+      if ((paramString2 != null) && (paramString2.length() > 4)) {
+        paramString1.putExtra("current_uin", paramString2);
+      }
+      paramString1.putExtra("platformId", "qq_m");
+      paramString1.putExtra("big_brother_source_key", paramString3);
+      paramString1.putExtra("key_callback_id", paramInt);
+      paramContext.startActivity(paramString1);
+      return true;
+    }
+    catch (Exception paramContext) {}
+    return false;
+  }
+  
+  public static String b(Context paramContext, String paramString)
+  {
+    if (paramString == null) {
+      return "0";
+    }
+    paramContext = paramContext.getPackageManager();
+    paramString = paramString.split("\\|");
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = 0;
+    for (;;)
+    {
+      if (i < paramString.length)
+      {
+        if (i != 0) {
+          localStringBuffer.append("|");
+        }
+        try
         {
-          paramString2 = this.a.a(paramInt2) + ":" + paramInt1;
-          this.a.jdField_a_of_type_JavaUtilList.add(paramString2);
+          PackageInfo localPackageInfo = paramContext.getPackageInfo(paramString[i].trim(), 0);
+          if (localPackageInfo == null) {
+            localStringBuffer.append(0);
+          } else {
+            localStringBuffer.append(localPackageInfo.versionName);
+          }
         }
-        if (this.a.jdField_a_of_type_Boolean) {
-          paramString1 = "https://" + paramString1 + this.a.f;
+        catch (Exception localException)
+        {
+          localStringBuffer.append(0);
         }
+      }
+      else
+      {
+        return localStringBuffer.toString();
+      }
+      i += 1;
+    }
+  }
+  
+  public static boolean b(Context paramContext, String paramString1, String paramString2)
+  {
+    PackageManager localPackageManager = paramContext.getPackageManager();
+    paramContext = null;
+    try
+    {
+      paramString1 = localPackageManager.getPackageInfo(paramString1, 64);
+      paramContext = paramString1;
+    }
+    catch (PackageManager.NameNotFoundException paramString1)
+    {
+      do
+      {
         for (;;)
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.PreviewUrl = paramString1;
-          try
-          {
-            paramString1 = new URL(paramString1);
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp = paramString1.getHost();
-            bfvr.c("TroopZipInnerFileDownloadWorker", bfvr.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqDownloadResult. str_download_dns:" + paramString3 + " int32_server_ip:" + paramInt2 + " int32_server_port:" + paramInt3 + " mUrlParm:" + this.a.f + " port:" + paramInt1 + " isHttps:" + this.a.jdField_a_of_type_Boolean + " httpsDomain:" + this.a.g);
-            this.a.g();
-            return;
-            paramString1 = "http://" + paramString1 + this.a.f;
-          }
-          catch (Exception paramString1)
-          {
-            for (;;)
-            {
-              paramString1.printStackTrace();
-            }
+          paramString1.printStackTrace();
+        }
+      } while ((paramContext.signatures == null) || (paramContext.signatures.length <= 0));
+      paramContext = paramContext.signatures;
+      j = paramContext.length;
+      i = 0;
+    }
+    if (paramContext == null) {}
+    for (;;)
+    {
+      return false;
+      int j;
+      int i;
+      while (i < j)
+      {
+        if (paramString2.equals(MD5.toMD5(paramContext[i].toByteArray()))) {
+          return true;
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public static String c(Context paramContext, String paramString)
+  {
+    if (paramString == null) {
+      return "0";
+    }
+    paramContext = paramContext.getPackageManager();
+    paramString = paramString.split("\\|");
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = 0;
+    for (;;)
+    {
+      if (i < paramString.length)
+      {
+        if (i != 0) {
+          localStringBuffer.append("|");
+        }
+        try
+        {
+          if (paramContext.getPackageInfo(paramString[i].trim(), 0) == null) {
+            localStringBuffer.append(0);
+          } else {
+            localStringBuffer.append(1);
           }
         }
-        paramInt1 = paramInt3;
+        catch (Exception localException)
+        {
+          localStringBuffer.append(0);
+        }
       }
+      else
+      {
+        return localStringBuffer.toString();
+      }
+      i += 1;
+    }
+  }
+  
+  public static String d(Context paramContext, String paramString)
+  {
+    if (paramString == null) {
+      return "0";
+    }
+    paramContext = paramContext.getPackageManager();
+    paramString = paramString.split("\\|");
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = 0;
+    for (;;)
+    {
+      if (i < paramString.length)
+      {
+        if (i != 0) {
+          localStringBuffer.append("|");
+        }
+        try
+        {
+          PackageInfo localPackageInfo = paramContext.getPackageInfo(paramString[i].trim(), 0);
+          if (localPackageInfo == null) {
+            localStringBuffer.append(0);
+          } else {
+            localStringBuffer.append(localPackageInfo.versionCode);
+          }
+        }
+        catch (Exception localException)
+        {
+          localStringBuffer.append(0);
+        }
+      }
+      else
+      {
+        return localStringBuffer.toString();
+      }
+      i += 1;
     }
   }
 }

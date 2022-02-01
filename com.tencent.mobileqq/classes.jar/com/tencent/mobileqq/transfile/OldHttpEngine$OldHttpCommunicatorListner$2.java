@@ -1,41 +1,38 @@
 package com.tencent.mobileqq.transfile;
 
-import beum;
-import bevp;
-import bews;
-import bhva;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class OldHttpEngine$OldHttpCommunicatorListner$2
+class OldHttpEngine$OldHttpCommunicatorListner$2
   extends TimerTask
 {
-  public OldHttpEngine$OldHttpCommunicatorListner$2(bevp parambevp, beum parambeum) {}
+  OldHttpEngine$OldHttpCommunicatorListner$2(OldHttpEngine.OldHttpCommunicatorListner paramOldHttpCommunicatorListner, HttpNetReq paramHttpNetReq) {}
   
   public void run()
   {
     boolean bool = true;
     int i;
-    if ((QLog.isColorLevel()) && (this.jdField_a_of_type_Beum != null))
+    if ((QLog.isColorLevel()) && (this.val$req != null))
     {
-      i = this.jdField_a_of_type_Beum.f;
-      if (this.jdField_a_of_type_Beum.a != 1) {
+      i = this.val$req.mBusiProtoType;
+      if (this.val$req.mHttpMethod != 1) {
         break label94;
       }
     }
     for (;;)
     {
-      bews.a(i, bool, this.jdField_a_of_type_Beum.jdField_e_of_type_Int, this.jdField_a_of_type_Beum.jdField_e_of_type_JavaLangString, "scheduleRetry", "mIsCancelled:" + this.jdField_a_of_type_Bevp.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
-      if (!this.jdField_a_of_type_Bevp.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      RichMediaUtil.log(i, bool, this.val$req.mFileType, this.val$req.mMsgId, "scheduleRetry", "mIsCancelled:" + this.this$1.mIsCancelled);
+      if (!this.this$1.mIsCancelled.get()) {
         break;
       }
       return;
       label94:
       bool = false;
     }
-    this.jdField_a_of_type_Bevp.jdField_a_of_type_Bhva.a(9004, -1, "nonetwork");
-    this.jdField_a_of_type_Bevp.b(this.jdField_a_of_type_Bevp.jdField_a_of_type_Bhva, this.jdField_a_of_type_Bevp.jdField_a_of_type_Bhva);
+    this.this$1.httpMsg.setHttpErrorCode(9004, -1, "nonetwork");
+    this.this$1.handleError(this.this$1.httpMsg, this.this$1.httpMsg);
   }
 }
 

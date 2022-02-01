@@ -1,18 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.data.InviteToGroupInfo.UinInfo;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public final class bfov
-  implements Parcelable.Creator<InviteToGroupInfo.UinInfo>
+final class bfov
+  implements DownloadParams.DecodeHandler
 {
-  public InviteToGroupInfo.UinInfo a(Parcel paramParcel)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    return new InviteToGroupInfo.UinInfo(paramParcel);
-  }
-  
-  public InviteToGroupInfo.UinInfo[] a(int paramInt)
-  {
-    return new InviteToGroupInfo.UinInfo[paramInt];
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
+    }
+    Object localObject;
+    do
+    {
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 2);
+    paramDownloadParams = (int[])localObject;
+    return bfvo.d(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 

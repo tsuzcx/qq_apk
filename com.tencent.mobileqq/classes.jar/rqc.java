@@ -1,15 +1,35 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
-final class rqc
-  extends AnimatorListenerAdapter
+public class rqc<K, V>
 {
-  rqc(View paramView) {}
+  private Map a = new LinkedHashMap();
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(V paramV, rqd paramrqd)
   {
-    this.a.setLayerType(0, null);
+    this.a.put(paramrqd, paramV);
+  }
+  
+  public boolean a(K paramK, rqe paramrqe)
+  {
+    Iterator localIterator = this.a.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      rqd localrqd = (rqd)localIterator.next();
+      if ((localrqd != null) && (!localrqd.a(paramK)))
+      {
+        if ((paramrqe != null) && (this.a.get(localrqd) != null)) {
+          paramrqe.a(this.a.get(localrqd));
+        }
+        return false;
+      }
+    }
+    if (paramrqe != null) {
+      paramrqe.a();
+    }
+    return true;
   }
 }
 

@@ -1,29 +1,47 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.fragment.MineFragment.2;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import tencent.im.oidb.cmd0x91f.oidb_0x91f.ReqBody;
 
-class atrh
+public class atrh
 {
-  long jdField_a_of_type_Long = 0L;
-  ByteStringMicro jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = null;
-  String jdField_a_of_type_JavaLangString = null;
-  List<String> jdField_a_of_type_JavaUtilList = null;
-  short jdField_a_of_type_Short = 0;
-  String jdField_b_of_type_JavaLangString = null;
-  List<String> jdField_b_of_type_JavaUtilList = null;
-  short jdField_b_of_type_Short = 0;
-  String c = null;
-  String d = null;
-  String e = null;
-  String f = null;
-  String g = null;
-  String h = null;
-  String i = null;
+  public static void a(NearbyAppInterface paramNearbyAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.nearby", 2, "clearLbsInfoAndExit");
+    }
+    awka.a(paramNearbyAppInterface.getAccount(), "nearby_enter_time", Long.valueOf(0L));
+    if ((amxd)paramNearbyAppInterface.a(3) != null)
+    {
+      oidb_0x91f.ReqBody localReqBody = new oidb_0x91f.ReqBody();
+      localReqBody.uint32_state.set(0);
+      nmb.a(paramNearbyAppInterface, new atri(paramNearbyAppInterface), localReqBody.toByteArray(), "OidbSvc.0x91f", 2335, 5, null, 0L);
+    }
+    awka.a(paramNearbyAppInterface.getAccount(), false);
+    awka.a(paramNearbyAppInterface.getAccount(), "nearby_people_disclaimer_ok_5.8.0", Boolean.valueOf(false));
+    paramNearbyAppInterface.c = false;
+    ThreadManager.post(new MineFragment.2(paramNearbyAppInterface), 10, null, true);
+  }
   
-  private atrh(atrd paramatrd) {}
+  public static void b(NearbyAppInterface paramNearbyAppInterface)
+  {
+    File localFile = BaseApplicationImpl.getContext().getFileStreamPath(paramNearbyAppInterface.getCurrentAccountUin() + "v5.3.nb");
+    if (localFile.exists())
+    {
+      localFile.delete();
+      awkj.a("Q.nearby", "clearNearbyCache", new Object[0]);
+    }
+    awka.a(paramNearbyAppInterface.getAccount(), "history_valid", Boolean.valueOf(false));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atrh
  * JD-Core Version:    0.7.0.1
  */

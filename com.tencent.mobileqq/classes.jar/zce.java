@@ -1,17 +1,17 @@
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
+import com.tencent.biz.subscribe.event.RecommendFeedbackEvent;
+
 class zce
-  implements wvd
+  implements zjr
 {
-  zce(zbz paramzbz, zcm paramzcm) {}
+  zce(zcd paramzcd) {}
   
-  public void a(boolean paramBoolean, wuz paramwuz)
+  public void a(boolean paramBoolean)
   {
-    yuk.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
-    if ((paramBoolean) && (paramwuz != null))
-    {
-      this.jdField_a_of_type_Zbz.a(paramwuz.b, paramwuz.a, this.jdField_a_of_type_Zcm);
-      return;
+    if (paramBoolean) {
+      SimpleEventBus.getInstance().dispatchEvent(new RecommendFeedbackEvent(RecommendBannerItemView.a(this.a.a)));
     }
-    yuk.e("DoodleEmojiManager", "onLbsUpdate failed.");
   }
 }
 

@@ -17,10 +17,9 @@ import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import aoti;
-import bdll;
-import bdzi;
-import bhnv;
+import anmf;
+import bcef;
+import bcsz;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -30,6 +29,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
@@ -98,7 +98,7 @@ public class TroopRequestRefuseActivity
             ((structmsg.SystemMsgActionInfo)localObject).msg.set(paramString);
           }
           ((structmsg.SystemMsgActionInfo)localObject).blacklist.set(paramBoolean);
-          this.app.a().a().a(i, l1, l2, j, k, m, n, (structmsg.SystemMsgActionInfo)localObject, 0);
+          this.app.getMsgHandler().a().a(i, l1, l2, j, k, m, n, (structmsg.SystemMsgActionInfo)localObject, 0);
           bool1 = true;
         }
       }
@@ -123,37 +123,38 @@ public class TroopRequestRefuseActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131563064);
-    setTitle(2131697111);
-    setLeftButton(2131690580, this);
-    setRightHighlightButton(2131717891, this);
+    super.setContentView(2131562945);
+    setTitle(2131697253);
+    setLeftButton(2131690620, this);
+    setRightHighlightButton(2131718131, this);
     enableRightHighlight(true);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366147));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366175));
     this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundColor(-1);
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380199));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379930));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(25));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364494));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364513));
     paramBundle = a();
     if (!TextUtils.isEmpty(paramBundle))
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setText(paramBundle);
       this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.length());
     }
-    long l = bdzi.a().b();
-    this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = bdzi.a().a(Long.valueOf(l));
+    long l = bcsz.a().b();
+    this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = bcsz.a().a(Long.valueOf(l));
     if (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null) {
       this.jdField_a_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get());
     }
-    bdll.b(this.app, "P_CliOper", "Grp_sysmsg", "", "Grp_ask", "exp_reject", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
+    bcef.b(this.app, "P_CliOper", "Grp_sysmsg", "", "Grp_ask", "exp_reject", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
     return true;
   }
   
@@ -172,8 +173,8 @@ public class TroopRequestRefuseActivity
   public void onClick(View paramView)
   {
     if (paramView == this.rightHighLView) {
-      if (!bhnv.d(this)) {
-        QQToast.a(this, getString(2131693963), 0).b(getTitleBarHeight());
+      if (!NetworkUtil.isNetSupport(this)) {
+        QQToast.a(this, getString(2131694062), 0).b(getTitleBarHeight());
       }
     }
     for (;;)
@@ -198,7 +199,7 @@ public class TroopRequestRefuseActivity
       label148:
       for (String str2 = "0";; str2 = "1")
       {
-        bdll.b(localQQAppInterface, "P_CliOper", "Grp_sysmsg", "", "Grp_ask", "Clk_send_reject", 0, 0, str3, str1, str2, "");
+        bcef.b(localQQAppInterface, "P_CliOper", "Grp_sysmsg", "", "Grp_ask", "Clk_send_reject", 0, 0, str3, str1, str2, "");
         break;
         str1 = "1";
         break label101;
@@ -220,7 +221,7 @@ public class TroopRequestRefuseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopRequestRefuseActivity
  * JD-Core Version:    0.7.0.1
  */

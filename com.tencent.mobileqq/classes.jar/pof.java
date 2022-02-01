@@ -1,13 +1,20 @@
-import java.util.Comparator;
+import java.net.URL;
 
-class pof
-  implements Comparator<Integer>
+public class pof
 {
-  pof(pod parampod) {}
+  int jdField_a_of_type_Int;
+  URL jdField_a_of_type_JavaNetURL;
+  int b;
+  int c;
+  int d;
   
-  public int a(Integer paramInteger1, Integer paramInteger2)
+  public String toString()
   {
-    return paramInteger1.intValue() - paramInteger2.intValue();
+    StringBuilder localStringBuilder = new StringBuilder().append("[WaterFallPic]--> url=");
+    if (this.jdField_a_of_type_JavaNetURL != null) {}
+    for (String str = this.jdField_a_of_type_JavaNetURL.toString();; str = "") {
+      return str + ",originWidth =" + this.jdField_a_of_type_Int + ",originHeight =" + this.b + ",calcHeight =" + this.c + ",scaleHeight =" + this.d;
+    }
   }
 }
 

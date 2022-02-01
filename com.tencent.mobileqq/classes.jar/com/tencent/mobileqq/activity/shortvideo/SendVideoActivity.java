@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
 import Override;
-import ajan;
-import alug;
-import amhi;
-import amhk;
+import ahux;
+import akrx;
+import alcf;
+import alch;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.view.MotionEvent;
-import bdbt;
-import bdcy;
-import berp;
-import bexk;
-import beyb;
-import bhvc;
-import blha;
+import bbwb;
+import bjmp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
+import com.tencent.mobileqq.transfile.BaseTransProcessor;
+import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.os.MqqHandler;
@@ -32,51 +32,52 @@ public class SendVideoActivity
   extends BaseActivity
   implements Handler.Callback
 {
-  private static blha a;
+  private static bjmp a;
   
   public static void a(Intent paramIntent)
   {
     int i = paramIntent.getIntExtra("sv_encode_max_bitrate", -1);
     if (i > 0) {
-      bdbt.r = i;
+      CodecParam.mMaxrate = i;
     }
     i = paramIntent.getIntExtra("sv_encode_min_bitrate", -1);
     if (i > 0) {
-      bdbt.s = i;
+      CodecParam.mMinrate = i;
     }
     i = paramIntent.getIntExtra("sv_encode_qmax", -1);
     if (i > 0) {
-      bdbt.t = i;
+      CodecParam.mQmax = i;
     }
     i = paramIntent.getIntExtra("sv_encode_qmin", -1);
     if (i > 0) {
-      bdbt.u = i;
+      CodecParam.mQmin = i;
     }
     i = paramIntent.getIntExtra("sv_encode_qmaxdiff", -1);
     if (i > 0) {
-      bdbt.v = i;
+      CodecParam.mMaxQdiff = i;
     }
     i = paramIntent.getIntExtra("sv_encode_ref_frame", -1);
     if (i > 0) {
-      bdbt.w = i;
+      CodecParam.mRefframe = i;
     }
     i = paramIntent.getIntExtra("sv_encode_smooth", -1);
     if (i > 0) {
-      bdbt.x = i;
+      CodecParam.mIsSmooth = i;
     }
-    bdbt.E = paramIntent.getIntExtra("sv_encode_totaltime_adjust", 0);
-    bdbt.F = paramIntent.getIntExtra("sv_encode_timestamp_fix", 0);
-    bdbt.G = paramIntent.getIntExtra("sv_encode_bless_audio_time_low", 0);
-    bdbt.H = paramIntent.getIntExtra("sv_encode_bless_audio_time_high", 0);
-    bdbt.I = paramIntent.getIntExtra("sv_encode_bless_audio_time_ratio", 65537);
-    bdbt.a(paramIntent.getBooleanExtra("sv_encode_baseline_mp4", false));
+    CodecParam.mEnableTotalTimeAdjust = paramIntent.getIntExtra("sv_encode_totaltime_adjust", 0);
+    CodecParam.mEnableTimestampFix = paramIntent.getIntExtra("sv_encode_timestamp_fix", 0);
+    CodecParam.mAudioTimestampLow = paramIntent.getIntExtra("sv_encode_bless_audio_time_low", 0);
+    CodecParam.mAudioTimestampHigh = paramIntent.getIntExtra("sv_encode_bless_audio_time_high", 0);
+    CodecParam.mAudioTimeRatio = paramIntent.getIntExtra("sv_encode_bless_audio_time_ratio", 65537);
+    CodecParam.setEnableBaseLineMp4Flag(paramIntent.getBooleanExtra("sv_encode_baseline_mp4", false));
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -98,12 +99,12 @@ public class SendVideoActivity
         QLog.d("SendVideoActivity", 2, "doOnCreate(), <<===");
       }
       return true;
-      new amhk(this, null).execute(new Void[0]);
+      new alch(this, null).execute(new Void[0]);
       continue;
       paramBundle = getIntent().getStringExtra("activity_before_enter_send_video");
       if ((paramBundle != null) && (ShortVideoPreviewActivity.class.getName().equals(paramBundle)))
       {
-        new amhi(this).execute(new Void[0]);
+        new alcf(this).execute(new Void[0]);
       }
       else
       {
@@ -117,8 +118,8 @@ public class SendVideoActivity
           }
           for (;;)
           {
-            alug.a("", "0X80088E4", String.valueOf(i));
-            bdcy.a(this.app, false);
+            akrx.a("", "0X80088E4", String.valueOf(i));
+            bbwb.a(this.app, false);
             break;
             if (j == 3000) {
               i = 2;
@@ -140,7 +141,7 @@ public class SendVideoActivity
             }
             else
             {
-              a = new blha(this);
+              a = new bjmp(this);
               a.sendEmptyMessageDelayed(1, 45000L);
             }
           }
@@ -174,16 +175,16 @@ public class SendVideoActivity
       if (QLog.isColorLevel()) {
         QLog.i("SendVideoActivity", 2, "handleMessage: send video timeout!");
       }
-      paramMessage = ((ajan)getAppInterface().getManager(138)).a();
+      paramMessage = ((ahux)getAppInterface().getManager(138)).a();
       if (paramMessage != null)
       {
-        bhvc localbhvc = this.app.a().a(paramMessage.frienduin, paramMessage.uniseq);
-        if ((localbhvc != null) && (bexk.class.isInstance(localbhvc)))
+        IHttpCommunicatorListener localIHttpCommunicatorListener = this.app.getTransFileController().findProcessor(paramMessage.frienduin, paramMessage.uniseq);
+        if ((localIHttpCommunicatorListener != null) && (ShortVideoUploadProcessor.class.isInstance(localIHttpCommunicatorListener)))
         {
-          boolean bool = ((berp)localbhvc).d();
+          boolean bool = ((BaseTransProcessor)localIHttpCommunicatorListener).isPause();
           int i = paramMessage.videoFileStatus;
           if ((bool) || (i == 1002) || (i == 1001)) {
-            this.app.a().d(paramMessage.frienduin, paramMessage.uniseq);
+            this.app.getTransFileController().stopSendingShortVideo(paramMessage.frienduin, paramMessage.uniseq);
           }
         }
       }

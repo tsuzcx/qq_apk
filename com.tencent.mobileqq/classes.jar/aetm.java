@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.HongbaoShowerActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class aetm
-  implements View.OnClickListener
+  extends bjmc
 {
-  public aetm(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  public aetm(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    HongbaoShowerActivity.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.a.jdField_f_of_type_Boolean = true;
   }
 }
 

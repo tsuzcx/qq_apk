@@ -1,11 +1,12 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class bbsc
+public abstract interface bbsc
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat);
+  
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo, int paramInt);
+  
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean);
 }
 
 

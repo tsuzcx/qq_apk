@@ -1,27 +1,8 @@
-import android.text.Editable;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.widget.XEditTextEx;
+import android.view.View;
 
-class aiat
-  implements aiev
+public abstract interface aiat
 {
-  aiat(aiar paramaiar) {}
-  
-  public boolean a(PhotoListPanel paramPhotoListPanel)
-  {
-    return false;
-  }
-  
-  public boolean b(PhotoListPanel paramPhotoListPanel)
-  {
-    if (aiar.a(this.a).J) {}
-    while ((aiar.a(this.a).o()) || (aiar.a(this.a).a == null) || (aiar.a(this.a).a.getText() == null) || (aiar.a(this.a).a.getText().length() <= 0)) {
-      return false;
-    }
-    aiar.a(this.a).as();
-    return true;
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 

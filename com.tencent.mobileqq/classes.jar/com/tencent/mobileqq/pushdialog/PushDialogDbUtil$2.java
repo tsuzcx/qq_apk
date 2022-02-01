@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.pushdialog;
 
-import banf;
+import azdf;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.Date;
@@ -8,11 +8,11 @@ import java.util.Date;
 public class PushDialogDbUtil$2
   implements Runnable
 {
-  public PushDialogDbUtil$2(banf parambanf, EntityManager paramEntityManager, PushDialogTemplate paramPushDialogTemplate) {}
+  public PushDialogDbUtil$2(azdf paramazdf, EntityManager paramEntityManager, PushDialogTemplate paramPushDialogTemplate) {}
   
   public void run()
   {
-    synchronized (banf.a(this.this$0))
+    synchronized (azdf.a(this.this$0))
     {
       this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate);
       if (QLog.isColorLevel()) {

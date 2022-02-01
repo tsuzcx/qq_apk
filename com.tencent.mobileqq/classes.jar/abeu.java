@@ -1,51 +1,56 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.provider.Settings.Secure;
+import android.telephony.TelephonyManager;
+import java.io.File;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
+import java.util.UUID;
 
 public class abeu
-  extends BroadcastReceiver
+  extends bhwr
 {
-  public abeu(NewerGuidePlugin paramNewerGuidePlugin) {}
+  private static final String b = ;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static String a()
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, String.format("mAvatarReceiver.onReceive action=%s", new Object[] { paramContext }));
-    }
-    if ("ACTION_NEWER_GUIDE_SELECT_AVATAR_RESULT".equals(paramContext))
+    return b + File.separator + ".GameCenterWebBuffer" + File.separator + "Images/games";
+  }
+  
+  public static String a(Context paramContext)
+  {
+    Object localObject = (TelephonyManager)paramContext.getSystemService("phone");
+    String str = "" + ((TelephonyManager)localObject).getDeviceId();
+    localObject = "" + ((TelephonyManager)localObject).getSimSerialNumber();
+    long l1 = ("" + Settings.Secure.getString(paramContext.getContentResolver(), "android_id")).hashCode();
+    long l2 = str.hashCode();
+    return new UUID(l1, ((String)localObject).hashCode() | l2 << 32).toString();
+  }
+  
+  public static String b()
+  {
+    try
     {
-      paramContext = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
-      boolean bool = paramIntent.getBooleanExtra("PhotoConst.SYNCQZONE", false);
-      paramIntent = paramIntent.getStringExtra("PhotoConst.SOURCE_FROM");
-      if (!TextUtils.isEmpty(paramContext))
+      InetAddress localInetAddress;
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("NewerGuidePlugin", 2, String.format("mAvatarReceiver.onReceive path=%s syncQZone=%s sourceFrom=%s", new Object[] { paramContext, Boolean.valueOf(bool), paramIntent }));
-        }
-        Bundle localBundle = new Bundle();
-        localBundle.putString("key_action", "setAvatar");
-        localBundle.putString("path", paramContext);
-        localBundle.putBoolean("PhotoConst.SYNCQZONE", bool);
-        localBundle.putString("PhotoConst.SOURCE_FROM", paramIntent);
-        paramContext = asev.a("ipc_newer_guide", null, NewerGuidePlugin.a(this.a).key, localBundle);
-        asjw.a().a(paramContext);
-        if (NewerGuidePlugin.a(this.a) == null)
+        localObject = NetworkInterface.getNetworkInterfaces();
+        Enumeration localEnumeration;
+        while (!localEnumeration.hasMoreElements())
         {
-          paramContext = this.a.mRuntime.a();
-          int i = paramContext.getResources().getDimensionPixelSize(2131299011);
-          NewerGuidePlugin.a(this.a, new bjbs(paramContext, i));
-          NewerGuidePlugin.a(this.a).a(anzj.a(2131706324));
+          if (!((Enumeration)localObject).hasMoreElements()) {
+            break;
+          }
+          localEnumeration = ((NetworkInterface)((Enumeration)localObject).nextElement()).getInetAddresses();
         }
-        NewerGuidePlugin.a(this.a).show();
-      }
+        localInetAddress = (InetAddress)localEnumeration.nextElement();
+      } while (localInetAddress.isLoopbackAddress());
+      Object localObject = localInetAddress.getHostAddress().toString();
+      return localObject;
     }
+    catch (SocketException localSocketException) {}
+    return null;
   }
 }
 

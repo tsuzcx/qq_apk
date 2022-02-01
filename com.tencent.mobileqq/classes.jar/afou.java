@@ -1,19 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
 public class afou
-  implements DialogInterface.OnKeyListener
+  implements afpa
 {
-  public afou(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  public afou(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void a()
   {
-    if (paramInt == 4) {
-      this.a.finish();
-    }
-    return false;
+    this.a.b();
+  }
+  
+  public void b()
+  {
+    this.a.b();
   }
 }
 

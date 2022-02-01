@@ -1,146 +1,43 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
 
-public class bilz
+class bilz
+  extends SosoInterface.OnLocationListener
 {
-  public static long a;
-  public static WebViewPluginEngine a;
-  public static final Object a;
-  public static HashMap<Integer, bimb> a;
-  public static volatile boolean a;
-  public static WebViewPluginEngine b;
-  public static HashMap<Integer, bimb> b;
-  public static volatile boolean b;
-  public static volatile boolean c;
-  public static volatile boolean d;
-  
-  static
+  bilz(bily parambily, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2, int paramInt2, String paramString3, int paramInt3, String paramString4, String paramString5, String paramString6)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    b = new HashMap();
-    jdField_a_of_type_JavaLangObject = new Object();
+    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString1);
   }
   
-  public static void a()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (System.currentTimeMillis() - jdField_a_of_type_Long > 3600000L)
-    {
-      Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      bimb localbimb;
-      HashMap localHashMap;
-      while (localIterator.hasNext())
+    double d2 = 0.0D;
+    if (QLog.isColorLevel()) {
+      QLog.d("QidianManager", 2, "onLocationFinish(): BEGIN errCode=" + paramInt);
+    }
+    String str;
+    double d1;
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null)) {
+      if (paramSosoLbsInfo.mLocation.address != null)
       {
-        localbimb = (bimb)localIterator.next();
-        localHashMap = new HashMap(4);
-        localHashMap.put("type", String.valueOf(localbimb.a));
-        localHashMap.put("totalNum", String.valueOf(localbimb.b));
-        localHashMap.put("hasProc", String.valueOf(localbimb.c));
-        localHashMap.put("noProc", String.valueOf(localbimb.d));
-        bdmc.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actPreloadWebview", true, 0L, 0L, localHashMap, null);
-      }
-      localIterator = b.values().iterator();
-      while (localIterator.hasNext())
-      {
-        localbimb = (bimb)localIterator.next();
-        localHashMap = new HashMap(4);
-        localHashMap.put("type", String.valueOf(localbimb.a));
-        localHashMap.put("totalNum", String.valueOf(localbimb.b));
-        localHashMap.put("hasProc", String.valueOf(localbimb.c));
-        localHashMap.put("noProc", String.valueOf(localbimb.d));
-        bdmc.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actJumpWebview", true, 0L, 0L, localHashMap, null);
-      }
-      jdField_a_of_type_JavaUtilHashMap.clear();
-      b.clear();
-      jdField_a_of_type_Long = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadService", 2, "reportInterval...");
+        str = paramSosoLbsInfo.mLocation.address;
+        if (QLog.isColorLevel()) {
+          QLog.d("QidianManager", 2, "onLocationFinish() latitude=" + paramSosoLbsInfo.mLocation.mLat02 + ", longitude=" + paramSosoLbsInfo.mLocation.mLon02 + ", address=" + str);
+        }
+        d1 = paramSosoLbsInfo.mLocation.mLat02;
+        d2 = paramSosoLbsInfo.mLocation.mLon02;
       }
     }
-  }
-  
-  public static void a(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("_accelerator_mode_", 3);
-    localBundle.putInt("from", paramInt);
-    birw.a().a(localBundle);
-  }
-  
-  public static boolean a(AppRuntime paramAppRuntime)
-  {
-    if (paramAppRuntime == null) {
-      return false;
-    }
-    return paramAppRuntime.getClass().getSimpleName().equals("ReaderRuntime");
-  }
-  
-  public static void b(int paramInt)
-  {
-    int j = 0;
-    Object localObject = (arkb)aran.a().a(158);
-    if ((localObject != null) && (((arkb)localObject).b == 1)) {
+    for (;;)
+    {
+      this.jdField_a_of_type_Bily.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true, d1, d2, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.c, this.d, this.e);
       return;
+      str = "";
+      break;
+      d1 = 0.0D;
     }
-    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
-    if (!bool)
-    {
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("from", 305);
-      ((Intent)localObject).setAction("com.tencent.mobileqq.webprocess.preload_web_process");
-      ((Intent)localObject).setPackage(MobileQQ.getContext().getPackageName());
-      ((Intent)localObject).putExtra("com.tencent.mobileqq.webprocess.start_time", System.currentTimeMillis());
-      BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadService", 2, "preloadWebview...");
-      }
-    }
-    localObject = new bimb(paramInt);
-    if (jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-      localObject = (bimb)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    }
-    ((bimb)localObject).b += 1;
-    int k = ((bimb)localObject).c;
-    if (bool)
-    {
-      i = 1;
-      label184:
-      ((bimb)localObject).c = (i + k);
-      k = ((bimb)localObject).d;
-      if (!bool) {
-        break label244;
-      }
-    }
-    label244:
-    for (int i = j;; i = 1)
-    {
-      ((bimb)localObject).d = (k + i);
-      jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject);
-      if (((bimb)localObject).b <= 3) {
-        break;
-      }
-      a();
-      return;
-      i = 0;
-      break label184;
-    }
-  }
-  
-  public static boolean b(AppRuntime paramAppRuntime)
-  {
-    if (paramAppRuntime == null) {
-      return false;
-    }
-    return paramAppRuntime.getClass().getSimpleName().equals("VipComicPluginRuntime");
   }
 }
 

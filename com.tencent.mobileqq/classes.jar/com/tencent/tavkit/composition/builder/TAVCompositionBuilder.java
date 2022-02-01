@@ -64,22 +64,22 @@ public class TAVCompositionBuilder
     while (localIterator.hasNext()) {
       CompositionUtils.reloadVideoStartTimeWithTransitionableVideo((List)localIterator.next());
     }
-    Logger.longlogd("TAVCompositionBuilder", "buildComposition: reloadVideoChannels = " + this.builderModel.getVideoChannels());
+    Logger.d("TAVCompositionBuilder", "buildComposition: reloadVideoChannels = " + this.builderModel.getVideoChannels());
     localIterator = this.builderModel.getAudioChannels().iterator();
     while (localIterator.hasNext()) {
       CompositionUtils.reloadAudioStartTimeWithTransitionableAudio((List)localIterator.next());
     }
-    Logger.longlogd("TAVCompositionBuilder", "buildComposition: reloadAudioChannels = " + this.builderModel.getAudioChannels());
+    Logger.d("TAVCompositionBuilder", "buildComposition: reloadAudioChannels = " + this.builderModel.getAudioChannels());
   }
   
   public TAVSource buildSource()
   {
-    Logger.longlogd("TAVCompositionBuilder", "buildSource: begin, tavComposition = " + this.builderModel.getTavComposition());
+    Logger.i("TAVCompositionBuilder", "buildSource: begin, tavComposition = " + this.builderModel.getTavComposition());
     TAVSource localTAVSource = new TAVSource();
     localTAVSource.setAsset(buildComposition());
     localTAVSource.setVideoComposition(buildVideoComposition());
     localTAVSource.setAudioMix(buildAudioMix());
-    Logger.longlogd("TAVCompositionBuilder", "buildSource: end, return source = " + localTAVSource);
+    Logger.i("TAVCompositionBuilder", "buildSource: end, return source = " + localTAVSource);
     return localTAVSource;
   }
   

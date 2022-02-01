@@ -1,44 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class anoi
-  implements anom
+class anoi
+  implements View.OnClickListener
 {
-  anoi(int paramInt) {}
+  anoi(anoh paramanoh) {}
   
-  public void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt2, int[] paramArrayOfInt, int paramInt3)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt2 + ",from:" + paramInt3 + ",cmd:" + paramString3);
+    if (anoh.a != null) {
+      anoh.a(this.a).startActivity(anoh.a);
     }
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
-      return;
-    }
-    try
-    {
-      paramQQAppInterface = anog.a(paramInt2, paramArrayOfInt);
-      if (paramQQAppInterface == null)
-      {
-        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
-        return;
-      }
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
-      return;
-    }
-    if (this.a == 1000) {
-      paramQQAppInterface.put("uin", paramString1);
-    }
-    paramQQAppInterface.put("openId", paramString2);
-    paramString1 = new Bundle();
-    paramString1.putString("resData", paramQQAppInterface.toString());
-    paramQQAppInterface = EIPCResult.createResult(0, paramString1);
-    anav.a().callbackResult(paramInt1, paramQQAppInterface);
+    bcef.b(null, "CliOper", "", "", "0X8006B15", "0X8006B15", 0, 0, "", "", "", "");
+    bcef.b(null, "dc00898", "", "", "0X8009AC8", "0X8009AC8", 0, 0, "", "", "", "");
+    Object localObject = PreferenceManager.getDefaultSharedPreferences(anoh.a(this.a));
+    int i = ((SharedPreferences)localObject).getInt("push_msg_notify_open", 0);
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putInt("push_msg_notify_open", i + 1);
+    ((SharedPreferences.Editor)localObject).commit();
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

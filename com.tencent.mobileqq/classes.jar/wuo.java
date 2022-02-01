@@ -1,49 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserId;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.LayoutParams;
+import java.util.Comparator;
 
 public class wuo
-  implements wiq
+  implements Comparator<View>
 {
-  public String a;
-  public String b;
-  
-  public wuo(String paramString1, String paramString2)
+  public int a(View paramView1, View paramView2)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public qqstory_struct.UserId a()
-  {
-    qqstory_struct.UserId localUserId = new qqstory_struct.UserId();
-    if (!TextUtils.isEmpty(this.a)) {
-      localUserId.uid.set(Long.valueOf(this.a).longValue());
-    }
-    localUserId.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localUserId;
-  }
-  
-  public boolean a()
-  {
-    return (QQStoryContext.a().a(this.b)) || (QQStoryContext.a().b(this.a));
-  }
-  
-  public void copy(Object paramObject)
-  {
-    if ((paramObject instanceof wuo))
+    paramView1 = (XViewPager.LayoutParams)paramView1.getLayoutParams();
+    paramView2 = (XViewPager.LayoutParams)paramView2.getLayoutParams();
+    if (paramView1.a != paramView2.a)
     {
-      this.a = ((wuo)paramObject).a;
-      this.b = ((wuo)paramObject).b;
+      if (paramView1.a) {
+        return 1;
+      }
+      return -1;
     }
-  }
-  
-  public String toString()
-  {
-    return "UserID{qq=" + this.a + ", unionId='" + this.b + '\'' + '}';
+    return paramView1.b - paramView2.b;
   }
 }
 

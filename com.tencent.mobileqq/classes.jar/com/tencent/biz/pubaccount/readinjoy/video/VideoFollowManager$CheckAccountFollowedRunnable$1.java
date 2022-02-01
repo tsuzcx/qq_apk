@@ -4,7 +4,7 @@ import com.tencent.biz.pubaccount.VideoInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import rzd;
+import sgh;
 
 class VideoFollowManager$CheckAccountFollowedRunnable$1
   implements Runnable

@@ -46,6 +46,7 @@ public class ElementExposureReporter
   
   private void detect(View paramView, Rect paramRect)
   {
+    Log.d("LazyInitSequence", "detect view");
     Rect localRect;
     if (this.mFrontPageInfo != null) {
       if (paramView == this.mFrontPageInfo.getPageView()) {

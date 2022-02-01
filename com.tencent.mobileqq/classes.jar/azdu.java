@@ -1,32 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
 
-class azdu
-  extends Handler
+public class azdu
 {
-  private WeakReference<azdh> a;
+  public long a;
+  public QQRecorder.RecorderParam a;
+  public String a;
   
-  public azdu(azdh paramazdh)
+  public azdu(String paramString, long paramLong, QQRecorder.RecorderParam paramRecorderParam)
   {
-    this.a = new WeakReference(paramazdh);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    azdh localazdh = (azdh)this.a.get();
-    if (localazdh == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 100: 
-      azdh.a(localazdh, (azdw)paramMessage.obj);
-      return;
-    }
-    azdh.a(localazdh);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam = paramRecorderParam;
   }
 }
 

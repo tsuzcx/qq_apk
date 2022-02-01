@@ -1,26 +1,42 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter.2;
-import com.tencent.widget.AbsListView;
+import android.app.Activity;
+import android.view.Display;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.tbs.reader.TbsReaderView;
 
-public class aspx
-  implements blih
+class aspx
+  implements View.OnClickListener
 {
-  public aspx(EmotionPanelViewPagerAdapter.2 param2) {}
+  aspx(aspt paramaspt, int paramInt, Activity paramActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 0) || (paramInt == 2))
+    int i;
+    if (this.jdField_a_of_type_Int == 5018)
     {
-      URLDrawable.resume();
-      if (this.a.jdField_a_of_type_Int == 1) {
-        EmotionPanelViewPagerAdapter.a(this.a.this$0, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_a_of_type_ComTencentWidgetListView);
+      Display localDisplay = this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay();
+      if (localDisplay.getWidth() > localDisplay.getHeight())
+      {
+        i = 0;
+        if (i == 0) {
+          break label61;
+        }
+        this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(0);
       }
-      return;
     }
-    URLDrawable.pause();
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      i = 1;
+      break;
+      label61:
+      this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
+      continue;
+      aspt.a(this.jdField_a_of_type_Aspt).doCommand(Integer.valueOf(this.jdField_a_of_type_Int), null, null);
+    }
   }
 }
 

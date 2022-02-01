@@ -1,12 +1,6 @@
-public class otn
+public abstract interface otn
 {
-  public int a;
-  public String a;
-  
-  public boolean a()
-  {
-    return (this.a == 5) || (this.a == 4);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

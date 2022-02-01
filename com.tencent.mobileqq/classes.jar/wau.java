@@ -1,41 +1,38 @@
-import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.biz.qqcircle.polylike.flowlayout.QCircleFlowLayout;
-import com.tencent.biz.qqcircle.widgets.QCircleGiftRecordView;
-import com.tencent.biz.qqcircle.widgets.QCircleLightInteractPolyLikeWidget;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import qqcircle.QQCircleFeedBase.StPolyLike;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.FriendViewHolder.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class wau
-  extends vsn<QQCircleFeedBase.StPolyLike>
+  extends wat
 {
-  public wau(List<QQCircleFeedBase.StPolyLike> paramList)
-  {
-    super(localList);
-  }
+  private FaceDrawable a;
   
-  public View a(QCircleFlowLayout paramQCircleFlowLayout, int paramInt, QQCircleFeedBase.StPolyLike paramStPolyLike)
+  public void a(vxd paramvxd)
   {
-    paramQCircleFlowLayout = LayoutInflater.from(this.a.getContext()).inflate(2131560771, paramQCircleFlowLayout, false);
-    URLImageView localURLImageView = (URLImageView)paramQCircleFlowLayout.findViewById(2131373912);
-    QCircleGiftRecordView localQCircleGiftRecordView = (QCircleGiftRecordView)paramQCircleFlowLayout.findViewById(2131374055);
-    if (paramStPolyLike.articleType.get() == 0)
+    super.a(paramvxd);
+    this.itemView.setTag(paramvxd.a);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      localQCircleGiftRecordView.setVisibility(8);
-      localURLImageView.setVisibility(0);
-      uys.a(paramStPolyLike.polyIconUrl.get(), localURLImageView);
-      return paramQCircleFlowLayout;
+      localObject = (QQAppInterface)localObject;
+      String str1 = String.valueOf(paramvxd.b);
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable = FaceDrawable.getFaceDrawable((AppInterface)localObject, 1, str1);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable);
+      String str2 = ContactUtils.getFriendShowName((QQAppInterface)localObject, str1);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str2);
+      ThreadManager.post(new FriendViewHolder.1(this, (QQAppInterface)localObject, str1), 8, null, true);
+      if (QLog.isColorLevel()) {
+        QLog.e("zivonchen", 2, "FriendViewHolder userItem = " + paramvxd.b + ", name = " + str2 + ", faceDrawable = " + this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable);
+      }
     }
-    localURLImageView.setVisibility(8);
-    localQCircleGiftRecordView.setVisibility(0);
-    localQCircleGiftRecordView.setIconUrl(paramStPolyLike.polyIconUrl.get());
-    localQCircleGiftRecordView.setGiftCount(paramStPolyLike.count.get(), true);
-    localQCircleGiftRecordView.setUIStyle(paramStPolyLike.polyTxtColor.get(), paramStPolyLike.polyUnderColor.get());
-    return paramQCircleFlowLayout;
   }
 }
 

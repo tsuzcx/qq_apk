@@ -1,0 +1,23 @@
+package com.tencent.weishi.module.edit.widget.playtrack.provider;
+
+import android.graphics.Bitmap;
+import android.os.Handler;
+import com.tencent.tav.coremedia.CMTime;
+import com.tencent.weseevideo.editor.utils.HandlerUtils;
+
+class VideoThumbAssetProvider$1
+  implements VideoThumbListener
+{
+  VideoThumbAssetProvider$1(VideoThumbAssetProvider paramVideoThumbAssetProvider) {}
+  
+  public void onThumbGenerated(Object paramObject, CMTime paramCMTime, Bitmap paramBitmap)
+  {
+    HandlerUtils.getMainHandler().post(new VideoThumbAssetProvider.1.1(this, paramCMTime, paramBitmap));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+ * Qualified Name:     com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbAssetProvider.1
+ * JD-Core Version:    0.7.0.1
+ */

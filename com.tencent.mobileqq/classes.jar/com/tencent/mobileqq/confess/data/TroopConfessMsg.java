@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.confess.data;
 
+import amsw;
 import android.text.TextUtils;
-import anyw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
@@ -133,7 +133,7 @@ public class TroopConfessMsg
         Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
         if (!Long.toString(localTroopConfessMsgItem.confessToUin).equals(((QQAppInterface)localObject).getCurrentAccountUin()))
         {
-          localObject = ((anyw)((QQAppInterface)localObject).getManager(51)).b(Long.toString(localTroopConfessMsgItem.confessToUin));
+          localObject = ((amsw)((QQAppInterface)localObject).getManager(51)).b(Long.toString(localTroopConfessMsgItem.confessToUin));
           if ((localObject != null) && (((Friends)localObject).isFriend()) && (!TextUtils.isEmpty(((Friends)localObject).remark))) {
             localStringBuilder.append(((Friends)localObject).remark);
           } else {

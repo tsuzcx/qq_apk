@@ -1,64 +1,11 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mediafocus.MediaFocusStackItem;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-
-public class axbu
-  extends QIPCModule
+class axbu
+  implements bjog
 {
-  public static boolean a;
-  private String a;
-  private boolean b;
+  axbu(axax paramaxax) {}
   
-  private axbu()
+  public void onDismiss()
   {
-    super("MediaFocusModuleClient");
-    b();
-  }
-  
-  public static axbu a()
-  {
-    return axbx.a();
-  }
-  
-  public static void a()
-  {
-    axbu localaxbu = a();
-    if (!jdField_a_of_type_Boolean)
-    {
-      QIPCClientHelper.getInstance().register(localaxbu);
-      jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  private void b()
-  {
-    QIPCClientHelper.getInstance().getClient().connect(new axbv(this));
-    QIPCClientHelper.getInstance().getClient().addListener(new axbw(this));
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "action = " + paramString + ", params = " + paramBundle);
-    }
-    Bundle localBundle = new Bundle();
-    if ("actionCheckItemExist".equals(paramString))
-    {
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      paramString = (MediaFocusStackItem)paramBundle.getParcelable("focusItem");
-      boolean bool = false;
-      if (paramString != null) {
-        bool = axby.a().a(paramString.a(), paramString.b());
-      }
-      localBundle.putBoolean("isItemExist", bool);
-      localBundle.putBoolean("isConnected", this.b);
-      localBundle.putParcelable("focusItem", paramString);
-    }
-    return EIPCResult.createSuccessResult(localBundle);
+    axax.a(this.a, this.a.h, false);
   }
 }
 

@@ -1,11 +1,25 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ahms
-  extends agen
+public abstract class ahms
+  implements ahmx
 {
-  TextView b;
+  protected QQAppInterface a;
   
-  ahms(ahmr paramahmr) {}
+  public ahms(QQAppInterface paramQQAppInterface)
+  {
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a() {}
+  
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = ahns.a(paramQQAppInterface);
+    if (paramQQAppInterface != null) {
+      return paramQQAppInterface.a(paramString);
+    }
+    return false;
+  }
 }
 
 

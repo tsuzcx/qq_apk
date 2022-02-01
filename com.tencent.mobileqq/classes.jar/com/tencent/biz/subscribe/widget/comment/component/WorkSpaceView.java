@@ -1,6 +1,5 @@
 package com.tencent.biz.subscribe.widget.comment.component;
 
-import aapi;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Handler;
@@ -12,6 +11,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
+import zmd;
 
 public class WorkSpaceView
   extends FrameLayout
@@ -19,10 +19,10 @@ public class WorkSpaceView
   private static final double jdField_a_of_type_Double = Math.tan(Math.toRadians(30.0D));
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = 0;
-  private aapi jdField_a_of_type_Aapi;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
+  private zmd jdField_a_of_type_Zmd;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = -1;
@@ -76,8 +76,8 @@ public class WorkSpaceView
       }
       paramInt = getWidth() * i - getScrollX();
       this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt, 0, Math.abs(paramInt) * 2);
-      if (this.jdField_a_of_type_Aapi != null) {
-        this.jdField_a_of_type_Aapi.a(i);
+      if (this.jdField_a_of_type_Zmd != null) {
+        this.jdField_a_of_type_Zmd.a(i);
       }
       invalidate();
       return;
@@ -299,9 +299,9 @@ public class WorkSpaceView
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
   }
   
-  public void setOnScreenChangeListener(aapi paramaapi)
+  public void setOnScreenChangeListener(zmd paramzmd)
   {
-    this.jdField_a_of_type_Aapi = paramaapi;
+    this.jdField_a_of_type_Zmd = paramzmd;
   }
 }
 

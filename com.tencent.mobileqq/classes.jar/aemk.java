@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
 
-class aemk
+public class aemk
   implements DialogInterface.OnClickListener
 {
-  aemk(aemj paramaemj) {}
+  public aemk(TroopLowCreditLevelNotifyActivity paramTroopLowCreditLevelNotifyActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bhzu.a(this.a.a, "mvip.g.a.qnc_gc", "CJCLUBT", -1, false, true);
-    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

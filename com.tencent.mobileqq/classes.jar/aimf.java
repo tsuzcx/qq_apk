@@ -1,44 +1,78 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.ExtendFriendUserInfo;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-class aimf
-  implements View.OnClickListener
+public class aimf
+  extends amwl
 {
-  aimf(aimd paramaimd) {}
+  public aimf(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public void onClick(View paramView)
+  protected void onGetSuspiciousSystemMsgFin(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
   {
-    if (!aimd.c(this.a)) {
-      if (aimd.a(this.a) == null)
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopSuspiciousFragment", 2, "onGetSuspiciousSystemMsgFin.bengin");
+    }
+    if (this.a.a.isFinishing()) {
+      return;
+    }
+    TroopSuspiciousFragment.d(this.a);
+    if (!paramBoolean1) {
+      TroopSuspiciousFragment.a(this.a, paramBoolean2);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopSuspiciousFragment", 2, "onGetSuspiciousSystemMsgFin.success");
+    }
+    try
+    {
+      TroopSuspiciousFragment.a(this.a, paramList);
+      return;
+    }
+    catch (Exception paramList)
+    {
+      paramList.printStackTrace();
+    }
+  }
+  
+  protected void onSendSystemMsgActionError(String paramString)
+  {
+    if ((TroopSuspiciousFragment.a(this.a) != null) && (TroopSuspiciousFragment.a(this.a).isShowing()))
+    {
+      TroopSuspiciousFragment.a(this.a).dismiss();
+      paramString = this.a.a.getResources().getString(2131718765);
+      QQToast.a(this.a.a, 1, paramString, 0).b(this.a.a());
+    }
+  }
+  
+  protected void onSendSystemMsgActionFin(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopSuspiciousFragment", 2, "onSendSystemMsgActionFin");
+    }
+    long l2 = bcsz.a().b();
+    long l1 = l2;
+    if (!TextUtils.isEmpty(paramString1)) {}
+    try
+    {
+      l1 = Long.parseLong(paramString1);
+      if (!paramBoolean)
       {
-        aimd.d(this.a);
-        QLog.e(this.a.jdField_a_of_type_JavaLangString, 2, "onClick mExtendFriendUserInfo IS null");
+        TroopSuspiciousFragment.a(this.a, paramString2, paramInt3, paramString3, paramString4, l1);
+        return;
       }
     }
-    for (;;)
+    catch (Exception paramString1)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((!aimd.a(this.a).enableQQCall) && (aimd.a(this.a).tagID != 10000))
+      for (;;)
       {
-        aimd.d(this.a);
-        QLog.e(this.a.jdField_a_of_type_JavaLangString, 2, "onClick mExtendFriendUserInfo enableQQCall false" + aimd.a(this.a).tagID);
+        paramString1.printStackTrace();
+        l1 = l2;
       }
-      else
-      {
-        agej.n = true;
-        agju.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, null);
-        if (aimd.a(this.a) != null) {
-          if (aimd.a(this.a).tagID == 1) {
-            bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD92", "0X800AD92", 1, 0, "", "", "", "");
-          } else {
-            bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD92", "0X800AD92", 2, 0, "", "", aimd.a(this.a).tagName, "");
-          }
-        }
-      }
+      TroopSuspiciousFragment.a(this.a, paramInt1, paramString2, paramInt2, l1);
     }
   }
 }

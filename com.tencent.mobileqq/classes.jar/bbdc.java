@@ -1,100 +1,292 @@
-import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.search.rich.ArkAppModule.1;
+import com.tencent.mobileqq.search.rich.ArkAppModule.2;
+import java.lang.ref.WeakReference;
 
 public class bbdc
+  extends aopk
 {
-  public static int a;
-  public static String[] a;
-  public static String[] b = { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" };
+  private WeakReference<bbdd> a;
   
-  static
+  public bbdc(ark.Application paramApplication, long paramLong)
   {
-    jdField_a_of_type_Int = 25568;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" };
+    super(paramApplication, paramLong);
   }
   
-  public static int a(long paramLong)
+  private int a(ark.VariantWrapper paramVariantWrapper, int paramInt)
   {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(paramLong);
-    return localCalendar.get(11);
-  }
-  
-  public static long a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(1000L * (86400L * paramInt1));
-    localCalendar.set(11, paramInt2);
-    localCalendar.set(12, paramInt3);
-    try
+    if (paramVariantWrapper == null) {}
+    int i;
+    do
     {
-      long l = localCalendar.getTimeInMillis();
-      return l;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException) {}
-    return new Date().getTime();
+      return paramInt;
+      i = paramVariantWrapper.GetType();
+      if (i == 4) {
+        return (int)paramVariantWrapper.GetDouble();
+      }
+    } while (i != 3);
+    return paramVariantWrapper.GetInt();
   }
   
-  public static long a(long paramLong)
+  private long a(ark.VariantWrapper paramVariantWrapper, long paramLong)
   {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1970, 0, 1, 0, 0, 0);
-    long l3 = localCalendar.getTime().getTime();
-    long l2 = (paramLong - l3) / 1000L / 86400L;
-    long l1 = l2;
-    if (l2 > 25568L) {
-      l1 = 25568L;
-    }
-    l2 = l1;
-    if (l1 < 0L) {
-      l2 = 0L;
-    }
-    if (QLog.isDevelopLevel())
+    if (paramVariantWrapper == null) {}
+    int i;
+    do
     {
-      double d = (paramLong - l3) / 86400L;
-      QLog.d("remind", 4, l3 + "|" + paramLong + "|" + d);
-    }
-    return l2;
+      return paramLong;
+      i = paramVariantWrapper.GetType();
+      if (i == 4) {
+        return paramVariantWrapper.GetDouble();
+      }
+    } while (i != 3);
+    return paramVariantWrapper.GetInt();
   }
   
-  public static String a(int paramInt)
+  private String a(ark.VariantWrapper paramVariantWrapper, String paramString)
   {
-    Calendar localCalendar = Calendar.getInstance();
-    Date localDate = new Date();
-    localDate.setTime(1000L * (86400L * paramInt));
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MM月dd日 E");
-    if (localSimpleDateFormat.format(localDate).equals(localSimpleDateFormat.format(localCalendar.getTime()))) {
-      return anzj.a(2131713754);
-    }
-    return localSimpleDateFormat.format(localDate);
+    if (paramVariantWrapper == null) {}
+    int i;
+    do
+    {
+      return paramString;
+      i = paramVariantWrapper.GetType();
+      if (i == 5) {
+        return paramVariantWrapper.GetString();
+      }
+    } while (i != 6);
+    return paramVariantWrapper.GetTableAsJsonString();
   }
   
-  public static String a(long paramLong)
+  public void Destruct()
   {
-    Object localObject = Calendar.getInstance();
-    ((Calendar)localObject).setTimeInMillis(paramLong);
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 E HH:mm");
-    try
+    super.Destruct();
+  }
+  
+  public String GetTypeName()
+  {
+    return "QQSearch";
+  }
+  
+  public boolean HasMenthod(String paramString)
+  {
+    if (paramString.equals("Report")) {}
+    do
     {
-      localObject = ((Calendar)localObject).getTime();
-      return localSimpleDateFormat.format((Date)localObject);
+      return true;
+      if (paramString.equals("GetContainerInfo")) {
+        return false;
+      }
+    } while ((paramString.equals("SetTalkBackText")) || (paramString.equals("Notify")));
+    return false;
+  }
+  
+  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if (!a(paramString)) {}
+    do
+    {
+      return false;
+      if (paramString.equals("Report")) {
+        return a(paramArrayOfVariantWrapper, paramVariantWrapper);
+      }
+      if (paramString.equals("SetTalkBackText")) {
+        return b(paramArrayOfVariantWrapper, paramVariantWrapper);
+      }
+    } while (!paramString.equals("Notify"));
+    return c(paramArrayOfVariantWrapper, paramVariantWrapper);
+  }
+  
+  public void a(bbdd parambbdd)
+  {
+    this.a = new WeakReference(parambbdd);
+  }
+  
+  protected boolean a(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    if (localQQAppInterface == null) {
+      return false;
     }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      for (;;)
+    String str = localQQAppInterface.getCurrentAccountUin();
+    paramVariantWrapper = paramArrayOfVariantWrapper[0].GetString();
+    Object localObject1 = paramArrayOfVariantWrapper[1].GetString();
+    int i = 0;
+    int j = 0;
+    long l1 = 0L;
+    long l2 = 0L;
+    Object localObject3 = "";
+    Object localObject2 = "";
+    int k = 0;
+    Object localObject4;
+    int m;
+    long l3;
+    if (k < paramArrayOfVariantWrapper.length) {
+      if (k == 0)
       {
-        Date localDate = new Date();
+        localObject4 = paramArrayOfVariantWrapper[0].GetString();
+        m = j;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+        l3 = l2;
+        l2 = l1;
+        l1 = l3;
+        j = i;
+        i = m;
+      }
+    }
+    for (;;)
+    {
+      m = k + 1;
+      l3 = l2;
+      k = i;
+      i = j;
+      localObject4 = paramVariantWrapper;
+      paramVariantWrapper = (ark.VariantWrapper)localObject1;
+      localObject1 = localObject4;
+      j = k;
+      l2 = l1;
+      l1 = l3;
+      k = m;
+      break;
+      if (k == 1)
+      {
+        localObject1 = paramArrayOfVariantWrapper[1].GetString();
+        m = i;
+        localObject4 = paramVariantWrapper;
+        l3 = l1;
+        i = j;
+        j = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 2)
+      {
+        m = a(paramArrayOfVariantWrapper[2], 0);
+        i = j;
+        j = m;
+        localObject4 = paramVariantWrapper;
+        l3 = l1;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 3)
+      {
+        m = a(paramArrayOfVariantWrapper[3], 0);
+        j = i;
+        localObject4 = paramVariantWrapper;
+        l3 = l1;
+        i = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 4)
+      {
+        l3 = a(paramArrayOfVariantWrapper[4], 0L);
+        m = i;
+        localObject4 = paramVariantWrapper;
+        l1 = l2;
+        i = j;
+        j = m;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 5)
+      {
+        l3 = a(paramArrayOfVariantWrapper[5], 0L);
+        m = i;
+        l2 = l1;
+        localObject4 = paramVariantWrapper;
+        l1 = l3;
+        i = j;
+        j = m;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
+      }
+      else if (k == 6)
+      {
+        localObject4 = paramArrayOfVariantWrapper[6].GetString();
+        m = i;
+        localObject3 = paramVariantWrapper;
+        l3 = l1;
+        i = j;
+        j = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject3;
+        localObject3 = localObject4;
+      }
+      else if (k == 7)
+      {
+        localObject4 = paramArrayOfVariantWrapper[7].GetString();
+        m = i;
+        localObject2 = paramVariantWrapper;
+        l3 = l1;
+        i = j;
+        j = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject2;
+        localObject2 = localObject4;
+        continue;
+        bcef.b(localQQAppInterface, "CliOper", "", str, paramVariantWrapper, (String)localObject1, i, j, String.valueOf(l1), String.valueOf(l2), (String)localObject3, (String)localObject2);
+        return true;
+      }
+      else
+      {
+        m = i;
+        localObject4 = paramVariantWrapper;
+        l3 = l1;
+        i = j;
+        j = m;
+        l1 = l2;
+        l2 = l3;
+        paramVariantWrapper = (ark.VariantWrapper)localObject1;
+        localObject1 = localObject4;
       }
     }
   }
   
-  public static int b(long paramLong)
+  protected aopq[] a()
   {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(paramLong);
-    return localCalendar.get(12);
+    return null;
+  }
+  
+  protected boolean b(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (paramArrayOfVariantWrapper[0].IsString()) && (paramArrayOfVariantWrapper[1].IsView()))
+    {
+      paramVariantWrapper = paramArrayOfVariantWrapper[0].GetString();
+      long l = paramArrayOfVariantWrapper[1].GetView();
+      ArkAppCenter.a().postToMainThread(new ArkAppModule.1(this, l, paramVariantWrapper));
+    }
+    return true;
+  }
+  
+  protected boolean c(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  {
+    if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length > 3) && (paramArrayOfVariantWrapper[1].IsString()) && (paramArrayOfVariantWrapper[3].IsView()))
+    {
+      paramVariantWrapper = paramArrayOfVariantWrapper[1].GetString();
+      String str = a(paramArrayOfVariantWrapper[2], null);
+      long l = paramArrayOfVariantWrapper[3].GetView();
+      ArkAppCenter.a().postToMainThread(new ArkAppModule.2(this, l, paramVariantWrapper, str));
+    }
+    return true;
   }
 }
 

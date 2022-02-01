@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
 import android.os.Parcel;
-import atup;
-import bftf;
+import asgz;
+import becp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import java.io.File;
@@ -142,30 +142,30 @@ public class AIOFilePicData
     }
   }
   
-  public void a(bftf parambftf)
+  public void a(becp parambecp)
   {
-    if (parambftf == null) {
+    if (parambecp == null) {
       return;
     }
     String str;
-    if (parambftf.jdField_d_of_type_JavaLangString != null)
+    if (parambecp.jdField_d_of_type_JavaLangString != null)
     {
-      str = parambftf.jdField_d_of_type_JavaLangString;
+      str = parambecp.jdField_d_of_type_JavaLangString;
       this.jdField_b_of_type_JavaLangString = str;
-      if (parambftf.jdField_c_of_type_JavaLangString == null) {
+      if (parambecp.jdField_c_of_type_JavaLangString == null) {
         break label108;
       }
-      str = parambftf.jdField_c_of_type_JavaLangString;
+      str = parambecp.jdField_c_of_type_JavaLangString;
       label34:
       this.jdField_c_of_type_JavaLangString = str;
-      if (parambftf.jdField_a_of_type_JavaLangString == null) {
+      if (parambecp.jdField_a_of_type_JavaLangString == null) {
         break label114;
       }
-      str = parambftf.jdField_a_of_type_JavaLangString;
+      str = parambecp.jdField_a_of_type_JavaLangString;
       label51:
       this.jdField_d_of_type_JavaLangString = str;
-      this.g = parambftf.g;
-      if (parambftf.jdField_b_of_type_Int != 12) {
+      this.g = parambecp.g;
+      if (parambecp.jdField_b_of_type_Int != 12) {
         break label120;
       }
     }
@@ -175,8 +175,8 @@ public class AIOFilePicData
     for (boolean bool = true;; bool = false)
     {
       this.jdField_d_of_type_Boolean = bool;
-      this.jdField_a_of_type_Long = parambftf.jdField_c_of_type_Long;
-      this.jdField_h_of_type_Long = parambftf.jdField_c_of_type_Long;
+      this.jdField_a_of_type_Long = parambecp.jdField_c_of_type_Long;
+      this.jdField_h_of_type_Long = parambecp.jdField_c_of_type_Long;
       this.jdField_e_of_type_Boolean = false;
       return;
       str = "I:N";
@@ -191,7 +191,7 @@ public class AIOFilePicData
   public void a(QQAppInterface paramQQAppInterface)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().a(this.jdField_f_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.getFileManagerDataCenter().a(this.jdField_f_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
     {

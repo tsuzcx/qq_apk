@@ -1,51 +1,91 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import java.util.List;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ynd
-  extends wjm<ymx, yml>
+  extends BaseAdapter
 {
-  public ynd(ymx paramymx)
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ynf jdField_a_of_type_Ynf;
+  private int b;
+  private int c;
+  
+  public ynd(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramymx);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
   
-  public void a(@NonNull ymx paramymx, @NonNull yml paramyml)
+  public Bitmap a(int paramInt)
   {
-    if (paramyml.jdField_a_of_type_Int == 0) {
-      return;
-    }
-    Object localObject = paramymx.a(paramyml.jdField_a_of_type_JavaLangString);
-    if (localObject == null)
-    {
-      yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramyml.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    if (!(localObject instanceof ymm))
-    {
-      yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramyml.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    localObject = (ymm)localObject;
-    FeedVideoInfo localFeedVideoInfo = ((ymk)wth.a(12)).a(paramyml.jdField_a_of_type_JavaLangString, ((GeneralFeedItem)((ymm)localObject).a).mVideoPullType);
-    if (localFeedVideoInfo == null)
-    {
-      yuk.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find video info for feedId:%s, pullType:%d", new Object[] { paramyml.jdField_a_of_type_JavaLangString, Integer.valueOf(((GeneralFeedItem)((ymm)localObject).a).mVideoPullType) });
-      return;
-    }
-    ((ymm)localObject).c(localFeedVideoInfo.mVideoItemList, true);
-    ((GeneralFeedItem)((ymm)localObject).a).updateVideoInfo(localFeedVideoInfo);
-    yuk.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video and cookie update after count:%d", paramyml.jdField_a_of_type_JavaLangString, Integer.valueOf(((ymm)localObject).a().size()));
-    ymx.a(paramymx).a((ynv)localObject);
+    return null;
   }
   
-  public Class acceptEventClass()
+  public void a()
   {
-    return yml.class;
+    this.jdField_a_of_type_Ynf = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
   }
   
-  public void b(@NonNull ymx paramymx, @NonNull yml paramyml) {}
+  public void a(LocalMediaInfo paramLocalMediaInfo)
+  {
+    if (this.jdField_a_of_type_Ynf == null) {
+      return;
+    }
+    this.jdField_a_of_type_Ynf.a(paramLocalMediaInfo);
+  }
+  
+  public void a(ynf paramynf)
+  {
+    this.jdField_a_of_type_Ynf = paramynf;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView == null)
+    {
+      localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      int i = (int)(ybe.a(this.jdField_a_of_type_AndroidContentContext.getResources()) * this.b);
+      paramView = new ViewGroup.LayoutParams(this.b, i);
+      ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_CROP);
+      ((ImageView)localObject).setLayoutParams(paramView);
+      paramView = new yne();
+      paramView.a = ((ImageView)localObject);
+      paramView.a.setImageDrawable(new ColorDrawable(-12303292));
+      ((View)localObject).setTag(paramView);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Ynf.a(paramView.a, Integer.valueOf(paramInt));
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
+      return localObject;
+      yne localyne = (yne)paramView.getTag();
+      localObject = paramView;
+      paramView = localyne;
+    }
+  }
 }
 
 

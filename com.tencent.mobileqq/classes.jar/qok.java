@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentNotIntrest;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Lazy;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-public class qok
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyManager$Companion;", "", "()V", "TAG", "", "instance", "Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyManager;", "getInstance", "()Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyManager;", "instance$delegate", "Lkotlin/Lazy;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qok
 {
-  public qok(ComponentContentNoteCard paramComponentContentNoteCard) {}
-  
-  public void onClick(View paramView)
+  @NotNull
+  public final qoj a()
   {
-    ComponentContentNoteCard.a(this.a).onClick(ComponentContentNoteCard.a(this.a).a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    Lazy localLazy = qoj.a();
+    qok localqok = qoj.a;
+    return (qoj)localLazy.getValue();
   }
 }
 

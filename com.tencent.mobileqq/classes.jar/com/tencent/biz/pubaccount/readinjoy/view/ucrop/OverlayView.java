@@ -17,8 +17,8 @@ import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import sxc;
-import sxg;
+import tbc;
+import tbg;
 
 public class OverlayView
   extends View
@@ -28,7 +28,7 @@ public class OverlayView
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
   private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
   private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private sxc jdField_a_of_type_Sxc;
+  private tbc jdField_a_of_type_Tbc;
   private boolean jdField_a_of_type_Boolean;
   protected float[] a;
   private float jdField_b_of_type_Float = -1.0F;
@@ -48,9 +48,9 @@ public class OverlayView
   private int e;
   private int f = 0;
   private int g = -1;
-  private int h = getResources().getDimensionPixelSize(2131299086);
-  private int i = getResources().getDimensionPixelSize(2131299087);
-  private int j = getResources().getDimensionPixelSize(2131299085);
+  private int h = getResources().getDimensionPixelSize(2131299151);
+  private int i = getResources().getDimensionPixelSize(2131299152);
+  private int j = getResources().getDimensionPixelSize(2131299150);
   
   public OverlayView(Context paramContext)
   {
@@ -188,8 +188,8 @@ public class OverlayView
   
   private void b()
   {
-    this.jdField_a_of_type_ArrayOfFloat = sxg.a(this.jdField_a_of_type_AndroidGraphicsRectF);
-    this.jdField_b_of_type_ArrayOfFloat = sxg.b(this.jdField_a_of_type_AndroidGraphicsRectF);
+    this.jdField_a_of_type_ArrayOfFloat = tbg.a(this.jdField_a_of_type_AndroidGraphicsRectF);
+    this.jdField_b_of_type_ArrayOfFloat = tbg.b(this.jdField_a_of_type_AndroidGraphicsRectF);
     this.jdField_c_of_type_ArrayOfFloat = null;
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
     this.jdField_a_of_type_AndroidGraphicsPath.addCircle(this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), Math.min(this.jdField_a_of_type_AndroidGraphicsRectF.width(), this.jdField_a_of_type_AndroidGraphicsRectF.height()) / 2.0F, Path.Direction.CW);
@@ -197,8 +197,8 @@ public class OverlayView
   
   private void b(@NonNull TypedArray paramTypedArray)
   {
-    int k = paramTypedArray.getDimensionPixelSize(5, getResources().getDimensionPixelSize(2131299082));
-    int m = paramTypedArray.getColor(4, getResources().getColor(2131167268));
+    int k = paramTypedArray.getDimensionPixelSize(5, getResources().getDimensionPixelSize(2131299147));
+    int m = paramTypedArray.getColor(4, getResources().getColor(2131167299));
     this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(k);
     this.jdField_c_of_type_AndroidGraphicsPaint.setColor(m);
     this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
@@ -209,8 +209,8 @@ public class OverlayView
   
   private void c(@NonNull TypedArray paramTypedArray)
   {
-    int k = paramTypedArray.getDimensionPixelSize(9, getResources().getDimensionPixelSize(2131299083));
-    int m = paramTypedArray.getColor(6, getResources().getColor(2131167269));
+    int k = paramTypedArray.getDimensionPixelSize(9, getResources().getDimensionPixelSize(2131299148));
+    int m = paramTypedArray.getColor(6, getResources().getColor(2131167300));
     this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(k);
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(m);
     this.jdField_c_of_type_Int = paramTypedArray.getInt(8, 2);
@@ -233,7 +233,7 @@ public class OverlayView
   protected void a(@NonNull TypedArray paramTypedArray)
   {
     this.jdField_c_of_type_Boolean = paramTypedArray.getBoolean(2, false);
-    this.e = paramTypedArray.getColor(3, getResources().getColor(2131167270));
+    this.e = paramTypedArray.getColor(3, getResources().getColor(2131167301));
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
@@ -406,8 +406,8 @@ public class OverlayView
       this.jdField_b_of_type_Float = -1.0F;
       this.jdField_c_of_type_Float = -1.0F;
       this.g = -1;
-      if (this.jdField_a_of_type_Sxc != null) {
-        this.jdField_a_of_type_Sxc.a(this.jdField_a_of_type_AndroidGraphicsRectF);
+      if (this.jdField_a_of_type_Tbc != null) {
+        this.jdField_a_of_type_Tbc.a(this.jdField_a_of_type_AndroidGraphicsRectF);
       }
     }
     return false;
@@ -472,9 +472,9 @@ public class OverlayView
     postInvalidate();
   }
   
-  public void setOverlayViewChangeListener(sxc paramsxc)
+  public void setOverlayViewChangeListener(tbc paramtbc)
   {
-    this.jdField_a_of_type_Sxc = paramsxc;
+    this.jdField_a_of_type_Tbc = paramtbc;
   }
   
   public void setShowCropFrame(boolean paramBoolean)
@@ -511,8 +511,8 @@ public class OverlayView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Sxc != null) {
-        this.jdField_a_of_type_Sxc.a(this.jdField_a_of_type_AndroidGraphicsRectF);
+      if (this.jdField_a_of_type_Tbc != null) {
+        this.jdField_a_of_type_Tbc.a(this.jdField_a_of_type_AndroidGraphicsRectF);
       }
       b();
       return;
@@ -523,7 +523,7 @@ public class OverlayView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ucrop.OverlayView
  * JD-Core Version:    0.7.0.1
  */

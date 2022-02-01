@@ -1,13 +1,17 @@
-class bhrs
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+public class bhrs
+  extends aepg
 {
-  public int a;
-  public String a;
-  
-  public bhrs()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-  }
+  public CheckBox a;
+  public ImageView a;
+  public RelativeLayout b;
+  public String b;
+  public TextView c;
+  public TextView d;
 }
 
 

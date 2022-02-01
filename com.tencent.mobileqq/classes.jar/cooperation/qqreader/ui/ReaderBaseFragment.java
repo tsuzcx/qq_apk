@@ -13,13 +13,13 @@ import android.view.ViewParent;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import birg;
-import bmpj;
-import bmpr;
-import bmqz;
+import bktq;
+import bkty;
+import bkvg;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import com.tencent.mobileqq.widget.WebViewProgressBar;
 import com.tencent.smtt.sdk.WebView;
 import cooperation.qqreader.host.webview.ReaderWebView;
@@ -36,8 +36,8 @@ public abstract class ReaderBaseFragment
   
   private void b()
   {
-    if (this.mUIStyleHandler.a != null) {
-      this.mUIStyleHandler.a.setVisibility(8);
+    if (this.mUIStyleHandler.mLoadingProgressBar != null) {
+      this.mUIStyleHandler.mLoadingProgressBar.setVisibility(8);
     }
   }
   
@@ -95,12 +95,12 @@ public abstract class ReaderBaseFragment
       if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
         c();
       }
-      bmpj.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView, 600L);
+      bktq.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView, 600L);
     }
     for (;;)
     {
       return true;
-      bmpj.a().a();
+      bktq.a().a();
     }
   }
   
@@ -152,7 +152,7 @@ public abstract class ReaderBaseFragment
     {
       localObject = ((ReaderBaseWebActivity)localObject).a(this.webView);
       if ((localObject != null) && (this.jdField_a_of_type_AndroidOsHandler != null)) {
-        ((bmpr)localObject).a(this.jdField_a_of_type_AndroidOsHandler);
+        ((bkty)localObject).a(this.jdField_a_of_type_AndroidOsHandler);
       }
     }
     this.webView.getView().setVerticalScrollBarEnabled(false);
@@ -161,14 +161,14 @@ public abstract class ReaderBaseFragment
   public void onDetectedBlankScreen(String paramString, int paramInt)
   {
     super.onDetectedBlankScreen(paramString, paramInt);
-    bmqz.b(getActivity(), paramInt, paramString);
+    bkvg.b(getActivity(), paramInt, paramString);
   }
   
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
     this.jdField_a_of_type_Boolean = false;
-    bmpj.a().a();
+    bktq.a().a();
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
@@ -179,19 +179,19 @@ public abstract class ReaderBaseFragment
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
       c();
     }
-    bmpj.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
+    bktq.a().a(getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-    bmpj.a().a();
+    bktq.a().a();
   }
   
   public boolean showPreview()
   {
     this.b = true;
-    this.mUIStyleHandler.b = false;
+    this.mUIStyleHandler.canWebViewOverScroll = false;
     return super.showPreview();
   }
 }

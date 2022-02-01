@@ -1,15 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
 
-class bnoe
-  implements DialogInterface.OnClickListener
+public class bnoe
 {
-  bnoe(bnnx parambnnx) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public int a;
+  public long a = -1L;
+  public Bitmap a;
+  public String a;
 }
 
 

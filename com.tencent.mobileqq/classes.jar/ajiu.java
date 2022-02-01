@@ -1,72 +1,56 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.List;
+import android.support.v4.util.SparseArrayCompat;
 
-class ajiu
-  extends anyu
+public class ajiu
 {
-  ajiu(ajis paramajis) {}
+  private SparseArrayCompat<SparseArrayCompat<afrc>> a = new SparseArrayCompat(17);
+  private SparseArrayCompat<afrb> b = new SparseArrayCompat();
   
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  public ajiu(ajjs paramajjs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectsExplorationFriendAdapter", 2, "onCancelMayKnowRecommend isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      this.a.a(false);
-    }
+    a(1, new ajkg(paramajjs));
+    a(2, new ajjr(paramajjs));
+    a(3, new ajiy(paramajjs));
   }
   
-  public void onGetConnectionsPerson(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
+  private void a(int paramInt, afrc paramafrc)
   {
-    if (paramInt2 == ajis.a(this.a)) {
-      this.a.a(false);
-    }
-  }
-  
-  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
-  {
-    if ((paramBoolean) && (ajis.a(this.a) == 23)) {
-      this.a.a(false);
-    }
-  }
-  
-  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
-  {
-    super.onMayKnowListPushAdd(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayKnowListPushAdd isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      this.a.a(false);
-    }
-  }
-  
-  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
-  {
-    super.onMayKnowListPushDel(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayKnowListPushDel isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      this.a.a(false);
-    }
-  }
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectsExplorationFriendAdapter", 2, "onMayknowStateChanged isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean)
+    this.b.put(paramInt, paramafrc);
+    int[] arrayOfInt = paramafrc.a();
+    int j = arrayOfInt.length;
+    int i = 0;
+    while (i < j)
     {
-      this.a.notifyDataSetChanged();
-      if (ajis.a(this.a) != null)
+      int k = arrayOfInt[i];
+      SparseArrayCompat localSparseArrayCompat2 = (SparseArrayCompat)this.a.get(k);
+      SparseArrayCompat localSparseArrayCompat1 = localSparseArrayCompat2;
+      if (localSparseArrayCompat2 == null)
       {
-        ajis.a(this.a).removeCallbacks(this.a.a);
-        ajis.a(this.a).postDelayed(this.a.a, 1600L);
+        localSparseArrayCompat1 = new SparseArrayCompat();
+        this.a.put(k, localSparseArrayCompat1);
+      }
+      localSparseArrayCompat1.put(paramInt, paramafrc);
+      i += 1;
+    }
+  }
+  
+  public <T extends afrb> T a(int paramInt)
+  {
+    return (afrb)this.b.get(paramInt);
+  }
+  
+  public void a(int paramInt)
+  {
+    SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.a.get(paramInt);
+    if (localSparseArrayCompat == null) {}
+    for (;;)
+    {
+      return;
+      int j = localSparseArrayCompat.size();
+      int i = 0;
+      while (i < j)
+      {
+        ((afrc)localSparseArrayCompat.valueAt(i)).a(paramInt);
+        i += 1;
       }
     }
   }

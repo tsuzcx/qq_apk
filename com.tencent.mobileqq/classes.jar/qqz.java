@@ -1,13 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemMulti;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qqz
+class qqz
   implements View.OnClickListener
 {
-  public qqz(ComponentTopicItemMulti paramComponentTopicItemMulti) {}
+  qqz(qqy paramqqy) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(View paramView)
+  {
+    pet localpet = this.a.jdField_a_of_type_Slt.a().a();
+    if (localpet != null) {
+      localpet.a(null, ((pvc)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,16 +1,14 @@
-import java.util.List;
-
 class ouz
-  extends ovd
+  extends owd
 {
-  ouz(otv paramotv, List paramList)
+  ouz(ouu paramouu, int paramInt1, ouo paramouo, int paramInt2)
   {
-    super(paramotv, null);
+    super(paramouu, null);
   }
   
-  void a(ovg paramovg)
+  void a(owg paramowg)
   {
-    paramovg.onCommentListLoad(1, true, this.jdField_a_of_type_JavaUtilList, otv.b(this.jdField_a_of_type_Otv), 3, 3);
+    paramowg.onCommentDelete(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Ouo, this.b);
   }
 }
 

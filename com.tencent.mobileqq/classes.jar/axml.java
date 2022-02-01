@@ -1,6 +1,13 @@
-public abstract interface axml
+import java.util.ArrayList;
+import java.util.List;
+
+public class axml
 {
-  public abstract void a(int paramInt);
+  public int a;
+  public String a;
+  public List<axmm> a = new ArrayList();
+  public String b;
+  public String c;
 }
 
 

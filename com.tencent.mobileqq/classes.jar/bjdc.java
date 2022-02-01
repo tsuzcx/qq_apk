@@ -1,20 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qqmini.proxyimpl.KingCardProxyImpl.1;
+import com.tencent.qqmini.sdk.launcher.action.ActionBridge.UpdateUIActionBridge;
 
 public class bjdc
-  implements Animation.AnimationListener
+  implements Animator.AnimatorListener
 {
-  public bjdc(ShaderAnimLayout paramShaderAnimLayout) {}
+  public bjdc(KingCardProxyImpl.1 param1) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.setVisibility(8);
+    ActionBridge.UpdateUIActionBridge.updateRedDot(this.a.a);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ActionBridge.UpdateUIActionBridge.updateRedDot(this.a.a);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

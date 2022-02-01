@@ -1,28 +1,50 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.asyncdb.BaseCache;
-import com.tencent.mobileqq.app.asyncdb.BaseCacheManager;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
 
-public class aolf
-  extends BaseCacheManager
+public abstract class aolf
+  implements aolq
 {
-  private QQAppInterface a;
+  public int a;
+  protected Context a;
+  protected AppInterface a;
+  protected int b;
   
-  public aolf(QQAppInterface paramQQAppInterface)
+  public aolf()
   {
-    super(paramQQAppInterface);
-    this.a = paramQQAppInterface;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public BaseCache createCacheByName(int paramInt)
+  public int a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 2: 
-      return new aoli(this.a, this.dbDelayManager);
-    }
-    return new aolk(this.a, this.dbDelayManager);
+    return 0;
+  }
+  
+  public void a(Context paramContext, AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void g()
+  {
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void h()
+  {
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  public void i() {}
+  
+  public void j()
+  {
+    this.jdField_a_of_type_Int = 5;
   }
 }
 

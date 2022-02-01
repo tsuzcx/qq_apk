@@ -1,36 +1,113 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.audiopanel.ChangeVoiceView;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class afhg
-  implements bliz
+public class afhg
+  extends Handler
 {
-  afhg(afhf paramafhf) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public afhg(ListenChangeVoicePanel paramListenChangeVoicePanel, Looper paramLooper)
   {
-    switch (paramInt)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message arg1)
+  {
+    switch (???.what)
     {
-    }
-    for (;;)
-    {
-      this.a.a.jdField_a_of_type_Blir.dismiss();
-      return;
-      bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_QQshare", 0, 0, "", "", "", "");
-      abhr.a("share_success");
-      this.a.a.u();
-      continue;
-      if (bmko.a((float)this.a.a.jdField_a_of_type_Double, (float)this.a.a.b, this.a.a.l, this.a.a.i, null).c(this.a.a.getIntent().getStringExtra("uin")).b(this.a.a, this.a.a.getIntent().getStringExtra("uin"), 1, null))
+    case 102: 
+    default: 
+    case 101: 
+    case 103: 
+    case 104: 
+    case 105: 
+    case 106: 
+      do
       {
-        paramInt = QQMapActivity.a(this.a.a).getDimensionPixelSize(2131299011);
-        QQToast.a(this.a.a, 2, this.a.a.getString(2131691991), 1).b(paramInt);
-        abhr.a("favorite_success");
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                ListenChangeVoicePanel.a(this.a, -1);
+                this.a.jdField_a_of_type_Afhd.b = 0;
+                this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView = null;
+                synchronized (this.a.b)
+                {
+                  this.a.jdField_a_of_type_Afhd.a = this.a.b;
+                  this.a.jdField_a_of_type_Afhd.notifyDataSetChanged();
+                  return;
+                }
+              } while ((???.obj == null) || (!(???.obj instanceof Bundle)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView == null));
+              ??? = (Bundle)???.obj;
+            } while (??? == null);
+            this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView.a(???.getInt("progress"), ???.getInt("playTime"), ???.getInt("level"));
+            return;
+          } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView == null);
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView.a(1);
+          return;
+          if (ListenChangeVoicePanel.a(this.a).get() != null) {
+            QQToast.a(((QQAppInterface)ListenChangeVoicePanel.a(this.a).get()).getApp(), "播放变音error", 0);
+          }
+        } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView == null);
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView.a(1);
+        return;
+      } while ((ListenChangeVoicePanel.a(this.a).get() == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
+      bgrn.a(((QQAppInterface)ListenChangeVoicePanel.a(this.a).get()).getApp(), ListenChangeVoicePanel.a(this.a), PressToChangeVoicePanel.a, this.a);
+      int k = (int)ListenChangeVoicePanel.a(this.a);
+      String str;
+      QQRecorder.RecorderParam localRecorderParam;
+      if (!azcr.a((QQAppInterface)ListenChangeVoicePanel.a(this.a).get()).a((BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), ListenChangeVoicePanel.a(this.a)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PttPreSendManager", 2, "presend not hit, do origin logic");
+        }
+        ??? = (BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+        str = ListenChangeVoicePanel.a(this.a);
+        localRecorderParam = ListenChangeVoicePanel.a(this.a);
+        if (ListenChangeVoicePanel.a(this.a) <= 0) {
+          break label677;
+        }
       }
-      bmky.a(null, 65, 7);
-      bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_collect", 0, 0, "", "", "", "");
+      label677:
+      for (int i = 1;; i = 0)
+      {
+        ???.sendPtt(str, 4, 0, localRecorderParam, i, false, 0);
+        ((BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).recorderEnd(ListenChangeVoicePanel.a(this.a), null);
+        if (ListenChangeVoicePanel.jdField_a_of_type_Azcd != null)
+        {
+          ListenChangeVoicePanel.jdField_a_of_type_Azcd.a((QQAppInterface)ListenChangeVoicePanel.a(this.a).get(), ListenChangeVoicePanel.a(this.a));
+          if (ListenChangeVoicePanel.a(this.a) > 0) {
+            bcef.b((QQAppInterface)ListenChangeVoicePanel.a(this.a).get(), "CliOper", "", "", "changevoice", "0X8006F7C", 0, 0, "" + ((BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).sessionInfo.curType, "" + ListenChangeVoicePanel.a(this.a), "", "");
+          }
+        }
+        this.a.f();
+        int j = ListenChangeVoicePanel.b(this.a);
+        i = j;
+        if (this.a.jdField_a_of_type_Boolean) {
+          i = j + 10;
+        }
+        j = ListenChangeVoicePanel.a(this.a);
+        int m = ListenChangeVoicePanel.c(this.a);
+        this.a.a(j, m, k, i);
+        return;
+      }
     }
+    this.a.a(???.arg1, ???.arg2, ???.obj, true);
   }
 }
 

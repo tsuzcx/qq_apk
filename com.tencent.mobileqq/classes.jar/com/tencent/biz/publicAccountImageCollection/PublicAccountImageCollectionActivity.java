@@ -18,11 +18,11 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.net.MalformedURLException;
 import java.net.URL;
-import suk;
-import sun;
-import suo;
-import suw;
-import uwr;
+import syk;
+import syn;
+import syo;
+import syw;
+import veo;
 
 public class PublicAccountImageCollectionActivity
   extends BaseActivity
@@ -34,7 +34,7 @@ public class PublicAccountImageCollectionActivity
   
   public PublicAccountImageCollectionActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new uwr(this);
+    this.jdField_a_of_type_AndroidOsHandler = new veo(this);
   }
   
   private Drawable a(String paramString, int paramInt1, int paramInt2)
@@ -43,14 +43,14 @@ public class PublicAccountImageCollectionActivity
     try
     {
       paramString = new URL(paramString);
-      Object localObject2 = new suo();
-      ((suo)localObject2).jdField_a_of_type_JavaNetURL = paramString;
-      ((suo)localObject2).jdField_a_of_type_Int = paramInt1;
-      ((suo)localObject2).b = paramInt2;
-      localObject2 = sun.a().a((suo)localObject2);
+      Object localObject2 = new syo();
+      ((syo)localObject2).jdField_a_of_type_JavaNetURL = paramString;
+      ((syo)localObject2).jdField_a_of_type_Int = paramInt1;
+      ((syo)localObject2).b = paramInt2;
+      localObject2 = syn.a().a((syo)localObject2);
       paramString = localObject1;
       if (localObject2 != null) {
-        paramString = new suw(((suk)localObject2).a());
+        paramString = new syw(((syk)localObject2).a());
       }
       return paramString;
     }
@@ -76,8 +76,9 @@ public class PublicAccountImageCollectionActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -88,7 +89,7 @@ public class PublicAccountImageCollectionActivity
     requestWindowFeature(1);
     getWindow().setFlags(1024, 1024);
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559616);
+    super.setContentView(2131559618);
     int i = getWindowManager().getDefaultDisplay().getHeight();
     int j = getWindowManager().getDefaultDisplay().getWidth();
     Object localObject = getIntent();
@@ -103,7 +104,7 @@ public class PublicAccountImageCollectionActivity
       ((Matrix)localObject).setValues(arrayOfFloat);
     }
     this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView = new PublicAccountImageView(this, this.jdField_a_of_type_AndroidOsHandler, (Matrix)localObject, this.jdField_a_of_type_Int, n, i1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373152));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373122));
     paramBundle = a(paramBundle, k, m);
     this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageView.setImageDrawable(paramBundle);
     ((Matrix)localObject).postScale(3.0F, 3.0F, n / 2, i1 / 2);
@@ -140,7 +141,7 @@ public class PublicAccountImageCollectionActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionActivity
  * JD-Core Version:    0.7.0.1
  */

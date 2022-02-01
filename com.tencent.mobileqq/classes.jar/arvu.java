@@ -1,28 +1,20 @@
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+
 public class arvu
 {
-  private long a;
-  private long b;
-  
-  public arvu(long paramLong)
-  {
-    this.b = paramLong;
-    this.a = this.b;
-  }
-  
-  public long a()
-  {
-    return this.b;
-  }
-  
-  public arvu a()
-  {
-    return new arvu(this.b);
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.b = (((float)this.b * paramFloat));
-  }
+  public int a;
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public AsyncImageView a;
+  public Object a;
+  public boolean a;
+  public int b;
+  public ImageView b;
+  public ImageView c;
 }
 
 

@@ -1,16 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import android.view.View;
+import java.util.List;
 
-public class aknk
-  implements DialogInterface.OnDismissListener
+public abstract interface aknk
 {
-  public aknk(BaseActivityView paramBaseActivityView) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a = null;
-  }
+  public abstract List<View> a();
 }
 
 

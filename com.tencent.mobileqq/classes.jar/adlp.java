@@ -1,93 +1,41 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mfsdk.config.APMModuleConfig;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
-import com.tencent.qapmsdk.base.meta.LooperMeta;
-import com.tencent.qapmsdk.looper.ILooperListener;
-import com.tencent.qapmsdk.looper.LooperMonitor;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONObject;
+import android.content.Context;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adlp
-  extends adle
-  implements ILooperListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  protected void a(APMModuleConfig paramAPMModuleConfig)
+  public adlp(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    String str2;
-    String str1;
-    if (BaseApplicationImpl.sProcessId == 2)
+    int j = 1;
+    Object localObject = this.a;
+    String str = this.a.app.getCurrentAccountUin();
+    if (paramBoolean)
     {
-      paramAPMModuleConfig.threshold = QzoneConfig.getInstance().getConfig("QzoneHomepage", "DropFrame_Stack_Threshold", paramAPMModuleConfig.threshold);
-      str2 = QzoneConfig.getInstance().getConfig("QzoneHomepage", "DropFrame_Stack_UserSampleRatio");
-      str1 = QzoneConfig.getInstance().getConfig("QzoneHomepage", "Dropframe_Stack_EventSampleRatio");
-      if (TextUtils.isEmpty(str2)) {}
-    }
-    try
-    {
-      f = Float.valueOf(str2).floatValue();
-      if (f >= 0.0F) {
-        paramAPMModuleConfig.userRatio = f;
+      i = 2;
+      GesturePWDUtils.setGesturePWDState((Context)localObject, str, i);
+      this.a.a(paramBoolean);
+      localObject = this.a.app;
+      if (!paramBoolean) {
+        break label105;
       }
     }
-    catch (Exception localException)
+    label105:
+    for (int i = j;; i = 0)
     {
-      for (;;)
-      {
-        try
-        {
-          float f = Float.valueOf(str1).floatValue();
-          if (f >= 0.0F) {
-            paramAPMModuleConfig.evenRatio = f;
-          }
-          return;
-        }
-        catch (Exception paramAPMModuleConfig)
-        {
-          paramAPMModuleConfig.printStackTrace();
-        }
-        localException = localException;
-        localException.printStackTrace();
-      }
-    }
-    if (!TextUtils.isEmpty(str1)) {}
-  }
-  
-  protected void b()
-  {
-    LooperMonitor.setLooperListener(this);
-  }
-  
-  public String c()
-  {
-    return "looper";
-  }
-  
-  public void onMetaGet(LooperMeta paramLooperMeta)
-  {
-    HashMap localHashMap = new HashMap();
-    paramLooperMeta = paramLooperMeta.getLooperParams();
-    try
-    {
-      Iterator localIterator = paramLooperMeta.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localHashMap.put(str, paramLooperMeta.getString(str));
-      }
-      i = adlf.a();
-    }
-    catch (Exception paramLooperMeta)
-    {
-      QLog.e("MagnifierSDK.QAPM", 1, "onMetaGet looper", paramLooperMeta);
+      bcef.b((QQAppInterface)localObject, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
+      this.a.a();
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
+      i = 1;
+      break;
     }
-    int i;
-    int j = paramLooperMeta.getInt("cost_time");
-    UnifiedMonitor.a().addEvent(i, "LooperSingle", j, 0, localHashMap);
   }
 }
 

@@ -1,78 +1,60 @@
-import android.opengl.GLES20;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.remind.widget.WheelTextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.VerticalGallery.LayoutParams;
 
 public class aprg
+  extends BaseAdapter
 {
-  private int jdField_a_of_type_Int;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private int jdField_b_of_type_Int;
-  private int[] jdField_b_of_type_ArrayOfInt;
+  private int jdField_a_of_type_Int = 25;
+  private int b;
   
-  private void b(int paramInt1, int paramInt2)
+  public aprg(IphonePickerView paramIphonePickerView, int paramInt1, int paramInt2)
   {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      throw new IllegalArgumentException("width & height should > 0!");
-    }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    if (this.jdField_a_of_type_ArrayOfInt != null)
-    {
-      GLES20.glDeleteFramebuffers(1, this.jdField_a_of_type_ArrayOfInt, 0);
-      this.jdField_a_of_type_ArrayOfInt = null;
-    }
-    if (this.jdField_b_of_type_ArrayOfInt != null)
-    {
-      GLES20.glDeleteTextures(1, this.jdField_b_of_type_ArrayOfInt, 0);
-      this.jdField_b_of_type_ArrayOfInt = null;
-    }
-    this.jdField_a_of_type_ArrayOfInt = new int[1];
-    this.jdField_b_of_type_ArrayOfInt = new int[1];
-    GLES20.glGenFramebuffers(1, this.jdField_a_of_type_ArrayOfInt, 0);
-    GLES20.glGenTextures(1, this.jdField_b_of_type_ArrayOfInt, 0);
-    GLES20.glBindTexture(3553, this.jdField_b_of_type_ArrayOfInt[0]);
-    GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
-    GLES20.glTexParameterf(3553, 10240, 9729.0F);
-    GLES20.glTexParameterf(3553, 10241, 9729.0F);
-    GLES20.glTexParameterf(3553, 10242, 33071.0F);
-    GLES20.glTexParameterf(3553, 10243, 33071.0F);
-    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ArrayOfInt[0]);
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.jdField_b_of_type_ArrayOfInt[0], 0);
-    GLES20.glBindTexture(3553, 0);
-    GLES20.glBindFramebuffer(36160, 0);
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramIphonePickerView.getResources().getDisplayMetrics()));
   }
   
-  public int a()
+  public int getCount()
   {
-    int i = 0;
-    if (this.jdField_b_of_type_ArrayOfInt != null) {
-      i = this.jdField_b_of_type_ArrayOfInt[0];
-    }
-    return i;
+    return IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.b);
   }
   
-  public void a()
+  public Object getItem(int paramInt)
   {
-    if (this.jdField_b_of_type_ArrayOfInt != null)
-    {
-      GLES20.glDeleteTextures(this.jdField_b_of_type_ArrayOfInt.length, this.jdField_b_of_type_ArrayOfInt, 0);
-      this.jdField_b_of_type_ArrayOfInt = null;
-    }
-    if (this.jdField_a_of_type_ArrayOfInt != null)
-    {
-      GLES20.glDeleteFramebuffers(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
-      this.jdField_a_of_type_ArrayOfInt = null;
-    }
+    return Integer.valueOf(paramInt);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public long getItemId(int paramInt)
   {
-    if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_b_of_type_ArrayOfInt == null) || (paramInt1 != this.jdField_a_of_type_Int) || (paramInt2 != this.jdField_b_of_type_Int))
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      long l = System.currentTimeMillis();
-      b(paramInt1, paramInt2);
-      QLog.i("Keying_FrameBuffer", 2, " init need " + (System.currentTimeMillis() - l));
+      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.getContext());
+      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+      paramView.setFocusable(true);
+      paramView.setFocusableInTouchMode(true);
     }
-    GLES20.glBindFramebuffer(36160, this.jdField_a_of_type_ArrayOfInt[0]);
+    for (;;)
+    {
+      String str = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.b, paramInt);
+      WheelTextView localWheelTextView = (WheelTextView)paramView;
+      localWheelTextView.setTextSize(20.0F);
+      localWheelTextView.setTextColor(IphonePickerView.jdField_a_of_type_Int);
+      localWheelTextView.setGravity(17);
+      localWheelTextView.setText(str);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
   }
 }
 

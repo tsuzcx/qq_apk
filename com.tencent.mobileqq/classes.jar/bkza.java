@@ -1,36 +1,26 @@
-import android.app.Activity;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.microapp.ext.GameProxy;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.app.MiniAppStateManager;
-import com.tencent.qqmini.proxyimpl.NavigationProxyImpl.1;
-import com.tencent.qqmini.sdk.annotation.ProxyService;
-import com.tencent.qqmini.sdk.launcher.core.proxy.NavigationProxy;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.vip.pb.TianShuAccess.AdItem;
 
-@ProxyService(proxy=NavigationProxy.class)
-public class bkza
-  extends NavigationProxy
+class bkza
+  implements View.OnClickListener
 {
-  private void a(MiniAppInfo paramMiniAppInfo)
-  {
-    ThreadManagerV2.excute(new NavigationProxyImpl.1(this, paramMiniAppInfo), 32, null, true);
-  }
+  bkza(bkyx parambkyx, String paramString) {}
   
-  public boolean launchByAppType(int paramInt1, Activity paramActivity, String paramString, int paramInt2, JSONObject paramJSONObject, ResultReceiver paramResultReceiver)
+  public void onClick(View paramView)
   {
-    return GameProxy.startGameByMiniApp(paramActivity, paramString, paramJSONObject);
-  }
-  
-  public void onAfterLaunchByAppInfo(JSONObject paramJSONObject)
-  {
-    a(MiniAppInfo.createMiniAppInfo(paramJSONObject));
-  }
-  
-  public void onBeforeNavigateToMiniProgram()
-  {
-    MiniAppStateManager.getInstance().notifyChange("hideInput");
+    bkyx.a(this.jdField_a_of_type_Bkyx);
+    if ((bkyx.a(this.jdField_a_of_type_Bkyx) != null) && (bkyx.a(this.jdField_a_of_type_Bkyx).a() != null) && (bkyx.a(this.jdField_a_of_type_Bkyx).a().app != null) && (bkyx.a(this.jdField_a_of_type_Bkyx) != null))
+    {
+      bkyw.a(bkyx.a(this.jdField_a_of_type_Bkyx).a().app, bkyx.a(this.jdField_a_of_type_Bkyx).a(), this.jdField_a_of_type_JavaLangString, 4005);
+      bkyw.a(bkyx.a(this.jdField_a_of_type_Bkyx).a().app, 102, String.valueOf(bkyx.a(this.jdField_a_of_type_Bkyx).iAdId.get()), bkyx.a(this.jdField_a_of_type_Bkyx).traceinfo.get());
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

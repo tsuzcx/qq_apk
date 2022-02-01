@@ -1,13 +1,13 @@
 package dov.com.qq.im.capture.adapter;
 
-import bplz;
+import bmqu;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 
 public class QIMPtvTemplateAdapter$3
   implements Runnable
 {
-  public QIMPtvTemplateAdapter$3(bplz parambplz) {}
+  public QIMPtvTemplateAdapter$3(bmqu parambmqu) {}
   
   public void run()
   {

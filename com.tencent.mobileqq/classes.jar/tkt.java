@@ -1,193 +1,62 @@
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-import org.json.JSONException;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.AppBridgeInvokeHandler.register.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.AppBridgeInvokeHandler.register.2;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.AppBridgeInvokeHandler.register.3;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.AppBridgeInvokeHandler.register.4;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.AppBridgeInvokeHandler.register.5;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.AppBridgeInvokeHandler.register.6;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.AppBridgeInvokeHandler.register.7;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.AppBridgeInvokeHandler.register.8;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.AppBridgeInvokeHandler.register.9;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
-public class tkt
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AppBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "downloadApk", "", "param", "Lorg/json/JSONObject;", "callbackId", "", "downloadApp", "jsonObject", "callback", "nameSpace", "register", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tkt
+  extends tks
 {
-  public static long a(AdvertisementInfo paramAdvertisementInfo)
+  public static final tku a = new tku(null);
+  
+  public tkt(@NotNull BridgeModule paramBridgeModule)
   {
-    if (tpp.d(paramAdvertisementInfo)) {
-      return 30102L;
-    }
-    if (tpp.b(paramAdvertisementInfo)) {
-      return 30103L;
-    }
-    return 0L;
+    super(paramBridgeModule);
   }
   
-  private static String a(int paramInt)
+  private final void a(JSONObject paramJSONObject, String paramString)
   {
-    switch (paramInt)
+    if (paramJSONObject != null)
     {
-    default: 
-      return "0";
-    case 0: 
-      return "0";
-    case 1: 
-      return "1";
-    case 2: 
-      return "2";
-    }
-    return "3";
-  }
-  
-  public static String a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return "0";
-          if (paramBoolean1) {
-            return "1";
-          }
-        } while (!paramBoolean2);
-        return "0";
-        return "8";
-        return "9";
-        if (paramBoolean1) {
-          return "2";
-        }
-      } while (!paramBoolean2);
-      return "1";
-    } while (!paramBoolean2);
-    return "2";
-  }
-  
-  public static JSONObject a(AdvertisementInfo paramAdvertisementInfo, long paramLong1, long paramLong2, String paramString1, String paramString2)
-  {
-    if (paramAdvertisementInfo == null) {
-      return null;
-    }
-    int i = tlc.a(paramAdvertisementInfo);
-    HashMap localHashMap;
-    if (i >= 0)
-    {
-      str = i + "";
-      localHashMap = new HashMap();
-      localHashMap.put("oper_module", Long.valueOf(a(paramAdvertisementInfo)));
-      localHashMap.put("oper_id", Long.valueOf(paramLong1));
-      localHashMap.put("oper_type", Long.valueOf(paramLong2));
-      localHashMap.put("obj_id", "" + str);
-      localHashMap.put("loc_id", "0");
-      if (paramAdvertisementInfo.gameAdComData == null) {
-        break label347;
-      }
-      str = paramAdvertisementInfo.gameAdComData.g;
-      label141:
-      localHashMap.put("app_id", str);
-      if (paramAdvertisementInfo.gameAdComData == null) {
-        break label354;
-      }
-    }
-    label347:
-    label354:
-    for (String str = paramAdvertisementInfo.gameAdComData.d;; str = "")
-    {
-      localHashMap.put("game_pkg", str);
-      localHashMap.put("ex1", paramString1);
-      localHashMap.put("ex2", paramAdvertisementInfo.getExtraParam("game_adtag"));
-      localHashMap.put("ex3", paramAdvertisementInfo.mRowKey);
-      localHashMap.put("ex4", String.valueOf(paramAdvertisementInfo.mArticleID));
-      localHashMap.put("ex5", paramString2);
-      paramAdvertisementInfo = new JSONObject();
-      paramString1 = localHashMap.keySet();
-      try
-      {
-        paramString1 = paramString1.iterator();
-        while (paramString1.hasNext())
-        {
-          paramString2 = (String)paramString1.next();
-          paramAdvertisementInfo.put(paramString2, localHashMap.get(paramString2));
-        }
-        str = "";
-      }
-      catch (JSONException paramString1)
-      {
-        paramString1.printStackTrace();
-        paramString1 = new JSONObject();
-        try
-        {
-          paramString1.put("game_gift_report", paramAdvertisementInfo.toString());
-          return paramString1;
-        }
-        catch (JSONException paramAdvertisementInfo)
-        {
-          paramAdvertisementInfo.printStackTrace();
-          return paramString1;
-        }
-      }
-      break;
-      str = "";
-      break label141;
-    }
-  }
-  
-  public static JSONObject a(AdData paramAdData, long paramLong1, long paramLong2, String paramString1, String paramString2)
-  {
-    if (paramAdData == null) {
-      return null;
-    }
-    return a(paramAdData.a, paramLong1, paramLong2, paramString1, paramString2);
-  }
-  
-  public static void a(AdvertisementInfo paramAdvertisementInfo, int paramInt, String paramString)
-  {
-    long l = 3010205L;
-    if (paramAdvertisementInfo == null) {
-      tpx.a("GameComponentReport", "doGameDownloadStateReport:advertisementInfo is null");
-    }
-    boolean bool1;
-    boolean bool2;
-    do
-    {
-      return;
-      bool1 = tpp.d(paramAdvertisementInfo);
-      bool2 = tpp.b(paramAdvertisementInfo);
-    } while ((!bool1) && (!bool2));
-    String str = a(bool1, bool2, paramInt);
-    if (bool1) {}
-    for (;;)
-    {
-      a(paramAdvertisementInfo, nzq.a(paramAdvertisementInfo), a(paramAdvertisementInfo, l, 9L, str, paramString));
-      return;
-      if (bool2) {
-        l = 3010307L;
+      paramJSONObject = paramJSONObject.optString("params");
+      if (paramJSONObject != null) {
+        a().downloadApp(paramJSONObject);
       }
     }
   }
   
-  public static void a(AdvertisementInfo paramAdvertisementInfo, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
+  private final void b(JSONObject paramJSONObject, String paramString)
   {
-    tqa.b(paramAdvertisementInfo);
-    QQAppInterface localQQAppInterface = (QQAppInterface)ozs.a();
-    nzq.a(new tlx().a(localQQAppInterface).a(BaseApplication.getContext()).a(119).b(39).e(paramJSONObject2).a(paramAdvertisementInfo).d(paramJSONObject1).a());
+    a().downloadApk(paramJSONObject, paramString);
   }
   
-  public static void b(AdvertisementInfo paramAdvertisementInfo, int paramInt, String paramString)
+  @NotNull
+  public String a()
   {
-    if (paramAdvertisementInfo == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GameComponentReport", 2, "advertisementInfo is null");
-      }
-      return;
-    }
-    String str = a(paramInt);
-    a(paramAdvertisementInfo, nzq.a(paramAdvertisementInfo), a(paramAdvertisementInfo, 3010305L, 10L, str, paramString));
+    return "app";
+  }
+  
+  public void a()
+  {
+    a("downloadApp", (Function2)new AppBridgeInvokeHandler.register.1((tkt)this));
+    a("downloadApk", (Function2)new AppBridgeInvokeHandler.register.2((tkt)this));
+    a("isAppInstalled", (Function2)new AppBridgeInvokeHandler.register.3(this));
+    a("launchApp", (Function2)new AppBridgeInvokeHandler.register.4(this));
+    a("getDownloadApkState", (Function2)new AppBridgeInvokeHandler.register.5(this));
+    a("downloadApkAction", (Function2)new AppBridgeInvokeHandler.register.6(this));
+    a("downloadApkPause", (Function2)new AppBridgeInvokeHandler.register.7(this));
+    a("downloadApkCancel", (Function2)new AppBridgeInvokeHandler.register.8(this));
+    a("downloadApkResume", (Function2)new AppBridgeInvokeHandler.register.9(this));
   }
 }
 

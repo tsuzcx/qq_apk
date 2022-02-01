@@ -1,19 +1,23 @@
-import com.tencent.widget.HorizontalListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.concurrent.CountDownLatch;
 
-public class blmk
+class blmk
+  implements View.OnClickListener
 {
-  private int a;
+  blmk(blmi paramblmi) {}
   
-  private blmk(HorizontalListView paramHorizontalListView) {}
-  
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a = HorizontalListView.access$900(this.this$0);
-  }
-  
-  public boolean a()
-  {
-    return (this.this$0.hasWindowFocus()) && (HorizontalListView.access$1000(this.this$0) == this.a);
+    bmbx.b("AEPhotoListLogicBase", "batchCompressDialog cancel clicked");
+    blmi.a(this.a, true);
+    this.a.i();
+    if (blmi.a(this.a) != null) {
+      blmi.a(this.a).countDown();
+    }
+    blmi.a(this.a).cancel();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

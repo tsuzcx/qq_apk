@@ -1,23 +1,60 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCircleBaseWidgetView;
-import qqcircle.QQCircleRankinglist.RankingItem;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqReportEvil;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspReportEvil;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-class wfk
-  extends RecyclerView.ViewHolder
+public class wfk
+  extends vqr<wgv>
 {
-  public wfk(View paramView)
+  public static final String a = vpl.a("StorySvc.video_report_evil");
+  public long b;
+  public String b;
+  public final int c;
+  public String c;
+  
+  public String a()
   {
-    super(paramView);
+    return a;
   }
   
-  public void a(QQCircleRankinglist.RankingItem paramRankingItem, int paramInt)
+  public wgv a(byte[] paramArrayOfByte)
   {
-    if ((this.itemView instanceof QCircleBaseWidgetView))
+    qqstory_service.RspReportEvil localRspReportEvil = new qqstory_service.RspReportEvil();
+    try
     {
-      this.itemView.setTag(this);
-      ((QCircleBaseWidgetView)this.itemView).setData(paramRankingItem, paramInt);
+      localRspReportEvil.mergeFrom(paramArrayOfByte);
+      return new wgv(localRspReportEvil);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqReportEvil localReqReportEvil = new qqstory_service.ReqReportEvil();
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localReqReportEvil.vid.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    }
+    if (this.jdField_b_of_type_Long != 0L) {
+      localReqReportEvil.tuin.set(this.jdField_b_of_type_Long);
+    }
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      localReqReportEvil.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    }
+    localReqReportEvil.type.set(this.jdField_c_of_type_Int);
+    return localReqReportEvil.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "ReportEvilRequest{impeachType=" + this.jdField_c_of_type_Int + ", vid='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 

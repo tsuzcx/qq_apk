@@ -1,14 +1,25 @@
-import android.graphics.RectF;
-import com.tencent.biz.qqcircle.transition.QCircleTransitionImageView;
+import com.tencent.biz.qqstory.model.filter.FilterItem;
+import com.tencent.biz.qqstory.model.filter.FilterItem.FilterItemIllegalException;
 
 public class vvr
-  implements vvm
 {
-  public vvr(QCircleTransitionImageView paramQCircleTransitionImageView) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public float a()
+  public FilterItem a()
   {
-    return QCircleTransitionImageView.b(this.a).top;
+    try
+    {
+      FilterItem localFilterItem = new FilterItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c, null);
+      return localFilterItem;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      throw new FilterItem.FilterItemIllegalException("create FilterItem instance failed", localIllegalArgumentException);
+    }
   }
 }
 

@@ -1,35 +1,26 @@
-import android.util.Pair;
-import java.util.ArrayList;
-import java.util.Arrays;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.SlideDownFrameLayout;
 
 public class bhje
+  implements Animator.AnimatorListener
 {
-  public static ArrayList<Pair<String, Long>> a(ArrayList<Pair<String, Long>> paramArrayList)
+  public bhje(SlideDownFrameLayout paramSlideDownFrameLayout) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Object[] arrayOfObject = new Object[paramArrayList.size()];
-    int i = 0;
-    Object localObject;
-    while (i < paramArrayList.size())
-    {
-      localObject = (Pair)paramArrayList.get(i);
-      arrayOfObject[i] = { (String)((Pair)localObject).first, String.valueOf(((Pair)localObject).second) };
-      i += 1;
-    }
-    Arrays.sort(arrayOfObject, new bhjf());
-    paramArrayList.clear();
-    i = 0;
-    while (i < arrayOfObject.length)
-    {
-      localObject = (String[])arrayOfObject[i];
-      paramArrayList.add(Pair.create(localObject[0], Long.valueOf(Long.parseLong(localObject[1]))));
-      i += 1;
-    }
-    return paramArrayList;
+    SlideDownFrameLayout.a(this.a).a();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhje
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bgyh;
+import bfht;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -19,7 +19,7 @@ public class UsingTimeReportManager
 {
   private IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private List<bgyh> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<bfht> jdField_a_of_type_JavaUtilList = new ArrayList();
   
   public UsingTimeReportManager(AppInterface paramAppInterface)
   {
@@ -51,7 +51,7 @@ public class UsingTimeReportManager
       ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((bgyh)((Iterator)localObject1).next()).c();
+        ((bfht)((Iterator)localObject1).next()).c();
       }
     }
     finally {}
@@ -65,7 +65,7 @@ public class UsingTimeReportManager
       ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((bgyh)((Iterator)localObject1).next()).d();
+        ((bfht)((Iterator)localObject1).next()).d();
       }
     }
     finally {}
@@ -79,41 +79,41 @@ public class UsingTimeReportManager
       ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((bgyh)((Iterator)localObject1).next()).e();
+        ((bfht)((Iterator)localObject1).next()).e();
       }
     }
     finally {}
   }
   
-  public void a(bgyh parambgyh)
+  public void a(bfht parambfht)
   {
     try
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(parambgyh)) {
-        this.jdField_a_of_type_JavaUtilList.add(parambgyh);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(parambfht)) {
+        this.jdField_a_of_type_JavaUtilList.add(parambfht);
       }
       return;
     }
     finally
     {
-      parambgyh = finally;
-      throw parambgyh;
+      parambfht = finally;
+      throw parambfht;
     }
   }
   
-  public void b(bgyh parambgyh)
+  public void b(bfht parambfht)
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilList.contains(parambgyh)) {
-        this.jdField_a_of_type_JavaUtilList.remove(parambgyh);
+      if (this.jdField_a_of_type_JavaUtilList.contains(parambfht)) {
+        this.jdField_a_of_type_JavaUtilList.remove(parambfht);
       }
       return;
     }
     finally
     {
-      parambgyh = finally;
-      throw parambgyh;
+      parambfht = finally;
+      throw parambfht;
     }
   }
   

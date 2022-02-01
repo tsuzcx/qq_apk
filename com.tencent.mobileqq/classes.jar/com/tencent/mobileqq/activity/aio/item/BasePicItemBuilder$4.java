@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahbe;
+import afxq;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
@@ -8,11 +8,11 @@ import com.tencent.mobileqq.data.MessageForPic;
 public class BasePicItemBuilder$4
   implements Runnable
 {
-  public BasePicItemBuilder$4(ahbe paramahbe, MessageForPic paramMessageForPic) {}
+  public BasePicItemBuilder$4(afxq paramafxq, MessageForPic paramMessageForPic) {}
   
   public void run()
   {
-    this.this$0.a.a().b(this.a.frienduin, this.a.istroop, this.a.uniseq);
+    this.this$0.a.getMessageFacade().removeMsgByUniseq(this.a.frienduin, this.a.istroop, this.a.uniseq);
   }
 }
 

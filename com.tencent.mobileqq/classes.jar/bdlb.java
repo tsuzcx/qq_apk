@@ -1,52 +1,161 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.animation.ValueAnimator;
+import android.view.View;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.LinearInterpolator;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bdlb
-  extends arac<bdlc>
 {
-  @NonNull
-  public bdlc a(int paramInt)
+  private int jdField_a_of_type_Int;
+  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
+  private ListView jdField_a_of_type_AndroidWidgetListView;
+  private bdng jdField_a_of_type_Bdng;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
+  private boolean jdField_b_of_type_Boolean;
+  
+  public bdlb(ListView paramListView, bdng parambdng, List<bdnl> paramList)
   {
-    return new bdlc();
+    this.jdField_a_of_type_AndroidWidgetListView = paramListView;
+    this.jdField_a_of_type_Bdng = parambdng;
+    this.jdField_a_of_type_Bdng.a(paramList);
+    a(this.jdField_a_of_type_AndroidWidgetListView);
+    parambdng = this.jdField_a_of_type_AndroidWidgetListView.getLayoutParams();
+    parambdng.height = this.jdField_a_of_type_Int;
+    parambdng.width = this.jdField_b_of_type_Int;
+    paramListView.setLayoutParams(parambdng);
+    this.jdField_a_of_type_AndroidWidgetListView.setPadding(DisplayUtil.dip2px(this.jdField_a_of_type_AndroidWidgetListView.getContext(), 8.0F), -this.jdField_a_of_type_Int, 0, 0);
   }
   
-  @Nullable
-  public bdlc a(araj[] paramArrayOfaraj)
+  public static List<bdnl> a(JSONArray paramJSONArray)
   {
-    bdlc localbdlc = new bdlc();
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null)) {
-      bdlc.a(localbdlc, paramArrayOfaraj[0].a);
+    if (paramJSONArray == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TribePostTitlePrefixPanelController", 2, "prefixJArray is null");
+      }
+      return null;
     }
-    return localbdlc;
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    for (;;)
+    {
+      if (i < paramJSONArray.length())
+      {
+        JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
+        bdnl localbdnl = new bdnl();
+        try
+        {
+          localbdnl.a(localJSONObject);
+          if (localbdnl.a()) {
+            localArrayList.add(localbdnl);
+          }
+          i += 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            QLog.e("TribePostTitlePrefixPanelController", 2, "analyze error , " + localException);
+          }
+        }
+      }
+    }
+    return localArrayList;
   }
   
-  public void a(bdlc parambdlc) {}
-  
-  public Class<bdlc> clazz()
+  private void d()
   {
-    return bdlc.class;
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { -this.jdField_a_of_type_Int, 0 });
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(100L);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bdlc(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bdld(this));
   }
   
-  public boolean isNeedCompressed()
+  private void e()
   {
-    return true;
+    this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, -this.jdField_a_of_type_Int });
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(100L);
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bdle(this));
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new bdlf(this));
   }
   
-  public boolean isNeedStoreLargeFile()
+  public void a()
   {
-    return false;
+    if ((!a()) && (!this.jdField_a_of_type_Boolean))
+    {
+      this.jdField_a_of_type_AndroidWidgetListView.setVisibility(0);
+      if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null) {
+        d();
+      }
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new BounceInterpolator());
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    }
   }
   
-  public int migrateOldVersion()
+  public void a(ListView paramListView)
   {
-    return 0;
+    ListAdapter localListAdapter = paramListView.getAdapter();
+    if (localListAdapter == null) {
+      return;
+    }
+    int k = localListAdapter.getCount();
+    int i = 0;
+    int j = 0;
+    while (i < k)
+    {
+      View localView = localListAdapter.getView(i, null, paramListView);
+      localView.measure(0, 0);
+      j += localView.getMeasuredHeight();
+      int m = localView.getMeasuredWidth();
+      if (m > this.jdField_b_of_type_Int) {
+        this.jdField_b_of_type_Int = m;
+      }
+      i += 1;
+    }
+    this.jdField_a_of_type_Int = (paramListView.getDividerHeight() * (localListAdapter.getCount() - 1) + j);
+    this.jdField_b_of_type_Int += DisplayUtil.dip2px(this.jdField_a_of_type_AndroidWidgetListView.getContext(), 8.0F);
   }
   
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
+  public boolean a()
   {
-    return 577;
+    return this.jdField_a_of_type_AndroidWidgetListView.getVisibility() == 0;
+  }
+  
+  public void b()
+  {
+    if ((a()) && (!this.jdField_a_of_type_Boolean))
+    {
+      if (this.jdField_b_of_type_AndroidAnimationValueAnimator == null) {
+        e();
+      }
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
+      this.jdField_b_of_type_Boolean = true;
+    }
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_AndroidWidgetListView.getVisibility() != 0) || (this.jdField_b_of_type_Boolean);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    }
+    if (this.jdField_b_of_type_AndroidAnimationValueAnimator != null) {
+      this.jdField_b_of_type_AndroidAnimationValueAnimator.cancel();
+    }
   }
 }
 

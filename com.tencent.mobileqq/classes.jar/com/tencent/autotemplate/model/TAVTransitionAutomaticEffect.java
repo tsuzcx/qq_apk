@@ -1,11 +1,17 @@
 package com.tencent.autotemplate.model;
 
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.google.gson.annotations.SerializedName;
 import com.tencent.tavmovie.sticker.TAVMovieSticker;
+import java.util.List;
 
 public class TAVTransitionAutomaticEffect
   extends TAVBaseAutomaticEffect
 {
+  @SerializedName("subTransitions")
+  public List<TAVTransitionAutomaticEffect> subTransitions;
+  
   public TAVTransitionAutomaticEffect(@NonNull String paramString)
   {
     super(paramString);
@@ -14,6 +20,16 @@ public class TAVTransitionAutomaticEffect
   public TAVMovieSticker convertToMovieSticker()
   {
     return new TAVMovieSticker(getFullPath());
+  }
+  
+  public List<TAVTransitionAutomaticEffect> getSubTransitions()
+  {
+    return this.subTransitions;
+  }
+  
+  public boolean isFaceTransition()
+  {
+    return TextUtils.equals(this.parameter.type, "GradientFace");
   }
 }
 

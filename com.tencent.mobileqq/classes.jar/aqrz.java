@@ -1,60 +1,18 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.SpecialCareInfo;
 
-class aqrz
-  implements Comparator<ColorNote>
+public final class aqrz
+  implements Parcelable.Creator<SpecialCareInfo>
 {
-  aqrz(aqry paramaqry) {}
-  
-  public int a(ColorNote paramColorNote1, ColorNote paramColorNote2)
+  public SpecialCareInfo a(Parcel paramParcel)
   {
-    int j = 0;
-    int k = 1;
-    boolean bool1 = aqsd.c(paramColorNote1);
-    boolean bool2 = aqsd.c(paramColorNote2);
-    int i;
-    if ((bool1) && (bool2)) {
-      i = aqry.a(this.a, paramColorNote1, paramColorNote2);
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return i;
-          if (bool1) {
-            return -1;
-          }
-          i = k;
-        } while (bool2);
-        bool1 = aqsd.b(paramColorNote1);
-        bool2 = aqsd.b(paramColorNote2);
-        if ((bool1) && (bool2)) {
-          return aqry.a(this.a, paramColorNote1, paramColorNote2);
-        }
-        if (bool1) {
-          return -1;
-        }
-        i = k;
-      } while (bool2);
-      if (paramColorNote1.getServiceType() == 16973824) {}
-      for (i = 1;; i = 0)
-      {
-        if (paramColorNote2.getServiceType() == 16973824) {
-          j = 1;
-        }
-        if ((i == 0) || (j == 0)) {
-          break;
-        }
-        return aqry.a(this.a, paramColorNote1, paramColorNote2);
-      }
-      if (i != 0) {
-        return -1;
-      }
-      i = k;
-    } while (j != 0);
-    return aqry.a(this.a, paramColorNote1, paramColorNote2);
+    return new SpecialCareInfo(paramParcel);
+  }
+  
+  public SpecialCareInfo[] a(int paramInt)
+  {
+    return new SpecialCareInfo[paramInt];
   }
 }
 

@@ -3,23 +3,32 @@ package com.tencent.mobileqq.activity.photo;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
-import bhmq;
+import bfvo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import zoc;
+import yoy;
 
 public class PhotoUtils$WatermarkPicTask
   implements Runnable
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private final String b;
+  public static final int MSG_DONE = 1000;
+  public static final int MSG_FAILED = 1001;
+  private final String mDstPath;
+  private final MqqHandler mHandler;
+  private final String mSrcPath;
   
-  private void a(int paramInt)
+  public PhotoUtils$WatermarkPicTask(String paramString1, String paramString2, MqqHandler paramMqqHandler)
   {
-    if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(paramInt);
+    this.mSrcPath = paramString1;
+    this.mDstPath = paramString2;
+    this.mHandler = paramMqqHandler;
+  }
+  
+  private void sendMsg(int paramInt)
+  {
+    if (this.mHandler != null) {
+      this.mHandler.sendEmptyMessage(paramInt);
     }
   }
   
@@ -31,13 +40,13 @@ public class PhotoUtils$WatermarkPicTask
     Bitmap localBitmap2;
     try
     {
-      localBitmap2 = bhmq.a(this.jdField_a_of_type_JavaLangString, null);
+      localBitmap2 = bfvo.a(this.mSrcPath, null);
       if (localBitmap2 == null)
       {
         if (QLog.isColorLevel()) {
           QLog.d("PhotoUtils", 2, "decode src is null.");
         }
-        a(1001);
+        sendMsg(1001);
         return;
       }
     }
@@ -46,16 +55,16 @@ public class PhotoUtils$WatermarkPicTask
       if (QLog.isColorLevel()) {
         QLog.d("PhotoUtils", 2, "decode src cause oom.");
       }
-      a(1001);
+      sendMsg(1001);
       return;
     }
     int n = localBitmap2.getWidth();
     int m = localBitmap2.getHeight();
-    int k = bhmq.d(this.jdField_a_of_type_JavaLangString);
+    int k = bfvo.d(this.mSrcPath);
     if (QLog.isColorLevel()) {
       QLog.d("PhotoUtils", 2, "watermark pic task, w=" + n + ", h=" + m + ", r=" + k);
     }
-    Object localObject4 = bhmq.a(BaseApplication.getContext().getResources(), 2130846011);
+    Object localObject4 = bfvo.a(BaseApplication.getContext().getResources(), 2130845911);
     if (n != 576)
     {
       float f = n / 576.0F;
@@ -69,7 +78,7 @@ public class PhotoUtils$WatermarkPicTask
         QLog.d("PhotoUtils", 2, "can not load watermark icon.");
       }
       localBitmap2.recycle();
-      a(1001);
+      sendMsg(1001);
       return;
     }
     for (;;)
@@ -151,7 +160,7 @@ public class PhotoUtils$WatermarkPicTask
       }
       if (localObject1 != null)
       {
-        bool = zoc.a((Bitmap)localObject1, this.b);
+        bool = yoy.a((Bitmap)localObject1, this.mDstPath);
         ((Bitmap)localObject1).recycle();
       }
       localBitmap2.recycle();
@@ -163,7 +172,7 @@ public class PhotoUtils$WatermarkPicTask
         continue;
       }
       i = 1000;
-      a(i);
+      sendMsg(i);
       return;
       i = 0;
       continue;

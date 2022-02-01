@@ -1,19 +1,19 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.47.1;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class sfs
-  implements Animation.AnimationListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$dismissGuideRootView$1$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "isReverse", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sfs
+  extends AnimatorListenerAdapter
 {
-  public void onAnimationEnd(Animation paramAnimation)
+  sfs(View paramView) {}
+  
+  public void onAnimationEnd(@Nullable Animator paramAnimator, boolean paramBoolean)
   {
-    this.a.post(new ReadInJoyBaseAdapter.47.1(this));
+    this.a.setVisibility(8);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

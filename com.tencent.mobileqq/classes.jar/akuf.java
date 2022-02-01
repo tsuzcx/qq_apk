@@ -1,22 +1,6 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-
-class akuf
-  implements MediaScanner.OnMediaInfoScannerListener
+public abstract interface akuf
 {
-  akuf(akue paramakue) {}
-  
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
-  {
-    if (bqyp.a(this.a.mActivity, paramLocalMediaInfo))
-    {
-      akue.a(this.a, paramLocalMediaInfo);
-      abbe.a("mystatus_localupload", "pic_select", 0, 0, new String[0]);
-      return;
-    }
-    ((NewPhotoListActivity)this.a.mActivity).cancleProgressDailog();
-  }
+  public abstract void c(int paramInt);
 }
 
 

@@ -1,21 +1,9 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.pluginsdk.PluginRecoverReceiver;
 
-public class bcca
-  implements View.OnTouchListener
+public final class bcca
+  extends PluginRecoverReceiver
 {
-  public bcca(ActiveEntitySearchFragment paramActiveEntitySearchFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
-  }
+  public void onRecver(String paramString) {}
 }
 
 

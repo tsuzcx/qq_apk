@@ -1,36 +1,67 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0xcf.submsgtype0xcf.MsgBody;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.widget.QQBlurView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adgc
-  implements adci
+  implements View.OnClickListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QAV.Random.push", 2, "[1v1] onLinePush receive 0x210_0xcf");
-    }
-    try
-    {
-      submsgtype0xcf.MsgBody localMsgBody = new submsgtype0xcf.MsgBody();
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      paramQQAppInterface.a().a(localMsgBody);
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QAV.Random.push", 2, "[1v1] onLinePush 0x210_0xcf push exception", paramQQAppInterface);
-    }
-  }
+  public adgc(EmosmActivity paramEmosmActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onClick(View paramView)
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    if (!this.a.jdField_b_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131691982);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(true);
+      this.a.jdField_a_of_type_Arbl.a(true);
+      this.a.jdField_b_of_type_Boolean = true;
+      this.a.jdField_a_of_type_Arbl.notifyDataSetChanged();
+      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      EmosmActivity.a(this.a).setVisibility(0);
+      EmosmActivity.a(this.a).setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+      this.a.setTitle(String.format(this.a.getResources().getString(2131691981), new Object[] { Integer.valueOf(0) }));
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setPadding(0, 0, 0, ViewUtils.dip2px(44.0F));
+      bcef.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpsEdit", 0, 0, "", "", "", "");
+      if (this.a.jdField_b_of_type_Int == 1) {
+        bcef.b(this.a.app, "dc00898", "", "", "0X800AB0F", "0X800AB0F", 0, 0, "", "", "", "");
+      }
+    }
+    while ((this.a.jdField_a_of_type_Int != 2) && (this.a.jdField_a_of_type_Int != 1)) {
+      for (;;)
+      {
+        this.a.a(this.a.jdField_b_of_type_Boolean);
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        bcef.b(this.a.app, "dc00898", "", "", "0X800AB16", "0X800AB16", 0, 0, "", "", "", "");
+      }
+    }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131691980);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(false);
+    this.a.jdField_a_of_type_Arbl.a(false);
+    this.a.f();
+    this.a.jdField_b_of_type_Boolean = false;
+    this.a.jdField_a_of_type_Arbl.notifyDataSetChanged();
+    this.a.jdField_a_of_type_Arbl.a();
+    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    EmosmActivity.a(this.a).setVisibility(8);
+    EmosmActivity.a(this.a).setVisibility(8);
+    if (this.a.jdField_b_of_type_Int == 2) {
+      this.a.setTitle(2131691783);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setPadding(0, 0, 0, 0);
+      break;
+      this.a.setTitle(2131691989);
+    }
   }
 }
 

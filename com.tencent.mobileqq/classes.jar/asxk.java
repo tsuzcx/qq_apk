@@ -1,75 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
-public class asxk
+class asxk
+  implements aszj
 {
-  public int a;
-  public String a;
-  public int b;
+  asxk(asxj paramasxj, List paramList, asdg paramasdg, asxo paramasxo) {}
   
-  public asxk()
+  public void onNo()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public asxk(int paramInt1, String paramString, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-  }
-  
-  public static String a(ArrayList<asxk> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return "";
+    if (this.jdField_a_of_type_Asxo != null) {
+      this.jdField_a_of_type_Asxo.a(1, 1);
     }
-    JSONArray localJSONArray = new JSONArray();
-    int i = 0;
-    for (;;)
+  }
+  
+  public void onYes()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      if (i < paramArrayList.size())
-      {
-        asxk localasxk = (asxk)paramArrayList.get(i);
-        JSONObject localJSONObject;
-        if (localasxk != null) {
-          localJSONObject = new JSONObject();
-        }
-        try
-        {
-          localJSONObject.put("tagId", localasxk.jdField_a_of_type_Int);
-          localJSONObject.put("tagName", localasxk.jdField_a_of_type_JavaLangString);
-          localJSONObject.put("isHotTag", localasxk.b);
-          localJSONArray.put(localJSONObject);
-          i += 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            QLog.e("TagInfo CLASS", 2, "convertToJson error" + localException.toString());
-          }
-        }
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        this.jdField_a_of_type_Asdg.b(localFileManagerEntity);
       }
     }
-    return localJSONArray.toString();
-  }
-  
-  public boolean a()
-  {
-    return this.b == 1;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{tagId: ").append(this.jdField_a_of_type_Int).append("}");
-    localStringBuilder.append("{tagName: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    localStringBuilder.append("{isHotTag: ").append(this.b).append("}");
-    return localStringBuilder.toString();
+    if (this.jdField_a_of_type_Asxo != null) {
+      this.jdField_a_of_type_Asxo.a(1, 0);
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import bmww;
+import cooperation.qzone.api.QZoneApiProxy;
 
 class ExtendFriendFragment$7$1
   implements Runnable
@@ -10,14 +10,14 @@ class ExtendFriendFragment$7$1
   public void run()
   {
     if (ExtendFriendFragment.a()) {
-      bmww.a();
+      QZoneApiProxy.initSchoolExtendListCreator();
     }
     ExtendFriendFragment.c(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment.7.1
  * JD-Core Version:    0.7.0.1
  */

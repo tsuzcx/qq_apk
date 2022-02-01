@@ -21,7 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bhtq;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
@@ -54,7 +54,7 @@ public class ActionSheetDialog
   
   public ActionSheetDialog(Context paramContext)
   {
-    this(paramContext, 2131755229);
+    this(paramContext, 2131755230);
   }
   
   public ActionSheetDialog(Context paramContext, int paramInt)
@@ -63,7 +63,7 @@ public class ActionSheetDialog
     this.mContext = paramContext;
     setTransparentStatusBar();
     this.mInflater = LayoutInflater.from(paramContext);
-    setContentView(2131562164);
+    setContentView(2131562039);
     init();
     bindEvents();
   }
@@ -75,9 +75,9 @@ public class ActionSheetDialog
   
   private void init()
   {
-    this.customButtonContainer = ((LinearLayout)findViewById(2131365239));
-    this.mContainer = ((LinearLayout)findViewById(2131370482));
-    this.backgroundLayout = ((RelativeLayout)findViewById(2131363243));
+    this.customButtonContainer = ((LinearLayout)findViewById(2131365263));
+    this.mContainer = ((LinearLayout)findViewById(2131370450));
+    this.backgroundLayout = ((RelativeLayout)findViewById(2131363274));
   }
   
   private void prepareContentViews()
@@ -122,18 +122,18 @@ public class ActionSheetDialog
         }
         i = 2130837580;
         break label63;
-        j = this.mContext.getResources().getColor(2131165483);
-        ((Button)localObject1).setTextSize(0, this.mContext.getResources().getDimension(2131298964));
+        j = this.mContext.getResources().getColor(2131165491);
+        ((Button)localObject1).setTextSize(0, this.mContext.getResources().getDimension(2131299029));
         ((Button)localObject1).setClickable(false);
         ((Button)localObject1).setVisibility(8);
         addTitle(((Button)localObject1).getText().toString());
         continue;
         j = this.mContext.getResources().getColor(2131165204);
         continue;
-        bhtq.a(8.0F);
+        ViewUtils.dip2px(8.0F);
         j = this.mContext.getResources().getColor(2131165201);
         localObject2 = new SpannableString(((Button)localObject1).getText());
-        Object localObject3 = this.mContext.getResources().getDrawable(2130849318);
+        Object localObject3 = this.mContext.getResources().getDrawable(2130849229);
         ((Drawable)localObject3).setBounds(0, 0, ((Drawable)localObject3).getIntrinsicWidth(), ((Drawable)localObject3).getIntrinsicHeight());
         localObject3 = new ImageSpan((Drawable)localObject3, 1);
         if ((((SpannableString)localObject2).length() >= 1) && (((SpannableString)localObject2).charAt(((SpannableString)localObject2).length() - 1) == '@')) {
@@ -145,9 +145,9 @@ public class ActionSheetDialog
     if (!this.mCancelButtonHasAdd)
     {
       localObject1 = this.mInflater.inflate(2131558438, null);
-      localObject2 = (Button)((View)localObject1).findViewById(2131361969);
+      localObject2 = (Button)((View)localObject1).findViewById(2131361968);
       ((Button)localObject2).setOnClickListener(this.mDefaultDismissListener);
-      ((Button)localObject2).setText(2131690580);
+      ((Button)localObject2).setText(2131690620);
       this.customButtonContainer.addView((View)localObject1);
       this.mCancelButtonHasAdd = true;
     }
@@ -195,9 +195,9 @@ public class ActionSheetDialog
       this.customButtonContainer.addView(localButton, paramInt2);
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localButton.getLayoutParams();
       localLayoutParams.width = -1;
-      localLayoutParams.height = ((int)this.mContext.getResources().getDimension(2131296669));
+      localLayoutParams.height = ((int)this.mContext.getResources().getDimension(2131296724));
       localButton.setLayoutParams(localLayoutParams);
-      localButton.setTextSize(0, this.mContext.getResources().getDimension(2131298963));
+      localButton.setTextSize(0, this.mContext.getResources().getDimension(2131299028));
       localButton.setText(paramString);
       localButton.setOnClickListener(paramOnClickListener);
       this.buttonCount += 1;
@@ -223,10 +223,10 @@ public class ActionSheetDialog
       this.customButtonContainer.addView(localButton);
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localButton.getLayoutParams();
       localLayoutParams.width = -1;
-      localLayoutParams.height = ((int)this.mContext.getResources().getDimension(2131296669));
+      localLayoutParams.height = ((int)this.mContext.getResources().getDimension(2131296724));
       localLayoutParams.gravity = 17;
       localButton.setLayoutParams(localLayoutParams);
-      localButton.setTextSize(0, this.mContext.getResources().getDimension(2131298963));
+      localButton.setTextSize(0, this.mContext.getResources().getDimension(2131299028));
       localButton.setText(paramString);
       localButton.setOnClickListener(paramOnClickListener);
       this.buttonCount += 1;
@@ -250,12 +250,12 @@ public class ActionSheetDialog
       this.customButtonContainer.addView(localButton, 0);
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localButton.getLayoutParams();
       localLayoutParams.width = -1;
-      localLayoutParams.height = ((int)this.mContext.getResources().getDimension(2131296669));
+      localLayoutParams.height = ((int)this.mContext.getResources().getDimension(2131296724));
       localLayoutParams.gravity = 17;
       localButton.setLayoutParams(localLayoutParams);
-      localButton.setTextSize(0, this.mContext.getResources().getDimension(2131298964));
+      localButton.setTextSize(0, this.mContext.getResources().getDimension(2131299029));
       localButton.setText(paramString);
-      localButton.setTextColor(this.mContext.getResources().getColor(2131165483));
+      localButton.setTextColor(this.mContext.getResources().getColor(2131165491));
       localButton.setBackgroundResource(2130837590);
       localButton.setClickable(false);
       return localButton;
@@ -356,10 +356,10 @@ public class ActionSheetDialog
   {
     if (paramButton != null)
     {
-      int i = bhtq.a(8.0F);
+      int i = ViewUtils.dip2px(8.0F);
       int j = this.mContext.getResources().getColor(2131165201);
       SpannableString localSpannableString = new SpannableString(paramButton.getText());
-      Drawable localDrawable = this.mContext.getResources().getDrawable(2130849318);
+      Drawable localDrawable = this.mContext.getResources().getDrawable(2130849229);
       localDrawable.setBounds(i, 0, localDrawable.getIntrinsicWidth() + i, localDrawable.getIntrinsicHeight());
       localSpannableString.setSpan(new ImageSpan(localDrawable, 1), localSpannableString.length() - 1, localSpannableString.length(), 33);
       paramButton.setText(localSpannableString);

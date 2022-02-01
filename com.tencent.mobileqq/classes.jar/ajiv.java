@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-class ajiv
-  extends anuw
+public class ajiv
 {
-  ajiv(ajis paramajis) {}
-  
-  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  public static void a(String paramString)
   {
-    if (paramBoolean)
-    {
-      QQToast.a(ajis.a(this.a), 2131698208, 3000).a();
-      if (ajis.a(this.a) != 23) {
-        this.a.a(true);
-      }
-      return;
+    a(paramString, "");
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    a(paramString1, paramString2, "");
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    bcef.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d(ajkg.a + ".report", 2, "tag=" + paramString1 + ",extra1=" + paramString2 + ",extra2=" + paramString3);
     }
-    QQToast.a(ajis.a(this.a), 2131698207, 0).a();
   }
 }
 

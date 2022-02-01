@@ -1,59 +1,49 @@
+import android.text.TextUtils;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class baix
 {
-  public static baeh a(int paramInt, baei parambaei, azxr paramazxr)
+  public static List<bajc> a(String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1002: 
-      return a(parambaei, paramazxr);
-    }
-    return b(parambaei, paramazxr);
-  }
-  
-  private static baeh a(baei parambaei, azxr paramazxr)
-  {
-    bair localbair = null;
-    long l = paramazxr.a;
-    if ((l == azxy.b) || (l == azxy.c) || (l == azxy.d)) {
-      localbair = new bair(parambaei, paramazxr);
-    }
-    do
-    {
-      return localbair;
-      if (l == azxy.e) {
-        return new bais(parambaei, paramazxr);
+    localArrayList = new ArrayList();
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if (paramString.has("LiuHaiArray"))
+        {
+          paramString = paramString.getJSONArray("LiuHaiArray");
+          int i = 0;
+          while (i < paramString.length())
+          {
+            bajc localbajc = new bajc();
+            JSONObject localJSONObject = paramString.getJSONObject(i);
+            if (localJSONObject.has("manufacturer")) {
+              localbajc.a = localJSONObject.optString("manufacturer", "");
+            }
+            if (localJSONObject.has("brand")) {
+              localbajc.b = localJSONObject.optString("brand", "");
+            }
+            if (localJSONObject.has("model")) {
+              localbajc.c = localJSONObject.optString("model", "");
+            }
+            localArrayList.add(localbajc);
+            i += 1;
+          }
+        }
+        return localArrayList;
       }
-      if (l == azxy.f) {
-        return new baiu(parambaei, paramazxr);
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        BrowserLogHelper.getInstance().getGalleryLog().d("ListConfigParseUtils", 4, "parseWhiteListConfig exception = " + paramString.getMessage());
       }
-      if (l == azxy.g) {
-        return new bait(parambaei, paramazxr);
-      }
-      if ((l == azxy.i) || (l == azxy.j)) {
-        return new baiw(parambaei, paramazxr);
-      }
-      if (l == azxy.k) {
-        return new baiv(parambaei, paramazxr);
-      }
-    } while (!azxy.a(l));
-    return new baiq(parambaei, paramazxr);
-  }
-  
-  private static baeh b(baei parambaei, azxr paramazxr)
-  {
-    long l = paramazxr.a;
-    if (azxy.a(l)) {
-      return new baig(parambaei, paramazxr);
     }
-    if ((l == azxy.i) || (l == azxy.j)) {
-      return new baij(parambaei, paramazxr);
-    }
-    if (l == azxy.g) {
-      return new baih(parambaei, paramazxr);
-    }
-    return new baid(parambaei, paramazxr);
   }
 }
 

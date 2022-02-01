@@ -1,17 +1,18 @@
-import android.view.View;
-import android.widget.BaseExpandableListAdapter;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 
-public abstract class bloj
-  extends BaseExpandableListAdapter
+class bloj
+  implements Observer<Boolean>
 {
-  public abstract void a(View paramView, int paramInt);
+  bloj(bloe parambloe) {}
   
-  public boolean a()
+  public void a(@Nullable Boolean paramBoolean)
   {
-    return false;
+    bloe.b(this.a);
+    if (paramBoolean != null) {
+      bloe.b(this.a, paramBoolean.booleanValue());
+    }
   }
-  
-  public abstract int c_();
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.avgame.qav;
 
 import android.os.Handler;
-import aran;
+import apub;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
-import ngk;
 import nht;
+import nji;
 
 class SecurityPolicyChecker$1
   implements Runnable
@@ -16,9 +16,9 @@ class SecurityPolicyChecker$1
   {
     boolean bool2 = false;
     boolean bool1 = SecurityPolicyChecker.a(this.this$0);
-    nht localnht = (nht)aran.a().a(642);
-    if (localnht != null) {
-      if (localnht.a() == 1) {
+    nji localnji = (nji)apub.a().a(642);
+    if (localnji != null) {
+      if (localnji.a() == 1) {
         bool1 = true;
       }
     }
@@ -36,7 +36,7 @@ class SecurityPolicyChecker$1
       if (!SecurityPolicyChecker.b(this.this$0)) {
         SecurityPolicyChecker.b(this.this$0, true);
       }
-      ngk.a().b().post(new SecurityPolicyChecker.1.1(this, bool2));
+      nht.a().b().post(new SecurityPolicyChecker.1.1(this, bool2));
       return;
       bool1 = false;
     }

@@ -1,28 +1,14 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
-import com.tencent.mobileqq.flashchat.FlashChatPanel;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
 public class auvn
-  implements agjk
+  implements zvk
 {
-  public auvn(FlashChatPanel paramFlashChatPanel) {}
+  public auvn(UiApiPlugin paramUiApiPlugin) {}
   
-  public boolean onLongClick(View paramView)
+  public void a()
   {
-    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
-    paramView.dispatchTouchEvent(localMotionEvent);
-    localMotionEvent.recycle();
-    return true;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((paramView instanceof ArkAppView)) {
-      ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
-    }
-    return true;
+    this.a.dispatchJsEvent("qbrowserPullDown", null, null);
+    this.a.h = true;
   }
 }
 

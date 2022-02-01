@@ -1,44 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-final class avwy
-  implements EIPCResultCallback
+class avwy
+  implements awdb
 {
-  avwy(avwz paramavwz) {}
+  avwy(avwx paramavwx) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a()
   {
-    String str = null;
-    QLog.d("FaceLoginHelper", 1, "callServer error_code:" + paramEIPCResult.code);
-    FaceDetectForThirdPartyManager.AppConf localAppConf;
-    switch (paramEIPCResult.code)
-    {
-    default: 
-      str = anzj.a(2131713319);
-      localAppConf = null;
+    if ((avwv.a(this.a.jdField_a_of_type_Avwv) != null) && (avwv.a(this.a.jdField_a_of_type_Avwv).sessionInfo != null)) {
+      this.a.jdField_a_of_type_Awdi.a(this.a.jdField_a_of_type_JavaUtilList, 2, avwv.a(this.a.jdField_a_of_type_Avwv).sessionInfo.curType);
     }
-    while ((paramEIPCResult.code != 0) || (paramEIPCResult.data == null))
-    {
-      this.a.a(paramEIPCResult.code, str);
-      return;
-      if (paramEIPCResult.data != null)
-      {
-        localAppConf = (FaceDetectForThirdPartyManager.AppConf)paramEIPCResult.data.getSerializable("FaceRecognition.AppConf");
-        QLog.d("FaceLoginHelper", 1, "callServer error_code:" + localAppConf);
-      }
-      else
-      {
-        str = anzj.a(2131713319);
-        localAppConf = null;
-        continue;
-        str = anzj.a(2131691953);
-        localAppConf = null;
-      }
+    this.a.jdField_a_of_type_Awdi.a();
+    if (avwv.a(this.a.jdField_a_of_type_Avwv) != null) {
+      avwv.a(this.a.jdField_a_of_type_Avwv).setLeftCheckBoxVisible(false, null, false);
     }
-    this.a.a(localAppConf);
   }
 }
 

@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.NegativeChildrenLayout;
 
-class bjsa
-  implements INetEventHandler
+public class bjsa
+  implements View.OnClickListener
 {
-  bjsa(bjrz parambjrz) {}
+  public bjsa(NegativeChildrenLayout paramNegativeChildrenLayout) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    int i = nnr.a();
-    Iterator localIterator = bjrz.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((bjsc)localIterator.next()).a(i);
+    if (this.a.a != null) {
+      this.a.a.a(paramView);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

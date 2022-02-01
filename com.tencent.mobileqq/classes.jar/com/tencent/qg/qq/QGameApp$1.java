@@ -1,19 +1,19 @@
 package com.tencent.qg.qq;
 
 import android.os.Bundle;
-import bkgb;
+import bilj;
 import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
 
 public class QGameApp$1
   implements Runnable
 {
-  public QGameApp$1(bkgb parambkgb) {}
+  public QGameApp$1(bilj parambilj) {}
   
   public void run()
   {
     GameDemoFragment localGameDemoFragment = new GameDemoFragment();
     Bundle localBundle = new Bundle();
-    localBundle.putStringArray("key_run_js", bkgb.a(this.this$0));
+    localBundle.putStringArray("key_run_js", bilj.a(this.this$0));
     localGameDemoFragment.setArguments(localBundle);
     this.this$0.a.a(localGameDemoFragment);
   }

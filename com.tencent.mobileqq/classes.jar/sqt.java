@@ -1,16 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoySlideAnimLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
 
-class sqt
-  implements ViewBase.OnClickListener
+public class sqt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  sqt(sqs paramsqs) {}
+  public sqt(SlideActiveAnimController paramSlideActiveAnimController, float paramFloat) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
-    sqr.a(this.a.jdField_a_of_type_Sqr, i).a(paramViewBase, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData);
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoySlideAnimLayout.a.setTranslationY(this.jdField_a_of_type_Float - paramValueAnimator.floatValue());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.setTranslationY(-paramValueAnimator.floatValue());
   }
 }
 

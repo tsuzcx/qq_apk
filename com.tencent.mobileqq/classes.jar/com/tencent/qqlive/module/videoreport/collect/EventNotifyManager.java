@@ -68,6 +68,7 @@ class EventNotifyManager
   
   void addEventNotifier(Object paramObject, IEventNotifier paramIEventNotifier)
   {
+    Log.v("LazyInitSequence", "start notifier, notifier:" + paramIEventNotifier);
     paramObject = getMapKey(paramObject, paramIEventNotifier);
     try
     {

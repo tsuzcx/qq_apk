@@ -1,33 +1,10 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x11c.MsgBody;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.DevlockPushActivity;
 
 public class adcz
-  implements adci
+  extends Handler
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "OnLinePushMessageProcessor receive 0x11c push message ");
-    }
-    MsgBody localMsgBody = new MsgBody();
-    try
-    {
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      ((bcuy)paramQQAppInterface.getManager(12)).a(localMsgBody);
-      return;
-    }
-    catch (Exception paramQQAppInterface) {}
-  }
-  
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
-  }
+  public adcz(DevlockPushActivity paramDevlockPushActivity) {}
 }
 
 

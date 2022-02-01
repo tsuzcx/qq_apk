@@ -1,6 +1,30 @@
-public abstract interface sze
+public class sze
 {
-  public abstract void a(boolean paramBoolean);
+  public String a;
+  public syz a;
+  public String b;
+  
+  public sze(String paramString, syz paramsyz, boolean paramBoolean)
+  {
+    if (paramString == null) {
+      throw new IllegalArgumentException();
+    }
+    this.jdField_a_of_type_Syz = paramsyz;
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_JavaLangString = paramString;
+      return;
+    }
+    this.b = paramString;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      return this.b;
+    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
 }
 
 

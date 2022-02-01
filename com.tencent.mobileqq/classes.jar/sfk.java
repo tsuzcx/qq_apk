@@ -1,30 +1,44 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.articlesummary.articlesummary.ChannelInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class sfk
-  implements sga
+final class sfk
+  extends sfj
 {
-  sfk(sel paramsel) {}
+  private final int jdField_a_of_type_Int;
+  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
   
-  public void onClick(View paramView)
+  public sfk(int paramInt)
   {
-    paramView = (articlesummary.ChannelInfo)paramView.getTag();
-    if (paramView != null)
-    {
-      if ((!paramView.bytes_channel_url.has()) || (paramView.bytes_channel_url.get() == null)) {
-        break label69;
-      }
-      if (!TextUtils.isEmpty(paramView.bytes_channel_url.get().toStringUtf8())) {
-        ozs.a(this.a.a, paramView.bytes_channel_url.get().toStringUtf8());
-      }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public long a(long paramLong)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(0);
     }
-    return;
-    label69:
-    oix.b(this.a.a, paramView.uint32_channel_id.get(), ozs.a(paramView), paramView.uint32_channel_type.get(), 6, null);
+    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    for (paramLong = 0L; localIterator.hasNext(); paramLong = ((Long)localIterator.next()).longValue() + paramLong) {}
+    return paramLong / this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public String toString()
+  {
+    return "MoveAvgPredictor(" + this.jdField_a_of_type_Int + ')';
   }
 }
 

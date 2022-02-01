@@ -1,46 +1,25 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureManager;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
 
 public class aohn
-  implements Handler.Callback
 {
-  public aohn(SignatureManager paramSignatureManager) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public boolean handleMessage(Message paramMessage)
+  public String a()
   {
-    if (2 == paramMessage.what)
-    {
-      SignatureManager.jdField_a_of_type_ArrayOfBhzc = (bhzc[])paramMessage.obj;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-      {
-        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
-        if (paramMessage != null) {
-          paramMessage.sendEmptyMessageDelayed(2, 50L);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Signature", 2, "update sign tpl info...");
-        }
-      }
+    if (TextUtils.isEmpty(this.b)) {
+      return "";
     }
-    for (;;)
-    {
-      return true;
-      if ((3 == paramMessage.what) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-      {
-        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
-        if (paramMessage != null) {
-          paramMessage.sendEmptyMessageDelayed(7, 50L);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Signature", 2, "update sign tpl animation ...");
-        }
-      }
+    return this.b;
+  }
+  
+  public String b()
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      return "";
     }
+    return this.c;
   }
 }
 

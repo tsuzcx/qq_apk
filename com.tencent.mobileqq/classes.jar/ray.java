@@ -1,18 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class ray
-  implements View.OnClickListener
+class ray
+  extends raj
 {
-  public ray(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  ray(rau paramrau) {}
   
-  public void onClick(View paramView)
+  public int a()
   {
-    ReadInJoyDeliverVideoActivity.b(this.a, true);
-    ReadInJoyDeliverVideoActivity.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return a("tab_select_color");
   }
 }
 

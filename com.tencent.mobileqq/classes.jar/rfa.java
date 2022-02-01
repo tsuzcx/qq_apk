@@ -1,20 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 public class rfa
-  extends rgf
-  implements reo
 {
-  private QQAppInterface a;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private long b;
   
-  public rfa(QQAppInterface paramQQAppInterface)
+  public rfa(long paramLong)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public void a(UgcVideo paramUgcVideo, ren paramren)
-  {
-    ((rgo)this.a.getManager(356)).a(paramUgcVideo, false);
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

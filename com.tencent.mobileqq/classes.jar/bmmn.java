@@ -1,22 +1,27 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.widget.LocationDetailActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel;
 
 public class bmmn
-  extends aqrh
+  implements Animator.AnimatorListener
 {
-  public bmmn(LocationDetailActivity paramLocationDetailActivity) {}
+  public bmmn(AEEditorTextControlPanel paramAEEditorTextControlPanel) {}
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    QLog.e("PoiMapActivity", 1, "[ColorNote exit]");
-    if (this.a.v)
-    {
-      bdll.b(null, "dc00898", "", "", "0X800A991", "0X800A991", 4, 0, "", "", "", "");
-      return;
-    }
-    bdll.b(null, "dc00898", "", "", "0X800A990", "0X800A990", 4, 0, "", "", "", "");
+    AEEditorTextControlPanel.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    AEEditorTextControlPanel.a(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.setVisibility(0);
   }
 }
 

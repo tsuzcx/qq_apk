@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.photo.album;
 
-import aktf;
+import ajqv;
 import android.support.v7.widget.GridLayoutManager;
 
 public class PhotoListLogicDefault$10
   implements Runnable
 {
-  public PhotoListLogicDefault$10(aktf paramaktf, int paramInt) {}
+  public PhotoListLogicDefault$10(ajqv paramajqv, int paramInt) {}
   
   public void run()
   {

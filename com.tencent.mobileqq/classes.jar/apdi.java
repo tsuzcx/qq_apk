@@ -1,150 +1,49 @@
-import com.tencent.mobileqq.theme.diy.ThemeDiyStyleLogic;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.ISecurityFileHelper;
+import android.support.v4.util.SparseArrayCompat;
 
 public class apdi
-  extends apdh
-  implements ISecurityFileHelper
 {
-  public apdi()
+  private static final apdi jdField_a_of_type_Apdi = new apdi();
+  private int jdField_a_of_type_Int;
+  private final SparseArrayCompat<apcu> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
+  
+  public static apdi a()
   {
-    super(null);
+    return jdField_a_of_type_Apdi;
   }
   
-  protected String a()
+  public int a(apcu paramapcu)
   {
-    return "QQThemeMigration";
-  }
-  
-  public String declareBusinessFileName()
-  {
-    return "QQ_Favorite";
-  }
-  
-  public boolean doMigrate(File paramFile)
-  {
-    QLog.d("ISecurityFileHelper", 1, "Move Theme file start");
-    paramFile = new File(ThemeDiyStyleLogic.getSdcardDIYDir());
-    File[] arrayOfFile;
-    int j;
-    int i;
-    Object localObject1;
-    Object localObject2;
-    if ((paramFile.exists()) && (paramFile.isDirectory()))
+    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
     {
-      arrayOfFile = apdf.a(paramFile);
-      j = arrayOfFile.length;
-      i = 0;
-      if (i < j)
+      do
       {
-        localObject1 = arrayOfFile[i];
-        if ((!((File)localObject1).isDirectory()) || (new File((File)localObject1, ".moveflag").exists())) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          localObject2 = ((File)localObject1).getName();
-          if ((((String)localObject2).length() > 4) && (((String)localObject2).matches("[0-9]{5,}")))
-          {
-            localObject2 = paramFile.getAbsolutePath() + "/" + apdf.a((String)localObject2);
-            bhmi.c((String)localObject2 + "/.moveflag");
-            apdf.a(((File)localObject1).getAbsolutePath(), (String)localObject2);
-          }
-        }
-      }
+        this.jdField_a_of_type_Int += 1;
+      } while ((this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(this.jdField_a_of_type_Int) != null) || (this.jdField_a_of_type_Int == 0));
+      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(this.jdField_a_of_type_Int, paramapcu);
+      int i = this.jdField_a_of_type_Int;
+      return i;
     }
-    paramFile = new File(antf.ba);
-    if ((paramFile.exists()) && (paramFile.isDirectory()))
+  }
+  
+  public void a(int paramInt)
+  {
+    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
     {
-      paramFile = apdf.a(paramFile);
-      int n = paramFile.length;
-      int k = 0;
-      while (k < n)
-      {
-        arrayOfFile = paramFile[k];
-        int m = 0;
-        i = 0;
-        localObject1 = arrayOfFile.getName();
-        j = m;
-        if (arrayOfFile.isDirectory())
-        {
-          j = m;
-          if (((String)localObject1).length() > 4)
-          {
-            j = m;
-            if (((String)localObject1).matches("[0-9]{5,}"))
-            {
-              if (apdf.a(arrayOfFile).length > 0)
-              {
-                localObject2 = apdf.a(arrayOfFile);
-                int i1 = localObject2.length;
-                m = 0;
-                for (;;)
-                {
-                  j = i;
-                  if (m >= i1) {
-                    break;
-                  }
-                  Object localObject3 = localObject2[m];
-                  j = i;
-                  if (((File)localObject3).isDirectory())
-                  {
-                    j = i;
-                    if (((File)localObject3).getName().equals("custom_background"))
-                    {
-                      localObject3 = apdf.a((File)localObject3);
-                      j = localObject3.length;
-                      i = 0;
-                      while (i < j)
-                      {
-                        Object localObject4 = localObject3[i];
-                        if (localObject4.isFile())
-                        {
-                          bhmi.c(ThemeDiyStyleLogic.getSdcardDIYDir() + apdf.a((String)localObject1) + "/.moveflag");
-                          bhmi.a(localObject4.getAbsolutePath(), ThemeDiyStyleLogic.getSdcardDIYDir() + apdf.a((String)localObject1) + "/" + localObject4.getName());
-                        }
-                        i += 1;
-                      }
-                      j = 1;
-                    }
-                  }
-                  m += 1;
-                  i = j;
-                }
-              }
-              j = 1;
-            }
-          }
-        }
-        if (j != 0) {
-          bhmi.a(arrayOfFile.getAbsolutePath());
-        }
-        k += 1;
-      }
+      this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.delete(paramInt);
+      return;
     }
-    a();
-    return true;
   }
   
-  public boolean needMigration()
+  public void a(int paramInt1, int paramInt2)
   {
-    return a();
-  }
-  
-  public File oldBusinessDir(String paramString)
-  {
-    return null;
-  }
-  
-  public boolean oldBusinessDirExist(String paramString)
-  {
-    return false;
-  }
-  
-  public String[] reportHistoryFileInfo()
-  {
-    return new String[] { "0", "0" };
+    synchronized (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat)
+    {
+      apcu localapcu = (apcu)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt1);
+      if (localapcu != null) {
+        localapcu.a(paramInt1, paramInt2);
+      }
+      return;
+    }
   }
 }
 

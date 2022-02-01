@@ -1,21 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class abjv
-  implements View.OnClickListener
+  implements EIPCResultCallback
 {
-  abjv(abju paramabju) {}
+  abjv(abju paramabju, AdIPCManager.Params paramParams, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a.e();
-    EventCollector.getInstance().onViewClicked(paramView);
+    String str2 = null;
+    String str1;
+    if (this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params != null)
+    {
+      str1 = this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params.getAction();
+      if (this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params != null) {
+        str2 = this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params.getToProcessName();
+      }
+      if (paramEIPCResult == null) {
+        break label91;
+      }
+    }
+    label91:
+    for (boolean bool = paramEIPCResult.isSuccess();; bool = false)
+    {
+      abrl.b("GdtIPCAdapter", String.format("ClientToServerIPCAsyncModule.onCallback action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(bool) }));
+      this.jdField_a_of_type_Abju.callbackResult(this.jdField_a_of_type_Int, paramEIPCResult);
+      return;
+      str1 = null;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abjv
  * JD-Core Version:    0.7.0.1
  */

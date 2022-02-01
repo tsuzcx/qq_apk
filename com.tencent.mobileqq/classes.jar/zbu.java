@@ -1,36 +1,24 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+
 public class zbu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int jdField_a_of_type_Int;
-  private zbq jdField_a_of_type_Zbq = new zbp();
-  private int b;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public zbs a()
+  private zbu(FollowedRecommendBannerView paramFollowedRecommendBannerView, View paramView)
   {
-    return new zbs(this, null);
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public zbu a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt > 0) {
-      this.jdField_a_of_type_Int = paramInt;
-    }
-    return this;
-  }
-  
-  public zbu a(zbq paramzbq)
-  {
-    if (paramzbq != null) {
-      this.jdField_a_of_type_Zbq = paramzbq;
-    }
-    return this;
-  }
-  
-  public zbu b(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.b = paramInt;
-    }
-    return this;
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
   }
 }
 

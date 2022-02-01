@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qlink.QlinkBridgeActivity;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.tavcut.session.TAVCutVideoSession;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
 
 public class bmix
-  implements DialogInterface.OnDismissListener
+  implements View.OnTouchListener
 {
-  public bmix(QlinkBridgeActivity paramQlinkBridgeActivity) {}
+  public bmix(AEEditorVideoEditFragment paramAEEditorVideoEditFragment, GestureDetector paramGestureDetector) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.finish();
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+      this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorVideoEditFragment.a.toggleAEKit(true);
+    }
+    return false;
   }
 }
 

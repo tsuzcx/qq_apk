@@ -1,49 +1,102 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.util.Pair;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import org.json.JSONArray;
 
 public class xcr
-  extends wpa<xct>
+  extends JobSegment<List<String>, List<String>>
+  implements wch
 {
-  public List<String> a = new ArrayList();
+  private String a = "story.icon.UidListToUrlListSegment";
   
-  public String a()
-  {
-    return "StorySvc.homepage_batch_feeds_label";
-  }
+  public xcr(String paramString) {}
   
-  public wov a(byte[] paramArrayOfByte)
+  private Pair<List<String>, Boolean> a(List<String> paramList)
   {
-    qqstory_service.RspStoryFeedTagInfo localRspStoryFeedTagInfo = new qqstory_service.RspStoryFeedTagInfo();
-    try
+    ArrayList localArrayList = new ArrayList();
+    vvj localvvj = (vvj)vux.a(2);
+    paramList = paramList.iterator();
+    boolean bool = true;
+    if (paramList.hasNext())
     {
-      localRspStoryFeedTagInfo.mergeFrom(paramArrayOfByte);
-      return new xct(localRspStoryFeedTagInfo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
+      QQUserUIItem localQQUserUIItem = localvvj.b((String)paramList.next());
+      if ((localQQUserUIItem != null) && (localQQUserUIItem.headUrl != null)) {
+        localArrayList.add(localQQUserUIItem.headUrl);
+      }
       for (;;)
       {
-        paramArrayOfByte.printStackTrace();
+        break;
+        localArrayList.add("stub_url");
+        bool = false;
       }
     }
+    return new Pair(localArrayList, Boolean.valueOf(bool));
   }
   
-  protected byte[] a()
+  private void b(List<String> paramList)
   {
-    qqstory_service.ReqStoryFeedTagInfo localReqStoryFeedTagInfo = new qqstory_service.ReqStoryFeedTagInfo();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqStoryFeedTagInfo.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
+    xcb.a(this.a, "fireRefreshUserInfo : %s", new JSONArray(paramList));
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(new vwe(null, (String)paramList.next()));
     }
-    return localReqStoryFeedTagInfo.toByteArray();
+    new wcg(this).a(1, localArrayList);
+  }
+  
+  protected void a(JobContext paramJobContext, List<String> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      notifyError(new ErrorMessage(-1, ""));
+    }
+    do
+    {
+      return;
+      paramJobContext = Collections.unmodifiableList(paramList);
+      paramList = a(paramJobContext);
+      xcb.a(this.a, "getUnionIdListFromCache ok=%s", paramList.second);
+      a((List)paramList.first);
+    } while (((Boolean)paramList.second).booleanValue());
+    xcb.a(this.a, "fireRefreshUserInfo");
+    b(paramJobContext);
+  }
+  
+  protected void a(List<String> paramList)
+  {
+    xcb.a(this.a, "notifyResult url list : " + new JSONArray(paramList));
+    if (paramList.size() == 1)
+    {
+      xcb.b(this.a, "add one more default item because of product logic");
+      paramList.add("stub_url");
+    }
+    super.notifyResult(paramList);
+  }
+  
+  public void a(wci paramwci)
+  {
+    if ((paramwci == null) || (paramwci.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramwci.jdField_a_of_type_JavaUtilList == null))
+    {
+      xcb.b(this.a, "refresh user info fail %s", paramwci);
+      if (paramwci == null) {}
+      for (paramwci = new ErrorMessage(-1, "event is null");; paramwci = paramwci.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage)
+      {
+        notifyError(paramwci);
+        return;
+      }
+    }
+    xcb.a(this.a, "refresh user info success, let's return the new info");
+    ArrayList localArrayList = new ArrayList();
+    paramwci = paramwci.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramwci.hasNext()) {
+      localArrayList.add(((QQUserUIItem)paramwci.next()).headUrl);
+    }
+    a(localArrayList);
   }
 }
 

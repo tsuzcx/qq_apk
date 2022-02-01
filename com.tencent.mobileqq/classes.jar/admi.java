@@ -1,52 +1,26 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qapmsdk.QAPM;
-import com.tencent.qapmsdk.base.meta.SceneMeta;
-import com.tencent.qapmsdk.resource.ResourceListener;
-import com.tencent.qapmsdk.resource.ResourceMonitor;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class admi
-  extends adle
-  implements adky, ResourceListener
+  implements View.OnClickListener
 {
-  public void a(String paramString)
+  public admi(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  
+  public void onClick(View paramView)
   {
-    if (e()) {
-      QAPM.beginScene(paramString, QAPM.ModeResource);
+    H5MagicPlayerActivity.a(this.a);
+    if ((this.a.d.equals(this.a.c)) && (this.a.a != null)) {
+      bcef.b(null, "CliOper", "", "", "MbFasong", "MbGuanbi", 0, 0, this.a.a.epId, "", "", "");
     }
-  }
-  
-  protected void b()
-  {
-    ResourceMonitor.setPublicMode(true);
-    ResourceMonitor.setResourceListener(this);
-  }
-  
-  public void b(String paramString)
-  {
-    if (e()) {
-      QAPM.endScene(paramString, QAPM.ModeResource);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bcef.b(null, "CliOper", "", "", "MbJieshou", "MbZhudongGuanbi", 0, 0, this.a.a.epId, "", "", "");
     }
-  }
-  
-  public String c()
-  {
-    return "resource";
-  }
-  
-  public void onMetaGet(SceneMeta paramSceneMeta)
-  {
-    double d = 100.0D * paramSceneMeta.cpu;
-    if (QLog.isColorLevel()) {
-      QLog.i("QAPM_QQ_Impl", 2, "reportToDenta" + paramSceneMeta.stage + " " + d + " " + paramSceneMeta.memory + " " + paramSceneMeta.duration);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("cpuUsage", String.valueOf(d));
-    localHashMap.put("memory", String.valueOf(paramSceneMeta.memory));
-    localHashMap.put("scene", String.valueOf(paramSceneMeta.stage));
-    localHashMap.put("duration", String.valueOf(paramSceneMeta.duration));
-    bdmc.a(BaseApplicationImpl.getContext()).a("", "actScenePerf", true, 0L, 0L, localHashMap, "");
   }
 }
 

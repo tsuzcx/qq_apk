@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.activity.contact.addcontact.face2face;
 
-import agej;
-import ajfz;
-import ajga;
+import aiai;
+import aiaj;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -17,13 +16,14 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class LoadingAvatarProgressView
   extends View
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private ajga jdField_a_of_type_Ajga;
+  private aiaj jdField_a_of_type_Aiaj;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private PathMeasure jdField_a_of_type_AndroidGraphicsPathMeasure;
@@ -79,7 +79,7 @@ public class LoadingAvatarProgressView
     this.jdField_c_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength();
     localObject = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     ((ValueAnimator)localObject).setDuration(this.e);
-    ((ValueAnimator)localObject).addUpdateListener(new ajfz(this));
+    ((ValueAnimator)localObject).addUpdateListener(new aiai(this));
     ((ValueAnimator)localObject).start();
   }
   
@@ -87,9 +87,9 @@ public class LoadingAvatarProgressView
   {
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.CircleLoadingView);
     this.jdField_a_of_type_Float = paramContext.getInteger(2, 5);
-    this.jdField_a_of_type_Float = agej.a(this.jdField_a_of_type_Float, getResources());
+    this.jdField_a_of_type_Float = AIOUtils.dp2px(this.jdField_a_of_type_Float, getResources());
     this.i = paramContext.getInteger(1, 5);
-    this.i = agej.a(this.i, getResources());
+    this.i = AIOUtils.dp2px(this.i, getResources());
     this.d = paramContext.getInteger(0, -16776961);
     paramContext.recycle();
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
@@ -126,8 +126,8 @@ public class LoadingAvatarProgressView
   
   private void b()
   {
-    int j = agej.a(12.0F, getResources());
-    int k = agej.a(4.0F, getResources());
+    int j = AIOUtils.dp2px(12.0F, getResources());
+    int k = AIOUtils.dp2px(4.0F, getResources());
     float f1 = this.jdField_a_of_type_Int - j + k;
     float f2 = this.jdField_b_of_type_Int;
     float f3 = this.jdField_a_of_type_Int - j / 2 + k;
@@ -159,8 +159,8 @@ public class LoadingAvatarProgressView
         paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, this.i, this.i, this.jdField_b_of_type_AndroidGraphicsPaint);
         paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-    } while (this.jdField_a_of_type_Ajga == null);
-    this.jdField_a_of_type_Ajga.a(this.f);
+    } while (this.jdField_a_of_type_Aiaj == null);
+    this.jdField_a_of_type_Aiaj.a(this.f);
   }
   
   private void c(Canvas paramCanvas)
@@ -180,8 +180,8 @@ public class LoadingAvatarProgressView
         paramCanvas.drawCircle(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Math.min(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int), this.jdField_b_of_type_AndroidGraphicsPaint);
         paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-    } while (this.jdField_a_of_type_Ajga == null);
-    this.jdField_a_of_type_Ajga.a(this.f);
+    } while (this.jdField_a_of_type_Aiaj == null);
+    this.jdField_a_of_type_Aiaj.a(this.f);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -233,9 +233,9 @@ public class LoadingAvatarProgressView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setProgressListener(ajga paramajga)
+  public void setProgressListener(aiaj paramaiaj)
   {
-    this.jdField_a_of_type_Ajga = paramajga;
+    this.jdField_a_of_type_Aiaj = paramaiaj;
   }
   
   public void setRoundSize(int paramInt)

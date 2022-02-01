@@ -1,25 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.view.animation.Transformation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class aeth
-  extends WebViewClient
+  implements bfzz<Integer>
 {
-  public aeth(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  public aeth(VisitorsActivity paramVisitorsActivity) {}
   
-  @Override
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public void a(bfzt<Integer> parambfzt, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if (this.a.a(paramString)) {}
-    return true;
+    this.a.c.setText(paramInteger + "");
+    if (paramInteger.intValue() > 9999)
+    {
+      this.a.c.setTextSize(36.0F);
+      return;
+    }
+    this.a.c.setTextSize(44.0F);
   }
 }
 

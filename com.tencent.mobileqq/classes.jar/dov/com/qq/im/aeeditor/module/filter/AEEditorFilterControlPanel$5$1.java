@@ -1,25 +1,25 @@
 package dov.com.qq.im.aeeditor.module.filter;
 
-import bpho;
-import bphp;
+import bmkk;
+import bmkl;
 import dov.com.qq.im.aeeditor.manage.AEEditorEffectGroupListBean.AEEditorEffectItem;
 
 public class AEEditorFilterControlPanel$5$1
   implements Runnable
 {
-  public AEEditorFilterControlPanel$5$1(bpho parambpho, boolean paramBoolean) {}
+  public AEEditorFilterControlPanel$5$1(bmkk parambmkk, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Bpho.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean.getEditorEffectItem().getPreDownload() != 0) || (this.jdField_a_of_type_Bpho.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean.type == AEEditorFilterBean.FilterID.NETWORK)) {
-      AEEditorFilterControlPanel.a(this.jdField_a_of_type_Bpho.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel);
+    if ((this.jdField_a_of_type_Bmkk.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean.getEditorEffectItem().getPreDownload() != 0) || (this.jdField_a_of_type_Bmkk.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean.type == AEEditorFilterBean.FilterID.NETWORK)) {
+      AEEditorFilterControlPanel.a(this.jdField_a_of_type_Bmkk.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel);
     }
     if (this.jdField_a_of_type_Boolean)
     {
-      if (AEEditorFilterControlPanel.a(this.jdField_a_of_type_Bpho.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel) != null) {
-        AEEditorFilterControlPanel.a(this.jdField_a_of_type_Bpho.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel).a(this.jdField_a_of_type_Bpho.jdField_a_of_type_Int, this.jdField_a_of_type_Bpho.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean);
+      if (AEEditorFilterControlPanel.a(this.jdField_a_of_type_Bmkk.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel) != null) {
+        AEEditorFilterControlPanel.a(this.jdField_a_of_type_Bmkk.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel).a(this.jdField_a_of_type_Bmkk.jdField_a_of_type_Int, this.jdField_a_of_type_Bmkk.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterBean);
       }
-      this.jdField_a_of_type_Bpho.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.a(this.jdField_a_of_type_Bpho.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bmkk.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.a(this.jdField_a_of_type_Bmkk.jdField_a_of_type_Int);
     }
   }
 }

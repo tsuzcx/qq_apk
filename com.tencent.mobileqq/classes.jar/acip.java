@@ -1,19 +1,14 @@
-import android.graphics.Outline;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewOutlineProvider;
-import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acip
-  extends ViewOutlineProvider
+class acip
+  implements DialogInterface.OnClickListener
 {
-  public acip(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
+  acip(acin paramacin) {}
   
-  public void getOutline(View paramView, Outline paramOutline)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 21) {
-      paramOutline.setRoundRect(0, 0, paramView.getWidth(), paramView.getHeight(), agej.a(5.0F, paramView.getResources()));
-    }
+    acin.b(this.a);
   }
 }
 

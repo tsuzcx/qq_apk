@@ -1,22 +1,28 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
 
 public class aeuz
-  extends aeuk
+  implements aeup
 {
-  public aeuz(JumpActivity paramJumpActivity)
-  {
-    super(paramJumpActivity);
-  }
+  public aeuz(PositionActivatePage paramPositionActivatePage) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void a(int paramInt)
   {
-    this.b.i();
+    if (paramInt > 0) {
+      this.a.a.setEnabled(true);
+    }
+    while (paramInt > 1)
+    {
+      this.a.a.setText(2131689523);
+      return;
+      this.a.a.setEnabled(false);
+    }
+    this.a.a.setText(2131689524);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeuz
  * JD-Core Version:    0.7.0.1
  */

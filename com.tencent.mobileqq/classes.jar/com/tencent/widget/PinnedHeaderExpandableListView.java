@@ -9,23 +9,22 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
-import blih;
-import bllm;
-import bloi;
-import bloj;
-import blok;
+import bjqi;
+import bjss;
+import bjst;
+import bjsu;
 
 public class PinnedHeaderExpandableListView
   extends XExpandableListView
-  implements blih
+  implements AbsListView.OnScrollListener
 {
   private int jdField_a_of_type_Int = 0;
   private Context jdField_a_of_type_AndroidContentContext;
   private View jdField_a_of_type_AndroidViewView;
-  private blih jdField_a_of_type_Blih;
-  private bllm jdField_a_of_type_Bllm;
-  private bloj jdField_a_of_type_Bloj;
-  private blok jdField_a_of_type_Blok;
+  private bjqi jdField_a_of_type_Bjqi;
+  private bjst jdField_a_of_type_Bjst;
+  private bjsu jdField_a_of_type_Bjsu;
+  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -85,7 +84,7 @@ public class PinnedHeaderExpandableListView
             break label316;
           }
           this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-          if (!this.jdField_a_of_type_Bloj.a()) {
+          if (!this.jdField_a_of_type_Bjst.a()) {
             break label316;
           }
           if (k != 0) {
@@ -147,7 +146,7 @@ public class PinnedHeaderExpandableListView
       {
         this.jdField_b_of_type_Boolean = false;
         this.jdField_c_of_type_Int = paramInt;
-        this.jdField_a_of_type_Bloj.a(this.jdField_a_of_type_AndroidViewView, paramInt);
+        this.jdField_a_of_type_Bjst.a(this.jdField_a_of_type_AndroidViewView, paramInt);
         paramInt = View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), 1073741824);
         i = View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_AndroidViewView.getMeasuredHeight(), 1073741824);
         this.jdField_a_of_type_AndroidViewView.measure(paramInt, i);
@@ -160,7 +159,7 @@ public class PinnedHeaderExpandableListView
           this.jdField_b_of_type_Boolean = true;
         }
         this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-        if (this.jdField_a_of_type_Bloj.a())
+        if (this.jdField_a_of_type_Bjst.a())
         {
           i = getChildCount();
           paramInt = 0;
@@ -247,8 +246,8 @@ public class PinnedHeaderExpandableListView
     if (this.jdField_a_of_type_AndroidViewView != null) {
       a(getFirstVisiblePosition(), true);
     }
-    if (this.jdField_a_of_type_Blok != null) {
-      this.jdField_a_of_type_Blok.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.jdField_a_of_type_Bjsu != null) {
+      this.jdField_a_of_type_Bjsu.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
@@ -265,30 +264,30 @@ public class PinnedHeaderExpandableListView
     if (this.jdField_a_of_type_AndroidViewView != null) {
       a(paramInt1, false);
     }
-    if (this.jdField_a_of_type_Blih != null) {
-      this.jdField_a_of_type_Blih.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
+      this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_Blih != null) {
-      this.jdField_a_of_type_Blih.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
+      this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
   
   public void setAdapter(ExpandableListAdapter paramExpandableListAdapter)
   {
     super.setAdapter(paramExpandableListAdapter);
-    if ((paramExpandableListAdapter instanceof bloj))
+    if ((paramExpandableListAdapter instanceof bjst))
     {
-      this.jdField_a_of_type_Bloj = ((bloj)paramExpandableListAdapter);
-      int i = this.jdField_a_of_type_Bloj.c_();
+      this.jdField_a_of_type_Bjst = ((bjst)paramExpandableListAdapter);
+      int i = this.jdField_a_of_type_Bjst.c_();
       if (i != 0)
       {
         this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(i, this, false);
         if (this.jdField_a_of_type_AndroidViewView != null) {
-          this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new bloi(this));
+          this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new bjss(this));
         }
         requestLayout();
       }
@@ -300,25 +299,25 @@ public class PinnedHeaderExpandableListView
     this.jdField_c_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnGroupClickListener(bllm parambllm)
+  public void setOnGroupClickListener(bjqi parambjqi)
   {
-    this.jdField_a_of_type_Bllm = parambllm;
-    super.setOnGroupClickListener(parambllm);
+    this.jdField_a_of_type_Bjqi = parambjqi;
+    super.setOnGroupClickListener(parambjqi);
   }
   
-  public void setOnLayoutListener(blok paramblok)
+  public void setOnLayoutListener(bjsu parambjsu)
   {
-    this.jdField_a_of_type_Blok = paramblok;
+    this.jdField_a_of_type_Bjsu = parambjsu;
   }
   
-  public void setOnScrollListener(blih paramblih)
+  public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    this.jdField_a_of_type_Blih = paramblih;
+    this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = paramOnScrollListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.PinnedHeaderExpandableListView
  * JD-Core Version:    0.7.0.1
  */

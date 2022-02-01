@@ -1,6 +1,5 @@
 package com.tencent.biz.videostory.capture.widgets;
 
-import abaa;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -25,20 +24,21 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bdep;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.qphone.base.util.QLog;
+import zwn;
 
 public class SquareRoundImageView
   extends ImageView
 {
-  private static int jdField_a_of_type_Int = bdep.a(2.0F);
-  private abaa jdField_a_of_type_Abaa;
+  private static int jdField_a_of_type_Int = ScreenUtil.dip2px(2.0F);
   private BitmapShader jdField_a_of_type_AndroidGraphicsBitmapShader;
   private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private PaintFlagsDrawFilter jdField_a_of_type_AndroidGraphicsPaintFlagsDrawFilter;
   protected Path a;
+  private zwn jdField_a_of_type_Zwn;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = jdField_a_of_type_Int;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
@@ -121,11 +121,11 @@ public class SquareRoundImageView
   
   private void b()
   {
-    if (this.jdField_a_of_type_Abaa == null) {
+    if (this.jdField_a_of_type_Zwn == null) {
       try
       {
-        if (this.jdField_a_of_type_Abaa == null) {
-          this.jdField_a_of_type_Abaa = new abaa(Looper.getMainLooper(), this, null);
+        if (this.jdField_a_of_type_Zwn == null) {
+          this.jdField_a_of_type_Zwn = new zwn(Looper.getMainLooper(), this, null);
         }
         return;
       }
@@ -210,8 +210,8 @@ public class SquareRoundImageView
   public void a()
   {
     b();
-    if (!this.jdField_a_of_type_Abaa.hasMessages(1)) {
-      this.jdField_a_of_type_Abaa.sendEmptyMessage(1);
+    if (!this.jdField_a_of_type_Zwn.hasMessages(1)) {
+      this.jdField_a_of_type_Zwn.sendEmptyMessage(1);
     }
   }
   
@@ -299,8 +299,8 @@ public class SquareRoundImageView
     if (paramDrawable == null)
     {
       b();
-      if (this.jdField_a_of_type_Abaa.hasMessages(1)) {
-        this.jdField_a_of_type_Abaa.removeMessages(1);
+      if (this.jdField_a_of_type_Zwn.hasMessages(1)) {
+        this.jdField_a_of_type_Zwn.removeMessages(1);
       }
       this.jdField_a_of_type_AndroidGraphicsBitmapShader = null;
       this.d = 0;

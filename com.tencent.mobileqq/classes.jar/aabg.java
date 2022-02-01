@@ -1,6 +1,29 @@
-public abstract interface aabg<T>
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
+
+public class aabg
+  implements QQPermissionCallback
 {
-  public abstract T getReportBean();
+  public aabg(NewerGuidePlugin paramNewerGuidePlugin, BaseActivity paramBaseActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerGuidePlugin", 2, "handleSetAvatar deny permissions");
+    }
+    QQCustomDialog.showPermissionSettingDialog(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, amtj.a(2131706550));
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerGuidePlugin", 2, "handleSetAvatar grant permissions");
+    }
+    NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin);
+  }
 }
 
 

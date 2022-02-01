@@ -1,55 +1,52 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralRecommendFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.GeneralRecommendFeedItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class xny
-  extends xmx
+  extends xpg<GeneralRecommendFeedItem>
 {
-  private VidListPlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo;
-  private xms jdField_a_of_type_Xms;
-  
-  public xny(VidListPlayInfo paramVidListPlayInfo)
+  public xny(@NonNull GeneralRecommendFeedItem paramGeneralRecommendFeedItem)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo = paramVidListPlayInfo;
-    this.jdField_a_of_type_Xms = new xms("vidList");
+    super(paramGeneralRecommendFeedItem);
   }
   
-  public List<xmz> a(List<xms> paramList)
+  public GeneralRecommendFeedItem a()
   {
-    return null;
+    return (GeneralRecommendFeedItem)super.a();
   }
   
-  public xmv a()
+  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
   {
-    return new xmv(this.jdField_a_of_type_Xms, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mStartVid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mStartVideoFeedId);
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt, xmy paramxmy)
-  {
-    ArrayList localArrayList = new ArrayList();
-    xmt localxmt = new xmt(this.jdField_a_of_type_Xms);
-    localArrayList.add(localxmt);
-    localxmt.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVidList;
-    int i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVideoFeedIdList.size();
-    paramInt = 0;
-    if (paramInt < this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVidList.size())
+    Object localObject = (qqstory_struct.GeneralFeed)paramStoryFeed.general_recommend_feed.recommend_feed.get();
+    ((GeneralRecommendFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.GeneralFeed)localObject);
+    ((GeneralRecommendFeedItem)this.a).blurb = paramStoryFeed.general_recommend_feed.blurb.get().toStringUtf8();
+    ((GeneralRecommendFeedItem)this.a).recommendId = paramStoryFeed.general_recommend_feed.recommend_id.get();
+    ((GeneralRecommendFeedItem)this.a).recommendTitle = paramStoryFeed.general_recommend_feed.title_wording.get().toStringUtf8();
+    ((GeneralRecommendFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    paramStoryFeed = new ArrayList();
+    localObject = ((qqstory_struct.GeneralFeed)localObject).feed_video_info_list.get().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      if (paramInt < i) {}
-      for (String str = (String)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVideoFeedIdList.get(paramInt);; str = (String)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVideoFeedIdList.get(i - 1))
-      {
-        localxmt.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceVidListPlayInfo.mVidList.get(paramInt), str);
-        paramInt += 1;
-        break;
-      }
+      qqstory_struct.FeedVideoInfo localFeedVideoInfo = (qqstory_struct.FeedVideoInfo)((Iterator)localObject).next();
+      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+      localStoryVideoItem.convertFrom("Q.qqstory.home.data.GeneralRecommendHomeFeed", localFeedVideoInfo);
+      paramStoryFeed.add(localStoryVideoItem);
     }
-    paramxmy.b(new ErrorMessage(), localArrayList, true);
+    c(paramStoryFeed, true);
+    return true;
   }
-  
-  public void b() {}
 }
 
 

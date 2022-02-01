@@ -11,13 +11,15 @@ public class HippySign
   
   public static String getSign(String paramString1, String paramString2)
   {
-    if (empty(paramString2)) {
+    if (empty(paramString2)) {}
+    do
+    {
       return null;
-    }
-    long l = System.currentTimeMillis() / 1000L;
-    int i = Math.abs(new Random().nextInt());
-    paramString1 = "a=" + paramString1 + "&t=" + l + "&r=" + i;
-    paramString2 = hashHmac(paramString1, paramString2);
+      long l = System.currentTimeMillis() / 1000L;
+      int i = Math.abs(new Random().nextInt());
+      paramString1 = "a=" + paramString1 + "&t=" + l + "&r=" + i;
+      paramString2 = hashHmac(paramString1, paramString2);
+    } while (paramString2 == null);
     byte[] arrayOfByte = new byte[paramString2.length + paramString1.getBytes().length];
     System.arraycopy(paramString2, 0, arrayOfByte, 0, paramString2.length);
     System.arraycopy(paramString1.getBytes(), 0, arrayOfByte, paramString2.length, paramString1.getBytes().length);

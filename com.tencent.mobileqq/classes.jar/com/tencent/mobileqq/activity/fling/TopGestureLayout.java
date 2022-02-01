@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.fling;
 
-import aecd;
+import acxe;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Build.VERSION;
@@ -10,7 +10,7 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
-import assc;
+import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
@@ -22,31 +22,31 @@ public class TopGestureLayout
   public static final int FLAG_GESTURE_FLING_LR = 1;
   public static final int FLAG_GESTURE_IDLE = 0;
   public static final String TAG = "TopGestureLayout";
-  private int jdField_a_of_type_Int;
-  protected GestureDetector.SimpleOnGestureListener a;
-  TopGestureLayout.InterceptTouchEventListener jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout$InterceptTouchEventListener;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
-  private boolean c = true;
-  private boolean d = true;
   public GestureDetector defaultGestureDetector;
-  private boolean e;
-  public aecd mMyDispatchDrawListener;
+  protected GestureDetector.SimpleOnGestureListener gestureListener;
+  private boolean isInLayout;
+  private int mGestureFlag;
+  private boolean mInterceptScrollLR = true;
+  private boolean mInterceptScrollRL;
+  TopGestureLayout.InterceptTouchEventListener mInterceptTouchEventListener;
+  private boolean mInterceptTouchFlag = true;
+  private boolean mIsInterceptChildEventWhenScroll = true;
+  public acxe mMyDispatchDrawListener;
   public TopGestureLayout.OnGestureListener mOnFlingGesture;
   public GestureDetector mTopGestureDetector;
   
   public TopGestureLayout(Context paramContext)
   {
     super(paramContext);
-    a(paramContext);
+    init(paramContext);
   }
   
-  public TopGestureLayout(Context paramContext, aecd paramaecd, TopGestureLayout.InterceptTouchEventListener paramInterceptTouchEventListener)
+  public TopGestureLayout(Context paramContext, acxe paramacxe, TopGestureLayout.InterceptTouchEventListener paramInterceptTouchEventListener)
   {
     super(paramContext);
-    a(paramContext);
-    this.mMyDispatchDrawListener = paramaecd;
-    this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout$InterceptTouchEventListener = paramInterceptTouchEventListener;
+    init(paramContext);
+    this.mMyDispatchDrawListener = paramacxe;
+    this.mInterceptTouchEventListener = paramInterceptTouchEventListener;
   }
   
   public TopGestureLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -57,46 +57,25 @@ public class TopGestureLayout
   public TopGestureLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a(paramContext);
+    init(paramContext);
   }
   
-  private void a()
+  private void reportTGRemoveException()
   {
-    if (this.e) {
+    if (this.isInLayout) {
       QLog.e("TopGestureLayout", 1, "TGRemoveCatchedException ", new RuntimeException("TGRemoveCatchedException"));
     }
   }
   
-  protected void a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new TopGestureLayout.TopGestureDetector(this, paramContext);
-    this.mTopGestureDetector = new TopGestureLayout.StickerDismissGestureDetector(this, paramContext, this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
-    this.defaultGestureDetector = this.mTopGestureDetector;
-  }
-  
-  public boolean a()
-  {
-    if (this.mTopGestureDetector != null)
-    {
-      if ((this.mTopGestureDetector instanceof assc)) {
-        return ((assc)this.mTopGestureDetector).jdField_a_of_type_Boolean;
-      }
-      if ((this.mTopGestureDetector instanceof TopGestureLayout.StickerDismissGestureDetector)) {
-        return ((TopGestureLayout.StickerDismissGestureDetector)this.mTopGestureDetector).isInTowFingerMode;
-      }
-    }
-    return false;
-  }
-  
   protected void detachViewFromParent(int paramInt)
   {
-    a();
+    reportTGRemoveException();
     super.detachViewFromParent(paramInt);
   }
   
   protected void detachViewFromParent(View paramView)
   {
-    a();
+    reportTGRemoveException();
     super.detachViewFromParent(paramView);
   }
   
@@ -127,8 +106,8 @@ public class TopGestureLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout$InterceptTouchEventListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout$InterceptTouchEventListener.OnDispatchTouchEvent(paramMotionEvent);
+    if (this.mInterceptTouchEventListener != null) {
+      this.mInterceptTouchEventListener.OnDispatchTouchEvent(paramMotionEvent);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
@@ -140,7 +119,7 @@ public class TopGestureLayout
   
   public GestureDetector.SimpleOnGestureListener getGestureListener()
   {
-    return this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener;
+    return this.gestureListener;
   }
   
   public int getPaddingTop()
@@ -153,23 +132,44 @@ public class TopGestureLayout
   
   public boolean hasGestureFlag(int paramInt)
   {
-    return (!isGestureEnd()) && ((this.jdField_a_of_type_Int & paramInt) == paramInt);
+    return (!isGestureEnd()) && ((this.mGestureFlag & paramInt) == paramInt);
+  }
+  
+  protected void init(Context paramContext)
+  {
+    this.gestureListener = new TopGestureLayout.TopGestureDetector(this, paramContext);
+    this.mTopGestureDetector = new TopGestureLayout.StickerDismissGestureDetector(this, paramContext, this.gestureListener);
+    this.defaultGestureDetector = this.mTopGestureDetector;
   }
   
   public boolean isGestureEnd()
   {
-    return this.jdField_a_of_type_Int == -1;
+    return this.mGestureFlag == -1;
   }
   
   public boolean isGestureIdle()
   {
-    return this.jdField_a_of_type_Int == 0;
+    return this.mGestureFlag == 0;
+  }
+  
+  public boolean isInTwoFingerMode()
+  {
+    if (this.mTopGestureDetector != null)
+    {
+      if ((this.mTopGestureDetector instanceof StickerGestureDetector)) {
+        return ((StickerGestureDetector)this.mTopGestureDetector).isInTowFingerMode;
+      }
+      if ((this.mTopGestureDetector instanceof TopGestureLayout.StickerDismissGestureDetector)) {
+        return ((TopGestureLayout.StickerDismissGestureDetector)this.mTopGestureDetector).isInTowFingerMode;
+      }
+    }
+    return false;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    while ((this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout$InterceptTouchEventListener != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout$InterceptTouchEventListener.OnInterceptTouchEvent(paramMotionEvent))) {
+    if (!this.mInterceptTouchFlag) {}
+    while ((this.mInterceptTouchEventListener != null) && (!this.mInterceptTouchEventListener.OnInterceptTouchEvent(paramMotionEvent))) {
       return false;
     }
     return this.mTopGestureDetector.onTouchEvent(paramMotionEvent);
@@ -177,9 +177,9 @@ public class TopGestureLayout
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.e = true;
+    this.isInLayout = true;
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.e = false;
+    this.isInLayout = false;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -189,13 +189,13 @@ public class TopGestureLayout
   
   public void removeView(View paramView)
   {
-    a();
+    reportTGRemoveException();
     super.removeView(paramView);
   }
   
   public void removeViewInLayout(View paramView)
   {
-    a();
+    reportTGRemoveException();
     super.removeViewInLayout(paramView);
   }
   
@@ -206,7 +206,7 @@ public class TopGestureLayout
       this.mTopGestureDetector = this.defaultGestureDetector;
       return;
     }
-    this.mTopGestureDetector = new TopGestureLayout.StickerDismissGestureDetector(this, getContext(), this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
+    this.mTopGestureDetector = new TopGestureLayout.StickerDismissGestureDetector(this, getContext(), this.gestureListener);
   }
   
   public void setGestureDetector(GestureDetector paramGestureDetector)
@@ -218,40 +218,40 @@ public class TopGestureLayout
   {
     if ((paramInt == 0) || (paramInt == -1))
     {
-      this.jdField_a_of_type_Int = paramInt;
+      this.mGestureFlag = paramInt;
       return;
     }
-    this.jdField_a_of_type_Int = (this.jdField_a_of_type_Int & (paramInt ^ 0xFFFFFFFF) | paramInt);
+    this.mGestureFlag = (this.mGestureFlag & (paramInt ^ 0xFFFFFFFF) | paramInt);
   }
   
   public void setInterceptScrollLRFlag(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.mInterceptScrollLR = paramBoolean;
   }
   
   public void setInterceptScrollRLFlag(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.mInterceptScrollRL = paramBoolean;
   }
   
   public void setInterceptTouchEventListener(TopGestureLayout.InterceptTouchEventListener paramInterceptTouchEventListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout$InterceptTouchEventListener = paramInterceptTouchEventListener;
+    this.mInterceptTouchEventListener = paramInterceptTouchEventListener;
   }
   
   public void setInterceptTouchFlag(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.mInterceptTouchFlag = paramBoolean;
   }
   
   public void setIsInterceptChildEventWhenScroll(boolean paramBoolean)
   {
-    this.d = paramBoolean;
+    this.mIsInterceptChildEventWhenScroll = paramBoolean;
   }
   
-  public void setMyDispatchDrawListener(aecd paramaecd)
+  public void setMyDispatchDrawListener(acxe paramacxe)
   {
-    this.mMyDispatchDrawListener = paramaecd;
+    this.mMyDispatchDrawListener = paramacxe;
   }
   
   public void setOnFlingGesture(TopGestureLayout.OnGestureListener paramOnGestureListener)

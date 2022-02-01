@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.together.writetogether.websocket;
 
 import android.os.SystemClock;
-import beqq;
+import bdjk;
 import com.tencent.mobileqq.together.writetogether.websocket.msg.BaseToWriteTogetherMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.LinkedBlockingDeque;

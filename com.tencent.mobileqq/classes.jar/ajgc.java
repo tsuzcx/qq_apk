@@ -1,7 +1,13 @@
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.ColorNickTextView;
+
 public class ajgc
 {
-  public String a;
-  public String b;
+  public ImageView a;
+  public TextView a;
+  public ColorNickTextView a;
+  public TextView b;
 }
 
 

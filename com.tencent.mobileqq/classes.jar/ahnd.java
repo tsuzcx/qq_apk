@@ -1,226 +1,84 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPLNews;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecCacheEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.List;
+import org.apache.http.Header;
 
-public class ahnd
-  extends agem
+class ahnd
+  implements URLDrawableDownListener
 {
-  int jdField_a_of_type_Int = 0;
-  bdor jdField_a_of_type_Bdor;
-  int c = 0;
-  int d = 0;
+  ahnd(ahnc paramahnc) {}
   
-  public ahnd(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Int = (paramContext.getResources().getDisplayMetrics().widthPixels - paramContext.getResources().getDimensionPixelSize(2131296352) * 2);
-    this.c = ((int)paramContext.getResources().getDimension(2131298050));
-    this.d = paramContext.getResources().getDimensionPixelSize(2131298049);
-    paramQQAppInterface = (aggr)paramQQAppInterface.getManager(282);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.a(3, 3);
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "drawableListener onLoadCancelled");
     }
   }
   
-  private int a(ahnf paramahnf)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    int i = paramahnf.c.getBackground().getIntrinsicWidth();
-    return paramahnf.c.getBackground().getIntrinsicHeight() * this.jdField_a_of_type_Int / i;
+    ahnc.a(this.a, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.e("StickerRecBarAdapter", 2, "drawableListener onLoadFialed:" + paramURLDrawable.getURL(), paramThrowable);
+    }
   }
   
-  private View a(View paramView, ahnf paramahnf)
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    View localView = paramView;
-    if (paramView == null)
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "drawableListener onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    l2 = -1L;
+    try
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558844, null);
-      paramahnf.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365046);
-      paramahnf.c = ((TextView)paramView.findViewById(2131378603));
-      paramahnf.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378936));
-      paramahnf.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131363390));
-      paramahnf.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(this.c);
-      paramahnf.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressMask(true);
-      int i = a(paramahnf);
-      paramahnf.c.getLayoutParams().width = this.jdField_a_of_type_Int;
-      paramahnf.c.getLayoutParams().height = i;
-      localView = paramView;
-      if (e)
+      Object localObject = paramURLDrawable.getHeader("report_key_start_download");
+      l1 = l2;
+      if (localObject != null)
       {
-        paramahnf.jdField_b_of_type_JavaLangStringBuilder = new StringBuilder();
-        localView = paramView;
-      }
-    }
-    if (e)
-    {
-      localView.setContentDescription(null);
-      paramahnf.jdField_b_of_type_JavaLangStringBuilder.replace(0, paramahnf.jdField_b_of_type_JavaLangStringBuilder.length(), "");
-    }
-    return localView;
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    int j = 0;
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    for (;;)
-    {
-      int k;
-      if (j < paramString.length())
-      {
-        k = paramString.codePointAt(j);
-        if ((k < 32) || (k > 126)) {
-          break label90;
+        localObject = ((Header)localObject).getValue();
+        l1 = l2;
+        if (localObject != null)
+        {
+          l1 = Long.parseLong((String)localObject);
+          long l3 = System.currentTimeMillis();
+          l1 = l3 - l1;
         }
-        i += 1;
       }
+    }
+    catch (Exception localException)
+    {
       for (;;)
       {
-        if (i <= paramInt) {
-          localStringBuilder.appendCodePoint(k);
-        }
-        if (i < paramInt) {
-          break;
-        }
-        if (localStringBuilder.length() < paramString.length()) {
-          localStringBuilder.append("...");
-        }
-        return localStringBuilder.toString();
-        label90:
-        if (k >= 65535)
+        long l1 = l2;
+        if (QLog.isColorLevel())
         {
-          i += 1;
-          j += 1;
-        }
-        else
-        {
-          i += 2;
+          QLog.e("StickerRecBarAdapter", 2, "onLoadSuccessed:get start download time");
+          l1 = l2;
         }
       }
-      j += 1;
     }
-  }
-  
-  protected agen a()
-  {
-    return new ahnf(this);
-  }
-  
-  protected View a(MessageRecord paramMessageRecord, agen paramagen, View paramView, LinearLayout paramLinearLayout, agjk paramagjk)
-  {
-    paramLinearLayout = (MessageForPLNews)paramMessageRecord;
-    paramagen = (ahnf)paramagen;
-    paramView = a(paramView, paramagen);
-    paramagen.jdField_a_of_type_Long = paramLinearLayout.uniseq;
-    paramagen.jdField_a_of_type_JavaLangString = paramLinearLayout.frienduin;
-    paramagjk = a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, 6);
-    String str = String.format(azvv.jdField_a_of_type_JavaLangString, new Object[] { paramagjk });
-    if (!paramagen.jdField_b_of_type_AndroidWidgetTextView.getText().equals(str)) {
-      paramagen.jdField_b_of_type_AndroidWidgetTextView.setText(str);
-    }
-    if (!paramagen.c.getText().equals(paramLinearLayout.text)) {
-      paramagen.c.setText(paramLinearLayout.text);
-    }
-    paramMessageRecord = (String)paramagen.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getTag(2131373029);
-    Object localObject = (Integer)paramagen.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getTag(2131373028);
-    int j;
-    if (localObject == null)
+    ahnc.a(this.a, paramURLDrawable, l1);
+    paramView = paramView.getTag();
+    if (ahns.b((ahmw)paramView))
     {
-      j = 0;
-      if ((TextUtils.isEmpty(paramLinearLayout.cover)) || (!bhjx.a(paramLinearLayout.cover, paramMessageRecord))) {
-        break label543;
+      paramView = (ahnm)paramView;
+      if ((ahns.b(paramView)) && (!ahnc.a(this.a).contains(paramView.j())))
+      {
+        ahnc.a(this.a).add(paramView.j());
+        paramURLDrawable = paramView.l();
+        ahnc.a(this.a).add(new StickerRecCacheEntity(paramURLDrawable, System.currentTimeMillis(), paramView.j()));
       }
     }
-    label538:
-    label543:
-    for (int i = 0;; i = 1)
-    {
-      int k = i;
-      if (TextUtils.isEmpty(paramLinearLayout.cover))
-      {
-        k = i;
-        if (j == paramLinearLayout.bgColor) {
-          k = 0;
-        }
-      }
-      bdor localbdor;
-      if (k != 0)
-      {
-        localObject = new bdor(paramLinearLayout.bgColor, this.c * 3, this.c * 3, this.c);
-        localbdor = new bdor(0, this.c * 3, this.c * 3, this.c);
-        if (TextUtils.isEmpty(paramLinearLayout.cover)) {
-          break label538;
-        }
-      }
-      for (;;)
-      {
-        try
-        {
-          paramMessageRecord = new URL(paramLinearLayout.cover);
-          if (paramMessageRecord != null)
-          {
-            paramMessageRecord = URLDrawable.getDrawable(paramMessageRecord, a(paramagen), a(paramagen), localbdor, (Drawable)localObject);
-            paramMessageRecord.setDecodeHandler(bhez.t);
-            paramagen.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageDrawable(paramMessageRecord);
-            paramagen.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setTag(2131373029, paramLinearLayout.cover);
-            if (paramMessageRecord == null)
-            {
-              paramagen.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageDrawable((Drawable)localObject);
-              paramagen.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setTag(2131373028, Integer.valueOf(paramLinearLayout.bgColor));
-            }
-            if (!TextUtils.isEmpty(paramLinearLayout.cover))
-            {
-              if (this.jdField_a_of_type_Bdor == null) {
-                this.jdField_a_of_type_Bdor = new bdor(Color.parseColor("#66000000"), this.c * 3, this.c * 3, this.c);
-              }
-              paramagen.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_Bdor);
-              if (e)
-              {
-                paramagen.jdField_b_of_type_JavaLangStringBuilder.append(str).append(paramLinearLayout.text);
-                paramView.setContentDescription(paramagen.jdField_b_of_type_JavaLangStringBuilder.toString());
-              }
-              paramagen.jdField_b_of_type_AndroidViewView.setTag(paramagen);
-              paramagen.jdField_b_of_type_AndroidViewView.setOnClickListener(new ahne(this, paramLinearLayout, paramagjk));
-              return paramView;
-              j = ((Integer)localObject).intValue();
-            }
-          }
-        }
-        catch (MalformedURLException paramMessageRecord)
-        {
-          paramMessageRecord.printStackTrace();
-          paramMessageRecord = null;
-          continue;
-          paramagen.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(null);
-          continue;
-        }
-        paramMessageRecord = null;
-      }
-    }
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
-  
-  public bhum[] a(View paramView)
-  {
-    return new bhum[0];
   }
 }
 

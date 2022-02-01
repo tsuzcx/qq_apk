@@ -768,13 +768,14 @@ public class ShareJsPlugin
   @JsEvent({"shareAppPictureMessage"})
   public void shareAppPictureMessage(RequestEvent paramRequestEvent)
   {
+    Object localObject1;
     int j;
-    ShareState localShareState;
     int i;
+    Object localObject2;
     try
     {
-      localObject = new JSONObject(paramRequestEvent.jsonParams);
-      j = ((JSONObject)localObject).optInt("shareTarget", -1);
+      localObject1 = new JSONObject(paramRequestEvent.jsonParams);
+      j = ((JSONObject)localObject1).optInt("shareTarget", -1);
       k = getShareType(j);
       localShareState = GetShareState.obtain(this.mMiniAppContext);
       i = j;
@@ -786,7 +787,7 @@ public class ShareJsPlugin
         {
           i = this.mShareProxy.getDefaultShareTarget();
           if (!MoreItem.isValidExtendedItemId(i)) {
-            break label454;
+            break label479;
           }
           j = 6;
         }
@@ -796,71 +797,72 @@ public class ShareJsPlugin
       localShareState.shareEvent = paramRequestEvent.event;
       localShareState.shareCallbackId = paramRequestEvent.callbackId;
       localShareState.requestEvent = paramRequestEvent;
-      paramRequestEvent = ((JSONObject)localObject).optString("title");
-      localObject = ((JSONObject)localObject).optString("imageUrl");
-      if (URLUtil.isHttpUrl((String)localObject)) {
-        break label448;
+      localObject2 = ((JSONObject)localObject1).optString("title");
+      paramRequestEvent = ((JSONObject)localObject1).optString("imageUrl");
+      if (URLUtil.isHttpUrl(paramRequestEvent)) {
+        break label473;
       }
-      if (!URLUtil.isHttpsUrl((String)localObject)) {
-        break label461;
+      if (!URLUtil.isHttpsUrl(paramRequestEvent)) {
+        break label486;
       }
     }
     catch (JSONException paramRequestEvent)
     {
-      Object localObject;
-      label159:
+      ShareState localShareState;
+      label157:
       paramRequestEvent.printStackTrace();
       return;
     }
-    String str = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath((String)localObject);
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (new File(str).exists())) {}
+    String str = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath(paramRequestEvent);
+    if ((!TextUtils.isEmpty(paramRequestEvent)) && (new File(str).exists())) {}
     for (int k = 1;; k = 0)
     {
-      paramRequestEvent = new InnerShareData.Builder().setShareSource(11).setShareTarget(i).setTitle(this.mMiniAppInfo.name).setSummary(paramRequestEvent).setFromActivity(this.mMiniAppContext.getAttachedActivity()).setMiniAppInfo(this.mMiniAppInfo).setFromActivity(this.mMiniAppContext.getAttachedActivity()).setShareInMiniProcess(localShareState.isShareInMiniProcess);
+      localObject2 = new InnerShareData.Builder().setShareSource(11).setShareTarget(i).setTitle(this.mMiniAppInfo.name).setSummary((String)localObject2).setFromActivity(this.mMiniAppContext.getAttachedActivity()).setMiniAppInfo(this.mMiniAppInfo).setFromActivity(this.mMiniAppContext.getAttachedActivity()).setShareInMiniProcess(localShareState.isShareInMiniProcess);
+      localObject1 = getShareChatModel(i, (JSONObject)localObject1, localShareState);
       if (j != 0)
       {
-        paramRequestEvent.setSharePicPath((String)localObject).build().shareAppPictureMessage(this.mMiniAppContext);
+        ((InnerShareData.Builder)localObject2).setSharePicPath(paramRequestEvent).setShareChatModel((ShareChatModel)localObject1).build().shareAppPictureMessage(this.mMiniAppContext);
         return;
       }
-      if ((StringUtil.isEmpty((String)localObject)) || ((j == 0) && (k == 0)))
+      if ((StringUtil.isEmpty(paramRequestEvent)) || ((j == 0) && (k == 0)))
       {
         if (this.mMiniAppContext.isMiniGame())
         {
           if (this.mMiniAppInfo != null)
           {
-            paramRequestEvent.setSharePicPath(this.mMiniAppInfo.iconUrl).build().shareAppPictureMessage(this.mMiniAppContext);
+            ((InnerShareData.Builder)localObject2).setSharePicPath(this.mMiniAppInfo.iconUrl).setShareChatModel((ShareChatModel)localObject1).build().shareAppPictureMessage(this.mMiniAppContext);
             return;
           }
           QMLog.e("ShareJsPlugin", "startShareNetworkPicMessage with iconUrl failed, mini app info is null");
           return;
         }
-        localShareState = GetShareState.obtain(this.mMiniAppContext);
-        if (localShareState != null)
+        paramRequestEvent = GetShareState.obtain(this.mMiniAppContext);
+        if (paramRequestEvent != null)
         {
-          if (localShareState.isGettingScreenShot)
+          if (paramRequestEvent.isGettingScreenShot)
           {
             QMLog.e("ShareJsPlugin", "sharePicMessage getScreenshot isGettingScreenShot now, return directly !");
             return;
           }
-          GetScreenshot.obtain(this.mMiniAppContext, new ShareJsPlugin.3(this, paramRequestEvent));
+          GetScreenshot.obtain(this.mMiniAppContext, new ShareJsPlugin.3(this, (InnerShareData.Builder)localObject2, (ShareChatModel)localObject1));
         }
       }
       else if ((j == 0) && (k != 0))
       {
-        paramRequestEvent.setSharePicPath(str).setIsLocalPic(true).build().shareAppPictureMessage(this.mMiniAppContext);
+        ((InnerShareData.Builder)localObject2).setSharePicPath(str).setShareChatModel((ShareChatModel)localObject1).setIsLocalPic(true).build().shareAppPictureMessage(this.mMiniAppContext);
         return;
-        label448:
+        label473:
         j = 1;
-        break label159;
+        break label157;
       }
       return;
-      label454:
+      label479:
       j = 0;
       i = 0;
       break;
-      label461:
+      label486:
       j = 0;
-      break label159;
+      break label157;
     }
   }
   

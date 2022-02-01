@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-import biys;
+import bheu;
 import com.tencent.mobileqq.richmedia.capture.view.IdentifierCameraCaptureView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.youtu.ytagreflectlivecheck.ui.YTReflectLayout;
@@ -29,7 +29,7 @@ class QQIdentiferActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferActivity.3
  * JD-Core Version:    0.7.0.1
  */

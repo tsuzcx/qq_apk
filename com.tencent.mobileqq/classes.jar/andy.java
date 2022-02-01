@@ -1,20 +1,6 @@
-import java.util.Comparator;
-
-class andy
-  implements Comparator<andz>
+public abstract interface andy
 {
-  andy(andx paramandx) {}
-  
-  public int a(andz paramandz1, andz paramandz2)
-  {
-    if (paramandz1.a == paramandz2.a) {
-      return 0;
-    }
-    if (paramandz1.a > paramandz2.a) {
-      return -1;
-    }
-    return 1;
-  }
+  public abstract void b(int paramInt);
 }
 
 

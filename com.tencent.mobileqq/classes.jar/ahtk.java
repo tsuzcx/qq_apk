@@ -1,20 +1,13 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
-public class ahtk
-  implements Animation.AnimationListener
+class ahtk
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public ahtk(StructingMsgItemBuilder paramStructingMsgItemBuilder, ahtm paramahtm) {}
+  ahtk(ahtj paramahtj) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onScrollStateChanged(int paramInt)
   {
-    this.jdField_a_of_type_Ahtm.a.setVisibility(0);
+    if (paramInt == 4097) {}
   }
 }
 

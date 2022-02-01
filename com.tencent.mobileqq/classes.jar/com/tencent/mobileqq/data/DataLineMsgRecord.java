@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import antf;
-import atup;
-import aunj;
-import bhjx;
-import bhmi;
+import asgz;
+import aszt;
+import bftf;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -21,6 +20,7 @@ import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -135,7 +135,7 @@ public class DataLineMsgRecord
   
   public DataLineMsgRecord(int paramInt)
   {
-    this.selfuin = String.valueOf(antf.z);
+    this.selfuin = String.valueOf(AppConstants.DATALINE_PC_UIN);
     this.frienduin = this.selfuin;
     this.senderuin = this.selfuin;
     this.istroop = 6000;
@@ -486,9 +486,9 @@ public class DataLineMsgRecord
         try
         {
           ((ByteArrayInputStream)localObject1).read((byte[])localObject2);
-          paramDataLineMsgRecord.fileMsgStatus = bhjx.a((byte[])localObject2);
+          paramDataLineMsgRecord.fileMsgStatus = bftf.a((byte[])localObject2);
           ((ByteArrayInputStream)localObject1).read((byte[])localObject2);
-          paramDataLineMsgRecord.nWeiyunSessionId = bhjx.a((byte[])localObject2);
+          paramDataLineMsgRecord.nWeiyunSessionId = bftf.a((byte[])localObject2);
           paramArrayOfByte = new byte[paramArrayOfByte.length - 16];
           ((ByteArrayInputStream)localObject1).read(paramArrayOfByte);
           paramDataLineMsgRecord.msg = new String(paramArrayOfByte, "UTF-8");
@@ -506,7 +506,7 @@ public class DataLineMsgRecord
         localObject2 = new byte[paramArrayOfByte.length - 8];
         System.arraycopy(paramArrayOfByte, 0, localObject1, 0, 8);
         System.arraycopy(paramArrayOfByte, 8, localObject2, 0, localObject2.length);
-        paramDataLineMsgRecord.fileMsgStatus = bhjx.a((byte[])localObject1);
+        paramDataLineMsgRecord.fileMsgStatus = bftf.a((byte[])localObject1);
         paramDataLineMsgRecord.msg = new String((byte[])localObject2, "UTF-8");
         return;
       }
@@ -594,7 +594,7 @@ public class DataLineMsgRecord
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (bhmi.b(this.path))
+    if (FileUtils.fileExistsAndNotEmpty(this.path))
     {
       bool1 = bool2;
       if (this.strMoloKey == null) {
@@ -656,12 +656,12 @@ public class DataLineMsgRecord
     FileManagerEntity localFileManagerEntity = null;
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     if (this.entityID != 0L) {
-      localFileManagerEntity = localQQAppInterface.a().a(this.entityID);
+      localFileManagerEntity = localQQAppInterface.getFileManagerDataCenter().a(this.entityID);
     }
     if (localFileManagerEntity == null)
     {
       localFileManagerEntity = new FileManagerEntity();
-      localFileManagerEntity.nSessionId = aunj.a().longValue();
+      localFileManagerEntity.nSessionId = aszt.a().longValue();
       this.entityID = localFileManagerEntity.nSessionId;
       switch (this.nOpType)
       {
@@ -678,7 +678,7 @@ public class DataLineMsgRecord
         localFileManagerEntity.status = 0;
         localFileManagerEntity.uniseq = this.sessionid;
         localFileManagerEntity.datalineEntitySessionId = this.sessionid;
-        localQQAppInterface.a().d(localFileManagerEntity);
+        localQQAppInterface.getFileManagerDataCenter().d(localFileManagerEntity);
         return localFileManagerEntity;
         localFileManagerEntity.TroopUin = this.uOwnerUin;
         localFileManagerEntity.strTroopFilePath = this.fileUuid;

@@ -1,17 +1,19 @@
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.widget.AbsListView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
 
-public class xka
-  implements blih
+public final class xka
+  implements Parcelable.Creator<CardItem.CardVideoInfo>
 {
-  public xka(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public CardItem.CardVideoInfo a(Parcel paramParcel)
   {
-    this.a.b = paramInt1;
+    return new CardItem.CardVideoInfo(paramParcel);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
+  public CardItem.CardVideoInfo[] a(int paramInt)
+  {
+    return new CardItem.CardVideoInfo[paramInt];
+  }
 }
 
 

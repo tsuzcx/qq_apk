@@ -1,42 +1,17 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class adzu
-  implements aqxy
+public class adzu
+  implements View.OnClickListener
 {
-  private adzu(adzq paramadzq) {}
+  public adzu(QQMapActivity paramQQMapActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      adzq.a(this.a);
-      if ((adzq.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
-        adzq.a(this.a).a(2);
-      }
-      if (this.a.a != null)
-      {
-        paramInt1 = adzq.d(this.a, adzq.a(this.a));
-        paramInt2 = adzq.e(this.a, adzq.b(this.a));
-        int i = adzq.f(this.a, adzq.c(this.a));
-        this.a.a.a(paramInt1, paramInt2, i);
-      }
-      return;
-      adzq.a(this.a, paramInt2);
-      continue;
-      adzq.b(this.a, paramInt2);
-      continue;
-      adzq.c(this.a, paramInt2);
-    }
+    this.a.onBackPressed();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

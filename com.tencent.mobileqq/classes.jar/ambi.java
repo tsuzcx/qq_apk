@@ -1,4 +1,11 @@
-public class ambi {}
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+
+public abstract interface ambi
+{
+  public abstract void a(SpriteTaskParam paramSpriteTaskParam, long paramLong);
+  
+  public abstract void a(SpriteTaskParam paramSpriteTaskParam, long paramLong, int paramInt);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

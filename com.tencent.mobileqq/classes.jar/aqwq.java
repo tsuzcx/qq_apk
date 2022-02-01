@@ -1,32 +1,26 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-
 public class aqwq
-  extends MSFServlet
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public int a;
+  public String a;
+  public boolean a;
+  
+  public aqwq(String paramString, int paramInt)
   {
-    if (paramFromServiceMsg.isSuccess()) {}
-    for (byte[] arrayOfByte = bhuf.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
-    {
-      new Bundle().putByteArray("data", arrayOfByte);
-      aoip localaoip = (aoip)((QQAppInterface)getAppRuntime()).a(20);
-      if (localaoip != null) {
-        localaoip.a(paramIntent, paramFromServiceMsg, arrayOfByte);
-      }
-      return;
-    }
+    this(paramString, paramInt, true);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public aqwq(String paramString, int paramInt, boolean paramBoolean)
   {
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
-    paramPacket.putSendData(bhuf.a(arrayOfByte));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("ComboObject:");
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append(',').append(this.jdField_a_of_type_Int).append(',').append(this.jdField_a_of_type_Boolean);
+    return localStringBuffer.toString();
   }
 }
 

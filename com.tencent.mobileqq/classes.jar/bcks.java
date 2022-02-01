@@ -1,302 +1,259 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.search.rich.RichNodeController.1;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import com.tencent.mobileqq.widget.PAImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class bcks
 {
-  private static String jdField_a_of_type_JavaLangString = "RichNodeController";
-  private static final Set<WeakReference<bckk>> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
-  private int jdField_a_of_type_Int = 0;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private Map<Integer, bckt> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private int jdField_a_of_type_Int = -1;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bcgx jdField_a_of_type_Bcgx;
   private int b;
-  private int c;
   
-  public static void a()
+  public bcks(bcgx parambcgx, Context paramContext, int paramInt)
   {
-    for (;;)
-    {
-      synchronized (jdField_a_of_type_JavaUtilSet)
-      {
-        Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject2 = (WeakReference)localIterator.next();
-        if (localObject2 == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "onDestroy.(item == null");
-          }
-          localIterator.remove();
-        }
-      }
-      Object localObject2 = (bckk)((WeakReference)localObject2).get();
-      if (localObject2 == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "onDestroy.(node == null");
-        }
-        localObject1.remove();
-      }
-      else
-      {
-        a((bckk)localObject2);
-        ((bckk)localObject2).d();
-      }
-    }
-    jdField_a_of_type_JavaUtilSet.clear();
-  }
-  
-  private static void a(bckk parambckk) {}
-  
-  private void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "pauseAll, puase:" + paramBoolean + " startPos:" + this.b + " endPos:" + this.c);
-    }
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "pauseAll, map is empty");
-      }
-    }
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (bckt)localIterator.next();
-        if (localObject != null)
-        {
-          localObject = ((bckt)localObject).a;
-          if (localObject != null)
-          {
-            localObject = (bckk)((WeakReference)localObject).get();
-            if (localObject != null) {
-              if (paramBoolean) {
-                ((bckk)localObject).b();
-              } else {
-                ((bckk)localObject).c();
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public static void b()
-  {
-    for (;;)
-    {
-      synchronized (jdField_a_of_type_JavaUtilSet)
-      {
-        Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject2 = (WeakReference)localIterator.next();
-        if (localObject2 == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "onPause item == null");
-          }
-          localIterator.remove();
-        }
-      }
-      Object localObject2 = (bckk)((WeakReference)localObject2).get();
-      if (localObject2 == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "onPause node == null");
-        }
-        localObject1.remove();
-      }
-      else
-      {
-        ((bckk)localObject2).b();
-      }
-    }
-  }
-  
-  private void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "restartPlayTimer:" + paramInt);
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-    if (paramInt < 0) {
-      return;
-    }
-    if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new RichNodeController.1(this);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramInt);
-  }
-  
-  public static void c() {}
-  
-  public static void d() {}
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject1 = (Map.Entry)localIterator.next();
-        Object localObject2 = (bckt)((Map.Entry)localObject1).getValue();
-        if (localObject2 == null)
-        {
-          localIterator.remove();
-        }
-        else if (((bckt)localObject2).a == null)
-        {
-          localIterator.remove();
-        }
-        else
-        {
-          localObject2 = (bckk)((bckt)localObject2).a.get();
-          if (localObject2 == null)
-          {
-            localIterator.remove();
-          }
-          else
-          {
-            localObject1 = (Integer)((Map.Entry)localObject1).getKey();
-            if (localObject1 == null)
-            {
-              ((bckk)localObject2).b();
-              localIterator.remove();
-            }
-            else if ((((Integer)localObject1).intValue() < this.b) || (((Integer)localObject1).intValue() > this.c))
-            {
-              ((bckk)localObject2).b();
-              localIterator.remove();
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  private static void f()
-  {
-    for (;;)
-    {
-      synchronized (jdField_a_of_type_JavaUtilSet)
-      {
-        Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject2 = (WeakReference)localIterator.next();
-        if (localObject2 == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "onPause item == null");
-          }
-          localIterator.remove();
-        }
-      }
-      Object localObject2 = (bckk)((WeakReference)localObject2).get();
-      if (localObject2 == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "onPause node == null");
-        }
-        localObject1.remove();
-      }
-      else
-      {
-        ((bckk)localObject2).c();
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
+    this.jdField_a_of_type_Bcgx = parambcgx;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Int == 0)
+    this.b = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296449);
+  }
+  
+  private TextView a(String paramString, View paramView, boolean paramBoolean)
+  {
+    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+    TextView localTextView;
+    if (paramView == null)
     {
-      b(100);
-      return;
+      localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+      localTextView.setMaxLines(2);
+      localTextView.setTextColor(-1);
+      localTextView.setTextSize(2, 19.0F);
+      localTextView.setMaxLines(2);
+      localTextView.setLineSpacing(AIOUtils.dp2px(2.5F, localResources), 1.0F);
+      localTextView.setGravity(80);
+      localTextView.setEllipsize(TextUtils.TruncateAt.END);
+      if (paramBoolean) {
+        localTextView.setBackgroundResource(2130841665);
+      }
+      int i = AIOUtils.dp2px(12.5F, localResources);
+      int j = AIOUtils.dp2px(12.0F, localResources);
+      localTextView.setPadding(j, 0, j, i);
+      localTextView.setId(2131377978);
+      paramView = localTextView;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        localTextView.setText(paramString);
+        paramView = localTextView;
+      }
     }
-    b(-1);
-    b();
+    do
+    {
+      do
+      {
+        return paramView;
+        localTextView = (TextView)paramView;
+        if (!TextUtils.isEmpty(paramString)) {
+          localTextView.setText(paramString);
+        }
+        paramView = localTextView;
+      } while (!paramBoolean);
+      paramView = localTextView;
+    } while (localTextView.getBackground() != null);
+    localTextView.setBackgroundResource(2130841665);
+    return localTextView;
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public static boolean a(bcgx parambcgx, int paramInt)
   {
-    if ((paramInt1 == this.b) && (this.c == paramInt1 + paramInt2)) {
-      return;
+    if (paramInt != 0) {
+      return false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "setScorllData, mStartPos:" + this.b + " endPos:" + this.c);
+    parambcgx = parambcgx.a.iterator();
+    label14:
+    String str;
+    if (parambcgx.hasNext())
+    {
+      str = ((bcgw)parambcgx.next()).a;
+      if (!"picture".equals(str)) {}
     }
-    this.b = paramInt1;
-    this.c = (paramInt1 + paramInt2);
-    e();
+    for (boolean bool = true;; bool = false)
+    {
+      return bool;
+      if (!"title".equals(str)) {
+        break;
+      }
+      break label14;
+    }
   }
   
-  public void a(int paramInt, bckk parambckk)
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    if (parambckk == null) {
-      return;
+    if (!a(this.jdField_a_of_type_Bcgx, this.jdField_a_of_type_Int)) {
+      paramContext = this.jdField_a_of_type_Bcgx.a(paramContext, paramView, paramBundle);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "registerNode, nPos:" + paramInt);
-    }
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), new bckt(paramInt, parambckk));
-    if (this.jdField_a_of_type_Int != 0) {
-      parambckk.b();
-    }
+    LinearLayout localLinearLayout;
+    Object localObject1;
+    Object localObject2;
+    do
+    {
+      return paramContext;
+      if (QLog.isColorLevel()) {
+        QLog.d("StructMsgItemLayout5Adapter", 2, "layout5 use new style");
+      }
+      if ((paramView == null) || (!(paramView instanceof LinearLayout))) {
+        break label598;
+      }
+      localLinearLayout = (LinearLayout)paramView;
+      localObject1 = (FrameLayout)localLinearLayout.findViewById(2131377960);
+      if (localObject1 == null) {
+        break label381;
+      }
+      localObject2 = this.jdField_a_of_type_Bcgx.a.iterator();
+      paramView = null;
+      if (((Iterator)localObject2).hasNext())
+      {
+        bcgw localbcgw = (bcgw)((Iterator)localObject2).next();
+        String str = localbcgw.a;
+        if ("title".equals(str)) {
+          paramView = ((StructMsgItemTitle)localbcgw).b();
+        }
+        for (;;)
+        {
+          break;
+          if ("picture".equals(str)) {
+            this.jdField_a_of_type_AndroidViewView = a(localbcgw, (View)localObject1, paramBundle);
+          }
+        }
+      }
+      if (this.jdField_a_of_type_AndroidViewView == null) {
+        break;
+      }
+      paramBundle = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377975);
+      if (!TextUtils.isEmpty(paramView))
+      {
+        if (paramBundle != null)
+        {
+          a(paramView, paramBundle, true);
+          return localLinearLayout;
+        }
+        paramContext = a(paramView, null, true);
+        paramView = new ViewGroup.LayoutParams(-1, this.b);
+        paramContext.setId(2131377975);
+        ((ViewGroup)this.jdField_a_of_type_AndroidViewView).addView(paramContext, paramView);
+        return localLinearLayout;
+      }
+      paramContext = localLinearLayout;
+    } while (paramBundle == null);
+    ((ViewGroup)this.jdField_a_of_type_AndroidViewView).removeView(paramBundle);
+    return localLinearLayout;
+    localLinearLayout.removeAllViews();
     for (;;)
     {
-      synchronized (jdField_a_of_type_JavaUtilSet)
+      if (localLinearLayout == null)
       {
-        Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-        if (!localIterator.hasNext()) {
-          break label201;
-        }
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if ((localWeakReference == null) || (localWeakReference.get() != parambckk)) {
-          continue;
-        }
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "find in list:" + bool);
-        }
-        if (!bool) {
-          jdField_a_of_type_JavaUtilSet.add(new WeakReference(parambckk));
-        }
-        return;
+        localLinearLayout = new LinearLayout(paramContext);
+        localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+        localLinearLayout.setOrientation(1);
+        localLinearLayout.setId(2131377976);
       }
-      parambckk.c();
-      continue;
-      label201:
-      boolean bool = false;
+      for (;;)
+      {
+        localObject1 = this.jdField_a_of_type_Bcgx.a.iterator();
+        label331:
+        if (((Iterator)localObject1).hasNext())
+        {
+          paramContext = (bcgw)((Iterator)localObject1).next();
+          localObject2 = paramContext.a;
+          if ("title".equals(localObject2)) {}
+          for (paramContext = ((StructMsgItemTitle)paramContext).b();; paramContext = paramView)
+          {
+            paramView = paramContext;
+            break label331;
+            label381:
+            localLinearLayout.removeAllViews();
+            paramView = null;
+            break;
+            if ("picture".equals(localObject2)) {
+              this.jdField_a_of_type_AndroidViewView = a(paramContext, null, paramBundle);
+            }
+          }
+        }
+        if (this.jdField_a_of_type_AndroidViewView != null)
+        {
+          if (!TextUtils.isEmpty(paramView))
+          {
+            paramContext = new ViewGroup.LayoutParams(-1, this.b);
+            paramView = a(paramView.trim(), null, true);
+            paramView.setId(2131377975);
+            ((ViewGroup)this.jdField_a_of_type_AndroidViewView).addView(paramView, paramContext);
+          }
+          localLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
+        }
+        for (;;)
+        {
+          return localLinearLayout;
+          if ((!TextUtils.isEmpty(paramView)) && (paramView.trim().length() > 0))
+          {
+            this.jdField_a_of_type_AndroidWidgetTextView = a(paramView.trim(), null, false);
+            paramContext = new ViewGroup.LayoutParams(-2, -2);
+            this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramContext);
+            int i = AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+            this.jdField_a_of_type_AndroidWidgetTextView.setPadding(i, i, i, i);
+            this.jdField_a_of_type_AndroidWidgetTextView.setId(2131377978);
+            this.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
+            localLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
+          }
+        }
+      }
+      label598:
+      paramView = null;
+      localLinearLayout = null;
     }
+  }
+  
+  public View a(bcgw parambcgw, View paramView, Bundle paramBundle)
+  {
+    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
+    if ((paramView != null) && ((paramView instanceof FrameLayout)))
+    {
+      paramView = (FrameLayout)paramView;
+      parambcgw.a(this.jdField_a_of_type_AndroidContentContext, paramView.findViewById(2131368518), paramBundle);
+      return paramView;
+    }
+    paramView = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
+    paramView.setLayoutParams(new FrameLayout.LayoutParams(-1, -2));
+    paramView.setId(2131377960);
+    if (paramBundle != null) {
+      paramBundle.putBoolean("pa_should_change", true);
+    }
+    parambcgw = (ImageView)parambcgw.a(this.jdField_a_of_type_AndroidContentContext, null, paramBundle).findViewById(2131368518);
+    paramBundle = new FrameLayout.LayoutParams(-1, this.b);
+    if ((parambcgw != null) && ((parambcgw instanceof PAImageView)))
+    {
+      PAImageView localPAImageView = (PAImageView)parambcgw;
+      localPAImageView.setUseRadiusRound(true, localResources.getDimensionPixelSize(2131296448));
+      localPAImageView.setTag(2131373119, Integer.valueOf(1));
+    }
+    paramView.addView(parambcgw, paramBundle);
+    return paramView;
   }
 }
 

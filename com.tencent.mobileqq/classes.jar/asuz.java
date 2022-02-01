@@ -1,106 +1,267 @@
-import android.content.Context;
-import android.text.format.Time;
-import com.tencent.ims.devlock_mobile_phone.status;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.app.Activity;
+import android.content.res.Resources;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter.3;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter.5;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Timer;
 
 public class asuz
+  extends asuu
+  implements asqr, assz
 {
-  public static int a;
-  private static asuz jdField_a_of_type_Asuz;
-  public static int b = 1;
-  public static int c = 2;
-  public static int d = 3;
-  private long jdField_a_of_type_Long;
-  private int e = -1;
+  public asqh a;
+  public aswq a;
+  private avpj jdField_a_of_type_Avpj = new asvd(this);
+  private String jdField_a_of_type_JavaLangString;
+  private Timer jdField_a_of_type_JavaUtilTimer;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean d = true;
   
-  static
+  public asuz(asst paramasst, Activity paramActivity)
   {
-    jdField_a_of_type_Int = -1;
+    super(paramasst, paramActivity);
+    this.jdField_a_of_type_Aswq = new aswq(paramActivity);
+    a(this.jdField_a_of_type_Aswq);
   }
   
-  public static asuz a()
+  private void a(boolean paramBoolean)
   {
-    if (jdField_a_of_type_Asuz == null) {
-      jdField_a_of_type_Asuz = new asuz();
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      int i = this.jdField_a_of_type_Asqh.a();
+      b(i);
+      this.jdField_a_of_type_Aswq.c(i);
+      s();
     }
-    return jdField_a_of_type_Asuz;
+    for (;;)
+    {
+      this.jdField_a_of_type_Aswq.d(this.jdField_a_of_type_Boolean);
+      return;
+      t();
+    }
   }
   
-  public int a()
+  private void c()
   {
-    return this.e;
+    this.jdField_a_of_type_Aswq.e(this.jdField_a_of_type_Asst.c());
+    this.jdField_a_of_type_Aswq.f(FileUtil.filesizeToString(this.jdField_a_of_type_Asst.c()));
+    this.jdField_a_of_type_Aswq.c();
+    h();
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Asst.d();
+    b();
+    this.jdField_a_of_type_Aswq.c(true);
+    if (this.jdField_a_of_type_Asqh.b(this.jdField_a_of_type_JavaLangString))
+    {
+      b(this.jdField_a_of_type_Asqh.a());
+      return;
+    }
+    this.jdField_a_of_type_Aswq.d(ataw.a(0L));
+  }
+  
+  private boolean c()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Asqh != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Asqh.b(this.jdField_a_of_type_JavaLangString))
+      {
+        bool1 = bool2;
+        if (this.jdField_a_of_type_Asqh.a()) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  private void q()
+  {
+    aszr.a("0X8004BE0");
+    if (this.jdField_a_of_type_Asqh == null) {
+      QLog.e("FileBrowserPresenter<FileAssistant>", 1, "playMusic error. MusicService is null");
+    }
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Asqh.b(this.jdField_a_of_type_JavaLangString)) {
+        break;
+      }
+      this.jdField_a_of_type_Asqh.a(this);
+    } while (!this.jdField_a_of_type_Asqh.a(this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_Asqh.b();
+    a(true);
+    avpf.a().a(1, this.jdField_a_of_type_Avpj);
+  }
+  
+  private void r()
+  {
+    aszr.a("0X8004BE1");
+    if (this.jdField_a_of_type_Asqh == null) {
+      QLog.e("FileBrowserPresenter<FileAssistant>", 1, "pauseMusic error. MusicService is null");
+    }
+    while (!this.jdField_a_of_type_Asqh.b(this.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    this.jdField_a_of_type_Asqh.a();
+    a(false);
+    avpf.a().a(this.jdField_a_of_type_Avpj);
+  }
+  
+  private void s()
+  {
+    t();
+    this.jdField_a_of_type_JavaUtilTimer = new Timer();
+    this.jdField_a_of_type_JavaUtilTimer.scheduleAtFixedRate(new MusicFilePresenter.5(this), 0L, 1000L);
+  }
+  
+  private void t()
+  {
+    if (this.jdField_a_of_type_JavaUtilTimer != null)
+    {
+      this.jdField_a_of_type_JavaUtilTimer.cancel();
+      this.jdField_a_of_type_JavaUtilTimer = null;
+    }
+  }
+  
+  public void a()
+  {
+    super.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("FileBrowserPresenter<FileAssistant>", 1, "FileBrowserPresenter init: type = music");
+    }
+    c();
+    this.jdField_a_of_type_Aswq.c(0);
+    this.jdField_a_of_type_Aswq.a(new asva(this));
+    this.jdField_a_of_type_Aswq.b(new asvb(this));
+    this.jdField_a_of_type_Asst.a(this);
+  }
+  
+  public void a(float paramFloat)
+  {
+    b(paramFloat);
   }
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DevlockPhoneStatus", 2, "pre:" + this.e + " now:" + paramInt);
-    }
-    this.e = paramInt;
+    String str = ataw.a(paramInt);
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new MusicFilePresenter.3(this, str, paramInt));
   }
   
-  public void a(long paramLong)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 0, this.jdField_a_of_type_AndroidAppActivity.getString(2131692501), 1).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299076));
+    this.jdField_a_of_type_Aswq.d(ataw.a(0L));
+    this.jdField_a_of_type_Aswq.c(0);
+    a(false);
   }
   
-  public void a(Context paramContext, String paramString)
+  public boolean a()
   {
-    asva localasva = new asva(this);
-    String str2 = paramContext.getString(2131691847);
-    String str1 = paramContext.getString(2131691833);
-    long l = this.jdField_a_of_type_Long * 1000L;
-    if (l > 0L)
-    {
-      localObject = new Time();
-      ((Time)localObject).set(l);
+    return this.d;
+  }
+  
+  public void aq_()
+  {
+    this.jdField_a_of_type_Aswq.d(ataw.a(0L));
+    this.jdField_a_of_type_Aswq.c(0);
+    a(false);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Asst.d();
+    if (this.jdField_a_of_type_Asqh == null) {
+      this.jdField_a_of_type_Asqh = asqh.a();
     }
-    for (Object localObject = String.format(paramContext.getString(2131691845), new Object[] { Integer.valueOf(((Time)localObject).year), Integer.valueOf(((Time)localObject).month + 1), Integer.valueOf(((Time)localObject).monthDay), Integer.valueOf(((Time)localObject).hour), Integer.valueOf(((Time)localObject).minute) });; localObject = paramContext.getString(2131691846))
-    {
-      paramContext = bhlq.a(paramContext, 230, str2, String.format(paramContext.getString(2131691844), new Object[] { paramString, localObject }), null, localasva);
-      if (paramContext != null)
-      {
-        paramContext.setNegativeButton(str1, localasva);
-        paramContext.show();
-      }
-      return;
+    this.jdField_a_of_type_Asqh.a(this.jdField_a_of_type_JavaLangString, new asvc(this));
+    if (this.jdField_a_of_type_Asqh.b(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_Asqh.a(this);
+    }
+    if (this.jdField_a_of_type_Asst.b()) {
+      q();
+    }
+    a(c());
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_Aswq.d(ataw.a(paramInt));
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
+    return false;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Aswq.a(false);
+    this.jdField_a_of_type_Aswq.b(true);
+    b(this.jdField_a_of_type_Asst.a());
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_Aswq.a(true);
+    this.jdField_a_of_type_Aswq.b(false);
+    h();
+  }
+  
+  public void f()
+  {
+    this.jdField_a_of_type_Aswq.a(true);
+    this.jdField_a_of_type_Aswq.b(false);
+    h();
+    if (this.jdField_a_of_type_Asqp != null) {
+      this.jdField_a_of_type_Asqp.a();
     }
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public void g()
   {
-    this.e = jdField_a_of_type_Int;
-    this.jdField_a_of_type_Long = 0L;
-    if (paramArrayOfByte == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("DevlockPhoneStatus", 2, "info is null");
-      }
+    this.jdField_a_of_type_Aswq.a(true);
+    this.jdField_a_of_type_Aswq.b(false);
+    h();
+  }
+  
+  protected void h()
+  {
+    super.h();
+    if (this.jdField_a_of_type_Asst.i() == 2) {
+      this.jdField_a_of_type_Aswq.a(false);
     }
-    for (;;)
-    {
-      return;
-      try
-      {
-        devlock_mobile_phone.status localstatus = new devlock_mobile_phone.status();
-        localstatus.mergeFrom(paramArrayOfByte);
-        if (localstatus.u32_mb_mobile_state.has()) {
-          this.e = localstatus.u32_mb_mobile_state.get();
-        }
-        if (localstatus.u32_audit_time.has())
-        {
-          this.jdField_a_of_type_Long = localstatus.u32_audit_time.get();
-          return;
-        }
-      }
-      catch (Throwable paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("DevlockPhoneStatus", 2, "exception occurs");
-        }
-        paramArrayOfByte.printStackTrace();
-      }
+  }
+  
+  public void i()
+  {
+    super.i();
+    if (this.jdField_a_of_type_Asqh != null) {
+      this.jdField_a_of_type_Asqh.a(null);
     }
+    t();
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Asqh != null) && (this.jdField_a_of_type_Asqh.b(this.jdField_a_of_type_JavaLangString))) {
+      this.jdField_a_of_type_Asqh.c();
+    }
+    avpf.a().b(this.jdField_a_of_type_Avpj);
+    this.jdField_a_of_type_Asqh = null;
+  }
+  
+  public void j()
+  {
+    super.j();
+    t();
+  }
+  
+  public void k()
+  {
+    super.k();
+    c();
   }
 }
 

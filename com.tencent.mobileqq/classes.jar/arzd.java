@@ -1,30 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class arzd
-  implements DialogInterface.OnClickListener
+public class arzd
+  implements View.OnClickListener
 {
-  arzd(arzc paramarzc) {}
+  public arzd(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    EditText localEditText = (EditText)((bhpc)paramDialogInterface).findViewById(2131371654);
-    paramDialogInterface = (EditText)((bhpc)paramDialogInterface).findViewById(2131361952);
-    if ((TextUtils.isEmpty(localEditText.getText().toString())) || (TextUtils.isEmpty(paramDialogInterface.getText().toString())))
-    {
-      QQToast.a(this.a.a.getActivity(), 1, anzj.a(2131701675), 0).a();
-      return;
-    }
-    asaa localasaa = new asaa();
-    localasaa.a = localEditText.getText().toString();
-    localasaa.jdField_b_of_type_JavaLangString = paramDialogInterface.getText().toString();
-    localasaa.jdField_b_of_type_Boolean = true;
-    arzx.a().a(localasaa);
-    this.a.a.a.notifyDataSetChanged();
+    this.a.h();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

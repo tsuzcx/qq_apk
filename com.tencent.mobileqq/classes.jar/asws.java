@@ -1,54 +1,50 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.drawable.Drawable;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-public class asws
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+class asws
+  implements bjpi
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aszz jdField_a_of_type_Aszz;
+  asws(aswr paramaswr) {}
   
-  public asws(View paramView, aszz paramaszz)
+  public void F()
   {
-    super(paramView);
-    this.jdField_a_of_type_Aszz = paramaszz;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380285));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(atcx.a);
+    aswr.a(this.a, false);
+    this.a.jdField_a_of_type_Aswp.o();
   }
   
-  public void a(asws paramasws, asxh paramasxh)
+  public void G()
   {
-    String str = "";
-    boolean bool = false;
-    switch (paramasxh.mFooterType)
-    {
-    default: 
-      paramasxh = str;
+    aswr.a(this.a, false);
+    if (aswr.a(this.a)) {
+      this.a.b(true);
     }
-    for (;;)
-    {
-      paramasws.jdField_a_of_type_AndroidWidgetTextView.setText(paramasxh);
-      paramasws.jdField_a_of_type_AndroidWidgetTextView.setEnabled(bool);
-      return;
-      paramasxh = anzj.a(2131703605);
-      continue;
-      paramasxh = anzj.a(2131703607);
-      bool = true;
-      continue;
-      paramasxh = anzj.a(2131703606);
+    if (aswr.b(this.a)) {
+      this.a.a(true);
     }
   }
   
-  public void onClick(View paramView)
+  public void H() {}
+  
+  public void a(float paramFloat)
   {
-    if (this.jdField_a_of_type_Aszz != null) {
-      this.jdField_a_of_type_Aszz.c();
+    aswr.a(this.a, true);
+    if (aswr.a(this.a) != null)
+    {
+      Drawable localDrawable = aswr.a(this.a).getBackground();
+      if (localDrawable != null) {
+        localDrawable.mutate().setAlpha((int)(255.0F * paramFloat));
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramFloat < 0.8F)
+    {
+      if (aswr.a(this.a) != null) {
+        aswr.a(this.a).setVisibility(8);
+      }
+      if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      }
+    }
   }
 }
 

@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.activity.bless;
 
 import Override;
-import ajan;
-import ajaq;
-import ajat;
-import ajau;
+import ahux;
+import ahva;
+import ahvd;
+import ahve;
+import anaz;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,29 +21,28 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import antf;
-import aohk;
-import aunj;
-import bcrn;
-import bfqe;
-import bfqf;
-import bfqg;
-import bhkv;
-import bhmi;
-import bhml;
-import bjig;
-import blha;
-import bmud;
+import aszt;
+import bbkv;
+import bdzo;
+import bdzp;
+import bdzq;
+import bfuc;
+import bjmp;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportProgressDialog;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import cooperation.qzone.QZoneShareManager;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,14 +58,14 @@ import org.json.JSONObject;
 
 public class BlessResultActivity
   extends BlessTypeActivity
-  implements Handler.Callback, View.OnClickListener, bjig
+  implements Handler.Callback, View.OnClickListener, WXShareHelper.WXShareListener
 {
   int jdField_a_of_type_Int;
-  public ajau a;
+  public ahve a;
+  private anaz jdField_a_of_type_Anaz;
   ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  private aohk jdField_a_of_type_Aohk;
-  bfqg jdField_a_of_type_Bfqg = new ajat(this);
-  public blha a;
+  bdzq jdField_a_of_type_Bdzq = new ahvd(this);
+  public bjmp a;
   BlessResultActivity.VideoUploadTask jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoUploadTask;
   String jdField_a_of_type_JavaLangString;
   public boolean a;
@@ -90,12 +90,12 @@ public class BlessResultActivity
     this.jdField_a_of_type_Boolean = false;
   }
   
-  public static bfqf a(Bundle paramBundle, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  public static bdzp a(Bundle paramBundle, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
     return a(paramBundle, paramString1, paramString2, paramString3, paramBoolean, "https://c.v.qq.com/openfvupready?g_tk=");
   }
   
-  public static bfqf a(Bundle paramBundle, String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4)
+  public static bdzp a(Bundle paramBundle, String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4)
   {
     long l = System.currentTimeMillis();
     String str1 = paramBundle.getString("title");
@@ -104,9 +104,9 @@ public class BlessResultActivity
     String str4 = paramBundle.getString("file_path");
     paramBundle = paramBundle.getString("vid");
     if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "applyUpload title = " + str1 + ", tags = " + str2 + ", cat = " + str3 + ", filePath = " + str4 + ", size = " + bhmi.a(str4));
+      QLog.d("BlessResultActivity", 2, "applyUpload title = " + str1 + ", tags = " + str2 + ", cat = " + str3 + ", filePath = " + str4 + ", size = " + FileUtils.getFileSizes(str4));
     }
-    if ((TextUtils.isEmpty(str4)) || (!bhmi.a(str4)))
+    if ((TextUtils.isEmpty(str4)) || (!FileUtils.fileExists(str4)))
     {
       if (QLog.isColorLevel()) {
         QLog.e("BlessResultActivity", 2, "!!!!!!!applyUpload filePath = " + str4);
@@ -119,7 +119,7 @@ public class BlessResultActivity
       if (paramBoolean) {
         paramString4.replaceFirst("http", "https");
       }
-      paramString4 = new HttpPost(paramString4 + String.valueOf(bfqe.a(paramString2)));
+      paramString4 = new HttpPost(paramString4 + String.valueOf(bdzo.a(paramString2)));
       paramString4.setHeader("Accept", "Accept text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
       paramString4.setHeader("Accept-Charset", "utf-8;q=0.7,*;q=0.7");
       paramString4.setHeader("Accept-Encoding", "gzip, deflate");
@@ -132,14 +132,14 @@ public class BlessResultActivity
       localArrayList.add(new BasicNameValuePair("title", str1));
       localArrayList.add(new BasicNameValuePair("tags", str2));
       localArrayList.add(new BasicNameValuePair("cat", str3));
-      localArrayList.add(new BasicNameValuePair("size", String.valueOf(bhmi.a(str4))));
-      localArrayList.add(new BasicNameValuePair("sha", bhml.a(aunj.a(str4))));
-      localArrayList.add(new BasicNameValuePair("md5", bhml.a(aunj.e(str4))));
+      localArrayList.add(new BasicNameValuePair("size", String.valueOf(FileUtils.getFileSizes(str4))));
+      localArrayList.add(new BasicNameValuePair("sha", HexUtil.bytes2HexStr(aszt.a(str4))));
+      localArrayList.add(new BasicNameValuePair("md5", HexUtil.bytes2HexStr(aszt.e(str4))));
       if (QLog.isColorLevel()) {
         QLog.d("BlessResultActivity", 2, "applyUpload() getMessageDigest time = " + (System.currentTimeMillis() - l));
       }
       localArrayList.add(new BasicNameValuePair("platform", "android"));
-      localArrayList.add(new BasicNameValuePair("g_tk", String.valueOf(bfqe.a(paramString2))));
+      localArrayList.add(new BasicNameValuePair("g_tk", String.valueOf(bdzo.a(paramString2))));
       localArrayList.add(new BasicNameValuePair("otype", "json"));
       if (!TextUtils.isEmpty(paramBundle))
       {
@@ -163,7 +163,7 @@ public class BlessResultActivity
         if (!paramBundle.optString("s", "f").equals("o")) {
           break;
         }
-        paramBundle = new bfqf(paramBundle);
+        paramBundle = new bdzp(paramBundle);
       }
       catch (Exception paramString2)
       {
@@ -187,7 +187,7 @@ public class BlessResultActivity
   
   public static String a(String paramString)
   {
-    String str = antf.ba + "bless/thumb/";
+    String str = AppConstants.SDCARD_PATH + "bless/thumb/";
     Object localObject = new File(str);
     if ((localObject != null) && (((File)localObject).exists()) && (((File)localObject).isDirectory()) && (((File)localObject).listFiles().length > 0))
     {
@@ -210,10 +210,10 @@ public class BlessResultActivity
     //   0: invokestatic 61	java/lang/System:currentTimeMillis	()J
     //   3: lstore 7
     //   5: aload_0
-    //   6: invokestatic 123	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   6: invokestatic 124	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   9: ifne +10 -> 19
     //   12: aload_0
-    //   13: invokestatic 126	bhmi:a	(Ljava/lang/String;)Z
+    //   13: invokestatic 128	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
     //   16: ifne +37 -> 53
     //   19: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   22: ifeq +29 -> 51
@@ -222,19 +222,19 @@ public class BlessResultActivity
     //   28: new 87	java/lang/StringBuilder
     //   31: dup
     //   32: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   35: ldc_w 352
+    //   35: ldc_w 355
     //   38: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   41: aload_0
     //   42: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   48: invokestatic 130	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   45: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   48: invokestatic 132	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   51: iconst_0
     //   52: ireturn
     //   53: aload_1
-    //   54: invokestatic 123	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   54: invokestatic 124	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   57: ifne +10 -> 67
     //   60: aload_1
-    //   61: invokestatic 126	bhmi:a	(Ljava/lang/String;)Z
+    //   61: invokestatic 128	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
     //   64: ifne +37 -> 101
     //   67: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   70: ifeq -19 -> 51
@@ -243,12 +243,12 @@ public class BlessResultActivity
     //   76: new 87	java/lang/StringBuilder
     //   79: dup
     //   80: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   83: ldc_w 354
+    //   83: ldc_w 357
     //   86: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   89: aload_1
     //   90: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   96: invokestatic 130	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   93: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   96: invokestatic 132	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   99: iconst_0
     //   100: ireturn
     //   101: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -258,137 +258,137 @@ public class BlessResultActivity
     //   110: new 87	java/lang/StringBuilder
     //   113: dup
     //   114: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   117: ldc_w 356
+    //   117: ldc_w 359
     //   120: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   123: aload_0
     //   124: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   127: ldc_w 358
+    //   127: ldc_w 361
     //   130: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   133: aload_1
     //   134: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: ldc_w 360
+    //   137: ldc_w 363
     //   140: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   143: aload_1
-    //   144: invokestatic 107	bhmi:a	(Ljava/lang/String;)J
-    //   147: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   150: ldc_w 362
+    //   144: invokestatic 108	com/tencent/mobileqq/utils/FileUtils:getFileSizes	(Ljava/lang/String;)J
+    //   147: invokevirtual 111	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   150: ldc_w 365
     //   153: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   156: aload_2
     //   157: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   160: ldc_w 364
+    //   160: ldc_w 367
     //   163: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   166: aload_3
     //   167: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: ldc_w 366
+    //   170: ldc_w 369
     //   173: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   176: aload 4
     //   178: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   181: ldc_w 368
+    //   181: ldc_w 371
     //   184: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   187: aload 5
     //   189: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   192: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   195: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   198: invokestatic 374	java/util/UUID:randomUUID	()Ljava/util/UUID;
-    //   201: invokevirtual 375	java/util/UUID:toString	()Ljava/lang/String;
+    //   192: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   195: invokestatic 118	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   198: invokestatic 377	java/util/UUID:randomUUID	()Ljava/util/UUID;
+    //   201: invokevirtual 378	java/util/UUID:toString	()Ljava/lang/String;
     //   204: astore 12
-    //   206: new 142	org/apache/http/client/methods/HttpPost
+    //   206: new 144	org/apache/http/client/methods/HttpPost
     //   209: dup
     //   210: new 87	java/lang/StringBuilder
     //   213: dup
     //   214: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   217: ldc_w 377
+    //   217: ldc_w 380
     //   220: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   223: aload_3
-    //   224: invokestatic 147	bfqe:a	(Ljava/lang/String;)I
-    //   227: invokestatic 151	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   224: invokestatic 149	bdzo:a	(Ljava/lang/String;)I
+    //   227: invokestatic 153	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   230: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   233: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   236: invokespecial 154	org/apache/http/client/methods/HttpPost:<init>	(Ljava/lang/String;)V
+    //   233: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   236: invokespecial 156	org/apache/http/client/methods/HttpPost:<init>	(Ljava/lang/String;)V
     //   239: astore 11
     //   241: aload 11
-    //   243: ldc 156
-    //   245: ldc 158
-    //   247: invokevirtual 162	org/apache/http/client/methods/HttpPost:setHeader	(Ljava/lang/String;Ljava/lang/String;)V
+    //   243: ldc 158
+    //   245: ldc 160
+    //   247: invokevirtual 164	org/apache/http/client/methods/HttpPost:setHeader	(Ljava/lang/String;Ljava/lang/String;)V
     //   250: aload 11
-    //   252: ldc 164
-    //   254: ldc 166
-    //   256: invokevirtual 162	org/apache/http/client/methods/HttpPost:setHeader	(Ljava/lang/String;Ljava/lang/String;)V
+    //   252: ldc 166
+    //   254: ldc 168
+    //   256: invokevirtual 164	org/apache/http/client/methods/HttpPost:setHeader	(Ljava/lang/String;Ljava/lang/String;)V
     //   259: aload 11
-    //   261: ldc 168
-    //   263: ldc 170
-    //   265: invokevirtual 162	org/apache/http/client/methods/HttpPost:setHeader	(Ljava/lang/String;Ljava/lang/String;)V
+    //   261: ldc 170
+    //   263: ldc 172
+    //   265: invokevirtual 164	org/apache/http/client/methods/HttpPost:setHeader	(Ljava/lang/String;Ljava/lang/String;)V
     //   268: aload 11
-    //   270: ldc 172
-    //   272: ldc 174
-    //   274: invokevirtual 162	org/apache/http/client/methods/HttpPost:setHeader	(Ljava/lang/String;Ljava/lang/String;)V
+    //   270: ldc 174
+    //   272: ldc 176
+    //   274: invokevirtual 164	org/apache/http/client/methods/HttpPost:setHeader	(Ljava/lang/String;Ljava/lang/String;)V
     //   277: aload 11
-    //   279: ldc 176
-    //   281: ldc 178
-    //   283: invokevirtual 162	org/apache/http/client/methods/HttpPost:setHeader	(Ljava/lang/String;Ljava/lang/String;)V
+    //   279: ldc 178
+    //   281: ldc 180
+    //   283: invokevirtual 164	org/apache/http/client/methods/HttpPost:setHeader	(Ljava/lang/String;Ljava/lang/String;)V
     //   286: aload 11
-    //   288: ldc 180
+    //   288: ldc 182
     //   290: new 87	java/lang/StringBuilder
     //   293: dup
     //   294: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   297: ldc 182
+    //   297: ldc 184
     //   299: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   302: aload_3
     //   303: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   306: ldc 184
+    //   306: ldc 186
     //   308: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   311: aload_2
     //   312: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   315: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   318: invokevirtual 162	org/apache/http/client/methods/HttpPost:setHeader	(Ljava/lang/String;Ljava/lang/String;)V
+    //   315: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   318: invokevirtual 164	org/apache/http/client/methods/HttpPost:setHeader	(Ljava/lang/String;Ljava/lang/String;)V
     //   321: aload 11
-    //   323: ldc 186
-    //   325: ldc 188
-    //   327: invokevirtual 162	org/apache/http/client/methods/HttpPost:setHeader	(Ljava/lang/String;Ljava/lang/String;)V
+    //   323: ldc 188
+    //   325: ldc 190
+    //   327: invokevirtual 164	org/apache/http/client/methods/HttpPost:setHeader	(Ljava/lang/String;Ljava/lang/String;)V
     //   330: aload 11
-    //   332: ldc_w 379
+    //   332: ldc_w 382
     //   335: new 87	java/lang/StringBuilder
     //   338: dup
-    //   339: ldc_w 381
-    //   342: invokespecial 382	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   339: ldc_w 384
+    //   342: invokespecial 385	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   345: aload 12
     //   347: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   350: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   353: invokevirtual 162	org/apache/http/client/methods/HttpPost:setHeader	(Ljava/lang/String;Ljava/lang/String;)V
+    //   350: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   353: invokevirtual 164	org/apache/http/client/methods/HttpPost:setHeader	(Ljava/lang/String;Ljava/lang/String;)V
     //   356: new 65	android/os/Bundle
     //   359: dup
-    //   360: invokespecial 383	android/os/Bundle:<init>	()V
+    //   360: invokespecial 386	android/os/Bundle:<init>	()V
     //   363: astore 13
     //   365: aload 13
-    //   367: ldc 195
+    //   367: ldc 197
     //   369: aload 6
-    //   371: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   371: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   374: aload 13
     //   376: ldc 77
     //   378: aload 4
-    //   380: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   380: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   383: aload 13
-    //   385: ldc_w 388
+    //   385: ldc_w 391
     //   388: aload 5
-    //   390: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   390: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   393: aload 13
-    //   395: ldc 205
+    //   395: ldc 207
     //   397: aload_0
-    //   398: invokestatic 107	bhmi:a	(Ljava/lang/String;)J
-    //   401: invokestatic 208	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   404: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   398: invokestatic 108	com/tencent/mobileqq/utils/FileUtils:getFileSizes	(Ljava/lang/String;)J
+    //   401: invokestatic 210	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   404: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   407: aload 13
-    //   409: ldc 210
+    //   409: ldc 212
     //   411: aload_0
-    //   412: invokestatic 215	aunj:a	(Ljava/lang/String;)[B
-    //   415: invokestatic 220	bhml:a	([B)Ljava/lang/String;
-    //   418: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   412: invokestatic 217	aszt:a	(Ljava/lang/String;)[B
+    //   415: invokestatic 223	com/tencent/mobileqq/utils/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   418: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   421: aload 13
-    //   423: ldc 222
+    //   423: ldc 225
     //   425: aload_0
-    //   426: invokestatic 224	aunj:e	(Ljava/lang/String;)[B
-    //   429: invokestatic 220	bhml:a	([B)Ljava/lang/String;
-    //   432: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   426: invokestatic 227	aszt:e	(Ljava/lang/String;)[B
+    //   429: invokestatic 223	com/tencent/mobileqq/utils/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   432: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   435: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   438: ifeq +34 -> 472
     //   441: ldc 85
@@ -396,121 +396,121 @@ public class BlessResultActivity
     //   444: new 87	java/lang/StringBuilder
     //   447: dup
     //   448: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   451: ldc_w 390
+    //   451: ldc_w 393
     //   454: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   457: invokestatic 61	java/lang/System:currentTimeMillis	()J
     //   460: lload 7
     //   462: lsub
-    //   463: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   466: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   469: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   463: invokevirtual 111	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   466: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   469: invokestatic 118	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   472: aload 13
-    //   474: ldc 228
-    //   476: ldc 230
-    //   478: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   474: ldc 231
+    //   476: ldc 233
+    //   478: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   481: aload 13
-    //   483: ldc 232
+    //   483: ldc 235
     //   485: aload_3
-    //   486: invokestatic 147	bfqe:a	(Ljava/lang/String;)I
-    //   489: invokestatic 151	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   492: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   486: invokestatic 149	bdzo:a	(Ljava/lang/String;)I
+    //   489: invokestatic 153	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   492: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   495: aload 13
-    //   497: ldc 234
-    //   499: ldc 236
-    //   501: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   497: ldc 237
+    //   499: ldc 239
+    //   501: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   504: aload 13
-    //   506: ldc_w 392
-    //   509: ldc_w 394
-    //   512: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   506: ldc_w 395
+    //   509: ldc_w 397
+    //   512: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   515: aload 13
-    //   517: ldc_w 396
-    //   520: ldc_w 398
-    //   523: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   517: ldc_w 399
+    //   520: ldc_w 401
+    //   523: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   526: aload 13
-    //   528: ldc_w 400
-    //   531: ldc_w 402
-    //   534: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   528: ldc_w 403
+    //   531: ldc_w 405
+    //   534: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   537: aload 13
-    //   539: ldc_w 404
-    //   542: ldc_w 406
-    //   545: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   539: ldc_w 407
+    //   542: ldc_w 409
+    //   545: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   548: aload 13
-    //   550: ldc_w 408
-    //   553: ldc_w 410
-    //   556: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   550: ldc_w 411
+    //   553: ldc_w 413
+    //   556: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   559: aload 13
-    //   561: ldc_w 412
-    //   564: ldc_w 414
-    //   567: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   561: ldc_w 415
+    //   564: ldc_w 417
+    //   567: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   570: aload 13
-    //   572: ldc_w 416
-    //   575: ldc_w 418
-    //   578: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   572: ldc_w 419
+    //   575: ldc_w 421
+    //   578: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   581: aload 13
-    //   583: ldc_w 420
-    //   586: ldc_w 422
-    //   589: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   583: ldc_w 423
+    //   586: ldc_w 425
+    //   589: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   592: aload 13
-    //   594: ldc_w 424
-    //   597: ldc_w 426
-    //   600: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   594: ldc_w 427
+    //   597: ldc_w 429
+    //   600: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   603: aload 13
-    //   605: ldc_w 428
-    //   608: ldc_w 430
-    //   611: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   605: ldc_w 431
+    //   608: ldc_w 433
+    //   611: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   614: aload 13
-    //   616: ldc_w 432
-    //   619: ldc_w 430
-    //   622: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   616: ldc_w 435
+    //   619: ldc_w 433
+    //   622: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   625: aload 13
-    //   627: ldc_w 434
-    //   630: ldc_w 436
-    //   633: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   627: ldc_w 437
+    //   630: ldc_w 439
+    //   633: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   636: aload 13
-    //   638: ldc_w 438
-    //   641: ldc_w 440
-    //   644: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   638: ldc_w 441
+    //   641: ldc_w 443
+    //   644: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   647: aload 13
-    //   649: ldc_w 442
-    //   652: ldc 240
-    //   654: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   649: ldc_w 445
+    //   652: ldc 243
+    //   654: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   657: aload 13
-    //   659: ldc_w 444
-    //   662: ldc_w 446
-    //   665: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   659: ldc_w 447
+    //   662: ldc_w 449
+    //   665: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   668: aload 13
-    //   670: ldc_w 448
-    //   673: ldc_w 450
-    //   676: invokevirtual 386	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   679: new 452	java/io/ByteArrayOutputStream
+    //   670: ldc_w 451
+    //   673: ldc_w 453
+    //   676: invokevirtual 389	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   679: new 455	java/io/ByteArrayOutputStream
     //   682: dup
-    //   683: invokespecial 453	java/io/ByteArrayOutputStream:<init>	()V
+    //   683: invokespecial 456	java/io/ByteArrayOutputStream:<init>	()V
     //   686: astore 4
     //   688: aconst_null
     //   689: astore_3
     //   690: aconst_null
     //   691: astore_2
-    //   692: new 329	java/io/File
+    //   692: new 332	java/io/File
     //   695: dup
     //   696: aload_1
-    //   697: invokespecial 330	java/io/File:<init>	(Ljava/lang/String;)V
+    //   697: invokespecial 333	java/io/File:<init>	(Ljava/lang/String;)V
     //   700: astore 5
     //   702: aload_3
     //   703: astore_0
     //   704: aload 13
-    //   706: invokevirtual 457	android/os/Bundle:keySet	()Ljava/util/Set;
-    //   709: invokeinterface 463 1 0
+    //   706: invokevirtual 460	android/os/Bundle:keySet	()Ljava/util/Set;
+    //   709: invokeinterface 466 1 0
     //   714: astore 6
     //   716: aload_3
     //   717: astore_0
     //   718: aload 6
-    //   720: invokeinterface 468 1 0
+    //   720: invokeinterface 471 1 0
     //   725: ifeq +460 -> 1185
     //   728: aload_3
     //   729: astore_0
     //   730: aload 6
-    //   732: invokeinterface 472 1 0
-    //   737: checkcast 136	java/lang/String
+    //   732: invokeinterface 475 1 0
+    //   737: checkcast 138	java/lang/String
     //   740: astore 14
     //   742: aload_3
     //   743: astore_0
@@ -526,42 +526,42 @@ public class BlessResultActivity
     //   762: new 87	java/lang/StringBuilder
     //   765: dup
     //   766: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   769: ldc_w 474
+    //   769: ldc_w 477
     //   772: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   775: ldc_w 476
+    //   775: ldc_w 479
     //   778: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   781: aload 12
     //   783: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   786: ldc_w 474
+    //   786: ldc_w 477
     //   789: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   792: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   795: invokevirtual 480	java/lang/String:getBytes	()[B
-    //   798: invokevirtual 484	java/io/ByteArrayOutputStream:write	([B)V
+    //   792: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   795: invokevirtual 483	java/lang/String:getBytes	()[B
+    //   798: invokevirtual 487	java/io/ByteArrayOutputStream:write	([B)V
     //   801: aload_3
     //   802: astore_0
     //   803: aload 4
     //   805: new 87	java/lang/StringBuilder
     //   808: dup
     //   809: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   812: ldc_w 486
+    //   812: ldc_w 489
     //   815: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   818: aload 14
     //   820: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   823: ldc_w 488
+    //   823: ldc_w 491
     //   826: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   829: ldc_w 474
+    //   829: ldc_w 477
     //   832: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   835: ldc_w 474
+    //   835: ldc_w 477
     //   838: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   841: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   844: invokevirtual 480	java/lang/String:getBytes	()[B
-    //   847: invokevirtual 484	java/io/ByteArrayOutputStream:write	([B)V
+    //   841: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   844: invokevirtual 483	java/lang/String:getBytes	()[B
+    //   847: invokevirtual 487	java/io/ByteArrayOutputStream:write	([B)V
     //   850: aload_3
     //   851: astore_0
     //   852: aload 4
     //   854: aload 15
-    //   856: invokevirtual 480	java/lang/String:getBytes	()[B
-    //   859: invokevirtual 484	java/io/ByteArrayOutputStream:write	([B)V
+    //   856: invokevirtual 483	java/lang/String:getBytes	()[B
+    //   859: invokevirtual 487	java/io/ByteArrayOutputStream:write	([B)V
     //   862: goto -146 -> 716
     //   865: astore_0
     //   866: aload_2
@@ -571,41 +571,41 @@ public class BlessResultActivity
     //   870: aload_1
     //   871: astore_0
     //   872: aload_2
-    //   873: invokevirtual 491	java/io/IOException:printStackTrace	()V
+    //   873: invokevirtual 494	java/io/IOException:printStackTrace	()V
     //   876: aload 4
     //   878: ifnull +8 -> 886
     //   881: aload 4
-    //   883: invokevirtual 493	java/io/ByteArrayOutputStream:close	()V
+    //   883: invokevirtual 496	java/io/ByteArrayOutputStream:close	()V
     //   886: aload_1
     //   887: ifnull +654 -> 1541
     //   890: aload_1
-    //   891: invokevirtual 496	java/io/FileInputStream:close	()V
+    //   891: invokevirtual 499	java/io/FileInputStream:close	()V
     //   894: aconst_null
     //   895: astore_0
-    //   896: new 498	org/apache/http/entity/ByteArrayEntity
+    //   896: new 501	org/apache/http/entity/ByteArrayEntity
     //   899: dup
     //   900: aload_0
-    //   901: invokespecial 500	org/apache/http/entity/ByteArrayEntity:<init>	([B)V
+    //   901: invokespecial 503	org/apache/http/entity/ByteArrayEntity:<init>	([B)V
     //   904: astore_0
     //   905: aload 11
     //   907: aload_0
-    //   908: invokevirtual 251	org/apache/http/client/methods/HttpPost:setEntity	(Lorg/apache/http/HttpEntity;)V
-    //   911: new 502	org/apache/http/params/BasicHttpParams
+    //   908: invokevirtual 254	org/apache/http/client/methods/HttpPost:setEntity	(Lorg/apache/http/HttpEntity;)V
+    //   911: new 505	org/apache/http/params/BasicHttpParams
     //   914: dup
-    //   915: invokespecial 503	org/apache/http/params/BasicHttpParams:<init>	()V
+    //   915: invokespecial 506	org/apache/http/params/BasicHttpParams:<init>	()V
     //   918: astore_0
     //   919: aload_0
     //   920: sipush 10000
-    //   923: invokestatic 509	org/apache/http/params/HttpConnectionParams:setConnectionTimeout	(Lorg/apache/http/params/HttpParams;I)V
+    //   923: invokestatic 512	org/apache/http/params/HttpConnectionParams:setConnectionTimeout	(Lorg/apache/http/params/HttpParams;I)V
     //   926: aload_0
     //   927: sipush 10000
-    //   930: invokestatic 512	org/apache/http/params/HttpConnectionParams:setSoTimeout	(Lorg/apache/http/params/HttpParams;I)V
-    //   933: new 253	org/apache/http/impl/client/DefaultHttpClient
+    //   930: invokestatic 515	org/apache/http/params/HttpConnectionParams:setSoTimeout	(Lorg/apache/http/params/HttpParams;I)V
+    //   933: new 256	org/apache/http/impl/client/DefaultHttpClient
     //   936: dup
     //   937: aload_0
-    //   938: invokespecial 515	org/apache/http/impl/client/DefaultHttpClient:<init>	(Lorg/apache/http/params/HttpParams;)V
+    //   938: invokespecial 518	org/apache/http/impl/client/DefaultHttpClient:<init>	(Lorg/apache/http/params/HttpParams;)V
     //   941: aload 11
-    //   943: invokevirtual 258	org/apache/http/impl/client/DefaultHttpClient:execute	(Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpResponse;
+    //   943: invokevirtual 261	org/apache/http/impl/client/DefaultHttpClient:execute	(Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpResponse;
     //   946: astore_0
     //   947: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   950: ifeq +39 -> 989
@@ -614,22 +614,22 @@ public class BlessResultActivity
     //   956: new 87	java/lang/StringBuilder
     //   959: dup
     //   960: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   963: ldc_w 517
+    //   963: ldc_w 520
     //   966: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   969: aload_0
-    //   970: invokeinterface 264 1 0
-    //   975: invokeinterface 270 1 0
-    //   980: invokevirtual 520	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   983: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   986: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   970: invokeinterface 267 1 0
+    //   975: invokeinterface 273 1 0
+    //   980: invokevirtual 523	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   983: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   986: invokestatic 118	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   989: aload_0
-    //   990: invokeinterface 264 1 0
-    //   995: invokeinterface 270 1 0
+    //   990: invokeinterface 267 1 0
+    //   995: invokeinterface 273 1 0
     //   1000: sipush 200
     //   1003: if_icmpne +532 -> 1535
     //   1006: aload_0
-    //   1007: invokeinterface 274 1 0
-    //   1012: invokestatic 279	org/apache/http/util/EntityUtils:toString	(Lorg/apache/http/HttpEntity;)Ljava/lang/String;
+    //   1007: invokeinterface 277 1 0
+    //   1012: invokestatic 282	org/apache/http/util/EntityUtils:toString	(Lorg/apache/http/HttpEntity;)Ljava/lang/String;
     //   1015: astore_0
     //   1016: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1019: ifeq +29 -> 1048
@@ -638,22 +638,22 @@ public class BlessResultActivity
     //   1025: new 87	java/lang/StringBuilder
     //   1028: dup
     //   1029: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   1032: ldc_w 522
+    //   1032: ldc_w 525
     //   1035: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1038: aload_0
     //   1039: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1042: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1045: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1042: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1045: invokestatic 118	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1048: aload_0
     //   1049: aload_0
-    //   1050: ldc_w 281
-    //   1053: invokevirtual 284	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   1050: ldc_w 284
+    //   1053: invokevirtual 287	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   1056: aload_0
-    //   1057: ldc_w 286
-    //   1060: invokevirtual 289	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   1057: ldc_w 289
+    //   1060: invokevirtual 292	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
     //   1063: iconst_1
     //   1064: iadd
-    //   1065: invokevirtual 293	java/lang/String:substring	(II)Ljava/lang/String;
+    //   1065: invokevirtual 296	java/lang/String:substring	(II)Ljava/lang/String;
     //   1068: astore_0
     //   1069: invokestatic 83	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1072: ifeq +29 -> 1101
@@ -662,21 +662,21 @@ public class BlessResultActivity
     //   1078: new 87	java/lang/StringBuilder
     //   1081: dup
     //   1082: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   1085: ldc_w 524
+    //   1085: ldc_w 527
     //   1088: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1091: aload_0
     //   1092: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1095: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1098: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1101: new 297	org/json/JSONObject
+    //   1095: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1098: invokestatic 118	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1101: new 300	org/json/JSONObject
     //   1104: dup
     //   1105: aload_0
-    //   1106: invokespecial 298	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   1109: ldc_w 300
-    //   1112: ldc_w 301
-    //   1115: invokevirtual 304	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   1118: ldc_w 306
-    //   1121: invokevirtual 309	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1106: invokespecial 301	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   1109: ldc_w 303
+    //   1112: ldc_w 304
+    //   1115: invokevirtual 307	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   1118: ldc_w 309
+    //   1121: invokevirtual 312	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1124: istore 9
     //   1126: iload 9
     //   1128: ifeq +407 -> 1535
@@ -689,18 +689,18 @@ public class BlessResultActivity
     //   1143: new 87	java/lang/StringBuilder
     //   1146: dup
     //   1147: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   1150: ldc_w 526
+    //   1150: ldc_w 529
     //   1153: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1156: invokestatic 61	java/lang/System:currentTimeMillis	()J
     //   1159: lload 7
     //   1161: lsub
-    //   1162: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1165: ldc_w 528
+    //   1162: invokevirtual 111	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1165: ldc_w 531
     //   1168: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1171: iload 9
-    //   1173: invokevirtual 531	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1176: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1179: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1173: invokevirtual 534	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1176: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1179: invokestatic 118	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1182: iload 9
     //   1184: ireturn
     //   1185: aload_3
@@ -709,100 +709,100 @@ public class BlessResultActivity
     //   1189: new 87	java/lang/StringBuilder
     //   1192: dup
     //   1193: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   1196: ldc_w 474
+    //   1196: ldc_w 477
     //   1199: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1202: ldc_w 476
+    //   1202: ldc_w 479
     //   1205: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1208: aload 12
     //   1210: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1213: ldc_w 474
+    //   1213: ldc_w 477
     //   1216: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1219: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1222: invokevirtual 480	java/lang/String:getBytes	()[B
-    //   1225: invokevirtual 484	java/io/ByteArrayOutputStream:write	([B)V
+    //   1219: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1222: invokevirtual 483	java/lang/String:getBytes	()[B
+    //   1225: invokevirtual 487	java/io/ByteArrayOutputStream:write	([B)V
     //   1228: aload_3
     //   1229: astore_0
     //   1230: aload 4
     //   1232: new 87	java/lang/StringBuilder
     //   1235: dup
     //   1236: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   1239: ldc_w 533
+    //   1239: ldc_w 536
     //   1242: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1245: aload 5
-    //   1247: invokevirtual 536	java/io/File:getName	()Ljava/lang/String;
+    //   1247: invokevirtual 539	java/io/File:getName	()Ljava/lang/String;
     //   1250: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1253: ldc_w 488
+    //   1253: ldc_w 491
     //   1256: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1259: ldc_w 474
+    //   1259: ldc_w 477
     //   1262: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1265: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1268: invokevirtual 480	java/lang/String:getBytes	()[B
-    //   1271: invokevirtual 484	java/io/ByteArrayOutputStream:write	([B)V
+    //   1265: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1268: invokevirtual 483	java/lang/String:getBytes	()[B
+    //   1271: invokevirtual 487	java/io/ByteArrayOutputStream:write	([B)V
     //   1274: aload_3
     //   1275: astore_0
     //   1276: aload 4
     //   1278: new 87	java/lang/StringBuilder
     //   1281: dup
     //   1282: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   1285: ldc_w 538
+    //   1285: ldc_w 541
     //   1288: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1291: ldc_w 474
+    //   1291: ldc_w 477
     //   1294: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1297: ldc_w 474
+    //   1297: ldc_w 477
     //   1300: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1303: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1306: invokevirtual 480	java/lang/String:getBytes	()[B
-    //   1309: invokevirtual 484	java/io/ByteArrayOutputStream:write	([B)V
+    //   1303: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1306: invokevirtual 483	java/lang/String:getBytes	()[B
+    //   1309: invokevirtual 487	java/io/ByteArrayOutputStream:write	([B)V
     //   1312: aload_3
     //   1313: astore_0
-    //   1314: new 495	java/io/FileInputStream
+    //   1314: new 498	java/io/FileInputStream
     //   1317: dup
     //   1318: aload_1
-    //   1319: invokespecial 539	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   1319: invokespecial 542	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   1322: astore_1
     //   1323: aload_1
-    //   1324: invokevirtual 543	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   1327: invokevirtual 547	java/nio/channels/FileChannel:size	()J
+    //   1324: invokevirtual 546	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   1327: invokevirtual 550	java/nio/channels/FileChannel:size	()J
     //   1330: l2i
     //   1331: newarray byte
     //   1333: astore_0
     //   1334: aload_1
     //   1335: aload_0
-    //   1336: invokevirtual 551	java/io/FileInputStream:read	([B)I
+    //   1336: invokevirtual 554	java/io/FileInputStream:read	([B)I
     //   1339: pop
     //   1340: aload 4
     //   1342: aload_0
-    //   1343: invokevirtual 484	java/io/ByteArrayOutputStream:write	([B)V
+    //   1343: invokevirtual 487	java/io/ByteArrayOutputStream:write	([B)V
     //   1346: aload 4
     //   1348: new 87	java/lang/StringBuilder
     //   1351: dup
     //   1352: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   1355: ldc_w 474
+    //   1355: ldc_w 477
     //   1358: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1361: ldc_w 476
+    //   1361: ldc_w 479
     //   1364: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1367: aload 12
     //   1369: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1372: ldc_w 476
+    //   1372: ldc_w 479
     //   1375: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1378: ldc_w 474
+    //   1378: ldc_w 477
     //   1381: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1384: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1387: invokevirtual 480	java/lang/String:getBytes	()[B
-    //   1390: invokevirtual 484	java/io/ByteArrayOutputStream:write	([B)V
+    //   1384: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1387: invokevirtual 483	java/lang/String:getBytes	()[B
+    //   1390: invokevirtual 487	java/io/ByteArrayOutputStream:write	([B)V
     //   1393: aload 4
-    //   1395: invokevirtual 554	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   1395: invokevirtual 557	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   1398: astore_2
     //   1399: aload 4
     //   1401: ifnull +8 -> 1409
     //   1404: aload 4
-    //   1406: invokevirtual 493	java/io/ByteArrayOutputStream:close	()V
+    //   1406: invokevirtual 496	java/io/ByteArrayOutputStream:close	()V
     //   1409: aload_2
     //   1410: astore_0
     //   1411: aload_1
     //   1412: ifnull -516 -> 896
     //   1415: aload_1
-    //   1416: invokevirtual 496	java/io/FileInputStream:close	()V
+    //   1416: invokevirtual 499	java/io/FileInputStream:close	()V
     //   1419: aload_2
     //   1420: astore_0
     //   1421: goto -525 -> 896
@@ -822,11 +822,11 @@ public class BlessResultActivity
     //   1441: aload 4
     //   1443: ifnull +8 -> 1451
     //   1446: aload 4
-    //   1448: invokevirtual 493	java/io/ByteArrayOutputStream:close	()V
+    //   1448: invokevirtual 496	java/io/ByteArrayOutputStream:close	()V
     //   1451: aload_1
     //   1452: ifnull +7 -> 1459
     //   1455: aload_1
-    //   1456: invokevirtual 496	java/io/FileInputStream:close	()V
+    //   1456: invokevirtual 499	java/io/FileInputStream:close	()V
     //   1459: aload_0
     //   1460: athrow
     //   1461: astore_0
@@ -841,13 +841,13 @@ public class BlessResultActivity
     //   1478: new 87	java/lang/StringBuilder
     //   1481: dup
     //   1482: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   1485: ldc_w 556
+    //   1485: ldc_w 559
     //   1488: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1491: aload_0
-    //   1492: invokestatic 320	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   1492: invokestatic 323	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   1495: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1498: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1501: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1498: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1501: invokestatic 118	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1504: iload 10
     //   1506: istore 9
     //   1508: goto -374 -> 1134
@@ -927,41 +927,41 @@ public class BlessResultActivity
   
   private void g()
   {
-    this.jdField_c_of_type_Boolean = getIntent().getBooleanExtra(bcrn.h, false);
+    this.jdField_c_of_type_Boolean = getIntent().getBooleanExtra(bbkv.h, false);
     if (!this.jdField_c_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Aohk = new ajaq(this);
-    this.app.addObserver(this.jdField_a_of_type_Aohk);
+    this.jdField_a_of_type_Anaz = new ahva(this);
+    this.app.addObserver(this.jdField_a_of_type_Anaz);
   }
   
   private void h()
   {
-    ((ImmersiveTitleBar2)findViewById(2131379037)).setVisibility(4);
-    findViewById(2131369073).setVisibility(8);
-    findViewById(2131369042).setOnClickListener(this);
-    TextView localTextView = (TextView)findViewById(2131379764);
+    ((ImmersiveTitleBar2)findViewById(2131378806)).setVisibility(4);
+    findViewById(2131369099).setVisibility(8);
+    findViewById(2131369068).setOnClickListener(this);
+    TextView localTextView = (TextView)findViewById(2131379547);
     String str = "";
     switch (this.jdField_d_of_type_Int)
     {
     }
     for (;;)
     {
-      localTextView.setText(String.format(getString(2131690535), new Object[] { Integer.valueOf(this.jdField_e_of_type_Int) }));
+      localTextView.setText(String.format(getString(2131690575), new Object[] { Integer.valueOf(this.jdField_e_of_type_Int) }));
       if (this.jdField_e_of_type_Int > 10) {
-        ((TextView)findViewById(2131363554)).setText(String.format(getString(2131690527), new Object[] { Integer.valueOf(10) }));
+        ((TextView)findViewById(2131363583)).setText(String.format(getString(2131690567), new Object[] { Integer.valueOf(10) }));
       }
       if (this.jdField_d_of_type_Int == 2)
       {
-        findViewById(2131376851).setVisibility(0);
-        ((TextView)findViewById(2131380082)).setText(String.format(getString(2131690532), new Object[] { str }));
-        findViewById(2131380017).setOnClickListener(this);
-        findViewById(2131379855).setOnClickListener(this);
+        findViewById(2131376612).setVisibility(0);
+        ((TextView)findViewById(2131379830)).setText(String.format(getString(2131690572), new Object[] { str }));
+        findViewById(2131379774).setOnClickListener(this);
+        findViewById(2131379632).setOnClickListener(this);
       }
       return;
-      str = getString(2131690536);
+      str = getString(2131690576);
       continue;
-      str = getString(2131690520);
+      str = getString(2131690560);
     }
   }
   
@@ -969,9 +969,9 @@ public class BlessResultActivity
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoUploadTask == null) || ((!this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoUploadTask.b()) && (!this.jdField_a_of_type_Boolean)))
     {
-      String str = this.app.c();
-      this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoUploadTask = new BlessResultActivity.VideoUploadTask(this, str, ((TicketManager)this.app.getManager(2)).getSkey(str), this.jdField_a_of_type_Ajau, this.jdField_a_of_type_Bfqg);
-      this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1003, 120000L);
+      String str = this.app.getCurrentUin();
+      this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoUploadTask = new BlessResultActivity.VideoUploadTask(this, str, ((TicketManager)this.app.getManager(2)).getSkey(str), this.jdField_a_of_type_Ahve, this.jdField_a_of_type_Bdzq);
+      this.jdField_a_of_type_Bjmp.sendEmptyMessageDelayed(1003, 120000L);
       ThreadManager.post(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoUploadTask, 8, null, false);
       return;
     }
@@ -984,7 +984,7 @@ public class BlessResultActivity
     this.jdField_b_of_type_Int = paramInt;
     if ((this.jdField_b_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString == null) || (this.jdField_e_of_type_JavaLangString == null) || (this.f == null))
     {
-      QQToast.a(this, 2131692228, 0).a();
+      QQToast.a(this, 2131692276, 0).a();
       d();
       return;
     }
@@ -992,20 +992,20 @@ public class BlessResultActivity
     File localFile2 = new File(this.jdField_a_of_type_JavaLangString);
     if ((!localFile1.exists()) || (!localFile2.exists()))
     {
-      QQToast.a(this, 2131692228, 0).a();
+      QQToast.a(this, 2131692276, 0).a();
       d();
       return;
     }
     if ((!localFile1.isFile()) || (!localFile2.isFile()))
     {
-      QQToast.a(this, 2131692230, 0).a();
+      QQToast.a(this, 2131692278, 0).a();
       d();
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("BlessResultActivity", 2, "share last uploaded ptv. mPtvPath=" + this.jdField_a_of_type_JavaLangString + " ,mSnapImagePath=" + this.jdField_b_of_type_JavaLangString + " ,mPtvUuid=" + this.jdField_e_of_type_JavaLangString + " ,mPtvMd5=" + this.f);
     }
-    this.g = this.jdField_a_of_type_Ajan.a(this.jdField_e_of_type_JavaLangString, this.f);
+    this.g = this.jdField_a_of_type_Ahux.a(this.jdField_e_of_type_JavaLangString, this.f);
     if (QLog.isColorLevel()) {
       QLog.d("BlessResultActivity", 2, "share url :" + this.g);
     }
@@ -1019,8 +1019,8 @@ public class BlessResultActivity
   
   public String b(String paramString)
   {
-    paramString = this.jdField_a_of_type_Ajan.e() + "&vid=" + paramString + "&nickname=";
-    String str = paramString + bhkv.encodeToString(this.app.getCurrentNickname().getBytes(), 2);
+    paramString = this.jdField_a_of_type_Ahux.e() + "&vid=" + paramString + "&nickname=";
+    String str = paramString + bfuc.encodeToString(this.app.getCurrentNickname().getBytes(), 2);
     paramString = str;
     if (this.jdField_a_of_type_Int > 0) {
       paramString = str + "&template=" + this.jdField_a_of_type_Int;
@@ -1053,11 +1053,11 @@ public class BlessResultActivity
       {
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
         return;
-        this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(this, 2131755824);
+        this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(this, 2131755826);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(false);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559572);
-        ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131372578)).setText(2131715918);
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559574);
+        ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131372546)).setText(2131716152);
       }
       return;
     }
@@ -1087,8 +1087,9 @@ public class BlessResultActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -1100,15 +1101,15 @@ public class BlessResultActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131558743);
-    this.jdField_a_of_type_Ajan.b();
-    this.jdField_a_of_type_Ajan.a(false);
+    super.setContentView(2131558751);
+    this.jdField_a_of_type_Ahux.b();
+    this.jdField_a_of_type_Ahux.a(false);
     paramBundle = getIntent();
     this.jdField_d_of_type_Int = paramBundle.getIntExtra("param_method", 1);
     this.jdField_e_of_type_Int = paramBundle.getIntExtra("param_count", 0);
     if (this.jdField_d_of_type_Int == 2)
     {
-      this.jdField_a_of_type_Blha = new blha(this);
+      this.jdField_a_of_type_Bjmp = new bjmp(this);
       this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("param_ptv_path");
       this.jdField_b_of_type_JavaLangString = paramBundle.getStringExtra("param_snap_path");
       this.jdField_a_of_type_Int = paramBundle.getIntExtra("param_ptv_id", -1);
@@ -1118,7 +1119,7 @@ public class BlessResultActivity
       if (QLog.isColorLevel()) {
         QLog.d("BlessResultActivity", 2, "mp4: " + this.jdField_a_of_type_JavaLangString + ", image:" + this.jdField_b_of_type_JavaLangString);
       }
-      WXShareHelper.a().a(this);
+      WXShareHelper.getInstance().addObserver(this);
     }
     this.jdField_a_of_type_Float = 0.48F;
     this.jdField_c_of_type_Int = 2;
@@ -1132,13 +1133,13 @@ public class BlessResultActivity
     super.doOnDestroy();
     if (this.jdField_d_of_type_Int == 2)
     {
-      WXShareHelper.a().b(this);
+      WXShareHelper.getInstance().removeObserver(this);
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoUploadTask != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoUploadTask.b())) {
         this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoUploadTask.a();
       }
     }
-    if (this.jdField_a_of_type_Aohk != null) {
-      this.app.removeObserver(this.jdField_a_of_type_Aohk);
+    if (this.jdField_a_of_type_Anaz != null) {
+      this.app.removeObserver(this.jdField_a_of_type_Anaz);
     }
   }
   
@@ -1163,13 +1164,13 @@ public class BlessResultActivity
     localObject = str;
     if (TextUtils.isEmpty(str))
     {
-      str = this.jdField_a_of_type_Ajan.a(true);
+      str = this.jdField_a_of_type_Ahux.a(true);
       localObject = str;
       if (TextUtils.isEmpty(str)) {
-        localObject = getString(2131690531);
+        localObject = getString(2131690571);
       }
     }
-    str = String.format(getString(2131690530), new Object[] { this.app.getCurrentNickname() });
+    str = String.format(getString(2131690570), new Object[] { this.app.getCurrentNickname() });
     Bundle localBundle = new Bundle();
     localBundle.putString("title", (String)localObject);
     localBundle.putString("desc", str);
@@ -1179,7 +1180,7 @@ public class BlessResultActivity
     localBundle.putStringArrayList("image_url", localArrayList);
     localBundle.putString("troop_wording", (String)localObject);
     localBundle.putString("bizname", "StarBlessLink");
-    bmud.a(this.app, this, localBundle, null);
+    QZoneShareManager.jumpToQzoneShare(this.app, this, localBundle, null);
     if (QLog.isColorLevel()) {
       QLog.i("BlessResultActivity", 2, "shareToQzone: shareLink:" + this.g);
     }
@@ -1188,8 +1189,8 @@ public class BlessResultActivity
   void f()
   {
     int k;
-    if (!WXShareHelper.a().a()) {
-      k = 2131719399;
+    if (!WXShareHelper.getInstance().isWXinstalled()) {
+      k = 2131719722;
     }
     for (;;)
     {
@@ -1199,9 +1200,9 @@ public class BlessResultActivity
       for (;;)
       {
         return;
-        if (!WXShareHelper.a().b())
+        if (!WXShareHelper.getInstance().isWXsupportApi())
         {
-          k = 2131719400;
+          k = 2131719723;
           break;
           this.h = String.valueOf(System.currentTimeMillis());
           Object localObject1 = null;
@@ -1212,14 +1213,14 @@ public class BlessResultActivity
             localObject1 = str;
             if (TextUtils.isEmpty(str))
             {
-              str = this.jdField_a_of_type_Ajan.a(false);
+              str = this.jdField_a_of_type_Ahux.a(false);
               localObject1 = str;
               if (TextUtils.isEmpty(str)) {
-                localObject1 = getString(2131690531);
+                localObject1 = getString(2131690571);
               }
             }
-            str = String.format(getString(2131690530), new Object[] { this.app.getCurrentNickname() });
-            WXShareHelper.a().c(this.h, (String)localObject1, (Bitmap)localObject2, str, this.g);
+            str = String.format(getString(2131690570), new Object[] { this.app.getCurrentNickname() });
+            WXShareHelper.getInstance().shareWebPageToWXFriendCircle(this.h, (String)localObject1, (Bitmap)localObject2, str, this.g);
             if (QLog.isColorLevel())
             {
               QLog.i("BlessResultActivity", 2, "shareToFriendCircle.transaction: " + this.h + ", shareLink:" + this.g);
@@ -1263,7 +1264,7 @@ public class BlessResultActivity
         this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoUploadTask.a();
       }
       d();
-      QQToast.a(this, 1, 2131718139, 0).a();
+      QQToast.a(this, 1, 2131718380, 0).a();
       return true;
       this.i = this.jdField_a_of_type_JavaLangString;
       this.j = this.jdField_d_of_type_JavaLangString;
@@ -1329,10 +1330,10 @@ public class BlessResultActivity
     case -2: 
     case -1: 
     default: 
-      QQToast.a(this, 1, getString(2131718139), 0).a();
+      QQToast.a(this, 1, getString(2131718380), 0).a();
       return;
     }
-    QQToast.a(this, 2, getString(2131718157), 0).a();
+    QQToast.a(this, 2, getString(2131718398), 0).a();
   }
 }
 

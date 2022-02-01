@@ -1,61 +1,48 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeVideoView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ValueBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public class qdl
-  extends ClickableSpan
-  implements skl, swk
+class qdl
+  implements ViewBase.OnClickListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  boolean jdField_a_of_type_Boolean;
-  private int b = -1;
-  private int c = -1;
+  qdl(qdf paramqdf, ViewBase paramViewBase, pvc parampvc) {}
   
-  public qdl(int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
-      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
+    boolean bool = true;
+    paramViewBase = (qip)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getParent().findViewBaseByName("id_pgc_short_content_video_view");
+    Object localObject = this.jdField_a_of_type_Pvc.a();
+    if (((ArticleInfo)localObject).mProteusTemplateBean == null) {
+      QLog.e("PgcShortContentProteusItem", 1, "articleInfo.mProteusTemplateBean is null");
     }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null)
+    ViewBase localViewBase;
+    do
     {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
       return;
+      localObject = ((ArticleInfo)localObject).mProteusTemplateBean.getViewBean().findViewFromChild("id_pgc_short_content_video_audio_icon");
+      localViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getParent().findViewBaseByName("id_pgc_short_content_video_audio_icon");
+    } while ((localViewBase == null) || (paramViewBase == null) || (localObject == null));
+    if (!"video_audio_mute".equals(((ViewBean)localObject).valueBean.dynamicValue.get("loadImageWithPath:")))
+    {
+      paramViewBase.a().setMute(bool);
+      if (!bool) {
+        break label140;
+      }
     }
-    paramView.callOnClick();
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.c);
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.b;; i = this.jdField_a_of_type_Int)
+    label140:
+    for (paramViewBase = "video_audio_mute";; paramViewBase = "video_audio_speak")
     {
-      paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
+      ((ViewBean)localObject).putMapValue("pgc_video_content_audio_icon", paramViewBase);
+      localViewBase.bindDynamicValue((ViewBean)localObject);
       return;
+      bool = false;
+      break;
     }
   }
 }

@@ -1,21 +1,17 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
-
 public class azdz
-  implements Handler.Callback
+  implements azeb
 {
-  public azdz(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
+  private azfa a;
   
-  public boolean handleMessage(Message paramMessage)
+  public azdz(azfa paramazfa)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.f();
+    this.a = paramazfa;
+  }
+  
+  public void a(azfk paramazfk)
+  {
+    if (this.a != null) {
+      this.a.l(paramazfk);
     }
   }
 }

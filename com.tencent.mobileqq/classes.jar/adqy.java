@@ -1,20 +1,14 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adqy
-  extends MqqHandler
+class adqy
+  implements DialogInterface.OnClickListener
 {
-  public adqy(AccountManageActivity paramAccountManageActivity) {}
+  adqy(adqx paramadqx) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.e();
+    if ((paramInt == 1) && (this.a.a(adqx.a(this.a)))) {}
   }
 }
 

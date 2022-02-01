@@ -14,7 +14,7 @@ class BaseApplicationImpl$2
   {
     try
     {
-      BaseApplicationImpl.access$101(this.this$0, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_AndroidOsBundle);
+      BaseApplicationImpl.access$101(this.this$0, this.val$intent, this.val$options);
       return;
     }
     catch (Throwable localThrowable)

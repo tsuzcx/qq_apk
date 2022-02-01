@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class bbue
-  implements View.OnClickListener
 {
-  public bbue(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  int jdField_a_of_type_Int = -1;
+  int b = -1;
+  int c = -1;
   
-  public void onClick(View paramView)
-  {
-    bdll.b(null, "dc00898", "", "", "0X800A98A", "0X800A98A", 1, 0, "0", "0", "", "");
-    SignatureHistoryFragment.d(this.a, true);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public bbue(bbuc parambbuc) {}
 }
 
 

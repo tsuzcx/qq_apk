@@ -1,143 +1,233 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.util.SparseArray;
+import MAAccessClient.AccessReq;
+import MAAccessClient.AccessRsp;
+import MAAccessClient.CheckSinglePkgSigReq;
+import MAAccessClient.GetSinglePkgSigReq;
+import android.os.Bundle;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import protocol.KQQConfig.GetResourceReq;
+import protocol.KQQConfig.GetResourceResp;
+import protocol.KQQConfig.SDKUpgradeReq;
+import protocol.KQQConfig.SDKUpgradeRes;
+import protocol.KQQConfig.UpgradeInfo;
 
 public class bbjq
-  extends bbkf
+  extends aafe
 {
-  private SparseArray<bbjs> a = new SparseArray();
-  private Handler jdField_b_of_type_AndroidOsHandler = new bbjr(this, a());
-  private String jdField_b_of_type_JavaLangString;
+  private static final String[] a = { "ConfigServantObj", "ConfigService", "MAAControl", "ResourceConfig" };
   
-  public bbjq(Context paramContext)
+  private AccessReq a(byte[] paramArrayOfByte)
   {
-    super(paramContext);
-    int i = ((Activity)paramContext).getIntent().getIntExtra("forward_source_uin_type", -1);
-    if (i == 0)
-    {
-      this.jdField_b_of_type_JavaLangString = "c2c";
-      return;
+    AccessReq localAccessReq = new AccessReq();
+    localAccessReq.gray = 0;
+    String str2 = DeviceInfoUtil.getIMEI();
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    if (i == 1)
-    {
-      this.jdField_b_of_type_JavaLangString = "grp";
-      return;
+    localAccessReq.imei = str1;
+    str2 = DeviceInfoUtil.getManufacturer();
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    if (i == 3000)
-    {
-      this.jdField_b_of_type_JavaLangString = "dis";
-      return;
+    localAccessReq.manufacture = str1;
+    str2 = DeviceInfoUtil.getModel();
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    this.jdField_b_of_type_JavaLangString = "other";
+    localAccessReq.mode = str1;
+    str2 = DeviceInfoUtil.getRomInfo();
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    localAccessReq.rom = str1;
+    localAccessReq.body = paramArrayOfByte;
+    localAccessReq.platform = 1;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("UpgradeController", 4, "createAccessReq:\nimei:" + localAccessReq.imei + "\ngray:" + localAccessReq.gray);
+    }
+    return localAccessReq;
   }
   
-  private bbjs a(int paramInt)
+  private Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, String paramString)
   {
-    bbjs localbbjs2 = (bbjs)this.a.get(paramInt);
-    bbjs localbbjs1 = localbbjs2;
-    if (localbbjs2 == null)
-    {
-      localbbjs1 = new bbjs(paramInt, this.jdField_b_of_type_JavaLangString);
-      this.a.put(paramInt, localbbjs1);
+    return (AccessRsp)a(paramFromServiceMsg.getWupBuffer(), paramString, new AccessRsp());
+  }
+  
+  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    return (GetResourceResp)a(paramFromServiceMsg.getWupBuffer(), "res", new GetResourceResp());
+  }
+  
+  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramUniPacket.setServantName("ConfigServantObj");
+    paramUniPacket.setFuncName("ClientReq");
+    paramUniPacket.put("iCmdType", Integer.valueOf(1));
+    SDKUpgradeReq localSDKUpgradeReq = new SDKUpgradeReq();
+    localSDKUpgradeReq.cProtocolVer = 1;
+    localSDKUpgradeReq.iActionType = paramToServiceMsg.extraData.getInt("iActionType");
+    localSDKUpgradeReq.iWidth = paramToServiceMsg.extraData.getInt("iWidth");
+    localSDKUpgradeReq.iHeight = paramToServiceMsg.extraData.getInt("iHeight");
+    if (QLog.isColorLevel()) {
+      QLog.d("UpgradeController", 2, "Get Config: " + localSDKUpgradeReq.iActionType + localSDKUpgradeReq.iActionType + ", " + localSDKUpgradeReq.iWidth + ", " + localSDKUpgradeReq.iHeight);
     }
-    return localbbjs1;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramToServiceMsg.getUin());
+    localSDKUpgradeReq.vUin = localArrayList;
+    localSDKUpgradeReq.bSdkUpdateFlag = false;
+    localArrayList = new ArrayList();
+    localArrayList.add(Integer.valueOf(AppSetting.a()));
+    localSDKUpgradeReq.vAppid = localArrayList;
+    paramUniPacket.put("SDKUpgradeReq", localSDKUpgradeReq);
+    paramToServiceMsg.setTimeout(20000L);
+    return true;
   }
   
-  public void a()
+  private Object c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_b_of_type_AndroidOsHandler.obtainMessage().sendToTarget();
-  }
-  
-  public void a(int paramInt)
-  {
-    bbjs.a(a(paramInt));
-  }
-  
-  public void a(int paramInt, long paramLong1, long paramLong2)
-  {
-    bbjs localbbjs = (bbjs)this.a.get(paramInt);
-    String str;
-    if (localbbjs != null)
+    paramToServiceMsg = (SDKUpgradeRes)a(paramFromServiceMsg.getWupBuffer(), "SDKUpgradeRes", new SDKUpgradeRes());
+    if (QLog.isColorLevel())
     {
-      paramInt = bbkh.a(paramLong1, paramLong2);
-      str = null;
-      switch (paramInt)
+      QLog.d("UpgradeController", 2, "Get Upgrade Config Resp: " + paramToServiceMsg);
+      if (paramToServiceMsg != null)
       {
+        if ((paramToServiceMsg.vUpgradeInfo != null) && (paramToServiceMsg.vUpgradeInfo.size() > 0)) {
+          break label83;
+        }
+        QLog.d("UpgradeController", 2, "Not vUpgradeInfo");
       }
     }
-    for (;;)
+    return paramToServiceMsg;
+    label83:
+    paramFromServiceMsg = (UpgradeInfo)paramToServiceMsg.vUpgradeInfo.get(0);
+    QLog.d("UpgradeController", 2, "Get UpgradeInfo: " + paramFromServiceMsg);
+    QLog.d("UpgradeController", 2, "iAppid: " + paramFromServiceMsg.iAppid);
+    QLog.d("UpgradeController", 2, "bAppType: " + paramFromServiceMsg.bAppType);
+    QLog.d("UpgradeController", 2, "iUpgradeType: " + paramFromServiceMsg.iUpgradeType);
+    QLog.d("UpgradeController", 2, "iUpgradeSdkId: " + paramFromServiceMsg.iUpgradeSdkId);
+    QLog.d("UpgradeController", 2, "strTitle: " + paramFromServiceMsg.strTitle);
+    QLog.d("UpgradeController", 2, "strUpgradeDesc: " + paramFromServiceMsg.strUpgradeDesc);
+    QLog.d("UpgradeController", 2, "strUrl: " + paramFromServiceMsg.strUrl);
+    QLog.d("UpgradeController", 2, "iActionType=0: " + paramFromServiceMsg.iActionType);
+    QLog.d("UpgradeController", 2, "bNewSwitch: " + paramFromServiceMsg.bNewSwitch);
+    QLog.d("UpgradeController", 2, "iNewTimeStamp: " + paramFromServiceMsg.iNewTimeStamp);
+    QLog.d("UpgradeController", 2, "strUpgradePageUrl: " + paramFromServiceMsg.strUpgradePageUrl);
+    QLog.d("UpgradeController", 2, "iIncrementUpgrade: " + paramFromServiceMsg.iIncrementUpgrade);
+    QLog.d("UpgradeController", 2, "iTipsType: " + paramFromServiceMsg.iTipsType);
+    QLog.d("UpgradeController", 2, "strBannerPicUrl: " + paramFromServiceMsg.strBannerPicUrl);
+    QLog.d("UpgradeController", 2, "strNewUpgradeDescURL: " + paramFromServiceMsg.strNewUpgradeDescURL);
+    QLog.d("UpgradeController", 2, "iDisplayDay: " + paramFromServiceMsg.iDisplayDay);
+    QLog.d("UpgradeController", 2, "iTipsWaitDay: " + paramFromServiceMsg.iTipsWaitDay);
+    QLog.d("UpgradeController", 2, "strProgressName: " + paramFromServiceMsg.strProgressName);
+    QLog.d("UpgradeController", 2, "strNewTipsDescURL: " + paramFromServiceMsg.strNewTipsDescURL);
+    QLog.d("UpgradeController", 2, "strNewSoftwareURL: " + paramFromServiceMsg.strNewSoftwareURL);
+    QLog.d("UpgradeController", 2, "bGray: " + paramFromServiceMsg.bGray);
+    return paramToServiceMsg;
+  }
+  
+  private boolean c(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramUniPacket.setServantName("ConfigServantObj");
+    paramUniPacket.setFuncName("GetResourceReq");
+    ArrayList localArrayList = (ArrayList)paramToServiceMsg.extraData.getSerializable("getResourceReqInfos");
+    GetResourceReq localGetResourceReq = new GetResourceReq();
+    if ((localArrayList != null) && (localArrayList.size() > 0))
     {
-      bbjs.b(localbbjs, str);
-      return;
-      str = "long";
-      continue;
-      str = "small";
-      continue;
-      str = "mid";
-      continue;
-      str = "large";
-      continue;
-      str = "extra";
+      localGetResourceReq.vecResReqInfo = localArrayList;
+      localGetResourceReq.sLanCodeType = 1;
     }
+    paramUniPacket.put("req", localGetResourceReq);
+    if (QLog.isColorLevel()) {
+      QLog.d("ThemeDownloadTrace", 2, "encode request,servantName is:ConfigServantObj,funcName is:GetResourceReq,AppSeq is:" + paramToServiceMsg.getAppSeq());
+    }
+    return true;
   }
   
-  public void a(int paramInt, String paramString)
+  private boolean d(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    bbjs localbbjs = (bbjs)this.a.get(paramInt);
-    if (localbbjs != null) {
-      bbjs.d(localbbjs, paramString);
+    paramUniPacket.setServantName("ConfigServantObj");
+    paramUniPacket.setFuncName("GetResourceReq");
+    CheckSinglePkgSigReq localCheckSinglePkgSigReq = new CheckSinglePkgSigReq();
+    localCheckSinglePkgSigReq.pkgName = BaseApplicationImpl.sApplication.getPackageName();
+    String str2 = paramToServiceMsg.extraData.getString("ac");
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
+    localCheckSinglePkgSigReq.pkgSig = str1;
+    localCheckSinglePkgSigReq.versionCode = aqmy.a(BaseApplicationImpl.sApplication);
+    localCheckSinglePkgSigReq.marketVer = paramToServiceMsg.extraData.getInt("mv");
+    localCheckSinglePkgSigReq.sysVer = DeviceInfoUtil.getOsVersion();
+    paramToServiceMsg = localCheckSinglePkgSigReq.toByteArray();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("UpgradeController", 4, "CheckSinglePkgSigReq:\nversionCode:" + localCheckSinglePkgSigReq.versionCode);
+    }
+    paramUniPacket.put("MAAControl.CheckSinglePkgSig", a(paramToServiceMsg));
+    return true;
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  private boolean e(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    bbjs localbbjs = (bbjs)this.a.get(paramInt);
-    if (localbbjs != null) {
-      bbjs.a(localbbjs, paramBoolean);
-    }
+    paramUniPacket.setServantName("ConfigServantObj");
+    paramUniPacket.setFuncName("GetResourceReq");
+    GetSinglePkgSigReq localGetSinglePkgSigReq = new GetSinglePkgSigReq();
+    localGetSinglePkgSigReq.pkgName = paramToServiceMsg.extraData.getString("pn");
+    localGetSinglePkgSigReq.versionCode = paramToServiceMsg.extraData.getInt("vc");
+    localGetSinglePkgSigReq.marketVer = paramToServiceMsg.extraData.getInt("mv");
+    localGetSinglePkgSigReq.sysVer = paramToServiceMsg.extraData.getInt("sv");
+    paramUniPacket.put("MAAControl.GetSinglePkgSig", a(localGetSinglePkgSigReq.toByteArray()));
+    return true;
   }
   
-  public void b(int paramInt)
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    bbjs localbbjs = (bbjs)this.a.get(paramInt);
-    if ((localbbjs != null) && (bbjs.a(localbbjs))) {
-      bbjs.b(localbbjs);
+    String str = paramFromServiceMsg.getServiceCmd();
+    if ("ResourceConfig.GetResourceReq".equals(str)) {
+      return b(paramToServiceMsg, paramFromServiceMsg);
     }
+    if ("ConfigService.ClientReq".equals(str)) {
+      return c(paramToServiceMsg, paramFromServiceMsg);
+    }
+    if ("MAAControl.CheckSinglePkgSig".equals(str)) {
+      return a(paramToServiceMsg, paramFromServiceMsg, str);
+    }
+    if ("MAAControl.GetSinglePkgSig".equals(str)) {
+      return a(paramToServiceMsg, paramFromServiceMsg, str);
+    }
+    return null;
   }
   
-  public void b(int paramInt, boolean paramBoolean)
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    bbjs localbbjs = (bbjs)this.a.get(paramInt);
-    if (localbbjs != null) {
-      if (!paramBoolean) {
-        break label33;
-      }
+    String str = paramToServiceMsg.getServiceCmd();
+    if ("ConfigService.ClientReq".equals(str)) {
+      return b(paramToServiceMsg, paramUniPacket);
     }
-    label33:
-    for (String str = "dynamic";; str = "static")
-    {
-      bbjs.c(localbbjs, str);
-      return;
+    if ("ResourceConfig.GetResourceReq".equals(str)) {
+      return c(paramToServiceMsg, paramUniPacket);
     }
+    if ("MAAControl.CheckSinglePkgSig".equals(str)) {
+      return d(paramToServiceMsg, paramUniPacket);
+    }
+    if ("MAAControl.GetSinglePkgSig".equals(str)) {
+      return e(paramToServiceMsg, paramUniPacket);
+    }
+    return false;
   }
   
-  public void c(int paramInt)
+  public String[] a()
   {
-    bbjs localbbjs = (bbjs)this.a.get(paramInt);
-    if ((localbbjs != null) && (bbjs.a(localbbjs))) {
-      bbjs.c(localbbjs);
-    }
-  }
-  
-  public void d(int paramInt)
-  {
-    bbjs localbbjs = (bbjs)this.a.get(paramInt);
-    if ((localbbjs != null) && (bbjs.a(localbbjs))) {
-      bbjs.a(localbbjs, "sender");
-    }
+    return a;
   }
 }
 

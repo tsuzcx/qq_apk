@@ -1,6 +1,7 @@
 package com.tencent.hippy.qq.update;
 
 import com.tencent.hippy.qq.update.sign.HippySign;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 class HippyQQUpdateManager$1
@@ -11,6 +12,8 @@ class HippyQQUpdateManager$1
   public void run()
   {
     String str = HippySign.getSign("mqq", "jV7Y5YGCkMY7lJt9B%@RkCDiXP8EjaFOjbQ4uytoy@JA3UNrV5YOoUFCdOz5cVLG");
+    QLog.i("MyUpdate", 1, "sign:" + str);
+    QLog.i("MyUpdate", 1, "req:" + this.val$req.toString());
     str = HttpClient.doPost("https://hippy.html5.qq.com/update", this.val$req.toString(), str, HippyQQUpdateManager.access$000(this.this$0));
     if (this.val$reqCallBack != null) {
       this.val$reqCallBack.onResponse(str);

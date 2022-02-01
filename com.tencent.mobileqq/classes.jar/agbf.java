@@ -1,16 +1,21 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.smartdevice.SmartDevicePluginProxyActivity;
 
 class agbf
-  implements View.OnClickListener
+  implements atah
 {
-  agbf(agbd paramagbd) {}
+  agbf(agap paramagap) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.b(paramView.getTag());
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramView = new Intent();
+    paramView.putExtra("uin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
+    paramView.putExtra("uinname", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendNick);
+    bkxa.a().a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramView, "com.tencent.device.activities.DeviceGroupChatConfirmActivity", -1, null, SmartDevicePluginProxyActivity.class);
   }
 }
 

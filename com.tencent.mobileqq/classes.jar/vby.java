@@ -1,40 +1,16 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.RelativeLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class vby
-  implements vwp
+  implements View.OnClickListener
 {
-  vby(vbr paramvbr) {}
+  vby(vbw paramvbw) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    vtt.a().c(61);
-    if (vbr.a(this.a)) {
-      uzg.a(this.a.a(), this.a.a().getResources().getColor(2131167247));
-    }
-    vbr.a(this.a, 76);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 0) {
-      vbr.a(this.a, 77);
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    vbr.a(this.a, 76);
-  }
-  
-  public void b()
-  {
-    vtt.a().d(61);
-    vbr.a(this.a).setVisibility(8);
-    if (vbr.a(this.a)) {
-      uzg.a(this.a.a(), this.a.a().getResources().getColor(2131167247));
-    }
-    vbr.a(this.a, 77);
+    vbw.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

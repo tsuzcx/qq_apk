@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
-import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment.5.1;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
 
 public class ajvp
-  implements ThreadExcutor.IThreadListener
+  implements akgi
 {
-  public ajvp(PublicAccountFragment paramPublicAccountFragment) {}
+  public ajvp(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public void a(String paramString)
   {
-    ThreadManager.getUIHandler().post(new PublicAccountFragment.5.1(this));
+    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    localIntent.putExtra("url", paramString);
+    this.a.startActivity(localIntent);
   }
-  
-  public void onPreRun() {}
 }
 
 

@@ -18,6 +18,8 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.viola.adapter.VComponentAdapter;
@@ -117,6 +119,7 @@ public abstract class VComponent<T extends View>
   private int mType;
   @VComponentField(nativeReturnMethod="getVisibility", propertyName="visibility")
   private String mVisibility;
+  private VComponent.BringLayerToTopContext topIndexContext;
   
   public VComponent(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
@@ -817,6 +820,57 @@ public abstract class VComponent<T extends View>
   public void bindHolder(IFComponentHolder paramIFComponentHolder)
   {
     this.mHolder = paramIFComponentHolder;
+  }
+  
+  @JSMethod
+  public void bringLayerToRootView()
+  {
+    if ((this.mHost == null) || (getInstance() == null)) {}
+    Object localObject1;
+    Object localObject2;
+    do
+    {
+      Object localObject3;
+      int i;
+      int j;
+      do
+      {
+        float f1;
+        float f2;
+        do
+        {
+          do
+          {
+            return;
+            localObject1 = getInstance().getRootComp();
+          } while ((localObject1 == null) || (((VComponentContainer)localObject1).mHost == null));
+          localObject2 = new int[2];
+          ((VComponentContainer)localObject1).mHost.getLocationInWindow((int[])localObject2);
+          localObject3 = new int[2];
+          this.mHost.getLocationInWindow((int[])localObject3);
+          f1 = localObject3[0] - localObject2[0];
+          f2 = localObject3[1] - localObject2[1];
+          localObject2 = this.mHost.getLayoutParams();
+        } while (!(localObject2 instanceof ViewGroup.MarginLayoutParams));
+        localObject2 = (ViewGroup.MarginLayoutParams)localObject2;
+        i = ((ViewGroup.MarginLayoutParams)localObject2).leftMargin;
+        j = ((ViewGroup.MarginLayoutParams)localObject2).topMargin;
+        ((ViewGroup.MarginLayoutParams)localObject2).leftMargin = ((int)f1);
+        ((ViewGroup.MarginLayoutParams)localObject2).topMargin = ((int)f2);
+        localObject3 = getParent();
+      } while ((localObject3 == null) || (((VComponentContainer)localObject3).mHost == null));
+      int k = ((VComponentContainer)localObject3).indexOf(this);
+      ((VComponentContainer)localObject3).getRealView().removeView(this.mHost);
+      if (this.topIndexContext == null) {
+        this.topIndexContext = new VComponent.BringLayerToTopContext(null);
+      }
+      this.topIndexContext.index = k;
+      this.topIndexContext.leftMargin = i;
+      this.topIndexContext.topMargin = j;
+      localObject1 = ((VComponentContainer)localObject1).getRealView();
+    } while (localObject1 == null);
+    ((ViewGroup)localObject1).addView(this.mHost);
+    this.mHost.setLayoutParams((ViewGroup.LayoutParams)localObject2);
   }
   
   public final void calFrameXY(DomObject paramDomObject)
@@ -2078,6 +2132,32 @@ public abstract class VComponent<T extends View>
     }
   }
   
+  @JSMethod
+  public void resumeLayer()
+  {
+    if ((this.mHost == null) || (getInstance() == null) || (this.topIndexContext == null)) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localObject = getInstance().getRootComp();
+        } while ((localObject == null) || (((VComponentContainer)localObject).mHost == null));
+        localObject = ((VComponentContainer)localObject).getRealView();
+      } while (localObject == null);
+      ((ViewGroup)localObject).removeView(this.mHost);
+      localObject = (FrameLayout.LayoutParams)this.mHost.getLayoutParams();
+      ((FrameLayout.LayoutParams)localObject).leftMargin = this.topIndexContext.leftMargin;
+      ((FrameLayout.LayoutParams)localObject).topMargin = this.topIndexContext.topMargin;
+      this.mHost.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = getParent();
+    } while (localObject == null);
+    ((VComponentContainer)localObject).getRealView().addView(this.mHost, this.topIndexContext.index);
+  }
+  
   public void setAssocioationEvents(AssocioationEvents paramAssocioationEvents)
   {
     this.mAssocioationEvents = paramAssocioationEvents;
@@ -2317,270 +2397,308 @@ public abstract class VComponent<T extends View>
                                             {
                                               do
                                               {
-                                                return bool1;
-                                                if (!paramString.equals("backgroundColor")) {
-                                                  break;
-                                                }
-                                                i = 0;
-                                                break;
-                                                if (!paramString.equals("borderWidth")) {
-                                                  break;
-                                                }
-                                                i = 1;
-                                                break;
-                                                if (!paramString.equals("borderLeftWidth")) {
-                                                  break;
-                                                }
-                                                i = 2;
-                                                break;
-                                                if (!paramString.equals("borderTopWidth")) {
-                                                  break;
-                                                }
-                                                i = 3;
-                                                break;
-                                                if (!paramString.equals("borderRightWidth")) {
-                                                  break;
-                                                }
-                                                i = 4;
-                                                break;
-                                                if (!paramString.equals("borderBottomWidth")) {
-                                                  break;
-                                                }
-                                                i = 5;
-                                                break;
-                                                if (!paramString.equals("borderColor")) {
-                                                  break;
-                                                }
-                                                i = 6;
-                                                break;
-                                                if (!paramString.equals("borderLeftColor")) {
-                                                  break;
-                                                }
-                                                i = 7;
-                                                break;
-                                                if (!paramString.equals("borderTopColor")) {
-                                                  break;
-                                                }
-                                                i = 8;
-                                                break;
-                                                if (!paramString.equals("borderRightColor")) {
-                                                  break;
-                                                }
-                                                i = 9;
-                                                break;
-                                                if (!paramString.equals("borderBottomColor")) {
-                                                  break;
-                                                }
-                                                i = 10;
-                                                break;
-                                                if (!paramString.equals("borderStyle")) {
-                                                  break;
-                                                }
-                                                i = 11;
-                                                break;
-                                                if (!paramString.equals("borderLeftStyle")) {
-                                                  break;
-                                                }
-                                                i = 12;
-                                                break;
-                                                if (!paramString.equals("borderTopStyle")) {
-                                                  break;
-                                                }
-                                                i = 13;
-                                                break;
-                                                if (!paramString.equals("borderRightStyle")) {
-                                                  break;
-                                                }
-                                                i = 14;
-                                                break;
-                                                if (!paramString.equals("borderBottomStyle")) {
-                                                  break;
-                                                }
-                                                i = 15;
-                                                break;
-                                                if (!paramString.equals("borderRadius")) {
-                                                  break;
-                                                }
-                                                i = 16;
-                                                break;
-                                                if (!paramString.equals("opacity")) {
-                                                  break;
-                                                }
-                                                i = 17;
-                                                break;
-                                                if (!paramString.equals("borderTopLeftRadius")) {
-                                                  break;
-                                                }
-                                                i = 18;
-                                                break;
-                                                if (!paramString.equals("borderTopRightRadius")) {
-                                                  break;
-                                                }
-                                                i = 19;
-                                                break;
-                                                if (!paramString.equals("borderBottomLeftRadius")) {
-                                                  break;
-                                                }
-                                                i = 20;
-                                                break;
-                                                if (!paramString.equals("borderBottomRightRadius")) {
-                                                  break;
-                                                }
-                                                i = 21;
-                                                break;
-                                                if (!paramString.equals("visibility")) {
-                                                  break;
-                                                }
-                                                i = 22;
-                                                break;
-                                                if (!paramString.equals("rotation")) {
-                                                  break;
-                                                }
-                                                i = 23;
-                                                break;
-                                                if (!paramString.equals("transform_origin_parse")) {
-                                                  break;
-                                                }
-                                                i = 24;
-                                                break;
-                                                if (!paramString.equals("transform_parse")) {
-                                                  break;
-                                                }
-                                                i = 25;
-                                                break;
-                                                if (!paramString.equals("topIndex")) {
-                                                  break;
-                                                }
-                                                i = 26;
-                                                break;
-                                                if (!paramString.equals("background_image_parse")) {
-                                                  break;
-                                                }
-                                                i = 27;
-                                                break;
-                                                if (!paramString.equals("fromTransformParse")) {
-                                                  break;
-                                                }
-                                                i = 28;
-                                                break;
-                                                if (!paramString.equals("fromTransformOpacity")) {
-                                                  break;
-                                                }
-                                                i = 29;
-                                                break;
+                                                do
+                                                {
+                                                  do
+                                                  {
+                                                    do
+                                                    {
+                                                      do
+                                                      {
+                                                        do
+                                                        {
+                                                          do
+                                                          {
+                                                            return bool1;
+                                                            if (!paramString.equals("backgroundColor")) {
+                                                              break;
+                                                            }
+                                                            i = 0;
+                                                            break;
+                                                            if (!paramString.equals("borderWidth")) {
+                                                              break;
+                                                            }
+                                                            i = 1;
+                                                            break;
+                                                            if (!paramString.equals("borderLeftWidth")) {
+                                                              break;
+                                                            }
+                                                            i = 2;
+                                                            break;
+                                                            if (!paramString.equals("borderTopWidth")) {
+                                                              break;
+                                                            }
+                                                            i = 3;
+                                                            break;
+                                                            if (!paramString.equals("borderRightWidth")) {
+                                                              break;
+                                                            }
+                                                            i = 4;
+                                                            break;
+                                                            if (!paramString.equals("borderBottomWidth")) {
+                                                              break;
+                                                            }
+                                                            i = 5;
+                                                            break;
+                                                            if (!paramString.equals("borderColor")) {
+                                                              break;
+                                                            }
+                                                            i = 6;
+                                                            break;
+                                                            if (!paramString.equals("borderLeftColor")) {
+                                                              break;
+                                                            }
+                                                            i = 7;
+                                                            break;
+                                                            if (!paramString.equals("borderTopColor")) {
+                                                              break;
+                                                            }
+                                                            i = 8;
+                                                            break;
+                                                            if (!paramString.equals("borderRightColor")) {
+                                                              break;
+                                                            }
+                                                            i = 9;
+                                                            break;
+                                                            if (!paramString.equals("borderBottomColor")) {
+                                                              break;
+                                                            }
+                                                            i = 10;
+                                                            break;
+                                                            if (!paramString.equals("borderStyle")) {
+                                                              break;
+                                                            }
+                                                            i = 11;
+                                                            break;
+                                                            if (!paramString.equals("borderLeftStyle")) {
+                                                              break;
+                                                            }
+                                                            i = 12;
+                                                            break;
+                                                            if (!paramString.equals("borderTopStyle")) {
+                                                              break;
+                                                            }
+                                                            i = 13;
+                                                            break;
+                                                            if (!paramString.equals("borderRightStyle")) {
+                                                              break;
+                                                            }
+                                                            i = 14;
+                                                            break;
+                                                            if (!paramString.equals("borderBottomStyle")) {
+                                                              break;
+                                                            }
+                                                            i = 15;
+                                                            break;
+                                                            if (!paramString.equals("borderRadius")) {
+                                                              break;
+                                                            }
+                                                            i = 16;
+                                                            break;
+                                                            if (!paramString.equals("opacity")) {
+                                                              break;
+                                                            }
+                                                            i = 17;
+                                                            break;
+                                                            if (!paramString.equals("borderTopLeftRadius")) {
+                                                              break;
+                                                            }
+                                                            i = 18;
+                                                            break;
+                                                            if (!paramString.equals("borderTopRightRadius")) {
+                                                              break;
+                                                            }
+                                                            i = 19;
+                                                            break;
+                                                            if (!paramString.equals("borderBottomLeftRadius")) {
+                                                              break;
+                                                            }
+                                                            i = 20;
+                                                            break;
+                                                            if (!paramString.equals("borderBottomRightRadius")) {
+                                                              break;
+                                                            }
+                                                            i = 21;
+                                                            break;
+                                                            if (!paramString.equals("visibility")) {
+                                                              break;
+                                                            }
+                                                            i = 22;
+                                                            break;
+                                                            if (!paramString.equals("rotation")) {
+                                                              break;
+                                                            }
+                                                            i = 23;
+                                                            break;
+                                                            if (!paramString.equals("transform_origin_parse")) {
+                                                              break;
+                                                            }
+                                                            i = 24;
+                                                            break;
+                                                            if (!paramString.equals("transform_parse")) {
+                                                              break;
+                                                            }
+                                                            i = 25;
+                                                            break;
+                                                            if (!paramString.equals("topIndex")) {
+                                                              break;
+                                                            }
+                                                            i = 26;
+                                                            break;
+                                                            if (!paramString.equals("floatBottom")) {
+                                                              break;
+                                                            }
+                                                            i = 27;
+                                                            break;
+                                                            if (!paramString.equals("floatCenter")) {
+                                                              break;
+                                                            }
+                                                            i = 28;
+                                                            break;
+                                                            if (!paramString.equals("background_image_parse")) {
+                                                              break;
+                                                            }
+                                                            i = 29;
+                                                            break;
+                                                            if (!paramString.equals("fromTransformParse")) {
+                                                              break;
+                                                            }
+                                                            i = 30;
+                                                            break;
+                                                            if (!paramString.equals("fromTransformOpacity")) {
+                                                              break;
+                                                            }
+                                                            i = 31;
+                                                            break;
+                                                            paramString = ViolaUtils.getString(paramObject, null);
+                                                            bool1 = bool2;
+                                                          } while (paramString == null);
+                                                          setBackgroundColor(paramString);
+                                                          return true;
+                                                          setBorderWidth(0, FlexConvertUtils.getFloatByViewport(paramObject, getDomObject().getViewPortWidth()));
+                                                          return true;
+                                                          setBorderWidth(1, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
+                                                          return true;
+                                                          setBorderWidth(2, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
+                                                          return true;
+                                                          setBorderWidth(3, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
+                                                          return true;
+                                                          setBorderWidth(4, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
+                                                          return true;
+                                                          paramString = ViolaUtils.getString(paramObject, null);
+                                                          bool1 = bool2;
+                                                        } while (paramString == null);
+                                                        setBorderColor(0, paramString);
+                                                        return true;
+                                                        paramString = ViolaUtils.getString(paramObject, null);
+                                                        bool1 = bool2;
+                                                      } while (paramString == null);
+                                                      setBorderColor(1, paramString);
+                                                      return true;
+                                                      paramString = ViolaUtils.getString(paramObject, null);
+                                                      bool1 = bool2;
+                                                    } while (paramString == null);
+                                                    setBorderColor(2, paramString);
+                                                    return true;
+                                                    paramString = ViolaUtils.getString(paramObject, null);
+                                                    bool1 = bool2;
+                                                  } while (paramString == null);
+                                                  setBorderColor(3, paramString);
+                                                  return true;
+                                                  paramString = ViolaUtils.getString(paramObject, null);
+                                                  bool1 = bool2;
+                                                } while (paramString == null);
+                                                setBorderColor(4, paramString);
+                                                return true;
                                                 paramString = ViolaUtils.getString(paramObject, null);
                                                 bool1 = bool2;
                                               } while (paramString == null);
-                                              setBackgroundColor(paramString);
-                                              return true;
-                                              setBorderWidth(0, FlexConvertUtils.getFloatByViewport(paramObject, getDomObject().getViewPortWidth()));
-                                              return true;
-                                              setBorderWidth(1, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
-                                              return true;
-                                              setBorderWidth(2, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
-                                              return true;
-                                              setBorderWidth(3, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
-                                              return true;
-                                              setBorderWidth(4, FlexConvertUtils.converPxByViewportToRealPx(paramObject, getDomObject().getViewPortWidth()));
+                                              setBorderStyle(0, paramString);
                                               return true;
                                               paramString = ViolaUtils.getString(paramObject, null);
                                               bool1 = bool2;
                                             } while (paramString == null);
-                                            setBorderColor(0, paramString);
+                                            setBorderStyle(1, paramString);
                                             return true;
                                             paramString = ViolaUtils.getString(paramObject, null);
                                             bool1 = bool2;
                                           } while (paramString == null);
-                                          setBorderColor(1, paramString);
+                                          setBorderStyle(2, paramString);
                                           return true;
                                           paramString = ViolaUtils.getString(paramObject, null);
                                           bool1 = bool2;
                                         } while (paramString == null);
-                                        setBorderColor(2, paramString);
+                                        setBorderStyle(3, paramString);
                                         return true;
                                         paramString = ViolaUtils.getString(paramObject, null);
                                         bool1 = bool2;
                                       } while (paramString == null);
-                                      setBorderColor(3, paramString);
+                                      setBorderStyle(4, paramString);
                                       return true;
                                       paramString = ViolaUtils.getString(paramObject, null);
                                       bool1 = bool2;
                                     } while (paramString == null);
-                                    setBorderColor(4, paramString);
+                                    setBorderRadius(0, FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
                                     return true;
-                                    paramString = ViolaUtils.getString(paramObject, null);
+                                    paramString = Float.valueOf(ViolaUtils.getFloat(paramObject, Float.valueOf(-1.0F)));
                                     bool1 = bool2;
                                   } while (paramString == null);
-                                  setBorderStyle(0, paramString);
-                                  return true;
-                                  paramString = ViolaUtils.getString(paramObject, null);
                                   bool1 = bool2;
-                                } while (paramString == null);
-                                setBorderStyle(1, paramString);
+                                } while (paramString.equals(Float.valueOf(-1.0F)));
+                                setOpacityCompat(paramString.floatValue());
                                 return true;
                                 paramString = ViolaUtils.getString(paramObject, null);
                                 bool1 = bool2;
                               } while (paramString == null);
-                              setBorderStyle(2, paramString);
+                              setBoderTopLeftRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
                               return true;
                               paramString = ViolaUtils.getString(paramObject, null);
                               bool1 = bool2;
                             } while (paramString == null);
-                            setBorderStyle(3, paramString);
+                            setBoderTopRightRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
                             return true;
                             paramString = ViolaUtils.getString(paramObject, null);
                             bool1 = bool2;
                           } while (paramString == null);
-                          setBorderStyle(4, paramString);
+                          setBoderBottomLeftRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
                           return true;
                           paramString = ViolaUtils.getString(paramObject, null);
                           bool1 = bool2;
                         } while (paramString == null);
-                        setBorderRadius(0, FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
+                        setBoderBottomRightRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
                         return true;
-                        paramString = Float.valueOf(ViolaUtils.getFloat(paramObject, Float.valueOf(-1.0F)));
                         bool1 = bool2;
-                      } while (paramString == null);
+                      } while (getHostView() == null);
+                      this.mVisibility = ViolaUtils.getString(paramObject, "visible");
+                      if ("visible".equals(this.mVisibility))
+                      {
+                        getHostView().setVisibility(0);
+                        return true;
+                      }
+                      getHostView().setVisibility(4);
+                      return true;
+                      float f = ViolaUtils.getFloat(paramObject, Float.valueOf(90.0F));
+                      getHostView().setRotation(f);
+                      return true;
+                      setPivot(paramObject);
+                      return true;
+                      setTransform(paramObject);
+                      return true;
                       bool1 = bool2;
-                    } while (paramString.equals(Float.valueOf(-1.0F)));
-                    setOpacityCompat(paramString.floatValue());
-                    return true;
-                    paramString = ViolaUtils.getString(paramObject, null);
+                    } while (!Boolean.valueOf(ViolaUtils.getBoolean(paramObject)).booleanValue());
                     bool1 = bool2;
-                  } while (paramString == null);
-                  setBoderTopLeftRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
-                  return true;
-                  paramString = ViolaUtils.getString(paramObject, null);
+                  } while (getHostView() == null);
                   bool1 = bool2;
-                } while (paramString == null);
-                setBoderTopRightRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
+                } while (getInstance() == null);
+                getInstance().getViolaPageListener().onComponentTopIndex(getHostView(), getDomObject().getLayoutHeight());
                 return true;
-                paramString = ViolaUtils.getString(paramObject, null);
                 bool1 = bool2;
-              } while (paramString == null);
-              setBoderBottomLeftRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
-              return true;
-              paramString = ViolaUtils.getString(paramObject, null);
+              } while (!Boolean.valueOf(ViolaUtils.getBoolean(paramObject)).booleanValue());
               bool1 = bool2;
-            } while (paramString == null);
-            setBoderBottomRightRadius(FlexConvertUtils.getFloatByViewport(paramString, getDomObject().getViewPortWidth()));
-            return true;
+            } while (getHostView() == null);
             bool1 = bool2;
-          } while (getHostView() == null);
-          this.mVisibility = ViolaUtils.getString(paramObject, "visible");
-          if ("visible".equals(this.mVisibility))
-          {
-            getHostView().setVisibility(0);
-            return true;
-          }
-          getHostView().setVisibility(4);
-          return true;
-          float f = ViolaUtils.getFloat(paramObject, Float.valueOf(90.0F));
-          getHostView().setRotation(f);
-          return true;
-          setPivot(paramObject);
-          return true;
-          setTransform(paramObject);
+          } while (getInstance() == null);
+          getInstance().getViolaPageListener().onComponentFloatBottom(getHostView(), getDomObject().getLayoutHeight());
           return true;
           bool1 = bool2;
         } while (!Boolean.valueOf(ViolaUtils.getBoolean(paramObject)).booleanValue());
@@ -2588,7 +2706,7 @@ public abstract class VComponent<T extends View>
       } while (getHostView() == null);
       bool1 = bool2;
     } while (getInstance() == null);
-    getInstance().getViolaPageListener().onComponentTopIndex(getHostView(), getDomObject().getLayoutHeight());
+    getInstance().getViolaPageListener().onComponentFloatCenter(getHostView(), getDomObject().getLayoutHeight());
     return true;
     setLinearGradient(paramObject);
     return true;

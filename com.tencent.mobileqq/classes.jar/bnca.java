@@ -1,48 +1,32 @@
-import android.os.Message;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import java.util.Map;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-class bnca
-  implements Downloader.DownloadListener
+public abstract interface bnca
+  extends bned
 {
-  bnca(bnbz parambnbz) {}
+  public abstract int a();
   
-  public void onDownloadCanceled(String paramString)
-  {
-    Message localMessage = Message.obtain(bnbz.a(this.a));
-    localMessage.what = 5;
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
-  }
+  public abstract Bitmap a();
   
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    paramDownloadResult = Message.obtain(bnbz.a(this.a));
-    paramDownloadResult.what = 3;
-    paramDownloadResult.obj = paramString;
-    paramDownloadResult.sendToTarget();
-  }
+  public abstract Bitmap a(int paramInt, boolean paramBoolean);
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
-  {
-    paramString = (bncb)bnbz.a(this.a).get(paramString);
-    if (paramString != null) {
-      paramString.a = Float.valueOf(paramFloat);
-    }
-    Message localMessage = Message.obtain(bnbz.a(this.a));
-    localMessage.what = 6;
-    localMessage.obj = paramString;
-    localMessage.sendToTarget();
-  }
+  @NonNull
+  public abstract DoodleLayout a();
   
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    paramDownloadResult = Message.obtain(bnbz.a(this.a));
-    paramDownloadResult.what = 2;
-    paramDownloadResult.obj = paramString;
-    paramDownloadResult.sendToTarget();
-  }
+  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
+  
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract byte[] a(int paramInt);
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

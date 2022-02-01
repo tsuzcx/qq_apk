@@ -1,55 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.RoundAngleFrameLayout;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class pbh
-  implements AladdinConfigHandler
 {
-  private static long a(String paramString, long paramLong)
+  public static int a(BaseArticleInfo paramBaseArticleInfo)
   {
-    try
+    int j = 0;
+    int i = j;
+    if (b(paramBaseArticleInfo))
     {
-      long l = Long.valueOf(paramString).longValue();
-      return l;
-    }
-    catch (NumberFormatException paramString)
-    {
-      QLog.d("FeedsPreloadConfigHandler", 2, "parseStringToLong, e ", paramString);
-    }
-    return paramLong;
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    paramString = pan.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("FeedsPreloadConfigHandler", 1, new Object[] { "key = ", str1, ", value = ", str2 });
-      if (TextUtils.equals("switch", str1)) {
-        bnrf.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
-      } else if (TextUtils.equals("preload_interval", str1)) {
-        bnrf.a("sp_key_readinjoy_feeds_preload_interval", Long.valueOf(a(str2, 30L)));
-      } else if (TextUtils.equals("last_enter_kandian", str1)) {
-        bnrf.a("sp_key_readinjoy_feeds_preload_last_enter_kd_day", Long.valueOf(a(str2, 90L)));
-      } else if (TextUtils.equals("preload_time_limit", str1)) {
-        bnrf.a("sp_key_readinjoy_feeds_preload_time_limit", Long.valueOf(a(str2, 10L)));
-      } else if (TextUtils.equals("loading_time", str1)) {
-        bnrf.a("sp_key_readinjoy_feeds_preload_loading_time", Long.valueOf(a(str2, 50L)));
+      i = j;
+      if (paramBaseArticleInfo.mSocialFeedInfo.a.b != null) {
+        i = paramBaseArticleInfo.mSocialFeedInfo.a.b.intValue();
       }
     }
-    return true;
+    return i;
   }
   
-  public void onWipeConfig(int paramInt)
+  public static void a(Context paramContext, View paramView, RoundAngleFrameLayout paramRoundAngleFrameLayout)
   {
-    QLog.d("FeedsPreloadConfigHandler", 1, new Object[] { "onWipeConfig, id = ", Integer.valueOf(paramInt) });
-    bnrf.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(false));
+    int j = paramView.getPaddingTop();
+    int k = paramView.getPaddingBottom();
+    if (pay.u()) {
+      paramRoundAngleFrameLayout.setRadius(DisplayUtil.dip2px(paramContext, 8.0F));
+    }
+    for (int i = DisplayUtil.dip2px(paramContext, 14.0F);; i = DisplayUtil.dip2px(paramContext, 6.0F))
+    {
+      paramView.setPadding(i, j, i, k);
+      return;
+      paramRoundAngleFrameLayout.setRadius(DisplayUtil.dip2px(paramContext, 0.0F));
+    }
+  }
+  
+  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    return (paramBaseArticleInfo.mFeedType == 25) || ((paramBaseArticleInfo.mFeedType == 1) && (a(paramBaseArticleInfo) == 25));
+  }
+  
+  public static boolean b(BaseArticleInfo paramBaseArticleInfo)
+  {
+    return (paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.a != null);
   }
 }
 

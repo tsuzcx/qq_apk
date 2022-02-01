@@ -4,18 +4,18 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import bjjo;
-import bjqh;
-import bjqj;
-import bjts;
-import bjvf;
+import bhpc;
+import bhvw;
+import bhvy;
+import bhzh;
+import biar;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class ReportCenter$3
   implements Runnable
 {
-  public ReportCenter$3(bjqh parambjqh, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean) {}
+  public ReportCenter$3(bhvw parambhvw, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class ReportCenter$3
       try
       {
         localObject1 = new Bundle();
-        Object localObject3 = bjts.a(bjjo.a().a());
+        Object localObject3 = bhzh.a(bhpc.a().a());
         ((Bundle)localObject1).putString("apn", (String)localObject3);
         ((Bundle)localObject1).putString("appid", this.jdField_a_of_type_JavaLangString);
         ((Bundle)localObject1).putString("commandid", this.jdField_b_of_type_JavaLangString);
@@ -37,7 +37,7 @@ public class ReportCenter$3
         {
           i = 1;
           ((StringBuilder)localObject3).append(i).append('&');
-          localStringBuilder.append("wifi=").append(bjts.e(bjjo.a().a()));
+          localStringBuilder.append("wifi=").append(bhzh.e(bhpc.a().a()));
           ((Bundle)localObject1).putString("deviceInfo", localStringBuilder.toString());
           i = 100 / this.this$0.a(this.jdField_a_of_type_Int);
           if (i > 0) {
@@ -68,8 +68,8 @@ public class ReportCenter$3
       {
         this.this$0.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
         k = this.this$0.jdField_a_of_type_JavaUtilArrayList.size();
-        m = bjqj.a().a("report_cgi");
-        j = bjvf.a(bjjo.a().a(), null).a("Agent_ReportTimeInterval");
+        m = bhvy.a().a("report_cgi");
+        j = biar.a(bhpc.a().a(), null).a("Agent_ReportTimeInterval");
         i = j;
         if (j == 0) {
           i = 10000;

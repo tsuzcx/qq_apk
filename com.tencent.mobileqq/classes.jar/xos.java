@@ -1,13 +1,39 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public abstract interface xos
+class xos
+  extends vll<xoi, xhl>
 {
-  public abstract void a();
+  xos(xoi paramxoi)
+  {
+    super(paramxoi);
+  }
   
-  public abstract void a(@NonNull yfw paramyfw, ErrorMessage paramErrorMessage, boolean paramBoolean);
+  public void a(@NonNull xoi paramxoi, @NonNull xhl paramxhl)
+  {
+    Object localObject = paramxoi.a(paramxhl.jdField_a_of_type_JavaLangString);
+    if ((localObject == null) || (paramxhl.jdField_a_of_type_Boolean))
+    {
+      xvv.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramxhl.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramxhl.jdField_a_of_type_Boolean) });
+      return;
+    }
+    if (!(localObject instanceof xmz))
+    {
+      xvv.e(this.TAG, "that is error type!");
+      return;
+    }
+    localObject = (xmz)localObject;
+    ((CommentLikeFeedItem)((xmz)localObject).a).mLikeCount = paramxhl.b;
+    ((xmz)localObject).b(paramxhl.jdField_a_of_type_JavaUtilList, true);
+    xoi.a(paramxoi).b(paramxhl.jdField_a_of_type_JavaLangString);
+  }
   
-  public abstract void a(@NonNull yfw paramyfw, boolean paramBoolean);
+  public Class acceptEventClass()
+  {
+    return xhl.class;
+  }
+  
+  public void b(@NonNull xoi paramxoi, @NonNull xhl paramxhl) {}
 }
 
 

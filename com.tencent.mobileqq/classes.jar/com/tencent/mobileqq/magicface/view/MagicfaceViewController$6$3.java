@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.magicface.view;
 
 import android.widget.TextView;
-import awzk;
-import awzm;
+import avmr;
+import avmt;
 
 public class MagicfaceViewController$6$3
   implements Runnable
 {
-  public MagicfaceViewController$6$3(awzm paramawzm, String paramString) {}
+  public MagicfaceViewController$6$3(avmt paramavmt, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Awzm.a.b.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Avmt.a.b.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

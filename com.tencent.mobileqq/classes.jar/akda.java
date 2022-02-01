@@ -1,34 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
 
 public class akda
-  extends Handler
+  implements afaf
 {
-  public akda(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  public akda(RedPacketManager paramRedPacketManager, IRedPacket.OnGetSkinListener paramOnGetSkinListener) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    if ((paramMessage.what != 1) || (ChatHistoryTroopFileFragment.a(this.a) == null)) {}
-    for (;;)
-    {
-      return;
-      int i = ChatHistoryTroopFileFragment.a(this.a).getFirstVisiblePosition();
-      while (i <= ChatHistoryTroopFileFragment.a(this.a).getLastVisiblePosition())
-      {
-        paramMessage = ChatHistoryTroopFileFragment.a(this.a).getChildAt(i);
-        if (paramMessage != null)
-        {
-          paramMessage = paramMessage.getTag();
-          if ((paramMessage != null) && ((paramMessage instanceof bfvu))) {
-            ((bfvu)paramMessage).a(this.a.a, ChatHistoryTroopFileFragment.a(this.a));
-          }
-        }
-        i += 1;
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketIRedPacket$OnGetSkinListener.onGetSkin(paramRedPacketInfo);
   }
 }
 

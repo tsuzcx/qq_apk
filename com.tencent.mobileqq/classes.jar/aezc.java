@@ -1,37 +1,36 @@
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.troop.honor.widget.TroopHonorView;
+import java.util.List;
 
 public class aezc
-  extends wve
+  implements ancx
 {
-  public aezc(NearbyActivity paramNearbyActivity, String paramString)
-  {
-    super(paramString);
-  }
+  public BaseChatItemLayout a;
+  public String a;
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  private aezc(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    if ((paramTroopMemberInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(paramTroopMemberInfo.memberuin)))
     {
-      localStringBuilder = new StringBuilder().append("startLocation end, errCode=").append(paramInt).append(" lbsInfo=").append(paramSosoLbsInfo).append(", info.location=");
-      if (paramSosoLbsInfo == null) {
-        break label103;
-      }
-    }
-    label103:
-    for (SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.a;; localSosoLocation = null)
-    {
-      QLog.d("nearby.heart_beat", 2, localSosoLocation);
-      if ((!this.a.isFinishing()) && (!this.a.c))
+      paramTroopMemberInfo = ((bepr)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a.getManager(346)).a(paramTroopMemberInfo.honorList);
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a != null))
       {
-        this.a.c = false;
-        this.a.a.a(1, paramSosoLbsInfo);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setHonorList(paramTroopMemberInfo, 1);
+        if ((paramTroopMemberInfo == null) || (paramTroopMemberInfo.size() <= 0)) {
+          break label109;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder);
       }
-      return;
     }
+    return;
+    label109:
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setOnClickListener(null);
   }
 }
 

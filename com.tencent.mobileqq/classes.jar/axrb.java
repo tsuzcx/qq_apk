@@ -1,12 +1,6 @@
-import com.tencent.mobileqq.music.SongInfo;
-
 public abstract interface axrb
 {
-  public abstract String getToken();
-  
-  public abstract void onPlaySongChanged(SongInfo paramSongInfo);
-  
-  public abstract void onPlayStateChanged(int paramInt);
+  public abstract void a();
 }
 
 

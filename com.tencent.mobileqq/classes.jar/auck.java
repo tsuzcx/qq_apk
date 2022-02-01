@@ -1,79 +1,22 @@
-import android.annotation.TargetApi;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.Window;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SystemBarCompact;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ResolveInfo;
+import com.tencent.mobileqq.haoliyou.JefsClass;
+import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class auck
-  implements aueg
+  implements aucs
 {
-  public auck(FileBrowserActivity paramFileBrowserActivity) {}
+  public auck(JefsClass paramJefsClass, Context paramContext, Intent paramIntent, String paramString, int paramInt) {}
   
-  @TargetApi(14)
-  public void a()
+  public void a(String paramString1, String paramString2, String paramString3, List<ResolveInfo> paramList, JefsClass.CancelableRunnable paramCancelableRunnable)
   {
-    Object localObject = this.a.getResources().getConfiguration().toString();
-    if ((((String)localObject).contains("hwMultiwindow-magic")) || (((String)localObject).contains("hw-magic-windows"))) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((ImmersiveUtils.isSupporImmersive() == 1) && (i == 0))
-      {
-        localObject = (RelativeLayout)this.a.findViewById(2131376926);
-        ((RelativeLayout)localObject).setFitsSystemWindows(true);
-        ((RelativeLayout)localObject).setPadding(0, ImmersiveUtils.getStatusBarHeight(this.a), 0, 0);
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TeleScreen|JefsClass", 2, "checkAndDo() ]");
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    FileBrowserActivity.a(this.a, (TextView)this.a.findViewById(2131369088));
-    FileBrowserActivity.a(this.a).setTextSize(1, 19.0F);
-    FileBrowserActivity.a(this.a).setText(this.a.a.a());
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    FileBrowserActivity.a(this.a, paramBoolean);
-    View localView = this.a.findViewById(2131376734);
-    if (!FileBrowserActivity.a(this.a))
-    {
-      localView.setVisibility(0);
-      if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.mSystemBarComp != null))
-      {
-        int i = this.a.getResources().getColor(2131167048);
-        this.a.mSystemBarComp.setStatusColor(i);
-        this.a.mSystemBarComp.setStatusBarColor(i);
-        if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-          this.a.mSystemBarComp.setStatusBarDrawable(this.a.getResources().getDrawable(2130846177));
-        }
-      }
-      LiuHaiUtils.b(this.a);
-      this.a.getWindow().setFlags(0, 1024);
-      return;
-    }
-    localView.setVisibility(4);
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.mSystemBarComp != null))
-    {
-      this.a.mSystemBarComp.setStatusColor(0);
-      this.a.mSystemBarComp.setStatusBarColor(0);
-      if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-        this.a.mSystemBarComp.setStatusBarDrawable(null);
-      }
-    }
-    FileBrowserActivity.a(this.a, this.a.a.a());
-    if ((FileBrowserActivity.a(this.a) != 2) && (FileBrowserActivity.a(this.a) != 0)) {
-      LiuHaiUtils.c(this.a);
-    }
-    this.a.getWindow().setFlags(1024, 1024);
+    JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, paramString1, paramString2, paramString3, paramList, paramCancelableRunnable, this.jdField_a_of_type_Int);
   }
 }
 

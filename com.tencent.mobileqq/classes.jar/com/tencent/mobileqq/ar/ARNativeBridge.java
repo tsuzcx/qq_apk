@@ -3,8 +3,8 @@ package com.tencent.mobileqq.ar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
-import apjk;
-import appv;
+import aocx;
+import aoji;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -40,7 +40,7 @@ public class ARNativeBridge
   {
     boolean bool2 = true;
     long l = System.currentTimeMillis();
-    boolean bool3 = apjk.a("ArMapEngine836", needCheckMd5);
+    boolean bool3 = aocx.a("ArMapEngine836", needCheckMd5);
     if (!bool3) {}
     for (boolean bool1 = true;; bool1 = false)
     {
@@ -63,7 +63,7 @@ public class ARNativeBridge
     {
       try
       {
-        int i = apjk.a("ArMapEngine836");
+        int i = aocx.a("ArMapEngine836");
         if (i != 0) {
           continue;
         }
@@ -84,7 +84,7 @@ public class ARNativeBridge
       if (QLog.isColorLevel()) {
         QLog.d("AREngine", 2, "initSoEnvirontMent loadSoSuccess = " + loadSoSuccess);
       }
-      appv.a().f(System.currentTimeMillis() - l, loadSoSuccess);
+      aoji.a().f(System.currentTimeMillis() - l, loadSoSuccess);
       return loadSoSuccess;
       bool1 = false;
     }

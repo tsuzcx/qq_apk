@@ -1,24 +1,51 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import android.os.Handler;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class meh
-  implements View.OnTouchListener
+class meh
+  extends lff
 {
-  public meh(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  meh(mee parammee) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(long paramLong)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (QLog.isColorLevel()) {
+      QLog.w("MultiIncomingCallUICtr", 1, "onConnected, seq[" + paramLong + "]");
     }
-    for (;;)
+    this.a.jdField_a_of_type_ComTencentAvVideoController.b();
+    lyq.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(paramLong, false);
+    if (this.a.jdField_a_of_type_Mkk != null) {
+      this.a.jdField_a_of_type_Mkk.c();
+    }
+    if (this.a.jdField_a_of_type_Lez.d == 1) {
+      this.a.f = "DEVICE_SPEAKERPHONE;DEVICE_EARPHONE;DEVICE_BLUETOOTHHEADSET;DEVICE_WIREDHEADSET;";
+    }
+    mua.a().a(this.a.f);
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_c_of_type_JavaLangRunnable, 1000L);
+  }
+  
+  protected void a(long paramLong, int paramInt, String paramString)
+  {
+    if ((this.a.jdField_c_of_type_JavaLangString != null) && (this.a.jdField_c_of_type_JavaLangString.equals(paramString)))
     {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+      this.a.a(paramLong, paramInt);
+      this.a.a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("MultiIncomingCallUICtr", 1, "onClose, reason[" + paramInt + "], peerUin[" + paramString + "], mPeerUin[" + this.a.jdField_c_of_type_JavaLangString + "], seq[" + paramLong + "]");
+    }
+  }
+  
+  protected void a(String paramString, boolean paramBoolean)
+  {
+    super.a(paramString, paramBoolean);
+    if (this.a.jdField_a_of_type_Mkk != null) {
+      this.a.jdField_a_of_type_Mkk.a();
+    }
+    this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiIncomingCallUICtr", 2, "onDestroyUI, peerUin:" + paramString + ", isQuit:" + paramBoolean + ", mPeerUin:" + this.a.jdField_c_of_type_JavaLangString);
     }
   }
 }

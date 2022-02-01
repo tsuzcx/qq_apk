@@ -1,87 +1,56 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
 
-class aufu
-  extends anwb
+public class aufu
 {
-  aufu(auft paramauft) {}
+  public static float b;
+  public float a;
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public float c;
+  public int c;
+  public int d = 10;
+  public int e = 8;
+  public int f = 150;
+  public int g = 300;
+  public int h = 32;
+  public int i = 27;
+  public int j = 3000;
+  public int k;
+  public int l;
   
-  protected void a(long paramLong, float paramFloat)
+  static
   {
-    Object localObject = this.a.jdField_a_of_type_Auei.a();
-    if (localObject == null) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("DatalineFileModel<FileAssistant>", 2, "DataLine onProgress : opType[" + this.a.jdField_a_of_type_Auei.e() + "], uniseq[" + ((FileManagerEntity)localObject).uniseq + "], nSessionId[" + ((FileManagerEntity)localObject).nSessionId + "], peerType[" + this.a.jdField_a_of_type_Auei.b() + "]");
-      }
-      int i = DataLineMsgRecord.getDevTypeBySeId(((FileManagerEntity)localObject).uniseq);
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(i).a(((FileManagerEntity)localObject).uniseq);
-    } while ((localObject == null) || (paramLong != ((DataLineMsgRecord)localObject).sessionid) || (this.a.jdField_a_of_type_Augp == null));
-    this.a.jdField_a_of_type_Augp.a(paramFloat);
+    jdField_b_of_type_Float = 1.0F;
   }
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  private aufu()
   {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Auei.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("DatalineFileModel<FileAssistant>", 2, "DataLine onRecvFile : isSuccess[" + paramBoolean + "], uniseq[" + localFileManagerEntity.uniseq + "], nSessionId[" + localFileManagerEntity.nSessionId + "], peerType[" + this.a.jdField_a_of_type_Auei.b() + "]");
-    }
-    int i = DataLineMsgRecord.getDevTypeBySeId(localFileManagerEntity.uniseq);
-    DataLineMsgRecord localDataLineMsgRecord = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(i).a(localFileManagerEntity.uniseq);
-    if (localDataLineMsgRecord == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (paramLong == localDataLineMsgRecord.sessionid) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.i("DatalineFileModel<FileAssistant>", 1, "this recv file done is not current visit file");
-      return;
-      localFileManagerEntity.setFilePath(paramString);
-    } while (this.a.jdField_a_of_type_Augp == null);
-    if (paramBoolean)
-    {
-      localFileManagerEntity.status = 1;
-      this.a.jdField_a_of_type_Augp.f();
-      return;
-    }
-    localFileManagerEntity.status = 3;
-    this.a.jdField_a_of_type_Augp.g();
+    this.jdField_a_of_type_Int = 250;
+    this.jdField_c_of_type_Int = 20;
+    this.jdField_c_of_type_Float = 1.0F;
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  public aufu(HeartLayout paramHeartLayout)
   {
-    paramString = this.a.jdField_a_of_type_Auei.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("DatalineFileModel<FileAssistant>", 2, "DataLine onSendFile : isSuccess[" + paramBoolean + "], uniseq[" + paramString.uniseq + "], nSessionId[" + paramString.nSessionId + "], peerType[" + this.a.jdField_a_of_type_Auei.b() + "]");
-    }
-    int i = DataLineMsgRecord.getDevTypeBySeId(paramString.uniseq);
-    DataLineMsgRecord localDataLineMsgRecord = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(i).a(paramString.uniseq);
-    if (localDataLineMsgRecord == null) {}
-    do
-    {
-      return;
-      if (paramLong != localDataLineMsgRecord.sessionid)
-      {
-        QLog.i("DatalineFileModel<FileAssistant>", 1, "this send file done is not current visit file");
-        return;
-      }
-    } while (this.a.jdField_a_of_type_Augp == null);
-    if (paramBoolean)
-    {
-      paramString.status = 1;
-      this.a.jdField_a_of_type_Augp.f();
-      return;
-    }
-    this.a.jdField_a_of_type_Augp.g();
+    this.jdField_a_of_type_Int = 250;
+    this.jdField_c_of_type_Int = 20;
+    this.jdField_c_of_type_Float = 1.0F;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Float = paramHeartLayout.getContext().getResources().getDisplayMetrics().density;
+    this.jdField_a_of_type_Int = ((int)((paramHeartLayout.getWidth() - this.jdField_a_of_type_Float * 32.0F) / 2.0F));
+    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Float * 27.0F));
+    this.h = ((int)(this.jdField_a_of_type_Float * 32.0F));
+    this.i = ((int)(this.jdField_a_of_type_Float * 27.0F));
+    this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_Float * 20.0F));
+    this.d = ((int)(this.jdField_a_of_type_Float * 10.0F));
+    this.f = ((int)(this.jdField_a_of_type_Float * 150.0F));
+    this.g = ((int)(this.jdField_a_of_type_Float * 300.0F));
   }
 }
 

@@ -1,118 +1,277 @@
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.view.LayoutInflater;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.text.TextUtils.TruncateAt;
+import android.util.StateSet;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.search.rich.RichNodeRootLayout;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public abstract class bckw
-  implements bckm
+public class bckw
+  extends bcgx
 {
-  private View jdField_a_of_type_AndroidViewView;
-  public bckk a;
-  private RichNodeRootLayout jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout;
-  private View b;
+  private static final int s = Color.rgb(255, 221, 227);
   
-  public bckw(bckk parambckk, Context paramContext)
+  private StateListDrawable a(Resources paramResources, int paramInt, float[] paramArrayOfFloat)
   {
-    this.jdField_a_of_type_Bckk = parambckk;
-    a(paramContext);
-  }
-  
-  public final View a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout;
-  }
-  
-  public abstract View a(Context paramContext);
-  
-  public View a(String paramString)
-  {
-    return null;
-  }
-  
-  public ImageView a()
-  {
-    return null;
-  }
-  
-  public TextView a()
-  {
-    return null;
-  }
-  
-  public bckk a()
-  {
-    return this.jdField_a_of_type_Bckk;
-  }
-  
-  public String a()
-  {
-    bckk localbckk = a();
-    if (localbckk != null) {
-      return localbckk.a();
-    }
-    return null;
-  }
-  
-  public void a(Context paramContext)
-  {
-    View localView = LayoutInflater.from(paramContext).inflate(2131561535, null, false);
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout = ((RichNodeRootLayout)localView.findViewById(2131376935));
-    this.b = localView.findViewById(2131365632);
-    this.jdField_a_of_type_AndroidViewView = a(paramContext);
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout.addView(this.jdField_a_of_type_AndroidViewView);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.b != null)
+    GradientDrawable[] arrayOfGradientDrawable = new GradientDrawable[2];
+    int k = Color.red(paramInt);
+    int i = Color.green(paramInt);
+    int j = Color.blue(paramInt);
+    paramInt = k;
+    k = 0;
+    if (k < arrayOfGradientDrawable.length)
     {
-      if (paramBoolean) {
-        this.b.setVisibility(0);
+      arrayOfGradientDrawable[k] = new GradientDrawable();
+      arrayOfGradientDrawable[k].setShape(0);
+      int m = paramInt - (k << 5);
+      paramInt = m;
+      if (m < 0) {
+        paramInt = 0;
+      }
+      m = i - (k << 5);
+      i = m;
+      if (m < 0) {
+        i = 0;
+      }
+      m = j - (k << 5);
+      j = m;
+      if (m < 0) {
+        j = 0;
+      }
+      arrayOfGradientDrawable[k].setColor(Color.rgb(paramInt, i, j));
+      if (paramArrayOfFloat != null) {
+        arrayOfGradientDrawable[k].setCornerRadii(paramArrayOfFloat);
+      }
+      for (;;)
+      {
+        k += 1;
+        break;
+        arrayOfGradientDrawable[k].setCornerRadius(AIOUtils.dp2px(14.0F, paramResources));
       }
     }
-    else {
-      return;
+    paramResources = new StateListDrawable();
+    paramArrayOfFloat = arrayOfGradientDrawable[1];
+    paramResources.addState(new int[] { 16842919, 16842910 }, paramArrayOfFloat);
+    paramResources.addState(StateSet.WILD_CARD, arrayOfGradientDrawable[0]);
+    return paramResources;
+  }
+  
+  private LinearLayout a(Context paramContext)
+  {
+    paramContext = new LinearLayout(paramContext);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    a(paramContext);
+    paramContext.setLayoutParams(localLayoutParams);
+    paramContext.setOrientation(1);
+    return paramContext;
+  }
+  
+  @TargetApi(16)
+  public void a(View paramView)
+  {
+    int i;
+    Object localObject1;
+    if (paramView != null)
+    {
+      i = AIOUtils.dp2px(14.0F, paramView.getResources());
+      Object localObject2 = null;
+      localObject1 = localObject2;
+      switch (a())
+      {
+      default: 
+        localObject1 = localObject2;
+      }
     }
-    this.b.setVisibility(8);
+    for (;;)
+    {
+      localObject1 = a(paramView.getResources(), s, (float[])localObject1);
+      if (Build.VERSION.SDK_INT >= 16) {
+        break;
+      }
+      paramView.setBackgroundDrawable((Drawable)localObject1);
+      return;
+      localObject1 = new float[8];
+      continue;
+      localObject1 = new float[8];
+      localObject1[0] = i;
+      localObject1[1] = i;
+      localObject1[2] = i;
+      localObject1[3] = i;
+      localObject1[4] = 0.0F;
+      localObject1[5] = 0.0F;
+      localObject1[6] = 0.0F;
+      localObject1[7] = 0.0F;
+      continue;
+      localObject1 = new float[8];
+      localObject1[0] = 0.0F;
+      localObject1[1] = 0.0F;
+      localObject1[2] = 0.0F;
+      localObject1[3] = 0.0F;
+      localObject1[4] = i;
+      localObject1[5] = i;
+      localObject1[6] = i;
+      localObject1[7] = i;
+    }
+    paramView.setBackground((Drawable)localObject1);
   }
   
-  public ImageView b()
+  protected int b()
   {
-    return null;
+    return 7;
   }
   
-  public TextView b()
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
-    return null;
+    Resources localResources = paramContext.getResources();
+    LinearLayout localLinearLayout;
+    bckx localbckx;
+    label148:
+    Object localObject1;
+    Object localObject2;
+    if ((paramView != null) && ((paramView instanceof LinearLayout)) && (((LinearLayout)paramView).getChildCount() == 2) && ((((LinearLayout)paramView).getChildAt(0).getTag() instanceof bckx)))
+    {
+      localLinearLayout = (LinearLayout)paramView;
+      localbckx = (bckx)localLinearLayout.getChildAt(0).getTag();
+      if (localbckx.jdField_a_of_type_AndroidViewView != null) {
+        localbckx.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      }
+      if (localbckx.jdField_b_of_type_AndroidViewView != null) {
+        localbckx.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      }
+      if (localbckx.c != null) {
+        localbckx.c.setVisibility(8);
+      }
+      if (localbckx.d != null) {
+        localbckx.d.setVisibility(8);
+      }
+      paramView = null;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (!localIterator.hasNext()) {
+        break label708;
+      }
+      localObject1 = (bcgw)localIterator.next();
+      ((bcgw)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      localObject2 = ((bcgw)localObject1).jdField_a_of_type_JavaLangString;
+      if (!"title".equals(localObject2)) {
+        break label447;
+      }
+      if ((localObject1 instanceof StructMsgItemTitle))
+      {
+        ((StructMsgItemTitle)localObject1).a(a(), 0);
+        ((StructMsgItemTitle)localObject1).a(true);
+      }
+      localObject1 = ((bcgw)localObject1).a(paramContext, localbckx.jdField_a_of_type_AndroidViewView, paramBundle);
+      localObject2 = (TextView)((View)localObject1).findViewById(2131379877);
+      if (localObject2 != null) {
+        ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
+      }
+      if (localbckx.jdField_a_of_type_AndroidViewView != null) {
+        break label435;
+      }
+      localbckx.jdField_a_of_type_AndroidViewView = ((View)localObject1);
+      localbckx.jdField_b_of_type_AndroidViewViewGroup.addView((View)localObject1);
+    }
+    for (;;)
+    {
+      break label148;
+      localbckx = new bckx();
+      localbckx.jdField_b_of_type_AndroidViewViewGroup = new LinearLayout(paramContext);
+      ((LinearLayout)localbckx.jdField_b_of_type_AndroidViewViewGroup).setOrientation(1);
+      paramView = new LinearLayout.LayoutParams(0, -2);
+      paramView.weight = 1.0F;
+      paramView.gravity = 16;
+      paramView.setMargins(AIOUtils.dp2px(15.0F, localResources), 0, 0, 0);
+      localbckx.jdField_a_of_type_AndroidViewViewGroup = new LinearLayout(paramContext);
+      localbckx.jdField_a_of_type_AndroidViewViewGroup.setTag(localbckx);
+      localbckx.jdField_a_of_type_AndroidViewViewGroup.addView(localbckx.jdField_b_of_type_AndroidViewViewGroup, paramView);
+      localLinearLayout = a(paramContext);
+      localLinearLayout.addView(localbckx.jdField_a_of_type_AndroidViewViewGroup, new LinearLayout.LayoutParams(-1, AIOUtils.dp2px(75.0F, localResources)));
+      break;
+      label435:
+      localbckx.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      continue;
+      label447:
+      if ("summary".equals(localObject2))
+      {
+        localObject1 = ((bcgw)localObject1).a(paramContext, localbckx.jdField_b_of_type_AndroidViewView, paramBundle);
+        if (localbckx.jdField_b_of_type_AndroidViewView == null)
+        {
+          localbckx.jdField_b_of_type_AndroidViewView = ((View)localObject1);
+          localObject2 = new LinearLayout.LayoutParams(-2, -2);
+          ((LinearLayout.LayoutParams)localObject2).setMargins(0, AIOUtils.dp2px(4.0F, localResources), 0, 0);
+          localbckx.jdField_b_of_type_AndroidViewViewGroup.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+        }
+        for (;;)
+        {
+          break;
+          localbckx.jdField_b_of_type_AndroidViewView.setVisibility(0);
+        }
+      }
+      if (("picture".equals(localObject2)) || ("video".equals(localObject2)))
+      {
+        int i = AIOUtils.dp2px(50.0F, localResources);
+        localObject1 = ((bcgw)localObject1).a(paramContext, localbckx.c, paramBundle);
+        if (localbckx.c == null)
+        {
+          localbckx.c = ((View)localObject1);
+          localObject2 = new LinearLayout.LayoutParams(i, i);
+          i = AIOUtils.dp2px(12.0F, localResources);
+          int j = AIOUtils.dp2px(10.0F, localResources);
+          ((LinearLayout.LayoutParams)localObject2).setMargins(j, i, j, i);
+          ((LinearLayout.LayoutParams)localObject2).gravity = 16;
+          localbckx.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+        }
+        for (;;)
+        {
+          break;
+          localbckx.c.setVisibility(0);
+        }
+      }
+      if ("remark".equals(localObject2))
+      {
+        paramView = ((bcgw)localObject1).a(paramContext, localbckx.d, paramBundle);
+        continue;
+        label708:
+        if (localbckx.jdField_b_of_type_AndroidViewView != null) {
+          localbckx.jdField_b_of_type_AndroidViewView.bringToFront();
+        }
+        if (paramView != null)
+        {
+          if (localbckx.d == null)
+          {
+            localbckx.d = paramView;
+            localLinearLayout.addView(paramView, new LinearLayout.LayoutParams(-1, AIOUtils.dp2px(25.0F, localResources)));
+            float f = AIOUtils.dp2px(14.0F, localResources);
+            paramView.setBackgroundDrawable(a(localResources, -1, new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f, f, f, f }));
+            paramView.setPadding(AIOUtils.dp2px(12.0F, localResources), AIOUtils.dp2px(5.0F, localResources), 0, 0);
+          }
+        }
+        else {
+          return localLinearLayout;
+        }
+        localbckx.d.setVisibility(0);
+        return localLinearLayout;
+      }
+    }
   }
   
-  public void b(boolean paramBoolean) {}
-  
-  public TextView c()
+  public String b()
   {
-    return null;
-  }
-  
-  public TextView d()
-  {
-    return null;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Bckk = null;
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout = null;
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.b = null;
-  }
-  
-  public void f()
-  {
-    d();
+    return "Layout7";
   }
 }
 

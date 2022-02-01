@@ -1,14 +1,14 @@
 package com.tencent.open.wadl;
 
-import bkad;
-import bkaj;
+import bifn;
+import bift;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 
 public class WadlJsBridgeCallBack$1
   implements Runnable
 {
-  public WadlJsBridgeCallBack$1(bkaj parambkaj, WebView paramWebView, String paramString) {}
+  public WadlJsBridgeCallBack$1(bift parambift, WebView paramWebView, String paramString) {}
   
   public void run()
   {
@@ -16,13 +16,13 @@ public class WadlJsBridgeCallBack$1
     {
       this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
       if (QLog.isColorLevel()) {
-        bkad.c(bkaj.jdField_a_of_type_JavaLangString, "doJsCallback call:" + this.jdField_a_of_type_JavaLangString);
+        bifn.c(bift.jdField_a_of_type_JavaLangString, "doJsCallback call:" + this.jdField_a_of_type_JavaLangString);
       }
       return;
     }
     catch (Exception localException)
     {
-      bkad.a(bkaj.jdField_a_of_type_JavaLangString, "doJsCallback exception ", localException);
+      bifn.a(bift.jdField_a_of_type_JavaLangString, "doJsCallback exception ", localException);
     }
   }
 }

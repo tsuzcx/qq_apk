@@ -1,7 +1,7 @@
 import com.dataline.activities.LiteActivity;
 
 public class bm
-  implements aifc
+  implements ahbs
 {
   public bm(LiteActivity paramLiteActivity) {}
 }

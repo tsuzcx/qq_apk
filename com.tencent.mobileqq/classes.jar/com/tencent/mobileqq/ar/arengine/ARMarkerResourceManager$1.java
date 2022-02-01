@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import anzj;
-import appj;
+import amtj;
+import aoiw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class ARMarkerResourceManager$1
   implements Runnable
 {
-  public ARMarkerResourceManager$1(appj paramappj) {}
+  public ARMarkerResourceManager$1(aoiw paramaoiw) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anzj.a(2131699643), 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, amtj.a(2131699878), 1).a();
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
-import awaj;
-import awat;
+import aunj;
+import aunt;
 
 class IVPluginLoader$1$1
   implements Runnable
@@ -10,7 +10,7 @@ class IVPluginLoader$1$1
   
   public void run()
   {
-    awaj.a(this.a.this$0).a(this.a.b, this.a.c, null, this.a.d, this.a.a);
+    aunj.a(this.a.this$0).a(this.a.b, this.a.c, null, this.a.d, this.a.a);
   }
 }
 

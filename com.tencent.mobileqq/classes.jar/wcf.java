@@ -1,24 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
-import com.tencent.biz.qqcircle.widgets.QCircleTagRecommendWidget;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import qqcircle.QQCircleDitto.StItemContainer;
+import java.util.HashMap;
 
 public class wcf
-  implements View.OnClickListener
+  extends vko
 {
-  public wcf(QCircleTagRecommendWidget paramQCircleTagRecommendWidget) {}
+  public HashMap<String, String[]> a;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    if (QCircleTagRecommendWidget.a(this.a) != null)
-    {
-      uyx.a(this.a.getContext(), uyw.a(QCircleTagRecommendWidget.a(this.a).urlInfo.get(), "smallWordRecomListUrl"), null, -1);
-      vud.a().a(new vuf().a("more").b("click").a(this.a.a()).a(QCircleTagRecommendWidget.a(this.a).mDataPosition));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return "InteractionInfoChangeEvent{iconMap=" + this.a + '}';
   }
 }
 

@@ -1,12 +1,16 @@
+import com.tencent.biz.qqstory.database.CommentEntry;
+
 public abstract interface xid
 {
-  public abstract void a();
-  
   public abstract void a(int paramInt);
   
-  public abstract void b();
+  public abstract void a(CommentEntry paramCommentEntry);
   
-  public abstract void c();
+  public abstract void a(CommentEntry paramCommentEntry, int paramInt);
+  
+  public abstract void b(CommentEntry paramCommentEntry);
+  
+  public abstract void c(CommentEntry paramCommentEntry);
 }
 
 

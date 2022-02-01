@@ -1,29 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.ServiceProtocolSerializable;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-public class affw
+class affw
+  implements ImageAssetDelegate
 {
-  public static void a(FaceDetectForThirdPartyManager.AppConf paramAppConf, String paramString)
+  affw(afft paramafft) {}
+  
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    if ((paramAppConf == null) || (paramAppConf.serviceProtocols.isEmpty()))
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inScaled = true;
+    localOptions.inDensity = 320;
+    try
     {
-      QLog.d("QQIdentiferUtil", 1, new Object[] { "report action=", paramString, ", appConf.serviceProtocols.isEmpty, not save" });
-      ForwardUtils.a(null, paramString, 1, new String[0]);
-      return;
+      paramLottieImageAsset = bfvo.a(afft.a(this.a) + "images/" + paramLottieImageAsset.getFileName(), localOptions);
+      return paramLottieImageAsset;
     }
-    paramAppConf = (FaceDetectForThirdPartyManager.ServiceProtocolSerializable)paramAppConf.serviceProtocols.get(0);
-    if ((TextUtils.isEmpty(paramAppConf.name)) || (TextUtils.isEmpty(paramAppConf.url)))
+    catch (Exception paramLottieImageAsset)
     {
-      QLog.d("QQIdentiferUtil", 1, new Object[] { "report action=", paramString, ", sp.name || sp.url empty, not save" });
-      ForwardUtils.a(null, paramString, 1, new String[0]);
-      return;
+      QLog.e("LottieAnimDirector", 1, "Delegate decode bitmap error");
+      return null;
     }
-    QLog.d("QQIdentiferUtil", 1, new Object[] { "report action=", paramString, ", auto save" });
-    ForwardUtils.a(null, paramString, 2, new String[0]);
+    catch (OutOfMemoryError paramLottieImageAsset)
+    {
+      QLog.e("LottieAnimDirector", 1, "Delegate decode bitmap OOM");
+    }
+    return null;
   }
 }
 

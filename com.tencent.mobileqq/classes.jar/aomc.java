@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import java.io.File;
-import java.util.Comparator;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 
 public class aomc
-  implements Comparator<File>
+  extends aomd
 {
-  public aomc(CleanCache paramCleanCache) {}
+  public String a = "10001";
   
-  public int a(File paramFile1, File paramFile2)
+  public void a(AppInterface paramAppInterface, Bundle paramBundle)
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
-    }
-    return 0;
+    this.a = paramBundle.getString("PromotionDescription");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aomc
  * JD-Core Version:    0.7.0.1
  */

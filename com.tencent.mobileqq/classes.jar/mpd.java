@@ -1,29 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.ui.funchat.zimu.ZimuViewMotion;
-import java.lang.ref.WeakReference;
+import com.tencent.av.service.AVRedPacketConfig;
 
-public final class mpd
-  extends Handler
+public class mpd
 {
-  WeakReference<ZimuViewMotion> a;
+  public AVRedPacketConfig a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b = true;
+  public boolean c;
   
-  public mpd(ZimuViewMotion paramZimuViewMotion)
+  public String toString()
   {
-    this.a = new WeakReference(paramZimuViewMotion);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = (ZimuViewMotion)this.a.get();
-    } while (paramMessage == null);
-    paramMessage.e();
+    return "AVRedBagConfig, mMainSwitch[" + this.a + "], mResReady[" + this.c + "]";
   }
 }
 

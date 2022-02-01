@@ -17,7 +17,9 @@ public class CpuUtils
     }
   }
   
-  public static long a()
+  private static native long getCpuFeatures();
+  
+  public static long getCpuProperty()
   {
     try
     {
@@ -30,8 +32,6 @@ public class CpuUtils
     }
     return 0L;
   }
-  
-  private static native long getCpuFeatures();
 }
 
 

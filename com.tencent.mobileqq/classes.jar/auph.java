@@ -1,14 +1,15 @@
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.qqshare.CustomizedShareForQQ;
+
 class auph
-  implements aumz
+  implements CustomizedShareForQQ
 {
-  auph(aupf paramaupf) {}
+  auph(aupc paramaupc) {}
   
-  public void a()
+  public void shareToQQ(Bundle paramBundle)
   {
-    this.a.c();
+    auqe.a().c(paramBundle);
   }
-  
-  public void b() {}
 }
 
 

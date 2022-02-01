@@ -1,20 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
 
 public class tey
-  implements pql
+  implements Animator.AnimatorListener
 {
-  public tey(BridgeModule paramBridgeModule, String paramString) {}
+  public tey(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
   
-  public void onLoadUserInfoFailed(String paramString1, String paramString2)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, paramString2);
+    ColorBandVideoEntranceButton.a(this.a).setVisibility(8);
   }
   
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    BridgeModule.access$2000(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, paramReadInJoyUserInfo, this.jdField_a_of_type_JavaLangString);
+    ColorBandVideoEntranceButton.a(this.a).setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    ColorBandVideoEntranceButton.a(this.a).setVisibility(8);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

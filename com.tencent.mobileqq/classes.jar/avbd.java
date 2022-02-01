@@ -1,25 +1,14 @@
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import android.content.DialogInterface.OnCancelListener;
 
 class avbd
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  avbd(avba paramavba) {}
+  avbd(avau paramavau) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (paramInt == 1)
-    {
-      ForwardSdkBaseOption.a(avba.a(this.a), false, "shareToQQ", avba.a(this.a));
-      noe.a(avba.a(this.a), 0, "", "");
-      if (avba.a(this.a) != null) {
-        avba.a(this.a).b(1);
-      }
-      avba.a(this.a).moveTaskToBack(true);
-    }
+    this.a.b(false);
   }
 }
 

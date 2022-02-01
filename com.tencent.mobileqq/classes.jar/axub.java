@@ -1,13 +1,15 @@
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 class axub
 {
-  public int a;
-  public String a;
-  
-  public axub()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-  }
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View b;
+  View c;
+  View d;
 }
 
 

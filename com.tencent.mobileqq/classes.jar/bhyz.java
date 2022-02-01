@@ -1,68 +1,58 @@
-import android.os.IBinder;
-import android.os.IBinder.DeathRecipient;
-import android.os.RemoteException;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.open.appstore.js.DownloadInterfaceNew;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhyz
-  implements IBinder.DeathRecipient, bhza
+  implements bicf
 {
-  private long jdField_a_of_type_Long;
-  private behs jdField_a_of_type_Behs;
-  private String jdField_a_of_type_JavaLangString;
+  public bhyz(DownloadInterfaceNew paramDownloadInterfaceNew, String paramString) {}
   
-  private bhyz(long paramLong, String paramString, behs parambehs)
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Behs = parambehs;
-    try
-    {
-      parambehs.asBinder().linkToDeath(this, 0);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      QLog.e("QuickUpdateIPCModule", 1, "linkToDeath fail: " + this, paramString);
-    }
+    bhzm.e("DownloadInterfaceNew", "[innerQuery] [onException] errorCode=" + paramInt + ", errorMsg=" + paramString);
   }
   
-  public void binderDied()
+  public void a(List<DownloadInfo> paramList)
   {
-    QLog.e("QuickUpdateIPCModule", 1, "binderDied: " + this);
-    bics.a(this.jdField_a_of_type_Long).removeListener(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this);
-  }
-  
-  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
-  {
-    QLog.e("QuickUpdateIPCModule", 1, "onCompleted: " + paramInt1 + ", " + this);
-    try
+    bhzm.c("DownloadInterfaceNew", "[innerQuery] onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
     {
-      this.jdField_a_of_type_Behs.onComplete(paramString1, paramInt1);
-      return;
+      if (i < j)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("packagename", localDownloadInfo.e);
+          localJSONObject.put("versioncode", localDownloadInfo.b);
+          localJSONObject.put("url", localDownloadInfo.d);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONObject.put("download_from", localDownloadInfo.h);
+          localJSONObject.put("writecodestate", localDownloadInfo.j);
+          localJSONArray.put(localJSONObject);
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
+      }
     }
-    catch (RemoteException paramQQAppInterface)
-    {
-      QLog.e("QuickUpdateIPCModule", 1, "onCompleted: " + this, paramQQAppInterface);
-    }
-  }
-  
-  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
-  {
-    try
-    {
-      this.jdField_a_of_type_Behs.onProgress(paramString1, paramLong2, paramLong3);
-      return;
-    }
-    catch (RemoteException paramQQAppInterface)
-    {
-      QLog.e("QuickUpdateIPCModule", 1, "onProgress: " + this, paramQQAppInterface);
-    }
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_Long + "_" + this.jdField_a_of_type_JavaLangString + "," + super.toString();
+    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
+    bhzm.c("DownloadInterfaceNew", "[innerQuery] querySucess : " + paramList);
+    DownloadInterfaceNew.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDownloadInterfaceNew, paramList);
   }
 }
 

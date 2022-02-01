@@ -1,26 +1,24 @@
-import java.io.File;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.qphone.base.util.QLog;
 
-class wlo
-  implements Comparable<wlo>
+public class wlo
+  extends vlc
 {
-  public final long a;
-  public final File a;
+  public wlo(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public wlo(wln paramwln, File paramFile)
+  public void a(boolean paramBoolean, vkx paramvkx)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Long = paramFile.lastModified();
-  }
-  
-  public int a(wlo paramwlo)
-  {
-    if (this.jdField_a_of_type_Long < paramwlo.jdField_a_of_type_Long) {
-      return -1;
+    if (QLog.isColorLevel()) {
+      QLog.d("MyVideoVisiblePersonPageView", 2, "onGetVideoReaderConfig: isSuccess " + paramBoolean + ", QQStoryBanInfo = " + paramvkx);
     }
-    if (this.jdField_a_of_type_Long == paramwlo.jdField_a_of_type_Long) {
-      return 0;
+    if (paramBoolean)
+    {
+      if (paramvkx != null) {
+        this.a.a(paramvkx.a);
+      }
+      return;
     }
-    return 1;
+    this.a.e();
   }
 }
 

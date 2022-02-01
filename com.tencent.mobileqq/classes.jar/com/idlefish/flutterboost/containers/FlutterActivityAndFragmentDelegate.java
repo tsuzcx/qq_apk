@@ -17,6 +17,7 @@ import com.idlefish.flutterboost.FlutterBoost.ConfigBuilder;
 import com.idlefish.flutterboost.Platform;
 import com.idlefish.flutterboost.Utils;
 import com.idlefish.flutterboost.XFlutterView;
+import com.idlefish.flutterboost.XPlatformPlugin;
 import com.idlefish.flutterboost.interfaces.IContainerManager;
 import com.idlefish.flutterboost.interfaces.IFlutterViewContainer;
 import com.idlefish.flutterboost.interfaces.IOperateSyncer;
@@ -25,7 +26,6 @@ import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.embedding.engine.plugins.activity.ActivityControlSurface;
 import io.flutter.embedding.engine.systemchannels.LifecycleChannel;
 import io.flutter.embedding.engine.systemchannels.SystemChannel;
-import io.flutter.plugin.platform.PlatformPlugin;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,6 +33,7 @@ import java.util.Map;
 public class FlutterActivityAndFragmentDelegate
   implements IFlutterViewContainer
 {
+  private static int ACTIVITY_CONTROL_SURFACE_ATTACH_TO_ACTVITY_HASH_CODE = 0;
   private static final String TAG = "FlutterActivityAndFragmentDelegate";
   @Nullable
   private FlutterEngine flutterEngine;
@@ -45,7 +46,7 @@ public class FlutterActivityAndFragmentDelegate
   private boolean isFlutterEngineFromHost;
   protected IOperateSyncer mSyncer;
   @Nullable
-  private PlatformPlugin platformPlugin;
+  private XPlatformPlugin platformPlugin;
   
   public FlutterActivityAndFragmentDelegate(@NonNull FlutterActivityAndFragmentDelegate.Host paramHost)
   {
@@ -153,7 +154,7 @@ public class FlutterActivityAndFragmentDelegate
     if (this.flutterEngine == null) {
       setupFlutterEngine();
     }
-    this.platformPlugin = this.host.providePlatformPlugin(this.host.getActivity(), this.flutterEngine);
+    this.platformPlugin = this.host.providePlatformPlugin(this.flutterEngine);
     this.host.configureFlutterEngine(this.flutterEngine);
     this.host.getActivity().getWindow().setFormat(-3);
   }
@@ -173,7 +174,6 @@ public class FlutterActivityAndFragmentDelegate
   public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
     Log.v("FlutterActivityAndFragmentDelegate", "Creating FlutterView.");
-    this.flutterEngine.getActivityControlSurface().attachToActivity(this.host.getActivity(), this.host.getLifecycle());
     this.mSyncer = FlutterBoost.instance().containerManager().generateSyncer(this);
     ensureAlive();
     this.flutterView = new XFlutterView(this.host.getActivity(), FlutterBoost.instance().platform().renderMode(), this.host.getTransparencyMode());
@@ -204,8 +204,11 @@ public class FlutterActivityAndFragmentDelegate
     ensureAlive();
     if (this.platformPlugin != null)
     {
-      this.platformPlugin.destroy();
+      this.platformPlugin.detachActivity();
       this.platformPlugin = null;
+    }
+    if ((ACTIVITY_CONTROL_SURFACE_ATTACH_TO_ACTVITY_HASH_CODE != 0) || (ACTIVITY_CONTROL_SURFACE_ATTACH_TO_ACTVITY_HASH_CODE == this.host.getActivity().hashCode())) {
+      this.flutterEngine.getActivityControlSurface().detachFromActivityForConfigChanges();
     }
     Utils.fixInputMethodManagerLeak(this.host.getActivity());
   }
@@ -271,7 +274,15 @@ public class FlutterActivityAndFragmentDelegate
     Log.v("FlutterActivityAndFragmentDelegate", "onResume()");
     ensureAlive();
     this.flutterEngine.getLifecycleChannel().appIsResumed();
-    this.flutterEngine.getActivityControlSurface().attachToActivity(this.host.getActivity(), this.host.getLifecycle());
+    if ((ACTIVITY_CONTROL_SURFACE_ATTACH_TO_ACTVITY_HASH_CODE == 0) || (ACTIVITY_CONTROL_SURFACE_ATTACH_TO_ACTVITY_HASH_CODE != this.host.getActivity().hashCode()))
+    {
+      this.flutterEngine.getActivityControlSurface().detachFromActivityForConfigChanges();
+      this.flutterEngine.getActivityControlSurface().attachToActivity(this.host.getActivity(), this.host.getLifecycle());
+      ACTIVITY_CONTROL_SURFACE_ATTACH_TO_ACTVITY_HASH_CODE = this.host.getActivity().hashCode();
+    }
+    if (this.platformPlugin != null) {
+      this.platformPlugin.attachToActivity(this.host.getActivity());
+    }
   }
   
   public void onStart()
@@ -336,7 +347,7 @@ public class FlutterActivityAndFragmentDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.idlefish.flutterboost.containers.FlutterActivityAndFragmentDelegate
  * JD-Core Version:    0.7.0.1
  */

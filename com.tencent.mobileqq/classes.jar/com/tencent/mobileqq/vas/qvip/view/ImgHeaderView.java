@@ -7,20 +7,20 @@ import android.view.LayoutInflater;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bicz;
-import bidb;
-import bidc;
-import bidd;
-import bmzn;
+import bgjk;
+import bgjm;
+import bgjn;
+import bgjo;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
 import com.tencent.mobileqq.widget.RoundImageView;
-import zps;
+import cooperation.qzone.mobilereport.MobileReportManager;
 
 public class ImgHeaderView
   extends RelativeLayout
-  implements bidb
+  implements bgjm
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -39,10 +39,10 @@ public class ImgHeaderView
     paramString1 = new Intent(paramActivity, QQBrowserActivity.class);
     paramString1.putExtra("url", this.jdField_a_of_type_JavaLangString);
     paramActivity.startActivity(paramString1);
-    bmzn.a().a("QQVipAccount", "1", "1", paramInt + 1 + "", "", "1", 102, 1);
+    MobileReportManager.getInstance().reportAction("QQVipAccount", "1", "1", paramInt + 1 + "", "", "1", 102, 1);
     try
     {
-      bicz.a(118, paramQQVipMsgInfo, paramInt);
+      bgjk.a(118, paramQQVipMsgInfo, paramInt);
       return;
     }
     catch (Throwable paramActivity)
@@ -56,19 +56,19 @@ public class ImgHeaderView
     try
     {
       this.jdField_a_of_type_JavaLangString = paramQQVipMsgInfo.url;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561935, this, false));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561812, this, false));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(0);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368491));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius(zps.a(getContext(), 6.0F), true);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368516));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius(UIUtils.dip2px(getContext(), 6.0F), true);
       URLDrawable localURLDrawable = URLDrawable.getDrawable(paramQQVipMsgInfo.coverUrl);
       this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(localURLDrawable);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378603));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378367));
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramQQVipMsgInfo.title);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365424));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bidc(this, paramActivity, paramQQVipMsgInfo, paramInt));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bidd(this, paramActivity, paramQQVipMsgInfo, paramInt));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365456));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bgjn(this, paramActivity, paramQQVipMsgInfo, paramInt));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bgjo(this, paramActivity, paramQQVipMsgInfo, paramInt));
       addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      bicz.a(117, paramQQVipMsgInfo, paramInt);
+      bgjk.a(117, paramQQVipMsgInfo, paramInt);
       return;
     }
     catch (Throwable paramQQVipMsgInfo)

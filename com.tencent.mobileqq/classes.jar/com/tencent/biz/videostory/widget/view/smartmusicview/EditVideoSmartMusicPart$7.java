@@ -1,17 +1,17 @@
 package com.tencent.biz.videostory.widget.view.smartmusicview;
 
-import abcu;
+import zzf;
 
 public class EditVideoSmartMusicPart$7
   implements Runnable
 {
-  public EditVideoSmartMusicPart$7(abcu paramabcu) {}
+  public EditVideoSmartMusicPart$7(zzf paramzzf) {}
   
   public void run()
   {
-    abcu.a(this.this$0).scrollToPosition(this.this$0.a() + 3);
-    abcu.a(this.this$0).smoothScrollToPosition(this.this$0.a());
-    abcu.a(this.this$0).setVisibility(0);
+    zzf.a(this.this$0).scrollToPosition(this.this$0.a() + 3);
+    zzf.a(this.this$0).smoothScrollToPosition(this.this$0.a());
+    zzf.a(this.this$0).setVisibility(0);
   }
 }
 

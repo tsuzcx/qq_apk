@@ -1,41 +1,25 @@
-public class aogl
-  implements anui
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import mqq.app.QQPermissionCallback;
+
+class aogl
+  implements QQPermissionCallback
 {
-  protected void a(int paramInt) {}
+  aogl(aogg paramaogg) {}
   
-  protected void a(int paramInt1, int paramInt2) {}
-  
-  protected void b(int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    switch (paramInt)
-    {
+    paramArrayOfString = new aogo();
+    paramArrayOfString.a = 2;
+    aohg.a(this.a.a.recognitions, aogg.a(this.a), paramArrayOfString);
+    if (aogg.a(this.a) != null) {
+      aogg.a(this.a).a(0, aogg.a(this.a));
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-            } while (paramObject == null);
-            paramObject = (Object[])paramObject;
-            a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
-            return;
-          } while (paramObject == null);
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length != 1);
-        a(((Integer)paramObject[0]).intValue());
-        return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length < 1);
-    b(((Integer)paramObject[0]).intValue());
+    aogg.a(this.a, null);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.grant();
   }
 }
 

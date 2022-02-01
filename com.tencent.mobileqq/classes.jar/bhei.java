@@ -1,16 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.widget.GridListView;
 
 public class bhei
-  implements DialogInterface.OnClickListener
+  extends DataSetObserver
 {
-  public bhei(UpgradeActivity paramUpgradeActivity) {}
+  public bhei(GridListView paramGridListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onChanged()
   {
-    UpgradeActivity.b(this.a);
-    this.a.finish();
+    if (this.a.jdField_a_of_type_Bhel != null) {
+      GridListView.a(this.a, this.a.jdField_a_of_type_Bhel.getCount());
+    }
+    if (this.a.jdField_a_of_type_Bhem != null) {
+      this.a.jdField_a_of_type_Bhem.notifyDataSetChanged();
+    }
+  }
+  
+  public void onInvalidated()
+  {
+    if (this.a.jdField_a_of_type_Bhel != null) {
+      GridListView.a(this.a, this.a.jdField_a_of_type_Bhel.getCount());
+    }
+    if (this.a.jdField_a_of_type_Bhem != null) {
+      this.a.jdField_a_of_type_Bhem.notifyDataSetInvalidated();
+    }
   }
 }
 

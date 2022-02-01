@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
-import amhr;
-import bhlq;
-import bhpc;
+import alco;
+import bfur;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class ShortVideoPlayActivity$14
   implements Runnable
@@ -11,8 +11,8 @@ public class ShortVideoPlayActivity$14
   
   public void run()
   {
-    bhpc localbhpc = bhlq.a(this.this$0, 232, null, this.a, new amhr(this), null);
-    ShortVideoPlayActivity.a(this.this$0, localbhpc);
+    QQCustomDialog localQQCustomDialog = bfur.a(this.this$0, 232, null, this.a, new alco(this), null);
+    ShortVideoPlayActivity.a(this.this$0, localQQCustomDialog);
   }
 }
 

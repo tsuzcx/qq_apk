@@ -32,7 +32,7 @@ public class DTEventDynamicParams
     return DTEventDynamicParams.InstanceHolder.access$200();
   }
   
-  IDTParamProvider getDTParamProvider()
+  public IDTParamProvider getDTParamProvider()
   {
     return this.mDtParamProvider;
   }

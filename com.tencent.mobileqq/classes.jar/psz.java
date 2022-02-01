@@ -1,19 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-class psz
-  implements View.OnClickListener
+public class psz
 {
-  psz(psx parampsx, long paramLong, ArticleInfo paramArticleInfo) {}
-  
-  public void onClick(View paramView)
+  public static void a(List<ArticleInfo> paramList)
   {
-    String str = oyu.g + bhkv.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
-    ozs.a(psx.a(this.jdField_a_of_type_Psx), str);
-    psx.a(1, ozs.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramList == null) || (paramList.size() <= 0)) {}
+    for (;;)
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        ArticleInfo localArticleInfo = (ArticleInfo)paramList.next();
+        if ((localArticleInfo != null) && (localArticleInfo.mFeedType == 29)) {
+          QLog.d("ReadInJoyLogHelper", 1, new Object[] { "printProteusOnline: \n", localArticleInfo.toProteusOnlineString() });
+        }
+      }
+    }
   }
 }
 

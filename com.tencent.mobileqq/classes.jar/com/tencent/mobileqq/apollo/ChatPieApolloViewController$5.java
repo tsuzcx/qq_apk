@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.apollo;
 
-import amuy;
-import angf;
-import anmq;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import alps;
+import amaz;
+import amhk;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.qphone.base.util.QLog;
 
 public class ChatPieApolloViewController$5
   implements Runnable
 {
-  public ChatPieApolloViewController$5(amuy paramamuy, int paramInt, BaseChatPie paramBaseChatPie, angf paramangf) {}
+  public ChatPieApolloViewController$5(alps paramalps, int paramInt, BaseChatPie paramBaseChatPie, amaz paramamaz) {}
   
   public void run()
   {
-    anmq.a(this.jdField_a_of_type_Int, 101, 0, new Object[] { "parallel surfaceReady" });
+    amhk.a(this.jdField_a_of_type_Int, 101, 0, new Object[] { "parallel surfaceReady" });
     QLog.i("sava_ChatPieApolloViewController", 1, "TraceReport CmShowStatUtil start preLoad Js");
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_Angf != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_Amaz != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo != null))
     {
-      this.jdField_a_of_type_Angf.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a);
-      this.jdField_a_of_type_Angf.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Amaz.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo);
+      this.jdField_a_of_type_Amaz.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType);
     }
   }
 }

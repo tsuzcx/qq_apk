@@ -1,8 +1,15 @@
-class anuu
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+
+public class anuu
+  extends anuv
 {
-  short a = -1;
-  short b = -1;
-  short c = 0;
+  public anuu(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  {
+    super(paramQQAppInterface, paramProxyManager);
+    this.a = DataLineMsgRecord.tableName(0);
+  }
 }
 
 

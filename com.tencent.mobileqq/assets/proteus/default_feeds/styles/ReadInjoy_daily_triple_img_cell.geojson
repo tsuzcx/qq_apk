@@ -27,15 +27,15 @@
                 "view_type": "container",
                 "layout_type": "layout_linear",
                 "direction": "horizontal",
-                "margin_left": "6",
-                "margin_top": "8",
+                "margin_left": "12",
+                "margin_top": "14",
                 "height": {
                     "type": "relative",
-                    "value": "84"
+                    "value": "82"
                 },
                 "width": {
                     "type": "relative",
-                    "value": "363"
+                    "value": "351"
                 },
                 "subviews": [
                     {
@@ -43,11 +43,11 @@
                         "layout_type": "layout_relative",
                         "height": {
                             "type": "relative",
-                            "value": "84"
+                            "value": "82"
                         },
                         "width": {
                             "type": "relative",
-                            "value": "120"
+                            "value": "116"
                         },
                         "subviews": [
                             {
@@ -65,20 +65,53 @@
                                         "0"
                                     ]
                                 }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_top_left_mask",
+                                "default_visible": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "left_top_round_corner"
+                                }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_bottom_left_mask",
+                                "default_visible": "YES",
+                                "align_parent_bottom": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "left_bottom_round_corner"
+                                }
                             }
                         ]
                     },
                     {
                         "view_type": "ReadInjoyAsynImageView",
                         "view_id": "id_article_large_imge_2",
-                        "margin_left":"1.5",
+                        "margin_left":"1",
                         "height": {
                             "type": "relative",
-                            "value": "84"
+                            "value": "82"
                         },
                         "width": {
                             "type": "relative",
-                            "value": "120"
+                            "value": "116"
                         },
                         "attributes": {
                             "setImageWithURLString:lineup:": [
@@ -90,14 +123,14 @@
                     {
                         "view_type": "container",
                         "layout_type": "layout_relative",
-                        "margin_left":"1.5",
+                        "margin_left":"1",
                         "height": {
                             "type": "relative",
-                            "value": "84"
+                            "value": "82"
                         },
                         "width": {
                             "type": "relative",
-                            "value": "120"
+                            "value": "116"
                         },
                         "subviews": [
                             {
@@ -115,6 +148,41 @@
                                         "0"
                                     ]
                                 }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_top_right_mask",
+                                "default_visible": "YES",
+                                "align_parent_right": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "right_top_round_corner"
+                                }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_bottom_right_mask",
+                                "default_visible": "YES",
+                                "align_parent_right": "YES",
+                                "align_parent_bottom": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "right_bottom_round_corner"
+                                }
                             }
                         ]
                     }
@@ -123,30 +191,32 @@
             {
                 "view_type": "UILabel",
                 "view_id": "id_artilce_title",
-                "margin_top": "8",
-                "margin_left": "8",
+                "margin_top": "4",
+                "margin_left": "12",
                 "height": {
                     "type": "wrap_content"
                 },
                 "width": {
                     "type": "relative",
-                    "value": "359"
+                    "value": "351"
                 },
                 "attributes": {
                     "setText:lineSpace:": [
                         "$article_title",
-                        "2"
+                        "5"
                     ],
                     "setTextColorString:": "$readable_title_text_color",
-                    "setFontSizeString:": "17",
+                    "setFontSizeString:": "18",
                     "setNumberOfLinesString:": "2"
                 }
             },
             {
                 "view_type": "container",
                 "layout_type": "layout_relative",
+                "direction": "horizontal",
                 "margin_top": "0.5",
-                "margin_left": "8",
+                "margin_bottom": "-7.5",
+                "margin_left": "12",
                 "height": {
                     "type": "relative",
                     "value": "30"
@@ -181,7 +251,7 @@
                                 "attributes": {
                                     "setText:": "$chioceness_label",
                                     "setTextColorString:": "#FF4335",
-                                    "setFontSizeString:": "12",
+                                    "setFontSizeString:": "11",
                                     "setNumberOfLinesString:": "1"
                                 }
                             },
@@ -239,7 +309,7 @@
                                 "attributes": {
                                     "setText:": "$sub_article_title",
                                     "setTextColorString:": "#A6A6A6",
-                                    "setFontSizeString:": "12",
+                                    "setFontSizeString:": "11",
                                     "setNumberOfLinesString:": "1"
                                 }
                             },
@@ -258,7 +328,7 @@
                                 "attributes": {
                                     "setText:": "$info_title",
                                     "setTextColorString:": "#A6A6A6",
-                                    "setFontSizeString:": "12",
+                                    "setFontSizeString:": "11",
                                     "setNumberOfLinesString:": "1"
                                 }
                             }
@@ -270,22 +340,7 @@
                 ]
             },
             {
-                "view_type": "UIView",
-                "view_id": "id_separator",
-                "margin_left": "6",
-                "margin_top": "7",
-                "default_visible": "YES",
-                "height": {
-                    "type": "absolutely",
-                    "value": "0.5"
-                },
-                "width": {
-                    "type": "relative",
-                    "value": "363"
-                },
-                "attributes": {
-                    "setBackgroundColorString:": "#E5E5E5"
-                }
+                "$includeComponet": "componet/separator_normal_bottom.geojson"
             }
         ]
     }

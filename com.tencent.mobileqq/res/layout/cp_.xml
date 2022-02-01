@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="horizontal" android:id="@id/nec" android:background="@color/ajr" android:layout_width="46.0dip" android:layout_height="46.0dip"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="200.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_gravity="center" android:id="@id/ne5" android:background="@drawable/gnt" android:layout_width="46.0dip" android:layout_height="46.0dip">
-        <com.tencent.image.URLImageView android:layout_gravity="center" android:id="@id/nem" android:layout_width="19.0dip" android:layout_height="19.0dip" android:scaleType="centerCrop" />
-    </FrameLayout>
-    <ImageView android:layout_gravity="center" android:id="@id/neu" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/ggr" />
-</merge>
+    <com.tencent.mobileqq.activity.aio.item.RoundRectUrlImageView android:id="@id/a7v" android:background="@drawable/e7k" android:layout_width="fill_parent" android:layout_height="200.0dip" android:scaleType="centerCrop" />
+    <LinearLayout android:orientation="vertical" android:id="@id/content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="24.0dip">
+        <com.tencent.image.URLImageView android:layout_gravity="left" android:id="@id/nrq" android:background="@drawable/e7u" android:padding="1.0dip" android:layout_width="50.0dip" android:layout_height="50.0dip" android:scaleType="centerCrop" />
+        <TextView android:textSize="17.0sp" android:textColor="@color/al3" android:layout_gravity="left" android:id="@id/kun" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" />
+        <LinearLayout android:layout_gravity="left" android:orientation="horizontal" android:id="@id/nlq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+            <com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView android:textSize="27.0sp" android:textColor="@color/al3" android:id="@id/nlp" android:background="@drawable/e7o" android:layout_width="38.0dip" android:layout_height="38.0dip" />
+            <TextView android:textSize="24.0sp" android:textStyle="bold" android:textColor="@color/al3" android:id="@id/nlo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.5dip" android:text=":" />
+            <com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView android:textSize="27.0sp" android:textColor="@color/al3" android:id="@id/nlr" android:background="@drawable/e7o" android:layout_width="38.0dip" android:layout_height="38.0dip" />
+            <TextView android:textSize="24.0sp" android:textStyle="bold" android:textColor="@color/al3" android:id="@id/nls" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.5dip" android:text=":" />
+            <com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView android:textSize="27.0sp" android:textColor="@color/al3" android:id="@id/nlt" android:background="@drawable/e7o" android:layout_width="38.0dip" android:layout_height="38.0dip" />
+        </LinearLayout>
+        <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:id="@id/mkk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/mkh" android:background="@drawable/e89" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="164.0dip" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true">
+        <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:id="@id/mki" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="2.0dip" android:layout_marginBottom="2.0dip" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/mkg" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="2.0dip" android:layout_marginRight="4.0dip" />
+    </LinearLayout>
+</RelativeLayout>

@@ -4,15 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bfox;
+import bdyh;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.io.File;
-import yvl;
+import xww;
 
 public class EditLocalVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditLocalVideoSource> CREATOR = new yvl();
+  public static final Parcelable.Creator<EditLocalVideoSource> CREATOR = new xww();
   public int a;
   @NonNull
   public final LocalMediaInfo a;
@@ -23,7 +23,7 @@ public class EditLocalVideoSource
   public EditLocalVideoSource(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(bfox.class.getClassLoader()));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(bdyh.class.getClassLoader()));
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.b = paramParcel.readInt();
   }
@@ -36,23 +36,7 @@ public class EditLocalVideoSource
     this.b = paramInt2;
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
-  }
-  
-  @NonNull
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
-  }
-  
-  public String b()
+  public String checkParam()
   {
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       return "sourcePath is empty";
@@ -75,6 +59,22 @@ public class EditLocalVideoSource
   public int describeContents()
   {
     return 0;
+  }
+  
+  public int getHeight()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight;
+  }
+  
+  @NonNull
+  public String getSourcePath()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int getWidth()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

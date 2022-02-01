@@ -1,19 +1,35 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajfa
+class ajfa
+  implements aiks
 {
-  public int a;
-  public AccountSearchPb.ResultItem a;
-  public AccountSearchPb.hotwordrecord a;
-  public AccountSearchPb.record a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  ajfa(ajey paramajey) {}
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MainAssistObserver", 1, "onUnreadCountChanged, count = " + paramInt);
+    }
+    this.a.f();
+  }
+  
+  public void a(apus paramapus)
+  {
+    if (QLog.isColorLevel())
+    {
+      if (paramapus == null) {
+        break label46;
+      }
+      QLog.d("MainAssistObserver", 1, "onTroopNotificationConfigUpdate, newConf = " + paramapus.toString());
+    }
+    for (;;)
+    {
+      this.a.f();
+      return;
+      label46:
+      QLog.d("MainAssistObserver", 1, "onTroopNotificationConfigUpdate, newConf is null ");
+    }
+  }
 }
 
 

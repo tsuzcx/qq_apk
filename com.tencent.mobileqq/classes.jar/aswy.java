@@ -1,18 +1,67 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.GestureRelativeLayout;
 
-public final class aswy
-  implements Parcelable.Creator<MiniAppRecommInfo.MiniApp>
+public class aswy
+  implements GestureDetector.OnGestureListener
 {
-  public MiniAppRecommInfo.MiniApp a(Parcel paramParcel)
+  private aswy(SimpleFileViewer.GestureRelativeLayout paramGestureRelativeLayout) {}
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    return new MiniAppRecommInfo.MiniApp(paramParcel);
+    return false;
   }
   
-  public MiniAppRecommInfo.MiniApp[] a(int paramInt)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    return new MiniAppRecommInfo.MiniApp[paramInt];
+    return false;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (Math.abs(paramFloat2) > Math.abs(paramFloat1))
+    {
+      paramMotionEvent1 = this.a.a.b();
+      if (paramFloat2 <= 0.0F) {
+        break label97;
+      }
+      if (paramMotionEvent1 != null) {
+        paramMotionEvent1.setVisibility(8);
+      }
+      if (this.a.a.jdField_a_of_type_Athk != null) {
+        this.a.a.jdField_a_of_type_Athk.b(true);
+      }
+      if (this.a.a.jdField_a_of_type_Athi != null) {
+        this.a.a.jdField_a_of_type_Athi.b(true);
+      }
+    }
+    label97:
+    do
+    {
+      do
+      {
+        return false;
+      } while (paramFloat2 >= 0.0F);
+      if (paramMotionEvent1 != null) {
+        paramMotionEvent1.setVisibility(0);
+      }
+      if (this.a.a.jdField_a_of_type_Athk != null) {
+        this.a.a.jdField_a_of_type_Athk.a(true);
+      }
+    } while (this.a.a.jdField_a_of_type_Athi == null);
+    this.a.a.jdField_a_of_type_Athi.a(true);
+    return false;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

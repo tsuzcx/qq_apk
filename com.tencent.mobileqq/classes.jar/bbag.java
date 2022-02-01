@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
+import java.util.Comparator;
 
-public final class bbag
-  implements Parcelable.Creator<ReceiptMessageReadMemberListFragment.MemberInfo>
+final class bbag
+  implements Comparator<bbai>
 {
-  public ReceiptMessageReadMemberListFragment.MemberInfo a(Parcel paramParcel)
+  public int a(bbai parambbai1, bbai parambbai2)
   {
-    return new ReceiptMessageReadMemberListFragment.MemberInfo(paramParcel);
-  }
-  
-  public ReceiptMessageReadMemberListFragment.MemberInfo[] a(int paramInt)
-  {
-    return new ReceiptMessageReadMemberListFragment.MemberInfo[paramInt];
+    int j = Long.signum(parambbai2.jdField_a_of_type_Int - parambbai1.jdField_a_of_type_Int);
+    int i = j;
+    if (j == 0) {
+      i = Long.signum(parambbai2.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.timeStamp - parambbai1.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.timeStamp);
+    }
+    return i;
   }
 }
 

@@ -1,44 +1,109 @@
-import android.util.SparseArray;
+import android.graphics.drawable.Drawable;
+import android.view.View.OnClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class mak
+public abstract class mak
 {
-  public short a;
-  public byte[] a;
-  public short b = 240;
-  public short c;
-  public short d;
-  
-  public mak(byte[] paramArrayOfByte)
+  public static void a(long paramLong, VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_Short = 320;
-    paramArrayOfByte = lop.a(paramArrayOfByte);
-    loo localloo = (loo)paramArrayOfByte.get(4);
-    if (localloo != null) {
-      this.jdField_a_of_type_ArrayOfByte = localloo.a();
+    if (paramVideoAppInterface == null) {
+      return;
     }
-    if (this.jdField_a_of_type_ArrayOfByte != null)
-    {
-      paramArrayOfByte = (loo)paramArrayOfByte.get(3);
-      if (paramArrayOfByte != null)
-      {
-        paramArrayOfByte = paramArrayOfByte.a();
-        this.b = ((short)(paramArrayOfByte[0] << 8 | paramArrayOfByte[1] & 0xFF));
-        this.jdField_a_of_type_Short = ((short)(paramArrayOfByte[2] << 8 | paramArrayOfByte[3] & 0xFF));
-        this.c = ((short)(paramArrayOfByte[4] << 8 | paramArrayOfByte[5] & 0xFF));
-        int i = paramArrayOfByte[6];
-        this.d = ((short)(paramArrayOfByte[7] & 0xFF | i << 8));
-      }
-    }
+    QLog.w("NewTipsManager", 1, "hideAllTips, seq[" + paramLong + "]");
+    ((lih)paramVideoAppInterface.a(11)).b();
   }
   
-  public String toString()
+  public static void a(VideoAppInterface paramVideoAppInterface)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("SwitchFaceItem face.length = ");
-    if (this.jdField_a_of_type_ArrayOfByte != null) {}
-    for (int i = this.jdField_a_of_type_ArrayOfByte.length;; i = 0) {
-      return i + ", width = " + this.jdField_a_of_type_Short + ", height = " + this.b + ", fameWidth = " + this.c + ", frameHeight = " + this.d;
+    if (paramVideoAppInterface == null) {
+      return;
     }
+    ((lih)paramVideoAppInterface.a(11)).c();
   }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    ((lih)paramVideoAppInterface.a(11)).a(paramInt);
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, boolean paramBoolean)
+  {
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    ((lih)paramVideoAppInterface.a(11)).a(paramBoolean);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lih)paramVideoAppInterface.a(11)).a(paramInt);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, int paramInt2)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return a(paramVideoAppInterface, paramInt1, paramVideoAppInterface.getApp().getString(paramInt2));
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, long paramLong)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lih)paramVideoAppInterface.a(11)).a(paramInt, paramLong);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, long paramLong, boolean paramBoolean)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lih)paramVideoAppInterface.a(11)).a(paramInt, paramLong, paramBoolean);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lih)paramVideoAppInterface.a(11)).a(paramInt, paramString);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, String paramString, Drawable paramDrawable, int paramInt2, View.OnClickListener paramOnClickListener)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lih)paramVideoAppInterface.a(11)).a(paramInt1, paramString, paramDrawable, paramInt2, paramOnClickListener);
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString, View.OnClickListener paramOnClickListener)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((lih)paramVideoAppInterface.a(11)).a(paramInt, paramString, null, -1, paramOnClickListener);
+  }
+  
+  public static void b(VideoAppInterface paramVideoAppInterface)
+  {
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    ((lih)paramVideoAppInterface.a(11)).d();
+  }
+  
+  public static void b(VideoAppInterface paramVideoAppInterface, boolean paramBoolean) {}
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.model;
 
 import android.os.Handler;
-import axfj;
-import bhmi;
+import avsq;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.pb.emosm.EmosmPb.SubCmd0x5RspBQRecommend;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -13,11 +13,11 @@ import mqq.app.MobileQQ;
 public class EmoticonManager$26
   implements Runnable
 {
-  public EmoticonManager$26(axfj paramaxfj, int paramInt) {}
+  public EmoticonManager$26(avsq paramavsq, int paramInt) {}
   
   public void run()
   {
-    Object localObject = new File(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getFilesDir(), "recommemd_emotion_file__" + this.a + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+    Object localObject = new File(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getFilesDir(), "recommemd_emotion_file__" + this.a + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
     if (!((File)localObject).exists()) {}
     for (;;)
     {
@@ -33,7 +33,7 @@ public class EmoticonManager$26
       {
         localIOException.printStackTrace();
       }
-      byte[] arrayOfByte = bhmi.a((File)localObject);
+      byte[] arrayOfByte = FileUtils.fileToBytes((File)localObject);
       localObject = new EmosmPb.SubCmd0x5RspBQRecommend();
       if (arrayOfByte == null) {
         continue;

@@ -1,92 +1,38 @@
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupExtraEntity;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupMsgEntity;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.io.File;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class axgv
+class axgv
+  implements View.OnTouchListener
 {
-  private axgw a;
+  private axgv(axgt paramaxgt) {}
   
-  public axgv(String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = new axgw(paramString);
-  }
-  
-  public static void a(String paramString)
-  {
-    paramString = new File(paramString);
-    if ((paramString.exists()) && (Build.VERSION.SDK_INT >= 16)) {
-      SQLiteDatabase.deleteDatabase(paramString);
+    boolean bool3 = true;
+    boolean bool2 = false;
+    int i = paramMotionEvent.getAction();
+    Object localObject = this.a;
+    boolean bool1 = bool3;
+    if (i != 1) {
+      if (i != 3) {
+        break label105;
+      }
     }
-  }
-  
-  public int a()
-  {
-    return this.a.a("msg");
-  }
-  
-  public String a()
-  {
-    return this.a.name;
-  }
-  
-  public List<MsgBackupExtraEntity> a()
-  {
-    return this.a.a();
-  }
-  
-  public List<MsgBackupResEntity> a(int paramInt1, int paramInt2)
-  {
-    return this.a.b(paramInt1, paramInt2);
-  }
-  
-  public List<MsgBackupMsgEntity> a(long paramLong, int paramInt)
-  {
-    return this.a.a(paramLong, paramInt);
-  }
-  
-  public List<MsgBackupResEntity> a(long paramLong1, long paramLong2)
-  {
-    return this.a.a(paramLong1, paramLong2);
-  }
-  
-  public void a()
-  {
-    if (this.a.isOpen()) {
-      this.a.close();
+    label105:
+    for (bool1 = bool3;; bool1 = false)
+    {
+      ((axgt)localObject).b = bool1;
+      if ((this.a.b) && (this.a.jdField_a_of_type_Int != 2)) {
+        this.a.a();
+      }
+      localObject = this.a.jdField_a_of_type_Axgs.a();
+      bool1 = bool2;
+      if (localObject != null) {
+        bool1 = ((View.OnTouchListener)localObject).onTouch(paramView, paramMotionEvent);
+      }
+      return bool1;
     }
-  }
-  
-  public void a(List<MsgBackupMsgEntity> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    this.a.b(paramList);
-  }
-  
-  public int b()
-  {
-    return this.a.b("res");
-  }
-  
-  public void b(List<MsgBackupResEntity> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    this.a.c(paramList);
-  }
-  
-  public void c(List<MsgBackupExtraEntity> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    this.a.a(paramList);
   }
 }
 

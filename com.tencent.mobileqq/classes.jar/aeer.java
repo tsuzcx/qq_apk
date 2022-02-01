@@ -1,25 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
-import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
 public class aeer
-  implements DialogInterface.OnClickListener
+  implements TextWatcher
 {
-  public aeer(ChatHistoryImageView paramChatHistoryImageView) {}
+  public aeer(SelectedAndSearchBar paramSelectedAndSearchBar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (this.a.a != null)
-    {
-      this.a.a.b = false;
-      this.a.a.a(false);
+    if (SelectedAndSearchBar.a(this.a) != null) {
+      SelectedAndSearchBar.a(this.a).afterTextChanged(paramEditable);
     }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeer
  * JD-Core Version:    0.7.0.1
  */

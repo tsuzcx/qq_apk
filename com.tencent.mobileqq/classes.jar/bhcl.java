@@ -1,8 +1,19 @@
-public abstract interface bhcl
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.ContainerView;
+
+public class bhcl
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void a();
+  public bhcl(ContainerView paramContainerView) {}
   
-  public abstract void b();
+  public void onGlobalLayout()
+  {
+    if (!ContainerView.a(this.a))
+    {
+      ContainerView.a(this.a, ContainerView.a);
+      ContainerView.a(this.a, true);
+    }
+  }
 }
 
 

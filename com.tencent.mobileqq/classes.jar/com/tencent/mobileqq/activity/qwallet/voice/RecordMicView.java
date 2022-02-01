@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.voice;
 
-import alix;
-import aliy;
-import aliz;
+import akgp;
+import akgq;
+import akgr;
+import amtj;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
@@ -19,9 +20,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-import anzj;
-import bhgr;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -31,14 +31,14 @@ public class RecordMicView
 {
   float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int = 10000;
-  private aliz jdField_a_of_type_Aliz;
+  private akgr jdField_a_of_type_Akgr;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(5);
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  private List<aliy> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<akgq> jdField_a_of_type_JavaUtilList = new ArrayList();
   public boolean a;
-  private float jdField_b_of_type_Float = bhgr.a(getContext(), 2.0F);
+  private float jdField_b_of_type_Float = DisplayUtil.dip2px(getContext(), 2.0F);
   private int jdField_b_of_type_Int = 0;
   private int c;
   private int d;
@@ -48,19 +48,19 @@ public class RecordMicView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = true;
-    int i = bhgr.a(getContext(), 120.0F);
+    int i = DisplayUtil.dip2px(getContext(), 120.0F);
     this.d = i;
     this.c = i;
-    this.e = bhgr.a(getContext(), 33.0F);
+    this.e = DisplayUtil.dip2px(getContext(), 33.0F);
     ViewCompat.setImportantForAccessibility(this, 1);
-    setContentDescription(anzj.a(2131712162));
+    setContentDescription(amtj.a(2131712394));
     setClickable(true);
   }
   
   private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, int paramInt1, int paramInt2)
   {
-    aliy localaliy = new aliy(bhgr.a(getContext(), paramFloat1), bhgr.a(getContext(), paramFloat2), paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramInt1, paramInt2);
-    this.jdField_a_of_type_JavaUtilList.add(localaliy);
+    akgq localakgq = new akgq(DisplayUtil.dip2px(getContext(), paramFloat1), DisplayUtil.dip2px(getContext(), paramFloat2), paramFloat3, paramFloat4, paramFloat5, paramFloat6, paramFloat7, paramFloat8, paramInt1, paramInt2);
+    this.jdField_a_of_type_JavaUtilList.add(localakgq);
   }
   
   private void d()
@@ -72,7 +72,7 @@ public class RecordMicView
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new alix(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new akgp(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -141,37 +141,37 @@ public class RecordMicView
     int i;
     if (this.jdField_b_of_type_Int == 2)
     {
-      this.jdField_b_of_type_Float = bhgr.a(getContext(), 1.0F);
+      this.jdField_b_of_type_Float = DisplayUtil.dip2px(getContext(), 1.0F);
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        aliy localaliy = (aliy)((Iterator)localObject).next();
+        akgq localakgq = (akgq)((Iterator)localObject).next();
         paramCanvas.save();
-        float f2 = localaliy.jdField_a_of_type_Float;
-        f1 = localaliy.jdField_b_of_type_Float;
+        float f2 = localakgq.jdField_a_of_type_Float;
+        f1 = localakgq.jdField_b_of_type_Float;
         f2 = (getWidth() - f2) / 2.0F;
         f1 = (getHeight() - f1) / 2.0F;
-        i = (int)(255.0F * localaliy.c);
+        i = (int)(255.0F * localakgq.c);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-3405);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_b_of_type_Float);
         this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i);
         this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_b_of_type_Float * 0.5F + f2, this.jdField_b_of_type_Float * 0.5F + f1, getWidth() - this.jdField_b_of_type_Float * 0.5F - f2, getHeight() - this.jdField_b_of_type_Float * 0.5F - f1);
-        paramCanvas.scale(localaliy.d, localaliy.e, getWidth() / 2, getHeight() / 2);
-        paramCanvas.rotate(localaliy.jdField_a_of_type_Int, getWidth() / 2, getHeight() / 2);
+        paramCanvas.scale(localakgq.d, localakgq.e, getWidth() / 2, getHeight() / 2);
+        paramCanvas.rotate(localakgq.jdField_a_of_type_Int, getWidth() / 2, getHeight() / 2);
         paramCanvas.drawOval(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
         paramCanvas.restore();
       }
       paramCanvas.save();
       paramCanvas.translate((getWidth() - a()) / 2, (getHeight() - b()) / 2);
-      localObject = getResources().getDrawable(2130847335);
+      localObject = getResources().getDrawable(2130847244);
       ((Drawable)localObject).setBounds(0, 0, a(), b());
       ((Drawable)localObject).setAlpha(127);
       ((Drawable)localObject).draw(paramCanvas);
       paramCanvas.restore();
       return;
     }
-    this.jdField_b_of_type_Float = bhgr.a(getContext(), 2.0F);
+    this.jdField_b_of_type_Float = DisplayUtil.dip2px(getContext(), 2.0F);
     paramCanvas.save();
     paramCanvas.translate((getWidth() - a()) / 2, (getHeight() - b()) / 2);
     if (this.jdField_b_of_type_Int == 0)
@@ -196,7 +196,7 @@ public class RecordMicView
       this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i);
       this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_b_of_type_Float * 0.5F, this.jdField_b_of_type_Float * 0.5F, a() - this.jdField_b_of_type_Float * 0.5F, b() - this.jdField_b_of_type_Float * 0.5F);
       paramCanvas.drawOval(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-      localObject = getResources().getDrawable(2130847335);
+      localObject = getResources().getDrawable(2130847244);
       ((Drawable)localObject).setBounds(0, 0, a(), b());
       ((Drawable)localObject).setAlpha(i);
       ((Drawable)localObject).draw(paramCanvas);
@@ -231,8 +231,8 @@ public class RecordMicView
       this.jdField_b_of_type_Int = 1;
       invalidate();
       b();
-      if (this.jdField_a_of_type_Aliz != null) {
-        this.jdField_a_of_type_Aliz.a();
+      if (this.jdField_a_of_type_Akgr != null) {
+        this.jdField_a_of_type_Akgr.a();
       }
       this.jdField_a_of_type_Float = paramMotionEvent.getRawY();
       return true;
@@ -242,8 +242,8 @@ public class RecordMicView
     {
       if (i != 0)
       {
-        if (this.jdField_a_of_type_Aliz != null) {
-          this.jdField_a_of_type_Aliz.d();
+        if (this.jdField_a_of_type_Akgr != null) {
+          this.jdField_a_of_type_Akgr.d();
         }
         c();
         break;
@@ -254,10 +254,10 @@ public class RecordMicView
       }
       for (;;)
       {
-        if (this.jdField_a_of_type_Aliz == null) {
+        if (this.jdField_a_of_type_Akgr == null) {
           break label204;
         }
-        this.jdField_a_of_type_Aliz.b();
+        this.jdField_a_of_type_Akgr.b();
         break;
         c();
       }
@@ -272,9 +272,9 @@ public class RecordMicView
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void setStatusListener(aliz paramaliz)
+  public void setStatusListener(akgr paramakgr)
   {
-    this.jdField_a_of_type_Aliz = paramaliz;
+    this.jdField_a_of_type_Akgr = paramakgr;
   }
 }
 

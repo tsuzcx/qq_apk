@@ -1,7 +1,4 @@
-public abstract interface blfo
-{
-  public abstract void a(long paramLong);
-}
+class blfo {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

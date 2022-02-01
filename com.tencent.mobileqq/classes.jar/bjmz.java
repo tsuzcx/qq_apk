@@ -1,32 +1,128 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.open.agent.OpenAuthorityAccountView;
-import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import javax.crypto.Cipher;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
 
 public class bjmz
-  implements View.OnLayoutChangeListener
 {
-  public bjmz(OpenAuthorityAccountView paramOpenAuthorityAccountView, RelativeLayout paramRelativeLayout) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public static String a(String paramString1, String paramString2)
   {
-    paramInt1 = paramView.getHeight();
-    paramInt2 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenAuthorityAccountView", 2, paramInt1 + " /  / " + paramInt2);
-    }
-    paramView = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    if (paramView == null) {
-      paramView = new RelativeLayout.LayoutParams(-1, -2);
-    }
-    for (;;)
+    Object localObject = null;
+    try
     {
-      paramView.addRule(12);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
-      return;
-      paramView.height = -2;
+      paramString2 = a(paramString1.getBytes("UTF-8"), paramString2.getBytes("UTF-8"));
+      paramString1 = localObject;
+      if (paramString2 != null) {
+        paramString1 = bfuc.encodeToString(paramString2, 2);
+      }
+      return paramString1;
+    }
+    catch (UnsupportedEncodingException paramString1)
+    {
+      paramString1.printStackTrace();
+    }
+    return null;
+  }
+  
+  private static byte[] a(byte[] paramArrayOfByte)
+  {
+    byte[] arrayOfByte = new byte[24];
+    if (arrayOfByte.length > paramArrayOfByte.length)
+    {
+      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramArrayOfByte.length);
+      return arrayOfByte;
+    }
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, arrayOfByte.length);
+    return arrayOfByte;
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    try
+    {
+      paramArrayOfByte2 = new SecretKeySpec(a(paramArrayOfByte2), "DESede");
+      Cipher localCipher = Cipher.getInstance("DESede");
+      localCipher.init(1, paramArrayOfByte2);
+      paramArrayOfByte1 = localCipher.doFinal(paramArrayOfByte1);
+      return paramArrayOfByte1;
+    }
+    catch (NoSuchAlgorithmException paramArrayOfByte1)
+    {
+      paramArrayOfByte1.printStackTrace();
+      return null;
+    }
+    catch (NoSuchPaddingException paramArrayOfByte1)
+    {
+      for (;;)
+      {
+        paramArrayOfByte1.printStackTrace();
+      }
+    }
+    catch (Exception paramArrayOfByte1)
+    {
+      for (;;)
+      {
+        paramArrayOfByte1.printStackTrace();
+      }
+    }
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    try
+    {
+      paramString2 = paramString2.getBytes("UTF-8");
+      paramString1 = b(bfuc.decode(paramString1, 0), paramString2);
+      if (paramString1 != null)
+      {
+        paramString1 = new String(paramString1, "UTF-8");
+        return paramString1;
+      }
+      return null;
+    }
+    catch (UnsupportedEncodingException paramString1)
+    {
+      paramString1.printStackTrace();
+      return null;
+    }
+    catch (IllegalArgumentException paramString1)
+    {
+      for (;;)
+      {
+        paramString1.printStackTrace();
+      }
+    }
+  }
+  
+  public static byte[] b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    try
+    {
+      paramArrayOfByte2 = new SecretKeySpec(a(paramArrayOfByte2), "DESede");
+      Cipher localCipher = Cipher.getInstance("DESede");
+      localCipher.init(2, paramArrayOfByte2);
+      paramArrayOfByte1 = localCipher.doFinal(paramArrayOfByte1);
+      return paramArrayOfByte1;
+    }
+    catch (NoSuchAlgorithmException paramArrayOfByte1)
+    {
+      paramArrayOfByte1.printStackTrace();
+      return null;
+    }
+    catch (NoSuchPaddingException paramArrayOfByte1)
+    {
+      for (;;)
+      {
+        paramArrayOfByte1.printStackTrace();
+      }
+    }
+    catch (Exception paramArrayOfByte1)
+    {
+      for (;;)
+      {
+        paramArrayOfByte1.printStackTrace();
+      }
     }
   }
 }

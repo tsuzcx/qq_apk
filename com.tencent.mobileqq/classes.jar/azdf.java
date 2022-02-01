@@ -1,57 +1,45 @@
-import android.content.Intent;
-import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.pushdialog.PushDialogDbUtil.1;
+import com.tencent.mobileqq.pushdialog.PushDialogDbUtil.2;
+import com.tencent.mobileqq.pushdialog.PushDialogDbUtil.3;
+import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
 
 public class azdf
-  extends MSFServlet
 {
-  public String[] getPreferSSOCommands()
+  private static volatile azdf jdField_a_of_type_Azdf;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  
+  public static azdf a()
   {
-    return null;
+    if (jdField_a_of_type_Azdf == null) {}
+    try
+    {
+      if (jdField_a_of_type_Azdf == null) {
+        jdField_a_of_type_Azdf = new azdf();
+      }
+      return jdField_a_of_type_Azdf;
+    }
+    finally {}
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void a(EntityManager paramEntityManager, long paramLong, azdg paramazdg)
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("OlympicToolServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
-      }
-      ((OlympicToolAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
+    long l = System.currentTimeMillis() - 86400000L;
+    ThreadManager.post(new PushDialogDbUtil.1(this, paramEntityManager, new String[] { String.valueOf(paramLong), String.valueOf(l) }, paramLong, l, paramazdg), 8, null, false);
+  }
+  
+  public void a(EntityManager paramEntityManager, PushDialogTemplate paramPushDialogTemplate)
+  {
+    ThreadManager.post(new PushDialogDbUtil.2(this, paramEntityManager, paramPushDialogTemplate), 8, null, false);
+  }
+  
+  public void b(EntityManager paramEntityManager, PushDialogTemplate paramPushDialogTemplate)
+  {
+    if ((paramEntityManager == null) || (paramPushDialogTemplate == null)) {
       return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
     }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.i("OlympicToolServlet", 4, "send: " + paramIntent.getServiceCmd());
-        }
-      }
-    }
+    ThreadManager.post(new PushDialogDbUtil.3(this, paramEntityManager, paramPushDialogTemplate), 2, null, false);
   }
 }
 

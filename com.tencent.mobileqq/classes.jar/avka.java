@@ -1,8 +1,12 @@
-public class avka
+import com.tencent.mobileqq.lyric.common.TimerTaskManager;
+
+final class avka
+  extends avki<TimerTaskManager, Void>
 {
-  public long a;
-  public String a;
-  public long b;
+  protected TimerTaskManager a(Void paramVoid)
+  {
+    return new TimerTaskManager();
+  }
 }
 
 

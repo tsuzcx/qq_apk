@@ -1,35 +1,38 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.app.MobileQQ;
-import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfoResult;
 
-class bejp
-  extends bejr
+public class bejp
+  extends BroadcastReceiver
 {
-  bejp(bejo parambejo) {}
+  public bejp(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, List<oidb_0xe61.BeancurdCubeInfoResult> paramList)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    String str;
-    if (QLog.isColorLevel())
+    if (this.a.a != null)
     {
-      str = MobileQQ.getShortUinStr(paramString2);
-      if (paramList != null) {
-        break label111;
+      paramContext = paramIntent.getAction();
+      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+        break label51;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("PublishHomeWorkFragment", 2, "receive action_recv_video_request");
+      }
+      this.a.a.b(102);
     }
-    label111:
-    for (int i = 0;; i = paramList.size())
-    {
-      QLog.i("Tofu_TofuManager", 2, String.format("onPullTofuMsgData suc=%b selfUin=%s frdUin=%s size=%d", new Object[] { Boolean.valueOf(paramBoolean), paramString1, str, Integer.valueOf(i) }));
-      if (paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-        this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, new Object[] { Boolean.valueOf(paramBoolean), paramString2, paramList }).sendToTarget();
-      }
+    label51:
+    while (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
       return;
     }
+    if ((((TelephonyManager)this.a.getActivity().getSystemService("phone")).getCallState() == 1) && (QLog.isColorLevel())) {
+      QLog.d("PublishHomeWorkFragment", 2, "receive action_phone_state_changed|call_state_ringing");
+    }
+    this.a.a.b(102);
   }
 }
 

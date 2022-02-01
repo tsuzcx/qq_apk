@@ -1,15 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aiiz
-  implements DialogInterface.OnClickListener
+public abstract interface aiiz
 {
-  aiiz(aiit paramaiit) {}
+  public abstract Activity a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract View a();
+  
+  public abstract TextView a();
+  
+  public abstract atky a();
+  
+  public abstract bjmp a();
+  
+  public abstract QQAppInterface a();
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(Runnable paramRunnable);
+  
+  public abstract void a(String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract View b();
+  
+  public abstract boolean b();
+  
+  public abstract View c();
+  
+  public abstract View d();
 }
 
 

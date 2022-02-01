@@ -1,14 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
 
-class akvq
-  implements DialogInterface.OnClickListener
+public class akvq
 {
-  akvq(akvn paramakvn, Runnable paramRunnable) {}
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private akvq(RMVideoSwitchCameraPicMgr paramRMVideoSwitchCameraPicMgr)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = true;
   }
 }
 

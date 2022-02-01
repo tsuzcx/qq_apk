@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.flutter.download;
 
-import auww;
+import atjp;
 
 public final class QFlutterInstaller$1
   implements Runnable
 {
   public void run()
   {
-    this.jdField_a_of_type_Auww.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Atjp.onProgress(this.jdField_a_of_type_Int);
   }
 }
 

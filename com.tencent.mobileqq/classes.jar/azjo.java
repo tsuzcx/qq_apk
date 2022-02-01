@@ -1,22 +1,35 @@
-import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.videoplatform.api.VideoPlayParam;
+import java.io.File;
 
-class azjo
-  implements azkr
+public class azjo
 {
-  azjo(azjn paramazjn) {}
-  
-  public void a(PoiBean paramPoiBean)
+  public static boolean a(int paramInt, VideoPlayParam paramVideoPlayParam)
   {
-    try
+    if ((paramInt == 11022003) && (paramVideoPlayParam.mIsLocal) && (!TextUtils.isEmpty(paramVideoPlayParam.mVideoPath)))
     {
-      this.a.a(paramPoiBean);
-      return;
+      Object localObject = (apvd)apub.a().a(537);
+      if ((localObject != null) && (((apvd)localObject).e)) {
+        try
+        {
+          localObject = new File(paramVideoPlayParam.mVideoPath);
+          if (((File)localObject).exists())
+          {
+            ((File)localObject).delete();
+            if (QLog.isColorLevel()) {
+              QLog.d("VideoPlatformUtils", 0, "autoDelBadCache, delete file , path = " + paramVideoPlayParam.mVideoPath);
+            }
+            return true;
+          }
+        }
+        catch (Exception paramVideoPlayParam)
+        {
+          QLog.e("VideoPlatformUtils", 1, "autoDelBadCache error.", paramVideoPlayParam);
+        }
+      }
     }
-    catch (Throwable paramPoiBean)
-    {
-      QLog.e("LocationCategoryDetector", 1, "getPoiResultError", paramPoiBean);
-    }
+    return false;
   }
 }
 

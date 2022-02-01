@@ -1,6 +1,26 @@
-public abstract interface asgj
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
+
+class asgj
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(asgh paramasgh);
+  asgj(asgi paramasgi, long paramLong, UUID paramUUID, Activity paramActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      TroopFileTransferManager.a(this.jdField_a_of_type_Asgi.a, this.jdField_a_of_type_Long).a(this.jdField_a_of_type_JavaUtilUUID);
+      return;
+    }
+    new bebp(this.jdField_a_of_type_Long, this.jdField_a_of_type_Asgi.a, this.jdField_a_of_type_AndroidAppActivity).b(this.jdField_a_of_type_JavaUtilUUID);
+  }
 }
 
 

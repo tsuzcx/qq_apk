@@ -1,68 +1,62 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.widget.XListView;
 
 public class arcc
-  extends arca
+  implements arby
 {
-  public arbu a(String paramString)
+  private int jdField_a_of_type_Int = -16777216;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private XListView jdField_a_of_type_ComTencentWidgetXListView;
+  
+  public arcc(XListView paramXListView)
   {
-    QLog.d("ArkAIKeyWordConfigProcessor", 1, "[onParsed] type=" + type() + ", content = " + paramString);
-    for (;;)
-    {
-      try
-      {
-        arcn localarcn = (arcn)arax.a(paramString, arcn.class);
-        arcx localarcx;
-        QLog.i("ArkAIKeyWordConfigProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException1);
-      }
-      catch (QStorageInstantiateException localQStorageInstantiateException1)
-      {
-        try
-        {
-          localarcx = (arcx)arax.a(paramString, arcx.class);
-          return new arbw(paramString, localarcn, localarcx);
-        }
-        catch (QStorageInstantiateException localQStorageInstantiateException2)
-        {
-          Object localObject;
-          break label71;
-        }
-        localQStorageInstantiateException1 = localQStorageInstantiateException1;
-        localarcn = null;
-      }
-      label71:
-      localObject = null;
-    }
+    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
   }
   
-  public void a(arbu paramarbu)
+  public View a(int paramInt)
   {
-    super.a(paramarbu);
-    if (paramarbu == null) {
-      QLog.i("ArkAIKeyWordConfigProcessor", 1, "newConf is null");
-    }
-    apzu localapzu;
+    View localView = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetXListView.getHeaderViewsCount() + paramInt - this.jdField_a_of_type_ComTencentWidgetXListView.getFirstVisiblePosition());
+    if (localView == null) {}
     do
     {
-      return;
-      QLog.d("ArkAIKeyWordConfigProcessor", 1, "[onUpdate] type=" + type() + ", content = " + paramarbu.a());
-      localapzu = ((ArkAppCenter)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(121)).a();
-      paramarbu = paramarbu.a();
-    } while (paramarbu == null);
-    localapzu.a(paramarbu.a());
+      return null;
+      localView.setPressed(false);
+      localView.setDrawingCacheEnabled(true);
+    } while (localView.getDrawingCache() == null);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(localView.getDrawingCache());
+    localView.setDrawingCacheEnabled(false);
+    if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
+      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_ComTencentWidgetXListView.getContext());
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundColor(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetImageView.setPadding(0, 0, 0, 0);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(new ViewGroup.LayoutParams(localView.getWidth(), localView.getHeight()));
+    return this.jdField_a_of_type_AndroidWidgetImageView;
   }
   
-  public int type()
+  public void a(View paramView)
   {
-    return 186;
+    ((ImageView)paramView).setImageDrawable(null);
+    this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+  }
+  
+  public void a(View paramView, Point paramPoint1, Point paramPoint2) {}
+  
+  public void f(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arcc
  * JD-Core Version:    0.7.0.1
  */

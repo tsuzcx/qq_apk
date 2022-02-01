@@ -1,48 +1,49 @@
-public abstract class bbof
+import android.content.Intent;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+
+public class bbof
+  extends MSFServlet
 {
-  public static final String a;
-  public long a;
-  private String b;
-  
-  static
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    jdField_a_of_type_JavaLangString = bbhn.jdField_a_of_type_JavaLangString;
-  }
-  
-  public bbof(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  private void a()
-  {
-    if (this.b == null) {
-      this.b = (jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long + "/");
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    }
+    for (;;)
+    {
+      ((PeakAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
     }
   }
   
-  public final String a()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    a();
-    return this.b + "thumb.jpg";
-  }
-  
-  public final String b()
-  {
-    a();
-    return this.b + "combine.mp4";
-  }
-  
-  public final String c()
-  {
-    a();
-    return this.b + "audio.mp4";
-  }
-  
-  public String d()
-  {
-    a();
-    return this.b;
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (QLog.isColorLevel()) {
+        QLog.d("AudioTransServlet", 2, " onSend runhw:" + paramIntent);
+      }
+      if (paramIntent != null)
+      {
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+      }
+    }
   }
 }
 

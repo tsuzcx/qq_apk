@@ -1,12 +1,21 @@
+import UserGrowth.stSimpleMetaFeed;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+
 class vbv
-  implements aabr
+  extends AnimatorListenerAdapter
 {
-  vbv(vbr paramvbr) {}
+  vbv(vbt paramvbt) {}
   
-  public void a(aabu paramaabu, Object paramObject)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (paramaabu.e()) {
-      vbr.a(this.a, true);
+    super.onAnimationStart(paramAnimator);
+    StringBuilder localStringBuilder = new StringBuilder().append("collection animator start: ");
+    if (vbt.a(this.a) == null) {}
+    for (paramAnimator = "null";; paramAnimator = vbt.a(this.a).feed_desc)
+    {
+      uya.b("AbsWsUIGroup", paramAnimator);
+      return;
     }
   }
 }

@@ -1,19 +1,9 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.util.BinderWarpper;
+import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
 
-public final class blgr
-  implements Parcelable.Creator<BinderWarpper>
+final class blgr
+  implements IHttpCommunicatorFlowCount
 {
-  public BinderWarpper a(Parcel paramParcel)
-  {
-    return new BinderWarpper(paramParcel.readStrongBinder());
-  }
-  
-  public BinderWarpper[] a(int paramInt)
-  {
-    return new BinderWarpper[paramInt];
-  }
+  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
 }
 
 

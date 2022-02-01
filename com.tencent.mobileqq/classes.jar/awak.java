@@ -1,54 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class awak
-  extends BroadcastReceiver
+public class awak
+  implements View.OnClickListener
 {
-  awak(awaj paramawaj) {}
+  public awak(MultiCardFragment paramMultiCardFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    int j = paramIntent.getIntExtra("key_state", -1);
-    if (awaj.a(this.a)) {
-      awaj.a(this.a, j);
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "indicator onClick() called with: v = [" + paramView + "]");
     }
-    if (paramContext.equals(awax.a(awaj.a(this.a))))
-    {
-      paramContext = (awal)awaj.a(this.a).get();
-      if (paramContext != null) {
-        paramContext.a(j, paramIntent.getExtras());
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GroupVideoManager.IVPluginLoader", 2, "state:" + j);
-        }
-        paramContext = awaj.jdField_a_of_type_ArrayOfInt;
-        int k = paramContext.length;
-        int i = 0;
-        while (i < k)
-        {
-          if ((j == paramContext[i]) && (awaj.b(this.a)))
-          {
-            awaj.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
-            awaj.a(this.a, false);
-          }
-          i += 1;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("GroupVideoManager.IVPluginLoader", 2, "loadListener null");
-        }
-      }
-      if ((awaj.c(this.a)) && (j == 4))
-      {
-        awaj.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        awaj.a(this.a, false);
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

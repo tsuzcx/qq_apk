@@ -1,20 +1,43 @@
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class ailo
-  extends aojs
+public class ailo
+  extends MqqHandler
 {
-  ailo(ailn paramailn) {}
+  public ailo(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  protected void d(boolean paramBoolean, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.a.w != 2) && (paramBoolean) && (this.a.b != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.hasPostRedPoint())) {
-      this.a.b.a(true);
+    switch (paramMessage.what)
+    {
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString + "Q.hotchat.aio_post_red_point", 2, "onBuluoHotChatRedPointComing, troopUin:" + paramString);
-    }
+    do
+    {
+      return;
+      TroopNotifyAndRecommendView.d(this.a);
+      return;
+      this.a.j();
+      return;
+      paramMessage = paramMessage.obj;
+      try
+      {
+        this.a.a((List)paramMessage);
+        TroopNotifyAndRecommendView.e(this.a);
+        return;
+      }
+      catch (Exception paramMessage)
+      {
+        for (;;)
+        {
+          QLog.e("TroopNotifyAndRecommendView", 1, "handleRecommendData wrong");
+        }
+      }
+    } while (this.a.a == null);
+    this.a.a.c(2131718142);
+    this.a.a.show();
   }
 }
 

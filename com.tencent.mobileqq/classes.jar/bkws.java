@@ -1,43 +1,25 @@
-import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy.ICommandListenr;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 
-class bkws
-  implements zqq
+public class bkws
 {
-  bkws(bkwo parambkwo, ChannelProxy.ICommandListenr paramICommandListenr) {}
-  
-  public void onFailure(String paramString)
+  public static final boolean a(AppInterface paramAppInterface, Context paramContext, Bundle paramBundle, DialogInterface.OnDismissListener paramOnDismissListener, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr.onFailure(paramString);
+    if (paramBundle == null) {
+      return false;
     }
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr.onFinish(paramBoolean);
-    }
-  }
-  
-  public void onProgress(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr.onProgress(paramString);
-    }
-  }
-  
-  public void onStart()
-  {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr.onStart();
-    }
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyChannelProxy$ICommandListenr.onSuccess(paramString);
-    }
+    paramAppInterface = new Intent();
+    paramAppInterface.putExtra("share_data", paramBundle);
+    paramAppInterface.putExtra("readinjoy_launch_style", 2);
+    paramAppInterface.putExtra("readinjoy_launch_source", 11);
+    paramAppInterface.putExtra("channel_id", 9999);
+    bcef.b(null, "CliOper", "", "", "0X80059F4", "0X80059F4", 0, 0, "", "", "", "");
+    bkwm.a((Activity)paramContext, paramAppInterface, paramInt, paramOnDismissListener);
+    return true;
   }
 }
 

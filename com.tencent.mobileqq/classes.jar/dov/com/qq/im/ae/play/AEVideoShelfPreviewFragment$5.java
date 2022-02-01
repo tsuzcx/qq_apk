@@ -1,9 +1,9 @@
 package dov.com.qq.im.ae.play;
 
 import android.text.TextUtils;
-import born;
-import bpam;
-import bqip;
+import blvr;
+import bmbx;
+import bnfm;
 import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
 import java.io.File;
 import java.util.Timer;
@@ -15,47 +15,47 @@ class AEVideoShelfPreviewFragment$5
   
   public void run()
   {
-    if (AEVideoShelfPreviewFragment.a(this.this$0))
+    if (AEVideoShelfPreviewFragment.access$300(this.this$0))
     {
-      Object localObject = AEVideoShelfPreviewFragment.a(this.this$0).getOutputVideoPath();
+      Object localObject = AEVideoShelfPreviewFragment.access$100(this.this$0).getOutputVideoPath();
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         File localFile = new File((String)localObject);
         if (localFile.exists())
         {
           localFile.delete();
-          bpam.b(AEVideoShelfPreviewFragment.b(), "onCompletion---delete temp silent file because user cancel generation: " + (String)localObject);
+          bmbx.b(AEVideoShelfPreviewFragment.access$200(), "onCompletion---delete temp silent file because user cancel generation: " + (String)localObject);
         }
       }
-      if (!TextUtils.isEmpty(AEVideoShelfPreviewFragment.a(this.this$0)))
+      if (!TextUtils.isEmpty(AEVideoShelfPreviewFragment.access$500(this.this$0)))
       {
-        localObject = new File(AEVideoShelfPreviewFragment.a(this.this$0));
+        localObject = new File(AEVideoShelfPreviewFragment.access$500(this.this$0));
         if (((File)localObject).exists())
         {
           ((File)localObject).delete();
-          bpam.b(AEVideoShelfPreviewFragment.b(), "onCompletion---delete final file because user cancel generation: " + AEVideoShelfPreviewFragment.a(this.this$0));
+          bmbx.b(AEVideoShelfPreviewFragment.access$200(), "onCompletion---delete final file because user cancel generation: " + AEVideoShelfPreviewFragment.access$500(this.this$0));
         }
       }
-      AEVideoShelfPreviewFragment.b(this.this$0, false);
+      AEVideoShelfPreviewFragment.access$602(this.this$0, false);
       return;
     }
-    if ((int)AEVideoShelfPreviewFragment.a(this.this$0) < 100)
+    if ((int)AEVideoShelfPreviewFragment.access$700(this.this$0) < 100)
     {
-      AEVideoShelfPreviewFragment.a(this.this$0, 100);
+      AEVideoShelfPreviewFragment.access$800(this.this$0, 100);
       new Timer().schedule(new AEVideoShelfPreviewFragment.5.1(this), 0L);
     }
     for (;;)
     {
-      AEVideoShelfPreviewFragment.a(this.this$0, 0.0D);
-      AEVideoShelfPreviewFragment.b(this.this$0, 0.0D);
-      if (AEVideoShelfPreviewFragment.b(this.this$0))
+      AEVideoShelfPreviewFragment.access$702(this.this$0, 0.0D);
+      AEVideoShelfPreviewFragment.access$1002(this.this$0, 0.0D);
+      if (AEVideoShelfPreviewFragment.access$1100(this.this$0))
       {
-        AEVideoShelfPreviewFragment.c(this.this$0, false);
-        AEVideoShelfPreviewFragment.a(this.this$0.getActivity(), false);
+        AEVideoShelfPreviewFragment.access$1102(this.this$0, false);
+        AEVideoShelfPreviewFragment.keepScreenOn(this.this$0.getActivity(), false);
       }
-      bqip.a(this.this$0.getActivity(), AEVideoShelfPreviewFragment.a(this.this$0), this.this$0.a(), born.b(this.this$0.getActivity()), "caller_aecamera");
+      bnfm.a(this.this$0.getActivity(), AEVideoShelfPreviewFragment.access$500(this.this$0), this.this$0.getThumbPath(), blvr.b(this.this$0.getActivity()), "caller_aecamera");
       return;
-      AEVideoShelfPreviewFragment.b(this.this$0);
+      AEVideoShelfPreviewFragment.access$900(this.this$0);
     }
   }
 }

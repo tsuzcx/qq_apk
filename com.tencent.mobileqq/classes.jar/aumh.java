@@ -1,17 +1,6 @@
-class aumh
-  implements bihs
+public abstract interface aumh
 {
-  aumh(aumg paramaumg, aumz paramaumz) {}
-  
-  public void callback(int paramInt)
-  {
-    if ((paramInt == 1) || (paramInt == 2))
-    {
-      this.jdField_a_of_type_Aumz.a();
-      return;
-    }
-    this.jdField_a_of_type_Aumz.b();
-  }
+  public abstract void onGetKeyComplete(String paramString, boolean paramBoolean, int paramInt);
 }
 
 

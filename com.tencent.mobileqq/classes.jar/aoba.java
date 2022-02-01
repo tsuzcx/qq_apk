@@ -1,31 +1,18 @@
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARRelationShipAIOMsg;
 
-public class aoba
-  implements Comparator<arsh>
+public final class aoba
+  implements Parcelable.Creator<ARRelationShipAIOMsg>
 {
-  private boolean a(arsh paramarsh)
+  public ARRelationShipAIOMsg a(Parcel paramParcel)
   {
-    return (paramarsh != null) && (paramarsh.a != null);
+    return new ARRelationShipAIOMsg(paramParcel);
   }
   
-  public int a(arsh paramarsh1, arsh paramarsh2)
+  public ARRelationShipAIOMsg[] a(int paramInt)
   {
-    if ((a(paramarsh1)) && (a(paramarsh2))) {
-      if (paramarsh1.a.sPriority <= paramarsh2.a.sPriority) {}
-    }
-    do
-    {
-      return 1;
-      if (paramarsh1.a.sPriority < paramarsh2.a.sPriority) {
-        return -1;
-      }
-      return 0;
-      if (a(paramarsh1)) {
-        return -1;
-      }
-    } while (a(paramarsh2));
-    return 0;
+    return new ARRelationShipAIOMsg[paramInt];
   }
 }
 

@@ -1,58 +1,54 @@
-import android.view.View;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.AudioSenorManager;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqprotect.qsec.QSecFramework;
 
 public class aeyo
-  extends aeyq
+  implements SensorEventListener
 {
-  protected View a;
-  protected String a;
-  protected boolean a;
+  public aeyo(AudioSenorManager paramAudioSenorManager) {}
   
-  public aeyo(View paramView, String paramString)
-  {
-    super(null);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    super.onClick(paramView);
-    try
+    int i = 1;
+    if (AIOUtils.isRubbishSamsun()) {}
+    label141:
+    label144:
+    for (;;)
     {
-      if (QSecFramework.a().a(1001).booleanValue())
+      return;
+      boolean bool;
+      if (paramSensorEvent.values[0] < AudioSenorManager.c(this.a))
       {
-        if (!this.jdField_a_of_type_Boolean) {
-          break label106;
+        bool = true;
+        label28:
+        QLog.d("AudioPlayer_SenorManager", 2, "ProximityEventListener$onSensorChanged close =" + bool + " | mIsMoving =" + this.a.a);
+        if ((!AudioHelper.c()) && (bool) && (!this.a.a)) {
+          continue;
         }
-        View localView = this.jdField_a_of_type_AndroidViewView;
-        QSecFramework.a().a(5, 0, 1, new Object[] { Integer.valueOf(80), localView }, null);
-        this.jdField_a_of_type_Boolean = false;
-        if (QLog.isColorLevel()) {
-          QLog.i("MainFragment", 2, "附近人机上报: lebaView onCreate, from=" + this.jdField_a_of_type_JavaLangString);
+        if (!bool) {
+          break label141;
         }
       }
       for (;;)
       {
-        EventCollector.getInstance().onViewClicked(paramView);
+        if (i == AudioSenorManager.a(this.a)) {
+          break label144;
+        }
+        AudioSenorManager.a(this.a, i);
+        if (AudioSenorManager.a(this.a) == null) {
+          break;
+        }
+        AudioSenorManager.a(this.a).a(i);
         return;
-        label106:
-        QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(80), Integer.valueOf(1), Integer.valueOf(6), "lebaClick", null }, null);
-        if (QLog.isColorLevel()) {
-          QLog.i("MainFragment", 2, "附近人机上报: lebaView onClick, from=" + this.jdField_a_of_type_JavaLangString);
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("MainFragment", 2, "ABotDragClickListener onClick exp=", localException);
-        }
+        bool = false;
+        break label28;
+        i = 0;
       }
     }
   }

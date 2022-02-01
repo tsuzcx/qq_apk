@@ -21,8 +21,10 @@ class MiniGamePublicAccountWebFragment$5
   {
     this.this$0.parsePageEndTime = SystemClock.elapsedRealtime();
     super.onPageFinished(paramWebView, paramString);
-    MiniGamePublicAccountWebFragment.access$1100(this.this$0).setVisibility(0);
-    MiniGamePublicAccountWebFragment.access$1200(this.this$0).setVisibility(8);
+    MiniGamePublicAccountWebFragment.access$1300(this.this$0).setVisibility(0);
+    if (MiniGamePublicAccountWebFragment.access$1400(this.this$0) != null) {
+      MiniGamePublicAccountWebFragment.access$1400(this.this$0).setVisibility(8);
+    }
     int i = MiniGamePublicAccountWebFragment.access$600(this.this$0);
     this.this$0.notifyWebHeaderHeight(i);
   }

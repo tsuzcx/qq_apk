@@ -1,39 +1,96 @@
-import com.tencent.ark.ArkAppPreloader.PreloadAppCallback;
-import com.tencent.ark.open.ArkAppMgr;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
-class aqch
-  implements ArkAppPreloader.PreloadAppCallback
+public class aqch
+  extends aptq<aqci>
 {
-  aqch(aqcf paramaqcf) {}
-  
-  public void beginAppload(String paramString, int paramInt)
+  @NonNull
+  public aqci a(int paramInt)
   {
-    if (paramInt == 1) {
-      aqbz.a(paramString);
-    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    String str = bfyz.n(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin());
+    return new aqci(bfyz.o(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin()), str);
   }
   
-  public void onAppLoaded(boolean paramBoolean, String paramString, int paramInt)
+  @Nullable
+  public aqci a(aptx[] paramArrayOfaptx)
   {
-    if (paramInt == 1)
+    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length == 0)) {
+      return null;
+    }
+    paramArrayOfaptx = paramArrayOfaptx[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onParsed, content:" + paramArrayOfaptx);
+    }
+    try
     {
-      aqbz.b(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preload app appname=", paramString, ",success=", Boolean.valueOf(paramBoolean) });
+      paramArrayOfaptx = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramArrayOfaptx.getBytes("utf-8")));
+      NodeList localNodeList = paramArrayOfaptx.getElementsByTagName("video_redbag_config");
+      if ((localNodeList != null) && (localNodeList.getLength() > 0))
+      {
+        paramArrayOfaptx = new aqci(paramArrayOfaptx.getElementsByTagName("resUrl").item(0).getFirstChild().getNodeValue(), paramArrayOfaptx.getElementsByTagName("resMd5").item(0).getFirstChild().getNodeValue());
+        return paramArrayOfaptx;
       }
     }
+    catch (Exception paramArrayOfaptx)
+    {
+      QLog.e("RedBagVideoResProcessor", 1, "handleVideoRedbagConfig failed" + paramArrayOfaptx);
+    }
+    return null;
   }
   
-  public void onReleaseAndReload(String paramString, int paramInt)
+  public void a(aqci paramaqci)
   {
-    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload begin app = " + paramString);
-    ArkAppMgr.getInstance().getAppPathByName(paramString, "", "0.0.0.1", null, new aqci(this, paramString));
+    if (QLog.isColorLevel()) {
+      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onUpdate");
+    }
+  }
+  
+  public Class<aqci> clazz()
+  {
+    return aqci.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    return bfyz.ao(localQQAppInterface.getApp(), localQQAppInterface.getCurrentUin());
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onReqFailed");
+    }
+  }
+  
+  public int type()
+  {
+    return 252;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqch
  * JD-Core Version:    0.7.0.1
  */

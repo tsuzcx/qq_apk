@@ -1,16 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 
-public class oba
-  implements DialogInterface.OnClickListener
+class oba
+  implements DialogInterface.OnShowListener
 {
-  public oba(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
+  oba(oaw paramoaw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
+    oaw.a(this.a).getWindow().clearFlags(8);
   }
 }
 

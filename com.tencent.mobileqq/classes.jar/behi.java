@@ -1,8 +1,8 @@
-import android.graphics.drawable.Drawable;
+import java.util.UUID;
 
 public abstract interface behi
 {
-  public abstract void a(Drawable paramDrawable);
+  public abstract void a(UUID paramUUID, boolean paramBoolean, int paramInt, behh parambehh);
 }
 
 

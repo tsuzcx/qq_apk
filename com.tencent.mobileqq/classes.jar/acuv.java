@@ -1,43 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acuv
-  implements acun
+  implements View.OnClickListener
 {
-  private static acuw a;
+  public acuv(AutoRemarkActivity paramAutoRemarkActivity) {}
   
-  public static void a()
+  public void onClick(View paramView)
   {
-    a = null;
-  }
-  
-  public static void a(acuw paramacuw)
-  {
-    a = paramacuw;
-  }
-  
-  protected String a(String paramString)
-  {
-    if (a == null)
+    if ((this.a.a != null) && (this.a.a.isShowing()) && (this.a.a.getWindow() != null)) {}
+    try
     {
-      QLog.i("EndCardWebGdtMvWebJsCallHandler", 1, "onGetAdInfo mAction == null");
-      return "";
-    }
-    return a.a(paramString);
-  }
-  
-  protected void a(String paramString)
-  {
-    if (a == null)
-    {
-      QLog.i("EndCardWebGdtMvWebJsCallHandler", 1, "onHandleRewardVideoClick mAction == null");
+      this.a.a.dismiss();
+      label46:
+      this.a.a = null;
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    a.a(paramString);
-  }
-  
-  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
-  {
-    return true;
+    catch (Throwable localThrowable)
+    {
+      break label46;
+    }
   }
 }
 

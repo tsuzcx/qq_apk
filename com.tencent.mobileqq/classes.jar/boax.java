@@ -1,23 +1,6 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import java.util.Iterator;
-import java.util.List;
-
-class boax
-  implements ThreadPool.Job<Void>
+public class boax
 {
-  boax(boan paramboan, List paramList) {}
-  
-  public Void a(ThreadPool.JobContext paramJobContext)
-  {
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramJobContext.hasNext())
-    {
-      long l = ((Long)paramJobContext.next()).longValue();
-      this.jdField_a_of_type_Boan.b(l);
-    }
-    return null;
-  }
+  public void a() {}
 }
 
 

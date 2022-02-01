@@ -1,16 +1,19 @@
-public abstract interface aumb
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
+
+public final class aumb
+  implements Parcelable.Creator<IVPluginInfo>
 {
-  public abstract long a(bevm parambevm);
+  public IVPluginInfo a(Parcel paramParcel)
+  {
+    return new IVPluginInfo(paramParcel);
+  }
   
-  public abstract void a();
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract byte[] a(byte[] paramArrayOfByte, long paramLong);
-  
-  public abstract void b();
+  public IVPluginInfo[] a(int paramInt)
+  {
+    return new IVPluginInfo[paramInt];
+  }
 }
 
 

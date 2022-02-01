@@ -1,22 +1,48 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.database.sqlite.SQLiteDatabase;
+import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.persistence.TableBuilder;
+import java.util.HashMap;
+import java.util.Map;
 
-abstract class apdh
+public class apdh
+  extends EntityManagerFactory
 {
-  protected final SharedPreferences a = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 0);
+  private static Map<String, Class<?>> a = new HashMap();
   
-  protected abstract String a();
-  
-  protected void a()
+  static
   {
-    this.a.edit().putBoolean(a(), true).commit();
+    a.put(RockDownloadInfo.class.getSimpleName(), RockDownloadInfo.class);
   }
   
-  protected boolean a()
+  public apdh()
   {
-    return !this.a.contains(a());
+    super("RockDownload");
   }
+  
+  public SQLiteOpenHelper build(String paramString)
+  {
+    if (this.dbHelper == null)
+    {
+      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, paramString + ".db", null, 1);
+      this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
+    }
+    return this.dbHelper;
+  }
+  
+  public void createDatabase(SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new RockDownloadInfo()));
+  }
+  
+  public String getPackageName()
+  {
+    return getClass().getPackage().getName();
+  }
+  
+  public void upgradeDatabase(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
 }
 
 

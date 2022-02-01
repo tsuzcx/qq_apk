@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import afez;
-import affa;
+import adxr;
+import adxs;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -17,30 +17,31 @@ import java.util.Iterator;
 public class PublicFragmentActivityForPeak
   extends PublicFragmentActivity
 {
-  private ArrayList<WeakReference<affa>> a;
+  private ArrayList<WeakReference<adxs>> a;
   
   public static void b(Context paramContext, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass)
   {
-    afez.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, paramClass);
+    adxr.a(paramContext, paramIntent, PublicFragmentActivityForPeak.class, paramClass);
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public void doOnBackPressed()
   {
     Object localObject1 = super.a();
-    if ((localObject1 instanceof affa))
+    if ((localObject1 instanceof adxs))
     {
       if (this.a == null) {
         this.a = new ArrayList(2);
       }
-      this.a.add(new WeakReference((affa)localObject1));
+      this.a.add(new WeakReference((adxs)localObject1));
     }
     if (this.a != null)
     {
@@ -50,9 +51,9 @@ public class PublicFragmentActivityForPeak
         Object localObject2 = (WeakReference)((Iterator)localObject1).next();
         if (localObject2 != null)
         {
-          localObject2 = (affa)((WeakReference)localObject2).get();
+          localObject2 = (adxs)((WeakReference)localObject2).get();
           if (localObject2 != null) {
-            ((affa)localObject2).onBackPressed();
+            ((adxs)localObject2).onBackPressed();
           }
         }
       }
@@ -74,7 +75,7 @@ public class PublicFragmentActivityForPeak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicFragmentActivityForPeak
  * JD-Core Version:    0.7.0.1
  */

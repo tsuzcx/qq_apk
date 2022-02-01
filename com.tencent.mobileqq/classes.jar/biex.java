@@ -1,26 +1,92 @@
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.vas.watchword.VasWatchWord.addObserver.1.checkWatchWord.1.1;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import kotlin.Metadata;
+import java.lang.ref.WeakReference;
+import java.net.URL;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Leipc/EIPCResult;", "kotlin.jvm.PlatformType", "onCallback"}, k=3, mv={1, 1, 16})
-public final class biex
-  implements EIPCResultCallback
+public class biex
 {
-  public static final biex a = new biex();
+  protected static biex a;
+  protected static final String a;
+  protected volatile WeakReference<SharedPreferences> a;
   
-  public final void onCallback(EIPCResult paramEIPCResult)
+  static
   {
-    if (paramEIPCResult != null) {}
-    for (Bundle localBundle = paramEIPCResult.data; localBundle == null; localBundle = null) {
-      return;
+    jdField_a_of_type_JavaLangString = biex.class.getName();
+  }
+  
+  public static biex a()
+  {
+    try
+    {
+      if (jdField_a_of_type_Biex == null) {
+        jdField_a_of_type_Biex = new biex();
+      }
+      biex localbiex = jdField_a_of_type_Biex;
+      return localbiex;
     }
-    int i = paramEIPCResult.data.getInt("ret");
-    biev.a.b();
-    new Handler(Looper.getMainLooper()).post((Runnable)new VasWatchWord.addObserver.1.checkWatchWord.1.1(paramEIPCResult, i));
+    finally {}
+  }
+  
+  public String a(String paramString)
+  {
+    return a(paramString, null);
+  }
+  
+  public String a(String paramString, Bundle paramBundle)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(biew.a(bhpc.a().a(), "OpenSettings"));
+    }
+    String str1 = paramString;
+    String str2;
+    SharedPreferences localSharedPreferences;
+    String str3;
+    try
+    {
+      str2 = new URL(paramString).getHost();
+      if (str2 == null)
+      {
+        str1 = paramString;
+        bhzm.e(jdField_a_of_type_JavaLangString, "Get host error. url=" + paramString);
+        return paramString;
+      }
+      str1 = paramString;
+      localSharedPreferences = (SharedPreferences)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      str1 = paramString;
+      if (localSharedPreferences == null) {
+        return str1;
+      }
+      str1 = paramString;
+      str3 = localSharedPreferences.getString(str2, null);
+      if (str3 != null)
+      {
+        str1 = paramString;
+        if (!str2.equals(str3)) {}
+      }
+      else
+      {
+        str1 = paramString;
+        bhzm.c(jdField_a_of_type_JavaLangString, "host=" + str2 + ", envHost=" + str3);
+        return paramString;
+      }
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      bhzm.e(jdField_a_of_type_JavaLangString, "getEnvUrl error. url=" + str1);
+      return str1;
+    }
+    if (paramBundle != null)
+    {
+      str1 = paramString;
+      paramBundle.putString("env", localSharedPreferences.getString("OpenEnvironment", "formal"));
+    }
+    str1 = paramString;
+    paramString = paramString.replace(str2, str3);
+    str1 = paramString;
+    bhzm.c(jdField_a_of_type_JavaLangString, "return environment url : " + paramString);
+    str1 = paramString;
+    return str1;
   }
 }
 

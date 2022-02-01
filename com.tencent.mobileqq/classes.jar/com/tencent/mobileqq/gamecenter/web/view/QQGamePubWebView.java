@@ -3,12 +3,12 @@ package com.tencent.mobileqq.gamecenter.web.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import avoi;
+import aubk;
 
 public class QQGamePubWebView
   extends BaseNestScrollWebView
 {
-  private avoi a;
+  private aubk a;
   
   public QQGamePubWebView(Context paramContext)
   {
@@ -45,9 +45,9 @@ public class QQGamePubWebView
     super.setPaddingTop(paramInt);
   }
   
-  public void setViewVisibleListener(avoi paramavoi)
+  public void setViewVisibleListener(aubk paramaubk)
   {
-    this.a = paramavoi;
+    this.a = paramaubk;
   }
 }
 

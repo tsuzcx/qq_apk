@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.fragment;
 
+import amtj;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anzj;
-import bhlg;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.utils.ContactUtils;
 import java.util.Locale;
 
 class UnitedVerifyMsgEditFragment$1
@@ -28,7 +28,7 @@ class UnitedVerifyMsgEditFragment$1
       if (localObject1 != null) {
         break label153;
       }
-      localObject1 = bhlg.a(this.this$0.a.app, this.this$0.a.app.getAccount());
+      localObject1 = ContactUtils.getFriendNick(this.this$0.a.app, this.this$0.a.app.getAccount());
       label97:
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         break label255;
@@ -36,7 +36,7 @@ class UnitedVerifyMsgEditFragment$1
     }
     label153:
     label255:
-    for (localObject2 = String.format(Locale.getDefault(), anzj.a(2131714677), new Object[] { localObject1 });; localObject2 = String.format(Locale.getDefault(), anzj.a(2131714678), new Object[] { localObject2, localObject1 }))
+    for (localObject2 = String.format(Locale.getDefault(), amtj.a(2131714909), new Object[] { localObject1 });; localObject2 = String.format(Locale.getDefault(), amtj.a(2131714910), new Object[] { localObject2, localObject1 }))
     {
       this.this$0.a.runOnUiThread(new UnitedVerifyMsgEditFragment.1.1(this, (String)localObject2, (String)localObject1));
       return;
@@ -62,7 +62,7 @@ class UnitedVerifyMsgEditFragment$1
         localObject1 = ((TroopMemberInfo)localObject1).friendnick;
         break label97;
       }
-      localObject1 = bhlg.a(this.this$0.a.app, this.this$0.a.app.getAccount());
+      localObject1 = ContactUtils.getFriendNick(this.this$0.a.app, this.this$0.a.app.getAccount());
       break label97;
     }
   }

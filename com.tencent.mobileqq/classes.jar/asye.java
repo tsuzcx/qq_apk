@@ -1,17 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class asye
-  implements DialogInterface.OnClickListener
+  extends asxz
 {
-  public asye(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public asye(becp parambecp)
   {
-    paramDialogInterface.dismiss();
-    ExtendFriendEditFragment.a(this.a).finish();
+    this.jdField_a_of_type_JavaLangString = parambecp.e;
+    this.jdField_a_of_type_Int = 1;
+    this.b = String.valueOf(parambecp.b);
+  }
+  
+  public String a()
+  {
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b)))
+    {
+      QLog.e("TroopFileControlReq<QFile>", 1, "key params is null");
+      return "";
+    }
+    return a(this.jdField_a_of_type_Int + "", this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 

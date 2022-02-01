@@ -1,36 +1,16 @@
-import android.app.Dialog;
 import android.content.Context;
-import android.view.View;
-import android.view.Window;
-import android.widget.FrameLayout;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class mro
-  extends ReportDialog
+final class mro
+  implements DialogInterface.OnClickListener
 {
-  public mro(Context paramContext, boolean paramBoolean) {}
+  mro(Context paramContext) {}
   
-  void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.getWindow().setGravity(17);
-    super.setContentView(2131559788);
-  }
-  
-  public void a(View paramView, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      b();
-    }
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131373652);
-    localFrameLayout.setOnClickListener(new mrp(this));
-    if (paramView != null) {
-      localFrameLayout.addView(paramView);
-    }
-  }
-  
-  void b()
-  {
-    findViewById(2131373651).setOnClickListener(new mrq(this));
+    mrm.a(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

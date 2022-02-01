@@ -1,41 +1,27 @@
-import android.content.res.Resources;
-import android.graphics.LightingColorFilter;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
+import android.content.Context;
+import android.net.Uri;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aehc
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public aehc(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aehc(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    int i;
-    if ((TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.a.a.mTroopPrivilegeFlag, 512)))
+    this.a.b(0);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230720);
+    if (this.a.a().booleanValue())
     {
-      i = 1;
-      if ((!this.a.a.isMember) && (i != 0)) {
-        break label66;
-      }
+      this.a.b();
+      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230720));
     }
-    label66:
-    do
-    {
-      return false;
-      i = 0;
-      break;
-      if (paramMotionEvent.getAction() == 0) {
-        paramView.getBackground().setColorFilter(new LightingColorFilter(0, -950263));
-      }
-    } while ((paramMotionEvent.getX() < this.a.getResources().getDisplayMetrics().widthPixels - 2) && (paramMotionEvent.getX() > 0.0F) && (paramMotionEvent.getY() > 0.0F) && (paramMotionEvent.getY() <= this.a.getResources().getDimensionPixelSize(2131297021) - 2) && (paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1));
-    paramView.getBackground().setColorFilter(new LightingColorFilter(0, -158425));
-    return false;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

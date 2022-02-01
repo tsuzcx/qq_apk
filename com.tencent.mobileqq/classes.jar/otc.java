@@ -1,20 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
 public class otc
-  implements ovf
+  implements oww
 {
-  public otc(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
+  public otc(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment, oww paramoww) {}
   
-  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<otp> paramList, boolean paramBoolean2, int paramInt2, int paramInt3) {}
-  
-  public void onCommentStateError(int paramInt)
+  public void a(int paramInt)
   {
-    if (paramInt == 1002) {
-      ReadInJoySecondCommentListFragment.a(this.a, true);
-    }
-    if (paramInt == 1003) {
-      zyx.a(1, 2131717046);
+    ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment).c();
+    if (this.jdField_a_of_type_Oww != null) {
+      this.jdField_a_of_type_Oww.a(paramInt);
     }
   }
 }

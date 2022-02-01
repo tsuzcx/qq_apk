@@ -1,43 +1,16 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.avgame.gameroom.seat.TalkingEffectLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ncw
-  implements Animator.AnimatorListener
+class ncw
+  implements View.OnClickListener
 {
-  public ncw(TalkingEffectLayout paramTalkingEffectLayout) {}
+  ncw(ncu paramncu) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    if (TalkingEffectLayout.a(this.a) != null) {
-      TalkingEffectLayout.a(this.a).onAnimationCancel(paramAnimator);
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (TalkingEffectLayout.a(this.a) != null) {
-      TalkingEffectLayout.a(this.a).onAnimationEnd(paramAnimator);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    if (TalkingEffectLayout.a(this.a) != null) {
-      TalkingEffectLayout.a(this.a).onAnimationRepeat(paramAnimator);
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (TalkingEffectLayout.a(this.a) != null) {
-      TalkingEffectLayout.a(this.a).onAnimationStart(paramAnimator);
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ncw
  * JD-Core Version:    0.7.0.1
  */

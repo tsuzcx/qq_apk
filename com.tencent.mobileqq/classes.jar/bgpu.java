@@ -1,12 +1,8 @@
-public class bgpu
+import android.content.Intent;
+
+public abstract interface bgpu
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c;
+  public abstract void a(Intent paramIntent, boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2);
 }
 
 

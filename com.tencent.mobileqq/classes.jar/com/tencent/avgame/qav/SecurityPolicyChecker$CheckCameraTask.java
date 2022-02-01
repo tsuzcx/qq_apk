@@ -1,32 +1,32 @@
 package com.tencent.avgame.qav;
 
 import android.text.TextUtils;
-import com.tencent.avgame.session.AVGameSession;
 import com.tencent.qphone.base.util.QLog;
-import nfm;
+import ngu;
+import nhn;
 
 class SecurityPolicyChecker$CheckCameraTask
   implements Runnable
 {
   public void run()
   {
-    nfm localnfm = nfm.b();
-    if (localnfm == null) {}
-    AVGameSession localAVGameSession;
+    ngu localngu = ngu.b();
+    if (localngu == null) {}
+    nhn localnhn;
     SecurityPolicyChecker localSecurityPolicyChecker;
     do
     {
       do
       {
         return;
-        localAVGameSession = localnfm.a();
-      } while (localAVGameSession == null);
+        localnhn = localngu.a();
+      } while (localnhn == null);
       localSecurityPolicyChecker = SecurityPolicyChecker.a();
       if (QLog.isColorLevel()) {
-        QLog.i("SecurityPolicyChecker", 2, "CheckCameraTask, player[" + SecurityPolicyChecker.a(localSecurityPolicyChecker) + "], self[" + localAVGameSession.b + "], auto[" + localAVGameSession.g + "], hasLocalVideo[" + localAVGameSession.a(1) + "]");
+        QLog.i("SecurityPolicyChecker", 2, "CheckCameraTask, player[" + SecurityPolicyChecker.a(localSecurityPolicyChecker) + "], self[" + localnhn.b + "], auto[" + localnhn.g + "], hasLocalVideo[" + localnhn.a(1) + "]");
       }
-    } while ((!localAVGameSession.g) || (!localAVGameSession.a(1)) || (TextUtils.equals(SecurityPolicyChecker.a(localSecurityPolicyChecker), String.valueOf(localAVGameSession.b))));
-    localnfm.f();
+    } while ((!localnhn.g) || (!localnhn.a(1)) || (TextUtils.equals(SecurityPolicyChecker.a(localSecurityPolicyChecker), String.valueOf(localnhn.b))));
+    localngu.f();
   }
 }
 

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.phonecontact;
 
 import android.content.Intent;
-import azox;
+import aycf;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 
 public class ContactBindServlet$1
   implements Runnable
 {
-  public ContactBindServlet$1(azox paramazox, Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
+  public ContactBindServlet$1(aycf paramaycf, Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class ContactBindServlet$1
     }
     try
     {
-      azox.a(this.this$0, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg);
+      aycf.a(this.this$0, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg);
       return;
     }
     catch (Exception localException)

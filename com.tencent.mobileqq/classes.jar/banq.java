@@ -1,76 +1,96 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.SignatureEditFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.SoftReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 public class banq
-  implements beuq
+  implements Observer
 {
-  String jdField_a_of_type_JavaLangString;
-  SoftReference<QQAppInterface> jdField_a_of_type_JavaLangRefSoftReference;
-  String b;
-  String c;
-  String d;
+  public banq(SignatureEditFragment paramSignatureEditFragment) {}
   
-  public banq(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString3;
-    this.c = paramString2;
-    this.d = paramString4;
-  }
-  
-  public void onResp(bevm parambevm)
-  {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("Signature.Fragment", 2, "mSignatureObserver type = " + paramObject);
+    }
+    if ((paramObject instanceof ArrayList))
     {
-      if (parambevm.a == 0)
+      paramObject = (ArrayList)paramObject;
+      switch (((Integer)paramObject.get(0)).intValue())
       {
-        QLog.i("QbossPreDownloadManager", 1, "ResFile has download!");
-        if (TextUtils.isEmpty(this.c)) {
-          return;
-        }
-        if (auog.b(this.c))
-        {
-          parambevm = new File(this.c);
-          File localFile = new File(this.c.substring(0, this.c.lastIndexOf(".")));
-          if (!parambevm.renameTo(localFile)) {
-            return;
-          }
-          long l = localFile.length();
-          parambevm = (QQAppInterface)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-          if (parambevm != null)
-          {
-            parambevm = (bezv)parambevm.getManager(193);
-            if (parambevm.a())
-            {
-              QLog.i("QbossPreDownloadManager", 1, "preDownloadSuccess");
-              parambevm.a(this.b, l);
-            }
-          }
-          bnfx.a().c(this.d, null);
-          return;
-        }
-        bano.a(this.b, this.jdField_a_of_type_JavaLangRefSoftReference, this.jdField_a_of_type_JavaLangString, "2");
-        QLog.i("QbossPreDownloadManager", 1, "ResFile check not exist");
-        return;
       }
     }
-    catch (Exception parambevm)
+    label395:
+    while (SignatureEditFragment.a(this.a) == null)
     {
-      QLog.e("QbossPreDownloadManager", 1, parambevm, new Object[0]);
+      return;
+      paramObservable = (RichStatus)paramObject.get(1);
+      this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = paramObservable;
+      this.a.jdField_b_of_type_Boolean = false;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.plainText != null)
+      {
+        paramObject = baos.a().jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus;
+        if (paramObject != null)
+        {
+          paramObject.plainText = ((ArrayList)this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.plainText.clone());
+          paramObject.topics.clear();
+          paramObject.topics.addAll(this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.topics);
+        }
+      }
+      if (paramObservable != null)
+      {
+        this.a.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom(paramObservable);
+        baos.a().a(this.a.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
+      }
+      this.a.jdField_a_of_type_Boolean = false;
+      if (SignatureEditFragment.a(this.a) != null) {
+        SignatureEditFragment.a(this.a).sendEmptyMessage(257);
+      }
+      SignatureEditFragment.b(this.a);
+      return;
+      int i = ((Integer)paramObject.get(1)).intValue();
+      paramObservable = (HashMap)paramObject.get(2);
+      if ((i == 100) || (i == 0))
+      {
+        this.a.jdField_a_of_type_Boolean = false;
+        SignatureEditFragment.a(this.a, true);
+        this.a.jdField_b_of_type_Boolean = false;
+        if ((this.a.mApp.getAccount() == null) && (((Integer)paramObject.get(3)).intValue() != 1)) {
+          break label395;
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = RichStatus.getEmptyStatus();
+        baos.a().b(this.a.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+      }
+      for (;;)
+      {
+        paramObject = new Message();
+        paramObject.what = 259;
+        paramObject.obj = paramObservable;
+        SignatureEditFragment.a(this.a).sendMessage(paramObject);
+        return;
+        baos.a().jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = null;
+        baos.a().jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus = null;
+        SignatureEditFragment.c(this.a);
+        this.a.c();
+      }
+      ((Integer)paramObject.get(1)).intValue();
+      return;
+      i = ((Integer)paramObject.get(1)).intValue();
+      paramObservable = SignatureEditFragment.a(this.a).obtainMessage();
+      paramObservable.what = 262;
+      paramObservable.arg1 = i;
+      SignatureEditFragment.a(this.a).sendMessage(paramObservable);
       return;
     }
-    if (parambevm.a == 1)
-    {
-      bano.a(this.b, this.jdField_a_of_type_JavaLangRefSoftReference, this.jdField_a_of_type_JavaLangString, "1");
-      QLog.i("QbossPreDownloadManager", 1, "ResFile dowload faield");
-    }
+    SignatureEditFragment.a(this.a).sendEmptyMessage(257);
   }
-  
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

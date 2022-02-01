@@ -7,7 +7,7 @@ final class LocalMultiProcConfig$1
   
   public void run()
   {
-    LocalMultiProcConfig.putBool(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
+    LocalMultiProcConfig.putBool(this.val$prefName, this.val$key, this.val$value);
   }
 }
 

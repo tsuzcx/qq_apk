@@ -247,7 +247,7 @@ final class TouchEventManager
           localStringBuilder.append(',');
         }
         i = 0;
-        localStringBuilder.append('[').append(localClick.getStartX()).append(',').append(localClick.getStartY()).append(',').append(localClick.getEndX()).append(',').append(localClick.getEndY()).append(localClick.getTimestamp()).append("]");
+        localStringBuilder.append('[').append(localClick.getStartX()).append(',').append(localClick.getStartY()).append(',').append(localClick.getEndX()).append(',').append(localClick.getEndY()).append(',').append(localClick.getTimestamp()).append("]");
       }
       localObject.append("]");
     }

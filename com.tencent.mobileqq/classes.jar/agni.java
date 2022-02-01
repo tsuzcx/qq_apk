@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class agni
-  implements bdxo
+  extends aezf
 {
-  public agni(FriendShipWaveView paramFriendShipWaveView) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void a()
-  {
-    bdxw localbdxw = new bdxw(new bdxn[] { new bdxv(300, 0.1F, 1.1F), new bdxv(100, 1.2F, 0.9F), new bdxv(100, 0.9F, 1.0F) });
-    this.a.c.a(new bdxn[] { localbdxw });
-    this.a.b.a(new bdxn[] { new bdxv(300, 0.0F, 1.0F) });
-  }
+  public agni(agne paramagne) {}
 }
 
 

@@ -1,34 +1,35 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.9.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
 
 public class avvr
-  implements TVK_SDKMgr.InstallListener
+  implements bhle
 {
-  avvr(avvj paramavvj) {}
+  public avvr(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    avvj.a = false;
-    this.a.a(anzj.a(2131707279));
-    if (QLog.isColorLevel()) {
-      QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstalledFail");
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    avvj.a = false;
-    if (!this.a.c)
+    int i = 2;
+    if (paramInt == 1)
     {
-      ThreadManager.getSubThreadHandler().post(new PresenceInterfaceImpl.9.1(this));
-      QLog.d("PresenceInterfaceImpl", 2, "run installSDK here");
+      avwu.a("MsgBackup.MsgBackupSelectionFragment", "click cancel btn mfrom = %d,  pcHandler = %b", new Object[] { Integer.valueOf(MsgBackupSelectionFragment.a(this.a)), Boolean.valueOf(avtq.c) });
+      if (MsgBackupSelectionFragment.a(this.a) != 0) {
+        break label79;
+      }
+      paramInt = i;
+      if (MsgBackupSelectionFragment.a(this.a)) {
+        paramInt = 3;
+      }
+      avwr.a("0X800A242", paramInt);
     }
-    QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstall sucess");
+    for (;;)
+    {
+      this.a.onBackEvent();
+      return;
+      label79:
+      if ((avtq.c) && (avtf.a().a() == 1)) {
+        avwr.a("0X800A266", 5);
+      }
+    }
   }
 }
 

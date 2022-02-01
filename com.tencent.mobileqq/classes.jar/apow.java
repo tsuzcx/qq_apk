@@ -1,12 +1,6 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-
-public class apow
+public abstract interface apow
 {
-  public ArCloudConfigInfo a;
-  public String a = "";
-  public boolean a;
-  public String b = "";
-  public boolean b;
+  public abstract void c_(boolean paramBoolean);
 }
 
 

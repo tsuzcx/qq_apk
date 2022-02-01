@@ -1,27 +1,55 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqcircle.widgets.QCircleDoublePraiseView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import java.util.Iterator;
+import java.util.List;
 
 public class vzb
-  implements Animation.AnimationListener
 {
-  public vzb(QCircleDoublePraiseView paramQCircleDoublePraiseView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public static int a(long paramLong1, long paramLong2)
   {
-    QCircleDoublePraiseView.a(this.a).setVisibility(8);
-    QCircleDoublePraiseView.a(this.a, false);
-    QLog.d("QCircleDoublePraiseView", 1, "onAnimationEnd");
+    if (paramLong1 < paramLong2) {
+      return -1;
+    }
+    if (paramLong1 == paramLong2) {
+      return 0;
+    }
+    return 1;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public static vxd a(@NonNull List<vxd> paramList1, @NonNull List<vxd> paramList2, @NonNull String paramString)
   {
-    QCircleDoublePraiseView.a(this.a, true);
-    QLog.d("QCircleDoublePraiseView", 1, "onAnimationStart");
+    paramList2.clear();
+    vxd localvxd = null;
+    Iterator localIterator = paramList1.iterator();
+    paramList1 = localvxd;
+    if (localIterator.hasNext())
+    {
+      localvxd = (vxd)localIterator.next();
+      if (a(localvxd)) {
+        paramList2.add(localvxd);
+      }
+      if ((paramList1 != null) || (!TextUtils.equals(paramString, localvxd.jdField_a_of_type_JavaLangString))) {
+        break label76;
+      }
+      paramList1 = localvxd;
+    }
+    label76:
+    for (;;)
+    {
+      break;
+      return paramList1;
+    }
+  }
+  
+  public static boolean a()
+  {
+    return Build.VERSION.SDK_INT > 19;
+  }
+  
+  public static boolean a(vxd paramvxd)
+  {
+    return (paramvxd.jdField_a_of_type_Int == 5) || (paramvxd.jdField_a_of_type_Int == 6) || (paramvxd.jdField_a_of_type_Int == 7) || (paramvxd.jdField_a_of_type_Int == 8) || (paramvxd.jdField_a_of_type_Int == 9) || (paramvxd.jdField_a_of_type_Int == 12) || (paramvxd.jdField_a_of_type_Int == 13);
   }
 }
 

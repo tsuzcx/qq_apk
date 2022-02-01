@@ -1,27 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-
 public class aaxc
-  implements DialogInterface.OnClickListener
 {
-  public aaxc(TroopGiftPanel paramTroopGiftPanel) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (paramInt == 1)
-    {
-      bhzu.a(this.a.a, "mvip.n.a.qlw_forsvip", "CJCLUBT", 3, false, true);
-      bdll.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_sure_click", 0, 0, "", "", "", "");
-    }
-    while (paramInt != 0) {
-      return;
-    }
-    bdll.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_cancel_click", 0, 0, "", "", "", "");
-  }
+  public int a;
+  public int b = 1;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
 }
 
 

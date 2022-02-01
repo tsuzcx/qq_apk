@@ -1,50 +1,20 @@
-import android.view.Surface;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import mqq.app.QQPermissionCallback;
 
 public class aphi
+  implements QQPermissionCallback
 {
-  private bbmb jdField_a_of_type_Bbmb;
-  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = (EGL10)EGLContext.getEGL();
-  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentContext();
-  private EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentDisplay();
-  private EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentSurface(12377);
+  public aphi(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable) {}
   
-  public aphi(bbma parambbma, Surface paramSurface)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Bbmb = new bbmb(parambbma);
-    this.jdField_a_of_type_Bbmb.a(paramSurface);
+    bfur.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void a()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Bbmb.a(paramLong);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bbmb.b();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Bbmb.a();
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Bbmb != null)
-    {
-      this.jdField_a_of_type_Bbmb.a();
-      this.jdField_a_of_type_Bbmb = null;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.b(this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
 }
 

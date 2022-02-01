@@ -1,18 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.AdTagInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public final class ocy
-  implements Parcelable.Creator<VideoInfo.AdTagInfo>
+class ocy
+  extends BroadcastReceiver
 {
-  public VideoInfo.AdTagInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.AdTagInfo(paramParcel);
-  }
+  ocy(ocw paramocw) {}
   
-  public VideoInfo.AdTagInfo[] a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new VideoInfo.AdTagInfo[paramInt];
+    if (this.a.a == 1)
+    {
+      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
+      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
+      this.a.a(null, 0, 13, i, paramIntent);
+    }
+    try
+    {
+      paramContext.unregisterReceiver(this.a.b);
+      label50:
+      this.a.b = null;
+      this.a.a = 0;
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      break label50;
+    }
   }
 }
 

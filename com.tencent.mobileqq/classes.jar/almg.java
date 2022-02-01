@@ -1,14 +1,15 @@
-public abstract interface almg
+import com.tencent.mobileqq.persistence.Entity;
+
+public class almg
 {
-  public abstract void a(int paramInt);
+  public int a;
+  public Entity a;
   
-  public abstract void a(int paramInt, float paramFloat);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public almg(int paramInt, Entity paramEntity)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity = paramEntity;
+  }
 }
 
 

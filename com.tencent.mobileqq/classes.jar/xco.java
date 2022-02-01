@@ -1,56 +1,20 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFeedCommentList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedCommentList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
 
-public class xco
-  extends wpa
+public abstract class xco
+  implements xcf
 {
-  public static final String a;
-  public ylv a;
+  protected void a(Error paramError) {}
   
-  static
+  protected void a(xcc paramxcc) {}
+  
+  public final void a(@NonNull xcd paramxcd)
   {
-    jdField_a_of_type_JavaLangString = wnu.a("StorySvc.feed_comment_list_775");
+    a(new xcc(paramxcd.a()));
   }
   
-  public String a()
+  public final void b(@NonNull xcd paramxcd)
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public wov a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspFeedCommentList localRspFeedCommentList = new qqstory_service.RspFeedCommentList();
-    try
-    {
-      localRspFeedCommentList.mergeFrom(paramArrayOfByte);
-      return new xcp(localRspFeedCommentList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqFeedCommentList localReqFeedCommentList = new qqstory_service.ReqFeedCommentList();
-    localReqFeedCommentList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Ylv.jdField_a_of_type_JavaLangString));
-    if (this.jdField_a_of_type_Ylv.jdField_b_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_Ylv.jdField_b_of_type_JavaLangString = "";
-    }
-    localReqFeedCommentList.cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Ylv.jdField_b_of_type_JavaLangString));
-    localReqFeedCommentList.source.set(this.jdField_a_of_type_Ylv.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Ylv.jdField_b_of_type_Int != -1) {
-      localReqFeedCommentList.type.set(this.jdField_a_of_type_Ylv.jdField_b_of_type_Int);
-    }
-    return localReqFeedCommentList.toByteArray();
+    a(paramxcd.a());
   }
 }
 

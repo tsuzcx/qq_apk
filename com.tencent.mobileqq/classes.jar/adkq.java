@@ -1,81 +1,32 @@
-import com.tencent.qapmsdk.QAPM;
-import com.tencent.qapmsdk.base.config.DefaultPluginConfig;
-import com.tencent.qapmsdk.base.config.PluginCombination;
-import com.tencent.qapmsdk.base.reporter.ab.AbType;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
 
 public class adkq
+  extends aagp
 {
-  public static Class<? extends AbType>[] a = { adkp.class, adkr.class };
+  public adkq(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity) {}
   
-  public static int a(String paramString, HashMap<String, String> paramHashMap)
+  public aafw a(Activity paramActivity, aagc paramaagc)
   {
-    if (paramString != null)
-    {
-      if ("actSceneMem".equals(paramString)) {
-        return PluginCombination.leakPlugin.plugin;
-      }
-      if ("actScenePerf".equals(paramString)) {
-        return PluginCombination.resourcePlugin.plugin;
-      }
-      if (!"unifiedMonitor".equals(paramString)) {}
-    }
-    switch (Integer.parseInt((String)paramHashMap.get("family")))
-    {
-    default: 
-      return -1;
-    case 9: 
-    case 10: 
-      return PluginCombination.dropFramePlugin.plugin;
-    case 0: 
-      return PluginCombination.loopStackPlugin.plugin;
-    case 20: 
-      return PluginCombination.resourcePlugin.plugin;
-    }
-    return PluginCombination.batteryPlugin.plugin;
+    return super.a(paramActivity, paramaagc);
   }
   
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  public aafy a(Activity paramActivity, aagc paramaagc)
   {
-    if (paramHashMap == null) {}
-    do
-    {
-      return;
-      paramHashMap.put("deviceLv", String.valueOf(bhlo.f()));
-      paramString = QAPM.getAbFactorByQapmPlugin(a(paramString, paramHashMap));
-    } while ((paramString == null) || (paramString.length() <= 0));
-    paramHashMap.put("abfactor", paramString);
+    this.a.a = new aykh((FriendProfilePicBrowserActivity)paramActivity, paramaagc);
+    return this.a.a;
   }
   
-  public static void a(JSONObject paramJSONObject)
+  public aagc a(Activity paramActivity)
   {
-    if (paramJSONObject == null) {
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        if (paramJSONObject.has("newplugin"))
-        {
-          i = paramJSONObject.getInt("newplugin");
-          String str = QAPM.getAbFactorByQapmPlugin(i);
-          if ((str == null) || (str.length() <= 0)) {
-            break;
-          }
-          paramJSONObject.put("abfactor", str);
-          return;
-        }
-      }
-      catch (Exception paramJSONObject)
-      {
-        QLog.e("MagnifierSDK.QAPM.AbFactorManger", 2, "", paramJSONObject);
-        return;
-      }
-      int i = paramJSONObject.getInt("plugin");
-    }
+    paramActivity = new awxb(this.a, FriendProfilePicBrowserActivity.a(this.a));
+    paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
+    return paramActivity;
+  }
+  
+  public aagd a(Activity paramActivity, aagc paramaagc)
+  {
+    return null;
   }
 }
 

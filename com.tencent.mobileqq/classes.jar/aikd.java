@@ -1,20 +1,6 @@
-import android.os.Bundle;
-
-class aikd
-  extends ayxp
+public abstract interface aikd
 {
-  aikd(aijm paramaijm) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if ((paramInt == 0) && (paramBoolean == true))
-    {
-      paramBundle.getInt("gif_ui_show_bid");
-      long l = paramBundle.getLong("gif_ui_show_seq");
-      this.a.f(65536);
-      aijm.a(this.a, Long.valueOf(l).longValue());
-    }
-  }
+  public abstract void a(String paramString, boolean paramBoolean);
 }
 
 

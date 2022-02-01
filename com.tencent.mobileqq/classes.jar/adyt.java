@@ -1,49 +1,34 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSActivity.20.1;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
+import mqq.os.MqqHandler;
 
 public class adyt
-  extends anuw
+  implements Animation.AnimationListener
 {
-  public adyt(BaseChatPie paramBaseChatPie) {}
+  public adyt(QQLSActivity paramQQLSActivity) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    BaseChatPie.d(this.a, paramBoolean, paramObject);
-  }
-  
-  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
+    this.a.a.removeMessages(99);
+    if (VersionUtils.isJellyBean())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays isAllow= " + paramBoolean2);
+        QLog.d("QQLSActivity", 2, "do SmoothFinish");
       }
-      this.a.aR();
-    }
-  }
-  
-  protected void onImpeach(boolean paramBoolean, String paramString)
-  {
-    ((agss)this.a.a(70)).a();
-    if (paramBoolean)
-    {
-      this.a.a.showDialog(232);
+      QQLSActivity.g(this.a);
+      this.a.finish();
       return;
     }
-    this.a.a.showDialog(233);
+    this.a.a.postAtFrontOfQueue(new QQLSActivity.20.1(this));
   }
   
-  protected void onSetCalReactiveDays(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays");
-      }
-      this.a.aR();
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

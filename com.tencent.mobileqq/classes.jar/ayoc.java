@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class ayoc
-  implements DialogInterface.OnClickListener
+public class ayoc
 {
-  ayoc(ayob paramayob, bhpc parambhpc) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Bhpc.dismiss();
-    this.jdField_a_of_type_Ayob.a.f();
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
 }
 
 

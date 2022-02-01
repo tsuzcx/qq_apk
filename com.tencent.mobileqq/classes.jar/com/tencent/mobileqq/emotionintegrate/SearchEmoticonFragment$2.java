@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.emotionintegrate;
 
 import android.text.TextUtils;
-import beqz;
-import beyq;
-import bhmi;
 import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.net.URL;
 
 class SearchEmoticonFragment$2
@@ -14,19 +14,19 @@ class SearchEmoticonFragment$2
   
   public void run()
   {
-    Object localObject = beyq.a(this.a, 1, null);
-    if ((localObject != null) && (beqz.a(((URL)localObject).toString()) == null))
+    Object localObject = URLDrawableHelper.getURL(this.a, 1, null);
+    if ((localObject != null) && (AbsDownloader.getFile(((URL)localObject).toString()) == null))
     {
-      localObject = beqz.d(((URL)localObject).toString());
+      localObject = AbsDownloader.getFilePath(((URL)localObject).toString());
       if ((!TextUtils.isEmpty(this.a.path)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-        bhmi.d(this.a.path, (String)localObject);
+        FileUtils.copyFile(this.a.path, (String)localObject);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.SearchEmoticonFragment.2
  * JD-Core Version:    0.7.0.1
  */

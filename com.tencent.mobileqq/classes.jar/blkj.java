@@ -1,6 +1,15 @@
-public abstract interface blkj
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModelProvider;
+
+class blkj
+  implements blwc
 {
-  public abstract void a();
+  blkj(bljy parambljy) {}
+  
+  public void a(blwu paramblwu)
+  {
+    ((blzi)blks.a(this.a, bnaw.a()).get(blzi.class)).a().postValue(paramblwu);
+  }
 }
 
 

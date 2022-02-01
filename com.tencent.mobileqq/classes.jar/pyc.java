@@ -1,20 +1,14 @@
+import android.os.Bundle;
+
 class pyc
+  implements zop
 {
-  private boolean jdField_a_of_type_Boolean;
+  pyc(pxw parampxw, String paramString) {}
   
-  pyc(pxl parampxl, boolean paramBoolean)
+  public void callback(Bundle paramBundle)
   {
-    a(paramBoolean);
-  }
-  
-  void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    paramBundle = paramBundle.getString("BUNDLE_KEY_JS_OBJ", "");
+    this.jdField_a_of_type_Pxw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
   }
 }
 

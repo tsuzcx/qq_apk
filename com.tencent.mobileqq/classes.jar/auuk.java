@@ -1,409 +1,224 @@
-import android.os.Bundle;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanageraux.util.UniformDownloader.2;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
+import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import java.util.Arrays;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class auuk
+  extends WebViewPlugin
 {
-  public static String a;
-  private int jdField_a_of_type_Int = 0;
-  final long jdField_a_of_type_Long;
-  private final Bundle jdField_a_of_type_AndroidOsBundle;
-  private auum jdField_a_of_type_Auum;
-  private auun jdField_a_of_type_Auun = new auul(this);
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private List<auun> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private Bundle jdField_b_of_type_AndroidOsBundle;
-  private Object jdField_b_of_type_JavaLangObject = new Object();
-  private final String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new auul(this);
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  static
+  public auuk()
   {
-    jdField_a_of_type_JavaLangString = "UniformDownloader<FileAssistant>";
+    this.mPluginNameSpace = "story";
   }
   
-  public auuk(long paramLong, String paramString, Bundle paramBundle)
+  public static final void a(Context paramContext)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
+    Intent localIntent = new Intent(paramContext, StoryTransitionActivity.class);
+    localIntent.putExtra("jump_action", 1);
+    paramContext.startActivity(localIntent);
   }
   
-  public static String a(int paramInt)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    String str = anzj.a(2131714668);
-    switch (paramInt)
-    {
-    default: 
-      return str + "[" + String.valueOf(paramInt) + "]";
-    case 0: 
-      return "";
-    case 1: 
-      return str + "[" + String.valueOf(paramInt) + "]";
-    case 2: 
-      return anzj.a(2131714674);
-    case 3: 
-      return anzj.a(2131714662);
-    case 4: 
-      return anzj.a(2131714667);
-    case 5: 
-      return anzj.a(2131714664);
-    case 6: 
-      return anzj.a(2131714675);
-    case 7: 
-      return anzj.a(2131714672);
-    case 8: 
-      return anzj.a(2131714673);
-    case 9: 
-      return anzj.a(2131714671);
-    case 10: 
-      return "SDK下载服务错误";
-    case 11: 
-      return anzj.a(2131714666);
-    case 12: 
-      return "下载器DC失败";
-    case 13: 
-      return anzj.a(2131714665);
-    }
-    return anzj.a(2131714670);
-  }
-  
-  private List<auun> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      int j = this.jdField_a_of_type_JavaUtilList.size();
-      int i = 0;
-      while (i < j)
-      {
-        localArrayList.add((auun)this.jdField_a_of_type_JavaUtilList.get(i));
-        i += 1;
-      }
-      return localArrayList;
-    }
-  }
-  
-  private void a(int paramInt, String paramString, Bundle paramBundle)
-  {
-    ThreadManager.getSubThreadHandler().post(new UniformDownloader.2(this, paramBundle, paramInt, paramString));
-  }
-  
-  /* Error */
-  private boolean a(boolean paramBoolean, Bundle paramBundle)
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 150	auuk:jdField_a_of_type_Auum	Lauum;
-    //   8: ifnull +24 -> 32
-    //   11: aload_0
-    //   12: getfield 150	auuk:jdField_a_of_type_Auum	Lauum;
-    //   15: aconst_null
-    //   16: invokeinterface 155 2 0
-    //   21: pop
-    //   22: aload_0
-    //   23: getfield 150	auuk:jdField_a_of_type_Auum	Lauum;
-    //   26: invokeinterface 157 1 0
-    //   31: pop
-    //   32: iload_1
-    //   33: ifeq +96 -> 129
-    //   36: aload_0
-    //   37: iconst_1
-    //   38: putfield 29	auuk:jdField_a_of_type_Int	I
-    //   41: aload_0
-    //   42: new 159	auuo
-    //   45: dup
-    //   46: aload_0
-    //   47: getfield 51	auuk:jdField_a_of_type_Long	J
-    //   50: invokespecial 162	auuo:<init>	(J)V
-    //   53: putfield 150	auuk:jdField_a_of_type_Auum	Lauum;
-    //   56: aload_0
-    //   57: getfield 150	auuk:jdField_a_of_type_Auum	Lauum;
-    //   60: aload_0
-    //   61: getfield 45	auuk:jdField_a_of_type_Auun	Lauun;
-    //   64: invokeinterface 155 2 0
-    //   69: pop
-    //   70: iload_3
-    //   71: istore_1
-    //   72: aload_0
-    //   73: getfield 150	auuk:jdField_a_of_type_Auum	Lauum;
-    //   76: aload_0
-    //   77: getfield 47	auuk:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   80: aload_2
-    //   81: invokeinterface 165 3 0
-    //   86: ifeq +39 -> 125
-    //   89: getstatic 22	auuk:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   92: iconst_1
-    //   93: new 65	java/lang/StringBuilder
-    //   96: dup
-    //   97: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   100: ldc 167
-    //   102: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   105: aload_0
-    //   106: getfield 51	auuk:jdField_a_of_type_Long	J
-    //   109: invokevirtual 170	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   112: ldc 172
-    //   114: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   120: invokestatic 178	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   123: iconst_0
-    //   124: istore_1
-    //   125: aload_0
-    //   126: monitorexit
-    //   127: iload_1
-    //   128: ireturn
-    //   129: aload_0
-    //   130: iconst_2
-    //   131: putfield 29	auuk:jdField_a_of_type_Int	I
-    //   134: aload_0
-    //   135: new 180	auuw
-    //   138: dup
-    //   139: aload_0
-    //   140: getfield 51	auuk:jdField_a_of_type_Long	J
-    //   143: invokespecial 181	auuw:<init>	(J)V
-    //   146: putfield 150	auuk:jdField_a_of_type_Auum	Lauum;
-    //   149: goto -93 -> 56
-    //   152: astore_2
-    //   153: aload_0
-    //   154: monitorexit
-    //   155: aload_2
-    //   156: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	157	0	this	auuk
-    //   0	157	1	paramBoolean	boolean
-    //   0	157	2	paramBundle	Bundle
-    //   1	70	3	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   4	32	152	finally
-    //   36	56	152	finally
-    //   56	70	152	finally
-    //   72	123	152	finally
-    //   129	149	152	finally
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Auum != null)
-    {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. start. ");
-      return this.jdField_a_of_type_Auum.a();
-    }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. start. mDownloadler = null.");
-    return -1;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a(auun paramauun)
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilList.contains(paramauun)) {
-        this.jdField_a_of_type_JavaUtilList.remove(paramauun);
-      }
-      return;
-    }
-  }
-  
-  public void a(auun paramauun, boolean paramBoolean)
-  {
-    for (;;)
-    {
-      synchronized (this.jdField_b_of_type_JavaLangObject)
-      {
-        int j = this.jdField_a_of_type_JavaUtilList.size();
-        i = 0;
-        if (i >= j) {
-          break label243;
-        }
-        if ((auun)this.jdField_a_of_type_JavaUtilList.get(i) == paramauun)
-        {
-          if (paramBoolean == true)
-          {
-            if ((!paramBoolean) || (i < 0)) {
-              break label109;
-            }
-            paramauun = (auun)this.jdField_a_of_type_JavaUtilList.remove(i);
-            this.jdField_a_of_type_JavaUtilList.add(paramauun);
-            this.jdField_b_of_type_Boolean = true;
-            return;
-          }
-          return;
-        }
-      }
-      i += 1;
-      continue;
-      label109:
-      if (paramauun != null)
-      {
-        if (!this.jdField_b_of_type_Boolean) {
-          break label229;
-        }
-        i = this.jdField_a_of_type_JavaUtilList.size();
-        auun localauun = (auun)this.jdField_a_of_type_JavaUtilList.remove(i - 1);
-        this.jdField_a_of_type_JavaUtilList.add(paramauun);
-        this.jdField_a_of_type_JavaUtilList.add(localauun);
-      }
-      for (;;)
-      {
-        QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. addListenser. size=" + this.jdField_a_of_type_JavaUtilList.size());
-        if (paramBoolean) {
-          this.jdField_b_of_type_Boolean = true;
-        }
-        return;
-        label229:
-        this.jdField_a_of_type_JavaUtilList.add(paramauun);
-      }
-      label243:
-      int i = -1;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. setNotifyUserStarted." + this.jdField_a_of_type_Boolean + "->" + paramBoolean);
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
-  }
-  
-  public boolean a()
-  {
-    int i = f();
-    if ((1 == i) || (6 == i)) {}
-    while ((2 == this.jdField_a_of_type_Int) && (8 == i)) {
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(Bundle paramBundle)
-  {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. >>>init UniformDownloader");
-    Object localObject2 = paramBundle.getString("_PARAM_FILENAME");
-    long l = paramBundle.getLong("_PARAM_FILESIZE");
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. init err. filename=null");
-      localObject1 = "unnamefile";
-    }
-    if (0L == l)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. init err. filesize=0");
+    if (!"story".equals(paramString2)) {
       return false;
     }
-    localObject2 = new Bundle();
-    String str1 = aunj.b(aumo.a().c() + (String)localObject1);
-    String str2 = aumo.a().b() + (String)localObject1;
-    ((Bundle)localObject2).putString("_PARAM_FILENAME", (String)localObject1);
-    ((Bundle)localObject2).putString("_PARAM_TMP_FILEPATH", str1);
-    ((Bundle)localObject2).putString("_PARAM_FILEPATH", str2);
-    ((Bundle)localObject2).putLong("_PARAM_FILESIZE", l);
-    ((Bundle)localObject2).putLong("_PARAM_POS", 0L);
-    paramBundle = paramBundle.getBundle("_PARAM_USER_DATA");
-    if (paramBundle != null)
+    Activity localActivity = this.mRuntime.a();
+    if (paramString3.equals("openIndex"))
     {
-      paramBundle = paramBundle.getString("COOKIE");
-      if (!TextUtils.isEmpty(paramBundle)) {
-        ((Bundle)localObject2).putString("_PARAM_COOKIE", paramBundle);
+      StoryTransitionActivity.b(localActivity);
+      return true;
+    }
+    if (paramString3.equals("newStory"))
+    {
+      paramJsBridgeListener = new Intent(localActivity, StoryTransitionActivity.class);
+      paramJsBridgeListener.putExtra("jump_action", 1);
+      paramJsBridgeListener.putExtra("video_tag", paramVarArgs[0]);
+      localActivity.startActivity(paramJsBridgeListener);
+      return true;
+    }
+    long l;
+    if (paramString3.equals("playStory"))
+    {
+      try
+      {
+        paramString1 = new JSONObject(paramVarArgs[0]);
+        paramJsBridgeListener = paramString1.optString("vid", "");
+        l = paramString1.optLong("uin", 0L);
+        if ((!TextUtils.isEmpty(paramJsBridgeListener)) && (l > 0L))
+        {
+          paramString1 = new Intent(localActivity, JumpActivity.class);
+          paramString1.setData(Uri.parse("mqqapi://qstory/openVideo?videoOwnerUin=" + l + "&videoId=" + paramJsBridgeListener));
+          localActivity.startActivity(paramString1);
+        }
+      }
+      catch (Exception paramJsBridgeListener)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w("QQStoryApiPlugin", 2, "StoryApi Exception: " + paramJsBridgeListener.getMessage());
+          }
+        }
+      }
+      return true;
+    }
+    if (paramString3.equals("openTopic")) {
+      return false;
+    }
+    int i;
+    if (paramString3.equals("openLive"))
+    {
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        i = paramJsBridgeListener.optInt("type", 0);
+        l = paramJsBridgeListener.optLong("roomId", 0L);
+        int j = paramJsBridgeListener.optInt("fromId", 0);
+        paramJsBridgeListener = paramJsBridgeListener.optJSONObject("extras");
+        if (i != 1) {
+          break label782;
+        }
+        paramString1 = new Intent(localActivity, JumpActivity.class);
+        paramString2 = new StringBuilder().append("mqqapi://qstory/openNow?roomid=").append(l).append("&fromid=").append(j).append("&extras=");
+        if (paramJsBridgeListener == null) {}
+        for (paramJsBridgeListener = "";; paramJsBridgeListener = paramJsBridgeListener.toString())
+        {
+          paramString1.setData(Uri.parse(paramJsBridgeListener));
+          localActivity.startActivity(paramString1);
+          break;
+        }
+        QLog.w("QQStoryApiPlugin", 2, "StoryApi Exception: " + paramJsBridgeListener.getMessage());
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
+        if (!QLog.isColorLevel()) {
+          break label782;
+        }
       }
     }
-    this.jdField_b_of_type_AndroidOsBundle = ((Bundle)localObject2);
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. >>>init UniformDownload info :: filename:[" + (String)localObject1 + "] fileSize:[" + l + "] tmpPath(maybe change):[" + str1 + "] savePath(maybe change):[" + str2 + "] url:[" + this.jdField_b_of_type_JavaLangString + "]");
-    return a(auuf.a((String)localObject1), (Bundle)localObject2);
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_Auum != null)
+    else
     {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. pause. ");
-      return this.jdField_a_of_type_Auum.c();
+      if (("openInfoCard".equals(paramString3)) || ("openMiniSummary".equals(paramString3))) {
+        try
+        {
+          QQStoryMemoriesActivity.a(localActivity, 23, new JSONObject(paramVarArgs[0]).optLong("uin", 0L));
+          return true;
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.w("QQStoryApiPlugin", 2, "StoryApi Exception: " + paramJsBridgeListener.getMessage());
+            }
+          }
+        }
+      }
+      if (paramString3.equals("playVideos")) {}
+      for (;;)
+      {
+        try
+        {
+          paramString1 = new JSONObject(paramVarArgs[0]);
+          paramString2 = paramString1.optString("videolist", "");
+          paramJsBridgeListener = paramString1.optString("feedlist", "");
+          i = paramString1.optInt("index", 0);
+          paramString3 = paramString1.optString("play_scence", "");
+          if ((TextUtils.isEmpty(paramString3)) || (!"videoLabelDetail".equals(paramString3))) {
+            break;
+          }
+          paramString1.optInt("tagid");
+          paramString1.optInt("tagtype");
+          if (TextUtils.isEmpty(paramString2)) {
+            break;
+          }
+          paramString3 = new ArrayList(Arrays.asList(paramString2.split(",")));
+          if (!TextUtils.isEmpty(paramJsBridgeListener))
+          {
+            paramJsBridgeListener = new ArrayList(Arrays.asList(paramJsBridgeListener.split(",")));
+            if (paramString3.size() <= i) {
+              break label776;
+            }
+            paramString1 = (String)paramString3.get(i);
+            if (paramJsBridgeListener.size() <= i) {
+              break label770;
+            }
+            paramString2 = (String)paramJsBridgeListener.get(i);
+            wmu.a(localActivity, new VidListPlayInfo(paramJsBridgeListener, paramString3, paramString2, paramString1), 105, null);
+            break;
+          }
+          paramJsBridgeListener = new ArrayList();
+          continue;
+          QLog.w("QQStoryApiPlugin", 2, "StoryApi Exception: " + paramJsBridgeListener.getMessage());
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+        }
+        break;
+        return false;
+        label770:
+        paramString2 = "";
+        continue;
+        label776:
+        paramString1 = "";
+      }
     }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. pause. mDownloadler = null.");
-    return -1;
+    label782:
+    return true;
+    return true;
   }
   
-  public boolean b()
+  public void onActivityReady()
   {
-    return 2 == f();
-  }
-  
-  public int c()
-  {
-    if (this.jdField_a_of_type_Auum != null)
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.mobileqq.action.dispatch_event_do_like");
+    localIntentFilter.addAction("com.tencent.mobileqq.action.dispatch_event_comment");
+    localIntentFilter.addAction("com.tencent.mobileqq.action.dispatch_event_subscribe");
+    Activity localActivity = this.mRuntime.a();
+    if ((localActivity != null) && (!this.jdField_a_of_type_Boolean)) {}
+    try
     {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. resume. ");
-      return this.jdField_a_of_type_Auum.d();
+      localActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+      this.jdField_a_of_type_Boolean = true;
+      return;
     }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. resume. mDownloadler = null.");
-    return -1;
-  }
-  
-  public boolean c()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    catch (Exception localException)
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQStoryApiPlugin", 2, "regist receiver error:" + localException.toString());
     }
   }
   
-  public int d()
+  public void onDestroy()
   {
-    if (this.jdField_a_of_type_Auum != null)
+    super.onDestroy();
+    Activity localActivity = this.mRuntime.a();
+    if ((localActivity != null) && (this.jdField_a_of_type_Boolean))
     {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. stop. ");
-      return this.jdField_a_of_type_Auum.b();
+      localActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_Boolean = false;
     }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. stop. mDownloadler = null.");
-    return -1;
-  }
-  
-  public int e()
-  {
-    if (this.jdField_a_of_type_Auum != null)
-    {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. pauseSlience. ");
-      return this.jdField_a_of_type_Auum.f();
-    }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. pauseSlience. mDownloadler = null.");
-    return -1;
-  }
-  
-  public int f()
-  {
-    if (this.jdField_a_of_type_Auum != null) {
-      return this.jdField_a_of_type_Auum.e();
-    }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.jdField_a_of_type_Long + "]. getStatus. mDownloadler = null.");
-    return 0;
-  }
-  
-  public int g()
-  {
-    return this.jdField_a_of_type_Int;
   }
 }
 

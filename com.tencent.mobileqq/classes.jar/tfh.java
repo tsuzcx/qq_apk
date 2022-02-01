@@ -1,6 +1,13 @@
-public abstract interface tfh
+class tfh
 {
-  public abstract void a(String paramString1, String paramString2);
+  final int jdField_a_of_type_Int;
+  final int b;
+  
+  public tfh(tfg paramtfg, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

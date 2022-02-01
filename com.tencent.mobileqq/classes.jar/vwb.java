@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StReply;
-
-class vwb
-  implements DialogInterface.OnShowListener
+public abstract interface vwb
 {
-  vwb(vvz paramvvz, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply, vkl paramvkl) {}
+  public abstract String getName();
   
-  public void onShow(DialogInterface paramDialogInterface)
-  {
-    paramDialogInterface = vvz.a().a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply);
-    this.jdField_a_of_type_Vkl.a(this.jdField_a_of_type_Vkl.a(paramDialogInterface));
-    this.jdField_a_of_type_Vkl.a = true;
-  }
+  public abstract int getRelationType();
+  
+  public abstract String getUnionId();
+  
+  public abstract boolean isFriend();
+  
+  public abstract boolean isMe();
+  
+  public abstract boolean isSubscribe();
+  
+  public abstract boolean isSubscribeButNoFriend();
+  
+  public abstract boolean isVip();
+  
+  public abstract boolean isVipButNoFriend();
 }
 
 

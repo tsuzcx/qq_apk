@@ -1,38 +1,41 @@
-import NS_MOBILE_EXTRA.mobile_get_urlinfo_req;
-import QMF_PROTOCAL.RetryInfo;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.content.Context;
+import android.os.SystemClock;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.ImgDownloadListener.1;
+import com.tencent.mobileqq.nearby.ImgDownloadListener.2;
 
 public class awho
-  extends QzoneExternalRequest
+  implements URLDrawable.DownloadListener
 {
-  private JceStruct a;
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString = "freshnews.small_pic_download";
   
-  public awho(String paramString)
+  public awho(Context paramContext)
   {
-    mobile_get_urlinfo_req localmobile_get_urlinfo_req = new mobile_get_urlinfo_req();
-    localmobile_get_urlinfo_req.url = paramString;
-    this.a = localmobile_get_urlinfo_req;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public String getCmdString()
+  public awho(Context paramContext, String paramString)
   {
-    return "QzoneNewService.getUrlInfo";
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public JceStruct getReq()
+  public void onFileDownloadFailed(int paramInt)
   {
-    return this.a;
+    ThreadManager.postImmediately(new ImgDownloadListener.2(this, paramInt), null, true);
   }
   
-  public Object getRetryInfo()
+  public void onFileDownloadStarted()
   {
-    return new RetryInfo((short)0, 0, System.currentTimeMillis());
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
   }
   
-  public String uniKey()
+  public void onFileDownloadSucceed(long paramLong)
   {
-    return "getUrlInfo";
+    ThreadManager.postImmediately(new ImgDownloadListener.1(this, paramLong), null, true);
   }
 }
 

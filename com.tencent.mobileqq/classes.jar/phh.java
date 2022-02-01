@@ -1,27 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class phh
-  implements Animation.AnimationListener
+final class phh
+  implements View.OnClickListener
 {
-  public phh(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
+  phh(String paramString, sju paramsju) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a(this.a.a);
-    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment show info");
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment Repeat animation");
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    QLog.d(ReadInJoyAtlasCommentFragment.a(), 1, "fragment start animation");
+    odq.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
+    psf.b(this.jdField_a_of_type_Sju.g);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

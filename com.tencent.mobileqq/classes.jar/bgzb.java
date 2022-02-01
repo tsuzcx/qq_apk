@@ -1,21 +1,6 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
-
-class bgzb
-  implements Animation.AnimationListener
+public abstract interface bgzb
 {
-  bgzb(bgyz parambgyz, ImageView paramImageView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_Bgyz.a.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(String paramString);
 }
 
 

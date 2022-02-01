@@ -1,55 +1,42 @@
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class arfg
+class arfg
+  implements avtb<EmoticonPackage>
 {
-  public boolean a = true;
+  arfg(arfd paramarfd, PicEmoticonInfo paramPicEmoticonInfo) {}
   
-  public static arfg a(String paramString)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    if (paramString == null) {}
+    boolean bool;
+    if (paramEmoticonPackage != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.imageType = paramEmoticonPackage.type;
+      PicEmoticonInfo localPicEmoticonInfo = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo;
+      if (paramEmoticonPackage.isAPNG == 2)
+      {
+        bool = true;
+        localPicEmoticonInfo.isAPNG = bool;
+      }
+    }
     for (;;)
     {
-      return null;
-      try
-      {
-        arfg localarfg = new arfg();
-        if (new JSONObject(paramString).optInt("enableMultiChannelReport", 1) == 1) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localarfg.a = bool;
-          return localarfg;
-        }
-        if (!QLog.isColorLevel()) {}
+      arfd.a(this.jdField_a_of_type_Arfd).send(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func sendEmoji ends, type:" + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.imageType);
       }
-      catch (Exception paramString) {}
-    }
-    QLog.e("MultiChannelReportProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
-  }
-  
-  public static String a(arfg paramarfg)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramarfg != null) {}
-    try
-    {
-      localJSONObject.put("isMultiChannelReportEnable", paramarfg.a);
-      return localJSONObject.toString();
-    }
-    catch (JSONException paramarfg)
-    {
-      for (;;)
-      {
-        paramarfg.printStackTrace();
-      }
+      return;
+      bool = false;
+      break;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.imageType = 3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arfg
  * JD-Core Version:    0.7.0.1
  */

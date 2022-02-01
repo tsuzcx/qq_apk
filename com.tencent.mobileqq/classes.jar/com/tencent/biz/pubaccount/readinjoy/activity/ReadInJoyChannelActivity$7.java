@@ -12,10 +12,10 @@ class ReadInJoyChannelActivity$7
   {
     if (this.this$0.app != null)
     {
-      QQMessageFacade localQQMessageFacade = this.this$0.app.a();
+      QQMessageFacade localQQMessageFacade = this.this$0.app.getMessageFacade();
       if (localQQMessageFacade != null)
       {
-        int i = localQQMessageFacade.b();
+        int i = localQQMessageFacade.getUnreadMsgsNum();
         ReadInJoyChannelActivity.a(this.this$0, i);
       }
     }

@@ -1,16 +1,14 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ouh
-  extends ovd
+  implements DialogInterface.OnClickListener
 {
-  ouh(otv paramotv, boolean paramBoolean, List paramList)
-  {
-    super(paramotv, null);
-  }
+  ouh(ouf paramouf) {}
   
-  void a(ovg paramovg)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramovg.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, otv.a(this.jdField_a_of_type_Otv), 3);
+    paramDialogInterface.dismiss();
   }
 }
 

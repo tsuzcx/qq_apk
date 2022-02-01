@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodCodec;
 
 public class atix
-  extends atpa
+  extends atih
 {
-  public atix(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
+  public atix(String paramString, BinaryMessenger paramBinaryMessenger)
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.notifyDataSetChanged();
-    }
+    super(paramString, paramBinaryMessenger);
+  }
+  
+  public MethodChannel.MethodCallHandler a()
+  {
+    return new atiy(this);
+  }
+  
+  public MethodCodec a()
+  {
+    return atiz.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atix
  * JD-Core Version:    0.7.0.1
  */

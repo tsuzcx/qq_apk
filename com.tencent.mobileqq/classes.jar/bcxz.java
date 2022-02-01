@@ -1,7 +1,16 @@
-public abstract interface bcxz
-  extends bcxy
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+
+public class bcxz
+  implements DialogInterface.OnClickListener
 {
-  public abstract void b(int paramInt1, int paramInt2);
+  public bcxz(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    GroupTeamWorkListActivity.a(this.a);
+  }
 }
 
 

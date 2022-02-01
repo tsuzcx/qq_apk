@@ -1,27 +1,37 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.qzonevip.gift.QzoneGiftUtil.1;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
 
-class aztj
-  implements ValueAnimator.AnimatorUpdateListener
+public class aztj
+  implements QzoneZipCacheHelperCallBack
 {
-  aztj(azti paramazti, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  public aztj(QzoneGiftUtil.1 param1) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onResult(boolean paramBoolean)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
-    do
+    if (paramBoolean)
+    {
+      QzoneGiftUtil.1.a(this.a);
+      QLog.i("QzoneGiftUtil", 1, "downloadGiftZip onResult mLoadSuccessTimes = " + QzoneGiftUtil.1.c(this.a) + " mLoadFailTimes = " + QzoneGiftUtil.1.d(this.a));
+      if (this.a.jdField_a_of_type_Aztl != null)
+      {
+        if (QzoneGiftUtil.1.c(this.a) != this.a.jdField_a_of_type_Int) {
+          break label109;
+        }
+        this.a.jdField_a_of_type_Aztl.a();
+      }
+    }
+    label109:
+    while (QzoneGiftUtil.1.c(this.a) + QzoneGiftUtil.1.d(this.a) != this.a.jdField_a_of_type_Int)
     {
       return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-azti.a(this.jdField_a_of_type_Azti) * f);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while (!this.jdField_a_of_type_Azti.f);
-    this.b.setAlpha(1.0F - f);
+      QzoneGiftUtil.1.b(this.a);
+      break;
+    }
+    this.a.jdField_a_of_type_Aztl.b();
   }
+  
+  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
 }
 
 

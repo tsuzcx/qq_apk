@@ -7,10 +7,9 @@ class ARScanEntryView$17
   
   public void run()
   {
-    ARScanEntryView.a(this.this$0, false);
-    ARScanEntryView.f(this.this$0);
-    ARScanEntryView.c(this.this$0);
-    ARScanEntryView.d(this.this$0);
+    ARScanEntryView.a(this.this$0, true);
+    ARScanEntryView.e(this.this$0);
+    ARScanEntryView.b(this.this$0, true);
   }
 }
 

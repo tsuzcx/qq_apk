@@ -1,17 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import java.util.Deque;
+import java.util.LinkedList;
 
-public class rbv
-  implements View.OnTouchListener
+class rbv
 {
-  public rbv(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  Deque<rbx> jdField_a_of_type_JavaUtilDeque = new LinkedList();
+  int b;
+  int c = 0;
+  private final int d = 50;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  rbv(rbt paramrbt) {}
+  
+  boolean a(rbx paramrbx)
   {
-    ReadInJoyUgcSearchTopicFragment.a(this.a);
-    return false;
+    if (this.jdField_a_of_type_JavaUtilDeque.size() >= 50) {
+      this.jdField_a_of_type_JavaUtilDeque.poll();
+    }
+    return this.jdField_a_of_type_JavaUtilDeque.offer(paramrbx);
   }
 }
 

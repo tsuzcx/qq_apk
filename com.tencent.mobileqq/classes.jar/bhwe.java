@@ -1,9 +1,8 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
-
-public abstract interface bhwe
+public class bhwe
 {
-  public abstract URLDrawable a(Drawable paramDrawable);
+  public int a;
+  public boolean a;
+  public int b;
 }
 
 

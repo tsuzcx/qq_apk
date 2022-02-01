@@ -1,13 +1,20 @@
-import cooperation.qwallet.plugin.QWalletHelper;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class alir
+  extends alic
 {
-  public static final String a = ;
-  public static final String b = a + ".tmp/";
-  public static final String c = QWalletHelper.getQWalletInternalPath();
-  public static final String d = c + ".tmp/";
-  public static final String e = d + "topay_recommends";
-  public static final String f = d + "group_available_list_";
+  public View a;
+  public TextView a;
+  public boolean a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
+  public ImageView d;
+  public TextView d;
 }
 
 

@@ -1,18 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.SpannableStringBuilder;
+import java.util.ArrayList;
 
 public class uxf
-  implements View.OnClickListener
+  extends SpannableStringBuilder
 {
-  public uxf(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  private ArrayList<uxh> a;
+  private ArrayList<uxg> b;
   
-  public void onClick(View paramView)
+  uxf(CharSequence paramCharSequence)
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a);
-    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramCharSequence);
+  }
+  
+  public ArrayList<uxh> a()
+  {
+    return this.a;
+  }
+  
+  public void a(ArrayList<uxh> paramArrayList)
+  {
+    this.a = paramArrayList;
+  }
+  
+  public ArrayList<uxg> b()
+  {
+    return this.b;
+  }
+  
+  public void b(ArrayList<uxg> paramArrayList)
+  {
+    this.b = paramArrayList;
   }
 }
 

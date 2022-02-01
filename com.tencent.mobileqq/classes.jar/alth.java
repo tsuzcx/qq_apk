@@ -1,59 +1,37 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFrameSelectBar;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class alth
-  extends Handler
+  extends alte
 {
-  private WeakReference<EditLocalVideoActivity> a;
-  
-  public alth(EditLocalVideoActivity paramEditLocalVideoActivity)
+  public alth(QQAppInterface paramQQAppInterface)
   {
-    this.a = new WeakReference(paramEditLocalVideoActivity);
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(ambl paramambl, Context paramContext, QQAppInterface paramQQAppInterface) {}
+  
+  public void a(ambl paramambl, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if ((this.a == null) || (this.a.get() == null)) {}
-    EditLocalVideoActivity localEditLocalVideoActivity;
+    if (!a()) {}
+    SharedPreferences localSharedPreferences;
     do
     {
       return;
-      localEditLocalVideoActivity = (EditLocalVideoActivity)this.a.get();
-      switch (paramMessage.what)
-      {
-      case 1000: 
-      default: 
-        return;
-      case 1001: 
-        EditLocalVideoActivity.b(localEditLocalVideoActivity);
-        return;
-      case 1103: 
-        EditLocalVideoActivity.a(localEditLocalVideoActivity);
-        return;
-      case 1102: 
-        EditLocalVideoActivity.a(localEditLocalVideoActivity, paramMessage);
-        return;
-      }
-    } while (EditLocalVideoActivity.a(localEditLocalVideoActivity) == null);
-    EditLocalVideoActivity.a(localEditLocalVideoActivity).requestLayout();
-    return;
-    EditLocalVideoActivity.c(localEditLocalVideoActivity);
-    return;
-    Toast.makeText(localEditLocalVideoActivity.getApplicationContext(), anzj.a(2131702551), 1).show();
-    EditLocalVideoActivity.d(localEditLocalVideoActivity);
-    return;
-    localEditLocalVideoActivity.a("608", "3", "1", true);
-    LpReportInfo_pf00064.allReport(664, 3, 4);
-    paramMessage = (String)paramMessage.obj;
-    return;
-    localEditLocalVideoActivity.a("608", "3", "2", true);
-    return;
-    EditLocalVideoActivity.e(localEditLocalVideoActivity);
+      this.b = true;
+      localSharedPreferences = paramContext.getSharedPreferences("apollo_sp", 0);
+    } while (!localSharedPreferences.getBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", true));
+    ambc.a(paramambl, amtj.a(2131703732), 7, 0);
+    localSharedPreferences.edit().putBoolean(paramQQAppInterface.getAccount() + "apollo_settingme_first_enter", false).commit();
+    a(paramContext, paramQQAppInterface);
+  }
+  
+  public boolean a()
+  {
+    return (this.c) && (!this.jdField_a_of_type_Boolean);
   }
 }
 

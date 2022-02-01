@@ -1,17 +1,17 @@
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQSettingMe.31;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class afic
+class afic
   implements View.OnClickListener
 {
-  public afic(QQSettingMe.31 param31) {}
+  afic(afib paramafib) {}
   
   public void onClick(View paramView)
   {
-    bhyu.a();
-    bhyu.a("0X800B232", bhyu.a(), bhyu.b());
+    this.a.a.getHostActivity().finish();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

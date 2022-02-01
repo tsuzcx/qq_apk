@@ -1,8 +1,8 @@
 package cooperation.vip.manager;
 
-import bnvs;
-import bnwo;
-import bnwq;
+import blax;
+import blbu;
+import blbw;
 import cooperation.qzone.util.QZLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
 public class FileBannerTianshuManger$1
   implements Runnable
 {
-  public FileBannerTianshuManger$1(bnvs parambnvs) {}
+  public FileBannerTianshuManger$1(blax paramblax) {}
   
   public void run()
   {
@@ -18,11 +18,11 @@ public class FileBannerTianshuManger$1
       QZLog.i("FileBannerTianshuManger", "getTianShuAd");
     }
     ArrayList localArrayList = new ArrayList();
-    bnwo localbnwo = new bnwo();
-    localbnwo.jdField_a_of_type_Int = bnvs.jdField_a_of_type_Int;
-    localbnwo.b = 1;
-    localArrayList.add(localbnwo);
-    bnwq.a().a(localArrayList, this.this$0.jdField_a_of_type_Bnwp);
+    blbu localblbu = new blbu();
+    localblbu.jdField_a_of_type_Int = blax.jdField_a_of_type_Int;
+    localblbu.b = 1;
+    localArrayList.add(localblbu);
+    blbw.a().a(localArrayList, this.this$0.jdField_a_of_type_Blbv);
   }
 }
 

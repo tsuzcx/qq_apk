@@ -1,98 +1,58 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import android.graphics.Point;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.widget.DraggableGridView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bhdj
-  implements bjwi
+  extends BaseAdapter
 {
-  private bhdk jdField_a_of_type_Bhdk;
-  private String jdField_a_of_type_JavaLangString;
+  private int jdField_a_of_type_Int;
   
-  public bhdj(String paramString, bhdk parambhdk)
+  public bhdj(DraggableGridView paramDraggableGridView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bhdk = parambhdk;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public int a(String paramString1, int paramInt, String paramString2, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    int i = -20;
-    if (paramString1.equals(BaseApplicationImpl.sApplication.getPackageName()))
-    {
-      if (this.jdField_a_of_type_JavaLangString == null)
-      {
-        paramString1 = null;
-        paramInt = -1;
-      }
-      for (;;)
-      {
-        if (this.jdField_a_of_type_Bhdk != null) {
-          this.jdField_a_of_type_Bhdk.a(paramInt);
-        }
-        QLog.d("UpgradeController", 1, "writeCodeToApk:" + this.jdField_a_of_type_JavaLangString + ", forFile:" + paramString2 + " result: " + paramInt, paramString1);
-        return paramInt;
-        if (this.jdField_a_of_type_JavaLangString.length() == 0)
-        {
-          paramString1 = null;
-          paramInt = 0;
-        }
-        else
-        {
-          try
-          {
-            paramString1 = new File(paramString2);
-            paramBundle = new File(paramString2 + "~tmp");
-            if (paramBundle.exists()) {
-              paramBundle.delete();
-            }
-            paramString1.renameTo(paramBundle);
-            bler.a(paramBundle, this.jdField_a_of_type_JavaLangString);
-            paramBundle.renameTo(paramString1);
-            paramString1 = null;
-            paramInt = 0;
-          }
-          catch (FileNotFoundException paramString1)
-          {
-            paramInt = -30;
-          }
-          catch (IOException paramString1)
-          {
-            paramInt = i;
-            if (paramString1 != null)
-            {
-              paramInt = i;
-              if (paramString1.getMessage() != null)
-              {
-                paramInt = i;
-                if (paramString1.getMessage().contains("space")) {
-                  paramInt = -10;
-                }
-              }
-            }
-          }
-          catch (Exception paramString1)
-          {
-            paramInt = -20;
-          }
-        }
-      }
+    this.jdField_a_of_type_Int = paramInt;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int);
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int, paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext()), this.jdField_a_of_type_Int, paramInt, paramViewGroup);
     }
-    return -1;
-  }
-  
-  public void a(String paramString, int paramInt, Bundle paramBundle)
-  {
-    if (BaseApplicationImpl.sApplication.getPackageName().equals(paramString))
+    for (;;)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("UpgradeController", 4, "syncVersionCodeToTool:" + paramString + ", versionCode:" + paramInt);
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(paramView, this.jdField_a_of_type_Int, paramInt);
+      bhdh localbhdh = new bhdh(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, this.jdField_a_of_type_Int, paramInt);
+      paramView.setOnClickListener(localbhdh);
+      paramView.setOnLongClickListener(localbhdh);
+      if ((!DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)) && ((DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).y != this.jdField_a_of_type_Int) || (DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).x != paramInt) || (!DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)))) {
+        paramView.setVisibility(0);
       }
-      if ((this.jdField_a_of_type_Bhdk != null) && (!this.jdField_a_of_type_Bhdk.a(paramInt))) {
-        this.jdField_a_of_type_JavaLangString = null;
-      }
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
     }
   }
 }

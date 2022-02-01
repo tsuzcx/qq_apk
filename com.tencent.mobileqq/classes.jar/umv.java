@@ -1,20 +1,4 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
-
-public final class umv
-  implements Parcelable.Creator<WSRedDotPushMsg>
-{
-  public WSRedDotPushMsg a(Parcel paramParcel)
-  {
-    return new WSRedDotPushMsg(paramParcel);
-  }
-  
-  public WSRedDotPushMsg[] a(int paramInt)
-  {
-    return new WSRedDotPushMsg[paramInt];
-  }
-}
+class umv {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

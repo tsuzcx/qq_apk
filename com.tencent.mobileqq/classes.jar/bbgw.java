@@ -1,6 +1,39 @@
-public abstract interface bbgw
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.List;
+
+public class bbgw
+  implements bbha
 {
-  public abstract void a(float paramFloat);
+  protected View a;
+  
+  public bbgw(ViewGroup paramViewGroup)
+  {
+    this.a = new LinearLayout(paramViewGroup.getContext());
+    this.a.setVisibility(8);
+  }
+  
+  public View a()
+  {
+    return this.a;
+  }
+  
+  public TextView a()
+  {
+    return null;
+  }
+  
+  public List<bbhb> a()
+  {
+    return null;
+  }
+  
+  public TextView b()
+  {
+    return null;
+  }
 }
 
 

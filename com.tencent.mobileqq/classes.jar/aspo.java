@@ -1,28 +1,33 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aspo
-  extends askq
+final class aspo
+  implements View.OnClickListener
 {
-  aspo(aspm paramaspm) {}
+  aspo(FileManagerEntity paramFileManagerEntity, asqp paramasqp) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void onClick(View paramView)
   {
-    this.a.b(paramEmoticonPackage);
-  }
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
-  {
-    this.a.a(paramEmoticonPackage, paramInt);
-  }
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    this.a.a(paramEmoticonPackage);
-  }
-  
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    this.a.a(paramEmoticonPackage, paramInt1, paramInt2);
+    try
+    {
+      if (bkss.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity)) {
+        bkss.a().a(this.jdField_a_of_type_Asqp.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath(), false);
+      }
+      for (;;)
+      {
+        label36:
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        QLog.e("FileOperaterUtils-PUPU", 2, "Should not open the file with pupu: " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
+      }
+    }
+    catch (Exception localException)
+    {
+      break label36;
+    }
   }
 }
 

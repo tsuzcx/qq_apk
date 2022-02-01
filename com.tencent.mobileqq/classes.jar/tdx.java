@@ -1,60 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.WebSsoBody.WebSsoControlData;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class tdx
-  implements BusinessObserver
+class tdx
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public tdx(BridgeModule paramBridgeModule, String paramString) {}
+  tdx(tdw paramtdw, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    if (paramBoolean) {}
-    try
-    {
-      Object localObject = paramBundle.getByteArray("data");
-      if (localObject == null) {
-        return;
-      }
-      paramBundle = new WebSsoBody.WebSsoResponseBody();
-      paramBundle.mergeFrom((byte[])localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("data", paramBundle.data.get());
-      ((JSONObject)localObject).put("retcode", paramBundle.ret.get());
-      ((JSONObject)localObject).put("cret", 0);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localObject);
-      if (((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.has()) {
-        BridgeModule.access$102(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, ((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.get());
-      }
-      if (!((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).packageSize.has()) {
-        return;
-      }
-      BridgeModule.access$202(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, ((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).packageSize.get());
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      paramBundle = new JSONObject();
-      try
-      {
-        paramBundle.put("cret", 2);
-        return;
-      }
-      catch (JSONException paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
-    }
-    paramBundle = new JSONObject();
-    paramBundle.put("cret", 1);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramBundle);
-    return;
+    return Math.round((paramInt2 - paramInt1) * paramFloat) + paramInt1;
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = paramValueAnimator.getAnimatedFraction();
+    this.jdField_a_of_type_Tdw.a(a(this.jdField_a_of_type_Int, this.b, f), a(this.c, this.d, f));
   }
 }
 

@@ -1,29 +1,57 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3;
+import android.support.v4.util.SparseArrayCompat;
 
-class aiiq
-  implements Animator.AnimatorListener
+public class aiiq<T>
 {
-  aiiq(aiip paramaiip) {}
+  SparseArrayCompat<aiip<T>> a = new SparseArrayCompat();
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public int a()
   {
-    if (aiim.a(this.a.a.this$0) != null) {
-      aiim.a(this.a.a.this$0).setVisibility(0);
-    }
-    if (aiim.a(this.a.a.this$0) != null) {
-      aiim.a(this.a.a.this$0).setVisibility(4);
-    }
+    return this.a.size();
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public int a(T paramT, int paramInt)
+  {
+    int i = this.a.size() - 1;
+    while (i >= 0)
+    {
+      if (((aiip)this.a.valueAt(i)).a(paramT, paramInt)) {
+        return this.a.keyAt(i);
+      }
+      i -= 1;
+    }
+    throw new IllegalArgumentException("No ItemViewDelegate added that matches position=" + paramInt + " in data source");
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public aiip a(int paramInt)
+  {
+    return (aiip)this.a.get(paramInt);
+  }
+  
+  public aiiq<T> a(aiip<T> paramaiip)
+  {
+    int i = this.a.size();
+    if (paramaiip != null) {
+      this.a.put(i, paramaiip);
+    }
+    return this;
+  }
+  
+  public void a(aiix paramaiix, T paramT, int paramInt)
+  {
+    int j = this.a.size();
+    int i = 0;
+    while (i < j)
+    {
+      aiip localaiip = (aiip)this.a.valueAt(i);
+      if (localaiip.a(paramT, paramInt))
+      {
+        localaiip.a(paramaiix, paramT, paramInt);
+        return;
+      }
+      i += 1;
+    }
+    throw new IllegalArgumentException("No ItemViewDelegateManager added that matches position=" + paramInt + " in data source");
+  }
 }
 
 

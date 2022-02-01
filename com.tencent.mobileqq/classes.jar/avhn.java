@@ -1,44 +1,19 @@
-import com.tencent.mobileqq.fts.entity.FTSEntity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class avhn
+class avhn
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Class<? extends FTSEntity> jdField_a_of_type_JavaLangClass;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  avho[] jdField_a_of_type_ArrayOfAvho;
-  private String b;
+  avhn(avhj paramavhj, View.OnClickListener paramOnClickListener) {}
   
-  public avhm a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaLangClass == null) {
-      throw new IllegalArgumentException("entityClazz must not be null.");
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
     }
-    return new avhm(this.jdField_a_of_type_JavaLangClass, this.jdField_a_of_type_ArrayOfAvho, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
-  }
-  
-  public avhn a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public avhn a(Class<? extends FTSEntity> paramClass)
-  {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-    return this;
-  }
-  
-  public avhn a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public avhn a(avho... paramVarArgs)
-  {
-    this.jdField_a_of_type_ArrayOfAvho = paramVarArgs;
-    return this;
+    this.jdField_a_of_type_Avhj.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import bamf;
+import azcf;
 
 public class TouchProxyRelativeLayout
   extends RelativeLayout
 {
-  public bamf a;
+  public azcf a;
   
   public TouchProxyRelativeLayout(Context paramContext)
   {
@@ -28,10 +28,10 @@ public class TouchProxyRelativeLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    bamf localbamf = this.a;
+    azcf localazcf = this.a;
     boolean bool1 = false;
-    if (localbamf != null) {
-      bool1 = localbamf.a(paramMotionEvent);
+    if (localazcf != null) {
+      bool1 = localazcf.a(paramMotionEvent);
     }
     boolean bool2 = bool1;
     if (!bool1) {

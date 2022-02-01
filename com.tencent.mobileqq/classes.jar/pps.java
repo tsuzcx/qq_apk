@@ -1,13 +1,19 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.CharacterStyle;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
 
-final class pps
-  extends CharacterStyle
+public class pps
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void updateDrawState(TextPaint paramTextPaint)
+  public pps(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramTextPaint.setColor(Color.parseColor("#FF3DB8FF"));
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = ReadInJoySelfFragment.a(this.a).getLayoutParams();
+    paramValueAnimator.height = i;
+    ReadInJoySelfFragment.a(this.a).setLayoutParams(paramValueAnimator);
   }
 }
 

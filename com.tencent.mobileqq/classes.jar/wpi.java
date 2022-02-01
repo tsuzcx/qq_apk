@@ -1,32 +1,56 @@
-import android.text.TextUtils;
+import android.support.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class wpi
+  implements woa
 {
-  public int a;
-  public final long a;
   public final String a;
-  public final String b;
+  public final List<String> a;
+  private wob jdField_a_of_type_Wob;
+  private woe jdField_a_of_type_Woe;
+  private wog jdField_a_of_type_Wog;
   
-  public boolean equals(Object paramObject)
+  public wpi(String paramString)
   {
-    if ((paramObject instanceof wpi)) {
-      return TextUtils.equals(((wpi)paramObject).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-    }
-    return false;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(paramString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Wob = new wob();
+    this.jdField_a_of_type_Wob.b = true;
+    this.jdField_a_of_type_Wob.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Wob.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Woe = new woe(new wod("TROOP_GROUD_ID"));
+    this.jdField_a_of_type_Woe.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Woe.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_Woe.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_JavaLangString, "TROOP_FEED_ID");
+    this.jdField_a_of_type_Wob.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Woe);
+    this.jdField_a_of_type_Wog = new wog(new wod("TROOP_GROUD_ID"), this.jdField_a_of_type_JavaLangString, "TROOP_FEED_ID");
+    this.jdField_a_of_type_Wog.jdField_a_of_type_Woe = this.jdField_a_of_type_Woe;
   }
   
-  public String toString()
+  public wob a(@Nullable wod paramwod, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_JavaLangString));
-    localStringBuilder.append("\n");
-    localStringBuilder.append("-t ");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append("  -dt ");
-    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_Long));
-    localStringBuilder.append("\n");
-    return localStringBuilder.toString();
+    return this.jdField_a_of_type_Wob;
   }
+  
+  public wog a()
+  {
+    return this.jdField_a_of_type_Wog;
+  }
+  
+  public void a() {}
+  
+  public void a(@Nullable wod paramwod, int paramInt1, int paramInt2, String paramString) {}
+  
+  public void a(@Nullable wod paramwod, String paramString) {}
+  
+  public void a(wof paramwof) {}
+  
+  public void b() {}
+  
+  public void b(wof paramwof) {}
 }
 
 

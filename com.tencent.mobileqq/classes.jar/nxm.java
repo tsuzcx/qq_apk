@@ -1,33 +1,22 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 
 public class nxm
-  implements aumz
+  implements Animation.AnimationListener
 {
-  public nxm(VideoCoverView paramVideoCoverView) {}
+  public nxm(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = true;
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
-    if (this.a.jdField_a_of_type_Int == 5) {
-      this.a.d();
-    }
-    for (;;)
-    {
-      nwp.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, true);
-      return;
-      this.a.b(VideoCoverView.a(this.a));
-    }
+    this.a.setResult(-1);
+    PublicAccountAdvertisementActivity.g(this.a);
+    PublicAccountAdvertisementActivity.a(this.a, 0, 0);
   }
   
-  public void b()
-  {
-    this.a.jdField_a_of_type_Int = 6;
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = false;
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
-    this.a.g();
-    nwp.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, false);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

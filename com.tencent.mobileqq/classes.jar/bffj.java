@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import mqq.app.QQPermissionCallback;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 
 public class bffj
-  implements QQPermissionCallback
 {
-  public bffj(AbsPublishActivity paramAbsPublishActivity) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public URLImageView a;
+  public ImageProgressCircle a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bhlq.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.a(this.a, this.a);
-  }
+  protected bffj(bffh parambffh) {}
 }
 
 

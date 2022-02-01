@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.profilecard.base.view;
 
-import anyw;
-import azxr;
-import bhkt;
+import amsw;
+import aymg;
+import bfua;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -12,17 +12,17 @@ import mqq.os.MqqHandler;
 class ProfileBaseView$1
   implements Runnable
 {
-  ProfileBaseView$1(ProfileBaseView paramProfileBaseView, azxr paramazxr, boolean paramBoolean) {}
+  ProfileBaseView$1(ProfileBaseView paramProfileBaseView, aymg paramaymg, boolean paramBoolean) {}
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((anyw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_Azxr.a.a);
+    ExtensionInfo localExtensionInfo = ((amsw)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_Aymg.a.a);
     ProfileBaseView.1.1 local1 = new ProfileBaseView.1.1(this, localExtensionInfo);
     ThreadManager.getUIHandler().post(local1);
-    if ((this.jdField_a_of_type_Boolean) && (localExtensionInfo != null) && (bhkt.b(localExtensionInfo.pendantId)))
+    if ((this.jdField_a_of_type_Boolean) && (localExtensionInfo != null) && (bfua.b(localExtensionInfo.pendantId)))
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.this$0.jdField_a_of_type_Anui);
-      bhkt.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azxr.a.a);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.this$0.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
+      bfua.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aymg.a.a);
     }
   }
 }

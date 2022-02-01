@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import auqh;
+import atcp;
 
 public class SendBottomBar$4$1
   implements Runnable
 {
-  public SendBottomBar$4$1(auqh paramauqh) {}
+  public SendBottomBar$4$1(atcp paramatcp) {}
   
   public void run()
   {

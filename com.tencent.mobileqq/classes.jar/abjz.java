@@ -1,21 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.ad.tangram.image.AdImageViewAdapter.Callback;
+import com.tencent.ad.tangram.image.AdImageViewAdapter.Params;
+import java.lang.ref.WeakReference;
 
 class abjz
-  implements View.OnClickListener
+  implements abtz
 {
-  abjz(abju paramabju) {}
+  abjz(abjy paramabjy, AdImageViewAdapter.Params paramParams) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.a.o();
-    EventCollector.getInstance().onViewClicked(paramView);
+    ((AdImageViewAdapter.Callback)this.jdField_a_of_type_ComTencentAdTangramImageAdImageViewAdapter$Params.callback.get()).onStopLoad(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abjz
  * JD-Core Version:    0.7.0.1
  */

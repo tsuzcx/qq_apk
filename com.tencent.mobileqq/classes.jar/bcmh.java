@@ -1,22 +1,14 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bcmh
-  extends apcq
+class bcmh
+  implements DialogInterface.OnClickListener
 {
-  public bcmh(NetSearchEngine paramNetSearchEngine, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  bcmh(bcmf parambcmf) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0)
-    {
-      NetSearchEngine.a = paramSosoLbsInfo.a.a;
-      NetSearchEngine.b = paramSosoLbsInfo.a.b;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

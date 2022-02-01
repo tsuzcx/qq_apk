@@ -4,14 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import bimg;
+import bgsp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
 
 class ReaderWebViewBuilder$InnerAbsWebView
-  extends bimg
+  extends bgsp
 {
   private boolean jdField_a_of_type_Boolean;
   

@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForLongTextMsg;
-import com.tencent.mobileqq.data.MessageForWantGiftMsg;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-final class ahgl
-  implements ahky
+class ahgl
+  implements View.OnTouchListener
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  ahgl(ahgc paramahgc) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramChatMessage instanceof MessageForLongTextMsg)) {
-      return 63;
-    }
-    if ((paramChatMessage instanceof MessageForWantGiftMsg)) {
-      return 72;
-    }
-    if ((paramChatMessage.vipBubbleID == 100000L) && (!paramChatMessage.isSend())) {
-      return 9;
-    }
-    return 0;
+    return true;
   }
 }
 

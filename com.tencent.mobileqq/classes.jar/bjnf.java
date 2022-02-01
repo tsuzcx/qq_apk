@@ -1,17 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityFragment;
-import org.json.JSONObject;
+import android.view.animation.Interpolator;
 
 public class bjnf
-  implements DialogInterface.OnClickListener
+  implements Interpolator
 {
-  public bjnf(OpenAuthorityFragment paramOpenAuthorityFragment, int paramInt, JSONObject paramJSONObject) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public float getInterpolation(float paramFloat)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityFragment.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
+    return bjmb.a(paramFloat);
   }
 }
 

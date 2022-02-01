@@ -1,50 +1,88 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
+import UserGrowth.stFeed;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.List;
 
 public class upf
+  extends bjwy<stFeed>
 {
-  public static Intent a(String paramString1, String paramString2)
+  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private ujh jdField_a_of_type_Ujh;
+  private uve jdField_a_of_type_Uve;
+  
+  private upf(ViewGroup paramViewGroup, ujh paramujh)
   {
-    paramString1 = new Intent("android.intent.action.VIEW", Uri.parse(paramString1));
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramString1.setPackage(paramString2);
-    }
-    paramString1.setFlags(536870912);
-    paramString1.putExtra("big_brother_source_key", "biz_src_jc_gzh_weishi");
-    return paramString1;
+    super(paramViewGroup, 2131560398);
+    this.jdField_a_of_type_Ujh = paramujh;
+    b();
   }
   
-  public static void a(Activity paramActivity)
+  public static upf a(ViewGroup paramViewGroup, ujh paramujh)
   {
-    String str1 = ugd.a().b();
-    String str2 = ugd.a().a();
-    uqf.d("AppMarketUtils", "goAppMarket :\npackageName = " + str2 + "\nurl = " + str1);
-    try
+    return new upf(paramViewGroup, paramujh);
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131367707));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)a(2131376086));
+    TextView localTextView1 = (TextView)a(2131381215);
+    TextView localTextView2 = (TextView)a(2131381214);
+    ImageView localImageView = (ImageView)a(2131381188);
+    localTextView2.setVisibility(8);
+    localImageView.setVisibility(8);
+    localTextView1.setText(2131719678);
+    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(a(), 0, false);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setHasFixedSize(true);
+    this.jdField_a_of_type_Uve = new uve(a(), this.jdField_a_of_type_Ujh);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Uve);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new ujw());
+  }
+  
+  public RecyclerView a()
+  {
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager == null) || (this.jdField_a_of_type_Uve == null)) {}
+    for (;;)
     {
-      paramActivity.startActivity(a(str1, str2));
+      return;
+      int i = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findFirstVisibleItemPosition();
+      int j = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findLastVisibleItemPosition();
+      if ((i >= 0) && (j < this.jdField_a_of_type_Uve.a().size())) {
+        while (i <= j)
+        {
+          RecyclerView.ViewHolder localViewHolder = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForAdapterPosition(i);
+          if ((localViewHolder instanceof uvf)) {
+            ((uvf)localViewHolder).b();
+          }
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public void a(stFeed paramstFeed)
+  {
+    if (paramstFeed == null)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       return;
     }
-    catch (Exception paramActivity)
-    {
-      uqf.d("AppMarketUtils", "goAppMarket error messaage = " + paramActivity.getMessage());
-    }
-  }
-  
-  public static boolean a(Activity paramActivity)
-  {
-    if (paramActivity == null) {
-      uqf.d("AppMarketUtils", "tryGoAppMarket:activity = null");
-    }
-    do
-    {
-      return false;
-      paramActivity = ugd.a().b();
-      String str = ugd.a().a();
-      uqf.c("AppMarketUtils", "goAppMarket:\nappStorePackageName = " + str + "\nappStoreVendorId =" + ugd.a().b() + "\nappStoreScheme =" + paramActivity);
-    } while ((TextUtils.isEmpty(paramActivity)) || (paramActivity.startsWith("http")));
-    return true;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_Uve.a(paramstFeed);
+    this.jdField_a_of_type_Uve.a(paramstFeed.person_meta);
   }
 }
 

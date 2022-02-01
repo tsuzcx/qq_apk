@@ -9,9 +9,9 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bqly;
-import bqqo;
-import yuk;
+import bnik;
+import bnmu;
+import xvv;
 
 @TargetApi(14)
 public class ElasticImageView
@@ -71,7 +71,7 @@ public class ElasticImageView
   
   private ValueAnimator a(float paramFloat1, float paramFloat2, long paramLong)
   {
-    return bqly.a(paramLong, paramFloat1, paramFloat2, new bqqo(this));
+    return bnik.a(paramLong, paramFloat1, paramFloat2, new bnmu(this));
   }
   
   private void a()
@@ -79,6 +79,19 @@ public class ElasticImageView
     setScaleType(ImageView.ScaleType.MATRIX);
     this.jdField_b_of_type_AndroidGraphicsMatrix = new Matrix(getImageMatrix());
     this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  }
+  
+  private void a(float paramFloat)
+  {
+    if (paramFloat <= 0.0F) {
+      return;
+    }
+    xvv.b("ElasticImageView", "updateMatrix:" + paramFloat);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.set(this.jdField_b_of_type_AndroidGraphicsMatrix);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.g, this.h);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(this.jdField_e_of_type_Float, this.jdField_f_of_type_Float, this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(paramFloat, paramFloat, this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
+    super.setImageMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
   }
   
   private void b()
@@ -91,19 +104,6 @@ public class ElasticImageView
       this.jdField_a_of_type_AndroidAnimationValueAnimator = a(this.jdField_d_of_type_Float, this.jdField_c_of_type_Float, 100L);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     }
-  }
-  
-  private void b(float paramFloat)
-  {
-    if (paramFloat <= 0.0F) {
-      return;
-    }
-    yuk.b("ElasticImageView", "updateMatrix:" + paramFloat);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.set(this.jdField_b_of_type_AndroidGraphicsMatrix);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.g, this.h);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(this.jdField_e_of_type_Float, this.jdField_f_of_type_Float, this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(paramFloat, paramFloat, this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
-    super.setImageMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
   }
   
   private void c()
@@ -159,7 +159,7 @@ public class ElasticImageView
     label388:
     for (;;)
     {
-      yuk.b("ElasticImageView", "drawableWidth:" + k + ",drawableHeight:" + j + ",AvaliableWidth:" + this.jdField_c_of_type_Int + ",AvaliableHeight:" + this.jdField_d_of_type_Int + ",scaleValue:" + f1);
+      xvv.b("ElasticImageView", "drawableWidth:" + k + ",drawableHeight:" + j + ",AvaliableWidth:" + this.jdField_c_of_type_Int + ",AvaliableHeight:" + this.jdField_d_of_type_Int + ",scaleValue:" + f1);
       this.jdField_a_of_type_Float = f1;
       this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float * 0.9F);
       this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float * 0.5F);
@@ -201,16 +201,6 @@ public class ElasticImageView
     }
   }
   
-  public void a(float paramFloat)
-  {
-    if (this.jdField_d_of_type_Float != paramFloat)
-    {
-      this.jdField_d_of_type_Float = paramFloat;
-      b(this.jdField_d_of_type_Float);
-      super.invalidate();
-    }
-  }
-  
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
@@ -221,10 +211,10 @@ public class ElasticImageView
     this.i = (this.jdField_f_of_type_Int * 2);
     this.jdField_c_of_type_Int = (this.jdField_e_of_type_Int * 2);
     this.jdField_d_of_type_Int = (this.jdField_f_of_type_Int * 2);
-    yuk.b("ElasticImageView", "ImageViewWidth:" + this.jdField_a_of_type_Int + ",ImageViewHeight:" + this.jdField_b_of_type_Int + ",centerX:" + this.jdField_e_of_type_Int + ",centerY:" + this.jdField_f_of_type_Int + ",AvaliableWidth:" + this.jdField_c_of_type_Int + ",AvaliableHeight:" + this.jdField_d_of_type_Int);
+    xvv.b("ElasticImageView", "ImageViewWidth:" + this.jdField_a_of_type_Int + ",ImageViewHeight:" + this.jdField_b_of_type_Int + ",centerX:" + this.jdField_e_of_type_Int + ",centerY:" + this.jdField_f_of_type_Int + ",AvaliableWidth:" + this.jdField_c_of_type_Int + ",AvaliableHeight:" + this.jdField_d_of_type_Int);
     d();
     this.jdField_d_of_type_Float = this.jdField_a_of_type_Float;
-    b(this.jdField_d_of_type_Float);
+    a(this.jdField_d_of_type_Float);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -265,7 +255,7 @@ public class ElasticImageView
     super.setImageDrawable(paramDrawable);
     d();
     this.jdField_d_of_type_Float = this.jdField_a_of_type_Float;
-    b(this.jdField_d_of_type_Float);
+    a(this.jdField_d_of_type_Float);
   }
   
   public void setIsNeedAdjustDrawableToSquare(boolean paramBoolean)

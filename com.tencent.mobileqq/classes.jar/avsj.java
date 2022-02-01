@@ -1,147 +1,125 @@
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
+import java.util.Map;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class avsj
+  implements ayeo
 {
-  public static ConcurrentHashMap<String, ArrayList<avsm>> a = new ConcurrentHashMap();
-  public static ConcurrentHashMap<String, avsl> b = new ConcurrentHashMap();
+  protected MessageForMixedMsg a;
+  protected String a;
+  protected ArrayList<MessageForText.AtTroopMemberInfo> a;
+  protected Map<String, List<Integer>> a;
   
-  public static void a()
+  public avsj(MessageForMixedMsg paramMessageForMixedMsg, Map<String, List<Integer>> paramMap, String paramString, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList)
   {
-    synchronized (a)
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg = paramMap;
+    this.jdField_a_of_type_JavaLangString = paramArrayList;
+    this.jdField_a_of_type_JavaUtilMap = paramString;
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilArrayList = localObject;
+  }
+  
+  private void a(MessageForMixedMsg paramMessageForMixedMsg)
+  {
+    Object localObject;
+    if ((paramMessageForMixedMsg.msgElemList.get(0) instanceof MessageForText))
     {
-      HashSet localHashSet = new HashSet();
-      Iterator localIterator2 = a.values().iterator();
-      while (localIterator2.hasNext())
+      localObject = (MessageForText)paramMessageForMixedMsg.msgElemList.get(0);
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (((MessageForText)localObject).atInfoList == null)) {
+        ((MessageForText)localObject).atInfoList = this.jdField_a_of_type_JavaUtilArrayList;
+      }
+    }
+    if (paramMessageForMixedMsg.istroop == 1)
+    {
+      localObject = paramMessageForMixedMsg.msgElemList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Iterator localIterator3 = ((ArrayList)localIterator2.next()).iterator();
-        if (localIterator3.hasNext())
-        {
-          avsm localavsm = (avsm)localIterator3.next();
-          localavsm.d();
-          localHashSet.add(localavsm.d);
+        MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
+        nmy.a().a(localMessageRecord);
+      }
+    }
+    avsf.a(this.jdField_a_of_type_Avsf, this.jdField_a_of_type_Avsf.a, paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.istroop, paramMessageForMixedMsg, true);
+  }
+  
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
+  {
+    Object localObject1 = (List)this.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString);
+    if ((localObject1 == null) || (((List)localObject1).isEmpty())) {}
+    for (;;)
+    {
+      return null;
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = (Integer)((Iterator)localObject1).next();
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.getSubMessage(((Integer)localObject2).intValue());
+        if ((localObject2 instanceof MessageForPic)) {
+          ((MessageForPic)localObject2).richText = paramRichText;
         }
       }
     }
-    Iterator localIterator1 = localObject.iterator();
-    while (localIterator1.hasNext()) {
-      c((String)localIterator1.next());
-    }
   }
   
-  public static void a(avsm paramavsm)
+  public void onSend(ayep paramayep)
   {
-    synchronized (a)
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      String str = paramavsm.a();
-      ArrayList localArrayList = (ArrayList)a.get(str);
-      if (localArrayList == null)
-      {
-        localArrayList = new ArrayList();
-        localArrayList.add(paramavsm);
-        a.put(str, localArrayList);
-      }
-      while (localArrayList.contains(paramavsm)) {
-        return;
-      }
-      localArrayList.add(paramavsm);
+      localObject1 = new ErrorMessage(paramayep.jdField_b_of_type_Int, paramayep.jdField_a_of_type_JavaLangString);
+      QLog.d("MixedMsgManager", 2, "reqUploadMultiPics UiCallBack success result = " + paramayep + ", error = " + localObject1);
     }
-  }
-  
-  public static void a(String paramString)
-  {
-    synchronized (a)
+    if (paramayep.jdField_b_of_type_Int != 0) {
+      avsf.a(this.jdField_a_of_type_Avsf, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, false, "send Msg fail: " + paramayep);
+    }
+    do
     {
-      avsm localavsm;
       do
       {
-        Iterator localIterator = a.keySet().iterator();
-        Object localObject;
-        while (!((Iterator)localObject).hasNext())
-        {
-          do
-          {
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            localObject = (String)localIterator.next();
-          } while (!((String)localObject).endsWith("plugin"));
-          localObject = ((ArrayList)a.get(localObject)).iterator();
-        }
-        localavsm = (avsm)((Iterator)localObject).next();
-      } while (!((avsk)localavsm).a.equals(paramString));
-      localavsm.b();
-      localavsm.d();
-    }
-  }
-  
-  public static void b(String paramString)
-  {
-    synchronized (a)
-    {
-      Iterator localIterator = a.keySet().iterator();
-      while (localIterator.hasNext())
+        return;
+        localObject1 = (List)this.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_JavaLangString);
+      } while ((localObject1 == null) || (((List)localObject1).isEmpty()));
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        Object localObject = (String)localIterator.next();
-        if (((String)localObject).startsWith(paramString))
+        Object localObject2 = (Integer)((Iterator)localObject1).next();
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.getSubMessage(((Integer)localObject2).intValue());
+        if ((localObject2 instanceof MessageForPic))
         {
-          localObject = ((ArrayList)a.get(localObject)).iterator();
-          if (((Iterator)localObject).hasNext()) {
-            ((avsm)((Iterator)localObject).next()).d();
+          localObject2 = (MessageForPic)localObject2;
+          if (QLog.isColorLevel()) {
+            QLog.d("MixedMsgManager", 2, "onSend, pre MessageForPic:" + ((MessageForPic)localObject2).toLogString());
           }
+          ((MessageForPic)localObject2).md5 = paramayep.d;
+          ((MessageForPic)localObject2).uuid = paramayep.c;
+          ((MessageForPic)localObject2).size = paramayep.jdField_a_of_type_Long;
+          ((MessageForPic)localObject2).groupFileID = paramayep.jdField_b_of_type_Long;
+          if (QLog.isColorLevel()) {
+            QLog.d("MixedMsgManager", 2, "onSend, end MessageForPic:" + ((MessageForPic)localObject2).toLogString());
+          }
+          this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.prewrite();
         }
       }
+    } while (!this.jdField_a_of_type_JavaUtilMap.isEmpty());
+    if (QLog.isColorLevel()) {
+      QLog.d("MixedMsgManager", 2, "onSend, mMsgMap isEmpty, packAndSend..");
     }
-    c(paramString);
+    a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
   }
   
-  public static void c(String paramString)
-  {
-    synchronized (a)
-    {
-      avsl localavsl = (avsl)b.get(paramString);
-      if (localavsl != null)
-      {
-        localavsl.d();
-        b.remove(paramString);
-      }
-      return;
-    }
-  }
-  
-  public static void d(String paramString)
-  {
-    synchronized (a)
-    {
-      paramString = (avsl)b.get(paramString);
-      if (paramString != null) {
-        paramString.b();
-      }
-      return;
-    }
-  }
-  
-  public static void e(String paramString)
-  {
-    synchronized (a)
-    {
-      if ((avsl)b.get(paramString) == null)
-      {
-        avsl localavsl = new avsl(paramString);
-        b.put(paramString, localavsl);
-        localavsl.a();
-      }
-      return;
-    }
-  }
+  public void updateMsg(ayep paramayep) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avsj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,8 @@
-import android.widget.ImageView;
-
 public class amra
-  extends blpw
 {
+  public int a;
   public String a;
-  public int b = 1;
-  public ImageView d;
+  public int b = 100;
 }
 
 

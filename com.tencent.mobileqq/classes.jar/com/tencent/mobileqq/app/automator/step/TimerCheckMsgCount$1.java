@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import adab;
-import bnrf;
+import abwp;
+import bkwm;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDoingSomething;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.qphone.base.util.QLog;
-import ozl;
+import par;
 
 class TimerCheckMsgCount$1
   implements Runnable
@@ -17,31 +17,40 @@ class TimerCheckMsgCount$1
   
   public void run()
   {
-    this.this$0.a.app.a().l();
+    this.this$0.a.app.getMessageFacade().checkMsgCounts();
     ((HotChatManager)this.this$0.a.app.getManager(60)).b();
-    this.this$0.a.app.a().c();
-    if (!bnrf.o(this.this$0.a.app)) {}
-    while (!((Boolean)bnrf.a("kandian_report_user_apps_switch", Boolean.valueOf(false))).booleanValue())
+    this.this$0.a.app.getConversationFacade().c();
+    if (!bkwm.p(this.this$0.a.app)) {
+      if (((Boolean)bkwm.a("kandian_report_user_apps_switch", Boolean.valueOf(false))).booleanValue()) {
+        break label118;
+      }
+    }
+    for (;;)
     {
-      return;
+      for (;;)
+      {
+        TimerCheckMsgCount.a(this.this$0, null);
+        return;
+        try
+        {
+          TimerCheckMsgCount.a(this.this$0);
+          ReadInJoyDoingSomething.a();
+        }
+        catch (Exception localException1)
+        {
+          localException1.printStackTrace();
+        }
+      }
+      break;
       try
       {
-        TimerCheckMsgCount.a(this.this$0);
-        ReadInJoyDoingSomething.a();
+        label118:
+        par.a();
       }
-      catch (Exception localException1)
+      catch (Exception localException2)
       {
-        localException1.printStackTrace();
+        QLog.e("QQInitHandler", 1, "TImerCheckMsgCount run: ", localException2);
       }
-    }
-    try
-    {
-      ozl.a();
-      return;
-    }
-    catch (Exception localException2)
-    {
-      QLog.e("QQInitHandler", 1, "TImerCheckMsgCount run: ", localException2);
     }
   }
 }

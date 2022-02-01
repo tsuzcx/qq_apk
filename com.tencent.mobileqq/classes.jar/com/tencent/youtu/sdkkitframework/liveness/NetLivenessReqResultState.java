@@ -377,6 +377,7 @@ public class NetLivenessReqResultState
     {
       Object localObject2 = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.ACTION_STATE));
       this.bestImage = ((YuvImage)((YtFSMBaseState)localObject2).getStateDataBy("best_frame"));
+      int i = ((Integer)((YtFSMBaseState)localObject2).getStateDataBy("mediacodec_color_format")).intValue();
       this.stateData.put("best_frame", this.bestImage);
       Object localObject1 = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.REFLECT_STATE));
       UploadVideoRequesterV3.UploadVideoResponse localUploadVideoResponse = (UploadVideoRequesterV3.UploadVideoResponse)((YtFSMBaseState)localObject1).getStateDataBy("reflect_response_object");
@@ -389,7 +390,7 @@ public class NetLivenessReqResultState
       localVersion.faction_sdk_version = YTPoseDetectJNIInterface.getVersion();
       localVersion.freflect_sdk_version = "3.4.7";
       ((ActionReflectReq)localObject1).action_video = new String((byte[])localObject2);
-      ((ActionReflectReq)localObject1).client_version = String.format("sdk_version:%s;ftrack_sdk_version:%s;freflect_sdk_version:%s;faction_sdk_version:%s", new Object[] { localVersion.sdk_version, localVersion.ftrack_sdk_version, localVersion.freflect_sdk_version, localVersion.faction_sdk_version });
+      ((ActionReflectReq)localObject1).client_version = String.format("sdk_version:%s;ftrack_sdk_version:%s;freflect_sdk_version:%s;faction_sdk_version:%s;mediacodec:%d", new Object[] { localVersion.sdk_version, localVersion.ftrack_sdk_version, localVersion.freflect_sdk_version, localVersion.faction_sdk_version, Integer.valueOf(i) });
       YtLogger.d(TAG, "action_video:size:" + ((ActionReflectReq)localObject1).action_video.length());
       YtLogger.d(TAG, "client_version:" + ((ActionReflectReq)localObject1).client_version);
       localObject1 = localWeJson.toJson(localObject1);
@@ -458,11 +459,9 @@ public class NetLivenessReqResultState
               if (YtFSM.getInstance().getContext().currentRotateState < 5) {
                 continue;
               }
-              n = j;
-              m = k;
-              localObject1 = YTFaceTrack.getInstance().RotateYUV(((ActionLivenessState.BestFrame)localArrayList.get(i)).frame.getYuvData(), j, k, YtFSM.getInstance().getContext().currentRotateState);
+              localObject1 = ((ActionLivenessState.BestFrame)localArrayList.get(i)).frame.getYuvData();
               YtLogger.d(TAG, "Rotated size:" + localObject1.length);
-              localObject1 = new YuvImage((byte[])localObject1, 17, m, n, null);
+              localObject1 = new YuvImage((byte[])localObject1, 17, k, j, null);
               localObject4 = new ByteArrayOutputStream();
               ((YuvImage)localObject1).compressToJpeg(new Rect(0, 0, ((YuvImage)localObject1).getWidth(), ((YuvImage)localObject1).getHeight()), 95, (OutputStream)localObject4);
               localObject5 = ((ByteArrayOutputStream)localObject4).toByteArray();
@@ -515,11 +514,10 @@ public class NetLivenessReqResultState
         }
         catch (IOException localIOException2)
         {
-          int j;
-          int k;
           continue;
-          int n = k;
-          int m = j;
+          int m = k;
+          int k = j;
+          int j = m;
           continue;
         }
         Object localObject2 = null;
@@ -534,6 +532,7 @@ public class NetLivenessReqResultState
       return;
     }
     this.bestImage = ((YuvImage)((YtFSMBaseState)localObject1).getStateDataBy("best_frame"));
+    YtLogger.d(TAG, "Action byte size:" + this.bestImage.getYuvData().length);
     Object localObject3 = new ByteArrayOutputStream();
     this.bestImage.compressToJpeg(new Rect(0, 0, this.bestImage.getWidth(), this.bestImage.getHeight()), 95, (OutputStream)localObject3);
     byte[] arrayOfByte1 = Base64.encode((byte[])((YtFSMBaseState)localObject1).getStateDataBy("frames"), 2);
@@ -566,6 +565,8 @@ public class NetLivenessReqResultState
     {
       localObject1 = (String)localObject1 + "shake";
       break;
+      localObject1 = (String)localObject2 + "silence";
+      break;
       localObject1 = "";
       localObject4 = this.requestOptions.entrySet().iterator();
       i = 0;
@@ -576,13 +577,13 @@ public class NetLivenessReqResultState
         if (((String)localEntry.getKey()).equals("best_image"))
         {
           if (!((String)localEntry.getValue()).equals("true")) {
-            break label779;
+            break label839;
           }
           byte[] arrayOfByte2 = Base64.encode(((ByteArrayOutputStream)localObject3).toByteArray(), 2);
           localObject1 = String.format("%s, \"%s\":\"%s\"", new Object[] { localObject1, localEntry.getKey(), new String(arrayOfByte2) });
         }
       }
-      label779:
+      label839:
       for (;;)
       {
         break;

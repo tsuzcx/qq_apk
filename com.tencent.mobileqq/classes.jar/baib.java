@@ -1,32 +1,49 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profilecard.vas.VasProfileTemplateController;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
+import android.media.MediaCodec.BufferInfo;
+import java.util.ArrayList;
 
 public class baib
-  extends VasQuickUpdateManager.CallBacker
 {
-  public baib(VasProfileTemplateController paramVasProfileTemplateController, azxy paramazxy, Card paramCard) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private String jdField_b_of_type_JavaLangString;
+  private ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public baib(String paramString, int paramInt)
   {
-    if ((paramLong == 15L) && ("cardWZ.zip".equals(paramString1)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileTemplateCheckController", 2, String.format("onCardUpdate WZRY template download,  errorCode=%s httpCode=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-      }
-      if (VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController).b != null)
-      {
-        if (this.jdField_a_of_type_Azxy.a(VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController), this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId)) {
-          VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController).jdField_a_of_type_Azxy = this.jdField_a_of_type_Azxy;
-        }
-        VasProfileTemplateController.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasVasProfileTemplateController).b.obtainMessage(5, 0, 12, this.jdField_a_of_type_ComTencentMobileqqDataCard).sendToTarget();
-      }
-      paramVasQuickUpdateManager.removeCallBacker(this);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "segment" + paramInt + ".mp4");
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+      return ((Long)this.jdField_a_of_type_JavaUtilArrayList.get(0)).longValue();
     }
+    return 0L;
+  }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void a(baga parambaga)
+  {
+    parambaga = parambaga.a;
+    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(parambaga.presentationTimeUs));
+    this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(parambaga.flags));
+  }
+  
+  public String toString()
+  {
+    return "SegmentInfo{mSegmentPath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mFrames=" + this.jdField_a_of_type_JavaUtilArrayList + ", mFlags=" + this.jdField_b_of_type_JavaUtilArrayList + '}';
   }
 }
 

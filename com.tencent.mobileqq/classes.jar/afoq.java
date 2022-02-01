@@ -1,36 +1,31 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class afoq
-  implements CompoundButton.OnCheckedChangeListener
+class afoq
+  implements bnbd
 {
-  public afoq(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  afoq(afop paramafop) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public Activity a()
   {
-    int i = 1;
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
-    {
-      this.a.app.c(1);
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label78;
-      }
-    }
-    for (;;)
-    {
-      bdll.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_notice_gupsound", 0, i, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      this.a.app.c(0);
-      break;
-      label78:
-      i = 0;
-    }
+    return afop.a(this.a).mActivity;
+  }
+  
+  public SessionInfo a()
+  {
+    return afop.a(this.a).sessionInfo;
+  }
+  
+  public QQAppInterface a()
+  {
+    return afop.a(this.a).app;
+  }
+  
+  public boolean a()
+  {
+    return afop.a(this.a).panelOpened();
   }
 }
 

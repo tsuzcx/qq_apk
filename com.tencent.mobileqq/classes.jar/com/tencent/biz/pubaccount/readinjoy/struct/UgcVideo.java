@@ -15,7 +15,7 @@ import com.tencent.mobileqq.persistence.unique;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import qzf;
+import rge;
 import tencent.im.oidb.articlesummary.articlesummary.BiuMultiLevel;
 import tencent.im.oidb.articlesummary.articlesummary.BiuOneLevelItem;
 import tencent.im.oidb.articlesummary.articlesummary.JumpInfo;
@@ -25,7 +25,7 @@ public class UgcVideo
   extends Entity
   implements Parcelable, Comparable<UgcVideo>
 {
-  public static final Parcelable.Creator<UgcVideo> CREATOR = new qzf();
+  public static final Parcelable.Creator<UgcVideo> CREATOR = new rge();
   public static int RETRY_TIME_LIMIT = 3;
   public static int STATUS_FAILED;
   public static int STATUS_FINISH;

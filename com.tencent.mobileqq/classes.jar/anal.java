@@ -1,50 +1,50 @@
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.addon.DiyPendantEntity;
+import com.tencent.mobileqq.addon.DiyPendantSticker;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.SVIPHandler.2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-public abstract interface anal
+public class anal
+  implements BusinessObserver
 {
-  public abstract void a(int paramInt);
+  public anal(SVIPHandler.2 param2, almr paramalmr) {}
   
-  public abstract void a(int paramInt1, String paramString1, long paramLong, String paramString2, int paramInt2);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
-  
-  public abstract void a(String paramString, int paramInt, long paramLong);
-  
-  public abstract void a(String paramString, int paramInt, List<MessageForApollo> paramList);
-  
-  public abstract void a(String paramString, aiil paramaiil);
-  
-  public abstract void a(String paramString, anan paramanan);
-  
-  public abstract void a(String paramString, List<ApolloGameData> paramList);
-  
-  public abstract void a(String paramString, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean, int paramInt1, long paramLong, int paramInt2);
-  
-  public abstract void a(boolean paramBoolean, String paramString, int paramInt, long paramLong);
-  
-  public abstract void a(boolean paramBoolean, String paramString1, int paramInt, long paramLong, String paramString2);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt, long paramLong);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void b(String paramString, int paramInt1, int paramInt2);
-  
-  public abstract void b(boolean paramBoolean, String paramString, int paramInt, long paramLong);
-  
-  public abstract void c(String paramString);
-  
-  public abstract void d(String paramString);
-  
-  public abstract void e(String paramString);
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    try
+    {
+      if ((paramObject instanceof List))
+      {
+        paramObject = (List)paramObject;
+        if (paramObject.size() > 0)
+        {
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
+          {
+            Iterator localIterator = ((DiyPendantEntity)paramObject.next()).getStickerInfoList().iterator();
+            while (localIterator.hasNext())
+            {
+              Object localObject = (DiyPendantSticker)localIterator.next();
+              localObject = this.jdField_a_of_type_Almr.a((DiyPendantSticker)localObject);
+              this.jdField_a_of_type_Almr.b.add(localObject);
+            }
+          }
+        }
+      }
+      return;
+    }
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SVIPHandler", 2, paramObject.getMessage());
+      }
+    }
+    this.jdField_a_of_type_Almr.b();
+  }
 }
 
 

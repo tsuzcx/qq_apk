@@ -1,63 +1,28 @@
-import android.content.Context;
-import android.net.Uri;
-import android.view.Surface;
-import java.util.Map;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
 
-public abstract interface xvo
+class xvo
 {
-  public abstract int a();
+  public TextView a;
   
-  public abstract void a(float paramFloat1, float paramFloat2);
+  public xvo(View paramView)
+  {
+    this.a = ((TextView)paramView.findViewById(2131378151));
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(Context paramContext, Uri paramUri, Map<String, String> paramMap);
-  
-  public abstract void a(Surface paramSurface);
-  
-  public abstract void a(xvp paramxvp);
-  
-  public abstract void a(xvq paramxvq);
-  
-  public abstract void a(xvr paramxvr);
-  
-  public abstract void a(xvs paramxvs);
-  
-  public abstract void a(xvt paramxvt);
-  
-  public abstract void a(xvu paramxvu);
-  
-  public abstract void a(xvw paramxvw);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
-  
-  public abstract int d();
-  
-  public abstract void d();
-  
-  public abstract int e();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
+  public void a(yml paramyml, xvn paramxvn)
+  {
+    if (TextUtils.isEmpty(paramyml.a))
+    {
+      this.a.setVisibility(8);
+      return;
+    }
+    this.a.setVisibility(0);
+    this.a.setText(xvj.a(paramyml));
+    xvj.a(this.a);
+    this.a.setOnClickListener(new xvp(this, paramxvn, paramyml));
+  }
 }
 
 

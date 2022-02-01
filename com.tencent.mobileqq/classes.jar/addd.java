@@ -1,20 +1,17 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
-public class addd
-  implements adci
+class addd
+  implements DialogInterface.OnClickListener
 {
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  addd(addc paramaddc) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramadan = paramadan.a();
-    paramArrayOfByte = paramMsgType0x210.vProtobuf;
-    if (paramMsgType0x210.uSubMsgType == 290L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      avpe.a(paramadan, paramArrayOfByte, paramMsgInfo, bool);
-      return null;
-    }
+    this.a.a.a();
+    DevlockQuickLoginActivity.b(this.a.a);
+    DevlockQuickLoginActivity.b(this.a.a, 0, 2130772001);
   }
 }
 

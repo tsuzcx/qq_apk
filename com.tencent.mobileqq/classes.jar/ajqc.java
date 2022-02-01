@@ -1,20 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
-
-public class ajqc
-  implements View.OnClickListener
+public abstract interface ajqc
 {
-  public ajqc(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView, structmsg.SystemMsg paramSystemMsg) {}
+  public abstract void a(ajqi paramajqi);
   
-  public void onClick(View paramView)
-  {
-    azyo.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView.jdField_a_of_type_Ajop.a(), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.group_code.get()), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.action_uin.get()), -1, 1);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(ajqi paramajqi, int paramInt);
+  
+  public abstract void a(ajqi paramajqi, int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(ajqi paramajqi, long paramLong);
+  
+  public abstract void a(ajqi paramajqi, boolean paramBoolean);
+  
+  public abstract void b(ajqi paramajqi);
+  
+  public abstract void b(ajqi paramajqi, int paramInt);
+  
+  public abstract void c(ajqi paramajqi);
+  
+  public abstract void d(ajqi paramajqi);
+  
+  public abstract void v();
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rvy;
+import sdc;
 
 public class VideoPlayManager$1
   implements Runnable
 {
-  public VideoPlayManager$1(rvy paramrvy) {}
+  public VideoPlayManager$1(sdc paramsdc) {}
   
   public void run()
   {

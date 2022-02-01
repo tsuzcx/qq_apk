@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
 
-class beft
-  implements View.OnClickListener
+public abstract interface beft
 {
-  beft(befl parambefl) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, long paramLong);
+  
+  public abstract void a(int paramInt, String paramString1, String paramString2, HttpMsg paramHttpMsg);
+  
+  public abstract void a(HttpMsg paramHttpMsg);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(byte[] paramArrayOfByte, long paramLong, String paramString);
+  
+  public abstract void b(HttpMsg paramHttpMsg);
 }
 
 

@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
+import android.graphics.drawable.Drawable;
 
 public class rai
-  implements beye
 {
-  public rai(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  public int a()
+  {
+    return 0;
+  }
   
-  public void a(ArrayList<MessageRecord> paramArrayList) {}
+  public Drawable a()
+  {
+    return null;
+  }
 }
 
 

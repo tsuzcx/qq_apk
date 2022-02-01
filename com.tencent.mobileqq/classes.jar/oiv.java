@@ -1,123 +1,34 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener.1;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener.2;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class oiv
-  extends ohl
+  implements szx
 {
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ReadInJoyBaseListViewGroup jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
-  protected pfh a;
-  
-  public oiv(Activity paramActivity)
-  {
-    super(paramActivity);
-    this.jdField_a_of_type_Pfh = new oiw(this);
-  }
-  
-  public ViewGroup a()
-  {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
-  public void a()
-  {
-    super.a();
-    b();
-    pfa.a().e();
-    pfd.a().a(this.jdField_a_of_type_Pfh);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramInt1, paramInt2, paramIntent);
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    super.a(paramViewGroup);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-  }
+  public oiv(ois paramois) {}
   
   public void a(boolean paramBoolean)
   {
-    super.a(paramBoolean);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramBoolean);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    super.a(paramBoolean, paramInt);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramBoolean);
-  }
-  
-  public void b()
-  {
-    super.b();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null)
+    AppInterface localAppInterface;
+    if ((ois.a(this.a) instanceof BaseActivity))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(null, null);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.b(null);
-      ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup, localLayoutParams);
+      localAppInterface = ((BaseActivity)ois.a(this.a)).getAppInterface();
+      if ((localAppInterface != null) && (ois.a(this.a) != null) && (!paramBoolean))
+      {
+        rao localrao = (rao)localAppInterface.getManager(270);
+        if ((localrao.a() != 1) || (!localrao.b())) {
+          break label87;
+        }
+        ThreadManager.post(new KanDianViewController.PullRefreshCompleteListener.1(this), 8, null, true);
+      }
     }
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(null, false);
-      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup);
+    label87:
+    while (((rau)localAppInterface.getManager(261)).a() != 1) {
+      return;
     }
-  }
-  
-  public void d()
-  {
-    pfd.a().b(this.jdField_a_of_type_Pfh);
-    super.d();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(null, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(null);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.g();
-  }
-  
-  public void e()
-  {
-    super.e();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.e();
-  }
-  
-  public void f()
-  {
-    super.f();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.f();
-  }
-  
-  public void g()
-  {
-    super.g();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.d();
-  }
-  
-  public void h()
-  {
-    super.h();
-    pfa.a().e();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a();
-  }
-  
-  public void o()
-  {
-    super.o();
-    if (((this.jdField_a_of_type_AndroidAppActivity instanceof ReadInJoyFeedsActivity)) && (((ReadInJoyFeedsActivity)this.jdField_a_of_type_AndroidAppActivity).a() == 1)) {
-      twk.a().d(((BaseActivity)a()).app);
-    }
+    ThreadManager.post(new KanDianViewController.PullRefreshCompleteListener.2(this), 8, null, true);
   }
 }
 

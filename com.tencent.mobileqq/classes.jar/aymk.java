@@ -1,20 +1,67 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class aymk
-  implements Handler.Callback
+  extends BroadcastReceiver
 {
   aymk(aymj paramaymj) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramMessage.what)
+    int k = 0;
+    if ((paramIntent != null) && ("com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())))
     {
+      if (paramIntent.getIntExtra("faceType", -1) != 1) {
+        QLog.d("ProfileCardShareHelper", 1, "getHead onReceive FaceType not match!");
+      }
+    }
+    else {
+      return;
+    }
+    if (TextUtils.isEmpty(aymj.a(this.a)))
+    {
+      QLog.d("ProfileCardShareHelper", 1, "getHead onReceive mUin is empty!");
+      return;
+    }
+    paramContext = paramIntent.getStringArrayListExtra("uinList");
+    paramIntent = paramIntent.getStringArrayListExtra("headPathList");
+    int j = k;
+    int i;
+    if (paramContext != null)
+    {
+      j = k;
+      if (paramIntent != null)
+      {
+        j = k;
+        if (paramContext.size() == paramIntent.size()) {
+          i = 0;
+        }
+      }
     }
     for (;;)
     {
-      return true;
-      aymj.a(this.a);
+      j = k;
+      if (i < paramContext.size())
+      {
+        if (((String)paramContext.get(i)).equals(aymj.a(this.a)))
+        {
+          aymj.a(this.a, (String)paramIntent.get(i));
+          j = 1;
+        }
+      }
+      else
+      {
+        if ((j == 0) || (!aymj.a(this.a))) {
+          break;
+        }
+        aymj.a(this.a, aymj.b(this.a));
+        return;
+      }
+      i += 1;
     }
   }
 }

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.widget;
 
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import apcq;
 import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
@@ -14,7 +14,7 @@ import com.tencent.tencentmap.mapsdk.maps.model.Marker;
 import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
 
 class MapContext$1
-  extends apcq
+  extends SosoInterface.OnLocationListener
 {
   MapContext$1(MapContext paramMapContext, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, SensorEventListener paramSensorEventListener)
   {
@@ -28,7 +28,7 @@ class MapContext$1
       return;
     }
     MapContext.access$002(this.this$0, null);
-    SosoInterface.b(MapContext.access$700(this.this$0));
+    SosoInterface.removeOnLocationListener(MapContext.access$700(this.this$0));
     MapContext.access$800(this.this$0).unregisterListener(this.val$sensorEventListener);
   }
   
@@ -39,8 +39,8 @@ class MapContext$1
     }
     if ((paramInt == 0) && (paramSosoLbsInfo != null))
     {
-      paramSosoLbsInfo = paramSosoLbsInfo.a;
-      MapContext.access$002(this.this$0, new LatLng(paramSosoLbsInfo.a, paramSosoLbsInfo.b));
+      paramSosoLbsInfo = paramSosoLbsInfo.mLocation;
+      MapContext.access$002(this.this$0, new LatLng(paramSosoLbsInfo.mLat02, paramSosoLbsInfo.mLon02));
       if (MapContext.access$100(this.this$0) == null)
       {
         paramSosoLbsInfo = BitmapDescriptorFactory.fromBitmap(MapContext.access$200(this.this$0));

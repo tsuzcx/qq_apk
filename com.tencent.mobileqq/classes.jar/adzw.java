@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class adzw
-  implements DialogInterface.OnClickListener
+public class adzw
+  implements View.OnClickListener
 {
-  adzw(aebz paramaebz, aeca paramaeca) {}
+  public adzw(QQMapActivity paramQQMapActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Aebz != null) {
-      this.jdField_a_of_type_Aebz.a();
-    }
-    mru.e(true, false);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    mru.b(this.jdField_a_of_type_Aeca.a);
+    this.a.u();
+    bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "sdk_locate", "click_send", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

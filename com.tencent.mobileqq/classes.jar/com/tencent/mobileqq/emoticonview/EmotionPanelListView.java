@@ -3,17 +3,16 @@ package com.tencent.mobileqq.emoticonview;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import asoh;
-import aspu;
-import avvv;
-import blih;
+import auiv;
+import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ListView;
 
 public class EmotionPanelListView
   extends ListView
 {
-  private aspu jdField_a_of_type_Aspu;
-  private boolean jdField_a_of_type_Boolean;
+  public static final String TAG = "EmotionPanelListView";
+  private boolean enableExtendPanle;
+  private EmotionPanelListView.PullAndFastScrollListener mPullAndFastScrollListener;
   
   public EmotionPanelListView(Context paramContext)
   {
@@ -37,64 +36,64 @@ public class EmotionPanelListView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((!this.jdField_a_of_type_Boolean) || (paramMotionEvent.getAction() != 0)) {
+    if ((!this.enableExtendPanle) || (paramMotionEvent.getAction() != 0)) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
-    blih localblih = getOnScrollListener();
-    if ((localblih instanceof asoh)) {
-      ((asoh)localblih).onTouch(this, paramMotionEvent);
+    AbsListView.OnScrollListener localOnScrollListener = getOnScrollListener();
+    if ((localOnScrollListener instanceof EmoticonPanelOnScrollListener)) {
+      ((EmoticonPanelOnScrollListener)localOnScrollListener).onTouch(this, paramMotionEvent);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.enableExtendPanle) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    blih localblih = getOnScrollListener();
-    if ((localblih instanceof asoh)) {
-      ((asoh)localblih).onTouch(this, paramMotionEvent);
+    AbsListView.OnScrollListener localOnScrollListener = getOnScrollListener();
+    if ((localOnScrollListener instanceof EmoticonPanelOnScrollListener)) {
+      ((EmoticonPanelOnScrollListener)localOnScrollListener).onTouch(this, paramMotionEvent);
     }
     return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setEnableExtendPanle(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.enableExtendPanle = paramBoolean;
   }
   
-  public void setOnScrollListener(blih paramblih)
+  public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    if ((this.jdField_a_of_type_Boolean) && (!(paramblih instanceof asoh)) && (paramblih != null))
+    if ((this.enableExtendPanle) && (!(paramOnScrollListener instanceof EmoticonPanelOnScrollListener)) && (paramOnScrollListener != null))
     {
-      super.setOnScrollListener(new asoh(this, this.jdField_a_of_type_Aspu, paramblih));
+      super.setOnScrollListener(new EmoticonPanelOnScrollListener(this, this.mPullAndFastScrollListener, paramOnScrollListener));
       return;
     }
-    super.setOnScrollListener(paramblih);
+    super.setOnScrollListener(paramOnScrollListener);
   }
   
-  public void setPullAndFastScrollListener(aspu paramaspu)
+  public void setPullAndFastScrollListener(EmotionPanelListView.PullAndFastScrollListener paramPullAndFastScrollListener)
   {
-    this.jdField_a_of_type_Aspu = paramaspu;
+    this.mPullAndFastScrollListener = paramPullAndFastScrollListener;
   }
   
   public boolean trackMotionScroll(int paramInt1, int paramInt2)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.enableExtendPanle) {
       return super.trackMotionScroll(paramInt1, paramInt2);
     }
     boolean bool = super.trackMotionScroll(paramInt1, paramInt2);
-    blih localblih = getOnScrollListener();
-    if ((!bool) && ((localblih instanceof asoh)) && (paramInt2 < 0)) {
-      ((asoh)localblih).a().a(Math.abs(paramInt2));
+    AbsListView.OnScrollListener localOnScrollListener = getOnScrollListener();
+    if ((!bool) && ((localOnScrollListener instanceof EmoticonPanelOnScrollListener)) && (paramInt2 < 0)) {
+      ((EmoticonPanelOnScrollListener)localOnScrollListener).getScrollVelometer().a(Math.abs(paramInt2));
     }
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPanelListView
  * JD-Core Version:    0.7.0.1
  */

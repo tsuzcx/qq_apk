@@ -4,8 +4,10 @@ import android.content.Context;
 import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
 import android.view.Surface;
+import android.view.SurfaceHolder;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBase;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnAudioPcmOutListener;
+import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnAudioProcessOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnCompletionListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnErrorListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnInfoListener;
@@ -15,6 +17,7 @@ import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnStateChan
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleDataListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleFrameOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoFrameOutListener;
+import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoProcessOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoSizeChangedListener;
 import com.tencent.thumbplayer.adapter.player.TPPlayerBaseFactory;
 import com.tencent.thumbplayer.adapter.player.TPUrlDataSource;
@@ -28,6 +31,7 @@ import com.tencent.thumbplayer.api.TPCaptureParams;
 import com.tencent.thumbplayer.api.TPOptionalParam;
 import com.tencent.thumbplayer.api.TPOptionalParam.OptionalParamLong;
 import com.tencent.thumbplayer.api.TPPlayerState;
+import com.tencent.thumbplayer.api.TPPostProcessFrameBuffer;
 import com.tencent.thumbplayer.api.TPProgramInfo;
 import com.tencent.thumbplayer.api.TPPropertyID;
 import com.tencent.thumbplayer.api.TPSubtitleData;
@@ -108,6 +112,11 @@ public class TPPlayerAdapter
           TPLogUtil.i("TPThumbPlayer[TPPlayerAdapter.java]", "to create thumbPlayer");
           localITPPlayerBase1 = TPPlayerBaseFactory.createThumbPlayer(this.mContext);
         }
+        else if (paramInt == 3)
+        {
+          TPLogUtil.i("TPThumbPlayer[TPPlayerAdapter.java]", "to create thumbPlayer software dec");
+          localITPPlayerBase1 = TPPlayerBaseFactory.createThumbPlayer(this.mContext);
+        }
         else
         {
           TPLogUtil.i("TPThumbPlayer[TPPlayerAdapter.java]", "to create no Player");
@@ -153,6 +162,14 @@ public class TPPlayerAdapter
     this.mPlayerListeners.onAudioPcmOut(paramTPAudioFrameBuffer);
   }
   
+  private TPPostProcessFrameBuffer handleOnAudioProcessFrameOut(TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
+  {
+    if (!this.mStateChecker.validStateCallback(7)) {
+      return null;
+    }
+    return this.mPlayerListeners.onAudioProcessFrameOut(paramTPPostProcessFrameBuffer);
+  }
+  
   private void handleOnComplete()
   {
     if (!this.mStateChecker.validStateCallback(2))
@@ -169,7 +186,7 @@ public class TPPlayerAdapter
     if (!this.mStateChecker.validStateCallback(4)) {
       return;
     }
-    int i = this.mTpStrategy.strategyForRetry(this.mTPPlaybackInfo, new TPStrategyContext(this.mPlayerType, paramInt1, paramInt2));
+    int i = this.mTpStrategy.strategyForRetry(this.mTPPlaybackInfo, new TPStrategyContext(this.mPlayerType, paramInt1, paramInt2, this.mTPPlaybackInfo.getDefinition()));
     if (i == 0)
     {
       this.mPlayerListeners.onError(paramInt1, paramInt2, paramLong1, paramLong2);
@@ -182,6 +199,13 @@ public class TPPlayerAdapter
     }
     catch (IOException localIOException)
     {
+      TPLogUtil.e("TPThumbPlayer[TPPlayerAdapter.java]", localIOException);
+      this.mPlayerListeners.onError(paramInt1, paramInt2, paramLong1, paramLong2);
+      return;
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      TPLogUtil.e("TPThumbPlayer[TPPlayerAdapter.java]", localIllegalStateException);
       this.mPlayerListeners.onError(paramInt1, paramInt2, paramLong1, paramLong2);
     }
   }
@@ -204,19 +228,33 @@ public class TPPlayerAdapter
     this.mPlayerListeners.onInfo(1000, this.mPlayerType, 0L, null);
     if (this.mIsRetrying)
     {
-      recoverState();
-      TPLogUtil.i("TPThumbPlayer[TPPlayerAdapter.java]", "handleOnPrepared, mIsRetrying,recoverState!");
-      return;
+      if (this.mPlayerState.innerPlayState() != 3) {
+        TPLogUtil.w("TPThumbPlayer[TPPlayerAdapter.java]", "handleOnPrepared, invalid state, mIsRetrying.");
+      }
     }
-    if (!this.mStateChecker.validStateCallback(1))
+    else if (!this.mStateChecker.validStateCallback(1))
     {
       TPLogUtil.i("TPThumbPlayer[TPPlayerAdapter.java]", "handleOnPrepared, invalid state");
       return;
     }
     backupVideoInfo();
+    setPlayerParamAfterPrepared(this.mPlayerBase);
+    if (this.mIsRetrying)
+    {
+      this.mIsRetrying = false;
+      TPLogUtil.i("TPThumbPlayer[TPPlayerAdapter.java]", "handleOnPrepared, mIsRetrying, recoverState, state:" + this.mPlayerState.state());
+      int i = this.mPlayerState.state();
+      this.mPlayerState.changeState(4);
+      if (this.mPlayerState.lastState() == 3) {
+        this.mPlayerListeners.onPrepared();
+      }
+      this.mPlayerListeners.onInfo(1014, 0L, 0L, null);
+      recoverPlayer(i);
+      return;
+    }
+    this.mPlayerState.setInnerPlayStateState(4);
     this.mPlayerState.changeState(4);
     this.mPlayerListeners.onPrepared();
-    setPlayerParamAfterPrepared(this.mPlayerBase);
   }
   
   private void handleOnSeekComplete()
@@ -257,6 +295,14 @@ public class TPPlayerAdapter
     this.mPlayerListeners.onVideoFrameOut(paramTPVideoFrameBuffer);
   }
   
+  private TPPostProcessFrameBuffer handleOnVideoProcessFrameOut(TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
+  {
+    if (!this.mStateChecker.validStateCallback(7)) {
+      return null;
+    }
+    return this.mPlayerListeners.onVideoProcessFrameOut(paramTPPostProcessFrameBuffer);
+  }
+  
   private void handleOnVideoSizeChange(long paramLong1, long paramLong2)
   {
     if (!this.mStateChecker.validStateCallback(6))
@@ -271,15 +317,28 @@ public class TPPlayerAdapter
   
   private boolean isThumbPlayer()
   {
-    return this.mPlayerType == 2;
+    return (this.mPlayerType == 2) || (this.mPlayerType == 3);
   }
   
-  private void recoverState()
+  private void recoverPlayer(int paramInt)
   {
-    if (this.mPlayerState.state() != 6) {
-      start();
+    switch (paramInt)
+    {
+    case 4: 
+    case 6: 
+    default: 
+      return;
     }
-    this.mIsRetrying = false;
+    try
+    {
+      this.mPlayerBase.start();
+      this.mPlayerState.changeState(5);
+      return;
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      TPLogUtil.e("TPThumbPlayer[TPPlayerAdapter.java]", localIllegalStateException);
+    }
   }
   
   private int selectPlayer()
@@ -331,6 +390,8 @@ public class TPPlayerAdapter
       paramITPPlayerBase.setOnVideoFrameOutListener(this.mPlayerCallback);
       paramITPPlayerBase.setOnAudioPcmOutputListener(this.mPlayerCallback);
       paramITPPlayerBase.setOnSubtitleFrameOutListener(this.mPlayerCallback);
+      paramITPPlayerBase.setOnVideoProcessOutputListener(this.mPlayerCallback);
+      paramITPPlayerBase.setOnAudioProcessOutputListener(this.mPlayerCallback);
     }
     if (1 == this.mPlayerInitParams.dataSource().getType()) {
       paramITPPlayerBase.setDataSource(this.mPlayerInitParams.dataSource().fileDescriptor());
@@ -368,8 +429,8 @@ public class TPPlayerAdapter
           if ((!TextUtils.isEmpty(((TPPlaybackParams.SubtitleAttribute)localObject3).name)) && (((TPPlaybackParams.SubtitleAttribute)localObject3).name.equals(((TPTrackInfo)localObject1).name)))
           {
             paramITPPlayerBase.addSubtitleSource(((TPPlaybackParams.SubtitleAttribute)localObject3).url, ((TPPlaybackParams.SubtitleAttribute)localObject3).mimeType, ((TPPlaybackParams.SubtitleAttribute)localObject3).name);
-            label425:
-            break label455;
+            label445:
+            break label475;
           }
         }
       }
@@ -380,12 +441,12 @@ public class TPPlayerAdapter
         if (((TPTrackInfo)localObject1).trackType == 2)
         {
           localObject2 = this.mPlayerInitParams.audioTrackSources().iterator();
-          label455:
+          label475:
           if (((Iterator)localObject2).hasNext())
           {
             localObject3 = (TPPlaybackParams.AudioTrackAttribute)((Iterator)localObject2).next();
             if ((TextUtils.isEmpty(((TPPlaybackParams.AudioTrackAttribute)localObject3).name)) || (!((TPPlaybackParams.AudioTrackAttribute)localObject3).name.equals(((TPTrackInfo)localObject1).name))) {
-              break label425;
+              break label445;
             }
             paramITPPlayerBase.addAudioTrackSource(((TPPlaybackParams.AudioTrackAttribute)localObject3).url, ((TPPlaybackParams.AudioTrackAttribute)localObject3).name, ((TPPlaybackParams.AudioTrackAttribute)localObject3).audioTrackParams);
           }
@@ -426,18 +487,33 @@ public class TPPlayerAdapter
     if (this.mPlayerInitParams.speedRatio() != 0.0F) {
       paramITPPlayerBase.setPlaySpeedRatio(this.mPlayerInitParams.speedRatio());
     }
-    if (this.mPlayerInitParams.surface() != null) {
-      paramITPPlayerBase.setSurface(this.mPlayerInitParams.surface());
+    if (this.mPlayerInitParams.audioNormalizeVolumeParams() != "") {
+      paramITPPlayerBase.setAudioNormalizeVolumeParams(this.mPlayerInitParams.audioNormalizeVolumeParams());
     }
-    paramITPPlayerBase.setPlayerOptionalParam(new TPOptionalParam().buildQueueInt(204, this.mTpStrategy.strategyForDec()));
+    if ((this.mPlayerInitParams.surface() instanceof SurfaceHolder)) {
+      paramITPPlayerBase.setSurfaceHolder((SurfaceHolder)this.mPlayerInitParams.surface());
+    }
+    for (;;)
+    {
+      paramITPPlayerBase.setPlayerOptionalParam(new TPOptionalParam().buildQueueInt(204, this.mTpStrategy.strategyForDec()));
+      return;
+      if ((this.mPlayerInitParams.surface() instanceof Surface)) {
+        paramITPPlayerBase.setSurface((Surface)this.mPlayerInitParams.surface());
+      }
+    }
   }
   
   private void switchPlayer(int paramInt)
   {
+    this.mPlayerListeners.onInfo(1013, paramInt, 0L, null);
+    this.mPlayerState.setLastState(this.mPlayerState.state());
     if (this.mPlayerBase != null)
     {
-      this.mTPPlaybackInfo.setCurrentPositionMs(this.mPlayerBase.getCurrentPositionMs());
+      long l = this.mPlayerBase.getCurrentPositionMs();
+      TPLogUtil.i("TPThumbPlayer[TPPlayerAdapter.java]", "switchPlayer, current position:" + l);
+      this.mTPPlaybackInfo.setCurrentPositionMs(l);
       this.mTPPlaybackInfo.setPlayableDurationMs(this.mPlayerBase.getPlayableDurationMs());
+      this.mPlayerBase.reset();
       this.mPlayerBase.release();
     }
     this.mPlayerBase = createPlayerBase(paramInt);
@@ -451,7 +527,8 @@ public class TPPlayerAdapter
       TPOptionalParam localTPOptionalParam = new TPOptionalParam().buildLong(100, this.mTPPlaybackInfo.getCurrentPositionMs());
       this.mPlayerBase.setPlayerOptionalParam(localTPOptionalParam);
     }
-    this.mPlayerBase.prepare();
+    this.mPlayerState.setInnerPlayStateState(3);
+    this.mPlayerBase.prepareAsync();
   }
   
   public void addAudioTrackSource(String paramString1, String paramString2, List<TPOptionalParam> paramList)
@@ -707,6 +784,11 @@ public class TPPlayerAdapter
     if (this.mPlayerBase == null) {
       throw new IllegalStateException("error , pause , player is null");
     }
+    if (this.mIsRetrying)
+    {
+      this.mPlayerState.changeState(6);
+      return;
+    }
     try
     {
       this.mPlayerBase.pause();
@@ -731,6 +813,7 @@ public class TPPlayerAdapter
     if (this.mPlayerBase == null) {
       throw new RuntimeException("error , create player failed");
     }
+    this.mPlayerState.setInnerPlayStateState(3);
     this.mPlayerState.changeState(3);
     this.mPlayerBase.prepare();
   }
@@ -747,6 +830,7 @@ public class TPPlayerAdapter
     if (this.mPlayerBase == null) {
       throw new RuntimeException("error , create player failed");
     }
+    this.mPlayerState.setInnerPlayStateState(3);
     this.mPlayerState.changeState(3);
     this.mPlayerBase.prepareAsync();
   }
@@ -776,7 +860,8 @@ public class TPPlayerAdapter
       this.mPlayerListeners.clear();
       this.mTPPlaybackInfo = null;
       this.mTpStrategy = null;
-      this.mPlayerState.changeState(10);
+      this.mIsRetrying = false;
+      this.mPlayerState.changeState(11);
     }
   }
   
@@ -805,7 +890,9 @@ public class TPPlayerAdapter
       this.mPlayerInitParams.reset();
       this.mTPPlaybackInfo.clear();
       this.mTpStrategy = null;
+      this.mIsRetrying = false;
       this.mPlayerState.changeState(1);
+      this.mPlayerState.setLastState(1);
     }
   }
   
@@ -894,6 +981,22 @@ public class TPPlayerAdapter
     }
   }
   
+  public void setAudioNormalizeVolumeParams(String paramString)
+  {
+    if (!this.mStateChecker.validStateCall(3)) {
+      throw new IllegalStateException("error , setAudioNormalizeVolumeParams , state invalid , current state :" + this.mPlayerState);
+    }
+    if (this.mPlayerBase != null) {
+      this.mPlayerBase.setAudioNormalizeVolumeParams(paramString);
+    }
+    for (;;)
+    {
+      this.mPlayerInitParams.setAudioNormalizeVolumeParams(paramString);
+      return;
+      TPLogUtil.i("TPThumbPlayer[TPPlayerAdapter.java]", "setAudioGainRatio, mPlayerBase = null!");
+    }
+  }
+  
   public void setDataSource(ParcelFileDescriptor paramParcelFileDescriptor)
   {
     if (!this.mStateChecker.validStateCall(2)) {
@@ -976,6 +1079,11 @@ public class TPPlayerAdapter
     this.mPlayerListeners.setOnAudioPcmOutListener(paramIOnAudioPcmOutListener);
   }
   
+  public void setOnAudioProcessOutputListener(ITPPlayerBaseListener.IOnAudioProcessOutListener paramIOnAudioProcessOutListener)
+  {
+    this.mPlayerListeners.setOnAudioProcessFrameListener(paramIOnAudioProcessOutListener);
+  }
+  
   public void setOnCompletionListener(ITPPlayerBaseListener.IOnCompletionListener paramIOnCompletionListener)
   {
     this.mPlayerListeners.setOnCompletionListener(paramIOnCompletionListener);
@@ -1019,6 +1127,11 @@ public class TPPlayerAdapter
   public void setOnVideoFrameOutListener(ITPPlayerBaseListener.IOnVideoFrameOutListener paramIOnVideoFrameOutListener)
   {
     this.mPlayerListeners.setOnVideoFrameOutListener(paramIOnVideoFrameOutListener);
+  }
+  
+  public void setOnVideoProcessOutputListener(ITPPlayerBaseListener.IOnVideoProcessOutListener paramIOnVideoProcessOutListener)
+  {
+    this.mPlayerListeners.setOnVideoProcessFrameListener(paramIOnVideoProcessOutListener);
   }
   
   public void setOnVideoSizeChangedListener(ITPPlayerBaseListener.IOnVideoSizeChangedListener paramIOnVideoSizeChangedListener)
@@ -1080,6 +1193,17 @@ public class TPPlayerAdapter
     this.mPlayerInitParams.setSurface(paramSurface);
   }
   
+  public void setSurfaceHolder(SurfaceHolder paramSurfaceHolder)
+  {
+    if (!this.mStateChecker.validStateCall(4)) {
+      throw new IllegalStateException("setSurfaceHolder , state invalid");
+    }
+    if (this.mPlayerBase != null) {
+      this.mPlayerBase.setSurfaceHolder(paramSurfaceHolder);
+    }
+    this.mPlayerInitParams.setSurfaceHolder(paramSurfaceHolder);
+  }
+  
   public void setVideoInfo(TPVideoInfo paramTPVideoInfo)
   {
     if (!this.mStateChecker.validStateCall(2)) {
@@ -1089,6 +1213,7 @@ public class TPPlayerAdapter
     {
       this.mTPPlaybackInfo.setHeight(paramTPVideoInfo.getHeight());
       this.mTPPlaybackInfo.setWidth(paramTPVideoInfo.getWidth());
+      this.mTPPlaybackInfo.setDefinition(paramTPVideoInfo.getDefinition());
       this.mTPPlaybackInfo.setVideoCodedId(TPEnumUtils.convertCodecType2Inner(paramTPVideoInfo.getVideoCodecId()));
     }
   }
@@ -1123,16 +1248,17 @@ public class TPPlayerAdapter
     }
     try
     {
+      this.mPlayerState.changeState(8);
       this.mPlayerBase.stop();
       return;
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      throw new IllegalStateException("error , pause ,state invalid");
+      throw new IllegalStateException("error , stop ,state invalid");
     }
     finally
     {
-      this.mPlayerState.changeState(8);
+      this.mPlayerState.changeState(9);
     }
   }
   
@@ -1141,6 +1267,7 @@ public class TPPlayerAdapter
     if (!this.mStateChecker.validStateCall(17)) {
       throw new IllegalStateException("error , switch definition , state invalid , current state :" + this.mPlayerState);
     }
+    this.mPlayerInitParams.setDataSource(paramTPUrlDataSource, null);
     if (this.mPlayerBase != null)
     {
       String str = "";
@@ -1164,6 +1291,7 @@ public class TPPlayerAdapter
     if (!this.mStateChecker.validStateCall(17)) {
       throw new IllegalStateException("error , switch definition , state invalid , current state :" + this.mPlayerState);
     }
+    this.mPlayerInitParams.setDataSource(paramITPMediaAsset);
     if (this.mPlayerBase != null)
     {
       this.mPlayerBase.switchDefinition(paramITPMediaAsset, paramInt, paramLong);
@@ -1173,6 +1301,20 @@ public class TPPlayerAdapter
   }
   
   public void switchDefinition(String paramString, int paramInt, long paramLong) {}
+  
+  public void updateVideoInfo(TPVideoInfo paramTPVideoInfo)
+  {
+    if (!this.mStateChecker.validStateCall(3)) {
+      TPLogUtil.e("TPThumbPlayer[TPPlayerAdapter.java]", "updateVideoInfo state invalid");
+    }
+    if (paramTPVideoInfo != null)
+    {
+      this.mTPPlaybackInfo.setHeight(paramTPVideoInfo.getHeight());
+      this.mTPPlaybackInfo.setWidth(paramTPVideoInfo.getWidth());
+      this.mTPPlaybackInfo.setDefinition(paramTPVideoInfo.getDefinition());
+      this.mTPPlaybackInfo.setVideoCodedId(TPEnumUtils.convertCodecType2Inner(paramTPVideoInfo.getVideoCodecId()));
+    }
+  }
 }
 
 

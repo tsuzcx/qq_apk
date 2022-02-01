@@ -1,109 +1,68 @@
-import android.media.SoundPool;
-import android.os.Build.VERSION;
+import android.graphics.Rect;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.magicface.service.SoundPoolUtil.2;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Timer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public class awzc
+class awzc
+  implements View.OnClickListener
 {
-  public SoundPool a;
-  protected HashMap<String, Integer> a;
+  awzc(awyf paramawyf) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidMediaSoundPool != null)
-    {
-      bhkm.a(BaseApplicationImpl.getContext(), false);
-      this.jdField_a_of_type_AndroidMediaSoundPool.release();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (localInteger != null)
-      {
-        bhkm.a(BaseApplicationImpl.getContext(), false);
-        this.jdField_a_of_type_AndroidMediaSoundPool.stop(localInteger.intValue());
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-      }
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) || ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)))) {}
+    PicInfo localPicInfo;
+    Object localObject;
     int i;
-    do
+    int j;
+    if ((paramView.getTag() instanceof PicInfo))
     {
-      File localFile;
-      do
+      localPicInfo = (PicInfo)paramView.getTag();
+      localObject = aagn.a(paramView);
+      i = 0;
+      if (i >= this.a.a.jdField_a_of_type_JavaUtilArrayList.size()) {
+        break label280;
+      }
+      if (awyf.a(this.a).nowUserType != 0) {
+        break label233;
+      }
+      if (localPicInfo.jdField_a_of_type_Int != ((PicInfo)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int) {
+        break label266;
+      }
+      j = i;
+    }
+    for (;;)
+    {
+      label87:
+      this.a.a.a(j, (Rect)localObject);
+      bcef.b(this.a.a.app, "CliOper", "", "", "0X800482A", "0X800482A", 0, 0, "", "", "", "");
+      if (this.a.a.e == 3) {}
+      for (localObject = "2";; localObject = "1")
       {
-        return false;
-        localFile = new File(paramString);
-      } while (!localFile.exists());
-      if (this.jdField_a_of_type_AndroidMediaSoundPool == null) {
-        this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(1, 3, 0);
-      }
-      if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-        this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      }
-      if (Build.VERSION.SDK_INT >= 8) {
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(null);
-      }
-      i = this.jdField_a_of_type_AndroidMediaSoundPool.load(localFile.getAbsolutePath(), 1);
-      if (i != 0) {
+        bcef.b(null, "dc00899", "grp_lbs", "", "data_card", "clk_pic", 0, 0, (String)localObject, "", "", "");
+        if (awjn.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h, this.a.a.e)) {
+          this.a.a.app.getNearbyProxy().b(localPicInfo.jdField_a_of_type_JavaLangString);
+        }
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        label233:
+        j = i;
+        if (TextUtils.equals(localPicInfo.jdField_a_of_type_JavaLangString, ((PicInfo)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString)) {
+          break label87;
+        }
+        label266:
+        i += 1;
         break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("SoundPoolUtil", 2, "load failure filepath=" + paramString);
-    return false;
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(i));
-    return true;
-  }
-  
-  public boolean a(String paramString, int paramInt1, int paramInt2)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      do
-      {
-        return false;
-        bhkm.a(BaseApplicationImpl.getContext(), true);
-        if (this.jdField_a_of_type_AndroidMediaSoundPool == null) {
-          this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(1, paramInt2, 0);
-        }
-        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-          this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-        }
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
-          break;
-        }
-      } while (!a(paramString));
-      if (Build.VERSION.SDK_INT >= 8) {
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new awzd(this, paramInt1, paramString));
-      }
-      do
-      {
-        for (;;)
-        {
-          return true;
-          paramInt1 = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
-          ThreadManager.getTimer().schedule(new SoundPoolUtil.2(this, paramInt1, paramString), 200L);
-        }
-        paramInt1 = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
-      } while (this.jdField_a_of_type_AndroidMediaSoundPool.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) != 0);
-    } while (!QLog.isColorLevel());
-    QLog.d("SoundPoolUtil", 2, "play failure filepath=" + paramString);
-    return false;
+      label280:
+      j = 0;
+    }
   }
 }
 

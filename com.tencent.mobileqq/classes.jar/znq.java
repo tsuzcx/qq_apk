@@ -1,22 +1,15 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
 
 public class znq
+  implements DialogInterface.OnDismissListener
 {
-  public TextView a;
-  public TextView b;
+  public znq(FollowTextView paramFollowTextView) {}
   
-  public znq(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381557));
-    this.b = ((TextView)paramView.findViewById(2131380791));
-  }
-  
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(zof.c(paramTroopStoryItemInfo.publishTime));
+    FollowTextView.a(this.a, true);
   }
 }
 

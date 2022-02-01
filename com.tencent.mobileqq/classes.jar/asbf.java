@@ -1,17 +1,37 @@
-import android.os.Message;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class asbf
-  implements azzz
+  implements View.OnClickListener
 {
-  asbf(asbe paramasbe, int paramInt) {}
+  asbf(asbe paramasbe) {}
   
-  public void a(int paramInt1, azzy paramazzy, int paramInt2, String paramString)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Asbe.a.hasMessages(0))
+    aezf localaezf = (aezf)AIOUtils.getHolder(paramView);
+    int i;
+    ChatMessage localChatMessage;
+    if (localaezf != null)
     {
-      this.jdField_a_of_type_Asbe.a.removeMessages(0);
-      this.jdField_a_of_type_Asbe.a.obtainMessage(0, this.jdField_a_of_type_Int, 0).sendToTarget();
+      i = -1;
+      localChatMessage = aszt.a(localaezf.a);
+      if (!this.a.a(localChatMessage)) {
+        break label57;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      this.a.a(paramView, localaezf, localChatMessage, i);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label57:
+      if (this.a.b(localChatMessage)) {
+        i = 1;
+      }
     }
   }
 }

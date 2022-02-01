@@ -1,219 +1,369 @@
-import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.teamworkforgroup.GroupPadTemplateInfo;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgItem;
+import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.10;
+import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.3;
+import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.4;
+import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.6;
+import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.9;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0x857.TroopTips0x857.QQGroupDigestMsg;
+import tencent.im.oidb.cmd0xeac.oidb_0xeac.RspBody;
 
 public class bedz
-  extends BaseAdapter
-  implements View.OnClickListener
+  implements Manager
 {
-  public static int a;
-  public static int b;
-  Context jdField_a_of_type_AndroidContentContext;
-  protected View.OnClickListener a;
-  final List<GroupPadTemplateInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private Set<String> b;
+  protected anca a;
+  protected andd a;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  public ArrayList<bedy> a;
+  public HashMap<Long, HashMap<bedw, bedx>> a;
+  public HashMap<Long, ArrayList<beef>> b = new HashMap();
   
-  static
+  public bedz(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_Andd = new beea(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Andd);
+    this.jdField_a_of_type_Anca = ((anca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(20));
   }
   
-  public bedz(Context paramContext, View.OnClickListener paramOnClickListener)
+  private BaseChatPie a(long paramLong)
   {
-    this.jdField_b_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private void a(AsyncImageView paramAsyncImageView, GroupPadTemplateInfo paramGroupPadTemplateInfo)
-  {
-    if (paramGroupPadTemplateInfo != null)
+    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
     {
-      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840260);
-      if (!blhn.a(paramGroupPadTemplateInfo.mobThumbUrl)) {
-        paramAsyncImageView.setImageDrawable(localDrawable);
-      }
-      for (;;)
+      Object localObject = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      if (localObject != null)
       {
-        return;
-        String str = paramGroupPadTemplateInfo.mobThumbUrl;
-        paramGroupPadTemplateInfo = URLDrawable.URLDrawableOptions.obtain();
-        paramGroupPadTemplateInfo.mLoadingDrawable = localDrawable;
-        paramGroupPadTemplateInfo.mFailedDrawable = localDrawable;
-        Object localObject = null;
-        try
+        localObject = ((ChatFragment)localObject).a();
+        if ((localObject != null) && ((localObject instanceof afii)) && (((BaseChatPie)localObject).getCurrentAIOState() >= 2))
         {
-          paramGroupPadTemplateInfo = URLDrawable.getDrawable(str, paramGroupPadTemplateInfo);
-          if (paramGroupPadTemplateInfo != null)
-          {
-            if ((paramGroupPadTemplateInfo.getStatus() == 2) && (this.jdField_b_of_type_JavaUtilSet.remove(str))) {
-              paramGroupPadTemplateInfo.restartDownload();
-            }
-            paramGroupPadTemplateInfo.setDownloadListener(new beea(this, str));
-            paramAsyncImageView.setImageDrawable(paramGroupPadTemplateInfo);
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("GroupPadTemplateAdapter", 2, "loadThumbImage is ok. url: " + str);
+          String str = ((BaseChatPie)localObject).getCurFriendUin();
+          if ((!TextUtils.isEmpty(str)) && (str.equals(String.valueOf(paramLong)))) {
+            return localObject;
           }
         }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            paramGroupPadTemplateInfo = localObject;
-            if (QLog.isColorLevel())
-            {
-              QLog.e("GroupPadTemplateAdapter", 2, localException, new Object[] { "loadThumbImage failed" });
-              paramGroupPadTemplateInfo = localObject;
-            }
-          }
-          paramAsyncImageView.setImageDrawable(localDrawable);
-          return;
-        }
       }
-    }
-    paramAsyncImageView.setImageResource(2130840260);
-  }
-  
-  public GroupPadTemplateInfo a()
-  {
-    GroupPadTemplateInfo localGroupPadTemplateInfo = new GroupPadTemplateInfo();
-    localGroupPadTemplateInfo.docOrSheetType = 1;
-    localGroupPadTemplateInfo.templateName = this.jdField_a_of_type_AndroidContentContext.getString(2131692816);
-    return localGroupPadTemplateInfo;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(List<GroupPadTemplateInfo> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        GroupPadTemplateInfo localGroupPadTemplateInfo = (GroupPadTemplateInfo)paramList.next();
-        if ((localGroupPadTemplateInfo != null) && (localGroupPadTemplateInfo.templateID >= 0)) {
-          this.jdField_a_of_type_JavaUtilList.add(localGroupPadTemplateInfo);
-        }
-      }
-      paramList = a();
-      this.jdField_a_of_type_JavaUtilList.add(paramList);
-    }
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
   }
   
-  public long getItemId(int paramInt)
+  private void a(long paramLong)
   {
-    GroupPadTemplateInfo localGroupPadTemplateInfo = (GroupPadTemplateInfo)getItem(paramInt);
-    if (localGroupPadTemplateInfo != null) {
-      return localGroupPadTemplateInfo.templateID;
+    BaseChatPie localBaseChatPie = a(paramLong);
+    if (localBaseChatPie != null) {}
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopEssenceMsgManager", 2, "refreshAio");
+      }
+      localBaseChatPie.refresh(131072);
+      return;
     }
-    return 0L;
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  private void a(long paramLong, int paramInt, String paramString)
   {
-    GroupPadTemplateInfo localGroupPadTemplateInfo = (GroupPadTemplateInfo)getItem(paramInt);
-    View localView;
-    if (getCount() == paramInt + 1)
+    if (a(paramLong) == null) {}
+    while (paramInt == 0) {
+      return;
+    }
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = BaseApplicationImpl.getContext().getResources().getString(2131719138);
+    }
+    if ((paramInt == 11002) || (paramInt == 11007))
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559246, null);
-      paramView = new beeb(this);
-      paramView.jdField_a_of_type_Int = jdField_b_of_type_Int;
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)localView.findViewById(2131367737));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367733));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367731));
-      paramView.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo = localGroupPadTemplateInfo;
-      localView.setTag(paramView);
-      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      if (paramView.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo == null) {
-        break label316;
-      }
-      if (paramView.jdField_a_of_type_Int != jdField_a_of_type_Int) {
-        break label293;
-      }
-      a(paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localGroupPadTemplateInfo);
-      label141:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localGroupPadTemplateInfo.templateName);
-      label153:
-      if (AppSetting.c)
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), str, 0).a();
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, str, 0).a();
+  }
+  
+  private void a(long paramLong1, long paramLong2)
+  {
+    QLog.i("TroopEssenceMsgManager", 2, "delEssenceMsgGrayTip troopUin:" + paramLong1 + " graytipuniseq:" + paramLong2);
+    ThreadManager.excute(new TroopEssenceMsgManager.6(this, paramLong1, paramLong2), 32, null, true);
+  }
+  
+  private void a(bedy parambedy)
+  {
+    if ((parambedy == null) || (parambedy.a == null)) {
+      return;
+    }
+    a(parambedy.a.troopUin, new beec(this, parambedy));
+  }
+  
+  private void a(boolean paramBoolean, Object paramObject1, Object paramObject2, int paramInt)
+  {
+    if ((paramObject1 == null) || (paramObject2 == null) || (!(paramObject2 instanceof oidb_0xeac.RspBody)) || (!(paramObject1 instanceof TroopEssenceMsgItem))) {}
+    do
+    {
+      return;
+      paramObject2 = (oidb_0xeac.RspBody)paramObject2;
+      paramObject1 = (TroopEssenceMsgItem)paramObject1;
+      int i = paramObject2.error_code.get();
+      String str = paramObject2.wording.get();
+      QLog.i("TroopEssenceMsgManager", 1, "handlerSetTroopEssenceMsg isSuccess:" + paramBoolean + " oidbErrCode:" + paramInt + " errCode:" + i + " wording:" + str);
+      paramInt = i;
+      if (i == 0)
       {
-        if (localGroupPadTemplateInfo == null) {
-          break label338;
+        paramInt = i;
+        if (!paramBoolean) {
+          paramInt = -1;
         }
-        localView.setContentDescription(localGroupPadTemplateInfo.templateName);
+      }
+      a(paramObject1.troopUin, paramInt, str);
+    } while ((paramInt != 0) && (paramInt != 11002) && (paramInt != 11007));
+    paramObject1.opTime = 0L;
+    if ((paramInt == 11002) || (paramInt == 11007))
+    {
+      if (paramObject2.digest_uin.has()) {
+        paramObject1.opUin = String.valueOf(paramObject2.digest_uin.get());
+      }
+      if (paramObject2.digest_time.has()) {
+        paramObject1.opTime = paramObject2.digest_time.get();
       }
     }
-    for (;;)
+    c(paramObject1);
+  }
+  
+  private boolean a(bedy parambedy)
+  {
+    if ((parambedy == null) || (parambedy.a == null)) {
+      return false;
+    }
+    Object localObject = new bedw(parambedy.a.troopUin, parambedy.a.msgSeq, parambedy.a.msgRandom);
+    HashMap localHashMap = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(((bedw)localObject).jdField_a_of_type_Long));
+    if (localHashMap != null)
     {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559245, null);
-      paramView = new beeb(this);
-      paramView.jdField_a_of_type_Int = jdField_a_of_type_Int;
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)localView.findViewById(2131367736));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367735));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367730));
-      paramView.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo = localGroupPadTemplateInfo;
-      localView.setTag(paramView);
-      localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      break;
-      label293:
-      if (paramView.jdField_a_of_type_Int != jdField_b_of_type_Int) {
-        break label141;
+      localObject = (bedx)localHashMap.get(localObject);
+      return (localObject == null) || (((bedx)localObject).jdField_a_of_type_Long < parambedy.a.opTime);
+    }
+    return false;
+  }
+  
+  private boolean a(Entity paramEntity)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())
+    {
+      if (paramEntity.getStatus() != 1000) {
+        break label48;
       }
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130840262);
-      break label141;
-      label316:
-      paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setImageResource(2130840260);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText("");
-      break label153;
-      label338:
-      localView.setContentDescription("");
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
+      bool1 = bool2;
+      if (paramEntity.getStatus() == 1001) {
+        bool1 = true;
+      }
+    }
+    label48:
+    do
+    {
+      return bool1;
+      if (paramEntity.getStatus() == 1001) {
+        break;
+      }
+      bool1 = bool2;
+    } while (paramEntity.getStatus() != 1002);
+    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
+  }
+  
+  private void b(bedy parambedy)
+  {
+    if ((parambedy == null) || (parambedy.a == null)) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        return;
+        parambedy = new bedw(parambedy.a.troopUin, parambedy.a.msgSeq, parambedy.a.msgRandom);
+        localObject = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(parambedy.jdField_a_of_type_Long));
+      } while (localObject == null);
+      localObject = (bedx)((HashMap)localObject).get(parambedy);
+    } while ((localObject == null) || (((bedx)localObject).b == 0L));
+    a(parambedy.jdField_a_of_type_Long, ((bedx)localObject).b);
+  }
+  
+  private void b(TroopEssenceMsgItem paramTroopEssenceMsgItem)
+  {
+    a(paramTroopEssenceMsgItem.troopUin, new beed(this, paramTroopEssenceMsgItem));
+  }
+  
+  private void b(TroopTips0x857.QQGroupDigestMsg paramQQGroupDigestMsg, boolean paramBoolean)
+  {
+    paramQQGroupDigestMsg = beeg.a(paramQQGroupDigestMsg);
+    if (paramBoolean)
+    {
+      QLog.i("TroopEssenceMsgManager", 1, "handleEssenceMsgGroupPushMain holdMsg:" + paramQQGroupDigestMsg.toString());
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramQQGroupDigestMsg);
+        ThreadManager.getUIHandler().postDelayed(new TroopEssenceMsgManager.4(this), 5000L);
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramQQGroupDigestMsg);
+      return;
+    }
+    QLog.i("TroopEssenceMsgManager", 1, "handleEssenceMsgGroupPushMain msgItem:" + paramQQGroupDigestMsg.toString());
+    a(paramQQGroupDigestMsg);
+  }
+  
+  private void c(TroopEssenceMsgItem paramTroopEssenceMsgItem)
+  {
+    a(paramTroopEssenceMsgItem.troopUin, new beee(this, paramTroopEssenceMsgItem));
+  }
+  
+  public bedx a(bedw parambedw)
+  {
+    if (parambedw == null) {
+      return null;
+    }
+    HashMap localHashMap = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(parambedw.jdField_a_of_type_Long));
+    if (localHashMap == null) {
+      return null;
+    }
+    return (bedx)localHashMap.get(parambedw);
+  }
+  
+  public HashMap<bedw, bedx> a(long paramLong)
+  {
+    localHashMap = new HashMap();
+    try
+    {
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(TroopEssenceMsgItem.class, false, "troopUin=?", new String[] { String.valueOf(paramLong) }, null, null, null, null);
+      if (localObject != null)
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          TroopEssenceMsgItem localTroopEssenceMsgItem = (TroopEssenceMsgItem)((Iterator)localObject).next();
+          localHashMap.put(new bedw(localTroopEssenceMsgItem.troopUin, localTroopEssenceMsgItem.msgSeq, localTroopEssenceMsgItem.msgRandom), new bedx(localTroopEssenceMsgItem.opType, localTroopEssenceMsgItem.msgSenderUin, localTroopEssenceMsgItem.opUin, localTroopEssenceMsgItem.opTime, localTroopEssenceMsgItem.graytipuniseq));
+        }
+      }
+      return localHashMap;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("TroopEssenceMsgManager", 1, "readEntity exception + " + localException.getMessage(), localException);
     }
   }
   
-  public void onClick(View paramView) {}
+  public void a(long paramLong, beef parambeef)
+  {
+    if (parambeef == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong)))
+    {
+      parambeef.a(paramLong, (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)));
+      return;
+    }
+    if (!this.b.containsKey(Long.valueOf(paramLong)))
+    {
+      this.b.put(Long.valueOf(paramLong), new ArrayList(Arrays.asList(new beef[] { parambeef })));
+      ThreadManager.excute(new TroopEssenceMsgManager.9(this, paramLong), 32, null, true);
+      return;
+    }
+    ((ArrayList)this.b.get(Long.valueOf(paramLong))).add(parambeef);
+  }
+  
+  protected void a(Entity paramEntity)
+  {
+    ThreadManager.excute(new TroopEssenceMsgManager.10(this, paramEntity), 32, null, true);
+  }
+  
+  public void a(TroopEssenceMsgItem paramTroopEssenceMsgItem)
+  {
+    if (paramTroopEssenceMsgItem == null) {
+      return;
+    }
+    this.jdField_a_of_type_Anca.a(paramTroopEssenceMsgItem);
+    QLog.i("TroopEssenceMsgManager", 1, "reqSetTroopEssenceMsg:" + paramTroopEssenceMsgItem.toString());
+  }
+  
+  public void a(TroopTips0x857.QQGroupDigestMsg paramQQGroupDigestMsg, boolean paramBoolean)
+  {
+    if (paramQQGroupDigestMsg == null) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new TroopEssenceMsgManager.3(this, paramQQGroupDigestMsg, paramBoolean));
+  }
+  
+  public boolean a(bedw parambedw)
+  {
+    if (parambedw == null) {}
+    do
+    {
+      HashMap localHashMap;
+      do
+      {
+        do
+        {
+          return false;
+        } while (b(parambedw));
+        localHashMap = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(parambedw.jdField_a_of_type_Long));
+      } while (localHashMap == null);
+      parambedw = (bedx)localHashMap.get(parambedw);
+    } while (parambedw == null);
+    if (parambedw.jdField_a_of_type_Int == 1) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  public boolean b(bedw parambedw)
+  {
+    if ((HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(parambedw.jdField_a_of_type_Long)) == null)
+    {
+      a(parambedw.jdField_a_of_type_Long, new beeb(this, parambedw));
+      return true;
+    }
+    return false;
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Andd);
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.b.clear();
+    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    }
+  }
 }
 
 

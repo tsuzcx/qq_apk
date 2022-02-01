@@ -1,28 +1,42 @@
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment.4.1;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
 
-public class ajgr
-  extends apck
+class ajgr
+  implements TextWatcher
 {
-  public ajgr(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment, String paramString)
+  ajgr(ajgq paramajgq) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    super(paramString);
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    if (paramEditable.length() == 0)
+    {
+      this.a.jdField_b_of_type_JavaLangString = "";
+      this.a.findViewById(2131368234).setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.a.jdField_a_of_type_Ajgo.a();
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    }
+    while (this.a.jdField_b_of_type_JavaLangString.equals(paramEditable)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("C2CMessageSearchDialog", 2, "afterTextChanged, lastChangedKeyword = " + this.a.jdField_b_of_type_JavaLangString + ",lastKeyWord:" + paramEditable);
+    }
+    this.a.jdField_b_of_type_JavaLangString = paramEditable;
+    this.a.findViewById(2131368234).setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    this.a.a();
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 2, "getview onLocationFinish info = " + paramSosoLbsInfo);
-    }
-    if (paramInt != 0)
-    {
-      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 1, "getview onLocationFinish, errorCode=" + paramInt);
-      this.a.a.post(new AddContactViewPagerTroopFragment.4.1(this));
-    }
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

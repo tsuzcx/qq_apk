@@ -1,87 +1,38 @@
-import android.app.Activity;
-import android.view.View;
-import com.etrump.mixlayout.ETFont;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.AnimationTextView;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class ahts
-  implements biuz
+public class ahts
+  implements BusinessObserver
 {
-  ahts(ahtp paramahtp, boolean paramBoolean) {}
+  private Handler a;
   
-  public void a(View paramView)
+  ahts(Handler paramHandler)
   {
+    this.a = paramHandler;
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    paramInt = paramBundle.getInt("ErrorCode");
+    String str1 = paramBundle.getString("UniqueKey");
     if (QLog.isColorLevel()) {
-      QLog.d("TextItemBuilder", 2, "SingleTap invoked!");
+      QLog.d("ZhituObserver", 2, ahtj.a(str1, "onReceive", "observer onReceive with code: " + paramInt));
     }
-    Object localObject = (AnimationTextView)paramView;
-    float f1 = ((AnimationTextView)localObject).touchL - ahtp.e;
-    float f2 = ((AnimationTextView)localObject).touchT;
-    float f3 = ahtp.c;
-    if (this.jdField_a_of_type_Boolean) {
-      f1 = ((AnimationTextView)localObject).touchL - ahtp.f;
-    }
-    localObject = ((AnimationTextView)localObject).getText();
-    int k;
-    boolean bool2;
-    int j;
-    boolean bool1;
-    if ((localObject instanceof begp))
-    {
-      localObject = (begp)localObject;
-      localObject = (begw[])((begp)localObject).getSpans(0, ((begp)localObject).length(), begw.class);
-      if (!(paramView instanceof ETTextView)) {
-        break label325;
-      }
-      paramView = (ETTextView)paramView;
-      k = paramView.mClickEpId;
-      int m = paramView.mClickcEId;
-      if ((paramView.mFont == null) || (paramView.mFont.mFontId == 0) || (paramView.mFont.mFontType != 1)) {
-        break label307;
-      }
-      bool2 = true;
-      i = k;
-      j = m;
-      bool1 = bool2;
-      if (bool2)
-      {
-        i = k;
-        j = m;
-        bool1 = bool2;
-        if (paramView.getETLayout() != null)
-        {
-          paramView = paramView.getETLayout();
-          if (QLog.isColorLevel()) {
-            QLog.d("ChatItemBuilder", 2, "isHanYiFont, onlyEmoji: " + paramView.jdField_a_of_type_Boolean);
-          }
-          if (paramView.jdField_a_of_type_Boolean) {
-            break label313;
-          }
-          bool1 = true;
-          label241:
-          j = m;
-        }
+    String str2 = ahtj.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
+    if (!str2.equals(str1)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ZhituObserver", 2, ahtj.a(str1, "onReceive", "response with " + str1 + " but the last one is " + str2 + ", skip."));
       }
     }
-    for (int i = k;; i = -1)
-    {
-      if ((i != -1) && (j != -1)) {}
-      for (bool2 = true;; bool2 = false)
-      {
-        asos.a((begw[])localObject, f1, f2 - f3, bool2, i, j, this.jdField_a_of_type_Ahtp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahtp.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (Activity)this.jdField_a_of_type_Ahtp.jdField_a_of_type_AndroidContentContext, bool1);
-        return;
-        label307:
-        bool2 = false;
-        break;
-        label313:
-        bool1 = false;
-        break label241;
-      }
-      label325:
-      bool1 = false;
-      j = -1;
+    while (this.a == null) {
+      return;
     }
+    paramBundle = this.a.obtainMessage(2, paramBundle);
+    this.a.sendMessage(paramBundle);
   }
 }
 

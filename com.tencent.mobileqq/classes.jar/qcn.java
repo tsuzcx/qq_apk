@@ -1,46 +1,18 @@
-import android.os.Bundle;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.9.1;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.oidb_0xc2f.GetFollowUserRecommendListRsp;
-import tencent.im.oidb.oidb_0xc2f.RspBody;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 
-public class qcn
-  extends nkn
+class qcn
+  implements qkh
 {
-  qcn(qcf paramqcf) {}
+  qcn(qcm paramqcm, ArticleInfo paramArticleInfo, Container paramContainer) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "requestRecommendList onResult, errorCode = " + paramInt);
-    }
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      try
-      {
-        paramBundle = new oidb_0xc2f.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        qcf.a(this.a).mRecommendFollowInfos = qwy.a((oidb_0xc2f.GetFollowUserRecommendListRsp)paramBundle.msg_get_follow_user_recommend_list_rsp.get());
-        if ((qcf.a(this.a).mRecommendFollowInfos.a != null) && (qcf.a(this.a).mRecommendFollowInfos.a.size() >= 3))
-        {
-          qcf.a(this.a).a(qcf.a(this.a).mRecommendFollowInfos.a);
-          qcf.a(this.a).isShowRecommendList = true;
-          qcf.a(this.a);
-          qcf.a(this.a).post(new ReadInJoySocializeRecommendFollowView.9.1(this));
-          return;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ReadInJoySocializeRecommendFollowView", 2, "requestRecommendList onResult, size < 3");
-          return;
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        QLog.e("ReadInJoySocializeRecommendFollowView", 1, "requestRecommendList onResult(), exception = " + paramArrayOfByte.toString());
-      }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.b != null)
+    {
+      UrlJumpInfo localUrlJumpInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.b;
+      rwv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), localUrlJumpInfo);
     }
   }
 }

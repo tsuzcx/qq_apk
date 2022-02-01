@@ -1,38 +1,66 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class admt
-  extends RecyclablePool.Recyclable
+  extends amua
 {
-  public int a;
-  public long a;
-  public String a;
-  public int[] a;
-  public int b;
-  public long b;
-  public int[] b;
-  public int c;
-  public long c;
-  public int d;
-  public long d;
-  public int e;
-  long e;
-  public int f;
-  public long f;
-  public int g;
-  public long g;
-  int h = 0;
-  int i = 0;
+  public admt(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
   
-  public admt()
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_e_of_type_Long = 0L;
-    this.jdField_a_of_type_ArrayOfInt = new int[adms.a().length];
-    this.jdField_b_of_type_ArrayOfInt = new int[adms.b().length];
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatAnnounceActivity", 2, "onSetUserCreateHotChatAnnounce.isSuccess=" + paramBoolean + ",result=" + paramInt + ", strErr=" + paramString2);
+    }
+    HotChatAnnounceActivity.a(this.a);
+    if ((paramBoolean) && (paramInt == 0))
+    {
+      paramString1 = ((HotChatManager)this.a.app.getManager(60)).a(this.a.a);
+      if (paramString1 != null)
+      {
+        paramString1.memo = this.a.d;
+        paramString1.memoUrl = this.a.e;
+        paramString1.memoShowed = false;
+      }
+      QQToast.a(this.a, 2, amtj.a(2131704658), 0).b(this.a.getTitleBarHeight());
+      this.a.setResult(-1);
+      this.a.finish();
+      return;
+    }
+    paramString1 = amtj.a(2131704661);
+    if (paramInt == 1282) {
+      paramString1 = amtj.a(2131704666);
+    }
+    QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
   }
   
-  public String a(long paramLong)
+  public void a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt, String paramString)
   {
-    return String.format("h:%x[%d,%d,%d][%d,%d][%d,%d,%d][%d,%d,%d][%s]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.jdField_c_of_type_Long - paramLong), Long.valueOf(this.jdField_b_of_type_Long - paramLong), Long.valueOf(this.jdField_d_of_type_Long - paramLong), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.f), Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.g), Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.jdField_d_of_type_Int), Integer.valueOf(this.jdField_e_of_type_Int), this.jdField_a_of_type_JavaLangString });
+    if (QLog.isColorLevel()) {
+      QLog.i("HotChatAnnounceActivity", 2, "onSetHotChatAnnounce.isSuccess=" + paramBoolean + ",result=" + paramInt + ", strErr=" + paramString);
+    }
+    HotChatAnnounceActivity.a(this.a);
+    if ((paramBoolean) && (paramInt == 0))
+    {
+      paramArrayOfByte = ((HotChatManager)this.a.app.getManager(60)).a(this.a.a);
+      if (paramArrayOfByte != null)
+      {
+        paramArrayOfByte.memo = this.a.d;
+        paramArrayOfByte.memoUrl = this.a.e;
+        paramArrayOfByte.memoShowed = false;
+      }
+      QQToast.a(this.a, 2, amtj.a(2131704665), 0).b(this.a.getTitleBarHeight());
+      this.a.setResult(-1);
+      this.a.finish();
+      return;
+    }
+    paramArrayOfByte = amtj.a(2131704659);
+    if (paramInt == 1288) {
+      paramArrayOfByte = amtj.a(2131704663);
+    }
+    QQToast.a(this.a, 1, paramArrayOfByte, 0).b(this.a.getTitleBarHeight());
   }
 }
 

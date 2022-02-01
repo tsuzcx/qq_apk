@@ -1,36 +1,85 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.videostory.config.VSConfigManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class zwu
-  extends bkia
+  extends aptq<zwt>
 {
-  public zwu(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  protected void a(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  private void a(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "mBusinessObserver onQidianGroupInfo qrcode url: " + paramBoolean);
-    }
-    if ((this.a.b) || (this.a.isFinishing())) {
-      return;
-    }
-    if (!paramBoolean)
+    QLog.d("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onUpdate() apply new widget config");
+    if (!TextUtils.isEmpty(paramString2))
     {
-      this.a.i();
-      return;
+      VSConfigManager.getInstance().setValue("KEY_BOOLEAN_APPLY_WIDGET_CONFIG", Boolean.valueOf(true));
+      VSConfigManager.getInstance().setValue("KEY_VS_ENTRANCE_WIDGET_MD5", paramString1);
+      VSConfigManager.getInstance().setValue("KEY_VS_ENTRANCE_WIDGET_CONTENT", paramString2);
     }
-    String str = (String)paramHashMap.get("uin");
-    paramHashMap = (String)paramHashMap.get("url");
-    this.a.a(str, 2, paramHashMap);
-    paramHashMap = zyx.a(paramHashMap, -1);
-    if (paramHashMap != null)
+  }
+  
+  @NonNull
+  public zwt a(int paramInt)
+  {
+    return new zwt();
+  }
+  
+  @Nullable
+  public zwt a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
     {
-      this.a.a = paramHashMap;
-      this.a.h();
-      return;
+      QLog.i("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
+      zwt localzwt = zwt.a(paramArrayOfaptx[0].a);
+      if (localzwt == null)
+      {
+        QLog.e("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onParsed error!");
+        return null;
+      }
+      String str = (String)VSConfigManager.getInstance().getValue("KEY_VS_ENTRANCE_WIDGET_MD5", "");
+      if ((!TextUtils.isEmpty(localzwt.b())) && (!localzwt.b().equals(str)))
+      {
+        zxg.a().a(localzwt);
+        a(localzwt.b(), paramArrayOfaptx[0].a);
+      }
+      return localzwt;
     }
-    this.a.i();
+    QLog.e("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onParsed conf content is null!");
+    return null;
+  }
+  
+  public void a(zwt paramzwt)
+  {
+    if (paramzwt != null) {
+      QLog.i("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onUpdate:" + paramzwt.toString());
+    }
+  }
+  
+  public Class<zwt> clazz()
+  {
+    return zwt.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 474;
   }
 }
 

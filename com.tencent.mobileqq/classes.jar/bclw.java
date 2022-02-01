@@ -1,34 +1,128 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.text.TextUtils;
+import android.widget.TextView;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.util.HashMap;
+import org.xmlpull.v1.XmlSerializer;
 
 public class bclw
-  extends bcmb
+  extends bcgy
 {
-  public bclw(GroupSearchEngine paramGroupSearchEngine, bcmc parambcmc, String paramString, int paramInt)
+  public boolean c;
+  public boolean d = true;
+  public int o;
+  public int p = 48;
+  public int q = 1;
+  public int r = 1;
+  
+  public bclw()
   {
-    super(paramGroupSearchEngine, parambcmc, paramString, paramInt);
+    this(null);
   }
   
-  public bcfq a(List<bcfr> paramList, String paramString)
+  public bclw(String paramString)
   {
-    return null;
+    super(paramString, "td");
   }
   
-  public List<bcfq> a(bcmq parambcmq)
+  public TextView a(Context paramContext)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = -1;
-    if (parambcmq.jdField_a_of_type_AndroidOsBundle == null) {
-      parambcmq.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    return new TextView(paramContext);
+  }
+  
+  public String a()
+  {
+    return "td";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.r = paramObjectInput.readInt();
+    this.p = paramObjectInput.readInt();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    paramObjectOutput.writeInt(this.r);
+    paramObjectOutput.writeInt(this.p);
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, this.a);
+    paramXmlSerializer.attribute(null, "weight", String.valueOf(this.r));
+    paramXmlSerializer.attribute(null, "align", String.valueOf(this.p));
+    paramXmlSerializer.endTag(null, this.a);
+    super.a(paramXmlSerializer);
+  }
+  
+  public boolean a(bcin parambcin)
+  {
+    try
+    {
+      Object localObject = parambcin.a("weight");
+      if (localObject != null) {}
+      for (int i = Integer.parseInt((String)localObject);; i = 0)
+      {
+        this.r = i;
+        localObject = parambcin.a("align");
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break;
+        }
+        localObject = ((String)localObject).split("\\|");
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("left", Integer.valueOf(3));
+        localHashMap.put("right", Integer.valueOf(5));
+        localHashMap.put("top", Integer.valueOf(48));
+        localHashMap.put("bottom", Integer.valueOf(80));
+        localHashMap.put("center", Integer.valueOf(17));
+        i = 0;
+        while (i < localObject.length)
+        {
+          if (!TextUtils.isEmpty(localObject[i]))
+          {
+            String str = localObject[i].toLowerCase();
+            if (localHashMap.containsKey(str))
+            {
+              int j = this.p;
+              this.p = (((Integer)localHashMap.get(str)).intValue() | j);
+            }
+          }
+          i += 1;
+        }
+      }
+      return super.a(parambcin);
     }
-    ArrayList localArrayList = new ArrayList();
-    parambcmq = new bcfg(parambcmq.jdField_a_of_type_JavaLangString, GroupSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine));
-    localArrayList.add(new bcey(parambcmq));
-    localArrayList.add(parambcmq);
-    bcnh.a(0);
-    return localArrayList;
+    catch (NumberFormatException localNumberFormatException)
+    {
+      this.r = 1;
+    }
+  }
+  
+  public int b()
+  {
+    return this.q;
+  }
+  
+  protected int c()
+  {
+    return 2131379856;
+  }
+  
+  public int e()
+  {
+    if ((this.c) && (this.o != 0)) {
+      return -1;
+    }
+    return -16777216;
+  }
+  
+  public int f()
+  {
+    return 28;
   }
 }
 

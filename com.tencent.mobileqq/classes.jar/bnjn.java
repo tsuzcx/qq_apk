@@ -1,6 +1,17 @@
-public abstract interface bnjn
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+
+class bnjn
+  implements bnjw
 {
-  public abstract void a(int paramInt);
+  bnjn(bnjm parambnjm, boolean paramBoolean) {}
+  
+  public void a()
+  {
+    if (DoodleLayout.a(this.jdField_a_of_type_Bnjm.a) != null) {
+      DoodleLayout.a(this.jdField_a_of_type_Bnjm.a).b(true);
+    }
+    this.jdField_a_of_type_Bnjm.a.a().b(this.jdField_a_of_type_Boolean);
+  }
 }
 
 

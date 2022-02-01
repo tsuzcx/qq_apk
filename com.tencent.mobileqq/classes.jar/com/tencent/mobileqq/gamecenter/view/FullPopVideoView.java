@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import avmj;
+import atzi;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
@@ -18,7 +18,7 @@ public class FullPopVideoView
   extends FrameLayout
   implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnSeekCompleteListener, TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  private avmj jdField_a_of_type_Avmj;
+  private atzi jdField_a_of_type_Atzi;
   private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
   
   public FullPopVideoView(@NonNull Context paramContext)
@@ -31,22 +31,13 @@ public class FullPopVideoView
     super(paramContext, paramAttributeSet);
   }
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
-    {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.release();
-    }
-  }
-  
   public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
     if (QLog.isColorLevel()) {
       QLog.d("FullPopVideoView", 1, "onCompletion ");
     }
-    if (this.jdField_a_of_type_Avmj != null) {
-      this.jdField_a_of_type_Avmj.a();
+    if (this.jdField_a_of_type_Atzi != null) {
+      this.jdField_a_of_type_Atzi.a();
     }
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
     {
@@ -78,9 +69,9 @@ public class FullPopVideoView
   
   public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
-  public void setListener(avmj paramavmj)
+  public void setListener(atzi paramatzi)
   {
-    this.jdField_a_of_type_Avmj = paramavmj;
+    this.jdField_a_of_type_Atzi = paramatzi;
   }
 }
 

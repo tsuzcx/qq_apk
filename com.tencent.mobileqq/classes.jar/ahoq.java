@@ -1,17 +1,18 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
+import com.tencent.mobileqq.data.MessageForStructing;
 
 public class ahoq
-  extends aggl
+  implements ahos
 {
-  public ImageView a;
-  public TextView a;
-  public CircleFileStateView a;
-  public View d;
-  
-  public ahoq(ahoo paramahoo) {}
+  public void a(MessageForStructing paramMessageForStructing, aezf paramaezf, View paramView, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 2130838351;; i = 2130838335)
+    {
+      paramView.setBackgroundResource(i);
+      return;
+    }
+  }
 }
 
 

@@ -1,137 +1,65 @@
-import android.content.Context;
-import android.opengl.GLES20;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class apia
+class apia
+  extends apim
 {
-  private static final String jdField_a_of_type_JavaLangString = apia.class.getSimpleName();
-  private int jdField_a_of_type_Int;
-  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
-  private boolean jdField_a_of_type_Boolean;
-  public final float[] a;
-  private int jdField_b_of_type_Int;
-  private final String jdField_b_of_type_JavaLangString = "attribute vec4 a_Position;\nattribute vec2 a_TexCoord;\n\nvarying vec2 v_TexCoord;\n\nvoid main() {\n   gl_Position = a_Position;\n   v_TexCoord = a_TexCoord;\n}";
-  private FloatBuffer jdField_b_of_type_JavaNioFloatBuffer;
-  public final float[] b;
-  private int jdField_c_of_type_Int;
-  private final String jdField_c_of_type_JavaLangString = "\n#extension GL_OES_EGL_image_external : require\n\nprecision mediump float;\nvarying vec2 v_TexCoord;\nuniform samplerExternalOES sTexture;\n\n\nvoid main() {\n    gl_FragColor = texture2D(sTexture, v_TexCoord);\n}";
-  private FloatBuffer jdField_c_of_type_JavaNioFloatBuffer;
-  private int d;
-  private int e = -1;
-  private int f = 36197;
+  apia(aphy paramaphy) {}
   
-  public apia()
+  public void a(boolean paramBoolean, long paramLong)
   {
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, -1.0F, 1.0F, 1.0F, -1.0F, 1.0F, 1.0F };
-    this.jdField_b_of_type_ArrayOfFloat = new float[] { 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F };
+    if (aphy.a(this.a) != paramLong) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CShortcutBarObserver", 2, "onRecieveNewC2CShortcutAppListPush");
+      }
+    } while (!paramBoolean);
+    aphy.a(this.a);
   }
   
-  public int a()
+  protected void a(boolean paramBoolean, long paramLong, List<aphw> paramList)
   {
-    return this.e;
+    if (aphy.a(this.a) != paramLong) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("C2CShortcutBarObserver", 2, "C2CShortcutBarAIOHelper onRequestC2cShortcutAppList");
+      }
+    } while (!paramBoolean);
+    paramList = apil.a(aphy.a(this.a).app).a(Long.valueOf(paramLong));
+    aphy.a(this.a).a(paramList);
+    this.a.g();
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if ((aphy.b(this.a) == null) || (aphy.c(this.a).sessionInfo == null) || (TextUtils.isEmpty(aphy.d(this.a).sessionInfo.curFriendUin))) {}
+    while ((!paramBoolean1) || (!aphy.e(this.a).sessionInfo.curFriendUin.equals(paramString))) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    float f1 = paramInt1 / paramInt2;
-    float f2 = paramInt3 / paramInt4;
-    Object localObject;
-    if (f1 < f2)
+    if (paramBoolean2)
     {
-      f1 = f2 / f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
-      localObject[1] *= f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
-      localObject[3] *= f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
-      localObject[5] *= f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
-      localObject[7] = (f1 * localObject[7]);
-    }
-    for (;;)
-    {
-      localObject = ByteBuffer.allocateDirect(this.jdField_a_of_type_ArrayOfFloat.length * 4);
-      ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
-      this.jdField_a_of_type_JavaNioFloatBuffer = ((ByteBuffer)localObject).asFloatBuffer();
-      this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_a_of_type_ArrayOfFloat);
-      this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
-      localObject = ByteBuffer.allocateDirect(32);
-      ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
-      this.jdField_b_of_type_JavaNioFloatBuffer = ((ByteBuffer)localObject).asFloatBuffer();
-      this.jdField_b_of_type_JavaNioFloatBuffer.put(this.jdField_b_of_type_ArrayOfFloat);
-      this.jdField_b_of_type_JavaNioFloatBuffer.position(0);
+      this.a.g();
+      aphy.a(this.a);
       return;
-      f1 /= f2;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
-      localObject[0] *= f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
-      localObject[2] *= f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
-      localObject[4] *= f1;
-      localObject = this.jdField_a_of_type_ArrayOfFloat;
-      localObject[6] = (f1 * localObject[6]);
     }
+    this.a.h();
   }
   
-  public void a(Context paramContext)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject = new int[1];
-    GLES20.glGenTextures(1, (int[])localObject, 0);
-    this.e = localObject[0];
-    GLES20.glBindTexture(this.f, this.e);
-    GLES20.glTexParameteri(this.f, 10242, 33071);
-    GLES20.glTexParameteri(this.f, 10243, 33071);
-    GLES20.glTexParameteri(this.f, 10241, 9728);
-    GLES20.glTexParameteri(this.f, 10240, 9728);
-    if (4 != this.jdField_a_of_type_ArrayOfFloat.length / 2) {
-      throw new RuntimeException("Unexpected number of vertices in BackgroundRenderer.");
+    if (QLog.isColorLevel()) {
+      QLog.d("C2CShortcutBarObserver", 2, "onSetGlobalSwitcherStatus isSuccess = " + paramBoolean1 + ",isGlobalOpen = " + paramBoolean2);
     }
-    localObject = ByteBuffer.allocateDirect(32);
-    ((ByteBuffer)localObject).order(ByteOrder.nativeOrder());
-    this.jdField_c_of_type_JavaNioFloatBuffer = ((ByteBuffer)localObject).asFloatBuffer();
-    int i = apsv.a(jdField_a_of_type_JavaLangString, paramContext, 35633, "attribute vec4 a_Position;\nattribute vec2 a_TexCoord;\n\nvarying vec2 v_TexCoord;\n\nvoid main() {\n   gl_Position = a_Position;\n   v_TexCoord = a_TexCoord;\n}");
-    int j = apsv.a(jdField_a_of_type_JavaLangString, paramContext, 35632, "\n#extension GL_OES_EGL_image_external : require\n\nprecision mediump float;\nvarying vec2 v_TexCoord;\nuniform samplerExternalOES sTexture;\n\n\nvoid main() {\n    gl_FragColor = texture2D(sTexture, v_TexCoord);\n}");
-    this.jdField_a_of_type_Int = GLES20.glCreateProgram();
-    GLES20.glAttachShader(this.jdField_a_of_type_Int, i);
-    GLES20.glAttachShader(this.jdField_a_of_type_Int, j);
-    GLES20.glLinkProgram(this.jdField_a_of_type_Int);
-    GLES20.glUseProgram(this.jdField_a_of_type_Int);
-    apsv.a(jdField_a_of_type_JavaLangString, "program creation");
-    this.jdField_b_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "a_Position");
-    this.jdField_c_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "a_TexCoord");
-    this.d = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "sTexture");
-    apsv.a(jdField_a_of_type_JavaLangString, "program parameters");
-  }
-  
-  public void a(FloatBuffer paramFloatBuffer)
-  {
-    apsv.a(jdField_a_of_type_JavaLangString, "before draw");
-    this.jdField_c_of_type_JavaNioFloatBuffer = paramFloatBuffer;
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-    GLES20.glColorMask(true, true, true, true);
-    GLES20.glClear(16640);
-    GLES20.glDepthMask(false);
-    GLES20.glDisable(2929);
-    GLES20.glDisable(3042);
-    GLES20.glUseProgram(this.jdField_a_of_type_Int);
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(36197, this.e);
-    GLES20.glUniform1i(this.d, 0);
-    GLES20.glVertexAttribPointer(this.jdField_b_of_type_Int, 2, 5126, false, 0, this.jdField_a_of_type_JavaNioFloatBuffer);
-    GLES20.glVertexAttribPointer(this.jdField_c_of_type_Int, 2, 5126, false, 0, this.jdField_c_of_type_JavaNioFloatBuffer);
-    GLES20.glEnableVertexAttribArray(this.jdField_b_of_type_Int);
-    GLES20.glEnableVertexAttribArray(this.jdField_c_of_type_Int);
-    GLES20.glDrawArrays(5, 0, 4);
-    GLES20.glDisableVertexAttribArray(this.jdField_b_of_type_Int);
-    GLES20.glDisableVertexAttribArray(this.jdField_c_of_type_Int);
-    GLES20.glEnable(2929);
-    apsv.a(jdField_a_of_type_JavaLangString, "after draw");
+    if ((paramBoolean1) && (!paramBoolean2)) {
+      this.a.h();
+    }
   }
 }
 

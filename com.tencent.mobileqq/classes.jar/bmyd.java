@@ -1,9 +1,43 @@
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Handler;
+import android.os.Message;
+import dov.com.qq.im.capture.view.CountDownView;
+import java.lang.ref.WeakReference;
+import org.jetbrains.annotations.NotNull;
 
-public abstract interface bmyd
+public final class bmyd
+  extends Handler
 {
-  public abstract void a(int paramInt, View paramView, ViewGroup paramViewGroup);
+  private WeakReference<CountDownView> a;
+  
+  public bmyd(CountDownView paramCountDownView)
+  {
+    this.a = new WeakReference(paramCountDownView);
+  }
+  
+  public void a(CountDownView paramCountDownView, @NotNull Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      CountDownView.a(paramCountDownView, CountDownView.a(paramCountDownView) - 1);
+    }
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a.get() == null)
+    {
+      removeCallbacksAndMessages(null);
+      return;
+    }
+    try
+    {
+      a((CountDownView)this.a.get(), paramMessage);
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      paramMessage.printStackTrace();
+    }
+  }
 }
 
 

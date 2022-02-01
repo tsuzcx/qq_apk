@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.3.1;
+import com.tencent.qphone.base.util.QLog;
 
-class ajzl
-  implements DialogInterface.OnClickListener
+public class ajzl
+  implements ajvb
 {
-  ajzl(ajyt paramajyt) {}
+  public ajzl(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (paramInt == 0) {
-      ajyt.a(this.a);
+    ThemeHbFragment.a(this.a, null);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ThemeHbFragment", 2, "setAnimFrameBgProcess download back obj = " + paramObject);
+    }
+    if (((paramObject instanceof String)) && (ThemeHbFragment.a(this.a) != null)) {
+      ThemeHbFragment.a(this.a).post(new ThemeHbFragment.3.1(this, paramObject));
     }
   }
 }

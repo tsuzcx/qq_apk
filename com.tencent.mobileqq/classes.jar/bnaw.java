@@ -1,18 +1,71 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiFeedInfo;
+import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.ViewModelProvider.Factory;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class bnaw
-  implements Parcelable.Creator<WeishiFeedInfo>
+public class bnaw
+  implements ViewModelProvider.Factory
 {
-  public WeishiFeedInfo a(Parcel paramParcel)
+  private static bnaw jdField_a_of_type_Bnaw = new bnaw();
+  private static final String jdField_a_of_type_JavaLangString = bnaw.class.getSimpleName();
+  private HashMap<String, ViewModel> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private HashMap<String, AtomicInteger> b = new HashMap();
+  
+  public static bnaw a()
   {
-    return new WeishiFeedInfo(paramParcel);
+    return jdField_a_of_type_Bnaw;
   }
   
-  public WeishiFeedInfo[] a(int paramInt)
+  public void a(ViewModel paramViewModel)
   {
-    return new WeishiFeedInfo[paramInt];
+    if ((paramViewModel instanceof bnav))
+    {
+      AtomicInteger localAtomicInteger = (AtomicInteger)this.b.get(paramViewModel.getClass().getName());
+      if ((localAtomicInteger != null) && (localAtomicInteger.decrementAndGet() == 0))
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.remove(paramViewModel.getClass().getName());
+        this.b.remove(paramViewModel.getClass().getName());
+        QLog.d(jdField_a_of_type_JavaLangString, 1, paramViewModel.getClass().getName() + " has removed");
+      }
+    }
+  }
+  
+  @NonNull
+  public <T extends ViewModel> T create(@NonNull Class<T> paramClass)
+  {
+    if (bnav.class.isAssignableFrom(paramClass))
+    {
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramClass.getName())) {}
+      try
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramClass.getName(), paramClass.newInstance());
+        this.b.put(paramClass.getName(), new AtomicInteger(0));
+        AtomicInteger localAtomicInteger = (AtomicInteger)this.b.get(paramClass.getName());
+        if (localAtomicInteger != null)
+        {
+          localAtomicInteger.incrementAndGet();
+          QLog.d(jdField_a_of_type_JavaLangString, 1, paramClass.getName() + " has created and ref = " + localAtomicInteger.get());
+        }
+        return (ViewModel)this.jdField_a_of_type_JavaUtilHashMap.get(paramClass.getName());
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        for (;;)
+        {
+          localIllegalAccessException.printStackTrace();
+        }
+      }
+      catch (InstantiationException localInstantiationException)
+      {
+        for (;;)
+        {
+          localInstantiationException.printStackTrace();
+        }
+      }
+    }
+    throw new RuntimeException("Cannot create non global view model " + paramClass.getName() + " by GlobalViewModelFactory");
   }
 }
 

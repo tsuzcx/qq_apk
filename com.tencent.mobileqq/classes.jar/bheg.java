@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import android.graphics.drawable.BitmapDrawable;
 
 public class bheg
-  implements DialogInterface.OnClickListener
 {
-  public bheg(UpgradeActivity paramUpgradeActivity) {}
+  public int a;
+  public long a;
+  public BitmapDrawable a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bheg(int paramInt, long paramLong, BitmapDrawable paramBitmapDrawable)
   {
-    UpgradeActivity.a(this.a);
-    this.a.finish();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = paramBitmapDrawable;
+  }
+  
+  public String toString()
+  {
+    return "Frame{index=" + this.jdField_a_of_type_Int + ", targetTime=" + this.jdField_a_of_type_Long + ", drawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable + '}';
   }
 }
 

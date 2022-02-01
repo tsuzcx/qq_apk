@@ -1,22 +1,61 @@
-import java.util.Comparator;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
-class aofh
-  implements Comparator<aofg>
+public abstract class aofh
+  extends Binder
+  implements aofg
 {
-  public int a(aofg paramaofg1, aofg paramaofg2)
+  public aofh()
   {
-    if (paramaofg1.b < paramaofg2.b) {
-      return -1;
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+  }
+  
+  public static aofg a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
     }
-    if (paramaofg1.b > paramaofg2.b) {
-      return 1;
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+    if ((localIInterface != null) && ((localIInterface instanceof aofg))) {
+      return (aofg)localIInterface;
     }
-    return 0;
+    return new aofi(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+    paramParcel1 = a();
+    paramParcel2.writeNoException();
+    if (paramParcel1 != null)
+    {
+      paramParcel2.writeInt(1);
+      paramParcel1.writeToParcel(paramParcel2, 1);
+      return true;
+    }
+    paramParcel2.writeInt(0);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aofh
  * JD-Core Version:    0.7.0.1
  */

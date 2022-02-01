@@ -1,50 +1,52 @@
-import android.support.annotation.NonNull;
-
 public class arnl
-  extends armf<arnk>
+  extends arnj
 {
-  @NonNull
-  public static arnk c()
+  public arnl(arni paramarni, armn paramarmn)
   {
-    arnk localarnk2 = (arnk)aran.a().a(618);
-    arnk localarnk1 = localarnk2;
-    if (localarnk2 == null) {
-      localarnk1 = new arnk();
+    super(paramarni, paramarmn);
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    this.jdField_a_of_type_Armn.a();
+    this.jdField_a_of_type_Armn.a().a(paramInt);
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    super.a(paramInt1, paramInt2);
+    switch (paramInt1)
+    {
+    default: 
+      return false;
+    case 103: 
+      this.jdField_a_of_type_Armn.a().a();
+    case 104: 
+      this.jdField_a_of_type_Arni.a(0, paramInt2);
+    case 105: 
+      for (;;)
+      {
+        return true;
+        this.jdField_a_of_type_Arni.a(0, paramInt2);
+      }
     }
-    return localarnk1;
+    this.jdField_a_of_type_Armn.a().a();
+    this.jdField_a_of_type_Arni.a(0, paramInt2);
+    this.jdField_a_of_type_Arni.b(paramInt1, paramInt2);
+    return false;
   }
   
-  @NonNull
-  public arnk a()
+  public void b()
   {
-    return new arnk();
-  }
-  
-  @NonNull
-  public arnk a(@NonNull araj[] paramArrayOfaraj)
-  {
-    return arnk.a(paramArrayOfaraj[0].a);
-  }
-  
-  @NonNull
-  public arnk b()
-  {
-    return new arnk();
-  }
-  
-  public Class<arnk> clazz()
-  {
-    return arnk.class;
-  }
-  
-  public int type()
-  {
-    return 618;
+    super.b();
+    this.jdField_a_of_type_Armn.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arnl
  * JD-Core Version:    0.7.0.1
  */

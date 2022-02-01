@@ -1,18 +1,25 @@
-import com.tencent.widget.AbsListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface spo
+public class spo
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public spo(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public abstract void a(AbsListView paramAbsListView, int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public void onClick(View paramView)
+  {
+    ReadinjoyTabFrame.a(this.a).setText("");
+    ReadinjoyTabFrame.a(this.a).setVisibility(8);
+    uhv.a(this.a.a, true);
+    ((KandianMergeManager)this.a.a.getManager(162)).d(true);
+    pay.a(this.a.a(), 1);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

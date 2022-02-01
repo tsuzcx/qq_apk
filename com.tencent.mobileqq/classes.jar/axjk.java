@@ -1,100 +1,157 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.now.message.MessageReceivingAdapter;
+import com.tencent.mobileqq.now.widget.DecoratorViewPager;
+import com.tencent.mobileqq.now.widget.SimpleCircleIndicator;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import java.util.ArrayList;
+import java.util.List;
 
 public class axjk
+  extends axip
 {
-  public static axjh a;
+  private int jdField_a_of_type_Int;
+  private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new axjl(this);
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MessageReceivingAdapter jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter;
+  private DecoratorViewPager jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager;
+  private SimpleCircleIndicator jdField_a_of_type_ComTencentMobileqqNowWidgetSimpleCircleIndicator;
+  private boolean jdField_a_of_type_Boolean;
   
-  private static HashMap<String, String> a()
+  public axjk(FragmentActivity paramFragmentActivity, RecyclerView paramRecyclerView, View paramView)
   {
-    HashMap localHashMap = new HashMap();
-    if (a != null)
+    super(paramView);
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramFragmentActivity.app;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = new ahiu(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app, this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType = 1008;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370740));
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager = ((DecoratorViewPager)paramView.findViewById(2131380800));
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager.setNestedpParent(paramRecyclerView);
+    this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter = new MessageReceivingAdapter(paramFragmentActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter);
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager.setOnPageChangeListener(this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener);
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetSimpleCircleIndicator = ((SimpleCircleIndicator)paramView.findViewById(2131364558));
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetSimpleCircleIndicator.setViewPager(this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager);
+    this.jdField_a_of_type_ComTencentMobileqqNowWidgetSimpleCircleIndicator.setMaxCount(3);
+    b();
+  }
+  
+  private void a(ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(bfzl.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 3, paramChatMessage.time * 1000L, true));
+    }
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)this.itemView.getLayoutParams();
+    if (paramBoolean) {}
+    for (int i = ScreenUtil.dip2px(255.0F);; i = 0)
     {
-      axjn.a("MsgBackup_MsgBackupReporter", "mReportContainer = %s", new Object[] { a });
-      localHashMap.put("bizType", String.valueOf(a.jdField_a_of_type_Int));
-      localHashMap.put("platForm", String.valueOf(a.jdField_b_of_type_Int));
-      localHashMap.put("requestStatus", String.valueOf(a.jdField_a_of_type_Boolean));
-      localHashMap.put("errorCode", String.valueOf(a.jdField_c_of_type_Int));
-      localHashMap.put("totalCost", String.valueOf(a.jdField_a_of_type_Long));
-      localHashMap.put("averageSpeed", String.valueOf(a.jdField_a_of_type_Double));
-      localHashMap.put("totalSessionCount", String.valueOf(a.jdField_b_of_type_Long));
-      localHashMap.put("finishedSessionCount", String.valueOf(a.jdField_c_of_type_Long));
-      localHashMap.put("resSessionContains", String.valueOf(a.jdField_d_of_type_Long));
-      localHashMap.put("resTotalSize", String.valueOf(a.e));
-      localHashMap.put("dbTotalSize", String.valueOf(a.f));
-      localHashMap.put("resRequestCount", String.valueOf(a.g));
-      localHashMap.put("resRequestFailedCount", String.valueOf(a.h));
-      localHashMap.put("resRequestCancelCount", String.valueOf(a.i));
-      localHashMap.put("resTrivialCount", String.valueOf(a.j));
-      localHashMap.put("resTrivialFailedCount", String.valueOf(a.k));
-      localHashMap.put("resTrivialCancelCount", String.valueOf(a.l));
-      localHashMap.put("dbRequestCount", String.valueOf(a.m));
-      localHashMap.put("dbRequestFailedCount", String.valueOf(a.n));
-      localHashMap.put("dbRequestCancelCount", String.valueOf(a.o));
-      localHashMap.put("udpDetected", String.valueOf(a.jdField_b_of_type_Boolean));
-      localHashMap.put("connectType", String.valueOf(a.jdField_d_of_type_Int));
-      localHashMap.put("connectElipse", String.valueOf(a.p));
-      localHashMap.put("sessionReadyAllTimes", String.valueOf(a.q));
-      localHashMap.put("fileFailedCount", String.valueOf(a.r));
-      localHashMap.put("fileErrorList", String.valueOf(a.jdField_a_of_type_JavaUtilArrayList));
+      localLayoutParams.height = i;
+      this.itemView.setLayoutParams(localLayoutParams);
+      return;
     }
-    return localHashMap;
   }
   
-  public static void a()
+  private void b()
   {
-    if (a == null)
+    List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getAIOList(axil.a, 1008, -1L, true);
+    ArrayList localArrayList = new ArrayList();
+    int i;
+    if (localList != null)
     {
-      a = new axjh();
-      a.a();
-      a.jdField_b_of_type_Int = 4;
+      i = localList.size() - 1;
+      if (i >= 0)
+      {
+        ChatMessage localChatMessage = (ChatMessage)localList.get(i);
+        if (!TextUtils.isEmpty(axjh.a(localChatMessage))) {
+          localArrayList.add(localChatMessage);
+        }
+        for (;;)
+        {
+          i -= 1;
+          break;
+          if ((localChatMessage instanceof MessageForArkApp)) {
+            localArrayList.add(localChatMessage);
+          }
+        }
+      }
     }
-  }
-  
-  public static void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupReporter", 2, "report() called with: key = [" + paramString + "]");
-    }
-    bdll.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupReporter", 2, "report() called with: key = [" + paramString + "], fromType = [" + paramInt + "]");
-    }
-    bdll.b(null, "dc00898", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupReporter", 2, "report() called with: key = [" + paramString + "], fromType = [" + paramInt1 + "], reservedFromType = [" + paramInt2 + "]");
-    }
-    bdll.b(null, "dc00898", "", "", paramString, paramString, paramInt1, 0, String.valueOf(paramInt2), "", "", "");
-  }
-  
-  public static void b()
-  {
-    if (a != null)
+    this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter.a(localArrayList);
+    if (this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter.getCount() > 0)
     {
-      a.a();
-      a = null;
+      a(true);
+      if (this.jdField_a_of_type_Int < localArrayList.size()) {}
+      for (i = this.jdField_a_of_type_Int;; i = localArrayList.size() - 1)
+      {
+        a(this.jdField_a_of_type_ComTencentMobileqqNowMessageMessageReceivingAdapter.a(i));
+        this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager.setCurrentItem(i);
+        this.jdField_a_of_type_ComTencentMobileqqNowWidgetDecoratorViewPager.invalidate();
+        return;
+      }
+    }
+    a(false);
+  }
+  
+  private void c()
+  {
+    Object localObject = axjz.a();
+    if (localObject != null)
+    {
+      localObject = (amxz)((AppInterface)localObject).getManager(56);
+      if (localObject == null) {}
+    }
+    for (localObject = ((amxz)localObject).a(axil.a);; localObject = null)
+    {
+      Intent localIntent = new Intent();
+      Bundle localBundle = new Bundle();
+      localIntent.setComponent(new ComponentName(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, ChatActivity.class));
+      localBundle.putString("uin", axil.a);
+      localBundle.putInt("uintype", 1008);
+      if (localObject != null) {}
+      for (localObject = ((AccountDetail)localObject).name;; localObject = "")
+      {
+        localBundle.putString("uinname", (String)localObject);
+        localIntent.putExtras(localBundle);
+        localIntent.setFlags(67108864);
+        localIntent.putExtra("isforceRequestDetail", false);
+        localIntent.putExtra("jump_from", 2);
+        this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(localIntent);
+        return;
+      }
     }
   }
   
-  public static void c()
+  public void a()
   {
-    if (a != null)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      HashMap localHashMap = a();
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      bdmc.a(BaseApplicationImpl.getContext()).a(str, "MsgBackup_MsgBackupReporter", true, 0L, 0L, localHashMap, null);
       b();
+      return;
     }
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

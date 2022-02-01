@@ -1,24 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
-public class baoo
-  implements View.OnTouchListener
+class baoo
+  implements baps
 {
-  public baoo(QCallDetailActivity paramQCallDetailActivity) {}
+  baoo(baoj parambaoj) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(String paramString)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      QCallDetailActivity.a(this.a).setPressed(true);
+    if (SignatureHistoryFragment.b(this.a.a)) {
+      return;
     }
-    while (1 != paramMotionEvent.getAction()) {
-      return false;
-    }
-    QCallDetailActivity.a(this.a).setPressed(false);
-    return false;
+    SignatureHistoryFragment.a(this.a.a, paramString);
   }
 }
 

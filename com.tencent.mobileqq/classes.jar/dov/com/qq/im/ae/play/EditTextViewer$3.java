@@ -11,13 +11,13 @@ class EditTextViewer$3
   {
     try
     {
-      EditTextViewer.a(this.this$0);
+      EditTextViewer.access$000(this.this$0);
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      Log.e(EditTextViewer.a(), "drawText Error!");
+      Log.e(EditTextViewer.access$100(), "drawText Error!");
     }
   }
 }

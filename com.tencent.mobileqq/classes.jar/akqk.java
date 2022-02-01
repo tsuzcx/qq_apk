@@ -1,19 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
-class akqk
-  implements bliz
+public class akqk
+  implements DialogInterface.OnClickListener
 {
-  akqk(akqj paramakqj, blir paramblir) {}
+  public akqk(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt != this.jdField_a_of_type_Akqj.jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      this.jdField_a_of_type_Akqj.a(paramInt);
-      this.jdField_a_of_type_Akqj.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.a();
-    }
-    this.jdField_a_of_type_Blir.dismiss();
+    this.a.a("608", "7", "2", true);
+    EditLocalVideoActivity.a(this.a, "an_yuanshipin");
   }
 }
 

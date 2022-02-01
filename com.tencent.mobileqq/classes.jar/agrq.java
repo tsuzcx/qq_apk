@@ -1,18 +1,21 @@
-import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView;
 
-public abstract class agrq
+public class agrq
+  extends aezf
 {
-  private View a;
-  
-  public View a()
-  {
-    return this.a;
-  }
-  
-  public void a(View paramView)
-  {
-    this.a = paramView;
-  }
+  public FrameLayout a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public AutoStartProgressBar a;
+  public CropBubbleVideoView a;
+  public boolean a;
+  public TextView b;
 }
 
 

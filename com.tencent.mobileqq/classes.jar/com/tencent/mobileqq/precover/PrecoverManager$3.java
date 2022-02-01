@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.precover;
 
-import azut;
+import ayji;
 import com.tencent.mobileqq.data.PrecoverResource;
 import com.tencent.mobileqq.data.PrecoverResourceBusiness;
 import java.util.ArrayList;
@@ -13,28 +13,28 @@ public class PrecoverManager$3
 {
   public void run()
   {
-    synchronized (azut.a(this.this$0))
+    synchronized (ayji.a(this.this$0))
     {
-      Object localObject1 = (List)azut.a(this.this$0).remove(this.jdField_a_of_type_JavaLangString);
+      Object localObject1 = (List)ayji.a(this.this$0).remove(this.jdField_a_of_type_JavaLangString);
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
         localObject1 = ((List)localObject1).iterator();
         if (((Iterator)localObject1).hasNext())
         {
           localObject4 = (PrecoverResource)((Iterator)localObject1).next();
-          azut.b(this.this$0).remove(azut.a((PrecoverResource)localObject4));
+          ayji.b(this.this$0).remove(ayji.a((PrecoverResource)localObject4));
         }
       }
     }
-    azut.a(this.this$0, this.jdField_a_of_type_JavaLangString, PrecoverResourceBusiness.class);
-    Object localObject3 = azut.a(this.this$0, this.jdField_a_of_type_JavaLangString, PrecoverResource.class);
+    ayji.a(this.this$0, this.jdField_a_of_type_JavaLangString, PrecoverResourceBusiness.class);
+    Object localObject3 = ayji.a(this.this$0, this.jdField_a_of_type_JavaLangString, PrecoverResource.class);
     Object localObject4 = this.jdField_a_of_type_JavaUtilList.iterator();
     PrecoverResource localPrecoverResource;
     while (((Iterator)localObject4).hasNext())
     {
       localPrecoverResource = (PrecoverResource)((Iterator)localObject4).next();
-      azut.b(this.this$0).put(azut.a(localPrecoverResource), localPrecoverResource);
-      azut.a(this.this$0, localPrecoverResource);
+      ayji.b(this.this$0).put(ayji.a(localPrecoverResource), localPrecoverResource);
+      ayji.a(this.this$0, localPrecoverResource);
     }
     if ((localObject3 != null) && (((List)localObject3).size() > 0))
     {
@@ -42,7 +42,7 @@ public class PrecoverManager$3
       while (((Iterator)localObject4).hasNext())
       {
         localPrecoverResource = (PrecoverResource)((Iterator)localObject4).next();
-        azut.b(this.this$0).put(azut.a(localPrecoverResource), localPrecoverResource);
+        ayji.b(this.this$0).put(ayji.a(localPrecoverResource), localPrecoverResource);
       }
     }
     localObject4 = new ArrayList();
@@ -58,7 +58,7 @@ public class PrecoverManager$3
         }
       }
     }
-    azut.a(this.this$0).put(this.jdField_a_of_type_JavaLangString, localObject4);
+    ayji.a(this.this$0).put(this.jdField_a_of_type_JavaLangString, localObject4);
   }
 }
 

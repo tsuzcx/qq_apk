@@ -1,6 +1,15 @@
-public abstract interface avxb
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class avxb
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  avxb(avwv paramavwv) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

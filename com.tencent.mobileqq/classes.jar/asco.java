@@ -1,17 +1,16 @@
 class asco
+  implements ascz
 {
-  long jdField_a_of_type_Long;
-  long b;
+  asco(asbj paramasbj) {}
   
-  public asco(ascj paramascj, long paramLong1, long paramLong2)
+  public void a(Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
+    asbj.access$2600(this.a, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asco
  * JD-Core Version:    0.7.0.1
  */

@@ -11,15 +11,15 @@ import kotlin.jvm.JvmField;
 import kotlin.jvm.JvmOverloads;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import qib;
-import sow;
-import sox;
+import qoe;
+import ssw;
+import ssx;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/data/PtsData;", "Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/data/BaseData;", "ptsLitePageName", "", "ptsLiteItemId", "dataJson", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "isValid", "", "()Z", "setValid", "(Z)V", "ptsComposer", "Lcom/tencent/pts/core/PTSComposer;", "ptsItemData", "Lcom/tencent/pts/core/itemview/PTSItemData;", "getPtsItemData", "()Lcom/tencent/pts/core/itemview/PTSItemData;", "setPtsItemData", "(Lcom/tencent/pts/core/itemview/PTSItemData;)V", "getPtsLiteItemId", "()Ljava/lang/String;", "setPtsLiteItemId", "(Ljava/lang/String;)V", "ptsUpdateDataListener", "Lcom/tencent/pts/core/PTSComposer$IPTSUpdateDataListener;", "type", "buildComposer", "", "eventListener", "Lcom/tencent/pts/core/lite/IPTSLiteEventListener;", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class PtsData
   extends BaseData
 {
-  public static final sow a;
+  public static final ssw a;
   @JvmField
   @NotNull
   public final PTSComposer.IPTSUpdateDataListener a;
@@ -40,7 +40,7 @@ public final class PtsData
   
   static
   {
-    jdField_a_of_type_Sow = new sow(null);
+    jdField_a_of_type_Ssw = new ssw(null);
   }
   
   public PtsData(@NotNull String paramString1, @NotNull String paramString2, @Nullable String paramString3)
@@ -50,8 +50,8 @@ public final class PtsData
     this.c = paramString2;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_JavaLangString = "unknown";
-    this.jdField_a_of_type_ComTencentPtsCorePTSComposer$IPTSUpdateDataListener = ((PTSComposer.IPTSUpdateDataListener)new sox(this));
-    paramString1 = qib.a().a("native_article", this.b);
+    this.jdField_a_of_type_ComTencentPtsCorePTSComposer$IPTSUpdateDataListener = ((PTSComposer.IPTSUpdateDataListener)new ssx(this));
+    paramString1 = qoe.a().a("native_article", this.b);
     if (TextUtils.isEmpty((CharSequence)paramString1))
     {
       this.jdField_a_of_type_Boolean = false;
@@ -104,7 +104,7 @@ public final class PtsData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.PtsData
  * JD-Core Version:    0.7.0.1
  */

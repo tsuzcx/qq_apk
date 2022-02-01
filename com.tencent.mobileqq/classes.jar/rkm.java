@@ -1,10 +1,15 @@
-public abstract interface rkm
+public final class rkm
 {
-  public abstract void a();
+  int a;
+  int b;
+  int c;
+  int d;
+  int e = -16777216;
   
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(int paramInt, String paramString1, String paramString2, String paramString3);
+  public String toString()
+  {
+    return "Decoration{left=" + this.a + ", right=" + this.b + ", top=" + this.c + ", bottom=" + this.d + ", decorationColor=" + this.e + "}";
+  }
 }
 
 

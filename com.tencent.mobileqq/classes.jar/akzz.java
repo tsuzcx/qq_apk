@@ -1,20 +1,40 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class akzz
-  extends RecyclerView.OnScrollListener
+  extends aycd
 {
-  public akzz(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public akzz(PhoneContactTabView paramPhoneContactTabView) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
+    this.a.a.unRegistObserver(this);
+    switch (PhoneContactTabView.a(this.a).d())
     {
-      aigk.a(bool);
+    case 2: 
+    case 3: 
+    case 4: 
+    case 8: 
+    default: 
+      PhoneContactTabView.b(this.a);
+      return;
+    case 9: 
+      this.a.d();
+      return;
+    case 0: 
+    case 1: 
+    case 5: 
+    case 7: 
+      PhoneContactTabView.a(this.a);
       return;
     }
+    if (PhoneContactTabView.a(this.a).a().lastUsedFlag == 2L)
+    {
+      this.a.d();
+      return;
+    }
+    PhoneContactTabView.a(this.a);
   }
 }
 

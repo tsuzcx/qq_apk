@@ -17,7 +17,6 @@ import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout.LayoutParams;
-import bhsr;
 import com.tencent.mobileqq.mini.app.MiniAppStateManager;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
@@ -25,6 +24,7 @@ import com.tencent.mobileqq.mini.appbrand.page.PageWebview;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.util.ColorUtils;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -425,7 +425,7 @@ public class MiniAppTextArea1
       if (paramJSONObject.has("placeholder"))
       {
         str = paramJSONObject.optString("placeholder");
-        if (!bhsr.a(str)) {
+        if (!StringUtil.isEmpty(str)) {
           setHint(str);
         }
       }

@@ -1,349 +1,226 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.AcceptCommitAndNewChangesHeader;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.AcceptCommitMsg;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.BaseToWriteTogetherMsg;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.BaseWriteTogetherMsg.Type;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.CommitErrorMsg;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.CommitErrorMsg.Body;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.CommitErrorMsg.Data;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.CommitErrorMsg.Header;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.LastReversionMsg;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.LastReversionMsg.Body;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.LastReversionMsg.Notice;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.NewChangesMsg;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.NewChangesMsg.Body;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.NewChangesMsg.Data;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.OnPostResult;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.OnPostWrapper;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.UserChangesHeader;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.UserChangesReqMsg;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.UserChangesReqMsg.UserChangesReqBody;
-import com.tencent.mobileqq.together.writetogether.websocket.msg.UserChangesRespMsg;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
+import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.TreeSet;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bemz
-  implements bels, bemm, benk
 {
-  int jdField_a_of_type_Int;
-  private beli jdField_a_of_type_Beli;
-  private beml jdField_a_of_type_Beml;
-  private bemu jdField_a_of_type_Bemu;
-  private benh jdField_a_of_type_Benh;
-  benj jdField_a_of_type_Benj;
-  private beoe jdField_a_of_type_Beoe;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler;
-  UserChangesReqMsg jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgUserChangesReqMsg;
-  private String jdField_a_of_type_JavaLangString;
-  TreeSet<NewChangesMsg.Data> jdField_a_of_type_JavaUtilTreeSet = new TreeSet();
-  int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private String d;
+  private static final String a;
+  protected int a;
+  protected long a;
+  protected beld a;
+  protected List<ParagraphInfo> a;
+  protected JSONArray a;
+  protected JSONObject a;
   
-  public bemz(QQAppInterface paramQQAppInterface, @NonNull beli parambeli, @NonNull String paramString1, int paramInt, String paramString2)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Beml = ((beml)paramQQAppInterface.getManager(377));
-    this.jdField_a_of_type_Beli = parambeli;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_Int = paramInt;
-    this.d = paramString2;
-    e();
+    jdField_a_of_type_JavaLangString = bemz.class.getSimpleName();
   }
   
-  private belt a(boolean paramBoolean)
+  public bemz(List<ParagraphInfo> paramList, beld parambeld, String paramString)
   {
-    if ((paramBoolean) || (!this.jdField_a_of_type_Beli.b())) {
-      return this.jdField_a_of_type_Beli.a(this.jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_Beld = parambeld;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONArray = new JSONArray(paramString);
+      return;
     }
-    return null;
-  }
-  
-  private void a(NewChangesMsg.Data paramData)
-  {
-    this.jdField_a_of_type_Beli.a(paramData.changeset, paramData.author, paramData.apool);
-    a(this.jdField_a_of_type_Int + 1);
-  }
-  
-  private void d()
-  {
-    a(this.jdField_a_of_type_Int + 1);
-    this.jdField_a_of_type_Beli.a();
-    if (this.jdField_a_of_type_Beli.a()) {
-      a(false);
-    }
-    if (this.jdField_a_of_type_Benh != null) {
-      this.jdField_a_of_type_Benh.a(this.jdField_a_of_type_Int);
+    catch (JSONException paramList)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(jdField_a_of_type_JavaLangString, 2, paramList.toString());
     }
   }
   
-  private void e()
+  public String a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new benc(this, null);
-    a(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
-    this.jdField_a_of_type_Beml.a(this);
-    this.jdField_a_of_type_Bemu = new bena(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Bemu);
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_OrgJsonJSONArray == null)) {
+      return null;
+    }
+    return this.jdField_a_of_type_OrgJsonJSONArray.toString();
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Benj != null) && ((this.jdField_a_of_type_Beoe == null) || (!bemv.a(this.jdField_a_of_type_Beoe.a())))) {
-      this.jdField_a_of_type_Benj.a(1, 500);
+    if (this.jdField_a_of_type_OrgJsonJSONArray == null) {
+      return;
+    }
+    int i = this.jdField_a_of_type_Int;
+    for (;;)
+    {
+      if (i < this.jdField_a_of_type_OrgJsonJSONArray.length())
+      {
+        int j;
+        try
+        {
+          JSONObject localJSONObject = (JSONObject)this.jdField_a_of_type_OrgJsonJSONArray.get(i);
+          j = localJSONObject.optInt("p");
+          int k = localJSONObject.optInt("w");
+          if ((j < 0) || (j >= this.jdField_a_of_type_JavaUtilList.size())) {
+            break label224;
+          }
+          Object localObject = ((ParagraphInfo)this.jdField_a_of_type_JavaUtilList.get(j)).generateOrGetWordInfoList(j);
+          if ((k >= 0) && (k < ((List)localObject).size()))
+          {
+            localObject = (WordInfo)((List)localObject).get(k);
+            ((WordInfo)localObject).setColor(localJSONObject.optInt("s"));
+            if (this.jdField_a_of_type_Beld != null) {
+              this.jdField_a_of_type_Beld.a((WordInfo)localObject);
+            }
+          }
+          else if (QLog.isColorLevel())
+          {
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "w error:" + k);
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          if (!QLog.isColorLevel()) {
+            break label270;
+          }
+        }
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "JSONException:" + localJSONException.toString());
+        break label270;
+        label224:
+        if (QLog.isColorLevel()) {
+          QLog.e(jdField_a_of_type_JavaLangString, 2, "p error:" + j);
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_Int = 0;
+        this.jdField_a_of_type_OrgJsonJSONObject = null;
+        return;
+      }
+      label270:
+      i += 1;
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Beml.a(paramInt);
-  }
-  
-  public void a(benh parambenh)
-  {
-    this.jdField_a_of_type_Benh = parambenh;
-  }
-  
-  public void a(benj parambenj)
-  {
-    this.jdField_a_of_type_Benj = parambenj;
-    parambenj.a(this);
-  }
-  
-  void a(INetInfoHandler paramINetInfoHandler)
-  {
-    AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), paramINetInfoHandler);
-  }
-  
-  public void a(BaseWriteTogetherMsg.Type paramType, boolean paramBoolean, Object paramObject)
-  {
-    switch (benb.a[paramType.ordinal()])
-    {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, (UserChangesRespMsg)paramObject);
-      return;
-    case 2: 
-      a(paramBoolean, (AcceptCommitMsg)paramObject);
-      return;
-    case 3: 
-      a(paramBoolean, (NewChangesMsg)paramObject);
-      return;
-    case 4: 
-      a((LastReversionMsg)paramObject);
-      return;
-    }
-    a((CommitErrorMsg)paramObject);
-  }
-  
-  void a(CommitErrorMsg paramCommitErrorMsg)
-  {
-    if ((((CommitErrorMsg.Body)paramCommitErrorMsg.body).data.reason == 40401) && (this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgUserChangesReqMsg != null) && (((CommitErrorMsg.Header)paramCommitErrorMsg.header).taskId == ((UserChangesHeader)this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgUserChangesReqMsg.header).taskId))
-    {
-      QLog.w("ChangesetClient", 1, "characters reach the limit");
-      this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgUserChangesReqMsg = null;
-    }
-    this.jdField_a_of_type_Benh.a(((CommitErrorMsg.Body)paramCommitErrorMsg.body).data.reason, ((CommitErrorMsg.Body)paramCommitErrorMsg.body).data.msg);
-  }
-  
-  void a(LastReversionMsg paramLastReversionMsg)
-  {
-    if (((LastReversionMsg.Body)paramLastReversionMsg.body).notice.lastRev > this.jdField_a_of_type_Int)
-    {
-      b(((LastReversionMsg.Body)paramLastReversionMsg.body).notice.lastRev);
-      this.jdField_b_of_type_Int = ((LastReversionMsg.Body)paramLastReversionMsg.body).notice.lastRev;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChangesetClient", 2, "handleUserChange");
-    }
-    if ((this.jdField_c_of_type_JavaLangString != null) || ((!this.jdField_a_of_type_Beli.a()) && (this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgUserChangesReqMsg == null))) {}
-    do
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_OrgJsonJSONArray == null)) {}
+    for (;;)
     {
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgUserChangesReqMsg != null)
-      {
-        QLog.d("ChangesetClient", 1, "handleUserChange: waiting commit to be accepted");
-        this.jdField_a_of_type_Beml.a(this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgUserChangesReqMsg);
-        return;
+      float f;
+      if (this.jdField_a_of_type_Int < this.jdField_a_of_type_OrgJsonJSONArray.length()) {
+        f = paramInt / 1000.0F;
       }
-      if (!a())
+      try
       {
-        QLog.d("ChangesetClient", 1, "handleUserChange: no network");
-        return;
-      }
-      Object localObject = a(true);
-      if ((localObject == null) || (((belt)localObject).jdField_a_of_type_JavaLangString == null))
-      {
-        QLog.d("ChangesetClient", 1, "handleUserChange: user change data is null");
-        return;
-      }
-      localObject = new UserChangesReqMsg(new UserChangesHeader(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int), new UserChangesReqMsg.UserChangesReqBody(this.jdField_a_of_type_Int, ((belt)localObject).jdField_a_of_type_JavaLangString, ((belt)localObject).jdField_a_of_type_Beko, this.jdField_c_of_type_JavaLangString));
-      this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgUserChangesReqMsg = ((UserChangesReqMsg)localObject);
-      this.jdField_a_of_type_Beml.a((BaseToWriteTogetherMsg)localObject);
-    } while (this.jdField_a_of_type_Benh == null);
-    this.jdField_a_of_type_Benh.a();
-  }
-  
-  void a(boolean paramBoolean, AcceptCommitMsg paramAcceptCommitMsg)
-  {
-    if (!paramBoolean) {
-      return;
-    }
-    AcceptCommitAndNewChangesHeader localAcceptCommitAndNewChangesHeader = (AcceptCommitAndNewChangesHeader)paramAcceptCommitMsg.header;
-    if ((this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgUserChangesReqMsg != null) && (localAcceptCommitAndNewChangesHeader.taskId == ((UserChangesHeader)this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgUserChangesReqMsg.header).taskId))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgUserChangesReqMsg = null;
-      if (localAcceptCommitAndNewChangesHeader.newRev != this.jdField_a_of_type_Int + 1)
-      {
-        this.jdField_c_of_type_Int = localAcceptCommitAndNewChangesHeader.baseRev;
-        b(localAcceptCommitAndNewChangesHeader.newRev - 1);
-      }
-    }
-    else
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("accept commit with mismatch task id: ");
-      if (this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgUserChangesReqMsg == null) {}
-      for (paramAcceptCommitMsg = "null";; paramAcceptCommitMsg = localAcceptCommitAndNewChangesHeader.taskId + " <-> " + ((UserChangesHeader)this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketMsgUserChangesReqMsg.header).taskId)
-      {
-        QLog.e("ChangesetClient", 1, paramAcceptCommitMsg);
-        break;
-      }
-    }
-    d();
-  }
-  
-  void a(boolean paramBoolean, NewChangesMsg paramNewChangesMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ChangesetClient", 2, "handleNewChanges");
-    }
-    if (!paramBoolean) {}
-    AcceptCommitAndNewChangesHeader localAcceptCommitAndNewChangesHeader;
-    do
-    {
-      return;
-      localAcceptCommitAndNewChangesHeader = (AcceptCommitAndNewChangesHeader)paramNewChangesMsg.header;
-      paramNewChangesMsg = ((NewChangesMsg.Body)paramNewChangesMsg.body).data;
-      if (localAcceptCommitAndNewChangesHeader.newRev <= this.jdField_a_of_type_Int + 1) {
-        break;
-      }
-      QLog.w("ChangesetClient", 1, "get broken cs, cur rev: " + this.jdField_a_of_type_Int + ", new rev: " + localAcceptCommitAndNewChangesHeader.newRev + ", newest pending merge rev: " + this.jdField_b_of_type_Int);
-    } while (localAcceptCommitAndNewChangesHeader.newRev <= this.jdField_b_of_type_Int);
-    paramNewChangesMsg.newRev = localAcceptCommitAndNewChangesHeader.newRev;
-    this.jdField_a_of_type_JavaUtilTreeSet.add(paramNewChangesMsg);
-    b(localAcceptCommitAndNewChangesHeader.newRev - 1);
-    this.jdField_b_of_type_Int = localAcceptCommitAndNewChangesHeader.newRev;
-    return;
-    if (localAcceptCommitAndNewChangesHeader.newRev <= this.jdField_a_of_type_Int)
-    {
-      QLog.w("ChangesetClient", 1, "get duplicate cs");
-      return;
-    }
-    a(paramNewChangesMsg);
-    b();
-  }
-  
-  void a(boolean paramBoolean, UserChangesRespMsg paramUserChangesRespMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChangesetClient", 2, "isSuccess: " + paramBoolean + ", result" + ((OnPostWrapper)paramUserChangesRespMsg.body).onpost.result);
-    }
-    if (((OnPostWrapper)paramUserChangesRespMsg.body).onpost.result != 0) {
-      this.jdField_a_of_type_Benh.a(((OnPostWrapper)paramUserChangesRespMsg.body).onpost.result, ((OnPostWrapper)paramUserChangesRespMsg.body).onpost.errMsg);
-    }
-  }
-  
-  boolean a()
-  {
-    return bhnv.a();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      a(false);
-      return true;
-    }
-    return false;
-  }
-  
-  void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ChangesetClient", 2, "handlePendingMerges");
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeSet.iterator();
-    while (localIterator.hasNext())
-    {
-      NewChangesMsg.Data localData = (NewChangesMsg.Data)localIterator.next();
-      if (localData.newRev == this.jdField_a_of_type_Int + 1)
-      {
-        a(localData);
-        localArrayList.add(localData);
-      }
-      else if (localData.newRev <= this.jdField_a_of_type_Int)
-      {
-        QLog.w("ChangesetClient", 1, "get duplicate pending merge cs");
-        localArrayList.add(localData);
-      }
-      else
-      {
-        if (this.jdField_c_of_type_Int == this.jdField_a_of_type_Int + 1) {
-          d();
+        if (this.jdField_a_of_type_OrgJsonJSONObject != null)
+        {
+          long l = this.jdField_a_of_type_OrgJsonJSONObject.getLong("t");
+          if (f <= (float)l) {
+            continue;
+          }
         }
-        if (localData.newRev != this.jdField_a_of_type_Int + 1) {
-          break;
+      }
+      catch (JSONException localJSONException1)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel())
+          {
+            QLog.e(jdField_a_of_type_JavaLangString, 2, localJSONException1.toString());
+            continue;
+            if (QLog.isColorLevel()) {
+              QLog.e(jdField_a_of_type_JavaLangString, 2, "w error:" + j);
+            }
+          }
         }
-        a(localData);
-        localArrayList.add(localData);
+      }
+      paramInt = this.jdField_a_of_type_Int;
+      while (paramInt < this.jdField_a_of_type_OrgJsonJSONArray.length())
+      {
+        for (;;)
+        {
+          try
+          {
+            localJSONObject = (JSONObject)this.jdField_a_of_type_OrgJsonJSONArray.get(paramInt);
+            localObject = localJSONObject.optString("t");
+          }
+          catch (JSONException localJSONException2)
+          {
+            JSONObject localJSONObject;
+            Object localObject;
+            int i;
+            int j;
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "JSONException:" + localJSONException2.toString());
+            continue;
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "p error:" + i);
+            continue;
+            this.jdField_a_of_type_OrgJsonJSONObject = localJSONException2;
+          }
+          try
+          {
+            if (f <= Float.valueOf((String)localObject).floatValue()) {
+              continue;
+            }
+            i = localJSONObject.optInt("p");
+            j = localJSONObject.optInt("w");
+            if ((i < 0) || (i >= this.jdField_a_of_type_JavaUtilList.size())) {
+              continue;
+            }
+            localObject = ((ParagraphInfo)this.jdField_a_of_type_JavaUtilList.get(i)).generateOrGetWordInfoList(i);
+            if ((j < 0) || (j >= ((List)localObject).size())) {
+              continue;
+            }
+            localObject = (WordInfo)((List)localObject).get(j);
+            ((WordInfo)localObject).setColor(localJSONObject.optInt("s"));
+            if (this.jdField_a_of_type_Beld != null) {
+              this.jdField_a_of_type_Beld.a((WordInfo)localObject);
+            }
+          }
+          catch (NumberFormatException localNumberFormatException)
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "NumberFormatException:" + localNumberFormatException.toString());
+          }
+        }
+        paramInt += 1;
       }
     }
-    this.jdField_a_of_type_JavaUtilTreeSet.removeAll(localArrayList);
   }
   
-  void b(int paramInt)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ChangesetClient", 2, "pullDoc");
+    float f = (float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F;
+    if (this.jdField_a_of_type_OrgJsonJSONArray == null) {
+      this.jdField_a_of_type_OrgJsonJSONArray = new JSONArray();
     }
-    bemn localbemn = (bemn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(184);
-    int i = Math.max(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int) + 1;
-    while (paramInt - i >= 0)
+    try
     {
-      int j = Math.min(paramInt - i + 1, 50);
-      localbemn.a(this.d, this.jdField_a_of_type_JavaLangString, i, j + i - 1);
-      i += 50;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("p", paramInt1);
+      localJSONObject.put("s", paramInt3);
+      localJSONObject.put("t", f);
+      localJSONObject.put("w", paramInt2);
+      this.jdField_a_of_type_OrgJsonJSONArray.put(localJSONObject);
+      return;
     }
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Beml.b(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Bemu);
-    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+    catch (JSONException localJSONException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "addWordResult:" + localJSONException.toString());
+    }
   }
 }
 

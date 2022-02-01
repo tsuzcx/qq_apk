@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import anlc;
+import amfw;
 
 public class ApolloUrlInterceptor$1
   implements Runnable
 {
   public void run()
   {
-    anlc.a(this.this$0);
+    amfw.a(this.this$0);
   }
 }
 

@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.persistence.Entity;
-import pqf;
+import pvz;
 
 public class ReadInJoyDraftboxItem
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<ReadInJoyDraftboxItem> CREATOR = new pqf();
+  public static final Parcelable.Creator<ReadInJoyDraftboxItem> CREATOR = new pvz();
   public static final int DEFAULT_DRAFTID = -1;
   public static final String TABLE_NAME = ReadInJoyDraftboxItem.class.getSimpleName();
   public static final int TYPE_ANSWER = 2;

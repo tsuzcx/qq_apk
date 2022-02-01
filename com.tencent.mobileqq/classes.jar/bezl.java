@@ -1,49 +1,55 @@
-import android.content.Context;
-import android.content.res.Resources;
-import java.io.IOException;
-import org.xmlpull.v1.XmlPullParserException;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.util.LruCache;
+import com.tencent.qphone.base.util.QLog;
 
 public class bezl
+  extends Handler
 {
-  private static bezk jdField_a_of_type_Bezk;
-  private static boolean jdField_a_of_type_Boolean;
-  
-  private static bezk a(Context paramContext)
+  public void handleMessage(Message paramMessage)
   {
-    a(paramContext);
-    return jdField_a_of_type_Bezk;
-  }
-  
-  public static String a(Context paramContext, String paramString)
-  {
-    String str = paramString;
-    if (paramString != null) {
-      str = paramString.toLowerCase();
-    }
-    return a(paramContext).a(str);
-  }
-  
-  private static void a(Context paramContext)
-  {
-    bezj localbezj;
-    if (!jdField_a_of_type_Boolean)
-    {
-      localbezj = new bezj();
-      paramContext = paramContext.getResources().getXml(2131886084);
-    }
+    if (paramMessage.what == 1001) {}
     try
     {
-      jdField_a_of_type_Bezk = localbezj.a(paramContext);
-      jdField_a_of_type_Boolean = true;
+      paramMessage = (String)paramMessage.obj;
+      if (QLog.isColorLevel()) {
+        QLog.d("NonMainAppListViewFaceLoader", 2, "DecodeHandler handle MSG_DECODE_FACE_BITMAP uin:" + paramMessage);
+      }
+      Bitmap localBitmap1 = bfvo.a((String)this.a.b.get(paramMessage), null);
+      if (localBitmap1 != null)
+      {
+        Bitmap localBitmap2 = this.a.a(localBitmap1);
+        if (localBitmap2 != null)
+        {
+          Message localMessage = Message.obtain();
+          Bundle localBundle = new Bundle();
+          localBundle.putParcelable("bmp", localBitmap2);
+          localBundle.putString("uin", paramMessage);
+          localMessage.obj = localBundle;
+          localMessage.what = 1002;
+          this.a.a.sendMessage(localMessage);
+          if (QLog.isColorLevel()) {
+            QLog.d("NonMainAppListViewFaceLoader", 2, "decodeFile, uin:" + paramMessage);
+          }
+        }
+        if ((localBitmap1 != null) && (!localBitmap1.isRecycled())) {
+          localBitmap1.recycle();
+        }
+      }
       return;
     }
-    catch (XmlPullParserException paramContext)
+    catch (OutOfMemoryError paramMessage)
     {
-      throw new RuntimeException("PreselectedChannelsActivity: XmlPullParserException");
+      while (!QLog.isColorLevel()) {}
+      QLog.e("NonMainAppListViewFaceLoader", 2, "decodeFile, OutOfMemoryError");
+      return;
     }
-    catch (IOException paramContext)
+    catch (Exception paramMessage)
     {
-      throw new RuntimeException("PreselectedChannelsActivity: IOException");
+      while (!QLog.isColorLevel()) {}
+      QLog.e("NonMainAppListViewFaceLoader", 2, "decodeFile, exception:" + paramMessage.toString());
     }
   }
 }

@@ -1,17 +1,16 @@
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment.4.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.widget.ContainerView;
 
-public class akyh
-  implements aldq
+class akyh
+  implements View.OnLongClickListener
 {
-  public akyh(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
+  akyh(akyf paramakyf, ContainerView paramContainerView) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public boolean onLongClick(View paramView)
   {
-    ThreadManager.getUIHandler().post(new RedPacketEmojiFragment.4.1(this, paramInt, paramPathResult));
+    this.jdField_a_of_type_Akyf.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView, paramView);
+    return false;
   }
 }
 

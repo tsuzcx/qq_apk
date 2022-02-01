@@ -1,59 +1,81 @@
-import android.annotation.TargetApi;
-import android.opengl.EGL14;
-import android.opengl.EGLSurface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import tencent.im.msg.im_msg_body.MsgBody;
 
-@TargetApi(17)
 public class bbmb
+  implements bbls
 {
-  private EGLSurface a;
-  protected bbma a;
-  
-  public bbmb(bbma parambbma)
+  private static void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
   {
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
-    this.jdField_a_of_type_Bbma = parambbma;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bbma.a(this.jdField_a_of_type_AndroidOpenglEGLSurface);
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = EGL14.EGL_NO_SURFACE;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_AndroidOpenglEGLSurface != EGL14.EGL_NO_SURFACE) {
-      throw new IllegalStateException("surface already created");
+    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has())) {
+      if (QLog.isColorLevel()) {
+        QLog.e("SystemMessageDecoder", 2, "<---decodeC2CMsgPkg_AddFriend return null:hasBody:" + paramMsg.msg_body.has() + ",hasMsgContent" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has() + ",isReaded:" + paramBoolean1 + "syncOther:" + paramBoolean2);
+      }
     }
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_Bbma.a(paramInt1, paramInt2);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Bbma.a(this.jdField_a_of_type_AndroidOpenglEGLSurface, paramLong);
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (this.jdField_a_of_type_AndroidOpenglEGLSurface != EGL14.EGL_NO_SURFACE) {
-      throw new IllegalStateException("surface already created");
+    String str;
+    do
+    {
+      do
+      {
+        return;
+        long l1 = Long.valueOf(paramMessageHandler.app.getCurrentAccountUin()).longValue();
+        long l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
+        short s = (short)((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_type.get();
+        if ((!paramBoolean1) && (!paramBoolean2) && (!paramBoolean3)) {
+          paramMessageHandler.a().a(l1, l2, s, -1006 - (s - 187), paramMsg, paramInt);
+        }
+        localObject = (msg_comm.MsgHead)paramMsg.msg_head.get();
+      } while (localObject == null);
+      paramMsg = "" + ((msg_comm.MsgHead)localObject).auth_uin.get();
+      str = ((msg_comm.MsgHead)localObject).auth_nick.get();
+      Object localObject = ((msg_comm.MsgHead)localObject).auth_remark.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("SystemMessageDecoder.sysnick", 2, "FriendSys auUin:" + paramMsg + "aunick:" + str + "auRemark:" + (String)localObject);
+      }
+      if ((!TextUtils.isEmpty(paramMsg)) && (!TextUtils.isEmpty((CharSequence)localObject)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SystemMessageDecoder.sysremark", 2, "FriendSys saveremark");
+        }
+        paramMessageHandler.b(paramMsg, (String)localObject);
+      }
+    } while ((TextUtils.isEmpty(paramMsg)) || (TextUtils.isEmpty(str)));
+    if (QLog.isColorLevel()) {
+      QLog.d("SystemMessageDecoder.sysnick", 2, "FriendSys savenick");
     }
-    this.jdField_a_of_type_AndroidOpenglEGLSurface = this.jdField_a_of_type_Bbma.a(paramObject);
+    paramMessageHandler.a(paramMsg, str);
   }
   
-  public boolean a()
+  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbkm parambbkm)
   {
-    boolean bool = this.jdField_a_of_type_Bbma.a(this.jdField_a_of_type_AndroidOpenglEGLSurface);
-    if ((!bool) && (QLog.isColorLevel())) {
-      QLog.d("EglSurfaceBase", 2, "WARNING: swapBuffers() failed");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.systemmsg.", 2, "friend system msg notify");
     }
-    return bool;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bbma.b(this.jdField_a_of_type_AndroidOpenglEGLSurface);
+    paramList = (msg_comm.MsgHead)paramMsg.msg_head.get();
+    int j = (short)paramList.msg_seq.get();
+    long l1 = paramList.from_uin.get();
+    long l2 = paramList.msg_uid.get();
+    int k = paramList.msg_type.get();
+    int i = 0;
+    if ((k == 188) || (k == 189)) {
+      i = 1;
+    }
+    if ((!parambbkm.c) && (i == 0)) {
+      paramMessageHandler.a().a(2);
+    }
+    parambbkm.e = 9998L;
+    a(paramMessageHandler, paramMsg, parambbkm.a, parambbkm.f, parambbkm.d, j);
+    bblf.a(paramMessageHandler, l1, j, l2, k);
   }
 }
 

@@ -1,30 +1,31 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class aojn
+final class aojn
+  implements INetEngine.IBreakDownFix
 {
-  public static void a(Context paramContext, String paramString1, String paramString2)
+  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
   {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", armq.c().a(paramString2, paramString1));
-    localIntent.putExtra("hide_operation_bar", true);
-    paramContext.startActivity(localIntent);
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return paramInt != 0;
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt & 0x1) != 0;
-  }
-  
-  public static boolean c(int paramInt)
-  {
-    return (paramInt & 0x2) != 0;
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    while (!(paramNetReq instanceof HttpNetReq)) {
+      return;
+    }
+    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetReq;
+    localHttpNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
+    paramNetResp.mWrittenBlockLen = 0L;
+    paramNetResp = "bytes=" + localHttpNetReq.mStartDownOffset + "-";
+    localHttpNetReq.mReqProperties.put("Range", paramNetResp);
+    paramNetResp = localHttpNetReq.mReqUrl;
+    if (paramNetResp.contains("range="))
+    {
+      paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+      localHttpNetReq.mReqUrl = (paramNetResp + "range=" + localHttpNetReq.mStartDownOffset);
+    }
+    QLog.i("AREngine_ARResourceDownload", 1, "IBreakDownFix. url = " + ((HttpNetReq)paramNetReq).mReqUrl + ", offset=" + localHttpNetReq.mStartDownOffset);
   }
 }
 

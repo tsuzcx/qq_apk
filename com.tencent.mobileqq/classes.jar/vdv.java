@@ -1,19 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.requests.QCircleSetUnCareRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
+import rx.functions.Action1;
 
-class vdv
-  implements DialogInterface.OnClickListener
+public class vdv
+  implements Action1<Throwable>
 {
-  vdv(vdr paramvdr) {}
+  public vdv(RoundImageView paramRoundImageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Throwable paramThrowable)
   {
-    VSNetworkHelper.a().a(new QCircleSetUnCareRequest(vdr.a(this.a).id.get(), 1, 1, null), new vdw(this));
-    paramDialogInterface.dismiss();
+    uya.d("RoundImageView", "[RoundImageView] bitmap is null");
   }
 }
 

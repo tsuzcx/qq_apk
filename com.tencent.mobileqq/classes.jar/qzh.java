@@ -1,31 +1,60 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import androidx.annotation.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTask;
+import org.jetbrains.annotations.NotNull;
 
 public class qzh
+  implements qzf
 {
-  private static qwf a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public int a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 0: 
-      return new qvt(paramBaseArticleInfo);
-    }
-    return new qze(paramBaseArticleInfo);
+    return qxt.b().b();
   }
   
-  public static qwf a(BaseArticleInfo paramBaseArticleInfo)
+  @Nullable
+  public RIJRewardTask a()
   {
-    if (a(paramBaseArticleInfo)) {
-      return a(1, paramBaseArticleInfo);
-    }
-    return a(0, paramBaseArticleInfo);
+    return qxt.b().a();
   }
   
-  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
+  public void a(int paramInt)
   {
-    return ((paramBaseArticleInfo instanceof ArticleInfo)) && (!sel.q((ArticleInfo)paramBaseArticleInfo));
+    qxt.b().b(paramInt);
+  }
+  
+  public void a(RIJRewardTask paramRIJRewardTask)
+  {
+    qxt.b().a(paramRIJRewardTask);
+  }
+  
+  public void a(@NotNull String paramString)
+  {
+    qxt.b().a(paramString);
+  }
+  
+  public void a(String paramString, int paramInt, qxx paramqxx)
+  {
+    qxv.b().a(paramString, paramInt, new qzi(this, paramqxx));
+  }
+  
+  public boolean a(@NotNull String paramString)
+  {
+    return qxt.b().a(paramString);
+  }
+  
+  public int b()
+  {
+    return qxt.b().a();
+  }
+  
+  @Nullable
+  public RIJRewardTask b()
+  {
+    return qxt.b().b();
+  }
+  
+  public void b(RIJRewardTask paramRIJRewardTask)
+  {
+    qxt.b().b(paramRIJRewardTask);
   }
 }
 

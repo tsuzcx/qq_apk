@@ -1,138 +1,78 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.data.MessageForScribble.FileExistInfo;
-import com.tencent.mobileqq.scribble.ScribbleMsgUtils.1;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.mobileqq.shortvideo.util.PtvFilterUtils;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bbxm
 {
-  public static int a;
-  public static int b = 1;
-  public static int c = 2;
-  public static int d = 1;
-  public static int e = 2;
-  public static int f = 3;
-  public static int g = 4;
-  public static int h = 5;
-  public static int i = 6;
-  public static int j = 7;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private bbxn jdField_a_of_type_Bbxn = new bbxn(0);
+  private bbxn b = new bbxn(1);
   
-  public static int a(MessageForScribble paramMessageForScribble)
+  public bbxn a()
   {
-    boolean bool1 = paramMessageForScribble.mExistInfo.mDataFileExist;
-    if (!paramMessageForScribble.mExistInfo.mInit) {
-      bool1 = auog.a(b(paramMessageForScribble));
+    if (bbxn.a(this.jdField_a_of_type_Bbxn).getAndSet(1) == 0) {
+      return this.jdField_a_of_type_Bbxn;
     }
-    boolean bool2 = paramMessageForScribble.mExistInfo.mCombineFileExist;
-    if (!paramMessageForScribble.mExistInfo.mInit) {
-      bool2 = auog.a(a(paramMessageForScribble));
+    if (bbxn.a(this.b).getAndSet(1) == 0) {
+      return this.b;
     }
-    if ((bool1) && (bool2)) {
-      return c;
-    }
-    if ((!bool1) && (bool2)) {
-      return b;
-    }
-    return a;
+    return null;
   }
   
-  public static String a()
+  public void a()
   {
-    return antf.cp + "ScribbleCache/";
+    bbxn.a(this.jdField_a_of_type_Bbxn).getAndSet(0);
+    bbxn.a(this.b).getAndSet(0);
   }
   
-  public static String a(MessageForScribble paramMessageForScribble)
+  public void a(Runnable paramRunnable)
   {
-    if ((paramMessageForScribble != null) && (!TextUtils.isEmpty(paramMessageForScribble.combineFileMd5))) {
-      return c(paramMessageForScribble.combineFileMd5);
-    }
-    return "";
-  }
-  
-  private static void a()
-  {
-    File localFile = new File(a());
-    if (((localFile.exists()) && (!localFile.isDirectory())) || (!localFile.exists())) {
-      localFile.mkdirs();
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, Bitmap paramBitmap, int paramInt2, bbxn parambbxn)
+  public boolean a()
   {
-    a();
-    new bbxo(paramQQAppInterface, paramString, paramInt1, paramBitmap, paramInt2, parambbxn).execute(new Void[0]);
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, MessageForScribble paramMessageForScribble)
-  {
-    if (paramMessageForScribble == null) {}
-    bbxi localbbxi;
-    MessageForScribble localMessageForScribble;
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bbxn.a(this.jdField_a_of_type_Bbxn).getAndAdd(0) == 0)
     {
-      return false;
-      if (paramMessageForScribble.isSendFromLocal()) {
-        paramQQAppInterface.a().a(paramQQAppInterface.a().a(paramMessageForScribble.frienduin, paramMessageForScribble.uniseq));
+      bool1 = bool2;
+      if (bbxn.a(this.b).getAndAdd(0) == 0) {
+        bool1 = true;
       }
-      localbbxi = new bbxi(paramQQAppInterface);
-      localMessageForScribble = localbbxi.a(paramMessageForScribble);
-    } while (localMessageForScribble == null);
-    ThreadManager.post(new ScribbleMsgUtils.1(paramQQAppInterface, paramMessageForScribble), 5, null, false);
-    localbbxi.a(localMessageForScribble);
-    return true;
+    }
+    return bool1;
   }
   
-  public static int b(MessageForScribble paramMessageForScribble)
+  public void b()
   {
-    if ((paramMessageForScribble == null) || (paramMessageForScribble.combineFileMd5 == null)) {
-      return j;
-    }
-    String str1 = a(paramMessageForScribble);
-    if (!auog.a(str1)) {
-      return i;
-    }
-    long l = auog.a(str1);
-    if ((paramMessageForScribble.offSet <= 0) || (paramMessageForScribble.offSet >= (int)l))
+    if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
     {
-      QLog.e("ScribbleMsgUtils", 2, " offSet = " + paramMessageForScribble.offSet + " FileSize : " + l);
-      return j;
+      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("SharedMemoryCacheProcessor");
+      this.jdField_a_of_type_AndroidOsHandlerThread.start();
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
     }
-    String str2 = b(paramMessageForScribble);
-    if (auog.a(str2)) {
-      auog.c(str2);
-    }
-    if (bbxv.a(str1, paramMessageForScribble.offSet, str2)) {
-      return d;
-    }
-    return e;
   }
   
-  public static String b(MessageForScribble paramMessageForScribble)
+  public void c()
   {
-    if ((paramMessageForScribble != null) && (!TextUtils.isEmpty(paramMessageForScribble.combineFileMd5))) {
-      return d(paramMessageForScribble.combineFileMd5);
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
-    return "";
   }
   
-  private static String c(String paramString)
+  public void d()
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      return a() + paramString;
+    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+    {
+      PtvFilterUtils.a(this.jdField_a_of_type_AndroidOsHandlerThread);
+      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+      this.jdField_a_of_type_AndroidOsHandler = null;
     }
-    return "";
-  }
-  
-  private static String d(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      return a() + paramString + "_data";
-    }
-    return "";
   }
 }
 

@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import akmn;
-import bcxo;
-import borf;
-import borg;
+import ajkm;
+import bbqy;
+import blvn;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import dov.com.qq.im.ae.download.AEResInfo;
 
 public class AvatarPendantActivity$14$2
   implements Runnable
 {
-  public AvatarPendantActivity$14$2(akmn paramakmn) {}
+  public AvatarPendantActivity$14$2(ajkm paramajkm) {}
   
   public void run()
   {
-    if (!VideoEnvironment.e(this.a.a.app))
+    if (!VideoEnvironment.checkAVCodecLoadIsOK(this.a.a.app))
     {
-      borg.a().a(borf.b, null, false);
-      bcxo.a(this.a.a.app);
+      blvn.a().a(AEResInfo.AE_RES_BASE_PACKAGE, null, false);
+      bbqy.a(this.a.a.app);
     }
   }
 }

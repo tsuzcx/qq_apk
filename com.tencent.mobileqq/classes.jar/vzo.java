@@ -1,17 +1,22 @@
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StReply;
-import feedcloud.FeedCloudMeta.StUser;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vzo
-  implements vya
+  extends QQUIEventReceiver<vzf, voc>
 {
-  public vzo(QCircleFeedCommentWidget paramQCircleFeedCommentWidget, FeedCloudMeta.StReply paramStReply) {}
-  
-  public void a()
+  public vzo(@NonNull vzf paramvzf)
   {
-    vtn.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.postUser.id.get(), QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a, QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget), 44, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.d());
-    QCircleFeedCommentWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.postUser.id.get());
+    super(paramvzf);
+  }
+  
+  public void a(@NonNull vzf paramvzf, @NonNull voc paramvoc)
+  {
+    paramvzf.a.b(paramvoc);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return voc.class;
   }
 }
 

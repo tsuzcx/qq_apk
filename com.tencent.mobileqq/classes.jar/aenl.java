@@ -1,16 +1,27 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aenl
   implements View.OnClickListener
 {
-  public aenl(FontSettingActivity paramFontSettingActivity) {}
+  public aenl(TroopMemberListActivity paramTroopMemberListActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.c();
+    this.a.c = false;
+    this.a.t = "";
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.d != 22) {
+      this.a.b.setVisibility(0);
+    }
+    if (this.a.jdField_a_of_type_Aeoz != null) {
+      this.a.jdField_a_of_type_Aeoz.a();
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

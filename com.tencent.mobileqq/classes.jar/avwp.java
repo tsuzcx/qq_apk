@@ -1,6 +1,16 @@
-public abstract interface avwp
+import android.support.annotation.NonNull;
+
+public class avwp
 {
-  public abstract void a();
+  public int a;
+  public int b;
+  public int c;
+  
+  @NonNull
+  public String toString()
+  {
+    return "[errorCode = " + this.a + ", fileType = " + this.b + ", fileTrivial = " + this.c + "]";
+  }
 }
 
 

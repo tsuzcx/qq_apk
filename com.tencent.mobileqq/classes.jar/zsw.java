@@ -1,19 +1,7 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.AbsEmptyView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class zsw
-  implements View.OnClickListener
 {
-  public zsw(AbsEmptyView paramAbsEmptyView, View.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAbsEmptyView.a(3);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public String a;
+  public boolean a;
 }
 
 

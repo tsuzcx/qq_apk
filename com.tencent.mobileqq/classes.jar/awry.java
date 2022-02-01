@@ -1,29 +1,19 @@
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class awry
-  implements View.OnKeyListener
+class awry
+  implements View.OnClickListener
 {
-  public awry(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
+  awry(awrw paramawrw) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 4) && (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).b()))
-    {
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).e();
-      return true;
-    }
-    if ((paramInt == 84) || (paramInt == 66))
-    {
-      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
-      LocationPickFragment.b(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
-      return true;
-    }
-    return false;
+    awrw.a(this.a).a.clear();
+    awrw.a(this.a).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

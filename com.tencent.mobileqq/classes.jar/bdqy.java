@@ -1,12 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
 
 class bdqy
-  implements View.OnClickListener
 {
-  bdqy(bdqx parambdqx) {}
-  
-  public void onClick(View paramView) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  ImageView b;
 }
 
 

@@ -12,6 +12,7 @@ public class SuperPlayerOption
   public long bufferPacketMinTotalDurationMs;
   public boolean enableAudioFrameOutput;
   public boolean enableCodecReuse;
+  public Boolean enableDownloadProxy;
   public boolean enableVideoFrameCheck;
   public boolean enableVideoFrameOutput;
   public boolean isPrePlay;

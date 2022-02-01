@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.recent;
 
-import aljw;
-import aqzw;
-import com.tencent.mobileqq.activity.Conversation;
+import akho;
+import apth;
+import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -12,18 +12,18 @@ import mqq.os.MqqHandler;
 public class BannerManager$44
   implements Runnable
 {
-  public BannerManager$44(aljw paramaljw) {}
+  public BannerManager$44(akho paramakho) {}
   
   public void run()
   {
     try
     {
-      Object localObject = aljw.a(this.this$0).app;
-      aqzw localaqzw = ((QQAppInterface)localObject).a(((QQAppInterface)localObject).getCurrentAccountUin(), true);
+      Object localObject = akho.a(this.this$0).app;
+      apth localapth = ((QQAppInterface)localObject).getConfig(((QQAppInterface)localObject).getCurrentAccountUin(), true);
       if (QLog.isColorLevel()) {
-        QLog.i("PushBannerConfig", 2, String.format(Locale.getDefault(), "initConfig config: %s", new Object[] { localaqzw }));
+        QLog.i("PushBannerConfig", 2, String.format(Locale.getDefault(), "initConfig config: %s", new Object[] { localapth }));
       }
-      if (localaqzw != null)
+      if (localapth != null)
       {
         localObject = ((QQAppInterface)localObject).getHandler(Conversation.class);
         if (localObject != null) {

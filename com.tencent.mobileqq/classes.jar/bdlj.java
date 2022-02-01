@@ -1,50 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.provider.LocalPhotoGroupData;
-import java.util.ArrayList;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
-final class bdlj
-  implements bngj
+public class bdlj
+  implements bjog
 {
-  bdlj(QQAppInterface paramQQAppInterface) {}
+  public bdlj(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public void onWebEvent(String paramString, Bundle paramBundle)
+  public void onDismiss()
   {
-    if ((paramBundle == null) || (!paramBundle.containsKey("data")))
-    {
-      QLog.e("[PhotoAlbum]QZoneReport", 1, "onWebEvent data == null || !data.containsKey(\"data\")");
-      return;
-    }
-    paramBundle = paramBundle.getBundle("data");
-    if (paramBundle == null)
-    {
-      QLog.e("[PhotoAlbum]QZoneReport", 1, "onWebEvent getTravelGroup bundle is empty");
-      return;
-    }
-    boolean bool;
-    if ("cmd.getTravelGroup".equals(paramString))
-    {
-      QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent CMD_GET_TRAVEL_GROUP");
-      paramString = (LocalPhotoGroupData)paramBundle.getSerializable("groupData");
-      if ((paramString == null) || (paramString.pathList == null) || (paramString.pathList.size() == 0))
-      {
-        QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent localPhotoGroupData == null");
-        bool = false;
-      }
-    }
-    for (;;)
-    {
-      bdli.a(this.a, bool);
-      bngf.a().b(this);
-      return;
-      QLog.i("[PhotoAlbum]QZoneReport", 1, "onWebEvent localPhotoGroupData:" + paramString.toString());
-      LocalMultiProcConfig.putLong("SP_LAST_UPDATE_TIME", paramString.startTime);
-      bool = true;
-      continue;
-      bool = false;
-    }
+    TribeVideoListPlayerFragment.a(this.a);
+    this.a.e = false;
   }
 }
 

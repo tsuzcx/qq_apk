@@ -1,12 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.listentogether.data.ISong;
 
-class avbh
-  implements DialogInterface.OnClickListener
+public abstract interface avbh
 {
-  avbh(avbe paramavbe) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(ISong paramISong);
 }
 
 

@@ -1,8 +1,16 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
-public abstract interface adbf
+public class adbf
+  implements DialogInterface.OnClickListener
 {
-  public abstract MessageRecord a(int paramInt);
+  public adbf(ChatSettingForTroop paramChatSettingForTroop) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ChatSettingForTroop.i(this.a);
+  }
 }
 
 

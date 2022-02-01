@@ -1,23 +1,18 @@
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 
-public class ajgm
-  implements View.OnClickListener
+class ajgm
+  implements View.OnTouchListener
 {
-  public ajgm(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
+  ajgm(ajgg paramajgg) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener");
-    }
-    bdll.b(null, "dc00899", "Grp_find_new", "", "grptab", "location_set_exp", 0, 0, "", "", "", "");
-    this.a.getActivity().requestPermissions(new ajgn(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
-    EventCollector.getInstance().onViewClicked(paramView);
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 

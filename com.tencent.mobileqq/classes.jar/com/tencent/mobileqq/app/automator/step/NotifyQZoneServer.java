@@ -3,7 +3,7 @@ package com.tencent.mobileqq.app.automator.step;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
-import axft;
+import avta;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -46,9 +46,9 @@ public class NotifyQZoneServer
     }
     for (;;)
     {
-      localObject1 = (axft)this.a.app.getManager(10);
+      localObject1 = (avta)this.a.app.getManager(10);
       if (localObject1 != null) {
-        ((axft)localObject1).a();
+        ((avta)localObject1).a();
       }
       return super.a();
       label328:

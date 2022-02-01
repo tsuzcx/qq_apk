@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
+import amtj;
 import android.annotation.TargetApi;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anzj;
-import arxq;
-import axjl;
-import bcrn;
-import bcwx;
-import bjbh;
+import aqrn;
+import avws;
+import bbkv;
+import bbqh;
+import bhhi;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBoolField;
@@ -29,7 +29,7 @@ import tencent.im.msg.im_msg_body.VideoFile;
 
 public class MessageForShortVideo
   extends MessageForRichText
-  implements Parcelable, axjl
+  implements Parcelable, avws
 {
   public static final int BUSI_TYPE_MULTI_FORWARD_VIDEO = 1010;
   public static final int BUSI_TYPE_PUBACCOUNT_PERM_VIDEO = 1009;
@@ -37,7 +37,7 @@ public class MessageForShortVideo
   public static final int BUSI_TYPE_SHORT_VIDEO = 1;
   public static final int BUSI_TYPE_SHORT_VIDEO_PTV = 2;
   public static final int BUSI_TYPE_VIDEO = 0;
-  public static final Parcelable.Creator<MessageForShortVideo> CREATOR = new arxq();
+  public static final Parcelable.Creator<MessageForShortVideo> CREATOR = new aqrn();
   public static final int EXTRA_FLAG_FORWARD = 2;
   public static final int EXTRA_FLAG_UPLOAD = 1;
   public static final int FORWARD_CHAT_TYPE_DISCUS = 2;
@@ -77,7 +77,7 @@ public class MessageForShortVideo
   public long lastModified;
   public String mLocalMd5;
   public boolean mPreUpload;
-  public bjbh mProgressPie;
+  public bhhi mProgressPie;
   public Runnable mShowProgressTask;
   public String mThumbFilePath;
   public String mVideoFileSourceDir;
@@ -282,11 +282,11 @@ public class MessageForShortVideo
     }
     else
     {
-      if (!"1".equals(getExtInfoFromExtStr(bcrn.n))) {
+      if (!"1".equals(getExtInfoFromExtStr(bbkv.n))) {
         break label728;
       }
       this.syncToStory = true;
-      this.sendRawVideo = "1".equals(getExtInfoFromExtStr(bcrn.C));
+      this.sendRawVideo = "1".equals(getExtInfoFromExtStr(bbkv.C));
       return;
     }
   }
@@ -302,22 +302,22 @@ public class MessageForShortVideo
     return this.msgData;
   }
   
-  public bcwx getDownloadInfo(int paramInt)
+  public bbqh getDownloadInfo(int paramInt)
   {
-    bcwx localbcwx = new bcwx();
-    localbcwx.jdField_a_of_type_Int = paramInt;
-    localbcwx.jdField_a_of_type_Long = this.uniseq;
-    localbcwx.jdField_b_of_type_Int = this.istroop;
-    localbcwx.jdField_b_of_type_JavaLangString = this.selfuin;
-    localbcwx.jdField_c_of_type_JavaLangString = this.frienduin;
-    localbcwx.jdField_d_of_type_JavaLangString = this.senderuin;
-    localbcwx.jdField_a_of_type_JavaLangString = this.uuid;
-    localbcwx.e = this.md5;
-    localbcwx.jdField_c_of_type_Int = this.videoFileTime;
-    localbcwx.jdField_d_of_type_Int = this.videoFileFormat;
-    localbcwx.jdField_c_of_type_Int = this.videoFileTime;
-    localbcwx.g = this.thumbMD5;
-    return localbcwx;
+    bbqh localbbqh = new bbqh();
+    localbbqh.jdField_a_of_type_Int = paramInt;
+    localbbqh.jdField_a_of_type_Long = this.uniseq;
+    localbbqh.jdField_b_of_type_Int = this.istroop;
+    localbbqh.jdField_b_of_type_JavaLangString = this.selfuin;
+    localbbqh.jdField_c_of_type_JavaLangString = this.frienduin;
+    localbbqh.jdField_d_of_type_JavaLangString = this.senderuin;
+    localbbqh.jdField_a_of_type_JavaLangString = this.uuid;
+    localbbqh.e = this.md5;
+    localbbqh.jdField_c_of_type_Int = this.videoFileTime;
+    localbbqh.jdField_d_of_type_Int = this.videoFileFormat;
+    localbbqh.jdField_c_of_type_Int = this.videoFileTime;
+    localbbqh.g = this.thumbMD5;
+    return localbbqh;
   }
   
   public String getMd5()
@@ -477,7 +477,7 @@ public class MessageForShortVideo
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return anzj.a(2131705506);
+      return amtj.a(2131705736);
     }
     return this.msg;
   }
@@ -600,8 +600,8 @@ public class MessageForShortVideo
     localStringBuilder.append("\n |-").append("isLocalSend:").append(bool);
     localStringBuilder.append("\n |-").append("videoFileName:").append(this.videoFileName);
     localStringBuilder.append("\n |-").append("mVideoFileSourceDir:").append(this.mVideoFileSourceDir);
-    localStringBuilder.append("\n |-").append("fileType:").append(ShortVideoUtils.a(this.fileType));
-    localStringBuilder.append("\n |-").append("videoFileStatus:").append(ShortVideoUtils.b(this.videoFileStatus));
+    localStringBuilder.append("\n |-").append("fileType:").append(ShortVideoUtils.getFileTypeStr(this.fileType));
+    localStringBuilder.append("\n |-").append("videoFileStatus:").append(ShortVideoUtils.getFileStatusStr(this.videoFileStatus));
     localStringBuilder.append("\n |-").append("videoFileProgress:").append(this.videoFileProgress);
     localStringBuilder.append("\n |-").append("mThumbFile").append("(").append(this.thumbWidth + "*" + this.thumbHeight).append("):").append(this.mThumbFilePath);
     localStringBuilder.append("\n |-").append("thumbMD5:").append(this.thumbMD5);
@@ -724,7 +724,7 @@ public class MessageForShortVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForShortVideo
  * JD-Core Version:    0.7.0.1
  */

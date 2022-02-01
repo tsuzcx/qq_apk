@@ -2,13 +2,11 @@ package cooperation.qzone;
 
 import QMF_PROTOCAL.RetryInfo;
 import android.text.TextUtils;
-import bhuf;
-import bmsv;
-import bmsw;
-import bnke;
+import bgau;
 import com.qq.jce.wup.UniAttribute;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import cooperation.qzone.util.ProtocolUtils;
 
 public abstract class QzoneExternalRequest
 {
@@ -26,29 +24,29 @@ public abstract class QzoneExternalRequest
   
   public static JceStruct decode(byte[] paramArrayOfByte, String paramString)
   {
-    return bnke.a(paramArrayOfByte, paramString);
+    return ProtocolUtils.decode(paramArrayOfByte, paramString);
   }
   
   public static JceStruct decode(byte[] paramArrayOfByte, String paramString, int[] paramArrayOfInt)
   {
-    return bnke.a(paramArrayOfByte, paramString, paramArrayOfInt);
+    return ProtocolUtils.decode(paramArrayOfByte, paramString, paramArrayOfInt);
   }
   
   protected static JceStruct decode(byte[] paramArrayOfByte, String paramString, int[] paramArrayOfInt, String[] paramArrayOfString)
   {
-    return bnke.a(paramArrayOfByte, paramString, paramArrayOfInt, paramArrayOfString);
+    return ProtocolUtils.decode(paramArrayOfByte, paramString, paramArrayOfInt, paramArrayOfString);
   }
   
   public byte[] encode()
   {
     Object localObject1 = getDeviceInfo();
-    Object localObject2 = bmsw.a();
+    Object localObject2 = QUA.getQUA3();
     long l = getLoginUserId();
     RetryInfo localRetryInfo = (RetryInfo)getRetryInfo();
     localObject1 = new WNSStream(1000027, (String)localObject2, l, new byte[0], (String)localObject1, localRetryInfo);
     localObject2 = getEncodedUniParameter();
     if (localObject2 != null) {
-      return bhuf.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), getCmdString(), (byte[])localObject2, this.needCompress));
+      return bgau.a(((WNSStream)localObject1).pack(MsfSdkUtils.getNextAppSeq(), getCmdString(), (byte[])localObject2, this.needCompress));
     }
     return null;
   }
@@ -62,7 +60,7 @@ public abstract class QzoneExternalRequest
   
   public String getDeviceInfo()
   {
-    return bmsv.a().c();
+    return PlatformInfor.g().getDeviceInfor();
   }
   
   public String getDeviceTail()

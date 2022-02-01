@@ -1,14 +1,22 @@
+import android.view.View;
+
 class oue
-  extends ovd
+  implements bjoe
 {
-  oue(otv paramotv)
-  {
-    super(paramotv, null);
-  }
+  oue(ouc paramouc, ouo paramouo, bjnw parambjnw) {}
   
-  void a(ovg paramovg)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramovg.onCommentStateError(1001);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      this.jdField_a_of_type_Ouc.a().a(this.jdField_a_of_type_Ouo, this.jdField_a_of_type_Ouc.c);
+      this.jdField_a_of_type_Ouc.notifyDataSetChanged();
+    }
   }
 }
 

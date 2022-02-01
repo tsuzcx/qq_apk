@@ -1,21 +1,44 @@
-import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.loginwelcome.LoginUserGuideHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.AnimationPoint;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
-class awwf
-  implements View.OnClickListener
+public class awwf
+  extends ReportDialog
 {
-  awwf(awwb paramawwb, Activity paramActivity) {}
+  protected TextView a;
+  protected AnimationPoint a;
   
-  public void onClick(View paramView)
+  public awwf(Context paramContext)
   {
-    LoginUserGuideHelper.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Awwb.a.a, awwb.a(this.jdField_a_of_type_Awwb));
-    this.jdField_a_of_type_Awwb.g();
-    bdll.b(this.jdField_a_of_type_Awwb.a.a, "dc00898", "", "", "0X8009F4A", "0X8009F4A", 1, 0, "1", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramContext, 2131755017);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131561670, null);
+    paramContext.setOnTouchListener(new awwg(this));
+    super.setContentView(paramContext);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131362697));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367832));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setDuration(-1L);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setOnAnimationListener(new awwh(this));
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void dismiss()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.b();
+    super.dismiss();
+  }
+  
+  public void show()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.a();
+    super.show();
   }
 }
 

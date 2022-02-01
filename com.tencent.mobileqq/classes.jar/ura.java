@@ -1,12 +1,10 @@
-public abstract interface ura
+import com.qq.jce.wup.UniAttribute;
+import com.qq.taf.jce.JceInputStream;
+
+public class ura
+  extends UniAttribute
 {
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void b(String paramString, int paramInt);
-  
-  public abstract void c(String paramString, int paramInt);
-  
-  public abstract void d(String paramString, int paramInt);
+  JceInputStream a = new JceInputStream();
 }
 
 

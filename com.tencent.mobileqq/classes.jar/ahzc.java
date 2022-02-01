@@ -1,13 +1,23 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
-public class ahzc
-  implements ahyf
+public final class ahzc
+  implements MessageQueue.IdleHandler
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  final SearchContactsActivity a;
+  
+  public ahzc(SearchContactsActivity paramSearchContactsActivity)
   {
-    paramahed.c(paramagjk, paramahfq, paramString);
+    this.a = paramSearchContactsActivity;
+  }
+  
+  public boolean queueIdle()
+  {
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
   }
 }
 

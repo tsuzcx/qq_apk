@@ -1,115 +1,29 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.drawable.Drawable;
+import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
+import cooperation.vip.vipcomponent.util.VipResourcesListener;
 
 public class blcf
+  extends blcn
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 3600L;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<blcu> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<String> b = new ArrayList();
+  public blcf(QzoneHuangzuanVipIconShow paramQzoneHuangzuanVipIconShow, VipResourcesListener paramVipResourcesListener, int paramInt1, blcc paramblcc, int paramInt2, int paramInt3, boolean paramBoolean1, String paramString, int paramInt4, boolean paramBoolean2, int paramInt5) {}
   
-  public blcf(JSONObject paramJSONObject)
+  public void onDownloaded(String paramString1, int paramInt, String paramString2, Drawable paramDrawable)
   {
-    if (paramJSONObject != null) {}
-    for (;;)
+    QzoneHuangzuanVipIconShow.access$000(this.jdField_a_of_type_CooperationVipVipcomponentUiQzoneHuangzuanVipIconShow, paramInt, paramDrawable, this.jdField_a_of_type_Int, this.jdField_a_of_type_Blcc, this.jdField_b_of_type_Int);
+    if (this.mCount <= 0)
     {
-      int i;
-      try
-      {
-        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("type");
-        long l = paramJSONObject.getLong("interval");
-        if ((l > 0L) && (l < 604800L)) {
-          this.jdField_a_of_type_Long = l;
-        }
-        Object localObject = paramJSONObject.getJSONArray("filter");
-        if (localObject != null)
-        {
-          i = 0;
-          if (i < ((JSONArray)localObject).length())
-          {
-            JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-            if (localJSONObject == null) {
-              break label248;
-            }
-            this.jdField_a_of_type_JavaUtilList.add(new blcu(localJSONObject));
-            break label248;
-          }
-        }
-        if (paramJSONObject.has("rpt"))
-        {
-          paramJSONObject = paramJSONObject.getJSONObject("rpt");
-          if (paramJSONObject != null)
-          {
-            i = paramJSONObject.getInt("id");
-            if (i > 100000)
-            {
-              this.jdField_a_of_type_Int = i;
-              paramJSONObject = paramJSONObject.getJSONArray("fields");
-              if (paramJSONObject != null)
-              {
-                i = j;
-                if (i < paramJSONObject.length())
-                {
-                  localObject = paramJSONObject.getString(i);
-                  if ((localObject != null) && (!((String)localObject).isEmpty())) {
-                    this.b.add(localObject);
-                  }
-                  i += 1;
-                  continue;
-                }
-              }
-            }
-          }
-        }
-        return;
+      QzoneHuangzuanVipIconShow.access$100(this.jdField_a_of_type_CooperationVipVipcomponentUiQzoneHuangzuanVipIconShow, this.jdField_a_of_type_Blcc, this.c, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.d, this.jdField_b_of_type_Boolean, this.e);
+      if (this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener != null) {
+        this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener.onLoaded(this.jdField_a_of_type_Blcc);
       }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-      }
-      label248:
-      i += 1;
     }
   }
   
-  public int a()
+  public void onFailed(String paramString1, int paramInt, String paramString2)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public List<String> a()
-  {
-    return this.b;
-  }
-  
-  public boolean a(Object paramObject)
-  {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        blcu localblcu = (blcu)localIterator.next();
-        if (!localblcu.a()) {
-          return false;
-        }
-        if (!localblcu.a(paramObject)) {
-          return false;
-        }
-      }
-      return true;
+    if (this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener != null) {
+      this.jdField_a_of_type_CooperationVipVipcomponentUtilVipResourcesListener.onFailed();
     }
-    return false;
   }
 }
 

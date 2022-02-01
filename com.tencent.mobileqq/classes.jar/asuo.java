@@ -1,17 +1,22 @@
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class asuo
+class asuo
+  implements View.OnClickListener
 {
-  public MessageRecord a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  asuo(asun paramasun, String paramString) {}
   
-  public asuo(MessageRecord paramMessageRecord)
+  public void onClick(View paramView)
   {
-    this.a = paramMessageRecord;
-    this.b = (paramMessageRecord instanceof MessageForPic);
+    Intent localIntent = new Intent();
+    localIntent.setClass(this.jdField_a_of_type_Asun.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Asun.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,26 +1,14 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
-import mqq.app.QQPermissionCallback;
-
-public class awte
-  implements QQPermissionCallback
+public abstract interface awte
 {
-  public awte(LocationShareFragment paramLocationShareFragment, BaseActivity paramBaseActivity, int paramInt1, String paramString, int paramInt2) {}
+  public abstract void f();
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    paramArrayOfString = bhlq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    if (paramArrayOfString != null) {
-      paramArrayOfString.setOnDismissListener(new awtf(this));
-    }
-    awpq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, 1);
-  }
+  public abstract void g();
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment);
-  }
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
 }
 
 

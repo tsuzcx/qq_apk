@@ -1,37 +1,28 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.widget.AbsListView;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
 
 public class aept
-  implements blih
+  extends anbn
 {
-  public aept(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public aept(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
   {
-    if (FriendProfileCardActivity.a(this.a) != null)
+    if (this.a.isFinishing()) {
+      return;
+    }
+    if (paramBoolean)
     {
-      Iterator localIterator = FriendProfileCardActivity.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((blih)localIterator.next()).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-      }
+      QQToast.a(this.a.getApplicationContext(), 2, this.a.getApplicationContext().getResources().getString(2131718527), 0).a();
+      this.a.c.setVisibility(8);
+      return;
     }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt == 0) {
-      adlb.a().a("vas_profilecard_list", false);
-    }
-    while (FriendProfileCardActivity.a(this.a) != null)
-    {
-      Iterator localIterator = FriendProfileCardActivity.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((blih)localIterator.next()).onScrollStateChanged(paramAbsListView, paramInt);
-      }
-      adlb.a().a("vas_profilecard_list");
-    }
+    QQToast.a(this.a.getApplicationContext(), 1, this.a.getApplicationContext().getResources().getString(2131718524), 0).a();
   }
 }
 

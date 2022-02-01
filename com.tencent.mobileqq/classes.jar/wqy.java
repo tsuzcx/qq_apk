@@ -1,36 +1,34 @@
-import android.view.MotionEvent;
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class wqy
-  implements View.OnTouchListener
+class wqy
+  implements View.OnClickListener
 {
-  public wqy(StoryInputBarView paramStoryInputBarView) {}
+  wqy(wqx paramwqx) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0)
+    Object localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
+    if (localObject != null) {
+      ((VideoViewVideoHolder)localObject).d = 2;
+    }
+    this.a.a().finish();
+    String str = "";
+    localObject = str;
+    if (this.a.jdField_a_of_type_Int >= 0)
     {
-      StoryInputBarView.a(this.a);
-      if (this.a.jdField_a_of_type_Boolean) {
-        break label94;
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Yey.jdField_a_of_type_Boolean);
-      paramView = this.a;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
-        break label89;
+      localObject = str;
+      if (this.a.jdField_a_of_type_Int < this.a.jdField_a_of_type_JavaUtilList.size()) {
+        localObject = ((wsk)this.a.jdField_a_of_type_JavaUtilList.get(this.a.jdField_a_of_type_Int)).a;
       }
     }
-    label89:
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.jdField_a_of_type_Boolean = bool;
-      return false;
-    }
-    label94:
-    this.a.a();
-    return false;
+    xwa.a("play_video", "clk_quit", 0, 0, new String[] { "", "", "", localObject });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

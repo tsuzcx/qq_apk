@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import com.tencent.mobileqq.activity.richmedia.FlowActivity;
 
-public final class aksa
-  implements Parcelable.Creator<TroopClipPic>
+public class aksa
 {
-  public TroopClipPic a(Parcel paramParcel)
+  public static <T extends akrz> T a(FlowActivity paramFlowActivity, int paramInt)
   {
-    return new TroopClipPic(paramParcel);
-  }
-  
-  public TroopClipPic[] a(int paramInt)
-  {
-    return new TroopClipPic[paramInt];
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    }
+    return new aksb(paramFlowActivity);
   }
 }
 

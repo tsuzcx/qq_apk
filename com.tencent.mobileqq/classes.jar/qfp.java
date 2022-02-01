@@ -1,50 +1,75 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class qfp
-  extends MSFServlet
+  implements ViewBase.OnClickListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  
+  public qfp(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    if (paramIntent != null)
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData))) {}
+    try
     {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      txk.a(paramFromServiceMsg);
-      if (getAppRuntime() != null) {
-        qfo.a().a(paramFromServiceMsg.isSuccess(), paramIntent, paramFromServiceMsg, null);
+      Object localObject = new JSONObject(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData);
+      QLog.d("OnSuperTopicClickListener", 2, new Object[] { "mArticleInfo.proteusItemsData = ", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData });
+      Iterator localIterator = ((JSONObject)localObject).keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if ("id_super_topic".equals(str))
+        {
+          localObject = ((JSONObject)localObject).getJSONObject(str).getString("super_topic_jump_url");
+          QLog.d("OnSuperTopicClickListener", 2, new Object[] { "jumpToSuperTopic, jumpUrl = ", localObject });
+          if (!TextUtils.isEmpty((CharSequence)localObject)) {
+            pay.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject, null);
+          }
+        }
       }
       return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.d("OnSuperTopicClickListener", 2, "jumpToSuperTopic", localJSONException);
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public static void a(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    if (paramIntent != null)
+    paramArticleInfo = paramArticleInfo.mSocialFeedInfo.a;
+    if (paramArticleInfo != null)
     {
-      ToServiceMsg localToServiceMsg = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      txk.a(localToServiceMsg);
-      if (localToServiceMsg != null)
-      {
-        paramPacket.setSSOCommand(localToServiceMsg.getServiceCmd());
-        paramPacket.putSendData(localToServiceMsg.getWupBuffer());
-        paramPacket.setTimeout(localToServiceMsg.getTimeout());
-        paramPacket.setAttributes(localToServiceMsg.getAttributes());
-        paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
-        paramPacket.autoResend = localToServiceMsg.isFastResendEnabled();
-        if (!localToServiceMsg.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
-      }
+      paramArticleInfo = paramArticleInfo.d;
+      pay.c(paramContext, paramArticleInfo);
+      QLog.i("OnSuperTopicClickListener", 2, "jumpToWendaRefer jumpUrl +" + paramArticleInfo);
     }
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    if ((pay.m(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) || (pay.n(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)))
+    {
+      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_AndroidContentContext);
+      odq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      return;
+    }
+    a();
+    odq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
   }
 }
 

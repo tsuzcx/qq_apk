@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.reuse;
 
-import aljw;
-import allw;
+import akho;
+import akjo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import bdll;
+import bcef;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -30,7 +30,7 @@ public class MiniAppBannerIPCModule
   public static final String TVALUE_CLOSE_MINIAPP = "0X800A124";
   public static final String TVALUE_SHOW_MINIAPP = "0X800A121";
   private Handler mHandler = new MiniAppBannerIPCModule.1(this, Looper.getMainLooper());
-  private allw mMessageToShowBanner;
+  private akjo mMessageToShowBanner;
   
   private MiniAppBannerIPCModule()
   {
@@ -55,7 +55,7 @@ public class MiniAppBannerIPCModule
   {
     if (this.mMessageToShowBanner != null)
     {
-      aljw.a(getAppInterface(), this.mMessageToShowBanner);
+      akho.a(getAppInterface(), this.mMessageToShowBanner);
       this.mMessageToShowBanner = null;
     }
   }
@@ -108,9 +108,9 @@ public class MiniAppBannerIPCModule
       hideExistingMessageToBanner();
       if ("action.miniapp.enterbackground".equals(paramString))
       {
-        this.mMessageToShowBanner = aljw.a(getAppInterface(), paramInt, "com.tencent.mobileqq.miniapp", localStringBuilder.toString(), new MiniAppBannerIPCModule.BannerInteract(localMiniAppConfig));
+        this.mMessageToShowBanner = akho.a(getAppInterface(), paramInt, "com.tencent.mobileqq.miniapp", localStringBuilder.toString(), new MiniAppBannerIPCModule.BannerInteract(localMiniAppConfig));
         this.mHandler.sendEmptyMessageDelayed(1, 300000L);
-        bdll.a(getAppInterface(), "dc00898", "", "", "0X800A121", "0X800A121", 4, 0, "", "", "", "");
+        bcef.a(getAppInterface(), "dc00898", "", "", "0X800A121", "0X800A121", 4, 0, "", "", "", "");
       }
       return new EIPCResult();
       paramBundle = "正在使用";

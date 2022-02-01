@@ -1,10 +1,9 @@
-public class uhe
-  extends aaiq
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/util/ReadInJoyShareHelperV2$ShareResultCallback;", "", "onResult", "", "success", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface uhe
 {
-  public uhe(int paramInt, Object... paramVarArgs)
-  {
-    super(paramInt, paramVarArgs);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.pic;
 
-import azrc;
+import ayek;
 import com.tencent.mobileqq.data.MessageForStructing;
 
 class PicPreDownloader$7
@@ -10,7 +10,7 @@ class PicPreDownloader$7
   
   public void run()
   {
-    azrc.a(this.a, PicPreDownloader.a(this.this$0));
+    ayek.a(this.a, PicPreDownloader.a(this.this$0));
   }
 }
 

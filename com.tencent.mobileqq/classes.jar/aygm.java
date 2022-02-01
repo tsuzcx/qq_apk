@@ -1,36 +1,27 @@
-import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface aygm
+public class aygm
+  implements aygj
 {
-  public abstract int a();
-  
-  public abstract long a();
-  
-  public abstract View a();
-  
-  public abstract void a();
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(aygn paramaygn);
-  
-  public abstract void a(aygo paramaygo);
-  
-  public abstract void a(aygp paramaygp);
-  
-  public abstract void a(aygq paramaygq);
-  
-  public abstract void a(aygr paramaygr);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void a(aygw paramaygw, QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    if (!lld.c())
+    {
+      paramaygw.b(202);
+      paramaygw.b(201);
+      paramaygw.b(1200000007);
+      paramaygw.b(100719166);
+      paramaygw.b(101847385);
+      paramaygw.b(1104651886);
+      paramaygw.b(1106658188);
+    }
+    if ((paramInt != 0) && (paramInt != 1025) && (paramInt != 1024) && (!ChatActivityUtils.a(paramQQAppInterface, paramString)))
+    {
+      paramaygw.b(202);
+      paramaygw.b(201);
+    }
+  }
 }
 
 

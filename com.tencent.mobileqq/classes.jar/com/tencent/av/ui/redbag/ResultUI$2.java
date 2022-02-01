@@ -2,14 +2,14 @@ package com.tencent.av.ui.redbag;
 
 import com.tencent.av.ui.AVActivity;
 import com.tencent.qphone.base.util.QLog;
-import mbb;
-import mqs;
-import mqt;
+import mak;
+import mqb;
+import mqc;
 
 public class ResultUI$2
   implements Runnable
 {
-  public ResultUI$2(mqt parammqt) {}
+  public ResultUI$2(mqc parammqc) {}
   
   public void run()
   {
@@ -32,9 +32,9 @@ public class ResultUI$2
     }
     QLog.w(this.this$0.i, 1, "innerShow, avActivity[" + localAVActivity + "]");
     this.this$0.jdField_a_of_type_Boolean = true;
-    if (this.this$0.jdField_a_of_type_Mqs.b())
+    if (this.this$0.jdField_a_of_type_Mqb.b())
     {
-      if (this.this$0.jdField_a_of_type_Mqs.b)
+      if (this.this$0.jdField_a_of_type_Mqb.b)
       {
         this.this$0.b(localAVActivity);
         return;
@@ -42,9 +42,9 @@ public class ResultUI$2
       this.this$0.c(localAVActivity);
       return;
     }
-    if (this.this$0.jdField_a_of_type_Mqs.a())
+    if (this.this$0.jdField_a_of_type_Mqb.a())
     {
-      if (this.this$0.jdField_a_of_type_Mqs.b)
+      if (this.this$0.jdField_a_of_type_Mqb.b)
       {
         this.this$0.b(localAVActivity);
         return;
@@ -52,46 +52,46 @@ public class ResultUI$2
       this.this$0.a(localAVActivity);
       return;
     }
-    if (this.this$0.jdField_a_of_type_Mqs.f == 3)
+    if (this.this$0.jdField_a_of_type_Mqb.f == 3)
     {
-      if (this.this$0.jdField_a_of_type_Mqs.b) {
-        mbb.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131695205);
+      if (this.this$0.jdField_a_of_type_Mqb.b) {
+        mak.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131695344);
       }
       for (;;)
       {
         this.this$0.a("EXCEPTION_BEFORE_GAME");
         return;
-        mbb.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131695203);
+        mak.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131695342);
       }
     }
-    if (this.this$0.jdField_a_of_type_Mqs.f == 4)
+    if (this.this$0.jdField_a_of_type_Mqb.f == 4)
     {
-      if (this.this$0.jdField_a_of_type_Mqs.b)
+      if (this.this$0.jdField_a_of_type_Mqb.b)
       {
         this.this$0.b(localAVActivity);
         return;
       }
       this.this$0.c(localAVActivity);
-      this.this$0.a(localAVActivity, this.this$0.jdField_a_of_type_Mqs);
+      this.this$0.a(localAVActivity, this.this$0.jdField_a_of_type_Mqb);
       return;
     }
-    if (this.this$0.jdField_a_of_type_Mqs.f == 6)
+    if (this.this$0.jdField_a_of_type_Mqb.f == 6)
     {
-      if (this.this$0.jdField_a_of_type_Mqs.b) {
-        mbb.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131695206);
+      if (this.this$0.jdField_a_of_type_Mqb.b) {
+        mak.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131695345);
       }
       this.this$0.a("EXCEPTION_NOT_RECEIVE_REDBAG");
       return;
     }
-    if (this.this$0.jdField_a_of_type_Mqs.f == 7)
+    if (this.this$0.jdField_a_of_type_Mqb.f == 7)
     {
-      if (this.this$0.jdField_a_of_type_Mqs.b) {
-        mbb.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131695204);
+      if (this.this$0.jdField_a_of_type_Mqb.b) {
+        mak.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131695343);
       }
       this.this$0.a("EXCEPTION_GAME_TIMEOUT");
       return;
     }
-    QLog.w(this.this$0.i, 1, "innerShow, 不展示, mHitScore[" + this.this$0.jdField_a_of_type_Mqs.a + "], mExceptionType[" + this.this$0.jdField_a_of_type_Mqs.f + "]");
+    QLog.w(this.this$0.i, 1, "innerShow, 不展示, mHitScore[" + this.this$0.jdField_a_of_type_Mqb.a + "], mExceptionType[" + this.this$0.jdField_a_of_type_Mqb.f + "]");
     this.this$0.a("other");
   }
 }

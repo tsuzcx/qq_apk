@@ -1,20 +1,20 @@
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.image.RegionDrawableData;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import cooperation.qzone.RDMEtraMsgCollector;
 
-public abstract interface akqw
+public class akqw
+  implements bjoe
 {
-  public abstract View onCreateView(int paramInt, View paramView, ViewGroup paramViewGroup);
+  public akqw(EditLocalVideoActivity paramEditLocalVideoActivity, Bundle paramBundle) {}
   
-  public abstract void onDestroyView(int paramInt, View paramView, ViewGroup paramViewGroup);
-  
-  public abstract void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData);
-  
-  public abstract void onSlot(int paramInt, View paramView, ViewGroup paramViewGroup);
-  
-  public abstract void onViewDetached(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean);
-  
-  public abstract void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup);
+  public void OnClick(View paramView, int paramInt)
+  {
+    paramView = "[Actvity]" + getClass().getSimpleName() + " QQCustomDialog click :" + amtj.a(2131702794);
+    RDMEtraMsgCollector.getInstance().addUserAction(paramView);
+    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).dismiss();
+    EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, this.jdField_a_of_type_AndroidOsBundle);
+  }
 }
 
 

@@ -1,26 +1,13 @@
-public class aoib
-  implements anui
+import com.tencent.av.avgesture.AVGestureWrapper.AVUploadReport;
+import com.tencent.sveffects.Reporter;
+import com.tencent.sveffects.SdkContext;
+
+public final class aoib
+  implements AVGestureWrapper.AVUploadReport
 {
-  protected void a(boolean paramBoolean, bdxd parambdxd) {}
-  
-  protected void b(boolean paramBoolean, bdxd parambdxd) {}
-  
-  protected void c(boolean paramBoolean, bdxd parambdxd) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void avGestureUploadReport(String paramString1, String paramString2)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      b(paramBoolean, (bdxd)paramObject);
-      return;
-    case 1: 
-      c(paramBoolean, (bdxd)paramObject);
-      return;
-    }
-    a(paramBoolean, (bdxd)paramObject);
+    SdkContext.getInstance().getReporter().reportToCompass("dc00898", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
   }
 }
 

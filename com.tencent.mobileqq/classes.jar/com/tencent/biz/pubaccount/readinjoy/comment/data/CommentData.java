@@ -8,6 +8,11 @@ public class CommentData
   public static final int EXPOSURE_SUB_COMMENT_COUNT = 2;
   public List<SubCommentData> subCommentList;
   public int subCommentNum;
+  
+  public String toString()
+  {
+    return "CommentData{'subCommentNum=" + this.subCommentNum + '\'' + ", subCommentList=" + this.subCommentList + '\'' + super.toString() + '}';
+  }
 }
 
 

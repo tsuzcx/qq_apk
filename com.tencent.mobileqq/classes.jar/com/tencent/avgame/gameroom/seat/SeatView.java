@@ -6,41 +6,41 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.GridView;
-import bdll;
-import bhlq;
-import bhpc;
-import blir;
-import bliz;
-import bljb;
-import blji;
+import bcef;
+import bfur;
+import bjnw;
+import bjoe;
+import bjog;
+import bjon;
 import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.avgame.gamelogic.data.Player;
 import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import myk;
-import mze;
-import mzj;
-import nbo;
-import nbp;
-import nbr;
-import nco;
+import mzl;
+import naf;
+import nak;
 import ncp;
-import ncr;
+import ncq;
 import ncs;
-import nct;
-import ncu;
-import ncv;
+import ndt;
+import ndu;
+import ndw;
+import ndx;
+import ndy;
+import ndz;
+import nea;
 
 public class SeatView
   extends GridView
-  implements bliz, bljb, ncp, ncv
+  implements bjoe, bjog, ndu, nea
 {
-  protected blir a;
+  protected bjnw a;
   protected Player a;
-  public nco a;
-  protected ncu a;
+  public ndt a;
+  protected ndz a;
   protected boolean a;
   protected boolean b;
   protected boolean c;
@@ -58,25 +58,25 @@ public class SeatView
   public SeatView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Nco = new ncs(this);
+    this.jdField_a_of_type_Ndt = new ndx(this);
   }
   
   private void a(Player paramPlayer)
   {
-    bhpc localbhpc = bhlq.a(getContext(), 230);
-    if (localbhpc != null)
+    QQCustomDialog localQQCustomDialog = bfur.a(getContext(), 230);
+    if (localQQCustomDialog != null)
     {
-      localbhpc.setMessage(2131690293);
-      paramPlayer = new nct(this, paramPlayer);
-      localbhpc.setPositiveButton(2131694098, paramPlayer);
-      localbhpc.setNegativeButton(2131690580, paramPlayer);
-      localbhpc.show();
+      localQQCustomDialog.setMessage(2131690318);
+      paramPlayer = new ndy(this, paramPlayer);
+      localQQCustomDialog.setPositiveButton(2131694201, paramPlayer);
+      localQQCustomDialog.setNegativeButton(2131690620, paramPlayer);
+      localQQCustomDialog.show();
     }
   }
   
   public void OnClick(View paramView, int paramInt)
   {
-    if ((this.jdField_a_of_type_Blir == null) || (this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer == null)) {
+    if ((this.jdField_a_of_type_Bjnw == null) || (this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer == null)) {
       return;
     }
     int i;
@@ -96,9 +96,9 @@ public class SeatView
     {
       try
       {
-        this.jdField_a_of_type_Blir.a(null);
-        this.jdField_a_of_type_Blir.dismiss();
-        this.jdField_a_of_type_Blir = null;
+        this.jdField_a_of_type_Bjnw.a(null);
+        this.jdField_a_of_type_Bjnw.dismiss();
+        this.jdField_a_of_type_Bjnw = null;
         this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = null;
         return;
       }
@@ -109,9 +109,9 @@ public class SeatView
       }
       a(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer);
       continue;
-      this.jdField_a_of_type_Nco.b(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer);
+      this.jdField_a_of_type_Ndt.b(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer);
       continue;
-      this.jdField_a_of_type_Nco.c(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer);
+      this.jdField_a_of_type_Ndt.c(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer);
     }
   }
   
@@ -125,7 +125,7 @@ public class SeatView
       {
         localObject = (AddMemberItemView)localObject;
         int[] arrayOfInt = new int[2];
-        nbo.a((View)localObject, arrayOfInt);
+        ncp.a((View)localObject, arrayOfInt);
         RectF localRectF = new RectF();
         localRectF.left = arrayOfInt[0];
         localRectF.top = arrayOfInt[1];
@@ -162,18 +162,18 @@ public class SeatView
     }
   }
   
-  public List<nbr> a()
+  public List<ncs> a()
   {
     ArrayList localArrayList = new ArrayList();
-    RoomInfo localRoomInfo = myk.a().a().a();
+    RoomInfo localRoomInfo = mzl.a().a().a();
     int i = 0;
     while (i < getChildCount())
     {
       Object localObject = getChildAt(i);
       if ((localObject instanceof MemberItemView))
       {
-        localObject = ((MemberItemView)localObject).a(this.jdField_a_of_type_Nco);
-        if ((localObject != null) && (localRoomInfo.getPlayer(String.valueOf(((nbr)localObject).a)) != null)) {
+        localObject = ((MemberItemView)localObject).a(this.jdField_a_of_type_Ndt);
+        if ((localObject != null) && (localRoomInfo.getPlayer(String.valueOf(((ncs)localObject).a)) != null)) {
           localArrayList.add(localObject);
         }
       }
@@ -185,22 +185,22 @@ public class SeatView
     return localArrayList;
   }
   
-  public nco a()
+  public ndt a()
   {
-    return this.jdField_a_of_type_Nco;
+    return this.jdField_a_of_type_Ndt;
   }
   
   public void a()
   {
-    mze localmze = myk.a().a();
-    if ((localmze != null) && (localmze.a() != null)) {}
-    for (int i = localmze.a().a;; i = 0)
+    naf localnaf = mzl.a().a();
+    if ((localnaf != null) && (localnaf.a() != null)) {}
+    for (int i = localnaf.a().a;; i = 0)
     {
-      if (myk.a().a()) {}
+      if (mzl.a().a()) {}
       for (int j = 1;; j = 2)
       {
-        bdll.b(null, "dc00898", "", "", "0X800B0A6", "0X800B0A6", i, 0, "" + j, "", "", "");
-        this.jdField_a_of_type_Nco.a();
+        bcef.b(null, "dc00898", "", "", "0X800B0A6", "0X800B0A6", i, 0, "" + j, "", "", "");
+        this.jdField_a_of_type_Ndt.a();
         this.c = true;
         return;
       }
@@ -232,59 +232,59 @@ public class SeatView
     }
   }
   
-  public void a(mze parammze)
+  public void a(naf paramnaf)
   {
-    this.jdField_a_of_type_Ncu.a(this.jdField_a_of_type_Nco.a(), this.jdField_a_of_type_Nco.a());
-    this.jdField_a_of_type_Ncu.notifyDataSetChanged();
+    this.jdField_a_of_type_Ndz.a(this.jdField_a_of_type_Ndt.a(), this.jdField_a_of_type_Ndt.a());
+    this.jdField_a_of_type_Ndz.notifyDataSetChanged();
   }
   
-  public void a(nbp paramnbp)
+  public void a(ncq paramncq)
   {
-    this.jdField_a_of_type_Nco.a(paramnbp);
+    this.jdField_a_of_type_Ndt.a(paramncq);
     setNumColumns(4);
-    this.jdField_a_of_type_Ncu = new ncu(getContext(), this.jdField_a_of_type_Nco);
-    this.jdField_a_of_type_Ncu.a(this.jdField_a_of_type_Nco.a(), this.jdField_a_of_type_Nco.a());
-    setAdapter(this.jdField_a_of_type_Ncu);
-    this.jdField_a_of_type_Ncu.a(this);
+    this.jdField_a_of_type_Ndz = new ndz(getContext(), this.jdField_a_of_type_Ndt);
+    this.jdField_a_of_type_Ndz.a(this.jdField_a_of_type_Ndt.a(), this.jdField_a_of_type_Ndt.a());
+    setAdapter(this.jdField_a_of_type_Ndz);
+    this.jdField_a_of_type_Ndz.a(this);
   }
   
-  public void a(ncr paramncr)
+  public void a(ndw paramndw)
   {
-    if ((paramncr == null) || (paramncr.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer == null)) {
+    if ((paramndw == null) || (paramndw.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer == null)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = paramncr.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer;
-    this.jdField_a_of_type_Boolean = myk.a().a();
+    this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = paramndw.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer;
+    this.jdField_a_of_type_Boolean = mzl.a().a();
     this.b = false;
-    if (myk.a().a() != null)
+    if (mzl.a().a() != null)
     {
-      paramncr = myk.a().a().getAccount();
-      if (TextUtils.equals(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin, paramncr)) {
+      paramndw = mzl.a().a().getAccount();
+      if (TextUtils.equals(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin, paramndw)) {
         this.b = true;
       }
     }
-    this.jdField_a_of_type_Blir = ((blir)blji.a(getContext(), null));
+    this.jdField_a_of_type_Bjnw = ((bjnw)bjon.a(getContext(), null));
     if ((this.jdField_a_of_type_Boolean) && (!this.b)) {
-      this.jdField_a_of_type_Blir.b(2131690234);
+      this.jdField_a_of_type_Bjnw.b(2131690259);
     }
-    this.jdField_a_of_type_Blir.b(2131690237);
+    this.jdField_a_of_type_Bjnw.b(2131690262);
     if (!this.b) {
-      this.jdField_a_of_type_Blir.b(2131690233);
+      this.jdField_a_of_type_Bjnw.b(2131690258);
     }
-    this.jdField_a_of_type_Blir.c(2131690580);
-    this.jdField_a_of_type_Blir.a(this);
-    this.jdField_a_of_type_Blir.a(this);
+    this.jdField_a_of_type_Bjnw.c(2131690620);
+    this.jdField_a_of_type_Bjnw.a(this);
+    this.jdField_a_of_type_Bjnw.a(this);
     try
     {
-      this.jdField_a_of_type_Blir.show();
-      bdll.b(null, "dc00898", "", "", "0X800B02A", "0X800B02A", 0, 0, "", "" + myk.a().a().a(), "", "");
+      this.jdField_a_of_type_Bjnw.show();
+      bcef.b(null, "dc00898", "", "", "0X800B02A", "0X800B02A", 0, 0, "", "" + mzl.a().a().a(), "", "");
       return;
     }
-    catch (Exception paramncr)
+    catch (Exception paramndw)
     {
       for (;;)
       {
-        QLog.e("SeatView", 1, "onMemberItemClick error:", paramncr);
+        QLog.e("SeatView", 1, "onMemberItemClick error:", paramndw);
       }
     }
   }
@@ -311,11 +311,11 @@ public class SeatView
   public void onDismiss()
   {
     this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = null;
-    if (this.jdField_a_of_type_Blir == null) {
+    if (this.jdField_a_of_type_Bjnw == null) {
       return;
     }
-    this.jdField_a_of_type_Blir.a(null);
-    this.jdField_a_of_type_Blir = null;
+    this.jdField_a_of_type_Bjnw.a(null);
+    this.jdField_a_of_type_Bjnw = null;
   }
 }
 

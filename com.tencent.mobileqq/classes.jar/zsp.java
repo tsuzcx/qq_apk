@@ -1,14 +1,7 @@
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-
 public class zsp
-  implements zto
 {
-  public zsp(SegmentList paramSegmentList) {}
-  
-  public void a()
-  {
-    this.a.a.a(false);
-  }
+  public String a;
+  public String b;
 }
 
 

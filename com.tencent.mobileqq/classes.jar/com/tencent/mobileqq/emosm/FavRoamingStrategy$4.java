@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.emosm;
 
+import amsz;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import antf;
-import anyz;
-import ases;
-import asfn;
-import asig;
-import asqn;
-import asre;
+import aqyq;
+import aqzl;
+import arce;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.data.CustomEmotionBase;
 import com.tencent.mobileqq.data.CustomEmotionData;
 import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emoticonview.FavoriteEmoticonInfo;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,7 +21,7 @@ import java.util.List;
 public class FavRoamingStrategy$4
   implements Runnable
 {
-  public FavRoamingStrategy$4(asfn paramasfn, Object paramObject, asig paramasig, int paramInt) {}
+  public FavRoamingStrategy$4(aqzl paramaqzl, Object paramObject, arce paramarce, int paramInt) {}
   
   public void run()
   {
@@ -38,17 +38,17 @@ public class FavRoamingStrategy$4
       {
         CustomEmotionData localCustomEmotionData = (CustomEmotionData)((Iterator)localObject3).next();
         if (localCustomEmotionData != null) {
-          if ((this.jdField_a_of_type_JavaLangObject instanceof asre))
+          if ((this.jdField_a_of_type_JavaLangObject instanceof PicEmoticonInfo))
           {
-            localObject1 = ((asre)this.jdField_a_of_type_JavaLangObject).a;
+            localObject1 = ((PicEmoticonInfo)this.jdField_a_of_type_JavaLangObject).emoticon;
             if ((!TextUtils.isEmpty(localCustomEmotionData.eId)) && (localObject1 != null) && (localCustomEmotionData.eId.equals(((Emoticon)localObject1).eId))) {
               ((List)localObject2).add(localCustomEmotionData);
             }
           }
-          else if ((this.jdField_a_of_type_JavaLangObject instanceof asqn))
+          else if ((this.jdField_a_of_type_JavaLangObject instanceof FavoriteEmoticonInfo))
           {
             if (this.this$0.a.contains(this.jdField_a_of_type_JavaLangObject)) {}
-            for (localObject1 = antf.bl + anyz.a(((asqn)this.jdField_a_of_type_JavaLangObject).e);; localObject1 = ((asqn)this.jdField_a_of_type_JavaLangObject).e)
+            for (localObject1 = AppConstants.SDCARD_IMG_FAVORITE + amsz.a(((FavoriteEmoticonInfo)this.jdField_a_of_type_JavaLangObject).path);; localObject1 = ((FavoriteEmoticonInfo)this.jdField_a_of_type_JavaLangObject).path)
             {
               if ((!TextUtils.isEmpty(localCustomEmotionData.emoPath)) && (localCustomEmotionData.emoPath.equals(localObject1))) {
                 ((List)localObject2).add(localCustomEmotionData);
@@ -74,7 +74,7 @@ public class FavRoamingStrategy$4
         {
           ((CustomEmotionData)localObject3).RomaingType = "needDel";
           this.this$0.a().b((CustomEmotionBase)localObject3);
-          asfn.a(this.this$0).add(((CustomEmotionData)localObject3).resid);
+          aqzl.a(this.this$0).add(((CustomEmotionData)localObject3).resid);
           if (!TextUtils.isEmpty(((CustomEmotionData)localObject3).md5)) {
             ((List)localObject1).add(((CustomEmotionData)localObject3).md5);
           }
@@ -91,13 +91,13 @@ public class FavRoamingStrategy$4
         }
       }
       if (((List)localObject1).size() > 0) {
-        this.jdField_a_of_type_Asig.a((List)localObject1);
+        this.jdField_a_of_type_Arce.a((List)localObject1);
       }
     }
     for (;;)
     {
-      if (asfn.a(this.this$0) != null) {
-        asfn.a(this.this$0).obtainMessage(207, Integer.valueOf(this.jdField_a_of_type_Int)).sendToTarget();
+      if (aqzl.a(this.this$0) != null) {
+        aqzl.a(this.this$0).obtainMessage(207, Integer.valueOf(this.jdField_a_of_type_Int)).sendToTarget();
       }
       return;
       QLog.e("FavRoamingStrategy", 1, "delete failed, not find original emotion data");
@@ -106,7 +106,7 @@ public class FavRoamingStrategy$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.FavRoamingStrategy.4
  * JD-Core Version:    0.7.0.1
  */

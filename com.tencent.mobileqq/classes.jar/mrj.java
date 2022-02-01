@@ -1,49 +1,46 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextPaint;
 
-final class mrj
-  implements bliz
+public class mrj
 {
-  mrj(mvg parammvg, int[] paramArrayOfInt, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static float a(String paramString, TextPaint paramTextPaint)
   {
-    this.jdField_a_of_type_Mvg.dismiss();
-    switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
+    return paramTextPaint.measureText(paramString);
+  }
+  
+  public static float a(StringBuilder paramStringBuilder, String paramString, TextPaint paramTextPaint, float paramFloat)
+  {
+    float f1;
+    if (paramString == null)
     {
-    default: 
-      paramInt = 0;
+      f1 = paramFloat;
+      return f1;
     }
+    paramString = paramString.toCharArray();
+    int i = 0;
     for (;;)
     {
-      if (paramInt > 0) {
-        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A518", "0X800A518", 0, paramInt, "", "", "", "");
+      f1 = paramFloat;
+      if (i >= paramString.length) {
+        break;
       }
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
-      {
-        mrh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true);
-        paramInt = 3;
+      float f2 = paramTextPaint.measureText(paramString, i, 1);
+      f1 = paramFloat;
+      if (f2 >= paramFloat) {
+        break;
       }
-      else
-      {
-        mrh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, this.jdField_a_of_type_Int, null);
-        paramInt = 1;
-        continue;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
-        {
-          mrh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
-          paramInt = 4;
-        }
-        else
-        {
-          mrh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, this.jdField_a_of_type_Int, null);
-          paramInt = 2;
-        }
-      }
+      paramFloat -= f2;
+      paramStringBuilder.append(paramString[i]);
+      i += 1;
     }
+  }
+  
+  public static float b(StringBuilder paramStringBuilder, String paramString, TextPaint paramTextPaint, float paramFloat)
+  {
+    float f = paramTextPaint.measureText("...");
+    if (f > a(paramStringBuilder, paramString, paramTextPaint, paramFloat - f)) {
+      paramStringBuilder.append("...");
+    }
+    return f;
   }
 }
 

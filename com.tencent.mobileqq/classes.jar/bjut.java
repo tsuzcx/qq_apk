@@ -1,10 +1,8 @@
-import org.json.JSONObject;
+import com.tencent.widget.VerticalGallery;
 
 public abstract interface bjut
 {
-  public abstract void a(Exception paramException);
-  
-  public abstract void a(JSONObject paramJSONObject);
+  public abstract void a(VerticalGallery paramVerticalGallery);
 }
 
 

@@ -1,27 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.SoftReference;
 
-public final class bnlt
-  implements Parcelable.Creator<QzoneVerticalVideoTopicInfo>
+class bnlt
+  extends SoftReference<V>
 {
-  public QzoneVerticalVideoTopicInfo a(Parcel paramParcel)
+  private K jdField_a_of_type_JavaLangObject;
+  
+  public bnlt(K paramK, V paramV, ReferenceQueue<? super V> paramReferenceQueue)
   {
-    QzoneVerticalVideoTopicInfo localQzoneVerticalVideoTopicInfo = new QzoneVerticalVideoTopicInfo();
-    QzoneVerticalVideoTopicInfo.a(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.b(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.c(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.d(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.e(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.f(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.g(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.h(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    return localQzoneVerticalVideoTopicInfo;
+    super(paramReferenceQueue, localReferenceQueue);
+    this.jdField_a_of_type_JavaLangObject = paramV;
   }
   
-  public QzoneVerticalVideoTopicInfo[] a(int paramInt)
+  public K a()
   {
-    return new QzoneVerticalVideoTopicInfo[paramInt];
+    return this.jdField_a_of_type_JavaLangObject;
   }
 }
 

@@ -1,21 +1,49 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class ohb
-  implements QQPermissionCallback
+public class ohb
+  extends SosoInterface.OnLocationListener
 {
-  ohb(ogs paramogs, Runnable paramRunnable) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public ohb(ShopWebViewFragment paramShopWebViewFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
-    ogs.a(this.jdField_a_of_type_Ogs, 3);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    if ((this.a.mApp == null) || (this.a.jdField_a_of_type_JavaUtilList == null)) {}
+    ArrayList localArrayList;
+    double d1;
+    double d2;
+    do
+    {
+      do
+      {
+        return;
+      } while ((paramInt != 0) || (paramSosoLbsInfo == null));
+      localArrayList = new ArrayList();
+      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        RecentShopParcel localRecentShopParcel = (RecentShopParcel)localIterator.next();
+        if (localRecentShopParcel.c != 1) {
+          try
+          {
+            localArrayList.add(Long.valueOf(Long.valueOf(localRecentShopParcel.a).longValue()));
+          }
+          catch (Exception localException) {}
+        }
+      }
+      d1 = paramSosoLbsInfo.mLocation.mLat02;
+      d2 = paramSosoLbsInfo.mLocation.mLon02;
+    } while (this.a.jdField_a_of_type_Ogn == null);
+    this.a.jdField_a_of_type_Ogn.a(this.a.mApp, localArrayList, d2, d1);
   }
 }
 

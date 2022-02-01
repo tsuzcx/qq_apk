@@ -2,53 +2,53 @@ package com.tencent.mobileqq.app.face;
 
 import AvatarInfo.QQHeadInfo;
 import android.text.TextUtils;
-import axwf;
-import bhhg;
-import bhhz;
-import bhnv;
+import awjn;
+import bfqq;
+import bfrj;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.Setting;
 import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 class QQHeadDownloadHandler$UpdateSettingRunnable
   implements Runnable
 {
-  QQHeadInfo jdField_a_of_type_AvatarInfoQQHeadInfo;
-  FaceInfo jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo;
-  Setting jdField_a_of_type_ComTencentMobileqqDataSetting;
+  FaceInfo mFaceInfo;
+  QQHeadInfo mInfo;
+  Setting mSetting;
   
   public QQHeadDownloadHandler$UpdateSettingRunnable(QQHeadDownloadHandler paramQQHeadDownloadHandler, Setting paramSetting, FaceInfo paramFaceInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataSetting = paramSetting;
-    this.jdField_a_of_type_AvatarInfoQQHeadInfo = paramFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo;
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo = paramFaceInfo;
+    this.mSetting = paramSetting;
+    this.mInfo = paramFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo;
+    this.mFaceInfo = paramFaceInfo;
   }
   
   public void run()
   {
     int i = 0;
     if (QLog.isColorLevel()) {
-      QLog.i("UpdateSettingRunnable", 2, "run start. | uin=" + this.jdField_a_of_type_ComTencentMobileqqDataSetting.uin + ", updateTimestamp=" + this.jdField_a_of_type_ComTencentMobileqqDataSetting.updateTimestamp + ", usrtype=" + this.jdField_a_of_type_ComTencentMobileqqDataSetting.bUsrType + ", headImgTimestamp=" + this.jdField_a_of_type_ComTencentMobileqqDataSetting.headImgTimestamp + ", usrtype=" + this.jdField_a_of_type_ComTencentMobileqqDataSetting.bHeadType + ", status=" + this.jdField_a_of_type_ComTencentMobileqqDataSetting.getStatus() + ", id=" + this.jdField_a_of_type_ComTencentMobileqqDataSetting.getId() + ", currentTimeMillis=" + System.currentTimeMillis());
+      QLog.i("UpdateSettingRunnable", 2, "run start. | uin=" + this.mSetting.uin + ", updateTimestamp=" + this.mSetting.updateTimestamp + ", usrtype=" + this.mSetting.bUsrType + ", headImgTimestamp=" + this.mSetting.headImgTimestamp + ", usrtype=" + this.mSetting.bHeadType + ", status=" + this.mSetting.getStatus() + ", id=" + this.mSetting.getId() + ", currentTimeMillis=" + System.currentTimeMillis());
     }
-    localObject1 = QQHeadDownloadHandler.a(this.this$0).a().createEntityManager();
+    localObject1 = QQHeadDownloadHandler.access$100(this.this$0).getEntityManagerFactory().createEntityManager();
     String str1;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataSetting.getStatus() == 1000)
+    if (this.mSetting.getStatus() == 1000)
     {
-      ((EntityManager)localObject1).persistOrReplace(this.jdField_a_of_type_ComTencentMobileqqDataSetting);
+      ((EntityManager)localObject1).persistOrReplace(this.mSetting);
       ((EntityManager)localObject1).close();
-      if (this.jdField_a_of_type_AvatarInfoQQHeadInfo.dstUsrType == 32)
+      if (this.mInfo.dstUsrType == 32)
       {
-        localObject1 = QQHeadDownloadHandler.a(this.this$0).a().a(true);
+        localObject1 = QQHeadDownloadHandler.access$100(this.this$0).getNearbyProxy().a(true);
         if (localObject1 != null) {
-          ((bhhg)localObject1).a(32, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.b);
+          ((bfqq)localObject1).a(32, this.mFaceInfo.jdField_a_of_type_JavaLangString, this.mFaceInfo.b);
         }
       }
-      localObject1 = QQHeadDownloadHandler.a(this.this$0).a(this.jdField_a_of_type_AvatarInfoQQHeadInfo.uin, this.jdField_a_of_type_AvatarInfoQQHeadInfo.phoneNum);
-      str1 = QQHeadDownloadHandler.a(this.this$0).a(this.jdField_a_of_type_AvatarInfoQQHeadInfo.dstUsrType, (String)localObject1, this.jdField_a_of_type_AvatarInfoQQHeadInfo.idType);
+      localObject1 = QQHeadDownloadHandler.access$000(this.this$0).getUinOrMobile(this.mInfo.uin, this.mInfo.phoneNum);
+      str1 = QQHeadDownloadHandler.access$100(this.this$0).getCustomFaceFilePath(this.mInfo.dstUsrType, (String)localObject1, this.mInfo.idType, this.mInfo.sizeType);
       Object localObject2 = str1.substring(0, str1.lastIndexOf("/"));
       String str2 = str1.substring(str1.lastIndexOf("/") + 1);
       if ((!TextUtils.isEmpty(str2)) && (str2.endsWith("jpg_")))
@@ -63,13 +63,13 @@ class QQHeadDownloadHandler$UpdateSettingRunnable
     {
       try
       {
-        int j = bhnv.b(QQHeadDownloadHandler.a(this.this$0).getApp());
-        if (this.jdField_a_of_type_AvatarInfoQQHeadInfo.dstUsrType != 1) {
+        int j = NetworkUtil.getNetworkType(QQHeadDownloadHandler.access$100(this.this$0).getApp());
+        if (this.mInfo.dstUsrType != 1) {
           continue;
         }
         k = (int)new File(str1).length();
         if (k > 0) {
-          QQHeadDownloadHandler.a(this.this$0).sendAppDataIncerment(QQHeadDownloadHandler.a(this.this$0).getCurrentAccountUin(), false, j, 131074, i, k + 126 + 239);
+          QQHeadDownloadHandler.access$100(this.this$0).sendAppDataIncerment(QQHeadDownloadHandler.access$100(this.this$0).getCurrentAccountUin(), false, j, 131074, i, k + 126 + 239);
         }
       }
       catch (Throwable localThrowable)
@@ -77,46 +77,50 @@ class QQHeadDownloadHandler$UpdateSettingRunnable
         int k;
         localThrowable.printStackTrace();
         continue;
-        if (this.jdField_a_of_type_AvatarInfoQQHeadInfo.dstUsrType != 16) {
+        if (this.mInfo.dstUsrType != 16) {
           continue;
         }
-        localObject1 = "qcall_" + this.jdField_a_of_type_AvatarInfoQQHeadInfo.idType + "_" + (String)localObject1;
-        bhhz.a((String)localObject1);
-        bhhz.b((String)localObject1);
-        bhhz.a(QQHeadDownloadHandler.a(this.this$0), (String)localObject1);
+        localObject1 = "qcall_" + this.mInfo.idType + "_" + (String)localObject1;
+        bfrj.a((String)localObject1);
+        bfrj.b((String)localObject1);
+        bfrj.a(QQHeadDownloadHandler.access$100(this.this$0), (String)localObject1);
         continue;
-        bhhz.a((String)localObject1);
-        bhhz.b((String)localObject1);
-        bhhz.a(QQHeadDownloadHandler.a(this.this$0), (String)localObject1);
-        continue;
-      }
-      if (this.jdField_a_of_type_AvatarInfoQQHeadInfo.dstUsrType != 32) {
+        bfrj.a((String)localObject1);
+        bfrj.b((String)localObject1);
+        bfrj.a(QQHeadDownloadHandler.access$100(this.this$0), (String)localObject1);
         continue;
       }
-      localObject1 = "stranger_" + this.jdField_a_of_type_AvatarInfoQQHeadInfo.idType + "_" + (String)localObject1;
-      bhhz.a((String)localObject1);
-      bhhz.b((String)localObject1);
-      bhhz.a(QQHeadDownloadHandler.a(this.this$0), (String)localObject1);
-      QQHeadDownloadHandler.a(this.this$0).notifyUI(45, true, this.jdField_a_of_type_ComTencentMobileqqDataSetting);
+      if (this.mInfo.dstUsrType != 32) {
+        continue;
+      }
+      localObject1 = "stranger_" + this.mInfo.idType + "_" + (String)localObject1;
+      bfrj.a((String)localObject1);
+      bfrj.b((String)localObject1);
+      bfrj.a(QQHeadDownloadHandler.access$100(this.this$0), (String)localObject1);
+      QQHeadDownloadHandler.access$000(this.this$0).notifyUI(45, true, this.mSetting);
       return;
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataSetting.getStatus() != 1001) && (this.jdField_a_of_type_ComTencentMobileqqDataSetting.getStatus() != 1002)) {
+      if ((this.mSetting.getStatus() != 1001) && (this.mSetting.getStatus() != 1002)) {
         break;
       }
-      ((EntityManager)localObject1).update(this.jdField_a_of_type_ComTencentMobileqqDataSetting);
+      ((EntityManager)localObject1).update(this.mSetting);
       break;
-      if (this.jdField_a_of_type_AvatarInfoQQHeadInfo.dstUsrType == 4)
+      if (this.mInfo.dstUsrType == 4)
       {
         i = 1;
       }
-      else if (this.jdField_a_of_type_AvatarInfoQQHeadInfo.dstUsrType == 11)
+      else if (this.mInfo.dstUsrType == 11)
       {
         i = 3;
       }
+      else if (this.mInfo.dstUsrType == 32)
+      {
+        i = 1003;
+      }
       else
       {
-        k = this.jdField_a_of_type_AvatarInfoQQHeadInfo.dstUsrType;
-        if (k == 32) {
-          i = 1003;
+        k = this.mInfo.dstUsrType;
+        if (k == 116) {
+          i = 1045;
         }
       }
     }

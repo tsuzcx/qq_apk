@@ -1,21 +1,12 @@
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
-
-class njb
-  implements WtTicketPromise
+public abstract interface njb
 {
-  njb(niz paramniz) {}
+  public abstract boolean a();
   
-  public void Done(Ticket paramTicket)
-  {
-    niz.a(this.a, false);
-    this.a.h();
-  }
+  public abstract void b();
   
-  public void Failed(ErrMsg paramErrMsg) {}
+  public abstract void c();
   
-  public void Timeout(ErrMsg paramErrMsg) {}
+  public abstract void d();
 }
 
 

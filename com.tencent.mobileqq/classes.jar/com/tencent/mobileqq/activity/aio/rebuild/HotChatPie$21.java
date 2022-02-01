@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ailn;
-import aimc;
-import amot;
+import ahgz;
+import ahho;
+import aljn;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.TextView;
-import bhnv;
-import bjus;
+import biae;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.XListView;
@@ -18,19 +18,19 @@ import mqq.manager.TicketManager;
 public class HotChatPie$21
   implements Runnable
 {
-  public HotChatPie$21(ailn paramailn, int paramInt1, int paramInt2) {}
+  public HotChatPie$21(ahgz paramahgz, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     int j = 1;
-    if (!bhnv.g(this.this$0.jdField_a_of_type_AndroidContentContext)) {
-      QQToast.a(this.this$0.jdField_a_of_type_AndroidContentContext, 1, this.this$0.jdField_a_of_type_AndroidContentContext.getString(2131693966), 0).a();
+    if (!NetworkUtil.isNetworkAvailable(this.this$0.mContext)) {
+      QQToast.a(this.this$0.mContext, 1, this.this$0.mContext.getString(2131694065), 0).a();
     }
     while ((this.this$0.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo == null) || (!this.this$0.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.isBuLuoHotChat())) {
       return;
     }
-    Object localObject1 = (TicketManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-    Object localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    Object localObject1 = (TicketManager)this.this$0.app.getManager(2);
+    Object localObject2 = this.this$0.app.getCurrentAccountUin();
     if (localObject1 != null) {}
     for (localObject1 = ((TicketManager)localObject1).getSkey((String)localObject2);; localObject1 = null)
     {
@@ -46,11 +46,11 @@ public class HotChatPie$21
         localBundle.putString("start", i + "");
         localBundle.putString("Cookie", "uin=o" + (String)localObject2 + ";skey=" + (String)localObject1);
         localBundle.putString("Referer", String.format("https://buluo.qq.com/mobile/barindex.html?bid=%s&scene=detail_titleNav&_wv=1027", new Object[] { localObject3 }));
-        localObject1 = this.this$0.jdField_a_of_type_AndroidContentContext;
+        localObject1 = this.this$0.mContext;
         localObject2 = this.this$0.jdField_a_of_type_ComTencentWidgetXListView;
-        localObject3 = this.this$0.jdField_a_of_type_Amot;
-        localObject4 = ailn.a(this.this$0);
-        localTextView = this.this$0.n;
+        localObject3 = this.this$0.jdField_a_of_type_Aljn;
+        localObject4 = ahgz.a(this.this$0);
+        localTextView = this.this$0.c;
         if (this.b != 0) {
           break label357;
         }
@@ -58,7 +58,7 @@ public class HotChatPie$21
       label357:
       for (int i = j;; i = 2)
       {
-        new bjus("https://buluo.qq.com/cgi-bin/bar/post/get_post_from_reliao", "GET", new aimc((Context)localObject1, (XListView)localObject2, (amot)localObject3, (PullRefreshHeader)localObject4, localTextView, i)).a(localBundle);
+        new biae("https://buluo.qq.com/cgi-bin/bar/post/get_post_from_reliao", "GET", new ahho((Context)localObject1, (XListView)localObject2, (aljn)localObject3, (PullRefreshHeader)localObject4, localTextView, i)).a(localBundle);
         return;
         i = this.b;
         break;

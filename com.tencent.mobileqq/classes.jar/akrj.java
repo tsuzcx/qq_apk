@@ -1,27 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
 
-class akrj
-  implements DialogInterface.OnClickListener
+public class akrj
+  implements View.OnClickListener
 {
-  akrj(akrf paramakrf, QQAppInterface paramQQAppInterface) {}
+  public akrj(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.i();
+    if (((!QLog.isColorLevel()) || (!FileUtils.deleteFile(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()))) || (akrw.a == 1)) {
+      akrx.b("", "0X8005F5B", "0");
     }
     for (;;)
     {
-      this.jdField_a_of_type_Akrf.a.dismiss();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6C", "0X8009B6C", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Akrf.b();
-      akrf.a(this.jdField_a_of_type_Akrf, akrf.a(this.jdField_a_of_type_Akrf), true, Long.valueOf(akrf.b(this.jdField_a_of_type_Akrf)).longValue(), false);
-      continue;
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6D", "0X8009B6D", 0, 0, "", "", "", "");
-      akrf.a(this.jdField_a_of_type_Akrf, akrf.a(this.jdField_a_of_type_Akrf), true, Long.valueOf(akrf.b(this.jdField_a_of_type_Akrf)).longValue(), true);
+      akrx.b("", "0X8005F5B", "1");
     }
   }
 }

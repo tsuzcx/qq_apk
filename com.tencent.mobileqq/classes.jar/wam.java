@@ -1,26 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.biz.qqcircle.widgets.QCircleFuelRankItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StRankingItem;
+import com.tencent.biz.qqstory.msgTabNode.view.viewholder.MsgNodeViewHolder.1.1;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class wam
-  implements View.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  public wam(QCircleFuelRankItemView paramQCircleFuelRankItemView, FeedCloudMeta.StRankingItem paramStRankingItem) {}
+  wam(wal paramwal) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (QCircleFuelRankItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView) != null) {
-      vtr.a(89, 1, ((vfu)QCircleFuelRankItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView)).a(), this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView.e());
-    }
-    QCircleInitBean localQCircleInitBean = new QCircleInitBean();
-    localQCircleInitBean.setUser(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StRankingItem.user);
-    localQCircleInitBean.setFromReportBean(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView.a().clone().setElementIdStr("portrait"));
-    uyx.b(paramView.getContext(), localQCircleInitBean);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ThreadManager.getUIHandler().postDelayed(new MsgNodeViewHolder.1.1(this), 1000L);
   }
 }
 

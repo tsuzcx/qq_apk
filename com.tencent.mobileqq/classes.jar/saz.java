@@ -1,26 +1,20 @@
-import android.graphics.Bitmap;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$captureAndUpload$1", "Lcom/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$CaptureViewCallback;", "onCaptureFailed", "", "onCaptureSuccess", "bitmap", "Landroid/graphics/Bitmap;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class saz
-  implements sax
+class saz
+  extends sif
 {
-  saz(rjx paramrjx) {}
+  saz(sab paramsab) {}
   
-  public void a()
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    rjx localrjx = this.jdField_a_of_type_Rjx;
-    if (localrjx != null) {
-      localrjx.a(1, "");
+    if ((paramVideoInfo != null) && (!TextUtils.isEmpty(paramVideoInfo.g)))
+    {
+      shq.a(sab.a(this.a), rsl.a(paramVideoInfo), sab.a(this.a).a(paramVideoInfo.g), 2, 0);
+      shq.a(paramVideoInfo.g, 2, 1);
     }
-  }
-  
-  public void a(@NotNull Bitmap paramBitmap)
-  {
-    Intrinsics.checkParameterIsNotNull(paramBitmap, "bitmap");
-    saw.a(this.jdField_a_of_type_Saw, paramBitmap, this.jdField_a_of_type_Rjx);
   }
 }
 

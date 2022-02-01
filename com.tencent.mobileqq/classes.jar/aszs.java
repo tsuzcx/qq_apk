@@ -1,21 +1,21 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-
 public class aszs
-  extends RecyclerView.AdapterDataObserver
 {
-  public aszs(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b = 1;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
+  private String e;
   
-  public void onChanged()
+  public aszs()
   {
-    if (this.a.jdField_a_of_type_Aszx.a() == 0)
-    {
-      this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Aszy);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Aszy);
-    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(this.a.jdField_a_of_type_Aszy);
+    this.jdField_a_of_type_JavaLangString = "share_file";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

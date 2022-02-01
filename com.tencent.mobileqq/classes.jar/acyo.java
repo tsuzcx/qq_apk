@@ -1,34 +1,78 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Rect;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxEnterImageView;
-import com.tencent.gdtad.views.videoimax.TransitionContext;
+import android.graphics.PointF;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.BubblePopupWindow;
 
 public class acyo
-  implements ValueAnimator.AnimatorUpdateListener
+  implements afce, View.OnClickListener, bjoy
 {
-  public acyo(TransitionContext paramTransitionContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, Rect paramRect) {}
+  protected PointF a;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public acyo(ChatHistory paramChatHistory)
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    int j = this.jdField_a_of_type_Int;
-    int k = Math.round((0 - this.jdField_a_of_type_Int) * f1);
-    int m = this.b;
-    int n = Math.round((0 - this.b) * f1);
-    int i1 = this.c;
-    int i2 = Math.round((this.d - this.c) * f1);
-    if (this.e < TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).getHeight()) {}
-    for (int i = TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).getHeight();; i = this.e)
-    {
-      int i3 = this.f;
-      i = Math.round((i - this.f) * f1);
-      this.jdField_a_of_type_AndroidGraphicsRect.set(k + j, n + m, i2 + i1, i + i3);
-      TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).setClipBoundsCompact(this.jdField_a_of_type_AndroidGraphicsRect);
-      TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).invalidate();
-      acvc.a("TransitionContext", "onAnimationUpdate() mPreviewView.getHeight = [" + TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).getHeight() + "]");
-      return;
+    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
+  }
+  
+  void a(View paramView)
+  {
+    MotionEvent localMotionEvent = MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), 3, 0.0F, 0.0F, 0);
+    paramView.dispatchTouchEvent(localMotionEvent);
+    localMotionEvent.recycle();
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView.getId() == 2131365382) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
     }
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = null;
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) && (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b()))
+    {
+      a(paramView);
+      return false;
+    }
+    bgaz localbgaz = new bgaz();
+    localbgaz.a(2131365382, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.getString(2131690679), 2130838966);
+    if (localbgaz.a() > 0)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((acyp)ChatHistory.a(paramView)).jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      int i = (int)this.jdField_a_of_type_AndroidGraphicsPointF.y;
+      int j = AIOUtils.dp2px(10.0F, paramView.getResources());
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bfue.a(paramView, (int)this.jdField_a_of_type_AndroidGraphicsPointF.x, i - j, localbgaz, this, null);
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(this);
+      a(paramView);
+      return true;
+    }
+    a(paramView);
+    return false;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPointF.x = paramMotionEvent.getRawX();
+      this.jdField_a_of_type_AndroidGraphicsPointF.y = paramMotionEvent.getRawY();
+    }
+    return false;
   }
 }
 

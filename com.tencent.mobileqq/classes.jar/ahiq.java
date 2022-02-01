@@ -1,17 +1,27 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahiq
-  extends ahkx
+  implements View.OnClickListener
 {
-  ahiq(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahiq(ahik paramahik) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new ahps(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    Object localObject = paramView.getTag();
+    if (!(localObject instanceof Integer)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      String str = this.a.sessionInfo.curFriendUin;
+      if (this.a.sessionInfo.curType == 1006) {
+        str = this.a.sessionInfo.contactUin;
+      }
+      ahik.a(this.a, (Integer)localObject, str);
+    }
   }
 }
 

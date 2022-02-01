@@ -1,13 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XEditTextEx;
 
-public class afse
-  implements DialogInterface.OnClickListener
+class afse
+  implements View.OnClickListener
 {
-  public afse(TroopDisbandActivity paramTroopDisbandActivity) {}
+  afse(afsd paramafsd, String paramString1, String paramString2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    try
+    {
+      if (!this.jdField_a_of_type_JavaLangString.equals("0"))
+      {
+        afsd.a(this.jdField_a_of_type_Afsd).input.getText().clear();
+        afsd.a(this.jdField_a_of_type_Afsd).c(afsd.a(this.jdField_a_of_type_Afsd));
+      }
+      int i = afsd.a(this.jdField_a_of_type_Afsd).input.getSelectionStart();
+      Editable localEditable = afsd.a(this.jdField_a_of_type_Afsd).input.getText();
+      this.jdField_a_of_type_Afsd.a = true;
+      localEditable.insert(i, this.b);
+      this.jdField_a_of_type_Afsd.a = false;
+      afsd.a(this.jdField_a_of_type_Afsd).input.setSelection(localEditable.length());
+      this.jdField_a_of_type_Afsd.a();
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("QWalletAIOLifeCycleHelper", 1, "onclick  PasswdRedBagTips throw an exception: " + localThrowable);
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

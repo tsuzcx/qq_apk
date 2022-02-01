@@ -1,7 +1,26 @@
-final class bobk
-  implements bhvb
+public class bobk
 {
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  public aydp a;
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    if (this.a == null) {
+      this.a = new aydp();
+    }
+    this.a.a = paramString1;
+    this.a.b = paramString2;
+    ayde.b(this, paramString1, paramString2);
+  }
+  
+  protected boolean a()
+  {
+    return false;
+  }
 }
 
 

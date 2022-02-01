@@ -20,12 +20,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
-import bbdo;
-import bbds;
-import bbdt;
-import bhtq;
+import azyj;
+import azyt;
+import azyu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.util.WeakReference;
@@ -35,7 +35,7 @@ public class ResourceGrabView
   implements View.OnClickListener
 {
   private long jdField_a_of_type_Long;
-  private Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new bbdt(this);
+  private Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new azyu(this);
   private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
   private WindowManager jdField_a_of_type_AndroidViewWindowManager;
   private Button jdField_a_of_type_AndroidWidgetButton;
@@ -60,7 +60,7 @@ public class ResourceGrabView
   public ResourceGrabView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2131558933, this, true);
+    LayoutInflater.from(paramContext).inflate(2131558941, this, true);
     c();
   }
   
@@ -90,15 +90,15 @@ public class ResourceGrabView
   {
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)getContext().getSystemService("window"));
     GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setCornerRadius(bhtq.b(6.0F));
+    localGradientDrawable.setCornerRadius(ViewUtils.dpToPx(6.0F));
     localGradientDrawable.setColor(-1);
-    localGradientDrawable.setStroke(bhtq.b(1.5F), getResources().getColor(2131167098));
+    localGradientDrawable.setStroke(ViewUtils.dpToPx(1.5F), getResources().getColor(2131167120));
     setBackgroundDrawable(localGradientDrawable);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363957));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363936));
-    this.c = ((Button)findViewById(2131363765));
-    this.d = ((Button)findViewById(2131363757));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380053));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363982));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363962));
+    this.c = ((Button)findViewById(2131363794));
+    this.d = ((Button)findViewById(2131363786));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379805));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.c.setOnClickListener(this);
@@ -108,7 +108,7 @@ public class ResourceGrabView
   
   private void d()
   {
-    setOnTouchListener(new bbds(this));
+    setOnTouchListener(new azyt(this));
   }
   
   private void e()
@@ -138,7 +138,7 @@ public class ResourceGrabView
     try
     {
       this.jdField_a_of_type_AndroidViewWindowManager.removeView(this);
-      bbdo.a().a = null;
+      azyj.a().a = null;
       a(false);
       BaseApplicationImpl.getApplication().unregisterActivityLifecycleCallbacks(this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks);
       return;

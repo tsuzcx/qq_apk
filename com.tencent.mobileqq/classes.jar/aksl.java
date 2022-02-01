@@ -1,103 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-class aksl
-  extends Handler
+public class aksl
+  implements View.OnLayoutChangeListener
 {
-  private aksl(aksk paramaksk) {}
+  public aksl(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                    if (QLog.isColorLevel()) {
-                      QLog.d("carverW VideoPlayController", 2, "MEDIA_PREPAREING ");
-                    }
-                    aksk.a(this.a, 2);
-                    return;
-                    if (QLog.isColorLevel()) {
-                      QLog.d("carverW VideoPlayController", 2, "onPrepared  getAutoPlayFlag=" + this.a.a());
-                    }
-                    if (this.a.jdField_a_of_type_Aksm != null) {
-                      this.a.jdField_a_of_type_Aksm.a(this.a.jdField_a_of_type_Akss, this.a.b());
-                    }
-                    if (this.a.a())
-                    {
-                      this.a.l();
-                      this.a.a(false);
-                      return;
-                    }
-                    aksk.a(this.a, 3);
-                    return;
-                    if (QLog.isColorLevel()) {
-                      QLog.d("carverW VideoPlayController", 2, "onSeekComplete");
-                    }
-                  } while (this.a.jdField_a_of_type_Aksm == null);
-                  this.a.jdField_a_of_type_Aksm.v();
-                  return;
-                  if (QLog.isColorLevel()) {
-                    QLog.d("carverW VideoPlayController", 2, "onPlaybackComplete");
-                  }
-                  aksk.a(this.a, true);
-                  this.a.a(0);
-                  this.a.b(0);
-                  if (this.a.jdField_a_of_type_Aksm != null) {
-                    this.a.jdField_a_of_type_Aksm.c(this.a.jdField_a_of_type_Akss);
-                  }
-                  aksk.a(this.a, 0);
-                  return;
-                } while (!QLog.isColorLevel());
-                QLog.d("carverW VideoPlayController", 2, "onVideoSizeChanged");
-                return;
-                if (QLog.isColorLevel()) {
-                  QLog.d("carverW VideoPlayController", 2, "MEDIA_INSTALL_SUCCESS");
-                }
-              } while ((this.a.jdField_a_of_type_Akqg == null) || (this.a.jdField_a_of_type_AndroidAppActivity == null));
-              this.a.jdField_a_of_type_AndroidViewView = this.a.jdField_a_of_type_Akqg.a(this.a.jdField_a_of_type_AndroidAppActivity);
-            } while ((this.a.jdField_a_of_type_AndroidViewView == null) || (this.a.jdField_a_of_type_AndroidAppActivity == null));
-            aksk.a(this.a, this.a.jdField_a_of_type_AndroidAppActivity);
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("carverW VideoPlayController", 2, "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
-            }
-            this.a.a(paramMessage.arg1, paramMessage.arg2);
-            return;
-          } while (this.a.jdField_a_of_type_Aksm == null);
-          if (paramMessage.arg1 == 929)
-          {
-            this.a.jdField_a_of_type_Aksm.d(this.a.jdField_a_of_type_Akss);
-            this.a.b(8);
-            return;
-          }
-        } while (paramMessage.arg1 != 92);
-        this.a.jdField_a_of_type_Aksm.a(this.a.jdField_a_of_type_Akss, paramMessage.arg2);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("carverW VideoPlayController", 2, "onDownloading isClickToStart=" + aksk.a(this.a));
-        }
-      } while ((this.a.jdField_a_of_type_Aksm == null) || (!aksk.a(this.a)));
-      this.a.jdField_a_of_type_Aksm.b(this.a.jdField_a_of_type_Akss, paramMessage.arg1);
-    } while (aksk.a(this.a) == 4);
-    this.a.b(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.removeOnLayoutChangeListener(this);
+    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, this.jdField_a_of_type_Int, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.addOnLayoutChangeListener(new aksm(this));
   }
 }
 

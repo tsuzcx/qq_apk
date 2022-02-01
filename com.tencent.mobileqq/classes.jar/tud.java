@@ -1,55 +1,165 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdVideoGuide;
+import cooperation.qzone.util.NetworkState;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class tud
-  implements BusinessObserver
+public class tud
+  implements qdy
 {
-  tud(tub paramtub, tua paramtua) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderFeedAdapter", 2, "do unfollow->uin:" + this.jdField_a_of_type_Tua.a + ", success:" + String.valueOf(paramBoolean));
-    }
-    if ((tub.a(this.jdField_a_of_type_Tub) != null) && (tub.a(this.jdField_a_of_type_Tub).isResume())) {
-      tub.a(this.jdField_a_of_type_Tub).b(false);
-    }
-    if (!paramBoolean) {
-      tub.a(this.jdField_a_of_type_Tub);
-    }
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return pzg.a(paramInt, paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2)
+  {
+    ViewBase localViewBase = paramContainer.getVirtualView();
+    if ((parampvc != null) && ((parampvc.a() instanceof AdvertisementInfo)) && (((AdvertisementInfo)parampvc.a()).isHideForAnimate)) {}
     for (;;)
     {
       return;
-      try
+      Object localObject1;
+      Object localObject2;
+      if (NetworkState.isWifiConn())
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
-          localUnFollowResponse.mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() == 0)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ServiceAccountFolderFeedAdapter", 2, "unfollow success");
-            }
-            tub.b(this.jdField_a_of_type_Tub, this.jdField_a_of_type_Tua);
-            StructLongMessageDownloadProcessor.a(tub.a(this.jdField_a_of_type_Tub), this.jdField_a_of_type_Tua.a);
-            ((bgre)tub.a(this.jdField_a_of_type_Tub).getManager(132)).a(this.jdField_a_of_type_Tua.a);
-            return;
-          }
-          tub.a(this.jdField_a_of_type_Tub);
-          return;
+        localObject1 = localViewBase.findViewBaseByName("id_large_video_icon");
+        if (localObject1 != null) {
+          ((ViewBase)localObject1).setVisibility(0);
+        }
+        localObject1 = localViewBase.findViewBaseByName("id_video_bg");
+        if (localObject1 != null) {
+          ((ViewBase)localObject1).setVisibility(8);
+        }
+        pai.a(false, localViewBase, null);
+        if ((parampvc == null) || (!(parampvc.a() instanceof AdvertisementInfo)) || (!((AdvertisementInfo)parampvc.a()).isShowingGuide)) {
+          break label559;
+        }
+        localObject1 = (AdvertisementInfo)parampvc.a();
+        localObject2 = localViewBase.findViewBaseByName("id_large_video_icon");
+        if (localObject2 != null) {
+          ((ViewBase)localObject2).setVisibility(8);
+        }
+        localObject2 = localViewBase.findViewBaseByName("id_video_bg");
+        if (localObject2 != null) {
+          ((ViewBase)localObject2).setVisibility(8);
+        }
+        localObject2 = localViewBase.findViewBaseByName("id_large_video_duration");
+        if ((localObject2 != null) && (((ViewBase)localObject2).getNativeView() != null)) {
+          ((ViewBase)localObject2).getNativeView().setVisibility(8);
+        }
+        paramContainer = ((View)paramContainer.getParent()).findViewById(2131362063);
+        if ((paramContainer instanceof ReadInJoyAdVideoGuide)) {
+          paramContainer.setVisibility(0);
         }
       }
-      catch (Exception paramBundle) {}
+      try
+      {
+        localObject2 = new JSONObject(((AdvertisementInfo)localObject1).mAdExt).optString("pkg_name");
+        ((ReadInJoyAdVideoGuide)paramContainer).setAppInfo(((AdvertisementInfo)localObject1).mAdProductType, ((AdvertisementInfo)localObject1).mAdCorporateLogo, ((AdvertisementInfo)localObject1).mAdCorporationName, (String)localObject2, twr.d((AdvertisementInfo)localObject1), (AdvertisementInfo)localObject1);
+        while ((parampvc != null) && (parampvc.a() != null) && (AdvertisementInfo.isAdvertisementInfo(parampvc.a())))
+        {
+          paramContainer = localViewBase.findViewBaseByName("id_view_AdDownloadView");
+          if ((paramContainer instanceof tyx)) {
+            ((tyx)paramContainer).a(parampvc, true);
+          }
+          paramContainer = localViewBase.findViewBaseByName("id_view_Ad_CompleteGudie");
+          if (!(paramContainer instanceof qhg)) {
+            break;
+          }
+          parampvc = (AdvertisementInfo)parampvc.a();
+          paramContainer.setTag(parampvc);
+          if (parampvc.mChannelID != 0L) {
+            break label612;
+          }
+          paramContainer.setVisibility(0);
+          return;
+          localObject1 = localViewBase.findViewBaseByName("id_large_video_icon");
+          if (localObject1 != null) {
+            ((ViewBase)localObject1).setVisibility(8);
+          }
+          localObject1 = localViewBase.findViewBaseByName("id_video_bg");
+          if (localObject1 != null) {
+            ((ViewBase)localObject1).setVisibility(0);
+          }
+          localObject2 = (NativeText)localViewBase.findViewBaseByName("id_video_paly_text");
+          if (localObject2 != null)
+          {
+            localObject1 = amtj.a(2131698968);
+            if (bgoa.a() == 1)
+            {
+              localObject1 = amtj.a(2131698967);
+              label456:
+              ((NativeText)localObject2).setText((CharSequence)localObject1);
+            }
+          }
+          else
+          {
+            if (parampvc == null) {
+              break label553;
+            }
+          }
+          label553:
+          for (localObject1 = parampvc.a();; localObject1 = null)
+          {
+            pai.a(localViewBase, (BaseArticleInfo)localObject1);
+            break;
+            if (parampvc == null) {
+              break label643;
+            }
+            ArticleInfo localArticleInfo = parampvc.a();
+            if (!(localArticleInfo instanceof AdvertisementInfo)) {
+              break label643;
+            }
+            long l = ((AdvertisementInfo)localArticleInfo).mAdVideoFileSize;
+            if (l <= 0L) {
+              break label643;
+            }
+            localObject1 = rwv.b(l) + amtj.a(2131698969);
+            break label456;
+          }
+          label559:
+          paramContainer = ((View)paramContainer.getParent()).findViewById(2131362063);
+          if (paramContainer != null) {
+            paramContainer.setVisibility(8);
+          }
+          paramContainer = localViewBase.findViewBaseByName("id_large_video_duration");
+          if ((paramContainer != null) && (paramContainer.getNativeView() != null)) {
+            paramContainer.getNativeView().setVisibility(0);
+          }
+        }
+        label612:
+        if ((parampvc.isShowingGuide) && (parampvc.mShowAdButton))
+        {
+          paramContainer.setVisibility(0);
+          return;
+        }
+        paramContainer.setVisibility(8);
+        return;
+      }
+      catch (JSONException paramContainer)
+      {
+        label643:
+        for (;;) {}
+      }
     }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

@@ -1,19 +1,59 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class omx
-  implements pqb
+public class omx
+  implements CompoundButton.OnCheckedChangeListener
 {
-  omx(omw paramomw) {}
+  public omx(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void a(int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((omw.a(this.a) != null) && (omw.a(this.a).a != null))
+    ReadInJoySettingActivity.c(this.a, paramBoolean);
+    int i;
+    label51:
+    QQAppInterface localQQAppInterface;
+    String str1;
+    if (paramBoolean)
     {
-      if (omw.a(this.a).a.mSocialFeedInfo == null) {
-        omw.a(this.a).a.mSocialFeedInfo = new SocializeFeedsInfo();
+      QQToast.a(this.a.getBaseContext(), 2, 2131717529, 2000).a();
+      ReadInJoySettingActivity.a(this.a).setText(2131717528);
+      if (!paramBoolean) {
+        break label159;
       }
-      omw.a(this.a).a.mSocialFeedInfo.a.a = paramInt;
+      i = 1;
+      bkwm.d(i);
+      bkwm.a(paramBoolean);
+      bkwm.a(true);
+      localQQAppInterface = this.a.a;
+      if (!paramBoolean) {
+        break label164;
+      }
+      str1 = "0X8008236";
+      label81:
+      if (!paramBoolean) {
+        break label171;
+      }
+    }
+    label159:
+    label164:
+    label171:
+    for (String str2 = "0X8008236";; str2 = "0X8008235")
+    {
+      odq.a(localQQAppInterface, "CliOper", "", "", str1, str2, 0, 1, "", "", "", "", false);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      QQToast.a(this.a.getBaseContext(), 2, 2131717527, 2000).a();
+      ReadInJoySettingActivity.a(this.a).setText(2131717531);
+      break;
+      i = 0;
+      break label51;
+      str1 = "0X8008235";
+      break label81;
     }
   }
 }

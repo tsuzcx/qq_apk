@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import apqt;
-import apqu;
+import aokg;
+import aokh;
 
 public class MiniRecog$2
   implements Runnable
 {
-  public MiniRecog$2(apqt paramapqt, long paramLong) {}
+  public MiniRecog$2(aokg paramaokg, long paramLong) {}
   
   public void run()
   {

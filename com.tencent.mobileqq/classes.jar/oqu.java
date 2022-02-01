@@ -1,5 +1,4 @@
 import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
@@ -10,24 +9,19 @@ import kotlin.jvm.internal.Intrinsics;
 final class oqu
   implements ViewBase.OnClickListener
 {
-  oqu(otp paramotp, otd paramotd, Container paramContainer) {}
+  oqu(ouc paramouc, ouo paramouo) {}
   
   public final void onClick(ViewBase paramViewBase)
   {
-    if (this.jdField_a_of_type_Otp.a == null) {}
+    if ((this.jdField_a_of_type_Ouc.a() == null) || (this.jdField_a_of_type_Ouo.a == null)) {}
     do
     {
       return;
-      if (tpk.a(this.jdField_a_of_type_Otp))
-      {
-        paramViewBase = this.jdField_a_of_type_Otd.a();
-        Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
-        tpk.a(paramViewBase.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Otp, 2);
-        return;
-      }
-      paramViewBase = this.jdField_a_of_type_Otp.a.medalInfo;
-    } while ((paramViewBase == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null));
-    ozs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+      paramViewBase = this.jdField_a_of_type_Ouc.a();
+      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "adapter.vafContext");
+      pay.a(paramViewBase.getContext(), this.jdField_a_of_type_Ouo.a.activityJumpUrl);
+    } while (this.jdField_a_of_type_Ouc.a() == null);
+    this.jdField_a_of_type_Ouc.a().e(this.jdField_a_of_type_Ouo);
   }
 }
 

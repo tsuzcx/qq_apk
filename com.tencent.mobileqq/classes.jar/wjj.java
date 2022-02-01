@@ -1,13 +1,7 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-
 public class wjj
+  extends wjk
 {
-  public static Dispatcher a()
-  {
-    return Dispatchers.get(ThreadManager.getSubThreadLooper());
-  }
+  public String a;
 }
 
 

@@ -1,115 +1,119 @@
 import android.content.Context;
-import android.content.Intent;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.ecshopassit.view.MinusViewBotomView;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import tencent.im.oidb.qqshop.qq_ad.QQAdGet;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import mqq.app.AppRuntime;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class ofp
-  implements ofs
+  implements apts<String>
 {
-  private List<ChatMessage> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private String jdField_a_of_type_JavaLangString = "";
+  private ArrayList<uey> jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
   private boolean jdField_a_of_type_Boolean;
   
-  private void a(List<ChatMessage> paramList)
+  public static ofp a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      paramList = (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(0);
-      if ((paramList != null) && (ofz.a(ofz.a(paramList)))) {
-        this.jdField_a_of_type_JavaUtilList.remove(paramList);
-      }
-    }
-  }
-  
-  public void a(Context paramContext)
-  {
-    if (paramContext != null) {
-      paramContext.sendBroadcast(new Intent("com.tencent.biz.pubaccount.ecshop.tabpage.finish"));
-    }
-    ogd.a().a.clear();
-  }
-  
-  public void a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {
-      return;
-    }
-    ofz.a(paramMessageRecord.uniseq);
-  }
-  
-  public void a(List<ChatMessage> paramList, oft paramoft)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("EcshopMinusViewChatPie", 2, "messageArrayList.size: " + this.jdField_a_of_type_JavaUtilList.size());
-    }
-    a(paramList);
-    paramList = ofz.a(paramList);
-    if ((paramList != null) && (ofz.a(ofz.a(paramList))))
-    {
-      paramList.saveExtInfoToExtStr("add_title", "minus_view_title_first");
-      this.jdField_a_of_type_JavaUtilList.add(0, paramList);
-    }
-    if (paramoft != null) {
-      paramoft.a(this.jdField_a_of_type_JavaUtilList);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    paramList = new qq_ad.QQAdGet();
     try
     {
-      if (ofz.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime())) {
-        paramList.trigger_type.set(22);
+      ofp localofp = (ofp)apul.a(paramString, ofp.class);
+      return localofp;
+    }
+    catch (QStorageInstantiateException localQStorageInstantiateException)
+    {
+      QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + paramString, localQStorageInstantiateException);
+    }
+    return null;
+  }
+  
+  public static ofp a(aptx[] paramArrayOfaptx)
+  {
+    ofp localofp = null;
+    int i = 0;
+    while (i < paramArrayOfaptx.length)
+    {
+      localofp = a(paramArrayOfaptx[i].jdField_a_of_type_JavaLangString);
+      i += 1;
+    }
+    return localofp;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface)) {
+        bfyz.f(((QQAppInterface)localAppRuntime).getApplication(), this.jdField_a_of_type_JavaLangString);
       }
-      for (;;)
+    }
+    while (!QLog.isColorLevel())
+    {
+      AppRuntime localAppRuntime;
+      return;
+    }
+    QLog.e("PublicAccountConfProcessor", 2, "updateEqqConfig fail");
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountConfProcessor", 2, "parseConfigXml xml: " + paramString);
+    }
+    try
+    {
+      if (!TextUtils.isEmpty(paramString))
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("EcshopMinusViewChatPie", 2, "<<<<<<<<<<<<<<sendRequest<<<<<<<<<");
+        this.jdField_a_of_type_JavaLangString = paramString;
+        paramString = paramString.trim();
+        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8"))).getElementsByTagName("public-account-folder");
+        int j = paramString.getLength();
+        Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+        if ((localObject1 instanceof QQAppInterface))
+        {
+          QQAppInterface localQQAppInterface = (QQAppInterface)localObject1;
+          localObject1 = ((AppRuntime)localObject1).getApplication();
+          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(j);
+          int i = 0;
+          while (i < j)
+          {
+            Object localObject2 = (Element)paramString.item(i);
+            localObject2 = new uey(localQQAppInterface, (Context)localObject1, Integer.parseInt(((Element)localObject2).getElementsByTagName("id").item(0).getFirstChild().getNodeValue()), ((Element)localObject2).getElementsByTagName("name").item(0).getFirstChild().getNodeValue(), ((Element)localObject2).getElementsByTagName("icon").item(0).getFirstChild().getNodeValue());
+            this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+            i += 1;
+          }
+          this.jdField_a_of_type_Boolean = true;
         }
-        ofd.a(paramList.toByteArray(), "trpc.qqshop.adpush.PushService.GetAd", new ofq(this, paramoft));
-        return;
-        paramList.trigger_type.set(18);
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      else if (QLog.isColorLevel())
       {
-        paramList.trigger_type.set(22);
+        QLog.d("PublicAccountConfProcessor", 2, "parsePublicAccountConfigXml xml is empty");
+        return;
       }
     }
-  }
-  
-  public boolean a(Context paramContext, RelativeLayout paramRelativeLayout)
-  {
-    paramContext = new MinusViewBotomView(paramContext);
-    paramContext.setTag("echopMinusViewBotomView");
-    paramContext.setBtnText(ofx.a());
-    paramRelativeLayout.addView(paramContext);
-    paramContext = (RelativeLayout.LayoutParams)paramContext.getLayoutParams();
-    if (paramContext != null)
+    catch (Exception paramString)
     {
-      paramContext.width = -1;
-      paramContext.height = -2;
-      paramContext.addRule(12);
+      if (QLog.isColorLevel()) {
+        QLog.e("PublicAccountConfProcessor", 2, "parsePublicAccountConfigXml error", paramString);
+      }
+      paramString.printStackTrace();
     }
-    return true;
   }
   
-  public boolean a(RelativeLayout paramRelativeLayout)
+  public void b()
   {
-    return (paramRelativeLayout != null) && (paramRelativeLayout.findViewWithTag("echopMinusViewBotomView") != null);
+    if (this.jdField_a_of_type_Boolean) {
+      uex.a(this.jdField_a_of_type_JavaUtilArrayList);
+    }
   }
 }
 

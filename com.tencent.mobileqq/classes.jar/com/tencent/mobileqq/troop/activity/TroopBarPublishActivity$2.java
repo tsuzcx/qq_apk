@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.activity;
 
 import android.view.View;
-import blgx;
+import bjmm;
 
 class TroopBarPublishActivity$2
   implements Runnable
@@ -11,7 +11,7 @@ class TroopBarPublishActivity$2
   public void run()
   {
     this.this$0.d.requestFocus();
-    blgx.a(this.this$0.d);
+    bjmm.a(this.this$0.d);
   }
 }
 

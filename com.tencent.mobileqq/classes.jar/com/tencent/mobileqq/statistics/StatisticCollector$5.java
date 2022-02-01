@@ -3,17 +3,16 @@ package com.tencent.mobileqq.statistics;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdmc;
 
-public class StatisticCollector$5
+class StatisticCollector$5
   implements Runnable
 {
-  public StatisticCollector$5(bdmc parambdmc) {}
+  StatisticCollector$5(StatisticCollector paramStatisticCollector) {}
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = bdmc.a().getSharedPreferences("pref_safemode_not_exit", 4);
-    if ((!bdmc.b) && (localSharedPreferences.getBoolean("key_not_exit_enable", false))) {
+    SharedPreferences localSharedPreferences = StatisticCollector.access$1000().getSharedPreferences("pref_safemode_not_exit", 4);
+    if ((!StatisticCollector.sCatchedNotExit) && (localSharedPreferences.getBoolean("key_not_exit_enable", false))) {
       localSharedPreferences.edit().clear().commit();
     }
   }

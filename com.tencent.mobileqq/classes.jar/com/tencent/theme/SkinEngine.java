@@ -115,10 +115,10 @@ public class SkinEngine
       bool = true;
       a = bool;
       if (Build.VERSION.SDK_INT < 24) {
-        break label621;
+        break label615;
       }
     }
-    label621:
+    label615:
     for (boolean bool = true;; bool = false)
     {
       b = bool;
@@ -127,12 +127,10 @@ public class SkinEngine
       mComposedIconInfoOfCM = null;
       IS_PROBLEM_CM11 = false;
       mIconResourceID = null;
-      String[] arrayOfString1 = { "drawable-xhdpi/", "drawable-xxxhdpi/", "drawable-xxhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" };
-      String[] arrayOfString2 = { "drawable-hdpi/", "drawable-xhdpi/", "drawable-xxhdpi/", "drawable-xxxhdpi/", "drawable-mdpi/", "drawable/" };
-      String[] arrayOfString3 = { "drawable-mdpi/", "drawable/", "drawable-hdpi/", "drawable-xhdpi/", "drawable-xxhdpi/", "drawable-xxxhdpi/" };
-      String[] arrayOfString4 = { "drawable-xxxhdpi/", "drawable-xxhdpi/", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" };
-      e = new String[][] { arrayOfString1, arrayOfString2, arrayOfString3, { "drawable-ldpi/", "drawable-mdpi/", "drawable-hdpi/", "drawable-xhdpi/", "drawable-xxhdpi/", "drawable-xxxhdpi/", "drawable/" }, { "drawable-xxhdpi/", "drawable-xxxhdpi/", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" }, arrayOfString4 };
-      f = new int[][] { { 320, 640, 480, 240, 160, 160 }, { 240, 320, 480, 640, 160, 160 }, { 160, 160, 240, 320, 480, 640 }, { 120, 160, 240, 320, 480, 640, 160 }, { 480, 640, 320, 240, 160, 160 }, { 640, 480, 320, 240, 160, 160 } };
+      e = new String[][] { { "drawable-xhdpi/", "drawable-xxxhdpi/", "drawable-xxhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" }, { "drawable-hdpi/", "drawable-xhdpi/", "drawable-xxhdpi/", "drawable-xxxhdpi/", "drawable-mdpi/", "drawable/" }, { "drawable-mdpi/", "drawable/", "drawable-hdpi/", "drawable-xhdpi/", "drawable-xxhdpi/", "drawable-xxxhdpi/" }, { "drawable-ldpi/", "drawable-mdpi/", "drawable-hdpi/", "drawable-xhdpi/", "drawable-xxhdpi/", "drawable-xxxhdpi/", "drawable/" }, { "drawable-xxhdpi/", "drawable-xxxhdpi/", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" }, { "drawable-xxxhdpi/", "drawable-xxhdpi/", "drawable-xhdpi/", "drawable-hdpi/", "drawable-mdpi/", "drawable/" } };
+      int[] arrayOfInt1 = { 160, 160, 240, 320, 480, 640 };
+      int[] arrayOfInt2 = { 120, 160, 240, 320, 480, 640, 160 };
+      f = new int[][] { { 320, 640, 480, 240, 160, 160 }, { 240, 320, 480, 640, 160, 160 }, arrayOfInt1, arrayOfInt2, { 480, 640, 320, 240, 160, 160 }, { 640, 480, 320, 240, 160, 160 } };
       g = 0;
       h = 1;
       i = 2;

@@ -1,6 +1,19 @@
-public abstract interface phj
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+final class phj
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  phj(Context paramContext, String paramString, View paramView) {}
+  
+  public void onClick(View paramView)
+  {
+    pay.d(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    psf.b(this.jdField_a_of_type_AndroidViewView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

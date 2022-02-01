@@ -1,22 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 class beed
-  implements View.OnClickListener
+  implements beef
 {
-  beed(beec parambeec) {}
+  beed(bedz parambedz, TroopEssenceMsgItem paramTroopEssenceMsgItem) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong, HashMap<bedw, bedx> paramHashMap)
   {
-    if ((paramView.getTag() instanceof bedx))
-    {
-      bedx localbedx = (bedx)paramView.getTag();
-      if ((this.a.a != null) && (localbedx.a.isClickable())) {
-        this.a.a.onClick(paramView);
-      }
+    if (paramHashMap == null) {
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    bedw localbedw = new bedw(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.troopUin, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.msgSeq, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.msgRandom);
+    bedx localbedx1 = new bedx(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.opType, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.msgSenderUin, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.opUin, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.opTime, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.graytipuniseq);
+    QLog.i("TroopEssenceMsgManager", 1, "updateEssenceMsgInfosByPush msgInfo:" + this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgItem.toString());
+    bedx localbedx2 = (bedx)paramHashMap.get(localbedw);
+    if ((localbedx2 != null) && (localbedx1.a <= localbedx2.a))
+    {
+      QLog.i("TroopEssenceMsgManager", 1, "updateEssenceMsgInfosByPush oldValue.opTime:" + localbedx2.a);
+      return;
+    }
+    paramHashMap.put(localbedw, localbedx1);
+    bedz.a(this.jdField_a_of_type_Bedz, paramLong);
+    this.jdField_a_of_type_Bedz.a(new TroopEssenceMsgItem(localbedw, localbedx1));
   }
 }
 

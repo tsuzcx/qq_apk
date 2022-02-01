@@ -1,39 +1,14 @@
-import android.graphics.Matrix;
-import android.graphics.Path;
-import java.util.LinkedList;
-import java.util.List;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.view.View;
 
-public class zem
-  extends zei
+class zem
+  implements zdw
 {
-  public Path a;
-  List<Integer> a;
-  public int b;
-  List<Integer> b;
-  public int c;
+  zem(zei paramzei) {}
   
-  public zem(Path paramPath, int paramInt)
+  public void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    super(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
-    this.jdField_b_of_type_JavaUtilList = new LinkedList();
-  }
-  
-  public zem(zei paramzei, float paramFloat)
-  {
-    super(paramzei.jdField_a_of_type_Int);
-    if ((paramzei instanceof zem))
-    {
-      paramzei = (zem)paramzei;
-      Matrix localMatrix = new Matrix();
-      localMatrix.postScale(paramFloat, paramFloat);
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramzei.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
-      this.jdField_a_of_type_Int = paramzei.jdField_a_of_type_Int;
-      this.jdField_b_of_type_Int = paramzei.jdField_b_of_type_Int;
-      this.c = ((int)(paramzei.c * paramFloat));
-    }
+    this.a.d(paramStFeed);
   }
 }
 

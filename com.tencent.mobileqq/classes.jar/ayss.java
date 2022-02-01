@@ -1,30 +1,28 @@
-import java.util.List;
-import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.NearbyPeople;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
-public class ayss
+class ayss
+  implements bjoj
 {
-  public static String a;
-  public static List<oidb_0x8dd.NearbyPeople> a;
+  ayss(aysl paramaysl, bjnw parambjnw) {}
   
-  static
+  public void a()
   {
-    jdField_a_of_type_JavaLangString = "0";
-  }
-  
-  public static String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public static List<oidb_0x8dd.NearbyPeople> a()
-  {
-    return jdField_a_of_type_JavaUtilList;
-  }
-  
-  public static void a(String paramString, List<oidb_0x8dd.NearbyPeople> paramList)
-  {
-    jdField_a_of_type_JavaUtilList = paramList;
-    jdField_a_of_type_JavaLangString = paramString;
+    View localView = this.jdField_a_of_type_Bjnw.a.findViewById(1);
+    if (localView == null) {}
+    for (localView = null;; localView = localView.findViewById(2131361969))
+    {
+      if (localView != null)
+      {
+        localView = aysl.a(this.jdField_a_of_type_Aysl, localView, 5, 5, 7, 5);
+        if (localView != null) {
+          new RedTouch(aysl.e(this.jdField_a_of_type_Aysl), localView).a(53).a().a(bfrj.a());
+        }
+      }
+      this.jdField_a_of_type_Bjnw.a(null);
+      return;
+    }
   }
 }
 

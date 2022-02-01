@@ -1,180 +1,93 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResultCallback;
-import java.util.Locale;
-import org.json.JSONObject;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class awmg
-  extends WebViewPlugin
-  implements awnk
+  extends BaseAdapter
 {
-  private EIPCResultCallback a;
-  protected String a;
-  private EIPCResultCallback b;
-  protected String b;
-  private String c;
+  private awmg(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public awmg()
+  public int getCount()
   {
-    this.jdField_a_of_type_EipcEIPCResultCallback = new awmh(this);
-    this.jdField_b_of_type_EipcEIPCResultCallback = new awmi(this);
-    this.mPluginNameSpace = "listenTogether";
+    if (this.a.jdField_a_of_type_JavaUtilList == null) {}
+    for (int i = 0;; i = this.a.jdField_a_of_type_JavaUtilList.size()) {
+      return Math.min(i, this.a.jdField_a_of_type_Int);
+    }
   }
   
-  public void a(JSONObject paramJSONObject)
+  public Object getItem(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherPlugin", 2, "statusChanged isDestroy:" + this.isDestroy + " data:" + paramJSONObject + " mCheckJoinCallback:" + this.jdField_a_of_type_JavaLangString + " mJoinListenCallback:" + this.jdField_b_of_type_JavaLangString);
+    if (this.a.jdField_a_of_type_JavaUtilList != null) {
+      return (awmf)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    if ((paramJSONObject != null) && (TextUtils.equals(paramJSONObject.optString("type"), "checkJoin"))) {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        localJSONObject = new JSONObject();
-      }
-    }
-    do
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    awmi localawmi;
+    String str;
+    FaceDrawable localFaceDrawable;
+    if (paramView == null)
     {
-      try
-      {
-        localJSONObject.put("canJoin", paramJSONObject.optInt("canJoin"));
-        localJSONObject.put("isOpener", paramJSONObject.optInt("isOpener"));
-        localJSONObject.put("uinType", paramJSONObject.optInt("uinType"));
-        callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
+      paramView = LayoutInflater.from(this.a).inflate(2131559504, paramViewGroup, false);
+      localawmi = new awmi(this.a, null);
+      localawmi.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367420));
+      localawmi.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367421));
+      localawmi.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131367419));
+      localawmi.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368007);
+      paramView.setTag(localawmi);
+      bhab localbhab = (bhab)this.a.app.getBusinessHandler(107);
+      awmf localawmf = (awmf)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+      str = localawmf.jdField_a_of_type_JavaLangString;
+      if ((!((amsw)this.a.app.getManager(51)).b(((awmf)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString)) && (!this.a.app.getCurrentAccountUin().equals(str))) {
+        break label341;
       }
-      catch (Throwable paramJSONObject)
-      {
-        QLog.e("ListenTogetherPlugin", 1, "statusChanged error:" + paramJSONObject.getMessage());
-        return;
+      localFaceDrawable = FaceDrawable.getFaceDrawable(this.a.app, 1, str);
+      label207:
+      localawmi.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localFaceDrawable);
+      localbhab.a(localawmi.jdField_a_of_type_AndroidWidgetTextView, str, "%s");
+      if (!localawmf.jdField_a_of_type_Boolean) {
+        break label362;
       }
-      if ((paramJSONObject == null) || (!TextUtils.equals(paramJSONObject.optString("type"), "joinListen"))) {
-        break;
+      localawmi.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      label248:
+      if ((!this.a.jdField_a_of_type_Boolean) || (localawmf.jdField_a_of_type_JavaLangString.equals(this.a.app.getCurrentAccountUin()))) {
+        break label374;
       }
-    } while (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
-    JSONObject localJSONObject = new JSONObject();
-    try
+      localawmi.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+      localawmi.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new awmh(this, paramInt, localbhab));
+    }
+    for (;;)
     {
-      localJSONObject.put("retCode", paramJSONObject.optInt("retCode"));
-      callJs(this.jdField_b_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-      this.jdField_b_of_type_JavaLangString = null;
-      return;
+      localawmi.jdField_a_of_type_Int = 1;
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      localawmi = (awmi)paramView.getTag();
+      break;
+      label341:
+      localFaceDrawable = FaceDrawable.getStrangerFaceDrawable(this.a.app, 200, str, 3);
+      break label207;
+      label362:
+      localawmi.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      break label248;
+      label374:
+      localawmi.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
     }
-    catch (Throwable paramJSONObject)
-    {
-      for (;;)
-      {
-        QLog.e("ListenTogetherPlugin", 1, "statusChanged error:" + paramJSONObject.getMessage());
-      }
-    }
-    dispatchJsEvent("musicStatusChange", paramJSONObject, null);
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherPlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
-    }
-    if ("listenTogether".equals(paramString2))
-    {
-      paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
-      if (paramJsBridgeListener == null) {}
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return true;
-              if (QLog.isColorLevel()) {
-                QLog.d("ListenTogetherPlugin", 2, "handleJsRequest JSON = " + paramJsBridgeListener.toString());
-              }
-              this.c = paramJsBridgeListener.optString("callback");
-            } while ("awakePlugin".equals(paramString3));
-            if (!"statusChanged".equals(paramString3)) {
-              break;
-            }
-            try
-            {
-              paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-              awnh.a(paramJsBridgeListener);
-              if (!"checkJoin".equals(paramJsBridgeListener.opt("type"))) {
-                continue;
-              }
-              if (paramJsBridgeListener != null)
-              {
-                this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
-                return true;
-              }
-            }
-            catch (Exception paramJsBridgeListener)
-            {
-              QLog.e("ListenTogetherPlugin", 1, "METHOD_STATUS_CHANGED exception e = ", paramJsBridgeListener);
-              return true;
-            }
-            this.jdField_a_of_type_JavaLangString = null;
-            return true;
-          } while (!"joinListen".equals(paramJsBridgeListener.opt("type")));
-          if (paramJsBridgeListener != null)
-          {
-            this.jdField_b_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
-            return true;
-          }
-          this.jdField_b_of_type_JavaLangString = null;
-          return true;
-          if (!"isOpener".equals(paramString3)) {
-            break;
-          }
-        } while (TextUtils.isEmpty(this.c));
-        awnh.a(paramJsBridgeListener, "isOpener", this.jdField_b_of_type_EipcEIPCResultCallback);
-        return true;
-        if (!"isShowAtmosphere".equals(paramString3)) {
-          break;
-        }
-      } while (TextUtils.isEmpty(this.c));
-      awnh.a(paramJsBridgeListener, "isShowAtmosphere", this.jdField_a_of_type_EipcEIPCResultCallback);
-      return true;
-      if ("setPlayerId".equals(paramString3))
-      {
-        awnh.a(paramJsBridgeListener, "setPlayerId", null);
-        return true;
-      }
-      if ("setThemeEnabled".equals(paramString3))
-      {
-        awnh.a(paramJsBridgeListener, "setThemeEnabled", null);
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    super.onActivityResult(paramIntent, paramByte, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherPlugin", 2, "onActivityResult requestCode=" + paramByte + "  resultCode=" + paramInt);
-    }
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherPlugin", 2, "onCreate");
-    }
-    awnh.a().a(this);
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherPlugin", 2, "onDestroy");
-    }
-    awnh.a().b(this);
   }
 }
 

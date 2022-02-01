@@ -1,8 +1,26 @@
-import android.os.Bundle;
+import android.view.View;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-public abstract interface nlu
+class nlu
+  implements AdapterView.OnItemClickListener
 {
-  public abstract void a(Bundle paramBundle);
+  nlu(nlt paramnlt, PoiMapActivity paramPoiMapActivity) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    this.jdField_a_of_type_Nlt.a(paramInt, true);
+    int i = this.jdField_a_of_type_Nlt.jdField_a_of_type_ComTencentBizPoiMapActivity.a.length;
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      if (this.jdField_a_of_type_Nlt.e != paramInt) {
+        this.jdField_a_of_type_Nlt.jdField_a_of_type_ComTencentBizPoiMapActivity.a[paramInt].a(-1, false);
+      }
+      paramInt += 1;
+    }
+  }
 }
 
 

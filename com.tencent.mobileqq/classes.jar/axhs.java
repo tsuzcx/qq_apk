@@ -1,30 +1,56 @@
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout;
 
 public class axhs
-  implements RadioGroup.OnCheckedChangeListener
+  implements GestureDetector.OnGestureListener
 {
-  public axhs(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  public axhs(OverCoverFrameLayout paramOverCoverFrameLayout) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, "checkedId = " + paramInt);
+    return true;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (Math.abs(paramFloat2) <= this.a.e) {}
+    while ((this.a.a != null) && (this.a.a.a())) {
+      return false;
     }
-    switch (paramInt)
-    {
+    if (paramFloat2 < 0.0F) {
+      this.a.a();
     }
     for (;;)
     {
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
-      return;
-      MsgBackupDateFragment.a(this.a, 1);
-      continue;
-      MsgBackupDateFragment.a(this.a, 2);
+      return true;
+      this.a.b();
     }
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (Math.abs(paramFloat2) <= this.a.d) {}
+    while ((this.a.a != null) && (this.a.a.a())) {
+      return false;
+    }
+    if (paramFloat2 > 0.0F) {
+      this.a.a();
+    }
+    for (;;)
+    {
+      return true;
+      this.a.b();
+    }
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

@@ -1,10 +1,10 @@
-import android.os.Bundle;
-
-public abstract interface lba
+public class lba
+  extends mwv
 {
-  public abstract void a();
-  
-  public abstract void a(Bundle paramBundle);
+  static
+  {
+    a(new lbb());
+  }
 }
 
 

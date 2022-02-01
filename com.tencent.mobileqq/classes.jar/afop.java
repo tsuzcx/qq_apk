@@ -1,48 +1,46 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Intent;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.widget.PatchedButton;
+import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
 
 public class afop
-  implements CompoundButton.OnCheckedChangeListener
+  implements afrc, afrp
 {
-  public afop(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  private BaseChatPie a;
+  protected PatchedButton a;
+  public AIOLongCaptureCtrl a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  afop(BaseChatPie paramBaseChatPie)
   {
-    int i = 1;
-    label61:
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
     {
-      SoundAndVibrateActivity.b(this.a, 0);
-      SoundAndVibrateActivity.e(this.a).setBackgroundResource(2130839456);
-      if (this.a.app.b() == 0)
-      {
-        this.a.b.setChecked(false);
-        this.a.app.f(1);
-        localQQAppInterface = this.a.app;
-        if (!paramBoolean) {
-          break label157;
-        }
-      }
-    }
-    for (;;)
-    {
-      bdll.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_notice_shake", 0, i, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    default: 
       return;
-      this.a.b.setChecked(true);
-      break;
-      SoundAndVibrateActivity.b(this.a, 8);
-      SoundAndVibrateActivity.e(this.a).setBackgroundResource(2130839440);
-      this.a.app.f(0);
-      break label61;
-      label157:
-      i = 0;
+    case 0: 
+      this.jdField_a_of_type_ComTencentWidgetPatchedButton = ((PatchedButton)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mAIORootView.findViewById(2131380490));
+      this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl = new AIOLongCaptureCtrl(new afoq(this));
+      bnbb.a(this.jdField_a_of_type_ComTencentWidgetPatchedButton, this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl);
+      return;
     }
+    bnbb.b(this.jdField_a_of_type_ComTencentWidgetPatchedButton, this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl != null) {
+      this.jdField_a_of_type_DovComQqImPtvAIOLongCaptureCtrl.a(paramInt1, paramInt2, paramIntent);
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 0, 8 };
   }
 }
 

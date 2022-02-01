@@ -1,69 +1,129 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.relationx.friendclue.FriendClueManager.1;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
-class azwp
-  extends RecyclerView.OnScrollListener
+public class azwp
+  implements Handler.Callback, Manager
 {
-  azwp(azwo paramazwo, PersonalityLabelInfo paramPersonalityLabelInfo) {}
+  private amov jdField_a_of_type_Amov;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private azwk jdField_a_of_type_Azwk;
+  private ProfileActivity.AllInOne jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne;
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new azwq(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private BusinessCard jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public azwp(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelGalleryActivity", 2, "onScrollStateChanged newState:" + paramInt);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  private void c(String paramString)
+  {
+    if (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
+    {
+      if (this.jdField_a_of_type_Amov == null) {
+        this.jdField_a_of_type_Amov = ((amov)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(2));
+      }
+      apgi localapgi = (apgi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(112);
+      if (localapgi != null) {
+        this.jdField_a_of_type_Boolean = localapgi.a(1);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne = new ProfileActivity.AllInOne(paramString, 1);
+      long l = ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne, this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Amov.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString, 1, 0L, (byte)1, 0L, 0L, null, "", l, 10004, null, (byte)0);
+      paramString = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      paramString.what = 1;
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramString, 10000L);
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_AndroidOsHandler.post(new FriendClueManager.1(this));
+    } while (!QLog.isColorLevel());
+    QLog.d("FriendClueManager", 2, String.format("network is not available, uin: %s", new Object[] { paramString }));
+  }
+  
+  public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelGalleryActivity", 2, "onScrolled dx:" + paramInt1 + " dy:" + paramInt2);
+      QLog.d("FriendClueManager", 2, String.format("jumpToRemarkEdit, uin: %s", new Object[] { paramString }));
     }
-    int i;
-    int j;
-    if (paramInt1 > 0)
-    {
-      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
-      paramInt2 = paramRecyclerView.getChildCount();
-      i = paramRecyclerView.getItemCount();
-      j = paramRecyclerView.findLastVisibleItemPositions(null)[0];
-      paramRecyclerView = PersonalityLabelGalleryActivity.c(this.jdField_a_of_type_Azwo.a).get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id));
-      if (paramRecyclerView == null) {
-        break label271;
-      }
-      if (((Integer)paramRecyclerView).intValue() != 1) {
-        break label252;
-      }
-      paramInt1 = 1;
+    if (this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard == null) {
+      this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard = new BusinessCard();
     }
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
+    c(paramString);
+  }
+  
+  public void b(String paramString)
+  {
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    if (this.jdField_a_of_type_Azwk == null) {
+      this.jdField_a_of_type_Azwk = new azwk(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBaseApplication);
+    }
+    this.jdField_a_of_type_Azwk.a(paramString);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      azww localazww;
-      if ((!PersonalityLabelGalleryActivity.b(this.jdField_a_of_type_Azwo.a)) && (paramInt1 == 0) && (paramInt2 > 0) && (j >= i - 1))
-      {
-        PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Azwo.a, true);
-        QLog.i("PersonalityLabelGalleryActivity", 2, "load more photos");
-        localazww = (azww)this.jdField_a_of_type_Azwo.a.app.a(112);
-        if (!PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Azwo.a)) {
-          break label257;
-        }
-      }
-      label257:
-      for (paramRecyclerView = this.jdField_a_of_type_Azwo.a.app.getCurrentAccountUin();; paramRecyclerView = PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Azwo.a))
-      {
-        localazww.a(paramRecyclerView, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id, 20, (byte[])PersonalityLabelGalleryActivity.b(this.jdField_a_of_type_Azwo.a).get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id)));
-        return;
-        label252:
-        paramInt1 = 0;
-        break;
-      }
-      label271:
-      paramInt1 = 0;
+    default: 
+      return true;
+    case 1: 
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131693152, 1).a();
+      return true;
+    }
+    Card localCard = null;
+    if ((paramMessage.obj instanceof Card)) {
+      localCard = (Card)paramMessage.obj;
+    }
+    if (localCard != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard = localCard.getCardInfo();
+      this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.bindUin = this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a;
+      paramMessage = new Intent(this.jdField_a_of_type_AndroidContentContext, BusinessCardEditActivity.class);
+      paramMessage.addFlags(268435456);
+      paramMessage.putExtra("mode_type", 2);
+      paramMessage.putExtra("source_activity", 1);
+      paramMessage.putExtra("cur_card_body", this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard);
+      paramMessage.putExtra("is_edit_mode", true);
+      paramMessage.putExtra("finish_immedia", true);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramMessage);
+      return true;
+    }
+    QLog.e("FriendClueManager", 1, "card get failed ");
+    return true;
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
+    if (this.jdField_a_of_type_Azwk != null) {
+      this.jdField_a_of_type_Azwk.b();
     }
   }
 }

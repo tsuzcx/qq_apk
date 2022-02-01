@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.view.View;
-import rpt;
+import rwv;
 
 public final class VideoFeedsHelper$26
   implements Runnable
@@ -10,7 +10,7 @@ public final class VideoFeedsHelper$26
   
   public void run()
   {
-    rpt.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b, this.c);
+    rwv.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 

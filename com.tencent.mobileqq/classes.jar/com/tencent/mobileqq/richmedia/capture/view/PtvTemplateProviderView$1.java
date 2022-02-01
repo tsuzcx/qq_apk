@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.widget.QQViewPager;
 import java.util.List;
 
-public class PtvTemplateProviderView$1
+class PtvTemplateProviderView$1
   implements Runnable
 {
   PtvTemplateProviderView$1(PtvTemplateProviderView paramPtvTemplateProviderView) {}
@@ -29,9 +29,9 @@ public class PtvTemplateProviderView$1
         this.this$0.e = -1;
         return;
       }
-    } while ((this.this$0.jdField_a_of_type_Boolean) || (this.this$0.jdField_a_of_type_JavaUtilList.size() <= this.this$0.b) || (this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem() != 0));
-    this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(this.this$0.b);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(this.this$0.b);
+    } while ((this.this$0.jdField_a_of_type_Boolean) || (this.this$0.jdField_a_of_type_JavaUtilList.size() <= this.this$0.d) || (this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem() != 0));
+    this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(this.this$0.d);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(this.this$0.d);
   }
 }
 

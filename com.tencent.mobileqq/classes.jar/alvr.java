@@ -1,23 +1,50 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import java.util.List;
 
-public class alvr
-  implements Animation.AnimationListener
+class alvr
+  implements bgfz
 {
-  public alvr(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  alvr(alvp paramalvp, List paramList, String paramString1, String paramString2, int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean a(String paramString, ApolloBaseInfo paramApolloBaseInfo)
   {
-    if (NewFlowCameraActivity.b(this.a) != null) {
-      NewFlowCameraActivity.b(this.a).setVisibility(4);
+    this.jdField_a_of_type_JavaUtilList.remove(paramString);
+    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow ACTION_RENDER_VIEW_INIT_CMSHOW_DATA onGetBaseInfo uin:" + ApolloUtil.d(paramString));
+    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      int i = alnr.a(ApolloUtil.a(), this.jdField_a_of_type_JavaLangString, true);
+      int j = alnr.a(ApolloUtil.a(), this.b, true);
+      paramString = new Bundle();
+      paramString.putInt("selfUinStatus", i);
+      paramString.putInt("friendUinStatus", j);
+      paramString = EIPCResult.createSuccessResult(paramString);
+      this.jdField_a_of_type_Alvp.callbackResult(this.jdField_a_of_type_Int, paramString);
+      return true;
     }
+    return false;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean b(String paramString, ApolloBaseInfo paramApolloBaseInfo)
+  {
+    this.jdField_a_of_type_JavaUtilList.remove(paramString);
+    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow ACTION_RENDER_VIEW_INIT_CMSHOW_DATA onDressUpdated uin:" + ApolloUtil.d(paramString));
+    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      int i = alnr.a(ApolloUtil.a(), this.jdField_a_of_type_JavaLangString, true);
+      int j = alnr.a(ApolloUtil.a(), this.b, true);
+      paramString = new Bundle();
+      paramString.putInt("selfUinStatus", i);
+      paramString.putInt("friendUinStatus", j);
+      paramString = EIPCResult.createSuccessResult(paramString);
+      this.jdField_a_of_type_Alvp.callbackResult(this.jdField_a_of_type_Int, paramString);
+      return true;
+    }
+    return false;
+  }
 }
 
 

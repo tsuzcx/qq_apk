@@ -1,11 +1,11 @@
 package dov.com.qq.im.ae.camera.ui.dashboard;
 
-import bonn;
+import blru;
 
 public class AEVideoStoryDashboardPart$DashboardAdapter$1
   implements Runnable
 {
-  public AEVideoStoryDashboardPart$DashboardAdapter$1(bonn parambonn) {}
+  public AEVideoStoryDashboardPart$DashboardAdapter$1(blru paramblru) {}
   
   public void run()
   {

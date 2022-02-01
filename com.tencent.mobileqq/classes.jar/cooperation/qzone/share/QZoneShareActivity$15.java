@@ -11,9 +11,9 @@ class QZoneShareActivity$15
   public void run()
   {
     Editable localEditable;
-    if (this.this$0.a != null)
+    if (this.this$0.mViewEdit != null)
     {
-      localEditable = this.this$0.a.getText();
+      localEditable = this.this$0.mViewEdit.getText();
       if (localEditable == null) {
         break label71;
       }
@@ -21,9 +21,9 @@ class QZoneShareActivity$15
     label71:
     for (int i = localEditable.length();; i = 0)
     {
-      this.this$0.a.setSelection(i);
-      if ((!this.this$0.isFinishing()) && (!this.this$0.d)) {
-        this.this$0.h();
+      this.this$0.mViewEdit.setSelection(i);
+      if ((!this.this$0.isFinishing()) && (!this.this$0.emoShow)) {
+        this.this$0.showKeyboard();
       }
       return;
     }

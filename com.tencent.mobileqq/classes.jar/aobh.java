@@ -1,62 +1,45 @@
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.MsfCore;
+import android.opengl.GLSurfaceView;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqMessageQueue;
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
 
-final class aobh
-  implements AbstractUnifiedMonitor.ThreadMonitorCallback
+public final class aobh
 {
-  public void onThreadMonitorEnd(int paramInt)
+  public static aobb a(aobd paramaobd, aobf paramaobf, GLSurfaceView paramGLSurfaceView)
   {
-    if (paramInt == 0)
-    {
-      Looper.getMainLooper().setMessageLogging(null);
-      MqqMessageQueue.getSubMainThreadQueue().setMessageLogging(null);
+    if (paramaobf == null) {
+      return null;
     }
-    do
+    switch (paramaobf.a)
     {
-      Object localObject;
-      do
-      {
-        return;
-        if (paramInt == 4)
-        {
-          ThreadManager.getSubThreadLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt == 5)
-        {
-          ThreadManager.getFileThreadLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt == 14)
-        {
-          Looper.getMainLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt != 18) {
-          break;
-        }
-        localObject = MsfCore.sCore;
-        if (localObject == null)
-        {
-          QLog.e("MagnifierSDK.QAPM", 1, "msf core hasnot init");
-          return;
-        }
-        localObject = ((MsfCore)localObject).getNetworkHandlerThread();
-      } while ((localObject == null) || (((HandlerThread)localObject).getLooper() == null));
-      ((HandlerThread)localObject).getLooper().setMessageLogging(null);
-      return;
-    } while (paramInt != 19);
-    Looper.getMainLooper().setMessageLogging(null);
+    default: 
+      return null;
+    case 0: 
+      paramaobd = new aobq(paramaobd, (aobr)paramaobf);
+      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_3D here " + paramaobf.toString());
+      return paramaobd;
+    case 2: 
+    case 3: 
+      paramaobd = new aoby(paramaobd, (aoca)paramaobf);
+      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_NORAML_2D_VIDEO here" + paramaobf.toString());
+      return paramaobd;
+    case 4: 
+      paramaobd = new aocb(paramaobd, (aocd)paramaobf);
+      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_ONLINE_VIDEO here" + paramaobf.toString());
+      return paramaobd;
+    case 5: 
+      paramaobd = new aobx(paramaobd, (aobw)paramaobf);
+      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_MULTI_ANIM here" + paramaobf.toString());
+      return paramaobd;
+    case 100: 
+      paramaobd = new aobu(paramaobd, (aobv)paramaobf, paramGLSurfaceView);
+      QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_BINHAI_3D here" + paramaobf.toString());
+      return paramaobd;
+    }
+    return new aobk(paramaobd, (aobm)paramaobf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aobh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,14 @@
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.TextView;
 
-public class aelh
+class aelh
+  extends aliz
 {
-  public int a = 1;
-  public ImageView a;
-  TextView a;
-  public String a;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  
+  private aelh(aelg paramaelg) {}
 }
 
 

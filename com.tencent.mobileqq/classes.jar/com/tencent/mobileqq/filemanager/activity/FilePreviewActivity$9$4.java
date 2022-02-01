@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.view.ViewGroup;
-import atia;
+import aruj;
 
 public class FilePreviewActivity$9$4
   implements Runnable
 {
-  public FilePreviewActivity$9$4(atia paramatia) {}
+  public FilePreviewActivity$9$4(aruj paramaruj) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class FilePreviewActivity$9$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.9.4
  * JD-Core Version:    0.7.0.1
  */

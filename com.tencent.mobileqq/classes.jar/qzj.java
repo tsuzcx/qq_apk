@@ -1,12 +1,61 @@
+import androidx.annotation.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTask;
+import org.jetbrains.annotations.NotNull;
+
 public class qzj
+  implements qzf
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
+  public int a()
+  {
+    return qyy.a();
+  }
+  
+  @Nullable
+  public RIJRewardTask a()
+  {
+    return qyy.a();
+  }
+  
+  public void a(int paramInt)
+  {
+    qyy.a(paramInt);
+  }
+  
+  public void a(@Nullable RIJRewardTask paramRIJRewardTask)
+  {
+    qyy.a(paramRIJRewardTask);
+  }
+  
+  public void a(@NotNull String paramString)
+  {
+    qyy.a(paramString);
+  }
+  
+  public void a(String paramString, int paramInt, qxx paramqxx)
+  {
+    qyy.a(paramString, paramInt, paramqxx);
+  }
+  
+  public boolean a(@NotNull String paramString)
+  {
+    return qyy.a(paramString);
+  }
+  
+  public int b()
+  {
+    return qyy.b();
+  }
+  
+  @Nullable
+  public RIJRewardTask b()
+  {
+    return qyy.b();
+  }
+  
+  public void b(RIJRewardTask paramRIJRewardTask)
+  {
+    qyy.b(paramRIJRewardTask);
+  }
 }
 
 

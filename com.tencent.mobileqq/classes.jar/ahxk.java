@@ -1,12 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.widget.SwipListView;
 
-final class ahxk
-  implements DialogInterface.OnClickListener
+public class ahxk
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ahxk(AddContactsView paramAddContactsView) {}
+  
+  public void onGlobalLayout()
   {
-    paramDialogInterface.dismiss();
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.setListViewHeightBasedOnChildren(this.a.a);
   }
 }
 

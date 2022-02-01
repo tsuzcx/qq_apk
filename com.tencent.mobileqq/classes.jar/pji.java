@@ -1,18 +1,12 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import org.json.JSONObject;
 
-public class pji
-  implements pks
+class pji
+  extends bjwy
 {
-  public pji(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
+  pji(pjg parampjg, View paramView)
   {
-    ozs.a(this.a.a.getContext(), oyu.n);
-    JSONObject localJSONObject = ozs.a();
-    ocd.a(null, "CliOper", "", "", "0X800845B", "0X800845B", 0, 0, ReadInJoySelfFragment.a(this.a, 13) + "", "", "", localJSONObject.toString(), false);
-    ReadInJoySelfFragment.a(this.a, 13);
+    super(paramView);
+    paramView.setTag(this);
   }
 }
 

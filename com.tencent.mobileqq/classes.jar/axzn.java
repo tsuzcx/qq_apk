@@ -1,15 +1,21 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import org.jetbrains.annotations.Nullable;
 
-final class axzn
-  implements DialogInterface.OnClickListener
+class axzn
+  extends axyk
 {
-  axzn(Activity paramActivity) {}
+  axzn(axzm paramaxzm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, @Nullable Bundle paramBundle)
   {
-    axzi.a(this.a, 10);
+    super.a(paramBoolean, paramBundle);
+    if (paramBundle != null) {
+      axzm.a(this.a, paramBundle.getString("key_today_constellation_trend"));
+    }
+    this.a.a();
+    if ((axzm.a(this.a)) && (axzm.a(this.a) != null)) {
+      axzm.b(this.a).a();
+    }
   }
 }
 

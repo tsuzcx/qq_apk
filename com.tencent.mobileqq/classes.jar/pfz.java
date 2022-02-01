@@ -1,14 +1,16 @@
-final class pfz
-  implements pgb
+import java.util.Map;
+
+class pfz
+  extends pse
 {
-  public void l()
+  pfz(pey parampey, String paramString, Map paramMap, boolean paramBoolean)
   {
-    pai.a(9, "", "", "", "");
+    super(paramString);
   }
   
-  public void m()
+  public void a(prx paramprx)
   {
-    pai.a(9, "", "", "", "", pfw.c, "", false);
+    paramprx.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
   }
 }
 

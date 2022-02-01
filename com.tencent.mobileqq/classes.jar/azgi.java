@@ -1,8 +1,21 @@
-import mqq.app.AppRuntime.Status;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public abstract interface azgi
+class azgi
+  implements MediaPlayer.OnCompletionListener
 {
-  public abstract void a(AppRuntime.Status paramStatus);
+  azgi(azgh paramazgh, String paramString) {}
+  
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    paramMediaPlayer.release();
+    azgh.a(this.jdField_a_of_type_Azgh, null);
+    if (azgh.a(this.jdField_a_of_type_Azgh) != null) {
+      azgh.a(this.jdField_a_of_type_Azgh).b(this.jdField_a_of_type_JavaLangString);
+    }
+    bftt.a(BaseApplicationImpl.getContext(), false);
+  }
 }
 
 

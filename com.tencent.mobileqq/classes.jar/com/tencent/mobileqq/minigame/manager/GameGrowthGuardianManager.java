@@ -167,7 +167,7 @@ public class GameGrowthGuardianManager
   private static void execute(Context paramContext, MiniAppConfig paramMiniAppConfig, @GameGrowthGuardianManager.JudgeTimingRequestFactType int paramInt)
   {
     int j = 0;
-    if ((paramContext == null) || (paramMiniAppConfig == null)) {}
+    if ((paramContext == null) || (paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {}
     do
     {
       return;
@@ -188,17 +188,17 @@ public class GameGrowthGuardianManager
       localPBStringField.set((String)localObject1);
       localObject1 = localStJudgeTimingReq.appType;
       if (!paramMiniAppConfig.isEngineTypeMiniGame()) {
-        break label425;
+        break label432;
       }
       i = 1;
-      label126:
+      label133:
       ((PBInt32Field)localObject1).set(i);
       localObject1 = localStJudgeTimingReq.scene;
       if (paramMiniAppConfig.launchParam == null) {
-        break label430;
+        break label437;
       }
       i = paramMiniAppConfig.launchParam.scene;
-      label154:
+      label161:
       ((PBInt32Field)localObject1).set(i);
       localStJudgeTimingReq.factType.set(paramInt);
       localStJudgeTimingReq.reportTime.set(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
@@ -209,28 +209,28 @@ public class GameGrowthGuardianManager
         localStJudgeTimingReq.extInfo.set(previousExtInfo);
       }
       if (paramInt != 11) {
-        break label435;
+        break label442;
       }
       localStJudgeTimingReq.totalTime.set(0);
-      label270:
+      label277:
       localPBStringField = localStJudgeTimingReq.launchId;
       if (localObject2 == null) {
-        break label460;
+        break label467;
       }
       localObject1 = localObject2;
-      label286:
+      label293:
       localPBStringField.set((String)localObject1);
       localStJudgeTimingReq.afterCertify.set(0);
       localObject2 = localStJudgeTimingReq.via;
       if ((paramMiniAppConfig.config == null) || (paramMiniAppConfig.config.via == null)) {
-        break label467;
+        break label474;
       }
     }
-    label425:
-    label430:
-    label435:
-    label460:
+    label432:
+    label437:
+    label442:
     label467:
+    label474:
     for (Object localObject1 = paramMiniAppConfig.config.via;; localObject1 = "")
     {
       ((PBStringField)localObject2).set((String)localObject1);
@@ -249,13 +249,13 @@ public class GameGrowthGuardianManager
       localObject1 = "";
       break;
       i = 0;
-      break label126;
+      break label133;
       i = 0;
-      break label154;
+      break label161;
       localStJudgeTimingReq.totalTime.set((int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - beginExecuteMillis));
-      break label270;
+      break label277;
       localObject1 = "";
-      break label286;
+      break label293;
     }
   }
   

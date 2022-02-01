@@ -1,22 +1,20 @@
-import android.os.Build.VERSION;
+import android.animation.Animator;
 import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
 
-public class yut
-  implements View.OnSystemUiVisibilityChangeListener
+public final class yut
 {
-  public yut(DanceMachineQQBrowserActivity paramDanceMachineQQBrowserActivity) {}
-  
-  public void onSystemUiVisibilityChange(int paramInt)
+  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
   {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 4870;; paramInt = 775)
-    {
-      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
-      return;
+    return a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2, 2);
+  }
+  
+  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3)
+  {
+    yuo localyuo = yuo.a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2);
+    if (paramInt3 != paramView.getLayerType()) {
+      localyuo.addListener(new yuq(paramView, paramInt3));
     }
+    return localyuo;
   }
 }
 

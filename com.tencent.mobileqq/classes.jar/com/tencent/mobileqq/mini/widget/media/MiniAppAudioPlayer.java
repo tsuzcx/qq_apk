@@ -8,7 +8,7 @@ import android.media.MediaPlayer.OnErrorListener;
 import android.media.MediaPlayer.OnPreparedListener;
 import android.media.MediaPlayer.OnSeekCompleteListener;
 import android.os.Handler;
-import bhkm;
+import bftt;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.utils.ScreenOffOnListener;
 import com.tencent.qphone.base.util.QLog;
@@ -81,7 +81,7 @@ public class MiniAppAudioPlayer
   {
     try
     {
-      bhkm.a(this.mContext, paramBoolean);
+      bftt.a(this.mContext, paramBoolean);
       return;
     }
     catch (Exception localException)

@@ -1,67 +1,41 @@
-import android.app.Activity;
-import android.support.annotation.Nullable;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.MaterialData;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusInnerData;
+import java.util.regex.Pattern;
+import org.json.JSONObject;
 
 public class trs
 {
-  @Nullable
-  private trt a;
+  public int a;
+  public String a;
+  public Pattern a;
+  public JSONObject a;
+  public String b = "";
+  public String c = "";
   
-  public void a()
+  public trs(ProteusInnerData paramProteusInnerData, int paramInt, String paramString1, String paramString2, String paramString3, JSONObject paramJSONObject, Pattern paramPattern)
   {
-    if (this.a != null) {
-      this.a.a();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = paramInt;
+    if (!TextUtils.isEmpty(paramString1)) {
+      this.jdField_a_of_type_JavaLangString = paramString1;
+    }
+    if (!TextUtils.isEmpty(paramString2)) {
+      this.b = paramString2;
+    }
+    if (!TextUtils.isEmpty(paramString3)) {
+      this.c = paramString3;
+    }
+    if (paramJSONObject != null) {
+      this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    }
+    if (paramPattern != null) {
+      this.jdField_a_of_type_JavaUtilRegexPattern = paramPattern;
     }
   }
   
-  public void a(Activity paramActivity, ListView paramListView)
+  public String toString()
   {
-    if ((tqi.a().a() == 1) && (tqi.f()))
-    {
-      localMaterialData = tqi.a().a();
-      str = tqi.a().a(localMaterialData);
-      i = tqi.a().b();
-      if (!tqi.a(i)) {}
-    }
-    while (!QLog.isColorLevel())
-    {
-      MaterialData localMaterialData;
-      String str;
-      int i;
-      return;
-      if (auog.a(str))
-      {
-        this.a = new trt(paramActivity, paramListView, str);
-        this.a.a(i);
-        if (localMaterialData != null) {
-          tny.b(localMaterialData, true, "no error");
-        }
-        tqi.a().a = this;
-      }
-      for (;;)
-      {
-        QLog.d("ReadInJoySuperMaskAd", 1, "preview mode value = " + tqi.a().g());
-        tqi.a().a();
-        return;
-        tqi.a().b(3);
-        tqk.a.a(localMaterialData, false, "supermask path not exist");
-      }
-    }
-    QLog.i("KandianAdPandentMask", 2, "status: " + tqi.a().a() + " Aladdin: " + tqi.f());
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.a != null) {
-      this.a.b(paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.a != null) && (trt.a(this.a));
+    return "InnerFormItem[" + this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b + "]";
   }
 }
 

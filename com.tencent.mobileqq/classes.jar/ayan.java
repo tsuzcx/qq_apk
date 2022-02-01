@@ -1,94 +1,22 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-
-public class ayan
-  implements TextWatcher
+public final class ayan
 {
-  public ayan(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public int a;
+  public String a;
+  public int b;
   
-  public void afterTextChanged(Editable paramEditable)
+  public ayan(int paramInt1, int paramInt2, String paramString)
   {
-    ChooseInterestTagActivity.a(this.a).removeMessages(4097);
-    ChooseInterestTagActivity.b(this.a, 0);
-    String str;
-    if (ChooseInterestTagActivity.a(this.a).getText() == null)
-    {
-      paramEditable = "";
-      str = axxb.a(paramEditable);
-      if (ChooseInterestTagActivity.a(this.a).getText() != null) {
-        break label163;
-      }
-      paramEditable = "";
-      label59:
-      if (!TextUtils.isEmpty(paramEditable)) {
-        break label185;
-      }
-      if (ChooseInterestTagActivity.b(this.a).getVisibility() != 8) {
-        ChooseInterestTagActivity.b(this.a).setVisibility(8);
-      }
-      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
-      paramEditable = this.a;
-      if (ChooseInterestTagActivity.b(this.a) == -1) {
-        break label180;
-      }
-    }
-    label163:
-    label180:
-    for (boolean bool = true;; bool = false)
-    {
-      ChooseInterestTagActivity.a(paramEditable, false, bool);
-      ChooseInterestTagActivity.a(this.a, "");
-      return;
-      paramEditable = ChooseInterestTagActivity.a(this.a).getText().toString();
-      break;
-      paramEditable = ChooseInterestTagActivity.a(this.a).getText().toString();
-      break label59;
-    }
-    label185:
-    if (TextUtils.isEmpty(str))
-    {
-      if (ChooseInterestTagActivity.b(this.a).getVisibility() != 0) {
-        ChooseInterestTagActivity.b(this.a).setVisibility(0);
-      }
-      ChooseInterestTagActivity.b(this.a).setText(anzj.a(2131700727));
-      ChooseInterestTagActivity.c(this.a).setVisibility(8);
-      ChooseInterestTagActivity.a(this.a, "");
-      return;
-    }
-    if (ChooseInterestTagActivity.b(this.a).getVisibility() != 0) {
-      ChooseInterestTagActivity.b(this.a).setVisibility(0);
-    }
-    if (bhnv.d(this.a))
-    {
-      ChooseInterestTagActivity.b(this.a).setText(anzj.a(2131700732));
-      ChooseInterestTagActivity.c(this.a).setVisibility(8);
-      ChooseInterestTagActivity.a(this.a, str);
-      ChooseInterestTagActivity.a(this.a).sendEmptyMessageDelayed(4097, 400L);
-      return;
-    }
-    if (!ChooseInterestTagActivity.c(this.a))
-    {
-      ChooseInterestTagActivity.a(this.a, anzj.a(2131700707));
-      ChooseInterestTagActivity.a(this.a, true);
-      ChooseInterestTagActivity.a(this.a).sendEmptyMessageDelayed(4100, 3000L);
-    }
-    ChooseInterestTagActivity.b(this.a).setText("");
-    ChooseInterestTagActivity.b(this.a).setOnClickListener(null);
-    ChooseInterestTagActivity.c(this.a).setVisibility(8);
-    ChooseInterestTagActivity.a(this.a, "");
+    this.jdField_a_of_type_Int = 100;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public ayan(int paramInt, String paramString)
   {
-    ChooseInterestTagActivity.a(this.a, 0);
+    this.jdField_a_of_type_Int = 100;
+    this.b = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

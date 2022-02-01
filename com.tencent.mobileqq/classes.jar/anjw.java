@@ -1,35 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
 
-public class anjw
-  extends biht
+class anjw
+  implements DialogInterface.OnCancelListener
 {
-  public anjw(ApolloCardWindow paramApolloCardWindow) {}
+  anjw(anjr paramanjr, Activity paramActivity) {}
   
-  public void onDoneFile(bihu parambihu)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (parambihu == null) {
-      return;
-    }
-    try
-    {
-      ??? = parambihu.a().getString("path");
-      String str = parambihu.a().getString("url");
-      parambihu = this.a.a((String)???);
-      str = bjtz.d(str);
-      synchronized (ApolloCardWindow.a)
-      {
-        ApolloCardWindow.a.put(str, parambihu);
-        return;
-      }
-      return;
-    }
-    catch (Exception parambihu)
-    {
-      QLog.e("ApolloCardWindow", 1, "onDoneFile error:", parambihu);
-    }
+    QLog.d("AccountIdentityManager", 1, "dialog cancel");
+    anjr.a(this.jdField_a_of_type_Anjr, this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

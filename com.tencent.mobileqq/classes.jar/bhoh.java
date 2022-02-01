@@ -1,68 +1,20 @@
-import com.tencent.commonsdk.pool.ByteArrayPool;
-import java.io.ByteArrayOutputStream;
+import android.os.Bundle;
 
 public class bhoh
-  extends ByteArrayOutputStream
+  extends bhog
 {
-  private final ByteArrayPool a;
-  
-  public bhoh(ByteArrayPool paramByteArrayPool, int paramInt)
+  public bhoh(Bundle paramBundle)
   {
-    this.a = paramByteArrayPool;
-    this.buf = this.a.getBuf(Math.max(paramInt, 256));
+    super(paramBundle);
   }
   
-  private void a(int paramInt)
+  public String a(String paramString1, String paramString2)
   {
-    if (this.count + paramInt <= this.buf.length) {
-      return;
+    paramString1 = this.a.getBundle(paramString1);
+    if (paramString1 != null) {
+      return paramString1.getString(paramString2);
     }
-    byte[] arrayOfByte = this.a.getBuf((this.count + paramInt) * 2);
-    System.arraycopy(this.buf, 0, arrayOfByte, 0, this.count);
-    this.a.returnBuf(this.buf);
-    this.buf = arrayOfByte;
-  }
-  
-  public byte[] a()
-  {
-    return this.buf;
-  }
-  
-  public void close()
-  {
-    this.a.returnBuf(this.buf);
-    this.buf = null;
-    super.close();
-  }
-  
-  public void write(int paramInt)
-  {
-    try
-    {
-      a(1);
-      super.write(paramInt);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    try
-    {
-      a(paramInt2);
-      super.write(paramArrayOfByte, paramInt1, paramInt2);
-      return;
-    }
-    finally
-    {
-      paramArrayOfByte = finally;
-      throw paramArrayOfByte;
-    }
+    return null;
   }
 }
 

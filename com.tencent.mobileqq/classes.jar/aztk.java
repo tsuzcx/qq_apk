@@ -1,43 +1,32 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
 
-class aztk
-  implements Animator.AnimatorListener
+final class aztk
+  implements Downloader.DownloadListener
 {
-  aztk(azti paramazti, View paramView1, View paramView2) {}
+  aztk(QzoneZipCacheHelperCallBack paramQzoneZipCacheHelperCallBack) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onDownloadCanceled(String paramString)
   {
-    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-    paramAnimator.topMargin = (-azti.a(this.jdField_a_of_type_Azti));
-    this.b.setLayoutParams(paramAnimator);
-    if (this.jdField_a_of_type_Azti.f)
-    {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.a != null) {
+      this.a.onResult(false);
     }
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-    paramAnimator.topMargin = (-azti.a(this.jdField_a_of_type_Azti));
-    this.b.setLayoutParams(paramAnimator);
-    if (this.jdField_a_of_type_Azti.f)
-    {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.a != null) {
+      this.a.onResult(false);
     }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (!this.jdField_a_of_type_Azti.f) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.a != null) {
+      this.a.onResult(true);
     }
   }
 }

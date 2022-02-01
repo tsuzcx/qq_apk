@@ -1,49 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import java.util.List;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class ory
-  implements ovf
+final class ory
+  implements ViewFactory.FoundClickableViewListener
 {
-  boolean jdField_a_of_type_Boolean = false;
+  ory(Container paramContainer, ouc paramouc, ouo paramouo) {}
   
-  public ory(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
-  
-  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<otp> paramList, boolean paramBoolean2, int paramInt2, int paramInt3)
+  public void onFound(ViewBase paramViewBase)
   {
-    QLog.d("ReadInJoyCommentListFragment", 1, "onCommentListLoad anchor");
-    if (!paramBoolean1) {}
-    do
-    {
+    if ((paramViewBase.getNativeView() == null) || (paramViewBase.getClickEvnet() == null)) {
       return;
-      paramList = ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment).a().a();
-    } while (paramList == null);
-    if (!TextUtils.isEmpty(paramList.b))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.f();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a(true, paramList.a, paramList.b);
     }
-    for (;;)
-    {
-      paramList.a(false);
-      return;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.f();
-    }
-  }
-  
-  public void onCommentStateError(int paramInt)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = true;
-      if (paramInt == 1001) {
-        zyx.a(1, 2131717045);
-      }
-    } while (paramInt != 1003);
-    zyx.a(1, 2131717046);
+    SparseArray localSparseArray = new SparseArray();
+    int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
+    oqo.a.a(i, localSparseArray).a(i, localSparseArray).a(i, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_Ouc, this.jdField_a_of_type_Ouo, paramViewBase);
   }
 }
 

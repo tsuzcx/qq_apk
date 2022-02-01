@@ -1,16 +1,18 @@
-import android.net.Uri;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
+import com.tencent.qphone.base.util.QLog;
 
-public class auyt
-  implements avqd
+class auyt
+  implements amqq
 {
-  public auyt(ForwardFileBaseOption paramForwardFileBaseOption) {}
+  auyt(auys paramauys) {}
   
-  public void a(Uri paramUri) {}
-  
-  public void a(String paramString1, String paramString2, long paramLong)
+  public void onDpcPullFinished(boolean paramBoolean)
   {
-    this.a.a = ForwardFileBaseOption.a(this.a, paramString2, paramLong);
+    if (paramBoolean) {
+      auys.a(this.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ListenTogether.dpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
+    }
   }
 }
 

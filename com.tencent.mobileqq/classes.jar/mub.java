@@ -1,32 +1,68 @@
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.sharp.jni.TraeAudioSession;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-final class mub
-  implements beup
+class mub
+  implements AdapterView.OnItemClickListener
 {
-  public void a(bevl parambevl, bevm parambevm)
+  mub(mua parammua, Button paramButton, long paramLong, bjnw parambjnw) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((parambevl == null) || (parambevm == null)) {}
-    beum localbeum;
-    do
+    if (mua.a(this.jdField_a_of_type_Mua) != null)
     {
-      do
+      paramAdapterView = (muh)mua.a(this.jdField_a_of_type_Mua).getItem(paramInt);
+      if ((paramAdapterView != null) && (!TextUtils.isEmpty(paramAdapterView.a)) && (this.jdField_a_of_type_Mua.a != null))
       {
-        return;
-      } while (!(parambevl instanceof beum));
-      localbeum = (beum)parambevl;
-      localbeum.jdField_a_of_type_Long += parambevm.c;
-      parambevm.c = 0L;
-      parambevm = "bytes=" + localbeum.jdField_a_of_type_Long + "-";
-      localbeum.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
-      parambevm = localbeum.jdField_a_of_type_JavaLangString;
-      if (parambevm.contains("range="))
-      {
-        parambevm = parambevm.substring(0, parambevm.lastIndexOf("range="));
-        localbeum.jdField_a_of_type_JavaLangString = (parambevm + "range=" + localbeum.jdField_a_of_type_Long);
+        if (!"DEVICE_BLUETOOTHHEADSET".equals(paramAdapterView.a)) {
+          break label199;
+        }
+        mak.a((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 3012);
+        if (this.jdField_a_of_type_AndroidWidgetButton != null) {
+          this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D20 at: " + System.currentTimeMillis());
+        }
+        bcef.b(null, "CliOper", "", "", "0X8008D20", "0X8008D20", 0, 0, "", "", "", "");
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("ScoreManager", 1, "IBreakDownFix. url = " + ((beum)parambevl).jdField_a_of_type_JavaLangString + ", offset=" + localbeum.jdField_a_of_type_Long);
+    }
+    for (;;)
+    {
+      mua.a(this.jdField_a_of_type_Mua, true);
+      this.jdField_a_of_type_Mua.a.a(msu.a());
+      this.jdField_a_of_type_Mua.a.a(this.jdField_a_of_type_Long, paramAdapterView.a);
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      label199:
+      if ("DEVICE_SPEAKERPHONE".equals(paramAdapterView.a))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D1F at: " + System.currentTimeMillis());
+        }
+        bcef.b(null, "CliOper", "", "", "0X8008D1F", "0X8008D1F", 0, 0, "", "", "", "");
+      }
+      else if ("DEVICE_EARPHONE".equals(paramAdapterView.a))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D21-1 at: " + System.currentTimeMillis());
+        }
+        bcef.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 1, 0, "", "", "", "");
+      }
+      else if ("DEVICE_WIREDHEADSET".equals(paramAdapterView.a))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D21-2 at: " + System.currentTimeMillis());
+        }
+        bcef.b(null, "CliOper", "", "", "0X8008D21", "0X8008D21", 2, 0, "", "", "", "");
+      }
+    }
   }
 }
 

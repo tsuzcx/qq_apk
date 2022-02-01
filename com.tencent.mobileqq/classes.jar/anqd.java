@@ -1,73 +1,38 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class anqd
-  implements amwb, amwd
+  extends anrh
 {
-  public WeakReference<BaseChatPie> a;
-  private WeakReference<amwb> b;
-  
-  public anqd(BaseChatPie paramBaseChatPie)
+  public anqd(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (((paramBaseChatPie instanceof aijm)) || ((paramBaseChatPie instanceof TroopChatPie)) || ((paramBaseChatPie instanceof aijc)) || ((paramBaseChatPie instanceof ailn))) {
-      this.a = new WeakReference(paramBaseChatPie);
-    }
+    super(paramQQAppInterface, paramContext);
   }
   
-  public void a(int paramInt1, int paramInt2, String paramString)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloBackgroundViewListener", 2, "onCompleteRender");
-    }
-    if ((this.b != null) && (this.b.get() != null)) {
-      ((amwb)this.b.get()).a(paramInt1, paramInt2, paramString);
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloBackgroundViewListener", 2, "onStartRender");
-    }
-    if ((this.b != null) && (this.b.get() != null)) {
-      ((amwb)this.b.get()).a(paramInt, paramString);
-    }
-  }
-  
-  public void a(amwb paramamwb)
-  {
-    this.b = new WeakReference(paramamwb);
-  }
-  
-  public void onNotifyLongTouch(String paramString) {}
-  
-  public void onNotifyStatusChanged(int paramInt, String paramString) {}
-  
-  public void onSurfaceReady(int paramInt1, int paramInt2)
-  {
-    Object localObject2 = (BaseChatPie)this.a.get();
-    if ((localObject2 == null) || (((BaseChatPie)localObject2).jdField_a_of_type_Amuy == null)) {}
-    Object localObject1;
-    do
+    try
     {
-      do
-      {
-        return;
-        localObject1 = ((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        localObject2 = ((BaseChatPie)localObject2).jdField_a_of_type_Amuy.a();
-      } while ((localObject1 == null) || (localObject2 == null));
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloBackgroundViewListener", 2, "surfaceView.getWidth():" + ((ApolloTextureView)localObject2).getWidth());
-      }
-      ((ApolloTextureView)localObject2).getRenderImpl().a(1, null, 0, 1.0F, 250.0F, 0.0F);
-      ((ApolloTextureView)localObject2).getRenderImpl().a(1000L);
-      localObject1 = ((angf)((AppInterface)localObject1).getManager(249)).a();
-    } while (localObject1 == null);
-    ((anfw)localObject1).b();
+      boolean bool = f_();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("AssistantSettingAction", 1, "doAction error: " + localException.getMessage());
+      a("AssistantSettingAction");
+    }
+    return false;
+  }
+  
+  public boolean f_()
+  {
+    Intent localIntent = new Intent();
+    localIntent.setClass(this.a, AssistantSettingActivity.class);
+    this.a.startActivity(localIntent);
+    return true;
   }
 }
 

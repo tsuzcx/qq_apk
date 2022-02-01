@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.data.fts.FTSMessage;
-import java.util.HashSet;
-import java.util.List;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-public class bcdp
+public final class bcdp
 {
-  public int a;
-  public long a;
-  public HashSet<Long> a;
-  public List<FTSMessage> a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
+  public static void a(Context paramContext, boolean paramBoolean)
+  {
+    paramContext = paramContext.getSharedPreferences("LIGHT_DPC_CFG", 4).edit();
+    paramContext.putBoolean("SUPPORT_MTA", paramBoolean);
+    paramContext.commit();
+  }
+  
+  public static boolean a(Context paramContext, boolean paramBoolean)
+  {
+    return paramContext.getSharedPreferences("LIGHT_DPC_CFG", 4).getBoolean("SUPPORT_MTA", paramBoolean);
+  }
 }
 
 

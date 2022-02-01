@@ -1,44 +1,84 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqbo
-  implements INetInfoHandler
+  extends aptq<aqbn>
 {
-  public aqbo(ArkAppCenter paramArkAppCenter) {}
-  
-  public void onNetMobile2None()
+  public static aqbn a()
   {
-    ArkAppCenter.a(this.a, 1, 0);
+    return (aqbn)apub.a().a(631);
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  @NonNull
+  public aqbn a(int paramInt)
   {
-    ArkAppCenter.a(this.a, 1, 2);
+    return new aqbn();
   }
   
-  public void onNetNone2Mobile(String paramString)
+  @Nullable
+  public aqbn a(aptx[] paramArrayOfaptx)
   {
-    ArkAppCenter.a(this.a, 0, 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGamePreloadConfProcessor", 2, "onParsed ");
+    }
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    {
+      new aqbn();
+      return aqbn.a(paramArrayOfaptx);
+    }
+    return null;
   }
   
-  public void onNetNone2Wifi(String paramString)
+  public void a(aqbn paramaqbn)
   {
-    ArkAppCenter.a(this.a, 0, 2);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGamePreloadConfProcessor", 2, "onUpdate " + paramaqbn.toString());
+    }
   }
   
-  public void onNetWifi2Mobile(String paramString)
+  public Class<aqbn> clazz()
   {
-    ArkAppCenter.a(this.a, 2, 1);
+    return aqbn.class;
   }
   
-  public void onNetWifi2None()
+  public boolean isAccountRelated()
   {
-    ArkAppCenter.a(this.a, 2, 0);
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGamePreloadConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void onReqNoReceive() {}
+  
+  public int type()
+  {
+    return 631;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqbo
  * JD-Core Version:    0.7.0.1
  */

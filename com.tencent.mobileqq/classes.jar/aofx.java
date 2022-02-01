@@ -1,22 +1,11 @@
-public class aofx
-  implements anui
+import com.tencent.mobileqq.highway.transaction.Transaction;
+
+class aofx
 {
-  public void a(Object paramObject) {}
-  
-  public void b(Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1000: 
-      a(paramObject);
-      return;
-    }
-    b(paramObject);
-  }
+  aofv jdField_a_of_type_Aofv = null;
+  aohl jdField_a_of_type_Aohl;
+  Transaction jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = null;
+  String jdField_a_of_type_JavaLangString = "";
 }
 
 

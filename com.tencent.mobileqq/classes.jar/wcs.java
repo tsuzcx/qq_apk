@@ -1,46 +1,23 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class wcs
-  extends RecyclerView.Adapter<wct>
+public class wcs
+  extends vko
 {
-  public List<Long> a;
+  public final int a;
+  public final String a;
+  public final String b;
   
-  private wcs(wcp paramwcp)
+  public wcs(wcr paramwcr, ErrorMessage paramErrorMessage, String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public wct a(ViewGroup paramViewGroup, int paramInt)
+  public String toString()
   {
-    return new wct(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560721, paramViewGroup, false));
-  }
-  
-  public void a(List<Long> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public void a(wct paramwct, int paramInt)
-  {
-    paramwct.a(((Long)this.jdField_a_of_type_JavaUtilList.get(paramInt)).longValue(), paramInt);
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramwct, paramInt, getItemId(paramInt));
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
+    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.jdField_a_of_type_Int + "} " + super.toString();
   }
 }
 

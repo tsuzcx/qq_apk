@@ -1,163 +1,68 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import mqq.manager.TicketManager;
+import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class baze
-  extends VasWebviewJsPlugin
+  extends bazc
 {
-  public byte a;
-  private String a;
+  public static final String a;
+  public float a;
+  public int a;
+  public CharSequence a;
+  public float b;
+  public CharSequence b;
+  public String b;
+  public String j;
+  public String k;
   
-  public baze()
+  static
   {
-    this.jdField_a_of_type_Byte = 1;
-    this.mPluginNameSpace = "RealName";
+    jdField_a_of_type_JavaLangString = "Q.uniteSearch." + baze.class.getSimpleName();
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public baze(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("RealName", 2, "handleJsRequest url: " + paramString1 + " pkgName: " + paramString2 + " method: " + paramString3 + " args: " + paramVarArgs[0]);
-    }
-    if (!paramString2.equalsIgnoreCase("RealName")) {
-      return false;
-    }
-    if ((paramVarArgs == null) || (paramVarArgs.length < 1)) {
-      return false;
-    }
-    if (paramString3.equalsIgnoreCase("getCountryCode"))
-    {
-      paramJsBridgeListener = paramVarArgs[0];
-      try
-      {
-        this.jdField_a_of_type_JavaLangString = new JSONObject(paramJsBridgeListener).getString("callbackId");
-        paramJsBridgeListener = (BaseActivity)this.mRuntime.a();
-        if (paramJsBridgeListener == null) {
-          return false;
-        }
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        if (QLog.isColorLevel()) {
-          paramJsBridgeListener.printStackTrace();
-        }
-        return false;
-      }
-      startActivityForResult(new Intent(paramJsBridgeListener, CountryActivity.class), this.jdField_a_of_type_Byte);
-    }
-    for (;;)
-    {
-      return true;
-      if (paramString3.equalsIgnoreCase("onAuthResult"))
-      {
-        paramJsBridgeListener = paramVarArgs[0];
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramJsBridgeListener);
-          int i = paramJsBridgeListener.getInt("result");
-          paramJsBridgeListener = paramJsBridgeListener.optString("from", "");
-          paramString1 = new Bundle();
-          paramString1.putInt("result", i);
-          paramString1.putString("source", paramJsBridgeListener);
-          QIPCClientHelper.getInstance().getClient().callServer("REAL_NAME", "ON_WEB_AUTH_RESULT", paramString1);
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          if (QLog.isColorLevel()) {
-            paramJsBridgeListener.printStackTrace();
-          }
-          return false;
-        }
-      }
-      else if (paramString3.equalsIgnoreCase("getDeviceInfo"))
-      {
-        paramJsBridgeListener = paramVarArgs[0];
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramJsBridgeListener).getString("callbackId");
-          paramString1 = this.mRuntime.a();
-          paramString1 = ((TicketManager)paramString1.getManager(2)).getA2(paramString1.getAccount());
-          paramString2 = new String(NetConnInfoCenter.GUID);
-          paramString3 = new JSONObject();
-          try
-          {
-            paramString3.put("appid", String.valueOf(AppSetting.a()));
-            paramString3.put("imei", blhc.a("ef0716"));
-            paramString3.put("guid", paramString2);
-            paramString3.put("A2", paramString1);
-            callJs(paramJsBridgeListener, new String[] { paramString3.toString() });
-          }
-          catch (JSONException paramJsBridgeListener) {}
-          if (QLog.isDevelopLevel()) {
-            paramJsBridgeListener.printStackTrace();
-          }
-        }
-        catch (JSONException paramJsBridgeListener)
-        {
-          if (QLog.isColorLevel()) {
-            paramJsBridgeListener.printStackTrace();
-          }
-        }
-      }
-    }
-    return false;
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  public baze(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
   {
-    byte b = 0;
-    JSONObject localJSONObject = new JSONObject();
-    Object localObject = "";
-    String str1 = "";
-    if ((paramByte == this.jdField_a_of_type_Byte) && (paramInt == -1)) {
-      if (paramIntent != null)
-      {
-        str1 = paramIntent.getStringExtra("k_name");
-        String str2 = paramIntent.getStringExtra("k_code");
-        paramIntent = str2;
-        localObject = str1;
-        paramByte = b;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("RealName", 2, "onActivity countryName is: " + str1 + " countryCode: " + str2);
-          paramByte = b;
-          localObject = str1;
-          paramIntent = str2;
-        }
-      }
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = paramInt;
+    switch (paramInt)
+    {
+    default: 
+      i = 1;
     }
+    return i;
+  }
+  
+  public void a(String paramString)
+  {
     try
     {
-      for (;;)
-      {
-        localJSONObject.put("retCode", paramByte);
-        localJSONObject.put("country", localObject);
-        localJSONObject.put("value", paramIntent);
-        callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("RealName", 2, "onActivityResult, intent is null.");
-        }
-        paramByte = -1;
-        paramIntent = str1;
-      }
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Int = paramString.optInt("bannerImageType");
+      this.jdField_b_of_type_JavaLangString = paramString.optString("bannerImageUrl");
+      this.jdField_a_of_type_Float = ((float)paramString.optDouble("bannerImageWidth"));
+      this.jdField_b_of_type_Float = ((float)paramString.optDouble("bannerImageHeight"));
+      this.j = paramString.optString("topLeftTagText");
+      this.k = paramString.optString("topLeftTagColor");
+      this.jdField_a_of_type_JavaLangCharSequence = paramString.optString("firstLineText");
+      this.jdField_b_of_type_JavaLangCharSequence = paramString.optString("secondLineText");
+      return;
     }
-    catch (JSONException paramIntent)
+    catch (JSONException paramString)
     {
-      while (!QLog.isDevelopLevel()) {}
-      paramIntent.printStackTrace();
+      while (!QLog.isColorLevel()) {}
+      QLog.e(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
     }
   }
 }

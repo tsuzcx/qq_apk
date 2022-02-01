@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.minigame.ui;
 
 import Override;
-import acwf;
-import acwg;
+import absn;
+import abso;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,12 +21,12 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aqre;
-import aquy;
-import aqva;
-import bjfr;
-import bkxg;
-import bkyl;
+import apkn;
+import apoh;
+import apoj;
+import bhlx;
+import bjcw;
+import bjei;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -48,9 +48,9 @@ import org.json.JSONObject;
 public class GameActivity1
   extends BaseActivity
 {
-  private bkxg mAddColorSingListener;
-  protected aqre mColorNoteController;
-  private aqva mColorNoteServiceListenr;
+  private bjcw mAddColorSingListener;
+  protected apkn mColorNoteController;
+  private apoj mColorNoteServiceListenr;
   private RelativeLayout mRoot;
   private IUIProxy mUIProxy;
   private MiniAIOEntryView miniAIOEntryView;
@@ -80,7 +80,7 @@ public class GameActivity1
     //   0: aconst_null
     //   1: astore_3
     //   2: aload_0
-    //   3: invokestatic 119	bkyr:a	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;)Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   3: invokestatic 119	bjeo:a	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;)Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
     //   6: astore_2
     //   7: invokestatic 125	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   10: astore_0
@@ -184,8 +184,9 @@ public class GameActivity1
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -235,7 +236,7 @@ public class GameActivity1
         setContentView(localRelativeLayout);
         localFrameLayout = new FrameLayout(this);
         localRelativeLayout.addView(localFrameLayout, new RelativeLayout.LayoutParams(-1, -1));
-        bkyl.a();
+        bjei.a();
         initUIProxy(getIntent());
         if (this.mUIProxy == null)
         {
@@ -256,14 +257,14 @@ public class GameActivity1
         this.mUIProxy.onAttachActivity(this, paramBundle, localFrameLayout);
         this.mUIProxy.onIntentUpdate(getIntent());
         paramBundle = (MiniAppInfo)getIntent().getParcelableExtra("KEY_APPINFO");
-        this.mColorNoteController = new aqre(this, false, true);
+        this.mColorNoteController = new apkn(this, false, true);
         this.mColorNoteController.a(this);
         this.mColorNoteController.a(new GameActivity1.1(this, paramBundle));
         this.mColorNoteController.a(new GameActivity1.2(this));
         this.mColorNoteController.a(new GameActivity1.3(this));
         this.mColorNoteServiceListenr = new GameActivity1.4(this);
         this.mColorNoteController.a(this.mColorNoteServiceListenr);
-        acwf.a().a(this, new acwg());
+        absn.a().a(this, new abso());
         getSharedPreferences("sdk_conf", 4).edit().putInt("usersdk", 1).apply();
       }
     }
@@ -279,7 +280,7 @@ public class GameActivity1
     if (this.mUIProxy != null) {
       this.mUIProxy.onDetachActivity(this);
     }
-    bkyl.b();
+    bjei.b();
     QLog.i("qqBaseActivity", 1, "[MiniEng]doOnDestroy " + this);
   }
   
@@ -335,7 +336,7 @@ public class GameActivity1
     if (this.mColorNoteController != null) {
       this.mColorNoteController.b();
     }
-    aquy.a(this, 2, true);
+    apoh.a(this, 2, true);
   }
   
   public void doOnResume()
@@ -344,11 +345,11 @@ public class GameActivity1
     if (this.mUIProxy != null) {
       this.mUIProxy.onMiniResume();
     }
-    bjfr.a(this);
+    bhlx.a(this);
     if (this.mColorNoteController != null) {
       this.mColorNoteController.a();
     }
-    aquy.a(BaseApplicationImpl.getContext(), 2, false);
+    apoh.a(BaseApplicationImpl.getContext(), 2, false);
   }
   
   public void doOnStart()
@@ -387,7 +388,7 @@ public class GameActivity1
     }
   }
   
-  public aqre getColorNoteController()
+  public apkn getColorNoteController()
   {
     return this.mColorNoteController;
   }
@@ -434,9 +435,9 @@ public class GameActivity1
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void setColorSignAddListener(bkxg parambkxg)
+  public void setColorSignAddListener(bjcw parambjcw)
   {
-    this.mAddColorSingListener = parambkxg;
+    this.mAddColorSingListener = parambjcw;
   }
   
   public boolean showMiniAIOEntrance(JSONObject paramJSONObject)

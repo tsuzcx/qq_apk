@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.relationx.icebreaking;
 
-import bbcg;
+import azxb;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class IceBreakingUtil$1
@@ -10,24 +10,24 @@ public final class IceBreakingUtil$1
   
   public void run()
   {
-    if (bbcg.b(this.jdField_a_of_type_Int)) {
-      bbcg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    if (azxb.b(this.jdField_a_of_type_Int)) {
+      azxb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
     }
     do
     {
       return;
-      if (bbcg.c(this.jdField_a_of_type_Int))
+      if (azxb.c(this.jdField_a_of_type_Int))
       {
-        bbcg.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+        azxb.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
         return;
       }
-      if (bbcg.d(this.jdField_a_of_type_Int))
+      if (azxb.d(this.jdField_a_of_type_Int))
       {
-        bbcg.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+        azxb.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
         return;
       }
-    } while (!bbcg.e(this.jdField_a_of_type_Int));
-    bbcg.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    } while (!azxb.e(this.jdField_a_of_type_Int));
+    azxb.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
   }
 }
 

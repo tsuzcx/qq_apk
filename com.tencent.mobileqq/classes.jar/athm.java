@@ -1,43 +1,12 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
-import java.util.Iterator;
-import java.util.List;
-
-public class athm
-  extends AsyncTask<Void, Void, Integer>
+public abstract interface athm
 {
-  public athm(FMLocalFileActivity paramFMLocalFileActivity) {}
+  public abstract void a();
   
-  protected Integer a(Void... paramVarArgs)
-  {
-    return Integer.valueOf(aunb.b(this.a));
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    super.onPostExecute(paramInteger);
-    this.a.stopTitleProgress();
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      atzb localatzb = (atzb)localIterator.next();
-      if (localatzb.e == 4)
-      {
-        localatzb.d = paramInteger.intValue();
-        this.a.jdField_a_of_type_Atyz.notifyDataSetChanged();
-      }
-    }
-  }
-  
-  protected void onPreExecute()
-  {
-    super.onPreExecute();
-    this.a.startTitleProgress();
-  }
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     athm
  * JD-Core Version:    0.7.0.1
  */

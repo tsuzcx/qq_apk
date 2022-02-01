@@ -1,59 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.text.TextUtils;
 
-public class afwu
-  implements View.OnClickListener
+abstract class afwu
 {
-  public afwu(TroopRequestActivity paramTroopRequestActivity) {}
+  protected int a;
+  protected afwv a;
+  protected String a;
+  protected int b;
+  protected String b;
   
-  public void onClick(View paramView)
+  public int a()
   {
-    long l = System.currentTimeMillis();
-    if ((l - TroopRequestActivity.c > 0L) && (l - TroopRequestActivity.c < 800L))
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    TroopRequestActivity.c = l;
-    if (((anyw)this.a.app.getManager(51)).b(this.a.l)) {
-      localAllInOne = new ProfileActivity.AllInOne(this.a.l, 1);
-    }
-    for (;;)
-    {
-      bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.a.a.msg.group_code.get() + "", "3", "", "");
-      ProfileActivity.b(this.a, localAllInOne);
-      break;
-      if ((this.a.a.msg.group_msg_type.get() != 2) || (this.a.a.msg.sub_type.get() != 3)) {
-        break label224;
-      }
-      localAllInOne = new ProfileActivity.AllInOne(this.a.l, 26);
-      localAllInOne.d = 1;
-    }
-    label224:
-    ProfileActivity.AllInOne localAllInOne = new ProfileActivity.AllInOne(this.a.l, 24);
-    bguq.a(this.a.a, localAllInOne);
-    switch (this.a.b)
-    {
-    }
-    for (;;)
-    {
-      break;
-      localAllInOne.l = 3;
-      break;
-      localAllInOne.l = 1;
-      break;
-      localAllInOne.l = 2;
-    }
+    return this.jdField_b_of_type_Int;
   }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public abstract void a();
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(afwv paramafwv)
+  {
+    this.jdField_a_of_type_Afwv = paramafwv;
+  }
+  
+  public boolean a(String paramString)
+  {
+    a();
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = -1;
+    return true;
+  }
+  
+  public abstract boolean b(String paramString);
 }
 
 

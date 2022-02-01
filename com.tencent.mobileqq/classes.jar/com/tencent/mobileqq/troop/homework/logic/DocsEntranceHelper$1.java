@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.homework.logic;
 
-import bgbn;
+import bekv;
 
 public class DocsEntranceHelper$1
   implements Runnable
 {
-  public DocsEntranceHelper$1(bgbn parambgbn) {}
+  public DocsEntranceHelper$1(bekv parambekv) {}
   
   public void run()
   {
     if (this.this$0.b) {
-      bgbn.a(this.this$0, true);
+      bekv.a(this.this$0, true);
     }
   }
 }

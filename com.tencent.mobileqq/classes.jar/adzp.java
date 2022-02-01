@@ -1,124 +1,99 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.BaseChatpieHelper.IMECommandListener.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.proto.lbsshare.LBSShare.GetShopsByIdsResp;
+import com.tencent.proto.lbsshare.LBSShare.LocationResp;
+import com.tencent.proto.lbsshare.LBSShare.NearByShopsResp;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
-import mqq.os.MqqHandler;
 
 public class adzp
-  implements blra
+  extends BroadcastReceiver
 {
-  private aslh jdField_a_of_type_Aslh;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  public adzp(QQMapActivity paramQQMapActivity) {}
   
-  public adzp(BaseChatPie paramBaseChatPie)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Aslh != null) {
-      this.jdField_a_of_type_Aslh.a();
-    }
-  }
-  
-  public boolean a(String paramString, Bundle paramBundle)
-  {
+    paramContext = paramIntent.getAction();
     if (QLog.isColorLevel()) {
-      QLog.d("IMECommandListener", 2, "onPrivateIMECommand(), action:" + paramString);
+      QLog.d("Q.qqmap", 2, "activiy.receiver.onReceive:" + paramContext);
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext;
-    XEditTextEx localXEditTextEx = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx;
-    int i;
-    if ((!TextUtils.isEmpty(paramString)) && (paramBundle != null) && (blgx.a((Context)localObject1)))
+    if (paramContext.equals("com.tencent.mobileqq.onGetStreetViewUrl"))
     {
-      if ((!"com.sogou.inputmethod.expression".equals(paramString)) && (!"com.tencent.qqpinyin.expression".equals(paramString))) {
-        break label194;
-      }
-      if (!"com.sogou.inputmethod.expression".equals(paramString)) {
-        break label180;
-      }
-      paramString = paramBundle.getString("SOGOU_EXP_PATH");
-      i = 1034;
-      if (QLog.isColorLevel()) {
-        QLog.d("IMECommandListener", 2, "onPrivateIMECommand(), path:" + paramString + ", busiType = " + i);
-      }
-      if (!TextUtils.isEmpty(paramString)) {
-        aean.a((QQAppInterface)localObject2, (Context)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramString, i);
-      }
+      this.a.j = paramIntent.getStringExtra("streetViewUrl");
+      this.a.n();
     }
-    label180:
-    label194:
     do
     {
       do
       {
-        return true;
-        paramString = paramBundle.getString("QQINPUT_EXP_PATH");
-        i = 1038;
-        break;
-        if ("com.sogou.inputmethod.appid".equals(paramString))
+        do
         {
-          localObject3 = paramBundle.getString("SOGOU_APP_ID");
-          String str = ((QQAppInterface)localObject2).getCurrentAccountUin();
-          paramString = bjqq.a(((QQAppInterface)localObject2).getApp(), str, (String)localObject3);
-          if (QLog.isColorLevel()) {
-            QLog.d("IMECommandListener", 2, "onPrivateIMECommand(), appId:" + (String)localObject3 + "selfUin:" + str + "openId:" + paramString);
-          }
-          localObject1 = (InputMethodManager)((Context)localObject1).getSystemService("input_method");
-          if (localObject1 != null)
+          return;
+          if (paramContext.equals("com.tencent.mobileqq.onGetLbsShareSearch"))
           {
-            localObject2 = new Bundle();
-            ((Bundle)localObject2).putString("SOGOU_OPENID", paramString);
-            ((InputMethodManager)localObject1).sendAppPrivateCommand(localXEditTextEx, "com.tencent.mobileqq.sogou.openid", (Bundle)localObject2);
+            byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+            localObject = new LBSShare.LocationResp();
+            paramContext = (Context)localObject;
+            if (arrayOfByte != null) {}
+            try
+            {
+              paramContext = (LBSShare.LocationResp)((LBSShare.LocationResp)localObject).mergeFrom(arrayOfByte);
+              paramIntent = paramIntent.getExtras().getBundle("req");
+              this.a.a(paramContext, paramIntent);
+              return;
+            }
+            catch (InvalidProtocolBufferMicroException paramContext)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel()) {
+                  paramContext.printStackTrace();
+                }
+                paramContext = null;
+              }
+            }
           }
-          paramString = paramBundle.getStringArrayList("EXP_ALL_PACKID");
-          if (this.jdField_a_of_type_Aslh == null) {
-            this.jdField_a_of_type_Aslh = new aslh(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+          if (!paramContext.equals("com.tencent.mobileqq.onGetLbsShareShop")) {
+            break;
           }
-          this.jdField_a_of_type_Aslh.a(paramString);
-          return true;
-        }
-        if (("com.sogou.inputmethod.qqexp".equals(paramString)) || ("com.tencent.qqpinyin.qqexp".equals(paramString)))
+          paramContext = paramIntent.getByteArrayExtra("data");
+        } while (paramContext == null);
+        Object localObject = new LBSShare.NearByShopsResp();
+        try
         {
-          i = paramBundle.getInt("PACKAGE_ID");
-          paramString = paramBundle.getString("EXP_ID");
-          paramBundle = paramBundle.getString("EXP_PATH");
-          if (QLog.isColorLevel()) {
-            QLog.d("IMECommandListener", 2, "onPrivateIMECommand(), packId:" + i + ",exprId:" + paramString + ",ePath:" + paramBundle);
-          }
-          if (this.jdField_a_of_type_Aslh == null) {
-            this.jdField_a_of_type_Aslh = new aslh(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
-          }
-          this.jdField_a_of_type_Aslh.a(i, paramString);
-          return true;
+          paramContext = (LBSShare.NearByShopsResp)((LBSShare.NearByShopsResp)localObject).mergeFrom(paramContext);
+          paramIntent = paramIntent.getExtras().getBundle("req");
+          this.a.a(paramContext, paramIntent);
+          return;
         }
-      } while (!"com.tencent.mobileqq_audioArgs".equals(paramString));
-      paramString = paramBundle.getString("PCMFilePath");
-      i = paramBundle.getInt("SampleRate");
-      int j = paramBundle.getInt("Channels");
-      Object localObject3 = (QQRecorder.RecorderParam)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.a;
-      paramBundle = paramBundle.getString("InputMethodName");
+        catch (InvalidProtocolBufferMicroException paramContext)
+        {
+          if (QLog.isColorLevel()) {
+            paramContext.printStackTrace();
+          }
+          this.a.a(null, null);
+          return;
+        }
+      } while (!paramContext.equals("com.tencent.mobileqq.onGetShareShopDetail"));
+      paramContext = paramIntent.getByteArrayExtra("data");
+    } while (paramContext == null);
+    paramIntent = new LBSShare.GetShopsByIdsResp();
+    try
+    {
+      paramContext = (LBSShare.GetShopsByIdsResp)paramIntent.mergeFrom(paramContext);
+      this.a.a(paramContext);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramContext)
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("sougouptt", 2, "recv args from sogou, pcmPath = " + paramString + " sampleRate = " + i + " channels = " + j + " inputName = " + paramBundle + " my sampleRate = " + ((QQRecorder.RecorderParam)localObject3).a);
+        paramContext.printStackTrace();
       }
-      if ((i == ((QQRecorder.RecorderParam)localObject3).a) && (!bhsr.a(paramString))) {
-        break label644;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("sougouptt", 2, "invalid datas from sougou ");
-    return true;
-    label644:
-    ThreadManager.getSubThreadHandler().post(new BaseChatpieHelper.IMECommandListener.1(this, (QQAppInterface)localObject2, paramString, i, paramBundle, (Context)localObject1, localXEditTextEx));
-    return true;
+      this.a.a(null);
+    }
   }
 }
 

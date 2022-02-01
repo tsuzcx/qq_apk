@@ -1,8 +1,4 @@
-public class qjc
-{
-  private static final qja a = new qja(null);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     qjc

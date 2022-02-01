@@ -1,65 +1,29 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.RectF;
-import com.tencent.avgame.gamelogic.data.Player;
-import com.tencent.avgame.session.AVGameUserInfo;
-import java.util.List;
+import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.avgame.gameresult.GameResultFragment;
 
-public abstract interface nbp
+public class nbp
+  extends ClickableSpan
 {
-  public abstract Activity a();
+  public nbp(GameResultFragment paramGameResultFragment) {}
   
-  public abstract RectF a();
+  public void onClick(View paramView)
+  {
+    GameResultFragment.a(this.a);
+  }
   
-  public abstract AVGameUserInfo a(String paramString);
-  
-  public abstract String a();
-  
-  public abstract nci a();
-  
-  public abstract nco a();
-  
-  public abstract ndb a();
-  
-  public abstract void a();
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(Context paramContext, ncg paramncg, nda paramnda, nco paramnco, nci paramnci, nev paramnev, ndb paramndb);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean, int paramInt);
-  
-  public abstract String b();
-  
-  public abstract void b();
-  
-  public abstract void b(String paramString);
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract List<Player> c();
-  
-  public abstract void c();
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void d();
-  
-  public abstract void d(boolean paramBoolean);
-  
-  public abstract void i(mze parammze);
-  
-  public abstract void k(mze parammze);
-  
-  public abstract void m(mze parammze);
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.parseColor("#40A0FF"));
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nbp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
+import com.tencent.open.base.MD5Utils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class ameq
-  implements View.OnClickListener
+  extends bgod
 {
-  public ameq(SelectMemberActivity paramSelectMemberActivity) {}
+  public ameq(ApolloCardWindow paramApolloCardWindow) {}
   
-  public void onClick(View paramView)
+  public void onDoneFile(bgoe parambgoe)
   {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (parambgoe == null) {
+      return;
+    }
+    try
+    {
+      ??? = parambgoe.a().getString("path");
+      String str = parambgoe.a().getString("url");
+      parambgoe = this.a.a((String)???);
+      str = MD5Utils.toMD5(str);
+      synchronized (ApolloCardWindow.a)
+      {
+        ApolloCardWindow.a.put(str, parambgoe);
+        return;
+      }
+      return;
+    }
+    catch (Exception parambgoe)
+    {
+      QLog.e("ApolloCardWindow", 1, "onDoneFile error:", parambgoe);
+    }
   }
 }
 

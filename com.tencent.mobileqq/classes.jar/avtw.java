@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import java.util.HashSet;
 
 public class avtw
-  implements DialogInterface.OnClickListener
 {
-  public avtw(HotPicPageView paramHotPicPageView, avub paramavub) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Avub.a(-11);
-    QLog.d("HotPicManagerHotPicPageView", 2, "User disallowed downd");
-  }
+  public int a;
+  public long a;
+  public avtk a;
+  public String a;
+  public HashSet<RecentBaseData> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public int c;
 }
 
 

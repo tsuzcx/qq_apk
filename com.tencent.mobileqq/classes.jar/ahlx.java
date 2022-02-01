@@ -1,10 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class ahlx
-  implements DialogInterface.OnClickListener
+public class ahlx
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a;
+  public String a;
 }
 
 

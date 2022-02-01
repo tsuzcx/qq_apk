@@ -1,28 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class mkf
-  extends Handler
+class mkf
+  implements mho
 {
-  public mkf(VideoControlUI paramVideoControlUI, Looper paramLooper)
+  mkf(mke parammke, int paramInt) {}
+  
+  public void a()
   {
-    super(paramLooper);
+    if (this.jdField_a_of_type_Mke.a.jdField_a_of_type_ComTencentAvUiQavPanel != null)
+    {
+      this.jdField_a_of_type_Mke.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131373411, false);
+      this.jdField_a_of_type_Mke.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131363109, false);
+      this.jdField_a_of_type_Mke.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131363121, false);
+      this.jdField_a_of_type_Mke.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131363120, false);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void b()
   {
-    String str = (String)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 256: 
-      mbb.a(this.a.a, 1037, str);
-      return;
-    }
-    mbb.a(this.a.a, 1036, str);
+    this.jdField_a_of_type_Mke.a.a().a(this.jdField_a_of_type_Mke.a.c, 250);
+    this.jdField_a_of_type_Mke.a.a().b(250);
+    this.jdField_a_of_type_Mke.a.a().b(this.jdField_a_of_type_Mke.a.c, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Mke.a.e = true;
+    QLog.d(this.jdField_a_of_type_Mke.a.jdField_a_of_type_JavaLangString, 1, "onClose()-> onOutAnimationEnd ->finish  ");
+    this.jdField_a_of_type_Mke.a.finish();
+    this.jdField_a_of_type_Mke.a.overridePendingTransition(0, 2130772177);
   }
 }
 

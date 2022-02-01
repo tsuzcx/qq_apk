@@ -7,9 +7,7 @@ class AECameraGLSurfaceView$9
   
   public void run()
   {
-    if (AECameraGLSurfaceView.a(this.this$0) != null) {
-      AECameraGLSurfaceView.a(this.this$0).run();
-    }
+    this.this$0.captureListener.onCaptureError(104);
   }
 }
 

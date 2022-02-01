@@ -1,10 +1,25 @@
-public abstract interface benj
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+
+public class benj
+  extends RecyclerView.ItemDecoration
 {
-  public abstract void a(int paramInt);
+  private int a;
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public benj(int paramInt)
+  {
+    this.a = paramInt;
+  }
   
-  public abstract void a(benk parambenk);
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    if (paramRecyclerView.getChildAdapterPosition(paramView) != 0) {
+      paramRect.top = this.a;
+    }
+  }
 }
 
 

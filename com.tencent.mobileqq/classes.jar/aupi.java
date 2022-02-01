@@ -1,13 +1,14 @@
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.QQKandianInterface;
+
 class aupi
-  implements bjhv
+  implements QQKandianInterface
 {
-  aupi(aupf paramaupf) {}
+  aupi(aupc paramaupc) {}
   
-  public void a(int paramInt)
+  public void jumpToKandianBiu(Bundle paramBundle)
   {
-    if (paramInt == 2) {
-      this.a.c();
-    }
+    auqe.a().d(paramBundle);
   }
 }
 

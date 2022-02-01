@@ -7,13 +7,13 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import binq;
-import birg;
-import bjef;
+import bgtw;
+import bhkb;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import com.tencent.qphone.base.util.QLog;
-import phe;
-import tsl;
+import pmr;
+import tze;
 
 public class ReadInJoyAdPopSheetBrowserFragment
   extends QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
@@ -40,22 +40,22 @@ public class ReadInJoyAdPopSheetBrowserFragment
       getActivity().finish();
       return;
     }
-    localObject = tsl.a(getActivity(), this.b, this.c, this.d);
-    ((tsl)localObject).a(new phe(this));
-    ((tsl)localObject).show();
+    localObject = tze.a(getActivity(), this.b, this.c, this.d);
+    ((tze)localObject).a(new pmr(this));
+    ((tze)localObject).show();
   }
   
   public int doCreateLoopStep_Final(Bundle paramBundle)
   {
     int i = super.doCreateLoopStep_Final(paramBundle);
-    if ((this.mSwiftTitleUI != null) && (this.mSwiftTitleUI.a != null)) {
-      this.mSwiftTitleUI.a.setVisibility(8);
+    if ((this.mSwiftTitleUI != null) && (this.mSwiftTitleUI.titleContainer != null)) {
+      this.mSwiftTitleUI.titleContainer.setVisibility(8);
     }
     if (this.mSystemBarComp != null) {
       this.mSystemBarComp.setVisibility(8);
     }
-    if ((this.mUIStyleHandler != null) && (this.mUIStyleHandler.a != null)) {
-      this.mUIStyleHandler.a.a(false);
+    if ((this.mUIStyleHandler != null) && (this.mUIStyleHandler.mProgressBarController != null)) {
+      this.mUIStyleHandler.mProgressBarController.a(false);
     }
     getActivity().getWindow().getDecorView().setSystemUiVisibility(514);
     return i;

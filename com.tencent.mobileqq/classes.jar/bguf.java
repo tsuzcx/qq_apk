@@ -1,33 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
-class bguf
-  extends nkq
+public abstract interface bguf
 {
-  bguf(bgty parambgty, bgug parambgug) {}
+  public abstract WebViewFragment a();
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    paramBundle = new cmd0x934.RspBody();
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.jdField_a_of_type_Bgug.a(paramInt, paramBundle);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
-        }
-      }
-    }
-  }
+  public abstract WebViewFragment a(Intent paramIntent);
+  
+  public abstract boolean a(boolean paramBoolean);
 }
 
 

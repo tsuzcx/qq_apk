@@ -1,7 +1,7 @@
 package cooperation.qzone.share;
 
 import Override;
-import abgu;
+import aadf;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
@@ -30,34 +30,9 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anui;
-import bdmc;
-import begz;
-import behe;
-import bhlq;
-import bhnv;
-import bhpc;
-import bhsr;
-import bhtq;
-import bjbs;
-import bmtd;
-import bmud;
-import bngt;
-import bngu;
-import bngw;
-import bngx;
-import bngy;
-import bngz;
-import bnha;
-import bnhb;
-import bnhc;
-import bnhd;
-import bnhe;
-import bnhg;
-import bnhh;
-import bnhi;
-import bnhj;
-import bnko;
+import bcef;
+import bfur;
+import bhht;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
@@ -74,6 +49,13 @@ import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.share.MiniProgramShareUtils;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.text.QQTextBuilder;
+import com.tencent.mobileqq.text.QzoneTextBuilder;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.open.agent.AgentActivity;
 import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -82,7 +64,10 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneShareData;
+import cooperation.qzone.QZoneShareManager;
+import cooperation.qzone.util.QZonePermission;
 import eipc.EIPCClient;
 import java.io.File;
 import java.util.ArrayList;
@@ -92,101 +77,163 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 import mqq.app.AppRuntime;
-import mqq.observer.BusinessObserver;
 import mqq.os.MqqHandler;
-import zyx;
+import yyi;
 
 public class QZoneShareActivity
   extends IphoneTitleBarActivity
 {
-  public static final Object a;
-  public static final String a;
-  public int a;
-  public long a;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bnhd(this);
-  protected View a;
-  protected InputMethodManager a;
-  public EditText a;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  protected ImageView a;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  protected TextView a;
-  private bjbs jdField_a_of_type_Bjbs;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  protected SystemEmoticonPanel a;
-  public GetAppInfoProto.GetAppinfoResponse a;
-  private QZoneShareData jdField_a_of_type_CooperationQzoneQZoneShareData;
-  public List<bngt> a;
-  protected BusinessObserver a;
-  public boolean a;
-  private int jdField_b_of_type_Int;
-  protected View b;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString = "";
-  public boolean b;
-  private int jdField_c_of_type_Int = 1;
-  public View c;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private String jdField_c_of_type_JavaLangString;
-  public boolean c;
-  private int jdField_d_of_type_Int = 1;
-  private String jdField_d_of_type_JavaLangString;
-  public boolean d;
-  private int jdField_e_of_type_Int = -1;
-  private String jdField_e_of_type_JavaLangString;
-  protected boolean e;
-  private int jdField_f_of_type_Int = -1;
-  private String jdField_f_of_type_JavaLangString;
-  protected boolean f;
-  private int g;
-  public boolean g;
-  public boolean h;
-  private boolean i;
-  private boolean j;
-  private boolean k;
-  private boolean l = true;
+  public static final String BROADCAST_SHARE_UPDATE = "com.tencent.qq.shareupdate";
+  public static final String EXTRA_INPUT_MAX_LEN = "inputmax";
+  public static final String EXTRA_INTENT_KEY_PARCELABLE = "extraIntentKeyParcelable";
+  public static final String EXTRA_KEY_CONTENT_INTENT = "contentIntentKey";
+  public static final String EXTRA_KEY_REQUEST_CODE = "extraRequestCode";
+  public static final String KEY_ASK_ANONYMOUSLY_SHARE_TYPE = "askAnonymouslyShareType";
+  public static final String KEY_IS_SHARED_FROM_ASK_ANONYMOUSLY = "isSharedFromAskAnonymously";
+  public static final String KEY_IS_SHARED_FROM_MINI_PROGRAM = "isSharedFromMiniProgram";
+  public static final String KEY_IS_SHARED_FROM_THIRD_PARTY = "isSharedFromThirdParty";
+  public static final String KEY_MINI_SHARE_APP_IS_FROM_INNER_BUTTON = "miniShareIsFromInnerButton";
+  public static final String KEY_MINI_SHARE_APP_OPEN_ID = "miniShareOpenId";
+  public static final String KEY_MINI_SHARE_APP_PKG_NAME = "miniSharePkgName";
+  public static final String KEY_MINI_SHARE_APP_RICH_ID = "miniShareAppRichId";
+  public static final String KEY_MINI_SHARE_PARAM_APP_ID = "miniShareParamAppId";
+  public static final String KEY_MINI_SHARE_PARAM_BUSINESS_TYPE = "miniShareParamBusinessType";
+  public static final String KEY_MINI_SHARE_PARAM_DESCRIPTION = "miniShareParamDescription";
+  public static final String KEY_MINI_SHARE_PARAM_ICON_URL = "miniShareParamIconUrl";
+  public static final String KEY_MINI_SHARE_PARAM_JUMP_URL = "miniShareParamJumpUrl";
+  public static final String KEY_MINI_SHARE_PARAM_PIC_URL = "miniShareParamPicUrl";
+  public static final String KEY_MINI_SHARE_PARAM_SHARE_SCENE = "miniShareParamShareScene";
+  public static final String KEY_MINI_SHARE_PARAM_TEMPLATE_TYPE = "miniShareParamTemplateType";
+  public static final String KEY_MINI_SHARE_PARAM_TITLE = "miniShareParamTitle";
+  public static final String KEY_MINI_SHARE_PARAM_VERSION_TYPE = "miniShareParamVersionType";
+  public static final String KEY_MINI_SHARE_PRRAM_VERSION_ID = "miniShareParamVersionId";
+  private static final String SDK_SHARE_CALLBACK_CANCEL = "tencent%1$d://tauth.qq.com/?#action=%2$s&result=cancel";
+  private static final String SDK_SHARE_CALLBACK_COMPLETE = "tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}";
+  public static final String SHOW_AT_ICON = "showaticon";
+  public static final String SHOW_EMOTION_ICON = "showemotionicon";
+  public static final String TAG = "QZoneShare";
+  protected static final Object sAppinfoLock = new Object();
+  protected static final String simpleClassname = QZoneShareActivity.class.getSimpleName();
+  private int askAnonymouslyShareType;
+  private int atEnd = -1;
+  private int atStatr = -1;
+  protected View desToolbar;
+  protected boolean emoShow;
+  protected boolean emoShowing;
+  protected boolean hintHidden;
+  protected InputMethodManager imm;
+  private boolean isFromInnerButton;
+  protected boolean isInputAt;
+  protected boolean isKeyboardHidden;
+  public boolean isResemeInited;
+  private boolean isSharedFromAskAnonymously;
+  private boolean isSharedFromMiniProgram;
+  RelativeLayout line;
+  protected mqq.observer.BusinessObserver mAppinfoObserver = new QZoneShareActivity.19(this);
+  private int mAtMaxLen;
+  public List<Friend> mAtUserList;
+  private RelativeLayout mConatainer;
+  protected GetAppInfoProto.GetAppinfoResponse mGetAppinfoResponse;
+  private String mHint;
+  private boolean mIsCanShowKeyboard = true;
+  protected boolean mIsGettingAppinfo;
+  public int mMaxLen;
+  private String mOwnUin;
+  private bhht mProgressDialog;
+  private QZoneShareData mShareData;
+  private int mShowAtIcon = 1;
+  private int mShowEmoIcon = 1;
+  private String mSummary;
+  protected long mTempTime;
+  private FrameLayout mThumbContainer;
+  private String mThumbUrl;
+  private URLImageView mThumbView;
+  private String mTitle;
+  public EditText mViewEdit;
+  private TextView mViewForwardSummary;
+  private TextView mViewForwardTitle;
+  private boolean needShareCallback;
+  private TextView preMeasureSummaryTextArea;
+  BroadcastReceiver receiver = new QZoneShareActivity.22(this);
+  private int rootHeight;
+  public boolean showMaxLen = true;
+  private String tmpAtCode = "";
+  protected View viewAtUser;
+  protected View viewDivider;
+  protected SystemEmoticonPanel viewEmoView;
+  protected ImageView viewSmiley;
+  protected TextView viewTextCount;
   
-  static
+  private void ajustDesToolbar(boolean paramBoolean)
   {
-    jdField_a_of_type_JavaLangString = QZoneShareActivity.class.getSimpleName();
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  public QZoneShareActivity()
-  {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new bnhb(this);
-  }
-  
-  private int a(CharSequence paramCharSequence, int paramInt)
-  {
-    return bngu.a(paramCharSequence, paramInt, this.jdField_g_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.jdField_e_of_type_Int, this.jdField_f_of_type_Int, this.jdField_b_of_type_JavaLangString);
-  }
-  
-  private int a(String paramString, int paramInt1, int paramInt2)
-  {
-    TextView localTextView = new TextView(BaseApplication.getContext());
-    localTextView.setText(paramString);
-    localTextView.setTextSize(2, paramInt1);
-    localTextView.setMaxLines(2);
-    localTextView.measure(View.MeasureSpec.makeMeasureSpec(paramInt2, -2147483648), View.MeasureSpec.makeMeasureSpec(0, 0));
-    return localTextView.getLineCount();
-  }
-  
-  public static String a(EditText paramEditText)
-  {
-    if (paramEditText == null) {
-      return "";
+    if ((this.isKeyboardHidden) && (!paramBoolean))
+    {
+      this.desToolbar.setVisibility(4);
+      return;
     }
-    paramEditText = paramEditText.getText();
-    if ((paramEditText instanceof begz)) {
-      return ((begz)paramEditText).a();
-    }
-    return paramEditText.toString();
+    this.desToolbar.setVisibility(0);
   }
   
-  public static String a(String paramString)
+  private void askAnonymouslyReport()
+  {
+    if ((this.isSharedFromAskAnonymously) && (this.askAnonymouslyShareType == 1)) {
+      bcef.b(null, "dc00898", "", "", "0X800B46E", "0X800B46E", 0, 0, "", "", "", "");
+    }
+  }
+  
+  private void callbackShareFail()
+  {
+    Bundle localBundle;
+    if (this.isSharedFromMiniProgram)
+    {
+      localBundle = new Bundle();
+      localBundle.putString("key_mini_report_event_action_type", "user_click");
+      if (!this.isFromInnerButton) {
+        break label104;
+      }
+      localBundle.putString("key_mini_report_event_sub_action_type", "custom_button");
+    }
+    for (;;)
+    {
+      localBundle.putString("key_mini_report_event_reserves", "share_QZ");
+      localBundle.putString("key_mini_report_event_reserves2", "fail");
+      QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_report_event", localBundle, null);
+      if (this.needShareCallback) {
+        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_fail", null, null);
+      }
+      return;
+      label104:
+      localBundle.putString("key_mini_report_event_sub_action_type", "more_button");
+    }
+  }
+  
+  private void callbackShareSuccess()
+  {
+    Bundle localBundle;
+    if (this.isSharedFromMiniProgram)
+    {
+      localBundle = new Bundle();
+      localBundle.putString("key_mini_report_event_action_type", "user_click");
+      if (!this.isFromInnerButton) {
+        break label104;
+      }
+      localBundle.putString("key_mini_report_event_sub_action_type", "custom_button");
+    }
+    for (;;)
+    {
+      localBundle.putString("key_mini_report_event_reserves", "share_QZ");
+      localBundle.putString("key_mini_report_event_reserves2", "success");
+      QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_report_event", localBundle, null);
+      if (this.needShareCallback) {
+        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
+      }
+      return;
+      label104:
+      localBundle.putString("key_mini_report_event_sub_action_type", "more_button");
+    }
+  }
+  
+  public static String filterText(String paramString)
   {
     paramString = new StringTokenizer(paramString.toString().replace("\r\n", " ").replace("\n", " "), " ");
     StringBuffer localStringBuffer = new StringBuffer();
@@ -196,25 +243,281 @@ public class QZoneShareActivity
     return localStringBuffer.toString().trim();
   }
   
-  private void a(Activity paramActivity, QZoneShareData paramQZoneShareData, boolean paramBoolean)
+  private int findAtSymbol(CharSequence paramCharSequence, int paramInt)
+  {
+    return InputViewPanelControl.findAtSymbol(paramCharSequence, paramInt, this.mAtMaxLen, this.mAtUserList, this.atStatr, this.atEnd, this.tmpAtCode);
+  }
+  
+  private void getAppinfo(AppInterface paramAppInterface, long paramLong, String paramString)
+  {
+    this.mTempTime = System.currentTimeMillis();
+    this.mIsGettingAppinfo = true;
+    long l = System.currentTimeMillis() / 1000L;
+    String str = AgentActivity.a(this, paramString, l + "");
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneShare", 2, "-->sdk_share, getting appinfo in construct. sign: " + str);
+    }
+    aadf.a(paramAppInterface, this, paramAppInterface.getCurrentAccountUin(), paramLong, str, l, this.mAppinfoObserver, paramString);
+  }
+  
+  public static String getStringFromEditText(EditText paramEditText)
+  {
+    if (paramEditText == null) {
+      return "";
+    }
+    paramEditText = paramEditText.getText();
+    if ((paramEditText instanceof QQTextBuilder)) {
+      return ((QQTextBuilder)paramEditText).toPlainText();
+    }
+    return paramEditText.toString();
+  }
+  
+  private int getTitleLineCount(String paramString, int paramInt1, int paramInt2)
+  {
+    TextView localTextView = new TextView(BaseApplication.getContext());
+    localTextView.setText(paramString);
+    localTextView.setTextSize(2, paramInt1);
+    localTextView.setMaxLines(2);
+    localTextView.measure(View.MeasureSpec.makeMeasureSpec(paramInt2, -2147483648), View.MeasureSpec.makeMeasureSpec(0, 0));
+    return localTextView.getLineCount();
+  }
+  
+  private void handleShareData()
+  {
+    label21:
+    Object localObject;
+    if (this.mShareData != null)
+    {
+      if (!this.isSharedFromAskAnonymously) {
+        break label243;
+      }
+      this.mThumbUrl = "https://downv6.qq.com/qq_relation/ask_anonymously/ask_anonymously_invite_icon_to_qzone_v2.png";
+      break label277;
+      if (!TextUtils.isEmpty(this.mShareData.mTitle)) {
+        break label311;
+      }
+      localObject = null;
+      label36:
+      this.mTitle = ((String)localObject);
+      if (!TextUtils.isEmpty(this.mShareData.mSummary)) {
+        break label325;
+      }
+      localObject = null;
+      label56:
+      this.mSummary = ((String)localObject);
+      if ((!TextUtils.isEmpty(this.mTitle)) && (!TextUtils.isEmpty(this.mSummary)))
+      {
+        if (!this.mTitle.equals(this.mSummary)) {
+          break label339;
+        }
+        this.mSummary = null;
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneShare", 2, "params: " + this.mShareData.toString());
+      }
+      if (!TextUtils.isEmpty(this.mShareData.mDefaultForwardReason)) {
+        this.mViewEdit.setText(this.mShareData.mDefaultForwardReason);
+      }
+      openIdConfirm(this.mShareData);
+      report(this.mShareData);
+      if ((this.app != null) && (this.mShareData != null) && (this.mShareData.appid > 0L) && (!TextUtils.isEmpty(this.mShareData.pkgname))) {
+        getAppinfo(this.app, this.mShareData.appid, this.mShareData.pkgname);
+      }
+      return;
+      label243:
+      if ((this.mShareData.mImageUrls == null) || (this.mShareData.mImageUrls.size() <= 0)) {
+        break label21;
+      }
+      localObject = this.mShareData.mImageUrls.iterator();
+      label277:
+      if (!((Iterator)localObject).hasNext()) {
+        break label21;
+      }
+      String str = (String)((Iterator)localObject).next();
+      if (TextUtils.isEmpty(str)) {
+        break;
+      }
+      this.mThumbUrl = str;
+      break label21;
+      label311:
+      localObject = this.mShareData.mTitle.trim();
+      break label36;
+      label325:
+      localObject = this.mShareData.mSummary.trim();
+      break label56;
+      label339:
+      if (this.mTitle.length() > 20)
+      {
+        localObject = this.mTitle.substring(0, 20);
+        if (this.mSummary.startsWith((String)localObject)) {
+          this.mSummary = null;
+        }
+      }
+    }
+  }
+  
+  private void initData()
+  {
+    Intent localIntent = getIntent();
+    this.mShareData = ((QZoneShareData)localIntent.getParcelableExtra("extraIntentKeyParcelable"));
+    this.isSharedFromMiniProgram = localIntent.getBooleanExtra("isSharedFromMiniProgram", false);
+    this.isSharedFromAskAnonymously = localIntent.getBooleanExtra("isSharedFromAskAnonymously", false);
+    this.mOwnUin = localIntent.getStringExtra("qzone_uin");
+    if (TextUtils.isEmpty(this.mOwnUin)) {
+      this.mOwnUin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    }
+    if (this.isSharedFromAskAnonymously) {
+      this.askAnonymouslyShareType = localIntent.getIntExtra("askAnonymouslyShareType", 0);
+    }
+    if (this.isSharedFromMiniProgram)
+    {
+      showProgressDialog(2131718410);
+      boolean bool = localIntent.getBooleanExtra("isSharedFromThirdParty", false);
+      String str1 = localIntent.getStringExtra("miniShareParamAppId");
+      String str2 = localIntent.getStringExtra("miniShareParamTitle");
+      String str3 = localIntent.getStringExtra("miniShareParamDescription");
+      int i = localIntent.getIntExtra("miniShareParamShareScene", 1);
+      int j = localIntent.getIntExtra("miniShareParamTemplateType", 1);
+      int k = localIntent.getIntExtra("miniShareParamBusinessType", 0);
+      String str4 = localIntent.getStringExtra("miniShareParamPicUrl");
+      String str5 = localIntent.getStringExtra("miniShareParamJumpUrl");
+      String str6 = localIntent.getStringExtra("miniShareParamIconUrl");
+      int m = localIntent.getIntExtra("miniShareParamVersionType", -1);
+      String str7 = localIntent.getStringExtra("miniShareParamVersionId");
+      String str8 = localIntent.getStringExtra("miniShareAppRichId");
+      Object localObject = localIntent.getStringExtra("miniSharePkgName");
+      String str9 = localIntent.getStringExtra("miniShareOpenId");
+      this.isFromInnerButton = localIntent.getBooleanExtra("miniShareIsFromInnerButton", false);
+      this.mShareData = new QZoneShareData();
+      this.mShareData.mTitle = str2;
+      if (str8 != null) {}
+      try
+      {
+        this.mShareData.appid = Long.parseLong(str8);
+        this.mShareData.openId = str9;
+        this.mShareData.pkgname = ((String)localObject);
+        this.mShareData.mSummary = str3;
+        this.mShareData.mImageUrls = new ArrayList();
+        if (!StringUtil.isEmpty(str4))
+        {
+          this.mShareData.mImageUrls.add(str4);
+          if (bool) {
+            this.mShareData.from = 1;
+          }
+          this.mShareData.xcxMapEx = new HashMap();
+          this.mShareData.xcxMapEx.put("xcxPath", str5);
+          this.mShareData.xcxMapEx.put("xcxAppId", str1);
+          this.mShareData.xcxMapEx.put("xcxSourceType", String.valueOf(k));
+          localObject = new QZoneShareActivity.4(this);
+          if (!TextUtils.isEmpty(str6)) {
+            break label545;
+          }
+          MiniAppCmdUtil.getInstance().getAppInfoById(null, str1, str5, String.valueOf(m), new QZoneShareActivity.5(this, str2, str3, str1, i, j, k, str4, str5, m, str8, (MiniAppCmdInterface)localObject));
+        }
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        for (;;)
+        {
+          QLog.e("QZoneShare", 1, "Long.parseLong(appRichId) get an Exception", localNumberFormatException);
+          continue;
+          if (!StringUtil.isEmpty(str6)) {
+            this.mShareData.mImageUrls.add(str6);
+          }
+        }
+        label545:
+        MiniProgramShareUtils.shareAsQzoneFeeds(str1, str2, str3, i, j, k, str4, null, str5, str6, m, str7, str8, (MiniAppCmdInterface)localObject);
+        return;
+      }
+    }
+    handleShareData();
+  }
+  
+  private void initUI()
+  {
+    setContentView(2131562080);
+    setRightButton(2131717103, new QZoneShareActivity.6(this));
+    this.mConatainer = ((RelativeLayout)findViewById(2131375328));
+    this.mViewEdit = ((EditText)findViewById(2131367107));
+    this.mThumbContainer = ((FrameLayout)findViewById(2131367109));
+    this.mThumbView = ((URLImageView)findViewById(2131367112));
+    this.mViewForwardTitle = ((TextView)findViewById(2131367121));
+    this.mViewForwardSummary = ((TextView)findViewById(2131367117));
+    addEmoPanel();
+    this.viewAtUser = findViewById(2131374845);
+    setEventAtUser();
+    this.viewSmiley = ((ImageView)findViewById(2131374878));
+    setEventSmiley();
+    setEventEditView();
+    this.viewTextCount = ((TextView)findViewById(2131367119));
+    this.imm = ((InputMethodManager)getSystemService("input_method"));
+    this.mAtUserList = new ArrayList();
+  }
+  
+  private boolean isMatchAt(String paramString, boolean paramBoolean)
+  {
+    return InputViewPanelControl.isMatchAt(paramString, paramBoolean, this.mAtUserList, this.atStatr, this.atEnd, this.tmpAtCode);
+  }
+  
+  public static final boolean isValidUrl(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    while ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://"))) {
+      return false;
+    }
+    return true;
+  }
+  
+  private void report(QZoneShareData paramQZoneShareData)
+  {
+    if ((paramQZoneShareData != null) && (paramQZoneShareData.mShareBeginTime > 0L))
+    {
+      localHashMap = new HashMap();
+      localHashMap.put("url", paramQZoneShareData.targetUrl);
+      localHashMap.put("time_cost", String.valueOf(System.currentTimeMillis() - paramQZoneShareData.mShareBeginTime));
+      localHashMap.put("time_interval", String.valueOf((System.currentTimeMillis() - paramQZoneShareData.mShareBeginTime) / 100L));
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneShare", 2, "timecost:" + (System.currentTimeMillis() - paramQZoneShareData.mShareBeginTime));
+      }
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.mOwnUin, "qzonesharetimecost", true, 0L, 0L, localHashMap, null, true);
+    }
+    while (!QLog.isColorLevel())
+    {
+      HashMap localHashMap;
+      return;
+    }
+    QLog.d("QZoneShare", 2, "timecost: -1");
+  }
+  
+  private void resetAt()
+  {
+    this.tmpAtCode = "";
+    this.atStatr = -1;
+    this.atEnd = -1;
+  }
+  
+  private void startSdkCallback(Activity paramActivity, QZoneShareData paramQZoneShareData, boolean paramBoolean)
   {
     if ((paramActivity == null) || (paramQZoneShareData == null)) {
       return;
     }
-    if (TextUtils.isEmpty(paramQZoneShareData.h)) {
-      paramQZoneShareData.h = "shareToQzone";
+    if (TextUtils.isEmpty(paramQZoneShareData.action)) {
+      paramQZoneShareData.action = "shareToQzone";
     }
     if (QLog.isColorLevel()) {
-      QLog.d("QZoneShare", 2, "sdk_share:sdk callback=" + paramBoolean + " appid=" + paramQZoneShareData.jdField_a_of_type_Long + " action=" + paramQZoneShareData.h);
+      QLog.d("QZoneShare", 2, "sdk_share:sdk callback=" + paramBoolean + " appid=" + paramQZoneShareData.appid + " action=" + paramQZoneShareData.action);
     }
     Intent localIntent = new Intent();
     if (paramBoolean) {
-      localIntent.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(paramQZoneShareData.jdField_a_of_type_Long), paramQZoneShareData.h })));
+      localIntent.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(paramQZoneShareData.appid), paramQZoneShareData.action })));
     }
     for (;;)
     {
-      localIntent.setPackage(paramQZoneShareData.i);
-      bmtd.c(localIntent);
+      localIntent.setPackage(paramQZoneShareData.pkgname);
+      QZoneHelper.addSource(localIntent);
       try
       {
         paramActivity.startActivity(localIntent);
@@ -225,425 +528,49 @@ public class QZoneShareActivity
         QLog.e("QZoneShare", 1, paramActivity.getStackTrace());
         return;
       }
-      localIntent.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=cancel", new Object[] { Long.valueOf(paramQZoneShareData.jdField_a_of_type_Long), paramQZoneShareData.h })));
+      localIntent.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=cancel", new Object[] { Long.valueOf(paramQZoneShareData.appid), paramQZoneShareData.action })));
     }
   }
   
-  private void a(AppInterface paramAppInterface, long paramLong, String paramString)
+  private void startShare()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.h = true;
-    long l1 = System.currentTimeMillis() / 1000L;
-    String str = AgentActivity.a(this, paramString, l1 + "");
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneShare", 2, "-->sdk_share, getting appinfo in construct. sign: " + str);
-    }
-    abgu.a(paramAppInterface, this, paramAppInterface.getCurrentAccountUin(), paramLong, str, l1, this.jdField_a_of_type_MqqObserverBusinessObserver, paramString);
-  }
-  
-  public static final boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://"))) {
-      return false;
-    }
-    return true;
-  }
-  
-  private boolean a(String paramString, boolean paramBoolean)
-  {
-    return bngu.a(paramString, paramBoolean, this.jdField_a_of_type_JavaUtilList, this.jdField_e_of_type_Int, this.jdField_f_of_type_Int, this.jdField_b_of_type_JavaLangString);
-  }
-  
-  private void b(QZoneShareData paramQZoneShareData)
-  {
-    if ((paramQZoneShareData != null) && (paramQZoneShareData.jdField_b_of_type_Long > 0L))
+    callbackShareSuccess();
+    if (!NetworkUtil.isNetSupport(this))
     {
-      localHashMap = new HashMap();
-      localHashMap.put("url", paramQZoneShareData.jdField_d_of_type_JavaLangString);
-      localHashMap.put("time_cost", String.valueOf(System.currentTimeMillis() - paramQZoneShareData.jdField_b_of_type_Long));
-      localHashMap.put("time_interval", String.valueOf((System.currentTimeMillis() - paramQZoneShareData.jdField_b_of_type_Long) / 100L));
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneShare", 2, "timecost:" + (System.currentTimeMillis() - paramQZoneShareData.jdField_b_of_type_Long));
-      }
-      bdmc.a(BaseApplication.getContext()).a(this.jdField_c_of_type_JavaLangString, "qzonesharetimecost", true, 0L, 0L, localHashMap, null, true);
-    }
-    while (!QLog.isColorLevel())
-    {
-      HashMap localHashMap;
-      return;
-    }
-    QLog.d("QZoneShare", 2, "timecost: -1");
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    if ((this.jdField_f_of_type_Boolean) && (!paramBoolean))
-    {
-      this.jdField_c_of_type_AndroidViewView.setVisibility(4);
-      return;
-    }
-    this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-  }
-  
-  private void l()
-  {
-    Intent localIntent = getIntent();
-    this.jdField_a_of_type_CooperationQzoneQZoneShareData = ((QZoneShareData)localIntent.getParcelableExtra("extraIntentKeyParcelable"));
-    this.i = localIntent.getBooleanExtra("isSharedFromMiniProgram", false);
-    this.jdField_c_of_type_JavaLangString = localIntent.getStringExtra("qzone_uin");
-    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      this.jdField_c_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    }
-    if (this.i)
-    {
-      a(2131718169);
-      boolean bool = localIntent.getBooleanExtra("isSharedFromThirdParty", false);
-      String str1 = localIntent.getStringExtra("miniShareParamAppId");
-      String str2 = localIntent.getStringExtra("miniShareParamTitle");
-      String str3 = localIntent.getStringExtra("miniShareParamDescription");
-      int m = localIntent.getIntExtra("miniShareParamShareScene", 1);
-      int n = localIntent.getIntExtra("miniShareParamTemplateType", 1);
-      int i1 = localIntent.getIntExtra("miniShareParamBusinessType", 0);
-      String str4 = localIntent.getStringExtra("miniShareParamPicUrl");
-      String str5 = localIntent.getStringExtra("miniShareParamJumpUrl");
-      String str6 = localIntent.getStringExtra("miniShareParamIconUrl");
-      int i2 = localIntent.getIntExtra("miniShareParamVersionType", -1);
-      String str7 = localIntent.getStringExtra("miniShareParamVersionId");
-      String str8 = localIntent.getStringExtra("miniShareAppRichId");
-      Object localObject = localIntent.getStringExtra("miniSharePkgName");
-      String str9 = localIntent.getStringExtra("miniShareOpenId");
-      this.k = localIntent.getBooleanExtra("miniShareIsFromInnerButton", false);
-      this.jdField_a_of_type_CooperationQzoneQZoneShareData = new QZoneShareData();
-      this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_b_of_type_JavaLangString = str2;
-      if (str8 != null) {}
-      try
-      {
-        this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_a_of_type_Long = Long.parseLong(str8);
-        this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_a_of_type_JavaLangString = str9;
-        this.jdField_a_of_type_CooperationQzoneQZoneShareData.i = ((String)localObject);
-        this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_c_of_type_JavaLangString = str3;
-        this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        if (!bhsr.a(str4))
-        {
-          this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_a_of_type_JavaUtilArrayList.add(str4);
-          if (bool) {
-            this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_b_of_type_Int = 1;
-          }
-          this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_a_of_type_JavaUtilMap = new HashMap();
-          this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_a_of_type_JavaUtilMap.put("xcxPath", str5);
-          this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_a_of_type_JavaUtilMap.put("xcxAppId", str1);
-          this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_a_of_type_JavaUtilMap.put("xcxSourceType", String.valueOf(i1));
-          localObject = new bnhe(this);
-          if (!TextUtils.isEmpty(str6)) {
-            break label532;
-          }
-          MiniAppCmdUtil.getInstance().getAppInfoById(null, str1, str5, String.valueOf(i2), new bnhg(this, str2, str3, str1, m, n, i1, str4, str5, i2, str8, (MiniAppCmdInterface)localObject));
-        }
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        for (;;)
-        {
-          QLog.e("QZoneShare", 1, "Long.parseLong(appRichId) get an Exception", localNumberFormatException);
-          continue;
-          if (!bhsr.a(str6)) {
-            this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_a_of_type_JavaUtilArrayList.add(str6);
-          }
-        }
-        label532:
-        MiniProgramShareUtils.shareAsQzoneFeeds(str1, str2, str3, m, n, i1, str4, null, str5, str6, i2, str7, str8, (MiniAppCmdInterface)localObject);
-        return;
-      }
-    }
-    o();
-  }
-  
-  private void m()
-  {
-    Bundle localBundle;
-    if (this.i)
-    {
-      localBundle = new Bundle();
-      localBundle.putString("key_mini_report_event_action_type", "user_click");
-      if (!this.k) {
-        break label104;
-      }
-      localBundle.putString("key_mini_report_event_sub_action_type", "custom_button");
-    }
-    for (;;)
-    {
-      localBundle.putString("key_mini_report_event_reserves", "share_QZ");
-      localBundle.putString("key_mini_report_event_reserves2", "success");
-      QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_report_event", localBundle, null);
-      if (this.j) {
-        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
-      }
-      return;
-      label104:
-      localBundle.putString("key_mini_report_event_sub_action_type", "more_button");
-    }
-  }
-  
-  private void n()
-  {
-    Bundle localBundle;
-    if (this.i)
-    {
-      localBundle = new Bundle();
-      localBundle.putString("key_mini_report_event_action_type", "user_click");
-      if (!this.k) {
-        break label104;
-      }
-      localBundle.putString("key_mini_report_event_sub_action_type", "custom_button");
-    }
-    for (;;)
-    {
-      localBundle.putString("key_mini_report_event_reserves", "share_QZ");
-      localBundle.putString("key_mini_report_event_reserves2", "fail");
-      QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_report_event", localBundle, null);
-      if (this.j) {
-        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_fail", null, null);
-      }
-      return;
-      label104:
-      localBundle.putString("key_mini_report_event_sub_action_type", "more_button");
-    }
-  }
-  
-  private void o()
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_CooperationQzoneQZoneShareData != null)
-    {
-      if ((this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-      {
-        localObject = this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          String str = (String)((Iterator)localObject).next();
-          if (!TextUtils.isEmpty(str)) {
-            this.jdField_d_of_type_JavaLangString = str;
-          }
-        }
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_b_of_type_JavaLangString)) {
-        break label294;
-      }
-      localObject = null;
-      this.jdField_e_of_type_JavaLangString = ((String)localObject);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_c_of_type_JavaLangString)) {
-        break label308;
-      }
-      localObject = null;
-      label107:
-      this.jdField_f_of_type_JavaLangString = ((String)localObject);
-      if ((!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)))
-      {
-        if (!this.jdField_e_of_type_JavaLangString.equals(this.jdField_f_of_type_JavaLangString)) {
-          break label322;
-        }
-        this.jdField_f_of_type_JavaLangString = null;
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneShare", 2, "params: " + this.jdField_a_of_type_CooperationQzoneQZoneShareData.toString());
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_CooperationQzoneQZoneShareData.l)) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_CooperationQzoneQZoneShareData.l);
-      }
-      a(this.jdField_a_of_type_CooperationQzoneQZoneShareData);
-      b(this.jdField_a_of_type_CooperationQzoneQZoneShareData);
-      if ((this.app != null) && (this.jdField_a_of_type_CooperationQzoneQZoneShareData != null) && (this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_a_of_type_Long > 0L) && (!TextUtils.isEmpty(this.jdField_a_of_type_CooperationQzoneQZoneShareData.i))) {
-        a(this.app, this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_a_of_type_Long, this.jdField_a_of_type_CooperationQzoneQZoneShareData.i);
-      }
-      return;
-      label294:
-      localObject = this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_b_of_type_JavaLangString.trim();
-      break;
-      label308:
-      localObject = this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_c_of_type_JavaLangString.trim();
-      break label107;
-      label322:
-      if (this.jdField_e_of_type_JavaLangString.length() > 20)
-      {
-        localObject = this.jdField_e_of_type_JavaLangString.substring(0, 20);
-        if (this.jdField_f_of_type_JavaLangString.startsWith((String)localObject)) {
-          this.jdField_f_of_type_JavaLangString = null;
-        }
-      }
-    }
-  }
-  
-  private void p()
-  {
-    setContentView(2131562205);
-    setRightButton(2131716869, new bnhh(this));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131375560));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131367091));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131367093));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131367096));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367105));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367101));
-    a();
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131375080);
-    c();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375113));
-    e();
-    d();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367103));
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager = ((InputMethodManager)getSystemService("input_method"));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  private void q()
-  {
-    Object localObject = getResources().getColorStateList(2131165193);
-    ColorStateList localColorStateList = getResources().getColorStateList(2131165195);
-    if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
-    {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      if ((TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) && (this.jdField_a_of_type_CooperationQzoneQZoneShareData != null))
-      {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_d_of_type_JavaLangString);
-        if (localObject != null) {
-          this.jdField_c_of_type_AndroidWidgetTextView.setTextColor((ColorStateList)localObject);
-        }
-        this.jdField_c_of_type_AndroidWidgetTextView.setMaxLines(2);
-      }
-    }
-    for (;;)
-    {
-      localObject = getResources().getDrawable(2130847846);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable((Drawable)localObject);
-      return;
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_f_of_type_JavaLangString);
-      break;
-      if (TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))
-      {
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-        r();
-        if (localObject != null) {
-          this.jdField_b_of_type_AndroidWidgetTextView.setTextColor((ColorStateList)localObject);
-        }
-        this.jdField_b_of_type_AndroidWidgetTextView.setMaxLines(2);
-      }
-      else
-      {
-        int m = bhtq.a();
-        int n = bhtq.b(24.0F);
-        int i1 = bhtq.b(24.0F);
-        int i2 = bhtq.b(80.0F);
-        if (a(this.jdField_e_of_type_JavaLangString, 14, m - n - i1 - i2) > 1)
-        {
-          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-          this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-          r();
-          if (localObject != null) {
-            this.jdField_b_of_type_AndroidWidgetTextView.setTextColor((ColorStateList)localObject);
-          }
-          this.jdField_b_of_type_AndroidWidgetTextView.setMaxLines(2);
-        }
-        else
-        {
-          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-          if (localObject != null) {
-            this.jdField_b_of_type_AndroidWidgetTextView.setTextColor((ColorStateList)localObject);
-          }
-          this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-          if (localObject != null) {
-            this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(localColorStateList);
-          }
-          r();
-          this.jdField_b_of_type_AndroidWidgetTextView.setMaxLines(1);
-          this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_f_of_type_JavaLangString);
-          this.jdField_c_of_type_AndroidWidgetTextView.setMaxLines(1);
-        }
-      }
-    }
-  }
-  
-  private void r()
-  {
-    String str2 = this.jdField_e_of_type_JavaLangString;
-    String str1 = str2;
-    if (str2 != null) {
-      str1 = this.jdField_e_of_type_JavaLangString.replace("[em]e10086[/em]", "");
-    }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(str1);
-  }
-  
-  private void s()
-  {
-    Object localObject = getResources().getDrawable(2130847846);
-    if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mRequestHeight = bhtq.b(70.0F);
-      localURLDrawableOptions.mRequestWidth = bhtq.b(70.0F);
-      if (a(this.jdField_d_of_type_JavaLangString)) {}
-      for (localObject = URLDrawable.getDrawable(this.jdField_d_of_type_JavaLangString, localURLDrawableOptions);; localObject = URLDrawable.getDrawable(new File(this.jdField_d_of_type_JavaLangString), localURLDrawableOptions))
-      {
-        this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
-        return;
-      }
-    }
-    this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable((Drawable)localObject);
-  }
-  
-  private void t()
-  {
-    m();
-    if (!bhnv.d(this))
-    {
-      zyx.a(1, 2131693965);
+      yyi.a(1, 2131694064);
       return;
     }
     ThreadManager.postImmediately(new QZoneShareActivity.7(this), null, true);
   }
   
-  private void u()
+  private void updateData()
   {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_f_of_type_Int = -1;
-  }
-  
-  private void v()
-  {
-    int n = 0;
-    int i1 = 1;
+    int j = 0;
+    int k = 1;
     Object localObject2 = null;
     for (;;)
     {
-      int m;
+      int i;
       String str3;
       String str4;
       try
       {
-        if (this.jdField_a_of_type_CooperationQzoneQZoneShareData == null) {
-          this.jdField_a_of_type_CooperationQzoneQZoneShareData = new QZoneShareData();
+        if (this.mShareData == null) {
+          this.mShareData = new QZoneShareData();
         }
-        m = this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_b_of_type_Int;
-        if (m != 2) {
+        i = this.mShareData.from;
+        if (i != 2) {
           return;
         }
         String str1 = LocalMultiProcConfig.getString("msharecururl", "");
-        if ((TextUtils.isEmpty(str1)) || (!str1.equals(this.jdField_a_of_type_CooperationQzoneQZoneShareData.m))) {
+        if ((TextUtils.isEmpty(str1)) || (!str1.equals(this.mShareData.mWebUrl))) {
           continue;
         }
         str3 = LocalMultiProcConfig.getString("msharetitle", "");
         str1 = LocalMultiProcConfig.getString("msharedesc", "");
         str4 = LocalMultiProcConfig.getString("msharethumb", "");
         String str5 = LocalMultiProcConfig.getString("mshareurl", "");
-        int i2 = LocalMultiProcConfig.getInt("msharefrom", -1);
+        int m = LocalMultiProcConfig.getInt("msharefrom", -1);
         if (TextUtils.isEmpty(str3))
         {
           str3 = null;
@@ -657,45 +584,45 @@ public class QZoneShareActivity
           if (!str3.equals(str1)) {
             break label406;
           }
-          m = n;
+          i = j;
           if (!TextUtils.isEmpty(str3))
           {
-            m = n;
-            if (!str3.equals(this.jdField_e_of_type_JavaLangString))
+            i = j;
+            if (!str3.equals(this.mTitle))
             {
-              this.jdField_e_of_type_JavaLangString = str3;
-              this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_b_of_type_JavaLangString = str3;
-              m = 1;
+              this.mTitle = str3;
+              this.mShareData.mTitle = str3;
+              i = 1;
             }
           }
-          n = m;
+          j = i;
           if (!TextUtils.isEmpty((CharSequence)localObject2))
           {
-            n = m;
-            if (!((String)localObject2).equals(this.jdField_f_of_type_JavaLangString))
+            j = i;
+            if (!((String)localObject2).equals(this.mSummary))
             {
-              this.jdField_f_of_type_JavaLangString = ((String)localObject2);
-              this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_c_of_type_JavaLangString = ((String)localObject2);
-              n = 1;
+              this.mSummary = ((String)localObject2);
+              this.mShareData.mSummary = ((String)localObject2);
+              j = 1;
             }
           }
-          if ((TextUtils.isEmpty(str4)) || (str4.equals(this.jdField_d_of_type_JavaLangString))) {
+          if ((TextUtils.isEmpty(str4)) || (str4.equals(this.mThumbUrl))) {
             break label453;
           }
-          this.jdField_d_of_type_JavaLangString = str4;
-          if (this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_a_of_type_JavaUtilArrayList == null) {
+          this.mThumbUrl = str4;
+          if (this.mShareData.mImageUrls == null) {
             break label435;
           }
-          this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_a_of_type_JavaUtilArrayList.clear();
-          this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_a_of_type_JavaUtilArrayList.add(str4);
-          m = i1;
-          if ((!TextUtils.isEmpty(str5)) && (!str5.equals(this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_d_of_type_JavaLangString))) {
-            this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_d_of_type_JavaLangString = str5;
+          this.mShareData.mImageUrls.clear();
+          this.mShareData.mImageUrls.add(str4);
+          i = k;
+          if ((!TextUtils.isEmpty(str5)) && (!str5.equals(this.mShareData.targetUrl))) {
+            this.mShareData.targetUrl = str5;
           }
-          if (m == 0) {
+          if (i == 0) {
             continue;
           }
-          this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_a_of_type_Int = i2;
+          this.mShareData.iUrlInfoFrm = m;
           ThreadManager.getUIHandler().post(new QZoneShareActivity.23(this));
           continue;
         }
@@ -715,10 +642,10 @@ public class QZoneShareActivity
         break label458;
         label435:
         new ArrayList().add(str4);
-        m = i1;
+        i = k;
         continue;
         label453:
-        m = n;
+        i = j;
         continue;
       }
       label458:
@@ -726,161 +653,157 @@ public class QZoneShareActivity
     }
   }
   
-  protected int a()
+  private void updateForwardTitle()
   {
-    if (this.jdField_a_of_type_Int > 0) {
-      return this.jdField_a_of_type_Int;
+    String str2 = this.mTitle;
+    String str1 = str2;
+    if (str2 != null) {
+      str1 = this.mTitle.replace("[em]e10086[/em]", "");
     }
-    return QzoneConfig.getInstance().getConfig("QZoneSetting", "maxUgcTextCount", 2000);
+    this.mViewForwardTitle.setText(str1);
   }
   
-  protected View a()
+  private void updateImageView()
   {
-    return this.jdField_b_of_type_AndroidWidgetRelativeLayout;
+    Object localObject = getResources().getDrawable(2130847756);
+    if (!TextUtils.isEmpty(this.mThumbUrl))
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
+      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
+      localURLDrawableOptions.mRequestHeight = ViewUtils.dpToPx(70.0F);
+      localURLDrawableOptions.mRequestWidth = ViewUtils.dpToPx(70.0F);
+      if (isValidUrl(this.mThumbUrl)) {}
+      for (localObject = URLDrawable.getDrawable(this.mThumbUrl, localURLDrawableOptions);; localObject = URLDrawable.getDrawable(new File(this.mThumbUrl), localURLDrawableOptions))
+      {
+        this.mThumbView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        this.mThumbView.setImageDrawable((Drawable)localObject);
+        return;
+      }
+    }
+    this.mThumbView.setBackgroundDrawable((Drawable)localObject);
   }
   
-  protected final String a()
+  private void updateLayout()
   {
-    return bngu.a(this.jdField_a_of_type_AndroidWidgetEditText, this.jdField_a_of_type_JavaUtilList);
+    Object localObject = getResources().getColorStateList(2131165193);
+    ColorStateList localColorStateList = getResources().getColorStateList(2131165195);
+    if (TextUtils.isEmpty(this.mTitle))
+    {
+      this.mViewForwardTitle.setVisibility(8);
+      this.mViewForwardSummary.setVisibility(0);
+      if ((TextUtils.isEmpty(this.mSummary)) && (this.mShareData != null))
+      {
+        this.mViewForwardSummary.setText(this.mShareData.targetUrl);
+        if (localObject != null) {
+          this.mViewForwardSummary.setTextColor((ColorStateList)localObject);
+        }
+        this.mViewForwardSummary.setMaxLines(2);
+      }
+    }
+    for (;;)
+    {
+      localObject = getResources().getDrawable(2130847756);
+      this.mThumbView.setBackgroundDrawable((Drawable)localObject);
+      return;
+      this.mViewForwardSummary.setText(this.mSummary);
+      break;
+      if (TextUtils.isEmpty(this.mSummary))
+      {
+        this.mViewForwardTitle.setVisibility(0);
+        this.mViewForwardSummary.setVisibility(8);
+        updateForwardTitle();
+        if (localObject != null) {
+          this.mViewForwardTitle.setTextColor((ColorStateList)localObject);
+        }
+        this.mViewForwardTitle.setMaxLines(2);
+      }
+      else
+      {
+        int i = ViewUtils.getScreenWidth();
+        int j = ViewUtils.dpToPx(24.0F);
+        int k = ViewUtils.dpToPx(24.0F);
+        int m = ViewUtils.dpToPx(80.0F);
+        if (getTitleLineCount(this.mTitle, 14, i - j - k - m) > 1)
+        {
+          this.mViewForwardTitle.setVisibility(0);
+          this.mViewForwardSummary.setVisibility(8);
+          updateForwardTitle();
+          if (localObject != null) {
+            this.mViewForwardTitle.setTextColor((ColorStateList)localObject);
+          }
+          this.mViewForwardTitle.setMaxLines(2);
+        }
+        else
+        {
+          this.mViewForwardTitle.setVisibility(0);
+          if (localObject != null) {
+            this.mViewForwardTitle.setTextColor((ColorStateList)localObject);
+          }
+          this.mViewForwardSummary.setVisibility(0);
+          if (localObject != null) {
+            this.mViewForwardSummary.setTextColor(localColorStateList);
+          }
+          updateForwardTitle();
+          this.mViewForwardTitle.setMaxLines(1);
+          this.mViewForwardSummary.setText(this.mSummary);
+          this.mViewForwardSummary.setMaxLines(1);
+        }
+      }
+    }
   }
   
-  protected final void a()
+  protected void addAtUser(ArrayList<ResultRecord> paramArrayList)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.setEditableFactory(behe.c);
+    if (this.mViewEdit == null) {
+      return;
+    }
+    if (this.isInputAt)
+    {
+      int i = this.mViewEdit.getSelectionStart();
+      Editable localEditable = this.mViewEdit.getEditableText();
+      if ((localEditable != null) && (!TextUtils.isEmpty(localEditable.toString())) && (localEditable.toString().substring(i - 1, i).equals("@"))) {
+        localEditable.delete(i - 1, i);
+      }
+      this.isInputAt = false;
+    }
+    this.mAtMaxLen = InputViewPanelControl.addAtUser(this.mViewEdit, paramArrayList, this.mAtUserList, this.mAtMaxLen);
+  }
+  
+  protected final void addEmoPanel()
+  {
+    this.mViewEdit.setEditableFactory(QzoneTextBuilder.EMOCTATION_FACORY);
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel = bngu.a(this, this.jdField_a_of_type_AndroidWidgetEditText);
-      b();
+      this.viewEmoView = InputViewPanelControl.createEmoPanel(this, this.mViewEdit);
+      onAddEmoPanel();
       return;
     }
     catch (Throwable localThrowable) {}
   }
   
-  public void a(int paramInt)
-  {
-    ThreadManager.getUIHandler().post(new QZoneShareActivity.20(this, paramInt));
-  }
-  
-  protected void a(int paramInt, Intent paramIntent)
-  {
-    a(paramIntent.getParcelableArrayListExtra("result_set"));
-  }
-  
-  public final void a(Activity paramActivity, QZoneShareData paramQZoneShareData)
-  {
-    paramQZoneShareData = new bnha(this, paramActivity, paramQZoneShareData);
-    bhpc localbhpc = bhlq.a(paramActivity, 230);
-    localbhpc.setMessage(2131694652);
-    localbhpc.setTitle(2131691920);
-    localbhpc.setNegativeButton(2131690580, paramQZoneShareData);
-    localbhpc.setPositiveButton(2131718007, paramQZoneShareData);
-    localbhpc.setCancelable(false);
-    if ((paramActivity != null) && (!paramActivity.isFinishing())) {}
-    try
-    {
-      localbhpc.show();
-      return;
-    }
-    catch (Exception paramActivity)
-    {
-      QLog.e("QZoneShare", 1, paramActivity.toString());
-    }
-  }
-  
-  public void a(QZoneShareData paramQZoneShareData)
-  {
-    if (paramQZoneShareData == null) {}
-    label4:
-    Object localObject;
-    String str;
-    do
-    {
-      do
-      {
-        do
-        {
-          break label4;
-          do
-          {
-            return;
-          } while ((paramQZoneShareData.jdField_b_of_type_Int != 1) || ("login".equals(paramQZoneShareData.j)));
-          localObject = paramQZoneShareData.jdField_f_of_type_JavaLangString;
-          str = paramQZoneShareData.jdField_a_of_type_JavaLangString;
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            break;
-          }
-        } while (((String)localObject).equals(this.jdField_c_of_type_JavaLangString));
-        a(this, paramQZoneShareData);
-        return;
-      } while (TextUtils.isEmpty(str));
-      localObject = new bngz(this, str, paramQZoneShareData);
-      localObject = bmud.a(BaseApplicationImpl.getApplication().getRuntime(), String.valueOf(paramQZoneShareData.jdField_a_of_type_Long), (anui)localObject);
-    } while ((localObject == null) || (((OpenID)localObject).openID == null) || (((OpenID)localObject).openID.equals(str)));
-    a(this, paramQZoneShareData);
-  }
-  
-  protected void a(ArrayList<ResultRecord> paramArrayList)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetEditText == null) {
-      return;
-    }
-    if (this.jdField_g_of_type_Boolean)
-    {
-      int m = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-      Editable localEditable = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText();
-      if ((localEditable != null) && (!TextUtils.isEmpty(localEditable.toString())) && (localEditable.toString().substring(m - 1, m).equals("@"))) {
-        localEditable.delete(m - 1, m);
-      }
-      this.jdField_g_of_type_Boolean = false;
-    }
-    this.jdField_g_of_type_Int = bngu.a(this.jdField_a_of_type_AndroidWidgetEditText, paramArrayList, this.jdField_a_of_type_JavaUtilList, this.jdField_g_of_type_Int);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetEditText == null) {
-      return;
-    }
-    a(paramBoolean);
-    a();
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel == null) || (this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null)) {}
-    while (!this.jdField_d_of_type_Boolean) {
-      return false;
-    }
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    b(this.jdField_d_of_type_Boolean);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849066);
-    return true;
-  }
-  
-  protected boolean a(AppInterface paramAppInterface, long paramLong, String paramString)
+  protected boolean checkAppinfoLocked(AppInterface paramAppInterface, long paramLong, String paramString)
   {
     for (;;)
     {
-      synchronized (jdField_a_of_type_JavaLangObject)
+      synchronized (sAppinfoLock)
       {
-        if (this.h)
+        if (this.mIsGettingAppinfo)
         {
           if (QLog.isColorLevel()) {
             QLog.d("QZoneShare", 2, "-->sdk_share, checkAppinfoLocked, getappinfo already executing...");
           }
           try
           {
-            a(2131691924);
-            jdField_a_of_type_JavaLangObject.wait(5000L);
-            if (this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse != null) {
+            showProgressDialog(2131691970);
+            sAppinfoLock.wait(5000L);
+            if (this.mGetAppinfoResponse != null) {
               break;
             }
             if (QLog.isColorLevel()) {
               QLog.d("QZoneShare", 2, "-->sdk_share, response is null and show result dialog.");
             }
-            k();
+            hideProgressDialog();
             return true;
           }
           catch (InterruptedException paramAppInterface)
@@ -893,19 +816,19 @@ public class QZoneShareActivity
           }
         }
       }
-      if (this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse == null)
+      if (this.mGetAppinfoResponse == null)
       {
-        this.h = true;
-        long l1 = System.currentTimeMillis() / 1000L;
-        String str = AgentActivity.a(this, paramString, l1 + "");
+        this.mIsGettingAppinfo = true;
+        long l = System.currentTimeMillis() / 1000L;
+        String str = AgentActivity.a(this, paramString, l + "");
         if (QLog.isColorLevel()) {
           QLog.d("QZoneShare", 2, "-->sdk_share, checkAppinfoLocked, sign: " + str + ", appinfo is null.");
         }
-        a(2131691924);
-        abgu.a(paramAppInterface, this, paramAppInterface.getCurrentAccountUin(), paramLong, str, l1, this.jdField_a_of_type_MqqObserverBusinessObserver, paramString);
+        showProgressDialog(2131691970);
+        aadf.a(paramAppInterface, this, paramAppInterface.getCurrentAccountUin(), paramLong, str, l, this.mAppinfoObserver, paramString);
         try
         {
-          jdField_a_of_type_JavaLangObject.wait(5000L);
+          sAppinfoLock.wait(5000L);
         }
         catch (InterruptedException paramAppInterface) {}
         if (QLog.isColorLevel()) {
@@ -913,100 +836,26 @@ public class QZoneShareActivity
         }
       }
     }
-    int m = this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse.ret.get();
-    if ((m == 110507) || (m == 110401))
+    int i = this.mGetAppinfoResponse.ret.get();
+    if ((i == 110507) || (i == 110401))
     {
       ThreadManager.getUIHandler().post(new QZoneShareActivity.18(this));
       if (QLog.isColorLevel()) {
-        QLog.d("QZoneShare", 2, "-->sdk_share, response ret: " + m + " and show result dialog.");
+        QLog.d("QZoneShare", 2, "-->sdk_share, response ret: " + i + " and show result dialog.");
       }
-      k();
+      hideProgressDialog();
       return false;
     }
-    k();
+    hideProgressDialog();
     return true;
-  }
-  
-  protected boolean a(boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager == null) || (this.jdField_a_of_type_AndroidWidgetEditText == null)) {
-      return false;
-    }
-    if (this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0))
-    {
-      if (paramBoolean) {
-        this.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
-      }
-      this.jdField_f_of_type_Boolean = true;
-      return true;
-    }
-    return false;
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
-      return a(a(this.jdField_a_of_type_AndroidWidgetEditText)).length();
-    }
-    return 0;
-  }
-  
-  protected void b()
-  {
-    Object localObject = a();
-    if ((localObject instanceof RelativeLayout))
-    {
-      localObject = (RelativeLayout)localObject;
-      RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams1.addRule(12);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this);
-      this.jdField_c_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131562401, null);
-      RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams2.addRule(10);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidViewView, localLayoutParams2);
-      localLayoutParams2 = new RelativeLayout.LayoutParams(-1, 2);
-      localLayoutParams2.addRule(3, this.jdField_c_of_type_AndroidViewView.getId());
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131562293, null);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams2);
-      localLayoutParams2 = new RelativeLayout.LayoutParams(-1, (int)(150.0F * bhtq.a()));
-      localLayoutParams2.addRule(3, this.jdField_a_of_type_AndroidViewView.getId());
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel, localLayoutParams2);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.setBackgroundColor(getResources().getColor(2131166652));
-      ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, localLayoutParams1);
-      this.jdField_b_of_type_Int = ((RelativeLayout)localObject).getHeight();
-      ((RelativeLayout)localObject).getViewTreeObserver().addOnGlobalLayoutListener(new bnhi(this, (RelativeLayout)localObject));
-    }
-  }
-  
-  protected boolean b()
-  {
-    return a(true);
-  }
-  
-  protected void c()
-  {
-    if (this.jdField_b_of_type_AndroidViewView == null) {
-      return;
-    }
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new bnhj(this));
-  }
-  
-  protected void d()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetEditText == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new bngw(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new bngx(this));
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -1015,7 +864,7 @@ public class QZoneShareActivity
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramInt2 == 0)
     {
-      this.jdField_g_of_type_Boolean = false;
+      this.isInputAt = false;
       return;
     }
     switch (paramInt1)
@@ -1023,7 +872,7 @@ public class QZoneShareActivity
     default: 
       return;
     }
-    a(paramInt2, paramIntent);
+    onAtUserResult(paramInt2, paramIntent);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -1038,20 +887,20 @@ public class QZoneShareActivity
       finish();
     }
     getWindow().setSoftInputMode(3);
-    p();
-    l();
-    q();
+    initUI();
+    initData();
+    updateLayout();
     if ((!ImmersiveUtils.c) && (!isInMultiWindow())) {
       getWindow().getDecorView().post(new QZoneShareActivity.1(this));
     }
-    if ((!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (!a(this.jdField_d_of_type_JavaLangString)) && (getIntent().getBooleanExtra("key_require_storage_permission", false)))
+    if ((!TextUtils.isEmpty(this.mThumbUrl)) && (!isValidUrl(this.mThumbUrl)) && (getIntent().getBooleanExtra("key_require_storage_permission", false)))
     {
-      if (bnko.a(this, new bnhc(this), 1)) {
-        s();
+      if (QZonePermission.requestStoragePermission(this, new QZoneShareActivity.2(this), 1)) {
+        updateImageView();
       }
       return false;
     }
-    s();
+    updateImageView();
     return false;
   }
   
@@ -1059,12 +908,12 @@ public class QZoneShareActivity
   {
     if (paramInt == 4)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.getVisibility() == 0)
+      if (this.viewEmoView.getVisibility() == 0)
       {
-        a();
+        hideEmoView();
         return true;
       }
-      j();
+      onBack();
       return true;
     }
     return super.doOnKeyDown(paramInt, paramKeyEvent);
@@ -1075,8 +924,8 @@ public class QZoneShareActivity
     super.doOnPause();
     try
     {
-      unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      b();
+      unregisterReceiver(this.receiver);
+      hideKeyboard();
       return;
     }
     catch (Exception localException)
@@ -1092,45 +941,25 @@ public class QZoneShareActivity
   {
     super.doOnResume();
     IntentFilter localIntentFilter = new IntentFilter("com.tencent.qq.shareupdate");
-    registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-    if (!this.jdField_a_of_type_Boolean)
+    registerReceiver(this.receiver, localIntentFilter);
+    if (!this.isResemeInited)
     {
       ThreadManager.postImmediately(new QZoneShareActivity.3(this), null, true);
-      this.jdField_a_of_type_Boolean = true;
+      this.isResemeInited = true;
       return;
     }
-    s();
+    updateImageView();
   }
   
   public void doOnWindowFocusChanged(boolean paramBoolean)
   {
     super.doOnWindowFocusChanged(paramBoolean);
-    if ((paramBoolean) && (this.jdField_a_of_type_AndroidWidgetEditText != null))
+    if ((paramBoolean) && (this.mViewEdit != null))
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
-      this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+      this.mViewEdit.setFocusable(true);
+      this.mViewEdit.requestFocus();
       ThreadManager.getUIHandler().postDelayed(new QZoneShareActivity.15(this), 300L);
     }
-  }
-  
-  protected void e()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bngy(this));
-  }
-  
-  public void f()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel == null) || (this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null)) {}
-    while (this.jdField_e_of_type_Boolean) {
-      return;
-    }
-    b();
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    this.jdField_e_of_type_Boolean = true;
-    ThreadManager.getUIHandler().postDelayed(new QZoneShareActivity.13(this), 100L);
   }
   
   public void finish()
@@ -1139,44 +968,133 @@ public class QZoneShareActivity
     super.finish();
   }
   
-  protected void g()
+  public int getContentWordCount()
   {
-    a(true);
+    if (this.mViewEdit != null) {
+      return filterText(getStringFromEditText(this.mViewEdit)).length();
+    }
+    return 0;
   }
   
-  public void h()
+  protected final String getEditText()
   {
-    if (!this.l) {}
-    while ((this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager == null) || (this.jdField_a_of_type_AndroidWidgetEditText == null)) {
+    return InputViewPanelControl.getEditText(this.mViewEdit, this.mAtUserList);
+  }
+  
+  protected int getMaxWordCnt()
+  {
+    if (this.mMaxLen > 0) {
+      return this.mMaxLen;
+    }
+    return QzoneConfig.getInstance().getConfig("QZoneSetting", "maxUgcTextCount", 2000);
+  }
+  
+  protected View getRoot()
+  {
+    return this.mConatainer;
+  }
+  
+  protected boolean hideEmoView()
+  {
+    if ((this.viewEmoView == null) || (this.viewDivider == null) || (this.viewSmiley == null)) {}
+    while (!this.emoShow) {
+      return false;
+    }
+    this.emoShow = false;
+    this.viewEmoView.setVisibility(8);
+    this.viewDivider.setVisibility(4);
+    ajustDesToolbar(this.emoShow);
+    this.viewSmiley.setImageResource(2130848977);
+    return true;
+  }
+  
+  protected boolean hideKeyboard()
+  {
+    return hideKeyboard(true);
+  }
+  
+  protected boolean hideKeyboard(boolean paramBoolean)
+  {
+    if ((this.imm == null) || (this.mViewEdit == null)) {
+      return false;
+    }
+    if (this.imm.hideSoftInputFromWindow(this.mViewEdit.getWindowToken(), 0))
+    {
+      if (paramBoolean) {
+        this.mViewEdit.clearFocus();
+      }
+      this.isKeyboardHidden = true;
+      return true;
+    }
+    return false;
+  }
+  
+  protected void hideKeyboardAndEmo()
+  {
+    hideKeyboardAndEmo(true);
+  }
+  
+  protected void hideKeyboardAndEmo(boolean paramBoolean)
+  {
+    if (this.mViewEdit == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.showSoftInput(this.jdField_a_of_type_AndroidWidgetEditText, 2);
-    this.jdField_f_of_type_Boolean = false;
+    hideKeyboard(paramBoolean);
+    hideEmoView();
   }
   
-  public void i()
+  public void hideProgressDialog()
   {
-    ThreadManager.postImmediately(new QZoneShareActivity.14(this), null, true);
+    ThreadManager.getUIHandler().post(new QZoneShareActivity.21(this));
   }
   
-  protected void j()
+  protected void onAddEmoPanel()
   {
-    g();
-    if (this.jdField_a_of_type_CooperationQzoneQZoneShareData.jdField_b_of_type_Int == 1) {
-      a(this, this.jdField_a_of_type_CooperationQzoneQZoneShareData, false);
+    Object localObject = getRoot();
+    if ((localObject instanceof RelativeLayout))
+    {
+      localObject = (RelativeLayout)localObject;
+      RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -2);
+      localLayoutParams1.addRule(12);
+      this.line = new RelativeLayout(this);
+      this.desToolbar = LayoutInflater.from(this).inflate(2131562277, null);
+      RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-1, -2);
+      localLayoutParams2.addRule(10);
+      this.desToolbar.setVisibility(4);
+      this.line.addView(this.desToolbar, localLayoutParams2);
+      localLayoutParams2 = new RelativeLayout.LayoutParams(-1, 2);
+      localLayoutParams2.addRule(3, this.desToolbar.getId());
+      this.viewDivider = LayoutInflater.from(this).inflate(2131562170, null);
+      this.line.addView(this.viewDivider, localLayoutParams2);
+      localLayoutParams2 = new RelativeLayout.LayoutParams(-1, (int)(150.0F * ViewUtils.getDensity()));
+      localLayoutParams2.addRule(3, this.viewDivider.getId());
+      this.line.addView(this.viewEmoView, localLayoutParams2);
+      this.viewEmoView.setVisibility(8);
+      this.viewEmoView.setBackgroundColor(getResources().getColor(2131166671));
+      ((RelativeLayout)localObject).addView(this.line, localLayoutParams1);
+      this.rootHeight = ((RelativeLayout)localObject).getHeight();
+      ((RelativeLayout)localObject).getViewTreeObserver().addOnGlobalLayoutListener(new QZoneShareActivity.8(this, (RelativeLayout)localObject));
+    }
+  }
+  
+  protected void onAtUserResult(int paramInt, Intent paramIntent)
+  {
+    addAtUser(paramIntent.getParcelableArrayListExtra("result_set"));
+  }
+  
+  protected void onBack()
+  {
+    hideKeyboardAndEmo();
+    if (this.mShareData.from == 1) {
+      startSdkCallback(this, this.mShareData, false);
     }
     setResult(0, getIntent());
     onBackEvent();
   }
   
-  public void k()
-  {
-    ThreadManager.getUIHandler().post(new QZoneShareActivity.21(this));
-  }
-  
   public boolean onBackEvent()
   {
-    n();
+    callbackShareFail();
     return super.onBackEvent();
   }
   
@@ -1185,6 +1103,116 @@ public class QZoneShareActivity
   {
     super.onConfigurationChanged(paramConfiguration);
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  protected void onTextCountChange()
+  {
+    ThreadManager.postImmediately(new QZoneShareActivity.14(this), null, true);
+  }
+  
+  public void openIdConfirm(QZoneShareData paramQZoneShareData)
+  {
+    if (paramQZoneShareData == null) {}
+    label4:
+    Object localObject;
+    String str;
+    do
+    {
+      do
+      {
+        do
+        {
+          break label4;
+          do
+          {
+            return;
+          } while ((paramQZoneShareData.from != 1) || ("login".equals(paramQZoneShareData.jFrom)));
+          localObject = paramQZoneShareData.shareUin;
+          str = paramQZoneShareData.openId;
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            break;
+          }
+        } while (((String)localObject).equals(this.mOwnUin));
+        showOpenIdConfirmDialog(this, paramQZoneShareData);
+        return;
+      } while (TextUtils.isEmpty(str));
+      localObject = new QZoneShareActivity.16(this, str, paramQZoneShareData);
+      localObject = QZoneShareManager.getOpenID(BaseApplicationImpl.getApplication().getRuntime(), String.valueOf(paramQZoneShareData.appid), (com.tencent.mobileqq.app.BusinessObserver)localObject);
+    } while ((localObject == null) || (((OpenID)localObject).openID == null) || (((OpenID)localObject).openID.equals(str)));
+    showOpenIdConfirmDialog(this, paramQZoneShareData);
+  }
+  
+  protected void setEventAtUser()
+  {
+    if (this.viewAtUser == null) {
+      return;
+    }
+    this.viewAtUser.setOnClickListener(new QZoneShareActivity.9(this));
+  }
+  
+  protected void setEventEditView()
+  {
+    if (this.mViewEdit == null) {
+      return;
+    }
+    this.mViewEdit.addTextChangedListener(new QZoneShareActivity.10(this));
+    this.mViewEdit.setOnTouchListener(new QZoneShareActivity.11(this));
+  }
+  
+  protected void setEventSmiley()
+  {
+    if (this.viewSmiley == null) {
+      return;
+    }
+    this.viewSmiley.setOnClickListener(new QZoneShareActivity.12(this));
+  }
+  
+  protected void showEmoView()
+  {
+    if ((this.viewEmoView == null) || (this.viewDivider == null) || (this.viewSmiley == null)) {}
+    while (this.emoShowing) {
+      return;
+    }
+    hideKeyboard();
+    this.mViewEdit.requestFocus();
+    this.emoShowing = true;
+    ThreadManager.getUIHandler().postDelayed(new QZoneShareActivity.13(this), 100L);
+  }
+  
+  protected void showKeyboard()
+  {
+    if (!this.mIsCanShowKeyboard) {}
+    while ((this.imm == null) || (this.mViewEdit == null)) {
+      return;
+    }
+    this.imm.showSoftInput(this.mViewEdit, 2);
+    this.isKeyboardHidden = false;
+  }
+  
+  protected final void showOpenIdConfirmDialog(Activity paramActivity, QZoneShareData paramQZoneShareData)
+  {
+    paramQZoneShareData = new QZoneShareActivity.17(this, paramActivity, paramQZoneShareData);
+    QQCustomDialog localQQCustomDialog = bfur.a(paramActivity, 230);
+    localQQCustomDialog.setMessage(2131694768);
+    localQQCustomDialog.setTitle(2131691966);
+    localQQCustomDialog.setNegativeButton(2131690620, paramQZoneShareData);
+    localQQCustomDialog.setPositiveButton(2131718248, paramQZoneShareData);
+    localQQCustomDialog.setCancelable(false);
+    if ((paramActivity != null) && (!paramActivity.isFinishing())) {}
+    try
+    {
+      localQQCustomDialog.show();
+      return;
+    }
+    catch (Exception paramActivity)
+    {
+      QLog.e("QZoneShare", 1, paramActivity.toString());
+    }
+  }
+  
+  public void showProgressDialog(int paramInt)
+  {
+    ThreadManager.getUIHandler().post(new QZoneShareActivity.20(this, paramInt));
   }
 }
 

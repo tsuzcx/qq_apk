@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import anzj;
-import apdm;
+import amtj;
+import anwz;
 
 public class MessageForTroopFile
   extends ChatMessage
@@ -32,7 +32,7 @@ public class MessageForTroopFile
   {
     try
     {
-      TroopFileData localTroopFileData = (TroopFileData)apdm.a(this.msgData);
+      TroopFileData localTroopFileData = (TroopFileData)anwz.a(this.msgData);
       if (localTroopFileData != null)
       {
         this.url = localTroopFileData.fileUrl;
@@ -54,7 +54,7 @@ public class MessageForTroopFile
         this.yybApkName = localTroopFileData.yybApkName;
         this.yybApkIconUrl = localTroopFileData.yybApkIconUrl;
       }
-      this.msg = anzj.a(2131705462);
+      this.msg = amtj.a(2131705692);
       return;
     }
     catch (Exception localException)
@@ -69,7 +69,7 @@ public class MessageForTroopFile
   
   public String getSummaryMsg()
   {
-    return anzj.a(2131705511) + this.fileName;
+    return amtj.a(2131705741) + this.fileName;
   }
   
   public boolean isSupportReply()
@@ -110,7 +110,7 @@ public class MessageForTroopFile
     localTroopFileData.yybApkIconUrl = this.yybApkIconUrl;
     try
     {
-      this.msgData = apdm.a(localTroopFileData);
+      this.msgData = anwz.a(localTroopFileData);
       return;
     }
     catch (Exception localException)
@@ -121,7 +121,7 @@ public class MessageForTroopFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopFile
  * JD-Core Version:    0.7.0.1
  */

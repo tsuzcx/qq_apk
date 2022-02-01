@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import adai;
+import abwx;
+import amxc;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import antf;
-import aoda;
-import bcsa;
+import bblk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -986,14 +985,14 @@ public class NearbyGrayTipsManager
       Object localObject = (Integer)paramGrayTipsConfig.next();
       if (((Integer)localObject).intValue() == 1)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1001).a(antf.H, 1001);
-        List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(10002).a(antf.H, 10002);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(1001).a(AppConstants.LBS_HELLO_UIN, 1001);
+        List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(10002).a(AppConstants.LBS_HELLO_UIN, 10002);
         paramList.addAll((Collection)localObject);
         paramList.addAll(localList);
       }
       else if (((Integer)localObject).intValue() == 2)
       {
-        paramList.addAll(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1010).a(antf.ab, 1010));
+        paramList.addAll(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(1010).a(AppConstants.DATE_UIN, 1010));
       }
     }
   }
@@ -1133,20 +1132,20 @@ public class NearbyGrayTipsManager
     //   22: ifeq +12 -> 34
     //   25: ldc 204
     //   27: iconst_2
-    //   28: ldc_w 489
+    //   28: ldc_w 490
     //   31: invokestatic 317	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   34: return
     //   35: iconst_0
     //   36: istore_3
-    //   37: new 491	java/io/FileOutputStream
+    //   37: new 492	java/io/FileOutputStream
     //   40: dup
     //   41: aload_1
-    //   42: invokespecial 492	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   42: invokespecial 493	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   45: astore_1
-    //   46: new 494	java/io/BufferedOutputStream
+    //   46: new 495	java/io/BufferedOutputStream
     //   49: dup
     //   50: aload_1
-    //   51: invokespecial 497	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   51: invokespecial 498	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   54: astore 4
     //   56: aload 4
     //   58: astore 6
@@ -1154,32 +1153,32 @@ public class NearbyGrayTipsManager
     //   62: astore 7
     //   64: aload_1
     //   65: astore 5
-    //   67: new 499	java/io/ObjectOutputStream
+    //   67: new 500	java/io/ObjectOutputStream
     //   70: dup
     //   71: aload 4
-    //   73: invokespecial 500	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   73: invokespecial 501	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   76: astore 8
     //   78: aload 8
     //   80: aload_0
-    //   81: invokevirtual 504	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   81: invokevirtual 505	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   84: aload 4
-    //   86: invokevirtual 507	java/io/BufferedOutputStream:flush	()V
+    //   86: invokevirtual 508	java/io/BufferedOutputStream:flush	()V
     //   89: iconst_1
     //   90: istore_3
     //   91: aload 4
     //   93: ifnull +8 -> 101
     //   96: aload 4
-    //   98: invokevirtual 508	java/io/BufferedOutputStream:close	()V
+    //   98: invokevirtual 509	java/io/BufferedOutputStream:close	()V
     //   101: aload 8
     //   103: ifnull +8 -> 111
     //   106: aload 8
-    //   108: invokevirtual 509	java/io/ObjectOutputStream:close	()V
+    //   108: invokevirtual 510	java/io/ObjectOutputStream:close	()V
     //   111: iload_3
     //   112: istore_2
     //   113: aload_1
     //   114: ifnull +9 -> 123
     //   117: aload_1
-    //   118: invokevirtual 510	java/io/FileOutputStream:close	()V
+    //   118: invokevirtual 511	java/io/FileOutputStream:close	()V
     //   121: iload_3
     //   122: istore_2
     //   123: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1189,11 +1188,11 @@ public class NearbyGrayTipsManager
     //   132: new 69	java/lang/StringBuilder
     //   135: dup
     //   136: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   139: ldc_w 512
+    //   139: ldc_w 513
     //   142: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   145: iload_2
-    //   146: invokevirtual 515	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   149: ldc_w 517
+    //   146: invokevirtual 516	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   149: ldc_w 518
     //   152: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   155: aload_0
     //   156: invokevirtual 319	java/lang/Object:toString	()Ljava/lang/String;
@@ -1227,17 +1226,17 @@ public class NearbyGrayTipsManager
     //   215: aload 4
     //   217: ifnull +8 -> 225
     //   220: aload 4
-    //   222: invokevirtual 508	java/io/BufferedOutputStream:close	()V
+    //   222: invokevirtual 509	java/io/BufferedOutputStream:close	()V
     //   225: aload 7
     //   227: ifnull +8 -> 235
     //   230: aload 7
-    //   232: invokevirtual 509	java/io/ObjectOutputStream:close	()V
+    //   232: invokevirtual 510	java/io/ObjectOutputStream:close	()V
     //   235: iload_3
     //   236: istore_2
     //   237: aload_1
     //   238: ifnull -115 -> 123
     //   241: aload_1
-    //   242: invokevirtual 510	java/io/FileOutputStream:close	()V
+    //   242: invokevirtual 511	java/io/FileOutputStream:close	()V
     //   245: iload_3
     //   246: istore_2
     //   247: goto -124 -> 123
@@ -1273,17 +1272,17 @@ public class NearbyGrayTipsManager
     //   307: aload 4
     //   309: ifnull +8 -> 317
     //   312: aload 4
-    //   314: invokevirtual 508	java/io/BufferedOutputStream:close	()V
+    //   314: invokevirtual 509	java/io/BufferedOutputStream:close	()V
     //   317: aload 9
     //   319: ifnull +8 -> 327
     //   322: aload 9
-    //   324: invokevirtual 509	java/io/ObjectOutputStream:close	()V
+    //   324: invokevirtual 510	java/io/ObjectOutputStream:close	()V
     //   327: iload_3
     //   328: istore_2
     //   329: aload_1
     //   330: ifnull -207 -> 123
     //   333: aload_1
-    //   334: invokevirtual 510	java/io/FileOutputStream:close	()V
+    //   334: invokevirtual 511	java/io/FileOutputStream:close	()V
     //   337: iload_3
     //   338: istore_2
     //   339: goto -216 -> 123
@@ -1319,17 +1318,17 @@ public class NearbyGrayTipsManager
     //   399: aload 4
     //   401: ifnull +8 -> 409
     //   404: aload 4
-    //   406: invokevirtual 508	java/io/BufferedOutputStream:close	()V
+    //   406: invokevirtual 509	java/io/BufferedOutputStream:close	()V
     //   409: aload 9
     //   411: ifnull +8 -> 419
     //   414: aload 9
-    //   416: invokevirtual 509	java/io/ObjectOutputStream:close	()V
+    //   416: invokevirtual 510	java/io/ObjectOutputStream:close	()V
     //   419: iload_3
     //   420: istore_2
     //   421: aload_1
     //   422: ifnull -299 -> 123
     //   425: aload_1
-    //   426: invokevirtual 510	java/io/FileOutputStream:close	()V
+    //   426: invokevirtual 511	java/io/FileOutputStream:close	()V
     //   429: iload_3
     //   430: istore_2
     //   431: goto -308 -> 123
@@ -1355,15 +1354,15 @@ public class NearbyGrayTipsManager
     //   470: aload 4
     //   472: ifnull +8 -> 480
     //   475: aload 4
-    //   477: invokevirtual 508	java/io/BufferedOutputStream:close	()V
+    //   477: invokevirtual 509	java/io/BufferedOutputStream:close	()V
     //   480: aload 7
     //   482: ifnull +8 -> 490
     //   485: aload 7
-    //   487: invokevirtual 509	java/io/ObjectOutputStream:close	()V
+    //   487: invokevirtual 510	java/io/ObjectOutputStream:close	()V
     //   490: aload_1
     //   491: ifnull +7 -> 498
     //   494: aload_1
-    //   495: invokevirtual 510	java/io/FileOutputStream:close	()V
+    //   495: invokevirtual 511	java/io/FileOutputStream:close	()V
     //   498: aload_0
     //   499: athrow
     //   500: astore 4
@@ -1553,54 +1552,54 @@ public class NearbyGrayTipsManager
     //   15: ifnonnull +5 -> 20
     //   18: iload_1
     //   19: ireturn
-    //   20: new 491	java/io/FileOutputStream
+    //   20: new 492	java/io/FileOutputStream
     //   23: dup
     //   24: new 69	java/lang/StringBuilder
     //   27: dup
     //   28: invokespecial 70	java/lang/StringBuilder:<init>	()V
-    //   31: invokestatic 532	com/tencent/mobileqq/app/NearbyGrayTipsManager:a	()Ljava/lang/String;
+    //   31: invokestatic 533	com/tencent/mobileqq/app/NearbyGrayTipsManager:a	()Ljava/lang/String;
     //   34: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   37: aload_0
-    //   38: getfield 533	com/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig:id	I
+    //   38: getfield 534	com/tencent/mobileqq/app/NearbyGrayTipsManager$GrayTipsConfig:id	I
     //   41: invokevirtual 79	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   44: ldc_w 535
+    //   44: ldc_w 536
     //   47: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   50: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   53: invokespecial 492	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   53: invokespecial 493	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   56: astore_2
-    //   57: new 494	java/io/BufferedOutputStream
+    //   57: new 495	java/io/BufferedOutputStream
     //   60: dup
     //   61: aload_2
-    //   62: invokespecial 497	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   62: invokespecial 498	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   65: astore_3
     //   66: aload_3
     //   67: astore 6
     //   69: aload_2
     //   70: astore 5
-    //   72: new 499	java/io/ObjectOutputStream
+    //   72: new 500	java/io/ObjectOutputStream
     //   75: dup
     //   76: aload_3
-    //   77: invokespecial 500	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   77: invokespecial 501	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   80: astore 4
     //   82: aload 4
     //   84: aload_0
-    //   85: invokevirtual 504	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   85: invokevirtual 505	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   88: aload_3
-    //   89: invokevirtual 507	java/io/BufferedOutputStream:flush	()V
+    //   89: invokevirtual 508	java/io/BufferedOutputStream:flush	()V
     //   92: iconst_1
     //   93: istore_1
     //   94: aload 4
     //   96: ifnull +8 -> 104
     //   99: aload 4
-    //   101: invokevirtual 509	java/io/ObjectOutputStream:close	()V
+    //   101: invokevirtual 510	java/io/ObjectOutputStream:close	()V
     //   104: aload_3
     //   105: ifnull +7 -> 112
     //   108: aload_3
-    //   109: invokevirtual 508	java/io/BufferedOutputStream:close	()V
+    //   109: invokevirtual 509	java/io/BufferedOutputStream:close	()V
     //   112: aload_2
     //   113: ifnull -95 -> 18
     //   116: aload_2
-    //   117: invokevirtual 510	java/io/FileOutputStream:close	()V
+    //   117: invokevirtual 511	java/io/FileOutputStream:close	()V
     //   120: iconst_1
     //   121: ireturn
     //   122: astore_0
@@ -1618,15 +1617,15 @@ public class NearbyGrayTipsManager
     //   138: aload_0
     //   139: ifnull +7 -> 146
     //   142: aload_0
-    //   143: invokevirtual 509	java/io/ObjectOutputStream:close	()V
+    //   143: invokevirtual 510	java/io/ObjectOutputStream:close	()V
     //   146: aload 4
     //   148: ifnull +8 -> 156
     //   151: aload 4
-    //   153: invokevirtual 508	java/io/BufferedOutputStream:close	()V
+    //   153: invokevirtual 509	java/io/BufferedOutputStream:close	()V
     //   156: aload_2
     //   157: ifnull -139 -> 18
     //   160: aload_2
-    //   161: invokevirtual 510	java/io/FileOutputStream:close	()V
+    //   161: invokevirtual 511	java/io/FileOutputStream:close	()V
     //   164: iconst_0
     //   165: ireturn
     //   166: astore_0
@@ -1652,15 +1651,15 @@ public class NearbyGrayTipsManager
     //   196: aload 4
     //   198: ifnull +8 -> 206
     //   201: aload 4
-    //   203: invokevirtual 509	java/io/ObjectOutputStream:close	()V
+    //   203: invokevirtual 510	java/io/ObjectOutputStream:close	()V
     //   206: aload_3
     //   207: ifnull +7 -> 214
     //   210: aload_3
-    //   211: invokevirtual 508	java/io/BufferedOutputStream:close	()V
+    //   211: invokevirtual 509	java/io/BufferedOutputStream:close	()V
     //   214: aload_2
     //   215: ifnull -197 -> 18
     //   218: aload_2
-    //   219: invokevirtual 510	java/io/FileOutputStream:close	()V
+    //   219: invokevirtual 511	java/io/FileOutputStream:close	()V
     //   222: iconst_0
     //   223: ireturn
     //   224: astore_0
@@ -1678,15 +1677,15 @@ public class NearbyGrayTipsManager
     //   240: aload 4
     //   242: ifnull +8 -> 250
     //   245: aload 4
-    //   247: invokevirtual 509	java/io/ObjectOutputStream:close	()V
+    //   247: invokevirtual 510	java/io/ObjectOutputStream:close	()V
     //   250: aload_3
     //   251: ifnull +7 -> 258
     //   254: aload_3
-    //   255: invokevirtual 508	java/io/BufferedOutputStream:close	()V
+    //   255: invokevirtual 509	java/io/BufferedOutputStream:close	()V
     //   258: aload_2
     //   259: ifnull +7 -> 266
     //   262: aload_2
-    //   263: invokevirtual 510	java/io/FileOutputStream:close	()V
+    //   263: invokevirtual 511	java/io/FileOutputStream:close	()V
     //   266: aload_0
     //   267: athrow
     //   268: astore_2
@@ -2438,7 +2437,7 @@ public class NearbyGrayTipsManager
           if (i < 0) {
             break label165;
           }
-          if (!bcsa.a(((ChatMessage)paramList.get(i)).msgtype))
+          if (!bblk.a(((ChatMessage)paramList.get(i)).msgtype))
           {
             k = j + 1;
             j = k;
@@ -2710,7 +2709,7 @@ public class NearbyGrayTipsManager
         localObject3 = new ArrayList();
         a(localObject1, (List)localObject3);
         a(paramLong, localObject1, (List)localObject3);
-        Collections.sort((List)localObject3, new aoda(this));
+        Collections.sort((List)localObject3, new amxc(this));
         localObject2 = (QQMessageFacade)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(20);
         paramInt1 = 0;
         localObject3 = ((List)localObject3).iterator();
@@ -2718,7 +2717,7 @@ public class NearbyGrayTipsManager
           break label255;
         }
         Object localObject4 = (MessageRecord)((Iterator)localObject3).next();
-        localObject4 = ((QQMessageFacade)localObject2).a(((MessageRecord)localObject4).senderuin, ((MessageRecord)localObject4).istroop);
+        localObject4 = ((QQMessageFacade)localObject2).getLastMessage(((MessageRecord)localObject4).senderuin, ((MessageRecord)localObject4).istroop);
         if ((localObject4 == null) || (((QQMessageFacade.Message)localObject4).hasReply)) {
           break label252;
         }

@@ -1,19 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.polymeric.EventCallback;
+import java.util.List;
 
 class qky
-  implements View.OnTouchListener
+  extends EventCallback
 {
-  qky(qkv paramqkv, RelativeLayout paramRelativeLayout) {}
+  qky(qks paramqks) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onPagerChange(int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
+    qks.b(paramInt);
+    if ((qks.b() != null) && (!qks.b().contains(Integer.valueOf(paramInt)))) {
+      qks.b().add(Integer.valueOf(paramInt));
     }
-    return false;
   }
 }
 

@@ -1,25 +1,19 @@
-import android.util.Log;
+import android.os.Bundle;
 
-public class bicc
+class bicc
+  implements bibp
 {
-  public final void a(Exception paramException)
-  {
-    a("e:", paramException);
-  }
+  bicc(biby parambiby) {}
   
-  public void a(String paramString)
+  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle)
   {
-    Log.i("GLDrawable", paramString);
-  }
-  
-  public void a(String paramString, Exception paramException)
-  {
-    Log.i("GLDrawable", paramString, paramException);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, long paramLong)
-  {
-    Log.i("GLDrawable", "event=" + paramString1 + " statusCode=" + paramString2 + " statusMsg=" + paramString3);
+    bhzm.c("DownloadManager_", "receive get code finished pkgName|" + paramString1 + " versionCode|" + paramInt + " code|" + paramString2 + " extraData|" + paramBundle);
+    paramBundle = new Bundle();
+    paramBundle.putString("PackageName", paramString1);
+    paramBundle.putString("Code", paramString2);
+    paramBundle.putInt("VersionCode", paramInt);
+    paramBundle.putBoolean("IsSuccess", paramBoolean);
+    biby.a(this.a, paramBundle);
   }
 }
 

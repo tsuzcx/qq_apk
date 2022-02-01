@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
-
-class axyf
-  implements bity
+public class axyf
 {
-  axyf(axye paramaxye) {}
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public String d = "";
   
-  public void a()
+  public axyf() {}
+  
+  public axyf(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.a.a.a.setVisibility(8);
-    this.a.a.a(true);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
   }
 }
 

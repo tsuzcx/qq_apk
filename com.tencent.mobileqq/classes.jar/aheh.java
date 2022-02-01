@@ -1,30 +1,19 @@
-import android.os.Bundle;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aheh
-  implements aunx
+  implements View.OnClickListener
 {
-  aheh(ahed paramahed, String paramString1, String paramString2, MessageRecord paramMessageRecord, String paramString3, biho parambiho) {}
+  aheh(ahdt paramahdt) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Bundle();
-    paramView.putString(bhzu.i, this.jdField_a_of_type_JavaLangString);
-    paramView.putString(bhzu.c, this.b);
-    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {
-      paramView.putString(bhzu.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin);
-    }
-    bhzu.a(this.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahed.jdField_a_of_type_AndroidContentContext, paramView);
-    String str = this.c;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isSend()) {}
-    for (paramView = "0";; paramView = "1")
-    {
-      VasWebviewUtil.reportVipKeywords(str, paramView, "1", this.jdField_a_of_type_Biho.a(this.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), this.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "", "", "");
-      return;
-    }
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    bcef.b(this.a.app, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
+    afcm.a(this.a.app, this.a.mActivity, this.a.sessionInfo, true, null, this.a);
+    bcef.b(this.a.app, "dc00899", "Qidian", "", "0X8008FEB", "qidianMasterVideo", 1, 1, 0, "2", "0", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

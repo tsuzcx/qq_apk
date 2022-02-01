@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class aexp
-  implements aexy
+final class aexp
+  implements aeya
 {
-  public aexp(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
-  
-  public void a()
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    LoginPhoneNumActivity.a(this.a);
-  }
-  
-  public void b()
-  {
-    LoginPhoneNumActivity.a(this.a);
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramSessionInfo.curFriendUin, 27);
+    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
+    return paramQQAppInterface;
   }
 }
 

@@ -1,48 +1,113 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.Groups;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-class yiv
-  extends xfp
+public class yiv
 {
-  yiv(yit paramyit) {}
+  @NonNull
+  protected final Groups a;
+  @NonNull
+  private final List<yiu> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  @NonNull
+  private final List<yiu> b = new ArrayList();
+  
+  public yiv(@NonNull Groups paramGroups, @NonNull List<yiu> paramList)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataGroups = paramGroups;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    paramGroups = paramList.iterator();
+    while (paramGroups.hasNext())
+    {
+      paramList = (yiu)paramGroups.next();
+      if (paramList.jdField_a_of_type_Boolean) {
+        this.b.add(paramList);
+      }
+    }
+  }
+  
+  public int a()
+  {
+    return this.b.size();
+  }
+  
+  @NonNull
+  public List<yiu> a()
+  {
+    return Collections.unmodifiableList(this.jdField_a_of_type_JavaUtilList);
+  }
   
   public void a()
   {
-    super.a();
-    StoryMemoriesFragment.a(this.a.a, null);
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+    }
   }
   
-  public void a(int paramInt)
+  public void a(yiu paramyiu)
   {
-    super.a(paramInt);
-    boolean bool = QQStoryContext.a().b(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
-    int i;
-    int j;
-    String str1;
-    if (StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVip)
+    paramyiu.a();
+    if ((paramyiu.jdField_a_of_type_Boolean) && (!this.b.contains(paramyiu)))
     {
-      i = 1;
-      j = StoryMemoriesFragment.a(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_Int);
-      if (!bool) {
-        break label124;
-      }
-      str1 = "1";
-      label76:
-      if (i != 1) {
-        break label131;
-      }
-    }
-    label131:
-    for (String str2 = "1";; str2 = "2")
-    {
-      yup.a("memory", "share_suc", j, paramInt, new String[] { str1, str2, "", "" });
+      this.b.add(paramyiu);
       return;
-      i = 0;
-      break;
-      label124:
-      str1 = "2";
-      break label76;
+    }
+    if ((!paramyiu.jdField_a_of_type_Boolean) && (this.b.contains(paramyiu)))
+    {
+      this.b.remove(paramyiu);
+      return;
+    }
+    throw new IllegalStateException("onFriendClick, friend select:" + paramyiu.jdField_a_of_type_Boolean + ",contains:" + this.b.contains(paramyiu));
+  }
+  
+  public boolean a()
+  {
+    return (!this.b.isEmpty()) && (this.jdField_a_of_type_JavaUtilList.size() == this.b.size());
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  @NonNull
+  public List<yiu> b()
+  {
+    return Collections.unmodifiableList(this.b);
+  }
+  
+  public void b()
+  {
+    this.b.clear();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      yiu localyiu = (yiu)localIterator.next();
+      localyiu.jdField_a_of_type_Boolean = true;
+      this.b.add(localyiu);
+    }
+  }
+  
+  public void b(yiu paramyiu)
+  {
+    paramyiu.jdField_a_of_type_Boolean = true;
+    if (!this.b.contains(paramyiu)) {
+      this.b.add(paramyiu);
+    }
+  }
+  
+  public void c()
+  {
+    this.b.clear();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((yiu)localIterator.next()).jdField_a_of_type_Boolean = false;
     }
   }
 }

@@ -1,16 +1,13 @@
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import android.os.Bundle;
 
-public class bgzq
-  implements bdyi
+public abstract interface bgzq
+  extends bguj
 {
-  public bgzq(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView, bdyi parambdyi) {}
+  public abstract aadf getShare();
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bdyi != null) {
-      this.jdField_a_of_type_Bdyi.a();
-    }
-  }
+  public abstract boolean setShareUrl(String paramString);
+  
+  public abstract boolean setSummary(String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle);
 }
 
 

@@ -1,15 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-
-final class uqn
-  implements DialogInterface.OnCancelListener
+class uqn
 {
-  uqn(upd paramupd) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    uqi.b(this.a);
-  }
+  private static final uql a = new uql();
 }
 
 

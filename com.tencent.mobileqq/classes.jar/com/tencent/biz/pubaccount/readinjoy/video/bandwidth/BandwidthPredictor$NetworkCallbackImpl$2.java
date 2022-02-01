@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video.bandwidth;
 
-import rxy;
-import rya;
+import sfc;
+import sfe;
 
 public class BandwidthPredictor$NetworkCallbackImpl$2
   implements Runnable
 {
-  public BandwidthPredictor$NetworkCallbackImpl$2(rya paramrya) {}
+  public BandwidthPredictor$NetworkCallbackImpl$2(sfe paramsfe) {}
   
   public void run()
   {
-    rxy.a(this.a.a);
+    sfc.a(this.a.a);
   }
 }
 

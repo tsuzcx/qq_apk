@@ -7,26 +7,26 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ViewParent;
 import android.widget.ListAdapter;
-import bhgr;
-import blmf;
-import blqm;
+import bjun;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
-import ytv;
-import ytw;
-import ytx;
-import yuk;
-import ztk;
+import com.tencent.widget.HorizontalListView.OnItemScrollEventListener;
+import xvg;
+import xvh;
+import xvi;
+import xvv;
+import ysv;
 
 public class StoryHomeHorizontalListView
   extends HorizontalListView
 {
   private float jdField_a_of_type_Float;
   public int a;
-  private blmf jdField_a_of_type_Blmf;
-  private ytw jdField_a_of_type_Ytw;
-  private ytx jdField_a_of_type_Ytx;
-  private ztk jdField_a_of_type_Ztk;
+  private HorizontalListView.OnItemScrollEventListener jdField_a_of_type_ComTencentWidgetHorizontalListView$OnItemScrollEventListener;
+  private xvh jdField_a_of_type_Xvh;
+  private xvi jdField_a_of_type_Xvi;
+  private ysv jdField_a_of_type_Ysv;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   protected int b;
@@ -52,8 +52,8 @@ public class StoryHomeHorizontalListView
   private void a(Context paramContext)
   {
     this.jdField_b_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.jdField_c_of_type_Int = bhgr.a(paramContext, 147.0F);
-    super.setOnItemScollEventListener(new ytv(this));
+    this.jdField_c_of_type_Int = DisplayUtil.dip2px(paramContext, 147.0F);
+    super.setOnItemScollEventListener(new xvg(this));
     setOverScrollMode(1);
   }
   
@@ -70,8 +70,8 @@ public class StoryHomeHorizontalListView
       } while (this.jdField_c_of_type_Boolean);
       i = getLastVisiblePosition();
       j = getAdapter().getCount();
-      yuk.a("HorizontalListView", "on item scroll last:%d, count:%d", Integer.valueOf(i), Integer.valueOf(j));
-    } while ((j - i >= this.jdField_a_of_type_Int) || (this.jdField_a_of_type_Ztk == null) || (!this.jdField_a_of_type_Ztk.a(false)));
+      xvv.a("HorizontalListView", "on item scroll last:%d, count:%d", Integer.valueOf(i), Integer.valueOf(j));
+    } while ((j - i >= this.jdField_a_of_type_Int) || (this.jdField_a_of_type_Ysv == null) || (!this.jdField_a_of_type_Ysv.a(false)));
     this.jdField_c_of_type_Boolean = true;
   }
   
@@ -99,7 +99,7 @@ public class StoryHomeHorizontalListView
       }
       float f2 = this.jdField_a_of_type_Float;
       f3 -= this.jdField_b_of_type_Float;
-      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > bhgr.a(getContext(), 5.0F))) {
+      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > DisplayUtil.dip2px(getContext(), 5.0F))) {
         getParent().requestDisallowInterceptTouchEvent(false);
       }
     }
@@ -120,34 +120,34 @@ public class StoryHomeHorizontalListView
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    blqm.a("StoryHorizontal.onLayout");
+    bjun.a("StoryHorizontal.onLayout");
     int i = this.mCurrentX;
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_a_of_type_Ytx != null) && (i != this.mCurrentX))
+    if ((this.jdField_a_of_type_Xvi != null) && (i != this.mCurrentX))
     {
-      this.jdField_a_of_type_Ytx.a(i, this.mCurrentX);
-      yuk.a("Q.qqstory.friendStory", "onLayout() %d -> %d", Integer.valueOf(i), Integer.valueOf(this.mCurrentX));
+      this.jdField_a_of_type_Xvi.a(i, this.mCurrentX);
+      xvv.a("Q.qqstory.friendStory", "onLayout() %d -> %d", Integer.valueOf(i), Integer.valueOf(this.mCurrentX));
     }
-    blqm.a();
+    bjun.a();
   }
   
   public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
-    if ((this.jdField_b_of_type_Boolean) && (paramInt3 > 0) && (paramInt3 > bhgr.a(getContext(), 50.0F)))
+    if ((this.jdField_b_of_type_Boolean) && (paramInt3 > 0) && (paramInt3 > DisplayUtil.dip2px(getContext(), 50.0F)))
     {
       this.jdField_b_of_type_Boolean = false;
-      if ((this.jdField_a_of_type_Ytw != null) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Ytw.R_();
+      if ((this.jdField_a_of_type_Xvh != null) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Xvh.L_();
       }
     }
     for (;;)
     {
       return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean);
-      if ((this.jdField_b_of_type_Boolean) && (paramInt3 < 0) && (paramInt3 < -bhgr.a(getContext(), 50.0F)))
+      if ((this.jdField_b_of_type_Boolean) && (paramInt3 < 0) && (paramInt3 < -DisplayUtil.dip2px(getContext(), 50.0F)))
       {
         this.jdField_b_of_type_Boolean = false;
-        if ((this.jdField_a_of_type_Ytw != null) && (this.jdField_a_of_type_Boolean)) {
-          this.jdField_a_of_type_Ytw.S_();
+        if ((this.jdField_a_of_type_Xvh != null) && (this.jdField_a_of_type_Boolean)) {
+          this.jdField_a_of_type_Xvh.M_();
         }
       }
     }
@@ -174,24 +174,24 @@ public class StoryHomeHorizontalListView
     this.jdField_c_of_type_Boolean = false;
   }
   
-  public void setOnItemScollEventListener(blmf paramblmf)
+  public void setOnItemScollEventListener(HorizontalListView.OnItemScrollEventListener paramOnItemScrollEventListener)
   {
-    this.jdField_a_of_type_Blmf = paramblmf;
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView$OnItemScrollEventListener = paramOnItemScrollEventListener;
   }
   
-  public void setOnLoadMoreListener(ztk paramztk)
+  public void setOnLoadMoreListener(ysv paramysv)
   {
-    this.jdField_a_of_type_Ztk = paramztk;
+    this.jdField_a_of_type_Ysv = paramysv;
   }
   
-  public void setOnOverScrollRightListener(ytw paramytw)
+  public void setOnOverScrollRightListener(xvh paramxvh)
   {
-    this.jdField_a_of_type_Ytw = paramytw;
+    this.jdField_a_of_type_Xvh = paramxvh;
   }
   
-  public void setOnScrollChangeListener(ytx paramytx)
+  public void setOnScrollChangeListener(xvi paramxvi)
   {
-    this.jdField_a_of_type_Ytx = paramytx;
+    this.jdField_a_of_type_Xvi = paramxvi;
   }
 }
 

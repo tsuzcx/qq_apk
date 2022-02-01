@@ -1,47 +1,31 @@
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
+import android.view.View;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
-public class axgx
+class axgx
+  implements AdapterView.OnItemSelectedListener
 {
-  private int jdField_a_of_type_Int;
-  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
+  private axgx(axgt paramaxgt) {}
   
-  public axgx(String paramString1, String paramString2, String paramString3, MsgBackupUserData paramMsgBackupUserData, int paramInt)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
-    this.jdField_a_of_type_Int = paramInt;
+    if (this.a.jdField_a_of_type_Int != 0)
+    {
+      this.a.jdField_a_of_type_Int = 0;
+      this.a.a();
+    }
+    AdapterView.OnItemSelectedListener localOnItemSelectedListener = this.a.jdField_a_of_type_Axgs.a();
+    if (localOnItemSelectedListener != null) {
+      localOnItemSelectedListener.onItemSelected(paramAdapterView, paramView, paramInt, paramLong);
+    }
   }
   
-  public int a()
+  public void onNothingSelected(AdapterView<?> paramAdapterView)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupGetQrRsp--");
-    localStringBuilder.append(",qr_sig:").append(this.jdField_a_of_type_JavaLangString).append(",token:").append(this.b).append(",encryptKey:").append(this.c).append(",userData:").append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData).append(",bizType:").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    AdapterView.OnItemSelectedListener localOnItemSelectedListener = this.a.jdField_a_of_type_Axgs.a();
+    if (localOnItemSelectedListener != null) {
+      localOnItemSelectedListener.onNothingSelected(paramAdapterView);
+    }
   }
 }
 

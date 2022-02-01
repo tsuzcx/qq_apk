@@ -1,58 +1,58 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import apgs;
-import apgw;
-import apgz;
+import aoae;
+import aoai;
+import aoal;
 
 public class ARVideoRecordUIControllerImpl$8
   implements Runnable
 {
-  public ARVideoRecordUIControllerImpl$8(apgw paramapgw, int paramInt) {}
+  public ARVideoRecordUIControllerImpl$8(aoai paramaoai, int paramInt) {}
   
   public void run()
   {
-    if (apgw.a(this.this$0) != null) {
-      apgw.a(this.this$0).a(0);
+    if (aoai.a(this.this$0) != null) {
+      aoai.a(this.this$0).a(0);
     }
     if (this.a == 0) {
-      if (apgw.a(this.this$0) != -1) {
-        switch (apgw.a(this.this$0))
+      if (aoai.a(this.this$0) != -1) {
+        switch (aoai.a(this.this$0))
         {
         case 5: 
         default: 
-          apgw.a(this.this$0, -1);
+          aoai.a(this.this$0, -1);
         }
       }
     }
     for (;;)
     {
-      apgw.b(this.this$0, false);
-      if (!apgw.c(this.this$0)) {
-        apgw.a(this.this$0);
+      aoai.b(this.this$0, false);
+      if (!aoai.c(this.this$0)) {
+        aoai.a(this.this$0);
       }
       return;
-      apgw.a("0X8008A56");
-      apgs.a("AR视频已保存", apgw.e);
+      aoai.a("0X8008A56");
+      aoae.a("AR视频已保存", aoai.e);
       break;
-      apgs.a(apgw.h, true);
+      aoae.a(aoai.h, true);
       break;
-      apgw.a("0X8008A56");
-      apgs.a(apgw.h, true);
+      aoai.a("0X8008A56");
+      aoae.a(aoai.h, true);
       break;
-      if (apgw.b(this.this$0) == true)
+      if (aoai.b(this.this$0) == true)
       {
-        apgw.a(this.this$0, false);
+        aoai.a(this.this$0, false);
       }
       else
       {
-        apgw.a("0X8008A56");
-        apgs.a(apgw.h, true);
+        aoai.a("0X8008A56");
+        aoae.a(aoai.h, true);
         continue;
-        apgw.a("0X8008A56");
+        aoai.a("0X8008A56");
         if (this.a == 1) {
-          apgs.a("AR视频已保存", apgw.f);
+          aoae.a("AR视频已保存", aoai.f);
         } else {
-          apgs.a("AR视频已保存", apgw.g);
+          aoae.a("AR视频已保存", aoai.g);
         }
       }
     }

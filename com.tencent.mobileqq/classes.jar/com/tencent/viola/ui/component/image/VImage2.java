@@ -215,7 +215,9 @@ public class VImage2
   
   private void setImageResize(String paramString)
   {
-    ((VImageView2)getHostView()).setScaleType(getResizeMode(paramString));
+    if (getHostView() != null) {
+      ((VImageView2)getHostView()).setScaleType(getResizeMode(paramString));
+    }
   }
   
   private void setResult(Object paramObject, String paramString, boolean paramBoolean)

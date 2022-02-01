@@ -1,48 +1,161 @@
-import android.app.Activity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StUser;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import qqcircle.QQCircleProfile.CheckBindGroupRsp;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewStub;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
-class vcu
-  implements aaav<QQCircleProfile.CheckBindGroupRsp>
+public class vcu
+  extends vbl
 {
-  vcu(vcn paramvcn, List paramList) {}
+  private int jdField_a_of_type_Int;
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
+  private ukz<vaq> jdField_a_of_type_Ukz;
+  private vaq jdField_a_of_type_Vaq;
+  private ukz<vaq> b;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleProfile.CheckBindGroupRsp paramCheckBindGroupRsp)
+  public vcu(Context paramContext, vct paramvct)
   {
-    if ((!paramBoolean) || (paramLong != 0L) || (paramCheckBindGroupRsp == null))
-    {
-      QLog.e("QCircleDataEditContentP", 1, "requestCheckBindGroup error:" + paramLong + "  errorMsg:" + paramString);
-      vcn.a(this.jdField_a_of_type_Vcn).h();
-      vcn.a(this.jdField_a_of_type_Vcn).c(this.jdField_a_of_type_Vcn.a().getString(2131694098));
-      QQToast.a(this.jdField_a_of_type_Vcn.a(), 1, paramString, 0).a();
+    super(paramContext, paramvct);
+  }
+  
+  private void a(MotionEvent paramMotionEvent)
+  {
+    if ((this.jdField_a_of_type_Vaq != null) && ((this.jdField_a_of_type_Vaq.a() instanceof stSimpleMetaFeed)) && ((this.b instanceof vcb))) {
+      ((vcb)this.b).a(paramMotionEvent);
+    }
+  }
+  
+  private void e()
+  {
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131380733);
+    this.jdField_a_of_type_Ukz = new vch(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment);
+    this.jdField_a_of_type_Ukz.a(localViewStub);
+    a(this.jdField_a_of_type_Ukz);
+  }
+  
+  private void f()
+  {
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131380721);
+    vbz localvbz = new vbz(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vct);
+    localvbz.a(localViewStub);
+    a(localvbz);
+  }
+  
+  private void g()
+  {
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131380723);
+    this.b = new vcb(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vct);
+    this.b.a(localViewStub);
+    a(this.b);
+  }
+  
+  private void h()
+  {
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131380735);
+    vco localvco = new vco(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vct);
+    localvco.a(localViewStub);
+    a(localvco);
+  }
+  
+  private void i()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
       return;
     }
-    QLog.d("QCircleDataEditContentP", 1, "requestCheckBindGroup success:" + paramLong);
-    vcn.a(this.jdField_a_of_type_Vcn).h();
-    vcn.a(this.jdField_a_of_type_Vcn).c(this.jdField_a_of_type_Vcn.a().getString(2131694098));
-    vcn.a(this.jdField_a_of_type_Vcn).a("");
-    vcn.a(this.jdField_a_of_type_Vcn).b(null);
-    vcn.a(this.jdField_a_of_type_Vcn).dismiss();
-    if (vcn.a(this.jdField_a_of_type_Vcn) == null) {
-      vcn.a(this.jdField_a_of_type_Vcn, new ArrayList());
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewView.getContext(), new vcv(this));
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new vcw(this));
+  }
+  
+  private void j()
+  {
+    if ((a() instanceof vcj)) {
+      ((vcj)a()).f();
     }
-    paramString = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramString.hasNext())
+  }
+  
+  public stSimpleMetaFeed a()
+  {
+    if ((this.jdField_a_of_type_Vaq != null) && ((this.jdField_a_of_type_Vaq.a() instanceof stSimpleMetaFeed))) {
+      return (stSimpleMetaFeed)this.jdField_a_of_type_Vaq.a();
+    }
+    return null;
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(vaq paramvaq)
+  {
+    super.a(paramvaq);
+    this.jdField_a_of_type_Vaq = paramvaq;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Vaq != null) && ((this.jdField_a_of_type_Vaq.a() instanceof stSimpleMetaFeed)))
     {
-      paramLong = ((Long)paramString.next()).longValue();
-      if (!vcn.a(this.jdField_a_of_type_Vcn).contains(Long.valueOf(paramLong))) {
-        vcn.a(this.jdField_a_of_type_Vcn).add(Long.valueOf(paramLong));
-      }
+      stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)this.jdField_a_of_type_Vaq.a();
+      uql.a().a(localstSimpleMetaFeed.id);
     }
-    vcn.a(this.jdField_a_of_type_Vcn);
-    QQToast.a(this.jdField_a_of_type_Vcn.a(), 2, this.jdField_a_of_type_Vcn.a().getString(2131697351), 0).a();
-    vtq.a(vcn.a(this.jdField_a_of_type_Vcn).id.get(), 11, 25, 6, "", String.valueOf(this.jdField_a_of_type_JavaUtilList.get(0)), "", "", "", this.jdField_a_of_type_Vcn.b());
+  }
+  
+  public void b(int paramInt) {}
+  
+  public void b(vaq paramvaq)
+  {
+    this.jdField_a_of_type_Vaq = paramvaq;
+    c(paramvaq);
+  }
+  
+  public void c()
+  {
+    uwy localuwy = new uwy();
+    localuwy.jdField_a_of_type_UserGrowthStSimpleMetaFeed = a();
+    localuwy.jdField_a_of_type_Int = 2;
+    localuwy.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+    localuwy.jdField_a_of_type_JavaLangString = vdq.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a());
+    localuwy.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b();
+    localuwy.c = "more_operations";
+    localuwy.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment);
+    uyd.a(this.jdField_a_of_type_AndroidContentContext, localuwy);
+    vdq.d(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), a());
+  }
+  
+  public void c(int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (!(this.b instanceof vcb));
+        ((vcb)this.b).f();
+        return;
+      } while (!(this.jdField_a_of_type_Ukz instanceof vch));
+      ((vch)this.jdField_a_of_type_Ukz).b();
+      return;
+    } while (!(this.b instanceof vcb));
+    ((vcb)this.b).g();
+  }
+  
+  public void d()
+  {
+    super.d();
+    e();
+    f();
+    g();
+    h();
+    i();
   }
 }
 

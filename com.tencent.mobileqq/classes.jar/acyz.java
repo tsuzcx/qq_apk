@@ -1,16 +1,16 @@
-class acyz
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import java.util.List;
+
+public class acyz
+  implements aszj
 {
-  public int a;
-  public long a;
-  public aczh a;
-  public String a;
+  public acyz(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList) {}
   
-  public acyz(acyy paramacyy, int paramInt, long paramLong, String paramString, aczh paramaczh)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aczh = paramaczh;
+    aszt.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
   }
 }
 

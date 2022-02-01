@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ajuv;
+import aips;
 
 class FriendListHandler$2
   implements Runnable
@@ -9,8 +9,8 @@ class FriendListHandler$2
   
   public void run()
   {
-    ajuv.a();
-    this.this$0.d();
+    aips.a();
+    this.this$0.getShowPcOnlineIconConfig();
   }
 }
 

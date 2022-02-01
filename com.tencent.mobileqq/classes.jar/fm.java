@@ -9,12 +9,13 @@ import android.text.style.CharacterStyle;
 import com.etrump.mixlayout.ETDecoration;
 import com.etrump.mixlayout.ETEngine;
 import com.etrump.mixlayout.ETFont;
+import com.tencent.mobileqq.text.QQText.EmoticonSpan;
 
 public class fm
 {
   private int jdField_a_of_type_Int = -1;
   private CharacterStyle jdField_a_of_type_AndroidTextStyleCharacterStyle;
-  private fr jdField_a_of_type_Fr;
+  private fq jdField_a_of_type_Fq;
   private String jdField_a_of_type_JavaLangString;
   private int b;
   private int c;
@@ -27,9 +28,9 @@ public class fm
   public fm(CharacterStyle paramCharacterStyle, int paramInt)
   {
     this.jdField_a_of_type_AndroidTextStyleCharacterStyle = paramCharacterStyle;
-    if ((paramCharacterStyle instanceof begw))
+    if ((paramCharacterStyle instanceof QQText.EmoticonSpan))
     {
-      paramCharacterStyle = ((begw)paramCharacterStyle).a().getBounds();
+      paramCharacterStyle = ((QQText.EmoticonSpan)paramCharacterStyle).getDrawable().getBounds();
       this.b = paramCharacterStyle.width();
       this.c = paramCharacterStyle.height();
     }
@@ -38,9 +39,9 @@ public class fm
       this.jdField_a_of_type_Int = paramInt;
       this.e = 2;
       return;
-      if ((paramCharacterStyle instanceof bbtp))
+      if ((paramCharacterStyle instanceof bank))
       {
-        paramCharacterStyle = (bbtp)paramCharacterStyle;
+        paramCharacterStyle = (bank)paramCharacterStyle;
         this.b = paramCharacterStyle.a();
         this.c = paramCharacterStyle.b();
       }
@@ -56,20 +57,20 @@ public class fm
   
   private void a(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint)
   {
-    if ((this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof begw))
+    if ((this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof QQText.EmoticonSpan))
     {
-      localObject = (begw)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
-      paramInt2 += ((begw)localObject).a().getBounds().height();
-      ((begw)localObject).draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2, paramPaint);
+      localObject = (QQText.EmoticonSpan)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
+      paramInt2 += ((QQText.EmoticonSpan)localObject).getDrawable().getBounds().height();
+      ((QQText.EmoticonSpan)localObject).draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2, paramPaint);
     }
-    while (!(this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bbtp)) {
+    while (!(this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bank)) {
       return;
     }
     paramPaint.setTextSize(a());
-    Object localObject = (bbtp)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
-    int i = ((bbtp)localObject).b();
-    ((bbtp)localObject).a = false;
-    ((bbtp)localObject).draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2 + i, paramPaint);
+    Object localObject = (bank)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
+    int i = ((bank)localObject).b();
+    ((bank)localObject).a = false;
+    ((bank)localObject).draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2 + i, paramPaint);
   }
   
   private void a(Canvas paramCanvas, Paint paramPaint, ETFont paramETFont, int paramInt1, int paramInt2)
@@ -106,7 +107,7 @@ public class fm
   
   private void a(ETEngine paramETEngine)
   {
-    ETFont localETFont = this.jdField_a_of_type_Fr.a();
+    ETFont localETFont = this.jdField_a_of_type_Fq.a();
     if ((localETFont == null) || (paramETEngine == null))
     {
       this.f = 0;
@@ -124,7 +125,7 @@ public class fm
   
   public int a()
   {
-    ETFont localETFont = this.jdField_a_of_type_Fr.a();
+    ETFont localETFont = this.jdField_a_of_type_Fq.a();
     if (localETFont != null) {
       return localETFont.getSize();
     }
@@ -144,17 +145,17 @@ public class fm
     return this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
   }
   
-  public begw a()
+  public QQText.EmoticonSpan a()
   {
-    if ((this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof begw)) {
-      return (begw)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
+    if ((this.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof QQText.EmoticonSpan)) {
+      return (QQText.EmoticonSpan)this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
     }
     return null;
   }
   
-  public fr a()
+  public fq a()
   {
-    return this.jdField_a_of_type_Fr;
+    return this.jdField_a_of_type_Fq;
   }
   
   public String a()
@@ -180,12 +181,12 @@ public class fm
   public void a(Canvas paramCanvas, int paramInt1, int paramInt2, int paramInt3)
   {
     Paint localPaint;
-    if ((paramCanvas != null) && (this.jdField_a_of_type_Fr != null))
+    if ((paramCanvas != null) && (this.jdField_a_of_type_Fq != null))
     {
       localPaint = new Paint();
-      if (this.jdField_a_of_type_Fr.a() == true)
+      if (this.jdField_a_of_type_Fq.a() == true)
       {
-        localPaint.setColor(this.jdField_a_of_type_Fr.c());
+        localPaint.setColor(this.jdField_a_of_type_Fq.c());
         localPaint.setStyle(Paint.Style.FILL);
         paramCanvas.drawRect(new Rect(paramInt1, paramInt2, this.b + paramInt1, paramInt2 + paramInt3), localPaint);
       }
@@ -201,9 +202,9 @@ public class fm
       do
       {
         return;
-        localETFont = this.jdField_a_of_type_Fr.a();
+        localETFont = this.jdField_a_of_type_Fq.a();
       } while (localETFont == null);
-      if (this.jdField_a_of_type_Fr.b() == true) {
+      if (this.jdField_a_of_type_Fq.b() == true) {
         a(paramCanvas, localPaint, localETFont, paramInt1, paramInt2, paramInt3);
       }
     } while ((this.jdField_a_of_type_JavaLangString == null) || (this.e != 1));
@@ -212,7 +213,7 @@ public class fm
   
   public void a(ETEngine paramETEngine, Bitmap paramBitmap, ETDecoration paramETDecoration, int paramInt1, int paramInt2)
   {
-    if ((paramETEngine == null) || (paramBitmap == null) || (this.jdField_a_of_type_Fr == null)) {}
+    if ((paramETEngine == null) || (paramBitmap == null) || (this.jdField_a_of_type_Fq == null)) {}
     ETFont localETFont;
     do
     {
@@ -220,7 +221,7 @@ public class fm
       {
         return;
       } while ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.length() == 0) || (this.e != 0));
-      localETFont = this.jdField_a_of_type_Fr.a();
+      localETFont = this.jdField_a_of_type_Fq.a();
       if (paramETDecoration == null)
       {
         paramETEngine.native_drawText(this.jdField_a_of_type_JavaLangString, paramBitmap, paramInt1, paramInt2, localETFont);
@@ -230,9 +231,9 @@ public class fm
     paramETDecoration.drawFrameText(this.g, this.h, paramBitmap, paramInt1, paramInt2, localETFont);
   }
   
-  public void a(fr paramfr)
+  public void a(fq paramfq)
   {
-    this.jdField_a_of_type_Fr = paramfr;
+    this.jdField_a_of_type_Fq = paramfq;
   }
   
   public void a(String paramString)
@@ -240,27 +241,27 @@ public class fm
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public ft[] a(ETEngine paramETEngine, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public fs[] a(ETEngine paramETEngine, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int j = 0;
     if ((2 == this.e) || (1 == this.e))
     {
       paramETEngine = new Rect(paramInt1, paramInt2, this.b + paramInt1, paramInt2 + paramInt3);
-      localObject1 = new ft();
-      ((ft)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      ((ft)localObject1).jdField_a_of_type_AndroidGraphicsRect = paramETEngine;
-      ((ft)localObject1).jdField_a_of_type_Int = paramInt4;
-      paramETEngine = new ft[1];
+      localObject1 = new fs();
+      ((fs)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      ((fs)localObject1).jdField_a_of_type_AndroidGraphicsRect = paramETEngine;
+      ((fs)localObject1).jdField_a_of_type_Int = paramInt4;
+      paramETEngine = new fs[1];
       paramETEngine[0] = localObject1;
       return paramETEngine;
     }
-    Object localObject1 = this.jdField_a_of_type_Fr.a();
+    Object localObject1 = this.jdField_a_of_type_Fq.a();
     Object localObject2 = new Paint();
     ((Paint)localObject2).setTextSize(((ETFont)localObject1).getSize());
     int k = this.jdField_a_of_type_JavaLangString.length();
     int[] arrayOfInt = new int[k];
     paramETEngine.native_getTextWidths(this.jdField_a_of_type_JavaLangString, (ETFont)localObject1, (Paint)localObject2, arrayOfInt);
-    localObject1 = new ft[k];
+    localObject1 = new fs[k];
     int i = paramInt1;
     paramInt1 = j;
     for (;;)
@@ -271,10 +272,10 @@ public class fm
       }
       j = arrayOfInt[paramInt1] + i;
       paramETEngine = new Rect(i, paramInt2, j, paramInt2 + paramInt3);
-      localObject2 = new ft();
-      ((ft)localObject2).jdField_a_of_type_Int = paramInt4;
-      ((ft)localObject2).jdField_a_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_JavaLangString.charAt(paramInt1));
-      ((ft)localObject2).jdField_a_of_type_AndroidGraphicsRect = paramETEngine;
+      localObject2 = new fs();
+      ((fs)localObject2).jdField_a_of_type_Int = paramInt4;
+      ((fs)localObject2).jdField_a_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_JavaLangString.charAt(paramInt1));
+      ((fs)localObject2).jdField_a_of_type_AndroidGraphicsRect = paramETEngine;
       localObject1[paramInt1] = localObject2;
       paramInt1 += 1;
       i = j;
@@ -302,7 +303,7 @@ public class fm
   public void b(Canvas paramCanvas, int paramInt1, int paramInt2, int paramInt3)
   {
     Paint localPaint;
-    if ((paramCanvas != null) && (this.jdField_a_of_type_Fr != null))
+    if ((paramCanvas != null) && (this.jdField_a_of_type_Fq != null))
     {
       localPaint = new Paint();
       if (this.jdField_a_of_type_AndroidTextStyleCharacterStyle == null) {
@@ -314,8 +315,8 @@ public class fm
     do
     {
       return;
-      localETFont = this.jdField_a_of_type_Fr.a();
-    } while ((localETFont == null) || (this.jdField_a_of_type_Fr.b() != true));
+      localETFont = this.jdField_a_of_type_Fq.a();
+    } while ((localETFont == null) || (this.jdField_a_of_type_Fq.b() != true));
     a(paramCanvas, localPaint, localETFont, paramInt1, paramInt2, paramInt3);
   }
   

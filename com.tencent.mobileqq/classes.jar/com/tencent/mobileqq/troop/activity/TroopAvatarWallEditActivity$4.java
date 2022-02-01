@@ -12,7 +12,7 @@ class TroopAvatarWallEditActivity$4
   
   public void run()
   {
-    EntityManager localEntityManager = this.this$0.app.a().createEntityManager();
+    EntityManager localEntityManager = this.this$0.app.getEntityManagerFactory().createEntityManager();
     Setting localSetting = (Setting)localEntityManager.find(Setting.class, "troop_" + this.this$0.a);
     localEntityManager.close();
     this.this$0.runOnUiThread(new TroopAvatarWallEditActivity.4.1(this, localSetting));

@@ -1,17 +1,37 @@
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Map;
+
 public class whj
+  extends wje
 {
-  public int a;
-  public String a;
-  private int b;
+  StoryVideoItem a;
+  public xcs a;
   
-  public String toString()
+  public whj(StoryVideoItem paramStoryVideoItem)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mStr: ").append(this.jdField_a_of_type_JavaLangString).append(" ");
-    localStringBuilder.append("mLevel: ").append(this.jdField_a_of_type_Int).append(" ");
-    localStringBuilder.append("mPicCount: ").append(this.b).append(" ");
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
   }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
+    {
+      xvv.c(this.b, "Error: ", new IllegalStateException("这里VideoItem为空, 临时保护, 可能存在逻辑异常"));
+      b(false);
+      return;
+    }
+    vwh localvwh = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout();
+    if (localvwh != null)
+    {
+      this.jdField_a_of_type_Xcs = new xcp();
+      this.jdField_a_of_type_Xcs.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl, 0, 0, new whk(this, localvwh));
+      return;
+    }
+    a("result", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
+    b(true);
+  }
+  
+  protected void a(Map<String, Object> paramMap) {}
 }
 
 

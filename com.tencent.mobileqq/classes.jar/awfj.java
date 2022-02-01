@@ -1,86 +1,167 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.javahook.BadTokenHooker.2;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.qqmusic.MusicSongInfoMatch.CMsgRequest;
+import tencent.im.oidb.qqmusic.MusicSongInfoMatch.CMsgResponse;
+import tencent.im.oidb.qqmusic.MusicSongInfoMatch.ParamPair;
 
-@TargetApi(14)
 public class awfj
+  extends BusinessHandler
 {
-  private static awfl a = new awfl(null);
+  public awfj(QQAppInterface paramQQAppInterface)
+  {
+    super(paramQQAppInterface);
+  }
   
-  public static void a()
+  private long a()
+  {
+    long l = 0L;
+    String str;
+    if (!TextUtils.isEmpty("8.4.8")) {
+      str = "8.4.8".replace(".", "");
+    }
+    try
+    {
+      l = Long.parseLong(str);
+      return l;
+    }
+    catch (NumberFormatException localNumberFormatException) {}
+    return 0L;
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     try
     {
-      localClass1 = Class.forName("android.view.ViewRootImpl");
-      JavaHookBridge.findAndHookMethod(localClass1, "setView", new Object[] { View.class, WindowManager.LayoutParams.class, View.class, new awfk(localClass1) });
-    }
-    catch (NoSuchMethodException localNoSuchMethodException1)
-    {
-      for (;;)
+      if (paramFromServiceMsg.getResultCode() == 1000)
       {
-        try
-        {
-          localClass1 = Class.forName("android.view.WindowManagerImpl");
-          if (Build.VERSION.SDK_INT > 16) {
-            break;
-          }
-        }
-        catch (ClassNotFoundException localClassNotFoundException2)
-        {
-          Class localClass1;
-          Class localClass2;
-          bhjx.a(localClassNotFoundException2);
-          return;
-        }
-        try
-        {
-          localClass2 = Class.forName("android.view.CompatibilityInfoHolder");
-          if (localClass2 != null) {
-            JavaHookBridge.findAndHookMethod(localClass1, "addView", new Object[] { View.class, ViewGroup.LayoutParams.class, localClass2, Boolean.class, a });
-          }
-          return;
-        }
-        catch (NoSuchMethodException localNoSuchMethodException2)
-        {
-          bhjx.a(localNoSuchMethodException2);
-          return;
-        }
-        catch (ClassNotFoundException localClassNotFoundException3)
-        {
-          bhjx.a(localClassNotFoundException3);
-          return;
-        }
-        localNoSuchMethodException1 = localNoSuchMethodException1;
-        bhjx.a(localNoSuchMethodException1);
+        paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
+        paramToServiceMsg = new MusicSongInfoMatch.CMsgResponse();
+        paramToServiceMsg.mergeFrom(paramFromServiceMsg);
+        paramFromServiceMsg = new String(paramToServiceMsg.data.get().toByteArray());
       }
-    }
-    catch (ClassNotFoundException localClassNotFoundException1)
-    {
-      for (;;)
+      switch (paramToServiceMsg.reqtype.get())
       {
-        bhjx.a(localClassNotFoundException1);
+      case 1: 
+        notifyUI(81, true, paramFromServiceMsg);
+        return;
+      case 2: 
+        notifyUI(82, true, paramFromServiceMsg);
+        return;
+      case 3: 
+        notifyUI(83, true, paramFromServiceMsg);
+        return;
+        notifyUI(81, false, null);
+        return;
       }
-    }
-    try
-    {
-      JavaHookBridge.findAndHookMethod(localClassNotFoundException3, "addView", new Object[] { View.class, ViewGroup.LayoutParams.class, a });
       return;
     }
-    catch (NoSuchMethodException localNoSuchMethodException3)
+    catch (Exception paramToServiceMsg) {}
+  }
+  
+  public void a(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
+  {
+    QLog.d("MusicPlayerHandler", 4, new Object[] { "requestMatchSongInfo ", String.valueOf(paramString1), " ", String.valueOf(paramString2), " ", String.valueOf(paramString3), " ", String.valueOf(paramString4), " ", String.valueOf(paramString5), " ", String.valueOf(paramInt) });
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", String.valueOf(paramLong), "MusicSongInfoMatchSvc.songquery");
+    MusicSongInfoMatch.CMsgRequest localCMsgRequest = new MusicSongInfoMatch.CMsgRequest();
+    if (!TextUtils.isEmpty(paramString1))
     {
-      bhjx.a(localNoSuchMethodException3);
+      MusicSongInfoMatch.ParamPair localParamPair = new MusicSongInfoMatch.ParamPair();
+      localParamPair.key.set(ByteStringMicro.copyFromUtf8("songname"));
+      localParamPair.value.set(ByteStringMicro.copyFromUtf8(paramString1));
+      localCMsgRequest.urlparams.add(localParamPair);
+    }
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = new MusicSongInfoMatch.ParamPair();
+      paramString1.key.set(ByteStringMicro.copyFromUtf8("singername"));
+      paramString1.value.set(ByteStringMicro.copyFromUtf8(paramString2));
+      localCMsgRequest.urlparams.add(paramString1);
+    }
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      paramString1 = new MusicSongInfoMatch.ParamPair();
+      paramString1.key.set(ByteStringMicro.copyFromUtf8("albumname"));
+      paramString1.value.set(ByteStringMicro.copyFromUtf8(paramString3));
+      localCMsgRequest.urlparams.add(paramString1);
+    }
+    if (!TextUtils.isEmpty(paramString4))
+    {
+      paramString1 = new MusicSongInfoMatch.ParamPair();
+      paramString1.key.set(ByteStringMicro.copyFromUtf8("songid"));
+      paramString1.value.set(ByteStringMicro.copyFromUtf8(paramString4));
+      localCMsgRequest.urlparams.add(paramString1);
+    }
+    if (!TextUtils.isEmpty(paramString5))
+    {
+      paramString1 = new MusicSongInfoMatch.ParamPair();
+      paramString1.key.set(ByteStringMicro.copyFromUtf8("summary"));
+      paramString1.value.set(ByteStringMicro.copyFromUtf8(paramString5));
+      localCMsgRequest.urlparams.add(paramString1);
+    }
+    if (paramInt > 0)
+    {
+      paramInt /= 1000;
+      paramString1 = new MusicSongInfoMatch.ParamPair();
+      paramString1.key.set(ByteStringMicro.copyFromUtf8("duration"));
+      paramString1.value.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramInt)));
+      localCMsgRequest.urlparams.add(paramString1);
+    }
+    localCMsgRequest.reqtype.set(1);
+    localCMsgRequest.uin.set(paramLong);
+    localCMsgRequest.ct.set(1008L);
+    localCMsgRequest.cv.set(a());
+    localToServiceMsg.putWupBuffer(localCMsgRequest.toByteArray());
+    sendPbReq(localToServiceMsg);
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    QLog.d("MusicPlayerHandler", 4, new Object[] { "requestLikeSong ", String.valueOf(paramString), " ", String.valueOf(paramLong1), " ", String.valueOf(paramLong2), " ", String.valueOf(paramBoolean) });
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", String.valueOf(paramLong1), "MusicSongInfoMatchSvc.songquery");
+    MusicSongInfoMatch.CMsgRequest localCMsgRequest = new MusicSongInfoMatch.CMsgRequest();
+    MusicSongInfoMatch.ParamPair localParamPair1 = new MusicSongInfoMatch.ParamPair();
+    localParamPair1.key.set(ByteStringMicro.copyFromUtf8("songid"));
+    localParamPair1.value.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramLong2)));
+    MusicSongInfoMatch.ParamPair localParamPair2 = new MusicSongInfoMatch.ParamPair();
+    localParamPair2.key.set(ByteStringMicro.copyFromUtf8("OpenUDID"));
+    localParamPair2.value.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramString)));
+    localCMsgRequest.urlparams.add(localParamPair1);
+    localCMsgRequest.urlparams.add(localParamPair2);
+    if (paramBoolean) {
+      localCMsgRequest.reqtype.set(2);
+    }
+    for (;;)
+    {
+      localCMsgRequest.uin.set(paramLong1);
+      localCMsgRequest.ct.set(1008L);
+      localCMsgRequest.cv.set(a());
+      localToServiceMsg.putWupBuffer(localCMsgRequest.toByteArray());
+      sendPbReq(localToServiceMsg);
+      return;
+      localCMsgRequest.reqtype.set(3);
     }
   }
   
-  private static void b(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public Class<? extends BusinessObserver> observerClass()
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new BadTokenHooker.2(paramString1, paramString2, paramInt1), paramInt2);
+    return awfg.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("MusicSongInfoMatchSvc.songquery".equals(paramFromServiceMsg.getServiceCmd())) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 

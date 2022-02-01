@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import android.widget.EditText;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.widget.ParticipleView;
 
-final class bhgb
-  extends View.AccessibilityDelegate
+public class bhgb
+  extends AnimatorListenerAdapter
 {
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public bhgb(ParticipleView paramParticipleView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    EditText localEditText = (EditText)paramView;
-    localEditText.setHint("");
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    paramAccessibilityNodeInfo.setContentDescription(localEditText.getContentDescription());
+    ParticipleView.a(this.a, 1.0F);
+    this.a.invalidate();
   }
 }
 

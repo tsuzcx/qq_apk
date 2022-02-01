@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.activity.richmedia.state;
 
-import aluf;
-import alwe;
-import alxv;
+import akrw;
+import aktv;
+import akvk;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bday;
+import bbuc;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class RMVideoInitState$5
   implements Runnable
 {
-  public RMVideoInitState$5(alxv paramalxv) {}
+  public RMVideoInitState$5(akvk paramakvk) {}
   
   public void run()
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
     boolean bool1 = localSharedPreferences.getBoolean("sv_has_reported_front_camera_compatibility", false);
     boolean bool2 = localSharedPreferences.getBoolean("sv_has_reported_back_camera_compatibility", false);
-    bday localbday = bday.a();
-    if ((!bool1) && (aluf.a == 1))
+    bbuc localbbuc = bbuc.a();
+    if ((!bool1) && (akrw.a == 1))
     {
-      alwe.a(localbday.a(), "front");
+      aktv.a(localbbuc.a(), "front");
       localSharedPreferences.edit().putBoolean("sv_has_reported_front_camera_compatibility", true).commit();
     }
-    while ((bool2) || (aluf.a != 2)) {
+    while ((bool2) || (akrw.a != 2)) {
       return;
     }
-    alwe.a(localbday.a(), "back");
+    aktv.a(localbbuc.a(), "back");
     localSharedPreferences.edit().putBoolean("sv_has_reported_back_camera_compatibility", true).commit();
   }
 }

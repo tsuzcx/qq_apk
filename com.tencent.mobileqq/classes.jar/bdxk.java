@@ -1,8 +1,22 @@
-import android.graphics.Bitmap;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public abstract interface bdxk<T extends bdxl>
+class bdxk
+  implements Comparator<Map.Entry<String, bdxm>>
 {
-  public abstract void a(T paramT, Bitmap paramBitmap);
+  bdxk(bdxj parambdxj) {}
+  
+  public int a(Map.Entry<String, bdxm> paramEntry1, Map.Entry<String, bdxm> paramEntry2)
+  {
+    float f = ((bdxm)paramEntry2.getValue()).a() - ((bdxm)paramEntry1.getValue()).a();
+    if (f > 0.0F) {
+      return 1;
+    }
+    if (f < 0.0F) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

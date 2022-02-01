@@ -1,6 +1,5 @@
 package com.tencent.biz.now;
 
-import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
@@ -12,20 +11,21 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bdpu;
-import bhlg;
-import bhsr;
+import bcif;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.StringUtil;
 import java.util.HashMap;
-import nql;
-import nqn;
+import nru;
+import nrw;
 
 public class NowVideoLayout
   extends RelativeLayout
 {
-  bdpu jdField_a_of_type_Bdpu;
+  bcif jdField_a_of_type_Bcif;
   NowVideoView jdField_a_of_type_ComTencentBizNowNowVideoView;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
@@ -40,17 +40,17 @@ public class NowVideoLayout
   {
     Object localObject = getContext().getResources();
     this.jdField_a_of_type_ComTencentBizNowNowVideoView = new NowVideoView(getContext());
-    this.jdField_a_of_type_ComTencentBizNowNowVideoView.setId(2131378098);
+    this.jdField_a_of_type_ComTencentBizNowNowVideoView.setId(2131377868);
     this.jdField_a_of_type_ComTencentBizNowNowVideoView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_ComTencentBizNowNowVideoView.setUseRadiusRound(true, getContext().getResources().getDimensionPixelSize(2131296395));
-    this.jdField_a_of_type_ComTencentBizNowNowVideoView.setContentDescription(getContext().getResources().getText(2131718373));
-    localObject = new RelativeLayout.LayoutParams(agej.a(156.0F, (Resources)localObject), agej.a(209.0F, (Resources)localObject));
+    this.jdField_a_of_type_ComTencentBizNowNowVideoView.setUseRadiusRound(true, getContext().getResources().getDimensionPixelSize(2131296448));
+    this.jdField_a_of_type_ComTencentBizNowNowVideoView.setContentDescription(getContext().getResources().getText(2131718615));
+    localObject = new RelativeLayout.LayoutParams(AIOUtils.dp2px(156.0F, (Resources)localObject), AIOUtils.dp2px(209.0F, (Resources)localObject));
     addView(this.jdField_a_of_type_ComTencentBizNowNowVideoView, (ViewGroup.LayoutParams)localObject);
     localObject = new ImageView(getContext());
-    ((ImageView)localObject).setImageResource(2130843196);
-    ((ImageView)localObject).setId(2131372758);
+    ((ImageView)localObject).setImageResource(2130843258);
+    ((ImageView)localObject).setId(2131372726);
     ((ImageView)localObject).setVisibility(8);
-    int i = agej.a(60.0F, getResources());
+    int i = AIOUtils.dp2px(60.0F, getResources());
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i, i);
     localLayoutParams.addRule(13);
     addView((View)localObject, localLayoutParams);
@@ -59,7 +59,7 @@ public class NowVideoLayout
   
   public void a(int paramInt, String paramString)
   {
-    Object localObject = findViewById(2131378100);
+    Object localObject = findViewById(2131377870);
     ImageView localImageView;
     String str2;
     TextView localTextView2;
@@ -67,12 +67,12 @@ public class NowVideoLayout
     if (localObject == null)
     {
       localImageView = new ImageView(getContext());
-      localImageView.setId(2131378100);
+      localImageView.setId(2131377870);
       localObject = new RelativeLayout.LayoutParams(-2, -2);
       ((RelativeLayout.LayoutParams)localObject).addRule(9);
       ((RelativeLayout.LayoutParams)localObject).addRule(10);
-      ((RelativeLayout.LayoutParams)localObject).setMargins(agej.a(10.0F, getResources()), agej.a(10.0F, getResources()), 0, 0);
-      localImageView.setImageResource(2130843839);
+      ((RelativeLayout.LayoutParams)localObject).setMargins(AIOUtils.dp2px(10.0F, getResources()), AIOUtils.dp2px(10.0F, getResources()), 0, 0);
+      localImageView.setImageResource(2130843901);
       addView(localImageView, (ViewGroup.LayoutParams)localObject);
       localObject = getParent();
       str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
@@ -80,37 +80,37 @@ public class NowVideoLayout
         break label646;
       }
       localObject = (LinearLayout)localObject;
-      localTextView2 = (TextView)((LinearLayout)localObject).findViewById(2131380137);
-      localTextView1 = (TextView)((LinearLayout)localObject).findViewById(2131380141);
+      localTextView2 = (TextView)((LinearLayout)localObject).findViewById(2131379873);
+      localTextView1 = (TextView)((LinearLayout)localObject).findViewById(2131379877);
     }
     for (;;)
     {
       String str1;
       label169:
       boolean bool;
-      if (this.jdField_a_of_type_Bdpu == null)
+      if (this.jdField_a_of_type_Bcif == null)
       {
         str1 = "";
         localObject = str2;
         if (str2 == null)
         {
-          str2 = bhlg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
+          str2 = ContactUtils.getFriendNick(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
           localObject = str2;
           if (str2 != null)
           {
             localObject = str2;
             if (!str2.equals(paramString)) {
-              localObject = bhsr.a(str2, 10);
+              localObject = StringUtil.getElipseStringWide(str2, 10);
             }
           }
           this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject);
         }
-        if ((this.jdField_a_of_type_Bdpu == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Bdpu.ag))) {
+        if ((this.jdField_a_of_type_Bcif == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Bcif.ag))) {
           break label435;
         }
-        paramString = (String)localObject + getContext().getText(2131696985).toString();
+        paramString = (String)localObject + getContext().getText(2131697127).toString();
         label283:
-        bool = ((nql)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(171)).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time);
+        bool = ((nru)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(171)).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time);
         switch (paramInt)
         {
         default: 
@@ -137,25 +137,25 @@ public class NowVideoLayout
         return;
         localImageView = (ImageView)localObject;
         break;
-        str1 = this.jdField_a_of_type_Bdpu.ah;
+        str1 = this.jdField_a_of_type_Bcif.ah;
         break label169;
         label435:
-        paramString = (String)localObject + getContext().getText(2131696983).toString();
+        paramString = (String)localObject + getContext().getText(2131697125).toString();
         break label283;
         localImageView.setVisibility(4);
         if (!bool) {
           break label350;
         }
-        paramString = (String)localObject + getContext().getText(2131696984);
+        paramString = (String)localObject + getContext().getText(2131697126);
         break label350;
         localImageView.setVisibility(0);
-        paramString = (String)localObject + getContext().getText(2131696984);
+        paramString = (String)localObject + getContext().getText(2131697126);
         break label350;
         localImageView.setVisibility(0);
-        paramString = (String)localObject + getContext().getText(2131696983).toString();
+        paramString = (String)localObject + getContext().getText(2131697125).toString();
         break label350;
         localImageView.setVisibility(0);
-        paramString = (String)localObject + getContext().getText(2131696985).toString();
+        paramString = (String)localObject + getContext().getText(2131697127).toString();
         break label350;
         label633:
         localTextView1.setVisibility(8);
@@ -167,9 +167,9 @@ public class NowVideoLayout
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, bdpu parambdpu, MessageRecord paramMessageRecord)
+  public void a(QQAppInterface paramQQAppInterface, bcif parambcif, MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_Bdpu = parambdpu;
+    this.jdField_a_of_type_Bcif = parambcif;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
     if (this.jdField_a_of_type_ComTencentBizNowNowVideoView != null)
@@ -177,33 +177,33 @@ public class NowVideoLayout
       if (paramQQAppInterface != null) {
         break label166;
       }
-      parambdpu = URLDrawable.getDrawable(parambdpu.ad, parambdpu.o, parambdpu.p);
-      this.jdField_a_of_type_ComTencentBizNowNowVideoView.setImageDrawable(parambdpu);
+      parambcif = URLDrawable.getDrawable(parambcif.ad, parambcif.o, parambcif.p);
+      this.jdField_a_of_type_ComTencentBizNowNowVideoView.setImageDrawable(parambcif);
       this.jdField_a_of_type_ComTencentBizNowNowVideoView.a(this.jdField_a_of_type_ComTencentBizNowNowVideoView.a);
     }
     for (;;)
     {
       boolean bool = false;
-      parambdpu = null;
+      parambcif = null;
       if (paramQQAppInterface != null)
       {
-        paramQQAppInterface = (nql)paramQQAppInterface.getManager(171);
+        paramQQAppInterface = (nru)paramQQAppInterface.getManager(171);
         bool = paramQQAppInterface.a(paramMessageRecord.frienduin, paramMessageRecord.time);
-        parambdpu = paramQQAppInterface.a(paramMessageRecord.frienduin, paramMessageRecord.time);
+        parambcif = paramQQAppInterface.a(paramMessageRecord.frienduin, paramMessageRecord.time);
       }
       if (!bool) {
         break label199;
       }
-      if ((parambdpu == null) || ((parambdpu.a != 1) && (parambdpu.a != 2))) {
+      if ((parambcif == null) || ((parambcif.a != 1) && (parambcif.a != 2))) {
         break label189;
       }
-      if ((this.jdField_a_of_type_Bdpu == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Bdpu.ag))) {
+      if ((this.jdField_a_of_type_Bcif == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Bcif.ag))) {
         break;
       }
       a(3, paramMessageRecord.senderuin);
       return;
       label166:
-      this.jdField_a_of_type_ComTencentBizNowNowVideoView.a(paramQQAppInterface, parambdpu, paramMessageRecord);
+      this.jdField_a_of_type_ComTencentBizNowNowVideoView.a(paramQQAppInterface, parambcif, paramMessageRecord);
     }
     a(2, paramMessageRecord.senderuin);
     return;
@@ -211,7 +211,7 @@ public class NowVideoLayout
     a(1, paramMessageRecord.senderuin);
     return;
     label199:
-    if ((this.jdField_a_of_type_Bdpu != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bdpu.ag)))
+    if ((this.jdField_a_of_type_Bcif != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bcif.ag)))
     {
       a(3, paramMessageRecord.senderuin);
       return;

@@ -1,15 +1,12 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
 
-class beot
+final class beot
   implements DialogInterface.OnClickListener
 {
-  beot(beos parambeos) {}
-  
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    beoh.a(this.a.a).finish();
+    paramDialogInterface.dismiss();
   }
 }
 

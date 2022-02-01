@@ -1,41 +1,58 @@
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.widget.TipsBar;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aqde
 {
-  public int a;
-  public long a;
-  public agyv a;
-  public MessageForArkApp a;
-  public String a;
-  public WeakReference<TipsBar> a;
-  public long b;
-  public String b;
-  public WeakReference<aiuq> b;
-  public String c;
-  public String d;
+  public aqea a;
+  public boolean a;
   
-  aqde(agyv paramagyv, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt, String paramString3, MessageForArkApp paramMessageForArkApp)
+  public aqde()
   {
-    a(paramagyv, paramString1, paramLong1, paramLong2, paramString2, paramInt, paramString3, paramMessageForArkApp);
+    this.jdField_a_of_type_Aqea = new aqea();
   }
   
-  void a(agyv paramagyv, String paramString1, long paramLong1, long paramLong2, String paramString2, int paramInt, String paramString3, MessageForArkApp paramMessageForArkApp)
+  public static aqde a(String paramString)
   {
-    this.jdField_a_of_type_Agyv = paramagyv;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.c = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
-    this.d = paramString3;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp = paramMessageForArkApp;
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        aqde localaqde = new aqde();
+        paramString = new JSONObject(paramString);
+        localaqde.jdField_a_of_type_Boolean = paramString.optBoolean("showTogetherWatchInTroopSettingCard", false);
+        paramString = paramString.optJSONObject("watchTogether");
+        if (paramString != null)
+        {
+          aqea localaqea = new aqea();
+          localaqea.a(paramString.optInt("version"));
+          localaqea.b(paramString.optInt("jumpType"));
+          localaqea.a(paramString.optString("jumpUrl"));
+          localaqea.b(paramString.optString("jumpExtensionInfo"));
+          localaqde.jdField_a_of_type_Aqea = localaqea;
+        }
+        QLog.d("TogetherBusinessConfProcessor", 2, "confBean = " + localaqde.toString());
+        return localaqde;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("TogetherBusinessConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("TogetherConfigureBean{showTogetherWatchInTroopSettingCard=").append(this.jdField_a_of_type_Boolean).append(", watchTogether=");
+    if (this.jdField_a_of_type_Aqea == null) {}
+    for (String str = "null";; str = this.jdField_a_of_type_Aqea.toString()) {
+      return str + '}';
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqde
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,39 @@
-import android.animation.TypeEvaluator;
-import android.graphics.PointF;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class vrw
-  implements TypeEvaluator<PointF>
+  extends QQUIEventReceiver<vrr, wcf>
 {
-  PointF jdField_a_of_type_AndroidGraphicsPointF;
-  PointF b = new PointF();
-  
-  public vrw(QCirclePolyLikeAniView paramQCirclePolyLikeAniView, PointF paramPointF)
+  public vrw(@NonNull vrr paramvrr)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = paramPointF;
+    super(paramvrr);
   }
   
-  private PointF a(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3, float paramFloat)
+  public void a(@NonNull vrr paramvrr, @NonNull wcf paramwcf)
   {
-    this.b.x = ((1.0F - paramFloat) * (1.0F - paramFloat) * paramPointF1.x + 2.0F * paramFloat * (1.0F - paramFloat) * paramPointF3.x + paramFloat * paramFloat * paramPointF2.x);
-    this.b.y = ((1.0F - paramFloat) * (1.0F - paramFloat) * paramPointF1.y + 2.0F * paramFloat * (1.0F - paramFloat) * paramPointF3.y + paramFloat * paramFloat * paramPointF2.y);
-    return this.b;
+    if (paramwcf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
+    CommentEntry localCommentEntry;
+    do
+    {
+      return;
+      Iterator localIterator;
+      while (!localIterator.hasNext()) {
+        localIterator = paramvrr.a.iterator();
+      }
+      localCommentEntry = (CommentEntry)localIterator.next();
+    } while ((paramwcf.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.authorUnionId) == null) && (paramwcf.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.replierUnionId) == null));
+    paramvrr.f();
+    xvv.e(this.TAG, "UserIconUpdateReceiver FeedCommentLego need to update");
   }
   
-  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
+  public Class acceptEventClass()
   {
-    return a(paramPointF1, paramPointF2, this.jdField_a_of_type_AndroidGraphicsPointF, paramFloat);
+    return wcf.class;
   }
 }
 

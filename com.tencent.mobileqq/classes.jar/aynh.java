@@ -1,16 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
 
-class aynh
-  implements View.OnClickListener
+public class aynh
+  implements DialogInterface.OnClickListener
 {
-  aynh(aymj paramaymj) {}
+  public aynh(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aymj.c(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.e();
+    this.a.g();
+    bcef.b(this.a.app, "P_CliOper", "Vip_SummaryCard", "", "SummaryCard", "CLICK_VIPOPENSERVICE", 0, 0, "", "", "", "");
   }
 }
 

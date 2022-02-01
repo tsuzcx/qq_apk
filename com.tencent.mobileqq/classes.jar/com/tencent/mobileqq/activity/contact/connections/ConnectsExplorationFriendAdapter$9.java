@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.connections;
 
-import ajis;
+import aidb;
 
 public class ConnectsExplorationFriendAdapter$9
   implements Runnable
 {
-  public ConnectsExplorationFriendAdapter$9(ajis paramajis) {}
+  public ConnectsExplorationFriendAdapter$9(aidb paramaidb) {}
   
   public void run()
   {

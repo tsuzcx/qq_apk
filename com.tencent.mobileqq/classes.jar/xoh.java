@@ -1,30 +1,44 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
-import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class xoh
-  extends wpz
+  implements vqp<wex, wey>
 {
-  xoh(xof paramxof) {}
+  xoh(xog paramxog, JobContext paramJobContext, AtomicBoolean paramAtomicBoolean, Integer paramInteger) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
+  public void a(@NonNull wex paramwex, @Nullable wey paramwey, @NonNull ErrorMessage paramErrorMessage)
   {
-    yuk.a("Q.qqstory.player.CommentFloatDialog", "post comment result is %s.", Boolean.valueOf(paramBoolean));
-    if (!xoa.b(this.a.a)) {
-      xoa.a(this.a.a).p();
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      xvv.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId pull segment cancel on net respond");
+      return;
     }
-  }
-  
-  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
-  {
-    wse localwse = (wse)wth.a(17);
-    localwse.a(paramCommentEntry.commentId);
-    paramCommentEntry.commentId = paramRspAddFeedComment.comment_id.get();
-    paramCommentEntry.status = 0;
-    localwse.a(paramCommentEntry);
-    return true;
+    if ((paramErrorMessage.isFail()) || (paramwey == null))
+    {
+      xvv.a("Q.qqstory.home.data.HomeFeedListPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      xog.a(this.jdField_a_of_type_Xog, paramErrorMessage);
+      return;
+    }
+    xog.a(this.jdField_a_of_type_Xog);
+    xog.a(this.jdField_a_of_type_Xog).a(paramwey.jdField_a_of_type_JavaUtilList, paramwey.jdField_a_of_type_JavaLangString, paramwey.jdField_a_of_type_Boolean);
+    ((xnp)vux.a(11)).a(paramwey.jdField_a_of_type_JavaUtilList);
+    boolean bool = xog.a(paramwey, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+    xvv.d("Q.qqstory.home.data.HomeFeedListPageLoader", "today is end:%b, loop count:%d, last date has fail:%b", new Object[] { Boolean.valueOf(paramwey.b), Integer.valueOf(xog.b(this.jdField_a_of_type_Xog)), Boolean.valueOf(bool) });
+    if ((!paramwey.jdField_a_of_type_Boolean) && (xog.b(this.jdField_a_of_type_Xog) < 10) && ((!paramwey.b) || (bool)))
+    {
+      xvv.d("Q.qqstory.home.data.HomeFeedListPageLoader", "feedId list not end, pull more");
+      paramwex.b = xog.a(this.jdField_a_of_type_Xog).a();
+      vqn.a().a(paramwex, this);
+      return;
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false)) {
+      xog.a(this.jdField_a_of_type_Xog).c();
+    }
+    paramwex = xog.a(this.jdField_a_of_type_Xog).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
+    xog.a(this.jdField_a_of_type_Xog, paramwex);
   }
 }
 

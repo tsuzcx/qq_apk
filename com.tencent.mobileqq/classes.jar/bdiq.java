@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfoStub;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.TroopManagerProxy.Proxy;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public final class bdiq
-  implements RecentRoute.TroopManagerProxy.Proxy
+class bdiq
+  extends bdji<EditorState>
 {
-  public TroopInfoStub getTroopInfo(IMCoreAppRuntime paramIMCoreAppRuntime, String paramString)
+  public bdiq(EditorState paramEditorState, List<EditorState> paramList)
   {
-    if ((paramIMCoreAppRuntime instanceof QQAppInterface))
-    {
-      paramIMCoreAppRuntime = (TroopManager)paramIMCoreAppRuntime.getManager(52);
-      if (paramIMCoreAppRuntime != null) {
-        return paramIMCoreAppRuntime.a(paramString, true);
-      }
+    super(paramList, localList);
+  }
+  
+  public void a(EditorState paramEditorState)
+  {
+    bdid.a(this.b).b(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("EditorStateMachineContr", 2, "[onEnter] enter: " + this.a + ", lastState: " + paramEditorState);
     }
-    return null;
   }
 }
 

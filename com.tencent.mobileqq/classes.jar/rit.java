@@ -1,7 +1,20 @@
-import kotlin.Metadata;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicView$Companion;", "", "()V", "REQUEST_CODE_CREATE_TOPIC", "", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rit {}
+public class rit
+  implements View.OnClickListener
+{
+  public rit(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

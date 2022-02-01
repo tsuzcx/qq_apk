@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import adak;
+import abwz;
+import amtj;
 import android.content.Context;
 import android.text.SpannableStringBuilder;
-import anzj;
-import bcrg;
-import begp;
+import bbko;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
@@ -13,6 +12,7 @@ import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.RouterHandler;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.text.QQText;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 
@@ -26,10 +26,10 @@ public class RecentItemRouterDataLine
   
   private QQMessageFacade.Message a(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = paramQQAppInterface.a();
+    paramQQAppInterface = paramQQAppInterface.getMessageFacade();
     if (paramQQAppInterface != null)
     {
-      QQMessageFacade.Message localMessage = paramQQAppInterface.a(this.mUser.uin, this.mUser.getType());
+      QQMessageFacade.Message localMessage = paramQQAppInterface.getLastMessage(this.mUser.uin, this.mUser.getType());
       if (localMessage != null)
       {
         paramQQAppInterface = localMessage;
@@ -92,7 +92,7 @@ public class RecentItemRouterDataLine
       }
       for (;;)
       {
-        paramMsgSummary.strContent = a(null, paramBoolean1, paramBoolean2, new begp(paramMessage, 1, 16), paramMsgSummary);
+        paramMsgSummary.strContent = a(null, paramBoolean1, paramBoolean2, new QQText(paramMessage, 1, 16), paramMsgSummary);
         return;
         paramMessage = localCharSequence;
         if (paramBoolean2) {
@@ -109,7 +109,7 @@ public class RecentItemRouterDataLine
       paramMessage.append("");
       try
       {
-        paramMsgSummary.strContent = a(null, paramBoolean1, paramBoolean2, new begp(paramMessage, 1, 16), paramMsgSummary);
+        paramMsgSummary.strContent = a(null, paramBoolean1, paramBoolean2, new QQText(paramMessage, 1, 16), paramMsgSummary);
         return;
       }
       catch (Exception paramMessage)
@@ -147,13 +147,13 @@ public class RecentItemRouterDataLine
           QLog.d("RecentItemRouterDataLine", 2, "msg info: " + paramMessage.extInt + ":" + paramMessage.msgtype + "msgSummary.strContent:" + paramMsgSummary.strContent);
           return;
           if (paramMessage.msgtype == -2000) {
-            paramMsgSummary.strContent = a(paramContext.getString(2131717566), bool1, bool2, null, paramMsgSummary);
+            paramMsgSummary.strContent = a(paramContext.getString(2131717802), bool1, bool2, null, paramMsgSummary);
           } else if (paramMessage.msgtype == -2005) {
-            paramMsgSummary.strContent = a(paramContext.getString(2131692063), bool1, bool2, null, paramMsgSummary);
+            paramMsgSummary.strContent = a(paramContext.getString(2131692111), bool1, bool2, null, paramMsgSummary);
           } else if (paramMessage.msgtype == -2009) {
-            paramMsgSummary.strContent = a(paramContext.getString(2131719168), bool1, bool2, null, paramMsgSummary);
+            paramMsgSummary.strContent = a(paramContext.getString(2131719454), bool1, bool2, null, paramMsgSummary);
           } else if (paramMessage.msgtype == -2335) {
-            paramMsgSummary.strContent = a(paramContext.getString(2131692063), bool1, bool2, null, paramMsgSummary);
+            paramMsgSummary.strContent = a(paramContext.getString(2131692111), bool1, bool2, null, paramMsgSummary);
           } else if (paramMessage.msgtype == -2015) {
             paramMsgSummary.strContent = "";
           } else if ((paramMessage.msgtype == -2060) || (paramMessage.msgtype == -2062) || (paramMessage.msgtype == -2066) || (paramMessage.msgtype == -4023) || (paramMessage.msgtype == -4024) || (paramMessage.msgtype == -7010) || (paramMessage.msgtype == -7009) || (paramMessage.msgtype == -7011) || (paramMessage.msgtype == -7012) || (paramMessage.msgtype == -7013)) {
@@ -175,27 +175,27 @@ public class RecentItemRouterDataLine
     super.a(paramQQAppInterface, paramContext);
     this.mUnreadNum = 0;
     this.mDisplayTime = 0L;
-    RouterHandler localRouterHandler = (RouterHandler)paramQQAppInterface.a(48);
+    RouterHandler localRouterHandler = (RouterHandler)paramQQAppInterface.getBusinessHandler(48);
     Object localObject2 = a(paramQQAppInterface);
     Object localObject1 = localObject2;
     QQMessageFacade localQQMessageFacade;
     String str;
     if (localObject2 == null)
     {
-      localQQMessageFacade = paramQQAppInterface.a();
-      str = adak.a(this.mUser.uin, 6002);
+      localQQMessageFacade = paramQQAppInterface.getMessageFacade();
+      str = abwz.a(this.mUser.uin, 6002);
       localObject2 = localRouterHandler.a(this.mUser.uin);
       if (localObject2 != null) {
         break label256;
       }
       localObject1 = new QQMessageFacade.Message();
       ((QQMessageFacade.Message)localObject1).extInt = 0;
-      ((QQMessageFacade.Message)localObject1).time = bcrg.a();
+      ((QQMessageFacade.Message)localObject1).time = bbko.a();
       ((QQMessageFacade.Message)localObject1).msgtype = 0;
     }
     for (;;)
     {
-      localQQMessageFacade.a.put(str, localObject1);
+      localQQMessageFacade.cachedMsg.put(str, localObject1);
       this.mTitleName = localRouterHandler.a(Long.parseLong(this.mUser.uin));
       this.mDisplayTime = ((QQMessageFacade.Message)localObject1).time;
       localObject2 = getMsgSummaryTemp();
@@ -205,16 +205,16 @@ public class RecentItemRouterDataLine
       if (!AppSetting.c) {
         break;
       }
-      this.mContentDesc = (anzj.a(2131712048) + this.mUnreadNum + anzj.a(2131712051) + " " + ((MsgSummary)localObject2).strContent + this.mShowTime);
+      this.mContentDesc = (amtj.a(2131712280) + this.mUnreadNum + amtj.a(2131712283) + " " + ((MsgSummary)localObject2).strContent + this.mShowTime);
       return;
       label256:
       if (localQQMessageFacade == null) {
         break;
       }
       localObject1 = localObject2;
-      if (localQQMessageFacade.a.containsKey(str))
+      if (localQQMessageFacade.cachedMsg.containsKey(str))
       {
-        localQQMessageFacade.a.remove(str);
+        localQQMessageFacade.cachedMsg.remove(str);
         localObject1 = localObject2;
       }
     }

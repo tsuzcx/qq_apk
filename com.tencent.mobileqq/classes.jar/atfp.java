@@ -1,46 +1,64 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanageraux.fileviewer.model.DeviceFileModel.1.1;
 
 public class atfp
-  implements View.OnClickListener
+  extends aasp
 {
-  public atfp(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
+  atfp(atfo paramatfo) {}
   
-  public void onClick(View paramView)
+  public void a(Session paramSession, float paramFloat)
   {
-    long l;
-    if (bhnv.d(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity))
-    {
-      l = System.currentTimeMillis();
-      if ((l - this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b < Face2FaceAddFriendActivity.jdField_a_of_type_Long) && (l > this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b)) {
-        if (QLog.isColorLevel()) {
-          QLog.e(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "click too offen,please try again later ");
-        }
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    FileManagerEntity localFileManagerEntity = atfo.a(this.a).a();
+    if (localFileManagerEntity == null) {}
+    while ((atfo.c(this.a) == null) || (paramSession.uSessionID != atfo.a(this.a))) {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b = l;
-      Face2FaceAddFriendActivity.b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendDetailView.d();
-      bdll.b(null, "CliOper", "", "", "0X80050EF", "0X80050EF", 1, 0, "", "", "", "");
-      continue;
-      String str = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getResources().getString(2131691948);
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 0, str, 0).b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getTitleBarHeight());
+    }
+    localFileManagerEntity.fProgress = paramFloat;
+    atfo.d(this.a).a(paramFloat);
+  }
+  
+  public void a(Session paramSession, boolean paramBoolean)
+  {
+    FileManagerEntity localFileManagerEntity = atfo.b(this.a).a();
+    if (localFileManagerEntity == null) {}
+    do
+    {
+      return;
+      if ((atfo.a(this.a) != null) && (paramSession.uSessionID == atfo.b(this.a)) && (paramBoolean))
+      {
+        localFileManagerEntity.strThumbPath = paramSession.strFilePathSrc;
+        atfo.b(this.a).a(String.valueOf(localFileManagerEntity.nSessionId), paramSession.strFilePathSrc);
+      }
+    } while ((atfo.e(this.a) == null) || (paramSession.uSessionID != atfo.a(this.a)));
+    if (paramBoolean)
+    {
+      localFileManagerEntity.fProgress = 1.0F;
+      localFileManagerEntity.setFilePath(paramSession.strFilePathSrc);
+      atfo.f(this.a).f();
+      if (this.a.e() == 2)
+      {
+        new Handler(Looper.getMainLooper()).postDelayed(new DeviceFileModel.1.1(this), 1000L);
+        return;
+      }
+      atfo.i(this.a).f();
+      return;
+    }
+    atfo.j(this.a).g();
+  }
+  
+  public void b(Session paramSession)
+  {
+    if ((atfo.a(this.a) != null) && (paramSession.uSessionID == atfo.a(this.a))) {
+      atfo.b(this.a).d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atfp
  * JD-Core Version:    0.7.0.1
  */

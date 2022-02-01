@@ -1,20 +1,13 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.tavcut.TAVCut.Callback;
 
 class bmdc
-  extends BroadcastReceiver
+  implements TAVCut.Callback
 {
   bmdc(bmdb parambmdb) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onDone(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginRedTouchManager", 2, "Received red touch push");
-    }
-    bmdb.a(this.a);
-    bmdb.b(this.a);
+    bmbx.b("AEEditorProcessManager", "TAVCut init ret code = " + paramInt);
   }
 }
 

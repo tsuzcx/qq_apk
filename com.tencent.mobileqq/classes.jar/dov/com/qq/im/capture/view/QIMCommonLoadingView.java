@@ -14,12 +14,12 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import bpvy;
-import bpvz;
+import bmzd;
+import bmze;
 
 public class QIMCommonLoadingView
   extends View
-  implements bpvz
+  implements bmze
 {
   private static float jdField_d_of_type_Float;
   protected float a;
@@ -28,7 +28,7 @@ public class QIMCommonLoadingView
   protected Paint a;
   protected Path a;
   protected RectF a;
-  bpvy jdField_a_of_type_Bpvy;
+  bmzd jdField_a_of_type_Bmzd;
   boolean jdField_a_of_type_Boolean = false;
   protected float b;
   protected int b;
@@ -87,23 +87,23 @@ public class QIMCommonLoadingView
   
   public void a()
   {
-    bpvy localbpvy = this.jdField_a_of_type_Bpvy;
-    if (localbpvy != null) {
-      setProgress(Math.round(localbpvy.a() * (float)this.jdField_a_of_type_Long));
+    bmzd localbmzd = this.jdField_a_of_type_Bmzd;
+    if (localbmzd != null) {
+      setProgress(Math.round(localbmzd.a() * (float)this.jdField_a_of_type_Long));
     }
   }
   
-  public void a(bpvy parambpvy)
+  public void a(bmzd parambmzd)
   {
-    bpvy localbpvy = this.jdField_a_of_type_Bpvy;
-    if (localbpvy != null) {
-      localbpvy.a(this);
+    bmzd localbmzd = this.jdField_a_of_type_Bmzd;
+    if (localbmzd != null) {
+      localbmzd.a(this);
     }
-    this.jdField_a_of_type_Bpvy = parambpvy;
-    if (parambpvy != null)
+    this.jdField_a_of_type_Bmzd = parambmzd;
+    if (parambmzd != null)
     {
-      parambpvy.b(this);
-      setProgress(Math.round(parambpvy.a() * (float)this.jdField_a_of_type_Long));
+      parambmzd.b(this);
+      setProgress(Math.round(parambmzd.a() * (float)this.jdField_a_of_type_Long));
     }
   }
   
@@ -151,10 +151,10 @@ public class QIMCommonLoadingView
         }
         while (this.jdField_c_of_type_Boolean)
         {
-          if ((this.jdField_b_of_type_Long == this.jdField_a_of_type_Long) || (this.jdField_a_of_type_Bpvy == null)) {
+          if ((this.jdField_b_of_type_Long == this.jdField_a_of_type_Long) || (this.jdField_a_of_type_Bmzd == null)) {
             break label262;
           }
-          setProgress(Math.round(this.jdField_a_of_type_Bpvy.a() * (float)this.jdField_a_of_type_Long));
+          setProgress(Math.round(this.jdField_a_of_type_Bmzd.a() * (float)this.jdField_a_of_type_Long));
           return;
           paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, 270.0F, f, false, this.jdField_b_of_type_AndroidGraphicsPaint);
         }
@@ -207,7 +207,7 @@ public class QIMCommonLoadingView
     {
       invalidate();
       return;
-      if (this.jdField_a_of_type_Bpvy != null) {
+      if (this.jdField_a_of_type_Bmzd != null) {
         this.jdField_c_of_type_Boolean = true;
       }
     }

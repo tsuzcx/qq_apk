@@ -1,44 +1,47 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x986.oidb_0x986.RspBody;
+import com.tencent.TMG.utils.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bazr
-  extends bbak<ReceiptMessageDetailFragment>
+  extends bazc
 {
-  public bazr(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public static final String a = bazr.class.getSimpleName();
+  public String b;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  
+  public bazr(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    super(paramReceiptMessageDetailFragment);
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public bazr(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback onRes: " + paramInt);
-    }
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public void a(String paramString)
+  {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback succ");
-      }
-      paramBundle = new oidb_0x986.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramInt = paramBundle.uint32_read_uin_num.get();
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, true);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, 2147483647, true);
+      paramString = new JSONObject(paramString);
+      this.b = paramString.optString("leftIcon");
+      this.j = paramString.optString("firstTitle");
+      this.k = paramString.optString("secondTitle");
+      this.l = paramString.optString("moreText");
+      this.m = paramString.optString("jumpUrl");
       return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    catch (JSONException paramString)
     {
-      QLog.d("ReceiptMessageDetailFragment", 1, "fetch read member fail on invalid data");
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
+      while (!QLog.isColorLevel()) {}
+      QLog.d(a, 0, paramString.toString());
     }
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
-    return;
   }
 }
 

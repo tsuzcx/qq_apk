@@ -1,26 +1,51 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
 
 public class uxa
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public VideoFeedsAlphaMaskView a;
-  ZImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView;
-  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
-  TextView b;
-  TextView c;
-  TextView d;
-  TextView e;
-  TextView f;
+  public static Intent a(String paramString1, String paramString2)
+  {
+    paramString1 = new Intent("android.intent.action.VIEW", Uri.parse(paramString1));
+    if (!TextUtils.isEmpty(paramString2)) {
+      paramString1.setPackage(paramString2);
+    }
+    paramString1.setFlags(536870912);
+    paramString1.putExtra("big_brother_source_key", "biz_src_jc_gzh_weishi");
+    return paramString1;
+  }
+  
+  public static void a(Activity paramActivity)
+  {
+    String str1 = umu.a().b();
+    String str2 = umu.a().a();
+    uya.d("AppMarketUtils", "goAppMarket :\npackageName = " + str2 + "\nurl = " + str1);
+    try
+    {
+      paramActivity.startActivity(a(str1, str2));
+      return;
+    }
+    catch (Exception paramActivity)
+    {
+      uya.d("AppMarketUtils", "goAppMarket error messaage = " + paramActivity.getMessage());
+    }
+  }
+  
+  public static boolean a(Activity paramActivity)
+  {
+    if (paramActivity == null) {
+      uya.d("AppMarketUtils", "tryGoAppMarket:activity = null");
+    }
+    do
+    {
+      return false;
+      paramActivity = umu.a().b();
+      String str = umu.a().a();
+      uya.c("AppMarketUtils", "goAppMarket:\nappStorePackageName = " + str + "\nappStoreVendorId =" + umu.a().b() + "\nappStoreScheme =" + paramActivity);
+    } while ((TextUtils.isEmpty(paramActivity)) || (paramActivity.startsWith("http")));
+    return true;
+  }
 }
 
 

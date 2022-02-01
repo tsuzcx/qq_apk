@@ -6,7 +6,7 @@ public class TimeRangeUtil
 {
   public static boolean isInTimeRange(CMTimeRange paramCMTimeRange, long paramLong)
   {
-    return (isValidTimeRange(paramCMTimeRange)) && (paramLong >= 0L) && (paramLong * 1000L >= paramCMTimeRange.getStartUs()) && (paramLong * 1000L < paramCMTimeRange.getEndUs());
+    return (isValidTimeRange(paramCMTimeRange)) && (paramLong >= 0L) && (paramLong * 1000L >= paramCMTimeRange.getStartUs()) && (paramLong * 1000L <= paramCMTimeRange.getEndUs());
   }
   
   public static boolean isValidTimeRange(CMTimeRange paramCMTimeRange)

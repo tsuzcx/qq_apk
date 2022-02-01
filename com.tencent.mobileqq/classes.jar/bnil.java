@@ -1,11 +1,16 @@
-import cooperation.qzone.statistic.access.concept.Collector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
 final class bnil
-  extends bnik
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public boolean a(Collector paramCollector)
+  bnil(bnin parambnin) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return true;
+    if (this.a != null) {
+      this.a.a(paramValueAnimator);
+    }
   }
 }
 

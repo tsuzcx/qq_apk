@@ -1,41 +1,15 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
+import android.app.Activity;
+import android.content.Intent;
 
 public class xan
-  extends wrj
+  extends wrx
 {
-  qqstory_service.RspIconPostfix a;
+  public xan(xam paramxam) {}
   
-  public xan() {}
-  
-  public xan(qqstory_service.RspIconPostfix paramRspIconPostfix)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    super(paramRspIconPostfix.result);
-    this.a = paramRspIconPostfix;
-  }
-  
-  public void a()
-  {
-    if ((this.a.icon_info.has()) && (this.a.icon_info.size() > 0)) {
-      Bosses.get().postJob(new xao(this, "GetUserIconHandler"));
-    }
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse onNetError errorCode " + paramInt);
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse errorCode:" + paramInt + " errorMsg:" + paramString);
+    if ((paramInt1 == 20000) && (paramInt2 == -1)) {
+      this.a.b().finish();
     }
   }
 }

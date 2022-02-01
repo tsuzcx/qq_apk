@@ -1,24 +1,64 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
-import com.tencent.image.URLImageView;
-import java.lang.ref.SoftReference;
+import com.tencent.mobileqq.soload.LoadOptions;
 
-class bbzd
-  implements GifDrawable.OnGIFPlayOnceListener
+public class bbzd
 {
-  bbzd(bbzc parambbzc, AbstractGifImage paramAbstractGifImage) {}
+  private LoadOptions a = new LoadOptions();
   
-  public void onPlayOnce()
+  bbzd a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentImageAbstractGifImage.setStrongGIFPlayOnceListener(null);
-    if (this.jdField_a_of_type_Bbzc.jdField_a_of_type_Bbze != null) {
-      this.jdField_a_of_type_Bbzc.jdField_a_of_type_Bbze.b();
+    if (paramBoolean)
+    {
+      localLoadOptions = this.a;
+      localLoadOptions.flag |= 0x1;
+      return this;
     }
-    if (this.jdField_a_of_type_Bbzc.jdField_a_of_type_JavaLangRefSoftReference.get() == null) {
-      return;
+    LoadOptions localLoadOptions = this.a;
+    localLoadOptions.flag &= 0xFFFFFFFE;
+    return this;
+  }
+  
+  public LoadOptions a()
+  {
+    return this.a;
+  }
+  
+  bbzd b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      localLoadOptions = this.a;
+      localLoadOptions.flag |= 0x8;
+      return this;
     }
-    AbstractGifImage.pauseAll();
-    ((URLImageView)this.jdField_a_of_type_Bbzc.jdField_a_of_type_JavaLangRefSoftReference.get()).setVisibility(8);
+    LoadOptions localLoadOptions = this.a;
+    localLoadOptions.flag &= 0xFFFFFFF7;
+    return this;
+  }
+  
+  bbzd c(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      localLoadOptions = this.a;
+      localLoadOptions.flag |= 0x10;
+      return this;
+    }
+    LoadOptions localLoadOptions = this.a;
+    localLoadOptions.flag &= 0xFFFFFFEF;
+    return this;
+  }
+  
+  bbzd d(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      localLoadOptions = this.a;
+      localLoadOptions.flag |= 0x20;
+      return this;
+    }
+    LoadOptions localLoadOptions = this.a;
+    localLoadOptions.flag &= 0xFFFFFFDF;
+    return this;
   }
 }
 

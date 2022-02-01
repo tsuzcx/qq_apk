@@ -1,36 +1,13 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class agui
-  implements agvc
+  implements agut
 {
-  private BaseChatPie a;
-  
-  public agui(BaseChatPie paramBaseChatPie)
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  private void a()
-  {
-    if ((this.a != null) && (this.a.a != null)) {
-      ((axqb)this.a.a.getManager(324)).onDestroy();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 13 };
+    paramagap.c(paramagcc.b);
   }
 }
 

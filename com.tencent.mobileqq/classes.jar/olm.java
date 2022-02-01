@@ -1,43 +1,19 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.Switch;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class olm
-  implements CompoundButton.OnCheckedChangeListener
+  implements nnv
 {
-  public olm(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public olm(ReadInJoyFeedsActivity.1 param1) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void loaded(String paramString, int paramInt)
   {
-    ReadInJoySettingActivity localReadInJoySettingActivity = this.a;
-    boolean bool;
-    if (!paramBoolean)
-    {
-      bool = true;
-      ReadInJoySettingActivity.a(localReadInJoySettingActivity, bool);
-      if ((!ReadInJoySettingActivity.a(this.a).isPressed()) || (this.a.c)) {
-        break label87;
-      }
-      if (paramBoolean) {
-        break label74;
-      }
-      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bool = false;
-      break;
-      label74:
-      ReadInJoySettingActivity.a(this.a).show();
-      continue;
-      label87:
-      this.a.c = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
     }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

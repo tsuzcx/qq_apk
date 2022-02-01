@@ -1,18 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qqfav.widget.LocationDetailActivity;
-
-public class bmml
-  implements View.OnClickListener
+public abstract interface bmml
 {
-  public bmml(LocationDetailActivity paramLocationDetailActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.b(false);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
 }
 
 

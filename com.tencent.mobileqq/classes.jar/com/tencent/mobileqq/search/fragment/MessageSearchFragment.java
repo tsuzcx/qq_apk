@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.search.fragment;
 
-import bcbi;
-import bccu;
-import bcmc;
-import bcme;
+import baum;
+import bavw;
+import bbfe;
+import bbfg;
 
 public class MessageSearchFragment
   extends BaseSearchFragment
@@ -13,19 +13,19 @@ public class MessageSearchFragment
     return 40;
   }
   
-  protected bcbi a()
+  protected baum a()
   {
-    return new bccu(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aoof);
+    return new bavw(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder);
   }
   
-  protected bcmc a()
+  protected bbfe a()
   {
-    return new bcme(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new bbfg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
   protected String a()
   {
-    return getString(2131717751);
+    return getString(2131717989);
   }
   
   public void a(String paramString)
@@ -36,18 +36,18 @@ public class MessageSearchFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Bcmc.c();
+    this.jdField_a_of_type_Bbfe.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Bcmc.d();
+    this.jdField_a_of_type_Bbfe.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.MessageSearchFragment
  * JD-Core Version:    0.7.0.1
  */

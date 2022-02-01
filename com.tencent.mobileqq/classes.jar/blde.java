@@ -1,17 +1,96 @@
-import com.tencent.mqp.app.sec.d;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import NS_MOBILE_COMM_CONF.MobileCommConf;
+import NS_MOBILE_COMM_CONF.NewMobileGlobalConf;
+import NS_MOBILE_COMM_CONF.NewMobileUserConf;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class blde
-  implements bldk
 {
-  public blde(QSecFramework paramQSecFramework) {}
+  private static blde jdField_a_of_type_Blde;
+  private long jdField_a_of_type_Long = -1L;
   
-  public void a(int paramInt1, int paramInt2)
+  public static blde a()
   {
-    if ((paramInt1 == 1) && (paramInt2 == 1))
+    if (jdField_a_of_type_Blde == null) {}
+    try
     {
-      d.e(1, d.x(), null);
-      QSecFramework.a(this.a).b(this);
+      if (jdField_a_of_type_Blde == null) {
+        jdField_a_of_type_Blde = new blde();
+      }
+      return jdField_a_of_type_Blde;
+    }
+    finally {}
+  }
+  
+  public static void a(long paramLong)
+  {
+    if (paramLong > 0L)
+    {
+      SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_report", 0).edit();
+      localEditor.putLong("lastReportTime", paramLong);
+      localEditor.apply();
+    }
+  }
+  
+  public void a(MobileCommConf paramMobileCommConf)
+  {
+    if ((paramMobileCommConf == null) || (paramMobileCommConf.new_mobile_global_conf == null) || (paramMobileCommConf.new_mobile_user_conf == null) || (paramMobileCommConf.vecAppList == null) || (paramMobileCommConf.maxScanNum <= 0)) {}
+    long l;
+    ArrayList localArrayList;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          l = paramMobileCommConf.new_mobile_global_conf.version;
+        } while (paramMobileCommConf.new_mobile_user_conf.version < l);
+        if (QLog.isColorLevel()) {
+          QLog.d("YYBInstallPackageManager", 1, "invokeReport");
+        }
+        l = System.currentTimeMillis() / 1000L;
+      } while (((this.jdField_a_of_type_Long >= paramMobileCommConf.new_mobile_user_conf.uBeginTime) && (this.jdField_a_of_type_Long <= paramMobileCommConf.new_mobile_user_conf.uEndTime)) || (l < paramMobileCommConf.new_mobile_user_conf.uBeginTime) || (l > paramMobileCommConf.new_mobile_user_conf.uEndTime));
+      localArrayList = new ArrayList();
+      Iterator localIterator = paramMobileCommConf.vecAppList.iterator();
+      do
+      {
+        String str;
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          str = (String)localIterator.next();
+        } while (bjnn.a(BaseApplicationImpl.getApplication(), str));
+        localArrayList.add(str);
+      } while (localArrayList.size() < paramMobileCommConf.maxScanNum);
+    } while (localArrayList.size() <= 0);
+    this.jdField_a_of_type_Long = l;
+    a(this.jdField_a_of_type_Long);
+    paramMobileCommConf = new NewIntent(BaseApplicationImpl.getApplication(), bldg.class);
+    try
+    {
+      l = Long.parseLong(((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin());
+      paramMobileCommConf.putExtra("selfuin", l);
+      paramMobileCommConf.putStringArrayListExtra("uninstall_app_list", localArrayList);
+      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMobileCommConf);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("YYBInstallPackageManager", 1, "get uin error " + localException);
+        l = 0L;
+      }
     }
   }
 }

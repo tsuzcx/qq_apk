@@ -1,23 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import mqq.os.MqqHandler;
 
-class aijk
-  implements DialogInterface.OnClickListener
+public class aijk
+  extends MqqHandler
 {
-  aijk(aijj paramaijj, String paramString) {}
+  public aijk(NotificationView paramNotificationView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    ((anws)this.jdField_a_of_type_Aijj.a.a.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Aijj.a.a.a().a();
-    RecentUser localRecentUser = (RecentUser)paramDialogInterface.findRecentUser(this.jdField_a_of_type_JavaLangString, 3000);
-    if (localRecentUser != null) {
-      paramDialogInterface.delRecentUser(localRecentUser);
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_Aijg == null);
+      this.a.i();
+      this.a.jdField_a_of_type_Aijg.a = bcsz.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.a.jdField_a_of_type_Aijg.notifyDataSetChanged();
+      return;
     }
-    this.jdField_a_of_type_Aijj.a.I();
+    this.a.j();
   }
 }
 

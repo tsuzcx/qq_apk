@@ -1,73 +1,41 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
 
-class atwu
-  extends atpa
+public final class atwu
+  implements Parcelable.Creator<GameCenterSessionInfo>
 {
-  atwu(atws paramatws) {}
-  
-  protected void a(long paramLong)
+  public GameCenterSessionInfo a(Parcel paramParcel)
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileProgressDirectDone sessionid error.return");
-    }
-    atwy localatwy;
-    do
-    {
-      return;
-      localatwy = this.a.a(paramLong);
-      if (localatwy == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileProgressDirectDone");
-        return;
-      }
-      localatwy.h();
-    } while (!localatwy.c());
-    this.a.c(paramLong);
+    GameCenterSessionInfo localGameCenterSessionInfo = new GameCenterSessionInfo();
+    localGameCenterSessionInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localGameCenterSessionInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localGameCenterSessionInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localGameCenterSessionInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localGameCenterSessionInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localGameCenterSessionInfo.e = paramParcel.readString();
+    localGameCenterSessionInfo.f = paramParcel.readString();
+    localGameCenterSessionInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localGameCenterSessionInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localGameCenterSessionInfo.g = paramParcel.readString();
+    localGameCenterSessionInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localGameCenterSessionInfo.jdField_c_of_type_Int = paramParcel.readInt();
+    localGameCenterSessionInfo.jdField_d_of_type_Int = paramParcel.readInt();
+    localGameCenterSessionInfo.h = paramParcel.readString();
+    localGameCenterSessionInfo.i = paramParcel.readString();
+    localGameCenterSessionInfo.j = paramParcel.readString();
+    localGameCenterSessionInfo.k = paramParcel.readString();
+    return localGameCenterSessionInfo;
   }
   
-  protected void b(long paramLong)
+  public GameCenterSessionInfo[] a(int paramInt)
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileRecvButSenderReplayTimeOut sessionid error.return");
-    }
-    atwy localatwy;
-    do
-    {
-      return;
-      localatwy = this.a.a(paramLong);
-      if (localatwy == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileRecvButSenderReplayTimeOut");
-        return;
-      }
-      localatwy.j();
-    } while (!localatwy.c());
-    this.a.c(paramLong);
-  }
-  
-  protected void c(long paramLong)
-  {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileQueryUpProgressTimeOut sessionid error.return");
-    }
-    atwy localatwy;
-    do
-    {
-      return;
-      localatwy = this.a.a(paramLong);
-      if (localatwy == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileQueryUpProgressTimeOut");
-        return;
-      }
-      localatwy.l();
-    } while (!localatwy.c());
-    this.a.c(paramLong);
+    return new GameCenterSessionInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atwu
  * JD-Core Version:    0.7.0.1
  */

@@ -20,6 +20,7 @@ public class AEEditorEffectGroupListBean$AEEditorEffectItem
   private String resourceMD5 = "";
   private String resourceURL = "";
   private String thumbURL = "";
+  private int uploadMaxSize;
   private int videoShowLevel;
   
   public int getDisableForImage()
@@ -85,6 +86,11 @@ public class AEEditorEffectGroupListBean$AEEditorEffectItem
   public String getThumbURL()
   {
     return this.thumbURL;
+  }
+  
+  public int getUploadMaxSize()
+  {
+    return this.uploadMaxSize;
   }
   
   public int getVideoShowLevel()

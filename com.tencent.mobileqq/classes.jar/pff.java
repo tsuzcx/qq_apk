@@ -1,6 +1,17 @@
-public abstract interface pff
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+
+class pff
+  extends pse
 {
-  public abstract void a(pfh parampfh);
+  pff(pey parampey, String paramString, ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt)
+  {
+    super(paramString);
+  }
+  
+  public void a(prx paramprx)
+  {
+    paramprx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView, this.jdField_a_of_type_Int);
+  }
 }
 
 

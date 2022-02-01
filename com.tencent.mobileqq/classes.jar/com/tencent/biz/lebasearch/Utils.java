@@ -1,7 +1,6 @@
 package com.tencent.biz.lebasearch;
 
-import aasb;
-import alpb;
+import akms;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -11,13 +10,10 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import antf;
-import anui;
-import bdll;
-import bhlq;
-import bhmg;
-import bhpc;
-import bmim;
+import bcef;
+import bfur;
+import bfvh;
+import bkmt;
 import com.dataline.activities.LiteActivity;
 import com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity;
 import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
@@ -31,24 +27,28 @@ import com.tencent.mobileqq.activity.TroopAssistantActivity;
 import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
 import com.tencent.mobileqq.activity.qwallet.QrcodeHbGuiderActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 import com.tencent.mobileqq.mini.report.MiniAppBusiReport;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.open.applist.QZoneAppListActivity;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import cooperation.comic.VipComicJumpActivity;
 import cooperation.qqreader.QRBridgeActivity;
 import java.util.HashMap;
-import lju;
-import nqg;
-import nqh;
-import nqi;
-import oek;
+import ljo;
+import nrp;
+import nrq;
+import nrr;
+import ofx;
 import org.json.JSONObject;
-import uqt;
+import uyo;
+import zon;
 
 public class Utils
 {
@@ -105,17 +105,17 @@ public class Utils
   public static final int TYPE_SET_CLOSE = 2;
   public static final int TYPE_SET_OPEN = 1;
   
-  public static bhpc createPluginSetDialogForMain(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, long paramLong, String paramString1, String paramString2, Handler paramHandler)
+  public static QQCustomDialog createPluginSetDialogForMain(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, long paramLong, String paramString1, String paramString2, Handler paramHandler)
   {
-    nqh localnqh = new nqh(paramInt, paramQQAppInterface, paramLong, paramHandler);
-    paramHandler = new nqi(paramHandler);
+    nrq localnrq = new nrq(paramInt, paramQQAppInterface, paramLong, paramHandler);
+    paramHandler = new nrr(paramHandler);
     int i;
     if (!TextUtils.isEmpty(paramString2))
     {
       if (paramInt != 1) {
         break label116;
       }
-      i = 2131695376;
+      i = 2131695515;
       label42:
       if (paramInt != 1) {
         break label123;
@@ -123,50 +123,50 @@ public class Utils
     }
     label116:
     label123:
-    for (paramInt = 2131695381;; paramInt = 2131695379)
+    for (paramInt = 2131695520;; paramInt = 2131695518)
     {
-      return bhlq.a((BaseActivity)paramContext, paramString2, i, paramInt, localnqh, paramHandler);
+      return bfur.a((BaseActivity)paramContext, paramString2, i, paramInt, localnrq, paramHandler);
       if (paramInt == 1) {}
-      for (paramQQAppInterface = paramContext.getResources().getString(2131695384, new Object[] { paramString1 });; paramQQAppInterface = paramContext.getString(2131695380, new Object[] { paramString1 }))
+      for (paramQQAppInterface = paramContext.getResources().getString(2131695523, new Object[] { paramString1 });; paramQQAppInterface = paramContext.getString(2131695519, new Object[] { paramString1 }))
       {
         paramString2 = paramQQAppInterface;
         break;
       }
-      i = 2131695378;
+      i = 2131695517;
       break label42;
     }
   }
   
-  public static bhpc createPluginSetDialogForWeb(Context paramContext, aasb paramaasb, anui paramanui, int paramInt, long paramLong, String paramString1, String paramString2)
+  public static QQCustomDialog createPluginSetDialogForWeb(Context paramContext, zon paramzon, BusinessObserver paramBusinessObserver, int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    bhpc localbhpc = bhlq.a(paramContext, 230);
-    paramanui = new nqg(paramInt, paramanui, paramContext, paramaasb, paramLong);
-    paramaasb = new TextView(paramContext);
-    paramaasb.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    paramaasb.setTextSize(14.0F);
-    paramaasb.setTextColor(paramContext.getResources().getColor(2131165483));
-    paramaasb.setGravity(1);
-    paramaasb.setPadding((int)bhmg.a(paramContext, 15.0F), (int)bhmg.a(paramContext, 30.0F), (int)bhmg.a(paramContext, 15.0F), (int)bhmg.a(paramContext, 15.0F));
+    QQCustomDialog localQQCustomDialog = bfur.a(paramContext, 230);
+    paramBusinessObserver = new nrp(paramInt, paramBusinessObserver, paramContext, paramzon, paramLong);
+    paramzon = new TextView(paramContext);
+    paramzon.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+    paramzon.setTextSize(14.0F);
+    paramzon.setTextColor(paramContext.getResources().getColor(2131165491));
+    paramzon.setGravity(1);
+    paramzon.setPadding((int)bfvh.a(paramContext, 15.0F), (int)bfvh.a(paramContext, 30.0F), (int)bfvh.a(paramContext, 15.0F), (int)bfvh.a(paramContext, 15.0F));
     if (paramInt == 1)
     {
-      localbhpc.setPositiveButton(2131695376, paramanui);
-      localbhpc.setNegativeButton(2131695381, paramanui);
+      localQQCustomDialog.setPositiveButton(2131695515, paramBusinessObserver);
+      localQQCustomDialog.setNegativeButton(2131695520, paramBusinessObserver);
       if (paramString2 != null) {}
       for (;;)
       {
-        paramaasb.setText(paramString2);
-        localbhpc.addView(paramaasb);
-        return localbhpc;
-        paramString2 = paramContext.getResources().getString(2131695384, new Object[] { paramString1 });
+        paramzon.setText(paramString2);
+        localQQCustomDialog.addView(paramzon);
+        return localQQCustomDialog;
+        paramString2 = paramContext.getResources().getString(2131695523, new Object[] { paramString1 });
       }
     }
     if (paramString2 != null) {}
     for (;;)
     {
-      localbhpc.setNegativeButton(2131695379, paramanui);
-      localbhpc.setPositiveButton(2131695378, paramanui);
+      localQQCustomDialog.setNegativeButton(2131695518, paramBusinessObserver);
+      localQQCustomDialog.setPositiveButton(2131695517, paramBusinessObserver);
       break;
-      paramString2 = paramContext.getString(2131695380, new Object[] { paramString1 });
+      paramString2 = paramContext.getString(2131695519, new Object[] { paramString1 });
     }
   }
   
@@ -182,14 +182,14 @@ public class Utils
     if ((paramContext != null) && ((paramContext instanceof QQAppInterface))) {}
     for (paramContext = (QQAppInterface)paramContext;; paramContext = null)
     {
-      bdll.b(paramContext, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.hongbao.click", 0, 0, "", "", "", "");
+      bcef.b(paramContext, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.hongbao.click", 0, 0, "", "", "", "");
       return true;
     }
   }
   
   public static boolean gotoFaceToFaceSend(Context paramContext, HashMap<String, Object> paramHashMap)
   {
-    bmim.a(paramContext, 14, null);
+    bkmt.a(paramContext, 14, null);
     return true;
   }
   
@@ -278,7 +278,7 @@ public class Utils
           continue;
           paramHashMap.setClass(paramContext, NearbyActivity.class);
           continue;
-          uqt.a(paramContext, null, 0, null, null, 6);
+          uyo.a(paramContext, null, 0, null, null, 6);
           return true;
           paramHashMap = new Intent(paramContext, LebaSearchTransparentJumpActivity.class);
           if (i == 27) {
@@ -305,9 +305,9 @@ public class Utils
             }
           }
           paramHashMap.setClass(paramContext, LiteActivity.class);
-          paramHashMap.putExtra("targetUin", antf.z);
-          alpb.a = true;
-          alpb.a(paramHashMap);
+          paramHashMap.putExtra("targetUin", AppConstants.DATALINE_PC_UIN);
+          akms.a = true;
+          akms.a(paramHashMap);
           continue;
           paramHashMap.setClass(paramContext, TroopAssistantActivity.class);
           continue;
@@ -317,9 +317,9 @@ public class Utils
           localObject = BaseApplicationImpl.getApplication().getRuntime();
           if ((localObject != null) && ((localObject instanceof QQAppInterface)))
           {
-            localObject = (oek)((QQAppInterface)localObject).getManager(88);
+            localObject = (ofx)((QQAppInterface)localObject).getManager(88);
             if (localObject != null) {
-              ((oek)localObject).a(paramHashMap, paramContext, -1);
+              ((ofx)localObject).a(paramHashMap, paramContext, -1);
             }
           }
           localObject = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappecshopurl", "");
@@ -366,15 +366,15 @@ public class Utils
   
   public static boolean gotoScan(Context paramContext, HashMap<String, Object> paramHashMap)
   {
-    if (lju.b(BaseApplicationImpl.getContext()))
+    if (ljo.b(BaseApplicationImpl.getContext()))
     {
       QLog.e("lebasearch.Utils", 2, "gotoScan method. QavCameraUsage.checkAVCameraUsed false.");
       return false;
     }
     paramHashMap = new Intent(paramContext, ScannerActivity.class);
     paramHashMap.putExtra("from", "Conversation");
-    paramHashMap.putExtra("leftViewText", paramContext.getString(2131690559));
-    paramHashMap.putExtra("selfSet_leftViewText", paramContext.getString(2131690559));
+    paramHashMap.putExtra("leftViewText", paramContext.getString(2131690599));
+    paramHashMap.putExtra("selfSet_leftViewText", paramContext.getString(2131690599));
     paramHashMap.setFlags(67108864);
     paramHashMap.setFlags(276824064);
     paramContext.startActivity(paramHashMap);
@@ -453,13 +453,13 @@ public class Utils
     }
   }
   
-  public static void sendPluginSetMessage(Context paramContext, aasb paramaasb, anui paramanui, long paramLong, boolean paramBoolean)
+  public static void sendPluginSetMessage(Context paramContext, zon paramzon, BusinessObserver paramBusinessObserver, long paramLong, boolean paramBoolean)
   {
     paramContext = new Handler(paramContext.getMainLooper());
     Bundle localBundle = new Bundle();
     localBundle.putLong("uiResId", paramLong);
     localBundle.putBoolean("isChecked", paramBoolean);
-    paramContext.post(new Utils.2(paramaasb, localBundle, paramanui));
+    paramContext.post(new Utils.2(paramzon, localBundle, paramBusinessObserver));
   }
 }
 

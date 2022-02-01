@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bhgr;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.widget.AutoBgFrameLayout;
 import com.tencent.mobileqq.widget.RoundImageView;
 
@@ -45,14 +45,14 @@ public class SmallColorNoteItem
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (paramBoolean) {}
-    for (this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558914, paramViewGroup, false);; this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558913, paramViewGroup, false))
+    for (this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558922, paramViewGroup, false);; this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558921, paramViewGroup, false))
     {
       paramViewGroup = this.jdField_a_of_type_AndroidViewView;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131365080));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgFrameLayout = ((AutoBgFrameLayout)paramViewGroup.findViewById(2131371922));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramViewGroup.findViewById(2131371923));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131371933));
-      this.b = ((TextView)paramViewGroup.findViewById(2131371931));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131365107));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgFrameLayout = ((AutoBgFrameLayout)paramViewGroup.findViewById(2131371888));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramViewGroup.findViewById(2131371889));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131371899));
+      this.b = ((TextView)paramViewGroup.findViewById(2131371897));
       return;
     }
   }
@@ -75,7 +75,7 @@ public class SmallColorNoteItem
     this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     ((ViewGroup.LayoutParams)localObject).height = paramInt1;
     float f = 1.0F * paramInt1 / paramInt2;
-    paramInt1 = (int)(bhgr.a(getContext(), 6.0F) * f);
+    paramInt1 = (int)(DisplayUtil.dip2px(getContext(), 6.0F) * f);
     localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
     int i;
     if (this.jdField_a_of_type_Boolean)
@@ -87,14 +87,14 @@ public class SmallColorNoteItem
       i = paramInt1;
       label73:
       ((RelativeLayout)localObject).setPadding(paramInt2, paramInt1, i, paramInt1);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius((int)(bhgr.a(getContext(), 3.0F) * f), false);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius((int)(DisplayUtil.dip2px(getContext(), 3.0F) * f), false);
       localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).height = ((int)(bhgr.a(getContext(), 20.0F) * f));
-      ((RelativeLayout.LayoutParams)localObject).width = ((int)(bhgr.a(getContext(), 20.0F) * f));
+      ((RelativeLayout.LayoutParams)localObject).height = ((int)(DisplayUtil.dip2px(getContext(), 20.0F) * f));
+      ((RelativeLayout.LayoutParams)localObject).width = ((int)(DisplayUtil.dip2px(getContext(), 20.0F) * f));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize((int)(8.0F * f));
       this.b.setTextSize((int)(f * 6.0F));
       localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-      paramInt1 = Math.max(bhgr.a(getContext(), 2.0F), (int)(bhgr.a(getContext(), 4.0F) * f));
+      paramInt1 = Math.max(DisplayUtil.dip2px(getContext(), 2.0F), (int)(DisplayUtil.dip2px(getContext(), 4.0F) * f));
       if (!this.jdField_a_of_type_Boolean) {
         break label297;
       }

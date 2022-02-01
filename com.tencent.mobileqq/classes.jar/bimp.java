@@ -1,17 +1,16 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-class bimp
-  implements bimu
+public class bimp
+  implements DialogInterface.OnClickListener
 {
-  bimp(bimo parambimo) {}
+  public bimp(QidianProfileCardActivity paramQidianProfileCardActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.c) {
-      return;
-    }
-    this.a.b = false;
-    bimo.a(this.a);
+    QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
   }
 }
 

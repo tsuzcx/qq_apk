@@ -1,30 +1,16 @@
-import mqq.os.MqqHandler;
-
 class ascm
-  implements asch
+  implements ascz
 {
-  ascm(ascj paramascj, MqqHandler paramMqqHandler) {}
+  ascm(asbj paramasbj) {}
   
-  public void a(int paramInt)
+  public void a(Object[] paramArrayOfObject)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(80);
-      return;
-    } while (this.jdField_a_of_type_MqqOsMqqHandler == null);
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(80, 5000L);
+    asbj.access$2500(this.a, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ascm
  * JD-Core Version:    0.7.0.1
  */

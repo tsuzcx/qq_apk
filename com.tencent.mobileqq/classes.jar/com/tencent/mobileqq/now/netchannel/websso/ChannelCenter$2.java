@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.now.netchannel.websso;
 
 import android.util.Log;
-import aywi;
-import aywl;
+import axjq;
+import axjt;
 
 public class ChannelCenter$2
   implements Runnable
 {
-  public ChannelCenter$2(aywi paramaywi, int paramInt, aywl paramaywl, String paramString) {}
+  public ChannelCenter$2(axjq paramaxjq, int paramInt, axjt paramaxjt, String paramString) {}
   
   public void run()
   {
     Log.d("ChannelCenter", "WebServiceSSO--onException final cmd=" + this.jdField_a_of_type_Int);
-    if (aywi.a(this.this$0))
+    if (axjq.a(this.this$0))
     {
       Log.d("ChannelCenter", "now live quit.");
       return;
     }
-    this.jdField_a_of_type_Aywl.a(1000002, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Axjt.a(1000002, this.jdField_a_of_type_JavaLangString);
   }
 }
 

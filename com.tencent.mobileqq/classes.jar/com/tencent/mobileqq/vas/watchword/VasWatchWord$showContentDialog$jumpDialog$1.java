@@ -2,8 +2,8 @@ package com.tencent.mobileqq.vas.watchword;
 
 import QC.GetWatchWordShareRsp;
 import android.content.Context;
-import bdll;
-import biev;
+import bcef;
+import bglg;
 import com.tencent.mobileqq.app.BaseActivity;
 import kotlin.Metadata;
 import kotlin.Unit;
@@ -11,8 +11,8 @@ import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.Nullable;
-import qsp;
-import qsq;
+import qzn;
+import qzo;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "type", "", "invoke", "(Ljava/lang/Integer;)V"}, k=3, mv={1, 1, 16})
 public final class VasWatchWord$showContentDialog$jumpDialog$1
@@ -30,15 +30,15 @@ public final class VasWatchWord$showContentDialog$jumpDialog$1
     while (paramInteger.intValue() != 1) {
       return;
     }
-    paramInteger = biev.a;
+    paramInteger = bglg.a;
     Object localObject = BaseActivity.sTopActivity;
     Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseActivity.sTopActivity");
     localObject = (Context)localObject;
     String str = this.$rsp.detailurl;
     Intrinsics.checkExpressionValueIsNotNull(str, "rsp.detailurl");
     paramInteger.b((Context)localObject, str);
-    qsp.a.a().a();
-    bdll.b(null, "dc00898", "", "", "qq_vip", "0X800AF7A", this.$bid, 0, "", "", "", "");
+    qzn.a.a().a();
+    bcef.b(null, "dc00898", "", "", "qq_vip", "0X800AF7A", this.$bid, 0, "", "", "", "");
   }
 }
 

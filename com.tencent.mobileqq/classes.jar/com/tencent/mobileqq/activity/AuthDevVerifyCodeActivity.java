@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adxi;
-import adxj;
-import adxk;
-import adxl;
-import adxm;
-import adxn;
+import acui;
+import acuj;
+import acuk;
+import acul;
+import acum;
+import acun;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -18,17 +18,17 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import apdw;
-import apdy;
-import asvf;
-import ayxn;
-import bcvd;
-import bdll;
-import bhnv;
-import bjbs;
+import anxi;
+import anxk;
+import arhf;
+import axkv;
+import bbon;
+import bcef;
+import bhht;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.ClearableEditText;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -39,24 +39,24 @@ import mqq.observer.WtloginObserver;
 
 public class AuthDevVerifyCodeActivity
   extends RegisterBaseActivity
-  implements TextWatcher, View.OnClickListener, apdw
+  implements TextWatcher, View.OnClickListener, anxi
 {
   public static long a;
   public static int b;
   protected int a;
-  private adxm jdField_a_of_type_Adxm;
-  private adxn jdField_a_of_type_Adxn;
+  private acum jdField_a_of_type_Acum;
+  private acun jdField_a_of_type_Acun;
   protected Handler a;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  apdy jdField_a_of_type_Apdy;
-  ayxn jdField_a_of_type_Ayxn = new adxk(this);
-  private bjbs jdField_a_of_type_Bjbs;
+  anxk jdField_a_of_type_Anxk;
+  axkv jdField_a_of_type_Axkv = new acuk(this);
+  private bhht jdField_a_of_type_Bhht;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
   private Runnable jdField_a_of_type_JavaLangRunnable = new AuthDevVerifyCodeActivity.1(this);
   private WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new adxl(this);
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new adxj(this);
+  VerifyDevLockManager.VerifyDevLockObserver jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver = new acul(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new acuj(this);
   private TextView jdField_b_of_type_AndroidWidgetTextView;
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int;
@@ -71,14 +71,14 @@ public class AuthDevVerifyCodeActivity
   public AuthDevVerifyCodeActivity()
   {
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new adxi(this);
+    this.jdField_a_of_type_AndroidOsHandler = new acui(this);
   }
   
   private void a()
   {
-    if (!bhnv.d(this))
+    if (!NetworkUtil.isNetSupport(this))
     {
-      QQToast.a(this, getString(2131691989), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131692035), 0).b(getTitleBarHeight());
       return;
     }
     Object localObject1 = "";
@@ -105,8 +105,8 @@ public class AuthDevVerifyCodeActivity
           if (QLog.isColorLevel()) {
             QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "set face data commitSmsCode.begin to check smsCode=" + (String)localObject1);
           }
-          bdll.b(null, "dc00898", "", "", "0X800A31C", "0X800A31C", 0, 0, "", "", "", "");
-          bcvd.b(this.app, (String)localObject1, this.jdField_a_of_type_Adxm);
+          bcef.b(null, "dc00898", "", "", "0X800A31C", "0X800A31C", 0, 0, "", "", "", "");
+          bbon.b(this.app, (String)localObject1, this.jdField_a_of_type_Acum);
           return;
         }
         if (this.jdField_b_of_type_Boolean)
@@ -114,10 +114,10 @@ public class AuthDevVerifyCodeActivity
           if (QLog.isColorLevel()) {
             QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "commitSmsCode.begin to submitSms smsCode=" + (String)localObject1);
           }
-          if (this.jdField_a_of_type_Adxn == null) {
-            this.jdField_a_of_type_Adxn = new adxn(this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver);
+          if (this.jdField_a_of_type_Acun == null) {
+            this.jdField_a_of_type_Acun = new acun(this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver);
           }
-          i = asvf.a().a(localAppInterface, this.jdField_a_of_type_Adxn, (String)localObject1);
+          i = arhf.a().a(localAppInterface, this.jdField_a_of_type_Acun, (String)localObject1);
           if (i == 0)
           {
             d();
@@ -126,13 +126,13 @@ public class AuthDevVerifyCodeActivity
           if (QLog.isColorLevel()) {
             QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "commitSmsCode.submitSms failed ret=" + i);
           }
-          a(2131715913, 1);
+          a(2131716147, 1);
           return;
         }
         if (QLog.isColorLevel()) {
           QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "commitSmsCode.begin to CheckDevLockSms smsCode=" + (String)localObject1);
         }
-        int i = asvf.a().a(localAppInterface, (String)localObject2, (String)localObject1, null, this.jdField_a_of_type_MqqObserverWtloginObserver);
+        int i = arhf.a().a(localAppInterface, (String)localObject2, (String)localObject1, null, this.jdField_a_of_type_MqqObserverWtloginObserver);
         if (i == 0)
         {
           d();
@@ -141,18 +141,18 @@ public class AuthDevVerifyCodeActivity
         if (QLog.isColorLevel()) {
           QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "commitSmsCode.CheckDevLockSms failed ret=" + i);
         }
-        a(2131715913, 1);
+        a(2131716147, 1);
         return;
       }
-      a(2131715842, 0);
+      a(2131716076, 0);
       return;
     }
   }
   
   private void b()
   {
-    if (!bhnv.d(this)) {
-      QQToast.a(this, getString(2131691989), 0).b(getTitleBarHeight());
+    if (!NetworkUtil.isNetSupport(this)) {
+      QQToast.a(this, getString(2131692035), 0).b(getTitleBarHeight());
     }
     int i;
     do
@@ -173,25 +173,25 @@ public class AuthDevVerifyCodeActivity
             QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "Set Face Data startGetVerifyCode.begin");
           }
           this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
-          bcvd.a(this.app, this.jdField_a_of_type_Adxm);
+          bbon.a(this.app, this.jdField_a_of_type_Acum);
           return;
         }
         if (!this.jdField_b_of_type_Boolean) {
           break;
         }
         if (this.jdField_a_of_type_Int != -1) {
-          asvf.a().a(localAppInterface, this.jdField_a_of_type_Int);
+          arhf.a().a(localAppInterface, this.jdField_a_of_type_Int);
         }
         if (QLog.isColorLevel()) {
           QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "startGetVerifyCode.begin to refreshDevLockSms");
         }
-        if (this.jdField_a_of_type_Adxn == null) {
-          this.jdField_a_of_type_Adxn = new adxn(this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver);
+        if (this.jdField_a_of_type_Acun == null) {
+          this.jdField_a_of_type_Acun = new acun(this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver);
         }
-        i = asvf.a().a(localAppInterface, this.jdField_a_of_type_Adxn);
+        i = arhf.a().a(localAppInterface, this.jdField_a_of_type_Acun);
         if (i == 0)
         {
-          a(2131715899);
+          a(2131716133);
           return;
         }
       } while (!QLog.isColorLevel());
@@ -200,10 +200,10 @@ public class AuthDevVerifyCodeActivity
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "startGetVerifyCode.begin to AskDevLockSms");
       }
-      i = asvf.a().a(localAppInterface, str, this.jdField_a_of_type_MqqObserverWtloginObserver);
+      i = arhf.a().a(localAppInterface, str, this.jdField_a_of_type_MqqObserverWtloginObserver);
       if (i == 0)
       {
-        a(2131715899);
+        a(2131716133);
         return;
       }
     } while (!QLog.isColorLevel());
@@ -216,7 +216,7 @@ public class AuthDevVerifyCodeActivity
     this.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
     jdField_b_of_type_Int = paramInt;
     jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131715891) + "(" + jdField_b_of_type_Int + ")");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131716125) + "(" + jdField_b_of_type_Int + ")");
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
   }
   
@@ -245,8 +245,9 @@ public class AuthDevVerifyCodeActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -268,7 +269,7 @@ public class AuthDevVerifyCodeActivity
   {
     super.doOnResume();
     if ("f_SetFaceData".equals(this.jdField_c_of_type_JavaLangString)) {
-      bdll.b(null, "dc00898", "", "", "0X800A856", "0X800A856", 0, 0, "", "", "", "");
+      bcef.b(null, "dc00898", "", "", "0X800A856", "0X800A856", 0, 0, "", "", "", "");
     }
     this.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
   }
@@ -292,7 +293,7 @@ public class AuthDevVerifyCodeActivity
       if (jdField_b_of_type_Int <= 1)
       {
         if ("f_SetFaceData".equals(this.jdField_c_of_type_JavaLangString)) {
-          bdll.b(null, "dc00898", "", "", "0X800A857", "0X800A857", 0, 0, "", "", "", "");
+          bcef.b(null, "dc00898", "", "", "0X800A857", "0X800A857", 0, 0, "", "", "", "");
         }
         b();
       }
@@ -309,8 +310,8 @@ public class AuthDevVerifyCodeActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131561171);
-    super.setTitle(2131715919);
+    super.setContentView(2131561044);
+    super.setTitle(2131716153);
     QQAppInterface localQQAppInterface = this.app;
     paramBundle = localQQAppInterface;
     if (localQQAppInterface == null) {
@@ -333,26 +334,26 @@ public class AuthDevVerifyCodeActivity
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onCreate mIsFromLogin = " + this.jdField_b_of_type_Boolean + " mVerifySeq=" + this.jdField_c_of_type_Int + " phoneNum=" + this.jdField_a_of_type_JavaLangString);
       }
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131380287));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)super.findViewById(2131372003));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131380014));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)super.findViewById(2131371968));
       this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(this);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364961));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364988));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131715914, new Object[] { this.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363916));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(getString(2131716148, new Object[] { this.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363942));
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131715891));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131716125));
       if (AppSetting.c)
       {
-        this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131694098));
-        this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131715891));
+        this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131694201));
+        this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131716125));
       }
       this.jdField_a_of_type_MqqManagerVerifyDevLockManager$VerifyDevLockObserver.setSeq(this.jdField_c_of_type_Int);
-      this.jdField_a_of_type_Adxm = new adxm(this.jdField_a_of_type_Ayxn);
+      this.jdField_a_of_type_Acum = new acum(this.jdField_a_of_type_Axkv);
       try
       {
-        this.jdField_a_of_type_Apdy = new apdy(null);
-        this.jdField_a_of_type_Apdy.a(this, this);
+        this.jdField_a_of_type_Anxk = new anxk(null);
+        this.jdField_a_of_type_Anxk.a(this, this);
         l = System.currentTimeMillis() - jdField_a_of_type_Long;
         if (l >= 59000L)
         {
@@ -361,7 +362,7 @@ public class AuthDevVerifyCodeActivity
           {
             this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
             this.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
-            this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131715891) + "(" + jdField_b_of_type_Int + ")");
+            this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131716125) + "(" + jdField_b_of_type_Int + ")");
             this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
           }
           if (jdField_b_of_type_Int > 1) {
@@ -391,17 +392,17 @@ public class AuthDevVerifyCodeActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Apdy != null) {}
+    if (this.jdField_a_of_type_Anxk != null) {}
     try
     {
-      this.jdField_a_of_type_Apdy.a();
-      this.jdField_a_of_type_Apdy = null;
+      this.jdField_a_of_type_Anxk.a();
+      this.jdField_a_of_type_Anxk = null;
       this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      if (this.jdField_a_of_type_Adxn != null)
+      if (this.jdField_a_of_type_Acun != null)
       {
-        this.jdField_a_of_type_Adxn.a();
-        this.jdField_a_of_type_Adxn = null;
+        this.jdField_a_of_type_Acun.a();
+        this.jdField_a_of_type_Acun = null;
       }
       c();
       e();

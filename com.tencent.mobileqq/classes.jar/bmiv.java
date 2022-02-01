@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
 
-class bmiv
-  implements DialogInterface.OnClickListener
+public class bmiv
+  implements View.OnClickListener
 {
-  bmiv(bmim parambmim, zyf paramzyf) {}
+  public bmiv(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Zyf.a();
-    paramDialogInterface.dismiss();
+    this.a.f();
+    this.a.j();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmiv
  * JD-Core Version:    0.7.0.1
  */

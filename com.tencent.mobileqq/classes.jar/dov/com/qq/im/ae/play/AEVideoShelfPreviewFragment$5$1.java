@@ -9,7 +9,7 @@ class AEVideoShelfPreviewFragment$5$1
   
   public void run()
   {
-    AEVideoShelfPreviewFragment.b(this.a.this$0);
+    AEVideoShelfPreviewFragment.access$900(this.this$1.this$0);
   }
 }
 

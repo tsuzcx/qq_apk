@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.extendfriend.utils;
 
 import android.content.res.Resources;
-import atce;
+import arom;
 import com.tencent.mobileqq.app.QQAppInterface;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
@@ -14,7 +14,7 @@ public final class ColdPalaceHelper$strSkillTip$2
   extends Lambda
   implements Function0<String>
 {
-  public ColdPalaceHelper$strSkillTip$2(atce paramatce)
+  public ColdPalaceHelper$strSkillTip$2(arom paramarom)
   {
     super(0);
   }
@@ -23,12 +23,12 @@ public final class ColdPalaceHelper$strSkillTip$2
   {
     MobileQQ localMobileQQ = this.this$0.a().getApplication();
     Intrinsics.checkExpressionValueIsNotNull(localMobileQQ, "app.application");
-    return localMobileQQ.getResources().getString(2131697995);
+    return localMobileQQ.getResources().getString(2131698152);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.utils.ColdPalaceHelper.strSkillTip.2
  * JD-Core Version:    0.7.0.1
  */

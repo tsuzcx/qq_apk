@@ -1,18 +1,24 @@
-import android.graphics.Color;
-import android.view.View;
-import android.widget.ImageView;
+import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bnvk
-  extends bnvi
+  implements Comparable<bnvk>
 {
-  public bnvk(String paramString, View paramView)
+  public int a;
+  public long a;
+  public int b;
+  
+  public bnvk(VideoFramesFetcher paramVideoFramesFetcher, long paramLong, int paramInt1, int paramInt2)
   {
-    super(paramString, paramView);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = Math.min(paramInt2, VideoFramesFetcher.a(paramVideoFramesFetcher));
+    VideoFramesFetcher.a(paramVideoFramesFetcher).put(Integer.valueOf(paramInt1), this);
   }
   
-  protected void a(String paramString)
+  public int a(bnvk parambnvk)
   {
-    ((ImageView)this.a).setBackgroundColor(Color.parseColor(paramString));
+    return -(int)(this.jdField_a_of_type_Long - parambnvk.jdField_a_of_type_Long);
   }
 }
 

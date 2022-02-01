@@ -1,17 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class okl
-  implements View.OnClickListener
+  implements zop
 {
-  public okl(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity) {}
+  public okl(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
   
-  public void onClick(View paramView)
+  public void callback(Bundle paramBundle)
   {
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
+    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    {
+      ReadInJoyArticleDetailActivity.a(this.a, paramBundle.getByteArray("decryptResult"));
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyArticleDetail", 2, "请求返回时间" + System.currentTimeMillis());
+      }
+      if (ReadInJoyArticleDetailActivity.a(this.a) == null) {
+        this.a.jdField_a_of_type_JavaLangString = null;
+      }
+      this.a.jdField_a_of_type_JavaLangObject.notifyAll();
+      return;
+    }
   }
 }
 

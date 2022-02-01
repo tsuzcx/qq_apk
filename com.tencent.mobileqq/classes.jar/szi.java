@@ -1,20 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyScrollViewSwitcher;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.InputStream;
+import java.util.List;
 
-public class szi
-  implements View.OnClickListener
+public abstract interface szi
 {
-  public szi(ReadInJoyScrollViewSwitcher paramReadInJoyScrollViewSwitcher, szl paramszl) {}
+  public abstract InputStream a(String paramString);
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyScrollViewSwitcher.a != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyScrollViewSwitcher.a.a(this.jdField_a_of_type_Szl);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract List<String> a();
 }
 
 

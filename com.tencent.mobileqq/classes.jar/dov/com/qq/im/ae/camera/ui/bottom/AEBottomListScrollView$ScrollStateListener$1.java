@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bomf;
-import bpam;
+import blqm;
+import bmbx;
 
 public class AEBottomListScrollView$ScrollStateListener$1
   implements Runnable
 {
-  public AEBottomListScrollView$ScrollStateListener$1(bomf parambomf) {}
+  public AEBottomListScrollView$ScrollStateListener$1(blqm paramblqm) {}
   
   public void run()
   {
-    bpam.a(AEBottomListScrollView.a(), "onCurrentViewFirstLayout--");
+    bmbx.a(AEBottomListScrollView.a(), "onCurrentViewFirstLayout--");
     AEBottomListScrollView.a(this.a.a);
   }
 }

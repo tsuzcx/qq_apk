@@ -74,6 +74,12 @@ public class DTReportComponent$Builder
     this.mConfigurationBuilder.independentPageOut(paramBoolean);
     return this;
   }
+  
+  public Builder lazyInitType(int paramInt)
+  {
+    this.mConfigurationBuilder.lazyInitType(paramInt);
+    return this;
+  }
 }
 
 

@@ -1,17 +1,30 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class ajoj
-  extends GridLayoutManager.SpanSizeLookup
+public class ajoj
+  extends Handler
 {
-  ajoj(ajoi paramajoi, GridLayoutManager paramGridLayoutManager) {}
+  public ajoj(PhotoCropActivity paramPhotoCropActivity) {}
   
-  public int getSpanSize(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.jdField_a_of_type_Ajoi.a(paramInt)) || (this.jdField_a_of_type_Ajoi.b(paramInt)) || (this.jdField_a_of_type_Ajoi.c(paramInt)) || (this.jdField_a_of_type_Ajoi.b())) {
-      return this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.getSpanCount();
+    switch (paramMessage.what)
+    {
     }
-    return 1;
+    do
+    {
+      return;
+      this.a.b();
+      this.a.a.sendMessageDelayed(Message.obtain(this.a.a, 1003), 10000L);
+      return;
+    } while (this.a.isFinishing());
+    if (QLog.isColorLevel()) {
+      QLog.d("PhotoCropActivity", 2, "LOADING_TIMEOUT");
+    }
+    PhotoCropActivity.a(this.a, 2131716316);
+    this.a.c();
   }
 }
 

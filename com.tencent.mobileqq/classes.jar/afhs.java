@@ -1,15 +1,43 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.vas.avatar.VasAvatar;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class afhs
-  implements behr
+class afhs
+  implements ancx
 {
-  public afhs(QQSettingMe paramQQSettingMe) {}
+  private afhr jdField_a_of_type_Afhr;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+  private VasAvatar jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar;
   
-  public void onCancel() {}
-  
-  public void onConfirm()
+  afhs(VasAvatar paramVasAvatar, ChatMessage paramChatMessage, QQAppInterface paramQQAppInterface, afhr paramafhr)
   {
-    QQSettingMe.d(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar = paramVasAvatar;
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Afhr = paramafhr;
+  }
+  
+  public void a(TroopMemberInfo paramTroopMemberInfo)
+  {
+    if (paramTroopMemberInfo == null)
+    {
+      if (TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {}
+      for (int i = 2131694297;; i = 2131694298)
+      {
+        QQToast.a(BaseApplicationImpl.getContext(), 0, i, 0).a();
+        if (QLog.isColorLevel()) {
+          QLog.d("AvatarOnGestureListener", 2, "onDoubleTap() isKicked");
+        }
+        return;
+      }
+    }
+    afhr.a(this.jdField_a_of_type_Afhr, this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

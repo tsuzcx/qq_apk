@@ -1,53 +1,20 @@
+import com.tencent.mobileqq.vip.KCWraperV2.1;
+import com.tencent.qphone.base.util.QLog;
+import dualsim.common.ILogPrint;
+
 public class bgoo
+  implements ILogPrint
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public bgoo(KCWraperV2.1 param1) {}
   
-  public bgoo()
+  public void print(String paramString)
   {
-    a();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public bgoo a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    return this;
-  }
-  
-  public bgoo a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public bgoo a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-    return this;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = true;
-  }
-  
-  public boolean a()
-  {
-    return (!this.b) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int != 0);
-  }
-  
-  public bgoo b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    return this;
+    String str2 = this.a.this$0.a();
+    String str1 = paramString;
+    if (paramString == null) {
+      str1 = "\n";
+    }
+    QLog.e(str2, 1, str1);
   }
 }
 

@@ -1,8 +1,18 @@
-public abstract interface axxs
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+
+class axxs
+  implements axxz
 {
-  public abstract void bt();
+  axxs(axxr paramaxxr, LatLng paramLatLng, int paramInt, PoiBean paramPoiBean) {}
   
-  public abstract void bu();
+  public void a(PoiBean paramPoiBean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(axxq.a, 2, "[status][poiLoader][" + this.jdField_a_of_type_Axxr.b + "] memPut [fail already exist]. latLng: " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " acceptAccuracy: " + this.jdField_a_of_type_Int + " put: " + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationCachePoiBean + " cache: " + paramPoiBean);
+    }
+  }
 }
 
 

@@ -1,43 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
-import java.util.ArrayList;
-import java.util.List;
-import qqcircle.QQCircleDitto.StItemInfo;
-
-class wbb
-  implements View.OnClickListener
+public abstract class wbb
 {
-  wbb(waz paramwaz) {}
+  protected int a;
+  protected waz a;
   
-  public void onClick(View paramView)
+  public abstract void a();
+  
+  public void a(waz paramwaz)
   {
-    FeedCloudMeta.StFeed localStFeed = waz.h(this.a);
-    if ((localStFeed != null) && ((waz.e(this.a) instanceof QQCircleDitto.StItemInfo)))
+    this.jdField_a_of_type_Waz = paramwaz;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Int < 1)
     {
-      QQCircleDitto.StItemInfo localStItemInfo = (QQCircleDitto.StItemInfo)waz.f(this.a);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(vtt.a("ext3", String.valueOf(localStFeed.createTime)));
-      vtn.a(localStItemInfo.id.get(), 3, 1, 65, 1, waz.h(this.a), waz.i(this.a).id.get(), "", waz.j(this.a).poster.id.get(), waz.i(this.a), waz.k(this.a), localArrayList, waz.j(this.a), -1);
-      vud.a().a(new vuf().a("closebutton").b("click").a(waz.l(this.a)).a(this.a.a()).a(waz.k(this.a)).c(localStItemInfo.id.get()));
-      if (waz.a(this.a) != null)
-      {
-        waz.b(this.a).a(waz.g(this.a), 1);
-        if (waz.c(this.a).getItemCount() <= 0) {
-          aaak.a().a(new QCircleFeedEvent(localStFeed.id.get(), 3));
-        }
-      }
+      this.jdField_a_of_type_Int += 1;
+      xvv.d("Q.qqstory.net:BatchNetHandler", String.format("retry request , retry count = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+      a();
+      return true;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QLog.e("QCircleRecommendWidget", 2, "report hide item error! mParentFeed or itemInfo is null!");
+    return false;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Waz != null) {
+      this.jdField_a_of_type_Waz.a(this);
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Waz != null) {
+      this.jdField_a_of_type_Waz.b(this);
     }
   }
 }

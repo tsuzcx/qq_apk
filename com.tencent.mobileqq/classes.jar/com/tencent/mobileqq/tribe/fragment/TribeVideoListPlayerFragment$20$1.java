@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import bfdf;
+import bdlt;
 
 public class TribeVideoListPlayerFragment$20$1
   implements Runnable
 {
-  public TribeVideoListPlayerFragment$20$1(bfdf parambfdf) {}
+  public TribeVideoListPlayerFragment$20$1(bdlt parambdlt) {}
   
   public void run()
   {

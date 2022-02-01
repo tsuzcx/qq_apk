@@ -1,33 +1,107 @@
-class ywm
-  implements zew
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.biz.qrcode.activity.QRJumpActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
+
+public class ywm
+  implements BusinessObserver
 {
-  ywm(ywh paramywh) {}
+  public ywm(QRJumpActivity paramQRJumpActivity, String paramString1, String paramString2, Activity paramActivity, String paramString3) {}
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    yuk.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击重新拉取地理贴纸");
-    ywh.a(this.a);
-  }
-  
-  public void a(String paramString)
-  {
-    yuk.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载：" + paramString);
-    yxt localyxt = this.a.a;
-    if (this.a.a.a()) {}
-    for (String str = "2";; str = "1")
-    {
-      localyxt.a("download_face", 0, 0, new String[] { str, paramString });
-      yuq.b("0X80075DD");
-      if (!((zbz)wth.a(8)).a(paramString, true)) {
-        yuk.d("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载启动失败");
-      }
+    Object localObject1 = null;
+    int i = 0;
+    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRJumpActivity.isFinishing()) {
       return;
     }
-  }
-  
-  public void b(String paramString)
-  {
-    yuk.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载取消：" + paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("QRJumpActivity", 2, String.format("JumpUrl onReceive suc=%b ", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBundle = paramBundle.getString("result");
+      QLog.i("QRJumpActivity", 2, String.format("JumpUrl onReceive result=%s", new Object[] { paramBundle }));
+    }
+    for (;;)
+    {
+      try
+      {
+        Object localObject2 = new JSONObject(paramBundle);
+        yuy localyuy;
+        if (((JSONObject)localObject2).getInt("r") == 0) {
+          localyuy = new yuy(((JSONObject)localObject2).getString("d"));
+        }
+        boolean bool;
+        Bundle localBundle;
+        paramBundle = null;
+      }
+      catch (Exception paramBundle)
+      {
+        try
+        {
+          if (((JSONObject)localObject2).has("wpa"))
+          {
+            paramBoolean = "1".equals(((JSONObject)localObject2).getString("wpa"));
+            bool = ((JSONObject)localObject2).has("extvalue");
+            paramInt = i;
+            if (((JSONObject)localObject2).has("exttype"))
+            {
+              if ("2".equals(((JSONObject)localObject2).getString("exttype"))) {
+                break label353;
+              }
+              paramInt = i;
+              if ("1".equals(((JSONObject)localObject2).getString("exttype"))) {
+                break label353;
+              }
+            }
+            paramBundle = new Bundle();
+            if (paramBoolean) {}
+            try
+            {
+              paramBundle.putBoolean("issupportwpa", paramBoolean);
+              if ((paramInt != 0) && (bool))
+              {
+                localObject1 = ((JSONObject)localObject2).getString("exttype");
+                localObject2 = ((JSONObject)localObject2).getString("extvalue");
+                paramBundle.putString("exttype", (String)localObject1);
+                paramBundle.putString("extvalue", (String)localObject2);
+              }
+              paramBundle.putString("authKey", this.jdField_a_of_type_JavaLangString);
+              paramBundle.putString("authSig", this.b);
+              localObject1 = paramBundle;
+              paramBundle = localyuy;
+            }
+            catch (Exception localException)
+            {
+              localBundle = paramBundle;
+              paramBundle = localyuy;
+              continue;
+            }
+            if (localObject1 != null) {
+              yvc.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRJumpActivity.app, this.jdField_a_of_type_AndroidAppActivity, paramBundle, this.c, (Bundle)localObject1);
+            }
+            this.jdField_a_of_type_AndroidAppActivity.finish();
+            return;
+            paramBundle = paramBundle;
+            paramBundle = null;
+            continue;
+          }
+        }
+        catch (Exception paramBundle)
+        {
+          paramBundle = localyuy;
+          continue;
+          paramBoolean = false;
+          continue;
+        }
+      }
+      continue;
+      label353:
+      paramInt = 1;
+    }
   }
 }
 

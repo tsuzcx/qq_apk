@@ -1,24 +1,46 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class tgh
-  extends tgb
+final class tgh
+  implements tox
 {
-  tgh(tfy paramtfy1, Activity paramActivity, tfy paramtfy2, JSONObject paramJSONObject)
+  public void a()
   {
-    super(paramtfy1, paramActivity, paramtfy2, paramJSONObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaAccessHelper", 2, "pre load all offline from net is fail");
+    }
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  public void a(String paramString)
   {
-    if ((paramString2 != null) && (paramString2.contains("kandianshare.html5.qq.com")))
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
     {
-      tfy.a(this.a).mShareHelper.a(paramString2);
+      paramString = new JSONObject(paramString);
+      JSONArray localJSONArray = (JSONArray)paramString.get("preload_bids");
+      int i = 0;
+      while (i < localJSONArray.length())
+      {
+        tgc.a((String)localJSONArray.get(i), null);
+        i += 1;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ViolaAccessHelper", 2, "pre load all offline from net is success");
+      }
+      tgc.jdField_a_of_type_JavaLangString = pay.a();
+      tgc.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (paramString.has("use_main")) {
+        tgc.jdField_a_of_type_Boolean = ((Boolean)paramString.get("use_main")).booleanValue();
+      }
       return;
     }
-    tfy.a(this.a).mShareHelper.a(paramString1);
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ViolaAccessHelper", 2, "pre load all offline from net is exception:" + paramString.getMessage());
+    }
   }
 }
 

@@ -1,10 +1,16 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
 
-public abstract interface adci
+public class adci
+  implements DialogInterface.OnClickListener
 {
-  public abstract MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo);
+  public adci(ContactBindedActivity paramContactBindedActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ContactBindedActivity.a(this.a, null);
+  }
 }
 
 

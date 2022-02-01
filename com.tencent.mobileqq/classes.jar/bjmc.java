@@ -1,28 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.open.agent.DeviceFriendListOpenFrame;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 public class bjmc
-  extends Handler
+  implements Animation.AnimationListener
 {
-  public bjmc(DeviceFriendListOpenFrame paramDeviceFriendListOpenFrame) {}
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
-      return;
-    case 2: 
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
-      return;
-    }
-    this.a.jdField_a_of_type_Bjmd.notifyDataSetChanged();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

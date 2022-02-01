@@ -1,25 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.1.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
-
 public class bgfp
-  implements View.OnClickListener
 {
-  bgfp(bgfo parambgfo) {}
+  public float a;
+  public int a;
+  public String a;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
+  public float d;
   
-  public void onClick(View paramView)
-  {
-    if (!paramView.hasFocus())
-    {
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
-      ThreadManager.getUIHandler().post(new TextItem.1.1(this, paramView));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public bgfp(bgfo parambgfo) {}
 }
 
 

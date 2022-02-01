@@ -1,61 +1,52 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Message;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class arki
-  extends arac<arkl>
+  extends TransProcessorHandler
 {
-  public static arkl a()
-  {
-    return (arkl)aran.a().a(497);
-  }
+  public arki(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  @NonNull
-  public arkl a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new arkl();
-  }
-  
-  @Nullable
-  public arkl a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arkl.a(paramArrayOfaraj);
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    switch (paramMessage.what)
+    {
+    case 1004: 
+    default: 
+      return;
+    case 1003: 
+      if (localFileMsg.fileType == 23)
+      {
+        ExtendFriendEditFragment.a(this.a, ((NearbyPeoplePhotoUploadProcessor)localFileMsg.processor).mUrl);
+        if (QLog.isColorLevel()) {
+          QLog.i("ExtendFriendProfileEdit", 2, "mFileUploadHandler.handleMessage(), upload success. url = " + ExtendFriendEditFragment.a(this.a));
+        }
+        if (this.a.a != null)
+        {
+          this.a.a.a(ExtendFriendEditFragment.a(this.a));
+          ExtendFriendEditFragment.a(this.a, this.a.a.a());
+        }
+      }
+      aroq.a().d(true, 0);
+      return;
     }
-    return null;
-  }
-  
-  public void a(arkl paramarkl) {}
-  
-  public Class<arkl> clazz()
-  {
-    return arkl.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 497;
+    if ((localFileMsg.fileType == 23) && (QLog.isColorLevel())) {
+      QLog.i("ExtendFriendProfileEdit", 2, "mFileUploadHandler.handleMessage(), upload fail.");
+    }
+    ExtendFriendEditFragment.a(this.a).dismiss();
+    QQToast.a(ExtendFriendEditFragment.a(this.a), amtj.a(2131703399), 0).a();
+    aroq.a().d(false, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arki
  * JD-Core Version:    0.7.0.1
  */

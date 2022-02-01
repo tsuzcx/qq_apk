@@ -1,22 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.graphics.Bitmap;
 
-public class yew
-  extends SimpleJob<Void>
+public abstract interface yew
 {
-  public yew(StoryTransitionActivity paramStoryTransitionActivity, String paramString)
-  {
-    super(paramString);
-  }
+  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    yuk.d("StoryTransitionActivity", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(wlt.a()) });
-    return null;
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(ygc paramygc);
+  
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void b(int paramInt, Object paramObject);
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

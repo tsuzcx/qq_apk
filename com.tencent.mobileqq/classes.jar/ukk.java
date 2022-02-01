@@ -1,60 +1,39 @@
-import android.util.Log;
-import com.tencent.biz.pubaccount.weishi_new.net.WeishiIntent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.app.AppRuntime;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
 public class ukk
+  implements bjxz
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static ukk jdField_a_of_type_Ukk;
-  private String jdField_a_of_type_JavaLangString = "WeishiNewService";
+  public ukk(WSRecommendFragment paramWSRecommendFragment) {}
   
-  public static ukk a()
+  public void a()
   {
-    if (jdField_a_of_type_Ukk == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Ukk == null) {
-        jdField_a_of_type_Ukk = new ukk();
-      }
-      return jdField_a_of_type_Ukk;
-    }
+    uya.b("WSRecommendFragment", "endOfRefresh");
+    this.a.a.d();
   }
   
-  public int a(ukl paramukl, ukc paramukc)
+  public void a(XRecyclerView paramXRecyclerView, int paramInt)
   {
-    if (paramukl == null) {}
-    for (;;)
-    {
-      return 1000004;
-      paramukl.a(paramukc);
-      paramukl.a = System.currentTimeMillis();
-      try
-      {
-        WeishiIntent localWeishiIntent = new WeishiIntent(BaseApplication.getContext(), ukn.class);
-        localWeishiIntent.setWithouLogin(true);
-        localWeishiIntent.a = ((uko)paramukc);
-        if ((localWeishiIntent.a != null) && (localWeishiIntent.a.a != null))
-        {
-          paramukc = BaseApplicationImpl.getApplication().getRuntime();
-          if (paramukc != null)
-          {
-            paramukc.startServlet(localWeishiIntent);
-            Log.i("weishi", "cmd=" + paramukl.uniKey() + ", pkgId=" + paramukl.a() + " submit to MSF, isLogin: " + paramukc.isLogin());
-          }
-          else
-          {
-            Log.e("weishi", "app is null");
-          }
-        }
-      }
-      catch (Exception paramukl)
-      {
-        Log.e("weishi", "WeishiProtocolService occur exception. stack=" + paramukl.getLocalizedMessage());
-      }
+    uya.b("WSRecommendFragment", "startLoadMore");
+    ((uuy)this.a.b()).a(false, false, "");
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  {
+    uya.b("WSRecommendFragment", "startTopRefresh");
+    if (WSRecommendFragment.a(this.a)) {
+      WSRecommendFragment.a(this.a, false);
     }
-    return 0;
+    do
+    {
+      return;
+      if (!WSRecommendFragment.b(this.a)) {
+        WSRecommendFragment.b(this.a, true);
+      }
+      WSRecommendFragment.a(this.a, System.currentTimeMillis());
+      ((uuy)this.a.b()).a(true, false, "");
+    } while (WSRecommendFragment.c(this.a));
+    ((uuy)this.a.b()).a("");
   }
 }
 

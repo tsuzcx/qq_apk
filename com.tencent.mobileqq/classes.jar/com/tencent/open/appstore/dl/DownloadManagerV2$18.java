@@ -1,18 +1,18 @@
 package com.tencent.open.appstore.dl;
 
-import bjxd;
-import bjxw;
+import bicl;
+import bide;
 
 public class DownloadManagerV2$18
   implements Runnable
 {
   public void run()
   {
-    if (bjxw.a()) {
-      bjxw.a().a();
+    if (bide.a()) {
+      bide.a().a();
     }
-    if (bjxd.d()) {
-      bjxd.a().h();
+    if (bicl.d()) {
+      bicl.a().h();
     }
   }
 }

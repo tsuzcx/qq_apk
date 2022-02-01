@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import ajka;
-import ajkl;
+import aiej;
+import aieu;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
 import mqq.os.MqqHandler;
@@ -9,11 +9,11 @@ import mqq.os.MqqHandler;
 public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2
   implements Runnable
 {
-  public NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2(ajkl paramajkl) {}
+  public NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter$2(aieu paramaieu) {}
   
   public void run()
   {
-    List localList = ajkl.a(this.this$0).b();
+    List localList = aieu.a(this.this$0).b();
     ThreadManager.getUIHandler().post(new NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.2.1(this, localList));
   }
 }

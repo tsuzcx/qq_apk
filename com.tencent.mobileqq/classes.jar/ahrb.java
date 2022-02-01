@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
 
-class ahrb
-  implements bjhv
+public class ahrb
+  implements DialogInterface.OnClickListener
 {
-  ahrb(ahqw paramahqw, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
+  public ahrb(VideoStatusTipsBar paramVideoStatusTipsBar) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 2)
-    {
-      this.jdField_a_of_type_Ahqw.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
-      bcwu.jdField_a_of_type_Boolean = true;
+    mrd.e(false, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    while ((paramInt != 3) && (paramInt != 1)) {
-      return;
-    }
-    bcwu.jdField_a_of_type_Long = 0L;
   }
 }
 

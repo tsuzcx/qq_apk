@@ -1,36 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
-final class bant
-  extends bezs
+public class bant
+  implements View.OnTouchListener
 {
-  bant(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5)
-  {
-    super(paramQQAppInterface, paramString1);
-  }
+  public bant(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  protected void realCancel()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.i("QSplash@QbossSplashUtil", 1, "ctrl realCancel");
-  }
-  
-  protected void realStart()
-  {
-    QLog.i("QSplash@QbossSplashUtil", 1, "downloadPicAGifAVideoRes adid" + this.jdField_a_of_type_JavaLangString);
-    banv.a(this.b + ".splashtemp");
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("qbossSplashresAppid", this.jdField_a_of_type_JavaLangString);
-    bans.a("qbossSplashrequest", (HashMap)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.i("QSplash@QbossSplashDownloadManager", 2, "qboss_ad_res_png realStart, key  " + this.jdField_a_of_type_JavaLangString + "_" + this.b);
-    }
-    localObject = new beum();
-    ((beum)localObject).jdField_a_of_type_Beuq = new banu(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b + ".splashtemp", this.c, this.d);
-    ((beum)localObject).jdField_a_of_type_JavaLangString = this.d;
-    ((beum)localObject).jdField_a_of_type_Int = 0;
-    ((beum)localObject).c = (this.b + ".splashtemp");
-    ((bevo)this.app.getNetEngine(0)).a((bevl)localObject);
+    return SignatureHistoryFragment.a(this.a, paramView, false);
   }
 }
 

@@ -1,34 +1,102 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.Shader.TileMode;
+import java.util.Map;
 
-class xpn
-  implements View.OnClickListener
+public class xpn
+  implements xpo
 {
-  xpn(xpm paramxpm) {}
+  private float jdField_a_of_type_Float = 1.0F;
+  protected final int a;
+  public Bitmap a;
+  private String jdField_a_of_type_JavaLangString;
+  public Map<String, Bitmap> a;
+  protected final int b;
   
-  public void onClick(View paramView)
+  public xpn(int paramInt1, int paramInt2, float paramFloat, Map<String, Bitmap> paramMap, Bitmap paramBitmap)
   {
-    Object localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
-    if (localObject != null) {
-      ((VideoViewVideoHolder)localObject).d = 2;
-    }
-    this.a.a().finish();
-    String str = "";
-    localObject = str;
-    if (this.a.jdField_a_of_type_Int >= 0)
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_a_of_type_JavaLangString = xqd.a(new Object[] { "rounded", "r=", Integer.valueOf(paramInt1), "dm=", Integer.valueOf(paramInt2), "ds=", Float.valueOf(paramFloat) });
+  }
+  
+  public Bitmap a(Bitmap paramBitmap)
+  {
+    for (;;)
     {
-      localObject = str;
-      if (this.a.jdField_a_of_type_Int < this.a.jdField_a_of_type_JavaUtilList.size()) {
-        localObject = ((xqz)this.a.jdField_a_of_type_JavaUtilList.get(this.a.jdField_a_of_type_Int)).a;
+      try
+      {
+        float f1 = paramBitmap.getWidth();
+        float f2 = paramBitmap.getHeight();
+        float f3 = f2 / f1;
+        int m = (int)f2;
+        int k = (int)f1;
+        int j;
+        int i;
+        if (f3 > this.jdField_a_of_type_Float)
+        {
+          m = (int)(paramBitmap.getWidth() * this.jdField_a_of_type_Float);
+          j = (paramBitmap.getHeight() - m) / 2;
+          i = 0;
+          if (this.jdField_a_of_type_JavaUtilMap == null) {
+            break label422;
+          }
+          localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilMap.get("RT:w=" + k + "h=" + m);
+          if ((localBitmap == null) || (localBitmap.isRecycled()))
+          {
+            paramBitmap = Bitmap.createBitmap(paramBitmap, i, j, k, m);
+            localBitmap = paramBitmap;
+            if (this.jdField_a_of_type_JavaUtilMap != null)
+            {
+              this.jdField_a_of_type_JavaUtilMap.put("RT:w=" + k + "h=" + m, paramBitmap);
+              localBitmap = paramBitmap;
+            }
+            Paint localPaint = new Paint();
+            localPaint.setAntiAlias(true);
+            localPaint.setShader(new BitmapShader(localBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
+            if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+              break label414;
+            }
+            paramBitmap = Bitmap.createBitmap(localBitmap.getWidth(), localBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+            paramBitmap.eraseColor(0);
+            new Canvas(paramBitmap).drawRoundRect(new RectF(this.b, this.b, localBitmap.getWidth() - this.b, localBitmap.getHeight() - this.b), this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, localPaint);
+            return paramBitmap;
+          }
+        }
+        else
+        {
+          k = (int)(paramBitmap.getHeight() / this.jdField_a_of_type_Float);
+          i = (paramBitmap.getWidth() - k) / 2;
+          j = 0;
+          continue;
+        }
+        localBitmap.eraseColor(0);
+        xqc.a(paramBitmap, localBitmap, i, j, k, m, null, false);
+        continue;
+        paramBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
       }
+      catch (Exception paramBitmap)
+      {
+        xvv.e("RoundedTransformation", "occur error:" + paramBitmap);
+        return null;
+      }
+      label414:
+      continue;
+      label422:
+      Bitmap localBitmap = null;
     }
-    yup.a("play_video", "clk_quit", 0, 0, new String[] { "", "", "", localObject });
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

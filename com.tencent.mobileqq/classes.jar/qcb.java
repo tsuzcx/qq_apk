@@ -1,176 +1,65 @@
-import android.graphics.Color;
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.GalleryProteusItem.1;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAvatarView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import org.json.JSONObject;
+import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
 
 public class qcb
-  extends ViewBase
+  implements qdy
 {
-  private int jdField_a_of_type_Int = -1;
-  private NativeMiddleBodyView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView;
-  private int b = -1;
-  private int c = -1;
-  private int d = -1;
-  
-  public qcb(VafContext paramVafContext)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    super(paramVafContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView = new NativeMiddleBodyView(paramVafContext.getContext());
+    return null;
   }
   
-  public int a()
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(RelativeLayout.LayoutParams paramLayoutParams)
-  {
-    if (a()) {
-      paramLayoutParams.setMargins(0, 0, 0, 0);
+    if (paramInt == 103) {
+      return pzp.a(paramBaseArticleInfo);
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.mPaddingLeft > 0) || (this.mPaddingRight > 0);
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public int c()
-  {
-    return this.c;
-  }
-  
-  public int d()
-  {
-    return this.d;
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramInt)
-    {
-    default: 
-      bool1 = super.setAttribute(paramInt, paramObject);
+    if (paramInt == 102) {
+      return pzn.a(paramBaseArticleInfo);
     }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (!(paramObject instanceof JSONArray));
-      paramObject = (JSONArray)paramObject;
-      bool1 = bool2;
-    } while (paramObject.length() < 4);
-    try
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView.setRadius(paramObject.getString(0), paramObject.getString(1), paramObject.getString(2), paramObject.getString(3));
-      return true;
-    }
-    catch (JSONException paramObject)
-    {
-      QLog.d("ReadInJoyMiddleBodyView", 2, "", paramObject);
-    }
-    return true;
+    return pzo.a(paramBaseArticleInfo);
   }
   
-  public boolean setAttribute(int paramInt, String paramString)
+  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2)
   {
-    switch (paramInt)
+    ViewBase localViewBase = paramContainer.getVirtualView();
+    Object localObject = (qgt)localViewBase.findViewBaseByName("id_info_avator");
+    if (localObject != null)
     {
-    default: 
-      return super.setAttribute(paramInt, paramString);
-    case 1188: 
-      try
-      {
-        this.b = Color.parseColor(String.valueOf(paramString));
-        QLog.d("ReadInJoyMiddleBodyView", 1, "setEmotionFontColor: " + this.b);
-        return true;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("ReadInJoyMiddleBodyView", 1, paramString, new Object[0]);
-        return false;
-      }
-    case 1187: 
-      try
-      {
-        this.jdField_a_of_type_Int = Utils.dp2px(Integer.valueOf(String.valueOf(paramString)).intValue());
-        QLog.d("ReadInJoyMiddleBodyView", 1, "setEmotionFontSize: " + this.jdField_a_of_type_Int);
-        return true;
-      }
-      catch (NumberFormatException paramString)
-      {
-        QLog.e("ReadInJoyMiddleBodyView", 1, paramString, new Object[0]);
-        return false;
-      }
-    case 1189: 
-      try
-      {
-        this.c = Utils.rp2px(Float.valueOf(String.valueOf(paramString)).floatValue());
-        QLog.d("ReadInJoyMiddleBodyView", 1, "setEmotionlineSpace: " + this.c);
-        return true;
-      }
-      catch (NumberFormatException paramString)
-      {
-        QLog.e("ReadInJoyMiddleBodyView", 1, paramString, new Object[0]);
-        return false;
+      ((qgt)localObject).a(parampvc, false);
+      parampvc = parampvc.a();
+      localObject = (NativeAvatarView)((qgt)localObject).getNativeView();
+      if ((pay.b(parampvc)) && (parampvc.mGalleryFeedsInfo.uint32_is_account_derelict.has()) && (parampvc.mGalleryFeedsInfo.uint32_is_account_derelict.get() == 1)) {
+        ((NativeAvatarView)localObject).setAvatarDrawable(paramContainer.getContext().getResources().getDrawable(2130846273));
       }
     }
-    try
+    paramContainer = (NativeText)localViewBase.findViewBaseByName("id_nickname");
+    parampvc = localViewBase.findViewBaseByName("id_view_nickname");
+    if ((paramContainer != null) && (parampvc != null))
     {
-      this.d = Color.parseColor(String.valueOf(paramString));
-      QLog.d("ReadInJoyMiddleBodyView", 1, "setLinkTextColor: " + this.d);
-      return true;
+      paramContainer = (NativeTextImp)paramContainer.getNativeView();
+      parampvc = parampvc.getNativeView();
+      if ((paramContainer != null) && (parampvc != null)) {
+        parampvc.post(new GalleryProteusItem.1(this, parampvc, paramContainer));
+      }
     }
-    catch (Exception paramString)
-    {
-      QLog.e("ReadInJoyMiddleBodyView", 1, paramString, new Object[0]);
-    }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
+  {
     return false;
   }
 }

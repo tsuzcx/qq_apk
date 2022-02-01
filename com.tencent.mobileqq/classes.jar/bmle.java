@@ -1,20 +1,29 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.net.Uri;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
 
-public abstract interface bmle
+class bmle
+  extends RecyclerView.ViewHolder
 {
-  public abstract int delete(Uri paramUri, String paramString, String[] paramArrayOfString);
+  final GradientDrawable jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
+  final LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public abstract Uri insert(Uri paramUri, ContentValues paramContentValues);
-  
-  public abstract Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2);
-  
-  public abstract int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString);
+  bmle(View paramView)
+  {
+    super(paramView);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380336);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368513));
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = ((LayerDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable());
+    this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = ((GradientDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.findDrawableByLayerId(2131362266));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmle
  * JD-Core Version:    0.7.0.1
  */

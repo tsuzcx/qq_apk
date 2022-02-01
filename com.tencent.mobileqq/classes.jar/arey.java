@@ -1,62 +1,111 @@
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiResReloader.1;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import mqq.os.MqqHandler;
 
 public class arey
+  implements Handler.Callback
 {
-  private boolean a;
-  private boolean b;
-  private boolean c = true;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+  private arez jdField_a_of_type_Arez;
+  protected ArrayList<Integer> a;
+  private final Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
   
-  public static arey a(String paramString)
+  public arey(arez paramarez)
   {
-    if (paramString == null) {}
-    do
-    {
-      return null;
-      try
-      {
-        arey localarey = new arey();
-        paramString = new JSONObject(paramString);
-        localarey.a = paramString.optBoolean("isIPCDivideToTransportEnable", false);
-        localarey.b = paramString.optBoolean("isSleepThreadWhenIPCBlockEnable", false);
-        localarey.c = paramString.optBoolean("isSendQuickHBByDeepSleepEnable", true);
-        return localarey;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("MSFConfigProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+    this.jdField_a_of_type_Arez = paramarez;
   }
   
-  public static String a(arey paramarey)
+  public void a()
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramarey != null) {}
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10001);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
     try
     {
-      localJSONObject.put("isIPCDivideToTransportEnable", paramarey.a);
-      localJSONObject.put("isSleepThreadWhenIPCBlockEnable", paramarey.b);
-      localJSONObject.put("isSendQuickHBByDeepSleepEnable", paramarey.c);
-      return localJSONObject.toString();
-    }
-    catch (JSONException paramarey)
-    {
-      for (;;)
+      if (this.jdField_a_of_type_JavaUtilArrayList == null)
       {
-        paramarey.printStackTrace();
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        b();
       }
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt)))
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(0, Integer.valueOf(paramInt));
+        if (QLog.isColorLevel()) {
+          QLog.d("QQSysAndEmojiResReloader", 2, new Object[] { "addReloadDrawable idx:", Integer.valueOf(paramInt), " ,size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
+        }
+      }
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
     }
   }
   
-  public String toString()
+  protected void b()
   {
-    return "MSFConfigBean{isIPCDivideToTransportEnable=" + this.a + ", isSleepThreadWhenIPCBlockEnable=" + this.b + ", isSendQuickHBByDeepSleepEnable=" + this.c + '}';
+    ThreadManager.getSubThreadHandler().post(new QQSysAndEmojiResReloader.1(this));
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return false;
+    } while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0));
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+          break label162;
+        }
+        i = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.remove(0)).intValue();
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+        if (i <= -1) {
+          break;
+        }
+        if (this.jdField_a_of_type_Arez != null) {
+          this.jdField_a_of_type_Arez.a(i);
+        }
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+        {
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(10001, 300L);
+          return false;
+        }
+      }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("QQSysAndEmojiResReloader", 2, "finish reloading");
+      return false;
+      label162:
+      int i = -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arey
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class ajph
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  ajph(ajpe paramajpe) {}
+  ajph(ajpd paramajpd, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
-    bguq.a(ajpe.a(this.a), localRecommendTroopItem, 17, 10029);
-    bhju.a("Grp_contacts_news", "notice", "recom_clk", 1, 0, new String[] { localRecommendTroopItem.uin, localRecommendTroopItem.recomAlgol });
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Ajpd.a.dismiss();
+      return;
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6C", "0X8009B6C", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Ajpd.b();
+      ajpd.a(this.jdField_a_of_type_Ajpd, ajpd.a(this.jdField_a_of_type_Ajpd), true, Long.valueOf(ajpd.b(this.jdField_a_of_type_Ajpd)).longValue(), false);
+      continue;
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6D", "0X8009B6D", 0, 0, "", "", "", "");
+      ajpd.a(this.jdField_a_of_type_Ajpd, ajpd.a(this.jdField_a_of_type_Ajpd), true, Long.valueOf(ajpd.b(this.jdField_a_of_type_Ajpd)).longValue(), true);
+    }
   }
 }
 

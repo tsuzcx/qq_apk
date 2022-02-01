@@ -1,49 +1,76 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.ServerNotifyObserver;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afzn
-  extends ServerNotifyObserver
+  implements View.OnClickListener
 {
-  public afzn(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public afzn(FlashPicItemBuilder paramFlashPicItemBuilder) {}
   
-  public void onReceiveVerifyCode(String paramString1, int paramInt, String paramString2, byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    QLog.d("VerifyCodeActivity", 1, "onReceiveVerifyCode");
-    this.a.b = false;
-    if (this.a.jdField_a_of_type_Boolean)
+    long l = SystemClock.uptimeMillis();
+    if (l - FlashPicItemBuilder.a(this.a) < 800L) {}
+    for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("");
-      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131719161), 0).a();
-    }
-    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setKey(paramString1);
-    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setSeq(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString().length() > 4)) {
-      VerifyCodeActivity.a(this.a, true);
-    }
-    if (paramArrayOfByte != null)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bhgm.a(paramArrayOfByte, 0, paramArrayOfByte.length));
-      this.a.a(false);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      FlashPicItemBuilder.a(this.a, l);
+      afzq localafzq = (afzq)AIOUtils.getHolder(paramView);
+      if (localafzq != null)
+      {
+        Object localObject3 = localafzq.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        Object localObject2 = null;
+        Object localObject1 = localObject2;
+        if (localObject3 != null)
+        {
+          localObject3 = this.a.a.getMessageFacade().getMsgItemByUniseq(((MessageRecord)localObject3).frienduin, ((MessageRecord)localObject3).istroop, ((MessageRecord)localObject3).uniseq);
+          localObject1 = localObject2;
+          if ((localObject3 instanceof MessageForPic)) {
+            localObject1 = (MessageForPic)localObject3;
+          }
+        }
+        if (localObject1 != null)
+        {
+          if (amtr.a((MessageRecord)localObject1)) {}
+          for (boolean bool = amtr.b((MessageRecord)localObject1);; bool = amrp.b((MessageRecord)localObject1))
+          {
+            if (bool) {
+              break label185;
+            }
+            if (localafzq.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 0) {
+              break label187;
+            }
+            if (localafzq.jdField_a_of_type_ComTencentImageURLDrawable.isDownloadStarted()) {
+              break;
+            }
+            localafzq.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+            break;
+          }
+          label185:
+          continue;
+          label187:
+          if (localafzq.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 2) {
+            localafzq.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+          } else {
+            FlashPicItemBuilder.a(this.a, (MessageForPic)localObject1, localafzq.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder$FlashPicAIOThumbView);
+          }
+        }
+      }
     }
-    Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131719158), 1).show();
-  }
-  
-  public void onVerifyClose()
-  {
-    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afzn
  * JD-Core Version:    0.7.0.1
  */

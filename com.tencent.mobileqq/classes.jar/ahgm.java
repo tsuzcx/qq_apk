@@ -1,12 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-final class ahgm
-  implements ahky
+class ahgm
+  implements DialogInterface.OnDismissListener
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  ahgm(ahgc paramahgc) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return 18;
+    this.a.finish(1);
   }
 }
 

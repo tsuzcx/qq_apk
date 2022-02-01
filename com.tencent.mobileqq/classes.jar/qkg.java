@@ -1,22 +1,8 @@
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
 
-class qkg
-  implements View.OnTouchListener
+public abstract interface qkg
 {
-  qkg(qkc paramqkc, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.b.setDuplicateParentStateEnabled(true);
-    }
-    return false;
-  }
+  public abstract void a(MotionEvent paramMotionEvent);
 }
 
 

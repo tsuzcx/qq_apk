@@ -1,29 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-
-class mtb
-  extends BroadcastReceiver
+public abstract class mtb
 {
-  mtb(msz parammsz) {}
+  public abstract void a();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent == null) {}
-    for (paramContext = null;; paramContext = paramIntent.getAction())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhoneStatusMonitor", 2, "PhoneStatusReceiver.onReceive, action[" + paramContext + "]");
-      }
-      this.a.c();
-      return;
-    }
-  }
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mtb
  * JD-Core Version:    0.7.0.1
  */

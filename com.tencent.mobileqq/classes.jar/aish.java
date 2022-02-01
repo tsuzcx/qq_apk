@@ -1,22 +1,17 @@
-public abstract interface aish
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class aish
+  extends ainm
 {
-  public abstract int a();
-  
-  public abstract int a(float paramFloat1, float paramFloat2);
-  
-  public abstract void a(float paramFloat1, float paramFloat2);
-  
-  public abstract void a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract boolean a(float paramFloat1, float paramFloat2);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public boolean a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
 }
 
 

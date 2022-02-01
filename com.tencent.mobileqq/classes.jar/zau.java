@@ -1,172 +1,67 @@
-import android.animation.ValueAnimator;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Path.Direction;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.graphics.Typeface;
+import android.widget.TextView;
+import com.tencent.biz.richframework.download.RFWDownloader;
+import com.tencent.biz.richframework.download.RFWDownloaderFactory;
+import cooperation.qqcircle.QCircleConfig;
+import java.util.Hashtable;
 
-public final class zau
-  extends zax
+public class zau
 {
-  int jdField_a_of_type_Int;
-  Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  StaticLayout jdField_a_of_type_AndroidTextStaticLayout;
-  final String jdField_a_of_type_JavaLangString = "...";
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString;
-  int d;
+  private static final Hashtable<String, Typeface> a = new Hashtable();
   
-  public zau(zat paramzat, @NonNull Drawable paramDrawable, @NonNull zbb paramzbb, String paramString1, String paramString2)
+  public static Typeface a(Context paramContext, String paramString)
   {
-    super(paramzat, paramDrawable, paramzbb, paramString1, paramString2);
-    this.jdField_a_of_type_Int = paramzbb.jdField_d_of_type_Int;
-    this.jdField_b_of_type_Int = paramzbb.jdField_c_of_type_Int;
-    a(paramzbb.jdField_a_of_type_JavaLangString);
-    this.e = zps.a(BaseApplicationImpl.getContext(), 7.5F);
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 255, 0 });
-    localValueAnimator.setDuration(1000L);
-    localValueAnimator.setRepeatCount(2);
-    localValueAnimator.setRepeatMode(2);
-    localValueAnimator.addUpdateListener(new zav(this));
-    localValueAnimator.addListener(new zaw(this));
-    localValueAnimator.start();
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    paramCanvas.save();
-    paramCanvas.concat(this.jdField_a_of_type_Zat.jdField_a_of_type_Zfv.a(this));
-    paramCanvas.translate(-this.n / 2.0F, -this.o / 2.0F);
-    if (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() == 1) {
-      paramCanvas.translate(0.0F, this.jdField_c_of_type_Int);
-    }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    paramCanvas.translate(0.0F, this.jdField_a_of_type_AndroidGraphicsRectF.height());
-    paramCanvas.save();
-    paramCanvas.translate(6.0F, 16.0F);
-    this.jdField_a_of_type_Zat.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Zat.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-    paramCanvas.restore();
-    paramCanvas.save();
-    paramCanvas.translate(0.0F, 10.0F);
-    if (this.jdField_a_of_type_Boolean)
+    int i;
+    for (;;)
     {
-      this.jdField_a_of_type_Zat.d.setAlpha(this.jdField_d_of_type_Int);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_Zat.d);
-    }
-    paramCanvas.restore();
-    paramCanvas.translate(0.0F, this.jdField_a_of_type_AndroidTextStaticLayout.getHeight() + 32);
-    this.jdField_a_of_type_Zat.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, (int)this.n, 6);
-    this.jdField_a_of_type_Zat.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    paramCanvas.restore();
-    if (this.jdField_d_of_type_Boolean) {
-      zft.a(paramCanvas, this.jdField_a_of_type_Zat.jdField_a_of_type_Zfv, this, 0, 2130844636, 2130844643);
+      synchronized (a)
+      {
+        boolean bool = a.containsKey(paramString);
+        if (!bool)
+        {
+          i = 0;
+          if (i >= 3) {}
+        }
+      }
+      try
+      {
+        Typeface localTypeface = Typeface.createFromAsset(paramContext.getAssets(), String.format("fonts/%s.ttf", new Object[] { paramString }));
+        a.put(paramString, localTypeface);
+        return localTypeface;
+      }
+      catch (Throwable localThrowable)
+      {
+        i += 1;
+      }
+      paramContext = (Typeface)a.get(paramString);
+      return paramContext;
+      paramContext = finally;
+      throw paramContext;
     }
   }
   
-  public void a(Canvas paramCanvas, boolean paramBoolean)
+  public static void a(TextView paramTextView, String paramString)
   {
-    float f2 = this.n;
-    float f1 = this.o;
-    if (f2 * this.j < 200.0F) {
-      f2 = 200.0F / this.j;
+    synchronized (a)
+    {
+      if (!a.containsKey(paramString))
+      {
+        RFWDownloaderFactory.getDownloader(QCircleConfig.getDownloadStrategy()).getZipFile(paramString, new zav(paramString, paramTextView));
+        return;
+      }
+      paramTextView.setTypeface((Typeface)a.get(paramString));
     }
-    if (this.j * f1 < 200.0F) {
-      f1 = 200.0F / this.j;
-    }
-    paramCanvas.save();
-    paramCanvas.translate(-this.n / 2.0F, -this.o / 2.0F);
-    if (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() == 1) {
-      paramCanvas.translate(0.0F, this.jdField_c_of_type_Int);
-    }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    paramCanvas.translate(0.0F, this.jdField_a_of_type_AndroidGraphicsRectF.height());
-    paramCanvas.save();
-    paramCanvas.translate(6.0F, 16.0F);
-    this.jdField_a_of_type_Zat.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Zat.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-    paramCanvas.restore();
+  }
+  
+  public static void a(TextView paramTextView, boolean paramBoolean)
+  {
     if (paramBoolean)
     {
-      paramCanvas.save();
-      paramCanvas.translate(0.0F, 10.0F);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Zat.d.setAlpha(this.jdField_d_of_type_Int);
-        paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_Zat.d);
-      }
-      paramCanvas.restore();
+      a(paramTextView, "https://downv6.qq.com/video_story/qcircle/ttf/qcircle_number_bold_italic.ttf");
+      return;
     }
-    paramCanvas.translate(0.0F, this.jdField_a_of_type_AndroidTextStaticLayout.getHeight() + 32);
-    this.jdField_a_of_type_Zat.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, (int)this.n, 6);
-    this.jdField_a_of_type_Zat.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    paramCanvas.restore();
-  }
-  
-  public void a(String paramString)
-  {
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString))
-    {
-      yuk.e("FaceLayer", "text is empty.");
-      str = "";
-    }
-    yuk.b("FaceLayer", "text:" + str);
-    this.jdField_c_of_type_JavaLangString = str;
-    this.jdField_b_of_type_JavaLangString = str;
-    int j = (int)(this.n - 12.0F);
-    this.jdField_a_of_type_Zat.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidTextStaticLayout = new StaticLayout(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Zat.jdField_a_of_type_AndroidTextTextPaint, j, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false);
-    if (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() > 2)
-    {
-      int i = this.jdField_a_of_type_AndroidTextStaticLayout.getLineEnd(1);
-      paramString = this.jdField_c_of_type_JavaLangString.substring(0, i);
-      yuk.b("FaceLayer", "subString : " + this.jdField_c_of_type_JavaLangString + " -> " + paramString);
-      this.jdField_c_of_type_JavaLangString = paramString;
-      i = this.jdField_c_of_type_JavaLangString.length();
-      this.jdField_c_of_type_JavaLangString += "...";
-      this.jdField_a_of_type_AndroidTextStaticLayout = new StaticLayout(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Zat.jdField_a_of_type_AndroidTextTextPaint, j, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false);
-      i -= 1;
-      while ((i > 0) && (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() > 2))
-      {
-        paramString = this.jdField_c_of_type_JavaLangString.substring(0, i) + "...";
-        yuk.b("FaceLayer", "delete last char : " + this.jdField_c_of_type_JavaLangString + " -> " + paramString);
-        this.jdField_c_of_type_JavaLangString = paramString;
-        this.jdField_a_of_type_AndroidTextStaticLayout = new StaticLayout(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Zat.jdField_a_of_type_AndroidTextTextPaint, j, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false);
-        i -= 1;
-      }
-      if (i == 0) {
-        yuk.e("FaceLayer", "text size is too large :" + this.jdField_a_of_type_Int);
-      }
-    }
-    yuk.b("FaceLayer", "final text : " + this.jdField_c_of_type_JavaLangString + " , original text : " + this.jdField_b_of_type_JavaLangString);
-    paramString = new Rect();
-    this.jdField_a_of_type_AndroidTextStaticLayout.getLineBounds(0, paramString);
-    this.jdField_c_of_type_Int = paramString.height();
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(new RectF(0.0F, 0.0F, this.n, this.jdField_a_of_type_AndroidTextStaticLayout.getHeight() + 12), 4.0F, 4.0F, Path.Direction.CCW);
+    a(paramTextView, "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf");
   }
 }
 

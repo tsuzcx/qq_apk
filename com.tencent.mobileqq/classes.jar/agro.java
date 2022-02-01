@@ -1,70 +1,33 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.doodle.control.RDBaseListLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
 
-public class agro
-  extends BaseAdapter
+class agro
+  extends agrp
 {
-  private agro(RDBaseListLayout paramRDBaseListLayout) {}
+  agro(agrl paramagrl) {}
   
-  public void a() {}
-  
-  public void b() {}
-  
-  public int getCount()
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    return RDBaseListLayout.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return RDBaseListLayout.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject2 = RDBaseListLayout.a(this.a).get(paramInt);
-    Object localObject1;
-    if (paramView == null) {
-      localObject1 = this.a.a(paramInt, localObject2);
+    if (QLog.isColorLevel()) {
+      QLog.i("TribeShortVideoItemBuilder", 2, "get video download finish,vid=" + paramString1);
     }
-    for (;;)
-    {
-      if (localObject1 == null)
-      {
-        localObject2 = null;
-        localObject1 = paramView;
-      }
-      for (;;)
-      {
-        EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-        return localObject2;
-        localObject1 = (agrp)paramView.getTag();
-        if (localObject1 == null) {
-          break label141;
-        }
-        localObject1 = ((agrp)localObject1).a;
-        break;
-        this.a.a(paramInt, localObject2, localObject1);
-        localObject2 = ((agrq)localObject1).a();
-        if (localObject2 != null) {
-          ((View)localObject2).setTag(new agrp(this.a, paramInt, localObject1));
-        }
-        paramView = (View)localObject2;
-        localObject1 = localObject2;
-        localObject2 = paramView;
-      }
-      label141:
-      localObject1 = null;
+    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {}
+  }
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TribeShortVideoItemBuilder", 2, "Download video failed,vid=" + paramString1);
     }
+    this.jdField_a_of_type_Agrl.a(this.jdField_a_of_type_Agrq, this.jdField_a_of_type_Long);
+  }
+  
+  public void b(String paramString1, String paramString2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TribeShortVideoItemBuilder", 2, "Download video onPause,vid=" + paramString1);
+    }
+    this.jdField_a_of_type_Agrl.a(this.jdField_a_of_type_Agrq, this.jdField_a_of_type_Long);
   }
 }
 

@@ -1,38 +1,33 @@
-import java.util.List;
-import trpc.qq_vgame.common.AvGameCommon.GameQuestionInfo;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.avgame.floatwindow.CommonGameFloatWindowLayout;
 
-public abstract interface myp
-  extends Cloneable
+class myp
+  implements Animator.AnimatorListener
 {
-  public abstract int a();
+  myp(myl parammyl, int paramInt1, int paramInt2) {}
   
-  public abstract long a();
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    myl.a(this.jdField_a_of_type_Myl).a(this.jdField_a_of_type_Int, this.b);
+    myl.a(this.jdField_a_of_type_Myl).d();
+    myl.a(this.jdField_a_of_type_Myl, null);
+  }
   
-  public abstract String a();
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    myl.a(this.jdField_a_of_type_Myl).a(this.jdField_a_of_type_Int, this.b);
+    myl.a(this.jdField_a_of_type_Myl).d();
+    myl.a(this.jdField_a_of_type_Myl, null);
+  }
   
-  public abstract List<? extends myp> a();
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public abstract myp a();
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(AvGameCommon.GameQuestionInfo paramGameQuestionInfo);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a(myp parammyp);
-  
-  public abstract String[] a();
-  
-  public abstract int b();
-  
-  public abstract String b();
-  
-  public abstract int c();
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     myp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,8 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
-import mbb;
+import lvs;
+import mak;
 
 class AVActivity$11
   implements Runnable
@@ -10,7 +11,12 @@ class AVActivity$11
   
   public void run()
   {
-    mbb.a(VideoController.a().a, 8, 0L, true);
+    mak.a(VideoController.a().a, 8, 0L, true);
+    if (!lvs.a)
+    {
+      mak.a(VideoController.a().a, 10, 3000L);
+      lvs.a = true;
+    }
   }
 }
 

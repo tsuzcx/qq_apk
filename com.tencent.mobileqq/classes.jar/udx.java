@@ -1,29 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class udx
-  implements View.OnClickListener
+public abstract interface udx
 {
-  public udx(WSRecommendFragment paramWSRecommendFragment) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onClick(View paramView)
-  {
-    WSRecommendFragment.a(this.a).b();
-    ((une)this.a.b()).a(true, true, "");
-    ((une)this.a.b()).a("");
-    WSRecommendFragment.a(this.a).setVisibility(8);
-    this.a.c();
-    uno.a(136, 1, null);
-    unx.b(true);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt1, int paramInt2, Object paramObject);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void c(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     udx
  * JD-Core Version:    0.7.0.1
  */

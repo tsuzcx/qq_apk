@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class aetj
-  extends aohg
+  extends bjmc
 {
-  public aetj(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  public aetj(VisitorsActivity paramVisitorsActivity) {}
   
-  public void a()
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      H5MagicPlayerActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, "{code:0}");
-    }
+    this.a.d.setVisibility(0);
+    this.a.a.setClipChildren(false);
   }
 }
 

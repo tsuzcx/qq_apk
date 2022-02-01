@@ -1,28 +1,17 @@
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.8.1;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
 
 public class axnj
-  implements axmj
+  implements axmw
 {
-  public axnj(MultiCardFragment paramMultiCardFragment) {}
+  public axnj(ScanOcrActivity paramScanOcrActivity) {}
   
-  public void a(int paramInt)
+  public void a() {}
+  
+  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "onActionUpNotFling() called with: initialVelocity = [" + paramInt + "]");
-    }
-    if (MultiCardFragment.a(this.a) != null) {
-      MultiCardFragment.a(this.a).setViewPagerBusy(true);
-    }
-    if (MultiCardFragment.a(this.a) != null)
-    {
-      MultiCardFragment.a(this.a).c(paramInt);
-      if ((MultiCardFragment.a(this.a).c() == 0) && (MultiCardFragment.a(this.a) != null)) {
-        MultiCardFragment.a(this.a).setViewPagerBusy(false);
-      }
-    }
+    this.a.runOnUiThread(new ScanOcrActivity.8.1(this, paramString, paramInt, paramOcrRecogResult, paramLong));
   }
 }
 

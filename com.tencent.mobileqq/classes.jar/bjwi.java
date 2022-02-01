@@ -1,10 +1,31 @@
-import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ChildDrawingOrderCallback;
 
-public abstract interface bjwi
+class bjwi
+  implements RecyclerView.ChildDrawingOrderCallback
 {
-  public abstract int a(String paramString1, int paramInt, String paramString2, Bundle paramBundle);
+  bjwi(bjwf parambjwf) {}
   
-  public abstract void a(String paramString, int paramInt, Bundle paramBundle);
+  public int onGetChildDrawingOrder(int paramInt1, int paramInt2)
+  {
+    if (this.a.mOverdrawChild == null) {}
+    int i;
+    do
+    {
+      return paramInt2;
+      int j = this.a.mOverdrawChildPosition;
+      i = j;
+      if (j == -1)
+      {
+        i = this.a.mRecyclerView.indexOfChild(this.a.mOverdrawChild);
+        this.a.mOverdrawChildPosition = i;
+      }
+      if (paramInt2 == paramInt1 - 1) {
+        return i;
+      }
+    } while (paramInt2 < i);
+    return paramInt2 + 1;
+  }
 }
 
 

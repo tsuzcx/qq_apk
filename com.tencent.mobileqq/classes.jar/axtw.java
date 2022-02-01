@@ -1,19 +1,19 @@
-import android.arch.lifecycle.Observer;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function1;
-import org.jetbrains.annotations.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "T", "it", "onChanged", "(Ljava/lang/Object;)V"}, k=3, mv={1, 1, 16})
-final class axtw<T>
-  implements Observer<T>
+class axtw
+  implements View.OnClickListener
 {
-  axtw(Function1 paramFunction1) {}
+  axtw(axtr paramaxtr, AutoReplyText paramAutoReplyText, boolean paramBoolean) {}
   
-  public final void onChanged(@Nullable T paramT)
+  public void onClick(View paramView)
   {
-    if (paramT != null) {
-      this.a.invoke(paramT);
+    if (axtr.a(this.jdField_a_of_type_Axtr) != null) {
+      axtr.a(this.jdField_a_of_type_Axtr).b(this.jdField_a_of_type_ComTencentMobileqqDataAutoReplyText, this.jdField_a_of_type_Boolean);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

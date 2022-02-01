@@ -1,6 +1,17 @@
-public abstract interface bmcf
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.ae.view.AEPituCameraCaptureButtonLayout;
+
+public class bmcf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(String paramString1, String paramString2);
+  public bmcf(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a(f);
+  }
 }
 
 

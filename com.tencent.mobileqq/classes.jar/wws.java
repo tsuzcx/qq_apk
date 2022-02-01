@@ -1,56 +1,18 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.PlaybackThread;
 
 public class wws
-  extends wov
+  implements wwp
 {
-  public String a;
-  public ArrayList<wvn> a;
-  public boolean a;
-  public boolean b;
-  public String c;
+  public wws(MediaPlayer paramMediaPlayer) {}
   
-  public wws(qqstory_service.RspMsgTabNodeList paramRspMsgTabNodeList)
+  public void a(wwn paramwwn)
   {
-    super(paramRspMsgTabNodeList.result);
-    this.jdField_a_of_type_JavaLangString = paramRspMsgTabNodeList.list_seq.get().toStringUtf8();
-    this.c = paramRspMsgTabNodeList.next_cookie.get().toStringUtf8();
-    if (paramRspMsgTabNodeList.is_animate.get() > 0) {}
-    for (boolean bool1 = true;; bool1 = false)
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread != null) && (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread.a()) && (!this.a.e) && (this.a.jdField_a_of_type_Wwl.b() < 2000000L) && (!this.a.jdField_a_of_type_Wwl.b()))
     {
-      this.jdField_a_of_type_Boolean = bool1;
-      if (paramRspMsgTabNodeList.is_end.has())
-      {
-        bool1 = bool2;
-        if (paramRspMsgTabNodeList.is_end.get() != 1) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-      this.b = bool1;
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramRspMsgTabNodeList.node_list.size());
-      paramRspMsgTabNodeList = paramRspMsgTabNodeList.node_list.get().iterator();
-      while (paramRspMsgTabNodeList.hasNext())
-      {
-        qqstory_service.MsgTabNodeInfo localMsgTabNodeInfo = (qqstory_service.MsgTabNodeInfo)paramRspMsgTabNodeList.next();
-        wvn localwvn = new wvn();
-        localwvn.a(localMsgTabNodeInfo);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localwvn);
-      }
+      this.a.e = true;
+      this.a.jdField_a_of_type_Wwt.sendMessage(this.a.jdField_a_of_type_Wwt.obtainMessage(200, 701, 0));
     }
-  }
-  
-  public String toString()
-  {
-    return "MsgTabNodeListResponse{shouldAnimate=" + this.jdField_a_of_type_Boolean + ", seq='" + this.jdField_a_of_type_JavaLangString + '\'' + ", cookie='" + this.c + '\'' + ", isEnd=" + this.b + ", nodeList=" + this.jdField_a_of_type_JavaUtilArrayList + "} " + super.toString();
   }
 }
 

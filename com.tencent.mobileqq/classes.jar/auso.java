@@ -1,16 +1,16 @@
-public abstract interface auso
+import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class auso
 {
-  public abstract long a(bevm parambevm, ausm paramausm);
+  static HookMethodCallback jdField_a_of_type_ComTencentMobileqqJavahooksdkHookMethodCallback = new ausp();
+  private static ConcurrentHashMap<Long, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  static HookMethodCallback b = new ausq();
   
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(ausm paramausm);
-  
-  public abstract void a(boolean paramBoolean, ausm paramausm);
-  
-  public abstract byte[] a(byte[] paramArrayOfByte, long paramLong, ausm paramausm);
-  
-  public abstract void b(ausm paramausm);
+  public static void a()
+  {
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(Thread.currentThread().getId()), Long.valueOf(0L));
+  }
 }
 
 

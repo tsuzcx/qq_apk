@@ -1,16 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zuy
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public zuy(RotateCircleImageView paramRotateCircleImageView) {}
+  public zuy(CustomMenuBar paramCustomMenuBar, String paramString, int paramInt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    RotateCircleImageView.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a != null) {
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

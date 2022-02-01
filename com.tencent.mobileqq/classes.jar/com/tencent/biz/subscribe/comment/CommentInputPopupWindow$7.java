@@ -1,17 +1,17 @@
 package com.tencent.biz.subscribe.comment;
 
-import aair;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import zfp;
 
 public class CommentInputPopupWindow$7
   implements Runnable
 {
-  public CommentInputPopupWindow$7(aair paramaair, View paramView) {}
+  public CommentInputPopupWindow$7(zfp paramzfp, View paramView) {}
   
   public void run()
   {
-    aair.a(this.this$0).showSoftInput(this.a, 1);
+    zfp.a(this.this$0).showSoftInput(this.a, 1);
   }
 }
 

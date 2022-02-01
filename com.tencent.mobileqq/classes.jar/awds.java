@@ -1,17 +1,45 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
-import java.util.concurrent.Callable;
+import com.tencent.qphone.base.util.QLog;
 
-public class awds
-  implements Callable<avzc>
+class awds
+  extends bbrs
 {
-  public awds(ODLoadingActivity paramODLoadingActivity, String paramString) {}
+  awds(awdi paramawdi, String paramString, awdd paramawdd) {}
   
-  public avzc a()
+  public void a(int paramInt)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    return avzl.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoOdODLoadingActivity, this.jdField_a_of_type_JavaLangString, localQQAppInterface.c());
+    if (this.jdField_a_of_type_Awdd.a != null)
+    {
+      String str = this.jdField_a_of_type_Awdi.a(this.jdField_a_of_type_Awdd.a.a);
+      awde localawde = this.jdField_a_of_type_Awdi.a(str);
+      if ((localawde != null) && (!localawde.a))
+      {
+        localawde.c = (paramInt / 100);
+        this.jdField_a_of_type_Awdi.a(str, localawde);
+        awdi.a(this.jdField_a_of_type_Awdi, localawde, paramInt / 100);
+      }
+    }
+  }
+  
+  public void a(int paramInt, bbrl parambbrl)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MultiRichMediaSaveManager", 2, "downloadShortVideo key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt);
+    }
+    int j = 0;
+    String str2 = "";
+    String str1 = str2;
+    int i = j;
+    if (parambbrl != null)
+    {
+      str1 = str2;
+      i = j;
+      if (parambbrl.a != null)
+      {
+        i = parambbrl.a.a;
+        str1 = parambbrl.a.b;
+      }
+    }
+    this.jdField_a_of_type_Awdi.a(this.jdField_a_of_type_Awdd, paramInt, i, str1);
   }
 }
 

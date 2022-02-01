@@ -1,20 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
 class nuf
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  nuf(ntc paramntc, int paramInt, oag paramoag) {}
+  nuf(nua paramnua) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    aavs.a((BaseActivity)this.jdField_a_of_type_Ntc.jdField_a_of_type_JavaLangRefWeakReference.get(), new aavu(this.jdField_a_of_type_Ntc.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ntc.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Ntc.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, ntc.a(this.jdField_a_of_type_Ntc), this.jdField_a_of_type_Int);
-    ntc.a(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_Oag.jdField_a_of_type_JavaLangString);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "onReceive ===>" + paramContext);
+    }
+    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext))) {
+      this.a.a();
+    }
   }
 }
 

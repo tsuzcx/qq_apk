@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import androidx.annotation.NonNull;
-import beof;
+import bdhx;
 import java.util.List;
 
 public class OpenDocParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<OpenDocParam> CREATOR = new beof();
+  public static final Parcelable.Creator<OpenDocParam> CREATOR = new bdhx();
   public int a;
   public long a;
   public String a;

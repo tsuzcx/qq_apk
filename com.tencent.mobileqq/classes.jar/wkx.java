@@ -1,24 +1,7 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-
 public class wkx
 {
   public int a;
-  public final long a;
-  public final String a;
-  public boolean a;
-  public String b = "";
-  
-  public wkx(String paramString)
-  {
-    this.jdField_a_of_type_Int = 1000;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public ErrorMessage a()
-  {
-    return new ErrorMessage(this.jdField_a_of_type_Int, this.b);
-  }
+  public long a;
 }
 
 

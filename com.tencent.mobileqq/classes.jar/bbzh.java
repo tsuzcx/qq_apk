@@ -1,29 +1,8 @@
-import com.tencent.mobileqq.search.KDSearchHistoryFlowLayout;
+import com.tencent.mobileqq.soload.LoadExtResult;
 
-public class bbzh
-  extends bljl
+public abstract interface bbzh
 {
-  public bbzh(KDSearchHistoryFlowLayout paramKDSearchHistoryFlowLayout)
-  {
-    super(paramKDSearchHistoryFlowLayout);
-  }
-  
-  public void a()
-  {
-    super.a();
-  }
-  
-  public void onChanged()
-  {
-    super.onChanged();
-    KDSearchHistoryFlowLayout.a(this.a);
-  }
-  
-  public void onInvalidated()
-  {
-    super.onInvalidated();
-    KDSearchHistoryFlowLayout.a(this.a);
-  }
+  public abstract void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult);
 }
 
 

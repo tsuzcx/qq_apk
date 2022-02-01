@@ -1,77 +1,47 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment.3.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
 
 public class aszr
-  extends RecyclerView.OnScrollListener
 {
-  public aszr(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
-  
-  public void onScrollStateChanged(RecyclerView arg1, int paramInt)
+  public static void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendSquareFragment", 2, String.format("onScrollStateChanged state=%s", new Object[] { Integer.valueOf(paramInt) }));
-    }
-    if (this.a.jdField_a_of_type_Aoof != null)
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject != null) && ((localObject instanceof QQAppInterface))) {}
+    for (localObject = (QQAppInterface)localObject;; localObject = null)
     {
-      if (paramInt != 0) {
-        break label94;
+      if (localObject == null) {
+        return;
       }
-      this.a.c = false;
-      this.a.jdField_a_of_type_Aoof.b();
-      this.a.av_();
-    }
-    for (;;)
-    {
-      if (paramInt == 0)
+      aszs localaszs = new aszs();
+      localaszs.jdField_b_of_type_JavaLangString = paramString;
+      localaszs.jdField_a_of_type_JavaLangString = paramString;
+      if (localaszs.jdField_a_of_type_Boolean) {}
+      for (int i = 0;; i = 1)
       {
-        ExtendFriendSquareFragment.c(this.a);
-        this.a.g();
-        this.a.b(false);
-      }
-      return;
-      label94:
-      this.a.c = true;
-      this.a.jdField_a_of_type_Aoof.c();
-      this.a.jdField_a_of_type_Aoof.a();
-      synchronized (ExtendFriendBaseFragment.a)
-      {
-        if (this.a.jdField_a_of_type_JavaUtilMap != null) {
-          this.a.jdField_a_of_type_JavaUtilMap.clear();
+        bcef.b((QQAppInterface)localObject, "CliOper", "", "", localaszs.jdField_a_of_type_JavaLangString, localaszs.jdField_b_of_type_JavaLangString, localaszs.jdField_a_of_type_Int, localaszs.jdField_b_of_type_Int, i, String.valueOf(localaszs.jdField_b_of_type_Long), localaszs.d, aszs.a(localaszs), localaszs.c);
+        if (!QLog.isColorLevel()) {
+          break;
         }
+        QLog.i("FileManagerReporter<FileAssistant>", 2, "report key:" + paramString);
+        return;
       }
     }
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public static void a(String paramString, aszs paramaszs)
   {
-    this.a.h = this.a.d();
-    float f2 = 0.0F;
-    float f1 = f2;
-    if (this.a.e != -1L)
+    BaseApplicationImpl.getContext();
+    paramString = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramString != null) && ((paramString instanceof QQAppInterface))) {}
+    for (paramString = (QQAppInterface)paramString;; paramString = null)
     {
-      long l = System.currentTimeMillis() - this.a.e;
-      f1 = f2;
-      if (l > 0L)
+      if (paramaszs.jdField_a_of_type_Boolean) {}
+      for (int i = 0;; i = 1)
       {
-        f1 = f2;
-        if (l < 2000L) {
-          f1 = paramInt2 * 1.0F / (float)l;
-        }
+        bcef.b(paramString, "CliOper", "", "", paramaszs.jdField_a_of_type_JavaLangString, paramaszs.jdField_b_of_type_JavaLangString, paramaszs.jdField_a_of_type_Int, paramaszs.jdField_b_of_type_Int, i, String.valueOf(paramaszs.jdField_b_of_type_Long), paramaszs.d, aszs.a(paramaszs), paramaszs.c);
+        return;
       }
-    }
-    this.a.e = System.currentTimeMillis();
-    ExtendFriendSquareFragment.a(this.a, this.a.h, f1);
-    if ((!ExtendFriendSquareFragment.a(this.a)) && (!ExtendFriendSquareFragment.b(this.a)) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) && (this.a.jdField_a_of_type_Aszx != null) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(this.a.jdField_a_of_type_Aszx.getItemCount() - 2) != null))
-    {
-      this.a.a(true);
-      ExtendFriendSquareFragment.a(this.a).post(new ExtendFriendSquareFragment.3.1(this));
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
     }
   }
 }

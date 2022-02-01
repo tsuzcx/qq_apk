@@ -1,47 +1,15 @@
-import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
-import java.util.ArrayList;
-import java.util.List;
+import kotlin.Metadata;
 
-public class tvm
-  implements anui
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/LearnModeCheckStep;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/SuperMaskStep;", "()V", "doStep", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tvm
+  extends tvc
 {
-  protected void a(boolean paramBoolean, ArrayList<ReadInJoyArticle> paramArrayList) {}
-  
-  protected void a(boolean paramBoolean, List<tvr> paramList) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public boolean a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      if (paramObject != null) {
-        try
-        {
-          a(paramBoolean, (ArrayList)paramObject);
-          return;
-        }
-        catch (Exception paramObject)
-        {
-          return;
-        }
-      }
-      a(false, new ArrayList(0));
-      return;
+    if (!bcoo.a()) {}
+    for (boolean bool = true;; bool = false) {
+      return tvs.a.a(bool, (tvc)this);
     }
-    if (paramObject != null) {
-      try
-      {
-        a(paramBoolean, (ArrayList)paramObject);
-        return;
-      }
-      catch (Exception paramObject)
-      {
-        return;
-      }
-    }
-    a(false, new ArrayList(0));
   }
 }
 

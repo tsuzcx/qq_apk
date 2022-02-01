@@ -1,127 +1,331 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.os.SystemClock;
+import android.util.StateSet;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.zip.Deflater;
+import java.util.zip.Inflater;
 
 public class bciq
-  extends bcjf
 {
-  public bciq(aoof paramaoof)
+  public static int a(String paramString)
   {
-    super(paramaoof);
-  }
-  
-  protected bcik<bcfr, bcnz> a(aoof paramaoof)
-  {
-    return new bcir(paramaoof);
-  }
-  
-  public void a(bcfp parambcfp, bcny parambcny)
-  {
-    parambcfp = (bcfq)parambcfp;
-    LinearLayout localLinearLayout = ((bcod)parambcny).a();
-    List localList;
-    int k;
-    int i;
-    bcfn localbcfn;
-    Object localObject2;
-    Object localObject1;
-    if (localLinearLayout != null)
+    int i = 0;
+    if (paramString != null) {
+      paramString.trim();
+    }
+    try
     {
-      localList = parambcfp.a();
-      if (localList != null)
-      {
-        localLinearLayout.removeAllViews();
-        k = Math.min(localList.size(), 3);
+      i = Integer.parseInt(paramString);
+      return i;
+    }
+    catch (Exception paramString) {}
+    return 0;
+  }
+  
+  public static long a(String paramString)
+  {
+    long l = 0L;
+    if (paramString != null) {
+      paramString.trim();
+    }
+    try
+    {
+      l = Long.parseLong(paramString);
+      return l;
+    }
+    catch (Exception paramString) {}
+    return 0L;
+  }
+  
+  public static StateListDrawable a(Resources paramResources, int paramInt, float[] paramArrayOfFloat)
+  {
+    GradientDrawable[] arrayOfGradientDrawable = new GradientDrawable[2];
+    int k = Color.red(paramInt);
+    int i = Color.green(paramInt);
+    int j = Color.blue(paramInt);
+    paramInt = k;
+    k = 0;
+    if (k < arrayOfGradientDrawable.length)
+    {
+      arrayOfGradientDrawable[k] = new GradientDrawable();
+      arrayOfGradientDrawable[k].setShape(0);
+      int m = paramInt - (k << 5);
+      paramInt = m;
+      if (m < 0) {
+        paramInt = 0;
+      }
+      m = i - (k << 5);
+      i = m;
+      if (m < 0) {
         i = 0;
-        if (i < k)
+      }
+      m = j - (k << 5);
+      j = m;
+      if (m < 0) {
+        j = 0;
+      }
+      arrayOfGradientDrawable[k].setColor(Color.rgb(paramInt, i, j));
+      if (paramArrayOfFloat != null) {
+        arrayOfGradientDrawable[k].setCornerRadii(paramArrayOfFloat);
+      }
+      for (;;)
+      {
+        k += 1;
+        break;
+        arrayOfGradientDrawable[k].setCornerRadius(AIOUtils.dp2px(4.0F, paramResources));
+      }
+    }
+    paramResources = new StateListDrawable();
+    paramArrayOfFloat = arrayOfGradientDrawable[1];
+    paramResources.addState(new int[] { 16842919, 16842910 }, paramArrayOfFloat);
+    paramResources.addState(StateSet.WILD_CARD, arrayOfGradientDrawable[0]);
+    return paramResources;
+  }
+  
+  private static boolean a(Inflater paramInflater)
+  {
+    return (paramInflater.finished()) || (paramInflater.getRemaining() <= 0);
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte)
+  {
+    Inflater localInflater = new Inflater();
+    localInflater.reset();
+    localInflater.setInput(paramArrayOfByte);
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramArrayOfByte.length);
+    for (;;)
+    {
+      try
+      {
+        byte[] arrayOfByte1 = new byte[1024];
+        long l = SystemClock.uptimeMillis();
+        if (!a(localInflater))
         {
-          parambcfp = (bcfr)localList.get(i);
-          if ((parambcfp instanceof bcfn))
+          localByteArrayOutputStream.write(arrayOfByte1, 0, localInflater.inflate(arrayOfByte1));
+          if (SystemClock.uptimeMillis() - l <= 15000L) {
+            continue;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.w("StructMsg", 2, "decompress struct msg time out");
+          }
+          bcef.b(null, "dc00898", "", "", "0X8009845", "0X8009845", 0, 1, "", "", "", "");
+          try
           {
-            localbcfn = (bcfn)parambcfp;
-            localObject2 = null;
-            if (bchc.a(localbcfn.e()) == 1)
-            {
-              localObject2 = LayoutInflater.from(parambcny.a().getContext()).inflate(2131562876, null);
-              parambcfp = ((View)localObject2).findViewById(2131368866);
-              localObject1 = new bcnt((View)localObject2);
+            localByteArrayOutputStream.close();
+            return paramArrayOfByte;
+          }
+          catch (IOException localIOException1)
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
             }
+            QLog.d("StructMsg", 2, localIOException1.getMessage());
+            return paramArrayOfByte;
           }
         }
+        arrayOfByte2 = localByteArrayOutputStream.toByteArray();
+        paramArrayOfByte = arrayOfByte2;
+      }
+      catch (Exception localException)
+      {
+        byte[] arrayOfByte2;
+        localException = localException;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("StructMsg", 2, localException.getMessage());
+        try
+        {
+          localIOException3.close();
+          arrayOfByte3 = paramArrayOfByte;
+        }
+        catch (IOException localIOException4)
+        {
+          arrayOfByte3 = paramArrayOfByte;
+        }
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("StructMsg", 2, localIOException4.getMessage());
+        byte[] arrayOfByte3 = paramArrayOfByte;
+        continue;
+      }
+      finally {}
+      try
+      {
+        localByteArrayOutputStream.close();
+        arrayOfByte2 = paramArrayOfByte;
+      }
+      catch (IOException localIOException3)
+      {
+        arrayOfByte2 = paramArrayOfByte;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("StructMsg", 2, localIOException3.getMessage());
+        arrayOfByte2 = paramArrayOfByte;
+      }
+    }
+    localInflater.end();
+    return arrayOfByte2;
+    try
+    {
+      localIOException4.close();
+      throw paramArrayOfByte;
+    }
+    catch (IOException localIOException2)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("StructMsg", 2, localIOException2.getMessage());
+        }
+      }
+    }
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte, int paramInt)
+  {
+    int i = paramArrayOfByte.length;
+    Object localObject;
+    if (paramInt == -1)
+    {
+      paramInt = paramArrayOfByte[0];
+      localObject = new byte[i - 1];
+      if (paramInt == 1)
+      {
+        System.arraycopy(paramArrayOfByte, 1, localObject, 0, i - 1);
+        paramArrayOfByte = a((byte[])localObject);
       }
     }
     for (;;)
     {
-      label137:
-      int j;
-      if ((localObject2 != null) && (parambcfp != null))
+      if ((QLog.isColorLevel()) && (paramArrayOfByte != null))
       {
-        ((View)localObject2).setTag(2131381109, localbcfn);
-        ((View)localObject2).setTag(2131381115, localObject1);
-        ((View)localObject2).setTag(2131381110, Integer.valueOf(i));
-        ((View)localObject2).setTag(2131381108, Integer.valueOf(localList.size()));
-        ((View)localObject2).setTag(2131381111, this.a);
-        bfmf.a((View)localObject2, localbcfn.d(), localbcfn.b(), 1);
-        bcnl.a(localbcfn, k, i);
-        int m = localbcfn.a();
-        int n = localbcfn.b();
-        if ((localbcfn instanceof bcfs))
+        localObject = new String(paramArrayOfByte, 0, paramArrayOfByte.length);
+        QLog.d("StructMsg", 2, "getStructMsgFromXmlBuff xmlStr:" + (String)localObject);
+      }
+      return paramArrayOfByte;
+      System.arraycopy(paramArrayOfByte, 1, localObject, 0, i - 1);
+      paramArrayOfByte = (byte[])localObject;
+      continue;
+      localObject = new byte[i];
+      if (paramInt == 1)
+      {
+        System.arraycopy(paramArrayOfByte, 0, localObject, 0, i);
+        paramArrayOfByte = a((byte[])localObject);
+      }
+      else
+      {
+        System.arraycopy(paramArrayOfByte, 0, localObject, 0, i);
+        paramArrayOfByte = (byte[])localObject;
+      }
+    }
+  }
+  
+  public static final byte[] b(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    byte[] arrayOfByte1 = new byte[0];
+    Deflater localDeflater = new Deflater();
+    localDeflater.reset();
+    localDeflater.setInput(paramArrayOfByte);
+    localDeflater.finish();
+    localByteArrayOutputStream = new ByteArrayOutputStream(paramArrayOfByte.length);
+    try
+    {
+      byte[] arrayOfByte3 = new byte[1024];
+      while (!localDeflater.finished()) {
+        localByteArrayOutputStream.write(arrayOfByte3, 0, localDeflater.deflate(arrayOfByte3));
+      }
+      try
+      {
+        byte[] arrayOfByte2;
+        localByteArrayOutputStream.close();
+        throw paramArrayOfByte;
+      }
+      catch (IOException localIOException1)
+      {
+        for (;;)
         {
-          j = localbcfn.u;
-          label256:
-          bcnl.a(m, n, (View)localObject2, j);
-          localLinearLayout.addView((View)localObject2);
-          this.a.a(localbcfn, (bcoa)localObject1);
+          if (QLog.isColorLevel()) {
+            QLog.d("StructMsg", 2, localIOException1.getMessage());
+          }
         }
+      }
+    }
+    catch (Exception localException)
+    {
+      localException = localException;
+      if (QLog.isColorLevel()) {
+        QLog.d("StructMsg", 2, localException.getMessage());
       }
       for (;;)
       {
-        i += 1;
-        break;
-        if (bchc.a(localbcfn.e()) != 2) {
-          break label554;
-        }
-        localObject2 = LayoutInflater.from(parambcny.a().getContext()).inflate(2131562883, null);
-        parambcfp = ((View)localObject2).findViewById(2131368866);
-        localObject1 = new bcoc((View)localObject2);
-        break label137;
-        j = 0;
-        break label256;
-        QLog.e("MostUseResultGroupPresenter", 2, "unresolved id type" + localbcfn.e());
-        continue;
-        if ((parambcfp instanceof bcep))
+        try
         {
-          parambcfp = (bcep)parambcfp;
-          localObject1 = new bcph(localLinearLayout, parambcfp.d());
-          localObject2 = ((bcph)localObject1).a();
-          ((View)localObject2).setTag(2131381109, parambcfp);
-          ((View)localObject2).setTag(2131381115, localObject1);
-          ((View)localObject2).setTag(2131381110, Integer.valueOf(i));
-          ((View)localObject2).setTag(2131381108, Integer.valueOf(localList.size()));
-          ((View)localObject2).setTag(2131381111, this.a);
-          bcnl.a(parambcfp, k, i);
-          localObject2 = new LinearLayout.LayoutParams(-1, -2);
-          localLinearLayout.addView(((bcph)localObject1).a(), (ViewGroup.LayoutParams)localObject2);
-          this.a.a(parambcfp, (bcoa)localObject1);
+          localByteArrayOutputStream.close();
+          arrayOfByte2 = paramArrayOfByte;
         }
-        else
+        catch (IOException localIOException3)
         {
-          QLog.e("MostUseResultGroupPresenter", 2, "unknown type in MOST USED GROUP P");
+          arrayOfByte2 = paramArrayOfByte;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("StructMsg", 2, localIOException3.getMessage());
+          arrayOfByte2 = paramArrayOfByte;
+          continue;
+        }
+        localDeflater.end();
+        return arrayOfByte2;
+        arrayOfByte3 = localByteArrayOutputStream.toByteArray();
+        paramArrayOfByte = arrayOfByte3;
+        try
+        {
+          localByteArrayOutputStream.close();
+          arrayOfByte2 = paramArrayOfByte;
+        }
+        catch (IOException localIOException2)
+        {
+          arrayOfByte2 = paramArrayOfByte;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.d("StructMsg", 2, localIOException2.getMessage());
+          arrayOfByte2 = paramArrayOfByte;
         }
       }
-      if (parambcny.b() != null) {
-        parambcny.b().setVisibility(8);
-      }
-      return;
-      label554:
-      parambcfp = null;
-      localObject1 = null;
     }
+    catch (OutOfMemoryError paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte = paramArrayOfByte;
+        if (QLog.isColorLevel()) {
+          QLog.d("StructMsg", 2, paramArrayOfByte.getMessage());
+        }
+        try
+        {
+          localByteArrayOutputStream.close();
+        }
+        catch (IOException paramArrayOfByte)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("StructMsg", 2, paramArrayOfByte.getMessage());
+          }
+        }
+      }
+    }
+    finally {}
   }
 }
 

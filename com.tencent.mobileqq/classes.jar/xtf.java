@@ -1,33 +1,19 @@
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import android.view.View;
 
-public class xtf
-  implements Animation.AnimationListener
+class xtf
+  extends xqa
 {
-  public xtf(ExploreAnimalView paramExploreAnimalView) {}
+  xtf(xss paramxss) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, View paramView, Object paramObject, xsh paramxsh)
   {
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(600L);
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatCount(-1);
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatMode(2);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-    paramAnimation = (ImageView)this.a.findViewById(2131365682);
-    ImageView localImageView1 = (ImageView)this.a.findViewById(2131365683);
-    ImageView localImageView2 = (ImageView)this.a.findViewById(2131362954);
-    this.a.a(paramAnimation, 100L);
-    this.a.a(localImageView1, 240L);
-    this.a.a(localImageView2, 360L);
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    this.a.l();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,78 +1,117 @@
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import java.util.HashMap;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqhi
-  extends aqhe
 {
-  private float a;
-  private float b = -1.0F;
-  private float c = -1.0F;
-  float[] d = new float[3];
-  private float[] e = new float[16];
+  private static String jdField_a_of_type_JavaLangString;
+  public static HashMap<String, String> a;
+  private static String b;
+  public static final HashMap<String, Integer> b;
+  private boolean jdField_a_of_type_Boolean;
   
-  public aqhi(Context paramContext, int paramInt, SensorManager paramSensorManager, aqgw paramaqgw)
+  static
   {
-    super(paramContext, paramInt, paramSensorManager, paramaqgw);
-    this.jdField_a_of_type_Float = -1.0F;
-    if (paramSensorManager.getDefaultSensor(3) != null)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramSensorManager.getDefaultSensor(3));
-      return;
-    }
-    throw new OrientationProviderNotFound(String.valueOf(3));
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaLangString = "skin_leba_tongyong_bg";
+    jdField_b_of_type_JavaLangString = "https://zb.vip.qq.com/v2/pages/themeMall?_wv=16778243&from=themeIcon";
+    jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_fujin_bg", Integer.valueOf(2130850127));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_xingqubuluo_bg", Integer.valueOf(2130850146));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_youxi_bg", Integer.valueOf(2130850149));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_wanyiwan_bg", Integer.valueOf(2130850142));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_weishi_bg", Integer.valueOf(2130850143));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_gouwu_bg", Integer.valueOf(2130850128));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_bodongdongman_bg", Integer.valueOf(2130850125));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_zhibo_bg", Integer.valueOf(2130850151));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_qiedianjing_bg", Integer.valueOf(2130850131));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_pupudushu_bg", Integer.valueOf(2130850130));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_yinyue_bg", Integer.valueOf(2130850148));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_yingyongbao_bg", Integer.valueOf(2130850147));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_tanbaishuo_bg", Integer.valueOf(2130850136));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_yundong_bg", Integer.valueOf(2130850150));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_chihewanle_bg", Integer.valueOf(2130850126));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_tongchengfuwu_bg", Integer.valueOf(2130850140));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_tengxunxinwen_bg", Integer.valueOf(2130850138));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_tengxunketang_bg", Integer.valueOf(2130850137));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_qiefudao_bg", Integer.valueOf(2130850132));
+    jdField_b_of_type_JavaUtilHashMap.put("skin_leba_xiaoyuankuolie_bg", Integer.valueOf(2130850145));
   }
   
-  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  @NonNull
+  public static aqhi a(String paramString)
   {
-    if (this.jdField_a_of_type_Aqgw == null) {
-      return;
-    }
-    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
+    aqhi localaqhi = new aqhi();
+    if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_Float = paramFloat1;
-      this.jdField_a_of_type_Aqgw.updateAzimuth(paramFloat1);
+      localaqhi.jdField_a_of_type_Boolean = false;
+      return localaqhi;
     }
-    if (Math.abs(paramFloat2 - this.b) > 1.0F)
-    {
-      this.b = paramFloat2;
-      this.jdField_a_of_type_Aqgw.updatePitch(paramFloat2);
-    }
-    if (Math.abs(paramFloat3 - this.c) > 1.0F)
-    {
-      this.c = paramFloat3;
-      this.jdField_a_of_type_Aqgw.updateRoll(paramFloat3);
-    }
-    this.jdField_a_of_type_Aqgw.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+    localaqhi.jdField_a_of_type_Boolean = true;
+    a(paramString);
+    return localaqhi;
   }
   
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  private static void a(String paramString)
   {
-    if (paramSensorEvent.sensor.getType() == 3)
+    try
     {
-      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
-      if (this.jdField_a_of_type_Int != 1)
+      paramString = new JSONObject(paramString).getJSONObject("android");
+      JSONObject localJSONObject = paramString.getJSONObject("backgroundIconConfig");
+      if (localJSONObject != null)
       {
-        this.d[0] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[0]));
-        this.d[1] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[1]));
-        this.d[2] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[2]));
-        aqgy.a(aqgy.a(this.d), this.e);
-        super.a(this.e);
+        Iterator localIterator = localJSONObject.keys();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          jdField_a_of_type_JavaUtilHashMap.put(str, localJSONObject.getString(str));
+        }
       }
+      jdField_a_of_type_JavaLangString = paramString.getString("defaultIconName");
     }
-    else
+    catch (JSONException paramString)
     {
+      paramString.printStackTrace();
       return;
     }
-    a(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2]);
+    jdField_b_of_type_JavaLangString = paramString.getString("themeStoreUrl");
+  }
+  
+  public int a(String paramString)
+  {
+    paramString = (Integer)jdField_b_of_type_JavaUtilHashMap.get(paramString);
+    if (paramString == null) {
+      return 0;
+    }
+    return paramString.intValue();
+  }
+  
+  public String a()
+  {
+    return jdField_b_of_type_JavaLangString;
+  }
+  
+  public String a(String paramString)
+  {
+    String str = (String)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    paramString = str;
+    if (TextUtils.isEmpty(str)) {
+      paramString = jdField_a_of_type_JavaLangString;
+    }
+    return paramString;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqhi
  * JD-Core Version:    0.7.0.1
  */

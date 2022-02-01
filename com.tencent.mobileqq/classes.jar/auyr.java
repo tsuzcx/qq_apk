@@ -1,16 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.util.SystemUtil;
+import java.io.File;
 
 public class auyr
-  implements DialogInterface.OnClickListener
 {
-  public auyr(ForwardFileBaseOption paramForwardFileBaseOption) {}
+  public static String a = new File(BaseApplicationImpl.getApplication().getFilesDir(), "ListenTogether_v828").getAbsolutePath();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    this.a.a.finish();
+    if (SystemUtil.isExistSDCard())
+    {
+      a = new File(AppConstants.SDCARD_PATH, "ListenTogether_v828").getAbsolutePath();
+      return;
+    }
   }
 }
 

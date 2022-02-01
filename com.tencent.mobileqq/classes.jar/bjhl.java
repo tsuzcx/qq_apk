@@ -1,44 +1,28 @@
-import MWIFI.SCGet3rdCloudCheck;
-import android.content.Context;
-import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.ims.SafeReport.RspBody;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 final class bjhl
-  extends bjhw
+  extends nmf
 {
-  bjhl(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, aola paramaola) {}
-  
-  public void a(int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((1 == paramInt) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aola);
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new SafeReport.RspBody();
     }
-  }
-  
-  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, result: " + paramSCGet3rdCloudCheck);
-    }
-    if (paramSCGet3rdCloudCheck != null)
+    try
     {
-      if (paramSCGet3rdCloudCheck.delayHour > 24) {
-        bjia.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramSCGet3rdCloudCheck.delayHour);
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if ((paramBundle.uint32_result.has()) && (QLog.isColorLevel())) {
+        QLog.d("QSRPT", 2, String.format("report result: %d", new Object[] { Integer.valueOf(paramBundle.uint32_result.get()) }));
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, tips: " + paramSCGet3rdCloudCheck.tips + " tipsType: " + paramSCGet3rdCloudCheck.tipsType + " delayHour: " + paramSCGet3rdCloudCheck.delayHour + " URL: " + paramSCGet3rdCloudCheck.h5);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-      {
-        MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
-        Message localMessage = localMqqHandler.obtainMessage(1134063);
-        localMessage.obj = paramSCGet3rdCloudCheck;
-        localMqqHandler.sendMessage(localMessage);
-        bjhk.b(this.jdField_a_of_type_AndroidContentContext, 398677);
-      }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
     }
   }
 }

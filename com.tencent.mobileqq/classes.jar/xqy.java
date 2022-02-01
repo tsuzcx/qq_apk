@@ -1,34 +1,26 @@
 import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import java.util.LinkedList;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.lang.ref.WeakReference;
 
 public class xqy
+  implements vqp<xra, xrb>
 {
-  private final SparseArray<LinkedList<Object>> a = new SparseArray();
+  private WeakReference<xqx> a;
   
-  public <CLASS> CLASS a(@NonNull Class<CLASS> paramClass)
+  public xqy(xqx paramxqx)
   {
-    paramClass = (LinkedList)this.a.get(paramClass.hashCode());
-    if (paramClass != null)
-    {
-      paramClass = paramClass.poll();
-      if (paramClass != null) {}
-      return paramClass;
-    }
-    return null;
+    this.a = new WeakReference(paramxqx);
   }
   
-  public void a(@NonNull Object paramObject)
+  public void a(@NonNull xra paramxra, @Nullable xrb paramxrb, @NonNull ErrorMessage paramErrorMessage)
   {
-    int i = paramObject.getClass().hashCode();
-    LinkedList localLinkedList2 = (LinkedList)this.a.get(i);
-    LinkedList localLinkedList1 = localLinkedList2;
-    if (localLinkedList2 == null)
-    {
-      localLinkedList1 = new LinkedList();
-      this.a.put(i, localLinkedList1);
+    xvv.d("Q.qqstory.home.GetUserGuideInfoStep", "onCmdRespond");
+    xqx localxqx = (xqx)this.a.get();
+    if (localxqx == null) {
+      return;
     }
-    localLinkedList1.offer(paramObject);
+    localxqx.a(paramxra, paramxrb, paramErrorMessage);
   }
 }
 

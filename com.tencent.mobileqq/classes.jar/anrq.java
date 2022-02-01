@@ -1,24 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class anrq
-  implements View.OnClickListener
+  extends anrh
 {
-  public anrq(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData, int paramInt, String paramString1, String paramString2) {}
-  
-  public void onClick(View paramView)
+  public anrq(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel) != null)
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private boolean C()
+  {
+    Object localObject = c((String)this.jdField_a_of_type_JavaUtilHashMap.get("friendUin"));
+    localObject = AddFriendLogicActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext, 1, (String)localObject, "", 3001, 11, "", "", null, "", "");
+    this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+    return true;
+  }
+  
+  public boolean a()
+  {
+    try
     {
-      anra localanra = new anra();
-      localanra.jdField_a_of_type_ComTencentMobileqqDataApolloActionData = this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData;
-      ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).c(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a, localanra);
-      amsx.a(124, String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.b);
+      boolean bool = C();
+      return bool;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (Exception localException)
+    {
+      QLog.e("OdAddFriendAction", 1, "doAction error: " + localException.getMessage());
+      a("OdAddFriendAction");
+    }
+    return false;
   }
 }
 

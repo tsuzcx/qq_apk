@@ -1,287 +1,621 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmedia.capture.util.ReportBadCase.1;
-import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils;
-import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils.BadDataFrame;
-import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils.ReportItemData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.HashMap;
 
 public class bbgq
-  implements BadcaseReportUtils.ReportItemData
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static ArrayList<BadcaseReportUtils.BadDataFrame> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public static StringBuilder a;
+  private static ArrayList<ArrayList<String>> a;
+  public static HashMap<String, Integer> a;
+  private static ArrayList<String> b;
+  public static HashMap<String, Integer> b;
+  private static ArrayList<String> c;
+  private static ArrayList<String> d;
+  private static ArrayList<String> e;
+  private static ArrayList<String> f;
+  private static ArrayList<String> g;
+  private static ArrayList<String> h;
+  private static ArrayList<String> i;
+  private static ArrayList<String> j;
+  private static ArrayList<String> k;
+  private static ArrayList<String> l;
+  private static ArrayList<String> m;
+  private static ArrayList<String> n;
+  private static ArrayList<String> o;
+  private static ArrayList<String> p;
+  private static ArrayList<String> q;
+  private static ArrayList<String> r;
+  private static ArrayList<String> s;
+  private static ArrayList<String> t;
+  private static ArrayList<String> u;
+  private static ArrayList<String> v;
+  private static ArrayList<String> w;
+  private static ArrayList<String> x;
+  private static ArrayList<String> y;
+  private static ArrayList<String> z;
   
-  public static void a(boolean paramBoolean)
+  static
   {
-    if (paramBoolean) {}
-    for (BadcaseReportUtils.ENABLE_REPORT = bddz.h();; BadcaseReportUtils.ENABLE_REPORT = false)
+    jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    c = new ArrayList();
+    d = new ArrayList();
+    e = new ArrayList();
+    f = new ArrayList();
+    g = new ArrayList();
+    h = new ArrayList();
+    i = new ArrayList();
+    j = new ArrayList();
+    k = new ArrayList();
+    l = new ArrayList();
+    m = new ArrayList();
+    n = new ArrayList();
+    o = new ArrayList();
+    p = new ArrayList();
+    q = new ArrayList();
+    r = new ArrayList();
+    s = new ArrayList();
+    t = new ArrayList();
+    u = new ArrayList();
+    v = new ArrayList();
+    w = new ArrayList();
+    x = new ArrayList();
+    y = new ArrayList();
+    z = new ArrayList();
+    jdField_b_of_type_JavaUtilArrayList.add("b");
+    jdField_b_of_type_JavaUtilArrayList.add("c");
+    jdField_b_of_type_JavaUtilArrayList.add("d");
+    jdField_b_of_type_JavaUtilArrayList.add("f");
+    jdField_b_of_type_JavaUtilArrayList.add("g");
+    jdField_b_of_type_JavaUtilArrayList.add("h");
+    jdField_b_of_type_JavaUtilArrayList.add("j");
+    jdField_b_of_type_JavaUtilArrayList.add("k");
+    jdField_b_of_type_JavaUtilArrayList.add("l");
+    jdField_b_of_type_JavaUtilArrayList.add("m");
+    jdField_b_of_type_JavaUtilArrayList.add("n");
+    jdField_b_of_type_JavaUtilArrayList.add("p");
+    jdField_b_of_type_JavaUtilArrayList.add("q");
+    jdField_b_of_type_JavaUtilArrayList.add("r");
+    jdField_b_of_type_JavaUtilArrayList.add("s");
+    jdField_b_of_type_JavaUtilArrayList.add("t");
+    jdField_b_of_type_JavaUtilArrayList.add("w");
+    jdField_b_of_type_JavaUtilArrayList.add("x");
+    jdField_b_of_type_JavaUtilArrayList.add("y");
+    jdField_b_of_type_JavaUtilArrayList.add("z");
+    jdField_b_of_type_JavaUtilArrayList.add("ch");
+    jdField_b_of_type_JavaUtilArrayList.add("sh");
+    jdField_b_of_type_JavaUtilArrayList.add("zh");
+    c.add("a");
+    c.add("ai");
+    c.add("an");
+    c.add("ang");
+    c.add("ao");
+    c.add("e");
+    c.add("en");
+    c.add("eng");
+    c.add("er");
+    c.add("o");
+    c.add("ou");
+    c.add("ong");
+    d.add("a");
+    d.add("ai");
+    d.add("an");
+    d.add("ang");
+    d.add("ao");
+    d.add("ei");
+    d.add("en");
+    d.add("eng");
+    d.add("i");
+    d.add("ian");
+    d.add("iao");
+    d.add("ie");
+    d.add("in");
+    d.add("ing");
+    d.add("o");
+    d.add("u");
+    e.add("a");
+    e.add("ai");
+    e.add("an");
+    e.add("ang");
+    e.add("ao");
+    e.add("e");
+    e.add("en");
+    e.add("eng");
+    e.add("i");
+    e.add("ong");
+    e.add("ou");
+    e.add("u");
+    e.add("uan");
+    e.add("ui");
+    e.add("un");
+    e.add("uo");
+    f.add("a");
+    f.add("ai");
+    f.add("an");
+    f.add("ang");
+    f.add("ao");
+    f.add("e");
+    f.add("ei");
+    f.add("en");
+    f.add("eng");
+    f.add("i");
+    f.add("ia");
+    f.add("ian");
+    f.add("iao");
+    f.add("ie");
+    f.add("ing");
+    f.add("iu");
+    f.add("ong");
+    f.add("ou");
+    f.add("u");
+    f.add("uan");
+    f.add("ui");
+    f.add("un");
+    f.add("uo");
+    g.add("a");
+    g.add("an");
+    g.add("ang");
+    g.add("ei");
+    g.add("en");
+    g.add("eng");
+    g.add("iao");
+    g.add("o");
+    g.add("ou");
+    g.add("u");
+    h.add("a");
+    h.add("ai");
+    h.add("an");
+    h.add("ang");
+    h.add("ao");
+    h.add("e");
+    h.add("ei");
+    h.add("en");
+    h.add("eng");
+    h.add("ong");
+    h.add("ou");
+    h.add("u");
+    h.add("uai");
+    h.add("uan");
+    h.add("uang");
+    h.add("ui");
+    h.add("un");
+    h.add("uo");
+    i.add("a");
+    i.add("ai");
+    i.add("an");
+    i.add("ang");
+    i.add("ao");
+    i.add("e");
+    i.add("ei");
+    i.add("en");
+    i.add("eng");
+    i.add("ong");
+    i.add("ou");
+    i.add("u");
+    i.add("ua");
+    i.add("uai");
+    i.add("uan");
+    i.add("uang");
+    i.add("ui");
+    i.add("un");
+    i.add("uo");
+    j.add("i");
+    j.add("ia");
+    j.add("ian");
+    j.add("iang");
+    j.add("iao");
+    j.add("ie");
+    j.add("in");
+    j.add("ing");
+    j.add("iong");
+    j.add("iu");
+    j.add("u");
+    j.add("uan");
+    j.add("ue");
+    j.add("un");
+    k.add("a");
+    k.add("ai");
+    k.add("an");
+    k.add("ang");
+    k.add("ao");
+    k.add("e");
+    k.add("en");
+    k.add("eng");
+    k.add("ong");
+    k.add("ou");
+    k.add("u");
+    k.add("ui");
+    k.add("un");
+    k.add("uo");
+    l.add("a");
+    l.add("ai");
+    l.add("an");
+    l.add("ang");
+    l.add("ao");
+    l.add("e");
+    l.add("ei");
+    l.add("eng");
+    l.add("i");
+    l.add("ia");
+    l.add("ian");
+    l.add("iao");
+    l.add("ie");
+    l.add("in");
+    l.add("ing");
+    l.add("iu");
+    l.add("o");
+    l.add("ong");
+    l.add("ou");
+    l.add("u");
+    l.add("uan");
+    l.add("un");
+    l.add("uo");
+    l.add("v");
+    l.add("ve");
+    m.add("a");
+    m.add("ai");
+    m.add("an");
+    m.add("ang");
+    m.add("ao");
+    m.add("e");
+    m.add("ei");
+    m.add("en");
+    m.add("eng");
+    m.add("i");
+    m.add("ian");
+    m.add("iao");
+    m.add("ie");
+    m.add("in");
+    m.add("ing");
+    m.add("iu");
+    m.add("o");
+    m.add("ou");
+    m.add("u");
+    n.add("a");
+    n.add("ai");
+    n.add("an");
+    n.add("ang");
+    n.add("ao");
+    n.add("e");
+    n.add("ei");
+    n.add("en");
+    n.add("eng");
+    n.add("i");
+    n.add("ian");
+    n.add("iang");
+    n.add("iao");
+    n.add("ie");
+    n.add("in");
+    n.add("ing");
+    n.add("iu");
+    n.add("ong");
+    n.add("ou");
+    n.add("u");
+    n.add("uan");
+    n.add("un");
+    n.add("uo");
+    n.add("v");
+    n.add("ve");
+    o.add("a");
+    o.add("ai");
+    o.add("an");
+    o.add("ang");
+    o.add("ao");
+    o.add("e");
+    o.add("ei");
+    o.add("en");
+    o.add("eng");
+    o.add("i");
+    o.add("ian");
+    o.add("iao");
+    o.add("ie");
+    o.add("in");
+    o.add("ing");
+    o.add("o");
+    o.add("ou");
+    o.add("u");
+    p.add("i");
+    p.add("ia");
+    p.add("ian");
+    p.add("iang");
+    p.add("iao");
+    p.add("ie");
+    p.add("in");
+    p.add("ing");
+    p.add("iong");
+    p.add("iu");
+    p.add("u");
+    p.add("uan");
+    p.add("ue");
+    p.add("un");
+    q.add("an");
+    q.add("ang");
+    q.add("ao");
+    q.add("e");
+    q.add("en");
+    q.add("eng");
+    q.add("i");
+    q.add("ong");
+    q.add("ou");
+    q.add("u");
+    q.add("ua");
+    q.add("uan");
+    q.add("ui");
+    q.add("un");
+    q.add("uo");
+    r.add("a");
+    r.add("ai");
+    r.add("an");
+    r.add("ang");
+    r.add("ao");
+    r.add("e");
+    r.add("en");
+    r.add("eng");
+    r.add("i");
+    r.add("ong");
+    r.add("ou");
+    r.add("u");
+    r.add("uan");
+    r.add("ui");
+    r.add("un");
+    r.add("uo");
+    s.add("a");
+    s.add("ai");
+    s.add("an");
+    s.add("ang");
+    s.add("ao");
+    s.add("e");
+    s.add("ei");
+    s.add("eng");
+    s.add("i");
+    s.add("ian");
+    s.add("iao");
+    s.add("ie");
+    s.add("ing");
+    s.add("ong");
+    s.add("ou");
+    s.add("u");
+    s.add("uan");
+    s.add("ui");
+    s.add("un");
+    s.add("uo");
+    t.add("a");
+    t.add("ai");
+    t.add("an");
+    t.add("ang");
+    t.add("ei");
+    t.add("en");
+    t.add("eng");
+    t.add("o");
+    t.add("u");
+    u.add("i");
+    u.add("ia");
+    u.add("ian");
+    u.add("iang");
+    u.add("iao");
+    u.add("ie");
+    u.add("in");
+    u.add("ing");
+    u.add("iong");
+    u.add("iu");
+    u.add("u");
+    u.add("uan");
+    u.add("ue");
+    u.add("un");
+    v.add("a");
+    v.add("an");
+    v.add("ang");
+    v.add("ao");
+    v.add("e");
+    v.add("i");
+    v.add("in");
+    v.add("ing");
+    v.add("o");
+    v.add("ong");
+    v.add("ou");
+    v.add("u");
+    v.add("uan");
+    v.add("ue");
+    v.add("un");
+    w.add("a");
+    w.add("ai");
+    w.add("an");
+    w.add("ang");
+    w.add("ao");
+    w.add("e");
+    w.add("ei");
+    w.add("en");
+    w.add("eng");
+    w.add("i");
+    w.add("ong");
+    w.add("ou");
+    w.add("u");
+    w.add("uan");
+    w.add("ui");
+    w.add("un");
+    w.add("uo");
+    z.add("a");
+    z.add("ai");
+    z.add("an");
+    z.add("ang");
+    z.add("ao");
+    z.add("e");
+    z.add("en");
+    z.add("eng");
+    z.add("i");
+    z.add("ong");
+    z.add("ou");
+    z.add("u");
+    z.add("ua");
+    z.add("uai");
+    z.add("uan");
+    z.add("uang");
+    z.add("ui");
+    z.add("un");
+    z.add("uo");
+    x.add("a");
+    x.add("ai");
+    x.add("an");
+    x.add("ang");
+    x.add("ao");
+    x.add("e");
+    x.add("ei");
+    x.add("en");
+    x.add("eng");
+    x.add("i");
+    x.add("ou");
+    x.add("u");
+    x.add("ua");
+    x.add("uai");
+    x.add("uan");
+    x.add("uang");
+    x.add("ui");
+    x.add("un");
+    x.add("uo");
+    y.add("a");
+    y.add("ai");
+    y.add("an");
+    y.add("ang");
+    y.add("ao");
+    y.add("e");
+    y.add("ei");
+    y.add("en");
+    y.add("eng");
+    y.add("i");
+    y.add("ong");
+    y.add("ou");
+    y.add("u");
+    y.add("ua");
+    y.add("uai");
+    y.add("uan");
+    y.add("uang");
+    y.add("ui");
+    y.add("un");
+    y.add("uo");
+    jdField_a_of_type_JavaUtilArrayList.add(c);
+    jdField_a_of_type_JavaUtilArrayList.add(d);
+    jdField_a_of_type_JavaUtilArrayList.add(e);
+    jdField_a_of_type_JavaUtilArrayList.add(f);
+    jdField_a_of_type_JavaUtilArrayList.add(g);
+    jdField_a_of_type_JavaUtilArrayList.add(h);
+    jdField_a_of_type_JavaUtilArrayList.add(i);
+    jdField_a_of_type_JavaUtilArrayList.add(j);
+    jdField_a_of_type_JavaUtilArrayList.add(k);
+    jdField_a_of_type_JavaUtilArrayList.add(l);
+    jdField_a_of_type_JavaUtilArrayList.add(m);
+    jdField_a_of_type_JavaUtilArrayList.add(n);
+    jdField_a_of_type_JavaUtilArrayList.add(o);
+    jdField_a_of_type_JavaUtilArrayList.add(p);
+    jdField_a_of_type_JavaUtilArrayList.add(q);
+    jdField_a_of_type_JavaUtilArrayList.add(r);
+    jdField_a_of_type_JavaUtilArrayList.add(s);
+    jdField_a_of_type_JavaUtilArrayList.add(t);
+    jdField_a_of_type_JavaUtilArrayList.add(u);
+    jdField_a_of_type_JavaUtilArrayList.add(v);
+    jdField_a_of_type_JavaUtilArrayList.add(w);
+    jdField_a_of_type_JavaUtilArrayList.add(z);
+    jdField_a_of_type_JavaUtilArrayList.add(x);
+    jdField_a_of_type_JavaUtilArrayList.add(y);
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilHashMap.put("a", Integer.valueOf(1));
+    jdField_a_of_type_JavaUtilHashMap.put("o", Integer.valueOf(2));
+    jdField_a_of_type_JavaUtilHashMap.put("e", Integer.valueOf(3));
+    jdField_a_of_type_JavaUtilHashMap.put("i", Integer.valueOf(4));
+    jdField_a_of_type_JavaUtilHashMap.put("u", Integer.valueOf(5));
+    jdField_a_of_type_JavaUtilHashMap.put("v", Integer.valueOf(6));
+    jdField_a_of_type_JavaUtilHashMap.put("ai", Integer.valueOf(7));
+    jdField_a_of_type_JavaUtilHashMap.put("ei", Integer.valueOf(7));
+    jdField_a_of_type_JavaUtilHashMap.put("ui", Integer.valueOf(8));
+    jdField_a_of_type_JavaUtilHashMap.put("ao", Integer.valueOf(9));
+    jdField_a_of_type_JavaUtilHashMap.put("ou", Integer.valueOf(10));
+    jdField_a_of_type_JavaUtilHashMap.put("iu", Integer.valueOf(11));
+    jdField_a_of_type_JavaUtilHashMap.put("ie", Integer.valueOf(12));
+    jdField_a_of_type_JavaUtilHashMap.put("ve", Integer.valueOf(13));
+    jdField_a_of_type_JavaUtilHashMap.put("er", Integer.valueOf(14));
+    jdField_a_of_type_JavaUtilHashMap.put("an", Integer.valueOf(15));
+    jdField_a_of_type_JavaUtilHashMap.put("en", Integer.valueOf(16));
+    jdField_a_of_type_JavaUtilHashMap.put("in", Integer.valueOf(17));
+    jdField_a_of_type_JavaUtilHashMap.put("un", Integer.valueOf(18));
+    jdField_a_of_type_JavaUtilHashMap.put("ven", Integer.valueOf(19));
+    jdField_a_of_type_JavaUtilHashMap.put("ang", Integer.valueOf(15));
+    jdField_a_of_type_JavaUtilHashMap.put("eng", Integer.valueOf(16));
+    jdField_a_of_type_JavaUtilHashMap.put("ing", Integer.valueOf(17));
+    jdField_a_of_type_JavaUtilHashMap.put("ong", Integer.valueOf(20));
+    jdField_b_of_type_JavaUtilHashMap.put("b", Integer.valueOf(1));
+    jdField_b_of_type_JavaUtilHashMap.put("p", Integer.valueOf(2));
+    jdField_b_of_type_JavaUtilHashMap.put("m", Integer.valueOf(3));
+    jdField_b_of_type_JavaUtilHashMap.put("f", Integer.valueOf(4));
+    jdField_b_of_type_JavaUtilHashMap.put("d", Integer.valueOf(5));
+    jdField_b_of_type_JavaUtilHashMap.put("t", Integer.valueOf(6));
+    jdField_b_of_type_JavaUtilHashMap.put("n", Integer.valueOf(7));
+    jdField_b_of_type_JavaUtilHashMap.put("l", Integer.valueOf(7));
+    jdField_b_of_type_JavaUtilHashMap.put("g", Integer.valueOf(8));
+    jdField_b_of_type_JavaUtilHashMap.put("k", Integer.valueOf(9));
+    jdField_b_of_type_JavaUtilHashMap.put("h", Integer.valueOf(10));
+    jdField_b_of_type_JavaUtilHashMap.put("j", Integer.valueOf(11));
+    jdField_b_of_type_JavaUtilHashMap.put("q", Integer.valueOf(12));
+    jdField_b_of_type_JavaUtilHashMap.put("x", Integer.valueOf(13));
+    jdField_b_of_type_JavaUtilHashMap.put("zh", Integer.valueOf(14));
+    jdField_b_of_type_JavaUtilHashMap.put("ch", Integer.valueOf(15));
+    jdField_b_of_type_JavaUtilHashMap.put("sh", Integer.valueOf(16));
+    jdField_b_of_type_JavaUtilHashMap.put("r", Integer.valueOf(17));
+    jdField_b_of_type_JavaUtilHashMap.put("z", Integer.valueOf(14));
+    jdField_b_of_type_JavaUtilHashMap.put("c", Integer.valueOf(15));
+    jdField_b_of_type_JavaUtilHashMap.put("s", Integer.valueOf(16));
+    jdField_b_of_type_JavaUtilHashMap.put("y", Integer.valueOf(18));
+    jdField_b_of_type_JavaUtilHashMap.put("w", Integer.valueOf(19));
+  }
+  
+  public static int a(String paramString)
+  {
+    int i4 = 1;
+    paramString = paramString.toCharArray();
+    int i1 = 0;
+    int i2 = 0;
+    int i3 = 0;
+    if (i1 < paramString.length)
     {
-      BadcaseReportUtils.sTotalReportNumber = bddz.c();
-      if (QLog.isColorLevel()) {
-        QLog.d("BadcaseReportUtils", 2, "BadcaseReportUtils dpcBadCaseSetting enable=" + BadcaseReportUtils.ENABLE_REPORT + " reportNumber=" + BadcaseReportUtils.sTotalReportNumber + " businessEnable=" + paramBoolean);
+      if (a(paramString[i1])) {
+        i2 = 1;
       }
-      return;
-    }
-  }
-  
-  public static boolean a(Bitmap paramBitmap, String paramString)
-  {
-    return a(paramBitmap, paramString, 80);
-  }
-  
-  /* Error */
-  public static boolean a(Bitmap paramBitmap, String paramString, int paramInt)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: aconst_null
-    //   4: astore 7
-    //   6: aconst_null
-    //   7: astore 8
-    //   9: iconst_0
-    //   10: istore 4
-    //   12: iload 4
-    //   14: istore_3
-    //   15: aload_0
-    //   16: ifnull +10 -> 26
-    //   19: aload_1
-    //   20: ifnonnull +8 -> 28
-    //   23: iload 4
-    //   25: istore_3
-    //   26: iload_3
-    //   27: ireturn
-    //   28: new 98	java/io/File
-    //   31: dup
-    //   32: aload_1
-    //   33: invokespecial 101	java/io/File:<init>	(Ljava/lang/String;)V
-    //   36: astore_1
-    //   37: aload_1
-    //   38: invokevirtual 104	java/io/File:exists	()Z
-    //   41: ifeq +8 -> 49
-    //   44: aload_1
-    //   45: invokevirtual 107	java/io/File:delete	()Z
-    //   48: pop
-    //   49: aload_1
-    //   50: invokevirtual 110	java/io/File:createNewFile	()Z
-    //   53: pop
-    //   54: new 112	java/io/FileOutputStream
-    //   57: dup
-    //   58: aload_1
-    //   59: invokespecial 115	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   62: astore_1
-    //   63: aload_1
-    //   64: astore 5
-    //   66: aload 7
-    //   68: astore 6
-    //   70: new 117	java/io/BufferedOutputStream
-    //   73: dup
-    //   74: aload_1
-    //   75: sipush 20480
-    //   78: invokespecial 120	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;I)V
-    //   81: astore 7
-    //   83: aload_0
-    //   84: getstatic 126	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   87: iload_2
-    //   88: aload 7
-    //   90: invokevirtual 132	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   93: istore_3
-    //   94: iload_3
-    //   95: istore 4
-    //   97: aload 7
-    //   99: ifnull +13 -> 112
-    //   102: aload 7
-    //   104: invokevirtual 137	java/io/OutputStream:flush	()V
-    //   107: aload 7
-    //   109: invokevirtual 140	java/io/OutputStream:close	()V
-    //   112: iload 4
-    //   114: istore_3
-    //   115: aload_1
-    //   116: ifnull -90 -> 26
-    //   119: aload_1
-    //   120: invokevirtual 141	java/io/FileOutputStream:close	()V
-    //   123: iload 4
-    //   125: ireturn
-    //   126: astore_0
-    //   127: iload 4
-    //   129: ireturn
-    //   130: astore_0
-    //   131: aconst_null
-    //   132: astore_1
-    //   133: aload 8
-    //   135: astore 7
-    //   137: aload_1
-    //   138: astore 5
-    //   140: aload 7
-    //   142: astore 6
-    //   144: aload_0
-    //   145: invokevirtual 144	java/io/FileNotFoundException:printStackTrace	()V
-    //   148: aload 7
-    //   150: ifnull +13 -> 163
-    //   153: aload 7
-    //   155: invokevirtual 137	java/io/OutputStream:flush	()V
-    //   158: aload 7
-    //   160: invokevirtual 140	java/io/OutputStream:close	()V
-    //   163: iload 4
-    //   165: istore_3
-    //   166: aload_1
-    //   167: ifnull -141 -> 26
-    //   170: aload_1
-    //   171: invokevirtual 141	java/io/FileOutputStream:close	()V
-    //   174: iconst_0
-    //   175: ireturn
-    //   176: astore_0
-    //   177: iconst_0
-    //   178: ireturn
-    //   179: astore_0
-    //   180: aconst_null
-    //   181: astore_1
-    //   182: aload 6
-    //   184: ifnull +13 -> 197
-    //   187: aload 6
-    //   189: invokevirtual 137	java/io/OutputStream:flush	()V
-    //   192: aload 6
-    //   194: invokevirtual 140	java/io/OutputStream:close	()V
-    //   197: aload_1
-    //   198: ifnull +7 -> 205
-    //   201: aload_1
-    //   202: invokevirtual 141	java/io/FileOutputStream:close	()V
-    //   205: aload_0
-    //   206: athrow
-    //   207: astore_0
-    //   208: iconst_0
-    //   209: ireturn
-    //   210: astore_1
-    //   211: goto -6 -> 205
-    //   214: astore 5
-    //   216: goto -19 -> 197
-    //   219: astore_0
-    //   220: aload 5
-    //   222: astore_1
-    //   223: goto -41 -> 182
-    //   226: astore_0
-    //   227: aload 7
-    //   229: astore 6
-    //   231: goto -49 -> 182
-    //   234: astore_0
-    //   235: goto -72 -> 163
-    //   238: astore_0
-    //   239: aload 8
-    //   241: astore 7
-    //   243: goto -106 -> 137
-    //   246: astore_0
-    //   247: goto -110 -> 137
-    //   250: astore_0
-    //   251: goto -139 -> 112
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	254	0	paramBitmap	Bitmap
-    //   0	254	1	paramString	String
-    //   0	254	2	paramInt	int
-    //   14	152	3	bool1	boolean
-    //   10	154	4	bool2	boolean
-    //   64	75	5	str	String
-    //   214	7	5	localIOException	IOException
-    //   1	229	6	localObject1	Object
-    //   4	238	7	localObject2	Object
-    //   7	233	8	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   119	123	126	java/io/IOException
-    //   54	63	130	java/io/FileNotFoundException
-    //   170	174	176	java/io/IOException
-    //   54	63	179	finally
-    //   49	54	207	java/io/IOException
-    //   201	205	210	java/io/IOException
-    //   187	197	214	java/io/IOException
-    //   70	83	219	finally
-    //   144	148	219	finally
-    //   83	94	226	finally
-    //   153	163	234	java/io/IOException
-    //   70	83	238	java/io/FileNotFoundException
-    //   83	94	246	java/io/FileNotFoundException
-    //   102	112	250	java/io/IOException
-  }
-  
-  private static void b()
-  {
-    Object localObject1 = new File(c());
-    if (((File)localObject1).exists())
-    {
-      localObject1 = ((File)localObject1).listFiles();
-      if (localObject1 != null)
+      for (;;)
       {
-        int j = localObject1.length;
-        int i = 0;
-        if (i < j)
-        {
-          Object localObject2 = localObject1[i];
-          if (localObject2.getName().equals(".nomedia")) {}
-          for (;;)
-          {
-            i += 1;
-            break;
-            localObject2.delete();
-          }
-        }
+        i1 += 1;
+        break;
+        i3 = 1;
       }
     }
-  }
-  
-  private static void b(BadcaseReportUtils.BadDataFrame paramBadDataFrame, String paramString1, int paramInt, String paramString2, String paramString3) {}
-  
-  private static String c()
-  {
-    Object localObject = new StringBuilder(alwf.a);
-    ((StringBuilder)localObject).append("/sv_capture_xx");
-    ((StringBuilder)localObject).append(File.separator);
-    localObject = ((StringBuilder)localObject).toString();
-    File localFile = new File((String)localObject);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    if ((i2 != 0) && (i3 == 0)) {
+      i1 = 2;
     }
-    localFile = new File((String)localObject + ".nomedia");
-    if (!localFile.exists()) {}
-    try
+    do
     {
-      localFile.createNewFile();
-      return localObject;
-    }
-    catch (IOException localIOException) {}
-    return localObject;
+      return i1;
+      i1 = i4;
+    } while (i2 != 0);
+    return 0;
   }
   
-  private static String d()
+  public static void a()
   {
-    String str = c();
-    return str + bdfc.a() + "_jpg";
+    jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
   }
   
-  private static String e()
+  public static final boolean a(char paramChar)
   {
-    Random localRandom = new Random(System.currentTimeMillis());
-    String str = "---------";
-    int i = 0;
-    while (i < 12)
-    {
-      str = str + String.valueOf(localRandom.nextInt(10));
-      i += 1;
-    }
-    return str;
+    Character.UnicodeBlock localUnicodeBlock = Character.UnicodeBlock.of(paramChar);
+    return (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A) || (localUnicodeBlock == Character.UnicodeBlock.GENERAL_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS);
   }
   
-  public void itemOK(BadcaseReportUtils.BadDataFrame paramBadDataFrame)
+  public static boolean a(String paramString1, String paramString2)
   {
-    if (paramBadDataFrame.pictureBuffer != null)
-    {
-      paramBadDataFrame.picturePath = null;
-      ThreadManager.post(new ReportBadCase.1(this, paramBadDataFrame), 5, null, true);
-    }
+    return jdField_b_of_type_JavaUtilHashMap.get(paramString1) == jdField_b_of_type_JavaUtilHashMap.get(paramString2);
+  }
+  
+  public static boolean b(String paramString1, String paramString2)
+  {
+    return jdField_a_of_type_JavaUtilHashMap.get(paramString1) == jdField_a_of_type_JavaUtilHashMap.get(paramString2);
   }
 }
 

@@ -2,10 +2,8 @@ package cooperation.qzone.widget;
 
 import android.graphics.drawable.BitmapDrawable;
 import android.util.LruCache;
-import bnjm;
-import bnqg;
-import bnqh;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.GifAntishakeModule;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -18,17 +16,17 @@ public class FastAnimationDrawable$LoopReadWriteRunnable
   {
     while (this.this$0.isRunning())
     {
-      FastAnimationDrawable.a(this.this$0).set(FastAnimationDrawable.a(this.this$0).incrementAndGet() % FastAnimationDrawable.a(this.this$0).size());
+      FastAnimationDrawable.access$100(this.this$0).set(FastAnimationDrawable.access$100(this.this$0).incrementAndGet() % FastAnimationDrawable.access$200(this.this$0).size());
       if (QLog.isColorLevel()) {
-        QLog.d("FastAnimationDrawable", 2, "LoopReadWriteRunnable index:" + FastAnimationDrawable.a(this.this$0).get());
+        QLog.d("FastAnimationDrawable", 2, "LoopReadWriteRunnable index:" + FastAnimationDrawable.access$100(this.this$0).get());
       }
-      if ((this.this$0.a != null) && (this.this$0.a.get(Integer.valueOf(FastAnimationDrawable.a(this.this$0).get())) != null))
+      if ((this.this$0.mMemoryCache != null) && (this.this$0.mMemoryCache.get(Integer.valueOf(FastAnimationDrawable.access$100(this.this$0).get())) != null))
       {
-        FastAnimationDrawable.a(this.this$0, (BitmapDrawable)this.this$0.a.get(Integer.valueOf(FastAnimationDrawable.a(this.this$0).get())));
+        FastAnimationDrawable.access$302(this.this$0, (BitmapDrawable)this.this$0.mMemoryCache.get(Integer.valueOf(FastAnimationDrawable.access$100(this.this$0).get())));
         try
         {
-          Thread.sleep(FastAnimationDrawable.a(this.this$0));
-          FastAnimationDrawable.a(this.this$0).sendEmptyMessage(0);
+          Thread.sleep(FastAnimationDrawable.access$400(this.this$0));
+          FastAnimationDrawable.access$500(this.this$0).sendEmptyMessage(0);
         }
         catch (InterruptedException localInterruptedException)
         {
@@ -41,23 +39,23 @@ public class FastAnimationDrawable$LoopReadWriteRunnable
       else
       {
         long l = System.currentTimeMillis();
-        BitmapDrawable localBitmapDrawable = FastAnimationDrawable.a(this.this$0, (String)FastAnimationDrawable.a(this.this$0).get(FastAnimationDrawable.a(this.this$0).get()));
+        BitmapDrawable localBitmapDrawable = FastAnimationDrawable.access$600(this.this$0, (String)FastAnimationDrawable.access$200(this.this$0).get(FastAnimationDrawable.access$100(this.this$0).get()));
         if (localBitmapDrawable != null)
         {
           l = System.currentTimeMillis() - l;
-          FastAnimationDrawable.a(this.this$0, localBitmapDrawable);
+          FastAnimationDrawable.access$302(this.this$0, localBitmapDrawable);
           if (QLog.isColorLevel()) {
-            QLog.d("FastAnimationDrawable", 2, "LoopReadWriteRunnable decodeBitmap index:" + FastAnimationDrawable.a(this.this$0).get() + " cost:" + l + " delay:" + FastAnimationDrawable.a(this.this$0));
+            QLog.d("FastAnimationDrawable", 2, "LoopReadWriteRunnable decodeBitmap index:" + FastAnimationDrawable.access$100(this.this$0).get() + " cost:" + l + " delay:" + FastAnimationDrawable.access$400(this.this$0));
           }
-          this.this$0.a.put(Integer.valueOf(FastAnimationDrawable.a(this.this$0).get()), localBitmapDrawable);
-          if ((this.this$0.a.size() == FastAnimationDrawable.a(this.this$0).size()) && (FastAnimationDrawable.a(this.this$0) != null) && (this.this$0.a.size() <= bnjm.a().a())) {
-            FastAnimationDrawable.a(this.this$0).a(this.this$0.a);
+          this.this$0.mMemoryCache.put(Integer.valueOf(FastAnimationDrawable.access$100(this.this$0).get()), localBitmapDrawable);
+          if ((this.this$0.mMemoryCache.size() == FastAnimationDrawable.access$200(this.this$0).size()) && (FastAnimationDrawable.access$700(this.this$0) != null) && (this.this$0.mMemoryCache.size() <= GifAntishakeModule.getInstance().getMaxGifAntishakeFrameNum())) {
+            FastAnimationDrawable.access$700(this.this$0).antiShake(this.this$0.mMemoryCache);
           }
-          if (!FastAnimationDrawable.a(this.this$0).hasMessages(0)) {
-            if (FastAnimationDrawable.a(this.this$0) > l) {
-              FastAnimationDrawable.a(this.this$0).sendEmptyMessageDelayed(0, FastAnimationDrawable.a(this.this$0) - l);
+          if (!FastAnimationDrawable.access$500(this.this$0).hasMessages(0)) {
+            if (FastAnimationDrawable.access$400(this.this$0) > l) {
+              FastAnimationDrawable.access$500(this.this$0).sendEmptyMessageDelayed(0, FastAnimationDrawable.access$400(this.this$0) - l);
             } else {
-              FastAnimationDrawable.a(this.this$0).sendEmptyMessage(0);
+              FastAnimationDrawable.access$500(this.this$0).sendEmptyMessage(0);
             }
           }
         }

@@ -1,93 +1,171 @@
+import android.content.Context;
 import android.os.Bundle;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
-import com.tencent.mobileqq.search.util.VADHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.view.View;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
 public class bclz
-  extends bcmb
+  extends bclv
 {
-  public bclz(GroupSearchEngine paramGroupSearchEngine, bcmc parambcmc, String paramString, int paramInt)
+  private String as;
+  private String at;
+  protected long c;
+  protected long d;
+  protected boolean d;
+  protected long e;
+  protected int q;
+  protected int r;
+  
+  public bclz()
   {
-    super(paramGroupSearchEngine, parambcmc, paramString, paramInt);
+    this.a = "timer";
   }
   
-  public bcfq a(List<bcfr> paramList, String paramString)
+  private long a()
   {
-    if (SearchConfigManager.needSeparate) {
-      return null;
-    }
-    return new bcfb(paramList, paramString, GroupSearchEngine.a(this.a));
-  }
-  
-  public List<bcfq> a(bcmq parambcmq)
-  {
-    VADHelper.a("voice_search_accurate_cost");
-    List localList = super.a(parambcmq);
-    VADHelper.b("voice_search_accurate_cost");
-    if ((localList != null) && (!localList.isEmpty()))
+    if (!this.jdField_d_of_type_Boolean)
     {
-      if (parambcmq.a == null) {
-        parambcmq.a = new Bundle();
-      }
-      parambcmq.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", -1000);
-      if (localList.size() >= 2)
+      long l1 = bbko.a();
+      long l2 = this.c + this.q - l1;
+      if (l2 < 0L)
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("GroupSearchEngine", 4, "contact search result count:" + ((bcfq)localList.get(1)).a().size());
+        this.jdField_d_of_type_Boolean = true;
+        l1 = 0L;
+      }
+      do
+      {
+        return l1;
+        if (l2 <= 0L) {
+          break;
         }
-        parambcmq.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", ((bcfq)localList.get(1)).a().size());
-      }
-      return localList;
+        l1 = l2;
+      } while (l2 < this.q);
+      return this.q;
+      this.jdField_d_of_type_Boolean = true;
+      return l2;
     }
-    parambcmq.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", 0);
-    return localList;
+    return 0L;
   }
   
-  protected bcfq b(List<bcfr> paramList, String paramString)
+  private SpannableStringBuilder a(long paramLong)
   {
-    if (!SearchConfigManager.needSeparate) {
-      return null;
-    }
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(-91585);
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(this.as);
+    localSpannableStringBuilder.append('\n');
+    if (paramLong > 0L)
     {
-      bcfr localbcfr = (bcfr)paramList.next();
-      if (!bcni.a(localbcfr)) {
-        localArrayList.add(localbcfr);
-      }
+      int i = localSpannableStringBuilder.length();
+      String str = String.valueOf(paramLong) + amtj.a(2131713643);
+      localSpannableStringBuilder.append(str);
+      localSpannableStringBuilder.append(this.ai);
+      localSpannableStringBuilder.setSpan(localForegroundColorSpan, i, str.length() + i, 33);
+      return localSpannableStringBuilder;
     }
-    if (localArrayList.size() == 0) {
-      return null;
-    }
-    return new bcfb(localArrayList, paramString, GroupSearchEngine.a(this.a));
+    localSpannableStringBuilder.append(this.at);
+    return localSpannableStringBuilder;
   }
   
-  protected bcfq c(List<bcfr> paramList, String paramString)
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    if (!SearchConfigManager.needSeparate) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if ((paramView != null) && ((paramView instanceof CountdownTextView)))
     {
-      bcfr localbcfr = (bcfr)paramList.next();
-      if (bcni.a(localbcfr)) {
-        localArrayList.add(localbcfr);
+      paramContext = (CountdownTextView)paramView;
+      paramContext.a(a(), new bcma(this, paramContext));
+      paramContext.setTag(this);
+      return paramContext;
+    }
+    paramContext = new CountdownTextView(paramContext);
+    paramContext.setId(2131379549);
+    paramContext.setTag(this);
+    paramContext.setMaxLines(3);
+    paramContext.setTextColor(-10987432);
+    paramContext.setTextSize(2, 12.0F);
+    long l = a();
+    if (this.ai != null) {
+      paramContext.setText(a(l));
+    }
+    paramContext.a(l, new bcmb(this, paramContext));
+    return paramContext;
+  }
+  
+  public String a()
+  {
+    return "Timer";
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    this.as = bblk.a(paramObjectInput.readUTF(), false);
+    this.at = bblk.a(paramObjectInput.readUTF(), false);
+    this.c = paramObjectInput.readLong();
+    this.q = paramObjectInput.readInt();
+    this.r = paramObjectInput.readInt();
+    this.jdField_d_of_type_Long = paramObjectInput.readLong();
+    this.e = paramObjectInput.readLong();
+    this.jdField_d_of_type_Boolean = paramObjectInput.readBoolean();
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    if (this.as == null)
+    {
+      str = "";
+      paramObjectOutput.writeUTF(str);
+      if (this.at != null) {
+        break label108;
       }
     }
-    if (localArrayList.size() == 0) {
-      return null;
+    label108:
+    for (String str = "";; str = this.at)
+    {
+      paramObjectOutput.writeUTF(str);
+      paramObjectOutput.writeLong(this.c);
+      paramObjectOutput.writeInt(this.q);
+      paramObjectOutput.writeInt(this.r);
+      paramObjectOutput.writeLong(this.jdField_d_of_type_Long);
+      paramObjectOutput.writeLong(this.e);
+      paramObjectOutput.writeBoolean(this.jdField_d_of_type_Boolean);
+      return;
+      str = this.as;
+      break;
     }
-    return new bcfd(localArrayList, paramString, GroupSearchEngine.a(this.a));
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "timer");
+    paramXmlSerializer.attribute(null, "st", String.valueOf(this.c));
+    paramXmlSerializer.attribute(null, "dr", String.valueOf(this.q));
+    paramXmlSerializer.attribute(null, "index", String.valueOf(this.r));
+    if (!TextUtils.isEmpty(this.as)) {
+      paramXmlSerializer.attribute(null, "summary", this.as);
+    }
+    if (!TextUtils.isEmpty(this.at)) {
+      paramXmlSerializer.attribute(null, "ending", this.at);
+    }
+    paramXmlSerializer.text(this.ai);
+    paramXmlSerializer.endTag(null, "timer");
+  }
+  
+  public boolean a(bcin parambcin)
+  {
+    if (parambcin == null) {
+      return true;
+    }
+    this.c = bciq.a(parambcin.a("st"));
+    this.q = bciq.a(parambcin.a("dr"));
+    this.r = bciq.a(parambcin.a("index"));
+    this.as = bblk.a(parambcin.a("summary"), false);
+    this.at = bblk.a(parambcin.a("st"), false);
+    this.ai = bblk.a(bchh.a(parambcin), false);
+    return true;
   }
 }
 

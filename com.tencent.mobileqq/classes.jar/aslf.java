@@ -1,9 +1,8 @@
-public class aslf
+public abstract interface aslf
 {
-  int a = 0;
-  public String a;
-  public boolean a;
-  String b;
+  public abstract void onError(int paramInt, String paramString);
+  
+  public abstract void onSuccess();
 }
 
 

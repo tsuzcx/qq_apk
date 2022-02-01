@@ -1,6 +1,31 @@
-public abstract interface actm
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.data.SubAccountInfo;
+
+public class actm
+  implements bjoe
 {
-  public abstract void a(Object... paramVarArgs);
+  SubAccountInfo jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo;
+  
+  public actm(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a.dismiss();
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.b(this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo);
+  }
+  
+  public void a(SubAccountInfo paramSubAccountInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo = paramSubAccountInfo;
+  }
 }
 
 

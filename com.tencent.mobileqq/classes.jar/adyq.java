@@ -1,99 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.vas.avatar.AvatarLayout;
-import friendlist.GetOnlineInfoResp;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adyq
-  extends anyu
+  implements View.OnTouchListener
 {
-  public adyq(BaseChatPie paramBaseChatPie) {}
+  public adyq(QQLSActivity paramQQLSActivity) {}
   
-  protected void onAddFriend(String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    BaseChatPie.c(this.a, paramString);
-  }
-  
-  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    BaseChatPie.b(this.a, paramBoolean, paramString1, paramString2);
-  }
-  
-  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
-  {
-    BaseChatPie.c(this.a, paramBoolean, paramObject);
-  }
-  
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
-  {
-    if (TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
-      this.a.D();
+    if (paramMotionEvent.getAction() == 0) {
+      if ((QQLSActivity.a(this.a) != null) && (QQLSActivity.b(this.a) != null) && (QQLSActivity.a(this.a, QQLSActivity.b(this.a), QQLSActivity.a(this.a), paramMotionEvent)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQLSActivity", 2, "singlelist  click doble");
+        }
+        if (QQLSActivity.a(this.a) != null)
+        {
+          QQLSActivity.a(this.a, QQLSActivity.a(this.a));
+          QQLSActivity.a(this.a, true);
+        }
+        QQLSActivity.a(this.a, MotionEvent.obtain(paramMotionEvent));
+      }
+    }
+    for (;;)
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.e("QQLSActivity", 2, "singlelist  click once");
+      }
+      if (QQLSActivity.a(this.a)) {
+        QQLSActivity.b(this.a).setText(2131698316);
+      }
+      for (;;)
+      {
+        paramView = QQLSActivity.a(this.a).obtainMessage(5);
+        QQLSActivity.a(this.a).sendMessageDelayed(paramView, 500L);
+        break;
+        QQLSActivity.b(this.a).setText(2131698315);
+      }
+      if (paramMotionEvent.getAction() == 1) {
+        QQLSActivity.b(this.a, MotionEvent.obtain(paramMotionEvent));
+      }
     }
   }
-  
-  protected void onGetSigZanInfo(boolean paramBoolean, Object paramObject)
-  {
-    BaseChatPie.a(this.a, paramObject);
-  }
-  
-  protected void onGetStoreFace(boolean paramBoolean, HashSet<String> paramHashSet)
-  {
-    AvatarLayout.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, paramHashSet);
-  }
-  
-  protected void onGetStrangerInfo(boolean paramBoolean, Object paramObject)
-  {
-    BaseChatPie.b(this.a, paramBoolean, paramObject);
-  }
-  
-  protected void onQueryUinSafetyFlag(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
-  {
-    BaseChatPie.a(this.a, paramBoolean, paramLong, paramInt1, paramInt2);
-  }
-  
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
-  {
-    BaseChatPie.a(this.a, paramBoolean, paramString1, paramString2);
-  }
-  
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
-  {
-    BaseChatPie.b(this.a, paramBoolean);
-  }
-  
-  protected void onUpdateC2ChatStatus(boolean paramBoolean, HashMap<String, String> paramHashMap)
-  {
-    BaseChatPie.a(this.a, paramHashMap);
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    AvatarLayout.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, Arrays.asList(new String[] { paramString }));
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    BaseChatPie.a(this.a, paramBoolean, paramObject);
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    BaseChatPie.a(this.a, paramString, paramBoolean);
-  }
-  
-  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    this.a.D();
-  }
-  
-  protected void onUpdateRecentList() {}
 }
 
 

@@ -1,117 +1,64 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-class beww
-  implements ITransactionCallback
+public class beww
+  extends aptq<bewv>
 {
-  beww(bewv parambewv, long paramLong) {}
-  
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  @NonNull
+  public bewv a(int paramInt)
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    paramArrayOfByte = (String)paramHashMap.get("tc_p:");
-    String str1 = (String)paramHashMap.get("rep_bdhTrans");
-    String str2 = (String)paramHashMap.get("segspercnt");
-    String str3 = (String)paramHashMap.get("param_conf_segSize");
-    String str4 = (String)paramHashMap.get("param_conf_segNum");
-    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
+    QLog.d("TroopMemberLevelMapCofigProcessor", 2, "migrateOldOrDefaultContent, type = " + paramInt);
+    return new bewv();
+  }
+  
+  @Nullable
+  public bewv a(aptx[] paramArrayOfaptx)
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms");
+      QLog.d("TroopMemberLevelMapCofigProcessor", 2, "onParsed");
     }
-    this.jdField_a_of_type_Bewv.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", paramArrayOfByte);
-    this.jdField_a_of_type_Bewv.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str1);
-    this.jdField_a_of_type_Bewv.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str2);
-    this.jdField_a_of_type_Bewv.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str3);
-    this.jdField_a_of_type_Bewv.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str4);
-    this.jdField_a_of_type_Bewv.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
-    this.jdField_a_of_type_Bewv.a(l2, l3, l4, l5);
-    this.jdField_a_of_type_Bewv.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_Bewv.b);
-    this.jdField_a_of_type_Bewv.d();
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return bewv.a(paramArrayOfaptx[0].a);
+    }
+    return null;
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void a(bewv parambewv) {}
+  
+  public Class<bewv> clazz()
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    String str1 = (String)paramHashMap.get("tc_p:");
-    String str2 = (String)paramHashMap.get("rep_bdhTrans");
-    String str3 = (String)paramHashMap.get("segspercnt");
-    String str4 = (String)paramHashMap.get("param_conf_segSize");
-    String str5 = (String)paramHashMap.get("param_conf_segNum");
-    paramHashMap = (String)paramHashMap.get("param_conf_connNum");
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms ,fileSize:" + this.jdField_a_of_type_Bewv.jdField_a_of_type_Bete.jdField_a_of_type_Long + " transInfo:" + str2);
-    }
-    this.jdField_a_of_type_Bewv.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", str1);
-    this.jdField_a_of_type_Bewv.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str2);
-    this.jdField_a_of_type_Bewv.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str3);
-    this.jdField_a_of_type_Bewv.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str4);
-    this.jdField_a_of_type_Bewv.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str5);
-    this.jdField_a_of_type_Bewv.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", paramHashMap);
-    this.jdField_a_of_type_Bewv.b.b();
-    this.jdField_a_of_type_Bewv.b.a = 1;
-    this.jdField_a_of_type_Bewv.s = this.jdField_a_of_type_Bewv.jdField_q_of_type_Long;
-    paramHashMap = new Bdh_extinfo.UploadPicExtInfo();
-    try
-    {
-      paramHashMap.mergeFrom(paramArrayOfByte, 0, paramArrayOfByte.length);
-      bewv.a(this.jdField_a_of_type_Bewv, paramHashMap.bytes_download_url.get().toStringUtf8());
-      if (bewv.a(this.jdField_a_of_type_Bewv) == null)
-      {
-        this.jdField_a_of_type_Bewv.a(-1, "URL IS NULL", "", this.jdField_a_of_type_Bewv.b);
-        this.jdField_a_of_type_Bewv.d();
-        this.jdField_a_of_type_Bewv.a(l2, l3, l4, l5);
-        this.jdField_a_of_type_Bewv.jdField_a_of_type_Bete.a();
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        continue;
-        bewv.a(this.jdField_a_of_type_Bewv);
-      }
-    }
+    return bewv.class;
   }
   
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart()
+  public boolean isNeedCompressed()
   {
-    this.jdField_a_of_type_Bewv.d("<BDH_LOG> onTransStart()");
-    this.jdField_a_of_type_Bewv.b.a();
+    return true;
   }
   
-  public void onUpdateProgress(int paramInt)
+  public boolean isNeedStoreLargeFile()
   {
-    bewv localbewv = this.jdField_a_of_type_Bewv;
-    bete localbete = this.jdField_a_of_type_Bewv.jdField_a_of_type_Bete;
-    long l = paramInt;
-    localbete.e = l;
-    localbewv.s = l;
-    if ((paramInt <= this.jdField_a_of_type_Bewv.jdField_q_of_type_Long) && (!this.jdField_a_of_type_Bewv.jdField_q_of_type_Boolean) && (!this.jdField_a_of_type_Bewv.m)) {
-      this.jdField_a_of_type_Bewv.j();
-    }
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TroopMemberLevelMapCofigProcessor", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 659;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     beww
  * JD-Core Version:    0.7.0.1
  */

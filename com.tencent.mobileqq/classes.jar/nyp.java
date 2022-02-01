@@ -1,26 +1,8 @@
-public class nyp
+public abstract interface nyp
 {
-  public int a;
-  public long a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
+  public abstract boolean a(int paramInt);
   
-  public boolean a()
-  {
-    return this.b == 1;
-  }
-  
-  public String toString()
-  {
-    return "materialId = " + this.jdField_a_of_type_Int + " ,repeatedReqFlag=" + this.b + " kdPos=" + this.c + ",adPosID=" + this.jdField_a_of_type_Long;
-  }
+  public abstract boolean b(int paramInt);
 }
 
 

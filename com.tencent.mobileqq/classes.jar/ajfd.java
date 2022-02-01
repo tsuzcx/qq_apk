@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
+import cooperation.qqcircle.chat.QCircleObserver;
 
-public final class ajfd
-  implements Parcelable.Creator<SearchResultItem>
+class ajfd
+  extends QCircleObserver
 {
-  public SearchResultItem a(Parcel paramParcel)
-  {
-    return new SearchResultItem(paramParcel);
-  }
+  ajfd(ajey paramajey) {}
   
-  public SearchResultItem[] a(int paramInt)
+  public void onUpdateRedPoint(int paramInt)
   {
-    return new SearchResultItem[paramInt];
+    this.a.g();
   }
 }
 

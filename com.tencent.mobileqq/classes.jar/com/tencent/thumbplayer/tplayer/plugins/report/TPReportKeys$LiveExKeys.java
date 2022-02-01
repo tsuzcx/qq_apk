@@ -2,6 +2,7 @@ package com.tencent.thumbplayer.tplayer.plugins.report;
 
 public final class TPReportKeys$LiveExKeys
 {
+  public static final String LICE_FX_TUID = "tuid";
   public static final String LIVE_EX_AD_DURATION = "playad";
   public static final String LIVE_EX_BLOCK_COUNT = "blockcount";
   public static final String LIVE_EX_BLOCK_TIME = "blocktime";
@@ -40,6 +41,7 @@ public final class TPReportKeys$LiveExKeys
   public static final String LIVE_EX_S_IP = "sip";
   public static final String LIVE_EX_TEST_SPEED = "testspeed";
   public static final String LIVE_EX_USE_P2P = "use_p2p";
+  public static final String LIVE_FX_SPANID = "spanId";
 }
 
 

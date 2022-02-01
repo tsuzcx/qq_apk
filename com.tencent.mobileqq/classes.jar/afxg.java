@@ -1,20 +1,4 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class afxg
-  implements View.OnClickListener
-{
-  public afxg(TroopRequestActivity paramTroopRequestActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.f();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afxg

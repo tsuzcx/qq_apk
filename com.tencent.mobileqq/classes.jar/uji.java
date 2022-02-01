@@ -1,29 +1,19 @@
-import UserGrowth.stSchema;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import java.util.List;
 
-public class uji
-  implements ujg
+class uji
+  implements usd
 {
-  private uiv b(uix paramuix)
+  uji(ujh paramujh) {}
+  
+  public List<use> a(int paramInt, boolean paramBoolean)
   {
-    if (zqd.a(BaseApplicationImpl.getContext())) {
-      return new uiz(paramuix);
-    }
-    return new ujb(paramuix);
+    return uxr.a(this.a.a(), paramInt, paramBoolean);
   }
   
-  public uiv a(uix paramuix)
+  public boolean a()
   {
-    switch (paramuix.a().type)
-    {
-    default: 
-      return null;
-    case 1: 
-      return new ujc(paramuix);
-    case 2: 
-      return b(paramuix);
-    }
-    return new ujf(paramuix);
+    return AppNetConnInfo.isWifiConn();
   }
 }
 

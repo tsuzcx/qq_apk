@@ -1,26 +1,11 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
-
-class aoir
-  extends apck
+public class aoir
 {
-  aoir(aoip paramaoip, String paramString1, long paramLong, String paramString2)
-  {
-    super(paramString1);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    long l = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopHandler", 2, "onLocationFinish, time=" + (l - this.jdField_a_of_type_Long) + "ms");
-    }
-    if (paramInt != 0) {
-      QLog.i("TroopHandler", 1, "getDetailOnlineMemberList, startLocation, errorCode=" + paramInt);
-    }
-    this.jdField_a_of_type_Aoip.a(this.jdField_a_of_type_JavaLangString, paramSosoLbsInfo);
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 

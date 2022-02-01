@@ -1,10 +1,14 @@
-import MWIFI.SCGet3rdCloudCheck;
-
-public abstract interface aolb
+public class aolb
+  extends aokw
 {
-  public abstract void a(int paramInt);
+  public aolb(int paramInt)
+  {
+    super(paramInt);
+  }
   
-  public abstract void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck);
+  protected void a() {}
+  
+  protected void a(aokz paramaokz) {}
 }
 
 

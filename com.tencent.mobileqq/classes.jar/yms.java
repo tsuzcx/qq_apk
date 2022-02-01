@@ -1,30 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.Vector;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class yms
-  implements woy<xcq, xen>
+public class yms
+  implements View.OnClickListener
 {
-  yms(ymo paramymo, JobContext paramJobContext, ymb paramymb) {}
+  public yms(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
   
-  public void a(@NonNull xcq paramxcq, @Nullable xen paramxen, @NonNull ErrorMessage arg3)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    xvv.b("SelectColorLayout", "onUndoClick: undoTypeEnable=" + this.a.jdField_a_of_type_Boolean);
+    if (HorizontalSelectColorLayout.a(this.a) > System.currentTimeMillis()) {}
+    for (;;)
     {
-      yuk.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "segment cancel on net respond");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    if ((paramxen == null) || (???.isFail())) {
-      yuk.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for feature request, %s", new Object[] { ???.toString() });
-    }
-    synchronized (this.jdField_a_of_type_Ymo)
-    {
-      ymo.a(this.jdField_a_of_type_Ymo, paramxen);
-      ymo.a(this.jdField_a_of_type_Ymo).remove(paramxcq);
-      ymo.a(this.jdField_a_of_type_Ymo, this.jdField_a_of_type_Ymb);
-      return;
+      if ((this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Ymu != null)) {
+        this.a.jdField_a_of_type_Ymu.a();
+      }
     }
   }
 }

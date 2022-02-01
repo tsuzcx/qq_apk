@@ -1,133 +1,69 @@
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Rect;
-
-public abstract class lur
+public class lur
+  extends ltz
 {
-  public float a;
-  public int a;
-  public long a;
-  public Matrix a;
-  public Rect a;
-  public lvr a;
-  public float b;
-  public float c;
-  public float d = 1.0F;
-  
-  public lur()
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  }
-  
-  public float a()
-  {
-    return this.d;
-  }
+  public int b;
   
   protected float a(int paramInt1, int paramInt2)
   {
-    return (paramInt1 + paramInt2) / 2;
+    return this.b + paramInt1;
   }
   
-  public int a()
+  public void a(long paramLong)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Rect a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRect;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-    this.jdField_a_of_type_AndroidGraphicsMatrix.preRotate(this.c, this.jdField_a_of_type_Float, this.b);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(this.d, this.d, this.jdField_a_of_type_Float, this.b);
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (this.c != paramFloat)
+    paramLong -= this.a;
+    float f2 = 0.0F;
+    float f1 = f2;
+    if (paramLong <= 3733L)
     {
-      this.c = paramFloat;
-      a();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    int i = 1;
-    this.jdField_a_of_type_AndroidGraphicsRect.set(paramInt1, paramInt2, paramInt3, paramInt4);
-    float f1 = a(paramInt1, paramInt3);
-    float f2 = b(paramInt2, paramInt4);
-    paramInt1 = 0;
-    if (this.jdField_a_of_type_Float != f1)
-    {
-      this.jdField_a_of_type_Float = f1;
-      paramInt1 = 1;
-    }
-    if (this.b != f2)
-    {
-      this.b = f2;
-      paramInt1 = i;
+      paramLong = paramLong * 3L % 2800L / 3L;
+      if ((paramLong < 0L) || (paramLong >= 133L)) {
+        break label65;
+      }
+      f1 = (float)(-3L * paramLong) / 100.0F;
     }
     for (;;)
     {
-      if (paramInt1 != 0) {
-        a();
-      }
+      a(f1);
       return;
-    }
-  }
-  
-  public abstract void a(long paramLong);
-  
-  public void a(Canvas paramCanvas, Paint paramPaint)
-  {
-    if (this.jdField_a_of_type_Lvr != null)
-    {
-      paramCanvas.save();
-      paramCanvas.concat(this.jdField_a_of_type_AndroidGraphicsMatrix);
-      paramPaint.setAlpha(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Lvr.a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect, paramPaint);
-      paramCanvas.restore();
+      label65:
+      if ((paramLong >= 133L) && (paramLong < 266L))
+      {
+        f1 = (float)(3L * paramLong) / 50.0F - 12.0F;
+      }
+      else if ((paramLong >= 266L) && (paramLong < 400L))
+      {
+        f1 = (float)(-3L * paramLong) / 50.0F + 20.0F;
+      }
+      else if ((paramLong >= 400L) && (paramLong < 533L))
+      {
+        f1 = (float)(3L * paramLong) / 50.0F - 28.0F;
+      }
+      else
+      {
+        f1 = f2;
+        if (paramLong >= 533L)
+        {
+          f1 = f2;
+          if (paramLong < 666L) {
+            f1 = (float)(-3L * paramLong) / 100.0F + 20.0F;
+          }
+        }
+      }
     }
   }
   
   protected float b(int paramInt1, int paramInt2)
   {
-    return (paramInt1 + paramInt2) / 2;
+    return paramInt2;
   }
   
-  public void b()
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_Lvr != null)
-    {
-      this.jdField_a_of_type_Lvr.a();
-      this.jdField_a_of_type_Lvr = null;
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix = null;
-    this.jdField_a_of_type_AndroidGraphicsRect = null;
+    paramInt3 = paramInt1 * 102 / 160;
+    paramInt4 = paramInt1 * 140 / 160;
+    this.b = (paramInt1 * 24 / 160);
+    a((paramInt1 - paramInt3) / 2, (paramInt2 - paramInt4) / 2, (paramInt3 + paramInt1) / 2, (paramInt4 + paramInt2) / 2);
   }
-  
-  public void b(float paramFloat)
-  {
-    if (this.d != paramFloat)
-    {
-      this.d = paramFloat;
-      a();
-    }
-  }
-  
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

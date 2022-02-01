@@ -1,56 +1,50 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class omk
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private JSONObject a = new JSONObject();
+  public omk(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public String a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return this.a.toString();
-  }
-  
-  public omk a()
-  {
-    try
-    {
-      this.a.put("network", oxw.a(BaseApplicationImpl.getApplication().getApplicationContext()));
-      this.a.put("version", odr.a);
-      this.a.put("os", "1");
-      this.a.put("uin", ozs.a());
-      this.a.put("city", oxw.b());
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return this;
-  }
-  
-  public omk a(int paramInt)
-  {
-    int i = 0;
-    if (paramInt == 41516) {
-      i = 3;
+    int j = 1;
+    int i;
+    if (paramBoolean) {
+      i = 0;
     }
     for (;;)
     {
+      uhh.a(i);
+      JSONObject localJSONObject = new JSONObject();
+      if (paramBoolean) {
+        i = j;
+      }
       try
       {
-        this.a.put("source", i);
-        return this;
+        for (;;)
+        {
+          localJSONObject.put("click_opt", i);
+          odq.a(null, "", "0X800A80B", "0X800A80B", 0, 0, "", "", "", localJSONObject.toString(), false);
+          EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+          return;
+          i = 1;
+          break;
+          i = 2;
+        }
       }
       catch (JSONException localJSONException)
       {
-        localJSONException.printStackTrace();
-      }
-      if (paramInt == 41522) {
-        i = 16;
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
       }
     }
-    return this;
   }
 }
 

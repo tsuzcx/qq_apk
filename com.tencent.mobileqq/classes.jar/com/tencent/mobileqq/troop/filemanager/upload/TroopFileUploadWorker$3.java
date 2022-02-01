@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import bfya;
+import behl;
 
 public class TroopFileUploadWorker$3
   implements Runnable
 {
-  public TroopFileUploadWorker$3(bfya parambfya) {}
+  public TroopFileUploadWorker$3(behl parambehl) {}
   
   public void run()
   {

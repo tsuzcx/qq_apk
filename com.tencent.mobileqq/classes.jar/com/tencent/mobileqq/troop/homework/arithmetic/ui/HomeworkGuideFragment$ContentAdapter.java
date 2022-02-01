@@ -5,7 +5,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bfzg;
+import beio;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,11 +31,11 @@ public class HomeworkGuideFragment$ContentAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560629, paramViewGroup, false);
-    bfzg localbfzg = new bfzg(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment);
-    localbfzg.a(paramInt, localView);
-    localView.setTag(localbfzg);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment.jdField_a_of_type_JavaUtilList.add(localbfzg);
+    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560639, paramViewGroup, false);
+    beio localbeio = new beio(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment);
+    localbeio.a(paramInt, localView);
+    localView.setTag(localbeio);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkArithmeticUiHomeworkGuideFragment.jdField_a_of_type_JavaUtilList.add(localbeio);
     paramViewGroup.addView(localView, 0);
     return localView;
   }

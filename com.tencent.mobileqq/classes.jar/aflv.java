@@ -1,29 +1,8 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
-
-public class aflv
-  implements ampo
+public abstract interface aflv
 {
-  public aflv(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public abstract void a();
   
-  public void a()
-  {
-    SearchMightKnowFragment.a(this.a).setVisibility(0);
-    SearchMightKnowFragment.a(this.a).setVisibility(8);
-  }
-  
-  public void a(String paramString) {}
-  
-  public void a(List<MayKnowRecommend> paramList) {}
-  
-  public void b()
-  {
-    SearchMightKnowFragment.a(this.a).setVisibility(8);
-    SearchMightKnowFragment.a(this.a).setVisibility(0);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

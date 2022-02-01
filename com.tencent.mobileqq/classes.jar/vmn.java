@@ -1,40 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
-import com.tencent.biz.qqcircle.launchbean.QCirclePolymerizationBean;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudCommon.Entry;
-import java.util.ArrayList;
-import java.util.Arrays;
-import qqcircle.QQCircleFeedBase.StSimulateData;
-import qqcircle.QQCircleFeedBase.StVideoBusiData;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.util.HashMap;
 
-public class vmn
-  implements View.OnClickListener
+class vmn
+  implements INetEngine.IBreakDownFix
 {
-  public vmn(QCircleContentOperationView paramQCircleContentOperationView, QQCircleFeedBase.StVideoBusiData paramStVideoBusiData) {}
+  vmn(vml paramvml) {}
   
-  public void onClick(View paramView)
+  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
   {
-    Object localObject1 = new QQCircleFeedBase.StSimulateData();
-    ((QQCircleFeedBase.StSimulateData)localObject1).material_id.set(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StVideoBusiData.simulate_date.material_id.get());
-    ((QQCircleFeedBase.StSimulateData)localObject1).simulate_name.set(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StVideoBusiData.simulate_date.simulate_name.get());
-    ((QQCircleFeedBase.StSimulateData)localObject1).simulate_schema.set(brdx.a(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StVideoBusiData.simulate_date.material_id.get(), ""));
-    Object localObject2 = new QCirclePolymerizationBean();
-    ((QCirclePolymerizationBean)localObject2).setSimulateData((QQCircleFeedBase.StSimulateData)localObject1);
-    ((QCirclePolymerizationBean)localObject2).setPolymerizationType(20);
-    ((QCirclePolymerizationBean)localObject2).setExt1From(2);
-    uyx.a(paramView.getContext(), (QCirclePolymerizationBean)localObject2);
-    localObject2 = this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.a();
-    if (QCircleContentOperationView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView)) {}
-    for (localObject1 = "1";; localObject1 = "2")
-    {
-      vtr.a(83, 2, (ExtraTypeInfo)localObject2, new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { vtt.a("ext1", (String)localObject1) })), QCircleContentOperationView.h(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView));
-      EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    while (!(paramNetReq instanceof HttpNetReq)) {
       return;
     }
+    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetReq;
+    localHttpNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
+    paramNetResp.mWrittenBlockLen = 0L;
+    paramNetResp = "bytes=" + localHttpNetReq.mStartDownOffset + "-";
+    localHttpNetReq.mReqProperties.put("Range", paramNetResp);
+    String str1 = localHttpNetReq.mReqUrl;
+    if (str1.contains("range="))
+    {
+      String str2 = str1.substring(0, str1.lastIndexOf("range="));
+      localHttpNetReq.mReqUrl = (str2 + "range=" + localHttpNetReq.mStartDownOffset);
+    }
+    paramNetReq = paramNetReq.getUserData();
+    if ((paramNetReq != null) && ((paramNetReq instanceof vmp))) {
+      ((vmp)paramNetReq).b = true;
+    }
+    xvv.b("AsyncFileDownloader", String.format("breakDown , range = %s , url = %s", new Object[] { paramNetResp, str1 }));
   }
 }
 

@@ -1,151 +1,83 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.MaterialData;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcVideo;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-class qto
-  extends biht
+public class qto
+  extends qtj
 {
-  qto(qtn paramqtn, String paramString1, BaseResData paramBaseResData, String paramString2) {}
-  
-  public void onCancel(bihu parambihu)
+  public qto(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_Qtn.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      ((biht)this.jdField_a_of_type_Qtn.jdField_a_of_type_JavaUtilArrayList.get(i)).onCancel(parambihu);
-      i += 1;
-    }
-    String str = parambihu.a().getString("resId");
-    this.jdField_a_of_type_Qtn.jdField_a_of_type_JavaUtilHashMap.remove(this.b + "_" + str);
-    super.onCancel(parambihu);
-    this.jdField_a_of_type_Qtn.a("onCancel", parambihu);
-    if (QLog.isColorLevel()) {
-      QLog.d("readinjoy", 4, "mDownloader onCancel");
-    }
+    super(paramContext, paramFaceDecoder, paramslt);
   }
   
-  public void onDone(bihu parambihu)
+  public qpk a()
   {
-    Object localObject = parambihu.a();
-    String str1 = ((Bundle)localObject).getString("resId");
-    String str2 = ((Bundle)localObject).getString("prefix");
-    if (parambihu.jdField_a_of_type_Int == 0)
-    {
-      localObject = new File(this.jdField_a_of_type_JavaLangString);
-      if (!((File)localObject).exists()) {}
+    this.jdField_a_of_type_Boolean = true;
+    return a(this.jdField_a_of_type_Slt, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder).r().l().g().n().q().j();
+  }
+  
+  public qpk d()
+  {
+    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout1.setOrientation(1);
+    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial);
     }
-    do
+    LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout2.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+    localLinearLayout2.setOrientation(1);
+    localLinearLayout2.setPadding(0, 0, 0, AIOUtils.dp2px(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader != null) {
+      localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader);
+    }
+    if (this.jdField_a_of_type_Qpj != null)
     {
-      for (;;)
+      LinearLayout localLinearLayout3 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      localLinearLayout3.setOrientation(1);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+      localLayoutParams.setMargins(AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localLinearLayout3.setLayoutParams(localLayoutParams);
+      localLinearLayout3.addView((View)this.jdField_a_of_type_Qpj);
+      if ((this.jdField_a_of_type_Qpj instanceof ComponentContentBigImageVideo))
       {
-        try
-        {
-          if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData instanceof MaterialData))
-          {
-            if (!((MaterialData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData).res_md5.equals(bhmi.c(((File)localObject).getPath()).toLowerCase()))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("ReadInJoyBaseResManager", 2, "MaterialData check file md5  failed: id = " + str1);
-              }
-              if ((!bhmi.d(((File)localObject).getPath())) && (QLog.isColorLevel())) {
-                QLog.d("ReadInJoyBaseResManager", 2, "MaterialData deleteFile file   failed: id = " + str1);
-              }
-              tny.a((MaterialData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData, false, "check file md5 failed");
-              return;
-            }
-            bhmi.a(((File)localObject).getAbsolutePath(), this.jdField_a_of_type_Qtn.a(str2, str1), false);
-            this.jdField_a_of_type_Qtn.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(parambihu.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Qtn.a(str2, str1));
-            this.jdField_a_of_type_Qtn.a(this.jdField_a_of_type_Qtn.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), str1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData);
-            ((File)localObject).delete();
-            this.jdField_a_of_type_Qtn.jdField_a_of_type_JavaUtilHashMap.remove(str2 + "_" + str1);
-            this.jdField_a_of_type_Qtn.a(str2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData);
-            i = 0;
-            if (i >= this.jdField_a_of_type_Qtn.jdField_a_of_type_JavaUtilArrayList.size()) {
-              break;
-            }
-            ((biht)this.jdField_a_of_type_Qtn.jdField_a_of_type_JavaUtilArrayList.get(i)).onDone(parambihu);
-            i += 1;
-            continue;
-          }
-          bhmi.a(((File)localObject).getAbsolutePath(), this.jdField_a_of_type_Qtn.a(str2), false);
-          continue;
-          try
-          {
-            bhmi.b(this.jdField_a_of_type_Qtn.a(str2, str1));
-            if (!bhmi.a((String)this.jdField_a_of_type_Qtn.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(parambihu.jdField_a_of_type_JavaLangString))) {
-              continue;
-            }
-            bhmi.a((String)this.jdField_a_of_type_Qtn.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(parambihu.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Qtn.a(str2, str1), false);
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("ReadInJoyBaseResManager", 2, "it is the same url copy to another dir path from: " + (String)this.jdField_a_of_type_Qtn.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(parambihu.jdField_a_of_type_JavaLangString) + " to :" + this.jdField_a_of_type_Qtn.a(str2, str1));
-          }
-          catch (Exception localException) {}
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+          localLinearLayout3.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
         }
-        catch (Exception parambihu)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ReadInJoyBaseResManager", 2, "downloadGuide uncompressZip failed: id = " + str1 + ", " + QLog.getStackTraceString(parambihu));
-          }
-          return;
-        }
-        finally
-        {
-          ((File)localObject).delete();
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ReadInJoyBaseResManager", 2, "t is the same url copy to another dir path failed: id = " + str1 + ", " + QLog.getStackTraceString(localException));
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("ReadInJoyBaseResManager", 2, "downloadGuide failed: id = " + str1);
-          }
-          if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinBaseResData instanceof MaterialData)) {
-            bhmi.a(this.jdField_a_of_type_Qtn.a(str2, str1));
-          }
-        }
+        localLinearLayout3.setOnClickListener(new qtp(this));
       }
-      this.jdField_a_of_type_Qtn.a("onDone", parambihu);
-      int i = parambihu.jdField_a_of_type_Int;
-      long l1 = parambihu.h;
-      long l2 = parambihu.g;
-      this.jdField_a_of_type_Qtn.a(new String[] { String.valueOf(i), str1, String.valueOf(l1 - l2) });
-    } while (!QLog.isColorLevel());
-    QLog.d("readinjoy", 4, "mDownloader downLoadFinish");
+      localLinearLayout2.addView(localLinearLayout3);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
+      localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
+    }
+    oyw.a(localLinearLayout2, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843063));
+    localLinearLayout1.addView(localLinearLayout2);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    localLinearLayout2.setOnClickListener(new qtq(this));
+    a(localLinearLayout1);
+    return this;
   }
   
-  public void onProgress(bihu parambihu)
+  public qpk g()
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_Qtn.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      ((biht)this.jdField_a_of_type_Qtn.jdField_a_of_type_JavaUtilArrayList.get(i)).onProgress(parambihu);
-      i += 1;
-    }
-    super.onProgress(parambihu);
-    this.jdField_a_of_type_Qtn.a("onProgress", parambihu);
-  }
-  
-  public boolean onStart(bihu parambihu)
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_Qtn.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      ((biht)this.jdField_a_of_type_Qtn.jdField_a_of_type_JavaUtilArrayList.get(i)).onStart(parambihu);
-      i += 1;
-    }
-    this.jdField_a_of_type_Qtn.a("onStart", parambihu);
-    if (QLog.isColorLevel()) {
-      QLog.d("readinjoy", 4, "mDownloader onStart");
-    }
-    return super.onStart(parambihu);
+    this.jdField_a_of_type_Qpj = new ComponentContentUgcVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

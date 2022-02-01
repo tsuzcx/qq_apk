@@ -1,22 +1,14 @@
-import UserGrowth.stGetPersonalFeedListReq;
-import UserGrowth.stGetPersonalFeedListRsp;
-import java.util.ArrayList;
-
-public class uot
-  extends ukl<stGetPersonalFeedListRsp>
+public abstract interface uot
 {
-  public uot(String paramString1, String paramString2, boolean paramBoolean, ArrayList<String> paramArrayList, int paramInt)
-  {
-    super("GetPersonalFeedList", paramInt);
-    stGetPersonalFeedListReq localstGetPersonalFeedListReq = new stGetPersonalFeedListReq();
-    localstGetPersonalFeedListReq.personId = paramString1;
-    localstGetPersonalFeedListReq.attach_info = paramString2;
-    localstGetPersonalFeedListReq.isFirst = paramBoolean;
-    localstGetPersonalFeedListReq.context_feedids = paramArrayList;
-    localstGetPersonalFeedListReq.scene = paramInt;
-    this.a = localstGetPersonalFeedListReq;
-    uqf.d("PersonalFeedListRequest", "stSimpleGetFeedListReq  = " + localstGetPersonalFeedListReq.toString());
-  }
+  public abstract void a();
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

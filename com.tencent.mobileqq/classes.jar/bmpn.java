@@ -1,109 +1,37 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackTimeLineView;
+import java.util.List;
 
 public class bmpn
+  implements Animator.AnimatorListener
 {
-  public static Map<String, String> a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bmqa jdField_a_of_type_Bmqa = new bmpo(this);
+  public bmpn(VideoTrackContainerView paramVideoTrackContainerView, bmod parambmod) {}
   
-  static
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
+    bmbx.b("miles", "动画取消");
+    VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, false);
+    VideoTrackContainerView.b(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, false);
+    VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, null);
+    VideoTrackContainerView.c(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, ((ViewGroup.MarginLayoutParams)((VideoTrackTimeLineView)VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).get(VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).size() - 1)).getLayoutParams()).rightMargin);
   }
   
-  public bmpn(Context paramContext)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    bmbx.b("miles", "动画结束");
+    VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, false);
+    VideoTrackContainerView.b(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, false);
+    VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, null);
+    this.jdField_a_of_type_Bmod.a();
+    VideoTrackContainerView.c(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, ((ViewGroup.MarginLayoutParams)((VideoTrackTimeLineView)VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).get(VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).size() - 1)).getLayoutParams()).rightMargin);
   }
   
-  private boolean a(JSONObject paramJSONObject)
-  {
-    for (;;)
-    {
-      try
-      {
-        paramJSONObject = paramJSONObject.getJSONArray("readerUrls");
-        int i;
-        if (paramJSONObject == null)
-        {
-          i = 0;
-          if (i == 0)
-          {
-            bmqw.a("ReaderUrlConfigDataHelper", "jsonDataToTabItemData ,size=0");
-            return false;
-          }
-        }
-        else
-        {
-          i = paramJSONObject.length();
-          continue;
-        }
-        jdField_a_of_type_JavaUtilMap.clear();
-        int j = 0;
-        if (j >= i) {
-          break;
-        }
-        JSONObject localJSONObject = paramJSONObject.getJSONObject(j);
-        Iterator localIterator = localJSONObject.keys();
-        if (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          if (!TextUtils.isEmpty(str)) {
-            jdField_a_of_type_JavaUtilMap.put(str, localJSONObject.getString(str));
-          }
-        }
-        else
-        {
-          j += 1;
-        }
-      }
-      catch (Exception paramJSONObject)
-      {
-        bmqw.a("ReaderUrlConfigDataHelper", paramJSONObject.getMessage());
-        return false;
-      }
-    }
-    return true;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  private void b()
-  {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    str = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("CGI_RESPONSE", 0).getString("SP_URL_CONFIG_DATA" + str, "");
-    if (TextUtils.isEmpty(str)) {
-      return;
-    }
-    try
-    {
-      a(new JSONObject(str));
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      bmqw.a("ReaderUrlConfigDataHelper", "getQQReaderUrlConfigDataFromDB," + localJSONException.getMessage());
-    }
-  }
-  
-  private void c()
-  {
-    bmro.a(bmro.c, this.jdField_a_of_type_Bmqa);
-  }
-  
-  public void a()
-  {
-    b();
-    c();
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

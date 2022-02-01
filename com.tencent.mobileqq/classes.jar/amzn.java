@@ -1,12 +1,24 @@
-public abstract interface amzn
+import com.tencent.mobileqq.app.BusinessObserver;
+
+public class amzn
+  implements BusinessObserver
 {
-  public abstract void a();
+  public void a(Object paramObject) {}
   
-  public abstract void b();
+  public void b(Object paramObject) {}
   
-  public abstract void c();
-  
-  public abstract void d();
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1000: 
+      a(paramObject);
+      return;
+    }
+    b(paramObject);
+  }
 }
 
 

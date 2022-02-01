@@ -1,18 +1,26 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.widget.ParticipleView;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
 public class axlz
-  extends GestureDetector.SimpleOnGestureListener
+  extends bdah
 {
-  public axlz(MultiAIOViewPager paramMultiAIOViewPager) {}
+  public axlz(OCRResultActivity paramOCRResultActivity) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean, List<String> paramList)
   {
-    if (MultiAIOViewPager.a(this.a) != null) {
-      this.a.performClick();
+    super.a(paramBoolean, paramList);
+    OCRResultActivity.c(this.a);
+    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
+    {
+      this.a.a.setParticipleItems(paramList);
+      this.a.a.a();
+      OCRResultActivity.d(this.a);
+      return;
     }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    QQToast.a(BaseApplicationImpl.getContext(), 1, amtj.a(2131706932), 0).a();
   }
 }
 

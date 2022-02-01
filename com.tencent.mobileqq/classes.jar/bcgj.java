@@ -1,73 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
-import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
+import java.util.Comparator;
 
-public class bcgj
-  extends bcga
+class bcgj
+  implements Comparator
 {
-  public bcfw a;
-  public boolean b;
-  
-  public bcgj(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-    this.jdField_g_of_type_Boolean = false;
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      String str2 = localJSONObject.optString("appname");
-      String str1 = localJSONObject.optString("desc");
-      String str3 = localJSONObject.optString("appIcon");
-      String str4 = localJSONObject.optString("appid");
-      int i = localJSONObject.optInt("showMask", 0);
-      Object localObject = null;
-      paramString = (String)localObject;
-      if (localJSONObject.has("friendExtra"))
-      {
-        localJSONObject = localJSONObject.optJSONObject("friendExtra");
-        paramString = (String)localObject;
-        if (localJSONObject != null)
-        {
-          paramString = (String)localObject;
-          if (localJSONObject.has("displayText")) {
-            paramString = localJSONObject.optString("displayText");
-          }
-        }
-      }
-      localObject = str1;
-      if (!TextUtils.isEmpty(paramString)) {
-        localObject = paramString + " | " + str1;
-      }
-      paramString = new MiniAppLocalSearchEntity(str4, str2, str3, (String)localObject, i);
-      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      this.a = new bcfw((QQAppInterface)localObject, this.c, paramString, this.jdField_g_of_type_JavaLangString);
-      if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) && (str2.equalsIgnoreCase(this.jdField_g_of_type_JavaLangString))) {}
-      for (this.b = true; localObject != null; this.b = false)
-      {
-        localObject = (MiniAppLocalSearchManager)((QQAppInterface)localObject).getManager(310);
-        if (localObject == null) {
-          break;
-        }
-        ((MiniAppLocalSearchManager)localObject).updateDataDbFromNetResult(paramString);
-        return;
-      }
-      return;
+    paramObject1 = (bcgf)paramObject1;
+    paramObject2 = (bcgf)paramObject2;
+    if (paramObject1.a > paramObject2.a) {
+      return -1;
     }
-    catch (JSONException paramString)
-    {
-      QLog.e("NetSearchTemplateMiniAppItem", 1, "parseLayoutExtensions, exception.");
+    if (paramObject1.a < paramObject2.a) {
+      return 1;
     }
+    return 0;
   }
 }
 

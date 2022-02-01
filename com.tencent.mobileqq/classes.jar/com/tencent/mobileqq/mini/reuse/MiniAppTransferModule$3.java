@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.mini.reuse;
 
 import android.os.Bundle;
-import anuw;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class MiniAppTransferModule$3
-  extends anuw
+  extends CardObserver
 {
   MiniAppTransferModule$3(MiniAppTransferModule paramMiniAppTransferModule) {}
   

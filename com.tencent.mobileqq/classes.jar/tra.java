@@ -1,6 +1,17 @@
-public abstract interface tra
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class tra
+  implements View.OnClickListener
 {
-  public abstract void a();
+  tra(tqz paramtqz) {}
+  
+  public void onClick(View paramView)
+  {
+    tqz.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

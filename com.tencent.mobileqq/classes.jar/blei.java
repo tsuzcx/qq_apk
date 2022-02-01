@@ -1,55 +1,106 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Application;
+import android.os.Build;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.transfile.RichMediaUtil;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal.AppInfo;
+import com.tencent.weiyun.transmission.WeiyunTransmissionStatus;
+import com.tencent.weiyun.transmission.upload.UploadFile;
+import com.tencent.weiyun.transmission.upload.UploadFile.UploadBatch;
+import com.tencent.weiyun.transmission.upload.UploadManager;
+import cooperation.weiyun.TransmissionHelper.5;
+import cooperation.weiyun.upload.WyUploadJob;
+import mqq.app.AppRuntime;
 
-public class blei
+public final class blei
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<bleh> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public List<bleh> b;
-  public boolean b;
-  public long c;
-  public String c;
-  public List<bleh> c;
-  public boolean c;
-  public long d;
-  public String d = "";
-  public long e;
-  public String e = "";
-  public long f;
-  public String f;
-  public long g;
-  public String g;
+  private static String jdField_a_of_type_JavaLangString;
+  private static volatile boolean jdField_a_of_type_Boolean;
   
-  public blei()
+  public static blfn a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt, String paramString4, String paramString5)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_c_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_f_of_type_Long = 0L;
-    this.jdField_g_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_g_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 0;
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString4))) {
+      return null;
+    }
+    if (TextUtils.isEmpty(paramString3)) {
+      paramString3 = "0";
+    }
+    for (;;)
+    {
+      return blfn.a(10, paramString1, paramString2, paramString3, paramLong, paramInt, BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramString4, paramString5);
+    }
   }
   
-  public void a()
+  public static UploadFile a(String paramString, UploadFile.UploadBatch paramUploadBatch, int paramInt)
   {
-    this.jdField_a_of_type_Int = 6;
+    if ((TextUtils.isEmpty(paramString)) || (paramUploadBatch == null) || (paramInt < 0)) {
+      return null;
+    }
+    String str = Build.MODEL;
+    paramString = UploadFile.createUploadFile(1, BaseApplicationImpl.getApplication().getRuntime().getAccount(), str, str, str, paramString, false, paramUploadBatch, paramInt);
+    paramString.autoBackupFlag = false;
+    return paramString;
   }
   
-  public boolean a()
+  private static String a()
   {
-    return this.jdField_a_of_type_Int == 6;
+    if (jdField_a_of_type_JavaLangString == null) {
+      jdField_a_of_type_JavaLangString = "V1_AND_WY_VersionName_" + RichMediaUtil.getVersionCode() + "_ChannelId_" + "B";
+    }
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public static void a(int paramInt)
+  {
+    new Thread(new TransmissionHelper.5(paramInt)).start();
+  }
+  
+  public static void a(Application paramApplication, boolean paramBoolean)
+  {
+    if (jdField_a_of_type_Boolean) {
+      return;
+    }
+    WeiyunTransmissionGlobal.AppInfo localAppInfo = new WeiyunTransmissionGlobal.AppInfo(a(), 1000269, "mobileqq", RichMediaUtil.getVersionCode(), 0, "unknown");
+    WeiyunTransmissionGlobal localWeiyunTransmissionGlobal = WeiyunTransmissionGlobal.getInstance();
+    if (paramBoolean) {}
+    for (String str = "weiyun_";; str = "qq_")
+    {
+      localWeiyunTransmissionGlobal.initTransmission(localAppInfo, paramApplication, new bleo(str), blhl.a());
+      WeiyunTransmissionGlobal.getInstance().getUploadManager().setSpareUploader(new WyUploadJob());
+      WeiyunTransmissionStatus.getInstance().setTranOnlyWifi(0, true, BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      WeiyunTransmissionStatus.getInstance().setLoginStatus(0, BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      AppNetConnInfo.registerNetChangeReceiver(null, new blej());
+      blfu.a().a(new blek(), paramApplication);
+      blfu.a().a(new blem());
+      WeiyunTransmissionGlobal.getInstance().getUploadManager().addGlobalObserver(new blen());
+      jdField_a_of_type_Boolean = true;
+      return;
+    }
+  }
+  
+  public static void a(boolean paramBoolean, long paramLong)
+  {
+    WeiyunTransmissionStatus localWeiyunTransmissionStatus = WeiyunTransmissionStatus.getInstance();
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
+    {
+      localWeiyunTransmissionStatus.setLoginStatus(i, Long.toString(paramLong));
+      blew.c();
+      return;
+    }
+  }
+  
+  public static UploadFile b(String paramString, UploadFile.UploadBatch paramUploadBatch, int paramInt)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramUploadBatch == null) || (paramInt < 0)) {
+      return null;
+    }
+    String[] arrayOfString = blew.a();
+    paramString = UploadFile.createUploadFile(0, BaseApplicationImpl.getApplication().getRuntime().getAccount(), "QQ", arrayOfString[1], arrayOfString[0], paramString, false, paramUploadBatch, paramInt);
+    paramString.autoBackupFlag = false;
+    return paramString;
   }
 }
 

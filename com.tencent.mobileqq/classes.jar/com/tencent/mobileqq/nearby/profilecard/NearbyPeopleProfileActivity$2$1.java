@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import anzj;
+import amtj;
 import com.tencent.mobileqq.widget.QQToast;
 
 class NearbyPeopleProfileActivity$2$1
@@ -10,8 +10,8 @@ class NearbyPeopleProfileActivity$2$1
   
   public void run()
   {
-    this.a.this$0.a();
-    QQToast.a(this.a.this$0, 1, anzj.a(2131706130), 0).a();
+    this.a.this$0.b();
+    QQToast.a(this.a.this$0, 1, amtj.a(2131706360), 0).a();
   }
 }
 

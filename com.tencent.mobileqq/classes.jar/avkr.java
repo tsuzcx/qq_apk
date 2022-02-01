@@ -1,27 +1,8 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import android.graphics.Bitmap;
 
-public class avkr
-  implements bjey
+public abstract interface avkr
 {
-  public avkr(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
-  
-  public void onItemSelect(View paramView, int paramInt)
-  {
-    if ((paramInt == 5) || (paramInt == 4))
-    {
-      paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
-      paramView.putExtra("uin", "2747277822");
-      this.a.startActivity(paramView);
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    this.a.getActivity().finish();
-  }
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

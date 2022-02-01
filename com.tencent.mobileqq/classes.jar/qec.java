@@ -1,66 +1,145 @@
-import android.app.Activity;
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeShareView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import org.json.JSONException;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.PgcSmallView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
 import org.json.JSONObject;
 
 public class qec
-  implements bljm
+  implements qdy
 {
-  public qec(NativeShareView paramNativeShareView) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static Pair<Boolean, String> a(ArticleInfo paramArticleInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NativeShareView", 2, "OnItemClickListener : position = " + paramInt + ", view = " + paramView + ", id = " + paramLong);
-    }
-    paramAdapterView = paramView.getTag();
-    if (paramAdapterView == null) {
-      return;
-    }
-    if (NativeShareView.a(this.a) != null) {
-      NativeShareView.a(this.a).run();
-    }
-    int i = ((bbxf)paramAdapterView).a.action;
-    paramInt = 0;
-    switch (i)
+    if ((paramArticleInfo != null) && (paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfj != null))
     {
+      if (paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfj.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
+        paramArticleInfo = "https://sqimg.qq.com/qq_product_operations/kan/images/super_wenda_default.png";
+      }
+      for (boolean bool = true;; bool = false)
+      {
+        Object localObject = paramArticleInfo;
+        if (!TextUtils.isEmpty(paramArticleInfo))
+        {
+          localObject = paramArticleInfo;
+          if (paramArticleInfo.contains("https")) {
+            localObject = paramArticleInfo.replaceFirst("https", "http");
+          }
+        }
+        return new Pair(Boolean.valueOf(bool), localObject);
+        paramArticleInfo = ((rfk)paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfj.jdField_a_of_type_JavaUtilArrayList.get(0)).c;
+      }
+    }
+    return null;
+  }
+  
+  private void a(ViewBase paramViewBase, pvc parampvc)
+  {
+    if ((paramViewBase == null) || (parampvc == null) || (parampvc.a() == null)) {}
+    do
+    {
+      return;
+      paramViewBase = paramViewBase.findViewBaseByName("id_middle_body_wrapper");
+    } while ((paramViewBase == null) || (paramViewBase.getNativeView() == null));
+    paramViewBase = paramViewBase.getNativeView();
+    paramViewBase.setOnClickListener(new qee(this, paramViewBase.getContext(), parampvc.a()));
+  }
+  
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  {
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    long l = 0L;
+    pzf localpzf;
+    if (paramInt == 75)
+    {
+      if (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rer != null) {
+        l = paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rer.jdField_a_of_type_Long;
+      }
+      localpzf = new pzf();
+      localpzf.a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l).f(paramBaseArticleInfo).g(paramBaseArticleInfo).h(paramBaseArticleInfo).i(paramBaseArticleInfo).j(paramBaseArticleInfo).o(paramBaseArticleInfo).q(paramBaseArticleInfo).u(paramBaseArticleInfo).v(paramBaseArticleInfo).l(paramBaseArticleInfo).w(paramBaseArticleInfo).B(paramBaseArticleInfo).z(paramBaseArticleInfo).D(paramBaseArticleInfo).A(paramBaseArticleInfo);
+      if (paramInt != 75) {
+        break label172;
+      }
+      localpzf.a("ReadInjoy_biu_small_pgc_cell").m(paramBaseArticleInfo).a(paramBaseArticleInfo, "Biu了").F(paramBaseArticleInfo);
     }
     for (;;)
     {
-      paramAdapterView = new JSONObject();
-      try
-      {
-        paramAdapterView.put("channel_type", paramInt);
-        ocd.a(null, "", "0X800A3BE", "0X800A3BE", 0, 0, "", "", "", paramAdapterView.toString(), false);
-        return;
-        paramInt = 6;
-        ubv.a(NativeShareView.a(this.a));
-        continue;
-        ubv.a((Activity)NativeShareView.a(this.a));
-        paramInt = 1;
-        continue;
-        ubv.a((BaseActivity)NativeShareView.a(this.a));
-        paramInt = 2;
-        continue;
-        ubv.b((Activity)NativeShareView.a(this.a));
-        paramInt = 3;
-        continue;
-        ubv.c((Activity)NativeShareView.a(this.a));
-        paramInt = 4;
+      return localpzf.a();
+      if (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfj == null) {
+        break;
       }
-      catch (JSONException paramView)
+      l = paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfj.jdField_a_of_type_Long;
+      break;
+      label172:
+      localpzf.a("ReadInjoy_biu_small_pgc_cell").a(paramBaseArticleInfo, amtj.a(2131710336));
+    }
+  }
+  
+  protected void a(int paramInt1, Context paramContext, pvc parampvc, NativeMiddleBodyView paramNativeMiddleBodyView, int paramInt2)
+  {
+    paramNativeMiddleBodyView = (PgcSmallView)paramNativeMiddleBodyView.a();
+    paramNativeMiddleBodyView.setOnClickListener(new qed(this, parampvc, paramContext, paramInt1));
+    paramNativeMiddleBodyView.a(parampvc);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2)
+  {
+    ViewBase localViewBase = paramContainer.getVirtualView();
+    qhz localqhz = (qhz)localViewBase.findViewBaseByName("id_middle_body_content");
+    NativeMiddleBodyView localNativeMiddleBodyView;
+    PgcSmallView localPgcSmallView;
+    if (localqhz != null)
+    {
+      localNativeMiddleBodyView = (NativeMiddleBodyView)localqhz.getNativeView();
+      if (localNativeMiddleBodyView.a() == null)
       {
-        for (;;)
-        {
-          QLog.e("NativeShareView", 1, paramView, new Object[0]);
+        localPgcSmallView = new PgcSmallView(paramInt1, paramContainer.getContext());
+        if ((localPgcSmallView == null) || (!(localPgcSmallView.getLayoutParams() instanceof RelativeLayout.LayoutParams))) {
+          break label192;
         }
       }
     }
+    label192:
+    for (RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localPgcSmallView.getLayoutParams();; localLayoutParams = new RelativeLayout.LayoutParams(-2, -2))
+    {
+      localqhz.a(localLayoutParams);
+      if (localPgcSmallView != null) {
+        localNativeMiddleBodyView.a(localPgcSmallView, localLayoutParams);
+      }
+      a(paramInt1, paramContainer.getContext(), parampvc, localNativeMiddleBodyView, paramInt2);
+      localqhz.setVisibility(0);
+      qji.e(localViewBase, parampvc);
+      if (paramInt1 == 75)
+      {
+        paramContainer = (qgv)localViewBase.findViewBaseByName("id_biu_comment");
+        if (paramContainer != null) {
+          paramContainer.a(parampvc);
+        }
+        qai.b(localViewBase, parampvc);
+      }
+      qji.a(localViewBase, parampvc.a());
+      qai.a(localViewBase, parampvc);
+      a(localViewBase, parampvc);
+      qji.b(localViewBase, parampvc);
+      return;
+    }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

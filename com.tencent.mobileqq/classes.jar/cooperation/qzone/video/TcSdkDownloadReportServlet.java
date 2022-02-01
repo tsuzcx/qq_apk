@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bmsw;
 import com.tencent.mobileqq.msf.sdk.MsfMsgUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
+import cooperation.qzone.QUA;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 import cooperation.qzone.util.NetworkState;
@@ -31,7 +31,7 @@ public class TcSdkDownloadReportServlet
       {
         String str1 = QzoneConfig.getInstance().getConfig("QZoneSetting", "TcSDKReportURL", "https://btrace.qq.com/kvcollect");
         String str2 = paramIntent.getStringExtra("uin");
-        String str3 = bmsw.a();
+        String str3 = QUA.getQUA3();
         String str4 = Build.MODEL;
         String str5 = Build.VERSION.RELEASE;
         paramIntent = paramIntent.getStringExtra("report_msg");

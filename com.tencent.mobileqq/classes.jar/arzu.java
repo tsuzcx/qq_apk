@@ -1,22 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Comparator;
 
-class arzu
-  implements Animation.AnimationListener
+public class arzu
+  implements Comparator<FileManagerEntity>
 {
-  arzu(arzt paramarzt) {}
+  public arzu(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(FileManagerEntity paramFileManagerEntity1, FileManagerEntity paramFileManagerEntity2)
   {
-    this.a.a.a.setVisibility(8);
-    this.a.a.d();
+    if (paramFileManagerEntity2.srvTime > paramFileManagerEntity1.srvTime) {
+      return 1;
+    }
+    if (paramFileManagerEntity2.srvTime < paramFileManagerEntity1.srvTime) {
+      return -1;
+    }
+    return 0;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

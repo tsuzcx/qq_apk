@@ -1,19 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
 
 public class albe
-  implements alfv
+  extends amwl
 {
-  public albe(LingHbFragment paramLingHbFragment) {}
+  public albe(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  public void a(int paramInt)
+  protected void onUpdateTroopList()
   {
-    if (paramInt == 0)
-    {
-      this.a.a.findViewById(2131368613).setVisibility(8);
-      return;
-    }
-    this.a.a.findViewById(2131368613).setVisibility(0);
+    this.a.c();
   }
 }
 

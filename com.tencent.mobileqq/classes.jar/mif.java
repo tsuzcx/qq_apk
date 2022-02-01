@@ -1,8 +1,31 @@
-public abstract interface mif
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.QavPanelSoundWaveView;
+
+public class mif
+  extends BroadcastReceiver
 {
-  public abstract void a();
+  public mif(QavPanel paramQavPanel) {}
   
-  public abstract void b();
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    do
+    {
+      do
+      {
+        return;
+        if (!"android.intent.action.SCREEN_ON".equals(paramIntent.getAction())) {
+          break;
+        }
+      } while ((this.a.a == null) || (!this.a.b) || (this.a.a.getVisibility() != 0));
+      this.a.a.f();
+      return;
+    } while ((!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction())) || (this.a.a == null));
+    this.a.a.g();
+  }
 }
 
 

@@ -1,54 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.highway.transaction.Transaction;
+import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.webview.webso.WebSoService;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
 
 public class bgyu
-  extends bgyv
+  extends LruCache<String, WebSoService.WebSoState>
 {
-  public bgyu(bgys parambgys, int paramInt)
+  public bgyu(WebSoService paramWebSoService, int paramInt)
   {
-    super(parambgys, paramInt);
+    super(paramInt);
   }
   
-  public void a()
+  protected WebSoService.WebSoState a(String paramString)
   {
-    if (a(this.jdField_a_of_type_Bgys.a)) {
-      return;
-    }
-    e();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      c();
-    }
-  }
-  
-  public void c()
-  {
-    boolean bool = true;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("isVideo", 0);
-    if (this.b != null)
-    {
-      localBundle.putInt("result", 1);
-      localBundle.putString("url", this.b);
-    }
-    for (;;)
-    {
-      bgyt.a().a(bool, this.jdField_a_of_type_Int, localBundle);
-      return;
-      localBundle.putInt("result", 0);
-      localBundle.putString("error", "");
-      bool = false;
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
-      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
-    }
+    return new WebSoService.WebSoState();
   }
 }
 

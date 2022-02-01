@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import wul;
-import ynt;
+import vwb;
+import xpe;
 
-public abstract class VideoListFeedItem<T extends ynt, E extends wul>
+public abstract class VideoListFeedItem<T extends xpe, E extends vwb>
   extends CommentLikeFeedItem<T, E>
 {
   public static final String TAG = "VideoListFeedItem";

@@ -1,99 +1,141 @@
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.TroopAioTopADInfo;
+import com.tencent.mobileqq.troop.widget.TroopAioFeedsCenterView;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-public class beqv
-  extends beuf
+class beqv
+  implements Animation.AnimationListener
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    URL localURL = paramDownloadParams.url;
-    String str = paramDownloadParams.urlStr;
-    paramDownloadParams.url = new URL(paramDownloadParams.url.getFile());
-    paramDownloadParams.urlStr = paramDownloadParams.url.toString();
-    if (QLog.isDevelopLevel()) {
-      QLog.i("AIOFlowerImgDownloader", 4, paramDownloadParams.urlStr);
-    }
-    paramOutputStream = super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
-    paramDownloadParams.url = localURL;
-    paramDownloadParams.urlStr = str;
-    return paramOutputStream;
-  }
+  beqv(bequ parambequ) {}
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Canvas localCanvas = null;
-    paramURLDrawableHandler = null;
-    paramDownloadParams = new BitmapFactory.Options();
-    paramDownloadParams.inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramDownloadParams);
-    float f = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density;
-    paramDownloadParams.inSampleSize = ((int)Math.min(paramDownloadParams.outWidth / (115.0F * f + 0.5F), paramDownloadParams.outHeight / (f * 105.0F + 0.5F)));
-    paramDownloadParams.inJustDecodeBounds = false;
-    label234:
-    do
+    this.a.i = false;
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class).obtainMessage(68).sendToTarget();
+    if (this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation == paramAnimation)
     {
-      int i;
-      int j;
-      try
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      if (this.a.jdField_a_of_type_AndroidViewView != null)
       {
-        paramDownloadParams = BitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramDownloadParams);
-        if (paramDownloadParams == null) {
-          return paramURLDrawableHandler;
-        }
+        if (this.a.jdField_a_of_type_Bdzi != null) {}
+        bequ.a(this.a);
+        this.a.notifyObservers(Integer.valueOf(123322));
+        this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
       }
-      catch (OutOfMemoryError paramFile)
+      if (this.a.jdField_a_of_type_Bdzi != null) {
+        this.a.jdField_a_of_type_Bdzi.d = false;
+      }
+      if (this.a.jdField_b_of_type_Boolean)
       {
+        this.a.d(true);
+        this.a.jdField_b_of_type_Boolean = false;
+      }
+      if (this.a.e)
+      {
+        if (NetworkUtil.isNetSupport(BaseApplication.getContext())) {
+          break label247;
+        }
+        QQToast.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 1, ((FragmentActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131697075), 1).b(((FragmentActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getDimensionPixelSize(2131299076) - (int)bfvh.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 5.0F));
+      }
+    }
+    for (;;)
+    {
+      return;
+      label247:
+      bezy localbezy = (bezy)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(133);
+      String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin;
+      if (!TextUtils.isEmpty(str))
+      {
+        TroopAioTopADInfo localTroopAioTopADInfo = localbezy.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
+        Object localObject;
+        if (localTroopAioTopADInfo != null)
+        {
+          if (!TextUtils.isEmpty(localTroopAioTopADInfo.jumpUrl)) {
+            break label430;
+          }
+          paramAnimation = localTroopAioTopADInfo.backgroundUrl;
+          localObject = bfwg.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), paramAnimation);
+          if (localObject == null) {
+            break label439;
+          }
+          ((bfvp)localObject).a();
+        }
         for (;;)
         {
-          paramDownloadParams = null;
+          bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "notice_center", "Clk_Promote", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, localTroopAioTopADInfo.adId + "", "", "");
+          localbezy.a(str);
+          this.a.d = false;
+          return;
+          label430:
+          paramAnimation = localTroopAioTopADInfo.jumpUrl;
+          break;
+          label439:
+          if (paramAnimation.startsWith("http"))
+          {
+            localObject = new Intent((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), QQBrowserActivity.class);
+            ((Intent)localObject).putExtra("url", URLUtil.guessUrl(paramAnimation));
+            ((FragmentActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity((Intent)localObject);
+          }
         }
-        i = paramDownloadParams.getWidth();
-        j = paramDownloadParams.getHeight();
-        paramFile = localCanvas;
+        if (this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation == paramAnimation)
+        {
+          if ((this.a.jdField_a_of_type_AndroidViewView != null) && (this.a.jdField_a_of_type_Bdzi != null))
+          {
+            this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+            this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+            bequ.b(this.a);
+            this.a.notifyObservers(Integer.valueOf(123322));
+            if ((this.a.c) && (this.a.jdField_a_of_type_AndroidViewView != null) && ((this.a.jdField_a_of_type_AndroidViewView instanceof TroopAioFeedsCenterView)))
+            {
+              if (!this.a.d) {
+                break label651;
+              }
+              this.a.jdField_a_of_type_Beaw.b();
+            }
+          }
+          while (this.a.jdField_a_of_type_AndroidViewView != null)
+          {
+            this.a.jdField_a_of_type_AndroidViewView.requestFocus();
+            return;
+            label651:
+            if (this.a.f)
+            {
+              ((TroopAioFeedsCenterView)this.a.jdField_a_of_type_AndroidViewView).a();
+              this.a.f = false;
+            }
+            else
+            {
+              this.a.c = false;
+              ((TroopAioFeedsCenterView)this.a.jdField_a_of_type_AndroidViewView).a(true);
+            }
+          }
+        }
       }
-      try
-      {
-        paramURLDrawableHandler = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-        paramFile = paramURLDrawableHandler;
-        paramURLDrawableHandler.setDensity(160);
-        paramFile = paramURLDrawableHandler;
-        localCanvas = new Canvas(paramURLDrawableHandler);
-        paramFile = paramURLDrawableHandler;
-        Paint localPaint = new Paint(1);
-        paramFile = paramURLDrawableHandler;
-        localPaint.setColor(-16777216);
-        paramFile = paramURLDrawableHandler;
-        BaseApplicationImpl.getApplication();
-        paramFile = paramURLDrawableHandler;
-        Rect localRect = new Rect(0, 0, i, j - (int)(5.0F * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density));
-        paramFile = paramURLDrawableHandler;
-        localCanvas.drawBitmap(paramDownloadParams, localRect, new RectF(localRect), localPaint);
-        paramFile = paramURLDrawableHandler;
-      }
-      catch (OutOfMemoryError paramURLDrawableHandler)
-      {
-        break label234;
-      }
-      paramURLDrawableHandler = paramFile;
-    } while (paramDownloadParams.isRecycled());
-    paramDownloadParams.recycle();
-    return paramFile;
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.i = true;
   }
 }
 

@@ -26,10 +26,10 @@ public class WebStorage
   
   public void deleteAllData()
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().n();
+      localx.c().n();
       return;
     }
     android.webkit.WebStorage.getInstance().deleteAllData();
@@ -37,10 +37,10 @@ public class WebStorage
   
   public void deleteOrigin(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().e(paramString);
+      localx.c().e(paramString);
       return;
     }
     android.webkit.WebStorage.getInstance().deleteOrigin(paramString);
@@ -48,10 +48,10 @@ public class WebStorage
   
   public void getOrigins(ValueCallback<Map> paramValueCallback)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().a(paramValueCallback);
+      localx.c().a(paramValueCallback);
       return;
     }
     android.webkit.WebStorage.getInstance().getOrigins(paramValueCallback);
@@ -59,10 +59,10 @@ public class WebStorage
   
   public void getQuotaForOrigin(String paramString, ValueCallback<Long> paramValueCallback)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().b(paramString, paramValueCallback);
+      localx.c().b(paramString, paramValueCallback);
       return;
     }
     android.webkit.WebStorage.getInstance().getQuotaForOrigin(paramString, paramValueCallback);
@@ -70,10 +70,10 @@ public class WebStorage
   
   public void getUsageForOrigin(String paramString, ValueCallback<Long> paramValueCallback)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().a(paramString, paramValueCallback);
+      localx.c().a(paramString, paramValueCallback);
       return;
     }
     android.webkit.WebStorage.getInstance().getUsageForOrigin(paramString, paramValueCallback);
@@ -82,10 +82,10 @@ public class WebStorage
   @Deprecated
   public void setQuotaForOrigin(String paramString, long paramLong)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().a(paramString, paramLong);
+      localx.c().a(paramString, paramLong);
       return;
     }
     android.webkit.WebStorage.getInstance().setQuotaForOrigin(paramString, paramLong);

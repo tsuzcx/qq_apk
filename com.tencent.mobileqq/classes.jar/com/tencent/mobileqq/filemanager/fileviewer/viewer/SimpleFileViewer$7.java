@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.filemanager.fileviewer.viewer;
 
-import ausp;
-import ausr;
+import atex;
+import atez;
 
 class SimpleFileViewer$7
   implements Runnable
 {
-  SimpleFileViewer$7(SimpleFileViewer paramSimpleFileViewer, String paramString, ausr paramausr) {}
+  SimpleFileViewer$7(SimpleFileViewer paramSimpleFileViewer, String paramString, atez paramatez) {}
   
   public void run()
   {
-    ausp localausp = ausp.a();
-    SimpleFileViewer.a(this.this$0, localausp.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ausr));
+    atex localatex = atex.a();
+    SimpleFileViewer.a(this.this$0, localatex.a(this.this$0.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Atez));
     SimpleFileViewer.a(this.this$0, null, SimpleFileViewer.a(this.this$0), false);
     SimpleFileViewer.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.biz.qqcircle.widgets.QCircleLightInteractPushWidget;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StUser;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class wav
-  implements View.OnClickListener
+  extends wat
 {
-  public wav(QCircleLightInteractPushWidget paramQCircleLightInteractPushWidget, FeedCloudMeta.StUser paramStUser) {}
+  protected TextView c = (TextView)a(2131380162);
   
-  public void onClick(View paramView)
+  public wav(ViewGroup paramViewGroup, int paramInt)
   {
-    QCircleInitBean localQCircleInitBean = new QCircleInitBean();
-    localQCircleInitBean.setUser(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser);
-    localQCircleInitBean.setFromReportBean(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPushWidget.a().clone().setElementIdStr("portrait"));
-    uyx.b(paramView.getContext(), localQCircleInitBean);
-    if (paramView == QCircleLightInteractPushWidget.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPushWidget)) {
-      vtn.a(87, 2, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPushWidget.a, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPushWidget.d());
-    }
-    for (;;)
+    super(paramViewGroup, paramInt);
+  }
+  
+  public void a(vxd paramvxd)
+  {
+    if (paramvxd.b > 99)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.c.setText("99+");
       return;
-      vtn.a(87, 3, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPushWidget.a, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleLightInteractPushWidget.d());
     }
+    this.c.setText(String.valueOf(paramvxd.b));
   }
 }
 

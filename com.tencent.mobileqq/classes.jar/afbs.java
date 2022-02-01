@@ -1,45 +1,13 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
 
-public class afbs
-  implements CompoundButton.OnCheckedChangeListener
+class afbs
+  implements afuc
 {
-  public afbs(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  afbs(afbj paramafbj) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
   {
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, new Object[] { "avCallOnCheckedChangeListener::onCheckedChanged: invoked. ", " isChecked: ", Boolean.valueOf(paramBoolean) });
-    }
-    if (!NotifyPushSettingActivity.a(this.a).c())
-    {
-      NotifyPushSettingActivity.a(this.a).a(this.a);
-      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(null);
-      FormSwitchItem localFormSwitchItem = NotifyPushSettingActivity.a(this.a);
-      if (!NotifyPushSettingActivity.a(this.a).a()) {
-        bool = true;
-      }
-      localFormSwitchItem.setChecked(bool);
-      NotifyPushSettingActivity.a(this.a).setOnCheckedChangeListener(this.a.a);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      mrl.a(this.a.app.getCurrentAccountUin(), paramBoolean);
-      if (!paramBoolean) {
-        bdll.b(this.a.app, "dc00898", "", "", "0X800A33D", "0X800A33D", 0, 0, "", "", "", "");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("IphoneTitleBarActivity", 2, "isChecked[" + paramBoolean + "]");
-      }
-    }
+    afbj.a(this.a);
   }
 }
 

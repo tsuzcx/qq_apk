@@ -1,20 +1,32 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.contact.addcontact.ViewFactory;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ajfe
-  implements View.OnTouchListener
+class ajfe
+  implements ajex
 {
-  public ajfe(ViewFactory paramViewFactory) {}
+  ajfe(ajey paramajey) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
+  }
+  
+  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
+  {
+    boolean bool = true;
+    Object localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    ((Message)localObject).obj = paramRedTypeInfo;
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+    localObject = ple.a();
+    if (paramRedTypeInfo != null) {}
+    for (;;)
+    {
+      ((ple)localObject).b(bool);
+      return;
+      bool = false;
+    }
   }
 }
 

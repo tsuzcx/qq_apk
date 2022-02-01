@@ -1,19 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.3;
+import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.3.2.1;
 
 public class akox
-  implements DialogInterface.OnDismissListener
+  implements Animator.AnimatorListener
 {
-  public akox(DialogBaseActivity paramDialogBaseActivity) {}
+  public akox(CareNotificationBar.3 param3) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.a != null) {
-      this.a.a.setOnDismissListener(null);
-    }
-    this.a.a = null;
+    this.a.a.post(new CareNotificationBar.3.2.1(this));
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

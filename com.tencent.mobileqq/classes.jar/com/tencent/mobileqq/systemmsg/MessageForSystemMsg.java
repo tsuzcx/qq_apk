@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.systemmsg;
 
 import android.content.res.Resources;
-import bguq;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
 import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
@@ -56,13 +56,13 @@ public class MessageForSystemMsg
       }
       QLog.i("MessageForSystemMsg", 2, String.format("getSysMsgDesc, msg: %s, suffix: %s", new Object[] { Integer.valueOf(i), paramResources }));
       return paramResources;
-      paramResources = paramResources.getString(2131689584);
+      paramResources = paramResources.getString(2131689583);
       break label87;
       paramResources = paramResources.getString(2131689498);
       break label87;
       paramResources = paramResources.getString(2131689497);
       break label87;
-      paramResources = paramResources.getString(2131717421);
+      paramResources = paramResources.getString(2131717653);
       break label87;
       if (i == 2)
       {
@@ -71,13 +71,13 @@ public class MessageForSystemMsg
         if (QLog.isColorLevel()) {
           QLog.d("MessageForSystemMsg", 2, "groupMsgType:" + j + "|req_uin_nick:" + paramStructMsg.msg.req_uin_nick.get() + "|actor_uin_nick:" + paramStructMsg.msg.actor_uin_nick.get() + "|action_uin_nick:" + paramStructMsg.msg.action_uin_nick.get() + "|msg_describe:" + paramStructMsg.msg.msg_describe.get());
         }
-        j = bguq.a(j);
+        j = TroopUtils.getMsgSenderType(j);
         if (j == 1) {
           paramResources = paramStructMsg.msg.action_uin_nick.get();
         }
         for (;;)
         {
-          paramResources = bguq.a(paramStructMsg, paramResources + paramStructMsg.msg.msg_describe.get());
+          paramResources = TroopUtils.getMsgInfo(paramStructMsg, paramResources + paramStructMsg.msg.msg_describe.get());
           break;
           if (j == 2) {
             paramResources = paramStructMsg.msg.req_uin_nick.get();
@@ -134,7 +134,7 @@ public class MessageForSystemMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.systemmsg.MessageForSystemMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,15 @@
-import android.app.Dialog;
-import android.content.res.Resources;
-import android.util.SparseArray;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
-import java.util.List;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.widget.BounceScrollView;
 
 public class bhbk
-  extends bgst
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public bhbk(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity) {}
+  public bhbk(BounceScrollView paramBounceScrollView) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString, List<bgte> paramList)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    paramString = (bgtg)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(this.a.jdField_a_of_type_Int);
-    if ((paramString == null) || (paramString.jdField_a_of_type_Int == 0)) {}
-    for (paramInt2 = 30; paramInt1 >= paramInt2; paramInt2 = paramString.jdField_a_of_type_Int)
-    {
-      this.a.a(this.a.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    this.a.c();
-    bhlq.a(this.a, 230, this.a.getResources().getString(2131697077), this.a.getResources().getString(2131697076), this.a.getResources().getString(2131690580), this.a.getResources().getString(2131697079), new bhbl(this), new bhbm(this)).show();
-    bhbg.a("gold_bean", "gap");
+    return Math.abs(paramFloat2) >= Math.abs(paramFloat1);
   }
 }
 

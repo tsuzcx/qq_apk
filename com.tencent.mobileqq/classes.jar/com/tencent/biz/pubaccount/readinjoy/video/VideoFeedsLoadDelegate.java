@@ -1,5 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
+import amtj;
 import android.app.PendingIntent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,49 +12,55 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import anzj;
 import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 import com.tencent.biz.qqstory.view.widget.DragFrameLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import rlo;
-import rlp;
-import rpt;
-import rxx;
+import java.util.List;
+import rso;
+import rsp;
+import rwv;
+import sfb;
 
 public class VideoFeedsLoadDelegate
-  implements rlo
+  implements rso
 {
   protected static ArrayList<VideoInfo> a;
   protected int a;
   protected Bundle a;
   protected FragmentActivity a;
   protected ViewGroup a;
+  protected VideoFeedsLoadDelegate.Adapter a;
   protected VideoFeedsRecommendFragment a;
+  protected ViolaFragment a;
   protected QQAppInterface a;
   protected String a;
-  protected rlp a;
+  protected rsp a;
   protected String[] a;
   protected int b;
   protected String b;
   protected boolean b;
   protected String c;
+  protected boolean c;
   
-  public VideoFeedsLoadDelegate(rlp paramrlp, Bundle paramBundle, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
+  public VideoFeedsLoadDelegate(rsp paramrsp, Bundle paramBundle, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_Int = 2131365008;
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[] { anzj.a(2131714919), anzj.a(2131714954) };
-    this.jdField_a_of_type_Rlp = paramrlp;
+    this.jdField_a_of_type_Int = 2131365035;
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[] { amtj.a(2131715153), amtj.a(2131715188) };
+    this.jdField_a_of_type_Rsp = paramrsp;
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
     this.jdField_a_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString2;
     this.jdField_b_of_type_JavaLangString = paramString3;
     this.jdField_b_of_type_Boolean = paramBoolean;
     this.jdField_b_of_type_Int = paramInt;
+    this.jdField_c_of_type_Boolean = rwv.h();
   }
   
   private VideoInfo a()
@@ -62,7 +69,7 @@ public class VideoFeedsLoadDelegate
     if (this.jdField_a_of_type_AndroidOsBundle.getParcelable("VIDEO_OBJ") != null)
     {
       localObject1 = (VideoInfo)this.jdField_a_of_type_AndroidOsBundle.getParcelable("VIDEO_OBJ");
-      rpt.a((VideoInfo)localObject1);
+      rwv.a((VideoInfo)localObject1);
       if (QLog.isColorLevel()) {
         QLog.d("VideoFeedsLoadDelegate", 2, "generateRequestVideoInfo: 外部传进来的VideoInfo=" + ((VideoInfo)localObject1).b());
       }
@@ -79,8 +86,8 @@ public class VideoFeedsLoadDelegate
         ((VideoInfo)localObject1).jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = ((MessageForShortVideo)localObject2);
         return localObject1;
       }
-      localObject2 = rpt.a(this.jdField_a_of_type_AndroidOsBundle);
-      rpt.a((VideoInfo)localObject2);
+      localObject2 = rwv.a(this.jdField_a_of_type_AndroidOsBundle);
+      rwv.a((VideoInfo)localObject2);
       localObject1 = localObject2;
     } while (!QLog.isColorLevel());
     QLog.d("VideoFeedsLoadDelegate", 2, "generateRequestVideoInfo: 外部传进来的VideoInfo=" + ((VideoInfo)localObject2).b());
@@ -102,16 +109,21 @@ public class VideoFeedsLoadDelegate
       this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(0, 0);
       return;
     }
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(2130772225, 0);
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(2130772223, 0);
   }
   
   public final View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment = a();
-    this.jdField_a_of_type_AndroidViewViewGroup = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment);
-    paramLayoutInflater = new ViewGroup.LayoutParams(-1, -1);
-    paramViewGroup.addView(this.jdField_a_of_type_AndroidViewViewGroup, 0, paramLayoutInflater);
-    return this.jdField_a_of_type_AndroidViewViewGroup;
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment = a();
+    }
+    for (this.jdField_a_of_type_AndroidViewViewGroup = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment);; this.jdField_a_of_type_AndroidViewViewGroup = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment))
+    {
+      paramLayoutInflater = new ViewGroup.LayoutParams(-1, -1);
+      paramViewGroup.addView(this.jdField_a_of_type_AndroidViewViewGroup, 0, paramLayoutInflater);
+      return this.jdField_a_of_type_AndroidViewViewGroup;
+    }
   }
   
   protected ViewGroup a(int paramInt, Fragment paramFragment)
@@ -120,6 +132,25 @@ public class VideoFeedsLoadDelegate
     localFrameLayout.setId(paramInt);
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getSupportFragmentManager().beginTransaction().replace(paramInt, paramFragment).commitAllowingStateLoss();
     return localFrameLayout;
+  }
+  
+  protected ViewGroup a(int paramInt, Fragment paramFragment1, Fragment paramFragment2)
+  {
+    ViewPagerCompat localViewPagerCompat = new ViewPagerCompat(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+    localViewPagerCompat.setId(paramInt);
+    ArrayList localArrayList = new ArrayList();
+    if (paramFragment1 != null) {
+      localArrayList.add(0, paramFragment1);
+    }
+    if (paramFragment2 != null) {
+      localArrayList.add(1, paramFragment2);
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLoadDelegate$Adapter = new VideoFeedsLoadDelegate.Adapter(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getSupportFragmentManager(), localArrayList, this.jdField_a_of_type_ArrayOfJavaLangString);
+    localViewPagerCompat.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLoadDelegate$Adapter);
+    if (localArrayList.indexOf(paramFragment1) >= 0) {
+      localViewPagerCompat.setCurrentItem(localArrayList.indexOf(paramFragment1));
+    }
+    return localViewPagerCompat;
   }
   
   protected VideoFeedsRecommendFragment a()
@@ -140,15 +171,25 @@ public class VideoFeedsLoadDelegate
         localVideoInfo = (VideoInfo)((ArrayList)localObject).remove(0);
         this.jdField_a_of_type_AndroidOsBundle.putParcelableArrayList("VIDEO_RECOMMEND_LIST", (ArrayList)localObject);
       }
-      for (localObject = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_AndroidOsBundle, localVideoInfo, this.jdField_a_of_type_JavaLangString, this.c, this.jdField_b_of_type_JavaLangString, true, i);; localObject = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_AndroidOsBundle, a(), this.jdField_a_of_type_JavaLangString, this.c, this.jdField_b_of_type_JavaLangString))
+      for (localObject = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_AndroidOsBundle, localVideoInfo, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, true, i);; localObject = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_AndroidOsBundle, a(), this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString))
       {
-        if (this.jdField_a_of_type_Rlp != null) {
-          this.jdField_a_of_type_Rlp.a((VideoFeedsRecommendFragment)localObject);
+        if (this.jdField_a_of_type_Rsp != null) {
+          this.jdField_a_of_type_Rsp.a((VideoFeedsRecommendFragment)localObject);
         }
         return localObject;
       }
       localObject = null;
     }
+  }
+  
+  protected ViolaFragment a()
+  {
+    ViolaFragment localViolaFragment = new ViolaFragment();
+    localViolaFragment.setArguments(new Bundle());
+    if (this.jdField_a_of_type_Rsp != null) {
+      this.jdField_a_of_type_Rsp.a(localViolaFragment);
+    }
+    return localViolaFragment;
   }
   
   public void a(VideoInfo paramVideoInfo)
@@ -157,7 +198,7 @@ public class VideoFeedsLoadDelegate
     while (this.jdField_a_of_type_AndroidOsBundle.getInt("KEY_OLD_LOAD_DELEGATE_TYPE", -1) != 2) {
       return;
     }
-    new rxx(null, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_JavaLangString, this.c, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int).b(paramVideoInfo);
+    new sfb(null, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int).b(paramVideoInfo);
   }
   
   public void a(DragFrameLayout paramDragFrameLayout)
@@ -166,13 +207,13 @@ public class VideoFeedsLoadDelegate
     int m = this.jdField_a_of_type_AndroidOsBundle.getInt("item_y", 0);
     int i = this.jdField_a_of_type_AndroidOsBundle.getInt("item_width", 0);
     int n = this.jdField_a_of_type_AndroidOsBundle.getInt("item_height", 0);
-    int j = rpt.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity)[0];
+    int j = rwv.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity)[0];
     if (((k == 0) && (m == 0) && (i == 0)) || (i >= n))
     {
       a(this.jdField_a_of_type_AndroidOsBundle);
       return;
     }
-    int[] arrayOfInt = rpt.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, k, m);
+    int[] arrayOfInt = rwv.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, k, m);
     k = arrayOfInt[0];
     m = arrayOfInt[1];
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(0, 0);

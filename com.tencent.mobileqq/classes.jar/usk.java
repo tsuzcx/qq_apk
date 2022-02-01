@@ -1,12 +1,52 @@
-class usk
-  implements ukd
+import android.content.Context;
+import android.view.ViewGroup;
+import java.util.Properties;
+
+public abstract interface usk<U, V>
 {
-  usk(usj paramusj, usf paramusf) {}
+  public abstract int a();
   
-  public void a(uko paramuko)
-  {
-    usj.a(this.jdField_a_of_type_Usj, paramuko, this.jdField_a_of_type_Usf);
-  }
+  public abstract long a();
+  
+  public abstract String a();
+  
+  public abstract Properties a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(Context paramContext, long paramLong, int paramInt, usj<U, V> paramusj);
+  
+  public abstract void a(usm paramusm);
+  
+  public abstract void a(usr paramusr);
+  
+  public abstract void a(usr paramusr, ViewGroup paramViewGroup);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

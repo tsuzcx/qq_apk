@@ -1,6 +1,14 @@
-public abstract interface rwd
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+
+class rwd
+  implements ote
 {
-  public abstract void a(rwc paramrwc, boolean paramBoolean);
+  rwd(rwa paramrwa) {}
+  
+  public void onViewCreated(boolean paramBoolean)
+  {
+    rwa.a(this.a).d();
+  }
 }
 
 

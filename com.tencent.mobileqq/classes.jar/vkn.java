@@ -1,33 +1,22 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext.StoryBroadcastReceiver;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-class vkn
-  implements TextView.OnEditorActionListener
+public class vkn
+  extends SimpleJob<Void>
 {
-  vkn(vkl paramvkl) {}
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public vkn(QQStoryContext.StoryBroadcastReceiver paramStoryBroadcastReceiver, String paramString)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramInt)
-    {
-    case 5: 
-    default: 
-      bool1 = false;
-    }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (this.a.a());
-      bool1 = bool2;
-    } while (this.a.a == null);
-    this.a.a.a();
-    return true;
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    int i = vns.a();
+    xvv.d(QQStoryContext.StoryBroadcastReceiver.a(), "onReceive : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
+    return null;
   }
 }
 

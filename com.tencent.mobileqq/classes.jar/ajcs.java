@@ -1,21 +1,26 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.AppRuntime;
 
-public class ajcs
-  implements ajhf
+class ajcs
+  implements DialogInterface.OnClickListener
 {
-  public ajcs(AddContactsActivity paramAddContactsActivity) {}
+  ajcs(ajcr paramajcr) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AddContactsActivity.a(this.a, paramBoolean);
-    ImageView localImageView = AddContactsActivity.a(this.a);
-    if (AddContactsActivity.a(this.a)) {}
-    for (int i = 0;; i = 8)
+    if (this.a.a.a() != null)
     {
-      localImageView.setVisibility(i);
-      return;
+      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
+      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
+      this.a.a.a().startActivity(localIntent);
     }
+    paramDialogInterface.dismiss();
   }
 }
 

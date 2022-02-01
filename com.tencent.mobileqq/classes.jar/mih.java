@@ -1,6 +1,14 @@
 public abstract interface mih
 {
-  public abstract void a(long paramLong, String paramString, boolean paramBoolean);
+  public abstract long a();
+  
+  public abstract void a();
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
 }
 
 

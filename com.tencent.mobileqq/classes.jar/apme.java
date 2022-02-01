@@ -1,74 +1,28 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 class apme
-  implements apmc
+  implements View.OnClickListener
 {
-  private IBinder a;
+  apmc jdField_a_of_type_Apmc;
+  apmg jdField_a_of_type_Apmg;
   
-  apme(IBinder paramIBinder)
+  apme(apmc paramapmc, apmg paramapmg)
   {
-    this.a = paramIBinder;
+    this.jdField_a_of_type_Apmc = paramapmc;
+    this.jdField_a_of_type_Apmg = paramapmg;
   }
   
-  public void a()
+  public void onClick(View paramView)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
+    apkn.a(paramView.getContext(), (ColorNote)apmc.a(this.jdField_a_of_type_Apmc).get(this.jdField_a_of_type_Apmg.getAdapterPosition()));
+    if (apmc.a(this.jdField_a_of_type_Apmc) != null) {
+      apmc.a(this.jdField_a_of_type_Apmc).b();
     }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      localParcel1.writeInt(paramInt);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

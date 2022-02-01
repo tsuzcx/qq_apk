@@ -1,36 +1,10 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-
-final class non
-  implements bliz
+public abstract interface non
 {
-  non(blir paramblir, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
+  public abstract void a(Runnable paramRunnable);
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_Blir.dismiss();
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004655", "0X8004655", 0, 0, "", "", "", "");
-      try
-      {
-        nok.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "IvrAIOMessageEngineFalse");
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("CrmUtils", 2, "Start ivr audio error", paramView);
-  }
+  public abstract void b(Runnable paramRunnable);
+  
+  public abstract void c(Runnable paramRunnable);
 }
 
 

@@ -10,8 +10,8 @@ class AppUIProxy$LoadingUI$3
   
   public void run()
   {
-    AppUIProxy.LoadingUI.access$300(this.this$1).setVisibility(0);
-    AppUIProxy.LoadingUI.access$300(this.this$1).setAnimation(this.val$nameAniSet);
+    AppUIProxy.LoadingUI.access$300(this.this$0).setVisibility(0);
+    AppUIProxy.LoadingUI.access$300(this.this$0).setAnimation(this.val$nameAniSet);
   }
 }
 

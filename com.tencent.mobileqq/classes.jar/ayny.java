@@ -1,43 +1,18 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class ayny
-  implements aqxz
+  implements View.OnClickListener
 {
-  ayny(aynp paramaynp) {}
+  ayny(aynw paramaynw, int paramInt) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 4;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    int i = 3;
-    if (paramInt2 < 0) {}
-    for (paramInt1 = 0;; paramInt1 = paramInt2)
-    {
-      if (paramInt1 > 3) {
-        paramInt1 = i;
-      }
-      for (;;)
-      {
-        switch (paramInt1)
-        {
-        default: 
-          return "";
-        case 0: 
-          return anzj.a(2131706195);
-        case 1: 
-          return anzj.a(2131706166);
-        case 2: 
-          return anzj.a(2131706136);
-        }
-        return anzj.a(2131706168);
-      }
+    if (this.jdField_a_of_type_Aynw.a != null) {
+      this.jdField_a_of_type_Aynw.a.b(paramView, this.jdField_a_of_type_Int);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

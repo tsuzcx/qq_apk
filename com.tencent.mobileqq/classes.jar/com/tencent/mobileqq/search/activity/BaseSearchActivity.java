@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.search.activity;
 
 import Override;
+import amtj;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -22,12 +23,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import anzj;
-import bcap;
-import bcaq;
-import bcar;
-import bcnh;
-import bdll;
+import batt;
+import batu;
+import batv;
+import bbgj;
+import bcef;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -59,7 +59,7 @@ public abstract class BaseSearchActivity
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText = ((QuickPinyinEditText)super.findViewById(2131366151));
+    this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText = ((QuickPinyinEditText)super.findViewById(2131366179));
     this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setHint(a());
     this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setImeOptions(3);
     this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setOnEditorActionListener(this);
@@ -72,15 +72,15 @@ public abstract class BaseSearchActivity
       if (this.jdField_a_of_type_Boolean) {
         this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.getInputExtras(true).putInt("QUICK_SEARCH", 1);
       }
-      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)super.findViewById(2131368209));
-      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new bcap(this));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363745));
+      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)super.findViewById(2131368234));
+      this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new batt(this));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363774));
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131690580);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new bcaq(this));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131369134));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131690620);
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new batu(this));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131369162));
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bcar(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new batv(this));
       return;
       this.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setInputType(524289);
     }
@@ -88,22 +88,22 @@ public abstract class BaseSearchActivity
   
   protected int a()
   {
-    return 2131561525;
+    return 2131561409;
   }
   
   protected abstract BaseSearchFragment a();
   
   protected String a()
   {
-    return anzj.a(2131699973);
+    return amtj.a(2131700208);
   }
   
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("searchUtils", 2, "cancelType-3 ResultModule:" + bcnh.a());
+      QLog.d("searchUtils", 2, "cancelType-3 ResultModule:" + bbgj.a());
     }
-    bdll.b(null, "CliOper", "", "", "0X8005E13", "0X8005E13", 0, 0, "3", "", bcnh.a(), "");
+    bcef.b(null, "CliOper", "", "", "0X8005E13", "0X8005E13", 0, 0, "3", "", bbgj.a(), "");
     a(this, new Intent("com.tencent.mobileqq.search.cancel"));
     b = 0;
     finish();
@@ -128,7 +128,7 @@ public abstract class BaseSearchActivity
     {
       paramEditable = paramEditable.trim();
       if (!paramEditable.equals(this.jdField_a_of_type_JavaLangString)) {
-        bcni.b = 0L;
+        bbgk.b = 0L;
       }
       a(paramEditable);
       return;
@@ -147,8 +147,9 @@ public abstract class BaseSearchActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -158,7 +159,7 @@ public abstract class BaseSearchActivity
     b = -1;
     super.doOnCreate(paramBundle);
     super.setContentView(a());
-    paramBundle = super.findViewById(2131376925);
+    paramBundle = super.findViewById(2131376679);
     if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
       paramBundle.setFitsSystemWindows(true);
     }
@@ -168,7 +169,7 @@ public abstract class BaseSearchActivity
     paramBundle = super.getSupportFragmentManager();
     this.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment = a();
     paramBundle = paramBundle.beginTransaction();
-    paramBundle.replace(2131377164, this.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment);
+    paramBundle.replace(2131376916, this.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment);
     paramBundle.commit();
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
@@ -219,7 +220,7 @@ public abstract class BaseSearchActivity
           localError.printStackTrace();
         }
       }
-      bcni.a = null;
+      bbgk.a = null;
       b = -1;
       return;
     }
@@ -235,7 +236,7 @@ public abstract class BaseSearchActivity
   public void doOnStart()
   {
     super.doOnStart();
-    bhuu.jdField_a_of_type_Boolean = false;
+    bgbp.jdField_a_of_type_Boolean = false;
   }
   
   @Override
@@ -263,7 +264,7 @@ public abstract class BaseSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.BaseSearchActivity
  * JD-Core Version:    0.7.0.1
  */

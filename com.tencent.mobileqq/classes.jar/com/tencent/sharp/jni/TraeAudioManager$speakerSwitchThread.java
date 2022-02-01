@@ -2,10 +2,10 @@ package com.tencent.sharp.jni;
 
 import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
-import lff;
+import lez;
 
 class TraeAudioManager$speakerSwitchThread
-  extends TraeAudioManager.switchThread
+  extends TraeAudioManager.SwitchThread
 {
   TraeAudioManager$speakerSwitchThread(TraeAudioManager paramTraeAudioManager, long paramLong)
   {
@@ -20,8 +20,8 @@ class TraeAudioManager$speakerSwitchThread
   public void a()
   {
     int i = 0;
-    this.this$0.a(this.jdField_a_of_type_Long, this.this$0.a, true);
-    e();
+    this.this$0.a(this.jdField_a_of_type_Long, TraeAudioManager.a(this.this$0), true);
+    c();
     for (;;)
     {
       if (this.jdField_a_of_type_Boolean)
@@ -31,9 +31,9 @@ class TraeAudioManager$speakerSwitchThread
         }
         if ((this.b) && (i > 4))
         {
-          lff locallff = VideoController.a().a();
-          if (!locallff.P) {
-            QLog.w(this.jdField_a_of_type_JavaLangString, 1, "_run, 不需要打开扬声器, sessionInfo[" + locallff + "]");
+          lez locallez = VideoController.a().a();
+          if (!locallez.P) {
+            QLog.w(this.jdField_a_of_type_JavaLangString, 1, "_run, 不需要打开扬声器, sessionInfo[" + locallez + "]");
           }
         }
       }
@@ -41,7 +41,7 @@ class TraeAudioManager$speakerSwitchThread
       {
         return;
       }
-      this.this$0.a(this.jdField_a_of_type_Long, this.this$0.a, true);
+      this.this$0.a(this.jdField_a_of_type_Long, TraeAudioManager.a(this.this$0), true);
       label126:
       long l;
       if (i < 5) {

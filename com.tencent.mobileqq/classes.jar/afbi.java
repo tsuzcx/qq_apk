@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import mqq.app.QQPermissionCallback;
 
-public class afbi
-  implements View.OnClickListener
+class afbi
+  implements QQPermissionCallback
 {
-  public afbi(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  afbi(afbf paramafbf, Bitmap paramBitmap) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    PublicFragmentActivity.a(this.a, TempMsgSettingFragment.class);
-    EventCollector.getInstance().onViewClicked(paramView);
+    bfur.a(afbf.a(this.jdField_a_of_type_Afbf), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_Afbf.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

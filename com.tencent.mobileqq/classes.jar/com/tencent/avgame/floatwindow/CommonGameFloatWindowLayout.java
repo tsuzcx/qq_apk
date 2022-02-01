@@ -10,9 +10,9 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mxy;
-import myi;
-import nhs;
+import myj;
+import myt;
+import njh;
 
 public class CommonGameFloatWindowLayout
   extends FloatWindowBaseLayout
@@ -20,7 +20,7 @@ public class CommonGameFloatWindowLayout
 {
   View jdField_a_of_type_AndroidViewView;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
-  mxy jdField_a_of_type_Mxy;
+  myj jdField_a_of_type_Myj;
   
   public CommonGameFloatWindowLayout(Context paramContext)
   {
@@ -30,11 +30,11 @@ public class CommonGameFloatWindowLayout
   
   private void f()
   {
-    this.b = ((int)getResources().getDimension(2131296561));
-    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131296562));
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558710, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369230));
-    Bitmap localBitmap = nhs.a("avgame_float_waiting@2x.png");
+    this.b = ((int)getResources().getDimension(2131296614));
+    this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131296615));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558715, null);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369247));
+    Bitmap localBitmap = njh.a("avgame_float_waiting@2x.png");
     if (localBitmap != null) {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
     }
@@ -44,32 +44,32 @@ public class CommonGameFloatWindowLayout
     setOnClickListener(this);
   }
   
-  public int a(myi parammyi)
+  public int a(myt parammyt)
   {
-    return parammyi.jdField_a_of_type_Int - this.jdField_a_of_type_Int / 2;
+    return parammyt.jdField_a_of_type_Int - this.jdField_a_of_type_Int / 2;
   }
   
   public void a()
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      Bitmap localBitmap = nhs.a("avgame_float_waiting@2x.png");
+      Bitmap localBitmap = njh.a("avgame_float_waiting@2x.png");
       if (localBitmap != null) {
         this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
       }
     }
   }
   
-  public boolean a(myi parammyi)
+  public boolean a(myt parammyt)
   {
     boolean bool = true;
-    if (parammyi == null) {
+    if (parammyt == null) {
       return false;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("FloatWindowBaseLayout", 2, "updateFloatWindow isForeground: " + parammyi.jdField_a_of_type_Boolean);
+      QLog.d("FloatWindowBaseLayout", 2, "updateFloatWindow isForeground: " + parammyt.jdField_a_of_type_Boolean);
     }
-    if (parammyi.jdField_a_of_type_Boolean) {
+    if (parammyt.jdField_a_of_type_Boolean) {
       if (a()) {}
     }
     for (;;)
@@ -83,16 +83,16 @@ public class CommonGameFloatWindowLayout
     }
   }
   
-  public int b(myi parammyi)
+  public int b(myt parammyt)
   {
-    return parammyi.b - this.b / 2;
+    return parammyt.b - this.b / 2;
   }
   
   public void b()
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      Bitmap localBitmap = nhs.a("avgame_float_playing@2x.png");
+      Bitmap localBitmap = njh.a("avgame_float_playing@2x.png");
       if (localBitmap != null) {
         this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
       }
@@ -103,7 +103,7 @@ public class CommonGameFloatWindowLayout
   {
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      Bitmap localBitmap = nhs.a("avgame_float_you_play@2x.png");
+      Bitmap localBitmap = njh.a("avgame_float_you_play@2x.png");
       if (localBitmap != null) {
         this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
       }
@@ -112,15 +112,15 @@ public class CommonGameFloatWindowLayout
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Mxy != null) {
-      this.jdField_a_of_type_Mxy.a();
+    if (this.jdField_a_of_type_Myj != null) {
+      this.jdField_a_of_type_Myj.a();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void setOnFloatWindowClickListener(mxy parammxy)
+  public void setOnFloatWindowClickListener(myj parammyj)
   {
-    this.jdField_a_of_type_Mxy = parammxy;
+    this.jdField_a_of_type_Myj = parammyj;
   }
 }
 

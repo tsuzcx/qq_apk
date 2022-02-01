@@ -1,21 +1,41 @@
-class atqs
-  extends atrt
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.fragment.AppletsSettingFragment;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.widget.Switch;
+
+public class atqs
+  implements DialogInterface.OnClickListener
 {
-  atqs(atqr paramatqr, atqw paramatqw) {}
+  public atqs(AppletsSettingFragment paramAppletsSettingFragment) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
+    boolean bool = true;
+    if (paramInt == 1)
     {
-      this.jdField_a_of_type_Atqw.a(paramString2, paramString3);
-      return;
+      paramDialogInterface = this.a;
+      if (!AppletsSettingFragment.a(this.a))
+      {
+        AppletsSettingFragment.a(paramDialogInterface, bool);
+        AppletsSettingFragment.a(this.a, AppletsSettingFragment.a(this.a));
+        this.a.a.cancel();
+      }
     }
-    this.jdField_a_of_type_Atqw.a(paramInt, paramString1);
+    while (paramInt != 0) {
+      for (;;)
+      {
+        return;
+        bool = false;
+      }
+    }
+    AppletsSettingFragment.a(this.a).setChecked(AppletsSettingFragment.a(this.a));
+    this.a.a.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,18 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
 
 public class tpd
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  private CopyOnWriteArrayList<String> a = new CopyOnWriteArrayList();
+  public tpd(ViolaLazyFragment paramViolaLazyFragment) {}
   
-  public void a(Context paramContext, ppu paramppu, int paramInt1, int paramInt2)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if ((this.a == null) || (paramppu.a() == null) || (paramppu.a().mSmallMiniGameInfo == null) || (paramppu.a().mSmallMiniGameInfo.a == null)) {}
-    String str;
-    do
-    {
-      return;
-      str = paramppu.a().mSmallMiniGameInfo.b + "_" + ((tme)paramppu.a().mSmallMiniGameInfo.a.get(paramInt1)).a;
-    } while (this.a.contains(str));
-    this.a.add(str);
-    nzq.a(paramContext, paramppu.a(), paramppu.h(), paramInt1, paramInt2);
+    paramInt = this.a.getActivity().getWindow().getDecorView().getSystemUiVisibility();
+    this.a.getActivity().getWindow().getDecorView().setSystemUiVisibility(paramInt | 0x2 | 0x400);
   }
 }
 

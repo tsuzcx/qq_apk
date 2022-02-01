@@ -1,32 +1,89 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
-import oicq.wlogin_sdk.tools.util;
 
-class apyz
-  extends WtloginObserver
+public class apyz
+  extends aptq<apyy>
 {
-  apyz(apyx paramapyx, apza paramapza) {}
+  private static apyy a;
   
-  public void onGetOpenKeyWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, ErrMsg paramErrMsg)
+  public static apyy a()
+  {
+    apyy localapyy2 = (apyy)apub.a().a(524);
+    apyy localapyy1 = localapyy2;
+    if (localapyy2 == null) {
+      localapyy1 = apyy.a();
+    }
+    return localapyy1;
+  }
+  
+  @NonNull
+  public apyy a(int paramInt)
+  {
+    if (a != null) {
+      return a;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    a = apyy.a();
+    return a;
+  }
+  
+  @Nullable
+  public apyy a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    {
+      paramArrayOfaptx = apyy.a(paramArrayOfaptx[0].a);
+      a = null;
+      return paramArrayOfaptx;
+    }
+    return apyy.a();
+  }
+  
+  public void a(apyy paramapyy)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ArkApp.LoginHandler", 2, "OnGetOpenKeyWithoutPasswd userAccount=" + paramString + ", dwSrcAppid=" + paramLong1 + ", dwDstAppid=" + paramLong2 + ", dwMainSigMap=" + paramInt1 + ", ret=" + paramInt2);
+      QLog.d("MutualMarkConfProcessor", 2, "onUpdate newConf:" + paramapyy);
     }
-    apyx.a(this.jdField_a_of_type_Apyx, null);
-    if (paramInt2 == 0)
-    {
-      paramArrayOfByte1 = util.buf_to_string(paramArrayOfByte1);
-      paramArrayOfByte2 = util.buf_to_string(paramArrayOfByte2);
-      this.jdField_a_of_type_Apza.a(paramString, paramLong2, paramArrayOfByte1, paramArrayOfByte2);
-      return;
+  }
+  
+  public Class<apyy> clazz()
+  {
+    return apyy.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MutualMarkConfProcessor", 2, "onReqFailed failCode:" + paramInt);
     }
-    this.jdField_a_of_type_Apza.a(null, 0L, null, null);
+  }
+  
+  public int type()
+  {
+    return 524;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apyz
  * JD-Core Version:    0.7.0.1
  */

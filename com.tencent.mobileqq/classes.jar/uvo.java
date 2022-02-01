@@ -1,26 +1,35 @@
-import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
-import UserGrowth.stSimpleMetaFeed;
-import java.util.Arrays;
-import java.util.List;
+import android.text.TextUtils;
+import com.google.gson.Gson;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-class uvo
-  implements ulk
+public class uvo
 {
-  stSimpleMetaFeed a;
+  private ConcurrentHashMap<String, String> a = new ConcurrentHashMap();
   
-  uvo(stSimpleMetaFeed paramstSimpleMetaFeed)
+  public static uvo a()
   {
-    this.a = paramstSimpleMetaFeed;
+    return uvq.a();
   }
   
-  public List<ull> a(int paramInt, boolean paramBoolean)
+  public String a(String paramString)
   {
-    return Arrays.asList(new ull[] { new ull(this.a.video_url, this.a.video.duration) });
+    if (!TextUtils.isEmpty(paramString)) {
+      return (String)this.a.get(paramString);
+    }
+    return "";
   }
   
-  public boolean a()
+  public void a()
   {
-    return true;
+    this.a.clear();
+  }
+  
+  public void a(String paramString, Map<String, String> paramMap)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramMap != null)) {
+      this.a.put(paramString, new Gson().toJson(paramMap));
+    }
   }
 }
 

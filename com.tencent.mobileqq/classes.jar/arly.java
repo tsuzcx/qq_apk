@@ -1,117 +1,84 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment.3.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class arly
-  extends arac<arlx>
+  extends RecyclerView.OnScrollListener
 {
-  @NonNull
-  public arlx a(int paramInt)
-  {
-    QLog.i("QFileIPv6ConfigProcessor", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
-    return new arlx();
-  }
+  public arly(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  @Nullable
-  public arlx a(araj[] paramArrayOfaraj)
+  public void onScrollStateChanged(RecyclerView arg1, int paramInt)
   {
-    QLog.i("QFileIPv6ConfigProcessor", 1, "onParsed");
-    if (paramArrayOfaraj != null) {
-      try
-      {
-        if (paramArrayOfaraj.length > 0)
-        {
-          paramArrayOfaraj = (arlx)arax.a(paramArrayOfaraj[0].a, arlx.class);
-          return paramArrayOfaraj;
-        }
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSquareFragment", 2, String.format("onScrollStateChanged state=%s", new Object[] { Integer.valueOf(paramInt) }));
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null)
+    {
+      if (paramInt != 0) {
+        break label94;
       }
-      catch (QStorageInstantiateException paramArrayOfaraj) {}
+      this.a.c = false;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.resume();
+      this.a.ak_();
     }
-    return null;
-  }
-  
-  public void a(arlx paramarlx)
-  {
-    if (paramarlx == null) {
-      QLog.i("QFileIPv6ConfigProcessor", 1, "FileIPv6Config onUpdate: newConf is null.");
-    }
-    label256:
     for (;;)
     {
-      return;
-      QLog.i("QFileIPv6ConfigProcessor", 1, "FileIPv6Config onUpdate");
-      Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject1 instanceof QQAppInterface)) {}
-      for (localObject1 = (QQAppInterface)localObject1;; localObject1 = null)
+      if (paramInt == 0)
       {
-        if (localObject1 == null) {
-          break label256;
+        ExtendFriendSquareFragment.c(this.a);
+        this.a.g();
+        this.a.b(false);
+      }
+      return;
+      label94:
+      this.a.c = true;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.pause();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.cancelPendingRequests();
+      synchronized (ExtendFriendBaseFragment.a)
+      {
+        if (this.a.jdField_a_of_type_JavaUtilMap != null) {
+          this.a.jdField_a_of_type_JavaUtilMap.clear();
         }
-        Object localObject2 = ((QQAppInterface)localObject1).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject1).c(), 0).edit();
-        ((SharedPreferences.Editor)localObject2).putBoolean("ipv6_all_switch", paramarlx.jdField_a_of_type_Boolean);
-        ((SharedPreferences.Editor)localObject2).putBoolean("ipv6_c2c_switch", paramarlx.b);
-        ((SharedPreferences.Editor)localObject2).putBoolean("ipv6_group_switch", paramarlx.c);
-        ((SharedPreferences.Editor)localObject2).putBoolean("ipv6_disc_switch", paramarlx.d);
-        ((SharedPreferences.Editor)localObject2).putBoolean("ipv6_dataline_switch", paramarlx.e);
-        ((SharedPreferences.Editor)localObject2).putInt("ipv6_strategy", paramarlx.jdField_a_of_type_Int);
-        ((SharedPreferences.Editor)localObject2).apply();
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putBoolean("ipv6_all_switch", paramarlx.jdField_a_of_type_Boolean);
-        ((Bundle)localObject2).putBoolean("ipv6_c2c_switch", paramarlx.b);
-        ((Bundle)localObject2).putBoolean("ipv6_group_switch", paramarlx.c);
-        ((Bundle)localObject2).putBoolean("ipv6_disc_switch", paramarlx.d);
-        ((Bundle)localObject2).putBoolean("ipv6_dataline_switch", paramarlx.e);
-        ((Bundle)localObject2).putInt("ipv6_strategy", paramarlx.jdField_a_of_type_Int);
-        paramarlx = (atsh)((QQAppInterface)localObject1).getManager(317);
-        if (paramarlx == null) {
-          break;
-        }
-        paramarlx.b((Bundle)localObject2);
-        return;
       }
     }
   }
   
-  public Class<arlx> clazz()
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    return arlx.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.i("QFileIPv6ConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
-  }
-  
-  public int type()
-  {
-    return 449;
+    this.a.h = this.a.d();
+    float f2 = 0.0F;
+    float f1 = f2;
+    if (this.a.e != -1L)
+    {
+      long l = System.currentTimeMillis() - this.a.e;
+      f1 = f2;
+      if (l > 0L)
+      {
+        f1 = f2;
+        if (l < 2000L) {
+          f1 = paramInt2 * 1.0F / (float)l;
+        }
+      }
+    }
+    this.a.e = System.currentTimeMillis();
+    ExtendFriendSquareFragment.a(this.a, this.a.h, f1);
+    if ((!ExtendFriendSquareFragment.a(this.a)) && (!ExtendFriendSquareFragment.b(this.a)) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) && (this.a.jdField_a_of_type_Arme != null) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(this.a.jdField_a_of_type_Arme.getItemCount() - 2) != null))
+    {
+      this.a.a(true);
+      ExtendFriendSquareFragment.a(this.a).post(new ExtendFriendSquareFragment.3.1(this));
+      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arly
  * JD-Core Version:    0.7.0.1
  */

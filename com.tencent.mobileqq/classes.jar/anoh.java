@@ -1,42 +1,422 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Process;
+import android.preference.PreferenceManager;
+import android.util.Xml;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog.4;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.ROMUtil;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import org.xmlpull.v1.XmlPullParser;
 
-final class anoh
-  implements anol
+public class anoh
+  extends ReportDialog
 {
-  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public static int a;
+  public static long a;
+  public static Intent a;
+  public static bgoe a;
+  public static String a;
+  public static boolean a;
+  public static int b;
+  @Deprecated
+  public static long b;
+  public static String b;
+  public static boolean b;
+  public static int c;
+  private static long c;
+  public static String c;
+  public static boolean c;
+  public static int d;
+  public static String d;
+  public static boolean d;
+  public static int e;
+  public static String e;
+  public static int f;
+  public static String f;
+  public static int g;
+  @Deprecated
+  public static String g;
+  public static String h;
+  public static String i;
+  public static String j;
+  private Context a;
+  public ImageView a;
+  private boolean e;
+  
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt1 + ",from:" + paramInt2 + ",cmd:" + paramString3);
+    jdField_a_of_type_JavaLangString = "PushOpenNotify";
+    jdField_c_of_type_Long = -1L;
+    jdField_a_of_type_Long = 86400000L;
+    jdField_b_of_type_JavaLangString = AppConstants.SDCARD_PATH + "MsgPushNotify" + File.separator;
+    jdField_c_of_type_JavaLangString = jdField_b_of_type_JavaLangString + "msgnotify_pic" + File.separator;
+    jdField_d_of_type_JavaLangString = "msgnotify_pic.zip";
+    jdField_e_of_type_JavaLangString = "msgnotify_pic_%d.jpg";
+    jdField_a_of_type_Int = 25;
+    jdField_f_of_type_JavaLangString = "https://sqimg.qq.com/qq_product_operations/banner/msgnotify_pic.zip";
+    jdField_a_of_type_Boolean = true;
+    jdField_b_of_type_Boolean = true;
+    jdField_g_of_type_JavaLangString = amtj.a(2131706074);
+    h = amtj.a(2131706068);
+    i = amtj.a(2131706071);
+    jdField_d_of_type_Int = 3;
+    jdField_e_of_type_Int = 7;
+    jdField_f_of_type_Int = 3;
+    jdField_g_of_type_Int = 30;
+  }
+  
+  @TargetApi(14)
+  public anoh(Context paramContext)
+  {
+    super(paramContext, 2131755826);
+    super.getWindow().setWindowAnimations(2131755130);
+    if (Build.VERSION.SDK_INT >= 14) {
+      getWindow().setDimAmount(0.5F);
     }
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
-      return;
-    }
-    try
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if ((!jdField_d_of_type_Boolean) || (!paramQQAppInterface.getCurrentUin().equals(j)))
     {
-      paramArrayOfInt = anog.a(paramInt1, paramArrayOfInt);
-      if (paramArrayOfInt == null)
-      {
-        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("PushOpenNotify", 2, "initPushOpeNotifyConfig");
       }
+      jdField_d_of_type_Boolean = true;
+      j = paramQQAppInterface.getCurrentUin();
+      a(paramQQAppInterface, null, true);
     }
-    catch (Exception paramQQAppInterface)
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      paramString = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp()).getString(paramQQAppInterface.getCurrentUin() + "_" + "push_open_notify_xml", null);
+    }
+    if (paramString == null) {
+      jdField_a_of_type_AndroidContentIntent = bfwj.a(paramQQAppInterface.getApp());
+    }
+    do
     {
-      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
-      return;
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramString = new ByteArrayInputStream(paramString.getBytes("utf-8"));
+          XmlPullParser localXmlPullParser = Xml.newPullParser();
+          localXmlPullParser.setInput(paramString, "utf-8");
+          a(localXmlPullParser);
+          if (QLog.isColorLevel()) {
+            QLog.d("PushOpenNotify", 2, new Object[] { "handlePushOpenNotifyConfig, switch:", Boolean.valueOf(jdField_a_of_type_Boolean), ", frequency:", Integer.valueOf(jdField_c_of_type_Int), " ", Integer.valueOf(jdField_d_of_type_Int), " ", Integer.valueOf(jdField_e_of_type_Int), " ", Integer.valueOf(jdField_f_of_type_Int), " ", Integer.valueOf(jdField_g_of_type_Int), ", intent:", jdField_a_of_type_AndroidContentIntent });
+          }
+          if ((jdField_b_of_type_Boolean) && (!jdField_c_of_type_Boolean) && (jdField_a_of_type_AndroidContentIntent == null))
+          {
+            jdField_a_of_type_AndroidContentIntent = bfwj.a(paramQQAppInterface.getApp());
+            return;
+          }
+        }
+        catch (Exception paramQQAppInterface) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("PushOpenNotify", 2, "handlePushOpenNotifyConfig, exception: " + paramQQAppInterface.getStackTrace());
+  }
+  
+  private static void a(XmlPullParser paramXmlPullParser)
+  {
+    int k = paramXmlPullParser.getEventType();
+    label440:
+    if (k != 1)
+    {
+      String str;
+      if (paramXmlPullParser.getEventType() == 2)
+      {
+        str = paramXmlPullParser.getName();
+        if (!str.equals("switch")) {
+          break label64;
+        }
+        jdField_a_of_type_Boolean = paramXmlPullParser.nextText().equals("true");
+      }
+      label64:
+      do
+      {
+        do
+        {
+          for (;;)
+          {
+            k = paramXmlPullParser.next();
+            break;
+            if (str.equals("frequency"))
+            {
+              jdField_b_of_type_Long = Long.valueOf(paramXmlPullParser.nextText()).longValue();
+              if (jdField_b_of_type_Long < 0L) {
+                jdField_b_of_type_Long = 0L;
+              }
+            }
+            else if (str.equals("wording"))
+            {
+              jdField_g_of_type_JavaLangString = paramXmlPullParser.nextText();
+            }
+            else if (str.equals("title"))
+            {
+              h = paramXmlPullParser.nextText();
+            }
+            else if (str.equals("content"))
+            {
+              i = paramXmlPullParser.nextText();
+            }
+            else if (str.equals("frequency_OneTime"))
+            {
+              jdField_c_of_type_Int = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
+            }
+            else if (str.equals("frequency_OneMax"))
+            {
+              jdField_d_of_type_Int = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
+            }
+            else if (str.equals("frequency_TwoTime"))
+            {
+              jdField_e_of_type_Int = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
+            }
+            else if (str.equals("frequency_TwoMax"))
+            {
+              jdField_f_of_type_Int = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
+            }
+            else if (str.equals("frequency_ThreeTime"))
+            {
+              jdField_g_of_type_Int = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
+            }
+            else if (str.equals("maxOSVersion"))
+            {
+              jdField_b_of_type_Int = Integer.valueOf(paramXmlPullParser.nextText()).intValue();
+            }
+            else if (str.equals("defaultSwitch"))
+            {
+              jdField_b_of_type_Boolean = paramXmlPullParser.nextText().equals("true");
+            }
+            else
+            {
+              if ((!str.equals("rom")) || (!paramXmlPullParser.getAttributeValue(null, "name").equals(ROMUtil.getRomName())) || (!paramXmlPullParser.getAttributeValue(null, "sdk").equals(Build.VERSION.SDK_INT + ""))) {
+                break label440;
+              }
+              b(paramXmlPullParser);
+            }
+          }
+        } while ((!str.equals("device")) || (!paramXmlPullParser.getAttributeValue(null, "id").equals(DeviceInfoUtil.getDeviceModel())));
+        b(paramXmlPullParser);
+      } while (jdField_a_of_type_AndroidContentIntent == null);
     }
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramArrayOfInt.put("openId", paramString2);
-    }
+  }
+  
+  public static boolean a(File paramFile)
+  {
+    int k = 0;
     for (;;)
     {
-      ApolloCmdChannel.getChannel(paramQQAppInterface).callbackFromRequest(paramLong, 0, paramString3, paramArrayOfInt.toString());
+      try
+      {
+        if (k >= jdField_a_of_type_Int) {
+          break label151;
+        }
+        if (new File(String.format(jdField_c_of_type_JavaLangString + jdField_e_of_type_JavaLangString, new Object[] { Integer.valueOf(k) })).exists()) {
+          break label159;
+        }
+        k = 0;
+      }
+      catch (Exception paramFile)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "unzipFile err, ", paramFile);
+      }
+      if (k < jdField_a_of_type_Int)
+      {
+        FileUtils.deleteFile(String.format(jdField_c_of_type_JavaLangString + jdField_e_of_type_JavaLangString, new Object[] { Integer.valueOf(k) }));
+        k += 1;
+      }
+      else
+      {
+        if (paramFile.exists())
+        {
+          FileUtils.uncompressZip(paramFile.getPath(), jdField_b_of_type_JavaLangString, false);
+          return true;
+        }
+        return false;
+        label151:
+        k = 1;
+        if (k != 0)
+        {
+          return true;
+          label159:
+          k += 1;
+        }
+        else
+        {
+          k = 0;
+        }
+      }
+    }
+  }
+  
+  private static void b(XmlPullParser paramXmlPullParser)
+  {
+    jdField_a_of_type_AndroidContentIntent = null;
+    for (;;)
+    {
+      Object localObject;
+      if (paramXmlPullParser.next() != 3)
+      {
+        if (paramXmlPullParser.getEventType() != 2) {
+          continue;
+        }
+        if (jdField_a_of_type_AndroidContentIntent == null) {
+          jdField_a_of_type_AndroidContentIntent = new Intent();
+        }
+        localObject = paramXmlPullParser.getName();
+        if (((String)localObject).equals("action"))
+        {
+          jdField_a_of_type_AndroidContentIntent.setAction(paramXmlPullParser.nextText());
+          continue;
+        }
+        if (((String)localObject).equals("data"))
+        {
+          localObject = Uri.parse(paramXmlPullParser.nextText());
+          jdField_a_of_type_AndroidContentIntent.setData((Uri)localObject);
+          continue;
+        }
+        if (((String)localObject).equals("type"))
+        {
+          jdField_a_of_type_AndroidContentIntent.setType(paramXmlPullParser.nextText());
+          continue;
+        }
+        if (((String)localObject).equals("package"))
+        {
+          jdField_a_of_type_AndroidContentIntent.setPackage(paramXmlPullParser.nextText());
+          continue;
+        }
+        if (((String)localObject).equals("component"))
+        {
+          localObject = paramXmlPullParser.nextText().split(";");
+          localObject = new ComponentName(localObject[0].trim(), localObject[1].trim());
+          jdField_a_of_type_AndroidContentIntent.setComponent((ComponentName)localObject);
+          continue;
+        }
+        if (((String)localObject).equals("category"))
+        {
+          jdField_a_of_type_AndroidContentIntent.addCategory(paramXmlPullParser.nextText());
+          continue;
+        }
+        if (((String)localObject).equals("blackList"))
+        {
+          jdField_c_of_type_Boolean = true;
+          jdField_a_of_type_AndroidContentIntent = null;
+        }
+      }
+      else
+      {
+        return;
+      }
+      if (((String)localObject).equals("app_uid"))
+      {
+        jdField_a_of_type_AndroidContentIntent.putExtra("app_uid", Process.myUid());
+        paramXmlPullParser.nextText();
+      }
+      else
+      {
+        jdField_a_of_type_AndroidContentIntent.putExtra((String)localObject, paramXmlPullParser.nextText());
+      }
+    }
+  }
+  
+  private static boolean b(QQAppInterface paramQQAppInterface)
+  {
+    String str = jdField_b_of_type_JavaLangString + jdField_d_of_type_JavaLangString;
+    File localFile = new File(str);
+    if ((localFile.exists()) && (a(localFile))) {
+      return true;
+    }
+    if (NetworkUtil.getSystemNetwork(BaseApplicationImpl.getApplication()) == 0)
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "res download give up");
+      return false;
+    }
+    if (jdField_a_of_type_Bgoe != null)
+    {
+      if ((jdField_a_of_type_Bgoe.a() == 2) || (jdField_a_of_type_Bgoe.a() == 3))
+      {
+        QLog.d(jdField_a_of_type_JavaLangString, 1, "res download duplicated, " + str);
+        return false;
+      }
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "res download task status error, cancel it, status: " + jdField_a_of_type_Bgoe.a());
+      jdField_a_of_type_Bgoe.a(true);
+    }
+    jdField_a_of_type_Bgoe = new bgoe(jdField_f_of_type_JavaLangString, localFile);
+    jdField_a_of_type_Bgoe.n = true;
+    paramQQAppInterface = ((bgog)paramQQAppInterface.getManager(47)).a(1);
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "start download ");
+    paramQQAppInterface.a(jdField_a_of_type_Bgoe, new anol(str), null);
+    return false;
+  }
+  
+  @TargetApi(16)
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    super.setContentView(2131559025);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365545));
+    paramBundle = (TextView)findViewById(2131365556);
+    TextView localTextView = (TextView)findViewById(2131365523);
+    Button localButton = (Button)findViewById(2131365520);
+    ImageView localImageView = (ImageView)findViewById(2131364624);
+    try
+    {
+      Bitmap localBitmap = BitmapFactory.decodeFile(String.format(jdField_c_of_type_JavaLangString + jdField_e_of_type_JavaLangString, new Object[] { Integer.valueOf(0) }));
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
+      paramBundle.setText(h);
+      localTextView.setText(i);
+      localButton.setText(amtj.a(2131706069));
+      localButton.setOnClickListener(new anoi(this));
+      localImageView.setOnClickListener(new anoj(this));
+      localImageView.setOnTouchListener(new anok(this, localImageView));
       return;
-      paramArrayOfInt.put("uin", paramString1);
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      for (;;)
+      {
+        getOwnerActivity().finish();
+      }
+    }
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    if (!this.jdField_e_of_type_Boolean) {
+      ThreadManager.post(new MsgNotifyPushDialog.4(this), 10, null, true);
     }
   }
 }

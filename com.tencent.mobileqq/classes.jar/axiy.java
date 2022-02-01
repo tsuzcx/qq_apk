@@ -1,85 +1,33 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONObject;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnItemTouchListener;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
 
-public abstract class axiy<T extends MessageRecord>
-  extends axir
+public class axiy
+  implements RecyclerView.OnItemTouchListener
 {
-  protected T a;
-  protected MessageRecord b;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public axiy(T paramT)
+  public axiy(Context paramContext, axja paramaxja)
   {
-    this.a = paramT;
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new axiz(this, paramaxja));
   }
   
-  protected abstract int a();
-  
-  protected MsgBackupResEntity a()
+  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    MsgBackupResEntity localMsgBackupResEntity = new MsgBackupResEntity();
-    localMsgBackupResEntity.msgType = a();
-    if (this.b != null)
-    {
-      axjn.a(this.b, localMsgBackupResEntity);
-      return localMsgBackupResEntity;
-    }
-    axjn.a(this.a, localMsgBackupResEntity);
-    return localMsgBackupResEntity;
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    this.jdField_a_of_type_AndroidViewView = paramRecyclerView.findChildViewUnder(paramMotionEvent.getX(), paramMotionEvent.getY());
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
+    return false;
   }
   
-  protected String a(Map paramMap)
-  {
-    try
-    {
-      paramMap = new JSONObject(paramMap).toString();
-      return paramMap;
-    }
-    catch (Exception paramMap) {}
-    return null;
-  }
+  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
   
-  protected HashMap<String, String> a(int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("msgType", String.valueOf(a()));
-    localHashMap.put("msgSubType", String.valueOf(paramInt));
-    return localHashMap;
-  }
-  
-  public abstract List<MsgBackupResEntity> a();
-  
-  public abstract void a();
-  
-  protected void a(MessageRecord paramMessageRecord)
-  {
-    this.b = paramMessageRecord;
-  }
-  
-  protected void a(String paramString, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    try
-    {
-      new File(paramString);
-      paramMsgBackupResEntity.fileSize = new File(paramString).length();
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public void b() {}
+  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent) {}
 }
 
 

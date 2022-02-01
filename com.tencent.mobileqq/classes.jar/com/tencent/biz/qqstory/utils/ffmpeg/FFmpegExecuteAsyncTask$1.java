@@ -1,20 +1,18 @@
 package com.tencent.biz.qqstory.utils.ffmpeg;
 
 import com.tencent.qphone.base.util.QLog;
-import zqp;
-import zqq;
 
-public class FFmpegExecuteAsyncTask$1
+class FFmpegExecuteAsyncTask$1
   implements Runnable
 {
-  public FFmpegExecuteAsyncTask$1(zqp paramzqp) {}
+  FFmpegExecuteAsyncTask$1(FFmpegExecuteAsyncTask paramFFmpegExecuteAsyncTask) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.ffmpeg.FFmpegExecuteAsyncTask", 2, "ThreadName:" + Thread.currentThread().getName());
     }
-    this.this$0.a.onStart();
+    this.this$0.ffmpegExecuteResponseHandler.onStart();
   }
 }
 

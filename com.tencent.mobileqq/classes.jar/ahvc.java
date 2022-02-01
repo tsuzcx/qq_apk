@@ -1,21 +1,15 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahvc
-  extends aggl
+class ahvc
+  implements DialogInterface.OnClickListener
 {
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public AutoStartProgressBar a;
-  public CropBubbleVideoView a;
-  public boolean a;
-  public TextView b;
+  ahvc(ahva paramahva) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

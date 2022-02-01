@@ -1,78 +1,24 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.JobReporter;
-import com.tencent.mobileqq.app.ThreadWrapContext;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-
 public class aoil
-  implements ThreadWrapContext
 {
-  private static boolean a;
-  private static volatile boolean b;
+  public long a;
+  public aoia a;
+  public aoik a;
   
-  public static void a(long paramLong)
+  public aoil()
   {
-    if ((!a) && (BaseApplicationImpl.sProcessId == 1))
-    {
-      a = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ThreadManager.config", 2, "initShotChanceForPublicVersion|chance " + paramLong);
-      }
-      if (paramLong > 0L)
-      {
-        b = JobReporter.ramdomReport((int)paramLong);
-        if (QLog.isColorLevel()) {
-          QLog.d("ThreadManager.config", 2, "initShotChanceForPublicVersion|sShotChanceForPublicVersion " + b);
-        }
-      }
-    }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Aoik = null;
+    this.jdField_a_of_type_Aoia = null;
   }
   
-  public void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  public String toString()
   {
-    QLog.d(paramString1, paramInt, paramString2, paramThrowable);
-  }
-  
-  public long getMainProccessThreadMonitorTime()
-  {
-    return bhsi.d();
-  }
-  
-  public long getMainProccessThreadPeakCounts()
-  {
-    return bhsi.c();
-  }
-  
-  public boolean isColorLevel()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public boolean isShotReportRejectedError()
-  {
-    return b;
-  }
-  
-  public void reportDengTaException(String paramString1, String paramString2, boolean paramBoolean1, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3, boolean paramBoolean2)
-  {
-    bdmc.a(BaseApplicationImpl.getApplication()).a(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramHashMap, paramString3, paramBoolean2);
-  }
-  
-  public void reportRDMException(Throwable paramThrowable, String paramString1, String paramString2) {}
-  
-  public void setMainProccessThreadMonitorTime(long paramLong)
-  {
-    bhsi.b(paramLong);
-  }
-  
-  public void setMainProccessThreadPeakCounts(long paramLong)
-  {
-    bhsi.a(paramLong);
+    return "ARLocalRecogResult{frameIdx = " + this.jdField_a_of_type_Long + ", markerResult = " + this.jdField_a_of_type_Aoik + ", faceResult = " + this.jdField_a_of_type_Aoia + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoil
  * JD-Core Version:    0.7.0.1
  */

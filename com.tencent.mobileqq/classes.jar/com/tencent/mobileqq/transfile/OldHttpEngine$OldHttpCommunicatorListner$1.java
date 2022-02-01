@@ -1,39 +1,35 @@
 package com.tencent.mobileqq.transfile;
 
-import beum;
-import bevo;
-import bevp;
-import bews;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class OldHttpEngine$OldHttpCommunicatorListner$1
+class OldHttpEngine$OldHttpCommunicatorListner$1
   implements Runnable
 {
-  public OldHttpEngine$OldHttpCommunicatorListner$1(bevp parambevp, beum parambeum) {}
+  OldHttpEngine$OldHttpCommunicatorListner$1(OldHttpEngine.OldHttpCommunicatorListner paramOldHttpCommunicatorListner, HttpNetReq paramHttpNetReq) {}
   
   public void run()
   {
     boolean bool = true;
     int i;
-    if ((QLog.isColorLevel()) && (this.jdField_a_of_type_Beum != null))
+    if ((QLog.isColorLevel()) && (this.val$req != null))
     {
-      i = this.jdField_a_of_type_Beum.f;
-      if (this.jdField_a_of_type_Beum.a != 1) {
+      i = this.val$req.mBusiProtoType;
+      if (this.val$req.mHttpMethod != 1) {
         break label94;
       }
     }
     for (;;)
     {
-      bews.a(i, bool, this.jdField_a_of_type_Beum.jdField_e_of_type_Int, this.jdField_a_of_type_Beum.jdField_e_of_type_JavaLangString, "scheduleRetry", "mIsCancelled:" + this.jdField_a_of_type_Bevp.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
-      if (!this.jdField_a_of_type_Bevp.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      RichMediaUtil.log(i, bool, this.val$req.mFileType, this.val$req.mMsgId, "scheduleRetry", "mIsCancelled:" + this.this$1.mIsCancelled);
+      if (!this.this$1.mIsCancelled.get()) {
         break;
       }
       return;
       label94:
       bool = false;
     }
-    this.jdField_a_of_type_Bevp.jdField_a_of_type_Bevo.a(this.jdField_a_of_type_Bevp.jdField_a_of_type_Beum, false);
+    this.this$1.this$0.innerSendReq(this.this$1.httpReq, false);
   }
 }
 

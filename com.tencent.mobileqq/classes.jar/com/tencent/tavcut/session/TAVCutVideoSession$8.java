@@ -1,40 +1,15 @@
 package com.tencent.tavcut.session;
 
-import android.util.SparseArray;
-import com.tencent.tavcut.session.config.SessionConfig;
-import com.tencent.tavkit.composition.TAVComposition;
-import com.tencent.weseevideo.composition.VideoRenderChainManager;
-import com.tencent.weseevideo.composition.builder.MediaBuilderListener;
-import com.tencent.weseevideo.composition.builder.MediaBuilderOutput;
-import com.tencent.weseevideo.model.MediaModel;
-import com.tencent.weseevideo.model.resource.MediaClipModel;
-import com.tencent.weseevideo.model.resource.MediaResourceModel;
-import com.tencent.weseevideo.model.resource.VideoResourceModel;
-import java.util.List;
+import com.tencent.weseevideo.model.effect.StickerModel;
 
 class TAVCutVideoSession$8
-  implements MediaBuilderListener
+  implements Runnable
 {
-  TAVCutVideoSession$8(TAVCutVideoSession paramTAVCutVideoSession) {}
+  TAVCutVideoSession$8(TAVCutVideoSession paramTAVCutVideoSession, StickerModel paramStickerModel) {}
   
-  public void buildCompleted(int paramInt, VideoRenderChainManager paramVideoRenderChainManager, MediaBuilderOutput paramMediaBuilderOutput)
+  public void run()
   {
-    if (paramVideoRenderChainManager == null) {
-      return;
-    }
-    paramInt = ((MediaClipModel)paramVideoRenderChainManager.getMediaModel().getMediaResourceModel().getVideos().get(0)).getResource().getWidth();
-    int i = ((MediaClipModel)paramVideoRenderChainManager.getMediaModel().getMediaResourceModel().getVideos().get(0)).getResource().getHeight();
-    paramMediaBuilderOutput = this.this$0.constrainRenderSize(paramInt, i);
-    paramVideoRenderChainManager.getComposition().setRenderSize(paramMediaBuilderOutput);
-    this.this$0.renderChainManagers.put(0, paramVideoRenderChainManager);
-    this.this$0.tavCompositions.put(0, paramVideoRenderChainManager.getComposition());
-    paramMediaBuilderOutput = paramVideoRenderChainManager.getComposition();
-    if (this.this$0.sessionConfig != null) {}
-    for (paramVideoRenderChainManager = this.this$0.sessionConfig.getRenderLayoutMode();; paramVideoRenderChainManager = null)
-    {
-      paramMediaBuilderOutput.setRenderLayoutMode(paramVideoRenderChainManager);
-      return;
-    }
+    this.this$0.addSticker(this.this$0.getStickerController(), this.val$stickerModel);
   }
 }
 

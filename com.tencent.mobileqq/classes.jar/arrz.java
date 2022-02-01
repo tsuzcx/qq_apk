@@ -1,31 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class arrz
-  implements arsb
+public class arrz
+  implements View.OnClickListener
 {
-  arrz(arry paramarry, QQAppInterface paramQQAppInterface) {}
+  public arrz(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return bcxc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-  }
-  
-  public void a(int paramInt)
-  {
-    bcxc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramInt);
-  }
-  
-  public void a(List<String> paramList)
-  {
-    if ((paramList != null) && (paramList.size() > 0)) {
-      bcxc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramList);
-    }
+    bfrj.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_JavaLangString, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arrz
  * JD-Core Version:    0.7.0.1
  */

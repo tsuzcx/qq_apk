@@ -29,10 +29,10 @@ public class WebIconDatabase
   
   public void close()
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().m();
+      localx.c().m();
       return;
     }
     android.webkit.WebIconDatabase.getInstance().close();
@@ -40,10 +40,10 @@ public class WebIconDatabase
   
   public void open(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().b(paramString);
+      localx.c().b(paramString);
       return;
     }
     android.webkit.WebIconDatabase.getInstance().open(paramString);
@@ -51,10 +51,10 @@ public class WebIconDatabase
   
   public void releaseIconForPageUrl(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().d(paramString);
+      localx.c().d(paramString);
       return;
     }
     android.webkit.WebIconDatabase.getInstance().releaseIconForPageUrl(paramString);
@@ -62,10 +62,10 @@ public class WebIconDatabase
   
   public void removeAllIcons()
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().l();
+      localx.c().l();
       return;
     }
     android.webkit.WebIconDatabase.getInstance().removeAllIcons();
@@ -73,10 +73,10 @@ public class WebIconDatabase
   
   public void requestIconForPageUrl(String paramString, WebIconDatabase.a parama)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().a(paramString, new WebIconDatabase.1(this, parama));
+      localx.c().a(paramString, new WebIconDatabase.1(this, parama));
       return;
     }
     android.webkit.WebIconDatabase.getInstance().requestIconForPageUrl(paramString, new WebIconDatabase.2(this, parama));
@@ -84,10 +84,10 @@ public class WebIconDatabase
   
   public void retainIconForPageUrl(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().c(paramString);
+      localx.c().c(paramString);
       return;
     }
     android.webkit.WebIconDatabase.getInstance().retainIconForPageUrl(paramString);

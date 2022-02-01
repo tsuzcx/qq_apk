@@ -1,31 +1,37 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
-import java.util.Collections;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
 class zcf
-  implements woy<xcx, xer>
+  implements zjq
 {
-  zcf(zbz paramzbz, WeakReference paramWeakReference) {}
+  zcf(zcd paramzcd) {}
   
-  public void a(@NonNull xcx paramxcx, @Nullable xer paramxer, @NonNull ErrorMessage paramErrorMessage)
+  public void a(boolean paramBoolean)
   {
-    if (paramxer == null)
+    String str2 = RecommendBannerItemView.a(this.a.a).id.get();
+    StringBuilder localStringBuilder = new StringBuilder().append("recom_");
+    if (paramBoolean)
     {
-      paramxcx = (zcm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramxcx != null) {
-        paramxcx.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
+      str1 = "cancel";
+      zxp.a(str2, "auth_page", str1, 0, 0, new String[] { "", RecommendBannerItemView.a(this.a.a) + "", RecommendBannerItemView.a(this.a.a).nick.get() });
+      if (RecommendBannerItemView.a(this.a.a))
+      {
+        str2 = RecommendBannerItemView.a(this.a.a).id.get();
+        localStringBuilder = new StringBuilder().append("reco_");
+        if (!paramBoolean) {
+          break label252;
+        }
       }
-      return;
     }
-    paramxcx = (zcm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramxcx != null)
+    label252:
+    for (String str1 = "cancel";; str1 = "dislike")
     {
-      paramxcx.a(0, paramxer.a);
+      zxp.a(str2, "auth_discover", str1, 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a.a)), RecommendBannerItemView.a(this.a.a).nick.get(), RecommendBannerItemView.a(this.a.a).desc.get() });
       return;
+      str1 = "dislike";
+      break;
     }
-    yuk.c("DoodleEmojiManager", "requestPoiFaces callback is null");
   }
 }
 

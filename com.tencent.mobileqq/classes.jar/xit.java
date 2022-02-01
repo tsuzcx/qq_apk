@@ -1,13 +1,6 @@
-class xit
-  implements wzk
+public abstract interface xit
 {
-  xit(xiq paramxiq, wzj paramwzj) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Wzj.a();
-    this.jdField_a_of_type_Xiq.d();
-  }
+  public abstract void a(int paramInt);
 }
 
 

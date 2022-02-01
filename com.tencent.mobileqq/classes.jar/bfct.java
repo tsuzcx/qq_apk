@@ -1,6 +1,7 @@
 public class bfct
 {
-  public static int a = 100001;
+  public int a;
+  public int b;
 }
 
 

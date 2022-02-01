@@ -1,51 +1,28 @@
-public class zzb
+import WEISHI_USER_GROWTH.WEISHI.stGetPersonalPageRsp;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import java.lang.ref.WeakReference;
+
+final class zzb
+  implements VSDispatchObserver.onVSRspCallBack<WEISHI.stGetPersonalPageRsp>
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private zzy jdField_a_of_type_Zzy;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  private final WeakReference<zyx> a;
   
-  public zzb(String paramString)
+  public zzb(zyx paramzyx)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = new WeakReference(paramzyx);
   }
   
-  public zyz a()
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, WEISHI.stGetPersonalPageRsp paramstGetPersonalPageRsp)
   {
-    return new zyz(this, null);
-  }
-  
-  public zzb a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public zzb a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public zzb a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public zzb b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public zzb b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
+    paramVSBaseRequest = (zyx)this.a.get();
+    if (paramVSBaseRequest == null) {}
+    do
+    {
+      return;
+      paramVSBaseRequest.a(paramstGetPersonalPageRsp, false);
+    } while (paramstGetPersonalPageRsp == null);
+    zyx.a(paramVSBaseRequest, paramstGetPersonalPageRsp.toByteArray());
   }
 }
 

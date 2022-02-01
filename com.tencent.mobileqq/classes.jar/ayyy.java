@@ -1,53 +1,64 @@
-import android.text.Layout;
-import android.text.Spannable;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.graphics.PointF;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import com.tencent.mobileqq.widget.RatioLayout.LayoutParams;
+import java.util.List;
 
 public class ayyy
-  implements View.OnTouchListener
+  extends AnimatorListenerAdapter
 {
-  public ayyy(OCRResultFragmentNew paramOCRResultFragmentNew) {}
+  public ayyy(VasProfileTagView paramVasProfileTagView, View paramView, PointF paramPointF) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramView = (EditText)paramView;
-    int j = paramMotionEvent.getAction();
-    if (j == 1)
+    VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView);
+    paramAnimator = (RatioLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    if (paramAnimator != null)
     {
-      Object localObject = paramView.getText();
-      int m = (int)paramMotionEvent.getX();
-      i = (int)paramMotionEvent.getY();
-      int n = paramView.getTotalPaddingLeft();
-      int k = paramView.getTotalPaddingTop();
-      m = m - n + paramView.getScrollX();
-      n = paramView.getScrollY();
-      Layout localLayout = paramView.getLayout();
-      i = localLayout.getLineForVertical(i - k + n);
-      float f = localLayout.getLineWidth(i);
-      if (m <= f)
+      if (this.jdField_a_of_type_AndroidViewView.getAnimation() != null) {
+        this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      }
+      if ((paramAnimator.a != this.jdField_a_of_type_AndroidGraphicsPointF.x) || (paramAnimator.b != this.jdField_a_of_type_AndroidGraphicsPointF.y))
       {
-        i = localLayout.getOffsetForHorizontal(i, m);
-        localObject = (ClickableSpan[])((Spannable)localObject).getSpans(i, i, ClickableSpan.class);
-        if (localObject.length != 0)
+        paramAnimator.a = this.jdField_a_of_type_AndroidGraphicsPointF.x;
+        paramAnimator.b = this.jdField_a_of_type_AndroidGraphicsPointF.y;
+        this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+        this.jdField_a_of_type_AndroidViewView.setTranslationX(0.0F);
+        this.jdField_a_of_type_AndroidViewView.setTranslationY(0.0F);
+        if ((this.jdField_a_of_type_AndroidViewView instanceof VipTagView)) {
+          ((VipTagView)this.jdField_a_of_type_AndroidViewView).setShakingState(true);
+        }
+      }
+      VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView, false);
+      if (VasProfileTagView.c(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView) == 0) {
+        if (!this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.b())
         {
-          localObject[0].onClick(paramView);
-          bdll.b(null, "dc00898", "", "", "0X80082E3", "0X80082E3", 0, 0, "", "", "", "");
+          paramAnimator = VasProfileTagView.c(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).a.getLabelList();
+          if (paramAnimator != null)
+          {
+            if ((VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView)[(VasProfileTagView.a().length - 1)] == null) || (paramAnimator.size() != 0)) {
+              break label255;
+            }
+            VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).setVisibility(0);
+          }
         }
       }
     }
-    for (int i = 1;; i = 0)
+    for (;;)
     {
-      if (i != 0) {
-        return true;
+      if (VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.b(VasProfileTagView.d(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView));
+        VasProfileTagView.c(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView, false);
       }
-      if ((j == 1) && (!paramView.isFocused())) {
-        bdll.b(null, "dc00898", "", "", "0X80082E2", "0X80082E2", 0, 0, "", "", "", "");
-      }
-      return paramView.onTouchEvent(paramMotionEvent);
+      return;
+      label255:
+      VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView).setVisibility(4);
     }
   }
 }

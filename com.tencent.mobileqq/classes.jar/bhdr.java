@@ -1,131 +1,40 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.upgrade.NewUpgradeDialog.YYBDownloadListener.1;
-import com.tencent.mobileqq.upgrade.NewUpgradeDialog.YYBDownloadListener.2;
-import com.tencent.mobileqq.upgrade.NewUpgradeDialog.YYBDownloadListener.3;
-import com.tencent.mobileqq.upgrade.NewUpgradeDialog.YYBDownloadListener.4;
-import com.tencent.mobileqq.upgrade.NewUpgradeDialog.YYBDownloadListener.5;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.widget.DropdownView;
+import com.tencent.mobileqq.widget.DropdownView.1.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bhdr
-  implements DownloadListener
+  implements View.OnClickListener
 {
-  private long a;
-  private long b;
+  public bhdr(DropdownView paramDropdownView) {}
   
-  protected bhdr(bhdm parambhdm) {}
-  
-  public void installSucceed(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    long l;
-    if ((paramString1.equals("1101070898")) && (paramString2.equals("com.tencent.android.qqdownloader")))
+    this.a.jdField_a_of_type_Bhds.clearFocus();
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Bhds.getWindowToken(), 0);
+    if ((this.a.jdField_a_of_type_Bhds.getAdapter() != null) && (this.a.jdField_a_of_type_Bhds.getAdapter().getCount() > 0))
     {
-      l = System.currentTimeMillis();
-      if (l - this.b >= 1000L) {}
-    }
-    else
-    {
-      return;
-    }
-    this.b = l;
-    bjtx.b("NewUpgradeDialog", bjqy.a(10010, bhdm.a(), 3, 400));
-    bjqw.a().a(22, bjqy.a(10010, bhdm.a(), 3, 400));
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    bjtx.c("NewUpgradeDialog", "onDownloadCancel");
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
-    {
-      bjtx.c("NewUpgradeDialog", "onDownloadError state = " + paramInt2);
-      if ((paramDownloadInfo.f == 100) || (paramDownloadInfo.a() == 4)) {
-        onDownloadFinish(paramDownloadInfo);
+      if ((((ImageView)paramView).getDrawable() != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) || (this.a.jdField_a_of_type_Boolean)) {
+        break label167;
+      }
+      DropdownView.a(this.a).postDelayed(new DropdownView.1.1(this, paramView), 250L);
+      Context localContext = paramView.getContext();
+      if ((localContext != null) && ((localContext instanceof LoginActivity))) {
+        bcef.a(((LoginActivity)localContext).app, "dc00898", "", "", "0X8007367", "0X8007367", 0, 0, "", "", "", "");
       }
     }
-    else
+    for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.4(this, paramDownloadInfo));
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    bjtx.c("NewUpgradeDialog", "onDownloadFinish");
-    long l;
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
-    {
-      l = System.currentTimeMillis();
-      if (l - this.jdField_a_of_type_Long >= 1000L) {}
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_Long = l;
-    bjtx.b("NewUpgradeDialog", bjqy.a(10010, bhdm.a(), 3, 700));
-    bjqw.a().a(20, bjqy.a(10010, bhdm.a(), 3, 700));
-    ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.2(this, paramDownloadInfo));
-    if (bhdm.b(this.jdField_a_of_type_Bhdm))
-    {
-      bhdm.b(this.jdField_a_of_type_Bhdm);
-      bjtx.c("NewUpgradeDialog", anzj.a(2131706452));
-      return;
-    }
-    bjtx.c("NewUpgradeDialog", anzj.a(2131706460));
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
-    {
-      bjtx.c("NewUpgradeDialog", "onDownloadPause");
-      bjtx.b("NewUpgradeDialog", bjqy.a(10010, bhdm.a(), 3, 600));
-      bjqw.a().a(19, bjqy.a(10010, bhdm.a(), 3, 600));
-      ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.1(this, paramDownloadInfo));
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    bjtx.c("NewUpgradeDialog", "onDownloadUpdate");
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        if (localDownloadInfo.c.equals("1101070898"))
-        {
-          bjtx.c("NewUpgradeDialog", "onDownloadUpdate STATE = " + localDownloadInfo.a());
-          ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.3(this, localDownloadInfo));
-        }
-      }
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898"))) {
-      bjtx.c("NewUpgradeDialog", "onDownloadWait");
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    if ((paramString1.equals("1101070898")) && (paramString2.equals("com.tencent.android.qqdownloader")))
-    {
-      bhdm.a(this.jdField_a_of_type_Bhdm, new bhdr(this.jdField_a_of_type_Bhdm));
-      ThreadManager.getUIHandler().post(new NewUpgradeDialog.YYBDownloadListener.5(this));
+      label167:
+      this.a.jdField_a_of_type_Bhds.dismissDropDown();
     }
   }
 }

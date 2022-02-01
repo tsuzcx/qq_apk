@@ -1,38 +1,67 @@
-import android.os.SystemClock;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.7.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class arvq
+  implements bjoe
 {
-  private long a;
-  private long b;
-  private long c;
+  public arvq(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public long a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    this.a = 0L;
-    this.b = 0L;
-  }
-  
-  public long b()
-  {
-    this.b = (SystemClock.uptimeMillis() - this.c);
-    this.a += this.b;
-    b();
-    return this.b;
-  }
-  
-  public void b()
-  {
-    this.c = SystemClock.uptimeMillis();
-  }
-  
-  public long c()
-  {
-    return this.b;
+    if (this.a.jdField_a_of_type_Bjnw == null) {
+      return;
+    }
+    if (paramView != null)
+    {
+      paramView = this.a.jdField_a_of_type_Bjnw.a(paramInt);
+      if (!TextUtils.isEmpty(paramView))
+      {
+        if ((!paramView.equals(this.a.getResources().getString(2131691698))) && (!paramView.equals(this.a.getResources().getString(2131691699)))) {
+          break label270;
+        }
+        bcef.b(null, "dc00898", "", "", "0X8008F87", "0X8008F87", 1, 0, "", "", "", "");
+        if (!UniformDownloadActivity.a(this.a)) {
+          break label241;
+        }
+        if (!bibr.g()) {
+          break label231;
+        }
+        bibc.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3007", false);
+        paramView = UniformDownloadActivity.a(this.a);
+        UniformDownloadActivity.a(this.a, paramView);
+        paramView = UniformDownloadActivity.a(this.a, paramView);
+        if (QLog.isColorLevel()) {
+          QLog.d(UniformDownloadActivity.jdField_a_of_type_JavaLangString, 2, "tmastUrl=" + paramView);
+        }
+        UniformDownloadActivity.a(this.a, paramView);
+        UniformDownloadActivity.b(this.a);
+        this.a.finish();
+        this.a.overridePendingTransition(0, 0);
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      label231:
+      UniformDownloadActivity.c(this.a);
+      continue;
+      label241:
+      UniformDownloadActivity.b(this.a).setVisibility(0);
+      ThreadManager.getSubThreadHandler().post(new UniformDownloadActivity.7.1(this));
+      continue;
+      label270:
+      if ((paramView.equals(this.a.getResources().getString(2131691697))) || (paramView.equals(this.a.getResources().getString(2131690078))) || (paramView.equals(this.a.getResources().getString(2131690077)))) {
+        UniformDownloadActivity.c(this.a);
+      }
+    }
   }
 }
 

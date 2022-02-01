@@ -1,25 +1,18 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import tencent.im.msg.im_msg_body.RichText;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
 
 class awjv
-  implements azrg
+  extends AnimatorListenerAdapter
 {
-  public MessageRecord a(im_msg_body.RichText paramRichText)
-  {
-    return null;
-  }
+  awjv(awju paramawju, URLDrawable paramURLDrawable) {}
   
-  public void a(azrh paramazrh) {}
-  
-  public void b(azrh paramazrh)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramazrh.a == 0)
-    {
-      paramazrh = paramazrh.c;
-      awjt.a().a(paramazrh);
-      return;
-    }
-    awjt.a().a();
+    this.jdField_a_of_type_Awju.a.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    ObjectAnimator.ofFloat(this.jdField_a_of_type_Awju.a, "alpha", new float[] { 0.1F, 1.0F }).setDuration(1500L).start();
   }
 }
 

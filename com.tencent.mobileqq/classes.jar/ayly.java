@@ -1,32 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Point;
+import android.graphics.Rect;
+import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
+import java.util.Comparator;
 
-class ayly
-  implements auun
+public class ayly
+  implements Comparator<Rect>
 {
-  ayly(aykx paramaykx, String paramString) {}
+  Point jdField_a_of_type_AndroidGraphicsPoint;
   
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle) {}
-  
-  public void a(String paramString, long paramLong, Bundle paramBundle)
+  public ayly(TagCloudView paramTagCloudView, Point paramPoint)
   {
-    QLog.i("NearbyProfileDisplayPanel", 1, "onDownloadSucess() called with: filePath = [" + paramString + "], fileSize = [" + paramLong + "], extData = [" + paramBundle + "]");
-    paramBundle = BaseApplicationImpl.getContext().getSharedPreferences(this.jdField_a_of_type_JavaLangString, 4);
-    paramBundle.edit().putInt("state", 1);
-    paramBundle.edit().putString("filePath", paramString);
+    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
   }
   
-  public void b(int paramInt, Bundle paramBundle) {}
-  
-  public void c(int paramInt, Bundle paramBundle) {}
-  
-  public void d(int paramInt, Bundle paramBundle) {}
+  public int a(Rect paramRect1, Rect paramRect2)
+  {
+    paramRect1 = new Point((int)(paramRect1.width() * 0.5F + paramRect1.left), (int)(paramRect1.height() * 0.5F + paramRect1.top));
+    paramRect2 = new Point((int)(paramRect2.width() * 0.5F + paramRect2.left), (int)(paramRect2.height() * 0.5F + paramRect2.top));
+    return TagCloudView.a(paramRect1, this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramRect2, this.jdField_a_of_type_AndroidGraphicsPoint);
+  }
 }
 
 

@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityAccountView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class bjmy
-  implements View.OnClickListener
 {
-  public bjmy(OpenAuthorityAccountView paramOpenAuthorityAccountView) {}
+  private static ThreadLocal<StringBuilder> a = new ThreadLocal();
   
-  public void onClick(View paramView)
+  public static StringBuilder a()
   {
-    if (OpenAuthorityAccountView.a(this.a) != null) {
-      OpenAuthorityAccountView.a(this.a).b();
+    StringBuilder localStringBuilder = (StringBuilder)a.get();
+    if (localStringBuilder == null)
+    {
+      localStringBuilder = new StringBuilder();
+      a.set(localStringBuilder);
+      return localStringBuilder;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    localStringBuilder.setLength(0);
+    return localStringBuilder;
   }
 }
 

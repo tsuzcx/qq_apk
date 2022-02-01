@@ -1,88 +1,72 @@
-import android.content.Intent;
-import android.os.Bundle;
-import java.util.Iterator;
-import java.util.Set;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import com.tencent.biz.qqstory.takevideo.EditGifImage;
+import cooperation.qzone.util.GifAntishakeModule;
+import cooperation.qzone.util.GifAntishakeModule.postProgressListener;
+import java.util.ArrayList;
 
 public class xwl
-  extends xqm
+  extends AsyncTask<ArrayList<Bitmap>, Integer, ArrayList<String>>
+  implements GifAntishakeModule.postProgressListener
 {
-  public xwl(xwj paramxwj) {}
+  private int jdField_a_of_type_Int;
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public xwl(EditGifImage paramEditGifImage) {}
+  
+  protected ArrayList<String> a(ArrayList<Bitmap>... paramVarArgs)
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    if ((paramVarArgs == null) || (paramVarArgs.length == 0) || (isCancelled())) {
+      return null;
+    }
+    ArrayList<Bitmap> localArrayList1 = paramVarArgs[0];
+    ArrayList localArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = localArrayList1.size();
+    GifAntishakeModule.getInstance().setAntishakeProgressListener(this);
+    paramVarArgs = localArrayList;
+    if (!isCancelled()) {}
+    try
     {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((xpd)localIterator.next()).a(paramInt1, paramInt2, paramIntent);
+      paramVarArgs = GifAntishakeModule.getInstance().getAntiShakeBitmapList(localArrayList1);
+      localArrayList1.clear();
+      return paramVarArgs;
+    }
+    catch (Exception paramVarArgs)
+    {
+      for (;;)
+      {
+        paramVarArgs.printStackTrace();
+        paramVarArgs = localArrayList;
       }
     }
   }
   
-  public void a(Bundle paramBundle1, Bundle paramBundle2)
+  protected void a(ArrayList<String> paramArrayList)
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    if ((paramArrayList == null) || (paramArrayList.size() < 1) || (isCancelled())) {}
+    do
     {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((xpd)localIterator.next()).a(paramBundle1, paramBundle2);
-      }
+      return;
+      EditGifImage.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage, paramArrayList);
+    } while (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.e);
+    EditGifImage.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.a.a.a(true, true);
+  }
+  
+  protected void a(Integer... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.e) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.a.a.a(paramVarArgs[0].intValue(), this.jdField_a_of_type_Int);
     }
   }
   
-  public void c()
+  protected void onCancelled()
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((xpd)localIterator.next()).c();
-      }
-    }
+    super.onCancelled();
   }
   
-  public void d()
+  public void postAntishakeProgress(int paramInt)
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((xpd)localIterator.next()).d();
-      }
-    }
-  }
-  
-  public void e()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((xpd)localIterator.next()).e();
-      }
-    }
-  }
-  
-  public void f()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((xpd)localIterator.next()).f();
-      }
-    }
-  }
-  
-  public void g()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((xpd)localIterator.next()).g();
-      }
-    }
+    publishProgress(new Integer[] { Integer.valueOf(paramInt) });
   }
 }
 

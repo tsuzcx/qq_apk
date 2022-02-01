@@ -3,15 +3,15 @@ package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 import android.os.SystemClock;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import wte;
-import wth;
-import xqz;
-import xsf;
+import vuu;
+import vux;
+import wsk;
+import wtq;
 
 public class VideoViewVideoHolder$VideoInfoSegment$1
   implements Runnable
 {
-  public VideoViewVideoHolder$VideoInfoSegment$1(xsf paramxsf) {}
+  public VideoViewVideoHolder$VideoInfoSegment$1(wtq paramwtq) {}
   
   public void run()
   {
@@ -21,11 +21,11 @@ public class VideoViewVideoHolder$VideoInfoSegment$1
     VideoViewVideoHolder.a(this.a.a, "VI", SystemClock.uptimeMillis());
     if (!this.a.a.d())
     {
-      xsf.a(this.a, new ErrorMessage(-1, "already unBind"));
+      wtq.a(this.a, new ErrorMessage(-1, "already unBind"));
       return;
     }
-    StoryVideoItem localStoryVideoItem = ((wte)wth.a(5)).b(this.a.a.a.a);
-    xsf.a(this.a, localStoryVideoItem, false);
+    StoryVideoItem localStoryVideoItem = ((vuu)vux.a(5)).b(this.a.a.a.a);
+    wtq.a(this.a, localStoryVideoItem, false);
   }
 }
 

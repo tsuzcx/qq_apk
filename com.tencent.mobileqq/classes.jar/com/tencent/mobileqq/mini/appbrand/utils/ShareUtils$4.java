@@ -11,7 +11,7 @@ final class ShareUtils$4
   
   public void run()
   {
-    QQToast.a(this.val$activity, 0, 2131719400, 1).b(this.val$activity.getResources().getDimensionPixelSize(2131299011));
+    QQToast.a(this.val$activity, 0, 2131719723, 1).b(this.val$activity.getResources().getDimensionPixelSize(2131299076));
   }
 }
 

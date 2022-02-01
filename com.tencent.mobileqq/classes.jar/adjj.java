@@ -1,50 +1,21 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.NearByDatingTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class adjj
-  implements adbw
+  implements Animation.AnimationListener
 {
-  public int a()
+  public adjj(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return 1010;
+    this.a.f = false;
+    this.a.finish();
   }
   
-  public boolean a()
-  {
-    return false;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.NearByDatingTmp localNearByDatingTmp = new msg_svc.NearByDatingTmp();
-    localNearByDatingTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    QQMessageFacade.Message localMessage = paramQQAppInterface.a().a(paramMessageRecord.frienduin, 1010);
-    localNearByDatingTmp.reply.set(localMessage.hasReply);
-    paramMessageRecord = paramQQAppInterface.a().q(paramMessageRecord.frienduin);
-    if (paramMessageRecord != null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("nearby_dating", 4, "发送附近人约会临时会话消息 有keyNearbyDating------>" + bhml.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
-      }
-      localNearByDatingTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
-    }
-    paramRoutingHead.nearby_dating_tmp.set(localNearByDatingTmp);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 8012;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

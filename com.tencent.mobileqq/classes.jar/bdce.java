@@ -1,13 +1,19 @@
-final class bdce
-  extends bdcg
+import com.tencent.mobileqq.tofumsg.TofuItem;
+import org.jetbrains.annotations.NotNull;
+import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfo;
+import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfoResult;
+
+public abstract interface bdce
 {
-  public double a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 > paramInt2) {
-      return paramInt2 / (paramInt1 + paramInt2);
-    }
-    return paramInt1 / (paramInt1 + paramInt2);
-  }
+  public abstract int a();
+  
+  public abstract TofuItem a(@NotNull TofuItem paramTofuItem, long paramLong, int paramInt);
+  
+  public abstract oidb_0xe61.BeancurdCubeInfo a(TofuItem paramTofuItem);
+  
+  public abstract void a();
+  
+  public abstract void a(@NotNull TofuItem paramTofuItem, @NotNull oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult, long paramLong);
 }
 
 

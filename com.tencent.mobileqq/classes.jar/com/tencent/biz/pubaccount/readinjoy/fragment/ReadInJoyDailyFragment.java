@@ -16,15 +16,15 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.view.Window;
-import anxh;
-import bnrm;
+import bkwt;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.image.ApngImage;
-import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -35,60 +35,57 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import ocd;
-import ogs;
-import ohz;
-import oyc;
-import ozs;
-import pag;
-import pbd;
-import pcj;
-import pda;
-import pfd;
-import pfs;
-import pgp;
-import pgq;
-import pgr;
-import pgs;
-import pgt;
-import pgu;
-import pgv;
-import pgw;
-import phb;
-import phv;
-import phw;
-import phx;
-import qiy;
-import qrn;
-import tny;
-import tqi;
-import txc;
+import nwz;
+import odq;
+import oif;
+import ojm;
+import ozh;
+import pay;
+import pbm;
+import pcl;
+import pdt;
+import pil;
+import ple;
+import pmb;
+import pmc;
+import pmd;
+import pmf;
+import pmg;
+import pmh;
+import pmi;
+import pmj;
+import pmo;
+import pni;
+import pnj;
+import qpb;
+import qxg;
+import ttv;
+import tuz;
+import tva;
+import tvi;
+import twp;
+import uds;
 
 public class ReadInJoyDailyFragment
   extends PublicBaseFragment
 {
   public static List<String> a;
-  private static pag jdField_a_of_type_Pag = new pag();
+  private static pbm jdField_a_of_type_Pbm = new pbm();
   private int jdField_a_of_type_Int = 5;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new phw(this);
-  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new phv(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new pnj(this);
+  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new pni(this);
   private View jdField_a_of_type_AndroidViewView;
   private Runnable jdField_a_of_type_JavaLangRunnable = new ReadInJoyDailyFragment.1(this);
-  private ogs jdField_a_of_type_Ogs;
-  private ohz jdField_a_of_type_Ohz;
-  private pgq jdField_a_of_type_Pgq = new pgq();
-  private pgs jdField_a_of_type_Pgs;
+  private oif jdField_a_of_type_Oif;
+  private ojm jdField_a_of_type_Ojm;
+  private pmc jdField_a_of_type_Pmc = new pmc();
+  private pmf jdField_a_of_type_Pmf;
   private boolean jdField_a_of_type_Boolean;
   private View b;
   
   static
   {
     jdField_a_of_type_JavaUtilList = new ArrayList(1);
-  }
-  
-  private void a(int paramInt)
-  {
-    pfd.a().a(new phx(this, paramInt));
   }
   
   private void a(Intent paramIntent)
@@ -99,20 +96,20 @@ public class ReadInJoyDailyFragment
       do
       {
         return;
-        oyc.a(paramIntent);
+        ozh.a(paramIntent);
       } while (!b());
-      paramIntent = ozs.a();
+      paramIntent = pay.a();
     } while (paramIntent == null);
     KandianMergeManager localKandianMergeManager = (KandianMergeManager)paramIntent.getManager(162);
     localKandianMergeManager.d();
-    localKandianMergeManager.s();
-    ozs.f(paramIntent);
-    ozs.a(false);
+    localKandianMergeManager.r();
+    pay.f(paramIntent);
+    pay.a(false);
   }
   
   private void a(String paramString)
   {
-    if (pbd.b(pbd.b())) {}
+    if (pcl.b(pcl.b())) {}
     for (String str = "0X80089D1";; str = "0X80098B0")
     {
       ThreadManager.executeOnSubThread(new ReadInJoyDailyFragment.4(this, paramString, str));
@@ -127,9 +124,9 @@ public class ReadInJoyDailyFragment
   
   public static void b()
   {
-    if (jdField_a_of_type_Pag != null)
+    if (jdField_a_of_type_Pbm != null)
     {
-      jdField_a_of_type_Pag.b();
+      jdField_a_of_type_Pbm.b();
       QLog.d("ReadInJoyDailyFragment", 2, "stopTimeCalculateWhenInBackground");
     }
   }
@@ -141,23 +138,23 @@ public class ReadInJoyDailyFragment
   
   public static void c()
   {
-    if (jdField_a_of_type_Pag != null)
+    if (jdField_a_of_type_Pbm != null)
     {
-      jdField_a_of_type_Pag.a();
+      jdField_a_of_type_Pbm.a();
       QLog.d("ReadInJoyDailyFragment", 2, "wakeUpTimeCalculateWhenInForeground");
     }
   }
   
   private void d()
   {
-    QQAppInterface localQQAppInterface = ozs.a();
+    QQAppInterface localQQAppInterface = pay.a();
     if (localQQAppInterface == null) {
       return;
     }
-    if (this.jdField_a_of_type_Pgs == null) {
-      this.jdField_a_of_type_Pgs = new pgs(this.jdField_a_of_type_Pgq, getActivity());
+    if (this.jdField_a_of_type_Pmf == null) {
+      this.jdField_a_of_type_Pmf = new pmf(this.jdField_a_of_type_Pmc, getActivity());
     }
-    this.jdField_a_of_type_Pgq.a(new pgp[] { new pgu(this.jdField_a_of_type_Pgq, getActivity()), new pgt(this.jdField_a_of_type_Pgq, getActivity()), new pgv(this.jdField_a_of_type_Pgq, localQQAppInterface, getActivity()), this.jdField_a_of_type_Pgs, new pgr(this.jdField_a_of_type_Pgq, localQQAppInterface, getActivity()), new phb(this.jdField_a_of_type_Pgq, getActivity()), new pgw(this.jdField_a_of_type_Pgq, localQQAppInterface, getActivity()) });
+    this.jdField_a_of_type_Pmc.a(new pmb[] { new pmh(this.jdField_a_of_type_Pmc, getActivity()), new pmg(this.jdField_a_of_type_Pmc, getActivity()), new pmi(this.jdField_a_of_type_Pmc, localQQAppInterface, getActivity()), this.jdField_a_of_type_Pmf, new pmd(this.jdField_a_of_type_Pmc, localQQAppInterface, getActivity()), new pmo(this.jdField_a_of_type_Pmc, getActivity()), new pmj(this.jdField_a_of_type_Pmc, localQQAppInterface, getActivity()) });
   }
   
   private void e()
@@ -178,21 +175,21 @@ public class ReadInJoyDailyFragment
   
   private void g()
   {
-    ThreadManager.executeOnSubThread(new ReadInJoyDailyFragment.6(this));
+    ThreadManager.executeOnSubThread(new ReadInJoyDailyFragment.5(this));
   }
   
   private void h()
   {
-    jdField_a_of_type_Pag.c();
+    jdField_a_of_type_Pbm.c();
     QLog.d("ReadInJoyDailyFragment", 2, "resetTime when create");
   }
   
   public void a()
   {
-    if (ThemeUtil.isNowThemeIsNight(ozs.a(), false, null))
+    if (ThemeUtil.isNowThemeIsNight(pay.a(), false, null))
     {
       if (this.b == null) {
-        this.b = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131365256)).inflate();
+        this.b = ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131365281)).inflate();
       }
       if (this.b != null) {
         this.b.setVisibility(0);
@@ -216,8 +213,8 @@ public class ReadInJoyDailyFragment
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Ohz != null) {
-      this.jdField_a_of_type_Ohz.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Ojm != null) {
+      this.jdField_a_of_type_Ojm.a(paramInt1, paramInt2, paramIntent);
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
@@ -245,7 +242,7 @@ public class ReadInJoyDailyFragment
   {
     super.onConfigurationChanged(paramConfiguration);
     paramConfiguration = getResources().getDisplayMetrics();
-    float f2 = anxh.a() / 16.0F;
+    float f2 = FontSettingManager.getFontLevel() / 16.0F;
     float f1 = f2;
     if (f2 == 0.0F) {
       f1 = 1.0F;
@@ -258,12 +255,12 @@ public class ReadInJoyDailyFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    pbd.b();
-    oyc.a(getActivity().app);
-    oyc.c();
+    pcl.b();
+    ozh.a(getActivity().app);
+    ozh.c();
     jdField_a_of_type_JavaUtilList.add(String.valueOf(hashCode()));
-    qrn.a().a(qrn.d, 1);
-    txc.a();
+    qxg.a().a(qxg.d, 1);
+    uds.a();
     paramBundle = getActivity();
     if (paramBundle != null)
     {
@@ -274,13 +271,12 @@ public class ReadInJoyDailyFragment
       a((Intent)localObject);
     }
     ThreadManager.getFileThreadHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 20000L);
-    qiy.a().a();
-    a(0);
+    qpb.a().a();
     g();
     Object localObject = getArguments();
     if (this.jdField_a_of_type_Int == 15)
     {
-      ozs.c = true;
+      pay.c = true;
       QLog.d("ReadInJoyDailyFragment", 1, "from aio share");
     }
     for (int i = 1;; i = 0)
@@ -295,47 +291,48 @@ public class ReadInJoyDailyFragment
           QLog.d("ReadInJoyDailyFragment", 1, "openFloatingWindow is true");
           i = ((Bundle)localObject).getInt("floating_window_business");
           int j = ((Bundle)localObject).getInt("floating_window_scene");
-          bnrm.a(paramBundle, j, i, (Bundle)localObject, pbd.b());
-          if ((j == 1) && ((i != 1) || (bnrm.a((Bundle)localObject)))) {
-            oyc.a(32);
+          bkwt.a(paramBundle, j, i, (Bundle)localObject, pcl.b());
+          if ((j == 1) && ((i != 1) || (bkwt.a((Bundle)localObject)))) {
+            ozh.a(32);
           }
         }
       }
       e();
-      ozs.g();
+      pay.g();
       h();
       d();
-      this.jdField_a_of_type_Pgq.a();
-      this.jdField_a_of_type_Pgs.i();
-      paramBundle = ozs.a();
+      this.jdField_a_of_type_Pmc.a();
+      this.jdField_a_of_type_Pmf.i();
+      paramBundle = pay.a();
       if (paramBundle != null)
       {
-        tny.a(paramBundle).b();
-        tny.a(paramBundle);
+        ttv.a(paramBundle).e();
+        ttv.a(paramBundle);
       }
-      tqi.a().a(41697);
-      tqi.a().b(0);
+      tvi.a.b(41697);
+      twp.a("ReadInJoySuperMaskAd", "setSuperMaskChannelId 41697 notifyShowSelf ");
+      tvi.a.a(tuz.a.a());
       return;
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    pcj.a();
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560145, paramViewGroup, false);
-    pfs.b(0, oyc.a(), 0);
-    this.jdField_a_of_type_Ohz = new ohz(getActivity());
-    this.jdField_a_of_type_Ohz.a(pbd.b());
-    paramLayoutInflater = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131376213);
-    this.jdField_a_of_type_Ohz.a(paramLayoutInflater);
-    this.jdField_a_of_type_Ohz.a();
-    this.jdField_a_of_type_Ogs = new ogs(this.jdField_a_of_type_Ohz.a());
-    this.jdField_a_of_type_Ogs.a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_Ogs.a(this.jdField_a_of_type_AndroidViewView);
+    pdt.a();
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560152, paramViewGroup, false);
+    ple.b(0, ozh.a(), 0);
+    this.jdField_a_of_type_Ojm = new ojm(getActivity());
+    this.jdField_a_of_type_Ojm.a(pcl.b());
+    paramLayoutInflater = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131375979);
+    this.jdField_a_of_type_Ojm.a(paramLayoutInflater);
+    this.jdField_a_of_type_Ojm.a();
+    this.jdField_a_of_type_Oif = new oif(this.jdField_a_of_type_Ojm.a());
+    this.jdField_a_of_type_Oif.a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_Oif.a(this.jdField_a_of_type_AndroidViewView);
     a();
     VideoReport.addToDetectionWhitelist(getActivity());
-    VideoReport.setPageId(this.jdField_a_of_type_AndroidViewView, "8014");
-    VideoReport.setPageParams(this.jdField_a_of_type_AndroidViewView, new pda().a(pbd.b()).a());
+    VideoReport.setPageId(this.jdField_a_of_type_AndroidViewView, "14");
+    VideoReport.setPageParams(this.jdField_a_of_type_AndroidViewView, new pil().a(Integer.valueOf(pcl.b())).a());
     paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -345,22 +342,22 @@ public class ReadInJoyDailyFragment
   {
     super.onDestroy();
     jdField_a_of_type_JavaUtilList.remove(String.valueOf(hashCode()));
-    txc.b();
-    if (this.jdField_a_of_type_Ohz != null) {
-      this.jdField_a_of_type_Ohz.d();
+    uds.b();
+    if (this.jdField_a_of_type_Ojm != null) {
+      this.jdField_a_of_type_Ojm.d();
     }
-    if (this.jdField_a_of_type_Pgq != null) {
-      this.jdField_a_of_type_Pgq.b();
+    if (this.jdField_a_of_type_Pmc != null) {
+      this.jdField_a_of_type_Pmc.b();
     }
     ThreadManager.getFileThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    qiy.a().b();
-    a(5);
+    qpb.a().b();
     f();
   }
   
   public void onDestroyView()
   {
-    this.jdField_a_of_type_Ogs.a();
+    this.jdField_a_of_type_Oif.a();
+    nwz.a().a("RIJAdRefreshSceneDaily");
     super.onDestroyView();
   }
   
@@ -372,82 +369,84 @@ public class ReadInJoyDailyFragment
       this.jdField_a_of_type_Int = paramIntent.getIntExtra("launch_from", 5);
     }
     a(paramIntent);
-    if (this.jdField_a_of_type_Ohz != null) {
-      this.jdField_a_of_type_Ohz.j();
+    if (this.jdField_a_of_type_Ojm != null) {
+      this.jdField_a_of_type_Ojm.j();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Ohz != null) {
-      this.jdField_a_of_type_Ohz.g();
+    if (this.jdField_a_of_type_Ojm != null) {
+      this.jdField_a_of_type_Ojm.g();
     }
-    if (this.jdField_a_of_type_Pgq != null) {
-      this.jdField_a_of_type_Pgq.d();
+    if (this.jdField_a_of_type_Pmc != null) {
+      this.jdField_a_of_type_Pmc.d();
     }
     ApngImage.pauseByTag(31);
-    a(3);
+    tvi.a.b(-1);
+    twp.a("ReadInJoySuperMaskAd", "onPause: setSuperMaskChannelId = -1");
+    tvi.a.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Ohz != null) {
-      this.jdField_a_of_type_Ohz.h();
+    if (this.jdField_a_of_type_Ojm != null) {
+      this.jdField_a_of_type_Ojm.h();
     }
-    if (this.jdField_a_of_type_Pgq != null) {
-      this.jdField_a_of_type_Pgq.c();
+    if (this.jdField_a_of_type_Pmc != null) {
+      this.jdField_a_of_type_Pmc.c();
     }
     RecommendFeedsDiandianEntranceManager.a().a();
     ApngImage.playByTag(31);
-    a(2);
-    ocd.a(null, "", "0X8009940", "0X8009940", 0, 0, "", "", "", "", false);
+    odq.a(null, "", "0X8009940", "0X8009940", 0, 0, "", "", "", "", false);
+    tvi.a.b(pcl.b());
+    twp.a("ReadInJoySuperMaskAd", "onResume: setSuperMaskChannelId = " + pcl.b());
+    tvi.a.b();
   }
   
   public void onStart()
   {
     super.onStart();
-    if (this.jdField_a_of_type_Ohz != null) {
-      this.jdField_a_of_type_Ohz.e();
+    if (this.jdField_a_of_type_Ojm != null) {
+      this.jdField_a_of_type_Ojm.e();
     }
-    if (jdField_a_of_type_Pag != null) {
-      jdField_a_of_type_Pag.a();
+    if (jdField_a_of_type_Pbm != null) {
+      jdField_a_of_type_Pbm.a();
     }
-    a(1);
   }
   
   public void onStop()
   {
     super.onStop();
-    if (this.jdField_a_of_type_Ohz != null) {
-      this.jdField_a_of_type_Ohz.f();
+    if (this.jdField_a_of_type_Ojm != null) {
+      this.jdField_a_of_type_Ojm.f();
     }
-    if ((!BaseActivity.mAppForground) && (jdField_a_of_type_Pag != null)) {
-      jdField_a_of_type_Pag.b();
+    if ((!BaseActivity.mAppForground) && (jdField_a_of_type_Pbm != null)) {
+      jdField_a_of_type_Pbm.b();
     }
     if (getActivity().isFinishing())
     {
-      if (this.jdField_a_of_type_Ohz != null) {
-        this.jdField_a_of_type_Ohz.c();
+      if (this.jdField_a_of_type_Ojm != null) {
+        this.jdField_a_of_type_Ojm.c();
       }
-      qrn.a().c();
-      pfs.b(1, oyc.a(), oyc.b());
+      qxg.a().c();
+      ple.b(1, ozh.a(), ozh.b());
       if (!this.jdField_a_of_type_Boolean) {
-        a(oyc.a());
+        a(ozh.a());
       }
-      oyc.b();
-      ozs.c = false;
-      pbd.c();
+      ozh.b();
+      pay.c = false;
+      pcl.c();
     }
-    a(4);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if ((paramBoolean) && (this.jdField_a_of_type_Pgq != null)) {
-      this.jdField_a_of_type_Pgq.g();
+    if ((paramBoolean) && (this.jdField_a_of_type_Pmc != null)) {
+      this.jdField_a_of_type_Pmc.g();
     }
   }
 }

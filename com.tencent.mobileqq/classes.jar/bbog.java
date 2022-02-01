@@ -1,49 +1,67 @@
-import android.media.MediaCodec.BufferInfo;
-import java.util.ArrayList;
+import GIFT_MALL_PROTOCOL.doufu_piece_rsp;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.birthdaynotice.GetBirthDayNoticeRequest;
+import cooperation.vip.manager.MonitorManager;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bbog
+  extends MSFServlet
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private String jdField_b_of_type_JavaLangString;
-  private ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  
-  public bbog(String paramString, int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "segment" + paramInt + ".mp4");
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      return ((Long)this.jdField_a_of_type_JavaUtilArrayList.get(0)).longValue();
+    if ((paramIntent == null) || (paramFromServiceMsg == null))
+    {
+      MonitorManager.a().a(19, 1, " 请求失败 intent =" + paramIntent + "  respone= " + paramFromServiceMsg, false);
+      return;
     }
-    return 0L;
+    int i = paramFromServiceMsg.getResultCode();
+    paramIntent = new Bundle();
+    paramIntent.putString("msg", "servlet result code is " + i);
+    if (i == 1000)
+    {
+      paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
+      doufu_piece_rsp localdoufu_piece_rsp = GetBirthDayNoticeRequest.onResponse(paramFromServiceMsg, new int[1]);
+      if (localdoufu_piece_rsp != null)
+      {
+        paramIntent.putInt("ret", 0);
+        paramIntent.putSerializable("data", localdoufu_piece_rsp);
+        notifyObserver(null, 1009, true, paramIntent, axkw.class);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("BirthDayNoticeServlet", 2, "GET_BIRTHDAY_DATA fail, decode result is null");
+      }
+      paramIntent.putInt("ret", -2);
+      MonitorManager.a().a(19, 2, " 解包失败 " + paramFromServiceMsg, false);
+      notifyObserver(null, 1009, false, paramIntent, axkw.class);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BirthDayNoticeServlet", 2, "GET_BIRTHDAY_DATA fail, resultCode=" + i);
+    }
+    MonitorManager.a().a(19, 3, " 后台返回失败， 错误码 " + i + " 错误信息 " + paramFromServiceMsg.getBusinessFailMsg(), false);
+    paramIntent.putInt("ret", -3);
+    notifyObserver(null, 1009, false, paramIntent, axkw.class);
   }
   
-  public String a()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a(bbmf parambbmf)
-  {
-    parambbmf = parambbmf.a;
-    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(parambbmf.presentationTimeUs));
-    this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(parambbmf.flags));
-  }
-  
-  public String toString()
-  {
-    return "SegmentInfo{mSegmentPath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mFrames=" + this.jdField_a_of_type_JavaUtilArrayList + ", mFlags=" + this.jdField_b_of_type_JavaUtilArrayList + '}';
+    GetBirthDayNoticeRequest localGetBirthDayNoticeRequest = new GetBirthDayNoticeRequest(Long.valueOf(paramIntent.getLongExtra("selfuin", 0L)).longValue(), new HashMap());
+    byte[] arrayOfByte = localGetBirthDayNoticeRequest.encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null)
+    {
+      QLog.e("BirthDayNoticeServlet", 1, "onSend request encode result is null.cmd=" + localGetBirthDayNoticeRequest.uniKey());
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localGetBirthDayNoticeRequest.uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

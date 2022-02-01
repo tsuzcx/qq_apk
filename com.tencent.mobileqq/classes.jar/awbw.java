@@ -1,48 +1,33 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import java.util.LinkedList;
+import java.util.List;
 
-public class awbw
+public class awbw<T>
 {
-  public static long a(Bundle paramBundle)
+  private List<T> a = new LinkedList();
+  
+  public int a()
   {
-    if (paramBundle == null) {}
-    do
-    {
-      return 0L;
-      paramBundle = paramBundle.getString("roomid", "");
-    } while (TextUtils.isEmpty(paramBundle));
-    return Long.parseLong(paramBundle);
+    return this.a.size();
   }
   
-  public static String a(Bundle paramBundle)
+  public T a()
   {
-    if (paramBundle == null) {
-      paramBundle = "";
+    if (this.a.size() == 0) {
+      return null;
     }
-    String str;
-    do
-    {
-      return paramBundle;
-      str = paramBundle.getString("roomtype");
-      paramBundle = str;
-    } while (!TextUtils.isEmpty(str));
-    return "0";
+    return this.a.remove(0);
   }
   
-  public static String b(Bundle paramBundle)
+  public void a()
   {
-    if (paramBundle == null) {
-      return "";
-    }
-    return paramBundle.getString("fromid", "");
+    this.a.clear();
   }
   
-  public static String c(Bundle paramBundle)
+  public void a(T paramT)
   {
-    if (paramBundle == null) {
-      return "";
+    if (!this.a.contains(paramT)) {
+      this.a.add(paramT);
     }
-    return paramBundle.getString("shakespearetime", "");
   }
 }
 

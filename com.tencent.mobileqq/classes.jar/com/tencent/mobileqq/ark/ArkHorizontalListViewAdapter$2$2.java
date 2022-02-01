@@ -2,18 +2,18 @@ package com.tencent.mobileqq.ark;
 
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import aqco;
-import aqcq;
+import aovz;
+import aowb;
 
 public class ArkHorizontalListViewAdapter$2$2
   implements Runnable
 {
-  public ArkHorizontalListViewAdapter$2$2(aqco paramaqco, String paramString) {}
+  public ArkHorizontalListViewAdapter$2$2(aovz paramaovz, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aqco.a.b.setVisibility(0);
-    this.jdField_a_of_type_Aqco.a.a.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aovz.a.b.setVisibility(0);
+    this.jdField_a_of_type_Aovz.a.a.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

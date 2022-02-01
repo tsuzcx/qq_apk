@@ -1,21 +1,17 @@
-class bcnk
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class bcnk
+  implements CompoundButton.OnCheckedChangeListener
 {
-  int jdField_a_of_type_Int;
-  CharSequence jdField_a_of_type_JavaLangCharSequence;
-  int b;
+  public bcnk(KidModeAdvanceSettingFragment paramKidModeAdvanceSettingFragment) {}
   
-  public bcnk(CharSequence paramCharSequence)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_Int = -1;
-    this.b = 0;
-  }
-  
-  public bcnk(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    KidModeAdvanceSettingFragment.b(this.a, 16, paramBoolean);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

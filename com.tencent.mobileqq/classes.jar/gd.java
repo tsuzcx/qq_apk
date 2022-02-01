@@ -1,12 +1,15 @@
+import com.tencent.mobileqq.data.ChatMessage;
+
 class gd
-  implements axfv<Void, Void>
+  implements avtb<Void>
 {
-  gd(gc paramgc, anyw paramanyw, String paramString) {}
+  gd(gb paramgb, ChatMessage paramChatMessage) {}
   
-  public Void a(Void paramVoid)
+  public void a(Void paramVoid)
   {
-    this.jdField_a_of_type_Anyw.a(this.jdField_a_of_type_JavaLangString);
-    return null;
+    if (this.jdField_a_of_type_Gb.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage) != null) {
+      bgae.a(this.jdField_a_of_type_Gb.a);
+    }
   }
 }
 

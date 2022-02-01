@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import bfwl;
+import befw;
 
 public class TroopFileDownloadMgr$3
   implements Runnable
 {
-  public TroopFileDownloadMgr$3(bfwl parambfwl) {}
+  public TroopFileDownloadMgr$3(befw parambefw) {}
   
   public void run()
   {

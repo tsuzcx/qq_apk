@@ -1,100 +1,81 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
 
-public class urq
-  extends uej<Object>
+public abstract class urq
 {
-  private WSVerticalPageFragment a;
-  private View b;
-  private View c;
-  
-  public urq(Context paramContext, WSVerticalPageFragment paramWSVerticalPageFragment)
+  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo, urw paramurw)
   {
-    super(paramContext);
-    this.a = paramWSVerticalPageFragment;
-  }
-  
-  private void f()
-  {
-    if (this.a.a() == null) {
-      return;
-    }
-    uuy localuuy = this.a.a().a();
-    if (localuuy != null) {
-      localuuy.d();
-    }
-    g();
-  }
-  
-  private void g()
-  {
-    if (this.a.a() != null) {
-      this.a.a().a(this.a.a());
+    if (QLog.isColorLevel()) {
+      uya.b("WSPlayerListenerAdapter", 2, "onAccessVideoBitRate onTencentVideoDefnInfo:" + paramTVK_NetVideoInfo);
     }
   }
   
-  protected void a() {}
-  
-  public void a(boolean paramBoolean)
+  public void a(urw paramurw)
   {
-    View localView;
-    if (this.c != null)
-    {
-      localView = this.c;
-      if (!paramBoolean) {
-        break label24;
-      }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
-      return;
+    if (QLog.isColorLevel()) {
+      uya.b("WSPlayerListenerAdapter", 2, "onCompletion videoPlayer:" + paramurw);
     }
   }
   
-  public void a(boolean paramBoolean, uju paramuju)
+  public void a(urw paramurw, long paramLong)
   {
-    View localView;
-    if ((this.b != null) && (paramuju != null))
-    {
-      paramuju.a(paramBoolean);
-      localView = this.b;
-      if ((paramuju.a() <= 0) || (!paramBoolean)) {
-        break label42;
-      }
-    }
-    label42:
-    for (int i = 0;; i = 4)
-    {
-      localView.setVisibility(i);
-      return;
+    if (QLog.isColorLevel()) {
+      uya.b("WSPlayerListenerAdapter", 2, "onAccessVideoBitRate videoBitRate:" + paramLong);
     }
   }
   
-  protected int b()
+  public abstract void a(urw paramurw, Object paramObject);
+  
+  public void a(urw paramurw, String paramString)
   {
-    return 2131560002;
+    if (QLog.isColorLevel()) {
+      uya.b("WSPlayerListenerAdapter", 2, "OnDownloadCallback state:" + paramString + ", videoPlayer:" + paramurw);
+    }
   }
   
-  protected void b() {}
-  
-  protected void c() {}
-  
-  protected void e()
+  public void a(urw paramurw, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (this.a == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      uya.b("WSPlayerListenerAdapter", 2, "onCaptureImage result:" + paramBoolean + ", errCode:" + paramInt1 + ", id:" + paramInt2 + ", bitmap:" + paramBitmap + ", videoPlayer:" + paramurw);
     }
-    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131380700);
-    usd.a(this.a.getActivity(), localRelativeLayout);
-    a(2131380701).setOnClickListener(new urr(this));
-    this.c = a(2131380703);
-    this.c.setOnClickListener(new urs(this));
-    this.b = a(2131369115);
-    this.a.a(this.b);
+  }
+  
+  public boolean a(urw paramurw, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      uya.b("WSPlayerListenerAdapter", 2, "onError model:" + paramInt1 + ", what:" + paramInt2 + ", extra:" + paramInt3 + ", detailInfo:" + paramString + ", info:" + paramObject);
+    }
+    return false;
+  }
+  
+  public boolean a(urw paramurw, int paramInt, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      uya.b("WSPlayerListenerAdapter", 2, "onInfo what:" + paramInt + ", extra:" + paramObject + ", videoPlayer:" + paramurw);
+    }
+    return false;
+  }
+  
+  public void b(urw paramurw)
+  {
+    if (QLog.isColorLevel()) {
+      uya.b("WSPlayerListenerAdapter", 2, "onSeekComplete videoPlayer:" + paramurw);
+    }
+  }
+  
+  public void b(urw paramurw, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      uya.d("WSPlayerListenerAdapter", 2, "onConnectQualityCallback json:" + paramString);
+    }
+  }
+  
+  public void c(urw paramurw)
+  {
+    if (QLog.isColorLevel()) {
+      uya.b("WSPlayerListenerAdapter", 2, "onDownloadFinish videoPlayer:" + paramurw);
+    }
   }
 }
 

@@ -1,11 +1,17 @@
-class xuu
-  implements xvq
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.7.1;
+
+public class xuu
+  implements xrp
 {
-  xuu(xut paramxut, xth paramxth) {}
+  xuu(xuh paramxuh) {}
   
-  public void a(xvo paramxvo)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_Xth.a(this.jdField_a_of_type_Xut);
+    xvv.e("NewMyStorySegment", "error occur when get friends data from server steps=%s,error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
+    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.7.1(this));
   }
 }
 

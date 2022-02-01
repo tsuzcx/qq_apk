@@ -1,70 +1,26 @@
-import android.view.View;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xpx
-  implements xsx
+  extends QQUIEventReceiver<xpw, vua>
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  private int jdField_a_of_type_Int = zps.d(BaseApplication.getContext());
-  private int b = -1;
-  private int c = -1;
-  
-  public xpx(xpv paramxpv) {}
-  
-  public void a(int paramInt)
+  public xpx(xpw paramxpw1, @NonNull xpw paramxpw2)
   {
-    if (this.jdField_a_of_type_Xpv.a() != 0) {
-      return;
-    }
-    this.c = paramInt;
+    super(paramxpw2);
   }
   
-  public void a(int paramInt1, float paramFloat, int paramInt2)
+  public void a(@NonNull xpw paramxpw, @NonNull vua paramvua)
   {
-    if (this.jdField_a_of_type_Xpv.a() != 0) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.playernew.StoryPlayerActivity", 2, "GetStoryListReceiver");
     }
-    if (this.b == -1) {
-      this.b = paramInt1;
-    }
-    if (this.b != paramInt1)
-    {
-      this.b = paramInt1;
-      this.jdField_a_of_type_Float = paramFloat;
-    }
-    if (this.jdField_a_of_type_Float > 0.5D)
-    {
-      this.jdField_a_of_type_Xpv.a.setTranslationY(this.jdField_a_of_type_Int - paramInt2);
-      return;
-    }
-    this.jdField_a_of_type_Xpv.a.setTranslationY(-paramInt2);
+    paramxpw.b(paramvua.a);
   }
   
-  public void b(int paramInt)
+  public Class acceptEventClass()
   {
-    yuk.a("Q.qqstory.playernew.LoadingMoreWidget", "onPageScrollStateChanged newState=%d visible=%d", Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Xpv.a()));
-    if (this.jdField_a_of_type_Xpv.a() != 0) {}
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt == 1)
-        {
-          this.jdField_a_of_type_Float = -1.0F;
-          this.b = -1;
-          this.c = -1;
-          this.jdField_a_of_type_Xpv.a.clearAnimation();
-          return;
-        }
-      } while (paramInt != 0);
-      if (this.jdField_a_of_type_Float < 0.5D)
-      {
-        this.jdField_a_of_type_Xpv.a.setTranslationY(0.0F);
-        return;
-      }
-    } while (this.c == -1);
-    this.jdField_a_of_type_Xpv.a.setTranslationY(this.jdField_a_of_type_Int);
+    return vua.class;
   }
 }
 

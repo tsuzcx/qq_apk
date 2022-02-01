@@ -1,27 +1,37 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-class uyr
-  extends apck
+final class uyr
+  implements URLDrawable.URLDrawableListener
 {
-  uyr(uyq paramuyq, String paramString, boolean paramBoolean)
+  uyr(String paramString1, ImageView paramImageView, String paramString2) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    super(paramString, paramBoolean);
+    uya.a("815", "onLoadCanceled - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841730);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (paramInt == 0)
-    {
-      if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-      {
-        uyq.a(this.a, paramSosoLbsInfo);
-        return;
-      }
-      QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from request: location is null");
-      return;
+    uya.a("815", "onLoadFialed - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841730);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    uya.a("815", "onLoadProgressed - " + this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    uya.a("815", "onLoadSuccessed - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "banner")) {
+      unt.b(2, this.b);
     }
-    QLog.d("QCircleGpsHelper", 2, "preGetLocation get GpsInfo from request: failed");
   }
 }
 

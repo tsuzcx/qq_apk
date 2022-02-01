@@ -1,46 +1,123 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import com.tencent.image.NativeGifImage;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class ahth
-  implements bliz
+  extends NativeGifImage
 {
-  public ahth(StructingMsgItemBuilder paramStructingMsgItemBuilder, boolean paramBoolean, ChatMessage paramChatMessage, blir paramblir) {}
+  private ahuh jdField_a_of_type_Ahuh;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private boolean jdField_a_of_type_Boolean;
+  private Paint b;
   
-  public void OnClick(View paramView, int paramInt)
+  public ahth(File paramFile, boolean paramBoolean, float paramFloat)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForStructing)) {
-        new bebw(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
+  }
+  
+  private void a(Canvas paramCanvas, Rect paramRect)
+  {
+    float f2 = 1.0F;
+    if ((QLog.isColorLevel()) && (!this.jdField_a_of_type_Boolean))
+    {
+      QLog.d("ZhituManager", 2, " dst rect is " + paramRect + " but bitmap is " + getWidth() + " / " + getHeight());
+      this.jdField_a_of_type_Boolean = true;
+    }
+    float f1 = paramRect.width() / getWidth();
+    if (Math.abs(f1 - 1.0F) < 0.01D)
+    {
+      f1 = f2;
+      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsPaint = this.jdField_a_of_type_Ahuh.jdField_a_of_type_AndroidGraphicsPaint;
+        this.b = this.jdField_a_of_type_Ahuh.b;
+        f1 = f2;
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Blir.cancel();
-      return;
-      String str1;
-      String str2;
-      try
+      int i = 0;
+      while (i < this.jdField_a_of_type_Ahuh.jdField_a_of_type_ArrayOfFloat.length)
       {
-        paramInt = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("peerType"));
-        paramView = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("filePath");
-        str1 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("peerUin");
-        str2 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("strSendUin");
-        if (1 != paramInt) {
-          break label133;
+        f2 = paramRect.top + this.jdField_a_of_type_Ahuh.jdField_a_of_type_ArrayOfFloat[i] * f1;
+        if (this.b != null) {
+          paramCanvas.drawText(this.jdField_a_of_type_Ahuh.jdField_a_of_type_ArrayOfJavaLangString[i], paramRect.exactCenterX(), f2, this.b);
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramView, str1);
+        paramCanvas.drawText(this.jdField_a_of_type_Ahuh.jdField_a_of_type_ArrayOfJavaLangString[i], paramRect.exactCenterX(), f2, this.jdField_a_of_type_AndroidGraphicsPaint);
+        i += 1;
       }
-      catch (Exception paramView)
+      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
       {
-        paramView.printStackTrace();
+        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(this.jdField_a_of_type_Ahuh.jdField_a_of_type_AndroidGraphicsPaint);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Ahuh.jdField_a_of_type_AndroidGraphicsPaint.getTextSize() * f1);
+        if (this.jdField_a_of_type_Ahuh.b != null)
+        {
+          this.b = new Paint(this.jdField_a_of_type_Ahuh.b);
+          this.b.setTextSize(this.jdField_a_of_type_Ahuh.b.getTextSize() * f1);
+        }
       }
-      continue;
-      label133:
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramView, str2, str1, paramInt, true);
     }
+  }
+  
+  public int a()
+  {
+    return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
+  }
+  
+  public Bitmap a()
+  {
+    return this.mCurrentFrameBitmap;
+  }
+  
+  public void a()
+  {
+    getNextFrame();
+    applyNextFrame();
+  }
+  
+  public void a(ahuh paramahuh)
+  {
+    this.jdField_a_of_type_Ahuh = paramahuh;
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    Rect localRect = new Rect(0, 0, paramCanvas.getWidth(), paramCanvas.getHeight());
+    if (QLog.isColorLevel()) {
+      QLog.d("ZhituManager", 2, "draw text to file dst rect is " + localRect + " and bitmap is " + getWidth() + " / " + getHeight());
+    }
+    a(paramCanvas, localRect);
+  }
+  
+  public int b()
+  {
+    return this.mMetaData[FRAME_COUNT_INDEX];
+  }
+  
+  public int c()
+  {
+    return this.mCurrentFrameIndex;
+  }
+  
+  public int d()
+  {
+    return this.mMetaData[WIDTH_INDEX];
+  }
+  
+  public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
+  {
+    super.draw(paramCanvas, paramRect, paramPaint, paramBoolean);
+    a(paramCanvas, paramRect);
+  }
+  
+  public void drawFirstFrame(Canvas paramCanvas, Rect paramRect, Paint paramPaint)
+  {
+    super.drawFirstFrame(paramCanvas, paramRect, paramPaint);
+    a(paramCanvas, paramRect);
   }
 }
 

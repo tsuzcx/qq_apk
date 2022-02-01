@@ -1,32 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class auim
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  auim(auik paramauik) {}
+  auim(auij paramauij) {}
   
-  public void onClick(View paramView)
-  {
-    int i = this.a.a.h();
-    if ((i == 2) || (i == 3))
-    {
-      i = auoo.b(this.a.a.e());
-      bdll.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
-      if (this.a.a.a() != null) {
-        this.a.a.a().a();
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((i == 1) && (this.a.a.a() != null)) {
-        this.a.a.a().a();
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

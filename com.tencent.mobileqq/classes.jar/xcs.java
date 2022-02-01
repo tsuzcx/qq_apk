@@ -1,10 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class xcs
+public abstract interface xcs
 {
-  public String a;
-  public List<zll> a = new ArrayList();
+  public abstract void a(String paramString, int paramInt1, int paramInt2, xct paramxct);
 }
 
 

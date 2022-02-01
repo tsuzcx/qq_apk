@@ -1,6 +1,6 @@
 package com.tencent.biz.qrcode.activity;
 
-import zyx;
+import yyi;
 
 class QRDisplayActivity$13$1
   implements Runnable
@@ -12,7 +12,7 @@ class QRDisplayActivity$13$1
     if (this.a.this$0.isFinishing()) {
       return;
     }
-    zyx.a(1, 2131695817);
+    yyi.a(1, 2131695957);
   }
 }
 

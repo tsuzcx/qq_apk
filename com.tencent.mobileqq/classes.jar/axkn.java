@@ -1,38 +1,78 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
 public class axkn
-  extends axlx
 {
-  public axkn(MultiAIOFragment paramMultiAIOFragment) {}
+  private final Bundle a = axkl.a.a();
   
-  public void a(int paramInt)
+  public axkn()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "onPageSelected() called with: position = [" + paramInt + "]");
-    }
+    this.a.putString("tid", "personal_live_base");
+    this.a.putString("bid", "b_sng_im_personal_live");
+    this.a.putString("KEY_START_SRC", "default");
   }
   
-  public void b(int paramInt)
+  public axkn a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "ViewPager onPageScrollStateChanged() called with: state = [" + paramInt + "]");
+    return a("obj1", paramInt);
+  }
+  
+  public axkn a(String paramString)
+  {
+    this.a.putString("module", paramString);
+    return this;
+  }
+  
+  public axkn a(String paramString, int paramInt)
+  {
+    this.a.putString(paramString, String.valueOf(paramInt));
+    return this;
+  }
+  
+  public axkn a(String paramString1, String paramString2)
+  {
+    String str = paramString2;
+    if (paramString2 == null) {
+      str = "null";
     }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      MultiAIOFragment.a(this.a, MultiAIOFragment.a(this.a).a());
-      MultiAIOFragment.a(this.a).setViewPagerBusy(false);
-      return;
-    case 1: 
-      MultiAIOFragment.c(this.a);
-      return;
-    }
-    MultiAIOFragment.c(this.a);
+    this.a.putString(paramString1, str.replace("&", "_"));
+    return this;
+  }
+  
+  public void a()
+  {
+    axkl.a.a(this.a);
+  }
+  
+  public axkn b(int paramInt)
+  {
+    return a("obj3", paramInt);
+  }
+  
+  public axkn b(String paramString)
+  {
+    this.a.putString("action", paramString);
+    return this;
+  }
+  
+  public axkn c(String paramString)
+  {
+    this.a.putString("source", paramString);
+    return this;
+  }
+  
+  public axkn d(String paramString)
+  {
+    return a("obj2", paramString);
+  }
+  
+  public axkn e(String paramString)
+  {
+    return a("obj3", paramString);
+  }
+  
+  public String toString()
+  {
+    return "ReportTask{map=" + this.a + '}';
   }
 }
 

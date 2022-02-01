@@ -1,32 +1,101 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class aofu
-  extends anud
+class aofu
+  implements ITransactionCallback
 {
-  aofu(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  aofu(aofs paramaofs, aohl paramaohl, long paramLong) {}
   
-  protected Class<? extends anui> observerClass()
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    return aofv.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("QzoneService.GetNewAndUnread".equals(paramToServiceMsg.getServiceCmd()))
+    String str = "";
+    for (;;)
     {
-      if (paramObject == null) {
-        notifyUI(1, false, null);
+      synchronized (aofs.a(this.jdField_a_of_type_Aofs))
+      {
+        if (aofs.a(this.jdField_a_of_type_Aofs) != null)
+        {
+          int i = 0;
+          if (i < aofs.a(this.jdField_a_of_type_Aofs).size())
+          {
+            if (((aofx)aofs.a(this.jdField_a_of_type_Aofs).get(i)).jdField_a_of_type_Aohl.a.equals(this.jdField_a_of_type_Aohl.a))
+            {
+              paramArrayOfByte = ((aofx)aofs.a(this.jdField_a_of_type_Aofs).get(i)).jdField_a_of_type_Aofv;
+              str = ((aofx)aofs.a(this.jdField_a_of_type_Aofs).get(i)).jdField_a_of_type_Aohl.a;
+              aofs.a(this.jdField_a_of_type_Aofs).remove(i);
+              QLog.i("AREngine_ARCloudFileUpload", 1, "Upload failed. retCode = " + paramInt + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str);
+              if (paramArrayOfByte != null) {
+                paramArrayOfByte.a(paramInt, str, null);
+              }
+              return;
+            }
+            i += 1;
+          }
+        }
       }
+      paramArrayOfByte = null;
     }
-    else {
-      return;
+  }
+  
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  {
+    Object localObject2 = null;
+    String str2 = "";
+    Object localObject3 = aofs.a(this.jdField_a_of_type_Aofs);
+    String str1 = str2;
+    Object localObject1 = localObject2;
+    for (;;)
+    {
+      try
+      {
+        if (aofs.a(this.jdField_a_of_type_Aofs) != null)
+        {
+          i = 0;
+          str1 = str2;
+          localObject1 = localObject2;
+          if (i < aofs.a(this.jdField_a_of_type_Aofs).size())
+          {
+            if (!((aofx)aofs.a(this.jdField_a_of_type_Aofs).get(i)).jdField_a_of_type_Aohl.a.equals(this.jdField_a_of_type_Aohl.a)) {
+              continue;
+            }
+            localObject1 = ((aofx)aofs.a(this.jdField_a_of_type_Aofs).get(i)).jdField_a_of_type_Aofv;
+            str1 = ((aofx)aofs.a(this.jdField_a_of_type_Aofs).get(i)).jdField_a_of_type_Aohl.a;
+            aofs.a(this.jdField_a_of_type_Aofs).remove(i);
+          }
+        }
+        paramArrayOfByte = aofs.a(this.jdField_a_of_type_Aofs, paramArrayOfByte, this.jdField_a_of_type_Aohl);
+        if (paramArrayOfByte == null)
+        {
+          QLog.i("AREngine_ARCloudFileUpload", 1, "Upload successfully. retCode = " + 9058 + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str1 + ". deserialize pb failed.");
+          i = 9058;
+          if (localObject1 != null) {
+            ((aofv)localObject1).a(i, str1, paramArrayOfByte);
+          }
+          return;
+          i += 1;
+          continue;
+        }
+        QLog.i("AREngine_ARCloudFileUpload", 1, "Upload successfully. retCode = " + 0 + ", IP = " + (String)paramHashMap.get("ip") + ", sessionId = " + str1);
+      }
+      finally {}
+      int i = 0;
     }
-    notifyUI(1, true, null);
+  }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
+  {
+    QLog.i("AREngine_ARCloudFileUpload", 1, "Upload start. sessionId = " + this.jdField_a_of_type_Aohl.a);
+  }
+  
+  public void onUpdateProgress(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARCloudFileUpload", 2, "onUpdateProgress. sessionId = " + this.jdField_a_of_type_Aohl.a + ". total size = " + this.jdField_a_of_type_Long + ", transfered size = " + paramInt);
+    }
   }
 }
 

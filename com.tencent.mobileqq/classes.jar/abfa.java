@@ -1,49 +1,53 @@
-import android.app.Activity;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
-import org.json.JSONObject;
 
 public class abfa
+  extends BroadcastReceiver
 {
-  public abfa(NewerGuidePlugin paramNewerGuidePlugin, JSONObject paramJSONObject, Activity paramActivity) {}
+  private abfa(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  @QQPermissionDenied(1)
-  public void deniedReadContacts()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "deniedReadContacts");
-    }
-    try
+    String str = paramIntent.getAction();
+    if (QLog.isColorLevel())
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("result", 0);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respUploadContacts", new String[] { localJSONObject.toString() });
-      bhpc.showPermissionSettingDialog(this.jdField_a_of_type_AndroidAppActivity, anzj.a(2131706319));
-      return;
+      if ("[onRecevier] action:" + str + ",data:" + paramIntent.getExtras() != null)
+      {
+        paramContext = paramIntent.getExtras().toString();
+        QLog.d("GCApi", 2, paramContext);
+      }
     }
-    catch (Exception localException)
+    else {
+      if (str != null) {
+        break label70;
+      }
+    }
+    label70:
+    label104:
+    do
     {
-      QLog.e("NewerGuidePlugin", 1, "deniedReadContacts fail.", localException);
-    }
-  }
-  
-  @QQPermissionGrant(1)
-  public void grandReadContacts()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "grandReadContacts");
-    }
-    try
-    {
-      NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, this.jdField_a_of_type_OrgJsonJSONObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("NewerGuidePlugin", 1, "grandReadContacts fail.", localException);
-    }
+      do
+      {
+        do
+        {
+          return;
+          paramContext = null;
+          break;
+          if (!"action_qgame_messgae_change".equals(str)) {
+            break label104;
+          }
+          paramContext = GameCenterAPIJavaScript.parseGameMessageChange(paramIntent.getExtras());
+        } while (paramContext == null);
+        this.a.dispatchJsEvent(GameCenterAPIJavaScript.EVENT_UPDATE_SESSION_INFO, paramContext, null);
+        return;
+      } while (!"action_qgame_unread_change".equals(str));
+      paramContext = GameCenterAPIJavaScript.parseGameMessageUnreadCount(paramIntent.getExtras());
+    } while (paramContext == null);
+    this.a.dispatchJsEvent(GameCenterAPIJavaScript.EVENT_UPDATE_UNREAD_CNT, paramContext, null);
   }
 }
 

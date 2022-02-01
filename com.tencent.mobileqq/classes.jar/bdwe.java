@@ -1,29 +1,64 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.Callable;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class bdwe
-  implements Callable<File>
+public class bdwe
 {
-  bdwe(bdwd parambdwd) {}
+  int jdField_a_of_type_Int;
+  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new bdwf(this);
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  bdxy jdField_a_of_type_Bdxy;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View c;
   
-  public File a()
+  public bdwe(View paramView, int paramInt)
   {
-    if ((!bdwd.a(this.a).exists()) || (!bdwd.a(this.a)))
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380062));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380064));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380061));
+    this.c = paramView.findViewById(2131380063);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131380065);
+  }
+  
+  public void a(Context paramContext, bdxy parambdxy, View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_b_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+    this.jdField_b_of_type_AndroidViewView.setTranslationY(0.0F);
+    this.c.setRotation(0.0F);
+    this.jdField_a_of_type_AndroidViewView.setTag(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambdxy.b);
+    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(parambdxy.b);
+    this.jdField_a_of_type_Bdxy = parambdxy;
+    if (parambdxy.jdField_a_of_type_Int != 0)
     {
-      long l = System.currentTimeMillis();
-      if (!bdwd.a(this.a, bdwd.a(this.a), bdwd.a(this.a), bdwd.a(this.a).getAbsolutePath())) {
-        break label111;
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(parambdxy.jdField_a_of_type_Int);
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      if (!parambdxy.jdField_a_of_type_Boolean) {
+        break label142;
       }
-      QLog.i("studyroom.AssetsPmUpdater", 1, "copy asset pm success, cost=" + (System.currentTimeMillis() - l));
+      this.c.setVisibility(0);
     }
-    while (bdwd.a(this.a).exists())
+    for (;;)
     {
-      return bdwd.a(this.a);
-      label111:
-      QLog.i("studyroom.AssetsPmUpdater", 1, "copy asset pm fail");
+      this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
+      return;
+      if (parambdxy.jdField_a_of_type_Int == 0) {
+        break;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(parambdxy.jdField_a_of_type_Int);
+      break;
+      label142:
+      this.c.setVisibility(8);
     }
-    return null;
   }
 }
 

@@ -1,17 +1,99 @@
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.av.ui.ConferenceFlyTicketActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class mbw
-  implements Comparator<lob>
+public class mbw
+  extends amrc
 {
-  mbw(mbu parammbu) {}
+  public mbw(ConferenceFlyTicketActivity paramConferenceFlyTicketActivity) {}
   
-  public int a(lob paramlob1, lob paramlob2)
+  protected void onGetFlyTicket(boolean paramBoolean, int paramInt, long paramLong1, String paramString1, String paramString2, long paramLong2)
   {
-    if (paramlob1.a) {}
-    while (paramlob2.a) {
-      return -1;
+    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onGetFlyTicket, isSuccess[" + paramBoolean + "], errorCode[" + paramInt + "], validTime[" + paramLong1 + "], sigUrl[" + paramString1 + "], shortUrl[" + paramString2 + "], discussionUin[" + paramLong2 + "], mDiscID[" + this.a.h + "]");
+    if (paramBoolean)
+    {
+      if (!TextUtils.isEmpty(this.a.h))
+      {
+        this.a.jdField_a_of_type_Mbx = new mbx(this.a);
+        paramString1 = new ArrayList();
+        muv localmuv = new muv();
+        localmuv.jdField_a_of_type_JavaLangString = ("https://pubacc.mobile.qq.com/mqqweb-rtx2qq/mqqweb/createConfCallback?feedkey=" + this.a.b);
+        this.a.d = paramString2.substring("https://url.cn/".length(), paramString2.length() - "#flyticket".length());
+        QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onGetFlyTicket, mTicket[" + this.a.d + "]");
+        localmuv.jdField_a_of_type_JavaLangString = (localmuv.jdField_a_of_type_JavaLangString + "&ret=0&ticket=" + this.a.d);
+        paramString1.add(localmuv);
+        this.a.jdField_a_of_type_Mbx.execute(new ArrayList[] { paramString1 });
+      }
+      return;
     }
-    return 0;
+    this.a.jdField_a_of_type_Amqx.c(paramLong2);
+    this.a.a(1, paramInt);
+  }
+  
+  protected void onJoinDiscussionByFlyTicket(boolean paramBoolean, long paramLong, int paramInt)
+  {
+    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onJoinDiscussionByFlyTicket, isSuccess[" + paramBoolean + "], discussUin[" + paramLong + "], errorCode[" + paramInt + "], mDiscID[" + this.a.h + "]");
+    if (paramBoolean)
+    {
+      this.a.h = String.valueOf(paramLong);
+      if (!TextUtils.isEmpty(this.a.h)) {
+        ((amqx)this.a.app.getBusinessHandler(6)).a(paramLong);
+      }
+      return;
+    }
+    this.a.a(1, paramInt);
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "DiscussObserver.onUpdate, type[" + paramInt + "], isSuccess[" + paramBoolean + "], mDiscID[" + this.a.h + "]");
+    if (paramInt == 1001)
+    {
+      AudioHelper.b("获取讨论组资料_rsp");
+      if ((paramObject instanceof ArrayList))
+      {
+        paramObject = (ArrayList)paramObject;
+        paramObject = new Object[] { String.valueOf(paramObject.get(0)), paramObject.get(1) };
+        str = (String)paramObject[0];
+        ((Boolean)paramObject[1]).booleanValue();
+        if ((this.a.h.equals(str)) && (paramBoolean))
+        {
+          this.a.c();
+          this.a.a(this.a.h, this.a.c);
+        }
+        this.a.finish();
+      }
+    }
+    while (1014 != paramInt) {
+      for (;;)
+      {
+        String str;
+        return;
+        paramObject = (Object[])paramObject;
+      }
+    }
+    AudioHelper.b("通过签名加入讨论组_rsp");
+    paramObject = (Long[])paramObject;
+    long l = paramObject[1].longValue();
+    paramInt = paramObject[0].intValue();
+    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "NOTIFY_TYPE_JOIN_DISCUSSION_BY_FLYY_TICKET, discussUin[" + l + "], errCode[" + paramInt + "], mDiscID[" + this.a.h + "]");
+    if (paramInt == 0)
+    {
+      if (TextUtils.equals(String.valueOf(l), this.a.h))
+      {
+        this.a.c();
+        AudioHelper.b(amtj.a(2131701528));
+        ((amqx)this.a.app.getBusinessHandler(6)).a(l);
+        return;
+      }
+      this.a.finish();
+      return;
+    }
+    this.a.finish();
+    this.a.a(1, paramInt);
   }
 }
 

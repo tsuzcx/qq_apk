@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
-
-class aftu
-  implements DialogInterface.OnClickListener
+public abstract interface aftu
 {
-  aftu(afts paramafts) {}
+  public abstract void a(String paramString);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.finish();
-  }
+  public abstract void l();
 }
 
 

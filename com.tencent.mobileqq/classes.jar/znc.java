@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
-public class znc
-  implements View.OnLongClickListener
+class znc
+  extends RecyclerView.OnScrollListener
 {
-  public znc(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
+  znc(znb paramznb) {}
   
-  public boolean onLongClick(View paramView)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if ((znb.a(this.a)) && (!paramRecyclerView.isComputingLayout()) && (paramInt == 0))
+    {
+      znb.a(this.a, false);
+      this.a.notifyDataSetChanged();
     }
-    return true;
   }
 }
 

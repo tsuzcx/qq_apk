@@ -1,40 +1,97 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x962.oidb_0x962.FinishInfo;
-import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-class bhan
-  extends bgst
+public class bhan
+  implements BusinessObserver
 {
-  bhan(bhaa parambhaa, int paramInt, String paramString, MessageForDeliverGiftTips paramMessageForDeliverGiftTips, boolean paramBoolean) {}
+  public bhan(WerewolvesHostInterface paramWerewolvesHostInterface, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean) {}
   
-  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInteractGiftAnimationController", 2, "reportInteract: errorCode = " + paramInt + ", times = " + this.jdField_a_of_type_Int + ", giftID = " + this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState = paramRspBody.uint32_play_state.get();
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.alreadyPlayMicroseconds = paramRspBody.uint64_already_pay_microseconds.get();
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds = paramRspBody.uint64_play_total_microseconds.get();
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState == 2) && (paramRspBody.msg_finish_info.has()))
+    try
     {
-      paramRspBody = (oidb_0x962.FinishInfo)paramRspBody.msg_finish_info.get();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactText = paramRspBody.bytes_text.get().toStringUtf8();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.participateNum = paramRspBody.uint32_participate_num.get();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstUin = paramRspBody.uint64_first_uin.get();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstNickname = paramRspBody.bytes_first_nick_name.get().toStringUtf8();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interacEndtUrl = paramRspBody.bytes_url.get().toStringUtf8();
+      ((awhw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)).d.put(this.jdField_a_of_type_JavaLangString, Integer.valueOf(1));
+      if (!paramBoolean) {
+        break label348;
+      }
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle == null) {
+        break label348;
+      }
+      localObject = new WebSsoBody.WebSsoResponseBody();
+      ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
+      paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
+      localObject = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
+      if (paramInt != 0)
+      {
+        paramBundle = ((JSONObject)localObject).optString("msg");
+        if ((TextUtils.isEmpty(paramBundle)) || (!QLog.isColorLevel())) {
+          break label348;
+        }
+        QLog.d("Q.werewolf.WerewolvesHostInterfaceQ.nearby.follow", 2, "sendOperateFollowUser,targetUin:" + this.jdField_a_of_type_JavaLangString + ", op:" + this.b + ", errMsg:" + paramBundle);
+        QQToast.a(BaseApplicationImpl.getContext(), 1, paramBundle, 0).a();
+        return;
+      }
+      paramBundle = ((JSONObject)localObject).getJSONObject("result");
+      if (((JSONObject)localObject).optInt("retcode") != 0) {
+        break label348;
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.manager.a().a(5, new Object[] { Boolean.valueOf(true), Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+      }
+      localObject = BaseApplicationImpl.getContext();
+      localBaseApplication = BaseApplicationImpl.getContext();
+      if (!this.b.equals("1")) {
+        break label477;
+      }
+      paramInt = 2131694031;
     }
-    if ((this.jdField_a_of_type_Bhaa.a != null) && (this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_Bhaa.a.a.a().createEntityManager().update(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
+    catch (Exception paramBundle)
+    {
+      Object localObject;
+      BaseApplication localBaseApplication;
+      if (!QLog.isColorLevel()) {
+        break label348;
+      }
+      QLog.d("Q.werewolf.WerewolvesHostInterface", 2, "sendOperateFollowUser, Exception");
+      label348:
+      paramBundle = BaseApplicationImpl.getContext();
+      if (!this.b.equals("1")) {
+        break label483;
+      }
+      label477:
+      label483:
+      for (paramInt = 2131694030;; paramInt = 2131694038)
+      {
+        paramBundle = paramBundle.getString(paramInt);
+        QQToast.a(BaseApplicationImpl.getContext(), 1, paramBundle, 0).a();
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.werewolf.WerewolvesHostInterfaceQ.nearby.follow", 2, "sendOperateFollowUser,targetUin:" + this.jdField_a_of_type_JavaLangString + ", op:" + this.b + ", re:" + paramBundle);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.manager.a().a(5, new Object[] { Boolean.valueOf(false), Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+        return;
+        paramInt = 2131694039;
+        break;
+      }
+    }
+    QQToast.a((Context)localObject, 2, localBaseApplication.getString(paramInt), 0).a();
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.werewolf.WerewolvesHostInterfaceQ.nearby.follow", 2, "sendOperateFollowUser,targetUin:" + this.jdField_a_of_type_JavaLangString + ", op:" + this.b + ", result:" + paramBundle.toString());
+      return;
     }
   }
 }

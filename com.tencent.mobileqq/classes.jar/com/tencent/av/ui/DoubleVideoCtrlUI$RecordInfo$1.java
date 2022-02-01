@@ -3,42 +3,42 @@ package com.tencent.av.ui;
 import android.os.Handler;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.funchat.record.QavRecordButtonView;
-import mdj;
+import mcs;
 
 public class DoubleVideoCtrlUI$RecordInfo$1
   implements Runnable
 {
-  public DoubleVideoCtrlUI$RecordInfo$1(mdj parammdj) {}
+  public DoubleVideoCtrlUI$RecordInfo$1(mcs parammcs) {}
   
   public void run()
   {
-    int i = 2130842175;
-    if ((mdj.a(this.this$0) == null) || (mdj.a(this.this$0) == null) || (mdj.a(this.this$0).a == null)) {}
-    while (mdj.a(this.this$0) != 1) {
+    int i = 2130842217;
+    if ((mcs.a(this.this$0) == null) || (mcs.a(this.this$0) == null) || (mcs.a(this.this$0).a == null)) {}
+    while (mcs.a(this.this$0) != 1) {
       return;
     }
-    mdj.b(this.this$0);
-    if (mdj.c(this.this$0) < 3)
+    mcs.b(this.this$0);
+    if (mcs.c(this.this$0) < 3)
     {
       localObject = this.this$0;
-      if (mdj.c(this.this$0) == 1) {
-        i = 2130842176;
+      if (mcs.c(this.this$0) == 1) {
+        i = 2130842218;
       }
-      mdj.a((mdj)localObject, i);
-      mdj.a(this.this$0).a.i(-1025L, 65535);
-      mdj.a(this.this$0).a().postDelayed(this.this$0.a, 1000L);
+      mcs.a((mcs)localObject, i);
+      mcs.a(this.this$0).a.i(-1025L, 65535);
+      mcs.a(this.this$0).a().postDelayed(this.this$0.a, 1000L);
       return;
     }
-    mdj.b(this.this$0, 2);
-    mdj.a(this.this$0, 2130842175);
-    mdj.a(this.this$0).a.i(-1026L, 65535);
-    Object localObject = (QavRecordButtonView)mdj.a(this.this$0).findViewById(2131376372);
+    mcs.b(this.this$0, 2);
+    mcs.a(this.this$0, 2130842217);
+    mcs.a(this.this$0).a.i(-1026L, 65535);
+    Object localObject = (QavRecordButtonView)mcs.a(this.this$0).findViewById(2131376139);
     if (localObject != null) {
       ((QavRecordButtonView)localObject).callOnClick();
     }
-    mdj.a(this.this$0).a(new Object[] { Integer.valueOf(8001), "OnRecord" });
-    mdj.c(this.this$0, 0);
-    mdj.b(this.this$0, 0);
+    mcs.a(this.this$0).a(new Object[] { Integer.valueOf(8001), "OnRecord" });
+    mcs.c(this.this$0, 0);
+    mcs.b(this.this$0, 0);
   }
 }
 

@@ -1,29 +1,8 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
 
-public class aozx
-  extends aoxg
+public abstract interface aozx
 {
-  public aozx(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      aaej.a(this.jdField_a_of_type_AndroidContentContext, this.c, this.jdField_a_of_type_JavaUtilHashMap);
-      return true;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("SubScribeAction", 1, "doAction error: " + localException.getMessage());
-      a("SubScribeAction");
-    }
-    return false;
-  }
+  public abstract void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap);
 }
 
 

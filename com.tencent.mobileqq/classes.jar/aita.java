@@ -1,74 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Iterator;
+import java.util.List;
 
 public class aita
-  extends arac<aisz>
+  implements View.OnClickListener
 {
-  @NonNull
-  public aisz a(int paramInt)
-  {
-    return new aisz();
-  }
+  public aita(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  @Nullable
-  public aisz a(araj[] paramArrayOfaraj)
+  public void onClick(View paramView)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
-    {
-      aisz localaisz = aisz.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecConfigProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
-      }
-      return localaisz;
+    Iterator localIterator = this.a.a.iterator();
+    while (localIterator.hasNext()) {
+      ((EmoticonFromGroupEntity)localIterator.next()).status = -1;
     }
-    return null;
-  }
-  
-  public void a(aisz paramaisz)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (QQAppInterface)localObject;
-      String str = ((QQAppInterface)localObject).c();
-      aiti.a(BaseApplicationImpl.getApplication(), str, paramaisz.a());
-      aiti.a((QQAppInterface)localObject, paramaisz.a());
-    }
-  }
-  
-  public Class<aisz> clazz()
-  {
-    return aisz.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return super.isAccountRelated();
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 410;
+    this.a.a.clear();
+    EmoticonGroupStoreFragment.a(this.a).setVisibility(8);
+    EmoticonGroupStoreFragment.b(this.a).setVisibility(0);
+    EmoticonGroupStoreFragment.a(this.a).a = false;
+    EmoticonGroupStoreFragment.a(this.a).a(false);
+    EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
+    EmoticonGroupStoreFragment.e(this.a);
+    this.a.a(true);
+    this.a.resetLeftButton();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

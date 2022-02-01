@@ -1,22 +1,16 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import android.os.Bundle;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
 
 public class awir
-  implements Animation.AnimationListener
+  implements zop
 {
-  public awir(UiApiPlugin paramUiApiPlugin, View paramView, int paramInt1, int paramInt2) {}
+  public awir(NearbyJsInterface paramNearbyJsInterface, zon paramzon, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getRight(), this.b);
+    paramBundle = paramBundle.getString("nearbyVideoConfig");
+    this.jdField_a_of_type_Zon.b(new awis(this, paramBundle));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

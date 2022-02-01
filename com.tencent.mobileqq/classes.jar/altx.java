@@ -1,27 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2.23;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import android.os.Process;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
 public class altx
-  implements DialogInterface.OnClickListener
 {
-  public altx(FlowCameraActivity2.23 param23) {}
+  public static final int a;
+  public static final long a;
+  public static final String a;
+  public static final String b;
+  public static final String c;
+  public long b;
+  public long c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    paramDialogInterface = this.a.this$0.getIntent();
-    paramDialogInterface.putExtra("flow_back", 0);
-    this.a.this$0.setResult(1001, paramDialogInterface);
-    paramDialogInterface = null;
-    if (this.a.this$0.f) {
-      paramDialogInterface = this.a.this$0.a.jdField_a_of_type_Alxt;
-    }
-    this.a.this$0.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr.a(this.a.this$0.d, this.a.this$0.e, this.a.this$0.m, this.a.this$0.f, paramDialogInterface);
-    this.a.this$0.finish();
+    jdField_a_of_type_JavaLangString = DeviceInfoUtil.getDeviceOSVersion();
+    jdField_b_of_type_JavaLangString = DeviceInfoUtil.getModel();
+    jdField_c_of_type_JavaLangString = DeviceInfoUtil.getCpuType();
+    jdField_a_of_type_Int = DeviceInfoUtil.getCpuNumber();
+    jdField_a_of_type_Long = DeviceInfoUtil.getCpuFrequency();
+  }
+  
+  public altx()
+  {
+    this.jdField_b_of_type_Long = DeviceInfoUtil.getApplicationMemory(Process.myPid());
+    this.jdField_c_of_type_Long = DeviceInfoUtil.getMemoryClass();
   }
 }
 

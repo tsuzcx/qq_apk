@@ -1,19 +1,38 @@
-import android.widget.FrameLayout;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import java.util.List;
 
 class vvk
-  implements vvs
+  implements vqp<wdx, wfv>
 {
-  vvk(vvh paramvvh, vvs paramvvs) {}
+  vvk(vvj paramvvj, vwe paramvwe, boolean paramBoolean, long paramLong) {}
   
-  public void a()
+  public void a(wdx arg1, wfv paramwfv, ErrorMessage paramErrorMessage)
   {
-    if (vvh.a(this.jdField_a_of_type_Vvh) != null) {
-      vvh.a(this.jdField_a_of_type_Vvh).a(3);
+    long l = System.currentTimeMillis();
+    if (paramErrorMessage.isSuccess())
+    {
+      ??? = paramwfv.a;
+      if (???.size() > 0)
+      {
+        ??? = (QQUserUIItem)???.get(0);
+        ??? = this.jdField_a_of_type_Vvj.a(???);
+        this.jdField_a_of_type_Vwe.a = ???.qq;
+        this.jdField_a_of_type_Vwe.b = ???.uid;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          ??? = (vuq)vux.a(10);
+          ???.b("qqstory_my_uin", this.jdField_a_of_type_Vwe.a);
+          ???.b("qqstory_my_union_id", this.jdField_a_of_type_Vwe.b);
+        }
+      }
+      xvv.d("Q.qqstory.user.UserManager", "get server inf success ,%s , time :%d", new Object[] { this.jdField_a_of_type_Vwe, Long.valueOf(l - this.jdField_a_of_type_Long) });
     }
-    vvh.a(this.jdField_a_of_type_Vvh).setAlpha(0.0F);
-    vvh.a(null);
-    if (this.jdField_a_of_type_Vvs != null) {
-      this.jdField_a_of_type_Vvs.a();
+    synchronized (this.jdField_a_of_type_Vwe)
+    {
+      this.jdField_a_of_type_Vwe.notifyAll();
+      return;
+      xvv.d("Q.qqstory.user.UserManager", "get server info fail , %s, time :%d", new Object[] { paramErrorMessage, Long.valueOf(l - this.jdField_a_of_type_Long) });
     }
   }
 }

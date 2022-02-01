@@ -1,26 +1,44 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.graphics.Bitmap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.capture.data.GifDecoder;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
 
 public class bmto
-  implements URLDrawable.URLDrawableListener
+  implements GifDecoder
 {
-  public bmto(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
+  private int jdField_a_of_type_Int;
+  private bnmy jdField_a_of_type_Bnmy;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public bmto(int paramInt, String paramString)
   {
-    QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "onLoadFialed");
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public Bitmap getNextGifFrame(long paramLong)
   {
-    QZoneLiveVideoBaseDownLoadActivty.a(this.a).setImageDrawable(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("AnimationDecodeWrapper", 2, "timestamp:" + paramLong);
+    }
+    paramLong = paramLong / 1000L / 1000L;
+    if (QLog.isColorLevel()) {
+      QLog.d("AnimationDecodeWrapper", 2, "timestampMs:" + paramLong);
+    }
+    if (this.jdField_a_of_type_Bnmy != null) {
+      return this.jdField_a_of_type_Bnmy.a(paramLong);
+    }
+    return null;
+  }
+  
+  public void init()
+  {
+    this.jdField_a_of_type_Bnmy = bnlj.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void release()
+  {
+    this.jdField_a_of_type_Bnmy = null;
   }
 }
 

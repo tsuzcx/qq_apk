@@ -1,42 +1,31 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.drawable.ColorDrawable;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
-public class oye
+class oye
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private static boolean a;
+  String jdField_a_of_type_JavaLangString = oyc.a(this.jdField_a_of_type_Oyc).a.commentId;
   
-  public static View a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
-  {
-    if (BaseApplicationImpl.sApplication == null) {
-      return null;
-    }
-    View localView = View.inflate(BaseApplicationImpl.sApplication, 2131562978, null);
-    ((DragTextView)localView.findViewById(2131380394)).setDragViewType(2);
-    ((ReadInjoyTabDragAnimationView)localView.findViewById(2131378359)).setEmotionDrawable(paramInt1, paramInt2, paramInt3, paramInt4, paramInt6, paramInt7);
-    ((TextView)localView.findViewById(2131380116)).setText(paramInt5);
-    return localView;
-  }
+  oye(oyc paramoyc, View paramView) {}
   
-  public static void a(boolean paramBoolean)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    try
+    if ((oyc.a(this.jdField_a_of_type_Oyc) == null) || (oyc.a(this.jdField_a_of_type_Oyc).a == null) || (this.jdField_a_of_type_JavaLangString == null))
     {
-      a = paramBoolean;
+      oyc.a(this.jdField_a_of_type_Oyc, this.jdField_a_of_type_AndroidViewView);
       return;
     }
-    finally
+    if (!this.jdField_a_of_type_JavaLangString.equals(oyc.a(this.jdField_a_of_type_Oyc).a.commentId))
     {
-      localObject = finally;
-      throw localObject;
+      oyc.a(this.jdField_a_of_type_Oyc, this.jdField_a_of_type_AndroidViewView);
+      return;
     }
-  }
-  
-  public static boolean a()
-  {
-    return a;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    oyc.a(this.jdField_a_of_type_Oyc).setAlpha(i);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(oyc.a(this.jdField_a_of_type_Oyc));
   }
 }
 

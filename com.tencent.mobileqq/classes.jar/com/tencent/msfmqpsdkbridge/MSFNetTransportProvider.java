@@ -1,11 +1,11 @@
 package com.tencent.msfmqpsdkbridge;
 
 import android.text.TextUtils;
-import anud;
-import anui;
-import bjix;
-import bjiy;
-import bjiz;
+import bhol;
+import bhom;
+import bhon;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -15,11 +15,11 @@ import java.util.Map;
 import java.util.Set;
 
 public class MSFNetTransportProvider
-  extends anud
-  implements bjix
+  extends BusinessHandler
+  implements bhol
 {
-  private Map<String, bjiy> mCodecMap;
-  private Map<String, bjiz> mEventListenerMap;
+  private Map<String, bhom> mCodecMap;
+  private Map<String, bhon> mEventListenerMap;
   private Map<String, String> mServiceNameMap = new LinkedHashMap();
   
   public MSFNetTransportProvider(QQAppInterface paramQQAppInterface)
@@ -30,7 +30,7 @@ public class MSFNetTransportProvider
     this.mServiceNameMap.put("SecCheckSigSvc.UploadReq", "sig_check");
   }
   
-  public bjiy getCodec(String paramString)
+  public bhom getCodec(String paramString)
   {
     if (this.mCodecMap == null) {
       this.mCodecMap = new LinkedHashMap();
@@ -38,7 +38,7 @@ public class MSFNetTransportProvider
     Object localObject2;
     if (this.mCodecMap.containsKey(paramString))
     {
-      localObject2 = (bjiy)this.mCodecMap.get(paramString);
+      localObject2 = (bhom)this.mCodecMap.get(paramString);
       return localObject2;
     }
     Object localObject1;
@@ -73,7 +73,7 @@ public class MSFNetTransportProvider
     }
   }
   
-  public Class<? extends anui> observerClass()
+  public Class<? extends BusinessObserver> observerClass()
   {
     return null;
   }
@@ -97,7 +97,7 @@ public class MSFNetTransportProvider
         } while (!this.mServiceNameMap.containsKey(paramObject));
         paramObject = (String)this.mServiceNameMap.get(paramObject);
       } while (!this.mEventListenerMap.containsKey(paramObject));
-      paramObject = (bjiz)this.mEventListenerMap.get(paramObject);
+      paramObject = (bhon)this.mEventListenerMap.get(paramObject);
     } while (paramObject == null);
     paramObject.a(paramToServiceMsg, paramFromServiceMsg);
   }
@@ -110,16 +110,16 @@ public class MSFNetTransportProvider
     return 0;
   }
   
-  public void setNetTransportEventListener(String paramString, bjiz parambjiz)
+  public void setNetTransportEventListener(String paramString, bhon parambhon)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    while (parambjiz == null) {
+    while (parambhon == null) {
       return;
     }
     if (this.mEventListenerMap == null) {
       this.mEventListenerMap = new LinkedHashMap();
     }
-    this.mEventListenerMap.put(paramString, parambjiz);
+    this.mEventListenerMap.put(paramString, parambhon);
   }
 }
 

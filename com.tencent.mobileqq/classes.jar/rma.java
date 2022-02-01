@@ -1,51 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager.5;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class rma
-  implements bgpp
+  extends rnf
+  implements rlo
 {
-  public rma(ReadInJoyWebDataManager.5 param5) {}
+  private QQAppInterface a;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public rma(QQAppInterface paramQQAppInterface)
   {
-    if (paramJSONObject != null)
-    {
-      this.a.this$0.a(this.a.b, Integer.toString(rlz.b));
-      try
-      {
-        if ((this.a.jdField_a_of_type_Rme != null) && ((this.a.jdField_a_of_type_Rme instanceof rme))) {
-          this.a.jdField_a_of_type_Rme.a(paramJSONObject);
-        }
-        paramBundle = paramJSONObject.toString();
-        rlz.a(this.a.this$0, this.a.b, paramBundle);
-        if (this.a.jdField_a_of_type_OrgJsonJSONObject != null)
-        {
-          this.a.jdField_a_of_type_OrgJsonJSONObject.put("data", paramBundle);
-          this.a.this$0.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject.toString(), "", this.a.jdField_a_of_type_OrgJsonJSONObject);
-        }
-      }
-      catch (JSONException paramBundle)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:storeParams putData JSONException :" + paramBundle);
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result :" + paramJSONObject);
-      }
-    }
-    do
-    {
-      return;
-      this.a.this$0.a(this.a.b, Integer.toString(rlz.a));
-    } while (!QLog.isColorLevel());
-    QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result null");
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a(UgcVideo paramUgcVideo, rln paramrln)
+  {
+    ((rno)this.a.getManager(356)).a(paramUgcVideo, false);
   }
 }
 

@@ -1,144 +1,249 @@
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.viewplugin.ViewPluginManager.1;
-import com.tencent.biz.viewplugin.ViewPluginManager.3;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.device.datadef.ProductInfo;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-import java.util.HashMap;
+import cooperation.smartdevice.SmartDevicePluginProxyActivity;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.manager.TicketManager;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
+import tencent.im.cs.smart_device_proxy.smart_device_proxy.CgiReq;
+import tencent.im.cs.smart_device_proxy.smart_device_proxy.CommonHead;
+import tencent.im.cs.smart_device_proxy.smart_device_proxy.ReqBody;
 
 public class abdn
 {
-  public abdi a;
-  SharedPreferences a;
-  public BaseActivity a;
-  public ClassLoader a;
-  public String a;
-  public HashMap<String, Class> a;
-  public String b;
-  String c = null;
-  public String d;
-  
-  public abdn(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3)
+  public static String a(DeviceInfo paramDeviceInfo)
   {
-    this.b = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.c = (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getFilesDir() + paramString3);
-    this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getPreferences(0);
-  }
-  
-  public static boolean a(View paramView, String paramString)
-  {
-    if ((paramView == null) || (TextUtils.isEmpty(paramString))) {
-      return false;
+    if (paramDeviceInfo == null) {
+      return null;
     }
-    try
-    {
-      Method localMethod = paramView.getClass().getMethod("setData", new Class[] { String.class });
-      localMethod.setAccessible(true);
-      localMethod.invoke(paramView, new Object[] { paramString });
-      return true;
+    if (!TextUtils.isEmpty(paramDeviceInfo.remark)) {
+      return paramDeviceInfo.remark;
     }
-    catch (Exception paramView)
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      ThreadManager.post(new ViewPluginManager.1(paramView), 2, null, true);
-    }
-    return false;
-  }
-  
-  public View a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaLangClassLoader != null) {}
-    for (;;)
-    {
-      try
-      {
-        Class localClass = this.jdField_a_of_type_JavaLangClassLoader.loadClass(paramString);
-        if (localClass == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ViewPluginManager", 2, "plugin:" + this.b + " not find view:" + paramString);
-          }
-          return null;
-        }
+      localObject = ((aara)((QQAppInterface)localObject).getBusinessHandler(51)).a(paramDeviceInfo.productId);
+      if ((localObject != null) && (!TextUtils.isEmpty(((ProductInfo)localObject).deviceName))) {
+        return ((ProductInfo)localObject).deviceName;
       }
-      catch (ClassNotFoundException localClassNotFoundException)
+    }
+    if (!TextUtils.isEmpty(paramDeviceInfo.name)) {
+      return paramDeviceInfo.name;
+    }
+    if (paramDeviceInfo.din > 0L) {
+      return String.valueOf(paramDeviceInfo.din);
+    }
+    return null;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, DeviceInfo paramDeviceInfo, String paramString, Bundle paramBundle)
+  {
+    if (paramString == null) {}
+    do
+    {
+      do
       {
-        localObject = null;
-        continue;
-        if (this.jdField_a_of_type_Abdi == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ViewPluginManager", 2, "plugin:" + this.b + " plugin context is null");
-          }
-          return null;
-        }
+        return;
+        localObject = bjnd.a(paramString);
+      } while (localObject == null);
+      str1 = (String)((Map)localObject).get("from");
+      paramString = str1;
+      if (TextUtils.isEmpty(str1)) {
+        paramString = "1";
+      }
+      for (;;)
+      {
         try
         {
-          paramString = (View)localObject.getConstructor(new Class[] { Context.class }).newInstance(new Object[] { this.jdField_a_of_type_Abdi });
-          return paramString;
+          if (!"2".equals(paramString)) {
+            break;
+          }
+          paramDeviceInfo = new Intent();
+          paramDeviceInfo.putExtra("nickname", paramQQAppInterface.getCurrentNickname());
+          paramDeviceInfo.putExtra("bitmap", paramQQAppInterface.getFaceBitmap(paramQQAppInterface.getCurrentAccountUin(), (byte)2, false));
+          paramString = BaseApplicationImpl.getApplication().getSharedPreferences("smartdevice_entry", 4).getString("square_url_" + paramQQAppInterface.getCurrentAccountUin(), "");
+          if (!TextUtils.isEmpty(paramString))
+          {
+            paramDeviceInfo.putExtra("url", paramString);
+            bkxa.a().a((Activity)paramContext, paramQQAppInterface, paramQQAppInterface.getAccount(), paramDeviceInfo, "com.tencent.device.activities.DeviceSquareActivity", 0, null, SmartDevicePluginProxyActivity.class);
+            abdm.a(null, "Usr_NewDevice_Aio", 2, 0, 0);
+            return;
+          }
         }
-        catch (Exception paramString)
+        catch (Exception paramQQAppInterface)
         {
-          return null;
+          bhzm.c("SmartDeviceUtil", "jumpLightApp, Exception >>>", paramQQAppInterface);
+          return;
         }
+        paramDeviceInfo.putExtra("url", "https://qzs.qq.com/open/mobile/iot_public_device_2/html/devDiscover.html");
       }
-      Object localObject = null;
+      if (!"3".equals(paramString)) {
+        break;
+      }
+      paramString = (String)((Map)localObject).get("din");
+      paramDeviceInfo = new Intent(paramContext, SplashActivity.class);
+      paramDeviceInfo.putExtra("fragment_id", 1);
+      paramDeviceInfo.putExtra("tab_index", MainFragment.d);
+      paramDeviceInfo.putExtra("from", "smartdevice");
+      paramDeviceInfo.setFlags(67108864);
+      ((aara)paramQQAppInterface.getBusinessHandler(51)).a(paramString);
+      if ((paramContext instanceof SplashActivity))
+      {
+        paramQQAppInterface = (SplashActivity)paramContext;
+        paramDeviceInfo.putExtra("switch_anim", true);
+        paramQQAppInterface.b(paramDeviceInfo);
+        return;
+      }
+      paramContext.startActivity(paramDeviceInfo);
+    } while (!(paramContext instanceof Activity));
+    ((Activity)paramContext).finish();
+    return;
+    paramString = (String)((Map)localObject).get("hash");
+    String str2 = (String)((Map)localObject).get("param");
+    String str3 = (String)((Map)localObject).get("script");
+    String str1 = (String)((Map)localObject).get("din");
+    Object localObject = new JSONObject();
+    if (!TextUtils.isEmpty(paramString)) {
+      ((JSONObject)localObject).put("hash", URLDecoder.decode(paramString, "UTF-8"));
     }
-  }
-  
-  public String a(String paramString)
-  {
-    return "sp_key_plugin_view_version_" + paramString;
-  }
-  
-  public void a()
-  {
-    ThreadManager.post(new ViewPluginManager.3(this), 8, null, true);
-  }
-  
-  public void a(String paramString)
-  {
-    paramString = a(paramString);
-    if (paramString == null) {
-      return;
+    if (!TextUtils.isEmpty(str2)) {
+      ((JSONObject)localObject).put("param", URLDecoder.decode(str2, "UTF-8"));
     }
+    if (!TextUtils.isEmpty(str3)) {
+      ((JSONObject)localObject).put("script", URLDecoder.decode(str3, "UTF-8"));
+    }
+    paramString = paramBundle;
+    if (paramBundle == null) {
+      paramString = new Bundle();
+    }
+    paramBundle = ((JSONObject)localObject).toString();
+    if (!TextUtils.isEmpty(paramBundle)) {
+      paramString.putString("lightapp_init", paramBundle);
+    }
+    paramBundle = (aara)paramQQAppInterface.getBusinessHandler(51);
+    paramQQAppInterface = paramDeviceInfo;
+    if (paramDeviceInfo == null) {
+      paramQQAppInterface = paramBundle.a(Long.parseLong(str1));
+    }
+    paramBundle.a((Activity)paramContext, paramQQAppInterface, false, paramString);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject, String paramString)
+  {
+    Object localObject = new Bundle();
     try
     {
-      Method localMethod = paramString.getClass().getMethod("destory", new Class[0]);
-      localMethod.setAccessible(true);
-      localMethod.invoke(paramString, new Object[0]);
+      String str1 = paramJSONObject.getString("summary");
+      String str2 = paramJSONObject.getString("icon");
+      String str3 = paramJSONObject.getString("title");
+      String str4 = paramJSONObject.getString("cover");
+      String str5 = paramJSONObject.getString("url");
+      paramJSONObject = paramJSONObject.getString("name");
+      ((Bundle)localObject).putString("detail_url", str5);
+      ((Bundle)localObject).putString("image_url_remote", str4);
+      ((Bundle)localObject).putString("title", str3);
+      ((Bundle)localObject).putString("desc", str1);
+      ((Bundle)localObject).putString("struct_share_key_content_action", "web");
+      ((Bundle)localObject).putString("struct_share_key_source_icon", str2);
+      ((Bundle)localObject).putString("app_name", paramJSONObject);
+      ((Bundle)localObject).putString("brief_key", str3);
+      paramJSONObject = (StructMsgForGeneralShare)bchh.a((Bundle)localObject);
+      localObject = (MessageForStructing)bbli.a(-2011);
+      ((MessageForStructing)localObject).msgtype = -2011;
+      ((MessageForStructing)localObject).istroop = 9501;
+      ((MessageForStructing)localObject).issend = 0;
+      ((MessageForStructing)localObject).isread = false;
+      ((MessageForStructing)localObject).selfuin = paramQQAppInterface.getCurrentAccountUin();
+      ((MessageForStructing)localObject).senderuin = paramString;
+      ((MessageForStructing)localObject).frienduin = paramString;
+      ((MessageForStructing)localObject).mIsParsed = true;
+      ((MessageForStructing)localObject).structingMsg = paramJSONObject;
+      ((MessageForStructing)localObject).msgData = paramJSONObject.getBytes();
+      paramQQAppInterface.getMessageFacade().addMessage((MessageRecord)localObject, paramQQAppInterface.getCurrentAccountUin());
       return;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramQQAppInterface)
+    {
+      paramQQAppInterface.printStackTrace();
+    }
   }
   
-  public void a(nmh paramnmh, boolean paramBoolean)
+  public static void a(String paramString1, Bundle paramBundle, int paramInt, String paramString2, AppRuntime paramAppRuntime, BusinessObserver paramBusinessObserver)
   {
-    String str = "https://" + this.b + "?_bid=" + this.jdField_a_of_type_JavaLangString;
-    if (QLog.isColorLevel()) {
-      QLog.d("ViewPluginManager", 2, "loadPlugin:" + this.b + "mBid:" + this.jdField_a_of_type_JavaLangString);
-    }
-    nmj.a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app != null) && (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getLongAccountUin() % 10L == 6L)) {}
-    for (boolean bool = true;; bool = false)
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", paramAppRuntime.getAccount(), "smart_device_proxy.cgi");
+    paramBundle.putString("skey", ((TicketManager)paramAppRuntime.getManager(2)).getSkey(paramAppRuntime.getAccount()));
+    paramBundle.putString("version", "8.4.8");
+    Object localObject = new StringBuilder();
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      nmj.a = bool;
-      a();
-      Context localContext = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext();
-      long l = System.currentTimeMillis();
-      if ((!nmj.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext(), str, new abdo(this, l, localContext, paramBoolean, paramnmh))) && (QLog.isColorLevel())) {
-        QLog.i("ViewPluginManager", 2, "plugin:" + this.b + " transToLocalUrl: return false");
+      String str = (String)localIterator.next();
+      if (paramBundle.get(str) == null) {
+        return;
       }
-      return;
+      if (((StringBuilder)localObject).length() != 0) {
+        ((StringBuilder)localObject).append("&");
+      }
+      ((StringBuilder)localObject).append(str).append("=").append(URLEncoder.encode(String.valueOf(paramBundle.get(str))));
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("SmartDeviceUtil", 2, "url2=" + paramString1 + "?" + ((StringBuilder)localObject).toString());
+    }
+    paramBundle = new smart_device_proxy.CgiReq();
+    paramBundle.str_cgiName.set(paramString1);
+    paramBundle.bytes_param.set(ByteStringMicro.copyFromUtf8(((StringBuilder)localObject).toString()));
+    if (!TextUtils.isEmpty(paramString2)) {
+      paramBundle.bytes_cookie.set(ByteStringMicro.copyFromUtf8(paramString2));
+    }
+    paramString1 = new smart_device_proxy.CommonHead();
+    paramString1.uint32_uin.set(Long.parseLong(paramAppRuntime.getAccount()));
+    paramString2 = new smart_device_proxy.ReqBody();
+    localObject = paramString2.int32_cmd;
+    int i = paramInt;
+    if (paramInt == 0) {
+      i = 1;
+    }
+    ((PBInt32Field)localObject).set(i);
+    paramString2.msg_header.set(paramString1);
+    paramString2.bytes_body.set(ByteStringMicro.copyFrom(paramBundle.toByteArray()));
+    localToServiceMsg.putWupBuffer(paramString2.toByteArray());
+    localToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
+    paramString1 = new NewIntent(paramAppRuntime.getApplication(), aahd.class);
+    paramString1.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
+    paramString1.setObserver(paramBusinessObserver);
+    paramAppRuntime.startServlet(paramString1);
+  }
+  
+  public static void a(String paramString, Bundle paramBundle, AppRuntime paramAppRuntime, BusinessObserver paramBusinessObserver)
+  {
+    a(paramString, paramBundle, 0, null, paramAppRuntime, paramBusinessObserver);
   }
 }
 

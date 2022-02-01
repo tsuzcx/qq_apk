@@ -12,7 +12,7 @@ import com.tencent.smtt.utils.TbsLog;
 import com.tencent.smtt.utils.b;
 import com.tencent.smtt.utils.f;
 import com.tencent.smtt.utils.j;
-import com.tencent.smtt.utils.l;
+import com.tencent.smtt.utils.m;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -94,9 +94,9 @@ public class TbsLogReport
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(a(paramInt));
-    localStringBuilder.append(a(b.d(this.c)));
+    localStringBuilder.append(a(b.f(this.c)));
     localStringBuilder.append(a(j.a(this.c)));
-    localStringBuilder.append(a(n.a().i(this.c)));
+    localStringBuilder.append(a(p.a().i(this.c)));
     Object localObject1 = Build.MODEL;
     try
     {
@@ -117,7 +117,7 @@ public class TbsLogReport
           continue;
           localException = localException;
         }
-        localStringBuilder.append(a(b.b(this.c)));
+        localStringBuilder.append(a(b.d(this.c)));
       }
       catch (Exception paramTbsLogInfo)
       {
@@ -160,8 +160,8 @@ public class TbsLogReport
       localStringBuilder.append(a(TbsLogReport.TbsLogInfo.o(paramTbsLogInfo)));
       localStringBuilder.append(a(TbsLogReport.TbsLogInfo.p(paramTbsLogInfo)));
       localStringBuilder.append(a(TbsDownloadConfig.getInstance(this.c).mPreferences.getInt("tbs_download_version", 0)));
-      localStringBuilder.append(a(b.g(this.c)));
-      localStringBuilder.append(a("4.3.0.36_43936"));
+      localStringBuilder.append(a(b.i(this.c)));
+      localStringBuilder.append(a("4.3.0.57_43957"));
       localStringBuilder.append(false);
       localSharedPreferences = d();
       localObject1 = a();
@@ -210,7 +210,7 @@ public class TbsLogReport
     TbsLog.i("TbsDownload", "[TbsApkDownloadStat.reportDownloadStat] jsonArray:" + localObject);
     try
     {
-      localObject = f.a(l.a(this.c).c(), ((JSONArray)localObject).toString().getBytes("utf-8"), new TbsLogReport.3(this), true);
+      localObject = f.a(m.a(this.c).c(), ((JSONArray)localObject).toString().getBytes("utf-8"), new TbsLogReport.3(this), true);
       TbsLog.i("TbsDownload", "[TbsApkDownloadStat.reportDownloadStat] response:" + (String)localObject + " testcase: " + -1);
       return;
     }
@@ -321,11 +321,11 @@ public class TbsLogReport
     //   80: astore 9
     //   82: aload_0
     //   83: getfield 29	com/tencent/smtt/sdk/TbsLogReport:c	Landroid/content/Context;
-    //   86: invokestatic 130	com/tencent/smtt/utils/b:d	(Landroid/content/Context;)Ljava/lang/String;
+    //   86: invokestatic 131	com/tencent/smtt/utils/b:f	(Landroid/content/Context;)Ljava/lang/String;
     //   89: astore_3
     //   90: aload_0
     //   91: getfield 29	com/tencent/smtt/sdk/TbsLogReport:c	Landroid/content/Context;
-    //   94: invokestatic 251	com/tencent/smtt/utils/b:g	(Landroid/content/Context;)Ljava/lang/String;
+    //   94: invokestatic 251	com/tencent/smtt/utils/b:i	(Landroid/content/Context;)Ljava/lang/String;
     //   97: astore_2
     //   98: aload_3
     //   99: invokevirtual 468	java/lang/String:getBytes	()[B
@@ -362,8 +362,8 @@ public class TbsLogReport
     //   154: invokespecial 53	java/lang/StringBuilder:<init>	()V
     //   157: aload_0
     //   158: getfield 29	com/tencent/smtt/sdk/TbsLogReport:c	Landroid/content/Context;
-    //   161: invokestatic 367	com/tencent/smtt/utils/l:a	(Landroid/content/Context;)Lcom/tencent/smtt/utils/l;
-    //   164: invokevirtual 476	com/tencent/smtt/utils/l:e	()Ljava/lang/String;
+    //   161: invokestatic 367	com/tencent/smtt/utils/m:a	(Landroid/content/Context;)Lcom/tencent/smtt/utils/m;
+    //   164: invokevirtual 476	com/tencent/smtt/utils/m:e	()Ljava/lang/String;
     //   167: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   170: aload_2
     //   171: invokevirtual 62	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -384,14 +384,14 @@ public class TbsLogReport
     //   211: pop
     //   212: aload 11
     //   214: ldc_w 490
-    //   217: ldc 155
+    //   217: ldc 156
     //   219: invokeinterface 488 3 0
     //   224: pop
     //   225: aload 11
     //   227: ldc_w 492
     //   230: aload_0
     //   231: getfield 29	com/tencent/smtt/sdk/TbsLogReport:c	Landroid/content/Context;
-    //   234: invokestatic 136	com/tencent/smtt/utils/j:a	(Landroid/content/Context;)Ljava/lang/String;
+    //   234: invokestatic 137	com/tencent/smtt/utils/j:a	(Landroid/content/Context;)Ljava/lang/String;
     //   237: invokeinterface 488 3 0
     //   242: pop
     //   243: new 494	java/io/File

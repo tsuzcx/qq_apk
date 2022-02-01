@@ -1,59 +1,64 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.contentbox.MsgPhotoView;
-import cooperation.qzone.contentbox.model.MQMsg;
-import cooperation.qzone.contentbox.model.MQUserPersonalData;
-import cooperation.qzone.util.QZLog;
+import dov.com.qq.im.capture.view.AdvancedProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class bmxy
-  implements View.OnClickListener
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public bmxy(MsgPhotoView paramMsgPhotoView) {}
+  public bmxy(AdvancedProviderView paramAdvancedProviderView, TextView paramTextView, View paramView1, View paramView2, QIMProviderContainerView paramQIMProviderContainerView, View paramView3) {}
   
-  public void onClick(View paramView)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    Object localObject = this.a.jdField_a_of_type_CooperationQzoneContentboxModelMQMsg.mqUserPersonalData;
-    if (localObject == null)
+    if (this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.a != null)
     {
-      QZLog.i("MsgPhotoView", 1, " vip icon click data = null");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.a.b(paramInt);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
     }
-    String str = "";
-    switch (paramView.getId())
-    {
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ViewGroup))) {
+      ((ViewGroup)this.jdField_a_of_type_AndroidViewView).setMotionEventSplittingEnabled(false);
     }
-    for (;;)
+    int j = 300;
+    int i = j;
+    if (AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView) != null)
     {
-      if (QZLog.isColorLevel()) {
-        QZLog.i("MsgPhotoView", 2, "MsgVip vip icon click url = " + str);
-      }
-      localObject = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", str);
-      ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_jc_vip");
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-      break;
-      str = ((MQUserPersonalData)localObject).mBVJumpUrl;
-      bntm.a(12, 2);
-      continue;
-      str = ((MQUserPersonalData)localObject).mYJumpUrl;
-      localObject = paramView.getTag();
-      if ((localObject != null) && ((localObject instanceof Boolean)))
+      i = j;
+      if (!AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).hasEnded())
       {
-        if (((Boolean)localObject).booleanValue()) {}
-        for (int i = 11;; i = 10)
-        {
-          bntm.a(i, 2);
-          break;
-        }
-        str = ((MQUserPersonalData)localObject).mLYJumpUrl;
-        bntm.a(13, 2);
+        AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).cancel();
+        i = 0;
       }
     }
+    this.b.setAlpha(1.0F);
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView, this.c, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView), 0.0F));
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).setDuration((AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView) * AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView)));
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).setStartOffset(i);
+    this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.startAnimation(AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView));
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof ViewGroup))) {
+      ((ViewGroup)this.jdField_a_of_type_AndroidViewView).setMotionEventSplittingEnabled(true);
+    }
+    this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.b(paramSeekBar.getProgress());
+    if ((AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView) != null) && (!AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).hasEnded())) {
+      AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).cancel();
+    }
+    this.b.setAlpha(1.0F);
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView, this.c, AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView), 1.0F));
+    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView).setDuration(((1.0F - AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView)) * AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView)));
+    this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView.startAnimation(AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView));
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

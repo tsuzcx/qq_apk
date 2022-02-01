@@ -1,18 +1,18 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class shf
-  implements ovw
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IVideoView;", "", "doCacheSurfaceTexture", "", "doRecoverSurfaceTexture", "getOriginView", "Landroid/view/View;", "setFixedSize", "videoWidth", "", "videoHeight", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface shf
 {
-  public shf(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, ovw paramovw) {}
+  @Nullable
+  public abstract View a();
   
-  public void a(int paramInt)
-  {
-    ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew).setVisibility(8);
-    if (this.jdField_a_of_type_Ovw != null) {
-      this.jdField_a_of_type_Ovw.a(paramInt);
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b();
 }
 
 

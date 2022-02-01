@@ -1,20 +1,9 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
-
-class anoa
-  implements Comparator<ApolloActionData>
+public class anoa
+  implements anny
 {
-  anoa(annx paramannx) {}
-  
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void a(amwl paramamwl, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, amwm paramamwm)
   {
-    if (paramApolloActionData2.version == paramApolloActionData1.version) {
-      return 0;
-    }
-    if (paramApolloActionData2.version > paramApolloActionData1.version) {
-      return 1;
-    }
-    return -1;
+    paramamwl.sendMsgError(paramArrayOfObject);
   }
 }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0sp" android:textColor="@color/bp" android:gravity="center" android:id="@id/myo" android:background="@drawable/dr2" android:paddingLeft="5.0dip" android:paddingRight="23.0dip" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="5.0dip" android:text="深圳大学" android:drawableLeft="@drawable/gk8" android:drawablePadding="5.0dip" />
-    <ImageView android:gravity="center" android:layout_gravity="center|right" android:id="@id/myl" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/gna" />
-</FrameLayout>
+    <View android:id="@id/icon" android:background="@drawable/qq_profilecard_item_information" android:layout_marginTop="6.0dip" style="@style/bw" />
+    <TextView android:textSize="@dimen/uj" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/jfb" android:paddingTop="6.0dip" android:paddingBottom="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:singleLine="false" android:layout_toLeftOf="@id/yw" android:layout_toRightOf="@id/icon" android:lineSpacingExtra="5.0dip" />
+    <ImageView android:id="@id/yw" android:layout_marginTop="8.0dip" android:layout_alignParentRight="true" style="@style/bv" />
+</RelativeLayout>

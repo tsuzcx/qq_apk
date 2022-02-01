@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import bhmi;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -17,7 +17,7 @@ final class ProteusJsHelper$2
       if (!((File)localObject).exists()) {
         return;
       }
-      localObject = bhmi.b((File)localObject);
+      localObject = FileUtils.readFileToString((File)localObject);
       if (KandianReportSoLoader.isSoFiledLoad())
       {
         ProteusJsHelper.access$000((String)localObject, this.val$bid);

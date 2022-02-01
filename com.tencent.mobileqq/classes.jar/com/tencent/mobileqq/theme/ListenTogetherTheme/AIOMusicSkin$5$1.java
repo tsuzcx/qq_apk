@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.theme.ListenTogetherTheme;
 
-import behz;
-import bicm;
+import bdav;
+import bgix;
 import com.tencent.mobileqq.activity.ChatFragment;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -12,18 +12,18 @@ class AIOMusicSkin$5$1
   
   public void run()
   {
-    behz.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0, this.jdField_a_of_type_Boolean);
-    if ((behz.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0) != null) && (behz.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null) && (behz.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null))
+    bdav.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0, this.jdField_a_of_type_Boolean);
+    if ((bdav.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0) != null) && (bdav.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null) && (bdav.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null))
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        Object localObject = bicm.a;
-        localObject = ((bicm)localObject).getDir(behz.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).getActivity(), ((bicm)localObject).getScid(behz.b(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0)));
+        Object localObject = bgix.a;
+        localObject = ((bgix)localObject).getDir(bdav.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).getActivity(), ((bgix)localObject).getScid(bdav.b(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0)));
         this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0.a((String)localObject);
-        behz.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).put(Integer.valueOf(behz.b(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0)), localObject);
+        bdav.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).put(Integer.valueOf(bdav.b(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0)), localObject);
       }
-      behz.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0, behz.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
-      this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0.a(behz.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_AndroidContentContext, behz.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
+      bdav.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0, bdav.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
+      this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0.a(bdav.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_AndroidContentContext, bdav.a(this.jdField_a_of_type_ComTencentMobileqqThemeListenTogetherThemeAIOMusicSkin$5.this$0).jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout);
     }
   }
 }

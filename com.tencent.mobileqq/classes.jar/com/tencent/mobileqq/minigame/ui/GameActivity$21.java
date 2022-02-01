@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import anzj;
+import amtj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -11,7 +11,7 @@ class GameActivity$21
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, anzj.a(2131703910) + this.val$errMsg, 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, amtj.a(2131704139) + this.val$errMsg, 1).a();
   }
 }
 

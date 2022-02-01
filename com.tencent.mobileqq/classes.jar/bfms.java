@@ -1,85 +1,47 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class bfms
-  extends VasWebviewJsPlugin
 {
-  public static String a;
-  protected Context a;
-  protected AppInterface a;
+  public int a;
+  public String a;
   
-  static
+  public bfms() {}
+  
+  public bfms(int paramInt, String paramString)
   {
-    jdField_a_of_type_JavaLangString = "TroopUpgradePlugin";
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public bfms()
+  public void a(bfms parambfms)
   {
-    this.mPluginNameSpace = "Troop";
-  }
-  
-  public long getPluginBusiness()
-  {
-    return 2147614720L;
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
-    }
-    if ("Troop".equals(paramString2)) {}
-    try
+    if (parambfms != null)
     {
-      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-      if (paramJsBridgeListener == null) {
-        return false;
+      this.jdField_a_of_type_Int = parambfms.jdField_a_of_type_Int;
+      this.jdField_a_of_type_JavaLangString = parambfms.jdField_a_of_type_JavaLangString;
+    }
+  }
+  
+  public Object clone()
+  {
+    return new bfms(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof bfms))
+    {
+      paramObject = (bfms)paramObject;
+      bool1 = bool2;
+      if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int)
+      {
+        bool1 = bool2;
+        if (bftf.a(paramObject.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)) {
+          bool1 = true;
+        }
       }
     }
-    catch (JSONException paramJsBridgeListener)
-    {
-      for (;;)
-      {
-        paramJsBridgeListener.printStackTrace();
-        paramJsBridgeListener = null;
-      }
-    }
-    catch (Exception paramJsBridgeListener)
-    {
-      int i;
-      do
-      {
-        for (;;)
-        {
-          paramJsBridgeListener.printStackTrace();
-          paramJsBridgeListener = null;
-        }
-        if (!"updateMaxMemberNum".equals(paramString3)) {
-          break;
-        }
-        paramString1 = paramJsBridgeListener.optString("groupId", "");
-        i = paramJsBridgeListener.optInt("type", 0);
-      } while ((TextUtils.isEmpty(paramString1)) || (i == 0));
-      paramJsBridgeListener = new Bundle();
-      paramJsBridgeListener.putString("groupId", paramString1);
-      paramJsBridgeListener.putInt("type", i);
-      sendRemoteReq(asev.a("notifyTroopUpgradeSuccess", "", this.mOnRemoteResp.key, paramJsBridgeListener), true, false);
-    }
-    return true;
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    this.jdField_a_of_type_AndroidContentContext = this.mRuntime.a();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
+    return bool1;
   }
 }
 

@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.WebCallHandler;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedWebView;
 
 class aupj
-  implements DialogInterface.OnClickListener
+  implements CustomizedWebView
 {
-  aupj(aupf paramaupf) {}
+  aupj(aupc paramaupc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onJumpWeb(String paramString, Bundle paramBundle, WebCallHandler paramWebCallHandler)
   {
-    if (paramInt == 1) {
-      this.a.c();
-    }
-    paramDialogInterface.dismiss();
+    auqe.a().a(paramBundle);
   }
 }
 

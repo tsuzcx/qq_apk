@@ -1,17 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import tencent.im.qqwallet.QWalletPubAdReport.ReportRsp;
 
-public class ajvo
-  implements View.OnClickListener
+class ajvo
+  implements BusinessObserver
 {
-  public ajvo(PublicAccountFragment paramPublicAccountFragment) {}
+  ajvo(ajvn paramajvn) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    afex.a(PublicAccountFragment.a(this.a), null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletGdtAdManager", 2, "onReceive:type:" + paramInt + ",isSuccess:" + paramBoolean + ",bundle:" + paramBundle + ",cost:" + (NetConnInfoCenter.getServerTimeMillis() - this.a.a));
+    }
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if ((paramBundle != null) && (paramBoolean))
+      {
+        QWalletPubAdReport.ReportRsp localReportRsp = new QWalletPubAdReport.ReportRsp();
+        localReportRsp.mergeFrom(paramBundle);
+        if (QLog.isColorLevel()) {
+          QLog.i("QWalletGdtAdManager", 2, "doReqAdsStatistics onReceive: retCode:" + localReportRsp.ret.get() + ",msg:" + localReportRsp.msg.get());
+        }
+      }
+      return;
+    }
+    catch (Throwable paramBundle)
+    {
+      QLog.e("QWalletGdtAdManager", 1, paramBundle, new Object[0]);
+    }
   }
 }
 

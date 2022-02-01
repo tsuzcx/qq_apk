@@ -1,37 +1,35 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
-public class avcc
-  implements DialogInterface.OnClickListener
+class avcc
+  implements auzr
 {
-  public avcc(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  avcc(avca paramavca) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    if (paramInt == 1)
+    ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app).a(this.a.jdField_a_of_type_Avci.jdField_a_of_type_Int, this.a.jdField_a_of_type_Avci.jdField_a_of_type_JavaLangString, paramBoolean);
+    bcef.b(null, "dc00899", this.a.jdField_a_of_type_Avch.jdField_a_of_type_JavaLangString, "", "music_tab", "clk_quit", 0, 0, this.a.jdField_a_of_type_Avch.b, "", this.a.jdField_a_of_type_Avch.jdField_a_of_type_Int + "", "");
+    String str2;
+    String str3;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin().equalsIgnoreCase(this.a.jdField_a_of_type_Avci.c))
     {
-      if (ForwardSdkShareOption.a(this.a))
-      {
-        this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", auxr.e.intValue());
-        this.a.m();
+      str2 = this.a.jdField_a_of_type_Avch.jdField_a_of_type_JavaLangString;
+      str3 = this.a.jdField_a_of_type_Avch.b;
+      if (!paramBoolean) {
+        break label185;
       }
-      bdmc.a(BaseApplication.getContext()).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_next", 0, 1, 0);
     }
-    while (paramInt != 0) {
+    label185:
+    for (String str1 = "1";; str1 = "0")
+    {
+      bcef.b(null, "dc00899", str2, "", "music_tab", "clk_quit_opener", 0, 0, str3, "", str1, "");
       return;
     }
-    paramDialogInterface = this.a.jdField_a_of_type_AndroidAppActivity;
-    Activity localActivity = this.a.jdField_a_of_type_AndroidAppActivity;
-    paramDialogInterface.setResult(0);
-    bdmc.a(BaseApplication.getContext()).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "", "multi_account", "click_cancel", 0, 1, 0);
-    this.a.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 

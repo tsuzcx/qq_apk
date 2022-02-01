@@ -1,28 +1,41 @@
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.LocalMultiProcConfig;
 
 public class adts
-  implements anui
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<AddFriendVerifyActivity> jdField_a_of_type_MqqUtilWeakReference;
+  public adts(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public adts(AddFriendVerifyActivity paramAddFriendVerifyActivity, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAddFriendVerifyActivity);
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    AddFriendVerifyActivity localAddFriendVerifyActivity = (AddFriendVerifyActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((localAddFriendVerifyActivity != null) && (!localAddFriendVerifyActivity.isFinishing()))
-    {
-      localAddFriendVerifyActivity.a(paramInt, paramBoolean, paramObject, this.jdField_a_of_type_Int);
-      return;
+    LocalMultiProcConfig.putBooleanAsync(this.a.getString(2131717792) + this.a.a, paramBoolean);
+    if (AppSetting.c) {
+      NotifyPushSettingActivity.e(this.a).setContentDescription(amtj.a(2131706767));
     }
-    QLog.e("AddFriendVerifyActivity", 1, "onUpdate: activity is null, type=" + paramInt);
+    QQAppInterface localQQAppInterface = this.a.app;
+    int i;
+    if (paramBoolean)
+    {
+      i = 1;
+      if (!paramBoolean) {
+        break label119;
+      }
+    }
+    label119:
+    for (String str = "1";; str = "0")
+    {
+      bcef.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_about_me", 0, i, str, "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      i = 0;
+      break;
+    }
   }
 }
 

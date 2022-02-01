@@ -1,21 +1,46 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
+import java.lang.ref.WeakReference;
 
-class bfhs
-  implements bliz
+public class bfhs
+  extends bfev
 {
-  bfhs(bfhr parambfhr, blir paramblir) {}
+  private WeakReference<QQAppInterface> a;
+  private String d;
   
-  public void OnClick(View paramView, int paramInt)
+  public bfhs(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    switch (paramInt)
-    {
+    super(paramString2, paramString3, paramString4);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.d = paramString1;
+  }
+  
+  public UsingTimeReportManager a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return null;
     }
-    for (;;)
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {
+      return null;
+    }
+    return (UsingTimeReportManager)localQQAppInterface.getManager(241);
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    do
     {
-      this.jdField_a_of_type_Blir.dismiss();
       return;
-      this.jdField_a_of_type_Bfhr.a.a(this.jdField_a_of_type_Bfhr.a.a);
+      localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localObject == null);
+    bcek localbcek = new bcek((QQAppInterface)localObject).a("dc00899").b(this.jdField_a_of_type_JavaLangString).c(this.b).d(this.c);
+    if (this.d != null) {}
+    for (Object localObject = this.d;; localObject = "")
+    {
+      localbcek.a(new String[] { localObject, String.valueOf(paramLong) }).a();
+      return;
     }
   }
 }

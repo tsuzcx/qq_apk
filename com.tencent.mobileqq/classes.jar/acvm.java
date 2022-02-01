@@ -1,8 +1,20 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface acvm
+final class acvm
+  implements DialogInterface.OnClickListener
 {
-  public abstract void reportImpression(View paramView);
+  acvm(acxa paramacxa) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.a != null) {
+      this.a.onCancel();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 

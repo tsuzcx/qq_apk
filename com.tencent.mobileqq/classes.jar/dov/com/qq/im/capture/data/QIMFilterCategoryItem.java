@@ -5,17 +5,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bplq;
-import bpmr;
-import bpmt;
-import bpmw;
-import bpnd;
-import bpne;
-import bpnt;
-import bqzz;
+import bmry;
+import bmso;
+import bnub;
 import com.tencent.av.opengl.filter.qqavimage.QQAVImageFilterConstants;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.json.JSONArray;
@@ -24,7 +18,7 @@ import org.json.JSONObject;
 public class QIMFilterCategoryItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<QIMFilterCategoryItem> CREATOR = new bpnt();
+  public static final Parcelable.Creator<QIMFilterCategoryItem> CREATOR = new bmso();
   public int a;
   public String a;
   public ArrayList<String> a;
@@ -78,7 +72,7 @@ public class QIMFilterCategoryItem
     while (paramQIMFilterCategoryItem.hasNext())
     {
       Object localObject = (String)paramQIMFilterCategoryItem.next();
-      localObject = bqzz.a().a((String)localObject);
+      localObject = bnub.a().a((String)localObject);
       if ((localObject != null) && (((FilterDesc)localObject).id == 9)) {
         return true;
       }
@@ -94,36 +88,13 @@ public class QIMFilterCategoryItem
       while (paramQIMFilterCategoryItem.hasNext())
       {
         Object localObject = (String)paramQIMFilterCategoryItem.next();
-        localObject = bqzz.a().a((String)localObject);
+        localObject = bnub.a().a((String)localObject);
         if ((localObject != null) && (((FilterDesc)localObject).id == 1011)) {
           return true;
         }
       }
     }
     return false;
-  }
-  
-  public int a()
-  {
-    int j = -1;
-    Iterator localIterator = ((bpmw)bplq.a(5)).a(this).b.iterator();
-    if (localIterator.hasNext())
-    {
-      bpmr localbpmr = (bpmr)localIterator.next();
-      if (!(localbpmr instanceof bpmt)) {
-        break label93;
-      }
-      j = ((bpmt)localbpmr).a.id;
-    }
-    label93:
-    for (;;)
-    {
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("FilterCategoryItem", 2, "getFilterId=" + j);
-      }
-      return j;
-    }
   }
   
   public QIMFilterCategoryItem a()
@@ -187,7 +158,7 @@ public class QIMFilterCategoryItem
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      String[] arrayOfString = bpnd.a;
+      String[] arrayOfString = bmry.a;
       int k = arrayOfString.length;
       int j = 0;
       while (j < k)
@@ -222,7 +193,7 @@ public class QIMFilterCategoryItem
     while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() != 1)) {
       return false;
     }
-    if (QQAVImageFilterConstants.getFilterType(bqzz.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0)).id) == 0) {}
+    if (QQAVImageFilterConstants.getFilterType(bnub.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0)).id) == 0) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }

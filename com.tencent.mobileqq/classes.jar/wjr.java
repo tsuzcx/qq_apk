@@ -1,58 +1,14 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class wjr
+class wjr
+  implements DialogInterface.OnDismissListener
 {
-  public long a;
-  public String a;
-  public byte[] a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  wjr(wjp paramwjp) {}
   
-  public wjr()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ArrayOfByte = new byte[1];
-  }
-  
-  public void a()
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("t", this.jdField_a_of_type_Long);
-      localJSONObject.put("ak", bhml.a(this.jdField_a_of_type_ArrayOfByte));
-      ((wta)wth.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", localJSONObject.toString());
-      yuk.a("Q.qqstory.publish:VideoServerInfoManager", "save -> %s", localJSONObject);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis())
-    {
-      yuk.b("Q.qqstory.publish:VideoServerInfoManager", "server inf validate %s", this);
-      return true;
-    }
-    yuk.d("Q.qqstory.publish:VideoServerInfoManager", "server inf invalidate %s", new Object[] { this });
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Long <= NetConnInfoCenter.getServerTimeMillis() + 600000L;
-  }
-  
-  public String toString()
-  {
-    return "ServerInfo{, userIp='" + this.jdField_a_of_type_JavaLangString + '\'' + ", serverIp1='" + this.b + '\'' + ", serverIp2='" + this.c + '\'' + ", backupServerIp1='" + this.d + '\'' + ", backupServerIp2='" + this.e + '\'' + ", expireTime=" + this.jdField_a_of_type_Long + "" + '\'' + '}';
+    this.a.e();
   }
 }
 

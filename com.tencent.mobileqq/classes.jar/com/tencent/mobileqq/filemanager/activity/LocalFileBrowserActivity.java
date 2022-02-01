@@ -11,33 +11,33 @@ import android.view.View.OnLongClickListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import antf;
-import atic;
-import atid;
-import atie;
-import atif;
-import atig;
-import atih;
-import atii;
-import atij;
-import atik;
-import atin;
-import atio;
-import atzb;
-import atzh;
-import aumo;
-import aunj;
-import bhmi;
-import blir;
-import blji;
-import bljm;
+import arul;
+import arum;
+import arun;
+import aruo;
+import arup;
+import aruq;
+import arur;
+import arus;
+import arut;
+import aruw;
+import arux;
+import asll;
+import aslr;
+import asyy;
+import aszt;
+import bjnw;
+import bjon;
 import com.tencent.mm.vfs.VFSFile;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.widget.NoFileRelativeLayout;
 import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.widget.SlideDetectListView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.BubblePopupWindow;
 import java.io.File;
 import java.util.ArrayList;
@@ -54,11 +54,11 @@ public class LocalFileBrowserActivity
   public View.OnLongClickListener a;
   EditText jdField_a_of_type_AndroidWidgetEditText = null;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  public atzh a;
-  protected bljm a;
+  public aslr a;
   public BaseActivity a;
   public NoFileRelativeLayout a;
   public SlideDetectListView a;
+  protected AdapterView.OnItemClickListener a;
   public BubblePopupWindow a;
   public Map<String, Integer> a;
   public View.OnClickListener b;
@@ -82,15 +82,15 @@ public class LocalFileBrowserActivity
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout = null;
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = null;
-    this.jdField_a_of_type_Atzh = null;
+    this.jdField_a_of_type_Aslr = null;
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_f_of_type_Int = 0;
     this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new atig(this);
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new atik(this);
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = new atin(this);
-    this.jdField_a_of_type_Bljm = new atid(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new arup(this);
+    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = new arut(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new aruw(this);
+    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new arum(this);
   }
   
   private void a(String paramString, boolean paramBoolean)
@@ -141,16 +141,16 @@ public class LocalFileBrowserActivity
       this.jdField_a_of_type_JavaUtilMap.remove(this.g);
       break;
       if (this.g.equalsIgnoreCase(this.h)) {
-        this.c.setText(2131692162);
+        this.c.setText(2131692210);
       } else {
-        this.c.setText(2131692357);
+        this.c.setText(2131692405);
       }
     }
   }
   
   private void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_AndroidOsAsyncTask = new atie(this, paramBoolean).execute(new String[] { paramString });
+    this.jdField_a_of_type_AndroidOsAsyncTask = new arun(this, paramBoolean).execute(new String[] { paramString });
   }
   
   private void e(int paramInt)
@@ -191,7 +191,7 @@ public class LocalFileBrowserActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_Atzh.notifyDataSetChanged();
+      this.jdField_a_of_type_Aslr.notifyDataSetChanged();
       return;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setVisible(true);
     }
@@ -199,10 +199,10 @@ public class LocalFileBrowserActivity
   
   private void o()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131370074));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout = ((NoFileRelativeLayout)findViewById(2131371857));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setText(2131691769);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnItemClickListener(this.jdField_a_of_type_Bljm);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = ((SlideDetectListView)findViewById(2131370071));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout = ((NoFileRelativeLayout)findViewById(2131371823));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setText(2131691815);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
     this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setEmptyView(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setGone();
     if ((this.jdField_f_of_type_Int == 7) || (this.jdField_f_of_type_Int == 8) || (this.jdField_f_of_type_Int == 11))
@@ -210,8 +210,8 @@ public class LocalFileBrowserActivity
       c(false);
       return;
     }
-    this.jdField_a_of_type_Atzh.a(this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnSlideListener(new atif(this));
+    this.jdField_a_of_type_Aslr.a(this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnSlideListener(new aruo(this));
   }
   
   private void p()
@@ -223,13 +223,13 @@ public class LocalFileBrowserActivity
     {
       this.h = this.g;
       return;
-      this.g = aumo.a().b();
+      this.g = asyy.a().b();
       continue;
-      this.g = antf.aZ;
+      this.g = AppConstants.SDCARD_ROOT;
       continue;
       this.g = "/";
       continue;
-      File localFile = (File)aunj.a(this).get("externalSdCard");
+      File localFile = (File)aszt.a(this).get("externalSdCard");
       if (localFile == null) {
         this.g = "/";
       } else {
@@ -240,28 +240,28 @@ public class LocalFileBrowserActivity
   
   private void q()
   {
-    Object localObject = aumo.a().b();
-    String str = aumo.a().c();
+    Object localObject = asyy.a().b();
+    String str = asyy.a().c();
     VFSFile localVFSFile = new VFSFile((String)localObject);
-    if (!bhmi.a((String)localObject)) {
+    if (!FileUtils.fileExists((String)localObject)) {
       localVFSFile.mkdirs();
     }
     localObject = new VFSFile(str);
-    if (!bhmi.a(str)) {
+    if (!FileUtils.fileExists(str)) {
       ((VFSFile)localObject).mkdirs();
     }
   }
   
   private void r()
   {
-    this.jdField_a_of_type_JavaLangString = getString(atzb.a(this.jdField_f_of_type_Int));
+    this.jdField_a_of_type_JavaLangString = getString(asll.a(this.jdField_f_of_type_Int));
     setTitle(this.jdField_a_of_type_JavaLangString);
     if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369088));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369115));
     }
     this.c = this.leftView;
     if (this.c != null) {
-      this.c.setOnClickListener(new atio(this));
+      this.c.setOnClickListener(new arux(this));
     }
     this.c = this.leftView;
   }
@@ -274,15 +274,16 @@ public class LocalFileBrowserActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131560882);
+    setContentView(2131560762);
     paramBundle = getIntent();
     this.jdField_f_of_type_Int = paramBundle.getBundleExtra("bundle").getInt("category");
     this.l = paramBundle.getBooleanExtra("open_with_qq_images", false);
@@ -290,13 +291,13 @@ public class LocalFileBrowserActivity
     p();
     q();
     r();
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365231));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369987));
-    this.jdField_a_of_type_Atzh = new atzh(this, this.jdField_b_of_type_JavaUtilArrayList, this);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365255));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369982));
+    this.jdField_a_of_type_Aslr = new aslr(this, this.jdField_b_of_type_JavaUtilArrayList, this);
     o();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_Atzh);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnItemClickListener(this.jdField_a_of_type_Bljm);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollToTopListener(new atic(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setAdapter(this.jdField_a_of_type_Aslr);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setOnScrollToTopListener(new arul(this));
     a(this.g, true);
     if (this.jdField_f_of_type_Int == 6) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
@@ -331,13 +332,13 @@ public class LocalFileBrowserActivity
   
   public void m()
   {
-    blir localblir = (blir)blji.a(this, null);
-    localblir.a(getResources().getStringArray(2130968635)[1], 3);
-    localblir.a(new atih(this, localblir));
-    localblir.setOnDismissListener(new atii(this));
-    localblir.setOnCancelListener(new atij(this));
-    localblir.c(2131690580);
-    localblir.show();
+    bjnw localbjnw = (bjnw)bjon.a(this, null);
+    localbjnw.a(getResources().getStringArray(2130968635)[1], 3);
+    localbjnw.a(new aruq(this, localbjnw));
+    localbjnw.setOnDismissListener(new arur(this));
+    localbjnw.setOnCancelListener(new arus(this));
+    localbjnw.c(2131690620);
+    localbjnw.show();
   }
   
   public void onBackPressed()
@@ -354,7 +355,7 @@ public class LocalFileBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

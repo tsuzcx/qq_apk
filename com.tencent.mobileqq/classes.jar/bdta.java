@@ -1,30 +1,28 @@
-import android.view.View;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
 
-class bdta
-  extends URLDrawableDownListener.Adapter
+public class bdta
+  implements URLDrawable.URLDrawableListener
 {
-  bdta(bdsy parambdsy) {}
+  public bdta(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, bdtc parambdtc) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
+    this.jdField_a_of_type_Bdtc.a(null);
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    this.jdField_a_of_type_Bdtc.a(null);
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    paramView.setBackgroundDrawable(paramURLDrawable);
+    paramURLDrawable = bhzk.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
+    this.jdField_a_of_type_Bdtc.a(paramURLDrawable);
   }
 }
 

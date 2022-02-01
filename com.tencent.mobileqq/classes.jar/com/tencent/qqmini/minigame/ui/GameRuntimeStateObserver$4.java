@@ -1,6 +1,7 @@
 package com.tencent.qqmini.minigame.ui;
 
 import android.widget.Toast;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 
 class GameRuntimeStateObserver$4
   implements Runnable
@@ -9,7 +10,10 @@ class GameRuntimeStateObserver$4
   
   public void run()
   {
-    Toast.makeText(GameRuntimeStateObserver.access$200(this.this$0), "小游戏基础引擎加载失败！", 0).show();
+    if (GameRuntimeStateObserver.access$200(this.this$0) != null) {
+      Toast.makeText(GameRuntimeStateObserver.access$200(this.this$0), "小游戏基础引擎加载失败！", 0).show();
+    }
+    QMLog.e("GameRuntimeState", "小游戏基础引擎加载失败！");
   }
 }
 

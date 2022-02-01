@@ -1,21 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.upgrade.UpgradeTIMManager;
-import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import mqq.os.MqqHandler;
 
 public class aeht
-  implements DialogInterface.OnClickListener
+  extends MqqHandler
 {
-  public aeht(Conversation paramConversation, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  public aeht(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation, null);
-    ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(256)).a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper.c);
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "CliOper", "", "", "0X800815D", "0X800815D", 0, 0, "", "", "", "");
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "CliOper", "", "", "0X8008657", "0X8008657", 0, 0, "", "", "", "");
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1981: 
+      this.a.finish();
+      return;
+    }
+    this.a.f();
   }
 }
 

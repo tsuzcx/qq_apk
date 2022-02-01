@@ -1,19 +1,23 @@
-public class lym
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+
+public abstract interface lym
 {
-  public int a;
-  public String a;
-  String b = null;
+  public abstract Bitmap a(long paramLong);
   
-  public lym()
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 99;
-  }
+  public abstract TroopInfoData a();
   
-  public String toString()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public abstract String a();
+  
+  public abstract String a(int paramInt);
+  
+  public abstract String a(long paramLong, int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract String b();
+  
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

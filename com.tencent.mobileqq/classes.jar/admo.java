@@ -1,13 +1,17 @@
-import com.tencent.mfsdk.MagnifierSDK;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class admo
-  implements admm
+public class admo
+  implements View.OnClickListener
 {
-  public void a(int paramInt)
+  public admo(HongbaoShowerActivity paramHongbaoShowerActivity) {}
+  
+  public void onClick(View paramView)
   {
-    if (MagnifierSDK.a != null) {
-      MagnifierSDK.a.a("result_objects", paramInt, 2);
-    }
+    HongbaoShowerActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,8 +1,27 @@
-public abstract interface apit
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+
+class apit
+  extends apim
 {
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
+  apit(apiq paramapiq) {}
   
-  public abstract void a(float[] paramArrayOfFloat);
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      if ((apiq.a(this.a) != null) && (paramBoolean2 != apiq.a(this.a).a()))
+      {
+        apiq.a(this.a).setOnCheckedChangeListener(null);
+        apiq.a(this.a).setChecked(paramBoolean2);
+        apiq.a(this.a).setOnCheckedChangeListener(this.a);
+      }
+      return;
+    }
+    paramString = QQToast.a(BaseApplication.getContext(), 1, 2131690605, 0);
+    paramString.b(paramString.c());
+  }
 }
 
 

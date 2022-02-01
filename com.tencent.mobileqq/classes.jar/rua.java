@@ -1,29 +1,38 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.TextView;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
 
-class rua
-  extends sbh
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$performAnim$columnTextTranslationAnim$1$1"}, k=3, mv={1, 1, 16})
+final class rua
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  rua(rsx paramrsx) {}
+  rua(rtv paramrtv, rvs paramrvs) {}
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramVideoInfo.n != null) && (paramVideoInfo.n.contains("kandianshare.html5.qq.com")))
-    {
-      rsx.a(this.a, paramVideoInfo.c, "", paramVideoInfo.n, paramVideoInfo.b);
-      return;
+    Object localObject = this.jdField_a_of_type_Rvs.e;
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "videoHolder.columnBannerPrefix");
+    ViewGroup.LayoutParams localLayoutParams = ((TextView)localObject).getLayoutParams();
+    localObject = localLayoutParams;
+    if (!(localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
+      localObject = null;
     }
-    rsx.a(this.a, paramVideoInfo.c, "", paramString + "&sourcefrom=4", paramVideoInfo.b);
-  }
-  
-  public int b()
-  {
-    return 5;
-  }
-  
-  public int c()
-  {
-    return 5;
+    localObject = (ViewGroup.MarginLayoutParams)localObject;
+    if (localObject != null)
+    {
+      Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "it");
+      paramValueAnimator = paramValueAnimator.getAnimatedValue();
+      if (paramValueAnimator == null) {
+        throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
+      }
+      ((ViewGroup.MarginLayoutParams)localObject).leftMargin = ((Integer)paramValueAnimator).intValue();
+      this.jdField_a_of_type_Rvs.e.requestLayout();
+    }
   }
 }
 

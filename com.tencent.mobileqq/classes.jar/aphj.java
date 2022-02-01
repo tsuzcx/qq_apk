@@ -1,12 +1,13 @@
-public abstract interface aphj
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+
+public class aphj
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public aphj(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void h();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

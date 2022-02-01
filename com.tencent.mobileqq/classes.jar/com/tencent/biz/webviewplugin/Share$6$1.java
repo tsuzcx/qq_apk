@@ -1,15 +1,15 @@
 package com.tencent.biz.webviewplugin;
 
-import abgu;
+import aadf;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bhse;
-import biod;
-import bits;
-import bjbs;
-import bjqh;
+import bfyv;
+import bguj;
+import bgzu;
+import bhht;
+import bhvw;
 import com.tencent.common.app.AppInterface;
 import java.lang.ref.WeakReference;
 
@@ -20,13 +20,13 @@ class Share$6$1
   
   public void run()
   {
-    Object localObject = (biod)this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (bguj)this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
     String str1;
     String str2;
-    if ((localObject != null) && ((localObject instanceof bits)) && (((bits)localObject).isActivityResume()) && (!this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_AndroidAppActivity.isFinishing()))
+    if ((localObject != null) && ((localObject instanceof bgzu)) && (((bgzu)localObject).isActivityResume()) && (!this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_AndroidAppActivity.isFinishing()))
     {
-      if ((this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_Bjbs.isShowing())) {
-        this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_Bjbs.dismiss();
+      if ((this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_Bhht.isShowing())) {
+        this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_Bhht.dismiss();
       }
       str1 = String.format("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.pubaccount.AccountDetailActivity&uin=%s", new Object[] { this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.b });
       str2 = String.format("mqqapi://card/show_pslcard?src_type=internal&card_type=public_account&uin=%s&version=1", new Object[] { this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.b });
@@ -37,8 +37,8 @@ class Share$6$1
     label431:
     for (localObject = this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.jdField_a_of_type_JavaLangString;; localObject = this.jdField_a_of_type_JavaLangString)
     {
-      String str3 = String.format(this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131695740), new Object[] { this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.c });
-      bhse.a(this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_AndroidAppActivity, 1001, 146, "struct_msg_from_h5", this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.b, (String)localObject, this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.c, this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.d, str3, this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.e, "web", null, null, null, "plugin", null, str1, str2, "https://url.cn/JS8oE7", this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.f, null);
+      String str3 = String.format(this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131695880), new Object[] { this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.c });
+      bfyv.a(this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_AndroidAppActivity, 1001, 146, "struct_msg_from_h5", this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.b, (String)localObject, this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.c, this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.d, str3, this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.e, "web", null, null, null, "plugin", null, str1, str2, "https://url.cn/JS8oE7", this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.f, null);
       int j = 0;
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         j = 1;
@@ -57,7 +57,7 @@ class Share$6$1
       ((Bundle)localObject).putString("intext_3", "1");
       ((Bundle)localObject).putString("intext_2", "" + j);
       ((Bundle)localObject).putString("stringext_1", "" + this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.e);
-      bjqh.a().a((Bundle)localObject, "", this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), false);
+      bhvw.a().a((Bundle)localObject, "", this.jdField_a_of_type_ComTencentBizWebviewpluginShare$6.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), false);
       return;
     }
   }

@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import anuw;
-
-public class CardObserver$1
+class CardObserver$1
   implements Runnable
 {
-  public CardObserver$1(anuw paramanuw, boolean paramBoolean, Object paramObject) {}
+  CardObserver$1(CardObserver paramCardObserver, boolean paramBoolean, Object paramObject) {}
   
   public void run()
   {
-    this.this$0.onGetCareBarEnable(this.jdField_a_of_type_Boolean, Boolean.parseBoolean(this.jdField_a_of_type_JavaLangObject.toString()));
+    this.this$0.onGetCareBarEnable(this.val$isSuccess, Boolean.parseBoolean(this.val$data.toString()));
   }
 }
 

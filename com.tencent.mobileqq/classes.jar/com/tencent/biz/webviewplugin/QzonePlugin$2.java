@@ -1,30 +1,30 @@
 package com.tencent.biz.webviewplugin;
 
-import abgi;
+import aact;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import bioy;
-import bits;
+import bgve;
+import bgzu;
 import com.tencent.smtt.sdk.WebView;
 
 public class QzonePlugin$2
   implements Runnable
 {
-  public QzonePlugin$2(abgi paramabgi) {}
+  public QzonePlugin$2(aact paramaact) {}
   
   public void run()
   {
-    if (abgi.a(this.this$0) != null)
+    if (aact.a(this.this$0) != null)
     {
-      Object localObject = abgi.a(this.this$0);
+      Object localObject = aact.a(this.this$0);
       if (this.this$0.mRuntime.a().getIntent().getExtras().getString("url") != null) {
         localObject = this.this$0.mRuntime.a().getIntent().getExtras().getString("url");
       }
-      abgi.a(this.this$0).loadData(new String((String)localObject).replaceAll("#", "%23").replaceAll("%", "%25").replaceAll("'", "%27"), "text/html", "utf-8");
+      aact.a(this.this$0).loadData(new String((String)localObject).replaceAll("#", "%23").replaceAll("%", "%25").replaceAll("'", "%27"), "text/html", "utf-8");
       localObject = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-      if ((localObject != null) && ((localObject instanceof bits))) {
-        ((bits)localObject).setBottomBarVisible(false);
+      if ((localObject != null) && ((localObject instanceof bgzu))) {
+        ((bgzu)localObject).setBottomBarVisible(false);
       }
     }
   }

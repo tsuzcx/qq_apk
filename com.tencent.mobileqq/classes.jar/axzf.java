@@ -1,15 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.collections.CollectionsKt;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class axzf
-  implements DialogInterface.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/onlinestatus/view/ConstellationView$Companion;", "", "()V", "reqCardDisplaySettingIfNotPrepared", "", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class axzf
 {
-  axzf(axzd paramaxzd) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final boolean a(@NotNull QQAppInterface paramQQAppInterface)
   {
-    this.a.a.a.dismiss();
+    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
+    Object localObject = paramQQAppInterface.getManager(51);
+    if (localObject == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.FriendsManager");
+    }
+    localObject = ((amsw)localObject).c(paramQQAppInterface.getCurrentUin());
+    azbd localazbd = azbc.a;
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "selfProfileCard");
+    if (localazbd.a(41609, (Card)localObject, paramQQAppInterface) == -1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ConstellationView", 2, new Object[] { "onSelectStatusCallback: called. ", "displaySettingNotPrepared: " + bool });
+      }
+      if (!bool) {
+        return bool;
+      }
+      paramQQAppInterface = paramQQAppInterface.getBusinessHandler(182);
+      if (paramQQAppInterface != null) {
+        break;
+      }
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.profilesetting.CardSettingHandler");
+    }
+    ((ayzx)paramQQAppInterface).a(CollectionsKt.arrayListOf(new Integer[] { Integer.valueOf(41609) }));
+    return bool;
   }
 }
 

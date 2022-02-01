@@ -1,21 +1,25 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import friendlist.GetOnlineInfoResp;
 
 class xkm
-  extends Handler
+  extends amsu
 {
-  xkm(xkl paramxkl, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  xkm(xkl paramxkl) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    if (this.a.a) {
+    if ((!paramBoolean) || (this.a.a == null) || (paramGetOnlineInfoResp == null) || (!TextUtils.equals(paramString, this.a.a.qq))) {}
+    while (xkl.a(this.a) == null) {
       return;
     }
-    xkl.a(this.a, this.a.c);
+    paramString = xkl.a(this.a);
+    if (paramGetOnlineInfoResp.eIconType == 11) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramString.b(paramBoolean);
+      return;
+    }
   }
 }
 

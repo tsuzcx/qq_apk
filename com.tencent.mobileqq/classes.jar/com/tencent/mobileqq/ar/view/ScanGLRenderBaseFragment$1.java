@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.view;
 
+import amtj;
 import android.support.v4.app.FragmentActivity;
-import anzj;
 import com.tencent.mobileqq.widget.QQToast;
 
 class ScanGLRenderBaseFragment$1
@@ -13,7 +13,7 @@ class ScanGLRenderBaseFragment$1
   {
     FragmentActivity localFragmentActivity = this.this$0.getActivity();
     if (localFragmentActivity != null) {
-      QQToast.a(localFragmentActivity, anzj.a(2131712392), 0).a();
+      QQToast.a(localFragmentActivity, amtj.a(2131712624), 0).a();
     }
   }
 }

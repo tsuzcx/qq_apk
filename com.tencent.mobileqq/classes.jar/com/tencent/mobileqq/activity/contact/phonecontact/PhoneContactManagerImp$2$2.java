@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.phonecontact;
 
-import ajmz;
+import aihi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.qphone.base.util.QLog;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 public class PhoneContactManagerImp$2$2
   implements Runnable
 {
-  public PhoneContactManagerImp$2$2(ajmz paramajmz) {}
+  public PhoneContactManagerImp$2$2(aihi paramaihi) {}
   
   public void run()
   {

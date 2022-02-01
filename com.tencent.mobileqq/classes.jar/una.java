@@ -1,19 +1,25 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import org.json.JSONObject;
 
 public class una
-  extends umw<umn, WSPushStrategyInfo>
+  extends umt
 {
-  public una(umn paramumn)
+  public String a;
+  
+  public una(JSONObject paramJSONObject)
   {
-    super(paramumn);
+    super(paramJSONObject);
   }
   
-  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  public static una a(JSONObject paramJSONObject)
   {
-    WSHomeFragment.a(paramContext);
-    return true;
+    return new una(paramJSONObject);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null) {
+      this.a = paramJSONObject.toString();
+    }
   }
 }
 

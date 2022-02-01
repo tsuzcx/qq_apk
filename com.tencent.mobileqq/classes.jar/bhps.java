@@ -1,85 +1,153 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Message;
+import android.os.SystemClock;
+import android.widget.Button;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListResponse;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.util.HandlerPlus;
+import mqq.observer.BusinessObserver;
 
-class bhps
-  extends BaseAdapter
+public class bhps
+  implements BusinessObserver
 {
-  bhps(bhpr parambhpr) {}
+  public bhps(AuthorityActivity paramAuthorityActivity, boolean paramBoolean, String paramString) {}
   
-  public int getCount()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
+    AuthorityActivity.b(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_Long = (System.currentTimeMillis() - AuthorityActivity.b(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_Long);
+    Object localObject1 = paramBundle.getString("ssoAccount");
+    if (!this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString.equals(localObject1)) {
+      return;
     }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
+    this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_JavaLangRunnable);
+    if (!this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.b) {
+      this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
     }
-    bhpx localbhpx;
-    if (paramView == null)
+    paramInt = paramBundle.getInt("code");
+    Object localObject2;
+    if (paramBoolean)
     {
-      paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558996, null);
-      localbhpx = new bhpx(this.a, null);
-      localbhpx.a = ((TextView)paramView.findViewById(2131368991));
-      paramView.setTag(localbhpx);
+      this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.c = 0;
+      localObject2 = new SdkAuthorize.GetAuthApiListResponse();
     }
+    label1275:
     for (;;)
     {
-      localbhpx = (bhpx)paramView.getTag();
-      int i;
-      int j;
-      int k;
-      int m;
-      if (localbhpx.a != null)
+      try
       {
-        localbhpx.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-        localbhpx.a.setOnClickListener(new bhpw(this.a, paramInt));
-        i = localbhpx.a.getPaddingTop();
-        j = localbhpx.a.getPaddingLeft();
-        k = localbhpx.a.getPaddingRight();
-        m = localbhpx.a.getPaddingBottom();
-        if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
-          break label232;
+        localObject1 = paramBundle.getByteArray("data");
+        if (!this.jdField_a_of_type_Boolean) {
+          break label1275;
         }
-        localbhpx.a.setBackgroundResource(2130839548);
+        localObject1 = bifi.b((byte[])localObject1, this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Biej);
+        if (localObject1 != null)
+        {
+          l1 = localObject1.length;
+          localObject2 = (SdkAuthorize.GetAuthApiListResponse)((SdkAuthorize.GetAuthApiListResponse)localObject2).mergeFrom((byte[])localObject1);
+          if (localObject2 != null)
+          {
+            Message localMessage = this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+            localMessage.what = 0;
+            localMessage.obj = localObject2;
+            this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(localMessage);
+            i = ((SdkAuthorize.GetAuthApiListResponse)localObject2).toByteArray().length;
+            l2 = i;
+          }
+        }
       }
-      for (;;)
+      catch (Exception paramBundle)
       {
-        localbhpx.a.setPadding(j, i, k, m);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        label232:
-        if (paramInt == 0) {
-          localbhpx.a.setBackgroundResource(2130839549);
-        } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
-          localbhpx.a.setBackgroundResource(2130839547);
+        long l1;
+        long l2;
+        localObject1 = this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+        ((Message)localObject1).what = 6;
+        ((Message)localObject1).arg1 = 3001;
+        ((Message)localObject1).obj = this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.getResources().getString(2131694255);
+        this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject1);
+        localObject1 = (String)((Message)localObject1).obj;
+        QLog.d("AuthorityActivity", 1, "rec | cmd: " + this.jdField_a_of_type_JavaLangString + " | uin : *" + bhwf.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString) + " | ret : success | code : " + paramInt, paramBundle);
+        AuthorityActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity, "KEY_GET_AUTH_API_LIST_REQUEST", this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.c, false);
+        continue;
+        int i = localObject1.length;
+        paramBundle = Integer.valueOf(i);
+        continue;
+      }
+      try
+      {
+        i = ((SdkAuthorize.GetAuthApiListResponse)localObject2).ret.get();
+        localObject2 = new Bundle();
+        ((Bundle)localObject2).putString("report_type", "103");
+        ((Bundle)localObject2).putString("act_type", "11");
+        if (!paramBundle.getBoolean("isShort", false)) {
+          continue;
         }
+        paramBundle = "2";
+        ((Bundle)localObject2).putString("intext_3", paramBundle);
+        ((Bundle)localObject2).putString("stringext_1", AuthorityActivity.b(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_JavaLangString);
+        ((Bundle)localObject2).putString("intext_2", "" + i);
+        ((Bundle)localObject2).putString("intext_5", "" + AuthorityActivity.b(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity).jdField_a_of_type_Long);
+        bhvw.a().a((Bundle)localObject2, AuthorityActivity.e, this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_JavaLangString, false);
+        paramBundle = new Bundle();
+        paramBundle.putString("report_type", "103");
+        paramBundle.putString("act_type", "14");
+        paramBundle.putString("intext_5", "" + (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Long));
+        bhvw.a().a(paramBundle, AuthorityActivity.e, this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_JavaLangString, false);
+        biaz.a().a("agent_query_authority", this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.f, l1, l2, 0, Long.parseLong(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString), "1000069", "ret: " + i);
+        bibc.a().a(0, "LOGIN_GETAUTHLIST_AGENT", this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString, AuthorityActivity.e, null, Long.valueOf(SystemClock.elapsedRealtime()), i, 1, null);
+        bhvw.a().a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString, "", AuthorityActivity.e, "1", "2", "0", false);
+        AuthorityActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity, "KEY_GET_AUTH_API_LIST_REQUEST", this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.c, true);
+      }
+      catch (Exception paramBundle)
+      {
+        bhzm.c("AuthorityActivity", "-->report exception cmd: agent_query_authority", paramBundle);
+        continue;
+      }
+      localObject2 = new StringBuilder().append("rec | cmd: ").append(this.jdField_a_of_type_JavaLangString).append(" | uin : *").append(bhwf.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString)).append(" | ret : success | code : ").append(paramInt).append(" | data=");
+      if (localObject1 == null)
+      {
+        paramBundle = "null";
+        QLog.d("AuthorityActivity", 1, paramBundle);
+        this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.g = SystemClock.elapsedRealtime();
+        bhzm.c("Authority_TimeCost", "<TimeStamp> query authority cost : " + (this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.g - this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.f));
+        return;
+        paramBundle = "1";
+      }
+      else
+      {
+        QLog.d("AuthorityActivity", 1, "rec | cmd: " + this.jdField_a_of_type_JavaLangString + " | uin : *" + bhwf.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString) + " | ret : failed | code : " + paramInt);
+        this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse = null;
+        if ((paramInt == 1002) && (this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.c < 2))
+        {
+          paramBundle = this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity;
+          paramBundle.c += 1;
+          this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.i();
+          return;
+        }
+        paramBundle = this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+        paramBundle.what = 6;
+        paramBundle.arg1 = 3001;
+        paramBundle.obj = this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.getResources().getString(2131694255);
+        this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramBundle);
+        AuthorityActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity, "KEY_GET_AUTH_API_LIST_REQUEST", this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.c, false);
+        paramBundle = this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.getResources().getString(2131694255);
+        try
+        {
+          biaz.a().a("agent_query_authority", this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.f, 0L, 0L, paramInt, Long.parseLong(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString), "1000069", paramBundle);
+          bibc.a().a(1, "LOGIN_GETAUTHLIST_AGENT", this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString, AuthorityActivity.e, null, Long.valueOf(SystemClock.elapsedRealtime()), paramInt, 1, paramBundle);
+          bhvw.a().a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString, "", AuthorityActivity.e, "1", "2", "" + paramInt, false);
+          bhvw.a().a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.jdField_a_of_type_Biej.jdField_a_of_type_JavaLangString, "", AuthorityActivity.e, "1", "6", "" + paramInt, false);
+        }
+        catch (Exception paramBundle) {}
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhps
  * JD-Core Version:    0.7.0.1
  */

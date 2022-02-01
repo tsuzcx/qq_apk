@@ -1,20 +1,27 @@
 package com.tencent.mobileqq.theme.diy;
 
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import com.tencent.mobileqq.vas.VasApngUtil;
+import kotlin.jvm.functions.Function0;
 import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
 
 final class ThemeBackground$2
-  implements Runnable
+  implements Function0<Drawable>
 {
-  ThemeBackground$2(AppRuntime paramAppRuntime, int paramInt1, String paramString, int paramInt2, View paramView) {}
+  ThemeBackground$2(boolean paramBoolean, Context paramContext, AppRuntime paramAppRuntime, ThemeBackground paramThemeBackground, String paramString) {}
   
-  public void run()
+  public Drawable invoke()
   {
-    ThemeBackground localThemeBackground = ThemeBackground.getThemeBgObj(this.val$app, this.val$app.getApplication().getApplicationContext(), this.val$bgType, this.val$animateName, this.val$defaultBgResId);
-    ThreadManagerV2.getUIHandlerV2().post(new ThemeBackground.2.1(this, localThemeBackground));
+    if (this.val$isRecent) {
+      ThemeBackground.sRecentBusinessFlag.setUseApng();
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("key_use_rect", true);
+    Drawable localDrawable = this.val$context.getResources().getDrawable(2130838892);
+    return VasApngUtil.getApngDrawable(this.val$app, this.val$themeBackground.path, "-conversation-", localDrawable, VasApngUtil.converstionTag, this.val$animateName, localBundle);
   }
 }
 

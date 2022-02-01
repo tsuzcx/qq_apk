@@ -1,15 +1,17 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.recent.MsgSummary;
-import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.MsgUtils.Proxy;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
-public final class bdjf
-  implements RecentRoute.MsgUtils.Proxy
+class bdjf
+  extends bdji<UserState>
 {
-  public void buildMsgSummaryForMsg(Context paramContext, IMCoreAppRuntime paramIMCoreAppRuntime, IMCoreMessageStub paramIMCoreMessageStub, int paramInt, MsgSummary paramMsgSummary, boolean paramBoolean1, boolean paramBoolean2)
+  bdjf(bdiu parambdiu, UserState paramUserState, List paramList)
   {
-    bhnt.a(paramContext, paramIMCoreAppRuntime, paramIMCoreMessageStub, paramInt, paramMsgSummary, paramBoolean1, paramBoolean2);
+    super(paramUserState, paramList);
+  }
+  
+  public void a(UserState paramUserState)
+  {
+    bdiu.a(this.a).h();
   }
 }
 

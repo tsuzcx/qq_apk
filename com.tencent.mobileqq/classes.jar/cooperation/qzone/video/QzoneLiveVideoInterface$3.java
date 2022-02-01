@@ -1,13 +1,13 @@
 package cooperation.qzone.video;
 
-import biry;
-import bnpy;
+import bgya;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.webviewwrapper.IWebviewOnClassLoaded;
 
 final class QzoneLiveVideoInterface$3
   implements Runnable
 {
-  QzoneLiveVideoInterface$3(bnpy parambnpy) {}
+  QzoneLiveVideoInterface$3(IWebviewOnClassLoaded paramIWebviewOnClassLoaded) {}
   
   public void run()
   {
@@ -21,15 +21,15 @@ final class QzoneLiveVideoInterface$3
         if (!QzoneLiveVideoInterface.isBestPerformanceDevice()) {
           break;
         }
-        if (!biry.a())
+        if (!bgya.a())
         {
           long l = System.currentTimeMillis();
-          biry.b();
+          bgya.b();
           QLog.i("QzoneLiveVideoInterface", 2, "saxon@ 预加载 TbsAccelerator init cost " + (System.currentTimeMillis() - l));
-          if (this.a == null) {
+          if (this.val$listener == null) {
             break;
           }
-          this.a.a();
+          this.val$listener.onLoadClassFinish();
           return;
         }
       }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.view;
 
-import annx;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import amir;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloActionPackage;
 import com.tencent.qphone.base.util.QLog;
@@ -16,11 +16,11 @@ class ApolloPanel$21
     if (QLog.isColorLevel()) {
       QLog.d("ApolloPanel", 2, "[checkRedTab] clear new action info");
     }
-    if ((this.this$0.a != null) && (this.this$0.a.a != null))
+    if ((this.this$0.a != null) && (this.this$0.a.app != null))
     {
-      annx localannx = (annx)this.this$0.a.a.getManager(155);
-      if (localannx != null) {
-        localannx.a(this.a);
+      amir localamir = (amir)this.this$0.a.app.getManager(155);
+      if (localamir != null) {
+        localamir.a(this.a);
       }
     }
   }

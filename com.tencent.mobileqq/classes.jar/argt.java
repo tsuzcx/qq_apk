@@ -1,72 +1,49 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emotionintegrate.SearchEmoticonFragment;
+import com.tencent.mobileqq.emotionintegrate.SearchEmoticonWebBean;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
 public class argt
-  extends arac<args>
+  implements View.OnTouchListener
 {
-  @NonNull
-  public args a(int paramInt)
-  {
-    return new args();
-  }
+  public argt(SearchEmoticonFragment paramSearchEmoticonFragment) {}
   
-  @Nullable
-  public args a(araj[] paramArrayOfaraj)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
+    if (paramMotionEvent.getAction() == 1)
     {
-      args localargs = args.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PttAutoChangeProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
+      this.a.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
+      if (SearchEmoticonFragment.a(this.a).d == 1)
+      {
+        EmojiHomeUiPlugin.openEmojiDetailPage(this.a.getActivity(), this.a.a().getAccount(), 8, SearchEmoticonFragment.a(this.a).e, false, false);
+        bcef.b(null, "dc00898", "", "", "0X8009EAF", "0X8009EAF", 0, 0, "", "", "", "");
       }
-      return localargs;
     }
-    return null;
-  }
-  
-  public void a(args paramargs)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttAutoChangeProcessor", 2, "onUpdate " + paramargs.toString());
+    for (;;)
+    {
+      return false;
+      if (SearchEmoticonFragment.a(this.a).d == 2)
+      {
+        MiniAppLauncher.launchMiniAppById(SearchEmoticonFragment.a(this.a), SearchEmoticonFragment.a(this.a).g, null, null, null, null, 1005);
+        bcef.b(null, "dc00898", "", "", "0X8009EB1", "0X8009EB1", 0, 0, "", "", "", "");
+        continue;
+        if (paramMotionEvent.getAction() == 0)
+        {
+          this.a.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
+          bcef.b(null, "dc00898", "", "", "0X8009EAE", "0X8009EAE", 0, 0, "", "", "", "");
+        }
+      }
     }
-  }
-  
-  public Class<args> clazz()
-  {
-    return args.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 442;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     argt
  * JD-Core Version:    0.7.0.1
  */

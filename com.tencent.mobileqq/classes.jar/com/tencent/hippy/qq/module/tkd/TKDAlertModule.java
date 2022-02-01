@@ -2,8 +2,8 @@ package com.tencent.hippy.qq.module.tkd;
 
 import android.content.DialogInterface.OnClickListener;
 import androidx.annotation.NonNull;
-import bhlq;
-import bhpc;
+import bfur;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.HippyGlobalConfigs;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
@@ -33,7 +33,7 @@ public class TKDAlertModule
     return new TKDAlertModule.2(this, paramPromise);
   }
   
-  private void setDialogButton(@NonNull HippyArray paramHippyArray, @NonNull Promise paramPromise, @NonNull bhpc parambhpc)
+  private void setDialogButton(@NonNull HippyArray paramHippyArray, @NonNull Promise paramPromise, @NonNull QQCustomDialog paramQQCustomDialog)
   {
     paramPromise = createOnClickListener(paramPromise);
     int i = 0;
@@ -51,10 +51,10 @@ public class TKDAlertModule
         default: 
           break;
         case 0: 
-          parambhpc.setNegativeButton((String)localObject, paramPromise);
+          paramQQCustomDialog.setNegativeButton((String)localObject, paramPromise);
           break;
         case 1: 
-          parambhpc.setPositiveButton((String)localObject, paramPromise);
+          paramQQCustomDialog.setPositiveButton((String)localObject, paramPromise);
         }
       }
     }
@@ -65,11 +65,11 @@ public class TKDAlertModule
     if (paramHippyArray.size() > 3) {
       return;
     }
-    bhpc localbhpc = bhlq.a(this.hippyEngineContext.getGlobalConfigs().getContext(), 230);
-    localbhpc.setTitle(paramString1);
-    localbhpc.setMessage(paramString2);
-    setDialogButton(paramHippyArray, paramPromise, localbhpc);
-    localbhpc.show();
+    QQCustomDialog localQQCustomDialog = bfur.a(this.hippyEngineContext.getGlobalConfigs().getContext(), 230);
+    localQQCustomDialog.setTitle(paramString1);
+    localQQCustomDialog.setMessage(paramString2);
+    setDialogButton(paramHippyArray, paramPromise, localQQCustomDialog);
+    localQQCustomDialog.show();
   }
   
   @HippyMethod(name="showAlert")

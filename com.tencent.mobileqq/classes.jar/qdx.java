@@ -1,90 +1,134 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
+import android.app.Activity;
+import android.content.Intent;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.List;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class qdx
+class qdx
+  extends uha
 {
-  private List<smv> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<URL> b = new ArrayList();
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public qdx(NativeGridImageView paramNativeGridImageView, ArticleInfo paramArticleInfo)
+  qdx(ArticleInfo paramArticleInfo, WeakReference<Activity> paramWeakReference)
   {
-    int i;
-    if ((paramArticleInfo != null) && (paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.a != null) && (paramArticleInfo.mSocialFeedInfo.a.a != null) && (paramArticleInfo.mSocialFeedInfo.a.a.size() > 0))
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramWeakReference;
+    Object localObject;
+    this.jdField_a_of_type_JavaLangRefWeakReference = localObject;
+  }
+  
+  public boolean a(int paramInt, @NotNull ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    try
     {
-      paramArticleInfo = paramArticleInfo.mSocialFeedInfo.a.a;
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < paramArticleInfo.size()) {}
-      try
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaUtilArrayList.size() > 0))
       {
-        int j = this.jdField_a_of_type_JavaUtilList.size();
-        if (j >= 9)
+        Object localObject1 = ((rff)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaUtilArrayList.get(0)).c;
+        if (paramActionSheetItem.action == 13)
         {
-          if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-            ((smv)this.jdField_a_of_type_JavaUtilList.get(0)).a(true);
-          }
-          return;
-        }
-        if ((((qyh)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString != null) || (((qyh)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString != null))
-        {
-          Object localObject;
-          label255:
-          int k;
-          if (((qyh)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString != null)
+          localObject1 = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if (localObject1 != null)
           {
-            paramNativeGridImageView = ((qyh)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString;
-            localObject = new URL(paramNativeGridImageView);
-            if (((qyh)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString == null) {
-              break label374;
-            }
-            paramNativeGridImageView = ((qyh)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString;
-            paramNativeGridImageView = new URL(paramNativeGridImageView);
-            this.b.add(localObject);
-            localObject = this.jdField_a_of_type_JavaUtilList;
-            j = ((qyh)paramArticleInfo.get(i)).a;
-            k = ((qyh)paramArticleInfo.get(i)).jdField_b_of_type_Int;
-            if (((qyh)paramArticleInfo.get(i)).jdField_c_of_type_Int != 1) {
-              break label391;
+            localObject2 = qeq.a((Activity)localObject1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+            if (oof.a() == 1)
+            {
+              bool = true;
+              ((Intent)localObject2).putExtra("fast_biu_type", bool);
+              ((Activity)localObject1).startActivityForResult((Intent)localObject2, 55577);
+              ((Activity)localObject1).overridePendingTransition(0, 0);
             }
           }
-          label391:
-          for (boolean bool = true;; bool = false)
+          else
           {
-            ((List)localObject).add(new smv(j, k, paramNativeGridImageView, bool));
-            break label410;
-            paramNativeGridImageView = ((qyh)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString;
-            break;
-            label374:
-            paramNativeGridImageView = ((qyh)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString;
-            break label255;
+            return super.a(paramInt, paramActionSheetItem);
           }
         }
       }
-      catch (Exception paramNativeGridImageView)
+    }
+    catch (NullPointerException localNullPointerException1)
+    {
+      for (;;)
       {
-        paramNativeGridImageView.printStackTrace();
-        QLog.d("Proteus.NativeGridImageView", 1, "GridImageModel exception.");
-        label410:
-        i += 1;
+        Object localObject2;
+        QLog.e("PgcShortContentProteusItem", 1, localNullPointerException1.toString());
+        String str1 = "https://sqimg.qq.com/qq_product_operations/kan/images/viola/shortPGC/kd_icon_big_v3.png";
+        continue;
+        boolean bool = false;
+        continue;
+        try
+        {
+          localObject2 = new JSONArray();
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("name", "qq_friend");
+          localJSONObject.put("webHandle", 0);
+          ((JSONArray)localObject2).put(localJSONObject);
+          localJSONObject = new JSONObject();
+          localJSONObject.put("name", "qzone");
+          localJSONObject.put("webHandle", 0);
+          ((JSONArray)localObject2).put(localJSONObject);
+          localJSONObject = new JSONObject();
+          localJSONObject.put("name", "we_chat");
+          localJSONObject.put("webHandle", 0);
+          ((JSONArray)localObject2).put(localJSONObject);
+          localJSONObject = new JSONObject();
+          localJSONObject.put("name", "we_chat_circle");
+          localJSONObject.put("webHandle", 0);
+          ((JSONArray)localObject2).put(localJSONObject);
+          localJSONObject = new JSONObject();
+          localJSONObject.put("upline", localObject2);
+          localJSONObject.put("belowline", new JSONArray());
+          localJSONObject.put("shareCallBack", "");
+          localJSONObject.put("title", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_JavaLangString);
+          localJSONObject.put("back", true);
+          localJSONObject.put("sourceName", amtj.a(2131701852));
+          localJSONObject.put("WXShareFromQQKandian", 1);
+          localJSONObject.put("src_iconUrl", "https://sqimg.qq.com/qq_product_operations/kan/images/viola/shortPGC/kd_icon_v4.png");
+          localJSONObject.put("srcIconUrl", "https://sqimg.qq.com/qq_product_operations/kan/images/viola/shortPGC/kd_icon_v4.png");
+          localJSONObject.put("src_action", "plugin");
+          localJSONObject.put("src_webActionUrl", "mqqapi://readinjoy/open?src_type=internal&version=1&target=1");
+          localJSONObject.put("src_actionData", "mqqapi://readinjoy/open?src_type=internal&version=1&target=1");
+          localJSONObject.put("desc", ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131717519));
+          localJSONObject.put("menu_title", amtj.a(2131712694));
+          localJSONObject.put("share_url", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.getShareUrl());
+          localJSONObject.put("keepShareUrl", 1);
+          localJSONObject.put("image_url", str1);
+          localJSONObject.put("weibo_title", amtj.a(2131712140));
+          localJSONObject.put("uin", "");
+          localJSONObject.put("puin", 0);
+          if (qdf.a(this.jdField_a_of_type_Qdf) == null) {
+            qdf.a(this.jdField_a_of_type_Qdf, new tjz());
+          }
+          str1 = null;
+          if (paramActionSheetItem.action == 72) {
+            str1 = paramActionSheetItem.uin;
+          }
+          qdf.a(this.jdField_a_of_type_Qdf).a(localJSONObject, paramInt, (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), str1, paramActionSheetItem.uinType, paramActionSheetItem.label);
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
+        catch (NullPointerException localNullPointerException2)
+        {
+          for (;;)
+          {
+            QLog.e("PgcShortContentProteusItem", 1, localNullPointerException2.toString());
+          }
+        }
+        return super.a(paramInt, paramActionSheetItem);
+        String str2 = "https://sqimg.qq.com/qq_product_operations/kan/images/viola/shortPGC/kd_icon_big_v3.png";
       }
     }
-  }
-  
-  public List<smv> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public List<URL> b()
-  {
-    return this.b;
   }
 }
 

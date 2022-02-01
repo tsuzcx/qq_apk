@@ -1,45 +1,87 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import dov.com.qq.im.capture.view.MusicFragmentProviderView;
+import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bmyj
-  implements BusinessObserver
+  extends bmte
 {
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  public bmyj(MusicFragmentProviderView paramMusicFragmentProviderView) {}
   
-  protected boolean a(boolean paramBoolean, Bundle paramBundle)
+  public void onCancel(String paramString)
   {
-    return false;
+    if ((MusicFragmentProviderView.a(this.a) != null) && (MusicFragmentProviderView.a(this.a).getLocalPath().equals(paramString)))
+    {
+      MusicFragmentProviderView.a(this.a).mProgress = -1;
+      if (this.a.a != null) {
+        this.a.a.sendEmptyMessage(3);
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MusicFragmentProviderView", 2, "download onCancel");
+    }
+    MusicFragmentProviderView.a(this.a).set(false);
   }
   
-  protected void b(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void c(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void d(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onFinish(String paramString, boolean paramBoolean, int paramInt)
   {
-    if (!a(paramBoolean, paramBundle)) {}
-    do
+    this.a.b(paramInt);
+    if ((paramBoolean) && (MusicFragmentProviderView.a(this.a) != null) && (MusicFragmentProviderView.a(this.a).getLocalPath().equals(paramString)))
     {
-      return;
-      if (paramInt == 0)
-      {
-        b(paramBoolean, paramBundle);
-        return;
+      MusicFragmentProviderView.a(this.a).musicStart = 0;
+      MusicFragmentProviderView.a(this.a).musicEnd = (MusicFragmentProviderView.a(this.a).musicStart + MusicFragmentProviderView.a(this.a));
+      MusicFragmentProviderView.a(this.a).musicDuration = ((int)ShortVideoUtils.a(MusicFragmentProviderView.a(this.a).getLocalPath()));
+      if (MusicFragmentProviderView.a(this.a).musicEnd > MusicFragmentProviderView.a(this.a).musicDuration) {
+        MusicFragmentProviderView.a(this.a).musicEnd = MusicFragmentProviderView.a(this.a).musicDuration;
       }
-      if (paramInt == 1)
+      MusicFragmentProviderView.a(this.a, MusicFragmentProviderView.a(this.a).musicStart);
+      MusicFragmentProviderView.b(this.a, MusicFragmentProviderView.a(this.a).musicEnd);
+      paramString = (QIMMusicConfigManager)bmql.a(2);
+      MusicItemInfo localMusicItemInfo = paramString.a(MusicFragmentProviderView.a(this.a).mItemId);
+      if (localMusicItemInfo != null)
       {
-        c(paramBoolean, paramBundle);
-        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("MusicFragmentProviderView", 2, "music exist name =" + localMusicItemInfo.mMusicName);
+        }
+        paramString.a(MusicFragmentProviderView.a(this.a), false);
       }
-      if (paramInt == 2)
+      if (this.a.a != null) {
+        this.a.a.sendEmptyMessage(2);
+      }
+      if (QLog.isColorLevel())
       {
-        a(paramBoolean, paramBundle);
-        return;
+        paramString = new StringBuilder("onFinish musicStart=").append(MusicFragmentProviderView.a(this.a).musicStart);
+        paramString.append(" musicEnd=").append(MusicFragmentProviderView.a(this.a).musicEnd);
+        paramString.append(" musicDuration").append(MusicFragmentProviderView.a(this.a).musicDuration);
+        paramString.append(" premusicStart").append(MusicFragmentProviderView.b(this.a));
+        paramString.append(" premusicEnd").append(MusicFragmentProviderView.c(this.a));
+        paramString.append(" musicName").append(MusicFragmentProviderView.a(this.a).mMusicName);
+        QLog.d("MusicFragmentProviderView", 2, paramString.toString());
       }
-    } while (paramInt != 100);
-    d(paramBoolean, paramBundle);
+    }
+    MusicFragmentProviderView.a(this.a).set(false);
+  }
+  
+  public void onNetChange(int paramInt)
+  {
+    this.a.c(paramInt);
+  }
+  
+  public void onProgress(String paramString, int paramInt)
+  {
+    this.a.a(paramString, paramInt);
+    MusicFragmentProviderView.a(this.a).set(true);
+  }
+  
+  public void onStart(String paramString, boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      this.a.b(-115);
+      MusicFragmentProviderView.a(this.a).set(false);
+    }
   }
 }
 

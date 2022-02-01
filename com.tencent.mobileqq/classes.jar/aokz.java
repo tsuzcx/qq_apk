@@ -1,54 +1,42 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-
 public class aokz
-  extends anud
 {
-  public aokz(QQAppInterface paramQQAppInterface)
+  public float a;
+  public int a;
+  public String a;
+  public float b = 0.0F;
+  public float c = 0.0F;
+  public float d = 0.0F;
+  public float e = 0.0F;
+  public float f = 1.0F;
+  public float g = 0.0F;
+  public float h = 1.0F;
+  public float i = 0.0F;
+  
+  public aokz()
   {
-    super(paramQQAppInterface);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
   }
   
-  public void a(int paramInt)
+  public aokz(int paramInt)
   {
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "WifiCloudCheckSvc.req");
-    localToServiceMsg.addAttribute("request_type", Integer.valueOf(paramInt));
-    super.send(localToServiceMsg);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected Class<? extends anui> observerClass()
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return aola.class;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
   }
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WifiSdk", 2, "WifiSdkHandler, onReceive resultCode: " + paramFromServiceMsg.getResultCode() + " errorMsg: " + paramFromServiceMsg.getBusinessFailMsg() + " serviceCmd: " + paramToServiceMsg.getServiceCmd());
-    }
-    int i = 0;
-    try
-    {
-      if ("WifiCloudCheckSvc.req".equals(paramToServiceMsg.getServiceCmd()))
-      {
-        int j = ((Integer)paramToServiceMsg.getAttribute("request_type")).intValue();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("WifiSdk", 2, "WifiSdkHandler, onReceive type: " + j);
-          i = j;
-        }
-      }
-      super.notifyUI(i, paramFromServiceMsg.isSuccess(), paramObject);
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("WifiSdk", 2, "WifiSdkHandler, onReceive exception: " + paramToServiceMsg.getMessage());
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("KeyingParams {keyType: ").append(this.jdField_a_of_type_Int).append(", screenColorR: ").append(this.jdField_a_of_type_Float).append(", screenColorG: ").append(this.b).append(", screenColorB: ").append(this.c).append(", uA: ").append(this.d).append(", uD: ").append(this.e).append(", u_threshold: ").append(this.f).append(", u_clipBlack: ").append(this.g).append(", u_clipWhite: ").append(this.h).append("}");
+    return localStringBuilder.toString();
   }
 }
 

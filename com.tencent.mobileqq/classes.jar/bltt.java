@@ -1,12 +1,42 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import com.tencent.ttpic.openapi.watermark.LogicDataManager.OnGetQQNumberEventListener;
+import dov.com.qq.im.ae.camera.ui.watermark.WaterMarkOnlineUserManager.1.1;
+import java.util.Random;
 
-class bltt
-  extends RecyclerView.ViewHolder
+public class bltt
+  implements LogicDataManager.OnGetQQNumberEventListener
 {
-  bltt(bltq parambltq, View paramView)
+  bltt(blts paramblts) {}
+  
+  public int onGetQQNumber()
   {
-    super(paramView);
+    long l = System.currentTimeMillis();
+    if (l - blts.a(this.a) > 60000L)
+    {
+      blts.a(this.a, l);
+      new Thread(new WaterMarkOnlineUserManager.1.1(this)).start();
+      if (l - blts.b(this.a) <= 1000L) {
+        break label168;
+      }
+      blts.b(this.a, l);
+    }
+    for (;;)
+    {
+      synchronized (blts.a(this.a))
+      {
+        if (blts.a(this.a) != 0) {
+          blts.a(this.a, blts.a(this.a) - 1000 + new Random().nextInt(2000));
+        }
+        return blts.a(this.a);
+        if (l - blts.a(this.a) >= 0L) {
+          break;
+        }
+        blts.a(this.a, l);
+      }
+      label168:
+      if (l - blts.b(this.a) < 0L) {
+        blts.b(this.a, l);
+      }
+    }
   }
 }
 

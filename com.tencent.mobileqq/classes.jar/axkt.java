@@ -1,16 +1,16 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class axkt
-  implements bllt
+  implements BusinessObserver
 {
-  public axkt(MultiAIOItemFragment paramMultiAIOItemFragment) {}
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    MultiAIOItemFragment.a(this.a).onTouchEvent(paramMotionEvent);
-    return false;
+    if (paramInt == 10000) {
+      a(paramBoolean, paramBundle.getBoolean("new"), paramBundle.getInt("gc_notify_type", 0));
+    }
   }
 }
 

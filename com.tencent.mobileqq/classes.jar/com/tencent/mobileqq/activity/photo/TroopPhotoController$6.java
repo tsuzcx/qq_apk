@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.activity.photo;
 
-import aksb;
 import com.tencent.mobileqq.app.TroopManager;
 
-public class TroopPhotoController$6
+class TroopPhotoController$6
   implements Runnable
 {
-  public TroopPhotoController$6(aksb paramaksb, TroopManager paramTroopManager) {}
+  TroopPhotoController$6(TroopPhotoController paramTroopPhotoController, TroopManager paramTroopManager) {}
   
   public void run()
   {
-    this.a.b(this.this$0.a);
+    this.val$fmi.b(this.this$0.mTroopInfo);
   }
 }
 

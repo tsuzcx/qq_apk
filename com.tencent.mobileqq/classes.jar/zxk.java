@@ -1,18 +1,20 @@
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 
-public class zxk
-  implements bdhy
+class zxk
+  implements Downloader.DownloadListener
 {
-  public zxk(QRLoginMgrActivity paramQRLoginMgrActivity, zyr paramzyr) {}
+  zxk(zxj paramzxj, zwr paramzwr, String paramString) {}
   
-  public void a()
-  {
-    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, this.jdField_a_of_type_Zyr);
-  }
+  public void onDownloadCanceled(String paramString) {}
   
-  public void b()
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult) {}
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, this.jdField_a_of_type_Zyr);
+    zxj.a(this.jdField_a_of_type_Zxj, this.jdField_a_of_type_Zwr, zxg.a().b(this.jdField_a_of_type_JavaLangString));
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.debug.page;
 
-import amyf;
+import alsz;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -9,7 +9,7 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 public abstract class CmGameDebugBaseFragment
   extends ReportV4Fragment
 {
-  public amyf a;
+  public alsz a;
   
   public void a()
   {
@@ -18,9 +18,9 @@ public abstract class CmGameDebugBaseFragment
     }
   }
   
-  public void a(amyf paramamyf)
+  public void a(alsz paramalsz)
   {
-    this.a = paramamyf;
+    this.a = paramalsz;
   }
   
   public void onDestroy()

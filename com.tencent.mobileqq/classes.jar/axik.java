@@ -1,35 +1,38 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class axik
-  implements bjey
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/NativeUiJumpScheme;", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "nativeUiIntent", "needCustomJump", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class axik
+  extends axhx
 {
-  public axik(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
-  
-  public void onItemSelect(View paramView, int paramInt)
+  @NotNull
+  protected PendingIntent a(@NotNull axib paramaxib)
   {
-    int i = 2;
-    if (paramInt == 1)
-    {
-      axjn.a("MsgBackup.MsgBackupSelectionFragment", "click cancel btn mfrom = %d,  pcHandler = %b", new Object[] { Integer.valueOf(MsgBackupSelectionFragment.a(this.a)), Boolean.valueOf(axgj.c) });
-      if (MsgBackupSelectionFragment.a(this.a) != 0) {
-        break label79;
-      }
-      paramInt = i;
-      if (MsgBackupSelectionFragment.a(this.a)) {
-        paramInt = 3;
-      }
-      axjk.a("0X800A242", paramInt);
-    }
-    for (;;)
-    {
-      this.a.onBackEvent();
-      return;
-      label79:
-      if ((axgj.c) && (axfy.a().a() == 1)) {
-        axjk.a("0X800A266", 5);
-      }
-    }
+    Intrinsics.checkParameterIsNotNull(paramaxib, "pushComponent");
+    return e(paramaxib);
+  }
+  
+  protected boolean a()
+  {
+    return true;
+  }
+  
+  @NotNull
+  public final PendingIntent e(@NotNull axib paramaxib)
+  {
+    Intrinsics.checkParameterIsNotNull(paramaxib, "pushComponent");
+    BaseApplication localBaseApplication = BaseApplication.context;
+    Intent localIntent = new Intent((Context)localBaseApplication, NotifyPushSettingActivity.class);
+    localIntent.addFlags(268435456);
+    paramaxib = PendingIntent.getActivity((Context)localBaseApplication, paramaxib.d, localIntent, 134217728);
+    Intrinsics.checkExpressionValueIsNotNull(paramaxib, "PendingIntent.getActivit…tent.FLAG_UPDATE_CURRENT)");
+    return paramaxib;
   }
 }
 

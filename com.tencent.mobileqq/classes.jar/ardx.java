@@ -1,92 +1,71 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import java.io.File;
+import java.net.HttpURLConnection;
 
 public class ardx
-  extends arac<ardy>
 {
-  public static int a = 16777216;
-  public static int b = 10240;
+  public final int a;
+  public final File a;
+  public final String a;
+  public HttpURLConnection a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f = "";
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
   
-  @NonNull
-  public ardy a(int paramInt)
+  public ardx(String paramString, File paramFile, int paramInt)
   {
-    ardy localardy = new ardy();
-    localardy.a = a;
-    localardy.b = b;
-    return localardy;
-  }
-  
-  @Nullable
-  public ardy a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length == 0)) {
-      return new ardy();
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith(HttpDownloadUtil.PROTOCOL_HTTPS))) {
+      this.jdField_b_of_type_Boolean = true;
     }
-    paramArrayOfaraj = paramArrayOfaraj[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("FavLocalEmoticonsProcessor", 2, "onParsed, content:" + paramArrayOfaraj);
-    }
-    ardy localardy = new ardy();
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramArrayOfaraj);
-      localardy.a = Integer.valueOf(localJSONObject.getString("maxPicSize")).intValue();
-      localardy.b = Integer.valueOf(localJSONObject.getString("maxLongSideLen")).intValue();
-      return localardy;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("FavLocalEmoticonsProcessor", 1, "onParsed error, content:" + paramArrayOfaraj);
-      localardy.a = a;
-      localardy.b = b;
-    }
-    return localardy;
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(ardy paramardy)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FavLocalEmoticonsProcessor", 2, "onUpdate");
-    }
+    return this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + ".tmp";
   }
   
-  public Class clazz()
+  public void a()
   {
-    return ardy.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FavLocalEmoticonsProcessor", 2, "onReqFailed");
-    }
-  }
-  
-  public int type()
-  {
-    return 561;
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_e_of_type_Int = 0;
+    this.h = null;
+    this.i = null;
+    this.g = null;
+    this.k = null;
+    this.j = null;
+    this.d = null;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardx
  * JD-Core Version:    0.7.0.1
  */

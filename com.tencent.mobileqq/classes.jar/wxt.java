@@ -1,22 +1,18 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
 
 public class wxt
-  extends QQUIEventReceiver<wxp, wsm>
+  extends wrx
 {
-  public wxt(@NonNull wxp paramwxp)
-  {
-    super(paramwxp);
-  }
+  public wxt(AbsVideoInfoWidget paramAbsVideoInfoWidget) {}
   
-  public void a(@NonNull wxp paramwxp, @NonNull wsm paramwsm)
+  public void g()
   {
-    paramwxp.a.b(paramwsm);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wsm.class;
+    super.g();
+    if (this.a.jdField_b_of_type_Boolean)
+    {
+      AbsVideoInfoWidget.a(this.a);
+      xvv.b(this.a.jdField_b_of_type_JavaLangString, "destroy by activity");
+    }
   }
 }
 

@@ -1,51 +1,71 @@
-import android.content.Intent;
-import android.content.IntentFilter;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
 public class apuv
-  implements apum
+  extends aqgc<apuu>
 {
-  private apuv(apuk paramapuk) {}
-  
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  @NonNull
+  public apuu a()
   {
-    if ((!"ScanCode".equals(paramString)) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsFunction())) {}
-    for (;;)
-    {
-      return false;
-      long l = this.a.a(paramArrayOfVariantWrapper[0].Copy());
-      paramString = new Intent();
-      paramString.setClassName("com.tencent.mobileqq", "com.tencent.biz.qrcode.activity.ScannerActivity");
-      paramString.putExtra("from", apuk.class.getName());
-      paramString.putExtra("finishAfterSucc", true);
-      if (apuk.a(this.a) != null) {}
+    return new apuu();
+  }
+  
+  @NonNull
+  public apuu a(@NonNull aptx[] paramArrayOfaptx)
+  {
+    QLog.e("VasUpdateConfProcessor", 1, "onParsed ");
+    if (paramArrayOfaptx != null) {
       try
       {
-        BaseApplicationImpl.getApplication().unregisterReceiver(apuk.a(this.a));
-        label105:
-        apuk.a(this.a, null);
-        apuk.a(this.a, new apuw(this, l));
-        paramArrayOfVariantWrapper = new IntentFilter("com.tencent.mobileqq.ark.API.scanResultAction");
-        BaseApplicationImpl.getApplication().registerReceiver(apuk.a(this.a), paramArrayOfVariantWrapper, "com.tencent.msg.permission.pushnotify", null);
-        paramArrayOfVariantWrapper = BaseActivity.sTopActivity;
-        if (paramArrayOfVariantWrapper == null) {
-          continue;
+        if (paramArrayOfaptx.length > 0)
+        {
+          int j = paramArrayOfaptx.length;
+          int i = 0;
+          while (i < j)
+          {
+            aptx localaptx = paramArrayOfaptx[i];
+            if (localaptx != null)
+            {
+              apuu localapuu = apuu.a(localaptx.a);
+              if (QLog.isColorLevel()) {
+                QLog.d("VasUpdateConfProcessor", 2, "onParsed " + localaptx.a);
+              }
+              if (localapuu != null) {
+                return localapuu;
+              }
+            }
+            i += 1;
+          }
         }
-        paramArrayOfVariantWrapper.startActivity(paramString);
-        return false;
+        return new apuu();
       }
-      catch (Exception paramArrayOfVariantWrapper)
+      catch (Exception paramArrayOfaptx)
       {
-        break label105;
+        paramArrayOfaptx.printStackTrace();
+        QLog.e("VasUpdateConfProcessor", 1, "onParsed Exception = " + paramArrayOfaptx.getMessage());
       }
     }
+  }
+  
+  @NonNull
+  public apuu b()
+  {
+    return new apuu();
+  }
+  
+  public Class<apuu> clazz()
+  {
+    return apuu.class;
+  }
+  
+  public int type()
+  {
+    return 649;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apuv
  * JD-Core Version:    0.7.0.1
  */

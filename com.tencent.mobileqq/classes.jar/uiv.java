@@ -1,23 +1,13 @@
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract class uiv
+final class uiv
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<uix> a;
-  
-  public uiv(uix paramuix)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramuix);
+    paramDialogInterface.dismiss();
   }
-  
-  public boolean a()
-  {
-    if ((this.a == null) || (this.a.get() == null)) {
-      return false;
-    }
-    return a((uix)this.a.get());
-  }
-  
-  public abstract boolean a(uix paramuix);
 }
 
 

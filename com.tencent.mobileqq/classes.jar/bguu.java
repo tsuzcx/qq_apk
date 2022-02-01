@@ -1,25 +1,16 @@
-import java.util.List;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class bguu
+  extends SosoInterface.OnLocationListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<String> a;
-  public boolean a;
-  public int b = 0;
-  public String b;
-  
-  public String a(int paramInt)
+  public bguu(WebViewFragment paramWebViewFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if ((this.a == null) || (this.a.size() == 0)) {
-      return "";
-    }
-    if (paramInt < this.a.size()) {
-      return (String)this.a.get(paramInt);
-    }
-    return (String)this.a.get(this.a.size() - 1);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
 }
 
 

@@ -1,32 +1,30 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
 public class afkd
-  extends MqqHandler
+  implements Animation.AnimationListener
 {
-  public afkd(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public afkd(TroopChatPie paramTroopChatPie) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      this.a.finish();
-      return;
-      paramMessage = (String)paramMessage.obj;
-      if (!TextUtils.isEmpty(paramMessage))
-      {
-        RegisterPhoneNumActivity.a(this.a).a(paramMessage);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("RegisterPhoneNumActivity", 2, "captcha sig is empty");
+    this.a.afRoot.setBackgroundResource(2130843669);
+    this.a.mCustomTitleView.setBackgroundResource(2130843675);
+    this.a.c.setVisibility(8);
+    this.a.d.setVisibility(8);
+    this.a.a.setVisibility(0);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.c.setVisibility(0);
+    this.a.d.setVisibility(0);
   }
 }
 

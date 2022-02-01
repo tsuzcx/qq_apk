@@ -1,21 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class axkk
-  implements View.OnClickListener
 {
-  public axkk(MultiAIOFragment paramMultiAIOFragment) {}
-  
-  public void onClick(View paramView)
+  public static void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "indicator onClick() called with: v = [" + paramView + "]");
-    }
-    MultiAIOFragment.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    new axkn().a("now_qq_gzh").b("notice_click").a();
+  }
+  
+  public static void a(int paramInt, String paramString1, String paramString2)
+  {
+    new axkn().a("now_qq_gzh").b("msg_exp").a(paramInt).d(paramString1).e(paramString2).a();
+  }
+  
+  public static void a(String paramString)
+  {
+    new axkn().a("now_qq_gzh").b("homepage_view").c(paramString).a();
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    new axkn().a("now_qq_gzh").b("follow_anchor_click").a("anchor", paramString).a(paramInt).a();
+  }
+  
+  public static void b()
+  {
+    new axkn().a("now_qq_gzh").b("notice_page_view").a();
+  }
+  
+  public static void b(int paramInt, String paramString1, String paramString2)
+  {
+    new axkn().a("now_qq_gzh").b("msg_click").a(paramInt).d(paramString1).e(paramString2).a();
+  }
+  
+  public static void b(String paramString)
+  {
+    new axkn().a("now_qq_gzh").b("follow_anchor_exp").a("anchor", paramString).a();
+  }
+  
+  public static void b(String paramString, int paramInt)
+  {
+    new axkn().a("now_qq_gzh").b("rec_anchor_click").a("anchor", paramString).a(paramInt).a();
+  }
+  
+  public static void c(String paramString)
+  {
+    new axkn().a("now_qq_gzh").b("rec_anchor_exp").a("anchor", paramString).a();
   }
 }
 

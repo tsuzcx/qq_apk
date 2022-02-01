@@ -10,41 +10,41 @@ final class WebView$9
     if (WebView.h() == null) {
       TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--mAppContext == null");
     }
-    d locald;
+    f localf;
     int i;
     int j;
     do
     {
       return;
-      locald = d.a(true);
-      if (d.b)
+      localf = f.a(true);
+      if (f.b)
       {
         TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--needReboot = true");
         return;
       }
-      k localk = k.a(WebView.h());
-      i = localk.c();
+      m localm = m.a(WebView.h());
+      i = localm.c();
       TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--installStatus = " + i);
       if (i == 2)
       {
         TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--install setTbsNeedReboot true");
-        locald.a(String.valueOf(localk.b()));
-        locald.b(true);
+        localf.a(String.valueOf(localm.b()));
+        localf.b(true);
         return;
       }
-      j = localk.b("copy_status");
+      j = localm.b("copy_status");
       TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--copyStatus = " + j);
       if (j == 1)
       {
         TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--copy setTbsNeedReboot true");
-        locald.a(String.valueOf(localk.c("copy_core_ver")));
-        locald.b(true);
+        localf.a(String.valueOf(localm.c("copy_core_ver")));
+        localf.b(true);
         return;
       }
-    } while ((v.a().b()) || ((i != 3) && (j != 3)));
+    } while ((x.a().b()) || ((i != 3) && (j != 3)));
     TbsLog.d("TbsNeedReboot", "WebView.updateNeeeRebootStatus--setTbsNeedReboot true");
-    locald.a(String.valueOf(d.c()));
-    locald.b(true);
+    localf.a(String.valueOf(f.c()));
+    localf.b(true);
   }
 }
 

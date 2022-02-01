@@ -1,35 +1,33 @@
-import com.tencent.TMG.utils.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class arqr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class arqr
+  implements View.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  arqr(arql paramarql) {}
   
-  public static arqr a(araj[] paramArrayOfaraj)
+  public final void onClick(View paramView)
   {
-    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0)) {
-      return null;
-    }
-    arqr localarqr = new arqr();
-    try
+    bcef.b(null, "dc00898", "", "", "0X800B08B", "0X800B08B", 1, 0, "", "", "", "");
+    this.a.dismiss();
+    if (arql.a(this.a) != null)
     {
-      paramArrayOfaraj = new JSONObject(paramArrayOfaraj[0].jdField_a_of_type_JavaLangString);
-      localarqr.jdField_a_of_type_Boolean = paramArrayOfaraj.getBoolean("enable");
-      localarqr.jdField_a_of_type_JavaLangString = paramArrayOfaraj.getString("content");
-      return localarqr;
+      arqn localarqn = arql.a(this.a);
+      if (localarqn == null) {
+        Intrinsics.throwNpe();
+      }
+      localarqn.a(arql.a(this.a));
     }
-    catch (JSONException paramArrayOfaraj)
-    {
-      QLog.e("TencentDocMiniProgramGrayTipsBean", 1, paramArrayOfaraj.getLocalizedMessage(), paramArrayOfaraj);
-    }
-    return localarqr;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import android.os.Bundle;
 
 public abstract interface rgw
 {
-  public abstract void a(@NotNull List<UgcVideo> paramList);
+  public abstract void a(Bundle paramBundle, float paramFloat);
+  
+  public abstract void a(Bundle paramBundle, int paramInt, float paramFloat);
+  
+  public abstract void a(Bundle paramBundle, String paramString);
+  
+  public abstract void a(String paramString);
 }
 
 

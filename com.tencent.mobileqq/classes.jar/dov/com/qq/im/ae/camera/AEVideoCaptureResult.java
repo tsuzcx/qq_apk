@@ -1,9 +1,7 @@
 package dov.com.qq.im.ae.camera;
 
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
-
 public class AEVideoCaptureResult
-  extends CameraCaptureView.VideoCaptureResult
+  extends BaseVideoCaptureResult
 {
   public long finishTimeMs;
   public long startTimeMs;

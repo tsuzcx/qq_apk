@@ -1,6 +1,7 @@
 package cooperation.qwallet.plugin;
 
 import Override;
+import amtj;
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.Intent;
@@ -10,7 +11,6 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import anzj;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 import com.tencent.mobileqq.pluginsdk.IPluginActivity;
@@ -217,8 +217,9 @@ public class QWalletPluginProxyActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -255,7 +256,7 @@ public class QWalletPluginProxyActivity
         if (l - this.lastTipsTime > 3000L)
         {
           this.lastTipsTime = l;
-          QQToast.a(this, anzj.a(2131710321), 0).a();
+          QQToast.a(this, amtj.a(2131710553), 0).a();
         }
         return;
       }
@@ -358,6 +359,11 @@ public class QWalletPluginProxyActivity
       }
     }
     return super.isPatternLockOpened();
+  }
+  
+  public final boolean isResume()
+  {
+    return !this.mIsPause;
   }
   
   public boolean isWrapContent()

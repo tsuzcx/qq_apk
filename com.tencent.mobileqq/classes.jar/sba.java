@@ -1,33 +1,24 @@
-import android.graphics.Bitmap;
-import android.view.PixelCopy.OnPixelCopyFinishedListener;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "copyResult", "", "onPixelCopyFinished", "com/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$captureViewApiO$1$1"}, k=3, mv={1, 1, 16})
-final class sba
-  implements PixelCopy.OnPixelCopyFinishedListener
+class sba
+  extends sif
 {
-  sba(Bitmap paramBitmap, saw paramsaw, View paramView, float paramFloat, sax paramsax) {}
+  sba(sab paramsab) {}
   
-  public final void onPixelCopyFinished(int paramInt)
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    Object localObject;
-    if (paramInt == 0)
-    {
-      localObject = this.jdField_a_of_type_Saw;
-      Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      Intrinsics.checkExpressionValueIsNotNull(localBitmap, "bitmap");
-      saw.a((saw)localObject, localBitmap, this.jdField_a_of_type_Sax);
-    }
-    do
-    {
-      return;
-      QLog.e("ScreenCaptureHelper", 1, "captureViewApiO failed, copyResult:" + paramInt);
-      localObject = this.jdField_a_of_type_Sax;
-    } while (localObject == null);
-    ((sax)localObject).a();
+    sab.a(this.a, paramVideoInfo);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public int c()
+  {
+    return 1;
   }
 }
 

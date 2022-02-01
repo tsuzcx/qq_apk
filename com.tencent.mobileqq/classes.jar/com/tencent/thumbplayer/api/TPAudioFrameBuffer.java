@@ -5,16 +5,14 @@ public class TPAudioFrameBuffer
   public static final int TP_AUDIO_CH_LAYOUT_MONO = 4;
   public static final int TP_AUDIO_CH_LAYOUT_NONE = 0;
   public static final int TP_AUDIO_CH_LAYOUT_STEREO = 3;
-  public static final int TP_AUDIO_SAMPLE_FMT_NONE = -1;
-  public static final int TP_AUDIO_SAMPLE_FMT_S16 = 1;
-  public static final int TP_AUDIO_SAMPLE_FMT_S32 = 2;
-  public static final int TP_AUDIO_SAMPLE_FMT_U8 = 0;
   private static final int TP_CH_FRONT_CENTER = 4;
   private static final int TP_CH_FRONT_LEFT = 1;
   private static final int TP_CH_FRONT_RIGHT = 2;
   public long channelLayout;
+  public int channels;
   public byte[][] data;
   public int format;
+  public int nbSamples;
   public long ptsMs;
   public int sampleRate;
   public int[] size;

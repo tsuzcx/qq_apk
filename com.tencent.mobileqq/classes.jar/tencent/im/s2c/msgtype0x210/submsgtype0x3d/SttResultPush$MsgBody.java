@@ -8,8 +8,9 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class SttResultPush$MsgBody
   extends MessageMicro<MsgBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "uint32_sub_cmd", "msg_ptt_resp" }, new Object[] { Integer.valueOf(0), null }, MsgBody.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "uint32_sub_cmd", "msg_ptt_resp", "msg_ptt_shard_resp" }, new Object[] { Integer.valueOf(0), null, null }, MsgBody.class);
   public SttResultPush.TransPttResp msg_ptt_resp = new SttResultPush.TransPttResp();
+  public SttResultPush.TransPttShardRsp msg_ptt_shard_resp = new SttResultPush.TransPttShardRsp();
   public final PBUInt32Field uint32_sub_cmd = PBField.initUInt32(0);
 }
 

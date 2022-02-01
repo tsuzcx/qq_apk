@@ -1,39 +1,38 @@
-import android.os.Debug;
-import java.io.IOException;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import org.apache.http.entity.ByteArrayEntity;
 
 public class blgw
+  extends ByteArrayEntity
 {
-  private static boolean jdField_a_of_type_Boolean;
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString = { "35872667", "354653668", "270749863", "279242625", "1849510872" };
+  protected final int a;
+  protected final int b;
   
-  public static void a(String paramString)
+  public blgw(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      return;
-      Object localObject = jdField_a_of_type_ArrayOfJavaLangString;
-      int j = localObject.length;
-      int i = 0;
-      while (i < j)
-      {
-        if (localObject[i].equals(paramString))
-        {
-          localObject = antf.bg + "dump_";
-          try
-          {
-            Debug.dumpHprofData((String)localObject + paramString + System.currentTimeMillis());
-            jdField_a_of_type_Boolean = true;
-            return;
-          }
-          catch (IOException paramString)
-          {
-            return;
-          }
-        }
-        i += 1;
-      }
+    super(paramArrayOfByte);
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public InputStream getContent()
+  {
+    return new ByteArrayInputStream(this.content, this.a, this.b);
+  }
+  
+  public long getContentLength()
+  {
+    return this.b;
+  }
+  
+  public void writeTo(OutputStream paramOutputStream)
+  {
+    if (paramOutputStream == null) {
+      throw new IllegalArgumentException("Output stream may not be null");
     }
+    paramOutputStream.write(this.content, this.a, this.b);
+    paramOutputStream.flush();
   }
 }
 

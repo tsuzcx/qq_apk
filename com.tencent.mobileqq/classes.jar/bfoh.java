@@ -1,8 +1,16 @@
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
 
-class bfoh
+public class bfoh
+  implements DialogInterface.OnDismissListener
 {
-  TextView a;
+  public bfoh(UpgradeActivity paramUpgradeActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.finish();
+  }
 }
 
 

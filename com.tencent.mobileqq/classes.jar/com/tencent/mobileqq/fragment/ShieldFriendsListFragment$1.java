@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.fragment;
 
+import amsw;
 import android.support.v4.app.FragmentActivity;
-import anyw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 
@@ -12,7 +12,7 @@ class ShieldFriendsListFragment$1
   
   public void run()
   {
-    ArrayList localArrayList = ((anyw)this.this$0.getActivity().app.getManager(51)).a();
+    ArrayList localArrayList = ((amsw)this.this$0.getActivity().app.getManager(51)).a();
     if (this.this$0.getActivity() == null) {
       return;
     }

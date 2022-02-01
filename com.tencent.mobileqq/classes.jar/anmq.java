@@ -1,95 +1,16 @@
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 public class anmq
+  extends abwe
 {
-  public static void a(int paramInt)
+  public anmq(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, abww paramabww)
   {
-    a(paramInt, "");
-  }
-  
-  public static void a(int paramInt1, int paramInt2)
-  {
-    a(paramInt1, null, paramInt2, -100, 0L, 0, 0L, new Object[] { "" });
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, long paramLong, Object... paramVarArgs)
-  {
-    a(paramInt1, null, paramInt2, paramInt3, paramLong, 0, 0L, paramVarArgs);
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, Object... paramVarArgs)
-  {
-    a(paramInt1, null, paramInt2, paramInt3, 0L, 0, 0L, paramVarArgs);
-  }
-  
-  public static void a(int paramInt1, int paramInt2, Object... paramVarArgs)
-  {
-    a(paramInt1, null, paramInt2, -100, 0L, 0, 0L, paramVarArgs);
-  }
-  
-  public static void a(int paramInt, String paramString)
-  {
-    a(paramInt, paramString, null);
-  }
-  
-  public static void a(int paramInt1, String paramString, int paramInt2)
-  {
-    a(paramInt1, paramString, paramInt2, -100, 0L, 0, 0L, new Object[] { "" });
-  }
-  
-  public static void a(int paramInt1, String paramString, int paramInt2, int paramInt3, long paramLong1, int paramInt4, long paramLong2, Object... paramVarArgs)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
-    int i = 0;
-    while (i < paramVarArgs.length)
-    {
-      localStringBuilder.append(paramVarArgs[i]);
-      i += 1;
+    super(paramQQAppInterface, paramQQMessageFacade, paramabww);
+    if (QLog.isColorLevel()) {
+      QLog.d("TinyIdMsgMessageManager", 2, "TinyIdMsgMessageManager() called with: app = [" + paramQQAppInterface + "], msgFacade = [" + paramQQMessageFacade + "], msgPool = [" + paramabww + "]");
     }
-    anmx.a(paramInt1, paramString, paramInt2, paramInt3, paramLong1, paramInt4, paramLong2, new Object[] { localStringBuilder.toString() });
-  }
-  
-  public static void a(int paramInt1, String paramString, int paramInt2, int paramInt3, Object... paramVarArgs)
-  {
-    a(paramInt1, paramString, paramInt2, paramInt3, 0L, 0, 0L, paramVarArgs);
-  }
-  
-  public static void a(int paramInt1, String paramString, int paramInt2, Object... paramVarArgs)
-  {
-    a(paramInt1, paramString, paramInt2, -100, 0L, 0, 0L, paramVarArgs);
-  }
-  
-  public static void a(int paramInt, String paramString1, String paramString2)
-  {
-    anmx.a(paramInt, paramString1, paramString2);
-  }
-  
-  public static void a(int paramInt, String paramString1, String paramString2, int... paramVarArgs)
-  {
-    anmx.a(paramInt, paramString1, paramString2, paramVarArgs);
-  }
-  
-  public static void a(int paramInt, String paramString, int... paramVarArgs)
-  {
-    a(paramInt, paramString, null, paramVarArgs);
-  }
-  
-  public static void a(int paramInt, boolean paramBoolean)
-  {
-    anmx.a(paramInt, paramBoolean);
-  }
-  
-  public static void a(anmr paramanmr)
-  {
-    anmx.a(paramanmr);
-  }
-  
-  public static void b(int paramInt)
-  {
-    b(paramInt, null);
-  }
-  
-  public static void b(int paramInt, String paramString)
-  {
-    anmx.a(paramInt, paramString);
   }
 }
 

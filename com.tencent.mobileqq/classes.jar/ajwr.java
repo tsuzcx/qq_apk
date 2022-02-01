@@ -1,22 +1,23 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
 
-class ajwr
-  extends anyu
+public class ajwr
+  implements Animator.AnimatorListener
 {
-  ajwr(ajwm paramajwm) {}
+  public ajwr(RedPacketKuaKuaFragment paramRedPacketKuaKuaFragment) {}
   
-  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CTEntryMng", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      ajwm.a(this.a, true);
-      ajwm.a(this.a);
-    }
+    RedPacketKuaKuaFragment.a(this.a).setRotation(0.0F);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

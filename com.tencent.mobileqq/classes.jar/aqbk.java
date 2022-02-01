@@ -1,29 +1,68 @@
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.config.business.QQComicConfBean;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqbk
+  extends aptq<QQComicConfBean>
 {
-  public long a;
-  public aqbh a;
-  public ByteArrayOutputStream a;
-  public File a;
-  public String a;
-  public final ArrayList<Object> a;
-  public byte[] a;
-  public String b;
-  public final ArrayList<aqbg> b = new ArrayList();
-  public String c;
-  
-  private aqbk()
+  @NonNull
+  public QQComicConfBean a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Long = -1L;
+    return new QQComicConfBean();
+  }
+  
+  @Nullable
+  public QQComicConfBean a(aptx[] paramArrayOfaptx)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQComicConfProcessor", 2, "onParsed");
+    }
+    return QQComicConfBean.a(paramArrayOfaptx);
+  }
+  
+  public void a(QQComicConfBean paramQQComicConfBean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQComicConfProcessor", 2, "onUpdate " + paramQQComicConfBean.toString());
+    }
+  }
+  
+  public Class<QQComicConfBean> clazz()
+  {
+    return QQComicConfBean.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 534;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqbk
  * JD-Core Version:    0.7.0.1
  */

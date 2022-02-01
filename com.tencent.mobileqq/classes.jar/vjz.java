@@ -1,16 +1,21 @@
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudRead.StGetCommentListRsp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class vjz
-  implements aadm<Object>
+  implements DialogInterface.OnClickListener
 {
-  vjz(vjy paramvjy, int paramInt, FeedCloudMeta.StFeed paramStFeed, boolean paramBoolean) {}
+  vjz(vjx paramvjx) {}
   
-  public void a(Object... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
-      vjy.a(this.jdField_a_of_type_Vjy, this.jdField_a_of_type_Int, ((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (FeedCloudRead.StGetCommentListRsp)paramVarArgs[3], this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, false, this.jdField_a_of_type_Boolean);
+    switch (paramInt)
+    {
     }
+    do
+    {
+      return;
+    } while (vjx.a(this.a) == null);
+    vjx.a(this.a).b(vjx.a(this.a));
   }
 }
 

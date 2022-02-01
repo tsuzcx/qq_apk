@@ -1,58 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.Context;
 
-public class paz
-  implements AladdinConfigHandler
+final class paz
+  implements tgk
 {
-  private static final boolean a;
-  private static boolean b;
+  paz(Context paramContext, String paramString) {}
   
-  static
+  public void a()
   {
-    if (((Integer)bnrf.a("readinjoy_channel_mode", Integer.valueOf(-1))).intValue() == 2) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a = bool;
-      b = true;
-      return;
-    }
-  }
-  
-  public static boolean a()
-  {
-    return false;
-  }
-  
-  public static boolean b()
-  {
-    return b;
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("ChannelModeConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = pan.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("ChannelModeConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (TextUtils.equals(str1, "channel_mode")) {
-        bnrf.a("readinjoy_channel_mode", Integer.valueOf(Integer.valueOf(str2).intValue()));
-      }
-    }
-    return true;
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    QLog.d("ChannelModeConfigHandler", 1, "[onWipeConfig]");
-    bnrf.a("readinjoy_channel_mode", Integer.valueOf(-1));
+    pay.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
   }
 }
 

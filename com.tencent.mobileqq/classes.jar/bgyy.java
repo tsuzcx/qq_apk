@@ -1,53 +1,20 @@
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import pttcenterservice.PttShortVideo.PttShortVideoUploadResp;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.webso.WebSoService;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
 
-class bgyy
-  implements ITransactionCallback
+public class bgyy
+  implements bgzb
 {
-  bgyy(bgyx parambgyx) {}
+  public bgyy(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState) {}
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "upload onFailed errn:" + paramInt);
+    if (TextUtils.isEmpty(paramString)) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.a = 10004;
     }
-    this.a.e();
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e = false;
   }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "upload onSuccess");
-    }
-    paramHashMap = new PttShortVideo.PttShortVideoUploadResp();
-    try
-    {
-      paramArrayOfByte = (PttShortVideo.PttShortVideoUploadResp)paramHashMap.mergeFrom(paramArrayOfByte);
-      if (paramArrayOfByte.str_fileid.has()) {
-        this.a.c = paramArrayOfByte.str_fileid.get();
-      }
-      this.a.b = true;
-      this.a.b();
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
 }
 
 

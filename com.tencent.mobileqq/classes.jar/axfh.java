@@ -1,46 +1,121 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class axfh
-  extends Handler
+  extends BaseAdapter
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  public axfh() {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private axed jdField_a_of_type_Axed;
+  private NearbyPeopleCard jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard;
+  private List<axfs> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public axfh(Looper paramLooper)
+  public axfh(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (paramQQAppInterface != null) {
+      this.jdField_a_of_type_Axed = new axed(paramQQAppInterface, paramContext);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public List<axfs> a()
   {
-    int i = paramMessage.what;
-    Object localObject = (Object[])paramMessage.obj;
-    if (i == 1)
-    {
-      if (ChatBackgroundManager.c < 3)
-      {
-        paramMessage = (String)localObject[0];
-        localObject = (QQAppInterface)localObject[1];
-        ChatBackgroundManager.a((QQAppInterface)localObject, paramMessage, bdmc.a(BaseApplication.getContext()));
-        ChatBackgroundManager.c += 1;
-        if (QLog.isColorLevel()) {
-          QLog.d("ThemeDownloadTrace", 2, "reportTimes is:" + ChatBackgroundManager.c);
-        }
-        Message localMessage = ChatBackgroundManager.a.obtainMessage();
-        localMessage.what = 1;
-        localMessage.obj = new Object[] { paramMessage, localObject };
-        ChatBackgroundManager.a.sendMessageDelayed(localMessage, 120000L);
-      }
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(NearbyPeopleCard paramNearbyPeopleCard)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard = paramNearbyPeopleCard;
+  }
+  
+  public void a(List<axfs> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
-    else {
+    notifyDataSetChanged();
+  }
+  
+  public void b(List<axfs> paramList)
+  {
+    if (paramList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (this.jdField_a_of_type_Axed == null) {
+      return -1;
+    }
+    return this.jdField_a_of_type_Axed.a((axfs)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (this.jdField_a_of_type_Axed == null) {
+      localView = null;
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      axfs localaxfs = (axfs)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      int i = this.jdField_a_of_type_Axed.a(localaxfs);
+      axdo localaxdo = this.jdField_a_of_type_Axed.a(i);
+      localView = paramView;
+      if (localaxdo != null)
+      {
+        localaxdo.a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard);
+        localView = localaxdo.a(localaxfs, this.jdField_a_of_type_AndroidContentContext, paramView);
+      }
+      paramView = localView;
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    if (this.jdField_a_of_type_Axed == null) {
+      return 1;
+    }
+    return this.jdField_a_of_type_Axed.a();
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if (!TextUtils.equals(paramString, this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin)) {
       return;
     }
-    ChatBackgroundManager.c = 0;
+    notifyDataSetChanged();
   }
 }
 

@@ -2,13 +2,13 @@ package cooperation.qwallet.plugin.ipc;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bhjx;
-import bhlg;
+import bftf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -85,7 +85,7 @@ class CorpReq$2
             if (QLog.isColorLevel())
             {
               ((StringBuffer)localObject3).append(" nick=");
-              ((StringBuffer)localObject3).append(bhjx.a((String)localObject1));
+              ((StringBuffer)localObject3).append(bftf.a((String)localObject1));
               paramBundle = (Bundle)localObject1;
             }
             ((Map)localObject2).put(localObject5, paramBundle);
@@ -111,7 +111,7 @@ class CorpReq$2
           localObject2 = this.val$resp;
           paramBundle = (Bundle)localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            paramBundle = bhlg.h(this.val$app, this.this$0.troopUin, this.this$0.memUin);
+            paramBundle = ContactUtils.getTroopMemberName(this.val$app, this.this$0.troopUin, this.this$0.memUin);
           }
           ((CorpResp)localObject2).memNick = paramBundle;
           this.val$resp.toBundle((Bundle)localObject3);
@@ -131,7 +131,7 @@ class CorpReq$2
           ((JSONObject)localObject6).put("memUin", localObject7);
           paramBundle = (Bundle)localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            paramBundle = bhlg.h(this.val$app, this.this$0.troopUin, (String)localObject7);
+            paramBundle = ContactUtils.getTroopMemberName(this.val$app, this.this$0.troopUin, (String)localObject7);
           }
           ((JSONObject)localObject6).put("memNick", paramBundle);
           ((JSONArray)localObject4).put(localObject6);

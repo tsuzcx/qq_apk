@@ -1,46 +1,83 @@
-import com.tencent.biz.qqcircle.widgets.QCircleFollowUserListItemView;
+import android.content.Context;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import java.util.HashSet;
+import java.util.Set;
 
 public class wag
-  implements wal
+  extends RecyclerView.ItemDecoration
 {
-  public wag(QCircleFollowUserListItemView paramQCircleFollowUserListItemView) {}
+  static final Set<Integer> a;
+  protected int a;
+  protected int b;
+  protected int c;
+  protected int d;
+  protected int e;
   
-  public void a()
+  static
   {
-    if (QCircleFollowUserListItemView.a(this.a) == 1)
-    {
-      vtq.a(QCircleFollowUserListItemView.a(this.a), 11, 29, 4);
-      return;
-    }
-    String str = QCircleFollowUserListItemView.a(this.a);
-    if (QCircleFollowUserListItemView.b(this.a) == 0) {}
-    for (int i = 28;; i = 30)
-    {
-      vtq.a(str, 11, i, 4);
-      return;
-    }
+    jdField_a_of_type_JavaUtilSet = new HashSet();
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1024));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(12));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
   }
   
-  public void a(int paramInt) {}
-  
-  public void b(int paramInt)
+  public wag(Context paramContext)
   {
-    if (paramInt == 0)
+    this.jdField_a_of_type_Int = AIOUtils.dp2px(5.0F, paramContext.getResources());
+    this.b = AIOUtils.dp2px(16.0F, paramContext.getResources());
+    this.c = AIOUtils.dp2px(8.5F, paramContext.getResources());
+    this.d = AIOUtils.dp2px(3.0F, paramContext.getResources());
+    this.e = AIOUtils.dp2px(3.0F, paramContext.getResources());
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    int k = paramRecyclerView.getChildViewHolder(paramView).getAdapterPosition();
+    paramView = paramRecyclerView.getAdapter();
+    if ((k < 0) || (k >= paramView.getItemCount())) {
+      return;
+    }
+    int m = paramView.getItemViewType(k);
+    if (paramView.getItemCount() > k + 1)
     {
-      if (QCircleFollowUserListItemView.a(this.a) == 1) {
-        vtq.a(QCircleFollowUserListItemView.a(this.a), 11, 29, 3);
+      int n = paramView.getItemViewType(k + 1);
+      int i = 0;
+      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(m))) {
+        i = 1;
+      }
+      int j = i;
+      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(n))) {
+        j = i + 1;
+      }
+      if (j == 1)
+      {
+        paramRect.right = this.d;
+        return;
+      }
+      if (j == 2)
+      {
+        paramRect.right = this.e;
+        return;
       }
     }
-    else {
-      return;
-    }
-    String str = QCircleFollowUserListItemView.a(this.a);
-    if (QCircleFollowUserListItemView.b(this.a) == 0) {}
-    for (paramInt = 28;; paramInt = 30)
+    if (m == 2)
     {
-      vtq.a(str, 11, paramInt, 3);
+      paramRect.right = this.b;
       return;
     }
+    if (k == paramState.getItemCount() - 1)
+    {
+      paramRect.right = this.c;
+      return;
+    }
+    paramRect.right = this.jdField_a_of_type_Int;
   }
 }
 

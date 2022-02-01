@@ -1,34 +1,90 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.appcommon.now.download.js.DownloadJSApi.2;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bjsg
-  implements DialogInterface.OnClickListener
+  extends BaseAdapter
 {
-  public bjsg(DownloadJSApi.2 param2) {}
+  private int jdField_a_of_type_Int = 1;
+  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
+  private int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bjsg(BaseAdapter paramBaseAdapter, int paramInt)
   {
-    try
+    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
+    if (paramInt > 0) {}
+    for (;;)
     {
-      paramDialogInterface.dismiss();
-      label6:
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjwo.b);
-      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjwo.j);
-      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjwo.f);
-      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjwo.i);
-      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjwo.l);
-      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bjwo.y, true);
-      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
-      bjwq.a().a(10, paramDialogInterface);
+      this.jdField_a_of_type_Int = paramInt;
+      if (this.jdField_a_of_type_AndroidWidgetBaseAdapter != null) {
+        this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(new bjsh(this));
+      }
+      return;
+      paramInt = 1;
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public BaseAdapter a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter;
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = b();
+    if (paramInt < 0)
+    {
+      this.b = 0;
       return;
     }
-    catch (Exception paramDialogInterface)
+    if (paramInt >= i)
     {
-      break label6;
+      this.b = (i - 1);
+      return;
     }
+    this.b = paramInt;
+  }
+  
+  public int b()
+  {
+    int i = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount();
+    int j = i / this.jdField_a_of_type_Int;
+    if (i % this.jdField_a_of_type_Int != 0) {}
+    for (i = 1;; i = 0) {
+      return i + j;
+    }
+  }
+  
+  public int getCount()
+  {
+    int i = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount();
+    if ((this.b + 1) * this.jdField_a_of_type_Int > i) {
+      return i % this.jdField_a_of_type_Int;
+    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItem(this.b * this.jdField_a_of_type_Int + paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItemId(this.b * this.jdField_a_of_type_Int + paramInt);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(this.b * this.jdField_a_of_type_Int + paramInt, paramView, paramViewGroup);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 

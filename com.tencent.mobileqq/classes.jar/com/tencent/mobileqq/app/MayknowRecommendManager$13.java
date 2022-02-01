@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import aobl;
+import amvo;
 
 public class MayknowRecommendManager$13
   implements Runnable
 {
-  public MayknowRecommendManager$13(aobl paramaobl) {}
+  public MayknowRecommendManager$13(amvo paramamvo) {}
   
   public void run()
   {

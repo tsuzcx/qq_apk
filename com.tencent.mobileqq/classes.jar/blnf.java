@@ -1,27 +1,12 @@
-public class blnf
+public abstract interface blnf
 {
-  private int a;
-  private int b;
+  public abstract void a();
   
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blnf
  * JD-Core Version:    0.7.0.1
  */

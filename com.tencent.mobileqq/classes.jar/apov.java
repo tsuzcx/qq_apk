@@ -1,6 +1,64 @@
-public abstract interface apov
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class apov
+  implements InvocationHandler
 {
-  public abstract void a(apox paramapox);
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private List<apow> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  
+  public apov(Activity paramActivity, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a()
+  {
+    if ((!this.b) && (this.jdField_a_of_type_AndroidAppActivity != null))
+    {
+      this.b = true;
+      apoq.a(this.jdField_a_of_type_AndroidAppActivity, this);
+    }
+  }
+  
+  public void a(apow paramapow)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramapow);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  {
+    if ((paramMethod.getName().equalsIgnoreCase("onTranslucentConversionComplete")) && (paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      paramMethod = paramArrayOfObject[0];
+      if (QLog.isColorLevel()) {
+        QLog.d("TranslucentConvertor", 2, "onTranslucentConversionComplete: " + paramMethod);
+      }
+      paramObject = Boolean.valueOf(false);
+      if ((paramMethod instanceof Boolean)) {
+        paramObject = (Boolean)paramMethod;
+      }
+      paramMethod = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramMethod.hasNext()) {
+        ((apow)paramMethod.next()).c_(paramObject.booleanValue());
+      }
+    }
+    return null;
+  }
 }
 
 

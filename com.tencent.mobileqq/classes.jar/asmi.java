@@ -1,87 +1,133 @@
+import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
+import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.CameraEmotionData;
-import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.util.List;
 
-class asmi
-  implements asob
+public class asmi
+  extends bbck
 {
-  asmi(asmh paramasmh) {}
+  private BitmapFactory.Options a = new BitmapFactory.Options();
   
-  public boolean a(View paramView, asmu paramasmu)
+  public asmi(FaceDecoder paramFaceDecoder)
   {
-    if ((paramasmu == null) || (paramView == null)) {
-      return false;
+    super(paramFaceDecoder);
+  }
+  
+  public void a(bayt parambayt, bbhb parambbhb)
+  {
+    parambbhb.a().setMaxWidth(800);
+    Object localObject = (asmd)parambayt;
+    ImageView localImageView = parambbhb.b();
+    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    localImageView.setImageDrawable(null);
+    localImageView.setBackgroundDrawable(null);
+    if (((asmd)localObject).a == null) {
+      return;
     }
-    if (TextUtils.isEmpty(paramasmu.i))
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)((asmd)localObject).a.get(0);
+    int i = aszt.a(localFileManagerEntity.fileName);
+    if ((i == 0) || (i == 2))
     {
-      Object localObject = (asmg)paramasmu;
-      if ((((asmg)localObject).h.equals("needUpload")) || (((asmg)localObject).h.equals("needDel"))) {
-        return true;
+      if (FileUtils.fileExistsAndNotEmpty(localFileManagerEntity.strThumbPath)) {
+        localObject = localFileManagerEntity.strThumbPath;
       }
-      if (((asmg)localObject).h.equals("failed"))
+      for (;;)
       {
-        paramView = ((asgf)this.a.a.getManager(333)).a();
-        if (paramView != null)
+        localObject = URLDrawable.URLDrawableOptions.obtain();
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = parambbhb.b().getHeight();
+        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = parambbhb.b().getWidth();
+        parambbhb = parambbhb.d();
+        if ((parambbhb != null) && (!TextUtils.isEmpty(parambayt.d())))
         {
-          paramView = paramView.iterator();
-          while (paramView.hasNext())
-          {
-            paramasmu = (CameraEmotionData)paramView.next();
-            if (paramasmu.emoId == ((asmg)localObject).g)
-            {
-              QLog.d("CameraEmotionAdapter", 1, new Object[] { "resend, emoId:", Integer.valueOf(paramasmu.emoId) });
-              paramasmu.RomaingType = "needUpload";
-              ((asmg)localObject).h = "needUpload";
-              ((anuj)this.a.a.a(160)).notifyUI(4, true, null);
-              com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend.a = false;
-              ThreadManager.excute(new CameraEmoSingleSend(paramasmu, true), 64, null, false);
-            }
+          parambbhb.setText(parambayt.d());
+          parambbhb.setVisibility(0);
+        }
+        parambayt = atal.a(localFileManagerEntity);
+        if (parambayt == null) {
+          break;
+        }
+        parambayt = URLDrawable.getDrawable(parambayt, (URLDrawable.URLDrawableOptions)localObject);
+        if (parambayt == null) {
+          localImageView.setImageDrawable(localImageView.getContext().getResources().getDrawable(2130844201));
+        }
+        localImageView.setImageDrawable(parambayt);
+        return;
+        if (FileUtils.fileExistsAndNotEmpty(localFileManagerEntity.strLargeThumPath))
+        {
+          localObject = localFileManagerEntity.strLargeThumPath;
+        }
+        else
+        {
+          if (!FileUtils.fileExistsAndNotEmpty(localFileManagerEntity.getFilePath())) {
+            break label265;
           }
+          localFileManagerEntity.getFilePath();
         }
-        return true;
       }
-      localObject = (URLImageView)paramView.findViewById(2131365947);
-      paramView = (ImageView)paramView.findViewById(2131365948);
-      if (!(((URLImageView)localObject).getBackground() instanceof URLDrawable)) {
-        return false;
-      }
-      URLDrawable localURLDrawable = (URLDrawable)((URLImageView)localObject).getBackground();
-      if ((localURLDrawable.getStatus() == 3) || (localURLDrawable.getStatus() == 2))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("CameraEmotionAdapter", 2, "now  cameraemo EmoticonInfo loading failed, restart download " + paramasmu.toString());
-        }
-        ((URLImageView)localObject).setVisibility(8);
-        paramView.setVisibility(0);
-        localURLDrawable.restartDownload();
-        if (!(paramView.getDrawable() instanceof Animatable)) {
-          paramView.setImageDrawable((Drawable)BaseApplication.getContext().getResources().getDrawable(2130839410));
-        }
-        ((Animatable)paramView.getDrawable()).start();
-        return true;
-      }
-      if (localURLDrawable.getStatus() == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("CameraEmotionAdapter", 2, "now  cameraemo EmoticonInfo loading " + paramasmu.toString());
-        }
-        return true;
+      label265:
+      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (localFileManagerEntity.getCloudType() == 1) {
+        localObject = ((QQAppInterface)localObject).getFileManagerEngine().a(localFileManagerEntity, 7);
       }
     }
-    return false;
+    for (;;)
+    {
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localImageView.setImageDrawable(BaseApplicationImpl.getContext().getResources().getDrawable(2130844201));
+        return;
+        if (localFileManagerEntity.getCloudType() == 2) {
+          localObject = ((QQAppInterface)localObject).getFileManagerEngine().a(localFileManagerEntity.WeiYunFileId, localFileManagerEntity.strLargeThumPath, 3, localFileManagerEntity);
+        }
+      }
+      else
+      {
+        localFileManagerEntity.strThumbPath = ((String)localObject);
+        break;
+        aszt.a(localImageView, localFileManagerEntity);
+        return;
+      }
+      localObject = "";
+    }
+  }
+  
+  public void b(bayt parambayt, bbhb parambbhb)
+  {
+    super.b(parambayt, parambbhb);
+    if ((parambbhb.a() != null) && (!TextUtils.isEmpty(parambayt.a())))
+    {
+      parambbhb.a().setVisibility(0);
+      parambbhb.a().setText(parambayt.a());
+    }
+    if ((parambbhb.b() != null) && (!TextUtils.isEmpty(parambayt.b())))
+    {
+      parambbhb.b().setVisibility(0);
+      parambbhb.b().setText(parambayt.b());
+    }
+    if ((parambbhb.c() != null) && (!TextUtils.isEmpty(parambayt.c())))
+    {
+      parambbhb.c().setVisibility(0);
+      parambbhb.c().setText(parambayt.c());
+    }
+    if ((parambayt.d() == null) && (parambbhb.d() != null)) {
+      parambbhb.d().setVisibility(8);
+    }
+    if ((parambbhb.d() != null) && (parambayt.d() != null))
+    {
+      parambbhb.d().setVisibility(0);
+      parambbhb.d().setText(parambayt.d());
+    }
   }
 }
 

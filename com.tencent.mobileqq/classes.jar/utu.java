@@ -1,24 +1,41 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.app.Activity;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 
-public class utu
+class utu
+  implements uyv
 {
-  public static blsy<usv> a(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
+  utu(utr paramutr, Context paramContext, int paramInt) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return new utt(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-    case 1: 
-      return new uuw(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-    case 2: 
-      return new uuv(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-    case 1001: 
-      return new usx(paramViewGroup, paramInt, paramWSVerticalPageFragment);
-    case 1002: 
-      return new uto(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+    uyc.a(this.jdField_a_of_type_AndroidContentContext, "biz_src_jc_gzh_weishi", paramString, 1, utr.a(this.jdField_a_of_type_Utr), this.jdField_a_of_type_Int);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      ukw.a(this.jdField_a_of_type_AndroidContentContext, paramString);
     }
-    return new utr(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+  }
+  
+  public void c(String paramString, int paramInt)
+  {
+    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
+    localWSDownloadParams.mScene = 1;
+    localWSDownloadParams.mLinkStrategyType = utr.a(this.jdField_a_of_type_Utr);
+    localWSDownloadParams.mEventId = 401;
+    localWSDownloadParams.mTestId = uvr.b();
+    localWSDownloadParams.mScheme = paramString;
+    unq.a((Activity)this.jdField_a_of_type_AndroidContentContext, localWSDownloadParams, false);
+  }
+  
+  public void d(String paramString, int paramInt)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      utr.a(this.jdField_a_of_type_Utr, this.jdField_a_of_type_AndroidContentContext, paramString);
+    }
   }
 }
 

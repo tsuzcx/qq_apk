@@ -16,6 +16,7 @@ public class MoreItem
   public static final int MAX_EXT_ITEM_ID = 200;
   public static final int MIN_EXT_ITEM_ID = 100;
   public static final int MONITOR = 8;
+  public static final int QQ_FAVORITE = 12;
   public static final int RESTART = 9;
   public static final int SHARE_QQ = 1;
   public static final int SHARE_QZONE = 2;
@@ -92,7 +93,7 @@ public class MoreItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ui.MoreItem
  * JD-Core Version:    0.7.0.1
  */

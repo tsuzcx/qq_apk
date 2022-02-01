@@ -45,16 +45,6 @@ public final class AdCanvasJsonManager
     finally {}
   }
   
-  private int getQueueLength(Context paramContext)
-  {
-    int i = AdCanvas.getQueueLength(new WeakReference(paramContext));
-    AdLog.i("AdCanvasJsonManager", "getQueueLength :" + i);
-    if (i <= 0) {
-      AdLog.e("AdCanvasJsonManager", "getQueueLength error");
-    }
-    return i;
-  }
-  
   private void initDataList(int paramInt)
   {
     if (paramInt > 0)
@@ -130,12 +120,6 @@ public final class AdCanvasJsonManager
     if (this.initialized) {
       return;
     }
-    int i = getQueueLength(paramContext);
-    if (i < 0)
-    {
-      AdLog.e("AdCanvasJsonManager", "getQueueLength error");
-      return;
-    }
     try
     {
       if (this.initialized) {
@@ -145,7 +129,7 @@ public final class AdCanvasJsonManager
     finally {}
     this.initialized = true;
     this.mContext = new WeakReference(paramContext);
-    initDataList(i);
+    initDataList(20);
   }
   
   public void preloadCanvasJson(Ad paramAd, String paramString1, String paramString2)

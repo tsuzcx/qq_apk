@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.identification;
 
-import avxc;
+import aukc;
 import com.tencent.mobileqq.activity.QQIdentiferActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class IdentificationActivityHelper$2
   implements Runnable
 {
-  public IdentificationActivityHelper$2(avxc paramavxc) {}
+  public IdentificationActivityHelper$2(aukc paramaukc) {}
   
   public void run()
   {
     QLog.d("qq_Identification.Helper", 1, "download res fail");
-    avxc.a(this.this$0).a(false, 214);
+    aukc.a(this.this$0).a(false, 214);
   }
 }
 

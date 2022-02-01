@@ -1,15 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class akuo
-  implements DialogInterface.OnClickListener
+public abstract interface akuo
 {
-  akuo(akum paramakum, Runnable paramRunnable) {}
+  public abstract void b(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangRunnable.run();
-  }
+  public abstract void b(String paramString);
+  
+  public abstract void d();
 }
 
 

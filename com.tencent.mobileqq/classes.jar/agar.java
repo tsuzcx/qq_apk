@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class agar
-  implements bjdq
+class agar
+  implements atah
 {
-  public agar(VisitorsActivity paramVisitorsActivity) {}
+  agar(agap paramagap) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.a.a(paramInt2);
+    aszt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 3);
+    aszt.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendNick);
   }
 }
 

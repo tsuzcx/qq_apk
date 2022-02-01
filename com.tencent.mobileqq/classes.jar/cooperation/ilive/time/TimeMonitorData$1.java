@@ -1,17 +1,17 @@
 package cooperation.ilive.time;
 
-import biaq;
-import bmfu;
+import bgha;
+import bkkb;
 import java.util.HashMap;
 
 public class TimeMonitorData$1
   implements Runnable
 {
-  public TimeMonitorData$1(bmfu parambmfu, String paramString, HashMap paramHashMap, long paramLong) {}
+  public TimeMonitorData$1(bkkb parambkkb, String paramString, HashMap paramHashMap, long paramLong) {}
   
   public void run()
   {
-    biaq.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_Long);
+    bgha.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_Long);
   }
 }
 

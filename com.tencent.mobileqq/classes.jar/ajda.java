@@ -1,18 +1,13 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.widget.SwipListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.home.Conversation;
 
 public class ajda
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements DialogInterface.OnDismissListener
 {
-  public ajda(AddContactsView paramAddContactsView) {}
+  public ajda(Conversation paramConversation) {}
   
-  public void onGlobalLayout()
-  {
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.a.setListViewHeightBasedOnChildren(this.a.a);
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

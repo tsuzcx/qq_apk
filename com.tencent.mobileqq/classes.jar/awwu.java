@@ -1,31 +1,90 @@
-import android.util.Log;
-import java.util.ArrayList;
+import android.content.Context;
+import android.os.Handler;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.common.galleryactivity.AbstractImageAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.1;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.2;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.3;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awwu
+  extends AbstractImageAdapter
+  implements awxa
 {
-  public static awwm a(String paramString, boolean paramBoolean)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
+  private awxa jdField_a_of_type_Awxa;
+  
+  public awwu(Context paramContext)
   {
-    if ((paramString != null) && (paramString.length() >= 0))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = HttpUtil.getNetWorkType();
+    if ((i != 1) && (i != 4)) {}
+    awwy localawwy;
+    do
     {
-      if (paramBoolean) {}
-      for (;;)
-      {
-        try
-        {
-          paramString = new awwy(paramString).a();
-          if ((paramString == null) || (paramString.a.size() <= 0)) {
-            break;
-          }
-          return paramString;
-        }
-        catch (Exception paramString)
-        {
-          Log.e("LyricParseHelper", "parse exception:", paramString);
-        }
-        paramString = new awwv(paramString).a();
+      return;
+      localawwy = (awwy)getItem(paramInt + 1);
+      if (localawwy != null) {
+        localawwy.a();
       }
+      localawwy = (awwy)getItem(paramInt - 1);
+    } while (localawwy == null);
+    localawwy.a();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.1(this, paramInt1, paramInt2));
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.3(this, paramInt, paramBoolean));
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    ((awwy)getItem(paramInt)).a(paramView, paramInt, this);
+  }
+  
+  public void a(awxa paramawxa)
+  {
+    this.jdField_a_of_type_Awxa = paramawxa;
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.2(this, paramInt1, paramInt2));
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView != null) {
+      localObject = paramView;
     }
-    return null;
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+      localObject = (awwy)getItem(paramInt);
+      PicInfo localPicInfo = ((awwy)localObject).a;
+      if (((this.jdField_a_of_type_AndroidContentContext instanceof PicBrowserActivity)) && (((PicBrowserActivity)this.jdField_a_of_type_AndroidContentContext).b)) {
+        ((PicBrowserActivity)this.jdField_a_of_type_AndroidContentContext).app.getNearbyProxy().b(localPicInfo.a);
+      }
+      localObject = ((awwy)localObject).a(paramInt, this.jdField_a_of_type_AndroidOsHandler, this);
+      ((View)localObject).setTag(2131296390, Boolean.valueOf(true));
+    }
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahwk;
-import ahwo;
+import agsy;
+import agtc;
 import android.view.View;
 
 public class TroopSignItemBuilder$TroopSignVideoItemBuilder$2$1
   implements Runnable
 {
-  public TroopSignItemBuilder$TroopSignVideoItemBuilder$2$1(ahwk paramahwk) {}
+  public TroopSignItemBuilder$TroopSignVideoItemBuilder$2$1(agsy paramagsy) {}
   
   public void run()
   {

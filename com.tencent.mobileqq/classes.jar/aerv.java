@@ -1,21 +1,10 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import android.widget.TextView;
 
 public class aerv
-  implements TopGestureLayout.InterceptTouchEventListener
+  extends aliz
 {
-  public aerv(GeneralSettingActivity paramGeneralSettingActivity) {}
-  
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
-  {
-    if (this.a.a != null) {
-      return this.a.a.a(paramMotionEvent);
-    }
-    return true;
-  }
+  public aert a;
+  public TextView a;
 }
 
 

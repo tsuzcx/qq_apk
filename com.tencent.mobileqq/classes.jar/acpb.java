@@ -1,21 +1,20 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.statistics.GdtReporter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
-class acpb
-  implements acvm
+public class acpb
+  implements DialogInterface.OnClickListener
 {
-  acpb(acox paramacox, ImageView paramImageView) {}
+  public acpb(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void reportImpression(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = paramView.getTag(2131381107);
-    if ((paramView != null) && ((paramView instanceof GdtAd)))
+    if (AddFriendLogicActivity.d(this.a) == 1)
     {
-      paramView = (GdtAd)paramView;
-      GdtReporter.doCgiReport(acox.a(this.jdField_a_of_type_Acox).b(paramView.getUrlForImpression(), this.jdField_a_of_type_Acox.a(this.jdField_a_of_type_AndroidWidgetImageView)));
+      this.a.finish();
+      return;
     }
+    AddFriendLogicActivity.a(this.a);
   }
 }
 

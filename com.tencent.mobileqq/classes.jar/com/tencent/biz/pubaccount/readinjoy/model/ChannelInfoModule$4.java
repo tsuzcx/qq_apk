@@ -1,48 +1,48 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import ozs;
-import pfd;
-import poz;
-import pqw;
+import pay;
+import pkp;
+import puh;
+import pwq;
 
 public class ChannelInfoModule$4
   implements Runnable
 {
-  public ChannelInfoModule$4(poz parampoz, boolean paramBoolean1, boolean paramBoolean2, List paramList1, List paramList2) {}
+  public ChannelInfoModule$4(puh parampuh, boolean paramBoolean1, boolean paramBoolean2, List paramList1, List paramList2) {}
   
   public void run()
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      pfd.a().c(false, null);
+      pkp.a().c(false, null);
       return;
     }
     if (this.jdField_b_of_type_Boolean)
     {
-      pfd.a().c(true, this.jdField_a_of_type_JavaUtilList);
+      pkp.a().c(true, this.jdField_a_of_type_JavaUtilList);
       return;
     }
-    poz.a(this.this$0, true);
+    puh.a(this.this$0, true);
     this.this$0.a(this.jdField_a_of_type_JavaUtilList, true);
     this.this$0.f(this.jdField_b_of_type_JavaUtilList);
-    if (!ozs.a())
+    if (!pay.a())
     {
       List localList = this.this$0.a(this.jdField_a_of_type_JavaUtilList);
-      pqw.a().a(this.jdField_b_of_type_JavaUtilList);
-      pqw.a().b(localList);
+      pwq.a().a(this.jdField_b_of_type_JavaUtilList);
+      pwq.a().b(localList);
       localList = this.this$0.g();
       if (!this.jdField_b_of_type_JavaUtilList.equals(localList)) {
         this.this$0.e(this.this$0.g());
       }
     }
-    pfd.a().b(true, this.this$0.e());
-    if (!ozs.a())
+    pkp.a().b(true, this.this$0.e());
+    if (!pay.a())
     {
-      pfd.a().c(true, this.this$0.f());
+      pkp.a().c(true, this.this$0.f());
       return;
     }
-    pfd.a().c(true, this.jdField_a_of_type_JavaUtilList);
+    pkp.a().c(true, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import bbav;
+import azvi;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class AvatarPendantActivity$6
@@ -10,8 +10,8 @@ class AvatarPendantActivity$6
   
   public void run()
   {
-    bbav localbbav = (bbav)this.this$0.app.getManager(36);
-    this.this$0.a = localbbav.a("100100.100125.100127");
+    azvi localazvi = (azvi)this.this$0.app.getManager(36);
+    this.this$0.a = localazvi.a("100100.100125.100127");
     this.this$0.runOnUiThread(new AvatarPendantActivity.6.1(this));
   }
 }

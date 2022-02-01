@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.message;
 
-import aosf;
-import apaw;
-import bcrg;
+import anla;
+import anuz;
+import bbko;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
@@ -16,27 +16,27 @@ import fb;
 public class DatalineMessageManager$1
   implements Runnable
 {
-  public DatalineMessageManager$1(aosf paramaosf, DataLineMsgRecord paramDataLineMsgRecord, fb paramfb) {}
+  public DatalineMessageManager$1(anla paramanla, DataLineMsgRecord paramDataLineMsgRecord, fb paramfb) {}
   
   public void run()
   {
-    EntityManager localEntityManager = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+    EntityManager localEntityManager = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
     try
     {
       if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time == 0L) {
-        this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time = bcrg.a();
+        this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time = bbko.a();
       }
       if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgseq == 0L) {
         this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgseq = ((int)this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time);
       }
-      apaw localapaw = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-      RecentUser localRecentUser = (RecentUser)localapaw.findRecentUserByUin(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
+      anuz localanuz = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
+      RecentUser localRecentUser = (RecentUser)localanuz.findRecentUserByUin(String.valueOf(this.this$0.jdField_a_of_type_JavaLangString), this.this$0.jdField_a_of_type_Int);
       localRecentUser.setType(this.this$0.jdField_a_of_type_Int);
       localRecentUser.lastmsgtime = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.time;
-      localapaw.saveRecentUser(localRecentUser);
-      aosf.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, localEntityManager);
+      localanuz.saveRecentUser(localRecentUser);
+      anla.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, localEntityManager);
       long l = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.msgId;
-      this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
+      this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.setChangeAndNotify(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
       this.jdField_a_of_type_Fb.a();
       localEntityManager.close();
       if (QLog.isColorLevel()) {

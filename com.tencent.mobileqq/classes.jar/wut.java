@@ -1,20 +1,13 @@
-public class wut
+import java.io.File;
+import org.json.JSONObject;
+
+public abstract interface wut
 {
-  @zoq(a="oa_task_id")
-  public int a;
-  @zoq(a="bg_url")
-  public String a;
-  @zoq(a="is_comp_able")
-  public boolean a;
-  @zoq(a="comp_vid")
-  public String b;
-  @zoq(a="icon_url")
-  public String c;
+  public abstract void a(String paramString, File paramFile, int paramInt, JSONObject paramJSONObject);
   
-  public String toString()
-  {
-    return "CompInfoBase{, comparedVid='" + this.b + '\'' + ", isComparedAble=" + this.jdField_a_of_type_Boolean + ", iconUrl='" + this.c + '\'' + ", taskId=" + this.jdField_a_of_type_Int + '}';
-  }
+  public abstract void a(String paramString1, String paramString2, int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2, File paramFile);
 }
 
 

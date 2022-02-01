@@ -1,9 +1,13 @@
-import android.view.View;
-import android.view.ViewGroup;
-
 public abstract interface rzc
+  extends rzt
 {
-  public abstract View a(ViewGroup paramViewGroup);
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
 }
 
 

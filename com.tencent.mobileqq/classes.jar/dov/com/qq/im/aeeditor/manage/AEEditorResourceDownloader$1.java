@@ -1,14 +1,14 @@
 package dov.com.qq.im.aeeditor.manage;
 
-import bhmi;
-import bpds;
+import bmfc;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 import java.io.IOException;
 
 public class AEEditorResourceDownloader$1
   implements Runnable
 {
-  public AEEditorResourceDownloader$1(bpds parambpds) {}
+  public AEEditorResourceDownloader$1(bmfc parambmfc) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class AEEditorResourceDownloader$1
     if (!new File(str).exists()) {}
     try
     {
-      bhmi.a(str);
+      FileUtils.createFile(str);
       return;
     }
     catch (IOException localIOException)

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.view;
 
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 class ApolloPanel$40
   implements Runnable
@@ -9,7 +9,7 @@ class ApolloPanel$40
   
   public void run()
   {
-    this.this$0.a.aJ();
+    this.this$0.a.hideAllPanels();
   }
 }
 

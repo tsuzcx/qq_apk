@@ -1,23 +1,78 @@
-import com.tencent.biz.pubaccount.readinjoy.view.RainView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.BDHCommonUploadProcessor;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import java.util.HashMap;
+import mqq.manager.Manager;
 
 public class seh
-  implements bdxo
+  implements Manager
 {
-  public seh(RainView paramRainView, bdyr parambdyr) {}
+  public static int a;
+  public static int b;
+  TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  HashMap<Long, Bundle> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean = true;
+  HashMap<Long, Bundle> b;
   
-  public void a()
+  static
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.b(this.jdField_a_of_type_Bdyr);
-    if ((RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).incrementAndGet() == RainView.a() * RainView.b() * RainView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).get()) && (RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView) != null))
+    jdField_b_of_type_Int = 1;
+  }
+  
+  public seh(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private void a(int paramInt) {}
+  
+  public void a(TroopMemberApiService paramTroopMemberApiService)
+  {
+    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService == null) {
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = paramTroopMemberApiService;
+    }
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return;
+    }
+    if ((TextUtils.isEmpty(paramString)) || (!ypi.b(paramString))) {}
+    for (;;)
     {
-      RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).set(0);
-      RainView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).set(0);
-      RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).a();
-      if (QLog.isColorLevel()) {
-        QLog.d("SpriteGLView", 2, "rain animation end");
-      }
+      sei localsei = new sei(this);
+      TransferRequest localTransferRequest = new TransferRequest();
+      localTransferRequest.mUpCallBack = new sej(this);
+      TransFileController localTransFileController = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController();
+      localsei.addFilter(new Class[] { BDHCommonUploadProcessor.class });
+      localTransFileController.addHandle(localsei);
+      localTransferRequest.mLocalPath = paramString;
+      localTransferRequest.mIsUp = true;
+      localTransferRequest.mFileType = 24;
+      localTransferRequest.mCommandId = 54;
+      localTransferRequest.mSelfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
+      localTransferRequest.mPeerUin = "0";
+      localTransferRequest.mUniseq = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+      localTransFileController.transferAsync(localTransferRequest);
+      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(localTransferRequest.mUniseq), paramBundle);
+      this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(localTransferRequest.mUniseq), paramBundle);
+      return;
+      a(jdField_a_of_type_Int);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService != null) {
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = null;
     }
   }
 }

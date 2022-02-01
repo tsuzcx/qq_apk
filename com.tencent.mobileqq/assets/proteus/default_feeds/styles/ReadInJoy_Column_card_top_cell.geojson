@@ -32,7 +32,6 @@
                     "$column_cover_image_url",
                     "0"
                 ],
-                "setFrameString:": "-1",
                 "setCornerRadiusString:": "16"
             }
         },
@@ -55,7 +54,6 @@
                     "$column_logo_image_url",
                     "0"
                 ],
-                "setFrameString:": "-1",
                 "setCornerRadiusString:": "8"
             }
         },

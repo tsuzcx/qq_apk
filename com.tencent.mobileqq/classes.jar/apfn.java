@@ -1,28 +1,13 @@
-public class apfn
+import android.view.MotionEvent;
+
+class apfn
+  implements bhdq
 {
-  public int a;
-  public int b;
-  public int c;
+  apfn(apfm paramapfm) {}
   
-  public apfn(apfm paramapfm, int paramInt1, int paramInt2)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    this.b = paramInt1;
-    this.c = paramInt2;
-  }
-  
-  public boolean a()
-  {
-    return this.c == 1;
-  }
-  
-  public boolean b()
-  {
-    return this.c == 2;
-  }
-  
-  public boolean c()
-  {
-    return this.c == 3;
+    return apfm.a(this.a, paramMotionEvent);
   }
 }
 

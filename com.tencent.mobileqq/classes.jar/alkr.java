@@ -1,24 +1,80 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.concurrent.ConcurrentHashMap;
 
 class alkr
-  implements View.OnClickListener
+  extends amrc
 {
-  alkr(aljw paramaljw) {}
+  alkr(alkj paramalkj) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong)
   {
-    Intent localIntent = new Intent(aljw.a(this.a), TroopAssisSettingActivity.class);
-    aljw.a(this.a).startActivityForResult(localIntent, 9001);
-    aljw.a(this.a).sendEmptyMessageDelayed(1, 1000L);
-    bdll.b(aljw.a(this.a).app, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_setmsg", 0, 0, "", "", "", "");
-    bdll.a(aljw.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 17, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramLong == 0L) {}
+    String str1;
+    String str2;
+    do
+    {
+      do
+      {
+        return;
+      } while (!this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong)));
+      str1 = (String)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+      str2 = ContactUtils.getDiscussionNameCanNull(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(paramLong));
+      if ((!TextUtils.isEmpty(str2)) && (!str2.equals(str1))) {
+        alkj.a(this.a, false);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "checkIfNeedUpdate [uin: %d, pre: %s, cur: %s]", new Object[] { Long.valueOf(paramLong), str1, str2 }));
+  }
+  
+  protected void onAddDiscussionMember(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  {
+    if (paramBoolean) {
+      a(paramLong);
+    }
+  }
+  
+  protected void onChangeDiscussionName(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {}
+    try
+    {
+      a(Long.parseLong(paramString));
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  protected void updateDiscussionInfo(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean) {
+      if (!(paramObject instanceof ArrayList)) {
+        break label70;
+      }
+    }
+    label70:
+    for (paramObject = (ArrayList)paramObject;; paramObject = null)
+    {
+      if ((paramObject != null) && (paramObject.size() > 0))
+      {
+        paramObject = paramObject.iterator();
+        while (paramObject.hasNext())
+        {
+          Object localObject = paramObject.next();
+          if ((localObject instanceof Long)) {
+            a(((Long)localObject).longValue());
+          }
+        }
+      }
+      return;
+    }
   }
 }
 

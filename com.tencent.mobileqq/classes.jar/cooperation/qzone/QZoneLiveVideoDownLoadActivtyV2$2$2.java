@@ -1,15 +1,13 @@
 package cooperation.qzone;
 
-import bmtr;
-
-public class QZoneLiveVideoDownLoadActivtyV2$2$2
+class QZoneLiveVideoDownLoadActivtyV2$2$2
   implements Runnable
 {
-  public QZoneLiveVideoDownLoadActivtyV2$2$2(bmtr parambmtr) {}
+  QZoneLiveVideoDownLoadActivtyV2$2$2(QZoneLiveVideoDownLoadActivtyV2.2 param2) {}
   
   public void run()
   {
-    this.a.a.e();
+    this.this$1.this$0.launchLiveVideo();
   }
 }
 

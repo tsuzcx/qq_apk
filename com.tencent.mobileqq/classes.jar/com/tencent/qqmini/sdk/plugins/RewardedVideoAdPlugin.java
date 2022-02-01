@@ -39,6 +39,7 @@ public class RewardedVideoAdPlugin
   private static final String TAG = "RewardedVideoAdPlugin";
   private static final HashMap<Integer, String> errCodeMsgMap = MiniSDKConst.AdConst.CODE_MSG_MAP;
   private boolean mGetRewarded = false;
+  private boolean mHasClosedAd = true;
   private boolean mHasShowGPToast = false;
   private boolean mIsOrientationLandscape = false;
   private volatile boolean mIsRequestingAd = false;
@@ -333,7 +334,7 @@ public class RewardedVideoAdPlugin
             return;
           }
           if (this.mIsRequestingAd) {
-            break label229;
+            break label241;
           }
           initAdParam(paramRequestEvent, this.mPosID, (String)localObject);
           return;
@@ -348,25 +349,26 @@ public class RewardedVideoAdPlugin
       }
       if ("show".equals(localJSONException))
       {
-        if ((this.mIsRequestingAd) || (this.mRewardedVideoAd == null)) {
-          break label235;
+        if ((this.mIsRequestingAd) || (this.mRewardedVideoAd == null) || (!this.mHasClosedAd)) {
+          break label247;
         }
-        label170:
+        label177:
         if (i != 0) {
           if (this.mMiniAppContext == null) {
-            break label240;
+            break label252;
           }
         }
       }
     }
-    label229:
-    label235:
-    label240:
+    label241:
+    label247:
+    label252:
     for (Activity localActivity = this.mMiniAppContext.getAttachedActivity();; localActivity = null)
     {
       this.mRewardedVideoAd.showAD(localActivity, (String)localObject);
       handleShowAndInformJs(paramRequestEvent, true, (String)localObject);
       this.mRewardedVideoAd = null;
+      this.mHasClosedAd = false;
       AdFrequencyLimit.setRewardVideoAdShowing(true);
       return;
       handleShowAndInformJs(paramRequestEvent, false, (String)localObject);
@@ -374,7 +376,7 @@ public class RewardedVideoAdPlugin
       bool = false;
       break;
       i = 0;
-      break label170;
+      break label177;
     }
   }
 }

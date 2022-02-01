@@ -19,26 +19,29 @@ import android.view.animation.GridLayoutAnimationController.AnimationParameters;
 import android.widget.Checkable;
 import android.widget.ListAdapter;
 import android.widget.PopupWindow;
-import blid;
-import blii;
 import com.tencent.util.VersionUtils;
 
 public class GridView
   extends AbsListView
 {
-  private int jdField_a_of_type_Int = -1;
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private View jdField_a_of_type_AndroidViewView;
-  private int jdField_b_of_type_Int;
-  private View jdField_b_of_type_AndroidViewView;
-  private int c;
-  public boolean c;
-  private int d;
-  private int e = 2;
-  private int f;
-  private int g;
-  private int h;
-  private int i = 3;
+  public static final int AUTO_FIT = -1;
+  public static final int NO_STRETCH = 0;
+  public static final int STRETCH_COLUMN_WIDTH = 2;
+  public static final int STRETCH_SPACING = 1;
+  public static final int STRETCH_SPACING_UNIFORM = 3;
+  private int mColumnWidth;
+  private int mGravity = 3;
+  private int mHorizontalSpacing;
+  public boolean mIsOnMeasure;
+  private int mNumColumns = -1;
+  private View mReferenceView;
+  private View mReferenceViewInSelectedRow;
+  private int mRequestedColumnWidth;
+  private int mRequestedHorizontalSpacing;
+  private int mRequestedNumColumns;
+  private int mStretchMode = 2;
+  private final Rect mTempRect = new Rect();
+  private int mVerticalSpacing;
   
   public GridView(Context paramContext)
   {
@@ -57,543 +60,64 @@ public class GridView
     this.mOverscrollDistance = 2147483647;
   }
   
-  private int a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    int j = paramInt1;
-    if (paramInt3 > 0) {
-      j = paramInt1 + paramInt2;
-    }
-    return j;
-  }
-  
-  private int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    int j = paramInt1;
-    if (paramInt4 + paramInt3 - 1 < this.mItemCount - 1) {
-      j = paramInt1 - paramInt2;
-    }
-    return j;
-  }
-  
-  private View a(int paramInt)
-  {
-    this.mFirstPosition = Math.min(this.mFirstPosition, this.mSelectedPosition);
-    this.mFirstPosition = Math.min(this.mFirstPosition, this.mItemCount - 1);
-    if (this.mFirstPosition < 0) {
-      this.mFirstPosition = 0;
-    }
-    this.mFirstPosition -= this.mFirstPosition % this.jdField_a_of_type_Int;
-    return a(this.mFirstPosition, paramInt);
-  }
-  
-  private View a(int paramInt1, int paramInt2)
-  {
-    Object localObject = null;
-    int j = this.mBottom - this.mTop;
-    if ((this.mGroupFlags & 0x22) == 34) {
-      j -= this.mListPadding.bottom;
-    }
-    for (;;)
-    {
-      if ((paramInt2 < j) && (paramInt1 < this.mItemCount))
-      {
-        View localView = a(paramInt1, paramInt2, true);
-        if (localView == null) {
-          break label92;
-        }
-        localObject = localView;
-      }
-      label92:
-      for (;;)
-      {
-        paramInt2 = this.jdField_a_of_type_AndroidViewView.getBottom() + this.d;
-        paramInt1 += this.jdField_a_of_type_Int;
-        break;
-        return localObject;
-      }
-    }
-  }
-  
-  private View a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    int i1 = getVerticalFadingEdgeLength();
-    int k = this.mSelectedPosition;
-    int m = this.jdField_a_of_type_Int;
-    int n = this.d;
-    int j = -1;
-    int i2;
-    if (!this.mStackFromBottom)
-    {
-      k -= k % m;
-      i2 = a(paramInt2, i1, k);
-      paramInt3 = a(paramInt3, i1, m, k);
-      if (!this.mStackFromBottom) {
-        break label210;
-      }
-    }
-    View localView1;
-    View localView2;
-    label210:
-    for (paramInt2 = j;; paramInt2 = k)
-    {
-      localView1 = a(paramInt2, paramInt1, true);
-      this.mFirstPosition = k;
-      localView2 = this.jdField_a_of_type_AndroidViewView;
-      b(localView2, i2, paramInt3);
-      a(localView2, i2, paramInt3);
-      if (this.mStackFromBottom) {
-        break label216;
-      }
-      b(k - m, localView2.getTop() - n);
-      a();
-      a(k + m, localView2.getBottom() + n);
-      return localView1;
-      j = this.mItemCount - 1 - k;
-      j = this.mItemCount - 1 - (j - j % m);
-      k = Math.max(0, j - m + 1);
-      break;
-    }
-    label216:
-    a(j + m, localView2.getBottom() + n);
-    a();
-    b(k - 1, localView2.getTop() - n);
-    return localView1;
-  }
-  
-  private View a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    int i2 = this.f;
-    int i1 = this.jdField_b_of_type_Int;
-    int k = this.mListPadding.left;
-    int j;
-    int m;
-    if (this.e == 3)
-    {
-      j = i1;
-      k = j + k;
-      if (this.mStackFromBottom) {
-        break label191;
-      }
-      m = Math.min(this.jdField_a_of_type_Int + paramInt1, this.mItemCount);
-      j = paramInt1;
-      paramInt1 = m;
-    }
-    for (;;)
-    {
-      label68:
-      Object localObject = null;
-      boolean bool2 = shouldShowSelector();
-      boolean bool3 = touchModeDrawsInPressedState();
-      int i3 = this.mSelectedPosition;
-      View localView = null;
-      m = j;
-      label96:
-      boolean bool1;
-      label112:
-      int n;
-      if (m < paramInt1) {
-        if (m == i3)
-        {
-          bool1 = true;
-          if (!paramBoolean) {
-            break label259;
-          }
-          n = -1;
-          label119:
-          localView = a(m, paramInt2, paramBoolean, k, bool1, n);
-          k += i2;
-          if (m >= paramInt1 - 1) {
-            break label294;
-          }
-          k += i1;
-        }
-      }
-      label259:
-      label294:
-      for (;;)
-      {
-        if ((bool1) && ((bool2) || (bool3))) {
-          localObject = localView;
-        }
-        for (;;)
-        {
-          m += 1;
-          break label96;
-          j = 0;
-          break;
-          label191:
-          j = paramInt1 + 1;
-          m = Math.max(0, paramInt1 - this.jdField_a_of_type_Int + 1);
-          if (j - m >= this.jdField_a_of_type_Int) {
-            break label297;
-          }
-          k += (this.jdField_a_of_type_Int - (j - m)) * (i2 + i1);
-          paramInt1 = j;
-          j = m;
-          break label68;
-          bool1 = false;
-          break label112;
-          n = m - j;
-          break label119;
-          this.jdField_a_of_type_AndroidViewView = localView;
-          if (localObject != null) {
-            this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView;
-          }
-          return localObject;
-        }
-      }
-      label297:
-      paramInt1 = j;
-      j = m;
-    }
-  }
-  
-  private View a(int paramInt1, int paramInt2, boolean paramBoolean1, int paramInt3, boolean paramBoolean2, int paramInt4)
-  {
-    if (!this.mDataChanged)
-    {
-      localView = this.mRecycler.a(paramInt1);
-      if (localView != null)
-      {
-        a(localView, paramInt1, paramInt2, paramBoolean1, paramInt3, paramBoolean2, true, paramInt4);
-        return localView;
-      }
-    }
-    View localView = obtainView(paramInt1, this.mIsScrap);
-    a(localView, paramInt1, paramInt2, paramBoolean1, paramInt3, paramBoolean2, this.mIsScrap[0], paramInt4);
-    return localView;
-  }
-  
-  private void a()
-  {
-    int m = 0;
-    int n = getChildCount();
-    int k;
-    int j;
-    if (n > 0)
-    {
-      if (this.mStackFromBottom) {
-        break label72;
-      }
-      k = getChildAt(0).getTop() - this.mListPadding.top;
-      j = k;
-      if (this.mFirstPosition != 0) {
-        j = k - this.d;
-      }
-      k = j;
-      if (j >= 0) {
-        break label128;
-      }
-      k = m;
-    }
-    label128:
-    for (;;)
-    {
-      if (k != 0) {
-        offsetChildrenTopAndBottom(-k);
-      }
-      return;
-      label72:
-      k = getChildAt(n - 1).getBottom() - (getHeight() - this.mListPadding.bottom);
-      j = k;
-      if (n + this.mFirstPosition < this.mItemCount) {
-        j = k + this.d;
-      }
-      k = m;
-      if (j <= 0) {
-        k = j;
-      }
-    }
-  }
-  
-  private void a(int paramInt)
-  {
-    if (this.mFirstPosition == 0)
-    {
-      paramInt -= getChildAt(0).getTop();
-      if (paramInt < 0) {
-        offsetChildrenTopAndBottom(paramInt);
-      }
-    }
-  }
-  
-  private void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((this.mFirstPosition + paramInt3 - 1 == this.mItemCount - 1) && (paramInt3 > 0))
-    {
-      paramInt3 = getChildAt(paramInt3 - 1).getBottom();
-      int j = this.mBottom - this.mTop - this.mListPadding.bottom - paramInt3;
-      View localView = getChildAt(0);
-      int k = localView.getTop();
-      if ((j > 0) && ((this.mFirstPosition > 0) || (k < this.mListPadding.top)))
-      {
-        paramInt3 = j;
-        if (this.mFirstPosition == 0) {
-          paramInt3 = Math.min(j, this.mListPadding.top - k);
-        }
-        offsetChildrenTopAndBottom(paramInt3);
-        if (this.mFirstPosition > 0)
-        {
-          paramInt3 = this.mFirstPosition;
-          if (this.mStackFromBottom) {
-            paramInt1 = 1;
-          }
-          b(paramInt3 - paramInt1, localView.getTop() - paramInt2);
-          a();
-        }
-      }
-    }
-  }
-  
-  private void a(View paramView, int paramInt1, int paramInt2)
+  private void adjustForBottomFadingEdge(View paramView, int paramInt1, int paramInt2)
   {
     if (paramView.getBottom() > paramInt2) {
       offsetChildrenTopAndBottom(-Math.min(paramView.getTop() - paramInt1, paramView.getBottom() - paramInt2));
     }
   }
   
-  @TargetApi(11)
-  private void a(View paramView, int paramInt1, int paramInt2, boolean paramBoolean1, int paramInt3, boolean paramBoolean2, boolean paramBoolean3, int paramInt4)
+  private void adjustForTopFadingEdge(View paramView, int paramInt1, int paramInt2)
   {
-    int k;
-    label27:
-    int j;
-    boolean bool;
-    label55:
-    int m;
-    label67:
-    label87:
-    AbsListView.LayoutParams localLayoutParams;
-    if ((paramBoolean2) && (shouldShowSelector()))
-    {
-      paramBoolean2 = true;
-      if (paramBoolean2 == paramView.isSelected()) {
-        break label400;
-      }
-      k = 1;
-      j = this.mTouchMode;
-      if ((j <= 0) || (j >= 3) || (this.mMotionPosition != paramInt1)) {
-        break label406;
-      }
-      bool = true;
-      if (bool == paramView.isPressed()) {
-        break label412;
-      }
-      m = 1;
-      if ((paramBoolean3) && (k == 0) && (!paramView.isLayoutRequested())) {
-        break label418;
-      }
-      j = 1;
-      localLayoutParams = (AbsListView.LayoutParams)paramView.getLayoutParams();
-      if (localLayoutParams != null) {
-        break label545;
-      }
-      localLayoutParams = (AbsListView.LayoutParams)generateDefaultLayoutParams();
-    }
-    label147:
-    label283:
-    label412:
-    label545:
-    for (;;)
-    {
-      localLayoutParams.jdField_a_of_type_Int = this.mAdapter.getItemViewType(paramInt1);
-      if ((paramBoolean3) && (!localLayoutParams.jdField_b_of_type_Boolean))
-      {
-        attachViewToParent(paramView, paramInt4, localLayoutParams);
-        if (k != 0)
-        {
-          paramView.setSelected(paramBoolean2);
-          if (paramBoolean2) {
-            requestFocus();
-          }
-        }
-        if (m != 0) {
-          paramView.setPressed(bool);
-        }
-        if ((this.mChoiceMode != 0) && (this.mCheckStates != null))
-        {
-          if (!(paramView instanceof Checkable)) {
-            break label444;
-          }
-          ((Checkable)paramView).setChecked(this.mCheckStates.get(paramInt1));
-        }
-        label217:
-        if (j == 0) {
-          break label474;
-        }
-        paramInt4 = ViewGroup.getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(0, 0), 0, localLayoutParams.height);
-        paramView.measure(ViewGroup.getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(this.f, 1073741824), 0, localLayoutParams.width), paramInt4);
-        k = paramView.getMeasuredWidth();
-        m = paramView.getMeasuredHeight();
-        if (!paramBoolean1) {
-          break label482;
-        }
-        paramInt4 = paramInt2;
-        paramInt2 = paramInt3;
-        switch (this.i & 0x7)
-        {
-        default: 
-          paramInt2 = paramInt3;
-        case 2: 
-        case 3: 
-        case 4: 
-          label331:
-          if (j != 0) {
-            paramView.layout(paramInt2, paramInt4, k + paramInt2, m + paramInt4);
-          }
-          break;
-        }
-      }
-      for (;;)
-      {
-        if (this.mCachingStarted) {
-          paramView.setDrawingCacheEnabled(true);
-        }
-        if ((VersionUtils.isHoneycomb()) && (paramBoolean3) && (((AbsListView.LayoutParams)paramView.getLayoutParams()).jdField_b_of_type_Int != paramInt1)) {
-          paramView.jumpDrawablesToCurrentState();
-        }
-        return;
-        paramBoolean2 = false;
-        break;
-        k = 0;
-        break label27;
-        bool = false;
-        break label55;
-        m = 0;
-        break label67;
-        label418:
-        j = 0;
-        break label87;
-        localLayoutParams.jdField_b_of_type_Boolean = false;
-        addViewInLayout(paramView, paramInt4, localLayoutParams, true);
-        break label147;
-        label444:
-        if (getContext().getApplicationInfo().targetSdkVersion < 11) {
-          break label217;
-        }
-        paramView.setActivated(this.mCheckStates.get(paramInt1));
-        break label217;
-        label474:
-        cleanupLayoutState(paramView);
-        break label263;
-        label482:
-        paramInt4 = paramInt2 - m;
-        break label283;
-        paramInt2 = paramInt3 + (this.f - k) / 2;
-        break label331;
-        paramInt2 = this.f + paramInt3 - k;
-        break label331;
-        paramView.offsetLeftAndRight(paramInt2 - paramView.getLeft());
-        paramView.offsetTopAndBottom(paramInt4 - paramView.getTop());
-      }
+    if (paramView.getTop() < paramInt1) {
+      offsetChildrenTopAndBottom(Math.min(paramInt1 - paramView.getTop(), paramInt2 - paramView.getBottom()));
     }
   }
   
-  private boolean a(int paramInt)
+  private void adjustViewsUpOrDown()
   {
-    int j = this.jdField_c_of_type_Int;
-    int k = this.e;
-    int m = this.g;
-    boolean bool = false;
-    if (this.h == -1) {
-      if (m > 0) {
-        this.jdField_a_of_type_Int = ((paramInt + j) / (m + j));
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Int <= 0) {
-        this.jdField_a_of_type_Int = 1;
-      }
-      switch (k)
-      {
-      default: 
-        paramInt = paramInt - this.jdField_a_of_type_Int * m - (this.jdField_a_of_type_Int - 1) * j;
-        if (paramInt < 0) {
-          bool = true;
-        }
-        switch (k)
-        {
-        default: 
-          return bool;
-          this.jdField_a_of_type_Int = 2;
-          continue;
-          this.jdField_a_of_type_Int = this.h;
-        }
-        break;
-      }
-    }
-    this.f = m;
-    this.jdField_b_of_type_Int = j;
-    return false;
-    this.f = (paramInt / this.jdField_a_of_type_Int + m);
-    this.jdField_b_of_type_Int = j;
-    return bool;
-    this.f = m;
-    if (this.jdField_a_of_type_Int > 1)
-    {
-      this.jdField_b_of_type_Int = (paramInt / (this.jdField_a_of_type_Int - 1) + j);
-      return bool;
-    }
-    this.jdField_b_of_type_Int = (j + paramInt);
-    return bool;
-    this.f = m;
-    if (this.jdField_a_of_type_Int > 1)
-    {
-      this.jdField_b_of_type_Int = (paramInt / (this.jdField_a_of_type_Int + 1) + j);
-      return bool;
-    }
-    this.jdField_b_of_type_Int = (j + paramInt);
-    return bool;
-  }
-  
-  private boolean a(int paramInt1, int paramInt2)
-  {
+    int k = 0;
     int m = getChildCount();
-    int j = m - 1 - paramInt1;
-    int k;
-    if (!this.mStackFromBottom)
+    int j;
+    int i;
+    if (m > 0)
     {
-      k = paramInt1 - paramInt1 % this.jdField_a_of_type_Int;
-      j = Math.max(this.jdField_a_of_type_Int + k - 1, m);
+      if (this.mStackFromBottom) {
+        break label72;
+      }
+      j = getChildAt(0).getTop() - this.mListPadding.top;
+      i = j;
+      if (this.mFirstPosition != 0) {
+        i = j - this.mVerticalSpacing;
+      }
+      j = i;
+      if (i >= 0) {
+        break label128;
+      }
+      j = k;
     }
+    label128:
     for (;;)
     {
-      switch (paramInt2)
-      {
-      default: 
-        throw new IllegalArgumentException("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT, FOCUS_FORWARD, FOCUS_BACKWARD}.");
-        j = m - 1 - (j - j % this.jdField_a_of_type_Int);
-        k = Math.max(0, j - this.jdField_a_of_type_Int + 1);
+      if (j != 0) {
+        offsetChildrenTopAndBottom(-j);
+      }
+      return;
+      label72:
+      j = getChildAt(m - 1).getBottom() - (getHeight() - this.mListPadding.bottom);
+      i = j;
+      if (m + this.mFirstPosition < this.mItemCount) {
+        i = j + this.mVerticalSpacing;
+      }
+      j = k;
+      if (i <= 0) {
+        j = i;
       }
     }
-    if (paramInt1 == k) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return true;
-              return false;
-            } while (k == 0);
-            return false;
-          } while (paramInt1 == j);
-          return false;
-        } while (j == m - 1);
-        return false;
-      } while ((paramInt1 == k) && (k == 0));
-      return false;
-    } while ((paramInt1 == j) && (j == m - 1));
-    return false;
   }
   
   @TargetApi(11)
-  private boolean a(int paramInt1, int paramInt2, KeyEvent paramKeyEvent)
+  private boolean commonKey(int paramInt1, int paramInt2, KeyEvent paramKeyEvent)
   {
     if (this.mAdapter == null) {
       return false;
@@ -601,48 +125,48 @@ public class GridView
     if (this.mDataChanged) {
       layoutChildren();
     }
-    int j = paramKeyEvent.getAction();
-    if (j != 1) {}
-    int k;
+    int i = paramKeyEvent.getAction();
+    if (i != 1) {}
+    int j;
     switch (paramInt1)
     {
     default: 
-      k = 0;
+      j = 0;
     }
     for (;;)
     {
-      if (k == 0) {
+      if (j == 0) {
         break label804;
       }
       return true;
       if ((!VersionUtils.isHoneycomb()) || (!paramKeyEvent.hasNoModifiers())) {
         break;
       }
-      if ((resurrectSelectionIfNeeded()) || (d(17)))
+      if ((resurrectSelectionIfNeeded()) || (arrowScroll(17)))
       {
-        k = 1;
+        j = 1;
       }
       else
       {
-        k = 0;
+        j = 0;
         continue;
         if ((!VersionUtils.isHoneycomb()) || (!paramKeyEvent.hasNoModifiers())) {
           break;
         }
-        if ((resurrectSelectionIfNeeded()) || (d(66)))
+        if ((resurrectSelectionIfNeeded()) || (arrowScroll(66)))
         {
-          k = 1;
+          j = 1;
         }
         else
         {
-          k = 0;
+          j = 0;
           continue;
           if ((VersionUtils.isHoneycomb()) && (paramKeyEvent.hasNoModifiers()))
           {
-            if ((resurrectSelectionIfNeeded()) || (d(33))) {
-              k = 1;
+            if ((resurrectSelectionIfNeeded()) || (arrowScroll(33))) {
+              j = 1;
             } else {
-              k = 0;
+              j = 0;
             }
           }
           else
@@ -650,20 +174,20 @@ public class GridView
             if ((!VersionUtils.isHoneycomb()) || (!paramKeyEvent.hasModifiers(2))) {
               break;
             }
-            if ((resurrectSelectionIfNeeded()) || (c(33)))
+            if ((resurrectSelectionIfNeeded()) || (fullScroll(33)))
             {
-              k = 1;
+              j = 1;
             }
             else
             {
-              k = 0;
+              j = 0;
               continue;
               if ((VersionUtils.isHoneycomb()) && (paramKeyEvent.hasNoModifiers()))
               {
-                if ((resurrectSelectionIfNeeded()) || (d(130))) {
-                  k = 1;
+                if ((resurrectSelectionIfNeeded()) || (arrowScroll(130))) {
+                  j = 1;
                 } else {
-                  k = 0;
+                  j = 0;
                 }
               }
               else
@@ -671,39 +195,39 @@ public class GridView
                 if ((!VersionUtils.isHoneycomb()) || (!paramKeyEvent.hasModifiers(2))) {
                   break;
                 }
-                if ((resurrectSelectionIfNeeded()) || (c(130)))
+                if ((resurrectSelectionIfNeeded()) || (fullScroll(130)))
                 {
-                  k = 1;
+                  j = 1;
                 }
                 else
                 {
-                  k = 0;
+                  j = 0;
                   continue;
                   if ((!VersionUtils.isHoneycomb()) || (!paramKeyEvent.hasNoModifiers())) {
                     break;
                   }
                   boolean bool = resurrectSelectionIfNeeded();
-                  k = bool;
+                  j = bool;
                   if (!bool)
                   {
-                    k = bool;
+                    j = bool;
                     if (paramKeyEvent.getRepeatCount() == 0)
                     {
-                      k = bool;
+                      j = bool;
                       if (getChildCount() > 0)
                       {
                         keyPressed();
-                        k = 1;
+                        j = 1;
                         continue;
                         if ((this.mPopup != null) && (this.mPopup.isShowing())) {
                           break;
                         }
                         if ((VersionUtils.isHoneycomb()) && (paramKeyEvent.hasNoModifiers()))
                         {
-                          if ((resurrectSelectionIfNeeded()) || (b(130))) {
-                            k = 1;
+                          if ((resurrectSelectionIfNeeded()) || (pageScroll(130))) {
+                            j = 1;
                           } else {
-                            k = 0;
+                            j = 0;
                           }
                         }
                         else
@@ -711,20 +235,20 @@ public class GridView
                           if ((!VersionUtils.isHoneycomb()) || (!paramKeyEvent.hasModifiers(1))) {
                             break;
                           }
-                          if ((resurrectSelectionIfNeeded()) || (b(33)))
+                          if ((resurrectSelectionIfNeeded()) || (pageScroll(33)))
                           {
-                            k = 1;
+                            j = 1;
                           }
                           else
                           {
-                            k = 0;
+                            j = 0;
                             continue;
                             if ((VersionUtils.isHoneycomb()) && (paramKeyEvent.hasNoModifiers()))
                             {
-                              if ((resurrectSelectionIfNeeded()) || (b(33))) {
-                                k = 1;
+                              if ((resurrectSelectionIfNeeded()) || (pageScroll(33))) {
+                                j = 1;
                               } else {
-                                k = 0;
+                                j = 0;
                               }
                             }
                             else
@@ -732,20 +256,20 @@ public class GridView
                               if ((!VersionUtils.isHoneycomb()) || (!paramKeyEvent.hasModifiers(2))) {
                                 break;
                               }
-                              if ((resurrectSelectionIfNeeded()) || (c(33)))
+                              if ((resurrectSelectionIfNeeded()) || (fullScroll(33)))
                               {
-                                k = 1;
+                                j = 1;
                               }
                               else
                               {
-                                k = 0;
+                                j = 0;
                                 continue;
                                 if ((VersionUtils.isHoneycomb()) && (paramKeyEvent.hasNoModifiers()))
                                 {
-                                  if ((resurrectSelectionIfNeeded()) || (b(130))) {
-                                    k = 1;
+                                  if ((resurrectSelectionIfNeeded()) || (pageScroll(130))) {
+                                    j = 1;
                                   } else {
-                                    k = 0;
+                                    j = 0;
                                   }
                                 }
                                 else
@@ -753,32 +277,32 @@ public class GridView
                                   if ((!VersionUtils.isHoneycomb()) || (!paramKeyEvent.hasModifiers(2))) {
                                     break;
                                   }
-                                  if ((resurrectSelectionIfNeeded()) || (c(130)))
+                                  if ((resurrectSelectionIfNeeded()) || (fullScroll(130)))
                                   {
-                                    k = 1;
+                                    j = 1;
                                   }
                                   else
                                   {
-                                    k = 0;
+                                    j = 0;
                                     continue;
                                     if ((!VersionUtils.isHoneycomb()) || (!paramKeyEvent.hasNoModifiers())) {
                                       break;
                                     }
-                                    if ((resurrectSelectionIfNeeded()) || (c(33)))
+                                    if ((resurrectSelectionIfNeeded()) || (fullScroll(33)))
                                     {
-                                      k = 1;
+                                      j = 1;
                                     }
                                     else
                                     {
-                                      k = 0;
+                                      j = 0;
                                       continue;
                                       if ((!VersionUtils.isHoneycomb()) || (!paramKeyEvent.hasNoModifiers())) {
                                         break;
                                       }
-                                      if ((resurrectSelectionIfNeeded()) || (c(130))) {
-                                        k = 1;
+                                      if ((resurrectSelectionIfNeeded()) || (fullScroll(130))) {
+                                        j = 1;
                                       } else {
-                                        k = 0;
+                                        j = 0;
                                       }
                                     }
                                   }
@@ -801,7 +325,7 @@ public class GridView
     if (sendToTextFilter(paramInt1, paramInt2, paramKeyEvent)) {
       return true;
     }
-    switch (j)
+    switch (i)
     {
     default: 
       return false;
@@ -813,212 +337,227 @@ public class GridView
     return super.onKeyMultiple(paramInt1, paramInt2, paramKeyEvent);
   }
   
-  private View b(int paramInt1, int paramInt2)
+  private void correctTooHigh(int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject = null;
-    int j;
-    if ((this.mGroupFlags & 0x22) == 34) {
-      j = this.mListPadding.top;
-    }
-    for (;;)
+    if ((this.mFirstPosition + paramInt3 - 1 == this.mItemCount - 1) && (paramInt3 > 0))
     {
-      if ((paramInt2 > j) && (paramInt1 >= 0))
+      paramInt3 = getChildAt(paramInt3 - 1).getBottom();
+      int i = this.mBottom - this.mTop - this.mListPadding.bottom - paramInt3;
+      View localView = getChildAt(0);
+      int j = localView.getTop();
+      if ((i > 0) && ((this.mFirstPosition > 0) || (j < this.mListPadding.top)))
       {
-        View localView = a(paramInt1, paramInt2, false);
-        if (localView == null) {
-          break label99;
+        paramInt3 = i;
+        if (this.mFirstPosition == 0) {
+          paramInt3 = Math.min(i, this.mListPadding.top - j);
         }
-        localObject = localView;
-      }
-      label99:
-      for (;;)
-      {
-        paramInt2 = this.jdField_a_of_type_AndroidViewView.getTop() - this.d;
-        this.mFirstPosition = paramInt1;
-        paramInt1 -= this.jdField_a_of_type_Int;
-        break;
-        if (this.mStackFromBottom) {
-          this.mFirstPosition = Math.max(0, paramInt1 + 1);
+        offsetChildrenTopAndBottom(paramInt3);
+        if (this.mFirstPosition > 0)
+        {
+          paramInt3 = this.mFirstPosition;
+          if (this.mStackFromBottom) {
+            paramInt1 = 1;
+          }
+          fillUp(paramInt3 - paramInt1, localView.getTop() - paramInt2);
+          adjustViewsUpOrDown();
         }
-        return localObject;
-      }
-      j = 0;
-    }
-  }
-  
-  private View b(int paramInt1, int paramInt2, int paramInt3)
-  {
-    int m = 0;
-    int i3 = getVerticalFadingEdgeLength();
-    int i4 = this.mSelectedPosition;
-    int i1 = this.jdField_a_of_type_Int;
-    int i2 = this.d;
-    int n = -1;
-    int k;
-    int j;
-    if (!this.mStackFromBottom)
-    {
-      k = i4 - paramInt1 - (i4 - paramInt1) % i1;
-      j = i4 - i4 % i1;
-      paramInt1 = n;
-      i4 = j - k;
-      k = a(paramInt2, i3, j);
-      n = a(paramInt3, i3, i1, j);
-      this.mFirstPosition = j;
-      if (i4 <= 0) {
-        break label306;
-      }
-      if (this.jdField_b_of_type_AndroidViewView != null) {
-        break label289;
-      }
-      paramInt2 = 0;
-      label115:
-      if (!this.mStackFromBottom) {
-        break label300;
-      }
-    }
-    View localView2;
-    View localView1;
-    label289:
-    label300:
-    for (paramInt3 = paramInt1;; paramInt3 = j)
-    {
-      localView2 = a(paramInt3, paramInt2 + i2, true);
-      localView1 = this.jdField_a_of_type_AndroidViewView;
-      a(localView1, k, n);
-      if (this.mStackFromBottom) {
-        break label431;
-      }
-      b(j - i1, localView1.getTop() - i2);
-      a();
-      a(j + i1, localView1.getBottom() + i2);
-      return localView2;
-      j = this.mItemCount - 1 - i4;
-      k = this.mItemCount - 1 - (j - j % i1);
-      j = Math.max(0, k - i1 + 1);
-      paramInt1 = this.mItemCount - 1 - (i4 - paramInt1);
-      n = Math.max(0, this.mItemCount - 1 - (paramInt1 - paramInt1 % i1) - i1 + 1);
-      paramInt1 = k;
-      k = n;
-      break;
-      paramInt2 = this.jdField_b_of_type_AndroidViewView.getBottom();
-      break label115;
-    }
-    label306:
-    if (i4 < 0)
-    {
-      if (this.jdField_b_of_type_AndroidViewView == null)
-      {
-        paramInt2 = 0;
-        label320:
-        if (!this.mStackFromBottom) {
-          break label371;
-        }
-      }
-      label371:
-      for (paramInt3 = paramInt1;; paramInt3 = j)
-      {
-        localView2 = a(paramInt3, paramInt2 - i2, false);
-        localView1 = this.jdField_a_of_type_AndroidViewView;
-        b(localView1, k, n);
-        break;
-        paramInt2 = this.jdField_b_of_type_AndroidViewView.getTop();
-        break label320;
-      }
-    }
-    if (this.jdField_b_of_type_AndroidViewView == null)
-    {
-      paramInt2 = m;
-      label387:
-      if (!this.mStackFromBottom) {
-        break label425;
-      }
-    }
-    label425:
-    for (paramInt3 = paramInt1;; paramInt3 = j)
-    {
-      localView2 = a(paramInt3, paramInt2, true);
-      localView1 = this.jdField_a_of_type_AndroidViewView;
-      break;
-      paramInt2 = this.jdField_b_of_type_AndroidViewView.getTop();
-      break label387;
-    }
-    label431:
-    a(paramInt1 + i1, localView1.getBottom() + i2);
-    a();
-    b(j - 1, localView1.getTop() - i2);
-    return localView2;
-  }
-  
-  private void b(int paramInt)
-  {
-    int j = getChildCount();
-    if (this.mFirstPosition + j == this.mItemCount)
-    {
-      paramInt -= getChildAt(j - 1).getBottom();
-      if (paramInt > 0) {
-        offsetChildrenTopAndBottom(paramInt);
       }
     }
   }
   
-  private void b(int paramInt1, int paramInt2, int paramInt3)
+  private void correctTooLow(int paramInt1, int paramInt2, int paramInt3)
   {
     if ((this.mFirstPosition == 0) && (paramInt3 > 0))
     {
-      int j = getChildAt(0).getTop();
-      int m = this.mListPadding.top;
-      int k = this.mBottom - this.mTop - this.mListPadding.bottom;
-      j -= m;
+      int i = getChildAt(0).getTop();
+      int k = this.mListPadding.top;
+      int j = this.mBottom - this.mTop - this.mListPadding.bottom;
+      i -= k;
       View localView = getChildAt(paramInt3 - 1);
-      int n = localView.getBottom();
-      m = this.mFirstPosition + paramInt3 - 1;
-      if ((j > 0) && ((m < this.mItemCount - 1) || (n > k)))
+      int m = localView.getBottom();
+      k = this.mFirstPosition + paramInt3 - 1;
+      if ((i > 0) && ((k < this.mItemCount - 1) || (m > j)))
       {
-        paramInt3 = j;
-        if (m == this.mItemCount - 1) {
-          paramInt3 = Math.min(j, n - k);
+        paramInt3 = i;
+        if (k == this.mItemCount - 1) {
+          paramInt3 = Math.min(i, m - j);
         }
         offsetChildrenTopAndBottom(-paramInt3);
-        if (m < this.mItemCount - 1)
+        if (k < this.mItemCount - 1)
         {
           if (!this.mStackFromBottom) {
             paramInt1 = 1;
           }
-          a(m + paramInt1, localView.getBottom() + paramInt2);
-          a();
+          fillDown(k + paramInt1, localView.getBottom() + paramInt2);
+          adjustViewsUpOrDown();
         }
       }
     }
   }
   
-  private void b(View paramView, int paramInt1, int paramInt2)
+  private boolean determineColumns(int paramInt)
   {
-    if (paramView.getTop() < paramInt1) {
-      offsetChildrenTopAndBottom(Math.min(paramInt1 - paramView.getTop(), paramInt2 - paramView.getBottom()));
+    int i = this.mRequestedHorizontalSpacing;
+    int j = this.mStretchMode;
+    int k = this.mRequestedColumnWidth;
+    boolean bool = false;
+    if (this.mRequestedNumColumns == -1) {
+      if (k > 0) {
+        this.mNumColumns = ((paramInt + i) / (k + i));
+      }
+    }
+    for (;;)
+    {
+      if (this.mNumColumns <= 0) {
+        this.mNumColumns = 1;
+      }
+      switch (j)
+      {
+      default: 
+        paramInt = paramInt - this.mNumColumns * k - (this.mNumColumns - 1) * i;
+        if (paramInt < 0) {
+          bool = true;
+        }
+        switch (j)
+        {
+        default: 
+          return bool;
+          this.mNumColumns = 2;
+          continue;
+          this.mNumColumns = this.mRequestedNumColumns;
+        }
+        break;
+      }
+    }
+    this.mColumnWidth = k;
+    this.mHorizontalSpacing = i;
+    return false;
+    this.mColumnWidth = (paramInt / this.mNumColumns + k);
+    this.mHorizontalSpacing = i;
+    return bool;
+    this.mColumnWidth = k;
+    if (this.mNumColumns > 1)
+    {
+      this.mHorizontalSpacing = (paramInt / (this.mNumColumns - 1) + i);
+      return bool;
+    }
+    this.mHorizontalSpacing = (i + paramInt);
+    return bool;
+    this.mColumnWidth = k;
+    if (this.mNumColumns > 1)
+    {
+      this.mHorizontalSpacing = (paramInt / (this.mNumColumns + 1) + i);
+      return bool;
+    }
+    this.mHorizontalSpacing = (i + paramInt);
+    return bool;
+  }
+  
+  private View fillDown(int paramInt1, int paramInt2)
+  {
+    Object localObject = null;
+    int i = this.mBottom - this.mTop;
+    if ((this.mGroupFlags & 0x22) == 34) {
+      i -= this.mListPadding.bottom;
+    }
+    for (;;)
+    {
+      if ((paramInt2 < i) && (paramInt1 < this.mItemCount))
+      {
+        View localView = makeRow(paramInt1, paramInt2, true);
+        if (localView == null) {
+          break label92;
+        }
+        localObject = localView;
+      }
+      label92:
+      for (;;)
+      {
+        paramInt2 = this.mReferenceView.getBottom() + this.mVerticalSpacing;
+        paramInt1 += this.mNumColumns;
+        break;
+        return localObject;
+      }
     }
   }
   
-  private View c(int paramInt1, int paramInt2)
+  private View fillFromBottom(int paramInt1, int paramInt2)
   {
     paramInt1 = Math.min(Math.max(paramInt1, this.mSelectedPosition), this.mItemCount - 1);
     paramInt1 = this.mItemCount - 1 - paramInt1;
-    return b(this.mItemCount - 1 - (paramInt1 - paramInt1 % this.jdField_a_of_type_Int), paramInt2);
+    return fillUp(this.mItemCount - 1 - (paramInt1 - paramInt1 % this.mNumColumns), paramInt2);
   }
   
-  private View d(int paramInt1, int paramInt2)
+  private View fillFromSelection(int paramInt1, int paramInt2, int paramInt3)
   {
-    int k = reconcileSelectedPosition();
-    int n = this.jdField_a_of_type_Int;
-    int i1 = this.d;
-    int j = -1;
-    int i2;
-    int i3;
+    int n = getVerticalFadingEdgeLength();
+    int j = this.mSelectedPosition;
+    int k = this.mNumColumns;
+    int m = this.mVerticalSpacing;
+    int i = -1;
+    int i1;
     if (!this.mStackFromBottom)
     {
-      k -= k % n;
-      i2 = getVerticalFadingEdgeLength();
-      i3 = a(paramInt1, i2, k);
+      j -= j % k;
+      i1 = getTopSelectionPixel(paramInt2, n, j);
+      paramInt3 = getBottomSelectionPixel(paramInt3, n, k, j);
+      if (!this.mStackFromBottom) {
+        break label210;
+      }
+    }
+    View localView1;
+    View localView2;
+    label210:
+    for (paramInt2 = i;; paramInt2 = j)
+    {
+      localView1 = makeRow(paramInt2, paramInt1, true);
+      this.mFirstPosition = j;
+      localView2 = this.mReferenceView;
+      adjustForTopFadingEdge(localView2, i1, paramInt3);
+      adjustForBottomFadingEdge(localView2, i1, paramInt3);
+      if (this.mStackFromBottom) {
+        break label216;
+      }
+      fillUp(j - k, localView2.getTop() - m);
+      adjustViewsUpOrDown();
+      fillDown(j + k, localView2.getBottom() + m);
+      return localView1;
+      i = this.mItemCount - 1 - j;
+      i = this.mItemCount - 1 - (i - i % k);
+      j = Math.max(0, i - k + 1);
+      break;
+    }
+    label216:
+    fillDown(i + k, localView2.getBottom() + m);
+    adjustViewsUpOrDown();
+    fillUp(j - 1, localView2.getTop() - m);
+    return localView1;
+  }
+  
+  private View fillFromTop(int paramInt)
+  {
+    this.mFirstPosition = Math.min(this.mFirstPosition, this.mSelectedPosition);
+    this.mFirstPosition = Math.min(this.mFirstPosition, this.mItemCount - 1);
+    if (this.mFirstPosition < 0) {
+      this.mFirstPosition = 0;
+    }
+    this.mFirstPosition -= this.mFirstPosition % this.mNumColumns;
+    return fillDown(this.mFirstPosition, paramInt);
+  }
+  
+  private View fillSelection(int paramInt1, int paramInt2)
+  {
+    int j = reconcileSelectedPosition();
+    int m = this.mNumColumns;
+    int n = this.mVerticalSpacing;
+    int i = -1;
+    int i1;
+    int i2;
+    if (!this.mStackFromBottom)
+    {
+      j -= j % m;
+      i1 = getVerticalFadingEdgeLength();
+      i2 = getTopSelectionPixel(paramInt1, i1, j);
       if (!this.mStackFromBottom) {
         break label181;
       }
@@ -1026,53 +565,53 @@ public class GridView
     View localView1;
     View localView2;
     label181:
-    for (int m = j;; m = k)
+    for (int k = i;; k = j)
     {
-      localView1 = a(m, i3, true);
-      this.mFirstPosition = k;
-      localView2 = this.jdField_a_of_type_AndroidViewView;
+      localView1 = makeRow(k, i2, true);
+      this.mFirstPosition = j;
+      localView2 = this.mReferenceView;
       if (this.mStackFromBottom) {
         break label188;
       }
-      a(k + n, localView2.getBottom() + i1);
-      b(paramInt2);
-      b(k - n, localView2.getTop() - i1);
-      a();
+      fillDown(j + m, localView2.getBottom() + n);
+      pinToBottom(paramInt2);
+      fillUp(j - m, localView2.getTop() - n);
+      adjustViewsUpOrDown();
       return localView1;
-      j = this.mItemCount - 1 - k;
-      j = this.mItemCount - 1 - (j - j % n);
-      k = Math.max(0, j - n + 1);
+      i = this.mItemCount - 1 - j;
+      i = this.mItemCount - 1 - (i - i % m);
+      j = Math.max(0, i - m + 1);
       break;
     }
     label188:
-    offsetChildrenTopAndBottom(a(paramInt2, i2, n, k) - localView2.getBottom());
-    b(k - 1, localView2.getTop() - i1);
-    a(paramInt1);
-    a(j + n, localView2.getBottom() + i1);
-    a();
+    offsetChildrenTopAndBottom(getBottomSelectionPixel(paramInt2, i1, m, j) - localView2.getBottom());
+    fillUp(j - 1, localView2.getTop() - n);
+    pinToTop(paramInt1);
+    fillDown(i + m, localView2.getBottom() + n);
+    adjustViewsUpOrDown();
     return localView1;
   }
   
-  private View e(int paramInt1, int paramInt2)
+  private View fillSpecific(int paramInt1, int paramInt2)
   {
-    int m = this.jdField_a_of_type_Int;
-    int k = -1;
-    int j;
+    int k = this.mNumColumns;
+    int j = -1;
+    int i;
     label36:
     View localView3;
     Object localObject1;
     Object localObject2;
     if (!this.mStackFromBottom)
     {
-      j = paramInt1 - paramInt1 % m;
-      paramInt1 = k;
+      i = paramInt1 - paramInt1 % k;
+      paramInt1 = j;
       if (!this.mStackFromBottom) {
         break label105;
       }
-      k = paramInt1;
-      localView3 = a(k, paramInt2, true);
-      this.mFirstPosition = j;
-      localObject1 = this.jdField_a_of_type_AndroidViewView;
+      j = paramInt1;
+      localView3 = makeRow(j, paramInt2, true);
+      this.mFirstPosition = i;
+      localObject1 = this.mReferenceView;
       if (localObject1 != null) {
         break label111;
       }
@@ -1085,23 +624,23 @@ public class GridView
     {
       return localObject2;
       paramInt1 = this.mItemCount - 1 - paramInt1;
-      paramInt1 = this.mItemCount - 1 - (paramInt1 - paramInt1 % m);
-      j = Math.max(0, paramInt1 - m + 1);
+      paramInt1 = this.mItemCount - 1 - (paramInt1 - paramInt1 % k);
+      i = Math.max(0, paramInt1 - k + 1);
       break;
-      k = j;
+      j = i;
       break label36;
-      paramInt2 = this.d;
+      paramInt2 = this.mVerticalSpacing;
       if (!this.mStackFromBottom)
       {
-        localObject2 = b(j - m, ((View)localObject1).getTop() - paramInt2);
-        a();
-        View localView2 = a(j + m, ((View)localObject1).getBottom() + paramInt2);
+        localObject2 = fillUp(i - k, ((View)localObject1).getTop() - paramInt2);
+        adjustViewsUpOrDown();
+        View localView2 = fillDown(i + k, ((View)localObject1).getBottom() + paramInt2);
         paramInt1 = getChildCount();
         localObject1 = localObject2;
         localView1 = localView2;
         if (paramInt1 > 0)
         {
-          a(m, paramInt2, paramInt1);
+          correctTooHigh(k, paramInt2, paramInt1);
           localView1 = localView2;
           localObject1 = localObject2;
         }
@@ -1109,12 +648,12 @@ public class GridView
       while (localView3 != null)
       {
         return localView3;
-        localView1 = a(paramInt1 + m, ((View)localObject1).getBottom() + paramInt2);
-        a();
-        localObject1 = b(j - 1, ((View)localObject1).getTop() - paramInt2);
+        localView1 = fillDown(paramInt1 + k, ((View)localObject1).getBottom() + paramInt2);
+        adjustViewsUpOrDown();
+        localObject1 = fillUp(i - 1, ((View)localObject1).getTop() - paramInt2);
         paramInt1 = getChildCount();
         if (paramInt1 > 0) {
-          b(m, paramInt2, paramInt1);
+          correctTooLow(k, paramInt2, paramInt1);
         }
       }
       localObject2 = localObject1;
@@ -1122,14 +661,527 @@ public class GridView
     return localView1;
   }
   
-  public int a()
+  private View fillUp(int paramInt1, int paramInt2)
   {
-    return this.jdField_b_of_type_Int;
+    Object localObject = null;
+    int i;
+    if ((this.mGroupFlags & 0x22) == 34) {
+      i = this.mListPadding.top;
+    }
+    for (;;)
+    {
+      if ((paramInt2 > i) && (paramInt1 >= 0))
+      {
+        View localView = makeRow(paramInt1, paramInt2, false);
+        if (localView == null) {
+          break label99;
+        }
+        localObject = localView;
+      }
+      label99:
+      for (;;)
+      {
+        paramInt2 = this.mReferenceView.getTop() - this.mVerticalSpacing;
+        this.mFirstPosition = paramInt1;
+        paramInt1 -= this.mNumColumns;
+        break;
+        if (this.mStackFromBottom) {
+          this.mFirstPosition = Math.max(0, paramInt1 + 1);
+        }
+        return localObject;
+      }
+      i = 0;
+    }
   }
   
-  public ListAdapter a()
+  private int getBottomSelectionPixel(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return this.mAdapter;
+    int i = paramInt1;
+    if (paramInt4 + paramInt3 - 1 < this.mItemCount - 1) {
+      i = paramInt1 - paramInt2;
+    }
+    return i;
+  }
+  
+  private int getTopSelectionPixel(int paramInt1, int paramInt2, int paramInt3)
+  {
+    int i = paramInt1;
+    if (paramInt3 > 0) {
+      i = paramInt1 + paramInt2;
+    }
+    return i;
+  }
+  
+  private boolean isCandidateSelection(int paramInt1, int paramInt2)
+  {
+    int k = getChildCount();
+    int i = k - 1 - paramInt1;
+    int j;
+    if (!this.mStackFromBottom)
+    {
+      j = paramInt1 - paramInt1 % this.mNumColumns;
+      i = Math.max(this.mNumColumns + j - 1, k);
+    }
+    for (;;)
+    {
+      switch (paramInt2)
+      {
+      default: 
+        throw new IllegalArgumentException("direction must be one of {FOCUS_UP, FOCUS_DOWN, FOCUS_LEFT, FOCUS_RIGHT, FOCUS_FORWARD, FOCUS_BACKWARD}.");
+        i = k - 1 - (i - i % this.mNumColumns);
+        j = Math.max(0, i - this.mNumColumns + 1);
+      }
+    }
+    if (paramInt1 == j) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return true;
+              return false;
+            } while (j == 0);
+            return false;
+          } while (paramInt1 == i);
+          return false;
+        } while (i == k - 1);
+        return false;
+      } while ((paramInt1 == j) && (j == 0));
+      return false;
+    } while ((paramInt1 == i) && (i == k - 1));
+    return false;
+  }
+  
+  private View makeAndAddView(int paramInt1, int paramInt2, boolean paramBoolean1, int paramInt3, boolean paramBoolean2, int paramInt4)
+  {
+    if (!this.mDataChanged)
+    {
+      localView = this.mRecycler.getActiveView(paramInt1);
+      if (localView != null)
+      {
+        setupChild(localView, paramInt1, paramInt2, paramBoolean1, paramInt3, paramBoolean2, true, paramInt4);
+        return localView;
+      }
+    }
+    View localView = obtainView(paramInt1, this.mIsScrap);
+    setupChild(localView, paramInt1, paramInt2, paramBoolean1, paramInt3, paramBoolean2, this.mIsScrap[0], paramInt4);
+    return localView;
+  }
+  
+  private View makeRow(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    int i1 = this.mColumnWidth;
+    int n = this.mHorizontalSpacing;
+    int j = this.mListPadding.left;
+    int i;
+    int k;
+    if (this.mStretchMode == 3)
+    {
+      i = n;
+      j = i + j;
+      if (this.mStackFromBottom) {
+        break label191;
+      }
+      k = Math.min(this.mNumColumns + paramInt1, this.mItemCount);
+      i = paramInt1;
+      paramInt1 = k;
+    }
+    for (;;)
+    {
+      label68:
+      Object localObject = null;
+      boolean bool2 = shouldShowSelector();
+      boolean bool3 = touchModeDrawsInPressedState();
+      int i2 = this.mSelectedPosition;
+      View localView = null;
+      k = i;
+      label96:
+      boolean bool1;
+      label112:
+      int m;
+      if (k < paramInt1) {
+        if (k == i2)
+        {
+          bool1 = true;
+          if (!paramBoolean) {
+            break label259;
+          }
+          m = -1;
+          label119:
+          localView = makeAndAddView(k, paramInt2, paramBoolean, j, bool1, m);
+          j += i1;
+          if (k >= paramInt1 - 1) {
+            break label294;
+          }
+          j += n;
+        }
+      }
+      label259:
+      label294:
+      for (;;)
+      {
+        if ((bool1) && ((bool2) || (bool3))) {
+          localObject = localView;
+        }
+        for (;;)
+        {
+          k += 1;
+          break label96;
+          i = 0;
+          break;
+          label191:
+          i = paramInt1 + 1;
+          k = Math.max(0, paramInt1 - this.mNumColumns + 1);
+          if (i - k >= this.mNumColumns) {
+            break label297;
+          }
+          j += (this.mNumColumns - (i - k)) * (i1 + n);
+          paramInt1 = i;
+          i = k;
+          break label68;
+          bool1 = false;
+          break label112;
+          m = k - i;
+          break label119;
+          this.mReferenceView = localView;
+          if (localObject != null) {
+            this.mReferenceViewInSelectedRow = this.mReferenceView;
+          }
+          return localObject;
+        }
+      }
+      label297:
+      paramInt1 = i;
+      i = k;
+    }
+  }
+  
+  private View moveSelection(int paramInt1, int paramInt2, int paramInt3)
+  {
+    int k = 0;
+    int i2 = getVerticalFadingEdgeLength();
+    int i3 = this.mSelectedPosition;
+    int n = this.mNumColumns;
+    int i1 = this.mVerticalSpacing;
+    int m = -1;
+    int j;
+    int i;
+    if (!this.mStackFromBottom)
+    {
+      j = i3 - paramInt1 - (i3 - paramInt1) % n;
+      i = i3 - i3 % n;
+      paramInt1 = m;
+      i3 = i - j;
+      j = getTopSelectionPixel(paramInt2, i2, i);
+      m = getBottomSelectionPixel(paramInt3, i2, n, i);
+      this.mFirstPosition = i;
+      if (i3 <= 0) {
+        break label306;
+      }
+      if (this.mReferenceViewInSelectedRow != null) {
+        break label289;
+      }
+      paramInt2 = 0;
+      label115:
+      if (!this.mStackFromBottom) {
+        break label300;
+      }
+    }
+    View localView2;
+    View localView1;
+    label289:
+    label300:
+    for (paramInt3 = paramInt1;; paramInt3 = i)
+    {
+      localView2 = makeRow(paramInt3, paramInt2 + i1, true);
+      localView1 = this.mReferenceView;
+      adjustForBottomFadingEdge(localView1, j, m);
+      if (this.mStackFromBottom) {
+        break label431;
+      }
+      fillUp(i - n, localView1.getTop() - i1);
+      adjustViewsUpOrDown();
+      fillDown(i + n, localView1.getBottom() + i1);
+      return localView2;
+      i = this.mItemCount - 1 - i3;
+      j = this.mItemCount - 1 - (i - i % n);
+      i = Math.max(0, j - n + 1);
+      paramInt1 = this.mItemCount - 1 - (i3 - paramInt1);
+      m = Math.max(0, this.mItemCount - 1 - (paramInt1 - paramInt1 % n) - n + 1);
+      paramInt1 = j;
+      j = m;
+      break;
+      paramInt2 = this.mReferenceViewInSelectedRow.getBottom();
+      break label115;
+    }
+    label306:
+    if (i3 < 0)
+    {
+      if (this.mReferenceViewInSelectedRow == null)
+      {
+        paramInt2 = 0;
+        label320:
+        if (!this.mStackFromBottom) {
+          break label371;
+        }
+      }
+      label371:
+      for (paramInt3 = paramInt1;; paramInt3 = i)
+      {
+        localView2 = makeRow(paramInt3, paramInt2 - i1, false);
+        localView1 = this.mReferenceView;
+        adjustForTopFadingEdge(localView1, j, m);
+        break;
+        paramInt2 = this.mReferenceViewInSelectedRow.getTop();
+        break label320;
+      }
+    }
+    if (this.mReferenceViewInSelectedRow == null)
+    {
+      paramInt2 = k;
+      label387:
+      if (!this.mStackFromBottom) {
+        break label425;
+      }
+    }
+    label425:
+    for (paramInt3 = paramInt1;; paramInt3 = i)
+    {
+      localView2 = makeRow(paramInt3, paramInt2, true);
+      localView1 = this.mReferenceView;
+      break;
+      paramInt2 = this.mReferenceViewInSelectedRow.getTop();
+      break label387;
+    }
+    label431:
+    fillDown(paramInt1 + n, localView1.getBottom() + i1);
+    adjustViewsUpOrDown();
+    fillUp(i - 1, localView1.getTop() - i1);
+    return localView2;
+  }
+  
+  private void pinToBottom(int paramInt)
+  {
+    int i = getChildCount();
+    if (this.mFirstPosition + i == this.mItemCount)
+    {
+      paramInt -= getChildAt(i - 1).getBottom();
+      if (paramInt > 0) {
+        offsetChildrenTopAndBottom(paramInt);
+      }
+    }
+  }
+  
+  private void pinToTop(int paramInt)
+  {
+    if (this.mFirstPosition == 0)
+    {
+      paramInt -= getChildAt(0).getTop();
+      if (paramInt < 0) {
+        offsetChildrenTopAndBottom(paramInt);
+      }
+    }
+  }
+  
+  @TargetApi(11)
+  private void setupChild(View paramView, int paramInt1, int paramInt2, boolean paramBoolean1, int paramInt3, boolean paramBoolean2, boolean paramBoolean3, int paramInt4)
+  {
+    int j;
+    label27:
+    int i;
+    boolean bool;
+    label55:
+    int k;
+    label67:
+    label87:
+    AbsListView.LayoutParams localLayoutParams;
+    if ((paramBoolean2) && (shouldShowSelector()))
+    {
+      paramBoolean2 = true;
+      if (paramBoolean2 == paramView.isSelected()) {
+        break label400;
+      }
+      j = 1;
+      i = this.mTouchMode;
+      if ((i <= 0) || (i >= 3) || (this.mMotionPosition != paramInt1)) {
+        break label406;
+      }
+      bool = true;
+      if (bool == paramView.isPressed()) {
+        break label412;
+      }
+      k = 1;
+      if ((paramBoolean3) && (j == 0) && (!paramView.isLayoutRequested())) {
+        break label418;
+      }
+      i = 1;
+      localLayoutParams = (AbsListView.LayoutParams)paramView.getLayoutParams();
+      if (localLayoutParams != null) {
+        break label545;
+      }
+      localLayoutParams = (AbsListView.LayoutParams)generateDefaultLayoutParams();
+    }
+    label147:
+    label283:
+    label412:
+    label545:
+    for (;;)
+    {
+      localLayoutParams.viewType = this.mAdapter.getItemViewType(paramInt1);
+      if ((paramBoolean3) && (!localLayoutParams.forceAdd))
+      {
+        attachViewToParent(paramView, paramInt4, localLayoutParams);
+        if (j != 0)
+        {
+          paramView.setSelected(paramBoolean2);
+          if (paramBoolean2) {
+            requestFocus();
+          }
+        }
+        if (k != 0) {
+          paramView.setPressed(bool);
+        }
+        if ((this.mChoiceMode != 0) && (this.mCheckStates != null))
+        {
+          if (!(paramView instanceof Checkable)) {
+            break label444;
+          }
+          ((Checkable)paramView).setChecked(this.mCheckStates.get(paramInt1));
+        }
+        label217:
+        if (i == 0) {
+          break label474;
+        }
+        paramInt4 = ViewGroup.getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(0, 0), 0, localLayoutParams.height);
+        paramView.measure(ViewGroup.getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(this.mColumnWidth, 1073741824), 0, localLayoutParams.width), paramInt4);
+        j = paramView.getMeasuredWidth();
+        k = paramView.getMeasuredHeight();
+        if (!paramBoolean1) {
+          break label482;
+        }
+        paramInt4 = paramInt2;
+        paramInt2 = paramInt3;
+        switch (this.mGravity & 0x7)
+        {
+        default: 
+          paramInt2 = paramInt3;
+        case 2: 
+        case 3: 
+        case 4: 
+          label331:
+          if (i != 0) {
+            paramView.layout(paramInt2, paramInt4, j + paramInt2, k + paramInt4);
+          }
+          break;
+        }
+      }
+      for (;;)
+      {
+        if (this.mCachingStarted) {
+          paramView.setDrawingCacheEnabled(true);
+        }
+        if ((VersionUtils.isHoneycomb()) && (paramBoolean3) && (((AbsListView.LayoutParams)paramView.getLayoutParams()).scrappedFromPosition != paramInt1)) {
+          paramView.jumpDrawablesToCurrentState();
+        }
+        return;
+        paramBoolean2 = false;
+        break;
+        j = 0;
+        break label27;
+        bool = false;
+        break label55;
+        k = 0;
+        break label67;
+        label418:
+        i = 0;
+        break label87;
+        localLayoutParams.forceAdd = false;
+        addViewInLayout(paramView, paramInt4, localLayoutParams, true);
+        break label147;
+        label444:
+        if (getContext().getApplicationInfo().targetSdkVersion < 11) {
+          break label217;
+        }
+        paramView.setActivated(this.mCheckStates.get(paramInt1));
+        break label217;
+        label474:
+        cleanupLayoutState(paramView);
+        break label263;
+        label482:
+        paramInt4 = paramInt2 - k;
+        break label283;
+        paramInt2 = paramInt3 + (this.mColumnWidth - j) / 2;
+        break label331;
+        paramInt2 = this.mColumnWidth + paramInt3 - j;
+        break label331;
+        paramView.offsetLeftAndRight(paramInt2 - paramView.getLeft());
+        paramView.offsetTopAndBottom(paramInt4 - paramView.getTop());
+      }
+    }
+  }
+  
+  boolean arrowScroll(int paramInt)
+  {
+    boolean bool = true;
+    int k = this.mSelectedPosition;
+    int m = this.mNumColumns;
+    int j;
+    int i;
+    if (!this.mStackFromBottom)
+    {
+      j = k / m * m;
+      i = Math.min(j + m - 1, this.mItemCount - 1);
+      switch (paramInt)
+      {
+      default: 
+        label92:
+        bool = false;
+      }
+    }
+    for (;;)
+    {
+      if (bool)
+      {
+        playSoundEffect(SoundEffectConstants.getContantForFocusDirection(paramInt));
+        invokeOnItemScrollListener();
+      }
+      if (bool) {
+        awakenScrollBars();
+      }
+      return bool;
+      i = this.mItemCount;
+      i = this.mItemCount - 1 - (i - 1 - k) / m * m;
+      j = Math.max(0, i - m + 1);
+      break;
+      if (j <= 0) {
+        break label92;
+      }
+      this.mLayoutMode = 6;
+      setSelectionInt(Math.max(0, k - m));
+      continue;
+      if (i >= this.mItemCount - 1) {
+        break label92;
+      }
+      this.mLayoutMode = 6;
+      setSelectionInt(Math.min(k + m, this.mItemCount - 1));
+      continue;
+      if (k <= j) {
+        break label92;
+      }
+      this.mLayoutMode = 6;
+      setSelectionInt(Math.max(0, k - 1));
+      continue;
+      if (k >= i) {
+        break label92;
+      }
+      this.mLayoutMode = 6;
+      setSelectionInt(Math.min(k + 1, this.mItemCount - 1));
+    }
   }
   
   protected void attachLayoutAnimationParameters(View paramView, ViewGroup.LayoutParams paramLayoutParams, int paramInt1, int paramInt2)
@@ -1143,54 +1195,164 @@ public class GridView
     }
     paramView.count = paramInt2;
     paramView.index = paramInt1;
-    paramView.columnsCount = this.jdField_a_of_type_Int;
-    paramView.rowsCount = (paramInt2 / this.jdField_a_of_type_Int);
+    paramView.columnsCount = this.mNumColumns;
+    paramView.rowsCount = (paramInt2 / this.mNumColumns);
     if (!this.mStackFromBottom)
     {
-      paramView.column = (paramInt1 % this.jdField_a_of_type_Int);
-      paramView.row = (paramInt1 / this.jdField_a_of_type_Int);
+      paramView.column = (paramInt1 % this.mNumColumns);
+      paramView.row = (paramInt1 / this.mNumColumns);
       return;
     }
     paramInt1 = paramInt2 - 1 - paramInt1;
-    paramView.column = (this.jdField_a_of_type_Int - 1 - paramInt1 % this.jdField_a_of_type_Int);
-    paramView.row = (paramView.rowsCount - 1 - paramInt1 / this.jdField_a_of_type_Int);
+    paramView.column = (this.mNumColumns - 1 - paramInt1 % this.mNumColumns);
+    paramView.row = (paramView.rowsCount - 1 - paramInt1 / this.mNumColumns);
   }
   
-  public int b()
+  protected int computeVerticalScrollExtent()
   {
-    return this.d;
-  }
-  
-  boolean b(int paramInt)
-  {
-    boolean bool = false;
-    int j = -1;
-    if (paramInt == 33) {
-      j = Math.max(0, this.mSelectedPosition - getChildCount());
-    }
-    for (;;)
+    int k = getChildCount();
+    if (k > 0)
     {
-      if (j >= 0)
-      {
-        setSelectionInt(j);
-        invokeOnItemScrollListener();
-        awakenScrollBars();
-        bool = true;
+      int i = this.mNumColumns;
+      int j = (k + i - 1) / i * 100;
+      View localView = getChildAt(0);
+      int m = localView.getTop();
+      int n = localView.getHeight();
+      i = j;
+      if (n > 0) {
+        i = j + m * 100 / n;
       }
-      return bool;
-      if (paramInt == 130) {
-        j = Math.min(this.mItemCount - 1, this.mSelectedPosition + getChildCount());
+      localView = getChildAt(k - 1);
+      k = localView.getBottom();
+      m = localView.getHeight();
+      j = i;
+      if (m > 0) {
+        j = i - (k - getHeight()) * 100 / m;
+      }
+      return j;
+    }
+    return 0;
+  }
+  
+  protected int computeVerticalScrollOffset()
+  {
+    int j = 0;
+    int i = j;
+    if (this.mFirstPosition >= 0)
+    {
+      i = j;
+      if (getChildCount() > 0)
+      {
+        View localView = getChildAt(0);
+        int k = localView.getTop();
+        int m = localView.getHeight();
+        i = j;
+        if (m > 0)
+        {
+          j = this.mNumColumns;
+          i = this.mFirstPosition / j;
+          j = (this.mItemCount + j - 1) / j;
+          i = Math.max(i * 100 - k * 100 / m + (int)(this.mScrollY / getHeight() * j * 100.0F), 0);
+        }
+      }
+    }
+    return i;
+  }
+  
+  protected int computeVerticalScrollRange()
+  {
+    int i = this.mNumColumns;
+    int k = (this.mItemCount + i - 1) / i;
+    int j = Math.max(k * 100, 0);
+    i = j;
+    if (this.mScrollY != 0)
+    {
+      float f = this.mScrollY / getHeight();
+      i = j + Math.abs((int)(k * f * 100.0F));
+    }
+    return i;
+  }
+  
+  void fillGap(boolean paramBoolean)
+  {
+    int m = this.mNumColumns;
+    int n = this.mVerticalSpacing;
+    int j = getChildCount();
+    if (paramBoolean) {
+      if ((this.mGroupFlags & 0x22) != 34) {
+        break label194;
+      }
+    }
+    label182:
+    label194:
+    for (int i = getListPaddingTop();; i = 0)
+    {
+      if (j > 0) {
+        i = getChildAt(j - 1).getBottom() + n;
+      }
+      int k = this.mFirstPosition + j;
+      j = k;
+      if (this.mStackFromBottom) {
+        j = k + (m - 1);
+      }
+      fillDown(j, i);
+      correctTooHigh(m, n, getChildCount());
+      return;
+      if ((this.mGroupFlags & 0x22) == 34) {}
+      for (i = getListPaddingBottom();; i = 0)
+      {
+        if (j > 0)
+        {
+          i = getChildAt(0).getTop() - n;
+          j = this.mFirstPosition;
+          if (this.mStackFromBottom) {
+            break label182;
+          }
+          j -= m;
+        }
+        for (;;)
+        {
+          fillUp(j, i);
+          correctTooLow(m, n, getChildCount());
+          return;
+          i = getHeight() - i;
+          break;
+          j -= 1;
+        }
       }
     }
   }
   
-  @ViewDebug.ExportedProperty
-  public int c()
+  int findMotionRow(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    int k = getChildCount();
+    if (k > 0)
+    {
+      int j = this.mNumColumns;
+      if (!this.mStackFromBottom)
+      {
+        i = 0;
+        while (i < k)
+        {
+          if (paramInt <= getChildAt(i).getBottom()) {
+            return i + this.mFirstPosition;
+          }
+          i += j;
+        }
+      }
+      int i = k - 1;
+      while (i >= 0)
+      {
+        if (paramInt >= getChildAt(i).getTop()) {
+          return i + this.mFirstPosition;
+        }
+        i -= j;
+      }
+    }
+    return -1;
   }
   
-  boolean c(int paramInt)
+  boolean fullScroll(int paramInt)
   {
     boolean bool = true;
     if (paramInt == 33)
@@ -1218,224 +1380,62 @@ public class GridView
     }
   }
   
-  protected int computeVerticalScrollExtent()
+  public ListAdapter getAdapter()
   {
-    int m = getChildCount();
-    if (m > 0)
-    {
-      int j = this.jdField_a_of_type_Int;
-      int k = (m + j - 1) / j * 100;
-      View localView = getChildAt(0);
-      int n = localView.getTop();
-      int i1 = localView.getHeight();
-      j = k;
-      if (i1 > 0) {
-        j = k + n * 100 / i1;
-      }
-      localView = getChildAt(m - 1);
-      m = localView.getBottom();
-      n = localView.getHeight();
-      k = j;
-      if (n > 0) {
-        k = j - (m - getHeight()) * 100 / n;
-      }
-      return k;
-    }
-    return 0;
+    return this.mAdapter;
   }
   
-  protected int computeVerticalScrollOffset()
+  public int getColumnWidth()
   {
-    int k = 0;
-    int j = k;
-    if (this.mFirstPosition >= 0)
-    {
-      j = k;
-      if (getChildCount() > 0)
-      {
-        View localView = getChildAt(0);
-        int m = localView.getTop();
-        int n = localView.getHeight();
-        j = k;
-        if (n > 0)
-        {
-          k = this.jdField_a_of_type_Int;
-          j = this.mFirstPosition / k;
-          k = (this.mItemCount + k - 1) / k;
-          j = Math.max(j * 100 - m * 100 / n + (int)(this.mScrollY / getHeight() * k * 100.0F), 0);
-        }
-      }
-    }
-    return j;
+    return this.mColumnWidth;
   }
   
-  protected int computeVerticalScrollRange()
+  public int getGravity()
   {
-    int j = this.jdField_a_of_type_Int;
-    int m = (this.mItemCount + j - 1) / j;
-    int k = Math.max(m * 100, 0);
-    j = k;
-    if (this.mScrollY != 0)
-    {
-      float f1 = this.mScrollY / getHeight();
-      j = k + Math.abs((int)(m * f1 * 100.0F));
-    }
-    return j;
+    return this.mGravity;
   }
   
-  boolean d(int paramInt)
+  public int getHorizontalSpacing()
   {
-    boolean bool = true;
-    int m = this.mSelectedPosition;
-    int n = this.jdField_a_of_type_Int;
-    int k;
-    int j;
-    if (!this.mStackFromBottom)
-    {
-      k = m / n * n;
-      j = Math.min(k + n - 1, this.mItemCount - 1);
-      switch (paramInt)
-      {
-      default: 
-        label92:
-        bool = false;
-      }
-    }
-    for (;;)
-    {
-      if (bool)
-      {
-        playSoundEffect(SoundEffectConstants.getContantForFocusDirection(paramInt));
-        invokeOnItemScrollListener();
-      }
-      if (bool) {
-        awakenScrollBars();
-      }
-      return bool;
-      j = this.mItemCount;
-      j = this.mItemCount - 1 - (j - 1 - m) / n * n;
-      k = Math.max(0, j - n + 1);
-      break;
-      if (k <= 0) {
-        break label92;
-      }
-      this.mLayoutMode = 6;
-      setSelectionInt(Math.max(0, m - n));
-      continue;
-      if (j >= this.mItemCount - 1) {
-        break label92;
-      }
-      this.mLayoutMode = 6;
-      setSelectionInt(Math.min(m + n, this.mItemCount - 1));
-      continue;
-      if (m <= k) {
-        break label92;
-      }
-      this.mLayoutMode = 6;
-      setSelectionInt(Math.max(0, m - 1));
-      continue;
-      if (m >= j) {
-        break label92;
-      }
-      this.mLayoutMode = 6;
-      setSelectionInt(Math.min(m + 1, this.mItemCount - 1));
-    }
+    return this.mHorizontalSpacing;
   }
   
-  public int e()
+  @ViewDebug.ExportedProperty
+  public int getNumColumns()
   {
-    return this.g;
+    return this.mNumColumns;
   }
   
-  void fillGap(boolean paramBoolean)
+  public int getRequestedColumnWidth()
   {
-    int n = this.jdField_a_of_type_Int;
-    int i1 = this.d;
-    int k = getChildCount();
-    if (paramBoolean) {
-      if ((this.mGroupFlags & 0x22) != 34) {
-        break label194;
-      }
-    }
-    label182:
-    label194:
-    for (int j = getListPaddingTop();; j = 0)
-    {
-      if (k > 0) {
-        j = getChildAt(k - 1).getBottom() + i1;
-      }
-      int m = this.mFirstPosition + k;
-      k = m;
-      if (this.mStackFromBottom) {
-        k = m + (n - 1);
-      }
-      a(k, j);
-      a(n, i1, getChildCount());
-      return;
-      if ((this.mGroupFlags & 0x22) == 34) {}
-      for (j = getListPaddingBottom();; j = 0)
-      {
-        if (k > 0)
-        {
-          j = getChildAt(0).getTop() - i1;
-          k = this.mFirstPosition;
-          if (this.mStackFromBottom) {
-            break label182;
-          }
-          k -= n;
-        }
-        for (;;)
-        {
-          b(k, j);
-          b(n, i1, getChildCount());
-          return;
-          j = getHeight() - j;
-          break;
-          k -= 1;
-        }
-      }
-    }
+    return this.mRequestedColumnWidth;
   }
   
-  int findMotionRow(int paramInt)
+  public int getRequestedHorizontalSpacing()
   {
-    int m = getChildCount();
-    if (m > 0)
-    {
-      int k = this.jdField_a_of_type_Int;
-      if (!this.mStackFromBottom)
-      {
-        j = 0;
-        while (j < m)
-        {
-          if (paramInt <= getChildAt(j).getBottom()) {
-            return j + this.mFirstPosition;
-          }
-          j += k;
-        }
-      }
-      int j = m - 1;
-      while (j >= 0)
-      {
-        if (paramInt >= getChildAt(j).getTop()) {
-          return j + this.mFirstPosition;
-        }
-        j -= k;
-      }
-    }
-    return -1;
+    return this.mRequestedHorizontalSpacing;
+  }
+  
+  public int getStretchMode()
+  {
+    return this.mStretchMode;
+  }
+  
+  public int getVerticalSpacing()
+  {
+    return this.mVerticalSpacing;
   }
   
   protected void layoutChildren()
   {
-    blii localblii = null;
-    int n = -1;
+    AbsListView.RecycleBin localRecycleBin = null;
+    int m = -1;
     boolean bool1 = this.mBlockLayoutRequests;
     if (!bool1) {
       this.mBlockLayoutRequests = true;
     }
-    int i1;
-    int j;
+    int n;
+    int i;
     label159:
     Object localObject4;
     Object localObject3;
@@ -1455,23 +1455,23 @@ public class GridView
           invokeOnItemScrollListener();
           return;
         }
-        k = this.mListPadding.top;
-        i1 = this.mBottom - this.mTop - this.mListPadding.bottom;
-        int i2 = getChildCount();
+        j = this.mListPadding.top;
+        n = this.mBottom - this.mTop - this.mListPadding.bottom;
+        int i1 = getChildCount();
         boolean bool2;
         switch (this.mLayoutMode)
         {
         case 2: 
-          j = this.mSelectedPosition - this.mFirstPosition;
-          if ((j < 0) || (j >= i2)) {
+          i = this.mSelectedPosition - this.mFirstPosition;
+          if ((i < 0) || (i >= i1)) {
             break label867;
           }
-          localObject1 = getChildAt(j);
+          localObject1 = getChildAt(i);
           localObject4 = getChildAt(0);
-          j = 0;
+          i = 0;
           localObject3 = localObject1;
           localObject1 = localObject4;
-          localObject4 = localblii;
+          localObject4 = localRecycleBin;
           bool2 = this.mDataChanged;
           if (bool2) {
             handleDataChanged();
@@ -1481,67 +1481,67 @@ public class GridView
             resetList();
             invokeOnItemScrollListener();
             return;
-            j = this.mNextSelectedPosition - this.mFirstPosition;
-            if ((j < 0) || (j >= i2)) {
+            i = this.mNextSelectedPosition - this.mFirstPosition;
+            if ((i < 0) || (i >= i1)) {
               break label873;
             }
-            localObject4 = getChildAt(j);
+            localObject4 = getChildAt(i);
             localObject1 = null;
             localObject3 = null;
-            j = 0;
+            i = 0;
           }
           break;
         case 6: 
           if (this.mNextSelectedPosition < 0) {
             break label873;
           }
-          j = this.mNextSelectedPosition;
-          int m = this.mSelectedPosition;
+          i = this.mNextSelectedPosition;
+          int k = this.mSelectedPosition;
           localObject1 = null;
           localObject3 = null;
-          j -= m;
-          localObject4 = localblii;
+          i -= k;
+          localObject4 = localRecycleBin;
           continue;
           setSelectedPositionInt(this.mNextSelectedPosition);
-          int i3 = this.mFirstPosition;
-          localblii = this.mRecycler;
+          int i2 = this.mFirstPosition;
+          localRecycleBin = this.mRecycler;
           if (bool2)
           {
-            m = 0;
-            if (m < i2)
+            k = 0;
+            if (k < i1)
             {
-              localblii.a(getChildAt(m), i3 + m);
-              m += 1;
+              localRecycleBin.addScrapView(getChildAt(k), i2 + k);
+              k += 1;
               continue;
             }
           }
           else
           {
-            localblii.a(i2, i3);
+            localRecycleBin.fillActiveViews(i1, i2);
           }
           detachAllViewsFromParent();
           switch (this.mLayoutMode)
           {
           case 2: 
             label404:
-            if (i2 != 0) {
+            if (i1 != 0) {
               break label704;
             }
             if (this.mStackFromBottom) {
               break label663;
             }
-            j = n;
+            i = m;
             if (this.mAdapter != null)
             {
               if (!isInTouchMode()) {
                 break label909;
               }
-              j = n;
+              i = m;
             }
             label436:
-            setSelectedPositionInt(j);
-            localObject1 = a(k);
-            localblii.c();
+            setSelectedPositionInt(i);
+            localObject1 = fillFromTop(j);
+            localRecycleBin.scrapActiveViews();
             if (localObject1 == null) {
               break label804;
             }
@@ -1571,28 +1571,28 @@ public class GridView
       }
       if (localObject4 != null)
       {
-        localObject1 = a(((View)localObject4).getTop(), k, i1);
+        localObject1 = fillFromSelection(((View)localObject4).getTop(), j, n);
       }
       else
       {
-        localObject1 = d(k, i1);
+        localObject1 = fillSelection(j, n);
         continue;
         this.mFirstPosition = 0;
-        localObject1 = a(k);
-        a();
+        localObject1 = fillFromTop(j);
+        adjustViewsUpOrDown();
         continue;
-        localView = b(this.mItemCount - 1, i1);
-        a();
+        localView = fillUp(this.mItemCount - 1, n);
+        adjustViewsUpOrDown();
         continue;
-        localView = e(this.mSelectedPosition, this.mSpecificTop);
+        localView = fillSpecific(this.mSelectedPosition, this.mSpecificTop);
         continue;
-        localView = e(this.mSyncPosition, this.mSpecificTop);
+        localView = fillSpecific(this.mSyncPosition, this.mSpecificTop);
         continue;
-        localView = b(j, k, i1);
+        localView = moveSelection(i, j, n);
       }
     }
     label663:
-    int k = this.mItemCount - 1;
+    int j = this.mItemCount - 1;
     if (this.mAdapter != null) {
       if (!isInTouchMode()) {
         break label919;
@@ -1600,33 +1600,33 @@ public class GridView
     }
     for (;;)
     {
-      setSelectedPositionInt(j);
-      localView = c(k, i1);
+      setSelectedPositionInt(i);
+      localView = fillFromBottom(j, n);
       break label448;
       label704:
       if ((this.mSelectedPosition >= 0) && (this.mSelectedPosition < this.mItemCount))
       {
-        j = this.mSelectedPosition;
+        i = this.mSelectedPosition;
         if (localObject3 == null) {}
         for (;;)
         {
-          localView = e(j, k);
+          localView = fillSpecific(i, j);
           break;
-          k = localObject3.getTop();
+          j = localObject3.getTop();
         }
       }
       if (this.mFirstPosition < this.mItemCount)
       {
-        j = this.mFirstPosition;
+        i = this.mFirstPosition;
         if (localView == null) {}
         for (;;)
         {
-          localView = e(j, k);
+          localView = fillSpecific(i, j);
           break;
-          k = localView.getTop();
+          j = localView.getTop();
         }
       }
-      localView = e(0, k);
+      localView = fillSpecific(0, j);
       break label448;
       label804:
       if ((this.mTouchMode > 0) && (this.mTouchMode < 3))
@@ -1647,39 +1647,39 @@ public class GridView
       label873:
       localView = null;
       localObject3 = null;
-      j = 0;
-      localObject4 = localblii;
+      i = 0;
+      localObject4 = localRecycleBin;
       break label180;
       break;
       localView = null;
       localObject3 = null;
-      j = 0;
-      localObject4 = localblii;
+      i = 0;
+      localObject4 = localRecycleBin;
       break label180;
       break label404;
       label909:
-      j = 0;
+      i = 0;
       break label436;
-      j = -1;
+      i = -1;
       continue;
       label919:
-      j = k;
+      i = j;
     }
   }
   
   int lookForSelectablePosition(int paramInt, boolean paramBoolean)
   {
-    int j;
+    int i;
     if ((this.mAdapter == null) || (isInTouchMode())) {
-      j = -1;
+      i = -1;
     }
     do
     {
-      return j;
+      return i;
       if (paramInt < 0) {
         break;
       }
-      j = paramInt;
+      i = paramInt;
     } while (paramInt < this.mItemCount);
     return -1;
   }
@@ -1687,43 +1687,43 @@ public class GridView
   protected void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
   {
     super.onFocusChanged(paramBoolean, paramInt, paramRect);
-    int j = -1;
-    int n = j;
+    int i = -1;
+    int m = i;
     Rect localRect;
-    int m;
     int k;
+    int j;
     if (paramBoolean)
     {
-      n = j;
+      m = i;
       if (paramRect != null)
       {
         paramRect.offset(this.mScrollX, this.mScrollY);
-        localRect = this.jdField_a_of_type_AndroidGraphicsRect;
-        m = 2147483647;
-        int i1 = getChildCount();
-        k = 0;
-        n = j;
-        if (k < i1) {
-          if (a(k, paramInt)) {}
+        localRect = this.mTempRect;
+        k = 2147483647;
+        int n = getChildCount();
+        j = 0;
+        m = i;
+        if (j < n) {
+          if (isCandidateSelection(j, paramInt)) {}
         }
       }
     }
     for (;;)
     {
-      k += 1;
+      j += 1;
       break;
-      View localView = getChildAt(k);
+      View localView = getChildAt(j);
       localView.getDrawingRect(localRect);
       offsetDescendantRectToMyCoords(localView, localRect);
-      n = getDistance(paramRect, localRect, paramInt);
-      if (n < m)
+      m = getDistance(paramRect, localRect, paramInt);
+      if (m < k)
       {
-        m = n;
-        j = k;
+        k = m;
+        i = j;
         continue;
-        if (n >= 0)
+        if (m >= 0)
         {
-          setSelection(this.mFirstPosition + n);
+          setSelection(this.mFirstPosition + m);
           return;
         }
         requestLayout();
@@ -1747,46 +1747,46 @@ public class GridView
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    return a(paramInt, 1, paramKeyEvent);
+    return commonKey(paramInt, 1, paramKeyEvent);
   }
   
   public boolean onKeyMultiple(int paramInt1, int paramInt2, KeyEvent paramKeyEvent)
   {
-    return a(paramInt1, paramInt2, paramKeyEvent);
+    return commonKey(paramInt1, paramInt2, paramKeyEvent);
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    return a(paramInt, 1, paramKeyEvent);
+    return commonKey(paramInt, 1, paramKeyEvent);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    this.jdField_c_of_type_Boolean = true;
+    this.mIsOnMeasure = true;
     super.onMeasure(paramInt1, paramInt2);
-    int i2 = View.MeasureSpec.getMode(paramInt1);
-    int n = View.MeasureSpec.getMode(paramInt2);
-    int j = View.MeasureSpec.getSize(paramInt1);
-    int k = View.MeasureSpec.getSize(paramInt2);
-    if (i2 == 0) {
-      if (this.f > 0)
+    int i1 = View.MeasureSpec.getMode(paramInt1);
+    int m = View.MeasureSpec.getMode(paramInt2);
+    int i = View.MeasureSpec.getSize(paramInt1);
+    int j = View.MeasureSpec.getSize(paramInt2);
+    if (i1 == 0) {
+      if (this.mColumnWidth > 0)
       {
-        paramInt2 = this.f + this.mListPadding.left + this.mListPadding.right;
+        paramInt2 = this.mColumnWidth + this.mListPadding.left + this.mListPadding.right;
         paramInt2 += getVerticalScrollbarWidth();
       }
     }
     for (;;)
     {
-      boolean bool = a(paramInt2 - this.mListPadding.left - this.mListPadding.right);
-      int m = 0;
+      boolean bool = determineColumns(paramInt2 - this.mListPadding.left - this.mListPadding.right);
+      int k = 0;
       label109:
-      int i3;
+      int i2;
       if (this.mAdapter == null)
       {
-        j = 0;
-        this.mItemCount = j;
-        i3 = this.mItemCount;
-        if (i3 > 0)
+        i = 0;
+        this.mItemCount = i;
+        i2 = this.mItemCount;
+        if (i2 > 0)
         {
           View localView = obtainView(0, this.mIsScrap);
           AbsListView.LayoutParams localLayoutParams2 = (AbsListView.LayoutParams)localView.getLayoutParams();
@@ -1796,81 +1796,165 @@ public class GridView
             localLayoutParams1 = (AbsListView.LayoutParams)generateDefaultLayoutParams();
             localView.setLayoutParams(localLayoutParams1);
           }
-          localLayoutParams1.jdField_a_of_type_Int = this.mAdapter.getItemViewType(0);
-          localLayoutParams1.jdField_b_of_type_Boolean = true;
-          j = getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(0, 0), 0, localLayoutParams1.height);
-          localView.measure(getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(this.f, 1073741824), 0, localLayoutParams1.width), j);
-          j = localView.getMeasuredHeight();
-          m = j;
-          if (this.mRecycler.a(localLayoutParams1.jdField_a_of_type_Int))
+          localLayoutParams1.viewType = this.mAdapter.getItemViewType(0);
+          localLayoutParams1.forceAdd = true;
+          i = getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(0, 0), 0, localLayoutParams1.height);
+          localView.measure(getChildMeasureSpec(View.MeasureSpec.makeMeasureSpec(this.mColumnWidth, 1073741824), 0, localLayoutParams1.width), i);
+          i = localView.getMeasuredHeight();
+          k = i;
+          if (this.mRecycler.shouldRecycleViewType(localLayoutParams1.viewType))
           {
-            this.mRecycler.a(localView, -1);
-            m = j;
+            this.mRecycler.addScrapView(localView, -1);
+            k = i;
           }
         }
-        if (n != 0) {
+        if (m != 0) {
           break label528;
         }
       }
       label515:
       label525:
       label528:
-      for (j = this.mListPadding.top + this.mListPadding.bottom + m + getVerticalFadingEdgeLength() * 2;; j = k)
+      for (i = this.mListPadding.top + this.mListPadding.bottom + k + getVerticalFadingEdgeLength() * 2;; i = j)
       {
-        k = j;
-        int i4;
-        if (n == -2147483648)
+        j = i;
+        int i3;
+        if (m == -2147483648)
         {
-          k = this.mListPadding.top;
-          n = this.mListPadding.bottom;
-          i4 = this.jdField_a_of_type_Int;
-          k = n + k;
-          n = 0;
+          j = this.mListPadding.top;
+          m = this.mListPadding.bottom;
+          i3 = this.mNumColumns;
+          j = m + j;
+          m = 0;
           label345:
-          if (n >= i3) {
+          if (m >= i2) {
             break label525;
           }
-          int i1 = k + m;
-          k = i1;
-          if (n + i4 < i3) {
-            k = i1 + this.d;
+          int n = j + k;
+          j = n;
+          if (m + i3 < i2) {
+            j = n + this.mVerticalSpacing;
           }
-          if (k < j) {
+          if (j < i) {
             break label515;
           }
-          k = j;
+          j = i;
         }
         for (;;)
         {
-          j = paramInt2;
-          if (i2 == -2147483648)
+          i = paramInt2;
+          if (i1 == -2147483648)
           {
-            j = paramInt2;
-            if (this.h != -1) {
-              if (this.h * this.f + (this.h - 1) * this.jdField_b_of_type_Int + this.mListPadding.left + this.mListPadding.right <= paramInt2)
+            i = paramInt2;
+            if (this.mRequestedNumColumns != -1) {
+              if (this.mRequestedNumColumns * this.mColumnWidth + (this.mRequestedNumColumns - 1) * this.mHorizontalSpacing + this.mListPadding.left + this.mListPadding.right <= paramInt2)
               {
-                j = paramInt2;
+                i = paramInt2;
                 if (!bool) {}
               }
               else
               {
-                j = paramInt2 | 0x1000000;
+                i = paramInt2 | 0x1000000;
               }
             }
           }
-          setMeasuredDimension(j, k);
+          setMeasuredDimension(i, j);
           this.mWidthMeasureSpec = paramInt1;
-          this.jdField_c_of_type_Boolean = false;
+          this.mIsOnMeasure = false;
           return;
           paramInt2 = this.mListPadding.left + this.mListPadding.right;
           break;
-          j = this.mAdapter.getCount();
+          i = this.mAdapter.getCount();
           break label109;
-          n += i4;
+          m += i3;
           break label345;
         }
       }
-      paramInt2 = j;
+      paramInt2 = i;
+    }
+  }
+  
+  boolean pageScroll(int paramInt)
+  {
+    boolean bool = false;
+    int i = -1;
+    if (paramInt == 33) {
+      i = Math.max(0, this.mSelectedPosition - getChildCount());
+    }
+    for (;;)
+    {
+      if (i >= 0)
+      {
+        setSelectionInt(i);
+        invokeOnItemScrollListener();
+        awakenScrollBars();
+        bool = true;
+      }
+      return bool;
+      if (paramInt == 130) {
+        i = Math.min(this.mItemCount - 1, this.mSelectedPosition + getChildCount());
+      }
+    }
+  }
+  
+  boolean sequenceScroll(int paramInt)
+  {
+    boolean bool2 = true;
+    int i = 0;
+    int m = this.mSelectedPosition;
+    int i1 = this.mNumColumns;
+    int n = this.mItemCount;
+    int k;
+    int j;
+    label80:
+    boolean bool1;
+    if (!this.mStackFromBottom)
+    {
+      k = m / i1 * i1;
+      j = Math.min(k + i1 - 1, n - 1);
+      switch (paramInt)
+      {
+      default: 
+        bool1 = false;
+      }
+    }
+    for (;;)
+    {
+      if (bool1)
+      {
+        playSoundEffect(SoundEffectConstants.getContantForFocusDirection(paramInt));
+        invokeOnItemScrollListener();
+      }
+      if (i != 0) {
+        awakenScrollBars();
+      }
+      return bool1;
+      j = n - 1 - (n - 1 - m) / i1 * i1;
+      k = Math.max(0, j - i1 + 1);
+      break;
+      if (m >= n - 1) {
+        break label80;
+      }
+      this.mLayoutMode = 6;
+      setSelectionInt(m + 1);
+      bool1 = bool2;
+      if (m == j)
+      {
+        i = 1;
+        bool1 = bool2;
+        continue;
+        if (m <= 0) {
+          break label80;
+        }
+        this.mLayoutMode = 6;
+        setSelectionInt(m - 1);
+        bool1 = bool2;
+        if (m == k)
+        {
+          i = 1;
+          bool1 = bool2;
+        }
+      }
     }
   }
   
@@ -1880,26 +1964,26 @@ public class GridView
       this.mAdapter.unregisterDataSetObserver(this.mDataSetObserver);
     }
     resetList();
-    this.mRecycler.b();
+    this.mRecycler.clear();
     this.mAdapter = paramListAdapter;
     this.mOldSelectedPosition = -1;
     this.mOldSelectedRowId = -9223372036854775808L;
     super.setAdapter(paramListAdapter);
-    int j;
+    int i;
     if (this.mAdapter != null)
     {
       this.mOldItemCount = this.mItemCount;
       this.mItemCount = this.mAdapter.getCount();
       this.mDataChanged = true;
       checkFocus();
-      this.mDataSetObserver = new blid(this);
+      this.mDataSetObserver = new AbsListView.AdapterDataSetObserver(this);
       this.mAdapter.registerDataSetObserver(this.mDataSetObserver);
-      this.mRecycler.a(this.mAdapter.getViewTypeCount());
+      this.mRecycler.setViewTypeCount(this.mAdapter.getViewTypeCount());
       if (this.mStackFromBottom)
       {
-        j = lookForSelectablePosition(this.mItemCount - 1, false);
-        setSelectedPositionInt(j);
-        setNextSelectedPositionInt(j);
+        i = lookForSelectablePosition(this.mItemCount - 1, false);
+        setSelectedPositionInt(i);
+        setNextSelectedPositionInt(i);
         checkSelectionChanged();
       }
     }
@@ -1907,7 +1991,7 @@ public class GridView
     {
       requestLayout();
       return;
-      j = lookForSelectablePosition(0, true);
+      i = lookForSelectablePosition(0, true);
       break;
       checkFocus();
       checkSelectionChanged();
@@ -1916,36 +2000,36 @@ public class GridView
   
   public void setColumnWidth(int paramInt)
   {
-    if (paramInt != this.g)
+    if (paramInt != this.mRequestedColumnWidth)
     {
-      this.g = paramInt;
+      this.mRequestedColumnWidth = paramInt;
       requestLayoutIfNecessary();
     }
   }
   
   public void setGravity(int paramInt)
   {
-    if (this.i != paramInt)
+    if (this.mGravity != paramInt)
     {
-      this.i = paramInt;
+      this.mGravity = paramInt;
       requestLayoutIfNecessary();
     }
   }
   
   public void setHorizontalSpacing(int paramInt)
   {
-    if (paramInt != this.jdField_c_of_type_Int)
+    if (paramInt != this.mRequestedHorizontalSpacing)
     {
-      this.jdField_c_of_type_Int = paramInt;
+      this.mRequestedHorizontalSpacing = paramInt;
       requestLayoutIfNecessary();
     }
   }
   
   public void setNumColumns(int paramInt)
   {
-    if (paramInt != this.h)
+    if (paramInt != this.mRequestedNumColumns)
     {
-      this.h = paramInt;
+      this.mRequestedNumColumns = paramInt;
       requestLayoutIfNecessary();
     }
   }
@@ -1959,7 +2043,7 @@ public class GridView
     {
       this.mLayoutMode = 2;
       if (this.mPositionScroller != null) {
-        this.mPositionScroller.a();
+        this.mPositionScroller.stop();
       }
       requestLayout();
       return;
@@ -1969,20 +2053,20 @@ public class GridView
   
   void setSelectionInt(int paramInt)
   {
-    int k = this.mNextSelectedPosition;
+    int j = this.mNextSelectedPosition;
     if (this.mPositionScroller != null) {
-      this.mPositionScroller.a();
+      this.mPositionScroller.stop();
     }
     setNextSelectedPositionInt(paramInt);
     layoutChildren();
     if (this.mStackFromBottom) {}
     for (paramInt = this.mItemCount - 1 - this.mNextSelectedPosition;; paramInt = this.mNextSelectedPosition)
     {
-      int j = k;
+      int i = j;
       if (this.mStackFromBottom) {
-        j = this.mItemCount - 1 - k;
+        i = this.mItemCount - 1 - j;
       }
-      if (paramInt / this.jdField_a_of_type_Int != j / this.jdField_a_of_type_Int) {
+      if (paramInt / this.mNumColumns != i / this.mNumColumns) {
         awakenScrollBars();
       }
       return;
@@ -1991,18 +2075,18 @@ public class GridView
   
   public void setStretchMode(int paramInt)
   {
-    if (paramInt != this.e)
+    if (paramInt != this.mStretchMode)
     {
-      this.e = paramInt;
+      this.mStretchMode = paramInt;
       requestLayoutIfNecessary();
     }
   }
   
   public void setVerticalSpacing(int paramInt)
   {
-    if (paramInt != this.d)
+    if (paramInt != this.mVerticalSpacing)
     {
-      this.d = paramInt;
+      this.mVerticalSpacing = paramInt;
       requestLayoutIfNecessary();
     }
   }
@@ -2019,7 +2103,7 @@ public class GridView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.GridView
  * JD-Core Version:    0.7.0.1
  */

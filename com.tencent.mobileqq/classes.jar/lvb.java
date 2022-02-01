@@ -1,41 +1,25 @@
-import com.tencent.av.redpacket.AVRedPacketManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.redpacket.ui.RedPacketGameView;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class lvb
-  extends lvf
+  implements View.OnClickListener
 {
-  public int b;
+  public lvb(RedPacketGameView paramRedPacketGameView, long paramLong) {}
   
-  public lvb()
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_Int = 667;
-    this.c = new lvr[8];
-    this.jdField_b_of_type_Long = 1250L;
-  }
-  
-  public void a(long paramLong)
-  {
-    super.a(paramLong);
-    long l = this.a;
-    int i = 0;
-    if (paramLong - l <= this.jdField_b_of_type_Long) {
-      i = 255;
-    }
-    a(i);
-  }
-  
-  public void a(AVRedPacketManager paramAVRedPacketManager)
-  {
-    int i = 0;
-    while (i < this.c.length)
+    AVActivity localAVActivity = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.a();
+    if (localAVActivity != null)
     {
-      this.c[i] = new lvr(paramAVRedPacketManager.a("qav_redpacket_excellent_" + i * 2 + ".png"));
-      i += 1;
+      localAVActivity.a.i(this.jdField_a_of_type_Long);
+      ((VideoAppInterface)localAVActivity.getAppRuntime()).a(new Object[] { Integer.valueOf(105), Boolean.valueOf(true), Long.valueOf(this.jdField_a_of_type_Long) });
     }
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    a(0, 0, paramInt1, this.jdField_b_of_type_Int * paramInt1 / 750);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,14 +1,27 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.Context;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aehd
-  implements axfv<Void, bidm>
+  implements View.OnClickListener
 {
-  public aehd(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aehd(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public bidm a(Void paramVoid)
+  public void onClick(View paramView)
   {
-    return bidn.a(this.a.app).a(this.a.a.troopUin);
+    this.a.b(1);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230721);
+    if (this.a.a().booleanValue())
+    {
+      this.a.b();
+      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

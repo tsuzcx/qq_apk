@@ -1,20 +1,30 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class anre
-  implements ImageAssetDelegate
+public class anre
+  extends anri
 {
-  anre(anrd paramanrd) {}
-  
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    if (this.a.a.a() == null) {
-      return null;
+    paramQQAppInterface = new anrd(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qqidentifier";
+    paramQQAppInterface.c = "web";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
-    return (Bitmap)this.a.a.a().get(paramLottieImageAsset.getKey());
+    paramContext = paramContext[1].split("&");
+    int i = 0;
+    while (i < paramContext.length)
+    {
+      paramString = paramContext[i].split("=");
+      if (paramString.length == 2) {
+        paramQQAppInterface.a(paramString[0], paramString[1]);
+      }
+      i += 1;
+    }
+    return paramQQAppInterface;
   }
 }
 

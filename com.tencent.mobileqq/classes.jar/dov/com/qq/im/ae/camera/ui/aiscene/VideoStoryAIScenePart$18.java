@@ -2,17 +2,17 @@ package dov.com.qq.im.ae.camera.ui.aiscene;
 
 import android.view.View;
 import android.widget.TextView;
-import bokv;
+import blpb;
 
 public class VideoStoryAIScenePart$18
   implements Runnable
 {
-  public VideoStoryAIScenePart$18(bokv parambokv) {}
+  public VideoStoryAIScenePart$18(blpb paramblpb) {}
   
   public void run()
   {
-    bokv.a(this.this$0).setVisibility(8);
-    bokv.b(this.this$0).setVisibility(8);
+    blpb.a(this.this$0).setVisibility(8);
+    blpb.b(this.this$0).setVisibility(8);
   }
 }
 

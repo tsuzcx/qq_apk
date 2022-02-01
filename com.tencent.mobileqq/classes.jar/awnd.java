@@ -1,165 +1,135 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
-import com.tencent.mobileqq.listentogether.data.ISong;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.gameroom.RecentInviteUser;
+import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager.1;
+import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager.2;
+import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager.3;
+import com.tencent.mobileqq.persistence.EntityManager;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import mqq.manager.Manager;
 
 public class awnd
-  extends awmf
+  implements Manager
 {
-  public awnd(ListenTogetherPlayFragment paramListenTogetherPlayFragment) {}
+  public QQAppInterface a;
+  public EntityManager a;
+  public Object a;
+  public Map<String, RecentInviteUser> a;
+  protected Object b = new Object();
   
-  protected void a(int paramInt, String paramString1, String paramString2)
+  public awnd(QQAppInterface paramQQAppInterface)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(paramString1)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ListenTogetherPlayFragment", 2, String.format("onListenTogetherJoinedCountChange msg=%s", new Object[] { paramString2 }));
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.jdField_a_of_type_JavaLangString = paramString2;
-    if (paramInt == 1)
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    ThreadManager.post(new WerewolvesDataManager.1(this, paramQQAppInterface), 5, null, false);
+  }
+  
+  public List<RecentInviteUser> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      this.a.jdField_a_of_type_Awlt.a(paramString1);
-      return;
-    }
-    ListenTogetherPlayFragment.a(this.a, ListenTogetherPlayFragment.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.jdField_a_of_type_JavaLangString);
-  }
-  
-  protected void a(ListenTogetherSession paramListenTogetherSession)
-  {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(paramListenTogetherSession.e)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ListenTogetherPlayFragment", 2, String.format("onUIModuleNeedRefresh session=%s", new Object[] { paramListenTogetherSession }));
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession = paramListenTogetherSession;
-    MusicInfo localMusicInfo = paramListenTogetherSession.a();
-    if ((paramListenTogetherSession.h != 2) || (paramListenTogetherSession.g == 3) || (paramListenTogetherSession.g == 4) || (localMusicInfo == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ListenTogetherPlayFragment", 2, "onExit");
-      }
-      QQToast.a(localFragmentActivity, 2131693276, 1).a();
-      this.a.getActivity().finish();
-      return;
-    }
-    a(localMusicInfo);
-    ListenTogetherPlayFragment.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong.a(), paramListenTogetherSession.g, this.a.jdField_a_of_type_JavaLangString);
-  }
-  
-  protected void a(ISong paramISong)
-  {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
-    while (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong.equals(paramISong)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ListenTogetherPlayFragment", 2, String.format("onPlayMusicChange %s", new Object[] { paramISong }));
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong = paramISong;
-    this.a.jdField_a_of_type_JavaLangString = null;
-    ListenTogetherPlayFragment.a(this.a, paramISong);
-  }
-  
-  protected void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    int i = 0;
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong.a().equals(paramString1)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      if (paramString2 != null) {
-        break label120;
+      Object localObject3 = this.jdField_a_of_type_JavaUtilMap.values();
+      ??? = ((Collection)localObject3).iterator();
+      while (((Iterator)???).hasNext())
+      {
+        localObject3 = (RecentInviteUser)((Iterator)???).next();
+        if (((RecentInviteUser)localObject3).uinType == 0) {
+          localArrayList.add(localObject3);
+        }
       }
     }
-    for (;;)
+    synchronized (this.b)
     {
-      QLog.i("ListenTogetherPlayFragment", 2, String.format("onGetLyric %s %d", new Object[] { paramString1, Integer.valueOf(i) }));
-      this.a.jdField_a_of_type_JavaLangString = paramString2;
-      ListenTogetherPlayFragment.a(this.a, paramString1, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.g, paramString2);
-      return;
-      label120:
-      i = paramString2.length();
+      Collections.sort(localList);
+      return localList;
     }
   }
   
-  protected void a(boolean paramBoolean, String paramString, int paramInt, List<String> paramList)
+  public void a(RecentInviteUser paramRecentInviteUser)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(paramString)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ListenTogetherPlayFragment", 2, String.format("onGetGroupJoinedUsers uin=%s num=%d", new Object[] { paramString, Integer.valueOf(paramInt) }));
-    }
-    ListenTogetherPlayFragment.a(this.a, paramList, this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.jdField_a_of_type_JavaLangString);
+    ThreadManager.post(new WerewolvesDataManager.3(this, paramRecentInviteUser), 5, null, false);
   }
   
-  protected void c(int paramInt, String paramString)
+  public void a(String arg1, int paramInt, String paramString2)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e)) {
+    String str = RecentInviteUser.getKey(paramInt, ???);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      ??? = (RecentInviteUser)this.jdField_a_of_type_JavaUtilMap.get(str);
+      ??? = ???;
+      if (??? == null)
+      {
+        ??? = new RecentInviteUser();
+        ((RecentInviteUser)???).uniKey = str;
+      }
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(str, ???);
+        ((RecentInviteUser)???).uin = ???;
+        ((RecentInviteUser)???).uinType = paramInt;
+        ((RecentInviteUser)???).lastInviteId = paramString2;
+      }
+    }
+    synchronized (this.b)
+    {
+      ((RecentInviteUser)???).lastInviteTime = System.currentTimeMillis();
+      a((RecentInviteUser)???);
       return;
+      ??? = finally;
+      throw ???;
+      ??? = finally;
+      throw ???;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ListenTogetherPlayFragment", 2, String.format("onPauseListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
-    }
-    QQToast.a(localFragmentActivity, 2131693282, 1).a();
   }
   
-  protected void d(int paramInt, String paramString)
+  public void a(String paramString1, String paramString2, ArrayList<String> paramArrayList, awne paramawne)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ListenTogetherPlayFragment", 2, String.format("onResumeListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
-    }
-    QQToast.a(localFragmentActivity, 2131693284, 1).a();
+    ThreadManager.post(new WerewolvesDataManager.2(this, paramString1, paramString2, paramArrayList, paramawne), 8, null, true);
   }
   
-  protected void e(int paramInt, String paramString)
+  public boolean a(String paramString1, int paramInt, String paramString2)
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e)) {
-      return;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      paramString1 = (RecentInviteUser)this.jdField_a_of_type_JavaUtilMap.get(RecentInviteUser.getKey(paramInt, paramString1));
+      if (paramString1 != null)
+      {
+        boolean bool = TextUtils.equals(paramString1.lastInviteId, paramString2);
+        return bool;
+      }
+      return false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ListenTogetherPlayFragment", 2, String.format("onCutListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
-    }
-    QQToast.a(localFragmentActivity, 2131693266, 1).a();
   }
   
-  protected void f(int paramInt, String paramString)
+  public List<RecentInviteUser> b()
   {
-    FragmentActivity localFragmentActivity = this.a.getActivity();
-    if ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()) || (!this.a.isAdded())) {}
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e)) {
-      return;
+    ArrayList localArrayList = new ArrayList();
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      Object localObject2 = this.jdField_a_of_type_JavaUtilMap.values();
+      ??? = ((Collection)localObject2).iterator();
+      while (((Iterator)???).hasNext())
+      {
+        localObject2 = (RecentInviteUser)((Iterator)???).next();
+        if (((RecentInviteUser)localObject2).uinType == 1) {
+          localArrayList.add(localObject2);
+        }
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("ListenTogetherPlayFragment", 2, String.format("onChangePlayModeListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
-    }
-    QQToast.a(localFragmentActivity, 2131693283, 1).a();
+    Collections.sort(localList);
+    return localList;
   }
+  
+  public void onDestroy() {}
 }
 
 

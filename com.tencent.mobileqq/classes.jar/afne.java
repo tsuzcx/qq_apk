@@ -1,37 +1,6 @@
-import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-
-public class afne
-  extends anyu
+public abstract interface afne
 {
-  public afne(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
-  
-  protected void onGetBothDongtaiPermissions(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if (paramBoolean1)
-    {
-      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
-      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean3);
-    }
-  }
-  
-  protected void onSetNotAllowedSeeMyDongtai(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!paramBoolean1)
-    {
-      this.a.a(2131717966, 1);
-      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
-    }
-  }
-  
-  protected void onSetShieldHisDongtai(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!paramBoolean1)
-    {
-      this.a.a(2131717966, 1);
-      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean2);
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

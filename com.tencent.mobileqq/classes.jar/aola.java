@@ -1,178 +1,100 @@
-import MConch.Conch;
-import MConch.ConchTask;
-import MConch.NewCommonConchArgs;
-import MConch.SCPullConchs;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.opengl.GLES20;
+import android.util.Log;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class aola
-  implements anui
 {
-  private aolb jdField_a_of_type_Aolb;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public static final String a;
+  public static final float[] a;
+  public static String b;
+  public static String c;
+  public static String d;
   
-  public aola(QQAppInterface paramQQAppInterface)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    jdField_a_of_type_JavaLangString = amtj.a(2131705081);
+    b = "    //抠像逻辑片段\n";
+    c = "    //用户定义，抠像后逻辑片段\n";
+    d = "}\n";
+    jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
   }
   
-  private void a(SCPullConchs paramSCPullConchs)
+  public static int a(int paramInt, String paramString)
   {
-    if ((paramSCPullConchs == null) || (paramSCPullConchs.conchTaskList == null) || (paramSCPullConchs.conchTaskList.size() == 0))
+    int i = GLES20.glCreateShader(paramInt);
+    a("glCreateShader type=" + paramInt);
+    GLES20.glShaderSource(i, paramString);
+    GLES20.glCompileShader(i);
+    paramString = new int[1];
+    GLES20.glGetShaderiv(i, 35713, paramString, 0);
+    if (paramString[0] == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("WifiSdk", 2, "WifiSdkObserver, handlePullConchs scPullConchs is null");
-      }
-      return;
+      Log.e("KeyingUtil", "Could not compile shader " + paramInt + ":" + GLES20.glGetShaderInfoLog(i));
+      GLES20.glDeleteShader(i);
+      return 0;
     }
-    for (;;)
-    {
-      try
-      {
-        paramSCPullConchs = paramSCPullConchs.conchTaskList.iterator();
-        if (!paramSCPullConchs.hasNext()) {
-          break;
-        }
-        localObject1 = (ConchTask)paramSCPullConchs.next();
-        if (QLog.isColorLevel()) {
-          QLog.i("WifiSdk", 2, "WifiSdkObserver, handlePullConchs conchTask.taskId: " + ((ConchTask)localObject1).taskId + " taskSeqno: " + ((ConchTask)localObject1).taskSeqno);
-        }
-        if ((((ConchTask)localObject1).conchList != null) && (((ConchTask)localObject1).conchList.size() != 0)) {
-          break label179;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("WifiSdk", 2, "WifiSdkObserver, handlePullConchs ER_Invalid");
-        continue;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-      }
-      catch (Exception paramSCPullConchs) {}
-      QLog.d("WifiSdk", 2, "WifiSdkObserver, handlePullConchs, exception: " + paramSCPullConchs.getMessage());
-      return;
-      label179:
-      Object localObject1 = ((ConchTask)localObject1).conchList.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (Conch)((Iterator)localObject1).next();
-        if (localObject2 != null) {
-          if (6129 == ((Conch)localObject2).cmdId)
-          {
-            localObject2 = (NewCommonConchArgs)bnjr.a(new NewCommonConchArgs(), ((Conch)localObject2).params);
-            if ((localObject2 == null) || (((NewCommonConchArgs)localObject2).newParam == null) || (((NewCommonConchArgs)localObject2).newParam.size() < 3))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("WifiSdk", 2, "WifiSdkObserver, handlePullConchs conchArgs is invaild");
-              }
-            }
-            else if (!TextUtils.equals("102769", (CharSequence)((NewCommonConchArgs)localObject2).newParam.get(0)))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("WifiSdk", 2, "WifiSdkObserver, handlePullConchs channel is wrong");
-              }
-            }
-            else if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("WifiSdk", 2, "WifiSdkObserver, handlePullConchs app is null");
-              }
-            }
-            else
-            {
-              int i = Integer.valueOf((String)((NewCommonConchArgs)localObject2).newParam.get(1)).intValue();
-              localObject2 = String.valueOf(((NewCommonConchArgs)localObject2).newParam.get(2));
-              if (QLog.isColorLevel()) {
-                QLog.d("WifiSdk", 2, "WifiSdkObserver, handlePullConchs jumpType: " + i + " url: " + (String)localObject2);
-              }
-              bjia.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), i, (String)localObject2);
-              bjia.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), System.currentTimeMillis());
-            }
-          }
-          else if (6142 == ((Conch)localObject2).cmdId)
-          {
-            localObject2 = (NewCommonConchArgs)bnjr.a(new NewCommonConchArgs(), ((Conch)localObject2).params);
-            if ((localObject2 == null) || (((NewCommonConchArgs)localObject2).newParam == null) || (((NewCommonConchArgs)localObject2).newParam.size() < 2))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("WifiSdk", 2, "WifiSdkObserver, handlePullConchs conchArgs is invaild");
-              }
-            }
-            else if (!TextUtils.equals("102769", (CharSequence)((NewCommonConchArgs)localObject2).newParam.get(0)))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("WifiSdk", 2, "WifiSdkObserver, handlePullConchs channel is wrong");
-              }
-            }
-            else if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("WifiSdk", 2, "WifiSdkObserver, handlePullConchs app is null");
-              }
-            }
-            else
-            {
-              localObject2 = String.valueOf(((NewCommonConchArgs)localObject2).newParam.get(1));
-              if (QLog.isColorLevel()) {
-                QLog.d("WifiSdk", 2, "WifiSdkObserver, handlePullConchs wording: " + (String)localObject2);
-              }
-              bjia.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), (String)localObject2);
-              bjia.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), System.currentTimeMillis());
-            }
-          }
-        }
-      }
-    }
+    return i;
   }
   
-  public void a(aolb paramaolb)
+  public static int a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Aolb = paramaolb;
+    int i = a(35633, paramString1);
+    if (i == 0) {}
+    int j;
+    do
+    {
+      return 0;
+      j = a(35632, paramString2);
+    } while (j == 0);
+    int k = GLES20.glCreateProgram();
+    a("glCreateProgram");
+    if (k == 0) {
+      Log.e("KeyingUtil", "Could not create program");
+    }
+    GLES20.glAttachShader(k, i);
+    a("glAttachShader");
+    GLES20.glAttachShader(k, j);
+    a("glAttachShader");
+    GLES20.glLinkProgram(k);
+    paramString1 = new int[1];
+    GLES20.glGetProgramiv(k, 35714, paramString1, 0);
+    if (paramString1[0] != 1)
+    {
+      Log.e("KeyingUtil", "Could not link program:" + GLES20.glGetProgramInfoLog(k));
+      GLES20.glDeleteProgram(k);
+      return 0;
+    }
+    return k;
   }
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public static String a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WifiSdk", 2, "WifiSdkObserver, onUpdate, type: " + paramInt + " isSuccess: " + paramBoolean);
-    }
-    if ((paramBoolean) && (paramObject != null)) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
+    switch (paramInt)
     {
-      if (this.jdField_a_of_type_Aolb != null) {
-        this.jdField_a_of_type_Aolb.a(paramInt);
+    default: 
+      if (QLog.isDevelopLevel()) {
+        throw new IllegalArgumentException("invalid textureType!");
       }
-      return;
-      try
-      {
-        a((SCPullConchs)paramObject);
-      }
-      catch (Exception paramObject) {}
-      if (QLog.isColorLevel())
-      {
-        QLog.i("WifiSdk", 2, "WifiSdkObserver, onUpdate exception: " + paramObject.getMessage());
-        continue;
-        paramObject = (String)paramObject;
-        if (QLog.isColorLevel()) {
-          QLog.d("WifiSdk", 2, "WifiSdkObserver, onUpdate, guid: " + paramObject);
-        }
-        if (!TextUtils.isEmpty(paramObject))
-        {
-          bjia.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramObject);
-          continue;
-          paramObject = (bjic)paramObject;
-          a(paramObject.jdField_a_of_type_MConchSCPullConchs);
-          if (this.jdField_a_of_type_Aolb != null) {
-            this.jdField_a_of_type_Aolb.a(paramObject.jdField_a_of_type_MWIFISCGet3rdCloudCheck);
-          }
-        }
+      break;
+    case 1: 
+      return "#define TEXTURE_TYPE_OES\n";
+    case 2: 
+      return "#define TEXTURE_TYPE_SAMPLER2D\n";
+    case 3: 
+      return "#define TEXTURE_TYPE_Y_U_V\n";
+    case 4: 
+      return "#define TEXTURE_TYPE_Y_UV\n";
+    }
+    return "";
+  }
+  
+  public static void a(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      int i = GLES20.glGetError();
+      if (i != 0) {
+        Log.e("KeyingUtil", paramString + ": glError 0x" + Integer.toHexString(i));
       }
     }
   }

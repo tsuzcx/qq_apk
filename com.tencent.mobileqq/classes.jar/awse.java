@@ -1,80 +1,79 @@
-import android.text.TextUtils;
-import com.tencent.lbssearch.TencentSearch;
-import com.tencent.lbssearch.object.param.Geo2AddressParam;
-import com.tencent.lbssearch.object.param.Geo2AddressParam.PoiOptions;
-import com.tencent.lbssearch.object.param.SuggestionParam;
-import com.tencent.lbssearch.object.param.SuggestionParam.Policy;
-import com.tencent.map.tools.net.http.HttpResponseListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.ListView;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.10.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class awse
+  implements AbsListView.OnScrollListener
 {
-  private int jdField_a_of_type_Int = 1;
-  private awsg jdField_a_of_type_Awsg;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private TencentMap jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap;
-  private final LatLng jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<LocationRoom.Venue> jdField_a_of_type_JavaUtilList = new ArrayList(20);
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
+  public awse(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  awse(BaseActivity paramBaseActivity, TencentMap paramTencentMap, LatLng paramLatLng, String paramString)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap = paramTencentMap;
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
-    paramBaseActivity = paramString;
-    if (paramString == null) {
-      paramBaseActivity = "";
-    }
-    this.jdField_a_of_type_JavaLangString = paramBaseActivity;
-  }
-  
-  void a(awsg paramawsg)
-  {
-    this.jdField_a_of_type_Awsg = paramawsg;
-  }
-  
-  public boolean a()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("LocationPoiDataFromMapHelper", 4, "[venue][poi-data] fetch next: mKeyWord = " + this.jdField_a_of_type_JavaLangString + " latLng = " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + ", page = " + this.jdField_a_of_type_Int + ", isSearching = " + this.b + ", hasMore = " + this.jdField_a_of_type_Boolean);
-    }
-    if ((this.b) || (!this.jdField_a_of_type_Boolean)) {
-      return false;
-    }
-    this.b = true;
-    TencentSearch localTencentSearch = new TencentSearch(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    Object localObject2 = this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCityName(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
-    Object localObject1 = localObject2;
-    if (!TextUtils.isEmpty((CharSequence)localObject2))
+    if (paramInt1 == 0)
     {
-      localObject1 = localObject2;
-      if (((String)localObject2).lastIndexOf("市") == ((String)localObject2).length() - 1) {
-        localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
+      paramAbsListView = ShortVideoCommentsView.a(this.a).getChildAt(0);
+      if ((paramAbsListView != null) && (paramAbsListView.getTop() == 0))
+      {
+        ShortVideoCommentsView.a(this.a, true);
+        return;
       }
+      ShortVideoCommentsView.a(this.a, false);
+      return;
     }
-    localObject2 = new awsf(this);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localTencentSearch.geo2address(new Geo2AddressParam(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).getPoi(true).setPoiOptions(new Geo2AddressParam.PoiOptions().setPolicy(1).setPageSize(20).setPageIndex(this.jdField_a_of_type_Int)), (HttpResponseListener)localObject2);
+    ShortVideoCommentsView.a(this.a, false);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
+    if (paramInt == 0)
+    {
+      if ((paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.a.a.a.size() > 0) && (!ShortVideoCommentsView.b(this.a)) && (!ShortVideoCommentsView.c(this.a))) {
+        ShortVideoCommentsView.c(this.a);
+      }
+      if (ShortVideoCommentsView.a(this.a) == null) {
+        break label277;
+      }
+      paramAbsListView = ShortVideoCommentsView.a(this.a).jdField_a_of_type_JavaLangString;
+      if (ShortVideoCommentsView.a(this.a) != null) {
+        long l = ShortVideoCommentsView.a(this.a).jdField_a_of_type_Long;
+      }
+      paramInt = ShortVideoCommentsView.a(this.a);
+      if ((paramInt < ShortVideoCommentsView.b(this.a)) || (paramInt < mum.a(this.a.getContext(), 40.0F))) {
+        break label280;
+      }
+      if (!ShortVideoCommentsView.d(this.a))
+      {
+        ShortVideoCommentsView.a(this.a, true);
+        if (ShortVideoCommentsView.a(this.a).j != 4) {}
+      }
+      this.a.f();
     }
     for (;;)
     {
-      return true;
-      localTencentSearch.suggestion(new SuggestionParam(this.jdField_a_of_type_JavaLangString, (String)localObject1).location(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng).policy(SuggestionParam.Policy.DEF).pageSize(20).pageIndex(this.jdField_a_of_type_Int), (HttpResponseListener)localObject2);
+      ShortVideoCommentsView.a(this.a, paramInt);
+      if ((ShortVideoCommentsView.a(this.a) != null) && (ShortVideoCommentsView.a(this.a).getChildCount() > 0) && (ShortVideoCommentsView.a(this.a).getChildAt(0).getTop() == 0) && (!ShortVideoCommentsView.e(this.a)))
+      {
+        ShortVideoCommentsView.b(this.a, true);
+        this.a.postDelayed(new ShortVideoCommentsView.10.1(this), 100L);
+      }
+      return;
+      label277:
+      break;
+      label280:
+      if (!ShortVideoCommentsView.e(this.a))
+      {
+        this.a.j();
+        ShortVideoCommentsView.a(this.a, 2);
+      }
     }
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 

@@ -1,30 +1,35 @@
-import com.tencent.av.VideoConstants;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import tencent.im.msg.im_msg_body.MsgBody;
+import mqq.util.WeakReference;
 
 public class bcso
-  implements bcsi
+  implements MediaPlayer.OnErrorListener
 {
-  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre)
+  private WeakReference<VideoSprite> a;
+  
+  private bcso(VideoSprite paramVideoSprite)
   {
-    if ((parambcre.d) || (!VideoConstants.a)) {
-      return;
+    this.a = new WeakReference(paramVideoSprite);
+  }
+  
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  {
+    paramMediaPlayer = (VideoSprite)this.a.get();
+    if (paramMediaPlayer == null) {}
+    do
+    {
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.e("VideoSprite", 2, "onError: " + paramInt1);
+      }
+    } while (paramInt1 != 1);
+    if (paramMediaPlayer.a != null) {
+      paramMediaPlayer.a.a();
     }
-    long l = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
-    paramList = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
-    if (QLog.isColorLevel()) {
-      QLog.d("AVMsg", 2, "decodeC2CMsgPkg_MultiVideo, msg[" + l + "]");
-    }
-    paramMessageHandler.app.a().a(paramList, paramMsg);
+    paramMediaPlayer.j();
+    return true;
   }
 }
 

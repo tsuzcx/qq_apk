@@ -1,44 +1,34 @@
-import android.media.MediaFormat;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.util.SparseBooleanArray;
+import android.view.View;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import java.util.HashMap;
 
-public abstract class zkx
+public class zkx
+  extends AnimatorListenerAdapter
 {
-  protected int a;
-  protected bbmq a;
-  protected String a;
-  protected String b;
+  public zkx(VideoPlayerView paramVideoPlayerView, int paramInt1, View paramView, boolean paramBoolean, int paramInt2) {}
   
-  protected void a(int paramInt, String paramString1, String paramString2, MediaFormat paramMediaFormat, SlideItemInfo paramSlideItemInfo, zkw paramzkw)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramzkw != null)
-    {
-      zjv localzjv = new zjv();
-      localzjv.jdField_a_of_type_Long = paramzkw.b;
-      localzjv.jdField_a_of_type_Int = paramInt;
-      localzjv.jdField_b_of_type_JavaLangString = paramString2;
-      localzjv.jdField_a_of_type_JavaLangString = paramString1;
-      localzjv.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
-      localzjv.c = this.jdField_b_of_type_JavaLangString;
-      localzjv.jdField_a_of_type_Boolean = false;
-      localzjv.jdField_b_of_type_Int = 1;
-      if (paramSlideItemInfo != null)
-      {
-        localzjv.jdField_a_of_type_Boolean = paramSlideItemInfo.jdField_a_of_type_Boolean;
-        localzjv.jdField_b_of_type_Int = paramSlideItemInfo.c;
-      }
-      if (paramzkw.a != null) {
-        paramzkw.a.a(localzjv);
-      }
+    if (this.jdField_a_of_type_Boolean) {
+      VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b, false);
     }
+    while ((this.jdField_a_of_type_Int != 0) || (VideoPlayerView.a() == null) || (VideoPlayerView.a().get(this.jdField_a_of_type_AndroidViewView.getId()))) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
   
-  protected boolean a(zkw paramzkw)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if ((!paramzkw.d) && (QLog.isColorLevel())) {
-      QLog.d("ToVideoConverter", 2, "run exit:" + paramzkw.b + " currContext.isRun:" + paramzkw.d);
+    if ((this.jdField_a_of_type_Int == 1) && (VideoPlayerView.a() != null) && (!VideoPlayerView.a().get(this.jdField_a_of_type_AndroidViewView.getId()))) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
-    return !paramzkw.d;
+    if ((this.jdField_a_of_type_Int == 0) && (VideoPlayerView.a() != null) && (!VideoPlayerView.a().get(this.jdField_a_of_type_AndroidViewView.getId()))) {
+      VideoPlayerView.a().put(this.jdField_a_of_type_AndroidViewView, Integer.valueOf(this.jdField_a_of_type_AndroidViewView.getVisibility()));
+    }
   }
 }
 

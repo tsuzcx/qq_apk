@@ -1,46 +1,142 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class azde
-  extends bcpv
 {
-  OlympicToolAppInterface jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
   
-  public azde(OlympicToolAppInterface paramOlympicToolAppInterface)
+  public azde(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("OlympicToolService", 2, "new OlympicToolService");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface = paramOlympicToolAppInterface;
-    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
+    this(paramContext, null);
   }
   
-  public AppInterface a()
+  public azde(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  protected void a()
+  private boolean a()
   {
+    return (this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("http://")) || (this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("https://"));
+  }
+  
+  private void b()
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
+    String str1;
+    do
+    {
+      return;
+      str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin;
+    } while (TextUtils.isEmpty(str1));
     try
     {
-      super.a();
+      String str2 = aabc.b(str1, aabc.b(2));
+      if (QLog.isColorLevel()) {
+        QLog.i("HttpMqqJumper", 2, "openMoreOptions uin:" + str1 + " uinCode:" + str2);
+      }
+      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getAIOList(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, -1L, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.topicId, false);
+      Object localObject2 = new ArrayList();
+      if (localObject1 != null) {
+        ((List)localObject2).addAll((Collection)localObject1);
+      }
+      localObject1 = aabc.a(str1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 25004, 10, (List)localObject2);
+      localObject2 = ((String)localObject1).replaceAll(str1, str2);
+      Bundle localBundle = aabc.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      if (QLog.isColorLevel()) {
+        QLog.i("HttpMqqJumper", 2, "openMoreOptions safetyReport reportMsgOrg: " + (String)localObject1 + "  reportMsg: " + (String)localObject2);
+      }
+      aabc.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mActivity, str1, str2, null, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 25004, (String)localObject2, localBundle);
       return;
     }
-    finally
+    catch (Throwable localThrowable)
     {
-      localObject = finally;
-      throw localObject;
+      QLog.e("HttpMqqJumper", 1, "openMoreOptions safetyReport error" + localThrowable.getMessage());
     }
   }
   
-  public void a(ToServiceMsg paramToServiceMsg)
+  private boolean b()
   {
-    super.b(paramToServiceMsg, null, azdf.class);
+    return this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("mqq://jubao.qq.com");
+  }
+  
+  private boolean c()
+  {
+    return this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("mqq://");
+  }
+  
+  public azde a(SessionInfo paramSessionInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    return this;
+  }
+  
+  public azde a(BaseChatPie paramBaseChatPie)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    return this;
+  }
+  
+  public azde a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      return;
+    }
+    Object localObject;
+    label94:
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          localObject = null;
+          if (b())
+          {
+            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replace("mqq://", "https://");
+            b();
+          }
+          while (localObject != null)
+          {
+            this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+            return;
+            if (!a()) {
+              break label94;
+            }
+            localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+            ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
+          }
+        }
+        if (!c()) {
+          break;
+        }
+      } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
+      localObject = bfwg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    } while (localObject == null);
+    ((bfvp)localObject).a();
+    ((bfvp)localObject).a();
   }
 }
 

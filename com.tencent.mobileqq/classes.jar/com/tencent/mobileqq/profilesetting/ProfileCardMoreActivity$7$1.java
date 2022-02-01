@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.profilesetting;
 
 import android.text.TextUtils;
-import bakw;
+import azaw;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class ProfileCardMoreActivity$7$1
   implements Runnable
 {
-  public ProfileCardMoreActivity$7$1(bakw parambakw) {}
+  public ProfileCardMoreActivity$7$1(azaw paramazaw) {}
   
   public void run()
   {

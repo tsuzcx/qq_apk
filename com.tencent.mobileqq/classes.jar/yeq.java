@@ -1,19 +1,19 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-class yeq
-  implements yoz<Integer>
+public class yeq
+  implements ymt
 {
-  yeq(yen paramyen, wta paramwta) {}
+  public yeq(DoodleLayout paramDoodleLayout) {}
   
-  public void a(ErrorMessage paramErrorMessage)
+  public void a(@NonNull yna paramyna)
   {
-    yuk.e("QQStoryTakeVideoHelper", "get vip error.");
-  }
-  
-  public void a(Integer paramInteger)
-  {
-    yuk.b("QQStoryTakeVideoHelper", "get vip competed, vip:" + paramInteger);
-    this.jdField_a_of_type_Wta.b("qqstory_i_am_vip", paramInteger);
+    xwb.b("0X80075CD");
+    if ((this.a.a != null) && (this.a.a.mBusinessId == 3)) {
+      LpReportInfo_pf00064.allReport(615, 1, 2);
+    }
   }
 }
 

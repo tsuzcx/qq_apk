@@ -1,29 +1,38 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import java.util.Map;
 
 public class aflx
-  implements AdapterView.OnItemClickListener
+  implements afma
 {
-  public aflx(SelectedAndSearchBar paramSelectedAndSearchBar) {}
+  public aflx(LoadDataJob paramLoadDataJob, Map paramMap, List paramList) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt, afml paramafml)
   {
-    ResultRecord localResultRecord = (ResultRecord)SelectedAndSearchBar.a(this.a).get(paramInt);
-    if (SelectedAndSearchBar.a(this.a) != null) {
-      SelectedAndSearchBar.a(this.a).a(localResultRecord);
+    if (QLog.isColorLevel()) {
+      QLog.d("LoadDataJob", 2, "unmarshall task finish id:" + paramInt);
     }
-    this.a.a(false);
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
+      this.jdField_a_of_type_JavaUtilMap.notifyAll();
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramafml);
+      if (this.jdField_a_of_type_JavaUtilList.size() == LoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob)) {
+        this.jdField_a_of_type_JavaUtilList.notifyAll();
+      }
+      return;
+      paramafml = finally;
+      throw paramafml;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aflx
  * JD-Core Version:    0.7.0.1
  */

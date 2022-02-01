@@ -31,7 +31,7 @@ class WebView$b
     {
       paramWebView = Class.forName("android.webkit.WebViewWorker").getDeclaredMethod("getHandler", new Class[0]);
       paramWebView.setAccessible(true);
-      ((Handler)paramWebView.invoke(null, new Object[0])).getLooper().getThread().setUncaughtExceptionHandler(new e());
+      ((Handler)paramWebView.invoke(null, new Object[0])).getLooper().getThread().setUncaughtExceptionHandler(new g());
       WebView.mSysWebviewCreated = true;
       return;
     }

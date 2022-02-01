@@ -1,8 +1,20 @@
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface acvj
+final class acvj
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo);
+  acvj(acxa paramacxa) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.a != null) {
+      this.a.onCancel();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 

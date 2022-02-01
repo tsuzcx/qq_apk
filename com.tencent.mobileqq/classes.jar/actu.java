@@ -1,28 +1,15 @@
-import com.tencent.gdtad.jsbridge.GdtBannerFragmentForJS;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextPaint;
+import android.text.style.CharacterStyle;
+import com.tencent.mobileqq.activity.AuthDevActivity;
 
 public class actu
-  implements acun
+  extends CharacterStyle
 {
-  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
+  public actu(AuthDevActivity paramAuthDevActivity) {}
+  
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (paramacts != null) {}
-    for (paramString = paramacts.a(); (paramacts == null) || (paramString == null); paramString = null)
-    {
-      acvc.d("GdtBannerJsCallHandler", "handleJsCallRequest error");
-      return true;
-    }
-    try
-    {
-      GdtBannerFragmentForJS.a(paramString, new JSONObject(paramVarArgs[0]), GdtBannerFragmentForJS.class);
-      return true;
-    }
-    catch (JSONException paramacts)
-    {
-      acvc.d("GdtBannerJsCallHandler", "handleJsCallRequest error", paramacts);
-    }
-    return true;
+    paramTextPaint.setColor(-5855578);
   }
 }
 

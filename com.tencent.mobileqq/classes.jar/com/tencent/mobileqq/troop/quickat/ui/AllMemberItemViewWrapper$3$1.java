@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.troop.quickat.ui;
 
-import bgjb;
-import bgje;
-import bgjt;
+import besj;
+import besm;
+import betb;
 import java.util.List;
 
 public class AllMemberItemViewWrapper$3$1
   implements Runnable
 {
-  public AllMemberItemViewWrapper$3$1(bgje parambgje, boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, boolean paramBoolean3) {}
+  public AllMemberItemViewWrapper$3$1(besm parambesm, boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, boolean paramBoolean3) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bgje.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Boolean, 0, 0, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_c_of_type_Boolean);
-    if ((!this.jdField_c_of_type_Boolean) && (bgjb.a(this.jdField_a_of_type_Bgje.a).a()))
+    this.jdField_a_of_type_Besm.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Boolean, 0, 0, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_c_of_type_Boolean);
+    if ((!this.jdField_c_of_type_Boolean) && (besj.a(this.jdField_a_of_type_Besm.a).a()))
     {
-      List localList = bgjb.a(this.jdField_a_of_type_Bgje.a).a();
+      List localList = besj.a(this.jdField_a_of_type_Besm.a).a();
       if (localList.size() >= 1) {
         localList.remove(0);
       }
-      bgjb.a(this.jdField_a_of_type_Bgje.a).a(localList);
+      besj.a(this.jdField_a_of_type_Besm.a).a(localList);
       return;
     }
-    bgjb.a(this.jdField_a_of_type_Bgje.a).notifyDataSetChanged();
+    besj.a(this.jdField_a_of_type_Besm.a).notifyDataSetChanged();
   }
 }
 

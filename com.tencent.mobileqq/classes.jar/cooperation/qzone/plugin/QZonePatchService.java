@@ -3,19 +3,20 @@ package cooperation.qzone.plugin;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import bnfm;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
 
 public class QZonePatchService
   extends Service
 {
+  private static final String TAG = "QZonePluginManger";
+  
   public IBinder onBind(Intent paramIntent)
   {
     if (QLog.isColorLevel()) {
       QLog.d("QZonePluginManger", 2, "QZonePatchService onBind");
     }
-    return bnfm.a().a();
+    return QZoneRemotePluginHandler.getInstance().getBinder();
   }
   
   public void onCreate()

@@ -1,35 +1,16 @@
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
 class vrp
-  implements aaaj
+  extends vrq
 {
-  vrp(vrn paramvrn) {}
+  vrp(vro paramvro) {}
   
-  public void a(boolean paramBoolean, Map<String, aaah> paramMap)
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    if ((paramBoolean) && (paramMap != null))
-    {
-      Iterator localIterator = paramMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Object localObject = (aaah)paramMap.get(str);
-        if (!vry.a.containsKey(str))
-        {
-          localObject = AnimationView.AnimationInfo.loadFromFolder(((aaah)localObject).b);
-          if (localObject != null)
-          {
-            ((AnimationView.AnimationInfo)localObject).mInterval = 50;
-            ((AnimationView.AnimationInfo)localObject).mCycle = 2147483647;
-            vry.a.put(str, localObject);
-          }
-        }
-      }
-      vrn.a(this.a);
+    this.a.a.a.e();
+    if (paramBoolean) {
+      this.a.a.a.a(true, paramCommentEntry);
     }
   }
 }

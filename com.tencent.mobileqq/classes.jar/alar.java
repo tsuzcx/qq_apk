@@ -1,8 +1,33 @@
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public abstract interface alar
+class alar
+  implements View.OnClickListener
 {
-  public abstract void a(String paramString, Map<String, String> paramMap);
+  alar(alaq paramalaq) {}
+  
+  public void onClick(View paramView)
+  {
+    alas localalas = (alas)paramView.getTag();
+    if (this.a.a.a.contains(localalas.jdField_a_of_type_ComTencentMobileqqDataGroups))
+    {
+      this.a.a.a.remove(localalas.jdField_a_of_type_ComTencentMobileqqDataGroups);
+      localalas.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      this.a.a.a(localalas.jdField_a_of_type_ComTencentMobileqqDataGroups, false);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.a.a.add(localalas.jdField_a_of_type_ComTencentMobileqqDataGroups);
+      localalas.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+      this.a.a.a(localalas.jdField_a_of_type_ComTencentMobileqqDataGroups, true);
+    }
+  }
 }
 
 

@@ -1,87 +1,73 @@
-import java.lang.ref.WeakReference;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
+import tencent.im.s2c.msgtype0x210.submsgtype0x3d.SttResultPush.MsgBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0x3d.SttResultPush.TransPttResp;
 
 public class bcna
+  extends bcmy
 {
-  public static bcna a;
-  public long a;
-  public Map<Long, WeakReference<Object>> a;
+  private bcmz a;
   
-  static
+  public bcna(bcmx parambcmx)
   {
-    jdField_a_of_type_Bcna = new bcna();
+    super(parambcmx);
   }
   
-  private bcna()
+  public int a(SttResultPush.MsgBody paramMsgBody)
   {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  }
-  
-  public static bcna a()
-  {
-    return jdField_a_of_type_Bcna;
-  }
-  
-  public long a(Object paramObject)
-  {
-    long l;
-    if (paramObject == null) {
-      l = -9223372036854775808L;
+    if (paramMsgBody == null) {
+      return 4001;
+    }
+    paramMsgBody = paramMsgBody.msg_ptt_resp;
+    if (!paramMsgBody.has())
+    {
+      this.jdField_a_of_type_Bcmx.a(4, 2007);
+      return 4001;
+    }
+    Long localLong = Long.valueOf(paramMsgBody.uint64_sessionid.get());
+    int i = paramMsgBody.uint32_pos.get();
+    int j = paramMsgBody.uint32_len.get();
+    int k = paramMsgBody.uint32_total_len.get();
+    int m = paramMsgBody.uint32_seq.get();
+    int n = paramMsgBody.uint32_error_code.get();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.stt_IntactSttRcv", 2, "onSttResultPush with: " + n + ", " + localLong + ", " + i + ", " + j + ", " + k);
+    }
+    if ((n != 0) || (i + j > k))
+    {
+      if (this.jdField_a_of_type_Bcmz != null) {
+        this.jdField_a_of_type_Bcmz = null;
+      }
+      this.jdField_a_of_type_Bcmx.a(4, 2008);
+      return 4002;
+    }
+    paramMsgBody = paramMsgBody.bytes_text.get().toByteArray();
+    this.jdField_a_of_type_Bcmz = a(this.jdField_a_of_type_Bcmz, i, j, k, 1 << m, paramMsgBody);
+    boolean bool = this.jdField_a_of_type_Bcmz.jdField_a_of_type_Boolean;
+    if (bool)
+    {
+      paramMsgBody = new String(this.jdField_a_of_type_Bcmz.jdField_a_of_type_JavaNioByteBuffer.array());
+      this.jdField_a_of_type_Bcmz = null;
     }
     for (;;)
     {
-      return l;
-      try
-      {
-        l = this.jdField_a_of_type_Long;
-        this.jdField_a_of_type_Long = (1L + l);
-        this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(l), new WeakReference(paramObject));
+      this.jdField_a_of_type_Bcmx.a(false);
+      this.jdField_a_of_type_Bcmx.a(paramMsgBody, bool);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.stt_IntactSttRcv", 2, "doReceivePushData stt pushPacket.isEnd = " + bool + "  | session = " + localLong);
       }
-      finally {}
+      return 0;
+      paramMsgBody = "";
     }
   }
   
-  /* Error */
-  public Object a(long paramLong)
+  public void a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 23	bcna:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   6: lload_1
-    //   7: invokestatic 35	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   10: invokeinterface 51 2 0
-    //   15: checkcast 37	java/lang/ref/WeakReference
-    //   18: astore_3
-    //   19: aload_3
-    //   20: ifnull +12 -> 32
-    //   23: aload_3
-    //   24: invokevirtual 54	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   27: astore_3
-    //   28: aload_0
-    //   29: monitorexit
-    //   30: aload_3
-    //   31: areturn
-    //   32: aconst_null
-    //   33: astore_3
-    //   34: goto -6 -> 28
-    //   37: astore_3
-    //   38: aload_0
-    //   39: monitorexit
-    //   40: aload_3
-    //   41: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	42	0	this	bcna
-    //   0	42	1	paramLong	long
-    //   18	16	3	localObject1	Object
-    //   37	4	3	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	19	37	finally
-    //   23	28	37	finally
+    this.jdField_a_of_type_Bcmz = null;
   }
 }
 

@@ -1,76 +1,48 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bgdx
-  implements bgfd
+class bgdx
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public bgdx(XMediaEditor paramXMediaEditor) {}
+  bgdx(bgdv parambgdv) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onAudioFocusChange(int paramInt)
   {
-    if (paramInt1 == paramInt2) {
-      return;
-    }
-    paramInt1 = paramInt2 - paramInt1;
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a(XMediaEditor.a(this.a), XMediaEditor.a(this.a) + paramInt1);
-    }
-    XMediaEditor.a(this.a, paramInt1 + XMediaEditor.a(this.a));
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = ((bgff)paramViewHolder).jdField_a_of_type_Bgeg;
-    this.a.a(paramViewHolder.c);
-  }
-  
-  public void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean)
-  {
-    if (XMediaEditor.a(this.a) != this.a.a.a())
+    if (paramInt == -2)
     {
-      paramViewHolder = this.a;
-      if (XMediaEditor.a(this.a)) {
-        break label73;
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorRingPlayer", 2, "transient focus loss.");
+      }
+      synchronized (this.a.a)
+      {
+        if (this.a.a.a == 4) {
+          this.a.a();
+        }
+        return;
       }
     }
-    label73:
-    for (paramBoolean = true;; paramBoolean = false)
+    if (paramInt == 1)
     {
-      XMediaEditor.a(paramViewHolder, paramBoolean);
-      if (XMediaEditor.a(this.a) != null) {
-        XMediaEditor.a(this.a).a(XMediaEditor.a(this.a));
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorRingPlayer", 2, "gained focus");
       }
-      return;
+      if (this.a.b)
+      {
+        this.a.c();
+        this.a.b = false;
+      }
     }
-  }
-  
-  public void b(RecyclerView.ViewHolder paramViewHolder)
-  {
-    int i = ((bgff)paramViewHolder).jdField_a_of_type_Bgeg.c;
-    if (i == 0) {}
-    while (this.a.a.a(i - 1).b() == -1) {
-      return;
-    }
-    this.a.a(i - 1);
-  }
-  
-  public void c(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = (bgfu)paramViewHolder;
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a = false;
-    }
-    XMediaEditor.a(this.a, (bgep)paramViewHolder.jdField_a_of_type_Bgeg);
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a(paramViewHolder.jdField_a_of_type_AndroidWidgetEditText, true);
-    }
-  }
-  
-  public void d(RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramViewHolder = (bgfu)paramViewHolder;
-    if (XMediaEditor.a(this.a) != null) {
-      XMediaEditor.a(this.a).a(paramViewHolder.jdField_a_of_type_AndroidWidgetEditText, false);
+    else if (paramInt == -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ColorRingPlayer", 2, "Audio focus Loss");
+      }
+      this.a.b();
+      synchronized (this.a.a)
+      {
+        this.a.a.a = 6;
+        return;
+      }
     }
   }
 }

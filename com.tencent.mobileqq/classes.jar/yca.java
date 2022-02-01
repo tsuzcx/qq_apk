@@ -1,21 +1,35 @@
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
 
-class yca
-  extends xfp
+@TargetApi(14)
+public class yca
 {
-  yca(ybz paramybz) {}
-  
-  public void a()
+  public static float a(View paramView)
   {
-    super.a();
-    ybz.a(this.a).jdField_a_of_type_Xfj = null;
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return 0.0F;
+    }
+    return paramView.getX();
   }
   
-  public void a(int paramInt)
+  public static void a(View paramView, float paramFloat)
   {
-    super.a(paramInt);
-    yup.a("share_story", "day_suc", 0, paramInt, new String[] { ybz.a(this.a).jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return;
+    }
+    paramView.setAlpha(paramFloat);
+  }
+  
+  public static float b(View paramView)
+  {
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return 0.0F;
+    }
+    return paramView.getY();
   }
 }
 

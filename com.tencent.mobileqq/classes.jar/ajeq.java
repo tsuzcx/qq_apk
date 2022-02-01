@@ -1,23 +1,42 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class ajeq
+  extends ajeo
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public RichStatus a;
-  public AccountSearchPb.record a;
-  public String a;
-  public boolean a = true;
-  public int b;
-  public TextView b;
-  public String b;
-  public int c;
-  public TextView c;
-  public TextView d;
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public ajeq(boolean paramBoolean, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if ((paramAppInfo != null) && (paramAppInfo.missions != null)) {
+      this.jdField_a_of_type_JavaUtilList = paramAppInfo.missions.get();
+    }
+  }
+  
+  public String a()
+  {
+    String str = String.format("&hasRedDot=%b", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        localStringBuilder.append((String)localIterator.next()).append("_");
+      }
+      localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+      return str + String.format("&missions=%s", new Object[] { localStringBuilder.toString() });
+    }
+    return str;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (paramString != null) && (paramString.contains("need_fill_red_point_info=1"));
+  }
 }
 
 

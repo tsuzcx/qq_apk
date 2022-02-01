@@ -1,21 +1,34 @@
-import com.tencent.viola.adapter.IJSApiAdapter.OnInovkeCallback;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
 class tdb
-  implements rmd
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  IJSApiAdapter.OnInovkeCallback a;
+  private final int jdField_a_of_type_Int;
+  private final int b;
   
-  public tdb(IJSApiAdapter.OnInovkeCallback paramOnInovkeCallback)
+  tdb(tda paramtda, int paramInt1, int paramInt2)
   {
-    this.a = paramOnInovkeCallback;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public void a(JSONObject paramJSONObject)
+  public boolean onPreDraw()
   {
-    if (this.a != null) {
-      this.a.callback(paramJSONObject);
+    this.jdField_a_of_type_Tda.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tda.a, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tda.a) + tda.a(this.jdField_a_of_type_Tda));
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Tda.a, ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Tda.a) + tda.b(this.jdField_a_of_type_Tda));
+    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tda.a) != null) {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tda.a).setVisibility(0);
     }
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tda.a, this.jdField_a_of_type_Tda.a.a(ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tda.a)));
+    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tda.a) != null) {
+      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tda.a).setVisibility(4);
+    }
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Tda.a, this.jdField_a_of_type_Int, this.b);
+    return true;
   }
 }
 

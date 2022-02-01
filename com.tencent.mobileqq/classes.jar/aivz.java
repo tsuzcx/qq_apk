@@ -1,27 +1,48 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import mqq.os.MqqHandler;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-class aivz
-  implements View.OnClickListener
+public class aivz
+  extends WtloginObserver
 {
-  aivz(aivy paramaivy) {}
+  public aivz(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment, long paramLong, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    Intent localIntent1 = new Intent();
-    localIntent1.putExtra("is_from_conversation", true);
-    localIntent1.putExtra("bookid", aivy.a(this.a));
-    localIntent1.putExtra("book_new_id", aivy.b(this.a));
-    Intent localIntent2 = new Intent();
-    localIntent2.putExtras(localIntent1);
-    localIntent2.putExtra("readtype", "15");
-    localIntent2.setClassName(aivy.a(this.a), "cooperation.qqreader.QRBridgeActivity");
-    localIntent2.addFlags(268435456);
-    aivy.a(this.a).startActivity(localIntent2);
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = 1;
+    boolean bool;
+    if (QLog.isColorLevel())
+    {
+      long l = System.currentTimeMillis();
+      paramWUserSigInfo = new StringBuilder().append("CheckDevLockStatus ret: ").append(paramInt).append(", has devinfo: ");
+      if (paramDevlockInfo == null)
+      {
+        bool = true;
+        QLog.d("Q.history.C2CAllFragment", 2, bool + ", cost: " + (l - this.jdField_a_of_type_Long) + "ms");
+      }
+    }
+    else
+    {
+      paramWUserSigInfo = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.obtainMessage(40);
+      paramWUserSigInfo.arg1 = paramInt;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label135;
+      }
+    }
+    label135:
+    for (paramInt = i;; paramInt = 0)
+    {
+      paramWUserSigInfo.arg2 = paramInt;
+      paramWUserSigInfo.obj = paramDevlockInfo;
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.sendMessage(paramWUserSigInfo);
+      return;
+      bool = false;
+      break;
+    }
   }
 }
 

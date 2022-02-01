@@ -10,6 +10,7 @@ public class AudioMixer
   public static final int OUTPUT_CHANNEL_COUNT = 1;
   public static final int OUTPUT_SAMPLE_RATE = 44100;
   private static final int SIGNED_SHORT_LIMIT = 32768;
+  private static final String TAG = "AudioMixer";
   private static final int UNSIGNED_SHORT_MAX = 65535;
   private ByteBuffer cachedByteBuffer;
   private ByteBuffer cachedMergedBuffer;
@@ -23,6 +24,8 @@ public class AudioMixer
   private short[] sampleBuffer;
   private float sampleFactor;
   private boolean singleChannel;
+  private int srcNumChannels = 1;
+  private int srcSampleRate = 44100;
   
   static
   {
@@ -320,6 +323,8 @@ public class AudioMixer
   public void setAudioInfo(int paramInt1, int paramInt2, int paramInt3)
   {
     boolean bool = true;
+    this.srcSampleRate = paramInt1;
+    this.srcNumChannels = paramInt2;
     this.sampleFactor = (this.destAudioSampleRate * this.destAudioChannelCount / (paramInt1 * paramInt2 * 1.0F));
     if (paramInt2 == 1) {}
     for (;;)

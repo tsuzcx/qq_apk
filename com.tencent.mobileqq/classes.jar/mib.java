@@ -1,50 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.QavPanel;
 
-class mib
-  implements Animation.AnimationListener
+public class mib
+  implements mie
 {
-  mib(mia parammia) {}
+  public mib(QavPanel paramQavPanel, Runnable paramRunnable) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavInOutAnimation", 2, "InAnimation onAnimationEnd");
-    }
-    try
-    {
-      if (this.a.a != null) {
-        this.a.a.b();
-      }
-      return;
-    }
-    catch (Exception paramAnimation)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavInAnimationListener onAnimationEnd Exception :" + paramAnimation);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavInOutAnimation", 2, "InAnimation onAnimationStart");
-    }
-    try
-    {
-      if (this.a.a != null) {
-        this.a.a.a();
-      }
-      return;
-    }
-    catch (Exception paramAnimation)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavInAnimationListener onAnimationStart Exception :" + paramAnimation);
-    }
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

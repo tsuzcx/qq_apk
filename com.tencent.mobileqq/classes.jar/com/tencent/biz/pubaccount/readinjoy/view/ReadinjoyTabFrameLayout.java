@@ -7,8 +7,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
-import bdep;
 import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,7 +90,7 @@ public class ReadinjoyTabFrameLayout
       if ((!this.jdField_a_of_type_Boolean) || (i <= k)) {
         break label245;
       }
-      if ((j / i >= 0.6F) || (this.jdField_a_of_type_Int <= (int)(bdep.jdField_a_of_type_Int * 0.1F))) {
+      if ((j / i >= 0.6F) || (this.jdField_a_of_type_Int <= (int)(ScreenUtil.SCREEN_WIDTH * 0.1F))) {
         break label253;
       }
     }
@@ -137,7 +137,7 @@ public class ReadinjoyTabFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrameLayout
  * JD-Core Version:    0.7.0.1
  */

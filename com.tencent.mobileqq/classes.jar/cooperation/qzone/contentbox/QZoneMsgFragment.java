@@ -1,5 +1,6 @@
 package cooperation.qzone.contentbox;
 
+import amtj;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -17,38 +18,32 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import anzj;
-import bhmr;
-import bhni;
-import bhsr;
-import bjuh;
-import blih;
-import bmtd;
-import bmwv;
-import bmww;
-import bmyc;
-import bmyd;
-import bmye;
-import bmyf;
-import bmyg;
-import bmyh;
-import bmyi;
-import bmyn;
-import bmyo;
+import android.widget.LinearLayout;
+import bfvp;
+import bfwg;
+import bhzt;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ListView;
+import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.api.FeedViewHolderInterface;
+import cooperation.qzone.api.QZoneApiProxy;
+import cooperation.qzone.contentbox.model.BottomItem;
 import cooperation.qzone.contentbox.model.MQMsg;
 import cooperation.qzone.contentbox.model.MQMsgBody;
 import cooperation.qzone.contentbox.model.MQPhotoCell;
+import cooperation.qzone.contentbox.model.MsgOnClickListener;
 import cooperation.qzone.contentbox.model.QZoneMsgEntityNew;
 import cooperation.qzone.provider.LocalPhotoGroupData;
 import cooperation.qzone.report.lp.LpReportInfo_dc02880;
@@ -57,119 +52,116 @@ import cooperation.qzone.report.lp.LpReportManager;
 import cooperation.qzone.report.lp.QZoneLoginReportHelper;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import cooperation.qzone.util.QZLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class QZoneMsgFragment
   extends ReportV4Fragment
-  implements Handler.Callback, bmyd
+  implements Handler.Callback, QZoneMsgAdapter.OnGetViewLinstener
 {
-  protected int a;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bmye(this);
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private final blih jdField_a_of_type_Blih = new bmyf(this);
-  private bmwv jdField_a_of_type_Bmwv;
-  public bmyc a;
-  bmyh jdField_a_of_type_Bmyh;
-  bmyo jdField_a_of_type_Bmyo = new bmyg(this);
-  public volatile QQAppInterface a;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private FootNavigationLayout jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout;
-  private LocalPhotoGroupData jdField_a_of_type_CooperationQzoneProviderLocalPhotoGroupData;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private volatile boolean d;
-  private volatile boolean e = true;
-  private boolean f;
+  public static final String ACTION = "action";
+  public static final String ACTION_SYNC_QZONE_COMMENT_LIKE = "com.qzone.sync_comment_like";
+  public static final int CLICK_TYPE_COMMENT = 2;
+  public static final int CLICK_TYPE_DETAIL = 0;
+  public static final int CLICK_TYPE_FRIENDFEED = 5;
+  public static final int CLICK_TYPE_LIKE = 1;
+  public static final int CLICK_TYPE_SHAREQQ = 3;
+  public static final int CLICK_TYPE_SHAREQZONE = 4;
+  private static final String EMPTY_IMG_URL = "https://qzonestyle.gtimg.cn/aoi/sola/20190613205313_O1p1qwgOqi.png";
+  public static final String FEED = "feed";
+  private static final int IDLE = 0;
+  private static final int LOADDING_MORE = 1;
+  private static final int MSG_SET_READED = 1001;
+  private static final int REFREHING = 2;
+  public static final String SCHEME_EVENT_TRAVEL_PHOTO_RECOMMAND_DETAIL = "mqqzone://arouse/photogrouprecommenddetail?usecache=true&checkgroup=false&unikey=";
+  public static final String SYNC_QZONE_COMMENT_COMMENT_NUM = "sync_comment_commentnum";
+  public static final String SYNC_QZONE_COMMENT_HASLIKE = "sync_comment_haslike";
+  public static final String SYNC_QZONE_COMMENT_LIKE_KEY = "sync_comment_likekey";
+  public static final String SYNC_QZONE_COMMENT_LIKE_NUM = "sync_comment_likenum";
+  private static final String TAG = "QZoneMsgManager.QZoneMsgFragment";
+  QZoneMsgAdapter adapter;
+  volatile QQAppInterface app;
+  protected int footerPreState = 5;
+  private Handler handler;
+  private volatile boolean hasMore = true;
+  private boolean isNightMode;
+  private ListView listView;
+  private FeedViewHolderInterface mFeedHolder;
+  private FootNavigationLayout mFootNavigationLayout;
+  private LocalPhotoGroupData mLocalPhotoGroupData;
+  private boolean mShowFeeds;
+  BroadcastReceiver mSyncCommentLikeReceiver = new QZoneMsgFragment.2(this);
+  private boolean mUseNewUI;
+  private boolean manual;
+  MsgOnClickListener msgOnClickListener = new QZoneMsgFragment.9(this);
+  QZoneMsgFragment.QZoneMsgUIObserver observer;
+  private final AbsListView.OnScrollListener onScrollListener = new QZoneMsgFragment.7(this);
+  private volatile boolean refreshed;
+  private int requestState = 0;
+  LinearLayout viewFooterContainer;
+  MsgFootTips viewListFooter;
   
-  public QZoneMsgFragment()
+  private MQMsg getLastMQMsg()
   {
-    this.jdField_a_of_type_Int = 5;
-  }
-  
-  private MQMsg a()
-  {
-    if (this.jdField_a_of_type_Bmyc == null)
+    if (this.adapter == null)
     {
       QLog.d("QZoneMsgManager.QZoneMsgFragment", 2, "getLastMQMsg failed: adapter == null");
       return null;
     }
-    return this.jdField_a_of_type_Bmyc.a();
+    return this.adapter.getLastMQMsg();
   }
   
-  private void a()
-  {
-    ThreadManagerV2.excute(new QZoneMsgFragment.3(this), 32, null, true);
-  }
+  private void initEmptyView(View paramView) {}
   
-  private void a(View paramView) {}
-  
-  private void a(QZoneMsgEntityNew paramQZoneMsgEntityNew)
+  private void initFootView(boolean paramBoolean)
   {
-    if (paramQZoneMsgEntityNew == null)
-    {
-      paramQZoneMsgEntityNew = new ArrayList();
-      paramQZoneMsgEntityNew.add(new bmyn(anzj.a(2131718521), "mqqzone://arouse/activefeed"));
-      paramQZoneMsgEntityNew.add(new bmyn(anzj.a(2131710904), "mqqzone://arouse/albumlist"));
+    if (this.listView == null) {
+      return;
+    }
+    this.viewFooterContainer = new LinearLayout(getActivity());
+    AbsListView.LayoutParams localLayoutParams = new AbsListView.LayoutParams(-1, -2);
+    this.viewFooterContainer.setLayoutParams(localLayoutParams);
+    this.viewFooterContainer.setOrientation(1);
+    this.viewFooterContainer.setGravity(1);
+    this.listView.addFooterView(this.viewFooterContainer);
+    this.viewListFooter = new MsgFootTips(getActivity(), this.handler);
+    this.viewListFooter.setLoadingDataText(getString(2131692097));
+    this.viewListFooter.setLoadingMoreDataText(getString(2131692098));
+    if (!paramBoolean) {
+      setFooterState(5);
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.post(new QZoneMsgFragment.6(this, paramQZoneMsgEntityNew));
-      }
+      this.viewFooterContainer.addView(this.viewListFooter);
       return;
-      paramQZoneMsgEntityNew = paramQZoneMsgEntityNew.bottomItems;
+      this.footerPreState = 3;
+      setFooterState(3);
     }
   }
   
-  private void a(boolean paramBoolean) {}
+  private void loadMore(boolean paramBoolean) {}
   
-  private boolean a()
+  private void loadMoreFinish(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bmyc == null)
-    {
-      QLog.d("QZoneMsgManager.QZoneMsgFragment", 2, "removeLastEmptyMQMsg failed: adapter == null");
-      return false;
+    if ((!paramBoolean) && (this.manual)) {
+      bhzt.a().a(amtj.a(2131711140));
     }
-    return this.jdField_a_of_type_Bmyc.a();
-  }
-  
-  private void b()
-  {
-    this.jdField_b_of_type_Int = 2;
-    ((bmyi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(293)).b();
+    setMoreFootState(paramBoolean);
+    this.requestState = 0;
     if (QLog.isColorLevel()) {
-      QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "refresh ，requestState=" + this.jdField_b_of_type_Int);
+      QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "loadMoreFinish ，requestState=" + this.requestState);
     }
   }
   
-  private void b(String paramString)
+  private void playFirstVisibleItem()
   {
-    ThreadManager.postImmediately(new QZoneMsgFragment.4(this, paramString), null, false);
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    if ((!paramBoolean) && (this.f)) {
-      bjuh.a().a(anzj.a(2131710908));
-    }
-    d(paramBoolean);
-    this.jdField_b_of_type_Int = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "loadMoreFinish ，requestState=" + this.jdField_b_of_type_Int);
-    }
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetListView == null) {}
+    if (this.listView == null) {}
     int k;
     do
     {
       return;
-      k = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
+      k = this.listView.getChildCount();
     } while (k <= 0);
     int j = 0;
     int i = 0;
@@ -177,7 +169,7 @@ public class QZoneMsgFragment
     Object localObject;
     if (j < k)
     {
-      localObject = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(j);
+      localObject = this.listView.getChildAt(j);
       if ((localObject instanceof MsgCardView)) {
         break label54;
       }
@@ -189,43 +181,41 @@ public class QZoneMsgFragment
       break;
       label54:
       localObject = (MsgCardView)localObject;
-      if ((i == 0) && ((((MsgCardView)localObject).a()) || (this.c)))
+      if ((i == 0) && ((((MsgCardView)localObject).isLargePhotoTotalVisible()) || (this.mUseNewUI)))
       {
-        ((MsgCardView)localObject).a();
+        ((MsgCardView)localObject).startPlay();
         i = 1;
       }
       else
       {
-        ((MsgCardView)localObject).b();
+        ((MsgCardView)localObject).stopPlay();
       }
     }
   }
   
-  private void c(boolean paramBoolean) {}
-  
-  private void d()
+  private void recycleListItem()
   {
-    if (this.jdField_a_of_type_Bmwv != null)
+    if (this.mFeedHolder != null)
     {
-      this.jdField_a_of_type_Bmwv.c();
-      this.jdField_a_of_type_Bmwv = null;
-      if (this.jdField_a_of_type_Bmyc != null) {
-        this.jdField_a_of_type_Bmyc.a(null, this.jdField_b_of_type_Boolean, this.c);
+      this.mFeedHolder.onDestroy();
+      this.mFeedHolder = null;
+      if (this.adapter != null) {
+        this.adapter.setFeedHolder(null, this.mShowFeeds, this.mUseNewUI);
       }
     }
-    if (this.jdField_a_of_type_ComTencentWidgetListView == null) {}
+    if (this.listView == null) {}
     int j;
     do
     {
       return;
-      j = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
+      j = this.listView.getChildCount();
     } while (j <= 0);
     int i = 0;
     label66:
     View localView;
     if (i < j)
     {
-      localView = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i);
+      localView = this.listView.getChildAt(i);
       if ((localView instanceof MsgCardView)) {
         break label94;
       }
@@ -236,17 +226,89 @@ public class QZoneMsgFragment
       break label66;
       break;
       label94:
-      ((MsgCardView)localView).c();
+      ((MsgCardView)localView).recycle();
     }
   }
   
-  private void d(boolean paramBoolean) {}
-  
-  private void e()
+  private void refresh()
   {
-    if ((this.jdField_a_of_type_CooperationQzoneProviderLocalPhotoGroupData == null) || (this.jdField_a_of_type_CooperationQzoneProviderLocalPhotoGroupData.pathList == null) || (this.jdField_a_of_type_CooperationQzoneProviderLocalPhotoGroupData.pathList.isEmpty()))
+    this.requestState = 2;
+    ((QZoneMsgManager)this.app.getManager(293)).refreshQZoneMsg();
+    if (QLog.isColorLevel()) {
+      QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "refresh ，requestState=" + this.requestState);
+    }
+  }
+  
+  private void refreshFinish(boolean paramBoolean)
+  {
+    setRefreshFootState(paramBoolean);
+    this.requestState = 0;
+    if (this.adapter.getCount() > 0)
     {
-      boolean bool = a();
+      MQMsg localMQMsg = (MQMsg)this.adapter.getItem(0);
+      if (localMQMsg == null) {
+        break label115;
+      }
+      updatePromptText(localMQMsg.promot);
+      if (QLog.isColorLevel()) {
+        QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "updatePromptText ，mqMsg.promot=" + localMQMsg.promot);
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "refreshFinish ，requestState=" + this.requestState);
+      }
+      return;
+      label115:
+      if (QLog.isColorLevel()) {
+        QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "updatePromptText mqMsg ==null");
+      }
+    }
+  }
+  
+  private boolean removeLastEmptyMQMsg()
+  {
+    if (this.adapter == null)
+    {
+      QLog.d("QZoneMsgManager.QZoneMsgFragment", 2, "removeLastEmptyMQMsg failed: adapter == null");
+      return false;
+    }
+    return this.adapter.removeLastEmptyMQMsg();
+  }
+  
+  private void setFootNavigationInfo(QZoneMsgEntityNew paramQZoneMsgEntityNew)
+  {
+    if (paramQZoneMsgEntityNew == null)
+    {
+      paramQZoneMsgEntityNew = new ArrayList();
+      paramQZoneMsgEntityNew.add(new BottomItem(amtj.a(2131718769), "mqqzone://arouse/activefeed"));
+      paramQZoneMsgEntityNew.add(new BottomItem(amtj.a(2131711136), "mqqzone://arouse/albumlist"));
+    }
+    for (;;)
+    {
+      if (this.handler != null) {
+        this.handler.post(new QZoneMsgFragment.6(this, paramQZoneMsgEntityNew));
+      }
+      return;
+      paramQZoneMsgEntityNew = paramQZoneMsgEntityNew.bottomItems;
+    }
+  }
+  
+  private void setMoreFootState(boolean paramBoolean) {}
+  
+  private void setReaded()
+  {
+    ThreadManagerV2.excute(new QZoneMsgFragment.3(this), 32, null, true);
+  }
+  
+  private void setRefreshFootState(boolean paramBoolean) {}
+  
+  private void updateMQMsg()
+  {
+    if ((this.mLocalPhotoGroupData == null) || (this.mLocalPhotoGroupData.pathList == null) || (this.mLocalPhotoGroupData.pathList.isEmpty()))
+    {
+      boolean bool = removeLastEmptyMQMsg();
       QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "setLocalPhotoGroupData: removeLastEmptyMQMsg:" + bool + ", mLocalPhotoGroupData == null || mLocalPhotoGroupData.pathList == null || mLocalPhotoGroupData.pathList.isEmpty()");
     }
     MQMsg localMQMsg;
@@ -255,7 +317,7 @@ public class QZoneMsgFragment
       do
       {
         return;
-        localMQMsg = a();
+        localMQMsg = getLastMQMsg();
         if (localMQMsg != null) {
           break;
         }
@@ -276,12 +338,12 @@ public class QZoneMsgFragment
           QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "updateMQMsg: mqMsg.msgBody.photolist==null");
         }
       }
-    } while (((localMQMsg.msgBody.photolist != null) && (!localMQMsg.msgBody.photolist.isEmpty()) && (!bhsr.a(((MQPhotoCell)localMQMsg.msgBody.photolist.get(0)).coverUrl))) || (localMQMsg.msgType != 9));
-    localMQMsg.uniKey = this.jdField_a_of_type_CooperationQzoneProviderLocalPhotoGroupData.unikey;
-    localMQMsg.eventTitle = this.jdField_a_of_type_CooperationQzoneProviderLocalPhotoGroupData.title;
-    localMQMsg.capTime = this.jdField_a_of_type_CooperationQzoneProviderLocalPhotoGroupData.capTime;
+    } while (((localMQMsg.msgBody.photolist != null) && (!localMQMsg.msgBody.photolist.isEmpty()) && (!StringUtil.isEmpty(((MQPhotoCell)localMQMsg.msgBody.photolist.get(0)).coverUrl))) || (localMQMsg.msgType != 9));
+    localMQMsg.uniKey = this.mLocalPhotoGroupData.unikey;
+    localMQMsg.eventTitle = this.mLocalPhotoGroupData.title;
+    localMQMsg.capTime = this.mLocalPhotoGroupData.capTime;
     Object localObject1 = new ArrayList();
-    Object localObject2 = this.jdField_a_of_type_CooperationQzoneProviderLocalPhotoGroupData.pathList.iterator();
+    Object localObject2 = this.mLocalPhotoGroupData.pathList.iterator();
     while (((Iterator)localObject2).hasNext())
     {
       String str = (String)((Iterator)localObject2).next();
@@ -290,96 +352,18 @@ public class QZoneMsgFragment
       ((ArrayList)localObject1).add(localMQPhotoCell);
     }
     localMQMsg.msgBody.photolist = ((ArrayList)localObject1);
-    this.jdField_a_of_type_AndroidOsHandler.post(new QZoneMsgFragment.8(this, localMQMsg));
+    this.handler.post(new QZoneMsgFragment.8(this, localMQMsg));
     QLog.d("QZoneMsgManager.QZoneMsgFragment", 2, "setLocalPhotoGroupData: update last empty MQMsg.");
   }
   
-  private void e(boolean paramBoolean)
+  private void updatePromptText(String paramString)
   {
-    c(paramBoolean);
-    this.jdField_b_of_type_Int = 0;
-    if (this.jdField_a_of_type_Bmyc.getCount() > 0)
-    {
-      MQMsg localMQMsg = (MQMsg)this.jdField_a_of_type_Bmyc.getItem(0);
-      if (localMQMsg == null) {
-        break label115;
-      }
-      b(localMQMsg.promot);
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "updatePromptText ，mqMsg.promot=" + localMQMsg.promot);
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "refreshFinish ，requestState=" + this.jdField_b_of_type_Int);
-      }
-      return;
-      label115:
-      if (QLog.isColorLevel()) {
-        QLog.e("QZoneMsgManager.QZoneMsgFragment", 2, "updatePromptText mqMsg ==null");
-      }
-    }
+    ThreadManager.postImmediately(new QZoneMsgFragment.4(this, paramString), null, false);
   }
   
-  public bmwv a()
+  public FeedViewHolderInterface getFeedHolder()
   {
-    return this.jdField_a_of_type_Bmwv;
-  }
-  
-  public void a(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if ((paramInt >= this.jdField_a_of_type_Bmyc.getCount() - 1) && (this.jdField_a_of_type_Bmyc.getCount() != 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onGetView loadMore");
-      }
-      a(false);
-    }
-  }
-  
-  public void a(MQMsg paramMQMsg)
-  {
-    Object localObject;
-    if ((paramMQMsg != null) && (!TextUtils.isEmpty(paramMQMsg.jumpUrlToDetail)))
-    {
-      localObject = bhni.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), paramMQMsg.jumpUrlToDetail);
-      if (localObject != null)
-      {
-        ((bhmr)localObject).a();
-        return;
-      }
-      localObject = new Intent(getActivity(), QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", paramMQMsg.jumpUrlToDetail);
-      bmtd.c((Intent)localObject);
-      startActivity((Intent)localObject);
-      return;
-    }
-    QLog.i("QZoneMsgManager.QZoneMsgFragment", 1, "msg.jumpUrlToDetail is null");
-    if ((paramMQMsg != null) && (paramMQMsg.msgType == 9) && (!bhsr.a(paramMQMsg.uniKey)))
-    {
-      localObject = "mqqzone://arouse/photogrouprecommenddetail?usecache=true&checkgroup=false&unikey=" + paramMQMsg.uniKey;
-      a((String)localObject);
-      LpReportInfo_dc02880.report(2, 2, (String)localObject, "29", false, true);
-      LpReportInfo_pf00064.allReport(133, 14, String.valueOf(paramMQMsg.msgType));
-      QLog.i("QZoneMsgManager.QZoneMsgFragment", 1, "jumpToPhotoGroupRecommendDetail: uniKey=" + paramMQMsg.uniKey);
-      return;
-    }
-    QLog.e("QZoneMsgManager.QZoneMsgFragment", 1, "msg == null | msg.msgType != ENUM_PUSH_MSG_TYPE._ENUM_TRAVEL_ALBUM | StringUtil.isEmpty(msg.uniKey)");
-  }
-  
-  public void a(LocalPhotoGroupData paramLocalPhotoGroupData)
-  {
-    this.jdField_a_of_type_CooperationQzoneProviderLocalPhotoGroupData = paramLocalPhotoGroupData;
-    e();
-  }
-  
-  public void a(String paramString)
-  {
-    Intent localIntent = new Intent();
-    localIntent.setData(Uri.parse(paramString));
-    localIntent.setPackage("com.tencent.mobileqq");
-    getActivity().getApplicationContext().startActivity(localIntent);
+    return this.mFeedHolder;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -390,23 +374,61 @@ public class QZoneMsgFragment
     for (;;)
     {
       return false;
-      a();
+      setReaded();
       return true;
       if (QLog.isColorLevel()) {
         QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "EVENT_LOAD_MORE_MANUAL loadMore");
       }
-      a(true);
+      loadMore(true);
       continue;
-      this.jdField_a_of_type_Bmyc.notifyDataSetChanged();
+      this.adapter.notifyDataSetChanged();
     }
+  }
+  
+  public void jumpToDetail(MQMsg paramMQMsg)
+  {
+    Object localObject;
+    if ((paramMQMsg != null) && (!TextUtils.isEmpty(paramMQMsg.jumpUrlToDetail)))
+    {
+      localObject = bfwg.a(this.app, getActivity(), paramMQMsg.jumpUrlToDetail);
+      if (localObject != null)
+      {
+        ((bfvp)localObject).a();
+        return;
+      }
+      localObject = new Intent(getActivity(), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", paramMQMsg.jumpUrlToDetail);
+      QZoneHelper.addSource((Intent)localObject);
+      startActivity((Intent)localObject);
+      return;
+    }
+    QLog.i("QZoneMsgManager.QZoneMsgFragment", 1, "msg.jumpUrlToDetail is null");
+    if ((paramMQMsg != null) && (paramMQMsg.msgType == 9) && (!StringUtil.isEmpty(paramMQMsg.uniKey)))
+    {
+      localObject = "mqqzone://arouse/photogrouprecommenddetail?usecache=true&checkgroup=false&unikey=" + paramMQMsg.uniKey;
+      jumpToPhotoGroupRecommendDetail((String)localObject);
+      LpReportInfo_dc02880.report(2, 2, (String)localObject, "29", false, true);
+      LpReportInfo_pf00064.allReport(133, 14, String.valueOf(paramMQMsg.msgType));
+      QLog.i("QZoneMsgManager.QZoneMsgFragment", 1, "jumpToPhotoGroupRecommendDetail: uniKey=" + paramMQMsg.uniKey);
+      return;
+    }
+    QLog.e("QZoneMsgManager.QZoneMsgFragment", 1, "msg == null | msg.msgType != ENUM_PUSH_MSG_TYPE._ENUM_TRAVEL_ALBUM | StringUtil.isEmpty(msg.uniKey)");
+  }
+  
+  public void jumpToPhotoGroupRecommendDetail(String paramString)
+  {
+    Intent localIntent = new Intent();
+    localIntent.setData(Uri.parse(paramString));
+    localIntent.setPackage("com.tencent.mobileqq");
+    getActivity().getApplicationContext().startActivity(localIntent);
   }
   
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    ThreadManagerV2.excute(new QZoneMsgFragment.5(this, (bmyi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(293)), 32, null, true);
-    b();
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1001);
+    ThreadManagerV2.excute(new QZoneMsgFragment.5(this, (QZoneMsgManager)this.app.getManager(293)), 32, null, true);
+    refresh();
+    this.handler.sendEmptyMessage(1001);
     QZoneLoginReportHelper.reportLoginFromQZoneMsgBox();
     paramBundle = new LpReportInfo_dc02880(7, 1);
     LpReportManager.getInstance().reportToDC02880(paramBundle, false, true);
@@ -418,34 +440,34 @@ public class QZoneMsgFragment
     if (QLog.isColorLevel()) {
       QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "fragment onAttach  ");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((BaseActivity)paramActivity).app;
-    this.jdField_a_of_type_Bmyh = new bmyh(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_Bmyh);
+    this.app = ((BaseActivity)paramActivity).app;
+    this.observer = new QZoneMsgFragment.QZoneMsgUIObserver(this);
+    this.app.registObserver(this.observer);
     Object localObject = new IntentFilter();
     ((IntentFilter)localObject).addAction("com.qzone.sync_comment_like");
-    getActivity().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.c = bmww.d(paramActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (bmww.c()) {
-      if (QzonePluginProxyActivity.a() == null)
+    getActivity().registerReceiver(this.mSyncCommentLikeReceiver, (IntentFilter)localObject);
+    this.handler = new Handler(Looper.getMainLooper(), this);
+    this.mUseNewUI = QZoneApiProxy.needShowSubFeedList(paramActivity, this.app);
+    if (QZoneApiProxy.needLoadQZoneEnv()) {
+      if (QzonePluginProxyActivity.getQZonePluginClassLoaderInUI() == null)
       {
         QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new QZoneMsgFragment.1(this, paramActivity));
-        this.jdField_b_of_type_Boolean = false;
+        this.mShowFeeds = false;
       }
     }
     for (;;)
     {
-      if (this.jdField_b_of_type_Boolean)
+      if (this.mShowFeeds)
       {
-        localObject = bmww.a();
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != localObject) {
-          bmww.a(paramActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        localObject = QZoneApiProxy.getLastRuntime();
+        if (this.app != localObject) {
+          QZoneApiProxy.onAccountChange(paramActivity, this.app);
         }
       }
       return;
-      this.jdField_b_of_type_Boolean = this.c;
+      this.mShowFeeds = this.mUseNewUI;
       continue;
-      this.jdField_b_of_type_Boolean = false;
+      this.mShowFeeds = false;
     }
   }
   
@@ -456,13 +478,13 @@ public class QZoneMsgFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Boolean = ThemeUtil.isNowThemeIsNightForQzone();
-    if (this.jdField_a_of_type_Boolean) {
+    this.isNightMode = ThemeUtil.isNowThemeIsNightForQzone();
+    if (this.isNightMode) {
       paramViewGroup.setBackgroundColor(-16777216);
     }
     for (;;)
     {
-      paramLayoutInflater = paramLayoutInflater.inflate(2131562474, paramViewGroup, false);
+      paramLayoutInflater = paramLayoutInflater.inflate(2131562350, paramViewGroup, false);
       V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
       return paramLayoutInflater;
       paramViewGroup.setBackgroundColor(-1380874);
@@ -480,52 +502,63 @@ public class QZoneMsgFragment
     if (QLog.isColorLevel()) {
       QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "fragment onDetach  ");
     }
-    d();
-    if (this.jdField_a_of_type_Bmyh != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this.jdField_a_of_type_Bmyh);
+    recycleListItem();
+    if (this.observer != null) {
+      this.app.unRegistObserver(this.observer);
     }
-    getActivity().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    getActivity().unregisterReceiver(this.mSyncCommentLikeReceiver);
+  }
+  
+  public void onGetView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if ((paramInt >= this.adapter.getCount() - 1) && (this.adapter.getCount() != 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "onGetView loadMore");
+      }
+      loadMore(false);
+    }
   }
   
   public void onStart()
   {
     super.onStart();
-    if (this.jdField_a_of_type_Bmwv != null) {
-      this.jdField_a_of_type_Bmwv.a();
+    if (this.mFeedHolder != null) {
+      this.mFeedHolder.onStart();
     }
   }
   
   public void onStop()
   {
     super.onStop();
-    if (this.jdField_a_of_type_Bmwv != null) {
-      this.jdField_a_of_type_Bmwv.b();
+    if (this.mFeedHolder != null) {
+      this.mFeedHolder.onStop();
     }
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramView.findViewById(2131371471));
-    paramBundle = paramView.findViewById(2131375467);
-    this.jdField_a_of_type_ComTencentWidgetListView.setEmptyView(paramBundle);
+    this.listView = ((ListView)paramView.findViewById(2131371439));
+    paramBundle = paramView.findViewById(2131375235);
+    this.listView.setEmptyView(paramBundle);
     paramBundle = getActivity();
-    if ((this.jdField_b_of_type_Boolean) && (paramBundle != null))
+    if ((this.mShowFeeds) && (paramBundle != null))
     {
-      this.jdField_a_of_type_Bmwv = bmww.a(paramBundle);
-      if (this.jdField_a_of_type_Bmwv != null) {
-        this.jdField_a_of_type_Bmwv.a(this.jdField_a_of_type_AndroidOsHandler);
+      this.mFeedHolder = QZoneApiProxy.createMsgFeedViewHolder(paramBundle);
+      if (this.mFeedHolder != null) {
+        this.mFeedHolder.setHandler(this.handler);
       }
-      this.jdField_a_of_type_Bmyc = new bmyc(getActivity());
-      this.jdField_a_of_type_Bmyc.a(this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Bmyc.a(this.jdField_a_of_type_Bmwv, this.jdField_b_of_type_Boolean, this.c);
-      this.jdField_a_of_type_Bmyc.a(this);
-      this.jdField_a_of_type_Bmyc.a(this.jdField_a_of_type_Bmyo);
-      this.jdField_a_of_type_ComTencentWidgetListView.setOnScrollListener(this.jdField_a_of_type_Blih);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Bmyc);
-      this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout = ((FootNavigationLayout)paramView.findViewById(2131371465));
-      paramBundle = this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout;
-      if (!this.c) {
+      this.adapter = new QZoneMsgAdapter(getActivity());
+      this.adapter.setNightMode(this.isNightMode);
+      this.adapter.setFeedHolder(this.mFeedHolder, this.mShowFeeds, this.mUseNewUI);
+      this.adapter.setOnGetViewLinstener(this);
+      this.adapter.setMsgOnClickListener(this.msgOnClickListener);
+      this.listView.setOnScrollListener(this.onScrollListener);
+      this.listView.setAdapter(this.adapter);
+      this.mFootNavigationLayout = ((FootNavigationLayout)paramView.findViewById(2131371433));
+      paramBundle = this.mFootNavigationLayout;
+      if (!this.mUseNewUI) {
         break label249;
       }
     }
@@ -533,19 +566,53 @@ public class QZoneMsgFragment
     for (int i = 0;; i = 8)
     {
       paramBundle.setArrowVisible(i);
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.setNightMode(true);
+      if (this.isNightMode) {
+        this.mFootNavigationLayout.setNightMode(true);
       }
-      a(null);
-      a(paramView);
+      setFootNavigationInfo(null);
+      initEmptyView(paramView);
       return;
-      if (this.jdField_a_of_type_Bmwv == null) {
+      if (this.mFeedHolder == null) {
         break;
       }
-      this.jdField_a_of_type_Bmwv.c();
-      this.jdField_a_of_type_Bmwv = null;
+      this.mFeedHolder.onDestroy();
+      this.mFeedHolder = null;
       break;
     }
+  }
+  
+  protected final void setFooterState(int paramInt)
+  {
+    setFooterState(paramInt, true);
+  }
+  
+  protected final void setFooterState(int paramInt, boolean paramBoolean)
+  {
+    if ((this.viewFooterContainer == null) || (this.listView == null)) {}
+    do
+    {
+      do
+      {
+        return;
+        QZLog.i("QZoneMsgManager.QZoneMsgFragment", "QZoneMsgManager.QZoneMsgFragment setFooterState(), state: " + paramInt);
+        this.viewListFooter.setState(paramInt);
+        if (paramBoolean) {
+          this.footerPreState = paramInt;
+        }
+        if (paramInt != 3) {
+          break;
+        }
+      } while (this.viewFooterContainer.getVisibility() == 8);
+      this.viewFooterContainer.setVisibility(8);
+      return;
+    } while (this.viewFooterContainer.getVisibility() == 0);
+    this.viewFooterContainer.setVisibility(0);
+  }
+  
+  public void setLocalPhotoGroupData(LocalPhotoGroupData paramLocalPhotoGroupData)
+  {
+    this.mLocalPhotoGroupData = paramLocalPhotoGroupData;
+    updateMQMsg();
   }
 }
 

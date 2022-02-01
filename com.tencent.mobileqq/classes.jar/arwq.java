@@ -1,26 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.GameRich;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public final class arwq
-  implements Parcelable.Creator
+class arwq
+  implements aszj
 {
-  public IPSiteModel.GameRich a(Parcel paramParcel)
-  {
-    IPSiteModel.GameRich localGameRich = new IPSiteModel.GameRich();
-    localGameRich.anchorFaceUrl = paramParcel.readString();
-    localGameRich.anchorId = paramParcel.readString();
-    localGameRich.anchorName = paramParcel.readString();
-    localGameRich.coverUrl = paramParcel.readString();
-    localGameRich.online = paramParcel.readString();
-    localGameRich.title = paramParcel.readString();
-    localGameRich.richJumpUrl = paramParcel.readString();
-    return localGameRich;
-  }
+  arwq(arwp paramarwp, FileManagerEntity paramFileManagerEntity) {}
   
-  public IPSiteModel.GameRich[] a(int paramInt)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    return new IPSiteModel.GameRich[paramInt];
+    QfileBaseCloudFileTabView.e(this.jdField_a_of_type_Arwp.a).getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
 }
 

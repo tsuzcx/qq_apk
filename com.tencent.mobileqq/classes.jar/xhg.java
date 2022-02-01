@@ -1,15 +1,28 @@
-class xhg
-  extends xfx
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
+
+public class xhg
+  extends SimpleObserver<xhh>
 {
-  xhg(xgp paramxgp, String paramString1, String paramString2, boolean paramBoolean, xhy paramxhy)
+  public xhg(xhc paramxhc) {}
+  
+  public void a(xhh paramxhh)
   {
-    super(paramString1, paramString2, paramBoolean);
+    super.onNext(paramxhh);
+    xhc.a(this.a, paramxhh, false, new ErrorMessage());
   }
   
-  public boolean b()
+  public void onCancel()
   {
-    this.jdField_a_of_type_Xhy.d = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    super.onCancel();
+    xvv.d("Q.qqstory.detail.DetailFeedAllInfoPuller", "refresh data cancel");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    xhc.a(this.a, null, false, (ErrorMessage)paramError);
   }
 }
 

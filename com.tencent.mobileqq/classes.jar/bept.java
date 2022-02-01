@@ -1,29 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.together.writetogether.view.SavingAnimView;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class bept
-  implements Animator.AnimatorListener
+class bept
+  implements ancx
 {
-  public bept(SavingAnimView paramSavingAnimView) {}
+  bept(bepr parambepr, String paramString1, String paramString2, bepu parambepu) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    SavingAnimView.a(this.a).start();
-    SavingAnimView.b(this.a, 1);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    SavingAnimView.c(this.a, SavingAnimView.a(this.a));
-    SavingAnimView.d(this.a, SavingAnimView.d(this.a));
-    if (SavingAnimView.a(this.a) != null) {
-      SavingAnimView.a(this.a).c();
+    List localList = null;
+    if (paramTroopMemberInfo != null) {
+      localList = this.jdField_a_of_type_Bepr.a(paramTroopMemberInfo.honorList);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHonor.manager", 2, String.format("getTroopHonorList, troopUin: %s, memberUin: %s, honorList: %s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b, localList }));
+    }
+    if (this.jdField_a_of_type_Bepu != null) {
+      this.jdField_a_of_type_Bepu.a(localList);
     }
   }
 }

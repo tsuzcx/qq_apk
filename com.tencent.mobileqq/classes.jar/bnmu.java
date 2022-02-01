@@ -1,13 +1,17 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.animation.ValueAnimator;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
 
-class bnmu
-  implements bjig
+public class bnmu
+  extends bnio
 {
-  bnmu(bnmr parambnmr) {}
+  public bnmu(ElasticImageView paramElasticImageView) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public void a(ValueAnimator paramValueAnimator)
   {
-    bnmr.a(this.a, paramBaseResp);
+    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    ElasticImageView.a(this.a, this.a.d);
+    xvv.b("ElasticImageView", "updateAnimator:" + this.a.d);
+    ElasticImageView.a(this.a);
   }
 }
 

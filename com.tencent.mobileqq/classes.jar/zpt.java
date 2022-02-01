@@ -1,28 +1,17 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.biz.troop.VideoCombineHelper.4;
+import com.tencent.qphone.base.util.QLog;
 
-final class zpt
-  implements DownloadParams.DecodeHandler
+public class zpt
+  extends zqp
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public zpt(VideoCombineHelper.4 param4)
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return zps.a(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+    super(param4.this$0);
+  }
+  
+  public void b(zqo paramzqo)
+  {
+    QLog.d(".troop.VideoCombineHelper", 2, "");
   }
 }
 

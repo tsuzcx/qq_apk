@@ -1,14 +1,27 @@
-import android.os.Bundle;
-import android.os.IInterface;
+import android.opengl.GLSurfaceView;
+import android.view.View;
 
 public abstract interface bnyf
-  extends IInterface
 {
-  public abstract void a(bnyi parambnyi);
+  public abstract float a();
   
-  public abstract void a(String paramString, Bundle paramBundle);
+  public abstract View a();
   
-  public abstract void b(bnyi parambnyi);
+  public abstract void a(bnxt parambnxt, int paramInt, GLSurfaceView paramGLSurfaceView);
+  
+  public abstract void a(boolean paramBoolean, bnyg parambnyg);
+  
+  public abstract boolean a();
+  
+  public abstract void d();
+  
+  public abstract void n();
+  
+  public abstract void setFunctionFlag(int paramInt);
+  
+  public abstract void setMaxDuration(float paramFloat);
+  
+  public abstract void setTouchEnable(boolean paramBoolean);
 }
 
 

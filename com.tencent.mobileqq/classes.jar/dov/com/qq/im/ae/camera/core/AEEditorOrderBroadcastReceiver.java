@@ -4,21 +4,21 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import boji;
-import bpam;
+import bmbx;
 
 public class AEEditorOrderBroadcastReceiver
   extends BroadcastReceiver
 {
-  private boji jdField_a_of_type_Boji;
-  private boolean jdField_a_of_type_Boolean;
+  private static final String TAG = "AEEditorOrderBroadcastReceiver";
+  private AEEditorOrderBroadcastReceiver.AEEditorOrderListener mAEEditorOrderListener;
+  private boolean mReceiverActive;
   
-  public AEEditorOrderBroadcastReceiver(boji paramboji)
+  public AEEditorOrderBroadcastReceiver(AEEditorOrderBroadcastReceiver.AEEditorOrderListener paramAEEditorOrderListener)
   {
-    this.jdField_a_of_type_Boji = paramboji;
+    this.mAEEditorOrderListener = paramAEEditorOrderListener;
   }
   
-  private IntentFilter a()
+  private IntentFilter getBroadcastIntentFilter()
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("AEEDITOR_ORDER_CANCEL");
@@ -27,37 +27,37 @@ public class AEEditorOrderBroadcastReceiver
     return localIntentFilter;
   }
   
-  public void a(Context paramContext)
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (paramContext != null))
-    {
-      paramContext.registerReceiver(this, a());
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public void b(Context paramContext)
-  {
-    if ((this.jdField_a_of_type_Boolean) && (paramContext != null))
-    {
-      paramContext.unregisterReceiver(this);
-      this.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
     paramIntent = paramIntent.getStringExtra("generate_mission");
-    bpam.b("AEEditorOrderBroadcastReceiver", "[onReceive] action :" + paramContext);
-    bpam.b("AEEditorOrderBroadcastReceiver", "[onReceive] mission :" + paramIntent);
+    bmbx.b("AEEditorOrderBroadcastReceiver", "[onReceive] action :" + paramContext);
+    bmbx.b("AEEditorOrderBroadcastReceiver", "[onReceive] mission :" + paramIntent);
     if ("AEEDITOR_ORDER_CANCEL".equals(paramContext)) {
-      this.jdField_a_of_type_Boji.a(paramIntent);
+      this.mAEEditorOrderListener.onAEEditorCancel(paramIntent);
     }
     while (!"AEEDITOR_ORDER_REMOVE_MISSION".equals(paramContext)) {
       return;
     }
-    this.jdField_a_of_type_Boji.b(paramIntent);
+    this.mAEEditorOrderListener.onAEEditorRemove(paramIntent);
+  }
+  
+  public void registerSelf(Context paramContext)
+  {
+    if ((!this.mReceiverActive) && (paramContext != null))
+    {
+      paramContext.registerReceiver(this, getBroadcastIntentFilter());
+      this.mReceiverActive = true;
+    }
+  }
+  
+  public void unRegisterSelf(Context paramContext)
+  {
+    if ((this.mReceiverActive) && (paramContext != null))
+    {
+      paramContext.unregisterReceiver(this);
+      this.mReceiverActive = false;
+    }
   }
 }
 

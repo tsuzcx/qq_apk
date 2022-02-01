@@ -1,467 +1,65 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.Iterator;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.util.Pair;
 
 public class paa
 {
-  int jdField_a_of_type_Int = -1;
-  String jdField_a_of_type_JavaLangString = null;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = -1;
-  String jdField_b_of_type_JavaLangString = null;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int = -1;
-  boolean jdField_c_of_type_Boolean = false;
-  boolean d = false;
-  boolean e = false;
-  boolean f = false;
-  boolean g = false;
-  boolean h = false;
-  boolean i = false;
+  public static int a;
+  public static final String a;
+  public static boolean a;
+  public static final char[] a;
+  public static final Pair<Integer, Integer>[] a;
+  public static int b;
+  public static final String b;
+  public static final Pair<Integer, Integer>[] b;
+  public static int c;
+  public static String c;
+  public static String d;
+  public static String e;
+  public static String f;
+  public static String g;
+  public static String h;
+  public static String i;
+  public static String j;
+  public static String k;
+  public static String l;
+  public static String m;
+  public static String n;
+  public static String o;
+  public static String p;
+  public static String q;
+  public static String r;
+  public static String s;
+  public static String t;
+  public static String u = "https://post.mp.qq.com/mkandian/follow?_wv=7";
+  public static String v = "https://post.mp.qq.com/mkandian/fan?_wv=7";
   
-  public paa() {}
-  
-  public paa(JSONObject paramJSONObject)
+  static
   {
-    if (paramJSONObject != null) {
-      this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    }
-  }
-  
-  public String a()
-  {
-    int j = 1;
-    try
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("folder_status", ozs.d);
-      }
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("time", System.currentTimeMillis());
-      }
-      if (this.jdField_a_of_type_Int != -1) {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("channel_id", this.jdField_a_of_type_Int);
-      }
-      if (this.jdField_c_of_type_Boolean) {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("kandian_mode", ozs.e());
-      }
-      if (this.d) {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("kandian_mode_new", odr.a());
-      }
-      if (this.e) {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("tab_source", ozs.d());
-      }
-      if (this.f) {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("session_id", ozs.n());
-      }
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("skin_id", this.jdField_a_of_type_JavaLangString);
-      }
-      if (this.jdField_b_of_type_Int != -1) {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("skin_voice", this.jdField_b_of_type_Int);
-      }
-      if (this.jdField_c_of_type_Int != -1) {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("skin_type", this.jdField_c_of_type_Int);
-      }
-      Object localObject;
-      if (this.g)
-      {
-        localObject = this.jdField_a_of_type_OrgJsonJSONObject;
-        if (bnrf.F(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
-          break label286;
-        }
-      }
-      for (;;)
-      {
-        ((JSONObject)localObject).put("reddot_style", j);
-        if (this.h) {
-          odr.a(this.jdField_a_of_type_OrgJsonJSONObject);
-        }
-        if (this.i) {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("os", "1");
-        }
-        localObject = this.jdField_a_of_type_OrgJsonJSONObject.toString();
-        return localObject;
-        label286:
-        j = 0;
-      }
-      return "";
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-  }
-  
-  public JSONObject a()
-  {
-    return this.jdField_a_of_type_OrgJsonJSONObject;
-  }
-  
-  public paa a()
-  {
-    this.h = true;
-    return this;
-  }
-  
-  public paa a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public paa a(long paramLong)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("algorithm_id", paramLong);
-    return this;
-  }
-  
-  public paa a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public paa a(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put(paramString, paramInt);
-    return this;
-  }
-  
-  public paa a(String paramString, long paramLong)
-  {
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put(paramString, paramLong);
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      agej.a("ReadInJoyUtils", "", new IllegalArgumentException(paramString + " : " + paramLong));
-    }
-    return this;
-  }
-  
-  public paa a(String paramString, Object paramObject)
-  {
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put(paramString, paramObject);
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      agej.a("ReadInJoyUtils", "", new IllegalArgumentException(paramString + " : " + paramObject));
-    }
-    return this;
-  }
-  
-  public paa a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put(paramString1, paramString2);
-    return this;
-  }
-  
-  public paa a(@NotNull JSONObject paramJSONObject)
-  {
-    Iterator localIterator = paramJSONObject.keys();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      Object localObject = paramJSONObject.opt(str);
-      try
-      {
-        this.jdField_a_of_type_OrgJsonJSONObject.put(str, localObject);
-      }
-      catch (JSONException localJSONException)
-      {
-        agej.a("ReadInJoyUtils", "", new IllegalArgumentException(str + " : " + localObject));
-      }
-    }
-    return this;
-  }
-  
-  public paa a(boolean paramBoolean)
-  {
-    JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-    if (paramBoolean) {}
-    for (int j = 2;; j = 1)
-    {
-      localJSONObject.put("reddot", j);
-      return this;
-    }
-  }
-  
-  public paa b()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    return this;
-  }
-  
-  public paa b(int paramInt)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("location", paramInt);
-    return this;
-  }
-  
-  public paa b(long paramLong)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("strategy_id", paramLong);
-    return this;
-  }
-  
-  public paa b(String paramString)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("rowkey", paramString);
-    return this;
-  }
-  
-  public paa b(String paramString, int paramInt)
-  {
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put(paramString, paramInt);
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      agej.a("ReadInJoyUtils", "", new IllegalArgumentException(paramString + " : " + paramInt));
-    }
-    return this;
-  }
-  
-  public paa b(String paramString1, String paramString2)
-  {
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put(paramString1, paramString2);
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      agej.a("ReadInJoyUtils", "", new IllegalArgumentException(paramString1 + " : " + paramString2));
-    }
-    return this;
-  }
-  
-  public paa b(boolean paramBoolean)
-  {
-    JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-    if (paramBoolean) {}
-    for (int j = 0;; j = 1)
-    {
-      localJSONObject.put("button_state", j);
-      return this;
-    }
-  }
-  
-  public paa c()
-  {
-    this.jdField_b_of_type_Boolean = true;
-    return this;
-  }
-  
-  public paa c(int paramInt)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("type", paramInt);
-    return this;
-  }
-  
-  public paa c(long paramLong)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("article_id", paramLong);
-    return this;
-  }
-  
-  public paa c(String paramString)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("feeds_source", paramString);
-    return this;
-  }
-  
-  public paa c(boolean paramBoolean)
-  {
-    JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-    if (paramBoolean) {}
-    for (int j = 2;; j = 0)
-    {
-      localJSONObject.put("reddot_status", j);
-      return this;
-    }
-  }
-  
-  public paa d()
-  {
-    this.g = true;
-    return this;
-  }
-  
-  public paa d(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public paa d(long paramLong)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("topicid", paramLong);
-    return this;
-  }
-  
-  public paa d(String paramString)
-  {
-    JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-    if (paramString != null) {}
-    for (;;)
-    {
-      localJSONObject.put("channel_version", paramString);
-      return this;
-      paramString = "";
-    }
-  }
-  
-  public paa e()
-  {
-    this.jdField_c_of_type_Boolean = true;
-    return this;
-  }
-  
-  public paa e(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public paa e(String paramString)
-  {
-    JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-    if (paramString != null) {}
-    for (;;)
-    {
-      localJSONObject.put("channel_city", paramString);
-      return this;
-      paramString = "";
-    }
-  }
-  
-  public paa f()
-  {
-    this.d = true;
-    return this;
-  }
-  
-  public paa f(int paramInt)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("number", paramInt);
-    return this;
-  }
-  
-  public paa g()
-  {
-    this.e = true;
-    return this;
-  }
-  
-  public paa g(int paramInt)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("words", paramInt);
-    return this;
-  }
-  
-  public paa h()
-  {
-    this.f = true;
-    return this;
-  }
-  
-  public paa h(int paramInt)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("likes", paramInt);
-    return this;
-  }
-  
-  public paa i()
-  {
-    this.i = true;
-    return this;
-  }
-  
-  public paa i(int paramInt)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("comment", paramInt);
-    return this;
-  }
-  
-  public paa j()
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("imei", ozs.h());
-    return this;
-  }
-  
-  public paa j(int paramInt)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("biu", paramInt);
-    return this;
-  }
-  
-  public paa k()
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("imsi", ozs.i());
-    return this;
-  }
-  
-  public paa k(int paramInt)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("feeds_type", paramInt);
-    return this;
-  }
-  
-  public paa l()
-  {
-    JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-    if (bhnv.h(null)) {}
-    for (int j = 2;; j = 1)
-    {
-      localJSONObject.put("network_type", j);
-      return this;
-    }
-  }
-  
-  public paa l(int paramInt)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("reddot_num", paramInt);
-    return this;
-  }
-  
-  public paa m()
-  {
-    return b("version", odr.jdField_a_of_type_JavaLangString);
-  }
-  
-  public paa m(int paramInt)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("content_type", paramInt);
-    return this;
-  }
-  
-  public paa n(int paramInt)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("reddot_status", paramInt + 1);
-    return this;
-  }
-  
-  public paa o(int paramInt)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject.put("share_option", paramInt);
-    return this;
-  }
-  
-  public String toString()
-  {
-    return a();
+    jdField_a_of_type_ArrayOfChar = new char[] { '…' };
+    jdField_a_of_type_JavaLangString = new String(jdField_a_of_type_ArrayOfChar);
+    jdField_b_of_type_JavaLangString = amtj.a(2131712252);
+    jdField_c_of_type_JavaLangString = "https://kandian.qq.com/mqq/html/homepage.html?_wv=16778243&_bid=2378&uin=";
+    d = "https://kandian.qq.com/mqq/html/messagebox3.html?_wv=3&_bid=2378&x5PreFetch=1&adtag=1&privateLetters=";
+    e = "https://kandian.qq.com/mqq/vue/comment?_wv=3&_bid=2378&x5PreFetch=1&feedstype=&uin=&feeds_id=";
+    f = "https://kandian.qq.com/mqq/html/recommend_friends.html?_wv=3&_bid=2378&x5PreFetch=1&feeds_id=";
+    g = "https://kandian.qq.com/mqq/vue/main?_wv=10145&_bid=3302&adfrom=qqshare&x5PreFetch=1&accountId=";
+    h = "https://kandian.qq.com/mqq/html/messagebox3.html?_wv=3&_bid=2378&x5PreFetch=1&adtag=2&privateLetters=";
+    i = "https://kandian.qq.com/mqq/html/allfrdbiu.html?_wv=3&_bid=2378&x5PreFetch=1";
+    j = "https://kandian.qq.com/mqq/vue/wendafeeds?_wv=67&_bid=2378&source=1";
+    k = "https://kandian.qq.com/mqq/vue/main?_wv=10145&_bid=3302&adfrom=qqshare&x5PreFetch=1&accountId=";
+    l = amtj.a(2131711874);
+    m = "https://kandian.qq.com/mqq/html/feedback.html?_wv=3&_bid=2378&x5PreFetch=1";
+    n = "https://post.mp.qq.com/mkandian/history";
+    o = "https://post.mp.qq.com/mkandian/topic?_wv=3";
+    p = "https://kandian.qq.com/mqq/html/collectBox.html?_wv=3&_bid=2378&x5PreFetch=1";
+    q = "https://post.mp.qq.com/mkandian/notify?_wv=3";
+    r = "https://kandian.qq.com/mqq/vue/collectBox?_wv=3&amp;_bid=2378&amp;x5PreFetch=1";
+    s = "https://kandian.qq.com/mqq/vue/myPraised?_wv=3&_bid=2378&x5PreFetch=1";
+    t = "https://kandian.qq.com/mqq/vue/myComment?_wv=3&_bid=2378&x5PreFetch=1";
+    jdField_a_of_type_Int = 819200;
+    jdField_b_of_type_Int = 3000;
+    jdField_c_of_type_Int = 500;
+    jdField_a_of_type_ArrayOfAndroidUtilPair = new Pair[] { new Pair(Integer.valueOf(159), Integer.valueOf(95)), new Pair(Integer.valueOf(179), Integer.valueOf(95)), new Pair(Integer.valueOf(158), Integer.valueOf(143)), new Pair(Integer.valueOf(178), Integer.valueOf(143)), new Pair(Integer.valueOf(238), Integer.valueOf(143)), new Pair(Integer.valueOf(358), Integer.valueOf(143)), new Pair(Integer.valueOf(119), Integer.valueOf(95)), new Pair(Integer.valueOf(239), Integer.valueOf(95)), new Pair(Integer.valueOf(79), Integer.valueOf(95)), new Pair(Integer.valueOf(59), Integer.valueOf(95)), new Pair(Integer.valueOf(89), Integer.valueOf(95)), new Pair(Integer.valueOf(280), Integer.valueOf(280)) };
+    jdField_b_of_type_ArrayOfAndroidUtilPair = new Pair[] { new Pair(Integer.valueOf(160), Integer.valueOf(90)), new Pair(Integer.valueOf(280), Integer.valueOf(280)), new Pair(Integer.valueOf(30), Integer.valueOf(40)), new Pair(Integer.valueOf(90), Integer.valueOf(160)), new Pair(Integer.valueOf(440), Integer.valueOf(246)) };
   }
 }
 

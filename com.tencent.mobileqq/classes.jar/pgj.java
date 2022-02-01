@@ -1,253 +1,64 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.app.Activity;
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.google.gson.Gson;
-import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager.1;
-import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager.2;
-import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager.3;
-import com.tencent.biz.pubaccount.readinjoy.struct.WeishiRedDotInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.utils.preference.PreferenceManager;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import cooperation.plugin.PluginBaseActivity;
 import java.util.List;
-import java.util.Map;
-import mqq.manager.Manager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class pgj
-  implements Manager
+class pgj
+  implements pen
 {
-  private QQAppInterface a;
+  pgj(pgg parampgg) {}
   
-  public pgj(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  private MessageRecord a(MessageRecord paramMessageRecord, String paramString, long paramLong)
-  {
-    if (paramMessageRecord == null) {
-      return null;
-    }
-    MessageRecord localMessageRecord = bcry.a(-1000);
-    MessageRecord.copyMessageRecordBaseField(localMessageRecord, paramMessageRecord);
-    localMessageRecord.msgtype = -1000;
-    a(localMessageRecord, paramString, paramLong);
-    return localMessageRecord;
-  }
-  
-  private void a(MessageRecord paramMessageRecord, String paramString, long paramLong)
-  {
-    paramMessageRecord.issend = 1;
-    paramMessageRecord.isread = true;
-    paramMessageRecord.frienduin = antf.aP;
-    paramMessageRecord.senderuin = antf.aP;
-    paramMessageRecord.istroop = 1008;
-    paramMessageRecord.msg = paramString;
-    paramMessageRecord.time = paramLong;
-    paramMessageRecord.createMessageUniseq();
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {
-      return false;
-    }
-    return TextUtils.equals(paramMessageRecord.frienduin, antf.aP);
-  }
-  
-  public static void b(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    if ((paramstSimpleMetaFeed == null) || (paramstSimpleMetaFeed.map_pass_back == null) || (paramstSimpleMetaFeed.map_pass_back.size() != 0)) {}
-    Object localObject;
-    do
+    pgg.a(this.a).a().a().a(pgg.a(this.a).a().a());
+    pgg.a(this.a).a().a().a(pgg.a(this.a).a().a());
+    skb localskb = (skb)paramView.getTag();
+    if (localskb == null) {}
+    for (;;)
     {
-      do
+      return;
+      BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)pgg.a(this.a).a().get(localskb.a);
+      try
       {
-        do
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("time", System.currentTimeMillis() / 1000L);
+        localJSONObject.put("channel_id", pgg.a(this.a).a().b());
+        if ((pgg.a(this.a).a().a() instanceof BaseActivity))
         {
+          localJSONObject.put("folder_status", pay.d);
+          localJSONObject.put("kandian_mode", pay.e());
+          localJSONObject.put("feeds_type", "" + pay.a(localBaseArticleInfo));
+          localJSONObject.put("rowkey", uhv.a(localBaseArticleInfo));
+          odq.a(null, "", "0X8007058", "0X8007058", 0, 0, "", "", "", localJSONObject.toString(), false);
+        }
+        while (localBaseArticleInfo != null)
+        {
+          pgg.a(this.a).a().a().a(paramView, localskb, localBaseArticleInfo, pgg.a(this.a));
+          if ((pgg.a(this.a).a().a() != null) && (pgg.a(this.a).a().a().b()))
+          {
+            pgg.a(this.a).a().a().a();
+            pgg.a(this.a).a().f(true);
+          }
+          psf.a(paramView);
           return;
-          localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        } while (localObject == null);
-        localObject = (pgj)((QQAppInterface)localObject).getManager(274);
-      } while (localObject == null);
-      localObject = bhmi.a(((pgj)localObject).b());
-    } while (localObject == null);
-    uqf.a("weishi-report", "load map passback length:" + localObject.length);
-    uqf.b("weishi-report", "load map passback:" + uqt.a((byte[])localObject));
-    paramstSimpleMetaFeed.map_pass_back.put(Integer.valueOf(1), localObject);
-    paramstSimpleMetaFeed.map_ext.put("recmd_feed_key", new Gson().toJson(paramstSimpleMetaFeed.map_pass_back));
-  }
-  
-  public WeishiRedDotInfo a()
-  {
-    if ((this.a == null) || (this.a.a() == null) || (this.a.a() == null)) {
-      return null;
-    }
-    if (this.a.a().a().a(antf.aP, 1008) > 0)
-    {
-      MessageRecord localMessageRecord = this.a.a().b(antf.aP, 1008);
-      if ((localMessageRecord instanceof MessageForStructing)) {
-        return new WeishiRedDotInfo((MessageForStructing)localMessageRecord);
+          if ((pgg.a(this.a).a().a() instanceof PluginBaseActivity))
+          {
+            localJSONObject.put("folder_status", 1);
+            bcef.b(null, "CliOper", "", "", "0X800705F", "0X800705F", 0, 0, "", "", "", localJSONObject.toString());
+          }
+        }
       }
-    }
-    return null;
-  }
-  
-  public MessageForStructing a()
-  {
-    if ((this.a == null) || (this.a.a() == null) || (this.a.a().a() == null)) {
-      return null;
-    }
-    MessageRecord localMessageRecord = this.a.a().b(antf.aP, 1008);
-    if ((localMessageRecord instanceof MessageForStructing)) {
-      return (MessageForStructing)localMessageRecord;
-    }
-    return null;
-  }
-  
-  public MessageRecord a(String paramString, long paramLong)
-  {
-    if (this.a == null) {
-      return null;
-    }
-    MessageRecord localMessageRecord = bcry.a(-1000);
-    localMessageRecord.selfuin = this.a.getCurrentAccountUin();
-    a(localMessageRecord, paramString, paramLong);
-    return localMessageRecord;
-  }
-  
-  public String a()
-  {
-    Object localObject = a();
-    if (localObject != null)
-    {
-      localObject = ((MessageForStructing)localObject).structingMsg;
-      if ((localObject != null) && (!TextUtils.isEmpty(((AbsStructMsg)localObject).mMsgActionData))) {
-        return ((AbsStructMsg)localObject).mMsgActionData;
-      }
-    }
-    return "";
-  }
-  
-  public List<Long> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((this.a == null) || (this.a.a() == null) || (this.a.a().a() == null)) {
-      return null;
-    }
-    Object localObject = this.a.a().b(antf.aP, 1008);
-    if ((localObject instanceof MessageForStructing))
-    {
-      localObject = (MessageForStructing)localObject;
-      if ((((MessageForStructing)localObject).structingMsg != null) && (!TextUtils.isEmpty(((MessageForStructing)localObject).structingMsg.mArticleIds)))
+      catch (JSONException localJSONException)
       {
-        localObject = ((MessageForStructing)localObject).structingMsg.mArticleIds.split("\\|");
-        int i = 0;
-        while (i < localObject.length)
+        for (;;)
         {
-          localArrayList.add(Long.valueOf(localObject[i]));
-          i += 1;
+          localJSONException.printStackTrace();
         }
       }
     }
-    return localArrayList;
-  }
-  
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    String str1 = paramstSimpleMetaFeed.id;
-    String str2 = paramstSimpleMetaFeed.feed_desc;
-    paramstSimpleMetaFeed = paramstSimpleMetaFeed.map_pass_back;
-    QLog.d("WeishiManager", 2, "id:" + str1 + ",feed_desc:" + str2);
-    QQMessageFacade localQQMessageFacade = this.a.a();
-    long l = NetConnInfoCenter.getServerTime();
-    if (localQQMessageFacade != null) {
-      ThreadManager.post(new WeishiManager.3(this, str2, l, localQQMessageFacade, str1, paramstSimpleMetaFeed), 10, null, false);
-    }
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    if (this.a == null) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        localObject = this.a.a();
-      } while (localObject == null);
-      localObject = ((QQMessageFacade)localObject).a();
-    } while ((localObject == null) || (((adab)localObject).a(antf.aP, 1008) <= 0));
-    ThreadManager.post(new WeishiManager.1(this, paramActivity), 8, null, false);
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (this.a == null)) {}
-    QQMessageFacade localQQMessageFacade;
-    do
-    {
-      return;
-      localQQMessageFacade = this.a.a();
-    } while (localQQMessageFacade == null);
-    ThreadManager.post(new WeishiManager.2(this, localQQMessageFacade, paramString, paramLong), 10, null, false);
-  }
-  
-  public String b()
-  {
-    return BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath() + "/file/weishi/ws_recommend_mappassback";
-  }
-  
-  public String c()
-  {
-    try
-    {
-      long l = Long.parseLong(this.a.getCurrentAccountUin());
-      String str = PreferenceManager.getDefaultPreference(this.a.getApplication(), l).getString("key_weishi_newest_feed_id", "");
-      return str;
-    }
-    catch (Exception localException)
-    {
-      localException = localException;
-      QLog.d("WeishiManager", 2, localException.getMessage(), localException);
-      return "";
-    }
-    finally {}
-    return "";
-  }
-  
-  public String d()
-  {
-    try
-    {
-      long l = Long.parseLong(this.a.getCurrentAccountUin());
-      String str = PreferenceManager.getDefaultPreference(this.a.getApplication(), l).getString("key_weishi_newest_feed_desc", "");
-      return str;
-    }
-    catch (Exception localException)
-    {
-      localException = localException;
-      QLog.d("WeishiManager", 2, localException.getMessage(), localException);
-      return "";
-    }
-    finally {}
-    return "";
-  }
-  
-  public void onDestroy()
-  {
-    this.a = null;
   }
 }
 

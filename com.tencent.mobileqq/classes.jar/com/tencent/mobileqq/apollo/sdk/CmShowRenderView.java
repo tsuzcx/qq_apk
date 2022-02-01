@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import amsx;
-import anat;
+import alnr;
+import alvn;
+import ambn;
+import ambo;
+import ambp;
+import ambq;
+import ambr;
+import ambs;
+import ambt;
+import ambu;
+import amcn;
+import amkk;
+import amkm;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import angt;
-import angu;
-import angv;
-import angw;
-import angx;
-import angy;
-import angz;
-import anha;
-import anht;
-import anpq;
-import anps;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.mobileqq.apollo.ApolloTextureView;
@@ -40,7 +40,7 @@ public class CmShowRenderView
   private static int jdField_a_of_type_Int;
   private static final HashMap<String, WeakReference<CmShowRenderView>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private static boolean jdField_a_of_type_Boolean;
-  private anht jdField_a_of_type_Anht;
+  private amcn jdField_a_of_type_Amcn;
   private String jdField_a_of_type_JavaLangString;
   private String b;
   
@@ -62,53 +62,53 @@ public class CmShowRenderView
     jdField_a_of_type_JavaUtilHashMap.put(toString(), new WeakReference(this));
   }
   
-  public static void a(int paramInt, angz paramangz)
+  public static void a(int paramInt, ambt paramambt)
   {
     QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "changeApolloStatus mode:", Integer.valueOf(paramInt) });
     Bundle localBundle = new Bundle();
     localBundle.putInt("mode", paramInt);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_change_mode", localBundle, new angx(paramangz));
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_change_mode", localBundle, new ambr(paramambt));
   }
   
-  public static void a(anps paramanps, int paramInt)
+  public static void a(amkm paramamkm, int paramInt)
   {
-    if (paramanps == null)
+    if (paramamkm == null)
     {
       QLog.e("CmShow_CmShowRenderView", 1, "initSdk cmSoLoadCompleteCallback == null");
       return;
     }
     GLTextureView.checkGLVersion();
     jdField_a_of_type_Int = paramInt;
-    anat.a();
+    alvn.a();
     Bundle localBundle = new Bundle();
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_get_base_data", localBundle, new angu(paramanps));
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_get_base_data", localBundle, new ambo(paramamkm));
   }
   
   public static void a(String paramString)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("url", paramString);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_open_store", localBundle, new angw());
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_open_store", localBundle, new ambq());
   }
   
-  public static void a(String paramString1, String paramString2, anha paramanha, int paramInt)
+  public static void a(String paramString1, String paramString2, ambu paramambu, int paramInt)
   {
-    if (paramanha == null)
+    if (paramambu == null)
     {
       QLog.e("CmShow_CmShowRenderView", 1, "initSdk cmSoLoadCompleteCallback == null");
       return;
     }
-    anat.a();
+    alvn.a();
     Bundle localBundle = new Bundle();
     localBundle.putString("selfUin", paramString1);
     localBundle.putString("friendUin", paramString2);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_init_cmshow_data", localBundle, new angv(paramString1, paramString2, paramanha));
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_init_cmshow_data", localBundle, new ambp(paramString1, paramString2, paramambu));
   }
   
   public static void a(ArrayList<String> paramArrayList, int[] paramArrayOfInt)
   {
     QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "preLoadRes uins:", paramArrayList });
-    anht.a(paramArrayList, paramArrayOfInt);
+    amcn.a(paramArrayList, paramArrayOfInt);
   }
   
   public static void a(List<String> paramList)
@@ -122,7 +122,7 @@ public class CmShowRenderView
   
   public static boolean a(Context paramContext)
   {
-    return (amsx.c(paramContext)) && (anpq.a()) && (jdField_a_of_type_Boolean);
+    return (alnr.c(paramContext)) && (amkk.a()) && (jdField_a_of_type_Boolean);
   }
   
   private void b(List<String> paramList)
@@ -132,7 +132,7 @@ public class CmShowRenderView
       break label15;
     }
     label15:
-    while (this.jdField_a_of_type_Anht == null) {
+    while (this.jdField_a_of_type_Amcn == null) {
       return;
     }
     Iterator localIterator = paramList.iterator();
@@ -163,20 +163,20 @@ public class CmShowRenderView
       if ((TextUtils.isEmpty(localObject2)) && (!TextUtils.isEmpty(paramList))) {
         break;
       }
-      this.jdField_a_of_type_Anht.a(localObject2, paramList);
+      this.jdField_a_of_type_Amcn.a(localObject2, paramList);
       return;
     }
   }
   
   public int a(String paramString)
   {
-    return angt.a(paramString);
+    return ambn.a(paramString);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Anht != null) {
-      this.jdField_a_of_type_Anht.b();
+    if (this.jdField_a_of_type_Amcn != null) {
+      this.jdField_a_of_type_Amcn.b();
     }
   }
   
@@ -189,15 +189,15 @@ public class CmShowRenderView
     {
       return;
       QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "stopAction actionId:", Integer.valueOf(paramInt1), " actionSeqId:", Integer.valueOf(paramInt2) });
-    } while (this.jdField_a_of_type_Anht == null);
-    this.jdField_a_of_type_Anht.a(paramInt1, paramInt2);
+    } while (this.jdField_a_of_type_Amcn == null);
+    this.jdField_a_of_type_Amcn.a(paramInt1, paramInt2);
   }
   
-  public void a(angy paramangy, String paramString1, String paramString2, int paramInt)
+  public void a(ambs paramambs, String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_Anht = new anht(this, paramInt);
-    this.jdField_a_of_type_Anht.a(paramString1);
-    this.jdField_a_of_type_Anht.a(paramangy);
+    this.jdField_a_of_type_Amcn = new amcn(this, paramInt);
+    this.jdField_a_of_type_Amcn.a(paramString1);
+    this.jdField_a_of_type_Amcn.a(paramambs);
   }
   
   public void a(CmShowRenderView.PlayActionConfig paramPlayActionConfig)
@@ -213,23 +213,23 @@ public class CmShowRenderView
       return;
     }
     QLog.i("CmShow_CmShowRenderView", 1, "playAction before");
-    this.jdField_a_of_type_Anht.a(paramPlayActionConfig);
+    this.jdField_a_of_type_Amcn.a(paramPlayActionConfig);
     QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "playAction playActionConfig:", paramPlayActionConfig });
   }
   
   public void a(String paramString, int paramInt)
   {
     QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "changeSpriteModel mode:", Integer.valueOf(paramInt) });
-    if (this.jdField_a_of_type_Anht != null) {
-      this.jdField_a_of_type_Anht.a(paramString, paramInt);
+    if (this.jdField_a_of_type_Amcn != null) {
+      this.jdField_a_of_type_Amcn.a(paramString, paramInt);
     }
   }
   
   public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     QLog.d("CmShow_CmShowRenderView", 1, "updateAvatarParam");
-    if (this.jdField_a_of_type_Anht != null) {
-      this.jdField_a_of_type_Anht.a(paramString, paramInt1, paramInt2, paramInt3);
+    if (this.jdField_a_of_type_Amcn != null) {
+      this.jdField_a_of_type_Amcn.a(paramString, paramInt1, paramInt2, paramInt3);
     }
   }
   
@@ -248,8 +248,8 @@ public class CmShowRenderView
       }
       this.jdField_a_of_type_JavaLangString = paramString1;
       this.b = paramString2;
-    } while (this.jdField_a_of_type_Anht == null);
-    this.jdField_a_of_type_Anht.a(paramString1, paramString2, paramFloat, paramInt, paramBundle);
+    } while (this.jdField_a_of_type_Amcn == null);
+    this.jdField_a_of_type_Amcn.a(paramString1, paramString2, paramFloat, paramInt, paramBundle);
   }
   
   public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
@@ -261,30 +261,30 @@ public class CmShowRenderView
     {
       return;
       QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "showBubble uin:", ApolloUtil.d(paramString1), " bubbleText:", paramString2 });
-    } while (this.jdField_a_of_type_Anht == null);
-    this.jdField_a_of_type_Anht.a(paramString1, paramString2, paramInt1, paramInt2);
+    } while (this.jdField_a_of_type_Amcn == null);
+    this.jdField_a_of_type_Amcn.a(paramString1, paramString2, paramInt1, paramInt2);
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
     QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "hideAvatar uin", ApolloUtil.d(paramString), " show:", Boolean.valueOf(paramBoolean) });
-    if (this.jdField_a_of_type_Anht != null) {
-      this.jdField_a_of_type_Anht.a(paramString, paramBoolean);
+    if (this.jdField_a_of_type_Amcn != null) {
+      this.jdField_a_of_type_Amcn.a(paramString, paramBoolean);
     }
   }
   
   public void a(List<String> paramList, boolean paramBoolean)
   {
     QLog.d("CmShow_CmShowRenderView", 1, "disposeAvatar");
-    if (this.jdField_a_of_type_Anht != null) {
-      this.jdField_a_of_type_Anht.a(paramList, paramBoolean);
+    if (this.jdField_a_of_type_Amcn != null) {
+      this.jdField_a_of_type_Amcn.a(paramList, paramBoolean);
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Anht != null) {
-      this.jdField_a_of_type_Anht.a();
+    if (this.jdField_a_of_type_Amcn != null) {
+      this.jdField_a_of_type_Amcn.a();
     }
   }
   
@@ -297,15 +297,15 @@ public class CmShowRenderView
     {
       return;
       QLog.d("CmShow_CmShowRenderView", 1, new Object[] { "showBubble uin:", ApolloUtil.d(paramString) });
-    } while (this.jdField_a_of_type_Anht == null);
-    this.jdField_a_of_type_Anht.b(paramString);
+    } while (this.jdField_a_of_type_Amcn == null);
+    this.jdField_a_of_type_Amcn.b(paramString);
   }
   
   public void c()
   {
     QLog.d("CmShow_CmShowRenderView", 1, "onDestroy");
-    if (this.jdField_a_of_type_Anht != null) {
-      this.jdField_a_of_type_Anht.c();
+    if (this.jdField_a_of_type_Amcn != null) {
+      this.jdField_a_of_type_Amcn.c();
     }
     jdField_a_of_type_JavaUtilHashMap.remove(toString());
   }

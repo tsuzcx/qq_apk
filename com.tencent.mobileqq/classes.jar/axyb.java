@@ -1,33 +1,50 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class axyb
-  implements biug<oidb_0x8e4.RspBody>
 {
-  public axyb(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public axvj a;
+  public String a;
+  public List<axyc> a;
+  public axvj b;
+  public List<axyf> b;
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public axyb()
   {
-    if (paramInt == 0)
-    {
-      GameRoomInviteActivity localGameRoomInviteActivity = this.a;
-      String str = paramRspBody.string_invite_id.get().toStringUtf8();
-      localGameRoomInviteActivity.jdField_b_of_type_JavaLangString = str;
-      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = str;
-      this.a.jdField_b_of_type_Long = paramRspBody.uint64_leader_uin.get();
-      this.a.e();
-      bhsi.a(this.a, this.a.app.getCurrentAccountUin(), true, System.currentTimeMillis());
-      if ((this.a.jdField_a_of_type_Long > 0L) && (this.a.jdField_b_of_type_Boolean)) {
-        GameRoomInviteActivity.a(this.a, "" + this.a.jdField_a_of_type_Long, 1);
-      }
-      return;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public axyb(List<axyc> paramList, axvj paramaxvj1, List<axyf> paramList1, String paramString, axvj paramaxvj2)
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Axvj = paramaxvj1;
+    this.jdField_b_of_type_JavaUtilList = paramList1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Axvj = paramaxvj2;
+  }
+  
+  public List<axyc> a(boolean paramBoolean)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return localArrayList;
     }
-    this.a.a(paramInt, paramRspBody, (String)GameRoomInviteActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    if (paramBoolean)
+    {
+      localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
+      return localArrayList;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      axyc localaxyc = (axyc)localIterator.next();
+      if (!localaxyc.a) {
+        localArrayList.add(localaxyc);
+      }
+    }
+    return localArrayList;
   }
 }
 

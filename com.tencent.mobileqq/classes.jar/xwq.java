@@ -1,8 +1,19 @@
-public abstract interface xwq
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
+
+public final class xwq
+  implements Parcelable.Creator<EditLocalGifSource>
 {
-  public abstract void b(String paramString);
+  public EditLocalGifSource a(Parcel paramParcel)
+  {
+    return new EditLocalGifSource(paramParcel);
+  }
   
-  public abstract void d();
+  public EditLocalGifSource[] a(int paramInt)
+  {
+    return new EditLocalGifSource[paramInt];
+  }
 }
 
 

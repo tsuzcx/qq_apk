@@ -1,96 +1,94 @@
-import java.util.ArrayList;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public abstract interface lnz
+public class lnz
 {
-  public abstract long a(int paramInt1, int paramInt2, long paramLong);
+  private static lnz jdField_a_of_type_Lnz;
+  int jdField_a_of_type_Int = 0;
   
-  public abstract lff a();
+  public static lnz a()
+  {
+    try
+    {
+      lnz locallnz;
+      if (jdField_a_of_type_Lnz != null)
+      {
+        locallnz = jdField_a_of_type_Lnz;
+        return locallnz;
+      }
+      return null;
+    }
+    finally
+    {
+      try
+      {
+        jdField_a_of_type_Lnz = new lnz();
+        locallnz = jdField_a_of_type_Lnz;
+        return locallnz;
+      }
+      catch (Exception localException) {}
+      localObject = finally;
+    }
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4, int paramInt5);
+  public boolean a()
+  {
+    boolean bool = false;
+    if (lfi.a(BaseApplicationImpl.getContext()).a("sharp/EffectFilterDeviceConfig/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, long paramLong1, long paramLong2);
+  public boolean b()
+  {
+    boolean bool = false;
+    if (lfi.a(BaseApplicationImpl.getContext()).a("sharp/qavGestureConfig/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
   
-  public abstract void a(int paramInt1, long paramLong, int paramInt2, int paramInt3);
+  public boolean c()
+  {
+    boolean bool = false;
+    if (lfi.a(BaseApplicationImpl.getContext()).a("sharp/qavRedbagConfig/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
   
-  public abstract void a(int paramInt1, long paramLong1, long paramLong2, int paramInt2);
+  public boolean d()
+  {
+    boolean bool = false;
+    if (lfi.a(BaseApplicationImpl.getContext()).a("sharp/qavScreenRecoder/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
   
-  public abstract void a(int paramInt1, long paramLong1, long paramLong2, long[] paramArrayOfLong, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4);
+  public boolean e()
+  {
+    boolean bool = false;
+    if (lfi.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDeviceConfig/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
   
-  public abstract void a(int paramInt, long paramLong, lwf paramlwf);
+  public boolean f()
+  {
+    return lfi.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDeviceConfig/enable", 0) == 1;
+  }
   
-  public abstract void a(int paramInt, long paramLong, int... paramVarArgs);
+  public boolean g()
+  {
+    return lfi.a(BaseApplicationImpl.getContext()).a("sharp/CameraFocusMethod/isUseSelfDev", 0) == 1;
+  }
   
-  public abstract void a(int paramInt, ArrayList<lnd> paramArrayList);
-  
-  public abstract void a(long paramLong, int paramInt);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean);
-  
-  public abstract void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2);
-  
-  public abstract void a(long paramLong1, long paramLong2, String paramString);
-  
-  public abstract void a(long paramLong1, long paramLong2, ArrayList<lnv> paramArrayList);
-  
-  public abstract void a(long paramLong1, long paramLong2, byte[] paramArrayOfByte);
-  
-  public abstract void a(long paramLong, ArrayList<lnd> paramArrayList, int paramInt1, int paramInt2);
-  
-  public abstract void a(long paramLong1, boolean paramBoolean, long paramLong2);
-  
-  public abstract void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void a(long paramLong, long[] paramArrayOfLong, int paramInt1, int paramInt2);
-  
-  public abstract void a(long paramLong1, long[] paramArrayOfLong, int paramInt1, int paramInt2, long paramLong2, int paramInt3, int paramInt4);
-  
-  public abstract void a(lnd paramlnd, long paramLong1, int paramInt1, int paramInt2, long paramLong2, int... paramVarArgs);
-  
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void b(int paramInt, long paramLong);
-  
-  public abstract void b(int paramInt1, long paramLong, int paramInt2);
-  
-  public abstract void b(int paramInt1, long paramLong, int paramInt2, int paramInt3);
-  
-  public abstract void b(int paramInt1, long paramLong1, long paramLong2, int paramInt2);
-  
-  public abstract void b(long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract void b(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString);
-  
-  public abstract void b(long paramLong1, long paramLong2, String paramString);
-  
-  public abstract void b(long paramLong, ArrayList<lnd> paramArrayList);
-  
-  public abstract void c(int paramInt1, long paramLong1, long paramLong2, int paramInt2);
-  
-  public abstract void c(long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract void c(ArrayList<lms> paramArrayList);
-  
-  public abstract void d(long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract void e(int paramInt1, long paramLong, int paramInt2);
-  
-  public abstract void e(long paramLong);
-  
-  public abstract void e(long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract void f(int paramInt);
-  
-  public abstract void f(long paramLong);
-  
-  public abstract void f(byte[] paramArrayOfByte);
-  
-  public abstract void h(int paramInt);
-  
-  public abstract void y();
-  
-  public abstract void z();
+  public boolean h()
+  {
+    return 1 == lfi.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDetectInversion/Inversion", 0);
+  }
 }
 
 

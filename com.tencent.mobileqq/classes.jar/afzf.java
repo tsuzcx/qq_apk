@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class afzf
-  extends azov
+class afzf
+  implements DialogInterface.OnClickListener
 {
-  public afzf(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  afzf(afzd paramafzd) {}
   
-  protected void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      UncommonlyUsedContactsActivity.a(this.a);
-      this.a.a.notifyDataSetChanged();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

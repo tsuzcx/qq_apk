@@ -1,9 +1,9 @@
 package cooperation.qzone.music;
 
-import bioy;
-import bngf;
-import bngi;
+import bgve;
 import com.tencent.common.app.AppInterface;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
 class QzoneWebMusicJsPlugin$24
   implements Runnable
@@ -12,7 +12,7 @@ class QzoneWebMusicJsPlugin$24
   
   public void run()
   {
-    bngf.a().a().a(this.this$0.mRuntime.a().getLongAccountUin(), this.a, this.b, this.c);
+    RemoteHandleManager.getInstance().getSender().setPlayMode(this.this$0.mRuntime.a().getLongAccountUin(), this.val$random, this.val$auto, this.val$_loopPlay);
   }
 }
 

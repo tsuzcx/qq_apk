@@ -23,7 +23,7 @@ public abstract class TroopDiscussionBaseV
     this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity = paramSelectMemberActivity;
     this.jdField_a_of_type_AndroidContentContext = paramSelectMemberActivity;
     this.jdField_a_of_type_AndroidViewLayoutInflater = paramSelectMemberActivity.getLayoutInflater();
-    this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager = paramSelectMemberActivity.jdField_a_of_type_ComTencentCommonAppInnerFrameManager;
+    this.jdField_a_of_type_ComTencentCommonAppInnerFrameManager = paramSelectMemberActivity.mInnerFrameManager;
   }
   
   protected void a() {}

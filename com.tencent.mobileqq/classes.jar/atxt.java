@@ -1,14 +1,26 @@
-class atxt
-  extends atxl
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+
+public class atxt
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public atxt(atwy paramatwy)
+  public atxt(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    super(paramatwy);
+    this.a.d();
+    return super.onDoubleTap(paramMotionEvent);
   }
   
-  protected String a()
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    return "StateRefuseByPC";
+    return super.onDoubleTapEvent(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

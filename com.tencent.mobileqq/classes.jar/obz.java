@@ -1,6 +1,16 @@
-public abstract interface obz
+import android.view.View;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+
+public class obz
+  implements TouchWebView.OnScrollChangedListener
 {
-  public abstract void a(boolean paramBoolean);
+  public obz(PublicAccountBrowser paramPublicAccountBrowser) {}
+  
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  {
+    PublicAccountBrowser.a(this.a).b();
+  }
 }
 
 

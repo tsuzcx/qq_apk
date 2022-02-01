@@ -1,8 +1,7 @@
-import com.tencent.mobileqq.activity.photo.album.QAlbumConstants;
-
 public abstract interface bmga
-  extends QAlbumConstants
-{}
+{
+  public abstract void a();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

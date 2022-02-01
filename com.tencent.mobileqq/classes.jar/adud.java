@@ -1,18 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adud
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  public adud(AddRequestActivity paramAddRequestActivity) {}
+  public adud(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    bdll.b(this.a.app, "CliOper", "", "", "0X800AA46", "0X800AA46", 0, 0, "", "", "", "");
-    this.a.b();
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      try
+      {
+        int i = paramMessage.what;
+        switch (i)
+        {
+        default: 
+          bool = false;
+          return bool;
+        }
+      }
+      finally {}
+      boolean bool = ((Boolean)paramMessage.obj).booleanValue();
+      NotifyPushSettingActivity.g(this.a).setChecked(bool);
+      break label163;
+      paramMessage = (String)paramMessage.obj;
+      NotifyPushSettingActivity.a(this.a, paramMessage);
+      break label163;
+      paramMessage = (String)paramMessage.obj;
+      NotifyPushSettingActivity.b(this.a, paramMessage);
+      break label163;
+      bool = ((Boolean)paramMessage.obj).booleanValue();
+      NotifyPushSettingActivity.h(this.a).setChecked(bool);
+      break label163;
+      NotifyPushSettingActivity.i(this.a).setChecked(((Boolean)paramMessage.obj).booleanValue());
+      label163:
+      bool = true;
+    }
   }
 }
 

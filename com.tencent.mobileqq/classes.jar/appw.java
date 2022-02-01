@@ -1,25 +1,18 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.view.View;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.widget.RoundImageView;
 
-final class appw
-  implements FileFilter
+class appw
+  extends aqpl
 {
-  public boolean accept(File paramFile)
+  public ETTextView a;
+  public RoundImageView a;
+  
+  public appw(appt paramappt, View paramView)
   {
-    paramFile = paramFile.getName();
-    if (paramFile.startsWith("cpu"))
-    {
-      int i = 3;
-      while (i < paramFile.length())
-      {
-        if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9')) {
-          return false;
-        }
-        i += 1;
-      }
-      return true;
-    }
-    return false;
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramView.findViewById(2131368236));
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)paramView.findViewById(2131364803));
   }
 }
 

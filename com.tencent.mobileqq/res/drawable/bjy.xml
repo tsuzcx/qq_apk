@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/xp" />
-    <corners android:radius="6.0dip" />
-</shape>
+    <item>
+        <rotate android:fromDegrees="45.0" android:pivotX="179.99878%" android:pivotY="0.0">
+            <shape android:shape="rectangle">
+                <size android:height="16.0dip" android:width="16.0dip" />
+                <solid android:color="#ffffffff" />
+            </shape>
+        </rotate>
+    </item>
+</layer-list>

@@ -1,295 +1,137 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.Window;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Cap;
+import android.graphics.Paint.Join;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.view.MotionEvent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.util.QZLog;
-import java.lang.reflect.Method;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import java.util.ArrayList;
 
 public class bnlc
+  extends bnkd
 {
   public static final int a;
-  public static final String a;
-  public static int b = -1;
+  public float a;
+  public Paint a;
+  bnjz a;
+  public bnlb a;
+  public float b;
+  public int b;
+  public Paint b;
+  public int c = AIOUtils.dp2px(6.0F, BaseApplicationImpl.getContext().getResources());
   
   static
   {
-    jdField_a_of_type_JavaLangString = "[PhotoAlbum]" + bnlc.class.getSimpleName();
-    jdField_a_of_type_Int = a(27);
+    jdField_a_of_type_Int = bnsf.a[1];
   }
   
-  public static int a(int paramInt)
+  public bnlc(bnjz parambnjz)
   {
-    DisplayMetrics localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
-    float f = paramInt;
-    return (int)(localDisplayMetrics.density * f + 0.5F);
+    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
+    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bnjz = parambnjz;
   }
   
-  private static int a(Context paramContext)
+  private void a(Paint paramPaint, bnlb parambnlb)
   {
-    int i = 0;
-    int j = paramContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
-    if (j > 0) {
-      i = paramContext.getResources().getDimensionPixelSize(j);
-    }
-    return i;
+    paramPaint.setXfermode(null);
+    paramPaint.setColor(parambnlb.jdField_b_of_type_Int);
+    paramPaint.setStrokeWidth(parambnlb.c);
+    paramPaint.setShader(null);
   }
   
-  public static int a(Context paramContext, Activity paramActivity)
+  public Paint a()
   {
-    if (b != -1)
+    return this.jdField_b_of_type_AndroidGraphicsPaint;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void a(Canvas paramCanvas, bnka parambnka, Paint paramPaint)
+  {
+    if ((parambnka instanceof bnlb))
     {
-      QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "has notchHeight:", Integer.valueOf(b) });
-      return b;
+      parambnka = (bnlb)parambnka;
+      if (parambnka.jdField_a_of_type_AndroidGraphicsPath != null)
+      {
+        a(paramPaint, parambnka);
+        paramCanvas.drawPath(parambnka.jdField_a_of_type_AndroidGraphicsPath, paramPaint);
+      }
     }
-    QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "Build.MODEL:", Build.MODEL });
-    if (b(paramContext)) {
-      b = jdField_a_of_type_Int;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    switch (paramMotionEvent.getAction())
+    {
     }
     for (;;)
     {
-      return b;
-      if (a(paramContext))
-      {
-        if (Build.VERSION.SDK_INT >= 28) {
-          a(paramActivity);
-        }
-        if ((b == 0) || (b == -1)) {
-          b = 80;
-        }
+      return true;
+      this.jdField_a_of_type_Float = f1;
+      this.jdField_b_of_type_Float = f2;
+      this.jdField_a_of_type_Bnlb = new bnlb(new Path(), 101, this.jdField_a_of_type_AndroidGraphicsPaint.getColor(), this.c);
+      if (this.jdField_a_of_type_Bnjz != null) {
+        this.jdField_a_of_type_Bnjz.a(this.jdField_a_of_type_Bnlb);
       }
-      else if (c(paramContext))
+      DoodleLayout.a("use_graffiti");
+      this.jdField_a_of_type_Bnlb.jdField_a_of_type_AndroidGraphicsPath.reset();
+      this.jdField_a_of_type_Bnlb.jdField_a_of_type_AndroidGraphicsPath.moveTo(f1, f2);
+      this.jdField_a_of_type_Bnlb.jdField_a_of_type_AndroidGraphicsPath.lineTo(f1 + 1.0F, f2 + 1.0F);
+      this.jdField_a_of_type_Bnlb.jdField_a_of_type_JavaUtilArrayList.add(new bnla(bnla.jdField_a_of_type_Int, f1, f2));
+      this.jdField_a_of_type_Bnlb.jdField_a_of_type_JavaUtilArrayList.add(new bnla(bnla.jdField_b_of_type_Int, f1 + 1.0F, f2 + 1.0F));
+      continue;
+      float f3 = (this.jdField_a_of_type_Float + f1) / 2.0F;
+      float f4 = (this.jdField_b_of_type_Float + f2) / 2.0F;
+      if (this.jdField_a_of_type_Bnlb != null)
       {
-        b = a(paramContext)[1];
+        this.jdField_a_of_type_Bnlb.jdField_a_of_type_AndroidGraphicsPath.quadTo(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f3, f4);
+        this.jdField_a_of_type_Bnlb.jdField_a_of_type_JavaUtilArrayList.add(new bnla(bnla.c, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f3, f4));
       }
-      else if ((d(paramContext)) || (e(paramContext)) || (c()))
-      {
-        b = a(paramContext);
-      }
-      else if (d())
-      {
-        b = 121;
-      }
-      else
-      {
-        a(paramActivity);
-      }
+      this.jdField_a_of_type_Float = f1;
+      this.jdField_b_of_type_Float = f2;
     }
   }
   
-  @NonNull
-  public static Rect a(View paramView)
+  public Paint b()
   {
-    Rect localRect = new Rect();
-    QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "Build.VERSION.SDK_INT:", Integer.valueOf(Build.VERSION.SDK_INT) });
-    if (Build.VERSION.SDK_INT >= 23) {
-      try
-      {
-        paramView = bnjq.a(paramView, "getRootWindowInsets", false, null, null);
-        QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "insets:", paramView });
-        Object localObject3 = bnjq.a(paramView, "getDisplayCutout", false, null, null);
-        if (localObject3 == null)
-        {
-          QZLog.d(jdField_a_of_type_JavaLangString, 1, "displayCutout == null");
-          return localRect;
-        }
-        paramView = bnjq.a(localObject3, "getSafeInsetTop", false, null, null);
-        Object localObject1 = bnjq.a(localObject3, "getSafeInsetBottom", false, null, null);
-        Object localObject2 = bnjq.a(localObject3, "getSafeInsetLeft", false, null, null);
-        localObject3 = bnjq.a(localObject3, "getSafeInsetRight", false, null, null);
-        QZLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "safeInsetTop:", paramView, " safeInsetBottom:", localObject1, " safeInsetLeft:", localObject2, " safeInsetRight:", localObject3 });
-        if ((localObject2 instanceof Integer)) {
-          localRect.left = ((Integer)localObject2).intValue();
-        }
-        if ((localObject1 instanceof Integer)) {
-          localRect.bottom = ((Integer)localObject1).intValue();
-        }
-        if ((localObject3 instanceof Integer)) {
-          localRect.right = ((Integer)localObject3).intValue();
-        }
-        if ((paramView instanceof Integer))
-        {
-          localRect.top = ((Integer)paramView).intValue();
-          return localRect;
-        }
-      }
-      catch (Exception paramView)
-      {
-        QZLog.e(jdField_a_of_type_JavaLangString, 1, paramView, new Object[0]);
-      }
-    }
-    return localRect;
+    return this.jdField_a_of_type_AndroidGraphicsPaint;
   }
   
-  public static String a(Context paramContext, String paramString1, String paramString2)
+  public void b()
   {
-    try
-    {
-      paramContext = paramContext.getClassLoader().loadClass("android.os.SystemProperties");
-      paramContext = (String)paramContext.getMethod("get", new Class[] { String.class, String.class }).invoke(paramContext, new Object[] { new String(paramString1), new String(paramString2) });
-      return paramContext;
-    }
-    catch (Exception paramContext)
-    {
-      return paramString2;
-    }
-    catch (IllegalArgumentException paramContext) {}
-    return paramString2;
-  }
-  
-  private static void a(Activity paramActivity)
-  {
-    if ((paramActivity != null) && (paramActivity.getWindow() != null) && (paramActivity.getWindow().getDecorView() != null)) {
-      b = a(paramActivity.getWindow().getDecorView()).top;
-    }
-  }
-  
-  private static boolean a()
-  {
-    return Build.MODEL.endsWith("L78011");
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return paramContext.getPackageManager().hasSystemFeature("com.oppo.feature.screen.heteromorphism");
-  }
-  
-  public static int[] a(Context paramContext)
-  {
-    int[] arrayOfInt = new int[2];
-    int[] tmp5_4 = arrayOfInt;
-    tmp5_4[0] = 0;
-    int[] tmp9_5 = tmp5_4;
-    tmp9_5[1] = 0;
-    tmp9_5;
-    try
-    {
-      paramContext = paramContext.getClassLoader().loadClass("com.huawei.android.util.HwNotchSizeUtil");
-      paramContext = (int[])paramContext.getMethod("getNotchSize", new Class[0]).invoke(paramContext, new Object[0]);
-      return paramContext;
-    }
-    catch (ClassNotFoundException paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "getNotchSize ClassNotFoundException");
-      return arrayOfInt;
-    }
-    catch (NoSuchMethodException paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "getNotchSize NoSuchMethodException");
-      return arrayOfInt;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "getNotchSize Exception");
-      return arrayOfInt;
-    }
-    finally {}
-    return arrayOfInt;
-  }
-  
-  private static boolean b()
-  {
-    return "GM1910".equals(Build.MODEL);
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    try
-    {
-      paramContext = bnjq.a("android.util.FtFeature", "isFeatureSupport", false, bnlf.a().a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(32) });
-      if ((paramContext instanceof Boolean))
-      {
-        boolean bool = ((Boolean)paramContext).booleanValue();
-        return bool;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      QZLog.e(jdField_a_of_type_JavaLangString, 2, paramContext, new Object[0]);
-    }
-    return false;
-  }
-  
-  private static boolean c()
-  {
-    return (a()) || (b()) || (e()) || ("Pixel 3 XL".equals(Build.MODEL)) || ("NX606J".equals(Build.MODEL));
-  }
-  
-  public static boolean c(Context paramContext)
-  {
-    try
-    {
-      paramContext = paramContext.getClassLoader().loadClass("com.huawei.android.util.HwNotchSizeUtil");
-      boolean bool = ((Boolean)paramContext.getMethod("hasNotchInScreen", new Class[0]).invoke(paramContext, new Object[0])).booleanValue();
-      return bool;
-    }
-    catch (ClassNotFoundException paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "hasNotchInScreen ClassNotFoundException");
-      return false;
-    }
-    catch (NoSuchMethodException paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "hasNotchInScreen NoSuchMethodException");
-      return false;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext = paramContext;
-      QZLog.e(jdField_a_of_type_JavaLangString, "hasNotchInScreen Exception");
-      return false;
-    }
-    finally {}
-    return false;
-  }
-  
-  private static boolean d()
-  {
-    return "FS8010".equals(Build.MODEL);
-  }
-  
-  public static boolean d(Context paramContext)
-  {
-    paramContext = a(paramContext, "ro.miui.notch", "0");
-    if (paramContext != null) {
-      return paramContext.equals("1");
-    }
-    return false;
-  }
-  
-  private static boolean e()
-  {
-    return "SM-F9000".equals(Build.MODEL);
-  }
-  
-  public static boolean e(Context paramContext)
-  {
-    try
-    {
-      paramContext = bnjq.a("smartisanos.api.DisplayUtilsSmt", "isFeatureSupport", false, bnlf.a().a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(1) });
-      if ((paramContext instanceof Boolean))
-      {
-        boolean bool = ((Boolean)paramContext).booleanValue();
-        return bool;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      QZLog.e(jdField_a_of_type_JavaLangString, 2, paramContext, new Object[0]);
-    }
-    return false;
+    this.jdField_b_of_type_Int = jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bnlb = null;
   }
 }
 

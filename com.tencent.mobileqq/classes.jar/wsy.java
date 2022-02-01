@@ -1,63 +1,94 @@
-import com.tencent.biz.qqstory.database.ReportWatchVideoEntry;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class wsy
+  extends SimpleJob<Object>
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  
-  public wsy() {}
-  
-  public wsy(String paramString1, String paramString2, boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
+  public wsy(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, boolean paramBoolean1, int paramInt1, Long paramLong, boolean paramBoolean2, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3, int paramInt5, int paramInt6, int paramInt7, wve paramwve, long paramLong1, String paramString4, String paramString5)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    super(paramString1);
   }
   
-  public ReportWatchVideoEntry a()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    ReportWatchVideoEntry localReportWatchVideoEntry = new ReportWatchVideoEntry();
-    localReportWatchVideoEntry.vid = this.jdField_a_of_type_JavaLangString;
-    localReportWatchVideoEntry.videoUnionId = this.jdField_b_of_type_JavaLangString;
-    localReportWatchVideoEntry.isLiveVideo = this.jdField_a_of_type_Boolean;
-    localReportWatchVideoEntry.createTime = this.jdField_a_of_type_Long;
-    localReportWatchVideoEntry.source = this.jdField_a_of_type_Int;
-    localReportWatchVideoEntry.vidType = this.jdField_b_of_type_Int;
-    return localReportWatchVideoEntry;
-  }
-  
-  public void a(ReportWatchVideoEntry paramReportWatchVideoEntry)
-  {
-    this.jdField_a_of_type_JavaLangString = paramReportWatchVideoEntry.vid;
-    this.jdField_b_of_type_JavaLangString = paramReportWatchVideoEntry.videoUnionId;
-    this.jdField_a_of_type_Boolean = paramReportWatchVideoEntry.isLiveVideo;
-    this.jdField_a_of_type_Long = paramReportWatchVideoEntry.createTime;
-    this.jdField_a_of_type_Int = paramReportWatchVideoEntry.source;
-    this.jdField_b_of_type_Int = paramReportWatchVideoEntry.vidType;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {
-      return true;
+    int i = 0;
+    paramJobContext = "0";
+    int j;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      j = 200;
+      i = this.jdField_a_of_type_Int;
+      paramVarArgs = String.valueOf(i) + "*";
+      paramJobContext = paramVarArgs;
+      i = j;
+      if (this.jdField_a_of_type_JavaLangLong != null)
+      {
+        paramJobContext = paramVarArgs + String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_JavaLangLong.longValue());
+        i = j;
+      }
+      if ((i != 0) && (i != 7) && ((i != 200) || (this.jdField_a_of_type_Int < 6) || (this.jdField_a_of_type_Int > 10))) {
+        break label509;
+      }
+      if (this.jdField_d_of_type_Int != 1) {
+        break label503;
+      }
+      paramVarArgs = "1";
+      label138:
+      if ((!TextUtils.equals(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString)) || (i == 0)) {
+        break label532;
+      }
+      xvv.d(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, "reportDevPlayerDone, errorCode=%d, suError=%s => treat as success => 300", new Object[] { Integer.valueOf(i), paramJobContext });
+      j = 300;
+      String str = String.valueOf(i) + "*";
+      paramJobContext = str + paramJobContext;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
+    for (;;)
+    {
+      xwa.b("play_video", "play_result", this.e, j, new String[] { paramJobContext, paramVarArgs, xwa.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
+      xwa.b("play_video", "play_buffering", this.e, j, new String[] { String.valueOf(this.f), String.valueOf(this.g), xwa.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
+      if (this.jdField_a_of_type_Wve.jdField_a_of_type_Long > 0L) {
+        xwa.b("play_video", "play_bitRate", this.e, j, new String[] { paramJobContext, this.jdField_a_of_type_Wve.toString(), xwa.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()), this.jdField_b_of_type_JavaLangString });
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        i = 1;
+      }
+      for (;;)
+      {
+        if (i != 0)
+        {
+          long l = 0L;
+          if (this.jdField_a_of_type_Long != 0L) {
+            l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
+          }
+          xwa.b("sdk_download_video", "video_download_error", this.e, j, new String[] { this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString, String.valueOf(i), String.valueOf(l) });
+        }
+        return null;
+        if (!this.jdField_b_of_type_Boolean) {
+          break;
+        }
+        i = this.jdField_b_of_type_Int;
+        paramJobContext = String.valueOf(this.jdField_c_of_type_Int);
+        break;
+        label503:
+        paramVarArgs = "2";
+        break label138;
+        label509:
+        paramVarArgs = "0";
+        break label138;
+        if (this.jdField_b_of_type_Boolean) {
+          i = 2;
+        } else {
+          i = 0;
+        }
+      }
+      label532:
+      j = i;
     }
-    paramObject = (wsy)paramObject;
-    return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
-  }
-  
-  public String toString()
-  {
-    return "InnerVideoItem { mVid=" + this.jdField_a_of_type_JavaLangString + " mVideoUid=" + this.jdField_b_of_type_JavaLangString + " mIsLiveVideo=" + this.jdField_a_of_type_Boolean + " mCreateTime=" + this.jdField_a_of_type_Long + " mSource=" + this.jdField_a_of_type_Int + " mVidType=" + this.jdField_b_of_type_Int + "}";
   }
 }
 

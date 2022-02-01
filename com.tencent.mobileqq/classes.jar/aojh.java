@@ -1,17 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.transfile.HttpNetReq;
 
-public final class aojh
-  implements DialogInterface.OnClickListener
+public class aojh
 {
-  public aojh(TroopManager paramTroopManager, String paramString, QQAppInterface paramQQAppInterface) {}
+  public int a;
+  public long a;
+  public HttpNetReq a;
+  public String a;
+  public boolean a;
+  public String b = "";
+  public String c = "";
+  public String d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aojh()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qq_vip", "0X800A57E", 2, 0, "", "", "", "");
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
+    localStringBuffer.append("type=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", url='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", md5='").append(this.b).append('\'');
+    localStringBuffer.append(", fileName='").append(this.c).append('\'');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

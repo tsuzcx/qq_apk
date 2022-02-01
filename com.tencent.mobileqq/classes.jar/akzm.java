@@ -1,56 +1,24 @@
-import Wallet.PfaFriend;
-import Wallet.PfaFriendRsp;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
 
-final class akzm
-  implements DialogInterface.OnClickListener
+public class akzm
+  extends Handler
 {
-  akzm(WeakReference paramWeakReference, ArrayList paramArrayList) {}
+  public akzm(FriendListInnerFrame paramFriendListInnerFrame) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramDialogInterface instanceof bhqp)) {
-      switch (paramInt)
-      {
-      }
-    }
-    do
+    switch (paramMessage.what)
     {
+    default: 
       return;
-      akzk.a((SelectMemberActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaUtilArrayList, (bhqp)paramDialogInterface);
-    } while ((akzk.a == null) || (akzk.a.vecRec == null) || (akzk.a.vecRec.size() <= 0));
-    paramInt = 0;
-    label79:
-    String str;
-    int i;
-    if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      str = "friendpay.selectpage.unrecomchoosefriclick";
-      i = 0;
+    case 1: 
+      this.a.a.setPadding(0, 0, 40, 0);
+      return;
     }
-    for (;;)
-    {
-      paramDialogInterface = str;
-      if (i < akzk.a.vecRec.size())
-      {
-        if (((ResultRecord)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a.equals(((PfaFriend)akzk.a.vecRec.get(i)).uin)) {
-          paramDialogInterface = "friendpay.selectpage.recommendfriclick";
-        }
-      }
-      else
-      {
-        bdll.b(alil.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", paramDialogInterface, 0, 0, "", "", "", "");
-        paramInt += 1;
-        break label79;
-        break;
-      }
-      i += 1;
-    }
+    this.a.a.setPadding(0, 0, 0, 0);
   }
 }
 

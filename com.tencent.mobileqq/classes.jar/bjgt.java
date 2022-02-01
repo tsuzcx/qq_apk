@@ -1,190 +1,115 @@
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.DialogInterface.OnShowListener;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.VoIPProxy;
+import com.tencent.qqmini.sdk.launcher.core.proxy.VoIPProxy.VoIPListener;
+import mqq.app.AppRuntime;
+import mqq.manager.PushManager;
 
+@ProxyService(proxy=VoIPProxy.class)
 public class bjgt
-  implements ShareActionSheet
+  extends VoIPProxy
 {
-  private ShareActionSheet a;
+  private biiz jdField_a_of_type_Biiz = new bjgv(this);
+  private VoIPProxy.VoIPListener jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyVoIPProxy$VoIPListener;
   
-  public bjgt(ShareActionSheet paramShareActionSheet)
+  private void a()
   {
-    this.a = paramShareActionSheet;
+    QLog.i("VoIPProxyImpl", 1, "qavDeInitSDK");
+    ((PushManager)BaseApplicationImpl.getApplication().getRuntime().getManager(5)).unregistProxyMessagePush(AppSetting.a(), BaseApplicationImpl.getApplication().getQQProcessName());
+    biin localbiin = biin.a();
+    localbiin.b(this.jdField_a_of_type_Biiz);
+    localbiin.a();
   }
   
-  public void dismiss()
+  public int enableLocalAudio(boolean paramBoolean)
   {
-    this.a.dismiss();
+    biiw localbiiw = biin.a().a();
+    if (localbiiw != null)
+    {
+      localbiiw.b(paramBoolean);
+      return 0;
+    }
+    return -1;
   }
   
-  public void dismissImmediately()
+  public int enableRemoteAudio(boolean paramBoolean)
   {
-    this.a.dismissImmediately();
+    biiw localbiiw = biin.a().a();
+    if (localbiiw != null)
+    {
+      if (!paramBoolean) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        localbiiw.c(paramBoolean);
+        return 0;
+      }
+    }
+    return -1;
   }
   
-  public View findViewById(int paramInt)
+  public void exitRoom()
   {
-    return this.a.findViewById(paramInt);
+    biiw localbiiw = biin.a().a();
+    if (localbiiw != null) {
+      localbiiw.e();
+    }
   }
   
-  public blir getActionSheet()
+  public void init(long paramLong, VoIPProxy.VoIPListener paramVoIPListener)
   {
-    return this.a.getActionSheet();
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    ((PushManager)((AppRuntime)localObject).getManager(5)).registProxyMessagePush(AppSetting.a(), BaseApplicationImpl.getApplication().getQQProcessName(), "", new String[] { "MultiVideo.c2sack", "MultiVideo.s2c" });
+    bija.a(new bijc());
+    biiq localbiiq = biiq.a();
+    localbiiq.a((AppRuntime)localObject);
+    localbiiq.a(new bjgu(this));
+    localObject = biin.a();
+    ((biin)localObject).a(BaseApplicationImpl.getApplication().getApplicationContext(), paramLong, localbiiq);
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyVoIPProxy$VoIPListener = paramVoIPListener;
+    ((biin)localObject).a(this.jdField_a_of_type_Biiz);
   }
   
-  public int getActionSheetPanelViewHeight()
+  public int joinRoom(long paramLong, int paramInt, String paramString, byte[] paramArrayOfByte)
   {
-    return this.a.getActionSheetPanelViewHeight();
+    biiw localbiiw = biin.a().a();
+    if (localbiiw != null)
+    {
+      biim localbiim = new biim();
+      localbiim.jdField_a_of_type_Int = 11;
+      localbiim.b = 14;
+      localbiim.c = 1;
+      localbiim.d = paramInt;
+      localbiim.jdField_a_of_type_Long = paramLong;
+      localbiim.jdField_a_of_type_JavaLangString = paramString;
+      localbiim.e = 1;
+      localbiim.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+      return localbiiw.a(localbiim);
+    }
+    return -4;
   }
   
-  public int getIconWidth()
+  public void setAudioRoute(int paramInt)
   {
-    return this.a.getIconWidth();
+    biiw localbiiw = biin.a().a();
+    if (localbiiw != null) {
+      localbiiw.b(paramInt);
+    }
   }
   
-  public String getOpenSource()
+  public void unInit()
   {
-    return this.a.getOpenSource();
+    a();
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyVoIPProxy$VoIPListener = null;
   }
   
-  public Window getWindow()
+  public void updateRoomInfo()
   {
-    return this.a.getWindow();
-  }
-  
-  public void hideTitle()
-  {
-    this.a.hideTitle();
-  }
-  
-  public boolean isShowing()
-  {
-    return this.a.isShowing();
-  }
-  
-  public void onConfigurationChanged()
-  {
-    this.a.onConfigurationChanged();
-  }
-  
-  public void refresh()
-  {
-    this.a.refresh();
-  }
-  
-  public void setActionSheetItems(List<ShareActionSheetBuilder.ActionSheetItem> paramList1, List<ShareActionSheetBuilder.ActionSheetItem> paramList2)
-  {
-    this.a.setActionSheetItems(paramList1, paramList2);
-  }
-  
-  public void setActionSheetItems(List<ShareActionSheetBuilder.ActionSheetItem>[] paramArrayOfList)
-  {
-    this.a.setActionSheetItems(paramArrayOfList);
-  }
-  
-  public void setActionSheetTitle(CharSequence paramCharSequence)
-  {
-    this.a.setActionSheetTitle(paramCharSequence);
-  }
-  
-  public void setAdvBgColor(int paramInt)
-  {
-    this.a.setAdvBgColor(paramInt);
-  }
-  
-  public void setAdvView(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
-  {
-    this.a.setAdvView(paramView, paramLayoutParams);
-  }
-  
-  public void setBottomBarInterface(bjgq parambjgq)
-  {
-    this.a.setBottomBarInterface(parambjgq);
-  }
-  
-  public void setCancelListener(DialogInterface.OnCancelListener paramOnCancelListener)
-  {
-    this.a.setCancelListener(paramOnCancelListener);
-  }
-  
-  public void setEnableNotTriggerVirtualNavigationBar(boolean paramBoolean)
-  {
-    this.a.setEnableNotTriggerVirtualNavigationBar(paramBoolean);
-  }
-  
-  public void setExtras(Bundle paramBundle)
-  {
-    this.a.setExtras(paramBundle);
-  }
-  
-  public void setIconMarginLeftRight(int paramInt)
-  {
-    this.a.setIconMarginLeftRight(paramInt);
-  }
-  
-  public void setIntentForStartForwardRecentActivity(Intent paramIntent)
-  {
-    this.a.setIntentForStartForwardRecentActivity(paramIntent);
-  }
-  
-  public void setItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
-  {
-    this.a.setItemClickListener(paramOnItemClickListener);
-  }
-  
-  public void setItemClickListenerV2(ShareActionSheet.OnItemClickListener paramOnItemClickListener)
-  {
-    this.a.setItemClickListenerV2(paramOnItemClickListener);
-  }
-  
-  public void setOnDismissListener(DialogInterface.OnDismissListener paramOnDismissListener)
-  {
-    this.a.setOnDismissListener(paramOnDismissListener);
-  }
-  
-  public void setOnShowListener(DialogInterface.OnShowListener paramOnShowListener)
-  {
-    this.a.setOnShowListener(paramOnShowListener);
-  }
-  
-  public void setOpenSource(String paramString)
-  {
-    this.a.setOpenSource(paramString);
-  }
-  
-  public void setRowMarginLeftRight(int paramInt)
-  {
-    this.a.setRowMarginLeftRight(paramInt);
-  }
-  
-  public void setRowVisibility(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.setRowVisibility(paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void show()
-  {
-    this.a.show();
-  }
-  
-  public void updateUI()
-  {
-    this.a.updateUI();
-  }
-  
-  public void updateUIIfShowing()
-  {
-    this.a.updateUIIfShowing();
+    biiw localbiiw = biin.a().a();
+    if (localbiiw != null) {
+      localbiiw.f();
+    }
   }
 }
 

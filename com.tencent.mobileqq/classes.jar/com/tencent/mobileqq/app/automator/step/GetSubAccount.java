@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import bdwz;
+import bcqq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -11,9 +11,9 @@ public class GetSubAccount
 {
   public int a()
   {
-    bdwz localbdwz = (bdwz)this.a.app.getManager(28);
-    if (localbdwz != null) {
-      localbdwz.a();
+    bcqq localbcqq = (bcqq)this.a.app.getManager(28);
+    if (localbcqq != null) {
+      localbcqq.a();
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "subaccount onGetSubAccountBind start int QQInitHandler...");

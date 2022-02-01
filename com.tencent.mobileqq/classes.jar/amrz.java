@@ -1,140 +1,224 @@
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.mobileqq.addon.DiyPendantEntity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.pendant.DiyAddonPbInfo.AddonGetDiyInfoReq;
-import com.tencent.pb.pendant.DiyAddonPbInfo.AddonGetDiyInfoRsp;
-import com.tencent.pb.pendant.DiyAddonPbInfo.AddonReqComm;
-import com.tencent.pb.pendant.DiyAddonPbInfo.ReadAddonReq;
-import com.tencent.pb.pendant.DiyAddonPbInfo.ReadAddonRsp;
-import com.tencent.pb.pendant.DiyAddonUser.UserDiyInfo;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.startup.step.CheckPermission;
+import com.tencent.mobileqq.statistics.UEC;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.app.Constants.LogoutReason;
 
-public class amrz
-  extends anud
+public abstract class amrz
 {
-  public amrz(QQAppInterface paramQQAppInterface)
+  private View jdField_a_of_type_AndroidViewView;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  public QQAppInterface a;
+  public boolean w;
+  
+  public void A()
   {
-    super(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
   }
   
-  public void a(List<Long> paramList, anui paramanui)
+  public void B()
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      localObject = this.jdField_a_of_type_AndroidViewView.getAnimation();
+      if (localObject != null) {
+        ((Animation)localObject).setAnimationListener(null);
+      }
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantHandler", 2, "try fetchDiyPendants: " + TextUtils.join(",", paramList));
+    Object localObject = FrameHelperActivity.a(a());
+    if (localObject != null) {
+      ((FrameHelperActivity)localObject).v();
     }
-    DiyAddonPbInfo.AddonReqComm localAddonReqComm = new DiyAddonPbInfo.AddonReqComm();
-    localAddonReqComm.platform.set(109L);
-    localAddonReqComm.osver.set(Build.VERSION.RELEASE);
-    localAddonReqComm.mqqver.set("8.4.5");
-    DiyAddonPbInfo.AddonGetDiyInfoReq localAddonGetDiyInfoReq = new DiyAddonPbInfo.AddonGetDiyInfoReq();
-    localAddonGetDiyInfoReq.uin.set(paramList);
-    paramList = new DiyAddonPbInfo.ReadAddonReq();
-    paramList.cmd.set(1);
-    paramList.comm.set(localAddonReqComm);
-    paramList.packetseq.set(System.currentTimeMillis());
-    paramList.reqcmd0x01.set(localAddonGetDiyInfoReq);
-    paramanui = super.createToServiceMsg("ReadDiyAddonInfo.1", paramanui);
-    paramanui.putWupBuffer(paramList.toByteArray());
-    super.sendPbReq(paramanui);
   }
   
-  protected Class<? extends anui> observerClass()
+  protected void C()
+  {
+    CheckPermission.requestSDCardPermission(a(), new amsa(this));
+  }
+  
+  protected void Y_() {}
+  
+  public Resources a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
+  }
+  
+  public View a(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+  }
+  
+  public View a(LayoutInflater paramLayoutInflater)
   {
     return null;
   }
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public final BaseActivity a()
   {
-    if (paramFromServiceMsg.getServiceCmd().equals("ReadDiyAddonInfo.1"))
+    return this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public String a(int paramInt)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(paramInt);
+  }
+  
+  public void a()
+  {
+    boolean bool2 = false;
+    k();
+    QQAppInterface localQQAppInterface1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime());
+    QQAppInterface localQQAppInterface2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    boolean bool1 = bool2;
+    if (localQQAppInterface1 != null)
     {
-      bool = paramFromServiceMsg.isSuccess();
-      localObject = String.valueOf(paramToServiceMsg.getAttribute("_tag_LOGSTR"));
-      if (QLog.isColorLevel()) {
-        QLog.d("DiyPendantHandler", 2, "key_seq=" + (String)localObject + " isSuccess=" + bool + " resultCode=" + paramFromServiceMsg.getResultCode());
-      }
-      if (bool) {
-        paramFromServiceMsg = new DiyAddonPbInfo.ReadAddonRsp();
+      bool1 = bool2;
+      if (localQQAppInterface2 != null) {
+        if (TextUtils.equals(localQQAppInterface1.getAccount(), localQQAppInterface2.getAccount())) {
+          break label67;
+        }
       }
     }
-    while (!QLog.isColorLevel())
+    label67:
+    for (bool1 = true;; bool1 = false)
     {
-      do
-      {
-        try
-        {
-          boolean bool;
-          paramFromServiceMsg = (DiyAddonPbInfo.ReadAddonRsp)paramFromServiceMsg.mergeFrom((byte[])paramObject);
-          if (paramFromServiceMsg != null) {
-            if (paramFromServiceMsg.ret.get() != 0L)
-            {
-              QLog.d("DiyPendantHandler", 1, "fetch diy pendant info 回包 sso 成功 ，server 失败，ret = " + paramFromServiceMsg.ret.get());
-              super.notifyUI(paramToServiceMsg, 1, false, null);
-              return;
-            }
-          }
-        }
-        catch (Exception paramFromServiceMsg)
-        {
-          Object localObject;
-          for (;;)
-          {
-            QLog.e("DiyPendantHandler", 1, "fetch diy pendant info on response err", paramFromServiceMsg);
-            paramFromServiceMsg = null;
-          }
-          if ((paramFromServiceMsg.rspcmd0x01.has()) && (paramFromServiceMsg.rspcmd0x01.userdiyinfo.has()))
-          {
-            paramObject = paramFromServiceMsg.rspcmd0x01.userdiyinfo.get();
-            paramFromServiceMsg = new ArrayList();
-            if (paramObject != null)
-            {
-              paramObject = paramObject.iterator();
-              while (paramObject.hasNext())
-              {
-                localObject = (DiyAddonUser.UserDiyInfo)paramObject.next();
-                if ((((DiyAddonUser.UserDiyInfo)localObject).uin.has()) && (((DiyAddonUser.UserDiyInfo)localObject).curid.has()))
-                {
-                  DiyPendantEntity localDiyPendantEntity = new DiyPendantEntity();
-                  localDiyPendantEntity.uinAndDiyId = (((DiyAddonUser.UserDiyInfo)localObject).uin.get() + "_" + ((DiyAddonUser.UserDiyInfo)localObject).curid.get());
-                  localDiyPendantEntity.diyId = ((DiyAddonUser.UserDiyInfo)localObject).curid.get();
-                  localDiyPendantEntity.borderId = ((DiyAddonUser.UserDiyInfo)localObject).frameid.get();
-                  localDiyPendantEntity.updateTs = ((DiyAddonUser.UserDiyInfo)localObject).updatets.get();
-                  localDiyPendantEntity.setStickerInfoList(((DiyAddonUser.UserDiyInfo)localObject).stickerinfo.get());
-                  paramFromServiceMsg.add(localDiyPendantEntity);
-                }
-              }
-            }
-            amrx.a().a(this.app, true, paramFromServiceMsg);
-            super.notifyUI(paramToServiceMsg, 1, true, paramFromServiceMsg);
-            return;
-          }
-          super.notifyUI(paramToServiceMsg, 1, false, null);
-          return;
-        }
-        super.notifyUI(paramToServiceMsg, 1, false, null);
-        return;
-        super.notifyUI(paramToServiceMsg, 1, false, null);
-      } while (!QLog.isColorLevel());
-      QLog.d("DiyPendantHandler", 2, "DiyText isSuccess is false sso通道  异常");
+      b(bool1);
       return;
     }
-    QLog.d("DiyPendantHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
   }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(Intent paramIntent)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramIntent);
+  }
+  
+  public void a(Configuration paramConfiguration) {}
+  
+  public void a(View paramView, boolean paramBoolean)
+  {
+    if (paramView != null)
+    {
+      if (paramBoolean) {
+        paramView.setBackgroundResource(2130850017);
+      }
+    }
+    else {
+      return;
+    }
+    paramView.setBackgroundColor(a().getColor(2131167070));
+  }
+  
+  public void a(BaseActivity paramBaseActivity)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+  }
+  
+  protected void a(Runnable paramRunnable)
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.post(paramRunnable);
+    }
+  }
+  
+  public void a(Constants.LogoutReason paramLogoutReason) {}
+  
+  public boolean a()
+  {
+    if (FrameHelperActivity.b())
+    {
+      FrameHelperActivity.t();
+      return true;
+    }
+    return false;
+  }
+  
+  public void b(Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(paramRunnable);
+  }
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public void c(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime());
+  }
+  
+  public void e(boolean paramBoolean)
+  {
+    this.w = true;
+    if (Build.VERSION.SDK_INT >= 15)
+    {
+      UEC localUEC = UEC.a;
+      if (localUEC != null) {
+        localUEC.a(getClass().getSimpleName(), a(), false, this);
+      }
+    }
+  }
+  
+  protected boolean e()
+  {
+    return BaseApplicationImpl.getContext().doesHasSDCardPermission();
+  }
+  
+  public void f() {}
+  
+  public void g()
+  {
+    this.w = false;
+    if (Build.VERSION.SDK_INT >= 15)
+    {
+      UEC localUEC = UEC.a;
+      if (localUEC != null) {
+        localUEC.a(getClass().getSimpleName(), a(), true, this);
+      }
+    }
+  }
+  
+  public void h()
+  {
+    if (this.w) {
+      g();
+    }
+  }
+  
+  public void i() {}
+  
+  protected void k() {}
+  
+  public void p() {}
+  
+  protected void y() {}
 }
 
 

@@ -1,31 +1,29 @@
-public abstract class apng
-  extends apnu
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.colornote.settings.ColorNoteSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class apng
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private int a = 1;
-  private int b = 1;
+  public apng(ColorNoteSettingFragment paramColorNoteSettingFragment, QQAppInterface paramQQAppInterface) {}
   
-  public apng(int paramInt1, int paramInt2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this(paramInt1, paramInt2, 5);
+    apkn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
+    if (!paramBoolean) {
+      new apko().c(null);
+    }
+    ((aplf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(168)).a(paramBoolean);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
+    {
+      bcef.b(null, "dc00898", "", "", "0X800A8B0", "0X800A8B0", i, 0, "", "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+    }
   }
-  
-  public apng(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public static boolean a(apng paramapng)
-  {
-    return (paramapng != null) && (paramapng.a());
-  }
-  
-  public int a()
-  {
-    return this.b;
-  }
-  
-  public abstract boolean a();
 }
 
 

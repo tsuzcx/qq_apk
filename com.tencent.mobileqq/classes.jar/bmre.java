@@ -1,74 +1,76 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qqreader.view.ReaderTabBarView;
-import java.util.List;
-import mqq.util.WeakReference;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig.BannerItem;
+import dov.com.qq.im.capture.banner.QIMCaptureBannerManager.1;
+import java.io.File;
 
 public class bmre
-  implements View.OnClickListener
+  extends bmqj
 {
-  final int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  final List<WebViewTabBarData> jdField_a_of_type_JavaUtilList;
-  final WeakReference<ReaderTabBarView> jdField_a_of_type_MqqUtilWeakReference;
+  public static Object a;
+  public static String a;
+  public QIMCaptureBannerConfig a;
   
-  public bmre(ReaderTabBarView paramReaderTabBarView, int paramInt, @NonNull List<WebViewTabBarData> paramList)
+  static
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramReaderTabBarView);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    jdField_a_of_type_JavaLangObject = new Object();
+    jdField_a_of_type_JavaLangString = bmxv.a().getAbsolutePath() + File.separator + "banner_config";
   }
   
-  public void onClick(View paramView)
+  public bmre()
   {
-    ReaderTabBarView localReaderTabBarView = (ReaderTabBarView)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localReaderTabBarView == null) {}
-    for (;;)
+    a();
+  }
+  
+  public void a()
+  {
+    ThreadManager.post(new QIMCaptureBannerManager.1(this), 8, null, true);
+  }
+  
+  public boolean a(QIMCaptureBannerConfig.BannerItem paramBannerItem)
+  {
+    if ((paramBannerItem == null) || (TextUtils.isEmpty(paramBannerItem.imgMd5))) {}
+    File localFile;
+    do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_Int != ReaderTabBarView.a(localReaderTabBarView))
+      do
       {
-        long l = System.currentTimeMillis();
-        if (l - this.jdField_a_of_type_Long >= 500L)
-        {
-          this.jdField_a_of_type_Long = l;
-          localReaderTabBarView.setSelectedTab(this.jdField_a_of_type_Int);
-          int i = ReaderTabBarView.a(localReaderTabBarView)[this.jdField_a_of_type_Int];
-          localReaderTabBarView.setCurrentItemId(i);
-          localReaderTabBarView.a();
-          ReaderTabBarView.a(localReaderTabBarView, i);
-          String str1 = localReaderTabBarView.b();
-          String str2 = localReaderTabBarView.a();
-          switch (i)
-          {
-          default: 
-            break;
-          case 0: 
-            bmqz.a(str1, str2, "297", "0", "3", "", "");
-            if (localReaderTabBarView.a(i)) {
-              bmqz.a(str1, str2, "69", "336", "0", "3", "", "", "");
-            }
-            break;
-          case 1: 
-            bmqz.a(str1, str2, "298", "0", "3", "", "");
-            break;
-          case 3: 
-            if (bmqu.f(localReaderTabBarView.getContext())) {
-              bmqu.f(localReaderTabBarView.getContext(), false);
-            }
-            bmqz.a(str1, str2, "300", "0", "3", "", "");
-            break;
-          case 2: 
-            bmqz.a(str1, str2, "1847", "0", "3", "", "");
-          }
+        return false;
+        localFile = new File(jdField_a_of_type_JavaLangString, paramBannerItem.imgMd5);
+        if (localFile.exists()) {
+          break;
         }
+      } while (!QLog.isColorLevel());
+      QLog.d("QIMCaptureBannerManager", 2, "isBannerIconUsable|file is not exist -> " + paramBannerItem.imgUrl);
+      return false;
+      try
+      {
+        String str = FileUtils.calcMd5(localFile.getPath());
+        if ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(paramBannerItem.imgMd5))) {
+          break;
+        }
+        return true;
       }
+      catch (UnsatisfiedLinkError paramBannerItem) {}
+    } while (!QLog.isColorLevel());
+    paramBannerItem.printStackTrace();
+    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMCaptureBannerManager", 2, "isBannerIconUsable|fileMd5 error " + paramBannerItem.imgUrl);
     }
+    localFile.delete();
+    return false;
   }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig = null;
+  }
+  
+  public void onInit() {}
 }
 
 

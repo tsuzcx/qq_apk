@@ -10,6 +10,7 @@ import java.util.List;
 public class AutomaticMediaTemplateModel
   extends BaseMediaModel
 {
+  public static final String TEMPLATE_ASSET_PATH = "pag";
   private String assetDir = "";
   private String imagePagAssetDir = "";
   private boolean isRhythmTemplate;

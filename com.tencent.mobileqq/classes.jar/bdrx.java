@@ -1,61 +1,28 @@
-import android.graphics.ColorFilter;
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class bdrx
-  implements aggk
+public class bdrx
+  extends SosoInterface.OnLocationListener
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  boolean jdField_a_of_type_Boolean;
-  TextView b;
-  
-  private void a(boolean paramBoolean)
+  public bdrx(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    Drawable localDrawable = this.a.getBackground();
-    if (localDrawable != null) {
-      if (!paramBoolean) {
-        break label28;
-      }
-    }
-    label28:
-    for (ColorFilter localColorFilter = null;; localColorFilter = BaseBubbleBuilder.a)
-    {
-      localDrawable.setColorFilter(localColorFilter);
-      localDrawable.invalidateSelf();
-      return;
-    }
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void a(View paramView, MotionEvent paramMotionEvent)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    case 2: 
-    default: 
-    case 1: 
-    case 3: 
-      do
-      {
-        return;
-        paramView = this.a.getBackground();
-      } while (paramView == null);
-      paramView.setColorFilter(null);
-      paramView.invalidateSelf();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(TroopBarPublishLocationSelectActivity.a(this.a), 2, "onLocationFinish() errCode=" + paramInt);
     }
-    a(false);
-  }
-  
-  public void a(View paramView, boolean paramBoolean)
-  {
-    a(paramBoolean);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    {
+      double d1 = paramSosoLbsInfo.mLocation.mLat02;
+      double d2 = paramSosoLbsInfo.mLocation.mLon02;
+      TroopBarPublishLocationSelectActivity.a(this.a, (int)(d1 * 1000000.0D), (int)(d2 * 1000000.0D), 0, true, this.a);
+    }
   }
 }
 

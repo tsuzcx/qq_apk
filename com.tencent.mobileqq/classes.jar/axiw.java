@@ -1,71 +1,55 @@
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.now.focusanchor.commonwidget.FrameAnimationView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
-import java.util.Map;
-import tencent.im.msg.im_msg_body.RichText;
 
 public class axiw
-  extends axiy<MessageForPtt>
+  extends RecyclerView.Adapter<axix>
+  implements axjb
 {
-  public axiw(MessageForPtt paramMessageForPtt)
+  private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+  private List<axjf> jdField_a_of_type_JavaUtilList;
+  
+  public axiw(FragmentActivity paramFragmentActivity, List<axjf> paramList)
   {
-    super(paramMessageForPtt);
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    axje.a().a(this);
   }
   
-  protected int a()
+  public axix a(ViewGroup paramViewGroup, int paramInt)
   {
-    return 3;
+    return new axix(View.inflate(paramViewGroup.getContext(), 2131559534, null));
   }
   
-  public List<MsgBackupResEntity> a()
+  public void a(int paramInt, String paramString) {}
+  
+  public void a(axix paramaxix, int paramInt)
   {
-    MsgBackupResEntity localMsgBackupResEntity = a();
-    localMsgBackupResEntity.msgSubType = 15;
-    localMsgBackupResEntity.filePath = ((MessageForPtt)this.a).getLocalFilePath();
-    if (!a(localMsgBackupResEntity.filePath)) {
-      return null;
-    }
-    a(localMsgBackupResEntity.filePath, localMsgBackupResEntity);
-    Object localObject = a(15);
-    ((HashMap)localObject).put("selfuin", ((MessageForPtt)this.a).selfuin);
-    ((HashMap)localObject).put("uuid", ((MessageForPtt)this.a).urlAtServer);
-    ((HashMap)localObject).put("md5", ((MessageForPtt)this.a).md5);
-    ((HashMap)localObject).put("selfuin", ((MessageForPtt)this.a).selfuin);
-    if (((MessageForPtt)this.a).istroop == 1) {
-      ((HashMap)localObject).put("chatType", "1");
-    }
-    for (;;)
-    {
-      localMsgBackupResEntity.extraDataStr = a((Map)localObject);
-      localObject = new ArrayList();
-      ((List)localObject).add(localMsgBackupResEntity);
-      return localObject;
-      if (((MessageForPtt)this.a).istroop == 3000) {
-        ((HashMap)localObject).put("chatType", "2");
-      } else {
-        ((HashMap)localObject).put("chatType", "3");
-      }
-    }
+    axjf localaxjf = (axjf)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramaxix.jdField_a_of_type_AndroidWidgetTextView.setText(localaxjf.b());
+    awrr.a().a(paramaxix.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView, localaxjf.c(), new ColorDrawable(0), new ColorDrawable(0), 80, 80, null, false);
+    paramaxix.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView.setAnimationRes(2130841461);
+    paramaxix.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView.a();
+    axkk.b(String.valueOf(localaxjf.a()));
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramaxix, paramInt, getItemId(paramInt));
   }
   
-  public void a()
+  public void a(List<axjf> paramList)
   {
-    Object localObject = (MessageForPtt)this.a;
-    a("packMsg uinType:" + ((MessageForPtt)localObject).istroop);
-    localObject = ((MessageForPtt)this.a).getRichText();
-    ((MessageForPtt)this.a).richText = ((im_msg_body.RichText)localObject);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
   }
   
-  public void b()
+  public int getItemCount()
   {
-    ((MessageForPtt)this.a).url = axix.a(((MessageForPtt)this.a).md5, ((MessageForPtt)this.a).selfuin);
-    if (((MessageForPtt)this.a).isSendFromLocal()) {
-      ((MessageForPtt)this.a).issend = 2;
-    }
-    ((MessageForPtt)this.a).isReadPtt = true;
-    ((MessageForPtt)this.a).serial();
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

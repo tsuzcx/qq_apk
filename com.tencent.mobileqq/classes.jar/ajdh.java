@@ -1,25 +1,31 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqcircle.chat.QCircleObserver;
+import java.lang.ref.WeakReference;
 
 public class ajdh
-  implements View.OnTouchListener
+  extends QCircleObserver
 {
-  public ajdh(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  private WeakReference<Conversation> a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ajdh(Conversation paramConversation)
   {
-    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
-    if (paramMotionEvent.isActive()) {
-      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    this.a = new WeakReference(paramConversation);
+  }
+  
+  public void onUpdateRedPoint(int paramInt)
+  {
+    Conversation localConversation = (Conversation)this.a.get();
+    StringBuilder localStringBuilder = new StringBuilder().append("QCircleObserver onUpdateRedPoint: ");
+    if (localConversation != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("Q.recent", 2, bool);
+      if (localConversation != null) {
+        localConversation.q();
+      }
+      return;
     }
-    this.a.a.clearFocus();
-    paramView = this.a.a.getText().toString();
-    this.a.a.setSelection(paramView.length());
-    return false;
   }
 }
 

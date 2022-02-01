@@ -1,6 +1,5 @@
 package com.tencent.widget.immersive;
 
-import alih;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -15,9 +14,10 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.view.animation.AlphaAnimation;
-import anxh;
-import bhjr;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.utils.OSUtils;
+import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
 import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
@@ -180,7 +180,7 @@ public class ImmersiveUtils
   
   public static boolean a()
   {
-    return (VersionUtils.isKITKAT()) && (((jdField_d_of_type_Boolean) && (bhjr.b())) || (bhjr.d()));
+    return (VersionUtils.isKITKAT()) && (((jdField_d_of_type_Boolean) && (SystemUtil.isMIUI())) || (SystemUtil.isFlyme()));
   }
   
   public static boolean a(Activity paramActivity)
@@ -221,19 +221,19 @@ public class ImmersiveUtils
     do
     {
       return false;
-      if ((jdField_d_of_type_Boolean) && (bhjr.b())) {
+      if ((jdField_d_of_type_Boolean) && (SystemUtil.isMIUI())) {
         return b(paramWindow, paramBoolean);
       }
-    } while (!bhjr.d());
+    } while (!SystemUtil.isFlyme());
     return c(paramWindow, paramBoolean);
   }
   
   public static boolean a(boolean paramBoolean, Window paramWindow)
   {
-    if (alih.e()) {
+    if (OSUtils.isFlymeOS()) {
       return c(paramWindow, paramBoolean);
     }
-    if (alih.a()) {
+    if (OSUtils.isMIUI()) {
       return d(paramWindow, paramBoolean);
     }
     if (paramBoolean)
@@ -347,8 +347,8 @@ public class ImmersiveUtils
   public static boolean c()
   {
     boolean bool1 = false;
-    boolean bool2 = alih.a();
-    boolean bool3 = alih.e();
+    boolean bool2 = OSUtils.isMIUI();
+    boolean bool3 = OSUtils.isFlymeOS();
     if (Build.VERSION.SDK_INT >= 23) {}
     for (int i = 1;; i = 0)
     {
@@ -464,7 +464,7 @@ public class ImmersiveUtils
         if (j > 0) {
           i = localResources.getDimensionPixelSize(j);
         }
-        f1 = anxh.a.density;
+        f1 = FontSettingManager.systemMetrics.density;
         if (QLog.isColorLevel()) {
           QLog.d("systembar", 2, "getStatusBarHeight org=" + i + ", sys density=" + f1 + ", cur density=" + paramContext.getResources().getDisplayMetrics().density);
         }

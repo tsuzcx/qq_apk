@@ -1,33 +1,21 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import kotlin.Metadata;
 
-class armk
-  extends ClickableSpan
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
+final class armk
+  implements DialogInterface.OnClickListener
 {
-  armk(armj paramarmj, String paramString, Context paramContext) {}
+  armk(arng paramarng) {}
   
-  public void onClick(View paramView)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bhrn.a(this.jdField_a_of_type_JavaLangString, BaseApplicationImpl.getApplication().getRuntime().getAccount(), (Activity)this.jdField_a_of_type_AndroidContentContext);
-    bdll.b(null, "dc00898", "", "", armj.a(this.jdField_a_of_type_Armj), armj.a(this.jdField_a_of_type_Armj), 2, 0, "", "", "", "");
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#4D94FF"));
-    paramTextPaint.setUnderlineText(false);
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     armk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,34 @@
-import AccostSvc.MsgItem;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.manager.TicketManager;
 
-class aosc
+public class aosc
+  implements aosj
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<MsgItem> a;
-  public byte[] a;
-  public long b;
-  public String b;
-  public long c;
-  public long d;
-  public long e;
-  
-  public aosc(long paramLong1, int paramInt, long paramLong2, long paramLong3, ArrayList<MsgItem> paramArrayList, String paramString)
+  public EIPCResult a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong2;
-    this.c = paramLong3;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public aosc(long paramLong, ArrayList<MsgItem> paramArrayList)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    Object localObject = aori.a();
+    if (localObject == null)
+    {
+      QLog.e("ArkApp.GetPSKeyHandler", 1, "GetPSKeyHandler.onCall, qq app is null");
+      return EIPCResult.createResult(-102, new Bundle());
+    }
+    paramBundle = paramBundle.getString("Domain", "");
+    localObject = ((TicketManager)((QQAppInterface)localObject).getManager(2)).getPskey(((QQAppInterface)localObject).getCurrentAccountUin(), paramBundle);
+    Bundle localBundle = new Bundle();
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      QLog.e("ArkApp.GetPSKeyHandler", 1, "GetPSKeyHandler.onCall, pskey is empty, domain=" + paramBundle);
+      localBundle.putString("PSKey", "");
+    }
+    for (;;)
+    {
+      return EIPCResult.createResult(0, localBundle);
+      localBundle.putString("PSKey", (String)localObject);
+    }
   }
 }
 

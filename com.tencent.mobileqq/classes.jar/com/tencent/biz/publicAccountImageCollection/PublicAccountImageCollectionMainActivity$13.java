@@ -1,6 +1,6 @@
 package com.tencent.biz.publicAccountImageCollection;
 
-import oal;
+import obw;
 
 class PublicAccountImageCollectionMainActivity$13
   implements Runnable
@@ -19,7 +19,7 @@ class PublicAccountImageCollectionMainActivity$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.13
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-
 class pfb
-  implements qzs<TabChannelCoverInfo>
+  extends pse
 {
-  pfb(pfa parampfa, int paramInt) {}
-  
-  public boolean a(TabChannelCoverInfo paramTabChannelCoverInfo)
+  pfb(pey parampey, String paramString)
   {
-    return paramTabChannelCoverInfo.mChannelCoverId == this.jdField_a_of_type_Int;
+    super(paramString);
+  }
+  
+  public void a(prx paramprx)
+  {
+    paramprx.b();
   }
 }
 

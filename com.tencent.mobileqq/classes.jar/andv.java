@@ -1,8 +1,9 @@
+import com.tencent.mobileqq.app.BusinessObserver;
+
 public class andv
+  implements BusinessObserver
 {
-  public int a;
-  public String a;
-  public int b;
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
 }
 
 

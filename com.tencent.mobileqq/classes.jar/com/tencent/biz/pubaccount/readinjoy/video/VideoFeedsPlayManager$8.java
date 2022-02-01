@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.common.app.BaseApplicationImpl;
-import ocr;
-import ozs;
-import qwv;
+import oee;
+import pay;
+import rdt;
 
 class VideoFeedsPlayManager$8
   implements Runnable
 {
-  VideoFeedsPlayManager$8(VideoFeedsPlayManager paramVideoFeedsPlayManager, qwv paramqwv) {}
+  VideoFeedsPlayManager$8(VideoFeedsPlayManager paramVideoFeedsPlayManager, rdt paramrdt) {}
   
   public void run()
   {
-    ozs.a(BaseApplicationImpl.getContext(), ozs.a(), true, this.a.a());
-    ocr.a(this.a);
-    ozs.a(this.a.jdField_a_of_type_Boolean, this.a.jdField_d_of_type_Boolean, this.a.g, this.a.jdField_a_of_type_Int, this.a.jdField_d_of_type_Long, 409409, this.a.c, this.a.jdField_a_of_type_JavaLangString);
+    pay.a(BaseApplicationImpl.getContext(), pay.a(), true, this.a.a());
+    oee.a(this.a);
+    pay.a(this.a.jdField_a_of_type_Boolean, this.a.jdField_d_of_type_Boolean, this.a.g, this.a.jdField_a_of_type_Int, this.a.jdField_d_of_type_Long, 409409, this.a.c, this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

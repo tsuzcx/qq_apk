@@ -1,8 +1,35 @@
-public final class bmpy
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackTimeLineView;
+import java.util.List;
+
+public class bmpy
+  implements Animator.AnimatorListener
 {
-  public static String a = "tab_index";
-  public static String b = "url_params";
-  public static String c = "com.qqreader.redpoint_change";
+  public bmpy(VideoTrackContainerView paramVideoTrackContainerView, bmod parambmod) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, false);
+    VideoTrackContainerView.b(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, false);
+    VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, null);
+    VideoTrackContainerView.b(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, ((ViewGroup.MarginLayoutParams)((VideoTrackTimeLineView)VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).get(0)).getLayoutParams()).leftMargin);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, false);
+    VideoTrackContainerView.b(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, false);
+    VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, null);
+    this.jdField_a_of_type_Bmod.a();
+    VideoTrackContainerView.b(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, ((ViewGroup.MarginLayoutParams)((VideoTrackTimeLineView)VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).get(0)).getLayoutParams()).leftMargin);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

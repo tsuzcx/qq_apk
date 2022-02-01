@@ -1,18 +1,52 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class ahjy
-  extends ahkx
+  implements BusinessObserver
 {
-  ahjy(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahjy(ahiu paramahiu) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return new ApolloItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag, 2, "success:" + String.valueOf(paramBoolean));
+    }
+    boolean bool = true;
+    if (!paramBoolean)
+    {
+      this.a.b(2131694775);
+      paramBoolean = bool;
+      if (paramBoolean) {
+        this.a.b();
+      }
+      return;
+    }
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          break label139;
+        }
+        mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+        localFollowResponse.mergeFrom(paramBundle);
+        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        paramBoolean = ahiu.a(this.a, true, paramInt);
+      }
+      catch (Exception paramBundle)
+      {
+        paramBoolean = bool;
+      }
+      break;
+      label139:
+      paramBoolean = true;
+    }
   }
 }
 

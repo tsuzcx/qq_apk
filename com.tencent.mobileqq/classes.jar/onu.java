@@ -1,156 +1,35 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import java.util.concurrent.atomic.AtomicBoolean;
 
+@Deprecated
 public class onu
-  implements bcxw, bcxy, bori
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private onv jdField_a_of_type_Onv;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b;
-  private boolean c;
+  public static AtomicBoolean a;
   
-  public onu(QQAppInterface paramQQAppInterface, Context paramContext)
+  public static ArkAppMessage a(rch paramrch)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if (bork.a(borf.jdField_b_of_type_Borf) != 0) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-      bool = false;
-    }
+    return null;
   }
   
-  private void a(int paramInt)
+  public static void a() {}
+  
+  public static void a(int paramInt) {}
+  
+  public static void a(View paramView) {}
+  
+  public static void a(ArkAppMessage paramArkAppMessage, int paramInt) {}
+  
+  public static void a(ons paramons, int paramInt) {}
+  
+  public static boolean a(ArkAppMessage paramArkAppMessage)
   {
-    c();
-    if (this.jdField_a_of_type_Onv != null) {
-      this.jdField_a_of_type_Onv.a(paramInt);
-    }
+    return false;
   }
   
-  private void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
-      borg.a().a(this);
-    }
-  }
+  public static void b(int paramInt) {}
   
-  private void d()
-  {
-    if ((this.b) && ((this.c) || (!this.jdField_a_of_type_Boolean))) {
-      a(1);
-    }
-  }
-  
-  public void B_()
-  {
-    VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "onNetWorkNone", null);
-  }
-  
-  public void a()
-  {
-    ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    int j = 0;
-    int k = 1;
-    VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
-    int i;
-    if (paramInt1 != 1)
-    {
-      i = k;
-      if (paramInt1 != 0) {}
-    }
-    else
-    {
-      if (paramInt2 == 0) {
-        break label69;
-      }
-      i = k;
-    }
-    if (i != 0) {
-      a(3);
-    }
-    return;
-    label69:
-    ArrayList localArrayList = new ArrayList(1);
-    if (ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList) == 0)
-    {
-      ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this);
-      if (bork.a(borf.jdField_b_of_type_Borf) == 2)
-      {
-        borg.a().a(borf.jdField_b_of_type_Borf, this, false);
-        paramInt1 = j;
-      }
-    }
-    for (;;)
-    {
-      i = paramInt1;
-      break;
-      this.c = true;
-      VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "onConfigResult| getFilterSoState != 2", null);
-      paramInt1 = j;
-      continue;
-      paramInt1 = 1;
-    }
-  }
-  
-  public void a(borf paramborf, long paramLong1, long paramLong2) {}
-  
-  public void a(borf paramborf, String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (paramborf.jdField_b_of_type_JavaLangString.equals(borf.jdField_b_of_type_Borf.jdField_b_of_type_JavaLangString))
-    {
-      if (paramInt != 0)
-      {
-        bpam.d("ReadInJoyCameraCaptureSoManager", "[onAEDownloadFinish] error :" + paramInt);
-        a(3);
-      }
-    }
-    else {
-      return;
-    }
-    bpam.d("ReadInJoyCameraCaptureSoManager", "[onAEDownloadFinish] success");
-    this.c = true;
-    d();
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
-    {
-      if (paramInt == 0) {
-        break label62;
-      }
-      a(3);
-    }
-    for (;;)
-    {
-      VideoEnvironment.a("ReadInJoyCameraCaptureSoManager", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-      return;
-      label62:
-      this.b = true;
-      d();
-    }
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2) {}
-  
-  public void a(onv paramonv)
-  {
-    this.jdField_a_of_type_Onv = paramonv;
-  }
+  public static void b(View paramView) {}
 }
 
 

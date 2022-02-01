@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ansp;
-import anst;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import amng;
+import amnk;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
@@ -17,16 +17,16 @@ class ApolloPanel$7
       QLog.d("ApolloPanel", 2, "func updateLastApolloPanel begins. Thread id = " + Thread.currentThread().getId());
     }
     if (this.this$0.jdField_a_of_type_JavaUtilList == null) {}
-    anst localanst;
+    amnk localamnk;
     do
     {
       return;
-      localanst = (anst)this.this$0.jdField_a_of_type_JavaUtilList.get(0);
-    } while ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (!(localanst instanceof ansp)));
-    if (localanst.b == 2) {
-      localanst.b = 0;
+      localamnk = (amnk)this.this$0.jdField_a_of_type_JavaUtilList.get(0);
+    } while ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (!(localamnk instanceof amng)));
+    if (localamnk.b == 2) {
+      localamnk.b = 0;
     }
-    ((ansp)localanst).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    ((amng)localamnk).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     this.this$0.j();
   }
 }

@@ -1,18 +1,22 @@
-class xtq
-  implements xtl
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class xtq
+  extends QQUIEventReceiver<xss, vvh>
 {
-  public xtl a;
-  
-  private xtq(xtm paramxtm) {}
-  
-  public void a(xtg paramxtg)
+  public xtq(@NonNull xss paramxss)
   {
-    if (xtm.a(this.jdField_a_of_type_Xtm) != null) {
-      xtm.a(this.jdField_a_of_type_Xtm).a(0L, paramxtg.b(), paramxtg);
-    }
-    if (this.jdField_a_of_type_Xtl != null) {
-      this.jdField_a_of_type_Xtl.a(paramxtg);
-    }
+    super(paramxss);
+  }
+  
+  public void a(@NonNull xss paramxss, @NonNull vvh paramvvh)
+  {
+    paramxss.i();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vvh.class;
   }
 }
 

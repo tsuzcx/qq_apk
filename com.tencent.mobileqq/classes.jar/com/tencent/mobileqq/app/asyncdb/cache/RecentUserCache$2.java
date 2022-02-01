@@ -2,8 +2,8 @@ package com.tencent.mobileqq.app.asyncdb.cache;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import antf;
-import aolh;
+import anes;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
 import com.tencent.mobileqq.data.ConversationInfo;
@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class RecentUserCache$2
   implements Runnable
 {
-  public RecentUserCache$2(aolh paramaolh, SharedPreferences paramSharedPreferences) {}
+  public RecentUserCache$2(anes paramanes, SharedPreferences paramSharedPreferences) {}
   
   public void run()
   {
@@ -29,13 +29,13 @@ public class RecentUserCache$2
     label384:
     for (;;)
     {
-      synchronized (aolh.a(this.this$0))
+      synchronized (anes.a(this.this$0))
       {
-        Iterator localIterator = aolh.b(this.this$0).values().iterator();
+        Iterator localIterator = anes.b(this.this$0).values().iterator();
         if (localIterator.hasNext())
         {
           Entity localEntity = (Entity)localIterator.next();
-          if ((localEntity == null) || (!antf.D.equals(((RecentUser)localEntity).uin))) {
+          if ((localEntity == null) || (!AppConstants.RECOMMEND_CONTACT_UIN.equals(((RecentUser)localEntity).uin))) {
             break label384;
           }
           localObject1 = (RecentUser)localEntity;
@@ -48,19 +48,19 @@ public class RecentUserCache$2
         if (localObject1 != null)
         {
           localObject1 = this.this$0.getKey((Entity)localObject1);
-          if (aolh.c(this.this$0).containsKey(localObject1)) {
-            aolh.d(this.this$0).remove(localObject1);
+          if (anes.c(this.this$0).containsKey(localObject1)) {
+            anes.d(this.this$0).remove(localObject1);
           }
         }
-        int i = ((SQLiteDatabase)???).delete("recent", "uin=?", new String[] { antf.D });
+        int i = ((SQLiteDatabase)???).delete("recent", "uin=?", new String[] { AppConstants.RECOMMEND_CONTACT_UIN });
         if (QLog.isColorLevel()) {
           QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgrade | RecentUser delCount = " + i);
         }
-        i = ((SQLiteDatabase)???).delete(ConversationInfo.getConversationInfoTableName(), "uin=?", new String[] { antf.D });
+        i = ((SQLiteDatabase)???).delete(ConversationInfo.getConversationInfoTableName(), "uin=?", new String[] { AppConstants.RECOMMEND_CONTACT_UIN });
         if (QLog.isColorLevel()) {
           QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgrade | conversationinfo delCount = " + i);
         }
-        i = ((SQLiteDatabase)???).delete(MessageRecord.getTableName(antf.D, 4000), "frienduin=?", new String[] { antf.D });
+        i = ((SQLiteDatabase)???).delete(MessageRecord.getTableName(AppConstants.RECOMMEND_CONTACT_UIN, 4000), "frienduin=?", new String[] { AppConstants.RECOMMEND_CONTACT_UIN });
         if (QLog.isColorLevel()) {
           QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgrade | MessageRecord.RecommendMsg delCount = " + i);
         }

@@ -3,17 +3,17 @@ package com.tencent.biz.qqstory.playvideo;
 import android.os.Handler;
 import java.util.Timer;
 import java.util.TimerTask;
-import xkl;
+import wlw;
 
 public class NewProgressControler$3
   extends TimerTask
 {
-  public NewProgressControler$3(xkl paramxkl) {}
+  public NewProgressControler$3(wlw paramwlw) {}
   
   public void run()
   {
-    xkl localxkl = this.this$0;
-    localxkl.c += 50L;
+    wlw localwlw = this.this$0;
+    localwlw.c += 50L;
     if (this.this$0.c >= this.this$0.b)
     {
       this.this$0.c = this.this$0.b;
@@ -26,7 +26,7 @@ public class NewProgressControler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.NewProgressControler.3
  * JD-Core Version:    0.7.0.1
  */

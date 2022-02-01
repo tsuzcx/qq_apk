@@ -1,14 +1,13 @@
 package com.tencent.mobileqq.utils;
 
-import bhmi;
 import com.tencent.common.app.BaseApplicationImpl;
 
-public final class FileUtils$1
+final class FileUtils$1
   implements Runnable
 {
   public void run()
   {
-    bhmi.a(BaseApplicationImpl.sApplication, true);
+    FileUtils.checkFolder(BaseApplicationImpl.sApplication, true);
   }
 }
 

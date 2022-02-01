@@ -1,49 +1,49 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public class pcr
+  implements AladdinConfigHandler
 {
-  private static int b = 5000;
-  private int jdField_a_of_type_Int = 3;
-  private final DownloadInfo jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo;
-  private final Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  
-  private pcr(DownloadInfo paramDownloadInfo)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo = paramDownloadInfo;
-    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_APPID, paramDownloadInfo.c);
-    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_TASK_PACKNAME, paramDownloadInfo.e);
-    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_TASK_VERSION, String.valueOf(paramDownloadInfo.b));
-    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_VIA, paramDownloadInfo.h);
-    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_UIN_TYPE, "qqNumber");
-    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_DOWNLOADTYPE, String.valueOf(2));
-    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_ICON_URL, paramDownloadInfo.n);
-    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_APP_NAME, paramDownloadInfo.f);
-    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_SHOW_NOTIFICATION, String.valueOf(paramDownloadInfo.i));
-    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_IS_AUTOINSTALL_BY_SDK, String.valueOf(paramDownloadInfo.jdField_d_of_type_Boolean));
-    this.jdField_a_of_type_JavaUtilMap.put(TMAssistantDownloadConst.PARAM_DOWNLOADSIZE, String.valueOf(paramDownloadInfo.jdField_d_of_type_Long));
+    paramString = pbt.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      if ((str1.equals("md5")) && (str2 != null))
+      {
+        oze.a(pay.a(), "sp_key_latest_app_md5", str2.toLowerCase());
+      }
+      else if (str1.equals("version_name"))
+      {
+        oze.a(pay.a(), "sp_key_latest_app_version_name", str2);
+      }
+      else if ((str1.equals("download_url")) && (str2 != null))
+      {
+        str1 = paw.a(str2);
+        oze.a(pay.a(), "sp_key_kb_download_url", str1);
+      }
+      else if (str1.equals("enable_predownload"))
+      {
+        oze.a(pay.a(), "sp_key_enable_pre_download", TextUtils.equals("1", str2));
+      }
+    }
+    if (!paramString.containsKey("md5")) {
+      oze.a(pay.a(), "sp_key_latest_app_md5", null);
+    }
+    oze.a();
+    return true;
   }
   
-  private Map<String, String> a()
+  public void onWipeConfig(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilMap;
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Int -= 1;
-  }
-  
-  private int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public DownloadInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo;
+    oze.a(pay.a(), "sp_key_latest_app_md5", null);
+    oze.a(pay.a(), "sp_key_latest_app_version_name", null);
   }
 }
 

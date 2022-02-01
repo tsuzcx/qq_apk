@@ -1,11 +1,14 @@
+import android.support.annotation.NonNull;
+
 class bmuv
-  implements bmut
+  implements bmvq
 {
-  bmuv(bmuu parambmuu, bmur parambmur) {}
+  bmuv(bmuu parambmuu) {}
   
-  public void a()
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    this.jdField_a_of_type_Bmur.a();
+    return bfby.b(paramString);
   }
 }
 

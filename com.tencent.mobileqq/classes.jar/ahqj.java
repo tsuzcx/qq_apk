@@ -1,36 +1,89 @@
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class ahqj
+public class ahqj
+  implements ahqq
 {
-  private Map<Integer, LinkedList<View>> a = new HashMap();
+  private ahqs jdField_a_of_type_Ahqs;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected String a;
+  private String b;
+  private String c;
   
-  View a(int paramInt)
+  public ahqj(QQAppInterface paramQQAppInterface, ahqs paramahqs, Context paramContext, Intent paramIntent)
   {
-    LinkedList localLinkedList = (LinkedList)this.a.get(Integer.valueOf(paramInt));
-    if (localLinkedList == null) {
-      return null;
-    }
-    return (View)localLinkedList.poll();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Ahqs = paramahqs;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
   }
   
-  void a()
+  public int a()
   {
-    this.a.clear();
+    return 30;
   }
   
-  void a(int paramInt, View paramView)
+  public View a(Object... paramVarArgs)
   {
-    LinkedList localLinkedList2 = (LinkedList)this.a.get(Integer.valueOf(paramInt));
-    LinkedList localLinkedList1 = localLinkedList2;
-    if (localLinkedList2 == null)
+    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558656, null);
+    paramVarArgs.setOnClickListener(new ahqk(this));
+    ((TextView)paramVarArgs.findViewById(2131362531)).setText(this.jdField_a_of_type_JavaLangString);
+    return paramVarArgs;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    if (paramInt != 1000) {}
+    String str;
+    do
     {
-      localLinkedList1 = new LinkedList();
-      this.a.put(Integer.valueOf(paramInt), localLinkedList1);
-    }
-    localLinkedList1.add(paramView);
+      do
+      {
+        do
+        {
+          return;
+          if (QLog.isColorLevel()) {
+            QLog.d("ReaderTipsBar", 2, "onAIOEvent() : TYPE_ON_SHOW =====>");
+          }
+          paramVarArgs = this.jdField_a_of_type_AndroidContentIntent.getExtras();
+          if (paramVarArgs != null) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("ReaderTipsBar", 2, "data == null");
+        return;
+        str = paramVarArgs.getString("bookname");
+        if (!TextUtils.isEmpty(str)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("ReaderTipsBar", 2, "onAIOEvent() : bookName is empty");
+      return;
+      this.jdField_a_of_type_JavaLangString = String.format(amtj.a(2131711815), new Object[] { str });
+      this.b = paramVarArgs.getString("bookid");
+      this.c = paramVarArgs.getString("book_new_id");
+      this.jdField_a_of_type_Ahqs.a(this, new Object[0]);
+    } while (!QLog.isColorLevel());
+    QLog.d("ReaderTipsBar", 2, "onAIOEvent() : show ReaderTipBar, bookName : " + str);
+  }
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 1;
   }
 }
 

@@ -1,22 +1,39 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import android.os.SystemClock;
 
 public class pla
-  implements Animation.AnimationListener
 {
-  public pla(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, TranslateAnimation paramTranslateAnimation) {}
+  final long a;
+  public final String a;
+  long b;
+  public final String b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  pla(String paramString1, String paramString2)
   {
-    ReadInjoyIMAXAdFragment.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  pla(String paramString1, String paramString2, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.jdField_b_of_type_Long = paramLong;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  boolean a()
+  {
+    if (this.jdField_b_of_type_Long > 0L) {
+      if (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long <= this.jdField_b_of_type_Long) {}
+    }
+    while (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long > 300000L)
+    {
+      return true;
+      return false;
+    }
+    return false;
+  }
 }
 
 

@@ -1,12 +1,23 @@
-public abstract interface awvj
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
+class awvj
+  implements View.OnTouchListener
 {
-  public abstract void a(int paramInt, Exception paramException);
+  awvj(awur paramawur) {}
   
-  public abstract void a(Exception paramException);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString1, String paramString2);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      this.a.a.findViewById(2131369915).setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.findViewById(2131369915).setAlpha(1.0F);
+    }
+  }
 }
 
 

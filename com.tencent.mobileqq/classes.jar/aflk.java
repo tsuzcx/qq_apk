@@ -1,8 +1,21 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
-public abstract interface aflk
+class aflk
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(View paramView, int paramInt);
+  aflk(aflj paramaflj) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    DoodlePanel.a(this.a.a, false);
+  }
 }
 
 

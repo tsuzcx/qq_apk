@@ -1,35 +1,35 @@
 package com.tencent.biz.troop.feeds;
 
-import aaud;
 import android.os.Handler;
-import bdll;
-import bfrq;
-import bgts;
+import bcef;
+import beba;
+import bfdg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
+import zqq;
 
 public class TroopNewGuidePopWindow$4
   implements Runnable
 {
-  public TroopNewGuidePopWindow$4(aaud paramaaud, JSONObject paramJSONObject, boolean paramBoolean, int paramInt) {}
+  public TroopNewGuidePopWindow$4(zqq paramzqq, JSONObject paramJSONObject, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
     int j = 1;
-    this.this$0.jdField_a_of_type_Bfrq = bfrq.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b, this.jdField_a_of_type_OrgJsonJSONObject);
+    this.this$0.jdField_a_of_type_Beba = beba.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b, this.jdField_a_of_type_OrgJsonJSONObject);
     this.this$0.g = this.jdField_a_of_type_Boolean;
     String str1;
-    if (this.this$0.jdField_a_of_type_Bfrq != null)
+    if (this.this$0.jdField_a_of_type_Beba != null)
     {
-      boolean bool = bgts.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b, this.this$0.jdField_a_of_type_Bfrq.i);
-      bgts.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b);
+      boolean bool = bfdg.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b, this.this$0.jdField_a_of_type_Beba.i);
+      bfdg.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b);
       if (QLog.isColorLevel()) {
-        QLog.d("TroopTipsPopWindow", 2, "initViewInThread, isRead = " + bool + ", mTroopNotify. mTroopNotify.isShowTipWindow = " + this.this$0.jdField_a_of_type_Bfrq.b + ", isRemindNotice = " + this.jdField_a_of_type_Boolean);
+        QLog.d("TroopTipsPopWindow", 2, "initViewInThread, isRead = " + bool + ", mTroopNotify. mTroopNotify.isShowTipWindow = " + this.this$0.jdField_a_of_type_Beba.b + ", isRemindNotice = " + this.jdField_a_of_type_Boolean);
       }
-      if ((!this.this$0.jdField_a_of_type_Bfrq.g.equals(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) && (((this.this$0.jdField_a_of_type_Bfrq.b) && (!bool) && (!this.this$0.jdField_a_of_type_Bfrq.d)) || (this.jdField_a_of_type_Boolean)))
+      if ((!this.this$0.jdField_a_of_type_Beba.g.equals(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin())) && (((this.this$0.jdField_a_of_type_Beba.b) && (!bool) && (!this.this$0.jdField_a_of_type_Beba.d)) || (this.jdField_a_of_type_Boolean)))
       {
         localObject = (TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
         str1 = "";
@@ -46,13 +46,13 @@ public class TroopNewGuidePopWindow$4
       }
       localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
       String str2 = this.this$0.b;
-      if (this.this$0.jdField_a_of_type_Bfrq.c) {}
+      if (this.this$0.jdField_a_of_type_Beba.c) {}
       for (int i = 2;; i = 1)
       {
         if (this.this$0.g) {
           j = 2;
         }
-        bdll.b((QQAppInterface)localObject, "dc00898", "", "", "0X800AAC7", "0X800AAC7", 0, 0, str2, str1, String.valueOf(i), String.valueOf(j));
+        bcef.b((QQAppInterface)localObject, "dc00898", "", "", "0X800AAC7", "0X800AAC7", 0, 0, str2, str1, String.valueOf(i), String.valueOf(j));
         if (QLog.isColorLevel()) {
           QLog.d("TroopTipsPopWindow", 2, "initViewInThread showing popup window for troopNotice");
         }
@@ -62,7 +62,7 @@ public class TroopNewGuidePopWindow$4
       if (QLog.isColorLevel()) {
         QLog.d("TroopTipsPopWindow", 2, "initViewInThread, mTroopNotify is null!");
       }
-      bgts.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b);
+      bfdg.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.b);
       return;
     }
   }

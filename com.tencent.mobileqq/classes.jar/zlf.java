@@ -1,40 +1,29 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zlf
-  extends woz<xdl, xey>
+  implements View.OnClickListener
 {
-  zlf(zle paramzle) {}
+  public zlf(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(@NonNull xdl paramxdl, @Nullable xey paramxey, @NonNull ErrorMessage paramErrorMessage)
+  public void onClick(View paramView)
   {
-    yuk.b("EditVideoTagPresenter", "refresh onCmdRespond.");
-    if ((paramErrorMessage.isSuccess()) && (paramxey != null))
-    {
-      yuk.a("EditVideoTagPresenter", "refresh onCmdRespond, refresh success:[%s]", paramxey.toString());
-      paramxdl = paramxey.jdField_a_of_type_JavaUtilList;
-      if (paramxdl.contains(zle.a(this.a)))
-      {
-        int i = paramxdl.indexOf(zle.a(this.a));
-        zle.a(this.a, (zlk)paramxdl.get(i));
-        zle.a(this.a).clear();
-        zle.a(this.a).addAll(paramxdl);
-        zle.a(this.a, paramxey.jdField_a_of_type_JavaLangString);
-        zle.a(this.a, paramxey.b);
-        ThreadManager.executeOnSubThread(new EditVideoTagPresenter.1.1(this));
-      }
+    if (VideoPlayerView.a(this.a)) {
+      VideoPlayerView.c(this.a);
     }
     for (;;)
     {
-      zle.a(this.a).a(paramErrorMessage.errorCode, zle.a(this.a), this.a.a());
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      zle.a(this.a, null);
-      break;
-      yuk.e("EditVideoTagPresenter", "refresh onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
+      VideoPlayerView.d(this.a);
+      if (VideoPlayerView.a(this.a) != null) {
+        zxp.b(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "fullscreen", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).poster.nick.get(), VideoPlayerView.a(this.a).title.get() });
+      }
     }
   }
 }

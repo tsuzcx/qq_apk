@@ -1,16 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-
-public class amhx
-  implements DialogInterface.OnClickListener
+public abstract interface amhx
 {
-  public amhx(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public abstract String a(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.s();
-  }
+  public abstract void a();
+  
+  public abstract boolean a(int paramInt);
 }
 
 

@@ -1,21 +1,18 @@
-class aeem
-  extends atpa
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class aeem
+  implements View.OnClickListener
 {
-  aeem(aeeg paramaeeg) {}
+  public aeem(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.a.notifyDataSetChanged();
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.a.notifyDataSetChanged();
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

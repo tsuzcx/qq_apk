@@ -1,7 +1,7 @@
 package com.tencent.imcore.message;
 
-import aczn;
-import aoip;
+import abvw;
+import anca;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 import java.util.ArrayList;
@@ -9,14 +9,14 @@ import java.util.ArrayList;
 public class BaseMessageManagerForTroopAndDisc$2
   implements Runnable
 {
-  public BaseMessageManagerForTroopAndDisc$2(aczn paramaczn, ArrayList paramArrayList) {}
+  public BaseMessageManagerForTroopAndDisc$2(abvw paramabvw, ArrayList paramArrayList) {}
   
   public void run()
   {
-    Object localObject = (aoip)this.this$0.a.a(20);
+    Object localObject = (anca)this.this$0.a.getBusinessHandler(20);
     if (localObject != null)
     {
-      localObject = ((aoip)localObject).a();
+      localObject = ((anca)localObject).a();
       if (localObject != null) {
         ((TroopBatchAddFriendMgr)localObject).a(this.a);
       }

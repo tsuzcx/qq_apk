@@ -1,23 +1,24 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
-class ajcr
-  implements Animator.AnimatorListener
+public class ajcr
+  extends anaz
 {
-  ajcr(ajcn paramajcn) {}
+  public ajcr(Conversation paramConversation) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onCheckRealNameRsp(boolean paramBoolean, int paramInt)
   {
-    this.a.a.findViewById(16908290).setBackgroundDrawable(null);
+    if (!this.a.f) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, "VideoRedbag, onCheckRealNameRsp in conv");
+      }
+    } while ((!paramBoolean) || (paramInt != bbwb.a));
+    bfur.a(this.a.a(), 0, null, this.a.a(2131718471), 2131718473, 2131718472, new ajcs(this), new ajct(this)).show();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

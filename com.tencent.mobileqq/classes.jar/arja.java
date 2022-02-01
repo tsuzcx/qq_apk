@@ -1,73 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
 
-public class arja
-  extends arac<arjb>
+public final class arja
+  implements Parcelable.Creator<MiniAppRecommInfo>
 {
-  @NonNull
-  public arjb a(int paramInt)
+  public MiniAppRecommInfo a(Parcel paramParcel)
   {
-    return new arjb();
+    return new MiniAppRecommInfo(paramParcel);
   }
   
-  @Nullable
-  public arjb a(araj[] paramArrayOfaraj)
+  public MiniAppRecommInfo[] a(int paramInt)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null)) {
-      return arjb.a(paramArrayOfaraj[0].a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public void a(arjb paramarjb)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "onUpdate " + paramarjb.toString());
-    }
-  }
-  
-  public Class<arjb> clazz()
-  {
-    return arjb.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SingTogetherConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 551;
+    return new MiniAppRecommInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arja
  * JD-Core Version:    0.7.0.1
  */

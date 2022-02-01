@@ -1,34 +1,6 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
-
-public class afeq
+public abstract interface afeq
 {
-  public PublicAccountInfo a;
-  public String a;
-  public String b = "";
-  
-  public afeq(PublicAccountInfo paramPublicAccountInfo)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.jdField_a_of_type_JavaLangString = str;
-  }
-  
-  public void b(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.b = str;
-  }
+  public abstract void a();
 }
 
 

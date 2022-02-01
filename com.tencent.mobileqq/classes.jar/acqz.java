@@ -1,17 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingFragment;
-import kotlin.Metadata;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.AddRequestActivity.8.1;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
-public final class acqz
-  implements DialogInterface.OnClickListener
+public class acqz
+  extends amsu
 {
-  public acqz(GdtMotiveBrowsingFragment paramGdtMotiveBrowsingFragment) {}
+  public acqz(AddRequestActivity paramAddRequestActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
   {
-    GdtMotiveBrowsingFragment.a(this.a);
+    if (AddRequestActivity.a(this.a))
+    {
+      if (!paramBoolean) {
+        this.a.a(2130839615, this.a.getString(2131718115));
+      }
+    }
+    else {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("base_uin", paramString);
+    String str = this.a.b;
+    if (TextUtils.isEmpty(this.a.b)) {
+      str = this.a.a;
+    }
+    localBundle.putString("base_nick", str);
+    localBundle.putInt("verfy_type", AddRequestActivity.b(this.a));
+    localBundle.putString("verfy_msg", AddRequestActivity.a(this.a));
+    if (AddRequestActivity.a(this.a) != null) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      localBundle.putBoolean("isFromWzry", paramBoolean);
+      AutoRemarkActivity.a(this.a, 0, paramString, 0L, localBundle);
+      return;
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.equals(paramString))) {
+      ThreadManager.post(new AddRequestActivity.8.1(this), 5, null, true);
+    }
   }
 }
 

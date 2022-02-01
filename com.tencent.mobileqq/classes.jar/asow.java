@@ -1,15 +1,23 @@
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.emoticonview.EmotionInvalidPanelLinearLayout;
-
-public class asow
-  extends aslu
+public final class asow
 {
-  public Button a;
-  public LinearLayout a;
-  public TextView a;
-  public EmotionInvalidPanelLinearLayout a;
+  private final Class jdField_a_of_type_JavaLangClass;
+  private final Object jdField_a_of_type_JavaLangObject;
+  
+  public asow(Object paramObject, Class paramClass)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
+  }
+  
+  public Class a()
+  {
+    return this.jdField_a_of_type_JavaLangClass;
+  }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
 }
 
 

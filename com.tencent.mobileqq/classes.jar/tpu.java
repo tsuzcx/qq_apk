@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
 
-final class tpu
-  implements DialogInterface.OnClickListener
+public class tpu
+  implements TextView.OnEditorActionListener
 {
-  tpu(DialogInterface.OnClickListener paramOnClickListener) {}
+  public tpu(LimitWordCountEditText paramLimitWordCountEditText, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramDialogInterface.dismiss();
-    this.a.onClick(paramDialogInterface, paramInt);
+    return (this.jdField_a_of_type_Boolean) && (paramKeyEvent.getKeyCode() == 66);
   }
 }
 

@@ -17,7 +17,6 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import bnjq;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
@@ -28,6 +27,7 @@ import com.tencent.mobileqq.mini.widget.media.live.TXJSAdapterError;
 import com.tencent.mobileqq.mini.widget.media.live.TXLivePlayerJSAdapter;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
+import cooperation.qzone.util.JarReflectUtil;
 import java.lang.ref.WeakReference;
 import java.util.List;
 import org.json.JSONException;
@@ -153,7 +153,7 @@ public class MiniAppLivePlayer
   
   private void initPlayerView()
   {
-    this.tXCloudVideoView = bnjq.a("com.tencent.rtmp.ui.TXCloudVideoView", bnjq.a(new Class[] { Context.class }), new Object[] { getContext() });
+    this.tXCloudVideoView = JarReflectUtil.creatSpecifiedObject("com.tencent.rtmp.ui.TXCloudVideoView", JarReflectUtil.getParamsClass(new Class[] { Context.class }), new Object[] { getContext() });
     if (this.tXCloudVideoView == null)
     {
       QLog.e("MiniAppLivePlayer", 1, "tXCloudVideoView is null?! ");
@@ -176,28 +176,28 @@ public class MiniAppLivePlayer
   private static void saveJpeg(android.graphics.Bitmap paramBitmap, java.io.File paramFile)
   {
     // Byte code:
-    //   0: new 335	java/io/BufferedOutputStream
+    //   0: new 336	java/io/BufferedOutputStream
     //   3: dup
-    //   4: new 337	java/io/FileOutputStream
+    //   4: new 338	java/io/FileOutputStream
     //   7: dup
     //   8: aload_1
-    //   9: invokespecial 340	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   12: invokespecial 343	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   9: invokespecial 341	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   12: invokespecial 344	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   15: astore_1
     //   16: aload_0
-    //   17: getstatic 349	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   17: getstatic 350	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   20: bipush 100
     //   22: bipush 100
-    //   24: invokestatic 355	java/lang/Math:min	(II)I
+    //   24: invokestatic 356	java/lang/Math:min	(II)I
     //   27: aload_1
-    //   28: invokevirtual 361	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   28: invokevirtual 362	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   31: pop
     //   32: aload_1
-    //   33: invokevirtual 364	java/io/BufferedOutputStream:flush	()V
+    //   33: invokevirtual 365	java/io/BufferedOutputStream:flush	()V
     //   36: aload_1
     //   37: ifnull +7 -> 44
     //   40: aload_1
-    //   41: invokevirtual 367	java/io/BufferedOutputStream:close	()V
+    //   41: invokevirtual 368	java/io/BufferedOutputStream:close	()V
     //   44: return
     //   45: astore_0
     //   46: aconst_null
@@ -205,7 +205,7 @@ public class MiniAppLivePlayer
     //   48: aload_1
     //   49: ifnull +7 -> 56
     //   52: aload_1
-    //   53: invokevirtual 367	java/io/BufferedOutputStream:close	()V
+    //   53: invokevirtual 368	java/io/BufferedOutputStream:close	()V
     //   56: aload_0
     //   57: athrow
     //   58: astore_0
@@ -234,11 +234,11 @@ public class MiniAppLivePlayer
     this.hasSetUp = true;
     setTag("MiniAppLivePlayer");
     this.mContext = paramContext;
-    this.view = LayoutInflater.from(paramContext).inflate(2131559407, null);
-    this.video_container = ((VideoGestureRelativeLayout)this.view.findViewById(2131369791));
+    this.view = LayoutInflater.from(paramContext).inflate(2131559409, null);
+    this.video_container = ((VideoGestureRelativeLayout)this.view.findViewById(2131369780));
     this.video_container.setContentDescription("video_container");
-    this.video_pop_container = ((FrameLayout)this.view.findViewById(2131380934));
-    this.play_status_img = ((ImageView)this.view.findViewById(2131372776));
+    this.video_pop_container = ((FrameLayout)this.view.findViewById(2131380660));
+    this.play_status_img = ((ImageView)this.view.findViewById(2131372744));
     this.play_status_img.setVisibility(8);
     this.video_container.setOnClickListener(this);
     addView(this.view);

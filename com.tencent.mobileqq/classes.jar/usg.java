@@ -1,89 +1,42 @@
-import UserGrowth.stGetPersonalFeedListRsp;
-import UserGrowth.stSimpleMetaFeed;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 public class usg
 {
-  private volatile String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public boolean c;
+  public int d;
+  public long d;
+  public String d;
+  public int e;
+  public long e;
+  public String e;
+  public int f;
+  public long f;
+  public String f;
+  public long g;
+  public String g;
+  public long h;
+  public String h;
+  public long i;
+  public String i;
+  public long j;
+  public long k;
+  public long l;
+  public long m;
+  public long n;
+  public long o;
   
-  private ArrayList<String> a(List<usv> paramList)
+  public String toString()
   {
-    ArrayList localArrayList = new ArrayList();
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        usv localusv = (usv)paramList.next();
-        if ((localusv != null) && ((localusv.a() instanceof stSimpleMetaFeed))) {
-          localArrayList.add(((stSimpleMetaFeed)localusv.a()).id);
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static usg a()
-  {
-    return usi.a();
-  }
-  
-  private void a(stGetPersonalFeedListRsp paramstGetPersonalFeedListRsp, usf paramusf)
-  {
-    if ((paramusf instanceof uvh))
-    {
-      paramusf = ((uvh)paramusf).a();
-      if (!(paramusf instanceof WSVerticalPageFragment)) {
-        break label62;
-      }
-    }
-    label62:
-    for (paramusf = (WSVerticalPageFragment)paramusf;; paramusf = null)
-    {
-      if ((paramusf != null) && (paramusf.getActivity() != null) && (!paramusf.getActivity().isFinishing())) {
-        ugd.a().a(10007, paramstGetPersonalFeedListRsp.config);
-      }
-      return;
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<usv> paramList, usf paramusf, Object paramObject)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      uqf.e("WSArkCardDataManagerLog", "[WSArkCardDataManager.java][onTaskResponse] finished!");
-      return;
-    }
-    ArrayList localArrayList = a(paramList);
-    ush localush = new ush(this, System.currentTimeMillis(), paramBoolean2, paramusf, paramBoolean1, paramObject);
-    if (paramBoolean1) {}
-    for (paramList = "";; paramList = this.jdField_a_of_type_JavaLangString)
-    {
-      paramObject = "";
-      paramusf = paramObject;
-      if (localArrayList != null)
-      {
-        paramusf = paramObject;
-        if (localArrayList.size() > 0) {
-          paramusf = (String)localArrayList.get(0);
-        }
-      }
-      uqf.d("terry_d", "[WSVerticalDataManager.java] PersonalFeedListRequest isFirst = " + paramBoolean2 + " feedId = " + paramusf + " attachInfo = " + paramList);
-      paramString = new uko(new uot(paramString, paramList, paramBoolean2, localArrayList, paramInt), null, localush, 4013);
-      ukh.a().a(paramString);
-      return;
-    }
+    return "WSPlayerReportData{mPlayerType=" + this.jdField_a_of_type_Int + ", mPlayScene='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mPlayTime=" + this.jdField_h_of_type_Long + ", mVideoId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mVideoFormat='" + this.jdField_c_of_type_JavaLangString + '\'' + ", mVideoFileSize=" + this.jdField_a_of_type_Long + ", mActualWidth=" + this.jdField_b_of_type_Int + ", mActualHeight=" + this.jdField_c_of_type_Int + ", mVideoBitRate=" + this.jdField_b_of_type_Long + ", mIsHitCache=" + this.jdField_a_of_type_Boolean + ", mIsPreDownloadHit=" + this.jdField_b_of_type_Boolean + ", mPreloadStatus=" + this.jdField_d_of_type_Int + ", mSecondBufferTime=" + this.jdField_c_of_type_Long + ", mSecondBufferCount=" + this.jdField_e_of_type_Int + ", mListSpeedKbs='" + this.jdField_d_of_type_JavaLangString + '\'' + ", mMaxSpeedKbs=" + this.jdField_d_of_type_Long + ", mMinSpeedKbs=" + this.jdField_e_of_type_Long + ", mAverageSpeedKbs=" + this.jdField_f_of_type_Long + ", mDownloadedDuration=" + this.jdField_g_of_type_Long + ", mHttpDNSTime=" + this.jdField_i_of_type_Long + ", mHttpRedirectTime=" + this.j + ", mHttpFirstReceiveTime=" + this.k + ", mHttpConnectTime=" + this.l + ", mMp4HeaderParseTime=" + this.m + ", mCacheFrameTime=" + this.n + ", mVideoPrepareTime=" + this.o + ", mPreparePerformanceJson='" + this.jdField_e_of_type_JavaLangString + '\'' + ", mSkipFramesTotalCount=" + this.jdField_f_of_type_Int + ", mErrorCode='" + this.jdField_f_of_type_JavaLangString + '\'' + ", mErrorDetailInfo='" + this.jdField_g_of_type_JavaLangString + '\'' + ", mHWCodecErrorCode='" + this.jdField_h_of_type_JavaLangString + '\'' + ", mIsChangeHWBackup=" + this.jdField_c_of_type_Boolean + ", mHttpConnectQualityJson=" + this.jdField_i_of_type_JavaLangString + '}';
   }
 }
 

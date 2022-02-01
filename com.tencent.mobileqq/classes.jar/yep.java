@@ -1,25 +1,18 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-class yep
-  extends SimpleObserver<Void>
+public class yep
+  implements ymu
 {
-  yep(yen paramyen, yer paramyer) {}
+  public yep(DoodleLayout paramDoodleLayout) {}
   
-  public void a(Void paramVoid)
+  public void a()
   {
-    super.onNext(paramVoid);
-    yuk.b("QQStoryTakeVideoHelper", "generate video manifest success.");
-    this.jdField_a_of_type_Yen.a = 2;
-    this.jdField_a_of_type_Yer.a();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    yuk.e("QQStoryTakeVideoHelper", "generate video manifest failed.");
-    this.jdField_a_of_type_Yen.a = -1;
-    this.jdField_a_of_type_Yer.b();
+    this.a.c();
+    if ((this.a.a != null) && (this.a.a.mBusinessId == 3)) {
+      LpReportInfo_pf00064.allReport(615, 1, 3);
+    }
   }
 }
 

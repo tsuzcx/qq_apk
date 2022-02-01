@@ -1,15 +1,15 @@
 package com.tencent.gdtad.views.image;
 
-import acxm;
+import abtv;
 
 public class GdtDrawableLoader$2
   implements Runnable
 {
-  public GdtDrawableLoader$2(acxm paramacxm) {}
+  public GdtDrawableLoader$2(abtv paramabtv) {}
   
   public void run()
   {
-    acxm.a(this.this$0);
+    abtv.a(this.this$0);
   }
 }
 

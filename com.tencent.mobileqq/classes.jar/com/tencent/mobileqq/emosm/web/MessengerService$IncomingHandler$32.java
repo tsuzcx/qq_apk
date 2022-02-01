@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.emosm.web;
 
-import adab;
+import abwp;
+import amtj;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anzj;
-import asiw;
-import begp;
+import arcu;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,6 +15,7 @@ import com.tencent.mobileqq.data.MessageForGrayTips;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.text.QQText;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,7 +23,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$32
   implements Runnable
 {
-  public MessengerService$IncomingHandler$32(asiw paramasiw, JSONArray paramJSONArray, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$32(arcu paramarcu, JSONArray paramJSONArray, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
@@ -44,11 +44,11 @@ public class MessengerService$IncomingHandler$32
         localJSONObject1 = new JSONObject();
         Object localObject = this.jdField_a_of_type_OrgJsonJSONArray.getString(i);
         localJSONObject1.put("uin", localObject);
-        localJSONObject1.put("unreadMsgCount", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, 1036));
+        localJSONObject1.put("unreadMsgCount", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a((String)localObject, 1036));
         localJSONObject2 = new JSONObject();
         localJSONObject2.put("text", "");
         localJSONObject2.put("timestamp", 0);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, 1036, null, 5);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getAllMessages((String)localObject, 1036, null, 5);
         j = ((List)localObject).size() - 1;
         if (j >= 0)
         {
@@ -74,7 +74,7 @@ public class MessengerService$IncomingHandler$32
         continue;
         if ((localMessageRecord instanceof MessageForPic))
         {
-          localJSONObject2.put("text", anzj.a(2131705568));
+          localJSONObject2.put("text", amtj.a(2131705798));
           localJSONObject2.put("timestamp", localMessageRecord.time);
           continue;
         }
@@ -89,11 +89,11 @@ public class MessengerService$IncomingHandler$32
         this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
         return;
       }
-      localJSONObject2.put("text", new begp(localMessageRecord.msg, 3).a());
+      localJSONObject2.put("text", new QQText(localMessageRecord.msg, 3).toPlainText());
       localJSONObject2.put("timestamp", localMessageRecord.time);
       continue;
       label406:
-      localJSONObject2.put("text", anzj.a(2131705572));
+      localJSONObject2.put("text", amtj.a(2131705802));
       localJSONObject2.put("timestamp", localMessageRecord.time);
       continue;
       label435:
@@ -110,7 +110,7 @@ public class MessengerService$IncomingHandler$32
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.32
  * JD-Core Version:    0.7.0.1
  */

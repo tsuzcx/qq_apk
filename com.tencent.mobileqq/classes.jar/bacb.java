@@ -1,6 +1,8 @@
+import android.hardware.Camera;
+
 public abstract interface bacb
 {
-  public abstract void a(int paramInt);
+  public abstract void a(byte[] paramArrayOfByte, Camera paramCamera);
 }
 
 

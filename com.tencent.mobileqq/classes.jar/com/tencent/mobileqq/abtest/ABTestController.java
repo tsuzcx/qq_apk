@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.abtest;
 
-import adqg;
+import acmz;
 import android.text.TextUtils;
 import android.util.LruCache;
 import androidx.annotation.NonNull;
-import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mtt.abtestsdk.ABTestApi;
 import com.tencent.mtt.abtestsdk.entity.ABTestConfig;
 import com.tencent.qphone.base.util.QLog;
@@ -15,8 +15,8 @@ import mqq.app.AppRuntime;
 public final class ABTestController
 {
   private static ABTestController jdField_a_of_type_ComTencentMobileqqAbtestABTestController = new ABTestController();
-  private LruCache<String, adqg> jdField_a_of_type_AndroidUtilLruCache;
-  private bdmc jdField_a_of_type_Bdmc;
+  private LruCache<String, acmz> jdField_a_of_type_AndroidUtilLruCache;
+  private StatisticCollector jdField_a_of_type_ComTencentMobileqqStatisticsStatisticCollector;
   private String jdField_a_of_type_JavaLangString;
   private volatile boolean jdField_a_of_type_Boolean;
   
@@ -40,7 +40,7 @@ public final class ABTestController
   }
   
   @NonNull
-  public adqg a(String paramString1, String paramString2, String paramString3)
+  public acmz a(String paramString1, String paramString2, String paramString3)
   {
     if (!this.jdField_a_of_type_Boolean)
     {
@@ -48,11 +48,11 @@ public final class ABTestController
       a((BaseApplicationImpl)localObject, ((BaseApplicationImpl)localObject).getRuntime().getAccount());
     }
     Object localObject = a(paramString1, paramString2, paramString3);
-    adqg localadqg = (adqg)this.jdField_a_of_type_AndroidUtilLruCache.get(localObject);
-    if (localadqg != null) {
-      return localadqg;
+    acmz localacmz = (acmz)this.jdField_a_of_type_AndroidUtilLruCache.get(localObject);
+    if (localacmz != null) {
+      return localacmz;
     }
-    paramString1 = new adqg(paramString1, paramString2, paramString3);
+    paramString1 = new acmz(paramString1, paramString2, paramString3);
     this.jdField_a_of_type_AndroidUtilLruCache.put(localObject, paramString1);
     return paramString1;
   }
@@ -71,7 +71,7 @@ public final class ABTestController
     {
       this.jdField_a_of_type_JavaLangString = ((String)localObject);
       this.jdField_a_of_type_AndroidUtilLruCache = new LruCache(20);
-      this.jdField_a_of_type_Bdmc = bdmc.a(paramBaseApplicationImpl);
+      this.jdField_a_of_type_ComTencentMobileqqStatisticsStatisticCollector = StatisticCollector.getInstance(paramBaseApplicationImpl);
       a("start initialize ABTestApi SDK, uinAccount:" + paramString);
       long l = System.currentTimeMillis();
       localObject = new ABTestConfig();
@@ -96,7 +96,7 @@ public final class ABTestController
     localHashMap.put("eventType", paramEvtType.name());
     localHashMap.put("eventName", paramString3);
     a("report AbtestEvtExpose:" + localHashMap.toString());
-    this.jdField_a_of_type_Bdmc.a(this.jdField_a_of_type_JavaLangString, "AbtestEvtExpose", true, 0L, 0L, localHashMap, null);
+    this.jdField_a_of_type_ComTencentMobileqqStatisticsStatisticCollector.collectPerformance(this.jdField_a_of_type_JavaLangString, "AbtestEvtExpose", true, 0L, 0L, localHashMap, null);
   }
 }
 

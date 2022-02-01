@@ -1,15 +1,12 @@
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
-import feedcloud.FeedCloudMeta.StFeed;
-
 public class vmr
-  implements aaga
+  implements vkp
 {
-  public vmr(QCircleContentOperationView paramQCircleContentOperationView) {}
+  public String a;
   
-  public void a()
+  public void copy(Object paramObject)
   {
-    if (this.a.a() != null) {
-      vtr.a(17, 2, (FeedCloudMeta.StFeed)this.a.a(), QCircleContentOperationView.a(this.a), 0, QCircleContentOperationView.b(this.a));
+    if ((paramObject instanceof vmr)) {
+      this.a = ((vmr)paramObject).a;
     }
   }
 }

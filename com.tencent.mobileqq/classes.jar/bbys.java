@@ -1,42 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.KDSearchHistoryFlowLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ThemeImageView;
-
-class bbys
-  implements View.OnClickListener
+public class bbys
 {
-  bbys(bbyl parambbyl) {}
+  public int a;
+  public long a;
+  public int b;
+  public int c = 0;
   
-  public void onClick(View paramView)
+  bbys()
   {
-    boolean bool;
-    if (bbyl.a(this.a) != null)
-    {
-      KDSearchHistoryFlowLayout localKDSearchHistoryFlowLayout = bbyl.a(this.a);
-      if (bbyl.a(this.a).a) {
-        break label111;
-      }
-      bool = true;
-      localKDSearchHistoryFlowLayout.a = bool;
-      if (!bbyl.a(this.a).a) {
-        break label116;
-      }
-      bbyl.a(this.a).setImageResource(2130846033);
-    }
-    for (;;)
-    {
-      bbyl.a(this.a).a(bbyl.a(this.a).a(), bbyl.a(this.a).a);
-      bbyl.a(this.a).notifyDataSetChanged();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label111:
-      bool = false;
-      break;
-      label116:
-      bbyl.a(this.a).setImageResource(2130846034);
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+  }
+  
+  public String toString()
+  {
+    return "FailInfo{lastFCode=" + this.jdField_a_of_type_Int + ", lastSubFCode=" + this.b + ", netType=" + this.c + ", lastFTime=" + this.jdField_a_of_type_Long + '}';
   }
 }
 

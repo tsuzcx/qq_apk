@@ -1,14 +1,63 @@
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class amdu
-  extends anyu
+final class amdu
+  extends bgod
 {
-  public amdu(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  amdu(File paramFile) {}
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public void onDone(bgoe parambgoe)
   {
-    if (paramBoolean1) {
-      FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
+    super.onDone(parambgoe);
+    if ((3 == parambgoe.a()) && (this.a.exists())) {}
+    try
+    {
+      npo.a(this.a, this.a.getParent() + File.separator);
+      label166:
+      return;
+    }
+    catch (Exception parambgoe)
+    {
+      parambgoe = parambgoe;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error  error->" + parambgoe.getMessage());
+      }
+      try
+      {
+        this.a.delete();
+        return;
+      }
+      catch (Exception parambgoe)
+      {
+        return;
+      }
+    }
+    catch (OutOfMemoryError parambgoe)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + parambgoe.getMessage());
+      }
+      try
+      {
+        this.a.delete();
+        return;
+      }
+      catch (Exception parambgoe)
+      {
+        return;
+      }
+    }
+    finally
+    {
+      try
+      {
+        this.a.delete();
+        throw parambgoe;
+      }
+      catch (Exception localException)
+      {
+        break label166;
+      }
     }
   }
 }

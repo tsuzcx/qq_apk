@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.reuse;
 
 import android.text.TextUtils;
-import bhlo;
-import bmwk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.module.base.inter.IDownloadConfig;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import common.config.service.QzoneConfig;
+import cooperation.qzone.UploadEnv;
 import java.util.HashMap;
 import java.util.Properties;
 import mqq.app.AppRuntime;
@@ -68,7 +68,7 @@ class MiniDownloadConfig
   
   public int getNetworkStackType()
   {
-    return bmwk.a(1);
+    return UploadEnv.getIpStack(1);
   }
   
   public int getOperator()
@@ -103,7 +103,7 @@ class MiniDownloadConfig
   
   public String getVersion()
   {
-    return bhlo.c();
+    return DeviceInfoUtil.getQQVersion();
   }
   
   public boolean isFromQzoneAlbum(String paramString)

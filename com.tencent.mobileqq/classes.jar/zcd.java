@@ -1,42 +1,28 @@
-import android.location.Location;
-import android.location.LocationListener;
-import android.os.Bundle;
-import java.util.List;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class zcd
-  implements LocationListener
+public class zcd
+  implements View.OnLongClickListener
 {
-  zcd(zbz paramzbz) {}
+  public zcd(RecommendBannerItemView paramRecommendBannerItemView) {}
   
-  public void onLocationChanged(Location paramLocation)
+  public boolean onLongClick(View paramView)
   {
-    if (paramLocation != null)
-    {
-      yuk.a("DoodleEmojiManager", "onLocationChanged, location : %s", paramLocation);
-      if (this.a.b.size() >= 10)
-      {
-        this.a.b.remove(0);
-        yuk.b("DoodleEmojiManager", "onLocationChanged, LocationList size > 5, remove the first location.");
-      }
-      this.a.b.add(new Location(paramLocation));
-      return;
+    if (RecommendBannerItemView.a(this.a) == null) {
+      return false;
     }
-    yuk.d("DoodleEmojiManager", "onLocationChanged, location is null.");
-  }
-  
-  public void onProviderDisabled(String paramString)
-  {
-    yuk.a("DoodleEmojiManager", "onProviderDisabled, provider: %s .", paramString);
-  }
-  
-  public void onProviderEnabled(String paramString)
-  {
-    yuk.a("DoodleEmojiManager", "onProviderEnabled, provider: %s .", paramString);
-  }
-  
-  public void onStatusChanged(String paramString, int paramInt, Bundle paramBundle)
-  {
-    yuk.a("DoodleEmojiManager", "onStatusChanged, provider: %s , status: %s .", paramString, Integer.valueOf(paramInt));
+    zjm.a(this.a.getContext(), RecommendBannerItemView.a(this.a), new zce(this), new zcf(this));
+    if (RecommendBannerItemView.a(this.a)) {
+      zxp.a(RecommendBannerItemView.a(this.a).id.get(), "auth_discover", "reco_press", 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get(), RecommendBannerItemView.a(this.a).desc.get() });
+    }
+    for (;;)
+    {
+      return true;
+      zxp.a(RecommendBannerItemView.a(this.a).id.get(), "auth_page", "recom_remove", 0, 0, new String[] { "", RecommendBannerItemView.a(this.a) + "", RecommendBannerItemView.a(this.a).nick.get() });
+    }
   }
 }
 

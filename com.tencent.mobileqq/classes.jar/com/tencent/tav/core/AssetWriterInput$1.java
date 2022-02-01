@@ -10,8 +10,9 @@ class AssetWriterInput$1
   @RequiresApi(api=18)
   public void run()
   {
-    this.this$0.start();
-    this.val$callback.run();
+    if (this.this$0.start()) {
+      this.val$callback.run();
+    }
   }
 }
 

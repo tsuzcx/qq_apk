@@ -1,20 +1,21 @@
-public abstract interface ulm
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+
+final class ulm
+  implements View.OnKeyListener
 {
-  public abstract void a(int paramInt);
+  ulm(ull paramull) {}
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(int paramInt, Object paramObject);
-  
-  public abstract void a(String paramString1, boolean paramBoolean, String paramString2);
-  
-  public abstract void a(ulc paramulc);
-  
-  public abstract void a(ulc paramulc, boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(ulc paramulc);
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 4)
+    {
+      this.a.dismiss();
+      return true;
+    }
+    return false;
+  }
 }
 
 

@@ -1,34 +1,38 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.MessageForQQWalletTips;
+import java.lang.ref.SoftReference;
 
 public class aqrm
+  extends ClickableSpan
 {
-  public static void a(ArrayList<ColorNote> paramArrayList)
+  public aqrm(MessageForQQWalletTips paramMessageForQQWalletTips, String paramString, SoftReference paramSoftReference, int paramInt) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    do
     {
-      ColorNote localColorNote = (ColorNote)paramArrayList.next();
-      Integer localInteger = Integer.valueOf(localColorNote.getServiceType());
-      if (localHashMap.containsKey(localInteger))
-      {
-        ((ArrayList)localHashMap.get(localInteger)).add(localColorNote);
-      }
-      else
-      {
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(localColorNote);
-        localHashMap.put(localInteger, localArrayList);
-      }
-    }
-    ssy.a((List)localHashMap.get(Integer.valueOf(16908290)));
+      return;
+      paramView = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+    } while (paramView == null);
+    Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+    paramView.startActivity(localIntent);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.clearShadowLayer();
   }
 }
 

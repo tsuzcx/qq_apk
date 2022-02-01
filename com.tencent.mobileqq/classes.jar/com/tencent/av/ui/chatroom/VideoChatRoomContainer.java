@@ -25,21 +25,21 @@ import com.tencent.av.ui.VideoLayerUI;
 import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanelWithActionBar;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import lbj;
-import lff;
-import lgx;
-import lkd;
-import mbb;
-import mep;
-import mmu;
-import mmw;
-import mnd;
-import mne;
-import mng;
+import lba;
+import lez;
+import lgr;
+import ljx;
+import mak;
+import mdy;
+import mmd;
+import mmf;
+import mmm;
+import mmn;
+import mmp;
 
 public class VideoChatRoomContainer
   extends RelativeLayout
-  implements mnd
+  implements mmm
 {
   private int jdField_a_of_type_Int;
   public EditText a;
@@ -48,8 +48,8 @@ public class VideoChatRoomContainer
   protected ListView a;
   VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   private SystemAndEmojiEmoticonPanelWithActionBar jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar;
-  private mmu jdField_a_of_type_Mmu;
-  private mmw jdField_a_of_type_Mmw;
+  private mmd jdField_a_of_type_Mmd;
+  private mmf jdField_a_of_type_Mmf;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
@@ -79,36 +79,36 @@ public class VideoChatRoomContainer
   
   private void b(Context paramContext)
   {
-    View localView = LayoutInflater.from(paramContext).inflate(2131559701, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369629));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131365063));
-    this.jdField_a_of_type_Mmu = new mmu(paramContext);
+    View localView = LayoutInflater.from(paramContext).inflate(2131559703, this);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369619));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131365090));
+    this.jdField_a_of_type_Mmd = new mmd(paramContext);
     this.jdField_a_of_type_AndroidWidgetListView = ((ListView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(16908298));
-    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Mmu);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131368728));
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Mmd);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131368753));
     this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new InputFilter.LengthFilter(40) });
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131365990));
-    this.c = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131365997));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131366020));
+    this.c = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131366027));
     setFitsSystemWindows(true);
   }
   
   private void c(Context paramContext)
   {
-    this.jdField_a_of_type_Mmw = mmw.a((Activity)paramContext).a(this).a((VideoChatRoomListView)this.jdField_a_of_type_AndroidWidgetListView).a(this.jdField_a_of_type_AndroidWidgetEditText).a(this.jdField_a_of_type_AndroidWidgetImageView).a();
+    this.jdField_a_of_type_Mmf = mmf.a((Activity)paramContext).a(this).a((VideoChatRoomListView)this.jdField_a_of_type_AndroidWidgetListView).a(this.jdField_a_of_type_AndroidWidgetEditText).a(this.jdField_a_of_type_AndroidWidgetImageView).a();
     paramContext = new LinearLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar = new SystemAndEmojiEmoticonPanelWithActionBar(getContext(), this.jdField_a_of_type_Mmw);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar = new SystemAndEmojiEmoticonPanelWithActionBar(getContext(), this.jdField_a_of_type_Mmf);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar.setBackgroundColor(-1);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar.setId(2131373347);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar.setId(2131373263);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar.setVisibility(0);
     this.c.addView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanelWithActionBar, paramContext);
-    this.jdField_a_of_type_Mmw.a(this.c);
+    this.jdField_a_of_type_Mmf.a(this.c);
   }
   
   public int a()
   {
     int j = 0;
     int i;
-    if (this.jdField_a_of_type_Mmw.b()) {
+    if (this.jdField_a_of_type_Mmf.b()) {
       i = this.c.getHeight();
     }
     do
@@ -117,17 +117,17 @@ public class VideoChatRoomContainer
       {
         return i;
         i = j;
-      } while (!this.jdField_a_of_type_Mmw.c());
+      } while (!this.jdField_a_of_type_Mmf.c());
       i = j;
-    } while (this.jdField_a_of_type_Mmw.jdField_a_of_type_Boolean);
-    return lkd.jdField_a_of_type_Int;
+    } while (this.jdField_a_of_type_Mmf.jdField_a_of_type_Boolean);
+    return ljx.jdField_a_of_type_Int;
   }
   
   public void a(int paramInt)
   {
     boolean bool2 = true;
     int n = 0;
-    boolean bool1 = this.jdField_a_of_type_Mmw.a();
+    boolean bool1 = this.jdField_a_of_type_Mmf.a();
     int i;
     int j;
     label42:
@@ -172,11 +172,11 @@ public class VideoChatRoomContainer
       }
       label123:
       paramInt = this.jdField_a_of_type_Int;
-      i = this.jdField_a_of_type_Mmw.a();
+      i = this.jdField_a_of_type_Mmf.a();
       if ((i != 0) && (i != 7))
       {
         paramInt = n;
-        if (this.jdField_a_of_type_Mmw.jdField_a_of_type_Boolean)
+        if (this.jdField_a_of_type_Mmf.jdField_a_of_type_Boolean)
         {
           if (i != 4) {
             break label243;
@@ -220,7 +220,7 @@ public class VideoChatRoomContainer
   
   public void a(int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_Mmw == null) {
+    if (this.jdField_a_of_type_Mmf == null) {
       return;
     }
     switch (paramInt)
@@ -238,7 +238,7 @@ public class VideoChatRoomContainer
   
   protected void a(int paramInt, Object paramObject)
   {
-    lbj.c("VideoChatRoomContainer", "notifyEvent :" + paramInt + "|" + paramObject);
+    lba.f("VideoChatRoomContainer", "notifyEvent :" + paramInt + "|" + paramObject);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(paramInt), paramObject });
   }
   
@@ -305,13 +305,13 @@ public class VideoChatRoomContainer
         }
         return;
       }
-      if ((paramVideoLayerUI == null) || (paramVideoLayerUI.jdField_a_of_type_ArrayOfMep.length <= 1) || (paramVideoLayerUI.jdField_a_of_type_ArrayOfMep[1] == null)) {
+      if ((paramVideoLayerUI == null) || (paramVideoLayerUI.jdField_a_of_type_ArrayOfMdy.length <= 1) || (paramVideoLayerUI.jdField_a_of_type_ArrayOfMdy[1] == null)) {
         break label249;
       }
-      if (paramVideoLayerUI.jdField_a_of_type_ArrayOfMep[1].a() == 0)
+      if (paramVideoLayerUI.jdField_a_of_type_ArrayOfMdy[1].a() == 0)
       {
         paramInt = 1;
-        m = paramVideoLayerUI.jdField_a_of_type_ArrayOfMep[1].b();
+        m = paramVideoLayerUI.jdField_a_of_type_ArrayOfMdy[1].b();
         i = paramInt;
       }
     }
@@ -363,38 +363,38 @@ public class VideoChatRoomContainer
   
   public void a(String paramString)
   {
-    Object localObject = mne.a();
-    ((mne)localObject).a(1);
-    ((mne)localObject).a(paramString);
-    ((mne)localObject).b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
-    this.jdField_a_of_type_Mmu.a((mne)localObject);
-    this.jdField_a_of_type_AndroidWidgetListView.setSelection(this.jdField_a_of_type_Mmu.getCount() - 1);
+    Object localObject = mmn.a();
+    ((mmn)localObject).a(1);
+    ((mmn)localObject).a(paramString);
+    ((mmn)localObject).b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
+    this.jdField_a_of_type_Mmd.a((mmn)localObject);
+    this.jdField_a_of_type_AndroidWidgetListView.setSelection(this.jdField_a_of_type_Mmd.getCount() - 1);
     localObject = getContext();
     if ((localObject instanceof AVActivity))
     {
       localObject = (AVActivity)localObject;
-      if (((AVActivity)localObject).jdField_a_of_type_Mng != null) {
-        ((AVActivity)localObject).jdField_a_of_type_Mng.a(paramString);
+      if (((AVActivity)localObject).jdField_a_of_type_Mmp != null) {
+        ((AVActivity)localObject).jdField_a_of_type_Mmp.a(paramString);
       }
     }
   }
   
-  public void a(List<mne> paramList, boolean paramBoolean)
+  public void a(List<mmn> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Mmu.a(paramList, paramBoolean);
-    this.jdField_a_of_type_AndroidWidgetListView.setSelection(this.jdField_a_of_type_Mmu.getCount() - 1);
+    this.jdField_a_of_type_Mmd.a(paramList, paramBoolean);
+    this.jdField_a_of_type_AndroidWidgetListView.setSelection(this.jdField_a_of_type_Mmd.getCount() - 1);
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_Mmw.b())
+    if (this.jdField_a_of_type_Mmf.b())
     {
-      this.jdField_a_of_type_Mmw.e();
+      this.jdField_a_of_type_Mmf.b();
       return true;
     }
-    if (this.jdField_a_of_type_Mmw.c())
+    if (this.jdField_a_of_type_Mmf.c())
     {
-      this.jdField_a_of_type_Mmw.f();
+      this.jdField_a_of_type_Mmf.c();
       return true;
     }
     return false;
@@ -402,20 +402,20 @@ public class VideoChatRoomContainer
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3)) && (((lgx)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3)).a() != null);
+    return (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3)) && (((lgr)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3)).a() != null);
   }
   
   public boolean c()
   {
-    return (this.jdField_a_of_type_Mmw != null) && (this.jdField_a_of_type_Mmw.c());
+    return (this.jdField_a_of_type_Mmf != null) && (this.jdField_a_of_type_Mmf.c());
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (((AVActivity)getContext()).findViewById(2131373362) != null) {}
+    if (((AVActivity)getContext()).findViewById(2131373278) != null) {}
     for (int i = 1; i != 0; i = 0)
     {
-      this.jdField_a_of_type_Mmw.a();
+      this.jdField_a_of_type_Mmf.a();
       if (QLog.isColorLevel()) {
         QLog.w("ChatRoomUtil", 2, "doodle hase show, so not accept dispatchEvent");
       }
@@ -423,17 +423,17 @@ public class VideoChatRoomContainer
     }
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().x)
     {
-      this.jdField_a_of_type_Mmw.a();
+      this.jdField_a_of_type_Mmf.a();
       a(119, Integer.valueOf(2));
       return false;
     }
     if (VideoController.a().a().B)
     {
-      mbb.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131695141);
+      mak.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131695280);
       return false;
     }
     boolean bool2 = super.dispatchTouchEvent(paramMotionEvent);
-    if ((!bool2) && (this.jdField_a_of_type_Mmw.c()))
+    if ((!bool2) && (this.jdField_a_of_type_Mmf.c()))
     {
       paramMotionEvent = (InputMethodManager)getContext().getSystemService("input_method");
       if (paramMotionEvent == null) {
@@ -443,13 +443,13 @@ public class VideoChatRoomContainer
     label234:
     for (boolean bool1 = paramMotionEvent.isActive();; bool1 = false)
     {
-      this.jdField_a_of_type_Mmw.f();
+      this.jdField_a_of_type_Mmf.c();
       if (QLog.isColorLevel()) {
         QLog.w("ChatRoomUtil", 2, "dispatchTouchEvent, 拦截了touch消息, isSoftInputActive[" + bool1 + "]");
       }
       return bool2;
-      if ((!bool2) && (this.jdField_a_of_type_Mmw.b())) {
-        this.jdField_a_of_type_Mmw.e();
+      if ((!bool2) && (this.jdField_a_of_type_Mmf.b())) {
+        this.jdField_a_of_type_Mmf.b();
       }
       return bool2;
     }
@@ -468,16 +468,16 @@ public class VideoChatRoomContainer
   public void setVisibility(int paramInt)
   {
     super.setVisibility(paramInt);
-    if ((getVisibility() == 8) && (this.jdField_a_of_type_Mmw != null))
+    if ((getVisibility() == 8) && (this.jdField_a_of_type_Mmf != null))
     {
-      if (this.jdField_a_of_type_Mmw.b()) {
-        this.jdField_a_of_type_Mmw.e();
+      if (this.jdField_a_of_type_Mmf.b()) {
+        this.jdField_a_of_type_Mmf.b();
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_Mmw.f();
+    this.jdField_a_of_type_Mmf.c();
   }
 }
 

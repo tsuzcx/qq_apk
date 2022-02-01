@@ -1,36 +1,95 @@
 import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class aqas
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
+  private String b = "";
+  private String c = "";
+  private String d = "";
   
-  public void a()
+  public static aqas a(String paramString)
   {
-    this.e = null;
-    this.f = null;
-    this.g = null;
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      aqas localaqas = new aqas();
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("enable", 0) == 1) {}
+      for (;;)
+      {
+        localaqas.jdField_a_of_type_Boolean = bool;
+        localaqas.jdField_a_of_type_Int = paramString.optInt("showCount", 0);
+        localaqas.jdField_a_of_type_JavaLangString = paramString.optString("c2cTipsContent", "");
+        localaqas.b = paramString.optString("c2cHighlightContent", "");
+        localaqas.c = paramString.optString("groupTipsContent", "");
+        localaqas.d = paramString.optString("groupHighlightContent", "");
+        return localaqas;
+        bool = false;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return "想及时收到对方的回复，快去打开消息推送设置吧。";
+    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Int >= 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.d));
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public boolean b()
+  public String b()
   {
-    return (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.g));
+    if (TextUtils.isEmpty(this.b)) {
+      return "打开消息推送";
+    }
+    return this.b;
+  }
+  
+  public String c()
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      return "想及时收到对方的回复，快去打开消息推送设置吧。";
+    }
+    return this.c;
+  }
+  
+  public String d()
+  {
+    if (TextUtils.isEmpty(this.d)) {
+      return "打开消息推送";
+    }
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqas
  * JD-Core Version:    0.7.0.1
  */

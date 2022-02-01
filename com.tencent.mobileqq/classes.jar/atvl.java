@@ -1,14 +1,42 @@
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.data.MessageForFuDai;
 
-final class atvl
-  implements SDKInitListener
+public class atvl
+  implements afrc, Handler.Callback
 {
-  public void onSDKInited(boolean paramBoolean)
+  private BaseChatPie a;
+  
+  public atvl(BaseChatPie paramBaseChatPie)
   {
-    if (!paramBoolean) {
-      QLog.e("FileVideoDownloadManager<FileAssistant>XOXO", 1, "initSDKAsync failed!");
+    this.a = paramBaseChatPie;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 14: 
+    case 15: 
+      atvm.e();
+      return;
     }
+    atvm.f();
+  }
+  
+  void a(MessageForFuDai paramMessageForFuDai) {}
+  
+  public int[] a()
+  {
+    return new int[] { 3, 13, 14, 15, 16 };
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    return false;
   }
 }
 

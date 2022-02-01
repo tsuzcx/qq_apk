@@ -1,16 +1,6 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-
-public final class bffe
-  extends Editable.Factory
+public abstract interface bffe
 {
-  public Editable newEditable(CharSequence paramCharSequence)
-  {
-    if ((paramCharSequence instanceof begz)) {
-      return (Editable)paramCharSequence;
-    }
-    return new begz(paramCharSequence, 3, 20);
-  }
+  public abstract void a(int paramInt);
 }
 
 

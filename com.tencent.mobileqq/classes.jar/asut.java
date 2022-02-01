@@ -1,43 +1,59 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emotionintegrate.SearchEmoticonFragment;
-import com.tencent.mobileqq.emotionintegrate.SearchEmoticonWebBean;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.DocExportFilePresenter.3.1;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class asut
-  implements View.OnTouchListener
+  implements aspy
 {
-  public asut(SearchEmoticonFragment paramSearchEmoticonFragment) {}
+  asut(asur paramasur) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public View a()
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.a.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
-      if (SearchEmoticonFragment.a(this.a).d == 1)
-      {
-        EmojiHomeUiPlugin.openEmojiDetailPage(this.a.getActivity(), this.a.a().getAccount(), 8, SearchEmoticonFragment.a(this.a).e, false, false);
-        bdll.b(null, "dc00898", "", "", "0X8009EAF", "0X8009EAF", 0, 0, "", "", "", "");
-      }
+    return null;
+  }
+  
+  public void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.a.jdField_a_of_type_Asqq != null) {
+      this.a.jdField_a_of_type_Asqq.a(paramBoolean);
     }
-    for (;;)
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a()) && (paramBoolean)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c();
+    }
+    while ((this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b() == null) || (paramBoolean)) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Asst.a());
+  }
+  
+  public boolean a()
+  {
+    if (this.a.jdField_a_of_type_Asqp != null) {
+      return this.a.jdField_a_of_type_Asqp.b();
+    }
+    return false;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Asqq != null)) {
+      this.a.jdField_a_of_type_Asqq.a();
+    }
+    if (paramBoolean)
     {
-      return false;
-      if (SearchEmoticonFragment.a(this.a).d == 2)
-      {
-        MiniAppLauncher.launchMiniAppById(SearchEmoticonFragment.a(this.a), SearchEmoticonFragment.a(this.a).g, null, null, null, null, 1005);
-        bdll.b(null, "dc00898", "", "", "0X8009EB1", "0X8009EB1", 0, 0, "", "", "", "");
-        continue;
-        if (paramMotionEvent.getAction() == 0)
-        {
-          this.a.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
-          bdll.b(null, "dc00898", "", "", "0X8009EAE", "0X8009EAE", 0, 0, "", "", "", "");
-        }
-      }
+      aspt.a().b(false);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Asst.d(), this);
+      this.a.jdField_a_of_type_Boolean = false;
+      QQToast.a(this.a.jdField_a_of_type_AndroidAppActivity, 2, 2131692130, 1).a();
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new DocExportFilePresenter.3.1(this), 800L);
     }
   }
 }

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.colornote.smallscreen;
 
-import aquq;
+import apnz;
 
 public class ColorNoteSmallScreenRelativeLayout$6$1$1
   implements Runnable
 {
-  public ColorNoteSmallScreenRelativeLayout$6$1$1(aquq paramaquq) {}
+  public ColorNoteSmallScreenRelativeLayout$6$1$1(apnz paramapnz) {}
   
   public void run()
   {

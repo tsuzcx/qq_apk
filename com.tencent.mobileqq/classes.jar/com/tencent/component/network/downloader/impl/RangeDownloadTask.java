@@ -1823,10 +1823,10 @@ public class RangeDownloadTask
     //   4253: aload_0
     //   4254: getfield 91	com/tencent/component/network/downloader/impl/RangeDownloadTask:mContext	Landroid/content/Context;
     //   4257: invokestatic 525	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy;
-    //   4260: astore 16
+    //   4260: astore 14
     //   4262: aload_0
     //   4263: getfield 198	com/tencent/component/network/downloader/impl/RangeDownloadTask:mRealUrl	Ljava/lang/String;
-    //   4266: astore 14
+    //   4266: astore 16
     //   4268: aload_0
     //   4269: getfield 359	com/tencent/component/network/downloader/impl/RangeDownloadTask:mIsHttp2	Z
     //   4272: ifeq +916 -> 5188
@@ -1840,8 +1840,8 @@ public class RangeDownloadTask
     //   4292: ifeq +896 -> 5188
     //   4295: iconst_1
     //   4296: istore 8
-    //   4298: aload 16
-    //   4300: aload 14
+    //   4298: aload 14
+    //   4300: aload 16
     //   4302: iload 8
     //   4304: aload_2
     //   4305: invokevirtual 106	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
@@ -2854,10 +2854,10 @@ public class RangeDownloadTask
     //   6795: aload_0
     //   6796: getfield 91	com/tencent/component/network/downloader/impl/RangeDownloadTask:mContext	Landroid/content/Context;
     //   6799: invokestatic 525	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy;
-    //   6802: astore 16
+    //   6802: astore 15
     //   6804: aload_0
     //   6805: getfield 198	com/tencent/component/network/downloader/impl/RangeDownloadTask:mRealUrl	Ljava/lang/String;
-    //   6808: astore 15
+    //   6808: astore 16
     //   6810: aload_0
     //   6811: getfield 359	com/tencent/component/network/downloader/impl/RangeDownloadTask:mIsHttp2	Z
     //   6814: ifeq +980 -> 7794
@@ -2871,8 +2871,8 @@ public class RangeDownloadTask
     //   6834: ifeq +960 -> 7794
     //   6837: iconst_1
     //   6838: istore 8
-    //   6840: aload 16
-    //   6842: aload 15
+    //   6840: aload 15
+    //   6842: aload 16
     //   6844: iload 8
     //   6846: aload_2
     //   6847: invokevirtual 106	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;
@@ -3886,10 +3886,10 @@ public class RangeDownloadTask
     //   9339: aload_0
     //   9340: getfield 91	com/tencent/component/network/downloader/impl/RangeDownloadTask:mContext	Landroid/content/Context;
     //   9343: invokestatic 525	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:getInstance	(Landroid/content/Context;)Lcom/tencent/component/network/downloader/strategy/DownloadGlobalStrategy;
-    //   9346: astore 18
+    //   9346: astore 17
     //   9348: aload_0
     //   9349: getfield 198	com/tencent/component/network/downloader/impl/RangeDownloadTask:mRealUrl	Ljava/lang/String;
-    //   9352: astore 17
+    //   9352: astore 18
     //   9354: aload_0
     //   9355: getfield 359	com/tencent/component/network/downloader/impl/RangeDownloadTask:mIsHttp2	Z
     //   9358: ifeq +959 -> 10317
@@ -3903,8 +3903,8 @@ public class RangeDownloadTask
     //   9378: ifeq +939 -> 10317
     //   9381: iconst_1
     //   9382: istore 8
-    //   9384: aload 18
-    //   9386: aload 17
+    //   9384: aload 17
+    //   9386: aload 18
     //   9388: iload 8
     //   9390: aload_2
     //   9391: invokevirtual 106	com/tencent/component/network/downloader/DownloadResult:getStatus	()Lcom/tencent/component/network/downloader/DownloadResult$Status;

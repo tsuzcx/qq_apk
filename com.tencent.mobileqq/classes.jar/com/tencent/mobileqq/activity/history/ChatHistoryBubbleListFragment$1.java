@@ -16,7 +16,7 @@ class ChatHistoryBubbleListFragment$1
     if (this.this$0.jdField_a_of_type_Int == 1) {}
     for (Object localObject = this.this$0.b;; localObject = this.this$0.jdField_a_of_type_JavaLangString)
     {
-      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.this$0.jdField_a_of_type_Int, 9223372036854775807L, 20);
+      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryBeforeHistoryByShmsgseq((String)localObject, this.this$0.jdField_a_of_type_Int, 9223372036854775807L, 20);
       if (localObject != null) {
         ThreadManager.getUIHandler().post(new ChatHistoryBubbleListFragment.1.1(this, (List)localObject));
       }

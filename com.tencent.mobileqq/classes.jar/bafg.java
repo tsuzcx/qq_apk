@@ -1,18 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.annotation.TargetApi;
+import android.os.Looper;
+import android.support.annotation.NonNull;
 
+@TargetApi(18)
 public class bafg
-  implements View.OnClickListener
+  extends bagl
 {
-  public bafg(AbsProfileHeaderView paramAbsProfileHeaderView, View paramView) {}
-  
-  public void onClick(View paramView)
+  @NonNull
+  protected bagn a(Looper paramLooper)
   {
-    azyk.a().c(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.a);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new bagn(this, paramLooper, this);
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    this.a.post(paramRunnable);
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.troop.activity;
 
 import Override;
+import amsu;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,14 +11,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import anyu;
-import bfgl;
-import bfgm;
-import bfgn;
-import bhlg;
+import bdpc;
+import bdpd;
+import bdpe;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.AbsListView.LayoutParams;
@@ -29,10 +29,10 @@ import java.util.Map;
 public class TroopAdminList
   extends IphoneTitleBarActivity
 {
+  amsu jdField_a_of_type_Amsu = new bdpc(this);
   public View.OnClickListener a;
   protected LinearLayout a;
-  anyu jdField_a_of_type_Anyu = new bfgl(this);
-  bfgn jdField_a_of_type_Bfgn;
+  bdpe jdField_a_of_type_Bdpe;
   protected FriendListHandler a;
   protected XListView a;
   protected final String a;
@@ -46,7 +46,7 @@ public class TroopAdminList
   {
     this.jdField_a_of_type_JavaLangString = "TroopAdminList";
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bfgm(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bdpd(this);
   }
   
   protected void a()
@@ -88,8 +88,8 @@ public class TroopAdminList
   
   protected void b()
   {
-    View localView = View.inflate(this, 2131560564, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131364907));
+    View localView = View.inflate(this, 2131560574, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)localView.findViewById(2131364934));
     this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this);
@@ -97,7 +97,7 @@ public class TroopAdminList
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
     setContentView(localView);
-    setTitle(getString(2131693476));
+    setTitle(getString(2131693571));
   }
   
   public void c()
@@ -112,7 +112,7 @@ public class TroopAdminList
     while (i < j)
     {
       String str = (String)((Map)this.jdField_a_of_type_JavaUtilList.get(i)).get("uin");
-      ((Map)this.jdField_a_of_type_JavaUtilList.get(i)).put("nick", bhlg.j(this.app, str));
+      ((Map)this.jdField_a_of_type_JavaUtilList.get(i)).put("nick", ContactUtils.getFriendDisplayName(this.app, str));
       i += 1;
     }
     runOnUiThread(new TroopAdminList.4(this));
@@ -121,8 +121,9 @@ public class TroopAdminList
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -146,7 +147,7 @@ public class TroopAdminList
   
   public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Anyu);
+    removeObserver(this.jdField_a_of_type_Amsu);
     super.doOnDestroy();
   }
   

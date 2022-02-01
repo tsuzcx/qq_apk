@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agzq;
-import agzr;
-import agzt;
-import agzu;
-import apvn;
+import afwc;
+import afwd;
+import afwf;
+import afwg;
+import aopa;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
@@ -15,75 +15,75 @@ import java.util.Iterator;
 public class ArkAppLocationManager$1$1
   implements Runnable
 {
-  public ArkAppLocationManager$1$1(agzr paramagzr, boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
+  public ArkAppLocationManager$1$1(afwd paramafwd, boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
   
   public void run()
   {
     double d2 = 0.0D;
     double d1;
     if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo != null)) {
-      if ((Math.abs(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.c) > 1.0E-006D) && (Math.abs(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.d) > 1.0E-006D))
+      if ((Math.abs(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.mLocation.mLat84) > 1.0E-006D) && (Math.abs(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.mLocation.mLon84) > 1.0E-006D))
       {
-        d1 = this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.c;
-        d2 = this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.d;
+        d1 = this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.mLocation.mLat84;
+        d2 = this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.mLocation.mLon84;
       }
     }
     for (;;)
     {
-      synchronized (agzq.a(this.jdField_a_of_type_Agzr.a))
+      synchronized (afwc.a(this.jdField_a_of_type_Afwd.a))
       {
-        Object localObject2 = new ArrayList(agzq.a(this.jdField_a_of_type_Agzr.a));
+        Object localObject2 = new ArrayList(afwc.a(this.jdField_a_of_type_Afwd.a));
         if (((ArrayList)localObject2).size() == 0) {
-          SosoInterface.b(agzq.a(this.jdField_a_of_type_Agzr.a));
+          SosoInterface.removeOnLocationListener(afwc.a(this.jdField_a_of_type_Afwd.a));
         }
         ??? = ((ArrayList)localObject2).iterator();
         if (((Iterator)???).hasNext())
         {
-          localObject2 = (agzu)((Iterator)???).next();
-          ((agzu)localObject2).a(this.jdField_a_of_type_Boolean, d1, d2);
+          localObject2 = (afwg)((Iterator)???).next();
+          ((afwg)localObject2).a(this.jdField_a_of_type_Boolean, d1, d2);
           if (this.jdField_a_of_type_Boolean) {
             continue;
           }
-          ((agzu)localObject2).a();
+          ((afwg)localObject2).a();
           continue;
-          if ((Math.abs(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.a) <= 1.0E-006D) || (Math.abs(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.b) <= 1.0E-006D)) {
+          if ((Math.abs(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.mLocation.mLat02) <= 1.0E-006D) || (Math.abs(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.mLocation.mLon02) <= 1.0E-006D)) {
             break label567;
           }
-          ??? = apvn.a(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.b, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.a);
+          ??? = aopa.a(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.mLocation.mLon02, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.mLocation.mLat02);
           d2 = ???[0];
           d1 = ???[1];
-          this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.c = d1;
-          this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.a.d = d2;
+          this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.mLocation.mLat84 = d1;
+          this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo.mLocation.mLon84 = d2;
         }
       }
       if (!this.jdField_a_of_type_Boolean) {
-        synchronized (agzq.a(this.jdField_a_of_type_Agzr.a))
+        synchronized (afwc.a(this.jdField_a_of_type_Afwd.a))
         {
-          agzq.a(this.jdField_a_of_type_Agzr.a).clear();
+          afwc.a(this.jdField_a_of_type_Afwd.a).clear();
         }
       }
-      synchronized (agzq.b(this.jdField_a_of_type_Agzr.a))
+      synchronized (afwc.b(this.jdField_a_of_type_Afwd.a))
       {
-        Object localObject4 = new ArrayList(agzq.b(this.jdField_a_of_type_Agzr.a));
-        agzq.b(this.jdField_a_of_type_Agzr.a).removeAll((Collection)localObject4);
+        Object localObject4 = new ArrayList(afwc.b(this.jdField_a_of_type_Afwd.a));
+        afwc.b(this.jdField_a_of_type_Afwd.a).removeAll((Collection)localObject4);
         ??? = ((ArrayList)localObject4).iterator();
         while (((Iterator)???).hasNext())
         {
-          localObject4 = (agzu)((Iterator)???).next();
-          ((agzu)localObject4).a(this.jdField_a_of_type_Boolean, d1, d2);
-          ((agzu)localObject4).a();
+          localObject4 = (afwg)((Iterator)???).next();
+          ((afwg)localObject4).a(this.jdField_a_of_type_Boolean, d1, d2);
+          ((afwg)localObject4).a();
           continue;
           localObject5 = finally;
           throw localObject5;
         }
       }
-      synchronized (agzq.c(this.jdField_a_of_type_Agzr.a))
+      synchronized (afwc.c(this.jdField_a_of_type_Afwd.a))
       {
-        ArrayList localArrayList = new ArrayList(agzq.c(this.jdField_a_of_type_Agzr.a));
-        agzq.c(this.jdField_a_of_type_Agzr.a).removeAll(localArrayList);
+        ArrayList localArrayList = new ArrayList(afwc.c(this.jdField_a_of_type_Afwd.a));
+        afwc.c(this.jdField_a_of_type_Afwd.a).removeAll(localArrayList);
         ??? = localArrayList.iterator();
         if (((Iterator)???).hasNext()) {
-          ((agzt)((Iterator)???).next()).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo);
+          ((afwf)((Iterator)???).next()).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo);
         }
       }
       return;

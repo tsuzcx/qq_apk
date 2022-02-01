@@ -1,24 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
 
 public class pck
-  implements ValueAnimator.AnimatorUpdateListener
+  extends SimpleConfigHandler
 {
-  public pck(DailyTipsFoldUtils.1 param1, View paramView, int paramInt) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
-    int i = (int)(this.jdField_a_of_type_Int * f);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.smoothScrollToPositionFromTop(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.getHeaderViewsCount(), -i, 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("DailyTipsFoldUtils", 2, "percent = " + f + ", scrollHeight = " + i);
-    }
+    boolean bool = super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    paramString = Aladdin.getConfig(paramInt1).getString("daily_header_proteus_bid", "0");
+    bkwm.a("daily_header_proteus_bid", paramString);
+    QLog.i("DailyDynamicHeaderConfig", 2, "update bid=" + paramString);
+    return bool;
   }
 }
 

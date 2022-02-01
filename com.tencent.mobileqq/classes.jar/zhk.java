@@ -1,15 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
+import com.tencent.qphone.base.util.QLog;
 
-public class zhk
-  implements DialogInterface.OnClickListener
+class zhk
+  implements zhe
 {
-  public zhk(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  zhk(zhf paramzhf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardClosed");
+    if (zhf.a(this.a))
+    {
+      zhf.b(this.a, false);
+      if (zhf.a(this.a) != null) {
+        zhf.a(this.a).setVisibility(0);
+      }
+      if (zhf.a(this.a) != null) {
+        zhf.a(this.a).setVisibility(0);
+      }
+    }
+    for (;;)
+    {
+      zhf.a(this.a, false);
+      return;
+      this.a.dismiss();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("QCircleBaseInputPopupWindow", 1, "onSoftKeyboardOpened");
+    if (zhf.a(this.a) != paramInt)
+    {
+      zhf.a(this.a, paramInt);
+      zhf.a(this.a);
+      zhf.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
+      zhf.a(this.a).commit();
+    }
+    this.a.c();
+    zhf.a(this.a, true);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.troop.data;
 
 import android.database.Cursor;
 import android.text.TextUtils;
-import bfti;
+import becs;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -34,10 +34,10 @@ public class TroopGiftBagInfo
   public long giftOwner;
   public String giftUnit;
   @notColumn
-  public bfti myGrabResult;
+  public becs myGrabResult;
   public String myGrabResultData;
   @notColumn
-  public List<bfti> players;
+  public List<becs> players;
   public String playersData;
   public int remainAmount;
   public int remainCount;
@@ -59,8 +59,8 @@ public class TroopGiftBagInfo
     int i = 0;
     while (i < localList.size())
     {
-      bfti localbfti = new bfti((oidb_0x6c2.Player)localList.get(i));
-      this.players.add(localbfti);
+      becs localbecs = new becs((oidb_0x6c2.Player)localList.get(i));
+      this.players.add(localbecs);
       i += 1;
     }
     this.endFlag = paramGiftBagInfo.int32_end.get();
@@ -74,11 +74,11 @@ public class TroopGiftBagInfo
     this.giftUnit = paramGiftBagInfo.bytes_gift_unit.get().toStringUtf8();
     this.ext = paramGiftBagInfo.bytes_ext.get().toStringUtf8();
     if (paramPlayer != null) {
-      this.myGrabResult = new bfti(paramPlayer);
+      this.myGrabResult = new becs(paramPlayer);
     }
   }
   
-  private List<bfti> decodeBagPlayerList(String paramString)
+  private List<becs> decodeBagPlayerList(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       paramString = null;
@@ -99,9 +99,9 @@ public class TroopGiftBagInfo
             break;
           }
           paramString = localJSONArray.get(i);
-          bfti localbfti = new bfti();
-          localbfti.a(paramString.toString());
-          localArrayList.add(localbfti);
+          becs localbecs = new becs();
+          localbecs.a(paramString.toString());
+          localArrayList.add(localbecs);
           i += 1;
         }
         return localArrayList;
@@ -131,7 +131,7 @@ public class TroopGiftBagInfo
     this.giftName = paramCursor.getString(paramCursor.getColumnIndex("giftName"));
     this.giftUnit = paramCursor.getString(paramCursor.getColumnIndex("giftUnit"));
     this.ext = paramCursor.getString(paramCursor.getColumnIndex("ext"));
-    this.myGrabResult = new bfti();
+    this.myGrabResult = new becs();
     String str = paramCursor.getString(paramCursor.getColumnIndex("myGrabResultData"));
     if (!TextUtils.isEmpty(str)) {
       this.myGrabResult.a(str);
@@ -151,7 +151,7 @@ public class TroopGiftBagInfo
     int i = 0;
     while (i < this.players.size())
     {
-      localJSONArray.put(((bfti)this.players.get(i)).a());
+      localJSONArray.put(((becs)this.players.get(i)).a());
       i += 1;
     }
     this.playersData = localJSONArray.toString();

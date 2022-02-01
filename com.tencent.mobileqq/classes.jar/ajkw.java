@@ -1,68 +1,55 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.ThemeImageView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.24.1;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.24.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.face.QQHeadDownloadHandler;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class ajkw
-  extends ajjr
-  implements View.OnClickListener
+  extends amsu
 {
-  private boolean a;
+  public ajkw(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public ajkw(Context paramContext, QQAppInterface paramQQAppInterface, ajln paramajln, ajmf paramajmf)
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    super(paramContext, paramQQAppInterface, paramajln, paramajmf);
-  }
-  
-  public View a(int paramInt, View paramView)
-  {
-    ajkx localajkx;
-    Object localObject;
-    if ((paramView == null) || (!(paramView.getTag() instanceof ajkx)))
+    if ((paramSetting == null) || (this.a.a == null) || (!this.a.a.a.equals(paramSetting.uin)))
     {
-      localajkx = new ajkx();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561368, null);
-      localajkx.a = ((LinearLayout)paramView.findViewById(2131365031));
-      localajkx.b = ((LinearLayout)paramView.findViewById(2131365026));
-      localObject = (ThemeImageView)paramView.findViewById(2131366035);
-      ((ThemeImageView)localObject).setSupportMaskView(true);
-      ((ThemeImageView)localObject).setMaskShape(blqj.b);
-      paramView.setTag(localajkx);
-    }
-    for (;;)
-    {
-      paramView.setOnClickListener(this);
-      localObject = new Rect();
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-      paramInt = ((Rect)localObject).height() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299011) - bhtq.a(80.0F);
-      if (!this.jdField_a_of_type_Boolean) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("AvatarPendantActivity", 2, "onGetHeadInfo， fail");
       }
-      a(paramView, paramInt);
-      localajkx.a.setVisibility(8);
-      localajkx.b.setVisibility(0);
-      return paramView;
-      localajkx = (ajkx)paramView.getTag();
+      return;
     }
-    a(paramView, paramInt);
-    localajkx.a.setVisibility(0);
-    localajkx.b.setVisibility(8);
-    return paramView;
+    if (QLog.isColorLevel()) {
+      QLog.d("AvatarPendantActivity", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
+    }
+    AvatarPendantActivity.d(this.a);
+    if (!this.a.isResume()) {
+      AvatarPendantActivity.a(this.a, true);
+    }
+    String str2 = QQHeadDownloadHandler.get1080QQHeadDownLoadUrl(paramSetting.url, paramSetting.bFaceFlags);
+    String str1 = str2;
+    if (!TextUtils.isEmpty(str2)) {
+      str1 = MsfSdkUtils.insertMtype("QQHeadIcon", str2);
+    }
+    this.a.d = paramSetting.headImgTimestamp;
+    ThreadManager.getUIHandler().post(new AvatarPendantActivity.24.2(this, str1));
   }
   
-  public void a(boolean paramBoolean)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    AvatarPendantActivity.d(this.a);
+    if (!this.a.isResume()) {
+      AvatarPendantActivity.a(this.a, true);
+    }
+    if (paramBoolean) {
+      ThreadManager.excute(new AvatarPendantActivity.24.1(this), 32, null, false);
+    }
   }
-  
-  public void onClick(View paramView) {}
 }
 
 

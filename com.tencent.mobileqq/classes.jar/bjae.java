@@ -1,110 +1,414 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.PaintFlagsDrawFilter;
-import android.graphics.Rect;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.annotation.JsEvent;
+import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
+import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.cache.SDCardMountMonitorReceiver;
+import cooperation.qzone.model.PhotoInfo;
+import cooperation.qzone.model.PhotoParam;
+import cooperation.qzone.model.PictureUrl;
+import cooperation.qzone.model.VideoInfo;
+import cooperation.qzone.model.VideoUrl;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import cooperation.qzone.util.NetworkState;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
+@JsPlugin(secondary=true)
 public class bjae
-  extends Drawable
+  extends BaseJsPlugin
 {
-  private int jdField_a_of_type_Int;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  String jdField_a_of_type_JavaLangString = "0%";
-  boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean = true;
-  private int c;
+  public static String a;
+  private long jdField_a_of_type_Long;
+  Dialog jdField_a_of_type_AndroidAppDialog;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bjaf(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
+  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+  private RequestEvent jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent;
+  private String b;
   
-  public bjae(Bitmap paramBitmap, int paramInt)
+  static
   {
-    this(paramBitmap, paramInt, true);
+    jdField_a_of_type_JavaLangString = "famous";
   }
   
-  public bjae(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
+  private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(Typeface.DEFAULT_BOLD);
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    QZoneHelper.UserInfo.getInstance();
+    QZoneHelper.forwardToPublishBox(this.mMiniAppContext.getAttachedActivity(), null, 0);
   }
   
-  public void a()
+  private void a(Activity paramActivity, int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    paramCanvas.save();
-    paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    if (paramBoolean) {
       return;
     }
-    int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
-    int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
-    if (!this.jdField_a_of_type_Boolean)
+    if (paramInt2 > 0)
     {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int - i, this.jdField_b_of_type_Int - j);
-      this.jdField_a_of_type_Boolean = true;
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(5.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
-    if (this.jdField_b_of_type_Boolean)
-    {
-      if (this.c < 10) {
-        break label183;
+      String str = "";
+      if (paramInt1 > 0)
+      {
+        str = String.format(paramActivity.getString(2131717046), new Object[] { Integer.valueOf(paramInt1) }) + "，";
+        str = str + paramString + amtj.a(2131714195);
       }
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, (float)(this.jdField_a_of_type_Int - i * 0.6D), (float)(this.jdField_b_of_type_Int + j * 0.25D), this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    for (;;)
-    {
-      paramCanvas.restore();
-      invalidateSelf();
+      paramString = str + String.format(paramActivity.getString(2131717039), new Object[] { Integer.valueOf(paramInt2) });
+      bfur.a(paramActivity, 232).setMessage(paramString).setNegativeButton(2131717044, new bjal(this)).show();
       return;
-      label183:
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, (float)(this.jdField_a_of_type_Int - i * 0.375D), (float)(this.jdField_b_of_type_Int + j * 0.25D), this.jdField_a_of_type_AndroidGraphicsPaint);
     }
+    bhzt.a().a(paramActivity.getString(2131717047) + paramString + amtj.a(2131714194));
   }
   
-  public int getOpacity()
+  private void a(JSONObject paramJSONObject)
   {
-    return 0;
-  }
-  
-  protected boolean onLevelChange(int paramInt)
-  {
-    int i = 99;
-    int j = paramInt / 85;
-    if (j > 99) {}
-    for (;;)
+    try
     {
-      this.c = i;
-      this.jdField_a_of_type_JavaLangString = (this.c + "%");
-      return super.onLevelChange(paramInt);
-      i = j;
+      boolean bool = this.mMiniAppContext.getAttachedActivity().getSharedPreferences("troop_album" + BaseApplicationImpl.sApplication.getRuntime().getAccount(), 0).getBoolean("is_exit_fail_misson", false);
+      QLog.w("TroopAlbumPlugin", 2, "isExitFailMission:" + bool);
+      if (bool)
+      {
+        paramJSONObject = new JSONObject();
+        paramJSONObject.put("count", 1);
+        paramJSONObject.put("isFail", true);
+        sendSubscribeEvent("groupAlbum_onGroupAlbumUpload", paramJSONObject.toString());
+      }
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.w("TroopAlbumPlugin", 2, "handleQunPickQzoneAlbum,decode param error");
     }
   }
   
-  public void setAlpha(int paramInt) {}
-  
-  public void setBounds(Rect paramRect)
+  private void a(JSONObject paramJSONObject, RequestEvent paramRequestEvent)
   {
-    this.jdField_a_of_type_Int = paramRect.centerX();
-    this.jdField_b_of_type_Int = paramRect.centerY();
-    this.jdField_a_of_type_Boolean = false;
-    super.setBounds(paramRect);
+    try
+    {
+      paramJSONObject.getJSONObject("data");
+      paramJSONObject = new Bundle();
+      paramJSONObject.putInt("key_personal_album_enter_model", 0);
+      paramJSONObject.putBoolean("key_pass_result_by_bundle", true);
+      QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
+      localUserInfo.qzone_uin = BaseApplicationImpl.sApplication.getRuntime().getAccount();
+      paramJSONObject.putBoolean("key_need_change_to_jpg", true);
+      QZoneHelper.forwardToPersonalAlbumSelect(this.mMiniAppContext.getAttachedActivity(), localUserInfo, paramJSONObject, 100);
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent = paramRequestEvent;
+      paramJSONObject = new IntentFilter();
+      paramJSONObject.addAction("troop_select");
+      this.mMiniAppContext.getAttachedActivity().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramJSONObject);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.w("TroopAlbumPlugin", 2, "handleQunPickQzoneAlbum,decode param error");
+    }
   }
   
-  public void setColorFilter(ColorFilter paramColorFilter) {}
+  private boolean a()
+  {
+    return SDCardMountMonitorReceiver.getInstance().isSDCardCanWrite();
+  }
+  
+  private void b(JSONObject paramJSONObject)
+  {
+    paramJSONObject = paramJSONObject.getJSONObject("data");
+    int i = paramJSONObject.optInt("categoryType");
+    paramJSONObject = paramJSONObject.optString("categoryId");
+    Activity localActivity = this.mMiniAppContext.getAttachedActivity();
+    if (localActivity != null) {
+      QZoneHelper.forwardToCategoryAlbum(localActivity, BaseApplicationImpl.sApplication.getRuntime().getAccount(), i, paramJSONObject, -1);
+    }
+  }
+  
+  private void b(JSONObject paramJSONObject, RequestEvent paramRequestEvent)
+  {
+    Object localObject = paramJSONObject.getJSONObject("data");
+    paramJSONObject = ((JSONObject)localObject).optString("albumname");
+    long l = ((JSONObject)localObject).getLong("groupCode");
+    localObject = ((JSONObject)localObject).optString("albumid");
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+    for (int i = 2;; i = 1)
+    {
+      QZoneHelper.forwardMiniToTroopUploadPhoto(this.mMiniAppContext.getAttachedActivity(), BaseApplicationImpl.sApplication.getRuntime().getAccount(), i, 1, l, "", (String)localObject, paramJSONObject, 7001, 43);
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent = paramRequestEvent;
+      paramJSONObject = new IntentFilter();
+      paramJSONObject.addAction("troop_upload");
+      this.mMiniAppContext.getAttachedActivity().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramJSONObject);
+      return;
+    }
+  }
+  
+  private void c(JSONObject paramJSONObject)
+  {
+    paramJSONObject = paramJSONObject.getJSONObject("data");
+    long l = paramJSONObject.optLong("uin");
+    paramJSONObject.optString("nick");
+    paramJSONObject = new Intent();
+    QzonePluginProxyActivity.setActivityNameToIntent(paramJSONObject, "com.qzone.homepage.ui.activity.QZoneUserHomeActivity");
+    paramJSONObject.putExtra("qqid", l);
+    paramJSONObject.putExtra("refer", jdField_a_of_type_JavaLangString);
+    paramJSONObject.setFlags(67108864);
+    paramJSONObject.putExtra("autoShowTimeLine", false);
+    QzonePluginProxyActivity.launchPluingActivityForResult(this.mMiniAppContext.getAttachedActivity(), BaseApplicationImpl.sApplication.getRuntime().getAccount(), paramJSONObject, 0);
+  }
+  
+  private void c(JSONObject paramJSONObject, RequestEvent paramRequestEvent)
+  {
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 2000L)
+    {
+      QLog.d("TroopAlbumPlugin", 4, "handleShowPhotoList too many return " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+      return;
+    }
+    Object localObject1 = paramJSONObject.getJSONObject("data");
+    int i = ((JSONObject)localObject1).getInt("groupID");
+    paramJSONObject = ((JSONObject)localObject1).optString("albumID");
+    Object localObject4 = ((JSONObject)localObject1).optString("photoID");
+    Object localObject3 = ((JSONObject)localObject1).optString("uin");
+    Object localObject2 = ((JSONObject)localObject1).optString("bigurl");
+    long l = ((JSONObject)localObject1).optLong("uin");
+    int j = ((JSONObject)localObject1).optInt("isVideo");
+    int k = ((JSONObject)localObject1).optInt("orgVideoSize");
+    int m = ((JSONObject)localObject1).optInt("videoWidth");
+    int n = ((JSONObject)localObject1).optInt("videoHeight");
+    paramRequestEvent = ((JSONObject)localObject1).optString("videoURL");
+    String str = ((JSONObject)localObject1).optString("videoID");
+    localObject1 = QZoneHelper.UserInfo.getInstance();
+    ((QZoneHelper.UserInfo)localObject1).qzone_uin = ((String)localObject3);
+    localObject3 = new Bundle();
+    ArrayList localArrayList = new ArrayList();
+    PhotoInfo localPhotoInfo = new PhotoInfo();
+    localPhotoInfo.bigUrl = ((String)localObject2);
+    localPhotoInfo.uploaduin = l;
+    localPhotoInfo.albumId = paramJSONObject;
+    localPhotoInfo.lloc = ((String)localObject4);
+    localPhotoInfo.appid = i;
+    localPhotoInfo.videoflag = j;
+    localPhotoInfo.videodata = new VideoInfo();
+    localPhotoInfo.videodata.videoId = str;
+    localObject4 = new PictureUrl();
+    ((PictureUrl)localObject4).url = ((String)localObject2);
+    localPhotoInfo.videodata.coverUrl = ((PictureUrl)localObject4);
+    localObject2 = new VideoUrl();
+    ((VideoUrl)localObject2).url = paramRequestEvent;
+    localPhotoInfo.videodata.originVideoSize = k;
+    localPhotoInfo.videodata.videoId = str;
+    localPhotoInfo.videodata.actionUrl = paramRequestEvent;
+    localPhotoInfo.videodata.videoUrl = ((VideoUrl)localObject2);
+    localPhotoInfo.videodata.width = m;
+    localPhotoInfo.videodata.height = n;
+    localPhotoInfo.videodata.videoStatus = 5;
+    localArrayList.add(localPhotoInfo);
+    paramRequestEvent = new PhotoParam();
+    paramRequestEvent.albumid = paramJSONObject;
+    paramRequestEvent.cell_id = paramJSONObject;
+    ((Bundle)localObject3).putSerializable("picturelist", localArrayList);
+    ((Bundle)localObject3).putInt("curindex", 0);
+    ((Bundle)localObject3).putInt("mode", 13);
+    ((Bundle)localObject3).putBoolean("need_clear_cache", true);
+    QZoneHelper.forwardToPictureViewer(this.mMiniAppContext.getAttachedActivity(), (QZoneHelper.UserInfo)localObject1, (Bundle)localObject3, 6);
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  private void d(JSONObject paramJSONObject)
+  {
+    Object localObject = paramJSONObject.getJSONObject("data");
+    paramJSONObject = ((JSONObject)localObject).optString("albumname");
+    int i = ((JSONObject)localObject).getInt("groupCode");
+    localObject = ((JSONObject)localObject).optString("albumid");
+    ChatHistoryActivity.a(this.mMiniAppContext.getAttachedActivity(), String.valueOf(i), (String)localObject, paramJSONObject);
+  }
+  
+  private void e(JSONObject paramJSONObject)
+  {
+    Object localObject = new Intent();
+    paramJSONObject = paramJSONObject.getJSONObject("data").toString();
+    ((Intent)localObject).putExtra("photos", paramJSONObject);
+    RemoteHandleManager.getInstance().addWebEventListener(new bjag(this, paramJSONObject));
+    if (!a())
+    {
+      bhzt.a().a(amtj.a(2131714190));
+      return;
+    }
+    if (!NetworkState.isNetSupport())
+    {
+      bhzt.a().a(amtj.a(2131714189));
+      return;
+    }
+    if (!NetworkState.isWifiConn())
+    {
+      localObject = this.mMiniAppContext.getAttachedActivity();
+      bfur.a((Context)localObject, 230).setTitle(((Context)localObject).getString(2131717043)).setMessage(((Context)localObject).getString(2131717045)).setPositiveButton(((Context)localObject).getString(2131717042), new bjak(this, paramJSONObject)).setNegativeButton(((Context)localObject).getString(2131717041), new bjaj(this)).show();
+      return;
+    }
+    RemoteHandleManager.getInstance().getSender().downloadTroopPhoto(paramJSONObject);
+  }
+  
+  @JsEvent({"groupAlbum_downloadGroupAlbumPhoto"})
+  public void groupAlbumDownloadGroupAlbumPhoto(RequestEvent paramRequestEvent)
+  {
+    try
+    {
+      QLog.i("TroopAlbumPlugin", 2, "groupAlbum_downloadGroupAlbumPhoto succeed");
+      e(new JSONObject(paramRequestEvent.jsonParams));
+      paramRequestEvent.ok();
+      return;
+    }
+    catch (Throwable paramRequestEvent)
+    {
+      QLog.e("TroopAlbumPlugin", 1, "groupAlbum_downloadGroupAlbumPhoto failed, ", paramRequestEvent);
+    }
+  }
+  
+  @JsEvent({"groupAlbum_groupUploadPhoto"})
+  public void groupAlbumGroupUploadPhoto(RequestEvent paramRequestEvent)
+  {
+    try
+    {
+      QLog.i("TroopAlbumPlugin", 2, "groupAlbum_groupUploadPhoto succeed");
+      b(new JSONObject(paramRequestEvent.jsonParams), paramRequestEvent);
+      paramRequestEvent.ok();
+      return;
+    }
+    catch (Throwable paramRequestEvent)
+    {
+      QLog.e("TroopAlbumPlugin", 1, "groupAlbumGroupUploadPhoto failed, ", paramRequestEvent);
+    }
+  }
+  
+  @JsEvent({"groupAlbum_importGroupAIO"})
+  public void groupAlbumImportGroupAIO(RequestEvent paramRequestEvent)
+  {
+    try
+    {
+      QLog.i("TroopAlbumPlugin", 2, "groupAlbum_importGroupAIO succeed");
+      d(new JSONObject(paramRequestEvent.jsonParams));
+      paramRequestEvent.ok();
+      return;
+    }
+    catch (Throwable paramRequestEvent)
+    {
+      QLog.e("TroopAlbumPlugin", 1, "groupAlbum_importGroupAIO failed, ", paramRequestEvent);
+    }
+  }
+  
+  @JsEvent({"groupAlbum_jumpCategoryAlbum"})
+  public void groupAlbumJumpCategoryAlbum(RequestEvent paramRequestEvent)
+  {
+    try
+    {
+      QLog.i("TroopAlbumPlugin", 2, "groupAlbum_jumpCategoryAlbum succeed");
+      b(new JSONObject(paramRequestEvent.jsonParams));
+      paramRequestEvent.ok();
+      return;
+    }
+    catch (Throwable paramRequestEvent)
+    {
+      QLog.e("TroopAlbumPlugin", 1, "groupAlbum_jumpCategoryAlbum failed, ", paramRequestEvent);
+    }
+  }
+  
+  @JsEvent({"groupAlbum_jumpGroupAlbumSendBox"})
+  public void groupAlbumJumpGroupAlbumSendBox(RequestEvent paramRequestEvent)
+  {
+    try
+    {
+      QLog.i("TroopAlbumPlugin", 2, "groupAlbum_jumpGroupAlbumSendBox succeed");
+      a();
+      paramRequestEvent.ok();
+      return;
+    }
+    catch (Throwable paramRequestEvent)
+    {
+      QLog.e("TroopAlbumPlugin", 1, "groupAlbum_jumpGroupAlbumSendBox failed, ", paramRequestEvent);
+    }
+  }
+  
+  @JsEvent({"groupAlbum_openUserQzoneHome"})
+  public void groupAlbumOpenUserQzoneHome(RequestEvent paramRequestEvent)
+  {
+    try
+    {
+      QLog.i("TroopAlbumPlugin", 2, "groupAlbum_openUserQzoneHome succeed");
+      c(new JSONObject(paramRequestEvent.jsonParams));
+      paramRequestEvent.ok();
+      return;
+    }
+    catch (Throwable paramRequestEvent)
+    {
+      QLog.e("TroopAlbumPlugin", 1, "groupAlbum_openUserQzoneHome failed, ", paramRequestEvent);
+    }
+  }
+  
+  @JsEvent({"groupAlbum_pickQzoneAlbum"})
+  public void groupAlbumPickQzoneAlbum(RequestEvent paramRequestEvent)
+  {
+    try
+    {
+      QLog.i("TroopAlbumPlugin", 2, "groupAlbum_pickQzoneAlbum succeed");
+      a(new JSONObject(paramRequestEvent.jsonParams), paramRequestEvent);
+      paramRequestEvent.ok();
+      return;
+    }
+    catch (Throwable paramRequestEvent)
+    {
+      QLog.e("TroopAlbumPlugin", 1, "groupAlbum_pickQzoneAlbum failed, ", paramRequestEvent);
+    }
+  }
+  
+  @JsEvent({"groupAlbum_showGroupPhotoBrowser"})
+  public void groupAlbumShowGroupPhotoBrowser(RequestEvent paramRequestEvent)
+  {
+    try
+    {
+      QLog.i("TroopAlbumPlugin", 2, "groupAlbum_showGroupPhotoBrowser succeed");
+      c(new JSONObject(paramRequestEvent.jsonParams), paramRequestEvent);
+      paramRequestEvent.ok();
+      return;
+    }
+    catch (Throwable paramRequestEvent)
+    {
+      QLog.e("TroopAlbumPlugin", 1, "groupAlbum_showGroupPhotoBrowser failed, ", paramRequestEvent);
+    }
+  }
+  
+  @JsEvent({"groupAlbum_start"})
+  public void groupAlbumStart(RequestEvent paramRequestEvent)
+  {
+    try
+    {
+      QLog.i("TroopAlbumPlugin", 2, "groupAlbum_start succeed");
+      a(new JSONObject(paramRequestEvent.jsonParams));
+      paramRequestEvent.ok();
+      return;
+    }
+    catch (Throwable paramRequestEvent)
+    {
+      QLog.e("TroopAlbumPlugin", 1, "groupAlbum_start failed, ", paramRequestEvent);
+    }
+  }
 }
 
 

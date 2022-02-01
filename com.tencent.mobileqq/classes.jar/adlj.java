@@ -1,38 +1,21 @@
-abstract class adlj
-  implements com.tencent.mobileqq.javahooksdk.HookMethodCallback
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class adlj
+  implements View.OnClickListener
 {
-  public static com.tencent.qapmsdk.battery.monitor.MethodHookParam a(com.tencent.mobileqq.javahooksdk.MethodHookParam paramMethodHookParam)
+  public adlj(GeneralSettingActivity paramGeneralSettingActivity) {}
+  
+  public void onClick(View paramView)
   {
-    com.tencent.qapmsdk.battery.monitor.MethodHookParam localMethodHookParam = new com.tencent.qapmsdk.battery.monitor.MethodHookParam();
-    if (paramMethodHookParam != null)
-    {
-      localMethodHookParam.args = paramMethodHookParam.args;
-      localMethodHookParam.method = paramMethodHookParam.method;
-      localMethodHookParam.result = paramMethodHookParam.result;
-      localMethodHookParam.thisObject = paramMethodHookParam.thisObject;
-      localMethodHookParam.throwable = paramMethodHookParam.throwable;
-    }
-    return localMethodHookParam;
-  }
-  
-  public abstract com.tencent.qapmsdk.battery.monitor.HookMethodCallback a();
-  
-  public abstract void a();
-  
-  public void afterHookedMethod(com.tencent.mobileqq.javahooksdk.MethodHookParam paramMethodHookParam)
-  {
-    com.tencent.qapmsdk.battery.monitor.HookMethodCallback localHookMethodCallback = a();
-    if (localHookMethodCallback != null) {
-      localHookMethodCallback.afterHookedMethod(a(paramMethodHookParam));
-    }
-  }
-  
-  public void beforeHookedMethod(com.tencent.mobileqq.javahooksdk.MethodHookParam paramMethodHookParam)
-  {
-    com.tencent.qapmsdk.battery.monitor.HookMethodCallback localHookMethodCallback = a();
-    if (localHookMethodCallback != null) {
-      localHookMethodCallback.beforeHookedMethod(a(paramMethodHookParam));
-    }
+    Intent localIntent = new Intent(this.a, FontSettingActivity.class);
+    this.a.startActivity(localIntent);
+    bcef.b(this.a.app, "CliOper", "", "", "Setting_tab", "0X8004FA2", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

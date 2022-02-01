@@ -1,21 +1,72 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aqdz
-  implements DialogInterface.OnDismissListener
+public class aqdz
+  extends aptq<aqdy>
 {
-  aqdz(aqdy paramaqdy, blir paramblir) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  @NonNull
+  public aqdy a(int paramInt)
   {
-    this.jdField_a_of_type_Blir.dismiss();
-    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ClearData actionsheet is closed", new Object[0]));
+    return new aqdy();
+  }
+  
+  @Nullable
+  public aqdy a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
+    {
+      aqdy localaqdy = aqdy.a(paramArrayOfaptx[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WVWhiteListConfProcessor", 2, "onParsed  " + paramArrayOfaptx[0].a);
+      }
+      return localaqdy;
+    }
+    return null;
+  }
+  
+  public void a(aqdy paramaqdy)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVWhiteListConfProcessor", 2, "onUpdate " + paramaqdy.toString());
+    }
+  }
+  
+  public Class<aqdy> clazz()
+  {
+    return aqdy.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 207;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqdz
  * JD-Core Version:    0.7.0.1
  */

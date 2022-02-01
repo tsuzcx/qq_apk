@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.model;
 
-import aggu;
+import aezp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,35 +15,32 @@ import android.os.Handler;
 import android.support.v4.util.LruCache;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import antf;
-import axfd;
-import axfe;
-import axff;
-import axfg;
-import axfh;
-import bdll;
-import bdmc;
-import bhlo;
-import bhmi;
-import bhmq;
-import bhnv;
-import bhto;
-import bhzn;
-import bhzz;
-import biaa;
-import biac;
-import biad;
-import bihw;
-import biia;
-import biki;
+import avsk;
+import avsl;
+import avsm;
+import avsn;
+import avso;
+import bcef;
+import bfvo;
+import bgae;
+import bgfx;
+import bggj;
+import bggk;
+import bggm;
+import bggn;
+import bgog;
+import bgok;
+import bgqr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatBackgroundInfo;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.theme.diy.DIYThemeUtils;
 import com.tencent.mobileqq.theme.diy.ResData;
@@ -52,6 +49,9 @@ import com.tencent.mobileqq.theme.diy.ThemeBackground;
 import com.tencent.mobileqq.theme.diy.ThemeDIYData;
 import com.tencent.mobileqq.theme.diy.ThemeDiyStyleLogic;
 import com.tencent.mobileqq.theme.diy.ThemeDiyStyleLogic.DarkBrightnessTask;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -82,18 +82,18 @@ public class ChatBackgroundManager
   public static int c;
   static String c;
   LruCache<String, Vector<Integer>> jdField_a_of_type_AndroidSupportV4UtilLruCache;
-  private bihw jdField_a_of_type_Bihw;
+  private bgog jdField_a_of_type_Bgog;
   public QQAppInterface a;
   String jdField_a_of_type_JavaLangString;
-  Map<String, biia> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  Map<String, bgok> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   boolean jdField_a_of_type_Boolean;
-  Map<String, bhzn> b;
+  Map<String, bgfx> b;
   
   static
   {
-    jdField_b_of_type_JavaLangString = antf.cn + "ChatBgJson.txt";
+    jdField_b_of_type_JavaLangString = AppConstants.PATH_SYSTEM_BACKGROUND_RESOURCE + "ChatBgJson.txt";
     jdField_a_of_type_Int = 1;
-    jdField_a_of_type_AndroidOsHandler = new axfh(BaseApplication.getContext().getMainLooper());
+    jdField_a_of_type_AndroidOsHandler = new avso(BaseApplication.getContext().getMainLooper());
   }
   
   public ChatBackgroundManager(QQAppInterface paramQQAppInterface)
@@ -102,7 +102,7 @@ public class ChatBackgroundManager
     this.jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getAccount();
-    this.jdField_a_of_type_Bihw = ((bihw)paramQQAppInterface.getManager(47));
+    this.jdField_a_of_type_Bgog = ((bgog)paramQQAppInterface.getManager(47));
   }
   
   public static int a()
@@ -206,7 +206,7 @@ public class ChatBackgroundManager
     if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache == null) {
       this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(20);
     }
-    while (paramSessionInfo.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
+    while (paramSessionInfo.chatBg.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("ChatBackgroundManager", 4, "SessionInfo.chatBg.img == null");
@@ -218,16 +218,16 @@ public class ChatBackgroundManager
       }
     }
     this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, new Vector(5));
-    Object localObject = new axfe(this, paramContext);
+    Object localObject = new avsl(this, paramContext);
     if (QLog.isColorLevel()) {
       QLog.d("ChatBackgroundManager", 2, "Background Path=" + paramString + ", start extract background theme color.");
     }
     boolean bool2 = false;
     boolean bool1;
-    if (paramSessionInfo.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      if ((paramSessionInfo.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof BitmapDrawable))
+    if (paramSessionInfo.chatBg.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+      if ((paramSessionInfo.chatBg.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof BitmapDrawable))
       {
-        paramSessionInfo = ((BitmapDrawable)paramSessionInfo.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getBitmap();
+        paramSessionInfo = ((BitmapDrawable)paramSessionInfo.chatBg.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getBitmap();
         paramContext = paramSessionInfo;
         bool1 = bool2;
         if (QLog.isDevelopLevel())
@@ -240,9 +240,9 @@ public class ChatBackgroundManager
     }
     for (;;)
     {
-      ThreadManager.executeOnFileThread(new ChatBackgroundManager.BgColorExtractJob(this, paramString, paramContext, bool1, (axfg)localObject));
+      ThreadManager.executeOnFileThread(new ChatBackgroundManager.BgColorExtractJob(this, paramString, paramContext, bool1, (avsn)localObject));
       return null;
-      paramSessionInfo = bhmq.c(paramSessionInfo.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      paramSessionInfo = bfvo.c(paramSessionInfo.chatBg.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       bool2 = true;
       paramContext = paramSessionInfo;
       bool1 = bool2;
@@ -258,7 +258,7 @@ public class ChatBackgroundManager
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, bdmc parambdmc)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, StatisticCollector paramStatisticCollector)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put(jdField_c_of_type_JavaLangString, Integer.valueOf(1));
@@ -267,7 +267,7 @@ public class ChatBackgroundManager
     }
     try
     {
-      parambdmc.b(paramQQAppInterface, paramString, localHashMap);
+      paramStatisticCollector.reportOnOff(paramQQAppInterface, paramString, localHashMap);
       return;
     }
     catch (NoClassDefFoundError paramQQAppInterface)
@@ -279,8 +279,8 @@ public class ChatBackgroundManager
   
   public static void a(String paramString)
   {
-    biaa.a(BaseApplicationImpl.getApplication().getRuntime(), "individual_v2_background_play_fail", "0", paramString, Build.MODEL, Build.VERSION.RELEASE, Long.toString(bhlo.d()), 0.0F, 0.0F);
-    bhzz.a("individual_v2_background_play_fail", Build.MODEL + " " + Build.VERSION.RELEASE + " " + Long.toString(bhlo.d()));
+    bggk.a(BaseApplicationImpl.getApplication().getRuntime(), "individual_v2_background_play_fail", "0", paramString, Build.MODEL, Build.VERSION.RELEASE, Long.toString(DeviceInfoUtil.getSystemTotalMemory()), 0.0F, 0.0F);
+    bggj.a("individual_v2_background_play_fail", Build.MODEL + " " + Build.VERSION.RELEASE + " " + Long.toString(DeviceInfoUtil.getSystemTotalMemory()));
   }
   
   private void a(String paramString1, String paramString2)
@@ -297,7 +297,7 @@ public class ChatBackgroundManager
       Object localObject = ThemeBackground.getThemeBackgroundId(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "theme_bg_message_path_png", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
       if ((ThemeUtil.isNowThemeIsDIY()) && (paramString1.equals(localObject)))
       {
-        localObject = new ThemeDIYData(2130847477, "theme_bg_message_path", 2131166572, "theme_bg_message_path_png", 50, 1);
+        localObject = new ThemeDIYData(2130847386, "theme_bg_message_path", 2131166591, "theme_bg_message_path_png", 50, 1);
         ((ThemeDIYData)localObject).tryOnBgBigOrgRD = new ResData();
         ResSuitData localResSuitData = new ResSuitData();
         localResSuitData.id = paramString1;
@@ -305,7 +305,7 @@ public class ChatBackgroundManager
         localResSuitData.typeStr = "item";
         localResSuitData.appStr = "chatBg";
         paramString1 = DIYThemeUtils.getResData(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localResSuitData, 116, localResSuitData.name);
-        new ThemeDiyStyleLogic.DarkBrightnessTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, paramString1.path, (ThemeDIYData)localObject, null, new axff(this)).execute(new Object[0]);
+        new ThemeDiyStyleLogic.DarkBrightnessTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, paramString1.path, (ThemeDIYData)localObject, null, new avsm(this)).execute(new Object[0]);
       }
       return;
       if (paramString1.equals(ThemeBackground.getThemeBackgroundId(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "theme_bg_aio_path", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
@@ -322,7 +322,7 @@ public class ChatBackgroundManager
     if ((a() & 0x1) != 0)
     {
       long l = a();
-      if ((l <= 10485760L) || (bhto.a()))
+      if ((l <= 10485760L) || (bgae.a()))
       {
         QLog.d("ChatBackground", 1, "availableMemory is " + l + ", too low to play dynamic background");
         bool = false;
@@ -334,7 +334,7 @@ public class ChatBackgroundManager
   
   public static boolean a(Context paramContext, String paramString1, String paramString2)
   {
-    paramContext = aggu.a(paramContext, paramString1, paramString2);
+    paramContext = aezp.a(paramContext, paramString1, paramString2);
     if (paramContext.contains("aioImage")) {
       return new File(paramContext.replace("aioImage", "main.json")).exists();
     }
@@ -377,47 +377,47 @@ public class ChatBackgroundManager
     //   6: aload 5
     //   8: dup
     //   9: iconst_0
-    //   10: ldc_w 514
+    //   10: ldc_w 516
     //   13: bastore
     //   14: dup
     //   15: iconst_1
-    //   16: ldc_w 515
+    //   16: ldc_w 517
     //   19: bastore
     //   20: dup
     //   21: iconst_2
-    //   22: ldc_w 516
+    //   22: ldc_w 518
     //   25: bastore
     //   26: dup
     //   27: iconst_3
-    //   28: ldc_w 517
+    //   28: ldc_w 519
     //   31: bastore
     //   32: dup
     //   33: iconst_4
-    //   34: ldc_w 518
+    //   34: ldc_w 520
     //   37: bastore
     //   38: dup
     //   39: iconst_5
-    //   40: ldc_w 519
+    //   40: ldc_w 521
     //   43: bastore
     //   44: dup
     //   45: bipush 6
-    //   47: ldc_w 520
+    //   47: ldc_w 522
     //   50: bastore
     //   51: dup
     //   52: bipush 7
-    //   54: ldc_w 519
+    //   54: ldc_w 521
     //   57: bastore
     //   58: pop
     //   59: aload_0
-    //   60: invokevirtual 499	java/io/File:exists	()Z
+    //   60: invokevirtual 501	java/io/File:exists	()Z
     //   63: ifne +5 -> 68
     //   66: iconst_0
     //   67: ireturn
-    //   68: new 522	java/io/RandomAccessFile
+    //   68: new 524	java/io/RandomAccessFile
     //   71: dup
     //   72: aload_0
-    //   73: ldc_w 524
-    //   76: invokespecial 527	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   73: ldc_w 526
+    //   76: invokespecial 529	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   79: astore 4
     //   81: aload 4
     //   83: astore_0
@@ -429,7 +429,7 @@ public class ChatBackgroundManager
     //   93: astore_0
     //   94: aload 4
     //   96: aload 6
-    //   98: invokevirtual 531	java/io/RandomAccessFile:read	([B)I
+    //   98: invokevirtual 533	java/io/RandomAccessFile:read	([B)I
     //   101: pop
     //   102: iconst_0
     //   103: istore_1
@@ -453,15 +453,15 @@ public class ChatBackgroundManager
     //   129: aload 4
     //   131: ifnull -65 -> 66
     //   134: aload 4
-    //   136: invokevirtual 534	java/io/RandomAccessFile:close	()V
+    //   136: invokevirtual 536	java/io/RandomAccessFile:close	()V
     //   139: iconst_0
     //   140: ireturn
     //   141: astore_0
     //   142: ldc 136
     //   144: iconst_1
-    //   145: ldc_w 428
+    //   145: ldc_w 431
     //   148: aload_0
-    //   149: invokestatic 537	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   149: invokestatic 539	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   152: iconst_0
     //   153: ireturn
     //   154: iload_1
@@ -472,15 +472,15 @@ public class ChatBackgroundManager
     //   161: aload 4
     //   163: ifnull +8 -> 171
     //   166: aload 4
-    //   168: invokevirtual 534	java/io/RandomAccessFile:close	()V
+    //   168: invokevirtual 536	java/io/RandomAccessFile:close	()V
     //   171: iconst_1
     //   172: ireturn
     //   173: astore_0
     //   174: ldc 136
     //   176: iconst_1
-    //   177: ldc_w 428
+    //   177: ldc_w 431
     //   180: aload_0
-    //   181: invokestatic 537	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   181: invokestatic 539	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   184: goto -13 -> 171
     //   187: astore 5
     //   189: aconst_null
@@ -489,21 +489,21 @@ public class ChatBackgroundManager
     //   194: astore_0
     //   195: ldc 136
     //   197: iconst_1
-    //   198: ldc_w 428
+    //   198: ldc_w 431
     //   201: aload 5
-    //   203: invokestatic 537	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   203: invokestatic 539	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   206: aload 4
     //   208: ifnull -142 -> 66
     //   211: aload 4
-    //   213: invokevirtual 534	java/io/RandomAccessFile:close	()V
+    //   213: invokevirtual 536	java/io/RandomAccessFile:close	()V
     //   216: iconst_0
     //   217: ireturn
     //   218: astore_0
     //   219: ldc 136
     //   221: iconst_1
-    //   222: ldc_w 428
+    //   222: ldc_w 431
     //   225: aload_0
-    //   226: invokestatic 537	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   226: invokestatic 539	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   229: iconst_0
     //   230: ireturn
     //   231: astore 4
@@ -512,15 +512,15 @@ public class ChatBackgroundManager
     //   235: aload_0
     //   236: ifnull +7 -> 243
     //   239: aload_0
-    //   240: invokevirtual 534	java/io/RandomAccessFile:close	()V
+    //   240: invokevirtual 536	java/io/RandomAccessFile:close	()V
     //   243: aload 4
     //   245: athrow
     //   246: astore_0
     //   247: ldc 136
     //   249: iconst_1
-    //   250: ldc_w 428
+    //   250: ldc_w 431
     //   253: aload_0
-    //   254: invokestatic 537	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   254: invokestatic 539	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   257: goto -14 -> 243
     //   260: astore 4
     //   262: goto -27 -> 235
@@ -578,7 +578,7 @@ public class ChatBackgroundManager
         break label178;
       }
       str = paramString.substring(0, i + 1);
-      if (!antf.cn.equals(str)) {
+      if (!AppConstants.PATH_SYSTEM_BACKGROUND_RESOURCE.equals(str)) {
         break;
       }
       str = paramString.substring(i + 1);
@@ -600,7 +600,7 @@ public class ChatBackgroundManager
   
   public static String g(String paramString)
   {
-    return antf.cn + paramString;
+    return AppConstants.PATH_SYSTEM_BACKGROUND_RESOURCE + paramString;
   }
   
   public int a(Context paramContext, SessionInfo paramSessionInfo, int paramInt, double paramDouble)
@@ -608,9 +608,9 @@ public class ChatBackgroundManager
     int i = 0;
     int j = 0;
     String str;
-    if ((paramSessionInfo != null) && (paramSessionInfo.a != null) && (paramSessionInfo.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
+    if ((paramSessionInfo != null) && (paramSessionInfo.chatBg != null) && (paramSessionInfo.chatBg.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
     {
-      str = paramSessionInfo.a.jdField_a_of_type_JavaLangString;
+      str = paramSessionInfo.chatBg.jdField_a_of_type_JavaLangString;
       if ((!TextUtils.isEmpty(str)) && (!"null".equals(str)) && (!"none".equals(str))) {
         break label364;
       }
@@ -677,7 +677,7 @@ public class ChatBackgroundManager
   public Bundle a(String paramString)
   {
     Bundle localBundle = new Bundle();
-    paramString = (bhzn)this.jdField_b_of_type_JavaUtilMap.get(paramString);
+    paramString = (bgfx)this.jdField_b_of_type_JavaUtilMap.get(paramString);
     if (paramString != null)
     {
       localBundle.putString("id", paramString.jdField_a_of_type_JavaLangString);
@@ -773,7 +773,7 @@ public class ChatBackgroundManager
   {
     try
     {
-      Object localObject = bhmi.a(new File(jdField_b_of_type_JavaLangString));
+      Object localObject = FileUtils.readFileContent(new File(jdField_b_of_type_JavaLangString));
       localObject = new JSONObject((String)((String)localObject).subSequence(((String)localObject).indexOf("{"), ((String)localObject).length() - 1)).getJSONObject("data").getJSONArray("chatBackground");
       int j = ((JSONArray)localObject).length();
       int i = 0;
@@ -798,7 +798,7 @@ public class ChatBackgroundManager
   
   public String a(String paramString1, String paramString2)
   {
-    SharedPreferences localSharedPreferences = aggu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramString1, 4);
+    SharedPreferences localSharedPreferences = aezp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramString1, 4);
     if (TextUtils.isEmpty(paramString2))
     {
       paramString1 = localSharedPreferences.getString("chat_uniform_bg", null);
@@ -822,7 +822,7 @@ public class ChatBackgroundManager
   
   public HashMap<String, Integer> a()
   {
-    Object localObject = aggu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4);
+    Object localObject = aezp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4);
     HashMap localHashMap = new HashMap();
     Iterator localIterator = ((SharedPreferences)localObject).getAll().keySet().iterator();
     while (localIterator.hasNext())
@@ -863,13 +863,13 @@ public class ChatBackgroundManager
   public Vector<Integer> a(Bitmap paramBitmap)
   {
     int j = 0;
-    Object localObject = biac.a(paramBitmap);
+    Object localObject = bggm.a(paramBitmap);
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
       paramBitmap = ((List)localObject).iterator();
-      for (int i = 0; paramBitmap.hasNext(); i = ((biad)paramBitmap.next()).jdField_a_of_type_Int + i) {}
+      for (int i = 0; paramBitmap.hasNext(); i = ((bggn)paramBitmap.next()).jdField_a_of_type_Int + i) {}
       paramBitmap = new Vector();
-      float f = ((biad)((List)localObject).get(0)).a();
+      float f = ((bggn)((List)localObject).get(0)).a();
       localObject = ((List)localObject).iterator();
       int k;
       do
@@ -877,12 +877,12 @@ public class ChatBackgroundManager
         if (!((Iterator)localObject).hasNext()) {
           break;
         }
-        biad localbiad = (biad)((Iterator)localObject).next();
-        if (localbiad.a() / f <= 0.2F) {
+        bggn localbggn = (bggn)((Iterator)localObject).next();
+        if (localbggn.a() / f <= 0.2F) {
           break;
         }
-        paramBitmap.add(Integer.valueOf(localbiad.a()));
-        k = j + localbiad.jdField_a_of_type_Int;
+        paramBitmap.add(Integer.valueOf(localbggn.a()));
+        k = j + localbggn.jdField_a_of_type_Int;
         j = k;
       } while (k / i <= 0.800000011920929D);
       return paramBitmap;
@@ -892,7 +892,7 @@ public class ChatBackgroundManager
   
   public void a()
   {
-    Object localObject = aggu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4);
+    Object localObject = aezp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4);
     SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
     new HashMap();
     Iterator localIterator = ((SharedPreferences)localObject).getAll().keySet().iterator();
@@ -921,12 +921,12 @@ public class ChatBackgroundManager
     QLog.d("ChatBackgroundManager", 1, "setBgByScid  bgId:" + paramInt1 + " effectId:" + paramInt2 + " friendUin:" + paramString1 + " from:" + paramString2 + " uinType:" + paramInt3);
     if ("99".equals(String.valueOf(paramInt1)))
     {
-      aggu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), paramString1, aggu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), paramString1), paramInt2, paramInt3);
+      aezp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramString1, aezp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramString1), paramInt2, paramInt3);
       return;
     }
     if (("100".equals(String.valueOf(paramInt1))) || ("0".equals(String.valueOf(paramInt1))))
     {
-      aggu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), paramString1, "null", paramInt2, paramInt3);
+      aezp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramString1, "null", paramInt2, paramInt3);
       return;
     }
     paramString2 = "callback_" + paramInt1;
@@ -934,11 +934,11 @@ public class ChatBackgroundManager
     String str = a(true, String.valueOf(paramInt1));
     if (new File(str).exists())
     {
-      aggu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), paramString1, str, paramInt2, paramInt3);
+      aezp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramString1, str, paramInt2, paramInt3);
       return;
     }
     localChatBackgroundInfo.id = String.valueOf(paramInt1);
-    a(paramString2 + "_" + paramInt1, new axfd(this, paramString1, paramInt2, paramInt3));
+    a(paramString2 + "_" + paramInt1, new avsk(this, paramString1, paramInt2, paramInt3));
     a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localChatBackgroundInfo, paramString2);
   }
   
@@ -947,17 +947,17 @@ public class ChatBackgroundManager
     if (QLog.isColorLevel()) {
       QLog.i("ChatBackgroundManager", 2, "download chatbg report actionResult=" + paramInt + ",chatbgId=" + paramString);
     }
-    int i = bhnv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext());
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "chatbackground", "BjIDXiazai", 0, paramInt, "0", "0", i + "", String.valueOf(paramLong));
+    int i = NetworkUtil.getSystemNetwork(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext());
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "chatbackground", "BjIDXiazai", 0, paramInt, "0", "0", i + "", String.valueOf(paramLong));
   }
   
   public void a(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
     paramString2 = paramString1.substring("chatbg.".length(), paramString1.length());
-    paramString1 = (bhzn)this.jdField_b_of_type_JavaUtilMap.get(paramString2);
+    paramString1 = (bgfx)this.jdField_b_of_type_JavaUtilMap.get(paramString2);
     if (paramString1 == null)
     {
-      paramString1 = new bhzn();
+      paramString1 = new bgfx();
       paramString1.jdField_a_of_type_JavaLangString = paramString2;
     }
     for (;;)
@@ -1002,7 +1002,7 @@ public class ChatBackgroundManager
         if ((!this.jdField_a_of_type_JavaUtilMap.isEmpty()) && (paramString1.jdField_a_of_type_AndroidOsBundle != null) && (paramString1.jdField_a_of_type_AndroidOsBundle.containsKey("callbackId")))
         {
           paramString3 = paramString1.jdField_a_of_type_AndroidOsBundle.getString("callbackId") + "_" + paramString1.jdField_a_of_type_AndroidOsBundle.getInt("id");
-          paramString3 = (biia)this.jdField_a_of_type_JavaUtilMap.remove(paramString3);
+          paramString3 = (bgok)this.jdField_a_of_type_JavaUtilMap.remove(paramString3);
           if (paramString3 == null) {}
         }
         try
@@ -1027,7 +1027,7 @@ public class ChatBackgroundManager
         try
         {
           label421:
-          bhmi.a(localFile.getAbsolutePath(), paramVasQuickUpdateManager, false);
+          FileUtils.uncompressZip(localFile.getAbsolutePath(), paramVasQuickUpdateManager, false);
           VasQuickUpdateEngine.safeDeleteFile(localFile);
           a(paramString2, a(true, paramString2));
           if (!QLog.isColorLevel()) {
@@ -1093,7 +1093,7 @@ public class ChatBackgroundManager
         QLog.d("reportEvent", 4, " uin_type : " + str + " entrance_type ： " + i);
       }
       if (i != 999) {
-        bdll.b(null, "CliOper", "", "", "background", "bkground_replace", i, 0, "0", "0", "", "");
+        bcef.b(null, "CliOper", "", "", "background", "bkground_replace", i, 0, "0", "0", "", "");
       }
     }
   }
@@ -1101,11 +1101,11 @@ public class ChatBackgroundManager
   public void a(QQAppInterface paramQQAppInterface, long paramLong, String paramString, int paramInt)
   {
     String str = paramString.substring("chatbg.".length(), paramString.length());
-    paramString = (bhzn)this.jdField_b_of_type_JavaUtilMap.get(str);
+    paramString = (bgfx)this.jdField_b_of_type_JavaUtilMap.get(str);
     paramQQAppInterface = paramString;
     if (paramString == null)
     {
-      paramQQAppInterface = new bhzn();
+      paramQQAppInterface = new bgfx();
       paramQQAppInterface.jdField_a_of_type_JavaLangString = str;
       this.jdField_b_of_type_JavaUtilMap.put(str, paramQQAppInterface);
     }
@@ -1114,7 +1114,7 @@ public class ChatBackgroundManager
   
   public void a(QQAppInterface paramQQAppInterface, ChatBackgroundInfo paramChatBackgroundInfo, String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || ((paramString == null) && (!bihw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext()))) || (paramChatBackgroundInfo == null)) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || ((paramString == null) && (!bgog.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext()))) || (paramChatBackgroundInfo == null)) {
       QLog.d("ChatBackgroundManager", 2, "startDownload error mApp=" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
     for (;;)
@@ -1134,12 +1134,12 @@ public class ChatBackgroundManager
         localBundle.putSerializable("chatbgInfo", paramChatBackgroundInfo);
         if (!this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_Boolean = biki.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), "ChatBackgroundManager", false);
+          this.jdField_a_of_type_Boolean = bgqr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), "ChatBackgroundManager", false);
           if ((QLog.isColorLevel()) || (!this.jdField_a_of_type_Boolean)) {
             QLog.d("ChatBackgroundManager", 2, "startDownload mhaveSDCard:" + this.jdField_a_of_type_Boolean);
           }
         }
-        paramString = new bhzn();
+        paramString = new bgfx();
         paramString.jdField_a_of_type_JavaLangString = str;
         paramString.jdField_a_of_type_Long = System.currentTimeMillis();
         paramString.jdField_a_of_type_AndroidOsBundle = localBundle;
@@ -1166,18 +1166,18 @@ public class ChatBackgroundManager
     jdField_c_of_type_Int = 0;
     jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     jdField_c_of_type_JavaLangString = null;
-    paramQQAppInterface.a(new ChatBackgroundManager.2(this, paramString, paramQQAppInterface));
+    paramQQAppInterface.execute(new ChatBackgroundManager.2(this, paramString, paramQQAppInterface));
   }
   
-  public void a(String paramString, biia parambiia)
+  public void a(String paramString, bgok parambgok)
   {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, parambiia);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, parambgok);
   }
   
   public void a(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    aggu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), paramString1, paramString2, paramString3, paramInt);
-    bdll.b(null, "CliOper", "", "", "chatbackground", "BjIDShezhi", 0, 0, "0", "0", "", d(paramString3));
+    aezp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), paramString1, paramString2, paramString3, paramInt);
+    bcef.b(null, "CliOper", "", "", "chatbackground", "BjIDShezhi", 0, 0, "0", "0", "", d(paramString3));
   }
   
   public boolean a(int paramInt1, int paramInt2, double paramDouble)
@@ -1335,7 +1335,7 @@ public class ChatBackgroundManager
   
   public HashMap<String, String> d()
   {
-    SharedPreferences localSharedPreferences = aggu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4);
+    SharedPreferences localSharedPreferences = aezp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4);
     HashMap localHashMap = new HashMap();
     Iterator localIterator = localSharedPreferences.getAll().keySet().iterator();
     while (localIterator.hasNext())

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import bdmc;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -27,8 +27,8 @@ public final class MiniScanReport$2
       str = "";
       localHashMap.put("report_key_so_md5", str);
       localHashMap.put("report_key_qq_version", "0");
-      localHashMap.put("report_key_qq_subversion", "4745");
-      bdmc.a(BaseApplication.getContext()).a("", "report_tag_so_cover", true, 0L, 0L, localHashMap, "");
+      localHashMap.put("report_key_qq_subversion", "4810");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "report_tag_so_cover", true, 0L, 0L, localHashMap, "");
       if (QLog.isColorLevel())
       {
         bool = this.jdField_a_of_type_Boolean;

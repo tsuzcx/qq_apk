@@ -1,61 +1,40 @@
-import androidx.annotation.NonNull;
-import mqq.app.AppRuntime.Status;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.OldHttpEngine;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class azib
+final class azib
+  extends AbsPreDownloadTask
 {
-  public int a;
-  public long a;
-  public String a;
-  public AppRuntime.Status a;
-  public int b;
-  public String b;
-  public String c;
-  
-  public azib()
+  azib(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
+    super(paramQQAppInterface, paramString1);
   }
   
-  public azib(long paramLong, String paramString1, String paramString2)
+  public void realCancel()
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    QLog.i("QSplash@QbossSplashUtil", 1, "ctrl realCancel");
   }
   
-  public azib(AppRuntime.Status paramStatus)
+  public void realStart()
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = AppRuntime.Status.online;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_MqqAppAppRuntime$Status = paramStatus;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = azhv.a(paramStatus);
-    this.jdField_a_of_type_JavaLangString = azhv.a(paramStatus);
-  }
-  
-  public static String a(AppRuntime.Status paramStatus, long paramLong)
-  {
-    return paramStatus.getValue() + "" + paramLong + "";
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return paramLong == 1000L;
-  }
-  
-  public static boolean a(AppRuntime.Status paramStatus, long paramLong)
-  {
-    return (paramStatus == AppRuntime.Status.online) && (paramLong > 40000L);
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "id=" + this.jdField_a_of_type_Long + " title=" + this.jdField_a_of_type_JavaLangString;
+    QLog.i("QSplash@QbossSplashUtil", 1, "downloadPicAGifAVideoRes adid" + this.jdField_a_of_type_JavaLangString);
+    azid.a(this.b + ".splashtemp");
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("qbossSplashresAppid", this.jdField_a_of_type_JavaLangString);
+    azia.a("qbossSplashrequest", (HashMap)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.i("QSplash@QbossSplashDownloadManager", 2, "qboss_ad_res_png realStart, key  " + this.jdField_a_of_type_JavaLangString + "_" + this.b);
+    }
+    localObject = new HttpNetReq();
+    ((HttpNetReq)localObject).mCallback = new azic(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b + ".splashtemp", this.c, this.d);
+    ((HttpNetReq)localObject).mReqUrl = this.d;
+    ((HttpNetReq)localObject).mHttpMethod = 0;
+    ((HttpNetReq)localObject).mOutPath = (this.b + ".splashtemp");
+    ((OldHttpEngine)this.app.getNetEngine(0)).sendReq((NetReq)localObject);
   }
 }
 

@@ -1,12 +1,12 @@
-public class bnrj
+public abstract interface bnrj
 {
-  public float a;
-  public int a;
-  public boolean a;
-  public float b;
-  public int b;
-  public boolean b = true;
-  public boolean c = true;
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void d(int paramInt);
+  
+  public abstract void e(int paramInt);
+  
+  public abstract void f(int paramInt);
 }
 
 

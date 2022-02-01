@@ -1,41 +1,24 @@
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils.3;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.observer.BusinessObserver;
+import com.tencent.biz.pubaccount.EncryptUinInfo;
+import com.tencent.mobileqq.app.BusinessObserver;
+import java.util.List;
 
-public class nzt
+public abstract class nzt
   implements BusinessObserver
 {
-  public nzt(NativeAdUtils.3 param3) {}
+  protected abstract void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle);
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramBoolean) {}
+    if (paramObject != null) {}
     try
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle == null) {
-        return;
-      }
-      WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-      localWebSsoResponseBody.mergeFrom(paramBundle);
-      if ((!localWebSsoResponseBody.ret.has()) || (localWebSsoResponseBody.ret.get() != 0)) {
-        return;
-      }
-      paramBundle = "";
-      if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) {
-        paramBundle = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mTitle;
-      }
-      tpx.a("REPORT_LINK", "new report success : title = " + paramBundle + " type = " + this.a.jdField_a_of_type_Tlv.a());
+      paramObject = (Bundle)paramObject;
+      a(paramBoolean, paramObject.getParcelableArrayList("KEY_ENCRYPT_RESULT_LIST"), paramObject);
       return;
     }
-    catch (Exception paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
-    tpx.a("REPORT_LINK", "new report fail : " + this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo + " type = " + this.a.jdField_a_of_type_Tlv.a());
+    catch (Exception paramObject) {}
+    a(false, null, new Bundle());
     return;
   }
 }

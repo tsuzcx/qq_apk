@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import bftl;
+import becw;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ class MessageHandler$8
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler.trooptroop_pull_msg", 2, "onReceive,cost:" + (System.currentTimeMillis() - bftl.b));
+      QLog.d("Q.msg.MessageHandler.trooptroop_pull_msg", 2, "onReceive,cost:" + (System.currentTimeMillis() - becw.b));
     }
     try
     {

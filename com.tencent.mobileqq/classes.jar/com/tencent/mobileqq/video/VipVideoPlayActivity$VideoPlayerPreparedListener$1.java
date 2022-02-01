@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.video;
 
 import android.os.SystemClock;
-import bihm;
+import bgnw;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class VipVideoPlayActivity$VideoPlayerPreparedListener$1
   implements Runnable
 {
-  public VipVideoPlayActivity$VideoPlayerPreparedListener$1(bihm parambihm) {}
+  public VipVideoPlayActivity$VideoPlayerPreparedListener$1(bgnw parambgnw) {}
   
   public void run()
   {

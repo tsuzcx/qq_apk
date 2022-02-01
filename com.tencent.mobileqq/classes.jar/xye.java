@@ -1,42 +1,17 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
+import com.tencent.biz.qqstory.view.UnHandleTouchEventViewPager;
 
-class xye
-  implements View.OnLongClickListener
+public class xye
+  implements View.OnTouchListener
 {
-  xye(xyd paramxyd) {}
+  public xye(EditVideoFilter paramEditVideoFilter) {}
   
-  public boolean onLongClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = 0;
-    paramView = (wta)wth.a(10);
-    boolean bool;
-    if (!((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue())
-    {
-      bool = true;
-      paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
-      paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
-      if (paramView != null)
-      {
-        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
-        if (paramView != null) {
-          if (!bool) {
-            break label90;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      paramView.a(i);
-      return true;
-      bool = false;
-      break;
-      label90:
-      i = 8;
-    }
+    return this.a.a.a(paramMotionEvent);
   }
 }
 

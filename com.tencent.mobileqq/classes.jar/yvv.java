@@ -1,18 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
-class yvv
-  implements bjbj
+public class yvv
+  implements aytn
 {
-  yvv(yvs paramyvs) {}
+  public yvv(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void a(bjbh parambjbh)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambjbh);
-    }
+    bcef.b(this.a.app, "CliOper", "", "", "0X800AEB1", "0X800AEB1", 0, 0, "", "", "", "");
   }
   
-  public void a(bjbh parambjbh, int paramInt1, int paramInt2) {}
+  public void a(String paramString)
+  {
+    bcef.b(this.a.app, "CliOper", "", "", "0X800AEB3", "0X800AEB3", 0, 0, "", "", "", "");
+  }
 }
 
 

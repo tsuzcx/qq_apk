@@ -1,42 +1,56 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import org.json.JSONException;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.HashSet;
 import org.json.JSONObject;
 
-public abstract class stf
+public class stf
 {
-  protected abstract void a();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private HashSet<ste> jdField_a_of_type_JavaUtilHashSet;
+  private HashSet<ste> b;
+  private HashSet<ste> c;
   
-  public abstract void a(ListView paramListView);
-  
-  protected void a(String paramString, JSONObject paramJSONObject)
+  private void a(ste paramste)
   {
-    try
+    if (this.c.contains(paramste)) {}
+    do
     {
-      paramJSONObject.put("folder_status", ozs.d);
-      paramJSONObject.put("kandian_mode", ozs.e());
-      paramJSONObject = paramJSONObject.toString();
-      ocd.a(null, "", paramString, paramString, 0, 0, "", "", "", paramJSONObject, false);
-      QLog.d("HeaderViewController", 2, "report: T - " + paramString + " r5 - " + paramJSONObject);
+      return;
+      this.c.add(paramste);
+    } while ((!this.b.contains(paramste)) || (this.jdField_a_of_type_JavaUtilHashSet.contains(paramste)));
+    this.jdField_a_of_type_JavaUtilHashSet.add(paramste);
+    b(paramste);
+  }
+  
+  private void b(ste paramste)
+  {
+    float f = paramste.jdField_a_of_type_Float;
+    long l = paramste.jdField_a_of_type_Long;
+    paramste = paramste.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+    if (paramste == null) {
       return;
     }
-    catch (JSONException paramString)
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    try
     {
-      QLog.d("HeaderViewController", 2, "report failed due to JSONException: " + paramString.getMessage());
-      throw new IllegalArgumentException("fail to construct r5 json");
+      localJSONObject1.put("article_id", String.valueOf(paramste.mArticleID));
+      localJSONObject1.put("rowkey", String.valueOf(paramste.mRowKey));
+      paramste.mBusiJson = localJSONObject1;
+      localJSONObject2.put("exposureArea", f);
+      localJSONObject2.put("exposureTime", l);
+      paramste.mReportDataJson = localJSONObject2;
+      tqk.a(false, this.jdField_a_of_type_AndroidContentContext, paramste, obb.aq, obb.b, 2);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        twp.a("ListAdExposeManager", localException.getMessage());
+      }
     }
   }
-  
-  public abstract void b();
-  
-  public void c()
-  {
-    a();
-  }
-  
-  public void d() {}
-  
-  public void e() {}
 }
 
 

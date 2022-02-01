@@ -1,42 +1,43 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.upload.uinterface.IUploadService;
+import com.tencent.upload.uinterface.UploadServiceBuilder;
+import cooperation.qzone.UploadEnv;
+import mqq.manager.Manager;
 
-class ayqh
-  implements View.OnClickListener
+public class ayqh
+  implements Manager
 {
-  ayqh(ayqg paramayqg, Context paramContext, aysk paramaysk, ayqn paramayqn) {}
+  public ayqh(QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  private void b(QQAppInterface paramQQAppInterface, ayqd paramayqd)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    String str1 = this.jdField_a_of_type_Aysk.h;
-    String str2 = this.jdField_a_of_type_Aysk.i;
-    Object localObject2 = this.jdField_a_of_type_Aysk.k;
-    if (TextUtils.isEmpty((CharSequence)localObject2))
+    UploadEnv localUploadEnv = new UploadEnv();
+    if (paramayqd != null)
     {
-      localObject1 = this.jdField_a_of_type_Aysk.j;
-      localIntent.putExtra("url", String.format("https://3gimg.qq.com/lightmap/v1/marker/?key=%s&referer=qqnearby&marker=coord:%s,%s;title:%s;addr:%s", new Object[] { "25TBZ-W4HCP-2BKDM-LBYH3-L4QRT-G3BDP", str2, str1, localObject1, localObject2 }));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      localObject2 = new bdlq(this.jdField_a_of_type_Ayqg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("data_card").d("clk_lbs").e(String.valueOf(this.jdField_a_of_type_Ayqn.jdField_a_of_type_Aysk.e));
-      if (!this.jdField_a_of_type_Ayqg.jdField_a_of_type_Boolean) {
-        break label220;
-      }
-    }
-    label220:
-    for (Object localObject1 = "1";; localObject1 = "2")
-    {
-      ((bdlq)localObject2).a(new String[] { localObject1, "", "", this.jdField_a_of_type_Ayqn.jdField_a_of_type_Aysk.c }).a();
-      EventCollector.getInstance().onViewClicked(paramView);
+      UploadServiceBuilder.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), paramayqd, null, null, localUploadEnv, localUploadEnv);
       return;
-      localObject1 = localObject2;
-      break;
+    }
+    paramayqd = new ayqi(this, Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
+    UploadServiceBuilder.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), paramayqd, null, null, localUploadEnv, localUploadEnv);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, ayqd paramayqd)
+  {
+    if (!UploadServiceBuilder.getInstance().isInitialized()) {
+      b(paramQQAppInterface, paramayqd);
     }
   }
+  
+  public void a(QQAppInterface paramQQAppInterface, ayqe paramayqe, ayqd paramayqd)
+  {
+    if (!UploadServiceBuilder.getInstance().isInitialized()) {
+      b(paramQQAppInterface, paramayqd);
+    }
+    paramayqe.a();
+  }
+  
+  public void onDestroy() {}
 }
 
 

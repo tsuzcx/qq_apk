@@ -1,6 +1,6 @@
 package com.tencent.qqmini.miniapp.core.service;
 
-import com.tencent.tissue.v8rt.engine.Callback;
+import com.tencent.qqmini.v8rt.engine.Callback;
 
 class AppV8JsService$2
   implements Callback

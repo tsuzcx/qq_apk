@@ -4,39 +4,39 @@ import android.graphics.SurfaceTexture;
 import android.opengl.GLES20;
 import android.os.Handler;
 import android.os.Looper;
-import bovf;
-import bovx;
-import bovy;
-import bowb;
+import blzk;
+import bmac;
+import bmad;
+import bmag;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.filter.BaseFilter;
 
 public class VideoGIFCreator$4
   implements Runnable
 {
-  public VideoGIFCreator$4(bovy parambovy) {}
+  public VideoGIFCreator$4(bmad parambmad) {}
   
   public void run()
   {
-    bovy.a(this.this$0).a();
-    if (bovy.a(this.this$0) != null) {
-      bovy.a(this.this$0).release();
+    bmad.a(this.this$0).a();
+    if (bmad.a(this.this$0) != null) {
+      bmad.a(this.this$0).release();
     }
     int[] arrayOfInt = new int[1];
-    arrayOfInt[0] = bovy.c(this.this$0);
+    arrayOfInt[0] = bmad.c(this.this$0);
     GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-    if (bovy.a(this.this$0) != null)
+    if (bmad.a(this.this$0) != null)
     {
       arrayOfInt = new int[1];
-      arrayOfInt[0] = bovy.a(this.this$0).a;
+      arrayOfInt[0] = bmad.a(this.this$0).a;
       GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     }
-    bovy.a(this.this$0).clearGLSLSelf();
-    bovy.b(this.this$0).clearGLSLSelf();
-    bovy.c(this.this$0).clearGLSLSelf();
-    bovy.a(this.this$0).b();
-    bovy.a(this.this$0).clear();
-    bovy.a(this.this$0).getLooper().quit();
+    bmad.a(this.this$0).clearGLSLSelf();
+    bmad.b(this.this$0).clearGLSLSelf();
+    bmad.c(this.this$0).clearGLSLSelf();
+    bmad.a(this.this$0).b();
+    bmad.a(this.this$0).clear();
+    bmad.a(this.this$0).getLooper().quit();
   }
 }
 

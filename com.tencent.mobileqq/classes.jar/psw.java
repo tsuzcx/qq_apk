@@ -1,10 +1,11 @@
-import android.graphics.Bitmap;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public abstract interface psw
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ktextension/IPbParser;", "P", "R", "", "parse", "input", "(Ljava/lang/Object;)Ljava/lang/Object;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface psw<P, R>
 {
-  public abstract void a(skg paramskg, ppu paramppu, int paramInt);
-  
-  public abstract void a(skg paramskg, ppu paramppu, long paramLong, Bitmap paramBitmap);
+  @Nullable
+  public abstract R a(P paramP);
 }
 
 

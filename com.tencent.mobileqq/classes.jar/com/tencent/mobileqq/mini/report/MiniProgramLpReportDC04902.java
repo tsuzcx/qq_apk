@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.mini.report;
 
+import anad;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import aogo;
-import bhnv;
-import bjjo;
-import bmsw;
+import bhpc;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QUA;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -41,7 +41,7 @@ public class MiniProgramLpReportDC04902
   private static long DC_TABLE_VALUE_MAX_MEM = 0L;
   private static String DC_TABLE_VALUE_NETWORK_GATEWAY_IP;
   private static String DC_TABLE_VALUE_PLATFORM = "android";
-  private static String DC_TABLE_VALUE_QUA = bmsw.a();
+  private static String DC_TABLE_VALUE_QUA = QUA.getQUA3();
   private static String DC_TABLE_VALUE_START_TIME = currentTimeString();
   private static String DC_TABLE_VALUE_TEXTURE_OFFLINE;
   private static final int FRAME_TIME_COUNT = 3;
@@ -115,7 +115,7 @@ public class MiniProgramLpReportDC04902
         }
         d2 = 0.0D;
         QLog.d("MiniProgramLpReportDC04902", 1, "reportGameEnd: minuteFromStart=" + d3 + " jankCount=" + jankCount + " bigJankCount=" + bigJankCount);
-        Object localObject = DC_TABLE_VALUE_APPID + '|' + DC_TABLE_VALUE_QUA + '|' + DC_TABLE_VALUE_START_TIME + '|' + DC_TABLE_VALUE_END_TIME + '|' + DC_TABLE_VALUE_F_20 + '|' + DC_TABLE_VALUE_F_33 + '|' + DC_TABLE_VALUE_F_50 + '|' + DC_TABLE_VALUE_F_100 + '|' + DC_TABLE_VALUE_F_LONG + '|' + DC_TABLE_VALUE_AVG_MEM + '|' + DC_TABLE_VALUE_MAX_MEM + '|' + DC_TABLE_VALUE_AVG_CPU + '|' + DC_TABLE_VALUE_MAX_CPU + '|' + DC_TABLE_VALUE_ATTACH_INFO + '|' + DC_TABLE_VALUE_F_MAX_TIME_MILLIS + '|' + DC_TABLE_VALUE_F_MAX + '|' + (int)paramFloat2 + '|' + (int)paramFloat1 + '|' + DC_TABLE_VALUE_TEXTURE_OFFLINE + '|' + MiniProgramReportHelper.getNetworkType() + '|' + DC_TABLE_VALUE_NETWORK_GATEWAY_IP + '|' + bhnv.b(bjjo.a().a()) + '|' + DC_TABLE_VALUE_PLATFORM + '|' + Build.MODEL + '|' + Build.VERSION.RELEASE + '|' + d1 + '|' + d2;
+        Object localObject = DC_TABLE_VALUE_APPID + '|' + DC_TABLE_VALUE_QUA + '|' + DC_TABLE_VALUE_START_TIME + '|' + DC_TABLE_VALUE_END_TIME + '|' + DC_TABLE_VALUE_F_20 + '|' + DC_TABLE_VALUE_F_33 + '|' + DC_TABLE_VALUE_F_50 + '|' + DC_TABLE_VALUE_F_100 + '|' + DC_TABLE_VALUE_F_LONG + '|' + DC_TABLE_VALUE_AVG_MEM + '|' + DC_TABLE_VALUE_MAX_MEM + '|' + DC_TABLE_VALUE_AVG_CPU + '|' + DC_TABLE_VALUE_MAX_CPU + '|' + DC_TABLE_VALUE_ATTACH_INFO + '|' + DC_TABLE_VALUE_F_MAX_TIME_MILLIS + '|' + DC_TABLE_VALUE_F_MAX + '|' + (int)paramFloat2 + '|' + (int)paramFloat1 + '|' + DC_TABLE_VALUE_TEXTURE_OFFLINE + '|' + MiniProgramReportHelper.getNetworkType() + '|' + DC_TABLE_VALUE_NETWORK_GATEWAY_IP + '|' + NetworkUtil.getCurrentWifiSSID(bhpc.a().a()) + '|' + DC_TABLE_VALUE_PLATFORM + '|' + Build.MODEL + '|' + Build.VERSION.RELEASE + '|' + d1 + '|' + d2;
         Bundle localBundle = new Bundle();
         localBundle.putStringArray("data", new String[] { localObject });
         localBundle.putString("log_key", "dc04902");
@@ -171,9 +171,9 @@ public class MiniProgramLpReportDC04902
       Object localObject = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject instanceof QQAppInterface))
       {
-        localObject = (aogo)((QQAppInterface)localObject).a(5);
+        localObject = (anad)((QQAppInterface)localObject).getBusinessHandler(5);
         if (localObject != null) {
-          ((aogo)localObject).a(paramBundle);
+          ((anad)localObject).a(paramBundle);
         }
       }
     }

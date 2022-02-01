@@ -1,43 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.ArkAppReportController.1;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.togetherui.writetogether.SavingAnimView;
 
 public class bdke
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private static String a(bdkf parambdkf)
-  {
-    return parambdkf.a();
-  }
+  public bdke(SavingAnimView paramSavingAnimView) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString4, String paramString5)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    bdkf localbdkf = new bdkf();
-    localbdkf.jdField_a_of_type_JavaLangString = paramString1;
-    localbdkf.jdField_b_of_type_JavaLangString = paramString2;
-    localbdkf.jdField_c_of_type_JavaLangString = paramString3;
-    localbdkf.jdField_a_of_type_Long = paramLong1;
-    localbdkf.jdField_b_of_type_Long = paramLong2;
-    localbdkf.jdField_d_of_type_Long = paramLong3;
-    localbdkf.f = paramLong4;
-    localbdkf.g = paramLong5;
-    localbdkf.jdField_d_of_type_JavaLangString = paramString4;
-    localbdkf.e = paramString5;
-    localbdkf.jdField_c_of_type_Long = 1L;
-    if (paramQQAppInterface == null)
-    {
-      paramQQAppInterface = a(localbdkf);
-      if (QLog.isColorLevel()) {
-        QLog.i("ArkAppReportController", 1, "POST getReportingDetail=" + paramQQAppInterface);
-      }
-      ThreadManager.executeOnSubThread(new ArkAppReportController.1(paramQQAppInterface));
-      return;
+    float f2 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    paramValueAnimator = this.a;
+    float f1 = f2;
+    if (SavingAnimView.a(this.a) == 0) {
+      f1 = 1.0F - f2;
     }
-    paramString1 = a(localbdkf);
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkAppReportController", 1, "getReportingDetail=" + paramString1);
-    }
-    bdll.b(paramQQAppInterface, "dc01616", paramString1, 1);
+    SavingAnimView.e(paramValueAnimator, f1);
+    this.a.invalidate();
   }
 }
 

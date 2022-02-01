@@ -1,6 +1,16 @@
-public abstract interface ajtu
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class ajtu
+  implements DialogInterface.OnClickListener
 {
-  public abstract void b(int paramInt);
+  ajtu(ajts paramajts) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ajtr.a(this.a.a).dismiss();
+  }
 }
 
 

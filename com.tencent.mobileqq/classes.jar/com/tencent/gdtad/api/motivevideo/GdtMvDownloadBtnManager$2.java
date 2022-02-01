@@ -1,7 +1,7 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import acvc;
-import bjsz;
+import abrl;
+import bhyo;
 
 final class GdtMvDownloadBtnManager$2
   implements Runnable
@@ -10,8 +10,8 @@ final class GdtMvDownloadBtnManager$2
   
   public void run()
   {
-    if (bjsz.a().a(this.a) == null) {
-      acvc.a("GdtMvDownloadBtnManager", "run: taskInfoFromSDK == null");
+    if (bhyo.a().a(this.a) == null) {
+      abrl.a("GdtMvDownloadBtnManager", "run: taskInfoFromSDK == null");
     }
   }
 }

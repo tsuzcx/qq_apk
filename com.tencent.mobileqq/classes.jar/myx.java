@@ -1,145 +1,108 @@
-import android.os.Handler;
-import android.os.SystemClock;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.HashMap;
+import androidx.annotation.NonNull;
 
 public class myx
-  extends nam
-  implements nai
+  extends myu
 {
-  public static int a;
-  private static HashMap<Integer, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler = new myy(this);
-  private AVGameAppInterface jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private naj<mze> jdField_a_of_type_Naj;
-  private nak jdField_a_of_type_Nak;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private long b;
-  private long c;
+  public static final String a;
+  private static boolean jdField_a_of_type_Boolean;
+  private int jdField_a_of_type_Int;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
+  private int d;
   
   static
   {
-    jdField_a_of_type_Int = 2000;
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(0), Integer.valueOf(1));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(1), Integer.valueOf(2));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2), Integer.valueOf(2));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(3), Integer.valueOf(2));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(4), Integer.valueOf(2));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(10), Integer.valueOf(3));
+    jdField_a_of_type_JavaLangString = myx.class.getName();
   }
   
-  public myx(AVGameAppInterface paramAVGameAppInterface, nak paramnak, nag paramnag, naj<mze> paramnaj)
+  public myx(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String[] paramArrayOfString, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface = paramAVGameAppInterface;
-    this.jdField_a_of_type_Nak = paramnak;
-    this.jdField_a_of_type_Naj = paramnaj;
-    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.addObserver(this, false);
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_c_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.d = paramInt4;
   }
   
-  private boolean a()
+  public static void a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_Long == ((mze)this.jdField_a_of_type_Naj.a()).a();
+    jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  private void b()
+  public static boolean b()
   {
-    if (bhnv.a()) {}
-    for (int i = 2131690270;; i = 2131690312)
-    {
-      QLog.d("HeartBeatController", 1, "stopHeartBeatByLocalTimeOut() then do exitRoom() isNetworkAvailable =" + bhnv.a());
-      myk.a().a(5, BaseApplicationImpl.getApplication().getString(i), myk.a().a());
-      return;
-    }
+    return jdField_a_of_type_Boolean;
   }
   
-  private void b(long paramLong, String paramString)
+  public int a()
   {
-    ((nad)this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.a(1)).a(paramLong, paramString, ((Integer)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(((mze)this.jdField_a_of_type_Naj.a()).a()))).intValue());
-    mys.jdField_a_of_type_Long = System.currentTimeMillis();
+    return this.d;
   }
   
-  private void c()
+  @NonNull
+  public String a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 35000L);
-  }
-  
-  private void d()
-  {
-    QLog.d("HeartBeatController", 1, String.format("maintainHeartBeat() [isStop]=[%b]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, jdField_a_of_type_Int);
-    }
-  }
-  
-  public long a()
-  {
-    return this.b;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface != null) {
-      this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.removeObserver(this);
-    }
-    a(1);
+    return jdField_a_of_type_JavaLangString;
   }
   
   public void a(int paramInt)
   {
-    mys.jdField_a_of_type_Long = 0L;
-    QLog.d("HeartBeatController", 1, String.format("stopHeartBeat() [roomId,fromType]=[%d,%d]", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(paramInt) }));
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_c_of_type_Int = paramInt;
   }
   
-  public void a(long paramLong1, int paramInt1, long paramLong2, String paramString, int paramInt2)
+  public void a(String[] paramArrayOfString)
   {
-    if ((this.jdField_a_of_type_Boolean) || (!a()))
-    {
-      QLog.d("HeartBeatController", 1, String.format("onRespHeartBeatSuccess() isStop or validRoomId just return  [roomId,data.getRoomId()]=[%d,%d]", new Object[] { Long.valueOf(paramLong2), Long.valueOf(((mze)this.jdField_a_of_type_Naj.a()).a()) }));
-      return;
-    }
-    if (paramInt2 == 303)
-    {
-      QLog.d("HeartBeatController", 1, String.format("onRespHeartBeatSuccess() EC_HEARTBEAT_USER_NOT_IN_ROOM exitRoom() [roomId]=[%d]", new Object[] { Long.valueOf(paramLong2) }));
-      mxt.a().a(nam.class, 7, true, new Object[] { Long.valueOf(paramLong2), Integer.valueOf(4) });
-      return;
-    }
-    this.b = paramLong1;
-    this.c = SystemClock.elapsedRealtime();
-    this.jdField_a_of_type_Nak.a(paramLong1, paramLong2, jdField_a_of_type_Int, paramInt2);
-    jdField_a_of_type_Int = Math.max(paramInt1, jdField_a_of_type_Int);
-    c();
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
   }
   
-  public void a(long paramLong, String paramString)
+  public boolean a()
   {
-    QLog.d("HeartBeatController", 1, String.format("startHeartBeat() [roomId,userUin]=[%d,%s]", new Object[] { Long.valueOf(paramLong), paramString }));
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = false;
-    b(paramLong, paramString);
-    d();
-    c();
+    return this.d == 1;
   }
   
-  public long b()
+  public String[] a()
   {
-    return this.c;
+    return this.jdField_a_of_type_ArrayOfJavaLangString;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public int c()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String c()
+  {
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public int d()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public int e()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     myx
  * JD-Core Version:    0.7.0.1
  */

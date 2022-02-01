@@ -1,243 +1,119 @@
-import android.content.Context;
-import android.view.animation.AnimationUtils;
-import android.view.animation.Interpolator;
+import android.graphics.Bitmap;
+import android.graphics.SurfaceTexture;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import com.tencent.ttpic.openapi.filter.TextureRender;
+import com.tencent.view.RendererUtils;
 
 public class blnu
+  extends blnt
 {
-  public static int a;
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private final blnv jdField_a_of_type_Blnv;
-  private final boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private final blnv jdField_b_of_type_Blnv;
+  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+  private RenderBuffer b;
   
-  static
+  private void b(int paramInt1, int paramInt2, int paramInt3)
   {
-    jdField_a_of_type_Int = 400;
-  }
-  
-  public blnu(Context paramContext)
-  {
-    this(paramContext, null);
-  }
-  
-  public blnu(Context paramContext, Interpolator paramInterpolator)
-  {
-    this(paramContext, paramInterpolator, true);
-  }
-  
-  public blnu(Context paramContext, Interpolator paramInterpolator, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Blnv = new blnv();
-    this.jdField_b_of_type_Blnv = new blnv();
-    blnv.a(paramContext);
-  }
-  
-  public float a()
-  {
-    return (float)Math.sqrt(blnv.a(this.jdField_a_of_type_Blnv) * blnv.a(this.jdField_a_of_type_Blnv) + blnv.a(this.jdField_b_of_type_Blnv) * blnv.a(this.jdField_b_of_type_Blnv));
-  }
-  
-  public final int a()
-  {
-    return blnv.a(this.jdField_a_of_type_Blnv);
-  }
-  
-  public Interpolator a()
-  {
-    return this.jdField_a_of_type_AndroidViewAnimationInterpolator;
+    try
+    {
+      if (this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) {
+        this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.e, this.f, 33984);
+      }
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+      Object localObject = new float[16];
+      Matrix.setIdentityM((float[])localObject, 0);
+      Matrix.scaleM((float[])localObject, 0, 1.0F, -1.0F, 1.0F);
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramInt1, null, (float[])localObject);
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+      localObject = RendererUtils.saveTexture(this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId(), paramInt2, paramInt3);
+      if (this.jdField_a_of_type_Blns != null) {
+        this.jdField_a_of_type_Blns.onPhotoCaptured((Bitmap)localObject);
+      }
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      while (this.jdField_a_of_type_Blns == null) {}
+      this.jdField_a_of_type_Blns.onCaptureError(103);
+    }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Blnv.a();
-    this.jdField_b_of_type_Blnv.a();
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
   }
   
-  public final void a(float paramFloat)
+  public void a(float paramFloat) {}
+  
+  protected void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Blnv.a(paramFloat);
-    this.jdField_b_of_type_Blnv.a(paramFloat);
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glViewport(0, 0, paramInt2, paramInt3);
+    GLES20.glClearColor(0.92F, 0.93F, 0.96F, 1.0F);
+    GLES20.glClear(16384);
+    GLES20.glEnable(3042);
+    GLES20.glBlendFunc(770, 771);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramInt1, null, null);
+    GLES20.glDisable(3042);
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    this.jdField_b_of_type_Blnv.a(paramInt);
+    super.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_b_of_type_Blnv.b(paramInt1, paramInt2, paramInt3);
-  }
+  public void a(boolean paramBoolean) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public int[] a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    a(paramInt1, paramInt2, paramInt3, paramInt4, 250);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Blnv.a(paramInt1, paramInt3, paramInt5);
-    this.jdField_b_of_type_Blnv.a(paramInt2, paramInt4, paramInt5);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, 0, 0);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
-  {
-    a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10, 1);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11)
-  {
-    if ((this.jdField_a_of_type_Boolean) && (!a()))
+    if ((this.g == 0) || (this.h == 0)) {
+      return this.jdField_a_of_type_ArrayOfInt;
+    }
+    paramBoolean = this.jdField_b_of_type_Boolean;
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.g, this.h, 33984);
+    }
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
+    int i = this.e;
+    int j = (int)(this.e / this.jdField_b_of_type_Double);
+    float[] arrayOfFloat = GPUBaseFilter.caculateCenterCropMvpMatrix(this.g, this.h, i, j);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.k, this.jdField_a_of_type_ArrayOfFloat, arrayOfFloat);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+    int k = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId();
+    a(k, paramInt1, paramInt2);
+    if (paramBoolean)
     {
-      float f1 = blnv.a(this.jdField_a_of_type_Blnv);
-      float f2 = blnv.a(this.jdField_b_of_type_Blnv);
-      if ((Math.signum(paramInt3) == Math.signum(f1)) && (Math.signum(paramInt4) == Math.signum(f2)))
-      {
-        paramInt3 = (int)(f1 + paramInt3);
-        paramInt4 = (int)(paramInt4 + f2);
-      }
+      b(k, i, j);
+      this.jdField_b_of_type_Boolean = false;
     }
-    for (;;)
-    {
-      this.jdField_b_of_type_Int = paramInt11;
-      this.jdField_a_of_type_Blnv.a(paramInt1, paramInt3, paramInt5, paramInt6, paramInt9);
-      this.jdField_b_of_type_Blnv.a(paramInt2, paramInt4, paramInt7, paramInt8, paramInt10);
-      return;
+    this.jdField_a_of_type_ArrayOfInt[0] = k;
+    this.jdField_a_of_type_ArrayOfInt[1] = k;
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
     }
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
-  {
-    a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
-    blnv.a(this.jdField_a_of_type_Blnv, paramLong);
-    blnv.a(this.jdField_b_of_type_Blnv, paramLong);
-  }
-  
-  public void a(Interpolator paramInterpolator)
-  {
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    blnv.a(this.jdField_a_of_type_Blnv, blnv.a(this.jdField_b_of_type_Blnv, paramBoolean));
-  }
-  
-  public final boolean a()
-  {
-    return (blnv.a(this.jdField_a_of_type_Blnv)) && (blnv.a(this.jdField_b_of_type_Blnv));
-  }
-  
-  public boolean a(float paramFloat1, float paramFloat2)
-  {
-    int i = blnv.c(this.jdField_a_of_type_Blnv);
-    int j = blnv.b(this.jdField_a_of_type_Blnv);
-    int k = blnv.c(this.jdField_b_of_type_Blnv);
-    int m = blnv.b(this.jdField_b_of_type_Blnv);
-    return (!a()) && (Math.signum(paramFloat1) == Math.signum(i - j)) && (Math.signum(paramFloat2) == Math.signum(k - m));
-  }
-  
-  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    this.jdField_b_of_type_Int = 1;
-    boolean bool1 = this.jdField_a_of_type_Blnv.a(paramInt1, paramInt3, paramInt4);
-    boolean bool2 = this.jdField_b_of_type_Blnv.a(paramInt2, paramInt5, paramInt6);
-    return (bool1) || (bool2);
-  }
-  
-  public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
-  {
-    this.jdField_b_of_type_Int = 1;
-    boolean bool1 = this.jdField_a_of_type_Blnv.a(paramInt1, paramInt3, paramInt4, paramInt7);
-    boolean bool2 = this.jdField_b_of_type_Blnv.a(paramInt2, paramInt5, paramInt6, paramInt7);
-    return (bool1) || (bool2);
-  }
-  
-  public float b()
-  {
-    return blnv.a(this.jdField_b_of_type_Blnv);
-  }
-  
-  public final int b()
-  {
-    return blnv.a(this.jdField_b_of_type_Blnv);
-  }
-  
-  public boolean b()
-  {
-    if (a()) {
-      return false;
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
     }
-    switch (this.jdField_b_of_type_Int)
-    {
+    if (this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
+      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
     }
-    for (;;)
-    {
-      return true;
-      long l = AnimationUtils.currentAnimationTimeMillis() - blnv.a(this.jdField_a_of_type_Blnv);
-      int i = blnv.d(this.jdField_a_of_type_Blnv);
-      if (l < i)
-      {
-        float f = (float)l / i;
-        if (this.jdField_a_of_type_AndroidViewAnimationInterpolator == null) {}
-        for (f = blgl.a(f);; f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f))
-        {
-          if (!blnv.a(this.jdField_a_of_type_Blnv)) {
-            this.jdField_a_of_type_Blnv.b(f);
-          }
-          if (blnv.a(this.jdField_b_of_type_Blnv)) {
-            break;
-          }
-          this.jdField_b_of_type_Blnv.b(f);
-          break;
-        }
-      }
-      a();
-      continue;
-      if ((!blnv.a(this.jdField_a_of_type_Blnv)) && (!this.jdField_a_of_type_Blnv.c()) && (!this.jdField_a_of_type_Blnv.b())) {
-        this.jdField_a_of_type_Blnv.a();
-      }
-      if ((!blnv.a(this.jdField_b_of_type_Blnv)) && (!this.jdField_b_of_type_Blnv.c()) && (!this.jdField_b_of_type_Blnv.b()))
-      {
-        this.jdField_b_of_type_Blnv.a();
-        continue;
-        if ((!blnv.a(this.jdField_a_of_type_Blnv)) && (!this.jdField_a_of_type_Blnv.c()) && (!this.jdField_a_of_type_Blnv.a())) {
-          this.jdField_a_of_type_Blnv.a();
-        }
-        if ((!blnv.a(this.jdField_b_of_type_Blnv)) && (!this.jdField_b_of_type_Blnv.c()) && (!this.jdField_b_of_type_Blnv.a())) {
-          this.jdField_b_of_type_Blnv.a();
-        }
-      }
+    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(null);
     }
   }
   
-  public final int c()
-  {
-    return blnv.b(this.jdField_a_of_type_Blnv);
-  }
-  
-  public final int d()
-  {
-    return blnv.c(this.jdField_a_of_type_Blnv);
-  }
-  
-  public final int e()
-  {
-    return blnv.c(this.jdField_b_of_type_Blnv);
-  }
+  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blnu
  * JD-Core Version:    0.7.0.1
  */

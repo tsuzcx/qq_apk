@@ -1,117 +1,80 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.ImageView;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class atoq
-  extends atov
+  implements BusinessObserver
 {
-  public atoq(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  public atoq(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
   
-  protected ImageView a(aggl paramaggl)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramaggl == null) {}
-    while (!(paramaggl instanceof ahoq)) {
-      return null;
-    }
-    return ((ahoq)paramaggl).a;
-  }
-  
-  protected void a(aggl paramaggl, ImageView paramImageView)
-  {
-    if (paramaggl == null) {}
-    while (!(paramaggl instanceof ahoq)) {
-      return;
-    }
-    ((ahoq)paramaggl).a = paramImageView;
-  }
-  
-  protected void a(View paramView, aggl paramaggl, ChatMessage paramChatMessage, int paramInt)
-  {
-    if ((paramChatMessage == null) || (paramChatMessage.isMultiMsg)) {}
-    int i;
-    do
+    this.a.b("KEY_GET_APP_INFO", paramBoolean);
+    QLog.d("ForwardOption.ForwardSdkBaseOption", 1, new Object[] { "AppinfoObserver onReceive isSuccess = ", Boolean.valueOf(paramBoolean) });
+    Object localObject2 = null;
+    synchronized (ForwardSdkBaseOption.jdField_a_of_type_JavaLangObject)
     {
-      do
+      this.a.l = false;
+      Object localObject1 = localObject2;
+      if (paramBoolean) {}
+      for (;;)
       {
-        do
+        try
         {
+          localObject1 = paramBundle.getByteArray("data");
+          if (localObject1 != null) {
+            paramBundle = new GetAppInfoProto.GetAppinfoResponse();
+          }
+        }
+        catch (Exception localException1)
+        {
+          paramBundle = null;
+        }
+        try
+        {
+          paramBundle.mergeFrom((byte[])localObject1);
+          this.a.jdField_a_of_type_Atks = atks.a(paramBundle);
+          if ((this.a instanceof ForwardSdkShareOption)) {
+            ((atph)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(350)).a().a(this.a.b, this.a.jdField_a_of_type_Atks);
+          }
+          QLog.d("ForwardOption.ForwardSdkBaseOption", 1, new Object[] { "get appinfo time=", Long.valueOf(System.currentTimeMillis() - this.a.c), ", ret=", Integer.valueOf(paramBundle.ret.get()) });
+          this.a.e();
+          localObject1 = paramBundle;
+          this.a.z();
+          if ((localObject1 == null) || (((GetAppInfoProto.GetAppinfoResponse)localObject1).ret.get() == 0) || (!(this.a instanceof ForwardSdkShareOption))) {
+            break;
+          }
+          if (this.a.jdField_a_of_type_AndroidOsBundle.getBoolean("enable_d55", false)) {
+            this.a.a(((GetAppInfoProto.GetAppinfoResponse)localObject1).msg.get(), true);
+          }
+          ForwardSdkBaseOption.jdField_a_of_type_JavaLangObject.notify();
           return;
-          QLog.i("OfflineFileBubblePauseHandler", 1, "handlePauseClick: type[" + paramInt + "]");
-        } while ((paramInt == -1) || (!(paramChatMessage instanceof MessageForFile)));
-        paramView = (MessageForFile)paramChatMessage;
-        paramaggl = aunj.a(this.a, paramView);
-      } while (paramaggl == null);
-      if (paramView.istroop == 3000) {}
-      for (i = 3; paramInt == 0; i = 1)
-      {
-        bdll.b(this.a, "dc00898", "", "", "0X800A7F1", "0X800A7F1", i, 0, "", "", "", "");
-        this.a.a().a(paramaggl.nSessionId);
-        return;
-      }
-    } while (paramInt != 1);
-    bdll.b(this.a, "dc00898", "", "", "0X800A7F2", "0X800A7F2", i, 0, "", "", "", "");
-    a(new ator(this, i, paramaggl));
-  }
-  
-  protected boolean a(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
+        }
+        catch (Exception localException2)
         {
-          return false;
-        } while ((paramChatMessage.isMultiMsg) || (!(paramChatMessage instanceof MessageForFile)));
-        paramChatMessage = (MessageForFile)paramChatMessage;
-        paramChatMessage = aunj.a(this.a, paramChatMessage);
-      } while (paramChatMessage == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("OfflineFileBubblePauseHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
+          Bundle localBundle;
+          break label298;
+        }
+        QLog.e("ForwardOption.ForwardSdkBaseOption", 1, "AppinfoObserver onReceive data=null");
+        localObject1 = localObject2;
+        continue;
+        label298:
+        QLog.e("ForwardOption.ForwardSdkBaseOption", 1, new Object[] { "AppinfoObserver.onReceive ", localException1.getMessage() });
+        localBundle = paramBundle;
       }
-      if ((paramChatMessage.nOpType == 0) && (paramChatMessage.status == 2)) {
-        return true;
-      }
-    } while ((paramChatMessage.nOpType != 3) || (paramChatMessage.status != 2));
-    return true;
-  }
-  
-  protected boolean b(ChatMessage paramChatMessage)
-  {
-    if (paramChatMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while ((paramChatMessage.isMultiMsg) || (!(paramChatMessage instanceof MessageForFile)));
-        paramChatMessage = (MessageForFile)paramChatMessage;
-        paramChatMessage = aunj.a(this.a, paramChatMessage);
-      } while (paramChatMessage == null);
-      if (QLog.isColorLevel()) {
-        QLog.i("OfflineFileBubblePauseHandler", 1, "needShowPauseIcon: current file nOpType[" + paramChatMessage.nOpType + "] status[" + paramChatMessage.status + "]");
-      }
-      if ((paramChatMessage.nOpType == 0) && (paramChatMessage.status == 3)) {
-        return true;
-      }
-    } while ((paramChatMessage.nOpType != 3) || (paramChatMessage.status != 3));
-    return true;
+      QLog.d("ForwardOption.ForwardSdkBaseOption", 1, "AppinfoObserver onReceive success, go share");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atoq
  * JD-Core Version:    0.7.0.1
  */

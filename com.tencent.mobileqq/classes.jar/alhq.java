@@ -1,13 +1,17 @@
-import java.util.HashSet;
-import java.util.Set;
+import android.view.View;
 
 public class alhq
+  extends alhr
 {
-  public static final Set<String> a = new HashSet();
+  public alhr a;
+  public View a;
+  public alhr b;
+  public View b;
+  public View c;
   
-  static
+  public alhq(alhp paramalhp)
   {
-    a.add("SoLoadModule");
+    super(paramalhp);
   }
 }
 

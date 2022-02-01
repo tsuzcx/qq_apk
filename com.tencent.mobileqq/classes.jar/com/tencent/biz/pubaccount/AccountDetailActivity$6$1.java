@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount;
 
-import ahnc;
-import ammh;
+import agjp;
+import alhb;
 import android.text.TextUtils;
-import antf;
-import ayvd;
+import axil;
 import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +18,7 @@ class AccountDetailActivity$6$1
   public void run()
   {
     this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.k();
-    if (TextUtils.equals(antf.aP, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e)) {
+    if (TextUtils.equals(AppConstants.WEISHI_UIN, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e)) {
       AccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0);
     }
     do
@@ -29,12 +29,12 @@ class AccountDetailActivity$6$1
         AccountDetailActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0);
         return;
       }
-      if (TextUtils.equals(ayvd.a, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e))
+      if (TextUtils.equals(axil.a, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e))
       {
         AccountDetailActivity.c(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0);
         return;
       }
-      if ((ahnc.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e)) && (ammh.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
+      if ((agjp.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.e)) && (alhb.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity$6.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))
       {
         QLog.i("com.tencent.biz.pubaccount.AccountDetailActivity", 1, "updateFollowInfo startNewWeatherWebPageActivity");
         return;

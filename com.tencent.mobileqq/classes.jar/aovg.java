@@ -1,18 +1,19 @@
-public class aovg
+import com.tencent.ark.ArkEnvironmentManager.IDataReport;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.AppRuntime;
+
+public final class aovg
+  implements ArkEnvironmentManager.IDataReport
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public long c;
-  
-  public aovg(String paramString, int paramInt, long paramLong1, long paramLong2, long paramLong3)
+  public void report(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString3, String paramString4)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.c = paramLong3;
+    QQAppInterface localQQAppInterface = null;
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)localAppRuntime;
+    }
+    aovl.a(localQQAppInterface, paramString1, paramString2, paramInt2, paramInt1, paramInt3, paramLong1, paramLong2, paramString3, paramString4);
   }
 }
 

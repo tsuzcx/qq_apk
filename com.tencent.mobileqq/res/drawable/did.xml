@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background">
-        <shape android:shape="rectangle">
-            <corners android:radius="38.0dip" />
-            <solid android:color="#7f7a8690" />
-        </shape>
+    <item android:state_selected="true" android:state_pressed="true">
+        <bitmap android:src="@drawable/g9p" android:alpha="0.5" />
     </item>
-    <item android:id="@android:id/progress">
-        <clip>
-            <shape android:shape="rectangle">
-                <corners android:radius="38.0dip" />
-                <solid android:color="#ff12b7f5" />
-            </shape>
-        </clip>
+    <item android:state_enabled="false" android:drawable="@drawable/g9o" />
+    <item android:state_selected="true" android:state_pressed="false" android:drawable="@drawable/g9p" />
+    <item android:state_selected="false" android:state_pressed="true">
+        <bitmap android:src="@drawable/g9o" android:alpha="0.5" />
     </item>
-</layer-list>
+    <item android:state_selected="false" android:drawable="@drawable/g9o" />
+    <item android:drawable="@drawable/g9p" />
+</selector>

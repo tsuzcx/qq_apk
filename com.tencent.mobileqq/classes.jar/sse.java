@@ -1,48 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class sse
+  implements apom
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private List<BaseData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private ssf jdField_a_of_type_Ssf;
-  private List<BaseData> b = new ArrayList();
+  public sse(FastWebActivity paramFastWebActivity) {}
   
-  public sse(String paramString, ssf paramssf)
+  public void onColorNoteAnimFinish()
   {
-    this.jdField_a_of_type_Ssf = paramssf;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  private void a()
-  {
-    try
-    {
-      if ((this.b != null) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Ssf != null)) {
-        this.jdField_a_of_type_Ssf.a(true, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.b);
-      }
-      return;
+    FastWebActivity.a(this.a, true);
+    FastWebActivity.b(this.a);
+    if ((FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a).c())) {
+      this.a.overridePendingTransition(0, 0);
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(List<BaseData> paramList)
-  {
-    this.b = paramList;
-    tpx.a("REPORT_LINK", "requestAdData adDatas callback");
-    a();
-  }
-  
-  public void b(List<BaseData> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    tpx.a("REPORT_LINK", "requestAdData recommendDatas callback");
-    a();
+    QLog.d("FastWebActivity", 2, "mColorNoteController ：onColorNoteAnimFinish");
   }
 }
 

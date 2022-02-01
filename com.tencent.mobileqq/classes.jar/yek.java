@@ -1,21 +1,12 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import android.graphics.Bitmap;
 
-public class yek
-  extends Handler
+public abstract interface yek
 {
-  private yek(QQStoryMainController paramQQStoryMainController) {}
+  public abstract void a(int paramInt);
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a.a(false);
-  }
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

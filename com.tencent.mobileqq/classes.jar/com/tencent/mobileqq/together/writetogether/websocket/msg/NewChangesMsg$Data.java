@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.together.writetogether.websocket.msg;
 
-import beko;
+import bdef;
 
 public class NewChangesMsg$Data
   implements Comparable<Data>
 {
-  public beko apool;
+  public bdef apool;
   public String author;
   public String changeset;
   public long commitId;

@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.dating.DatingFilters;
+import android.view.View;
 
-public final class asai
-  implements Parcelable.Creator<DatingFilters>
+class asai
+  implements bjoy
 {
-  public DatingFilters a(Parcel paramParcel)
-  {
-    return new DatingFilters(paramParcel, null);
-  }
+  asai(asaf paramasaf, View paramView) {}
   
-  public DatingFilters[] a(int paramInt)
+  public void a()
   {
-    return new DatingFilters[paramInt];
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

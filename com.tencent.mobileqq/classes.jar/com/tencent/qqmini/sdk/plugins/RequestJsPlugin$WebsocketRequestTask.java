@@ -32,11 +32,11 @@ public class RequestJsPlugin$WebsocketRequestTask
       if (paramJSONObject.has("method")) {
         this.mMethod = paramJSONObject.optString("method");
       }
-      RequestJsPlugin.access$2100(this.mHeaders, paramJSONObject);
+      RequestJsPlugin.access$2200(this.mHeaders, paramJSONObject);
       if (paramJSONObject.has("timeout")) {
         this.mTimeout = paramJSONObject.optInt("timeout");
       }
-      this.mHeaders.put("Referer", RequestJsPlugin.access$2200(paramRequestJsPlugin));
+      this.mHeaders.put("Referer", RequestJsPlugin.access$1900(paramRequestJsPlugin));
       this.mHeaders.put("User-Agent", QUAUtil.getRequestUA());
       return;
     }

@@ -1,29 +1,14 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View.OnClickListener;
 
-class ots
-  extends ClickableSpan
+public abstract interface ots
+  extends View.OnClickListener, otp
 {
-  ots(otp paramotp, SubCommentData paramSubCommentData) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    osp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin, BaseActivity.sTopActivity);
-    paramView = new orb(this.jdField_a_of_type_Otp).a().a();
-    ocd.a(null, osp.a(this.jdField_a_of_type_Otp.a), "0X800955B", "0X800955B", 0, 0, String.valueOf(this.jdField_a_of_type_Otp.a.mArticleID), String.valueOf(this.jdField_a_of_type_Otp.a.mAlgorithmID), this.jdField_a_of_type_Otp.a.innerUniqueID, paramView, false);
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
-    paramTextPaint.setUnderlineText(false);
-  }
+  public abstract void onClick(View paramView);
 }
 
 

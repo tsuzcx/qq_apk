@@ -1,104 +1,111 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
+import android.annotation.SuppressLint;
+import android.net.Uri;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.smtt.sdk.WebView;
 
-public class bgvk
-  implements bgyh
+class bgvk
+  extends nyz
 {
-  private long jdField_a_of_type_Long;
-  private UsingTimeReportManager jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager;
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  public String b;
-  private boolean jdField_b_of_type_Boolean;
-  public String c;
+  bgvk(bgvj parambgvj) {}
   
-  public bgvk(String paramString1, String paramString2, String paramString3)
+  @SuppressLint({"InflateParams"})
+  public View getVideoLoadingProgressView()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-  }
-  
-  private void f()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager = a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager != null) && (!this.jdField_b_of_type_Boolean))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager.a(this);
-      this.jdField_b_of_type_Boolean = true;
+    if (this.a.a != null) {
+      return this.a.a.getVideoLoadingProgressView();
     }
-  }
-  
-  private void g()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager != null) && (this.jdField_b_of_type_Boolean))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager.b(this);
-      this.jdField_b_of_type_Boolean = false;
-    }
-  }
-  
-  private void h()
-  {
-    if (!this.jdField_b_of_type_Boolean) {}
-    while (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    long l = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.i("BaseUsingTimeReport", 2, "stop,usingTime=" + l);
-    }
-    if ((l > 0L) && (this.jdField_b_of_type_Boolean)) {
-      a(l);
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public UsingTimeReportManager a()
-  {
     return null;
   }
   
-  public void a()
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    f();
-    if (!this.jdField_b_of_type_Boolean) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      this.jdField_a_of_type_Boolean = true;
-    } while (!QLog.isColorLevel());
-    QLog.i("BaseUsingTimeReport", 2, "start(), mStartTime=" + this.jdField_a_of_type_Long);
+    if (this.a.a != null) {
+      this.a.a.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
+    }
   }
   
-  public void a(long paramLong) {}
-  
-  public void b()
+  public void onHideCustomView()
   {
-    h();
-    g();
+    if (this.a.a != null) {
+      this.a.a.onHideCustomView();
+    }
   }
   
-  public void c()
+  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    h();
+    if (this.a.a != null) {
+      this.a.a.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
+    }
+    return super.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
   }
   
-  public void d()
+  @Override
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
-    a();
+    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
+      return true;
+    }
+    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
   }
   
-  public void e()
+  public void onProgressChanged(WebView paramWebView, int paramInt)
   {
-    b();
+    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewWrapper", 2, "onProgressChanged:" + paramInt);
+    }
+    if (this.a.a != null) {
+      this.a.a.onProgressChanged(paramWebView, paramInt);
+    }
+    if ((paramInt > 30) && (!paramWebView.getSettings().getLoadsImagesAutomatically())) {
+      paramWebView.getSettings().setLoadsImagesAutomatically(true);
+    }
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    if (this.a.a != null) {
+      this.a.a.onReceivedTitle(paramWebView, paramString);
+    }
+  }
+  
+  public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    if (this.a.a != null) {
+      this.a.a.showCustomView(paramView, paramInt, paramCustomViewCallback);
+    }
+  }
+  
+  public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    if (this.a.a != null) {
+      this.a.a.showCustomView(paramView, 10, paramCustomViewCallback);
+    }
+  }
+  
+  public boolean onShowFileChooser(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
+  {
+    if ((paramValueCallback != null) && (this.a.a != null)) {
+      return this.a.a.onShowFileChooser(paramValueCallback, paramFileChooserParams);
+    }
+    return super.onShowFileChooser(paramWebView, paramValueCallback, paramFileChooserParams);
+  }
+  
+  public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
+  {
+    if (this.a.a != null) {
+      this.a.a.openFileChooser(paramValueCallback, paramString1, paramString2);
+    }
   }
 }
 

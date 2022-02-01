@@ -3,8 +3,7 @@ package com.tencent.biz.subscribe.widget;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import aagc;
-import aaop;
+import amtj;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
@@ -14,18 +13,19 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
-import anzj;
-import bdep;
 import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.widget.SquareImageView;
 import com.tencent.qqmini.sdk.core.utils.JSONUtil;
 import java.util.ArrayList;
 import org.json.JSONObject;
+import zda;
+import zlk;
 
 public class SubscribeMultiPicSharedCardView
   extends AbsSubscribeShareCardView
@@ -54,7 +54,7 @@ public class SubscribeMultiPicSharedCardView
   
   public int a()
   {
-    return 2131558801;
+    return 2131558809;
   }
   
   protected URLImageView a()
@@ -62,48 +62,63 @@ public class SubscribeMultiPicSharedCardView
     return this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
   }
   
-  public void a(aagc paramaagc, Bitmap paramBitmap, aaop paramaaop)
+  public void a(View paramView)
   {
-    super.a(paramaagc, paramBitmap, paramaaop);
-    CertifiedAccountMeta.StFeed localStFeed = paramaagc.a();
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131364346);
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131364350));
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setBackgroundColor(-1);
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(ScreenUtil.dip2px(2.0F));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131364344));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364347));
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)paramView.findViewById(2131364348));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377302));
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131364345));
+  }
+  
+  public void a(zda paramzda, Bitmap paramBitmap, zlk paramzlk)
+  {
+    super.a(paramzda, paramBitmap, paramzlk);
+    CertifiedAccountMeta.StFeed localStFeed = paramzda.a();
     String str;
     if (localStFeed != null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Aagc.f());
-      paramaagc = this.jdField_a_of_type_Aagc.a().title.get();
-      localObject = paramaagc;
-      if (TextUtils.isEmpty(paramaagc)) {
-        localObject = this.jdField_a_of_type_Aagc.a().content.get();
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Zda.f());
+      paramzda = this.jdField_a_of_type_Zda.a().title.get();
+      localObject = paramzda;
+      if (TextUtils.isEmpty(paramzda)) {
+        localObject = this.jdField_a_of_type_Zda.a().content.get();
       }
-      paramaagc = (aagc)localObject;
+      paramzda = (zda)localObject;
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        str = this.jdField_a_of_type_Aagc.a().ext.get();
-        paramaagc = (aagc)localObject;
+        str = this.jdField_a_of_type_Zda.a().ext.get();
+        paramzda = (zda)localObject;
       }
     }
     try
     {
       if (!TextUtils.isEmpty(str))
       {
-        paramaagc = (aagc)localObject;
+        paramzda = (zda)localObject;
         if (JSONUtil.isJson(str)) {
-          paramaagc = new JSONObject(str).optString("title");
+          paramzda = new JSONObject(str).optString("title");
         }
       }
     }
-    catch (Exception paramaagc)
+    catch (Exception paramzda)
     {
       for (;;)
       {
         int i;
         int j;
-        paramaagc = "";
+        paramzda = "";
       }
     }
-    Object localObject = paramaagc;
-    if (TextUtils.isEmpty(paramaagc)) {
-      localObject = anzj.a(2131718481);
+    Object localObject = paramzda;
+    if (TextUtils.isEmpty(paramzda)) {
+      localObject = amtj.a(2131718729);
     }
     this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView.setText((CharSequence)localObject);
     if (paramBitmap != null) {
@@ -120,23 +135,8 @@ public class SubscribeMultiPicSharedCardView
       this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView);
       this.jdField_a_of_type_JavaUtilArrayList.add(localStFeed.poster.icon.get());
       this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
-      a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, paramaaop);
+      a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, paramzlk);
     }
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131364328);
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131364332));
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setBackgroundColor(-1);
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(bdep.a(2.0F));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131364326));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364329));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewAsyncRichTextView = ((AsyncRichTextView)paramView.findViewById(2131364330));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377534));
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131364327));
   }
 }
 

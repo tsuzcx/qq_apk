@@ -1,22 +1,10 @@
-import android.view.View;
-
-class sym
-  implements bliz
+public abstract interface sym
 {
-  sym(syh paramsyh, blir paramblir) {}
+  public abstract void a(syo paramsyo, int paramInt);
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_Blir.dismiss();
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while ((!syh.b(this.jdField_a_of_type_Syh)) || (!syh.a(this.jdField_a_of_type_Syh, "deleteFeeds")));
-    ssb.a(syh.a(this.jdField_a_of_type_Syh), syh.a(this.jdField_a_of_type_Syh));
-  }
+  public abstract void a(syo paramsyo, Throwable paramThrowable);
+  
+  public abstract void a(syo paramsyo, syk paramsyk);
 }
 
 

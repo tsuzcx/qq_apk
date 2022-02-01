@@ -1,8 +1,22 @@
-import java.util.List;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 
-public abstract interface bchm<T>
+public class bchm
+  implements View.OnLongClickListener
 {
-  public abstract List<T> a(Object... paramVarArgs);
+  public bchm(StructMsgForGeneralShare paramStructMsgForGeneralShare, afce paramafce) {}
+  
+  public boolean onLongClick(View paramView)
+  {
+    StructMsgForGeneralShare.clickedItemIndex = 0;
+    bcgw localbcgw = (bcgw)paramView.getTag();
+    if (!TextUtils.isEmpty(localbcgw.aa)) {
+      StructMsgForGeneralShare.clickedItemIndex = Integer.valueOf(localbcgw.aa).intValue();
+    }
+    return this.jdField_a_of_type_Afce.onLongClick(paramView);
+  }
 }
 
 

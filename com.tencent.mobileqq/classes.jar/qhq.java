@@ -1,79 +1,145 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.HandlerThread;
-import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
-import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSNodeGif;
-import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSNodeImage;
-import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSNodeRIJAvatar;
-import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSNodeVideo;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.pts.core.PTSThreadUtil;
-import com.tencent.pts.ui.PTSNodeFactory;
-import com.tencent.pts.utils.PTSDeviceUtil;
-import com.tencent.pts.utils.PTSLog;
-import com.tencent.pts.utils.PTSReportUtil;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGifView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.qphone.base.util.QLog;
 
 public class qhq
+  extends ViewBase
 {
-  public static void a()
+  private NativeGifView a;
+  
+  public qhq(VafContext paramVafContext)
   {
-    qic.a.a();
-    qhv.a().a();
+    super(paramVafContext);
+    this.a = new NativeGifView(paramVafContext.getContext());
   }
   
-  private static void a(Context paramContext)
+  private boolean a()
   {
-    Intent localIntent = new Intent();
-    String str = qgs.a().a("3978");
-    localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.PageName", "daily_feeds");
-    qgu.a().getClass();
-    localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.PagePath", str);
-    QLog.i("PTSHelper", 1, "[jumpToPTSDailyPage], dailyAppPath = " + str);
-    PublicFragmentActivity.a(paramContext, localIntent, PTSFragment.class);
+    return this.mParams.mLayoutHeight * this.mParams.mLayoutWidth > 2000000;
   }
   
-  public static boolean a(Context paramContext)
+  public int getComMeasuredHeight()
   {
-    if (!qic.a.b()) {}
-    do
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.a.setGifHeight(this.mParams.mLayoutHeight);
+    this.a.setGifWidth(this.mParams.mLayoutWidth);
+    this.a.setIsBigImg(a());
+    this.a.setBackgroundColor(this.mBackground);
+    this.a.displayGif(this.mParams.mLayoutWidth, this.mParams.mLayoutHeight);
+    this.a.invalidate();
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
-      return false;
-      int i = pbd.b();
-      if (!pbd.a(i))
+    default: 
+      return super.setAttribute(paramInt, paramObject);
+    case 59: 
+      try
       {
-        QLog.i("PTSHelper", 1, "[isAbleToJumpNewPTSDailyPage], it is not normal daily channel, channelID = " + i);
-        return false;
+        this.mParams.mLayoutWidth = ((Integer)paramObject).intValue();
+        this.a.requestLayout();
+        return true;
       }
-    } while ((!qgu.a().a()) || (!qgs.a().a("daily_feeds")));
-    a(paramContext);
-    return true;
-  }
-  
-  public static void b()
-  {
-    PTSLog.registerLogger(new qhw());
-    d();
-    if (bhjr.b())
-    {
-      PTSDeviceUtil.setTextHeightOffsetPerLine(0.1176471F);
-      PTSDeviceUtil.setTextWidthOffsetPerLength(0.02941177F);
+      catch (Exception paramObject)
+      {
+        for (;;)
+        {
+          QLog.d("ReadInJoyGifView", 2, paramObject.getMessage());
+        }
+      }
     }
-    PTSNodeFactory.registerNodeVirtual("img", PTSNodeImage.class);
-    PTSNodeFactory.registerCustomViewNodeVirtual("view", "qq-rij-video", PTSNodeVideo.class);
-    PTSNodeFactory.registerCustomViewNodeVirtual("view", "qq-rij-gif", PTSNodeGif.class);
-    PTSNodeFactory.registerCustomViewNodeVirtual("view", "rij-avatar-view", PTSNodeRIJAvatar.class);
-    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("readinjoy-common-pts-sub", 0);
-    localHandlerThread.start();
-    PTSThreadUtil.registerSubHandlerThread(localHandlerThread);
+    try
+    {
+      this.mParams.mLayoutHeight = ((Integer)paramObject).intValue();
+      this.a.requestLayout();
+      return true;
+    }
+    catch (Exception paramObject)
+    {
+      for (;;)
+      {
+        QLog.d("ReadInJoyGifView", 2, paramObject.getMessage());
+      }
+    }
   }
   
-  static void c() {}
-  
-  private static void d()
+  public boolean setAttribute(int paramInt, String paramString)
   {
-    PTSReportUtil.registerPtsReport(new qhr());
+    boolean bool2 = true;
+    boolean bool1;
+    switch (paramInt)
+    {
+    default: 
+      bool1 = super.setAttribute(paramInt, paramString);
+    case 1150: 
+    case 1159: 
+    case 51: 
+      for (;;)
+      {
+        return bool1;
+        this.a.setGifUrl(paramString);
+        return true;
+        this.a.setCoverUrl(paramString);
+        return true;
+        try
+        {
+          paramString = Utils.toInteger(paramString);
+          bool1 = bool2;
+          if (this.a != null)
+          {
+            bool1 = bool2;
+            if (paramString != null)
+            {
+              this.a.setScaleType(paramString.intValue());
+              return true;
+            }
+          }
+        }
+        catch (Exception paramString)
+        {
+          QLog.d("ReadInJoyGifView", 2, paramString.getMessage());
+          return true;
+        }
+      }
+    }
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.a.setNeedGifUrl("yes".equals(paramString.toLowerCase()));
+      return true;
+    }
+    return false;
   }
 }
 

@@ -1,53 +1,23 @@
-import com.tencent.mobileqq.app.automator.step.GetTroopAssisMsg;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MsgAutoMonitorUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class aomr
-  extends aocj
+  implements DialogInterface.OnDismissListener
 {
-  private aomr(GetTroopAssisMsg paramGetTroopAssisMsg) {}
+  public aomr(ARScanEntryView paramARScanEntryView) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "onGetAllProxyMsgFin:" + paramBoolean + ", timeoutFlag=" + paramLong1 + ", type=" + paramLong2);
-    }
-    if (paramLong2 == 1L) {
-      if ((!paramBoolean) || (paramLong1 == 8L) || (paramLong1 == 4L)) {
-        break label95;
-      }
-    }
-    label95:
-    for (int i = 1; i == 0; i = 0)
-    {
-      this.a.a(6);
-      return;
-    }
-    this.a.a(7);
-  }
-  
-  protected void a(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "on GetTroopMsg Fin:" + paramBoolean);
-    }
-    MsgAutoMonitorUtil.getInstance().markGrpFinishCost();
-    this.a.a(7);
-  }
-  
-  protected void b(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "on RegisterProxy Fin:" + paramBoolean);
-    }
-    if (!paramBoolean) {
-      this.a.a(6);
-    }
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a).g();
+    ARScanEntryView.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aomr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,32 @@
-import android.animation.TypeEvaluator;
-import android.graphics.PointF;
-import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
+import android.app.Activity;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.richmediabrowser.listener.IGalleryImageListener;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import com.tencent.richmediabrowser.view.recyclerview.BrowserScaleView;
 
-public class bajn
-  implements TypeEvaluator<PointF>
+class bajn
+  implements IGalleryImageListener
 {
-  public bajn(VasProfileTagView paramVasProfileTagView) {}
+  bajn(bajm parambajm, URLDrawable paramURLDrawable, RichMediaBrowserInfo paramRichMediaBrowserInfo) {}
   
-  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
+  public void onLoadDrawable(int paramInt, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadSuccessed(int paramInt, boolean paramBoolean)
   {
-    float f1 = paramPointF1.x;
-    float f2 = paramPointF1.y;
-    return new PointF(f1 + (paramPointF2.x - f1) * paramFloat, f2 + (paramPointF2.y - f2) * paramFloat);
+    this.jdField_a_of_type_Bajm.a.b.setVisibility(8);
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Bajm.a(paramInt, this.jdField_a_of_type_ComTencentImageURLDrawable);
+      paramInt = this.jdField_a_of_type_ComTencentImageURLDrawable.getExifOrientation();
+      this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo.orientation = paramInt;
+      if (this.jdField_a_of_type_Bajm.a.a != null) {
+        this.jdField_a_of_type_Bajm.a.a.initDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_Bajm.a.mScreenWidthPx, this.jdField_a_of_type_Bajm.a.mScreenHeightPx, this.jdField_a_of_type_Bajm.getRotation(paramInt));
+      }
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_Bajm.a.mContext, this.jdField_a_of_type_Bajm.a.mContext.getString(2131694569), 0).a();
   }
 }
 

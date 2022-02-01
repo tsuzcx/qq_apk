@@ -1,40 +1,57 @@
-import android.text.TextUtils;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.avgame.gameroom.stage.guessstar.GuessStarStageView;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
 
-class nfb
-  implements EIPCOnGetConnectionListener
+public class nfb
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection == null) {}
-    do
-    {
-      return;
-      if (QLog.isDevelopLevel()) {
-        QLog.i("AVGameServerIPCModule", 4, "onConnectBind, [" + paramEIPCConnection.procName + "]");
-      }
-    } while (!TextUtils.equals(paramEIPCConnection.procName, "com.tencent.mobileqq:avgame"));
-    nez.a(1);
-  }
+  public nfb(GuessStarStageView paramGuessStarStageView, String paramString) {}
   
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  public void onGlobalLayout()
   {
-    if (paramEIPCConnection == null) {}
+    int i = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarStageView.jdField_a_of_type_AndroidWidgetTextView.getWidth() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarStageView.jdField_a_of_type_AndroidWidgetTextView.getPaddingLeft() - this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarStageView.jdField_a_of_type_AndroidWidgetTextView.getPaddingRight();
+    if (QLog.isColorLevel())
+    {
+      QLog.d("GuessStarStageView", 2, "showTopicTips tip = " + this.jdField_a_of_type_JavaLangString);
+      QLog.d("GuessStarStageView", 2, "showTopicTips tipWidth  = " + this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarStageView.jdField_a_of_type_AndroidWidgetTextView.getWidth());
+      QLog.d("GuessStarStageView", 2, "showTopicTips caluWidth  = " + i);
+    }
+    ViewGroup.LayoutParams localLayoutParams;
+    if (i > 0)
+    {
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarStageView.jdField_a_of_type_AndroidWidgetTextView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      if (nju.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarStageView.jdField_a_of_type_AndroidWidgetTextView) <= 1) {
+        break label284;
+      }
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarStageView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarStageView.jdField_a_of_type_Ned.a().b());
+      localLayoutParams = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarStageView.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+      localLayoutParams.width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarStageView.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth();
+      localLayoutParams.height = (localLayoutParams.width * 130 / 478);
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarStageView.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
+      if (QLog.isColorLevel()) {
+        QLog.d("GuessStarStageView", 2, "showTopicTips 130 w = " + localLayoutParams.width + ", h = " + localLayoutParams.height);
+      }
+    }
+    label284:
     do
     {
       return;
-      if (QLog.isDevelopLevel()) {
-        QLog.i("AVGameServerIPCModule", 4, "onConnectUnbind, [" + paramEIPCConnection.procName + "]");
-      }
-    } while (!TextUtils.equals(paramEIPCConnection.procName, "com.tencent.mobileqq:avgame"));
-    nez.a(2);
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarStageView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarStageView.jdField_a_of_type_Ned.a().a());
+      localLayoutParams = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarStageView.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+      localLayoutParams.width = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarStageView.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth();
+      localLayoutParams.height = (localLayoutParams.width * 110 / 478);
+      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarStageView.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
+    } while (!QLog.isColorLevel());
+    QLog.d("GuessStarStageView", 2, "showTopicTips 110 w = " + localLayoutParams.width + ", h = " + localLayoutParams.height);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nfb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class asvl
-  implements DialogInterface.OnClickListener
+class asvl
+  implements View.OnClickListener
 {
-  asvl(BaseActivity paramBaseActivity) {}
+  asvl(asvk paramasvk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    int i = ataw.b(this.a.a.e());
+    bcef.b(null, "dc00898", "", "", "0X800A689", "0X800A689", 0, 0, i + "", "", "", "");
+    this.a.a.g();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

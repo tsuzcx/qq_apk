@@ -1,48 +1,80 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.ReqBody;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
+import android.content.Context;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class qtt
-  extends anud
+  extends ClickableSpan
+  implements som
 {
-  public qtt(QQAppInterface paramQQAppInterface)
+  private int jdField_a_of_type_Int = -1;
+  protected long a;
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
+  private qtr jdField_a_of_type_Qtr;
+  boolean jdField_a_of_type_Boolean;
+  
+  public qtt(long paramLong, int paramInt, qtr paramqtr)
   {
-    super(paramQQAppInterface);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Qtr = paramqtr;
   }
   
-  public void a(SkinData paramSkinData, GuideData paramGuideData1, RefreshData paramRefreshData, GuideData paramGuideData2, int paramInt)
+  private void a(long paramLong, Context paramContext)
   {
-    paramGuideData1 = new oidb_0x5bd.ReqBody();
-    paramGuideData1.uint64_uin.set(this.app.getLongAccountUin(), true);
-    paramGuideData1.uint32_source.set(paramInt);
-    if (paramSkinData != null) {
-      paramGuideData1.msg_current_skin_info.set(paramSkinData.toBody(), true);
+    if ((this.jdField_a_of_type_Qtr.a == null) || (this.jdField_a_of_type_Qtr.a.a() == null) || (this.jdField_a_of_type_Qtr.a.a().mSocialFeedInfo == null) || (this.jdField_a_of_type_Qtr.a.a().mSocialFeedInfo.jdField_a_of_type_Rfj == null)) {
+      return;
     }
-    if (paramRefreshData != null) {
-      paramGuideData1.msg_current_refresh_info.set(paramRefreshData.toRefreshInfoBody(), true);
+    Object localObject = paa.g + bfuc.encodeToString(String.valueOf(paramLong).getBytes(), 2);
+    pay.a(paramContext, (String)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("CommonBasicComponent", 2, "personal url =" + (String)localObject);
     }
-    if (paramGuideData2 != null) {
-      paramGuideData1.msg_current_guide_info.set(paramGuideData2.toBody(), true);
+    localObject = this.jdField_a_of_type_Qtr.a.a();
+    pay.a = (ArticleInfo)localObject;
+    String str = pay.a("3", (ArticleInfo)localObject, paramLong);
+    if (uhv.a(this.jdField_a_of_type_Qtr.a.e())) {}
+    for (paramContext = "0X800935C";; paramContext = "0X8007BA3")
+    {
+      odq.a(null, String.valueOf(((ArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_Rer.jdField_a_of_type_Long), paramContext, paramContext, 0, 0, String.valueOf(this.jdField_a_of_type_Qtr.a.a().mFeedId), "0", "" + ((ArticleInfo)localObject).mStrategyId, str, false);
+      pgw.b((ArticleInfo)localObject, this.jdField_a_of_type_Qtr.a.e());
+      return;
     }
-    nkm.a(this.app, new qtu(this), paramGuideData1.toByteArray(), "OidbSvc.0x5bd_1", 1469, 1, new Bundle(), 6000L);
   }
   
-  protected Class<? extends anui> observerClass()
+  public void a(boolean paramBoolean)
   {
-    return qtv.class;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
+      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
+    }
   }
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public void onClick(View paramView)
+  {
+    if (paramView != null) {
+      a(this.jdField_a_of_type_Long, paramView.getContext());
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
+    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.jdField_a_of_type_Int;; i = -1)
+    {
+      paramTextPaint.bgColor = i;
+      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
+      return;
+    }
+  }
 }
 
 

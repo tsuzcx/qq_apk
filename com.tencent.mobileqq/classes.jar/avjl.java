@@ -1,109 +1,21 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
+import android.app.Activity;
 import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.FrameLayout;
-import android.widget.TextView;
-import com.dataline.util.widget.NoScrollGridView;
-import com.tencent.mobileqq.apollo.view.FrameGifView;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.LabelInfo;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.TopCardInfo;
-import com.tencent.mobileqq.gamecenter.view.ShadowView;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.loginwelcome.LoginUserGuideHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class avjl
-  extends RecyclerView.ViewHolder
+class avjl
+  implements View.OnClickListener
 {
-  public Context a;
-  public FrameLayout a;
-  public TextView a;
-  public aviu a;
-  public NoScrollGridView a;
-  public FrameGifView a;
-  public FeedsItemData.TopCardInfo a;
-  public ShadowView a;
+  avjl(avji paramavji, Activity paramActivity) {}
   
-  public avjl(View paramView, Context paramContext)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379776));
-    this.jdField_a_of_type_ComDatalineUtilWidgetNoScrollGridView = ((NoScrollGridView)paramView.findViewById(2131367809));
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView = ((FrameGifView)paramView.findViewById(2131376755));
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView.setPlayLoop(true);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131376758));
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewShadowView = ((ShadowView)paramView.findViewById(2131376759));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131709186));
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewShadowView.setShadowProperties(agej.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0.0F, agej.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), Color.parseColor("#1A0066FF"));
-  }
-  
-  public void a(FeedsItemData.TopCardInfo paramTopCardInfo, aviu paramaviu)
-  {
-    this.jdField_a_of_type_Aviu = paramaviu;
-    Iterator localIterator;
-    int i;
-    if ((paramTopCardInfo != null) && (aviu.a(paramTopCardInfo)))
-    {
-      paramaviu = new RecyclerView.LayoutParams(-1, -2);
-      this.itemView.setLayoutParams(paramaviu);
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo = paramTopCardInfo;
-      paramaviu = new HashMap();
-      acik.a(paramaviu, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo.msgId);
-      paramaviu.put(Integer.valueOf(2), this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo.msgId);
-      paramaviu.put(Integer.valueOf(4), "8");
-      paramaviu.put(Integer.valueOf(6), this.jdField_a_of_type_Aviu.a().gameAppId);
-      localIterator = this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo.labelInfos.iterator();
-      i = 32;
-    }
-    while (localIterator.hasNext())
-    {
-      paramaviu.put(Integer.valueOf(i), ((FeedsItemData.LabelInfo)localIterator.next()).reportId);
-      i += 1;
-      continue;
-      paramTopCardInfo = new RecyclerView.LayoutParams(-1, 0);
-      this.itemView.setLayoutParams(paramTopCardInfo);
-      return;
-    }
-    acik.a(anbd.a(), "769", "205609", this.jdField_a_of_type_Aviu.a().gameAppId, "76903", "1", "160", paramaviu);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo = paramTopCardInfo;
-    if ((this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo.labelInfos != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo.labelInfos.size() <= 4)) {
-      this.jdField_a_of_type_ComDatalineUtilWidgetNoScrollGridView.setNumColumns(4);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComDatalineUtilWidgetNoScrollGridView.setAdapter(new avji(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData$TopCardInfo.labelInfos, this.jdField_a_of_type_AndroidContentContext));
-      this.jdField_a_of_type_ComDatalineUtilWidgetNoScrollGridView.setOnItemClickListener(new avjm(this));
-      long l = NetConnInfoCenter.getServerTime();
-      if ((TextUtils.isEmpty(paramTopCardInfo.bannerIconZip)) || (paramTopCardInfo.bannerBeginTime > l) || (l > paramTopCardInfo.bannerEndTime)) {
-        break label496;
-      }
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-      if ((this.jdField_a_of_type_ComDatalineUtilWidgetNoScrollGridView.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)) {
-        ((ViewGroup.MarginLayoutParams)this.jdField_a_of_type_ComDatalineUtilWidgetNoScrollGridView.getLayoutParams()).topMargin = agej.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      }
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView.setGifData(paramTopCardInfo.bannerGap, null, paramTopCardInfo.bannerIconZip, ansz.a(paramTopCardInfo.bannerIconZip), true);
-      acik.a(anbd.a(), "769", "205646", this.jdField_a_of_type_Aviu.a().gameAppId, "76903", "1", "160", new String[] { "", "", "8" });
-      paramTopCardInfo = paramTopCardInfo.bannerUrl;
-      if (TextUtils.isEmpty(paramTopCardInfo)) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView.setOnClickListener(new avjn(this, paramTopCardInfo));
-      return;
-      this.jdField_a_of_type_ComDatalineUtilWidgetNoScrollGridView.setNumColumns(5);
-    }
-    label496:
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView.c();
+    LoginUserGuideHelper.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Avji.a.a, avji.a(this.jdField_a_of_type_Avji));
+    this.jdField_a_of_type_Avji.g();
+    bcef.b(this.jdField_a_of_type_Avji.a.a, "dc00898", "", "", "0X8009F4A", "0X8009F4A", 2, 0, "2", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

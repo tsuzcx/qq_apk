@@ -1,26 +1,60 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import com.tencent.mobileqq.vas.quickupdate.UpdateCallbackSelector.1;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 
-class bgjd
-  implements View.OnClickListener
+public class bgjd
 {
-  bgjd(bgjb parambgjb) {}
+  private static bgit jdField_a_of_type_Bgit = new bgiu();
+  private static final HashMap<Long, bgit> jdField_a_of_type_JavaUtilHashMap = new UpdateCallbackSelector.1();
   
-  public void onClick(View paramView)
+  public static bgit a(long paramLong)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString(bhzu.e, anzj.a(2131699140));
-    localBundle.putString(bhzu.f, "CJCLUBT");
-    localBundle.putString(bhzu.d, "1450000516");
-    localBundle.putInt(bhzu.b, 3);
-    localBundle.putString(bhzu.i, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=" + "mvip.pt.vipsite.tqtips_chengyuan");
-    localBundle.putString(bhzu.g, "svip");
-    localBundle.putString(bhzu.a, bgjb.a(this.a).getCurrentAccountUin());
-    bhzu.a(bgjb.a(this.a), bgjb.a(this.a), localBundle);
-    EventCollector.getInstance().onViewClicked(paramView);
+    bgit localbgit2 = (bgit)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+    bgit localbgit1 = localbgit2;
+    if (localbgit2 == null) {
+      localbgit1 = jdField_a_of_type_Bgit;
+    }
+    return localbgit1;
+  }
+  
+  public static void a(Context paramContext)
+  {
+    Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    while (localIterator.hasNext()) {
+      ((bgit)localIterator.next()).cleanCache(paramContext);
+    }
+  }
+  
+  public static void a(bgit parambgit)
+  {
+    try
+    {
+      jdField_a_of_type_Bgit = parambgit;
+      return;
+    }
+    finally
+    {
+      parambgit = finally;
+      throw parambgit;
+    }
+  }
+  
+  public static void b(bgit parambgit)
+  {
+    try
+    {
+      if (jdField_a_of_type_Bgit == parambgit) {
+        jdField_a_of_type_Bgit = new bgiu();
+      }
+      return;
+    }
+    finally
+    {
+      parambgit = finally;
+      throw parambgit;
+    }
   }
 }
 

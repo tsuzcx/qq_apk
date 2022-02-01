@@ -7,24 +7,24 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import bioy;
-import bjbs;
+import bgve;
+import bhht;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
-import nnw;
-import tyo;
-import zyx;
+import npg;
+import ufd;
+import yyi;
 
 public class PublicAccountH5AbilityPlugin$26
   implements Runnable
 {
-  public PublicAccountH5AbilityPlugin$26(tyo paramtyo, String paramString, Bundle paramBundle, bjbs parambjbs) {}
+  public PublicAccountH5AbilityPlugin$26(ufd paramufd, String paramString, Bundle paramBundle, bhht parambhht) {}
   
   public void run()
   {
-    Object localObject = nnw.a(this.this$0.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    Object localObject = npg.a(this.this$0.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
     int i;
-    if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing()))
+    if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing()))
     {
       i = 1;
       if (i != 0)
@@ -41,14 +41,14 @@ public class PublicAccountH5AbilityPlugin$26
       try
       {
         localBitmap = BitmapFactory.decodeFile((String)localObject);
-        if (WXShareHelper.a().a()) {
+        if (WXShareHelper.getInstance().isWXinstalled()) {
           break label153;
         }
-        i = 2131719399;
+        i = 2131719722;
         if (i == -1) {
           break label168;
         }
-        zyx.a(0, i);
+        yyi.a(0, i);
         localObject = new Intent(this.this$0.mRuntime.a(), PublicAccountBrowser.class);
         ((Intent)localObject).putExtra("url", "https://weixin.qq.com/download");
         this.this$0.mRuntime.a().startActivity((Intent)localObject);
@@ -62,15 +62,15 @@ public class PublicAccountH5AbilityPlugin$26
       i = 0;
       break;
       label153:
-      if (!WXShareHelper.a().b())
+      if (!WXShareHelper.getInstance().isWXsupportApi())
       {
-        i = 2131719400;
+        i = 2131719723;
         continue;
         label168:
-        WXShareHelper.a().a(localOutOfMemoryError, localBitmap, 1, true);
+        WXShareHelper.getInstance().shareImageToWX(localOutOfMemoryError, localBitmap, 1, true);
         return;
         label179:
-        zyx.a(1, 2131694681);
+        yyi.a(1, 2131694797);
       }
       else
       {
@@ -81,7 +81,7 @@ public class PublicAccountH5AbilityPlugin$26
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.26
  * JD-Core Version:    0.7.0.1
  */

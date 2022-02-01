@@ -1,246 +1,342 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.imcore.message.BaseMessageManager;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.os.SystemClock;
+import android.util.DisplayMetrics;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.locks.Lock;
-import mqq.manager.Manager;
+import java.util.ArrayList;
 
 public class avot
-  implements Manager
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int jdField_a_of_type_Int;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private int b;
+  protected float a;
+  private final int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
+  protected Paint a;
+  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private View jdField_a_of_type_AndroidViewView;
+  private final ArrayList<avou> jdField_a_of_type_JavaUtilArrayList;
+  private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
+  private float jdField_b_of_type_Float = 0.0005F;
+  private final int jdField_b_of_type_Int;
+  private final ArrayList<avou> jdField_b_of_type_JavaUtilArrayList;
+  private int jdField_c_of_type_Int;
+  private final ArrayList<avou> jdField_c_of_type_JavaUtilArrayList;
+  private int d;
+  private int e;
+  private int f = 60;
+  private int g = 35;
+  private int h = 160;
+  private int i = 20;
+  private int j = 150;
   
-  public avot(QQAppInterface paramQQAppInterface)
+  public avot(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = ((Integer)bhsi.a("gray_tips_wording_id", Integer.valueOf(0))).intValue();
-    this.jdField_a_of_type_JavaLangString = ((String)bhsi.a("add_guide_gray_tips_time", ""));
-    this.b = ((Integer)bhsi.a("add_guide_gray_tips_times", Integer.valueOf(0))).intValue();
-  }
-  
-  private static int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 10;
-    case 0: 
-      return 1;
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    paramView = this.jdField_a_of_type_AndroidViewView.getResources();
+    float f1 = paramView.getDisplayMetrics().density;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(this.jdField_b_of_type_Int / 2);
+    if ((this.jdField_a_of_type_Int & 0x1) == 1) {
+      this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(150);
     }
-    return 2;
-  }
-  
-  @NonNull
-  private MessageForUniteGrayTip a(@NonNull QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, long paramLong1, long paramLong2)
-  {
-    QLog.d("CustomizeGrayTipsManager", 1, "makeGuideCustomizeGrayTips, friendUin = " + paramString1 + ", senderUin = " + paramString2 + ", uinType = " + paramInt + ", time = " + paramLong1 + ", shMsgSeq = " + paramLong2);
-    String str = anzj.a(2131691184);
-    paramString1 = new avpd(paramString1, paramString2, str + anzj.a(2131691183), paramInt, -5020, 3, paramLong1);
-    paramString1.e = true;
-    paramString2 = new Bundle();
-    paramString2.putInt("key_action", 56);
-    paramString1.a(0, str.length(), paramString2);
-    paramString2 = new MessageForUniteGrayTip();
-    paramString2.initGrayTipMsg(paramQQAppInterface, paramString1);
-    paramString2.shmsgseq = paramLong2;
-    return paramString2;
-  }
-  
-  @Nullable
-  private <T extends MessageRecord> MessageForUniteGrayTip a(@NonNull List<T> paramList)
-  {
-    int i = paramList.size() - 1;
-    while (i >= 0)
+    for (;;)
     {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.get(i);
-      if (((localMessageRecord instanceof MessageForUniteGrayTip)) && (a((MessageForUniteGrayTip)localMessageRecord))) {
-        return (MessageForUniteGrayTip)localMessageRecord;
+      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(this.jdField_b_of_type_Int / 3);
+      this.jdField_c_of_type_Int = 0;
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new Bitmap[paramArrayOfInt.length];
+      paramInt1 = k;
+      label180:
+      if (paramInt1 < this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length) {
+        try
+        {
+          this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[paramInt1] = BitmapFactory.decodeResource(paramView, paramArrayOfInt[paramInt1]);
+          paramInt1 += 1;
+          break label180;
+          this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(1);
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          for (;;)
+          {
+            localOutOfMemoryError.printStackTrace();
+          }
+        }
       }
-      i -= 1;
     }
-    return null;
+    this.f = ((int)(this.f * f1));
+    this.g = ((int)(this.g * f1));
+    this.h = ((int)(this.h * f1));
+    this.i = ((int)(this.i * f1));
+    this.j = ((int)(this.j * f1));
   }
   
-  private String a()
+  public static double a(double paramDouble1, double paramDouble2)
   {
-    Object localObject = Calendar.getInstance();
-    int i = ((Calendar)localObject).get(1);
-    int j = ((Calendar)localObject).get(2);
-    int k = ((Calendar)localObject).get(5);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(i).append(j + 1).append(k);
-    return ((StringBuilder)localObject).toString();
+    return (paramDouble2 - paramDouble1) * Math.random() + paramDouble1;
   }
   
-  private void a()
+  public void a()
   {
-    this.b += 1;
-    this.jdField_a_of_type_JavaLangString = a();
-    bhsi.a("add_guide_gray_tips_time", this.jdField_a_of_type_JavaLangString);
-    bhsi.a("add_guide_gray_tips_times", Integer.valueOf(this.b));
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
+    {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(1000L);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
+    }
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
-  public static void a(Context paramContext, String paramString, int paramInt)
+  public void a(float paramFloat)
   {
-    if ((paramContext instanceof ChatHistoryActivity)) {}
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, avou paramavou)
+  {
+    if (paramavou != null)
+    {
+      double d1 = a(this.i, this.j);
+      double d3 = a(0.0D, 6.283185307179586D);
+      double d2 = Math.cos(d3);
+      d3 = Math.sin(d3);
+      int k = (int)(Math.random() * this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length);
+      paramavou.jdField_a_of_type_Float = ((float)(d2 * d1 + paramFloat1));
+      paramavou.jdField_b_of_type_Float = ((float)(d1 * d3 + paramFloat2));
+      paramavou.jdField_c_of_type_Float = ((float)(a(5.0D, 10.0D) * d2));
+      paramavou.jdField_d_of_type_Float = ((float)(a(5.0D, 10.0D) * d3));
+      paramavou.jdField_c_of_type_Int = k;
+      paramavou.jdField_d_of_type_Int = ((int)a(this.g, this.f));
+      paramavou.e = ((float)a(0.9800000190734863D, 0.9900000095367432D));
+      paramavou.f = ((float)a(0.5D, 1.0D));
+      paramavou.g = ((float)a(0.9800000190734863D, 0.9900000095367432D));
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    int k = 0;
+    this.jdField_d_of_type_Int = paramInt1;
+    this.e = paramInt2;
+    this.h = ((int)(Math.min(this.jdField_d_of_type_Int, this.e) * 0.4F));
+    this.i = ((int)(this.h * 0.6F));
+    this.j = ((int)(this.h * 0.8F));
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_c_of_type_JavaUtilArrayList.clear();
+    this.jdField_b_of_type_JavaUtilArrayList.clear();
+    if ((this.jdField_a_of_type_Int & 0x1) == 1)
+    {
+      float f1 = this.jdField_d_of_type_Int;
+      float f2 = this.e;
+      paramInt1 = 0;
+      while (paramInt1 < 150)
+      {
+        avou localavou = new avou();
+        a(0.5F * f1, 0.4F * f2, localavou);
+        this.jdField_c_of_type_JavaUtilArrayList.add(localavou);
+        paramInt1 += 1;
+      }
+    }
+    if ((this.jdField_a_of_type_Int & 0x2) == 2)
+    {
+      paramInt1 = k;
+      while (paramInt1 < 40)
+      {
+        d();
+        paramInt1 += 1;
+      }
+    }
+    a();
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    int k = this.jdField_c_of_type_JavaUtilArrayList.size() - 1;
+    while (k >= 0)
+    {
+      localObject = (avou)this.jdField_c_of_type_JavaUtilArrayList.get(k);
+      if (!a((avou)localObject))
+      {
+        this.jdField_c_of_type_JavaUtilArrayList.remove(k);
+        if ((localObject != null) && (this.jdField_c_of_type_Int < this.jdField_b_of_type_Int))
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+          this.jdField_c_of_type_Int += 1;
+        }
+      }
+      k -= 1;
+    }
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsRect;
+    k = 0;
+    if (k < this.jdField_c_of_type_JavaUtilArrayList.size())
+    {
+      avou localavou = (avou)this.jdField_c_of_type_JavaUtilArrayList.get(k);
+      if (localavou == null) {}
+      for (;;)
+      {
+        k += 1;
+        break;
+        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(this.jdField_a_of_type_Float * localavou.f * 2.0F * 255.0F) % 256);
+        ((Rect)localObject).left = ((int)(localavou.jdField_a_of_type_Float - localavou.jdField_d_of_type_Int * 0.5F));
+        ((Rect)localObject).top = ((int)(localavou.jdField_b_of_type_Float - localavou.jdField_d_of_type_Int * 0.5F));
+        ((Rect)localObject).bottom = (((Rect)localObject).top + localavou.jdField_d_of_type_Int);
+        ((Rect)localObject).right = (((Rect)localObject).left + localavou.jdField_d_of_type_Int);
+        paramCanvas.drawBitmap(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[localavou.jdField_c_of_type_Int], null, (Rect)localObject, this.jdField_a_of_type_AndroidGraphicsPaint);
+        localavou.jdField_a_of_type_Float += localavou.jdField_c_of_type_Float;
+        localavou.jdField_b_of_type_Float += localavou.jdField_d_of_type_Float;
+        localavou.jdField_c_of_type_Float *= 0.98F;
+        localavou.jdField_d_of_type_Float = (localavou.jdField_d_of_type_Float * 0.98F + this.jdField_b_of_type_Float);
+        localavou.f *= localavou.g;
+      }
+    }
+  }
+  
+  public void a(Canvas paramCanvas, int paramInt)
+  {
+    if (this.jdField_a_of_type_Float <= 0.05F) {}
     do
     {
       return;
-      if (TextUtils.equals("1", paramString))
-      {
-        paramContext.startActivity(new Intent(paramContext, QQSettingSettingActivity.class));
-        paramContext.startActivity(new Intent(paramContext, NotifyPushSettingActivity.class));
-        localIntent = new Intent(paramContext, QQBrowserActivity.class);
-        localIntent.putExtra("url", "https://zb.vip.qq.com/v2/pages/withdrawMessage?_wv=2&dwop_via=" + paramString);
-        paramContext.startActivity(localIntent);
-        c(paramInt);
-        return;
+      if ((paramInt == 1) && ((this.jdField_a_of_type_Int & 0x1) == 1) && (this.jdField_c_of_type_JavaUtilArrayList.size() > 0)) {
+        a(paramCanvas);
       }
-    } while (!TextUtils.equals("2", paramString));
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://zb.vip.qq.com/v2/pages/withdrawMessage?_wv=2&dwop_via=" + paramString);
-    paramContext.startActivity(localIntent);
-    b();
+    } while ((paramInt != 2) || ((this.jdField_a_of_type_Int & 0x2) != 2));
+    b(paramCanvas);
   }
   
-  private void a(@NonNull QQAppInterface paramQQAppInterface, int paramInt, List<MessageRecord> paramList, MessageForUniteGrayTip paramMessageForUniteGrayTip)
+  public boolean a(avou paramavou)
   {
-    a();
-    MessageForUniteGrayTip localMessageForUniteGrayTip = a(paramQQAppInterface, paramMessageForUniteGrayTip.frienduin, paramMessageForUniteGrayTip.senderuin, paramInt, paramMessageForUniteGrayTip.time, paramMessageForUniteGrayTip.shmsgseq);
-    paramQQAppInterface.a().a(paramInt).a(paramInt, paramMessageForUniteGrayTip.frienduin, localMessageForUniteGrayTip, paramList);
-    avpe.a(paramQQAppInterface, localMessageForUniteGrayTip);
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomizeGrayTipsManager", 2, "insert guide customize gray tips to aioList and db");
+    if (paramavou == null) {}
+    while ((paramavou.jdField_d_of_type_Int < 1) || (paramavou.f <= 0.05F) || (paramavou.jdField_a_of_type_Float + paramavou.jdField_d_of_type_Int * 0.5F < 0.0F) || (paramavou.jdField_b_of_type_Float + paramavou.jdField_d_of_type_Int * 0.5F < 0.0F) || (paramavou.jdField_a_of_type_Float - paramavou.jdField_d_of_type_Int * 0.5F > this.jdField_d_of_type_Int) || (paramavou.jdField_b_of_type_Float - paramavou.jdField_d_of_type_Int * 0.5F > this.e)) {
+      return false;
     }
-  }
-  
-  private boolean a()
-  {
-    if (this.jdField_a_of_type_Int != 0) {}
-    String str;
-    do
-    {
-      do
-      {
-        return false;
-      } while (this.b >= 3);
-      str = a();
-    } while (TextUtils.equals(this.jdField_a_of_type_JavaLangString, str));
     return true;
   }
   
-  private boolean a(MessageForUniteGrayTip paramMessageForUniteGrayTip)
+  public void b()
   {
-    return (paramMessageForUniteGrayTip.tipParam.b == 1) && (!nlj.a(paramMessageForUniteGrayTip)) && (TextUtils.equals(String.valueOf(0), paramMessageForUniteGrayTip.getExtInfoFromExtStr("revoke_op_type")));
-  }
-  
-  private <T extends MessageRecord> boolean a(@NonNull List<T> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
     {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-      if (((localMessageRecord instanceof MessageForUniteGrayTip)) && (((MessageForUniteGrayTip)localMessageRecord).tipParam.b == 3)) {
-        return true;
-      }
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
     }
-    return false;
   }
   
-  private static void b()
+  public void b(Canvas paramCanvas)
   {
-    bdll.b(null, "dc00898", "", "", "0X800B25B", "0X800B25B", 0, 0, "", "", "", "");
+    int k = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
+    while (k >= 0)
+    {
+      localObject = (avou)this.jdField_b_of_type_JavaUtilArrayList.get(k);
+      if (!a((avou)localObject))
+      {
+        this.jdField_b_of_type_JavaUtilArrayList.remove(k);
+        if (localObject != null) {
+          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+        }
+      }
+      k -= 1;
+    }
+    if (Math.abs(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long) > 64L)
+    {
+      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      d();
+    }
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsRect;
+    k = 0;
+    while (k < this.jdField_b_of_type_JavaUtilArrayList.size())
+    {
+      avou localavou = (avou)this.jdField_b_of_type_JavaUtilArrayList.get(k);
+      if (localavou != null)
+      {
+        float f1 = (float)Math.abs(Math.cos(localavou.h) * localavou.f);
+        if (f1 >= 0.01F)
+        {
+          this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(f1 * this.jdField_a_of_type_Float * 255.0F));
+          ((Rect)localObject).left = ((int)(Math.cos(localavou.k) * localavou.j + (localavou.jdField_a_of_type_Float - localavou.jdField_d_of_type_Int * 0.5F)));
+          ((Rect)localObject).top = ((int)(localavou.jdField_b_of_type_Float - localavou.jdField_d_of_type_Int * 0.5F));
+          ((Rect)localObject).bottom = (((Rect)localObject).top + localavou.jdField_d_of_type_Int);
+          ((Rect)localObject).right = (((Rect)localObject).left + localavou.jdField_d_of_type_Int);
+          paramCanvas.drawBitmap(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[localavou.jdField_c_of_type_Int], null, (Rect)localObject, this.jdField_a_of_type_AndroidGraphicsPaint);
+        }
+        localavou.jdField_a_of_type_Float += localavou.jdField_c_of_type_Float;
+        localavou.jdField_b_of_type_Float += localavou.jdField_d_of_type_Float;
+        localavou.f *= localavou.g;
+        localavou.h += localavou.i;
+        localavou.k += localavou.l;
+      }
+      k += 1;
+    }
   }
   
-  static void b(int paramInt)
+  public void c()
   {
-    bdll.b(null, "dc00898", "", "", "0X800B1FC", "0X800B1FC", a(paramInt), 0, "", "", "", "");
-  }
-  
-  private static void c(int paramInt)
-  {
-    bdll.b(null, "dc00898", "", "", "0X800B25A", "0X800B25A", a(paramInt), 0, "", "", "", "");
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    bhsi.a("gray_tips_wording_id", Integer.valueOf(paramInt));
     if (QLog.isColorLevel()) {
-      QLog.d("CustomizeGrayTipsManager", 2, "setGrayTipsWordingId, id = " + paramInt);
+      QLog.i("ParticleSystem", 2, "destroy");
     }
+    b();
+    this.jdField_a_of_type_AndroidViewView = null;
   }
   
-  public boolean a(@NonNull QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  public void d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomizeGrayTipsManager", 2, "insertGuideCustomizeGrayTipsIfNeed: uinType = " + paramInt + ", mGrayTipsWordingId = " + this.jdField_a_of_type_Int + ", mAddGuideGrayTipsTimes = " + this.b + ", mAddGuideGrayTipsDate = " + this.jdField_a_of_type_JavaLangString);
+    avou localavou = null;
+    double d1 = a(this.h, -this.h);
+    double d2 = a(this.h, -this.h);
+    int k = (int)(Math.random() * this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length);
+    float f1 = this.jdField_d_of_type_Int;
+    float f2 = this.e;
+    if (this.jdField_c_of_type_Int < this.jdField_b_of_type_Int)
+    {
+      localavou = new avou();
+      this.jdField_c_of_type_Int += 1;
     }
-    if (paramInt == 3000) {}
-    do
+    for (;;)
     {
-      return false;
-      if (a()) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("CustomizeGrayTipsManager", 2, "do not need to insert guide customize gray tips to aioList");
-    return false;
-    List localList = paramQQAppInterface.a(paramInt).g(paramString, paramInt);
-    paramString = paramQQAppInterface.a(paramInt).a().a(paramString, paramInt);
-    paramString.lock();
-    try
-    {
-      if (bhnm.a(localList))
+      if (localavou != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("CustomizeGrayTipsManager", 2, "aioList is empty");
-        }
-        return false;
+        localavou.jdField_a_of_type_Float = ((float)(d1 + f1 * 0.5F));
+        localavou.jdField_b_of_type_Float = ((float)(f2 * 0.4F + d2));
+        localavou.jdField_c_of_type_Float = 0.0F;
+        localavou.jdField_d_of_type_Float = ((float)a(-1.0D, -2.0D));
+        localavou.jdField_c_of_type_Int = k;
+        localavou.jdField_d_of_type_Int = ((int)a(this.g, this.f));
+        localavou.e = ((float)a(0.9950000047683716D, 0.9980000257492065D));
+        localavou.f = ((float)a(1.0D, 1.0D));
+        localavou.g = ((float)a(0.9900000095367432D, 0.9800000190734863D));
+        localavou.h = ((float)a(0.0D, 3.141592653589793D));
+        localavou.i = ((float)a(0.01D, 0.001D));
+        localavou.j = ((float)a(20.0D, 5.0D));
+        localavou.k = ((float)a(0.0D, 3.141592653589793D));
+        localavou.l = ((float)a(0.01D, 0.1D));
+        localavou.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+        this.jdField_b_of_type_JavaUtilArrayList.add(localavou);
       }
-      MessageForUniteGrayTip localMessageForUniteGrayTip = a(localList);
-      if (localMessageForUniteGrayTip == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("CustomizeGrayTipsManager", 2, "aioList do not contains revoke gray tip");
-        }
-        return false;
+      return;
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
+        localavou = (avou)this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
       }
-      if (a(localList))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("CustomizeGrayTipsManager", 2, "aioList contains GuideCustomizeGrayTips");
-        }
-        return false;
-      }
-      a(paramQQAppInterface, paramInt, localList, localMessageForUniteGrayTip);
-      return true;
-    }
-    finally
-    {
-      paramString.unlock();
     }
   }
   
-  public void onDestroy() {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.postInvalidate();
+    }
+  }
 }
 
 

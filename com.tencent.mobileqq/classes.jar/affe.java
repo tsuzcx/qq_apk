@@ -1,28 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.anim.businesseggs.BusinessEggsAnimation;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Map;
 
-class affe
-  implements DialogInterface.OnClickListener
+public class affe
+  implements View.OnClickListener
 {
-  affe(affd paramaffd) {}
+  public affe(BusinessEggsAnimation paramBusinessEggsAnimation, affh paramaffh, ChatMessage paramChatMessage) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    afdr localafdr = (afdr)BusinessEggsAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsAnimation).get(Long.valueOf(this.jdField_a_of_type_Affh.a));
+    if (localafdr != null)
     {
+      if (!"HTML".equals(localafdr.b)) {
+        break label116;
+      }
+      if (!TextUtils.isEmpty(localafdr.a))
+      {
+        Context localContext = paramView.getContext();
+        Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", localafdr.a);
+        localContext.startActivity(localIntent);
+      }
     }
-    do
+    for (;;)
     {
+      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) {
+        afed.a(null, "0X800B072", this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, localafdr);
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.a.jdField_a_of_type_Affc.a.app.a().b(this.a.jdField_a_of_type_Affc.a.a(), 0, this.a.jdField_a_of_type_Long);
-      this.a.jdField_a_of_type_Affc.a.b();
-      return;
-    } while (this.a.jdField_a_of_type_Affc.a.jdField_a_of_type_Affc.getCount() <= 0);
-    this.a.jdField_a_of_type_Affc.a.app.a().a(this.a.jdField_a_of_type_Affc.a.a(), 0);
-    this.a.jdField_a_of_type_Affc.a.jdField_a_of_type_Affc.changeCursor(this.a.jdField_a_of_type_Affc.getCursor());
+      label116:
+      QLog.e("BusinessEggsAnimation", 1, "[initElementPathStrategy] jump type not define: " + localafdr.b);
+    }
   }
 }
 

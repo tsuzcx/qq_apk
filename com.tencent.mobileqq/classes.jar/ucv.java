@@ -1,30 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class ucv
-  implements View.OnClickListener
+class ucv
+  implements Animation.AnimationListener
 {
-  public ucv(WSFollowFragment paramWSFollowFragment) {}
+  ucv(ucp paramucp) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (WSFollowFragment.a(this.a) != null) {
-      WSFollowFragment.a(this.a).b();
-    }
-    ((ulv)this.a.b()).a(true, true);
-    WSFollowFragment.a(this.a).setVisibility(8);
+    this.a.a(ucp.a(this.a));
     this.a.c();
-    uno.a(136, 1, null);
-    unx.b(true);
-    EventCollector.getInstance().onViewClicked(paramView);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ucv
  * JD-Core Version:    0.7.0.1
  */

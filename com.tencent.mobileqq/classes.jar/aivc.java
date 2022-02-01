@@ -1,32 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
 
-class aivc
-  implements View.OnClickListener
+public class aivc
+  implements ajbi
 {
-  aivc(aivb paramaivb) {}
+  public aivc(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    bdll.b(aivb.a(this.a), "CliOper", "", "", "Free_call", "Clk_free_call_tips", 0, 0, "", "", "", "");
-    aivb.c(aivb.a(this.a), aivb.a(this.a).jdField_a_of_type_JavaLangString);
-    aivb.a(this.a).a();
-    String str1 = null;
-    String str2 = null;
-    if (aivb.a(this.a).jdField_a_of_type_Int == 1006) {
-      str2 = aivb.a(this.a).jdField_a_of_type_JavaLangString;
-    }
-    for (;;)
+    switch (paramInt)
     {
-      ChatActivityUtils.a(aivb.a(this.a), aivb.a(this.a), aivb.a(this.a).jdField_a_of_type_Int, str1, aivb.a(this.a).d, str2, true, aivb.a(this.a).b, true, true, null, "from_internal");
-      bdll.b(aivb.a(this.a), "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "8", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
+    default: 
       return;
-      str1 = aivb.a(this.a).jdField_a_of_type_JavaLangString;
+    case 1: 
+      this.a.k();
+      return;
+    case 3: 
+      this.a.l();
+      return;
+    case 2: 
+      this.a.m();
+      return;
+    case 4: 
+      this.a.n();
+      return;
     }
+    this.a.o();
   }
 }
 

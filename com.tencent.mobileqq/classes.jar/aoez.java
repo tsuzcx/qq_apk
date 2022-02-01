@@ -1,17 +1,23 @@
-class aoez
-  implements bmeo
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+
+public final class aoez
+  implements Parcelable.Creator<ArEffectConfig>
 {
-  aoez(aoex paramaoex) {}
-  
-  public void a(bmen parambmen)
+  public ArEffectConfig a(Parcel paramParcel)
   {
-    parambmen.a(this.a.a);
-    parambmen.a();
+    return new ArEffectConfig(paramParcel);
+  }
+  
+  public ArEffectConfig[] a(int paramInt)
+  {
+    return new ArEffectConfig[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoez
  * JD-Core Version:    0.7.0.1
  */

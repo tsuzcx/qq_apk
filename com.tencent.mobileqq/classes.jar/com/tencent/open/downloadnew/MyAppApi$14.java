@@ -2,12 +2,12 @@ package com.tencent.open.downloadnew;
 
 import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
-import bjxd;
+import bicl;
 
 public class MyAppApi$14
   implements Runnable
 {
-  public MyAppApi$14(bjxd parambjxd, String paramString, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity) {}
+  public MyAppApi$14(bicl parambicl, String paramString, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity) {}
   
   public void run()
   {

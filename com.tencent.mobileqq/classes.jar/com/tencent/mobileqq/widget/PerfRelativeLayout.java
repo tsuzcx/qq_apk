@@ -4,13 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import avdk;
+import atqo;
 import com.tencent.qphone.base.util.QLog;
 
 public class PerfRelativeLayout
   extends RelativeLayout
 {
-  private avdk a;
+  private atqo a;
   
   public PerfRelativeLayout(Context paramContext)
   {
@@ -31,7 +31,7 @@ public class PerfRelativeLayout
   {
     super.dispatchDraw(paramCanvas);
     if (this.a != null) {
-      this.a.a();
+      this.a.b();
     }
     if (QLog.isDevelopLevel()) {
       QLog.i("PerfRelativeLayout", 4, "dispatchDraw, " + this.a);
@@ -42,16 +42,16 @@ public class PerfRelativeLayout
   {
     super.draw(paramCanvas);
     if (this.a != null) {
-      this.a.a();
+      this.a.b();
     }
     if (QLog.isDevelopLevel()) {
       QLog.i("PerfRelativeLayout", 4, "draw, " + this.a);
     }
   }
   
-  public void setOnDrawCompleteListener(avdk paramavdk)
+  public void setOnDrawCompleteListener(atqo paramatqo)
   {
-    this.a = paramavdk;
+    this.a = paramatqo;
   }
 }
 

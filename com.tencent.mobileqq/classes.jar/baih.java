@@ -1,168 +1,153 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PointF;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profile.diy.DiyTextView;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/vas/component/background/VasProfileSimpleBackgroundComponent;", "Lcom/tencent/mobileqq/profilecard/vas/component/background/VasProfileBackgroundComponent;", "componentCenter", "Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;", "cardInfo", "Lcom/tencent/mobileqq/profile/ProfileCardInfo;", "(Lcom/tencent/mobileqq/profilecard/base/framework/IComponentCenter;Lcom/tencent/mobileqq/profile/ProfileCardInfo;)V", "mDiyTextLayout", "Lcom/tencent/mobileqq/profile/view/SingleTouchLayout;", "mDiyTextMask", "Landroid/view/View;", "mDiyTextView", "Lcom/tencent/mobileqq/profile/diy/DiyTextView;", "getDiyTextCenterPoint", "Landroid/graphics/PointF;", "onCreate", "", "activity", "Lcom/tencent/mobileqq/app/BaseActivity;", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onVasDataUpdate", "", "data", "Lcom/tencent/mobileqq/profilecard/vas/VasProfileData;", "updateDiyText", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class baih
-  extends baid
+public class baih
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private DiyTextView jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView;
-  private SingleTouchLayout jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private Map<String, int[]> jdField_a_of_type_JavaUtilMap;
   
-  public baih(@Nullable baei parambaei, @Nullable azxr paramazxr)
+  public baih(AppInterface paramAppInterface)
   {
-    super(parambaei, paramazxr);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    a("TransInfoCreate.CreateSession", new int[] { 0 });
+    a("TransInfo.JoinSession", new int[] { 0 });
+    a("TransInfo.ExitSession", new int[] { 0 });
+    a("TransInfo.ChangeSession", new int[] { 0 });
+    a("TransInfo.RawData", new int[] { 0 });
   }
   
-  private final void a(bahz parambahz)
+  public AppInterface a()
   {
-    int j = -77;
-    bahy localbahy = parambahz.a();
-    Object localObject = (CharSequence)localbahy.a();
-    int i;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0))
+    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, appy paramappy, Class<? extends MSFServlet> paramClass)
+  {
+    if (paramToServiceMsg.getWupBuffer() != null)
     {
-      i = 1;
-      if ((i != 0) || (parambahz.a() != azxy.g)) {
-        break label379;
+      long l = paramToServiceMsg.getWupBuffer().length;
+      byte[] arrayOfByte = new byte[(int)l + 4];
+      PkgTools.DWord2Byte(arrayOfByte, 0, 4L + l);
+      PkgTools.copyData(arrayOfByte, 4, paramToServiceMsg.getWupBuffer(), (int)l);
+      paramToServiceMsg.putWupBuffer(arrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.d("PeakMsfServletProxy", 2, "PB cmd: req cmd: " + paramToServiceMsg.getServiceCmd());
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView == null)
-      {
-        parambahz = new DiyTextView(a().getContext());
-        parambahz.setOnMeasuredListener((agag)new baii(this));
-        this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView = parambahz;
-      }
-      parambahz = this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView;
-      if (parambahz == null) {
-        Intrinsics.throwNpe();
-      }
-      parambahz.setMaxSize(a().getWidth() * 2 / 3);
-      parambahz.setVisibility(0);
-      parambahz.setHiBoom(localbahy.a(), 1, avrl.b);
-      parambahz.setText((CharSequence)localbahy.a());
-      parambahz = this.jdField_a_of_type_AndroidViewView;
-      if (parambahz == null) {
-        Intrinsics.throwNpe();
-      }
-      i = (int)(localbahy.e() * 'ÿ');
-      if (i >= -77) {
-        break label359;
-      }
-      i = j;
+      paramToServiceMsg.actionListener = paramappy;
+      paramappy = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramClass);
+      paramappy.putExtra(ToServiceMsg.class.getSimpleName(), paramToServiceMsg);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramappy);
+      l = System.currentTimeMillis();
+      paramToServiceMsg.extraData.putLong("sendtimekey", l);
     }
-    label418:
-    for (;;)
+  }
+  
+  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Exception paramException)
+  {
+    AppInterface localAppInterface = a();
+    float f = (float)(System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey")) / 1000.0F;
+    Object localObject;
+    int i;
+    if (paramBoolean)
     {
-      label189:
-      if (i > 0) {}
-      for (j = -16777216;; j = -1)
+      if (QLog.isColorLevel()) {
+        QLog.d("PeakMsfServletProxy", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + " app seq:" + paramFromServiceMsg.getAppSeq() + "sec." + f);
+      }
+      boolean bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
+      if ((!paramBoolean) || (!bool)) {
+        break label501;
+      }
+      localObject = paramFromServiceMsg.getServiceCmd();
+      if (QLog.isColorLevel()) {
+        QLog.d("PeakMsfServletProxy", 2, "PB cmd: recv cmd: " + (String)localObject);
+      }
+      if (paramFromServiceMsg.getWupBuffer() == null) {
+        break label502;
+      }
+      i = paramFromServiceMsg.getWupBuffer().length - 4;
+      paramException = new byte[i];
+      PkgTools.copyData(paramException, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      paramFromServiceMsg.putWupBuffer(paramException);
+    }
+    label226:
+    label501:
+    label502:
+    for (paramException = paramFromServiceMsg.getWupBuffer();; paramException = null)
+    {
+      for (;;)
       {
-        parambahz.setBackgroundColor(j);
-        parambahz = parambahz.getBackground();
-        Intrinsics.checkExpressionValueIsNotNull(parambahz, "background");
-        parambahz.setAlpha(Math.abs(i));
-        parambahz = this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout;
-        if (parambahz == null) {
-          Intrinsics.throwNpe();
+        int[] arrayOfInt = (int[])this.jdField_a_of_type_JavaUtilMap.get(localObject);
+        if ((arrayOfInt != null) && (arrayOfInt.length > 0))
+        {
+          int j = arrayOfInt.length;
+          i = 0;
+          if (i >= j) {
+            break label501;
+          }
+          localObject = (BusinessHandler)localAppInterface.getBusinessHandler(arrayOfInt[i]);
+          if (localObject != null) {}
+          try
+          {
+            ((BusinessHandler)localObject).onReceive(paramToServiceMsg, paramFromServiceMsg, paramException);
+            i += 1;
+            break label226;
+            if (paramException != null)
+            {
+              localObject = new ByteArrayOutputStream();
+              paramException.printStackTrace(new PrintStream((OutputStream)localObject));
+              paramException = new String(((ByteArrayOutputStream)localObject).toByteArray());
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("PeakMsfServletProxy", 2, "[NOT SEND]cmd=" + paramFromServiceMsg.getServiceCmd() + ", " + paramException);
+              break;
+            }
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.w("PeakMsfServletProxy", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + ",CODE=" + paramFromServiceMsg.getResultCode() + "sec." + f);
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              localException.printStackTrace();
+              if (QLog.isColorLevel()) {
+                QLog.w("PeakMsfServletProxy", 2, localObject.getClass().getSimpleName() + " onReceive error,", localException);
+              }
+            }
+          }
         }
-        parambahz.setVisibility(0);
-        parambahz.a((View)this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView);
-        parambahz.setImageDegree(localbahy.c());
-        parambahz.setImageScale(localbahy.d());
-        localObject = a().getContext();
-        Intrinsics.checkExpressionValueIsNotNull(localObject, "containerView.context");
-        localObject = ((Context)localObject).getResources();
-        Intrinsics.checkExpressionValueIsNotNull(localObject, "containerView.context.resources");
-        localObject = ((Resources)localObject).getDisplayMetrics();
-        float f1 = localbahy.a();
-        float f2 = ((DisplayMetrics)localObject).widthPixels;
-        float f3 = localbahy.b();
-        parambahz.setCenterPoint(f1 * f2, ((DisplayMetrics)localObject).heightPixels * f3);
-        parambahz.a();
-        parambahz.invalidate();
-        return;
-        i = 0;
-        break;
-        label359:
-        if (i <= 77) {
-          break label418;
-        }
-        i = 77;
-        break label189;
       }
-      label379:
-      parambahz = this.jdField_a_of_type_AndroidViewView;
-      if (parambahz != null) {
-        parambahz.setVisibility(8);
+      if (QLog.isColorLevel()) {
+        QLog.w("PeakMsfServletProxy", 2, " handlerIds no map " + (String)localObject);
       }
-      parambahz = this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout;
-      if (parambahz != null) {
-        parambahz.setVisibility(8);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqProfileDiyDiyTextView = ((DiyTextView)null);
       return;
     }
   }
   
-  @NotNull
-  public final PointF a()
+  protected boolean a(String paramString, int[] paramArrayOfInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout;
-    if (localObject != null)
+    if (!TextUtils.isEmpty(paramString))
     {
-      localObject = ((SingleTouchLayout)localObject).a();
-      if (localObject != null) {
-        return localObject;
-      }
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, paramArrayOfInt);
+      return true;
     }
-    return new PointF();
-  }
-  
-  public void a(@NotNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
-  {
-    Intrinsics.checkParameterIsNotNull(paramBaseActivity, "activity");
-    super.a(paramBaseActivity, paramBundle);
-    paramBundle = new View((Context)paramBaseActivity);
-    paramBundle.setBackgroundColor(-16777216);
-    paramBundle.setVisibility(8);
-    paramBundle.setContentDescription((CharSequence)"qqvip_diy_text_mask");
-    a().addView(paramBundle);
-    this.jdField_a_of_type_AndroidViewView = paramBundle;
-    paramBaseActivity = new SingleTouchLayout((Context)paramBaseActivity);
-    paramBaseActivity.setVisibility(8);
-    paramBaseActivity.setEditable(false);
-    paramBaseActivity.setMovable(false);
-    paramBaseActivity.setContentDescription((CharSequence)"qqvip_diy_text");
-    a().addView((View)paramBaseActivity);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout = paramBaseActivity;
-  }
-  
-  public boolean a(@NotNull bahz parambahz)
-  {
-    Intrinsics.checkParameterIsNotNull(parambahz, "data");
-    super.a(parambahz);
-    a(parambahz);
-    return true;
-  }
-  
-  public void f()
-  {
-    super.f();
-    a().removeView(this.jdField_a_of_type_AndroidViewView);
-    a().removeView((View)this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout);
+    return false;
   }
 }
 

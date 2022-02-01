@@ -1,6 +1,14 @@
-public abstract interface aruv
+import android.view.View;
+
+class aruv
+  implements bjoy
 {
-  public abstract long a();
+  aruv(arut paramarut, View paramView) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+  }
 }
 
 

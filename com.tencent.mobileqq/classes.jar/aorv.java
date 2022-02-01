@@ -1,17 +1,45 @@
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+
 public class aorv
+  implements aosj
 {
-  private aort jdField_a_of_type_Aort;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public aorv(String paramString, aort paramaort)
+  private int a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aort = paramaort;
+    int i = -1;
+    if (lfg.a(BaseApplicationImpl.getContext())) {
+      i = 1;
+    }
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return i;
+      if (AudioHelper.a(BaseApplicationImpl.getContext())) {
+        return 2;
+      }
+      localQQAppInterface = aori.a();
+    } while (localQQAppInterface == null);
+    if (localQQAppInterface.getLoudSpeakerState()) {
+      return 4;
+    }
+    return 3;
   }
   
-  public aort a()
+  public EIPCResult a(Bundle paramBundle)
   {
-    return this.jdField_a_of_type_Aort;
+    if (aori.a() == null)
+    {
+      QLog.e("ArkApp.GetAudioOutputModeHandler", 1, "GetAudioOutputModeHandler.onCall, qq app is null");
+      return EIPCResult.createResult(-102, new Bundle());
+    }
+    int i = a();
+    paramBundle = new Bundle();
+    paramBundle.putInt("mode", i);
+    return EIPCResult.createResult(0, paramBundle);
   }
 }
 

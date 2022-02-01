@@ -1,49 +1,42 @@
-import android.os.Bundle;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Handler;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialAd.IPCHandlerForClose.1;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialFragment;
-import java.lang.ref.WeakReference;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.Window;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
-public final class acqc
-  implements AdIPCManager.Handler
+public class acqc
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public AdIPCManager.Result handle(AdIPCManager.Params paramParams)
+  public acqc(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  
+  public void onGlobalLayout()
   {
-    String str2 = null;
-    AdIPCManager.Result localResult = new AdIPCManager.Result();
-    if (paramParams == null) {
-      if (paramParams == null) {
-        break label179;
+    Object localObject = new Rect();
+    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
+    DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
+    int i = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
+    if (i - (((Rect)localObject).bottom - ((Rect)localObject).top) > i / 3)
+    {
+      i = 1;
+      localObject = this.a.getCurrentFocus();
+      if (i != 0) {
+        break label101;
+      }
+      if ((localObject != null) && ((localObject instanceof EditText))) {
+        ((EditText)localObject).setCursorVisible(false);
       }
     }
-    label179:
-    for (String str1 = paramParams.getAction();; str1 = null)
+    label101:
+    while ((localObject == null) || (!(localObject instanceof EditText)))
     {
-      if (paramParams != null) {
-        str2 = paramParams.getToProcessName();
-      }
-      acvc.b("GdtInterstitialAd", String.format("IPCHandlerForClose.handle action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(localResult.success) }));
-      return localResult;
-      if ((!paramParams.isValid()) || (paramParams.bundle == null)) {
-        break;
-      }
-      str1 = paramParams.bundle.getString("TRACE_ID");
-      if (paramParams.bundle == null) {
-        break;
-      }
-      WeakReference localWeakReference = acqd.a().a(str1);
-      if ((localWeakReference == null) || (localWeakReference.get() == null)) {
-        break;
-      }
-      acqe.c(BaseApplicationImpl.getContext(), ((GdtInterstitialFragment)localWeakReference.get()).a(), ((GdtInterstitialFragment)localWeakReference.get()).a());
-      localResult.success = true;
-      AdThreadManager.INSTANCE.postDelayed(new GdtInterstitialAd.IPCHandlerForClose.1(this, str1), 0, 2000L);
+      return;
+      i = 0;
       break;
     }
+    ((EditText)localObject).setCursorVisible(true);
   }
 }
 

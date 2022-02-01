@@ -1,44 +1,48 @@
-import android.widget.BaseAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.AnimationScrollListener.1;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.mobileqq.vas.PendantInfo;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
 public class aknf
-  implements blih
+  extends AbsRecentStatus
 {
-  public aknf(AvatarPendantActivity paramAvatarPendantActivity) {}
+  private static int a = 20;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public int[] declareStatus()
   {
-    if (paramInt == 0) {
-      ((AvatarPendantManager)this.b.app.getManager(46)).a(this.b.jdField_a_of_type_Long).a(false);
-    }
-    for (;;)
+    return new int[] { 6 };
+  }
+  
+  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
+  {
+    return true;
+  }
+  
+  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
+  {
+    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {}
+    Object localObject;
+    do
     {
-      this.b.u = paramInt;
-      if (paramInt != 0) {
-        break label127;
+      return false;
+      localObject = (QQAppInterface)paramIMCoreAppRuntime;
+      paramIMCoreAppRuntime = paramRecentBaseData.getRecentUserUin();
+      paramRecentBaseData.mStatus = 0;
+      localObject = (ListenTogetherManager)((QQAppInterface)localObject).getManager(331);
+      if (((paramRecentBaseData.getRecentUserType() == 3000) || (paramRecentBaseData.getRecentUserType() == 1)) && (((ListenTogetherManager)localObject).a(1, paramIMCoreAppRuntime)))
+      {
+        paramRecentBaseData.mStatus = 6;
+        return false;
       }
-      if (!this.b.jdField_a_of_type_Ammy.a) {
-        break;
-      }
-      this.b.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(new AvatarPendantActivity.AnimationScrollListener.1(this), 80L);
-      return;
-      ((AvatarPendantManager)this.b.app.getManager(46)).a(this.b.jdField_a_of_type_Long).a(true);
-    }
-    URLDrawable.resume();
-    this.b.jdField_a_of_type_Ammy.notifyDataSetChanged();
-    return;
-    label127:
-    URLDrawable.pause();
-    this.b.jdField_a_of_type_Ammy.a = true;
+    } while ((paramRecentBaseData.getRecentUserType() != 0) || (!((ListenTogetherManager)localObject).a(2, paramIMCoreAppRuntime)));
+    paramRecentBaseData.mStatus = 6;
+    return false;
+  }
+  
+  public int priority()
+  {
+    return a;
   }
 }
 

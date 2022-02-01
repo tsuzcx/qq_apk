@@ -1,11 +1,19 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ktextension/IPbParser;", "P", "R", "", "parse", "input", "(Ljava/lang/Object;)Ljava/lang/Object;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface pno<P, R>
+public class pno
+  extends StaggeredGridLayoutManager
 {
-  @Nullable
-  public abstract R a(P paramP);
+  public pno(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, int paramInt1, int paramInt2)
+  {
+    super(paramInt1, paramInt2);
+  }
+  
+  public boolean canScrollVertically()
+  {
+    return (this.a.a.e) && (super.canScrollVertically());
+  }
 }
 
 

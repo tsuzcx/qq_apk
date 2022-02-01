@@ -1,29 +1,23 @@
-import org.json.JSONObject;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.capture.view.ProviderView;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class bmzh
+  implements Animation.AnimationListener
 {
-  public int a = -1;
-  public String a;
+  public bmzh(QIMProviderContainerView paramQIMProviderContainerView) {}
   
-  public static String a(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    if (QIMProviderContainerView.a(this.a) != null)
     {
-      localJSONObject.put("iItemId", paramInt1);
-      localJSONObject.put("strTextColor", paramString1);
-      localJSONObject.put("strAndBgUrl", paramString2);
-      localJSONObject.put("strIosBgUrl", paramString3);
-      localJSONObject.put("strFrameZip", paramString4);
-      localJSONObject.put("iFrameRate", paramInt2);
-      return localJSONObject.toString();
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        paramString1.printStackTrace();
-      }
+      QIMProviderContainerView.a(this.a).setAlpha(1.0F);
+      QIMProviderContainerView.a(this.a).setVisibility(0);
     }
   }
 }

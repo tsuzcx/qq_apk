@@ -1,110 +1,63 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.AnimationDrawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
 import com.tencent.av.VideoController;
-import com.tencent.av.smallscreen.BaseSmallScreenService;
-import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
-import com.tencent.av.smallscreen.SmallScreenService;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class lzg
-  extends lzj
+class lzg
+  extends ljf
 {
-  protected int a;
-  protected View a;
-  public ImageView a;
-  protected TextView a;
-  protected int b;
-  protected int c;
-  protected int d;
-  protected int e;
-  protected int f;
-  protected int g;
-  protected int h;
+  lzg(lzf paramlzf) {}
   
-  public lzg(Context paramContext)
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "SmallScreenAudio";
-    paramContext = paramContext.getResources();
-    this.i = 2131559773;
-    this.j = paramContext.getDimensionPixelSize(2131297844);
-    this.k = paramContext.getDimensionPixelSize(2131297838);
-    this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(2131297845);
-    this.b = paramContext.getDimensionPixelSize(2131297839);
-    this.c = paramContext.getDimensionPixelSize(2131297840);
-    this.d = paramContext.getDimensionPixelSize(2131297842);
-    this.e = paramContext.getDimensionPixelSize(2131297841);
-    this.f = paramContext.getDimensionPixelSize(2131297843);
-    this.g = paramContext.getDimensionPixelSize(2131297836);
-    this.h = paramContext.getDimensionPixelSize(2131297837);
-  }
-  
-  public void a(Context paramContext, LayoutInflater paramLayoutInflater, lzk paramlzk)
-  {
-    super.a(paramContext, paramLayoutInflater, paramlzk);
-    paramContext = paramContext.getResources();
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setTitleHeight(paramContext.getDimensionPixelSize(2131299011) * 5 / 2);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2131373637));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2131373612));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130772165);
-    paramContext = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-    if ((paramContext instanceof AnimationDrawable)) {
-      ((AnimationDrawable)paramContext).start();
+    if (QLog.isColorLevel()) {
+      QLog.w("SmallScreenVideoController", 1, "onAfterOpenCamera, success[" + paramBoolean + "], preSessionType[" + paramInt + "], seq[" + paramLong + "]");
     }
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.findViewById(2131373358);
-  }
-  
-  public void a(BaseSmallScreenService paramBaseSmallScreenService)
-  {
-    Object localObject1;
-    Object localObject2;
-    if ((paramBaseSmallScreenService instanceof SmallScreenService))
+    if (paramBoolean)
     {
-      localObject1 = ((SmallScreenService)paramBaseSmallScreenService).a;
-      localObject2 = lcb.a().a();
-      if ((localObject1 == null) || (!((VideoController)localObject1).l()) || (((lff)localObject2).a == null) || (((lff)localObject2).a.jdField_a_of_type_JavaLangString == null) || (!((lff)localObject2).a.jdField_a_of_type_JavaLangString.equals("1"))) {}
+      if ((this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (lzb.f()) && ((paramInt == 1) || (paramInt == 3)) && (this.a.jdField_a_of_type_Lzk != null))
+      {
+        this.a.jdField_a_of_type_Lzk.a(true, false);
+        this.a.jdField_a_of_type_Lzk.c(paramLong, this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils.a());
+      }
+      return;
     }
-    for (int i = 1;; i = 0)
+    String str;
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null))
     {
-      localObject1 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      localObject2 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      if (paramBaseSmallScreenService.f)
-      {
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setSize(this.j, this.k);
-        if (i != 0) {
-          this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setBackgroundResource(2130842241);
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-          ((RelativeLayout.LayoutParams)localObject1).leftMargin = this.c;
-          ((RelativeLayout.LayoutParams)localObject1).topMargin = this.d;
-          ((RelativeLayout.LayoutParams)localObject2).bottomMargin = this.g;
-          this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-          this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-          this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.f();
-          return;
-          this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setBackgroundResource(2130842238);
-        }
+      str = "";
+      if (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().r()) {
+        break label250;
       }
-      this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setSize(this.jdField_a_of_type_Int, this.b);
-      if (i != 0) {
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setBackgroundResource(2130842242);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        ((RelativeLayout.LayoutParams)localObject1).leftMargin = this.e;
-        ((RelativeLayout.LayoutParams)localObject1).topMargin = this.f;
-        ((RelativeLayout.LayoutParams)localObject2).bottomMargin = this.h;
+      str = "0X8004894";
+    }
+    for (;;)
+    {
+      bcef.b(null, "CliOper", "", "", str, str, 0, 0, "", "", "", "");
+      if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
         break;
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setBackgroundResource(2130842240);
       }
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(38), Integer.valueOf(2), Long.valueOf(paramLong) });
+      return;
+      label250:
+      if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().f == 1) {
+        str = "0X8004888";
+      } else if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().f == 2) {
+        str = "0X800488E";
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean) {}
+  
+  protected void b() {}
+  
+  protected void b(long paramLong, boolean paramBoolean)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().j == 1011) || (this.a.jdField_a_of_type_ComTencentAvVideoController.f)))
+    {
+      this.a.jdField_a_of_type_Lzk.a(false, false);
+      this.a.jdField_a_of_type_Lzk.v_();
     }
   }
 }

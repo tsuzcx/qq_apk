@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agnk
-  implements bdxo
+  implements bhfe
 {
-  agnk(agnj paramagnj) {}
+  agnk(agnj paramagnj, agnu paramagnu) {}
   
-  public void a()
+  public void a(String paramString)
   {
-    bdxu localbdxu = new bdxu(3000, 360, 0);
-    localbdxu.a = true;
-    this.a.a.d.a(new bdxn[] { localbdxu });
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Agnu.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Agnu.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Agnu.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setDrawStatus(2);
+    }
   }
 }
 

@@ -1,83 +1,178 @@
 package com.tencent.mobileqq.activity;
 
-import afja;
-import android.widget.TextView;
-import aoaw;
-import arsh;
-import bcvn;
-import bdmc;
-import bmsx;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
+import bbox;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadRegulator;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneClickReport;
-import cooperation.qzone.report.lp.LinkReport;
-import java.util.HashMap;
+import cooperation.qzone.UndealCount.QZoneCountInfo;
+import cooperation.qzone.UndealCount.QZoneCountUserInfo;
+import java.util.ArrayList;
 
 class Leba$33
   implements Runnable
 {
-  Leba$33(Leba paramLeba, arsh paramarsh) {}
+  Leba$33(Leba paramLeba) {}
   
   public void run()
   {
-    boolean bool = true;
-    if ((Leba.a(this.this$0) != null) && (Leba.a(this.this$0).getVisibility() == 0)) {}
-    try
+    localObject4 = (bbox)this.this$0.a.getManager(10);
+    int j;
+    Object localObject1;
+    if (localObject4 != null)
     {
-      this.this$0.a(null, true, this.a);
-      ThreadRegulator.a().a(4);
-      ThreadRegulator.a().a(4, 2000L);
-      Leba.d(this.this$0, true);
-      bcvn localbcvn = (bcvn)this.this$0.a.getManager(10);
-      if (localbcvn != null)
-      {
-        if ((localbcvn.a(1) <= 0) && (localbcvn.a(2) <= 0))
-        {
-          Object localObject = new bmsx();
-          ((bmsx)localObject).c = "1";
-          ((bmsx)localObject).d = "0";
-          ((bmsx)localObject).b = 4;
-          ((bmsx)localObject).l = "3";
-          ((bmsx)localObject).m = "mainEntrance";
-          ((bmsx)localObject).n = "activefeed";
-          QZoneClickReport.report(this.this$0.a.getAccount(), (bmsx)localObject, false);
-          localObject = new HashMap();
-          ((HashMap)localObject).put("source_type", "3");
-          ((HashMap)localObject).put("source_from", "mainEntrance");
-          ((HashMap)localObject).put("source_to", "activefeed");
-          bdmc.a(BaseApplicationImpl.getContext()).a(this.this$0.a.getAccount(), "actQZSourceDataReport", true, 0L, 0L, (HashMap)localObject, null);
-        }
-        if ((this.this$0.a.a() == null) || (!this.this$0.a.a().a())) {
-          break label321;
-        }
-        afja.a(localbcvn, false, bool);
-        if ((Leba.b(this.this$0) != null) && (Leba.b(this.this$0).getVisibility() == 0))
-        {
-          localbcvn.c(3);
-          localbcvn.c(61);
-          localbcvn.c(6);
-        }
+      j = ((bbox)localObject4).a(1);
+      if (localObject4 == null) {
+        break label180;
       }
-      LinkReport.reportClickQZoneEntry(this.this$0.a.c());
-      return;
+      localObject1 = ((bbox)localObject4).a();
+      label41:
+      if (QLog.isColorLevel()) {
+        QLog.d("UndealCount.Q.lebatab.leba", 2, "TYPE_PASSIVE_FEED freshEntryItemUI num=" + j);
+      }
+      this.this$0.b(new Leba.33.1(this, j));
+      if (localObject4 == null) {
+        break label186;
+      }
+      i = ((bbox)localObject4).a(2);
+      label100:
+      if ((i <= 0) || (localObject1 == null) || (((ArrayList)localObject1).size() <= 0)) {
+        break label191;
+      }
+      if ((!QLog.isColorLevel()) || (QLog.isColorLevel())) {
+        QLog.d("UndealCount.Q.lebatab.leba", 2, "TYPE_ACTIVE_FEED updateQZoneFlag.mQzoneFeedSubIcon setImageDrawable");
+      }
+      i = 8;
+      this.this$0.b(new Leba.33.2(this, (ArrayList)localObject1));
     }
-    catch (Exception localException)
+    for (;;)
     {
+      this.this$0.b(new Leba.33.5(this, i, j));
+      return;
+      j = 0;
+      break;
+      label180:
+      localObject1 = null;
+      break label41;
+      label186:
+      i = 0;
+      break label100;
       for (;;)
       {
-        QLog.i("Leba", 1, "clickAction", localException);
+        for (;;)
+        {
+          try
+          {
+            label191:
+            if (QLog.isColorLevel()) {
+              QLog.d("UndealCount.Q.lebatab.leba", 2, "updateQZoneFlag.noflag count=" + i);
+            }
+            if (localObject4 == null) {
+              continue;
+            }
+            localObject1 = ((bbox)localObject4).a(6);
+            if (localObject4 == null) {
+              continue;
+            }
+            localObject5 = ((bbox)localObject4).a(61);
+            if (localObject4 == null) {
+              continue;
+            }
+            localQZoneCountInfo = ((bbox)localObject4).a(3);
+            localObject6 = "";
+            localObject4 = "";
+            if ((localObject1 == null) || (((QZoneCountInfo)localObject1).friendList == null) || (((QZoneCountInfo)localObject1).friendList.size() <= 0) || (((QZoneCountUserInfo)((QZoneCountInfo)localObject1).friendList.get(0)).uin <= 0L) || (((QZoneCountInfo)localObject1).uCount <= 0L)) {
+              continue;
+            }
+            localObject4 = ((QZoneCountInfo)localObject1).strShowMsg;
+            localObject6 = ((QZoneCountUserInfo)((QZoneCountInfo)localObject1).friendList.get(0)).uin + "";
+            i = 1;
+            localObject1 = localObject4;
+            localObject4 = localObject6;
+          }
+          catch (Exception localException2)
+          {
+            QZoneCountInfo localQZoneCountInfo;
+            Object localObject6;
+            boolean bool;
+            Object localObject2;
+            i = 0;
+            continue;
+            Object localObject5 = localException2;
+            Object localObject3 = localObject4;
+            localObject4 = localObject5;
+            continue;
+            i = 0;
+            localObject3 = localObject6;
+            continue;
+          }
+          if ((i != 0) || (localObject5 == null) || (((QZoneCountInfo)localObject5).friendList == null) || (((QZoneCountInfo)localObject5).friendList.size() <= 0) || (((QZoneCountUserInfo)((QZoneCountInfo)localObject5).friendList.get(0)).uin <= 0L) || (((QZoneCountInfo)localObject5).uCount <= 0L)) {
+            continue;
+          }
+          localObject4 = ((QZoneCountInfo)localObject5).strShowMsg;
+          localObject1 = ((QZoneCountUserInfo)((QZoneCountInfo)localObject5).friendList.get(0)).uin + "";
+          i = 1;
+          localObject6 = localObject1;
+          localObject5 = localObject4;
+          if (i == 0)
+          {
+            localObject6 = localObject1;
+            localObject5 = localObject4;
+            if (localQZoneCountInfo != null)
+            {
+              localObject6 = localObject1;
+              localObject5 = localObject4;
+              if (localQZoneCountInfo.friendList != null)
+              {
+                localObject6 = localObject1;
+                localObject5 = localObject4;
+                if (localQZoneCountInfo.friendList.size() > 0)
+                {
+                  localObject6 = localObject1;
+                  localObject5 = localObject4;
+                  if (((QZoneCountUserInfo)localQZoneCountInfo.friendList.get(0)).uin > 0L)
+                  {
+                    localObject6 = localObject1;
+                    localObject5 = localObject4;
+                    if (localQZoneCountInfo.uCount > 0L)
+                    {
+                      localObject5 = localQZoneCountInfo.strShowMsg;
+                      localObject6 = ((QZoneCountUserInfo)localQZoneCountInfo.friendList.get(0)).uin + "";
+                    }
+                  }
+                }
+              }
+            }
+          }
+          bool = TextUtils.isEmpty((CharSequence)localObject5);
+          if (bool) {
+            continue;
+          }
+          i = -1;
+          try
+          {
+            this.this$0.b(new Leba.33.3(this, (String)localObject5, (String)localObject6));
+          }
+          catch (Exception localException1) {}
+        }
+        QLog.e("Leba", 1, "updateQZoneRedFlag" + localException1);
+        break;
+        localObject2 = null;
         continue;
-        label321:
-        bool = false;
+        localObject5 = null;
+        continue;
+        localQZoneCountInfo = null;
       }
+      this.this$0.b(new Leba.33.4(this));
+      if (QLog.isColorLevel()) {
+        QLog.d("UndealCount.ZebraAlbum.Q.lebatab.leba", 2, "freshEntryItemUI set style NOTETXT_STYLE_DEFAULT and mQzoneFeedSubIcon GONE");
+      }
+      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Leba.33
  * JD-Core Version:    0.7.0.1
  */

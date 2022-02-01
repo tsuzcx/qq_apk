@@ -1,25 +1,16 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-
-public class ojg
-  implements TextWatcher
+class ojg
+  implements pln
 {
-  public ojg(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  ojg(ojc paramojc) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void l()
   {
-    this.a.a(paramEditable);
+    ojc.d(this.a);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void m()
   {
-    this.a.a(paramCharSequence, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.b(paramCharSequence, paramInt1, paramInt2, paramInt3);
+    ojc.e(this.a);
   }
 }
 

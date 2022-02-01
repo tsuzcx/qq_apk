@@ -1,109 +1,41 @@
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.weseevideo.model.MediaModel;
+import dov.com.qq.im.aeeditor.module.export.AEEditorGenerateRunnable;
 
-public class bmdf<K, V>
-  implements Map<K, V>
+public class bmdf
 {
-  private final HashMap<K, V> a = new HashMap();
-  private final HashMap<V, K> b = new HashMap();
+  public float a;
+  public int a;
+  public long a;
+  public MediaModel a;
+  public AEEditorGenerateRunnable a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
   
-  public K a(Object paramObject)
+  public bmdf(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, MediaModel paramMediaModel)
   {
-    return this.b.get(paramObject);
-  }
-  
-  public K b(Object paramObject)
-  {
-    paramObject = this.b.remove(paramObject);
-    if (paramObject != null) {
-      this.a.remove(paramObject);
-    }
-    return paramObject;
-  }
-  
-  public void clear()
-  {
-    this.a.clear();
-    this.b.clear();
-  }
-  
-  public boolean containsKey(Object paramObject)
-  {
-    return this.a.containsKey(paramObject);
-  }
-  
-  public boolean containsValue(Object paramObject)
-  {
-    return this.b.containsKey(paramObject);
-  }
-  
-  public Set<Map.Entry<K, V>> entrySet()
-  {
-    return this.a.entrySet();
-  }
-  
-  public V get(Object paramObject)
-  {
-    return this.a.get(paramObject);
-  }
-  
-  public boolean isEmpty()
-  {
-    return this.a.isEmpty();
-  }
-  
-  public Set<K> keySet()
-  {
-    return this.a.keySet();
-  }
-  
-  public V put(K paramK, V paramV)
-  {
-    if ((paramK == null) || (paramV == null)) {
-      return null;
-    }
-    Object localObject = remove(paramK);
-    b(paramV);
-    this.a.put(paramK, paramV);
-    this.b.put(paramV, paramK);
-    return localObject;
-  }
-  
-  public void putAll(Map<? extends K, ? extends V> paramMap)
-  {
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
-    {
-      Object localObject2 = (Map.Entry)paramMap.next();
-      Object localObject1 = ((Map.Entry)localObject2).getKey();
-      localObject2 = ((Map.Entry)localObject2).getValue();
-      if ((localObject1 != null) && (localObject2 != null)) {
-        put(localObject1, localObject2);
-      }
-    }
-  }
-  
-  public V remove(Object paramObject)
-  {
-    paramObject = this.a.remove(paramObject);
-    if (paramObject != null) {
-      this.b.remove(paramObject);
-    }
-    return paramObject;
-  }
-  
-  public int size()
-  {
-    return this.a.size();
-  }
-  
-  public Collection<V> values()
-  {
-    return this.a.values();
+    this.g = paramString1;
+    this.h = paramString2;
+    this.i = paramString3;
+    this.j = paramString4;
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = paramString6;
+    this.c = paramString7;
+    this.f = paramString5;
+    this.d = paramString8;
+    this.jdField_a_of_type_ComTencentWeseevideoModelMediaModel = paramMediaModel;
+    this.e = "AEEDITOR_GENERATE_STATUS_WAIT";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 

@@ -1,30 +1,12 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
-import com.tencent.mobileqq.search.fragment.MessageSearchDetailFragment;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.startup.step.Step;
 
-public class bcct
-  extends bcbk<bcfu, bcpp>
+public abstract interface bcct
 {
-  public bcct(MessageSearchDetailFragment paramMessageSearchDetailFragment, ListView paramListView, aoof paramaoof, FullMessageSearchResult.SearchResultItem paramSearchResultItem, String paramString, QQAppInterface paramQQAppInterface)
-  {
-    super(paramListView, paramaoof, paramSearchResultItem, paramString, paramQQAppInterface);
-  }
-  
-  protected bcil a(int paramInt)
-  {
-    return new bcji(MessageSearchDetailFragment.a(this.a));
-  }
-  
-  protected bcoa a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new bcpp(paramViewGroup, 2131562882);
-  }
+  public abstract Step a(int paramInt, bcad parambcad, int[] paramArrayOfInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcct
  * JD-Core Version:    0.7.0.1
  */

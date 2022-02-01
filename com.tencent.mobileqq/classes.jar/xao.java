@@ -1,82 +1,106 @@
+import android.graphics.Color;
+import android.os.Looper;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.IconInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UsrIcon;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import com.tencent.biz.qqstory.playvideo.playerwidget.ProgressBarVideoInfoWidget.2;
+import com.tencent.biz.qqstory.view.SplitedProgressBar;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tribe.async.dispatch.Subscriber;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
-class xao
-  extends SimpleJob<Void>
+public class xao
+  extends AbsVideoInfoWidget
 {
-  xao(xan paramxan, String paramString)
+  public SplitedProgressBar a;
+  @NonNull
+  private wlw a;
+  
+  public xao(@NonNull ViewGroup paramViewGroup)
   {
-    super(paramString);
+    super(paramViewGroup);
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  private int d()
   {
-    paramJobContext = this.a.a.icon_info.get();
-    HashMap localHashMap = new HashMap();
-    wtt localwtt = (wtt)wth.a(2);
-    Iterator localIterator = paramJobContext.iterator();
-    String str;
-    QQUserUIItem localQQUserUIItem;
-    for (;;)
-    {
-      if (localIterator.hasNext())
-      {
-        paramJobContext = (qqstory_struct.IconInfo)localIterator.next();
-        str = paramJobContext.union_id.get().toStringUtf8();
-        localQQUserUIItem = localwtt.b(str);
-        if (localQQUserUIItem != null) {
-          if ((paramJobContext.err_code.get() == 0) && (paramJobContext.usr_icon_list.has()) && (paramJobContext.usr_icon_list.size() > 0))
-          {
-            paramVarArgs = (qqstory_struct.UsrIcon)paramJobContext.usr_icon_list.get(0);
-            paramJobContext = paramVarArgs.icon_postfix.get().toStringUtf8();
-            paramVarArgs = paramVarArgs.jmp_postfix.get().toStringUtf8();
-            if (TextUtils.isEmpty(paramJobContext)) {
-              break label309;
-            }
-            paramJobContext = "https://pub.idqqimg.com/pc/misc/qqstory_icon/" + paramJobContext;
-          }
-        }
-      }
+    int i = ScreenUtil.getInstantScreenWidth(this.jdField_a_of_type_AndroidViewView.getContext());
+    int j = ScreenUtil.getInstantScreenHeight(this.jdField_a_of_type_AndroidViewView.getContext());
+    int k = ScreenUtil.getNavigationBarHeight(this.jdField_a_of_type_AndroidViewView.getContext());
+    boolean bool = ScreenUtil.checkDeviceHasNavigationBar(this.jdField_a_of_type_AndroidViewView.getContext());
+    int m = ScreenUtil.getRealWidth(this.jdField_a_of_type_AndroidViewView.getContext());
+    int n = ScreenUtil.getRealHeight(this.jdField_a_of_type_AndroidViewView.getContext());
+    xvv.b("FredguoFix", "hasNavi: " + bool + ", naviHeight " + k);
+    xvv.b("FredguoFix", "debug: instantWidth " + i + ", instantHeight" + j + ", rawWidth " + m + ", rawHeight " + n);
+    xvv.b("FredguoFix", "ScreenWidth " + ScreenUtil.SCREEN_WIDTH + ", ScreenHeight " + ScreenUtil.SCREEN_HIGHT);
+    if (bool) {
+      return -2;
     }
-    label309:
-    for (;;)
+    return (int)Math.min(ScreenUtil.SCREEN_HIGHT - ScreenUtil.SCREEN_WIDTH / 9.0F * 16.0F, 140.0F);
+  }
+  
+  public String a()
+  {
+    return "ProgressBarVideoInfoWidget";
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar = ((SplitedProgressBar)paramView.findViewById(2131380684));
+    this.jdField_a_of_type_Wlw = new wlw(this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar);
+    if (LiuHaiUtils.b(b()))
     {
-      if (!TextUtils.isEmpty(paramVarArgs)) {
-        paramVarArgs = "https://story.now.qq.com/mobile/pages/medal.html?_bid=2473&_wv=1031" + paramVarArgs;
+      paramView = (LinearLayout)a().jdField_a_of_type_AndroidViewView.findViewById(2131363657);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
+      localLayoutParams.height = d();
+      if (!ScreenUtil.checkDeviceHasNavigationBar(this.jdField_a_of_type_AndroidViewView.getContext())) {
+        paramView.setBackgroundColor(Color.parseColor("#181818"));
       }
-      for (;;)
-      {
-        localHashMap.put(str, new String[] { paramJobContext, paramVarArgs });
-        localQQUserUIItem.setUserIcon(paramJobContext, paramVarArgs);
-        for (;;)
-        {
-          localQQUserUIItem.iconUrlCacheTime = System.currentTimeMillis();
-          localwtt.a(localQQUserUIItem);
-          break;
-          localHashMap.put(str, new String[] { "", "" });
-          localQQUserUIItem.setUserIcon("", "");
-        }
-        paramJobContext = new xap();
-        paramJobContext.a = localHashMap;
-        wjj.a().dispatch(paramJobContext);
-        return null;
-      }
+      paramView.setLayoutParams(localLayoutParams);
     }
+    a(new xap(this));
+  }
+  
+  public void a(@NonNull Map<Subscriber, String> paramMap) {}
+  
+  public void a(@NonNull wsk paramwsk, @NonNull StoryVideoItem paramStoryVideoItem) {}
+  
+  public void a(wur paramwur)
+  {
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      ThreadManager.getUIHandler().post(new ProgressBarVideoInfoWidget.2(this, paramwur));
+    }
+    if (!this.c)
+    {
+      h();
+      j();
+    }
+    if (this.jdField_a_of_type_Wlw != null) {
+      this.jdField_a_of_type_Wlw.a(paramwur);
+    }
+  }
+  
+  public boolean a(@NonNull wsk paramwsk, @NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    return (paramwsk.a == null) || (paramwsk.a.a != 13);
+  }
+  
+  public int b()
+  {
+    return 2131561767;
+  }
+  
+  public void f() {}
+  
+  public void g()
+  {
+    this.jdField_a_of_type_Wlw.b();
   }
 }
 

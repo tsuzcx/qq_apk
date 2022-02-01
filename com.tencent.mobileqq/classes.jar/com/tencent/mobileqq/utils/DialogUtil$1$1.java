@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.utils;
 
-import bhlr;
+import bfus;
 
 public class DialogUtil$1$1
   implements Runnable
 {
-  public DialogUtil$1$1(bhlr parambhlr) {}
+  public DialogUtil$1$1(bfus parambfus) {}
   
   public void run()
   {
-    bhlr.a(this.this$0);
-    bhlr.a(this.this$0, this);
+    bfus.a(this.this$0);
+    bfus.a(this.this$0, this);
   }
 }
 

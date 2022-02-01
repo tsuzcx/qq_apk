@@ -1,23 +1,56 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ObjectAnimator;
+import android.widget.ImageView;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
 public class ayks
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public ayks(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public ayks(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, ObjectAnimator paramObjectAnimator) {}
   
-  public void onClick(View paramView)
+  private ImageView a(ObjectAnimator paramObjectAnimator)
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
-    {
-      this.a.a.dismiss();
-      this.a.a = null;
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return (ImageView)paramObjectAnimator.getTarget();
   }
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    paramAnimator = a(this.jdField_a_of_type_AndroidAnimationObjectAnimator);
+    if (paramAnimator != null) {
+      if (!this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {
+        break label37;
+      }
+    }
+    label37:
+    for (int i = 2130845551;; i = 2130845543)
+    {
+      paramAnimator.setImageResource(i);
+      paramAnimator.setRotation(0.0F);
+      return;
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    paramAnimator = a(this.jdField_a_of_type_AndroidAnimationObjectAnimator);
+    if (paramAnimator != null) {
+      if (!this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.b) {
+        break label37;
+      }
+    }
+    label37:
+    for (int i = 2130845551;; i = 2130845543)
+    {
+      paramAnimator.setImageResource(i);
+      paramAnimator.setRotation(0.0F);
+      return;
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

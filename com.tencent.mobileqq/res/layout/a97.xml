@@ -22,10 +22,10 @@
         <com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator android:textSize="18.0sp" android:id="@id/ixv" android:visibility="gone" android:layout_width="220.0dip" android:layout_height="fill_parent" android:layout_centerHorizontal="true" app:indicatorHeight="4.0dip" app:slidingCheckTextColor="@color/aav" app:slidingIndicatorColor="@color/aau" app:slidingTabPaddingLeftRight="17.0dip" app:slidingUncheckTextColor="@color/aaw" app:underlineColor="#00ffffff" app:underlineHeight="0.0dip" />
         <include android:id="@id/hy6" android:layout_width="fill_parent" android:layout_height="@dimen/ate" android:layout_below="@id/jo9" layout="@layout/a8p" />
         <include android:id="@id/hyy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/atf" android:layout_below="@id/jo9" layout="@layout/a8m" />
-        <RelativeLayout android:id="@id/nob" android:background="#ffffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/bca" android:layout_below="@id/jq6">
-            <ImageView android:id="@id/nk5" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="18.0dip" android:src="@drawable/div" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-            <ImageView android:id="@id/noa" android:layout_width="58.0dip" android:layout_height="36.0dip" android:src="@drawable/g7h" android:layout_centerInParent="true" />
-            <ImageView android:id="@id/mj_" android:visibility="invisible" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/g5d" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <RelativeLayout android:id="@id/njq" android:background="#ffffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/be2" android:layout_below="@id/jq6">
+            <ImageView android:id="@id/nfc" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="18.0dip" android:src="@drawable/dox" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/njp" android:layout_width="58.0dip" android:layout_height="36.0dip" android:src="@drawable/gf3" android:layout_centerInParent="true" />
+            <ImageView android:id="@id/mkc" android:visibility="invisible" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/gee" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
         </RelativeLayout>
     </RelativeLayout>
     <ViewStub android:id="@id/hzs" android:layout="@layout/a9t" android:layout_width="fill_parent" android:layout_height="fill_parent" />

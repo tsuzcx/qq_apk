@@ -1,8 +1,6 @@
 package com.tencent.smtt.sdk;
 
 import android.annotation.SuppressLint;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.AlertDialog.Builder;
 import android.content.ComponentName;
 import android.content.Context;
@@ -21,7 +19,6 @@ import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Looper;
-import android.os.Process;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -33,6 +30,7 @@ import android.webkit.WebViewDatabase;
 import com.tencent.smtt.export.external.DexLoader;
 import com.tencent.smtt.export.external.interfaces.IX5WebViewBase;
 import com.tencent.smtt.sdk.stat.MttLoader;
+import com.tencent.smtt.sdk.ui.dialog.d;
 import com.tencent.smtt.sdk.ui.dialog.e;
 import com.tencent.smtt.utils.FileProvider;
 import com.tencent.smtt.utils.FileUtil;
@@ -40,10 +38,10 @@ import com.tencent.smtt.utils.TbsLog;
 import com.tencent.smtt.utils.TbsLogClient;
 import com.tencent.smtt.utils.b;
 import com.tencent.smtt.utils.i;
+import com.tencent.smtt.utils.l;
 import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -314,6 +312,14 @@ public class QbSdk
     return p;
   }
   
+  static void a(Context paramContext, Integer paramInteger, Map<Integer, String> paramMap)
+  {
+    if (!a(paramContext)) {
+      return;
+    }
+    i.a(r, "dispatchEmergencyCommand", new Class[] { Integer.class, Map.class }, new Object[] { paramInteger, paramMap });
+  }
+  
   /* Error */
   static void a(Context paramContext, String paramString)
   {
@@ -329,33 +335,33 @@ public class QbSdk
     //   14: return
     //   15: iconst_1
     //   16: putstatic 106	com/tencent/smtt/sdk/QbSdk:a	Z
-    //   19: new 317	java/lang/StringBuilder
+    //   19: new 321	java/lang/StringBuilder
     //   22: dup
-    //   23: invokespecial 318	java/lang/StringBuilder:<init>	()V
-    //   26: ldc_w 320
-    //   29: invokevirtual 324	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: invokespecial 322	java/lang/StringBuilder:<init>	()V
+    //   26: ldc_w 324
+    //   29: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: aload_1
-    //   33: invokevirtual 324	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: invokevirtual 325	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   33: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   36: invokevirtual 329	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   39: putstatic 120	com/tencent/smtt/sdk/QbSdk:v	Ljava/lang/String;
-    //   42: ldc_w 327
-    //   45: new 317	java/lang/StringBuilder
+    //   42: ldc_w 331
+    //   45: new 321	java/lang/StringBuilder
     //   48: dup
-    //   49: invokespecial 318	java/lang/StringBuilder:<init>	()V
-    //   52: ldc_w 329
-    //   55: invokevirtual 324	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: invokespecial 322	java/lang/StringBuilder:<init>	()V
+    //   52: ldc_w 333
+    //   55: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   58: getstatic 120	com/tencent/smtt/sdk/QbSdk:v	Ljava/lang/String;
-    //   61: invokevirtual 324	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: invokevirtual 325	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   67: invokestatic 333	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   70: invokestatic 338	com/tencent/smtt/sdk/TbsCoreLoadStat:getInstance	()Lcom/tencent/smtt/sdk/TbsCoreLoadStat;
+    //   61: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: invokevirtual 329	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   67: invokestatic 337	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   70: invokestatic 342	com/tencent/smtt/sdk/TbsCoreLoadStat:getInstance	()Lcom/tencent/smtt/sdk/TbsCoreLoadStat;
     //   73: aload_0
     //   74: sipush 401
-    //   77: new 340	java/lang/Throwable
+    //   77: new 344	java/lang/Throwable
     //   80: dup
     //   81: getstatic 120	com/tencent/smtt/sdk/QbSdk:v	Ljava/lang/String;
-    //   84: invokespecial 341	java/lang/Throwable:<init>	(Ljava/lang/String;)V
-    //   87: invokevirtual 344	com/tencent/smtt/sdk/TbsCoreLoadStat:a	(Landroid/content/Context;ILjava/lang/Throwable;)V
+    //   84: invokespecial 345	java/lang/Throwable:<init>	(Ljava/lang/String;)V
+    //   87: invokevirtual 348	com/tencent/smtt/sdk/TbsCoreLoadStat:a	(Landroid/content/Context;ILjava/lang/Throwable;)V
     //   90: goto -79 -> 11
     //   93: astore_0
     //   94: ldc 2
@@ -380,7 +386,7 @@ public class QbSdk
       if (q != null) {
         return true;
       }
-      Object localObject = n.a().q(paramContext);
+      Object localObject = p.a().q(paramContext);
       if (localObject == null)
       {
         TbsLog.e("QbSdk", "QbSdk initExtension (false) optDir == null");
@@ -393,8 +399,8 @@ public class QbSdk
         return false;
       }
       TbsLog.i("QbSdk", "new DexLoader #3 dexFile is " + localFile.getAbsolutePath());
-      v.a().a(paramContext);
-      com.tencent.smtt.utils.k.a(paramContext);
+      x.a().a(paramContext);
+      l.a(paramContext);
       String str1 = localFile.getParent();
       String str2 = localFile.getAbsolutePath();
       localObject = ((File)localObject).getAbsolutePath();
@@ -424,21 +430,21 @@ public class QbSdk
     do
     {
       return true;
-      n localn = n.a();
-      if (d.a == 0) {}
+      p localp = p.a();
+      if (f.a == 0) {}
       for (boolean bool = true;; bool = false)
       {
-        localn.b(paramContext, bool);
+        localp.b(paramContext, bool);
         if (!c(paramContext)) {
           break;
         }
-        paramContext = i.a(r, "isX5Disabled", new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(43936), Integer.valueOf(paramInt2) });
+        paramContext = i.a(r, "isX5Disabled", new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(43957), Integer.valueOf(paramInt2) });
         if (paramContext == null) {
           break label154;
         }
         return ((Boolean)paramContext).booleanValue();
       }
-      paramContext = i.a(r, "isX5Disabled", new Class[] { Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(43936) });
+      paramContext = i.a(r, "isX5Disabled", new Class[] { Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(43957) });
     } while (paramContext == null);
     return ((Boolean)paramContext).booleanValue();
   }
@@ -454,7 +460,7 @@ public class QbSdk
     TbsLog.initIfNeed(paramContext);
     if (!sIsVersionPrinted)
     {
-      TbsLog.i("QbSdk", "svn revision: jnizz; SDK_VERSION_CODE: 43936; SDK_VERSION_NAME: 4.3.0.36");
+      TbsLog.i("QbSdk", "svn revision: jnizz; SDK_VERSION_CODE: 43957; SDK_VERSION_NAME: 4.3.0.57");
       sIsVersionPrinted = true;
     }
     if ((a) && (!paramBoolean))
@@ -476,7 +482,7 @@ public class QbSdk
     {
       try
       {
-        localObject2 = n.a().q(paramContext);
+        localObject2 = p.a().q(paramContext);
         if (localObject2 == null)
         {
           TbsLog.e("QbSdk", "QbSdk init (false) optDir == null");
@@ -505,7 +511,7 @@ public class QbSdk
           if (o == 0) {
             break label1095;
           }
-          int i2 = n.a().a(true, paramContext);
+          int i2 = p.a().a(true, paramContext);
           i1 = i2;
           if (o != i2)
           {
@@ -549,7 +555,7 @@ public class QbSdk
         try
         {
           TbsLog.e("QbSdk", "QbSdk init (false) tbs_sdk_extension_dex.jar is not exist!");
-          i1 = n.a().i(paramContext);
+          i1 = p.a().i(paramContext);
           if (!new File(localFile.getParentFile(), "tbs_jars_fusion_dex.jar").exists()) {
             continue;
           }
@@ -573,7 +579,7 @@ public class QbSdk
         return false;
         TbsCoreLoadStat.getInstance().a(paramContext, 304, new Throwable("isShareTbsCoreAvailable false!"));
         return false;
-        localFile = new File(n.a().q(paramContext), "tbs_sdk_extension_dex.jar");
+        localFile = new File(p.a().q(paramContext), "tbs_sdk_extension_dex.jar");
         break;
         TbsCoreLoadStat.getInstance().a(paramContext, 4132, new Exception("tbs_sdk_extension_dex not exist(with fusion dex)!" + i1));
       }
@@ -583,8 +589,8 @@ public class QbSdk
       {
         TbsLog.i("QbSdk", "QbSdk init optDirExtension #1 is " + (String)localObject2);
         TbsLog.i("QbSdk", "new DexLoader #1 dexFile is " + localThrowable2.getAbsolutePath());
-        v.a().a(paramContext);
-        com.tencent.smtt.utils.k.a(paramContext);
+        x.a().a(paramContext);
+        l.a(paramContext);
         String str1 = localThrowable2.getParent();
         String str2 = localThrowable2.getAbsolutePath();
         Object localObject3 = getSettings();
@@ -611,7 +617,7 @@ public class QbSdk
     boolean bool1 = false;
     boolean bool2 = false;
     int i1 = TbsPVConfig.getInstance(paramContext).getDisabledCoreVersion();
-    if ((i1 != 0) && (i1 == n.a().i(paramContext)))
+    if ((i1 != 0) && (i1 == p.a().i(paramContext)))
     {
       TbsLog.e("QbSdk", "force use sys by remote switch");
       paramBoolean1 = bool2;
@@ -630,7 +636,7 @@ public class QbSdk
         TbsLog.e("QbSdk", "QbSdk.init failure!");
         return false;
       }
-      Object localObject3 = i.a(r, "canLoadX5Core", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(43936) });
+      Object localObject3 = i.a(r, "canLoadX5Core", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(43957) });
       if (localObject3 != null)
       {
         if ((localObject3 instanceof String))
@@ -662,7 +668,7 @@ public class QbSdk
             if (!TbsShareManager.isThirdPartyApp(paramContext)) {
               break label469;
             }
-            d.a(TbsShareManager.d(paramContext));
+            f.a(TbsShareManager.d(paramContext));
             p = String.valueOf(TbsShareManager.d(paramContext));
             if (p.length() == 5) {
               p = "0" + p;
@@ -708,7 +714,7 @@ public class QbSdk
               try
               {
                 o = Integer.parseInt(p);
-                d.a(o);
+                f.a(o);
                 if (o == 0)
                 {
                   TbsCoreLoadStat.getInstance().a(paramContext, 307, new Throwable("sTbsVersion is 0"));
@@ -743,7 +749,7 @@ public class QbSdk
                 if (i2 != 0)
                 {
                   TbsLog.e("TbsDownload", "is_obsolete --> delete old core:" + o);
-                  FileUtil.b(n.a().q(paramContext));
+                  FileUtil.b(p.a().q(paramContext));
                   TbsCoreLoadStat.getInstance().a(paramContext, 307, new Throwable("is_obsolete --> delete old core:" + o));
                   return false;
                   i2 = 0;
@@ -815,8 +821,8 @@ public class QbSdk
             if (!(localObject2 instanceof Boolean)) {
               continue;
             }
-            o = d.c();
-            bool2 = a(paramContext, d.c());
+            o = f.c();
+            bool2 = a(paramContext, f.c());
             paramBoolean2 = bool1;
             if (((Boolean)localObject2).booleanValue())
             {
@@ -844,10 +850,10 @@ public class QbSdk
   
   protected static String b()
   {
-    Object localObject = v.a();
-    if ((localObject != null) && (((v)localObject).b()))
+    Object localObject = x.a();
+    if ((localObject != null) && (((x)localObject).b()))
     {
-      localObject = ((v)localObject).c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "getGUID", new Class[0], new Object[0]);
+      localObject = ((x)localObject).c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "getGUID", new Class[0], new Object[0]);
       if ((localObject != null) && ((localObject instanceof String))) {
         return (String)localObject;
       }
@@ -896,7 +902,7 @@ public class QbSdk
       if (q != null) {
         return true;
       }
-      Object localObject2 = n.a().q(paramContext);
+      Object localObject2 = p.a().q(paramContext);
       if (localObject2 == null)
       {
         TbsLog.e("QbSdk", "QbSdk initForX5DisableConfig (false) optDir == null");
@@ -905,7 +911,7 @@ public class QbSdk
       if (TbsShareManager.isThirdPartyApp(paramContext)) {
         if (!TbsShareManager.j(paramContext)) {}
       }
-      for (Object localObject1 = new File(TbsShareManager.c(paramContext), "tbs_sdk_extension_dex.jar"); !((File)localObject1).exists(); localObject1 = new File(n.a().q(paramContext), "tbs_sdk_extension_dex.jar"))
+      for (Object localObject1 = new File(TbsShareManager.c(paramContext), "tbs_sdk_extension_dex.jar"); !((File)localObject1).exists(); localObject1 = new File(p.a().q(paramContext), "tbs_sdk_extension_dex.jar"))
       {
         TbsCoreLoadStat.getInstance().a(paramContext, 406, new Exception("initForX5DisableConfig failure -- tbs_sdk_extension_dex.jar is not exist!"));
         return false;
@@ -917,8 +923,8 @@ public class QbSdk
       {
         TbsLog.i("QbSdk", "QbSdk init optDirExtension #3 is " + (String)localObject2);
         TbsLog.i("QbSdk", "new DexLoader #4 dexFile is " + ((File)localObject1).getAbsolutePath());
-        v.a().a(paramContext);
-        com.tencent.smtt.utils.k.a(paramContext);
+        x.a().a(paramContext);
+        l.a(paramContext);
         String str1 = ((File)localObject1).getParent();
         String str2 = ((File)localObject1).getAbsolutePath();
         Map localMap = getSettings();
@@ -971,7 +977,7 @@ public class QbSdk
       }
       if (q == null)
       {
-        Object localObject = n.a().q(paramContext);
+        Object localObject = p.a().q(paramContext);
         if (localObject == null)
         {
           TbsLog.e("QbSdk", "QbSdk canLoadX5FirstTimeThirdApp (false) optDir == null");
@@ -988,8 +994,8 @@ public class QbSdk
         {
           TbsLog.i("QbSdk", "QbSdk init optDirExtension #2 is " + (String)localObject);
           TbsLog.i("QbSdk", "new DexLoader #2 dexFile is " + localFile.getAbsolutePath());
-          v.a().a(paramContext);
-          com.tencent.smtt.utils.k.a(paramContext);
+          x.a().a(paramContext);
+          l.a(paramContext);
           String str1 = localFile.getParent();
           String str2 = localFile.getAbsolutePath();
           Map localMap = getSettings();
@@ -1031,19 +1037,19 @@ public class QbSdk
     //   4: istore 4
     //   6: getstatic 143	com/tencent/smtt/sdk/QbSdk:x	I
     //   9: ifne +9 -> 18
-    //   12: invokestatic 667	com/tencent/smtt/sdk/a:a	()I
+    //   12: invokestatic 671	com/tencent/smtt/sdk/a:a	()I
     //   15: putstatic 143	com/tencent/smtt/sdk/QbSdk:x	I
-    //   18: ldc_w 327
-    //   21: new 317	java/lang/StringBuilder
+    //   18: ldc_w 331
+    //   21: new 321	java/lang/StringBuilder
     //   24: dup
-    //   25: invokespecial 318	java/lang/StringBuilder:<init>	()V
-    //   28: ldc_w 822
-    //   31: invokevirtual 324	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: invokespecial 322	java/lang/StringBuilder:<init>	()V
+    //   28: ldc_w 826
+    //   31: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: getstatic 143	com/tencent/smtt/sdk/QbSdk:x	I
-    //   37: invokevirtual 485	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   40: invokevirtual 325	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   43: invokestatic 377	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   46: getstatic 626	android/os/Build$VERSION:SDK_INT	I
+    //   37: invokevirtual 489	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   40: invokevirtual 329	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   43: invokestatic 381	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   46: getstatic 630	android/os/Build$VERSION:SDK_INT	I
     //   49: bipush 7
     //   51: if_icmplt +12 -> 63
     //   54: getstatic 143	com/tencent/smtt/sdk/QbSdk:x	I
@@ -1053,43 +1059,43 @@ public class QbSdk
     //   64: ireturn
     //   65: aload_0
     //   66: ifnull -3 -> 63
-    //   69: new 824	java/io/BufferedInputStream
+    //   69: new 828	java/io/BufferedInputStream
     //   72: dup
-    //   73: new 826	java/io/FileInputStream
+    //   73: new 830	java/io/FileInputStream
     //   76: dup
-    //   77: new 356	java/io/File
+    //   77: new 360	java/io/File
     //   80: dup
-    //   81: invokestatic 349	com/tencent/smtt/sdk/n:a	()Lcom/tencent/smtt/sdk/n;
+    //   81: invokestatic 353	com/tencent/smtt/sdk/p:a	()Lcom/tencent/smtt/sdk/p;
     //   84: aload_0
-    //   85: invokevirtual 352	com/tencent/smtt/sdk/n:q	(Landroid/content/Context;)Ljava/io/File;
-    //   88: ldc_w 828
-    //   91: invokespecial 361	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   94: invokespecial 830	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   97: invokespecial 833	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   85: invokevirtual 356	com/tencent/smtt/sdk/p:q	(Landroid/content/Context;)Ljava/io/File;
+    //   88: ldc_w 832
+    //   91: invokespecial 365	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   94: invokespecial 834	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   97: invokespecial 837	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   100: astore 6
-    //   102: new 835	java/util/Properties
+    //   102: new 839	java/util/Properties
     //   105: dup
-    //   106: invokespecial 836	java/util/Properties:<init>	()V
+    //   106: invokespecial 840	java/util/Properties:<init>	()V
     //   109: astore 8
     //   111: aload 8
     //   113: aload 6
-    //   115: invokevirtual 839	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   115: invokevirtual 843	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   118: aload 8
-    //   120: ldc_w 841
-    //   123: invokevirtual 844	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   120: ldc_w 845
+    //   123: invokevirtual 848	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
     //   126: astore 9
     //   128: aload 8
-    //   130: ldc_w 846
-    //   133: invokevirtual 844	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   130: ldc_w 850
+    //   133: invokevirtual 848	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
     //   136: astore 10
     //   138: aload 9
-    //   140: invokestatic 635	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   140: invokestatic 639	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   143: istore_1
     //   144: aload 10
-    //   146: invokestatic 635	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   146: invokestatic 639	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   149: istore_2
-    //   150: getstatic 849	android/os/Build$VERSION:SDK	Ljava/lang/String;
-    //   153: invokestatic 635	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   150: getstatic 853	android/os/Build$VERSION:SDK	Ljava/lang/String;
+    //   153: invokestatic 639	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   156: istore_3
     //   157: iload_3
     //   158: iload_1
@@ -1097,66 +1103,66 @@ public class QbSdk
     //   162: iload_3
     //   163: iload_2
     //   164: if_icmpge +44 -> 208
-    //   167: ldc_w 327
-    //   170: new 317	java/lang/StringBuilder
+    //   167: ldc_w 331
+    //   170: new 321	java/lang/StringBuilder
     //   173: dup
-    //   174: invokespecial 318	java/lang/StringBuilder:<init>	()V
-    //   177: ldc_w 851
-    //   180: invokevirtual 324	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   174: invokespecial 322	java/lang/StringBuilder:<init>	()V
+    //   177: ldc_w 855
+    //   180: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   183: iload_3
-    //   184: invokevirtual 485	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   187: invokevirtual 325	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   190: invokestatic 377	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   184: invokevirtual 489	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   187: invokevirtual 329	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   190: invokestatic 381	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   193: aload 6
     //   195: ifnull -132 -> 63
     //   198: aload 6
-    //   200: invokevirtual 854	java/io/BufferedInputStream:close	()V
+    //   200: invokevirtual 858	java/io/BufferedInputStream:close	()V
     //   203: iconst_0
     //   204: ireturn
     //   205: astore_0
     //   206: iconst_0
     //   207: ireturn
     //   208: aload 8
-    //   210: ldc_w 628
-    //   213: invokevirtual 844	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   216: invokestatic 635	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   210: ldc_w 632
+    //   213: invokevirtual 848	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   216: invokestatic 639	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   219: istore_1
     //   220: aload 6
     //   222: ifnull +8 -> 230
     //   225: aload 6
-    //   227: invokevirtual 854	java/io/BufferedInputStream:close	()V
-    //   230: new 826	java/io/FileInputStream
+    //   227: invokevirtual 858	java/io/BufferedInputStream:close	()V
+    //   230: new 830	java/io/FileInputStream
     //   233: dup
-    //   234: new 356	java/io/File
+    //   234: new 360	java/io/File
     //   237: dup
     //   238: aload_0
-    //   239: invokestatic 856	com/tencent/smtt/sdk/n:s	(Landroid/content/Context;)Ljava/io/File;
-    //   242: ldc_w 858
-    //   245: invokespecial 361	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   248: invokespecial 830	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   239: invokestatic 860	com/tencent/smtt/sdk/p:s	(Landroid/content/Context;)Ljava/io/File;
+    //   242: ldc_w 862
+    //   245: invokespecial 365	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   248: invokespecial 834	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   251: astore 6
-    //   253: new 835	java/util/Properties
+    //   253: new 839	java/util/Properties
     //   256: dup
-    //   257: invokespecial 836	java/util/Properties:<init>	()V
+    //   257: invokespecial 840	java/util/Properties:<init>	()V
     //   260: astore 7
     //   262: aload 7
     //   264: aload 6
-    //   266: invokevirtual 839	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   266: invokevirtual 843	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   269: aload 7
-    //   271: ldc_w 860
-    //   274: invokevirtual 844	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   277: invokestatic 635	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   271: ldc_w 864
+    //   274: invokevirtual 848	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   277: invokestatic 639	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   280: istore_2
     //   281: aload 7
-    //   283: ldc_w 862
-    //   286: invokevirtual 844	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   289: invokestatic 635	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   283: ldc_w 866
+    //   286: invokevirtual 848	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   289: invokestatic 639	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   292: istore_3
     //   293: iload_1
-    //   294: ldc_w 863
+    //   294: ldc_w 867
     //   297: if_icmpeq +10 -> 307
     //   300: iload_2
-    //   301: ldc_w 863
+    //   301: ldc_w 867
     //   304: if_icmpne +73 -> 377
     //   307: iconst_0
     //   308: istore_1
@@ -1165,7 +1171,7 @@ public class QbSdk
     //   311: aload 6
     //   313: ifnull +10 -> 323
     //   316: aload 6
-    //   318: invokevirtual 866	java/io/InputStream:close	()V
+    //   318: invokevirtual 870	java/io/InputStream:close	()V
     //   321: iload_1
     //   322: istore_2
     //   323: iload_2
@@ -1176,14 +1182,14 @@ public class QbSdk
     //   332: aconst_null
     //   333: astore_0
     //   334: aload 6
-    //   336: invokevirtual 529	java/lang/Throwable:printStackTrace	()V
-    //   339: ldc_w 327
-    //   342: ldc_w 868
-    //   345: invokestatic 377	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   336: invokevirtual 533	java/lang/Throwable:printStackTrace	()V
+    //   339: ldc_w 331
+    //   342: ldc_w 872
+    //   345: invokestatic 381	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   348: aload_0
     //   349: ifnull -286 -> 63
     //   352: aload_0
-    //   353: invokevirtual 854	java/io/BufferedInputStream:close	()V
+    //   353: invokevirtual 858	java/io/BufferedInputStream:close	()V
     //   356: iconst_0
     //   357: ireturn
     //   358: astore_0
@@ -1195,7 +1201,7 @@ public class QbSdk
     //   365: aload 6
     //   367: ifnull +8 -> 375
     //   370: aload 6
-    //   372: invokevirtual 854	java/io/BufferedInputStream:close	()V
+    //   372: invokevirtual 858	java/io/BufferedInputStream:close	()V
     //   375: aload_0
     //   376: athrow
     //   377: iload_1
@@ -1211,23 +1217,23 @@ public class QbSdk
     //   393: ifle +16 -> 409
     //   396: iload_3
     //   397: aload_0
-    //   398: invokestatic 870	com/tencent/smtt/utils/b:b	(Landroid/content/Context;)I
+    //   398: invokestatic 873	com/tencent/smtt/utils/b:d	(Landroid/content/Context;)I
     //   401: if_icmpeq +8 -> 409
     //   404: iconst_0
     //   405: istore_1
     //   406: goto -97 -> 309
     //   409: aload 7
-    //   411: ldc_w 872
-    //   414: invokevirtual 844	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   417: invokestatic 875	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
+    //   411: ldc_w 875
+    //   414: invokevirtual 848	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   417: invokestatic 878	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
     //   420: ifeq +34 -> 454
     //   423: aload_0
-    //   424: invokevirtual 810	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   427: invokestatic 724	com/tencent/smtt/sdk/TbsDownloadConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsDownloadConfig;
-    //   430: getfield 728	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
-    //   433: ldc_w 877
+    //   424: invokevirtual 814	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   427: invokestatic 728	com/tencent/smtt/sdk/TbsDownloadConfig:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsDownloadConfig;
+    //   430: getfield 732	com/tencent/smtt/sdk/TbsDownloadConfig:mPreferences	Landroid/content/SharedPreferences;
+    //   433: ldc_w 880
     //   436: iconst_0
-    //   437: invokeinterface 881 3 0
+    //   437: invokeinterface 884 3 0
     //   442: istore 5
     //   444: iload 5
     //   446: ifne +8 -> 454
@@ -1240,13 +1246,13 @@ public class QbSdk
     //   459: astore_0
     //   460: aload 7
     //   462: astore_0
-    //   463: ldc_w 327
-    //   466: ldc_w 883
-    //   469: invokestatic 377	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   463: ldc_w 331
+    //   466: ldc_w 886
+    //   469: invokestatic 381	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   472: aload_0
     //   473: ifnull +7 -> 480
     //   476: aload_0
-    //   477: invokevirtual 866	java/io/InputStream:close	()V
+    //   477: invokevirtual 870	java/io/InputStream:close	()V
     //   480: iconst_1
     //   481: istore_2
     //   482: goto -159 -> 323
@@ -1260,7 +1266,7 @@ public class QbSdk
     //   495: aload 6
     //   497: ifnull +8 -> 505
     //   500: aload 6
-    //   502: invokevirtual 866	java/io/InputStream:close	()V
+    //   502: invokevirtual 870	java/io/InputStream:close	()V
     //   505: aload_0
     //   506: athrow
     //   507: iconst_0
@@ -1409,7 +1415,7 @@ public class QbSdk
   public static void checkTbsValidity(Context paramContext)
   {
     if (paramContext == null) {}
-    while (com.tencent.smtt.utils.k.b(paramContext)) {
+    while (l.b(paramContext)) {
       return;
     }
     TbsLog.e("QbSdk", "sys WebView: SysWebViewForcedBy checkTbsValidity");
@@ -1444,14 +1450,14 @@ public class QbSdk
       {
         try
         {
-          localObject = v.a();
+          localObject = x.a();
           i1 = i2;
           if (localObject != null)
           {
             i1 = i2;
-            if (((v)localObject).b())
+            if (((x)localObject).b())
             {
-              ((v)localObject).c().a(paramContext, paramBoolean);
+              ((x)localObject).c().a(paramContext, paramBoolean);
               i1 = i2;
             }
           }
@@ -1504,7 +1510,7 @@ public class QbSdk
   public static void clearDefaultBrowser(Context paramContext, String paramString)
   {
     SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("tbs_file_open_dialog_config", 0);
-    paramString = e.d(paramString);
+    paramString = e.e(paramString);
     paramContext = paramString;
     if (TextUtils.isEmpty(paramString)) {
       paramContext = "*/*";
@@ -1514,10 +1520,10 @@ public class QbSdk
   
   public static String closeNetLogAndSavaToLocal()
   {
-    Object localObject = v.a();
-    if ((localObject != null) && (((v)localObject).b()))
+    Object localObject = x.a();
+    if ((localObject != null) && (((x)localObject).b()))
     {
-      localObject = ((v)localObject).c().b();
+      localObject = ((x)localObject).c().b();
       try
       {
         localObject = ((DexLoader)localObject).invokeStaticMethod("com.tencent.smtt.livelog.NetLogManager", "closeNetLogAndSavaToLocal", new Class[0], new Object[0]);
@@ -1551,14 +1557,14 @@ public class QbSdk
     if (isMiniQBShortCutExist(paramContext, paramString1, paramString2) == true) {
       return false;
     }
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
       Bitmap localBitmap = null;
       if ((paramDrawable instanceof BitmapDrawable)) {
         localBitmap = ((BitmapDrawable)paramDrawable).getBitmap();
       }
-      paramDrawable = localv.c().b();
+      paramDrawable = localx.c().b();
       TbsLog.e("QbSdk", "qbsdk createMiniQBShortCut");
       paramContext = paramDrawable.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "createMiniQBShortCut", new Class[] { Context.class, String.class, String.class, Bitmap.class }, new Object[] { paramContext, paramString1, paramString2, localBitmap });
       TbsLog.e("QbSdk", "qbsdk after createMiniQBShortCut ret: " + paramContext);
@@ -1612,7 +1618,7 @@ public class QbSdk
         }
         try
         {
-          i2 = n.a().i(paramContext);
+          i2 = p.a().i(paramContext);
           if (i2 <= 0) {
             continue;
           }
@@ -1648,8 +1654,8 @@ public class QbSdk
             if (i1 != i2) {
               continue;
             }
-            FileUtil.a(n.a().q(paramContext), false);
-            paramContext = k.a(paramContext).a();
+            FileUtil.a(p.a().q(paramContext), false);
+            paramContext = m.a(paramContext).a();
             if (paramContext != null) {
               FileUtil.a(paramContext, false);
             }
@@ -1691,7 +1697,7 @@ public class QbSdk
         if (i1 <= 3)
         {
           TbsLog.i("QbSdk", "QbSdk - preload_x5_check -- before creation!");
-          v.a().a(paramContext, null);
+          x.a().a(paramContext, null);
           TbsLog.i("QbSdk", "QbSdk - preload_x5_check -- after creation!");
           i2 = 0;
         }
@@ -1718,7 +1724,7 @@ public class QbSdk
   public static boolean deleteMiniQBShortCut(Context paramContext, String paramString1, String paramString2)
   {
     if (paramContext == null) {}
-    v localv;
+    x localx;
     do
     {
       do
@@ -1727,9 +1733,9 @@ public class QbSdk
         {
           return false;
         } while (TbsDownloader.getOverSea(paramContext));
-        localv = v.a();
-      } while ((localv == null) || (!localv.b()));
-    } while (localv.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "deleteMiniQBShortCut", new Class[] { Context.class, String.class, String.class }, new Object[] { paramContext, paramString1, paramString2 }) == null);
+        localx = x.a();
+      } while ((localx == null) || (!localx.b()));
+    } while (localx.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "deleteMiniQBShortCut", new Class[] { Context.class, String.class, String.class }, new Object[] { paramContext, paramString1, paramString2 }) == null);
     return true;
   }
   
@@ -1745,11 +1751,11 @@ public class QbSdk
   
   public static void fileInfoDetect(Context paramContext, String paramString, android.webkit.ValueCallback<String> paramValueCallback)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {}
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {}
     try
     {
-      localv.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "fileInfoDetect", new Class[] { Context.class, String.class, android.webkit.ValueCallback.class }, new Object[] { paramContext, paramString, paramValueCallback });
+      localx.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "fileInfoDetect", new Class[] { Context.class, String.class, android.webkit.ValueCallback.class }, new Object[] { paramContext, paramString, paramValueCallback });
       return;
     }
     catch (Throwable paramContext)
@@ -1774,34 +1780,139 @@ public class QbSdk
     return l1;
   }
   
+  /* Error */
   public static String getCurrentProcessName(Context paramContext)
   {
-    for (;;)
-    {
-      try
-      {
-        int i1 = Process.myPid();
-        Object localObject = "";
-        Iterator localIterator = ((ActivityManager)paramContext.getApplicationContext().getSystemService("activity")).getRunningAppProcesses().iterator();
-        paramContext = (Context)localObject;
-        localObject = paramContext;
-        if (localIterator.hasNext())
-        {
-          localObject = (ActivityManager.RunningAppProcessInfo)localIterator.next();
-          if (((ActivityManager.RunningAppProcessInfo)localObject).pid == i1) {
-            paramContext = ((ActivityManager.RunningAppProcessInfo)localObject).processName;
-          }
-        }
-        else
-        {
-          return localObject;
-        }
-      }
-      catch (Throwable paramContext)
-      {
-        localObject = "";
-      }
-    }
+    // Byte code:
+    //   0: new 830	java/io/FileInputStream
+    //   3: dup
+    //   4: ldc_w 1148
+    //   7: invokespecial 1149	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   10: astore_3
+    //   11: aload_3
+    //   12: astore_0
+    //   13: sipush 256
+    //   16: newarray byte
+    //   18: astore 4
+    //   20: iconst_0
+    //   21: istore_1
+    //   22: aload_3
+    //   23: astore_0
+    //   24: aload_3
+    //   25: invokevirtual 1152	java/io/FileInputStream:read	()I
+    //   28: istore_2
+    //   29: iload_2
+    //   30: ifle +25 -> 55
+    //   33: aload_3
+    //   34: astore_0
+    //   35: iload_1
+    //   36: aload 4
+    //   38: arraylength
+    //   39: if_icmpge +16 -> 55
+    //   42: aload 4
+    //   44: iload_1
+    //   45: iload_2
+    //   46: i2b
+    //   47: bastore
+    //   48: iload_1
+    //   49: iconst_1
+    //   50: iadd
+    //   51: istore_1
+    //   52: goto -30 -> 22
+    //   55: iload_1
+    //   56: ifle +40 -> 96
+    //   59: aload_3
+    //   60: astore_0
+    //   61: new 230	java/lang/String
+    //   64: dup
+    //   65: aload 4
+    //   67: iconst_0
+    //   68: iload_1
+    //   69: ldc_w 1154
+    //   72: invokespecial 1157	java/lang/String:<init>	([BIILjava/lang/String;)V
+    //   75: astore 4
+    //   77: aload_3
+    //   78: ifnull +7 -> 85
+    //   81: aload_3
+    //   82: invokevirtual 1158	java/io/FileInputStream:close	()V
+    //   85: aload 4
+    //   87: areturn
+    //   88: astore_0
+    //   89: aload_0
+    //   90: invokevirtual 1159	java/io/IOException:printStackTrace	()V
+    //   93: aload 4
+    //   95: areturn
+    //   96: aload_3
+    //   97: ifnull +7 -> 104
+    //   100: aload_3
+    //   101: invokevirtual 1158	java/io/FileInputStream:close	()V
+    //   104: aconst_null
+    //   105: areturn
+    //   106: astore_0
+    //   107: aload_0
+    //   108: invokevirtual 1159	java/io/IOException:printStackTrace	()V
+    //   111: goto -7 -> 104
+    //   114: astore 4
+    //   116: aconst_null
+    //   117: astore_3
+    //   118: aload_3
+    //   119: astore_0
+    //   120: aload 4
+    //   122: invokevirtual 533	java/lang/Throwable:printStackTrace	()V
+    //   125: aload_3
+    //   126: ifnull -22 -> 104
+    //   129: aload_3
+    //   130: invokevirtual 1158	java/io/FileInputStream:close	()V
+    //   133: goto -29 -> 104
+    //   136: astore_0
+    //   137: aload_0
+    //   138: invokevirtual 1159	java/io/IOException:printStackTrace	()V
+    //   141: goto -37 -> 104
+    //   144: astore_3
+    //   145: aconst_null
+    //   146: astore_0
+    //   147: aload_0
+    //   148: ifnull +7 -> 155
+    //   151: aload_0
+    //   152: invokevirtual 1158	java/io/FileInputStream:close	()V
+    //   155: aload_3
+    //   156: athrow
+    //   157: astore_0
+    //   158: aload_0
+    //   159: invokevirtual 1159	java/io/IOException:printStackTrace	()V
+    //   162: goto -7 -> 155
+    //   165: astore_3
+    //   166: goto -19 -> 147
+    //   169: astore 4
+    //   171: goto -53 -> 118
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	174	0	paramContext	Context
+    //   21	48	1	i1	int
+    //   28	18	2	i2	int
+    //   10	120	3	localFileInputStream	java.io.FileInputStream
+    //   144	12	3	localObject1	Object
+    //   165	1	3	localObject2	Object
+    //   18	76	4	localObject3	Object
+    //   114	7	4	localThrowable1	Throwable
+    //   169	1	4	localThrowable2	Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   81	85	88	java/io/IOException
+    //   100	104	106	java/io/IOException
+    //   0	11	114	java/lang/Throwable
+    //   129	133	136	java/io/IOException
+    //   0	11	144	finally
+    //   151	155	157	java/io/IOException
+    //   13	20	165	finally
+    //   24	29	165	finally
+    //   35	42	165	finally
+    //   61	77	165	finally
+    //   120	125	165	finally
+    //   13	20	169	java/lang/Throwable
+    //   24	29	169	java/lang/Throwable
+    //   35	42	169	java/lang/Throwable
+    //   61	77	169	java/lang/Throwable
   }
   
   public static String[] getDexLoaderFileList(Context paramContext1, Context paramContext2, String paramString)
@@ -1849,10 +1960,10 @@ public class QbSdk
       TbsLog.i("QbSdk", "getJarFilesAndLibraryPath sExtensionObj is null");
       return false;
     }
-    Bundle localBundle = (Bundle)i.a(r, "canLoadX5CoreAndNotLoadSo", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(43936) });
+    Bundle localBundle = (Bundle)i.a(r, "canLoadX5CoreAndNotLoadSo", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(43957) });
     if (localBundle == null)
     {
-      TbsLog.i("QbSdk", "getJarFilesAndLibraryPath bundle is null and coreverison is " + n.a().a(true, paramContext));
+      TbsLog.i("QbSdk", "getJarFilesAndLibraryPath bundle is null and coreverison is " + p.a().a(true, paramContext));
       return false;
     }
     t = localBundle.getStringArray("tbs_jarfiles");
@@ -1863,14 +1974,14 @@ public class QbSdk
   public static String getMiniQBVersion(Context paramContext)
   {
     Object localObject = null;
-    v localv = v.a();
-    localv.a(paramContext, null);
+    x localx = x.a();
+    localx.a(paramContext, null);
     paramContext = localObject;
-    if (localv != null)
+    if (localx != null)
     {
       paramContext = localObject;
-      if (localv.b()) {
-        paramContext = localv.c().f();
+      if (localx.b()) {
+        paramContext = localx.c().f();
       }
     }
     return paramContext;
@@ -1908,7 +2019,7 @@ public class QbSdk
     }
     try
     {
-      if (b.c())
+      if (b.d())
       {
         File localFile = paramContext.getDir("tbs_64", 0);
         return localFile;
@@ -1928,7 +2039,7 @@ public class QbSdk
   
   public static int getTbsSdkVersion()
   {
-    return 43936;
+    return 43957;
   }
   
   public static int getTbsVersion(Context paramContext)
@@ -1936,7 +2047,7 @@ public class QbSdk
     if (TbsShareManager.isThirdPartyApp(paramContext)) {
       return TbsShareManager.a(paramContext, false);
     }
-    return n.a().i(paramContext);
+    return p.a().i(paramContext);
   }
   
   public static int getTbsVersionForCrash(Context paramContext)
@@ -1951,11 +2062,11 @@ public class QbSdk
       do
       {
         return i1;
-        i2 = n.a().j(paramContext);
+        i2 = p.a().j(paramContext);
         i1 = i2;
       } while (i2 != 0);
       i1 = i2;
-    } while (k.a(paramContext).c() != 3);
+    } while (m.a(paramContext).c() != 3);
     reset(paramContext);
     return i2;
   }
@@ -1963,13 +2074,13 @@ public class QbSdk
   public static int getTmpDirTbsVersion(Context paramContext)
   {
     int i1 = 0;
-    if (k.a(paramContext).c() == 2) {
-      i1 = n.a().e(paramContext, 0);
+    if (m.a(paramContext).c() == 2) {
+      i1 = p.a().e(paramContext, 0);
     }
-    while (k.a(paramContext).b("copy_status") != 1) {
+    while (m.a(paramContext).b("copy_status") != 1) {
       return i1;
     }
-    return n.a().e(paramContext, 1);
+    return p.a().e(paramContext, 1);
   }
   
   public static void initBuglyAsync(boolean paramBoolean)
@@ -1981,7 +2092,7 @@ public class QbSdk
   {
     if (q == null)
     {
-      localObject1 = n.a().q(paramContext);
+      localObject1 = p.a().q(paramContext);
       if (localObject1 == null) {
         Log.e("QbSdk", "QbSdk initForinitAndNotLoadSo optDir == null");
       }
@@ -1997,8 +2108,8 @@ public class QbSdk
       return;
     }
     Object localObject1 = ((File)localObject1).getAbsolutePath();
-    v.a().a(paramContext);
-    com.tencent.smtt.utils.k.a(paramContext);
+    x.a().a(paramContext);
+    l.a(paramContext);
     String str = ((File)localObject2).getParent();
     localObject2 = ((File)localObject2).getAbsolutePath();
     Map localMap = getSettings();
@@ -2025,6 +2136,7 @@ public class QbSdk
   
   public static void initX5Environment(Context paramContext, QbSdk.PreInitCallback paramPreInitCallback)
   {
+    TbsLog.initIfNeed(paramContext);
     if (paramContext == null)
     {
       TbsLog.e("QbSdk", "initX5Environment,context=null");
@@ -2032,18 +2144,18 @@ public class QbSdk
     }
     b(paramContext);
     E = new QbSdk.3(paramContext, paramPreInitCallback);
-    n localn;
+    p localp;
     if (TbsShareManager.isThirdPartyApp(paramContext))
     {
-      localn = n.a();
-      if (d.a != 0) {
-        break label74;
+      localp = p.a();
+      if (f.a != 0) {
+        break label78;
       }
     }
-    label74:
+    label78:
     for (boolean bool = true;; bool = false)
     {
-      localn.b(paramContext, bool);
+      localp.b(paramContext, bool);
       TbsDownloader.needDownload(paramContext, false, false, true, new QbSdk.4(paramContext, paramPreInitCallback));
       return;
     }
@@ -2052,14 +2164,14 @@ public class QbSdk
   public static boolean installLocalQbApk(Context paramContext, String paramString1, String paramString2, Bundle paramBundle)
   {
     boolean bool2 = false;
-    d locald = d.a(true);
-    locald.a(paramContext, false, false, null);
+    f localf = f.a(true);
+    localf.a(paramContext, false, false, null);
     boolean bool1 = bool2;
-    if (locald != null)
+    if (localf != null)
     {
       bool1 = bool2;
-      if (locald.b()) {
-        bool1 = locald.a().a(paramContext, paramString1, paramString2, paramBundle);
+      if (localf.b()) {
+        bool1 = localf.a().a(paramContext, paramString1, paramString2, paramBundle);
       }
     }
     return bool1;
@@ -2105,7 +2217,7 @@ public class QbSdk
       {
         if (MttLoader.loadUrl(localContext, paramString1, localHashMap, "QbSdk.startMiniQBToLoadUrl", null) != 0)
         {
-          paramString1 = v.a();
+          paramString1 = x.a();
           if ((paramString1 != null) && (paramString1.b()) && (paramString1.c().a(localContext, paramIntent, null, paramString2, null) == 0)) {
             return true;
           }
@@ -2122,7 +2234,7 @@ public class QbSdk
   public static boolean isInDefaultBrowser(Context paramContext, String paramString)
   {
     SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("tbs_file_open_dialog_config", 0);
-    paramString = e.d(paramString);
+    paramString = e.e(paramString);
     paramContext = paramString;
     if (TextUtils.isEmpty(paramString)) {
       paramContext = "*/*";
@@ -2138,7 +2250,7 @@ public class QbSdk
     if (TbsDownloader.getOverSea(paramContext)) {
       return false;
     }
-    paramString2 = v.a();
+    paramString2 = x.a();
     if ((paramString2 != null) && (paramString2.b()))
     {
       paramContext = paramString2.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "isMiniQBShortCutExist", new Class[] { Context.class, String.class }, new Object[] { paramContext, paramString1 });
@@ -2180,12 +2292,12 @@ public class QbSdk
   public static boolean isTbsCoreInited()
   {
     boolean bool2 = false;
-    d locald = d.a(false);
+    f localf = f.a(false);
     boolean bool1 = bool2;
-    if (locald != null)
+    if (localf != null)
     {
       bool1 = bool2;
-      if (locald.f()) {
+      if (localf.f()) {
         bool1 = true;
       }
     }
@@ -2194,15 +2306,15 @@ public class QbSdk
   
   public static boolean isX5DisabledSync(Context paramContext)
   {
-    if (k.a(paramContext).c() == 2) {}
+    if (m.a(paramContext).c() == 2) {}
     for (int i1 = 1; i1 != 0; i1 = 0) {
       return false;
     }
     if (!c(paramContext)) {
       return true;
     }
-    i1 = n.a().i(paramContext);
-    paramContext = i.a(r, "isX5DisabledSync", new Class[] { Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(i1), Integer.valueOf(43936) });
+    i1 = p.a().i(paramContext);
+    paramContext = i.a(r, "isX5DisabledSync", new Class[] { Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(i1), Integer.valueOf(43957) });
     if (paramContext != null) {
       return ((Boolean)paramContext).booleanValue();
     }
@@ -2234,9 +2346,9 @@ public class QbSdk
     //   30: athrow
     //   31: getstatic 102	com/tencent/smtt/sdk/QbSdk:q	Ljava/lang/Class;
     //   34: ifnonnull +12 -> 46
-    //   37: ldc_w 327
-    //   40: ldc_w 1503
-    //   43: invokestatic 377	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   37: ldc_w 331
+    //   40: ldc_w 1483
+    //   43: invokestatic 381	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   46: getstatic 102	com/tencent/smtt/sdk/QbSdk:q	Ljava/lang/Class;
     //   49: iconst_5
     //   50: anewarray 197	java/lang/Class
@@ -2260,24 +2372,24 @@ public class QbSdk
     //   74: iconst_4
     //   75: ldc 230
     //   77: aastore
-    //   78: invokevirtual 1507	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   78: invokevirtual 1487	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
     //   81: astore_3
     //   82: aload_0
-    //   83: invokestatic 475	com/tencent/smtt/sdk/TbsShareManager:isThirdPartyApp	(Landroid/content/Context;)Z
+    //   83: invokestatic 479	com/tencent/smtt/sdk/TbsShareManager:isThirdPartyApp	(Landroid/content/Context;)Z
     //   86: ifeq +231 -> 317
     //   89: aload_0
-    //   90: invokestatic 806	com/tencent/smtt/sdk/TbsShareManager:e	(Landroid/content/Context;)Landroid/content/Context;
+    //   90: invokestatic 810	com/tencent/smtt/sdk/TbsShareManager:e	(Landroid/content/Context;)Landroid/content/Context;
     //   93: astore 4
     //   95: aload 4
     //   97: ifnonnull +37 -> 134
-    //   100: invokestatic 534	com/tencent/smtt/sdk/TbsShareManager:getHostCorePathAppDefined	()Ljava/lang/String;
+    //   100: invokestatic 538	com/tencent/smtt/sdk/TbsShareManager:getHostCorePathAppDefined	()Ljava/lang/String;
     //   103: ifnonnull +31 -> 134
     //   106: aload_0
-    //   107: invokevirtual 810	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   107: invokevirtual 814	android/content/Context:getApplicationContext	()Landroid/content/Context;
     //   110: invokestatic 187	com/tencent/smtt/sdk/TbsLogReport:getInstance	(Landroid/content/Context;)Lcom/tencent/smtt/sdk/TbsLogReport;
     //   113: sipush 227
-    //   116: ldc_w 812
-    //   119: invokevirtual 815	com/tencent/smtt/sdk/TbsLogReport:setLoadErrorCode	(ILjava/lang/String;)V
+    //   116: ldc_w 816
+    //   119: invokevirtual 819	com/tencent/smtt/sdk/TbsLogReport:setLoadErrorCode	(ILjava/lang/String;)V
     //   122: ldc 2
     //   124: monitorexit
     //   125: return
@@ -2306,7 +2418,7 @@ public class QbSdk
     //   161: iconst_2
     //   162: ldc 230
     //   164: aastore
-    //   165: invokevirtual 1507	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   165: invokevirtual 1487	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
     //   168: iconst_5
     //   169: anewarray 4	java/lang/Object
     //   172: dup
@@ -2319,7 +2431,7 @@ public class QbSdk
     //   180: aastore
     //   181: dup
     //   182: iconst_2
-    //   183: invokestatic 534	com/tencent/smtt/sdk/TbsShareManager:getHostCorePathAppDefined	()Ljava/lang/String;
+    //   183: invokestatic 538	com/tencent/smtt/sdk/TbsShareManager:getHostCorePathAppDefined	()Ljava/lang/String;
     //   186: aastore
     //   187: dup
     //   188: iconst_3
@@ -2329,7 +2441,7 @@ public class QbSdk
     //   192: iconst_4
     //   193: aconst_null
     //   194: aastore
-    //   195: invokevirtual 1513	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   195: invokevirtual 1493	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
     //   198: putstatic 104	com/tencent/smtt/sdk/QbSdk:r	Ljava/lang/Object;
     //   201: ldc 2
     //   203: monitorexit
@@ -2345,7 +2457,7 @@ public class QbSdk
     //   218: iconst_1
     //   219: ldc 199
     //   221: aastore
-    //   222: invokevirtual 1507	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   222: invokevirtual 1487	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
     //   225: iconst_2
     //   226: anewarray 4	java/lang/Object
     //   229: dup
@@ -2356,21 +2468,21 @@ public class QbSdk
     //   234: iconst_1
     //   235: aload 4
     //   237: aastore
-    //   238: invokevirtual 1513	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   238: invokevirtual 1493	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
     //   241: putstatic 104	com/tencent/smtt/sdk/QbSdk:r	Ljava/lang/Object;
     //   244: goto -43 -> 201
     //   247: astore_0
-    //   248: ldc_w 327
-    //   251: new 317	java/lang/StringBuilder
+    //   248: ldc_w 331
+    //   251: new 321	java/lang/StringBuilder
     //   254: dup
-    //   255: invokespecial 318	java/lang/StringBuilder:<init>	()V
-    //   258: ldc_w 1515
-    //   261: invokevirtual 324	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   255: invokespecial 322	java/lang/StringBuilder:<init>	()V
+    //   258: ldc_w 1495
+    //   261: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   264: aload_0
-    //   265: invokestatic 417	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   268: invokevirtual 324	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   271: invokevirtual 325	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   274: invokestatic 333	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   265: invokestatic 421	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   268: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   271: invokevirtual 329	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   274: invokestatic 337	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   277: goto -76 -> 201
     //   280: aload_3
     //   281: iconst_5
@@ -2385,7 +2497,7 @@ public class QbSdk
     //   293: aastore
     //   294: dup
     //   295: iconst_2
-    //   296: invokestatic 534	com/tencent/smtt/sdk/TbsShareManager:getHostCorePathAppDefined	()Ljava/lang/String;
+    //   296: invokestatic 538	com/tencent/smtt/sdk/TbsShareManager:getHostCorePathAppDefined	()Ljava/lang/String;
     //   299: aastore
     //   300: dup
     //   301: iconst_3
@@ -2395,7 +2507,7 @@ public class QbSdk
     //   305: iconst_4
     //   306: aconst_null
     //   307: aastore
-    //   308: invokevirtual 1513	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   308: invokevirtual 1493	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
     //   311: putstatic 104	com/tencent/smtt/sdk/QbSdk:r	Ljava/lang/Object;
     //   314: goto -113 -> 201
     //   317: iload_2
@@ -2411,15 +2523,15 @@ public class QbSdk
     //   334: iconst_1
     //   335: ldc 199
     //   337: aastore
-    //   338: invokevirtual 1507	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   338: invokevirtual 1487	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
     //   341: astore_3
     //   342: aload_0
     //   343: astore_1
     //   344: aload_0
-    //   345: invokevirtual 810	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   345: invokevirtual 814	android/content/Context:getApplicationContext	()Landroid/content/Context;
     //   348: ifnull +8 -> 356
     //   351: aload_0
-    //   352: invokevirtual 810	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   352: invokevirtual 814	android/content/Context:getApplicationContext	()Landroid/content/Context;
     //   355: astore_1
     //   356: aload_3
     //   357: iconst_2
@@ -2432,29 +2544,29 @@ public class QbSdk
     //   366: iconst_1
     //   367: aload_1
     //   368: aastore
-    //   369: invokevirtual 1513	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   369: invokevirtual 1493	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
     //   372: putstatic 104	com/tencent/smtt/sdk/QbSdk:r	Ljava/lang/Object;
     //   375: goto -174 -> 201
     //   378: aload 5
     //   380: astore 4
-    //   382: ldc_w 1043
+    //   382: ldc_w 1046
     //   385: aload_0
-    //   386: invokestatic 1046	com/tencent/smtt/sdk/QbSdk:getCurrentProcessName	(Landroid/content/Context;)Ljava/lang/String;
-    //   389: invokevirtual 890	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   386: invokestatic 1049	com/tencent/smtt/sdk/QbSdk:getCurrentProcessName	(Landroid/content/Context;)Ljava/lang/String;
+    //   389: invokevirtual 893	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   392: ifeq +18 -> 410
     //   395: aload 5
     //   397: astore 4
-    //   399: getstatic 1049	com/tencent/smtt/sdk/WebView:mWebViewCreated	Z
+    //   399: getstatic 1052	com/tencent/smtt/sdk/WebView:mWebViewCreated	Z
     //   402: ifne +8 -> 410
-    //   405: ldc_w 1517
+    //   405: ldc_w 1497
     //   408: astore 4
     //   410: aload_0
     //   411: astore 5
     //   413: aload_0
-    //   414: invokevirtual 810	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   414: invokevirtual 814	android/content/Context:getApplicationContext	()Landroid/content/Context;
     //   417: ifnull +9 -> 426
     //   420: aload_0
-    //   421: invokevirtual 810	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   421: invokevirtual 814	android/content/Context:getApplicationContext	()Landroid/content/Context;
     //   424: astore 5
     //   426: aload_3
     //   427: iconst_5
@@ -2479,7 +2591,7 @@ public class QbSdk
     //   450: iconst_4
     //   451: aload 4
     //   453: aastore
-    //   454: invokevirtual 1513	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   454: invokevirtual 1493	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
     //   457: putstatic 104	com/tencent/smtt/sdk/QbSdk:r	Ljava/lang/Object;
     //   460: goto -259 -> 201
     // Local variable table:
@@ -2543,9 +2655,9 @@ public class QbSdk
         Intent localIntent = new Intent("android.intent.action.VIEW");
         localIntent.addCategory("android.intent.category.DEFAULT");
         localIntent.setData(Uri.parse(paramString));
-        paramString = e.d(paramString);
+        paramString = e.e(paramString);
         isDefaultDialog = false;
-        paramString = new com.tencent.smtt.sdk.ui.dialog.d(paramContext, "选择其它应用打开", localIntent, paramBundle, paramValueCallback, paramString, str);
+        paramString = new d(paramContext, "选择其它应用打开", localIntent, paramBundle, paramValueCallback, paramString, str);
         paramBundle = paramString.a();
         if ((paramBundle == null) || (TextUtils.isEmpty(paramBundle))) {
           break;
@@ -2658,7 +2770,7 @@ public class QbSdk
   
   public static void openFileReaderListWithQBDownload(Context paramContext, String paramString, Bundle paramBundle, ValueCallback<String> paramValueCallback)
   {
-    if ((paramContext == null) || (paramContext.getApplicationInfo().packageName.equals("com.tencent.qim")) || (paramContext.getApplicationInfo().packageName.equals("com.tencent.tim")) || (paramContext.getApplicationInfo().packageName.equals("com.tencent.androidqqmail"))) {}
+    if ((paramContext == null) || (paramContext.getApplicationInfo().packageName.equals("com.tencent.qim")) || (paramContext.getApplicationInfo().packageName.equals("com.tencent.androidqqmail"))) {}
     do
     {
       return;
@@ -2668,7 +2780,7 @@ public class QbSdk
       }
       Intent localIntent = new Intent("android.intent.action.VIEW");
       localIntent.addCategory("android.intent.category.DEFAULT");
-      String str2 = e.d(paramString);
+      String str2 = e.e(paramString);
       if ((paramContext != null) && (paramContext.getApplicationInfo().targetSdkVersion >= 24) && (Build.VERSION.SDK_INT >= 24)) {
         localIntent.addFlags(1);
       }
@@ -2682,7 +2794,7 @@ public class QbSdk
       TbsLog.i("QbSdk", "openFileReaderListWithQBDownload,fileUri:" + paramString + ",mimeType:" + str2);
       localIntent.setDataAndType(localUri, str2);
       isDefaultDialog = false;
-      paramString = new com.tencent.smtt.sdk.ui.dialog.d(paramContext, "选择其它应用打开", localIntent, paramBundle, paramValueCallback, str2, str1);
+      paramString = new d(paramContext, "选择其它应用打开", localIntent, paramBundle, paramValueCallback, str2, str1);
       paramBundle = paramString.a();
       TbsLog.i("QbSdk", "openFileReaderListWithQBDownload,defaultBrowser:" + paramBundle);
       if ((paramBundle != null) && (!TextUtils.isEmpty(paramBundle)) && (paramBundle.startsWith("extraMenuEvent:")))
@@ -2785,9 +2897,9 @@ public class QbSdk
   
   public static void openNetLog(String paramString)
   {
-    Object localObject = v.a();
-    if ((localObject != null) && (((v)localObject).b())) {
-      localObject = ((v)localObject).c().b();
+    Object localObject = x.a();
+    if ((localObject != null) && (((x)localObject).b())) {
+      localObject = ((x)localObject).c().b();
     }
     try
     {
@@ -2852,22 +2964,22 @@ public class QbSdk
         TbsDownloader.stopDownload();
         if ((paramBoolean) && (!TbsShareManager.isThirdPartyApp(paramContext)))
         {
-          int i2 = n.a().h(paramContext);
-          int i3 = n.a().i(paramContext);
+          int i2 = p.a().h(paramContext);
+          int i3 = p.a().i(paramContext);
           if ((i2 > 43300) && (i2 != i3))
           {
             TbsDownloader.c(paramContext);
             FileUtil.a(getTbsFolderDir(paramContext), false, "core_share_decouple");
             TbsLog.i("QbSdk", "delete downloaded apk success", true);
-            n.a.set(Integer.valueOf(0));
+            p.a.set(Integer.valueOf(0));
             File localFile = new File(paramContext.getFilesDir(), "bugly_switch.txt");
             if ((localFile != null) && (localFile.exists())) {
               localFile.delete();
             }
             if (i1 != 0)
             {
-              FileUtil.b(n.a().p(paramContext), n.a().f(paramContext, 0));
-              n.a().b(paramContext);
+              FileUtil.b(p.a().p(paramContext), p.a().f(paramContext, 0));
+              p.a().b(paramContext);
             }
             return;
           }
@@ -2887,7 +2999,7 @@ public class QbSdk
     TbsLog.e("QbSdk", "QbSdk resetDecoupleCore!", true);
     try
     {
-      FileUtil.b(n.a().p(paramContext));
+      FileUtil.b(p.a().p(paramContext));
       return;
     }
     catch (Throwable paramContext)
@@ -2938,9 +3050,9 @@ public class QbSdk
   
   public static void setNetLogEncryptionKey(String paramString)
   {
-    Object localObject = v.a();
-    if ((localObject != null) && (((v)localObject).b())) {
-      localObject = ((v)localObject).c().b();
+    Object localObject = x.a();
+    if ((localObject != null) && (((x)localObject).b())) {
+      localObject = ((x)localObject).c().b();
     }
     try
     {
@@ -2997,14 +3109,14 @@ public class QbSdk
     if (paramContext == null) {
       return -100;
     }
-    v localv = v.a();
-    localv.a(paramContext, null);
-    if (localv.b())
+    x localx = x.a();
+    localx.a(paramContext, null);
+    if (localx.b())
     {
       int i1;
       if ((paramContext == null) || (!paramContext.getApplicationInfo().packageName.equals("com.nd.android.pandahome2")) || (getTbsVersion(paramContext) >= 25487))
       {
-        i1 = localv.c().a(paramContext, paramString, paramHashMap, null, paramValueCallback);
+        i1 = localx.c().a(paramContext, paramString, paramHashMap, null, paramValueCallback);
         if (i1 != 0) {
           break label131;
         }
@@ -3057,14 +3169,14 @@ public class QbSdk
       }
       else
       {
-        localObject = v.a();
+        localObject = x.a();
         localWebView1 = paramWebView;
         if (localObject != null)
         {
           localWebView1 = paramWebView;
-          if (((v)localObject).b())
+          if (((x)localObject).b())
           {
-            localObject = ((v)localObject).c().b().invokeStaticMethod("com.tencent.smtt.webkit.WebViewList", "getCurrentMainWebviewJustForQQandWechat", new Class[0], new Object[0]);
+            localObject = ((x)localObject).c().b().invokeStaticMethod("com.tencent.smtt.webkit.WebViewList", "getCurrentMainWebviewJustForQQandWechat", new Class[0], new Object[0]);
             localWebView1 = paramWebView;
             if (localObject != null)
             {
@@ -3102,14 +3214,14 @@ public class QbSdk
     if (paramContext == null) {
       return false;
     }
-    v localv = v.a();
-    localv.a(paramContext, null);
-    if (((paramHashMap == null) || (!"5".equals(paramHashMap.get("PosID"))) || (!localv.b()) || ((Bundle)localv.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "getAdWebViewInfoFromX5Core", new Class[0], new Object[0]) == null)) || (MttLoader.loadUrl(paramContext, paramString, paramHashMap, "QbSdk.startMiniQBToLoadUrl", null) != 0))
+    x localx = x.a();
+    localx.a(paramContext, null);
+    if (((paramHashMap == null) || (!"5".equals(paramHashMap.get("PosID"))) || (!localx.b()) || ((Bundle)localx.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "getAdWebViewInfoFromX5Core", new Class[0], new Object[0]) == null)) || (MttLoader.loadUrl(paramContext, paramString, paramHashMap, "QbSdk.startMiniQBToLoadUrl", null) != 0))
     {
-      if (localv.b()) {
+      if (localx.b()) {
         if ((paramContext == null) || (!paramContext.getApplicationInfo().packageName.equals("com.nd.android.pandahome2")) || (getTbsVersion(paramContext) >= 25487))
         {
-          if (localv.c().a(paramContext, paramString, paramHashMap, null, paramValueCallback) == 0) {
+          if (localx.c().a(paramContext, paramString, paramHashMap, null, paramValueCallback) == 0) {
             return true;
           }
         }
@@ -3137,9 +3249,9 @@ public class QbSdk
   
   public static void uploadNetLog(String paramString)
   {
-    Object localObject = v.a();
-    if ((localObject != null) && (((v)localObject).b())) {
-      localObject = ((v)localObject).c().b();
+    Object localObject = x.a();
+    if ((localObject != null) && (((x)localObject).b())) {
+      localObject = ((x)localObject).c().b();
     }
     try
     {

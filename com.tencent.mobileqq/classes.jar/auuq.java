@@ -1,18 +1,47 @@
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.mobileqq.jsp.ShareMsgImpl.3;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public abstract interface auuq
+public class auuq
+  implements zop
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  public auuq(ShareMsgImpl.3 param3, Bitmap paramBitmap) {}
   
-  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
-  
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract void a(String paramString, Bundle paramBundle);
-  
-  public abstract void b(Bundle paramBundle);
-  
-  public abstract void c(Bundle paramBundle);
+  public void callback(Bundle paramBundle)
+  {
+    int j = 0;
+    int i = 0;
+    if (paramBundle.getInt("readinjoy_to_wx_config") == 0)
+    {
+      paramBundle = WxShareHelperFromReadInjoy.a();
+      str1 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.this$0.b;
+      str2 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.d;
+      localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      str3 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.e;
+      str4 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.b;
+      if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.a)) {}
+      for (;;)
+      {
+        paramBundle.a(str1, str2, localBitmap, str3, str4, i);
+        return;
+        i = 1;
+      }
+    }
+    paramBundle = WXShareHelper.getInstance();
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.this$0.b;
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.d;
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    String str3 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.e;
+    String str4 = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.b;
+    if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.a)) {}
+    for (i = j;; i = 1)
+    {
+      paramBundle.shareWebPage(str1, str2, localBitmap, str3, str4, i);
+      return;
+    }
+  }
 }
 
 

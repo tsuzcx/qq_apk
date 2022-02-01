@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.adapter;
 
-import amog;
-import amoh;
+import alja;
+import aljb;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
@@ -42,19 +42,19 @@ public class ForwardRecentItemView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewView = View.inflate(getContext(), 2131562818, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376771));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378604));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378606));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368212));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131364511));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131380059);
+    this.jdField_a_of_type_AndroidViewView = View.inflate(getContext(), 2131562697, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376541));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378368));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378370));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368236));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131364530));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379811);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelOffset(2131298133);
-    this.jdField_b_of_type_Int = getResources().getDimensionPixelOffset(2131296764);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelOffset(2131298198);
+    this.jdField_b_of_type_Int = getResources().getDimensionPixelOffset(2131296819);
   }
   
   public void a(long paramLong)
@@ -63,7 +63,7 @@ public class ForwardRecentItemView
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -this.jdField_a_of_type_Int, 0 });
     localValueAnimator.setInterpolator(new DecelerateAccelerateInterpolator());
     localValueAnimator.setDuration(paramLong);
-    localValueAnimator.addUpdateListener(new amog(this, localLayoutParams));
+    localValueAnimator.addUpdateListener(new alja(this, localLayoutParams));
     localValueAnimator.start();
   }
   
@@ -132,7 +132,7 @@ public class ForwardRecentItemView
       }
     }
     label58:
-    for (int i = 2131690708;; i = 2131719083)
+    for (int i = 2131690748;; i = 2131719368)
     {
       localObject = ((Resources)localObject).getString(i);
       setContentDescription(this.jdField_a_of_type_JavaLangString + (String)localObject);
@@ -146,7 +146,7 @@ public class ForwardRecentItemView
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, -this.jdField_a_of_type_Int });
     localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
     localValueAnimator.setDuration(paramLong);
-    localValueAnimator.addUpdateListener(new amoh(this, localLayoutParams));
+    localValueAnimator.addUpdateListener(new aljb(this, localLayoutParams));
     localValueAnimator.start();
   }
   

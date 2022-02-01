@@ -1,276 +1,145 @@
-import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.ZipFilePresenter.2;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.QbSdk;
-import java.util.ArrayList;
-import java.util.List;
+import eipc.EIPCResult;
+import mqq.app.WtloginManagerImpl;
+import mqq.manager.WtloginManager;
+import oicq.wlogin_sdk.tools.util;
 
 public class aujr
-  extends auik
-  implements augo, augp, augq
+  extends QIPCModule
 {
-  protected auku a;
-  private List<aujx> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean d;
-  private boolean e;
+  private static volatile aujr a;
   
-  public aujr(augj paramaugj, Activity paramActivity)
+  public aujr(String paramString)
   {
-    super(paramaugj, paramActivity);
-    this.jdField_a_of_type_Auku = new auku(paramActivity);
-    a(this.jdField_a_of_type_Auku);
+    super(paramString);
   }
   
-  private void b(long paramLong)
+  public static aujr a()
   {
-    this.jdField_a_of_type_Auku.f(false);
-    this.jdField_a_of_type_Auku.d(true);
-    b();
-    if (auog.b(this.jdField_a_of_type_Augj.d()))
+    if (a == null) {}
+    try
     {
-      this.jdField_a_of_type_Auku.a(anzj.a(2131692477), new aujs(this));
-      this.jdField_a_of_type_Auku.a(true);
-    }
-    while (paramLong == -1000L) {
-      return;
-    }
-    if ((paramLong == -7003L) || (paramLong == -6101L))
-    {
-      this.jdField_a_of_type_Augj.a(16);
-      this.jdField_a_of_type_Auku.f(this.jdField_a_of_type_AndroidAppActivity.getString(2131692151));
-      this.jdField_a_of_type_Auku.e(false);
-      return;
-    }
-    this.jdField_a_of_type_Auku.e(false);
-  }
-  
-  private void c()
-  {
-    ThreadManagerV2.getUIHandlerV2().postDelayed(new ZipFilePresenter.2(this), 3000L);
-  }
-  
-  private void q()
-  {
-    int i = this.jdField_a_of_type_Augj.i();
-    if (i == 4)
-    {
-      this.jdField_a_of_type_Auku.b(true);
-      this.jdField_a_of_type_Auku.c(false);
-      return;
-    }
-    if (i == 2)
-    {
-      this.jdField_a_of_type_Auku.c(false);
-      return;
-    }
-    if (i == 6)
-    {
-      this.jdField_a_of_type_Auku.a(true, anzj.a(2131715815) + "(" + bhmh.a(this.jdField_a_of_type_Augj.c()) + ")", new aujv(this));
-      return;
-    }
-    this.jdField_a_of_type_Auku.a(true, anzj.a(2131715812) + "(" + bhmh.a(this.jdField_a_of_type_Augj.c()) + ")", new aujw(this));
-  }
-  
-  public void a()
-  {
-    super.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("ZipFilePresenter<QFile>", 1, "FileBrowserPresenter init: type = zip");
-    }
-    boolean bool;
-    if ("1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId")))
-    {
-      bool = true;
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Auku.h(this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_Auku.c(this.jdField_a_of_type_Augj.c());
-      this.jdField_a_of_type_Auku.d(this.jdField_a_of_type_Augj.f());
-      this.jdField_a_of_type_Auku.e(anzj.a(2131715811) + this.jdField_a_of_type_JavaUtilList.size() + anzj.a(2131715816) + auog.a(this.jdField_a_of_type_Augj.c()));
-      this.jdField_a_of_type_Augj.a(this);
-      this.jdField_a_of_type_Augj.a(this);
-      if (bhnv.g(this.jdField_a_of_type_AndroidAppActivity)) {
-        break label265;
+      if (a == null) {
+        a = new aujr("DeviceProtectQIPCModule");
       }
-      b(-1000L);
+      return a;
     }
+    finally {}
+  }
+  
+  private EIPCResult a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null)
+    {
+      QLog.e("DeviceProtectQIPCModule", 1, "handleGetDeviceInfo error: QQAppInterface is null");
+      return EIPCResult.createResult(-102, null);
+    }
+    Bundle localBundle = new Bundle();
     for (;;)
     {
-      if ((!auog.b(this.jdField_a_of_type_Augj.d())) && (this.jdField_a_of_type_Augj.i()) && (this.jdField_a_of_type_Augj.a() != null))
+      int i;
+      try
       {
-        b(this.jdField_a_of_type_Augj.a());
-        this.jdField_a_of_type_Auku.b(true);
-        this.jdField_a_of_type_Auku.c(false);
-        this.jdField_a_of_type_Auku.a(false);
-        this.jdField_a_of_type_Augj.a().a();
-      }
-      this.jdField_a_of_type_Augj.a(this);
-      return;
-      bool = false;
-      break;
-      label265:
-      if (!this.d)
-      {
-        this.jdField_a_of_type_Augj.f();
-        this.d = true;
-        this.jdField_a_of_type_Auku.f(true);
-        this.e = true;
-        c();
-      }
-    }
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Auku.c(false);
-    this.jdField_a_of_type_Auku.b(true);
-    b(paramFloat);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.e = false;
-    b(paramLong);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_Auku.b(paramString1, paramString2);
-  }
-  
-  public void a(List<aujx> paramList, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, short paramShort)
-  {
-    if (!this.e) {
-      return;
-    }
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      this.jdField_a_of_type_Auku.a(paramList, this.jdField_a_of_type_Augj.d(), this.jdField_a_of_type_Augj.d(), this.jdField_a_of_type_Augj.b(), paramString2, paramString3, paramString4, paramString1, paramBoolean, paramString5, paramShort);
-      this.jdField_a_of_type_Auku.e(anzj.a(2131715813) + this.jdField_a_of_type_JavaUtilList.size() + anzj.a(2131715814) + auog.a(this.jdField_a_of_type_Augj.c()));
-      q();
-    }
-    for (;;)
-    {
-      this.e = false;
-      return;
-      QLog.e("ZipFilePresenter<QFile>", 1, "onGetZipFileList, mFiles is null");
-      b(-1000L);
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  protected void b()
-  {
-    String str;
-    if (bhmi.b(this.jdField_a_of_type_Augj.d())) {
-      if (QbSdk.isSuportOpenFile(aunj.f(this.jdField_a_of_type_Augj.c()), 2))
-      {
-        str = this.jdField_a_of_type_AndroidAppActivity.getString(2131694163);
-        this.jdField_a_of_type_Auku.b(str, new aujt(this));
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Augj.i() == 4) {
-        this.jdField_a_of_type_Auku.e(false);
-      }
-      return;
-      str = this.jdField_a_of_type_AndroidAppActivity.getString(2131692473);
-      this.jdField_a_of_type_Auku.b(str, new auju(this));
-    }
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_Auku.a(paramString1, paramString2);
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Auku.c(false);
-    this.jdField_a_of_type_Auku.a(false);
-    this.jdField_a_of_type_Auku.b(true);
-    b(this.jdField_a_of_type_Augj.a());
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_Auku.c(true);
-    this.jdField_a_of_type_Auku.b(false);
-    q();
-    h();
-    b();
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_Auku.c();
-    this.jdField_a_of_type_Auku.b(false);
-    if (this.jdField_a_of_type_Auef != null) {
-      this.jdField_a_of_type_Auef.a();
-    }
-    h();
-    b();
-  }
-  
-  public void g()
-  {
-    m();
-    h();
-    b();
-  }
-  
-  public void j()
-  {
-    super.j();
-  }
-  
-  public void k()
-  {
-    if (this.d) {
-      this.jdField_a_of_type_Auku.b("", "");
-    }
-  }
-  
-  protected void m()
-  {
-    int i = this.jdField_a_of_type_Augj.h();
-    if ((i == 2) || (i == 3)) {
-      if (this.jdField_a_of_type_Augj.a() != null) {
-        this.jdField_a_of_type_Augj.a().b();
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Auku.b(false);
-      q();
-      h();
-      b();
-      return;
-      if (i == 1)
-      {
-        if (this.jdField_a_of_type_Augj.a() != null) {
-          this.jdField_a_of_type_Augj.a().b();
+        Object localObject = (WtloginManagerImpl)paramQQAppInterface.getManager(1);
+        String str4;
+        String str3;
+        String str1;
+        if (localObject != null)
+        {
+          paramQQAppInterface = BaseApplication.getContext();
+          str4 = util.buf_to_string(((WtloginManagerImpl)localObject).getGUID());
+          str3 = UserAction.getQIMEI();
+          i = AppSetting.a();
+          str1 = Build.BRAND;
+          localObject = Build.MODEL;
+          if (HwNetworkUtil.getSystemNetwork(paramQQAppInterface) == 1)
+          {
+            paramQQAppInterface = HwNetworkUtil.getCurrentWifiBSSID(paramQQAppInterface);
+            break label338;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("guid:").append(str4).append("qimei:").append(str3).append("subappid:").append(str5).append("platform:").append(str2).append("brand:").append(str1).append("model:").append((String)localObject).append("bssid:").append(paramQQAppInterface);
+            QLog.d("DeviceProtectQIPCModule", 1, "handleGetDeviceInfo info: " + localStringBuilder);
+            localBundle.putString("guid", str4);
+            localBundle.putString("qimei", str3);
+            localBundle.putString("subappid", str5);
+            localBundle.putString("platform", str2);
+            localBundle.putString("brand", str1);
+            localBundle.putString("model", (String)localObject);
+            localBundle.putString("bssid", paramQQAppInterface);
+            return EIPCResult.createResult(0, localBundle);
+          }
         }
+        else
+        {
+          QLog.e("DeviceProtectQIPCModule", 1, "handleGetDeviceInfo error: wtLoginManager is null");
+          paramQQAppInterface = "";
+          localObject = "";
+          str1 = "";
+          str2 = "";
+          str5 = "";
+          str3 = "";
+          str4 = "";
+          continue;
+        }
+        paramQQAppInterface = "";
       }
-      else if (QLog.isColorLevel()) {
-        QLog.i("ZipFilePresenter<QFile>", 2, "zip file stop trans, but can not handle trans type");
+      catch (Exception paramQQAppInterface)
+      {
+        QLog.e("DeviceProtectQIPCModule", 1, "handleGetDeviceInfo error: " + paramQQAppInterface.getMessage());
+        return EIPCResult.createResult(-102, null);
       }
+      label338:
+      String str2 = "Android";
+      String str5 = String.valueOf(i);
     }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (paramQQAppInterface == null)
+    {
+      QLog.e("DeviceProtectQIPCModule", 1, "handleGetGuidInfo error: QQAppInterface is null");
+      callbackResult(paramInt, EIPCResult.createResult(-102, null));
+      return;
+    }
+    try
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("guid", util.buf_to_string(((WtloginManager)paramQQAppInterface.getManager(1)).getGUID()));
+      QLog.d("DeviceProtectQIPCModule", 1, "handleGetGuidInfo success");
+      callbackResult(paramInt, EIPCResult.createResult(0, localBundle));
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("DeviceProtectQIPCModule", 1, "handleGetGuidInfo error: " + paramQQAppInterface.getMessage());
+      callbackResult(paramInt, EIPCResult.createResult(-102, null));
+    }
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    paramBundle = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(paramBundle instanceof QQAppInterface)) {
+      return null;
+    }
+    paramBundle = (QQAppInterface)paramBundle;
+    if ("ACTION_GET_DEVICE_INFO".equals(paramString)) {
+      return a(paramBundle);
+    }
+    if ("ACTION_GET_GUID_INFO".equals(paramString)) {
+      a(paramBundle, paramInt);
+    }
+    return null;
   }
 }
 

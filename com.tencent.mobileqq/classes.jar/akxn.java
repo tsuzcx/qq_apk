@@ -1,8 +1,33 @@
-import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.3.1;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public abstract interface akxn
+public class akxn
+  implements INetInfoHandler
 {
-  public abstract void a(Bundle paramBundle);
+  akxn(akxm paramakxm) {}
+  
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    long l = Thread.currentThread().getId();
+    if (akxm.a(this.a) == l) {
+      akxm.a(this.a);
+    }
+    while (akxm.a(this.a) == null) {
+      return;
+    }
+    akxm.a(this.a).post(new LbsFilterStatusManager.3.1(this));
+  }
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 

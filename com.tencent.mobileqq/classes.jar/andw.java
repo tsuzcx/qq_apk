@@ -1,44 +1,46 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import com.tencent.mobileqq.apollo.process.data.CmGameScreenRotate.1;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
 public class andw
+  extends BusinessHandler
 {
-  public int a;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private ApolloSurfaceView jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView;
-  private CmGameInitParams jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams;
-  
-  public andw(ApolloSurfaceView paramApolloSurfaceView, CmGameInitParams paramCmGameInitParams, Activity paramActivity)
+  protected andw(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView = paramApolloSurfaceView;
-    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams = paramCmGameInitParams;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    super(paramQQAppInterface);
   }
   
-  public static int a(int paramInt)
+  public Class<? extends BusinessObserver> observerClass()
   {
-    if (paramInt == 1) {}
+    return andx.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null)) {
+      notifyUI(1, false, null);
+    }
+    String str;
     do
     {
-      return 1;
-      if (paramInt == 3) {
-        return 0;
+      return;
+      str = paramToServiceMsg.getServiceCmd();
+      if (TextUtils.isEmpty(str))
+      {
+        notifyUI(1, false, null);
+        return;
       }
-    } while (paramInt != 2);
-    return 8;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new CmGameScreenRotate.1(this, paramInt));
-    }
+      if ((str.compareTo("VipPayLogicServer.getCommPayInfo ") == 0) && (QLog.isColorLevel())) {
+        QLog.i("VIPRecommendPayHandler", 2, "req---" + paramToServiceMsg + ",res----" + paramFromServiceMsg + ",data-----" + paramObject);
+      }
+    } while (str.compareTo("VipPayLogicServer.getCommPayInfo ") != 0);
+    notifyUI(1, true, paramObject);
+    FileUtils.writeObject(this.app.getCurrentAccountUin() + "_" + "VIPRecommendPayFile.txt", paramObject);
   }
 }
 

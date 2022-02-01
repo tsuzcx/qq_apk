@@ -1,61 +1,18 @@
-import java.util.ArrayList;
+import android.database.DataSetObserver;
 
-public class bjsh
+class bjsh
+  extends DataSetObserver
 {
-  protected static bjsh a;
-  protected ArrayList<bjvc> a;
+  bjsh(bjsg parambjsg) {}
   
-  public static bjsh a()
+  public void onChanged()
   {
-    try
-    {
-      if (jdField_a_of_type_Bjsh == null)
-      {
-        jdField_a_of_type_Bjsh = new bjsh();
-        jdField_a_of_type_Bjsh.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      bjsh localbjsh = jdField_a_of_type_Bjsh;
-      return localbjsh;
-    }
-    finally {}
+    this.a.notifyDataSetChanged();
   }
   
-  public ArrayList<bjvc> a()
+  public void onInvalidated()
   {
-    return jdField_a_of_type_Bjsh.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(bjvc parambjvc)
-  {
-    int j = jdField_a_of_type_Bjsh.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      if ((bjvc)jdField_a_of_type_Bjsh.jdField_a_of_type_JavaUtilArrayList.get(i) == parambjvc) {
-        return;
-      }
-      i += 1;
-    }
-    jdField_a_of_type_Bjsh.jdField_a_of_type_JavaUtilArrayList.add(parambjvc);
-  }
-  
-  public void b(bjvc parambjvc)
-  {
-    int j = jdField_a_of_type_Bjsh.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        if ((bjvc)jdField_a_of_type_Bjsh.jdField_a_of_type_JavaUtilArrayList.get(i) == parambjvc) {
-          jdField_a_of_type_Bjsh.jdField_a_of_type_JavaUtilArrayList.remove(i);
-        }
-      }
-      else {
-        return;
-      }
-      i += 1;
-    }
+    this.a.notifyDataSetInvalidated();
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import behr;
-import beil;
-import beis;
+import bdan;
+import bdbh;
+import bdbo;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.theme.diy.ThemeDiyModule;
 
 class ThemeJsPlugin$10
-  implements behr
+  implements bdan
 {
   ThemeJsPlugin$10(ThemeJsPlugin paramThemeJsPlugin, String paramString) {}
   
   public void onCancel()
   {
     if (!ThemeUtil.isFixTheme(this.val$themeId)) {
-      beis.a(this.this$0.app, this.val$themeId, "20000000");
+      bdbo.a(this.this$0.app, this.val$themeId, "20000000");
     }
     new ThemeJsPlugin.ThemeSwitchListener(this.this$0, this.val$themeId, false).postSwitch(0);
   }
@@ -22,7 +22,7 @@ class ThemeJsPlugin$10
   public void onConfirm()
   {
     ThemeJsPlugin.access$300(this.this$0).setSpThemeBackground();
-    beil.a(this.val$themeId, new ThemeJsPlugin.ThemeSwitchListener(this.this$0, this.val$themeId, true));
+    bdbh.a(this.val$themeId, new ThemeJsPlugin.ThemeSwitchListener(this.this$0, this.val$themeId, true));
   }
 }
 

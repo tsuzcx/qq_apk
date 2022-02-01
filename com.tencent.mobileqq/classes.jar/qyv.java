@@ -1,54 +1,57 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.DynamicBannerItem;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class qyv
+class qyv
+  implements qyt
 {
-  public String a;
+  private IBinder a;
   
-  public static List<qyv> a(oidb_cmd0xbc9.DynamicBannerItem paramDynamicBannerItem)
+  qyv(IBinder paramIBinder)
   {
-    localArrayList = new ArrayList();
-    if (!paramDynamicBannerItem.bytes_dynamic_json.has()) {}
-    for (;;)
+    this.a = paramIBinder;
+  }
+  
+  public void a()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      return localArrayList;
-      Object localObject = paramDynamicBannerItem.bytes_dynamic_json.get().toStringUtf8();
-      try
-      {
-        JSONArray localJSONArray = new JSONArray((String)localObject);
-        int i = 0;
-        while (i < localJSONArray.length())
-        {
-          qyv localqyv = new qyv();
-          localqyv.a = localJSONArray.get(i).toString();
-          localArrayList.add(localqyv);
-          i += 1;
-        }
-        return localArrayList;
-      }
-      catch (Exception localException)
-      {
-        QLog.d("TopBannerInfo", 4, "" + (String)localObject);
-        localObject = new qyv();
-        ((qyv)localObject).a = paramDynamicBannerItem.bytes_dynamic_json.get().toStringUtf8();
-        localArrayList.add(localObject);
-      }
+      localParcel1.writeInterfaceToken("com.tencent.biz.pubaccount.readinjoy.reward.aidl.IReportTaskProgressCallback");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
   
-  public oidb_cmd0xbc9.DynamicBannerItem a()
+  public void a(int paramInt, String paramString)
   {
-    oidb_cmd0xbc9.DynamicBannerItem localDynamicBannerItem = new oidb_cmd0xbc9.DynamicBannerItem();
-    if (!TextUtils.isEmpty(this.a)) {
-      localDynamicBannerItem.bytes_dynamic_json.set(ByteStringMicro.copyFromUtf8(this.a));
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.biz.pubaccount.readinjoy.reward.aidl.IReportTaskProgressCallback");
+      localParcel1.writeInt(paramInt);
+      localParcel1.writeString(paramString);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    return localDynamicBannerItem;
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 

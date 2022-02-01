@@ -1,108 +1,52 @@
-import android.os.SystemClock;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bdmv
 {
-  public static LinkedList<bdmw> a = new LinkedList();
-  
-  public static bdmw a(Class paramClass, int paramInt)
+  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong, String paramString, int paramInt5, bdmx parambdmx)
   {
-    if (paramClass == null) {
-      return null;
-    }
-    int i = a.size() - 1;
-    while (i >= 0)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      bdmw localbdmw = (bdmw)a.get(i);
-      if ((paramClass == localbdmw.jdField_a_of_type_JavaLangClass) && (paramInt == localbdmw.jdField_a_of_type_Long))
+      localJSONObject.put("start", paramInt1);
+      localJSONObject.put("num", paramInt2);
+      localJSONObject.put("type", paramInt3);
+      if ((paramInt3 == 1) || (paramInt3 == 2)) {
+        localJSONObject.put("theme_id", paramInt4);
+      }
+      localJSONObject.put("from", 2);
+      localJSONObject.put("bid", paramLong);
+      localJSONObject.put("pid", paramString);
+      if (paramInt5 != -1) {
+        localJSONObject.put("recommend_by_bid", paramInt5);
+      }
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
       {
-        a.remove(i);
-        return localbdmw;
-      }
-      i -= 1;
-    }
-    return null;
-  }
-  
-  public static void a(long paramLong)
-  {
-    Iterator localIterator = a.iterator();
-    while (localIterator.hasNext())
-    {
-      bdmw localbdmw = (bdmw)localIterator.next();
-      localbdmw.b += paramLong;
-    }
-  }
-  
-  public static void a(AppInterface paramAppInterface, Class paramClass, int paramInt1, String paramString, int paramInt2)
-  {
-    a(paramAppInterface, paramClass, paramInt1, paramString, paramInt2, "");
-  }
-  
-  public static void a(AppInterface paramAppInterface, Class paramClass, int paramInt1, String paramString1, int paramInt2, String paramString2)
-  {
-    if (paramClass == null) {
-      return;
-    }
-    int i = a.size();
-    if (i > 0)
-    {
-      i -= 1;
-      if (i >= 0)
-      {
-        bdmw localbdmw = (bdmw)a.get(i);
-        if (localbdmw.jdField_a_of_type_JavaLangClass == paramClass)
-        {
-          if (!(paramAppInterface instanceof QQAppInterface)) {
-            break label123;
-          }
-          bdll.b((QQAppInterface)paramAppInterface, "CliOper", "", "", localbdmw.jdField_a_of_type_JavaLangString, localbdmw.jdField_a_of_type_JavaLangString, localbdmw.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localbdmw.b), "", "");
-        }
-        for (;;)
-        {
-          a.remove(i);
-          i -= 1;
-          break;
-          label123:
-          if (paramAppInterface != null) {
-            paramAppInterface.reportClickEvent("CliOper", "", "", localbdmw.jdField_a_of_type_JavaLangString, localbdmw.jdField_a_of_type_JavaLangString, localbdmw.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localbdmw.b), "", "");
-          } else {
-            bdll.b(null, "CliOper", "", "", localbdmw.jdField_a_of_type_JavaLangString, localbdmw.jdField_a_of_type_JavaLangString, localbdmw.jdField_a_of_type_Int, 0, paramString2, Long.toString(SystemClock.elapsedRealtime() - localbdmw.b), "", "");
-          }
-        }
+        WebSsoBody.WebSsoRequestBody localWebSsoRequestBody;
+        paramString.printStackTrace();
       }
     }
-    paramAppInterface = new bdmw();
-    paramAppInterface.jdField_a_of_type_JavaLangClass = paramClass;
-    paramAppInterface.jdField_a_of_type_Long = paramInt1;
-    paramAppInterface.b = SystemClock.elapsedRealtime();
-    paramAppInterface.jdField_a_of_type_JavaLangString = paramString1;
-    paramAppInterface.jdField_a_of_type_Int = paramInt2;
-    a.add(paramAppInterface);
-  }
-  
-  public static void a(Class<?> paramClass, int paramInt1, int paramInt2, String paramString)
-  {
-    if ((paramClass == null) || (paramString == null)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, localJSONObject.toString());
     }
-    if (paramString.contains("/qunactivity/")) {}
-    for (String str = "0X8004EC8";; str = null)
-    {
-      if (paramString.contains("/hotchat/"))
-      {
-        str = "0X8004410";
-        paramInt2 = 2;
-      }
-      if (str == null) {
-        break;
-      }
-      a(null, paramClass, paramInt1, str, paramInt2);
-      return;
-    }
+    paramString = new NewIntent(BaseApplicationImpl.getApplication().getApplicationContext(), nma.class);
+    paramString.putExtra("cmd", "MQUpdateSvc_com_qq_buluo.web.shortvideo_feeds");
+    localWebSsoRequestBody = new WebSsoBody.WebSsoRequestBody();
+    localWebSsoRequestBody.type.set(0);
+    localWebSsoRequestBody.data.set(localJSONObject.toString());
+    paramString.putExtra("data", localWebSsoRequestBody.toByteArray());
+    paramString.setObserver(new bdmw(parambdmx));
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramString);
   }
 }
 

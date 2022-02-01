@@ -1,14 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
+import rx.Observable;
+import rx.functions.Func1;
 
-class vdx
-  implements DialogInterface.OnClickListener
+public class vdx
+  implements Func1<Drawable, Bitmap>
 {
-  vdx(vdr paramvdr) {}
+  public vdx(RoundImageView paramRoundImageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Bitmap a(Drawable paramDrawable)
   {
-    paramDialogInterface.dismiss();
+    paramDrawable = RoundImageView.a(this.a, paramDrawable);
+    if (paramDrawable == null) {
+      Observable.error(new Throwable("bitmap is null"));
+    }
+    return paramDrawable;
   }
 }
 

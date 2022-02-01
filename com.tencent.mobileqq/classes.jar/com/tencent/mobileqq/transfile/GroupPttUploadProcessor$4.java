@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
-import betz;
-
-public class GroupPttUploadProcessor$4
+class GroupPttUploadProcessor$4
   implements Runnable
 {
-  public GroupPttUploadProcessor$4(betz parambetz) {}
+  GroupPttUploadProcessor$4(GroupPttUploadProcessor paramGroupPttUploadProcessor) {}
   
   public void run()
   {
-    this.this$0.s();
+    this.this$0.inter_retry();
   }
 }
 

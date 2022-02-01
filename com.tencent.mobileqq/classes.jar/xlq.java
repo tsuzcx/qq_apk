@@ -1,29 +1,16 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.1;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.2;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
-public final class xlq
-  implements TVK_ICacheMgr.IPreloadCallback
+public class xlq
 {
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public static boolean a(QQUserUIItem paramQQUserUIItem)
   {
-    synchronized ()
-    {
-      xlu localxlu = xlo.a();
-      xlo.a().post(new TVKPreloader.2.2(this, localxlu, paramString1, paramInt, paramString2));
-      return;
-    }
+    return (paramQQUserUIItem != null) && (paramQQUserUIItem.isVip()) && (!paramQQUserUIItem.isMe()) && (!paramQQUserUIItem.isFriend()) && (!paramQQUserUIItem.isSubscribe());
   }
   
-  public void onPreLoadSucess(String arg1, String paramString2)
+  public static boolean a(String paramString)
   {
-    synchronized ()
-    {
-      paramString2 = xlo.a();
-      xlo.a().post(new TVKPreloader.2.1(this, paramString2));
-      return;
-    }
+    return (!TextUtils.isEmpty(paramString)) && (!TextUtils.equals("0_1000", paramString));
   }
 }
 

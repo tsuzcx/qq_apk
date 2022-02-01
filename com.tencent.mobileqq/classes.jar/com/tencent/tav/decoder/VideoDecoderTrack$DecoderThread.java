@@ -1,6 +1,7 @@
 package com.tencent.tav.decoder;
 
 import com.tencent.tav.coremedia.CMSampleBuffer;
+import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 
 class VideoDecoderTrack$DecoderThread
@@ -15,24 +16,24 @@ class VideoDecoderTrack$DecoderThread
   
   private void doActionInDecoderLock()
   {
-    if (VideoDecoderTrack.access$1600(this.this$0) == null) {}
+    if (VideoDecoderTrack.access$1700(this.this$0) == null) {}
     do
     {
       return;
-      if (VideoDecoderTrack.access$1700(this.this$0) == CMTime.CMTimeInvalid)
+      if (VideoDecoderTrack.access$1800(this.this$0).isInvalid())
       {
-        VideoDecoderTrack.access$1800(this.this$0, "DecoderThread doAction: CMTime.CMTimeZero");
-        VideoDecoderTrack.access$1602(this.this$0, VideoDecoderTrack.access$1900(this.this$0, CMTime.CMTimeZero, true));
+        VideoDecoderTrack.access$1900(this.this$0, "DecoderThread doAction: CMTime.CMTimeZero");
+        VideoDecoderTrack.access$1702(this.this$0, VideoDecoderTrack.access$2000(this.this$0, CMTime.CMTimeZero, true));
         return;
       }
-    } while (VideoDecoderTrack.access$1700(this.this$0).smallThan(CMTime.CMTimeZero));
-    VideoDecoderTrack.access$1800(this.this$0, "DecoderThread doAction: lastSampleTime.add(frameDuration) ");
-    VideoDecoderTrack.access$1602(this.this$0, VideoDecoderTrack.access$1900(this.this$0, VideoDecoderTrack.access$1600(this.this$0).getTime(), true));
+    } while (VideoDecoderTrack.access$1800(this.this$0).getStateCode() < 0L);
+    VideoDecoderTrack.access$1900(this.this$0, "DecoderThread doAction: lastSampleTime.add(frameDuration) ");
+    VideoDecoderTrack.access$1702(this.this$0, VideoDecoderTrack.access$2000(this.this$0, VideoDecoderTrack.access$1700(this.this$0).getTime(), true));
   }
   
   protected void doAction()
   {
-    synchronized (VideoDecoderTrack.access$1500(this.this$0))
+    synchronized (VideoDecoderTrack.access$1600(this.this$0))
     {
       doActionInDecoderLock();
       return;

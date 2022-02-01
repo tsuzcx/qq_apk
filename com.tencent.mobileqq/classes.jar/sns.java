@@ -1,23 +1,25 @@
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.26.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup.6.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup.6.2;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class sns
-  implements InvocationHandler
+  implements pke
 {
-  public sns(FastWebActivity.26.1 param1) {}
+  public sns(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public void a(MessageRecord paramMessageRecord) {}
+  
+  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
   {
-    this.a.a.a.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    FastWebActivity.a(this.a.a.a).setVisibility(8);
-    QLog.d("FastWebActivity", 1, "open web page, set activity transparent");
-    return null;
+    this.a.a().runOnUiThread(new ReadInJoyProteusFamilyListViewGroup.6.2(this));
+  }
+  
+  public void b(MessageRecord paramMessageRecord)
+  {
+    this.a.a().runOnUiThread(new ReadInJoyProteusFamilyListViewGroup.6.1(this));
   }
 }
 

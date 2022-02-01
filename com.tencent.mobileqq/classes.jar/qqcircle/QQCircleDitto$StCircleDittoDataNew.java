@@ -8,8 +8,9 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 public final class QQCircleDitto$StCircleDittoDataNew
   extends MessageMicro<StCircleDittoDataNew>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34 }, new String[] { "itemContainter", "singlePicBanner", "dividingLine", "multiItemContainter" }, new Object[] { null, null, null, null }, StCircleDittoDataNew.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42 }, new String[] { "itemContainter", "singlePicBanner", "dividingLine", "multiItemContainter", "flipCard" }, new Object[] { null, null, null, null, null }, StCircleDittoDataNew.class);
   public QQCircleDitto.StDividingLine dividingLine = new QQCircleDitto.StDividingLine();
+  public QQCircleDitto.StFlipCard flipCard = new QQCircleDitto.StFlipCard();
   public QQCircleDitto.StItemContainer itemContainter = new QQCircleDitto.StItemContainer();
   public final PBRepeatMessageField<QQCircleDitto.StItemContainer> multiItemContainter = PBField.initRepeatMessage(QQCircleDitto.StItemContainer.class);
   public QQCircleDitto.StSinglePicBanner singlePicBanner = new QQCircleDitto.StSinglePicBanner();

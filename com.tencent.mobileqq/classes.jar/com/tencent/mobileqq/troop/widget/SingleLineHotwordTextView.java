@@ -8,8 +8,8 @@ import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import auog;
-import bguq;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -104,7 +104,7 @@ public class SingleLineHotwordTextView
       return null;
     }
     paramString = new SpannableString(paramString);
-    if (bguq.a(paramArrayList)) {
+    if (TroopUtils.isArrayEmpty(paramArrayList)) {
       return paramString;
     }
     String str1 = paramString.toString().toLowerCase();
@@ -420,7 +420,7 @@ public class SingleLineHotwordTextView
     String str1;
     if (paramInt1 == 1)
     {
-      str1 = auog.a(str2);
+      str1 = FileUtil.getExtension(str2);
       if (!TextUtils.isEmpty(str1))
       {
         paramInt1 = str2.toLowerCase().lastIndexOf(str1.toLowerCase());
@@ -433,12 +433,12 @@ public class SingleLineHotwordTextView
           }
         }
         if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
-          break label273;
+          break label274;
         }
         str1 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
         this.jdField_c_of_type_Int = a(str1, str2, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int);
         if (this.jdField_c_of_type_Int != 3) {
-          break label278;
+          break label279;
         }
         this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "." + this.jdField_b_of_type_JavaLangString);
         this.jdField_b_of_type_JavaLangString = null;
@@ -450,10 +450,10 @@ public class SingleLineHotwordTextView
         QLog.d("SingleLineHotwordTextView", 2, "setContentType name = " + this.jdField_a_of_type_JavaLangString + ", extension = " + this.jdField_b_of_type_JavaLangString);
       }
       return;
-      label273:
+      label274:
       str1 = null;
       break;
-      label278:
+      label279:
       this.jdField_b_of_type_JavaLangString = a(this.jdField_b_of_type_JavaLangString, str1, this.jdField_a_of_type_Int, this.jdField_c_of_type_Int);
       if ((this.jdField_c_of_type_Int == 2) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (str1 != null) && (str1.length() > this.jdField_a_of_type_Int))
       {

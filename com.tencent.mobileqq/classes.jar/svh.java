@@ -1,64 +1,51 @@
-import android.content.Context;
-import android.content.res.AssetManager;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusRecommendItemData;
+import com.tencent.pts.core.PTSComposer;
+import com.tencent.pts.core.lite.DefaultPTSLiteEventListener;
 import com.tencent.qphone.base.util.QLog;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class svh
-  implements svi
+class svh
+  extends DefaultPTSLiteEventListener
 {
-  private AssetManager jdField_a_of_type_AndroidContentResAssetManager;
-  private String jdField_a_of_type_JavaLangString;
+  svh(svg paramsvg) {}
   
-  public svh(Context paramContext, String paramString)
+  public void onTapEventTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView, PTSComposer paramPTSComposer)
   {
-    this.jdField_a_of_type_AndroidContentResAssetManager = paramContext.getAssets();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public InputStream a(String paramString)
-  {
-    return this.jdField_a_of_type_AndroidContentResAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
-  }
-  
-  public List<String> a()
-  {
-    try
+    if (QLog.isColorLevel())
     {
-      localList = svr.a(this.jdField_a_of_type_AndroidContentResAssetManager, this.jdField_a_of_type_JavaLangString);
-      if (localList == null) {
-        break label28;
+      paramView = new StringBuilder();
+      paramView.append("identifier = ").append(paramString).append("\n");
+      if (paramHashMap != null)
+      {
+        Iterator localIterator = paramHashMap.entrySet().iterator();
+        while (localIterator.hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)localIterator.next();
+          paramView.append("dataSet [ ").append((String)localEntry.getKey()).append(" ] = ").append((String)localEntry.getValue()).append("\n");
+        }
       }
+      QLog.i("WebPtsLiteViewCreator", 2, "[onTapEventTriggered], " + paramView.toString());
     }
-    catch (Exception localException)
+    qmg.a.a(paramPTSComposer, paramHashMap);
+    if ((paramHashMap == null) || (TextUtils.isEmpty(paramString))) {}
+    do
     {
-      label28:
       do
       {
-        List localList;
-        QLog.d("ReadAssetFile", 1, "tryLoadTemplateFromAssets fileList size: ", localException);
-        arrayOfString = this.jdField_a_of_type_AndroidContentResAssetManager.list(this.jdField_a_of_type_JavaLangString);
-        localArrayList = new ArrayList();
-        localObject = localArrayList;
-      } while (arrayOfString == null);
-      j = arrayOfString.length;
-      i = 0;
-    }
-    return localList;
-    for (;;)
-    {
-      String[] arrayOfString;
-      ArrayList localArrayList;
-      int j;
-      int i;
-      Object localObject = localArrayList;
-      if (i >= j) {
-        break;
-      }
-      localArrayList.add(arrayOfString[i]);
-      i += 1;
-    }
+        return;
+        paramString = (BaseData)svg.a(this.a).get(paramString);
+      } while (!(paramString instanceof ProteusRecommendItemData));
+      paramString = (ProteusRecommendItemData)paramString;
+      swy.a("id_native_recommend_small_container", paramString, null);
+    } while (TextUtils.isEmpty((CharSequence)paramHashMap.get("jumpUrl")));
+    paramString = pay.a((String)paramHashMap.get("jumpUrl"), paramString.c);
+    pay.d(svg.a(this.a), paramString);
   }
 }
 

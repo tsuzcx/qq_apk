@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.config.struct;
 
-import arsk;
-import arsl;
+import aqmi;
+import aqmj;
 
 public class PicAndAdConf$1
   implements Runnable
 {
-  public PicAndAdConf$1(arsk paramarsk, arsl paramarsl) {}
+  public PicAndAdConf$1(aqmi paramaqmi, aqmj paramaqmj) {}
   
   public void run()
   {
-    this.this$0.c(this.a.b);
+    this.this$0.b(this.a.b);
   }
 }
 

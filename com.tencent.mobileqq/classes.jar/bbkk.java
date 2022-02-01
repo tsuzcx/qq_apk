@@ -1,38 +1,31 @@
+import com.tencent.mobileqq.data.CardProfile;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+
 public class bbkk
 {
-  public int a;
-  public long a;
-  public bddn a;
-  public String a;
-  public boolean a;
-  public long b;
-  public boolean b;
-  public long c;
-  
-  public bbkk()
+  public static ArrayList<CardProfile> a(List<CardProfile> paramList1, List<CardProfile> paramList2)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a(bbkk parambbkk)
-  {
-    if (parambbkk == null) {
-      throw new NullPointerException();
+    HashSet localHashSet = new HashSet();
+    ArrayList localArrayList = new ArrayList();
+    paramList1 = paramList1.iterator();
+    paramList2 = paramList2.iterator();
+    while (paramList1.hasNext())
+    {
+      CardProfile localCardProfile = (CardProfile)paramList1.next();
+      localHashSet.add(Long.valueOf(localCardProfile.lEctID));
+      localArrayList.add(localCardProfile);
     }
-    this.jdField_a_of_type_JavaLangString = parambbkk.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Bddn = parambbkk.jdField_a_of_type_Bddn;
-    this.jdField_a_of_type_Boolean = parambbkk.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Int = parambbkk.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Boolean = parambbkk.jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_Long = parambbkk.jdField_a_of_type_Long;
-    this.jdField_b_of_type_Long = parambbkk.jdField_b_of_type_Long;
-    this.c = parambbkk.c;
-  }
-  
-  public String toString()
-  {
-    return "AudioDecodeConfig=[audioFilePath:" + this.jdField_a_of_type_JavaLangString + " repeat:" + this.jdField_a_of_type_Boolean + " speedType:" + this.jdField_a_of_type_Int + " mMuteAudio:" + this.jdField_b_of_type_Boolean + " startTimeMs:" + this.jdField_a_of_type_Long + " endTimeMs:" + this.jdField_b_of_type_Long + " videoDuration:" + this.c + "]";
+    while (paramList2.hasNext())
+    {
+      paramList1 = (CardProfile)paramList2.next();
+      if (!localHashSet.contains(Long.valueOf(paramList1.lEctID))) {
+        localArrayList.add(paramList1);
+      }
+    }
+    return localArrayList;
   }
 }
 

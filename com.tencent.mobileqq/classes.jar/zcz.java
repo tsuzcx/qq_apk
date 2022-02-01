@@ -1,36 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 
-class zcz
-  implements View.OnTouchListener
+public class zcz
 {
-  private final int jdField_a_of_type_Int = 10;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  public int a;
+  public CertifiedAccountMeta.StFeed a;
+  public CertifiedAccountMeta.StUser a;
   
-  zcz(zcx paramzcx) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public zcz(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        return false;
-        this.b = ((int)f);
-        this.jdField_a_of_type_Boolean = false;
-        return false;
-      } while (Math.abs(f - this.b) <= 10.0F);
-      this.jdField_a_of_type_Boolean = true;
-      return false;
-    }
-    return this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public zcz(CertifiedAccountMeta.StUser paramStUser)
+  {
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = paramStUser;
+    this.jdField_a_of_type_Int = 1;
   }
 }
 

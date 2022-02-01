@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/idg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ng3" android:background="@drawable/di7" android:paddingLeft="2.0dip" android:paddingRight="7.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.richframework.part.block.BlockContainer android:id="@id/mzl" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="8.5dip" android:layout_marginRight="8.5dip" />
+    <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:id="@id/mr9" android:layout_width="36.0dip" android:layout_height="36.0dip" android:scaleType="centerCrop" />
+    <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/mrb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="7.0dip" android:maxWidth="100.0dip" android:maxLines="1" />
 </LinearLayout>

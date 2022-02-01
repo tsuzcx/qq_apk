@@ -1,16 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-
-class zbl
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface zbl<T extends zbk>
 {
-  zbl(zbj paramzbj) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.g();
-  }
+  public abstract void setPresenter(T paramT);
 }
 
 

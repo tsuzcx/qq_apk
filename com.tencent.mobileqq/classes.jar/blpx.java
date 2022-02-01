@@ -1,27 +1,23 @@
-import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
-public class blpx
+class blpx
+  implements Animation.AnimationListener
 {
-  public int a;
-  public View a;
-  public int b;
-  public int c;
-  public int d;
+  blpx(blpr paramblpr) {}
   
-  public void a()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.b = -1;
-    this.c = 0;
-    this.d = 0;
-    this.jdField_a_of_type_AndroidViewView = null;
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public String toString()
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[").append("menuType = ").append(this.jdField_a_of_type_Int).append(",").append("menuId = ").append(this.b).append(",").append("menuWidth = ").append(this.c).append(",").append("menuHeight = ").append(this.d).append(",").append("menuView = ").append(this.jdField_a_of_type_AndroidViewView).append("]");
-    return localStringBuilder.toString();
+    if ((this.a.a != null) && (blpr.b(this.a)))
+    {
+      this.a.a.setAlpha(1.0F);
+      this.a.a.setVisibility(0);
+    }
   }
 }
 

@@ -5,49 +5,60 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bofh;
-import borf;
+import android.util.Log;
+import blio;
+import bljy;
+import dov.com.qq.im.ae.download.AEResInfo;
 
 public class AECameraBroadcastReceiver
   extends BroadcastReceiver
 {
-  private bofh a;
+  private static final String TAG = "AECameraReceiver";
+  private blio captureUnit;
   
-  public AECameraBroadcastReceiver(bofh parambofh)
+  public AECameraBroadcastReceiver(blio paramblio)
   {
-    this.a = parambofh;
+    this.captureUnit = paramblio;
   }
   
-  private IntentFilter a()
+  private IntentFilter getBroadcastIntentFilter()
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
-    localIntentFilter.addAction(borf.jdField_b_of_type_Borf.jdField_b_of_type_JavaLangString);
-    localIntentFilter.addAction(borf.c.jdField_b_of_type_JavaLangString);
+    localIntentFilter.addAction(AEResInfo.AE_RES_BASE_PACKAGE.resPrefix);
+    localIntentFilter.addAction(AEResInfo.AE_RES_ADDITIONAL_PACKAGE.resPrefix);
     return localIntentFilter;
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    paramActivity.registerReceiver(this, a());
-  }
-  
-  public void b(Activity paramActivity)
-  {
-    paramActivity.unregisterReceiver(this);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramContext = this.a.a();
+    paramContext = this.captureUnit.a();
     if ((paramContext == null) || (paramContext.isFinishing())) {}
     do
     {
+      do
+      {
+        return;
+        paramContext = paramIntent.getAction();
+        if (!AEResInfo.AE_RES_ADDITIONAL_PACKAGE.resPrefix.equals(paramContext)) {
+          break;
+        }
+        boav.a = true;
+      } while (!(this.captureUnit instanceof bljy));
+      ((bljy)this.captureUnit).R();
       return;
-      paramContext = paramIntent.getAction();
-    } while (!borf.c.jdField_b_of_type_JavaLangString.equals(paramContext));
-    brhe.a = true;
-    this.a.q();
+    } while (!"tencent.av.v2q.StartVideoChat".equals(paramContext));
+    Log.d("AECameraReceiver", "onReceive: action = " + paramContext);
+  }
+  
+  public void registerSelf(Activity paramActivity)
+  {
+    paramActivity.registerReceiver(this, getBroadcastIntentFilter());
+  }
+  
+  public void unRegisterSelf(Activity paramActivity)
+  {
+    paramActivity.unregisterReceiver(this);
   }
 }
 

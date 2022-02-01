@@ -1,72 +1,45 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.HotPicFooter.1;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
 public class avua
-  implements avtf
 {
-  int jdField_a_of_type_Int = 1;
-  avty jdField_a_of_type_Avty;
-  public boolean a;
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public avua(HotPicPageView paramHotPicPageView, avty paramavty)
+  public avua(String paramString1, String paramString2, MsgBackupUserData paramMsgBackupUserData, int paramInt)
   {
-    this.jdField_a_of_type_Avty = paramavty;
-  }
-  
-  public RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new avue(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_AndroidContentContext).inflate(2131558613, paramViewGroup, false), null);
-  }
-  
-  public void a(int paramInt)
-  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public int a()
   {
-    StaggeredGridLayoutManager.LayoutParams localLayoutParams1 = null;
-    if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
-      localLayoutParams1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
-    }
-    StaggeredGridLayoutManager.LayoutParams localLayoutParams2 = localLayoutParams1;
-    if (localLayoutParams1 == null)
-    {
-      localLayoutParams2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
-      paramViewHolder.itemView.setLayoutParams(localLayoutParams2);
-    }
-    localLayoutParams2.setFullSpan(true);
-    paramInt = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_Int;
-    if ((!this.jdField_a_of_type_Boolean) && (paramInt != -20) && (this.jdField_a_of_type_Int == 1))
-    {
-      avtm.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramInt);
-      this.jdField_a_of_type_Boolean = true;
-    }
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      paramViewHolder.itemView.findViewById(2131368171).setVisibility(0);
-      paramViewHolder.itemView.findViewById(2131368172).setVisibility(4);
-      return;
-    }
-    if (HotPicPageView.b())
-    {
-      paramViewHolder.itemView.findViewById(2131368172).setVisibility(0);
-      paramViewHolder.itemView.findViewById(2131368171).setVisibility(8);
-      return;
-    }
-    ThreadManager.getUIHandler().post(new HotPicPageView.HotPicFooter.1(this, paramViewHolder));
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a(boolean paramBoolean)
+  public MsgBackupUserData a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("--MsgBackupConfirmQrRsp--");
+    localStringBuilder.append(",token:").append(this.jdField_a_of_type_JavaLangString).append(",encryptKey:").append(this.b).append(",userData:").append(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData).append(",bizType:").append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

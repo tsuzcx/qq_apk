@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.util.Xml;
-import apli;
-import aqfy;
+import aoev;
+import aozj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
@@ -17,7 +17,7 @@ import org.xmlpull.v1.XmlPullParser;
 public class ARScanStarFaceConfigInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARScanStarFaceConfigInfo> CREATOR = new apli();
+  public static final Parcelable.Creator<ARScanStarFaceConfigInfo> CREATOR = new aoev();
   static boolean a;
   static String b;
   public String a;
@@ -463,18 +463,18 @@ public class ARScanStarFaceConfigInfo
     //   185: invokevirtual 206	java/io/BufferedOutputStream:flush	()V
     //   188: aload 7
     //   190: aload 6
-    //   192: invokestatic 211	bhmi:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   192: invokestatic 212	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
     //   195: istore 4
     //   197: aload_1
     //   198: ifnull +7 -> 205
     //   201: aload_1
-    //   202: invokevirtual 212	java/io/BufferedOutputStream:close	()V
+    //   202: invokevirtual 213	java/io/BufferedOutputStream:close	()V
     //   205: iload 4
     //   207: istore_3
     //   208: aload_2
     //   209: ifnull -134 -> 75
     //   212: aload_2
-    //   213: invokevirtual 213	java/io/FileOutputStream:close	()V
+    //   213: invokevirtual 214	java/io/FileOutputStream:close	()V
     //   216: iload 4
     //   218: ireturn
     //   219: astore_0
@@ -484,7 +484,7 @@ public class ARScanStarFaceConfigInfo
     //   226: ireturn
     //   227: astore_0
     //   228: aload_0
-    //   229: invokevirtual 214	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   229: invokevirtual 215	java/io/UnsupportedEncodingException:printStackTrace	()V
     //   232: aload_1
     //   233: astore_0
     //   234: goto -106 -> 128
@@ -502,11 +502,11 @@ public class ARScanStarFaceConfigInfo
     //   255: aload_1
     //   256: ifnull +7 -> 263
     //   259: aload_1
-    //   260: invokevirtual 212	java/io/BufferedOutputStream:close	()V
+    //   260: invokevirtual 213	java/io/BufferedOutputStream:close	()V
     //   263: aload_0
     //   264: ifnull +7 -> 271
     //   267: aload_0
-    //   268: invokevirtual 213	java/io/FileOutputStream:close	()V
+    //   268: invokevirtual 214	java/io/FileOutputStream:close	()V
     //   271: iconst_0
     //   272: ireturn
     //   273: astore_1
@@ -525,11 +525,11 @@ public class ARScanStarFaceConfigInfo
     //   294: aload_1
     //   295: ifnull +7 -> 302
     //   298: aload_1
-    //   299: invokevirtual 212	java/io/BufferedOutputStream:close	()V
+    //   299: invokevirtual 213	java/io/BufferedOutputStream:close	()V
     //   302: aload_2
     //   303: ifnull +7 -> 310
     //   306: aload_2
-    //   307: invokevirtual 213	java/io/FileOutputStream:close	()V
+    //   307: invokevirtual 214	java/io/FileOutputStream:close	()V
     //   310: aload_0
     //   311: athrow
     //   312: astore_1
@@ -656,9 +656,9 @@ public class ARScanStarFaceConfigInfo
             } else if (localNumberFormatException.equalsIgnoreCase("adImgUrl")) {
               ((ARScanStarFaceActInfo)localObject).f = localException.nextText();
             } else if (localNumberFormatException.equalsIgnoreCase("beginTime")) {
-              ((ARScanStarFaceActInfo)localObject).jdField_a_of_type_Long = aqfy.a(localException.nextText());
+              ((ARScanStarFaceActInfo)localObject).jdField_a_of_type_Long = aozj.a(localException.nextText());
             } else if (localNumberFormatException.equalsIgnoreCase("endTime")) {
-              ((ARScanStarFaceActInfo)localObject).jdField_b_of_type_Long = aqfy.a(localException.nextText());
+              ((ARScanStarFaceActInfo)localObject).jdField_b_of_type_Long = aozj.a(localException.nextText());
             }
           }
           else if ((i == 3) && (localException.getName().equalsIgnoreCase("Activity")))

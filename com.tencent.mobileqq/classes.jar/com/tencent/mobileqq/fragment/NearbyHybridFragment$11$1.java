@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.fragment;
 
 import android.widget.LinearLayout;
-import avep;
+import atrp;
 
 public class NearbyHybridFragment$11$1
   implements Runnable
 {
-  public NearbyHybridFragment$11$1(avep paramavep) {}
+  public NearbyHybridFragment$11$1(atrp paramatrp) {}
   
   public void run()
   {

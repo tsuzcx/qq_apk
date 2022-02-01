@@ -1,18 +1,16 @@
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bllk
-  implements ContextMenu.ContextMenuInfo
+class bllk
+  implements View.OnClickListener
 {
-  public long a;
-  public View a;
-  public long b;
+  bllk(bllh parambllh) {}
   
-  public bllk(View paramView, long paramLong1, long paramLong2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
+    this.a.a.c();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

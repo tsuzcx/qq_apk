@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import antf;
-import apaw;
+import anuz;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -12,9 +12,9 @@ class RecentItemKandianMergeData$1
 {
   public void run()
   {
-    apaw localapaw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(antf.aA, 7220, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, "time", Long.valueOf(this.jdField_a_of_type_Long));
-    localapaw.saveRecentUser(this.this$0.mUser);
+    anuz localanuz = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().updateMsgFieldByUniseq(AppConstants.KANDIAN_MERGE_UIN, 7220, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, "time", Long.valueOf(this.jdField_a_of_type_Long));
+    localanuz.saveRecentUser(this.this$0.mUser);
   }
 }
 

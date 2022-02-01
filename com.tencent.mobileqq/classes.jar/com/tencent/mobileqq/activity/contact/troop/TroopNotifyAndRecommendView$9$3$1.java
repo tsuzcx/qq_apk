@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import ajqv;
-import antf;
+import ails;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -26,14 +26,14 @@ class TroopNotifyAndRecommendView$9$3$1
       {
         String str1 = "" + this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get();
         String str2 = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_name.get();
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView$9$3.a.a.a.a().c(str1, str2);
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView$9$3.a.a.a.getMsgHandler().c(str1, str2);
       }
     }
     if (this.jdField_a_of_type_Long != 0L) {}
     try
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView$9$3.a.a.a != null) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView$9$3.a.a.a.a().a(antf.N, 0, this.jdField_a_of_type_Long, this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.toByteArray());
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotifyAndRecommendView$9$3.a.a.a.getMessageFacade().updateMsgContentByUniseq(AppConstants.TROOP_SYSTEM_MSG_UIN, 0, this.jdField_a_of_type_Long, this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.toByteArray());
       }
       return;
     }

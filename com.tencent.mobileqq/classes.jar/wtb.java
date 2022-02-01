@@ -1,20 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-class wtb
-  implements woy<xcj, xeh>
+public class wtb
+  extends wtk<String>
 {
-  wtb(wta paramwta, long paramLong) {}
-  
-  public void a(@NonNull xcj paramxcj, @Nullable xeh paramxeh, @NonNull ErrorMessage paramErrorMessage)
+  public wtb(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    if (paramxeh != null)
-    {
-      this.jdField_a_of_type_Wta.b("qqstory_black_status", Integer.valueOf(paramxeh.b));
-      this.jdField_a_of_type_Wta.b("qqstory_black_status_update_interval", Integer.valueOf(paramxeh.c));
-      this.jdField_a_of_type_Wta.b("qqstory_black_status_last_update_time", Integer.valueOf((int)this.jdField_a_of_type_Long));
-    }
+    super(paramVideoViewVideoHolder, null);
+  }
+  
+  public void a(String paramString)
+  {
+    super.onNext(paramString);
+    VideoViewVideoHolder.a(this.a);
   }
 }
 

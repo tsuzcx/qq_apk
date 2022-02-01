@@ -1,19 +1,12 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent.ColorScreenLoader;
+import android.media.MediaFormat;
 
-public class bagd
-  implements ImageAssetDelegate
+public abstract interface bagd
 {
-  public bagd(ProfileColorScreenComponent.ColorScreenLoader paramColorScreenLoader) {}
+  public abstract void a();
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
-  {
-    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
-  }
+  public abstract void a(MediaFormat paramMediaFormat);
+  
+  public abstract void a(baga parambaga);
 }
 
 

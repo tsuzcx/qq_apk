@@ -12,19 +12,19 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import bfyp;
-import bfyq;
-import bfyy;
-import yuk;
-import zps;
+import behx;
+import behy;
+import beig;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import xvv;
 
 public class ArithResultView
   extends BaseScaleAndMoveBitmapView
 {
   public int a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private bfyp jdField_a_of_type_Bfyp;
-  private bfyy jdField_a_of_type_Bfyy;
+  private behx jdField_a_of_type_Behx;
+  private beig jdField_a_of_type_Beig;
   private int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   
@@ -45,17 +45,17 @@ public class ArithResultView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(zps.a(paramContext, 1.0F));
-    this.jdField_b_of_type_Int = zps.a(paramContext, 1.0F);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(UIUtils.dip2px(paramContext, 1.0F));
+    this.jdField_b_of_type_Int = UIUtils.dip2px(paramContext, 1.0F);
     this.jdField_a_of_type_Int = (this.jdField_b_of_type_Int * 5);
     try
     {
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130846202);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130846095);
       return;
     }
     catch (OutOfMemoryError paramContext)
     {
-      yuk.e("QQ.Troop.homework.ArithResultView", "create the mark bitmap out of memory:" + paramContext.toString());
+      xvv.e("QQ.Troop.homework.ArithResultView", "create the mark bitmap out of memory:" + paramContext.toString());
     }
   }
   
@@ -70,10 +70,10 @@ public class ArithResultView
     }
   }
   
-  private void a(bfyq parambfyq)
+  private void a(behy parambehy)
   {
-    if (this.jdField_a_of_type_Bfyy != null) {
-      this.jdField_a_of_type_Bfyy.a(parambfyq);
+    if (this.jdField_a_of_type_Beig != null) {
+      this.jdField_a_of_type_Beig.a(parambehy);
     }
   }
   
@@ -82,9 +82,9 @@ public class ArithResultView
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
     int i = 0;
-    if (i < this.jdField_a_of_type_Bfyp.a())
+    if (i < this.jdField_a_of_type_Behx.a())
     {
-      paramMotionEvent = this.jdField_a_of_type_Bfyp.a(i);
+      paramMotionEvent = this.jdField_a_of_type_Behx.a(i);
       if (paramMotionEvent.a) {}
       float f3;
       float f4;
@@ -112,22 +112,22 @@ public class ArithResultView
     paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
     paramCanvas.save();
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_Bfyp != null)
+    if (this.jdField_a_of_type_Behx != null)
     {
       int i = 0;
-      if (i < this.jdField_a_of_type_Bfyp.a())
+      if (i < this.jdField_a_of_type_Behx.a())
       {
-        bfyq localbfyq = this.jdField_a_of_type_Bfyp.a(i);
-        if (localbfyq.a) {}
+        behy localbehy = this.jdField_a_of_type_Behx.a(i);
+        if (localbehy.a) {}
         for (;;)
         {
           i += 1;
           break;
-          int j = (int)(localbfyq.jdField_b_of_type_Int + this.jdField_a_of_type_Float - this.jdField_b_of_type_Int);
-          int k = (int)(localbfyq.c + this.jdField_b_of_type_Float - this.jdField_b_of_type_Int);
-          int m = localbfyq.d;
+          int j = (int)(localbehy.jdField_b_of_type_Int + this.jdField_a_of_type_Float - this.jdField_b_of_type_Int);
+          int k = (int)(localbehy.c + this.jdField_b_of_type_Float - this.jdField_b_of_type_Int);
+          int m = localbehy.d;
           int n = this.jdField_b_of_type_Int;
-          int i1 = localbfyq.e;
+          int i1 = localbehy.e;
           a(j, k, m + n * 2, this.jdField_b_of_type_Int * 2 + i1, paramCanvas);
         }
       }
@@ -135,15 +135,15 @@ public class ArithResultView
     paramCanvas.restore();
   }
   
-  public void setData(bfyp parambfyp)
+  public void setData(behx parambehx)
   {
-    this.jdField_a_of_type_Bfyp = parambfyp;
+    this.jdField_a_of_type_Behx = parambehx;
     invalidate();
   }
   
-  public void setOnItemClickListener(bfyy parambfyy)
+  public void setOnItemClickListener(beig parambeig)
   {
-    this.jdField_a_of_type_Bfyy = parambfyy;
+    this.jdField_a_of_type_Beig = parambeig;
   }
 }
 

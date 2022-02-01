@@ -1,31 +1,25 @@
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import UserGrowth.stRedDotRsp;
 
-public abstract class uts<T>
-  extends blsy<T>
+class uts
+  implements uqy
 {
-  public WSVerticalPageFragment a;
-  public T a;
-  public uek<T> a;
+  uts(utr paramutr) {}
   
-  public uts(ViewGroup paramViewGroup, int paramInt1, int paramInt2, WSVerticalPageFragment paramWSVerticalPageFragment)
+  public void a(urj paramurj)
   {
-    super(paramViewGroup, paramInt1);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
-    this.jdField_a_of_type_Uek = a(paramInt2);
-  }
-  
-  public abstract FrameLayout a();
-  
-  public abstract uek<T> a(int paramInt);
-  
-  public abstract void a(int paramInt);
-  
-  public void a(T paramT)
-  {
-    super.a(paramT);
-    this.jdField_a_of_type_JavaLangObject = paramT;
+    if ((this.a.a() != null) && (paramurj != null) && (paramurj.a()) && (paramurj.a != null) && ((paramurj.a instanceof stRedDotRsp)))
+    {
+      paramurj = (stRedDotRsp)paramurj.a;
+      utr.a(this.a, paramurj.notificationReddot);
+      utr.b(this.a, paramurj.menu);
+      if (this.a.a() != null) {
+        ((uue)this.a.a()).a(paramurj);
+      }
+    }
+    while (this.a.a() == null) {
+      return;
+    }
+    ((uue)this.a.a()).a();
   }
 }
 

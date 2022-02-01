@@ -1,17 +1,11 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
-
 class ahif
-  extends ahkx
+  extends andd
 {
-  ahif(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahif(ahia paramahia) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  protected void onBatchTroopCardDefaultNick(boolean paramBoolean, Object paramObject)
   {
-    return new ahlh(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    ahia.a(this.a, paramBoolean, paramObject);
   }
 }
 

@@ -1,33 +1,70 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.open.base.MD5Utils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public abstract class alqb
-  implements alqd
+class alqb
+  extends bgod
 {
-  public int a;
-  public long a;
-  public bfoz a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c;
+  alqb(alpz paramalpz, File paramFile, alqc paramalqc) {}
   
-  public alqb()
+  public void onDone(bgoe parambgoe)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_b_of_type_Int = -35072;
-    this.jdField_a_of_type_Bfoz = new bfoz();
-  }
-  
-  @Nullable
-  public abstract Object a(int paramInt, bfoy parambfoy, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface);
-  
-  public boolean a()
-  {
-    return true;
+    super.onDone(parambgoe);
+    if (QLog.isColorLevel()) {
+      QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip task.getStatus:" + parambgoe.a());
+    }
+    if (3 == parambgoe.a())
+    {
+      if (this.jdField_a_of_type_JavaIoFile.exists()) {
+        try
+        {
+          parambgoe = MD5Utils.encodeFileHexStr(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+          if (QLog.isColorLevel()) {
+            QLog.d("rscContent_CmShowRscUpdateHandler", 2, " downloadAllZip onDone dstMd5:" + parambgoe + " result.mMd5:" + this.jdField_a_of_type_Alqc.d);
+          }
+          if (alpz.a(this.jdField_a_of_type_Alqc, parambgoe))
+          {
+            if (alpz.a(this.jdField_a_of_type_Alqc))
+            {
+              npo.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
+              if (QLog.isColorLevel()) {
+                QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip unZipFile ok file path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+              }
+            }
+            for (;;)
+            {
+              alpz.a(this.jdField_a_of_type_Alpz, this.jdField_a_of_type_Alqc.jdField_e_of_type_Int, this.jdField_a_of_type_Alqc);
+              return;
+              boolean bool = FileUtils.copyFile(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Alqc.b() + this.jdField_a_of_type_Alqc.jdField_e_of_type_JavaLangString);
+              QLog.i("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip no need unzip copy:" + bool);
+            }
+          }
+          QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip  file error path- no exist:" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+        }
+        catch (Exception parambgoe)
+        {
+          alpz.a(this.jdField_a_of_type_Alpz, this.jdField_a_of_type_Alqc.jdField_e_of_type_Int);
+          this.jdField_a_of_type_JavaIoFile.delete();
+          QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambgoe.getMessage());
+          return;
+          QLog.e("rscContent_CmShowRscUpdateHandler", 1, "dstMd5 != result.mMd5");
+          alpz.a(this.jdField_a_of_type_Alpz, this.jdField_a_of_type_Alqc.jdField_e_of_type_Int);
+          return;
+        }
+        catch (OutOfMemoryError parambgoe)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambgoe.getMessage());
+          }
+          this.jdField_a_of_type_JavaIoFile.delete();
+          return;
+        }
+      }
+      alpz.a(this.jdField_a_of_type_Alpz, this.jdField_a_of_type_Alqc.jdField_e_of_type_Int);
+      return;
+    }
+    QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip  file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " task.getStatus()->" + parambgoe.a());
   }
 }
 

@@ -1,22 +1,27 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelMediaTabView.1;
-import java.util.Comparator;
+import android.os.AsyncTask;
 
-public class atld
-  implements Comparator<Long>
+class atld
+  extends df
 {
-  public atld(QfileLocalFileDelMediaTabView.1 param1) {}
+  atld(atky paramatky) {}
   
-  public int a(Long paramLong1, Long paramLong2)
+  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
   {
-    if (paramLong1.equals(paramLong2)) {
-      return 1;
+    try
+    {
+      dc.a(this.a.a, paramAsyncTask, paramInt, new atle(this));
+      super.a(paramAsyncTask, paramInt);
+      return;
     }
-    return (int)(paramLong1.longValue() - paramLong2.longValue());
+    catch (Exception paramAsyncTask)
+    {
+      paramAsyncTask.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atld
  * JD-Core Version:    0.7.0.1
  */

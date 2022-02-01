@@ -1,6 +1,19 @@
-public abstract interface aabo
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin.PhoneInfo;
+
+public final class aabo
+  implements Parcelable.Creator<NewerGuidePlugin.PhoneInfo>
 {
-  public abstract void handleShareDataChange(String paramString, aabn paramaabn);
+  public NewerGuidePlugin.PhoneInfo a(Parcel paramParcel)
+  {
+    return new NewerGuidePlugin.PhoneInfo(paramParcel);
+  }
+  
+  public NewerGuidePlugin.PhoneInfo[] a(int paramInt)
+  {
+    return new NewerGuidePlugin.PhoneInfo[paramInt];
+  }
 }
 
 

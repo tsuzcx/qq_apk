@@ -1,19 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.pts.core.jni.PTSJsJniHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class qnh
-  implements View.OnClickListener
+  extends qlu
 {
   qnh(qng paramqng) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, List<Long> paramList, long paramLong)
   {
-    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
-    if (localsgf != null) {
-      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[onFeedsLoaded], channelID = ").append(paramInt).append("\n");
+    paramList = pkm.a().a(Integer.valueOf(paramInt), paramList);
+    if (QLog.isColorLevel())
+    {
+      paramInt = 0;
+      while (paramInt < paramList.size())
+      {
+        ((StringBuilder)localObject).append("articleInfo [").append(paramInt).append("]: ").append(paramList.get(paramInt)).append("\n");
+        paramInt += 1;
+      }
+      QLog.i("PTSLoadFeedsModule", 1, ((StringBuilder)localObject).toString());
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    localObject = new Object[1];
+    localObject[0] = qne.a(true, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i("PTSLoadFeedsModule", 1, "[onFeedsLoaded], args[0]" + localObject[0]);
+    }
+    QLog.i("PTSLoadFeedsModule", 1, "js callback ptr = " + paramLong);
+    PTSJsJniHandler.jsFunctionCallbackAsync(paramLong, (Object[])localObject);
   }
 }
 

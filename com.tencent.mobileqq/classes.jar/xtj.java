@@ -1,6 +1,20 @@
-public abstract interface xtj
+import com.tribe.async.dispatch.Dispatcher.Event;
+
+public class xtj
+  implements Dispatcher.Event
 {
-  public abstract boolean a(xtg paramxtg, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
+  public float a;
+  public float b;
+  public float c;
+  public float d;
+  
+  public xtj(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    this.d = paramFloat4;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.a = paramFloat1;
+  }
 }
 
 

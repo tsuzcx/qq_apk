@@ -20,6 +20,7 @@ public class Player
   public static final String TAG = "PlayerThreadMain";
   public static final int TYPE_PROGRESS = 2;
   public static final int TYPE_STATES = 1;
+  public static final int TYPE_VIEWPORT_UPDATE = 3;
   public static String time = "time";
   private Player.AVPlayerActionAtItemEnd actionAtItemEnd;
   private Asset asset;
@@ -43,6 +44,8 @@ public class Player
   private float rate;
   private volatile boolean released = false;
   private Player.PlayerStatus status;
+  @Nullable
+  private OnViewportUpdateListener viewportUpdateListener;
   private float volume;
   
   public Player(PlayerItem paramPlayerItem)
@@ -110,17 +113,17 @@ public class Player
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 106	com/tencent/tav/player/Player:asset	Lcom/tencent/tav/asset/Asset;
+    //   3: getfield 111	com/tencent/tav/player/Player:asset	Lcom/tencent/tav/asset/Asset;
     //   6: ifnonnull +11 -> 17
-    //   9: getstatic 149	com/tencent/tav/coremedia/CMTime:CMTimeZero	Lcom/tencent/tav/coremedia/CMTime;
+    //   9: getstatic 154	com/tencent/tav/coremedia/CMTime:CMTimeZero	Lcom/tencent/tav/coremedia/CMTime;
     //   12: astore_1
     //   13: aload_0
     //   14: monitorexit
     //   15: aload_1
     //   16: areturn
     //   17: aload_0
-    //   18: getfield 106	com/tencent/tav/player/Player:asset	Lcom/tencent/tav/asset/Asset;
-    //   21: invokevirtual 158	com/tencent/tav/asset/Asset:getDuration	()Lcom/tencent/tav/coremedia/CMTime;
+    //   18: getfield 111	com/tencent/tav/player/Player:asset	Lcom/tencent/tav/asset/Asset;
+    //   21: invokevirtual 163	com/tencent/tav/asset/Asset:getDuration	()Lcom/tencent/tav/coremedia/CMTime;
     //   24: astore_1
     //   25: goto -12 -> 13
     //   28: astore_1
@@ -253,8 +256,15 @@ public class Player
       if (this.mPlayerListener != null) {
         this.mPlayerListener.onStatusChanged(this.mPlayerStatus);
       }
-      if (this.mPlayerStatus == IPlayer.PlayerStatus.ERROR) {
+      if (this.mPlayerStatus == IPlayer.PlayerStatus.ERROR)
+      {
         this.errMsg = new ErrorMsg(-1, paramMessage.getErrorMsg());
+        continue;
+        if ((this.viewportUpdateListener != null) && ((paramMessage.obj instanceof CGRect)))
+        {
+          paramMessage = (CGRect)paramMessage.obj;
+          this.viewportUpdateListener.onViewportUpdate(paramMessage.clone());
+        }
       }
     }
   }
@@ -266,9 +276,9 @@ public class Player
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 76	com/tencent/tav/player/Player:mPlayerStatus	Lcom/tencent/tav/player/IPlayer$PlayerStatus;
+    //   3: getfield 81	com/tencent/tav/player/Player:mPlayerStatus	Lcom/tencent/tav/player/IPlayer$PlayerStatus;
     //   6: astore_2
-    //   7: getstatic 216	com/tencent/tav/player/IPlayer$PlayerStatus:PLAYING	Lcom/tencent/tav/player/IPlayer$PlayerStatus;
+    //   7: getstatic 220	com/tencent/tav/player/IPlayer$PlayerStatus:PLAYING	Lcom/tencent/tav/player/IPlayer$PlayerStatus;
     //   10: astore_3
     //   11: aload_2
     //   12: aload_3
@@ -320,7 +330,7 @@ public class Player
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 80	com/tencent/tav/player/Player:released	Z
+    //   3: getfield 85	com/tencent/tav/player/Player:released	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifeq +6 -> 14
@@ -328,10 +338,10 @@ public class Player
     //   12: monitorexit
     //   13: return
     //   14: aload_0
-    //   15: getfield 116	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
+    //   15: getfield 121	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
     //   18: iconst_3
-    //   19: ldc 128
-    //   21: invokevirtual 134	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/String;)V
+    //   19: ldc 133
+    //   21: invokevirtual 139	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/String;)V
     //   24: goto -13 -> 11
     //   27: astore_2
     //   28: aload_0
@@ -356,7 +366,7 @@ public class Player
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 80	com/tencent/tav/player/Player:released	Z
+    //   3: getfield 85	com/tencent/tav/player/Player:released	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifeq +6 -> 14
@@ -364,30 +374,30 @@ public class Player
     //   12: monitorexit
     //   13: return
     //   14: aload_0
-    //   15: getfield 241	com/tencent/tav/player/Player:mPlayRange	Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   15: getfield 245	com/tencent/tav/player/Player:mPlayRange	Lcom/tencent/tav/coremedia/CMTimeRange;
     //   18: ifnull +28 -> 46
     //   21: aload_0
-    //   22: getfield 241	com/tencent/tav/player/Player:mPlayRange	Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   22: getfield 245	com/tencent/tav/player/Player:mPlayRange	Lcom/tencent/tav/coremedia/CMTimeRange;
     //   25: aload_0
-    //   26: invokevirtual 289	com/tencent/tav/player/Player:currentTime	()Lcom/tencent/tav/coremedia/CMTime;
-    //   29: invokevirtual 292	com/tencent/tav/coremedia/CMTimeRange:containsTime	(Lcom/tencent/tav/coremedia/CMTime;)Z
+    //   26: invokevirtual 306	com/tencent/tav/player/Player:currentTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   29: invokevirtual 309	com/tencent/tav/coremedia/CMTimeRange:containsTime	(Lcom/tencent/tav/coremedia/CMTime;)Z
     //   32: ifne +14 -> 46
     //   35: aload_0
     //   36: aload_0
-    //   37: getfield 241	com/tencent/tav/player/Player:mPlayRange	Lcom/tencent/tav/coremedia/CMTimeRange;
-    //   40: invokevirtual 264	com/tencent/tav/coremedia/CMTimeRange:getStart	()Lcom/tencent/tav/coremedia/CMTime;
-    //   43: invokevirtual 267	com/tencent/tav/player/Player:seekToTime	(Lcom/tencent/tav/coremedia/CMTime;)V
+    //   37: getfield 245	com/tencent/tav/player/Player:mPlayRange	Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   40: invokevirtual 268	com/tencent/tav/coremedia/CMTimeRange:getStart	()Lcom/tencent/tav/coremedia/CMTime;
+    //   43: invokevirtual 271	com/tencent/tav/player/Player:seekToTime	(Lcom/tencent/tav/coremedia/CMTime;)V
     //   46: aload_0
-    //   47: getfield 116	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
+    //   47: getfield 121	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
     //   50: iconst_2
-    //   51: ldc 128
-    //   53: invokevirtual 134	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/String;)V
+    //   51: ldc 133
+    //   53: invokevirtual 139	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/String;)V
     //   56: aload_0
-    //   57: getfield 162	com/tencent/tav/player/Player:mAudioFocuser	Lcom/tencent/tav/player/AudioFocusHelper;
+    //   57: getfield 167	com/tencent/tav/player/Player:mAudioFocuser	Lcom/tencent/tav/player/AudioFocusHelper;
     //   60: ifnull -49 -> 11
     //   63: aload_0
-    //   64: getfield 162	com/tencent/tav/player/Player:mAudioFocuser	Lcom/tencent/tav/player/AudioFocusHelper;
-    //   67: invokevirtual 295	com/tencent/tav/player/AudioFocusHelper:requestFocus	()V
+    //   64: getfield 167	com/tencent/tav/player/Player:mAudioFocuser	Lcom/tencent/tav/player/AudioFocusHelper;
+    //   67: invokevirtual 312	com/tencent/tav/player/AudioFocusHelper:requestFocus	()V
     //   70: goto -59 -> 11
     //   73: astore_2
     //   74: aload_0
@@ -413,17 +423,17 @@ public class Player
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 116	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
+    //   3: getfield 121	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
     //   6: ifnonnull +11 -> 17
-    //   9: getstatic 149	com/tencent/tav/coremedia/CMTime:CMTimeZero	Lcom/tencent/tav/coremedia/CMTime;
+    //   9: getstatic 154	com/tencent/tav/coremedia/CMTime:CMTimeZero	Lcom/tencent/tav/coremedia/CMTime;
     //   12: astore_1
     //   13: aload_0
     //   14: monitorexit
     //   15: aload_1
     //   16: areturn
     //   17: aload_0
-    //   18: getfield 116	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
-    //   21: invokevirtual 152	com/tencent/tav/player/PlayerThread:getPosition	()Lcom/tencent/tav/coremedia/CMTime;
+    //   18: getfield 121	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
+    //   21: invokevirtual 157	com/tencent/tav/player/PlayerThread:getPosition	()Lcom/tencent/tav/coremedia/CMTime;
     //   24: astore_1
     //   25: goto -12 -> 13
     //   28: astore_1
@@ -597,6 +607,11 @@ public class Player
     }
   }
   
+  public void setViewportUpdateListener(OnViewportUpdateListener paramOnViewportUpdateListener)
+  {
+    this.viewportUpdateListener = paramOnViewportUpdateListener;
+  }
+  
   /* Error */
   public void setVolume(float paramFloat)
   {
@@ -604,7 +619,7 @@ public class Player
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 80	com/tencent/tav/player/Player:released	Z
+    //   3: getfield 85	com/tencent/tav/player/Player:released	Z
     //   6: istore_2
     //   7: iload_2
     //   8: ifeq +6 -> 14
@@ -612,12 +627,12 @@ public class Player
     //   12: monitorexit
     //   13: return
     //   14: aload_0
-    //   15: getfield 116	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
+    //   15: getfield 121	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
     //   18: bipush 7
     //   20: fload_1
-    //   21: invokestatic 368	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   24: ldc 128
-    //   26: invokevirtual 304	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/Object;Ljava/lang/String;)V
+    //   21: invokestatic 387	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   24: ldc 133
+    //   26: invokevirtual 321	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/Object;Ljava/lang/String;)V
     //   29: goto -18 -> 11
     //   32: astore_3
     //   33: aload_0
@@ -643,7 +658,7 @@ public class Player
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 80	com/tencent/tav/player/Player:released	Z
+    //   3: getfield 85	com/tencent/tav/player/Player:released	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifeq +6 -> 14
@@ -651,12 +666,12 @@ public class Player
     //   12: monitorexit
     //   13: return
     //   14: aload_0
-    //   15: getfield 116	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
+    //   15: getfield 121	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
     //   18: iconst_4
     //   19: iconst_1
-    //   20: invokestatic 374	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   23: ldc 128
-    //   25: invokevirtual 304	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/Object;Ljava/lang/String;)V
+    //   20: invokestatic 393	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   23: ldc 133
+    //   25: invokevirtual 321	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/Object;Ljava/lang/String;)V
     //   28: goto -17 -> 11
     //   31: astore_2
     //   32: aload_0
@@ -681,7 +696,7 @@ public class Player
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 80	com/tencent/tav/player/Player:released	Z
+    //   3: getfield 85	com/tencent/tav/player/Player:released	Z
     //   6: istore_3
     //   7: iload_3
     //   8: ifeq +6 -> 14
@@ -690,32 +705,32 @@ public class Player
     //   13: return
     //   14: aload_0
     //   15: aload_1
-    //   16: putfield 85	com/tencent/tav/player/Player:currentItem	Lcom/tencent/tav/player/PlayerItem;
+    //   16: putfield 90	com/tencent/tav/player/Player:currentItem	Lcom/tencent/tav/player/PlayerItem;
     //   19: aload_0
     //   20: aload_1
-    //   21: invokevirtual 104	com/tencent/tav/player/PlayerItem:getAsset	()Lcom/tencent/tav/asset/Asset;
-    //   24: putfield 106	com/tencent/tav/player/Player:asset	Lcom/tencent/tav/asset/Asset;
+    //   21: invokevirtual 109	com/tencent/tav/player/PlayerItem:getAsset	()Lcom/tencent/tav/asset/Asset;
+    //   24: putfield 111	com/tencent/tav/player/Player:asset	Lcom/tencent/tav/asset/Asset;
     //   27: aload_0
-    //   28: getfield 85	com/tencent/tav/player/Player:currentItem	Lcom/tencent/tav/player/PlayerItem;
-    //   31: invokevirtual 378	com/tencent/tav/player/PlayerItem:updateDecoderTrack	()V
+    //   28: getfield 90	com/tencent/tav/player/Player:currentItem	Lcom/tencent/tav/player/PlayerItem;
+    //   31: invokevirtual 397	com/tencent/tav/player/PlayerItem:updateDecoderTrack	()V
     //   34: aload_0
-    //   35: getfield 116	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
+    //   35: getfield 121	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
     //   38: aload_2
-    //   39: invokevirtual 333	com/tencent/tav/player/PlayerThread:updatePositionRightAway	(Lcom/tencent/tav/coremedia/CMTime;)V
+    //   39: invokevirtual 350	com/tencent/tav/player/PlayerThread:updatePositionRightAway	(Lcom/tencent/tav/coremedia/CMTime;)V
     //   42: aload_0
-    //   43: getfield 116	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
+    //   43: getfield 121	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
     //   46: bipush 11
-    //   48: new 380	com/tencent/tav/player/UpdateCompositionMessage
+    //   48: new 399	com/tencent/tav/player/UpdateCompositionMessage
     //   51: dup
     //   52: aload_1
     //   53: aload_0
-    //   54: getfield 125	com/tencent/tav/player/Player:onCompositionUpdateListener	Lcom/tencent/tav/player/OnCompositionUpdateListener;
-    //   57: invokespecial 383	com/tencent/tav/player/UpdateCompositionMessage:<init>	(Lcom/tencent/tav/player/PlayerItem;Lcom/tencent/tav/player/OnCompositionUpdateListener;)V
-    //   60: ldc_w 385
-    //   63: invokevirtual 304	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/Object;Ljava/lang/String;)V
+    //   54: getfield 130	com/tencent/tav/player/Player:onCompositionUpdateListener	Lcom/tencent/tav/player/OnCompositionUpdateListener;
+    //   57: invokespecial 402	com/tencent/tav/player/UpdateCompositionMessage:<init>	(Lcom/tencent/tav/player/PlayerItem;Lcom/tencent/tav/player/OnCompositionUpdateListener;)V
+    //   60: ldc_w 404
+    //   63: invokevirtual 321	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/Object;Ljava/lang/String;)V
     //   66: aload_0
-    //   67: getstatic 149	com/tencent/tav/coremedia/CMTime:CMTimeZero	Lcom/tencent/tav/coremedia/CMTime;
-    //   70: putfield 330	com/tencent/tav/player/Player:mLastSeekTargetTimeUs	Lcom/tencent/tav/coremedia/CMTime;
+    //   67: getstatic 154	com/tencent/tav/coremedia/CMTime:CMTimeZero	Lcom/tencent/tav/coremedia/CMTime;
+    //   70: putfield 347	com/tencent/tav/player/Player:mLastSeekTargetTimeUs	Lcom/tencent/tav/coremedia/CMTime;
     //   73: goto -62 -> 11
     //   76: astore_1
     //   77: aload_0
@@ -741,7 +756,7 @@ public class Player
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 80	com/tencent/tav/player/Player:released	Z
+    //   3: getfield 85	com/tencent/tav/player/Player:released	Z
     //   6: istore 4
     //   8: iload 4
     //   10: ifeq +6 -> 16
@@ -750,35 +765,35 @@ public class Player
     //   15: return
     //   16: aload_0
     //   17: aload_1
-    //   18: putfield 85	com/tencent/tav/player/Player:currentItem	Lcom/tencent/tav/player/PlayerItem;
+    //   18: putfield 90	com/tencent/tav/player/Player:currentItem	Lcom/tencent/tav/player/PlayerItem;
     //   21: aload_0
     //   22: aload_1
-    //   23: invokevirtual 104	com/tencent/tav/player/PlayerItem:getAsset	()Lcom/tencent/tav/asset/Asset;
-    //   26: putfield 106	com/tencent/tav/player/Player:asset	Lcom/tencent/tav/asset/Asset;
+    //   23: invokevirtual 109	com/tencent/tav/player/PlayerItem:getAsset	()Lcom/tencent/tav/asset/Asset;
+    //   26: putfield 111	com/tencent/tav/player/Player:asset	Lcom/tencent/tav/asset/Asset;
     //   29: aload_0
-    //   30: getfield 85	com/tencent/tav/player/Player:currentItem	Lcom/tencent/tav/player/PlayerItem;
-    //   33: invokevirtual 378	com/tencent/tav/player/PlayerItem:updateDecoderTrack	()V
+    //   30: getfield 90	com/tencent/tav/player/Player:currentItem	Lcom/tencent/tav/player/PlayerItem;
+    //   33: invokevirtual 397	com/tencent/tav/player/PlayerItem:updateDecoderTrack	()V
     //   36: aload_0
-    //   37: getfield 116	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
+    //   37: getfield 121	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
     //   40: aload_2
-    //   41: invokevirtual 333	com/tencent/tav/player/PlayerThread:updatePositionRightAway	(Lcom/tencent/tav/coremedia/CMTime;)V
+    //   41: invokevirtual 350	com/tencent/tav/player/PlayerThread:updatePositionRightAway	(Lcom/tencent/tav/coremedia/CMTime;)V
     //   44: aload_0
-    //   45: getfield 116	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
+    //   45: getfield 121	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
     //   48: bipush 11
-    //   50: new 380	com/tencent/tav/player/UpdateCompositionMessage
+    //   50: new 399	com/tencent/tav/player/UpdateCompositionMessage
     //   53: dup
     //   54: aload_1
-    //   55: new 389	com/tencent/tav/player/Player$1
+    //   55: new 408	com/tencent/tav/player/Player$1
     //   58: dup
     //   59: aload_0
     //   60: aload_3
-    //   61: invokespecial 392	com/tencent/tav/player/Player$1:<init>	(Lcom/tencent/tav/player/Player;Lcom/tencent/tav/player/OnCompositionUpdateListener;)V
-    //   64: invokespecial 383	com/tencent/tav/player/UpdateCompositionMessage:<init>	(Lcom/tencent/tav/player/PlayerItem;Lcom/tencent/tav/player/OnCompositionUpdateListener;)V
-    //   67: ldc_w 385
-    //   70: invokevirtual 304	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/Object;Ljava/lang/String;)V
+    //   61: invokespecial 411	com/tencent/tav/player/Player$1:<init>	(Lcom/tencent/tav/player/Player;Lcom/tencent/tav/player/OnCompositionUpdateListener;)V
+    //   64: invokespecial 402	com/tencent/tav/player/UpdateCompositionMessage:<init>	(Lcom/tencent/tav/player/PlayerItem;Lcom/tencent/tav/player/OnCompositionUpdateListener;)V
+    //   67: ldc_w 404
+    //   70: invokevirtual 321	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/Object;Ljava/lang/String;)V
     //   73: aload_0
-    //   74: getstatic 149	com/tencent/tav/coremedia/CMTime:CMTimeZero	Lcom/tencent/tav/coremedia/CMTime;
-    //   77: putfield 330	com/tencent/tav/player/Player:mLastSeekTargetTimeUs	Lcom/tencent/tav/coremedia/CMTime;
+    //   74: getstatic 154	com/tencent/tav/coremedia/CMTime:CMTimeZero	Lcom/tencent/tav/coremedia/CMTime;
+    //   77: putfield 347	com/tencent/tav/player/Player:mLastSeekTargetTimeUs	Lcom/tencent/tav/coremedia/CMTime;
     //   80: goto -67 -> 13
     //   83: astore_1
     //   84: aload_0
@@ -805,7 +820,7 @@ public class Player
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 80	com/tencent/tav/player/Player:released	Z
+    //   3: getfield 85	com/tencent/tav/player/Player:released	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifeq +6 -> 14
@@ -813,10 +828,10 @@ public class Player
     //   12: monitorexit
     //   13: return
     //   14: aload_0
-    //   15: getfield 116	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
+    //   15: getfield 121	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
     //   18: bipush 20
-    //   20: ldc 128
-    //   22: invokevirtual 134	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/String;)V
+    //   20: ldc 133
+    //   22: invokevirtual 139	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/String;)V
     //   25: goto -14 -> 11
     //   28: astore_2
     //   29: aload_0
@@ -841,7 +856,7 @@ public class Player
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 80	com/tencent/tav/player/Player:released	Z
+    //   3: getfield 85	com/tencent/tav/player/Player:released	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifeq +6 -> 14
@@ -849,10 +864,10 @@ public class Player
     //   12: monitorexit
     //   13: return
     //   14: aload_0
-    //   15: getfield 116	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
+    //   15: getfield 121	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
     //   18: bipush 22
-    //   20: ldc 128
-    //   22: invokevirtual 134	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/String;)V
+    //   20: ldc 133
+    //   22: invokevirtual 139	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/String;)V
     //   25: goto -14 -> 11
     //   28: astore_2
     //   29: aload_0
@@ -877,7 +892,7 @@ public class Player
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 80	com/tencent/tav/player/Player:released	Z
+    //   3: getfield 85	com/tencent/tav/player/Player:released	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifeq +6 -> 14
@@ -885,10 +900,10 @@ public class Player
     //   12: monitorexit
     //   13: return
     //   14: aload_0
-    //   15: getfield 116	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
+    //   15: getfield 121	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
     //   18: bipush 23
-    //   20: ldc 128
-    //   22: invokevirtual 134	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/String;)V
+    //   20: ldc 133
+    //   22: invokevirtual 139	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/String;)V
     //   25: goto -14 -> 11
     //   28: astore_2
     //   29: aload_0
@@ -913,7 +928,7 @@ public class Player
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 80	com/tencent/tav/player/Player:released	Z
+    //   3: getfield 85	com/tencent/tav/player/Player:released	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifeq +6 -> 14
@@ -921,10 +936,10 @@ public class Player
     //   12: monitorexit
     //   13: return
     //   14: aload_0
-    //   15: getfield 116	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
+    //   15: getfield 121	com/tencent/tav/player/Player:mPlayThread	Lcom/tencent/tav/player/PlayerThread;
     //   18: bipush 10
-    //   20: ldc 128
-    //   22: invokevirtual 134	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/String;)V
+    //   20: ldc 133
+    //   22: invokevirtual 139	com/tencent/tav/player/PlayerThread:sendMessage	(ILjava/lang/String;)V
     //   25: goto -14 -> 11
     //   28: astore_2
     //   29: aload_0

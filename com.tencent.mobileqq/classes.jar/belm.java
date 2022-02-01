@@ -1,40 +1,21 @@
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.Button;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
 
 public class belm
+  implements Animation.AnimationListener
 {
-  char jdField_a_of_type_Char;
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString = "";
-  int b;
+  public belm(ReciteFragment paramReciteFragment, Button paramButton) {}
   
-  void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Char = '\000';
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
   }
   
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if (!(paramObject instanceof belm)) {
-        return false;
-      }
-      paramObject = (belm)paramObject;
-    } while ((this.jdField_a_of_type_Char == paramObject.jdField_a_of_type_Char) && (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b) && ((this.jdField_a_of_type_JavaLangString == paramObject.jdField_a_of_type_JavaLangString) || ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)))));
-    return false;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  @NonNull
-  public String toString()
-  {
-    return "[opcode=" + this.jdField_a_of_type_Char + ", chars=" + this.jdField_a_of_type_Int + ",lines=" + this.b + ", attribs=" + this.jdField_a_of_type_JavaLangString + "]";
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

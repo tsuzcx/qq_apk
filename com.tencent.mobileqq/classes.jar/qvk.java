@@ -1,18 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUGCVoice;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class qvk
-  implements Parcelable.Creator<ArticleInfo>
+public class qvk
+  implements View.OnClickListener
 {
-  public ArticleInfo a(Parcel paramParcel)
-  {
-    return new ArticleInfo(paramParcel);
-  }
+  public qvk(ComponentContentUGCVoice paramComponentContentUGCVoice) {}
   
-  public ArticleInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ArticleInfo[paramInt];
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if ((ComponentContentUGCVoice.a(this.a) != null) && (!TextUtils.isEmpty(ComponentContentUGCVoice.a(this.a).jdField_a_of_type_JavaLangString))) {
+      if (ComponentContentUGCVoice.a(this.a).jdField_a_of_type_Boolean)
+      {
+        odq.a(null, "", "0X8009CA4", "0X8009CA4", 0, 0, localQQAppInterface.getCurrentAccountUin(), ComponentContentUGCVoice.a(this.a).mFeedId + "", "2", "", false);
+        rry.a().a();
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      odq.a(null, "", "0X8009CA4", "0X8009CA4", 0, 0, localQQAppInterface.getCurrentAccountUin(), ComponentContentUGCVoice.a(this.a).mFeedId + "", "1", "", false);
+      rry.a().a(this.a, ComponentContentUGCVoice.a(this.a));
+      continue;
+      if (QLog.isColorLevel()) {
+        QLog.d(ComponentContentUGCVoice.jdField_a_of_type_JavaLangString, 2, "mUGCVoiceInfo or its voiceUrl is null");
+      }
+    }
   }
 }
 

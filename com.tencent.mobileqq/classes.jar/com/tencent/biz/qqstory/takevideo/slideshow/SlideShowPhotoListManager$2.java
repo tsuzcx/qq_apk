@@ -2,12 +2,12 @@ package com.tencent.biz.qqstory.takevideo.slideshow;
 
 import android.content.Context;
 import com.tencent.mobileqq.widget.QQToast;
-import zkg;
+import ylg;
 
 public class SlideShowPhotoListManager$2
   implements Runnable
 {
-  public SlideShowPhotoListManager$2(zkg paramzkg, Context paramContext, String paramString) {}
+  public SlideShowPhotoListManager$2(ylg paramylg, Context paramContext, String paramString) {}
   
   public void run()
   {

@@ -3,7 +3,6 @@ package com.tencent.mobileqq.activity.qwallet.emoj;
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
 import mqq.os.MqqHandler;
 
 class EmojiRedPackPreviewFragment$3
@@ -14,7 +13,6 @@ class EmojiRedPackPreviewFragment$3
   public void run()
   {
     MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    localMediaMetadataRetriever.setDataSource(EmojiRedPackPreviewFragment.access$100(this.this$0).videoMp4FilePath);
     Bitmap localBitmap = localMediaMetadataRetriever.getFrameAtTime(1L, 2);
     localMediaMetadataRetriever.release();
     ThreadManager.getUIHandler().post(new EmojiRedPackPreviewFragment.3.1(this, localBitmap));

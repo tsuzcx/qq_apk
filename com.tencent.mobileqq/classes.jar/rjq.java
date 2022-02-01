@@ -1,24 +1,39 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCAddAccountFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.pts.core.PTSComposer;
+import com.tencent.pts.core.lite.DefaultPTSLiteEventListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 class rjq
-  implements URLDrawable.URLDrawableListener
+  extends DefaultPTSLiteEventListener
 {
-  rjq(rjj paramrjj) {}
+  rjq(rjp paramrjp) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onTapEventTriggered(String paramString, HashMap<String, String> paramHashMap, View paramView, PTSComposer paramPTSComposer)
   {
-    rjj.b(this.a);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = bhmq.b(paramURLDrawable.getCurrDrawable());
-    rjj.a(this.a, paramURLDrawable, rjj.a(this.a).e);
+    qmg.a.a(paramPTSComposer, paramHashMap);
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("RIJUGCPopupPtsLiteBuilder", 1, "[onTapEventTriggered], identifier is empty.");
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (TextUtils.equals(paramString, "editPersonalProfile"))
+        {
+          RIJUGCAddAccountFragment.b(rjp.a(this.a));
+          RIJUGCAddAccountFragment.a(RIJUGCAddAccountFragment.c);
+          return;
+        }
+      } while (!TextUtils.equals(paramString, "useOriginalAccount"));
+      RIJUGCAddAccountFragment.a(rjp.a(this.a));
+      RIJUGCAddAccountFragment.a(RIJUGCAddAccountFragment.b);
+    } while (!(rjp.a(this.a) instanceof BaseActivity));
+    ((BaseActivity)rjp.a(this.a)).finish();
   }
 }
 

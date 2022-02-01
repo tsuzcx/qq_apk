@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
-import ayjq;
-import ayjs;
+import awwy;
+import awxa;
 import com.tencent.image.URLDrawable;
 
 public class PicBrowserImage$3
   implements Runnable
 {
-  public PicBrowserImage$3(ayjq paramayjq, URLDrawable paramURLDrawable, ayjs paramayjs, int paramInt) {}
+  public PicBrowserImage$3(awwy paramawwy, URLDrawable paramURLDrawable, awxa paramawxa, int paramInt) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 2)) {
-      this.jdField_a_of_type_Ayjs.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentImageURLDrawable.getProgress());
+      this.jdField_a_of_type_Awxa.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentImageURLDrawable.getProgress());
     }
   }
 }

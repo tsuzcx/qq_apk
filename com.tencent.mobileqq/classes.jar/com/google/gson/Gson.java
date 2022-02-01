@@ -583,7 +583,7 @@ public final class Gson
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.google.gson.Gson
  * JD-Core Version:    0.7.0.1
  */

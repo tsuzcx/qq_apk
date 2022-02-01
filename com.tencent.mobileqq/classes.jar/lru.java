@@ -1,15 +1,17 @@
-public abstract class lru
+import java.util.Comparator;
+
+class lru
+  implements Comparator<lrp>
 {
-  public int a;
-  protected final String a;
+  lru(lrs paramlrs) {}
   
-  public lru(String paramString)
+  public int a(lrp paramlrp1, lrp paramlrp2)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramlrp1.d() >= paramlrp2.d()) {
+      return 1;
+    }
+    return -1;
   }
-  
-  public abstract void a(int paramInt);
 }
 
 

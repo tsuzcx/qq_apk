@@ -1,20 +1,17 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class axkd
+final class axkd
   implements View.OnClickListener
 {
-  public axkd(MultiAIOFragment paramMultiAIOFragment) {}
+  axkd(FragmentActivity paramFragmentActivity, axki paramaxki, int paramInt) {}
   
   public void onClick(View paramView)
   {
-    TextView localTextView = (TextView)MultiAIOFragment.a(this.a).findViewById(2131380184);
-    axlf.a += 1;
-    localTextView.setText(anzj.a(2131705882) + axlf.a);
-    MultiAIOFragment.d(this.a);
+    axko.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_Axki.e, this.jdField_a_of_type_Axki.b, 60011);
+    axkk.b(this.jdField_a_of_type_Axki.f, this.jdField_a_of_type_Int);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

@@ -1,56 +1,45 @@
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akjj
-  implements bljm
+  implements View.OnClickListener
 {
-  akjj(akjc paramakjc) {}
+  akjj(akho paramakho, aiho paramaiho) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
-    }
-    if ((this.a.jdField_a_of_type_Akgd.getCount() <= 0) || (paramInt <= 0)) {}
-    do
+    bcef.b(akho.a(this.jdField_a_of_type_Akho).app, "CliOper", "", "", "0X8005B73", "0X8005B73", 0, 0, "", "", "", "");
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    Intent localIntent;
+    if (localBaseActivity != null)
     {
+      if (!URLUtil.isValidUrl(this.jdField_a_of_type_Aiho.a)) {
+        break label151;
+      }
+      localIntent = new Intent(localBaseActivity, QQBrowserActivity.class);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("url", this.jdField_a_of_type_Aiho.a);
+      localIntent.putExtra("hideRightButton", true);
+      localBaseActivity.startActivity(localIntent);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Akho.a(9, 0);
+      bcef.a(akho.a(this.jdField_a_of_type_Akho).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 5, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      paramAdapterView = (akjl)this.a.jdField_a_of_type_Akgd.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
+      label151:
+      localIntent = new Intent(localBaseActivity, PhoneUnityBindInfoActivity.class);
+      localIntent.putExtra("kSrouce", 0);
+      localBaseActivity.startActivity(localIntent);
     }
-    try
-    {
-      paramAdapterView = bfmb.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgData);
-      if (paramAdapterView == null) {
-        break label214;
-      }
-      paramAdapterView = (TroopLinkElement)paramAdapterView;
-    }
-    catch (Exception paramAdapterView)
-    {
-      for (;;)
-      {
-        paramAdapterView = null;
-        continue;
-        paramAdapterView = null;
-      }
-    }
-    if (paramAdapterView != null)
-    {
-      paramView = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramView.putExtra("url", paramAdapterView.url);
-      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    }
-    this.a.a(true);
   }
 }
 

@@ -1,88 +1,63 @@
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.util.Map;
+import java.util.Locale;
+import mqq.observer.WtloginObserver;
 
 public class azvu
-  extends WebViewPlugin
+  extends azvt
 {
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  protected static final String a;
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new azvv(this);
+  private boolean jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getIntent().getBooleanExtra("key_register_from_send_sms", false);
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private String b;
+  private String c = "";
+  private String d = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getIntent().getStringExtra("key_register_fail_paid_lh");
   
-  public azvu()
+  static
   {
-    this.mPluginNameSpace = "profileJS";
+    jdField_a_of_type_JavaLangString = azvu.class.getSimpleName();
   }
   
-  private boolean a(String[] paramArrayOfString)
+  public azvu(RegisterNewBaseActivity paramRegisterNewBaseActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(this.TAG, 2, "onAddTag");
+    super(paramRegisterNewBaseActivity);
+    if (this.c == null) {
+      this.c = "";
     }
-    if (this.jdField_a_of_type_AndroidOsBundle == null) {
-      this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    }
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("onTagChanged", true);
-    return true;
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  public void a() {}
+  
+  public void a(Intent paramIntent)
   {
-    if (paramLong == 8589934598L)
+    this.c = paramIntent.getStringExtra("key_register_smscode");
+    if (this.c == null) {
+      this.c = "";
+    }
+    this.d = paramIntent.getStringExtra("key_register_from_fail_pay_lh");
+    a(paramIntent.getStringExtra("key_register_nick"));
+  }
+  
+  public void a(String paramString)
+  {
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.TAG, 2, "handleEvent finish or destroy. fromProfile:" + this.jdField_a_of_type_Boolean);
+      if (QLog.isDevelopLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 4, String.format(Locale.getDefault(), "doAction nick: %s, unBindUin: %s, smsCode: %s", new Object[] { paramString, this.d, this.c }));
       }
-      if ((this.jdField_a_of_type_JavaLangString != null) && (!"".equals(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidOsBundle != null))
+      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.b(2131716064);
+      if (aych.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.app, this.c.getBytes(), paramString.getBytes(), this.d, this.jdField_a_of_type_MqqObserverWtloginObserver) != 0)
       {
-        paramString = new Intent();
-        paramString.setAction(this.jdField_a_of_type_JavaLangString);
-        if (this.jdField_a_of_type_AndroidOsBundle != null) {
-          paramString.putExtra("key_bundle_data", this.jdField_a_of_type_AndroidOsBundle);
-        }
-        this.mRuntime.a().sendBroadcast(paramString);
-        this.jdField_a_of_type_AndroidOsBundle = null;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          paramString = new Intent(this.mRuntime.a(), PersonalityLabelGalleryActivity.class);
-          paramString.putExtra("fromType", 3);
-          paramString.putExtra("uin", this.mRuntime.a().getCurrentAccountUin());
-          this.mRuntime.a().startActivity(paramString);
-        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.c();
+        this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.a(2131716113, 1);
       }
+      return;
     }
-    return false;
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("profileJS")) || (paramString3 == null)) {}
-    while ((this.mRuntime == null) || (this.mRuntime.a() == null)) {
-      return false;
-    }
-    if (paramString3.equals("onAddTag")) {
-      return a(paramVarArgs);
-    }
-    return true;
-  }
-  
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
-  {
-    super.onWebViewCreated(paramCustomWebView);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = this.mRuntime.a();
-    if (this.mRuntime.a().getIntent() != null)
+    catch (Exception paramString)
     {
-      this.jdField_a_of_type_JavaLangString = this.mRuntime.a().getIntent().getStringExtra("broadcastAction");
-      this.jdField_a_of_type_Boolean = this.mRuntime.a().getIntent().getBooleanExtra("fromProfile", this.jdField_a_of_type_Boolean);
+      paramString.printStackTrace();
     }
   }
 }

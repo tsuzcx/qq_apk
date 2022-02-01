@@ -1,75 +1,153 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.annotation.SuppressLint;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.qqreader.net.BaseCgiTask;
-import cooperation.qqreader.ui.ForceUserUpdateActivity;
+import com.tencent.common.app.ToolRuntimePeak;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.play.AEPlayShowMaterialManager;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+import java.util.HashMap;
 import mqq.app.AppRuntime;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class bmql
-  extends bmqd
 {
-  public bmql(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
+  @SuppressLint({"UseSparseArrays"})
+  private final HashMap<Integer, Object> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final bmqj[] jdField_a_of_type_ArrayOfBmqj = new bmqj[20];
   
-  public void a(bmqc parambmqc)
+  public static bmqj a(int paramInt)
   {
-    int j = 0;
-    i = 0;
-    parambmqc = parambmqc.a();
-    if ((parambmqc == null) || (parambmqc.length() == 0)) {
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: FetchTabConfigData response illegal: " + parambmqc);
+    return bmqn.a().c(paramInt);
+  }
+  
+  public static bmql a()
+  {
+    return bmqn.a();
+  }
+  
+  public static AppInterface a()
+  {
+    return (AppInterface)a();
+  }
+  
+  private static AppRuntime a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return localAppRuntime;
     }
-    for (;;)
+    return BaseApplicationImpl.getApplication().getRuntime().getAppRuntime("peak");
+  }
+  
+  private boolean a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMManager", 2, "check process: " + localAppRuntime);
+    }
+    return ((localAppRuntime instanceof QQAppInterface)) || ((localAppRuntime instanceof ToolRuntimePeak));
+  }
+  
+  public static bmqj b(int paramInt)
+  {
+    return bmqn.a().jdField_a_of_type_ArrayOfBmqj[paramInt];
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    if (i < this.jdField_a_of_type_ArrayOfBmqj.length)
     {
-      if (i == 0) {
-        ForceUserUpdateActivity.b(this.a, "拉取新书城配置失败，请检查网络重试");
-      }
-      return;
-      for (;;)
+      Object localObject1;
+      synchronized (this.jdField_a_of_type_ArrayOfBmqj)
       {
-        for (;;)
-        {
-          try
-          {
-            localObject = (JSONArray)parambmqc.get("tabList");
-            if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-            {
-              bmqw.d("ForceUserUpdateActivity", "onReceiveData: FetchTabConfigData succeed, length = " + ((JSONArray)localObject).length());
-              localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-              ForceUserUpdateActivity.a(this.a).getSharedPreferences("CGI_RESPONSE", 0).edit().putString("SP_TAB_CONFIG_DATA" + (String)localObject, parambmqc.toString()).apply();
-              bmqu.d(ForceUserUpdateActivity.a(this.a), true);
-            }
-          }
-          catch (Exception parambmqc)
-          {
-            Object localObject;
-            i = j;
-          }
-          try
-          {
-            ForceUserUpdateActivity.b(this.a);
-            i = 1;
-          }
-          catch (Exception parambmqc)
-          {
-            for (;;)
-            {
-              i = 1;
-            }
-          }
+        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(i))) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), new Object());
         }
-        ForceUserUpdateActivity.a(this.a, "onReceiveData: FetchTabConfigData empty: " + localObject);
-        i = 0;
+        localObject1 = this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
       }
-      ForceUserUpdateActivity.a(this.a, "onReceiveData: FetchTabConfigData parse failed: " + parambmqc.getMessage());
     }
   }
   
-  public void a(BaseCgiTask paramBaseCgiTask, String paramString)
+  public boolean a(int paramInt)
   {
-    ForceUserUpdateActivity.a(this.a, "onConnectionError: FetchTabConfigData error: " + paramString);
+    return this.jdField_a_of_type_ArrayOfBmqj[paramInt] != null;
+  }
+  
+  public bmqj c(int paramInt)
+  {
+    ??? = this.jdField_a_of_type_ArrayOfBmqj[paramInt];
+    Object localObject4 = ???;
+    Object localObject6;
+    if (??? == null) {
+      synchronized (this.jdField_a_of_type_ArrayOfBmqj)
+      {
+        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), new Object());
+        }
+        localObject6 = this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+      }
+    }
+    try
+    {
+      localObject4 = this.jdField_a_of_type_ArrayOfBmqj[paramInt];
+      if (localObject4 != null)
+      {
+        return localObject4;
+        localObject5 = finally;
+        throw localObject5;
+      }
+      if (!a()) {
+        throw new RuntimeException("invalid process");
+      }
+    }
+    finally {}
+    Object localObject3 = localObject5;
+    switch (paramInt)
+    {
+    default: 
+      localObject3 = localObject5;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ArrayOfBmqj[paramInt] = localObject3;
+      if (localObject3 != null)
+      {
+        ((bmqj)localObject3).onInit();
+        xvv.b("QIMManager", "onInit manager : %s", localObject3);
+      }
+      return localObject3;
+      localObject3 = new bmum();
+      continue;
+      localObject3 = new QIMMusicConfigManager();
+      continue;
+      localObject3 = new boba();
+      continue;
+      localObject3 = new bmua();
+      continue;
+      localObject3 = new bmrr();
+      continue;
+      localObject3 = new DynamicTextConfigManager();
+      continue;
+      localObject3 = new bmre();
+      continue;
+      localObject3 = new bmtm();
+      continue;
+      localObject3 = new bmug();
+      continue;
+      localObject3 = new blie();
+      continue;
+      localObject3 = new bmuq();
+      continue;
+      localObject3 = new bmsa();
+      continue;
+      localObject3 = new bnbu();
+      continue;
+      localObject3 = new bluy();
+      continue;
+      localObject3 = new AEPlayShowMaterialManager();
+    }
   }
 }
 

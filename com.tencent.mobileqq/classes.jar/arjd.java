@@ -1,72 +1,35 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import org.json.JSONObject;
 
-public class arjd
-  extends arac<arje>
+class arjd
+  implements MiniAppCmdInterface
 {
-  @NonNull
-  public arje a(int paramInt)
-  {
-    return new arje();
-  }
+  arjd(arjc paramarjc, arje paramarje) {}
   
-  @Nullable
-  public arje a(araj[] paramArrayOfaraj)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    if ((paramBoolean) && (paramJSONObject != null))
     {
-      arje localarje = arje.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("SlideShowStoryConfig", 2, "onParsed " + paramArrayOfaraj[0].a);
+      paramJSONObject = paramJSONObject.opt("data");
+      if ((paramJSONObject instanceof MiniAppRecommInfo))
+      {
+        arjc.a(this.jdField_a_of_type_Arjc, (MiniAppRecommInfo)paramJSONObject);
+        this.jdField_a_of_type_Arjc.a(arjc.a(this.jdField_a_of_type_Arjc));
+        if (this.jdField_a_of_type_Arje != null) {
+          this.jdField_a_of_type_Arje.a(true, arjc.a(this.jdField_a_of_type_Arjc));
+        }
       }
-      return localarje;
     }
-    return null;
-  }
-  
-  public void a(arje paramarje)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowStoryConfig", 2, new Object[] { paramarje });
+    while (this.jdField_a_of_type_Arje == null) {
+      return;
     }
-  }
-  
-  public Class<arje> clazz()
-  {
-    return arje.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowStoryConfig", 2, "onReqFailed");
-    }
-  }
-  
-  public int type()
-  {
-    return 362;
+    this.jdField_a_of_type_Arje.a(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arjd
  * JD-Core Version:    0.7.0.1
  */

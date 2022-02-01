@@ -36,7 +36,7 @@ class SuperPlayerMgr$WrapperListenerAdapter
   public void onCompletion(ISuperPlayer paramISuperPlayer)
   {
     if ((this.mMgrCallBack.getPlayer() instanceof SuperPlayerMgr)) {
-      SuperPlayerMgr.access$300((SuperPlayerMgr)this.mMgrCallBack.getPlayer());
+      SuperPlayerMgr.access$100((SuperPlayerMgr)this.mMgrCallBack.getPlayer());
     }
     this.mMgrCallBack.onCompletion(paramISuperPlayer);
   }
@@ -49,7 +49,7 @@ class SuperPlayerMgr$WrapperListenerAdapter
   public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
     if ((this.mMgrCallBack.getPlayer() instanceof SuperPlayerMgr)) {
-      SuperPlayerMgr.access$500((SuperPlayerMgr)this.mMgrCallBack.getPlayer(), paramISuperPlayer, paramInt1, paramInt2, paramInt3, paramString);
+      SuperPlayerMgr.access$300((SuperPlayerMgr)this.mMgrCallBack.getPlayer(), paramISuperPlayer, paramInt1, paramInt2, paramInt3, paramString);
     }
     return this.mMgrCallBack.onError(paramISuperPlayer, paramInt1, paramInt2, paramInt3, paramString);
   }
@@ -57,7 +57,7 @@ class SuperPlayerMgr$WrapperListenerAdapter
   public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
     if ((this.mMgrCallBack.getPlayer() instanceof SuperPlayerMgr)) {
-      SuperPlayerMgr.access$400((SuperPlayerMgr)this.mMgrCallBack.getPlayer(), paramISuperPlayer, paramInt, paramLong1, paramLong2, paramObject);
+      SuperPlayerMgr.access$200((SuperPlayerMgr)this.mMgrCallBack.getPlayer(), paramISuperPlayer, paramInt, paramLong1, paramLong2, paramObject);
     }
     return this.mMgrCallBack.onInfo(paramISuperPlayer, paramInt, paramLong1, paramLong2, paramObject);
   }
@@ -65,7 +65,7 @@ class SuperPlayerMgr$WrapperListenerAdapter
   public void onSeekComplete(ISuperPlayer paramISuperPlayer)
   {
     if ((this.mMgrCallBack.getPlayer() instanceof SuperPlayerMgr)) {
-      SuperPlayerMgr.access$600((SuperPlayerMgr)this.mMgrCallBack.getPlayer());
+      SuperPlayerMgr.access$400((SuperPlayerMgr)this.mMgrCallBack.getPlayer());
     }
     this.mMgrCallBack.onSeekComplete(paramISuperPlayer);
   }
@@ -88,7 +88,7 @@ class SuperPlayerMgr$WrapperListenerAdapter
   public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
   {
     if ((this.mMgrCallBack.getPlayer() instanceof SuperPlayerMgr)) {
-      SuperPlayerMgr.access$200((SuperPlayerMgr)this.mMgrCallBack.getPlayer());
+      SuperPlayerMgr.access$000((SuperPlayerMgr)this.mMgrCallBack.getPlayer());
     }
     this.mMgrCallBack.onVideoPrepared(paramISuperPlayer);
   }

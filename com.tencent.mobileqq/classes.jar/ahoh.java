@@ -1,20 +1,15 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqcircle.widgets.QCircleAvatarView;
-import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
+import java.util.List;
 
-class ahoh
-  extends agen
+public class ahoh
 {
-  public FrameLayout a;
-  public LinearLayout a;
-  public QCircleAvatarView a;
-  public QCircleFollowView a;
-  public View b;
-  public LinearLayout b;
-  public TextView b;
+  public List<String> a;
+  public List<ahof> b;
+  
+  public ahoh(List<String> paramList, List<ahof> paramList1)
+  {
+    this.a = paramList;
+    this.b = paramList1;
+  }
 }
 
 

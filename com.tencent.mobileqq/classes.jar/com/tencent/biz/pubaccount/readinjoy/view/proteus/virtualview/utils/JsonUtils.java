@@ -1,11 +1,34 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils;
 
 import android.text.TextUtils;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 public class JsonUtils
 {
+  public static Map<String, Object> covertJsonObjectToMap(Object paramObject)
+  {
+    if (!(paramObject instanceof JSONObject)) {
+      return null;
+    }
+    paramObject = (JSONObject)paramObject;
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = paramObject.keys();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      Object localObject = paramObject.opt(str);
+      if (localObject != null) {
+        localHashMap.put(str, localObject);
+      }
+    }
+    return localHashMap;
+  }
+  
   public static int getDynamicRateSize(double[] paramArrayOfDouble, Object paramObject)
   {
     if ((paramObject instanceof JSONArray))
@@ -38,6 +61,26 @@ public class JsonUtils
       }
     }
     return 0;
+  }
+  
+  public static Object getObjectFromJsonArray(Object paramObject, int paramInt)
+  {
+    if (!(paramObject instanceof JSONArray)) {}
+    do
+    {
+      return null;
+      paramObject = (JSONArray)paramObject;
+    } while (paramObject.length() <= paramInt);
+    try
+    {
+      paramObject = paramObject.get(paramInt);
+      return paramObject;
+    }
+    catch (Exception paramObject)
+    {
+      LogUtil.QLog.i("JsonUtils", 2, "parse json error", paramObject);
+    }
+    return null;
   }
   
   public static String getStringValue(Object paramObject, int paramInt)
@@ -73,7 +116,7 @@ public class JsonUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.JsonUtils
  * JD-Core Version:    0.7.0.1
  */

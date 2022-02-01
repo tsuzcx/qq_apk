@@ -1,18 +1,4 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-
-public class afeg
-  extends ayxl
-{
-  public afeg(PublicAccountListActivity paramPublicAccountListActivity) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (PublicAccountListActivity.a(this.a)) {
-      PublicAccountListActivity.a(this.a);
-    }
-  }
-}
+public class afeg {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

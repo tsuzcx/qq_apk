@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.NativeAd.view;
 
-import oaa;
+import obl;
 
 public class ReadInJoyNativeAdAppVideoView$2$1$1
   implements Runnable
 {
-  public ReadInJoyNativeAdAppVideoView$2$1$1(oaa paramoaa) {}
+  public ReadInJoyNativeAdAppVideoView$2$1$1(obl paramobl) {}
   
   public void run()
   {

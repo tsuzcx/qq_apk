@@ -1,17 +1,19 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
 
-public class avnm
-  implements View.OnTouchListener
+class avnm
+  implements DialogInterface.OnCancelListener
 {
-  public avnm(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  avnm(avnl paramavnl, BaseChatPie paramBaseChatPie) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    return QQGameFeedWebFragment.a(this.a).onTouchEvent(paramMotionEvent);
+    if (QLog.isColorLevel()) {
+      QLog.d("TempMsgManager", 2, "dialog cancel");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.finish(1);
   }
 }
 

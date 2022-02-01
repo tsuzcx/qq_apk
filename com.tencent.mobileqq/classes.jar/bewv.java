@@ -1,317 +1,351 @@
-import android.os.SystemClock;
+import android.graphics.Color;
 import android.text.TextUtils;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.config.HwServlet;
-import com.tencent.mobileqq.highway.openup.SessionInfo;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bewv
-  extends beru
 {
-  aocj jdField_a_of_type_Aocj = new bewx(this);
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private Transaction jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction;
   private String jdField_a_of_type_JavaLangString = "";
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private byte[] e;
+  private HashMap<Integer, bewx> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private TreeMap<Integer, Integer> jdField_a_of_type_JavaUtilTreeMap = new TreeMap();
+  private String jdField_b_of_type_JavaLangString = "";
+  private HashMap<Integer, bewu> jdField_b_of_type_JavaUtilHashMap = new HashMap();
+  private String c = "";
   
-  public bewv(bern parambern, beyg parambeyg)
+  public static bewv a(String paramString)
   {
-    super(parambern, parambeyg);
-    this.jdField_a_of_type_Bete.jdField_a_of_type_Berp = this;
-    this.jdField_a_of_type_Bete.jdField_a_of_type_ArrayOfByte = parambeyg.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  private void a(MessageForScribble paramMessageForScribble)
-  {
-    if (paramMessageForScribble != null)
-    {
-      paramMessageForScribble.prewrite();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessageForScribble.frienduin, paramMessageForScribble.istroop, paramMessageForScribble.uniseq, paramMessageForScribble.msgData);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberLevelMapConfig", 2, "content : " + paramString);
     }
-  }
-  
-  private void g()
-  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    HashMap localHashMap1 = new HashMap();
+    HashMap localHashMap2 = new HashMap();
+    TreeMap localTreeMap = new TreeMap();
+    String str2 = "";
+    String str1 = "";
+    ArrayList localArrayList = new ArrayList();
+    localObject3 = str1;
+    localObject1 = str2;
     try
     {
-      if (SessionInfo.getInstance(this.jdField_a_of_type_Beyg.b).getHttpconn_sig_session() != null)
+      JSONObject localJSONObject = new JSONObject(paramString);
+      localObject3 = str1;
+      localObject1 = str2;
+      paramString = localJSONObject.getJSONArray("grayTroopUins");
+      int i;
+      if (paramString != null)
       {
-        int i = SessionInfo.getInstance(this.jdField_a_of_type_Beyg.b).getHttpconn_sig_session().length;
-        this.jdField_a_of_type_ArrayOfByte = new byte[i];
-        System.arraycopy(SessionInfo.getInstance(this.jdField_a_of_type_Beyg.b).getHttpconn_sig_session(), 0, this.jdField_a_of_type_ArrayOfByte, 0, i);
+        localObject3 = str1;
+        localObject1 = str2;
+        if (paramString.length() > 0)
+        {
+          i = 0;
+          for (;;)
+          {
+            localObject3 = str1;
+            localObject1 = str2;
+            if (i >= paramString.length()) {
+              break;
+            }
+            localObject3 = str1;
+            localObject1 = str2;
+            localArrayList.add(Integer.valueOf(paramString.getInt(i)));
+            i += 1;
+          }
+        }
       }
-      if (this.jdField_a_of_type_ArrayOfByte == null) {
-        HwServlet.getConfig(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Beyg.b);
+      localObject3 = str1;
+      localObject1 = str2;
+      paramString = localJSONObject.getJSONArray("troopMemberLevelMap");
+      if (paramString != null)
+      {
+        localObject3 = str1;
+        localObject1 = str2;
+        if (paramString.length() > 0)
+        {
+          i = 0;
+          for (;;)
+          {
+            localObject3 = str1;
+            localObject1 = str2;
+            if (i >= paramString.length()) {
+              break;
+            }
+            localObject3 = str1;
+            localObject1 = str2;
+            localObject2 = paramString.getJSONObject(i);
+            localObject3 = str1;
+            localObject1 = str2;
+            localObject4 = new bewx(((JSONObject)localObject2).getInt("begin"), ((JSONObject)localObject2).getInt("end"), ((JSONObject)localObject2).getInt("rankid"), ((JSONObject)localObject2).getString("rankname"));
+            localObject3 = str1;
+            localObject1 = str2;
+            localHashMap1.put(Integer.valueOf(((JSONObject)localObject2).getInt("rankid")), localObject4);
+            i += 1;
+          }
+        }
       }
-      return;
+      localObject3 = str1;
+      localObject1 = str2;
+      paramString = localJSONObject.getJSONArray("titleBackgroundColor");
+      if (paramString != null)
+      {
+        localObject3 = str1;
+        localObject1 = str2;
+        if (paramString.length() > 0)
+        {
+          i = 0;
+          for (;;)
+          {
+            localObject3 = str1;
+            localObject1 = str2;
+            if (i >= paramString.length()) {
+              break;
+            }
+            localObject3 = str1;
+            localObject1 = str2;
+            localObject2 = paramString.getJSONObject(i);
+            localObject3 = str1;
+            localObject1 = str2;
+            localObject4 = new bewu(((JSONObject)localObject2).getInt("titleId"), ((JSONObject)localObject2).getString("start"), ((JSONObject)localObject2).getString("end"));
+            localObject3 = str1;
+            localObject1 = str2;
+            localHashMap2.put(Integer.valueOf(((JSONObject)localObject2).getInt("titleId")), localObject4);
+            i += 1;
+          }
+        }
+      }
+      localObject3 = str1;
+      localObject1 = str2;
+      paramString = localJSONObject.getJSONArray("oldLevelToNewLevelMap");
+      if (paramString != null)
+      {
+        localObject3 = str1;
+        localObject1 = str2;
+        if (paramString.length() > 0)
+        {
+          i = 0;
+          for (;;)
+          {
+            localObject3 = str1;
+            localObject1 = str2;
+            if (i >= paramString.length()) {
+              break;
+            }
+            localObject3 = str1;
+            localObject1 = str2;
+            localObject2 = paramString.getJSONObject(i);
+            localObject3 = str1;
+            localObject1 = str2;
+            localTreeMap.put(Integer.valueOf(((JSONObject)localObject2).getInt("old")), Integer.valueOf(((JSONObject)localObject2).getInt("new")));
+            i += 1;
+          }
+        }
+      }
+      localObject3 = str1;
+      localObject1 = str2;
+      Object localObject4 = localJSONObject.getJSONObject("onlyLevelBackgroundColor");
+      localObject2 = str1;
+      paramString = str2;
+      if (localObject4 != null)
+      {
+        localObject3 = str1;
+        localObject1 = str2;
+        paramString = ((JSONObject)localObject4).getString("start");
+        localObject3 = str1;
+        localObject1 = paramString;
+        localObject2 = ((JSONObject)localObject4).getString("end");
+      }
+      localObject3 = localObject2;
+      localObject1 = paramString;
+      str1 = localJSONObject.getString("newGroupMemberLevelJumpUrl");
+      localObject1 = str1;
+      if (localObject1 == null) {
+        break label756;
+      }
     }
-    finally {}
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+        Object localObject2 = localObject3;
+        paramString = "";
+        localObject3 = localObject1;
+        continue;
+        localObject1 = "";
+      }
+    }
+    localObject3 = paramString;
+    paramString = (String)localObject1;
+    localObject1 = new bewv();
+    ((bewv)localObject1).jdField_a_of_type_JavaUtilHashMap = localHashMap1;
+    ((bewv)localObject1).jdField_b_of_type_JavaUtilHashMap = localHashMap2;
+    ((bewv)localObject1).jdField_a_of_type_JavaUtilList = localArrayList;
+    ((bewv)localObject1).jdField_a_of_type_JavaUtilTreeMap = localTreeMap;
+    ((bewv)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject3);
+    ((bewv)localObject1).jdField_b_of_type_JavaLangString = ((String)localObject2);
+    ((bewv)localObject1).c = paramString;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberLevelMapConfig", 2, "levelMap.size : " + localHashMap1.size() + ",levelColorMap.size :" + localHashMap2.size() + ", tempGrayList.size :" + localArrayList.size());
+    }
+    return localObject1;
   }
   
-  private void h()
+  public int a(int paramInt)
   {
-    if (!f())
-    {
-      d("<BDH_LOG> sendMsg() do not send message, due to mIsCancel=true || mIsPause=true, current channel = " + this.w);
-      return;
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      return 0;
     }
-    MessageForScribble localMessageForScribble = (MessageForScribble)this.jdField_a_of_type_Beyg.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (localMessageForScribble != null)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    Object localObject;
+    do
     {
-      localMessageForScribble.combineFileUrl = this.jdField_a_of_type_JavaLangString;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localObject = localIterator.next();
+      localObject = (bewx)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+    } while ((((bewx)localObject).jdField_a_of_type_Int > paramInt) || (paramInt > ((bewx)localObject).b));
+    for (paramInt = ((bewx)localObject).c;; paramInt = 0) {
+      return paramInt;
+    }
+  }
+  
+  public String a()
+  {
+    return this.c;
+  }
+  
+  public String a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberLevelMapConfig", 2, "getRankNameByLevel levelMap is null");
+      }
+      return "";
+    }
+    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    Object localObject2;
+    do
+    {
+      if (!((Iterator)localObject1).hasNext()) {
+        break;
+      }
+      localObject2 = (Integer)((Iterator)localObject1).next();
+      localObject2 = (bewx)this.jdField_a_of_type_JavaUtilHashMap.get(localObject2);
+    } while ((localObject2 == null) || (((bewx)localObject2).jdField_a_of_type_Int > paramInt) || (((bewx)localObject2).b < paramInt));
+    for (localObject1 = ((bewx)localObject2).jdField_a_of_type_JavaLangString;; localObject1 = "")
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberLevelMapConfig", 2, "getRankNameByLevel strRankName = " + (String)localObject1);
+      }
+      return localObject1;
+    }
+  }
+  
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.c);
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberLevelMapConfig", 2, "isGrayTroop troopUin = " + paramString);
+    }
+    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilList == null))
+    {
       if (QLog.isColorLevel())
       {
-        QLog.d("ScribblePicUploadProcessor", 2, "mPicUrl: " + this.jdField_a_of_type_JavaLangString);
-        QLog.d("ScribblePicUploadProcessor", 2, "TestPicSend finish upload,currentTime = " + System.currentTimeMillis() + ",processor = " + this);
+        paramString = new StringBuilder().append("grayTroopUinList is null ? ");
+        if (this.jdField_a_of_type_JavaUtilList != null) {
+          break label96;
+        }
       }
-      this.c.a();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localMessageForScribble, this.jdField_a_of_type_Aocj);
-      QLog.i("SCRIBBLEMSG", 2, "!!!sendMessage uniseq:" + localMessageForScribble.uniseq);
-      return;
-    }
-    a(-1, "MessageForScribble IS NULL", "", this.jdField_b_of_type_Berr);
-    d();
-  }
-  
-  protected long a(long paramLong)
-  {
-    paramLong = this.q - paramLong;
-    if (!this.d) {}
-    for (paramLong = Math.min(paramLong, this.jdField_a_of_type_Bluw.a(BaseApplication.getContext(), this.q, this.s, -1));; paramLong = Math.min(paramLong, 14600L)) {
-      return Math.min(paramLong, 131072L);
-    }
-  }
-  
-  protected void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4)
-  {
-    if (paramLong1 != 0L) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 1, this.jdField_a_of_type_Bete.b, this.jdField_a_of_type_Beyg.jdField_a_of_type_Int, paramLong1);
-    }
-    if (paramLong2 != 0L) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 1, this.jdField_a_of_type_Bete.b, this.jdField_a_of_type_Beyg.jdField_a_of_type_Int, paramLong2);
-    }
-    if (paramLong3 != 0L) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 0, this.jdField_a_of_type_Bete.b, this.jdField_a_of_type_Beyg.jdField_a_of_type_Int, paramLong3);
-    }
-    if (paramLong4 != 0L) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.countFlow(true, 0, this.jdField_a_of_type_Bete.b, this.jdField_a_of_type_Beyg.jdField_a_of_type_Int, paramLong4);
-    }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if ((!paramBoolean) && (bewk.a(this.jdField_k_of_type_Int))) {}
-    while ((this.jdField_j_of_type_Boolean) || ((paramBoolean) && ((this.n & 0x2) > 0)) || ((!paramBoolean) && ((this.n & 0x1) > 0))) {
-      return;
-    }
-    int j = this.n;
-    int i;
-    long l;
-    String str;
-    if (paramBoolean)
-    {
-      i = 2;
-      this.n = (i | j);
-      this.jdField_l_of_type_Long = System.currentTimeMillis();
-      l = (System.nanoTime() - this.jdField_k_of_type_Long) / 1000000L;
-      HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-      if (this.jdField_a_of_type_ArrayOfByte != null) {
-        break label156;
-      }
-      str = "null";
-      label105:
-      localHashMap.put("param_sessionKey", str);
-      if (!paramBoolean) {
-        break label168;
-      }
-      bdmc.a(BaseApplication.getContext()).a(null, "scribble_upload", true, l, this.q, this.jdField_a_of_type_JavaUtilHashMap, "");
-    }
-    for (;;)
-    {
-      m();
-      return;
-      i = 1;
-      break;
-      label156:
-      str = bhvd.a(this.jdField_a_of_type_ArrayOfByte);
-      break label105;
-      label168:
-      if (this.jdField_k_of_type_Int != -9527) {
-        this.jdField_a_of_type_JavaUtilHashMap.remove("param_rspHeader");
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_FailCode", String.valueOf(this.jdField_k_of_type_Int));
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_errorDesc", this.jdField_j_of_type_JavaLangString);
-      this.jdField_a_of_type_JavaUtilHashMap.put("param_picSize", String.valueOf(this.q));
-      bdmc.a(BaseApplication.getContext()).a(null, "scribble_upload", false, l, this.q, this.jdField_a_of_type_JavaUtilHashMap, "");
-    }
-  }
-  
-  byte[] a(int paramInt1, int paramInt2)
-  {
-    return super.a(paramInt1, paramInt2);
-  }
-  
-  public void aL_()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "NearbyPeoplePhotoUploadProcessor.sendFile()");
-    }
-    this.jdField_b_of_type_Berr.a();
-    Object localObject = new beww(this, SystemClock.uptimeMillis());
-    this.jdField_a_of_type_Bete.jdField_c_of_type_Int = 41;
-    this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Bete.jdField_c_of_type_Int, this.jdField_a_of_type_Beyg.i, (int)this.r, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, (ITransactionCallback)localObject, this.jdField_a_of_type_Bete.jdField_a_of_type_ArrayOfByte);
-    int i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
-    localObject = HexUtil.bytes2HexStr(this.jdField_b_of_type_ArrayOfByte);
-    String str = HexUtil.bytes2HexStr(this.e);
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "<BDH_LOG> Transaction submit RetCode:" + i + " T_ID:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId() + " UniSeq:" + this.jdField_a_of_type_Beyg.jdField_a_of_type_Long + " MD51:" + (String)localObject + " MD52:" + str + " uuid:" + this.jdField_l_of_type_JavaLangString + " Path:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.filePath + " Cmd:" + this.jdField_a_of_type_Bete.jdField_c_of_type_Int);
-    }
-    if (i != 0)
-    {
-      a(i, "SubmitError.", "", this.jdField_b_of_type_Berr);
-      d();
-    }
-  }
-  
-  public void aN_()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    super.aN_();
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "ScriblePicUploadProcessor.start()");
-    }
-    g();
-    MessageForScribble localMessageForScribble = (MessageForScribble)this.jdField_a_of_type_Beyg.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (this.jdField_b_of_type_ArrayOfByte == null)
-    {
-      this.e = HexUtil.hexStr2Bytes(localMessageForScribble.combineFileMd5);
-      if (!h())
+      for (;;)
       {
-        d();
-        return;
+        QLog.d("TroopMemberLevelMapConfig", 2, bool1);
+        bool2 = false;
+        return bool2;
+        label96:
+        bool1 = false;
       }
-      localMessageForScribble.combineFileMd5 = HexUtil.bytes2HexStr(this.jdField_b_of_type_ArrayOfByte);
     }
-    if (this.jdField_a_of_type_ArrayOfByte != null)
+    paramString = paramString.substring(paramString.length() - 1);
+    int i = 0;
+    label114:
+    if (i < this.jdField_a_of_type_JavaUtilList.size()) {
+      if (!String.valueOf(this.jdField_a_of_type_JavaUtilList.get(i)).equals(paramString)) {}
+    }
+    for (bool1 = bool2;; bool1 = false)
     {
-      aL_();
-      return;
+      bool2 = bool1;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("TroopMemberLevelMapConfig", 2, "isGrayTroop isGrayTroop = " + bool1);
+      return bool1;
+      i += 1;
+      break label114;
     }
-    QLog.e("ScribblePicUploadProcessor", 2, "ScribblePicUploadProcessor get null BDHsession key.");
   }
   
-  public int b()
+  public int[] a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "ScribblePicUploadProcessor.resume()");
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {
+      return null;
     }
-    f();
-    aL_();
+    return new int[] { Color.parseColor(this.jdField_a_of_type_JavaLangString), Color.parseColor(this.jdField_b_of_type_JavaLangString) };
+  }
+  
+  public int[] a(int paramInt)
+  {
+    Object localObject = (bewu)this.jdField_b_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (localObject != null)
+    {
+      String str = ((bewu)localObject).jdField_a_of_type_JavaLangString;
+      localObject = ((bewu)localObject).jdField_b_of_type_JavaLangString;
+      return new int[] { Color.parseColor(str), Color.parseColor((String)localObject) };
+    }
+    return null;
+  }
+  
+  public int b(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilTreeMap == null) || (this.jdField_a_of_type_JavaUtilTreeMap.size() == 0)) {
+      return 0;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      int i = ((Integer)localEntry.getKey()).intValue();
+      int j = ((Integer)localEntry.getValue()).intValue();
+      if (paramInt == i) {
+        return j;
+      }
+    }
     return 0;
-  }
-  
-  public int c()
-  {
-    String str = this.jdField_a_of_type_Beyg.i;
-    if (TextUtils.isEmpty(str))
-    {
-      b(9302, a(new Exception("filePath null")));
-      d();
-      return -1;
-    }
-    File localFile = new File(str);
-    if (!localFile.exists())
-    {
-      b(9042, a(new Exception("sendFile not exist " + str)));
-      d();
-      return -1;
-    }
-    if (!localFile.canRead())
-    {
-      b(9070, a(new Exception("sendFile not readable " + this.jdField_a_of_type_Bete.jdField_c_of_type_JavaLangString)));
-      d();
-      return -1;
-    }
-    long l = localFile.length();
-    this.jdField_a_of_type_Bete.jdField_a_of_type_Long = l;
-    this.q = l;
-    if (l <= 0L)
-    {
-      b(9071, a(new Exception("file size 0 " + str)));
-      d();
-      return -1;
-    }
-    return super.c();
-  }
-  
-  void d()
-  {
-    super.d();
-    d(1005);
-    Object localObject = (MessageForScribble)this.jdField_a_of_type_Beyg.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (localObject != null) {
-      ((MessageForScribble)localObject).fileUploadStatus = 2;
-    }
-    a((MessageForScribble)localObject);
-    QLog.e("ScribblePicUploadProcessor", 2, "onError()---- errCode: " + this.jdField_k_of_type_Int + ", errDesc:" + this.jdField_j_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Beyg.jdField_a_of_type_Azrg != null)
-    {
-      localObject = new azrh();
-      ((azrh)localObject).jdField_a_of_type_Int = -1;
-      ((azrh)localObject).b = this.jdField_k_of_type_Int;
-      ((azrh)localObject).jdField_a_of_type_JavaLangString = this.jdField_j_of_type_JavaLangString;
-      this.jdField_a_of_type_Beyg.jdField_a_of_type_Azrg.b((azrh)localObject);
-    }
-  }
-  
-  protected void d(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, paramString);
-    }
-  }
-  
-  void e()
-  {
-    super.e();
-    d(1003);
-    Object localObject = (MessageForScribble)this.jdField_a_of_type_Beyg.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (localObject != null) {
-      ((MessageForScribble)localObject).fileUploadStatus = 1;
-    }
-    a((MessageForScribble)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.i("ScribblePicUploadProcessor", 2, "onSuccess().");
-    }
-    if (this.jdField_a_of_type_Beyg.jdField_a_of_type_Azrg != null)
-    {
-      localObject = new azrh();
-      ((azrh)localObject).jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Beyg.jdField_a_of_type_Azrg.b((azrh)localObject);
-    }
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().cancelTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bewv
  * JD-Core Version:    0.7.0.1
  */

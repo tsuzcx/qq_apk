@@ -1,27 +1,27 @@
-import org.json.JSONObject;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class arrw
+  implements View.OnClickListener
 {
-  public boolean a;
+  public arrw(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public static arrw a(String paramString)
+  public void onClick(View paramView)
   {
-    arrw localarrw = new arrw();
-    try
-    {
-      localarrw.a = new JSONObject(paramString).optBoolean("test_crash_enabled", false);
-      return localarrw;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
+    Intent localIntent = new Intent(this.a, MoveToGroupActivity.class).putExtra("friendUin", this.a.f).putExtra("mgid", (byte)this.a.l);
+    localIntent.putExtra("PARAM_EXECUTE_IMMEDIATELY", false);
+    this.a.startActivityForResult(localIntent, 100);
+    bcef.b(null, "CliOper", "", "", "0X80050F1", "0X80050F1", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arrw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.ark.vipreport;
 
-import aqfs;
-import aqft;
-import aqfu;
+import aozd;
+import aoze;
+import aozf;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 public final class ArkVipReporter$1
   implements Runnable
 {
-  public ArkVipReporter$1(String paramString, aqfu paramaqfu) {}
+  public ArkVipReporter$1(String paramString, aozf paramaozf) {}
   
   public void run()
   {
     synchronized ()
     {
-      aqfs localaqfs = (aqfs)aqft.a().get(this.jdField_a_of_type_JavaLangString);
-      if ((localaqfs != null) && (Math.abs(System.currentTimeMillis() - localaqfs.a) >= this.jdField_a_of_type_Aqfu.a))
+      aozd localaozd = (aozd)aoze.a().get(this.jdField_a_of_type_JavaLangString);
+      if ((localaozd != null) && (Math.abs(System.currentTimeMillis() - localaozd.a) >= this.jdField_a_of_type_Aozf.a))
       {
         QLog.i("ArkVipReporter", 1, "startSceneByEvent() find timeout scene and report:" + this.jdField_a_of_type_JavaLangString);
-        aqft.a(this.jdField_a_of_type_JavaLangString);
+        aoze.a(this.jdField_a_of_type_JavaLangString);
       }
       return;
     }

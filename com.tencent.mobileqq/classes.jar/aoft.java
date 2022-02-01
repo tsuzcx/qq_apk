@@ -1,35 +1,12 @@
-import android.os.Handler;
-import android.os.Message;
-
-public class aoft
-  implements anui
+class aoft
+  extends anyi
 {
-  private Handler a;
+  aoft(aofs paramaofs) {}
   
-  public aoft(Handler paramHandler)
+  public void a(aogo paramaogo)
   {
-    this.a = paramHandler;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    int i = 1;
-    if (this.a == null) {}
-    while ((paramInt != 1) && (paramInt != 0)) {
-      return;
-    }
-    Handler localHandler = this.a;
-    if (paramBoolean) {}
-    for (;;)
-    {
-      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
-      return;
-      i = 0;
+    if (aofs.a(this.a) != null) {
+      aofs.a(this.a).a(paramaogo);
     }
   }
 }

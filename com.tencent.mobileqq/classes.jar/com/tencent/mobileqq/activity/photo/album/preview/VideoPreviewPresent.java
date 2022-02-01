@@ -125,12 +125,12 @@ public class VideoPreviewPresent
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     Object localObject = paramViewGroup.getContext();
-    paramView = ((LayoutInflater)((Context)localObject).getSystemService("layout_inflater")).inflate(2131561405, null);
+    paramView = ((LayoutInflater)((Context)localObject).getSystemService("layout_inflater")).inflate(2131561280, null);
     paramView.setTag(2131296400, Boolean.valueOf(true));
     paramView.setLayoutParams(new Gallery.LayoutParams(-1, -1));
-    this.mCover = ((ImageView)paramView.findViewById(2131372961));
-    this.mCenterPlayBtn = ((ImageView)paramView.findViewById(2131372960));
-    this.mVideoLayout = ((FrameLayout)paramView.findViewById(2131372963));
+    this.mCover = ((ImageView)paramView.findViewById(2131372932));
+    this.mCenterPlayBtn = ((ImageView)paramView.findViewById(2131372931));
+    this.mVideoLayout = ((FrameLayout)paramView.findViewById(2131372934));
     initVideoView((Context)localObject);
     localObject = this.mBean.getMediaInfo();
     int i = paramViewGroup.getWidth();

@@ -1,23 +1,47 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class amld
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  amld(amlc paramamlc) {}
+  amld(amlb paramamlb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    bdll.b(null, "dc00898", "", "", "0X800A0C7", "0X800A0C7", 0, 0, String.valueOf(SessionClearFragment.b(this.a.a)), String.valueOf(SessionClearFragment.c(this.a.a)), "", "");
-    SessionClearFragment.a(this.a.a);
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("extra_delete_total_file_size", SessionClearFragment.a(this.a.a).a());
-    Activity localActivity = SessionClearFragment.a(this.a.a);
-    SessionClearFragment.a(this.a.a);
-    localActivity.setResult(-1, paramDialogInterface);
+    Object localObject;
+    if ((!TextUtils.isEmpty(amlb.a(this.a))) && (!amlb.a(this.a).equals("0")))
+    {
+      QQAppInterface localQQAppInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
+      int i = this.a.a.jdField_a_of_type_Int;
+      if (this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData != null)
+      {
+        localObject = Integer.toString(this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameId);
+        VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "clk_fuwuhao", i, 0, new String[] { localObject });
+        localObject = new Intent(this.a.a.getActivity(), AccountDetailActivity.class);
+        ((Intent)localObject).putExtra("uin", amlb.a(this.a));
+        ((Intent)localObject).putExtra("uintype", 1008);
+        this.a.a.getActivity().startActivity((Intent)localObject);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localObject = "";
+      break;
+      QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setPubAccountInfo] uin is null or = 0");
+    }
   }
 }
 

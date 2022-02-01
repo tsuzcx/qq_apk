@@ -1,44 +1,36 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager.8;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class ashi
-  implements asgp
+class ashi
+  implements asyx
 {
-  private int jdField_a_of_type_Int;
+  ashi(ashf paramashf) {}
   
-  public ashi(FavroamingManager.8 param8, List paramList) {}
-  
-  public void a(int paramInt, String paramString)
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(paramInt));
-    this.jdField_a_of_type_Int += 1;
-    if (this.jdField_a_of_type_Int <= this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0.f();
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Ashj != null) {
-        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Ashj.a(this.jdField_a_of_type_Int / this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
-      }
+    this.a.b();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.a(2005);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(this.a.jdField_b_of_type_Long, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 12, null, paramInt, null);
+    aszt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.a.j, this.a.jdField_g_of_type_Long, ashf.a(this.a), this.a.e, this.a.jdField_g_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9040L, "", this.a.i, this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Long, ashf.a(this.a), "", ashf.a(this.a), "sdcard full", null);
+    aszt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.a.k, this.a.jdField_g_of_type_Long, ashf.a(this.a), this.a.e, this.a.jdField_g_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9040L, "", this.a.i, this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Long, ashf.a(this.a), "", ashf.b(this.a), "sdcard full", null);
+  }
+  
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.a.jdField_d_of_type_JavaLangString.equalsIgnoreCase(paramString1)) {
+      this.a.jdField_d_of_type_JavaLangString = paramString2;
     }
-    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Int) {
-      if (!ashd.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0))
-      {
-        paramString = (String)this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
-        ashd.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0, paramString, ashd.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0));
-      }
-    }
-    do
-    {
+    while (!this.a.jdField_b_of_type_JavaLangString.equalsIgnoreCase(paramString1)) {
       return;
-      paramString = ashd.p(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0).getHandler(ChatActivity.class);
-      if (paramString != null) {
-        paramString.obtainMessage(10).sendToTarget();
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Ashj == null);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Ashj.a(this.jdField_a_of_type_JavaUtilList);
+    }
+    this.a.jdField_b_of_type_JavaLangString = paramString2;
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath(paramString2);
   }
 }
 

@@ -7,27 +7,27 @@ import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import axzb;
-import axzc;
-import axzd;
-import axzg;
-import axzh;
-import bhpc;
-import bitz;
+import awmj;
+import awmk;
+import awml;
+import awmo;
+import awmp;
+import bhab;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class GameRoomTransActivity
   extends BaseActivity
 {
   public DialogInterface.OnDismissListener a;
-  public bhpc a;
+  public QQCustomDialog a;
   
   public GameRoomTransActivity()
   {
-    this.jdField_a_of_type_Bhpc = null;
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new axzg(this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new awmo(this);
   }
   
   public void a()
@@ -57,7 +57,7 @@ public class GameRoomTransActivity
     {
       i = getIntent().getIntExtra("roomNum", 10);
       int j = getIntent().getIntExtra("zoneId", 0);
-      ((bitz)this.app.a(107)).b(i, j, new axzc(this, i));
+      ((bhab)this.app.getBusinessHandler(107)).b(i, j, new awmk(this, i));
       return;
     }
     catch (Exception localException)
@@ -73,7 +73,7 @@ public class GameRoomTransActivity
   {
     String str = getIntent().getStringExtra("inviteId");
     int i = getIntent().getIntExtra("roomNum", 10);
-    ((bitz)this.app.a(107)).a(str, true, new axzd(this, str, i));
+    ((bhab)this.app.getBusinessHandler(107)).a(str, true, new awml(this, str, i));
   }
   
   protected void d()
@@ -81,14 +81,15 @@ public class GameRoomTransActivity
     int i = getIntent().getIntExtra("roomNum", 10);
     int j = getIntent().getIntExtra("zoneId", 0);
     long l = getIntent().getLongExtra("gc", -1L);
-    ((bitz)this.app.a(107)).a(new axzh(this, l, i, j));
+    ((bhab)this.app.getBusinessHandler(107)).a(new awmp(this, l, i, j));
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -100,7 +101,7 @@ public class GameRoomTransActivity
     {
       if (checkSelfPermission("android.permission.RECORD_AUDIO") != 0)
       {
-        requestPermissions(new axzb(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
+        requestPermissions(new awmj(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
         return true;
       }
       a();

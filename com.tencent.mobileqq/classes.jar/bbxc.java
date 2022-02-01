@@ -1,96 +1,128 @@
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.pic.PicShareToWX;
-import com.tencent.mobileqq.screendetect.ScreenShotFragment;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.util.NativeSoLoader.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import java.io.File;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bbxc
-  implements bljm
 {
-  public bbxc(ScreenShotFragment paramScreenShotFragment) {}
+  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public static boolean a;
+  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static byte a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotFragment", 2, "OnItemClickListener : position = " + paramInt + ", view = " + paramView + ", id = " + paramLong);
+    byte b = 0;
+    if (paramString == null) {
+      b = -1;
     }
-    paramAdapterView = paramView.getTag();
-    if (paramAdapterView == null) {
-      return;
-    }
-    int i = ((bbxf)paramAdapterView).a.action;
-    paramAdapterView = null;
-    switch (i)
+    do
     {
-    default: 
-      if ((ScreenShotFragment.a(this.a)) && (paramAdapterView != null)) {
-        bbxg.a("0X800A9A9", paramAdapterView, "1");
+      for (;;)
+      {
+        return b;
+        paramString = a() + "/lib" + paramString + ".so";
+        if (QLog.isColorLevel()) {
+          QLog.i("TK_Config_NativeSoLoader", 2, "start TKNativeSo: " + paramString);
+        }
+        File localFile = new File(paramString);
+        if ((!jdField_a_of_type_Boolean) && (localFile.exists())) {
+          try
+          {
+            System.load(paramString);
+            if (QLog.isColorLevel())
+            {
+              QLog.i("TK_Config_NativeSoLoader", 2, "load " + paramString + " success!");
+              return 0;
+            }
+          }
+          catch (UnsatisfiedLinkError paramString)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("TK_Config_NativeSoLoader", 2, "load from tk dir failed: " + paramString.getMessage());
+            }
+            return -3;
+          }
+        }
       }
-      if ((i != 9) && (i != 10)) {
-        break label300;
+      b = -2;
+    } while (!QLog.isColorLevel());
+    QLog.i("TK_Config_NativeSoLoader", 2, "no tk so in ar dir");
+    return -2;
+  }
+  
+  public static String a()
+  {
+    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localFile == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TK_Config_NativeSoLoader", 2, "getFilesDir is null");
       }
-      paramInt = -1;
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131719399;
+      return "";
+    }
+    return localFile.getParent() + "/tk";
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    String str1 = a() + "/lib" + paramString + ".so";
+    ??? = new File(str1);
+    if (QLog.isColorLevel()) {
+      QLog.d("TK_Config_NativeSoLoader", 2, "isSoFileExist: exist= " + ((File)???).exists() + " isUncompressZip=" + jdField_a_of_type_Boolean);
+    }
+    if ((!jdField_a_of_type_Boolean) && (((File)???).exists())) {
+      for (;;)
+      {
+        synchronized (jdField_a_of_type_ArrayOfByte)
+        {
+          String str2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).getString("tk_native_" + paramString, null);
+          if (str2 != null) {
+            if (str2.equalsIgnoreCase(ayja.a(str1)))
+            {
+              break label221;
+              return bool1;
+            }
+            else
+            {
+              bool1 = bool2;
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              QLog.d("TK_Config_NativeSoLoader", 2, "isSoFileExist: soName= " + paramString + " check md5 false!");
+              bool1 = bool2;
+            }
+          }
+        }
+        label221:
+        boolean bool1 = true;
       }
-      break;
+    }
+    return false;
+  }
+  
+  public static boolean a(boolean paramBoolean)
+  {
+    if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      if (paramBoolean) {
+        break label77;
+      }
+      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(a("TKGLRenderer"));
     }
     for (;;)
     {
-      if (paramInt == -1) {
-        break label300;
+      if (QLog.isColorLevel()) {
+        QLog.d("TK_Config_NativeSoLoader", 2, "isisSoFileExistAsync[3D]: sInitSuccess= " + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + "  async=" + paramBoolean);
       }
-      QQToast.a(this.a.getActivity(), this.a.getActivity().getString(paramInt), 0).b(this.a.getActivity().getResources().getDimensionPixelSize(2131299011));
-      return;
-      bbxg.a("0X8009FF0", 0);
-      paramAdapterView = "1";
-      break;
-      bbxg.a("0X8009FF1", 0);
-      paramAdapterView = "2";
-      break;
-      bbxg.a("0X8009FF2", 0);
-      paramAdapterView = "3";
-      break;
-      bbxg.a("0X8009FF3", 0);
-      paramAdapterView = "4";
-      break;
-      bbxg.a("0X800A77D", 0);
-      paramAdapterView = "5";
-      break;
-      if (!WXShareHelper.a().b()) {
-        paramInt = 2131719400;
-      }
+      return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+      label77:
+      ThreadManager.post(new NativeSoLoader.1(), 8, null, false);
     }
-    switch (i)
-    {
-    default: 
-      return;
-    case 2: 
-      ScreenShotFragment.a(this.a.getActivity(), ScreenShotFragment.a(this.a));
-      return;
-    case 3: 
-      ScreenShotFragment.a(this.a, this.a.getActivity(), ScreenShotFragment.a(this.a));
-      return;
-    case 9: 
-      if ((PicShareToWX.a().a()) && (PicShareToWX.a().a(ScreenShotFragment.a(this.a))))
-      {
-        PicShareToWX.a().a(this.a.getActivity(), ScreenShotFragment.a(this.a), ScreenShotFragment.a(this.a), 3);
-        bdll.b(null, "dc00898", "", "", "0X800A505", "0X800A505", 0, 0, "", "", "", "");
-        return;
-      }
-      ScreenShotFragment.a(this.a, ScreenShotFragment.a(this.a), ScreenShotFragment.a(this.a));
-      return;
-    case 10: 
-      label300:
-      ScreenShotFragment.b(this.a, ScreenShotFragment.a(this.a), ScreenShotFragment.a(this.a));
-      return;
-    }
-    ScreenShotFragment.a(this.a, ScreenShotFragment.a(this.a));
   }
 }
 

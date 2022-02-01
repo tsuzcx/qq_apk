@@ -1,19 +1,40 @@
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import tencent.im.msg.im_msg_body.MsgBody;
+
 public class bblt
+  implements bbls
 {
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private final long b;
-  
-  private bblt(long paramLong1, long paramLong2, int paramInt)
+  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbkm parambbkm)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "VideoTimeStamp{TIME-CLOCK=" + this.jdField_a_of_type_Long + ", TIME-FRAME=" + this.b + ", CYCLE=" + this.jdField_a_of_type_Int + '}';
+    if ((paramList == null) || (paramMsg == null) || (!paramMsg.msg_body.has()) || (!paramMsg.msg_body.msg_content.has())) {}
+    do
+    {
+      int i;
+      do
+      {
+        do
+        {
+          return;
+          paramMsg = paramMsg.msg_body.msg_content.get().toByteArray();
+          PkgTools.getLongData(paramMsg, 0);
+          i = paramMsg[4];
+          if (i != 25) {
+            break;
+          }
+        } while (parambbkm.d);
+        anld.a(paramMessageHandler.app, paramMsg, 5, null, false);
+        return;
+      } while (i != 35);
+      QLog.i("ApolloPushManager", 1, "[discuss.OffLine]");
+    } while (parambbkm.d);
+    anld.b(paramMessageHandler.app, paramMsg, 5, null, false);
   }
 }
 

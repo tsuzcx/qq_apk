@@ -1,16 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class awui
-  implements View.OnClickListener
+  implements wxb
 {
-  awui(awud paramawud, View.OnClickListener paramOnClickListener) {}
+  awui(awuh paramawuh, awtv paramawtv) {}
   
-  public void onClick(View paramView)
+  public void a(wwz paramwwz)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Awtv.a(this.jdField_a_of_type_Awuh);
   }
 }
 

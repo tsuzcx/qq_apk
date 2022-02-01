@@ -1,65 +1,51 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.vas.update.business.BaseUpdateBusiness;
+import com.tencent.vas.update.callback.IVasUpdateFactory;
+import com.tencent.vas.update.callback.VasBusinessManager;
+import mqq.manager.Manager;
 
 public class bgkb
-  extends arac<bgkc>
+  extends VasBusinessManager
+  implements Manager
 {
-  public static bgkc a()
+  private bgko a;
+  
+  public bgkb(QQAppInterface paramQQAppInterface)
   {
-    bgkc localbgkc = (bgkc)aran.a().a(547);
-    if (QLog.isColorLevel()) {
-      QLog.d("TDCRecomTroopConfigProcessor", 2, "getConfigBean configBean = " + localbgkc);
-    }
-    return localbgkc;
+    QLog.e("VasUpdate_QQVasUpdateManager", 1, "QQVasUpdateManager onCreate");
   }
   
-  @NonNull
-  public bgkc a(int paramInt)
-  {
-    return new bgkc();
-  }
-  
-  @Nullable
-  public bgkc a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length == 0)) {
-      return null;
-    }
-    paramArrayOfaraj = paramArrayOfaraj[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("TDCRecomTroopConfigProcessor", 2, " onParsed,configID:547, content:" + paramArrayOfaraj);
-    }
-    return bgkc.a(paramArrayOfaraj);
-  }
-  
-  public void a(bgkc parambgkc) {}
-  
-  public Class<bgkc> clazz()
-  {
-    return bgkc.class;
-  }
-  
-  public boolean isNeedCompressed()
+  public static boolean a()
   {
     return true;
   }
   
-  public boolean isNeedStoreLargeFile()
+  public bgko a()
   {
-    return false;
+    return this.a;
   }
   
-  public int migrateOldVersion()
+  public IVasUpdateFactory createVasUpdateFactory()
   {
-    return 0;
+    this.a = new bgko();
+    return this.a;
   }
   
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
+  public void onDestroy()
   {
-    return 547;
+    QLog.e("VasUpdate_QQVasUpdateManager", 1, "onDestroy");
+    super.onDestory();
+  }
+  
+  public BaseUpdateBusiness[] registerBusinessCallback()
+  {
+    return new BaseUpdateBusiness[] { new bgkf() };
+  }
+  
+  public BaseUpdateBusiness registerCommonBusinessCallback()
+  {
+    return new bgke();
   }
 }
 

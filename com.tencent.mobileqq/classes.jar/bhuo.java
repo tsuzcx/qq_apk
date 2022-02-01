@@ -1,21 +1,23 @@
-import android.content.Context;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
-import com.tencent.widget.BubblePopupWindow;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.mini.util.DisplayUtil;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.open.widget.MaxHeightScrollView;
 
 public class bhuo
-  extends TextView
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public bhuo(QQCustomMenuNoIconLayout paramQQCustomMenuNoIconLayout, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public bhuo(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
   
-  public boolean performClick()
+  public void onGlobalLayout()
   {
-    boolean bool = super.performClick();
-    this.a.a.b();
-    return bool;
+    if ((DisplayUtil.hasNavBar(this.a)) && (DisplayUtil.isNavigationBarExist(this.a)))
+    {
+      int i = QuickLoginAuthorityActivity.a(this.a).a();
+      int j = DisplayUtil.getNavigationBarHeight(this.a);
+      QuickLoginAuthorityActivity.a(this.a).setMaxHeight(i - j);
+    }
+    QuickLoginAuthorityActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

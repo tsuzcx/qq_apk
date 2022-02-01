@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adyp
-  implements DialogInterface.OnClickListener
+  extends amwl
 {
-  public adyp(BaseChatPie paramBaseChatPie) {}
+  public adyp(QQLSActivity paramQQLSActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onPushReadedNotify(boolean paramBoolean, Object paramObject)
   {
-    paramDialogInterface.dismiss();
+    super.onPushReadedNotify(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
+    }
+    QQLSActivity.a(this.a);
   }
 }
 

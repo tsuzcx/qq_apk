@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.12;
 
 public class alwv
-  implements DialogInterface.OnClickListener
+  implements AVCallback
 {
-  public alwv(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
+  public alwv(CmGameAvHandler.12 param12) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    QzoneSlideShowPreparingFragment.a(this.a).dismiss();
-  }
+  public void onComplete(int paramInt, String paramString) {}
 }
 
 

@@ -1,129 +1,28 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class almb
-  implements allu
+  implements View.OnClickListener
 {
-  private final int jdField_a_of_type_Int;
-  @Nullable
-  private allw jdField_a_of_type_Allw;
-  @Nullable
-  private final Bundle jdField_a_of_type_AndroidOsBundle;
-  @NonNull
-  private final String jdField_a_of_type_JavaLangString;
-  @NonNull
-  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
-  @Nullable
-  private final String b;
+  almb(ally paramally) {}
   
-  public almb(@NonNull String paramString1, @NonNull QQAppInterface paramQQAppInterface, @Nullable String paramString2, int paramInt, @Nullable Bundle paramBundle, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(@Nullable allw paramallw)
-  {
-    this.jdField_a_of_type_Allw = paramallw;
-  }
-  
-  public boolean isNeedAutoCloseWhenAccountChange()
-  {
-    return true;
-  }
-  
-  public void onClose()
-  {
-    if (this.jdField_a_of_type_Allw == null) {}
-    QQAppInterface localQQAppInterface;
-    do
+    Object localObject = paramView.getTag();
+    if (!(localObject instanceof almh)) {}
+    for (;;)
     {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    aljw.a(localQQAppInterface, this.jdField_a_of_type_Allw);
-  }
-  
-  public void onEnter()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "onEnter: " + this.jdField_a_of_type_Allw + " / " + this.b + " / " + this.jdField_a_of_type_Int + " / " + this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_Allw == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    Object localObject3 = QQBrowserActivity.class;
-    Object localObject1 = localObject3;
-    if (!TextUtils.isEmpty(this.b)) {}
-    try
-    {
-      localObject1 = Class.forName(this.b);
-      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-      localObject3 = localBaseActivity;
-      if (localBaseActivity == null)
-      {
-        localObject3 = BaseApplicationImpl.getContext();
-        QLog.d("Q.recent.banner", 1, "sTopActivity is null,set Application context");
+      localObject = (almh)localObject;
+      if ((((almh)localObject).a != null) && (((almh)localObject).a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo != null)) {
+        this.a.jdField_a_of_type_Almd.a(((almh)localObject).a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo, ((almh)localObject).a.jdField_a_of_type_Int);
       }
-      if (localObject3 != null)
-      {
-        localObject1 = new Intent(localQQAppInterface.getApp(), (Class)localObject1);
-        ((Intent)localObject1).setFlags(this.jdField_a_of_type_Int);
-        ((Intent)localObject1).putExtra("banner_fromBanner", true);
-        ((Intent)localObject1).putExtra("url", this.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject1).putExtra("banner_webview_extra", this.jdField_a_of_type_AndroidOsBundle);
-        ((Intent)localObject1).putExtra("force_no_reload", this.jdField_a_of_type_Boolean);
+      if ((((almh)localObject).a != null) && (((almh)localObject).a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null)) {
+        this.a.jdField_a_of_type_Almd.a(((almh)localObject).a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo);
       }
-      for (;;)
-      {
-        try
-        {
-          ((Context)localObject3).startActivity((Intent)localObject1);
-          aljw.a(localQQAppInterface, this.jdField_a_of_type_Allw);
-          return;
-        }
-        catch (Exception localException)
-        {
-          QLog.d("Q.recent.banner", 1, "startActivity,error =" + localException);
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.recent.banner", 2, "sTopActivity is null");
-        }
-      }
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
-      {
-        Object localObject2 = localObject3;
-      }
-    }
-  }
-  
-  public void onOverride()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "banner for " + this.jdField_a_of_type_JavaLangString + " is overrided");
+      new bcek(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("send_to").d("clk_grp").a(new String[] { "1" }).a();
     }
   }
 }

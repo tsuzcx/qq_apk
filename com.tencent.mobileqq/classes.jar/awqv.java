@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.4;
+import android.os.Bundle;
 
-public class awqv
-  implements DialogInterface.OnClickListener
+class awqv
+  extends nme
 {
-  public awqv(LocationDialogUtil.4 param4) {}
+  awqv(awqu paramawqu, awrb paramawrb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.a.b();
-    bdll.b(null, "CliOper", "", "", "0X800A967", "0X800A967", 0, 0, "0", "0", "0", "");
+    if (this.jdField_a_of_type_Awrb != null) {
+      this.jdField_a_of_type_Awrb.a(paramInt, paramArrayOfByte, paramBundle);
+    }
   }
 }
 

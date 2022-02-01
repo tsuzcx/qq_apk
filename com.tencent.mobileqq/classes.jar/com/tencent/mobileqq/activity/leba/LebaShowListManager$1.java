@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.leba;
 
-import akgr;
-import bbav;
+import ajek;
+import azvi;
 import com.tencent.qphone.base.util.QLog;
 
 public class LebaShowListManager$1
   implements Runnable
 {
-  public LebaShowListManager$1(akgr paramakgr, bbav parambbav, long paramLong1, boolean paramBoolean, long paramLong2, long paramLong3) {}
+  public LebaShowListManager$1(ajek paramajek, azvi paramazvi, long paramLong1, boolean paramBoolean1, long paramLong2, long paramLong3, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -15,14 +15,14 @@ public class LebaShowListManager$1
     {
       try
       {
-        bbav localbbav = this.jdField_a_of_type_Bbav;
+        azvi localazvi = this.jdField_a_of_type_Azvi;
         i = (int)this.jdField_a_of_type_Long;
         boolean bool = this.jdField_a_of_type_Boolean;
-        if (this.b != -9223372036854775808L) {
+        if (this.jdField_b_of_type_Long != -9223372036854775808L) {
           continue;
         }
         l = this.c;
-        i = localbbav.a(i, bool, l);
+        i = localazvi.a(i, bool, l, this.jdField_b_of_type_Boolean);
       }
       catch (Exception localException)
       {
@@ -40,7 +40,7 @@ public class LebaShowListManager$1
         QLog.i("Q.lebatab.mgr", 4, "updateAppSetting, result = " + i);
       }
       return;
-      l = this.b;
+      l = this.jdField_b_of_type_Long;
     }
   }
 }

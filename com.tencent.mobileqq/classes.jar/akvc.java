@@ -1,23 +1,20 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
 
-class akvc
-  implements MediaScanner.OnMediaInfoScannerListener
+public class akvc
+  implements yih
 {
-  akvc(akvb paramakvb, Intent paramIntent, ArrayList paramArrayList) {}
+  public akvc(P2VEditMusicDialog paramP2VEditMusicDialog) {}
   
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void a() {}
+  
+  public void a(yir paramyir)
   {
-    ((NewPhotoListActivity)this.jdField_a_of_type_Akvb.mActivity).cancleProgressDailog();
-    if (bqyp.a(this.jdField_a_of_type_Akvb.mActivity, paramLocalMediaInfo))
-    {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-      PhotoUtils.a(this.jdField_a_of_type_Akvb.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
-    }
+    this.a.b(paramyir);
+  }
+  
+  public void b()
+  {
+    this.a.a();
   }
 }
 

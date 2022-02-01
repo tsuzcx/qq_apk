@@ -1,24 +1,26 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class tfz
-  extends tgb
+  extends AnimatorListenerAdapter
 {
-  tfz(tfy paramtfy1, Activity paramActivity, tfy paramtfy2, JSONObject paramJSONObject)
+  public tfz(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, View paramView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramtfy1, paramActivity, paramtfy2, paramJSONObject);
+    super.onAnimationEnd(paramAnimator);
+    this.jdField_a_of_type_AndroidViewView.setLayerType(0, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
+    }
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (!TextUtils.isEmpty(paramString3))
-    {
-      paramString1 = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidAppActivity, 1, paramString3, null, 3096, 1, this.jdField_a_of_type_OrgJsonJSONObject.optString("nick_name"), null, null, null, null);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString1);
-    }
+    super.onAnimationStart(paramAnimator);
   }
 }
 

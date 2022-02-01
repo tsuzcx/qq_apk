@@ -1,15 +1,16 @@
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-
 public class bnbu
-  implements ModuleDownloadListener
+  extends bmqj
 {
-  public void onDownloadCanceled(String paramString) {}
+  private bgog a;
   
-  public void onDownloadFailed(String paramString) {}
+  public void onDestroy()
+  {
+    if (this.a != null) {
+      this.a.onDestroy();
+    }
+  }
   
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString) {}
+  public void onInit() {}
 }
 
 

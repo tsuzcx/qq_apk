@@ -1,48 +1,30 @@
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.share.QZoneShareActivity;
-import cooperation.qzone.share.QZoneShareActivity.4.1;
-import cooperation.qzone.share.QZoneShareActivity.4.2;
-import eipc.EIPCClient;
-import java.util.Map;
-import org.json.JSONObject;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 
 public class bnhe
-  implements MiniAppCmdInterface
 {
-  public bnhe(QZoneShareActivity paramQZoneShareActivity) {}
+  public final int a;
+  public final Drawable a;
+  public final String a;
+  public final String b;
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public bnhe(@NonNull String paramString1, @NonNull String paramString2, Drawable paramDrawable, int paramInt)
   {
-    if ((paramBoolean) && (paramJSONObject != null))
-    {
-      String str = paramJSONObject.optString("jump_url");
-      QZoneShareActivity.a(this.a, paramJSONObject.optBoolean("needShareCallBack"));
-      if ((QZoneShareActivity.a(this.a) != null) && (QZoneShareActivity.a(this.a).a != null)) {
-        QZoneShareActivity.a(this.a).a.put("xcxFakeLink", str);
-      }
-      if (!QZoneShareActivity.a(this.a)) {
-        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
-      }
-      QZoneShareActivity.c(this.a);
-      this.a.runOnUiThread(new QZoneShareActivity.4.1(this));
-      return;
-    }
-    long l = -1L;
-    if (paramJSONObject != null)
-    {
-      QZoneShareActivity.a(this.a, paramJSONObject.optBoolean("needShareCallBack"));
-      l = paramJSONObject.optLong("retCode");
-    }
-    for (paramJSONObject = paramJSONObject.optString("errMsg");; paramJSONObject = null)
-    {
-      if (!QZoneShareActivity.a(this.a)) {
-        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
-      }
-      this.a.runOnUiThread(new QZoneShareActivity.4.2(this, l, paramJSONObject));
-      return;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("SelectedItem{");
+    localStringBuilder.append("category='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", name='").append(this.b).append('\'');
+    localStringBuilder.append(", drawable=").append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    localStringBuilder.append(", isDynamic=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

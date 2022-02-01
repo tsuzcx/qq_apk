@@ -1,89 +1,186 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.articlesummary.articlesummary.SocializeFeedsInfo;
-import tencent.im.oidb.articlesummary.articlesummary.SocializeFeedsInfoUser;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import android.util.LruCache;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyEntityManagerFactory;
+import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTask;
+import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTaskLocalRepo.getEntityManagerFactory.1.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTaskLocalRepo.loadFromDB.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTaskLocalRepo.saveToDB.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTaskLocalRepo.sp.2;
+import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTaskLocalRepo.taskTimeCache.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import kotlin.Lazy;
+import kotlin.LazyKt;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.Unit;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class qxt
-  implements Cloneable
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTaskLocalRepo;", "", "()V", "value", "", "completedTaskCountToday", "getCompletedTaskCountToday", "()I", "setCompletedTaskCountToday", "(I)V", "Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;", "currentTask", "getCurrentTask", "()Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;", "setCurrentTask", "(Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;)V", "entityManagerFactory", "Lcom/tencent/mobileqq/persistence/EntityManagerFactory;", "globalTimeInMs", "getGlobalTimeInMs", "setGlobalTimeInMs", "lastTask", "getLastTask", "setLastTask", "", "lastUpdateTimestamp", "getLastUpdateTimestamp", "()J", "setLastUpdateTimestamp", "(J)V", "sp", "Landroid/content/SharedPreferences;", "kotlin.jvm.PlatformType", "getSp", "()Landroid/content/SharedPreferences;", "sp$delegate", "Lkotlin/Lazy;", "taskTimeCache", "Landroid/util/LruCache;", "", "getTaskTimeCache", "()Landroid/util/LruCache;", "taskTimeCache$delegate", "addCached", "", "rowKey", "addCachedInternal", "getEntityManagerFactory", "init", "isCached", "", "loadFromDB", "saveToDB", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qxt
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public int c = 1;
+  private static volatile qxt jdField_a_of_type_Qxt;
+  public static final qxu a;
+  private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
+  private final Lazy jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)RIJRewardTaskLocalRepo.taskTimeCache.2.INSTANCE);
+  private final Lazy b = LazyKt.lazy((Function0)RIJRewardTaskLocalRepo.sp.2.INSTANCE);
   
-  public qxt(SocializeFeedsInfo paramSocializeFeedsInfo) {}
-  
-  private void a(articlesummary.SocializeFeedsInfo paramSocializeFeedsInfo)
+  static
   {
-    int j = 0;
-    long l;
-    int i;
-    label63:
-    String str;
-    if (paramSocializeFeedsInfo.msg_master_uin.has())
-    {
-      l = pnq.a(((articlesummary.SocializeFeedsInfoUser)paramSocializeFeedsInfo.msg_master_uin.get()).uint64_uin);
-      this.jdField_a_of_type_Long = l;
-      if (!paramSocializeFeedsInfo.msg_master_uin.has()) {
-        break label190;
-      }
-      i = pnq.a(((articlesummary.SocializeFeedsInfoUser)paramSocializeFeedsInfo.msg_master_uin.get()).enum_uin_type);
-      this.jdField_a_of_type_Int = i;
-      i = j;
-      if (paramSocializeFeedsInfo.msg_master_uin.has()) {
-        i = pnq.a(((articlesummary.SocializeFeedsInfoUser)paramSocializeFeedsInfo.msg_master_uin.get()).uint32_star_style);
-      }
-      this.b = i;
-      if (!paramSocializeFeedsInfo.msg_master_uin.has()) {
-        break label202;
-      }
-      if (!paramSocializeFeedsInfo.msg_master_uin.bytes_person_desc.has()) {
-        break label195;
-      }
-      str = paramSocializeFeedsInfo.msg_master_uin.bytes_person_desc.get().toStringUtf8();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaLangString = str;
-      if ((paramSocializeFeedsInfo.msg_master_uin.has()) && (paramSocializeFeedsInfo.msg_master_uin.uint32_is_real_user.has())) {
-        this.c = paramSocializeFeedsInfo.msg_master_uin.uint32_is_real_user.get();
-      }
-      return;
-      l = 0L;
-      break;
-      label190:
-      i = 0;
-      break label63;
-      label195:
-      str = "";
-      continue;
-      label202:
-      str = "";
-    }
+    jdField_a_of_type_Qxu = new qxu(null);
   }
   
-  public qxt a()
+  private final long a()
   {
-    try
-    {
-      qxt localqxt = (qxt)super.clone();
-      return localqxt;
+    return a().getLong(qzl.a("RIJ_REWARD_TASK_KEY_KEY_LAST_UPDATE_TS"), 0L);
+  }
+  
+  private final SharedPreferences a()
+  {
+    return (SharedPreferences)this.b.getValue();
+  }
+  
+  private final LruCache<String, String> a()
+  {
+    return (LruCache)this.jdField_a_of_type_KotlinLazy.getValue();
+  }
+  
+  private final EntityManagerFactory a()
+  {
+    String str1 = pay.a();
+    EntityManagerFactory localEntityManagerFactory;
+    if (str1 != null) {
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory == null) {
+          break label74;
+        }
+        localEntityManagerFactory = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
+        if (localEntityManagerFactory != null) {
+          break label54;
+        }
+        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyEntityManagerFactory");
+      }
+      finally {}
+    } else {
+      throw ((Throwable)new IllegalStateException("Can not create a entity factory, the account is null."));
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return null;
+    label54:
+    if (!TextUtils.equals((CharSequence)((ReadInJoyEntityManagerFactory)localEntityManagerFactory).name, (CharSequence)str2))
+    {
+      label74:
+      localObject = new ReadInJoyEntityManagerFactory(str2);
+      ThreadManager.excute((Runnable)new RIJRewardTaskLocalRepo.getEntityManagerFactory.1.1((ReadInJoyEntityManagerFactory)localObject), 16, null, false);
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = ((EntityManagerFactory)localObject);
+    }
+    Object localObject = Unit.INSTANCE;
+    localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
+    if (localObject == null) {
+      Intrinsics.throwNpe();
+    }
+    return localObject;
   }
   
-  public boolean a()
+  private final void a(long paramLong)
   {
-    return this.b == 1;
+    a().edit().putLong(qzl.a("RIJ_REWARD_TASK_KEY_KEY_LAST_UPDATE_TS"), paramLong).apply();
   }
   
-  public String toString()
+  @JvmStatic
+  @NotNull
+  public static final qxt b()
   {
-    return "uin=" + this.jdField_a_of_type_Long + "type=" + this.jdField_a_of_type_Int;
+    return jdField_a_of_type_Qxu.a();
+  }
+  
+  private final void b()
+  {
+    ThreadManager.excute((Runnable)new RIJRewardTaskLocalRepo.loadFromDB.1(this), 32, null, true);
+  }
+  
+  private final void b(String paramString)
+  {
+    a().put(paramString, paramString);
+  }
+  
+  private final void c(String paramString)
+  {
+    ThreadManager.excute((Runnable)new RIJRewardTaskLocalRepo.saveToDB.1(this, paramString), 32, null, true);
+  }
+  
+  public final int a()
+  {
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    if (!qzm.a(a(), l)) {
+      a(0);
+    }
+    return a().getInt(qzl.a("RIJ_REWARD_TASK_KEY_KEY_TASK_COMPLETED_COUNT"), 0);
+  }
+  
+  @Nullable
+  public final RIJRewardTask a()
+  {
+    return qzl.a("RIJ_REWARD_TASK_KEY_KEY_CURRENT_TASK");
+  }
+  
+  public final void a()
+  {
+    b();
+  }
+  
+  public final void a(int paramInt)
+  {
+    a().edit().putInt(qzl.a("RIJ_REWARD_TASK_KEY_KEY_TASK_COMPLETED_COUNT"), paramInt).apply();
+  }
+  
+  public final void a(@Nullable RIJRewardTask paramRIJRewardTask)
+  {
+    qzl.a("RIJ_REWARD_TASK_KEY_KEY_CURRENT_TASK", paramRIJRewardTask);
+  }
+  
+  public final void a(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "rowKey");
+    b(paramString);
+    c(paramString);
+  }
+  
+  public final boolean a(@Nullable String paramString)
+  {
+    return a().get(paramString) != null;
+  }
+  
+  public final int b()
+  {
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    if (!qzm.a(a(), l)) {
+      b(0);
+    }
+    return a().getInt(qzl.a("RIJ_REWARD_TASK_KEY_KEY_TASK_PROGRESS_IN_MS"), 0);
+  }
+  
+  @Nullable
+  public final RIJRewardTask b()
+  {
+    return qzl.a("RIJ_REWARD_TASK_KEY_KEY_LAST_TASK");
+  }
+  
+  public final void b(int paramInt)
+  {
+    a(NetConnInfoCenter.getServerTimeMillis());
+    a().edit().putInt(qzl.a("RIJ_REWARD_TASK_KEY_KEY_TASK_PROGRESS_IN_MS"), paramInt).apply();
+  }
+  
+  public final void b(@Nullable RIJRewardTask paramRIJRewardTask)
+  {
+    qzl.a("RIJ_REWARD_TASK_KEY_KEY_LAST_TASK", paramRIJRewardTask);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import adtl;
-import bhlq;
-import bhpc;
+import acqe;
+import bfur;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class AddFriendVerifyActivity$30
   implements Runnable
@@ -19,10 +19,10 @@ public class AddFriendVerifyActivity$30
     do
     {
       return;
-      this.this$0.a = bhlq.a(this.this$0, 230);
-      this.this$0.a.setMessage(2131718920);
-      adtl localadtl = new adtl(this);
-      this.this$0.a.setPositiveButton(2131690912, localadtl);
+      this.this$0.a = bfur.a(this.this$0, 230);
+      this.this$0.a.setMessage(2131719180);
+      acqe localacqe = new acqe(this);
+      this.this$0.a.setPositiveButton(2131690952, localacqe);
     } while (this.this$0.a.isShowing());
     this.this$0.a.show();
   }

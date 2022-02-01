@@ -1,20 +1,24 @@
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
-class bhgo<Bitmap>
-  extends WeakReference<Bitmap>
+class bhgo
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private final String a;
+  bhgo(bhgl parambhgl) {}
   
-  public bhgo(String paramString, Bitmap paramBitmap, ReferenceQueue paramReferenceQueue)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramBitmap, paramReferenceQueue);
-    this.a = paramString;
+    if (bhgl.a(this.a) != null)
+    {
+      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+      bhgl.a(this.a).setAlpha(f);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhgo
  * JD-Core Version:    0.7.0.1
  */

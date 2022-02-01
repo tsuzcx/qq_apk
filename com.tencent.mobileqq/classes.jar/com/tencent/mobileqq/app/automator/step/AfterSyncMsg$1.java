@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import bdho;
+import bcad;
 
 class AfterSyncMsg$1
   implements Runnable

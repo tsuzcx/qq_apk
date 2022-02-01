@@ -1,82 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import java.util.List;
 
 class ovn
-  implements BusinessObserver
+  extends owd
 {
-  ovn(ovm paramovm, BaseCommentData paramBaseCommentData) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  ovn(ouu paramouu, boolean paramBoolean, List paramList)
   {
-    int i = 1;
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label253;
-        }
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        paramInt = localWebSsoResponseBody.ret.get();
-        paramBundle = localWebSsoResponseBody.data.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyCommentSSOModule", 2, "deleteComment ret=" + paramBundle);
-        }
-        paramBundle = new JSONObject(paramBundle);
-        if (paramInt != 0)
-        {
-          paramBundle.optString("msg");
-          paramInt = 0;
-          i = paramInt;
-          if ((i == 0) && (ovm.a(this.jdField_a_of_type_Ovm) != null)) {
-            ovm.a(this.jdField_a_of_type_Ovm).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
-          }
-          return;
-        }
-        paramInt = paramBundle.optInt("ret");
-        if (paramInt != 0) {
-          break label253;
-        }
-        paramInt = i;
-        try
-        {
-          if (ovm.a(this.jdField_a_of_type_Ovm) == null) {
-            continue;
-          }
-          ovm.a(this.jdField_a_of_type_Ovm).a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
-          paramInt = i;
-        }
-        catch (Exception paramBundle)
-        {
-          paramInt = 1;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramInt = 0;
-        continue;
-      }
-      paramBundle.getLocalizedMessage();
-      paramBundle.printStackTrace();
-      i = paramInt;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ReadInJoyCommentSSOModule", 2, "fetchCommentList error info:" + paramBundle.getLocalizedMessage());
-        i = paramInt;
-        continue;
-        label253:
-        paramInt = 0;
-      }
-    }
+    super(paramouu, null);
+  }
+  
+  void a(owg paramowg)
+  {
+    paramowg.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, ouu.c(this.jdField_a_of_type_Ouu), 6, 6);
   }
 }
 

@@ -1,80 +1,56 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.api.ISuperPlayer;
 
 public class zli
-  extends BaseAdapter
+  implements IVideoInnerStatusListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<zlk> jdField_a_of_type_JavaUtilList = new ArrayList();
-  @Nullable
-  private zlk jdField_a_of_type_Zlk;
+  public zli(VideoPlayerView paramVideoPlayerView) {}
   
-  public zli(Context paramContext)
+  public void notifyVideoClose(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  @Nullable
-  public zlk a()
-  {
-    return this.jdField_a_of_type_Zlk;
-  }
-  
-  public void a(List<zlk> paramList)
-  {
-    if (paramList == null)
+    VideoPlayerView.b(this.a, false);
+    if (VideoPlayerView.a(this.a) != null)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      VideoPlayerView.a(this.a).b();
+      VideoPlayerView.a(this.a, null);
+    }
+    VideoPlayerView.a(this.a, null);
+    this.a.i();
+  }
+  
+  public void notifyVideoSeek(int paramInt)
+  {
+    QLog.d("VideoPlayerView", 4, "notifyVideoSeek seek " + paramInt);
+    this.a.a(paramInt * this.a.a().getDurationMs() / 100L);
+  }
+  
+  public void notifyVideoStart()
+  {
+    if (this.a.a().getCurrentPositionMs() < this.a.a().getDurationMs())
+    {
+      this.a.e();
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public void a(@Nullable zlk paramzlk)
-  {
-    this.jdField_a_of_type_Zlk = paramzlk;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
+    if (VideoPlayerView.b(this.a))
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561863, null);
-      localObject = new zlj(paramView);
-      paramView.setTag(localObject);
+      QLog.d("VideoPlayerView", 4, "has more , wait for auto play next");
+      return;
     }
-    for (;;)
-    {
-      ((zlj)localObject).a((zlk)this.jdField_a_of_type_JavaUtilList.get(paramInt), this.jdField_a_of_type_Zlk);
-      localObject = ((zlj)localObject).a;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject;
-      localObject = (zlj)paramView.getTag();
+    this.a.a().setLoopback(true);
+    this.a.h();
+    if (VideoPlayerView.a(this.a) != null) {
+      VideoPlayerView.a(this.a).onVideoStart((int)this.a.a().getDurationMs());
     }
+    QLog.d("VideoPlayerView", 4, "no more, player repeat");
+  }
+  
+  public void notifyVideoStop()
+  {
+    this.a.f();
   }
 }
 

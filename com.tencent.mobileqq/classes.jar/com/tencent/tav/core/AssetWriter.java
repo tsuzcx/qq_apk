@@ -2,6 +2,7 @@ package com.tencent.tav.core;
 
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.view.Surface;
 import com.tencent.tav.asset.MetadataItem;
 import com.tencent.tav.coremedia.CMTime;
@@ -21,6 +22,7 @@ public class AssetWriter
   private static final String TAG = "AssetWriter";
   private List<Integer> availableMediaTypes;
   private String directoryForTemporaryFiles;
+  private ExportConfig encodeOption;
   private EncoderWriter encoderWriter;
   private CMTime endTime = new CMTime(9223372036854775807L);
   private int errCode;
@@ -339,6 +341,11 @@ public class AssetWriter
     this.directoryForTemporaryFiles = paramString;
   }
   
+  public void setEncodeOption(ExportConfig paramExportConfig)
+  {
+    this.encodeOption = paramExportConfig;
+  }
+  
   public void setMetadata(List<MetadataItem> paramList)
   {
     this.metadata = paramList;
@@ -362,6 +369,7 @@ public class AssetWriter
     this.startTime = paramCMTime;
   }
   
+  @RequiresApi(api=18)
   public boolean startWriting()
   {
     if (this.videoOutputPath == null) {
@@ -371,6 +379,7 @@ public class AssetWriter
     try
     {
       this.encoderWriter = new EncoderWriter(this.videoOutputPath);
+      this.encoderWriter.setEncodeOption(this.encodeOption);
       Iterator localIterator = this.inputs.iterator();
       while (localIterator.hasNext()) {
         ((AssetWriterInput)localIterator.next()).initConfig(this);

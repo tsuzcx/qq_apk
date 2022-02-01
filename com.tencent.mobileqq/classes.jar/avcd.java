@@ -1,40 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
-public class avcd
-  implements Manager
+class avcd
+  implements auzs
 {
-  private auym jdField_a_of_type_Auym;
-  private Map<String, Map<String, Object>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  avcd(avca paramavca, int paramInt, String paramString) {}
   
-  public avcd()
+  public void a()
   {
-    QLog.d("SDK_SHARE.ForwardSdkStatusManager", 1, "--> init");
-    this.jdField_a_of_type_Auym = new auym();
+    ListenTogetherManager.a(this.jdField_a_of_type_Avca.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app).a(this.jdField_a_of_type_Avca.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1000);
+    bcef.b(null, "dc00899", this.jdField_a_of_type_Avca.jdField_a_of_type_Avch.jdField_a_of_type_JavaLangString, "", "music_tab", "clk_join", 0, 0, this.jdField_a_of_type_Avca.jdField_a_of_type_Avch.b, "", this.jdField_a_of_type_Avca.jdField_a_of_type_Avch.jdField_a_of_type_Int + "", "");
   }
   
-  public auym a()
-  {
-    return this.jdField_a_of_type_Auym;
-  }
-  
-  public Map<String, Object> a(String paramString)
-  {
-    return (Map)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-  }
-  
-  public void a(String paramString, Map<String, Object> paramMap)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, paramMap);
-  }
-  
-  public void onDestroy()
-  {
-    QLog.d("SDK_SHARE.ForwardSdkStatusManager", 1, "--> onDestroy");
-    this.jdField_a_of_type_Auym.a();
-  }
+  public void b() {}
 }
 
 

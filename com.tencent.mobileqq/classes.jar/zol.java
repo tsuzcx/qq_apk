@@ -1,9 +1,16 @@
-final class zol
-  extends wwv
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
+
+public class zol
+  implements DialogInterface.OnClickListener
 {
-  public String a()
+  public zol(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return wja.n;
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

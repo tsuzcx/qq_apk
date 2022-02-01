@@ -13,7 +13,6 @@ import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
-import com.tencent.qqmini.sdk.utils.MiniSDKConst;
 import com.tencent.qqmini.sdk.utils.QUAUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,9 +36,10 @@ public class ChooseMessageFileJsPlugin
     String str = paramString;
     if (!TextUtils.isEmpty(paramString))
     {
+      String[] arrayOfString = paramString.split("/");
       str = paramString;
-      if (paramString.contains(MiniSDKConst.STR_WXFILE)) {
-        str = paramString.substring(MiniSDKConst.STR_WXFILE.length());
+      if (arrayOfString.length > 0) {
+        str = arrayOfString[(arrayOfString.length - 1)];
       }
     }
     return str;
@@ -81,7 +81,7 @@ public class ChooseMessageFileJsPlugin
             String str2 = localMiniAppFileManager.getWxFilePathByExistLocalPath(str1);
             QMLog.i("ChooseMessageFileJsPlugin", "path : " + str1 + "; wxPath : " + str2);
             localJSONObject2.put("path", str2);
-            localJSONObject2.put("name", getRetName(str2));
+            localJSONObject2.put("name", getRetName(str1));
             break label251;
           }
           localJSONObject1.put("tempFiles", paramIntent);

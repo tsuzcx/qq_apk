@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import agej;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class SubscriptFeedsActivity$6
@@ -19,8 +19,8 @@ class SubscriptFeedsActivity$6
       int i = this.a;
       int j = arrayOfInt[0];
       int k = this.b;
-      int m = agej.a(2.0F, this.this$0.getResources());
-      SubscriptFeedsActivity.a(this.this$0).showAsDropDown(this.this$0.rightViewText, i - j - k - m, -agej.a(5.0F, this.this$0.getResources()));
+      int m = AIOUtils.dp2px(2.0F, this.this$0.getResources());
+      SubscriptFeedsActivity.a(this.this$0).showAsDropDown(this.this$0.rightViewText, i - j - k - m, -AIOUtils.dp2px(5.0F, this.this$0.getResources()));
       return;
     }
     catch (Exception localException)
@@ -32,7 +32,7 @@ class SubscriptFeedsActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.6
  * JD-Core Version:    0.7.0.1
  */

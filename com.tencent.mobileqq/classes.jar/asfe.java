@@ -1,19 +1,54 @@
-import mqq.app.QQPermissionCallback;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 class asfe
-  implements QQPermissionCallback
+  implements asdf
 {
-  asfe(asfd paramasfd) {}
+  asfe(asfd paramasfd, String paramString, asfo paramasfo) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(int paramInt, String paramString)
   {
-    bhlq.b(this.a.a);
+    boolean bool2 = false;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2BuddyTaskExcuter onFaild：");
+    boolean bool1;
+    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
+      bool1 = true;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Asfd.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send faild:" + paramInt);
+      }
+      this.jdField_a_of_type_Asfo.a(ases.a(this.jdField_a_of_type_Asfd.jdField_a_of_type_Long, bool2), bool1);
+      return;
+      if ((paramInt == -6101) || (paramInt == -7003))
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
+      }
+    }
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(String paramString1, String paramString2)
   {
-    this.a.c();
-    asfd.a(this.a).f();
+    paramString2 = new Bundle();
+    paramString2.putString("_m_ForwardFileType", "1");
+    paramString2.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    paramString2.putString("_m_ForwardFileName", this.jdField_a_of_type_Asfd.jdField_a_of_type_JavaLangString);
+    paramString2.putString("_m_ForwardSize", this.jdField_a_of_type_Asfd.jdField_a_of_type_Long + "");
+    paramString2.putString("_m_ForwardMd5", this.jdField_a_of_type_Asfd.c);
+    paramString2.putString("_m_ForwardDeadTime", "0");
+    paramString2.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Asfd.e);
+    paramString2.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Asfd.f);
+    paramString2.putString("_m_ForwardUuid", paramString1);
+    if (QLog.isColorLevel()) {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Asfd.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send success");
+    }
+    this.jdField_a_of_type_Asfo.a(paramString1, paramString2);
   }
 }
 

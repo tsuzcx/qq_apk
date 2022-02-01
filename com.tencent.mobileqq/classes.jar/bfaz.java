@@ -1,12 +1,6 @@
-public class bfaz
-  extends bfbf
+public abstract interface bfaz
 {
-  public String a;
-  
-  public String toString()
-  {
-    return this.a;
-  }
+  public abstract long a();
 }
 
 

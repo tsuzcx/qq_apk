@@ -1,106 +1,216 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
-import com.tencent.mobileqq.businessCard.utilities.BusinessCardUtils.2;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.graphics.drawable.Drawable;
+import android.util.SparseArray;
+import com.tencent.mobileqq.danmaku.util.DrawUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aqoj
 {
-  public static BusinessCard a(QQAppInterface paramQQAppInterface)
+  private static aqog jdField_a_of_type_Aqog;
+  private static aqow jdField_a_of_type_Aqow;
+  private static aqoz jdField_a_of_type_Aqoz;
+  private static final String jdField_a_of_type_JavaLangString = aqoj.class.getSimpleName();
+  private int jdField_a_of_type_Int;
+  private final SparseArray<aqou> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private aqon jdField_a_of_type_Aqon;
+  private aqoo jdField_a_of_type_Aqoo;
+  private aqoq jdField_a_of_type_Aqoq;
+  private aqor jdField_a_of_type_Aqor;
+  private aqos jdField_a_of_type_Aqos;
+  private aqot jdField_a_of_type_Aqot;
+  private aqov jdField_a_of_type_Aqov;
+  private aqpd jdField_a_of_type_Aqpd = new aqpd();
+  private final aqpp<Drawable> jdField_a_of_type_Aqpp;
+  private List<aqpa> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  
+  private aqoj(aqol paramaqol)
   {
-    paramQQAppInterface = (aqmx)paramQQAppInterface.getManager(112);
-    if (paramQQAppInterface != null) {}
-    for (paramQQAppInterface = paramQQAppInterface.a();; paramQQAppInterface = null)
+    this.jdField_a_of_type_Boolean = aqol.a(paramaqol);
+    this.jdField_a_of_type_Aqot = aqol.a(paramaqol);
+    this.jdField_a_of_type_Aqor = aqol.a(paramaqol);
+    this.jdField_a_of_type_Aqoq = aqol.a(paramaqol);
+    jdField_a_of_type_Aqow = aqol.a(paramaqol);
+    this.jdField_a_of_type_Aqov = aqol.a(paramaqol);
+    this.jdField_a_of_type_Aqos = paramaqol.jdField_a_of_type_Aqos;
+    this.jdField_a_of_type_Aqoo = paramaqol.jdField_a_of_type_Aqoo;
+    this.jdField_a_of_type_Aqon = aqol.a(paramaqol);
+    this.jdField_a_of_type_Int = aqol.a(paramaqol);
+    this.b = aqol.b(paramaqol);
+    this.jdField_a_of_type_Aqpp = new aqpp();
+    a(paramaqol);
+    c();
+  }
+  
+  public static aqog a()
+  {
+    if (jdField_a_of_type_Aqog == null) {}
+    try
     {
-      Object localObject = paramQQAppInterface;
-      if (paramQQAppInterface == null) {
-        localObject = new BusinessCard();
+      if (jdField_a_of_type_Aqog == null) {
+        jdField_a_of_type_Aqog = new aqog();
+      }
+      return jdField_a_of_type_Aqog;
+    }
+    finally {}
+  }
+  
+  public static aqol a()
+  {
+    return new aqol(null);
+  }
+  
+  public static aqoz a()
+  {
+    if (jdField_a_of_type_Aqoz == null) {}
+    try
+    {
+      if ((jdField_a_of_type_Aqoz == null) && (jdField_a_of_type_Aqow != null)) {
+        jdField_a_of_type_Aqoz = jdField_a_of_type_Aqow.a();
+      }
+      if (jdField_a_of_type_Aqoz == null) {
+        jdField_a_of_type_Aqoz = new aqoz();
+      }
+      return jdField_a_of_type_Aqoz;
+    }
+    finally {}
+  }
+  
+  private void a(aqol paramaqol)
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.addAll(aqol.a(paramaqol));
+  }
+  
+  private void c()
+  {
+    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aqot == null)) {
+      throw new IllegalArgumentException("Danmaku module need an IDanmakuPlayTimeSupplier or is live setter for computing timeline");
+    }
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Aqos != null) {
+      return this.jdField_a_of_type_Aqos.a();
+    }
+    return (int)Math.ceil(DrawUtils.getDefaultLineHeight(a()));
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_Aqot == null) {
+      return -1L;
+    }
+    return this.jdField_a_of_type_Aqot.a();
+  }
+  
+  public aqoa a(int paramInt)
+  {
+    Object localObject;
+    if (paramInt == -2147483647) {
+      localObject = new aqoi(this);
+    }
+    aqoa localaqoa;
+    do
+    {
+      return localObject;
+      localaqoa = null;
+      if (this.jdField_a_of_type_Aqoo != null) {
+        localaqoa = this.jdField_a_of_type_Aqoo.a(this, paramInt);
+      }
+      localObject = localaqoa;
+    } while (localaqoa != null);
+    return new aqof(this);
+  }
+  
+  public aqou a(int paramInt)
+  {
+    Object localObject3 = (aqou)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject1 = localObject3;
+    if (localObject3 == null) {}
+    try
+    {
+      localObject3 = (aqou)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+      localObject1 = localObject3;
+      if (localObject3 == null)
+      {
+        localObject1 = localObject3;
+        if (this.jdField_a_of_type_Aqov != null)
+        {
+          localObject1 = this.jdField_a_of_type_Aqov.a(paramInt);
+          this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
+        }
+      }
+      localObject3 = localObject1;
+      if (localObject1 == null) {
+        localObject3 = a();
+      }
+      return localObject3;
+    }
+    finally {}
+  }
+  
+  public aqpa a(aqoa paramaqoa)
+  {
+    Iterator localIterator = a().iterator();
+    Object localObject;
+    do
+    {
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localObject = (aqpa)localIterator.next();
+    } while (!((aqpa)localObject).a(paramaqoa));
+    for (paramaqoa = (aqoa)localObject;; paramaqoa = null)
+    {
+      localObject = paramaqoa;
+      if (paramaqoa == null) {
+        localObject = this.jdField_a_of_type_Aqpd;
       }
       return localObject;
     }
   }
   
-  public static BusinessCard a(QQAppInterface paramQQAppInterface, azxr paramazxr)
+  public List<aqpa> a()
   {
-    aqmx localaqmx = (aqmx)paramQQAppInterface.getManager(112);
-    if (paramazxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
-      paramQQAppInterface = localaqmx.a();
-    }
-    for (;;)
-    {
-      paramazxr = paramQQAppInterface;
-      if (paramQQAppInterface == null) {
-        paramazxr = new BusinessCard();
-      }
-      return paramazxr;
-      if (paramazxr.jdField_a_of_type_ComTencentMobileqqDataCard != null)
-      {
-        paramQQAppInterface = paramazxr.jdField_a_of_type_ComTencentMobileqqDataCard.getCardInfo();
-        if ((paramazxr.jdField_a_of_type_ComTencentMobileqqDataCard.hasCardInfo()) && (!TextUtils.isEmpty(paramQQAppInterface.cardId))) {
-          localaqmx.a(paramazxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, paramQQAppInterface);
-        } else {
-          paramQQAppInterface = localaqmx.b(paramazxr.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-        }
-      }
-      else
-      {
-        paramQQAppInterface = null;
-      }
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Aqon != null) {
+      this.jdField_a_of_type_Aqon.a();
     }
   }
   
-  public static void a(String paramString)
+  public void a(aqoa paramaqoa)
   {
-    try
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = 1000;
-      localURLDrawableOptions.mRequestHeight = 600;
-      ThreadManager.post(new BusinessCardUtils.2(URLDrawable.getDrawable(paramString, localURLDrawableOptions)), 8, null, true);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+    if (this.jdField_a_of_type_Aqor != null) {
+      this.jdField_a_of_type_Aqor.a(paramaqoa);
     }
   }
   
-  public static void a(String paramString, int paramInt)
+  public boolean a()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("errorCode", String.valueOf(paramInt));
-    bdmc.a(BaseApplicationImpl.getContext()).a(paramString, "ocr_user_edit_action_report", true, 0L, 0L, localHashMap, null);
+    return (this.jdField_a_of_type_Boolean) || (a() < 0L);
   }
   
-  public static void a(String paramString, URLImageView paramURLImageView, int paramInt1, int paramInt2)
+  public int b()
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramURLImageView == null)) {}
-    do
-    {
-      return;
-      try
-      {
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = paramInt1;
-        localURLDrawableOptions.mRequestHeight = paramInt2;
-        localURLDrawableOptions.mLoadingDrawable = paramURLImageView.getContext().getResources().getDrawable(2130844953);
-        paramURLImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
-        paramURLImageView.setURLDrawableDownListener(new aqok(paramURLImageView));
-        return;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("BusinessCard", 2, "error " + paramString.toString());
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Aqpp.a(0);
+  }
+  
+  public boolean b()
+  {
+    return this.b;
   }
 }
 

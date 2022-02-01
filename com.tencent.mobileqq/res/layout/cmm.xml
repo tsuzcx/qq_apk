@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/lk1" android:background="@color/al3" android:paddingLeft="@dimen/mw" android:paddingRight="@dimen/mw" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="48.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="14.5dip" android:layout_marginBottom="11.0dip">
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/ayn" android:textColor="@color/bp" android:layout_gravity="center_vertical" android:id="@id/o3b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="推荐关注" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/o2m" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/h4l" />
+    <com.tencent.mobileqq.widget.EllipsizeLayout android:gravity="right" android:layout_gravity="end|center" android:id="@id/dls" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/k9t" android:layout_width="48.0dip" android:layout_height="wrap_content" android:maxWidth="48.0dip" android:text="    " android:singleLine="true" />
+            <TextView android:textSize="9.0sp" android:textColor="@color/al3" android:id="@id/npe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="          " />
         </LinearLayout>
-        <TextView android:textSize="@dimen/ayk" android:textColor="@color/bp" android:gravity="center_vertical" android:layout_gravity="center|right" android:id="@id/o3a" android:layout_width="wrap_content" android:layout_height="20.0dip" android:text="查看全部" android:drawableRight="@drawable/h6q" />
-    </FrameLayout>
-    <android.support.v7.widget.RecyclerView android:id="@id/njk" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+        <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsTiktokFollowBtn android:layout_gravity="center_vertical" android:id="@id/mu5" android:layout_width="44.0dip" android:layout_height="20.0dip" android:layout_margin="8.0dip" android:src="@drawable/cjl" android:contentDescription="@string/pz7" />
+    </com.tencent.mobileqq.widget.EllipsizeLayout>
+    <com.tencent.biz.pubaccount.readinjoy.widgets.ScalingFrameLayout android:layout_gravity="start" android:id="@id/mp7" android:clipChildren="false" android:layout_width="48.0dip" android:layout_height="48.0dip">
+        <FrameLayout android:layout_gravity="center" android:id="@id/mt0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:foreground="@drawable/dqm">
+            <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:id="@id/d46" android:focusable="true" android:layout_width="40.0dip" android:layout_height="40.0dip" />
+        </FrameLayout>
+        <ImageView android:layout_gravity="center" android:id="@id/mt1" android:background="@drawable/gg_" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/gg9" />
+    </com.tencent.biz.pubaccount.readinjoy.widgets.ScalingFrameLayout>
+</merge>

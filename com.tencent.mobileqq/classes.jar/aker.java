@@ -1,59 +1,32 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.40.1;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment.SwapViews;
 
-public class aker
-  extends anwt
+public final class aker
+  implements Animation.AnimationListener
 {
-  public aker(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  private final View jdField_a_of_type_AndroidViewView;
+  private final boolean jdField_a_of_type_Boolean;
+  private final View b;
   
-  protected void a(boolean paramBoolean, Long paramLong)
+  private aker(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment, boolean paramBoolean, View paramView1, View paramView2)
   {
-    if (this.a.c != null) {
-      this.a.c.dismiss();
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidViewView = paramView1;
+    this.b = paramView2;
   }
   
-  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramBoolean)
-    {
-      bdll.b(this.a.b, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
-      this.a.a(paramLong2 + "");
-      if (this.a.jdField_a_of_type_Akfe != null) {
-        this.a.jdField_a_of_type_Akfe.a();
-      }
-      if (this.a.k)
-      {
-        this.a.d(paramLong2 + "");
-        if (this.a.jdField_a_of_type_Akfg != null) {
-          this.a.jdField_a_of_type_Akfg.notifyDataSetChanged();
-        }
-      }
-    }
-    for (;;)
-    {
-      if (this.a.c != null) {
-        this.a.c.dismiss();
-      }
-      return;
-      QQToast.a(this.a.getActivity(), 1, this.a.getString(2131693183), 0).b(this.a.getActivity().getTitleBarHeight());
-    }
+    DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).post(new DrawRedpacketPannelPreviewFragment.SwapViews(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidViewView, this.b));
   }
   
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3)
-  {
-    this.a.getActivity().runOnUiThread(new ChatHistoryTroopMemberFragment.40.1(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2, paramBoolean3));
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected void b(boolean paramBoolean, Long paramLong)
-  {
-    if (this.a.c != null) {
-      this.a.c.dismiss();
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

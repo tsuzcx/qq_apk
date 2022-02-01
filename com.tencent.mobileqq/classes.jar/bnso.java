@@ -1,193 +1,401 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.AsyncTask;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity;
+import com.tencent.mobileqq.data.MessageForBlessPTV;
+import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportProgressDialog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class bnso
-  implements bdfl
+  extends AsyncTask<Void, Void, Integer>
 {
-  final int jdField_a_of_type_Int;
-  final String jdField_a_of_type_JavaLangString;
-  Throwable jdField_a_of_type_JavaLangThrowable;
-  final int b;
+  private static AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private blim jdField_a_of_type_Blim;
+  private bnsp jdField_a_of_type_Bnsp;
+  private bodr jdField_a_of_type_Bodr = new bodr();
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private String c;
+  private String d;
+  private String e;
   
-  bnso(String paramString, int paramInt1, int paramInt2)
+  public bnso(bnsp parambnsp, boolean paramBoolean1, boolean paramBoolean2, blim paramblim)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    if (paramInt2 > 0) {}
-    for (this.jdField_b_of_type_Int = paramInt2;; this.jdField_b_of_type_Int = 30)
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Bnsp = parambnsp;
+    this.jdField_a_of_type_Long = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.getAndIncrement();
+    this.jdField_e_of_type_JavaLangString = ("MediaCodecSendTask_[mSessionId=" + this.jdField_a_of_type_Long + "]");
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_a_of_type_Blim = paramblim;
+  }
+  
+  private int a()
+  {
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Bnsp.jdField_a_of_type_JavaLangString;
+    a("cacheDir=" + this.jdField_a_of_type_JavaLangString, null);
+    if (!FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_Bnsp.jdField_c_of_type_JavaLangString))
     {
-      this.jdField_a_of_type_JavaLangThrowable = null;
-      if (paramString != null) {
-        break;
+      a("video file empty! path=" + this.jdField_a_of_type_Bnsp.jdField_c_of_type_JavaLangString, null);
+      return -300;
+    }
+    if (!FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_Bnsp.jdField_f_of_type_JavaLangString))
+    {
+      a("thumb file empty! path=" + this.jdField_a_of_type_Bnsp.jdField_f_of_type_JavaLangString, null);
+      return -301;
+    }
+    Intent localIntent = this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity.getIntent();
+    this.jdField_b_of_type_Int = localIntent.getIntExtra("param_entrance", 0);
+    this.jdField_c_of_type_JavaLangString = localIntent.getStringExtra("bless_ptv_mp4_path");
+    this.jdField_d_of_type_JavaLangString = localIntent.getStringExtra("fake_id");
+    int i = bodq.a(this.jdField_a_of_type_Bnsp.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Bodr);
+    if (i != 0)
+    {
+      a("MediaMetadataUtils: errcode=" + i, null);
+      return i;
+    }
+    i = this.jdField_a_of_type_Bodr.a[3];
+    this.jdField_a_of_type_Int = (((int)bnpm.a(this.jdField_a_of_type_Bnsp.jdField_j_of_type_Int, i) + 500) / 1000);
+    if ((this.jdField_a_of_type_Bnsp.jdField_c_of_type_Int <= 0) || (this.jdField_a_of_type_Bnsp.jdField_d_of_type_Int <= 0))
+    {
+      i = this.jdField_a_of_type_Bodr.a[2];
+      this.jdField_a_of_type_Bnsp.jdField_c_of_type_Int = this.jdField_a_of_type_Bodr.a[0];
+      this.jdField_a_of_type_Bnsp.jdField_d_of_type_Int = this.jdField_a_of_type_Bodr.a[1];
+      if ((i == 90) || (i == 270))
+      {
+        this.jdField_a_of_type_Bnsp.jdField_c_of_type_Int = this.jdField_a_of_type_Bnsp.jdField_d_of_type_Int;
+        this.jdField_a_of_type_Bnsp.jdField_d_of_type_Int = this.jdField_a_of_type_Bodr.a[0];
       }
-      throw new IllegalArgumentException("null == outputFilePath");
+    }
+    return b();
+  }
+  
+  private void a()
+  {
+    a("cancleProgressDailog", null);
+    try
+    {
+      if (this.jdField_a_of_type_AndroidAppProgressDialog != null)
+      {
+        this.jdField_a_of_type_AndroidAppProgressDialog.cancel();
+        this.jdField_a_of_type_AndroidAppProgressDialog = null;
+      }
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  private void a(Context paramContext, int paramInt)
+  {
+    a("showProgressDialog", null);
+    try
+    {
+      if (this.jdField_a_of_type_AndroidAppProgressDialog != null) {
+        a();
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
+        if (this.jdField_a_of_type_AndroidAppProgressDialog.isShowing()) {
+          break;
+        }
+        this.jdField_a_of_type_AndroidAppProgressDialog.show();
+        return;
+        this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(paramContext, 2131755826);
+        this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
+        this.jdField_a_of_type_AndroidAppProgressDialog.setCanceledOnTouchOutside(false);
+        this.jdField_a_of_type_AndroidAppProgressDialog.show();
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559574);
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131372546));
+      }
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      a("showProgressDialog", paramContext);
     }
   }
   
-  public bdfm a(int paramInt1, int paramInt2)
+  private void a(String paramString, Throwable paramThrowable)
   {
-    int i = 0;
-    bdfm localbdfm = new bdfm();
-    int k;
-    Object localObject;
-    if (paramInt1 <= paramInt2)
+    if (QLog.isColorLevel())
     {
-      k = paramInt2;
-      localObject = new File(this.jdField_a_of_type_JavaLangString);
-      if (((File)localObject).exists()) {
-        ((File)localObject).delete();
-      }
-      localbdfm.jdField_a_of_type_JavaIoFile = ((File)localObject);
-      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.lvcc.name(), "640|640|384|768|30");
-      if ((localObject == null) || (((String)localObject).length() <= 0)) {
-        break label431;
-      }
-      localObject = ((String)localObject).split("\\|");
-      if ((localObject == null) || (localObject.length <= 4)) {
-        break label431;
+      if (paramThrowable != null) {
+        QLog.d(this.jdField_e_of_type_JavaLangString, 2, "[@] " + paramString, paramThrowable);
       }
     }
-    label431:
-    for (;;)
+    else {
+      return;
+    }
+    QLog.d(this.jdField_e_of_type_JavaLangString, 2, "[@] " + paramString);
+  }
+  
+  /* Error */
+  private int b()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 45	bnso:jdField_a_of_type_Bnsp	Lbnsp;
+    //   4: getfield 99	bnsp:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   7: aload_0
+    //   8: getfield 45	bnso:jdField_a_of_type_Bnsp	Lbnsp;
+    //   11: getfield 234	bnsp:jdField_a_of_type_Double	D
+    //   14: aload_0
+    //   15: getfield 45	bnso:jdField_a_of_type_Bnsp	Lbnsp;
+    //   18: getfield 236	bnsp:jdField_b_of_type_Double	D
+    //   21: invokestatic 241	bfvo:a	(Ljava/lang/String;DD)Z
+    //   24: pop
+    //   25: new 243	java/io/File
+    //   28: dup
+    //   29: aload_0
+    //   30: getfield 45	bnso:jdField_a_of_type_Bnsp	Lbnsp;
+    //   33: getfield 99	bnsp:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   36: invokespecial 246	java/io/File:<init>	(Ljava/lang/String;)V
+    //   39: astore_2
+    //   40: new 248	java/io/FileInputStream
+    //   43: dup
+    //   44: aload_0
+    //   45: getfield 45	bnso:jdField_a_of_type_Bnsp	Lbnsp;
+    //   48: getfield 99	bnsp:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   51: invokespecial 249	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   54: astore_1
+    //   55: aload_0
+    //   56: aload_1
+    //   57: aload_2
+    //   58: invokevirtual 252	java/io/File:length	()J
+    //   61: invokestatic 258	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   64: invokestatic 264	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   67: putfield 266	bnso:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   70: aload_1
+    //   71: ifnull +7 -> 78
+    //   74: aload_1
+    //   75: invokevirtual 269	java/io/FileInputStream:close	()V
+    //   78: aload_0
+    //   79: getfield 266	bnso:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   82: invokestatic 275	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   85: ifeq +23 -> 108
+    //   88: aload_0
+    //   89: ldc_w 277
+    //   92: aconst_null
+    //   93: invokespecial 86	bnso:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   96: sipush -302
+    //   99: ireturn
+    //   100: astore_1
+    //   101: aload_1
+    //   102: invokevirtual 280	java/io/IOException:printStackTrace	()V
+    //   105: goto -27 -> 78
+    //   108: aload_0
+    //   109: getfield 266	bnso:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   112: ldc_w 282
+    //   115: invokestatic 287	dov/com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   118: astore_1
+    //   119: aload_0
+    //   120: getfield 45	bnso:jdField_a_of_type_Bnsp	Lbnsp;
+    //   123: getfield 99	bnsp:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   126: aload_1
+    //   127: invokestatic 291	com/tencent/mobileqq/utils/FileUtils:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   130: ifeq +13 -> 143
+    //   133: aload_0
+    //   134: getfield 45	bnso:jdField_a_of_type_Bnsp	Lbnsp;
+    //   137: aload_1
+    //   138: putfield 99	bnsp:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   141: iconst_0
+    //   142: ireturn
+    //   143: aload_1
+    //   144: invokestatic 94	com/tencent/mobileqq/utils/FileUtils:fileExistsAndNotEmpty	(Ljava/lang/String;)Z
+    //   147: ifne -6 -> 141
+    //   150: aload_0
+    //   151: new 53	java/lang/StringBuilder
+    //   154: dup
+    //   155: invokespecial 54	java/lang/StringBuilder:<init>	()V
+    //   158: ldc_w 293
+    //   161: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   164: aload_0
+    //   165: getfield 45	bnso:jdField_a_of_type_Bnsp	Lbnsp;
+    //   168: getfield 99	bnsp:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   171: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   174: ldc_w 295
+    //   177: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   180: aload_1
+    //   181: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   184: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   187: aconst_null
+    //   188: invokespecial 86	bnso:a	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   191: sipush -301
+    //   194: ireturn
+    //   195: astore_1
+    //   196: aconst_null
+    //   197: astore_1
+    //   198: goto -128 -> 70
+    //   201: astore_2
+    //   202: goto -132 -> 70
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	205	0	this	bnso
+    //   54	21	1	localFileInputStream	java.io.FileInputStream
+    //   100	2	1	localIOException	java.io.IOException
+    //   118	63	1	str	String
+    //   195	1	1	localFileNotFoundException1	java.io.FileNotFoundException
+    //   197	1	1	localObject	java.lang.Object
+    //   39	19	2	localFile	java.io.File
+    //   201	1	2	localFileNotFoundException2	java.io.FileNotFoundException
+    // Exception table:
+    //   from	to	target	type
+    //   74	78	100	java/io/IOException
+    //   40	55	195	java/io/FileNotFoundException
+    //   55	70	201	java/io/FileNotFoundException
+  }
+  
+  protected Integer a(Void... paramVarArgs)
+  {
+    long l = System.currentTimeMillis();
+    int i = a();
+    if (i != 0) {
+      return Integer.valueOf(i);
+    }
+    a("doInBackground total:time=" + (System.currentTimeMillis() - l) / 1000.0D, null);
+    return Integer.valueOf(0);
+  }
+  
+  void a(Intent paramIntent)
+  {
+    paramIntent.putExtra("mediacodec_encode_enable", true);
+    paramIntent.putExtra("file_video_source_dir", this.jdField_a_of_type_JavaLangString);
+    paramIntent.putExtra("thumbfile_send_path", this.jdField_a_of_type_Bnsp.jdField_f_of_type_JavaLangString);
+    paramIntent.putExtra("thumbfile_send_width", this.jdField_a_of_type_Bnsp.jdField_c_of_type_Int);
+    paramIntent.putExtra("thumbfile_send_height", this.jdField_a_of_type_Bnsp.jdField_d_of_type_Int);
+    paramIntent.putExtra("thumbfile_md5", this.jdField_b_of_type_JavaLangString);
+    paramIntent.putExtra("file_send_duration", this.jdField_a_of_type_Int);
+    paramIntent.putExtra("video_mood_content", this.jdField_a_of_type_Bnsp.jdField_g_of_type_JavaLangString);
+    paramIntent.putExtra("video_mood_priv", this.jdField_a_of_type_Bnsp.jdField_e_of_type_Int);
+    paramIntent.putExtra("video_mood_privUinList", this.jdField_a_of_type_Bnsp.jdField_a_of_type_JavaUtilArrayList);
+    paramIntent.putExtra("enable_edit_video", this.jdField_a_of_type_Bnsp.jdField_a_of_type_Boolean);
+    paramIntent.putExtra("video_topic_id", this.jdField_a_of_type_Bnsp.jdField_i_of_type_JavaLangString);
+    paramIntent.putExtra("video_topic_sync_qzone", this.jdField_a_of_type_Bnsp.jdField_b_of_type_Boolean);
+    paramIntent.putExtra("video_new_fake_vid", this.jdField_a_of_type_Bnsp.jdField_j_of_type_JavaLangString);
+    paramIntent.putExtra("video_sync_to_story", this.jdField_a_of_type_Bnsp.jdField_c_of_type_Boolean);
+    paramIntent.putExtra("extra_key_font_id", this.jdField_a_of_type_Bnsp.jdField_f_of_type_Int);
+    paramIntent.putExtra("extra_key_font_format_type", this.jdField_a_of_type_Bnsp.jdField_g_of_type_Int);
+    paramIntent.putExtra("extra_key_font_url", this.jdField_a_of_type_Bnsp.jdField_h_of_type_JavaLangString);
+    paramIntent.putExtra("sv_encode_max_bitrate", CodecParam.mMaxrate);
+    paramIntent.putExtra("sv_encode_min_bitrate", CodecParam.mMinrate);
+    paramIntent.putExtra("dynamic_text", this.jdField_a_of_type_Bnsp.k);
+    String str = this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("forward_source_to_qzone");
+    if (!TextUtils.isEmpty(str)) {
+      paramIntent.putExtra("forward_source_to_qzone", str);
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bnsp.l))
     {
-      try
-      {
-        i = Integer.valueOf(localObject[1]).intValue();
+      paramIntent.putExtra("widgetinfo", this.jdField_a_of_type_Bnsp.l);
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Bnsp.m)) {
+        paramIntent.putExtra("key_camera_material_name", this.jdField_a_of_type_Bnsp.m);
       }
-      catch (NumberFormatException localNumberFormatException1)
+    }
+  }
+  
+  protected void a(Integer paramInteger)
+  {
+    int j = 0;
+    a();
+    if (((this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity instanceof SplashActivity)) || ((this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity instanceof EditVideoActivity))) {}
+    for (int i = 0;; i = 1)
+    {
+      if (paramInteger.intValue() == 0)
       {
-        paramInt1 = 0;
-        paramInt2 = 0;
-        i = 0;
-      }
-      try
-      {
-        paramInt2 = Integer.valueOf(localObject[2]).intValue();
-      }
-      catch (NumberFormatException localNumberFormatException2)
-      {
-        for (;;)
+        paramInteger = new Intent();
+        a(paramInteger);
+        if (this.jdField_a_of_type_Bnsp.jdField_a_of_type_Akry != null)
         {
-          label344:
-          int n;
-          paramInt1 = 0;
-          paramInt2 = 0;
+          this.jdField_a_of_type_Bnsp.jdField_a_of_type_Akry.sendClick(this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity, paramInteger);
+          if (i != 0) {
+            this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity.finish();
+          }
+          this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity = null;
+          return;
         }
-      }
-      try
-      {
-        paramInt1 = Integer.valueOf(localObject[3]).intValue();
-      }
-      catch (NumberFormatException localNumberFormatException3)
-      {
-        paramInt1 = 0;
-        break label344;
-      }
-      try
-      {
-        m = Integer.valueOf(localObject[4]).intValue();
-        j = i;
-        i = paramInt2;
-        paramInt2 = m;
-        m = j;
-        if (j <= 0) {
-          m = 640;
-        }
-        j = i;
-        if (i <= 0) {
-          j = 384;
-        }
-        i = paramInt1;
-        if (paramInt1 <= 0) {
-          i = 768;
-        }
-        paramInt1 = paramInt2;
-        if (paramInt2 <= 0) {
-          paramInt1 = 30;
-        }
-        localbdfm.jdField_a_of_type_Float = (m / k);
-        localbdfm.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int * localbdfm.jdField_a_of_type_Float * localbdfm.jdField_a_of_type_Float + 0.5F));
-        if (localbdfm.jdField_a_of_type_Int <= i * 1024) {
-          break label382;
-        }
-        localbdfm.jdField_a_of_type_Int = (i * 1024);
-        paramInt2 = paramInt1;
-        if (this.jdField_b_of_type_Int <= paramInt1) {
-          paramInt2 = this.jdField_b_of_type_Int;
-        }
-        localbdfm.jdField_b_of_type_Int = paramInt2;
-        localbdfm.jdField_b_of_type_Boolean = a();
+        paramInteger.putExtra("uin", this.jdField_a_of_type_Bnsp.jdField_d_of_type_JavaLangString);
+        paramInteger.putExtra("uintype", this.jdField_a_of_type_Bnsp.jdField_b_of_type_Int);
+        paramInteger.putExtra("troop_uin", this.jdField_a_of_type_Bnsp.jdField_e_of_type_JavaLangString);
+        paramInteger.putExtra("file_send_business_type", 2);
+        a("onPostExecute(), MediaCodecSendTask is to start  SendVideoActivity,mVideoCacheDir = " + this.jdField_a_of_type_JavaLangString, null);
+        paramInteger.putExtra("ab_test_send_btn_click_time", this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity.getIntent().getLongExtra("ab_test_send_btn_click_time", 0L));
+        paramInteger.putExtra("video_send_aio_key_is_qim", this.jdField_a_of_type_Bnsp.jdField_d_of_type_Boolean);
         if (QLog.isColorLevel()) {
-          QLog.d("TroopHomeworkHelper", 2, "CompressTask, step: getEncodeConfig() config.setRotation = " + localbdfm.jdField_b_of_type_Boolean);
+          QLog.d("MediaCodecSendTask", 2, "ISQIM MediaCodecSendTask#onPostExecute, isQIM = " + this.jdField_a_of_type_Bnsp.jdField_d_of_type_Boolean);
         }
-        return localbdfm;
+        paramInteger.putExtra("param_key_redbag_type", this.jdField_a_of_type_Bnsp.jdField_h_of_type_Int);
+        paramInteger.putExtra("special_video_type", this.jdField_a_of_type_Bnsp.jdField_i_of_type_Int);
+        if ((this.jdField_a_of_type_Bnsp.jdField_d_of_type_JavaLangString != null) && (this.jdField_a_of_type_Bnsp.jdField_d_of_type_JavaLangString.equals(MessageForBlessPTV.BLESS_REQ_UIN)))
+        {
+          paramInteger.putExtra("bless_ptv_mp4_path", this.jdField_c_of_type_JavaLangString);
+          paramInteger.setClass(this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity, BlessSelectMemberActivity.class);
+          paramInteger.putExtra("param_type", 9003);
+          paramInteger.putExtra("param_only_friends", true);
+          paramInteger.putExtra("param_donot_need_contacts", true);
+          paramInteger.putExtra("param_title", this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity.getString(2131690563));
+          paramInteger.putExtra("param_done_button_wording", this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity.getString(2131690952));
+          paramInteger.putExtra("param_exit_animation", 1);
+          paramInteger.putExtra("param_entrance", this.jdField_b_of_type_Int);
+          paramInteger.putExtra("param_blesstype", 2);
+          paramInteger.putExtra("encode_type", 1);
+          paramInteger.putExtra("fake_id", this.jdField_d_of_type_JavaLangString);
+          this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity.startActivityForResult(paramInteger, 10007);
+          i = j;
+          j = i;
+          label488:
+          if (this.jdField_a_of_type_Blim == null) {
+            break label629;
+          }
+          this.jdField_a_of_type_Blim.a();
+        }
       }
-      catch (NumberFormatException localNumberFormatException4)
+      for (;;)
       {
-        break label344;
-      }
-      k = paramInt1;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopHomeworkHelper", 2, "getEncodeConfig -> get DpcConfig Erro", localNumberFormatException1);
-      }
-      n = 0;
-      int j = paramInt2;
-      int m = i;
-      paramInt2 = n;
-      i = j;
-      j = m;
-      continue;
-      label382:
-      if (localbdfm.jdField_a_of_type_Int < j * 1024)
-      {
-        localbdfm.jdField_a_of_type_Int = (j * 1024);
-        continue;
-        paramInt2 = 0;
-        paramInt1 = 0;
-        j = 0;
+        this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity = null;
+        return;
+        paramInteger.setClass(this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity, SendVideoActivity.class);
+        paramInteger.putExtra("src_edited", this.jdField_b_of_type_Boolean);
+        this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity.startActivity(paramInteger);
+        break;
+        QQToast.a(this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity, amtj.a(2131705614), 0).b(this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299076));
+        j = i;
+        if (!QLog.isColorLevel()) {
+          break label488;
+        }
+        QLog.d(this.jdField_e_of_type_JavaLangString, 2, "" + paramInteger);
+        j = i;
+        break label488;
+        label629:
+        if (j != 0) {
+          this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity.finish();
+        }
       }
     }
   }
   
-  public void a()
+  protected void onPreExecute()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopHomeworkHelper", 2, "CompressTask, step: HWCompressProcessor onSuccessed");
-    }
+    a(this.jdField_a_of_type_Bnsp.jdField_a_of_type_AndroidAppActivity, 2131694451);
   }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopHomeworkHelper", 2, "CompressTask, step: HWCompressProcessor onProgress:" + paramInt);
-    }
-  }
-  
-  public void a(Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TroopHomeworkHelper", 2, "CompressTask, step: HWCompressProcessor onFailed");
-    }
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-  }
-  
-  public boolean a()
-  {
-    boolean bool = false;
-    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
-      bool = true;
-    }
-    while (Build.VERSION.SDK_INT <= 19) {
-      return bool;
-    }
-    return false;
-  }
-  
-  public void b() {}
 }
 
 

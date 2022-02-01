@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ocr.data;
 
+import amtj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.util.Xml;
-import anzj;
-import azaf;
+import axnn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -22,7 +22,7 @@ public class OcrConfig
   implements Parcelable, Serializable
 {
   public static final String CHINESE = "zh";
-  public static final Parcelable.Creator<OcrConfig> CREATOR = new azaf();
+  public static final Parcelable.Creator<OcrConfig> CREATOR = new axnn();
   public static final String DEFAULT_SUPPORT_LANGUAGE = "en/ja/ko/fr/es/it/de/tr/ru/pt/vi/id/ms/th";
   public static final String ENGLISH = "en";
   public static final String TAG = "OcrConfig";
@@ -49,70 +49,70 @@ public class OcrConfig
   
   static
   {
-    a.put("zh", anzj.a(2131706572));
-    a.put("en", anzj.a(2131706584));
-    a.put("af", anzj.a(2131706613));
-    a.put("ar", anzj.a(2131706629));
-    a.put("eu", anzj.a(2131706594));
-    a.put("be", anzj.a(2131706608));
-    a.put("hr", anzj.a(2131706582));
-    a.put("da", anzj.a(2131706627));
-    a.put("nl", anzj.a(2131706589));
-    a.put("fo", anzj.a(2131706578));
-    a.put("fi", anzj.a(2131706593));
-    a.put("fr", anzj.a(2131706598));
-    a.put("gd", anzj.a(2131706606));
-    a.put("de", anzj.a(2131706585));
-    a.put("he", anzj.a(2131706616));
-    a.put("hu", anzj.a(2131706621));
-    a.put("id", anzj.a(2131706604));
-    a.put("it", anzj.a(2131706592));
-    a.put("kr", anzj.a(2131706619));
-    a.put("ko", anzj.a(2131706602));
-    a.put("lv", anzj.a(2131706631));
-    a.put("mk", anzj.a(2131706607));
-    a.put("mt", anzj.a(2131706596));
-    a.put("no", anzj.a(2131706620));
-    a.put("pt", anzj.a(2131706617));
-    a.put("rm", anzj.a(2131706615));
-    a.put("ro", anzj.a(2131706599));
-    a.put("sr", anzj.a(2131706630));
-    a.put("sk", anzj.a(2131706611));
-    a.put("sb", anzj.a(2131706597));
-    a.put("es", anzj.a(2131706603));
-    a.put("sx", anzj.a(2131706612));
-    a.put("sv", anzj.a(2131706609));
-    a.put("ts", anzj.a(2131706586));
-    a.put("tr", anzj.a(2131706576));
-    a.put("ur", anzj.a(2131706571));
-    a.put("vi", anzj.a(2131706623));
-    a.put("ji", anzj.a(2131706580));
-    a.put("sq", anzj.a(2131706595));
-    a.put("bg", anzj.a(2131706600));
-    a.put("ca", anzj.a(2131706579));
-    a.put("cs", anzj.a(2131706624));
-    a.put("et", anzj.a(2131706625));
-    a.put("fa", anzj.a(2131706581));
-    a.put("ga", anzj.a(2131706618));
-    a.put("el", anzj.a(2131706577));
-    a.put("hi", anzj.a(2131706591));
-    a.put("is", anzj.a(2131706575));
-    a.put("jp", anzj.a(2131706626));
-    a.put("ja", anzj.a(2131706628));
-    a.put("lt", anzj.a(2131706614));
-    a.put("ms", anzj.a(2131706590));
-    a.put("pl", anzj.a(2131706605));
-    a.put("ru", anzj.a(2131706610));
-    a.put("sz", anzj.a(2131706622));
-    a.put("sl", anzj.a(2131706601));
-    a.put("th", anzj.a(2131706570));
-    a.put("tn", anzj.a(2131706573));
-    a.put("uk", anzj.a(2131706583));
-    a.put("ve", anzj.a(2131706632));
-    a.put("xh", anzj.a(2131706588));
-    a.put("zu", anzj.a(2131706587));
-    a.put("jap", anzj.a(2131706626));
-    a.put("unk", anzj.a(2131706574));
+    a.put("zh", amtj.a(2131706802));
+    a.put("en", amtj.a(2131706814));
+    a.put("af", amtj.a(2131706843));
+    a.put("ar", amtj.a(2131706859));
+    a.put("eu", amtj.a(2131706824));
+    a.put("be", amtj.a(2131706838));
+    a.put("hr", amtj.a(2131706812));
+    a.put("da", amtj.a(2131706857));
+    a.put("nl", amtj.a(2131706819));
+    a.put("fo", amtj.a(2131706808));
+    a.put("fi", amtj.a(2131706823));
+    a.put("fr", amtj.a(2131706828));
+    a.put("gd", amtj.a(2131706836));
+    a.put("de", amtj.a(2131706815));
+    a.put("he", amtj.a(2131706846));
+    a.put("hu", amtj.a(2131706851));
+    a.put("id", amtj.a(2131706834));
+    a.put("it", amtj.a(2131706822));
+    a.put("kr", amtj.a(2131706849));
+    a.put("ko", amtj.a(2131706832));
+    a.put("lv", amtj.a(2131706861));
+    a.put("mk", amtj.a(2131706837));
+    a.put("mt", amtj.a(2131706826));
+    a.put("no", amtj.a(2131706850));
+    a.put("pt", amtj.a(2131706847));
+    a.put("rm", amtj.a(2131706845));
+    a.put("ro", amtj.a(2131706829));
+    a.put("sr", amtj.a(2131706860));
+    a.put("sk", amtj.a(2131706841));
+    a.put("sb", amtj.a(2131706827));
+    a.put("es", amtj.a(2131706833));
+    a.put("sx", amtj.a(2131706842));
+    a.put("sv", amtj.a(2131706839));
+    a.put("ts", amtj.a(2131706816));
+    a.put("tr", amtj.a(2131706806));
+    a.put("ur", amtj.a(2131706801));
+    a.put("vi", amtj.a(2131706853));
+    a.put("ji", amtj.a(2131706810));
+    a.put("sq", amtj.a(2131706825));
+    a.put("bg", amtj.a(2131706830));
+    a.put("ca", amtj.a(2131706809));
+    a.put("cs", amtj.a(2131706854));
+    a.put("et", amtj.a(2131706855));
+    a.put("fa", amtj.a(2131706811));
+    a.put("ga", amtj.a(2131706848));
+    a.put("el", amtj.a(2131706807));
+    a.put("hi", amtj.a(2131706821));
+    a.put("is", amtj.a(2131706805));
+    a.put("jp", amtj.a(2131706856));
+    a.put("ja", amtj.a(2131706858));
+    a.put("lt", amtj.a(2131706844));
+    a.put("ms", amtj.a(2131706820));
+    a.put("pl", amtj.a(2131706835));
+    a.put("ru", amtj.a(2131706840));
+    a.put("sz", amtj.a(2131706852));
+    a.put("sl", amtj.a(2131706831));
+    a.put("th", amtj.a(2131706800));
+    a.put("tn", amtj.a(2131706803));
+    a.put("uk", amtj.a(2131706813));
+    a.put("ve", amtj.a(2131706862));
+    a.put("xh", amtj.a(2131706818));
+    a.put("zu", amtj.a(2131706817));
+    a.put("jap", amtj.a(2131706856));
+    a.put("unk", amtj.a(2131706804));
   }
   
   public OcrConfig() {}
@@ -150,7 +150,7 @@ public class OcrConfig
   {
     Object localObject2;
     if (TextUtils.isEmpty(paramString)) {
-      localObject2 = anzj.a(2131706574);
+      localObject2 = amtj.a(2131706804);
     }
     Object localObject1;
     do
@@ -159,7 +159,7 @@ public class OcrConfig
       localObject2 = (String)a.get(paramString);
       localObject1 = localObject2;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = anzj.a(2131706574);
+        localObject1 = amtj.a(2131706804);
       }
       localObject2 = localObject1;
     } while (!QLog.isColorLevel());

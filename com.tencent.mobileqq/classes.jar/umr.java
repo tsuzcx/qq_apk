@@ -1,18 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushOpModel;
+import UserGrowth.stSimpleMetaComment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.weishi_new.comment.WsCommentView;
+import com.tencent.biz.pubaccount.weishi_new.comment.WsReplyContainer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-public final class umr
-  implements Parcelable.Creator<WSPushOpModel>
+public class umr
+  implements View.OnClickListener
 {
-  public WSPushOpModel a(Parcel paramParcel)
-  {
-    return new WSPushOpModel(paramParcel);
-  }
+  public umr(WsCommentView paramWsCommentView) {}
   
-  public WSPushOpModel[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new WSPushOpModel[paramInt];
+    if ((WsCommentView.a(this.a) != null) && (WsCommentView.a(this.a).replyList.size() > 0))
+    {
+      WsCommentView.a(this.a).a(paramView, 10, WsCommentView.a(this.a), WsCommentView.a(this.a));
+      this.a.jdField_a_of_type_Ums.b.setVisibility(8);
+      this.a.jdField_a_of_type_Ums.a.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsReplyContainer.setVisibility(0);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

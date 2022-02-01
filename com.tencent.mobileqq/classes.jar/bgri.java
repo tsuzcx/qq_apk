@@ -1,307 +1,257 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Looper;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileError.1;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.MobileQQ;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bgri
+  extends VasWebviewJsPlugin
 {
-  public static WeakReference<bgrm> a = new WeakReference(null);
-  
-  private static String a(QQAppInterface paramQQAppInterface, int paramInt)
+  public bgri()
   {
-    return paramQQAppInterface.getApplication().getResources().getString(paramInt);
+    this.mPluginNameSpace = "gift";
   }
   
-  private static String a(QQAppInterface paramQQAppInterface, int paramInt, Object... paramVarArgs)
+  private void a()
   {
-    return String.format(a(paramQQAppInterface, paramInt), paramVarArgs);
+    Activity localActivity = this.mRuntime.a();
+    if (localActivity != null) {
+      localActivity.finish();
+    }
   }
   
-  private static void a(Context paramContext, long paramLong)
+  private void a(String paramString)
   {
-    bgrj localbgrj = new bgrj(paramLong);
-    bhlq.a(paramContext, 230, paramContext.getResources().getString(2131696935), paramContext.getResources().getString(2131696936), 2131696989, 2131696618, localbgrj, localbgrj).show();
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString, 0);
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    int i;
-    try
-    {
-      i = paramContext.getResources().getDimensionPixelSize(2131299011);
-      if (Looper.getMainLooper() != Looper.myLooper())
-      {
-        new Handler(Looper.getMainLooper()).post(new TroopFileError.1(paramContext, paramInt, paramString, i));
-        return;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      QLog.e("TroopFileError", 1, "showTipsToast error!", paramContext);
-      return;
-    }
-    QQToast.a(paramContext, paramInt, paramString, 0).b(i);
-  }
-  
-  public static void a(bgrk parambgrk, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    if ((parambgrk == null) || (paramContext == null)) {
-      return;
-    }
-    if (!TextUtils.isEmpty(parambgrk.jdField_b_of_type_JavaLangString))
-    {
-      a(paramContext, parambgrk.jdField_b_of_type_JavaLangString, 1);
-      return;
-    }
-    String str = bgsk.a(parambgrk.jdField_a_of_type_JavaLangString);
-    int i;
-    switch (parambgrk.jdField_a_of_type_Int)
-    {
-    default: 
-      str = null;
-      i = 0;
-    }
+    int i = 0;
+    Activity localActivity = this.mRuntime.a();
+    if (localActivity == null) {}
     for (;;)
     {
-      if ((parambgrk.jdField_a_of_type_Int != 602) && (parambgrk.jdField_a_of_type_Int != 604) && (parambgrk.jdField_a_of_type_Int != 605)) {
-        break label1264;
-      }
-      if (BaseActivity.sTopActivity == null) {
-        break;
-      }
-      bnzt.a(paramQQAppInterface, BaseActivity.sTopActivity, BaseActivity.sTopActivity.getTitleBarHeight());
       return;
-      str = a(paramQQAppInterface, 2131697013);
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131696937);
-      i = 0;
-      continue;
-      a(paramContext, paramLong);
-      str = null;
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697107, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697105, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697106);
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697104);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697108);
-      i = 2;
-      continue;
-      str = a(paramQQAppInterface, 2131696634, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131696632);
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131696633);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697100);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131697128);
-      bdll.b(paramQQAppInterface, "P_CliOper", "Grp_files", "", "power", "nopower_upload", 0, 0, String.format("%d", new Object[] { Long.valueOf(paramLong) }), "2", "", "");
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697126, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697121, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697063, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697123, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697122, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131697013);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131696690);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131696691);
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131696651);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131696647);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131696649, new Object[] { str });
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131696650, new Object[] { str });
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131696648, new Object[] { str });
-      i = 0;
-      continue;
-      if (bfrt.a(parambgrk.jdField_b_of_type_Int))
-      {
-        str = a(paramQQAppInterface, 2131697120, new Object[] { str });
-        i = 1;
-      }
-      else
-      {
-        str = a(paramQQAppInterface, 2131696646, new Object[] { str });
-        i = 1;
-        continue;
-        str = a(paramQQAppInterface, 2131697100);
-        i = 1;
-        continue;
-        str = a(paramQQAppInterface, 2131696704);
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131696705);
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131696708);
-        i = 2;
-        continue;
-        str = a(paramQQAppInterface, 2131696709);
-        i = 1;
-        continue;
-        str = parambgrk.jdField_b_of_type_JavaLangString;
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131696710);
-        i = 1;
-        continue;
-        str = a(paramQQAppInterface, 2131696712);
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131696711);
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131696713);
-        i = 1;
-        continue;
-        if (!TextUtils.isEmpty(parambgrk.jdField_b_of_type_JavaLangString))
+      if (this.mRuntime.a() != null) {
+        try
         {
-          str = parambgrk.jdField_b_of_type_JavaLangString;
-          i = 0;
+          Object localObject = new JSONObject(paramString);
+          paramString = ((JSONObject)localObject).optString("url");
+          localObject = ((JSONObject)localObject).optJSONObject("options");
+          int j;
+          if (localObject != null)
+          {
+            j = ((JSONObject)localObject).optInt("style");
+            i = ((JSONObject)localObject).optInt("animation");
+            label75:
+            if (TextUtils.isEmpty(paramString)) {
+              continue;
+            }
+            localObject = localActivity.getIntent().getExtras();
+            ((Bundle)localObject).putString("leftViewText", "");
+            switch (j)
+            {
+            }
+          }
+          for (;;)
+          {
+            Intent localIntent = new Intent(localActivity, QQBrowserActivity.class);
+            localIntent.putExtras((Bundle)localObject);
+            localIntent.putExtra("url", paramString);
+            localIntent.setFlags(0);
+            localActivity.startActivityForResult(localIntent, 100);
+            switch (i)
+            {
+            case 0: 
+            case 1: 
+              localActivity.overridePendingTransition(0, 0);
+              return;
+              ((Bundle)localObject).putBoolean("hide_more_button", false);
+              ((Bundle)localObject).putBoolean("hide_operation_bar", true);
+              continue;
+              ((Bundle)localObject).putBoolean("hide_more_button", true);
+              ((Bundle)localObject).putBoolean("hide_operation_bar", true);
+              continue;
+              ((Bundle)localObject).putBoolean("hide_more_button", false);
+              ((Bundle)localObject).putBoolean("hide_operation_bar", false);
+              ((Bundle)localObject).putString("webStyle", "");
+              continue;
+              ((Bundle)localObject).putBoolean("hide_more_button", true);
+              ((Bundle)localObject).putBoolean("hide_operation_bar", false);
+              ((Bundle)localObject).putString("webStyle", "");
+              break;
+            case 2: 
+              localActivity.overridePendingTransition(2130772300, 0);
+              return;
+              j = 0;
+              break label75;
+            }
+          }
+          return;
         }
-        else
-        {
-          str = a(paramQQAppInterface, 2131696714);
-          i = 0;
-          continue;
-          str = a(paramQQAppInterface, 2131696707);
-          i = 2;
-          continue;
-          str = a(paramQQAppInterface, 2131696706);
-          i = 0;
-        }
+        catch (JSONException paramString) {}
       }
     }
-    label1264:
-    if ((parambgrk.jdField_a_of_type_Int == 601) || (parambgrk.jdField_a_of_type_Int == 605) || (parambgrk.jdField_a_of_type_Int == 802) || (parambgrk.jdField_a_of_type_Int == 604) || (parambgrk.jdField_a_of_type_Int == 702))
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VipGiftPlugin", 2, "method:" + paramString1 + ", json:" + paramString2);
+    }
+    callJs(paramString1, new String[] { paramString2 });
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    if (paramLong == 8589934595L)
     {
-      a(paramQQAppInterface, paramContext, str, i);
-      return;
+      paramString = this.mRuntime.a();
+      if (paramString != null) {
+        break label22;
+      }
     }
-    a(paramContext, str, i);
+    label22:
+    while (!paramString.getClass().getSimpleName().equals("VipGiftBrowserActivity")) {
+      return false;
+    }
+    paramString.finish();
+    return false;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    a(paramQQAppInterface, paramLong, 7, paramInt);
+    if ("gift".equals(paramString2))
+    {
+      if (("openUrl".equals(paramString3)) && (paramVarArgs.length == 1))
+      {
+        a(paramVarArgs[0]);
+        a();
+      }
+      do
+      {
+        return true;
+        if (("close".equals(paramString3)) && (paramVarArgs.length == 1)) {
+          try
+          {
+            paramString1 = new JSONObject(paramVarArgs[0]);
+            paramJsBridgeListener = paramString1.getString("callback");
+            long l = paramString1.getLong("version");
+            paramString1 = new Bundle();
+            paramString1.putLong("version", l);
+            sendRemoteReq(aqyt.a("close_version", paramJsBridgeListener, this.mOnRemoteResp.key, paramString1), false, false);
+            return true;
+          }
+          catch (Exception paramJsBridgeListener)
+          {
+            return true;
+          }
+        }
+        if ("isFlowerVisible".equals(paramString3)) {
+          try
+          {
+            paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
+            paramString1 = new Bundle();
+            sendRemoteReq(aqyt.a("getFlowerVisibility", paramJsBridgeListener, this.mOnRemoteResp.key, paramString1), false, false);
+            return true;
+          }
+          catch (JSONException paramJsBridgeListener)
+          {
+            paramJsBridgeListener.printStackTrace();
+            return true;
+          }
+        }
+      } while (!"setFlowerVisibility".equals(paramString3));
+      paramString1 = null;
+      paramJsBridgeListener = paramString1;
+      for (;;)
+      {
+        try
+        {
+          paramString2 = new JSONObject(paramVarArgs[0]);
+          paramJsBridgeListener = paramString1;
+          paramString1 = paramString2.optString("callback");
+          paramJsBridgeListener = paramString1;
+          int i = paramString2.getInt("isVisible");
+          paramJsBridgeListener = paramString1;
+          paramString2 = new Bundle();
+          if (i != 1) {
+            break label322;
+          }
+          bool = true;
+          paramJsBridgeListener = paramString1;
+          paramString2.putBoolean("isVisible", bool);
+          paramJsBridgeListener = paramString1;
+          sendRemoteReq(aqyt.a("setFlowerVisibility", paramString1, this.mOnRemoteResp.key, paramString2), false, false);
+          return true;
+        }
+        catch (JSONException paramString1) {}
+        if (TextUtils.isEmpty(paramJsBridgeListener)) {
+          break;
+        }
+        callJs(paramJsBridgeListener, new String[] { String.format("{\"result\": -2, \"message\":\"%s\"}", new Object[] { paramString1 }) });
+        return true;
+        label322:
+        boolean bool = false;
+      }
+    }
+    return false;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2)
+  public void onResponse(Bundle paramBundle)
   {
-    a(paramQQAppInterface, paramLong, null, paramInt1, paramInt2);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, String paramString, int paramInt1, int paramInt2)
-  {
-    if ((paramQQAppInterface == null) || (paramInt2 == 0)) {}
+    JSONObject localJSONObject;
+    String str2;
+    String str1;
+    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.mOnRemoteResp.key))
+    {
+      localJSONObject = new JSONObject();
+      str2 = paramBundle.getString("cmd");
+      str1 = paramBundle.getString("callbackid");
+      paramBundle = paramBundle.getBundle("response");
+      if (str2 != null)
+      {
+        if (!"close_version".equals(str2)) {
+          break label111;
+        }
+        i = paramBundle.getInt("result");
+      }
+    }
+    label111:
     do
     {
-      return;
-      if (QLog.isColorLevel())
+      try
       {
-        StringBuilder localStringBuilder = new StringBuilder("reportSimpleError==> troopUin:");
-        localStringBuilder.append(paramLong).append(",filename:").append(paramString).append(",status:").append(paramInt1).append(",errorCode:").append(paramInt2);
-        QLog.e("TroopFileError", 2, localStringBuilder.toString());
+        localJSONObject.put("result", i);
+        a(str1, localJSONObject.toString());
+        a();
+        return;
       }
-      paramQQAppInterface = (antz)paramQQAppInterface.a(22);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.b(new bgrk(paramString, paramLong, paramInt1, paramInt2));
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
-  {
-    if (bnyz.a())
-    {
-      if (bnyz.b()) {
-        bnyz.a(paramQQAppInterface);
+      catch (JSONException paramBundle)
+      {
+        for (;;)
+        {
+          paramBundle.printStackTrace();
+        }
       }
-    }
-    else {
-      return;
-    }
-    a(paramContext, paramString, paramInt);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, bgrk parambgrk)
-  {
-    if ((paramQQAppInterface == null) || (parambgrk == null) || (parambgrk.jdField_a_of_type_Int == 0)) {}
-    do
+      if ("getFlowerVisibility".equals(str2))
+      {
+        if (paramBundle.getBoolean("result")) {}
+        for (i = 1;; i = 0)
+        {
+          callJs(str1, new String[] { String.format("{\"result\":0, \"data\":{\"isVisible\":%d}}", new Object[] { Integer.valueOf(i) }) });
+          return;
+        }
+      }
+    } while (!"setFlowerVisibility".equals(str2));
+    int i = paramBundle.getInt("result");
+    if (i == 0) {}
+    for (paramBundle = "{\"result\":0}";; paramBundle = String.format("{\"result\": %d, \"message\":\"Unknown error\"}", new Object[] { Integer.valueOf(i) }))
     {
+      callJs(str1, new String[] { paramBundle });
       return;
-      paramQQAppInterface = (antz)paramQQAppInterface.a(22);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.b(parambgrk);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, bgrm parambgrm)
-  {
-    if ((a != null) && (a.get() != null))
-    {
-      paramQQAppInterface.removeObserver((anui)a.get());
-      a = null;
-    }
-    a = new WeakReference(parambgrm);
-    paramQQAppInterface.addObserver(parambgrm);
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, bgrm parambgrm)
-  {
-    paramQQAppInterface.removeObserver(parambgrm);
-    if ((a != null) && (a.get() == parambgrm)) {
-      a = null;
     }
   }
 }

@@ -1,41 +1,6 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public class amdy
-  extends azov
+public abstract interface amdy
 {
-  public amdy(PhoneContactTabView paramPhoneContactTabView) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.a.a.unRegistObserver(this);
-    switch (PhoneContactTabView.a(this.a).d())
-    {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    default: 
-      PhoneContactTabView.b(this.a);
-      return;
-    case 9: 
-      this.a.d();
-      return;
-    case 0: 
-    case 1: 
-    case 5: 
-    case 7: 
-      PhoneContactTabView.a(this.a);
-      return;
-    }
-    if (PhoneContactTabView.a(this.a).a().lastUsedFlag == 2L)
-    {
-      this.a.d();
-      return;
-    }
-    PhoneContactTabView.a(this.a);
-  }
+  public abstract void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2);
 }
 
 

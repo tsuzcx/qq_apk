@@ -1,7 +1,18 @@
-public final class bejw
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
+
+public class bejw
+  implements beni
 {
-  public static final String a = anzj.a(2131713801);
-  public static final String b = anzj.a(2131713815);
+  public bejw(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  
+  public void a(View paramView, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.a(this.a.a.a());
+    }
+  }
 }
 
 

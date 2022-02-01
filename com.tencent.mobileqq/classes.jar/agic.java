@@ -1,401 +1,260 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.s2c.msgtype0x210.submsgtype0xc7.bussinfo.mutualmark.mutualmark.ResourceInfo;
-import tencent.im.s2c.msgtype0x210.submsgtype0xc7.bussinfo.mutualmark.mutualmark.ResourceInfo_17;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.MultiForwardActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForLongTextMsg;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class agic
+  extends agqd
+  implements aeze
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public long f;
-  public String f;
-  public long g;
-  public String g;
-  public long h;
-  
-  public agic()
+  public agic(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_g_of_type_JavaLangString = "";
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
   }
   
-  /* Error */
-  public static agic a(long paramLong, byte[] paramArrayOfByte)
+  public aeze a(View paramView)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: new 38	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo
-    //   6: dup
-    //   7: invokespecial 39	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:<init>	()V
-    //   10: astore 6
-    //   12: aload 6
-    //   14: aload_2
-    //   15: invokevirtual 43	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   18: pop
-    //   19: new 2	agic
-    //   22: dup
-    //   23: invokespecial 44	agic:<init>	()V
-    //   26: astore 5
-    //   28: aload 5
-    //   30: lload_0
-    //   31: putfield 46	agic:jdField_a_of_type_Long	J
-    //   34: aload 6
-    //   36: getfield 50	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint32_level	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   39: invokevirtual 56	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   42: ifeq +17 -> 59
-    //   45: aload 5
-    //   47: aload 6
-    //   49: getfield 50	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint32_level	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   52: invokevirtual 60	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   55: i2l
-    //   56: putfield 62	agic:jdField_b_of_type_Long	J
-    //   59: aload 6
-    //   61: getfield 66	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_last_action_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   64: invokevirtual 69	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
-    //   67: ifeq +16 -> 83
-    //   70: aload 5
-    //   72: aload 6
-    //   74: getfield 66	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_last_action_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   77: invokevirtual 72	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   80: putfield 74	agic:jdField_c_of_type_Long	J
-    //   83: aload 6
-    //   85: getfield 77	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_last_change_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   88: invokevirtual 69	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
-    //   91: ifeq +16 -> 107
-    //   94: aload 5
-    //   96: aload 6
-    //   98: getfield 77	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_last_change_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   101: invokevirtual 72	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   104: putfield 79	agic:jdField_d_of_type_Long	J
-    //   107: aload 6
-    //   109: getfield 82	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint32_continue_days	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   112: invokevirtual 56	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   115: ifeq +16 -> 131
-    //   118: aload 5
-    //   120: aload 6
-    //   122: getfield 82	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint32_continue_days	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   125: invokevirtual 60	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   128: putfield 84	agic:jdField_a_of_type_Int	I
-    //   131: aload 6
-    //   133: getfield 88	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:bytes_wildcard_wording	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   136: invokevirtual 91	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   139: ifeq +19 -> 158
-    //   142: aload 5
-    //   144: aload 6
-    //   146: getfield 88	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:bytes_wildcard_wording	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   149: invokevirtual 94	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   152: invokevirtual 100	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   155: putfield 102	agic:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   158: aload 6
-    //   160: getfield 105	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:bytes_duplicate_removal_key	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   163: invokevirtual 91	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   166: ifeq +19 -> 185
-    //   169: aload 5
-    //   171: aload 6
-    //   173: getfield 105	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:bytes_duplicate_removal_key	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   176: invokevirtual 94	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   179: invokevirtual 100	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   182: putfield 107	agic:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   185: aload 6
-    //   187: getfield 110	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_notify_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   190: invokevirtual 69	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
-    //   193: ifeq +16 -> 209
-    //   196: aload 5
-    //   198: aload 6
-    //   200: getfield 110	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_notify_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   203: invokevirtual 72	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   206: putfield 112	agic:jdField_e_of_type_Long	J
-    //   209: aload 6
-    //   211: getfield 115	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_icon_status	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   214: invokevirtual 69	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
-    //   217: ifeq +16 -> 233
-    //   220: aload 5
-    //   222: aload 6
-    //   224: getfield 115	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_icon_status	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   227: invokevirtual 72	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   230: putfield 117	agic:jdField_f_of_type_Long	J
-    //   233: aload 6
-    //   235: getfield 120	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_icon_status_end_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   238: invokevirtual 69	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
-    //   241: ifeq +16 -> 257
-    //   244: aload 5
-    //   246: aload 6
-    //   248: getfield 120	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_icon_status_end_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   251: invokevirtual 72	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   254: putfield 122	agic:jdField_g_of_type_Long	J
-    //   257: aload 6
-    //   259: getfield 125	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_sub_level	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   262: invokevirtual 69	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
-    //   265: ifeq +16 -> 281
-    //   268: aload 5
-    //   270: aload 6
-    //   272: getfield 125	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_sub_level	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   275: invokevirtual 72	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   278: putfield 127	agic:h	J
-    //   281: aload 6
-    //   283: getfield 130	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint32_graytip_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   286: invokevirtual 56	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   289: ifeq +16 -> 305
-    //   292: aload 5
-    //   294: aload 6
-    //   296: getfield 130	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint32_graytip_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   299: invokevirtual 60	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   302: putfield 132	agic:jdField_b_of_type_Int	I
-    //   305: aload 6
-    //   307: getfield 135	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint32_close_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   310: invokevirtual 56	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   313: ifeq +22 -> 335
-    //   316: aload 6
-    //   318: getfield 135	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint32_close_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   321: invokevirtual 60	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   324: ifeq +159 -> 483
-    //   327: iconst_1
-    //   328: istore_3
-    //   329: aload 5
-    //   331: iload_3
-    //   332: putfield 137	agic:jdField_a_of_type_Boolean	Z
-    //   335: aload 6
-    //   337: getfield 140	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:bytes_resource_info	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   340: invokevirtual 91	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   343: ifeq +33 -> 376
-    //   346: new 142	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17
-    //   349: dup
-    //   350: invokespecial 143	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17:<init>	()V
-    //   353: astore_2
-    //   354: aload_2
-    //   355: aload 6
-    //   357: getfield 140	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:bytes_resource_info	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   360: invokevirtual 94	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   363: invokevirtual 147	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   366: invokevirtual 148	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   369: pop
-    //   370: aload 5
-    //   372: aload_2
-    //   373: invokestatic 151	agic:a	(Lagic;Ltencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17;)V
-    //   376: aload 6
-    //   378: getfield 154	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:bytes_grade_resource_info	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   381: invokevirtual 91	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   384: ifeq +33 -> 417
-    //   387: new 156	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo
-    //   390: dup
-    //   391: invokespecial 157	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo:<init>	()V
-    //   394: astore_2
-    //   395: aload_2
-    //   396: aload 6
-    //   398: getfield 154	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:bytes_grade_resource_info	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   401: invokevirtual 94	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   404: invokevirtual 147	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   407: invokevirtual 158	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   410: pop
-    //   411: aload 5
-    //   413: aload_2
-    //   414: invokestatic 161	agic:a	(Lagic;Ltencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo;)V
-    //   417: invokestatic 166	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   420: ifeq +29 -> 449
-    //   423: ldc 168
-    //   425: iconst_1
-    //   426: new 170	java/lang/StringBuilder
-    //   429: dup
-    //   430: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   433: ldc 173
-    //   435: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   438: aload 5
-    //   440: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   443: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   446: invokestatic 187	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   449: aload 5
-    //   451: areturn
-    //   452: astore_2
-    //   453: ldc 168
-    //   455: iconst_1
-    //   456: new 170	java/lang/StringBuilder
-    //   459: dup
-    //   460: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   463: ldc 189
-    //   465: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   468: aload_2
-    //   469: invokevirtual 192	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   472: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   475: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   478: invokestatic 187	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   481: aconst_null
-    //   482: areturn
-    //   483: iconst_0
-    //   484: istore_3
-    //   485: goto -156 -> 329
-    //   488: astore_2
-    //   489: ldc 168
-    //   491: iconst_1
-    //   492: new 170	java/lang/StringBuilder
-    //   495: dup
-    //   496: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   499: ldc 194
-    //   501: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   504: aload_2
-    //   505: invokevirtual 192	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   508: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   511: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   514: invokestatic 187	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   517: aconst_null
-    //   518: astore_2
-    //   519: goto -149 -> 370
-    //   522: astore_2
-    //   523: ldc 168
-    //   525: iconst_1
-    //   526: new 170	java/lang/StringBuilder
-    //   529: dup
-    //   530: invokespecial 171	java/lang/StringBuilder:<init>	()V
-    //   533: ldc 196
-    //   535: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   538: aload_2
-    //   539: invokevirtual 192	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   542: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   545: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   548: invokestatic 187	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   551: aload 4
-    //   553: astore_2
-    //   554: goto -143 -> 411
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	557	0	paramLong	long
-    //   0	557	2	paramArrayOfByte	byte[]
-    //   328	157	3	bool	boolean
-    //   1	551	4	localObject	Object
-    //   26	424	5	localagic	agic
-    //   10	387	6	localMutualmarkInfo	tencent.im.s2c.msgtype0x210.submsgtype0xc7.bussinfo.mutualmark.mutualmark.MutualmarkInfo
-    // Exception table:
-    //   from	to	target	type
-    //   12	19	452	java/lang/Throwable
-    //   354	370	488	java/lang/Throwable
-    //   395	411	522	java/lang/Throwable
+    if (a(paramView)) {
+      return this;
+    }
+    return null;
   }
   
-  private static void a(agic paramagic, mutualmark.ResourceInfo paramResourceInfo)
+  public View a(ChatMessage paramChatMessage, aezf paramaezf, View paramView, BaseChatItemLayout paramBaseChatItemLayout, afce paramafce)
   {
-    boolean bool = true;
-    if (paramResourceInfo != null)
+    if (paramChatMessage == null)
     {
-      if (paramResourceInfo.bytes_static_url.has())
+      paramView = null;
+      return paramView;
+    }
+    MessageForLongTextMsg localMessageForLongTextMsg = (MessageForLongTextMsg)paramChatMessage;
+    if ((localMessageForLongTextMsg.getExtInfoFromExtStr("long_text_recv_state").equals("0")) || (localMessageForLongTextMsg.getExtInfoFromExtStr("long_text_recv_state").equals("1")))
+    {
+      if ((paramView != null) && ((paramView instanceof TextView))) {
+        return super.a(paramChatMessage, paramaezf, paramView, paramBaseChatItemLayout, paramafce);
+      }
+      return super.a(paramChatMessage, paramaezf, null, paramBaseChatItemLayout, paramafce);
+    }
+    Object localObject1 = paramBaseChatItemLayout.getContext();
+    agql localagql = (agql)paramaezf;
+    if (paramView != null)
+    {
+      paramaezf = paramView;
+      if (!(paramView instanceof TextView)) {}
+    }
+    else
+    {
+      paramView = this.jdField_a_of_type_AndroidContentContext.getResources();
+      paramaezf = new RelativeLayout((Context)localObject1);
+      paramaezf.setPadding(paramView.getDimensionPixelSize(2131296385), paramView.getDimensionPixelSize(2131296387), paramView.getDimensionPixelSize(2131296384), paramView.getDimensionPixelSize(2131296386));
+      localObject2 = new RelativeLayout.LayoutParams(BaseChatItemLayout.e, -2);
+      int i = paramView.getDimensionPixelSize(2131298976);
+      ((RelativeLayout.LayoutParams)localObject2).setMargins(i, 0, i, 0);
+      paramaezf.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      i = AIOUtils.dp2px(6.0F, ((Context)localObject1).getResources());
+      int j = AIOUtils.dp2px(7.0F, ((Context)localObject1).getResources());
+      int k = AIOUtils.dp2px(13.0F, ((Context)localObject1).getResources());
+      int m = AIOUtils.dp2px(15.0F, ((Context)localObject1).getResources());
+      paramView = new LinearLayout((Context)localObject1);
+      paramView.setLayoutParams(new RelativeLayout.LayoutParams(BaseChatItemLayout.f, -2));
+      paramView.setId(2131364442);
+      paramView.setOrientation(1);
+      paramView.setBackgroundResource(2130850380);
+      paramView.setPadding(k, m, k, m);
+      localObject2 = new ETTextView((Context)localObject1);
+      com.tencent.mobileqq.text.TextUtils.fixTextViewANRForAnd10((TextView)localObject2);
+      ((ETTextView)localObject2).setTextSize(2, 15.0F);
+      ((ETTextView)localObject2).setId(2131364444);
+      ((ETTextView)localObject2).setTextColor(-16777216);
+      ((ETTextView)localObject2).setPadding(0, 0, 0, i);
+      localagql.d = ((TextView)localObject2);
+      paramView.addView((View)localObject2);
+      localObject2 = new View((Context)localObject1);
+      ((View)localObject2).setBackgroundColor(((Context)localObject1).getResources().getColor(2131166369));
+      paramView.addView((View)localObject2, BaseChatItemLayout.f, 2);
+      localObject1 = new ETTextView((Context)localObject1);
+      ((ETTextView)localObject1).setTextSize(2, 15.0F);
+      ((ETTextView)localObject1).setId(2131364443);
+      ((ETTextView)localObject1).setPadding(0, j, 0, 0);
+      ((ETTextView)localObject1).setTextColor(-7829368);
+      paramView.addView((View)localObject1);
+      paramaezf.addView(paramView);
+    }
+    paramView = (TextView)paramaezf.findViewById(2131364444);
+    Object localObject2 = paramaezf.findViewById(2131364442);
+    localObject1 = (TextView)paramaezf.findViewById(2131364443);
+    paramView.setMaxLines(4);
+    if (!android.text.TextUtils.isEmpty(localMessageForLongTextMsg.sb)) {
+      if (!android.text.TextUtils.isEmpty(localMessageForLongTextMsg.sb2))
       {
-        paramagic.jdField_c_of_type_JavaLangString = paramResourceInfo.bytes_static_url.get().toStringUtf8();
-        paramagic.jdField_c_of_type_JavaLangString = axsr.c(paramagic.jdField_c_of_type_JavaLangString);
-      }
-      if (paramResourceInfo.bytes_dynamic_url.has())
-      {
-        paramagic.jdField_d_of_type_JavaLangString = paramResourceInfo.bytes_dynamic_url.get().toStringUtf8();
-        paramagic.jdField_d_of_type_JavaLangString = axsr.c(paramagic.jdField_d_of_type_JavaLangString);
-      }
-      if (paramResourceInfo.bytes_cartoon_url.has())
-      {
-        paramagic.jdField_e_of_type_JavaLangString = paramResourceInfo.bytes_cartoon_url.get().toStringUtf8();
-        paramagic.jdField_e_of_type_JavaLangString = axsr.c(paramagic.jdField_e_of_type_JavaLangString);
-      }
-      if (paramResourceInfo.bytes_cartoon_md5.has()) {
-        paramagic.jdField_f_of_type_JavaLangString = paramResourceInfo.bytes_cartoon_md5.get().toStringUtf8();
-      }
-      if (paramResourceInfo.bytes_word.has()) {
-        paramagic.jdField_g_of_type_JavaLangString = paramResourceInfo.bytes_word.get().toStringUtf8();
-      }
-      if (paramResourceInfo.uint32_play_cartoon.has()) {
-        if (paramResourceInfo.uint32_play_cartoon.get() != 1) {
-          break label186;
+        localagql.d.setText(localMessageForLongTextMsg.sb2);
+        label513:
+        ((View)localObject2).setOnTouchListener(paramafce);
+        ((View)localObject2).setOnLongClickListener(paramafce);
+        if ((!localMessageForLongTextMsg.getExtInfoFromExtStr("long_text_recv_state").equals("3")) || (!localMessageForLongTextMsg.loading)) {
+          break label687;
         }
+        ((TextView)localObject1).setText(amtj.a(2131705503));
+        ((View)localObject2).setTag(null);
+        paramaezf.setClickable(false);
+        ((View)localObject2).setVisibility(0);
       }
     }
     for (;;)
     {
-      paramagic.jdField_b_of_type_Boolean = bool;
-      return;
-      label186:
-      bool = false;
+      paramafce = gm.a(paramChatMessage);
+      paramView.setTypeface(paramafce);
+      ((TextView)localObject1).setTypeface(paramafce);
+      paramView = paramaezf;
+      if (localagql == null) {
+        break;
+      }
+      paramView = paramaezf;
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+        break;
+      }
+      localagql.c = super.a(localagql.c, localagql, paramBaseChatItemLayout, paramChatMessage, -2, DisplayUtil.dip2px(this.jdField_a_of_type_AndroidContentContext, 21.0F));
+      super.a(localagql.c, paramBaseChatItemLayout, null, paramChatMessage, 0, null);
+      return paramaezf;
+      localagql.d.setText(localMessageForLongTextMsg.sb);
+      break label513;
+      paramView.setText(localMessageForLongTextMsg.msg);
+      break label513;
+      label687:
+      if (localMessageForLongTextMsg.getExtInfoFromExtStr("long_text_recv_state").equals("3"))
+      {
+        ((TextView)localObject1).setText(amtj.a(2131705504));
+        ((TextView)localObject1).setClickable(false);
+        ((View)localObject2).setTag(localMessageForLongTextMsg);
+        ((View)localObject2).setOnClickListener(this);
+        ((View)localObject2).setClickable(false);
+        ((View)localObject2).setVisibility(0);
+      }
     }
   }
   
-  private static void a(agic paramagic, mutualmark.ResourceInfo_17 paramResourceInfo_17)
+  public void a(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
-    if (paramResourceInfo_17 != null)
+    switch (paramMotionEvent.getAction())
     {
-      if (paramResourceInfo_17.bytes_static_url.has())
-      {
-        paramagic.jdField_c_of_type_JavaLangString = paramResourceInfo_17.bytes_static_url.get().toStringUtf8();
-        paramagic.jdField_c_of_type_JavaLangString = axsr.c(paramagic.jdField_c_of_type_JavaLangString);
+    }
+    do
+    {
+      return;
+      paramView = paramView.getBackground();
+    } while (paramView == null);
+    paramView.setColorFilter(null);
+    paramView.invalidateSelf();
+  }
+  
+  public void a(View paramView, ChatMessage paramChatMessage)
+  {
+    MessageForLongTextMsg localMessageForLongTextMsg = (MessageForLongTextMsg)paramChatMessage;
+    if ((localMessageForLongTextMsg.getExtInfoFromExtStr("long_text_recv_state").equals("2")) || (localMessageForLongTextMsg.getExtInfoFromExtStr("long_text_recv_state").equals("3"))) {
+      return;
+    }
+    if (paramChatMessage.isSend())
+    {
+      paramView.setPadding(f, c, e, d);
+      return;
+    }
+    paramView.setPadding(e, c, f, d);
+  }
+  
+  public void a(View paramView, boolean paramBoolean)
+  {
+    Drawable localDrawable = paramView.getBackground();
+    if (localDrawable != null) {
+      if (!paramBoolean) {
+        break label25;
       }
-      if (paramResourceInfo_17.bytes_dynamic_url.has())
-      {
-        paramagic.jdField_d_of_type_JavaLangString = paramResourceInfo_17.bytes_dynamic_url.get().toStringUtf8();
-        paramagic.jdField_d_of_type_JavaLangString = axsr.c(paramagic.jdField_d_of_type_JavaLangString);
+    }
+    label25:
+    for (paramView = null;; paramView = jdField_a_of_type_AndroidGraphicsColorFilter)
+    {
+      localDrawable.setColorFilter(paramView);
+      localDrawable.invalidateSelf();
+      return;
+    }
+  }
+  
+  public bgbb[] a(View paramView)
+  {
+    ChatMessage localChatMessage = AIOUtils.getMessage(paramView);
+    if (((localChatMessage instanceof MessageForLongTextMsg)) && ((localChatMessage.getExtInfoFromExtStr("long_text_recv_state").equals("2")) || (localChatMessage.getExtInfoFromExtStr("long_text_recv_state").equals("3"))))
+    {
+      paramView = new bgaz();
+      if (localChatMessage.istroop == 1) {}
+      a(localChatMessage, paramView);
+      acvv.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
+      if ((aqeg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (d())) {
+        b(paramView, this.jdField_a_of_type_AndroidContentContext, localChatMessage);
       }
-      if (paramResourceInfo_17.bytes_cartoon_url.has())
-      {
-        paramagic.jdField_e_of_type_JavaLangString = paramResourceInfo_17.bytes_cartoon_url.get().toStringUtf8();
-        paramagic.jdField_e_of_type_JavaLangString = axsr.c(paramagic.jdField_e_of_type_JavaLangString);
-      }
-      if (paramResourceInfo_17.bytes_cartoon_md5.has()) {
-        paramagic.jdField_f_of_type_JavaLangString = paramResourceInfo_17.bytes_cartoon_md5.get().toStringUtf8();
-      }
-      if (paramResourceInfo_17.bytes_word.has()) {
-        paramagic.jdField_g_of_type_JavaLangString = paramResourceInfo_17.bytes_word.get().toStringUtf8();
-      }
-      if (paramResourceInfo_17.uint32_play_cartoon.has()) {
-        if (paramResourceInfo_17.uint32_play_cartoon.get() != 1) {
-          break label186;
-        }
-      }
+      c(localChatMessage, paramView);
+      b(localChatMessage, paramView);
+      super.c(paramView, this.jdField_a_of_type_AndroidContentContext);
+      super.e(paramView, this.jdField_a_of_type_AndroidContentContext);
+      return paramView.a();
+    }
+    return super.a(paramView);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView.getId() == 2131364442) {
+      if (paramView.getTag() != null) {}
     }
     for (;;)
     {
-      paramagic.jdField_b_of_type_Boolean = bool;
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      label186:
-      bool = false;
+      MessageForLongTextMsg localMessageForLongTextMsg = (MessageForLongTextMsg)paramView.getTag();
+      Context localContext = paramView.getContext();
+      Object localObject = (FragmentActivity)localContext;
+      if (((FragmentActivity)localObject).getChatFragment() != null)
+      {
+        int i = ((FragmentActivity)localObject).getChatFragment().a().getCurType();
+        String str1 = ((FragmentActivity)localObject).getChatFragment().a().getCurFriendUin();
+        String str2 = ((FragmentActivity)localObject).getChatFragment().a().getCurTroopUin();
+        localObject = new Intent(localContext, MultiForwardActivity.class);
+        ((Intent)localObject).putExtra("chat_subType", 3);
+        ((Intent)localObject).putExtra("uin", str1);
+        ((Intent)localObject).putExtra("uintype", i);
+        ((Intent)localObject).putExtra("troop_code", str2);
+        str1 = localMessageForLongTextMsg.getExtInfoFromExtStr("long_text_msg_resid");
+        if (android.text.TextUtils.isEmpty(str1)) {
+          QLog.e("ChatItemBuilder", 1, "LongTextMsg resid is null!");
+        }
+        ((Intent)localObject).putExtra("multi_url", str1);
+        ((Intent)localObject).putExtra("multi_uniseq", localMessageForLongTextMsg.uniseq);
+        ((Intent)localObject).putExtra("callback_type", 2);
+        localContext.startActivity((Intent)localObject);
+      }
+      super.onClick(paramView);
     }
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ExtSnsMutualMarkPushInfo{");
-    localStringBuilder.append("relation_type:").append(this.jdField_a_of_type_Long).append(", ");
-    localStringBuilder.append("relation_level:").append(this.jdField_b_of_type_Long).append(", ");
-    localStringBuilder.append("last_action_time:").append(this.jdField_c_of_type_Long).append(", ");
-    localStringBuilder.append("last_change_time:").append(this.jdField_d_of_type_Long).append(", ");
-    localStringBuilder.append("continue_days:").append(this.jdField_a_of_type_Int).append(", ");
-    localStringBuilder.append("notify_time:").append(this.jdField_e_of_type_Long).append(", ");
-    localStringBuilder.append("icon_status:").append(this.jdField_f_of_type_Long).append(", ");
-    localStringBuilder.append("icon_status_end_time:").append(this.jdField_g_of_type_Long).append(", ");
-    localStringBuilder.append("sub_level:").append(this.h).append(", ");
-    localStringBuilder.append("grayTipType:").append(this.jdField_b_of_type_Int).append(", ");
-    localStringBuilder.append("wildcard_wording:").append(this.jdField_a_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("gray_tip_duplicate_key:").append(this.jdField_b_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("icon_static_url:").append(this.jdField_c_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("icon_dynamic_url:").append(this.jdField_d_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("icon_cartoon_url:").append(this.jdField_e_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("icon_cartoon_md5:").append(this.jdField_f_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("icon_name:").append(this.jdField_g_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("user_close_flag:").append(this.jdField_a_of_type_Boolean).append(", ");
-    localStringBuilder.append("play_cartoon:").append(this.jdField_b_of_type_Boolean).append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
   }
 }
 

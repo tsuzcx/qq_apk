@@ -1,10 +1,13 @@
 package com.tencent.tav.core;
 
+import android.support.annotation.RequiresApi;
+
 class AssetExportThread$2
   implements Runnable
 {
   AssetExportThread$2(AssetExportThread paramAssetExportThread) {}
   
+  @RequiresApi(api=18)
   public void run()
   {
     AssetExportThread.access$1200(this.this$0);

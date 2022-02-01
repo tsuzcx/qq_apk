@@ -1,37 +1,103 @@
-import android.support.annotation.NonNull;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class bfzd
-  extends SimpleObserver<bfyw>
 {
-  public bfzd(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
+  private static int c;
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener;
+  private bfzf jdField_a_of_type_Bfzf;
+  private boolean jdField_a_of_type_Boolean = true;
+  private int b;
   
-  public void a(bfyw parambfyw)
+  public bfzd(View paramView, int paramInt, bfzf parambfzf)
   {
-    super.onNext(parambfyw);
-    yuk.d("QQ.Troop.homework.CheckArithHWResultFragment", "requestSendHomeworkResult completed");
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-    znw.a(parambfyw.a);
-    znw.a(parambfyw.b);
-    CheckArithHWResultFragment.a(this.a, parambfyw.a, parambfyw.b);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Bfzf = parambfzf;
+    b();
   }
   
-  public void onCancel()
+  public static int a(int paramInt)
   {
-    super.onCancel();
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
+    int i;
+    if (paramInt == 0) {
+      i = AIOUtils.dp2px(210.0F, BaseApplicationImpl.getContext().getResources());
+    }
+    do
+    {
+      return i;
+      if (c == 0) {
+        c = b();
+      }
+      i = paramInt;
+    } while (paramInt <= c);
+    return c;
   }
   
-  public void onError(@NonNull Error paramError)
+  private static int b()
   {
-    super.onError(paramError);
-    yuk.e("QQ.Troop.homework.CheckArithHWResultFragment", "send homework error:" + paramError);
-    QQToast.a(this.a.getActivity(), 1, anzj.a(2131700676), 0).a();
-    CheckArithHWResultFragment.a(this.a).setVisibility(8);
-    CheckArithHWResultFragment.a(this.a, null, null);
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    if (bjvx.a(localBaseApplication)) {
+      i = bjvx.a(localBaseApplication);
+    }
+    for (int i = (int)((localBaseApplication.getResources().getDisplayMetrics().heightPixels + i) * 0.4D);; i = (int)(localBaseApplication.getResources().getDisplayMetrics().heightPixels * 0.4D))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SoftKeyboardHeight", 2, new Object[] { "getMaxEmotionPanelHeight, max keyboard height:", Integer.valueOf(i) });
+      }
+      return i;
+    }
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new bfze(this);
+  }
+  
+  public int a()
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("sp_soft_keyboard", 0);
+    int i;
+    if (localSharedPreferences.contains("key_height"))
+    {
+      i = localSharedPreferences.getInt("key_height", 0);
+      this.jdField_a_of_type_Bfzf.onShowed(i, true);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SoftKeyboardHeight", 2, new Object[] { "getSoftKeyboardHeight, keyboard height:", Integer.valueOf(i) });
+      }
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+      return i;
+      i = 0;
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener != null)
+    {
+      if (Build.VERSION.SDK_INT < 16) {
+        this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
   }
 }
 

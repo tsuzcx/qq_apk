@@ -1,42 +1,20 @@
-import android.view.animation.Transformation;
-import android.view.animation.TranslateAnimation;
+import com.tencent.biz.qcircleshadow.local.widgets.QCircleFollowView;
+import feedcloud.FeedCloudMeta.StUser;
 
-public class agks
-  extends TranslateAnimation
+class agks
+  implements vhi
 {
-  public static volatile boolean a;
-  public int a;
+  agks(agkr paramagkr, agku paramagku) {}
   
-  public agks()
+  public void a(boolean paramBoolean, FeedCloudMeta.StUser paramStUser)
   {
-    this(1, 1.0F, 1, 0.0F, 1, 0.0F, 1, 0.0F);
-  }
-  
-  public agks(int paramInt1, float paramFloat1, int paramInt2, float paramFloat2, int paramInt3, float paramFloat3, int paramInt4, float paramFloat4)
-  {
-    super(paramInt1, paramFloat1, paramInt2, paramFloat2, paramInt3, paramFloat3, paramInt4, paramFloat4);
-    this.jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public boolean getTransformation(long paramLong, Transformation paramTransformation)
-  {
-    this.jdField_a_of_type_Int += 1;
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int <= 2))
+    paramStUser = this.jdField_a_of_type_Agku.a;
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      setStartTime(paramLong);
-      if (this.jdField_a_of_type_Int == 2) {
-        jdField_a_of_type_Boolean = true;
-      }
+      paramStUser.setClickable(paramBoolean);
+      return;
     }
-    return super.getTransformation(paramLong, paramTransformation);
-  }
-  
-  public void reset()
-  {
-    this.jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-    super.reset();
   }
 }
 

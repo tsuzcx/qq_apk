@@ -1,20 +1,25 @@
+import android.app.Activity;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout;
+
 public class bnrr
+  extends RecyclerView.OnScrollListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public long e;
-  public long f;
-  public long g;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public bnrr(HorizontalAlumbListLayout paramHorizontalAlumbListLayout) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    if ((paramInt == 1) && (!this.jdField_a_of_type_Boolean))
+    {
+      if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout.a != null) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout.a.getActivity() != null)) {
+        xwa.a("video_edit_new", "swap_albumbar", this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetHorizontalAlumbListLayout.a.getActivity().getIntent(), new String[0]);
+      }
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
 }
 
 

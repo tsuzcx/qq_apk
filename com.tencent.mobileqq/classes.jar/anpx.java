@@ -1,39 +1,43 @@
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class anpx
+public class anpx
+  extends anri
 {
-  private static HashMap<String, Long> a = new HashMap();
-  private static HashMap<String, Long> b = new HashMap();
-  
-  public static void a()
+  private anrh a(anrh paramanrh, String paramString)
   {
-    a.clear();
-    b.clear();
-  }
-  
-  public static void a(String paramString)
-  {
-    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramString))) {
-      a.put(paramString, Long.valueOf(SystemClock.uptimeMillis()));
-    }
-  }
-  
-  public static void b(String paramString)
-  {
-    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramString)) && (a.containsKey(paramString)))
+    paramanrh.a = paramString;
+    paramanrh.b = "avgame";
+    paramanrh.c = "create_room";
+    paramString = paramString.split("\\?");
+    if (paramString.length != 2) {}
+    for (;;)
     {
-      Long localLong = (Long)a.get(paramString);
-      if (localLong != null)
+      return paramanrh;
+      paramString = paramString[1].split("&");
+      int i = 0;
+      while (i < paramString.length)
       {
-        long l1 = localLong.longValue();
-        long l2 = SystemClock.uptimeMillis();
-        b.put(paramString, Long.valueOf(l2));
-        QLog.d("TraceReport_CmShowStatUtil", 1, new Object[] { "eventName=", paramString, ", cost=", Long.valueOf(l2 - l1) });
+        Object localObject = paramString[i];
+        if (localObject.split("=").length == 2)
+        {
+          int j = localObject.indexOf("=");
+          paramanrh.a(localObject.substring(0, j), localObject.substring(j + 1));
+        }
+        i += 1;
       }
     }
+  }
+  
+  public anrh a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString)
+  {
+    return a(new anpw(paramQQAppInterface, paramActivity), paramString);
+  }
+  
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  {
+    return a(new anpw(paramQQAppInterface, paramContext), paramString);
   }
 }
 

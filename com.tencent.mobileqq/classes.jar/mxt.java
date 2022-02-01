@@ -1,248 +1,36 @@
-import android.os.Looper;
-import com.tencent.avgame.business.observer.ObserverCenter.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
-public class mxt
+class mxt
+  implements DialogInterface.OnClickListener
 {
-  private static int jdField_a_of_type_Int;
-  private static mxt jdField_a_of_type_Mxt;
-  private static int jdField_b_of_type_Int = -1;
-  private final List<anui> jdField_a_of_type_JavaUtilList = new ArrayList(4);
-  private final mxv jdField_a_of_type_Mxv = new mxv(Looper.getMainLooper());
-  private final List<anui> jdField_b_of_type_JavaUtilList = new ArrayList(4);
-  private final mxv jdField_b_of_type_Mxv = new mxv(ThreadManager.getSubThreadHandler());
+  mxt(mxn parammxn, WeakReference paramWeakReference, int paramInt1, String paramString1, int paramInt2, String paramString2, int paramInt3, Activity paramActivity) {}
   
-  public static mxt a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (jdField_a_of_type_Mxt == null) {}
     try
     {
-      jdField_a_of_type_Mxt = new mxt();
-      return jdField_a_of_type_Mxt;
-    }
-    finally {}
-  }
-  
-  private void a(int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2, boolean paramBoolean3, anui paramanui, mxv parammxv)
-  {
-    paramObject = new ObserverCenter.1(this, paramanui, paramInt, parammxv, paramBoolean1, paramObject);
-    if (paramBoolean2)
-    {
-      parammxv.a(paramObject, paramBoolean3);
+      if (mxn.a(this.jdField_a_of_type_Mxn) != null) {
+        mxn.a(this.jdField_a_of_type_Mxn).removeObserver(mxn.a(this.jdField_a_of_type_Mxn));
+      }
+      mxn.a(this.jdField_a_of_type_Mxn, new mxu(this));
+      mxn.a(this.jdField_a_of_type_Mxn).addObserver(mxn.a(this.jdField_a_of_type_Mxn));
+      bcef.b(null, "dc00898", "", "", "0X800B078", "0X800B078", this.jdField_a_of_type_Int, 0, "", "", "", "");
+      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      paramDialogInterface.putExtra("url", "https://ti.qq.com/realname/index.html?source=avgame");
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
+      if (QLog.isColorLevel()) {
+        QLog.i("AvGameManager", 2, "showRealNameDialog click confirm. roomId: " + this.jdField_a_of_type_JavaLangString);
+      }
       return;
     }
-    parammxv.b(paramObject, paramBoolean3);
-  }
-  
-  private void a(Class<? extends anui> paramClass, List<anui> paramList1, List<anui> paramList2)
-  {
-    if ((paramList1 == null) || (paramList2 == null)) {
-      return;
-    }
-    try
-    {
-      Iterator localIterator = paramList1.iterator();
-      while (localIterator.hasNext())
-      {
-        anui localanui = (anui)localIterator.next();
-        if ((paramClass != null) && (paramClass.isAssignableFrom(localanui.getClass()))) {
-          paramList2.add(localanui);
-        }
-      }
-    }
-    finally {}
-  }
-  
-  public List<anui> a(int paramInt)
-  {
-    List localList = null;
-    if (paramInt == 1) {
-      localList = this.jdField_a_of_type_JavaUtilList;
-    }
-    while (paramInt != 2) {
-      return localList;
-    }
-    return this.jdField_b_of_type_JavaUtilList;
-  }
-  
-  public List<anui> a(Class<? extends anui> paramClass, int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("ObserverCenter", 4, "getBusinessObserver, cls[" + paramClass + "], flag[" + paramInt + "]");
-    }
-    if (paramClass == null) {}
-    do
-    {
-      return null;
-      if (paramInt == 1)
-      {
-        localArrayList = new ArrayList();
-        a(paramClass, this.jdField_a_of_type_JavaUtilList, localArrayList);
-        return localArrayList;
-      }
-    } while ((paramInt == 0) || (paramInt != 2));
-    ArrayList localArrayList = new ArrayList();
-    a(paramClass, this.jdField_b_of_type_JavaUtilList, localArrayList);
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_b_of_type_JavaUtilList.clear();
-    if (QLog.isColorLevel()) {
-      QLog.i("ObserverCenter", 2, "clear");
-    }
-  }
-  
-  public void a(anui paramanui)
-  {
-    a(paramanui, true);
-  }
-  
-  public void a(anui paramanui, boolean paramBoolean)
-  {
-    if (paramanui == null) {
-      return;
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        synchronized (this.jdField_b_of_type_JavaUtilList)
-        {
-          if (!???.contains(paramanui)) {
-            ???.add(paramanui);
-          }
-          return;
-        }
-        if (!QLog.isDevelopLevel()) {
-          break;
-        }
-      }
-      catch (Throwable paramanui) {}
-      QLog.i("ObserverCenter", 4, "addObserver", paramanui);
-      return;
-      ??? = this.jdField_a_of_type_JavaUtilList;
-    }
-  }
-  
-  public final void a(Class<? extends anui> paramClass, int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    a(paramClass, paramInt, paramBoolean, paramObject, false, false);
-  }
-  
-  public void a(Class<? extends anui> paramClass, int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    List localList = a(paramClass, 1);
-    Iterator localIterator;
-    anui localanui;
-    if ((localList != null) && (localList.size() > 0)) {
-      try
-      {
-        localIterator = localList.iterator();
-        while (localIterator.hasNext())
-        {
-          localanui = (anui)localIterator.next();
-          if ((paramClass != null) && (paramClass.isAssignableFrom(localanui.getClass()))) {
-            a(paramInt, paramBoolean1, paramObject, paramBoolean2, paramBoolean3, localanui, this.jdField_a_of_type_Mxv);
-          }
-        }
-      }
-      finally {}
-    }
-    localList = a(paramClass, 2);
-    if ((localList != null) && (localList.size() > 0)) {
-      try
-      {
-        localIterator = localList.iterator();
-        while (localIterator.hasNext())
-        {
-          localanui = (anui)localIterator.next();
-          if ((paramClass != null) && (paramClass.isAssignableFrom(localanui.getClass()))) {
-            a(paramInt, paramBoolean1, paramObject, paramBoolean2, paramBoolean3, localanui, this.jdField_b_of_type_Mxv);
-          }
-        }
-      }
-      finally {}
-    }
-  }
-  
-  /* Error */
-  public void b(anui paramanui)
-  {
-    // Byte code:
-    //   0: aload_1
-    //   1: ifnonnull +4 -> 5
-    //   4: return
-    //   5: aload_0
-    //   6: getfield 28	mxt:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   9: astore_2
-    //   10: aload_2
-    //   11: monitorenter
-    //   12: aload_0
-    //   13: getfield 28	mxt:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   16: aload_1
-    //   17: invokeinterface 186 2 0
-    //   22: pop
-    //   23: aload_2
-    //   24: monitorexit
-    //   25: aload_0
-    //   26: getfield 26	mxt:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   29: astore_2
-    //   30: aload_2
-    //   31: monitorenter
-    //   32: aload_0
-    //   33: getfield 26	mxt:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   36: aload_1
-    //   37: invokeinterface 186 2 0
-    //   42: pop
-    //   43: aload_2
-    //   44: monitorexit
-    //   45: return
-    //   46: astore_1
-    //   47: aload_2
-    //   48: monitorexit
-    //   49: aload_1
-    //   50: athrow
-    //   51: astore_1
-    //   52: invokestatic 116	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
-    //   55: ifeq -51 -> 4
-    //   58: ldc 118
-    //   60: iconst_4
-    //   61: ldc 167
-    //   63: aload_1
-    //   64: invokestatic 170	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   67: return
-    //   68: astore_1
-    //   69: aload_2
-    //   70: monitorexit
-    //   71: aload_1
-    //   72: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	73	0	this	mxt
-    //   0	73	1	paramanui	anui
-    // Exception table:
-    //   from	to	target	type
-    //   32	45	46	finally
-    //   47	49	46	finally
-    //   5	12	51	java/lang/Throwable
-    //   25	32	51	java/lang/Throwable
-    //   49	51	51	java/lang/Throwable
-    //   71	73	51	java/lang/Throwable
-    //   12	25	68	finally
-    //   69	71	68	finally
-  }
-  
-  public final void b(Class<? extends anui> paramClass, int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    a(paramClass, paramInt, paramBoolean, paramObject, true, true);
+    catch (Exception paramDialogInterface) {}
   }
 }
 

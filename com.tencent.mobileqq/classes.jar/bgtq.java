@@ -1,38 +1,10 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.utils.TroopNameHelper.GenTroopNameTask;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 
 public class bgtq
-  implements Comparable<bgtq>
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  
-  public bgtq(TroopNameHelper.GenTroopNameTask paramGenTroopNameTask) {}
-  
-  public int a(@NonNull bgtq parambgtq)
+  public static bgtr a(SwiftBrowserUIStyleHandler paramSwiftBrowserUIStyleHandler)
   {
-    int i = -1;
-    if ((this.f != null) && (parambgtq.f != null)) {
-      i = this.f.compareTo(parambgtq.f);
-    }
-    do
-    {
-      do
-      {
-        return i;
-        if (this.f != null) {
-          break;
-        }
-      } while (parambgtq.f == null);
-      return 1;
-    } while (parambgtq.f == null);
-    return 0;
+    return new bgtr(paramSwiftBrowserUIStyleHandler);
   }
 }
 

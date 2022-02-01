@@ -1,10 +1,19 @@
-class atze
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
+
+final class atze
+  implements akbj
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  long b;
-  
-  atze(atzd paramatzd) {}
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameHelper", 1, "dowloadFullPopRes complete! rescpde=" + paramInt);
+    }
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)) && (QLog.isColorLevel())) {
+      QLog.d("QQGameHelper", 1, "dowloadFullPopRes fileUrl=" + paramPathResult.url + " unzipPath=" + paramPathResult.folderPath);
+    }
+  }
 }
 
 

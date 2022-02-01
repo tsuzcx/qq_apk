@@ -1,151 +1,242 @@
-import android.view.MotionEvent;
-import android.view.VelocityTracker;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.CmGameClientQIPCModule.1;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import eipc.EIPCResult;
 import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class alvn
-  implements View.OnTouchListener
+  extends QIPCModule
 {
-  public alvn(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public static boolean a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public alvn(String paramString)
   {
-    long l2 = 0L;
-    if (!this.a.w) {
-      return false;
-    }
-    if ((!this.a.n) && (!this.a.u)) {
-      return false;
-    }
-    if (this.a.o)
+    super(paramString);
+  }
+  
+  public static alvn a()
+  {
+    return alvo.a();
+  }
+  
+  public static void a()
+  {
+    alvn localalvn = a();
+    if (!a)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PTV.NewFlowCameraActivity", 2, "[@]onTouch mIsShootingPhoto= " + this.a.o);
-      }
-      return false;
+      QIPCClientHelper.getInstance().register(localalvn);
+      a = true;
     }
-    NewFlowCameraActivity.f(this.a);
-    this.a.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-    if (((paramMotionEvent.getAction() & 0xFF) == 5) && (!this.a.G))
+  }
+  
+  public static void a(int paramInt)
+  {
+    if (3112 == paramInt) {
+      return;
+    }
+    if (Looper.getMainLooper() == Looper.myLooper())
     {
-      int[] arrayOfInt = new int[2];
-      this.a.jdField_a_of_type_AndroidWidgetImageView.getLocationOnScreen(arrayOfInt);
-      int i = paramMotionEvent.getActionIndex();
-      this.a.a(paramMotionEvent, i, arrayOfInt[0], arrayOfInt[1]);
+      ThreadManagerV2.excute(new CmGameClientQIPCModule.1(paramInt), 16, null, false);
+      return;
     }
-    if (paramView.getId() == 2131366821)
-    {
-      NewFlowCameraActivity.a(this.a).a(paramMotionEvent, true);
-      GLGestureProxy.getInstance().onTouchEvent(paramMotionEvent, true, this.a.jdField_a_of_type_AndroidWidgetImageView, this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.a);
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b.get() == 4) || (NewFlowCameraActivity.a(this.a) == null) || (!NewFlowCameraActivity.a(this.a).isShown())) {}
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("gameId", paramInt);
+    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "cm_game_client_module", "action_close_game", localBundle, null);
+  }
+  
+  public alxy a()
+  {
+    alyh localalyh = alvx.a();
+    if (localalyh != null) {
+      return localalyh.a();
     }
+    return null;
+  }
+  
+  public void callbackResult(int paramInt, EIPCResult paramEIPCResult)
+  {
+    super.callbackResult(paramInt, paramEIPCResult);
+  }
+  
+  public void onAccountChange()
+  {
+    super.onAccountChange();
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameClientQIPCModule", 2, "onCall main server action=" + paramString);
+    }
+    boolean bool;
     try
     {
-      if (GLGestureProxy.getInstance().checkSecendFinger(paramMotionEvent))
+      if ("action_close_game".equals(paramString))
       {
-        paramView = GLGestureProxy.getInstance().getSecendFingerMotionEvent(paramMotionEvent);
-        NewFlowCameraActivity.a(this.a).onTouchEvent(paramView);
-        paramView.recycle();
+        alvx.a(paramBundle.getInt("gameId"));
       }
-      switch (paramMotionEvent.getAction())
+      else if ("action_update_audio_status".equals(paramString))
       {
-      case 2: 
-      default: 
-        return true;
+        bool = paramBundle.getBoolean("isOpen");
+        paramString = paramBundle.getString("key_game_friUin");
+        paramBundle = a();
+        if (paramBundle == null) {
+          break label761;
+        }
+        paramBundle = paramBundle.a();
+        if ((paramBundle == null) || (!(paramBundle instanceof ApolloGameActivity))) {
+          break label761;
+        }
+        ((ApolloGameActivity)paramBundle).a(bool, paramString);
       }
     }
-    catch (Exception paramView)
+    catch (Exception paramString)
     {
-      for (;;)
+      QLog.e("cmgame_process.CmGameClientQIPCModule", 1, paramString, new Object[0]);
+    }
+    if ("action_dress_changed".equals(paramString))
+    {
+      CmShowRenderView.a(paramBundle.getStringArrayList("key_dress_change_uin"));
+    }
+    else if ("action_check_game_running".equals(paramString))
+    {
+      paramString = a();
+      if (paramString != null)
       {
-        paramView.printStackTrace();
-        continue;
-        if (NewFlowCameraActivity.a(this.a) != null) {
-          NewFlowCameraActivity.a(this.a).c();
-        }
-        antk.a(this.a.jdField_f_of_type_AndroidViewView);
-        if ((NewFlowCameraActivity.f(this.a)) && (NewFlowCameraActivity.g(this.a)))
+        paramString = paramString.a();
+        if (paramString != null)
         {
-          this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-          label395:
-          if (NewFlowCameraActivity.h(this.a)) {
-            break label545;
-          }
-          if (this.a.r != 10017) {
-            break label535;
-          }
-          if (bday.a().g()) {
-            this.a.h();
+          if ((paramString.src == 319) || (paramString.src == 318))
+          {
+            paramBundle = new Bundle();
+            paramBundle.putString("key_game_friUin", paramString.mTempAIOUin);
+            callbackResult(paramInt, EIPCResult.createSuccessResult(paramBundle));
           }
         }
-        for (;;)
+        else
         {
-          this.a.D = false;
-          this.a.E = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("PTV.NewFlowCameraActivity", 2, "[@]onTouch ACTION_DOWN, event = " + paramMotionEvent);
+          paramString = new EIPCResult();
+          paramString.code = -1;
+          callbackResult(paramInt, paramString);
+        }
+      }
+      else
+      {
+        paramString = new EIPCResult();
+        paramString.code = -1;
+        callbackResult(paramInt, paramString);
+      }
+    }
+    else if ("action_show_audio_dialog".equals(paramString))
+    {
+      paramString = a();
+      if (paramString != null)
+      {
+        paramString = paramString.a();
+        if ((paramString != null) && ((paramString instanceof ApolloGameActivity))) {
+          ((ApolloGameActivity)paramString).a(paramBundle.getString("key_dialog_type"));
+        }
+      }
+    }
+    else if ("action_set_sso_rule".equals(paramString))
+    {
+      paramString = (CmGameStartChecker.StartCheckParam)paramBundle.getSerializable("StartCheckParam");
+      paramBundle = paramBundle.getString("rule");
+      if ((paramString == null) || (TextUtils.isEmpty(paramBundle))) {
+        break label763;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameClientQIPCModule", 2, new Object[] { "ACTION_SET_SSO_RULE startCheckParam:", paramString, " rule:", paramBundle });
+      }
+      alyh localalyh = alvx.a();
+      if (localalyh != null) {
+        localalyh.a(paramString.gameId, paramBundle);
+      }
+    }
+    else
+    {
+      bool = "action_start_cmgame_direct".equals(paramString);
+      if (bool)
+      {
+        try
+        {
+          long l = paramBundle.getLong("startTime", 0L);
+          paramString = (CmGameStartChecker.StartCheckParam)paramBundle.getSerializable("StartCheckParam");
+          if (paramString == null) {
+            return null;
           }
-          if (!QLog.isColorLevel()) {
-            break;
+          paramInt = paramString.gameId;
+          int i = paramString.src;
+          l = System.currentTimeMillis() - l;
+          QLog.d("CmGameStat", 1, new Object[] { "cmgame_ipc_start_receive, duration=", Long.valueOf(l), ", gameId=", Integer.valueOf(paramInt), ", src=", Integer.valueOf(i) });
+          if (l >= 0L)
+          {
+            paramBundle = new HashMap();
+            paramBundle.put("param_gameId", String.valueOf(paramInt));
+            paramBundle.put("param_src", String.valueOf(i));
+            StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "cmgame_ipc_start_receive", true, l, 0L, paramBundle, "", false);
           }
-          QLog.d("PTV.NewFlowCameraActivity", 2, "ACTION_DOWN isTemplateMode " + this.a.jdField_f_of_type_Boolean);
-          break;
-          this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-          break label395;
-          label535:
-          this.a.h();
-          continue;
-          label545:
-          if (this.a.t) {
-            this.a.e();
-          }
+          alvx.a(paramString);
+        }
+        catch (Exception paramString)
+        {
+          QLog.e("cmgame_process.CmGameClientQIPCModule", 1, paramString, new Object[0]);
+        }
+      }
+      else if ("action_check_game_data".equals(paramString))
+      {
+        paramString = (CmGameStartChecker.StartCheckParam)paramBundle.getSerializable("StartCheckParam");
+        if (paramString == null) {
+          return null;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("PTV.NewFlowCameraActivity", 2, "[@]onTouch ACTION_UP, event = " + paramMotionEvent + " , recordFinish---startEdit");
+          QLog.d("cmgame_process.CmGameClientQIPCModule", 2, new Object[] { "ACTION_CHECK_GAME_DATA startCheckParam", paramString });
         }
-        if (NewFlowCameraActivity.h(this.a)) {
-          if (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-          {
-            if (this.a.h) {
-              this.a.a("612", "3", "0", true);
-            }
-            long l3 = System.currentTimeMillis();
-            long l1 = l2;
-            if (NewFlowCameraActivity.b(this.a) > 0L)
-            {
-              l1 = l2;
-              if (l3 - NewFlowCameraActivity.b(this.a) > 0L) {
-                l1 = l3 - NewFlowCameraActivity.b(this.a);
-              }
-            }
-            NewFlowCameraActivity.a(this.a).put("captureDuration", String.valueOf(l1));
-            NewFlowCameraActivity.g(this.a);
-            if (this.a.r == 10004) {
-              yup.a("plus_shoot", "clk_shoot", 0, 0, new String[] { "2", "", "", "" });
-            }
-          }
-          else
-          {
-            this.a.h();
-            if (this.a.r == 10002) {
-              yup.a("video_shoot", "clk_shoot", 0, 0, new String[] { "2" });
-            } else if (this.a.r == 10004) {
-              yup.a("plus_shoot", "clk_shoot", 0, 0, new String[] { "1", "", "", "" });
-            }
+        paramString = alvx.a(paramString.gameId);
+        if (paramString != null) {
+          paramString.a(paramBundle);
+        }
+      }
+      else if ("action_game_loading_closed".equals(paramString))
+      {
+        paramString = (CmGameStartChecker.StartCheckParam)paramBundle.getSerializable("StartCheckParam");
+        if (paramString == null) {
+          return null;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.CmGameClientQIPCModule", 2, new Object[] { "ACTION_GAME_LOADING_CLOSED startCheckParam", paramString });
+        }
+        paramString = alvx.a(paramString.gameId);
+        if (paramString != null)
+        {
+          paramString = paramString.a();
+          if (paramString != null) {
+            paramString.finish();
           }
         }
       }
     }
+    label761:
+    return null;
+    label763:
+    return null;
+  }
+  
+  public void onReceiveMsg(int paramInt, Bundle paramBundle)
+  {
+    super.onReceiveMsg(paramInt, paramBundle);
   }
 }
 

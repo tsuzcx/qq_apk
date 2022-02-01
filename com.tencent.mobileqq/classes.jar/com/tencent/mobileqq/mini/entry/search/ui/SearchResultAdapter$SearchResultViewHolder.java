@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bhtq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -17,7 +16,9 @@ import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppModuleExposureData;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.search.comm.SearchInfo;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.List;
 
 class SearchResultAdapter$SearchResultViewHolder
@@ -47,11 +48,14 @@ class SearchResultAdapter$SearchResultViewHolder
     }
     for (;;)
     {
-      paramView.setOnClickListener(new SearchResultAdapter.SearchResultViewHolder.1(this, paramActivity, localMiniAppInfo, paramInt, paramString));
+      paramView.setOnClickListener(new SearchResultAdapter.SearchResultViewHolder.1(this, paramActivity, localMiniAppInfo, paramString));
       paramView = (MiniAppExposureManager)MiniAppUtils.getAppInterface().getManager(322);
       paramSearchInfo = new MiniAppConfig(localMiniAppInfo);
       paramSearchInfo.launchParam.scene = paramInt;
-      paramView.addSearchItemAndCheckReport(new MiniAppExposureManager.MiniAppModuleExposureData(paramSearchInfo, "page_view", "expo"));
+      paramActivity = new MiniAppExposureManager.MiniAppModuleExposureData(paramSearchInfo, "page_view", "expo");
+      paramSearchInfo.launchParam.scene = 3026;
+      MiniProgramLpReportDC04239.reportAsync(paramSearchInfo, "desktop", "search", "result_expo", paramString);
+      paramView.addSearchItemAndCheckReport(paramActivity);
       return;
       this.avatarContainer.removeAllViews();
       this.avatarContainer.setVisibility(0);
@@ -64,10 +68,10 @@ class SearchResultAdapter$SearchResultViewHolder
         {
           ImageView localImageView = new ImageView(paramView.getContext());
           localImageView.setImageDrawable(SearchResultAdapter.getAvatarDrawable(paramView.getContext(), (String)localObject));
-          int j = bhtq.b(12.0F);
+          int j = ViewUtils.dpToPx(12.0F);
           localObject = new LinearLayout.LayoutParams(j, j);
           if (i > 0) {
-            ((LinearLayout.LayoutParams)localObject).leftMargin = (-bhtq.b(2.0F));
+            ((LinearLayout.LayoutParams)localObject).leftMargin = (-ViewUtils.dpToPx(2.0F));
           }
           localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
           this.avatarContainer.addView(localImageView);

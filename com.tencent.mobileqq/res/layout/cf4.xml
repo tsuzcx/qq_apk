@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <dov.com.qq.im.aeeditor.module.topbar.AEEditorTopBar android:id="@id/jt2" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/ba5" />
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-            <com.tencent.tavcut.view.TAVCutVideoView android:id="@id/npn" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            <LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom|center|left" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <ImageView android:id="@id/npo" android:padding="10.0dip" android:layout_width="44.0dip" android:layout_height="44.0dip" android:src="@drawable/bik" />
-                <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:id="@id/npp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-6.0dip" android:text="00:00/00:00" android:shadowColor="#3b000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="3.0" />
-            </LinearLayout>
-            <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/al3" android:layout_gravity="bottom|center" android:id="@id/npl" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="25.0dip" android:text="@string/w96" android:shadowColor="#3b000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="3.0" />
-            <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/al3" android:layout_gravity="center" android:id="@id/npm" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="66.0dip" android:text="@string/w96" android:shadowColor="#3b000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="3.0" />
-            <dov.com.qq.im.aeeditor.module.toolbar.VideoEditToolBar android:layout_gravity="bottom|center|right" android:id="@id/jst" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:layout_marginBottom="6.0dip" />
-            <TextView android:textSize="13.0sp" android:textColor="@color/al3" android:layout_gravity="bottom|center" android:id="@id/mn0" android:background="@drawable/big" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="14.0dip" android:text="" />
-            <ViewStub android:id="@id/ml5" android:layout="@layout/c2i" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </FrameLayout>
-        <dov.com.qq.im.aeeditor.module.controlpanel.VideoControlPanel android:id="@id/mkn" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/b94" />
-    </LinearLayout>
-    <dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel android:layout_gravity="bottom" android:id="@id/npw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <FrameLayout android:id="@id/mn6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+<RelativeLayout android:background="@drawable/ew1" android:layout_width="@dimen/bbh" android:layout_height="@dimen/bbh"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:id="@id/mkb" android:layout_width="@dimen/bbi" android:layout_height="@dimen/bbi" android:layout_centerInParent="true" app:qqArMapGuideRadius="6">
+        <ImageView android:id="@id/dce" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" />
+        <ImageView android:id="@id/nh3" android:background="@drawable/ew0" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/eq4" android:scaleType="center" />
+        <ImageView android:layout_gravity="right" android:id="@id/nru" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/eqj" />
+        <ImageView android:layout_gravity="right" android:id="@id/nrv" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:src="@drawable/eqk" />
+        <dov.com.qq.im.ae.view.AEDownLoadingView android:layout_gravity="right" android:id="@id/g2d" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
+    </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
+</RelativeLayout>

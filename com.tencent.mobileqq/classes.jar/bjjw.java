@@ -1,20 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqprotect.qsec.IQSecRuntime;
+import com.tencent.qqprotect.qsec.IRuntimeInterface;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
 public class bjjw
-  implements View.OnClickListener
+  implements IQSecRuntime
 {
-  public bjjw(AuthorityAccountView paramAuthorityAccountView) {}
+  public static IQSecRuntime a;
+  private HashMap<String, IRuntimeInterface> a;
   
-  public void onClick(View paramView)
+  public bjjw()
   {
-    Object localObject = paramView.getTag();
-    if ((localObject != null) && ((localObject instanceof String))) {
-      this.a.b((String)localObject);
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_ComTencentQqprotectQsecIQSecRuntime = this;
+  }
+  
+  public void a(IRuntimeInterface paramIRuntimeInterface)
+  {
+    String str = paramIRuntimeInterface.getInterfaceName();
+    if ((str != null) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))) {
+      this.jdField_a_of_type_JavaUtilHashMap.put(str, paramIRuntimeInterface);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public Object getApplicationContext()
+  {
+    return MobileQQ.sMobileQQ;
+  }
+  
+  public Object getQQAppInterface()
+  {
+    return MobileQQ.sMobileQQ.waitAppRuntime(null);
+  }
+  
+  public int getRuntimeVersion()
+  {
+    return 1;
+  }
+  
+  public IRuntimeInterface queryRuntimeInterface(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    IRuntimeInterface localIRuntimeInterface2 = (IRuntimeInterface)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    IRuntimeInterface localIRuntimeInterface1 = localIRuntimeInterface2;
+    if (localIRuntimeInterface2 != null)
+    {
+      localIRuntimeInterface1 = localIRuntimeInterface2;
+      if (!paramString.equals(localIRuntimeInterface2.getInterfaceName())) {
+        localIRuntimeInterface1 = null;
+      }
+    }
+    return localIRuntimeInterface1;
   }
 }
 

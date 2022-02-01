@@ -1,12 +1,12 @@
 import android.os.IInterface;
-import com.tencent.av.service.AVRedPacketConfig;
+import com.tencent.av.service.LBSInfo;
 
 public abstract interface lwo
   extends IInterface
 {
-  public abstract void a(boolean paramBoolean, AVRedPacketConfig paramAVRedPacketConfig);
+  public abstract void a(int paramInt, String paramString);
   
-  public abstract void a(boolean paramBoolean, String paramString1, String paramString2);
+  public abstract void a(boolean paramBoolean, LBSInfo paramLBSInfo);
 }
 
 

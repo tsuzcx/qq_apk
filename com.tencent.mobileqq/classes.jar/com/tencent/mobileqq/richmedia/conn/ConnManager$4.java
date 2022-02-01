@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.richmedia.conn;
 
-import bbjk;
-import bbol;
+import badf;
+import baig;
 import com.tencent.common.app.AppInterface;
 
 public class ConnManager$4
   implements Runnable
 {
-  public ConnManager$4(bbjk parambbjk, long paramLong) {}
+  public ConnManager$4(badf parambadf, long paramLong) {}
   
   public void run()
   {
-    ((bbol)bbjk.a(this.this$0).getBusinessHandler(0)).b(this.a);
+    ((baig)badf.a(this.this$0).getBusinessHandler(0)).a(this.a);
   }
 }
 

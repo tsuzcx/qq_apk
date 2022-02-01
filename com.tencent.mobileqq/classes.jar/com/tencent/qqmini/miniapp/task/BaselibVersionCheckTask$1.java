@@ -18,7 +18,7 @@ class BaselibVersionCheckTask$1
   {
     if (paramBoolean)
     {
-      paramBundle = StorageUtil.getPreference().getString("version", "1.18.0.00132");
+      paramBundle = StorageUtil.getPreference().getString("version", "1.19.0.00043");
       QMLog.i("BaselibVersionCheckTask", "updateBaseLib succ. version=" + paramBundle);
       if ((this.val$miniAppInfo != null) && ((TextUtils.isEmpty(paramBundle)) || (BaseLibInfo.needUpdateVersion(this.val$miniAppInfo.baselibMiniVersion, paramBundle))))
       {

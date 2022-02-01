@@ -1,21 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-class agst
-  implements View.OnClickListener
+public abstract class agst
+  extends aezf
 {
-  agst(agss paramagss) {}
-  
-  public void onClick(View paramView)
-  {
-    agss.a(this.a).dismissDialog(230);
-    aber.a(agss.a(this.a), agss.a(this.a).jdField_a_of_type_Int, agss.a(this.a).jdField_a_of_type_JavaLangString, agss.a(this.a).getAccount());
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public FrameLayout a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public TextView b;
+  public View c;
+  public TextView c;
+  public View d;
+  public TextView d;
+  public TextView e;
 }
 
 

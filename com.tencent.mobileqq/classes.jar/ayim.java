@@ -1,21 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.9.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Transformation;
 
-public class ayim
-  implements View.OnClickListener
+class ayim
+  implements bfzz<Float>
 {
-  ayim(ayhj paramayhj) {}
+  ayim(ayil paramayil) {}
   
-  public void onClick(View paramView)
+  public void a(bfzt<Float> parambfzt, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    this.a.c(paramView);
-    new ayek().h("video").i("playpage_like_click").b().a(this.a.a);
-    ThreadManagerV2.excute(new PlayOperationViewModel.9.1(this, (axup)this.a.a.getManager(106)), 16, null, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.b = paramFloat1.floatValue();
+    this.a.jdField_a_of_type_Float = (1.1F - (paramFloat1.floatValue() - 1.0F));
+    if (this.a.jdField_a_of_type_Ayir != null)
+    {
+      this.a.jdField_a_of_type_Ayir.b = paramFloat1.floatValue();
+      this.a.jdField_a_of_type_Ayir.jdField_a_of_type_Float = this.a.jdField_a_of_type_Float;
+    }
+    this.a.a((int)(this.a.jdField_a_of_type_Int * paramFloat1.floatValue()));
   }
 }
 

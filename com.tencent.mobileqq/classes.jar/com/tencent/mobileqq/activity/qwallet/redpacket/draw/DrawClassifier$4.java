@@ -1,34 +1,34 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import agpd;
-import algd;
-import algi;
-import alhb;
-import alil;
+import afkx;
+import akdw;
+import akeb;
+import akeu;
+import akgd;
 import com.tencent.qphone.base.util.QLog;
 
 public class DrawClassifier$4
   implements Runnable
 {
-  public DrawClassifier$4(algd paramalgd, algi paramalgi, agpd paramagpd) {}
+  public DrawClassifier$4(akdw paramakdw, akeb paramakeb, afkx paramafkx) {}
   
   public void run()
   {
     try
     {
-      if (!algd.a(this.this$0))
+      if (!akdw.a(this.this$0))
       {
         if (QLog.isColorLevel()) {
           QLog.e("DrawClassifier", 2, "not init ok or already close to recog");
         }
-        if (this.jdField_a_of_type_Algi != null) {
-          this.jdField_a_of_type_Algi.a(false);
+        if (this.jdField_a_of_type_Akeb != null) {
+          this.jdField_a_of_type_Akeb.a(false);
         }
       }
       long l = System.currentTimeMillis();
-      boolean bool = algd.a(this.this$0).a(this.jdField_a_of_type_Agpd, algd.c(this.this$0), this.this$0.a, algd.a(this.this$0), algd.a(this.this$0));
-      if (this.jdField_a_of_type_Algi != null) {
-        this.jdField_a_of_type_Algi.a(bool);
+      boolean bool = akdw.a(this.this$0).a(this.jdField_a_of_type_Afkx, akdw.c(this.this$0), this.this$0.a, akdw.a(this.this$0), akdw.a(this.this$0));
+      if (this.jdField_a_of_type_Akeb != null) {
+        this.jdField_a_of_type_Akeb.a(bool);
       }
       if (QLog.isColorLevel()) {
         QLog.i("DrawClassifier", 2, "recognize cost:" + (System.currentTimeMillis() - l));
@@ -40,11 +40,11 @@ public class DrawClassifier$4
       do
       {
         if (QLog.isColorLevel()) {
-          QLog.e("DrawClassifier", 2, "recognition throwable:" + alil.a(localThrowable));
+          QLog.e("DrawClassifier", 2, "recognition throwable:" + akgd.a(localThrowable));
         }
         localThrowable.printStackTrace();
-      } while (this.jdField_a_of_type_Algi == null);
-      this.jdField_a_of_type_Algi.a(false);
+      } while (this.jdField_a_of_type_Akeb == null);
+      this.jdField_a_of_type_Akeb.a(false);
     }
   }
 }

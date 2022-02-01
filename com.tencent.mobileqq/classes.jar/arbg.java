@@ -1,82 +1,49 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager.8;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class arbg
-  extends arac<arbh>
+  implements aran
 {
-  @NonNull
-  public arbh a(int paramInt)
-  {
-    return new arbh();
-  }
+  private int jdField_a_of_type_Int;
   
-  @Nullable
-  public arbh a(araj[] paramArrayOfaraj)
+  public arbg(FavroamingManager.8 param8, List paramList) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(paramInt));
+    this.jdField_a_of_type_Int += 1;
+    if (this.jdField_a_of_type_Int <= this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Int)
     {
-      arbh localarbh = arbh.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("AEPituCameraConfigProcessor", 2, "onParsed:" + paramArrayOfaraj[0].a);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0.f();
+      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Arbh != null) {
+        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Arbh.a(this.jdField_a_of_type_Int / this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList);
       }
-      return localarbh;
     }
-    return null;
-  }
-  
-  public void a(arbh paramarbh)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEPituCameraConfigProcessor", 2, "onUpdate: " + paramarbh.a());
+    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Int) {
+      if (!arbb.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0))
+      {
+        paramString = (String)this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
+        arbb.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0, paramString, arbb.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0));
+      }
     }
-    ShortVideoUtils.a(paramarbh.a());
-  }
-  
-  public Class<arbh> clazz()
-  {
-    return arbh.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int onSend(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEPituCameraConfigProcessor", 2, "onSend: " + paramInt + ", isOpen:" + ShortVideoUtils.g());
-    }
-    return super.onSend(paramInt);
-  }
-  
-  public int type()
-  {
-    return 574;
+    do
+    {
+      return;
+      paramString = arbb.p(this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.this$0).getHandler(ChatActivity.class);
+      if (paramString != null) {
+        paramString.obtainMessage(10).sendToTarget();
+      }
+    } while (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Arbh == null);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingFavroamingManager$8.jdField_a_of_type_Arbh.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,64 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import com.tencent.biz.pubaccount.weishi_new.push.biz.WSWeSeeClientBiz.1;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
 public class uuw
-  extends utt
+  extends uuq<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  public uuw(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
+  private int jdField_a_of_type_Int;
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  
+  public uuw(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
   {
-    super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+    super(paramWSRedDotPushMsg);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
   }
   
-  public utq a(int paramInt)
+  private String a(String paramString)
   {
-    return new uve(a(), this);
+    if (!TextUtils.isEmpty(paramString)) {
+      return Uri.parse(paramString).getQueryParameter("logsour");
+    }
+    return null;
   }
   
-  public boolean b()
+  private void a(String paramString)
   {
-    return false;
+    if ((this.jdField_a_of_type_Int == 2) && (TextUtils.equals(a(paramString), "2020020163")))
+    {
+      uvr.a();
+      WSPublicAccReport.getInstance().feedsItemForPushReport("gzh_click", 1000003);
+    }
   }
   
-  public boolean c()
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
   {
-    return false;
+    boolean bool3 = yqu.a(paramContext);
+    uya.d("WSPushLog", "WSWeSeeClientBiz strategyInfo.scheme = " + paramWSPushStrategyInfo.mScheme + ", isInstallWeishi = " + bool3);
+    boolean bool1 = false;
+    if (this.jdField_a_of_type_Int == 2)
+    {
+      WSHomeFragment.a(paramContext);
+      bool1 = true;
+    }
+    boolean bool2 = bool1;
+    if (!TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme))
+    {
+      bool2 = bool1;
+      if (bool3)
+      {
+        urc.a().a(new WSWeSeeClientBiz.1(this, paramContext, paramWSPushStrategyInfo), 200L);
+        bool2 = true;
+      }
+    }
+    return bool2;
   }
 }
 

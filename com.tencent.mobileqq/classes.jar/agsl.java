@@ -1,44 +1,86 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForSplitLineTips;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
-class agsl
-  extends aocj
+public class agsl
+  extends aexf
 {
-  private WeakReference<BaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  private agsl(agsi paramagsi, BaseActivity paramBaseActivity)
+  public agsl(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
   }
   
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  protected aexg a()
   {
-    super.a(paramBoolean1, paramList, paramBoolean2);
-    if ((agsi.a(this.jdField_a_of_type_Agsi, paramList)) && (paramBoolean1)) {}
-    for (paramBoolean2 = true;; paramBoolean2 = false)
+    return new agsm(this);
+  }
+  
+  protected View a(MessageRecord paramMessageRecord, aexg paramaexg, View paramView, LinearLayout paramLinearLayout, afce paramafce)
+  {
+    if (paramView == null)
     {
-      paramList = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("MergeForwardRevokeHelper", 2, "onMsgRevokeNotice  hasMsgRevoked:" + paramBoolean2 + "; isSuccess:" + paramBoolean1);
+      paramaexg = (agsm)paramaexg;
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558898, null);
+      paramLinearLayout = (TextView)paramView.findViewById(2131367701);
+      paramafce = (TextView)paramView.findViewById(2131368049);
+      TextView localTextView = (TextView)paramView.findViewById(2131368050);
+      paramLinearLayout.setMovementMethod(null);
+      paramLinearLayout.setGravity(17);
+      paramaexg.b = paramLinearLayout;
+      paramaexg.c = paramafce;
+      paramaexg.d = localTextView;
+      paramView.setTag(paramaexg);
+      label92:
+      if (!ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+        break label208;
       }
-      if ((paramBoolean2) && (paramList != null))
+      paramaexg.c.setBackgroundResource(2130842556);
+      paramaexg.d.setBackgroundResource(2130842556);
+      label120:
+      if ((paramMessageRecord.istroop != 1) || (!nmy.a().a(paramMessageRecord.senderuin))) {
+        break label229;
+      }
+      paramaexg.b.setTextColor(nmy.d);
+    }
+    for (;;)
+    {
+      if ((paramMessageRecord instanceof MessageForSplitLineTips)) {
+        paramMessageRecord = (MessageForSplitLineTips)paramMessageRecord;
+      }
+      switch (paramMessageRecord.subType)
       {
-        if (!this.jdField_a_of_type_Agsi.a) {
-          break;
-        }
-        paramList.finish();
+      default: 
+        paramaexg.b.setText(paramMessageRecord.msgContent);
+        return paramView;
+        paramaexg = (agsm)paramView.getTag();
+        break label92;
+        label208:
+        paramaexg.c.setBackgroundResource(2130842555);
+        paramaexg.d.setBackgroundResource(2130842555);
+        break label120;
+        label229:
+        paramaexg.b.setTextColor(paramView.getResources().getColorStateList(2131165545));
       }
-      return;
     }
-    if (agsi.a() == paramList)
-    {
-      agsi.a(this.jdField_a_of_type_Agsi, paramList);
-      return;
-    }
-    paramList.finish();
+    paramaexg.b.setText(amtj.a(2131714491));
+    return paramView;
+  }
+  
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
+  
+  public bgbb[] a(View paramView)
+  {
+    return null;
   }
 }
 

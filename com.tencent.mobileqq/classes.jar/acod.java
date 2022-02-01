@@ -1,11 +1,20 @@
-import com.tencent.ad.tangram.version.AdVersionAdapter;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
 public class acod
-  implements AdVersionAdapter
+  extends AccountObserver
 {
-  public String getAppVersion()
+  public acod(AccountManageActivity paramAccountManageActivity) {}
+  
+  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
   {
-    return acvf.a();
+    AccountManageActivity.b(this.a);
+  }
+  
+  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
+  {
+    AccountManageActivity.b(this.a);
   }
 }
 

@@ -1,35 +1,77 @@
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-class awcs
-  implements WtTicketPromise
+public class awcs
 {
-  awcs(awcc paramawcc, awcw paramawcw) {}
+  public int a;
+  public SessionInfo a;
+  public MessageForStructing a;
+  public AbsStructMsg a;
+  private Object a = new Object();
+  public HashMap<String, ArrayList<MessageRecord>> a;
+  public List<ChatMessage> a;
+  public Map<String, String> a;
+  public boolean a;
+  public int b;
+  public List<MessageForStructing> b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  private int h;
+  private int i;
   
-  public void Done(Ticket paramTicket)
+  public int a()
   {
-    if ((paramTicket != null) && (paramTicket._sig != null) && (paramTicket._sig.length != 0))
+    synchronized (this.a)
     {
-      paramTicket = new String(paramTicket._sig);
-      this.jdField_a_of_type_Awcw.a(1, paramTicket);
+      int j = this.h;
+      return j;
+    }
+  }
+  
+  public String a()
+  {
+    return String.valueOf(hashCode());
+  }
+  
+  public void a(int paramInt)
+  {
+    synchronized (this.a)
+    {
+      this.h ^= paramInt;
       return;
     }
-    QLog.w("XProxy|NowProxy", 1, "skey is null");
-    this.jdField_a_of_type_Awcw.a(3, null);
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public void a(int paramInt1, int paramInt2)
   {
-    QLog.w("XProxy|NowProxy", 1, "get skey failed");
-    this.jdField_a_of_type_Awcw.a(5, null);
+    synchronized (this.a)
+    {
+      int j = this.i;
+      if (paramInt1 == 0) {
+        paramInt2 = 0;
+      }
+      this.i = (j + paramInt2);
+      return;
+    }
   }
   
-  public void Timeout(ErrMsg paramErrMsg)
+  public int b()
   {
-    QLog.w("XProxy|NowProxy", 1, "get skey time out");
-    this.jdField_a_of_type_Awcw.a(4, null);
+    synchronized (this.a)
+    {
+      int j = this.i;
+      return j;
+    }
   }
 }
 

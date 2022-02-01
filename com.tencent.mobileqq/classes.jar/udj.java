@@ -1,18 +1,24 @@
-import com.tencent.image.URLImageView;
+import android.support.annotation.Nullable;
 
-class udj
-  implements txf
+public abstract class udj
 {
-  udj(udh paramudh, URLImageView paramURLImageView, String paramString) {}
+  public abstract int a();
   
-  public void a()
+  @Nullable
+  public Object a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(udh.a(this.jdField_a_of_type_Udh, this.jdField_a_of_type_JavaLangString, true));
+    return null;
   }
+  
+  public abstract boolean a(int paramInt1, int paramInt2);
+  
+  public abstract int b();
+  
+  public abstract boolean b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     udj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,137 +1,65 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupAdapter;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
-import java.util.List;
-import java.util.Map;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTodayStoryVidList;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Calendar;
 
-class xqr
-  implements xpy
+public class xqr
+  implements xrq
 {
-  private xqr(xqp paramxqp) {}
+  protected xqt a;
+  protected xrr a;
+  protected xrs a;
   
-  public void a(int paramInt1, int paramInt2)
+  public Object a()
   {
-    StoryPlayerGroupHolder localStoryPlayerGroupHolder = this.a.a(paramInt1);
-    if (localStoryPlayerGroupHolder == null) {
-      yuk.e("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, find vertical holder is null");
-    }
-    do
-    {
-      return;
-      if (xqp.a(this.a) == null)
-      {
-        yuk.d("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, mCurrentSelectedGroupId is null");
-        return;
-      }
-      yuk.a("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, verticalPosition=%d, currentGroup=%s, onSelectedGroup=%s", Integer.valueOf(paramInt1), xqp.a(this.a), localStoryPlayerGroupHolder.jdField_a_of_type_Xms);
-    } while ((xqp.a(this.a) != localStoryPlayerGroupHolder.jdField_a_of_type_Xms) && (!xqp.a(this.a).equals(localStoryPlayerGroupHolder.jdField_a_of_type_Xms)));
-    Object localObject = localStoryPlayerGroupHolder.a();
-    if ((localObject instanceof xrh))
-    {
-      localObject = (VideoViewVideoHolder)((xrh)localObject).b(VideoViewVideoHolder.class);
-      if (localObject != null)
-      {
-        if (paramInt2 != 1) {
-          break label168;
-        }
-        yuk.b("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, pause because of dragging");
-        ((VideoViewVideoHolder)localObject).e();
-      }
-    }
-    label143:
-    while (xqp.a(this.a) != null)
-    {
-      xqp.a(this.a).a(paramInt1, paramInt2);
-      return;
-      label168:
-      if (paramInt2 == 0)
-      {
-        if ((!localStoryPlayerGroupHolder.d()) || (!localStoryPlayerGroupHolder.c())) {
-          break label229;
-        }
-        yuk.b("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, no need start");
-      }
-    }
-    for (;;)
-    {
-      yup.a("play_video", "slide_up_down", 0, 0, new String[] { "2", "", "", "" });
-      break label143;
-      break;
-      label229:
-      yuk.b("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrollStateChanged, Video, start because of idle");
-      ((VideoViewVideoHolder)localObject).d();
-    }
+    return this.jdField_a_of_type_Xqt;
   }
   
-  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3)
+  public String a()
   {
-    StoryPlayerGroupHolder localStoryPlayerGroupHolder = this.a.a(paramInt1);
-    if (localStoryPlayerGroupHolder == null) {
-      yuk.e("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrolled, Video, find vertical holder is null");
-    }
-    do
-    {
-      return;
-      if (xqp.a(this.a) == null)
-      {
-        yuk.d("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageScrolled, Video, mCurrentSelectedGroupId is null");
-        return;
-      }
-    } while (((xqp.a(this.a) != localStoryPlayerGroupHolder.jdField_a_of_type_Xms) && (!xqp.a(this.a).equals(localStoryPlayerGroupHolder.jdField_a_of_type_Xms))) || (xqp.a(this.a) == null));
-    xqp.a(this.a).a(paramInt1, paramInt2, paramFloat, paramInt3);
+    return getClass().getSimpleName();
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void a()
   {
-    StoryPlayerGroupHolder localStoryPlayerGroupHolder = (StoryPlayerGroupHolder)xqp.a(this.a).a.get(Integer.valueOf(paramInt1));
-    if (localStoryPlayerGroupHolder == null) {
-      yuk.e("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, Video, find vertical holder is null");
-    }
-    do
-    {
-      return;
-      if (xqp.a(this.a) == null)
-      {
-        yuk.d("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, Video, mCurrentSelectedGroupId is null");
-        return;
-      }
-      yuk.b("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, Video, verticalPosition=%d, oldHorizontalPosition=%d, horizontalPosition=%d, currentGroup=%s, onSelectedGroup=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), xqp.a(this.a), localStoryPlayerGroupHolder.jdField_a_of_type_Xms });
-    } while ((xqp.a(this.a) != localStoryPlayerGroupHolder.jdField_a_of_type_Xms) && (!xqp.a(this.a).equals(localStoryPlayerGroupHolder.jdField_a_of_type_Xms)));
-    boolean bool1;
-    if (localStoryPlayerGroupHolder.a(paramInt3) != null)
-    {
-      if (xqp.a(this.a) != null) {
-        xqp.a(this.a).a(paramInt1, paramInt2, paramInt3);
-      }
-      if (localStoryPlayerGroupHolder.b != localStoryPlayerGroupHolder.jdField_a_of_type_JavaUtilList.size() - 1) {
-        break label257;
-      }
-      bool1 = true;
-      label195:
-      if (localStoryPlayerGroupHolder.b != 0) {
-        break label263;
-      }
-    }
-    label257:
-    label263:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      boolean bool3 = bool1;
-      if (bool1)
-      {
-        bool3 = bool1;
-        if (localStoryPlayerGroupHolder.d()) {
-          bool3 = false;
-        }
-      }
-      this.a.a.setEnableScrollDirection(bool3, bool2, true, true);
-      return;
-      yuk.e("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, Video, getPageHolderOfPosition return null. onSelected true failed");
-      break;
-      bool1 = false;
-      break label195;
-    }
+    xvv.c("GetMyStoryVideoListStep", "GetMyStoryVideoListStep");
+    d();
+  }
+  
+  public void a(Object paramObject) {}
+  
+  public void a(xrr paramxrr)
+  {
+    this.jdField_a_of_type_Xrr = paramxrr;
+  }
+  
+  public void a(xrs paramxrs)
+  {
+    this.jdField_a_of_type_Xrs = paramxrs;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  protected void d()
+  {
+    String str = vpl.a("StorySvc.homepage_my_day_710");
+    qqstory_service.ReqTodayStoryVidList localReqTodayStoryVidList = new qqstory_service.ReqTodayStoryVidList();
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(l);
+    int i = localCalendar.get(1);
+    int j = localCalendar.get(2);
+    int k = localCalendar.get(5);
+    localReqTodayStoryVidList.date.set(i * 10000 + (j + 1) * 100 + k);
+    this.jdField_a_of_type_Xqt = new xqt();
+    vqn.a().a(new wdw(str, localReqTodayStoryVidList, null), new xqs(this, localReqTodayStoryVidList, str));
   }
 }
 

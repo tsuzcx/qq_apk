@@ -1,48 +1,41 @@
 package com.tencent.mobileqq.app.face;
 
 import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class QQHeadDownloadHandler$HeadCostStatRunnable
   implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int c;
-  int d;
-  int e;
-  int f;
+  int downloadSize;
+  String downloadUrl;
+  int dstUsrType;
+  int errCode;
+  String id;
+  int idType;
+  int resultCode = 0;
+  int sizeType;
+  int state;
+  long time;
   
-  public QQHeadDownloadHandler$HeadCostStatRunnable(QQHeadDownloadHandler paramQQHeadDownloadHandler, int paramInt1, String paramString1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString2, int paramInt6, long paramLong)
+  public QQHeadDownloadHandler$HeadCostStatRunnable(QQHeadDownloadHandler paramQQHeadDownloadHandler, int paramInt1, String paramString1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString2, int paramInt7, long paramLong)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.e = paramInt5;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.f = paramInt6;
-    this.jdField_a_of_type_Long = paramLong;
+    this.resultCode = paramInt1;
+    this.id = paramString1;
+    this.idType = paramInt2;
+    this.sizeType = paramInt3;
+    this.dstUsrType = paramInt4;
+    this.state = paramInt5;
+    this.downloadSize = paramInt6;
+    this.downloadUrl = paramString2;
+    this.errCode = paramInt7;
+    this.time = paramLong;
   }
   
   public void run()
   {
-    QQHeadDownloadHandler.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, 4, this.e, this.jdField_b_of_type_JavaLangString, this.f, this.jdField_a_of_type_Long);
-    String str = this.c + "_" + this.jdField_a_of_type_JavaLangString;
-    if (this.c == 32) {
-      str = "stranger_" + String.valueOf(this.jdField_b_of_type_Int) + "_" + this.jdField_a_of_type_JavaLangString;
-    }
-    for (;;)
-    {
-      QQHeadDownloadHandler.a(this.this$0).b(str, true);
-      return;
-      if (this.c == 16) {
-        str = "qcall_" + String.valueOf(this.jdField_b_of_type_Int) + "_" + this.jdField_a_of_type_JavaLangString;
-      }
-    }
+    QQHeadDownloadHandler.access$000(this.this$0).statGetQQHeadCostTime(this.resultCode, this.id, this.dstUsrType, 4, this.downloadSize, this.downloadUrl, this.errCode, this.time);
+    String str = QQAppInterface.getFaceDownKey(this.dstUsrType, this.id, this.idType, this.sizeType);
+    QQHeadDownloadHandler.access$000(this.this$0).markDownloadedQQHead(str, true);
   }
 }
 

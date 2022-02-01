@@ -1,18 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class zna
-  implements Parcelable.Creator<TroopStoryItemInfo>
+public class zna
+  implements View.OnClickListener
 {
-  public TroopStoryItemInfo a(Parcel paramParcel)
-  {
-    return new TroopStoryItemInfo(paramParcel);
-  }
+  public zna(ServiceFolderFollowPBHeadView paramServiceFolderFollowPBHeadView) {}
   
-  public TroopStoryItemInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new TroopStoryItemInfo[paramInt];
+    if (!TextUtils.isEmpty(ServiceFolderFollowPBHeadView.a(this.a))) {
+      zbh.a(ServiceFolderFollowPBHeadView.a(this.a));
+    }
+    for (;;)
+    {
+      ServiceFolderFollowPBHeadView.a(this.a).setVisibility(8);
+      bcef.b(null, "dc00898", "", "", "auth_page", "msg_exp", 0, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QLog.e(ServiceFolderFollowPBHeadView.a(), 2, "jump error mJumpWebMessageListUrl is null");
+    }
   }
 }
 

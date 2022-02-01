@@ -1,54 +1,20 @@
-import cooperation.qzone.util.NetworkState;
+import dov.com.qq.im.capture.text.DynamicTextItem;
 
-public class bnig
-  extends bnia
+public abstract interface bnig
 {
-  public static final String a = bnig.class.getName();
-  public int b = -1;
+  public abstract void a();
   
-  public bnig(String paramString)
-  {
-    super(paramString);
-  }
+  public abstract void a(int paramInt);
   
-  public static boolean a()
-  {
-    if (bnio.a() == null) {
-      return false;
-    }
-    return NetworkState.isWap();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public int a(String paramString, int paramInt)
-  {
-    if (this.b == -1)
-    {
-      int j = super.a(paramString, paramInt);
-      int i = j;
-      if (a())
-      {
-        if (j != 0)
-        {
-          this.b = 1;
-          i = super.a(paramString, paramInt);
-        }
-      }
-      else {
-        return i;
-      }
-      this.b = 0;
-      return j;
-    }
-    return super.a(paramString, paramInt);
-  }
+  public abstract void a(DynamicTextItem paramDynamicTextItem, boolean paramBoolean1, int paramInt, boolean paramBoolean2);
   
-  public bnic a()
-  {
-    if ((a()) && (this.b == 1)) {
-      return bnic.a;
-    }
-    return null;
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

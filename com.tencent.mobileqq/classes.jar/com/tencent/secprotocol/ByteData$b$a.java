@@ -17,7 +17,7 @@ public class ByteData$b$a
       Object localObject = this.b;
       long l = ((ByteData.b)localObject).b;
       String str = ((ByteData.b)localObject).a;
-      localObject = ByteData.access$100(((ByteData.b)localObject).c);
+      localObject = ByteData.access$200(((ByteData.b)localObject).c);
       paramObject = (String)paramObject;
       locale.a(l, str, (b)localObject, paramObject);
       ByteData.logCat("poxy_java", "data: " + paramObject);

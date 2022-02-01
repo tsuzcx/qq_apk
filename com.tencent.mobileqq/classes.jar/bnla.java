@@ -1,63 +1,37 @@
-import java.lang.ref.WeakReference;
-
 public class bnla
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static int jdField_b_of_type_Int;
-  private static bnla jdField_b_of_type_Bnla;
-  public int a;
-  private bnla jdField_a_of_type_Bnla;
-  public String a;
-  public WeakReference<bnkz> a;
-  public String b;
-  public String c;
-  public String d;
+  public static int a;
+  public static int b;
+  public static int c;
+  public float a;
+  public float b;
+  public float c;
+  public float d;
+  public int d;
   
-  public bnla(int paramInt, String paramString)
+  static
   {
-    this.jdField_a_of_type_JavaLangString = (paramInt + " " + paramString);
+    jdField_a_of_type_Int = 1;
+    jdField_b_of_type_Int = 2;
+    jdField_c_of_type_Int = 3;
   }
   
-  public static bnla a(int paramInt, String paramString)
+  public bnla() {}
+  
+  public bnla(int paramInt, float paramFloat1, float paramFloat2)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_b_of_type_Bnla != null)
-      {
-        bnla localbnla = jdField_b_of_type_Bnla;
-        jdField_b_of_type_Bnla = localbnla.jdField_a_of_type_Bnla;
-        localbnla.jdField_a_of_type_Bnla = null;
-        localbnla.jdField_a_of_type_JavaLangString = (paramInt + " " + paramString);
-        localbnla.jdField_a_of_type_Int = paramInt;
-        jdField_b_of_type_Int -= 1;
-        return localbnla;
-      }
-      return new bnla(paramInt, paramString);
-    }
+    this.jdField_d_of_type_Int = paramInt;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
   }
   
-  private void b()
+  public bnla(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.c = null;
-    this.d = null;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-  }
-  
-  public void a()
-  {
-    b();
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_b_of_type_Int < 100)
-      {
-        this.jdField_a_of_type_Bnla = jdField_b_of_type_Bnla;
-        jdField_b_of_type_Bnla = this;
-        jdField_b_of_type_Int += 1;
-      }
-      return;
-    }
+    this.jdField_d_of_type_Int = paramInt;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Float = paramFloat3;
+    this.jdField_d_of_type_Float = paramFloat4;
   }
 }
 

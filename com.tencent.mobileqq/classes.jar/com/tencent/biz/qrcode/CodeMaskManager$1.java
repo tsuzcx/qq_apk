@@ -3,8 +3,8 @@ package com.tencent.biz.qrcode;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.qphone.base.util.QLog;
-import nnr;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -23,7 +23,7 @@ class CodeMaskManager$1
     Object localObject = "https://qm.qq.com/cgi-bin/tpl?v=1&os=a&resx=" + this.jdField_a_of_type_Int + "&resy=" + this.b + "&t=" + this.c + "&" + "mType" + "=" + "qb_qrcode";
     try
     {
-      String str = nnr.a(this.this$0.jdField_a_of_type_AndroidAppActivity, (String)localObject, "GET", null, null);
+      String str = HttpUtil.openUrl(this.this$0.jdField_a_of_type_AndroidAppActivity, (String)localObject, "GET", null, null);
       if (QLog.isColorLevel()) {
         QLog.d("QRHttpUtil", 2, "open :" + (String)localObject + ", result: " + str);
       }

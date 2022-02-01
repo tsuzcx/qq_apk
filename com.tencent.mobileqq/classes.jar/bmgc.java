@@ -1,46 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.photoplus.PhotoPlusManager;
-import java.util.concurrent.ConcurrentHashMap;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorApplyAllLoadingView;
 
 public class bmgc
-  extends biht
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bmgc(PhotoPlusManager paramPhotoPlusManager, String paramString1, String paramString2, String paramString3) {}
+  public bmgc(AEEditorApplyAllLoadingView paramAEEditorApplyAllLoadingView) {}
   
-  public void onCancel(bihu parambihu)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onDone(bihu parambihu)
-  {
-    PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
-    if (parambihu.a() == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPlusManager", 2, "[onDone] download finished " + this.b);
-      }
-      if (TextUtils.isEmpty(this.c)) {
-        this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      parambihu = azul.a(this.jdField_a_of_type_JavaLangString);
-      if (this.c.equalsIgnoreCase(parambihu))
-      {
-        this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPlusManager", 2, "[onDone] checkMd5 failed: " + this.jdField_a_of_type_JavaLangString);
-      }
-      bhmi.d(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    QLog.d("PhotoPlusManager", 2, "[onDone] downloadFile failed: " + parambihu.b + " code=" + parambihu.a);
+    this.a.setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
   }
 }
 

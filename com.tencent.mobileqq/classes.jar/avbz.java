@@ -1,24 +1,24 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.open.base.MD5Utils;
 
-public class avbz
-  extends Handler
+class avbz
 {
-  public avbz(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void handleMessage(Message paramMessage)
+  public avbz(String paramString1, String paramString2)
   {
-    if (paramMessage.what == 0) {
-      QQToast.a(this.a.a, anzj.a(2131703713), 0).a();
-    }
-    while (1 != paramMessage.what) {
-      return;
-    }
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = MD5Utils.toMD5(paramString2);
+    this.d = avbv.a(paramString1);
+  }
+  
+  public String toString()
+  {
+    return "MusicReqInfo{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", url='" + this.b + '\'' + ", md5='" + this.c + '\'' + ", status=" + this.jdField_a_of_type_Int + ", cachePath='" + this.d + '\'' + '}';
   }
 }
 

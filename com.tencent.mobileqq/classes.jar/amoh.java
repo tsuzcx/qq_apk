@@ -1,26 +1,79 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.adapter.ForwardRecentItemView;
+import android.os.Process;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mfsdk.MagnifierSDK;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.MemoryManager;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class amoh
-  implements ValueAnimator.AnimatorUpdateListener
+  extends amti
 {
-  public amoh(ForwardRecentItemView paramForwardRecentItemView, RelativeLayout.LayoutParams paramLayoutParams) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.b);
-    if (AppSetting.c) {
-      this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_JavaLangString);
+    super.a();
+    float f2 = MemoryManager.getInstance().getHeapLevel();
+    float f1;
+    if (MagnifierSDK.a().a().d > 0.0F)
+    {
+      f1 = MagnifierSDK.a().a().d;
+      if ((f2 >= f1) && (MagnifierSDK.a().a().b) && (this.a.a == null))
+      {
+        MemoryManager.getInstance().reportMemoryLevel(2L);
+        System.exit(-1);
+      }
+      if (this.d != GuardManager.c * 50 - 1) {
+        break label236;
+      }
+      l = MemoryManager.getMemory(Process.myPid());
+      localHashMap = new HashMap();
+      localHashMap.put("qqUsedMemory", String.valueOf(l / 1024L));
+      localHashMap.put("ramSize", String.valueOf(DeviceInfoUtil.getSystemTotalMemory() / 1024L));
+      localHashMap.put("heapSize", String.valueOf(Runtime.getRuntime().totalMemory() / 1024L));
+      localHashMap.put("maxHeapSize", String.valueOf(Runtime.getRuntime().maxMemory() / 1024L));
+      this.a.a("GM_reborn", localHashMap);
+      if (QLog.isColorLevel()) {
+        QLog.d("GuardManager", 2, "suicide to free memory! suicide_factor=" + GuardManager.c);
+      }
     }
+    label236:
+    while (((this.d != GuardManager.c * 50) && (this.d != GuardManager.c * 50 + 1)) || (this.a.a != null))
+    {
+      long l;
+      HashMap localHashMap;
+      return;
+      f1 = 0.95F;
+      break;
+    }
+    System.exit(-1);
+  }
+  
+  protected void a(String paramString)
+  {
+    this.a.a(3, paramString);
+  }
+  
+  protected void b()
+  {
+    this.a.a(4, "fake_p_msg");
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.b(false);
+    if (!"trick_p_msg".equals(paramString)) {
+      this.a.a(false, new String[] { paramString });
+    }
+    long l = MemoryManager.getMemory(Process.myPid());
+    if (amtg.a().a(l) != 2) {
+      this.a.c();
+    }
+    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(2, amtg.a().a, 0L);
+    CoreService.stopCoreService();
   }
 }
 

@@ -1,20 +1,17 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
 
 public class aeje
-  extends GestureDetector.SimpleOnGestureListener
+  implements apgg
 {
-  public aeje(Conversation paramConversation) {}
+  public aeje(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void a(apgh paramapgh)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, " gestureDetector onDoubleTap");
+    this.a.jdField_a_of_type_Apgh = paramapgh;
+    if (this.a.i != 0) {
+      paramapgh.a(this.a.i);
     }
-    Conversation.p(this.a);
-    return super.onDoubleTap(paramMotionEvent);
+    this.a.i = paramapgh.a(1, this.a.e, 3, this.a.jdField_a_of_type_Apge);
   }
 }
 

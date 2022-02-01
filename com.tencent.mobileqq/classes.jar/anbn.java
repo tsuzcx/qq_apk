@@ -1,17 +1,40 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.data.Stranger;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.List;
+import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
 
-class anbn
-  implements MediaPlayer.OnSeekCompleteListener
+public class anbn
+  implements BusinessObserver
 {
-  anbn(anbl paramanbl, JSONObject paramJSONObject, ancl paramancl) {}
+  public void a(List<String> paramList) {}
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField) {}
+  
+  public void a(boolean paramBoolean, List<Stranger> paramList) {}
+  
+  public void b(boolean paramBoolean, List<Stranger> paramList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
-      anbl.a(this.jdField_a_of_type_Anbl, this.jdField_a_of_type_Ancl, this.jdField_a_of_type_OrgJsonJSONObject);
+    if (paramInt == 4) {
+      a(paramBoolean, (PBRepeatMessageField)paramObject);
     }
+    do
+    {
+      return;
+      if (paramInt == 2)
+      {
+        a(paramBoolean, (List)paramObject);
+        return;
+      }
+      if (paramInt == 3)
+      {
+        b(paramBoolean, (List)paramObject);
+        return;
+      }
+    } while (paramInt != 5);
+    a((List)paramObject);
   }
 }
 

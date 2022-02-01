@@ -1,66 +1,65 @@
 package cooperation.qzone.panorama.controller;
 
-import bncp;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TouchController$1
+class TouchController$1
   extends TimerTask
 {
-  private int[] jdField_b_of_type_ArrayOfInt = { 0, 0 };
+  private int[] cancelXY = { 0, 0 };
   
-  public TouchController$1(bncp parambncp, int paramInt1, int[] paramArrayOfInt, int paramInt2) {}
+  TouchController$1(TouchController paramTouchController, int paramInt1, int[] paramArrayOfInt, int paramInt2) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      if (this.jdField_a_of_type_ArrayOfInt[0] <= 0)
+    if (this.val$directionX == 1) {
+      if (this.val$count[0] <= 0)
       {
-        this.jdField_b_of_type_ArrayOfInt[0] = 1;
-        if (this.jdField_b_of_type_Int != 1) {
+        this.cancelXY[0] = 1;
+        if (this.val$directionY != 1) {
           break label202;
         }
-        if (this.jdField_a_of_type_ArrayOfInt[1] > 0) {
+        if (this.val$count[1] > 0) {
           break label178;
         }
-        this.jdField_b_of_type_ArrayOfInt[1] = 1;
+        this.cancelXY[1] = 1;
       }
     }
     for (;;)
     {
-      if ((this.jdField_b_of_type_ArrayOfInt[1] == 1) && (this.jdField_b_of_type_ArrayOfInt[0] == 1))
+      if ((this.cancelXY[1] == 1) && (this.cancelXY[0] == 1))
       {
-        bncp.a(this.this$0).cancel();
+        TouchController.access$000(this.this$0).cancel();
         cancel();
       }
-      float f1 = this.jdField_a_of_type_ArrayOfInt[0];
-      float f2 = bncp.a(this.this$0);
-      bncp.a(this.this$0, 0.0F, f1 * f2);
+      float f1 = this.val$count[0];
+      float f2 = TouchController.access$100(this.this$0);
+      TouchController.access$200(this.this$0, 0.0F, f1 * f2);
       return;
-      this.jdField_b_of_type_ArrayOfInt[0] = 0;
-      this.jdField_a_of_type_ArrayOfInt[0] -= 3;
+      this.cancelXY[0] = 0;
+      this.val$count[0] -= 3;
       break;
-      if (this.jdField_a_of_type_ArrayOfInt[0] >= 0)
+      if (this.val$count[0] >= 0)
       {
-        this.jdField_b_of_type_ArrayOfInt[0] = 1;
+        this.cancelXY[0] = 1;
         break;
       }
-      this.jdField_b_of_type_ArrayOfInt[0] = 0;
-      this.jdField_a_of_type_ArrayOfInt[0] += 3;
+      this.cancelXY[0] = 0;
+      this.val$count[0] += 3;
       break;
       label178:
-      this.jdField_b_of_type_ArrayOfInt[1] = 0;
-      this.jdField_a_of_type_ArrayOfInt[1] -= 3;
+      this.cancelXY[1] = 0;
+      this.val$count[1] -= 3;
       continue;
       label202:
-      if (this.jdField_a_of_type_ArrayOfInt[1] >= 0)
+      if (this.val$count[1] >= 0)
       {
-        this.jdField_b_of_type_ArrayOfInt[1] = 1;
+        this.cancelXY[1] = 1;
       }
       else
       {
-        this.jdField_b_of_type_ArrayOfInt[1] = 0;
-        this.jdField_a_of_type_ArrayOfInt[1] += 3;
+        this.cancelXY[1] = 0;
+        this.val$count[1] += 3;
       }
     }
   }

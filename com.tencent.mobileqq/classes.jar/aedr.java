@@ -1,12 +1,16 @@
-public abstract interface aedr
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+
+public class aedr
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public aedr(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public abstract void a(asuo paramasuo);
-  
-  public abstract boolean a();
-  
-  public abstract void b(asuo paramasuo);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a(this.a.a);
+  }
 }
 
 

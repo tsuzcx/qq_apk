@@ -1,21 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-
-public final class bdjw
-  implements TVK_IMediaPlayer.OnCompletionListener
+public abstract interface bdjw
 {
-  public bdjw(bdho parambdho) {}
+  public abstract void a();
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    QLog.i("QSplash@QbossSplashUtil", 1, "video finish");
-    this.a.a(15, 1, 0L);
-  }
+  public abstract void a(bdhu parambdhu);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b(bdhu parambdhu);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void setEditorEnabled(boolean paramBoolean);
+  
+  public abstract void setMySelection(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdjw
  * JD-Core Version:    0.7.0.1
  */

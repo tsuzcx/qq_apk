@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ainh;
+import ahiu;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.PublicAccountHandler;
@@ -8,32 +8,32 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import obj;
-import tzq;
+import ocw;
+import ugf;
 
 public class PublicAccountChatPie$29
   implements Runnable
 {
-  public PublicAccountChatPie$29(ainh paramainh, AccountDetail paramAccountDetail) {}
+  public PublicAccountChatPie$29(ahiu paramahiu, AccountDetail paramAccountDetail) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "updateUnfollowInfo");
+      QLog.d(this.this$0.tag, 2, "updateUnfollowInfo");
     }
-    if (this.this$0.Z)
+    if (this.this$0.i)
     {
-      int i = tzq.a(this.a.accountFlag);
+      int i = ugf.a(this.a.accountFlag);
       if ((i == -3) || (i == -4)) {
-        obj.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.uin);
+        ocw.a().a(this.this$0.app, this.a.uin);
       }
     }
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler != null) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.b(this.a);
+    if (this.this$0.a != null) {
+      this.this$0.a.b(this.a);
     }
-    ainh.b(this.this$0, this.a);
-    ainh.a(this.this$0).post(new PublicAccountChatPie.29.1(this));
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 1008);
+    ahiu.b(this.this$0, this.a);
+    ahiu.a(this.this$0).post(new PublicAccountChatPie.29.1(this));
+    this.this$0.app.getMessageFacade().clearHistory(this.this$0.sessionInfo.curFriendUin, 1008);
   }
 }
 

@@ -1,15 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import android.text.TextUtils;
+import android.widget.AutoCompleteTextView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class akpx
   implements DialogInterface.OnClickListener
 {
-  public akpx(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public akpx(LoginView paramLoginView) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = null;
+    paramDialogInterface = this.a.a.getText().toString();
+    if (!TextUtils.isEmpty(paramDialogInterface)) {
+      this.a.b(paramDialogInterface);
+    }
   }
 }
 

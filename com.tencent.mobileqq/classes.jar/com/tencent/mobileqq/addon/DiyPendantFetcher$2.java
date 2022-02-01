@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.addon;
 
-import amrx;
-import amry;
-import amrz;
+import almr;
+import alms;
+import almt;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -15,7 +15,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public class DiyPendantFetcher$2
   implements Runnable
 {
-  public DiyPendantFetcher$2(amrx paramamrx, QQAppInterface paramQQAppInterface) {}
+  public DiyPendantFetcher$2(almr paramalmr, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -28,13 +28,13 @@ public class DiyPendantFetcher$2
       this.this$0.c(this.a);
       if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
       {
-        localObject1 = (amrz)this.a.a(114);
+        localObject1 = (almt)this.a.getBusinessHandler(114);
         localObject2 = new ArrayList();
         Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
         while (localIterator.hasNext()) {
           ((List)localObject2).add(Long.valueOf(Long.parseLong(((java.lang.String)localIterator.next()).split("_")[0])));
         }
-        ((amrz)localObject1).a((List)localObject2, null);
+        ((almt)localObject1).a((List)localObject2, null);
         this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.clear();
       }
     }
@@ -44,12 +44,12 @@ public class DiyPendantFetcher$2
     Object localObject1 = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (amry)((Iterator)localObject1).next();
-      if ((localObject2 == null) || (((amry)localObject2).a() == null)) {
+      localObject2 = (alms)((Iterator)localObject1).next();
+      if ((localObject2 == null) || (((alms)localObject2).a() == null)) {
         this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject2);
       }
     }
-    amrx.jdField_a_of_type_Long = 0L;
+    almr.jdField_a_of_type_Long = 0L;
   }
 }
 

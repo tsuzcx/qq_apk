@@ -1,13 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import com.tencent.qphone.base.util.QLog;
 
-public class qco
-  implements ViewBase.IBuilder
+class qco
+  implements qlb
 {
-  public ViewBase build(VafContext paramVafContext)
+  qco(qcm paramqcm, ArticleInfo paramArticleInfo, pvc parampvc) {}
+  
+  public void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean)
   {
-    return new qcf(paramVafContext, null);
+    QLog.d("NewPolymericMultiVideoProteusItem", 1, "position : " + paramInt);
+    qcm.a(this.jdField_a_of_type_Qcm, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramInt);
+    this.jdField_a_of_type_Pvc.a().a().a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramViewBase.getNativeView(), paramInt, 0L);
   }
 }
 

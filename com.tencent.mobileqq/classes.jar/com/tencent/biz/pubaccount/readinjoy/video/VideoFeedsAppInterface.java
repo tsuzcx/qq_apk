@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.os.Bundle;
-import anud;
-import anui;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -13,20 +13,20 @@ import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
-import oal;
-import odn;
-import odp;
-import rsv;
+import obw;
+import ofa;
+import ofc;
+import rzz;
 
 public class VideoFeedsAppInterface
   extends AppInterface
 {
   public static String a;
-  private HashMap<Integer, anud> jdField_a_of_type_JavaUtilHashMap = new HashMap(20);
-  private List<anui> jdField_a_of_type_JavaUtilList = new Vector();
-  private rsv jdField_a_of_type_Rsv;
-  private List<anui> b = new Vector();
-  private List<anui> c = new Vector();
+  private HashMap<Integer, BusinessHandler> jdField_a_of_type_JavaUtilHashMap = new HashMap(20);
+  private List<BusinessObserver> jdField_a_of_type_JavaUtilList = new Vector();
+  private rzz jdField_a_of_type_Rzz;
+  private List<BusinessObserver> b = new Vector();
+  private List<BusinessObserver> c = new Vector();
   
   static
   {
@@ -38,29 +38,29 @@ public class VideoFeedsAppInterface
     super(paramBaseApplicationImpl, paramString);
   }
   
-  public anud a(int paramInt)
+  public BusinessHandler a(int paramInt)
   {
-    anud localanud = (anud)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    if (localanud == null) {}
+    BusinessHandler localBusinessHandler = (BusinessHandler)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (localBusinessHandler == null) {}
     for (;;)
     {
       synchronized (this.jdField_a_of_type_JavaUtilHashMap)
       {
-        localanud = (anud)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-        if (localanud == null) {
+        localBusinessHandler = (BusinessHandler)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+        if (localBusinessHandler == null) {
           break label113;
         }
-        return localanud;
-        if (localanud != null) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localanud);
+        return localBusinessHandler;
+        if (localBusinessHandler != null) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localBusinessHandler);
         }
-        return localanud;
+        return localBusinessHandler;
       }
-      Object localObject2 = new odp(this);
+      Object localObject2 = new ofc(this);
       continue;
-      localObject2 = new odn(this);
+      localObject2 = new ofa(this);
       continue;
-      localObject2 = new oal(this);
+      localObject2 = new obw(this);
       continue;
       return localObject2;
       label113:
@@ -72,32 +72,32 @@ public class VideoFeedsAppInterface
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Rsv.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    this.jdField_a_of_type_Rzz.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
   }
   
-  public void addObserver(anui paramanui)
+  public void addObserver(BusinessObserver paramBusinessObserver)
   {
-    addObserver(paramanui, false);
+    addObserver(paramBusinessObserver, false);
   }
   
-  public void addObserver(anui paramanui, boolean paramBoolean)
+  public void addObserver(BusinessObserver paramBusinessObserver, boolean paramBoolean)
   {
-    if (paramanui == null) {
+    if (paramBusinessObserver == null) {
       return;
     }
     if (paramBoolean) {
       synchronized (this.b)
       {
-        if (!this.b.contains(paramanui)) {
-          this.b.add(paramanui);
+        if (!this.b.contains(paramBusinessObserver)) {
+          this.b.add(paramBusinessObserver);
         }
         return;
       }
     }
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramanui)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramanui);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramBusinessObserver)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramBusinessObserver);
       }
       return;
     }
@@ -113,7 +113,7 @@ public class VideoFeedsAppInterface
     return AppSetting.a();
   }
   
-  public List<anui> getBusinessObserver(int paramInt)
+  public List<BusinessObserver> getBusinessObserver(int paramInt)
   {
     if (paramInt == 1) {
       return this.jdField_a_of_type_JavaUtilList;
@@ -145,33 +145,33 @@ public class VideoFeedsAppInterface
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Rsv = new rsv(this);
+    this.jdField_a_of_type_Rzz = new rzz(this);
   }
   
-  public void removeObserver(anui paramanui)
+  public void removeObserver(BusinessObserver paramBusinessObserver)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramanui);
+      this.jdField_a_of_type_JavaUtilList.remove(paramBusinessObserver);
       synchronized (this.b)
       {
-        this.b.remove(paramanui);
+        this.b.remove(paramBusinessObserver);
       }
     }
     synchronized (this.c)
     {
-      this.c.remove(paramanui);
+      this.c.remove(paramBusinessObserver);
       return;
-      paramanui = finally;
-      throw paramanui;
-      paramanui = finally;
-      throw paramanui;
+      paramBusinessObserver = finally;
+      throw paramBusinessObserver;
+      paramBusinessObserver = finally;
+      throw paramBusinessObserver;
     }
   }
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_Rsv.a(paramToServiceMsg);
+    this.jdField_a_of_type_Rzz.a(paramToServiceMsg);
   }
 }
 

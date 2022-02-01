@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.widget;
 
-import agej;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import bhgr;
-import bizq;
+import bhfr;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.widget.HorizontalListView;
 
 public class OverScrollCallbackHorizontalListView
@@ -14,7 +14,7 @@ public class OverScrollCallbackHorizontalListView
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private bizq jdField_a_of_type_Bizq;
+  private bhfr jdField_a_of_type_Bhfr;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private boolean jdField_b_of_type_Boolean;
@@ -33,7 +33,7 @@ public class OverScrollCallbackHorizontalListView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_Int = agej.a(50.0F, getResources());
+    this.jdField_a_of_type_Int = AIOUtils.dp2px(50.0F, getResources());
     setOverScrollMode(0);
   }
   
@@ -55,7 +55,7 @@ public class OverScrollCallbackHorizontalListView
     {
       float f2 = this.jdField_a_of_type_Float;
       f3 -= this.jdField_b_of_type_Float;
-      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > bhgr.a(getContext(), 5.0F))) {
+      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > DisplayUtil.dip2px(getContext(), 5.0F))) {
         getParent().requestDisallowInterceptTouchEvent(false);
       }
     }
@@ -75,16 +75,16 @@ public class OverScrollCallbackHorizontalListView
     if ((this.jdField_b_of_type_Boolean) && (paramInt3 > this.jdField_a_of_type_Int))
     {
       this.jdField_b_of_type_Boolean = false;
-      if ((this.jdField_a_of_type_Bizq != null) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Bizq.a(this);
+      if ((this.jdField_a_of_type_Bhfr != null) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Bhfr.a(this);
       }
     }
     return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean);
   }
   
-  public void setListener(bizq parambizq)
+  public void setListener(bhfr parambhfr)
   {
-    this.jdField_a_of_type_Bizq = parambizq;
+    this.jdField_a_of_type_Bhfr = parambhfr;
   }
 }
 

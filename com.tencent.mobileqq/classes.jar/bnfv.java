@@ -1,12 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-public abstract interface bnfv
+public class bnfv
+  extends JobSegment<Bitmap, Bitmap>
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2, ArrayList<Integer> paramArrayList);
+  public final float a;
+  public final boolean a;
   
-  public abstract void a(Bundle paramBundle, String paramString, QQAppInterface paramQQAppInterface);
+  public bnfv(float paramFloat, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
+  {
+    paramJobContext = yoy.a(paramBitmap, this.jdField_a_of_type_Float, this.jdField_a_of_type_Boolean);
+    if (paramJobContext == null)
+    {
+      super.notifyError(new BitmapError("Q.qqstory.publish:ImageAdjustJobSegment", 5));
+      return;
+    }
+    super.notifyResult(paramJobContext);
+  }
 }
 
 

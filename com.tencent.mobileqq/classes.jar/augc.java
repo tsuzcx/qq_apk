@@ -1,108 +1,39 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.ByteArrayInputStream;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
-class augc
-  implements bgpp
+public class augc
 {
-  augc(aufz paramaufz, List paramList, String paramString1, FileManagerEntity paramFileManagerEntity, boolean paramBoolean1, String paramString2, boolean paramBoolean2, String paramString3, String paramString4, short paramShort, String paramString5, int paramInt, String paramString6, aauy paramaauy) {}
+  int a = 0;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public static augc a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (paramJSONObject != null) {}
-    try
+    if (paramString == null) {}
+    do
     {
-      aujx localaujx;
-      if (!paramJSONObject.isNull("dirs"))
+      for (;;)
       {
-        paramBundle = paramJSONObject.getJSONArray("dirs");
-        paramInt = 0;
-        while (paramInt < paramBundle.length())
+        return null;
+        try
         {
-          localaujx = new aujx();
-          localaujx.jdField_a_of_type_Boolean = true;
-          localaujx.jdField_a_of_type_JavaLangString = paramBundle.getString(paramInt);
-          this.jdField_a_of_type_JavaUtilList.add(localaujx);
-          paramInt += 1;
-        }
-      }
-      if ((paramJSONObject != null) && (!paramJSONObject.isNull("files")))
-      {
-        paramBundle = paramJSONObject.getJSONArray("files");
-        paramInt = 0;
-        if (paramInt < paramBundle.length())
-        {
-          localaujx = new aujx();
-          paramJSONObject = paramBundle.getJSONObject(paramInt);
-          localaujx.jdField_a_of_type_JavaLangString = paramJSONObject.getString("filename");
-          localaujx.jdField_a_of_type_Long = paramJSONObject.getLong("size");
-          label186:
-          FileManagerEntity localFileManagerEntity;
-          if (this.jdField_a_of_type_JavaLangString.equals("/"))
+          paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
+          Object localObject = paramString.getElementsByTagName("hotpic_config");
+          if ((localObject != null) && (((NodeList)localObject).getLength() > 0))
           {
-            paramJSONObject = "/" + localaujx.jdField_a_of_type_JavaLangString;
-            localFileManagerEntity = new FileManagerEntity();
-            localFileManagerEntity.fileName = localaujx.jdField_a_of_type_JavaLangString;
-            localFileManagerEntity.fileSize = localaujx.jdField_a_of_type_Long;
-            localFileManagerEntity.nRelatedSessionId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-            localFileManagerEntity.mContext = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-            localFileManagerEntity.nSessionId = aunj.a().longValue();
-            if (this.jdField_a_of_type_Boolean)
-            {
-              localFileManagerEntity.WeiYunFileId = this.jdField_b_of_type_JavaLangString;
-              localFileManagerEntity.mContext = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId;
-              localFileManagerEntity.nRelatedSessionId = aunj.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
-            }
-            localFileManagerEntity.zipFileId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId;
-            if (localFileManagerEntity.mContext == null) {
-              QLog.i("FileBrowserModelBase", 1, "zip list file content is empty. zipSessionId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] zipIsWeiyunFile[" + this.jdField_a_of_type_Boolean + "] zipCouldType[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType + "] fileSessionId[" + localFileManagerEntity.nSessionId + "]");
-            }
-            if ((this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean) || (TextUtils.isEmpty(this.c))) {
-              break label679;
-            }
-            localFileManagerEntity.strServerPath = ("https://" + this.d + ":" + this.jdField_a_of_type_Short + "/ftn_compress_getfile/rkey=" + this.e + "&filetype=" + this.jdField_a_of_type_Int + "&path=" + blhn.a(paramJSONObject) + "&");
-            localFileManagerEntity.httpsDomain = this.c;
-          }
-          for (;;)
-          {
-            localFileManagerEntity.zipInnerPath = paramJSONObject;
-            localFileManagerEntity.selfUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.selfUin;
-            localFileManagerEntity.peerUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-            localFileManagerEntity.peerType = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType;
-            localFileManagerEntity.busId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId;
-            localFileManagerEntity.cloudType = 1;
-            localFileManagerEntity.isZipInnerFile = true;
-            localFileManagerEntity.zipFilePath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
-            localFileManagerEntity.zipType = this.jdField_a_of_type_Int;
-            localFileManagerEntity.TroopUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin;
-            localaujx.b = localFileManagerEntity.nSessionId;
-            this.jdField_a_of_type_Aufz.a.a().a(localFileManagerEntity);
-            this.jdField_a_of_type_JavaUtilList.add(localaujx);
-            paramInt += 1;
-            break;
-            paramJSONObject = this.jdField_a_of_type_JavaLangString + "/" + localaujx.jdField_a_of_type_JavaLangString;
-            break label186;
-            label679:
-            localFileManagerEntity.strServerPath = ("http://" + this.d + ":" + this.f + "/ftn_compress_getfile/rkey=" + this.e + "&filetype=" + this.jdField_a_of_type_Int + "&path=" + blhn.a(paramJSONObject) + "&");
+            localObject = new augc();
+            ((augc)localObject).a = Integer.parseInt(paramString.getElementsByTagName("entry").item(0).getFirstChild().getNodeValue());
+            return localObject;
           }
         }
+        catch (Exception paramString) {}
       }
-      return;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-      if (this.jdField_a_of_type_Aauy != null) {
-        this.jdField_a_of_type_Aauy.a(this.jdField_a_of_type_JavaUtilList);
-      }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.e("HotPicConfProcessor", 1, "handleHotPicConfig failed" + paramString);
+    return null;
   }
 }
 

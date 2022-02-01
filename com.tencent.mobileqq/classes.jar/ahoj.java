@@ -1,34 +1,72 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForQCircleFeed;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-class ahoj
-  implements View.OnClickListener
+public class ahoj
+  extends ahms
 {
-  ahoj(ahoi paramahoi, MessageForQCircleFeed paramMessageForQCircleFeed) {}
-  
-  public void onClick(View paramView)
+  public ahoj(QQAppInterface paramQQAppInterface)
   {
-    FeedCloudMeta.StFeed localStFeed = new FeedCloudMeta.StFeed();
-    localStFeed.id.set(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQCircleFeed.feedId);
-    localStFeed.createTime.set(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQCircleFeed.time);
-    Object localObject = new FeedCloudMeta.StUser();
-    ((FeedCloudMeta.StUser)localObject).id.set(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQCircleFeed.fromUin));
-    localStFeed.poster.set((MessageMicro)localObject);
-    localObject = new QCircleInitBean();
-    ((QCircleInitBean)localObject).setFeed(localStFeed);
-    ((QCircleInitBean)localObject).setSingleFeed(true);
-    uyx.a(this.jdField_a_of_type_Ahoi.jdField_a_of_type_AndroidContentContext, (QCircleInitBean)localObject);
-    bdll.b(null, "dc00898", "", this.jdField_a_of_type_Ahoi.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X800B27A", "0X800B27A", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramQQAppInterface);
+  }
+  
+  private static boolean a(List<String> paramList, String paramString)
+  {
+    if ((paramList != null) && (paramList.size() > 0) && (!TextUtils.isEmpty(paramString)))
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        if (((String)paramList.next()).equals(paramString)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public List<ahoi> a(String paramString, ahob paramahob, SessionInfo paramSessionInfo)
+  {
+    if ((paramahob == null) || (!paramahob.jdField_a_of_type_Boolean)) {}
+    do
+    {
+      return null;
+      localObject1 = paramahob.jdField_a_of_type_JavaUtilList;
+    } while ((localObject1 == null) || (((List)localObject1).size() == 0));
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = (ahoh)((Iterator)localObject1).next();
+      if (a(((ahoh)localObject2).jdField_a_of_type_JavaUtilList, paramString))
+      {
+        new ahog().a(this.a, paramSessionInfo, paramString);
+        if ((((ahoh)localObject2).b != null) && (((ahoh)localObject2).b.size() > 0))
+        {
+          localObject2 = ((ahoh)localObject2).b.iterator();
+          while (((Iterator)localObject2).hasNext()) {
+            localArrayList.add(new ahoi((ahof)((Iterator)localObject2).next(), paramSessionInfo, paramString));
+          }
+        }
+      }
+    }
+    if (paramahob.jdField_a_of_type_Int == 1) {
+      Collections.shuffle(localArrayList);
+    }
+    return localArrayList;
+  }
+  
+  public List<ahoi> a(String paramString, SessionInfo paramSessionInfo)
+  {
+    return a(paramString, ahoc.a(this.a.getApp(), this.a.getCurrentUin()), paramSessionInfo);
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    return true;
   }
 }
 

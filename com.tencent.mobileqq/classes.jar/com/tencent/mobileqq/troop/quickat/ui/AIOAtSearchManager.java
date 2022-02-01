@@ -5,11 +5,11 @@ import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
-import bgja;
-import bgjy;
+import besi;
+import betg;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,7 +22,7 @@ public class AIOAtSearchManager
 {
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private bgja jdField_a_of_type_Bgja;
+  private besi jdField_a_of_type_Besi;
   private final SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   List<TroopMemberInfo> jdField_a_of_type_JavaUtilList = new ArrayList(0);
@@ -70,9 +70,9 @@ public class AIOAtSearchManager
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
   }
   
-  public void a(bgja parambgja)
+  public void a(besi parambesi)
   {
-    this.jdField_a_of_type_Bgja = parambgja;
+    this.jdField_a_of_type_Besi = parambesi;
   }
   
   public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
@@ -181,16 +181,16 @@ public class AIOAtSearchManager
     if (QLog.isColorLevel()) {
       QLog.e("AIOAtSearchManager", 2, "taa handleMessage  " + System.currentTimeMillis());
     }
-    if (this.jdField_a_of_type_Bgja == null) {}
+    if (this.jdField_a_of_type_Besi == null) {}
     do
     {
       do
       {
         return true;
       } while (paramMessage.what != 1);
-      paramMessage = (bgjy)paramMessage.obj;
+      paramMessage = (betg)paramMessage.obj;
     } while (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramMessage.a));
-    this.jdField_a_of_type_Bgja.a(paramMessage);
+    this.jdField_a_of_type_Besi.a(paramMessage);
     return true;
   }
 }

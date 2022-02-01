@@ -1,34 +1,23 @@
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.ConversationFacadeProxy.Proxy;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import java.util.List;
 
-public final class bdin
-  implements RecentRoute.ConversationFacadeProxy.Proxy
+class bdin
+  extends bdji<EditorState>
 {
-  public int getUnreadCount(IMCoreMessageStub paramIMCoreMessageStub, int paramInt, IMCoreAppRuntime paramIMCoreAppRuntime)
+  bdin(bdid parambdid, EditorState paramEditorState, List paramList)
   {
-    if (((paramIMCoreAppRuntime instanceof QQAppInterface)) && ((paramIMCoreMessageStub instanceof QQMessageFacade.Message)))
-    {
-      paramIMCoreAppRuntime = ((QQAppInterface)paramIMCoreAppRuntime).a();
-      if (paramIMCoreAppRuntime != null) {
-        return paramIMCoreAppRuntime.a(((QQMessageFacade.Message)paramIMCoreMessageStub).frienduin, paramInt);
-      }
-    }
-    return 0;
+    super(paramEditorState, paramList);
   }
   
-  public int getUnreadCount(IMCoreMessageStub paramIMCoreMessageStub, IMCoreAppRuntime paramIMCoreAppRuntime)
+  public void a(EditorState paramEditorState)
   {
-    if (((paramIMCoreAppRuntime instanceof QQAppInterface)) && ((paramIMCoreMessageStub instanceof QQMessageFacade.Message)))
-    {
-      paramIMCoreAppRuntime = ((QQAppInterface)paramIMCoreAppRuntime).a();
-      if (paramIMCoreAppRuntime != null) {
-        return paramIMCoreAppRuntime.a(((QQMessageFacade.Message)paramIMCoreMessageStub).frienduin, ((QQMessageFacade.Message)paramIMCoreMessageStub).istroop);
-      }
-    }
-    return 0;
+    super.a(paramEditorState);
+    bdid.a(this.a).a();
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

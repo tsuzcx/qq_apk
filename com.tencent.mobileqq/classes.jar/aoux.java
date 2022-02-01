@@ -1,41 +1,24 @@
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.util.ArrayList;
+
 public class aoux
-  implements aouy
 {
-  public void a(aocj paramaocj, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, aock paramaock)
+  public long a;
+  public aouu a;
+  public ByteArrayOutputStream a;
+  public File a;
+  public String a;
+  public final ArrayList<Object> a;
+  public byte[] a;
+  public String b;
+  public final ArrayList<aout> b = new ArrayList();
+  public String c;
+  
+  private aoux()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 4019: 
-      paramaocj.i(paramBoolean, paramObject);
-      return;
-    case 4016: 
-      paramaocj.r(paramBoolean);
-      return;
-    case 4017: 
-      paramaocj.s(paramBoolean);
-      return;
-    case 4018: 
-      paramaocj.t(paramBoolean);
-      return;
-    case 5002: 
-      paramaocj.u(paramBoolean);
-      return;
-    case 5003: 
-      paramaocj.a(paramBoolean, paramArrayOfObject, paramaock);
-      return;
-    case 5004: 
-      paramaocj.b(paramBoolean, paramArrayOfObject, paramaock);
-      return;
-    case 5005: 
-      paramaocj.e(paramBoolean, paramArrayOfObject);
-      return;
-    case 4014: 
-      paramaocj.w(paramBoolean);
-      return;
-    }
-    paramaocj.m();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Long = -1L;
   }
 }
 

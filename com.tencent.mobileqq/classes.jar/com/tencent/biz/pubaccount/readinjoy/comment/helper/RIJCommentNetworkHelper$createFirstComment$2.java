@@ -6,15 +6,15 @@ import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
-import owr;
-import ows;
+import oxr;
+import oxs;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "", "invoke"}, k=3, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "errorCode", "", "<anonymous parameter 1>", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJCommentNetworkHelper$createFirstComment$2
   extends Lambda
   implements Function2<Integer, String, Unit>
 {
-  public RIJCommentNetworkHelper$createFirstComment$2(ows paramows, long paramLong1, String paramString, int paramInt, boolean paramBoolean, long paramLong2)
+  public RIJCommentNetworkHelper$createFirstComment$2(oxs paramoxs, long paramLong1, String paramString, int paramInt, boolean paramBoolean, long paramLong2)
   {
     super(2);
   }
@@ -22,8 +22,8 @@ public final class RIJCommentNetworkHelper$createFirstComment$2
   public final void invoke(int paramInt, @NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<anonymous parameter 1>");
-    this.$callback.a(this.$commentSeq, false, 1, "", this.$commentJsonStr, this.$feedsType, this.$isFeeds);
-    owr.a(owr.a, -1, System.currentTimeMillis() - this.$requestTime);
+    this.$callback.a(this.$commentSeq, false, paramInt, 1, "", this.$commentJsonStr, this.$feedsType, this.$isFeeds);
+    oxr.a(oxr.a, -1, System.currentTimeMillis() - this.$requestTime);
   }
 }
 

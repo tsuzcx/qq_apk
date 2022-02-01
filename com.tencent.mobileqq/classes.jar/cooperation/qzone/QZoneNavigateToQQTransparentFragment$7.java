@@ -9,7 +9,7 @@ final class QZoneNavigateToQQTransparentFragment$7
   
   public void run()
   {
-    this.a.finish();
+    this.val$activity.finish();
   }
 }
 

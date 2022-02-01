@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.app;
 
-import aoaw;
-import bius;
+import amux;
+import bhau;
 
 public class LebaHelper$1
   implements Runnable
 {
-  public LebaHelper$1(aoaw paramaoaw) {}
+  public LebaHelper$1(amux paramamux) {}
   
   public void run()
   {
-    aoaw.a(this.this$0);
+    amux.a(this.this$0);
     this.this$0.f();
-    this.this$0.jdField_a_of_type_Bius = new bius(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.this$0.jdField_a_of_type_Bhau = new bhau(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.this$0.h();
   }
 }

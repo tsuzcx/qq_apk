@@ -1,35 +1,64 @@
-import com.tencent.mobileqq.armap.sensor.rotation.Vector3;
+import android.support.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqho
+  extends aqgc<aqhn>
 {
-  public static float a(double paramDouble)
+  public static aqhn a()
   {
-    return (float)(paramDouble - Math.floor(paramDouble / 360.0D) * 360.0D);
+    return (aqhn)apub.a().a(413);
   }
   
-  public static float a(float paramFloat1, float paramFloat2)
+  @NonNull
+  public aqhn a(@NonNull aptx[] paramArrayOfaptx)
   {
-    return (float)Math.asin(paramFloat1 / (2.0F * paramFloat2));
+    aqhn localaqhn = new aqhn();
+    paramArrayOfaptx = paramArrayOfaptx[0].a;
+    if (paramArrayOfaptx != null) {}
+    try
+    {
+      if (!"".equals(paramArrayOfaptx))
+      {
+        paramArrayOfaptx = new JSONObject(paramArrayOfaptx);
+        localaqhn.a(paramArrayOfaptx.getString("url"));
+        localaqhn.a(paramArrayOfaptx.getBoolean("isEnable"));
+        localaqhn.b(paramArrayOfaptx.getBoolean("hideHotValue"));
+      }
+      return localaqhn;
+    }
+    catch (JSONException paramArrayOfaptx)
+    {
+      paramArrayOfaptx.printStackTrace();
+    }
+    return localaqhn;
   }
   
-  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
+  @NonNull
+  public aqhn b()
   {
-    return (float)(paramFloat1 * paramFloat2 * paramFloat3 / Math.sqrt((paramFloat1 + paramFloat2 + paramFloat3) * (paramFloat1 - paramFloat2 + paramFloat3) * (paramFloat1 + paramFloat2 - paramFloat3) * (paramFloat2 + paramFloat3 - paramFloat1)));
+    return new aqhn();
   }
   
-  public static float a(Vector3 paramVector31, Vector3 paramVector32)
+  @NonNull
+  public aqhn c()
   {
-    return (float)Math.sqrt((paramVector31.x - paramVector32.x) * (paramVector31.x - paramVector32.x) + (paramVector31.y - paramVector32.y) * (paramVector31.y - paramVector32.y) + (paramVector31.z - paramVector32.z) * (paramVector31.z - paramVector32.z));
+    return new aqhn();
   }
   
-  public static float b(float paramFloat1, float paramFloat2)
+  public Class<aqhn> clazz()
   {
-    return (float)Math.asin(Math.min(1.0F, Math.max(-1.0F, paramFloat1 / (2.0F * paramFloat2))));
+    return aqhn.class;
+  }
+  
+  public int type()
+  {
+    return 413;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqho
  * JD-Core Version:    0.7.0.1
  */

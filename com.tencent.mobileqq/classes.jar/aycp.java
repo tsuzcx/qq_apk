@@ -1,61 +1,68 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.DelCommentResp;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.util.ArrayList;
 
 class aycp
-  extends nkp
+  extends Handler
 {
-  aycp(aycm paramaycm, aycj paramaycj, Comments.Comment paramComment) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  aycp(ayco paramayco, Looper paramLooper)
   {
-    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ayde.a(this.a.b, this.a.jdField_a_of_type_JavaLangString, "dispatchMessage", "what:" + paramMessage.what + ",result:" + paramMessage.arg1 + ",obj:" + paramMessage.obj);
+    if (this.a.jdField_a_of_type_Ayel == null) {}
+    do
     {
-      paramBundle = new oidb_0xada.RspBody();
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 0: 
+        i = paramMessage.arg1;
+        paramMessage = (aydt)paramMessage.obj;
+        this.a.jdField_a_of_type_Ayel.a(i, paramMessage);
+        return;
+      case 1: 
+        paramMessage = (aydt)paramMessage.obj;
+      }
+    } while (!(paramMessage.a instanceof Integer));
+    this.a.jdField_a_of_type_Ayel.a_(((Integer)paramMessage.a).intValue(), paramMessage.c);
+    return;
+    int i = paramMessage.arg1;
+    paramMessage = (aydt)paramMessage.obj;
+    this.a.jdField_a_of_type_Ayel.b(i, paramMessage);
+    return;
+    i = paramMessage.arg1;
+    paramMessage = (aydt)paramMessage.obj;
+    this.a.jdField_a_of_type_Ayel.c(i, paramMessage);
+    return;
+    i = paramMessage.arg1;
+    paramMessage = (aydt)paramMessage.obj;
+    this.a.jdField_a_of_type_Ayel.d(i, paramMessage);
+    return;
+    if (paramMessage.obj != null) {}
+    for (;;)
+    {
       try
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        QLog.i("CommentsDataSource", 1, "err_msg:" + paramBundle.err_msg.get());
-        if (paramBundle.busi_buf.has())
-        {
-          paramArrayOfByte = new NowNearbyVideoCommentProto.DelCommentResp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          if (QLog.isColorLevel()) {
-            QLog.i("CommentsDataSource", 1, "ret:" + paramArrayOfByte.result.get());
-          }
-          this.jdField_a_of_type_Aycj.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, (int)paramArrayOfByte.result.get());
-          paramArrayOfByte = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if (paramArrayOfByte == null) {
-            return;
-          }
-          ((ayrf)paramArrayOfByte.getManager(263)).a(aycm.a(this.jdField_a_of_type_Aycm).a, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment.a);
-          return;
-        }
-        QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
-        this.jdField_a_of_type_Aycj.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+        ArrayList localArrayList = (ArrayList)paramMessage.obj;
+        this.a.jdField_a_of_type_Ayel.a(paramMessage.arg1, localArrayList);
         return;
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      catch (ClassCastException localClassCastException)
       {
-        QLog.i("CommentsDataSource", 1, "merge delete resp data error");
-        this.jdField_a_of_type_Aycj.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
-        return;
+        localObject = null;
+        continue;
       }
-    }
-    else
-    {
-      this.jdField_a_of_type_Aycj.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+      paramMessage = (aydt)paramMessage.obj;
+      this.a.jdField_a_of_type_Ayel.a(((Integer)paramMessage.a).intValue());
+      return;
+      Object localObject = null;
     }
   }
 }

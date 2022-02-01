@@ -1,22 +1,16 @@
-public class avho
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class avho
+  implements View.OnClickListener
 {
-  public String a;
-  public boolean a;
-  public String b;
-  @Deprecated
-  public boolean b;
+  avho(avhj paramavhj, View.OnClickListener paramOnClickListener) {}
   
-  public avho(String paramString1, String paramString2, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "MatchKey{column='" + this.jdField_a_of_type_JavaLangString + '\'' + ", keyword='" + this.jdField_b_of_type_JavaLangString + '\'' + ", or=" + this.jdField_a_of_type_Boolean + '}';
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

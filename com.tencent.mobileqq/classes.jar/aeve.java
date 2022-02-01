@@ -1,21 +1,71 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
+import Wallet.AcsQueryRsp;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import java.io.Serializable;
+import mqq.observer.BusinessObserver;
+import mqq.util.WeakReference;
 
 public class aeve
-  implements View.OnTouchListener
+  implements EIPCResultCallback, BusinessObserver
 {
-  public aeve(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  private WeakReference<aevk> jdField_a_of_type_MqqUtilWeakReference;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aeve(aevk paramaevk, Bundle paramBundle)
   {
-    if (!this.a.a)
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramaevk);
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    aevk localaevk = (aevk)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localaevk == null)
     {
-      bdll.b(this.a.app, "dc00898", "", "", "0X8008438", "0X8008438", 0, 0, "", "", "", "");
-      this.a.a = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQNotifyObserver", 2, " onCallback mRef is empty");
+      }
+      return;
     }
-    return false;
+    if ((paramEIPCResult != null) && (paramEIPCResult.code == 0)) {}
+    for (paramEIPCResult = paramEIPCResult.data;; paramEIPCResult = aevj.a(-100, "client_unknown_error"))
+    {
+      localaevk.queryHasSetNotify(paramEIPCResult, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQNotifyObserver", 2, "type:" + paramInt + " isSuccess:" + paramBoolean);
+    }
+    aevk localaevk = (aevk)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localaevk == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQNotifyObserver", 2, " mRef is empty");
+      }
+      return;
+    }
+    paramInt = -1;
+    Serializable localSerializable = paramBundle.getSerializable("rsp");
+    int i;
+    if ((localSerializable instanceof AcsQueryRsp))
+    {
+      paramBundle = ((AcsQueryRsp)localSerializable).err_str;
+      i = ((AcsQueryRsp)localSerializable).ret_code;
+      paramInt = ((AcsQueryRsp)localSerializable).subscribed;
+    }
+    for (;;)
+    {
+      localaevk.queryHasSetNotify(aevj.a(i, paramBundle, paramInt), this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      i = -100;
+      paramBundle = "client_unknown_error";
+    }
   }
 }
 

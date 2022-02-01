@@ -1,11 +1,16 @@
-import android.widget.TextView;
+import android.app.Activity;
 
-public class asyt
+class asyt
+  implements aszj
 {
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  asyt(asyq paramasyq, Activity paramActivity, int paramInt) {}
   
-  protected asyt(asys paramasys) {}
+  public void onNo() {}
+  
+  public void onYes()
+  {
+    asyq.a(this.jdField_a_of_type_Asyq, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
+  }
 }
 
 

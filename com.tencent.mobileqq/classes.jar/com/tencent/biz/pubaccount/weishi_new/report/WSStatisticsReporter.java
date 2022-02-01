@@ -4,12 +4,12 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.HashMap;
 import mqq.os.MqqHandler;
-import ukh;
-import uko;
-import unx;
-import uob;
-import uoc;
-import uoj;
+import urc;
+import urj;
+import uvr;
+import uvv;
+import uvw;
+import uwd;
 
 public class WSStatisticsReporter
 {
@@ -38,8 +38,8 @@ public class WSStatisticsReporter
   
   private void beaconData2Server()
   {
-    uko localuko = new uko(new uoj(this.mEventName, this.mReportParams), null, new uob(this), 4009);
-    ukh.a().a(localuko);
+    urj localurj = new urj(new uwd(this.mEventName, this.mReportParams), null, new uvv(this), 4009);
+    urc.a().a(localurj);
   }
   
   private void reportRequestFailure(String paramString1, String paramString2, String paramString3)
@@ -67,8 +67,8 @@ public class WSStatisticsReporter
     localHashMap.put("err_type", paramString1);
     localHashMap.put("err_code", paramString2);
     localHashMap.put("err_msg", paramString3);
-    unx.a(localHashMap);
-    uoc.a().a(localHashMap);
+    uvr.a(localHashMap);
+    uvw.a().a(localHashMap);
   }
   
   public void report()
@@ -78,7 +78,7 @@ public class WSStatisticsReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter
  * JD-Core Version:    0.7.0.1
  */

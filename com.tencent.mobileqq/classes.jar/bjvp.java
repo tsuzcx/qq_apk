@@ -1,36 +1,46 @@
-import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bjvp
+  extends BaseAdapter
+  implements bjvf
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public String a()
+  public bjvp(View paramView)
   {
-    if (TextUtils.isEmpty(this.f)) {
-      return bjts.a(bjjo.a().a());
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Int = 0;
+      return;
     }
-    return this.f;
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public boolean a()
+  public int getCount()
   {
-    return (!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.g)) && (!TextUtils.isEmpty(this.d)) && (!TextUtils.isEmpty(this.b));
+    return this.jdField_a_of_type_Int;
   }
   
-  public String toString()
+  public Object getItem(int paramInt)
   {
-    return this.d + "_" + this.a + "_" + this.b + "_" + this.c + "_" + this.f + "_" + this.g;
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 

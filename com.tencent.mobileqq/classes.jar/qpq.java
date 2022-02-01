@@ -1,49 +1,21 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class qpq
-  extends ClickableSpan
-  implements skl
+class qpq
+  implements PopupWindow.OnDismissListener
 {
-  private int jdField_a_of_type_Int = -1;
-  protected long a;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  boolean jdField_a_of_type_Boolean;
+  qpq(qpk paramqpk, bjrb parambjrb) {}
   
-  public qpq(ComponentHeaderNewSocial paramComponentHeaderNewSocial, long paramLong, int paramInt)
+  public void onDismiss()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
-      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a(this.jdField_a_of_type_Long);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = -1)
+    this.jdField_a_of_type_Bjrb.a(1.0F);
+    if (this.jdField_a_of_type_Qpk.a.c())
     {
-      paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
-      return;
+      sdc localsdc = this.jdField_a_of_type_Qpk.a.a();
+      if (localsdc != null)
+      {
+        localsdc.c();
+        this.jdField_a_of_type_Qpk.a.b(false);
+      }
     }
   }
 }

@@ -1,15 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public final class bmtv
-  implements DialogInterface.OnDismissListener
+final class bmtv
+  implements URLDrawable.URLDrawableListener
 {
-  public bmtv(FragmentActivity paramFragmentActivity) {}
+  bmtv(String paramString1, String paramString2, bnln parambnln, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper, bmsl parambmsl, int paramInt3) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.a.finish();
+    bmtu.a.remove(this.jdField_b_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("QComboNPaster", 2, "applyNormalPaster onLoadFialed");
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QComboNPaster", 2, "urlDrawableListener onLoadSuccessed");
+    }
+    bmtu.a(paramURLDrawable, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bnln, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper, this.jdField_a_of_type_Bmsl, this.jdField_c_of_type_Int);
+    bmtu.a.remove(this.jdField_b_of_type_JavaLangString);
   }
 }
 

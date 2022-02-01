@@ -1,30 +1,34 @@
-import com.tencent.mobileqq.data.CameraEmotionData;
-import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class asgd
-  implements bovk
+class asgd
+  implements bjoe
 {
-  public asgd(CameraEmoSingleSend paramCameraEmoSingleSend, bovi parambovi, long paramLong) {}
+  asgd(asgc paramasgc, bjnw parambjnw) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onGifCreateFail, emoId:", Integer.valueOf(CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend).emoId) });
-    CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend, false, null);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("sucFlag", "0");
-    this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend.a().a(null, "CamEmoCreateGIF", false, System.currentTimeMillis() - this.jdField_a_of_type_Long, 0L, localHashMap, null);
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.d("CameraEmoSingleSend", 1, new Object[] { "onGifCreateSuccess, emoId:", Integer.valueOf(CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend).emoId) });
-    CameraEmoSingleSend.a(this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend, true, paramString);
-    this.jdField_a_of_type_Bovi.a();
-    paramString = new HashMap();
-    paramString.put("sucFlag", "1");
-    this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSingleSend.a().a(null, "CamEmoCreateGIF", true, System.currentTimeMillis() - this.jdField_a_of_type_Long, 0L, paramString, null);
+    if (this.jdField_a_of_type_Asgc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerRSCenter().a(asgc.a(this.jdField_a_of_type_Asgc).uniseq, this.jdField_a_of_type_Asgc.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_Asgc.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, -1L) != -1) {
+      ChatActivityUtils.a(this.jdField_a_of_type_Asgc.jdField_a_of_type_AndroidContentContext, 2131718116, 1);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.cancel();
+      return;
+      paramView = aszt.a(this.jdField_a_of_type_Asgc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, asgc.a(this.jdField_a_of_type_Asgc));
+      if (paramView.status == 16)
+      {
+        aszk.a(2131692520);
+        this.jdField_a_of_type_Bjnw.cancel();
+        return;
+      }
+      asgc.a(this.jdField_a_of_type_Asgc).status = 1002;
+      aszt.a(this.jdField_a_of_type_Asgc.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Asgc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+    }
   }
 }
 

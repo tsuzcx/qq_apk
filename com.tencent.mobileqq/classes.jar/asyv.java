@@ -1,41 +1,14 @@
-import android.support.v4.app.Fragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
-import com.tencent.widget.XEditTextEx;
+import android.app.Activity;
 
-public class asyv
-  implements atec
+class asyv
+  implements bhnm
 {
-  public asyv(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
+  asyv(asyq paramasyq, Activity paramActivity, int paramInt) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.a()) {
-      this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.b();
-    }
-    this.a.b = "";
-    ExtendFriendProfileEditFragment.b(this.a, 0);
-    Fragment localFragment = this.a.getParentFragment();
-    if ((localFragment != null) && ((localFragment instanceof ExtendFriendEditFragment))) {
-      ((ExtendFriendEditFragment)localFragment).a = null;
-    }
-    ExtendFriendProfileEditFragment.a(this.a, null);
-    ExtendFriendProfileEditFragment.c(this.a);
-    if (ExtendFriendProfileEditFragment.b(this.a))
-    {
-      ExtendFriendProfileEditFragment.a(this.a, true);
-      ExtendFriendProfileEditFragment.b(this.a);
-    }
-    for (;;)
-    {
-      this.a.c = true;
-      ExtendFriendProfileEditFragment.b(this.a);
-      return;
-      ExtendFriendProfileEditFragment.a(this.a, false);
-      if ((this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString()))) {
-        ExtendFriendProfileEditFragment.a(this.a);
-      }
+    if (paramInt == 2) {
+      asyq.a(this.jdField_a_of_type_Asyq, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
     }
   }
 }

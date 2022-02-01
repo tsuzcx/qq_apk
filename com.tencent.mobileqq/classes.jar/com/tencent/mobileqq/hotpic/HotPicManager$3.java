@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.hotpic;
 
-import avtm;
+import augn;
 
 public class HotPicManager$3
   implements Runnable
 {
-  public HotPicManager$3(avtm paramavtm) {}
+  public HotPicManager$3(augn paramaugn) {}
   
   public void run()
   {

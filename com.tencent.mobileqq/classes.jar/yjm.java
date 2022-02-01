@@ -1,76 +1,53 @@
+import android.app.Activity;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
 import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
-class yjm
-  extends SimpleJob<Object>
+public class yjm
+  extends yju<yjh, yjh>
 {
-  yjm(yjl paramyjl, String paramString)
+  private int a;
+  public WeakReference<Activity> a;
+  
+  public yjm(@NonNull Activity paramActivity, int paramInt)
   {
-    super(paramString);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  protected void a(JobContext paramJobContext, yjh paramyjh)
   {
-    long l = System.currentTimeMillis();
-    paramJobContext = (wsu)wth.a(19);
-    paramVarArgs = paramJobContext.a(wzn.a(this.a.jdField_b_of_type_JavaLangString));
-    boolean bool;
-    wzr localwzr;
-    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1))
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localActivity == null)
     {
-      bool = true;
-      List localList = paramJobContext.a(this.a.jdField_b_of_type_JavaLangString, null, 10L);
-      localwzr = new wzr(this.a.c, new ErrorMessage());
-      localwzr.jdField_b_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString;
-      localwzr.jdField_b_of_type_Boolean = true;
-      localwzr.c = true;
-      localwzr.e = true;
-      localwzr.jdField_a_of_type_Boolean = false;
-      localwzr.jdField_a_of_type_JavaUtilList = localList;
-      if (localList.size() <= 0) {
-        break label246;
-      }
-      paramJobContext = (VideoCollectionItem)localList.get(localList.size() - 1);
-      label156:
-      if (paramJobContext != null) {
-        break label251;
-      }
-      localwzr.jdField_a_of_type_Boolean = true;
-      this.a.jdField_b_of_type_Boolean = true;
-      label174:
-      wjj.a().dispatch(localwzr);
-      this.a.a(localList, false);
-      if (!localwzr.jdField_a_of_type_Boolean) {
-        break label294;
+      xvv.e("Q.qqstory.publish.edit.GeneratePicThumbSegment", "ChangePicArgToVideoArgSegment, activity is null");
+      super.notifyError(new ErrorMessage(-1, "ChangePicArgToVideoArgSegment error"));
+      return;
+    }
+    Object localObject = paramyjh.jdField_a_of_type_Yjl.jdField_a_of_type_JavaLangString;
+    paramJobContext = (JobContext)localObject;
+    if (!paramyjh.jdField_a_of_type_Yjl.jdField_b_of_type_Boolean)
+    {
+      paramJobContext = (JobContext)localObject;
+      if (paramyjh.jdField_a_of_type_Yjl.jdField_a_of_type_Boolean) {
+        paramJobContext = paramyjh.jdField_a_of_type_Yjl.jdField_b_of_type_JavaLangString;
       }
     }
-    label294:
-    for (paramJobContext = "true";; paramJobContext = "false")
+    localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(paramJobContext, (BitmapFactory.Options)localObject);
+    int i = ((BitmapFactory.Options)localObject).outWidth;
+    int j = ((BitmapFactory.Options)localObject).outHeight;
+    if (this.jdField_a_of_type_Int == 5) {}
+    for (boolean bool = true;; bool = false)
     {
-      yuk.d("Q.qqstory.memories:MemoryDataPuller", "Req first page local data ,isEnd = %s ,spend time = %d", new Object[] { paramJobContext, Long.valueOf(System.currentTimeMillis() - l) });
-      this.a.d();
-      return null;
-      bool = false;
-      break;
-      label246:
-      paramJobContext = null;
-      break label156;
-      label251:
-      if ((paramVarArgs != null) && (paramJobContext.dbIndex >= paramVarArgs.maxCollectionIndex))
-      {
-        localwzr.jdField_a_of_type_Boolean = bool;
-        this.a.jdField_b_of_type_Boolean = true;
-        break label174;
-      }
-      localwzr.jdField_a_of_type_Boolean = false;
-      break label174;
+      paramyjh.jdField_a_of_type_Yjn = new yjn(localActivity, i, j, paramJobContext, 0.0F, bool, 0, 0.0D, 0.0D, null, false);
+      paramyjh.jdField_a_of_type_JavaLangString = paramJobContext;
+      super.notifyResult(paramyjh);
+      return;
     }
   }
 }

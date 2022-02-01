@@ -1,63 +1,67 @@
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.vas.update.callback.IVasLog;
+
 public class bgkm
+  implements IVasLog
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  
-  public bgkm() {}
-  
-  public bgkm(long paramLong, String paramString1, String paramString2, int paramInt)
+  public void d(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    QLog.d(paramString1, 1, paramString2);
   }
   
-  public int a()
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return this.jdField_a_of_type_Int;
+    QLog.d(paramString1, 1, paramString2, paramThrowable);
   }
   
-  public long a()
+  public void e(String paramString1, String paramString2)
   {
-    return 0L;
+    QLog.e(paramString1, 1, paramString2);
   }
   
-  public String a()
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    QLog.e(paramString1, 1, paramString2, paramThrowable);
   }
   
-  public void a(int paramInt)
+  public void i(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    QLog.i(paramString1, 1, paramString2);
   }
   
-  public void a(String paramString)
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    QLog.i(paramString1, 1, paramString2, paramThrowable);
   }
   
-  public long b()
+  public boolean isColorLevel()
   {
-    return 0L;
+    return QLog.isColorLevel();
   }
   
-  public String b()
+  public boolean isDebugVersion()
   {
-    return this.b;
+    return false;
   }
   
-  public void b(String paramString)
+  public void v(String paramString1, String paramString2)
   {
-    this.b = paramString;
+    QLog.d(paramString1, 1, paramString2);
   }
   
-  public long c()
+  public void v(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return this.jdField_a_of_type_Long;
+    QLog.d(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w(paramString1, 1, paramString2, paramThrowable);
   }
 }
 

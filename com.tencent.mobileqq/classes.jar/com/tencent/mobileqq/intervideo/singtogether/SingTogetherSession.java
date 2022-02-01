@@ -4,17 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aweb;
-import bekj;
-import bekk;
-import blqj;
+import aurb;
+import bddf;
+import bddg;
+import bjuk;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class SingTogetherSession
-  extends bekj
+  extends bddf
   implements Parcelable
 {
-  public static final Parcelable.Creator<SingTogetherSession> CREATOR = new aweb();
+  public static final Parcelable.Creator<SingTogetherSession> CREATOR = new aurb();
   public int a;
   public long a;
   public String a;
@@ -49,44 +50,40 @@ public class SingTogetherSession
   
   private String c(QQAppInterface paramQQAppInterface)
   {
-    String str = "";
-    if (this.jdField_e_of_type_Int == 2) {
-      if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))
-      {
-        paramQQAppInterface = a(paramQQAppInterface, this.jdField_f_of_type_JavaLangString);
-        if (!TextUtils.isEmpty(paramQQAppInterface)) {
-          str = bekk.a(16, paramQQAppInterface);
-        }
+    if (this.a == 1) {
+      return paramQQAppInterface.getApp().getString(2131698664);
+    }
+    if (this.a == 3) {
+      return paramQQAppInterface.getApp().getString(2131698672);
+    }
+    if (this.a == 2) {
+      return paramQQAppInterface.getApp().getString(2131698670);
+    }
+    return d(paramQQAppInterface);
+  }
+  
+  private String d(QQAppInterface paramQQAppInterface)
+  {
+    String str;
+    if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))
+    {
+      str = a(paramQQAppInterface, this.jdField_f_of_type_JavaLangString);
+      if (!TextUtils.isEmpty(str)) {
+        str = bddg.a(16, str);
       }
     }
     for (;;)
     {
-      return str + "发起一起K歌";
-      str = "好友";
+      return str + paramQQAppInterface.getApp().getString(2131698661);
+      str = paramQQAppInterface.getApp().getString(2131698660);
       continue;
-      str = "好友";
-      continue;
-      if (this.jdField_e_of_type_Int == 1) {
-        if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString))
-        {
-          paramQQAppInterface = a(paramQQAppInterface, this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString);
-          if (!TextUtils.isEmpty(paramQQAppInterface)) {
-            str = bekk.a(16, paramQQAppInterface);
-          } else {
-            str = "群友";
-          }
-        }
-        else
-        {
-          str = "群友";
-        }
-      }
+      str = paramQQAppInterface.getApp().getString(2131698660);
     }
   }
   
   public int a()
   {
-    return blqj.a;
+    return bjuk.a;
   }
   
   public String a()
@@ -100,55 +97,69 @@ public class SingTogetherSession
   public String a(QQAppInterface paramQQAppInterface)
   {
     if (this.g == 4) {
-      return "暂无歌曲，等你来点歌。";
+      return paramQQAppInterface.getApp().getString(2131698665);
     }
-    String str = "";
-    Object localObject;
+    String str2 = "";
+    String str1;
     if (this.jdField_e_of_type_Int == 2)
     {
       if (this.b > 0L) {
-        str = a(paramQQAppInterface, this.b + "");
+        str2 = a(paramQQAppInterface, this.b + "");
       }
-      localObject = str;
-      if (TextUtils.isEmpty(str)) {
-        localObject = "好友";
+      str1 = str2;
+      if (TextUtils.isEmpty(str2)) {
+        str1 = paramQQAppInterface.getApp().getString(2131698660);
       }
-      localObject = new StringBuilder().append((String)localObject).append("正在唱");
       if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
-        break label176;
+        break label197;
       }
     }
-    label176:
-    for (paramQQAppInterface = "歌";; paramQQAppInterface = "《" + this.jdField_d_of_type_JavaLangString + "》")
+    label197:
+    for (paramQQAppInterface = paramQQAppInterface.getApp().getString(2131698671);; paramQQAppInterface = String.format(paramQQAppInterface.getApp().getString(2131698668), new Object[] { this.jdField_d_of_type_JavaLangString }))
     {
-      return paramQQAppInterface;
-      localObject = str;
+      return str1 + paramQQAppInterface;
+      str1 = str2;
       if (this.jdField_e_of_type_Int != 1) {
         break;
       }
       if (this.b > 0L) {
-        str = a(paramQQAppInterface, this.jdField_e_of_type_JavaLangString, this.b + "");
+        str2 = a(paramQQAppInterface, this.jdField_e_of_type_JavaLangString, this.b + "");
       }
-      localObject = str;
-      if (!TextUtils.isEmpty(str)) {
+      str1 = str2;
+      if (!TextUtils.isEmpty(str2)) {
         break;
       }
-      localObject = "群友";
+      str1 = paramQQAppInterface.getApp().getString(2131698688);
       break;
     }
   }
   
   public String a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
   {
+    Object localObject;
     if (paramBoolean) {
-      return "收起";
+      localObject = paramQQAppInterface.getApp().getString(2131698674);
     }
-    return b(paramQQAppInterface);
+    do
+    {
+      String str;
+      do
+      {
+        return localObject;
+        str = "";
+        localObject = str;
+      } while (this.g == 3);
+      if (this.jdField_e_of_type_Int == 2) {
+        return c(paramQQAppInterface);
+      }
+      localObject = str;
+    } while (this.jdField_e_of_type_Int != 1);
+    return a(paramQQAppInterface, 2131698667, 2131698663, 2131698661);
   }
   
   public int b()
   {
-    return 2130838296;
+    return 2130838321;
   }
   
   public String b(QQAppInterface paramQQAppInterface)
@@ -157,27 +168,11 @@ public class SingTogetherSession
     do
     {
       return "";
-      if (this.jdField_e_of_type_Int == 2)
-      {
-        if (this.a == 1) {
-          return "我正在K歌";
-        }
-        if (this.a == 3) {
-          return "你们正在一起K歌";
-        }
-        if (this.a == 2) {
-          return "对方正在K歌";
-        }
+      if (this.jdField_e_of_type_Int == 2) {
         return c(paramQQAppInterface);
       }
     } while (this.jdField_e_of_type_Int != 1);
-    if (this.jdField_f_of_type_Int > 1) {
-      return this.jdField_f_of_type_Int + "人正在一起K歌";
-    }
-    if (this.jdField_f_of_type_Int == 1) {
-      return this.jdField_f_of_type_Int + "人正在K歌";
-    }
-    return c(paramQQAppInterface);
+    return a(paramQQAppInterface, 2131698666, 2131698662);
   }
   
   public int describeContents()

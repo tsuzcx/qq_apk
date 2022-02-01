@@ -3,12 +3,12 @@ package com.tencent.mobileqq.emotionintegrate;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import asuu;
+import argu;
 
 public class SearchEmoticonWebBean
   implements Parcelable
 {
-  public static final Parcelable.Creator<SearchEmoticonWebBean> CREATOR = new asuu();
+  public static final Parcelable.Creator<SearchEmoticonWebBean> CREATOR = new argu();
   public int a;
   public String a;
   public int b;
@@ -74,7 +74,7 @@ public class SearchEmoticonWebBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.SearchEmoticonWebBean
  * JD-Core Version:    0.7.0.1
  */

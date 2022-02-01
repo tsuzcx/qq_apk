@@ -1,25 +1,27 @@
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 class asvd
-  extends anyu
+  implements avpj
 {
-  asvd(asvc paramasvc) {}
+  asvd(asuz paramasuz) {}
   
-  protected void onGetRecommendDeviceList(boolean paramBoolean, ArrayList<amsh> paramArrayList)
+  public void a(int paramInt)
   {
-    if (paramBoolean) {
-      asvf.a().a(paramArrayList);
-    }
-    for (;;)
+    switch (paramInt)
     {
-      asvc.a(this.a, false);
-      asvc.b(this.a, false);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EquipLockWebImpl", 2, "error, fetch recommend list !");
-      }
     }
+    do
+    {
+      do
+      {
+        return;
+        QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_GAIN");
+      } while (asuz.a(this.a));
+      asuz.b(this.a);
+      return;
+      QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_LOSS");
+    } while (!asuz.a(this.a));
+    asuz.a(this.a);
   }
 }
 

@@ -1,17 +1,21 @@
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
 public class aeyu
-  implements View.OnClickListener
+  extends View.AccessibilityDelegate
 {
-  public aeyu(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public aeyu(BaseBubbleBuilder paramBaseBubbleBuilder) {}
   
-  public void onClick(View paramView)
+  @TargetApi(16)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    MoveToGroupActivity.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (Build.VERSION.SDK_INT >= 16) {
+      paramAccessibilityNodeInfo.setVisibleToUser(false);
+    }
   }
 }
 

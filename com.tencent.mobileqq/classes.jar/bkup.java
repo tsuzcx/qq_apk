@@ -1,134 +1,120 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.content.Intent;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.JsEvent;
-import com.tencent.qqmini.sdk.annotation.JsPlugin;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
-import cooperation.vip.pb.vac_adv_get.VacFeedsAdvMetaReq;
-import java.util.Arrays;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.customized_interface.IShadow;
+import com.tencent.mobileqq.app.ThreadManagerExecutor;
+import com.tencent.shadow.core.common.LoggerFactory;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import com.tencent.shadow.dynamic.host.PluginManager;
+import cooperation.qqreader.shadow.ReaderShadowImpl.1;
+import java.io.File;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
-@JsPlugin(secondary=true)
 public class bkup
-  extends BaseJsPlugin
+  implements IShadow
 {
-  private JSONObject a(RequestEvent paramRequestEvent)
+  private static bkup jdField_a_of_type_Bkup;
+  private PluginManager jdField_a_of_type_ComTencentShadowDynamicHostPluginManager;
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
+  
+  private bkup()
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      QLog.e("QQPublicAccountNativePlugin", 1, "Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
-    }
-    return null;
+    setILoggerFactory();
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = ThreadManagerExecutor.getSingleThreadExecutorService(192);
   }
   
-  @JsEvent({"qsubscribe_getdeviceinfo"})
-  public void qsubscribeGetdeviceinfo(RequestEvent paramRequestEvent)
+  public static bkup a()
   {
+    if (jdField_a_of_type_Bkup == null) {}
     try
     {
-      a(paramRequestEvent);
-      Object localObject = new acwc();
-      ((acwc)localObject).a = "1b0ad2";
-      localObject = acwb.a(BaseApplication.getContext(), (acwc)localObject);
-      if ((localObject != null) && (((acwd)localObject).a != null))
-      {
-        vac_adv_get.VacFeedsAdvMetaReq localVacFeedsAdvMetaReq = new vac_adv_get.VacFeedsAdvMetaReq();
-        localVacFeedsAdvMetaReq.device_info.set(((acwd)localObject).a);
-        localObject = Arrays.toString(localVacFeedsAdvMetaReq.toByteArray());
-        new JSONObject().put("deviceinfo", localObject);
-        paramRequestEvent.ok();
+      if (jdField_a_of_type_Bkup == null) {
+        jdField_a_of_type_Bkup = new bkup();
       }
-      return;
+      return jdField_a_of_type_Bkup;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QQPublicAccountNativePlugin", 1, "Handle QQPublicAccountNativePlugin failed! ", localThrowable);
-      paramRequestEvent.fail();
-    }
+    finally {}
   }
   
-  @JsEvent({"qsubscribe_opendetail"})
-  public void qsubscribeOpendetail(RequestEvent paramRequestEvent)
+  private PluginManager a(Context paramContext, String paramString)
   {
-    try
+    new aulv("Reader");
+    aulr localaulr = new aulr(paramContext, "Reader", paramString, "5");
+    boolean bool;
+    if ((localaulr.wasUpdating()) || (localaulr.getLatest() == null))
     {
-      Object localObject = a(paramRequestEvent).optJSONObject("data");
-      if (localObject != null)
-      {
-        String str1 = ((JSONObject)localObject).optString("uin");
-        int i = ((JSONObject)localObject).optInt("type");
-        String str2 = ((JSONObject)localObject).optString("feedid");
-        long l = ((JSONObject)localObject).optLong("createtime");
-        localObject = aaej.a(str2, str1, i, ((JSONObject)localObject).optInt("width"), ((JSONObject)localObject).optInt("height"), l);
-        aaej.a(this.mMiniAppContext.getAttachedActivity(), (CertifiedAccountMeta.StFeed)localObject, 9001);
+      bool = true;
+      bkvd.d("ReaderShadowImpl", "needWaitingUpdate:" + bool);
+      paramString = localaulr.update();
+      if (!bool) {
+        break label209;
       }
-      return;
     }
-    catch (Throwable localThrowable)
+    for (;;)
     {
-      QLog.e("QQPublicAccountNativePlugin", 1, "Handle QQPublicAccountNativePlugin failed! ", localThrowable);
-      paramRequestEvent.fail();
-    }
-  }
-  
-  @JsEvent({"qsubscribe_opendiscover"})
-  public void qsubscribeOpendiscover(RequestEvent paramRequestEvent)
-  {
-    boolean bool = false;
-    try
-    {
-      Object localObject = a(paramRequestEvent).optJSONObject("data");
-      if (localObject != null)
+      try
       {
-        String str = ((JSONObject)localObject).optString("uin");
-        int i = ((JSONObject)localObject).optInt("shoptype");
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("postUin", str);
-        ((Intent)localObject).putExtra("sourceFrom", 1);
-        if (i > 1) {
-          bool = true;
+        paramString = (File)paramString.get();
+        if ((paramString == null) || (bkuo.a(paramContext, paramString))) {
+          break label220;
         }
-        ((Intent)localObject).putExtra("has_shop", bool);
-        ((Intent)localObject).addFlags(268435456);
-        bmtd.a(this.mMiniAppContext.getAttachedActivity(), (Intent)localObject, 0);
-        paramRequestEvent.ok();
+        bool = paramString.delete();
+        bkvd.a("ReaderShadowImpl", "[loadPluginManager] pm apk is invalid and delete result=" + bool);
+        paramContext = null;
+        if (paramContext == null) {
+          break label218;
+        }
+        return new DynamicPluginManager(new bkur(localaulr, paramContext));
+        bool = false;
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QQPublicAccountNativePlugin", 1, "Handle QQPublicAccountNativePlugin failed! ", localThrowable);
-      paramRequestEvent.fail();
+      catch (ExecutionException paramString)
+      {
+        bkvd.a("ReaderShadowImpl", "[loadPluginManager] ExecutionException:", paramString);
+        bkvg.a(paramContext, -101, "cdn update ExecutionException!", paramString.getMessage());
+        paramString = null;
+        continue;
+      }
+      catch (InterruptedException paramString)
+      {
+        bkvd.a("ReaderShadowImpl", "[loadPluginManager] InterruptedException:", paramString);
+        bkvg.a(paramContext, -102, "cdn update InterruptedException!", paramString.getMessage());
+        paramString = null;
+        continue;
+      }
+      label209:
+      paramString = localaulr.getLatest();
+      continue;
+      label218:
+      return null;
+      label220:
+      paramContext = paramString;
     }
   }
   
-  @JsEvent({"qsubscribe_openhomepage"})
-  public void qsubscribeOpenhomepage(RequestEvent paramRequestEvent)
+  public void enter(Context paramContext, long paramLong, String paramString1, String paramString2, Bundle paramBundle, EnterCallback paramEnterCallback)
   {
-    try
-    {
-      Object localObject = a(paramRequestEvent).optJSONObject("data");
-      if (localObject != null)
-      {
-        localObject = ((JSONObject)localObject).optString("uin");
-        aaej.a(this.mMiniAppContext.getAttachedActivity(), (String)localObject, 9001);
-      }
-      return;
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ReaderShadowImpl.1(this, paramContext, paramString1, paramString2, paramLong, paramBundle, paramEnterCallback));
+  }
+  
+  public PluginManager getPluginManager(Context paramContext, String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager == null) {
+      this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager = a(paramContext, paramString1);
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QQPublicAccountNativePlugin", 1, "Handle QQPublicAccountNativePlugin failed! ", localThrowable);
-      paramRequestEvent.fail();
+    return this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager;
+  }
+  
+  public boolean hasPluginManager()
+  {
+    return this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManager != null;
+  }
+  
+  public void setILoggerFactory()
+  {
+    if (LoggerFactory.getILoggerFactory() == null) {
+      LoggerFactory.setILoggerFactory(aulz.a());
     }
   }
 }

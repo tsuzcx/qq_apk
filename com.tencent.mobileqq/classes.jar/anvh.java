@@ -1,44 +1,73 @@
-import com.tencent.mobileqq.app.ConditionSearchManager.DownloadTask.1;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.fts.FTSTroopSync;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import protocol.KQQConfig.GetResourceRespInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.MobileQQ;
 
 public class anvh
-  extends bezs
+  implements anvi
 {
-  public File a;
-  public GetResourceRespInfo a;
+  anvf jdField_a_of_type_Anvf;
+  anvg jdField_a_of_type_Anvg;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public anvh(QQAppInterface paramQQAppInterface, String paramString, GetResourceRespInfo paramGetResourceRespInfo, File paramFile)
+  anvh(QQAppInterface paramQQAppInterface, anvg paramanvg)
   {
-    super(paramQQAppInterface, paramString);
-    this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo = paramGetResourceRespInfo;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Anvg = paramanvg;
+    this.jdField_a_of_type_Anvf = this.jdField_a_of_type_Anvg.jdField_a_of_type_Anvf;
   }
   
-  protected void realCancel()
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "DownloadTask realCancel");
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putBoolean("fts_troop_upgrade_flag" + paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+    localEditor.commit();
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getBoolean("fts_troop_upgrade_flag" + paramQQAppInterface.getCurrentAccountUin(), false);
+  }
+  
+  public void a() {}
+  
+  public boolean a()
+  {
+    return !a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().drop(FTSTroopSync.class.getSimpleName());
+    Object localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b();
+    ArrayList localArrayList = new ArrayList(((ArrayList)localObject).size());
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      TroopInfo localTroopInfo = (TroopInfo)((Iterator)localObject).next();
+      try
+      {
+        localArrayList.add(new FTSTroopSync(5, Long.parseLong(localTroopInfo.troopuin)));
+      }
+      catch (Exception localException) {}
+      if (QLog.isColorLevel()) {
+        QLog.e("FTSTroopUpgrader", 2, "startUpgrade exception : " + localException.toString());
+      }
     }
-  }
-  
-  protected void realStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "DownloadTask realStart");
+    if (this.jdField_a_of_type_Anvg.a(localArrayList))
+    {
+      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+      return true;
     }
-    String str = this.key;
-    QQAppInterface localQQAppInterface = this.app;
-    GetResourceRespInfo localGetResourceRespInfo = this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo;
-    ThreadManagerV2.excute(new ConditionSearchManager.DownloadTask.1(this, str, this.jdField_a_of_type_JavaIoFile, localQQAppInterface, localGetResourceRespInfo), 128, null, true);
-  }
-  
-  public String toString()
-  {
-    return "[DownloadTask] url=" + this.key;
+    return false;
   }
 }
 

@@ -1,13 +1,37 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.widget.XListView;
 
 public class ahyw
-  implements ahyf
+  implements bamo
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public ahyw(SearchBaseFragment paramSearchBaseFragment) {}
+  
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    paramahed.f(paramMessageRecord, paramahfq);
+    if ((paramBitmap == null) || (paramInt2 == 201)) {}
+    for (;;)
+    {
+      return;
+      if ((this.a.e == 0) && (this.a.a != null))
+      {
+        int i = this.a.a.getChildCount();
+        paramInt2 = 0;
+        while (paramInt2 < i)
+        {
+          paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
+          if ((paramBitmap != null) && ((paramBitmap instanceof ahyz)))
+          {
+            paramBitmap = (ahyz)paramBitmap;
+            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
+              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+            }
+          }
+          paramInt2 += 1;
+        }
+      }
+    }
   }
 }
 

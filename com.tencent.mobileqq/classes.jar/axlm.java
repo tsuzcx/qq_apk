@@ -1,40 +1,45 @@
-import android.graphics.Rect;
-import android.support.v4.view.OnApplyWindowInsetsListener;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.WindowInsetsCompat;
-import android.view.View;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
 
 public class axlm
-  implements OnApplyWindowInsetsListener
+  implements bhfy
 {
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  public axlm(OCRResultActivity paramOCRResultActivity) {}
   
-  public axlm(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
-  
-  public WindowInsetsCompat onApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
+  public void a()
   {
-    paramView = ViewCompat.onApplyWindowInsets(paramView, paramWindowInsetsCompat);
-    if (paramView.isConsumed()) {
-      return paramView;
+    if (OCRResultActivity.a(this.a) == 0) {
+      OCRResultActivity.a(this.a);
     }
-    paramWindowInsetsCompat = this.jdField_a_of_type_AndroidGraphicsRect;
-    paramWindowInsetsCompat.left = paramView.getSystemWindowInsetLeft();
-    paramWindowInsetsCompat.top = paramView.getSystemWindowInsetTop();
-    paramWindowInsetsCompat.right = paramView.getSystemWindowInsetRight();
-    paramWindowInsetsCompat.bottom = paramView.getSystemWindowInsetBottom();
-    int i = 0;
-    int j = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.getChildCount();
-    while (i < j)
-    {
-      WindowInsetsCompat localWindowInsetsCompat = ViewCompat.dispatchApplyWindowInsets(this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.getChildAt(i), paramView);
-      paramWindowInsetsCompat.left = Math.min(localWindowInsetsCompat.getSystemWindowInsetLeft(), paramWindowInsetsCompat.left);
-      paramWindowInsetsCompat.top = Math.min(localWindowInsetsCompat.getSystemWindowInsetTop(), paramWindowInsetsCompat.top);
-      paramWindowInsetsCompat.right = Math.min(localWindowInsetsCompat.getSystemWindowInsetRight(), paramWindowInsetsCompat.right);
-      paramWindowInsetsCompat.bottom = Math.min(localWindowInsetsCompat.getSystemWindowInsetBottom(), paramWindowInsetsCompat.bottom);
-      i += 1;
+    while (OCRResultActivity.a(this.a) != 1) {
+      return;
     }
-    return paramView.replaceSystemWindowInsets(paramWindowInsetsCompat.left, paramWindowInsetsCompat.top, paramWindowInsetsCompat.right, paramWindowInsetsCompat.bottom);
+    OCRResultActivity.b(this.a);
+  }
+  
+  public void a(String paramString)
+  {
+    bdaf.a(paramString, "OCR_Participle_copy");
+  }
+  
+  public void b(String paramString)
+  {
+    OCRResultActivity.a(this.a, paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    bdaf.a(this.a, this.a.app, paramString);
+  }
+  
+  public void d(String paramString)
+  {
+    Intent localIntent = new Intent(this.a, TextPreviewTranslateActivity.class);
+    localIntent.putExtra("TranslateText", paramString);
+    localIntent.putExtra("WhereAreYouFrom", "OCR_RESULT");
+    this.a.startActivityForResult(localIntent, 1);
+    OCRResultActivity.a(this.a, true);
   }
 }
 

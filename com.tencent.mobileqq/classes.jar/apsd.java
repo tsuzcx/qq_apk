@@ -1,6 +1,28 @@
-public abstract interface apsd
+import com.tencent.mobileqq.confess.ConfessMsgListFragment;
+
+public class apsd
+  extends apsf
 {
-  public abstract boolean a(byte[] paramArrayOfByte);
+  public apsd(ConfessMsgListFragment paramConfessMsgListFragment) {}
+  
+  public void a(aprw paramaprw)
+  {
+    ConfessMsgListFragment.a(this.a);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    if (this.a.isResumed()) {
+      this.a.b();
+    }
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    if (this.a.isResumed()) {
+      this.a.b();
+    }
+  }
 }
 
 

@@ -1,18 +1,19 @@
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class skc
-  implements bdyf
+  extends Handler
 {
-  public skc(ReadInJoySkinSlideDownView paramReadInJoySkinSlideDownView) {}
+  public List<Handler.Callback> a = new ArrayList();
   
-  public void a(int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
-    localLayoutParams.width = paramInt1;
-    localLayoutParams.height = this.a.getHeight();
-    this.a.a.setLayoutParams(localLayoutParams);
+    Iterator localIterator = this.a.iterator();
+    while ((localIterator.hasNext()) && (!((Handler.Callback)localIterator.next()).handleMessage(paramMessage))) {}
   }
 }
 

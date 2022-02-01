@@ -1,20 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class vnl
-  implements View.OnClickListener
+  extends SimpleJob<Void>
 {
-  vnl(vnk paramvnk) {}
-  
-  public void onClick(View paramView)
+  vnl(vnk paramvnk, String paramString)
   {
-    vnk.a(this.a, false);
-    this.a.b();
-    if (vnk.a(this.a) != null) {
-      vnk.a(this.a).a();
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    boolean bool = ypi.a(500L);
+    if (this.a.a(bool)) {
+      vnk.a(this.a, bool);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return null;
+  }
+  
+  public int getJobType()
+  {
+    return 4;
   }
 }
 

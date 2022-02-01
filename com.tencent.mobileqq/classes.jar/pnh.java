@@ -1,95 +1,24 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.widget.AutoFitTextView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/imageopt/RIJImageOptConfig;", "", "()V", "FILE_TYPE_SHARPP", "", "FILE_TYPE_WEBP", "TAG", "", "bitmapOpt", "decodeHttpStream", "fileTypeOpt", "isBitmapOpt", "", "()Z", "isDecodeHttpStream", "isLifoOn", "isRenderFirst", "isRportOn", "lifoOn", "monitorTime", "", "renderFirst", "reportOn", "useInnerDns", "useKandianIpConnect", "getMonitorTime", "updateConfig", "", "useIpConnect", "useSharpP", "useWebp", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pnh
+public class pnh
+  implements bhbi
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static long jdField_a_of_type_Long = 0L;
-  private static final String jdField_a_of_type_JavaLangString = "RIJImageOptConfig";
-  public static final pnh a;
-  private static int b = 0;
-  private static int c = 0;
-  private static int d = 0;
-  private static int e = 0;
-  private static int f = 0;
-  private static int g = 0;
-  private static final int h = 1;
-  private static final int i = 2;
-  private static int j;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
+  AutoFitTextView jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView;
   
-  static
-  {
-    jdField_a_of_type_Pnh = new pnh();
-  }
+  public pnh(pnf parampnf) {}
   
-  public final long a()
+  public int a()
   {
-    if (jdField_a_of_type_Long > 0L) {
-      return jdField_a_of_type_Long;
-    }
-    return 10000L;
-  }
-  
-  public final void a()
-  {
-    jdField_a_of_type_Int = Aladdin.getConfig(293).getIntegerFromString("reportOn", 0);
-    b = Aladdin.getConfig(293).getIntegerFromString("lifoOn", 0);
-    c = Aladdin.getConfig(293).getIntegerFromString("renderFirst", 0);
-    d = Aladdin.getConfig(293).getIntegerFromString("decodeHttpStream", 0);
-    e = Aladdin.getConfig(293).getIntegerFromString("bitmapOpt", 0);
-    jdField_a_of_type_Long = Aladdin.getConfig(293).getIntegerFromString("monitorTime", 10000);
-    j = Aladdin.getConfig(323).getIntegerFromString("image_flow_optimization_config", 0);
-    f = Aladdin.getConfig(323).getIntegerFromString("use_ip", 0);
-    g = Aladdin.getConfig(293).getIntegerFromString("use_kandian_ip_connect", 0);
-    QLog.d(jdField_a_of_type_JavaLangString, 1, "reportOn:" + jdField_a_of_type_Int + ", lifoOn:" + b + ", renderFirst:" + c + ", decodeHttpStream:" + d + ", bitmapOpt:" + e + ", monitorTime:" + jdField_a_of_type_Long + ", fileTypeOpt:" + j + ", use_ip:" + f + ", use_ip_connect:" + g);
-  }
-  
-  public final boolean a()
-  {
-    return jdField_a_of_type_Int == 1;
-  }
-  
-  public final boolean b()
-  {
-    return b == 1;
-  }
-  
-  public final boolean c()
-  {
-    return c == 1;
-  }
-  
-  public final boolean d()
-  {
-    return d == 1;
-  }
-  
-  public final boolean e()
-  {
-    return e == 1;
-  }
-  
-  public final boolean f()
-  {
-    return j == h;
-  }
-  
-  public final boolean g()
-  {
-    return j == i;
-  }
-  
-  public final boolean h()
-  {
-    return f == 1;
-  }
-  
-  public final boolean i()
-  {
-    return g == 1;
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth() - DisplayUtil.dip2px(pnf.a(this.jdField_a_of_type_Pnf), 10.0F);
   }
 }
 

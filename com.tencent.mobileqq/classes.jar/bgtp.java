@@ -1,6 +1,6 @@
 public abstract interface bgtp
 {
-  public abstract void a(String paramString1, String paramString2);
+  public abstract String[] getMultiNameSpace();
 }
 
 

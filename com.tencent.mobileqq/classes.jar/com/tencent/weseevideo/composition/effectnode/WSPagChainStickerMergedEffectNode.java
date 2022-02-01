@@ -47,11 +47,13 @@ public class WSPagChainStickerMergedEffectNode
           if (localTAVSticker == null) {
             continue;
           }
-          if ((paramInt == VideoEffectType.TYPE_VIDEO_END.value) && ("sticker_video_end".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
+          if ((paramInt == VideoEffectType.TYPE_STICKER.value) && ("blur".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
             localArrayList.add(localTAVSticker);
           }
         }
-        if ((paramInt == VideoEffectType.TYPE_FEN_WEI.value) && ("sticker_fen_wei".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
+        if ((paramInt == VideoEffectType.TYPE_VIDEO_END.value) && ("sticker_video_end".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
+          localList1.add(localTAVSticker);
+        } else if ((paramInt == VideoEffectType.TYPE_FEN_WEI.value) && ("sticker_fen_wei".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
           localList1.add(localTAVSticker);
         } else if ((paramInt == VideoEffectType.TYPE_VIDEO_BEGIN.value) && ("sticker_video_begin".equals(TAVStickerExKt.getExtraStickerType(localTAVSticker)))) {
           localList1.add(localTAVSticker);

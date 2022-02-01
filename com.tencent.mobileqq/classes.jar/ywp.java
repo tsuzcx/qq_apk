@@ -1,33 +1,13 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
 
-class ywp
-  extends QQUIEventReceiver<ywh, zcj>
+public class ywp
+  implements DialogInterface.OnClickListener
 {
-  public ywp(@NonNull ywh paramywh)
-  {
-    super(paramywh);
-  }
+  public ywp(QRLoginAuthActivity paramQRLoginAuthActivity) {}
   
-  public void a(@NonNull ywh paramywh, @NonNull zcj paramzcj)
-  {
-    ywr localywr = paramywh.a;
-    if (localywr != null) {
-      localywr.a(paramywh.a());
-    }
-    for (;;)
-    {
-      yup.b("edit_video", "face_list_success", 0, paramzcj.a.errorCode, new String[0]);
-      return;
-      yuk.b(this.TAG, "DoodleEmojiListEventReceiver adapter is null");
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return zcj.class;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

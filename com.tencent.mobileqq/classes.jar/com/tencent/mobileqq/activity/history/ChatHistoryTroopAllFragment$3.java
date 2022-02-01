@@ -15,10 +15,10 @@ class ChatHistoryTroopAllFragment$3
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.this$0.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.this$0.jdField_b_of_type_JavaLangString, 1, this.this$0.c);
+    MessageRecord localMessageRecord = this.this$0.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemHistoryByShmsgseq(this.this$0.jdField_b_of_type_JavaLangString, 1, this.this$0.c);
     if (localMessageRecord != null)
     {
-      List localList = this.this$0.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.this$0.jdField_b_of_type_JavaLangString, 1, localMessageRecord.shmsgseq, 20);
+      List localList = this.this$0.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryLaterHistoryByShmsgseq(this.this$0.jdField_b_of_type_JavaLangString, 1, localMessageRecord.shmsgseq, 20);
       localList.add(0, localMessageRecord);
       ThreadManager.getUIHandler().post(new ChatHistoryTroopAllFragment.3.1(this, localList));
       return;

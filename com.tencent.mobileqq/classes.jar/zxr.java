@@ -1,44 +1,48 @@
-import android.view.View;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class zxr
-  implements abhw
+class zxr
+  implements FFmpegExecuteResponseCallback
 {
-  public zxr(ScannerActivity paramScannerActivity) {}
+  zxr(zxq paramzxq, zxs paramzxs, zxt paramzxt) {}
   
-  public void a(int paramInt)
+  public void onFailure(String paramString)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.a.d = false;
-    ScannerActivity.a(this.a).setVisibility(8);
-    bhpc localbhpc = bhlq.a(this.a, 230);
-    if (paramInt == 2) {
-      localbhpc.setMessage(2131717570);
-    }
-    for (;;)
+    if (this.jdField_a_of_type_Zxs != null)
     {
-      zxs localzxs = new zxs(this);
-      localbhpc.setPositiveButton(2131694098, localzxs);
-      localbhpc.setOnCancelListener(localzxs);
-      localbhpc.show();
-      return;
-      localbhpc.setMessage(2131717579);
+      this.jdField_a_of_type_Zxt.a(943004);
+      this.jdField_a_of_type_Zxt.a(paramString);
+      this.jdField_a_of_type_Zxs.failed(this.jdField_a_of_type_Zxt);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo failure");
     }
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void onFinish(boolean paramBoolean)
   {
-    if (this.a.isFinishing()) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo finish");
     }
-    this.a.a.d = false;
-    String str = "QR_CODE";
-    if (ScannerActivity.a(this.a) != null) {
-      str = ScannerActivity.a(this.a).a();
+  }
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo start");
     }
-    ScannerActivity.a(this.a, paramInt1, str, paramString, paramInt2);
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    if (this.jdField_a_of_type_Zxs != null) {
+      this.jdField_a_of_type_Zxs.success(this.jdField_a_of_type_Zxt);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo sucess");
+    }
   }
 }
 

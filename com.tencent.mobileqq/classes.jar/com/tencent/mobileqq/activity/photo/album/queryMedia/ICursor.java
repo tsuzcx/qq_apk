@@ -94,24 +94,6 @@ public abstract class ICursor
     }
   }
   
-  LocalMediaInfo loadImageFromCursor()
-  {
-    LocalMediaInfo localLocalMediaInfo = makeMediaInfo();
-    boolean bool2 = needMediaInfo(localLocalMediaInfo);
-    boolean bool1 = bool2;
-    if (bool2)
-    {
-      bool1 = bool2;
-      if (this.mListener != null) {
-        bool1 = this.mListener.needMediaInfo(localLocalMediaInfo);
-      }
-    }
-    if (bool1) {
-      return localLocalMediaInfo;
-    }
-    return null;
-  }
-  
   protected LocalMediaInfo makeMediaInfo()
   {
     LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
@@ -138,6 +120,26 @@ public abstract class ICursor
       return this.mCursor.moveToPosition(paramInt);
     }
     return false;
+  }
+  
+  public boolean needMedia(LocalMediaInfo paramLocalMediaInfo)
+  {
+    boolean bool1;
+    if (paramLocalMediaInfo == null) {
+      bool1 = false;
+    }
+    do
+    {
+      boolean bool2;
+      do
+      {
+        return bool1;
+        bool2 = needMediaInfo(paramLocalMediaInfo);
+        bool1 = bool2;
+      } while (!bool2);
+      bool1 = bool2;
+    } while (this.mListener == null);
+    return this.mListener.needMediaInfo(paramLocalMediaInfo);
   }
   
   protected boolean needMediaInfo(LocalMediaInfo paramLocalMediaInfo)

@@ -1,13 +1,42 @@
-import kotlin.Metadata;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/FillBirthdayDialog$OnConfirmListener;", "", "onConfirm", "", "newBirthday", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface atef
+class atef
+  implements blfl<WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp>
 {
-  public abstract void a(int paramInt);
+  atef(atdx paramatdx, atek paramatek) {}
+  
+  public void a(int paramInt, String paramString, WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
+  {
+    QLog.i("WeiYunLogicCenter<FileAssistant>", 1, "sendWeiYun2Dataline onFailed: errcode[" + paramInt + "], errmsg[" + paramString + "]");
+    if (this.jdField_a_of_type_Atek != null) {
+      this.jdField_a_of_type_Atek.a(paramInt, paramString);
+    }
+  }
+  
+  public void a(WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
+  {
+    paramCrossBidProxyCopyFileToOtherBidMsgRsp = new String(paramCrossBidProxyCopyFileToOtherBidMsgRsp.dst_path.get().toByteArray());
+    if (paramCrossBidProxyCopyFileToOtherBidMsgRsp.length() < 1)
+    {
+      QLog.e("WeiYunLogicCenter<FileAssistant>", 1, "=_= ^! [CS Replay]sendWeiYun2Dataline onSucceed,But uuid is null!!!");
+      if (this.jdField_a_of_type_Atek != null) {
+        this.jdField_a_of_type_Atek.a(-3, "copyFileToOtherBid_fail");
+      }
+    }
+    do
+    {
+      return;
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 1, "=_= ^ [CS Replay] sendWeiYun2Dataline onSucceed, Uuid[" + paramCrossBidProxyCopyFileToOtherBidMsgRsp + "]");
+    } while (this.jdField_a_of_type_Atek == null);
+    this.jdField_a_of_type_Atek.a(paramCrossBidProxyCopyFileToOtherBidMsgRsp);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atef
  * JD-Core Version:    0.7.0.1
  */

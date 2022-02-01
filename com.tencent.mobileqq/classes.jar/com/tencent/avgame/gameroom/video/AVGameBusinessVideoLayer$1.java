@@ -5,20 +5,20 @@ import com.tencent.avgame.app.AVGameAppInterface;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import mxo;
-import nbr;
-import ndx;
-import nes;
+import mxz;
+import ncs;
+import nfe;
+import nfz;
 
 public class AVGameBusinessVideoLayer$1
   implements Runnable
 {
-  public AVGameBusinessVideoLayer$1(ndx paramndx) {}
+  public AVGameBusinessVideoLayer$1(nfe paramnfe) {}
   
   public void run()
   {
     int i = 0;
-    if ((this.this$0.jdField_b_of_type_JavaUtilList.isEmpty()) || (this.this$0.jdField_b_of_type_ArrayOfNes == null)) {
+    if ((this.this$0.jdField_b_of_type_JavaUtilList.isEmpty()) || (this.this$0.jdField_b_of_type_ArrayOfNfz == null)) {
       return;
     }
     long l1 = this.this$0.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getLongAccountUin();
@@ -28,19 +28,19 @@ public class AVGameBusinessVideoLayer$1
       synchronized (this.this$0.jdField_b_of_type_JavaUtilList)
       {
         HashSet localHashSet = new HashSet();
-        localObject2 = this.this$0.jdField_b_of_type_ArrayOfNes;
+        localObject2 = this.this$0.jdField_b_of_type_ArrayOfNfz;
         int j = localObject2.length;
         if (i < j)
         {
           localObject3 = localObject2[i];
-          if (!((nes)localObject3).a()) {
+          if (!((nfz)localObject3).a()) {
             break label369;
           }
-          long l2 = Long.valueOf(((nes)localObject3).b()).longValue();
-          if (!ndx.a(this.this$0, l2))
+          long l2 = Long.valueOf(((nfz)localObject3).b()).longValue();
+          if (!nfe.a(this.this$0, l2))
           {
-            ((nes)localObject3).a(null, 0);
-            ((nes)localObject3).a(1);
+            ((nfz)localObject3).a(null, 0);
+            ((nfz)localObject3).a(1);
           }
           else
           {
@@ -51,19 +51,19 @@ public class AVGameBusinessVideoLayer$1
       Object localObject2 = this.this$0.jdField_b_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        localObject3 = (nbr)((Iterator)localObject2).next();
-        if ((l1 == ((nbr)localObject3).jdField_a_of_type_Long) && (((nbr)localObject3).c)) {
-          this.this$0.d = new Rect(((nbr)localObject3).f, ((nbr)localObject3).g, ((nbr)localObject3).f + ((nbr)localObject3).h, ((nbr)localObject3).g + ((nbr)localObject3).i);
+        localObject3 = (ncs)((Iterator)localObject2).next();
+        if ((l1 == ((ncs)localObject3).jdField_a_of_type_Long) && (((ncs)localObject3).c)) {
+          this.this$0.d = new Rect(((ncs)localObject3).f, ((ncs)localObject3).g, ((ncs)localObject3).f + ((ncs)localObject3).h, ((ncs)localObject3).g + ((ncs)localObject3).i);
         }
-        if ((!((nbr)localObject3).jdField_a_of_type_Boolean) && (!localObject1.contains(Long.valueOf(((nbr)localObject3).jdField_a_of_type_Long))))
+        if ((!((ncs)localObject3).jdField_a_of_type_Boolean) && (!localObject1.contains(Long.valueOf(((ncs)localObject3).jdField_a_of_type_Long))))
         {
-          localObject3 = Long.toString(((nbr)localObject3).jdField_a_of_type_Long);
+          localObject3 = Long.toString(((ncs)localObject3).jdField_a_of_type_Long);
           i = this.this$0.g();
-          nes localnes = this.this$0.jdField_b_of_type_ArrayOfNes[i];
-          localnes.a(this.this$0.jdField_a_of_type_Mxo.a((String)localObject3, (byte)1));
-          localnes.a((String)localObject3, 0);
-          localnes.a(this.this$0.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin());
-          localnes.a(0);
+          nfz localnfz = this.this$0.jdField_b_of_type_ArrayOfNfz[i];
+          localnfz.a(this.this$0.jdField_a_of_type_Mxz.a((String)localObject3, (byte)1));
+          localnfz.a((String)localObject3, 0);
+          localnfz.a(this.this$0.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin());
+          localnfz.a(0);
         }
       }
       this.this$0.b();

@@ -1,10 +1,37 @@
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.CompletionListener.1;
+import mqq.util.WeakReference;
+
 public class bcsn
+  implements MediaPlayer.OnCompletionListener
 {
-  public boolean a;
+  private WeakReference<VideoSprite> a;
   
-  public bcsn(bcsm parambcsm)
+  private bcsn(VideoSprite paramVideoSprite)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.a = new WeakReference(paramVideoSprite);
+  }
+  
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    paramMediaPlayer = (VideoSprite)this.a.get();
+    if (paramMediaPlayer == null) {}
+    do
+    {
+      return;
+      if (paramMediaPlayer.j)
+      {
+        paramMediaPlayer.b.b(new VideoSprite.CompletionListener.1(this, paramMediaPlayer));
+        return;
+      }
+      paramMediaPlayer.g = false;
+      paramMediaPlayer.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    } while (paramMediaPlayer.jdField_a_of_type_Bcrz == null);
+    paramMediaPlayer.jdField_a_of_type_Bcrz.a();
   }
 }
 

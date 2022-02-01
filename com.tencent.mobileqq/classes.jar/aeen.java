@@ -1,13 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
 
 public class aeen
-  implements DialogInterface.OnClickListener
+  implements alki
 {
-  public aeen(ChatHistoryImageView paramChatHistoryImageView) {}
+  public aeen(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    SearchMightKnowFragment.a(this.a).setVisibility(0);
+    SearchMightKnowFragment.a(this.a).setVisibility(8);
+  }
+  
+  public void a(String paramString) {}
+  
+  public void a(List<MayKnowRecommend> paramList) {}
+  
+  public void b()
+  {
+    SearchMightKnowFragment.a(this.a).setVisibility(8);
+    SearchMightKnowFragment.a(this.a).setVisibility(0);
+  }
 }
 
 

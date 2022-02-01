@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.app.proxy.ProxyListener;
+import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
+import java.util.UUID;
 
-public class beei
-  implements DialogInterface.OnClickListener
+class beei
+  implements ProxyListener
 {
-  public beei(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  beei(beeh parambeeh, TroopFileTansferItemEntity paramTroopFileTansferItemEntity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDeleteFinish(String paramString, int paramInt)
   {
-    GroupTeamWorkListActivity.a(this.a);
+    befc.d("TroopFileDataBaseProxy", befc.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[del]. table:" + paramString);
+  }
+  
+  public void onInsertFinish(String paramString)
+  {
+    befc.d("TroopFileDataBaseProxy", befc.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish. table:" + paramString);
+  }
+  
+  public void onUpdateFinish(String paramString, int paramInt)
+  {
+    befc.d("TroopFileDataBaseProxy", befc.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[up]. table:" + paramString);
   }
 }
 

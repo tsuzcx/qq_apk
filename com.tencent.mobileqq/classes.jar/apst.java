@@ -1,37 +1,25 @@
-import android.os.Bundle;
+import android.graphics.Rect;
+import java.util.Comparator;
 
-public class apst
+class apst
+  implements Comparator<Rect>
 {
-  private Bundle a;
+  apst(apsq paramapsq) {}
   
-  public apst(Bundle paramBundle)
+  public int a(Rect paramRect1, Rect paramRect2)
   {
-    this.a = paramBundle;
-  }
-  
-  public Bundle a()
-  {
-    return this.a;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.a.putLong("downloadItems", paramLong);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.putBoolean("NoLimitParams", paramBoolean);
-  }
-  
-  public void b(long paramLong)
-  {
-    this.a.putLong("recognitionMask", paramLong);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.a.putBoolean("arTransferPromotion", paramBoolean);
+    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
+    do
+    {
+      return -1;
+      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
+        return 1;
+      }
+    } while (paramRect1.width() > paramRect2.width());
+    if (paramRect1.width() < paramRect2.width()) {
+      return 1;
+    }
+    return 0;
   }
 }
 

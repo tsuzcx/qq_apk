@@ -1,37 +1,90 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.avgame.ui.AVGameRoomListFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.avgame.qav.AVGameCameraAssistant;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class nha
-  implements View.OnClickListener
+  extends ljf
 {
-  public nha(AVGameRoomListFragment paramAVGameRoomListFragment) {}
+  public nha(AVGameCameraAssistant paramAVGameCameraAssistant) {}
   
-  public void onClick(View paramView)
+  protected void a(long paramLong)
   {
-    Object localObject;
-    if (this.a.a != null)
+    try
     {
-      localObject = this.a.a;
-      bdll.b(null, "dc00898", "", "", "0X800B01D", "0X800B01D", 0, 0, "", "", (String)localObject, "");
-      if (!nhv.a(this.a.getActivity(), this.a.a)) {
-        break label75;
+      Iterator localIterator = AVGameCameraAssistant.a(this.a).iterator();
+      while (localIterator.hasNext())
+      {
+        nhb localnhb = (nhb)localIterator.next();
+        if (localnhb != null) {
+          localnhb.a(paramLong);
+        }
       }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      localObject = "";
-      break;
-      label75:
-      localObject = (mxc)this.a.getActivity().app.getManager(373);
-      if (localObject != null) {
-        ((mxc)localObject).a(this.a.getActivity(), 6, this.a.a, 0);
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.i("AVGameCameraAssistant", 1, "onBeforeCloseCamera", localThrowable);
+    }
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean)
+  {
+    try
+    {
+      Iterator localIterator = AVGameCameraAssistant.a(this.a).iterator();
+      while (localIterator.hasNext())
+      {
+        nhb localnhb = (nhb)localIterator.next();
+        if (localnhb != null) {
+          localnhb.a(paramLong, paramBoolean);
+        }
       }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.i("AVGameCameraAssistant", 1, "onBeforeOpenCamera", localThrowable);
+    }
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  {
+    try
+    {
+      Iterator localIterator = AVGameCameraAssistant.a(this.a).iterator();
+      while (localIterator.hasNext())
+      {
+        nhb localnhb = (nhb)localIterator.next();
+        if (localnhb != null) {
+          localnhb.b(paramLong, paramBoolean);
+        }
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.i("AVGameCameraAssistant", 1, "onAfterOpenCamera", localThrowable);
+    }
+  }
+  
+  protected void b(long paramLong, boolean paramBoolean)
+  {
+    try
+    {
+      Iterator localIterator = AVGameCameraAssistant.a(this.a).iterator();
+      while (localIterator.hasNext())
+      {
+        nhb localnhb = (nhb)localIterator.next();
+        if (localnhb != null) {
+          localnhb.c(paramLong, paramBoolean);
+        }
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.i("AVGameCameraAssistant", 1, "onAfterCloseCamera", localThrowable);
     }
   }
 }

@@ -1,61 +1,115 @@
+import android.content.Context;
+import android.support.v4.util.ArraySet;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.connections.TriangleView;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class ajir
+  extends aezn
 {
-  public ImageView a;
-  public TextView a;
-  public TriangleView a;
-  public ImageView b;
-  public TextView b;
+  public final String a;
   
-  public ajir(View paramView)
+  public ajir(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371787));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371784));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371788));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371786));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView = ((TriangleView)paramView.findViewById(2131379305));
+    super(paramQQAppInterface, paramContext, paramSessionInfo, null, null);
+    this.jdField_a_of_type_JavaLangString = "MiniPie.MiniChatAdapter";
+    this.jdField_a_of_type_Agcw = new ajis(paramContext, paramQQAppInterface, paramSessionInfo, null, null);
+    this.jdField_a_of_type_Aezo = null;
   }
   
-  public void a()
+  public void a(List<ChatMessage> paramList, CharSequence paramCharSequence, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setSelected(true);
+    long l1 = 0L;
+    paramInt = 0;
+    paramCharSequence = null;
+    ChatMessage localChatMessage;
+    boolean bool1;
+    if (paramInt < paramList.size())
+    {
+      localChatMessage = (ChatMessage)paramList.get(paramInt);
+      boolean bool2 = bblk.b(localChatMessage.msgtype);
+      if ((bool2) && ((paramInt == 0) || ((localChatMessage.time < this.b) && (localChatMessage.time - l1 > 300L)) || ((localChatMessage.time >= this.b) && (localChatMessage.time - l1 > 300L) && ((paramCharSequence == null) || (localChatMessage.time - paramCharSequence.time > 60L))) || ((this.jdField_a_of_type_AndroidSupportV4UtilArraySet.contains(Long.valueOf(localChatMessage.uniseq))) && (l1 / 60L != localChatMessage.time / 60L))))
+      {
+        bool1 = true;
+        label165:
+        localChatMessage.mNeedTimeStamp = bool1;
+        if (localChatMessage.mNeedTimeStamp)
+        {
+          long l2 = localChatMessage.time;
+          l1 = l2;
+          if (localChatMessage.time < this.b)
+          {
+            afdh.a(localChatMessage);
+            l1 = l2;
+          }
+        }
+        if ((!bool2) || (((localChatMessage instanceof MessageForUniteGrayTip)) && (((MessageForUniteGrayTip)localChatMessage).tipParam.b == 1))) {
+          break label362;
+        }
+        paramCharSequence = localChatMessage;
+      }
     }
-    if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setSelected(true);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setSelected(true);
-    }
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setSelected(true);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView.setVisibility(0);
+    label362:
+    for (;;)
+    {
+      if (paramInt != paramList.size() - 1) {
+        localChatMessage.isFlowMessage = false;
+      }
+      paramInt += 1;
+      break;
+      bool1 = false;
+      break label165;
+      if (paramList.size() > 0) {
+        this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(Long.valueOf(((ChatMessage)paramList.get(0)).uniseq));
+      }
+      this.jdField_a_of_type_JavaUtilList = paramList;
+      QLog.d("MiniPie.MiniChatAdapter", 1, "list addr = " + paramList.hashCode() + ",size = " + paramList.size());
+      super.notifyDataSetChanged();
+      return;
     }
   }
   
-  public void b()
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setSelected(false);
+    ((ajis)this.jdField_a_of_type_Agcw).a(paramBoolean);
+  }
+  
+  protected boolean a()
+  {
+    return false;
+  }
+  
+  public void c()
+  {
+    super.c();
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = super.getView(paramInt, paramView, paramViewGroup);
+    if ((localView != null) && ((localView instanceof ajip)))
+    {
+      ajip localajip = (ajip)localView;
+      localajip.setIsShieldTouchForItem(true);
+      localajip.setFrom(((ajis)this.jdField_a_of_type_Agcw).a);
+      if ((localView instanceof BaseChatItemLayout)) {
+        ((BaseChatItemLayout)localView).d();
+      }
     }
-    if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setSelected(false);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setSelected(false);
-    }
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setSelected(false);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsTriangleView.setVisibility(4);
-    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localView;
+  }
+  
+  public String toString()
+  {
+    return "list.addr = " + this.jdField_a_of_type_JavaUtilList.hashCode();
   }
 }
 

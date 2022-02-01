@@ -1,53 +1,57 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.CommentEntry;
 import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tribe.async.async.JobContext;
+import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.GamePKCommentReceiver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.ArrayList;
 import java.util.List;
 
-class xoq
-  implements woy<xce, xcf>
+public class xoq
+  extends QQUIEventReceiver<xoi, vsl>
 {
-  xoq(xop paramxop, JobContext paramJobContext, yfw paramyfw) {}
-  
-  public void a(@NonNull xce paramxce, @Nullable xcf paramxcf, @NonNull ErrorMessage paramErrorMessage)
+  public xoq(@NonNull xoi paramxoi)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    super(paramxoi);
+  }
+  
+  public void a(@NonNull xoi paramxoi, @NonNull vsl paramvsl)
+  {
+    if ((TextUtils.isEmpty(paramvsl.jdField_a_of_type_JavaLangString)) || (paramvsl.jdField_a_of_type_Int == 0) || (paramvsl.jdField_a_of_type_Long == 0L) || (TextUtils.isEmpty(paramvsl.b)))
     {
-      yuk.d("Q.qqstory.player.CommentFloatDialogController", "pull commentLikeFeedItem cancel on net respond");
+      xvv.d("Q.qqstory.home.data.HomeFeedPresenter", "receive not eligible gamepk event. event.feedId = %s, event.commentId = %d, event.commentFakeId = %d, event.content = %s.", new Object[] { paramvsl.jdField_a_of_type_JavaLangString, Integer.valueOf(paramvsl.jdField_a_of_type_Int), Long.valueOf(paramvsl.jdField_a_of_type_Long), paramvsl.b });
       return;
     }
-    if ((paramErrorMessage.isFail()) || (paramxcf == null))
+    Object localObject1 = paramxoi.a(paramvsl.jdField_a_of_type_JavaLangString);
+    if ((localObject1 == null) || (!(localObject1 instanceof xpg)))
     {
-      yuk.a("Q.qqstory.player.CommentFloatDialogController", "pull commentLikeFeedItem fail %s", paramErrorMessage.toString());
-      xop.a(this.jdField_a_of_type_Xop, paramErrorMessage);
+      xvv.d("Q.qqstory.home.data.HomeFeedPresenter", "storyHomeFeed is null or it's not a VideoListHomeFeed. feedId = %s", new Object[] { paramvsl.jdField_a_of_type_JavaLangString });
       return;
     }
-    paramxce = (yme)wth.a(11);
-    if (paramxcf.a.size() < 1)
-    {
-      yuk.e("Q.qqstory.player.CommentFloatDialogController", "pull feedItem return null. maybe it's a share group feed and it has been dissolved.");
-      paramxce.a(xoj.a(this.jdField_a_of_type_Xop.a));
-      paramxce = new ErrorMessage(2222, "no feed data back.");
-      xop.b(this.jdField_a_of_type_Xop, paramxce);
-      return;
-    }
-    paramxcf = (ylo)paramxcf.a.get(0);
-    if ((paramxcf instanceof ynv))
-    {
-      paramErrorMessage = (ynv)paramxcf;
-      this.jdField_a_of_type_Yfw.a = paramxcf.a();
-      this.jdField_a_of_type_Yfw.a(paramxce.a(xoj.a(this.jdField_a_of_type_Xop.a), paramErrorMessage.a(), true), true);
-      ((ymk)wth.a(12)).a(2, this.jdField_a_of_type_Yfw.a.feedId, this.jdField_a_of_type_Yfw.a().mVideoSeq, this.jdField_a_of_type_Yfw.a(), this.jdField_a_of_type_Yfw.a().mVideoNextCookie, this.jdField_a_of_type_Yfw.a().mIsVideoEnd, this.jdField_a_of_type_Yfw.a().mVideoPullType, true);
+    Object localObject2 = (xpg)localObject1;
+    localObject1 = xhw.a(paramvsl.jdField_a_of_type_JavaLangString, paramvsl.jdField_a_of_type_Int, paramvsl.jdField_a_of_type_Long, paramvsl.b, paramvsl.c, paramvsl.d, paramvsl.e, paramvsl.f);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(localObject1);
+    ((xpg)localObject2).a(localArrayList, false);
+    localObject2 = (CommentLikeFeedItem)((xpg)localObject2).a;
+    ((CommentLikeFeedItem)localObject2).mCommentCount += 1;
+    if (xoi.a((CommentLikeFeedItem)localObject2)) {
+      ((CommentLikeFeedItem)localObject2).mFriendCommentCount += 1;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Yfw.a = ((CommentLikeFeedItem)paramxce.a(xoj.a(this.jdField_a_of_type_Xop.a).a));
-      xop.a(this.jdField_a_of_type_Xop, this.jdField_a_of_type_Yfw);
+      xoi.a(paramxoi).b(paramvsl.jdField_a_of_type_JavaLangString);
+      ThreadManager.post(new HomeFeedPresenter.GamePKCommentReceiver.1(this, (CommentLikeFeedItem)localObject2, (CommentEntry)localObject1, paramvsl), 5, null, false);
+      xoi.a((CommentLikeFeedItem)localObject2, (CommentEntry)localObject1);
       return;
-      this.jdField_a_of_type_Yfw.a = paramxcf.a();
+      ((CommentLikeFeedItem)localObject2).mFanCommentCount += 1;
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vsl.class;
   }
 }
 

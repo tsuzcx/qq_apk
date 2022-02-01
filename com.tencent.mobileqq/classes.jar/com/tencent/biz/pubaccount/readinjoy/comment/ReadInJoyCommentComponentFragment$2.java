@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.comment;
 
-import ocd;
+import odq;
 
 class ReadInJoyCommentComponentFragment$2
   implements Runnable
@@ -13,7 +13,7 @@ class ReadInJoyCommentComponentFragment$2
     if (ReadInJoyCommentComponentFragment.a(this.this$0) == 1) {
       str = "0X80094C4";
     }
-    ocd.a(null, "", "", str, 0, 0, String.valueOf(this.this$0.d), "", "", ReadInJoyCommentComponentFragment.a(this.this$0, true), false);
+    odq.a(null, "", "", str, 0, 0, String.valueOf(this.this$0.d), "", "", ReadInJoyCommentComponentFragment.a(this.this$0, true), false);
   }
 }
 

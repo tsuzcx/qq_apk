@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.colornote;
 
-import aqrf;
+import apko;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 
 public class ColorNoteCurd$5
   implements Runnable
 {
-  public ColorNoteCurd$5(aqrf paramaqrf, ColorNote paramColorNote) {}
+  public ColorNoteCurd$5(apko paramapko, ColorNote paramColorNote) {}
   
   public void run()
   {

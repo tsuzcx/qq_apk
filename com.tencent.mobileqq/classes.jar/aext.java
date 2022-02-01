@@ -1,20 +1,16 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class aext
-  extends MqqHandler
+final class aext
+  implements aeya
 {
-  public aext(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
-  
-  public void handleMessage(Message paramMessage)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 86);
+    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
+    return paramQQAppInterface;
   }
 }
 

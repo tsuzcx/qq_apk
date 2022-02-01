@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bmif;
+import bkmm;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecvMsg
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<RecvMsg> CREATOR = new bmif();
+  public static final Parcelable.Creator<RecvMsg> CREATOR = new bkmm();
   public int a;
   public Bundle a;
   public String a;
@@ -73,23 +73,23 @@ public class RecvMsg
     //   42: astore_1
     //   43: aload_1
     //   44: invokestatic 91	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   47: invokestatic 96	cooperation/qzone/QzonePluginProxyActivity:a	(Landroid/content/Context;)Ljava/lang/ClassLoader;
-    //   50: invokevirtual 100	android/os/Bundle:setClassLoader	(Ljava/lang/ClassLoader;)V
+    //   47: invokestatic 97	cooperation/qzone/QzonePluginProxyActivity:getQZonePluginClassLoader	(Landroid/content/Context;)Ljava/lang/ClassLoader;
+    //   50: invokevirtual 101	android/os/Bundle:setClassLoader	(Ljava/lang/ClassLoader;)V
     //   53: aload_0
     //   54: getfield 32	cooperation/qappcenter/remote/RecvMsg:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
     //   57: aload_1
-    //   58: invokevirtual 104	android/os/Bundle:putAll	(Landroid/os/Bundle;)V
+    //   58: invokevirtual 105	android/os/Bundle:putAll	(Landroid/os/Bundle;)V
     //   61: return
     //   62: astore_2
     //   63: aload_2
-    //   64: invokevirtual 107	java/lang/Exception:printStackTrace	()V
+    //   64: invokevirtual 108	java/lang/Exception:printStackTrace	()V
     //   67: goto -14 -> 53
     //   70: astore_1
-    //   71: ldc 109
+    //   71: ldc 110
     //   73: iconst_1
-    //   74: ldc 111
+    //   74: ldc 112
     //   76: aload_1
-    //   77: invokestatic 117	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   77: invokestatic 118	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   80: aload_1
     //   81: athrow
     // Local variable table:

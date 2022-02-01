@@ -1,9 +1,6 @@
-public class odm
+public abstract interface odm
 {
-  public long a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,18 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardPluginShareStructMsgOption;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class avak
-  implements View.OnClickListener
+class avak
 {
-  public avak(ForwardPluginShareStructMsgOption paramForwardPluginShareStructMsgOption) {}
-  
-  public void onClick(View paramView)
-  {
-    ForwardPluginShareStructMsgOption.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  private static avaj a = new avaj(null);
 }
 
 

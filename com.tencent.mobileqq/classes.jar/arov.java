@@ -1,88 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class arov
-  extends arac<arou>
+final class arov
+  implements DialogInterface.OnClickListener
 {
-  @NonNull
-  public arou a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchBusinessConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    return new arou();
-  }
+  arov(boolean paramBoolean, BaseActivity paramBaseActivity, int paramInt, String paramString1, String paramString2) {}
   
-  @Nullable
-  public arou a(araj[] paramArrayOfaraj)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchBusinessConfProcessor", 2, "onParsed start");
+    if (this.jdField_a_of_type_Boolean) {
+      aroj.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
     }
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchBusinessConfProcessor", 2, "onParsed " + paramArrayOfaraj.length);
-      }
-      return arou.a(paramArrayOfaraj[0]);
-    }
-    return null;
-  }
-  
-  public void a(arou paramarou)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramarou == null) {
-        break label43;
-      }
-    }
-    label43:
-    for (paramarou = paramarou.toString();; paramarou = " empty")
-    {
-      QLog.d("SearchBusinessConfProcessor", 2, paramarou);
+      paramDialogInterface.dismiss();
       return;
+      aroj.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString);
     }
-  }
-  
-  public Class<arou> clazz()
-  {
-    return arou.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("SearchBusinessConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 434;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arov
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,28 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class bgag
-  implements CompoundButton.OnCheckedChangeListener
+public final class bgag
+  implements DialogInterface.OnClickListener
 {
-  public bgag(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public bgag(boolean paramBoolean, Context paramContext, String paramString1, String paramString2, int paramInt) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    if (!this.jdField_a_of_type_Boolean)
     {
-      localStringBuilder = new StringBuilder().append("口算开关状态改变 ");
-      if (!paramBoolean) {
-        break label80;
-      }
+      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramDialogInterface.putExtra("url", String.format(ahpd.jdField_a_of_type_JavaLangString, new Object[] { this.jdField_a_of_type_JavaLangString, "group_aio_popup" }));
+      paramDialogInterface.putExtra("hide_operation_bar", true);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
     }
-    label80:
-    for (String str = "on";; str = "off")
+    for (;;)
     {
-      QLog.d("PublishHomeWorkFragment", 2, str);
-      this.a.e = paramBoolean;
-      if (this.a.e) {
-        this.a.a.setChecked(true);
-      }
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      bcef.b(null, "dc00898", "", "", "qq_vip", this.b, this.jdField_a_of_type_Int, 0, "", "", "", "");
       return;
+      ancy.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, "group_aio_popup");
     }
   }
 }

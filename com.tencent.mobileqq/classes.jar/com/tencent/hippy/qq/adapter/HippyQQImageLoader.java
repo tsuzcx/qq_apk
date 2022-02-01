@@ -4,75 +4,97 @@ import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import bhnv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mtt.hippy.adapter.image.HippyDrawable;
 import com.tencent.mtt.hippy.adapter.image.HippyImageLoader;
 import com.tencent.mtt.hippy.adapter.image.HippyImageLoader.Callback;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.utils.ViolaLogUtils;
 import java.io.File;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Timer;
 
 public class HippyQQImageLoader
   extends HippyImageLoader
 {
   public static final String TAG = "HippyImageAdapter";
   private Handler mHandler = new Handler(Looper.getMainLooper());
-  private Timer mTimer = new Timer("MyImageLoader", true);
   private Set<URLDrawable> urlDrawableList = new HashSet();
   
   private void internalRequestImage(String paramString, HippyMap paramHippyMap, HippyImageLoader.Callback paramCallback)
   {
-    Object localObject = paramString;
     if (paramString.startsWith("//")) {
-      localObject = "https:" + paramString;
-    }
-    if (!((String)localObject).startsWith("http")) {
-      return;
-    }
-    boolean bool = paramHippyMap.getBoolean("isGif");
-    int i = paramHippyMap.getInt("width");
-    int j = paramHippyMap.getInt("height");
-    String str = paramHippyMap.getString("imageType");
-    File localFile;
-    if (paramHippyMap.getString("resizeMode") != null)
-    {
-      paramString = paramHippyMap.getString("resizeMode");
-      paramHippyMap = URLDrawable.getDrawable((String)localObject, obtainURLDrawableOptions(bool, i, j, str));
-      this.urlDrawableList.add(paramHippyMap);
-      localObject = new HippyDrawable();
-      localFile = paramHippyMap.getFileInLocal();
-      if ((localFile == null) || (!localFile.exists())) {
-        break label229;
-      }
-      if (!isApng(str)) {
-        break label203;
-      }
-      ((HippyDrawable)localObject).setDrawable(paramHippyMap);
-      this.mHandler.post(new HippyQQImageLoader.1(this, paramString, paramHippyMap, paramCallback, (HippyDrawable)localObject));
+      paramString = "https:" + paramString;
     }
     for (;;)
     {
-      this.urlDrawableList.remove(paramHippyMap);
+      if (!paramString.startsWith("http")) {
+        return;
+      }
+      boolean bool2 = paramHippyMap.getBoolean("isGif");
+      int i = paramHippyMap.getInt("width");
+      int j = paramHippyMap.getInt("height");
+      String str = paramHippyMap.getString("imageType");
+      URLDrawable localURLDrawable;
+      HippyDrawable localHippyDrawable;
+      File localFile;
+      boolean bool1;
+      if (paramHippyMap.getString("resizeMode") != null)
+      {
+        paramHippyMap = paramHippyMap.getString("resizeMode");
+        localURLDrawable = URLDrawable.getDrawable(paramString, obtainURLDrawableOptions(bool2, i, j, str));
+        this.urlDrawableList.add(localURLDrawable);
+        localHippyDrawable = new HippyDrawable();
+        localFile = localURLDrawable.getFileInLocal();
+        if ((localFile == null) || (!localFile.exists())) {
+          break label252;
+        }
+        bool1 = true;
+        label149:
+        if (QLog.isColorLevel()) {
+          QLog.i("HippyImageAdapter", 2, "internalRequestImage url:" + paramString + " localFileExist:" + bool1);
+        }
+        if (!bool1) {
+          break label284;
+        }
+        if (!isApng(str)) {
+          break label258;
+        }
+        localHippyDrawable.setDrawable(localURLDrawable);
+        this.mHandler.post(new HippyQQImageLoader.1(this, paramHippyMap, localURLDrawable, paramCallback, localHippyDrawable));
+      }
+      for (;;)
+      {
+        this.urlDrawableList.remove(localURLDrawable);
+        return;
+        paramHippyMap = "";
+        break;
+        label252:
+        bool1 = false;
+        break label149;
+        label258:
+        ThreadManager.post(new HippyQQImageLoader.2(this, paramString, localHippyDrawable, localFile, bool2, paramCallback), 8, null, true);
+      }
+      label284:
+      localURLDrawable.setTag(Integer.valueOf(0));
+      localURLDrawable.setURLDrawableListener(new HippyQQImageLoader.3(this, paramString, str, localHippyDrawable, paramHippyMap, paramCallback, bool2));
+      if (localURLDrawable.getStatus() == 2)
+      {
+        localURLDrawable.restartDownload();
+        return;
+      }
+      localURLDrawable.startDownload();
       return;
-      paramString = "";
-      break;
-      label203:
-      this.mTimer.schedule(new HippyQQImageLoader.2(this, (HippyDrawable)localObject, localFile, bool, paramCallback), 0L);
     }
-    label229:
-    paramHippyMap.startDownload();
-    paramHippyMap.setTag(Integer.valueOf(0));
-    paramHippyMap.setURLDrawableListener(new HippyQQImageLoader.3(this, str, (HippyDrawable)localObject, paramString, paramCallback, bool));
   }
   
   private boolean isApng(String paramString)
@@ -83,8 +105,8 @@ public class HippyQQImageLoader
   private URLDrawable.URLDrawableOptions obtainURLDrawableOptions(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130850680);
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130850680);
+    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130850605);
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130850605);
     localURLDrawableOptions.mRequestWidth = paramInt1;
     localURLDrawableOptions.mRequestHeight = paramInt2;
     if (paramBoolean) {
@@ -103,7 +125,7 @@ public class HippyQQImageLoader
   
   private void tryReDownload(URLDrawable paramURLDrawable, Throwable paramThrowable, HippyImageLoader.Callback paramCallback)
   {
-    if ((paramURLDrawable == null) || (!bhnv.g(null))) {}
+    if ((paramURLDrawable == null) || (!NetworkUtil.isNetworkAvailable(null))) {}
     do
     {
       return;

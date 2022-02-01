@@ -1,174 +1,72 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import tencent.im.oidb.cmd0xe1b.oidb_0xe1b.GetFlagInfoRsp;
+import tencent.im.oidb.cmd0xe1b.oidb_0xe1b.RspBody;
+import tencent.kandian.flaginfo.flag_info.FlagInfo;
 
-public class pwn
-  implements pye
+class pwn
+  extends nmf
 {
-  private String a(String paramString, int paramInt)
-  {
-    if (paramString.length() <= paramInt) {
-      return paramString;
-    }
-    return paramString.substring(0, paramInt) + "...";
-  }
+  pwn(pwm parampwm) {}
   
-  private void a(ArticleInfo paramArticleInfo, int paramInt, String paramString1, String paramString2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("click_area", Integer.valueOf(paramInt));
-    if (!TextUtils.isEmpty(paramString1)) {
-      localHashMap.put("jump_report_info", paramString1);
+    int i = 0;
+    int k = 0;
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {
+      return;
     }
-    if ((paramInt == 2) && (!TextUtils.isEmpty(paramString2))) {
-      localHashMap.put("click_rowkey", paramString2);
-    }
-    if (qur.a().a(paramArticleInfo, false, qur.jdField_a_of_type_Int)) {
-      localHashMap.put("jump_src", Integer.valueOf(quv.a(paramArticleInfo)));
-    }
-    sel.a(paramArticleInfo, "0X8007625", "0X8007625", (int)paramArticleInfo.mChannelID, localHashMap);
-  }
-  
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
-  
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    paramInt = 0;
-    if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.multiVideoColumnInfo == null) || (paramBaseArticleInfo.multiVideoColumnInfo.jdField_a_of_type_JavaUtilList.size() == 0) || (paramBaseArticleInfo.multiVideoColumnInfo.jdField_a_of_type_JavaUtilList.get(0) == null)) {
-      return new JSONObject();
-    }
-    Object localObject1 = BaseApplicationImpl.getContext();
-    if (localObject1 != null) {}
-    for (localObject1 = ((Context)localObject1).getResources().getString(2131717183);; localObject1 = "")
+    for (;;)
     {
-      JSONObject localJSONObject = new JSONObject();
-      JSONArray localJSONArray = new JSONArray();
-      paramBaseArticleInfo = paramBaseArticleInfo.multiVideoColumnInfo;
-      Object localObject2;
-      if (paramBaseArticleInfo.jdField_a_of_type_Boolean)
+      try
       {
-        localJSONObject.put("style_ID", "ReadInJoy_multi_video_subscribed_card_cell");
-        paramInt = 0;
-        if (paramInt < paramBaseArticleInfo.jdField_a_of_type_JavaUtilList.size())
+        paramBundle = new oidb_0xe1b.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if ((!paramBundle.msg_get_flag_info_rsp.has()) || (!paramBundle.msg_get_flag_info_rsp.rpt_msg_flag_info_list.has())) {
+          break;
+        }
+        paramArrayOfByte = ((oidb_0xe1b.GetFlagInfoRsp)paramBundle.msg_get_flag_info_rsp.get()).rpt_msg_flag_info_list.get();
+        int j = i;
+        if (paramArrayOfByte != null)
         {
-          localObject2 = new JSONObject();
-          ((JSONObject)localObject2).put("style_ID", "ReadInJoy_multi_video_subscribed_video_cell");
-          qyq localqyq = (qyq)paramBaseArticleInfo.jdField_a_of_type_JavaUtilList.get(paramInt);
-          ((JSONObject)localObject2).put("video_jump_url", localqyq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo.jdField_a_of_type_JavaLangString);
-          ((JSONObject)localObject2).put("video_cover_url", localqyq.c);
-          ((JSONObject)localObject2).put("video_title_text", localqyq.jdField_b_of_type_JavaLangString);
-          ((JSONObject)localObject2).put("rowkey", localqyq.jdField_a_of_type_JavaLangString);
-          String str1 = bnrf.b(localqyq.jdField_a_of_type_Int);
-          String str2 = bnrf.c(localqyq.jdField_b_of_type_Int);
-          if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (localqyq.jdField_a_of_type_Int > 0)) {
-            ((JSONObject)localObject2).put("video_info_text", String.format((String)localObject1, new Object[] { str1, str2 }));
-          }
-          for (;;)
+          j = i;
+          if (!paramArrayOfByte.isEmpty())
           {
-            localJSONArray.put(paramInt, localObject2);
-            paramInt += 1;
-            break;
-            ((JSONObject)localObject2).put("video_info_text", str2);
+            i = 0;
+            paramInt = k;
+            j = paramInt;
+            if (i < paramArrayOfByte.size())
+            {
+              paramBundle = (flag_info.FlagInfo)paramArrayOfByte.get(i);
+              if (paramBundle == null) {
+                break label178;
+              }
+              paramInt = paramBundle.uint32_teenager_flag.get();
+              break label178;
+            }
           }
         }
-      }
-      else
-      {
-        localJSONObject.put("style_ID", "ReadInJoy_multi_video_subscribe_card_cell");
-        localJSONObject.put("bottom_color", paramBaseArticleInfo.f);
-        localJSONObject.put("topic_desc_text", paramBaseArticleInfo.d);
-        localJSONObject.put("bg_cover_img_url", paramBaseArticleInfo.e);
-        while (paramInt < paramBaseArticleInfo.jdField_a_of_type_JavaUtilList.size())
-        {
-          localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("style_ID", "ReadInJoy_multi_video_subscribe_video_cell");
-          localObject2 = (qyq)paramBaseArticleInfo.jdField_a_of_type_JavaUtilList.get(paramInt);
-          ((JSONObject)localObject1).put("video_jump_url", ((qyq)localObject2).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo.jdField_a_of_type_JavaLangString);
-          ((JSONObject)localObject1).put("video_cover_url", ((qyq)localObject2).c);
-          ((JSONObject)localObject1).put("video_title_text", ((qyq)localObject2).jdField_b_of_type_JavaLangString);
-          ((JSONObject)localObject1).put("rowkey", ((qyq)localObject2).jdField_a_of_type_JavaLangString);
-          ((JSONObject)localObject1).put("video_duration_text", bnrf.c(((qyq)localObject2).jdField_b_of_type_Int));
-          localJSONArray.put(paramInt, localObject1);
-          paramInt += 1;
+        if (j != 0) {
+          break label168;
         }
+        bkwm.a("key_sp_is_readinjoy_youngster", Integer.valueOf(2));
+        return;
       }
-      localJSONObject.put("column_data", localJSONArray);
-      localJSONObject.put("topic_title_text", paramBaseArticleInfo.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("from_text", a(paramBaseArticleInfo.g, 20));
-      localJSONObject.put("from_icon_url", paramBaseArticleInfo.h);
-      localJSONObject.put("title_icon_url", paramBaseArticleInfo.c);
-      QLog.d("multiVideoColumnInfo", 1, localJSONObject.toString());
-      return localJSONObject;
-    }
-  }
-  
-  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2)
-  {
-    ArticleInfo localArticleInfo = paramppu.a();
-    if ((localArticleInfo == null) || (localArticleInfo.multiVideoColumnInfo == null)) {
+      catch (Exception paramArrayOfByte) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("SelfInfoModule", 2, "updateSelfYoungsterModeSetting failed.");
       return;
-    }
-    ViewBase localViewBase = paramContainer.getVirtualView();
-    if (localArticleInfo.multiVideoColumnInfo.jdField_b_of_type_Int > 0) {
-      if (localArticleInfo.multiVideoColumnInfo.jdField_b_of_type_Int <= 99) {
-        break label167;
-      }
-    }
-    label167:
-    for (Object localObject = "99+";; localObject = Integer.toString(localArticleInfo.multiVideoColumnInfo.jdField_b_of_type_Int))
-    {
-      localObject = String.format(paramContainer.getContext().getResources().getString(2131717184), new Object[] { localObject });
-      TextBase localTextBase = (TextBase)localViewBase.findViewBaseByName("id_topic_bubble");
-      if (localTextBase != null)
-      {
-        localTextBase.setVisibility(0);
-        localTextBase.setText((CharSequence)localObject);
-      }
-      localObject = (qek)localViewBase.findViewBaseByName("id_column_list");
-      ((qek)localObject).a(paramppu);
-      ((qek)localObject).a(new pwo(this, localArticleInfo, paramContainer));
-      ((qek)localObject).a(new pwp(this, localArticleInfo, paramContainer));
+      label168:
+      bkwm.a("key_sp_is_readinjoy_youngster", Integer.valueOf(1));
       return;
+      label178:
+      i += 1;
     }
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
-  {
-    if (paramViewBase == null) {}
-    String str;
-    do
-    {
-      do
-      {
-        return false;
-        str = paramViewBase.getClickEvnet();
-      } while ((TextUtils.isEmpty(str)) || (!str.startsWith("multi_video_column_")));
-      paramppu = paramppu.a();
-      if ("multi_video_column_card_click".equals(str))
-      {
-        paramViewBase.setOnClickListener(new pwq(this, paramppu, paramContainer));
-        return true;
-      }
-    } while (!"multi_video_column_tail_click".equals(str));
-    paramViewBase.setOnClickListener(new pwr(this, paramppu, paramContainer));
-    return true;
   }
 }
 

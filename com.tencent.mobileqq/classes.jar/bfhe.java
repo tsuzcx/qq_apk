@@ -1,79 +1,75 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
+import tencent.im.troop.activity.troopactivity.ActSSORsp;
+import tencent.im.troop.activity.troopactivity.GroupInfoCardResp;
 
-public final class bfhe
+public class bfhe
+  implements BusinessObserver
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private Drawable b;
+  private final WeakReference<TroopMoreDetailView> a;
   
-  public bfhe(@NonNull LinearLayout paramLinearLayout)
+  public bfhe(TroopMoreDetailView paramTroopMoreDetailView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramLinearLayout.getContext();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bguq.a(this.jdField_a_of_type_AndroidContentContext.getResources(), Color.parseColor("#66ffffff"), this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843683));
-    this.b = bguq.a(this.jdField_a_of_type_AndroidContentContext.getResources(), Color.parseColor("#ffffffff"), this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843683));
-    if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
-      this.b.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
-    }
-    int i = bdep.a(7.5F);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(i, i);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = bdep.a(7.0F);
+    this.a = new WeakReference(paramTroopMoreDetailView);
   }
   
-  public void a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    if ((paramInt < 0) || (paramInt >= j)) {
-      return;
-    }
-    int i = 0;
-    label20:
-    View localView;
-    if (i < j)
+    TroopMoreDetailView localTroopMoreDetailView = (TroopMoreDetailView)this.a.get();
+    if (localTroopMoreDetailView == null) {}
+    label99:
+    do
     {
-      localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if (paramInt != i) {
-        break label60;
-      }
-    }
-    label60:
-    for (Drawable localDrawable = this.b;; localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
-    {
-      localView.setBackgroundDrawable(localDrawable);
-      i += 1;
-      break label20;
-      break;
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() != paramInt)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      while (paramInt > 0)
+      do
       {
-        View localView = new View(this.jdField_a_of_type_AndroidContentContext);
-        localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
-        paramInt -= 1;
+        for (;;)
+        {
+          return;
+          if (!paramBoolean)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.w("TroopMoreDetailView", 2, "mGetTroopActivityObserver: !isSuccess || mTroopInfoData == null");
+            }
+          }
+          else {
+            try
+            {
+              paramBundle = paramBundle.getByteArray("data");
+              if (paramBundle != null) {
+                break label99;
+              }
+              if (QLog.isColorLevel())
+              {
+                QLog.w("TroopMoreDetailView", 2, "mGetTroopActivityObserver: data == null");
+                return;
+              }
+            }
+            catch (InvalidProtocolBufferMicroException paramBundle) {}
+          }
+        }
+      } while (!QLog.isColorLevel());
+      QLog.w("TroopMoreDetailView", 2, "mGetTroopActivityObserver: InvalidProtocolBufferMicroException:" + paramBundle.getMessage());
+      return;
+      localObject = new troopactivity.ActSSORsp();
+      ((troopactivity.ActSSORsp)localObject).mergeFrom(paramBundle);
+      if (((troopactivity.ActSSORsp)localObject).err_code.get() == 10000) {
+        break;
       }
-    }
-    a(0);
+    } while (!QLog.isColorLevel());
+    QLog.w("TroopMoreDetailView", 2, "mGetTroopActivityObserver: errorcode:" + ((troopactivity.ActSSORsp)localObject).err_code.get() + ", msg:" + ((troopactivity.ActSSORsp)localObject).err_msg.get());
+    return;
+    paramBundle = ((troopactivity.ActSSORsp)localObject).body.get().toByteArray();
+    Object localObject = new troopactivity.GroupInfoCardResp();
+    ((troopactivity.GroupInfoCardResp)localObject).mergeFrom(paramBundle);
+    TroopMoreDetailView.a(localTroopMoreDetailView, (troopactivity.GroupInfoCardResp)localObject);
   }
 }
 

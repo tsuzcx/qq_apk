@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import avhr;
-import bbco;
+import atux;
+import azxj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ public class MessageForAutoReply
 {
   public static final String ROOT_TAG = "[AutoReply] ";
   private static final String TAG = "[AutoReply] MessageForAutoReply";
-  @avhr
+  @atux
   public boolean needTextLink;
   
   public MessageForAutoReply()
@@ -26,7 +26,7 @@ public class MessageForAutoReply
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface))
     {
-      boolean bool = bbco.a((QQAppInterface)localAppRuntime, this.istroop, this.frienduin);
+      boolean bool = azxj.a((QQAppInterface)localAppRuntime, this.istroop, this.frienduin);
       if (QLog.isColorLevel()) {
         QLog.d("[AutoReply] MessageForAutoReply", 2, new Object[] { "[message] doParse: invoked. ", " oneWayFriend: ", Boolean.valueOf(bool), " istroop: ", Integer.valueOf(this.istroop), " frienduin: ", this.frienduin, " senderuin: ", this.senderuin });
       }
@@ -44,7 +44,7 @@ public class MessageForAutoReply
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForAutoReply
  * JD-Core Version:    0.7.0.1
  */

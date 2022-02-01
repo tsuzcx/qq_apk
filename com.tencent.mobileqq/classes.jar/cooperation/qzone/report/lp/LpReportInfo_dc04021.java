@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import bmsw;
+import cooperation.qzone.QUA;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +12,7 @@ public class LpReportInfo_dc04021
   public long idleCallback;
   public long intimeCallback;
   public long noCallback;
-  private String qua = bmsw.a();
+  private String qua = QUA.getQUA3();
   public long totalDuration;
   public long touchScrollCallback;
   

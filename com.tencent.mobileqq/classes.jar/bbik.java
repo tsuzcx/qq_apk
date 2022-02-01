@@ -1,34 +1,29 @@
-import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
-import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.HWDecodeListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.ArrayList;
 
 public class bbik
-  implements HWDecodeListener
+  extends bbim
 {
-  public bbik(FollowCaptureView paramFollowCaptureView) {}
+  public LinearLayout a;
   
-  public void onDecodeCancel() {}
-  
-  public void onDecodeError(int paramInt, Throwable paramThrowable) {}
-  
-  public void onDecodeFinish() {}
-  
-  public void onDecodeFrame(long paramLong1, long paramLong2)
+  public bbik(ViewGroup paramViewGroup)
   {
-    FollowCaptureView.a(this.a, paramLong1);
+    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562746, paramViewGroup, false);
+    this.c = ((TextView)this.b.findViewById(2131371352));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131370109));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131371373);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369553));
   }
   
-  public void onDecodeRepeat()
+  public LinearLayout a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FollowCaptureView", 2, "onDecodeRepeat");
-    }
-    FollowCaptureView.a(this.a);
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
   }
-  
-  public void onDecodeSeekTo(long paramLong) {}
-  
-  public void onDecodeStart() {}
 }
 
 

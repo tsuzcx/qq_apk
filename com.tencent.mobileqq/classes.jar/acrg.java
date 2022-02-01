@@ -1,7 +1,23 @@
-import kotlin.Metadata;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingViewModel$Companion;", "", "()V", "COUNT_DOWN_AUTO_START_SECOND", "", "TAG", "", "WEB_CLICK_REPORT_URL", "WEB_COUNT_DOWN_REPORT_URL", "WEB_EXPOSURE_REPORT_URL", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class acrg {}
+public class acrg
+  implements View.OnClickListener
+{
+  public acrg(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    if (ArkFullScreenAppActivity.a(this.a) != null) {
+      aovl.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).appName, null, aovl.c, 0, 0);
+    }
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

@@ -1,18 +1,25 @@
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class aphw
 {
-  private HashMap<String, Object> a = new HashMap();
-  public float[] a;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<aphx> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public Object a(String paramString)
+  public String toString()
   {
-    return this.a.get(paramString);
-  }
-  
-  public void a(String paramString, Object paramObject)
-  {
-    this.a.put(paramString, paramObject);
+    return "C2CShortcutAppInfo{appId=" + this.jdField_a_of_type_JavaLangString + ", type=" + this.jdField_a_of_type_Long + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", iconUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + ", jumpUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", desc='" + this.e + '\'' + ", cmdTrace='" + this.f + '\'' + ", redPoint=" + this.jdField_a_of_type_Int + ", showFrame=" + this.jdField_b_of_type_Int + ", playingNum=" + this.jdField_c_of_type_Int + ", canSendArkMsg=" + this.jdField_a_of_type_Boolean + ", arkLabelWording=" + this.g + ", labels=" + this.jdField_a_of_type_JavaUtilArrayList + ", jumpType=" + this.jdField_d_of_type_Int + '}';
   }
 }
 

@@ -1,48 +1,35 @@
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class axqi
-  implements azpp
+final class axqi
+  implements INetEngine.IBreakDownFix
 {
-  axqi(axqb paramaxqb, axpw paramaxpw) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
   {
-    if (this.jdField_a_of_type_Axpw.a != null)
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    do
     {
-      String str = this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_Axpw.a.a);
-      axpx localaxpx = this.jdField_a_of_type_Axqb.a(str);
-      if ((localaxpx != null) && (!localaxpx.a))
+      do
       {
-        localaxpx.c = (paramInt / 100);
-        this.jdField_a_of_type_Axqb.a(str, localaxpx);
-        axqb.a(this.jdField_a_of_type_Axqb, localaxpx, paramInt / 100);
-      }
-    }
-  }
-  
-  public void a(azpq paramazpq)
-  {
-    int i = 0;
-    String str = "";
-    int k;
-    if (paramazpq != null)
-    {
-      k = paramazpq.jdField_a_of_type_Int;
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiRichMediaSaveManager", 2, "isFilePreDownload shortVideoReq result = " + k);
-      }
-      j = k;
-      if (paramazpq.jdField_a_of_type_Azqh != null)
+        return;
+      } while (!(paramNetReq instanceof HttpNetReq));
+      paramNetReq = (HttpNetReq)paramNetReq;
+      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
+      paramNetResp.mWrittenBlockLen = 0L;
+      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
+      paramNetReq.mReqProperties.put("Range", paramNetResp);
+      paramNetResp = paramNetReq.mReqUrl;
+      if (paramNetResp.contains("range="))
       {
-        i = paramazpq.jdField_a_of_type_Azqh.jdField_a_of_type_Int;
-        str = paramazpq.jdField_a_of_type_Azqh.b;
+        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+        paramNetReq.mReqUrl = (str + "range=" + paramNetReq.mStartDownOffset);
       }
-    }
-    for (int j = k;; j = 0)
-    {
-      this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_Axpw, j, i, str);
-      return;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.i("OlympicResources", 2, "IBreakDownFix, " + paramNetResp);
   }
 }
 

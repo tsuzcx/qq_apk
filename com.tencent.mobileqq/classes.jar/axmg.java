@@ -1,22 +1,54 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.style.ClickableSpan;
 import android.view.MotionEvent;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
 
 public class axmg
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnTouchListener
 {
-  public axmg(TabPageIndicator paramTabPageIndicator) {}
+  public axmg(OCRResultFragmentNew paramOCRResultFragmentNew) {}
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
+    paramView = (EditText)paramView;
+    int j = paramMotionEvent.getAction();
+    if (j == 1)
+    {
+      Object localObject = paramView.getText();
+      int m = (int)paramMotionEvent.getX();
+      i = (int)paramMotionEvent.getY();
+      int n = paramView.getTotalPaddingLeft();
+      int k = paramView.getTotalPaddingTop();
+      m = m - n + paramView.getScrollX();
+      n = paramView.getScrollY();
+      Layout localLayout = paramView.getLayout();
+      i = localLayout.getLineForVertical(i - k + n);
+      float f = localLayout.getLineWidth(i);
+      if (m <= f)
+      {
+        i = localLayout.getOffsetForHorizontal(i, m);
+        localObject = (ClickableSpan[])((Spannable)localObject).getSpans(i, i, ClickableSpan.class);
+        if (localObject.length != 0)
+        {
+          localObject[0].onClick(paramView);
+          bcef.b(null, "dc00898", "", "", "0X80082E3", "0X80082E3", 0, 0, "", "", "", "");
+        }
+      }
     }
-    if (TabPageIndicator.a(this.a) != null) {
-      this.a.performClick();
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        return true;
+      }
+      if ((j == 1) && (!paramView.isFocused())) {
+        bcef.b(null, "dc00898", "", "", "0X80082E2", "0X80082E2", 0, 0, "", "", "", "");
+      }
+      return paramView.onTouchEvent(paramMotionEvent);
     }
-    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

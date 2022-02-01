@@ -1,54 +1,18 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
-public class bebq
-  extends MiniMsgUser
+class bebq
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int = -1;
-  MiniMsgUserParam jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam;
-  BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  String jdField_a_of_type_JavaLangString = "";
-  String b = "";
+  bebq(bebp parambebp, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
   
-  public bebq(BaseActivity paramBaseActivity, MiniMsgUserParam paramMiniMsgUserParam, String paramString1, int paramInt, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramBaseActivity, paramMiniMsgUserParam);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam = paramMiniMsgUserParam;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.b = paramString2;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.actionCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.actionCallback.onOpenMiniAIOCallback();
-      }
-      String str = this.jdField_a_of_type_JavaLangString;
-      int i = this.jdField_a_of_type_Int;
-      if ((i != -1) && (!TextUtils.isEmpty(str)))
-      {
-        MiniChatActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, i, str, this.b);
-        hideUnread();
-      }
+    if (paramInt == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.b(this.jdField_a_of_type_JavaUtilUUID);
     }
-  }
-  
-  public void updateUnreadCountSync(int paramInt)
-  {
-    super.updateUnreadCountSync(0);
   }
 }
 

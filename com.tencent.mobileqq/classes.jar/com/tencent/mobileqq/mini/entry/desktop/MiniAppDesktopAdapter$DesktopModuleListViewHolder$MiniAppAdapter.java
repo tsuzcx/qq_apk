@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import bhtq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopAppInfo;
@@ -15,6 +14,7 @@ import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopItemInfo;
 import com.tencent.mobileqq.mini.entry.desktop.widget.DragAdapter;
 import com.tencent.mobileqq.mini.entry.desktop.widget.DragRecyclerView;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
@@ -78,7 +78,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
   
   public boolean isMoveToDeleteArea(int paramInt1, int paramInt2)
   {
-    return this.this$1.mRecycleView.getTop() + paramInt2 >= MiniAppDesktopAdapter.access$3700(this.this$1.this$0).getBottom() - bhtq.a(60.0F);
+    return this.this$1.mRecycleView.getTop() + paramInt2 >= MiniAppDesktopAdapter.access$3700(this.this$1.this$0).getBottom() - ViewUtils.dip2px(125.0F);
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -89,7 +89,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
   
   public MiniAppDesktopAdapter.MicroAppViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new MiniAppDesktopAdapter.MicroAppViewHolder(LayoutInflater.from(MiniAppDesktopAdapter.access$3500(this.this$1.this$0)).inflate(2131562460, paramViewGroup, false));
+    return new MiniAppDesktopAdapter.MicroAppViewHolder(LayoutInflater.from(MiniAppDesktopAdapter.access$3500(this.this$1.this$0)).inflate(2131562336, paramViewGroup, false));
   }
   
   public void onDragFinish(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -149,7 +149,7 @@ public class MiniAppDesktopAdapter$DesktopModuleListViewHolder$MiniAppAdapter
           }
           else
           {
-            i = bhtq.a(30.0F) + paramInt1;
+            i = ViewUtils.dip2px(30.0F) + paramInt1;
             continue;
           }
           Object localObject1 = (DesktopAppInfo)this.mData.get(this.mDragIndex);

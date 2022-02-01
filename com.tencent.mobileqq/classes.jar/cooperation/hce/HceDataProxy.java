@@ -1,6 +1,6 @@
 package cooperation.hce;
 
-import apch;
+import com.tencent.mobileqq.app.soso.LbsManagerService;
 
 public class HceDataProxy
 {
@@ -11,7 +11,7 @@ public class HceDataProxy
     if (paramGetLocationListener == null) {
       return;
     }
-    apch.a(new HceDataProxy.1(paramString, paramGetLocationListener));
+    LbsManagerService.startLocation(new HceDataProxy.1(paramString, paramGetLocationListener));
   }
 }
 

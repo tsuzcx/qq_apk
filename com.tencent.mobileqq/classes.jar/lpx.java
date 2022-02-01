@@ -1,51 +1,79 @@
-public class lpx
+import android.content.Context;
+import android.view.MotionEvent;
+import com.tencent.qphone.base.util.QLog;
+
+public abstract class lpx
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static lpx b;
-  private static int c;
-  public int a;
-  private lpx jdField_a_of_type_Lpx;
-  public int b;
+  protected float a;
+  protected long a;
+  protected final Context a;
+  protected MotionEvent a;
+  protected boolean a;
+  protected float b;
+  protected MotionEvent b;
   
-  private lpx(int paramInt1, int paramInt2)
+  public lpx(Context paramContext)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public static lpx a(int paramInt1, int paramInt2)
+  protected void a()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    if (this.jdField_a_of_type_AndroidViewMotionEvent != null)
     {
-      if (jdField_b_of_type_Lpx != null)
-      {
-        lpx locallpx = jdField_b_of_type_Lpx;
-        jdField_b_of_type_Lpx = locallpx.jdField_a_of_type_Lpx;
-        locallpx.jdField_a_of_type_Lpx = null;
-        locallpx.jdField_a_of_type_Int = paramInt1;
-        locallpx.jdField_b_of_type_Int = paramInt2;
-        c -= 1;
-        return locallpx;
-      }
-      return new lpx(paramInt1, paramInt2);
+      this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
+      this.jdField_a_of_type_AndroidViewMotionEvent = null;
     }
+    if (this.jdField_b_of_type_AndroidViewMotionEvent != null)
+    {
+      this.jdField_b_of_type_AndroidViewMotionEvent.recycle();
+      this.jdField_b_of_type_AndroidViewMotionEvent = null;
+    }
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a()
+  protected abstract void a(int paramInt, MotionEvent paramMotionEvent);
+  
+  protected void a(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    synchronized (jdField_a_of_type_JavaLangObject)
+    MotionEvent localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
+    if ((paramMotionEvent == null) || (localMotionEvent == null))
     {
-      if (c < 4)
-      {
-        this.jdField_a_of_type_Lpx = jdField_b_of_type_Lpx;
-        jdField_b_of_type_Lpx = this;
-        c += 1;
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseGestureDetector", 2, "updateStateByEvent-->Curr Or Prev is null");
       }
       return;
     }
+    if (this.jdField_b_of_type_AndroidViewMotionEvent != null)
+    {
+      this.jdField_b_of_type_AndroidViewMotionEvent.recycle();
+      this.jdField_b_of_type_AndroidViewMotionEvent = null;
+    }
+    this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+    this.jdField_a_of_type_Long = (paramMotionEvent.getEventTime() - localMotionEvent.getEventTime());
+    this.jdField_a_of_type_Float = paramMotionEvent.getPressure(paramMotionEvent.getActionIndex());
+    this.jdField_b_of_type_Float = localMotionEvent.getPressure(localMotionEvent.getActionIndex());
   }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getAction() & 0xFF;
+    if (!this.jdField_a_of_type_Boolean) {
+      a(i, paramMotionEvent);
+    }
+    for (;;)
+    {
+      return true;
+      b(i, paramMotionEvent);
+    }
+  }
+  
+  protected abstract void b(int paramInt, MotionEvent paramMotionEvent);
 }
 
 

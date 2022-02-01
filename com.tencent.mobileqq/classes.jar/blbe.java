@@ -1,17 +1,8 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import cooperation.vip.jsoninflate.model.AlumBasicData;
 
-public class blbe
+public abstract interface blbe
 {
-  public static String a()
-  {
-    return BaseApplication.getContext().getDir("qqprotect", 0).toString();
-  }
-  
-  public static String b()
-  {
-    return a() + File.separator + "qseclibs";
-  }
+  public abstract void a(AlumBasicData paramAlumBasicData);
 }
 
 

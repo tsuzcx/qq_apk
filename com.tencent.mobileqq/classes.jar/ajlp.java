@@ -1,42 +1,17 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.SwipListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
 public class ajlp
-  implements szu
+  implements DialogInterface.OnClickListener
 {
-  public ajlp(SystemMsgListView paramSystemMsgListView) {}
+  public ajlp(BindNumberActivity paramBindNumberActivity) {}
   
-  public void a(szz paramszz)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j;
-    if (paramszz != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.newfriendSystemMsgListView", 2, "setStickHead onTabSelected : position = " + paramszz.a() + " tabid = " + (Integer)paramszz.a());
-      }
-      SystemMsgListView.a(this.a).a(((Integer)paramszz.a()).intValue(), paramszz.a());
-      i = SystemMsgListView.a(this.a).b();
-      paramszz = (ajjb)SystemMsgListView.a(this.a).get(i);
-      if (paramszz == null) {
-        break label141;
-      }
-      j = paramszz.b;
-    }
-    for (int i = paramszz.c;; i = SystemMsgListView.a(this.a).c)
-    {
-      SystemMsgListView.a(this.a).setSelectionFromTop(j, i);
-      SystemMsgListView.a(this.a).a(0L);
-      return;
-      label141:
-      j = SystemMsgListView.a(this.a).b;
-    }
+    paramDialogInterface.dismiss();
+    BindNumberActivity.b(this.a);
   }
-  
-  public void b(szz paramszz) {}
-  
-  public void c(szz paramszz) {}
 }
 
 

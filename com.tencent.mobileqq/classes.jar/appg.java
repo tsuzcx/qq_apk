@@ -1,17 +1,34 @@
-public class appg
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.comment.DanmuItemBean;
+
+public final class appg
+  implements Parcelable.Creator<DanmuItemBean>
 {
-  public float a;
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  
-  public String toString()
+  public DanmuItemBean a(Parcel paramParcel)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("xMIN:").append(this.a).append(",xMAX:").append(this.b).append(",yMIN:").append(this.c).append(",yMAX:").append(this.d);
-    return localStringBuilder.toString();
+    boolean bool = true;
+    DanmuItemBean localDanmuItemBean = new DanmuItemBean();
+    localDanmuItemBean.jdField_a_of_type_Long = paramParcel.readLong();
+    localDanmuItemBean.jdField_b_of_type_Long = paramParcel.readLong();
+    localDanmuItemBean.d = paramParcel.readLong();
+    localDanmuItemBean.jdField_c_of_type_Long = paramParcel.readLong();
+    localDanmuItemBean.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localDanmuItemBean.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readInt() == 1) {}
+    for (;;)
+    {
+      localDanmuItemBean.jdField_a_of_type_Boolean = bool;
+      localDanmuItemBean.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      localDanmuItemBean.jdField_a_of_type_Int = paramParcel.readInt();
+      return localDanmuItemBean;
+      bool = false;
+    }
+  }
+  
+  public DanmuItemBean[] a(int paramInt)
+  {
+    return new DanmuItemBean[paramInt];
   }
 }
 

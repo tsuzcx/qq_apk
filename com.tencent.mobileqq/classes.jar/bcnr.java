@@ -1,60 +1,19 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
 
 public class bcnr
-  implements bcny
+  implements DialogInterface.OnClickListener
 {
-  protected View a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bcnz jdField_a_of_type_Bcnz;
-  private List<bcnz> jdField_a_of_type_JavaUtilList;
-  private TextView b;
+  public bcnr(KidModeAdvanceSettingFragment paramKidModeAdvanceSettingFragment) {}
   
-  public bcnr() {}
-  
-  public bcnr(ViewGroup paramViewGroup, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371384));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131370112));
-    this.jdField_a_of_type_Bcnz = new bcnt(this.jdField_a_of_type_AndroidViewView.findViewById(2131368845));
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public LinearLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public bcnz a()
-  {
-    return this.jdField_a_of_type_Bcnz;
-  }
-  
-  public List<bcnz> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public TextView b()
-  {
-    return this.b;
+    KidModeAdvanceSettingFragment.b(this.a, true);
+    KidModeAdvanceSettingFragment.a(this.a).setEnabled(true);
+    KidModeAdvanceSettingFragment.a(this.a, KidModeAdvanceSettingFragment.a(this.a), false, KidModeAdvanceSettingFragment.a(this.a));
+    aihp.a(this.a.getActivity(), KidModeAdvanceSettingFragment.a(this.a), bcoo.b(), 2002);
   }
 }
 

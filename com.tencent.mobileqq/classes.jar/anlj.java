@@ -1,8 +1,15 @@
-import java.io.ByteArrayOutputStream;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public abstract interface anlj
+class anlj
+  implements Comparator<MessageRecord>
 {
-  public abstract void a(boolean paramBoolean, ByteArrayOutputStream paramByteArrayOutputStream);
+  anlj(anli paramanli) {}
+  
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  {
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
+  }
 }
 
 

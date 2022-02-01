@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bhqp;
 import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.SoftReference;
@@ -24,36 +23,36 @@ class QQCustomDialogWtihInputAndChoose$6$1
   public void run()
   {
     int j = 0;
-    int k = this.a.this$0.a(this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout);
-    int m = this.a.this$0.a(this.a.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    int n = this.a.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-    Object localObject1 = this.a.this$0.getWindow().getAttributes();
+    int k = this.this$1.this$0.getScreenYin(this.this$1.this$0.mChooseLayout);
+    int m = this.this$1.this$0.getScreenYin(this.this$1.this$0.mRoot);
+    int n = this.this$1.this$0.mRoot.getHeight();
+    Object localObject1 = this.this$1.this$0.getWindow().getAttributes();
     int i;
     Object localObject2;
     if (k - n > 0)
     {
-      i = this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.getHeight() / 2;
+      i = this.this$1.this$0.mChooseLayout.getHeight() / 2;
       ((WindowManager.LayoutParams)localObject1).y = (-i);
-      this.a.this$0.getWindow().setAttributes((WindowManager.LayoutParams)localObject1);
-      if ((this.a.this$0.c) && (this.a.this$0.jdField_a_of_type_AndroidWidgetEditText.getText() != null) && (TextUtils.isEmpty(this.a.this$0.jdField_a_of_type_AndroidWidgetEditText.getText().toString())))
+      this.this$1.this$0.getWindow().setAttributes((WindowManager.LayoutParams)localObject1);
+      if ((this.this$1.this$0.isFirstClick) && (this.this$1.this$0.inputView.getText() != null) && (TextUtils.isEmpty(this.this$1.this$0.inputView.getText().toString())))
       {
-        localObject1 = (LinearLayout)this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.findViewById(2131370015);
+        localObject1 = (LinearLayout)this.this$1.this$0.mChooseLayout.findViewById(2131370012);
         if ((localObject1 != null) && (((LinearLayout)localObject1).getChildCount() > 0))
         {
           localObject1 = ((LinearLayout)localObject1).getChildAt(0);
-          localObject2 = (TextView)((View)localObject1).findViewById(2131370014);
+          localObject2 = (TextView)((View)localObject1).findViewById(2131370011);
           if (((TextView)localObject2).getText() != null) {
-            this.a.this$0.a(((TextView)localObject2).getText().toString());
+            this.this$1.this$0.setInputValue(((TextView)localObject2).getText().toString());
           }
-          localObject1 = ((View)localObject1).findViewById(2131370013);
+          localObject1 = ((View)localObject1).findViewById(2131370010);
           ((View)localObject1).setVisibility(0);
-          this.a.this$0.jdField_a_of_type_AndroidViewView = ((View)localObject1);
-          this.a.this$0.c = false;
+          this.this$1.this$0.viewSelected = ((View)localObject1);
+          this.this$1.this$0.isFirstClick = false;
         }
       }
       if (QLog.isColorLevel())
       {
-        localObject1 = (Context)this.a.this$0.jdField_a_of_type_JavaLangRefSoftReference.get();
+        localObject1 = (Context)this.this$1.this$0.softRefContext.get();
         if (localObject1 != null) {
           j = ((Context)localObject1).getResources().getDisplayMetrics().heightPixels;
         }

@@ -1,38 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
+import android.opengl.GLES20;
+import javax.microedition.khronos.opengles.GL11;
 
 public class lqd
+  implements lqe
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = 0;
-  int c = 0;
-  int d = 0;
-  
-  void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, boolean paramBoolean, long paramLong2)
+  public int a()
   {
-    StringBuilder localStringBuilder;
-    if ((paramArrayOfByte == null) || (this.jdField_a_of_type_Int == 0) || (this.b == 0) || (this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (this.c != paramInt3) || (this.d != paramInt4) || (this.jdField_a_of_type_Long != paramLong1) || (this.jdField_a_of_type_Boolean != paramBoolean)) {
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder().append("onProcessFrame, data[");
-        if (paramArrayOfByte == null) {
-          break label294;
-        }
-      }
-    }
-    label294:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("ProcessFrameInfo", 1, bool + "], frameIndex[" + paramLong2 + "], width[" + this.jdField_a_of_type_Int + "->" + paramInt1 + "], height[" + this.b + "->" + paramInt2 + "], format[" + this.c + "->" + paramInt3 + "], angle[" + this.d + "->" + paramInt4 + "], FPS[" + this.jdField_a_of_type_Long + "->" + paramLong1 + "], isFront[" + this.jdField_a_of_type_Boolean + "->" + paramBoolean + "]");
-      this.jdField_a_of_type_Int = paramInt1;
-      this.b = paramInt2;
-      this.c = paramInt3;
-      this.d = paramInt4;
-      this.jdField_a_of_type_Long = paramLong1;
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
+    int[] arrayOfInt = new int[1];
+    arrayOfInt[0] = 0;
+    GLES20.glGenTextures(1, arrayOfInt, 0);
+    lsd.a();
+    return arrayOfInt[0];
+  }
+  
+  public void a(int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  {
+    GLES20.glGenBuffers(paramInt1, paramArrayOfInt, paramInt2);
+    lsd.a();
+  }
+  
+  public void a(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  {
+    GLES20.glDeleteTextures(paramInt1, paramArrayOfInt, paramInt2);
+    lsd.a();
+  }
+  
+  public void b(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  {
+    GLES20.glDeleteBuffers(paramInt1, paramArrayOfInt, paramInt2);
+    lsd.a();
   }
 }
 

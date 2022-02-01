@@ -2,8 +2,8 @@ package com.tencent.mobileqq.apollo.game;
 
 import android.app.Activity;
 import android.view.View;
-import birg;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 
 class ApolloWebViewFragment$2
   implements Runnable
@@ -12,9 +12,9 @@ class ApolloWebViewFragment$2
   
   public void run()
   {
-    if ((this.this$0.mUIStyleHandler != null) && (this.this$0.mUIStyleHandler.a != null))
+    if ((this.this$0.mUIStyleHandler != null) && (this.this$0.mUIStyleHandler.mHostFragment != null))
     {
-      this.this$0.mUIStyleHandler.a.hideVirtualNavBar();
+      this.this$0.mUIStyleHandler.mHostFragment.hideVirtualNavBar();
       Object localObject = this.this$0.getHostActivity();
       if (localObject != null)
       {

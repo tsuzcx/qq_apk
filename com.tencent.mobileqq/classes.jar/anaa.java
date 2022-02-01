@@ -1,25 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class anaa
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  public anaa(CmGameLoadingView.1 param1) {}
+  protected void a(int paramInt) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt1, int paramInt2) {}
+  
+  protected void b(int paramInt) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131700996));
-    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.this$0.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-    this.a.this$0.setProgressViewVisibility(true);
-    this.a.a.a(2);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+            } while (paramObject == null);
+            paramObject = (Object[])paramObject;
+            a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
+            return;
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 1);
+        b(((Integer)paramObject[0]).intValue());
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length < 1);
+    a(((Integer)paramObject[0]).intValue());
   }
 }
 

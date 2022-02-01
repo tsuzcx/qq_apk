@@ -1,24 +1,46 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.WifiInfo;
+import android.graphics.Canvas;
+import android.view.MotionEvent;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
-public final class bmss
-  implements Parcelable.Creator<LbsDataV2.WifiInfo>
+public class bmss
+  extends bngv
 {
-  public LbsDataV2.WifiInfo a(Parcel paramParcel)
+  public bmss(DoodleView paramDoodleView)
   {
-    LbsDataV2.WifiInfo localWifiInfo = new LbsDataV2.WifiInfo();
-    if (paramParcel != null)
-    {
-      localWifiInfo.mac = paramParcel.readString();
-      localWifiInfo.rssi = paramParcel.readInt();
-    }
-    return localWifiInfo;
+    super(paramDoodleView);
   }
   
-  public LbsDataV2.WifiInfo[] a(int paramInt)
+  public String a()
   {
-    return null;
+    return "PickLayer";
+  }
+  
+  public void a() {}
+  
+  protected void a(Canvas paramCanvas) {}
+  
+  public void a(Canvas paramCanvas, float paramFloat) {}
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    return true;
+  }
+  
+  protected boolean a(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public void b(Canvas paramCanvas) {}
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

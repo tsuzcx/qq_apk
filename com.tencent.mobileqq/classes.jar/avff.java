@@ -1,16 +1,21 @@
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.fragment.NowLiveFragment.NowLiveWebView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avff
-  implements aayx
+  implements View.OnClickListener
 {
-  public avff(NowLiveFragment paramNowLiveFragment) {}
+  public avff(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment$NowLiveWebView.refresh();
-    this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
+    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).e();
+    bcef.b(null, "CliOper", "", "", "0X800A961", "0X800A961", 0, 0, "0", "0", "0", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

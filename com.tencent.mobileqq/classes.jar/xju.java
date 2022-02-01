@@ -1,14 +1,15 @@
-import android.content.DialogInterface;
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
 
-public class xju
-  extends bhme
+class xju
+  implements bhfe
 {
-  public xju(FollowCaptureLauncher paramFollowCaptureLauncher) {}
+  xju(xjt paramxjt, String paramString, QQStoryAutoPlayView paramQQStoryAutoPlayView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    paramDialogInterface.dismiss();
+    xvv.a("Q.qqstory.detail.FeedItemThumbAdapter", "vid:%s, animation end", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a().a(4);
+    voe.a().a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a());
   }
 }
 

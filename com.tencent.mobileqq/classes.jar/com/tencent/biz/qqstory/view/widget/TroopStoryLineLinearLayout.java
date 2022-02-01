@@ -9,7 +9,7 @@ import android.os.Build.VERSION;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import bhgr;
+import com.tencent.mobileqq.util.DisplayUtil;
 import java.lang.reflect.Field;
 
 public class TroopStoryLineLinearLayout
@@ -30,13 +30,13 @@ public class TroopStoryLineLinearLayout
   @TargetApi(16)
   private void a()
   {
-    Drawable localDrawable = getResources().getDrawable(2130840515);
+    Drawable localDrawable = getResources().getDrawable(2130840550);
     Object localObject;
     float f;
     if ((localDrawable instanceof RotateDrawable))
     {
       localObject = (RotateDrawable)localDrawable;
-      f = bhgr.a(getContext(), 66.5F);
+      f = DisplayUtil.dip2px(getContext(), 66.5F);
     }
     try
     {

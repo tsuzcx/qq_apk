@@ -7,11 +7,11 @@ import mqq.os.MqqHandler;
 class HippyQQEngine$1
   implements HippyQQUpdateManager.PackageUpdateListener
 {
-  HippyQQEngine$1(HippyQQEngine paramHippyQQEngine) {}
+  HippyQQEngine$1(HippyQQEngine paramHippyQQEngine, long paramLong) {}
   
   public void onUpdateComplete(int paramInt, String paramString1, String paramString2)
   {
-    paramString1 = new HippyQQEngine.1.1(this, paramInt, paramString2, paramString1);
+    paramString1 = new HippyQQEngine.1.1(this, paramInt, paramString1, paramString2);
     if (HippyQQEngine.isMainThread())
     {
       paramString1.run();

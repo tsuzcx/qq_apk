@@ -1,28 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-public class rwl
-  implements rzy
+public abstract interface rwl
 {
-  public rwl(VideoPreDownloadMgr paramVideoPreDownloadMgr) {}
+  public abstract void a(View paramView);
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a) + " SUCCESS");
-    }
-    ThreadManager.post(new VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask(this.a, true), 5, null, true);
-  }
+  public abstract void a(View paramView, int paramInt);
   
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a));
-    }
-    ThreadManager.post(new VideoPreDownloadMgr.PreDownloadNotAlreadyVideoTask(this.a, false), 5, null, true);
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2);
+  
+  public abstract void b(View paramView);
 }
 
 

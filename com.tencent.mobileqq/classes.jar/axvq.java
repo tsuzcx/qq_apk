@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
+import android.os.Bundle;
 
-public class axvq
-  implements INetEventHandler
+class axvq
+  extends axvs
 {
-  private int jdField_a_of_type_Int = -1;
+  axvq(axvp paramaxvp) {}
   
-  public axvq(NearbyJsInterface paramNearbyJsInterface) {}
-  
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void b(boolean paramBoolean, Bundle paramBundle)
   {
-    int i = nnr.a();
-    NearbyJsInterface.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface, this.jdField_a_of_type_Int, i);
-    this.jdField_a_of_type_Int = i;
+    super.b(paramBoolean, paramBundle);
+    if (paramBoolean) {
+      axvp.a(this.a);
+    }
   }
 }
 

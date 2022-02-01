@@ -1,38 +1,13 @@
-import android.content.Intent;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
 
 public class lxv
-  implements bori
+  implements DialogInterface.OnClickListener
 {
-  final WeakReference<QQServiceForAV> a;
+  public lxv(AVSchema paramAVSchema) {}
   
-  lxv(QQServiceForAV paramQQServiceForAV)
-  {
-    this.a = new WeakReference(paramQQServiceForAV);
-  }
-  
-  public void a(borf paramborf, long paramLong1, long paramLong2) {}
-  
-  public void a(borf paramborf, String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQServiceForAV", 2, "PTULibpagDownloadCallback onAEResDownloadResult, package[" + paramborf.a + ", isDownloaded[" + paramBoolean + ", errorType[" + paramInt + "]");
-    }
-    paramString = (QQServiceForAV)this.a.get();
-    if (paramString != null)
-    {
-      paramString = (QQAppInterface)paramString.a();
-      Intent localIntent = new Intent("tencent.video.q2v.ptuLibpagDownloadRet");
-      localIntent.putExtra("packageIdx", paramborf.a);
-      localIntent.putExtra("isDownloaded", paramBoolean);
-      localIntent.putExtra("errorType", paramInt);
-      paramString.getApp().sendBroadcast(localIntent);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -180,6 +180,11 @@ public abstract class TAVCutSession
     return Util.md5(localStringBuilder.toString());
   }
   
+  public SessionConfig getSessionConfig()
+  {
+    return this.sessionConfig;
+  }
+  
   public int getStickerTotalSize()
   {
     if (this.mediaModels == null) {

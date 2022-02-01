@@ -1,55 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.DragEvent;
+import android.view.View;
+import android.view.View.OnDragListener;
 
-public class afqq
-  extends biht
+class afqq
+  implements View.OnDragListener
 {
-  public afqq(TextPreviewSettingActivity paramTextPreviewSettingActivity, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  afqq(afqj paramafqj) {}
   
-  public void onCancel(bihu parambihu)
+  public boolean onDrag(View paramView, DragEvent paramDragEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambihu);
-    }
-    super.onCancel(parambihu);
-  }
-  
-  public void onDone(bihu parambihu)
-  {
-    super.onDone(parambihu);
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onDone| task:" + parambihu);
-    }
-    if (parambihu.b()) {}
-    do
-    {
-      return;
-      if (parambihu.a() == -1)
-      {
-        parambihu = new Message();
-        parambihu.what = 17;
-        TextPreviewSettingActivity.a(this.a).sendMessage(parambihu);
-        return;
-      }
-      parambihu = TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a));
-    } while (parambihu == null);
-    Message localMessage = new Message();
-    localMessage.what = 18;
-    localMessage.obj = parambihu;
-    TextPreviewSettingActivity.a(this.a).sendMessage(localMessage);
-  }
-  
-  public boolean onStart(bihu parambihu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onStart| task:" + parambihu);
-    }
-    return super.onStart(parambihu);
+    return true;
   }
 }
 

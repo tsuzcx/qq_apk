@@ -1,51 +1,40 @@
-import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.videoplatform.api.IThreadMgr;
+import mqq.os.MqqHandler;
 
-class azju
+public class azju
+  implements IThreadMgr
 {
-  private int jdField_a_of_type_Int;
-  private azjv jdField_a_of_type_Azjv;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int b;
-  private int c;
-  
-  azju(int paramInt1, int paramInt2, @NonNull azjv paramazjv)
+  public void postOnSubThread(Runnable paramRunnable)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Azjv = paramazjv;
+    ThreadManager.getSubThreadHandler().post(paramRunnable);
   }
   
-  void a()
+  public void postOnSubThreadDelayed(Runnable paramRunnable, long paramLong)
   {
-    int i;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = this.jdField_a_of_type_Int;
-      int j = this.c;
-      this.c = (j + 1);
-      if (j >= i - 1)
-      {
-        this.c = 0;
-        if (this.jdField_a_of_type_Boolean) {
-          break label72;
-        }
-      }
-    }
-    label72:
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Azjv.a(this.jdField_a_of_type_Boolean);
-      return;
-      i = this.b;
-      break;
-    }
+    ThreadManager.getSubThreadHandler().postDelayed(paramRunnable, paramLong);
   }
   
-  void b()
+  public void postOnUIThread(Runnable paramRunnable)
   {
-    this.c = 0;
-    this.jdField_a_of_type_Boolean = true;
+    ThreadManager.getUIHandler().post(paramRunnable);
+  }
+  
+  public void postOnUIThreadDelayed(Runnable paramRunnable, long paramLong)
+  {
+    ThreadManager.getUIHandler().postDelayed(paramRunnable, paramLong);
+  }
+  
+  public void quitSubThread() {}
+  
+  public void removeCallbackOnSubHandler(Runnable paramRunnable)
+  {
+    ThreadManager.getSubThreadHandler().removeCallbacks(paramRunnable);
+  }
+  
+  public void removeCallbackOnUIHandler(Runnable paramRunnable)
+  {
+    ThreadManager.getUIHandler().removeCallbacks(paramRunnable);
   }
 }
 

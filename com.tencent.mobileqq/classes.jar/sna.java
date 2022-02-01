@@ -1,34 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
+import android.graphics.Canvas;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class sna
+  implements Function1<Canvas, Unit>
 {
-  private static sna a;
+  public sna(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public static sna a()
+  public Unit a(Canvas paramCanvas)
   {
-    try
-    {
-      if (a == null) {
-        a = new sna();
-      }
-      sna localsna = a;
-      return localsna;
-    }
-    finally {}
-  }
-  
-  public void a(Kandian210Msg0xeeInfo paramKandian210Msg0xeeInfo) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return false;
+    ReadInJoyListViewGroup.b(this.a, paramCanvas);
+    return null;
   }
 }
 

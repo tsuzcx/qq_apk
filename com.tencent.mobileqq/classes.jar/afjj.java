@@ -1,17 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
 
-public class afjj
-  implements View.OnClickListener
+class afjj
+  implements azxl
 {
-  public afjj(RecommendFriendActivity paramRecommendFriendActivity) {}
+  afjj(afiw paramafiw) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, boolean paramBoolean)
   {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    afiw.a(this.a, paramBoolean);
+    this.a.updateAddFriendAndShieldView();
+    paramString = (PlusPanel)this.a.panelManager.a(8);
+    if (paramString != null) {
+      paramString.setOneWayFriend(afiw.a(this.a));
+    }
+    if (afiw.a(this.a))
+    {
+      acvv.a(this.a.app, this.a.mActivity, this.a.sessionInfo);
+      paramString = (afsn)this.a.getHelper(52);
+      if (paramString != null) {
+        paramString.h();
+      }
+    }
   }
 }
 

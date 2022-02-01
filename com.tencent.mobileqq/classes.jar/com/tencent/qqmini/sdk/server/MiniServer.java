@@ -17,6 +17,7 @@ import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.model.MiniServiceFetcher;
 import com.tencent.qqmini.sdk.launcher.shell.IMiniServer;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -106,9 +107,10 @@ public class MiniServer
           QMLog.e("MiniServer", "Failed to init MiniServer. context is null");
           continue;
         }
-        this.mContext = paramContext;
+        QMLog.i("MiniServer", "Init MiniServer. MiniSdkVersion:1.8.0_25_0ea610c QUA:" + QUAUtil.getQUA() + " PlatformQUA:" + QUAUtil.getPlatformQUA());
       }
       finally {}
+      this.mContext = paramContext;
       processConfiguration(paramConfiguration);
       registerMiniServices();
     }

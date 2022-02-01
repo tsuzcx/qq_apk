@@ -1,60 +1,90 @@
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import java.util.Set;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bcjv
-  extends bcia
+  extends bcgx
 {
-  public bcjv(aoof paramaoof, bcie parambcie, Set<String> paramSet)
+  private LinearLayout a(Context paramContext)
   {
-    super(paramaoof, parambcie, paramSet);
+    paramContext = new LinearLayout(paramContext);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    localLayoutParams.gravity = 17;
+    paramContext.setLayoutParams(localLayoutParams);
+    return paramContext;
   }
   
-  public void b(bcfr parambcfr, bcnz parambcnz)
+  protected int b()
   {
-    boolean bool = true;
-    super.b(parambcfr, parambcnz);
-    if (parambcnz.c() != null)
+    return 23;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    Object localObject2;
+    if ((paramView != null) && ((paramView instanceof LinearLayout)) && ((paramView.getTag() instanceof bcjw)))
     {
-      parambcfr = (bcen)parambcfr;
-      if ((this.a == null) || (!this.a.contains(parambcfr.b()))) {
-        break label144;
-      }
-    }
-    label138:
-    label144:
-    for (int i = 1;; i = 0)
-    {
-      if (!TextUtils.isEmpty(parambcfr.c()))
-      {
-        parambcnz.c().setText(parambcfr.c());
-        i = 1;
-      }
-      parambcfr = parambcnz.c();
-      int j;
-      if (i != 0)
-      {
-        j = 0;
-        parambcfr.setVisibility(j);
-        parambcfr = parambcnz.a();
-        if (i != 0) {
-          break label138;
-        }
-      }
+      localbcjw = (bcjw)paramView.getTag();
+      localIterator = this.a.iterator();
       for (;;)
       {
-        parambcfr.setClickable(bool);
-        if (parambcnz.a() != null) {
-          parambcnz.a().setVisibility(8);
+        localObject1 = paramView;
+        if (!localIterator.hasNext()) {
+          break;
         }
-        return;
-        j = 8;
-        break;
-        bool = false;
+        localObject1 = (bcgw)localIterator.next();
+        if ("button".equals(((bcgw)localObject1).a))
+        {
+          localObject2 = (TextView)((bcgw)localObject1).a(paramContext, localbcjw.a, paramBundle);
+          if (TextUtils.isEmpty(((bcit)localObject1).c())) {
+            ((TextView)localObject2).setTextSize(16.0F);
+          }
+          if (TextUtils.isEmpty(((bcit)localObject1).d())) {
+            ((TextView)localObject2).setTextColor(Color.parseColor("#12b7f5"));
+          }
+        }
       }
     }
+    Object localObject1 = a(paramContext);
+    bcjw localbcjw = new bcjw();
+    Iterator localIterator = this.a.iterator();
+    paramView = null;
+    while (localIterator.hasNext())
+    {
+      localObject2 = (bcgw)localIterator.next();
+      if ("button".equals(((bcgw)localObject2).a))
+      {
+        paramView = (TextView)((bcgw)localObject2).a(paramContext, null, paramBundle);
+        if (TextUtils.isEmpty(((bcit)localObject2).c())) {
+          paramView.setTextSize(16.0F);
+        }
+        if (TextUtils.isEmpty(((bcit)localObject2).d())) {
+          paramView.setTextColor(Color.parseColor("#12b7f5"));
+        }
+        localObject2 = new LinearLayout.LayoutParams(-1, AIOUtils.dp2px(41.0F, paramContext.getResources()));
+        ((LinearLayout.LayoutParams)localObject2).gravity = 17;
+        ((LinearLayout)localObject1).addView(paramView, (ViewGroup.LayoutParams)localObject2);
+      }
+    }
+    if (paramView != null) {
+      localbcjw.a = paramView;
+    }
+    ((LinearLayout)localObject1).setTag(localbcjw);
+    return localObject1;
+  }
+  
+  public String b()
+  {
+    return "layout23";
   }
 }
 

@@ -1,46 +1,47 @@
-import android.os.Message;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.net.URLDecoder;
 
 public class anup
-  extends beyf
+  extends anri
 {
-  WeakReference<anuq> a;
-  
-  public anup(anuq paramanuq)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    this.a = new WeakReference(paramanuq);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    bete localbete = (bete)paramMessage.obj;
-    if (localbete.b == 35) {
-      switch (paramMessage.what)
+    paramQQAppInterface = new anuo(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "wsgzh";
+    paramQQAppInterface.c = "miniapp_player";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[1].split("&");
+    int i = 0;
+    for (;;)
+    {
+      if (i < paramContext.length)
       {
+        paramString = paramContext[i].split("=");
+        if (paramString.length == 2) {}
+        try
+        {
+          paramString[1] = URLDecoder.decode(paramString[1], "UTF-8");
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+          i += 1;
+        }
+        catch (Exception paramanrl)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("WeishiPublicAccountVideoParser", 2, "failed to decode param value,tmps[1] is:" + paramString[0] + ",tmps[1] is:" + paramString[1], paramanrl);
+            }
+          }
+        }
       }
     }
-    do
-    {
-      do
-      {
-        return;
-        paramMessage = localbete.a;
-        if ((this.a != null) && (this.a.get() != null))
-        {
-          ((anuq)this.a.get()).b(paramMessage);
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("CardHandler", 2, "CardTransProcessorHandler no callback");
-      return;
-      if ((this.a != null) && (this.a.get() != null))
-      {
-        ((anuq)this.a.get()).a(localbete.g);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("CardHandler", 2, "CardTransProcessorHandler error no callback");
+    return paramQQAppInterface;
   }
 }
 

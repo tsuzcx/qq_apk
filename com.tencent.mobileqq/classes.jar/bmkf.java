@@ -1,16 +1,58 @@
-class bmkf
-  implements bdhy
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
+import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tavcut.player.MoviePlayer;
+import com.tencent.weseevideo.camera.mvauto.redo.ResourceModel;
+
+public class bmkf
+  extends ViewModel
 {
-  bmkf(bmkd parambmkd) {}
+  public MutableLiveData<ResourceModel> a;
+  private MoviePlayer a;
+  private MutableLiveData<Long> b = new MutableLiveData();
+  
+  public bmkf()
+  {
+    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
+  }
   
   public void a()
   {
-    bmkd.b(this.a);
+    if (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) {
+      this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.play();
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    this.b.postValue(Long.valueOf(paramLong));
+  }
+  
+  public void a(CMTime paramCMTime)
+  {
+    if (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) {
+      this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.seekToTime(paramCMTime);
+    }
+  }
+  
+  public void a(MoviePlayer paramMoviePlayer)
+  {
+    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer = paramMoviePlayer;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) {
+      return this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.isPlaying();
+    }
+    return false;
   }
   
   public void b()
   {
-    bmkd.a(this.a, 1);
+    if (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) {
+      this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.pause();
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import bdjg;
+import bcbw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.abtest.ABTestController;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -18,7 +18,7 @@ public class MetricSdkInit
       return;
     }
     ABTestController.a("MetricsSDKInit", "metrics sdk init async..");
-    paramString = new bdjg(paramBaseApplicationImpl);
+    paramString = new bcbw(paramBaseApplicationImpl);
     paramString = MetricsConfig.builder().setReporter(paramString).setLogEnable(false).setChannel("1001").setReportInterval(5000L).build();
     MetricsApi.getDefault().start(paramBaseApplicationImpl, paramString);
   }
@@ -31,7 +31,7 @@ public class MetricSdkInit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.MetricSdkInit
  * JD-Core Version:    0.7.0.1
  */

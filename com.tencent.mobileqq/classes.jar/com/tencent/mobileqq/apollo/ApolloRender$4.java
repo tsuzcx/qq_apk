@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import bhlo;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -15,14 +15,14 @@ class ApolloRender$4
   {
     try
     {
-      Object localObject2 = bhlo.i();
-      String str = bhlo.e();
-      int i = bhlo.b();
-      long l1 = bhlo.a();
-      long l2 = Math.ceil(bhlo.d() / 1073741824.0D);
-      long l3 = bhlo.k();
-      long l4 = bhlo.l();
-      float f = bhlo.a();
+      Object localObject2 = DeviceInfoUtil.getModel();
+      String str = DeviceInfoUtil.getDeviceOSVersion();
+      int i = DeviceInfoUtil.getCpuNumber();
+      long l1 = DeviceInfoUtil.getCpuFrequency();
+      long l2 = Math.ceil(DeviceInfoUtil.getSystemTotalMemory() / 1073741824.0D);
+      long l3 = DeviceInfoUtil.getWidth();
+      long l4 = DeviceInfoUtil.getHeight();
+      float f = DeviceInfoUtil.getDesity();
       Object localObject1 = new JSONObject();
       ((JSONObject)localObject1).put("mo", localObject2);
       ((JSONObject)localObject1).put("os", str);

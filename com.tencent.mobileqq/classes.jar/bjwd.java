@@ -1,60 +1,39 @@
-import android.content.Context;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Message;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
 
-public class bjwd
+class bjwd
+  extends Handler
 {
-  protected static bjwd a;
-  protected Context a;
-  protected bjwc a;
-  protected final HashMap<String, bjwa> a;
+  bjwd(bjwc parambjwc) {}
   
-  protected bjwd(Context paramContext)
+  bjwd(bjwc parambjwc, Handler paramHandler)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Bjwc = new bjwe(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    super(paramHandler.getLooper());
   }
   
-  public static bjwd a(Context paramContext)
+  public void handleMessage(Message paramMessage)
   {
-    if (jdField_a_of_type_Bjwd != null) {
-      return jdField_a_of_type_Bjwd;
-    }
-    try
+    switch (paramMessage.what)
     {
-      if (jdField_a_of_type_Bjwd == null) {
-        jdField_a_of_type_Bjwd = new bjwd(paramContext);
-      }
-      paramContext = jdField_a_of_type_Bjwd;
-      return paramContext;
+    default: 
+      throw new RuntimeException("Unknown message " + paramMessage);
+    case 1: 
+      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onShowPress(this.a.jdField_a_of_type_AndroidViewMotionEvent);
     }
-    finally {}
-  }
-  
-  public bjwa a(Class<? extends bjvw> paramClass, long paramLong, String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    do
     {
-      if (this.jdField_a_of_type_AndroidContentContext == null) {
-        throw new RuntimeException("call initiate(Context context) before this");
-      }
-    }
-    if (paramString == null) {
-      throw new RuntimeException("invalid table name");
-    }
-    Object localObject = bjwa.a(paramLong, paramString);
-    localObject = (bjwa)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-    if (localObject == null)
+      return;
+      this.a.a();
+      return;
+    } while (this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener == null);
+    if (!this.a.jdField_a_of_type_Boolean)
     {
-      paramClass = new bjwa(this.jdField_a_of_type_AndroidContentContext, paramClass, paramLong, paramString);
-      paramClass.a(this.jdField_a_of_type_Bjwc);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramClass.a(), paramClass);
+      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onSingleTapConfirmed(this.a.jdField_a_of_type_AndroidViewMotionEvent);
+      return;
     }
-    for (;;)
-    {
-      return paramClass;
-      paramClass = (Class<? extends bjvw>)localObject;
-    }
+    this.a.b = true;
   }
 }
 

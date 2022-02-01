@@ -1,22 +1,13 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
-import java.util.Comparator;
-
 public class bazu
-  implements Comparator<ReceiptMessageReadMemberListFragment.MemberInfo>
 {
-  public bazu(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  public int a;
+  public CharSequence a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  public int a(ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo1, ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo2)
-  {
-    if (paramMemberInfo1.a == paramMemberInfo2.a) {
-      return 0;
-    }
-    if (paramMemberInfo1.a < paramMemberInfo2.a) {
-      return -1;
-    }
-    return 1;
-  }
+  public bazu(bazs parambazs) {}
 }
 
 

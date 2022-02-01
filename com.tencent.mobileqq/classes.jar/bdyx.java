@@ -1,35 +1,26 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import java.util.List;
 
 public class bdyx
-  implements MediaPlayer.OnErrorListener
+  extends bdze
 {
-  private WeakReference<VideoSprite> a;
+  public bdyx(TroopAioKeywordTipBar.4 param4, List paramList, bdzb parambdzb) {}
   
-  private bdyx(VideoSprite paramVideoSprite)
+  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
   {
-    this.a = new WeakReference(paramVideoSprite);
-  }
-  
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
-  {
-    paramMediaPlayer = (VideoSprite)this.a.get();
-    if (paramMediaPlayer == null) {}
+    if (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0.a) {}
     do
     {
-      return true;
-      if (QLog.isColorLevel()) {
-        QLog.e("VideoSprite", 2, "onError: " + paramInt1);
+      return;
+      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
+        break;
       }
-    } while (paramInt1 != 1);
-    if (paramMediaPlayer.a != null) {
-      paramMediaPlayer.a.a();
-    }
-    paramMediaPlayer.j();
-    return true;
+    } while ((this.jdField_a_of_type_JavaUtilList.size() <= 0) || (bdyt.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0)));
+    this.jdField_a_of_type_Bdzb.a(this.jdField_a_of_type_JavaUtilList, null, 2, new bdyy(this));
+    return;
+    bdyt.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar$4.this$0, paramMessageRecord, paramTroopAioKeywordTipInfo);
   }
 }
 

@@ -1,28 +1,191 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class otr
-  extends ClickableSpan
+public class otr
 {
-  otr(otp paramotp, SubCommentData paramSubCommentData) {}
+  private CommentInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
   
-  public void onClick(View paramView)
+  public otr(ArticleInfo paramArticleInfo, CommentInfo paramCommentInfo)
   {
-    osp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin, BaseActivity.sTopActivity);
-    paramView = new orb(this.jdField_a_of_type_Otp).a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin).a();
-    ocd.a(null, osp.a(this.jdField_a_of_type_Otp.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Otp.a.mArticleID), String.valueOf(this.jdField_a_of_type_Otp.a.mAlgorithmID), this.jdField_a_of_type_Otp.a.innerUniqueID, paramView, false);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo = paramCommentInfo;
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  private otr e(int paramInt)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#737373"));
-    paramTextPaint.setUnderlineText(false);
+    int j = 1;
+    int i = 1;
+    if (paramInt == 1) {}
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("puin_type", 1);
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      JSONObject localJSONObject1;
+      localJSONException.printStackTrace();
+      return this;
+    }
+    if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null))
+    {
+      localJSONObject1 = this.jdField_a_of_type_OrgJsonJSONObject;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAccountLess == 0) {}
+      for (paramInt = i;; paramInt = 2)
+      {
+        localJSONObject1.put("puin_type", paramInt);
+        return this;
+      }
+    }
+    if ((paramInt == 3) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null))
+    {
+      JSONObject localJSONObject2 = this.jdField_a_of_type_OrgJsonJSONObject;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAccountLess == 0) {}
+      for (paramInt = j;; paramInt = 2)
+      {
+        localJSONObject2.put("puin_type", paramInt);
+        return this;
+      }
+    }
+    return this;
+  }
+  
+  public String a()
+  {
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
+        {
+          this.jdField_a_of_type_OrgJsonJSONObject.put("algorithm_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAlgorithmID);
+          this.jdField_a_of_type_OrgJsonJSONObject.put("mp_article_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID);
+        }
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo != null)
+        {
+          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.level != 1) {
+            continue;
+          }
+          this.jdField_a_of_type_OrgJsonJSONObject.put("comment_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.commentId);
+        }
+        this.jdField_a_of_type_OrgJsonJSONObject.put("source", pay.d());
+        this.jdField_a_of_type_OrgJsonJSONObject.put("kandian_mode", pay.e());
+        this.jdField_a_of_type_OrgJsonJSONObject.put("comment_platform", 3);
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        continue;
+      }
+      return this.jdField_a_of_type_OrgJsonJSONObject.toString();
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.level == 2) {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("sub_comment_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.commentId);
+      }
+    }
+  }
+  
+  public otr a()
+  {
+    int i = 1;
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo != null)
+      {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.authorSelection == 1) {}
+        while (i > 0)
+        {
+          this.jdField_a_of_type_OrgJsonJSONObject.put("comment_type", i);
+          return this;
+          i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.awesome;
+          if (i == 1) {
+            i = 2;
+          } else {
+            i = 3;
+          }
+        }
+      }
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+  }
+  
+  public otr a(int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("entry", paramInt);
+      return e(paramInt);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  public otr a(String paramString)
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("to_uin", paramString);
+      return this;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return this;
+  }
+  
+  public otr b(int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("area", paramInt);
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return this;
+  }
+  
+  public otr c(int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("comment_level", paramInt);
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return this;
+  }
+  
+  public otr d(int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("comment_icon_choose", paramInt);
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return this;
   }
 }
 

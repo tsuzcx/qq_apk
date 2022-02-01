@@ -8,11 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import birg;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import com.tencent.mobileqq.widget.WebViewProgressBar;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
@@ -27,8 +27,8 @@ public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
       return i;
     }
     getActivity().getWindow().setFlags(1024, 1024);
-    this.mUIStyleHandler.a.setVisibility(8);
-    this.mUIStyle.a = true;
+    this.mUIStyleHandler.mLoadingProgressBar.setVisibility(8);
+    this.mUIStyle.isFullScreen = true;
     hideVirtualNavBar();
     doShowTitleBar(false);
     return i;
@@ -38,12 +38,12 @@ public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
   public int doCreateLoopStep_InitUIContent(Bundle paramBundle)
   {
     int i = super.doCreateLoopStep_InitUIContent(paramBundle);
-    super.getActivity().getWindow().setBackgroundDrawableResource(2131167247);
-    if ((this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView)) {
-      ((RefreshView)this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup).a(false);
+    super.getActivity().getWindow().setBackgroundDrawableResource(2131167276);
+    if ((this.mUIStyleHandler.webviewWrapper instanceof RefreshView)) {
+      ((RefreshView)this.mUIStyleHandler.webviewWrapper).a(false);
     }
-    if (this.mUIStyleHandler.jdField_c_of_type_AndroidViewView != null) {
-      this.mUIStyleHandler.jdField_c_of_type_AndroidViewView.setVisibility(8);
+    if (this.mUIStyleHandler.mBrowserTips != null) {
+      this.mUIStyleHandler.mBrowserTips.setVisibility(8);
     }
     if (this.webView.getX5WebViewExtension() != null) {}
     for (;;)
@@ -74,7 +74,7 @@ public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

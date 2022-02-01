@@ -1,25 +1,12 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
+import android.graphics.PointF;
 
-public class yco
-  implements ztk
+public abstract interface yco
 {
-  public yco(ShareGroupInnerListView paramShareGroupInnerListView) {}
+  public abstract void a(ygw paramygw);
   
-  public void a()
-  {
-    if ((this.a.jdField_a_of_type_Ycp != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
-      this.a.jdField_a_of_type_Ycp.a(this.a.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public abstract void a(ygw paramygw, int paramInt1, int paramInt2);
   
-  public boolean a(boolean paramBoolean)
-  {
-    if (this.a.jdField_a_of_type_Ycp != null) {
-      return this.a.jdField_a_of_type_Ycp.a(this.a.jdField_a_of_type_JavaLangString);
-    }
-    return false;
-  }
+  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
 }
 
 

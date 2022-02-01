@@ -4,23 +4,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import aoik;
-import ausy;
-import ausz;
-import auta;
-import autb;
-import autc;
-import autd;
-import aute;
-import autf;
-import bdll;
-import beum;
-import beuo;
-import beup;
-import bevo;
-import bewq;
-import bhnv;
-import bhuw;
+import atfg;
+import atfh;
+import atfi;
+import atfj;
+import atfk;
+import atfl;
+import atfm;
+import atfn;
+import bcef;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.kwstudio.office.base.IGlobal;
 import com.tencent.kwstudio.office.base.ILog;
@@ -32,6 +24,14 @@ import com.tencent.kwstudio.office.preview.IHostInterface.IPreferencesCallback;
 import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
 import com.tencent.kwstudio.office.preview.TdsReaderView;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerExecutor;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.OldHttpEngine;
+import com.tencent.mobileqq.transfile.RichMediaStrategy.OldEngineDPCProfile.TimeoutParam;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.widget.ProtectedWebView;
@@ -46,25 +46,25 @@ import mqq.os.MqqHandler;
 public final class TdsReaderGlobal
   implements IHostInterface
 {
-  private static final bewq jdField_a_of_type_Bewq = new bewq();
+  private static final RichMediaStrategy.OldEngineDPCProfile.TimeoutParam jdField_a_of_type_ComTencentMobileqqTransfileRichMediaStrategy$OldEngineDPCProfile$TimeoutParam = new RichMediaStrategy.OldEngineDPCProfile.TimeoutParam();
   private static final Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   private static volatile boolean jdField_a_of_type_Boolean;
   private static volatile boolean jdField_b_of_type_Boolean;
   private static volatile boolean c;
-  private volatile beuo jdField_a_of_type_Beuo;
-  private volatile beup jdField_a_of_type_Beup;
   private final BaseApplicationImpl jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
+  private volatile INetEngine.IBreakDownFix jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix;
+  private volatile INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
   private volatile Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
   private volatile Executor jdField_b_of_type_JavaUtilConcurrentExecutor;
   
   static
   {
-    bewq localbewq = jdField_a_of_type_Bewq;
-    localbewq.d /= 2;
-    localbewq = jdField_a_of_type_Bewq;
-    localbewq.e /= 2;
-    localbewq = jdField_a_of_type_Bewq;
-    localbewq.f /= 2;
+    RichMediaStrategy.OldEngineDPCProfile.TimeoutParam localTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileRichMediaStrategy$OldEngineDPCProfile$TimeoutParam;
+    localTimeoutParam.connectTimeoutFor2G /= 2;
+    localTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileRichMediaStrategy$OldEngineDPCProfile$TimeoutParam;
+    localTimeoutParam.connectTimeoutFor3G /= 2;
+    localTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileRichMediaStrategy$OldEngineDPCProfile$TimeoutParam;
+    localTimeoutParam.connectTimeoutForWifi /= 2;
   }
   
   private TdsReaderGlobal(BaseApplicationImpl paramBaseApplicationImpl)
@@ -72,31 +72,31 @@ public final class TdsReaderGlobal
     this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = paramBaseApplicationImpl;
   }
   
-  private beuo a()
+  private INetEngine.IBreakDownFix a()
   {
     try
     {
-      if (this.jdField_a_of_type_Beuo == null)
-      {
-        localObject1 = new bhuw(new auta(null), 128);
-        ((bhuw)localObject1).a();
-        this.jdField_a_of_type_Beuo = new bevo((bhuw)localObject1, true);
+      if (this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix == null) {
+        this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new atfg(null);
       }
-      Object localObject1 = this.jdField_a_of_type_Beuo;
-      return localObject1;
+      INetEngine.IBreakDownFix localIBreakDownFix = this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix;
+      return localIBreakDownFix;
     }
     finally {}
   }
   
-  private beup a()
+  private INetEngine a()
   {
     try
     {
-      if (this.jdField_a_of_type_Beup == null) {
-        this.jdField_a_of_type_Beup = new ausy(null);
+      if (this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine == null)
+      {
+        localObject1 = new HttpCommunicator(new atfi(null), 128);
+        ((HttpCommunicator)localObject1).start();
+        this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = new OldHttpEngine((HttpCommunicator)localObject1, true);
       }
-      beup localbeup = this.jdField_a_of_type_Beup;
-      return localbeup;
+      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+      return localObject1;
     }
     finally {}
   }
@@ -111,7 +111,7 @@ public final class TdsReaderGlobal
     try
     {
       if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null) {
-        this.jdField_a_of_type_JavaUtilConcurrentExecutor = aoik.a(64);
+        this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManagerExecutor.getExecutorService(64);
       }
       Executor localExecutor = this.jdField_a_of_type_JavaUtilConcurrentExecutor;
       return localExecutor;
@@ -213,7 +213,7 @@ public final class TdsReaderGlobal
     try
     {
       if (this.jdField_b_of_type_JavaUtilConcurrentExecutor == null) {
-        this.jdField_b_of_type_JavaUtilConcurrentExecutor = aoik.a(128);
+        this.jdField_b_of_type_JavaUtilConcurrentExecutor = ThreadManagerExecutor.getExecutorService(128);
       }
       Executor localExecutor = this.jdField_b_of_type_JavaUtilConcurrentExecutor;
       return localExecutor;
@@ -250,32 +250,32 @@ public final class TdsReaderGlobal
       bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
       str2 = (String)paramArrayOfObject[2];
       localObject = (IHostInterface.IHttpListener)paramArrayOfObject[3];
-      if (bhnv.g(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
+      if (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
         break;
       }
     } while (localObject == null);
     ((IHostInterface.IHttpListener)localObject).onResponse(9004, null);
     return;
-    paramArrayOfObject = new beum();
-    paramArrayOfObject.jdField_a_of_type_JavaLangString = str1;
+    paramArrayOfObject = new HttpNetReq();
+    paramArrayOfObject.mReqUrl = str1;
     if (bool) {
       i = 1;
     }
-    paramArrayOfObject.jdField_a_of_type_Int = i;
-    paramArrayOfObject.d = 1;
-    paramArrayOfObject.o = true;
-    paramArrayOfObject.jdField_c_of_type_Long = 5000L;
-    paramArrayOfObject.jdField_a_of_type_Beuq = new autd(str1, (IHostInterface.IHttpListener)localObject, null);
+    paramArrayOfObject.mHttpMethod = i;
+    paramArrayOfObject.mPrioty = 1;
+    paramArrayOfObject.mUseByteArrayPool = true;
+    paramArrayOfObject.mExcuteTimeLimit = 5000L;
+    paramArrayOfObject.mCallback = new atfl(str1, (IHostInterface.IHttpListener)localObject, null);
     Object localObject = getUserId();
     String str3 = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getRuntime().getManager(2)).getSkey((String)localObject);
     localObject = "uin=" + (String)localObject + ";skey=" + str3;
     if (bool) {
-      paramArrayOfObject.jdField_a_of_type_ArrayOfByte = str2.getBytes();
+      paramArrayOfObject.mSendData = str2.getBytes();
     }
-    paramArrayOfObject.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    paramArrayOfObject.jdField_a_of_type_JavaUtilHashMap.put("Cookie", localObject);
+    paramArrayOfObject.mReqProperties = new HashMap();
+    paramArrayOfObject.mReqProperties.put("Cookie", localObject);
     Log.i("TdsReaderView_", "sendReq url:" + str1);
-    a().a(paramArrayOfObject);
+    a().sendReq(paramArrayOfObject);
   }
   
   private void c(Object[] paramArrayOfObject)
@@ -291,22 +291,22 @@ public final class TdsReaderGlobal
       str2 = (String)paramArrayOfObject[1];
       str3 = (String)paramArrayOfObject[2];
       paramArrayOfObject = (IHostInterface.IDownloadListener)paramArrayOfObject[3];
-      if (bhnv.g(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
+      if (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl)) {
         break;
       }
     } while (paramArrayOfObject == null);
     paramArrayOfObject.onDownloadFinished(str1, false, 9004);
     return;
-    beum localbeum = new beum();
-    localbeum.jdField_a_of_type_JavaLangString = str2;
-    localbeum.jdField_c_of_type_JavaLangString = str3;
-    localbeum.jdField_a_of_type_Int = 0;
-    localbeum.d = 1;
-    localbeum.o = true;
-    localbeum.jdField_a_of_type_Bewq = jdField_a_of_type_Bewq.a();
-    localbeum.jdField_a_of_type_Beup = a();
-    localbeum.jdField_a_of_type_Beuq = new autc(str1, paramArrayOfObject, null);
-    a().a(localbeum);
+    HttpNetReq localHttpNetReq = new HttpNetReq();
+    localHttpNetReq.mReqUrl = str2;
+    localHttpNetReq.mOutPath = str3;
+    localHttpNetReq.mHttpMethod = 0;
+    localHttpNetReq.mPrioty = 1;
+    localHttpNetReq.mUseByteArrayPool = true;
+    localHttpNetReq.mTimeoutParam = jdField_a_of_type_ComTencentMobileqqTransfileRichMediaStrategy$OldEngineDPCProfile$TimeoutParam.clone();
+    localHttpNetReq.mBreakDownFix = a();
+    localHttpNetReq.mCallback = new atfk(str1, paramArrayOfObject, null);
+    a().sendReq(localHttpNetReq);
   }
   
   public void commitPreferences(String paramString, boolean paramBoolean1, boolean paramBoolean2)
@@ -321,12 +321,12 @@ public final class TdsReaderGlobal
   
   public IGlobal createGlobal()
   {
-    return new ausz(this, null);
+    return new atfh(this, null);
   }
   
   public ILog createLog()
   {
-    return new autb(null);
+    return new atfj(null);
   }
   
   public Object createRecyclerView(Context paramContext)
@@ -342,12 +342,12 @@ public final class TdsReaderGlobal
       ProtectedWebView localProtectedWebView = new ProtectedWebView((Context)localObject);
       if (paramIWebClient != null)
       {
-        localProtectedWebView.setWebChromeClient(new aute(paramIWebClient, null));
+        localProtectedWebView.setWebChromeClient(new atfm(paramIWebClient, null));
         localObject = paramContext;
         if (paramContext == null) {
           localObject = this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl;
         }
-        localProtectedWebView.setWebViewClient(new autf((Context)localObject, paramIWebClient, null));
+        localProtectedWebView.setWebViewClient(new atfn((Context)localObject, paramIWebClient, null));
       }
       paramContext = localProtectedWebView.getX5WebViewExtension();
       if (paramContext != null)
@@ -404,7 +404,7 @@ public final class TdsReaderGlobal
     }
     for (;;)
     {
-      bdll.b(null, "dc00898", "", "", paramString1, paramString1, paramInt, 0, "", "", paramString2, "");
+      bcef.b(null, "dc00898", "", "", paramString1, paramString1, paramInt, 0, "", "", paramString2, "");
       return;
     }
   }

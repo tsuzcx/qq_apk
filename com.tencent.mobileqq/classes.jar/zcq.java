@@ -1,14 +1,24 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import android.os.Handler;
+import com.tencent.biz.subscribe.animation.PopViewAnimationDrawableHelper;
 
-class zcq
-  implements View.OnFocusChangeListener
+public class zcq
+  implements zct
 {
-  zcq(zcn paramzcn) {}
+  public zcq(PopViewAnimationDrawableHelper paramPopViewAnimationDrawableHelper) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void a()
   {
-    yuk.b("EditTextDialog", "onFocusChange:" + paramBoolean);
+    if (PopViewAnimationDrawableHelper.a(this.a) != null) {
+      PopViewAnimationDrawableHelper.a(this.a).b();
+    }
+    if ((PopViewAnimationDrawableHelper.a(this.a) != null) && (PopViewAnimationDrawableHelper.a(this.a) != null)) {
+      PopViewAnimationDrawableHelper.a(this.a).removeCallbacks(PopViewAnimationDrawableHelper.a(this.a));
+    }
+  }
+  
+  public void b()
+  {
+    PopViewAnimationDrawableHelper.a(this.a);
   }
 }
 

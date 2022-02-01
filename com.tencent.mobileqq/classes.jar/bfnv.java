@@ -1,18 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.AbsNewTroopBaseView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
 
 public class bfnv
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  public bfnv(NewTroopCreateActivity paramNewTroopCreateActivity) {}
+  public bfnv(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView.a(this.a.jdField_a_of_type_Boolean);
-    }
+    bhzm.b("qqBaseActivity", bhwn.a(10010, 1, 2, 200));
+    bhwl.a().a(17, bhwn.a(10010, 1, 2, 200));
+    this.a.finish();
   }
 }
 

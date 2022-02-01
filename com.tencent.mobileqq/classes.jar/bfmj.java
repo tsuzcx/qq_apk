@@ -1,23 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.io.File;
+import java.io.FilenameFilter;
 
-final class bfmj
-  implements DialogInterface.OnClickListener
+class bfmj
+  implements FilenameFilter
 {
-  bfmj(bfmk parambfmk, boolean paramBoolean) {}
+  bfmj(bfmf parambfmf, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean accept(File paramFile, String paramString)
   {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Bfmk != null) {
-      this.jdField_a_of_type_Bfmk.a();
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      bdll.b(null, "dc00898", "", "", "0X800B224", "0X800B224", 0, 0, "", "", "", "");
-      return;
-    }
-    bdll.b(null, "dc00898", "", "", "0X800B226", "0X800B226", 0, 0, "", "", "", "");
+    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
   }
 }
 

@@ -1,34 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.statistics.ReportControllerImpl;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
 public class bdlo
-  extends apap
+  implements View.OnTouchListener
 {
-  public bdlo(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
-  {
-    super(paramQQAppInterface, paramProxyManager);
-  }
+  public bdlo(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, FrameLayout paramFrameLayout, View paramView) {}
   
-  protected void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    bdll localbdll = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if ((localbdll != null) && ((localbdll instanceof ReportControllerImpl))) {
-      ((ReportControllerImpl)localbdll).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager);
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_AndroidViewView);
     }
-  }
-  
-  protected void b()
-  {
-    bdll localbdll = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if ((localbdll != null) && ((localbdll instanceof ReportControllerImpl))) {
-      ((ReportControllerImpl)localbdll).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager);
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdlo
  * JD-Core Version:    0.7.0.1
  */

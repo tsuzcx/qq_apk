@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webprocess;
 
-import anbd;
+import alvx;
 
 class WebProcessReceiver$1
   implements Runnable
@@ -9,7 +9,7 @@ class WebProcessReceiver$1
   
   public void run()
   {
-    anbd.a();
+    alvx.a();
   }
 }
 

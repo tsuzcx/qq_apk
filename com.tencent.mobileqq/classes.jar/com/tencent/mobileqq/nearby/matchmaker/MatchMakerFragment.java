@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby.matchmaker;
 
-import anzj;
-import avgj;
-import aybj;
-import aybs;
+import amtj;
+import attp;
+import awor;
+import awpa;
 import com.tencent.mobileqq.fragment.CommonTabFragment;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -15,13 +15,13 @@ public class MatchMakerFragment
   private void g()
   {
     if (a() == null) {}
-    aybj localaybj;
+    awor localawor;
     do
     {
       return;
-      localaybj = a().a();
-    } while ((localaybj == null) || (!localaybj.a()));
-    localaybj.e();
+      localawor = a().a();
+    } while ((localawor == null) || (!localawor.a()));
+    localawor.e();
   }
   
   public void a(WebView paramWebView, String paramString)
@@ -37,7 +37,7 @@ public class MatchMakerFragment
   
   protected void f()
   {
-    this.a.a(anzj.a(2131706083)).a(new aybs(this));
+    this.a.a(amtj.a(2131706313)).a(new awpa(this));
     this.a.a();
   }
   

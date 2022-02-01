@@ -1,61 +1,60 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
 public class ajea
-  extends ReportDialog
+  extends ajec
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private String jdField_a_of_type_JavaLangString;
+  protected View a;
+  protected String a;
+  protected boolean a;
   
-  public ajea(Context paramContext)
+  public ajea(View paramView, String paramString)
   {
-    super(paramContext, 2131755402);
-  }
-  
-  public ajea(Context paramContext, String paramString)
-  {
-    super(paramContext, 2131755402);
+    super(null);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidViewView = paramView;
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public View a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
-    }
-    return null;
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    paramBundle = LayoutInflater.from(getContext()).inflate(2131561668, null);
-    Object localObject = getWindow();
-    ((Window)localObject).setContentView(paramBundle);
-    WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
-    localLayoutParams.width = -2;
-    localLayoutParams.height = -2;
-    localLayoutParams.gravity = 48;
-    localLayoutParams.y += getContext().getResources().getDimensionPixelOffset(2131299091);
-    ((Window)localObject).setAttributes(localLayoutParams);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    super.onClick(paramView);
+    try
     {
-      localObject = (TextView)paramBundle.findViewById(2131371450);
-      if (localObject != null) {
-        ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangString);
+      if (QSecFramework.a().a(1001).booleanValue())
+      {
+        if (!this.jdField_a_of_type_Boolean) {
+          break label106;
+        }
+        View localView = this.jdField_a_of_type_AndroidViewView;
+        QSecFramework.a().a(5, 0, 1, new Object[] { Integer.valueOf(80), localView }, null);
+        this.jdField_a_of_type_Boolean = false;
+        if (QLog.isColorLevel()) {
+          QLog.i("MainFragment", 2, "附近人机上报: lebaView onCreate, from=" + this.jdField_a_of_type_JavaLangString);
+        }
+      }
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        label106:
+        QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(80), Integer.valueOf(1), Integer.valueOf(6), "lebaClick", null }, null);
+        if (QLog.isColorLevel()) {
+          QLog.i("MainFragment", 2, "附近人机上报: lebaView onClick, from=" + this.jdField_a_of_type_JavaLangString);
+        }
       }
     }
-    this.jdField_a_of_type_AndroidViewView = paramBundle;
-    setCanceledOnTouchOutside(false);
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MainFragment", 2, "ABotDragClickListener onClick exp=", localException);
+        }
+      }
+    }
   }
 }
 

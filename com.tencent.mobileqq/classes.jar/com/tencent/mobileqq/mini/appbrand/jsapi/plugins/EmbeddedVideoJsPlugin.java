@@ -200,13 +200,9 @@ public class EmbeddedVideoJsPlugin
         }
         else if ("insertXWebVideo".equals(paramString1))
         {
-          if ((localEmbeddedWidgetClientFactory != null) && (localEmbeddedWidgetClientFactory.handleInsertEmbeddedWidgetEvent("insertXWebVideo", paramString2, paramJsRuntime, this.jsPluginEngine.appBrandRuntime)))
-          {
-            if (this.jsPluginEngine != null) {
-              this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
-            }
-          }
-          else if (this.jsPluginEngine != null) {
+          if ((localEmbeddedWidgetClientFactory != null) && (this.jsPluginEngine != null) && (localEmbeddedWidgetClientFactory.handleInsertEmbeddedWidgetEvent("insertXWebVideo", paramString2, paramJsRuntime, this.jsPluginEngine.appBrandRuntime))) {
+            this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
+          } else if (this.jsPluginEngine != null) {
             this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
           }
         }

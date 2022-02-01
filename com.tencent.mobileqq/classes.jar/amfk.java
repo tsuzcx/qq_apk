@@ -1,32 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 class amfk
-  implements View.OnClickListener
+  implements amdy
 {
-  amfk(amfj paramamfj) {}
+  amfk(amez paramamez, File paramFile, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    amfl localamfl = (amfl)paramView.getTag();
-    if (this.a.a.a.contains(localamfl.jdField_a_of_type_ComTencentMobileqqDataGroups))
-    {
-      this.a.a.a.remove(localamfl.jdField_a_of_type_ComTencentMobileqqDataGroups);
-      localamfl.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-      this.a.a.a(localamfl.jdField_a_of_type_ComTencentMobileqqDataGroups, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
     }
-    for (;;)
+    if (paramBoolean)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      if (this.jdField_a_of_type_JavaIoFile.exists())
+      {
+        this.jdField_a_of_type_Amez.a(this.jdField_a_of_type_JavaLangString, 0, paramInt1 + amtj.a(2131699660));
+        return;
+      }
+      this.jdField_a_of_type_Amez.a(this.jdField_a_of_type_JavaLangString, 2, paramInt1 + amtj.a(2131699636));
       return;
-      this.a.a.a.add(localamfl.jdField_a_of_type_ComTencentMobileqqDataGroups);
-      localamfl.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-      this.a.a.a(localamfl.jdField_a_of_type_ComTencentMobileqqDataGroups, true);
     }
+    this.jdField_a_of_type_Amez.a(this.jdField_a_of_type_JavaLangString, 2, paramInt1 + amtj.a(2131699654));
   }
 }
 

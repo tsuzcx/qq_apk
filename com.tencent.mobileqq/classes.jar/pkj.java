@@ -1,18 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ScrollView;
-
-public class pkj
-  implements blpg
+public abstract interface pkj
 {
-  public pkj(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.self.SelfFragment", 2, "onScrollStateChanged onScrollStateChanged= " + paramInt);
-    }
-  }
+  public abstract void w_();
 }
 
 

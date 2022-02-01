@@ -1,114 +1,41 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.Groups;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.text.TextUtils;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
 
 public class zhv
+  implements apkw
 {
-  @NonNull
-  protected final Groups a;
-  @NonNull
-  private final List<zhu> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  @NonNull
-  private final List<zhu> b = new ArrayList();
+  public zhv(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
   
-  public zhv(@NonNull Groups paramGroups, @NonNull List<zhu> paramList)
+  public ColorNote getColorNote()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataGroups = paramGroups;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    paramGroups = paramList.iterator();
-    while (paramGroups.hasNext())
+    if ((SubscribeHybirdFragment.a(this.a) == null) || (SubscribeHybirdFragment.a(this.a) == null)) {
+      QLog.e("SubscribeHybirdFragment", 1, "initColorNote, shareInfoBean is null");
+    }
+    byte[] arrayOfByte;
+    Object localObject;
+    String str1;
+    String str2;
+    String str3;
+    do
     {
-      paramList = (zhu)paramGroups.next();
-      if (paramList.jdField_a_of_type_Boolean) {
-        this.b.add(paramList);
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return this.b.size();
-  }
-  
-  @NonNull
-  public List<zhu> a()
-  {
-    return Collections.unmodifiableList(this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
-  
-  public void a(zhu paramzhu)
-  {
-    paramzhu.a();
-    if ((paramzhu.jdField_a_of_type_Boolean) && (!this.b.contains(paramzhu)))
-    {
-      this.b.add(paramzhu);
-      return;
-    }
-    if ((!paramzhu.jdField_a_of_type_Boolean) && (this.b.contains(paramzhu)))
-    {
-      this.b.remove(paramzhu);
-      return;
-    }
-    throw new IllegalStateException("onFriendClick, friend select:" + paramzhu.jdField_a_of_type_Boolean + ",contains:" + this.b.contains(paramzhu));
-  }
-  
-  public boolean a()
-  {
-    return (!this.b.isEmpty()) && (this.jdField_a_of_type_JavaUtilList.size() == this.b.size());
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  @NonNull
-  public List<zhu> b()
-  {
-    return Collections.unmodifiableList(this.b);
-  }
-  
-  public void b()
-  {
-    this.b.clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      zhu localzhu = (zhu)localIterator.next();
-      localzhu.jdField_a_of_type_Boolean = true;
-      this.b.add(localzhu);
-    }
-  }
-  
-  public void b(zhu paramzhu)
-  {
-    paramzhu.jdField_a_of_type_Boolean = true;
-    if (!this.b.contains(paramzhu)) {
-      this.b.add(paramzhu);
-    }
-  }
-  
-  public void c()
-  {
-    this.b.clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((zhu)localIterator.next()).jdField_a_of_type_Boolean = false;
-    }
+      return null;
+      arrayOfByte = zjx.a(new SubscribeColorNoteReserveBean(SubscribeHybirdFragment.a(this.a).toByteArray(), SubscribeHybirdFragment.a(this.a).pageType));
+      localObject = new zda();
+      ((zda)localObject).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = SubscribeHybirdFragment.a(this.a);
+      ((zda)localObject).jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = SubscribeHybirdFragment.a(this.a);
+      str1 = SubscribeHybirdFragment.a(this.a).id.get();
+      str2 = ((zda)localObject).c();
+      ((zda)localObject).d();
+      str3 = ((zda)localObject).e();
+      localObject = ((zda)localObject).f();
+    } while (TextUtils.isEmpty(str1));
+    return new aple().a(16908291).a(str1).b(str2).c((String)localObject).d(str3).a(arrayOfByte).a();
   }
 }
 

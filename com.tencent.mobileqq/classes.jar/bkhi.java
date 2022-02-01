@@ -1,39 +1,26 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.graphics.Bitmap;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
+import com.tencent.webbundle.sdk.IWebBundleWebView.OnPageFinishedListener;
+import cooperation.comic.webbundle.WebBundleWebView;
 
 public class bkhi
-  implements bliz
+  extends WebViewClient
 {
-  public bkhi(QidianProfileCardActivity paramQidianProfileCardActivity, blir paramblir, URLDrawable paramURLDrawable, String paramString) {}
+  public bkhi(WebBundleWebView paramWebBundleWebView, IWebBundleWebView.OnPageFinishedListener paramOnPageFinishedListener) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    if (paramView == null) {
-      this.jdField_a_of_type_Blir.dismiss();
-    }
-    do
-    {
-      return;
-      paramView = this.jdField_a_of_type_Blir.a(paramInt);
-      if (TextUtils.isEmpty(paramView))
-      {
-        this.jdField_a_of_type_Blir.dismiss();
-        return;
-      }
-      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131692962)))
-      {
-        QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
-        return;
-      }
-      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131692968)))
-      {
-        QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
-        return;
-      }
-    } while (!paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131697557)));
-    QidianProfileCardActivity.c(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_JavaLangString);
+    super.onPageFinished(paramWebView, paramString);
+    this.jdField_a_of_type_ComTencentWebbundleSdkIWebBundleWebView$OnPageFinishedListener.onPageFinished(this.jdField_a_of_type_CooperationComicWebbundleWebBundleWebView, paramString);
+  }
+  
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
   }
 }
 

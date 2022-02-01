@@ -2,8 +2,8 @@ package com.tencent.av.camera;
 
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import ljj;
-import ljv;
+import ljd;
+import ljp;
 
 class CameraUtils$NoPreviewRunnable
   implements Runnable

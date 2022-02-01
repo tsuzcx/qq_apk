@@ -1,28 +1,68 @@
-import android.content.Intent;
+import QC.FontInfo;
+import QC.FontRecommendRsp;
+import QC.ItemBase;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class auee
+  implements aueb<FontRecommendRsp>
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
-  
-  public auee a(Intent paramIntent)
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("targetUin");
-    this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("srcDiscGroup");
-    this.jdField_a_of_type_Int = paramIntent.getIntExtra("peerType", 0);
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("rootEntrace", true);
-    this.jdField_b_of_type_Int = paramIntent.getIntExtra("busiType", 0);
-    this.c = paramIntent.getIntExtra("enterfrom", 0);
-    return this;
+    return 3;
   }
   
-  public boolean a()
+  public String a(Context paramContext)
   {
-    return this.jdField_a_of_type_Boolean;
+    return bgev.a(paramContext, "font", "mvip.gexinghua.mobile.font.client_tab_store");
+  }
+  
+  public String a(FontBubble paramFontBubble)
+  {
+    return bgev.a("fontPreview").replace("[id]", Integer.toString(paramFontBubble.fontId));
+  }
+  
+  public List<FontBubble> a(QQAppInterface paramQQAppInterface, FontRecommendRsp paramFontRecommendRsp)
+  {
+    int j = ((anaj)paramQQAppInterface.getBusinessHandler(13)).b();
+    paramQQAppInterface = new ArrayList();
+    if (paramFontRecommendRsp.vItems != null)
+    {
+      paramFontRecommendRsp = paramFontRecommendRsp.vItems.iterator();
+      if (paramFontRecommendRsp.hasNext())
+      {
+        FontInfo localFontInfo = (FontInfo)paramFontRecommendRsp.next();
+        FontBubble localFontBubble = new FontBubble();
+        localFontBubble.viewType = 1;
+        localFontBubble.fontId = localFontInfo.item.itemId;
+        if (localFontInfo.linkBubbleID > 0) {}
+        for (int i = localFontInfo.linkBubbleID;; i = j)
+        {
+          localFontBubble.bubbleId = i;
+          localFontBubble.name = localFontInfo.name;
+          localFontBubble.engine = localFontInfo.engine;
+          localFontBubble.feeType = localFontInfo.feeType;
+          localFontBubble.payUrl = localFontInfo.payUrl;
+          localFontBubble.title = localFontInfo.title;
+          localFontBubble.msg = localFontInfo.msg;
+          localFontBubble.btn = localFontInfo.btn;
+          localFontBubble.picUrl = localFontInfo.strPicUrl;
+          localFontBubble.panelType = 3;
+          paramQQAppInterface.add(localFontBubble);
+          break;
+        }
+      }
+    }
+    return paramQQAppInterface;
+  }
+  
+  public void a(anaj paramanaj)
+  {
+    paramanaj.d();
   }
 }
 

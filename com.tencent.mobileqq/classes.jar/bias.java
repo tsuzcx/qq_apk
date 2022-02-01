@@ -1,589 +1,585 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VipGrayConfigHelper.1;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.concurrent.atomic.AtomicReference;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class bias
 {
-  private static bias jdField_a_of_type_Bias;
-  private static final Runnable jdField_a_of_type_JavaLangRunnable = new VipGrayConfigHelper.1();
-  private static final List<String> jdField_a_of_type_JavaUtilList;
-  private static final Map<String, AtomicInteger> jdField_a_of_type_JavaUtilMap;
-  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private static final Map<String, AtomicInteger> jdField_b_of_type_JavaUtilMap;
-  private static final Map<String, AtomicReference<Intent>> c;
-  private static final Map<String, AtomicLong> d;
-  private int jdField_a_of_type_Int = 1;
-  public String a;
-  public String b;
-  private List<WeakReference<biau>> jdField_b_of_type_JavaUtilList = new ArrayList();
-  public String c;
-  public String d;
-  private String e = "https://imgcache.gtimg.cn/club/mqgame/";
+  protected static String a = "";
   
-  static
+  public static String a(int paramInt)
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_b_of_type_JavaUtilMap = new HashMap();
-    jdField_c_of_type_JavaUtilMap = new HashMap();
-    jdField_d_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_JavaUtilList = new ArrayList();
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 1: 
+      return "ANDROIDQQ.FREEGIFT.APPAIO";
+    case 50: 
+      return "ANDROIDQQ.REQUEST.APPAIO";
+    case 100: 
+      return "ANDROIDQQ.INVITE.APPAIO";
+    case 52: 
+      return "ANDROIDQQ.BRAG.APPAIO";
+    }
+    return "ANDROIDQQ.PK.APPAIO";
   }
   
-  public bias()
+  public static String a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-  }
-  
-  public static bias a()
-  {
-    if (jdField_a_of_type_Bias == null) {
-      jdField_a_of_type_Bias = new bias();
-    }
-    return jdField_a_of_type_Bias;
-  }
-  
-  public static void a()
-  {
-    int i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    if ((i < 0) || (i >= jdField_a_of_type_JavaUtilList.size())) {}
-    Object localObject;
-    do
+    if (paramInt1 == 352) {}
+    switch (paramInt2)
     {
-      return;
-      localObject = (String)jdField_a_of_type_JavaUtilList.get(i);
-      localObject = (AtomicLong)jdField_d_of_type_JavaUtilMap.get(localObject);
-    } while (localObject == null);
-    ThreadManager.getSubThreadHandler().removeCallbacks(jdField_a_of_type_JavaLangRunnable);
-    ThreadManager.getSubThreadHandler().postDelayed(jdField_a_of_type_JavaLangRunnable, ((AtomicLong)localObject).get());
-  }
-  
-  private void a(AppRuntime paramAppRuntime, JSONArray paramJSONArray, boolean paramBoolean)
-  {
-    if ((paramAppRuntime == null) || (paramJSONArray == null) || (paramJSONArray.length() < 0))
-    {
-      QLog.e("VipGrayConfigHelper", 1, "parseVipGrayConfig app = null or configList = null or len < 0");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("VipGrayConfigHelper", 2, "parseVipGrayConfig begin config = " + paramJSONArray.toString());
-    }
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("vipGrayConfigSp", 0);
-    if (paramBoolean)
-    {
-      jdField_a_of_type_JavaUtilList.clear();
-      jdField_a_of_type_JavaUtilMap.clear();
-      jdField_b_of_type_JavaUtilMap.clear();
-      jdField_d_of_type_JavaUtilMap.clear();
-      jdField_c_of_type_JavaUtilMap.clear();
-      localSharedPreferences.edit().clear().apply();
-    }
-    for (;;)
-    {
-      if (paramBoolean) {
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+    case 4: 
+    case 5: 
+    case 6: 
+    default: 
+      return "";
+    case 1: 
+    case 3: 
+      return "ANDROIDQQ.INSTALL.FEED";
+    case 7: 
+    case 8: 
+      if ((paramInt3 == 0) || (paramInt3 == 2)) {
+        return "ANDROIDQQ.SENDSTORY.FEED1";
       }
-      a(paramAppRuntime, paramJSONArray, paramBoolean, localSharedPreferences);
-      a();
-      return;
-      if (jdField_a_of_type_JavaUtilList.isEmpty()) {
-        paramBoolean = true;
+      if (paramInt3 == 1) {
+        return "ANDROIDQQ.SENDSTORY.FEED2";
       }
+      break;
     }
+    return "";
   }
   
-  private void a(AppRuntime paramAppRuntime, JSONArray paramJSONArray, boolean paramBoolean, SharedPreferences paramSharedPreferences)
+  public static String a(String paramString1, String paramString2)
   {
-    for (;;)
+    if ((!TextUtils.isEmpty(paramString1)) && ((paramString1.startsWith("ANDROIDQQ.YYB")) || (paramString1.startsWith("ANDROIDQQ.NEWYYB")))) {
+      return paramString1;
+    }
+    str = "";
+    for (localObject = str;; localObject = str)
     {
-      int i;
-      JSONObject localJSONObject;
-      String str;
       try
       {
-        int j = paramJSONArray.length();
-        i = 0;
-        if (i < j)
+        if (!TextUtils.isEmpty(paramString1))
         {
-          localJSONObject = paramJSONArray.getJSONObject(i);
-          str = localJSONObject.optString("business");
-          if ("vipEnterText".equals(str))
+          localObject = str;
+          if (!TextUtils.isEmpty(paramString2))
           {
-            a(paramAppRuntime, localJSONObject);
-          }
-          else if (("backgroundWebView".equals(str)) && (paramBoolean))
-          {
-            if (!a(paramAppRuntime, paramSharedPreferences, localJSONObject)) {}
-          }
-          else if ("gameIcon".equals(str))
-          {
-            if (!a(paramAppRuntime, localJSONObject)) {
-              break label264;
+            int i = paramString1.indexOf("ANDROIDQQ");
+            if (i == -1) {
+              break label111;
             }
-            this.e = localJSONObject.optString("baseUrl", "");
-            this.jdField_a_of_type_Int = localJSONObject.optInt("expireDay", 0);
-            if (!QLog.isColorLevel()) {
-              break label264;
-            }
-            QLog.d("VipGrayConfigHelper", 2, "king info, url = " + this.e + ",expireDay = " + this.jdField_a_of_type_Int);
+            i += "ANDROIDQQ".length();
+            localObject = new StringBuilder(paramString1);
+            ((StringBuilder)localObject).insert(i, ".");
+            ((StringBuilder)localObject).insert(i + 1, paramString2);
+            localObject = ((StringBuilder)localObject).toString();
           }
         }
       }
-      catch (Exception paramAppRuntime)
+      catch (Exception paramString2)
       {
-        QLog.e("VipGrayConfigHelper", 1, "parseVipGrayConfig exception", paramAppRuntime);
-      }
-      return;
-      if (("ipStackConfigDic".equals(str)) && (a(paramAppRuntime, localJSONObject)))
-      {
-        long l = localJSONObject.optLong("ipStackTimeInterval");
-        ((axfi)paramAppRuntime.getManager(200)).a(l);
-        if (QLog.isColorLevel()) {
-          QLog.d("VipGrayConfigHelper", 2, "ipsite interval = " + l);
-        }
-      }
-      label264:
-      i += 1;
-    }
-  }
-  
-  private void a(AppRuntime paramAppRuntime, JSONObject paramJSONObject)
-  {
-    if (a(paramAppRuntime, paramJSONObject))
-    {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("notVip");
-      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("outdatedVip");
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("vip");
-      this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("svip");
-      if (QLog.isColorLevel()) {
-        QLog.d("VipGrayConfigHelper", 2, "parse vipEnterText notvip = " + this.jdField_a_of_type_JavaLangString + ", outdatevip = " + this.jdField_c_of_type_JavaLangString + ", vipstr= " + this.jdField_b_of_type_JavaLangString + ", svip = " + this.jdField_d_of_type_JavaLangString);
-      }
-    }
-  }
-  
-  private boolean a(AppRuntime paramAppRuntime, SharedPreferences paramSharedPreferences, JSONObject paramJSONObject)
-  {
-    return false;
-  }
-  
-  private void b()
-  {
-    try
-    {
-      int j = this.jdField_b_of_type_JavaUtilList.size();
-      if (j > 0)
-      {
-        int i = 0;
-        while (i < j)
+        for (;;)
         {
-          biau localbiau = (biau)((WeakReference)this.jdField_b_of_type_JavaUtilList.get(i)).get();
-          if (localbiau != null) {
-            localbiau.a();
-          }
-          i += 1;
+          label111:
+          bhzm.c("VIA", "jointYybVia>>>", paramString2);
+          localObject = str;
         }
       }
-      return;
-    }
-    finally {}
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.e = "https://imgcache.gtimg.cn/club/mqgame/";
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public String a(String paramString, long paramLong, int paramInt, boolean paramBoolean)
-  {
-    return a(paramString, paramLong, paramInt, paramBoolean, false);
-  }
-  
-  public String a(String paramString, long paramLong, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int k = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("VipGrayConfigHelper", 2, "getNamePlateOfKingUrl, gameAppId = " + paramLong + " dan = " + paramInt + " danSwitch = " + paramBoolean1 + " isSetting = " + paramBoolean2);
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    int j;
-    SharedPreferences localSharedPreferences;
-    int i;
-    if ((!TextUtils.isEmpty(this.e)) && (paramLong != 0L))
-    {
-      j = 1;
-      if (!(localObject instanceof QQAppInterface)) {
-        break label385;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break;
       }
-      localObject = (QQAppInterface)localObject;
-      localSharedPreferences = ((QQAppInterface)localObject).getApp().getSharedPreferences("sp_plate_of_king", 0);
-      if ((TextUtils.isEmpty(paramString)) || (!((QQAppInterface)localObject).c().equals(paramString))) {
-        break label255;
-      }
-      i = 1;
-    }
-    label146:
-    for (boolean bool = localSharedPreferences.getBoolean("plate_of_king_display_switch_" + ((QQAppInterface)localObject).c(), true);; bool = true)
-    {
-      if (i != 0)
-      {
-        i = k;
-        if (j != 0) {
-          if (!bool)
-          {
-            i = k;
-            if (!paramBoolean2) {}
-          }
-          else
-          {
-            i = 1;
-          }
-        }
-      }
-      for (;;)
-      {
-        if (i != 0)
-        {
-          if (paramInt == 0)
-          {
-            return this.e + paramLong + ".png";
-            j = 0;
-            break;
-            label255:
-            i = 0;
-            break label146;
-            i = k;
-            if (j == 0) {
-              continue;
-            }
-            i = k;
-            if (!paramBoolean1) {
-              continue;
-            }
-            i = 1;
-            continue;
-          }
-          return this.e + paramLong + "_" + paramInt + ".png";
-        }
-      }
-      QLog.e("VipGrayConfigHelper", 1, "getNamePlateOfKingUrl namePlateOfKingUrl = null gameAppId= " + paramLong + " dan= " + paramInt + " danSwitch= " + paramBoolean1 + " localSwitch = " + bool);
-      return null;
-      i = 0;
+      return localObject;
+      bhzm.c("VIA", "jointYybVia via dont contain ANDROIDQQ");
     }
   }
   
   /* Error */
-  public void a(biau parambiau)
+  public static void a(android.content.Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: iconst_0
-    //   3: istore_2
-    //   4: iload_2
-    //   5: aload_0
-    //   6: getfield 73	bias:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   9: invokeinterface 89 1 0
-    //   14: if_icmpge +38 -> 52
-    //   17: aload_0
-    //   18: getfield 73	bias:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   21: iload_2
-    //   22: invokeinterface 92 2 0
-    //   27: checkcast 293	mqq/util/WeakReference
-    //   30: invokevirtual 296	mqq/util/WeakReference:get	()Ljava/lang/Object;
-    //   33: checkcast 298	biau
-    //   36: astore_3
-    //   37: aload_3
-    //   38: aload_1
-    //   39: if_acmpne +6 -> 45
-    //   42: aload_0
-    //   43: monitorexit
-    //   44: return
-    //   45: iload_2
-    //   46: iconst_1
-    //   47: iadd
-    //   48: istore_2
-    //   49: goto -45 -> 4
-    //   52: aload_1
-    //   53: ifnull -11 -> 42
-    //   56: aload_0
-    //   57: getfield 73	bias:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   60: new 293	mqq/util/WeakReference
-    //   63: dup
-    //   64: aload_1
-    //   65: invokespecial 361	mqq/util/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   68: invokeinterface 364 2 0
-    //   73: pop
-    //   74: goto -32 -> 42
-    //   77: astore_1
-    //   78: aload_0
-    //   79: monitorexit
-    //   80: aload_1
-    //   81: athrow
+    //   0: new 62	java/lang/StringBuilder
+    //   3: dup
+    //   4: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   7: aload_0
+    //   8: invokevirtual 104	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   11: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   14: getstatic 113	java/io/File:separator	Ljava/lang/String;
+    //   17: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   20: ldc 118
+    //   22: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   28: astore 4
+    //   30: new 120	java/io/BufferedReader
+    //   33: dup
+    //   34: new 122	java/io/FileReader
+    //   37: dup
+    //   38: aload 4
+    //   40: invokespecial 123	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   43: invokespecial 126	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   46: astore_3
+    //   47: aload_3
+    //   48: astore_2
+    //   49: aload_3
+    //   50: invokevirtual 129	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   53: astore 5
+    //   55: aload_3
+    //   56: astore_2
+    //   57: aload_3
+    //   58: invokevirtual 129	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   61: astore 6
+    //   63: aload_3
+    //   64: astore_2
+    //   65: aload_3
+    //   66: invokevirtual 129	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   69: astore 7
+    //   71: aload_3
+    //   72: astore_2
+    //   73: aload 5
+    //   75: invokestatic 40	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   78: ifne +117 -> 195
+    //   81: aload_3
+    //   82: astore_2
+    //   83: aload 6
+    //   85: invokestatic 40	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   88: ifne +107 -> 195
+    //   91: aload_3
+    //   92: astore_2
+    //   93: aload 7
+    //   95: invokestatic 40	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   98: ifne +97 -> 195
+    //   101: aload_3
+    //   102: astore_2
+    //   103: ldc 78
+    //   105: new 62	java/lang/StringBuilder
+    //   108: dup
+    //   109: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   112: ldc 131
+    //   114: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: aload 5
+    //   119: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: ldc 133
+    //   124: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   127: aload 6
+    //   129: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: ldc 135
+    //   134: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: aload 7
+    //   139: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   142: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   145: invokestatic 86	bhzm:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   148: aload_3
+    //   149: astore_2
+    //   150: aload 5
+    //   152: aload 6
+    //   154: aload_1
+    //   155: aload 7
+    //   157: invokestatic 139	bias:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   160: aload_3
+    //   161: astore_2
+    //   162: new 110	java/io/File
+    //   165: dup
+    //   166: aload 4
+    //   168: invokespecial 140	java/io/File:<init>	(Ljava/lang/String;)V
+    //   171: invokevirtual 144	java/io/File:exists	()Z
+    //   174: ifeq +12 -> 186
+    //   177: aload_3
+    //   178: astore_2
+    //   179: aload_0
+    //   180: ldc 118
+    //   182: invokevirtual 147	android/content/Context:deleteFile	(Ljava/lang/String;)Z
+    //   185: pop
+    //   186: aload_3
+    //   187: ifnull +7 -> 194
+    //   190: aload_3
+    //   191: invokevirtual 150	java/io/BufferedReader:close	()V
+    //   194: return
+    //   195: aload_3
+    //   196: astore_2
+    //   197: ldc 78
+    //   199: new 62	java/lang/StringBuilder
+    //   202: dup
+    //   203: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   206: ldc 152
+    //   208: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   211: aload 5
+    //   213: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   216: ldc 133
+    //   218: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   221: aload 6
+    //   223: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   226: ldc 135
+    //   228: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   231: aload 7
+    //   233: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   236: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   239: invokestatic 155	bhzm:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   242: goto -56 -> 186
+    //   245: astore_0
+    //   246: aload_3
+    //   247: astore_2
+    //   248: aload_0
+    //   249: invokevirtual 158	java/io/FileNotFoundException:printStackTrace	()V
+    //   252: aload_3
+    //   253: ifnull -59 -> 194
+    //   256: aload_3
+    //   257: invokevirtual 150	java/io/BufferedReader:close	()V
+    //   260: return
+    //   261: astore_0
+    //   262: aload_0
+    //   263: invokevirtual 159	java/io/IOException:printStackTrace	()V
+    //   266: return
+    //   267: astore_0
+    //   268: aload_0
+    //   269: invokevirtual 159	java/io/IOException:printStackTrace	()V
+    //   272: return
+    //   273: astore_0
+    //   274: aconst_null
+    //   275: astore_3
+    //   276: aload_3
+    //   277: astore_2
+    //   278: aload_0
+    //   279: invokevirtual 159	java/io/IOException:printStackTrace	()V
+    //   282: aload_3
+    //   283: ifnull -89 -> 194
+    //   286: aload_3
+    //   287: invokevirtual 150	java/io/BufferedReader:close	()V
+    //   290: return
+    //   291: astore_0
+    //   292: aload_0
+    //   293: invokevirtual 159	java/io/IOException:printStackTrace	()V
+    //   296: return
+    //   297: astore_0
+    //   298: aconst_null
+    //   299: astore_2
+    //   300: aload_2
+    //   301: ifnull +7 -> 308
+    //   304: aload_2
+    //   305: invokevirtual 150	java/io/BufferedReader:close	()V
+    //   308: aload_0
+    //   309: athrow
+    //   310: astore_1
+    //   311: aload_1
+    //   312: invokevirtual 159	java/io/IOException:printStackTrace	()V
+    //   315: goto -7 -> 308
+    //   318: astore_0
+    //   319: goto -19 -> 300
+    //   322: astore_0
+    //   323: goto -47 -> 276
+    //   326: astore_0
+    //   327: aconst_null
+    //   328: astore_3
+    //   329: goto -83 -> 246
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	82	0	this	bias
-    //   0	82	1	parambiau	biau
-    //   3	46	2	i	int
-    //   36	2	3	localbiau	biau
+    //   0	332	0	paramContext	android.content.Context
+    //   0	332	1	paramString	String
+    //   48	257	2	localBufferedReader1	java.io.BufferedReader
+    //   46	283	3	localBufferedReader2	java.io.BufferedReader
+    //   28	139	4	str1	String
+    //   53	159	5	str2	String
+    //   61	161	6	str3	String
+    //   69	163	7	str4	String
     // Exception table:
     //   from	to	target	type
-    //   4	37	77	finally
-    //   56	74	77	finally
+    //   49	55	245	java/io/FileNotFoundException
+    //   57	63	245	java/io/FileNotFoundException
+    //   65	71	245	java/io/FileNotFoundException
+    //   73	81	245	java/io/FileNotFoundException
+    //   83	91	245	java/io/FileNotFoundException
+    //   93	101	245	java/io/FileNotFoundException
+    //   103	148	245	java/io/FileNotFoundException
+    //   150	160	245	java/io/FileNotFoundException
+    //   162	177	245	java/io/FileNotFoundException
+    //   179	186	245	java/io/FileNotFoundException
+    //   197	242	245	java/io/FileNotFoundException
+    //   256	260	261	java/io/IOException
+    //   190	194	267	java/io/IOException
+    //   0	47	273	java/io/IOException
+    //   286	290	291	java/io/IOException
+    //   0	47	297	finally
+    //   304	308	310	java/io/IOException
+    //   49	55	318	finally
+    //   57	63	318	finally
+    //   65	71	318	finally
+    //   73	81	318	finally
+    //   83	91	318	finally
+    //   93	101	318	finally
+    //   103	148	318	finally
+    //   150	160	318	finally
+    //   162	177	318	finally
+    //   179	186	318	finally
+    //   197	242	318	finally
+    //   248	252	318	finally
+    //   278	282	318	finally
+    //   49	55	322	java/io/IOException
+    //   57	63	322	java/io/IOException
+    //   65	71	322	java/io/IOException
+    //   73	81	322	java/io/IOException
+    //   83	91	322	java/io/IOException
+    //   93	101	322	java/io/IOException
+    //   103	148	322	java/io/IOException
+    //   150	160	322	java/io/IOException
+    //   162	177	322	java/io/IOException
+    //   179	186	322	java/io/IOException
+    //   197	242	322	java/io/IOException
+    //   0	47	326	java/io/FileNotFoundException
   }
   
-  public void a(URLImageView paramURLImageView, boolean paramBoolean1, long paramLong1, long paramLong2, int paramInt, boolean paramBoolean2, String paramString)
+  /* Error */
+  public static void a(android.content.Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    if (paramURLImageView == null) {}
-    do
-    {
+    // Byte code:
+    //   0: aload_1
+    //   1: invokestatic 40	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: ifne +17 -> 21
+    //   7: aload_2
+    //   8: invokestatic 40	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   11: ifne +10 -> 21
+    //   14: aload_3
+    //   15: invokestatic 40	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   18: ifeq +46 -> 64
+    //   21: ldc 78
+    //   23: new 62	java/lang/StringBuilder
+    //   26: dup
+    //   27: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   30: ldc 162
+    //   32: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: aload_1
+    //   36: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: ldc 133
+    //   41: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: aload_2
+    //   45: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: ldc 135
+    //   50: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: aload_3
+    //   54: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   60: invokestatic 155	bhzm:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   63: return
+    //   64: aconst_null
+    //   65: astore 4
+    //   67: new 62	java/lang/StringBuilder
+    //   70: dup
+    //   71: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   74: aload_0
+    //   75: invokevirtual 104	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   78: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   81: getstatic 113	java/io/File:separator	Ljava/lang/String;
+    //   84: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   87: ldc 118
+    //   89: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   92: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   95: astore 5
+    //   97: new 110	java/io/File
+    //   100: dup
+    //   101: aload 5
+    //   103: invokespecial 140	java/io/File:<init>	(Ljava/lang/String;)V
+    //   106: invokevirtual 144	java/io/File:exists	()Z
+    //   109: ifeq +10 -> 119
+    //   112: aload_0
+    //   113: ldc 118
+    //   115: invokevirtual 147	android/content/Context:deleteFile	(Ljava/lang/String;)Z
+    //   118: pop
+    //   119: new 164	java/io/BufferedWriter
+    //   122: dup
+    //   123: new 166	java/io/FileWriter
+    //   126: dup
+    //   127: aload 5
+    //   129: invokespecial 167	java/io/FileWriter:<init>	(Ljava/lang/String;)V
+    //   132: invokespecial 170	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
+    //   135: astore_0
+    //   136: aload_0
+    //   137: astore 4
+    //   139: aload_0
+    //   140: aload_1
+    //   141: invokevirtual 173	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   144: aload_0
+    //   145: astore 4
+    //   147: aload_0
+    //   148: invokevirtual 176	java/io/BufferedWriter:newLine	()V
+    //   151: aload_0
+    //   152: astore 4
+    //   154: aload_0
+    //   155: aload_2
+    //   156: invokevirtual 173	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   159: aload_0
+    //   160: astore 4
+    //   162: aload_0
+    //   163: invokevirtual 176	java/io/BufferedWriter:newLine	()V
+    //   166: aload_0
+    //   167: astore 4
+    //   169: aload_0
+    //   170: aload_3
+    //   171: invokevirtual 173	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   174: aload_0
+    //   175: astore 4
+    //   177: aload_0
+    //   178: invokevirtual 179	java/io/BufferedWriter:flush	()V
+    //   181: aload_0
+    //   182: astore 4
+    //   184: ldc 78
+    //   186: new 62	java/lang/StringBuilder
+    //   189: dup
+    //   190: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   193: ldc 181
+    //   195: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   198: aload_1
+    //   199: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   202: ldc 133
+    //   204: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   207: aload_2
+    //   208: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   211: ldc 135
+    //   213: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   216: aload_3
+    //   217: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   220: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   223: invokestatic 86	bhzm:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   226: aload_0
+    //   227: ifnull -164 -> 63
+    //   230: aload_0
+    //   231: invokevirtual 182	java/io/BufferedWriter:close	()V
+    //   234: return
+    //   235: astore_0
+    //   236: aload_0
+    //   237: invokevirtual 159	java/io/IOException:printStackTrace	()V
+    //   240: return
+    //   241: astore_1
+    //   242: aload 4
+    //   244: astore_0
+    //   245: aload_1
+    //   246: invokevirtual 158	java/io/FileNotFoundException:printStackTrace	()V
+    //   249: aload_0
+    //   250: ifnull -187 -> 63
+    //   253: aload_0
+    //   254: invokevirtual 182	java/io/BufferedWriter:close	()V
+    //   257: return
+    //   258: astore_0
+    //   259: aload_0
+    //   260: invokevirtual 159	java/io/IOException:printStackTrace	()V
+    //   263: return
+    //   264: astore_1
+    //   265: aconst_null
+    //   266: astore_0
+    //   267: aload_0
+    //   268: astore 4
+    //   270: aload_1
+    //   271: invokevirtual 159	java/io/IOException:printStackTrace	()V
+    //   274: aload_0
+    //   275: ifnull -212 -> 63
+    //   278: aload_0
+    //   279: invokevirtual 182	java/io/BufferedWriter:close	()V
+    //   282: return
+    //   283: astore_0
+    //   284: aload_0
+    //   285: invokevirtual 159	java/io/IOException:printStackTrace	()V
+    //   288: return
+    //   289: astore_0
+    //   290: aconst_null
+    //   291: astore 4
+    //   293: aload 4
+    //   295: ifnull +8 -> 303
+    //   298: aload 4
+    //   300: invokevirtual 182	java/io/BufferedWriter:close	()V
+    //   303: aload_0
+    //   304: athrow
+    //   305: astore_1
+    //   306: aload_1
+    //   307: invokevirtual 159	java/io/IOException:printStackTrace	()V
+    //   310: goto -7 -> 303
+    //   313: astore_0
+    //   314: goto -21 -> 293
+    //   317: astore_1
+    //   318: aload_0
+    //   319: astore 4
+    //   321: aload_1
+    //   322: astore_0
+    //   323: goto -30 -> 293
+    //   326: astore_1
+    //   327: goto -60 -> 267
+    //   330: astore_1
+    //   331: goto -86 -> 245
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	334	0	paramContext	android.content.Context
+    //   0	334	1	paramString1	String
+    //   0	334	2	paramString2	String
+    //   0	334	3	paramString3	String
+    //   65	255	4	localContext	android.content.Context
+    //   95	33	5	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   230	234	235	java/io/IOException
+    //   67	119	241	java/io/FileNotFoundException
+    //   119	136	241	java/io/FileNotFoundException
+    //   253	257	258	java/io/IOException
+    //   67	119	264	java/io/IOException
+    //   119	136	264	java/io/IOException
+    //   278	282	283	java/io/IOException
+    //   67	119	289	finally
+    //   119	136	289	finally
+    //   298	303	305	java/io/IOException
+    //   139	144	313	finally
+    //   147	151	313	finally
+    //   154	159	313	finally
+    //   162	166	313	finally
+    //   169	174	313	finally
+    //   177	181	313	finally
+    //   184	226	313	finally
+    //   270	274	313	finally
+    //   245	249	317	finally
+    //   139	144	326	java/io/IOException
+    //   147	151	326	java/io/IOException
+    //   154	159	326	java/io/IOException
+    //   162	166	326	java/io/IOException
+    //   169	174	326	java/io/IOException
+    //   177	181	326	java/io/IOException
+    //   184	226	326	java/io/IOException
+    //   139	144	330	java/io/FileNotFoundException
+    //   147	151	330	java/io/FileNotFoundException
+    //   154	159	330	java/io/FileNotFoundException
+    //   162	166	330	java/io/FileNotFoundException
+    //   169	174	330	java/io/FileNotFoundException
+    //   177	181	330	java/io/FileNotFoundException
+    //   184	226	330	java/io/FileNotFoundException
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {
       return;
-      paramURLImageView.setVisibility(8);
-    } while (!a(paramBoolean1, paramLong1));
-    paramURLImageView.setVisibility(0);
-    paramString = a(paramString, paramLong2, paramInt, paramBoolean2);
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramURLImageView.setVisibility(8);
+    }
+    bhzm.b("reportForVia", "reportForVia actionType=" + paramString1 + " via=" + paramString2 + ", appid=" + paramString3);
+    bibc.a().a(String.valueOf(bhpc.a().a()), paramString3, paramString2, paramString1, "", false);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {
       return;
     }
-    URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, new ColorDrawable(), new ColorDrawable());
-    if (localURLDrawable.getStatus() != 1) {
-      localURLDrawable.restartDownload();
-    }
-    paramURLImageView.setBackgroundDrawable(localURLDrawable);
-    paramURLImageView.setURLDrawableDownListener(new biat(this, paramString, paramURLImageView));
+    bhzm.b("reportForVia", "reportForVia actionType=" + paramString1 + " via=" + paramString2 + ", appid=" + paramString3);
+    bibc.a().a(String.valueOf(bhpc.a().a()), paramString3, paramString2, paramString1, paramString4, false);
   }
   
-  public void a(AppRuntime paramAppRuntime)
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle)
   {
-    a(paramAppRuntime, false);
-  }
-  
-  public void a(AppRuntime paramAppRuntime, boolean paramBoolean)
-  {
-    if (paramAppRuntime == null) {
-      QLog.e("VipGrayConfigHelper", 1, "parsejson error, app = null");
-    }
-    Object localObject;
-    for (;;)
-    {
+    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("VipGrayConfigHelper", 2, "parsejson, begin");
-      }
-      c();
-      try
-      {
-        localObject = VasQuickUpdateManager.getJSONFromLocal(paramAppRuntime, "vip_personal_card.json", true, null);
-        if (localObject == null)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("VipGrayConfigHelper", 2, "parsejson file not exists");
-        }
-      }
-      catch (Exception paramAppRuntime)
-      {
-        QLog.e("VipGrayConfigHelper", 1, "parseJson exception", paramAppRuntime);
-      }
     }
-    for (;;)
-    {
-      b();
+    bhzm.b("reportForVia", "reportForVia actionType=" + paramString1 + " via=" + paramString2 + ", appid=" + paramString3);
+    long l = bhpc.a().a();
+    bibc.a().a(String.valueOf(l), paramString3, paramString2, paramString1, bhpc.a().f(), paramBundle, paramString4, false);
+  }
+  
+  public static void b(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    if ((paramString1 == null) || (paramString2 == null) || (paramString4 == null)) {
       return;
-      localObject = ((JSONObject)localObject).optJSONArray("vipGrayConfig");
-      if ((localObject != null) && (((JSONArray)localObject).length() > 0)) {
-        a(paramAppRuntime, (JSONArray)localObject, paramBoolean);
-      } else {
-        QLog.e("VipGrayConfigHelper", 1, "parsejson configList = null or len < 0");
-      }
     }
-  }
-  
-  public boolean a(AppRuntime paramAppRuntime, JSONObject paramJSONObject)
-  {
-    bool3 = false;
-    bool1 = false;
-    boolean bool2 = true;
-    if ((paramAppRuntime == null) || (paramJSONObject == null))
-    {
-      QLog.e("VipGrayConfigHelper", 1, "isConfigValid app = null || config = null");
-      bool2 = bool1;
-      return bool2;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("VipGrayConfigHelper", 2, "isConfigValid config = " + paramJSONObject.toString());
-    }
-    try
-    {
-      i = paramJSONObject.optInt("platformId");
-      if (i != 0)
-      {
-        bool1 = bool3;
-        if (i != 2) {
-          break label300;
-        }
-      }
-      if (!paramJSONObject.has("minVersion")) {
-        break label434;
-      }
-      str = paramJSONObject.getString("minVersion");
-      if ((TextUtils.isEmpty(str)) || (bhyh.a(str, "8.4.5.4745"))) {
-        break label434;
-      }
-      i = 0;
-    }
-    catch (Exception paramAppRuntime)
-    {
-      for (;;)
-      {
-        String str;
-        int j;
-        int k;
-        long l1;
-        long l2;
-        long l3;
-        label300:
-        label340:
-        label383:
-        QLog.e("VipGrayConfigHelper", 1, "isConfigValid exception", paramAppRuntime);
-        bool1 = bool3;
-        continue;
-        int i = 1;
-        continue;
-        bool1 = false;
-      }
-    }
-    j = i;
-    if (i != 0)
-    {
-      j = i;
-      if (paramJSONObject.has("maxVersion"))
-      {
-        str = paramJSONObject.getString("maxVersion");
-        j = i;
-        if (!TextUtils.isEmpty(str))
-        {
-          j = i;
-          if (!bhyh.a("8.4.5.4745", str)) {
-            j = 0;
-          }
-        }
-      }
-    }
-    bool1 = bool3;
-    if (j != 0)
-    {
-      paramAppRuntime = paramAppRuntime.getAccount();
-      i = paramJSONObject.optInt("startIndex");
-      j = paramJSONObject.optInt("endIndex");
-      if (i < j) {
-        break label383;
-      }
-      k = paramAppRuntime.length();
-      if ((k < i) || (k < j)) {
-        break label340;
-      }
-      l1 = Long.parseLong(paramAppRuntime.substring(k - i, k - j + 1));
-      l2 = paramJSONObject.optLong("min");
-      l3 = paramJSONObject.optLong("max");
-      if ((l1 < l2) || (l1 > l3)) {
-        break label439;
-      }
-    }
-    for (bool1 = bool2;; bool1 = bool3)
-    {
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("VipGrayConfigHelper", 2, "isConfigValid valid = " + bool1);
-      return bool1;
-      QLog.e("VipGrayConfigHelper", 1, "parseJson, index config error, uin length=" + k + ", config=" + paramJSONObject.toString());
-      break label439;
-      QLog.e("VipGrayConfigHelper", 1, "parseJson, startIndex < endIndex, element=" + paramJSONObject);
-    }
-  }
-  
-  public boolean a(boolean paramBoolean, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipGrayConfigHelper", 2, "showNamePlateOfKing, isSuperVip = " + paramBoolean + ", lastLoginTime = " + paramLong);
-    }
-    if (!paramBoolean) {
-      return false;
-    }
-    long l = paramLong;
-    if (paramLong < 0L) {
-      l = 0L;
-    }
-    paramLong = NetConnInfoCenter.getServerTime();
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(paramLong * 1000L);
-    int i = localCalendar.get(6);
-    localCalendar.setTimeInMillis(l * 1000L);
-    return i - localCalendar.get(6) <= this.jdField_a_of_type_Int;
-  }
-  
-  public void b(biau parambiau)
-  {
-    int i = 0;
-    for (;;)
-    {
-      try
-      {
-        if (i < this.jdField_b_of_type_JavaUtilList.size())
-        {
-          if ((biau)((WeakReference)this.jdField_b_of_type_JavaUtilList.get(i)).get() == parambiau)
-          {
-            parambiau = this.jdField_b_of_type_JavaUtilList.get(i);
-            if (parambiau != null) {
-              this.jdField_b_of_type_JavaUtilList.remove(parambiau);
-            }
-            return;
-          }
-          i += 1;
-        }
-        else
-        {
-          parambiau = null;
-        }
-      }
-      finally {}
-    }
+    bhzm.b("reportForVia", "reportForVia actionType=" + paramString1 + " via=" + paramString2 + ", appid=" + paramString4);
+    bibc.a().a(paramString3, paramString4, paramString2, paramString1, "", false);
   }
 }
 

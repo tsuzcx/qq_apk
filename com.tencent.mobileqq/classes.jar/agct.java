@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agct
-  implements View.OnClickListener
+class agct
+  implements DialogInterface.OnClickListener
 {
-  public agct(ReminderListFragment paramReminderListFragment) {}
+  agct(agcr paramagcr, ChatMessage paramChatMessage) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReminderListFragment.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    acvv.b(this.jdField_a_of_type_Agcr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agcr.b, this.jdField_a_of_type_Agcr.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
   }
 }
 

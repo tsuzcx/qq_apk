@@ -1,94 +1,67 @@
-import android.content.Context;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.ArkAppMessage.Config;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageForArkApp;
 
-public final class aggo
-  implements CompoundButton.OnCheckedChangeListener
+class aggo
+  extends aghj
 {
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private afvr jdField_a_of_type_Afvr;
+  private afwa jdField_a_of_type_Afwa;
+  private afwj jdField_a_of_type_Afwj;
+  
+  aggo(agcw paramagcw)
   {
-    Object localObject1 = (ChatMessage)paramCompoundButton.getTag();
-    if (localObject1 == null) {}
-    label507:
-    for (;;)
+    super(paramagcw, null);
+  }
+  
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return null;
+  }
+  
+  protected aezx b(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    int j = 1;
+    int i = j;
+    if ((paramChatMessage instanceof MessageForArkApp))
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      if ((localObject1 instanceof MessageForPtt))
+      paramChatMessage = (MessageForArkApp)paramChatMessage;
+      ArkAppMessage.Config localConfig = new ArkAppMessage.Config();
+      i = j;
+      if (paramChatMessage.ark_app_message != null)
       {
-        localObject2 = MediaPlayerManager.a(BaseActivity.sTopActivity.app).a();
-        if ((localObject2 == localObject1) || (((localObject2 instanceof MessageForPtt)) && (((ChatMessage)localObject2).uniseq == ((ChatMessage)localObject1).uniseq))) {
-          MediaPlayerManager.a(BaseActivity.sTopActivity.app).c(false);
-        }
-      }
-      Object localObject2 = AIOLongShotHelper.a();
-      if ((localObject2 != null) && (((AIOLongShotHelper)localObject2).a()))
-      {
-        if ((paramBoolean != ((AIOLongShotHelper)localObject2).a((ChatMessage)localObject1)) && (BaseChatItemLayout.a != null)) {
-          BaseChatItemLayout.a.a((ChatMessage)localObject1, paramCompoundButton, paramBoolean);
-        }
-      }
-      else if (paramBoolean != axpf.a().a((ChatMessage)localObject1))
-      {
-        if (!paramBoolean) {
-          axpf.a().a((ChatMessage)localObject1, paramBoolean);
-        }
-        for (;;)
+        localConfig.fromString(paramChatMessage.ark_app_message.config);
+        i = j;
+        if (localConfig.showSender != null)
         {
-          if (BaseChatItemLayout.a == null) {
-            break label507;
+          i = j;
+          if (localConfig.showSender.intValue() == 0) {
+            i = 0;
           }
-          BaseChatItemLayout.a.a((ChatMessage)localObject1, paramCompoundButton, paramBoolean);
-          break;
-          if ((localObject1 instanceof MessageForFile))
-          {
-            localObject2 = aunj.a(BaseActivity.sTopActivity.app, (MessageForFile)localObject1);
-            if ((((FileManagerEntity)localObject2).getCloudType() == 1) && (((FileManagerEntity)localObject2).status == 2))
-            {
-              localObject1 = paramCompoundButton.getContext().getString(2131692335);
-              QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject1, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
-              paramCompoundButton.setChecked(false);
-              break;
-            }
-          }
-          if ((localObject1 instanceof MessageForTroopFile))
-          {
-            localObject2 = (MessageForTroopFile)localObject1;
-            localObject2 = bgsk.a(BaseActivity.sTopActivity.app, (MessageForTroopFile)localObject2);
-            if ((localObject2 != null) && ((((bftf)localObject2).b == 0) || (((bftf)localObject2).b == 1) || (((bftf)localObject2).b == 2) || (((bftf)localObject2).b == 3) || (((bftf)localObject2).b == 4)))
-            {
-              localObject1 = paramCompoundButton.getContext().getString(2131692335);
-              QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject1, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
-              paramCompoundButton.setChecked(false);
-              break;
-            }
-          }
-          int i = axpf.a().a();
-          if (axpf.a().a((ChatMessage)localObject1, i))
-          {
-            if (axpf.a().a == 7) {}
-            for (localObject1 = paramCompoundButton.getContext().getString(2131697758, new Object[] { Integer.valueOf(i) });; localObject1 = paramCompoundButton.getContext().getString(2131697757, new Object[] { Integer.valueOf(i) }))
-            {
-              QQToast.a(paramCompoundButton.getContext(), (CharSequence)localObject1, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
-              paramCompoundButton.setChecked(false);
-              break;
-            }
-          }
-          axpf.a().a((ChatMessage)localObject1, paramBoolean);
         }
       }
     }
+    if ((this.jdField_a_of_type_Agcw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1008) || (this.jdField_a_of_type_Agcw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1038))
+    {
+      if (this.jdField_a_of_type_Afwj == null) {
+        this.jdField_a_of_type_Afwj = new afwj(this.jdField_a_of_type_Agcw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_Agcw.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agcw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Agcw.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+      }
+      return this.jdField_a_of_type_Agcw.a(this.jdField_a_of_type_Afwj, paramBaseAdapter);
+    }
+    if ((i == 0) || (this.jdField_a_of_type_Agcw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 9501))
+    {
+      if (this.jdField_a_of_type_Afwa == null) {
+        this.jdField_a_of_type_Afwa = new afwa(this.jdField_a_of_type_Agcw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_Agcw.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agcw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Agcw.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+      }
+      return this.jdField_a_of_type_Agcw.a(this.jdField_a_of_type_Afwa, paramBaseAdapter);
+    }
+    if (this.jdField_a_of_type_Afvr == null) {
+      this.jdField_a_of_type_Afvr = new afvr(this.jdField_a_of_type_Agcw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_Agcw.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agcw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Agcw.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    }
+    return this.jdField_a_of_type_Agcw.a(this.jdField_a_of_type_Afvr, paramBaseAdapter);
   }
 }
 

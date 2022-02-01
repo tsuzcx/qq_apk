@@ -4,32 +4,31 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import asph;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager.EmotionKeywordLayout;
 import com.tencent.widget.HorizontalListView;
 
 public class EmotionKeywordHorizonListView
   extends HorizontalListView
 {
-  public int a;
-  private asph a;
+  public static final int TYPE_EMOTION_KEYWORD = 0;
+  public static final int TYPE_ZHITU = 1;
+  public int mType = 0;
+  private EmotionKeywordHorizonListView.HorizonListViewTouchListener touchListener;
   
   public EmotionKeywordHorizonListView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 0;
   }
   
   public EmotionKeywordHorizonListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 0;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Asph != null) {
-      this.jdField_a_of_type_Asph.a(paramMotionEvent.getAction());
+    if (this.touchListener != null) {
+      this.touchListener.touchEventActionChanged(paramMotionEvent.getAction());
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
@@ -55,19 +54,19 @@ public class EmotionKeywordHorizonListView
     invalidate();
   }
   
-  public void setTouchListener(asph paramasph)
+  public void setTouchListener(EmotionKeywordHorizonListView.HorizonListViewTouchListener paramHorizonListViewTouchListener)
   {
-    this.jdField_a_of_type_Asph = paramasph;
+    this.touchListener = paramHorizonListViewTouchListener;
   }
   
   public void setType(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.mType = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView
  * JD-Core Version:    0.7.0.1
  */

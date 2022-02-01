@@ -94,7 +94,7 @@ public class TPMediaCodecManager
   }
   
   @TPMethodCalledByNative
-  public static boolean initVideoMediaCodec(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, Surface paramSurface, int paramInt5)
+  public static boolean initVideoMediaCodec(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, Surface paramSurface, int paramInt5, int paramInt6, int paramInt7)
   {
     ITPMediaCodecDecoder localITPMediaCodecDecoder = getCodecById(paramInt1);
     if (localITPMediaCodecDecoder == null)
@@ -102,7 +102,7 @@ public class TPMediaCodecManager
       TPNativeLog.printLog(3, "TPMediaCodecManager", "initVideoMediaCodec failed!");
       return false;
     }
-    if (!localITPMediaCodecDecoder.initDecoder(paramString, paramInt2, paramInt3, paramInt4, paramSurface, paramInt5)) {
+    if (!localITPMediaCodecDecoder.initDecoder(paramString, paramInt2, paramInt3, paramInt4, paramSurface, paramInt5, paramInt6, paramInt7)) {
       return false;
     }
     return localITPMediaCodecDecoder.startDecoder();

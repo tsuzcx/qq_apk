@@ -20,42 +20,47 @@ import android.view.VelocityTracker;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
 import android.widget.CompoundButton;
-import bljs;
-import blpz;
-import blqn;
+import bjoo;
+import bjuo;
 import com.tencent.mobileqq.R.styleable;
 
 public class Switch
   extends CompoundButton
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842912 };
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Layout jdField_a_of_type_AndroidTextLayout;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-  private blqn jdField_a_of_type_Blqn;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private Layout jdField_b_of_type_AndroidTextLayout;
-  private CharSequence jdField_b_of_type_JavaLangCharSequence;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
-  private int j;
-  private int k;
-  private int l;
-  private int m;
+  private static final int[] CHECKED_STATE_SET = { 16842912 };
+  private static final int MONOSPACE = 3;
+  private static final int SANS = 1;
+  private static final int SERIF = 2;
+  private static final int TOUCH_MODE_DOWN = 1;
+  private static final int TOUCH_MODE_DRAGGING = 2;
+  private static final int TOUCH_MODE_IDLE = 0;
+  private int mMinFlingVelocity;
+  private Layout mOffLayout;
+  private Layout mOnLayout;
+  private int mSwitchBottom;
+  private int mSwitchHeight;
+  private int mSwitchLeft;
+  private int mSwitchMinWidth;
+  private int mSwitchPadding;
+  private int mSwitchRight;
+  private int mSwitchTop;
+  private bjuo mSwitchTransformationMethod;
+  private int mSwitchWidth;
+  private final Rect mTempRect = new Rect();
+  private ColorStateList mTextColors;
+  private CharSequence mTextOff;
+  private CharSequence mTextOn;
+  private TextPaint mTextPaint = new TextPaint(1);
+  private Drawable mThumbDrawable;
+  private float mThumbPosition;
+  private int mThumbTextPadding;
+  private int mThumbWidth;
+  private int mTouchMode;
+  private int mTouchSlop;
+  private float mTouchX;
+  private float mTouchY;
+  private Drawable mTrackDrawable;
+  private VelocityTracker mVelocityTracker = VelocityTracker.obtain();
   
   public Switch(Context paramContext)
   {
@@ -64,62 +69,95 @@ public class Switch
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131035065);
+    this(paramContext, paramAttributeSet, 2131035075);
   }
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     Resources localResources = getResources();
-    this.jdField_a_of_type_AndroidTextTextPaint.density = localResources.getDisplayMetrics().density;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.Switch, paramInt, 2131755961);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(5);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramAttributeSet.getDrawable(7);
-    this.jdField_a_of_type_JavaLangCharSequence = paramAttributeSet.getText(4);
-    if (this.jdField_a_of_type_JavaLangCharSequence == null) {
-      this.jdField_a_of_type_JavaLangCharSequence = "";
+    this.mTextPaint.density = localResources.getDisplayMetrics().density;
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.Switch, paramInt, 2131755962);
+    this.mThumbDrawable = paramAttributeSet.getDrawable(5);
+    this.mTrackDrawable = paramAttributeSet.getDrawable(7);
+    this.mTextOn = paramAttributeSet.getText(4);
+    if (this.mTextOn == null) {
+      this.mTextOn = "";
     }
-    this.jdField_b_of_type_JavaLangCharSequence = paramAttributeSet.getText(3);
-    if (this.jdField_b_of_type_JavaLangCharSequence == null) {
-      this.jdField_b_of_type_JavaLangCharSequence = "";
+    this.mTextOff = paramAttributeSet.getText(3);
+    if (this.mTextOff == null) {
+      this.mTextOff = "";
     }
-    this.jdField_a_of_type_Int = paramAttributeSet.getDimensionPixelSize(6, 0);
-    this.jdField_b_of_type_Int = paramAttributeSet.getDimensionPixelSize(0, 0);
-    this.jdField_c_of_type_Int = paramAttributeSet.getDimensionPixelSize(1, 0);
+    this.mThumbTextPadding = paramAttributeSet.getDimensionPixelSize(6, 0);
+    this.mSwitchMinWidth = paramAttributeSet.getDimensionPixelSize(0, 0);
+    this.mSwitchPadding = paramAttributeSet.getDimensionPixelSize(1, 0);
     paramInt = paramAttributeSet.getResourceId(2, 0);
     if (paramInt != 0) {
       setSwitchTextAppearance(paramContext, paramInt);
     }
     paramAttributeSet.recycle();
     paramContext = ViewConfiguration.get(paramContext);
-    this.e = paramContext.getScaledTouchSlop();
-    this.f = paramContext.getScaledMinimumFlingVelocity();
+    this.mTouchSlop = paramContext.getScaledTouchSlop();
+    this.mMinFlingVelocity = paramContext.getScaledMinimumFlingVelocity();
     refreshDrawableState();
     setChecked(isChecked());
-    setOnClickListener(new blpz(this));
+    setOnClickListener(new Switch.1(this));
   }
   
-  private int a()
+  private void animateThumbToCheckedState(boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) {
+    setChecked(paramBoolean);
+  }
+  
+  private void cancelSuperTouch(MotionEvent paramMotionEvent)
+  {
+    paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
+    paramMotionEvent.setAction(3);
+    super.onTouchEvent(paramMotionEvent);
+    paramMotionEvent.recycle();
+  }
+  
+  private boolean getTargetCheckedState()
+  {
+    return this.mThumbPosition >= getThumbScrollRange() / 2;
+  }
+  
+  private int getThumbScrollRange()
+  {
+    if (this.mTrackDrawable == null) {
       return 0;
     }
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getPadding(this.jdField_a_of_type_AndroidGraphicsRect);
-    return this.g - this.i - this.jdField_a_of_type_AndroidGraphicsRect.left - this.jdField_a_of_type_AndroidGraphicsRect.right;
+    this.mTrackDrawable.getPadding(this.mTempRect);
+    return this.mSwitchWidth - this.mThumbWidth - this.mTempRect.left - this.mTempRect.right;
   }
   
-  private Layout a(CharSequence paramCharSequence)
+  private boolean hitThumb(float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_Blqn != null) {
-      paramCharSequence = this.jdField_a_of_type_Blqn.getTransformation(paramCharSequence, this);
+    this.mThumbDrawable.getPadding(this.mTempRect);
+    int i = this.mSwitchTop;
+    int j = this.mTouchSlop;
+    int k = this.mSwitchLeft + (int)(this.mThumbPosition + 0.5F) - this.mTouchSlop;
+    int m = this.mThumbWidth;
+    int n = this.mTempRect.left;
+    int i1 = this.mTempRect.right;
+    int i2 = this.mTouchSlop;
+    int i3 = this.mSwitchBottom;
+    int i4 = this.mTouchSlop;
+    return (paramFloat1 > k) && (paramFloat1 < m + k + n + i1 + i2) && (paramFloat2 > i - j) && (paramFloat2 < i3 + i4);
+  }
+  
+  private Layout makeLayout(CharSequence paramCharSequence)
+  {
+    if (this.mSwitchTransformationMethod != null) {
+      paramCharSequence = this.mSwitchTransformationMethod.getTransformation(paramCharSequence, this);
     }
     for (;;)
     {
-      return new StaticLayout(paramCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, (int)Math.ceil(Layout.getDesiredWidth(paramCharSequence, this.jdField_a_of_type_AndroidTextTextPaint)), Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
+      return new StaticLayout(paramCharSequence, this.mTextPaint, (int)Math.ceil(Layout.getDesiredWidth(paramCharSequence, this.mTextPaint)), Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
     }
   }
   
-  private void a(int paramInt1, int paramInt2)
+  private void setSwitchTypefaceByIndex(int paramInt1, int paramInt2)
   {
     Typeface localTypeface = null;
     switch (paramInt1)
@@ -137,114 +175,116 @@ public class Switch
     }
   }
   
-  private void a(MotionEvent paramMotionEvent)
+  private void setThumbPosition(boolean paramBoolean)
   {
-    paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
-    paramMotionEvent.setAction(3);
-    super.onTouchEvent(paramMotionEvent);
-    paramMotionEvent.recycle();
+    if (paramBoolean) {}
+    for (float f = getThumbScrollRange();; f = 0.0F)
+    {
+      this.mThumbPosition = f;
+      return;
+    }
   }
   
-  private void a(boolean paramBoolean)
-  {
-    setChecked(paramBoolean);
-  }
-  
-  private boolean a()
-  {
-    return this.jdField_c_of_type_Float >= a() / 2;
-  }
-  
-  private boolean a(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getPadding(this.jdField_a_of_type_AndroidGraphicsRect);
-    int n = this.k;
-    int i1 = this.e;
-    int i2 = this.j + (int)(this.jdField_c_of_type_Float + 0.5F) - this.e;
-    int i3 = this.i;
-    int i4 = this.jdField_a_of_type_AndroidGraphicsRect.left;
-    int i5 = this.jdField_a_of_type_AndroidGraphicsRect.right;
-    int i6 = this.e;
-    int i7 = this.m;
-    int i8 = this.e;
-    return (paramFloat1 > i2) && (paramFloat1 < i3 + i2 + i4 + i5 + i6) && (paramFloat2 > n - i1) && (paramFloat2 < i7 + i8);
-  }
-  
-  private void b(MotionEvent paramMotionEvent)
+  private void stopDrag(MotionEvent paramMotionEvent)
   {
     boolean bool = true;
-    this.d = 0;
-    int n;
+    this.mTouchMode = 0;
+    int i;
     if ((paramMotionEvent.getAction() == 1) && (isEnabled()))
     {
-      n = 1;
-      a(paramMotionEvent);
-      if (n == 0) {
+      i = 1;
+      cancelSuperTouch(paramMotionEvent);
+      if (i == 0) {
         break label98;
       }
-      this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-      float f1 = this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity();
-      if (Math.abs(f1) <= this.f) {
+      this.mVelocityTracker.computeCurrentVelocity(1000);
+      float f = this.mVelocityTracker.getXVelocity();
+      if (Math.abs(f) <= this.mMinFlingVelocity) {
         break label89;
       }
-      if (f1 <= 0.0F) {
+      if (f <= 0.0F) {
         break label83;
       }
     }
     for (;;)
     {
-      a(bool);
+      animateThumbToCheckedState(bool);
       return;
-      n = 0;
+      i = 0;
       break;
       label83:
       bool = false;
       continue;
       label89:
-      bool = a();
+      bool = getTargetCheckedState();
     }
     label98:
-    a(isChecked());
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (float f1 = a();; f1 = 0.0F)
-    {
-      this.jdField_c_of_type_Float = f1;
-      return;
-    }
+    animateThumbToCheckedState(isChecked());
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
     int[] arrayOfInt = getDrawableState();
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(arrayOfInt);
+    if (this.mThumbDrawable != null) {
+      this.mThumbDrawable.setState(arrayOfInt);
     }
-    if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null) {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setState(arrayOfInt);
+    if (this.mTrackDrawable != null) {
+      this.mTrackDrawable.setState(arrayOfInt);
     }
     invalidate();
   }
   
   public int getCompoundPaddingRight()
   {
-    int i1 = super.getCompoundPaddingRight() + this.g;
-    int n = i1;
+    int j = super.getCompoundPaddingRight() + this.mSwitchWidth;
+    int i = j;
     if (!TextUtils.isEmpty(getText())) {
-      n = i1 + this.jdField_c_of_type_Int;
+      i = j + this.mSwitchPadding;
     }
-    return n;
+    return i;
+  }
+  
+  public int getSwitchMinWidth()
+  {
+    return this.mSwitchMinWidth;
+  }
+  
+  public int getSwitchPadding()
+  {
+    return this.mSwitchPadding;
+  }
+  
+  public CharSequence getTextOff()
+  {
+    return this.mTextOff;
+  }
+  
+  public CharSequence getTextOn()
+  {
+    return this.mTextOn;
+  }
+  
+  public Drawable getThumbDrawable()
+  {
+    return this.mThumbDrawable;
+  }
+  
+  public int getThumbTextPadding()
+  {
+    return this.mThumbTextPadding;
+  }
+  
+  public Drawable getTrackDrawable()
+  {
+    return this.mTrackDrawable;
   }
   
   protected int[] onCreateDrawableState(int paramInt)
   {
     int[] arrayOfInt = super.onCreateDrawableState(paramInt + 1);
     if (isChecked()) {
-      mergeDrawableStates(arrayOfInt, jdField_a_of_type_ArrayOfInt);
+      mergeDrawableStates(arrayOfInt, CHECKED_STATE_SET);
     }
     return arrayOfInt;
   }
@@ -252,36 +292,36 @@ public class Switch
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int i2 = this.j;
-    int n = this.k;
-    int i5 = this.l;
-    int i1 = this.m;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(i2, n, i5, i1);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    int k = this.mSwitchLeft;
+    int i = this.mSwitchTop;
+    int i1 = this.mSwitchRight;
+    int j = this.mSwitchBottom;
+    this.mTrackDrawable.setBounds(k, i, i1, j);
+    this.mTrackDrawable.draw(paramCanvas);
     paramCanvas.save();
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getPadding(this.jdField_a_of_type_AndroidGraphicsRect);
-    int i4 = i2 + this.jdField_a_of_type_AndroidGraphicsRect.left;
-    i2 = this.jdField_a_of_type_AndroidGraphicsRect.top;
-    int i6 = this.jdField_a_of_type_AndroidGraphicsRect.right;
-    int i3 = this.jdField_a_of_type_AndroidGraphicsRect.bottom;
-    paramCanvas.clipRect(i4, n, i5 - i6, i1);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getPadding(this.jdField_a_of_type_AndroidGraphicsRect);
-    i6 = (int)this.jdField_c_of_type_Float;
-    i5 = i4 - this.jdField_a_of_type_AndroidGraphicsRect.left + i6;
-    int i7 = this.i;
-    i4 = this.jdField_a_of_type_AndroidGraphicsRect.right + (i4 + i6 + i7);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i5, n, i4, i1);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(getDrawableState(), this.jdField_a_of_type_AndroidContentResColorStateList.getDefaultColor()));
+    this.mTrackDrawable.getPadding(this.mTempRect);
+    int n = k + this.mTempRect.left;
+    k = this.mTempRect.top;
+    int i2 = this.mTempRect.right;
+    int m = this.mTempRect.bottom;
+    paramCanvas.clipRect(n, i, i1 - i2, j);
+    this.mThumbDrawable.getPadding(this.mTempRect);
+    i2 = (int)this.mThumbPosition;
+    i1 = n - this.mTempRect.left + i2;
+    int i3 = this.mThumbWidth;
+    n = this.mTempRect.right + (n + i2 + i3);
+    this.mThumbDrawable.setBounds(i1, i, n, j);
+    this.mThumbDrawable.draw(paramCanvas);
+    if (this.mTextColors != null) {
+      this.mTextPaint.setColor(this.mTextColors.getColorForState(getDrawableState(), this.mTextColors.getDefaultColor()));
     }
-    this.jdField_a_of_type_AndroidTextTextPaint.drawableState = getDrawableState();
-    if (a()) {}
-    for (Layout localLayout = this.jdField_a_of_type_AndroidTextLayout;; localLayout = this.jdField_b_of_type_AndroidTextLayout)
+    this.mTextPaint.drawableState = getDrawableState();
+    if (getTargetCheckedState()) {}
+    for (Layout localLayout = this.mOnLayout;; localLayout = this.mOffLayout)
     {
       if (localLayout != null)
       {
-        paramCanvas.translate((i5 + i4) / 2 - localLayout.getWidth() / 2, (i2 + n + (i1 - i3)) / 2 - localLayout.getHeight() / 2);
+        paramCanvas.translate((i1 + n) / 2 - localLayout.getWidth() / 2, (k + i + (j - m)) / 2 - localLayout.getHeight() / 2);
         localLayout.draw(paramCanvas);
       }
       paramCanvas.restore();
@@ -292,55 +332,55 @@ public class Switch
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    b(isChecked());
+    setThumbPosition(isChecked());
     paramInt3 = getWidth() - getPaddingRight();
-    paramInt4 = this.g;
+    paramInt4 = this.mSwitchWidth;
     switch (getGravity() & 0x70)
     {
     default: 
       paramInt2 = getPaddingTop();
-      paramInt1 = this.h + paramInt2;
+      paramInt1 = this.mSwitchHeight + paramInt2;
     }
     for (;;)
     {
-      this.j = (paramInt3 - paramInt4);
-      this.k = paramInt2;
-      this.m = paramInt1;
-      this.l = paramInt3;
+      this.mSwitchLeft = (paramInt3 - paramInt4);
+      this.mSwitchTop = paramInt2;
+      this.mSwitchBottom = paramInt1;
+      this.mSwitchRight = paramInt3;
       return;
-      paramInt2 = (getPaddingTop() + getHeight() - getPaddingBottom()) / 2 - this.h / 2;
-      paramInt1 = this.h + paramInt2;
+      paramInt2 = (getPaddingTop() + getHeight() - getPaddingBottom()) / 2 - this.mSwitchHeight / 2;
+      paramInt1 = this.mSwitchHeight + paramInt2;
       continue;
       paramInt1 = getHeight() - getPaddingBottom();
-      paramInt2 = paramInt1 - this.h;
+      paramInt2 = paramInt1 - this.mSwitchHeight;
     }
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidTextLayout == null) {
-      this.jdField_a_of_type_AndroidTextLayout = a(this.jdField_a_of_type_JavaLangCharSequence);
+    if (this.mOnLayout == null) {
+      this.mOnLayout = makeLayout(this.mTextOn);
     }
-    if (this.jdField_b_of_type_AndroidTextLayout == null) {
-      this.jdField_b_of_type_AndroidTextLayout = a(this.jdField_b_of_type_JavaLangCharSequence);
+    if (this.mOffLayout == null) {
+      this.mOffLayout = makeLayout(this.mTextOff);
     }
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getPadding(this.jdField_a_of_type_AndroidGraphicsRect);
-    int n = Math.max(Math.max(this.jdField_a_of_type_AndroidTextLayout.getWidth(), this.jdField_b_of_type_AndroidTextLayout.getWidth()), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth());
-    int i1 = Math.max(Math.max(this.jdField_b_of_type_Int, this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth()), this.jdField_a_of_type_Int * 4 + n + this.jdField_a_of_type_AndroidGraphicsRect.left + this.jdField_a_of_type_AndroidGraphicsRect.right);
-    int i2 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
-    this.i = (n + this.jdField_a_of_type_Int * 2);
-    this.g = i1;
-    this.h = i2;
+    this.mTrackDrawable.getPadding(this.mTempRect);
+    int i = Math.max(Math.max(this.mOnLayout.getWidth(), this.mOffLayout.getWidth()), this.mThumbDrawable.getIntrinsicWidth());
+    int j = Math.max(Math.max(this.mSwitchMinWidth, this.mTrackDrawable.getIntrinsicWidth()), this.mThumbTextPadding * 4 + i + this.mTempRect.left + this.mTempRect.right);
+    int k = this.mTrackDrawable.getIntrinsicHeight();
+    this.mThumbWidth = (i + this.mThumbTextPadding * 2);
+    this.mSwitchWidth = j;
+    this.mSwitchHeight = k;
     super.onMeasure(paramInt1, paramInt2);
-    if (getMeasuredHeight() < i2) {
-      setMeasuredDimension(getMeasuredWidth(), i2);
+    if (getMeasuredHeight() < k) {
+      setMeasuredDimension(getMeasuredWidth(), k);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = true;
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+    this.mVelocityTracker.addMovement(paramMotionEvent);
     switch (paramMotionEvent.getAction())
     {
     }
@@ -354,14 +394,14 @@ public class Switch
         return bool;
         f1 = paramMotionEvent.getX();
         f2 = paramMotionEvent.getY();
-        if ((!isEnabled()) || (!a(f1, f2))) {
+        if ((!isEnabled()) || (!hitThumb(f1, f2))) {
           break;
         }
-        this.d = 1;
-        this.jdField_a_of_type_Float = f1;
-        this.jdField_b_of_type_Float = f2;
+        this.mTouchMode = 1;
+        this.mTouchX = f1;
+        this.mTouchY = f2;
         break;
-        switch (this.d)
+        switch (this.mTouchMode)
         {
         case 0: 
         default: 
@@ -369,49 +409,49 @@ public class Switch
         case 1: 
           f1 = paramMotionEvent.getX();
           f2 = paramMotionEvent.getY();
-          if ((Math.abs(f1 - this.jdField_a_of_type_Float) <= this.e) && (Math.abs(f2 - this.jdField_b_of_type_Float) <= this.e)) {
+          if ((Math.abs(f1 - this.mTouchX) <= this.mTouchSlop) && (Math.abs(f2 - this.mTouchY) <= this.mTouchSlop)) {
             break;
           }
-          this.d = 2;
+          this.mTouchMode = 2;
           getParent().requestDisallowInterceptTouchEvent(true);
-          this.jdField_a_of_type_Float = f1;
-          this.jdField_b_of_type_Float = f2;
+          this.mTouchX = f1;
+          this.mTouchY = f2;
           return true;
         case 2: 
           f1 = paramMotionEvent.getX();
-          f2 = Math.max(0.0F, Math.min(f1 - this.jdField_a_of_type_Float + this.jdField_c_of_type_Float, a()));
+          f2 = Math.max(0.0F, Math.min(f1 - this.mTouchX + this.mThumbPosition, getThumbScrollRange()));
         }
-      } while (f2 == this.jdField_c_of_type_Float);
-      this.jdField_c_of_type_Float = f2;
-      this.jdField_a_of_type_Float = f1;
+      } while (f2 == this.mThumbPosition);
+      this.mThumbPosition = f2;
+      this.mTouchX = f1;
       invalidate();
       return true;
-      if (this.d == 2)
+      if (this.mTouchMode == 2)
       {
-        b(paramMotionEvent);
+        stopDrag(paramMotionEvent);
         return true;
       }
-      this.d = 0;
-      this.jdField_a_of_type_AndroidViewVelocityTracker.clear();
+      this.mTouchMode = 0;
+      this.mVelocityTracker.clear();
     }
   }
   
   public void setChecked(boolean paramBoolean)
   {
     super.setChecked(paramBoolean);
-    b(isChecked());
+    setThumbPosition(isChecked());
     invalidate();
   }
   
   public void setSwitchMinWidth(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.mSwitchMinWidth = paramInt;
     requestLayout();
   }
   
   public void setSwitchPadding(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.mSwitchPadding = paramInt;
     requestLayout();
   }
   
@@ -421,36 +461,36 @@ public class Switch
     ColorStateList localColorStateList = paramContext.getColorStateList(1);
     if (localColorStateList != null)
     {
-      this.jdField_a_of_type_AndroidContentResColorStateList = localColorStateList;
+      this.mTextColors = localColorStateList;
       paramInt = paramContext.getDimensionPixelSize(5, 0);
-      if ((paramInt != 0) && (paramInt != this.jdField_a_of_type_AndroidTextTextPaint.getTextSize()))
+      if ((paramInt != 0) && (paramInt != this.mTextPaint.getTextSize()))
       {
-        this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramInt);
+        this.mTextPaint.setTextSize(paramInt);
         requestLayout();
       }
-      a(paramContext.getInt(7, -1), paramContext.getInt(6, -1));
+      setSwitchTypefaceByIndex(paramContext.getInt(7, -1), paramContext.getInt(6, -1));
       if (!paramContext.getBoolean(0, false)) {
         break label129;
       }
-      this.jdField_a_of_type_Blqn = new bljs(getContext());
-      this.jdField_a_of_type_Blqn.a(true);
+      this.mSwitchTransformationMethod = new bjoo(getContext());
+      this.mSwitchTransformationMethod.a(true);
     }
     for (;;)
     {
       paramContext.recycle();
       return;
-      this.jdField_a_of_type_AndroidContentResColorStateList = getTextColors();
+      this.mTextColors = getTextColors();
       break;
       label129:
-      this.jdField_a_of_type_Blqn = null;
+      this.mSwitchTransformationMethod = null;
     }
   }
   
   public void setSwitchTypeface(Typeface paramTypeface)
   {
-    if (this.jdField_a_of_type_AndroidTextTextPaint.getTypeface() != paramTypeface)
+    if (this.mTextPaint.getTypeface() != paramTypeface)
     {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+      this.mTextPaint.setTypeface(paramTypeface);
       requestLayout();
       invalidate();
     }
@@ -461,7 +501,7 @@ public class Switch
     boolean bool = false;
     if (paramInt > 0)
     {
-      int n;
+      int i;
       if (paramTypeface == null)
       {
         paramTypeface = Typeface.defaultFromStyle(paramInt);
@@ -469,51 +509,51 @@ public class Switch
         if (paramTypeface == null) {
           break label88;
         }
-        n = paramTypeface.getStyle();
+        i = paramTypeface.getStyle();
         label31:
-        paramInt = (n ^ 0xFFFFFFFF) & paramInt;
-        paramTypeface = this.jdField_a_of_type_AndroidTextTextPaint;
+        paramInt = (i ^ 0xFFFFFFFF) & paramInt;
+        paramTypeface = this.mTextPaint;
         if ((paramInt & 0x1) != 0) {
           bool = true;
         }
         paramTypeface.setFakeBoldText(bool);
-        paramTypeface = this.jdField_a_of_type_AndroidTextTextPaint;
+        paramTypeface = this.mTextPaint;
         if ((paramInt & 0x2) == 0) {
           break label94;
         }
       }
       label88:
       label94:
-      for (float f1 = -0.25F;; f1 = 0.0F)
+      for (float f = -0.25F;; f = 0.0F)
       {
-        paramTypeface.setTextSkewX(f1);
+        paramTypeface.setTextSkewX(f);
         return;
         paramTypeface = Typeface.create(paramTypeface, paramInt);
         break;
-        n = 0;
+        i = 0;
         break label31;
       }
     }
-    this.jdField_a_of_type_AndroidTextTextPaint.setFakeBoldText(false);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSkewX(0.0F);
+    this.mTextPaint.setFakeBoldText(false);
+    this.mTextPaint.setTextSkewX(0.0F);
     setSwitchTypeface(paramTypeface);
   }
   
   public void setTextOff(CharSequence paramCharSequence)
   {
-    this.jdField_b_of_type_JavaLangCharSequence = paramCharSequence;
+    this.mTextOff = paramCharSequence;
     requestLayout();
   }
   
   public void setTextOn(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.mTextOn = paramCharSequence;
     requestLayout();
   }
   
   public void setThumbDrawable(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.mThumbDrawable = paramDrawable;
     requestLayout();
   }
   
@@ -524,13 +564,13 @@ public class Switch
   
   public void setThumbTextPadding(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.mThumbTextPadding = paramInt;
     requestLayout();
   }
   
   public void setTrackDrawable(Drawable paramDrawable)
   {
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.mTrackDrawable = paramDrawable;
     requestLayout();
   }
   
@@ -541,7 +581,7 @@ public class Switch
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.jdField_a_of_type_AndroidGraphicsDrawableDrawable) || (paramDrawable == this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.mThumbDrawable) || (paramDrawable == this.mTrackDrawable);
   }
 }
 

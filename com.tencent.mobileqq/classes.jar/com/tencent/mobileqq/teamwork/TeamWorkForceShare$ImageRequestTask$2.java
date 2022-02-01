@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.teamwork;
 
-import anzj;
-import bjbs;
+import amtj;
+import bhht;
 import com.tencent.mobileqq.widget.QQToast;
 
 class TeamWorkForceShare$ImageRequestTask$2
@@ -12,12 +12,12 @@ class TeamWorkForceShare$ImageRequestTask$2
   public void run()
   {
     TeamWorkForceShare.a(this.a.this$0).dismiss();
-    QQToast.a(TeamWorkForceShare.a(this.a.this$0), anzj.a(2131713608), 0).a();
+    QQToast.a(TeamWorkForceShare.a(this.a.this$0), amtj.a(2131713840), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkForceShare.ImageRequestTask.2
  * JD-Core Version:    0.7.0.1
  */

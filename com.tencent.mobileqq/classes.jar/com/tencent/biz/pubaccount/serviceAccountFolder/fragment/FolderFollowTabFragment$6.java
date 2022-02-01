@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import tua;
-import tug;
+import uaq;
+import uaw;
 
 class FolderFollowTabFragment$6
   implements Runnable
@@ -15,20 +15,20 @@ class FolderFollowTabFragment$6
   
   public void run()
   {
-    Object localObject = tug.a();
-    List localList = ((tug)localObject).a();
+    Object localObject = uaw.a();
+    List localList = ((uaw)localObject).a();
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = localList.iterator();
     while (localIterator.hasNext())
     {
-      tua localtua = (tua)localIterator.next();
-      if (FolderFollowTabFragment.a(this.this$0, localtua.a))
+      uaq localuaq = (uaq)localIterator.next();
+      if (FolderFollowTabFragment.a(this.this$0, localuaq.a))
       {
-        localArrayList.add(localtua);
+        localArrayList.add(localuaq);
         localIterator.remove();
       }
     }
-    ((tug)localObject).a(localList);
+    ((uaw)localObject).a(localList);
     localObject = Message.obtain();
     ((Message)localObject).arg1 = this.a;
     ((Message)localObject).obj = localList;
@@ -39,7 +39,7 @@ class FolderFollowTabFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment.6
  * JD-Core Version:    0.7.0.1
  */

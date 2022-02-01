@@ -1,24 +1,24 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import ywh;
-import yxt;
+import xxs;
+import xzd;
 
 public class EditVideoDoodle$7
   implements Runnable
 {
-  public EditVideoDoodle$7(ywh paramywh) {}
+  public EditVideoDoodle$7(xxs paramxxs) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Int == 2) {
-      this.this$0.jdField_a_of_type_Yxt.f();
+      this.this$0.jdField_a_of_type_Xzd.f();
     }
     for (;;)
     {
       this.this$0.jdField_a_of_type_Int = 1;
       return;
       if (this.this$0.jdField_a_of_type_Int == 3) {
-        this.this$0.jdField_a_of_type_Yxt.r();
+        this.this$0.jdField_a_of_type_Xzd.r();
       }
     }
   }

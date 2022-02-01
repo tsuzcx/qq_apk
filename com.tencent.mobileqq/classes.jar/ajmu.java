@@ -1,30 +1,29 @@
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class ajmu
-  implements Comparator<PhoneContact>
+  implements DialogInterface.OnClickListener
 {
-  public ajmu(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public ajmu(DialogBaseActivity paramDialogBaseActivity, boolean paramBoolean) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject2 = paramPhoneContact1.pinyinFirst;
-    String str = paramPhoneContact2.pinyinFirst;
-    Object localObject1 = localObject2;
-    if (((String)localObject2).endsWith("#")) {
-      localObject1 = "Za";
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramDialogInterface = new Intent(BaseActivity.sTopActivity, SplashActivity.class);
+      paramDialogInterface.putExtra("main_tab_id", 1);
+      paramDialogInterface.setFlags(603979776);
+      BaseActivity.sTopActivity.startActivity(paramDialogInterface);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.app, "dc00898", "", "", "0X8006AA6", "0X8006AA6", 0, 0, "", "", "", "");
+      return;
     }
-    localObject2 = str;
-    if (str.endsWith("#")) {
-      localObject2 = "Za";
-    }
-    int j = ((String)localObject1).compareTo((String)localObject2);
-    int i = j;
-    if (j == 0) {
-      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-    }
-    return i;
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneDialogBaseActivity.finish();
   }
 }
 

@@ -1,10 +1,6 @@
-import android.view.View;
-
 public abstract interface blpp
 {
-  public abstract void a(View paramView);
-  
-  public abstract void b(View paramView);
+  public abstract void a();
 }
 
 

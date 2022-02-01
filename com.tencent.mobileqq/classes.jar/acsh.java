@@ -1,6 +1,17 @@
-public final class acsh
-  extends acot
-{}
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+
+public class acsh
+  implements DialogInterface.OnClickListener
+{
+  public acsh(AssistantSettingActivity paramAssistantSettingActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.b();
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

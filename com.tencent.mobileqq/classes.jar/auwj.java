@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.flutter.channel.model.RequestPacket;
-import io.flutter.plugin.common.MethodChannel.Result;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.jsp.UiApiPlugin.8;
+import com.tencent.mobileqq.jsp.UiApiPlugin.8.1.1;
 
-class auwj
-  extends auwk
+public class auwj
+  implements bfsd
 {
-  auwj(auwi paramauwi) {}
+  public auwj(UiApiPlugin.8 param8) {}
   
-  protected void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult)
+  public void a(Bitmap paramBitmap)
   {
-    auwi.a(this.a, paramRequestPacket, paramResult);
+    ThreadManager.post(new UiApiPlugin.8.1.1(this, paramBitmap), 8, null, true);
   }
 }
 

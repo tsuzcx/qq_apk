@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.vas.qvip.view;
 
-import agej;
+import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anzj;
-import bidb;
+import bgjm;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
 
 public class MoreMsgHeaderView
   extends RelativeLayout
-  implements bidb
+  implements bgjm
 {
   public MoreMsgHeaderView(Context paramContext)
   {
@@ -23,14 +23,14 @@ public class MoreMsgHeaderView
   public void a(QQVipMsgInfo paramQQVipMsgInfo, Activity paramActivity, int paramInt)
   {
     paramQQVipMsgInfo = new TextView(getContext());
-    paramQQVipMsgInfo.setText(anzj.a(2131705767));
+    paramQQVipMsgInfo.setText(amtj.a(2131705997));
     paramQQVipMsgInfo.setTextColor(-16777216);
     paramQQVipMsgInfo.setAlpha(0.5F);
     paramQQVipMsgInfo.setEms(1);
     paramActivity = new RelativeLayout.LayoutParams(-2, -2);
     paramActivity.addRule(9);
     paramActivity.addRule(15);
-    paramActivity.leftMargin = agej.a(50.0F, BaseApplicationImpl.getApplication().getResources());
+    paramActivity.leftMargin = AIOUtils.dp2px(50.0F, BaseApplicationImpl.getApplication().getResources());
     addView(paramQQVipMsgInfo, paramActivity);
   }
 }

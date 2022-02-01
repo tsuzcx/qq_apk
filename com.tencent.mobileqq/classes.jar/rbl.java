@@ -1,12 +1,17 @@
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.AdReport;
 
 public class rbl
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
-  ReadInJoyNickNameTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView;
+  public String a;
+  
+  public static rbl a(oidb_0x5bd.AdReport paramAdReport)
+  {
+    rbl localrbl = new rbl();
+    localrbl.a = paramAdReport.bytes_report_url.get().toStringUtf8();
+    return localrbl;
+  }
 }
 
 

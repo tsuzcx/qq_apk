@@ -1,25 +1,8 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.5.1;
-
-public class bfhy
-  implements Animation.AnimationListener
+public abstract interface bfhy
 {
-  public bfhy(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public abstract int a(int paramInt);
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (this.a.b == null) {
-      return;
-    }
-    this.a.b.post(new TroopAvatarWallPreviewActivity.5.1(this));
-  }
+  public abstract String a(int paramInt1, int paramInt2);
 }
 
 

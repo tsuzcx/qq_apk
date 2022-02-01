@@ -1,14 +1,18 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ahyy
-  implements ahyf
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    paramahed.a(paramagjk, paramahfq, paramString);
-  }
+  public int a;
+  public long a;
+  public ImageView a;
+  public TextView a;
+  public String a;
+  public TextView b;
+  public String b;
+  public TextView c;
+  public String c;
+  public TextView d;
 }
 
 

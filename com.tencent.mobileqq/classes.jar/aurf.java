@@ -1,22 +1,6 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanageraux.core.UniformDownloadMgr.1;
-
-public class aurf
-  extends BroadcastReceiver
+public abstract interface aurf
 {
-  public aurf(UniformDownloadMgr.1 param1) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent == null) {
-      return;
-    }
-    paramContext = paramIntent.getBundleExtra("param");
-    paramIntent = paramIntent.getStringExtra("url");
-    aure.a().a(paramIntent, paramContext);
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

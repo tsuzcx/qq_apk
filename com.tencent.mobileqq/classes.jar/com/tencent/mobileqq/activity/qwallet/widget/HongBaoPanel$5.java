@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import agju;
-import alex;
-import alfa;
+import afcm;
+import akcq;
+import akct;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,19 +13,19 @@ class HongBaoPanel$5
   
   public void onItemClick(View paramView, int paramInt)
   {
-    alfa localalfa = this.this$0.mAdapter.getPanelDataAtPos(paramInt);
+    akct localakct = this.this$0.mAdapter.getPanelDataAtPos(paramInt);
     if (QLog.isColorLevel()) {
-      if ("OnHolderItemClickListener onItemClick  panelData=" + localalfa != null) {
+      if ("OnHolderItemClickListener onItemClick  panelData=" + localakct != null) {
         break label126;
       }
     }
     label126:
-    for (paramView = "null";; paramView = localalfa + ",p=" + paramInt)
+    for (paramView = "null";; paramView = localakct + ",p=" + paramInt)
     {
       QLog.d("HongBaoPanel", 2, paramView);
-      agju.a(this.this$0.mApp, this.this$0.mActivity, this.this$0.mSessionInfo, localalfa, this.this$0.mAdapter.getDatas(), 3);
-      if ((this.this$0.redManager != null) && (localalfa != null)) {
-        this.this$0.redManager.a(localalfa.a);
+      afcm.a(this.this$0.mApp, this.this$0.mActivity, this.this$0.mSessionInfo, localakct, this.this$0.mAdapter.getDatas(), 3);
+      if ((this.this$0.redManager != null) && (localakct != null)) {
+        this.this$0.redManager.a(localakct.a);
       }
       this.this$0.mAdapter.notifyItemChanged(paramInt);
       return;

@@ -1,17 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCAddAccountFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseVideoArticleInfo;
 
-public class rco
-  implements View.OnClickListener
+public final class rco
+  implements Parcelable.Creator<BaseVideoArticleInfo>
 {
-  public rco(RIJUGCAddAccountFragment paramRIJUGCAddAccountFragment) {}
-  
-  public void onClick(View paramView)
+  public BaseVideoArticleInfo a(Parcel paramParcel)
   {
-    RIJUGCAddAccountFragment.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new BaseVideoArticleInfo(paramParcel);
+  }
+  
+  public BaseVideoArticleInfo[] a(int paramInt)
+  {
+    return new BaseVideoArticleInfo[paramInt];
   }
 }
 

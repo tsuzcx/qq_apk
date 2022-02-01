@@ -1,40 +1,17 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.FlowMusic;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.subscribe.comment.SubscribeCommentInputPopupWindow.1.1;
 
-class zhg
-  implements bpmp
+public class zhg
+  implements zfn
 {
-  zhg(zhe paramzhe) {}
+  zhg(zhf paramzhf) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void a(View paramView)
   {
-    String str = zhe.a(this.a).getResources().getString(2131697599);
-    Object localObject = str;
-    if (paramBoolean)
-    {
-      paramObject = (FlowMusic)paramObject;
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicCache", 2, "onGetSingleMusicInfo flowMusic:" + paramObject.toString());
-      }
-      if ((paramObject.playable == 1) && (!TextUtils.isEmpty(paramObject.url)))
-      {
-        localObject = new zhr();
-        ((zhr)localObject).jdField_b_of_type_JavaLangString = paramObject.songName;
-        ((zhr)localObject).d = paramObject.url;
-        ((zhr)localObject).jdField_b_of_type_Int = 2;
-        ((zhr)localObject).a = String.valueOf(paramObject.songId);
-        this.a.a(12, localObject);
-        return;
-      }
-      localObject = str;
-      if (paramObject.playable != 1) {
-        localObject = zhe.a(this.a).getResources().getString(2131697600);
-      }
+    if (this.a.isShowing()) {
+      zhf.a(this.a).runOnUiThread(new SubscribeCommentInputPopupWindow.1.1(this));
     }
-    this.a.a(7, localObject);
   }
 }
 

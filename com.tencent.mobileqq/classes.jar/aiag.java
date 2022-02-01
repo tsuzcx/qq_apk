@@ -1,43 +1,31 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.ark.ArkAppManagerPanel;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class aiag
-  implements aiaq<ArkAppManagerPanel>
 {
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private ArkAppManagerPanel jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel;
-  
-  public aiag(BaseChatPie paramBaseChatPie)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  public int a()
-  {
-    return 30;
-  }
-  
-  public ArkAppManagerPanel a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel;
-  }
-  
-  public ArkAppManagerPanel a(Context paramContext)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel = ((ArkAppManagerPanel)View.inflate(paramContext, 2131558692, null));
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a);
-    return this.jdField_a_of_type_ComTencentMobileqqArkArkAppManagerPanel;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2) {}
+  public int a;
+  public String a;
+  public String b;
   
   public boolean a()
   {
-    return false;
+    return this.jdField_a_of_type_Int != 1;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((paramObject instanceof aiag))
+    {
+      paramObject = (aiag)paramObject;
+      return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+    }
+    return super.equals(paramObject);
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "Face2FaceFriendInfo uin:" + this.jdField_a_of_type_JavaLangString + " nick:" + this.b + " type:" + this.jdField_a_of_type_Int;
   }
 }
 

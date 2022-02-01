@@ -1,33 +1,14 @@
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class axth
+class axth
+  implements DialogInterface.OnDismissListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  axth(axtg paramaxtg) {}
   
-  public static axth a(JSONObject paramJSONObject)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramJSONObject == null) {
-      return null;
-    }
-    axth localaxth = new axth();
-    localaxth.a = paramJSONObject.optString("name");
-    localaxth.b = new String(bhkv.decode(paramJSONObject.optString("iconUrl"), 0));
-    localaxth.c = paramJSONObject.optString("accessibilityText");
-    localaxth.d = paramJSONObject.optString("ruleWording");
-    return localaxth;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("name=").append(this.a).append("|");
-    localStringBuilder.append("iconUrl=").append(this.b).append("|");
-    localStringBuilder.append("accessibilityText=").append(this.c).append("|");
-    localStringBuilder.append("ruleWording=").append(this.d).append("|");
-    return localStringBuilder.toString();
+    this.a.a.a(1030);
   }
 }
 

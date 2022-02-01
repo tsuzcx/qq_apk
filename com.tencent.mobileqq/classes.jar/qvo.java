@@ -1,8 +1,19 @@
-import java.net.URL;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderFriendRecommend;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public abstract interface qvo
+public class qvo
+  implements View.OnClickListener
 {
-  public abstract URL a(URL paramURL);
+  public qvo(ComponentHeaderFriendRecommend paramComponentHeaderFriendRecommend, List paramList, int paramInt) {}
+  
+  public void onClick(View paramView)
+  {
+    ComponentHeaderFriendRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend, ((Long)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)).longValue());
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

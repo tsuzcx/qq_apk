@@ -1,24 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
 import com.tencent.qphone.base.util.QLog;
 
-class aonp
-  implements aonu
+public class aonp
+  implements View.OnTouchListener
 {
-  aonp(aono paramaono, BaseActivity paramBaseActivity, long paramLong1, long paramLong2, String paramString) {}
+  public aonp(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.d("AVGameShareUtil", 1, "getShareLinkCallback isSuccess: " + paramBoolean + " shareUrl: " + paramString);
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
-    {
-      new aoni(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, String.valueOf(this.jdField_a_of_type_Long), paramString, this.b, this.jdField_a_of_type_JavaLangString, 0).c();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanEntryProviderContainerView", 2, String.format("dispatchTouchEvent onTabClickListener", new Object[0]));
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, 2131690382, 0).a();
+    long l = System.currentTimeMillis();
+    if (l - ScanEntryProviderContainerView.a(this.a) <= 1000L) {
+      QLog.i("ScanEntryProviderContainerView", 1, "avoid user fast click");
+    }
+    do
+    {
+      return false;
+      ScanEntryProviderContainerView.a(this.a, l);
+      switch (paramMotionEvent.getAction())
+      {
+      default: 
+        return false;
+      }
+      paramView = (Integer)paramView.getTag();
+      ScanEntryProviderContainerView.a(this.a).a(paramView.intValue(), new aonq(this, paramView));
+    } while (paramView.intValue() != 2);
+    bcef.b(null, "dc00898", "", "", "0X800A9CE", "0X800A9CE", 0, 0, "", "0", "0", "");
+    return false;
   }
 }
 

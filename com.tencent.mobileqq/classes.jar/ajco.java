@@ -1,20 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.activity.home.Conversation.49.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
-class ajco
-  implements ValueAnimator.AnimatorUpdateListener
+public class ajco
+  extends BroadcastReceiver
 {
-  ajco(ajcn paramajcn) {}
+  public ajco(Conversation paramConversation) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (FrameLayout.LayoutParams)this.a.a.a.getLayoutParams();
-    paramValueAnimator.topMargin = i;
-    this.a.a.a.setLayoutParams(paramValueAnimator);
+    paramContext = paramIntent.getStringExtra("wording");
+    int i = paramIntent.getIntExtra("timetowait", 360000);
+    this.a.jdField_a_of_type_Akho.jdField_a_of_type_Int = i;
+    this.a.jdField_a_of_type_Akho.jdField_a_of_type_JavaLangString = paramContext;
+    this.a.jdField_a_of_type_Akho.a(22, 2);
+    this.a.jdField_a_of_type_Akho.a(-1, null);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class).postDelayed(new Conversation.49.1(this), i);
+    bcef.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_PushBanner", "showBanner", 0, 0, "", "", "", "");
   }
 }
 

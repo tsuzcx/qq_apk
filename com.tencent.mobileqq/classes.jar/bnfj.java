@@ -1,8 +1,4 @@
-public abstract interface bnfj
-{
-  public abstract void a(boolean paramBoolean);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bnfj

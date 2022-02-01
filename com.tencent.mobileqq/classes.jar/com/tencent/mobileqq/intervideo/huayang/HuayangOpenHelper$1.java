@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
 import android.os.Handler;
-import avzj;
-import awat;
+import aumj;
+import aunt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import java.util.Map;
@@ -10,11 +10,11 @@ import java.util.Map;
 public final class HuayangOpenHelper$1
   implements Runnable
 {
-  public HuayangOpenHelper$1(String paramString1, awat paramawat, QQAppInterface paramQQAppInterface, String paramString2, String paramString3, Map paramMap) {}
+  public HuayangOpenHelper$1(String paramString1, aunt paramaunt, QQAppInterface paramQQAppInterface, String paramString2, String paramString3, Map paramMap) {}
   
   public void run()
   {
-    avzj.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Awat);
+    aumj.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aunt);
     ThreadManagerV2.getUIHandlerV2().post(new HuayangOpenHelper.1.1(this));
   }
 }

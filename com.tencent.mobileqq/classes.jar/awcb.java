@@ -1,87 +1,60 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class awcb
-  extends aohi
+  extends awca
 {
-  public awcb(ShareToQQActivity paramShareToQQActivity) {}
-  
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  public awcb(QQAppInterface paramQQAppInterface)
   {
-    if (this.a.a == null)
-    {
-      this.a.finish();
+    super(paramQQAppInterface);
+  }
+  
+  private void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap)
+  {
+    if ((paramHashMap == null) || (paramHashMap.isEmpty())) {
       return;
     }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
+    Iterator localIterator = paramHashMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
+      ArrayList localArrayList = (ArrayList)paramHashMap.get((String)localIterator.next());
+      int i = 0;
+      while (i < localArrayList.size())
       {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
+        MessageRecord localMessageRecord = (MessageRecord)localArrayList.get(i);
+        if (((localMessageRecord instanceof MessageForFile)) || ((localMessageRecord instanceof MessageForTroopFile)))
         {
-          if (bhjx.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
+          String str = amtj.a(2131692111) + localMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+          localArrayList.set(i, this.a.getProxyManager().a().a(localMessageRecord, str, true));
         }
+        i += 1;
       }
-      if (k != 0)
-      {
-        paramList = new Intent();
-        paramList.putExtra("isSuccess", paramBoolean);
-        paramList.putExtra("isCancelShield", false);
-        this.a.setResult(-1, paramList);
-      }
-      this.a.finish();
-      return;
     }
   }
   
-  protected void b(boolean paramBoolean, List<Long> paramList)
+  public void a(awcs paramawcs, HashMap<String, ArrayList<MessageRecord>> paramHashMap, awcd paramawcd)
   {
-    int k = 0;
-    if (this.a.a == null)
-    {
-      this.a.finish();
+    if (paramawcs == null) {
       return;
     }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
+    if ((paramawcs.b == 8) || (paramawcs.b == 9)) {}
+    for (paramawcs = new asly(this.a, paramawcs, paramHashMap, paramawcd);; paramawcs = new aslw(this.a, paramawcs, paramHashMap, paramawcd))
     {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bhjx.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k != 0)
-      {
-        paramList = new Intent();
-        paramList.putExtra("isSuccess", paramBoolean);
-        paramList.putExtra("isCancelShield", true);
-        this.a.setResult(-1, paramList);
-      }
-      this.a.finish();
+      this.a.getFileManagerEngine().a().a(paramawcs, paramHashMap);
       return;
+      if (paramawcs.b == 2)
+      {
+        a(paramHashMap);
+        paramawcd.a(0, 2, paramawcs);
+        return;
+      }
     }
   }
 }

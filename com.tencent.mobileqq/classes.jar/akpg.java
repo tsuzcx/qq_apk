@@ -1,24 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.PhoneFrame;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class akpg
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public akpg(PhoneFrameActivity paramPhoneFrameActivity) {}
+  public akpg(LoginView paramLoginView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    auxu localauxu = this.a.a.a();
-    if (localauxu != null) {
-      localauxu.a(false);
-    }
-    com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.f = false;
-    this.a.setResult(1);
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    float f = paramValueAnimator.getAnimatedFraction();
+    int i = (int)((LoginView.b(this.a) - LoginView.c(this.a)) * f + LoginView.c(this.a));
+    int j = (int)((LoginView.d(this.a) - LoginView.e(this.a)) * f + LoginView.e(this.a));
+    int k = (int)((LoginView.f(this.a) - LoginView.g(this.a)) * f + LoginView.g(this.a));
+    int m = (int)((LoginView.h(this.a) - LoginView.i(this.a)) * f + LoginView.i(this.a));
+    LoginView.a(this.a, i, j, k, m, f);
   }
 }
 

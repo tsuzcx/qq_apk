@@ -1,25 +1,48 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.view.View;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.view.WSSwipeRefreshLayout;
+import com.tencent.mfsdk.collector.DropFrameMonitor;
 
-class uzu
-  extends RecyclerView.ViewHolder
+public class uzu
+  extends RecyclerView.OnScrollListener
 {
-  public uzu(View paramView)
+  public uzu(WSVerticalPageFragment paramWSVerticalPageFragment) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    super(paramView);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    switch (paramInt)
+    {
+    default: 
+      DropFrameMonitor.getInstance().startMonitorScene("weishi_video_play_list");
+      return;
+    }
+    DropFrameMonitor.getInstance().stopMonitorScene("weishi_video_play_list", false);
   }
   
-  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo, var paramvar)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    if ((this.itemView instanceof BaseWidgetView))
+    boolean bool2 = false;
+    if ((paramRecyclerView == null) || (paramRecyclerView.getChildCount() == 0)) {}
+    for (paramInt1 = 0;; paramInt1 = paramRecyclerView.getChildAt(0).getTop())
     {
-      this.itemView.setTag(this);
-      ((BaseWidgetView)this.itemView).setInteractor(paramvar);
-      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
-      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
-      ((BaseWidgetView)this.itemView).setDataPosInList(paramInt);
+      paramRecyclerView = WSVerticalPageFragment.a(this.a);
+      boolean bool1 = bool2;
+      if (paramInt1 >= 0)
+      {
+        bool1 = bool2;
+        if (WSVerticalPageFragment.a(this.a) != null)
+        {
+          bool1 = bool2;
+          if (((uzp)WSVerticalPageFragment.b(this.a)).a()) {
+            bool1 = true;
+          }
+        }
+      }
+      paramRecyclerView.setEnabled(bool1);
+      return;
     }
   }
 }

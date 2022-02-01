@@ -12,9 +12,9 @@ import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.math.BigDecimal;
-import mzj;
-import nbs;
-import nhs;
+import nak;
+import nct;
+import njh;
 
 public class GameGridItemView
   extends RelativeLayout
@@ -23,8 +23,8 @@ public class GameGridItemView
   protected int a;
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected mzj a;
-  protected nbs a;
+  protected nak a;
+  protected nct a;
   protected boolean a;
   private View jdField_b_of_type_AndroidViewView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -44,17 +44,17 @@ public class GameGridItemView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a(mzj parammzj, boolean paramBoolean, int paramInt1, int paramInt2, URLDrawable paramURLDrawable1, URLDrawable paramURLDrawable2)
+  public void a(nak paramnak, boolean paramBoolean, int paramInt1, int paramInt2, URLDrawable paramURLDrawable1, URLDrawable paramURLDrawable2)
   {
-    this.jdField_a_of_type_Mzj = parammzj;
+    this.jdField_a_of_type_Nak = paramnak;
     this.jdField_a_of_type_Int = paramInt2;
     this.jdField_a_of_type_Boolean = paramBoolean;
     float f;
-    if (parammzj.a >= 100000000L)
+    if (paramnak.a >= 100000000L)
     {
-      f = new BigDecimal((float)parammzj.a / 1.0E+008F).setScale(1, 1).floatValue();
-      parammzj = f + getContext().getResources().getString(2131690324);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131690240), new Object[] { parammzj }));
+      f = new BigDecimal((float)paramnak.a / 1.0E+008F).setScale(1, 1).floatValue();
+      paramnak = f + getContext().getResources().getString(2131690363);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format(getResources().getString(2131690265), new Object[] { paramnak }));
       if (paramURLDrawable1 == null) {
         break label291;
       }
@@ -73,18 +73,18 @@ public class GameGridItemView
         break label310;
       }
       setAlpha(1.0F);
-      parammzj = nhs.a("avgame_game_select@2x.png");
-      if (parammzj != null) {
-        this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(new BitmapDrawable(parammzj));
+      paramnak = njh.a("avgame_game_select@2x.png");
+      if (paramnak != null) {
+        this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(new BitmapDrawable(paramnak));
       }
       return;
-      if (parammzj.a >= 100000L)
+      if (paramnak.a >= 100000L)
       {
-        f = new BigDecimal((float)parammzj.a / 10000.0F).setScale(1, 1).floatValue();
-        parammzj = f + getContext().getResources().getString(2131690323);
+        f = new BigDecimal((float)paramnak.a / 10000.0F).setScale(1, 1).floatValue();
+        paramnak = f + getContext().getResources().getString(2131690362);
         break;
       }
-      parammzj = parammzj.a + "";
+      paramnak = paramnak.a + "";
       break;
       label291:
       this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
@@ -97,13 +97,13 @@ public class GameGridItemView
     this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(null);
   }
   
-  public void a(nbs paramnbs)
+  public void a(nct paramnct)
   {
-    this.jdField_a_of_type_Nbs = paramnbs;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371647));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372781));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367353);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131377260);
+    this.jdField_a_of_type_Nct = paramnct;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371615));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372749));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367377);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131377010);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     setOnClickListener(this);
   }
@@ -112,7 +112,7 @@ public class GameGridItemView
   {
     Object localObject = paramView.getTag();
     int i;
-    if (((localObject instanceof Integer)) && (this.jdField_a_of_type_Nbs != null))
+    if (((localObject instanceof Integer)) && (this.jdField_a_of_type_Nct != null))
     {
       i = ((Integer)localObject).intValue();
       if (!(paramView instanceof GameGridItemView)) {
@@ -121,7 +121,7 @@ public class GameGridItemView
       if (QLog.isColorLevel()) {
         QLog.i("GameGridItemView", 2, "itemGridClick " + i);
       }
-      this.jdField_a_of_type_Nbs.b(i);
+      this.jdField_a_of_type_Nct.b(i);
     }
     for (;;)
     {
@@ -132,8 +132,8 @@ public class GameGridItemView
       {
       default: 
         break;
-      case 2131367353: 
-        this.jdField_a_of_type_Nbs.a(i);
+      case 2131367377: 
+        this.jdField_a_of_type_Nct.a(i);
       }
     }
   }

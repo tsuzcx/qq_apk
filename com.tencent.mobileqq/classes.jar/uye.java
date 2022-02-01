@@ -1,11 +1,15 @@
-public class uye
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+final class uye
+  implements DialogInterface.OnDismissListener
 {
-  public int a = 600;
-  public String a;
-  public boolean a;
-  public int b = 400;
-  public String b;
-  public String c;
+  uye(uwy paramuwy) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    uyd.b(this.a);
+  }
 }
 
 

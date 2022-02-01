@@ -1,22 +1,42 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
+import com.tencent.mobileqq.text.TextUtils;
 
-public class xij
-  extends woz<xdv, xdw>
+class xij
+  implements EmoticonCallback
 {
-  public xij(StoryShareEncryptHelper.2 param2, long paramLong, bjbs parambjbs) {}
+  xij(xih paramxih) {}
   
-  public void a(@NonNull xdv paramxdv, @Nullable xdw paramxdw, @NonNull ErrorMessage paramErrorMessage)
+  public void delete()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.share.trans.helper", 2, "decrypt done costTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", resp:" + paramxdw);
+    if (xih.a(this.a) != null) {
+      TextUtils.backspace(xih.a(this.a));
     }
-    yup.a("StoryShareEncryptHelper", "decrypt", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareUtilStoryShareEncryptHelper$2.a.a(paramxdw, this.jdField_a_of_type_Bjbs);
   }
+  
+  public void emoticonMall() {}
+  
+  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
+  
+  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
+  {
+    return false;
+  }
+  
+  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public void send() {}
+  
+  public void send(EmoticonInfo paramEmoticonInfo)
+  {
+    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (xih.a(this.a) != null)) {
+      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).send(xih.a(), xih.a(this.a), xih.a(this.a), null);
+    }
+  }
+  
+  public void setting() {}
 }
 
 

@@ -7,14 +7,14 @@ import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import tgx;
+import tla;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Lorg/json/JSONObject;", "callback", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class DeviceBridgeInvokeHandler$register$1
   extends Lambda
   implements Function2<JSONObject, String, Unit>
 {
-  public DeviceBridgeInvokeHandler$register$1(tgx paramtgx)
+  public DeviceBridgeInvokeHandler$register$1(tla paramtla)
   {
     super(2);
   }
@@ -26,7 +26,7 @@ public final class DeviceBridgeInvokeHandler$register$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.1
  * JD-Core Version:    0.7.0.1
  */

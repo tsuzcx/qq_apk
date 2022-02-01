@@ -1,81 +1,10 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResultCallback;
-import java.io.File;
-import mqq.app.AppRuntime;
+import android.os.Bundle;
 
-public class bibq
+public abstract interface bibq
 {
-  public static File a(Context paramContext)
-  {
-    return bibw.a(paramContext);
-  }
+  public abstract int a(String paramString1, int paramInt, String paramString2, Bundle paramBundle);
   
-  public static String a(Context paramContext)
-  {
-    paramContext = paramContext.getFilesDir().getAbsolutePath();
-    if (paramContext.endsWith(File.separator)) {
-      return paramContext + "GLDrawableV845.zip";
-    }
-    return paramContext + File.separator + "GLDrawableV845.zip";
-  }
-  
-  public static void a()
-  {
-    try
-    {
-      a(false);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void a(Context paramContext, int paramInt)
-  {
-    if (paramInt != 0) {}
-    try
-    {
-      QLog.e("GLDrawableDownloadHelper", 1, "error: " + paramInt);
-      return;
-    }
-    finally
-    {
-      paramContext = finally;
-      throw paramContext;
-    }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-        if ((localObject1 instanceof QQAppInterface)) {
-          ((VasQuickUpdateManager)((AppRuntime)localObject1).getManager(184)).downloadItem(1004L, "GLDrawableV845", "gldrawable");
-        }
-        return;
-      }
-      finally {}
-      Object localObject1 = new bibr();
-      QIPCClientHelper.getInstance().callServer("VasFontIPCModule", gm.k, null, (EIPCResultCallback)localObject1);
-    }
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return new File(a(paramContext)).exists();
-  }
+  public abstract void a(String paramString, int paramInt, Bundle paramBundle);
 }
 
 

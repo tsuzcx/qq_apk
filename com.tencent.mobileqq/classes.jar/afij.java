@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class afij
-  implements biau
+class afij
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public afij(QQSettingMe paramQQSettingMe) {}
+  afij(afii paramafii) {}
   
-  public void a()
+  public void onGlobalLayout()
   {
-    if (this.a.a != null)
+    if (this.a.b)
     {
+      this.a.b = false;
+      this.a.uiHandler.sendEmptyMessageDelayed(23, 100L);
       if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "enterWordListener");
+        QLog.d(this.a.tag, 2, " doOnCreate_initUI onGlobalLayout");
       }
-      this.a.c(this.a.a.getAccount());
     }
   }
 }

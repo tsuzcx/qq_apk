@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.support.v4.app.FragmentActivity;
-import bjbs;
+import bhht;
 
 class TroopInviteStatusFragment$1
   implements Runnable
@@ -10,16 +10,16 @@ class TroopInviteStatusFragment$1
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Bjbs == null) || (this.this$0.jdField_a_of_type_Bjbs.isShowing()) || (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing())) {
+    if ((this.this$0.jdField_a_of_type_Bhht == null) || (this.this$0.jdField_a_of_type_Bhht.isShowing()) || (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) || (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing())) {
       return;
     }
-    this.this$0.jdField_a_of_type_Bjbs.c(2131717414);
-    this.this$0.jdField_a_of_type_Bjbs.show();
+    this.this$0.jdField_a_of_type_Bhht.c(2131717646);
+    this.this$0.jdField_a_of_type_Bhht.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopInviteStatusFragment.1
  * JD-Core Version:    0.7.0.1
  */

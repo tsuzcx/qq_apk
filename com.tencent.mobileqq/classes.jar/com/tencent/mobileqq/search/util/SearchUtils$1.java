@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.util;
 
-import aoha;
+import anap;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.SearchHistory;
 import com.tencent.qphone.base.util.QLog;
@@ -20,17 +20,17 @@ public final class SearchUtils$1
     localSearchHistory.uin = this.b;
     localSearchHistory.troopUin = this.c;
     localSearchHistory.displayName = this.jdField_a_of_type_JavaLangString;
-    aoha localaoha = (aoha)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55);
-    if (localaoha == null) {
+    anap localanap = (anap)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55);
+    if (localanap == null) {
       return;
     }
-    localaoha.a(localSearchHistory);
+    localanap.a(localSearchHistory);
     com.tencent.mobileqq.search.activity.UniteSearchActivity.c = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.SearchUtils.1
  * JD-Core Version:    0.7.0.1
  */

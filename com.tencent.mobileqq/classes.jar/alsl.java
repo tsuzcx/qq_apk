@@ -1,108 +1,127 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Filter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
 public class alsl
-  extends ArrayAdapter
-  implements View.OnClickListener
 {
-  Filter jdField_a_of_type_AndroidWidgetFilter;
+  public float a;
+  public int a;
+  public String a;
+  public Map<String, String> a;
+  public float b;
+  public String b;
+  public float c;
+  public String c;
+  public float d;
+  public float e;
+  public float f;
+  public float g;
+  public float h;
+  public float i;
+  public float j;
+  public float k;
+  public float l;
+  public float m;
+  public float n;
+  public float o;
+  public float p;
+  public float q;
+  public float r;
+  public float s;
+  public float t;
   
-  public alsl(LoginView paramLoginView, Context paramContext)
+  public alsl(String paramString1, String paramString2, String paramString3, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, float paramFloat9, float paramFloat10, float paramFloat11, float paramFloat12, float paramFloat13, float paramFloat14, float paramFloat15, float paramFloat16, float paramFloat17, float paramFloat18, float paramFloat19, float paramFloat20)
   {
-    super(paramContext, 2131558412, 2131368996, paramLoginView.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Float = paramFloat3;
+    this.d = paramFloat4;
+    this.e = paramFloat5;
+    this.f = paramFloat6;
+    this.g = paramFloat7;
+    this.h = paramFloat8;
+    this.i = paramFloat9;
+    this.j = paramFloat10;
+    this.k = paramFloat11;
+    this.l = paramFloat12;
+    this.m = paramFloat13;
+    this.n = paramFloat14;
+    this.o = paramFloat15;
+    this.p = paramFloat16;
+    this.q = paramFloat17;
+    this.r = paramFloat18;
+    this.s = paramFloat19;
+    this.t = paramFloat20;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    a();
   }
   
-  public String a(int paramInt)
+  private void a()
   {
-    String str = ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return str;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(str);
-  }
-  
-  public String b(int paramInt)
-  {
-    return ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.size() == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.b().setVisibility(8);
-    }
-    for (;;)
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    Object localObject;
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
     {
-      return super.getCount();
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.b().setVisibility(0);
-    }
-  }
-  
-  public Filter getFilter()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetFilter == null) {
-      this.jdField_a_of_type_AndroidWidgetFilter = new alsm(this);
-    }
-    return this.jdField_a_of_type_AndroidWidgetFilter;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = super.getView(paramInt, paramView, paramViewGroup);
-    LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131363243);
-    ImageView localImageView = (ImageView)localView.findViewById(2131368913);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.a(((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin(), false);
-    if ((localObject instanceof Bitmap))
-    {
-      localImageView.setImageBitmap((Bitmap)localObject);
-      localImageView = (ImageView)localView.findViewById(2131368869);
-      localImageView.setTag(Integer.valueOf(paramInt));
-      localImageView.setOnClickListener(this);
-      localImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131718538));
-      localView.setContentDescription(String.format(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131689501) + "%s", new Object[] { ((SimpleAccount)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_JavaUtilList.get(paramInt)).getUin() }));
-      if (getCount() != 1) {
-        break label280;
+      localObject = this.jdField_c_of_type_JavaLangString.split("&");
+      if ((localObject != null) && (localObject.length > 0))
+      {
+        int i2 = localObject.length;
+        int i1 = 0;
+        while (i1 < i2)
+        {
+          String[] arrayOfString = localObject[i1].split("=");
+          if ((arrayOfString != null) && (arrayOfString.length == 2)) {
+            this.jdField_a_of_type_JavaUtilMap.put(arrayOfString[0], arrayOfString[1]);
+          }
+          i1 += 1;
+        }
       }
-      localLinearLayout.setPadding(0, agej.a(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()), 0, agej.a(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()));
+      localObject = (String)this.jdField_a_of_type_JavaUtilMap.get("bubbleID");
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
     }
-    for (;;)
+    try
     {
-      localLinearLayout.setOnClickListener(new alsn(this, paramInt));
-      localView.setOnTouchListener(new mve());
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localImageView.setImageResource(2130840588);
-      break;
-      label280:
-      if (paramInt == 0) {
-        localLinearLayout.setPadding(0, agej.a(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()), 0, 0);
-      } else if (paramInt == getCount() - 1) {
-        localLinearLayout.setPadding(0, 0, 0, agej.a(7.5F, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.getResources()));
-      } else {
-        localLinearLayout.setPadding(0, 0, 0, 0);
-      }
+      this.jdField_a_of_type_Int = Integer.parseInt((String)localObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ApolloSkeletonBounding", 1, "parse bubbleID exception=", localException);
     }
   }
   
-  public void onClick(View paramView)
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, float paramFloat9, float paramFloat10, float paramFloat11, float paramFloat12, float paramFloat13, float paramFloat14, float paramFloat15, float paramFloat16, float paramFloat17, float paramFloat18, float paramFloat19, float paramFloat20, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_Int = ((Integer)paramView.getTag()).intValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.showDialog(1);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Float = paramFloat3;
+    this.d = paramFloat4;
+    this.e = paramFloat5;
+    this.f = paramFloat6;
+    this.g = paramFloat7;
+    this.h = paramFloat8;
+    this.i = paramFloat9;
+    this.j = paramFloat10;
+    this.k = paramFloat11;
+    this.l = paramFloat12;
+    this.m = paramFloat13;
+    this.n = paramFloat14;
+    this.o = paramFloat15;
+    this.p = paramFloat16;
+    this.q = paramFloat17;
+    this.r = paramFloat18;
+    this.s = paramFloat19;
+    this.t = paramFloat20;
+    this.jdField_c_of_type_JavaLangString = paramString;
+    a();
+  }
+  
+  public String toString()
+  {
+    return "ApolloSkeletonBounding{name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", x=" + this.jdField_a_of_type_Float + ", y=" + this.jdField_b_of_type_Float + ", width=" + this.jdField_c_of_type_Float + ", height=" + this.d + ", bubbleX=" + this.e + ", bubbleY=" + this.f + ", bubbleWidth=" + this.g + ", bubbleHeight=" + this.h + ", giftX=" + this.i + ", giftY=" + this.j + ", giftWidth=" + this.k + ", giftHeight=" + this.l + ", brand1X=" + this.m + ", brand1Y=" + this.n + ", brand1Width=" + this.o + ", brand1Height=" + this.p + ", brand2X=" + this.q + ", brand2Y=" + this.r + ", brand2Width=" + this.s + ", brand2Height=" + this.t + ", extendString='" + this.jdField_b_of_type_JavaLangString + '\'' + ", extraInfoString='" + this.jdField_c_of_type_JavaLangString + '\'' + ", extraInfoMap=" + this.jdField_a_of_type_JavaUtilMap + ", brandMode=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

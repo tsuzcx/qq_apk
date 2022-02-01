@@ -1,21 +1,52 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 
-class aqpb
-  implements MiniAppCmdInterface
+public class aqpb
 {
-  aqpb(aqoz paramaqoz, BaseChatPie paramBaseChatPie) {}
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private final aqnp jdField_a_of_type_Aqnp;
+  private final Rect b = new Rect();
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public aqpb(aqnp paramaqnp)
   {
-    if ((paramJSONObject != null) && (paramJSONObject.optInt("retCode") == -12998002)) {
-      this.jdField_a_of_type_Aqoz.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+    this.jdField_a_of_type_Aqnp = paramaqnp;
+  }
+  
+  private boolean a(Canvas paramCanvas, aqoa paramaqoa, aqoj paramaqoj, aqpa paramaqpa)
+  {
+    paramaqoj = this.jdField_a_of_type_Aqnp.a(paramaqoa, paramaqoj);
+    if (paramaqoj == null) {
+      return false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CShortcutBarJumpController", 2, "onCmdListener() isSuc = " + paramBoolean);
-    }
+    int i = paramCanvas.save();
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, (int)paramaqoa.f(), (int)paramaqoa.g());
+    this.b.set((int)paramaqoa.b(), (int)paramaqoa.c(), (int)paramaqoa.d(), (int)paramaqoa.e());
+    paramCanvas.drawBitmap(paramaqoj, this.jdField_a_of_type_AndroidGraphicsRect, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.restoreToCount(i);
+    return true;
+  }
+  
+  private void b(Canvas paramCanvas, aqoa paramaqoa, aqoj paramaqoj, aqpa paramaqpa)
+  {
+    int i = paramCanvas.save();
+    paramaqpa.a(paramCanvas, paramaqoa, paramaqoj, paramaqoa.h(), paramaqoa.i());
+    paramCanvas.restoreToCount(i);
+  }
+  
+  public void a(Canvas paramCanvas, aqoa paramaqoa, aqoj paramaqoj, aqpa paramaqpa)
+  {
+    if (paramCanvas == null) {}
+    do
+    {
+      return;
+      if (!paramaqoa.e()) {
+        break;
+      }
+    } while (a(paramCanvas, paramaqoa, paramaqoj, paramaqpa));
+    aqoz.a(false);
+    b(paramCanvas, paramaqoa, paramaqoj, paramaqpa);
   }
 }
 

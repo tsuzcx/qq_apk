@@ -1,44 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import android.util.SparseArray;
 
 public class aihq
-  implements BusinessObserver
 {
-  aihq(aihh paramaihh) {}
+  public int a;
+  public SparseArray<byte[]> a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aihq()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
-      }
-    }
-    try
-    {
-      localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
-      if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
-      {
-        paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
-        ThreadManager.getFileThreadHandler().post(new BusinessCmrTmpChatPie.2.1(this, paramBundle));
-      }
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle) {}
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.d = null;
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
   }
 }
 

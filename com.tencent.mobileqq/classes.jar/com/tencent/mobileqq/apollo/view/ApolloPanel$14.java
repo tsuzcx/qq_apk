@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.view;
 
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.widget.QQToast;
 
 class ApolloPanel$14
@@ -10,8 +10,8 @@ class ApolloPanel$14
   
   public void run()
   {
-    if ((this.this$0.a != null) && (this.this$0.a.a != null)) {
-      QQToast.a(this.this$0.a.a, 2, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_Int);
+    if ((this.this$0.a != null) && (this.this$0.a.mContext != null)) {
+      QQToast.a(this.this$0.a.mContext, 2, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_Int);
     }
   }
 }

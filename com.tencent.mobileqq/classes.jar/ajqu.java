@@ -1,33 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import com.tencent.mobileqq.activity.photo.album.PhotoListBaseData;
+import java.util.HashMap;
 
 public class ajqu
-  implements View.OnClickListener
+  extends PhotoListBaseData
 {
-  public ajqu(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
-  
-  public void onClick(View paramView)
-  {
-    if (!(paramView.getTag() instanceof ajov)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ajov localajov = (ajov)paramView.getTag();
-      if (localajov.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() == 2)
-      {
-        this.a.a(localajov);
-        if (localajov.jdField_a_of_type_Int == 82) {
-          bdll.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", localajov.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
-        }
-      }
-    }
-  }
+  public int a;
+  public long a = -1L;
+  public SessionInfo a;
+  public String a;
+  public HashMap<String, PhotoSendParams> a;
+  public ylk a;
+  public boolean a;
+  public String b;
+  public HashMap<String, byte[]> b;
+  public boolean b;
+  public String c;
+  public HashMap<LocalMediaInfo, LocalMediaInfo> c = new HashMap();
+  public boolean c;
+  public String d;
+  public boolean d = true;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
+  public boolean k;
 }
 
 

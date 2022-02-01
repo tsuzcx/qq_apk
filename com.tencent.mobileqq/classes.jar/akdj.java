@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Collections;
+import java.util.List;
 
 public class akdj
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public akdj(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment) {}
+  public akdj(ChooseItemView paramChooseItemView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.a.getActivity().setResult(8001);
+    if ((ChooseItemView.a(this.a) != null) && (ChooseItemView.a(this.a).size() > 1))
+    {
+      Collections.shuffle(ChooseItemView.a(this.a));
+      this.a.a.a(ChooseItemView.b(this.a));
+    }
+    if (ChooseItemView.a(this.a) != null) {
+      ChooseItemView.a(this.a).onClick(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

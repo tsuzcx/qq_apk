@@ -1,13 +1,23 @@
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import java.util.ArrayList;
 
 class ajsw
-  implements ajwk
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  ajsw(ajst paramajst) {}
+  ajsw(ajsv paramajsv, Intent paramIntent, ArrayList paramArrayList) {}
   
-  public void a()
+  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    this.a.a.sendEmptyMessageDelayed(7, 100L);
+    ((NewPhotoListActivity)this.jdField_a_of_type_Ajsv.mActivity).cancleProgressDailog();
+    if (bnsr.a(this.jdField_a_of_type_Ajsv.mActivity, paramLocalMediaInfo))
+    {
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
+      PhotoUtils.sendPhoto(this.jdField_a_of_type_Ajsv.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
+    }
   }
 }
 

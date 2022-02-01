@@ -1,23 +1,48 @@
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.EffectSettingUi.2.1;
+import com.tencent.av.ui.EffectSettingUi.2.2;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class mdc
-  extends Handler
+public class mdc
+  implements mpj
 {
-  public mdc(mdb parammdb, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public mdc(EffectSettingUi paramEffectSettingUi) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean)
   {
-    switch (paramMessage.what)
+    if (QLog.isDevelopLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 4, "onGetConfig, enable[" + paramBoolean + "]");
+    }
+    if (paramBoolean)
     {
-    default: 
+      Object localObject = this.a.jdField_a_of_type_JavaLangRefWeakReference;
+      if (localObject != null)
+      {
+        localObject = (AVActivity)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((AVActivity)localObject).runOnUiThread(new EffectSettingUi.2.1(this));
+        }
+      }
       return;
     }
-    mdb.a(this.a);
+    this.a.jdField_a_of_type_Mpj = null;
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    long l = AudioHelper.b();
+    if (QLog.isDevelopLevel()) {
+      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onStatusChanged, seq[" + l + "]");
+    }
+    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new EffectSettingUi.2.2(this, l, paramBoolean3, paramBoolean1, paramBoolean2));
   }
 }
 

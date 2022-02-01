@@ -1,104 +1,113 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.LayoutInflater;
-import android.view.Window;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.widget.DispatchActionMoveScrollView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItemPriorityHelper.1;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class bgbc
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private aqxz jdField_a_of_type_Aqxz;
-  private bgbf jdField_a_of_type_Bgbf;
-  private bgbg jdField_a_of_type_Bgbg;
-  private bgbh jdField_a_of_type_Bgbh;
-  private blir jdField_a_of_type_Blir;
-  private IphonePickerView jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView;
-  private int jdField_b_of_type_Int;
-  private bgbh jdField_b_of_type_Bgbh;
-  private int c;
+  public static final int a;
+  private static Map<String, Integer> a;
+  private static int b = 2147483647;
   
-  public bgbc(Context paramContext, aqxz paramaqxz)
+  static
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aqxz = paramaqxz;
-  }
-  
-  public aqxz a()
-  {
-    return this.jdField_a_of_type_Aqxz;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Blir == null)
+    if ((ViewUtils.getDensity() > 1.5F) && (FontSettingManager.getFontLevel() <= 16.0F)) {}
+    for (int i = 5;; i = 4)
     {
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561252, null));
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(this.jdField_a_of_type_Aqxz);
-      this.jdField_a_of_type_Blir = blir.c(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_Blir.e(true);
-      this.jdField_a_of_type_Blir.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView, null);
-      Object localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_Blir.findViewById(2131361980);
-      ((DispatchActionMoveScrollView)localObject).a = true;
-      ((DispatchActionMoveScrollView)localObject).setBackgroundResource(17170445);
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        localObject = this.jdField_a_of_type_Blir.getWindow();
-        if (localObject != null) {
-          ((Window)localObject).setFlags(16777216, 16777216);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(new bgbd(this));
-      this.jdField_a_of_type_Blir.a(new bgbe(this));
-    }
-    if (!this.jdField_a_of_type_Blir.isShowing())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(0, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.c);
-    }
-    try
-    {
-      this.jdField_a_of_type_Blir.show();
+      jdField_a_of_type_Int = i;
+      jdField_a_of_type_JavaUtilMap = new QQCustomMenuItemPriorityHelper.1();
       return;
     }
-    catch (Exception localException) {}
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public static int a(String paramString)
   {
-    switch (paramInt1)
+    Integer localInteger = (Integer)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (localInteger != null) {
+      return localInteger.intValue();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("QQCustomMenuItemPriorityHelper", 2, "[menu] menu '" + paramString + "' priority not init ");
+    }
+    int i = b;
+    b = i - 1;
+    return i;
+  }
+  
+  public static void a(bgaz parambgaz)
+  {
+    Object localObject2 = null;
+    ArrayList localArrayList = new ArrayList(parambgaz.a);
+    Collections.sort(localArrayList, new bgbd());
+    Iterator localIterator = localArrayList.iterator();
+    Object localObject6 = null;
+    Object localObject5 = null;
+    Object localObject4 = null;
+    Object localObject3 = null;
+    Object localObject1;
+    while (localIterator.hasNext())
     {
+      localObject1 = (bgbb)localIterator.next();
+      if (localObject1 != null) {
+        if (((bgbb)localObject1).jdField_a_of_type_JavaLangString.equals(BaseApplicationImpl.getContext().getString(2131693996))) {
+          localObject3 = localObject1;
+        } else if (((bgbb)localObject1).jdField_a_of_type_JavaLangString.equals(BaseApplicationImpl.getContext().getString(2131689950))) {
+          localObject4 = localObject1;
+        } else if (((bgbb)localObject1).jdField_a_of_type_JavaLangString.equals(BaseApplicationImpl.getContext().getString(2131693009))) {
+          localObject5 = localObject1;
+        } else if (((bgbb)localObject1).jdField_a_of_type_JavaLangString.equals(BaseApplicationImpl.getContext().getString(2131693964))) {
+          localObject6 = localObject1;
+        } else {
+          if (!((bgbb)localObject1).jdField_a_of_type_JavaLangString.equals(BaseApplicationImpl.getContext().getString(2131690679))) {
+            break label341;
+          }
+        }
+      }
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null) {
-        this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(paramInt1, paramInt2);
+      localObject2 = localObject1;
+      break;
+      if ((localObject5 != null) && (localObject5.jdField_a_of_type_Boolean))
+      {
+        localArrayList.remove(localObject5);
+        localArrayList.add(localObject5);
       }
-      return;
-      this.jdField_a_of_type_Int = paramInt2;
-      continue;
-      this.jdField_b_of_type_Int = paramInt2;
-      continue;
-      this.c = paramInt2;
-    }
-  }
-  
-  public void a(bgbf parambgbf)
-  {
-    this.jdField_a_of_type_Bgbf = parambgbf;
-  }
-  
-  public void a(bgbg parambgbg)
-  {
-    this.jdField_a_of_type_Bgbg = parambgbg;
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Blir != null) && (this.jdField_a_of_type_Blir.isShowing())) {
-      this.jdField_a_of_type_Blir.dismiss();
+      if ((localObject6 != null) && (localObject6.jdField_a_of_type_Boolean) && (localObject2 != null))
+      {
+        localArrayList.remove(localObject6);
+        localArrayList.add(localArrayList.indexOf(localObject2), localObject6);
+      }
+      if (localObject4 != null)
+      {
+        localArrayList.remove(localObject4);
+        localArrayList.add(localObject4);
+      }
+      if (localObject3 != null)
+      {
+        localArrayList.remove(localObject3);
+        if (localArrayList.size() < jdField_a_of_type_Int) {
+          break label331;
+        }
+        localArrayList.add(jdField_a_of_type_Int - 1, localObject3);
+      }
+      for (;;)
+      {
+        parambgaz.a.clear();
+        parambgaz.a.addAll(localArrayList);
+        return;
+        label331:
+        localArrayList.add(localObject3);
+      }
+      label341:
+      localObject1 = localObject2;
     }
   }
 }

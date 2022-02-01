@@ -1,14 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDianDianEntranceModule.1;
-
-public class pqe
-  implements pff
+public abstract interface pqe
 {
-  public pqe(ReadInJoyDianDianEntranceModule.1 param1) {}
-  
-  public void a(pfh parampfh)
-  {
-    parampfh.a(this.a.a);
-  }
+  public abstract void a();
 }
 
 

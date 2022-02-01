@@ -1,34 +1,38 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import java.util.Queue;
 
 public class bffk
-  extends BroadcastReceiver
+  implements Animator.AnimatorListener
 {
-  public bffk(AbsPublishActivity paramAbsPublishActivity) {}
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bffk(MessageSubtitleView paramMessageSubtitleView, boolean paramBoolean, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if ("key_photo_delete_action".equals(paramContext))
-    {
-      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
-      this.a.a(i, 9);
-    }
-    do
-    {
-      return;
-      if ("key_audio_delete_action".equals(paramContext))
-      {
-        this.a.a(0);
-        this.a.a = null;
-        bgqv.a(this.a.o, this.a.p, "del_record", this.a.q, this.a.b, "", "");
-        return;
-      }
-    } while (!"key_audio_play_action".equals(paramContext));
-    bgqv.a(this.a.o, this.a.p, "preview_record", this.a.q, this.a.b, "", "");
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
   }
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.jdField_a_of_type_Int == MessageSubtitleView.c) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.b();
+      }
+      if (!this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.a.isEmpty()) {
+        MessageSubtitleView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView);
+      }
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

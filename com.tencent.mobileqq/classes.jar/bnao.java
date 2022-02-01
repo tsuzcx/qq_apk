@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.PublishEventTag;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public final class bnao
-  implements Parcelable.Creator<PublishEventTag>
+final class bnao
+  implements EIPCResultCallback
 {
-  public PublishEventTag a(Parcel paramParcel)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return new PublishEventTag(paramParcel);
-  }
-  
-  public PublishEventTag[] a(int paramInt)
-  {
-    return new PublishEventTag[paramInt];
+    if (paramEIPCResult != null)
+    {
+      boolean bool = paramEIPCResult.data.getBoolean("key_result");
+      QLog.d("PeakIpcController", 2, "sendPic result:" + bool);
+    }
   }
 }
 

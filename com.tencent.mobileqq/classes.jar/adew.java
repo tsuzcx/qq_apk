@@ -1,20 +1,21 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adew
-  implements adci
+  implements View.OnClickListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    ((bbav)paramQQAppInterface.getManager(36)).a(paramMsgType0x210.vProtobuf);
-  }
+  public adew(EditActivity paramEditActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onClick(View paramView)
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    EditActivity.a(this.a).setVisibility(4);
+    EditActivity.a(this.a).setImageResource(2130847816);
+    EditActivity.a(this.a, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

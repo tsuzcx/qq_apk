@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.webprocess;
 
-import bimf;
+import bgso;
 
 class WebProcessManager$1
   implements Runnable
 {
-  WebProcessManager$1(WebProcessManager paramWebProcessManager, bimf parambimf) {}
+  WebProcessManager$1(WebProcessManager paramWebProcessManager, bgso parambgso) {}
   
   public void run()
   {
-    this.a.a(false);
+    this.a.onResult(false);
   }
 }
 

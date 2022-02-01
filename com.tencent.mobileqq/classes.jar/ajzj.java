@@ -1,19 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbFragment;
 
-class ajzj
-  implements bdhy
+public class ajzj
 {
-  ajzj(ajzi paramajzi) {}
+  public int a;
+  public BaseHbFragment a;
+  public String a;
   
-  public void a()
+  public ajzj(int paramInt, String paramString, BaseHbFragment paramBaseHbFragment)
   {
-    QLog.i("SDKEmotionSettingManager", 1, "setEmotion show self dialog grant");
-  }
-  
-  public void b()
-  {
-    QLog.i("SDKEmotionSettingManager", 1, "setEmotion show self dialog denied");
-    ajyt.a(this.a.a, ajyt.b(this.a.a));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment = paramBaseHbFragment;
   }
 }
 

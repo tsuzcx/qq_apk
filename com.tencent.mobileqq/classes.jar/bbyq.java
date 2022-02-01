@@ -1,32 +1,35 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.qphone.base.util.QLog;
+import QC.GetConciseThemeRsp;
+import QC.ItemDisDetail;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BusinessObserver;
+import java.util.ArrayList;
+import java.util.List;
 
-class bbyq
-  implements ViewPager.OnPageChangeListener
+final class bbyq
+  implements BusinessObserver
 {
-  bbyq(bbyl parambbyl) {}
+  bbyq(String paramString, AppInterface paramAppInterface, boolean paramBoolean) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    QLog.d("HotWordRecommendPagerModel", 1, "onPageScrollStateChanged");
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    QLog.d("HotWordRecommendPagerModel", 1, "onPageScrolled");
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    QLog.d("HotWordRecommendPagerModel", 1, "onPageSelected");
-    if (paramInt == 0) {
-      this.a.d();
-    }
-    for (;;)
+    if ((paramBoolean) && ((paramObject instanceof GetConciseThemeRsp)))
     {
-      this.a.a(paramInt);
-      return;
-      this.a.c();
+      paramObject = (GetConciseThemeRsp)paramObject;
+      bbyp.a.clear();
+      paramInt = 0;
+      while (paramInt < paramObject.vItems.size())
+      {
+        ItemDisDetail localItemDisDetail = (ItemDisDetail)paramObject.vItems.get(paramInt);
+        bbyp.a.add(localItemDisDetail.itemId + "");
+        if (TextUtils.equals("2920", localItemDisDetail.itemId + "")) {
+          bbyp.c = paramInt;
+        }
+        paramInt += 1;
+      }
+      paramInt = bbyp.a(this.jdField_a_of_type_JavaLangString);
+      bbyp.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Boolean, 1);
+      bbyp.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramInt, 1);
     }
   }
 }

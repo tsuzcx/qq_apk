@@ -1,21 +1,20 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForceLogoutActivity;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adgt
-  implements adci
+  implements View.OnClickListener
 {
-  public static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, int paramInt, MsgInfo paramMsgInfo)
-  {
-    ((avya)paramQQAppInterface.getManager(268)).a(paramArrayOfByte, paramInt, paramMsgInfo);
-  }
+  public adgt(ForceLogoutActivity paramForceLogoutActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onClick(View paramView)
   {
-    a(paramadan.a(), paramMsgType0x210.vProtobuf, 1, paramMsgInfo);
-    bcrw.a(paramadan.a().a(), paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
-    return null;
+    this.a.finish();
+    this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

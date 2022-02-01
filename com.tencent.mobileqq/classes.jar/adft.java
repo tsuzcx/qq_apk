@@ -1,36 +1,19 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0xc1.submsgtype0xc1.MsgBody;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.text.QQTextBuilder;
 
 public class adft
-  implements adci
+  extends Editable.Factory
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("QAV.Random.push", 2, "[random room owner] onLinePush receive 0x210_0xc1");
-    }
-    try
-    {
-      submsgtype0xc1.MsgBody localMsgBody = new submsgtype0xc1.MsgBody();
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      paramQQAppInterface.a().a(localMsgBody);
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QAV.Random.push", 2, "[random room owner] onLinePush 0x210_0xc1 push exception", paramQQAppInterface);
-    }
-  }
+  public adft(EditInfoActivity paramEditInfoActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    if ((paramCharSequence instanceof QQTextBuilder)) {
+      return (Editable)paramCharSequence;
+    }
+    return new QQTextBuilder(paramCharSequence, 3, 20);
   }
 }
 

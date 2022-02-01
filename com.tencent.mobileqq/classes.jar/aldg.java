@@ -1,74 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.commonsdk.util.MD5Coding;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.Map;
 
 public class aldg
-  extends biht
+  extends BroadcastReceiver
 {
-  public aldg(PreloadManager paramPreloadManager, DownloadParam paramDownloadParam, aldq paramaldq, WeakReference paramWeakReference) {}
+  public aldg(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onDoneFile(bihu parambihu)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.onDoneFile(parambihu);
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadManager", 2, "RealTime onDoneFile|" + parambihu.jdField_a_of_type_Int + "|" + parambihu.jdField_a_of_type_JavaLangString + "|" + ((File)parambihu.jdField_a_of_type_JavaUtilMap.get(parambihu.jdField_a_of_type_JavaLangString)).getAbsolutePath());
-    }
-    Object localObject2;
-    Object localObject1;
-    if ((parambihu.jdField_a_of_type_Int == 0) && (parambihu.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(parambihu.jdField_a_of_type_JavaLangString)))
+    paramContext = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
     {
-      localObject2 = (File)parambihu.jdField_a_of_type_JavaUtilMap.get(parambihu.jdField_a_of_type_JavaLangString);
-      if (localObject2 == null)
-      {
-        localObject1 = "";
-        localObject1 = MD5Coding.encodeFile2HexStr((String)localObject1);
-        if ((localObject2 == null) || (!((File)localObject2).exists()) || (TextUtils.isEmpty((CharSequence)localObject1))) {
-          break label242;
-        }
-        if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.md5ForChecked)) || (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.md5ForChecked.equalsIgnoreCase((String)localObject1))) {
-          break label224;
-        }
-        if (this.jdField_a_of_type_Aldq != null) {
-          this.jdField_a_of_type_Aldq.onResult(2, PreloadManager.PathResult.getFailRes(parambihu.jdField_a_of_type_JavaLangString));
-        }
-        PreloadManager.a(parambihu.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPreviewActivity", 2, "ACTION_SCREEN_OFF == >>");
       }
+      this.a.d();
     }
-    label224:
-    label242:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localObject1 = ((File)localObject2).getAbsolutePath();
-          break;
-          alev.a(parambihu.jdField_a_of_type_JavaLangString, (String)localObject1, NetConnInfoCenter.getServerTimeMillis(), this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
-        } while (!PreloadManager.a((PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get()));
-        if (parambihu.jdField_a_of_type_Int != 0) {
-          break label339;
-        }
-        localObject1 = alev.a(parambihu.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.isForceUnzip, 0, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
-        localObject2 = new PreloadManager.PathResult();
-        ((PreloadManager.PathResult)localObject2).url = parambihu.jdField_a_of_type_JavaLangString;
-        ((PreloadManager.PathResult)localObject2).filePath = ((ResourceInfo)localObject1).filePath;
-        ((PreloadManager.PathResult)localObject2).folderPath = ((ResourceInfo)localObject1).folderPath;
-      } while (this.jdField_a_of_type_Aldq == null);
-      this.jdField_a_of_type_Aldq.onResult(0, (PreloadManager.PathResult)localObject2);
+    while (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
       return;
-    } while (this.jdField_a_of_type_Aldq == null);
-    label339:
-    this.jdField_a_of_type_Aldq.onResult(1, PreloadManager.PathResult.getFailRes(parambihu.jdField_a_of_type_JavaLangString, parambihu.jdField_a_of_type_Int));
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "ACTION_START_VIDEO_CHAT == >>");
+    }
+    this.a.d();
   }
 }
 

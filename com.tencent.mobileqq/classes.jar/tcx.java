@@ -1,14 +1,10 @@
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import javax.annotation.Nullable;
-
 public abstract interface tcx
 {
-  public abstract InputStream a(@Nullable InputStream paramInputStream);
+  public abstract int a();
   
-  public abstract void a();
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public abstract void a(HttpURLConnection paramHttpURLConnection, @Nullable String paramString);
+  public abstract boolean a(int paramInt);
 }
 
 

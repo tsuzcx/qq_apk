@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:id="@id/laba_entrys_layout" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/mzm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="12.0dip" />
     <include android:id="@id/e6t" layout="@layout/aw0" />
     <include android:id="@id/qzone_feed_entry" layout="@layout/m4" />
-    <include android:id="@id/ngz" android:visibility="gone" layout="@layout/ch2" />
+    <include android:id="@id/nc5" android:visibility="gone" layout="@layout/chb" />
     <FrameLayout android:id="@id/fcs" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <LinearLayout android:orientation="vertical" android:id="@id/np7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/nkl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip" />
 </LinearLayout>

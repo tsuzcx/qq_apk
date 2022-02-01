@@ -1,24 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.data.MessageForQQStoryComment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aglk
+class aglk
+  implements View.OnClickListener
 {
-  private static String a(agky paramagky)
+  long jdField_a_of_type_Long = 0L;
+  
+  aglk(aglj paramaglj) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramagky.b < bhnm.a(paramagky.jdField_a_of_type_JavaUtilArrayList)) {
-      return (String)paramagky.jdField_a_of_type_JavaUtilArrayList.get(paramagky.b);
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 50L) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Long = l;
+      MessageForQQStoryComment localMessageForQQStoryComment = (MessageForQQStoryComment)((aezf)AIOUtils.getHolder(paramView)).a;
+      if (yns.a(localMessageForQQStoryComment.vid))
+      {
+        wmu.a(this.jdField_a_of_type_Aglj.a, localMessageForQQStoryComment.vid, "CommentItemBuilder_Feed_Id", 1004);
+        xwa.a("story_grp", "aio_obj", 0, 0, new String[] { "", "", "", "" });
+      }
+      else
+      {
+        wmu.b((Activity)this.jdField_a_of_type_Aglj.a, localMessageForQQStoryComment.vid, "CommentItemBuilder_Feed_Id_NOT_GS", 7);
+      }
     }
-    return "";
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, agky paramagky)
-  {
-    bdll.b(paramQQAppInterface, "dc00898", "", paramString2, paramString1, paramString1, 0, 0, "", "", a(paramagky), String.valueOf(paramagky.jdField_a_of_type_Int));
-  }
-  
-  public static boolean a(agky paramagky)
-  {
-    return paramagky.jdField_a_of_type_Int == 560;
   }
 }
 

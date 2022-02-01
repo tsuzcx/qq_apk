@@ -1,17 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adut
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public adut(AssistantSettingActivity paramAssistantSettingActivity, anyw paramanyw) {}
+  public adut(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Anyw.a(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    bgan.a(this.a.app, this.a, "setting");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

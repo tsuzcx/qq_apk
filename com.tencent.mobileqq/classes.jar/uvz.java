@@ -1,16 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
-import rx.functions.Action1;
+import android.text.TextUtils;
 
 public class uvz
-  implements Action1<Bitmap>
 {
-  public uvz(RoundImageView paramRoundImageView) {}
-  
-  public void a(Bitmap paramBitmap)
+  private static int a(String paramString)
   {
-    RoundImageView.a(this.a, paramBitmap);
-    RoundImageView.a(this.a);
+    int i = 2;
+    if (TextUtils.equals(paramString, "trends")) {
+      i = 6;
+    }
+    return i;
+  }
+  
+  public static uvx a(String paramString)
+  {
+    int i = a(paramString);
+    if (!TextUtils.equals(paramString, "trends")) {
+      return new uvy(i);
+    }
+    return new uwa(i);
   }
 }
 

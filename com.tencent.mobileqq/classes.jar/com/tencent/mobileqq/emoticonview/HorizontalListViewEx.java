@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emoticonview;
 
-import agej;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
@@ -12,6 +12,8 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.InflateException;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +21,12 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewParent;
 import android.view.WindowManager;
 import android.widget.ListAdapter;
-import asop;
-import asoq;
-import asor;
-import asqt;
-import bhtq;
-import blnu;
+import bjse;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
@@ -35,16 +36,17 @@ import java.util.List;
 public class HorizontalListViewEx
   extends HorizontalListView
 {
-  private static List<View> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  public int a;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
-  private int d = -1;
-  private int e;
+  private static LayoutInflater inflater;
+  private static List<View> tabCacheViews = Collections.synchronizedList(new ArrayList());
+  private int mIndicatorRoundRectX;
+  protected int mIndicatorStartX;
+  private boolean mIsAnimTabIndicatoring;
+  private boolean mIsTabAnimateEnable;
+  private int mOldSelectedAdapterIndex = -1;
+  private Paint mRectPaint;
+  private RectF mRoundRect;
+  private int mScreenWidth;
+  private int mTabWidth;
   
   public HorizontalListViewEx(Context paramContext)
   {
@@ -54,39 +56,14 @@ public class HorizontalListViewEx
   public HorizontalListViewEx(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_Int = agej.a(51.0F, paramContext.getResources());
+    this.mTabWidth = AIOUtils.dp2px(51.0F, paramContext.getResources());
     paramAttributeSet = new DisplayMetrics();
     ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(paramAttributeSet);
-    this.c = paramAttributeSet.widthPixels;
-    c();
+    this.mScreenWidth = paramAttributeSet.widthPixels;
+    initPaint();
   }
   
-  public static View a()
-  {
-    if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.size() > 0)) {
-      return (View)jdField_a_of_type_JavaUtilList.remove(0);
-    }
-    return null;
-  }
-  
-  public static void a()
-  {
-    if (jdField_a_of_type_JavaUtilList != null) {
-      jdField_a_of_type_JavaUtilList.clear();
-    }
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131166503));
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.e = bhtq.a(18.0F);
-  }
-  
-  private void d()
+  private void clearAllSelectedState()
   {
     int j = getChildCount();
     int i = 0;
@@ -95,36 +72,97 @@ public class HorizontalListViewEx
       View localView = getChildAt(i);
       if (localView.getTag() != null)
       {
-        asor localasor = (asor)localView.getTag();
+        EmoticonTabAdapter.ViewHolder localViewHolder = (EmoticonTabAdapter.ViewHolder)localView.getTag();
         localView.setSelected(false);
-        localasor.a.setSelected(false);
+        localViewHolder.tabImage.setSelected(false);
       }
       i += 1;
     }
   }
   
-  public int a(int paramInt)
+  public static View consumeView()
   {
-    int i = this.mNextX + paramInt;
-    if (i < 0) {
-      return -1;
+    if ((tabCacheViews != null) && (tabCacheViews.size() > 0)) {
+      return (View)tabCacheViews.remove(0);
     }
-    if (i > this.mMaxX) {
-      return 1;
-    }
-    this.mScroller.a(this.mNextX, 0, paramInt, 0, 20);
-    setCurrentScrollState(4098);
-    requestLayout();
-    return 0;
+    return null;
   }
   
-  protected void b()
+  public static void destroyCacheView()
   {
-    if ((this.d != this.mCurrentlySelectedAdapterIndex) && (getChildCount() > 0))
+    if (tabCacheViews != null) {
+      tabCacheViews.clear();
+    }
+  }
+  
+  private void initPaint()
+  {
+    this.mRectPaint = new Paint();
+    this.mRectPaint.setAntiAlias(true);
+    this.mRectPaint.setStyle(Paint.Style.FILL);
+    this.mRectPaint.setColor(getResources().getColor(2131166522));
+    this.mRoundRect = new RectF();
+    this.mIndicatorRoundRectX = ViewUtils.dip2px(18.0F);
+  }
+  
+  public static void produceTabView(int paramInt)
+  {
+    int j = 0;
+    int i = j;
+    if (inflater == null)
     {
-      View localView = getChild(this.d);
+      inflater = (LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater");
+      i = j;
+    }
+    for (;;)
+    {
+      if (i < paramInt) {
+        try
+        {
+          View localView = inflater.inflate(2131559151, null, false);
+          if (localView != null) {
+            tabCacheViews.add(localView);
+          }
+          i += 1;
+        }
+        catch (InflateException localInflateException)
+        {
+          for (;;)
+          {
+            Object localObject1 = null;
+          }
+        }
+        catch (Resources.NotFoundException localNotFoundException)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("HorizontalListViewEx", 2, "NotFoundException;err info:" + localNotFoundException.getMessage());
+            }
+            Object localObject2 = null;
+          }
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("HorizontalListViewEx", 2, "OutOfMemoryError;err info:" + localOutOfMemoryError.getMessage());
+            }
+            Object localObject3 = null;
+          }
+        }
+      }
+    }
+  }
+  
+  protected void animTabIndicator()
+  {
+    if ((this.mOldSelectedAdapterIndex != this.mCurrentlySelectedAdapterIndex) && (getChildCount() > 0))
+    {
+      View localView = getChild(this.mOldSelectedAdapterIndex);
       if (localView != null) {
-        this.jdField_a_of_type_Int = localView.getLeft();
+        this.mIndicatorStartX = localView.getLeft();
       }
       for (;;)
       {
@@ -132,23 +170,23 @@ public class HorizontalListViewEx
         if (localView == null) {
           break;
         }
-        d();
-        int i = this.jdField_a_of_type_Int;
+        clearAllSelectedState();
+        int i = this.mIndicatorStartX;
         int j = localView.getLeft();
         ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { i, j });
         localValueAnimator.setDuration(200L);
-        this.jdField_b_of_type_Boolean = true;
-        localValueAnimator.addUpdateListener(new asqt(this, localView, j));
+        this.mIsAnimTabIndicatoring = true;
+        localValueAnimator.addUpdateListener(new HorizontalListViewEx.2(this, localView, j));
         localValueAnimator.start();
         return;
-        if (this.d < getFirstVisiblePosition()) {
-          this.jdField_a_of_type_Int = (-this.jdField_b_of_type_Int);
-        } else if (this.d > getLastVisiblePosition()) {
-          this.jdField_a_of_type_Int = (this.c - this.jdField_b_of_type_Int);
+        if (this.mOldSelectedAdapterIndex < getFirstVisiblePosition()) {
+          this.mIndicatorStartX = (-this.mTabWidth);
+        } else if (this.mOldSelectedAdapterIndex > getLastVisiblePosition()) {
+          this.mIndicatorStartX = (this.mScreenWidth - this.mTabWidth);
         }
       }
     }
-    this.jdField_b_of_type_Boolean = false;
+    this.mIsAnimTabIndicatoring = false;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -167,7 +205,7 @@ public class HorizontalListViewEx
   {
     super.onDraw(paramCanvas);
     Object localObject1;
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
+    if ((this.mIsTabAnimateEnable) && (this.mIsAnimTabIndicatoring))
     {
       localObject1 = getSelectedView();
       if ((localObject1 instanceof ViewGroup))
@@ -187,30 +225,30 @@ public class HorizontalListViewEx
         return;
         localObject1 = (ViewGroup.MarginLayoutParams)((View)localObject1).getLayoutParams();
       } while (localObject1 == null);
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_Int, ((ViewGroup.MarginLayoutParams)localObject1).topMargin, this.jdField_a_of_type_Int + this.jdField_b_of_type_Int, getMeasuredHeight() - ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin);
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.e, this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.mRoundRect.set(this.mIndicatorStartX, ((ViewGroup.MarginLayoutParams)localObject1).topMargin, this.mIndicatorStartX + this.mTabWidth, getMeasuredHeight() - ((ViewGroup.MarginLayoutParams)localObject1).bottomMargin);
+      paramCanvas.drawRoundRect(this.mRoundRect, this.mIndicatorRoundRectX, this.mIndicatorRoundRectX, this.mRectPaint);
       return;
       j = getChildCount();
     } while (getAdapter() == null);
-    paramCanvas = (asop)getAdapter();
+    paramCanvas = (EmoticonTabAdapter)getAdapter();
     int i = 0;
     label149:
     Object localObject2;
-    asor localasor;
+    EmoticonTabAdapter.ViewHolder localViewHolder;
     if (i < j)
     {
       localObject1 = getChildAt(i);
       localObject2 = paramCanvas.getItem(this.mLeftViewAdapterIndex + i);
       if (((View)localObject1).getTag() != null)
       {
-        localasor = (asor)((View)localObject1).getTag();
+        localViewHolder = (EmoticonTabAdapter.ViewHolder)((View)localObject1).getTag();
         if (localObject1 != getSelectedView()) {
           break label240;
         }
         ((View)localObject1).setSelected(true);
-        localasor.a.setSelected(true);
+        localViewHolder.tabImage.setSelected(true);
         if (localObject2 != null) {
-          ((View)localObject1).setContentDescription(((asoq)localObject2).b);
+          ((View)localObject1).setContentDescription(((EmoticonTabAdapter.EmoticonTabItem)localObject2).description);
         }
       }
     }
@@ -221,16 +259,31 @@ public class HorizontalListViewEx
       break;
       label240:
       ((View)localObject1).setSelected(false);
-      localasor.a.setSelected(false);
+      localViewHolder.tabImage.setSelected(false);
       if (localObject2 != null) {
-        ((View)localObject1).setContentDescription(((asoq)localObject2).b);
+        ((View)localObject1).setContentDescription(((EmoticonTabAdapter.EmoticonTabItem)localObject2).description);
       }
     }
   }
   
   public void resetCurrentX(int paramInt)
   {
-    this.mCurrentX = (this.jdField_b_of_type_Int * paramInt);
+    this.mCurrentX = (this.mTabWidth * paramInt);
+  }
+  
+  public int scrollBy(int paramInt)
+  {
+    int i = this.mNextX + paramInt;
+    if (i < 0) {
+      return -1;
+    }
+    if (i > this.mMaxX) {
+      return 1;
+    }
+    this.mScroller.a(this.mNextX, 0, paramInt, 0, 20);
+    setCurrentScrollState(4098);
+    requestLayout();
+    return 0;
   }
   
   public void setSelection(int paramInt)
@@ -251,34 +304,34 @@ public class HorizontalListViewEx
         int i;
         if ((paramInt > m) && (m != -1))
         {
-          n = (paramInt + 1) * this.jdField_b_of_type_Int;
-          j = n - this.mNextX - (this.c - this.jdField_b_of_type_Int - this.jdField_b_of_type_Int);
+          n = (paramInt + 1) * this.mTabWidth;
+          j = n - this.mNextX - (this.mScreenWidth - this.mTabWidth - this.mTabWidth);
           i = j;
           if (DEBUG)
           {
             i = j;
             if (QLog.isDevelopLevel())
             {
-              QLog.i(HorizontalListView.class.getSimpleName(), 4, "setSelectionEx: view beyond right screen, position:" + paramInt + ",lastPosition:" + m + ",tabPosition:" + n + ",mNextX:" + this.mNextX + ",deltaX:" + j + ",mScreenWidth" + this.c);
+              QLog.i(HorizontalListView.class.getSimpleName(), 4, "setSelectionEx: view beyond right screen, position:" + paramInt + ",lastPosition:" + m + ",tabPosition:" + n + ",mNextX:" + this.mNextX + ",deltaX:" + j + ",mScreenWidth" + this.mScreenWidth);
               i = j;
             }
           }
           if (i == 0) {
             break label671;
           }
-          a(i);
+          scrollBy(i);
         }
         for (;;)
         {
-          if (!this.jdField_a_of_type_Boolean) {
+          if (!this.mIsTabAnimateEnable) {
             break label703;
           }
-          b();
-          this.d = this.mCurrentlySelectedAdapterIndex;
+          animTabIndicator();
+          this.mOldSelectedAdapterIndex = this.mCurrentlySelectedAdapterIndex;
           return;
           if ((paramInt < k) && (k != -1))
           {
-            n = this.jdField_b_of_type_Int * paramInt;
+            n = this.mTabWidth * paramInt;
             j = n - this.mNextX;
             i = j;
             if (!DEBUG) {
@@ -288,7 +341,7 @@ public class HorizontalListViewEx
             if (!QLog.isDevelopLevel()) {
               break;
             }
-            QLog.i(HorizontalListView.class.getSimpleName(), 4, "setSelectionEx: view beyond l eft screen, position:" + paramInt + ",firstPosition:" + k + ",tabPosition:" + n + ",mNextX:" + this.mNextX + ",deltaX:" + j + ",mScreenWidth" + this.c);
+            QLog.i(HorizontalListView.class.getSimpleName(), 4, "setSelectionEx: view beyond l eft screen, position:" + paramInt + ",firstPosition:" + k + ",tabPosition:" + n + ",mNextX:" + this.mNextX + ",deltaX:" + j + ",mScreenWidth" + this.mScreenWidth);
             i = j;
             break;
           }
@@ -310,7 +363,7 @@ public class HorizontalListViewEx
             localView = getChildAt(getChildCount() - 1);
             arrayOfInt = new int[2];
             localView.getLocationOnScreen(arrayOfInt);
-            j = arrayOfInt[0] + this.jdField_b_of_type_Int - getRight();
+            j = arrayOfInt[0] + this.mTabWidth - getRight();
             i = j;
             if (j < 0) {
               i = 0;
@@ -343,12 +396,12 @@ public class HorizontalListViewEx
   
   public void setTabAnimateEnable(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.mIsTabAnimateEnable = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.HorizontalListViewEx
  * JD-Core Version:    0.7.0.1
  */

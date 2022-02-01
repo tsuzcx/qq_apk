@@ -1,23 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.filter.FilterItem;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager.FilterTextAdapter;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class mnb
-  implements View.OnClickListener
+public class mnb
+  implements ViewPager.OnPageChangeListener
 {
-  mnb(mmw parammmw) {}
+  private WeakReference<mnd> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(View paramView)
+  public mnb(EffectFilterTextPager paramEffectFilterTextPager, mnd parammnd)
   {
-    if ((mmw.a(this.a) != null) && (mmw.a(this.a).isShown())) {
-      this.a.e();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammnd);
+  }
+  
+  public void onPageScrollStateChanged(int paramInt)
+  {
+    long l = AudioHelper.b();
+    if (QLog.isColorLevel()) {
+      QLog.w("EffectFilterTextPager", 1, "onPageScrollStateChanged, arg0[" + paramInt + "], seq[" + l + "]");
     }
-    for (;;)
+    if (paramInt == 0)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      mmw.c(this.a);
+      this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.a(1300);
+      if (this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+        this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(110), Long.valueOf(l) });
+      }
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
+  {
+    long l = AudioHelper.b();
+    if (AudioHelper.f()) {
+      QLog.w("EffectFilterTextPager", 1, "onPageSelected, pos[" + paramInt + "], mProgramingPos[" + EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager) + "], seq[" + l + "]");
+    }
+    if ((EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager) != paramInt) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      FilterItem localFilterItem = this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter.a(paramInt);
+      if (localFilterItem != null) {
+        ((mnd)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(l, paramInt, localFilterItem.getId());
+      }
+      EffectFilterTextPager.a(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager, -1);
     }
   }
 }

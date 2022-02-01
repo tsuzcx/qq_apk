@@ -1,13 +1,16 @@
 package com.tencent.thumbplayer.adapter.player.systemplayer;
 
 class TPSystemMediaPlayer$2
-  implements Runnable
+  implements ITPSysPlayerExternalSubtitle.IPlayPositionListener
 {
   TPSystemMediaPlayer$2(TPSystemMediaPlayer paramTPSystemMediaPlayer) {}
   
-  public void run()
+  public long getCurrentPosition()
   {
-    TPSystemMediaPlayer.access$900(this.this$0);
+    if ((TPSystemMediaPlayer.access$300(this.this$0) != TPSystemMediaPlayer.PlayerState.PAUSED) && (TPSystemMediaPlayer.access$300(this.this$0) != TPSystemMediaPlayer.PlayerState.STARTED)) {
+      return -1L;
+    }
+    return this.this$0.getCurrentPositionMs();
   }
 }
 

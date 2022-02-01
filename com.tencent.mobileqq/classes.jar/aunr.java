@@ -1,22 +1,71 @@
-import android.app.Activity;
-import android.os.Bundle;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
-class aunr
-  implements aumz
+public class aunr
 {
-  aunr(aunq paramaunq, Activity paramActivity) {}
-  
-  public void a()
+  public static int a(Context paramContext)
   {
-    bdll.b(null, "dc00898", "", "", "0X800AE48", "0X800AE48", 0, 0, "", "", "", "");
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_open_with_qq_browser_", this.jdField_a_of_type_Aunq.a);
-    aunj.a(this.jdField_a_of_type_AndroidAppActivity, "https://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10386", localBundle);
+    switch (b(paramContext))
+    {
+    case 0: 
+    default: 
+      return -1;
+    case 1: 
+      return 1;
+    case 2: 
+      return 2;
+    case 3: 
+      return 3;
+    case 4: 
+      return 4;
+    }
+    return 0;
   }
   
-  public void b()
+  public static int b(Context paramContext)
   {
-    bdll.b(null, "dc00898", "", "", "0X800AE49", "0X800AE49", 0, 0, "", "", "", "");
+    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    if (paramContext == null) {
+      return 0;
+    }
+    paramContext = paramContext.getActiveNetworkInfo();
+    if ((paramContext == null) || (!paramContext.isConnected())) {
+      return 0;
+    }
+    switch (paramContext.getType())
+    {
+    default: 
+      return -1;
+    case 1: 
+      return 1;
+    case 9: 
+      return 5;
+    }
+    switch (paramContext.getSubtype())
+    {
+    case 16: 
+    default: 
+      return -1;
+    case 1: 
+    case 2: 
+    case 4: 
+    case 7: 
+    case 11: 
+      return 2;
+    case 3: 
+    case 5: 
+    case 6: 
+    case 8: 
+    case 9: 
+    case 10: 
+    case 12: 
+    case 14: 
+    case 15: 
+    case 17: 
+      return 3;
+    }
+    return 4;
   }
 }
 

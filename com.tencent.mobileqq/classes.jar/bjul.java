@@ -1,31 +1,12 @@
-import android.annotation.SuppressLint;
-import android.os.AsyncTask;
-import android.os.Build.VERSION;
-import java.util.concurrent.Executor;
+import android.graphics.Canvas;
 
-public abstract class bjul<Param, Progress, Result>
-  extends AsyncTask<Param, Progress, Result>
+public abstract interface bjul
 {
-  protected String a;
-  protected String b;
+  public abstract void a(Canvas paramCanvas);
   
-  public bjul(String paramString1, String paramString2)
-  {
-    this.a = paramString1;
-    if (!paramString1.toLowerCase().startsWith("http")) {
-      this.a = ("https://openmobile.qq.com/" + paramString1);
-    }
-    this.b = paramString2;
-  }
+  public abstract int getHeight();
   
-  @SuppressLint({"InlinedApi", "NewApi"})
-  public Executor a()
-  {
-    if (Build.VERSION.SDK_INT >= 11) {
-      return AsyncTask.THREAD_POOL_EXECUTOR;
-    }
-    return null;
-  }
+  public abstract int getWidth();
 }
 
 

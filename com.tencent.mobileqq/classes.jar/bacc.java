@@ -1,9 +1,12 @@
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import android.graphics.Bitmap;
 
-public abstract interface bacc
+public class bacc
+  extends blnp
 {
-  public abstract void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton, Boolean paramBoolean);
+  public bacc(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap, int paramInt3)
+  {
+    super(paramInt1, paramInt2, paramString, paramBitmap, paramInt3);
+  }
 }
 
 

@@ -1,22 +1,13 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.nio.ByteBuffer;
 
-class wwk
-  implements anwh
+public class wwk
 {
-  wwk(wwh paramwwh) {}
+  public long a;
+  public ByteBuffer a;
   
-  public void a(boolean paramBoolean)
+  wwk(int paramInt)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject != null) {
-        ((wja)((QQAppInterface)localObject).a(98)).notifyUI(1023, true, Boolean.valueOf(paramBoolean));
-      }
-      return;
-    }
+    this.a = ByteBuffer.allocate(paramInt);
   }
 }
 

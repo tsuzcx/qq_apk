@@ -1,23 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.av.ui.VideoNetStateBar;
+import com.tencent.qphone.base.util.QLog;
 
-class mll
-  implements DialogInterface.OnClickListener
+public class mll
+  extends ldz
 {
-  mll(mlj parammlj) {}
+  public mll(VideoNetStateBar paramVideoNetStateBar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(long paramLong1, long paramLong2)
   {
-    mru.e(false, false);
-    if (paramDialogInterface != null)
-    {
-      paramDialogInterface.dismiss();
-      if ((this.a.a.a != null) && (this.a.a.a.a != null)) {
-        this.a.a.a.a.b();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNetStateBar", 2, "onCreateRoomSuc-->GroupID=" + paramLong2);
     }
+    this.a.i();
+  }
+  
+  protected void b(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoNetStateBar", 2, "onEnterRoomSuc-->GroupID=" + paramLong2);
+    }
+    this.a.i();
   }
 }
 

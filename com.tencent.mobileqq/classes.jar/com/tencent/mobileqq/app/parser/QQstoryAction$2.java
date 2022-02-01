@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app.parser;
 
-import aoyf;
+import ansg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class QQstoryAction$2
   implements Runnable
 {
-  public QQstoryAction$2(aoyf paramaoyf) {}
+  public QQstoryAction$2(ansg paramansg) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131698451, 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131698620, 0).a();
   }
 }
 

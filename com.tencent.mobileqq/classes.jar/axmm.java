@@ -1,6 +1,6 @@
-public abstract interface axmm
+public class axmm
 {
-  public abstract void a(int paramInt);
+  public Object a;
 }
 
 

@@ -1,226 +1,92 @@
-import KQQ.BatchResponse;
-import KQQ.RespBatchProcess;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.vfs.CancellationSignalCompat;
+import com.tencent.mm.vfs.StatisticsCallback;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.app.AppRuntime;
 
-class bgnf
-  extends aojs
+public class bgnf
+  implements StatisticsCallback
 {
-  bgnf(bgna parambgna) {}
+  private static CopyOnWriteArrayList<Map<String, Object>> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private static boolean jdField_a_of_type_Boolean;
+  private static CopyOnWriteArrayList<Throwable> b = new CopyOnWriteArrayList();
   
-  protected void a(int paramInt1, int paramInt2)
+  private void a(Throwable paramThrowable)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      if (bgna.a(this.a) == null) {
-        break label86;
-      }
-    }
-    for (;;)
-    {
-      QLog.d("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, new Object[] { "onTroopManagerFailed. reqType=", Integer.valueOf(paramInt1), ", result=", Integer.valueOf(paramInt2), ", hasTroopInfoData=", Boolean.valueOf(bool) });
-      if ((bgna.a(this.a) != null) && (bgna.a(this.a) != null)) {
-        break;
-      }
-      return;
-      label86:
-      bool = false;
-    }
-    bgna.a(this.a).a(paramInt1, paramInt2);
+    bcdb.a(paramThrowable);
   }
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  protected void a()
   {
-    String str;
-    if (QLog.isColorLevel())
+    try
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        break label111;
-      }
-      str = "";
-      if (bgna.a(this.a) == null) {
-        break label117;
-      }
-    }
-    label111:
-    label117:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, new Object[] { "onTroopManagerSuccess. reqType=", Integer.valueOf(paramInt1), ", result=", Integer.valueOf(paramInt2), ", troopUin=", str, ", hasTroopInfoData=", Boolean.valueOf(bool) });
-      if ((bgna.a(this.a) != null) && (bgna.a(this.a) != null)) {
-        break label123;
-      }
-      return;
-      str = paramString;
-      break;
-    }
-    label123:
-    bgna.a(this.a).a(paramInt1, paramInt2, paramString);
-  }
-  
-  protected void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, String.format("onGetAddTroopWebInfo url=%s", new Object[] { paramString }));
-    }
-    if (bgna.a(this.a) == null) {
-      return;
-    }
-    bgna.a(this.a).e(paramString);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
-  {
-    if ((bgna.a(this.a) == null) || (bgna.a(this.a) == null)) {
-      return;
-    }
-    bgna.a(this.a).a(paramBoolean, paramLong, paramTroopInfo);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, RespBatchProcess paramRespBatchProcess, Bundle paramBundle)
-  {
-    if ((paramRespBatchProcess == null) || (paramRespBatchProcess.batch_response_list == null) || (paramRespBatchProcess.batch_response_list.size() == 0) || (bgna.a(this.a) == null)) {}
-    int j;
-    do
-    {
-      do
+      jdField_a_of_type_Boolean = true;
+      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      Iterator localIterator2 = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      while (localIterator2.hasNext())
       {
-        do
+        Map localMap = (Map)localIterator2.next();
+        if (QLog.isColorLevel()) {
+          QLog.d("VFSRegisterProxy", 2, "statisticsReportCache params -> " + localMap);
+        }
+        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(str, "vfs_statistics_tag", true, 0L, 0L, (HashMap)localMap, null);
+      }
+      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    }
+    catch (Exception localException)
+    {
+      QLog.d("VFSRegisterProxy", 1, "statisticsReportCache report error!", localException);
+      return;
+    }
+    Iterator localIterator1 = b.iterator();
+    while (localIterator1.hasNext()) {
+      a((Throwable)localIterator1.next());
+    }
+    b.clear();
+  }
+  
+  public void deleteFiles(CancellationSignalCompat paramCancellationSignalCompat) {}
+  
+  public void reportError(Throwable paramThrowable)
+  {
+    QLog.e("VFSRegisterProxy", 1, paramThrowable, new Object[0]);
+    if (jdField_a_of_type_Boolean)
+    {
+      a(paramThrowable);
+      return;
+    }
+    b.add(paramThrowable);
+  }
+  
+  public void statistics(String paramString, int paramInt, Map<String, Object> paramMap)
+  {
+    if (paramMap != null) {
+      try
+      {
+        paramMap.put("id", paramString);
+        paramMap.put("phase", String.valueOf(paramInt));
+        if (jdField_a_of_type_Boolean)
         {
+          paramString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+          StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString, "vfs_statistics_tag", true, 0L, 0L, (HashMap)paramMap, null);
+        }
+        while (QLog.isColorLevel())
+        {
+          QLog.d("VFSRegisterProxy", 2, "report params -> " + paramMap + ", mCanAccurReport = " + jdField_a_of_type_Boolean);
           return;
-        } while ((!String.valueOf(paramLong).equals(bgna.a(this.a).troopUin)) || (bgna.a(this.a) == null) || (bgna.a(this.a) == null));
-        if (bgna.a(this.a).a != null) {
-          bgna.a(this.a).a.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+          jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramMap);
         }
-      } while (!String.valueOf(paramLong).equals(bgna.a(this.a).troopUin));
-      j = paramRespBatchProcess.batch_response_list.size();
-      int i = 0;
-      if (i < j)
-      {
-        paramBundle = (BatchResponse)paramRespBatchProcess.batch_response_list.get(i);
-        if ((paramBundle == null) || (paramBundle.result != 0)) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          if (paramBundle.type == 1) {
-            bgna.a(this.a, paramBundle);
-          }
-        }
-      }
-    } while (j <= 0);
-    this.a.c();
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, int paramInt, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "onTroopRankSwitchUpdate. troopUin = " + paramString + ",isSucc = " + paramBoolean + ", tId" + paramInt + ",time = " + paramLong);
-    }
-    if ((bgna.a(this.a) == null) || (TextUtils.isEmpty(bgna.a(this.a).troopUin)) || (TextUtils.isEmpty(paramString)) || (!bgna.a(this.a).troopUin.equals(paramString)) || (paramBoolean)) {
-      return;
-    }
-    bgna.a(this.a).a(paramBoolean, paramString, paramInt, paramLong);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
-  {
-    if ((bgna.a(this.a) == null) || (bgna.a(this.a) == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramBoolean) || (!bhjx.a(paramString1, bgna.a(this.a).troopUin)));
-      if (paramInt1 == 0)
-      {
-        this.a.a(paramList, true);
         return;
       }
-    } while (paramString2 != null);
-    if ((paramInt1 == 1) || (paramInt1 == 2)) {
-      paramString2 = bgna.a(this.a).getString(2131695413);
-    }
-    for (;;)
-    {
-      bgna.a(this.a).a(paramString2);
-      return;
-      if (paramInt1 == 19) {
-        paramString2 = bgna.a(this.a).getString(2131695411);
-      } else if (paramInt1 == 65) {
-        paramString2 = bgna.a(this.a).getString(2131695412);
+      catch (Exception paramString)
+      {
+        QLog.d("VFSRegisterProxy", 1, "vfs report error!", paramString);
       }
-    }
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong1, int paramInt1, List<oidb_0x899.memberlist> paramList, long paramLong2, int paramInt2, String paramString)
-  {
-    super.b(paramBoolean, paramLong1, paramInt1, paramList, paramLong2, paramInt2, paramString);
-    if (paramInt1 != 2) {}
-    while ((!paramBoolean) || (bgna.a(this.a) == null) || (paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    bgna.a(this.a).a(paramLong1, paramList);
-  }
-  
-  protected void b(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
-  {
-    if ((bgna.a(this.a) == null) || (bgna.a(this.a) == null)) {}
-    while (!bhjx.a(paramString1, bgna.a(this.a).troopUin)) {
-      return;
-    }
-    if (paramInt1 == 0)
-    {
-      this.a.a(paramList, true);
-      return;
-    }
-    this.a.a(paramList, true);
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2))
-    {
-      if (paramInt1 != 1) {
-        break label106;
-      }
-      paramString1 = bgna.a(this.a).getString(2131695413);
-    }
-    for (;;)
-    {
-      bgna.a(this.a).a(paramString1);
-      return;
-      label106:
-      if (paramInt1 == 2) {
-        paramString1 = bgna.a(this.a).getString(2131695411);
-      } else if (paramInt1 == 3) {
-        paramString1 = bgna.a(this.a).getString(2131695424);
-      } else if (paramInt1 == 4) {
-        paramString1 = bgna.a(this.a).getString(2131695425);
-      } else {
-        paramString1 = bgna.a(this.a).getString(2131695422);
-      }
-    }
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (bgna.a(this.a) != null)) {
-      bgna.a(this.a).c(paramString);
-    }
-  }
-  
-  protected void c(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if ((paramBoolean) && (bgna.a(this.a) != null) && (paramString.equals(bgna.a(this.a).troopUin))) {
-      this.a.a = paramInt;
     }
   }
 }

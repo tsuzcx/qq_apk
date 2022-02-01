@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.teamwork.ReSendCmd;
+import android.support.annotation.NonNull;
 
-public final class bead
-  implements Parcelable.Creator<ReSendCmd>
+class bead
+  implements Comparable<bead>
 {
-  public ReSendCmd a(Parcel paramParcel)
-  {
-    return new ReSendCmd(paramParcel);
-  }
+  public String a;
+  public String b;
   
-  public ReSendCmd[] a(int paramInt)
+  bead(bdzw parambdzw) {}
+  
+  public int a(@NonNull bead parambead)
   {
-    return new ReSendCmd[paramInt];
+    return this.b.compareTo(parambead.b);
   }
 }
 

@@ -1,23 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.statistics.c2s.GdtC2SReportInterface.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acvs
-  extends acvt
+final class acvs
+  implements DialogInterface.OnClickListener
 {
-  acvs(acvr paramacvr) {}
+  acvs(acxb paramacxb, acxa paramacxa) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    acvc.a("GdtC2SReporter", "onCheckC2SReport: " + paramInt + "， request ADID: " + paramString2);
-    acvp.a(BaseApplicationImpl.getApplication(), this.a, paramInt, this.a.jdField_a_of_type_Long);
-    this.a.jdField_a_of_type_Long = -2147483648L;
-    if (acvr.a(this.a).equals(paramString2))
-    {
-      bdll.a(null, "dc00898", "", "", "0X8009EBD", "0X8009EBD", this.a.jdField_a_of_type_Int, paramInt, "", "", acvr.a(this.a), "");
-      if ((paramInt != 1) && (paramInt != 2)) {
-        ThreadManager.executeOnNetWorkThread(new GdtC2SReportInterface.1.1(this));
-      }
+    if (this.jdField_a_of_type_Acxb.a) {
+      bcef.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
+    }
+    if (this.jdField_a_of_type_Acxa != null) {
+      this.jdField_a_of_type_Acxa.onCancel();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

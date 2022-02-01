@@ -1,19 +1,16 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.fragment.KuaKuaHbFragment;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class alba
-  implements alfv
+class alba
+  implements View.OnClickListener
 {
-  public alba(KuaKuaHbFragment paramKuaKuaHbFragment) {}
+  alba(alay paramalay) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
-    {
-      this.a.a.findViewById(2131368613).setVisibility(8);
-      return;
-    }
-    this.a.a.findViewById(2131368613).setVisibility(0);
+    alay.a(this.a).onClick(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

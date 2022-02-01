@@ -1,21 +1,17 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.text.TextUtils;
 
-public class xum
-  implements TVK_IMediaPlayer.OnCompletionListener
+class xum
+  implements xrm<xqt>
 {
-  xum(xuk paramxuk) {}
+  xum(xuh paramxuh, String paramString) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a(xqt paramxqt)
   {
-    xuk.a(this.a).d = paramTVK_IMediaPlayer.getDuration();
-    xuk.a(this.a).e = paramTVK_IMediaPlayer.getCurrentPostion();
-    paramTVK_IMediaPlayer = this.a.a;
-    if (paramTVK_IMediaPlayer != null) {
-      ThreadManager.getUIHandler().post(new VideoViewTVKImpl.2.1(this, paramTVK_IMediaPlayer));
+    if ((paramxqt.a != null) && (TextUtils.equals(paramxqt.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
+    {
+      xuh.a(this.jdField_a_of_type_Xuh).a = paramxqt.a;
+      xuh.a(this.jdField_a_of_type_Xuh).sendMessage(xuh.a(this.jdField_a_of_type_Xuh).obtainMessage(0, xuh.a(this.jdField_a_of_type_Xuh)));
     }
   }
 }

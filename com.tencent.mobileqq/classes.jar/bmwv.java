@@ -1,24 +1,28 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.view.ViewGroup;
-import cooperation.qzone.contentbox.model.MQMsg;
+import android.text.Spanned;
 
-public abstract interface bmwv
-  extends blih
+class bmwv
+  extends bnij
 {
-  public abstract void a();
+  bmwv(bmwu parambmwu, int paramInt)
+  {
+    super(paramInt);
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  public int a(CharSequence paramCharSequence)
+  {
+    if (this.jdField_a_of_type_Bmwu.b() == 0) {
+      return super.a(paramCharSequence);
+    }
+    return 0;
+  }
   
-  public abstract void a(Handler paramHandler);
-  
-  public abstract boolean a(ViewGroup paramViewGroup, MQMsg paramMQMsg);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  {
+    if (this.jdField_a_of_type_Bmwu.b() == 0) {}
+    for (this.jdField_a_of_type_Int = 20;; this.jdField_a_of_type_Int = 18) {
+      return super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+    }
+  }
 }
 
 

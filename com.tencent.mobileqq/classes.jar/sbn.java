@@ -1,80 +1,32 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.QQToast;
-import java.net.URL;
-import java.util.HashSet;
+import android.content.Context;
+import com.tencent.biz.pubaccount.VideoInfo;
+import java.lang.ref.WeakReference;
 
 class sbn
-  extends sbh
+  implements uhe
 {
-  sbn(sbi paramsbi) {}
+  private int jdField_a_of_type_Int;
+  private VideoInfo jdField_a_of_type_ComTencentBizPubaccountVideoInfo;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private int b;
+  private int c;
+  private int d;
   
-  public int a()
+  public sbn(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, VideoInfo paramVideoInfo)
   {
-    return 4;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = paramVideoInfo;
   }
   
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void a(boolean paramBoolean)
   {
-    if (!bhnv.g(sbi.a(this.a)))
-    {
-      QQToast.a(sbi.a(this.a), 0, anzj.a(2131715147), 0).a();
-      return;
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      sab.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.c, this.d, false, paramBoolean);
     }
-    rpt.a(sbi.a(this.a), sbi.a(this.a));
-    String str1 = paramString + "&sourcefrom=6";
-    paramString = rpt.a(paramBaseArticleInfo);
-    paramActionSheetItem = rpt.a(paramBaseArticleInfo);
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("videoDuration", paramBaseArticleInfo.getVideoDuration());
-    localBundle.putLong("publishAccountUin", paramActionSheetItem.longValue());
-    localBundle.putString("publishAccountName", paramString);
-    localBundle.putLong("feedsId", paramBaseArticleInfo.mFeedId);
-    localBundle.putInt("feedsType", paramBaseArticleInfo.mFeedType);
-    label182:
-    pnx localpnx;
-    Activity localActivity;
-    String str2;
-    String str3;
-    String str4;
-    if (paramBaseArticleInfo.busiType == 6)
-    {
-      paramInt = 1;
-      localBundle.putInt("videoType", paramInt);
-      paramString = sbi.a(this.a);
-      if (paramString == null) {
-        break label267;
-      }
-      paramString = paramString.c();
-      localpnx = pnx.a();
-      localActivity = sbi.a(this.a);
-      str2 = paramBaseArticleInfo.getInnerUniqueID();
-      str3 = paramBaseArticleInfo.mTitle;
-      str4 = paramBaseArticleInfo.mSummary;
-      if (paramBaseArticleInfo.getVideoCoverURL() != null) {
-        break label273;
-      }
-    }
-    label267:
-    label273:
-    for (paramActionSheetItem = "";; paramActionSheetItem = paramBaseArticleInfo.getVideoCoverURL().getPath())
-    {
-      localpnx.a(localActivity, paramString, 2, str2, str3, str4, paramActionSheetItem, str1, localBundle);
-      sbi.a(this.a).add(paramBaseArticleInfo.getInnerUniqueID());
-      return;
-      paramInt = 2;
-      break;
-      paramString = "";
-      break label182;
-    }
-  }
-  
-  public int b()
-  {
-    return 6;
   }
 }
 

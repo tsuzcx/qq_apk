@@ -1,8 +1,13 @@
-import java.util.Collection;
-
-public abstract interface bmxq
+public class bmxq
 {
-  public abstract Collection<bmxj> a();
+  public int a;
+  public int b;
+  
+  public bmxq(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

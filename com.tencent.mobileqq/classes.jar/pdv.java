@@ -1,12 +1,16 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
 
-class pdv
-  extends blsy
+public class pdv
+  extends AnimatorListenerAdapter
 {
-  pdv(pdt parampdt, View paramView)
+  public pdv(DailyTipsFoldUtils.1 param1, View paramView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramView);
-    paramView.setTag(this);
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
   }
 }
 

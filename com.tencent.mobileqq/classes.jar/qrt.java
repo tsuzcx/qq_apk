@@ -1,9 +1,64 @@
-import android.os.IInterface;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-public abstract interface qrt
-  extends IInterface
+public class qrt
+  extends qpk
 {
-  public abstract qrz a();
+  public qrt(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
+  {
+    super(paramContext, paramFaceDecoder, paramslt);
+  }
+  
+  public qpk a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return g().h();
+  }
+  
+  public qpk d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pwe)) && (pay.s(((pwe)this.jdField_a_of_type_JavaLangObject).a()))) {
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(AIOUtils.dp2px(250.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    }
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_Qpj != null) && ((this.jdField_a_of_type_Qpj instanceof ComponentContentBig))) {
+        localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Qpj);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+        localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
+      }
+      a(localLinearLayout);
+      return this;
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(AIOUtils.dp2px(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    }
+  }
+  
+  public qpk e()
+  {
+    return null;
+  }
+  
+  public qpk g()
+  {
+    this.jdField_a_of_type_Qpj = new ComponentContentBig(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public qpk o()
+  {
+    super.o();
+    return this;
+  }
 }
 
 

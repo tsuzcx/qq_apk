@@ -1,36 +1,39 @@
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.biz.richframework.part.block.BlockContainer;
 
 public class yzi
-  extends bblr
+  extends RecyclerView.ItemDecoration
 {
-  public yzi(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
+  public yzi(BlockContainer paramBlockContainer, yzj paramyzj) {}
   
-  public void a()
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    super.a();
-    this.a.a.n();
-    this.a.l();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    super.a(paramInt1, paramInt2);
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DanceMachineQQBrowserActivity", 2, "onPlayFrame");
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    int i = paramRecyclerView.getChildLayoutPosition(paramView);
+    if ((this.a.a != null) && (this.a.a.a(i) != null)) {
+      this.a.a.a(i).a(paramRect, paramView, paramRecyclerView, paramState);
     }
-    super.a(paramLong);
-    try
+  }
+  
+  public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    super.onDraw(paramCanvas, paramRecyclerView, paramState);
+    int j = paramRecyclerView.getChildCount();
+    int i = 0;
+    while (i < j)
     {
-      this.a.a(1000L * paramLong);
-      return;
+      if ((this.a.a != null) && (this.a.a.a(i) != null))
+      {
+        View localView = paramRecyclerView.getChildAt(i);
+        this.a.a.a(i).a(paramCanvas, paramRecyclerView, localView, paramState);
+      }
+      i += 1;
     }
-    catch (InterruptedException localInterruptedException) {}
   }
 }
 

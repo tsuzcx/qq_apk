@@ -1,19 +1,19 @@
 package com.tencent.biz.addContactTroopView;
 
-import nlh;
+import nmw;
 import tencent.im.troop_view.troopviewInfo.RspBody;
 
 public class AddContactTroopManage$1
   implements Runnable
 {
-  public AddContactTroopManage$1(nlh paramnlh, troopviewInfo.RspBody paramRspBody) {}
+  public AddContactTroopManage$1(nmw paramnmw, troopviewInfo.RspBody paramRspBody) {}
   
   public void run()
   {
     synchronized (this.this$0)
     {
       this.this$0.a = this.a;
-      nlh.a(this.this$0, this.a);
+      nmw.a(this.this$0, this.a);
       return;
     }
   }

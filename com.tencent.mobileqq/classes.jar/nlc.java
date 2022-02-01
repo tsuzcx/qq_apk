@@ -1,29 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Transformation;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
 
-class nlc
-  extends BroadcastReceiver
+public class nlc
+  implements bfzz<Integer>
 {
-  nlc(nlb paramnlb) {}
+  public nlc(PoiMapActivity paramPoiMapActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(bfzt<Integer> parambfzt, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    int i = paramIntent.getIntExtra("request_type", 0);
-    QLog.i(this.a.c, 2, "receive request" + paramIntent.getExtras());
-    switch (i)
-    {
-    default: 
-      return;
-    }
-    paramContext = new Intent();
-    paramContext.setAction("com.tencent.mobileqq.NearbyJsInterface");
-    paramContext.putExtra("command_type", 1);
-    paramContext.putExtra("data", nlb.a(this.a));
-    this.a.a.getApp().sendBroadcast(paramContext);
+    parambfzt = (FrameLayout.LayoutParams)this.a.b.getLayoutParams();
+    parambfzt.bottomMargin = (this.a.o - paramInteger.intValue());
+    this.a.b.setLayoutParams(parambfzt);
   }
 }
 

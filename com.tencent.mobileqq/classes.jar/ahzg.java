@@ -1,13 +1,21 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
 
 public class ahzg
-  implements ahyf
+  implements aicb
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public ahzg(SearchContactsFragment paramSearchContactsFragment) {}
+  
+  public void a(String paramString)
   {
-    paramahed.f(paramahfq.b);
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = 80000001;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_label", 0, 0, "", "", paramString, "");
+      this.a.d = false;
+      this.a.a(paramString, false);
+    }
   }
 }
 

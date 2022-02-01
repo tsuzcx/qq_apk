@@ -1,14 +1,15 @@
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+
 public class apro
-  extends aprj
+  implements bjuu
 {
-  public apro(int paramInt)
+  public apro(TimeSelectView paramTimeSelectView) {}
+  
+  public void a(View paramView, int paramInt)
   {
-    super(paramInt);
+    TimeSelectView.a(this.a, paramView, 1);
   }
-  
-  protected void a() {}
-  
-  protected void a(aprm paramaprm) {}
 }
 
 

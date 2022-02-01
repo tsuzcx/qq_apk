@@ -1,37 +1,8 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.widget.ListView;
 
-public class nvx
-  implements ViewPager.OnPageChangeListener
+public abstract interface nvx
 {
-  public nvx(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
-  {
-    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
-      return;
-    }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
-    if (paramInt2 != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
-      return;
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    PublicAccountAdvertisementActivity.a(this.a, paramInt);
-  }
+  public abstract void a(ListView paramListView);
 }
 
 

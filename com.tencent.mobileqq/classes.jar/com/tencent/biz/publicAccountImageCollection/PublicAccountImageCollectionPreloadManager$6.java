@@ -1,7 +1,7 @@
 package com.tencent.biz.publicAccountImageCollection;
 
 import android.support.v4.util.MQLruCache;
-import antf;
+import com.tencent.mobileqq.app.AppConstants;
 import java.io.File;
 
 class PublicAccountImageCollectionPreloadManager$6
@@ -15,7 +15,7 @@ class PublicAccountImageCollectionPreloadManager$6
       this.this$0.a.releaseLargeCache();
     }
     long l = System.currentTimeMillis();
-    Object localObject1 = new File(antf.cQ);
+    Object localObject1 = new File(AppConstants.SDCARD_PATH_PUBLIC_ACCOUNT_IMAGE_COLLECTION_PRELOAD);
     if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
       localObject1 = ((File)localObject1).listFiles();
@@ -34,7 +34,7 @@ class PublicAccountImageCollectionPreloadManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager.6
  * JD-Core Version:    0.7.0.1
  */

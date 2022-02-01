@@ -1,18 +1,14 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
-
-class aodv
-  implements FileFilter
+public abstract interface aodv
 {
-  public boolean accept(File paramFile)
-  {
-    return Pattern.matches("cpu[0-9]+", paramFile.getName());
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void k_(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodv
  * JD-Core Version:    0.7.0.1
  */

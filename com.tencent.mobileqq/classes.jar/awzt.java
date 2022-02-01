@@ -1,69 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.10.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awzt
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
+  awzt(awzr paramawzr) {}
   
-  public static awzt a(JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    if (paramJSONObject != null) {
-      for (;;)
-      {
-        try
-        {
-          localObject = new awzt();
-          try
-          {
-            if (paramJSONObject.has("tip"))
-            {
-              ((awzt)localObject).a = paramJSONObject.getString("tip");
-              if (!paramJSONObject.has("key_word")) {
-                continue;
-              }
-              ((awzt)localObject).b = paramJSONObject.getString("key_word");
-              if (!paramJSONObject.has("jump_url")) {
-                continue;
-              }
-              ((awzt)localObject).c = paramJSONObject.getString("jump_url");
-              return localObject;
-            }
-            ((awzt)localObject).a = "";
-            continue;
-            localObject = paramJSONObject;
-          }
-          catch (Exception localException1)
-          {
-            paramJSONObject = (JSONObject)localObject;
-          }
-        }
-        catch (Exception localException2)
-        {
-          paramJSONObject = null;
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          return localObject;
-        }
-        QLog.i("CUOpenCardGuideMng", 2, "GuideEntry-parse", localException1);
-        return paramJSONObject;
-        ((awzt)localObject).b = "";
-        continue;
-        ((awzt)localObject).c = "";
-        return localObject;
-      }
-    }
-    Object localObject = null;
-    return localObject;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("[tip:").append(this.a).append(", key_word:").append(this.b).append(", jump_url:").append(this.c).append("]");
-    return localStringBuilder.toString();
+    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://nearby.qq.com/nearby-visitor/index.html?_proxy=1&_wwv=128");
+    this.a.a.startActivity(localIntent);
+    awzr.a(this.a, null);
+    ThreadManager.post(new NearbyProfileDisplayTribePanel.10.1(this), 5, null, false);
+    bcef.b(this.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

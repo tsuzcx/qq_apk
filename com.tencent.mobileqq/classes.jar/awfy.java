@@ -1,305 +1,468 @@
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class awfy
 {
-  public static <T> T a(String paramString, Class<T> paramClass)
+  public static HashMap<String, Integer> a;
+  public static HashMap<String, Integer> b;
+  private static HashMap<String, Integer> c = new HashMap();
+  
+  static
   {
-    if ((a(paramString)) || (paramClass == null)) {
-      return null;
-    }
-    try
-    {
-      paramString = a(new JSONObject(paramString), paramClass);
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
+    c.put("hot_reactive_gray_intimate_lover_1_icon", Integer.valueOf(2130850093));
+    c.put("hot_reactive_gray_intimate_lover_2_icon", Integer.valueOf(2130850094));
+    c.put("hot_reactive_gray_intimate_lover_3_icon", Integer.valueOf(2130850095));
+    c.put("hot_reactive_gray_intimate_guimi_1_icon", Integer.valueOf(2130850087));
+    c.put("hot_reactive_gray_intimate_guimi_2_icon", Integer.valueOf(2130850088));
+    c.put("hot_reactive_gray_intimate_guimi_3_icon", Integer.valueOf(2130850089));
+    c.put("hot_reactive_gray_intimate_jiyou_1_icon", Integer.valueOf(2130850090));
+    c.put("hot_reactive_gray_intimate_jiyou_2_icon", Integer.valueOf(2130850091));
+    c.put("hot_reactive_gray_intimate_jiyou_3_icon", Integer.valueOf(2130850092));
+    c.put("hot_reactive_gray_friendship_1_icon", Integer.valueOf(2130850084));
+    c.put("hot_reactive_gray_friendship_2_icon", Integer.valueOf(2130850085));
+    c.put("hot_reactive_gray_friendship_3_icon", Integer.valueOf(2130850086));
+    c.put("gray_small_fire", Integer.valueOf(2130850114));
+    c.put("gray_big_fire", Integer.valueOf(2130850070));
+    c.put("gray_small_zan", Integer.valueOf(2130850118));
+    c.put("gray_big_zan", Integer.valueOf(2130850074));
+    c.put("gray_small_lover", Integer.valueOf(2130850106));
+    c.put("gray_big_lover", Integer.valueOf(2130850105));
+    c.put("qzone_gray_qzone_visit_normal", Integer.valueOf(2130850112));
+    c.put("qzone_gray_qzone_visit_super", Integer.valueOf(2130850113));
+    c.put("gray_small_ship", Integer.valueOf(2130850117));
+    c.put("gray_big_ship", Integer.valueOf(2130850073));
+    a = new HashMap();
+    a.put("skin_icon_small_fire", Integer.valueOf(2130850114));
+    a.put("skin_icon_big_fire", Integer.valueOf(2130850070));
+    a.put("skin_icon_small_flower", Integer.valueOf(2130850117));
+    a.put("skin_icon_big_flower", Integer.valueOf(2130850073));
+    a.put("skin_icon_small_praise", Integer.valueOf(2130850118));
+    a.put("skin_icon_big_praise", Integer.valueOf(2130850074));
+    a.put("skin_icon_lover_small", Integer.valueOf(2130850106));
+    a.put("skin_icon_lover_big", Integer.valueOf(2130850105));
+    a.put("skin_icon_qzone_visit_normal", Integer.valueOf(2130850112));
+    a.put("skin_icon_qzone_visit_super", Integer.valueOf(2130850113));
+    a.put("skin_icon_frdship_1", Integer.valueOf(2130850084));
+    a.put("skin_icon_frdship_2", Integer.valueOf(2130850085));
+    a.put("skin_icon_frdship_3", Integer.valueOf(2130850086));
+    a.put("skin_icon_intimate_lover_1", Integer.valueOf(2130850093));
+    a.put("skin_icon_intimate_lover_2", Integer.valueOf(2130850094));
+    a.put("skin_icon_intimate_lover_3", Integer.valueOf(2130850095));
+    a.put("skin_icon_intimate_guimi_1", Integer.valueOf(2130850087));
+    a.put("skin_icon_intimate_guimi_2", Integer.valueOf(2130850088));
+    a.put("skin_icon_intimate_guimi_3", Integer.valueOf(2130850089));
+    a.put("skin_icon_intimate_sidang_1", Integer.valueOf(2130850099));
+    a.put("skin_icon_intimate_sidang_2", Integer.valueOf(2130850100));
+    a.put("skin_icon_intimate_sidang_3", Integer.valueOf(2130850101));
+    a.put("skin_icon_intimate_jiyou_1", Integer.valueOf(2130850090));
+    a.put("skin_icon_intimate_jiyou_2", Integer.valueOf(2130850091));
+    a.put("skin_icon_intimate_jiyou_3", Integer.valueOf(2130850092));
+    a.put("skin_icon_mutual_x_character_1", Integer.valueOf(2130850111));
+    a.put("skin_icon_mentorship", Integer.valueOf(2130850109));
+    a.put("skin_icon_mentorship_svip", Integer.valueOf(2130850108));
+    a.put("skin_icon_mentorship_yellowvip", Integer.valueOf(2130850110));
+    a.put("skin_icon_mentorship_newyear", Integer.valueOf(2130850107));
+    a.put("skin_icon_kapu_1", Integer.valueOf(2130850102));
+    a.put("skin_icon_kapu_2", Integer.valueOf(2130850103));
+    a.put("skin_icon_kapu_3", Integer.valueOf(2130850104));
+    a.put("skin_icon_forget_me_not_1", Integer.valueOf(2130850081));
+    a.put("skin_icon_forget_me_not_2", Integer.valueOf(2130850082));
+    a.put("skin_icon_forget_me_not_3", Integer.valueOf(2130850083));
+    b = new HashMap();
+    b.putAll(c);
+    b.putAll(a);
+    b.putAll(awgk.a);
   }
   
-  public static <T> T a(JSONObject paramJSONObject, Class<T> paramClass)
+  public static int a()
   {
-    if ((paramJSONObject == null) || (paramClass == null)) {
-      return null;
+    return bfzl.a(NetConnInfoCenter.getServerTimeMillis());
+  }
+  
+  public static int a(long paramLong1, long paramLong2)
+  {
+    return (int)(100000L + 10L * paramLong1 + paramLong2);
+  }
+  
+  public static long a(String paramString)
+  {
+    long l = 0L;
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      l = Long.valueOf(Long.parseLong(paramString)).longValue() % 10L;
+      return l;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("MutualMarkUtils", 1, "getTypeLevel error:" + paramString.getMessage());
+    }
+    return 0L;
+  }
+  
+  /* Error */
+  public static String a()
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_1
+    //   2: aconst_null
+    //   3: astore_0
+    //   4: ldc_w 259
+    //   7: astore_3
+    //   8: invokestatic 265	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   11: invokevirtual 271	com/tencent/qphone/base/util/BaseApplication:getAssets	()Landroid/content/res/AssetManager;
+    //   14: ldc_w 273
+    //   17: invokevirtual 279	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   20: astore_2
+    //   21: aload_2
+    //   22: astore_0
+    //   23: aload_2
+    //   24: astore_1
+    //   25: aload_2
+    //   26: invokestatic 284	npn:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   29: astore 4
+    //   31: aload 4
+    //   33: astore_0
+    //   34: aload_0
+    //   35: astore_1
+    //   36: aload_2
+    //   37: ifnull +9 -> 46
+    //   40: aload_2
+    //   41: invokevirtual 289	java/io/InputStream:close	()V
+    //   44: aload_0
+    //   45: astore_1
+    //   46: aload_1
+    //   47: areturn
+    //   48: astore_2
+    //   49: aload_0
+    //   50: astore_1
+    //   51: aload_2
+    //   52: invokevirtual 292	java/lang/Throwable:printStackTrace	()V
+    //   55: aload_3
+    //   56: astore_1
+    //   57: aload_0
+    //   58: ifnull -12 -> 46
+    //   61: aload_0
+    //   62: invokevirtual 289	java/io/InputStream:close	()V
+    //   65: ldc_w 259
+    //   68: areturn
+    //   69: astore_0
+    //   70: ldc_w 259
+    //   73: areturn
+    //   74: astore_0
+    //   75: aload_1
+    //   76: ifnull +7 -> 83
+    //   79: aload_1
+    //   80: invokevirtual 289	java/io/InputStream:close	()V
+    //   83: aload_0
+    //   84: athrow
+    //   85: astore_1
+    //   86: aload_0
+    //   87: areturn
+    //   88: astore_1
+    //   89: goto -6 -> 83
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   3	59	0	localObject1	Object
+    //   69	1	0	localIOException1	java.io.IOException
+    //   74	13	0	str1	String
+    //   1	79	1	localObject2	Object
+    //   85	1	1	localIOException2	java.io.IOException
+    //   88	1	1	localIOException3	java.io.IOException
+    //   20	21	2	localInputStream	java.io.InputStream
+    //   48	4	2	localThrowable	java.lang.Throwable
+    //   7	49	3	str2	String
+    //   29	3	4	str3	String
+    // Exception table:
+    //   from	to	target	type
+    //   8	21	48	java/lang/Throwable
+    //   25	31	48	java/lang/Throwable
+    //   61	65	69	java/io/IOException
+    //   8	21	74	finally
+    //   25	31	74	finally
+    //   51	55	74	finally
+    //   40	44	85	java/io/IOException
+    //   79	83	88	java/io/IOException
+  }
+  
+  public static String a(int paramInt)
+  {
+    Iterator localIterator = a.entrySet().iterator();
+    Map.Entry localEntry;
+    while (localIterator.hasNext())
+    {
+      localEntry = (Map.Entry)localIterator.next();
+      if (((Integer)localEntry.getValue()).intValue() == paramInt) {
+        return (String)localEntry.getKey();
+      }
+    }
+    localIterator = awgk.a.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      localEntry = (Map.Entry)localIterator.next();
+      if (((Integer)localEntry.getValue()).intValue() == paramInt) {
+        return (String)localEntry.getKey();
+      }
+    }
+    return "";
+  }
+  
+  public static String a(long paramLong1, long paramLong2)
+  {
+    return String.valueOf(100000L + 10L * paramLong1 + paramLong2);
+  }
+  
+  public static String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
     }
     try
     {
-      Object localObject1 = paramClass.newInstance();
-      if (localObject1 == null) {
-        return null;
-      }
+      String str = new String(bfuc.decode(paramString, 0));
+      return str;
     }
-    catch (InstantiationException localInstantiationException)
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        localInstantiationException.printStackTrace();
-        Object localObject2 = null;
-      }
+      QLog.d("MutualMarkUtils", 1, "transformBase64ToRealString exception,base64String = " + paramString, localException);
     }
-    catch (IllegalAccessException localIllegalAccessException)
+    return "";
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    String str = paramString2;
+    if (!TextUtils.isEmpty(paramString1))
     {
-      Object localObject3;
-      for (;;)
+      str = paramString2;
+      if (!TextUtils.isEmpty(paramString2))
       {
-        localIllegalAccessException.printStackTrace();
-        localObject3 = null;
-      }
-      Field[] arrayOfField = paramClass.getDeclaredFields();
-      if ((arrayOfField == null) || (arrayOfField.length == 0)) {
-        return null;
-      }
-      int j = arrayOfField.length;
-      int i = 0;
-      if (i < j)
-      {
-        Field localField = arrayOfField[i];
-        if (localField == null) {}
-        for (;;)
+        str = paramString2;
+        if (!b(paramString2))
         {
-          i += 1;
-          break;
-          int k = localField.getModifiers();
-          if ((!Modifier.isStatic(k)) || (!Modifier.isFinal(k)))
-          {
-            paramClass = localField.getName();
-            localObject4 = (awfx)localField.getAnnotation(awfx.class);
-            if (localObject4 != null) {
-              paramClass = ((awfx)localObject4).a();
-            }
-            if ((!a(paramClass)) && (paramJSONObject.has(paramClass)))
-            {
-              try
-              {
-                localObject4 = localField.getType().getSimpleName();
-                localField.setAccessible(true);
-                if ("int".equals(localObject4)) {
-                  localField.set(localObject3, Integer.valueOf(paramJSONObject.optInt(paramClass)));
-                }
-              }
-              catch (IllegalAccessException paramJSONObject)
-              {
-                paramJSONObject.printStackTrace();
-                return null;
-              }
-              if ("boolean".equals(localObject4))
-              {
-                localField.set(localObject3, Boolean.valueOf(paramJSONObject.optBoolean(paramClass)));
-              }
-              else if ("long".equals(localObject4))
-              {
-                localField.set(localObject3, Long.valueOf(paramJSONObject.optLong(paramClass)));
-              }
-              else if ("double".equals(localObject4))
-              {
-                localField.set(localObject3, Double.valueOf(paramJSONObject.optDouble(paramClass)));
-              }
-              else if ("float".equals(localObject4))
-              {
-                localField.set(localObject3, Float.valueOf((float)paramJSONObject.optDouble(paramClass)));
-              }
-              else if ("String".equals(localObject4))
-              {
-                localField.set(localObject3, paramJSONObject.optString(paramClass));
-              }
-              else
-              {
-                if (!"Object".equals(localObject4)) {
-                  break label382;
-                }
-                localField.set(localObject3, new Object());
-              }
-            }
+          if ((!paramString1.endsWith("/")) || (!paramString2.startsWith("/"))) {
+            break label72;
           }
-        }
-        label382:
-        Object localObject4 = paramJSONObject.opt(paramClass);
-        if ((localObject4 instanceof JSONObject)) {
-          paramClass = a((JSONObject)localObject4, localField.getType());
-        }
-        for (;;)
-        {
-          localField.set(localObject3, paramClass);
-          break;
-          if ((localObject4 instanceof JSONArray))
-          {
-            paramClass = (ParameterizedType)localField.getGenericType();
-            paramClass = a((JSONArray)localObject4, paramClass.getActualTypeArguments()[0]);
-          }
-          else
-          {
-            a("convertFromJSONObject unknown field " + paramClass);
-            paramClass = null;
-          }
+          str = paramString1 + paramString2.substring(1);
         }
       }
-      return localObject3;
     }
+    label72:
+    do
+    {
+      do
+      {
+        return str;
+        if ((paramString1.endsWith("/")) && (!paramString2.startsWith("/"))) {
+          return paramString1 + paramString2;
+        }
+        if ((!paramString1.endsWith("/")) && (paramString2.startsWith("/"))) {
+          return paramString1 + paramString2;
+        }
+        str = paramString2;
+      } while (paramString1.endsWith("/"));
+      str = paramString2;
+    } while (paramString2.startsWith("/"));
+    return paramString1 + "/" + paramString2;
   }
   
-  public static <T> List<T> a(String paramString, Type paramType)
+  public static ArrayList<awga> a(String paramString)
   {
-    if ((a(paramString)) || (paramType == null)) {
-      return null;
-    }
-    try
-    {
-      paramString = a(new JSONArray(paramString), paramType);
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static <T> List<T> a(JSONArray paramJSONArray, Type paramType)
-  {
-    if ((paramJSONArray == null) || (paramType == null)) {
-      return null;
-    }
     ArrayList localArrayList = new ArrayList();
-    int j = paramJSONArray.length();
-    int i = 0;
-    if (i < j)
+    paramString = Pattern.compile("#image_url\\{([^\\)]+?)\\}").matcher(paramString);
+    while (paramString.find())
     {
-      Object localObject = paramJSONArray.opt(i);
-      if (localObject == null) {}
-      for (;;)
+      awga localawga = new awga();
+      localawga.jdField_a_of_type_JavaLangString = paramString.group();
+      localawga.jdField_a_of_type_Int = paramString.start();
+      localawga.jdField_b_of_type_Int = (localawga.jdField_a_of_type_Int + localawga.jdField_a_of_type_JavaLangString.length());
+      localawga.jdField_b_of_type_JavaLangString = paramString.group(1);
+      if ((!TextUtils.isEmpty(localawga.jdField_b_of_type_JavaLangString)) && (localawga.jdField_b_of_type_JavaLangString.contains("client/42px-")))
       {
-        i += 1;
-        break;
-        if ((localObject instanceof JSONObject))
-        {
-          Class localClass = (Class)paramType;
-          localArrayList.add(a((JSONObject)localObject, localClass));
+        Matcher localMatcher = Pattern.compile("x_character/([^\\)]+?)/client").matcher(localawga.jdField_b_of_type_JavaLangString);
+        if (localMatcher.find()) {
+          localawga.c = localMatcher.group(1);
         }
-        else if ((localObject instanceof JSONArray))
-        {
-          localArrayList.add(a((JSONArray)localObject, ((ParameterizedType)paramType).getActualTypeArguments()[0]));
-        }
-        else
-        {
-          localArrayList.add(localObject);
-        }
+      }
+      localArrayList.add(localawga);
+      if (QLog.isColorLevel()) {
+        QLog.i("MutualMarkUtils", 2, "getMutualMarkImageUrlTemplateInfos. url:" + localawga.jdField_b_of_type_JavaLangString + " template:" + localawga.jdField_a_of_type_JavaLangString);
       }
     }
     return localArrayList;
   }
   
-  public static <T> JSONArray a(List<T> paramList)
+  public static List<String> a()
   {
-    JSONArray localJSONArray = new JSONArray();
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return localJSONArray;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      Object localObject = paramList.next();
-      if (localObject != null) {
-        if (a(localObject)) {
-          localJSONArray.put(localObject);
-        } else if ((localObject instanceof List)) {
-          localJSONArray.put(a((List)localObject));
-        } else {
-          localJSONArray.put(a(localObject));
-        }
-      }
-    }
-    return localJSONArray;
+    ArrayList localArrayList = new ArrayList(b.keySet());
+    Collections.sort(localArrayList, new awfz());
+    return localArrayList;
   }
   
-  public static <T> JSONObject a(T paramT)
+  public static boolean a(int paramInt)
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramT == null) {
-      return localJSONObject;
+    if ((paramInt <= 100000) || (paramInt >= 200000)) {}
+    while (b(String.valueOf(paramInt)) <= 0L) {
+      return false;
     }
-    Field[] arrayOfField = paramT.getClass().getDeclaredFields();
-    if ((arrayOfField == null) || (arrayOfField.length == 0)) {
-      return localJSONObject;
-    }
-    int j = arrayOfField.length;
-    int i = 0;
-    if (i < j)
+    return true;
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    if (paramLong <= 0L) {}
+    int i;
+    do
     {
-      Object localObject1 = arrayOfField[i];
-      if (localObject1 == null) {}
-      for (;;)
+      return false;
+      i = a();
+    } while ((i < 18) || (i >= 24) || (bfzl.c(paramLong) == 2131719016));
+    return true;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.getApp() != null)) {
+      return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getInt("hotDisableInteractive", 0) == 1;
+    }
+    return false;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      bool1 = bool2;
+      if (paramString.startsWith("#image_url"))
       {
-        i += 1;
-        break;
-        Object localObject2 = (awfx)((Field)localObject1).getAnnotation(awfx.class);
-        if (localObject2 != null)
-        {
-          localObject2 = ((awfx)localObject2).a();
-          if (!a((String)localObject2))
-          {
-            try
-            {
-              localObject1 = ((Field)localObject1).get(paramT);
-              if (localObject1 == null) {
-                continue;
-              }
-              if (a(localObject1)) {
-                localJSONObject.put((String)localObject2, localObject1);
-              }
-            }
-            catch (JSONException localJSONException)
-            {
-              localJSONException.printStackTrace();
-              continue;
-              if (!(localJSONException instanceof List)) {
-                break label178;
-              }
-              localJSONObject.put((String)localObject2, a((List)localJSONException));
-            }
-            catch (IllegalAccessException localIllegalAccessException)
-            {
-              localIllegalAccessException.printStackTrace();
-            }
-            continue;
-            label178:
-            localJSONObject.put((String)localObject2, a(localIllegalAccessException));
-          }
+        bool1 = bool2;
+        if (Pattern.compile("#image_url\\{([^\\)]+?)\\}").matcher(paramString).matches()) {
+          bool1 = true;
         }
       }
     }
-    return localJSONObject;
+    if (QLog.isColorLevel()) {
+      QLog.i("MutualMarkUtils", 2, "isMutualMarkImageUrlTemplate. res:" + bool1 + " template:" + paramString);
+    }
+    return bool1;
   }
   
-  private static void a(String paramString)
+  public static long b(String paramString)
   {
-    QLog.d("JSONConverter", 2, paramString);
+    long l = 0L;
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      paramString = Long.valueOf(Long.parseLong(paramString));
+      l = (paramString.longValue() - 100000L - paramString.longValue() % 10L) / 10L;
+      return l;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("MutualMarkUtils", 1, "getType error:" + paramString.getMessage());
+    }
+    return 0L;
   }
   
-  private static boolean a(Object paramObject)
+  public static String b(String paramString)
   {
-    return ((paramObject instanceof Integer)) || ((paramObject instanceof String)) || ((paramObject instanceof Boolean)) || ((paramObject instanceof Double)) || ((paramObject instanceof Float)) || ((paramObject instanceof Long)) || ((paramObject instanceof Byte)) || ((paramObject instanceof Character)) || ((paramObject instanceof Short));
+    Object localObject = Pattern.compile("#image_url\\{([^\\)]+?)\\}").matcher(paramString);
+    if (((Matcher)localObject).matches())
+    {
+      localObject = ((Matcher)localObject).group(1);
+      if (QLog.isColorLevel()) {
+        QLog.i("MutualMarkUtils", 2, "getMutualMarkImageUrlTemplateUrl. url:" + (String)localObject + " template:" + paramString);
+      }
+      return localObject;
+    }
+    return null;
   }
   
-  private static boolean a(String paramString)
+  public static boolean b(int paramInt)
   {
-    return (paramString == null) || (paramString.length() <= 0);
+    return (paramInt == 2097153) || (paramInt == 2097154) || (paramInt == 2097155);
+  }
+  
+  public static boolean b(long paramLong)
+  {
+    boolean bool2 = false;
+    long[] arrayOfLong = awfo.b;
+    int j = arrayOfLong.length;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if (arrayOfLong[i] == paramLong) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  public static boolean b(String paramString)
+  {
+    return paramString.contains("://");
+  }
+  
+  public static String c(String paramString)
+  {
+    String str = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      str = paramString;
+      if (!b(paramString)) {
+        str = a(apyz.a().h, paramString);
+      }
+    }
+    return str;
+  }
+  
+  public static boolean c(long paramLong)
+  {
+    long[] arrayOfLong;
+    int j;
+    int i;
+    if (b(paramLong))
+    {
+      arrayOfLong = awfo.a;
+      j = arrayOfLong.length;
+      i = 0;
+    }
+    while (i < j)
+    {
+      if (arrayOfLong[i] == paramLong) {
+        return false;
+      }
+      i += 1;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awfy
  * JD-Core Version:    0.7.0.1
  */

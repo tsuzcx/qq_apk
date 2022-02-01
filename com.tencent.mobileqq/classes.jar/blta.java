@@ -1,19 +1,47 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewStub;
+import android.widget.TextView;
 
-class blta
-  implements View.OnClickListener
+public class blta
+  extends blny
 {
-  blta(blsz paramblsz, blsy paramblsy) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onClick(View paramView)
+  public blta(ViewStub paramViewStub)
   {
-    int i = this.jdField_a_of_type_Blsy.getPosition();
-    if (i >= 0) {
-      this.jdField_a_of_type_Blsz.a.a(this.jdField_a_of_type_Blsy.itemView, i);
+    super(paramViewStub);
+  }
+  
+  protected void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366255);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366254));
+  }
+  
+  public void b()
+  {
+    a();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692333);
+  }
+  
+  public void c()
+  {
+    if (a())
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void d()
+  {
+    if (!a()) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 

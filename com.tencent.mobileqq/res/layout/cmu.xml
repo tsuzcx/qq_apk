@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/gg6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="13.0dip" android:layout_marginBottom="14.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true"
+<FrameLayout android:id="@id/nfd" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="55.0dip" android:layout_height="55.0dip" android:contentDescription="@string/q4v">
-        <View android:id="@id/rz" android:background="@drawable/a42" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_centerInParent="true" />
-        <ImageView android:id="@id/d0y" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/dvf" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <TextView android:textSize="12.0dip" android:textColor="#ffffddb2" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/nta" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="100.0dip" />
-</LinearLayout>
+    <FrameLayout android:layout_gravity="bottom" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <RelativeLayout android:background="@color/al3" android:paddingLeft="16.0dip" android:paddingTop="35.0dip" android:paddingRight="16.0dip" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="300.0dip" android:layout_marginTop="48.0dip">
+            <TextView android:textSize="16.0sp" android:textColor="@color/bp" android:id="@id/nhj" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="12.0sp" android:gravity="center_vertical" android:id="@id/nho" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignTop="@id/nhj" android:layout_alignBottom="@id/nhj" android:layout_alignParentRight="true" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/nhh" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="34.0dip">
+                <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/nhe" android:background="@drawable/dhx" android:layout_width="0.0dip" android:layout_height="150.0dip" android:layout_marginRight="15.0dip" android:layout_weight="1.0">
+                    <ImageView android:id="@id/nhg" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginBottom="-6.0dip" android:src="@drawable/ggi" />
+                    <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="#ffd52765" android:id="@id/nhm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1个月饼" />
+                    <TextView android:textSize="12.0sp" android:textColor="#ffd52765" android:id="@id/nhn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="还不错少喂点" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/nhd" android:clipChildren="false" android:layout_width="0.0dip" android:layout_height="150.0dip" android:layout_marginLeft="15.0dip" android:layout_weight="1.0">
+                    <ImageView android:id="@id/nhf" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginTop="-10.0dip" android:layout_marginBottom="4.0dip" android:src="@drawable/ggk" />
+                    <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="#ffd52765" android:id="@id/nhk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3个月饼" />
+                    <TextView android:textSize="12.0sp" android:textColor="#ffd52765" android:id="@id/nhl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="太棒了多喂点" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView android:textSize="17.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/nhi" android:background="@drawable/dhw" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginTop="22.0dip" android:text="喂饼" android:layout_below="@id/nhh" />
+        </RelativeLayout>
+        <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/ggj" android:scaleType="fitXY" />
+    </FrameLayout>
+</FrameLayout>

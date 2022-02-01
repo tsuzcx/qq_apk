@@ -1,16 +1,21 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController.4.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class sqs
-  implements ViewFactory.FoundClickableViewListener
+public class sqs
+  implements View.OnClickListener
 {
-  sqs(sqr paramsqr, Context paramContext, ProteusItemData paramProteusItemData) {}
+  public sqs(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void onClick(View paramView)
   {
-    paramViewBase.setOnClickListener(new sqt(this));
+    this.a.d = true;
+    SlideActiveAnimController.a(this.a, new SlideActiveAnimController.4.1(this));
+    SlideActiveAnimController.a(this.a).postDelayed(SlideActiveAnimController.a(this.a), 5000L);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

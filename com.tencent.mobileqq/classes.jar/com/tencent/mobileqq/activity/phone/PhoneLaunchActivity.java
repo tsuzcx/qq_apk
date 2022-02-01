@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.activity.phone;
 
 import Override;
+import aihs;
 import ajnj;
-import akpk;
+import amtj;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,11 +11,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import anzj;
-import azov;
-import bdll;
-import bhlg;
+import aycd;
+import bcef;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class PhoneLaunchActivity
@@ -22,7 +22,7 @@ public class PhoneLaunchActivity
   implements View.OnClickListener
 {
   private Button jdField_a_of_type_AndroidWidgetButton;
-  public azov a;
+  public aycd a;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   private boolean c;
@@ -31,7 +31,7 @@ public class PhoneLaunchActivity
   
   private void b()
   {
-    bhlg.a(2);
+    ContactUtils.setBindPath(2);
     Intent localIntent = new Intent(this, BindNumberActivity.class);
     if (getIntent().getIntExtra("kSrouce", -1) == 8) {
       localIntent.putExtra("kSrouce", 8);
@@ -42,15 +42,16 @@ public class PhoneLaunchActivity
   public void a()
   {
     PhoneLaunchActivity.1 local1 = new PhoneLaunchActivity.1(this);
-    DenyRunnable localDenyRunnable = new DenyRunnable(this, new akpk(this));
-    ajnj.a(this, this.app, local1, localDenyRunnable);
+    DenyRunnable localDenyRunnable = new DenyRunnable(this, new ajnj(this));
+    aihs.a(this, this.app, local1, localDenyRunnable);
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -86,20 +87,20 @@ public class PhoneLaunchActivity
     }
     if (!this.jdField_a_of_type_Boolean) {
       if (getIntent().getStringExtra("leftViewText") == null) {
-        getIntent().putExtra("leftViewText", anzj.a(2131706886));
+        getIntent().putExtra("leftViewText", amtj.a(2131707118));
       }
     }
     for (;;)
     {
-      setContentView(2131559559);
-      setTitle(anzj.a(2131706882));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372448));
+      setContentView(2131559561);
+      setTitle(amtj.a(2131707114));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372415));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       if (getIntent().getBooleanExtra("k_start_number", false)) {
         b();
       }
       return true;
-      getIntent().putExtra("leftViewText", anzj.a(2131706888));
+      getIntent().putExtra("leftViewText", amtj.a(2131707120));
     }
   }
   
@@ -107,7 +108,7 @@ public class PhoneLaunchActivity
   {
     super.finish();
     if (!this.jdField_a_of_type_Boolean) {
-      overridePendingTransition(2130771990, 2130772304);
+      overridePendingTransition(2130771990, 2130772302);
     }
   }
   
@@ -121,7 +122,7 @@ public class PhoneLaunchActivity
       {
         b();
         if (this.d) {
-          bdll.b(this.app, "CliOper", "", "", "0X8005D10", "0X8005D10", 0, 0, "", "", "", "");
+          bcef.b(this.app, "CliOper", "", "", "0X8005D10", "0X8005D10", 0, 0, "", "", "", "");
         }
       }
     }
@@ -142,7 +143,7 @@ public class PhoneLaunchActivity
         a();
         break;
       }
-      a(anzj.a(2131706884), anzj.a(2131706883));
+      a(amtj.a(2131707116), amtj.a(2131707115));
       break;
       finish();
     }

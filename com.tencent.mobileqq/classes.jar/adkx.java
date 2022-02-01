@@ -1,13 +1,51 @@
-import com.tencent.qapmsdk.base.meta.DumpResult;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.FormSwitchSimpleItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.Switch;
 
-public abstract interface adkx
-  extends adks
+public class adkx
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract DumpResult a(String paramString, adkz paramadkz);
+  public adkx(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public abstract void a(long paramLong, String paramString);
-  
-  public abstract void a(Object paramObject, String paramString);
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    boolean bool1 = this.a.a.a().isChecked();
+    boolean bool2 = ThemeUtil.isNowThemeIsNight(this.a.app, false, null);
+    int j = bbyp.c();
+    int i;
+    if ((bool1) && (bool2))
+    {
+      i = bbyp.c;
+      if (!paramBoolean) {
+        break label140;
+      }
+      String str = bbyp.a(i);
+      if (!bdai.a(this.a, str, new adky(this, paramCompoundButton, bool1, i))) {
+        GeneralSettingActivity.a(this.a, paramCompoundButton, true, bool1, i);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      i = j;
+      if (!bool1) {
+        break;
+      }
+      i = j;
+      if (!ThemeUtil.isNowThemeIsNight(this.a.app, false, bbyp.a(j))) {
+        break;
+      }
+      i = bbyp.d();
+      break;
+      label140:
+      GeneralSettingActivity.a(this.a, paramCompoundButton, false, bool1, i);
+    }
+  }
 }
 
 

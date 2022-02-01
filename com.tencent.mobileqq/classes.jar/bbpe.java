@@ -1,112 +1,93 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
+import NS_MOBILE_QBOSS_PROTO.tMobileQbossFeedBackInfo;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
-import java.util.Iterator;
-import java.util.List;
+import cooperation.qzone.qboss.QbossReportRequest;
+import java.util.ArrayList;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bbpe
-  extends arac<bbpd>
+  extends MSFServlet
 {
-  public bbpd a;
-  
-  public static bbpe a()
+  private tMobileQbossFeedBackInfo a(String paramString1, int paramInt1, int paramInt2, String paramString2, long paramLong, String paramString3, int paramInt3)
   {
-    return bbpg.a();
+    tMobileQbossFeedBackInfo localtMobileQbossFeedBackInfo = new tMobileQbossFeedBackInfo();
+    localtMobileQbossFeedBackInfo.uiUin = paramLong;
+    localtMobileQbossFeedBackInfo.sQBosstrace = paramString1;
+    localtMobileQbossFeedBackInfo.iOperType = paramInt1;
+    localtMobileQbossFeedBackInfo.iOperSource = paramInt2;
+    localtMobileQbossFeedBackInfo.sQua = paramString3;
+    localtMobileQbossFeedBackInfo.sUserID = paramString2;
+    localtMobileQbossFeedBackInfo.iOperTimes = paramInt3;
+    return localtMobileQbossFeedBackInfo;
   }
   
-  public bbpd a()
+  private ArrayList<tMobileQbossFeedBackInfo> a(String paramString1, int paramInt, String paramString2, long paramLong, String paramString3)
   {
-    this.a = ((bbpd)aran.a().a(654));
-    return this.a;
+    paramString1 = a(paramString1, paramInt, 2, paramString2, paramLong, paramString3, 1);
+    paramString2 = new ArrayList(1);
+    paramString2.add(paramString1);
+    return paramString2;
   }
   
-  @NonNull
-  public bbpd a(int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    return new bbpd();
-  }
-  
-  @Nullable
-  public bbpd a(araj[] paramArrayOfaraj)
-  {
-    BrowserLogHelper.getInstance().getGalleryLog().d("LiuHaiWhiteListConfProcessor", 4, "onParsed confFiles = " + paramArrayOfaraj);
-    if (this.a == null) {
-      this.a = new bbpd();
-    }
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    if (paramFromServiceMsg != null) {}
+    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
     {
-      paramArrayOfaraj = paramArrayOfaraj[0].a;
-      BrowserLogHelper.getInstance().getGalleryLog().d("LiuHaiWhiteListConfProcessor", 4, "onParsed config = " + paramArrayOfaraj);
-      this.a.a = bbpc.a(paramArrayOfaraj);
-    }
-    return this.a;
-  }
-  
-  public void a(bbpd parambbpd)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LiuHaiWhiteListConfProcessor", 2, "onUpdate newConf = " + parambbpd);
-    }
-    if ((parambbpd != null) && (parambbpd.a != null)) {
-      this.a = parambbpd;
-    }
-  }
-  
-  public boolean a(String paramString1, String paramString2, String paramString3)
-  {
-    if (this.a == null) {
-      this.a = a();
-    }
-    if ((this.a == null) || (this.a.a == null) || (this.a.a.isEmpty())) {
-      return false;
-    }
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
-    {
-      Iterator localIterator = this.a.a.iterator();
-      while (localIterator.hasNext())
-      {
-        bbph localbbph = (bbph)localIterator.next();
-        if ((!TextUtils.isEmpty(localbbph.a)) && (!TextUtils.isEmpty(localbbph.b)) && (!TextUtils.isEmpty(localbbph.c)) && (paramString1.equals(localbbph.a)) && (paramString2.equals(localbbph.b)) && (paramString3.equals(localbbph.c))) {
-          return true;
-        }
+      paramIntent = new Bundle();
+      paramIntent.putString("msg", "servlet result code is " + i);
+      QLog.d("QbossReportServlet", 2, "qboss onReceive onSend");
+      if (i != 1000) {
+        break label152;
       }
+      paramFromServiceMsg = QbossReportRequest.onResponse(paramFromServiceMsg.getWupBuffer());
+      if (paramFromServiceMsg == null) {
+        break;
+      }
+      paramIntent.putInt("ret", 0);
+      paramIntent.putSerializable("data", paramFromServiceMsg);
+      QLog.d("QbossReportServlet", 2, "qboss onReceive ret");
+      notifyObserver(null, 1008, true, paramIntent, axkw.class);
+      return;
     }
-    return false;
-  }
-  
-  public Class<bbpd> clazz()
-  {
-    return bbpd.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
+    QLog.d("QbossReportServlet", 2, "qboss onReceive ok");
     if (QLog.isColorLevel()) {
-      QLog.d("LiuHaiWhiteListConfProcessor", 2, "onReqFailed failCode = " + paramInt);
+      QLog.d("QbossReportServlet", 2, "QZONE_REPORT_QBOSS fail, decode result is null");
     }
+    paramIntent.putInt("ret", -2);
+    notifyObserver(null, 1008, false, paramIntent, axkw.class);
+    return;
+    label152:
+    if (QLog.isColorLevel()) {
+      QLog.d("QbossReportServlet", 2, "QZONE_REPORT_QBOSS fail, resultCode=" + i);
+    }
+    QLog.d("QbossReportServlet", 2, "qboss onReceive not ok");
+    paramIntent.putInt("ret", -3);
+    notifyObserver(null, 1008, false, paramIntent, axkw.class);
   }
   
-  public int type()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return 654;
+    Object localObject1 = paramIntent.getStringExtra("sQBosstrace");
+    int i = paramIntent.getIntExtra("iOperType", 0);
+    Object localObject2 = paramIntent.getStringExtra("sUserID");
+    long l = paramIntent.getLongExtra("uin", 0L);
+    paramIntent = paramIntent.getStringExtra("qua");
+    QLog.d("QbossReportServlet", 2, "qboss onSend");
+    localObject2 = new QbossReportRequest(a((String)localObject1, i, (String)localObject2, l, paramIntent));
+    localObject1 = ((QbossReportRequest)localObject2).encode();
+    paramIntent = (Intent)localObject1;
+    if (localObject1 == null)
+    {
+      QLog.e("QbossReportServlet", 1, "onSend request encode result is null.cmd=" + ((QbossReportRequest)localObject2).uniKey());
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + ((QbossReportRequest)localObject2).uniKey());
+    paramPacket.putSendData(paramIntent);
   }
 }
 

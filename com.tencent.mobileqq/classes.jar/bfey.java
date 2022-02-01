@@ -1,10 +1,9 @@
-import android.widget.RelativeLayout;
+import android.view.View;
 import android.widget.TextView;
 
-class bfey
+public abstract interface bfey
 {
-  public RelativeLayout a;
-  public TextView a;
+  public abstract void a(TextView paramTextView, View paramView, boolean paramBoolean);
 }
 
 

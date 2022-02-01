@@ -8,14 +8,14 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.v4.util.MQLruCache;
 import android.util.AttributeSet;
-import bhgm;
-import blml;
+import bfpx;
+import bjra;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
 public class FixSizeImageView
   extends ThemeImageView
-  implements blml
+  implements bjra
 {
   protected float a;
   protected long a;
@@ -61,7 +61,7 @@ public class FixSizeImageView
     Object localObject = "";
     if (paramLong == 1L)
     {
-      i = 2130850444;
+      i = 2130850369;
       localObject = "StatusIcon_TroopPermanentBlockStatusBigIconKey";
       if (i >= 0) {
         break label58;
@@ -75,7 +75,7 @@ public class FixSizeImageView
       if (paramLong != 2L) {
         break;
       }
-      i = 2130850446;
+      i = 2130850371;
       localObject = "StatusIcon_TroopTmpBlockStatusBigIcon";
       break;
       if (BaseApplicationImpl.sImageCache != null) {
@@ -84,7 +84,7 @@ public class FixSizeImageView
       localBitmap1 = localBitmap2;
       if (localBitmap2 == null)
       {
-        localBitmap2 = bhgm.b(BaseApplicationImpl.getApplication().getResources(), i);
+        localBitmap2 = bfpx.b(BaseApplicationImpl.getApplication().getResources(), i);
         localBitmap1 = localBitmap2;
         if (localBitmap2 != null)
         {
@@ -104,7 +104,7 @@ public class FixSizeImageView
   
   protected void a()
   {
-    this.jdField_a_of_type_Blqj = null;
+    this.jdField_a_of_type_Bjuk = null;
   }
   
   public void a(long paramLong)
@@ -185,7 +185,7 @@ public class FixSizeImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.FixSizeImageView
  * JD-Core Version:    0.7.0.1
  */

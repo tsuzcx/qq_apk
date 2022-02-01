@@ -1,45 +1,42 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tmq
-  implements AladdinConfigHandler
+  implements View.OnLayoutChangeListener
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("AdConfigHandler", 1, "[onReceiveConfig] " + paramString);
-    paramString = pan.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("AdConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-      if (paramInt1 == 185)
-      {
-        if ((TextUtils.equals(str1, "adcard_style")) && (!TextUtils.isEmpty(str2))) {
-          bnrf.a("sp_key_ad_imax_style", str2.trim());
-        }
-      }
-      else if ((paramInt1 == 188) && (TextUtils.equals(str1, "ad_exposure_supplement")) && (!TextUtils.isEmpty(str2))) {
-        bnrf.a("readinjjoy_ad_supplement_config", str2.trim());
-      }
-    }
-    return true;
-  }
+  public tmq(VVideoView paramVVideoView) {}
   
-  public void onWipeConfig(int paramInt)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (paramInt == 185) {
-      bnrf.a("sp_key_ad_imax_style", "0");
+    JSONObject localJSONObject;
+    if ((VVideoView.a(this.a)) && (this.a.a() != null) && (paramView != null) && (paramView.getWidth() >= paramView.getHeight())) {
+      localJSONObject = new JSONObject();
     }
-    while (paramInt != 188) {
+    try
+    {
+      localJSONObject.put("left", paramInt1);
+      localJSONObject.put("top", paramInt2);
+      localJSONObject.put("right", paramInt3);
+      localJSONObject.put("bottom", paramInt4);
+      localJSONObject.put("width", paramView.getWidth());
+      localJSONObject.put("height", paramView.getHeight());
+      this.a.a("onFullScreenSizeChange", localJSONObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("VVideoView", 2, "test video onLayoutChange left:" + paramInt1 + ",top:" + paramInt2 + ",right:" + paramInt3 + ",bottom:" + paramInt4 + ",oldLeft:" + paramInt5 + ",oldTop:" + paramInt6 + ",oldRight:" + paramInt7 + ",oldBottom:" + paramInt8);
+      }
       return;
     }
-    bnrf.a("readinjjoy_ad_supplement_config", "0");
+    catch (JSONException paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+      }
+    }
   }
 }
 

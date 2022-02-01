@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
-final class agep
-  implements agfh
+class agep
+  extends aghj
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  agep(agcw paramagcw)
   {
-    paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 76);
-    paramQQAppInterface.h = paramSessionInfo.d;
-    return paramQQAppInterface;
+    super(paramagcw, null);
+  }
+  
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new StructingMsgItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

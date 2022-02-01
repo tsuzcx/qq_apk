@@ -3,14 +3,14 @@ package com.tencent.mobileqq.utils;
 import android.content.Context;
 import com.tencent.mobileqq.widget.QQToast;
 
-public final class FileUtils$2
+final class FileUtils$2
   implements Runnable
 {
-  public FileUtils$2(Context paramContext) {}
+  FileUtils$2(Context paramContext) {}
   
   public void run()
   {
-    QQToast.a(this.a, 2131689923, 1).a();
+    QQToast.a(this.val$context, 2131689937, 1).a();
   }
 }
 

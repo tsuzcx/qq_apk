@@ -1,52 +1,82 @@
-import android.text.TextUtils;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.SchemaBridgeInvokeHandler.register.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import mqq.app.AppRuntime;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class tls
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/SchemaBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "jumpAction", "", "params", "Lorg/json/JSONObject;", "callBackId", "", "nameSpace", "register", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tls
+  extends tks
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  public static final tlt a = new tlt(null);
   
-  public static tls a(String paramString)
+  public tls(@NotNull BridgeModule paramBridgeModule)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
+    super(paramBridgeModule);
+  }
+  
+  private final void a(JSONObject paramJSONObject, String paramString)
+  {
+    Object localObject = null;
+    if (paramJSONObject == null)
     {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      paramString = new tls();
-      try
-      {
-        paramString.jdField_a_of_type_Int = localJSONObject.optInt("gift_id", 0);
-        paramString.jdField_a_of_type_JavaLangString = localJSONObject.optString("gift_name", "");
-        paramString.b = localJSONObject.optString("activity_id", "");
-        paramString.c = localJSONObject.optString("gift_icon", "");
-        paramString.g = localJSONObject.optString("gift_desc", "");
-        paramString.d = localJSONObject.optString("bag_item_icon_1", "");
-        paramString.e = localJSONObject.optString("bag_item_icon_2", "");
-        paramString.f = localJSONObject.optString("bag_item_icon_3", "");
-        paramString.h = localJSONObject.optString("need_role", "");
-        return paramString;
-      }
-      catch (JSONException localJSONException1) {}
+      a(paramString, "params is null");
+      return;
     }
-    catch (JSONException localJSONException2)
+    if (!paramJSONObject.has("schema"))
+    {
+      a(paramString, "schema is null");
+      return;
+    }
+    Activity localActivity = a();
+    AppRuntime localAppRuntime = pay.a();
+    if (!(localAppRuntime instanceof QQAppInterface)) {}
+    for (;;)
     {
       for (;;)
       {
-        paramString = null;
+        localObject = (QQAppInterface)localObject;
+        if ((localActivity != null) && (localObject != null)) {
+          try
+          {
+            paramJSONObject = paramJSONObject.getString("schema");
+            paramJSONObject = bfwg.a((QQAppInterface)localObject, (Context)localActivity, paramJSONObject);
+            if (paramJSONObject == null) {
+              break;
+            }
+            paramJSONObject.b("viola");
+            paramJSONObject.a();
+            a(paramString, null);
+            return;
+          }
+          catch (JSONException paramJSONObject)
+          {
+            paramJSONObject.printStackTrace();
+            return;
+          }
+        }
       }
+      a(paramString, "activity or app is null");
+      return;
+      localObject = localAppRuntime;
     }
-    localJSONException1.printStackTrace();
-    return paramString;
+  }
+  
+  @NotNull
+  public String a()
+  {
+    return "schema";
+  }
+  
+  public void a()
+  {
+    a("jumpAction", (Function2)new SchemaBridgeInvokeHandler.register.1((tls)this));
   }
 }
 

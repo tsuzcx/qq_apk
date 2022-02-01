@@ -1,7 +1,81 @@
-import kotlin.Metadata;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/feedsinsert/RIJFeedsInsertModule$Companion;", "", "()V", "ANDROID_OS_TYPE", "", "CMD_GET_FEEDS_INSERT_RECOMMEND_INFO", "", "KEY_ARTICLE_ROW_KEY", "KEY_CHANNEL_ID", "KEY_SUBSCRIBE_ID", "SERVICE_TYPE_DEFAULT", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pgm {}
+public final class pgm
+{
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  slt jdField_a_of_type_Slt;
+  int b;
+  
+  public int a()
+  {
+    return this.b;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public Activity a()
+  {
+    return this.jdField_a_of_type_AndroidAppActivity;
+  }
+  
+  public ArticleInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  }
+  
+  public pgm a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public pgm a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public pgm a(Activity paramActivity)
+  {
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    return this;
+  }
+  
+  public pgm a(ArticleInfo paramArticleInfo)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    return this;
+  }
+  
+  public pgm a(slt paramslt)
+  {
+    this.jdField_a_of_type_Slt = paramslt;
+    return this;
+  }
+  
+  public slt a()
+  {
+    return this.jdField_a_of_type_Slt;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public pgm b(int paramInt)
+  {
+    this.b = paramInt;
+    return this;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -1,52 +1,17 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qqcircle.bizparts.danmaku.text.SystemEmoCell;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import java.lang.ref.WeakReference;
+import java.util.Comparator;
 
-class vid
-  implements behi
+final class vid
+  implements Comparator<vim>
 {
-  private SystemEmoCell jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextSystemEmoCell;
-  private ImageLoader.ImageLoadListener jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener;
-  private WeakReference<vjg> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public vid(via paramvia, vjg paramvjg, SystemEmoCell paramSystemEmoCell, ImageLoader.ImageLoadListener paramImageLoadListener)
+  public int a(vim paramvim1, vim paramvim2)
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextSystemEmoCell = paramSystemEmoCell;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramvjg);
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener = paramImageLoadListener;
-  }
-  
-  public void a(Drawable paramDrawable)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextSystemEmoCell != null) && (paramDrawable != null))
-    {
-      this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextSystemEmoCell.isDrawableLoaded = true;
-      this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextSystemEmoCell.emoDrawable = paramDrawable;
-      via.a(paramDrawable, this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextSystemEmoCell.mHeight);
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
+    if ((paramvim1 == paramvim2) || (paramvim1.b == paramvim2.b)) {
+      return 0;
     }
-    for (;;)
-    {
-      return;
-      vjg localvjg = (vjg)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localvjg != null)
-      {
-        if (paramDrawable.getBounds().width() == this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuTextSystemEmoCell.mWidth) {
-          break label111;
-        }
-        localvjg.c();
-        localvjg.postInvalidate();
-      }
-      while (this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener != null)
-      {
-        this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$ImageLoadListener.onImageLoaded(null, paramDrawable, null);
-        return;
-        label111:
-        localvjg.postInvalidate();
-      }
+    if (paramvim1.b < paramvim2.b) {
+      return -1;
     }
+    return 1;
   }
 }
 

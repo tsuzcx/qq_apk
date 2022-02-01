@@ -1,22 +1,22 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class ajls
-  extends ajif
+  implements DialogInterface.OnClickListener
 {
-  public ajls(SystemMsgListView paramSystemMsgListView) {}
+  public ajls(BindNumberActivity paramBindNumberActivity) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("NewFriendVerification.manager", 2, "ui.onRefreshBlockedEntrance");
+      QLog.d("BindNumberActivity", 2, "new user guild confirm unbind");
     }
-    if (((Activity)SystemMsgListView.a(this.a)).isFinishing()) {}
-    while ((!paramBoolean) || (SystemMsgListView.a(this.a) == null)) {
-      return;
-    }
-    SystemMsgListView.a(this.a).c();
+    this.a.a("dc00898", "0X8009F16", 0);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.b(this.a.jdField_a_of_type_JavaLangString, this.a.c, 0, this.a.jdField_a_of_type_Boolean, this.a.b);
+    this.a.a(2131718142, 1000L, true);
   }
 }
 

@@ -1,25 +1,19 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageForSafeGrayTips;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
 public class ahzj
-  implements ahyf
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    if ((paramMessageRecord instanceof MessageForSafeGrayTips)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("GrayTipsItemBuilder", 2, "getItemView MessageForSafeGrayTips");
-      }
-    }
-    for (paramMessageRecord = (MessageForSafeGrayTips)paramMessageRecord;; paramMessageRecord = null)
-    {
-      paramahed.a(paramMessageRecord, paramahfq.b);
-      return;
-    }
-  }
+  public int a;
+  public AccountSearchPb.ResultItem a;
+  public AccountSearchPb.hotwordrecord a;
+  public AccountSearchPb.record a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
 }
 
 

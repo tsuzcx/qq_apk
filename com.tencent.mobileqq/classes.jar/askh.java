@@ -1,51 +1,14 @@
-import com.tencent.mobileqq.data.EmoticonResp;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-
 class askh
-  extends askk
+  extends asjv
 {
-  askh(askd paramaskd, anwx paramanwx, aslf paramaslf, Object paramObject)
+  public askh(asji paramasji)
   {
-    super(paramaskd, paramanwx);
+    super(paramasji);
   }
   
-  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp)
+  protected String a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-      return;
-    }
-    ??? = (anwx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    int i = paramEmoticonResp.epId;
-    int j = paramEmoticonResp.timestamp;
-    Object localObject1 = (ArrayList)paramEmoticonResp.data;
-    if ((this.jdField_a_of_type_Aslf.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Aslf.jdField_a_of_type_JavaLangString.equals(paramEmoticonResp.keySeq)))
-    {
-      ((anwx)???).b(this);
-      this.jdField_a_of_type_Aslf.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_Aslf.jdField_a_of_type_Int = paramEmoticonResp.resultcode;
-      this.jdField_a_of_type_Aslf.b = paramEmoticonResp.timeoutReason;
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaLangObject.notify();
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        ??? = askd.a();
-        StringBuilder localStringBuilder = new StringBuilder().append("fetchEmoticonEncryptKeys|net get key backepId=").append(i).append(" tstamp=").append(j).append(" list.size=");
-        if (localObject1 == null)
-        {
-          localObject1 = "null";
-          QLog.d((String)???, 2, localObject1 + " encryptSuccess=" + paramBoolean + " type=" + paramInt + " er.resultCode=" + paramEmoticonResp.resultcode);
-          return;
-        }
-      }
-      localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
-    }
+    return "StateSaveToWeiYunByPC";
   }
 }
 

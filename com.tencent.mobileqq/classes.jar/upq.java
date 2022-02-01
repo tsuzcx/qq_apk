@@ -1,18 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
+import java.lang.ref.WeakReference;
 
-public class upq
-  implements DialogInterface.OnCancelListener
+public abstract class upq
 {
-  public upq(OuterInterceptManager.1 param1) {}
+  private WeakReference<ups> a;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public upq(ups paramups)
   {
-    if (this.a.a != null) {
-      this.a.a.d();
-    }
+    this.a = new WeakReference(paramups);
   }
+  
+  public boolean a()
+  {
+    if ((this.a == null) || (this.a.get() == null)) {
+      return false;
+    }
+    return a((ups)this.a.get());
+  }
+  
+  public abstract boolean a(ups paramups);
 }
 
 

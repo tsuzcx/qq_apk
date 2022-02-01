@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.readinjoy.viola.modules;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bhmi;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.annotation.JSMethod;
@@ -81,7 +81,7 @@ public class CacheModule
       }
       return;
     }
-    paramString1 = bhmi.a("viola_cache_file_" + paramString1 + "_" + localAppRuntime.getAccount());
+    paramString1 = FileUtils.readObject("viola_cache_file_" + paramString1 + "_" + localAppRuntime.getAccount());
     if ((paramString1 instanceof String)) {}
     for (paramString1 = (String)paramString1;; paramString1 = null)
     {
@@ -124,7 +124,7 @@ public class CacheModule
             continue;
           }
           str = localJSONArray.getString(i);
-          paramJSONObject = bhmi.a("viola_cache_file_" + str + "_" + localAppRuntime.getAccount());
+          paramJSONObject = FileUtils.readObject("viola_cache_file_" + str + "_" + localAppRuntime.getAccount());
           if (!(paramJSONObject instanceof String)) {
             continue;
           }
@@ -169,7 +169,7 @@ public class CacheModule
         while (i < paramJSONObject.length())
         {
           String str = paramJSONObject.getString(i);
-          bhmi.d(BaseApplicationImpl.getContext().getFilesDir() + "/" + "viola_cache_file_" + str + "_" + paramString.getAccount());
+          FileUtils.deleteFile(BaseApplicationImpl.getContext().getFilesDir() + "/" + "viola_cache_file_" + str + "_" + paramString.getAccount());
           i += 1;
         }
         return;
@@ -198,7 +198,7 @@ public class CacheModule
         {
           String str1 = (String)localIterator.next();
           String str2 = (String)paramJSONObject.get(str1);
-          bhmi.a("viola_cache_file_" + str1 + "_" + paramString.getAccount(), str2);
+          FileUtils.writeObject("viola_cache_file_" + str1 + "_" + paramString.getAccount(), str2);
         }
         return;
       }
@@ -218,7 +218,7 @@ public class CacheModule
       QLog.e("CacheModule", 1, "failed to remove");
       return;
     }
-    bhmi.d(BaseApplicationImpl.getContext().getFilesDir() + "/" + "viola_cache_file_" + paramString + "_" + localAppRuntime.getAccount());
+    FileUtils.deleteFile(BaseApplicationImpl.getContext().getFilesDir() + "/" + "viola_cache_file_" + paramString + "_" + localAppRuntime.getAccount());
   }
   
   @JSMethod(uiThread=false)
@@ -230,12 +230,12 @@ public class CacheModule
       QLog.e("CacheModule", 1, "failed to setItem");
       return;
     }
-    bhmi.a("viola_cache_file_" + paramString1 + "_" + localAppRuntime.getAccount(), paramString2);
+    FileUtils.writeObject("viola_cache_file_" + paramString1 + "_" + localAppRuntime.getAccount(), paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.CacheModule
  * JD-Core Version:    0.7.0.1
  */

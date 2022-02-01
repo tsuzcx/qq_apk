@@ -1,103 +1,125 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.opengl.GLES20;
-import android.opengl.GLSurfaceView.Renderer;
-import cooperation.qzone.panorama.piece.PanoramaPieceManager;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.capture.view.ProviderContainerView;
+import dov.com.qq.im.capture.view.QIMFilterProviderView;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicMeiHua.1;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bnco
-  implements GLSurfaceView.Renderer
+  extends bnec
+  implements bmyw
 {
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private bnck jdField_a_of_type_Bnck;
-  private bncs jdField_a_of_type_Bncs;
-  private bncw jdField_a_of_type_Bncw;
-  private bncz jdField_a_of_type_Bncz;
-  private int b;
-  private int c;
-  private int d;
+  private static List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private ProviderContainerView jdField_a_of_type_DovComQqImCaptureViewProviderContainerView;
   
-  public bnco(bncz parambncz, bnck parambnck)
+  public bnco(@NonNull bnee parambnee)
   {
-    this.jdField_a_of_type_Bncz = parambncz;
-    this.jdField_a_of_type_Int = parambncz.b();
-    this.jdField_a_of_type_Bncs = parambncz.a();
-    this.d = parambncz.a();
-    this.jdField_a_of_type_Bnck = parambnck;
+    super(parambnee);
+  }
+  
+  public static void a(int paramInt)
+  {
+    try
+    {
+      if (jdField_a_of_type_JavaUtilList.isEmpty())
+      {
+        if (bnee.a(paramInt, 8)) {
+          jdField_a_of_type_JavaUtilList.add(Integer.valueOf(101));
+        }
+        if ((bnee.a(paramInt, 64)) && (Build.VERSION.SDK_INT >= 21)) {
+          jdField_a_of_type_JavaUtilList.add(Integer.valueOf(100));
+        }
+        if (bnee.a(paramInt, 2048)) {
+          jdField_a_of_type_JavaUtilList.add(Integer.valueOf(102));
+        }
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    a(paramInt);
+    return (bnee.a(paramInt, 131072)) && (!jdField_a_of_type_JavaUtilList.isEmpty());
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Bnee.b()) {
+      return 3;
+    }
+    return 1;
   }
   
   public void a()
   {
-    bndb.a(this.c);
-    bndb.a(this.jdField_a_of_type_Bncw);
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (this.jdField_a_of_type_Bncs != null) {
-      this.jdField_a_of_type_Bncs.a(paramFloat);
+    super.a();
+    this.jdField_a_of_type_DovComQqImCaptureViewProviderContainerView = ((ProviderContainerView)a(2131373067));
+    if (jdField_a_of_type_JavaUtilList.isEmpty()) {
+      a(this.jdField_a_of_type_Bnee.a.c);
     }
+    this.jdField_a_of_type_DovComQqImCaptureViewProviderContainerView.a(a(), jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_DovComQqImCaptureViewProviderContainerView.setProviderContainViewListener(this);
+    this.jdField_a_of_type_DovComQqImCaptureViewProviderContainerView.setEditActivityEntrance(this.jdField_a_of_type_Bnee.a.c());
   }
   
-  public void a(float paramFloat1, float paramFloat2)
+  public void a(int paramInt, @NonNull bnot parambnot)
   {
-    if (this.jdField_a_of_type_Bncs != null) {
-      this.jdField_a_of_type_Bncs.a(paramFloat1, paramFloat2);
-    }
-  }
-  
-  public void onDrawFrame(GL10 paramGL10)
-  {
-    GLES20.glClear(16384);
-    if ((this.jdField_a_of_type_Bncz != null) && (this.jdField_a_of_type_Bncz.f()))
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_Bncz.a();
-      bndb.a(this.c);
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-        this.c = bndb.a(((BitmapDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getBitmap(), false);
-      }
-      if (this.jdField_a_of_type_Bnck != null) {
-        this.jdField_a_of_type_Bnck.b();
+    super.a(paramInt, parambnot);
+    if ((QIMFilterProviderView)this.jdField_a_of_type_DovComQqImCaptureViewProviderContainerView.a(QIMFilterProviderView.class) != null) {
+      if (bnub.a().b(a()) == null) {
+        break label74;
       }
     }
-    if ((this.jdField_a_of_type_Bncz != null) && (this.jdField_a_of_type_Bncz.a() != null))
+    label74:
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Bncz.a().d();
-      this.jdField_a_of_type_Bncw = this.jdField_a_of_type_Bncz.a().a();
-      this.jdField_a_of_type_Bncs.a(this.jdField_a_of_type_Bncw);
-    }
-    if (this.jdField_a_of_type_Bncs != null)
-    {
-      this.jdField_a_of_type_Bncs.b(this.c);
-      this.jdField_a_of_type_Bncs.c();
-      this.jdField_a_of_type_Bncs.d();
+      parambnot.c = bool;
+      if ((parambnot.c) && (this.jdField_a_of_type_Bnee.a()))
+      {
+        parambnot = parambnot.a;
+        parambnot.a += 1;
+      }
+      return;
     }
   }
   
-  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
+  public void a(int paramInt, Object paramObject)
   {
-    GLES20.glViewport(0, 0, paramInt1, paramInt2);
-    GLES20.glEnable(2884);
-    float f = paramInt1 / paramInt2;
-    if (this.jdField_a_of_type_Bncs != null) {
-      this.jdField_a_of_type_Bncs.b(f);
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_DovComQqImCaptureViewProviderContainerView.setVisibility(4);
+    case 22: 
+    case 21: 
+      do
+      {
+        return;
+        this.jdField_a_of_type_DovComQqImCaptureViewProviderContainerView.setVisibility(0);
+        this.jdField_a_of_type_DovComQqImCaptureViewProviderContainerView.a(0);
+      } while (!this.jdField_a_of_type_Bnee.a());
+      bbpr.a("0X800B3CB", this.jdField_a_of_type_Bnee.a.c());
+      bbpr.a("0X800B3CC", this.jdField_a_of_type_Bnee.a.c());
+      this.jdField_a_of_type_DovComQqImCaptureViewProviderContainerView.b(101);
+      return;
     }
+    ThreadManager.getUIHandler().post(new EditPicMeiHua.1(this));
   }
   
-  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
+  public void b()
   {
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-    this.b = bnda.a();
-    GLES20.glUseProgram(this.b);
-    if (this.jdField_a_of_type_Bncs != null) {
-      this.jdField_a_of_type_Bncs.a(this.b);
-    }
-    paramGL10 = this.jdField_a_of_type_Bncz.a();
-    if ((paramGL10 != null) && (this.jdField_a_of_type_Bncs != null)) {
-      paramGL10.b(this.jdField_a_of_type_Bncs.a());
-    }
+    this.jdField_a_of_type_Bnee.a(10, Boolean.valueOf(true));
+  }
+  
+  public void g()
+  {
+    super.g();
+    this.jdField_a_of_type_DovComQqImCaptureViewProviderContainerView.a();
   }
 }
 

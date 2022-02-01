@@ -2,12 +2,12 @@ package com.tencent.avgame.videorecord;
 
 import android.graphics.Bitmap;
 import android.view.View;
-import niv;
+import nkk;
 
 public class ShowAndGuessGameVideoRecordCtrl$5
   implements Runnable
 {
-  public ShowAndGuessGameVideoRecordCtrl$5(niv paramniv, View paramView) {}
+  public ShowAndGuessGameVideoRecordCtrl$5(nkk paramnkk, View paramView) {}
   
   public void run()
   {

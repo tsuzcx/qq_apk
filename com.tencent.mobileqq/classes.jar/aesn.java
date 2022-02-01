@@ -1,41 +1,27 @@
-import android.content.Context;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aesn
-  implements CompoundButton.OnCheckedChangeListener
+  extends WtloginObserver
 {
-  public aesn(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  public aesn(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    int j = 1;
-    Object localObject = this.a;
-    String str = this.a.app.getCurrentAccountUin();
-    if (paramBoolean)
+    if (QLog.isColorLevel())
     {
-      i = 2;
-      GesturePWDUtils.setGesturePWDState((Context)localObject, str, i);
-      this.a.a(paramBoolean);
-      localObject = this.a.app;
-      if (!paramBoolean) {
-        break label105;
+      QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
       }
     }
-    label105:
-    for (int i = j;; i = 0)
-    {
-      bdll.b((QQAppInterface)localObject, "CliOper", "", "", "Setting_tab", "Setting_Gesture_password", 0, i, "", "", "", "");
-      this.a.a();
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    if (paramInt2 == 0) {
       return;
-      i = 1;
-      break;
     }
+    VerifyPhoneNumActivity.a(this.a);
+    VerifyPhoneNumActivity.b(this.a);
   }
 }
 

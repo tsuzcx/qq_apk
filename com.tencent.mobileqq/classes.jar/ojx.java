@@ -1,18 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import android.view.animation.Animation;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
 
-public class ojx
-  implements TopGestureLayout.OnGestureListener
+class ojx
+  extends bjmc
 {
-  public ojx(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  ojx(ojw paramojw) {}
   
-  public void flingLToR()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ReadInJoyChannelActivity.a(this.a, true);
-    this.a.finish();
+    ojv.a(this.a.a.this$0, true);
   }
-  
-  public void flingRToL() {}
 }
 
 

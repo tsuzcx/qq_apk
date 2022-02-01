@@ -1,9 +1,8 @@
-public class bfep
-  extends wnk
+import com.tencent.map.lib.basemap.data.GeoPoint;
+
+public abstract interface bfep
 {
-  public String a;
-  public String b;
-  public String c;
+  public abstract void a(int paramInt, GeoPoint paramGeoPoint);
 }
 
 

@@ -1,28 +1,27 @@
 package dov.com.qq.im.ae.play;
 
-import boqu;
-import bown;
-import bozd;
+import blvb;
+import bmas;
 import mqq.util.WeakReference;
 
-public class PlayDownloadManagerWrap$2
+class PlayDownloadManagerWrap$2
   implements Runnable
 {
-  public PlayDownloadManagerWrap$2(bozd parambozd, boqu paramboqu) {}
+  PlayDownloadManagerWrap$2(PlayDownloadManagerWrap paramPlayDownloadManagerWrap, blvb paramblvb) {}
   
   public void run()
   {
-    if (this.a.g == 0) {
-      if ((bozd.a(this.this$0) != null) && (bozd.a(this.this$0).get() != null))
+    if (this.val$item.g == 0) {
+      if ((PlayDownloadManagerWrap.access$200(this.this$0) != null) && (PlayDownloadManagerWrap.access$200(this.this$0).get() != null))
       {
-        bowt.b = this.a;
-        ((bown)bozd.a(this.this$0).get()).a(393218, new Object[] { this.a });
+        AEPlayShowGridAdapter.selectedMidMaterial = this.val$item;
+        ((bmas)PlayDownloadManagerWrap.access$200(this.this$0).get()).a(393218, new Object[] { this.val$item });
       }
     }
-    while (((this.a.g != 4) && (this.a.g != 5) && (this.a.g != 6) && (this.a.g != 7)) || (bozd.a(this.this$0) == null) || (bozd.a(this.this$0).get() == null)) {
+    while (((this.val$item.g != 4) && (this.val$item.g != 5) && (this.val$item.g != 6) && (this.val$item.g != 7)) || (PlayDownloadManagerWrap.access$200(this.this$0) == null) || (PlayDownloadManagerWrap.access$200(this.this$0).get() == null)) {
       return;
     }
-    ((bown)bozd.a(this.this$0).get()).a(655361, new Object[] { this.a });
+    ((bmas)PlayDownloadManagerWrap.access$200(this.this$0).get()).a(655361, new Object[] { this.val$item });
   }
 }
 

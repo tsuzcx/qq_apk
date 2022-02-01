@@ -1,19 +1,29 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.util.Log;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
 
 public class alql
-  extends alqi
+  implements alqo
 {
-  public alql(Context paramContext)
+  public EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
   {
-    this.a = "";
+    try
+    {
+      paramEGL10 = paramEGL10.eglCreateWindowSurface(paramEGLDisplay, paramEGLConfig, paramObject, null);
+      return paramEGL10;
+    }
+    catch (Throwable paramEGL10)
+    {
+      Log.e("GLTextureView", "eglCreateWindowSurface", paramEGL10);
+    }
+    return null;
   }
   
-  public Object a(int paramInt, bfoy parambfoy, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
   {
-    return new alql(BaseApplication.getContext());
+    paramEGL10.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
   }
 }
 

@@ -1,45 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 class ttj
-  implements URLDrawable.URLDrawableListener
+  implements ViewFactory.FoundClickableViewListener
 {
-  ttj(tti paramtti, String paramString) {}
+  ttj(tti paramtti, BaseData paramBaseData, Context paramContext) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onFound(ViewBase paramViewBase)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadCanceled:" + this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadFialed:" + this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadProgressed");
-    }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadSuccessed:" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (paramURLDrawable != null)
-    {
-      tti.a(this.jdField_a_of_type_Tti, new ttg(paramURLDrawable.getCurrDrawable(), tti.a(this.jdField_a_of_type_Tti), tti.b(this.jdField_a_of_type_Tti) - (tti.c(this.jdField_a_of_type_Tti) + tti.d(this.jdField_a_of_type_Tti))));
-      tti.a(this.jdField_a_of_type_Tti).setImageDrawable(tti.a(this.jdField_a_of_type_Tti));
-      tti.a(this.jdField_a_of_type_Tti, this.jdField_a_of_type_JavaLangString);
-    }
+    paramViewBase.setOnClickListener(new ttk(this));
   }
 }
 

@@ -1,9 +1,10 @@
 package com.tencent.qqmini.sdk.plugins;
 
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.os.Handler;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
 import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.utils.JSONUtil;
 import com.tencent.qqmini.sdk.ipc.AppBrandCmdProxy;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
@@ -140,20 +141,7 @@ public class ReportPlugin
   @JsEvent({"reportDC"})
   public void reportDC(RequestEvent paramRequestEvent)
   {
-    try
-    {
-      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
-      paramRequestEvent = ((JSONObject)localObject).getString("table");
-      localObject = ((JSONObject)localObject).getJSONArray("reportArray");
-      if ((!TextUtils.isEmpty(paramRequestEvent)) && (((JSONArray)localObject).length() > 0)) {
-        doReportBy898(paramRequestEvent, (JSONArray)localObject);
-      }
-      return;
-    }
-    catch (Exception paramRequestEvent)
-    {
-      QMLog.e("ReportPlugin", " handleReportDC error.", paramRequestEvent);
-    }
+    ThreadManager.getSubThreadHandler().post(new ReportPlugin.1(this, paramRequestEvent));
   }
   
   @JsEvent({"reportDataToDC"})

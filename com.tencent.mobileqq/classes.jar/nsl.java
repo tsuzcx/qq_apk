@@ -1,19 +1,17 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class nsl
+public class nsl
   implements View.OnClickListener
 {
-  nsl(nsj paramnsj, String paramString) {}
+  public nsl(EqqAccountDetailActivity paramEqqAccountDetailActivity, obr paramobr) {}
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    nsj.a(this.jdField_a_of_type_Nsj).startActivity(localIntent);
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a = this.jdField_a_of_type_Obr.d;
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Obr, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

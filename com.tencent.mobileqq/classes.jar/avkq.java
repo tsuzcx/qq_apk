@@ -1,20 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Message;
 
-public class avkq
-  implements View.OnClickListener
+public abstract interface avkq
 {
-  public avkq(QQGamePubAccountFragment paramQQGamePubAccountFragment, FrameLayout paramFrameLayout) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(QQGamePubAccountFragment.b(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment));
-    QQGamePubAccountFragment.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterFragmentQQGamePubAccountFragment, null);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(Message paramMessage);
 }
 
 

@@ -1,417 +1,568 @@
-import com.tencent.image.Utils;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.style.DynamicDrawableSpan;
+import android.util.SparseIntArray;
+import android.widget.EditText;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo;
+import com.tencent.mobileqq.text.EmotcationConstants;
+import com.tencent.mobileqq.text.QQText.EmoticonSpan;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import mqq.manager.ProxyIpManager;
-import tencent.im.cs.cmd0x346.cmd0x346.DownloadSuccReq;
-import tencent.im.cs.cmd0x346.cmd0x346.ReqBody;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bevq
-  extends berj
-  implements beup
+  extends DynamicDrawableSpan
 {
-  String e;
+  private int jdField_a_of_type_Int = -1;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private bhce jdField_a_of_type_Bhce = new bhce();
+  private String jdField_a_of_type_JavaLangString = "";
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString = "";
+  private String c = "";
+  private String d;
   
-  public bevq(beyb parambeyb, beyg parambeyg)
+  private bevq(Context paramContext, String paramString1, String paramString2, int paramInt, Paint paramPaint)
   {
-    super(parambeyb, parambeyg);
-    this.jdField_a_of_type_JavaUtilList = ((ProxyIpManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(3)).getProxyIp(4);
+    super(0);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = a(String.format("%s%s", new Object[] { "@", new bczs(paramString2, 32).a() }));
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    a(paramPaint);
   }
   
-  public static String a(QQAppInterface paramQQAppInterface, String paramString)
+  private bevq(Context paramContext, String paramString1, String paramString2, int paramInt, Paint paramPaint, String paramString3)
   {
-    return bigv.a(antf.ba + Utils.Crc64String(paramQQAppInterface.getAccount()) + "/" + "ptt" + "/pa_audio_" + paramString + ".amr");
+    this(paramContext, paramString1, paramString2, paramInt, paramPaint);
+    this.d = a(String.format("%s%s", new Object[] { "@", new bczs(paramString3, 32).a() }));
   }
   
-  private cmd0x346.ReqBody a()
+  public static Spannable a(Spannable paramSpannable, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList)
   {
-    int j = 17;
-    cmd0x346.DownloadSuccReq localDownloadSuccReq = new cmd0x346.DownloadSuccReq();
-    localDownloadSuccReq.uint64_uin.set(Long.parseLong(this.jdField_a_of_type_Beyg.jdField_b_of_type_JavaLangString));
-    localDownloadSuccReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Beyg.jdField_e_of_type_JavaLangString));
-    cmd0x346.ReqBody localReqBody = new cmd0x346.ReqBody();
-    localReqBody.uint32_cmd.set(1000);
-    localReqBody.uint32_seq.set(0);
-    int i;
-    if ("ftn".equals(this.d)) {
-      i = 3;
+    if ((paramArrayList == null) || (paramSpannable == null)) {
+      return new SpannableStringBuilder();
     }
+    paramArrayList.clear();
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramSpannable);
+    int m = localSpannableStringBuilder.length();
+    bevq[] arrayOfbevq = (bevq[])paramSpannable.getSpans(0, m - 1, bevq.class);
+    if (arrayOfbevq.length == 0) {
+      return localSpannableStringBuilder;
+    }
+    if (arrayOfbevq.length > 1) {
+      Arrays.sort(arrayOfbevq, new bevr(paramSpannable));
+    }
+    int j = 0;
+    int i = 0;
+    int n;
+    int i1;
     for (;;)
     {
-      localReqBody.uint32_business_id.set(i);
-      localReqBody.uint32_client_type.set(104);
-      localReqBody.msg_download_succ_req.set(localDownloadSuccReq);
-      return localReqBody;
-      i = j;
-      if ("pttcenter".equals(this.d)) {
-        i = j;
+      if (i >= arrayOfbevq.length) {
+        break label342;
       }
-    }
-  }
-  
-  private void h()
-  {
-    b("setSuccess", "req");
-    String str = "PttCenterSvr.pb_pttCenter_CMD_REQ_DOWNLOAD_SUCC-1000";
-    if ("pttcenter".equals(this.d)) {
-      str = "PttCenterSvr.pb_pttCenter_CMD_REQ_DOWNLOAD_SUCC-1000";
-    }
-    bevx localbevx;
-    for (;;)
-    {
-      cmd0x346.ReqBody localReqBody = a();
-      localbevx = new bevx();
-      localbevx.jdField_a_of_type_JavaLangString = str;
-      localbevx.jdField_a_of_type_ArrayOfByte = localReqBody.toByteArray();
-      localbevx.c = 1;
-      localbevx.jdField_a_of_type_Int = 30000;
-      localbevx.jdField_b_of_type_Int = 1;
-      localbevx.jdField_a_of_type_Bevw = this;
-      if (e()) {
-        break;
+      bevq localbevq = arrayOfbevq[i];
+      n = paramSpannable.getSpanStart(localbevq) + j;
+      i1 = paramSpannable.getSpanEnd(localbevq) + j;
+      String str = localbevq.jdField_b_of_type_JavaLangString;
+      if (!TextUtils.isEmpty(localbevq.d)) {
+        str = localbevq.d;
       }
-      a(9366, "illegal app", null, this.jdField_a_of_type_Berr);
-      d();
-      return;
-      if ("ftn".equals(this.d)) {
-        str = "OfflineFilleHandleSvr.pb_ftnPtt_CMD_REQ_DOWNLOAD_SUCC-1000";
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager().a(localbevx);
-  }
-  
-  public void a(bevl parambevl, bevm parambevm)
-  {
-    if ((parambevl == null) || (parambevm == null)) {}
-    do
-    {
-      do
+      try
       {
-        return;
-      } while (!(parambevl instanceof beum));
-      parambevl = (beum)parambevl;
-      parambevl.jdField_a_of_type_Long += parambevm.c;
-    } while (0L != parambevl.jdField_b_of_type_Long);
-    parambevm.c = 0L;
-    parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
-    parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
-  }
-  
-  public void a(bevy parambevy, bevx parambevx)
-  {
-    a(null, parambevy.a, parambevy.a.getWupBuffer());
-  }
-  
-  public void a(bfau parambfau, bfbj parambfbj)
-  {
-    this.jdField_a_of_type_Bfau = null;
-    if (parambfbj != null)
-    {
-      int i = 0;
-      while (i < parambfbj.jdField_a_of_type_JavaUtilList.size())
-      {
-        parambfau = (bfbm)parambfbj.jdField_a_of_type_JavaUtilList.get(i);
-        if (QLog.isColorLevel()) {
-          b("procUrl", parambfau.toString());
-        }
-        this.k = parambfau.d;
-        if (QLog.isColorLevel()) {
-          QLog.e("http_sideway", 2, "C2CPttDownProcessor.onBusiProtoResp:isSendByQuickHttp=" + this.k);
-        }
-        a(this.jdField_a_of_type_Berr, parambfau);
-        if (parambfau.c == 0)
+        localSpannableStringBuilder.replace(n, i1, str);
+        MessageForText.AtTroopMemberInfo localAtTroopMemberInfo = new MessageForText.AtTroopMemberInfo();
+        if (localbevq.jdField_a_of_type_JavaLangString != null)
         {
-          this.jdField_c_of_type_JavaLangString = parambfau.jdField_a_of_type_JavaLangString;
-          this.jdField_a_of_type_Bete.i = this.jdField_c_of_type_JavaLangString;
-          if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+          localAtTroopMemberInfo.uin = Long.valueOf(localbevq.jdField_a_of_type_JavaLangString).longValue();
+          if (localbevq.jdField_a_of_type_JavaLangString.equalsIgnoreCase("0")) {
+            localAtTroopMemberInfo.flag = 1;
+          }
+        }
+        localAtTroopMemberInfo.startPos = ((short)n);
+        localAtTroopMemberInfo.textLen = ((short)str.length());
+        paramArrayList.add(localAtTroopMemberInfo);
+        k = j + (localAtTroopMemberInfo.textLen - (i1 - n));
+      }
+      catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+      {
+        for (;;)
+        {
+          int k = j;
+          if (QLog.isColorLevel())
           {
-            parambfau = bews.a(this.jdField_c_of_type_JavaLangString);
-            if (parambfau != null) {
-              this.jdField_a_of_type_JavaUtilArrayList.add(parambfau);
+            QLog.e("AtTroopMemberSpan", 2, String.format(localSpannableStringBuilder.toString() + ",IndexOutOfBoundsException, convertToSendMsg, start:%d | end:%d | msgBLen:%d", new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(m) }));
+            k = j;
+          }
+        }
+      }
+      i += 1;
+      j = k;
+    }
+    label342:
+    return localSpannableStringBuilder;
+  }
+  
+  public static SpannableString a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, EditText paramEditText)
+  {
+    if ((paramQQAppInterface == null) || (paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramEditText == null)) {
+      return null;
+    }
+    int i = paramEditText.getWidth();
+    int j = paramEditText.getPaddingLeft();
+    int k = paramEditText.getPaddingRight();
+    try
+    {
+      paramQQAppInterface = new bevq(paramContext, paramString2, paramString3, i - j - k, paramEditText.getPaint(), paramString4);
+      if (paramQQAppInterface == null) {
+        return null;
+      }
+    }
+    catch (OutOfMemoryError paramQQAppInterface)
+    {
+      for (;;)
+      {
+        paramQQAppInterface = null;
+      }
+      paramContext = paramQQAppInterface.jdField_b_of_type_JavaLangString;
+      paramString1 = new SpannableString(new bczs(paramContext + " ", 16).a());
+      paramString1.setSpan(paramQQAppInterface, 0, paramContext.length(), 33);
+    }
+    return paramString1;
+  }
+  
+  public static SpannableString a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, EditText paramEditText, boolean paramBoolean2)
+  {
+    return a(paramQQAppInterface, paramContext, paramString1, paramString2, paramString3, paramBoolean1, paramEditText, paramBoolean2, false);
+  }
+  
+  public static SpannableString a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, EditText paramEditText, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if ((paramQQAppInterface == null) || (paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramEditText == null)) {
+      return null;
+    }
+    bevq[] arrayOfbevq = (bevq[])paramEditText.getEditableText().getSpans(0, paramEditText.getEditableText().toString().length(), bevq.class);
+    int i = paramEditText.getWidth();
+    int j = paramEditText.getPaddingLeft();
+    int k = paramEditText.getPaddingRight();
+    try
+    {
+      paramQQAppInterface = a(paramQQAppInterface, paramContext, paramString1, paramString2, paramString3, paramBoolean1, i - j - k, paramEditText.getPaint(), paramBoolean2);
+      if (paramQQAppInterface == null) {
+        return null;
+      }
+    }
+    catch (OutOfMemoryError paramQQAppInterface)
+    {
+      for (;;)
+      {
+        paramQQAppInterface = null;
+      }
+      paramContext = paramQQAppInterface.jdField_b_of_type_JavaLangString;
+      paramString1 = new SpannableString(new bczs(paramContext + " ", 16).a());
+      paramString1.setSpan(paramQQAppInterface, 0, paramContext.length(), 33);
+    }
+    return paramString1;
+  }
+  
+  public static SpannableString a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramQQAppInterface == null) || (paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return null;
+    }
+    try
+    {
+      paramQQAppInterface = a(paramQQAppInterface, paramContext, paramString1, paramString2, paramString3, paramBoolean1, 400, new Paint(), paramBoolean2);
+      if (paramQQAppInterface == null) {
+        return null;
+      }
+    }
+    catch (OutOfMemoryError paramQQAppInterface)
+    {
+      for (;;)
+      {
+        paramQQAppInterface = null;
+      }
+      paramContext = paramQQAppInterface.jdField_b_of_type_JavaLangString;
+      paramString1 = new SpannableString(paramContext + " ");
+      paramString1.setSpan(paramQQAppInterface, 0, paramContext.length(), 33);
+    }
+    return paramString1;
+  }
+  
+  private static bevq a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, int paramInt, Paint paramPaint, boolean paramBoolean2)
+  {
+    if ((paramQQAppInterface == null) || (paramContext == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramInt <= 0)) {}
+    for (;;)
+    {
+      return null;
+      if (paramBoolean2) {
+        if ((!paramBoolean1) && (!paramString2.equalsIgnoreCase("0")))
+        {
+          paramString1 = ContactUtils.getTroopMemberNameWithoutRemark(paramQQAppInterface, paramString1, paramString2);
+          paramQQAppInterface = paramString1;
+          if (TextUtils.isEmpty(paramString1))
+          {
+            paramQQAppInterface = paramString1;
+            if (!TextUtils.isEmpty(paramString3)) {
+              paramQQAppInterface = paramString3;
             }
           }
-          g();
-          i += 1;
+        }
+      }
+      while (!TextUtils.isEmpty(paramQQAppInterface))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("_At_Me_DISC", 2, " memUin:" + paramString2 + " troopMemName:" + bftf.a(paramQQAppInterface) + " isTroop:" + paramBoolean2);
+        }
+        return new bevq(paramContext, paramString2, paramQQAppInterface, paramInt, paramPaint);
+        paramQQAppInterface = paramString3;
+        continue;
+        if (!paramString2.equalsIgnoreCase("0"))
+        {
+          paramString1 = ContactUtils.getBuddyNickName(paramQQAppInterface, paramString2, true);
+          paramQQAppInterface = paramString1;
+          if (a(paramString2, paramString1, paramString3)) {
+            paramQQAppInterface = paramString3;
+          }
         }
         else
         {
-          d();
+          paramQQAppInterface = paramString3;
         }
       }
     }
   }
   
-  /* Error */
-  protected void a(com.tencent.qphone.base.remote.ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
+  public static String a(Spannable paramSpannable, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: ldc 161
-    //   3: ldc_w 342
-    //   6: invokevirtual 166	bevq:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   9: aload_2
-    //   10: invokevirtual 345	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   13: sipush 1000
-    //   16: if_icmpeq +38 -> 54
-    //   19: aload_2
-    //   20: invokevirtual 345	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
-    //   23: istore 4
-    //   25: aload_0
-    //   26: ldc_w 347
-    //   29: new 35	java/lang/StringBuilder
-    //   32: dup
-    //   33: invokespecial 38	java/lang/StringBuilder:<init>	()V
-    //   36: ldc_w 349
-    //   39: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: iload 4
-    //   44: invokevirtual 352	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   47: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   50: invokevirtual 166	bevq:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   53: return
-    //   54: new 354	tencent/im/cs/cmd0x346/cmd0x346$RspBody
-    //   57: dup
-    //   58: invokespecial 355	tencent/im/cs/cmd0x346/cmd0x346$RspBody:<init>	()V
-    //   61: astore_1
-    //   62: aload_1
-    //   63: aload_3
-    //   64: invokevirtual 359	tencent/im/cs/cmd0x346/cmd0x346$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   67: pop
-    //   68: aload_1
-    //   69: getfield 360	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   72: invokevirtual 363	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   75: ifeq +91 -> 166
-    //   78: aload_1
-    //   79: getfield 360	tencent/im/cs/cmd0x346/cmd0x346$RspBody:uint32_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   82: invokevirtual 365	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   85: i2l
-    //   86: lstore 5
-    //   88: lload 5
-    //   90: ldc2_w 366
-    //   93: lcmp
-    //   94: ifne -41 -> 53
-    //   97: aload_1
-    //   98: getfield 371	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
-    //   101: invokevirtual 374	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:has	()Z
-    //   104: ifeq -51 -> 53
-    //   107: aload_1
-    //   108: getfield 371	tencent/im/cs/cmd0x346/cmd0x346$RspBody:msg_download_succ_rsp	Ltencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp;
-    //   111: invokevirtual 377	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   114: checkcast 373	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp
-    //   117: getfield 381	tencent/im/cs/cmd0x346/cmd0x346$DownloadSuccRsp:int32_ret_code	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   120: invokevirtual 384	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   123: istore 4
-    //   125: invokestatic 285	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   128: ifeq -75 -> 53
-    //   131: aload_0
-    //   132: ldc_w 347
-    //   135: new 35	java/lang/StringBuilder
-    //   138: dup
-    //   139: invokespecial 38	java/lang/StringBuilder:<init>	()V
-    //   142: ldc_w 386
-    //   145: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   148: iload 4
-    //   150: invokevirtual 352	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   153: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   156: invokevirtual 166	bevq:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   159: return
-    //   160: astore_1
-    //   161: aload_1
-    //   162: invokevirtual 389	java/lang/Exception:printStackTrace	()V
-    //   165: return
-    //   166: ldc2_w 390
-    //   169: lstore 5
-    //   171: goto -83 -> 88
-    //   174: astore_1
-    //   175: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	176	0	this	bevq
-    //   0	176	1	paramToServiceMsg	com.tencent.qphone.base.remote.ToServiceMsg
-    //   0	176	2	paramFromServiceMsg	FromServiceMsg
-    //   0	176	3	paramArrayOfByte	byte[]
-    //   23	126	4	i	int
-    //   86	84	5	l	long
-    // Exception table:
-    //   from	to	target	type
-    //   54	62	160	java/lang/Exception
-    //   68	88	160	java/lang/Exception
-    //   97	159	160	java/lang/Exception
-    //   62	68	174	java/lang/Exception
+    return a(paramSpannable, paramArrayList).toString();
   }
   
-  public void aN_()
+  private static String a(CharSequence paramCharSequence)
   {
-    super.aN_();
-    f();
-  }
-  
-  public int c()
-  {
-    super.c();
-    b("uiParam", this.jdField_a_of_type_Beyg.toString());
-    String str = this.jdField_a_of_type_Beyg.jdField_e_of_type_JavaLangString;
-    if ((str == null) || (str.equals("")) || (str.equals("null")) || (bhmi.c(str)) || (str.startsWith("http://")))
+    paramCharSequence = new StringBuffer(paramCharSequence);
+    int i = 0;
+    if (i < paramCharSequence.length())
     {
-      b(9302, a(new Exception("uuid illegal " + str)));
-      d();
-      return -1;
+      int k = paramCharSequence.codePointAt(i);
+      int j;
+      if ((k == 20) && (i < paramCharSequence.length() - 1))
+      {
+        paramCharSequence.delete(i, i + 2);
+        j = i - 1;
+      }
+      do
+      {
+        i = j + 1;
+        break;
+        j = i;
+      } while (EmotcationConstants.EMOJI_MAP.get(k, -1) < 0);
+      if ((k > 65535) && (paramCharSequence.length() >= i + 2)) {
+        paramCharSequence.delete(i, i + 2);
+      }
+      for (;;)
+      {
+        j = i - 1;
+        break;
+        paramCharSequence.delete(i, i + 1);
+      }
     }
-    this.jdField_a_of_type_Beyg.h = bigv.a(antf.ba + Utils.Crc64String(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()) + "/" + "ptt" + "/pa_audio_" + str + ".amr");
-    return 0;
+    return paramCharSequence.toString();
   }
   
-  void d()
+  public static String a(ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList)
   {
-    super.d();
-    d(2005);
-  }
-  
-  void e()
-  {
-    super.e();
-    d(2003);
-  }
-  
-  void f()
-  {
-    this.jdField_a_of_type_Berr.a();
-    this.d = "pttcenter";
-    b("findDbRec", "not found");
-    bfau localbfau = new bfau();
-    bfaw localbfaw = new bfaw();
-    localbfaw.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Beyg.jdField_b_of_type_JavaLangString;
-    localbfaw.d = this.jdField_a_of_type_Beyg.jdField_c_of_type_JavaLangString;
-    localbfaw.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_Beyg.d;
-    localbfaw.f = this.jdField_a_of_type_Beyg.jdField_a_of_type_Int;
-    localbfaw.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Beyg.jdField_e_of_type_JavaLangString;
-    localbfaw.jdField_b_of_type_JavaLangString = this.d;
-    localbfaw.jdField_a_of_type_Boolean = this.jdField_a_of_type_Beyg.jdField_c_of_type_Boolean;
-    localbfaw.jdField_a_of_type_Int = 0;
-    localbfaw.jdField_b_of_type_Int = 3;
-    localbfau.jdField_a_of_type_Bfcb = this;
-    localbfau.jdField_a_of_type_JavaLangString = "c2c_ptt_dw";
-    localbfau.jdField_a_of_type_JavaUtilList.add(localbfaw);
-    localbfau.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProtoReqManager();
-    if (!e())
+    try
     {
-      a(9366, "illegal app", null, this.jdField_a_of_type_Berr);
-      d();
+      JSONArray localJSONArray = new JSONArray();
+      paramArrayList = paramArrayList.iterator();
+      int i = 0;
+      while (paramArrayList.hasNext())
+      {
+        localJSONArray.put(i, ((MessageForText.AtTroopMemberInfo)paramArrayList.next()).toJsonObject());
+        i += 1;
+      }
+      paramArrayList = localJSONArray.toString();
+      return paramArrayList;
+    }
+    catch (Exception paramArrayList)
+    {
+      QLog.e("AtTroopMemberSpan", 1, "convertAtinfo2Json fail: ", paramArrayList);
+    }
+    return null;
+  }
+  
+  public static StringBuilder a(QQAppInterface paramQQAppInterface, StringBuilder paramStringBuilder, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    if ((TextUtils.isEmpty(paramStringBuilder.toString())) || (TextUtils.isEmpty(paramString2)) || (paramBoolean))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AtTroopMemberSpan_At_Me_DISC", 2, "Recv replaceAtMsgByMarkName return discUin:" + paramString2);
+      }
+      paramString1 = paramStringBuilder;
     }
     do
     {
-      return;
-      if (QLog.isColorLevel()) {
-        b("requestStart", localbfau.toString());
+      return paramString1;
+      try
+      {
+        localJSONArray = new JSONArray(paramString1);
+        m = localJSONArray.length();
+        i = 0;
+        j = 0;
       }
-    } while (!f());
-    this.jdField_a_of_type_Bfau = localbfau;
-    bfca.a(localbfau);
+      catch (JSONException paramQQAppInterface)
+      {
+        try
+        {
+          JSONArray localJSONArray;
+          int m;
+          int i;
+          JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+          paramString1 = paramStringBuilder;
+          localStringBuilder = paramStringBuilder;
+          int i1 = (byte)localJSONObject.optInt("flag", 1);
+          paramString1 = paramStringBuilder;
+          localStringBuilder = paramStringBuilder;
+          String str = localJSONObject.optString("uin");
+          paramString1 = paramStringBuilder;
+          localStringBuilder = paramStringBuilder;
+          int i2 = localJSONObject.optInt("startPos", 0);
+          paramString1 = paramStringBuilder;
+          localStringBuilder = paramStringBuilder;
+          int n = localJSONObject.optInt("textLen", 0);
+          int k = j;
+          paramString1 = paramStringBuilder;
+          if (i1 == 0)
+          {
+            paramString1 = paramStringBuilder;
+            localStringBuilder = paramStringBuilder;
+            str = "@" + ContactUtils.getDiscussionMemberShowName(paramQQAppInterface, paramString2, str);
+            paramString1 = paramStringBuilder;
+            localStringBuilder = paramStringBuilder;
+            paramStringBuilder = paramStringBuilder.replace(i2 + j, i2 + n + j, str);
+            paramString1 = paramStringBuilder;
+            localStringBuilder = paramStringBuilder;
+            k = str.length();
+            k = j + (k - n);
+            paramString1 = paramStringBuilder;
+          }
+          i += 1;
+          int j = k;
+          paramStringBuilder = paramString1;
+        }
+        catch (Exception paramQQAppInterface)
+        {
+          StringBuilder localStringBuilder;
+          break label296;
+        }
+        catch (JSONException paramQQAppInterface)
+        {
+          break label280;
+        }
+        paramQQAppInterface = paramQQAppInterface;
+        localStringBuilder = paramStringBuilder;
+        QLog.e("_At_Me_DISC", 1, "replaceAtMsgByMarkName_1 ", paramQQAppInterface);
+        return localStringBuilder;
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        paramString1 = paramStringBuilder;
+        QLog.e("_At_Me_DISC", 1, "replaceAtMsgByMarkName_2", paramQQAppInterface);
+        return paramString1;
+      }
+      paramString1 = paramStringBuilder;
+    } while (i >= m);
+    paramString1 = paramStringBuilder;
+    localStringBuilder = paramStringBuilder;
   }
   
-  void g()
+  private List<bhcd> a(Paint paramPaint)
   {
-    this.jdField_b_of_type_Berr.a();
-    String str3 = a(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList);
-    berp.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilArrayList);
-    beum localbeum = new beum();
-    localbeum.jdField_a_of_type_Beuq = this;
-    localbeum.jdField_a_of_type_JavaLangString = str3;
-    localbeum.jdField_a_of_type_Int = 0;
-    localbeum.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilArrayList;
-    localbeum.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Beyg.h;
-    localbeum.jdField_e_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_Beyg.jdField_a_of_type_Long);
-    localbeum.f = this.jdField_a_of_type_Beyg.jdField_a_of_type_Int;
-    localbeum.jdField_e_of_type_Int = this.jdField_a_of_type_Beyg.jdField_b_of_type_Int;
-    localbeum.jdField_a_of_type_Long = 0L;
-    localbeum.l = true;
-    localbeum.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
-    localbeum.m = true;
-    localbeum.jdField_a_of_type_Beup = this;
-    localbeum.d = this.jdField_e_of_type_JavaLangString;
-    String str2 = null;
-    String str1 = str2;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      str1 = str2;
-      if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-        str1 = Arrays.toString(this.jdField_a_of_type_JavaUtilArrayList.toArray());
-      }
-    }
-    str2 = bews.a(str3);
-    b("httpDown", "RespDomain: " + str2 + " ipList:" + str1 + " uuid:" + this.jdField_a_of_type_Beyg.jdField_e_of_type_JavaLangString + " downOffset:" + localbeum.jdField_a_of_type_Long);
-    if (!f()) {
-      return;
-    }
-    this.jdField_a_of_type_Bevl = localbeum;
-    o();
-    this.jdField_a_of_type_Beuo.a(localbeum);
+    int i = (int)Math.ceil(paramPaint.measureText(" "));
+    List localList = bgdk.a(this.jdField_b_of_type_Int - i * 2, this.jdField_b_of_type_JavaLangString, paramPaint, this.jdField_a_of_type_Bhce, 16);
+    localList.add(new bhcd(1, 0, 0, "  ", null));
+    this.jdField_a_of_type_Int = bgdk.a(localList, paramPaint, new Rect());
+    return localList;
   }
   
-  protected void o()
+  public static void a(int paramInt, String paramString, ChatMessage paramChatMessage)
   {
-    if ((this.jdField_a_of_type_Bevl != null) && ((this.jdField_a_of_type_Bevl instanceof beum))) {
-      ((beum)this.jdField_a_of_type_Bevl).jdField_a_of_type_JavaLangString = MsfSdkUtils.insertMtype("pttCd", ((beum)this.jdField_a_of_type_Bevl).jdField_a_of_type_JavaLangString);
+    if (paramInt == 1) {
+      paramChatMessage.saveExtInfoToExtStr("troop_at_info_list", paramString);
+    }
+    while (paramInt != 3000) {
+      return;
+    }
+    paramChatMessage.saveExtInfoToExtStr("disc_at_info_list", paramString);
+  }
+  
+  public static void a(int paramInt, ArrayList<MessageForText.AtTroopMemberInfo> paramArrayList, ChatMessage paramChatMessage)
+  {
+    if (((paramInt == 3000) || (paramInt == 1)) && (paramArrayList.size() > 0))
+    {
+      try
+      {
+        JSONArray localJSONArray = new JSONArray();
+        paramArrayList = paramArrayList.iterator();
+        int i = 0;
+        while (paramArrayList.hasNext())
+        {
+          localJSONArray.put(i, ((MessageForText.AtTroopMemberInfo)paramArrayList.next()).toJsonObject());
+          i += 1;
+        }
+        if (paramInt == 1)
+        {
+          paramChatMessage.saveExtInfoToExtStr("troop_at_info_list", localJSONArray.toString());
+          return;
+        }
+        if (paramInt != 3000) {
+          return;
+        }
+        paramChatMessage.saveExtInfoToExtStr("disc_at_info_list", localJSONArray.toString());
+        return;
+      }
+      catch (JSONException paramArrayList)
+      {
+        paramArrayList.printStackTrace();
+        return;
+      }
+    }
+    else if (((paramInt == 3000) || (paramInt == 1)) && (paramArrayList.size() == 0))
+    {
+      if (paramInt == 1)
+      {
+        paramChatMessage.removeExtInfoToExtStr("troop_at_info_list");
+        return;
+      }
+      if (paramInt == 3000) {
+        paramChatMessage.removeExtInfoToExtStr("disc_at_info_list");
+      }
     }
   }
   
-  public void onResp(bevm parambevm)
+  private void a(Paint paramPaint)
   {
-    boolean bool2 = true;
-    super.onResp(parambevm);
-    this.jdField_a_of_type_Bevl = null;
-    Object localObject = new StringBuilder().append(" result:");
-    if (parambevm.jdField_a_of_type_Int == 0)
-    {
-      bool1 = true;
-      b("onHttpResp", bool1);
-      localObject = this.jdField_b_of_type_Berr;
-      if (parambevm.jdField_a_of_type_Int != 0) {
-        break label142;
-      }
-    }
-    label142:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      a((berr)localObject, parambevm, bool1);
-      this.jdField_a_of_type_Long = parambevm.jdField_a_of_type_Long;
-      if (this.jdField_a_of_type_Long <= 0L) {
-        this.jdField_a_of_type_Long = (parambevm.jdField_b_of_type_Long + parambevm.jdField_a_of_type_Bevl.jdField_a_of_type_Long);
-      }
-      this.jdField_b_of_type_Long += parambevm.c;
-      if (parambevm.jdField_a_of_type_Int != 0) {
-        break label147;
-      }
-      h();
-      e();
-      return;
-      bool1 = false;
-      break;
-    }
-    label147:
-    if ((parambevm.jdField_b_of_type_Int == 9364) && (this.m < 3))
-    {
-      b("[netChg]", "failed.but net change detect.so retry");
-      this.m += 1;
-      n();
-      f();
+    float f1 = 0.0F;
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
       return;
     }
-    d();
+    Object localObject2 = a(paramPaint);
+    Object localObject1 = paramPaint.getFontMetrics();
+    float f2 = -((Paint.FontMetrics)localObject1).top;
+    int i = (int)Math.ceil(((Paint.FontMetrics)localObject1).bottom - ((Paint.FontMetrics)localObject1).top);
+    Object localObject3 = new RectF(0.0F, ((Paint.FontMetrics)localObject1).ascent - ((Paint.FontMetrics)localObject1).top, this.jdField_a_of_type_Int - 2, ((Paint.FontMetrics)localObject1).descent + f2);
+    localObject1 = Bitmap.createBitmap(this.jdField_a_of_type_Int, i, Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas((Bitmap)localObject1);
+    int j = paramPaint.getColor();
+    paramPaint.setColor(-4331268);
+    localCanvas.drawRect((RectF)localObject3, paramPaint);
+    paramPaint.setColor(j);
+    localObject2 = ((List)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject3 = (bhcd)((Iterator)localObject2).next();
+      switch (((bhcd)localObject3).c)
+      {
+      default: 
+        break;
+      case 1: 
+        localCanvas.drawText(((bhcd)localObject3).jdField_a_of_type_JavaLangString, f1, f2, paramPaint);
+        f1 += paramPaint.measureText(((bhcd)localObject3).jdField_a_of_type_JavaLangString);
+        break;
+      case 2: 
+        localObject3 = (QQText.EmoticonSpan)((bhcd)localObject3).jdField_a_of_type_AndroidTextStyleCharacterStyle;
+        j = ((QQText.EmoticonSpan)localObject3).getDrawable().getBounds().height();
+        ((QQText.EmoticonSpan)localObject3).draw(localCanvas, "", 0, 0, f1, (i - j) / 2, (i + j) / 2, (j + i) / 2, paramPaint);
+        f1 += ((QQText.EmoticonSpan)localObject3).getDrawable().getBounds().width();
+      }
+    }
+    localCanvas.save();
+    localCanvas.restore();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject1);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, i);
+  }
+  
+  private static boolean a(String paramString1, String paramString2, String paramString3)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      bool1 = bool2;
+      if (!paramString2.equals(paramString1)) {}
+    }
+    else
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramString3)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  {
+    if ((paramInt2 - paramInt1 == 1) && (this.c.length() != 1) && (paramInt1 != 0)) {
+      return;
+    }
+    super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
+  }
+  
+  public Drawable getDrawable()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  }
+  
+  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || ((paramInt2 - paramInt1 == 1) && (this.c.length() != 1) && (paramInt1 != 0))) {
+      return 0;
+    }
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds().right;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bevq
  * JD-Core Version:    0.7.0.1
  */

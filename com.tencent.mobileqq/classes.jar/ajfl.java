@@ -1,46 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.widget.RecyclerView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class ajfl
-  extends Handler
+class ajfl
+  implements DialogInterface.OnClickListener
 {
-  public ajfl(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
+  ajfl(ajey paramajey) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMessage.what == 5)
-    {
-      Face2FaceAddContactFragment.a(this.a).setText(2131691968);
-      Face2FaceAddContactFragment.a(this.a).setVisibility(8);
-      Face2FaceAddContactFragment.a(this.a).setVisibility(0);
-    }
-    do
-    {
-      return;
-      if (paramMessage.what == 301)
-      {
-        Face2FaceAddContactFragment.a(this.a);
-        return;
-      }
-      if (paramMessage.what == 500)
-      {
-        Face2FaceAddContactFragment.b(this.a);
-        return;
-      }
-      if (paramMessage.what == 401)
-      {
-        removeMessages(301);
-        this.a.d();
-        return;
-      }
-    } while (paramMessage.what != 6);
-    Face2FaceAddContactFragment.c(this.a);
-    QQToast.a(this.a.getActivity(), this.a.getString(2131690896), 0).a();
+    this.a.a.getIntent().removeExtra("if_check_account_same");
+    this.a.b.dismiss();
   }
 }
 

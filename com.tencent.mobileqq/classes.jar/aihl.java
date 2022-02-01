@@ -1,23 +1,15 @@
-import java.util.List;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
 class aihl
-  extends anxa
+  implements Comparator<PhoneContact>
 {
-  aihl(aihh paramaihh) {}
+  aihl(aihk paramaihk) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    if (paramBoolean)
-    {
-      this.a.b = asuw.a(this.a.a).a(this.a.a, this.a.a());
-      this.a.b(this.a.b);
-      if ((this.a.b != null) && (!this.a.b.isEmpty())) {
-        this.a.v(false);
-      }
-    }
+    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
   }
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

@@ -1,16 +1,36 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 
 public class nxi
-  extends AnimatorListenerAdapter
+  implements ViewPager.OnPageChangeListener
 {
-  public nxi(VideoCoverView paramVideoCoverView) {}
+  public nxi(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    super.onAnimationEnd(paramAnimator);
-    VideoCoverView.a(this.a, true);
+    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
+    if (paramInt != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
+      return;
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
+    if (paramInt2 != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
+      return;
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    PublicAccountAdvertisementActivity.a(this.a, paramInt);
   }
 }
 

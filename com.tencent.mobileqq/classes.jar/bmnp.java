@@ -1,28 +1,38 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.2.1;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextBean;
 
-public class bmnp
-  implements ServiceConnection
+final class bmnp
+  implements bmfg
 {
-  bmnp(bmno parambmno) {}
+  bmnp(bmnq parambmnq, AEEditorTextBean paramAEEditorTextBean) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a(int paramInt)
   {
-    this.a.jdField_a_of_type_Bmne = bmnf.a(paramIBinder);
-    if (this.a.jdField_a_of_type_Bmne != null)
-    {
-      paramComponentName = new QQIndividualityRemoteProxy.2.1(this);
-      paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
-      paramComponentName.start();
+    if (this.jdField_a_of_type_Bmnq != null) {
+      this.jdField_a_of_type_Bmnq.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, (int)(66.0D + 0.34D * paramInt));
     }
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void a(boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_Bmne = null;
-    this.a.jdField_a_of_type_Boolean = false;
+    if ((paramBoolean) && (this.jdField_a_of_type_Bmnq != null)) {
+      this.jdField_a_of_type_Bmnq.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, 100);
+    }
+    bmnq localbmnq;
+    AEEditorTextBean localAEEditorTextBean;
+    if (this.jdField_a_of_type_Bmnq != null)
+    {
+      localbmnq = this.jdField_a_of_type_Bmnq;
+      localAEEditorTextBean = this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean;
+      if (!paramBoolean) {
+        break label62;
+      }
+    }
+    label62:
+    for (String str = "SUCCESS_FONT_DOWNLOAD_SUCCEEDED";; str = "ERROR_FONT_DOWNLOAD_FAILED")
+    {
+      localbmnq.a(localAEEditorTextBean, paramBoolean, str);
+      return;
+    }
   }
 }
 

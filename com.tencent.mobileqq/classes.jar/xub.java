@@ -1,21 +1,17 @@
-import android.widget.MediaController;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.util.List;
 
 public class xub
-  implements xvq
 {
-  public xub(TextureVideoView paramTextureVideoView) {}
+  public final int a;
+  public final List<LocalMediaInfo> a;
+  public final vil a;
   
-  public void a(xvo paramxvo)
+  public xub(List<LocalMediaInfo> paramList, int paramInt, vil paramvil)
   {
-    this.a.jdField_a_of_type_Int = 5;
-    this.a.b = 5;
-    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
-      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
-    }
-    if (this.a.jdField_a_of_type_Xvq != null) {
-      this.a.jdField_a_of_type_Xvq.a(this.a.jdField_a_of_type_Xvo);
-    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Vil = paramvil;
   }
 }
 

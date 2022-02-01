@@ -1,14 +1,42 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.opengl.GLSurfaceView;
+import android.view.MotionEvent;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 
-public final class baaw
-  implements asmy
+public class baaw
+  implements GLGestureListener
 {
-  public List<aspt> a(boolean paramBoolean1, boolean paramBoolean2)
+  GLSurfaceView a;
+  
+  public baaw(GLSurfaceView paramGLSurfaceView)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new aspt(7, 7, null));
-    return localArrayList;
+    this.a = paramGLSurfaceView;
+  }
+  
+  public int onGetPriority()
+  {
+    return 1020;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  {
+    if (paramMotionEvent.getPointerCount() > 2) {
+      return false;
+    }
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
+    }
+    do
+    {
+      do
+      {
+        return false;
+      } while ((!(this.a instanceof AECameraGLSurfaceView)) || (!((AECameraGLSurfaceView)this.a).hasTapEffect()));
+      ((AECameraGLSurfaceView)this.a).setTapEvent(100, paramMotionEvent.getX(), paramMotionEvent.getY());
+      return true;
+    } while ((!(this.a instanceof AECameraGLSurfaceView)) || (!((AECameraGLSurfaceView)this.a).hasTapEffect()));
+    ((AECameraGLSurfaceView)this.a).setTapEvent(100, paramMotionEvent.getX(1) + paramMotionEvent.getRawX() - paramMotionEvent.getX(0), paramMotionEvent.getY(1) + paramMotionEvent.getRawY() - paramMotionEvent.getY(0));
+    return true;
   }
 }
 

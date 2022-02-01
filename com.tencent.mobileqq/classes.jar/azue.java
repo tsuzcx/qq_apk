@@ -1,31 +1,37 @@
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-public final class azue
-  implements beup
+public class azue
+  extends azuw<ReceiptMessageDetailFragment>
 {
-  public void a(bevl parambevl, bevm parambevm)
+  public azue(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    if ((parambevl == null) || (parambevm == null)) {}
-    do
+    super(paramReceiptMessageDetailFragment);
+  }
+  
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (QLog.isDebugVersion()) {
+      QLog.d("ReceiptMessageDetailFragment", 4, "mTroopSendReadReportCallback onRes: " + paramInt);
+    }
+    if (paramInt == 0)
     {
-      do
-      {
-        return;
-      } while (!(parambevl instanceof beum));
-      parambevl = (beum)parambevl;
-      parambevl.jdField_a_of_type_Long += parambevm.c;
-      parambevm.c = 0L;
-      parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
-      parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
-      parambevm = parambevl.jdField_a_of_type_JavaLangString;
-      if (parambevm.contains("range="))
-      {
-        String str = parambevm.substring(0, parambevm.lastIndexOf("range="));
-        parambevl.jdField_a_of_type_JavaLangString = (str + "range=" + parambevl.jdField_a_of_type_Long);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopSendReadReportCallback succ");
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("PortalManager", 2, "IBreakDownFix, " + parambevm);
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
+      return;
+    }
+    if (paramInt != 1281)
+    {
+      QLog.d("ReceiptMessageDetailFragment", 1, "mTroopSendReadReportCallback fatal error: " + paramInt);
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
+      return;
+    }
+    ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
   }
 }
 

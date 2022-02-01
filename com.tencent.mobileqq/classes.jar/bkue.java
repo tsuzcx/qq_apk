@@ -1,17 +1,31 @@
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.JsEvent;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import cooperation.qqreader.js.JsCallParams;
 
-public class bkue
-  extends BaseJsPlugin
+class bkue
 {
-  @JsEvent({"getGUID"})
-  public void checkGameBuddyType(RequestEvent paramRequestEvent)
+  long jdField_a_of_type_Long;
+  JsCallParams jdField_a_of_type_CooperationQqreaderJsJsCallParams;
+  long b;
+  
+  bkue(String paramString1, String paramString2, String paramString3, long paramLong, String... paramVarArgs)
   {
-    QLog.d("DeviceInfoPlugin", 1, "checkGameBuddyType getGUID");
-    QIPCClientHelper.getInstance().callServer("DeviceProtectQIPCModule", "ACTION_GET_GUID_INFO", null, new bkuf(this, paramRequestEvent));
+    this.jdField_a_of_type_CooperationQqreaderJsJsCallParams = new JsCallParams(paramString1, paramString2, paramString3, paramVarArgs);
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = System.currentTimeMillis();
+  }
+  
+  void a()
+  {
+    this.b = System.currentTimeMillis();
+  }
+  
+  boolean a()
+  {
+    return System.currentTimeMillis() - this.b > this.jdField_a_of_type_Long;
+  }
+  
+  boolean a(bkue parambkue)
+  {
+    return this.jdField_a_of_type_CooperationQqreaderJsJsCallParams.a(parambkue.jdField_a_of_type_CooperationQqreaderJsJsCallParams);
   }
 }
 

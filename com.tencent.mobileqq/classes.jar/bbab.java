@@ -1,66 +1,77 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import tencent.im.oidb.cmd0x986.oidb_0x986.RspBody;
+import java.util.List;
 
 public class bbab
-  extends bbak<ReceiptMessageReadMemberListContainerFragment>
+  implements bays
 {
-  public bbab(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment)
+  public int a;
+  public int b;
+  public int c;
+  
+  public int a()
   {
-    super(paramReceiptMessageReadMemberListContainerFragment);
+    return 0;
   }
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public int a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageReadMemberListContainerFragment", 4, "mTroopFetchReadMemberListCallback onRes: " + paramInt);
-    }
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    int i = -1;
+    switch (paramInt)
     {
-      for (;;)
-      {
-        try
-        {
-          paramBundle = new oidb_0x986.RspBody();
-          paramBundle.mergeFrom(paramArrayOfByte);
-          paramArrayOfByte = paramBundle.rpt_msg_uin_info.get();
-          paramArrayOfByte = ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a, paramArrayOfByte).iterator();
-          if (!paramArrayOfByte.hasNext()) {
-            break;
-          }
-          ReceiptMessageReadMemberListFragment.MemberInfo localMemberInfo = (ReceiptMessageReadMemberListFragment.MemberInfo)paramArrayOfByte.next();
-          if (!Long.toString(ReceiptMessageReadMemberListContainerFragment.d((ReceiptMessageReadMemberListContainerFragment)this.a)).equals(localMemberInfo.jdField_a_of_type_JavaLangString)) {
-            if (localMemberInfo.jdField_a_of_type_Long > 0L) {
-              ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a).add(localMemberInfo);
-            } else {
-              ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).add(localMemberInfo);
-            }
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "fetch read member fail on invalid data");
-          ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
-          return;
-        }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.uniteSearch.SearchResultGroupModelImpl", 2, "getPosition(). type=" + paramInt + "  position=" + i);
       }
-      if (paramBundle.uint64_next_uin.get() == 0L)
-      {
-        ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(2);
-        return;
-      }
-      paramArrayOfByte = ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).obtainMessage(3, Long.valueOf(paramBundle.uint64_next_uin.get()));
-      ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendMessage(paramArrayOfByte);
+      return i;
+      i = this.a;
+      continue;
+      i = this.b;
+      continue;
+      i = this.c;
+    }
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public List<bayt> a()
+  {
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a = paramInt2;
+      return;
+    case 2: 
+      this.b = paramInt2;
       return;
     }
-    ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
+    this.c = paramInt2;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    a(2, paramInt1);
+    a(1, paramInt2);
+    a(3, paramInt3);
+  }
+  
+  public void a(View paramView) {}
+  
+  public String b()
+  {
+    return null;
   }
 }
 

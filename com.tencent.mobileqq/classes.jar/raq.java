@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.DeliverData;
-
-public final class raq
-  implements Parcelable.Creator<ReadInJoyDeliverUGCActivity.DeliverData>
+public abstract interface raq
 {
-  public ReadInJoyDeliverUGCActivity.DeliverData a(Parcel paramParcel)
-  {
-    return new ReadInJoyDeliverUGCActivity.DeliverData(paramParcel);
-  }
-  
-  public ReadInJoyDeliverUGCActivity.DeliverData[] a(int paramInt)
-  {
-    return new ReadInJoyDeliverUGCActivity.DeliverData[paramInt];
-  }
+  public abstract void a(int paramInt, String paramString, long paramLong);
 }
 
 

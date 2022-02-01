@@ -1,48 +1,45 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloManager.20.1;
-import com.tencent.mobileqq.apollo.data.ApolloPreDownloadData;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import java.io.File;
+import java.io.OutputStream;
+import org.apache.http.Header;
 
 public class amtc
-  extends biht
+  extends AbsDownloader
 {
-  amtc(amsx paramamsx) {}
-  
-  public void onDoneFile(bihu parambihu)
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    if ((parambihu == null) || (this.a.a == null)) {}
-    String str1;
-    do
+    paramURLDrawableHandler = paramDownloadParams.getHeader("funnypic_type");
+    if (paramURLDrawableHandler != null)
     {
-      return;
-      if (parambihu.a != 0)
-      {
-        QLog.e("ApolloManager", 1, new Object[] { "preDownloadListener task error:", Integer.valueOf(parambihu.a()) });
-        return;
+      paramURLDrawableHandler = paramURLDrawableHandler.getValue();
+      float f = paramDownloadParams.mGifRoundCorner;
+      if ((!TextUtils.isEmpty(paramURLDrawableHandler)) && (Integer.valueOf(paramURLDrawableHandler).intValue() == 2)) {
+        return new bgfa(paramFile, true, f, 3);
       }
-      str1 = parambihu.c;
-      parambihu = parambihu.a();
-    } while (parambihu == null);
-    ApolloPreDownloadData localApolloPreDownloadData = (ApolloPreDownloadData)parambihu.getSerializable(str1);
-    if (localApolloPreDownloadData == null)
-    {
-      QLog.e("ApolloManager", 1, "preDownloadListener res onDoneFile but preDownload data is null");
-      return;
     }
-    if (!TextUtils.isEmpty(localApolloPreDownloadData.zipDir)) {}
-    for (parambihu = ApolloUtil.e(localApolloPreDownloadData.dirType) + localApolloPreDownloadData.zipDir;; parambihu = annv.t + localApolloPreDownloadData.resId + ".zip")
+    return null;
+  }
+  
+  public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof String)))
     {
-      String str2 = ApolloUtil.e(localApolloPreDownloadData.dirType) + localApolloPreDownloadData.dir;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloManager", 2, new Object[] { "preDownloadListener res zip done reportId:", localApolloPreDownloadData.reportId, ", url:", str1 });
+      paramOutputStream = (String)paramDownloadParams.tag;
+      paramDownloadParams = AppConstants.SDCARD_IMG_FAVORITE;
+      paramDownloadParams = new File(paramDownloadParams + Utils.Crc64String(paramOutputStream));
+      if (paramDownloadParams.exists()) {
+        return paramDownloadParams;
       }
-      ThreadManager.getSubThreadHandler().post(new ApolloManager.20.1(this, localApolloPreDownloadData, parambihu, str2));
-      return;
+      if (bgog.a(new bgoe(paramOutputStream, paramDownloadParams), null) == 0) {
+        return paramDownloadParams;
+      }
     }
+    return null;
   }
 }
 

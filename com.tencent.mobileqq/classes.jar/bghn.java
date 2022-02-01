@@ -1,140 +1,137 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.webkit.URLUtil;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.os.Bundle;
+import android.os.Handler;
+import com.etrump.mixlayout.ETFont;
+import com.etrump.mixlayout.ETTextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.TroopAioTopADInfo;
-import com.tencent.mobileqq.troop.widget.TroopAioFeedsCenterView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.minigame.utils.AppUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observer;
+import mqq.app.AppRuntime;
 
-class bghn
-  implements Animation.AnimationListener
+public class bghn
+  implements bggt, ge
 {
-  bghn(bghm parambghm) {}
+  private float jdField_a_of_type_Float;
+  protected int a;
+  private long jdField_a_of_type_Long = System.currentTimeMillis();
+  protected bggu a;
+  private ETTextView jdField_a_of_type_ComEtrumpMixlayoutETTextView;
+  private fy jdField_a_of_type_Fy = new bghp(this);
+  protected gb a;
+  private Observer jdField_a_of_type_JavaUtilObserver = new bgho(this);
+  protected AppRuntime a;
+  private boolean jdField_a_of_type_Boolean;
+  private int b = 1;
+  private int c = 1;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public bghn(bggs parambggs, AppRuntime paramAppRuntime, int paramInt)
   {
-    this.a.i = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class).obtainMessage(68).sendToTarget();
-    if (this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation == paramAnimation)
+    this.jdField_a_of_type_Bggu = parambggs.a();
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_Int = paramInt;
+    gf.a().addObserver(this.jdField_a_of_type_JavaUtilObserver);
+  }
+  
+  protected ga a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_MqqAppAppRuntime != null) && ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)))
     {
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      if (this.a.jdField_a_of_type_AndroidViewView != null)
-      {
-        if (this.a.jdField_a_of_type_Bfpy != null) {}
-        bghm.a(this.a);
-        this.a.notifyObservers(Integer.valueOf(123322));
-        this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
-      }
-      if (this.a.jdField_a_of_type_Bfpy != null) {
-        this.a.jdField_a_of_type_Bfpy.d = false;
-      }
-      if (this.a.jdField_b_of_type_Boolean)
-      {
-        this.a.d(true);
-        this.a.jdField_b_of_type_Boolean = false;
-      }
-      if (this.a.e)
-      {
-        if (bhnv.d(BaseApplication.getContext())) {
-          break label247;
-        }
-        QQToast.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 1, ((FragmentActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131696933), 1).b(((FragmentActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getDimensionPixelSize(2131299011) - (int)bhmg.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 5.0F));
-      }
+      this.jdField_a_of_type_Gb = ((gb)this.jdField_a_of_type_MqqAppAppRuntime.getManager(42));
+      this.jdField_a_of_type_Gb.a(this);
+      return this.jdField_a_of_type_Gb.a(paramInt1, paramInt2, false, ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getCurrentUin(), 0);
     }
-    for (;;)
+    return null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bggu.a().sendEmptyMessage(10003);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 0)
     {
+      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setFont(0, System.currentTimeMillis());
       return;
-      label247:
-      bgqk localbgqk = (bgqk)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(133);
-      String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-      if (!TextUtils.isEmpty(str))
-      {
-        TroopAioTopADInfo localTroopAioTopADInfo = localbgqk.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-        Object localObject;
-        if (localTroopAioTopADInfo != null)
-        {
-          if (!TextUtils.isEmpty(localTroopAioTopADInfo.jumpUrl)) {
-            break label430;
-          }
-          paramAnimation = localTroopAioTopADInfo.backgroundUrl;
-          localObject = bhni.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), paramAnimation);
-          if (localObject == null) {
-            break label439;
-          }
-          ((bhmr)localObject).a();
-        }
-        for (;;)
-        {
-          bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "notice_center", "Clk_Promote", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localTroopAioTopADInfo.adId + "", "", "");
-          localbgqk.a(str);
-          this.a.d = false;
-          return;
-          label430:
-          paramAnimation = localTroopAioTopADInfo.jumpUrl;
-          break;
-          label439:
-          if (paramAnimation.startsWith("http"))
-          {
-            localObject = new Intent((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), QQBrowserActivity.class);
-            ((Intent)localObject).putExtra("url", URLUtil.guessUrl(paramAnimation));
-            ((FragmentActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity((Intent)localObject);
-          }
-        }
-        if (this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation == paramAnimation)
-        {
-          if ((this.a.jdField_a_of_type_AndroidViewView != null) && (this.a.jdField_a_of_type_Bfpy != null))
-          {
-            this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-            this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
-            bghm.b(this.a);
-            this.a.notifyObservers(Integer.valueOf(123322));
-            if ((this.a.c) && (this.a.jdField_a_of_type_AndroidViewView != null) && ((this.a.jdField_a_of_type_AndroidViewView instanceof TroopAioFeedsCenterView)))
-            {
-              if (!this.a.d) {
-                break label651;
-              }
-              this.a.jdField_a_of_type_Bfrm.b();
-            }
-          }
-          while (this.a.jdField_a_of_type_AndroidViewView != null)
-          {
-            this.a.jdField_a_of_type_AndroidViewView.requestFocus();
-            return;
-            label651:
-            if (this.a.f)
-            {
-              ((TroopAioFeedsCenterView)this.a.jdField_a_of_type_AndroidViewView).a();
-              this.a.f = false;
-            }
-            else
-            {
-              this.a.c = false;
-              ((TroopAioFeedsCenterView)this.a.jdField_a_of_type_AndroidViewView).a(true);
-            }
-          }
-        }
-      }
+    }
+    this.jdField_a_of_type_Bggu.a(paramInt1);
+    this.jdField_a_of_type_Int = paramInt2;
+    b();
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SignatureFontAdapter", 2, "downloadDone type = " + paramInt);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(ETTextView paramETTextView, float paramFloat, boolean paramBoolean)
   {
-    this.a.i = true;
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = paramETTextView;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextAnimationListener(this.jdField_a_of_type_Fy);
+  }
+  
+  protected void a(ETTextView paramETTextView, ga paramga, float paramFloat)
+  {
+    if (paramga.jdField_a_of_type_Int == 0)
+    {
+      paramETTextView.setFont(0, System.currentTimeMillis());
+      return;
+    }
+    if (paramga.jdField_a_of_type_ComEtrumpMixlayoutETFont != null)
+    {
+      paramga = paramga.jdField_a_of_type_ComEtrumpMixlayoutETFont;
+      paramga.setSize(paramFloat);
+    }
+    for (;;)
+    {
+      if ((paramETTextView.mFont == null) || (!paramga.equals(paramETTextView.mFont))) {
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+      }
+      paramETTextView.shouldStartAnimation = this.jdField_a_of_type_Boolean;
+      paramga.mAnimationId = this.jdField_a_of_type_Long;
+      paramETTextView.setFont(paramga, this.jdField_a_of_type_Long);
+      paramETTextView.requestLayout();
+      return;
+      ETFont localETFont = new ETFont(paramga.jdField_a_of_type_Int, paramga.jdField_a_of_type_JavaLangString, paramFloat, paramga.b, paramga.jdField_a_of_type_AndroidGraphicsTypeface);
+      paramga.jdField_a_of_type_ComEtrumpMixlayoutETFont = localETFont;
+      paramga = localETFont;
+    }
+  }
+  
+  public void b()
+  {
+    if (AppUtil.isMainProcess()) {}
+    for (ga localga = a(this.jdField_a_of_type_Bggu.a(), this.jdField_a_of_type_Int);; localga = gf.a().a(this.jdField_a_of_type_Bggu.a(), this.jdField_a_of_type_Int))
+    {
+      QLog.i("SignatureFontAdapter", 1, "load " + localga + " fontId:" + this.jdField_a_of_type_Bggu.a());
+      if ((localga != null) && (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView != null)) {
+        a(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, localga, this.jdField_a_of_type_Float);
+      }
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    gf.a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
+    if (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView != null)
+    {
+      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextAnimationListener(null);
+      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = null;
+    }
+    if (this.jdField_a_of_type_Gb != null) {
+      this.jdField_a_of_type_Gb.b(this);
+    }
   }
 }
 

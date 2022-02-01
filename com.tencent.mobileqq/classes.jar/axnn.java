@@ -1,8 +1,19 @@
-import java.util.HashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.OcrConfig;
 
-public abstract interface axnn
+public final class axnn
+  implements Parcelable.Creator<OcrConfig>
 {
-  public abstract void a(long paramLong, HashMap<Long, String> paramHashMap);
+  public OcrConfig a(Parcel paramParcel)
+  {
+    return new OcrConfig(paramParcel);
+  }
+  
+  public OcrConfig[] a(int paramInt)
+  {
+    return new OcrConfig[paramInt];
+  }
 }
 
 

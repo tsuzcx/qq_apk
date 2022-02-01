@@ -1,7 +1,48 @@
-import kotlin.Metadata;
+import android.app.Activity;
+import android.os.Looper;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.view.ApolloGameWrapper.1;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherArkNotify$Companion;", "", "()V", "TAG", "", "WEATHER_ARK_APP_NAME", "WEATHER_ARK_METHOD_TO_CLIENT", "WEATHER_ARK_METHOD_TO_WEB", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class amls {}
+public class amls
+{
+  public static void a(boolean paramBoolean, Activity paramActivity, ahqs paramahqs, AppInterface paramAppInterface, String paramString, amlt paramamlt)
+  {
+    a(paramBoolean, paramActivity, paramahqs, paramAppInterface, paramString, paramamlt, true);
+  }
+  
+  public static void a(boolean paramBoolean1, Activity paramActivity, ahqs paramahqs, AppInterface paramAppInterface, String paramString, amlt paramamlt, boolean paramBoolean2)
+  {
+    if (paramamlt == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.ApolloGameWrapper", 2, "checkApolloGame listener is null");
+      }
+      return;
+    }
+    if ((paramActivity == null) || (paramAppInterface == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.ApolloGameWrapper", 2, "checkApolloGame activity is null OR appInterface is null");
+      }
+      paramamlt.a(false, null);
+      return;
+    }
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      paramahqs = alyf.a(paramString);
+      if ((paramahqs == null) || (paramahqs.a == null) || (paramahqs.a.get() != paramActivity))
+      {
+        paramamlt.a(false, paramahqs);
+        return;
+      }
+      paramamlt.a(true, paramahqs);
+      return;
+    }
+    paramActivity.runOnUiThread(new ApolloGameWrapper.1(paramString, paramActivity, paramamlt));
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

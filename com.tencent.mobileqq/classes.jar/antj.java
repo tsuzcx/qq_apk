@@ -1,35 +1,33 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class antj
-  implements EIPCResultCallback
+public class antj
+  extends anri
 {
-  antj(anth paramanth) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    if ((paramEIPCResult == null) || (paramEIPCResult.data == null))
+    paramQQAppInterface = new anti(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qzone";
+    paramQQAppInterface.c = "open_homepage";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
+    }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb BabyQFriendStatusWebPlugin EIPCResultCallback : result == null or data == null");
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
       }
-      return;
     }
-    boolean bool = paramEIPCResult.isSuccess();
-    String str2 = paramEIPCResult.data.getString("key_method_action");
-    String str3 = paramEIPCResult.data.getString("web_js_call_back_id");
-    if (QLog.isColorLevel()) {
-      QLog.d("BabyQFriendStatusWebViewPlugin", 2, new Object[] { "babyqWeb BabyQFriendStatusWebPlugin EIPCResultCallback : issuccess = ", Boolean.valueOf(bool), ",action = ", str2, ",jscallback = ", str3 });
-    }
-    String str1 = "";
-    if ("setFriendGrouping".equals(str2))
-    {
-      paramEIPCResult = paramEIPCResult.data.getString("key_handle_set_get_group");
-      str1 = "{ \"ret\": 0, \"group\": \"" + paramEIPCResult + "\"}";
-    }
-    anth.a(this.a, str3, str1, str2);
+    return paramQQAppInterface;
   }
 }
 

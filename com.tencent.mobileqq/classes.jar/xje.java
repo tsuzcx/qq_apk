@@ -1,36 +1,24 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import android.support.annotation.NonNull;
 
-final class xje
-  implements bliz
+public class xje
+  extends vll<xin, wcy>
 {
-  xje(QQUserUIItem paramQQUserUIItem, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public xje(xin paramxin)
   {
-    switch (paramInt)
-    {
-    default: 
-      paramView = "16384";
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq))) {
-        new xbd().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isFriend(), paramView);
-      }
-      break;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
-      yuk.d("Q.qqstory.player.PlayModeUtils", "report user error because evil uin is empty.");
-    }
+    super(paramxin);
   }
+  
+  public void a(@NonNull xin paramxin, @NonNull wcy paramwcy)
+  {
+    xin.a(paramxin, paramwcy.a, this.TAG);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wcy.class;
+  }
+  
+  public void b(@NonNull xin paramxin, @NonNull wcy paramwcy) {}
 }
 
 

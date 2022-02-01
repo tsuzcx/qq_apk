@@ -1,22 +1,15 @@
-import android.text.format.Time;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import tencent.im.cs.group_file_common.group_file_common.FileInfo;
 
-public class befx
-  implements FilenameFilter
+class befx
+  extends zrw
 {
-  public befx(ShareAppLogHelper paramShareAppLogHelper) {}
+  befx(befw parambefw, long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle) {}
   
-  public boolean accept(File paramFile, String paramString)
+  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
   {
-    if (!paramString.endsWith(".log")) {}
-    do
-    {
-      return false;
-      paramFile = ShareAppLogHelper.a(this.a, paramString);
-    } while ((paramFile == null) || (paramFile.toMillis(false) < ShareAppLogHelper.a(this.a).toMillis(false)) || (paramFile.toMillis(false) > ShareAppLogHelper.b(this.a).toMillis(false)));
-    return true;
+    befw.a(this.jdField_a_of_type_Befw, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_AndroidOsBundle, paramBoolean, paramInt, paramFileInfo);
   }
 }
 

@@ -1,15 +1,36 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aonj
-  implements ShareActionSheet.OnItemClickListener
+public class aonj
+  implements View.OnClickListener
 {
-  aonj(aoni paramaoni) {}
+  public aonj(QRScanEntryView paramQRScanEntryView) {}
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  public void onClick(View paramView)
   {
-    this.a.a(paramActionSheetItem);
+    this.a.findViewById(2131369310).setAlpha(1.0F);
+    ScanTorchActivity localScanTorchActivity = (ScanTorchActivity)this.a.jdField_a_of_type_AndroidContentContext;
+    String str2 = this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+    if (!TextUtils.isEmpty(localScanTorchActivity.a)) {}
+    for (String str1 = localScanTorchActivity.a;; str1 = str2)
+    {
+      Intent localIntent = new Intent(localScanTorchActivity, QRDisplayActivity.class);
+      localIntent.putExtra("from", "ScannerActivity");
+      localIntent.putExtra("title", localScanTorchActivity.getString(2131716205));
+      localIntent.putExtra("nick", str1);
+      localIntent.putExtra("uin", str2);
+      localIntent.putExtra("type", 1);
+      localScanTorchActivity.startActivity(localIntent);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

@@ -12,7 +12,7 @@ class SubscribePermissionSettingFragment$1
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131369042) {
+    if (paramView.getId() == 2131369068) {
       this.this$0.getActivity().finish();
     }
     EventCollector.getInstance().onViewClicked(paramView);

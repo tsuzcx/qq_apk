@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.emosm.web;
 
 import android.os.Bundle;
-import asiw;
+import arcu;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class MessengerService$IncomingHandler$24
   implements Runnable
 {
-  public MessengerService$IncomingHandler$24(asiw paramasiw, String paramString, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$24(arcu paramarcu, String paramString, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   /* Error */
   public void run()
@@ -58,53 +58,53 @@ public class MessengerService$IncomingHandler$24
     //   88: iconst_1
     //   89: aload 8
     //   91: iconst_0
-    //   92: invokevirtual 78	com/tencent/mobileqq/app/QQAppInterface:a	(ILjava/lang/String;I)Ljava/lang/String;
-    //   95: invokespecial 79	java/io/File:<init>	(Ljava/lang/String;)V
+    //   92: invokevirtual 79	com/tencent/mobileqq/app/QQAppInterface:getCustomFaceFilePath	(ILjava/lang/String;I)Ljava/lang/String;
+    //   95: invokespecial 80	java/io/File:<init>	(Ljava/lang/String;)V
     //   98: astore 5
     //   100: aload 5
-    //   102: invokevirtual 83	java/io/File:exists	()Z
+    //   102: invokevirtual 84	java/io/File:exists	()Z
     //   105: ifeq +422 -> 527
     //   108: aload 5
-    //   110: invokevirtual 86	java/io/File:length	()J
+    //   110: invokevirtual 87	java/io/File:length	()J
     //   113: lstore_3
     //   114: lload_3
-    //   115: ldc2_w 87
+    //   115: ldc2_w 88
     //   118: lcmp
     //   119: ifge +383 -> 502
     //   122: lload_3
     //   123: l2i
     //   124: newarray byte
     //   126: astore 7
-    //   128: new 90	java/io/FileInputStream
+    //   128: new 91	java/io/FileInputStream
     //   131: dup
     //   132: aload 5
-    //   134: invokespecial 93	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   134: invokespecial 94	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   137: astore 6
     //   139: aload 6
     //   141: astore 5
     //   143: aload 6
     //   145: aload 7
-    //   147: invokevirtual 97	java/io/FileInputStream:read	([B)I
+    //   147: invokevirtual 98	java/io/FileInputStream:read	([B)I
     //   150: pop
     //   151: aload 6
     //   153: astore 5
-    //   155: new 99	java/lang/StringBuilder
+    //   155: new 100	java/lang/StringBuilder
     //   158: dup
-    //   159: invokespecial 100	java/lang/StringBuilder:<init>	()V
-    //   162: ldc 102
-    //   164: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   159: invokespecial 101	java/lang/StringBuilder:<init>	()V
+    //   162: ldc 103
+    //   164: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   167: aload 7
     //   169: iconst_2
-    //   170: invokestatic 112	bhkv:encodeToString	([BI)Ljava/lang/String;
-    //   173: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   170: invokestatic 113	bfuc:encodeToString	([BI)Ljava/lang/String;
+    //   173: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   176: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   179: astore 7
     //   181: aload 7
     //   183: astore 5
     //   185: aload 6
     //   187: ifnull +12 -> 199
     //   190: aload 6
-    //   192: invokevirtual 119	java/io/FileInputStream:close	()V
+    //   192: invokevirtual 120	java/io/FileInputStream:close	()V
     //   195: aload 7
     //   197: astore 5
     //   199: aload 5
@@ -112,35 +112,35 @@ public class MessengerService$IncomingHandler$24
     //   203: iload_2
     //   204: lookupswitch	default:+36->240, 0:+340->544, 1:+358->562, 3000:+376->580
     //   241: nop
-    //   242: iushr
+    //   242: lushr
     //   243: ifeq +370 -> 613
-    //   246: ldc 126
+    //   246: ldc 127
     //   248: iconst_2
-    //   249: ldc 128
-    //   251: invokestatic 132	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   249: ldc 129
+    //   251: invokestatic 133	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   254: goto +359 -> 613
     //   257: new 57	org/json/JSONObject
     //   260: dup
-    //   261: invokespecial 133	org/json/JSONObject:<init>	()V
+    //   261: invokespecial 134	org/json/JSONObject:<init>	()V
     //   264: astore 7
     //   266: aload 7
     //   268: ldc 55
     //   270: aload 8
-    //   272: invokevirtual 137	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   272: invokevirtual 138	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   275: pop
     //   276: aload 7
-    //   278: ldc 139
+    //   278: ldc 140
     //   280: aload 5
-    //   282: invokevirtual 137	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   282: invokevirtual 138	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   285: pop
     //   286: aload 7
-    //   288: ldc 141
+    //   288: ldc 142
     //   290: aload 6
-    //   292: invokevirtual 137	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   292: invokevirtual 138	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   295: pop
     //   296: aload 11
     //   298: aload 7
-    //   300: invokevirtual 144	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   300: invokevirtual 145	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
     //   303: pop
     //   304: iload_1
     //   305: iconst_1
@@ -149,32 +149,32 @@ public class MessengerService$IncomingHandler$24
     //   308: goto -275 -> 33
     //   311: astore 5
     //   313: aload 5
-    //   315: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   315: invokevirtual 148	java/io/IOException:printStackTrace	()V
     //   318: aload 7
     //   320: astore 5
     //   322: goto -123 -> 199
     //   325: astore 5
-    //   327: invokestatic 124	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   327: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   330: ifeq +11 -> 341
-    //   333: ldc 126
+    //   333: ldc 127
     //   335: iconst_2
-    //   336: ldc 149
-    //   338: invokestatic 132	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   336: ldc 150
+    //   338: invokestatic 133	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   341: aload 10
-    //   343: ldc 151
+    //   343: ldc 152
     //   345: aload 11
-    //   347: invokevirtual 152	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   350: invokevirtual 156	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   347: invokevirtual 153	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   350: invokevirtual 157	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   353: aload_0
     //   354: getfield 23	com/tencent/mobileqq/emosm/web/MessengerService$IncomingHandler$24:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
-    //   357: ldc 158
+    //   357: ldc 159
     //   359: aload 10
-    //   361: invokevirtual 162	android/os/Bundle:putBundle	(Ljava/lang/String;Landroid/os/Bundle;)V
+    //   361: invokevirtual 163	android/os/Bundle:putBundle	(Ljava/lang/String;Landroid/os/Bundle;)V
     //   364: aload_0
     //   365: getfield 25	com/tencent/mobileqq/emosm/web/MessengerService$IncomingHandler$24:jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService	Lcom/tencent/mobileqq/emosm/web/MessengerService;
     //   368: aload_0
     //   369: getfield 23	com/tencent/mobileqq/emosm/web/MessengerService$IncomingHandler$24:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
-    //   372: invokevirtual 167	com/tencent/mobileqq/emosm/web/MessengerService:a	(Landroid/os/Bundle;)V
+    //   372: invokevirtual 168	com/tencent/mobileqq/emosm/web/MessengerService:a	(Landroid/os/Bundle;)V
     //   375: return
     //   376: astore 7
     //   378: aconst_null
@@ -182,19 +182,19 @@ public class MessengerService$IncomingHandler$24
     //   381: aload 6
     //   383: astore 5
     //   385: aload 7
-    //   387: invokevirtual 168	java/io/FileNotFoundException:printStackTrace	()V
+    //   387: invokevirtual 169	java/io/FileNotFoundException:printStackTrace	()V
     //   390: aload 9
     //   392: astore 5
     //   394: aload 6
     //   396: ifnull -197 -> 199
     //   399: aload 6
-    //   401: invokevirtual 119	java/io/FileInputStream:close	()V
+    //   401: invokevirtual 120	java/io/FileInputStream:close	()V
     //   404: aload 9
     //   406: astore 5
     //   408: goto -209 -> 199
     //   411: astore 5
     //   413: aload 5
-    //   415: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   415: invokevirtual 148	java/io/IOException:printStackTrace	()V
     //   418: aload 9
     //   420: astore 5
     //   422: goto -223 -> 199
@@ -204,19 +204,19 @@ public class MessengerService$IncomingHandler$24
     //   430: aload 6
     //   432: astore 5
     //   434: aload 7
-    //   436: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   436: invokevirtual 148	java/io/IOException:printStackTrace	()V
     //   439: aload 9
     //   441: astore 5
     //   443: aload 6
     //   445: ifnull -246 -> 199
     //   448: aload 6
-    //   450: invokevirtual 119	java/io/FileInputStream:close	()V
+    //   450: invokevirtual 120	java/io/FileInputStream:close	()V
     //   453: aload 9
     //   455: astore 5
     //   457: goto -258 -> 199
     //   460: astore 5
     //   462: aload 5
-    //   464: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   464: invokevirtual 148	java/io/IOException:printStackTrace	()V
     //   467: aload 9
     //   469: astore 5
     //   471: goto -272 -> 199
@@ -226,30 +226,30 @@ public class MessengerService$IncomingHandler$24
     //   479: aload 5
     //   481: ifnull +8 -> 489
     //   484: aload 5
-    //   486: invokevirtual 119	java/io/FileInputStream:close	()V
+    //   486: invokevirtual 120	java/io/FileInputStream:close	()V
     //   489: aload 6
     //   491: athrow
     //   492: astore 5
     //   494: aload 5
-    //   496: invokevirtual 147	java/io/IOException:printStackTrace	()V
+    //   496: invokevirtual 148	java/io/IOException:printStackTrace	()V
     //   499: goto -10 -> 489
     //   502: aload 9
     //   504: astore 5
-    //   506: invokestatic 124	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   506: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   509: ifeq -310 -> 199
-    //   512: ldc 126
+    //   512: ldc 127
     //   514: iconst_2
-    //   515: ldc 170
-    //   517: invokestatic 132	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   515: ldc 171
+    //   517: invokestatic 133	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   520: aload 9
     //   522: astore 5
     //   524: goto -325 -> 199
-    //   527: invokestatic 124	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   527: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   530: ifeq +90 -> 620
-    //   533: ldc 126
+    //   533: ldc 127
     //   535: iconst_2
-    //   536: ldc 172
-    //   538: invokestatic 132	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   536: ldc 173
+    //   538: invokestatic 133	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   541: goto +79 -> 620
     //   544: aload_0
     //   545: getfield 21	com/tencent/mobileqq/emosm/web/MessengerService$IncomingHandler$24:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
@@ -257,7 +257,7 @@ public class MessengerService$IncomingHandler$24
     //   550: aload 13
     //   552: iconst_0
     //   553: iconst_0
-    //   554: invokestatic 177	bhlg:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
+    //   554: invokestatic 179	com/tencent/mobileqq/utils/ContactUtils:getDisplayName	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
     //   557: astore 5
     //   559: goto -302 -> 257
     //   562: aload_0
@@ -266,7 +266,7 @@ public class MessengerService$IncomingHandler$24
     //   568: aload 13
     //   570: iconst_1
     //   571: iconst_0
-    //   572: invokestatic 177	bhlg:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
+    //   572: invokestatic 179	com/tencent/mobileqq/utils/ContactUtils:getDisplayName	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
     //   575: astore 5
     //   577: goto -320 -> 257
     //   580: aload_0
@@ -275,7 +275,7 @@ public class MessengerService$IncomingHandler$24
     //   586: aload 13
     //   588: iconst_2
     //   589: iconst_0
-    //   590: invokestatic 177	bhlg:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
+    //   590: invokestatic 179	com/tencent/mobileqq/utils/ContactUtils:getDisplayName	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;II)Ljava/lang/String;
     //   593: astore 5
     //   595: goto -338 -> 257
     //   598: astore 6
@@ -363,7 +363,7 @@ public class MessengerService$IncomingHandler$24
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.24
  * JD-Core Version:    0.7.0.1
  */

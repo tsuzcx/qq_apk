@@ -1,23 +1,20 @@
 public class aohk
-  implements anui
 {
-  public void a(boolean paramBoolean, int paramInt) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public aohk()
   {
-    if ((paramObject != null) && ((paramObject instanceof Object[]))) {}
-    for (paramObject = (Object[])paramObject;; paramObject = null)
-    {
-      switch (paramInt)
-      {
-      }
-      do
-      {
-        return;
-      } while (paramObject == null);
-      a(paramBoolean, ((Integer)paramObject[0]).intValue());
-      return;
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public String toString()
+  {
+    return "ARCloudReqFileInfo{fileName='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileFormat=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", width=" + this.c + ", previewPath='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 

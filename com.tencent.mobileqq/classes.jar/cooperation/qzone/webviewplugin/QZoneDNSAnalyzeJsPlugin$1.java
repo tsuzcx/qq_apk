@@ -1,36 +1,35 @@
 package cooperation.qzone.webviewplugin;
 
 import android.text.TextUtils;
-import bnma;
 import com.tencent.qphone.base.util.QLog;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-public class QZoneDNSAnalyzeJsPlugin$1
+class QZoneDNSAnalyzeJsPlugin$1
   implements Runnable
 {
-  public QZoneDNSAnalyzeJsPlugin$1(bnma parambnma, String paramString1, String paramString2) {}
+  QZoneDNSAnalyzeJsPlugin$1(QZoneDNSAnalyzeJsPlugin paramQZoneDNSAnalyzeJsPlugin, String paramString1, String paramString2) {}
   
   public void run()
   {
     Object localObject = "";
     try
     {
-      String str = InetAddress.getByName(this.a).getHostAddress();
+      String str = InetAddress.getByName(this.val$host).getHostAddress();
       localObject = str;
       if (!TextUtils.isEmpty(str))
       {
         localObject = str;
-        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "Analyze " + this.a + " ip address : " + str);
+        QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "Analyze " + this.val$host + " ip address : " + str);
         localObject = str;
-        bnma.a(this.this$0, this.b, 0, str);
+        QZoneDNSAnalyzeJsPlugin.access$000(this.this$0, this.val$callback, 0, str);
       }
       return;
     }
     catch (UnknownHostException localUnknownHostException)
     {
-      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "UnknownHostException:Analyze " + this.a + " ip address failed");
-      bnma.a(this.this$0, this.b, -1, (String)localObject);
+      QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "UnknownHostException:Analyze " + this.val$host + " ip address failed");
+      QZoneDNSAnalyzeJsPlugin.access$000(this.this$0, this.val$callback, -1, (String)localObject);
     }
   }
 }

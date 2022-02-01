@@ -1,20 +1,13 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aymr
-  implements View.OnClickListener
+  implements bjoe
 {
-  aymr(aymj paramaymj) {}
+  aymr(aymp paramaymp) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    blir localblir = blir.a(this.a.a);
-    localblir.a(2131716719, 1);
-    localblir.c(2131690580);
-    localblir.a(new ayms(this, localblir));
-    localblir.show();
-    EventCollector.getInstance().onViewClicked(paramView);
+    aymp.a(this.a, paramInt);
   }
 }
 

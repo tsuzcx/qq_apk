@@ -1,50 +1,17 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqForbidVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 public class xbg
-  extends wpa<xbh>
 {
-  public final String a;
-  public String b = "";
+  public List<String> a = new ArrayList();
+  public List<String> b = new ArrayList();
   
-  public xbg(xbf paramxbf, String paramString)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = wnu.a("StorySvc.forbid_video");
-    this.b = paramString;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public xbh a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspForbidVideo localRspForbidVideo = new qqstory_service.RspForbidVideo();
-    try
-    {
-      localRspForbidVideo.mergeFrom(paramArrayOfByte);
-      return new xbh(this.jdField_a_of_type_Xbf, localRspForbidVideo);
+    if ((!TextUtils.isEmpty(paramString)) && (!this.b.contains(paramString))) {
+      this.b.add(paramString);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqForbidVideo localReqForbidVideo = new qqstory_service.ReqForbidVideo();
-    localReqForbidVideo.vid.set(this.b);
-    return localReqForbidVideo.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "ReportIgnoreVideoRequest{, vid='" + this.b + '\'' + '}';
   }
 }
 

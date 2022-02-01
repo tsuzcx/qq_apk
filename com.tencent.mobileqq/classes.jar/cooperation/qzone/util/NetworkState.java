@@ -2,14 +2,12 @@ package cooperation.qzone.util;
 
 import android.net.NetworkInfo;
 import android.text.TextUtils;
-import bmsv;
-import bnjx;
-import bnjy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 import com.tencent.qphone.base.util.BaseApplication;
 import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.PlatformInfor;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,14 +30,14 @@ public class NetworkState
   private static Map<String, Integer> mApnMap = new HashMap();
   private static Map<Long, Boolean> map = new HashMap();
   private static INetEventHandler netEventHandler;
-  private static List<bnjy> observers;
+  private static List<NetworkState.NetworkStateListener> observers;
   private static String providerName;
   public static long uin = -1L;
   
   static
   {
     observers = new ArrayList();
-    netEventHandler = new bnjx();
+    netEventHandler = new NetworkState.1();
     mApnMap.put("unknown", Integer.valueOf(0));
     mApnMap.put("cmnet", Integer.valueOf(1));
     mApnMap.put("cmwap", Integer.valueOf(2));
@@ -63,15 +61,15 @@ public class NetworkState
     return localStringBuffer.toString();
   }
   
-  public static void addListener(bnjy parambnjy)
+  public static void addListener(NetworkState.NetworkStateListener paramNetworkStateListener)
   {
-    if (parambnjy == null) {
+    if (paramNetworkStateListener == null) {
       return;
     }
     synchronized (observers)
     {
-      if (!observers.contains(parambnjy)) {
-        observers.add(parambnjy);
+      if (!observers.contains(paramNetworkStateListener)) {
+        observers.add(paramNetworkStateListener);
       }
       return;
     }
@@ -224,7 +222,7 @@ public class NetworkState
     String str;
     if (TextUtils.isEmpty(providerName))
     {
-      str = bmsv.a().b();
+      str = PlatformInfor.g().getIMSI();
       if ((str != null) && (!"".equals(str))) {
         break label39;
       }
@@ -292,15 +290,15 @@ public class NetworkState
   {
     synchronized (observers)
     {
-      bnjy[] arrayOfbnjy = new bnjy[observers.size()];
-      observers.toArray(arrayOfbnjy);
-      if (arrayOfbnjy != null)
+      NetworkState.NetworkStateListener[] arrayOfNetworkStateListener = new NetworkState.NetworkStateListener[observers.size()];
+      observers.toArray(arrayOfNetworkStateListener);
+      if (arrayOfNetworkStateListener != null)
       {
-        int j = arrayOfbnjy.length;
+        int j = arrayOfNetworkStateListener.length;
         int i = 0;
         if (i < j)
         {
-          arrayOfbnjy[i].onNetworkConnect(paramBoolean);
+          arrayOfNetworkStateListener[i].onNetworkConnect(paramBoolean);
           i += 1;
         }
       }
@@ -320,11 +318,11 @@ public class NetworkState
     }
   }
   
-  public static void removeListener(bnjy parambnjy)
+  public static void removeListener(NetworkState.NetworkStateListener paramNetworkStateListener)
   {
     synchronized (observers)
     {
-      observers.remove(parambnjy);
+      observers.remove(paramNetworkStateListener);
       return;
     }
   }

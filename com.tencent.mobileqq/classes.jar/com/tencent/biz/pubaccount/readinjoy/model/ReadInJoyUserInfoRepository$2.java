@@ -5,16 +5,16 @@ import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import pqo;
+import pwi;
 
 public class ReadInJoyUserInfoRepository$2
   implements Runnable
 {
-  public ReadInJoyUserInfoRepository$2(pqo parampqo, int paramInt) {}
+  public ReadInJoyUserInfoRepository$2(pwi parampwi, int paramInt) {}
   
   public void run()
   {
-    Object localObject = pqo.a(this.this$0);
+    Object localObject = pwi.a(this.this$0);
     int i = this.a;
     localObject = ((EntityManager)localObject).query(ReadInJoyUserInfo.class, true, "uin IS NOT NULL AND uin != ?", new String[] { "" }, null, null, null, String.valueOf(i));
     if ((localObject != null) && (((List)localObject).size() > 0))

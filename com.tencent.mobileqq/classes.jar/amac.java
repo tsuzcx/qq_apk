@@ -1,54 +1,45 @@
-import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class amac
+  implements TVK_SDKMgr.OnLogListener
 {
-  private amad jdField_a_of_type_Amad;
-  private ConcurrentHashMap<Integer, amah> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public static String a = "cmgame_process.CmGameVideoLogImpl";
   
-  public amac(amad paramamad)
-  {
-    this.jdField_a_of_type_Amad = paramamad;
-  }
-  
-  public amah a(int paramInt)
-  {
-    return (amah)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      amah localamah = (amah)localIterator.next();
-      localamah.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      localamah.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    }
-  }
-  
-  public void a(amah paramamah)
+  public int d(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("FrameAdapter", 2, "addFrame, index=" + paramamah.jdField_a_of_type_Int);
+      QLog.d(a, 2, paramString1 + ":" + paramString2);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(Integer.valueOf(paramamah.jdField_a_of_type_Int), paramamah);
-    if (this.jdField_a_of_type_Amad != null) {
-      this.jdField_a_of_type_Amad.a();
-    }
+    return 0;
   }
   
-  public boolean a()
+  public int e(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() == 0;
+    QLog.e(a, 1, paramString1 + ":" + paramString2);
+    return 0;
   }
   
-  public boolean a(int paramInt)
+  public int i(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    QLog.w(a, 1, paramString1 + ":" + paramString2);
+    return 0;
   }
 }
 

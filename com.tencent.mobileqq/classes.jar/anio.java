@@ -1,13 +1,33 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class anio
-  implements Comparator<anjo>
+public abstract class anio
 {
-  anio(anil paramanil) {}
+  public FriendListHandler a;
+  protected QQAppInterface a;
   
-  public int a(anjo paramanjo1, anjo paramanjo2)
+  public anio(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
   {
-    return paramanjo1.h - paramanjo2.h;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = paramFriendListHandler;
+  }
+  
+  protected final void a(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(paramInt, paramBoolean, paramObject);
+  }
+  
+  protected abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
+  
+  public abstract boolean a(String paramString);
+  
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (a(paramFromServiceMsg.getServiceCmd())) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 

@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
-import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
+import android.net.Uri;
+import com.tencent.mobileqq.forward.ForwardFileBaseOption;
 
 public class atlx
-  implements blln
+  implements audf
 {
-  public atlx(QfileFavFileTabView paramQfileFavFileTabView) {}
+  public atlx(ForwardFileBaseOption paramForwardFileBaseOption) {}
   
-  public void a(int paramInt)
+  public void a(Uri paramUri) {}
+  
+  public void a(String paramString1, String paramString2, long paramLong)
   {
-    if ((paramInt == this.a.jdField_a_of_type_Atjm.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
-    }
+    this.a.a = ForwardFileBaseOption.a(this.a, paramString2, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atlx
  * JD-Core Version:    0.7.0.1
  */

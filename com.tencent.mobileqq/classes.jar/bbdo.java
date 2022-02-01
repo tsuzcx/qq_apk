@@ -1,13 +1,11 @@
-import com.tencent.mobileqq.resourcesgrab.ResourceGrabView;
-
-public class bbdo
+public abstract interface bbdo
+  extends bbhb
 {
-  public ResourceGrabView a;
+  public abstract bbdm a();
   
-  public static bbdo a()
-  {
-    return bbdq.a();
-  }
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

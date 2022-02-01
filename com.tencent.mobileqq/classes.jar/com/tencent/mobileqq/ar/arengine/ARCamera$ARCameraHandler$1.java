@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import apmp;
-import apmr;
+import aogc;
+import aoge;
 
 public class ARCamera$ARCameraHandler$1
   implements Runnable
 {
-  public ARCamera$ARCameraHandler$1(apmr paramapmr) {}
+  public ARCamera$ARCameraHandler$1(aoge paramaoge) {}
   
   public void run()
   {
-    apmp localapmp = this.a.a;
-    int j = apmp.a(this.a.a) / 2;
-    int k = apmp.b(this.a.a) / 2;
-    int m = apmp.a(this.a.a);
-    int n = apmp.b(this.a.a);
-    if (!apmp.a(this.a.a)) {}
-    for (int i = apmp.g();; i = apmp.a(this.a.a) * 3 / 4)
+    aogc localaogc = this.a.a;
+    int j = aogc.a(this.a.a) / 2;
+    int k = aogc.b(this.a.a) / 2;
+    int m = aogc.a(this.a.a);
+    int n = aogc.b(this.a.a);
+    if (!aogc.a(this.a.a)) {}
+    for (int i = aogc.g();; i = aogc.a(this.a.a) * 3 / 4)
     {
-      apmp.a(localapmp, j, k, m, n, i);
+      aogc.a(localaogc, j, k, m, n, i);
       return;
     }
   }

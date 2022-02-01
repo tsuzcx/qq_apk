@@ -1,50 +1,47 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.CheckBox;
+import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.ExpandableListView;
+import java.util.List;
 
 public class roj
-  extends RecyclerView.ViewHolder
+  extends roq
 {
-  public final int a;
-  public VideoFeedsAlphaMaskView a;
-  public int b;
-  public int c;
+  private rpa a;
   
-  public roj(View paramView, int paramInt)
+  public roj(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView, boolean paramBoolean, rpa paramrpa)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView = ((VideoFeedsAlphaMaskView)paramView.findViewById(2131364887));
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramContext, paramQQAppInterface, paramExpandableListView, paramBoolean);
+    this.jdField_a_of_type_Rpa = paramrpa;
   }
   
-  public void a(rnu paramrnu, LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean)
+  protected void a()
   {
-    int i = 1;
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.getVisibility() != 0)) {
+    if ((this.jdField_a_of_type_Rpa != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size() >= this.jdField_a_of_type_Rpa.b()))
+    {
+      String str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131717498, new Object[] { String.valueOf(this.jdField_a_of_type_Rpa.c()) });
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, str, 0).a();
       return;
     }
-    if (paramLinearLayoutManager.getOrientation() == 1)
-    {
-      if (i == 0) {
-        break label118;
-      }
-      i = paramLinearLayoutManager.getDecoratedMeasuredHeight(this.itemView);
-    }
-    for (float f1 = Math.abs(paramLinearLayoutManager.getDecoratedTop(this.itemView) - (paramLinearLayoutManager.getHeight() / 2 - i / 2)) / i;; f1 = Math.abs(paramLinearLayoutManager.getDecoratedLeft(this.itemView) - (paramLinearLayoutManager.getWidth() / 2 - i / 2)) / i)
-    {
-      float f2 = Math.round(f1 * 100.0F) / 100.0F;
-      f1 = f2;
-      if (f2 > 1.0F) {
-        f1 = 1.0F;
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.setAlpha(f1);
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131717492), 0).a();
+  }
+  
+  protected void a(roy paramroy, Friends paramFriends)
+  {
+    if ((paramFriends == null) || (this.jdField_a_of_type_Rpa == null) || (this.jdField_a_of_type_Rpa.a() == null) || (this.jdField_a_of_type_Rpa.a().isEmpty())) {
       return;
-      i = 0;
-      break;
-      label118:
-      i = paramLinearLayoutManager.getDecoratedMeasuredWidth(this.itemView);
     }
+    paramroy.a.setBackgroundResource(2130849321);
+    if (this.jdField_a_of_type_Rpa.a().contains(paramFriends.uin))
+    {
+      paramroy.a.setEnabled(false);
+      return;
+    }
+    paramroy.a.setEnabled(true);
   }
 }
 

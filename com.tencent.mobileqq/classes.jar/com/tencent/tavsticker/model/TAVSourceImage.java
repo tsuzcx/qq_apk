@@ -1,6 +1,7 @@
 package com.tencent.tavsticker.model;
 
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import com.tencent.tav.coremedia.TextureInfo;
 import org.libpag.PAGImage;
 
@@ -8,6 +9,7 @@ public class TAVSourceImage
 {
   private static final String TAG = TAVSourceImage.class.getSimpleName();
   private int index = 0;
+  private Matrix matrix = null;
   private PAGImage pagImage = null;
   
   public TAVSourceImage(Bitmap paramBitmap, int paramInt)
@@ -37,6 +39,11 @@ public class TAVSourceImage
     return this.index;
   }
   
+  public Matrix getMatrix()
+  {
+    return this.matrix;
+  }
+  
   public PAGImage getPagImage()
   {
     return this.pagImage;
@@ -45,6 +52,14 @@ public class TAVSourceImage
   public void setIndex(int paramInt)
   {
     this.index = paramInt;
+  }
+  
+  public void setMatrix(Matrix paramMatrix)
+  {
+    this.matrix = paramMatrix;
+    if (this.pagImage != null) {
+      this.pagImage.setMatrix(paramMatrix);
+    }
   }
 }
 

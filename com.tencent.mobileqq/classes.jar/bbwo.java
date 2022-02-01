@@ -1,88 +1,83 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.robotchat.RobotChatPanelLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.shortvideo.redbag.VideoRedbagData;
+import com.tencent.mobileqq.utils.ContactUtils;
+import dov.com.qq.im.ae.download.AEResInfo;
+import eipc.EIPCResult;
 
-public class bbwo
-  implements bgug
+class bbwo
+  extends QIPCModule
 {
-  public bbwo(RobotChatPanelLayout paramRobotChatPanelLayout, long paramLong, int paramInt, String paramString, bgwh parambgwh) {}
-  
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  bbwo(bbwn parambbwn, String paramString)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if (paramInt == 0)
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if ("CMD_GET_NICK_NAME_BY_UIN".equals(paramString))
     {
-      if (RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout) == null) {
-        if (QLog.isColorLevel()) {
-          QLog.e("RobotChatPanelLayout", 2, "troopRobotManager = null");
-        }
-      }
-      do
-      {
-        return;
-        if (paramRspBody.robot_uin.get() == this.jdField_a_of_type_Long) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("RobotChatPanelLayout", 2, "data not match :" + this.jdField_a_of_type_Long);
-      return;
-      paramInt = paramRspBody.version.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("RobotChatPanelLayout", 2, "initData->reqPanelList oldVer:" + this.jdField_a_of_type_Int + " newVer:" + paramInt);
-      }
-      if (this.jdField_a_of_type_Int != paramInt)
-      {
-        RobotChatPanelLayout.b(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout).a("1", this.jdField_a_of_type_JavaLangString, paramRspBody);
-        paramRspBody = RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout, paramRspBody);
-        if ((paramRspBody != null) && (paramRspBody.size() > 0))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.a(false);
-          this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.a(paramRspBody, true);
-          paramRspBody = this.jdField_a_of_type_Bgwh;
-          if (this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.b() <= 0) {
-            break label297;
-          }
-        }
-      }
-      for (;;)
-      {
-        paramRspBody.a(bool1, this.jdField_a_of_type_JavaLangString);
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.a(true);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("RobotChatPanelLayout", 2, "listDatas is null in new version");
-        break;
-        if (this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.b() == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("RobotChatPanelLayout", 2, "item count == 0");
-          }
-          RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout, this.jdField_a_of_type_JavaLangString);
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.c();
-        break;
-        label297:
-        bool1 = false;
-      }
+      paramString = new Bundle();
+      paramString.putString("VALUE_USER_NICK_NAME", ContactUtils.getBuddyName(localQQAppInterface, paramBundle.getString("VALUE_USER_UIN_TO_GET_NICK_NAME"), true));
+      return EIPCResult.createSuccessResult(paramString);
     }
-    RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout, this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.b() > 0) {}
-    for (bool1 = bool2;; bool1 = false)
+    if ("CMD_GET_CURRENT_NICK_NAME".equals(paramString))
     {
-      this.jdField_a_of_type_Bgwh.a(bool1, this.jdField_a_of_type_JavaLangString);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("RobotChatPanelLayout", 2, "initData->reqPanelList: errorCode = " + paramInt + " hasdata:" + bool1);
-      return;
+      paramString = localQQAppInterface.getCurrentNickname();
+      paramBundle = new Bundle();
+      paramBundle.putString("VALUE_GET_CURRENT_NICK_NAME", paramString);
+      return EIPCResult.createSuccessResult(paramBundle);
     }
+    if ("CMD_GET_CURRENT_USER_HEAD".equals(paramString))
+    {
+      paramString = localQQAppInterface.getCustomFaceFilePath(1, localQQAppInterface.getCurrentUin(), 200);
+      paramBundle = new Bundle();
+      paramBundle.putString("VALUE_GET_CURRENT_USER_HEAD", paramString);
+      return EIPCResult.createSuccessResult(paramBundle);
+    }
+    if ("CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT".equals(paramString))
+    {
+      paramString = paramBundle.getString("VALUE_MSG_FRIENDUIN");
+      paramInt = paramBundle.getInt("VALUE_MSG_ISTROOP");
+      paramBundle = paramBundle.getString("VALUE_MSG_VIDEO_ID");
+      if (paramBundle != null)
+      {
+        bbwb.a(localQQAppInterface).a(paramString, paramInt, paramBundle);
+        VideoRedbagData.updateRewardStat(paramBundle);
+      }
+      return EIPCResult.createSuccessResult(new Bundle());
+    }
+    if ("CMD_QUERY_VIDEO_REDBAG_STAT".equals(paramString))
+    {
+      boolean bool = VideoRedbagData.queryRewardStat(paramBundle.getString("VALUE_MSG_VIDEO_ID"));
+      paramString = new Bundle();
+      paramString.putBoolean("VALUE_MSG_REDBAG_STAT", bool);
+      return EIPCResult.createSuccessResult(paramString);
+    }
+    if ("CMD_DOWNLOAD_PTU_ADDITIONAL_RES".equals(paramString))
+    {
+      blvn.a().a(AEResInfo.AE_RES_ADDITIONAL_PACKAGE, null, false);
+      bmbx.b("VideoPlayIPCServer", "launchForResult requestAEKitDownload : AEKIT_ADDITIONAL_PACKAGE");
+      return EIPCResult.createSuccessResult(new Bundle());
+    }
+    if ("CMD_DOWNLOAD_PTU_BASE_RES".equals(paramString))
+    {
+      blvn.a().a(AEResInfo.AE_RES_BASE_PACKAGE, null, false);
+      bmbx.b("VideoPlayIPCServer", "launchForResult requestAEKitDownload : AEKIT_ADDITIONAL_PACKAGE");
+      return EIPCResult.createSuccessResult(new Bundle());
+    }
+    if ("CMD_QUERY_STATUS_PTU_RES".equals(paramString))
+    {
+      paramInt = blvn.a().a(AEResInfo.AE_RES_ADDITIONAL_PACKAGE);
+      bmbx.b("VideoPlayIPCServer", "query additional_package");
+      paramString = new Bundle();
+      paramString.putInt("VALUE_MSG_PTU_RES_STATUS", paramInt);
+      return EIPCResult.createSuccessResult(paramString);
+    }
+    return null;
   }
 }
 

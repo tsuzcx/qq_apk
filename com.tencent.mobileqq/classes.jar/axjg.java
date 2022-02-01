@@ -1,8 +1,22 @@
+import android.graphics.drawable.Drawable;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import mqq.app.Constants.PropertiesKey;
+
 public class axjg
 {
-  public static final String a = bigv.a(antf.ba + "msgbackup/");
-  public static final String b = a + "multimsg/";
-  public static final String c = a + "db/";
+  public static FaceDrawable a(FragmentActivity paramFragmentActivity)
+  {
+    String str = axjz.a();
+    Drawable localDrawable = FaceDrawable.getDefaultDrawable(1, 3);
+    return FaceDrawable.getFaceDrawable(paramFragmentActivity.app, 1, str, 3, localDrawable, localDrawable, null);
+  }
+  
+  public static String a()
+  {
+    return BaseApplicationImpl.getApplication().getProperty(Constants.PropertiesKey.nickName.toString() + axjz.a());
+  }
 }
 
 

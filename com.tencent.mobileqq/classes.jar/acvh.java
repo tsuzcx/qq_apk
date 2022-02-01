@@ -1,21 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.ad.tangram.Ad;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.gdt.landing_page_collect_data.LandingPageCollectData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class acvh
+final class acvh
+  implements DialogInterface.OnCancelListener
 {
-  public Ad a;
-  public landing_page_collect_data.LandingPageCollectData a;
+  acvh(acxb paramacxb, int paramInt, acxa paramacxa) {}
   
-  public acvh()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData = new landing_page_collect_data.LandingPageCollectData();
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentAdTangramAd != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAdTangramAd.getUrlForAction())) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAdTangramAd.getTraceId())) && (this.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData != null) && (this.jdField_a_of_type_TencentGdtLanding_page_collect_data$LandingPageCollectData.landing_page_action_type.has());
+    if (this.jdField_a_of_type_Acxb.a)
+    {
+      if (this.jdField_a_of_type_Int != 2) {
+        break label59;
+      }
+      bcef.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "3", "", "", "");
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Acxa != null) {
+        this.jdField_a_of_type_Acxa.onCancel();
+      }
+      return;
+      label59:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        bcef.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "3", "", "", "");
+      }
+    }
   }
 }
 

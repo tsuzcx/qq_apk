@@ -1,93 +1,64 @@
-import android.app.Activity;
-import android.view.View;
-import com.etrump.mixlayout.ETFont;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
 class ahlk
-  implements biuz
+  extends amsu
 {
-  ahlk(ahlj paramahlj, boolean paramBoolean) {}
+  ahlk(ahlf paramahlf) {}
   
-  public void a(View paramView)
+  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LongMsgItemBuilder", 2, "SingleTap invoked!");
-    }
-    Object localObject;
-    float f1;
-    float f2;
-    float f3;
-    int k;
-    boolean bool2;
-    int j;
-    boolean bool1;
-    if ((paramView instanceof AnimationTextView))
+    ahlf.a(this.a).removeMessages(24);
+    HashMap localHashMap;
+    int i;
+    if ((this.a.mProgressDialog == null) || (!this.a.mProgressDialog.isShowing()))
     {
-      localObject = (AnimationTextView)paramView;
-      f1 = ((AnimationTextView)localObject).touchL - ahlj.b();
-      f2 = ((AnimationTextView)localObject).touchT;
-      f3 = ahlj.c();
-      if (this.jdField_a_of_type_Boolean) {
-        f1 = ((AnimationTextView)localObject).touchL - ahlj.d();
+      localHashMap = new HashMap();
+      if ((!paramBoolean) && ((paramObject instanceof Integer))) {
+        i = ((Integer)paramObject).intValue();
       }
-      localObject = ((AnimationTextView)localObject).getText();
-      if ((localObject instanceof begp))
+    }
+    for (;;)
+    {
+      localHashMap.put("result", i + "");
+      localHashMap.put("netType", NetworkUtil.getSystemNetwork(BaseApplication.getContext()) + "");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.app.getCurrentAccountUin(), "multiMsgNickTimeoutR", false, 30000L, 0L, localHashMap, "");
+      for (;;)
       {
-        localObject = (begp)localObject;
-        localObject = (begw[])((begp)localObject).getSpans(0, ((begp)localObject).length(), begw.class);
-        if (!(paramView instanceof ETTextView)) {
-          break label332;
+        return;
+        if (paramBoolean) {
+          break label328;
         }
-        paramView = (ETTextView)paramView;
-        k = paramView.mClickEpId;
-        int m = paramView.mClickcEId;
-        if ((paramView.mFont == null) || (paramView.mFont.mFontId == 0) || (paramView.mFont.mFontType != 1)) {
-          break label314;
+        i = 1;
+        break;
+        if (awcm.a().jdField_a_of_type_Int != 2) {
+          this.a.mProgressDialog.dismiss();
         }
-        bool2 = true;
-        i = k;
-        j = m;
-        bool1 = bool2;
-        if (bool2)
+        awcm.a().b.clear();
+        if ((paramBoolean) && (paramObject != null)) {
+          awcm.a().b.putAll((Map)paramObject);
+        }
+        if (awcm.a().b.size() == 0) {
+          QQToast.a(this.a.app.getApp(), 2131697901, 0).b(this.a.getTitleBarHeight());
+        }
+        while (QLog.isDevelopLevel())
         {
-          i = k;
-          j = m;
-          bool1 = bool2;
-          if (paramView.getETLayout() != null)
-          {
-            paramView = paramView.getETLayout();
-            if (QLog.isColorLevel()) {
-              QLog.d("ChatItemBuilder", 2, "isHanYiFont, onlyEmoji: " + paramView.jdField_a_of_type_Boolean);
-            }
-            if (paramView.jdField_a_of_type_Boolean) {
-              break label320;
-            }
-            bool1 = true;
-            label248:
-            j = m;
+          QLog.d(this.a.tag, 4, "onGetFriendNickBatch = " + paramObject);
+          return;
+          if (paramObject != null) {
+            ((afrl)ahlf.a(this.a).a(1)).a((Map)paramObject, awcm.a().jdField_a_of_type_JavaUtilArrayList, awcm.a().jdField_a_of_type_Int);
           }
         }
       }
-    }
-    for (int i = k;; i = -1)
-    {
-      if ((i != -1) && (j != -1)) {}
-      for (bool2 = true;; bool2 = false)
-      {
-        asos.a((begw[])localObject, f1, f2 - f3, bool2, i, j, this.jdField_a_of_type_Ahlj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahlj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (Activity)this.jdField_a_of_type_Ahlj.jdField_a_of_type_AndroidContentContext, bool1);
-        return;
-        label314:
-        bool2 = false;
-        break;
-        label320:
-        bool1 = false;
-        break label248;
-      }
-      label332:
-      bool1 = false;
-      j = -1;
+      label328:
+      i = 0;
     }
   }
 }

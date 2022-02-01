@@ -11,12 +11,12 @@ public class TbsVideo
 {
   public static boolean canUseTbsPlayer(Context paramContext)
   {
-    return q.a(paramContext).a();
+    return s.a(paramContext).a();
   }
   
   public static boolean canUseYunbo(Context paramContext)
   {
-    return (q.a(paramContext).a()) && (QbSdk.canUseVideoFeatrue(paramContext, 1));
+    return (s.a(paramContext).a()) && (QbSdk.canUseVideoFeatrue(paramContext, 1));
   }
   
   public static void openVideo(Context paramContext, String paramString)
@@ -46,7 +46,7 @@ public class TbsVideo
   public static boolean openYunboVideo(Context paramContext, String paramString, Bundle paramBundle, a parama)
   {
     if (canUseYunbo(paramContext)) {
-      return q.a(paramContext).a(paramString, paramBundle, parama);
+      return s.a(paramContext).a(paramString, paramBundle, parama);
     }
     return false;
   }

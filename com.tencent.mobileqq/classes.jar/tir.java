@@ -1,39 +1,38 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo.VTopicVideo;
-import com.tencent.viola.core.dispatch.ComponentAppearEvent;
-import com.tencent.viola.core.dispatch.IEvent;
-import com.tencent.viola.core.dispatch.IObserver;
+import android.support.annotation.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tir
-  implements IObserver
+  implements oxs
 {
-  public tir(VTopicVideo paramVTopicVideo) {}
+  public tir(BridgeModule paramBridgeModule, JSONObject paramJSONObject, String paramString1, String paramString2) {}
   
-  public String getRef()
+  public void a(long paramLong, boolean paramBoolean1, int paramInt1, int paramInt2, @Nullable String paramString1, @Nullable String paramString2, int paramInt3, boolean paramBoolean2)
   {
-    return this.a.getRef();
-  }
-  
-  public void onReceive(IEvent paramIEvent)
-  {
-    if ((paramIEvent.getRef().equals(this.a.getRef())) && (this.a.getVideoLifeCycleChangeListener() != null))
-    {
-      paramIEvent = (ComponentAppearEvent)paramIEvent;
-      if (!paramIEvent.event.equals("didDisappear")) {
-        break label59;
-      }
-      this.a.getVideoLifeCycleChangeListener().K_();
+    if (paramBoolean1) {
+      paramInt1 = 0;
     }
-    label59:
-    do
+    try
     {
-      return;
-      if (paramIEvent.event.equals("willAppear"))
+      for (;;)
       {
-        this.a.getVideoLifeCycleChangeListener().I_();
+        this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", paramInt1);
+        this.jdField_a_of_type_OrgJsonJSONObject.put("commentId", paramString1);
+        this.jdField_a_of_type_OrgJsonJSONObject.put("comment", this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.b, this.jdField_a_of_type_OrgJsonJSONObject);
         return;
+        paramInt1 = -2;
       }
-    } while (!paramIEvent.event.equals("didAppear"));
-    this.a.getVideoLifeCycleChangeListener().J_();
+    }
+    catch (JSONException paramString1)
+    {
+      for (;;)
+      {
+        QLog.e(BridgeModule.TAG, 1, "handleCommentEditorNativeResult put create comment result error.");
+      }
+    }
   }
 }
 

@@ -1,10 +1,19 @@
-public abstract interface aero
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class aero
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public aero(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract void b(byte[] paramArrayOfByte);
+  public void onClick(View paramView)
+  {
+    this.a.a.cancel();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

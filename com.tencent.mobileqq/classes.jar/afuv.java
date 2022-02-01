@@ -2,20 +2,33 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afuv
   implements View.OnClickListener
 {
-  public afuv(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public afuv(ApolloItemBuilder paramApolloItemBuilder) {}
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
-    this.a.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (alnr.a(this.a.a.getApplication()))
+    {
+      ApolloUtil.a(paramView.getContext(), null, "aio", amip.ah, null);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    if (!alnr.c(this.a.a.getApplication())) {}
+    for (String str = amip.U;; str = amip.V + bkfe.b)
+    {
+      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+      localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
+      VasWebviewUtil.openQQBrowserActivity(paramView.getContext(), str, -1L, localIntent, false, -1);
+      break;
+    }
   }
 }
 

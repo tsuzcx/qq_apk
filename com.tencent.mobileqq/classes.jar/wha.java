@@ -1,19 +1,36 @@
-import java.util.Comparator;
-
 class wha
-  implements Comparator<wgh>
+  implements whg
 {
   wha(wgz paramwgz) {}
   
-  public int a(wgh paramwgh1, wgh paramwgh2)
+  public void a(wjk paramwjk)
   {
-    if (paramwgh1.b == paramwgh2.b) {
-      return 0;
+    if (wgz.a(this.a) != null) {
+      wgz.a(this.a).a(paramwjk.a);
     }
-    if (paramwgh1.b > paramwgh2.b) {
-      return 1;
+    if (wgz.a(this.a) != null) {
+      wgz.a(this.a).a();
     }
-    return -1;
+  }
+  
+  public void b(wjk paramwjk)
+  {
+    if (wgz.a(this.a) != null) {
+      wgz.a(this.a).c(paramwjk.a);
+    }
+    if (wgz.a(this.a) != null) {
+      wgz.a(this.a).a();
+    }
+  }
+  
+  public void c(wjk paramwjk)
+  {
+    if (wgz.a(this.a) != null) {
+      wgz.a(this.a).d(paramwjk.a);
+    }
+    if (wgz.a(this.a) != null) {
+      wgz.a(this.a).a();
+    }
   }
 }
 

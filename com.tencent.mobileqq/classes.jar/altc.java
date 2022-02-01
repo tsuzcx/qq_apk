@@ -1,20 +1,90 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class altc
-  implements DialogInterface.OnClickListener
 {
-  public altc(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  private alte a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private boolean a(alte paramalte)
   {
-    if (EditLocalVideoActivity.a(this.a)) {}
-    for (paramInt = -1;; paramInt = 0)
+    if (this.a == null) {}
+    while (paramalte.a <= this.a.a) {
+      return true;
+    }
+    return false;
+  }
+  
+  public int a(ambl paramambl, int paramInt, AppInterface paramAppInterface, Context paramContext)
+  {
+    if (this.a != null) {
+      return this.a.a(paramambl, paramInt, paramAppInterface, paramContext);
+    }
+    return -1;
+  }
+  
+  public alte a()
+  {
+    return this.a;
+  }
+  
+  public void a()
+  {
+    if (this.a != null)
     {
-      EditLocalVideoActivity.a(this.a).dismiss();
-      EditLocalVideoActivity.a(this.a, paramInt);
+      this.a.a();
+      this.a.a = 9999;
+    }
+  }
+  
+  public void a(alte paramalte)
+  {
+    if ((paramalte != null) && (a(paramalte)) && (paramalte.a()))
+    {
+      this.a = paramalte;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloDrawerContext", 2, "set status success class=" + paramalte.getClass().getSimpleName());
+      }
+    }
+    while (!QLog.isColorLevel()) {
       return;
+    }
+    if ("set status fail class=" + paramalte != null) {}
+    for (paramalte = paramalte.getClass().getSimpleName();; paramalte = null)
+    {
+      QLog.d("ApolloDrawerContext", 2, paramalte);
+      return;
+    }
+  }
+  
+  public void a(ambl paramambl, Context paramContext, QQAppInterface paramQQAppInterface)
+  {
+    if (this.a != null) {
+      this.a.a(paramambl, paramContext, paramQQAppInterface);
+    }
+  }
+  
+  public void a(ambl paramambl, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    if (this.a != null) {
+      this.a.a(paramambl, paramContext, paramQQAppInterface, paramInt);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, ambl paramambl)
+  {
+    if (this.a != null)
+    {
+      this.a.a(paramQQAppInterface, paramambl);
+      this.a.a = 9999;
+    }
+  }
+  
+  public void b(ambl paramambl, Context paramContext, QQAppInterface paramQQAppInterface)
+  {
+    if (this.a != null) {
+      this.a.b(paramambl, paramContext, paramQQAppInterface);
     }
   }
 }

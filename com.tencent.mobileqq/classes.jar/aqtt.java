@@ -1,13 +1,32 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
-final class aqtt
-  extends aqrh
+public class aqtt
 {
-  aqtt(aqrf paramaqrf, ColorNote paramColorNote) {}
+  public TextView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
+  public TextView h;
+  public TextView i;
+  public TextView j;
   
-  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
+  public aqtt(DataReportViewer paramDataReportViewer, View paramView)
   {
-    this.jdField_a_of_type_Aqrf.a(this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.parseBundle());
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378148));
+    this.b = ((TextView)paramView.findViewById(2131370532));
+    this.c = ((TextView)paramView.findViewById(2131377919));
+    this.d = ((TextView)paramView.findViewById(2131361958));
+    this.e = ((TextView)paramView.findViewById(2131372039));
+    this.f = ((TextView)paramView.findViewById(2131376355));
+    this.g = ((TextView)paramView.findViewById(2131375825));
+    this.h = ((TextView)paramView.findViewById(2131375826));
+    this.i = ((TextView)paramView.findViewById(2131375827));
+    this.j = ((TextView)paramView.findViewById(2131375828));
   }
 }
 

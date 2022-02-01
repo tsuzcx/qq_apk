@@ -1,11 +1,24 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-public abstract interface amrj
+public class amrj
+  implements BusinessObserver
 {
-  public abstract void a(DiscussionInfo paramDiscussionInfo);
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public abstract void a(TroopInfo paramTroopInfo, int paramInt);
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    }
+    b(paramBoolean, paramObject);
+  }
 }
 
 

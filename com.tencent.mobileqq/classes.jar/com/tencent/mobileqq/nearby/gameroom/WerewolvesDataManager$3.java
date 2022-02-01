@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import axzv;
+import awnd;
 import com.tencent.mobileqq.persistence.EntityManager;
 
 public class WerewolvesDataManager$3
   implements Runnable
 {
-  public WerewolvesDataManager$3(axzv paramaxzv, RecentInviteUser paramRecentInviteUser) {}
+  public WerewolvesDataManager$3(awnd paramawnd, RecentInviteUser paramRecentInviteUser) {}
   
   public void run()
   {

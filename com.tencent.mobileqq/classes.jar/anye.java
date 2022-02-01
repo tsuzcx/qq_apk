@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.ar.ARGlobalConfigService;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
 public class anye
-  implements DialogInterface.OnDismissListener
+  extends aofh
 {
-  public anye(FrameHelperActivity paramFrameHelperActivity) {}
+  public anye(ARGlobalConfigService paramARGlobalConfigService) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public ARScanStarFaceConfigInfo a()
   {
-    FrameHelperActivity.a(this.a, null);
+    return this.a.a.a();
   }
 }
 

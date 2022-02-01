@@ -1,31 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
 class rxr
-  implements TVK_ICacheMgr.IPreloadCallback
+  implements View.OnClickListener
 {
-  rxr(rxp paramrxp) {}
+  rxr(rxo paramrxo) {}
   
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public void onClick(View paramView)
   {
-    if (rxp.a(this.a) != null)
-    {
-      paramString2 = (String)rxp.a(this.a).get(paramString1);
-      if (!TextUtils.isEmpty(paramString2)) {
-        rxp.a(this.a).a(paramString1, paramInt, paramString2);
-      }
+    if (rxo.a(this.a) != null) {
+      rxo.a(this.a).a(rxo.a(this.a));
     }
-  }
-  
-  public void onPreLoadSucess(String paramString1, String paramString2)
-  {
-    if (rxp.a(this.a) != null)
+    rxo.a(this.a).c.setVisibility(8);
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      paramString2 = (String)rxp.a(this.a).get(paramString1);
-      if (!TextUtils.isEmpty(paramString2)) {
-        rxp.a(this.a).a(paramString1, 1, paramString2);
-      }
+      localJSONObject.put("uin", rxo.a(this.a).getCurrentAccountUin());
+      label67:
+      odq.a(null, null, "0X8009BF1", "0X8009BF1", 0, 0, "", "", "", ofe.a(null, null, rxo.a(this.a).a.a.a, rxo.a(this.a).a.a.g, localJSONObject), false);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label67;
     }
   }
 }

@@ -1,33 +1,48 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.MessageMicro;
+import android.support.annotation.NonNull;
+import java.lang.ref.WeakReference;
 
-public class xcg<REQ extends MessageMicro>
-  extends wpa<xee>
+class xcg
+  implements xcf
 {
-  public final Bundle a;
-  public final REQ a;
-  public final String a;
+  private final int jdField_a_of_type_Int;
+  @NonNull
+  private final WeakReference<xcf> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public xcg(String paramString, REQ paramREQ, Bundle paramBundle)
+  public xcg(@NonNull xcf paramxcf)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramREQ;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.jdField_a_of_type_Int = System.identityHashCode(paramxcf);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramxcf);
   }
   
-  public String a()
+  private boolean a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.jdField_a_of_type_JavaLangRefWeakReference.get() != null;
   }
   
-  public wov a(byte[] paramArrayOfByte)
+  public void a(@NonNull xcd paramxcd)
   {
-    return new xee(paramArrayOfByte);
+    xcf localxcf = (xcf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localxcf != null) {
+      localxcf.a(paramxcd);
+    }
   }
   
-  protected byte[] a()
+  public void b(@NonNull xcd paramxcd)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro.toByteArray();
+    xcf localxcf = (xcf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localxcf != null) {
+      localxcf.b(paramxcd);
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof xcg)) && (((xcg)paramObject).jdField_a_of_type_Int == this.jdField_a_of_type_Int);
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

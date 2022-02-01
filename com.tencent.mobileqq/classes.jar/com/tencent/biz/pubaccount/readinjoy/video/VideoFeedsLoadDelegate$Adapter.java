@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import java.util.List;
 
@@ -9,6 +10,18 @@ public class VideoFeedsLoadDelegate$Adapter
 {
   private List<Fragment> jdField_a_of_type_JavaUtilList;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  
+  public VideoFeedsLoadDelegate$Adapter(FragmentManager paramFragmentManager, List<Fragment> paramList, String[] paramArrayOfString)
+  {
+    super(paramFragmentManager);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+  }
+  
+  public List<Fragment> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
   
   public int getCount()
   {

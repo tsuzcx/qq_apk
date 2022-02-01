@@ -1,41 +1,78 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGroupStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupStoryFeedIdList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
 public class xdm
-  extends wpa
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wci>
 {
-  public String a;
-  
-  public String a()
+  public xdm(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    return wnu.a("StoryGroupSvc.get_dynamic_group_feedid_list");
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public wov a(byte[] paramArrayOfByte)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wci paramwci)
   {
-    qqstory_group.RspGroupStoryFeedIdList localRspGroupStoryFeedIdList = new qqstory_group.RspGroupStoryFeedIdList();
-    try
+    if ((paramwci.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwci.jdField_a_of_type_JavaUtilList != null) && (!paramwci.jdField_a_of_type_JavaUtilList.isEmpty()) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
     {
-      localRspGroupStoryFeedIdList.mergeFrom(paramArrayOfByte);
-      return new xdn(localRspGroupStoryFeedIdList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
+      if (!paramQQStoryShareGroupProfileActivity.g) {
+        break label54;
       }
+      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListView.a.notifyDataSetChanged();
     }
+    label54:
+    int j;
+    do
+    {
+      return;
+      j = 0;
+      int i = j;
+      Object localObject;
+      if (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList != null)
+      {
+        i = j;
+        if (!paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList.isEmpty())
+        {
+          localObject = paramwci.jdField_a_of_type_JavaUtilList.iterator();
+          QQUserUIItem localQQUserUIItem;
+          do
+          {
+            i = j;
+            if (!((Iterator)localObject).hasNext()) {
+              break;
+            }
+            localQQUserUIItem = (QQUserUIItem)((Iterator)localObject).next();
+          } while (!paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.headerUnionIdList.contains(localQQUserUIItem.uid));
+          i = 1;
+        }
+      }
+      j = i;
+      if (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.d))
+      {
+        paramwci = paramwci.jdField_a_of_type_JavaUtilList.iterator();
+        do
+        {
+          j = i;
+          if (!paramwci.hasNext()) {
+            break;
+          }
+          localObject = (QQUserUIItem)paramwci.next();
+        } while (!paramQQStoryShareGroupProfileActivity.d.equals(((QQUserUIItem)localObject).uid));
+        j = 1;
+      }
+    } while (j == 0);
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
   }
   
-  protected byte[] a()
+  public Class acceptEventClass()
   {
-    qqstory_group.ReqGroupStoryFeedIdList localReqGroupStoryFeedIdList = new qqstory_group.ReqGroupStoryFeedIdList();
-    localReqGroupStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    return localReqGroupStoryFeedIdList.toByteArray();
+    return wci.class;
   }
 }
 

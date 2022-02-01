@@ -1,18 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class qol
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyManager$IPushNotifyDialogCallback;", "", "resultCallback", "", "buttonId", "", "result", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface qol
 {
-  public qol(ComponentContentNoteCard paramComponentContentNoteCard) {}
-  
-  public void onClick(View paramView)
-  {
-    ComponentContentNoteCard.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

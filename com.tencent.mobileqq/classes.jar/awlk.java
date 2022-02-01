@@ -1,60 +1,47 @@
+import android.util.SparseArray;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+
 public class awlk
+  implements bhai<oidb_0x8e4.RspBody>
 {
-  public static int a = 1;
-  public static int b = 2;
-  private static int c;
-  private static int d;
+  public awlk(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  private static int a(int paramInt)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    if (paramInt == 0) {
-      return 1;
+    if ((paramInt == 0) || (paramInt == 1004))
+    {
+      this.a.jdField_a_of_type_Awkz.d();
+      bfyz.a(this.a, this.a.app.getCurrentAccountUin(), false, System.currentTimeMillis());
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.jdField_b_of_type_Long = this.a.app.getLongAccountUin();
+      this.a.jdField_b_of_type_JavaLangString = null;
+      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = null;
+      this.a.jdField_a_of_type_JavaUtilList = null;
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      if (this.a.jdField_b_of_type_JavaUtilList != null) {
+        this.a.jdField_b_of_type_JavaUtilList.clear();
+      }
+      this.a.f = false;
+      this.a.a();
+      paramRspBody = this.a.a();
+      if ((paramRspBody != null) && (paramRspBody.jdField_a_of_type_Boolean)) {
+        QQToast.a(this.a, amtj.a(2131704184), 0).a();
+      }
+      this.a.jdField_a_of_type_Awmg.notifyDataSetChanged();
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
     }
-    if ((paramInt == 1) || (paramInt == 3000)) {
-      return 2;
+    for (;;)
+    {
+      this.a.jdField_b_of_type_AndroidViewView.setEnabled(true);
+      return;
+      this.a.a(paramInt, paramRspBody, (String)GameRoomInviteActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
     }
-    return 0;
-  }
-  
-  public static void a()
-  {
-    bdll.b(null, "dc00898", "", "", "0X80097F3", "0X80097F3", d, 0, String.valueOf(d), "", "", "");
-    bdll.b(null, "dc00898", "", "", "0X8009C74", "0X8009C74", c, 0, String.valueOf(c), "", "", "");
-  }
-  
-  public static void a(int paramInt)
-  {
-    d = b;
-    bdll.b(null, "dc00898", "", "", "0X80097F0", "0X80097F0", a(paramInt), 0, String.valueOf(paramInt), "", "", "");
-  }
-  
-  public static void b()
-  {
-    bdll.b(null, "dc00898", "", "", "0X80097F4", "0X80097F4", d, 0, String.valueOf(d), "", "", "");
-    bdll.b(null, "dc00898", "", "", "0X8009C75", "0X8009C75", c, 0, String.valueOf(c), "", "", "");
-  }
-  
-  public static void b(int paramInt)
-  {
-    d = a;
-    c = 3;
-    bdll.b(null, "dc00898", "", "", "0X80097F1", "0X80097F1", a(paramInt), 0, String.valueOf(paramInt), "", "", "");
-  }
-  
-  public static void c()
-  {
-    bdll.b(null, "dc00898", "", "", "0X8009C73", "0X8009C73", c, 0, String.valueOf(c), "", "", "");
-  }
-  
-  public static void c(int paramInt)
-  {
-    bdll.b(null, "dc00898", "", "", "0X80097F2", "0X80097F2", a(paramInt), 0, String.valueOf(paramInt), "", "", "");
-  }
-  
-  public static void d(int paramInt)
-  {
-    c = paramInt;
-    bdll.b(null, "dc00898", "", "", "0X8009C72", "0X8009C72", c, 0, String.valueOf(c), "", "", "");
   }
 }
 

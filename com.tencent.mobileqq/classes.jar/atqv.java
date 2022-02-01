@@ -1,21 +1,32 @@
-class atqv
-  extends atrt
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.fragment.CommonTabFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class atqv
+  implements View.OnClickListener
 {
-  atqv(atqr paramatqr, atqw paramatqw) {}
+  public atqv(CommonTabFragment paramCommonTabFragment) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
+    if ((this.a.a == null) || (this.a.a.mWebview == null)) {}
+    for (;;)
     {
-      this.jdField_a_of_type_Atqw.a(paramString2, paramString3);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      WebViewPluginEngine localWebViewPluginEngine = this.a.a.mWebview.getPluginEngine();
+      if (localWebViewPluginEngine != null) {
+        localWebViewPluginEngine.a(this.a.a.mWebview.getUrl(), 8589934606L, null);
+      }
     }
-    this.jdField_a_of_type_Atqw.a(paramInt, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqv
  * JD-Core Version:    0.7.0.1
  */

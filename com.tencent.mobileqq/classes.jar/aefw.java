@@ -1,21 +1,36 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class aefw
-  implements View.OnClickListener
+  extends amsu
 {
-  public aefw(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
+  public aefw(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
   
-  public void onClick(View paramView)
+  protected void onGetBothDongtaiPermissions(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (paramBoolean1)
+    {
+      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
+      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean3);
     }
-    ChatSettingForTroop.h(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  protected void onSetNotAllowedSeeMyDongtai(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1)
+    {
+      this.a.a(2131718207, 1);
+      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
+    }
+  }
+  
+  protected void onSetShieldHisDongtai(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1)
+    {
+      this.a.a(2131718207, 1);
+      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean2);
+    }
   }
 }
 

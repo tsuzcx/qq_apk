@@ -1,451 +1,142 @@
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.biz.qqcircle.events.QCircleRedPointEvent;
-import com.tencent.biz.qqcircle.list.bizblocks.QCircleHandler;
-import com.tencent.biz.qqcircle.redpoint.EeveeRedPointManagerDelegate.1;
-import com.tencent.biz.qqcircle.redpoint.EeveeRedPointManagerDelegate.2;
-import com.tencent.biz.qqcircle.redpoint.EeveeRedPointManagerDelegate.3;
-import com.tencent.biz.qqcircle.redpoint.EeveeRedPointManagerDelegate.4;
-import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import mqq.os.MqqHandler;
-import qqcircle.QQCircleCounter.AllPushPointInfo;
-import qqcircle.QQCircleCounter.OutLayerPointInfo;
-import qqcircle.QQCircleCounter.RedDisplayInfo;
-import qqcircle.QQCircleCounter.RedPointInfo;
 
-public class vtc
-  implements aaam, vte
+public abstract class vtc<M, VH extends vtf<M>>
+  extends vtg<M, VH>
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private QQCircleCounter.RedPointInfo jdField_a_of_type_QqcircleQQCircleCounter$RedPointInfo;
-  private QQCircleCounter.RedPointInfo b;
-  private QQCircleCounter.RedPointInfo c;
+  private List<M> a;
   
-  public vtc(QQAppInterface paramQQAppInterface)
+  public vtc(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    aaak.a().a(this);
+    super(paramContext);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  private void a(int paramInt, QQCircleCounter.RedPointInfo paramRedPointInfo)
+  public abstract int a(int paramInt);
+  
+  public int a(M paramM)
   {
-    if (paramRedPointInfo != null)
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramM);
+    if (i < 0) {
+      return i;
+    }
+    this.jdField_a_of_type_JavaUtilList.set(i, paramM);
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      if (Looper.getMainLooper() == Looper.myLooper()) {
-        ThreadManager.getSubThreadHandler().post(new EeveeRedPointManagerDelegate.4(this, paramInt, paramRedPointInfo));
-      }
+      notifyItemChanged(i);
+      return i;
     }
-    else {
-      return;
-    }
-    b(paramInt, paramRedPointInfo);
+    notifyItemChanged(i + 1);
+    return i;
   }
   
-  private void b()
+  public M a(int paramInt)
   {
-    ??? = vlc.a().a(101);
-    Object localObject2 = new StringBuilder().append("loadLocalSmallRedPointFromDataBase ");
-    if (??? != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("QCircleEeveeRedPointManagerDelegate", 1, bool);
-      if (??? != null) {
-        break;
-      }
-      return;
-    }
-    try
-    {
-      localObject2 = new QQCircleCounter.RedPointInfo();
-      ((QQCircleCounter.RedPointInfo)localObject2).mergeFrom((byte[])???);
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_QqcircleQQCircleCounter$RedPointInfo = ((QQCircleCounter.RedPointInfo)localObject2);
-        return;
-      }
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      QLog.e("QCircleEeveeRedPointManagerDelegate", 1, "loadLocalSmallRedPointFromDataBase error! ", localInvalidProtocolBufferMicroException);
-    }
-  }
-  
-  private void b(int paramInt, QQCircleCounter.RedPointInfo paramRedPointInfo)
-  {
-    QLog.d("QCircleEeveeRedPointManagerDelegate", 1, "saveRedPointToDataBase redPointMainMsgType: " + paramInt);
-    if (paramRedPointInfo != null) {}
-    try
-    {
-      vlc.a().a(paramInt, paramRedPointInfo.toByteArray());
-      return;
-    }
-    catch (Throwable paramRedPointInfo)
-    {
-      QLog.e("QCircleEeveeRedPointManagerDelegate", 1, "saveRedPointToDataBase error! ", paramRedPointInfo);
-    }
-  }
-  
-  private void c()
-  {
-    for (;;)
-    {
-      try
-      {
-        ??? = vlc.a().a(106);
-        Object localObject2 = new StringBuilder().append("loadLocalNumRedPointInfoFromDataBase ");
-        if (??? != null)
-        {
-          bool = true;
-          QLog.d("QCircleEeveeRedPointManagerDelegate", 1, bool);
-          if (??? == null) {
-            return;
-          }
-          localObject2 = new QQCircleCounter.RedPointInfo();
-          ((QQCircleCounter.RedPointInfo)localObject2).mergeFrom((byte[])???);
-          synchronized (this.jdField_a_of_type_JavaLangObject)
-          {
-            this.c = ((QQCircleCounter.RedPointInfo)localObject2);
-            return;
-          }
-        }
-        boolean bool = false;
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("QCircleEeveeRedPointManagerDelegate", 1, "loadLocalNumRedPointInfoFromDataBase error! ", localThrowable);
-        return;
-      }
-    }
-  }
-  
-  private void d()
-  {
-    for (;;)
-    {
-      try
-      {
-        ??? = vlc.a().a(102);
-        Object localObject2 = new StringBuilder().append("loadLocalNumRedPointInfoFromDataBase ");
-        if (??? != null)
-        {
-          bool = true;
-          QLog.d("QCircleEeveeRedPointManagerDelegate", 1, bool);
-          if (??? == null) {
-            return;
-          }
-          localObject2 = new QQCircleCounter.RedPointInfo();
-          ((QQCircleCounter.RedPointInfo)localObject2).mergeFrom((byte[])???);
-          synchronized (this.jdField_a_of_type_JavaLangObject)
-          {
-            this.b = ((QQCircleCounter.RedPointInfo)localObject2);
-            return;
-          }
-        }
-        boolean bool = false;
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("QCircleEeveeRedPointManagerDelegate", 1, "loadLocalNumRedPointInfoFromDataBase error! ", localThrowable);
-        return;
-      }
-    }
-  }
-  
-  public QQCircleCounter.RedPointInfo a()
-  {
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (this.jdField_a_of_type_QqcircleQQCircleCounter$RedPointInfo != null)
-        {
-          QQCircleCounter.RedPointInfo localRedPointInfo = this.jdField_a_of_type_QqcircleQQCircleCounter$RedPointInfo;
-          return localRedPointInfo;
-        }
-        if (Looper.getMainLooper() == Looper.myLooper())
-        {
-          ThreadManager.getSubThreadHandler().post(new EeveeRedPointManagerDelegate.1(this));
-          return null;
-        }
-      }
-      b();
-    }
-  }
-  
-  public QQCircleCounter.RedPointInfo a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
+    if (((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size() + b())) {
       return null;
     }
-    return b();
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
+  }
+  
+  public List<M> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
   public void a()
   {
-    this.b = new QQCircleCounter.RedPointInfo();
-    this.jdField_a_of_type_QqcircleQQCircleCounter$RedPointInfo = new QQCircleCounter.RedPointInfo();
-    this.c = new QQCircleCounter.RedPointInfo();
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (localQQAppInterface != null) {
-      ((QCircleHandler)localQQAppInterface.a(183)).updateRedPoint();
-    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    notifyDataSetChanged();
   }
   
-  public void a(String arg1)
+  public void a(M paramM)
   {
-    QLog.d("QCircleEeveeRedPointManagerDelegate", 1, "setSmallRedPointReaded appid: " + ???);
-    if (TextUtils.isEmpty(???)) {
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramM);
+    if (i < 0) {
       return;
     }
-    QQCircleCounter.RedPointInfo localRedPointInfo = a();
-    if (localRedPointInfo == null)
+    this.jdField_a_of_type_JavaUtilList.remove(i);
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      QLog.e("QCircleEeveeRedPointManagerDelegate", 1, "setSmallRedPointReaded return. redPointInfo is null");
+      notifyItemRemoved(i);
       return;
     }
-    vtd.d(localRedPointInfo.lastVisitTime.get());
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      localRedPointInfo.clear();
-      a(101, localRedPointInfo);
-      return;
-    }
+    notifyItemRemoved(i + 1);
   }
   
-  public void a(String arg1, List<Integer> paramList)
+  public void a(M paramM, int paramInt)
   {
-    QLog.d("QCircleEeveeRedPointManagerDelegate", 1, "setOuterEntranceRedPointReaded appid: " + ???);
-    if (TextUtils.isEmpty(???)) {
-      return;
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramM);
+    if (i != -1) {
+      this.jdField_a_of_type_JavaUtilList.remove(i);
     }
-    if ((paramList == null) || (paramList.size() <= 0))
+    this.jdField_a_of_type_JavaUtilList.add(paramInt, paramM);
+    if (i != -1)
     {
-      QLog.d("QCircleEeveeRedPointManagerDelegate", 1, "[setOuterEntranceRedPointReaded] clearRedTypeList is empty!");
-      return;
-    }
-    QQCircleCounter.RedPointInfo localRedPointInfo = b();
-    if (localRedPointInfo == null)
-    {
-      QLog.e("QCircleEeveeRedPointManagerDelegate", 1, "setOuterEntranceRedPointReaded return. redPointInfo is null");
-      return;
-    }
-    long l = localRedPointInfo.outLayerInfo.combineRedTypes.get();
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      if (this.jdField_a_of_type_AndroidViewView == null)
       {
-        paramList = paramList.iterator();
-        if (!paramList.hasNext()) {
-          break label205;
-        }
-        Integer localInteger = (Integer)paramList.next();
-        l &= (1 << localInteger.intValue() ^ 0xFFFFFFFF);
-        switch (localInteger.intValue())
-        {
-        case 1: 
-          localRedPointInfo.rptRedInfo.clear();
-        }
+        notifyItemMoved(i, paramInt);
+        notifyItemChanged(paramInt);
+        return;
       }
-      localRedPointInfo.redTotalNum.clear();
-      continue;
-      localRedPointInfo.allPushInfo.wording.clear();
-      continue;
-      label205:
-      localRedPointInfo.outLayerInfo.combineRedTypes.set(l);
-      QLog.d("QCircleEeveeRedPointManagerDelegate", 1, "[setOuterEntranceRedPointReaded] combineRedTypes: " + l);
-      a(106, localRedPointInfo);
+      notifyItemMoved(i + 1, paramInt + 1);
+      notifyItemChanged(paramInt + 1);
       return;
     }
-  }
-  
-  public void a(String paramString, vtg paramvtg, boolean paramBoolean)
-  {
-    if (paramvtg == null) {
+    if (this.jdField_a_of_type_AndroidViewView == null)
+    {
+      notifyItemInserted(paramInt);
       return;
     }
-    Object localObject = c(paramString);
-    int i = 0;
-    Iterator localIterator = null;
-    paramString = localIterator;
-    if (localObject != null)
+    notifyItemInserted(paramInt + 1);
+  }
+  
+  public boolean a(List<M> paramList)
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {}
+    for (int i = 1;; i = 0)
     {
-      i = ((QQCircleCounter.RedPointInfo)localObject).redTotalNum.get();
-      localObject = ((QQCircleCounter.RedPointInfo)localObject).rptRedInfo.get();
-      if (localObject == null) {
-        break label114;
+      this.jdField_a_of_type_JavaUtilList.clear();
+      boolean bool = i | this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      if (bool) {
+        notifyDataSetChanged();
       }
-      paramString = new ArrayList();
-      localIterator = ((List)localObject).iterator();
-      while (localIterator.hasNext()) {
-        paramString.add(((QQCircleCounter.RedDisplayInfo)localIterator.next()).headImg.get());
-      }
-    }
-    for (;;)
-    {
-      paramvtg.a(paramString, i);
-      return;
-      label114:
-      paramString = localIterator;
+      return bool;
     }
   }
   
-  public void a(String paramString, vth paramvth)
+  public boolean b(List<M> paramList)
   {
-    QLog.d("QCircleEeveeRedPointManagerDelegate", 1, "onSmallRedPointClick appid: " + paramString);
+    boolean bool = this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    if (bool) {
+      notifyDataSetChanged();
+    }
+    return bool;
   }
   
-  public QQCircleCounter.RedPointInfo b()
+  public int getItemCount()
   {
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (this.c != null)
-        {
-          QQCircleCounter.RedPointInfo localRedPointInfo = this.c;
-          return localRedPointInfo;
-        }
-        if (Looper.getMainLooper() == Looper.myLooper())
-        {
-          ThreadManager.getSubThreadHandler().post(new EeveeRedPointManagerDelegate.2(this));
-          return null;
-        }
-      }
-      c();
-    }
+    return this.jdField_a_of_type_JavaUtilList.size() + a();
   }
   
-  public QQCircleCounter.RedPointInfo b(String paramString)
+  public long getItemId(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return a();
+    return paramInt;
   }
   
-  public void b(String arg1)
+  public final int getItemViewType(int paramInt)
   {
-    QLog.d("QCircleEeveeRedPointManagerDelegate", 1, "setNumRedPointReaded appid: " + ???);
-    if (TextUtils.isEmpty(???)) {
-      return;
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) {
+      return 1024;
     }
-    QQCircleCounter.RedPointInfo localRedPointInfo = c();
-    if (localRedPointInfo == null)
-    {
-      QLog.e("QCircleEeveeRedPointManagerDelegate", 1, "setNumRedPointReaded return. redPointInfo is null");
-      return;
+    if ((this.b != null) && (paramInt == this.jdField_a_of_type_JavaUtilList.size() + b())) {
+      return 1025;
     }
-    vtd.e(localRedPointInfo.lastVisitTime.get());
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      localRedPointInfo.clear();
-      a(102, localRedPointInfo);
-      return;
-    }
-  }
-  
-  public QQCircleCounter.RedPointInfo c()
-  {
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (this.b != null)
-        {
-          QQCircleCounter.RedPointInfo localRedPointInfo = this.b;
-          return localRedPointInfo;
-        }
-        if (Looper.getMainLooper() == Looper.myLooper())
-        {
-          ThreadManager.getSubThreadHandler().post(new EeveeRedPointManagerDelegate.3(this));
-          return null;
-        }
-      }
-      d();
-    }
-  }
-  
-  public QQCircleCounter.RedPointInfo c(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return c();
-  }
-  
-  public ArrayList<Class> getEventClass()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(QCircleRedPointEvent.class);
-    return localArrayList;
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    aaak.a().b(this);
-  }
-  
-  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
-  {
-    int i;
-    if ((paramSimpleBaseEvent instanceof QCircleRedPointEvent))
-    {
-      QCircleRedPointEvent localQCircleRedPointEvent = (QCircleRedPointEvent)paramSimpleBaseEvent;
-      ??? = localQCircleRedPointEvent.mRedPointInfo;
-      paramSimpleBaseEvent = (SimpleBaseEvent)???;
-      if (??? == null) {
-        paramSimpleBaseEvent = new QQCircleCounter.RedPointInfo();
-      }
-      QLog.d("QCircleEeveeRedPointManagerDelegate", 1, "on receive repoint. redPointMainMsgType: " + localQCircleRedPointEvent.mRedPointMainMsgType);
-      switch (localQCircleRedPointEvent.mRedPointMainMsgType)
-      {
-      case 103: 
-      case 104: 
-      case 105: 
-      default: 
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      if ((i != 0) && (vtf.a()))
-      {
-        paramSimpleBaseEvent = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        if (paramSimpleBaseEvent != null) {
-          ((QCircleHandler)paramSimpleBaseEvent.a(183)).updateRedPoint();
-        }
-      }
-      return;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_QqcircleQQCircleCounter$RedPointInfo = paramSimpleBaseEvent;
-        i = 1;
-      }
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.b = paramSimpleBaseEvent;
-        i = 1;
-      }
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        this.c = paramSimpleBaseEvent;
-        i = 1;
-      }
-    }
+    return a(paramInt);
   }
 }
 

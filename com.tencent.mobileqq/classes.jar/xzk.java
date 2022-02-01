@@ -1,76 +1,202 @@
 import android.app.Activity;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.content.Intent;
+import android.os.Parcelable;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
+import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
+import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
+import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
+import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.reactive.SimpleObserver;
+import cooperation.qzone.QZoneHelper;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class xzk
-  extends xwm
+class xzk
+  extends SimpleObserver<yjh>
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private wuw jdField_a_of_type_Wuw;
-  private xqz jdField_a_of_type_Xqz;
-  private boolean c;
+  xzk(xzd paramxzd, yjh paramyjh, long paramLong) {}
   
-  private void a(QQUserUIItem paramQQUserUIItem, xwn paramxwn)
+  public void a(yjh paramyjh)
   {
-    paramxwn.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    paramxwn.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    String str = paramQQUserUIItem.headUrl;
-    paramQQUserUIItem = paramQQUserUIItem.nickName;
-    paramxwn.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    paramxwn.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Xwj.b().getString(2131698447, new Object[] { paramQQUserUIItem }));
-    paramxwn.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(null);
-    paramxwn.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    xwj.a(str, paramxwn.jdField_a_of_type_AndroidWidgetImageView, paramxwn.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramxwn.jdField_a_of_type_Int, paramxwn.jdField_a_of_type_Int);
-    yuk.a("VipForwardVideoInfoController", "updateUI, nickName:%s,  avatarURL:%s", paramQQUserUIItem, str);
-  }
-  
-  public boolean a(View paramView)
-  {
-    if ((this.jdField_a_of_type_Wuw == null) || (this.jdField_a_of_type_Wuw.jdField_a_of_type_Int != 5) || (this.jdField_a_of_type_Wuw.jdField_a_of_type_Wux == null)) {
-      this.jdField_a_of_type_Xwj.k();
+    super.onNext(paramyjh);
+    this.jdField_a_of_type_Xzd.o();
+    xvv.e("Q.qqstory.publish.edit.EditVideoPartManager", "PUBLISH onNext");
+    Object localObject = this.jdField_a_of_type_Xzd.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((xzb)((Iterator)localObject).next()).b(paramyjh);
     }
-    while (!super.a(paramView)) {
-      return false;
-    }
-    xlj.a(this.jdField_a_of_type_Xwj.b(), this.jdField_a_of_type_Wuw.jdField_a_of_type_Wux.c, this.jdField_a_of_type_Wuw.jdField_a_of_type_Wux.b, 1010);
-    yup.a("play_video", "clk_transmit", 0, 0, new String[0]);
-    return true;
-  }
-  
-  public void b(xwn paramxwn, xqz paramxqz)
-  {
-    yuk.a("VipForwardVideoInfoController", "doOnBind, forward video:%s", paramxqz.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Xqz = paramxqz;
-    Object localObject = paramxqz.a().getVideoLinkInfo();
-    if ((localObject == null) || (((wuw)localObject).jdField_a_of_type_Int != 5) || (((wuw)localObject).jdField_a_of_type_Wux == null))
+    String str;
+    if ((this.jdField_a_of_type_Yjh.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditRecordVideoSource))
     {
-      yuk.b("VipForwardVideoInfoController", "something error, hide()");
-      this.jdField_a_of_type_Xwj.k();
+      i = 1;
+      xwa.b("edit_video", "publish_cost", 0, 0, new String[] { String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long), String.valueOf(i) });
+      Intent localIntent = this.jdField_a_of_type_Xzd.jdField_a_of_type_Yan.getActivity().getIntent();
+      i = localIntent.getIntExtra("uintype", -1);
+      str = "";
+      localObject = str;
+      if (i != -1)
+      {
+        localObject = str;
+        if (i != 1)
+        {
+          localObject = str;
+          if (i != 3000) {
+            localObject = localIntent.getStringExtra("uin");
+          }
+        }
+      }
+      if ((this.jdField_a_of_type_Yjh.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource))
+      {
+        if (bbuc.a().a != 1) {
+          break label356;
+        }
+        i = 1;
+        label202:
+        babc.b(i, (String)localObject);
+      }
+      if ((this.jdField_a_of_type_Yjh.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakePhotoSource)) {
+        if (bbuc.a().a != 1) {
+          break label361;
+        }
+      }
+    }
+    label356:
+    label361:
+    for (int i = 1;; i = 2)
+    {
+      babc.a(i, (String)localObject);
+      if (xzd.a(this.jdField_a_of_type_Xzd, paramyjh)) {
+        xzd.a(this.jdField_a_of_type_Xzd);
+      }
+      if (this.jdField_a_of_type_Xzd.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet() <= 0) {
+        break label366;
+      }
+      xvv.d("Q.qqstory.publish.edit.EditVideoPartManager", "waiting for another observer finish");
       return;
-    }
-    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramxqz.jdField_a_of_type_JavaLangString)) {
-      this.c = false;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Wuw = ((wuw)localObject);
-      paramxqz = (wtt)wth.a(2);
-      localObject = paramxqz.b(this.jdField_a_of_type_Wuw.jdField_a_of_type_Wux.jdField_a_of_type_JavaLangString);
-      if ((localObject == null) || (TextUtils.isEmpty(((QQUserUIItem)localObject).nickName))) {
+      if ((this.jdField_a_of_type_Yjh.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalVideoSource))
+      {
+        i = 2;
         break;
       }
-      this.jdField_a_of_type_Xwj.j();
-      a((QQUserUIItem)localObject, paramxwn);
-      return;
-      this.c = true;
-      this.jdField_a_of_type_JavaLangString = paramxqz.jdField_a_of_type_JavaLangString;
+      if ((this.jdField_a_of_type_Yjh.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakePhotoSource))
+      {
+        i = 3;
+        break;
+      }
+      if ((this.jdField_a_of_type_Yjh.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalPhotoSource))
+      {
+        i = 4;
+        break;
+      }
+      if ((this.jdField_a_of_type_Yjh.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource))
+      {
+        i = 5;
+        break;
+      }
+      i = 0;
+      break;
+      i = 2;
+      break label202;
     }
-    this.jdField_a_of_type_Xwj.k();
-    paramxqz.a(this.jdField_a_of_type_Wuw.jdField_a_of_type_Wux.jdField_a_of_type_JavaLangString, new xzl(this, paramxwn));
+    label366:
+    if ((xzd.a(this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEnableMasks, 32768)) && (xzd.b(this.jdField_a_of_type_Xzd) > 0))
+    {
+      i = xzd.b(this.jdField_a_of_type_Xzd);
+      if (!this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.isEditLocal()) {
+        break label579;
+      }
+    }
+    label579:
+    for (paramyjh = "0";; paramyjh = "1")
+    {
+      xwa.a("video_edit", "pub_edit_one", 0, 0, new String[] { String.valueOf(i), paramyjh });
+      this.jdField_a_of_type_Xzd.jdField_a_of_type_Yan.b();
+      if (!this.jdField_a_of_type_Xzd.jdField_b_of_type_JavaUtilList.isEmpty()) {
+        break label731;
+      }
+      paramyjh = this.jdField_a_of_type_Xzd.jdField_a_of_type_Yan.getActivity();
+      if (paramyjh == null) {
+        break;
+      }
+      if (!(this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mEditSource instanceof EditLocalGifSource)) {
+        break label609;
+      }
+      localObject = this.jdField_a_of_type_Xzd.jdField_a_of_type_Yan.a(this.jdField_a_of_type_Yjh);
+      str = ((Intent)localObject).getStringExtra("PhotoConst.PLUGIN_APK");
+      boolean bool = ((Intent)localObject).getBooleanExtra("DirectBackToQzone", false);
+      if ((!"qzone_plugin.apk".equals(str)) || (!bool)) {
+        break label585;
+      }
+      QZoneHelper.launchQZone(paramyjh, "", (Intent)localObject, -1);
+      this.jdField_a_of_type_Xzd.jdField_a_of_type_Yan.a(-1, null, 2130772030, 0);
+      return;
+    }
+    label585:
+    paramyjh.startActivity((Intent)localObject);
+    this.jdField_a_of_type_Xzd.jdField_a_of_type_Yan.a(-1, null, 2130772030, 0);
+    return;
+    label609:
+    if (this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.getBussinessId() == 1) {
+      StoryTransitionActivity.a(paramyjh);
+    }
+    localObject = this.jdField_a_of_type_Yjh.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam;
+    xvv.b("Q.qqstory.publish.edit.EditVideoPartManager", "publishParam = " + localObject);
+    if (this.jdField_a_of_type_Xzd.jdField_a_of_type_AndroidContentIntent == null) {}
+    for (paramyjh = new Intent();; paramyjh = this.jdField_a_of_type_Xzd.jdField_a_of_type_AndroidContentIntent)
+    {
+      paramyjh.putExtra(PublishParam.a, (Parcelable)localObject);
+      paramyjh.putExtra("PUBLISH_STORY", true);
+      this.jdField_a_of_type_Xzd.a(paramyjh, this.jdField_a_of_type_Xzd.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.getBussinessId(), (PublishParam)localObject);
+      return;
+    }
+    label731:
+    paramyjh = this.jdField_a_of_type_Xzd.jdField_b_of_type_JavaUtilList.iterator();
+    while (paramyjh.hasNext()) {
+      xvv.c("Q.qqstory.publish.edit.EditVideoPartManager", "publish error %s", (Error)paramyjh.next());
+    }
+    QQToast.a(this.jdField_a_of_type_Xzd.jdField_a_of_type_Yan.a(), this.jdField_a_of_type_Xzd.jdField_b_of_type_JavaUtilList.size() + amtj.a(2131702880), 0).a();
+    paramyjh = (xzp)this.jdField_a_of_type_Xzd.a(xzp.class);
+    if (paramyjh != null) {
+      paramyjh.i();
+    }
+    this.jdField_a_of_type_Xzd.jdField_b_of_type_Boolean = false;
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    xvv.e("Q.qqstory.publish.edit.EditVideoPartManager", "PUBLISH error ：" + paramError);
+    Iterator localIterator = this.jdField_a_of_type_Xzd.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((xzb)localIterator.next()).a(paramError);
+    }
+    xwa.b("video_edit", "pub_error", 0, 0, new String[] { paramError.toString() });
+    this.jdField_a_of_type_Xzd.jdField_b_of_type_JavaUtilList.add(paramError);
+    if (this.jdField_a_of_type_Xzd.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet() > 0) {
+      xvv.d("Q.qqstory.publish.edit.EditVideoPartManager", "waiting for another observer finish");
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_Xzd.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_Xzd.jdField_a_of_type_Yan.b();
+      QQToast.a(this.jdField_a_of_type_Xzd.jdField_a_of_type_Yan.a(), amtj.a(2131702911), 0).a();
+      paramError = (xzp)this.jdField_a_of_type_Xzd.a(xzp.class);
+    } while (paramError == null);
+    paramError.i();
   }
 }
 

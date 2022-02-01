@@ -1,10 +1,15 @@
-public abstract interface wjs
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+
+class wjs
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void a(String paramString, int paramInt);
+  wjs(wjp paramwjp) {}
   
-  public abstract void a(String paramString, long paramLong1, long paramLong2);
-  
-  public abstract void a(String paramString1, String paramString2);
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    this.a.f();
+  }
 }
 
 

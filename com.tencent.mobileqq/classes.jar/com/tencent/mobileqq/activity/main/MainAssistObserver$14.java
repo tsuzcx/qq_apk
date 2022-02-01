@@ -1,13 +1,16 @@
 package com.tencent.mobileqq.activity.main;
 
-import ajic;
-import ajka;
-import ajwm;
-import akha;
+import ajey;
+import amov;
+import amxq;
 import android.os.Handler;
 import android.os.Message;
+import axfy;
+import azvi;
+import bfng;
+import bfrj;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -15,51 +18,75 @@ import com.tencent.qphone.base.util.QLog;
 public class MainAssistObserver$14
   implements Runnable
 {
-  public MainAssistObserver$14(akha paramakha, QQAppInterface paramQQAppInterface) {}
+  public MainAssistObserver$14(ajey paramajey, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
+    int j = 2;
     for (;;)
     {
-      Object localObject3;
+      Object localObject2;
       try
       {
-        Object localObject1 = (ajwm)this.a.getManager(295);
-        localObject3 = (ajka)this.a.getManager(34);
-        int i = ((ajka)localObject3).d();
-        if (i > 0)
+        azvi localazvi = (azvi)this.a.getManager(36);
+        BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = localazvi.a(1);
+        if (localRedTypeInfo != null) {
+          break label398;
+        }
+        axfy localaxfy = (axfy)this.a.getManager(160);
+        localaxfy.a(100601, false);
+        boolean bool1 = localaxfy.a(10015, false);
+        boolean bool2 = localaxfy.a(10016, false);
+        bfrj.c(this.a);
+        localObject2 = localaxfy.a(-3);
+        if (!localaxfy.a((RedTouchItem)localObject2, true)) {
+          break label398;
+        }
+        localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+        if ((bool1 | bool2)) {
+          ajey.a(this.this$0, this.a);
+        }
+        QLog.d("MainAssistObserver", 1, "updateTabSettingNotify me count=" + ((RedTouchItem)localObject2).count);
+        i = 1;
+        if ((localRedTypeInfo != null) || (!bfng.a(this.a))) {
+          break label395;
+        }
+        localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+        i = j;
+        localObject2 = (amov)this.a.getBusinessHandler(2);
+        if ((localRedTypeInfo != null) || (((amov)localObject2).b()) || (!((amov)localObject2).a())) {
+          break label390;
+        }
+        localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+        j = 3;
+        i = j;
+        localObject2 = localRedTypeInfo;
+        if (localRedTypeInfo == null)
         {
-          localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(5);
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_content.set(i + "");
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_desc.set("{'cn':'#FF0000'}");
-          localObject1 = localObject3;
-          if (QLog.isColorLevel())
+          i = j;
+          localObject2 = localRedTypeInfo;
+          if (amxq.a(1))
           {
-            QLog.d("UndealCount.updateTabContactNotify", 2, "unread=" + i);
-            localObject1 = localObject3;
+            localObject2 = new BusinessInfoCheckUpdate.RedTypeInfo();
+            i = 4;
           }
-          localObject3 = this.this$0.a.obtainMessage(3);
-          ((Message)localObject3).obj = localObject1;
-          this.this$0.a.sendMessage((Message)localObject3);
-          return;
         }
-        if (((ajka)localObject3).a())
+        j = localazvi.b(1);
+        if (localObject2 != null) {
+          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.set(0);
+        }
+        if (j > 0)
         {
-          localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(0);
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_content.set("");
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_desc.set("");
-          localObject1 = localObject3;
-          if (!QLog.isColorLevel()) {
-            continue;
+          localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
+          localRedTypeInfo.red_type.set(0);
+          i = 5;
+          if (QLog.isColorLevel()) {
+            QLog.d("MainAssistObserver", 2, "updateTabSettingNotify: showRedFromWhere=" + i);
           }
-          QLog.d("UndealCount.updateTabContactNotify", 2, "redpoint");
-          localObject1 = localObject3;
-          continue;
-        }
-        if (localException == null) {
-          break label236;
+          localObject2 = this.this$0.a.obtainMessage(0);
+          ((Message)localObject2).obj = localRedTypeInfo;
+          this.this$0.a.sendMessage((Message)localObject2);
+          return;
         }
       }
       catch (Exception localException)
@@ -67,29 +94,15 @@ public class MainAssistObserver$14
         localException.printStackTrace();
         return;
       }
-      Object localObject2;
-      if (localException.a()) {
-        localObject2 = null;
-      } else {
-        label236:
-        if (ajic.a(this.a).a())
-        {
-          localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(0);
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_content.set("");
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_desc.set("");
-          localObject2 = localObject3;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("NewFriendVerification.manager", 2, "updateTabContactNotify redpoint");
-            localObject2 = localObject3;
-          }
-        }
-        else
-        {
-          localObject2 = null;
-        }
-      }
+      Object localObject1 = localObject2;
+      continue;
+      label390:
+      j = i;
+      continue;
+      label395:
+      continue;
+      label398:
+      int i = 0;
     }
   }
 }

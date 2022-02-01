@@ -1,8 +1,8 @@
 package dov.com.qq.im.capture.control;
 
-import abjg;
-import bocw;
-import bplq;
+import aafp;
+import blie;
+import bmql;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 
 public class CaptureAsyncStep$OnShowOther
@@ -10,11 +10,11 @@ public class CaptureAsyncStep$OnShowOther
 {
   public int a()
   {
-    bocw localbocw = (bocw)bplq.a(13);
-    localbocw.d(0);
-    localbocw.a(2);
-    abjg.a().h = 1;
-    abjg.a().j = 1;
+    blie localblie = (blie)bmql.a(13);
+    localblie.d(0);
+    localblie.a(2);
+    aafp.a().h = 1;
+    aafp.a().j = 1;
     return 7;
   }
 }

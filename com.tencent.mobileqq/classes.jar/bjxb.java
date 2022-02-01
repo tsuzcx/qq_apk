@@ -1,44 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
 class bjxb
-  extends QIPCModule
+  implements View.OnLongClickListener
 {
-  bjxb(bjxa parambjxa, String paramString)
-  {
-    super(paramString);
-  }
+  bjxb(bjwz parambjwz, bjwy parambjwy) {}
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    bjtx.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
-    Object localObject = bjxa.a(this.a);
-    if (localObject == null) {
-      bjtx.c("DownloaderWriteCodeIPC", "onCall action but appInterface is null");
+    int i = this.jdField_a_of_type_Bjwy.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_Bjwz.a.a(this.jdField_a_of_type_Bjwy.itemView, i);
     }
-    String str;
-    int i;
-    do
-    {
-      do
-      {
-        return null;
-      } while ((!"DownloaderWriteCodeIPC_Action__GetCode".equals(paramString)) || (paramBundle == null));
-      str = paramBundle.getString("PackageName");
-      i = paramBundle.getInt("VersionCode");
-      bjtx.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " packageName|" + str + " versionCode|" + i);
-    } while (str == null);
-    ((QQAppInterface)localObject).a(bjxa.a(this.a));
-    paramString = (anvl)((QQAppInterface)localObject).a(4);
-    localObject = str + "_" + i;
-    paramBundle.putInt("CallbackId", paramInt);
-    paramBundle = new Bundle(paramBundle);
-    bjxa.a(this.a).put(localObject, paramBundle);
-    paramString.a(str, i, (String)localObject);
-    return null;
+    return true;
   }
 }
 

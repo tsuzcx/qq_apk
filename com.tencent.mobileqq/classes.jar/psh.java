@@ -1,30 +1,15 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 class psh
-  implements aasd
+  implements sdh
 {
-  psh(psd parampsd, String paramString) {}
+  psh(psf parampsf) {}
   
-  public void callback(Bundle paramBundle)
+  public void a(sdg paramsdg, boolean paramBoolean)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d("ReadInJoyWebviewPlugin", 4, "receive cancelLoadSkin callback resp:" + paramBundle.toString());
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId"));
-      this.jdField_a_of_type_Psd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+    if (paramBoolean) {}
+    while ((this.a.b() == 0) || (this.a.b() == 56) || (rtp.c)) {
       return;
     }
-    catch (JSONException paramBundle)
-    {
-      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
-      this.jdField_a_of_type_Psd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
-    }
+    this.a.a().a(paramsdg);
   }
 }
 

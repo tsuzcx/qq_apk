@@ -1,74 +1,18 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.mobileqq.gamecenter.view.QQGameIndicator;
 
 public class atzz
-  implements bcnz
+  extends RadioButton
 {
-  protected int a;
-  protected View a;
-  protected ImageView a;
-  protected TextView a;
-  protected TextView b;
-  
-  public atzz() {}
-  
-  public atzz(ViewGroup paramViewGroup)
+  public atzz(QQGameIndicator paramQQGameIndicator, Context paramContext)
   {
-    this.jdField_a_of_type_Int = 2131562883;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
-    a();
+    super(paramContext);
   }
   
-  public View a()
+  public boolean performClick()
   {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public View a(String paramString)
-  {
-    return null;
-  }
-  
-  public ImageView a()
-  {
-    return null;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368320));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378936));
-    this.jdField_a_of_type_AndroidWidgetTextView.setEditableFactory(begz.a);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365413));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131379014).setVisibility(8);
-  }
-  
-  public ImageView b()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView b()
-  {
-    return null;
-  }
-  
-  public TextView c()
-  {
-    return this.b;
-  }
-  
-  public TextView d()
-  {
-    return null;
+    return true;
   }
 }
 

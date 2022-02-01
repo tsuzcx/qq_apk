@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ansb;
-import ansc;
+import amms;
+import ammt;
 import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class ApolloPanel$43$1$1
   implements Runnable
 {
-  public ApolloPanel$43$1$1(ansc paramansc, boolean paramBoolean) {}
+  public ApolloPanel$43$1$1(ammt paramammt, boolean paramBoolean) {}
   
   public void run()
   {
     if (!this.jdField_a_of_type_Boolean) {
-      QQToast.a(this.jdField_a_of_type_Ansc.jdField_a_of_type_Ansb.a.getContext(), 1, 2131690055, 0).b(0);
+      QQToast.a(this.jdField_a_of_type_Ammt.jdField_a_of_type_Amms.a.getContext(), 1, 2131690074, 0).b(0);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ansc.jdField_a_of_type_ComTencentMobileqqVasVasExtensionHandler.a(null);
+      this.jdField_a_of_type_Ammt.jdField_a_of_type_ComTencentMobileqqVasVasExtensionHandler.a(null);
       return;
-      QQToast.a(this.jdField_a_of_type_Ansc.jdField_a_of_type_Ansb.a.getContext(), 2, 2131690056, 0).b(0);
+      QQToast.a(this.jdField_a_of_type_Ammt.jdField_a_of_type_Amms.a.getContext(), 2, 2131690075, 0).b(0);
     }
   }
 }

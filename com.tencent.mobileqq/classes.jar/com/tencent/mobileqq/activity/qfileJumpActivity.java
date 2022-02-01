@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import antf;
-import bhnh;
+import bfwf;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
@@ -24,16 +24,16 @@ public class qfileJumpActivity
   private int a()
   {
     if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 1)) {}
-    while ((!antf.z.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) && (!antf.A.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
+    while ((!AppConstants.DATALINE_PC_UIN.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) && (!AppConstants.DATALINE_IPAD_UIN.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
       return -1;
     }
     if (this.jdField_a_of_type_Int == 0)
     {
-      if (!antf.z.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
+      if (!AppConstants.DATALINE_PC_UIN.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
         return -2;
       }
     }
-    else if (!antf.A.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
+    else if (!AppConstants.DATALINE_IPAD_UIN.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
       return -2;
     }
     return 0;
@@ -84,8 +84,9 @@ public class qfileJumpActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -115,12 +116,12 @@ public class qfileJumpActivity
     try
     {
       super.doOnCreate(paramBundle);
-      if (!bhnh.a(this, true))
+      if (!bfwf.a(this, true))
       {
         super.finish();
         return false;
       }
-      this.jdField_a_of_type_JavaLangString = antf.z;
+      this.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
       paramBundle = getIntent();
       if (paramBundle != null)
       {
@@ -131,7 +132,7 @@ public class qfileJumpActivity
         {
           QLog.w("qfileJump", 1, "targetparam no match, modify it " + i);
           this.jdField_a_of_type_Int = 0;
-          this.jdField_a_of_type_JavaLangString = antf.z;
+          this.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
           paramBundle.putExtra("device_type", this.jdField_a_of_type_Int);
           paramBundle.putExtra("targetUin", this.jdField_a_of_type_JavaLangString);
         }
@@ -187,7 +188,7 @@ public class qfileJumpActivity
   {
     try
     {
-      boolean bool = bhnh.a(this);
+      boolean bool = bfwf.a(this);
       if (bool) {
         return true;
       }

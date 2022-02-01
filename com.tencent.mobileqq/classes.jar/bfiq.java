@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.1.1.1;
 
 public class bfiq
-  implements DialogInterface.OnClickListener
+  implements bcrf
 {
-  public bfiq(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public bfiq(TroopGiftAnimationController.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.setResult(-1, null);
-    this.a.finish();
+    this.a.this$0.a.post(new TroopGiftAnimationController.1.1.1(this));
   }
 }
 

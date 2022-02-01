@@ -1,63 +1,86 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.downloader.BaseDownloader.1;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadReqInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferEngine;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.IExcitingTransferRecvListener;
+import java.util.concurrent.Executor;
 
-class asny
-  extends BaseAdapter
+public abstract class asny
+  implements asnm, IExcitingTransferRecvListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<String> jdField_a_of_type_JavaUtilList;
+  protected long a;
+  protected asnn a;
+  public asyy a;
+  private ExcitingTransferDownloadReqInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo = new ExcitingTransferDownloadReqInfo();
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public asny(Context paramContext, List<String> paramList)
+  public asny(QQAppInterface paramQQAppInterface)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-    this.jdField_a_of_type_AndroidContentContext = paramList;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Asnn = a(paramQQAppInterface);
   }
   
-  public int getCount()
+  public int a()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return 1;
   }
   
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
+  protected abstract asnn a(QQAppInterface paramQQAppInterface);
   
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
+  public abstract void a(ExcitingTransferDownloadReqInfo paramExcitingTransferDownloadReqInfo);
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public boolean a()
   {
-    if (paramView == null) {
-      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559129, null);
-    }
-    for (;;)
+    try
     {
-      Button localButton = (Button)paramView.findViewById(2131363961);
-      localButton.setText((CharSequence)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-      localButton.setContentDescription((CharSequence)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-      localButton.setBackgroundDrawable(this.jdField_a_of_type_Asnw.a(12));
-      if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_Asnw.a(), false, null)) {
-        localButton.setTextColor(Color.parseColor("#B0B3BF"));
-      }
-      for (;;)
-      {
-        localButton.setOnClickListener(new asnz(this, localButton));
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        localButton.setTextColor(Color.parseColor("#03081A"));
-      }
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
     }
+    finally {}
+  }
+  
+  public void at_()
+  {
+    try
+    {
+      this.jdField_a_of_type_Boolean = false;
+      atae.a().execute(new BaseDownloader.1(this));
+      return;
+    }
+    finally {}
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.jdField_a_of_type_Boolean = true;
+      ExcitingTransferEngine.getInstance().cancelRecvFile(this.jdField_a_of_type_Long);
+      return;
+    }
+    finally {}
+  }
+  
+  public void c()
+  {
+    b();
+    this.jdField_a_of_type_Asnn.a();
+  }
+  
+  public void d()
+  {
+    b();
+    this.jdField_a_of_type_Asnn.b();
+  }
+  
+  public void e()
+  {
+    b();
+  }
+  
+  protected void f()
+  {
+    this.jdField_a_of_type_Long = ExcitingTransferEngine.getInstance().recvFileEx(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo, asnp.a().a(), this);
   }
 }
 

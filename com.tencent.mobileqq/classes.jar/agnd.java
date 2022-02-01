@@ -1,21 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-class agnd
-  implements agnf
+public class agnd
+  extends aezf
 {
-  agnd(agnc paramagnc, agne paramagne) {}
+  public RelativeLayout a;
+  public DoodleMsgLayout a;
+  public MessageProgressView a;
   
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      agnc.a(this.jdField_a_of_type_Agnc, this.jdField_a_of_type_Agne.a());
-      this.jdField_a_of_type_Agne.a();
-      return;
-    }
-    QLog.e("FriendShipViewManager", 1, "director.prepare not ready, cannot play anim, type = " + this.jdField_a_of_type_Agne.a());
-    agnc.a(this.jdField_a_of_type_Agnc, 0);
-  }
+  public agnd(ScribbleItemBuilder paramScribbleItemBuilder) {}
 }
 
 

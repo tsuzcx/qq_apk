@@ -1,32 +1,13 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.RecentDynamicAvatarView;
+import com.tencent.widget.SingleLineTextView;
 
 public class ajjk
-  extends ajjt
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public String a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  public String b;
-  public View c;
-  public ImageView c;
-  public TextView c;
-  public String c;
-  public View d;
-  public ImageView d;
-  public TextView d;
-  public String d;
-  public View e;
-  public ImageView e;
-  public TextView e;
-  public String e;
-  public TextView f;
-  public TextView g;
+  public DragTextView a;
+  public RecentDynamicAvatarView a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

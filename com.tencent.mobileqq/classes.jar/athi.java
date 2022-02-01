@@ -1,110 +1,147 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.animation.ObjectAnimator;
+import android.app.Activity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.MobileQQ;
 
 public class athi
-  implements RadioGroup.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public athi(FMActivity paramFMActivity) {}
+  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  public View a;
+  TeamWorkFileImportInfo jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    int i = 1;
-    if (this.a.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-    this.a.g();
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setVisibility(0);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null)
     {
-      this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.removeAllViews();
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView = null;
-      this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.addView(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView);
-    }
-    if ((paramInt == 2131376261) && (this.a.jdField_b_of_type_AndroidWidgetRadioButton.isChecked()))
-    {
-      this.a.a().f();
-      FMActivity.b(this.a);
-      this.a.jdField_a_of_type_AndroidWidgetRadioButton.setSelected(false);
-      this.a.jdField_c_of_type_AndroidWidgetRadioButton.setSelected(false);
-      if (FMActivity.a(this.a)) {
-        this.a.d.setSelected(false);
+      if (!paramBoolean) {
+        break label98;
       }
-      this.a.i(false);
-      FMActivity.a(this.a, 1);
-      i = 0;
+      if (!this.c)
+      {
+        if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
+          this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+        }
+        this.c = true;
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationY", new float[] { 0.0F });
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(180L);
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+      }
+    }
+    return;
+    label98:
+    this.c = true;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (this.c)
+      {
+        if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
+          this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+        }
+        this.c = false;
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationY", new float[] { this.jdField_a_of_type_AndroidViewView.getHeight() });
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new athj(this));
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(180L);
+        this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+      }
+      return;
+    }
+    this.c = false;
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, amtj.a(2131702513), 0).a();
     }
     for (;;)
     {
-      SharedPreferences.Editor localEditor = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
-      localEditor.putInt("last_select_tab_type", i);
-      localEditor.commit();
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((paramInt == 2131370339) && (this.a.jdField_a_of_type_AndroidWidgetRadioButton.isChecked()))
+      label115:
+      Object localObject;
+      if (this.b)
       {
-        this.a.a().e();
-        FMActivity.c(this.a);
-        if ((this.a.i == 0) && (this.a.f)) {
-          this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null))
+        {
+          if (this.jdField_a_of_type_Boolean)
+          {
+            new StringBuilder(this.jdField_a_of_type_JavaLangString);
+            if (this.jdField_a_of_type_JavaLangString.indexOf("?") > 0) {
+              this.jdField_a_of_type_JavaLangString += "&converFrom=qqFile";
+            }
+          }
+          else
+          {
+            if (!this.jdField_a_of_type_Boolean) {
+              break label204;
+            }
+            bcxh.a(null, "0X800ABAB");
+          }
+          for (;;)
+          {
+            localObject = new Bundle();
+            ((Bundle)localObject).putString("url", this.jdField_a_of_type_JavaLangString);
+            ((Bundle)localObject).putBoolean("temp_preview_from_qq", true);
+            ((Bundle)localObject).putParcelable("key_team_work_file_import_info", this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+            TeamWorkDocEditBrowserActivity.a(this.jdField_a_of_type_AndroidAppActivity, (Bundle)localObject, false);
+            break;
+            this.jdField_a_of_type_JavaLangString += "?converFrom=qqFile";
+            break label115;
+            label204:
+            bcxh.a(null, "0X800ABAC");
+          }
         }
-        this.a.jdField_b_of_type_AndroidWidgetRadioButton.setSelected(false);
-        this.a.jdField_c_of_type_AndroidWidgetRadioButton.setSelected(false);
-        if (FMActivity.a(this.a)) {
-          this.a.d.setSelected(false);
-        }
-        this.a.i(false);
-        FMActivity.a(this.a, 2);
-      }
-      else if ((paramInt == 2131364630) && (this.a.jdField_c_of_type_AndroidWidgetRadioButton.isChecked()))
-      {
-        this.a.a().d();
-        FMActivity.b(this.a, 2);
-        this.a.jdField_a_of_type_AndroidWidgetRadioButton.setSelected(false);
-        this.a.jdField_b_of_type_AndroidWidgetRadioButton.setSelected(false);
-        if (FMActivity.a(this.a)) {
-          this.a.d.setSelected(false);
-        }
-        this.a.i(false);
-        FMActivity.a(this.a, 0);
-        i = 2;
-      }
-      else if ((paramInt == 2131366311) && (this.a.d.isChecked()))
-      {
-        this.a.a().g();
-        FMActivity.d(this.a);
-        this.a.jdField_a_of_type_AndroidWidgetRadioButton.setSelected(false);
-        this.a.jdField_b_of_type_AndroidWidgetRadioButton.setSelected(false);
-        this.a.jdField_c_of_type_AndroidWidgetRadioButton.setSelected(false);
-        this.a.i(false);
-        FMActivity.a(this.a, 5);
-        bdll.b(this.a.app, "dc00898", "", "", "0X800AFA6", "0X800AFA6", 0, 0, "", "", "", "");
-        i = 1408041718;
       }
       else
       {
-        i = -1;
+        localObject = BaseApplicationImpl.sApplication.getRuntime();
+        if ((localObject instanceof QQAppInterface))
+        {
+          localObject = (bcum)((QQAppInterface)localObject).getBusinessHandler(120);
+          if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null))
+          {
+            if (!((bcum)localObject).a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo))
+            {
+              this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g = 0;
+              ((bcum)localObject).a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+            }
+            bcxh.a(null, "0X800ABA6");
+            bcua.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, null);
+          }
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     athi
  * JD-Core Version:    0.7.0.1
  */

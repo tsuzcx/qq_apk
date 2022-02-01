@@ -1,25 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-
 class udm
-  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  udm(udl paramudl) {}
+  int a;
+  int b;
+  int c;
+  int d;
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public udm() {}
+  
+  public udm(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
-    if (paramBoolean) {}
-    for (String str = "success";; str = "fail")
-    {
-      uqf.d("WSPublisherDialog", str + ", bundle: " + paramBundle.toString());
-      return;
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     udm
  * JD-Core Version:    0.7.0.1
  */

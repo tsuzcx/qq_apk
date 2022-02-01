@@ -1,27 +1,24 @@
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import com.tencent.mobileqq.multicard.RecommendPerson;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import android.text.Editable;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
 public class axny
-  extends axos
+  implements TextView.OnEditorActionListener
 {
-  public axny(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  public axny(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt, Map<Integer, List<RecommendPerson>> paramMap)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onGetTroopMemRecommendCards, success = " + paramBoolean + ",troopUin = " + paramString + ",notifySource = " + paramInt);
-    }
-    if ((MultiCardRecommendFragment.a(this.a) != null) && (MultiCardRecommendFragment.a(this.a).equals(paramString)))
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
     {
-      MultiCardRecommendFragment.a(this.a).a.clear();
-      MultiCardRecommendFragment.a(this.a).a.putAll(paramMap);
-      this.a.a.removeMessages(1);
-      this.a.a.sendEmptyMessage(1);
+      OCRTextSearchActivity.a(this.a);
+      this.a.a.setSelection(this.a.a.getText().length());
+      return true;
     }
+    return false;
   }
 }
 

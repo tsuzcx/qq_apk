@@ -1,34 +1,37 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-
 public class apox
-  extends apoz
 {
-  public float a;
-  public int a;
-  public long a;
-  public ArCloudConfigInfo a;
-  public String a;
-  public float[] a;
-  public float b;
-  public int b;
-  public float c = 0.0F;
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  boolean jdField_a_of_type_Boolean;
+  long b;
+  long c;
+  long d;
   
-  public apox()
+  public apox(long paramLong1, long paramLong2, int paramInt, boolean paramBoolean)
   {
-    this.jdField_b_of_type_Long = 1L;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_a_of_type_ArrayOfFloat = null;
-    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
+    this.b = paramLong1;
+    this.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public String toString()
+  public boolean equals(Object paramObject)
   {
-    return "ARLocalMarkerRecogResult{recogType = " + this.jdField_b_of_type_Long + ", frameIdx = " + this.jdField_a_of_type_Long + ", state = " + this.jdField_a_of_type_Int + ", markerName = " + this.jdField_a_of_type_JavaLangString + ", markerType = " + this.jdField_b_of_type_Int + ", markerWidth = " + this.jdField_a_of_type_Float + ", markerHeight = " + this.jdField_b_of_type_Float + ", markerDiameter = " + this.c + ", pose = " + this.jdField_a_of_type_ArrayOfFloat + ", arResourceInfo = " + this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo + '}';
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof apox))
+    {
+      paramObject = (apox)paramObject;
+      bool1 = bool2;
+      if (paramObject.jdField_a_of_type_Long == this.jdField_a_of_type_Long)
+      {
+        bool1 = bool2;
+        if (paramObject.b == this.b) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
 }
 

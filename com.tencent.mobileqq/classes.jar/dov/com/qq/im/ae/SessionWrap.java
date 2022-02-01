@@ -3,13 +3,13 @@ package dov.com.qq.im.ae;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import boga;
+import blkt;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 public class SessionWrap
   implements Parcelable
 {
-  public static final Parcelable.Creator<SessionWrap> CREATOR = new boga();
+  public static final Parcelable.Creator<SessionWrap> CREATOR = new blkt();
   public int a;
   public String a;
   public String b;
@@ -34,10 +34,10 @@ public class SessionWrap
   public SessionInfo a()
   {
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localSessionInfo.d = this.b;
-    localSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localSessionInfo.b = this.c;
+    localSessionInfo.curType = this.jdField_a_of_type_Int;
+    localSessionInfo.curFriendNick = this.b;
+    localSessionInfo.curFriendUin = this.jdField_a_of_type_JavaLangString;
+    localSessionInfo.troopUin = this.c;
     return localSessionInfo;
   }
   

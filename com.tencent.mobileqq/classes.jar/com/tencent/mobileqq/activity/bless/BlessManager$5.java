@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.bless;
 
-import ajan;
+import ahux;
 
 public class BlessManager$5
   implements Runnable
 {
-  public BlessManager$5(ajan paramajan) {}
+  public BlessManager$5(ahux paramahux) {}
   
   public void run()
   {
-    if (ajan.a(this.this$0) != null)
+    if (ahux.a(this.this$0) != null)
     {
-      if (!ajan.a(this.this$0))
+      if (!ahux.a(this.this$0))
       {
-        ajan.c(this.this$0, ajan.a(this.this$0, ajan.a(this.this$0), false));
-        ajan.a(this.this$0, ajan.a(this.this$0));
-        ajan.a(this.this$0, ajan.a(this.this$0), true);
+        ahux.c(this.this$0, ahux.a(this.this$0, ahux.a(this.this$0), false));
+        ahux.a(this.this$0, ahux.a(this.this$0));
+        ahux.a(this.this$0, ahux.a(this.this$0), true);
       }
       return;
     }
-    ajan.a(this.this$0, false);
+    ahux.a(this.this$0, false);
   }
 }
 

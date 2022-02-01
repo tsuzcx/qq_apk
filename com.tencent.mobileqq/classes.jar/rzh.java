@@ -1,45 +1,86 @@
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnItemTouchListener;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import com.tencent.mfsdk.collector.DropFrameMonitor;
+
 public class rzh
+  extends RecyclerView.OnScrollListener
+  implements RecyclerView.OnItemTouchListener
 {
-  public static String a(int paramInt1, int paramInt2, int paramInt3)
+  private int jdField_a_of_type_Int = 0;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  
+  private rzh(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  
+  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    paramInt3 = 1;
-    boolean bool = sac.a.a();
-    int i;
-    if (bool)
+    switch (paramMotionEvent.getAction())
     {
-      i = 4000;
-      if (!bool) {
-        break label97;
-      }
-      if (paramInt2 != 1300080) {
-        break label92;
-      }
+    default: 
+      return false;
+    case 0: 
+      this.jdField_a_of_type_Boolean = true;
+      return false;
     }
-    for (;;)
-    {
-      if ((paramInt1 != 202) || (paramInt2 != 108)) {
-        break label114;
-      }
-      return anzj.a(2131717351) + " (" + paramInt1 + "-" + paramInt2 + ")";
-      i = 230;
-      break;
-      label92:
-      paramInt3 = 0;
-      continue;
-      label97:
-      if ((paramInt1 != 101) || (paramInt2 != 80)) {
-        paramInt3 = 0;
-      }
-    }
-    label114:
-    if (paramInt1 == i) {
-      return anzj.a(2131715016) + paramInt1 + "-" + paramInt2 + ")";
-    }
-    if (paramInt3 != 0) {
-      return anzj.a(2131714947) + paramInt1 + "-" + paramInt2 + ")";
-    }
-    return anzj.a(2131714973) + paramInt1 + "-" + paramInt2 + ")";
+    this.jdField_a_of_type_Boolean = false;
+    return false;
   }
+  
+  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      DropFrameMonitor.getInstance().stopMonitorScene("list_video_feeds", false);
+      if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int != 0) || (paramInt != 1)) {
+        break label91;
+      }
+    }
+    label91:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        this.b = true;
+        VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment);
+      }
+      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 0) && (paramInt == 2)) {
+        this.b = false;
+      }
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+      DropFrameMonitor.getInstance().startMonitorScene("list_video_feeds");
+      break;
+    }
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    paramRecyclerView = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a();
+    if (paramRecyclerView != null)
+    {
+      paramRecyclerView = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).getChildViewHolder(paramRecyclerView);
+      RecyclerView.ViewHolder localViewHolder1 = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).findViewHolderForLayoutPosition(paramRecyclerView.getLayoutPosition() - 1);
+      RecyclerView.ViewHolder localViewHolder2 = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).findViewHolderForLayoutPosition(paramRecyclerView.getLayoutPosition() + 1);
+      if ((paramRecyclerView instanceof rvl)) {
+        ((rvl)paramRecyclerView).a(VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), true);
+      }
+      if ((localViewHolder1 instanceof rvl)) {
+        ((rvl)localViewHolder1).a(VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), false);
+      }
+      if ((localViewHolder2 instanceof rvl)) {
+        ((rvl)localViewHolder2).a(VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment), false);
+      }
+    }
+  }
+  
+  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent) {}
 }
 
 

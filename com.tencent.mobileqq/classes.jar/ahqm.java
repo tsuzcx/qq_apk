@@ -1,16 +1,14 @@
-import android.graphics.Bitmap;
-import java.lang.ref.WeakReference;
+import android.os.Handler.Callback;
+import android.os.Message;
 
 class ahqm
-  implements bbsu
+  implements Handler.Callback
 {
-  public WeakReference<ahqk> a;
+  ahqm(ahql paramahql) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (this.a.get() != null) {
-      ahqk.a((ahqk)this.a.get(), paramInt1, paramInt2, paramBitmap, paramInt3);
-    }
+    return false;
   }
 }
 

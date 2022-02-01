@@ -2,11 +2,11 @@ package com.tencent.mobileqq.msgbackup.transport;
 
 import android.content.Context;
 import android.os.Build.VERSION;
-import axgj;
-import axjb;
-import axjh;
-import axjk;
-import axjn;
+import avtq;
+import avwi;
+import avwo;
+import avwr;
+import avwu;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -435,17 +435,17 @@ public class MsgBackupJniProxy
     }
     if ((paramBoolean1) && (paramBoolean2))
     {
-      axjk.a();
-      axgj.a().a.add(Long.valueOf(paramLong2));
-      axjh localaxjh = axjk.a;
-      localaxjh.j += 1L;
+      avwr.a();
+      avtq.a().a.add(Long.valueOf(paramLong2));
+      avwo localavwo = avwr.a;
+      localavwo.j += 1L;
     }
     recvFile(paramLong1, paramLong2, paramString1, paramString2, paramBoolean1, paramLong3, 0L);
   }
   
   public void a(long paramLong, String paramString)
   {
-    setEncryptKey(paramLong, paramString, axjn.b);
+    setEncryptKey(paramLong, paramString, avwu.b);
   }
   
   public void b(long paramLong1, long paramLong2, long paramLong3, String paramString)
@@ -470,7 +470,7 @@ public class MsgBackupJniProxy
   
   public native byte[] getRecvBuffer(long paramLong1, long paramLong2);
   
-  public native int getVersoEndpoint(long paramLong, axjb paramaxjb);
+  public native int getVersoEndpoint(long paramLong, avwi paramavwi);
   
   public native int queryReachability(long paramLong, MsgBackupNetState paramMsgBackupNetState);
   

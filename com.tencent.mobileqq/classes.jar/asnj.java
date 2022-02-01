@@ -1,14 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class asnj
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  asnj(asnf paramasnf) {}
+  asnj(asni paramasni, bayt parambayt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Bayt.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

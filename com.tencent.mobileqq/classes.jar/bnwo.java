@@ -1,10 +1,13 @@
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class bnwo
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public HashMap<String, String> a;
-  public int b;
+  public bnwo(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

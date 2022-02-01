@@ -1,44 +1,16 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajhp
-  extends Handler
+class ajhp
+  implements View.OnClickListener
 {
-  public WeakReference<GroupSearchRecommendView> a;
+  ajhp(ajhm paramajhm) {}
   
-  public ajhp(GroupSearchRecommendView paramGroupSearchRecommendView)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramGroupSearchRecommendView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    GroupSearchRecommendView localGroupSearchRecommendView = (GroupSearchRecommendView)this.a.get();
-    if (localGroupSearchRecommendView == null) {
-      return;
-    }
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      GroupSearchRecommendView.a(localGroupSearchRecommendView);
-      return;
-    case 2: 
-      if (QLog.isColorLevel()) {
-        QLog.i("GroupSearchRecommendView", 2, "fetch data successfully");
-      }
-      GroupSearchRecommendView.a(localGroupSearchRecommendView, false);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("GroupSearchRecommendView", 2, "fetch data failed");
-    }
-    GroupSearchRecommendView.a(localGroupSearchRecommendView, true);
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

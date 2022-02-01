@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.shortvideo.widget;
 
 import android.os.Handler;
-import brlk;
+import boes;
 
 class TCProgressBar$TimerRefresh
   implements Runnable
@@ -10,19 +10,19 @@ class TCProgressBar$TimerRefresh
   
   public void run()
   {
-    brlk localbrlk;
+    boes localboes;
     if (this.this$0.jdField_a_of_type_Int == 3)
     {
       this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(new TimerRefresh(this.this$0), this.this$0.d);
-      localbrlk = this.this$0.jdField_a_of_type_Brlk;
-      if (this.this$0.jdField_a_of_type_Brlk.e) {
+      localboes = this.this$0.jdField_a_of_type_Boes;
+      if (this.this$0.jdField_a_of_type_Boes.e) {
         break label77;
       }
     }
     label77:
     for (boolean bool = true;; bool = false)
     {
-      localbrlk.e = bool;
+      localboes.e = bool;
       this.this$0.invalidate();
       return;
     }

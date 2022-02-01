@@ -1,8 +1,20 @@
-public abstract interface zez
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+
+public class zez
+  implements Animation.AnimationListener
 {
-  public abstract void a(zbv paramzbv, float paramFloat1, float paramFloat2, float paramFloat3);
+  public zez(CommentBottomBar paramCommentBottomBar) {}
   
-  public abstract void a(zfb paramzfb);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    CommentBottomBar.a(this.a, true);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

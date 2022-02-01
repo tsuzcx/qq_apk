@@ -1,22 +1,38 @@
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
 
-public class plp
-  implements rwj
+class plp
+  extends BroadcastReceiver
 {
-  public plp(VideoView paramVideoView) {}
-  
-  public void a(boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramBoolean)
+    if (paramIntent == null) {}
+    do
     {
-      QLog.d("gifvideo.VideoView", 1, "install success");
-      VideoView.access$000(this.a, 2);
-      VideoView.access$100(this.a);
       return;
-    }
-    QLog.d("gifvideo.VideoView", 1, "install fail");
-    VideoView.access$000(this.a, -1);
+      if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
+      {
+        QLog.d("ReadinjoySPEventReport", 2, "receive screen off broadcast");
+        ple.e(false);
+        return;
+      }
+      if (paramIntent.getAction().equals("android.intent.action.SCREEN_ON"))
+      {
+        QLog.d("ReadinjoySPEventReport", 2, "receive screen on broadcast");
+        ple.e(true);
+        return;
+      }
+      if ("mqq.intent.action.QQ_FOREGROUND".equals(paramIntent.getAction()))
+      {
+        ple.c(false);
+        ple.o();
+        return;
+      }
+    } while (!"mqq.intent.action.QQ_BACKGROUND".equals(paramIntent.getAction()));
+    ple.d(false);
+    ple.o();
   }
 }
 

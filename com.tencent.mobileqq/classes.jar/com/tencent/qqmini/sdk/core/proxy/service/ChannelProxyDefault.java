@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -379,6 +380,11 @@ public class ChannelProxyDefault
     handleRequest(new GetAdInfoRequest(paramString1, paramInt, paramString2), paramAsyncResult);
   }
   
+  public Drawable getGifDrawable(String paramString)
+  {
+    return null;
+  }
+  
   public void getGroupAppStatus(IMiniAppContext paramIMiniAppContext, String paramString, AsyncResult paramAsyncResult) {}
   
   public void getGroupCloudStorage(String paramString1, String paramString2, String[] paramArrayOfString, AsyncResult paramAsyncResult)
@@ -688,6 +694,8 @@ public class ChannelProxyDefault
     return false;
   }
   
+  public void startDownloadX5(IMiniAppContext paramIMiniAppContext) {}
+  
   public boolean startTransparentBrowserActivityForResult(Activity paramActivity, String paramString, Bundle paramBundle, int paramInt)
   {
     Intent localIntent = new Intent();
@@ -809,7 +817,7 @@ public class ChannelProxyDefault
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.ChannelProxyDefault
  * JD-Core Version:    0.7.0.1
  */

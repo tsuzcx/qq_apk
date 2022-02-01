@@ -1,27 +1,44 @@
-import java.util.HashMap;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.WFastLoginInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.request.WtloginListener;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class bbkd
-  extends bbke
+class bbkd
+  extends WtloginListener
 {
-  public int a;
-  public boolean a;
+  bbkd(bbkb parambbkb, String paramString, WtloginHelper paramWtloginHelper, int paramInt, Context paramContext) {}
   
-  public bbkd()
+  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
+    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d(getClass().getSimpleName(), 2, "geta1 OnException " + paramErrMsg);
+    }
+    bbkb.a = false;
+    this.jdField_a_of_type_Bbkb.b.removeMessages(0);
   }
   
-  public HashMap<String, String> a(String paramString)
+  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
   {
-    if ("RealShortVideo.Record".equals(paramString))
+    this.jdField_a_of_type_Bbkb.b.removeMessages(0);
+    bbkb.a = false;
+    if (paramInt2 != 0)
     {
-      paramString = new HashMap();
-      paramString.put("param_cameraID", String.valueOf(this.jdField_a_of_type_Int));
-      paramString.put("param_hasMultiSegments", String.valueOf(this.jdField_a_of_type_Boolean));
-      return paramString;
+      if (QLog.isColorLevel()) {
+        QLog.d(getClass().getSimpleName(), 2, "geta1 failed " + paramInt2);
+      }
+      return;
     }
-    return null;
+    paramArrayOfByte1 = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    paramArrayOfByte1.putExtras(this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo));
+    paramArrayOfByte1.setFlags(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramArrayOfByte1);
   }
 }
 

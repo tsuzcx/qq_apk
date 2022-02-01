@@ -1,43 +1,15 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.ShieldFriendsListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-
-public class afng
-  extends anyu
+public abstract class afng
 {
-  public afng(ShieldFriendsListActivity paramShieldFriendsListActivity) {}
+  private boolean a;
   
-  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  public void a(boolean paramBoolean)
   {
-    super.onUpdateFriendShieldFlag(paramLong, paramBoolean1, paramBoolean2, paramBoolean3, paramString);
-    if (!paramBoolean2)
-    {
-      paramString = this.a;
-      if (!paramBoolean1)
-      {
-        paramBoolean1 = true;
-        if (ShieldFriendsListActivity.a(paramString, paramLong, paramBoolean1)) {
-          QQToast.a(BaseApplication.getContext(), anzj.a(2131712867), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299011));
-        }
-      }
-    }
-    do
-    {
-      return;
-      paramBoolean1 = false;
-      break;
-      if (ShieldFriendsListActivity.a(this.a).a(String.valueOf(paramLong)))
-      {
-        ShieldFriendsListActivity.a(this.a, paramLong, paramBoolean1);
-        return;
-      }
-      paramString = ((anyw)this.a.app.getManager(51)).e(String.valueOf(paramLong));
-    } while ((paramString == null) || (paramString.isShield()));
-    ShieldFriendsListActivity.a(this.a).a(paramString);
-    ShieldFriendsListActivity.a(this.a);
+    this.a = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.a;
   }
 }
 

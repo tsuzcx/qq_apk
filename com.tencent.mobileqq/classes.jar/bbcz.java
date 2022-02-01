@@ -1,42 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Build;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Date;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bbcz
-  implements DialogInterface.OnDismissListener
+class bbcz
+  implements View.OnClickListener
 {
-  bbcz(IosTimepicker paramIosTimepicker, JsBridgeListener paramJsBridgeListener) {}
+  bbcz(bbcy parambbcy, bayt parambayt) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    long l1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener != null))
-    {
-      l1 = this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker.a() / 1000L;
-      if (!Build.MODEL.equals("Coolpad 5890")) {
-        break label126;
-      }
-      long l2 = new Date().getTime() / 1000L;
-      if (l1 >= l2) {
-        break label126;
-      }
-      l1 = l2;
-    }
-    label126:
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(bbcx.a(), 2, "onDismiss Time :" + bbdc.a(1000L * l1));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqRemindWidgetIosTimepicker.setOnTimePickerSelectListener(null);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener.a(Long.valueOf(l1));
-      bbcx.a = true;
-      return;
-    }
+    this.jdField_a_of_type_Bayt.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

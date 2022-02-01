@@ -1,43 +1,16 @@
-import java.io.File;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
+import android.widget.ListView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
 
-public final class bdwi
-  implements bdwl
+class bdwi
+  implements bdxw
 {
-  private final File a;
+  bdwi(bdwg parambdwg) {}
   
-  public bdwi(String paramString)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    this.a = new File(String.format("/data/local/tmp/%sPluginManager.apk", new Object[] { paramString }));
-  }
-  
-  public boolean a()
-  {
-    return this.a.exists();
-  }
-  
-  public File getLatest()
-  {
-    if (this.a.exists()) {
-      return this.a;
+    if ((paramBoolean) && (paramInt > 0)) {
+      this.a.a.a.a.smoothScrollBy(paramInt, 200);
     }
-    return null;
-  }
-  
-  public Future<Boolean> isAvailable(File paramFile)
-  {
-    return aoik.a(16).submit(new bdwk(this, paramFile));
-  }
-  
-  public Future<File> update()
-  {
-    return aoik.a(16).submit(new bdwj(this));
-  }
-  
-  public boolean wasUpdating()
-  {
-    return false;
   }
 }
 

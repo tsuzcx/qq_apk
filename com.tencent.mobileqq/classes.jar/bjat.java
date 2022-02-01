@@ -1,29 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
-import com.tencent.mobileqq.widget.ProfileCardExtendFriendView.5;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqmini.proxyimpl.AIOEntryPlugin.1;
+import com.tencent.qqmini.proxyimpl.AIOEntryPlugin.2;
+import com.tencent.qqmini.sdk.annotation.JsEvent;
+import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+@JsPlugin
 public class bjat
-  implements View.OnClickListener
+  extends BaseJsPlugin
 {
-  public bjat(ProfileCardExtendFriendView.5 param5) {}
-  
-  public void onClick(View paramView)
+  @JsEvent({"hideMiniAIOEntrance"})
+  public void hideMiniAIOEntrance(RequestEvent paramRequestEvent)
   {
-    if (this.a.a.authState == 1L) {
-      QQToast.a(this.a.this$0.getContext(), 0, 2131697984, 1).a();
-    }
-    for (;;)
+    AppBrandTask.runTaskOnUiThread(new AIOEntryPlugin.2(this, paramRequestEvent));
+  }
+  
+  @JsEvent({"showMiniAIOEntrance"})
+  public void showMiniAIOEntrance(RequestEvent paramRequestEvent)
+  {
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      AppBrandTask.runTaskOnUiThread(new AIOEntryPlugin.1(this, new JSONObject(paramRequestEvent.jsonParams), paramRequestEvent));
       return;
-      if ((this.a.a.authState == 0L) || (this.a.a.authState == 3L)) {
-        atcb.a((FriendProfileCardActivity)ProfileCardExtendFriendView.a(this.a.this$0), this.a.a.idx, this.a.a.schoolName, this.a.a.schoolId);
-      }
+    }
+    catch (JSONException paramRequestEvent)
+    {
+      paramRequestEvent.printStackTrace();
     }
   }
 }

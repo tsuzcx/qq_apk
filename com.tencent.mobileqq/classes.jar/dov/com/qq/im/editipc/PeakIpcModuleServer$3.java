@@ -1,6 +1,6 @@
 package dov.com.qq.im.editipc;
 
-import bpxx;
+import bnau;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
@@ -8,11 +8,11 @@ import com.tencent.mobileqq.data.MessageForPic;
 public class PeakIpcModuleServer$3
   implements Runnable
 {
-  public PeakIpcModuleServer$3(bpxx parambpxx, QQAppInterface paramQQAppInterface, MessageForPic paramMessageForPic) {}
+  public PeakIpcModuleServer$3(bnau parambnau, QQAppInterface paramQQAppInterface, MessageForPic paramMessageForPic) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgByUniseq(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq);
   }
 }
 

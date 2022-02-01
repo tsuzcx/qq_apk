@@ -1,16 +1,45 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 class uti
-  extends GestureDetector.SimpleOnGestureListener
+  implements TVK_SDKMgr.OnLogListener
 {
-  uti(uth paramuth) {}
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public int d(String paramString1, String paramString2)
   {
-    uqf.b("GdtAdWSVerticalVideoItemView", "itemView onSingleTapConfirmed");
-    uth.a(this.a);
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    if (QLog.isColorLevel()) {
+      uya.b("WS_PLAYER_SDK_" + paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    uya.d("WS_PLAYER_SDK_" + paramString1, 1, paramString2);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      uya.a("WS_PLAYER_SDK_" + paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      uya.b("WS_PLAYER_SDK_" + paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      uya.c("WS_PLAYER_SDK_" + paramString1, 2, paramString2);
+    }
+    return 0;
   }
 }
 

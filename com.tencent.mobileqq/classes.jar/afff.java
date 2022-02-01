@@ -1,21 +1,39 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.graphics.Point;
+import android.view.animation.AccelerateInterpolator;
+import com.tencent.mobileqq.activity.aio.anim.businesseggs.BusinessEggsAnimation;
+import com.tencent.mobileqq.utils.ViewUtils;
 
-class afff
-  implements View.OnClickListener
+public class afff
+  implements affj
 {
-  afff(affc paramaffc, SharedPreferences paramSharedPreferences, String paramString) {}
+  public afff(BusinessEggsAnimation paramBusinessEggsAnimation) {}
   
-  public void onClick(View paramView)
+  public Point a(Point paramPoint)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
-    this.jdField_a_of_type_Affc.a.a.sendEmptyMessageDelayed(1010, 1000L);
-    EventCollector.getInstance().onViewClicked(paramView);
+    Point localPoint = new Point();
+    localPoint.x = ((int)(bfyk.a(-1.0F, 1.0F) * ViewUtils.dip2px(50.0F) + paramPoint.x / 2));
+    localPoint.y = 0;
+    return localPoint;
+  }
+  
+  public Point a(Point paramPoint1, Point paramPoint2, float paramFloat)
+  {
+    Point localPoint = new Point();
+    if (paramPoint1.x % 2 == 0) {}
+    for (int i = (int)(Math.sin(paramFloat * 6.283185307179586D) * ViewUtils.dip2px(60.0F));; i = (int)(Math.cos(paramFloat * 6.283185307179586D) * ViewUtils.dip2px(60.0F)))
+    {
+      localPoint.x = ((int)(i * 1.5F + paramPoint1.x));
+      localPoint.y = ((int)(1.3F * paramPoint2.y * paramFloat));
+      return localPoint;
+    }
+  }
+  
+  public void a(ValueAnimator paramValueAnimator)
+  {
+    paramValueAnimator.setDuration(5500L);
+    paramValueAnimator.setInterpolator(new AccelerateInterpolator());
+    paramValueAnimator.addListener(new affg(this));
   }
 }
 

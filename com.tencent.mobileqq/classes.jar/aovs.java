@@ -1,36 +1,39 @@
-import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
+import com.tencent.ark.ArkAppPreloader.PreloadAppCallback;
+import com.tencent.ark.open.ArkAppMgr;
 import com.tencent.qphone.base.util.QLog;
 
-public class aovs
-  extends Resources
+class aovs
+  implements ArkAppPreloader.PreloadAppCallback
 {
-  private aovw a;
+  aovs(aovq paramaovq) {}
   
-  public aovs(aovw paramaovw)
+  public void beginAppload(String paramString, int paramInt)
   {
-    super(paramaovw.b().getAssets(), paramaovw.b().getDisplayMetrics(), paramaovw.b().getConfiguration());
-    this.a = paramaovw;
+    if (paramInt == 1) {
+      aovk.a(paramString);
+    }
   }
   
-  public CharSequence getText(int paramInt)
+  public void onAppLoaded(boolean paramBoolean, String paramString, int paramInt)
   {
-    int i = this.a.a(paramInt);
-    try
+    if (paramInt == 1)
     {
-      CharSequence localCharSequence = this.a.a().getText(i);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MultiLanguageEngine", 4, new Object[] { "getText delegate:", Integer.valueOf(paramInt), " ,langId:", Integer.valueOf(i), " ,content:" + localCharSequence });
+      aovk.b(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, new Object[] { "profiling preload app appname=", paramString, ",success=", Boolean.valueOf(paramBoolean) });
       }
-      return localCharSequence;
     }
-    catch (Resources.NotFoundException localNotFoundException) {}
-    return this.a.b().getText(i);
+  }
+  
+  public void onReleaseAndReload(String paramString, int paramInt)
+  {
+    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload begin app = " + paramString);
+    ArkAppMgr.getInstance().getAppPathByName(paramString, "", "0.0.0.1", null, new aovt(this, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aovs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,4 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class bmrg
-{
-  public ImageView a;
-  public TextView a;
-}
+public class bmrg {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

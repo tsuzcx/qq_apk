@@ -1,28 +1,59 @@
-import com.tencent.biz.qqcircle.bizparts.danmaku.text.TextCell;
-import java.util.ArrayList;
-import java.util.regex.Pattern;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import java.util.Vector;
 
-public class vhm
-  extends vhn
+class vhm
+  implements Downloader.DownloadListener
 {
-  private vjg a;
+  vhm(vhl paramvhl, vhn paramvhn) {}
   
-  public vhm(vjg paramvjg, Pattern paramPattern)
+  public void onDownloadCanceled(String paramString)
   {
-    super(paramPattern);
-    this.jdField_a_of_type_Vjg = paramvjg;
+    vhl.a(this.jdField_a_of_type_Vhl, false);
+    if (vhl.a(this.jdField_a_of_type_Vhl).size() > 0)
+    {
+      vhn localvhn = (vhn)vhl.a(this.jdField_a_of_type_Vhl).get(0);
+      vhl.a(this.jdField_a_of_type_Vhl).remove(0);
+      vhl.a(this.jdField_a_of_type_Vhl, localvhn);
+    }
+    if (this.jdField_a_of_type_Vhn.a != null) {
+      this.jdField_a_of_type_Vhn.a.onDownloadCanceled(paramString);
+    }
   }
   
-  public ArrayList<TextCell> a(int paramInt, boolean paramBoolean, vjg paramvjg, CharSequence paramCharSequence, ArrayList<TextCell> paramArrayList)
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    paramInt = Math.max(paramInt, bhtq.a(10.0F));
-    paramCharSequence = via.a().a(this.jdField_a_of_type_JavaLangString, paramInt, this.jdField_a_of_type_Vjg);
-    paramvjg = paramCharSequence;
-    if (paramCharSequence == null) {
-      paramvjg = new TextCell(0, this.jdField_a_of_type_JavaLangString);
+    vhl.a(this.jdField_a_of_type_Vhl, false);
+    if (vhl.a(this.jdField_a_of_type_Vhl).size() > 0)
+    {
+      vhn localvhn = (vhn)vhl.a(this.jdField_a_of_type_Vhl).get(0);
+      vhl.a(this.jdField_a_of_type_Vhl).remove(0);
+      vhl.a(this.jdField_a_of_type_Vhl, localvhn);
     }
-    paramArrayList.add(paramvjg);
-    return paramArrayList;
+    if (this.jdField_a_of_type_Vhn.a != null) {
+      this.jdField_a_of_type_Vhn.a.onDownloadFailed(paramString, paramDownloadResult);
+    }
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  {
+    if (this.jdField_a_of_type_Vhn.a != null) {
+      this.jdField_a_of_type_Vhn.a.onDownloadProgress(paramString, paramLong, paramFloat);
+    }
+  }
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    vhl.a(this.jdField_a_of_type_Vhl, false);
+    if (vhl.a(this.jdField_a_of_type_Vhl).size() > 0)
+    {
+      vhn localvhn = (vhn)vhl.a(this.jdField_a_of_type_Vhl).get(0);
+      vhl.a(this.jdField_a_of_type_Vhl).remove(0);
+      vhl.a(this.jdField_a_of_type_Vhl, localvhn);
+    }
+    if (this.jdField_a_of_type_Vhn.a != null) {
+      this.jdField_a_of_type_Vhn.a.onDownloadSucceed(paramString, paramDownloadResult);
+    }
   }
 }
 

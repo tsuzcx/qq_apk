@@ -2,8 +2,10 @@ package com.tencent.autotemplate.filter;
 
 import android.support.annotation.NonNull;
 import com.tencent.autotemplate.TAVAutomaticRenderContext;
+import com.tencent.autotemplate.transition.FaceTransition;
 import com.tencent.tavkit.composition.video.TAVVideoMixEffect;
 import com.tencent.tavkit.composition.video.TAVVideoMixEffect.Filter;
+import java.util.List;
 
 public class TAVOneClickFilmStickerEffect
   implements TAVVideoMixEffect
@@ -11,6 +13,7 @@ public class TAVOneClickFilmStickerEffect
   private static final String TAG = "TAVStickerOverlayEffect";
   public static final String TRACK_INDEX = "trackIndex";
   private int count = 0;
+  private List<FaceTransition> faceTransitions;
   private int mRenderSceneType = 0;
   protected String reportKey = "TAVOneClickFilmStickerEffect";
   private TAVAutomaticRenderContext stickerContext;
@@ -39,6 +42,11 @@ public class TAVOneClickFilmStickerEffect
   public TAVAutomaticRenderContext getStickerContext()
   {
     return this.stickerContext;
+  }
+  
+  public void setFaceTransitions(List<FaceTransition> paramList)
+  {
+    this.faceTransitions = paramList;
   }
   
   public void setRenderSceneType(int paramInt)

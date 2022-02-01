@@ -1,178 +1,104 @@
-import android.content.res.AssetManager;
-import android.content.res.Resources;
-import android.util.Xml;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityFacade.17;
+import com.tencent.mobileqq.activity.ChatActivityFacade.17.1.1;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ApolloMessage;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForLightVideo;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.turingfd.sdk.xq.TuringFdService;
-import com.tencent.turingfd.sdk.xq.TuringFdService.ITuringDID;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashSet;
-import java.util.Set;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
 
 public class acvw
+  implements bjoe
 {
-  private volatile Set<String> jdField_a_of_type_JavaUtilSet;
-  private boolean jdField_a_of_type_Boolean;
+  public acvw(ChatActivityFacade.17 param17) {}
   
-  public static acvw a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return acvy.a();
-  }
-  
-  private acvz a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!bdnc.b())
+    switch (paramInt)
     {
-      acvc.a("GdtAidHelper", "only arm support taid");
-      return new acvz("", "", -2147483647, 0L, null);
     }
-    boolean bool = false;
-    acvc.a("GdtAidHelper", "getAidTicket start , businessId -> " + paramString + ", useCache -> " + paramBoolean1 + ", needVerifyBusinessId -> " + paramBoolean2 + "， TuringVersion : " + TuringFdService.getVersionInfo());
-    if (paramBoolean2) {
-      bool = a(paramString);
-    }
-    paramString = BaseApplicationImpl.getContext().getApplicationContext();
-    if (!this.jdField_a_of_type_Boolean) {
-      acvc.a("GdtAidHelper", "getAidTicket init TuringSDK");
-    }
-    int j;
-    long l;
     for (;;)
     {
+      if (acvv.a != null) {
+        acvv.a.dismiss();
+      }
+      return;
+      acvv.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      if ((((this.a.jdField_a_of_type_AndroidContentContext instanceof SplashActivity)) || ((this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity))) && (((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment() != null) && (((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a() != null))
+      {
+        ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a().startDelAnimAndDelMsg(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForArkApp)) {
+          aowk.a().a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+        }
+        if (((StructLongMessageDownloadProcessor.isPALongMsg(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage)) || (StructLongMessageDownloadProcessor.needFetchOldLongMsg(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage))) && ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForStructing)))
+        {
+          paramView = (MessageForStructing)this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+          StructLongMessageDownloadProcessor.deleteTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.uniseq);
+        }
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForApollo))
+        {
+          paramView = (MessageForApollo)this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+          if (paramView != null)
+          {
+            amat.a(paramView.uniseq, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "del_msg");
+            if ((paramView.mApolloMessage != null) && ((this.a.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)))
+            {
+              BaseChatPie localBaseChatPie = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
+              if ((localBaseChatPie != null) && (localBaseChatPie.sessionInfo != null)) {
+                VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "del_success", ApolloUtil.b(localBaseChatPie.sessionInfo.curType), 0, new String[] { Integer.toString(paramView.mApolloMessage.id) });
+              }
+            }
+          }
+        }
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForFile))
+        {
+          paramView = aszt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForFile)this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().b(paramView.nSessionId);
+          bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006447", "0X8006447", 0, 0, "6", "", "", "");
+        }
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForLightVideo)) {
+          auyl.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+        }
+        paramView = this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("tim_aio_gary_uniseq");
+        if (QLog.isDebugVersion()) {
+          QLog.i("AIOMessageSpreadManager", 1, "del garyTips id[" + paramView + "],targetId[" + this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msgUid + "], hashCode:" + this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.hashCode());
+        }
+        if (TextUtils.isEmpty(paramView)) {}
+      }
       try
       {
-        bhjw.a();
-        this.jdField_a_of_type_Boolean = true;
-        if (paramBoolean1) {}
-        String str1;
-        String str2;
-        paramString = TuringFdService.getTuringDID(paramString);
-      }
-      catch (Throwable paramString)
-      {
-        try
-        {
-          paramString = TuringFdService.getTuringDIDCached(paramString);
-          j = paramString.getErrorCode();
-          l = paramString.getExpiredTimestamp();
-          if ((!paramBoolean2) || (j != 0)) {
-            break label361;
-          }
-          i = 1;
-          if (i == 0) {
-            break;
-          }
-          bdll.b(null, "dc00898", "", "", "0X800A5B3", "0X800A5B3", 0, 0, "", "", "", "");
-          str1 = paramString.getAIDTicket();
-          str2 = paramString.getTAIDTicket();
-          acvc.a("GdtAidHelper", "getAidTicket aid ticket ->" + str1 + ", taidTicket -> " + str2);
-          return new acvz(paramString.getAIDTicket(), paramString.getTAIDTicket(), 0, l, null);
-        }
-        catch (Throwable paramString)
-        {
-          QLog.e("GdtAidHelper", 1, paramString, new Object[] { "Turing get aid crash" + TuringFdService.getVersionInfo() });
-          return new acvz("", "", -2147483645, 0L, paramString, null);
-        }
-        paramString = paramString;
-        QLog.e("GdtAidHelper", 1, paramString, new Object[] { "Turing init crash fail" });
-        return new acvz("", "", -2147483646, 0L, paramString, null);
-      }
-      continue;
-      label361:
-      i = 0;
-    }
-    int i = j;
-    if (paramBoolean2)
-    {
-      i = j;
-      if (!bool) {
-        i = -2147483648;
-      }
-    }
-    acvc.a("GdtAidHelper", "getAidTicket business id not verify, error code return only : error code-> " + i);
-    return new acvz("", "", i, l, null);
-  }
-  
-  private boolean a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilSet == null) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        HashSet localHashSet;
-        if (this.jdField_a_of_type_JavaUtilSet == null) {
-          localHashSet = new HashSet();
-        }
-        try
-        {
-          InputStream localInputStream = BaseApplicationImpl.getContext().getResources().getAssets().open("AidAuthorityFile.xml");
-          localXmlPullParser = Xml.newPullParser();
-          localXmlPullParser.setInput(localInputStream, "utf-8");
-          i = localXmlPullParser.getEventType();
-        }
-        catch (IOException localIOException)
-        {
-          XmlPullParser localXmlPullParser;
-          String str;
-          localIOException.printStackTrace();
-          this.jdField_a_of_type_JavaUtilSet = localHashSet;
-          if ((this.jdField_a_of_type_JavaUtilSet == null) || (!this.jdField_a_of_type_JavaUtilSet.contains(paramString))) {
-            break label227;
-          }
-          bool = true;
-          if (bool) {
-            continue;
-          }
-          bdkt.a("GdtAidHelper", "business id verify fail, please check the business id");
-          return bool;
-          localIOException.close();
-          continue;
-        }
-        catch (XmlPullParserException localXmlPullParserException)
-        {
-          localXmlPullParserException.printStackTrace();
-          continue;
-        }
-        i = localXmlPullParser.next();
-        break label232;
-        if (!localXmlPullParser.getName().equalsIgnoreCase("business")) {
-          continue;
-        }
-        str = localXmlPullParser.getAttributeValue(null, "id");
-        localHashSet.add(str);
-        if (!QLog.isDevelopLevel()) {
-          continue;
-        }
-        QLog.d("GdtAidHelper", 4, "init sensitive au, busiId = " + str);
+        long l = Long.parseLong(paramView);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgByUniseq(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, l, true);
+        ((bgga)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(235)).a.a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
         continue;
-        boolean bool = false;
+        ThreadManager.post(new ChatActivityFacade.17.1.1(this), 8, null, true);
       }
-      finally {}
-      label227:
-      continue;
-      label232:
-      if (i != 1) {
-        switch (i)
+      catch (Exception paramView)
+      {
+        for (;;)
         {
+          paramView.printStackTrace();
+          QLog.e("ChatActivityFacade", 1, paramView.toString());
         }
       }
     }
-  }
-  
-  public acvz a()
-  {
-    return a("", false, false);
-  }
-  
-  acvz a(String paramString)
-  {
-    return a(paramString, true, true);
   }
 }
 

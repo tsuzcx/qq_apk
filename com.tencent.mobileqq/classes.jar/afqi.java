@@ -1,34 +1,13 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
 
 public class afqi
-  implements View.OnLongClickListener
+  implements afrc
 {
-  public afqi(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public void a(int paramInt) {}
   
-  public boolean onLongClick(View paramView)
+  public int[] a()
   {
-    if (!TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).a("web_view_long_click", true))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
-      }
-      return true;
-    }
-    if (!TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.b(this.a).a("image_long_click", false))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
-      }
-      return false;
-    }
-    biqa localbiqa = (biqa)this.a.mComponentsProvider.a(8);
-    if ((localbiqa != null) && (localbiqa.a(paramView))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return new int[7];
   }
 }
 

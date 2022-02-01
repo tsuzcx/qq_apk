@@ -1,74 +1,21 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.face.FaceDecodeTask;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import com.tencent.ark.ark.VariantWrapper;
 
-public final class aoob
-  extends MqqHandler
+class aoob
+  implements aopg
 {
-  public aoob(Looper paramLooper)
+  aoob(aooa paramaooa, long paramLong) {}
+  
+  public void a(long paramLong)
   {
-    super(paramLooper);
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aooa.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (paramMessage == null) {}
-    label4:
-    aooc localaooc;
-    label143:
-    label150:
-    do
-    {
-      do
-      {
-        int i;
-        do
-        {
-          break label4;
-          do
-          {
-            return;
-          } while (paramMessage.what != FaceDecodeTask.jdField_a_of_type_Int);
-          if (FaceDecodeTask.b.size() <= 0) {
-            break label150;
-          }
-          i = 0;
-          if (i >= FaceDecodeTask.b.size()) {
-            break label143;
-          }
-          paramMessage = (FaceDecodeTask)FaceDecodeTask.b.get(i);
-          if ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-            break;
-          }
-          localaooc = (aooc)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
-        } while (localaooc == null);
-        if (paramMessage.jdField_a_of_type_Boolean)
-        {
-          paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.b = 2;
-          localaooc.a(FaceDecodeTask.a(paramMessage), paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          localaooc.a(paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
-        }
-        FaceDecodeTask.b.clear();
-        return;
-        paramMessage = (FaceDecodeTask)paramMessage.obj;
-      } while ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
-      localaooc = (aooc)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localaooc == null);
-    if (paramMessage.jdField_a_of_type_Boolean)
-    {
-      paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo.b = 2;
-      localaooc.a(FaceDecodeTask.a(paramMessage), paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo);
-      return;
-    }
-    localaooc.a(paramMessage.jdField_a_of_type_ComTencentMobileqqAppFaceFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
+    aonx.a(this.jdField_a_of_type_Aooa.a, this.jdField_a_of_type_Long, paramBoolean, "Motion", paramFloat1, paramFloat2, paramFloat3);
   }
 }
 

@@ -1,19 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
 public class zta
-  implements View.OnClickListener
 {
-  public zta(InnerListView paramInnerListView, int paramInt) {}
+  public float a;
+  public String a;
+  public boolean a;
+  public float b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onClick(View paramView)
+  public zta(JSONObject paramJSONObject)
   {
-    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
-      InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("startTime");
+    this.c = paramJSONObject.optString("endTime");
+    this.d = paramJSONObject.optString("jumpUrl");
+    this.jdField_a_of_type_Float = ((float)paramJSONObject.optDouble("durationStart"));
+    this.jdField_b_of_type_Float = ((float)paramJSONObject.optDouble("durationEnd"));
+    this.e = paramJSONObject.optString("replaceImage");
+    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("replace");
   }
 }
 

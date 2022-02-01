@@ -1,18 +1,21 @@
 package com.tencent.hippy.qq.update;
 
-import bdgt;
+import bbzh;
 import com.tencent.mobileqq.soload.LoadExtResult;
 import com.tencent.qphone.base.util.QLog;
 
 class HippyQQLibraryManager$1
-  implements bdgt
+  implements bbzh
 {
   HippyQQLibraryManager$1(HippyQQLibraryManager paramHippyQQLibraryManager) {}
   
   public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Hippy", 2, "Hippy: SoLoadManager download resCode=" + paramInt);
+    if ((QLog.isColorLevel()) || (paramInt != 0)) {
+      QLog.d("Hippy", 1, "Hippy: SoLoadManager download resCode=" + paramInt);
+    }
+    if (paramInt == 0) {
+      this.this$0.updateSoVersions(paramLoadExtResult);
     }
   }
 }

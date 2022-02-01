@@ -1,29 +1,19 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.animation.AlphaAnimation;
-import android.widget.TextView;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class arzt
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public arzt(DataReportViewer paramDataReportViewer) {}
+  public arzt(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.a.a.setVisibility(0);
-    paramAnimator = new AlphaAnimation(0.0F, 1.0F);
-    paramAnimator.setFillAfter(true);
-    paramAnimator.setDuration(200L);
-    this.a.a.startAnimation(paramAnimator);
-    paramAnimator.setAnimationListener(new arzu(this));
+    QfileLocalFilePicTabView.a(this.a, paramView, true);
+    paramView.sendAccessibilityEvent(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

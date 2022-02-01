@@ -1,104 +1,78 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class alma
-  implements allu
+  implements View.OnClickListener
 {
-  private final int jdField_a_of_type_Int;
-  @Nullable
-  private allw jdField_a_of_type_Allw;
-  @NonNull
-  private final Intent jdField_a_of_type_AndroidContentIntent;
-  @NonNull
-  private final String jdField_a_of_type_JavaLangString;
-  @NonNull
-  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  @NonNull
-  private final String b;
-  @NonNull
-  private final String c;
-  @Nullable
-  private final String d;
-  @NonNull
-  private final String e;
+  alma(ally paramally) {}
   
-  public alma(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString1, @NonNull String paramString2, @NonNull String paramString3, @NonNull String paramString4, @NonNull Intent paramIntent, @NonNull String paramString5, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.e = paramString5;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(@Nullable allw paramallw)
-  {
-    this.jdField_a_of_type_Allw = paramallw;
-  }
-  
-  public boolean isNeedAutoCloseWhenAccountChange()
-  {
-    return true;
-  }
-  
-  public void onClose()
-  {
-    if (this.jdField_a_of_type_Allw == null) {}
-    QQAppInterface localQQAppInterface;
-    do
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.resetSlideStatus();
+    Object localObject = (View)paramView.getParent();
+    if ((localObject instanceof ShaderAnimLayout)) {
+      ((ShaderAnimLayout)localObject).hideDirectly();
+    }
+    localObject = paramView.getTag();
+    if (!(localObject instanceof TroopInfo))
     {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    aljw.a(localQQAppInterface, this.jdField_a_of_type_Allw);
-  }
-  
-  public void onEnter()
-  {
-    if (this.jdField_a_of_type_Allw == null) {}
-    QQAppInterface localQQAppInterface;
-    BaseActivity localBaseActivity;
-    do
-    {
-      do
-      {
-        return;
-        localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while (localQQAppInterface == null);
-      localBaseActivity = BaseActivity.sTopActivity;
-    } while ((localBaseActivity == null) || (localBaseActivity.isFinishing()));
-    try
-    {
-      Class localClass = Class.forName(this.jdField_b_of_type_JavaLangString).asSubclass(Activity.class);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("banner_fromBanner", true);
-      bmgt localbmgt = new bmgt(this.jdField_a_of_type_Int);
-      localbmgt.d = this.d;
-      localbmgt.e = this.jdField_a_of_type_JavaLangString;
-      localbmgt.jdField_a_of_type_JavaLangClass = localClass;
-      localbmgt.jdField_b_of_type_JavaLangString = this.c;
-      localbmgt.jdField_a_of_type_JavaLangString = this.e;
-      localbmgt.jdField_a_of_type_AndroidContentIntent = this.jdField_a_of_type_AndroidContentIntent;
-      localbmgt.jdField_b_of_type_Int = -1;
-      bmgk.a(localBaseActivity, localbmgt);
-      aljw.a(localQQAppInterface, this.jdField_a_of_type_Allw);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
+    TroopInfo localTroopInfo = (TroopInfo)localObject;
+    boolean bool = ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(localTroopInfo.troopuin);
+    localObject = (amoo)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(22);
+    int i;
+    label111:
+    bcek localbcek;
+    label133:
+    label205:
+    String str;
+    if (bool)
     {
-      QLog.e("Q.recent.banner", 1, "return to plugin error, can not find the ckass " + this.jdField_b_of_type_JavaLangString);
+      i = 1;
+      if (!((amoo)localObject).a(localTroopInfo.troopcode, i)) {
+        break label261;
+      }
+      if (!bool) {
+        break label263;
+      }
+      localObject = "Clk_uncommgrp";
+      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_set", "", "Grp_contactlist", (String)localObject, 0, 0, localTroopInfo.troopuin, "", "", "");
+      localbcek = new bcek(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_set").c("Grp_contactlist");
+      if (!bool) {
+        break label270;
+      }
+      localObject = "Clk_unstick";
+      localbcek = localbcek.d((String)localObject);
+      str = localTroopInfo.troopuin;
+      if (!localTroopInfo.hasSetTroopHead()) {
+        break label277;
+      }
+    }
+    label261:
+    label263:
+    label270:
+    label277:
+    for (localObject = "1";; localObject = "0")
+    {
+      localbcek.a(new String[] { str, localObject }).a();
+      break;
+      i = 0;
+      break label111;
+      break;
+      localObject = "Clk_setcommgrp";
+      break label133;
+      localObject = "Clk_stick";
+      break label205;
     }
   }
-  
-  public void onOverride() {}
 }
 
 

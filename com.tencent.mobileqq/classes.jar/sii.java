@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class sii
-  implements blrf
+class sii
+  implements DialogInterface.OnCancelListener
 {
-  public sii(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  sii(sig paramsig) {}
   
-  public void a()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a(new sij(this, "onListViewDrawFinished"));
+    sig.a(this.a, -1, -1, true);
   }
 }
 

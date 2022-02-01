@@ -14,7 +14,7 @@ class BaseMessageManager$RefreshRunnable$RemoveRefreshKeyRunnable
   
   public void run()
   {
-    this.a.a.b.remove(BaseMessageManager.RefreshRunnable.a(this.this$0));
+    this.a.a.refreshActionMap.remove(BaseMessageManager.RefreshRunnable.a(this.this$0));
   }
 }
 

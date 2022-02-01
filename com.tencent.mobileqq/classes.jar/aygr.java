@@ -1,6 +1,19 @@
-public abstract interface aygr
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+
+public class aygr
+  extends aygp
 {
-  public abstract void a(aygm paramaygm);
+  protected void b(BaseChatPie paramBaseChatPie)
+  {
+    if (bezm.b(paramBaseChatPie.app, paramBaseChatPie.sessionInfo.curFriendUin))
+    {
+      a(paramBaseChatPie.sessionInfo.curType, 217);
+      a(paramBaseChatPie.sessionInfo.curType, 218);
+      return;
+    }
+    a(paramBaseChatPie.sessionInfo.curType, 205);
+  }
 }
 
 

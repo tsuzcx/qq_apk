@@ -1,22 +1,49 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation.1.1;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotQuestion;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class qqv
-  implements Animation.AnimationListener
+  extends qpk
 {
-  public qqv(ComponentSocialOperation paramComponentSocialOperation) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public qqv(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
   {
-    this.a.a.post(new ComponentSocialOperation.1.1(this));
+    super(paramContext, paramFaceDecoder, paramslt);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public qpk a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return g();
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public qpk d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(AIOUtils.dp2px(150.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    if ((this.jdField_a_of_type_Qpj != null) && ((this.jdField_a_of_type_Qpj instanceof ComponentContentHotQuestion))) {
+      localLinearLayout.addView((ComponentContentHotQuestion)this.jdField_a_of_type_Qpj);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public qpk e()
+  {
+    return null;
+  }
+  
+  public qpk g()
+  {
+    this.jdField_a_of_type_Qpj = new ComponentContentHotQuestion(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
 }
 
 

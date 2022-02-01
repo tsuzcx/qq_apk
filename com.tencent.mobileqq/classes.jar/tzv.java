@@ -1,29 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil.19;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
-public class tzv
-  implements bgpp
+public abstract interface tzv
 {
-  public tzv(PublicAccountUtil.19 param19) {}
+  public abstract void a(sdg paramsdg, int paramInt);
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
-  {
-    if (paramJSONObject != null) {
-      if (QLog.isColorLevel()) {
-        QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result :" + paramJSONObject);
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result null");
-  }
+  public abstract void a(sdg paramsdg, int paramInt1, int paramInt2);
+  
+  public abstract void b(sdg paramsdg, int paramInt);
+  
+  public abstract void b(sdg paramsdg, int paramInt1, int paramInt2);
+  
+  public abstract void c(sdg paramsdg, int paramInt);
+  
+  public abstract void d(sdg paramsdg, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tzv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,13 @@
-public class aovd
-  implements aouy
+import android.os.HandlerThread;
+import com.tencent.ark.ArkEnvironmentManager.ThreadCreater;
+import com.tencent.mobileqq.app.ThreadManager;
+
+public final class aovd
+  implements ArkEnvironmentManager.ThreadCreater
 {
-  public void a(aocj paramaocj, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, aock paramaock)
+  public HandlerThread createHanderThread(String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 999: 
-      paramaocj.e(paramBoolean, paramObject);
-      return;
-    case 1000: 
-      paramaocj.h();
-      return;
-    case 1003: 
-      paramaocj.o(paramBoolean);
-      return;
-    case 1004: 
-      paramaocj.g(paramBoolean, paramObject);
-      return;
-    case 1005: 
-      paramaocj.p(paramBoolean);
-      return;
-    case 2000: 
-      paramaocj.i();
-      return;
-    case 2001: 
-      paramaocj.j();
-      return;
-    case 2002: 
-      paramaocj.k();
-      return;
-    case 1002: 
-      paramaocj.b(paramArrayOfObject);
-      return;
-    case 3012: 
-      paramaocj.c(paramBoolean, paramArrayOfObject);
-      return;
-    }
-    paramaocj.g(paramBoolean, paramArrayOfObject);
+    return ThreadManager.newFreeHandlerThread(paramString, -1);
   }
 }
 

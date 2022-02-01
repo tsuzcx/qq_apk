@@ -1,21 +1,8 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
+import android.widget.TextView;
 
-class aifk
-  implements View.OnTouchListener
+public class aifk
 {
-  aifk(aifj paramaifj, aife paramaife) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    paramView = paramView.getParent();
-    if (paramView != null) {
-      paramView.requestDisallowInterceptTouchEvent(true);
-    }
-    return false;
-  }
+  public TextView a;
 }
 
 

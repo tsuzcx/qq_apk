@@ -1,210 +1,50 @@
-import android.os.SystemClock;
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
 public class axjm
+  implements afce
 {
-  public static long a;
-  public static String a;
-  private static ConcurrentHashMap<String, Long> a;
-  public static boolean a;
-  public static long b;
-  private static ConcurrentHashMap<String, Long> b;
-  public static boolean b;
-  public static long c;
-  private static ConcurrentHashMap<Long, Long> c;
-  public static long d;
-  public static long e;
-  public static long f;
-  public static long g;
-  public static long h;
-  public static long i;
-  public static long j;
-  public static long k;
-  public static long l;
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  private float b;
+  private float c;
+  private float d;
   
-  static
+  public boolean onClick(View paramView)
   {
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangString = "MsgBackup_timeStats";
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(8));
-    jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(10));
-    jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    return false;
   }
   
-  public static void a()
+  public boolean onLongClick(View paramView)
   {
-    axjk.a();
-    axjk.a.jdField_a_of_type_Long = d;
-    axjk.a.p = g;
-    String str1;
-    String str2;
-    if (axjd.a().e() == 2)
+    return false;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
     {
-      axjk.a.q = e;
-      if (d > 0L) {
-        axjk.a.jdField_a_of_type_Double = (jdField_c_of_type_Long * 1000.0D / d);
-      }
-      if (jdField_a_of_type_Boolean)
-      {
-        str1 = axjn.a(jdField_b_of_type_Long);
-        str2 = axjn.a(jdField_a_of_type_Long);
-        if (d != 0L) {
-          break label120;
-        }
-        axjn.b(jdField_a_of_type_JavaLangString, "transport speed error", new Object[0]);
+    }
+    while ((paramView instanceof ArkAppView))
+    {
+      return ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
+      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+      this.b = paramMotionEvent.getY();
+      this.c = 0.0F;
+      this.d = 0.0F;
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      continue;
+      this.c += Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_Float);
+      this.d += Math.abs(paramMotionEvent.getY() - this.b);
+      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+      this.b = paramMotionEvent.getY();
+      continue;
+      if (((System.currentTimeMillis() - this.jdField_a_of_type_Long <= 200L) || ((this.c <= 20.0F) && (this.d <= 20.0F))) && (onClick(paramView))) {
+        return true;
       }
     }
-    label120:
-    do
-    {
-      return;
-      axjk.a.q = f;
-      break;
-      axjn.b(jdField_a_of_type_JavaLangString, "transport speed sSizeCache.size = %d, sLogs.size = %d", new Object[] { Integer.valueOf(jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.size()), Integer.valueOf(jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size()) });
-      long l1 = jdField_c_of_type_Long * 1000L / d;
-      axjn.b(jdField_a_of_type_JavaLangString, "transport speed totalLength = %d B, totalElipse = %d ms", new Object[] { Long.valueOf(jdField_c_of_type_Long), Long.valueOf(d) });
-      String str3 = axjn.a(l1);
-      axjn.b(jdField_a_of_type_JavaLangString, "transport speed max = %s, min = %s, average = %s", new Object[] { str1, str2, str3 });
-    } while (axjd.a().e() != 2);
-    axjn.b(jdField_a_of_type_JavaLangString, anzj.a(2131705808), new Object[] { Long.valueOf(e) });
-  }
-  
-  public static void a(long paramLong)
-  {
-    if (jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong)))
-    {
-      Long localLong = (Long)jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-      if (localLong != null)
-      {
-        axjn.b(jdField_a_of_type_JavaLangString, "transport complete complete = %d", new Object[] { localLong });
-        long l1 = jdField_c_of_type_Long;
-        jdField_c_of_type_Long = localLong.longValue() + l1;
-      }
-      jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
-    }
-  }
-  
-  public static void a(long paramLong1, long paramLong2)
-  {
-    jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), Long.valueOf(paramLong2));
-  }
-  
-  public static void a(String paramString)
-  {
-    jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    long l1;
-    Long localLong;
-    if (jdField_a_of_type_Boolean)
-    {
-      l1 = SystemClock.uptimeMillis();
-      if (paramString1 != null)
-      {
-        localLong = (Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
-        if (localLong != null)
-        {
-          if (TextUtils.equals("total_transport_cost", paramString1)) {
-            d = l1 - localLong.longValue();
-          }
-          if (TextUtils.equals("single_uin_cost", paramString1)) {
-            e += l1 - localLong.longValue();
-          }
-          if (TextUtils.equals("total_daoru_cost", paramString1)) {
-            f += l1 - localLong.longValue();
-          }
-          if (TextUtils.equals("cost_connect_total", paramString1)) {
-            g += l1 - localLong.longValue();
-          }
-          if (!QLog.isColorLevel()) {
-            break label178;
-          }
-          QLog.i(jdField_a_of_type_JavaLangString, 2, paramString1 + ", cost=" + (l1 - localLong.longValue()));
-        }
-      }
-    }
-    for (;;)
-    {
-      if (paramString2 != null) {
-        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString2, Long.valueOf(l1));
-      }
-      return;
-      label178:
-      Log.i(jdField_a_of_type_JavaLangString, paramString1 + ", cost=" + (l1 - localLong.longValue()));
-    }
-  }
-  
-  public static void b()
-  {
-    axjn.b(jdField_a_of_type_JavaLangString, "transport reset", new Object[0]);
-    jdField_b_of_type_Boolean = false;
-    jdField_c_of_type_Long = 0L;
-    jdField_a_of_type_Long = 0L;
-    jdField_b_of_type_Long = 0L;
-    jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-  }
-  
-  public static void b(long paramLong1, long paramLong2)
-  {
-    if (!jdField_b_of_type_Boolean)
-    {
-      jdField_a_of_type_Long = paramLong2;
-      jdField_b_of_type_Boolean = true;
-    }
-    axjn.b(jdField_a_of_type_JavaLangString, "transport increment = %d sMaxSpeed = %d, sMinSpeed = %d", new Object[] { Long.valueOf(paramLong2), Long.valueOf(jdField_b_of_type_Long), Long.valueOf(jdField_a_of_type_Long) });
-    axjn.b(jdField_a_of_type_JavaLangString, "transport storeSpeed increment = %s", new Object[] { axjn.a(paramLong2) });
-    if (paramLong2 >= jdField_b_of_type_Long) {
-      jdField_b_of_type_Long = paramLong2;
-    }
-    if (paramLong2 <= jdField_a_of_type_Long) {
-      jdField_a_of_type_Long = paramLong2;
-    }
-  }
-  
-  public static void c()
-  {
-    h = 0L;
-    i = 0L;
-    j = 0L;
-    k = 0L;
-    l = 0L;
-    jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-  }
-  
-  public static void d()
-  {
-    if ((jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey("statis_qianchums_start")) && (jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey("statis_qianchums_end")))
-    {
-      long l1 = ((Long)jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get("statis_qianchums_start")).longValue();
-      h = ((Long)jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get("statis_qianchums_end")).longValue() - l1;
-      axjn.b(jdField_a_of_type_JavaLangString, "pure qianchu time cost = %d,pb_pack cost time = %d ", new Object[] { Long.valueOf(h), Long.valueOf(i) });
-    }
-  }
-  
-  public static void e()
-  {
-    if ((jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey("statis_qianchums_start")) && (jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey("statis_qianchums_end")))
-    {
-      long l1 = ((Long)jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get("statis_qianchums_start")).longValue();
-      l = ((Long)jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get("statis_qianchums_end")).longValue() - l1 + l;
-    }
-  }
-  
-  public static void f()
-  {
-    if ((jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey("statis_qianchums_start")) && (jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey("statis_qianchums_end")))
-    {
-      long l1 = ((Long)jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get("statis_qianchums_start")).longValue();
-      j = ((Long)jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get("statis_qianchums_end")).longValue() - l1;
-      axjn.b(jdField_a_of_type_JavaLangString, "pure qianru time cost = %d ", new Object[] { Long.valueOf(l) });
-      axjn.b(jdField_a_of_type_JavaLangString, "pure daoru time cost = %d,pb_unpack cost time = %d ", new Object[] { Long.valueOf(j), Long.valueOf(k) });
-    }
+    return false;
   }
 }
 

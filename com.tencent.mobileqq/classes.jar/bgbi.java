@@ -1,19 +1,63 @@
+import android.app.Dialog;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.view.ComplexGuidViewPager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class bgbi
-  implements View.OnClickListener
+  extends ReportDialog
 {
-  public bgbi(ComplexGuidViewPager paramComplexGuidViewPager) {}
+  protected Context a;
+  private String a;
+  private String b;
+  private String c;
   
-  public void onClick(View paramView)
+  public bgbi(@NonNull Context paramContext)
   {
-    if (this.a.a != null) {
-      this.a.a.b();
+    super(paramContext, 2131755206);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    setCanceledOnTouchOutside(true);
+  }
+  
+  public bgbi a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public bgbi b(String paramString)
+  {
+    this.b = paramString;
+    return this;
+  }
+  
+  public bgbi c(String paramString)
+  {
+    this.c = paramString;
+    return this;
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    paramBundle = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562883, null);
+    setContentView(paramBundle);
+    TextView localTextView = (TextView)paramBundle.findViewById(2131367563);
+    localTextView.setOnClickListener(new bgbj(this));
+    if (this.c != null) {
+      localTextView.setText(this.c);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    localTextView = (TextView)paramBundle.findViewById(2131378707);
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      localTextView.setText(this.jdField_a_of_type_JavaLangString);
+    }
+    paramBundle = (TextView)paramBundle.findViewById(2131365451);
+    if (this.b != null) {
+      paramBundle.setText(this.b);
+    }
   }
 }
 

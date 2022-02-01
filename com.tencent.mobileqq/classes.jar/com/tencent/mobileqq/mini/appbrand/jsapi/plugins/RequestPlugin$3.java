@@ -9,6 +9,7 @@ import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
+import org.json.JSONObject;
 
 class RequestPlugin$3
   implements EIPCResultCallback
@@ -24,7 +25,9 @@ class RequestPlugin$3
     }
     try
     {
-      this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, this.val$event, ApiUtil.wrapCallbackFail(this.val$event, null, "no group"), this.val$callbackId);
+      new JSONObject(this.val$jsonParams).put("errorCode", 41004);
+      this.this$0.jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, this.val$event, ApiUtil.wrapCallbackFail(this.val$event, null, "not group manager"), this.val$callbackId);
+      TroopApplicationListUtil.showToast(41004);
       return;
     }
     catch (Exception paramEIPCResult)

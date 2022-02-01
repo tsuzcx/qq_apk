@@ -1,15 +1,15 @@
-public class bdbw
+import android.os.Bundle;
+import org.json.JSONObject;
+
+public abstract interface bdbw
 {
-  public static Object a;
-  public static String a;
-  public static volatile boolean a;
-  public static String b = "tag_v";
+  public abstract void callJs(String paramString, String... paramVarArgs);
   
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaLangString = "captureTest";
-  }
+  public abstract void diyThemeSetup(JSONObject paramJSONObject, String paramString);
+  
+  public abstract void downloadBgPic(String paramString, Bundle paramBundle);
+  
+  public abstract void startDownload(JSONObject paramJSONObject, String paramString);
 }
 
 

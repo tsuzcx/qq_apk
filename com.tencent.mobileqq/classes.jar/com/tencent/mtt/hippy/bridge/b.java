@@ -71,6 +71,7 @@ public class b
   public void a()
   {
     this.d = false;
+    this.i = null;
     if (this.e != null)
     {
       this.e.removeMessages(10);
@@ -177,33 +178,36 @@ public class b
   String b()
   {
     HippyMap localHippyMap1 = new HippyMap();
-    HippyMap localHippyMap2 = DimensionsUtil.getDimensions(-1, -1, this.a.getGlobalConfigs().getContext(), false);
+    HippyMap localHippyMap3 = DimensionsUtil.getDimensions(-1, -1, this.a.getGlobalConfigs().getContext(), false);
     Object localObject = "";
     String str1 = "";
     String str2 = "";
+    HippyMap localHippyMap2 = new HippyMap();
     if ((this.a.getGlobalConfigs() != null) && (this.a.getGlobalConfigs().getDeviceAdapter() != null)) {
-      this.a.getGlobalConfigs().getDeviceAdapter().reviseDimensionIfNeed(this.a.getGlobalConfigs().getContext(), localHippyMap2, false, false);
+      this.a.getGlobalConfigs().getDeviceAdapter().reviseDimensionIfNeed(this.a.getGlobalConfigs().getContext(), localHippyMap3, false, false);
     }
-    localHippyMap1.pushMap("Dimensions", localHippyMap2);
+    localHippyMap1.pushMap("Dimensions", localHippyMap3);
     if (this.m != null)
     {
       localObject = this.m.getPackageName();
       str1 = this.m.getPageUrl();
       str2 = this.m.getAppVersion();
+      localHippyMap2.pushJSONObject(this.m.getExtraData());
     }
-    localHippyMap2 = new HippyMap();
-    localHippyMap2.pushString("OS", "android");
-    localHippyMap2.pushString("PackageName", (String)localObject);
-    localHippyMap2.pushInt("APILevel", Build.VERSION.SDK_INT);
-    localHippyMap1.pushMap("Platform", localHippyMap2);
-    localHippyMap2 = new HippyMap();
+    localHippyMap3 = new HippyMap();
+    localHippyMap3.pushString("OS", "android");
+    localHippyMap3.pushString("PackageName", (String)localObject);
+    localHippyMap3.pushInt("APILevel", Build.VERSION.SDK_INT);
+    localHippyMap1.pushMap("Platform", localHippyMap3);
+    localHippyMap3 = new HippyMap();
     localObject = str1;
     if (str1 == null) {
       localObject = "";
     }
-    localHippyMap2.pushString("url", (String)localObject);
-    localHippyMap2.pushString("appVersion", str2);
-    localHippyMap1.pushMap("tkd", localHippyMap2);
+    localHippyMap3.pushString("url", (String)localObject);
+    localHippyMap3.pushString("appVersion", str2);
+    localHippyMap3.pushMap("extra", localHippyMap2);
+    localHippyMap1.pushMap("tkd", localHippyMap3);
     return ArgumentUtils.objectToJson(localHippyMap1);
   }
   
@@ -290,16 +294,20 @@ public class b
         str = paramMessage.getBundleUniKey();
         if ((paramMessage != null) && (this.h != null) && (!TextUtils.isEmpty(str)) && (this.h.contains(str)))
         {
-          a(-500, "load module error. loader.getBundleUniKey=null", null);
+          a(-700, "repeat load module. loader.getBundleUniKey=" + str, (HippyRootView)localObject);
           return true;
         }
         if (!TextUtils.isEmpty(str))
         {
-          paramMessage.load(this.c, new b.2(this, this.e, str, (HippyRootView)localObject));
-          break label616;
+          if (this.h == null) {
+            this.h = new ArrayList();
+          }
+          this.h.add(str);
+          paramMessage.load(this.c, new b.2(this, this.e, (HippyRootView)localObject));
+          break label664;
         }
-        a(-500, "load module error. loader.getBundleUniKey=null", null);
-        break label616;
+        a(-500, "can not load module. loader.getBundleUniKey=null", null);
+        break label664;
         if (!this.d) {
           return true;
         }
@@ -315,34 +323,34 @@ public class b
       if (TextUtils.equals((CharSequence)localObject, "loadInstance"))
       {
         this.c.callFunction((String)localObject, str, new b.3(this, this.e, Message.obtain(paramMessage), (String)localObject));
-        break label621;
+        break label669;
         if (!(paramMessage.obj instanceof HippyMap)) {
-          break label623;
+          break label671;
         }
         int n = ((HippyMap)paramMessage.obj).getInt("id");
         localObject = this.a.getInstance(n);
         if ((localObject == null) || (((HippyRootView)localObject).getTimeMonitor() == null)) {
-          break label623;
+          break label671;
         }
         ((HippyRootView)localObject).getTimeMonitor().startEvent(HippyEngineMonitorEvent.MODULE_LOAD_EVENT_RUN_BUNDLE);
-        break label623;
+        break label671;
       }
       else
       {
         this.c.callFunction((String)localObject, str, null);
-        break label621;
+        break label669;
         this.c.destroy(null);
         return true;
         localObject = null;
         break;
         return false;
-        label616:
+        label664:
         return true;
         continue;
       }
-      label621:
+      label669:
       return true;
-      label623:
+      label671:
       localObject = "loadInstance";
       continue;
       localObject = "resumeInstance";

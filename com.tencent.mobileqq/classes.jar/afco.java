@@ -1,24 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.QWalletHelper;
 
-public class afco
-  extends BroadcastReceiver
+final class afco
+  extends andd
 {
-  public afco(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  afco(SessionInfo paramSessionInfo) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void onOIDB0X88D_0_Ret(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString, Object[] paramArrayOfObject)
   {
-    QLog.d("PhoneUnityBindInfoActivity", 1, "bindMiBaoReceiver onReceive");
-    if (PhoneUnityBindInfoActivity.a(this.a) == 1) {
-      bdll.b(this.a.app, "dc00898", "", "", "0X800B316", "0X800B316", 0, 0, "", "", "", "");
+    if (paramBoolean)
+    {
+      QWalletHelper.saveLastUpdateToopMemberNumTime(this.a.curFriendUin);
+      if (QLog.isColorLevel()) {
+        QLog.d("PlusPanelUtils", 2, "onOIDB0X88D_0_Ret 群uin：" + this.a.curFriendUin + " 群成员个数：" + paramTroopInfo.wMemberNum);
+      }
     }
-    while (PhoneUnityBindInfoActivity.a(this.a) != 2) {
-      return;
-    }
-    bdll.b(this.a.app, "dc00898", "", "", "0X800B326", "0X800B326", 0, 0, "", "", "", "");
   }
 }
 

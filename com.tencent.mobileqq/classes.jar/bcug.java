@@ -1,96 +1,74 @@
-import MessageSvcPack.RequestPushStatus;
+import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
 public class bcug
-  extends abiv
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "Push" };
-  private aqwp jdField_a_of_type_Aqwp;
-  
-  private Object b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public static FileManagerEntity a(ForwardFileInfo paramForwardFileInfo)
   {
-    paramToServiceMsg = paramFromServiceMsg;
-    if (paramFromServiceMsg.getWupBuffer() == null) {
-      paramToServiceMsg = null;
-    }
-    return paramToServiceMsg;
+    FileManagerEntity localFileManagerEntity = new FileManagerEntity();
+    localFileManagerEntity.fileName = paramForwardFileInfo.d();
+    localFileManagerEntity.nFileType = aszt.a(localFileManagerEntity.fileName);
+    localFileManagerEntity.nSessionId = paramForwardFileInfo.b();
+    localFileManagerEntity.cloudType = paramForwardFileInfo.d();
+    return localFileManagerEntity;
   }
   
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  public static ForwardFileInfo a(String paramString)
   {
-    if (paramFromServiceMsg.getServiceCmd().equals("MessageSvc.PushNotify")) {
-      return b(paramToServiceMsg, paramFromServiceMsg);
-    }
-    return null;
+    ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
+    localForwardFileInfo.d(9);
+    localForwardFileInfo.b(10001);
+    localForwardFileInfo.d(paramString);
+    localForwardFileInfo.b(aszt.a().longValue());
+    return localForwardFileInfo;
   }
   
-  public void a() {}
-  
-  public void a(aqwp paramaqwp)
+  public static String a(int paramInt)
   {
-    this.jdField_a_of_type_Aqwp = paramaqwp;
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
-    if (paramToServiceMsg.equals("MessageSvc.RequestPushStatus"))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StatusPush", 2, "decodeRespMsg MessageSvc.RequestPushStatus uin:" + paramFromServiceMsg.getUin() + " at " + System.currentTimeMillis());
-      }
-      paramToServiceMsg = paramFromServiceMsg.getWupBuffer();
-      if (paramToServiceMsg != null) {}
+    String str = amtj.a(2131713828);
+    if (paramInt == 3) {
+      str = "word";
     }
     do
     {
-      do
-      {
-        return;
-        paramFromServiceMsg = new UniPacket();
-        paramFromServiceMsg.decode(paramToServiceMsg);
-        paramToServiceMsg = (RequestPushStatus)paramFromServiceMsg.getByClass("req_PushStatus", new RequestPushStatus());
-        paramFromServiceMsg = BaseApplication.getContext().getSharedPreferences("share", 0);
-        if (paramToServiceMsg.cStatus == 1)
-        {
-          paramFromServiceMsg.edit().putBoolean("is_pc_online" + paramToServiceMsg.lUin, true).commit();
-          return;
-        }
-        paramFromServiceMsg.edit().putBoolean("is_pc_online" + paramToServiceMsg.lUin, false).commit();
-        return;
-        if (!"CliNotifySvc.register".equals(paramToServiceMsg)) {
-          break;
-        }
-      } while ((!paramFromServiceMsg.isSuccess()) || (paramFromServiceMsg.extraData.getLong("pushId") != 128L));
-      return;
-      if ("baseSdk.Msf.NotifyResp".equals(paramToServiceMsg))
-      {
-        paramToServiceMsg = new Intent("tencent.notify.album");
-        paramToServiceMsg.putExtra("resp", paramFromServiceMsg);
-        BaseApplication.getContext().sendBroadcast(paramToServiceMsg, "com.tencent.msg.permission.pushnotify");
-        return;
+      return str;
+      if (paramInt == 6) {
+        return "excel";
       }
-      paramToServiceMsg = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    } while (this.jdField_a_of_type_Aqwp == null);
-    this.jdField_a_of_type_Aqwp.a(paramToServiceMsg, paramFromServiceMsg);
+      if (paramInt == 7) {
+        return "ppt";
+      }
+    } while (paramInt != 9);
+    return "pdf";
   }
   
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public static void a(Activity paramActivity, ForwardFileInfo paramForwardFileInfo, Bundle paramBundle)
   {
-    return false;
+    Intent localIntent = new Intent(paramActivity, FileBrowserActivity.class);
+    if (paramForwardFileInfo != null) {
+      localIntent.putExtra("fileinfo", paramForwardFileInfo);
+    }
+    if (paramBundle != null) {
+      localIntent.putExtra("file_browser_extra_params", paramBundle);
+    }
+    paramActivity.startActivityForResult(localIntent, 102);
   }
   
-  public String[] a()
+  public static void a(Activity paramActivity, String paramString)
   {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    a(paramActivity, paramString, false);
+  }
+  
+  public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
+  {
+    paramString = a(paramString);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("isMiniProgram", paramBoolean);
+    a(paramActivity, paramString, localBundle);
   }
 }
 

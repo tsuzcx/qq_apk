@@ -1,31 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.util.WeakReference;
+import UserGrowth.stSimpleMetaFeed;
 
-class uzb
-  implements View.OnClickListener
+final class uzb
+  extends upt
 {
-  uzb(uyy paramuyy) {}
+  uzb(String paramString1, String paramString2, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt1, int paramInt2) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    uze localuze;
-    if (uyy.a(this.a) != null)
-    {
-      localuze = (uze)uyy.a(this.a).get();
-      if (localuze != null) {
-        switch (paramView.getId())
-        {
-        }
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localuze.a(uzf.c);
-    }
+    super.a();
+    uyz.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000003);
+    uyz.a("videolay_tag_clk_ws", this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+  }
+  
+  public void c()
+  {
+    super.c();
+    uyz.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000004);
+    uyz.a("videolay_tag_clk_h5", this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+  }
+  
+  public void d()
+  {
+    super.d();
+    uyz.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 1000002);
+    uyz.a("videolay_tag_dl_ws", this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
   }
 }
 

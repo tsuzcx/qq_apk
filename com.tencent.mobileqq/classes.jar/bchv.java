@@ -1,28 +1,16 @@
-class bchv
-  implements bffy
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
+
+public class bchv
+  extends URLDrawableDownListener.Adapter
 {
-  bchv(bchs parambchs, bcep parambcep) {}
+  public bchv(StructMsgForHypertext paramStructMsgForHypertext) {}
   
-  public void a(String paramString, int paramInt)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if ((this.jdField_a_of_type_Bcep.b != null) && (this.jdField_a_of_type_Bcep.b.equals(paramString)))
-    {
-      if (paramInt != 3) {
-        break label45;
-      }
-      this.jdField_a_of_type_Bcep.m = 2;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bchs.a();
-      return;
-      label45:
-      if ((paramInt == 2) || (paramInt == 4)) {
-        this.jdField_a_of_type_Bcep.m = 1;
-      } else if (paramInt == 1) {
-        this.jdField_a_of_type_Bcep.m = 0;
-      }
-    }
+    paramView.setBackgroundDrawable(null);
   }
 }
 

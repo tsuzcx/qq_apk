@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.channel;
 
+import amtj;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
-import anzj;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
 import com.tribe.async.async.Boss;
@@ -17,24 +17,24 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONArray;
-import wov;
-import wpa;
-import wpb;
-import wpc;
-import wpd;
-import wpe;
-import wpg;
-import wph;
-import wpi;
-import yuk;
-import yup;
-import zot;
+import vqm;
+import vqr;
+import vqs;
+import vqt;
+import vqu;
+import vqv;
+import vqx;
+import vqy;
+import vqz;
+import xvv;
+import xwa;
+import ypp;
 
 public class QQStoryCmdHandler
 {
   public Handler a;
-  public List<wpi> a;
-  private Map<Integer, wpa> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  public List<vqz> a;
+  private Map<Integer, vqr> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   public Set<Integer> a;
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(100);
   
@@ -43,15 +43,15 @@ public class QQStoryCmdHandler
     this.jdField_a_of_type_JavaUtilSet = new CopyOnWriteArraySet();
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    Bosses.get().postJob(new wpc(this, "Q.qqstory.net:QQStoryCmdHandler"));
+    Bosses.get().postJob(new vqt(this, "Q.qqstory.net:QQStoryCmdHandler"));
   }
   
-  private void a(wpa paramwpa, int paramInt, String paramString, long paramLong)
+  private void a(vqr paramvqr, int paramInt, String paramString, long paramLong)
   {
-    yup.b("story_net", paramwpa.a(), 0, paramInt, new String[] { paramString, String.valueOf(paramLong), yup.a(BaseApplication.getContext()) });
+    xwa.b("story_net", paramvqr.a(), 0, paramInt, new String[] { paramString, String.valueOf(paramLong), xwa.a(BaseApplication.getContext()) });
   }
   
-  private void a(wpa paramwpa, byte[] paramArrayOfByte, Bundle paramBundle)
+  private void a(vqr paramvqr, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     long l = paramBundle.getLong("start_time");
     l = System.currentTimeMillis() - l;
@@ -59,73 +59,73 @@ public class QQStoryCmdHandler
     if (i != 0)
     {
       paramArrayOfByte = paramBundle.getString("data_error_msg");
-      if (((i == 2901) || (i == 1002) || (i == 1003)) && (a(paramwpa)))
+      if (((i == 2901) || (i == 1002) || (i == 1003)) && (a(paramvqr)))
       {
-        yuk.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:" + paramwpa.a() + " channel error:%d, msg:%s, take time:%d ,retry time:%d , retry now", new Object[] { Integer.valueOf(i), paramArrayOfByte, Long.valueOf(l), Integer.valueOf(paramwpa.b) });
-        paramwpa.b += 1;
+        xvv.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:" + paramvqr.a() + " channel error:%d, msg:%s, take time:%d ,retry time:%d , retry now", new Object[] { Integer.valueOf(i), paramArrayOfByte, Long.valueOf(l), Integer.valueOf(paramvqr.b) });
+        paramvqr.b += 1;
         paramArrayOfByte = Bosses.get();
-        paramwpa = new wph(this, "Q.qqstory.net:QQStoryCmdHandler", paramwpa);
+        paramvqr = new vqy(this, "Q.qqstory.net:QQStoryCmdHandler", paramvqr);
         if (i == 2901) {}
         for (i = 500;; i = 2000)
         {
-          paramArrayOfByte.scheduleJobDelayed(paramwpa, i);
+          paramArrayOfByte.scheduleJobDelayed(paramvqr, i);
           return;
         }
       }
-      paramwpa.a().a(i, anzj.a(2131709690), null);
-      yuk.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:" + paramwpa.a() + " channel error:%d, msg:%s, take time:%d", new Object[] { Integer.valueOf(i), paramArrayOfByte, Long.valueOf(l) });
-      a(paramwpa, i, paramArrayOfByte, l);
+      paramvqr.a().a(i, amtj.a(2131709922), null);
+      xvv.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:" + paramvqr.a() + " channel error:%d, msg:%s, take time:%d", new Object[] { Integer.valueOf(i), paramArrayOfByte, Long.valueOf(l) });
+      a(paramvqr, i, paramArrayOfByte, l);
       return;
     }
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      paramwpa.a().a(-1, "channel error null data", null);
-      yuk.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:" + paramwpa.a() + " channel error null data, take time:%d", new Object[] { Long.valueOf(l) });
-      a(paramwpa, 940002, "rsp data error", l);
+      paramvqr.a().a(-1, "channel error null data", null);
+      xvv.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:" + paramvqr.a() + " channel error null data, take time:%d", new Object[] { Long.valueOf(l) });
+      a(paramvqr, 940002, "rsp data error", l);
       return;
     }
     paramBundle = null;
     try
     {
-      wov localwov = paramwpa.a(paramArrayOfByte);
-      paramBundle = localwov;
+      vqm localvqm = paramvqr.a(paramArrayOfByte);
+      paramBundle = localvqm;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        yuk.c("Q.qqstory.net:QQStoryCmdHandler", "decode pb fail", localException);
+        xvv.c("Q.qqstory.net:QQStoryCmdHandler", "decode pb fail", localException);
       }
     }
     if (paramBundle == null)
     {
-      yuk.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:%s error. response is null", new Object[] { paramwpa.a() });
-      a(paramwpa, 940002, "response is null", l);
+      xvv.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:%s error. response is null", new Object[] { paramvqr.a() });
+      a(paramvqr, 940002, "response is null", l);
       return;
     }
     if (paramBundle.a == 0) {
-      yuk.a("Q.qqstory.net:QQStoryCmdHandler", "get cmd:%s success take time:%d data length=%d respond:%s", paramwpa.a(), Long.valueOf(l), Integer.valueOf(paramArrayOfByte.length), paramBundle);
+      xvv.a("Q.qqstory.net:QQStoryCmdHandler", "get cmd:%s success take time:%d data length=%d respond:%s", paramvqr.a(), Long.valueOf(l), Integer.valueOf(paramArrayOfByte.length), paramBundle);
     }
     for (;;)
     {
-      paramwpa.a().a(paramBundle.a, paramBundle.b, paramBundle);
-      a(paramwpa, paramBundle.a, paramBundle.b, l);
+      paramvqr.a().a(paramBundle.a, paramBundle.b, paramBundle);
+      a(paramvqr, paramBundle.a, paramBundle.b, l);
       return;
-      yuk.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:%s error:%d msg:%s take time:%d data length%d", new Object[] { paramwpa.a(), Integer.valueOf(paramBundle.a), paramBundle.b, Long.valueOf(l), Integer.valueOf(paramArrayOfByte.length) });
+      xvv.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:%s error:%d msg:%s take time:%d data length%d", new Object[] { paramvqr.a(), Integer.valueOf(paramBundle.a), paramBundle.b, Long.valueOf(l), Integer.valueOf(paramArrayOfByte.length) });
       if (paramBundle.a == 10001) {
-        yuk.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:%s error:%s", new Object[] { paramwpa.a(), paramwpa });
+        xvv.d("Q.qqstory.net:QQStoryCmdHandler", "get cmd:%s error:%s", new Object[] { paramvqr.a(), paramvqr });
       }
     }
   }
   
-  private boolean a(wpa paramwpa)
+  private boolean a(vqr paramvqr)
   {
-    return (this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramwpa.b()))) && (paramwpa.b < paramwpa.a);
+    return (this.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramvqr.b()))) && (paramvqr.b < paramvqr.a);
   }
   
   public void a(Bundle paramBundle, byte[] paramArrayOfByte)
   {
-    Bosses.get().postJob(new wpg(this, "Q.qqstory.net:QQStoryCmdHandler", paramBundle, paramArrayOfByte));
+    Bosses.get().postJob(new vqx(this, "Q.qqstory.net:QQStoryCmdHandler", paramBundle, paramArrayOfByte));
   }
   
   public void a(@NonNull String paramString)
@@ -140,37 +140,37 @@ public class QQStoryCmdHandler
         this.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(j));
         i += 1;
       }
-      yuk.d("Q.qqstory.net:QQStoryCmdHandler", "update retry proto complete :%s", new Object[] { this.jdField_a_of_type_JavaUtilSet });
+      xvv.d("Q.qqstory.net:QQStoryCmdHandler", "update retry proto complete :%s", new Object[] { this.jdField_a_of_type_JavaUtilSet });
       return;
     }
     catch (Exception paramString)
     {
-      yuk.e("Q.qqstory.net:QQStoryCmdHandler", "update retry proto list error :%s", new Object[] { paramString.getMessage() });
+      xvv.e("Q.qqstory.net:QQStoryCmdHandler", "update retry proto list error :%s", new Object[] { paramString.getMessage() });
     }
   }
   
-  public void a(wpa paramwpa)
+  public void a(vqr paramvqr)
   {
     try
     {
-      if (!zot.a(QQStoryContext.a().a()))
+      if (!ypp.a(QQStoryContext.a().a()))
       {
-        Bosses.get().scheduleJobDelayed(new wpd(this, "Q.qqstory.net:QQStoryCmdHandler", paramwpa), 100);
+        Bosses.get().scheduleJobDelayed(new vqu(this, "Q.qqstory.net:QQStoryCmdHandler", paramvqr), 100);
         return;
       }
-      Bosses.get().postJob(new wpe(this, "Q.qqstory.net:QQStoryCmdHandler", paramwpa));
+      Bosses.get().postJob(new vqv(this, "Q.qqstory.net:QQStoryCmdHandler", paramvqr));
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      yuk.e("Q.qqstory.net:QQStoryCmdHandler", "send cmd:" + paramwpa.a() + " error:" + localIllegalArgumentException.getMessage());
-      paramwpa.a().a(940001, localIllegalArgumentException.getMessage(), null);
+      xvv.e("Q.qqstory.net:QQStoryCmdHandler", "send cmd:" + paramvqr.a() + " error:" + localIllegalArgumentException.getMessage());
+      paramvqr.a().a(940001, localIllegalArgumentException.getMessage(), null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.channel.QQStoryCmdHandler
  * JD-Core Version:    0.7.0.1
  */

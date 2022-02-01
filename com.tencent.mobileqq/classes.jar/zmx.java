@@ -1,216 +1,50 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGroupVideoForward;
-import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask.1;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForTroopStory;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StQQGroup;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class zmx
-  implements Handler.Callback
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  static final String jdField_a_of_type_JavaLangString = wnu.a("StoryGroupSvc.do_group_video_forward");
-  public int a;
-  public Handler a;
-  aocj jdField_a_of_type_Aocj = new zmz(this);
-  public QQAppInterface a;
-  public MessageForTroopStory a;
-  nko jdField_a_of_type_Nko = new zmy(this);
-  protected boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
+  private List<CertifiedAccountMeta.StQQGroup> jdField_a_of_type_JavaUtilList;
   
-  private zmx(QQAppInterface paramQQAppInterface, Bundle paramBundle, SessionInfo paramSessionInfo)
+  public zmx(List<CertifiedAccountMeta.StQQGroup> paramList)
   {
-    if (!a(paramBundle, paramSessionInfo)) {
-      throw new IllegalArgumentException("params in bundle is Illegal");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_Boolean = false;
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  private zmx(QQAppInterface paramQQAppInterface, MessageForTroopStory paramMessageForTroopStory)
+  public int getItemCount()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory = paramMessageForTroopStory;
-    this.jdField_b_of_type_JavaLangString = String.valueOf(paramMessageForTroopStory.uid);
-    this.jdField_c_of_type_JavaLangString = paramMessageForTroopStory.unionId;
-    this.jdField_d_of_type_JavaLangString = paramMessageForTroopStory.md5;
-    this.e = paramMessageForTroopStory.thumbUrl;
-    this.f = paramMessageForTroopStory.doodleUrl;
-    this.jdField_a_of_type_Int = paramMessageForTroopStory.videoWidth;
-    this.jdField_b_of_type_Int = paramMessageForTroopStory.videoHeight;
-    this.g = paramMessageForTroopStory.sourceName;
-    this.h = paramMessageForTroopStory.sourceActionType;
-    this.i = paramMessageForTroopStory.sourceActionData;
-    this.j = paramMessageForTroopStory.compatibleText;
-    this.jdField_c_of_type_Int = paramMessageForTroopStory.ctrVersion;
-    this.k = paramMessageForTroopStory.frienduin;
-    this.l = paramMessageForTroopStory.senderuin;
-    this.jdField_d_of_type_Int = paramMessageForTroopStory.istroop;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public static zmx a(QQAppInterface paramQQAppInterface, Bundle paramBundle, SessionInfo paramSessionInfo)
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    try
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt))
     {
-      paramQQAppInterface = new zmx(paramQQAppInterface, paramBundle, paramSessionInfo);
-      return paramQQAppInterface;
-    }
-    catch (IllegalArgumentException paramQQAppInterface)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.qqstory.troopstory.share", 2, "forward error", paramQQAppInterface);
+      zmy localzmy = (zmy)paramViewHolder;
+      if (localzmy != null) {
+        localzmy.a((CertifiedAccountMeta.StQQGroup)this.jdField_a_of_type_JavaUtilList.get(paramInt));
       }
     }
-    return null;
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
   
-  public static zmx a(QQAppInterface paramQQAppInterface, MessageForTroopStory paramMessageForTroopStory)
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new zmx(paramQQAppInterface, paramMessageForTroopStory);
-  }
-  
-  private boolean a(Bundle paramBundle, SessionInfo paramSessionInfo)
-  {
-    this.jdField_b_of_type_JavaLangString = String.valueOf(paramBundle.getLong("key_uid"));
-    this.jdField_c_of_type_JavaLangString = paramBundle.getString("key_union_id");
-    this.jdField_d_of_type_JavaLangString = paramBundle.getString("key_md5");
-    this.e = paramBundle.getString("key_thumb_url");
-    this.f = paramBundle.getString("key_doodle_url");
-    this.jdField_a_of_type_Int = paramBundle.getInt("key_video_width");
-    this.jdField_b_of_type_Int = paramBundle.getInt("key_video_height");
-    this.g = paramBundle.getString("key_source_name");
-    this.h = paramBundle.getString("key_source_action_type");
-    this.i = paramBundle.getString("key_source_action_data");
-    this.j = paramBundle.getString("key_compatible_text");
-    this.jdField_c_of_type_Int = paramBundle.getInt("key_ctr_version");
-    this.k = paramSessionInfo.jdField_a_of_type_JavaLangString;
-    this.l = paramSessionInfo.jdField_b_of_type_JavaLangString;
-    this.jdField_d_of_type_Int = paramSessionInfo.jdField_a_of_type_Int;
-    return true;
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      ThreadManager.executeOnSubThread(new TroopStoryForwardTask.1(this));
-      return;
+    paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558790, paramViewGroup, false);
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() == 1)) {
+      paramViewGroup.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory, 0);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-  }
-  
-  public void b()
-  {
-    qqstory_group.ReqGroupVideoForward localReqGroupVideoForward = new qqstory_group.ReqGroupVideoForward();
-    int m;
-    switch (this.jdField_d_of_type_Int)
-    {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.qqstory.troopstory.share", 2, "unsupport type:" + this.jdField_d_of_type_Int);
-      }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-      return;
-    case 1: 
-      m = 1;
-    }
-    for (;;)
-    {
-      localReqGroupVideoForward.type.set(m);
-      try
-      {
-        long l1 = Long.parseLong(this.k);
-        localReqGroupVideoForward.forward_to.set(l1);
-        localReqGroupVideoForward.vid.set(ByteStringMicro.copyFromUtf8(this.jdField_d_of_type_JavaLangString));
-        localReqGroupVideoForward.time.set((int)this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.time);
-        nkm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nko, localReqGroupVideoForward.toByteArray(), jdField_a_of_type_JavaLangString);
-        return;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("Q.qqstory.troopstory.share", 2, "uin parse error:" + this.k);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-      }
-      m = 2;
-      continue;
-      m = 3;
-    }
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory, this.jdField_a_of_type_Aocj);
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.uniseq);
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.uniseq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory);
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.troopstory.share", 2, "forward step=" + paramMessage.what + ", task=" + this);
-    }
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      a();
-      continue;
-      b();
-      continue;
-      c();
-      continue;
-      d();
-      continue;
-      e();
-    }
+    return new zmy(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView, paramViewGroup);
   }
 }
 

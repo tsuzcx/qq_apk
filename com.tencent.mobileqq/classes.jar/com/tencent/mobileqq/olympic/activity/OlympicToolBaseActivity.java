@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.olympic.activity;
 
 import Override;
+import amtj;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -9,11 +10,10 @@ import android.os.Handler.Callback;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View.OnClickListener;
-import anzj;
-import azdy;
-import azdz;
-import bjbs;
-import blhq;
+import axrg;
+import axrh;
+import bhht;
+import bjng;
 import com.tencent.biz.qrcode.activity.ScannerActivity;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
@@ -35,10 +35,10 @@ public class OlympicToolBaseActivity
   public static boolean g = true;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new azdz(this);
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new azdy(this);
-  private bjbs jdField_a_of_type_Bjbs;
-  private blhq jdField_a_of_type_Blhq;
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new axrh(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new axrg(this);
+  private bhht jdField_a_of_type_Bhht;
+  private bjng jdField_a_of_type_Bjng;
   public QQAppInterface a;
   public ARScanAR a;
   public OcrConfig a;
@@ -53,7 +53,7 @@ public class OlympicToolBaseActivity
   {
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.i = NearbyFakeActivity.a();
-    this.jdField_a_of_type_Blhq.removeMessages(0);
+    this.jdField_a_of_type_Bjng.removeMessages(0);
     if (this.i)
     {
       f();
@@ -62,7 +62,7 @@ public class OlympicToolBaseActivity
     this.jdField_a_of_type_Boolean = true;
     i();
     k();
-    this.jdField_a_of_type_Blhq.sendEmptyMessageDelayed(0, 5000L);
+    this.jdField_a_of_type_Bjng.sendEmptyMessageDelayed(0, 5000L);
   }
   
   private void i()
@@ -73,14 +73,14 @@ public class OlympicToolBaseActivity
       return;
       try
       {
-        if (this.jdField_a_of_type_Bjbs == null)
+        if (this.jdField_a_of_type_Bhht == null)
         {
-          this.jdField_a_of_type_Bjbs = new bjbs(this, getTitleBarHeight());
-          this.jdField_a_of_type_Bjbs.a(anzj.a(2131706714));
-          this.jdField_a_of_type_Bjbs.c(false);
+          this.jdField_a_of_type_Bhht = new bhht(this, getTitleBarHeight());
+          this.jdField_a_of_type_Bhht.a(amtj.a(2131706944));
+          this.jdField_a_of_type_Bhht.c(false);
         }
         this.h = true;
-        this.jdField_a_of_type_Bjbs.show();
+        this.jdField_a_of_type_Bhht.show();
         return;
       }
       catch (Exception localException) {}
@@ -92,8 +92,8 @@ public class OlympicToolBaseActivity
   {
     try
     {
-      if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing())) {
-        this.jdField_a_of_type_Bjbs.dismiss();
+      if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing())) {
+        this.jdField_a_of_type_Bhht.dismiss();
       }
       return;
     }
@@ -150,15 +150,16 @@ public class OlympicToolBaseActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Blhq = new blhq(this.jdField_a_of_type_AndroidOsHandler$Callback);
+    this.jdField_a_of_type_Bjng = new bjng(this.jdField_a_of_type_AndroidOsHandler$Callback);
     this.jdField_a_of_type_ComTencentMobileqqOlympicScannerResultReceiver = new ScannerResultReceiver(null);
     return true;
   }
@@ -166,8 +167,8 @@ public class OlympicToolBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bjbs != null) {
-      this.jdField_a_of_type_Bjbs.dismiss();
+    if (this.jdField_a_of_type_Bhht != null) {
+      this.jdField_a_of_type_Bhht.dismiss();
     }
   }
   
@@ -217,7 +218,7 @@ public class OlympicToolBaseActivity
   public void f()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Blhq.removeMessages(0);
+    this.jdField_a_of_type_Bjng.removeMessages(0);
     j();
     Intent localIntent = new Intent(this, ScanTorchActivity.class);
     localIntent.addFlags(67108864);

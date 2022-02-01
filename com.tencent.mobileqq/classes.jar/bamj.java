@@ -1,17 +1,32 @@
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.richstatus.EditActivity;
+import com.tencent.mobileqq.richstatus.RichStatusEditText;
+import com.tencent.qphone.base.util.QLog;
+
 public class bamj
+  implements TextWatcher
 {
-  public int a;
-  public final bamo a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public bamj(EditActivity paramEditActivity) {}
   
-  public bamj(int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_Bamo = new bamo();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Bamo.jdField_a_of_type_Int = -2147483648;
+    EditActivity.a = true;
+    bcef.b(this.a.app, "CliOper", "", "", "signiture", "set_clk_mdf", 0, 0, "", "", "", "");
+    if ((EditActivity.a(this.a).getSelectionStart() == 7) && (EditActivity.a(this.a).getText().toString().trim().length() == 7)) {
+      EditActivity.a(this.a).setSelection(paramEditable.length());
+    }
+    EditActivity.a(this.a);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    QLog.d("EditActivity", 2, "beforeTextChanged CharSequence = " + paramCharSequence + ", start = " + paramInt1 + ", count = " + paramInt2 + ", after = " + paramInt3);
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    QLog.d("EditActivity", 2, "onTextChanged CharSequence = " + paramCharSequence + ", start = " + paramInt1 + ", count = " + paramInt3);
   }
 }
 

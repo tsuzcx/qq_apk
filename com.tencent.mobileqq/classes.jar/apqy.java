@@ -1,189 +1,124 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import android.util.Xml;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.util.HashMap;
-import org.xmlpull.v1.XmlPullParser;
+import SummaryCard.CondFitUser;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
+import com.tencent.mobileqq.widget.InterestLabelTextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class apqy
-  extends apql
+  extends BaseAdapter
 {
-  private static final Object a;
-  public static boolean a;
+  private apqy(SearchResultActivity paramSearchResultActivity) {}
   
-  static
+  public int getCount()
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  public static byte a(String paramString)
-  {
-    return apql.a(2, paramString);
-  }
-  
-  public static Object a()
-  {
-    return jdField_a_of_type_JavaLangObject;
-  }
-  
-  public static String a()
-  {
-    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, "getFilesDir is null");
-      }
-      localObject = "";
+    int j = this.a.jdField_a_of_type_JavaUtilList.size();
+    if (this.a.b != 0) {}
+    for (int i = 1;; i = 0) {
+      return i + j;
     }
-    String str;
-    do
-    {
-      return localObject;
-      str = localObject + "/pddata/prd/" + "qq.android.minidetect.model_v8.2.0";
-      localObject = str;
-    } while (!QLog.isColorLevel());
-    QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, "getLibDir ,path = " + str);
-    return str;
   }
   
-  public static String a(String paramString)
+  public Object getItem(int paramInt)
   {
-    return paramString;
+    return null;
   }
   
-  protected static void a(boolean paramBoolean)
+  public long getItemId(int paramInt)
   {
-    jdField_a_of_type_Boolean = paramBoolean;
+    return paramInt;
   }
   
-  public static boolean a()
+  public int getItemViewType(int paramInt)
   {
-    if ((!a("qr_anchor.bin")) || (!a("qr_detection_model.txt")) || (!a("qr_detection_model.bin")))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniRecog.MiniScanDetectModelLoader", 2, "modules is not exist!");
-      }
-      return false;
+    if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size()) {
+      return 0;
     }
-    return true;
+    return 1;
   }
   
-  public static boolean a(String paramString)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return apql.a(2, jdField_a_of_type_Boolean, paramString);
-  }
-  
-  public static boolean a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    boolean bool = true;
-    XmlPullParser localXmlPullParser = Xml.newPullParser();
-    paramHashMap.clear();
+    View localView;
+    if (getItemViewType(paramInt) == 0)
+    {
+      localView = paramView;
+      if (paramView == null)
+      {
+        localView = this.a.getLayoutInflater().inflate(2131561000, null);
+        localView.setOnClickListener(this.a);
+        paramView = new apqz();
+        paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367958));
+        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371790));
+        paramView.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377484));
+        paramView.jdField_b_of_type_ComTencentMobileqqWidgetInterestLabelTextView = ((InterestLabelTextView)localView.findViewById(2131367495));
+        paramView.c = ((InterestLabelTextView)localView.findViewById(2131381262));
+        paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView = ((InterestLabelTextView)localView.findViewById(2131364278));
+        paramView.d = ((InterestLabelTextView)localView.findViewById(2131370317));
+        localView.setTag(paramView);
+      }
+      paramView = (apqz)localView.getTag();
+      CondFitUser localCondFitUser = (CondFitUser)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramView = this.a.a(paramView, localCondFitUser);
+      if (SearchResultActivity.jdField_a_of_type_Boolean) {
+        localView.setContentDescription(paramView);
+      }
+      paramView = localView;
+    }
     for (;;)
     {
-      try
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      localView = paramView;
+      if (paramView == null)
       {
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
+        localView = this.a.getLayoutInflater().inflate(2131559487, null);
+        localView.setOnClickListener(this.a);
+        paramView = new apra();
+        localView.setTag(paramView);
+        paramView.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localView.findViewById(2131376213));
+        localView.findViewById(2131370261).setVisibility(8);
+        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371401));
       }
-      catch (Exception paramHashMap)
+      if (this.a.b == 1)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("MiniRecog.MiniScanDetectModelLoader", 2, paramString, paramHashMap);
-        bool = false;
-        return bool;
+        this.a.b = 2;
+        SearchResultActivity.d(this.a);
       }
-      int i = localXmlPullParser.next();
-      break label245;
-      String str = localXmlPullParser.getName();
-      if (str.equalsIgnoreCase("qr_anchor.bin"))
+      paramView = (apra)localView.getTag();
+      if (this.a.b == 3)
       {
-        paramHashMap.put("qr_anchor.bin", localXmlPullParser.nextText());
-        continue;
+        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131712766));
+        paramView = localView;
+      }
+      else if (this.a.b == 2)
+      {
+        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131712757));
+        paramView = localView;
       }
       else
       {
-        if (str.equalsIgnoreCase("qr_detection_model.txt"))
+        if (this.a.b == 4)
         {
-          paramHashMap.put("qr_detection_model.txt", localXmlPullParser.nextText());
-          continue;
+          paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+          paramView.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131712756));
         }
-        if (str.equalsIgnoreCase("qr_detection_model.bin"))
-        {
-          paramHashMap.put("qr_detection_model.bin", localXmlPullParser.nextText());
-          continue;
-        }
-        if (str.equalsIgnoreCase("match_detect_so_md5"))
-        {
-          b("match_detect_so_md5", localXmlPullParser.nextText());
-          continue;
-        }
-        if (!str.equalsIgnoreCase("match_detect_so_md5_64")) {
-          continue;
-        }
-        b("match_detect_so_md5_64", localXmlPullParser.nextText());
-        continue;
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.d("MiniRecog.MiniScanDetectModelLoader", 2, "parseConfig success|config=" + paramHashMap);
-        return true;
-        label245:
-        if (i != 1) {
-          switch (i)
-          {
-          }
-        }
+        paramView = localView;
       }
     }
   }
   
-  public static String b()
+  public int getViewTypeCount()
   {
-    String str2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).getString("mini_native_" + "match_detect_so_md5", null);
-    if (QLog.isColorLevel()) {
-      if (str2 != null) {
-        break label75;
-      }
-    }
-    label75:
-    for (String str1 = "null";; str1 = str2)
-    {
-      QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, String.format("getMatchDetectSoMd5=%s tag=%s", new Object[] { str1, "match_detect_so_md5" }));
-      return str2;
-    }
-  }
-  
-  public static String b(String paramString)
-  {
-    return paramString;
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    Object localObject = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4).edit();
-    if (TextUtils.isEmpty(paramString2)) {
-      ((SharedPreferences.Editor)localObject).putString("mini_native_" + paramString1, "").apply();
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel())
-      {
-        localObject = paramString2;
-        if (paramString2 == null) {
-          localObject = "null";
-        }
-        QLog.i("MiniRecog.MiniScanDetectModelLoader", 2, String.format("saveMatchDetectSoMd5=%s tag=%s", new Object[] { localObject, paramString1 }));
-      }
-      return;
-      ((SharedPreferences.Editor)localObject).putString("mini_native_" + paramString1, paramString2).apply();
-    }
+    return 2;
   }
 }
 

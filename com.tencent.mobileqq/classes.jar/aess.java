@@ -1,25 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
 
 public class aess
-  extends BroadcastReceiver
+  implements aeta
 {
-  public aess(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public aess(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (paramIntent != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.gesturelock.unlock", 2, "GesturePWDUnlockActivity finish onReceive");
-      }
-      if ((paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
-        this.a.finish();
-      }
-    }
+    this.a.a.setActualViewSize(paramInt1, paramInt2);
+    this.a.a.invalidate();
   }
 }
 

@@ -1,16 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-
-class mut
-  implements bljb
+class mut<Data>
 {
-  mut(mur parammur) {}
+  final mus jdField_a_of_type_Mus;
+  final Data[] jdField_a_of_type_ArrayOfJavaLangObject;
   
-  public void onDismiss()
+  mut(mus parammus, Data... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D22 at: " + System.currentTimeMillis());
-    }
-    bdll.b(null, "CliOper", "", "", "0X8008D22", "0X8008D22", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Mus = parammus;
+    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
   }
 }
 

@@ -1,40 +1,73 @@
-import androidx.annotation.NonNull;
-import trpc.qq_vgame.common.AvGameCommon.CommonQuestionInfo;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.pb.PBEnumField;
+import java.util.HashMap;
+import java.util.Map;
+import trpc.qq_vgame.nofity.AvGameNotify.NotifyMsg;
 
 public class mzs
-  extends mzo
 {
-  protected mzo a()
+  private static Map<Integer, Integer> a = new HashMap(16);
+  
+  static
   {
-    return new mzs();
+    a.put(Integer.valueOf(1), Integer.valueOf(1));
+    a.put(Integer.valueOf(2), Integer.valueOf(1));
+    a.put(Integer.valueOf(3), Integer.valueOf(1));
+    a.put(Integer.valueOf(4), Integer.valueOf(1));
+    a.put(Integer.valueOf(101), Integer.valueOf(1));
+    a.put(Integer.valueOf(102), Integer.valueOf(2));
+    a.put(Integer.valueOf(103), Integer.valueOf(2));
+    a.put(Integer.valueOf(104), Integer.valueOf(2));
+    a.put(Integer.valueOf(105), Integer.valueOf(2));
+    a.put(Integer.valueOf(106), Integer.valueOf(2));
+    a.put(Integer.valueOf(107), Integer.valueOf(2));
+    a.put(Integer.valueOf(108), Integer.valueOf(2));
+    a.put(Integer.valueOf(110), Integer.valueOf(2));
+    a.put(Integer.valueOf(201), Integer.valueOf(2));
+    a.put(Integer.valueOf(403), Integer.valueOf(1));
   }
   
-  public void a(mzo parammzo)
+  private static BusinessHandler a(AVGameAppInterface paramAVGameAppInterface, int paramInt)
   {
-    super.a(parammzo);
+    if (paramAVGameAppInterface == null) {
+      return null;
+    }
+    paramInt = ((Integer)a.get(Integer.valueOf(paramInt))).intValue();
+    if (paramInt == 1) {
+      paramAVGameAppInterface = paramAVGameAppInterface.a(1);
+    }
+    for (;;)
+    {
+      return paramAVGameAppInterface;
+      if (paramInt == 2) {
+        paramAVGameAppInterface = paramAVGameAppInterface.a(3);
+      } else {
+        paramAVGameAppInterface = null;
+      }
+    }
   }
   
-  public void a(AvGameCommon.CommonQuestionInfo paramCommonQuestionInfo)
+  public static void a(AVGameAppInterface paramAVGameAppInterface, AvGameNotify.NotifyMsg paramNotifyMsg)
   {
-    super.a(paramCommonQuestionInfo);
-  }
-  
-  public int b()
-  {
-    return 5;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(c());
-    return localStringBuilder.toString();
+    paramAVGameAppInterface = a(paramAVGameAppInterface, paramNotifyMsg.type.get());
+    if (paramAVGameAppInterface != null)
+    {
+      if (!(paramAVGameAppInterface instanceof nbe)) {
+        break label32;
+      }
+      ((nbe)paramAVGameAppInterface).a(paramNotifyMsg);
+    }
+    label32:
+    while (!(paramAVGameAppInterface instanceof nbd)) {
+      return;
+    }
+    ((nbd)paramAVGameAppInterface).a(paramNotifyMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mzs
  * JD-Core Version:    0.7.0.1
  */

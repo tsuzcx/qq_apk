@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.data.PhoneContactAdd;
+import android.widget.TextView;
 
 public class ajmo
-  extends ajmf
 {
-  public PhoneContactAdd a;
-  
-  public ajmo(PhoneContactAdd paramPhoneContactAdd)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataPhoneContactAdd = paramPhoneContactAdd;
-    this.jdField_a_of_type_Long = paramPhoneContactAdd.timestamp;
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
+  public TextView a;
+  public bfxc a;
+  public TextView b;
 }
 
 

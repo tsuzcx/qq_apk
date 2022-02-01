@@ -1,23 +1,8 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-
-public class axgr
+public final class axgr<Params>
 {
-  public String a;
+  public int a;
+  public Params a;
   public boolean a;
-  
-  public String a(axge paramaxge, MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return paramaxge.a(paramMessageRecord, paramMsgBackupResEntity);
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
 }
 
 

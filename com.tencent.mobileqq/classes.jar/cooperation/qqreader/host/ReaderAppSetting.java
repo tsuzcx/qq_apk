@@ -1,13 +1,13 @@
 package cooperation.qqreader.host;
 
-import bmsw;
 import com.tencent.common.config.AppSetting;
+import cooperation.qzone.QUA;
 
 public class ReaderAppSetting
 {
   public static String buildNum()
   {
-    return "4745";
+    return "4810";
   }
   
   public static boolean enableTalkBack()
@@ -17,7 +17,7 @@ public class ReaderAppSetting
   
   public static String getQUA()
   {
-    return bmsw.a();
+    return QUA.getQUA3();
   }
   
   public static boolean isDebugVersion()
@@ -27,7 +27,7 @@ public class ReaderAppSetting
   
   public static String subVersion()
   {
-    return "8.4.5";
+    return "8.4.8";
   }
 }
 

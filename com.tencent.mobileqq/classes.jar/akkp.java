@@ -1,13 +1,14 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class akkp
-  implements blkc
+  implements DialogInterface.OnClickListener
 {
-  akkp(akko paramakko, View paramView) {}
+  akkp(akkk paramakkk) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    paramDialogInterface.dismiss();
   }
 }
 

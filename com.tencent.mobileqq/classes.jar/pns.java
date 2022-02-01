@@ -1,139 +1,125 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import com.tencent.biz.pubaccount.readinjoy.logic.DiandianTopConfigManager.2;
-import com.tencent.biz.pubaccount.readinjoy.logic.DiandianTopConfigManager.3;
-import com.tencent.biz.pubaccount.readinjoy.model.DiandianTopConfig;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment.6.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.oidb_0xb7e.DiandianTopConfig;
-import tencent.im.oidb.oidb_0xb7e.ReqBody;
-import tencent.im.oidb.oidb_0xb7e.RspBody;
+import java.util.Map;
+import java.util.Set;
 
 public class pns
+  implements pod
 {
-  public static final Object a;
-  public static final String a;
-  private static pns a;
+  public pns(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  static
+  public BaseArticleInfo a(int paramInt)
   {
-    jdField_a_of_type_JavaLangString = pns.class.getName();
-    jdField_a_of_type_JavaLangObject = new Object();
+    if ((this.a.jdField_a_of_type_Pog.a.size() > 0) && (paramInt < this.a.jdField_a_of_type_Pog.a.size())) {
+      return (BaseArticleInfo)this.a.jdField_a_of_type_Pog.a.get(paramInt);
+    }
+    return null;
   }
   
-  public static pns a()
+  public List<BaseArticleInfo> a()
   {
-    if (jdField_a_of_type_Pns == null) {}
-    try
-    {
-      if (jdField_a_of_type_Pns == null) {
-        jdField_a_of_type_Pns = new pns();
-      }
-      return jdField_a_of_type_Pns;
-    }
-    finally {}
-  }
-  
-  public static void a(long paramLong)
-  {
-    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit();
-    localEditor.putLong("config_last_update_time" + localAppInterface.getCurrentAccountUin(), paramLong);
-    localEditor.commit();
-  }
-  
-  private void a(oidb_0xb7e.RspBody paramRspBody)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "fabricateModel");
-    }
-    if (paramRspBody == null) {
-      pfd.a().a(false, null);
-    }
-    do
-    {
-      return;
-      if (!paramRspBody.rpt_top_item.has()) {
-        break;
-      }
-      paramRspBody = paramRspBody.rpt_top_item.get();
-    } while ((paramRspBody == null) || (paramRspBody.size() <= 0));
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < paramRspBody.size())
-    {
-      oidb_0xb7e.DiandianTopConfig localDiandianTopConfig = (oidb_0xb7e.DiandianTopConfig)paramRspBody.get(i);
-      DiandianTopConfig localDiandianTopConfig1 = new DiandianTopConfig();
-      if (localDiandianTopConfig.bytes_jump_url.has()) {
-        localDiandianTopConfig1.jumpUrl = localDiandianTopConfig.bytes_jump_url.get().toStringUtf8();
-      }
-      if (localDiandianTopConfig.bytes_title.has()) {
-        localDiandianTopConfig1.title = localDiandianTopConfig.bytes_title.get().toStringUtf8();
-      }
-      if (localDiandianTopConfig.bytes_sub_title.has()) {
-        localDiandianTopConfig1.subTitle = localDiandianTopConfig.bytes_sub_title.get().toStringUtf8();
-      }
-      if (localDiandianTopConfig.bytes_sub_title_color.has()) {
-        localDiandianTopConfig1.subTitleColor = localDiandianTopConfig.bytes_sub_title_color.get().toStringUtf8();
-      }
-      if (localDiandianTopConfig.bytes_pic_url.has()) {
-        localDiandianTopConfig1.picUrl = localDiandianTopConfig.bytes_pic_url.get().toStringUtf8();
-      }
-      if (localDiandianTopConfig.uint32_type.has()) {
-        localDiandianTopConfig1.type = localDiandianTopConfig.uint32_type.get();
-      }
-      if (localDiandianTopConfig.uint32_topic_id.has()) {}
-      for (localDiandianTopConfig1.topicId = localDiandianTopConfig.uint32_topic_id.get();; localDiandianTopConfig1.topicId = 0)
-      {
-        localArrayList.add(localDiandianTopConfig1);
-        i += 1;
-        break;
-      }
-    }
-    pfd.a().a(true, localArrayList);
-    return;
-    pfd.a().a(true, null);
-  }
-  
-  private void a(byte[] paramArrayOfByte, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "saveDiandianTopConfig");
-    }
-    ThreadManager.post(new DiandianTopConfigManager.3(this, paramArrayOfByte, paramLong), 5, null, true);
-  }
-  
-  public static boolean a()
-  {
-    AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    long l = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).getLong("config_last_update_time" + localAppInterface.getCurrentAccountUin(), 0L);
-    return System.currentTimeMillis() - l >= 43200000L;
+    return this.a.jdField_a_of_type_Pog.a;
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "loadDiandianTopConfig");
-    }
-    ThreadManager.post(new DiandianTopConfigManager.2(this), 5, null, true);
+    this.a.jdField_a_of_type_Pog.notifyDataSetChanged();
   }
   
-  public void a(boolean paramBoolean)
+  public void a(BaseArticleInfo paramBaseArticleInfo, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "requestDiandianTopConfig");
+    ReadInJoyPicWaterFallFragment.b(this.a);
+    this.a.jdField_a_of_type_Pog.a.remove(paramBaseArticleInfo);
+    this.a.jdField_a_of_type_Pog.notifyItemRemoved(paramInt);
+  }
+  
+  public void a(List<BaseArticleInfo> paramList)
+  {
+    this.a.jdField_a_of_type_Pog.a(paramList);
+  }
+  
+  public void a(Map<Long, rcn> paramMap, boolean paramBoolean)
+  {
+    Map localMap = uhv.a(this.a.a());
+    String str = pay.e(this.a.a());
+    ThreadManager.post(new ReadInJoyPicWaterFallFragment.6.1(this, this.a.g(), paramMap, paramBoolean, localMap, str), 5, null, false);
+  }
+  
+  public void a(Map<Long, rcn> paramMap, boolean paramBoolean, Map<Long, uia> paramMap1, String paramString)
+  {
+    this.a.a(paramMap, paramBoolean, paramMap1, paramString);
+  }
+  
+  public void a(Set<Long> paramSet, Map<Long, rcn> paramMap)
+  {
+    this.a.jdField_a_of_type_JavaUtilSet = paramSet;
+    this.a.jdField_a_of_type_JavaUtilMap = paramMap;
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a(paramBoolean, paramString);
+  }
+  
+  public boolean a()
+  {
+    return this.a.jdField_a_of_type_Pog.getItemCount() == 0;
+  }
+  
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a(paramBoolean1, paramBoolean2);
+    return true;
+  }
+  
+  public void b()
+  {
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.d();
+  }
+  
+  public void b(List<BaseArticleInfo> paramList)
+  {
+    this.a.jdField_a_of_type_Pog.a.removeAll(paramList);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.b(paramBoolean);
+  }
+  
+  public void c()
+  {
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.e();
+  }
+  
+  public void c(List<ChannelCoverInfo> paramList)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("ReadInJoyFragmentWithSubChannel", 2, "refreshSubChannelData channelList size:" + paramList.size());
+      QLog.d("ReadInJoyFragmentWithSubChannel", 2, "refreshSubChannelData mClassificationListView =" + this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView + ",showSub = " + this.a.jdField_a_of_type_Boolean);
     }
-    oidb_0xb7e.ReqBody localReqBody = new oidb_0xb7e.ReqBody();
-    nkm.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new pnt(this, paramBoolean), localReqBody.toByteArray(), "OidbSvc.0xb7e", 2942, 0, null, 0L);
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView != null)
+    {
+      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        ChannelCoverInfo localChannelCoverInfo = (ChannelCoverInfo)paramList.next();
+        this.a.jdField_a_of_type_JavaUtilArrayList.add(new pnw(localChannelCoverInfo, localChannelCoverInfo.mChannelCoverName, String.valueOf(localChannelCoverInfo.mChannelCoverId)));
+      }
+      this.a.jdField_a_of_type_Pog.notifyDataSetChanged();
+    }
   }
 }
 

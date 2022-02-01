@@ -1,24 +1,13 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
-import java.util.HashSet;
-
 public class axil
-  implements axhy
 {
-  public axil(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
+  public static final String a = String.valueOf(1816533856L);
   
-  public void a(boolean paramBoolean, RecentBaseData paramRecentBaseData)
+  public static final String a()
   {
-    if (paramBoolean) {
-      MsgBackupSelectionFragment.a(this.a).a.add(paramRecentBaseData);
+    if (axin.b()) {
+      return "https://fastest.now.qq.com/qq/mp-v2/notify-manager.html?asyncMode=3&_wv=3&from=60014";
     }
-    for (;;)
-    {
-      int i = MsgBackupSelectionFragment.a(this.a).a.size();
-      MsgBackupSelectionFragment.a(this.a, i);
-      return;
-      MsgBackupSelectionFragment.a(this.a).a.remove(paramRecentBaseData);
-    }
+    return "https://now.qq.com/qq/mp-v2/notify-manager.html?asyncMode=3&_wv=3&from=60014";
   }
 }
 

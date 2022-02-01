@@ -1,25 +1,17 @@
+import android.os.Handler;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+
 public class amsh
+  extends athr
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d = -1;
+  public amsh(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public amsh()
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_a_of_type_Boolean = false;
+    if (this.a.a.hasMessages(17)) {
+      this.a.a.removeMessages(17);
+    }
+    this.a.a.sendEmptyMessage(17);
   }
 }
 

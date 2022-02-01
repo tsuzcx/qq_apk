@@ -1,68 +1,38 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.av.business.manager.EffectConfigBase;
-import com.tencent.mobileqq.startup.step.AVSoUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.utils.AudioHelper;
 
 public class lmr
 {
-  public static int a(lmj paramlmj)
+  public int a;
+  final long jdField_a_of_type_Long = AudioHelper.b();
+  public int b;
+  public long b;
+  public int c;
+  public long c;
+  public int d;
+  public int e;
+  public int f;
+  
+  public lmr(AVNotifyCenter paramAVNotifyCenter) {}
+  
+  public boolean a()
   {
-    if (paramlmj == null) {}
-    do
-    {
-      do
-      {
-        return 11;
-        if (!TextUtils.isEmpty(paramlmj.c)) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.d("QavGPDownloadManager", 4, String.format("getEnableFlag, %s", new Object[] { paramlmj }));
-      return 11;
-      if (!paramlmj.a) {
-        break;
-      }
-    } while (!a(paramlmj));
-    return 1;
-    return 2;
+    return (this.jdField_b_of_type_Int == 2) && (this.d == 2) && (this.e == 4) && (this.jdField_c_of_type_Int == 0);
   }
   
-  static SharedPreferences a()
+  public boolean b()
   {
-    return EffectConfigBase.a(298, EffectConfigBase.c);
+    return (this.jdField_b_of_type_Int == 2) && (this.d == 2) && (this.e == 5) && (this.jdField_c_of_type_Int == 0);
   }
   
-  public static String a()
+  public String toString()
   {
-    return AVSoUtils.b();
-  }
-  
-  public static boolean a(lmj paramlmj)
-  {
-    String str1 = paramlmj.b;
-    paramlmj = a() + paramlmj.d + ".so";
-    String str2 = a().getString("so_zip_md5", null);
-    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGPDownloadManager", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
-      }
-    }
-    do
-    {
-      return false;
-      if (bhmi.a(paramlmj)) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QavGPDownloadManager", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramlmj }));
-    return false;
-    return true;
+    return "seq[" + this.jdField_a_of_type_Long + "], relationId[" + this.jdField_b_of_type_Long + "], avtype[" + this.jdField_b_of_type_Int + "], roomMode[" + this.d + "], gameId[" + this.e + "], liveExtraMode[" + this.jdField_c_of_type_Int + "], memberNum[" + this.jdField_a_of_type_Int + "], event[" + this.f + "], time[" + this.jdField_c_of_type_Long + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lmr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,22 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
 
-class xwe
-  implements MediaPlayer.OnErrorListener
+public class xwe
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  xwe(xvy paramxvy, xvr paramxvr) {}
+  public xwe(DanceMachineQQBrowserActivity paramDanceMachineQQBrowserActivity) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    return this.jdField_a_of_type_Xvr.a(this.jdField_a_of_type_Xvy, paramInt1, paramInt2);
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 4870;; paramInt = 775)
+    {
+      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
+      return;
+    }
   }
 }
 

@@ -1,19 +1,8 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.activity.TroopRequestActivity.14.1;
-import com.tencent.mobileqq.app.ThreadManager;
-
-public class afws
-  extends anyu
+public abstract interface afws
 {
-  public afws(TroopRequestActivity paramTroopRequestActivity) {}
+  public abstract void a();
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if ((!paramBoolean) || (paramString == null)) {
-      return;
-    }
-    ThreadManager.post(new TroopRequestActivity.14.1(this, paramString), 5, null, true);
-  }
+  public abstract void b();
 }
 
 

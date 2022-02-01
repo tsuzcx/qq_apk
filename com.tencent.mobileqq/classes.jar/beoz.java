@@ -1,27 +1,47 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
-import com.tencent.mobileqq.together.writetogether.statemachine.UserStateMachineController.1.1;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class beoz
-  extends bepm<UserState>
+class beoz
+  implements TextView.OnEditorActionListener
 {
-  beoz(beoy parambeoy, UserState paramUserState, List paramList)
-  {
-    super(paramUserState, paramList);
-  }
+  beoz(beow parambeow, bepc parambepc) {}
   
-  public void a(UserState paramUserState)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramUserState = this.a;
-    if (!bemv.a(beoy.a(this.a))) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool2 = false;
+    boolean bool1;
+    if ((paramInt != 4) && (paramInt != 6))
     {
-      beoy.a(paramUserState, bool);
-      ThreadManagerV2.getUIHandlerV2().postDelayed(new UserStateMachineController.1.1(this), 3000L);
-      return;
+      bool1 = bool2;
+      if (paramKeyEvent != null)
+      {
+        bool1 = bool2;
+        if (66 == paramKeyEvent.getKeyCode())
+        {
+          bool1 = bool2;
+          if (paramKeyEvent.getAction() != 0) {}
+        }
+      }
     }
+    else
+    {
+      paramTextView = this.jdField_a_of_type_Bepc.a.getEditableText().toString();
+      paramInt = this.jdField_a_of_type_Bepc.a.getSelectionStart();
+      paramTextView = paramTextView.substring(0, paramInt);
+      paramTextView = this.jdField_a_of_type_Beow.a(paramTextView);
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramTextView))
+      {
+        this.jdField_a_of_type_Bepc.a.getEditableText().replace(paramInt, paramInt, "\n" + paramTextView);
+        this.jdField_a_of_type_Bepc.a.setSelection(paramTextView.length() + paramInt + 1);
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 

@@ -1,50 +1,17 @@
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.AdapterView;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.mobileqq.hotpic.VideoBaseItem.2.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-class auiz
-  implements bljo
+public class auiz
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  auiz(auiv paramauiv) {}
+  auiz(auix paramauix) {}
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    auiv.a(this.a, paramInt);
-    paramAdapterView = this.a.jdField_a_of_type_Aukh;
-    if (auiv.a(this.a) == auiv.b(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAdapterView.d(bool);
-      this.a.a(paramInt);
-      if (this.a.jdField_a_of_type_Aueg != null) {
-        this.a.jdField_a_of_type_Aueg.a(paramInt);
-      }
-      paramAdapterView = (augl)auiv.a(this.a).get(paramInt);
-      if (paramAdapterView != null) {
-        break;
-      }
-      auna.b(BaseApplicationImpl.getContext().getString(2131692151));
-      return;
-    }
-    this.a.jdField_a_of_type_Augj.a().a(paramAdapterView);
-    this.a.jdField_a_of_type_Augj.a(paramInt, paramAdapterView);
-    this.a.jdField_a_of_type_Aukh.c(auiv.a(this.a, auiv.a(this.a)));
-    this.a.jdField_a_of_type_Aukh.c();
-    if (this.a.jdField_a_of_type_Auef != null) {
-      this.a.jdField_a_of_type_Auef.c();
-    }
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_Aueg.a(true);
-      this.a.jdField_a_of_type_Aukh.a(false);
-      auiv.a(this.a, true);
-    }
-    this.a.jdField_a_of_type_Boolean = true;
+    auix.a(this.a).post(new VideoBaseItem.2.1(this));
   }
-  
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

@@ -9,12 +9,12 @@ class ExtendFriendCampusSearchFragment$1
   
   public void run()
   {
-    ExtendFriendCampusSearchFragment.a(this.this$0).a(this.a, this.this$0);
+    ExtendFriendCampusSearchFragment.a(this.this$0).switchTag(this.a, this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusSearchFragment.1
  * JD-Core Version:    0.7.0.1
  */

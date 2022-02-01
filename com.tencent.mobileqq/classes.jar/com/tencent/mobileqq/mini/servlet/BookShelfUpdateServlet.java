@@ -4,7 +4,7 @@ import NS_MINI_BOOK_SHELF.MiniBookShelf.Information;
 import NS_MINI_BOOK_SHELF.MiniBookShelf.StUpdateBookShelfReadTimeRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bhuf;
+import bgau;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -28,25 +28,32 @@ public class BookShelfUpdateServlet
   
   public void onProcessData(Intent paramIntent, Bundle paramBundle, byte[] paramArrayOfByte)
   {
-    MiniBookShelf.Information localInformation = (MiniBookShelf.Information)BookShelfUpdateRequest.onResponse(paramArrayOfByte).updateInfo.get();
-    if (localInformation != null)
+    paramArrayOfByte = BookShelfUpdateRequest.onResponse(paramArrayOfByte);
+    if (paramArrayOfByte != null) {
+      paramArrayOfByte = (MiniBookShelf.Information)paramArrayOfByte.updateInfo.get();
+    }
+    for (;;)
     {
-      paramArrayOfByte = new JSONObject();
-      try
+      if (paramArrayOfByte != null)
       {
-        paramArrayOfByte.putOpt("contendId", localInformation.contentId.get());
-        paramArrayOfByte.putOpt("status", Integer.valueOf(localInformation.status.get()));
-        paramArrayOfByte.putOpt("msg", localInformation.msg.get());
-        paramArrayOfByte.putOpt("exist", Integer.valueOf(localInformation.existStatus.get()));
-        paramBundle.putString("key_result_data", paramArrayOfByte.toString());
-        notifyObserver(paramIntent, 1082, true, paramBundle, MiniAppObserver.class);
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
+        JSONObject localJSONObject = new JSONObject();
+        try
         {
-          QLog.i("BookShelfUpdateServlet", 1, "", localThrowable);
+          localJSONObject.putOpt("contendId", paramArrayOfByte.contentId.get());
+          localJSONObject.putOpt("status", Integer.valueOf(paramArrayOfByte.status.get()));
+          localJSONObject.putOpt("msg", paramArrayOfByte.msg.get());
+          localJSONObject.putOpt("exist", Integer.valueOf(paramArrayOfByte.existStatus.get()));
+          paramBundle.putString("key_result_data", localJSONObject.toString());
+          notifyObserver(paramIntent, 1082, true, paramBundle, MiniAppObserver.class);
+          return;
+          paramArrayOfByte = null;
+        }
+        catch (Throwable paramArrayOfByte)
+        {
+          for (;;)
+          {
+            QLog.i("BookShelfUpdateServlet", 1, "", paramArrayOfByte);
+          }
         }
       }
     }
@@ -65,7 +72,7 @@ public class BookShelfUpdateServlet
       localObject1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_book_shelf.UpdateBookShelfReadTime");
-    paramPacket.putSendData(bhuf.a((byte[])localObject1));
+    paramPacket.putSendData(bgau.a((byte[])localObject1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

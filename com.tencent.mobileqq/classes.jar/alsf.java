@@ -1,26 +1,33 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView.4;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
-
 public class alsf
-  implements Animation.AnimationListener
 {
-  public alsf(LoginView.4 param4) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean equals(Object paramObject)
   {
-    this.a.this$0.c.setVisibility(0);
-    this.a.this$0.c.clearAnimation();
-    this.a.this$0.c.setAnimation(null);
-    this.a.this$0.a.invalidate();
+    if ((paramObject == null) || (!(paramObject instanceof alsf))) {}
+    do
+    {
+      return false;
+      paramObject = (alsf)paramObject;
+    } while ((this.a != paramObject.a) || (this.b != paramObject.b) || (this.c != paramObject.c) || (this.d != paramObject.d) || (this.e != paramObject.e));
+    return true;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("{");
+    localStringBuilder.append("positionX:").append(this.a);
+    localStringBuilder.append(", positionY:").append(this.b);
+    localStringBuilder.append(", width:").append(this.c);
+    localStringBuilder.append(", height:").append(this.d);
+    localStringBuilder.append(", align:").append(this.e);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
+  }
 }
 
 

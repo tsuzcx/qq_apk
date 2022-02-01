@@ -1,98 +1,84 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-class bndx
-  implements bndv
+public class bndx
+  extends bnlv
 {
-  private IBinder a;
+  private final List<bnle> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final ConcurrentLinkedQueue<bnle> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private boolean jdField_a_of_type_Boolean = true;
   
-  bndx(IBinder paramIBinder)
+  public int a()
   {
-    this.a = paramIBinder;
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public void a(String paramString)
+  public bnle a(int paramInt)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (bnle)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public bnle a(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) {
+      a(((bmua)bmql.a(4)).a());
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+    while (localIterator.hasNext())
+    {
+      bnle localbnle = (bnle)localIterator.next();
+      if ((localbnle != null) && (TextUtils.equals(paramString, localbnle.jdField_a_of_type_JavaLangString))) {
+        return localbnle;
+      }
+    }
+    return null;
+  }
+  
+  public void a(bnle parambnle)
+  {
+    xvv.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + parambnle);
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(parambnle);
+    if (i >= 0)
+    {
+      this.jdField_a_of_type_JavaUtilList.set(i, parambnle);
+      a(i);
+    }
+  }
+  
+  public void a(Collection<bnle> paramCollection)
+  {
+    xvv.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
     try
     {
-      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      localParcel1.writeString(paramString);
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+      this.jdField_a_of_type_JavaUtilList.clear();
+      paramCollection = paramCollection.iterator();
+      while (paramCollection.hasNext())
+      {
+        bnle localbnle = (bnle)paramCollection.next();
+        if (localbnle != null)
+        {
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(localbnle);
+          if (localbnle.jdField_a_of_type_Int == 0) {
+            this.jdField_a_of_type_JavaUtilList.add(localbnle);
+          }
+        }
+      }
     }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    finally {}
+    a();
   }
   
-  public void a(String paramString, float paramFloat, long paramLong)
+  public void a(boolean paramBoolean)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      localParcel1.writeString(paramString);
-      localParcel1.writeFloat(paramFloat);
-      localParcel1.writeLong(paramLong);
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      localParcel1.writeString(paramString);
-      localParcel1.writeInt(paramInt);
-      this.a.transact(4, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b(String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      localParcel1.writeString(paramString);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

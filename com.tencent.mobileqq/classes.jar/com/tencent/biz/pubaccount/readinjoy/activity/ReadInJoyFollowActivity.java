@@ -8,22 +8,22 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.view.Window;
-import bnrf;
+import bkwm;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import ohm;
-import okh;
-import rxg;
+import oiz;
+import ols;
+import sek;
 
 public class ReadInJoyFollowActivity
   extends IphoneTitleBarActivity
 {
-  public ohm a;
+  public oiz a;
   
   private void a()
   {
-    ViewGroup localViewGroup = (ViewGroup)findViewById(2131376213);
-    this.a = new ohm(this);
+    ViewGroup localViewGroup = (ViewGroup)findViewById(2131375979);
+    this.a = new oiz(this);
     this.a.a(70);
     this.a.b(0);
     this.a.a(localViewGroup);
@@ -32,8 +32,9 @@ public class ReadInJoyFollowActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -48,13 +49,13 @@ public class ReadInJoyFollowActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    rxg.a().a(this);
+    sek.a().a(this);
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2131560187);
+    setContentView(2131560194);
     getWindow().setBackgroundDrawable(null);
-    setClickableTitle("BB圈", new okh(this));
+    setClickableTitle("BB圈", new ols(this));
     a();
     this.a.a();
     return true;
@@ -64,7 +65,7 @@ public class ReadInJoyFollowActivity
   {
     super.doOnDestroy();
     this.a.d();
-    rxg.a().b(this);
+    sek.a().b(this);
   }
   
   public void doOnPause()
@@ -82,7 +83,7 @@ public class ReadInJoyFollowActivity
   public void doOnStart()
   {
     super.doOnStart();
-    bnrf.a(getAppRuntime());
+    bkwm.a(getAppRuntime());
     this.a.e();
   }
   

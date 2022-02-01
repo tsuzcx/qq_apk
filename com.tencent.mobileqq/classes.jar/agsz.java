@@ -1,18 +1,19 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+import java.io.File;
 
-public class agsz
-  implements View.OnClickListener
+class agsz
+  implements agtb
 {
-  public agsz(AIOLongShotHelper paramAIOLongShotHelper) {}
+  agsz(agsw paramagsw, String paramString, agtc paramagtc) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    this.a.b(paramView);
-    AIOLongShotHelper.a("0X8009DE9");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (new File(this.jdField_a_of_type_JavaLangString).exists())
+    {
+      this.jdField_a_of_type_Agtc.a.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Agtc.f.setVisibility(8);
+    }
   }
 }
 

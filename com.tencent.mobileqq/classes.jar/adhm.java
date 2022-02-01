@@ -1,171 +1,120 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.MessageHandler;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.List<Ltencent.im.msg.im_msg_body.Elem;>;
-import msf.msgcomm.msg_comm.DiscussInfo;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import tencent.im.msg.im_msg_body.Attr;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.GroupFile;
-import tencent.im.msg.im_msg_body.MsgBody;
-import tencent.im.msg.im_msg_body.RichText;
-import tencent.im.msg.resv21.hummer_resv_21.FileImgInfo;
-import tencent.im.msg.resv21.hummer_resv_21.ResvAttr;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.QZoneClickReport;
+import cooperation.qzone.QZoneClickReport.ReportInfo;
+import cooperation.qzone.QZoneShareManager;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class adhm
-  extends adic
+  implements View.OnClickListener
 {
-  private void a(List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, msg_comm.Msg paramMsg)
+  public adhm(ForwardRecentActivity paramForwardRecentActivity) {}
+  
+  public void onClick(View paramView)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    MessageHandler localMessageHandler = localQQAppInterface.a();
-    Object localObject = null;
-    Iterator localIterator = paramList.iterator();
-    do
+    Object localObject1 = this.a.getIntent();
+    Object localObject2 = ((Intent)localObject1).getStringExtra("key_forward_business_id");
+    if (this.a.jdField_a_of_type_Atky.f())
     {
-      paramList = (List<im_msg_body.Elem>)localObject;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      paramList = (im_msg_body.Elem)localIterator.next();
-    } while (!paramList.group_file.has());
-    paramList = (im_msg_body.GroupFile)paramList.group_file.get();
-    if (paramList == null) {}
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      boolean bool = ((Intent)localObject1).hasExtra("file_send_path");
+      adhu.a(this.a.app, this.a, (Intent)localObject1, (String)localObject2, bool);
+    }
     for (;;)
     {
-      return;
+      this.a.jdField_a_of_type_Atky.a().putString("uin", "-1010");
+      this.a.jdField_a_of_type_Atky.D();
+      bcef.b(this.a.app, "CliOper", "", "", "friendchoose", "0X800A2D7", ForwardRecentActivity.a(this.a), 0, "", "", "", ForwardRecentActivity.a(this.a));
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putLong("key_receiver_type", 3L);
+      if (!"caller_aecamera".equals(this.a.c)) {
+        break;
+      }
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:peak", "ae_camera_get_info_client", "action_get_send_to_info", (Bundle)localObject1, null);
+      break;
+      int j = ((Intent)localObject1).getIntExtra("req_type", 0);
       if (QLog.isColorLevel()) {
-        paramStringBuilder.append("elemType:GroupFile;\n");
+        QLog.d("ForwardOption.ForwardEntranceActivity", 2, "-->addQZoneEntry--onClick--req_type = " + j);
       }
-      long l1 = 0L;
-      paramStringBuilder = (msg_comm.MsgHead)paramMsg.msg_head.get();
-      if (paramStringBuilder.discuss_info.has()) {
-        l1 = ((msg_comm.DiscussInfo)paramStringBuilder.discuss_info.get()).discuss_uin.get();
+      Bundle localBundle = ((Intent)localObject1).getExtras();
+      localObject2 = localBundle.getString("image_url_remote");
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = localBundle.getString("image_url");
       }
-      long l4 = paramStringBuilder.from_uin.get();
-      long l6 = paramStringBuilder.msg_time.get();
-      long l7 = paramStringBuilder.msg_seq.get();
-      long l5 = localMessageHandler.app.getLongAccountUin();
-      if (aoci.a(localMessageHandler.app, 3000, String.valueOf(l1), String.valueOf(l4), l6, l7)) {
-        continue;
-      }
-      paramStringBuilder = "";
-      try
+      localObject2 = new ArrayList();
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localObject = new String(paramList.bytes_filename.get().toByteArray(), "UTF-8");
-        paramStringBuilder = (StringBuilder)localObject;
-        long l3 = 0L;
-        l2 = l3;
-        if (paramMsg.msg_body.has())
+        localObject1 = ((String)localObject1).split(";");
+        int i = 0;
+        while (i < localObject1.length)
         {
-          paramMsg = (im_msg_body.MsgBody)paramMsg.msg_body.get();
-          l2 = l3;
-          if (paramMsg.rich_text.attr.has()) {
-            l2 = bcsa.a(((im_msg_body.Attr)paramMsg.rich_text.attr.get()).random.get());
-          }
-        }
-        paramMsg = (MessageForFile)bcry.a(-2005);
-        paramMsg.msgtype = -2005;
-        k = 0;
-        m = 0;
-        j = m;
-        i = k;
-        if (paramList.bytes_pb_reserve.has()) {
-          localObject = new hummer_resv_21.ResvAttr();
+          ((ArrayList)localObject2).add(URLDecoder.decode(localObject1[i]));
+          i += 1;
         }
       }
-      catch (UnsupportedEncodingException localInvalidProtocolBufferMicroException)
+      localBundle.putStringArrayList("image_url", (ArrayList)localObject2);
+      localBundle.putString("share_action", "shareToQQ");
+      localBundle.putString("jfrom", "login");
+      localBundle.putBoolean("thirdPartShare", true);
+      com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.f = true;
+      QZoneShareManager.jumpToQzoneShare(this.a.app, this.a, localBundle, null);
+      localObject1 = new QZoneClickReport.ReportInfo();
+      ((QZoneClickReport.ReportInfo)localObject1).actionType = "1";
+      ((QZoneClickReport.ReportInfo)localObject1).subactionType = "0";
+      ((QZoneClickReport.ReportInfo)localObject1).tabletype = 4;
+      ((QZoneClickReport.ReportInfo)localObject1).sourceType = "5";
+      ((QZoneClickReport.ReportInfo)localObject1).sourceFrom = "thirdApp";
+      ((QZoneClickReport.ReportInfo)localObject1).sourceTo = "activefeed";
+      QZoneClickReport.startReportImediately(this.a.app.getAccount(), (QZoneClickReport.ReportInfo)localObject1);
+      localObject1 = new HashMap();
+      ((HashMap)localObject1).put("source_type", "5");
+      ((HashMap)localObject1).put("source_from", "thirdApp");
+      ((HashMap)localObject1).put("source_to", "activefeed");
+      StatisticCollector.getInstance(this.a.getApplicationContext()).collectPerformance(this.a.app.getAccount(), "actQZSourceDataReport", true, 0L, 0L, (HashMap)localObject1, null);
+      if (this.a.jdField_a_of_type_Boolean)
       {
-        try
+        bhvw.a().a(this.a.app.getAccount(), "", this.a.b, "1000", "33", "0", false);
+        if ((this.a.jdField_a_of_type_Atky instanceof ForwardSdkBaseOption))
         {
-          long l2;
-          int k;
-          int m;
-          ((hummer_resv_21.ResvAttr)localObject).mergeFrom(paramList.bytes_pb_reserve.get().toByteArray());
-          int j = m;
-          int i = k;
-          if (((hummer_resv_21.ResvAttr)localObject).file_image_info.has())
-          {
-            i = ((hummer_resv_21.ResvAttr)localObject).file_image_info.uint32_file_height.get();
-            j = ((hummer_resv_21.ResvAttr)localObject).file_image_info.uint32_file_width.get();
-            paramMsg.saveExtInfoToExtStr("file_pic_width", String.valueOf(j));
-            paramMsg.saveExtInfoToExtStr("file_pic_heigth", String.valueOf(i));
-          }
-          paramMsg.uniseq = localMessageHandler.app.a().a(paramMsg.uniseq, l1, l4, l7, l2, l6, paramList, j, i);
-          l1 = paramList.uint64_file_size.get();
-          if (l4 == l5)
-          {
-            bool = true;
-            paramMsg.msg = beyo.a(paramStringBuilder, l1, 0, bool);
-            paramMsg.doParse();
-          }
+          localObject1 = (ForwardSdkBaseOption)this.a.jdField_a_of_type_Atky;
+          localObject2 = new Bundle();
+          ((Bundle)localObject2).putString("report_type", "102");
+          ((Bundle)localObject2).putString("act_type", "81");
+          ((Bundle)localObject2).putString("intext_1", "" + bhwc.a(((ForwardSdkBaseOption)localObject1).e));
+          ((Bundle)localObject2).putString("intext_2", "" + bhwc.a(-1, AppConstants.QZONE_UIN));
+          ((Bundle)localObject2).putString("intext_3", "0");
+          bhvw.a().a((Bundle)localObject2, "", this.a.app.getCurrentAccountUin(), false);
         }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          try
-          {
-            for (;;)
-            {
-              paramMsg.fileName = aunj.a(new String(paramList.bytes_filename.get().toByteArray(), "UTF-8"));
-              paramList1.add(paramMsg);
-              ((bedb)localQQAppInterface.getManager(272)).a(paramMsg);
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("GroupFileElemDecoder", 2, "GroupDiscFile.msg: " + paramList.bytes_filename.get() + ";");
-              return;
-              localUnsupportedEncodingException = localUnsupportedEncodingException;
-              localUnsupportedEncodingException.printStackTrace();
-              continue;
-              localInvalidProtocolBufferMicroException = localInvalidProtocolBufferMicroException;
-              localInvalidProtocolBufferMicroException.printStackTrace();
-            }
-            boolean bool = false;
-          }
-          catch (UnsupportedEncodingException paramStringBuilder)
-          {
-            for (;;)
-            {
-              paramStringBuilder.printStackTrace();
-              QLog.e("GroupFileElemDecoder", 1, "internalDiscOfflineFile: Exception is " + paramStringBuilder.toString());
-            }
-          }
-        }
+      }
+      if ((!this.a.jdField_a_of_type_Boolean) || (j != 5)) {
+        this.a.finish();
+      } else {
+        ForwardRecentActivity.i(this.a);
       }
     }
-  }
-  
-  public int a()
-  {
-    return 1000;
-  }
-  
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
-  {
-    a(paramList, paramList1, paramStringBuilder, paramMsg);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return paramElem.group_file.has();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adhm
  * JD-Core Version:    0.7.0.1
  */

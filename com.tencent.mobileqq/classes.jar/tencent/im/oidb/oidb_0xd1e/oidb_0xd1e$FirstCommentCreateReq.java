@@ -13,7 +13,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class oidb_0xd1e$FirstCommentCreateReq
   extends MessageMicro<FirstCommentCreateReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 50, 56, 64, 74, 80, 88, 98, 106, 112, 120, 130, 152 }, new String[] { "article_id", "author_id", "puin", "content", "is_anonymous", "business_info", "create_time", "is_multi_media", "media_data", "content_src", "src", "user_info", "rpt_media_data_list", "hide_name", "src_uin", "rowkey", "scene" }, new Object[] { "", Long.valueOf(0L), Long.valueOf(0L), "", Integer.valueOf(0), "", Long.valueOf(0L), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), null, null, Integer.valueOf(0), Long.valueOf(0L), "", Integer.valueOf(0) }, FirstCommentCreateReq.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 50, 56, 64, 74, 80, 88, 98, 106, 112, 120, 130, 152, 162 }, new String[] { "article_id", "author_id", "puin", "content", "is_anonymous", "business_info", "create_time", "is_multi_media", "media_data", "content_src", "src", "user_info", "rpt_media_data_list", "hide_name", "src_uin", "rowkey", "scene", "link_data" }, new Object[] { "", Long.valueOf(0L), Long.valueOf(0L), "", Integer.valueOf(0), "", Long.valueOf(0L), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), null, null, Integer.valueOf(0), Long.valueOf(0L), "", Integer.valueOf(0), null }, FirstCommentCreateReq.class);
   public final PBStringField article_id = PBField.initString("");
   public final PBUInt64Field author_id = PBField.initUInt64(0L);
   public final PBStringField business_info = PBField.initString("");
@@ -23,6 +23,7 @@ public final class oidb_0xd1e$FirstCommentCreateReq
   public final PBInt32Field hide_name = PBField.initInt32(0);
   public final PBInt32Field is_anonymous = PBField.initInt32(0);
   public final PBUInt32Field is_multi_media = PBField.initUInt32(0);
+  public final PBRepeatMessageField<oidb_0xd1e.LinkData> link_data = PBField.initRepeatMessage(oidb_0xd1e.LinkData.class);
   public oidb_0xd1e.MediaData media_data = new oidb_0xd1e.MediaData();
   public final PBUInt64Field puin = PBField.initUInt64(0L);
   public final PBStringField rowkey = PBField.initString("");

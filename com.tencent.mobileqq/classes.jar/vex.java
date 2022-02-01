@@ -1,32 +1,26 @@
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import qqcircle.QQCirclePrivateMsgShow.StPMSettingData;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 
-class vex
-  implements aqxy
+public class vex
 {
-  vex(veu paramveu, IphonePickerView paramIphonePickerView, blir paramblir) {}
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_Blir != null) && (this.jdField_a_of_type_Blir.isShowing())) {
-      this.jdField_a_of_type_Blir.dismiss();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    veu.a(this.jdField_a_of_type_Veu).setText(veu.a(this.jdField_a_of_type_Veu).a(0, paramInt1));
-    if (veu.a(this.jdField_a_of_type_Veu) == null) {
-      veu.a(this.jdField_a_of_type_Veu, new QQCirclePrivateMsgShow.StPMSettingData());
-    }
-    veu.a(this.jdField_a_of_type_Veu).fuelCost.set(Integer.parseInt(veu.a(this.jdField_a_of_type_Veu).a(0, paramInt1)));
-    QLog.i("QCirclePrivateMessageSettingContentPart", 1, "fuelUseNumSelect() setSelection  row : " + paramInt2 + " , fuelCost : " + veu.a(this.jdField_a_of_type_Veu).fuelCost.get());
-    vtq.a(String.valueOf(uzg.a()), 11, 39, 2, veu.a(this.jdField_a_of_type_Veu).a(0, paramInt1), "", "", "", "", this.jdField_a_of_type_Veu.b());
-  }
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public VideoFeedsAlphaMaskView a;
+  ZImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView;
+  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+  TextView b;
+  TextView c;
+  TextView d;
+  TextView e;
+  TextView f;
 }
 
 

@@ -1,30 +1,35 @@
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import android.widget.ImageView;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class xzo
-  extends wjm<xzm, xag>
+class xzo
+  extends SimpleObserver<Bitmap>
 {
-  public xzo(xzm paramxzm)
-  {
-    super(paramxzm);
-  }
+  xzo(xzn paramxzn) {}
   
-  public void a(@NonNull xzm paramxzm, @NonNull xag paramxag)
+  public void a(Bitmap paramBitmap)
   {
-    if ((xzm.a(paramxzm) != null) && (paramxag.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramxag.jdField_a_of_type_JavaUtilList.contains(xzm.a(paramxzm).a)))
+    super.onNext(paramBitmap);
+    if (paramBitmap != null)
     {
-      yuk.a("WeiShiFlowBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramxag.b.toString());
-      paramxzm.a.i();
+      if (this.a.b)
+      {
+        this.a.a.setImageBitmap(paramBitmap);
+        xvv.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
+      }
     }
+    else {
+      return;
+    }
+    xvv.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
   }
   
-  public Class acceptEventClass()
+  public void onError(@NonNull Error paramError)
   {
-    return xag.class;
+    super.onError(paramError);
+    xvv.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
   }
-  
-  public void b(@NonNull xzm paramxzm, @NonNull xag paramxag) {}
 }
 
 

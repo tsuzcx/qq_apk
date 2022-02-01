@@ -1,52 +1,19 @@
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.RegisterActivity;
 
-public class afjn
-  extends Handler
+class afjn
+  extends axkx
 {
-  public afjn(RegisterActivity paramRegisterActivity) {}
+  afjn(afiw paramafiw) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.c();
-    switch (paramMessage.what)
+    if ((paramInt == 0) && (paramBoolean == true))
     {
-    case -1: 
-    case 0: 
-    case 2: 
-    default: 
-    case 1: 
-    case 3: 
-    case 4: 
-    case 5: 
-      do
-      {
-        return;
-        paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Byte = ((byte)(paramMessage.jdField_a_of_type_Byte + 1));
-        this.a.a();
-        return;
-        this.a.d();
-        return;
-        this.a.b();
-        return;
-      } while (this.a.jdField_a_of_type_JavaLangString == null);
-      Toast.makeText(this.a.getApplicationContext(), this.a.jdField_a_of_type_JavaLangString, 1).show();
-      this.a.jdField_a_of_type_JavaLangString = null;
-      return;
-    case 6: 
-      paramMessage = paramMessage.getData().getString("url");
-      this.a.a(paramMessage);
-      return;
-    case 7: 
-      this.a.a(paramMessage.getData().getString("telNum"), paramMessage.getData().getString("msg"));
-      return;
+      paramBundle.getInt("gif_ui_show_bid");
+      long l = paramBundle.getLong("gif_ui_show_seq");
+      this.a.refresh(65536);
+      afiw.a(this.a, Long.valueOf(l).longValue());
     }
-    this.a.jdField_a_of_type_Byte = 3;
-    this.a.a();
   }
 }
 

@@ -1,34 +1,63 @@
-import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-class acnn
-  implements EIPCResultCallback
+public class acnn
+  implements View.OnClickListener
 {
-  acnn(acnm paramacnm, AdIPCManager.Params paramParams, int paramInt) {}
+  public acnn(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(View paramView)
   {
-    String str2 = null;
-    String str1;
-    if (this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params != null)
+    bcef.b(this.a.app, "CliOper", "", "", "0X8004038", "0X8004038", 0, 0, String.valueOf(this.a.jdField_a_of_type_JavaUtilList.size()), "", "", "");
+    if (!aych.a().a(this.a.app, this.a)) {}
+    for (;;)
     {
-      str1 = this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params.getAction();
-      if (this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params != null) {
-        str2 = this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Params.getToProcessName();
-      }
-      if (paramEIPCResult == null) {
-        break label91;
-      }
-    }
-    label91:
-    for (boolean bool = paramEIPCResult.isSuccess();; bool = false)
-    {
-      acvc.b("GdtIPCAdapter", String.format("ClientToServerIPCAsyncModule.onCallback action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(bool) }));
-      this.jdField_a_of_type_Acnm.callbackResult(this.jdField_a_of_type_Int, paramEIPCResult);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      str1 = null;
-      break;
+      AccountManageActivity.a(this.a, bcqk.a(this.a.app));
+      if (this.a.c)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("AccountManage", 2, "onClick v.hashCode()" + paramView.hashCode());
+        }
+      }
+      else
+      {
+        Object localObject = paramView.getTag();
+        if (localObject == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Switch_Account", 2, "switch a non-existing account");
+          }
+        }
+        else
+        {
+          int i = ((Integer)localObject).intValue();
+          localObject = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(i);
+          if (QLog.isColorLevel()) {
+            QLog.d("Switch_Account", 2, "switch uin:" + ((SimpleAccount)localObject).getUin());
+          }
+          if ((localObject != null) && (!((SimpleAccount)localObject).getUin().equals(this.a.app.getCurrentAccountUin())))
+          {
+            bcef.b(this.a.app, "CliOper", "", "", "0X8009C05", "0X8009C05", 0, 0, "", "", "", "");
+            this.a.f();
+            this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = ((SimpleAccount)localObject);
+            AccountManageActivity.b(this.a, true);
+            AccountManageActivity.c(this.a, true);
+            bcef.b(this.a.app, "dc00898", "", "", "0X800AC38", "0X800AC38", 0, 0, "", "", "", "");
+            this.a.app.switchAccount((SimpleAccount)localObject, null);
+            bcqj.a(this.a.app, this.a);
+          }
+          AlbumUtil.clearLastAlbumInfo();
+        }
+      }
     }
   }
 }

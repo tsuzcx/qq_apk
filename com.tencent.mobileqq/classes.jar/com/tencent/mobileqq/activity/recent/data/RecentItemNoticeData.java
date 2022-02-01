@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
 import android.content.Intent;
-import bhjx;
+import bftf;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -76,7 +76,7 @@ public class RecentItemNoticeData
   public boolean a(int paramInt, long paramLong1, String paramString1, String paramString2, String paramString3, long paramLong2)
   {
     if (this.type != paramInt) {}
-    while ((this.uin != paramLong1) || (this.time != paramLong2) || (!bhjx.a(this.wording, paramString1)) || (!bhjx.a(this.url, paramString2)) || (!bhjx.a(this.from, paramString3))) {
+    while ((this.uin != paramLong1) || (this.time != paramLong2) || (!bftf.a(this.wording, paramString1)) || (!bftf.a(this.url, paramString2)) || (!bftf.a(this.from, paramString3))) {
       return false;
     }
     return true;

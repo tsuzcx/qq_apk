@@ -1,16 +1,21 @@
-import android.content.Context;
-import com.tencent.ad.tangram.net.AdNet;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acve
+final class acve
+  implements DialogInterface.OnClickListener
 {
-  public static int a(Context paramContext)
-  {
-    return AdNet.getType(paramContext);
-  }
+  acve(acxa paramacxa, acxb paramacxb) {}
   
-  public static boolean a(Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return bhnv.d(paramContext);
+    if (this.jdField_a_of_type_Acxa != null) {
+      this.jdField_a_of_type_Acxa.onCancel();
+    }
+    mrd.e(true, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    mrd.b(this.jdField_a_of_type_Acxb.a);
   }
 }
 

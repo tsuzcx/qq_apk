@@ -1,14 +1,15 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
 public class afgo
+  implements bcrf
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  TextView b;
-  TextView c;
+  public afgo(FriendShipWaveView paramFriendShipWaveView) {}
+  
+  public void a()
+  {
+    this.a.jdField_a_of_type_Bcsc.a = 255;
+    this.a.jdField_a_of_type_Bcsc.a(this.a.jdField_a_of_type_Bcsd);
+  }
 }
 
 

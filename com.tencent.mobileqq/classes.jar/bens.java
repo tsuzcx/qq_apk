@@ -1,8 +1,6 @@
-import com.tencent.mobileqq.together.writetogether.websocket.msg.UserNewInfoMsg;
-
 public abstract interface bens
 {
-  public abstract void a(boolean paramBoolean, UserNewInfoMsg paramUserNewInfoMsg);
+  public abstract int d();
 }
 
 

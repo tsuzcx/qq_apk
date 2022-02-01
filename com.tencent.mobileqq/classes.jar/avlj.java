@@ -1,6 +1,8 @@
-class avlj
+public abstract interface avlj
 {
-  public static avlh a = new avlh(null);
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

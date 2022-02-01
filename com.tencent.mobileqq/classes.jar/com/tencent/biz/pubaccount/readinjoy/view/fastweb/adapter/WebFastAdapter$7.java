@@ -8,12 +8,13 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sop;
+import ssq;
+import swa;
 
 public class WebFastAdapter$7
   implements Runnable
 {
-  public WebFastAdapter$7(sop paramsop, List paramList) {}
+  public WebFastAdapter$7(ssq paramssq, List paramList) {}
   
   public void run()
   {
@@ -28,25 +29,25 @@ public class WebFastAdapter$7
         Object localObject = (BaseData)localIterator2.next();
         if ((localObject instanceof ProteusItemData))
         {
-          localObject = ((ProteusItemData)localObject).c;
-          if (localObject != null)
+          JSONObject localJSONObject = ((ProteusItemData)localObject).c;
+          if ((localJSONObject != null) && (localJSONObject.optString("kd_ug_rsp_info") != null))
           {
-            String str = ((JSONObject)localObject).optString("kd_ug_download_url");
-            if ((!TextUtils.isEmpty(str)) && (str.equals(localDownloadInfo.d)))
+            localObject = new swa(localJSONObject.optString("kd_ug_rsp_info"), ssq.a(localJSONObject));
+            if ((!TextUtils.isEmpty(((swa)localObject).b)) && (((swa)localObject).b.equals(localDownloadInfo.d)))
             {
               int j = i;
               try
               {
-                if (((JSONObject)localObject).opt("id_recommend_category_txt") != null)
+                if (localJSONObject.opt("id_recommend_category_txt") != null)
                 {
                   int k = 1;
                   i = 1;
                   j = k;
-                  localObject = ((JSONObject)localObject).getJSONObject("id_recommend_category_txt");
+                  localJSONObject = localJSONObject.getJSONObject("id_recommend_category_txt");
                   j = k;
-                  ((JSONObject)localObject).put("text", "下载中..." + localDownloadInfo.f + "%");
+                  localJSONObject.put("text", ((swa)localObject).h + localDownloadInfo.f + "%");
                   j = k;
-                  ((JSONObject)localObject).put("label_ug_progress_progress", localDownloadInfo.f);
+                  localJSONObject.put("label_ug_progress_progress", localDownloadInfo.f);
                 }
               }
               catch (JSONException localJSONException)
@@ -66,7 +67,7 @@ public class WebFastAdapter$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter.WebFastAdapter.7
  * JD-Core Version:    0.7.0.1
  */

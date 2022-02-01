@@ -9,7 +9,7 @@ public class bd
   
   public boolean onLongClick(View paramView)
   {
-    agej.n = true;
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
     return this.a.a(paramView);
   }
 }

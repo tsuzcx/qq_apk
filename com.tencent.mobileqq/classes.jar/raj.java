@@ -1,100 +1,280 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class raj
-  extends pfh
+  extends rai
 {
-  public raj(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  private static int jdField_a_of_type_Int = 0;
+  private static String jdField_a_of_type_JavaLangString = "";
+  private static List<String> jdField_a_of_type_JavaUtilList;
+  private static JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private static String b;
+  private static String c;
   
-  public void a(int paramInt1, long paramLong, String paramString1, int paramInt2, String paramString2, String paramString3)
+  public static String a()
   {
-    QLog.d("ReadInJoyDeliverUGCActivity", 1, "onDeliverUGCResult retCode=" + paramInt1 + ", feedsId=" + paramLong + ", rowkey=" + paramString1 + ", status=" + paramInt2 + ", comment=" + paramString2 + ", errorMsg: " + paramString3);
-    ReadInJoyDeliverUGCActivity.f(this.a, true);
-    if (ReadInJoyDeliverUGCActivity.a(this.a) != null) {
-      ReadInJoyDeliverUGCActivity.a(this.a).removeCallbacksAndMessages(null);
-    }
-    this.a.l();
-    ReadInJoyDeliverUGCActivity.c(this.a, paramInt1);
-    if (paramInt1 == 0)
+    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + ".readInjoy/skin_res/");
+  }
+  
+  public static String a(String paramString)
+  {
+    return a() + paramString;
+  }
+  
+  public static List<String> a()
+  {
+    Object localObject3 = null;
+    Object localObject2;
+    if (jdField_a_of_type_JavaUtilList != null)
     {
-      ReadInJoyDeliverUGCActivity.d(this.a, 2, this.a.getString(2131717111));
-      ReadInJoyDeliverUGCActivity.d(this.a, -1);
-      ReadInJoyDeliverUGCActivity.g(this.a, true);
+      localObject2 = jdField_a_of_type_JavaUtilList;
+      return localObject2;
     }
+    if (jdField_a_of_type_Int == 0) {
+      a();
+    }
+    Object localObject1;
+    if (jdField_a_of_type_Int == 1) {
+      localObject1 = new File(d() + "refreshAnimatePictures" + "/");
+    }
+    for (;;)
+    {
+      localObject2 = localObject3;
+      if (localObject1 == null) {
+        break;
+      }
+      localObject2 = localObject3;
+      if (!((File)localObject1).exists()) {
+        break;
+      }
+      localObject2 = localObject3;
+      if (!((File)localObject1).isDirectory()) {
+        break;
+      }
+      localObject1 = ((File)localObject1).listFiles();
+      localObject2 = localObject3;
+      if (localObject1 == null) {
+        break;
+      }
+      localObject2 = new ArrayList();
+      int i = 0;
+      for (;;)
+      {
+        if (i < localObject1.length)
+        {
+          if (localObject1[i].getName().endsWith(".png")) {
+            ((List)localObject2).add(localObject1[i].getName());
+          }
+          i += 1;
+          continue;
+          if (jdField_a_of_type_Int != 2) {
+            break label199;
+          }
+          localObject1 = new File(d() + "refreshRandomPictures" + "/");
+          break;
+        }
+      }
+      jdField_a_of_type_JavaUtilList = (List)localObject2;
+      return localObject2;
+      label199:
+      localObject1 = null;
+    }
+  }
+  
+  public static JSONObject a()
+  {
+    if (jdField_a_of_type_OrgJsonJSONObject == null) {}
     try
     {
-      ReadInJoyDeliverUGCActivity.a(this.a).put("feedsId", String.valueOf(paramLong));
-      ReadInJoyDeliverUGCActivity.a(this.a).put("rowkey", paramString1);
-      ReadInJoyDeliverUGCActivity.a(this.a).put("status", paramInt2);
-      paramString1 = paramString2;
-      if (paramString2 == null) {
-        paramString1 = "";
-      }
-      ReadInJoyDeliverUGCActivity.a(this.a).put("comment", new String(bhkv.encode(paramString1.getBytes(), 0)));
-      if (ReadInJoyDeliverUGCActivity.e(this.a) != 12) {
-        break label452;
-      }
-      ReadInJoyDeliverUGCActivity.a(this.a).put("feedsType", 4);
+      jdField_a_of_type_OrgJsonJSONObject = new JSONObject(FileUtils.readFileToString(new File(b() + "/colors.json")));
+      return jdField_a_of_type_OrgJsonJSONObject;
     }
-    catch (Exception paramString1)
+    catch (IOException localIOException)
     {
-      label273:
-      label294:
-      label452:
-      break label273;
-    }
-    if (ReadInJoyDeliverUGCActivity.e(this.a))
-    {
-      KandianSubscribeManager.a(this.a.getActivity(), 4);
-      if (ReadInJoyDeliverUGCActivity.f(this.a)) {
-        paramString1 = new JSONObject();
+      for (;;)
+      {
+        localIOException.printStackTrace();
       }
     }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  public static void a()
+  {
+    Object localObject = null;
+    try
+    {
+      String str = FileUtils.readFileToString(new File(d() + "refreshConfig.json"));
+      localObject = str;
+      JSONObject localJSONObject = new JSONObject(str);
+      if (localJSONObject != null)
+      {
+        localObject = str;
+        jdField_a_of_type_Int = localJSONObject.optInt("refresh_type");
+        localObject = str;
+        b = localJSONObject.optString("voice_path");
+        localObject = str;
+        c = localJSONObject.optString("rain_animate_path");
+      }
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("CommonSkinRes", 1, "parseRefreshParaJson error json = " + localIOException);
+      localJSONException.printStackTrace();
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return bcro.a(new File(a(paramString)));
+  }
+  
+  public static int b()
+  {
+    if (jdField_a_of_type_Int == 0) {
+      a();
+    }
+    return jdField_a_of_type_Int;
+  }
+  
+  public static String b()
+  {
+    return a(jdField_a_of_type_JavaLangString);
+  }
+  
+  public static String b(String paramString)
+  {
+    return c() + paramString;
+  }
+  
+  public static String c()
+  {
+    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + ".readInjoy/skin_guide/");
+  }
+  
+  public static String d()
+  {
+    return b() + "/" + "refresh" + "/";
+  }
+  
+  public static String e()
+  {
+    if ((TextUtils.isEmpty(b)) && (jdField_a_of_type_Int == 0)) {
+      a();
+    }
+    if (!TextUtils.isEmpty(b)) {
+      return d() + b;
+    }
+    return null;
+  }
+  
+  public static String f()
+  {
+    if ((TextUtils.isEmpty(c)) && (jdField_a_of_type_Int == 0)) {
+      a();
+    }
+    if (!TextUtils.isEmpty(c)) {
+      return d() + c;
+    }
+    return null;
+  }
+  
+  public int a(String paramString)
+  {
+    JSONObject localJSONObject = a();
+    if (localJSONObject == null) {
+      return 0;
+    }
+    return Color.parseColor(localJSONObject.optString(paramString));
+  }
+  
+  public Drawable a(Resources paramResources, String paramString1, String paramString2)
+  {
+    paramResources = new rak();
+    paramResources.a = a(paramString1);
+    paramResources.b = a(paramString2);
+    paramString1 = paramResources.b;
+    paramResources.addState(new int[] { 16842913 }, paramString1);
+    paramString1 = paramResources.b;
+    paramResources.addState(new int[] { 16842912 }, paramString1);
+    paramString1 = paramResources.a;
+    paramResources.addState(new int[] { -16842919 }, paramString1);
+    return paramResources;
+  }
+  
+  public Drawable a(String paramString)
+  {
+    Object localObject2 = b() + "/" + paramString;
+    Object localObject1 = new File((String)localObject2 + ".gif");
+    paramString = (String)localObject1;
+    if (!((File)localObject1).exists())
+    {
+      localObject1 = new File((String)localObject2 + ".png");
+      paramString = (String)localObject1;
+      if (!((File)localObject1).exists())
+      {
+        paramString = new File((String)localObject2 + ".jpg");
+        if (!paramString.exists()) {
+          break label219;
+        }
+      }
+    }
+    localObject1 = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = ayfc.a(paramString.getAbsolutePath());
+    localObject2 = new ColorDrawable(0);
+    ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
+    ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
+    ((URLDrawable.URLDrawableOptions)localObject1).mUseAutoScaleParams = true;
+    ((URLDrawable.URLDrawableOptions)localObject1).mUseMemoryCache = false;
+    label219:
+    label228:
     for (;;)
     {
       try
       {
-        if (!ReadInJoyDeliverUGCActivity.d(this.a)) {
-          continue;
+        paramString = paramString.toURL();
+        if (!((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage) {
+          break label228;
         }
-        paramInt1 = 70;
-        paramString1.put("channel_id", paramInt1);
-        paramString1.put("rowkey", "0");
-        paramString1.put("topicid", ReadInJoyDeliverUGCActivity.c(this.a));
+        paramString = new URL("readinjoy_skin_gif", paramString.getAuthority(), paramString.getFile());
+        paramString = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
+        return paramString;
       }
-      catch (Exception paramString2)
+      catch (MalformedURLException paramString)
       {
-        paramString2.printStackTrace();
-        continue;
+        paramString.printStackTrace();
       }
-      ocd.a(null, "CliOper", "", "", "0X800982D", "0X800982D", 0, 0, paramLong + "", "1", "", paramString1.toString(), false);
-      if (ReadInJoyDeliverUGCActivity.f(this.a) != -1L) {
-        ReadInJoyDeliverUGCActivity.h(this.a).a(ReadInJoyDeliverUGCActivity.g(this.a));
-      }
-      ReadInJoyDeliverUGCActivity.d(this.a);
-      this.a.finish();
-      return;
-      if (ReadInJoyDeliverUGCActivity.e(this.a) == 13)
-      {
-        ReadInJoyDeliverUGCActivity.a(this.a).put("feedsType", 5);
-        break;
-      }
-      ReadInJoyDeliverUGCActivity.a(this.a).put("feedsType", 4);
-      break;
-      pfa.a().b(true);
-      break label294;
-      paramInt1 = 0;
+      return new ColorDrawable(0);
     }
-    if (paramInt1 == 33)
-    {
-      ReadInJoyDeliverUGCActivity.e(this.a, 1, paramString3);
-      return;
-    }
-    ReadInJoyDeliverUGCActivity.f(this.a, 1, paramString3);
-    this.a.i();
   }
 }
 

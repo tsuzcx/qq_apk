@@ -1,17 +1,4 @@
-public class beyi
-{
-  public long a;
-  public String a;
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mAppShareID:" + this.jdField_a_of_type_Long);
-    localStringBuilder.append(",mShareUrl:" + this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     beyi

@@ -1,21 +1,43 @@
-import android.view.View;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.vas.avatar.VasFaceManager;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bizk
-  extends URLDrawableDownListener.Adapter
+class bizk
+  implements EIPCResultCallback
 {
-  public bizk(NewStyleDropdownView paramNewStyleDropdownView) {}
+  bizk(bizj parambizj, RequestEvent paramRequestEvent) {}
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    paramView = paramURLDrawable.getCurrDrawable();
-    if ((paramView instanceof ApngDrawable)) {
-      VasFaceManager.a(null, (ApngDrawable)paramView);
+    QLog.d("DeviceInfoPlugin", 1, "ACTION_GET_GUID_INFO onCallback");
+    if (paramEIPCResult == null)
+    {
+      QLog.e("DeviceInfoPlugin", 1, "ACTION_GET_GUID_INFO error, result is null");
+      return;
     }
+    if (paramEIPCResult.code == 0)
+    {
+      paramEIPCResult = paramEIPCResult.data.getString("guid", "");
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("guid", paramEIPCResult);
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(localJSONObject);
+        return;
+      }
+      catch (JSONException paramEIPCResult)
+      {
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(paramEIPCResult.getMessage());
+        QLog.e("DeviceInfoPlugin", 1, new Object[] { "evaluateCallback error : ", paramEIPCResult.getMessage() });
+        return;
+      }
+    }
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(String.valueOf(-102));
+    QLog.e("DeviceInfoPlugin", 1, "ACTION_GET_GUID_INFO failed, code return error");
   }
 }
 

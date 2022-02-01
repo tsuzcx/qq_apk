@@ -1,6 +1,18 @@
-class awls
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+
+public class awls
+  implements DialogInterface.OnClickListener
 {
-  private static final awlq a = new awlq(null);
+  public awls(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      GameRoomInviteActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity);
+    }
+  }
 }
 
 

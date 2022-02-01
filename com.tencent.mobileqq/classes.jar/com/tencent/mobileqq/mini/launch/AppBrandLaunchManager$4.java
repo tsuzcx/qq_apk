@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.launch;
 
 import android.content.Context;
 import android.content.Intent;
-import bkyr;
+import bjeo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.app.PreCacheManager.OnCacheListener;
@@ -18,7 +18,7 @@ class AppBrandLaunchManager$4
     if ((paramBoolean1) && (paramBoolean2)) {
       try
       {
-        if (bkyr.a(this.val$miniAppConfig.isEngineTypeMiniGame()))
+        if (bjeo.a(this.val$miniAppConfig.isEngineTypeMiniGame()))
         {
           MiniSdkLauncher.notifyPeriodicCacheUpdate(AppBrandLaunchManager.access$100(this.this$0), this.val$miniAppConfig);
           return;

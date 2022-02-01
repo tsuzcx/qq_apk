@@ -1,54 +1,19 @@
 import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyForCanvasFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoCeilingFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtAppReceiver;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
 public class tko
+  extends tkf
 {
-  public static GdtHandler.Params a(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity, tkr paramtkr)
+  tko(tkc paramtkc1, Activity paramActivity, tkc paramtkc2, JSONObject paramJSONObject)
   {
-    if ((paramAdvertisementInfo == null) || (paramActivity == null)) {
-      return null;
-    }
-    GdtHandler.Params localParams = new GdtHandler.Params();
-    tkr localtkr = paramtkr;
-    if (paramtkr == null) {
-      localtkr = new tkr();
-    }
-    paramtkr = ubd.a(paramAdvertisementInfo);
-    localParams.c = 1;
-    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(paramtkr);
-    localParams.jdField_a_of_type_Boolean = localtkr.jdField_a_of_type_Boolean;
-    localParams.jdField_b_of_type_Boolean = localtkr.jdField_b_of_type_Boolean;
-    if (paramAdvertisementInfo.clickPos > 0)
-    {
-      localParams.jdField_b_of_type_Int = paramAdvertisementInfo.clickPos;
-      paramAdvertisementInfo.resetClickPos();
-    }
-    localParams.jdField_a_of_type_Long = localtkr.jdField_a_of_type_Long;
-    if (ubd.a == null)
-    {
-      ubd.a = new GdtAppReceiver();
-      ubd.a.register(BaseApplicationImpl.getContext());
-    }
-    localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(ubd.a);
-    long l = paramAdvertisementInfo.mChannelID;
-    if ((l != 3L) && (l != 4L) && (paramAdvertisementInfo.mAdJumpMode != 6) && (!localtkr.d) && (l != 2000001L))
-    {
-      localParams.jdField_a_of_type_JavaLangClass = ReadInJoyVideoCeilingFragment.class;
-      ubd.a(localParams, localtkr.c, paramAdvertisementInfo, paramActivity);
-    }
-    localParams.jdField_b_of_type_JavaLangClass = ReadInJoyForCanvasFragment.class;
-    localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", "biz_src_feeds_kandian");
-    return localParams;
+    super(paramtkc1, paramActivity, paramtkc2, paramJSONObject);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  {
+    tkc.a(this.a).mShareHelper.d(paramString1);
   }
 }
 

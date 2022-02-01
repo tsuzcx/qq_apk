@@ -1,32 +1,21 @@
-import android.graphics.Bitmap;
-import android.widget.LinearLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import android.view.View;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-public class aveu
-  extends aybk
+class aveu
+  implements AdapterView.OnItemClickListener
 {
-  public aveu(NearbyHybridFragment paramNearbyHybridFragment) {}
+  aveu(aveq paramaveq, PoiSlideBottomPanel paramPoiSlideBottomPanel) {}
   
-  protected void a(int paramInt, String paramString) {}
-  
-  protected void a(int paramInt, String paramString, Bitmap paramBitmap)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((this.a.d != null) && (this.a.d.equals(paramString)) && (paramBitmap != null) && (this.a.b != null) && (this.a.b.getVisibility() == 0)) {
-      this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageBitmap(paramBitmap);
+    aveq.a(this.jdField_a_of_type_Aveq, true);
+    aveq.a(this.jdField_a_of_type_Aveq).a(paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiPoiSlideBottomPanel.b()) {
+      bcef.b(null, "CliOper", "", "", "0X800A960", "0X800A960", 0, 0, "0", "0", "0", "");
     }
   }
-  
-  protected void b()
-  {
-    if (this.a.jdField_a_of_type_Axva != null) {
-      this.a.jdField_a_of_type_Axva.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
-    }
-    this.a.l();
-    this.a.m();
-  }
-  
-  protected void b(int paramInt, String paramString) {}
 }
 
 

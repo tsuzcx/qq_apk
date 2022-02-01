@@ -1,17 +1,65 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.bizparts.QCircleAggregationFragmentsPart;
-import java.util.List;
-import qqcircle.QQCircleFeedBase.StTabInfo;
-
 public class vbi
-  implements Observer<vxq<List<QQCircleFeedBase.StTabInfo>>>
 {
-  public vbi(QCircleAggregationFragmentsPart paramQCircleAggregationFragmentsPart) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public int c;
+  public int d;
   
-  public void a(@Nullable vxq<List<QQCircleFeedBase.StTabInfo>> paramvxq)
+  public vbh a()
   {
-    QCircleAggregationFragmentsPart.a(this.a, paramvxq);
+    return new vbh(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d);
+  }
+  
+  public vbi a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public vbi a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public vbi a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public vbi b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public vbi b(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public vbi b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public vbi c(int paramInt)
+  {
+    this.c = paramInt;
+    return this;
+  }
+  
+  public vbi d(int paramInt)
+  {
+    this.d = paramInt;
+    return this;
   }
 }
 

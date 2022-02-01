@@ -17,15 +17,47 @@ public class QflutterNetworkImagePlugin
   
   public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
   {
-    if (paramMethodCall.method.equals("getPlatformVersion"))
+    String str = paramMethodCall.method;
+    if (str.equals("getPlatformVersion"))
     {
       paramMethodCall = new StringBuilder();
       paramMethodCall.append("Android ");
       paramMethodCall.append(Build.VERSION.RELEASE);
       paramResult.success(paramMethodCall.toString());
-      return;
     }
-    paramResult.notImplemented();
+    label149:
+    do
+    {
+      return;
+      if (str.equals("enableNativeImageDownloader"))
+      {
+        paramResult.success(Boolean.valueOf(true));
+        return;
+      }
+      if (str.equals("getNetworkImage"))
+      {
+        str = (String)paramMethodCall.argument("url");
+        Integer localInteger = (Integer)paramMethodCall.argument("decodeWidth");
+        paramMethodCall = (Integer)paramMethodCall.argument("decodeHeight");
+        int i;
+        if (localInteger == null)
+        {
+          i = -1;
+          if (paramMethodCall != null) {
+            break label149;
+          }
+        }
+        for (int j = -1;; j = paramMethodCall.intValue())
+        {
+          QFlutterNetworkImage.g().getNetworkImage(str, i, j, paramResult);
+          return;
+          i = localInteger.intValue();
+          break;
+        }
+      }
+    } while (!str.equals("releaseNetworkImage"));
+    paramMethodCall = (String)paramMethodCall.argument("url");
+    QFlutterNetworkImage.g().releaseNetworkImage(paramMethodCall, paramResult);
   }
 }
 

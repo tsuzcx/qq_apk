@@ -1,8 +1,18 @@
-import java.util.List;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-public abstract interface axzw
+class axzw
 {
-  public abstract void a(List<axzx> paramList, boolean paramBoolean);
+  axzw(axzu paramaxzu) {}
+  
+  @QQPermissionDenied(1)
+  public void denied()
+  {
+    bfur.a(axzu.a(this.a), 2131697857, 2131697858);
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant() {}
 }
 
 

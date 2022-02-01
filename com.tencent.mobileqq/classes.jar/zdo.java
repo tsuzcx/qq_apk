@@ -1,17 +1,15 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.app.Activity;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.7.1;
 
 public class zdo
-  implements zlu
+  implements zko
 {
-  public zdo(DoodleLayout paramDoodleLayout) {}
+  zdo(zdg paramzdg) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    this.a.c();
-    if ((this.a.a != null) && (this.a.a.a == 3)) {
-      LpReportInfo_pf00064.allReport(615, 1, 3);
+    if (zdg.q(this.a) != null) {
+      zdg.r(this.a).runOnUiThread(new DetailBaseBlock.7.1(this));
     }
   }
 }

@@ -5,9 +5,9 @@ import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.List;
-import oih;
-import otn;
-import oto;
+import oju;
+import oum;
+import oun;
 
 public abstract class BaseCommentData
   implements Serializable
@@ -15,7 +15,7 @@ public abstract class BaseCommentData
   public static final int MAIN_COMMENT = 1;
   public static final int SUB_COMMENT = 2;
   public static final String TAG = "BaseCommentData";
-  public otn accountLevelInfo;
+  public oum accountLevelInfo;
   public long activityCfgID;
   public String activityJumpUrl;
   public String activityPicUrl;
@@ -28,6 +28,7 @@ public abstract class BaseCommentData
   public int awesome;
   public String commentContent;
   public String commentId;
+  public List<BaseCommentData.CommentLinkData> commentLinkDataList;
   public long commentTime;
   public int contentSrc;
   public int createSrc;
@@ -50,8 +51,8 @@ public abstract class BaseCommentData
   public int like;
   public int likeCnt;
   public int maxLine = 9;
-  public oih medalInfo;
-  public List<oto> mediaDataList;
+  public oju medalInfo;
+  public List<oun> mediaDataList;
   public int myself;
   public String nickName;
   public String passthrough;
@@ -77,12 +78,17 @@ public abstract class BaseCommentData
   {
     if ((this.mediaDataList != null) && (this.mediaDataList.size() > 0))
     {
-      oto localoto = (oto)this.mediaDataList.get(0);
-      if (localoto != null) {
-        return localoto.e;
+      oun localoun = (oun)this.mediaDataList.get(0);
+      if (localoun != null) {
+        return localoun.e;
       }
     }
     return 0;
+  }
+  
+  public boolean hasLinkData()
+  {
+    return (this.commentLinkDataList != null) && (this.commentLinkDataList.size() > 0);
   }
   
   public boolean isActivity()
@@ -172,7 +178,7 @@ public abstract class BaseCommentData
   
   public String toString()
   {
-    return "BaseCommentData{level=" + this.level + ", commentId='" + this.commentId + '\'' + ", commentContent='" + this.commentContent + '\'' + ", uin='" + this.uin + '\'' + ", contentSrc=" + this.contentSrc + '}';
+    return "BaseCommentData{level=" + this.level + ", commentId='" + this.commentId + '\'' + ", commentContent='" + this.commentContent + '\'' + ", commentTime=" + this.commentTime + ", uin='" + this.uin + '\'' + ", nickName='" + this.nickName + '\'' + ", avatar='" + this.avatar + '\'' + ", homepage='" + this.homepage + '\'' + ", myself=" + this.myself + ", like=" + this.like + ", disLike=" + this.disLike + ", likeCnt=" + this.likeCnt + ", anonymous=" + this.anonymous + ", authorSelection=" + this.authorSelection + ", authorComment='" + this.authorComment + '\'' + ", rank=" + this.rank + ", awesome=" + this.awesome + ", rowKey='" + this.rowKey + '\'' + ", contentSrc=" + this.contentSrc + ", passthrough='" + this.passthrough + '\'' + ", isAnchor=" + this.isAnchor + ", isDelete=" + this.isDelete + ", maxLine=" + this.maxLine + ", secondMaxLine=" + this.secondMaxLine + ", isStar=" + this.isStar + ", isApproved=" + this.isApproved + ", flowGuidePtsData='" + this.flowGuidePtsData + '\'' + ", createSrc=" + this.createSrc + ", isActivity=" + this.isActivity + ", activityPicUrl='" + this.activityPicUrl + '\'' + ", activityJumpUrl='" + this.activityJumpUrl + '\'' + ", activityCfgID=" + this.activityCfgID + ", isBanner=" + this.isBanner + ", medalInfo=" + this.medalInfo + ", mediaDataList=" + this.mediaDataList + ", isAuthorReply=" + this.isAuthorReply + ", userTitle='" + this.userTitle + '\'' + ", isAuthorLike=" + this.isAuthorLike + ", isFollowing=" + this.isFollowing + ", isAuthorSticky=" + this.isAuthorSticky + ", avatarPendantUrl='" + this.avatarPendantUrl + '\'' + ", ksHomePage='" + this.ksHomePage + '\'' + ", styleData='" + this.styleData + '\'' + ", accountLevelInfo=" + this.accountLevelInfo + ", isAd=" + this.isAd + ", advertisementInfo=" + this.advertisementInfo + ", commentLinkDataList=" + this.commentLinkDataList + '}';
   }
 }
 

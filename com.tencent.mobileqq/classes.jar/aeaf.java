@@ -1,20 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class aeaf
-  implements DialogInterface.OnClickListener
+public abstract interface aeaf
 {
-  aeaf(aebz paramaebz) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.a != null) {
-      this.a.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 

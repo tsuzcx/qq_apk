@@ -1,51 +1,44 @@
 package com.tencent.mobileqq.troop.utils;
 
-import aauw;
-import aavj;
-import aavm;
-import aavn;
-import aavo;
-import aavp;
-import aavr;
+import amoo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import antf;
-import antz;
-import atqx;
-import atrd;
-import atup;
-import aubb;
-import aunj;
-import auok;
-import bcrg;
-import bfrs;
-import bftf;
-import bfvh;
-import bfvp;
-import bfvr;
-import bgri;
-import bgrk;
-import bgrn;
-import bgry;
-import bgrz;
-import bgsa;
-import bgsb;
-import bgsc;
-import bgsd;
-import bgse;
-import bgsh;
-import bgsi;
-import bguj;
-import bhlg;
-import bhml;
-import bhnv;
+import asdg;
+import asdm;
+import asgz;
+import asnl;
+import aszt;
+import atas;
+import bbko;
+import bebc;
+import becp;
+import bees;
+import befa;
+import befc;
+import bfaw;
+import bfay;
+import bfbb;
+import bfbm;
+import bfbn;
+import bfbo;
+import bfbp;
+import bfbq;
+import bfbr;
+import bfbs;
+import bfbv;
+import bfbw;
+import bfdx;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -58,26 +51,33 @@ import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 import mqq.manager.ProxyIpManager;
+import zrj;
+import zrw;
+import zrz;
+import zsa;
+import zsb;
+import zsc;
+import zse;
 
 public class TroopFileTransferManager
   implements INetInfoHandler
 {
   private static Map<Long, TroopFileTransferManager> c;
   protected long a;
-  private aavj jdField_a_of_type_Aavj = new bgsb(this);
-  private aavm jdField_a_of_type_Aavm = new bgsd(this);
-  private aavn jdField_a_of_type_Aavn = new bgsc(this);
-  private aavo jdField_a_of_type_Aavo = new bgsa(this);
-  private aavp jdField_a_of_type_Aavp = new bgry(this);
-  private aavr jdField_a_of_type_Aavr = new bgrz(this);
-  private bgrn jdField_a_of_type_Bgrn;
+  private bfbb jdField_a_of_type_Bfbb;
   public QQAppInterface a;
   public Map<UUID, TroopFileTransferManager.Item> a;
   private ProxyIpManager jdField_a_of_type_MqqManagerProxyIpManager;
-  public bgsh[] a;
+  private zrw jdField_a_of_type_Zrw = new bfbp(this);
+  private zrz jdField_a_of_type_Zrz = new bfbr(this);
+  private zsa jdField_a_of_type_Zsa = new bfbq(this);
+  private zsb jdField_a_of_type_Zsb = new bfbo(this);
+  private zsc jdField_a_of_type_Zsc = new bfbm(this);
+  private zse jdField_a_of_type_Zse = new bfbn(this);
+  public bfbv[] a;
   protected long b;
-  private aavm b;
   public Map<UUID, Integer> b;
+  private zrz b;
   protected boolean b;
   protected long c;
   protected long d;
@@ -86,8 +86,8 @@ public class TroopFileTransferManager
   
   public TroopFileTransferManager()
   {
-    this.jdField_b_of_type_Aavm = new bgse(this);
-    this.jdField_a_of_type_ArrayOfBgsh = new bgsh[] { new bgsh(1), new bgsh(1), new bgsh(2), new bgsh(2), new bgsh(2) };
+    this.jdField_b_of_type_Zrz = new bfbs(this);
+    this.jdField_a_of_type_ArrayOfBfbv = new bfbv[] { new bfbv(1), new bfbv(1), new bfbv(2), new bfbv(2), new bfbv(2) };
   }
   
   public static TroopFileTransferManager a(long paramLong)
@@ -109,7 +109,7 @@ public class TroopFileTransferManager
         jdField_c_of_type_JavaUtilMap = new HashMap();
         ThreadManager.post(new TroopFileTransferManager.1(), 2, null, true);
       }
-      bgsi.a(paramQQAppInterface);
+      bfbw.a(paramQQAppInterface);
       Object localObject2 = (TroopFileTransferManager)jdField_c_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
       Object localObject1 = localObject2;
       if (localObject2 != null)
@@ -124,7 +124,7 @@ public class TroopFileTransferManager
       localObject2 = localObject1;
       if (localObject1 == null)
       {
-        localObject2 = new bfvh(paramQQAppInterface, paramLong);
+        localObject2 = new bees(paramQQAppInterface, paramLong);
         ((TroopFileTransferManager)localObject2).a();
         ThreadManager.post(new TroopFileTransferManager.2((TroopFileTransferManager)localObject2), 8, null, true);
         jdField_c_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localObject2);
@@ -138,7 +138,7 @@ public class TroopFileTransferManager
   {
     try
     {
-      if (bhnv.b(BaseApplication.getContext()) == 1)
+      if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1)
       {
         if (paramInt == 0) {
           this.jdField_b_of_type_Long += paramLong;
@@ -191,7 +191,7 @@ public class TroopFileTransferManager
   
   private final void b(TroopFileTransferManager.Item paramItem, int paramInt)
   {
-    bgri.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.e, paramItem.FileName, paramItem.Status, paramInt);
+    bfaw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.e, paramItem.FileName, paramItem.Status, paramInt);
   }
   
   public static void f()
@@ -237,34 +237,34 @@ public class TroopFileTransferManager
   }
   
   /* Error */
-  public final bftf a(FileManagerEntity paramFileManagerEntity, int paramInt1, int paramInt2, long paramLong)
+  public final becp a(FileManagerEntity paramFileManagerEntity, int paramInt1, int paramInt2, long paramLong)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokevirtual 238	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	()Lbgrn;
+    //   3: invokevirtual 239	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	()Lbfbb;
     //   6: aload_1
-    //   7: getfield 243	com/tencent/mobileqq/filemanager/data/FileManagerEntity:fileName	Ljava/lang/String;
+    //   7: getfield 244	com/tencent/mobileqq/filemanager/data/FileManagerEntity:fileName	Ljava/lang/String;
     //   10: aload_1
-    //   11: getfield 246	com/tencent/mobileqq/filemanager/data/FileManagerEntity:fileSize	J
+    //   11: getfield 247	com/tencent/mobileqq/filemanager/data/FileManagerEntity:fileSize	J
     //   14: bipush 102
-    //   16: invokevirtual 251	bgrn:a	(Ljava/lang/String;JI)Lbfrs;
+    //   16: invokevirtual 252	bfbb:a	(Ljava/lang/String;JI)Lbebc;
     //   19: astore 6
-    //   21: invokestatic 217	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   21: invokestatic 218	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   24: ifeq +33 -> 57
-    //   27: ldc 219
+    //   27: ldc 220
     //   29: iconst_2
-    //   30: new 253	java/lang/StringBuilder
+    //   30: new 254	java/lang/StringBuilder
     //   33: dup
-    //   34: invokespecial 254	java/lang/StringBuilder:<init>	()V
-    //   37: ldc_w 256
-    //   40: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: invokespecial 255	java/lang/StringBuilder:<init>	()V
+    //   37: ldc_w 257
+    //   40: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   43: aload 6
-    //   45: invokevirtual 266	bfrs:toString	()Ljava/lang/String;
-    //   48: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   51: invokevirtual 267	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   54: invokestatic 224	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   45: invokevirtual 267	bebc:toString	()Ljava/lang/String;
+    //   48: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: invokevirtual 268	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   54: invokestatic 225	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   57: aload 6
     //   59: ifnonnull +9 -> 68
     //   62: aconst_null
@@ -274,90 +274,86 @@ public class TroopFileTransferManager
     //   66: aload_1
     //   67: areturn
     //   68: aload_0
-    //   69: invokevirtual 269	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:c	()V
+    //   69: invokevirtual 270	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:c	()V
     //   72: aload 6
     //   74: aload_1
-    //   75: getfield 272	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strThumbPath	Ljava/lang/String;
-    //   78: putfield 274	bfrs:i	Ljava/lang/String;
+    //   75: getfield 273	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strThumbPath	Ljava/lang/String;
+    //   78: putfield 275	bebc:i	Ljava/lang/String;
     //   81: aload 6
     //   83: aload_1
-    //   84: getfield 277	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strMiddleThumPath	Ljava/lang/String;
-    //   87: putfield 280	bfrs:k	Ljava/lang/String;
+    //   84: getfield 278	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strMiddleThumPath	Ljava/lang/String;
+    //   87: putfield 281	bebc:k	Ljava/lang/String;
     //   90: aload 6
     //   92: aload_1
-    //   93: getfield 283	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strLargeThumPath	Ljava/lang/String;
-    //   96: putfield 285	bfrs:j	Ljava/lang/String;
-    //   99: new 199	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item
+    //   93: getfield 284	com/tencent/mobileqq/filemanager/data/FileManagerEntity:strLargeThumPath	Ljava/lang/String;
+    //   96: putfield 286	bebc:j	Ljava/lang/String;
+    //   99: new 200	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item
     //   102: dup
     //   103: aload 6
-    //   105: invokespecial 288	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:<init>	(Lbfrs;)V
+    //   105: invokespecial 289	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:<init>	(Lbebc;)V
     //   108: astore 6
     //   110: aload_0
     //   111: aload 6
-    //   113: invokevirtual 290	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;)V
+    //   113: invokevirtual 291	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;)V
     //   116: aload 6
     //   118: iload_3
-    //   119: putfield 293	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:RandomNum	I
+    //   119: putfield 294	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:RandomNum	I
     //   122: aload 6
     //   124: lload 4
-    //   126: putfield 296	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ForwardTroopuin	J
+    //   126: putfield 297	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ForwardTroopuin	J
     //   129: aload 6
     //   131: iload_2
-    //   132: putfield 299	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ForwardBusId	I
+    //   132: putfield 300	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ForwardBusId	I
     //   135: aload 6
     //   137: iconst_4
-    //   138: putfield 207	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Status	I
+    //   138: putfield 208	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Status	I
     //   141: aload 6
     //   143: aload_1
-    //   144: invokevirtual 302	com/tencent/mobileqq/filemanager/data/FileManagerEntity:getFilePath	()Ljava/lang/String;
-    //   147: putfield 305	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:LocalFile	Ljava/lang/String;
+    //   144: invokevirtual 303	com/tencent/mobileqq/filemanager/data/FileManagerEntity:getFilePath	()Ljava/lang/String;
+    //   147: putfield 306	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:LocalFile	Ljava/lang/String;
     //   150: aload 6
     //   152: aload_1
-    //   153: getfield 308	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
-    //   156: putfield 311	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:entrySessionID	J
-    //   159: aload_1
-    //   160: ifnull +21 -> 181
-    //   163: aload 6
-    //   165: aload_1
-    //   166: getfield 314	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgWidth	I
-    //   169: putfield 317	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:width	I
-    //   172: aload 6
-    //   174: aload_1
-    //   175: getfield 320	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgHeight	I
-    //   178: putfield 323	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:height	I
-    //   181: aload_0
-    //   182: aload 6
-    //   184: iconst_4
-    //   185: iconst_0
-    //   186: invokevirtual 326	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;II)V
-    //   189: aload 6
-    //   191: aload_0
-    //   192: getfield 181	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:e	J
-    //   195: invokevirtual 330	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:getInfo	(J)Lbftf;
+    //   153: getfield 309	com/tencent/mobileqq/filemanager/data/FileManagerEntity:nSessionId	J
+    //   156: putfield 312	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:entrySessionID	J
+    //   159: aload 6
+    //   161: aload_1
+    //   162: getfield 315	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgWidth	I
+    //   165: putfield 318	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:width	I
+    //   168: aload 6
+    //   170: aload_1
+    //   171: getfield 321	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgHeight	I
+    //   174: putfield 324	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:height	I
+    //   177: aload_0
+    //   178: aload 6
+    //   180: iconst_4
+    //   181: iconst_0
+    //   182: invokevirtual 327	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;II)V
+    //   185: aload 6
+    //   187: aload_0
+    //   188: getfield 182	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:e	J
+    //   191: invokevirtual 331	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:getInfo	(J)Lbecp;
+    //   194: astore_1
+    //   195: goto -131 -> 64
     //   198: astore_1
-    //   199: goto -135 -> 64
-    //   202: astore_1
-    //   203: aload_0
-    //   204: monitorexit
-    //   205: aload_1
-    //   206: athrow
+    //   199: aload_0
+    //   200: monitorexit
+    //   201: aload_1
+    //   202: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	207	0	this	TroopFileTransferManager
-    //   0	207	1	paramFileManagerEntity	FileManagerEntity
-    //   0	207	2	paramInt1	int
-    //   0	207	3	paramInt2	int
-    //   0	207	4	paramLong	long
-    //   19	171	6	localObject	Object
+    //   0	203	0	this	TroopFileTransferManager
+    //   0	203	1	paramFileManagerEntity	FileManagerEntity
+    //   0	203	2	paramInt1	int
+    //   0	203	3	paramInt2	int
+    //   0	203	4	paramLong	long
+    //   19	167	6	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	57	202	finally
-    //   68	159	202	finally
-    //   163	181	202	finally
-    //   181	199	202	finally
+    //   2	57	198	finally
+    //   68	195	198	finally
   }
   
-  public final bftf a(String paramString)
+  public final becp a(String paramString)
   {
     if (paramString == null)
     {
@@ -369,7 +365,7 @@ public class TroopFileTransferManager
       try
       {
         c();
-        str = bfvp.a(paramString);
+        str = befa.a(paramString);
         if (str == null) {
           break label120;
         }
@@ -397,29 +393,29 @@ public class TroopFileTransferManager
     }
   }
   
-  public bftf a(String paramString1, long paramLong1, String paramString2, String paramString3, long paramLong2, int paramInt1, int paramInt2, long paramLong3)
+  public becp a(String paramString1, long paramLong1, String paramString2, String paramString3, long paramLong2, int paramInt1, int paramInt2, long paramLong3)
   {
     return null;
   }
   
-  public bftf a(String paramString1, String paramString2, long paramLong, int paramInt)
+  public becp a(String paramString1, String paramString2, long paramLong, int paramInt)
   {
     return null;
   }
   
   /* Error */
-  public final bftf a(String paramString1, String paramString2, String paramString3, long paramLong1, int paramInt1, int paramInt2, long paramLong2)
+  public final becp a(String paramString1, String paramString2, String paramString3, long paramLong1, int paramInt1, int paramInt2, long paramLong2)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokevirtual 238	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	()Lbgrn;
+    //   3: invokevirtual 239	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	()Lbfbb;
     //   6: aload_1
     //   7: aload_2
     //   8: lload 4
     //   10: bipush 102
-    //   12: invokevirtual 359	bgrn:c	(Ljava/lang/String;Ljava/lang/String;JI)Lbfrs;
+    //   12: invokevirtual 360	bfbb:c	(Ljava/lang/String;Ljava/lang/String;JI)Lbebc;
     //   15: astore_1
     //   16: aload_1
     //   17: ifnonnull +9 -> 26
@@ -430,39 +426,39 @@ public class TroopFileTransferManager
     //   24: aload_1
     //   25: areturn
     //   26: aload_0
-    //   27: invokevirtual 269	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:c	()V
-    //   30: new 199	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item
+    //   27: invokevirtual 270	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:c	()V
+    //   30: new 200	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item
     //   33: dup
     //   34: aload_1
-    //   35: invokespecial 288	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:<init>	(Lbfrs;)V
+    //   35: invokespecial 289	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:<init>	(Lbebc;)V
     //   38: astore_1
     //   39: aload_0
     //   40: aload_1
-    //   41: invokevirtual 290	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;)V
+    //   41: invokevirtual 291	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;)V
     //   44: aload_1
     //   45: iload 7
-    //   47: putfield 293	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:RandomNum	I
+    //   47: putfield 294	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:RandomNum	I
     //   50: aload_1
     //   51: lload 8
-    //   53: putfield 296	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ForwardTroopuin	J
+    //   53: putfield 297	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ForwardTroopuin	J
     //   56: aload_1
     //   57: iload 6
-    //   59: putfield 299	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ForwardBusId	I
+    //   59: putfield 300	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ForwardBusId	I
     //   62: aload_1
     //   63: iconst_4
-    //   64: putfield 207	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Status	I
+    //   64: putfield 208	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Status	I
     //   67: aload_1
     //   68: aload_3
-    //   69: putfield 305	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:LocalFile	Ljava/lang/String;
+    //   69: putfield 306	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:LocalFile	Ljava/lang/String;
     //   72: aload_0
     //   73: aload_1
     //   74: iconst_4
     //   75: iconst_0
-    //   76: invokevirtual 326	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;II)V
+    //   76: invokevirtual 327	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;II)V
     //   79: aload_1
     //   80: aload_0
-    //   81: getfield 181	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:e	J
-    //   84: invokevirtual 330	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:getInfo	(J)Lbftf;
+    //   81: getfield 182	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:e	J
+    //   84: invokevirtual 331	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:getInfo	(J)Lbecp;
     //   87: astore_1
     //   88: goto -66 -> 22
     //   91: astore_1
@@ -487,32 +483,32 @@ public class TroopFileTransferManager
   }
   
   /* Error */
-  public final bftf a(String paramString1, String paramString2, String paramString3, long paramLong1, int paramInt1, int paramInt2, long paramLong2, long paramLong3, FileManagerEntity paramFileManagerEntity)
+  public final becp a(String paramString1, String paramString2, String paramString3, long paramLong1, int paramInt1, int paramInt2, long paramLong2, long paramLong3, FileManagerEntity paramFileManagerEntity)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokevirtual 238	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	()Lbgrn;
+    //   3: invokevirtual 239	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	()Lbfbb;
     //   6: aload_2
     //   7: lload 4
     //   9: bipush 102
-    //   11: invokevirtual 251	bgrn:a	(Ljava/lang/String;JI)Lbfrs;
+    //   11: invokevirtual 252	bfbb:a	(Ljava/lang/String;JI)Lbebc;
     //   14: astore_1
-    //   15: invokestatic 217	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   15: invokestatic 218	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   18: ifeq +32 -> 50
-    //   21: ldc 219
+    //   21: ldc 220
     //   23: iconst_2
-    //   24: new 253	java/lang/StringBuilder
+    //   24: new 254	java/lang/StringBuilder
     //   27: dup
-    //   28: invokespecial 254	java/lang/StringBuilder:<init>	()V
-    //   31: ldc_w 362
-    //   34: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: invokespecial 255	java/lang/StringBuilder:<init>	()V
+    //   31: ldc_w 363
+    //   34: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   37: aload_1
-    //   38: invokevirtual 266	bfrs:toString	()Ljava/lang/String;
-    //   41: invokevirtual 260	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: invokevirtual 267	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   47: invokestatic 224	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   38: invokevirtual 267	bebc:toString	()Ljava/lang/String;
+    //   41: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: invokevirtual 268	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   47: invokestatic 225	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   50: aload_1
     //   51: ifnonnull +9 -> 60
     //   54: aconst_null
@@ -522,64 +518,64 @@ public class TroopFileTransferManager
     //   58: aload_1
     //   59: areturn
     //   60: aload_0
-    //   61: invokevirtual 269	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:c	()V
-    //   64: new 199	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item
+    //   61: invokevirtual 270	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:c	()V
+    //   64: new 200	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item
     //   67: dup
     //   68: aload_1
-    //   69: invokespecial 288	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:<init>	(Lbfrs;)V
+    //   69: invokespecial 289	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:<init>	(Lbebc;)V
     //   72: astore_1
     //   73: aload_0
     //   74: aload_1
-    //   75: invokevirtual 290	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;)V
+    //   75: invokevirtual 291	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;)V
     //   78: aload_1
     //   79: iload 7
-    //   81: putfield 293	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:RandomNum	I
+    //   81: putfield 294	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:RandomNum	I
     //   84: aload_1
     //   85: lload 8
-    //   87: putfield 296	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ForwardTroopuin	J
+    //   87: putfield 297	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ForwardTroopuin	J
     //   90: aload_1
     //   91: iload 6
-    //   93: putfield 299	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ForwardBusId	I
+    //   93: putfield 300	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ForwardBusId	I
     //   96: aload_1
     //   97: iconst_4
-    //   98: putfield 207	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Status	I
+    //   98: putfield 208	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Status	I
     //   101: aload_1
     //   102: aload_3
-    //   103: putfield 305	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:LocalFile	Ljava/lang/String;
+    //   103: putfield 306	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:LocalFile	Ljava/lang/String;
     //   106: aload_1
     //   107: lload 10
-    //   109: putfield 311	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:entrySessionID	J
+    //   109: putfield 312	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:entrySessionID	J
     //   112: aload 12
     //   114: ifnull +48 -> 162
     //   117: aload_1
     //   118: aload 12
-    //   120: getfield 314	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgWidth	I
-    //   123: putfield 317	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:width	I
+    //   120: getfield 315	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgWidth	I
+    //   123: putfield 318	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:width	I
     //   126: aload_1
     //   127: aload 12
-    //   129: getfield 320	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgHeight	I
-    //   132: putfield 323	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:height	I
+    //   129: getfield 321	com/tencent/mobileqq/filemanager/data/FileManagerEntity:imgHeight	I
+    //   132: putfield 324	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:height	I
     //   135: aload_1
     //   136: aload 12
-    //   138: getfield 365	com/tencent/mobileqq/filemanager/data/FileManagerEntity:yybApkPackageName	Ljava/lang/String;
-    //   141: putfield 366	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:yybApkPackageName	Ljava/lang/String;
+    //   138: getfield 366	com/tencent/mobileqq/filemanager/data/FileManagerEntity:yybApkPackageName	Ljava/lang/String;
+    //   141: putfield 367	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:yybApkPackageName	Ljava/lang/String;
     //   144: aload_1
     //   145: aload 12
-    //   147: getfield 369	com/tencent/mobileqq/filemanager/data/FileManagerEntity:yybApkName	Ljava/lang/String;
-    //   150: putfield 370	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:yybApkName	Ljava/lang/String;
+    //   147: getfield 370	com/tencent/mobileqq/filemanager/data/FileManagerEntity:yybApkName	Ljava/lang/String;
+    //   150: putfield 371	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:yybApkName	Ljava/lang/String;
     //   153: aload_1
     //   154: aload 12
-    //   156: getfield 373	com/tencent/mobileqq/filemanager/data/FileManagerEntity:yybApkIconUrl	Ljava/lang/String;
-    //   159: putfield 374	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:yybApkIconUrl	Ljava/lang/String;
+    //   156: getfield 374	com/tencent/mobileqq/filemanager/data/FileManagerEntity:yybApkIconUrl	Ljava/lang/String;
+    //   159: putfield 375	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:yybApkIconUrl	Ljava/lang/String;
     //   162: aload_0
     //   163: aload_1
     //   164: iconst_4
     //   165: iconst_0
-    //   166: invokevirtual 326	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;II)V
+    //   166: invokevirtual 327	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;II)V
     //   169: aload_1
     //   170: aload_0
-    //   171: getfield 181	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:e	J
-    //   174: invokevirtual 330	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:getInfo	(J)Lbftf;
+    //   171: getfield 182	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:e	J
+    //   174: invokevirtual 331	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:getInfo	(J)Lbecp;
     //   177: astore_1
     //   178: goto -122 -> 56
     //   181: astore_1
@@ -607,24 +603,24 @@ public class TroopFileTransferManager
     //   162	178	181	finally
   }
   
-  public bftf a(String paramString, boolean paramBoolean, int paramInt)
+  public becp a(String paramString, boolean paramBoolean, int paramInt)
   {
     return null;
   }
   
   /* Error */
-  public final bftf a(UUID paramUUID)
+  public final becp a(UUID paramUUID)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokevirtual 269	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:c	()V
+    //   3: invokevirtual 270	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:c	()V
     //   6: aload_0
-    //   7: getfield 344	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   7: getfield 345	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   10: aload_1
-    //   11: invokeinterface 98 2 0
-    //   16: checkcast 199	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item
+    //   11: invokeinterface 96 2 0
+    //   16: checkcast 200	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item
     //   19: astore_1
     //   20: aload_1
     //   21: ifnonnull +9 -> 30
@@ -636,8 +632,8 @@ public class TroopFileTransferManager
     //   29: areturn
     //   30: aload_1
     //   31: aload_0
-    //   32: getfield 181	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:e	J
-    //   35: invokevirtual 330	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:getInfo	(J)Lbftf;
+    //   32: getfield 182	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:e	J
+    //   35: invokevirtual 331	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:getInfo	(J)Lbecp;
     //   38: astore_1
     //   39: goto -13 -> 26
     //   42: astore_1
@@ -655,12 +651,12 @@ public class TroopFileTransferManager
     //   30	39	42	finally
   }
   
-  public bgrn a()
+  public bfbb a()
   {
-    if (this.jdField_a_of_type_Bgrn == null) {
-      this.jdField_a_of_type_Bgrn = bgrn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.e);
+    if (this.jdField_a_of_type_Bfbb == null) {
+      this.jdField_a_of_type_Bfbb = bfbb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.e);
     }
-    return this.jdField_a_of_type_Bgrn;
+    return this.jdField_a_of_type_Bfbb;
   }
   
   public TroopFileTransferManager.Item a(UUID paramUUID)
@@ -689,7 +685,7 @@ public class TroopFileTransferManager
     return null;
   }
   
-  public final Collection<bftf> a()
+  public final Collection<becp> a()
   {
     try
     {
@@ -704,7 +700,7 @@ public class TroopFileTransferManager
     return localCollection;
   }
   
-  public final List<bftf> a()
+  public final List<becp> a()
   {
     try
     {
@@ -736,12 +732,12 @@ public class TroopFileTransferManager
   
   protected void a() {}
   
-  public final void a(int paramInt1, long paramLong1, int paramInt2, long paramLong2, int paramInt3, String paramString1, String paramString2, long paramLong3, String paramString3, boolean paramBoolean, long paramLong4, auok paramauok)
+  public final void a(int paramInt1, long paramLong1, int paramInt2, long paramLong2, int paramInt3, String paramString1, String paramString2, long paramLong3, String paramString3, boolean paramBoolean, long paramLong4, atas paramatas)
   {
-    a(paramInt1, paramLong1, paramInt2, paramLong2, paramInt3, paramString1, paramString2, paramLong3, paramString3, paramBoolean, paramLong4, paramauok, 0L, 0, null);
+    a(paramInt1, paramLong1, paramInt2, paramLong2, paramInt3, paramString1, paramString2, paramLong3, paramString3, paramBoolean, paramLong4, paramatas, 0L, 0, null);
   }
   
-  public final void a(int paramInt1, long paramLong1, int paramInt2, long paramLong2, int paramInt3, String paramString1, String paramString2, long paramLong3, String paramString3, boolean paramBoolean, long paramLong4, auok paramauok, long paramLong5, int paramInt4, Bundle paramBundle)
+  public final void a(int paramInt1, long paramLong1, int paramInt2, long paramLong2, int paramInt3, String paramString1, String paramString2, long paramLong3, String paramString3, boolean paramBoolean, long paramLong4, atas paramatas, long paramLong5, int paramInt4, Bundle paramBundle)
   {
     int j = Math.abs(new Random().nextInt());
     synchronized (a())
@@ -753,13 +749,13 @@ public class TroopFileTransferManager
       int i;
       try
       {
-        if (this.jdField_a_of_type_Bgrn == null) {
-          this.jdField_a_of_type_Bgrn = a();
+        if (this.jdField_a_of_type_Bfbb == null) {
+          this.jdField_a_of_type_Bfbb = a();
         }
-        Object localObject = this.jdField_a_of_type_Bgrn.a(paramString3);
+        Object localObject = this.jdField_a_of_type_Bfbb.a(paramString3);
         if (localObject != null)
         {
-          paramInt2 = ((bfrs)localObject).jdField_a_of_type_Int;
+          paramInt2 = ((bebc)localObject).jdField_a_of_type_Int;
           break label375;
           localObject = ???.a(paramString1, paramLong3, paramInt2);
           if (localObject != null) {}
@@ -775,12 +771,12 @@ public class TroopFileTransferManager
           continue;
         }
         c();
-        localObject = new TroopFileTransferManager.Item((bfrs)localObject);
+        localObject = new TroopFileTransferManager.Item((bebc)localObject);
         a((TroopFileTransferManager.Item)localObject);
         ((TroopFileTransferManager.Item)localObject).RandomNum = j;
         ((TroopFileTransferManager.Item)localObject).ForwardPath = paramString3;
         ((TroopFileTransferManager.Item)localObject).ForwardTroopuin = paramLong1;
-        ((TroopFileTransferManager.Item)localObject).mForwardCallback = paramauok;
+        ((TroopFileTransferManager.Item)localObject).mForwardCallback = paramatas;
         if (paramBundle != null)
         {
           if (paramBundle.containsKey("yyb_apk_package_name_key")) {
@@ -795,10 +791,10 @@ public class TroopFileTransferManager
         }
         if (!paramBoolean)
         {
-          paramLong1 = paramauok.a(String.valueOf(paramLong2), paramInt3, String.valueOf(paramLong1), paramInt2, paramString3, paramString1, paramString2, paramLong3, paramInt1, paramLong5, paramInt4);
+          paramLong1 = paramatas.a(String.valueOf(paramLong2), paramInt3, String.valueOf(paramLong1), paramInt2, paramString3, paramString1, paramString2, paramLong3, paramInt1, paramLong5, paramInt4);
           ((TroopFileTransferManager.Item)localObject).ForwardBusId = paramInt2;
           ((TroopFileTransferManager.Item)localObject).BusId = i;
-          aauw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, this.e, (TroopFileTransferManager.Item)localObject, paramLong2, paramLong1, this.jdField_b_of_type_Aavm);
+          zrj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, this.e, (TroopFileTransferManager.Item)localObject, paramLong2, paramLong1, this.jdField_b_of_type_Zrz);
           return;
           paramString1 = finally;
           throw paramString1;
@@ -817,15 +813,15 @@ public class TroopFileTransferManager
     }
   }
   
-  public void a(bfrs parambfrs) {}
+  public void a(bebc parambebc) {}
   
-  protected final void a(bftf parambftf, boolean paramBoolean, String paramString1, String paramString2, String paramString3)
+  protected final void a(becp parambecp, boolean paramBoolean, String paramString1, String paramString2, String paramString3)
   {
-    FileManagerEntity localFileManagerEntity = aunj.a(parambftf);
+    FileManagerEntity localFileManagerEntity = aszt.a(parambecp);
     localFileManagerEntity.isReaded = true;
-    localFileManagerEntity.peerUin = String.valueOf(parambftf.jdField_b_of_type_Long);
-    localFileManagerEntity.peerNick = bhlg.o(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.peerUin);
-    localFileManagerEntity.srvTime = (bcrg.a() * 1000L);
+    localFileManagerEntity.peerUin = String.valueOf(parambecp.jdField_b_of_type_Long);
+    localFileManagerEntity.peerNick = ContactUtils.getTroopNickNameByTroopCode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.peerUin);
+    localFileManagerEntity.srvTime = (bbko.a() * 1000L);
     localFileManagerEntity.setCloudType(3);
     localFileManagerEntity.bSend = paramBoolean;
     localFileManagerEntity.status = 1;
@@ -837,23 +833,23 @@ public class TroopFileTransferManager
     if ((localFileManagerEntity.nFileType == 0) || (localFileManagerEntity.nFileType == 2))
     {
       if (TextUtils.isEmpty(localFileManagerEntity.strFileSha3)) {
-        localFileManagerEntity.strFileSha3 = aubb.a(aunj.c(parambftf.a));
+        localFileManagerEntity.strFileSha3 = asnl.a(aszt.c(parambecp.a));
       }
       if ((localFileManagerEntity.fileSize < 104857600L) && (TextUtils.isEmpty(localFileManagerEntity.strFileSHA))) {
-        localFileManagerEntity.strFileSHA = aubb.a(aunj.a(parambftf.a));
+        localFileManagerEntity.strFileSHA = asnl.a(aszt.a(parambecp.a));
       }
     }
-    localFileManagerEntity.str10Md5 = bhml.a(aunj.e(parambftf.a));
+    localFileManagerEntity.str10Md5 = HexUtil.bytes2HexStr(aszt.e(parambecp.a));
     try
     {
-      localFileManagerEntity.localModifyTime = new File(parambftf.a).lastModified();
+      localFileManagerEntity.localModifyTime = new File(parambecp.a).lastModified();
       label221:
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(localFileManagerEntity);
       localFileManagerEntity.status = 1;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localFileManagerEntity);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(localFileManagerEntity);
       return;
     }
-    catch (Exception parambftf)
+    catch (Exception parambecp)
     {
       break label221;
     }
@@ -880,7 +876,7 @@ public class TroopFileTransferManager
   
   public void a(TroopFileTransferManager.Item paramItem, int paramInt1, int paramInt2) {}
   
-  public void a(TroopFileTransferManager.Item paramItem, int paramInt, bgrk parambgrk) {}
+  public void a(TroopFileTransferManager.Item paramItem, int paramInt, bfay parambfay) {}
   
   protected void a(TroopFileTransferManager.Item paramItem, int paramInt, boolean paramBoolean)
   {
@@ -895,7 +891,7 @@ public class TroopFileTransferManager
         if (paramInt == 0) {
           break;
         }
-        if ((1 == bhnv.a(BaseApplication.getContext())) || (paramInt != 128)) {
+        if ((1 == NetworkUtil.getSystemNetwork(BaseApplication.getContext())) || (paramInt != 128)) {
           break label59;
         }
         paramItem.ThumbnailDownloading_Small = false;
@@ -907,21 +903,21 @@ public class TroopFileTransferManager
     for (;;)
     {
       label59:
-      aauw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.e, paramItem, paramInt, paramBoolean, false, this.jdField_a_of_type_Aavn);
+      zrj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.e, paramItem, paramInt, paramBoolean, false, this.jdField_a_of_type_Zsa);
       if ((paramBoolean) || (paramInt != 0)) {
         break;
       }
-      bguj.b();
+      bfdx.b();
       break;
       a(paramItem, 8);
-      localObject = (bfrs)a().jdField_c_of_type_JavaUtilMap.get(paramItem.FilePath);
+      localObject = (bebc)a().jdField_c_of_type_JavaUtilMap.get(paramItem.FilePath);
       if (localObject != null)
       {
-        bfrs localbfrs = (bfrs)a().jdField_c_of_type_JavaUtilMap.get(((bfrs)localObject).f);
-        if (localbfrs != null)
+        bebc localbebc = (bebc)a().jdField_c_of_type_JavaUtilMap.get(((bebc)localObject).f);
+        if (localbebc != null)
         {
-          ((bfrs)localObject).e = 8;
-          localbfrs.a((bfrs)localObject);
+          ((bebc)localObject).e = 8;
+          localbebc.a((bebc)localObject);
         }
       }
     }
@@ -931,7 +927,7 @@ public class TroopFileTransferManager
   
   public void a(Collection<String> paramCollection, boolean paramBoolean) {}
   
-  public void a(List<bftf> paramList) {}
+  public void a(List<becp> paramList) {}
   
   public void a(UUID paramUUID) {}
   
@@ -957,7 +953,7 @@ public class TroopFileTransferManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 622	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:jdField_b_of_type_Boolean	Z
+    //   3: getfield 627	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:jdField_b_of_type_Boolean	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifne +9 -> 17
@@ -968,12 +964,12 @@ public class TroopFileTransferManager
     //   15: iload_1
     //   16: ireturn
     //   17: aload_0
-    //   18: getfield 118	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   18: getfield 116	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   21: aload_0
-    //   22: getfield 344	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   22: getfield 345	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   25: aload_0
-    //   26: getfield 181	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:e	J
-    //   29: invokestatic 627	bgqh:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/Map;J)Z
+    //   26: getfield 182	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:e	J
+    //   29: invokestatic 632	bezv:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/util/Map;J)Z
     //   32: istore_1
     //   33: goto -20 -> 13
     //   36: astore_2
@@ -1052,19 +1048,19 @@ public class TroopFileTransferManager
             if (!TextUtils.isEmpty(paramString3)) {
               break label792;
             }
-            paramUUID = new bgrk(paramString1.FileName, this.e, 5, 207);
+            paramUUID = new bfay(paramString1.FileName, this.e, 5, 207);
             a(paramString1, 5, paramUUID);
             return true;
           }
         case -20001: 
         case -20000: 
         case -403: 
-          paramUUID = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong);
+          paramUUID = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong);
           if (paramUUID == null)
           {
             if (!TextUtils.isEmpty(paramString3))
             {
-              a(paramString1, 5, new bgrk(paramString1.FileName, this.e, 5, 704, paramString3));
+              a(paramString1, 5, new bfay(paramString1.FileName, this.e, 5, 704, paramString3));
               return false;
             }
             QLog.e("TroopFileTransferManager", 1, "finishCopyFrom, but entity is null!!!sessionId:" + paramLong);
@@ -1078,7 +1074,7 @@ public class TroopFileTransferManager
           paramString1.BusId = 104;
           if (paramUUID.nOpType == 27)
           {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramUUID, 27);
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(paramUUID, 27);
             if (QLog.isColorLevel()) {
               QLog.e("TroopFileTransferManager", 2, String.format("retCode:%d is, change busid to 104, try ForwardFromOfflineFile again!", new Object[] { Integer.valueOf(paramInt) }));
             }
@@ -1087,7 +1083,7 @@ public class TroopFileTransferManager
           if (paramUUID.nOpType != 26) {
             continue;
           }
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(104, paramUUID);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().a(104, paramUUID);
           break;
         case -3: 
           i = 202;
@@ -1105,23 +1101,23 @@ public class TroopFileTransferManager
       {
         a(paramString1, 0);
         paramString1.BusId = 102;
-        this.jdField_a_of_type_ArrayOfBgsh[0].a(new TroopFileTransferManager.TaskScan(this, paramString1));
+        this.jdField_a_of_type_ArrayOfBfbv[0].a(new TroopFileTransferManager.TaskScan(this, paramString1));
         return true;
       }
       i = 603;
       continue;
       i = 705;
       continue;
-      a(paramString1, 5, new bgrk(paramString1.FileName, this.e, 5, 704, paramString3));
+      a(paramString1, 5, new bfay(paramString1.FileName, this.e, 5, 704, paramString3));
       return true;
       label792:
-      paramUUID = new bgrk(paramString1.FileName, this.e, 5, 704, paramString3);
+      paramUUID = new bfay(paramString1.FileName, this.e, 5, 704, paramString3);
       continue;
       label818:
       if (TextUtils.isEmpty(str))
       {
         if (TextUtils.isEmpty(paramString3)) {}
-        for (paramUUID = new bgrk(paramString1.FileName, this.e, 5, 207);; paramUUID = new bgrk(paramString1.FileName, this.e, 5, 704, paramString3))
+        for (paramUUID = new bfay(paramString1.FileName, this.e, 5, 207);; paramUUID = new bfay(paramString1.FileName, this.e, 5, 704, paramString3))
         {
           a(paramString1, 5, paramUUID);
           return true;
@@ -1133,16 +1129,16 @@ public class TroopFileTransferManager
       if (paramString2 != null) {
         paramString2.e = str;
       }
-      paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString1.entrySessionID);
+      paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString1.entrySessionID);
       if (paramString2 != null)
       {
         paramString2.strTroopFilePath = str;
-        paramString3 = aunj.e(paramString2);
+        paramString3 = aszt.e(paramString2);
         paramString2.strQRUrl = paramString3;
         paramString1.strQRUrl = paramString3;
       }
-      if (this.jdField_a_of_type_Bgrn != null) {
-        this.jdField_a_of_type_Bgrn.a(paramUUID.b, paramUUID);
+      if (this.jdField_a_of_type_Bfbb != null) {
+        this.jdField_a_of_type_Bfbb.a(paramUUID.b, paramUUID);
       }
       a(paramString1, 6, 0);
       c(paramString1);
@@ -1186,23 +1182,23 @@ public class TroopFileTransferManager
         if (new File(paramItem.LocalFile).exists()) {
           break;
         }
-        i = bfvr.jdField_a_of_type_Int;
+        i = befc.jdField_a_of_type_Int;
         localStringBuilder = new StringBuilder().append("[");
         if (paramItem.Id != null) {}
         for (str = paramItem.Id.toString();; str = "null")
         {
-          bfvr.b("TroopFileTransferManager", i, str + "] check localfile is not exsit. set to nodownload state");
+          befc.b("TroopFileTransferManager", i, str + "] check localfile is not exsit. set to nodownload state");
           a(paramItem, 7);
           bool1 = true;
           break;
         }
       }
-      int i = bfvr.jdField_a_of_type_Int;
+      int i = befc.jdField_a_of_type_Int;
       StringBuilder localStringBuilder = new StringBuilder().append("[");
       if (paramItem.Id != null) {}
       for (String str = paramItem.Id.toString();; str = "null")
       {
-        bfvr.b("TroopFileTransferManager", i, str + "] check localfile=null. set to nodownload state");
+        befc.b("TroopFileTransferManager", i, str + "] check localfile=null. set to nodownload state");
         a(paramItem, 7);
         bool1 = true;
         break;
@@ -1254,9 +1250,9 @@ public class TroopFileTransferManager
           continue;
         }
         paramString1.NameForSave = paramString2;
-        paramString1.LocalFile = (antf.bp + paramString2);
+        paramString1.LocalFile = (AppConstants.SDCARD_FILE_SAVE_PATH + paramString2);
         b(paramString1);
-        ((antz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22)).a(paramString1.getInfo(this.e));
+        ((amoo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(22)).a(paramString1.getInfo(this.e));
         bool = true;
       }
       finally {}
@@ -1273,7 +1269,7 @@ public class TroopFileTransferManager
     return false;
   }
   
-  public boolean a(String paramString1, String paramString2, long paramLong, int paramInt, aavn paramaavn)
+  public boolean a(String paramString1, String paramString2, long paramLong, int paramInt, zsa paramzsa)
   {
     synchronized (a()) {}
     label167:
@@ -1281,24 +1277,24 @@ public class TroopFileTransferManager
     {
       try
       {
-        bfrs localbfrs = ???.a(paramString1, paramString2, paramLong, paramInt);
-        if (localbfrs == null) {
+        bebc localbebc = ???.a(paramString1, paramString2, paramLong, paramInt);
+        if (localbebc == null) {
           return false;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("TroopFileTransferManager", 2, "startDownload==>" + localbfrs.toString());
+          QLog.d("TroopFileTransferManager", 2, "startDownload==>" + localbebc.toString());
         }
         c();
-        paramString1 = (TroopFileTransferManager.Item)this.jdField_a_of_type_JavaUtilMap.get(localbfrs.jdField_a_of_type_JavaUtilUUID);
+        paramString1 = (TroopFileTransferManager.Item)this.jdField_a_of_type_JavaUtilMap.get(localbebc.jdField_a_of_type_JavaUtilUUID);
         if (paramString1 != null) {
           break label167;
         }
-        paramString1 = new TroopFileTransferManager.Item(localbfrs);
+        paramString1 = new TroopFileTransferManager.Item(localbebc);
         a(paramString1);
         paramString1.FileName = paramString2;
         paramString1.ProgressTotal = paramLong;
-        paramString1.ProgressValue = localbfrs.d;
-        aauw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.e, paramString1, 0, false, true, paramaavn);
+        paramString1.ProgressValue = localbebc.d;
+        zrj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.e, paramString1, 0, false, true, paramzsa);
         return true;
       }
       finally {}
@@ -1380,7 +1376,7 @@ public class TroopFileTransferManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 622	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:jdField_b_of_type_Boolean	Z
+    //   3: getfield 627	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:jdField_b_of_type_Boolean	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifne +9 -> 17
@@ -1391,7 +1387,7 @@ public class TroopFileTransferManager
     //   15: iload_1
     //   16: ireturn
     //   17: aload_0
-    //   18: invokevirtual 831	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:c	()Z
+    //   18: invokevirtual 839	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:c	()Z
     //   21: istore_1
     //   22: goto -9 -> 13
     //   25: astore_2
@@ -1419,10 +1415,10 @@ public class TroopFileTransferManager
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_1
-    //   5: getfield 834	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Pausing	I
+    //   5: getfield 842	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Pausing	I
     //   8: ifeq +28 -> 36
     //   11: aload_1
-    //   12: getfield 834	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Pausing	I
+    //   12: getfield 842	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Pausing	I
     //   15: iconst_1
     //   16: if_icmpne +15 -> 31
     //   19: iconst_2
@@ -1430,7 +1426,7 @@ public class TroopFileTransferManager
     //   21: aload_0
     //   22: aload_1
     //   23: iload_2
-    //   24: invokevirtual 232	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;I)V
+    //   24: invokevirtual 233	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;I)V
     //   27: aload_0
     //   28: monitorexit
     //   29: iload_3
@@ -1467,7 +1463,7 @@ public class TroopFileTransferManager
   
   public void c(TroopFileTransferManager.Item paramItem)
   {
-    aauw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.e, paramItem, this.jdField_a_of_type_Aavo);
+    zrj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.e, paramItem, this.jdField_a_of_type_Zsb);
   }
   
   public final boolean c()
@@ -1491,10 +1487,10 @@ public class TroopFileTransferManager
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_1
-    //   5: getfield 834	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Pausing	I
+    //   5: getfield 842	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Pausing	I
     //   8: ifeq +30 -> 38
     //   11: aload_1
-    //   12: getfield 834	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Pausing	I
+    //   12: getfield 842	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Pausing	I
     //   15: iconst_1
     //   16: if_icmpne +16 -> 32
     //   19: bipush 9
@@ -1502,7 +1498,7 @@ public class TroopFileTransferManager
     //   22: aload_0
     //   23: aload_1
     //   24: iload_2
-    //   25: invokevirtual 232	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;I)V
+    //   25: invokevirtual 233	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;I)V
     //   28: aload_0
     //   29: monitorexit
     //   30: iload_3
@@ -1580,7 +1576,7 @@ public class TroopFileTransferManager
   public void e(TroopFileTransferManager.Item paramItem)
   {
     a(paramItem, 1);
-    aauw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.e, paramItem, this.jdField_a_of_type_Aavr);
+    zrj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.e, paramItem, this.jdField_a_of_type_Zse);
   }
   
   public boolean e(UUID paramUUID)
@@ -1700,18 +1696,18 @@ public class TroopFileTransferManager
     //   9: lcmp
     //   10: ifne +31 -> 41
     //   13: aload_0
-    //   14: invokestatic 895	android/os/SystemClock:uptimeMillis	()J
+    //   14: invokestatic 903	android/os/SystemClock:uptimeMillis	()J
     //   17: putfield 80	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:f	J
     //   20: iload_1
     //   21: ifeq +17 -> 38
-    //   24: new 897	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$11
+    //   24: new 905	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$11
     //   27: dup
     //   28: aload_0
-    //   29: invokespecial 898	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$11:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;)V
+    //   29: invokespecial 906	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$11:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;)V
     //   32: iconst_5
     //   33: aconst_null
     //   34: iconst_1
-    //   35: invokestatic 111	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   35: invokestatic 109	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
     //   38: aload_0
     //   39: monitorexit
     //   40: return
@@ -1799,7 +1795,7 @@ public class TroopFileTransferManager
             if (i == 0) {
               break label26;
             }
-            bgri.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.e, 107);
+            bfaw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.e, 107);
             break label26;
           }
           break;

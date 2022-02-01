@@ -1,32 +1,31 @@
-import com.tencent.mobileqq.activity.JumpActivity;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class aeue
-  extends WtloginObserver
+  implements Comparator<MessageRecord>
 {
-  public aeue(JumpActivity paramJumpActivity) {}
+  public aeue(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if (paramDevlockInfo != null) {
-      asuz.a().a(paramDevlockInfo.TransferInfo);
+    long l2 = paramMessageRecord1.time - paramMessageRecord2.time;
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = paramMessageRecord1.getId() - paramMessageRecord2.getId();
     }
-    paramWUserSigInfo = this.a;
-    if (paramInt == 0) {}
-    for (;;)
-    {
-      paramWUserSigInfo.a(paramDevlockInfo);
-      return;
-      paramDevlockInfo = null;
+    if (l1 > 0L) {
+      return -1;
     }
+    if (l1 < 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeue
  * JD-Core Version:    0.7.0.1
  */

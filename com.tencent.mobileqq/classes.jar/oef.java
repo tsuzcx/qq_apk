@@ -1,81 +1,66 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoRsp;
 
-public class oef
-  extends arac<oee>
+class oef
+  implements BusinessObserver
 {
-  @NonNull
-  public oee a(int paramInt)
+  private NewIntent a;
+  
+  oef(NewIntent paramNewIntent)
   {
-    if (paramInt == 0)
-    {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface))
-      {
-        tyi.a((QQAppInterface)localAppRuntime);
-        return oee.a();
-      }
-    }
-    return new oee();
+    this.a = paramNewIntent;
   }
   
-  @Nullable
-  public oee a(araj[] paramArrayOfaraj)
+  private void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderConfProcessor", 2, "[onParsed]");
+      QLog.d("QualityReporter", 2, "onSuccess: ");
     }
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return oee.a(paramArrayOfaraj);
+  }
+  
+  private void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QualityReporter", 2, "onError: code=" + paramInt + ", msg=" + paramString);
     }
-    return null;
   }
   
-  public void a(oee paramoee)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramoee.b();
-    paramoee.a();
-    paramoee.c();
-  }
-  
-  public Class<oee> clazz()
-  {
-    return oee.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return tyi.a((QQAppInterface)localAppRuntime);
+    this.a.setObserver(null);
+    if (paramBoolean)
+    {
+      cc_sso_report_svr.ReportInfoRsp localReportInfoRsp;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null)
+        {
+          a(-123, "data null");
+          return;
+        }
+        localReportInfoRsp = new cc_sso_report_svr.ReportInfoRsp();
+        localReportInfoRsp.mergeFrom(paramBundle);
+        if ((localReportInfoRsp.ret_code.has()) && (localReportInfoRsp.ret_code.get() == 0))
+        {
+          a();
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+      a(localReportInfoRsp.ret_code.get(), localReportInfoRsp.ret_msg.get());
+      return;
     }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 81;
+    a(-123, "success=false");
   }
 }
 

@@ -1,23 +1,8 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ahmn
-  implements View.OnClickListener
+public abstract interface ahmn
 {
-  ahmn(ahmm paramahmm) {}
-  
-  public void onClick(View paramView)
-  {
-    agej.n = true;
-    if (this.a.a()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ahmm.a(this.a).onClick(paramView);
-    }
-  }
+  public abstract void a(View paramView);
 }
 
 

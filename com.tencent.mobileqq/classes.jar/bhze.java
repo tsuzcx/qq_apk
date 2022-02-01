@@ -1,15 +1,15 @@
 public class bhze
+  extends bhzg
 {
-  public float a;
-  public int a;
-  public String a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
+  public static bhze a()
+  {
+    return new bhze();
+  }
   
-  public bhze(bhzd parambhzd) {}
+  public String a()
+  {
+    return b() + "|" + c();
+  }
 }
 
 

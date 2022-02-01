@@ -1,15 +1,9 @@
-import android.content.Context;
-import android.util.Pair;
-import java.util.List;
-import org.apache.http.Header;
-
-abstract class lad
-  extends laa
+class lad
 {
-  public static void a(Context paramContext, Header[] paramArrayOfHeader, List<Pair<String, String>> paramList, kzp paramkzp)
-  {
-    a().a(paramContext, "https://www.googleapis.com/language/translate/v2", paramArrayOfHeader, paramList, paramkzp);
-  }
+  public long a;
+  public String a;
+  
+  private lad(kzz paramkzz) {}
 }
 
 

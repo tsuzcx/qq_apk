@@ -1,25 +1,10 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
+import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
 
 public class acud
-  implements acun
+  extends VerifyDevLockManager.VerifyDevLockObserver
 {
-  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
-  {
-    Object localObject = null;
-    aasb localaasb = aasb.a();
-    localaasb.a();
-    localaasb.j(new acue(this, paramacts, paramString, paramVarArgs, localaasb));
-    if (paramacts != null) {}
-    for (paramString = paramacts.a();; paramString = null)
-    {
-      paramVarArgs = localObject;
-      if (paramacts != null) {
-        paramVarArgs = paramacts.a();
-      }
-      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "getUserInfo", paramVarArgs);
-      return true;
-    }
-  }
+  public acud(AuthDevOpenUgActivity paramAuthDevOpenUgActivity) {}
 }
 
 

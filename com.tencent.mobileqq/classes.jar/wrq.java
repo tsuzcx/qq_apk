@@ -1,20 +1,26 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
 
-class wrq
-  implements View.OnClickListener
+public class wrq
 {
-  wrq(wrp paramwrp, wro paramwro) {}
+  protected wrq(wry paramwry) {}
   
-  public void onClick(View paramView)
+  public static wrq a(wry paramwry)
   {
-    int i = this.jdField_a_of_type_Wro.getPosition();
-    if (i >= 0) {
-      this.jdField_a_of_type_Wrp.a.a(this.jdField_a_of_type_Wro.itemView, i);
+    if (paramwry.a().mReportData.from == 86) {
+      return new wrt(paramwry);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new wrq(paramwry);
   }
+  
+  public void a(wrw paramwrw) {}
+  
+  public void a(wrw paramwrw, int paramInt1, int paramInt2, wsk paramwsk) {}
+  
+  public void a(wrw paramwrw, View paramView) {}
+  
+  public void a(wrw paramwrw, boolean paramBoolean) {}
 }
 
 

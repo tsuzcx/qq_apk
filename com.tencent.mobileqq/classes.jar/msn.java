@@ -1,8 +1,20 @@
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PopupDialog;
 
-public abstract interface msn
+public class msn
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(Context paramContext, String paramString);
+  public msn(PopupDialog paramPopupDialog) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (PopupDialog.a.a != null) {
+      PopupDialog.a.a.onClick(paramDialogInterface, paramInt);
+    }
+    paramDialogInterface.dismiss();
+    PopupDialog.a();
+  }
 }
 
 

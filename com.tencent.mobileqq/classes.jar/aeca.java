@@ -1,19 +1,35 @@
-import java.util.Map;
+import android.content.Intent;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
 
 public class aeca
+  implements alki
 {
-  public int a;
-  public String a;
-  public Map<String, String> a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public String e;
-  public boolean e;
+  public aeca(RecommendFriendActivity paramRecommendFriendActivity) {}
+  
+  public void a()
+  {
+    RecommendFriendActivity.a(this.a).setVisibility(0);
+  }
+  
+  public void a(String paramString)
+  {
+    RecommendFriendActivity.a(this.a, paramString);
+  }
+  
+  public void a(List<MayKnowRecommend> paramList)
+  {
+    Intent localIntent = this.a.getIntent();
+    int i = localIntent.getIntExtra("EntranceId", 0);
+    RecommendFriendActivity.a(this.a, localIntent, i, paramList);
+  }
+  
+  public void b()
+  {
+    RecommendFriendActivity.a(this.a).setVisibility(8);
+  }
 }
 
 

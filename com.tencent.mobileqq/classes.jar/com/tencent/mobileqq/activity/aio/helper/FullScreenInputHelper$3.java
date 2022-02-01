@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import aguk;
+import afqj;
 import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.widget.XEditTextEx;
 
 public class FullScreenInputHelper$3
   implements Runnable
 {
-  public FullScreenInputHelper$3(aguk paramaguk) {}
+  public FullScreenInputHelper$3(afqj paramafqj) {}
   
   public void run()
   {
-    if (aguk.a(this.this$0).a.getLineCount() > 3)
+    if (afqj.a(this.this$0).input.getLineCount() > 3)
     {
       this.this$0.a.setVisibility(0);
       return;

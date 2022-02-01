@@ -1,12 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class vzv
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  vzv(vzr paramvzr) {}
+  vzv(vzt paramvzt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    this.a.a.dismiss();
+    xwa.a("msg_tab", "clk_tips", 0, 0, new String[] { "1", "", "", "" });
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

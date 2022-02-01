@@ -1,26 +1,21 @@
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
 
-public class afqr
-  implements TextView.OnEditorActionListener
+class afqr
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public afqr(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  afqr(afqj paramafqj) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onGlobalLayout()
   {
-    if ((paramInt == 6) && (TextPreviewTranslateActivity.a(this.a) != null))
+    if ((afqj.a(this.a).input.getLineCount() > 3) && (afqj.a(this.a).enableFullScreenInput()) && (afqj.a(this.a).getInputEnable()) && (!bbyp.b()))
     {
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a).getText().toString());
-      TextPreviewTranslateActivity.a(this.a);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a));
-      TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.b(this.a));
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
-      return true;
+      this.a.a.setVisibility(0);
+      return;
     }
-    return false;
+    this.a.a.setVisibility(8);
   }
 }
 

@@ -1,20 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class qna
-  implements View.OnClickListener
+public class qna
+  implements nnv
 {
-  qna(qmz paramqmz) {}
+  public void loaded(String paramString, int paramInt) {}
   
-  public void onClick(View paramView)
-  {
-    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
-    if (localsgf != null) {
-      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void progress(int paramInt) {}
 }
 
 

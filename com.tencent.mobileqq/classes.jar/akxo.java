@@ -1,9 +1,61 @@
-import android.graphics.PointF;
-import java.util.List;
+import java.util.ArrayList;
 
-public abstract interface akxo
+class akxo
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, double paramDouble, List<List<PointF>> paramList);
+  int jdField_a_of_type_Int = 3;
+  long jdField_a_of_type_Long = 0L;
+  akxo jdField_a_of_type_Akxo = null;
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+  boolean jdField_a_of_type_Boolean = false;
+  
+  static akxo a()
+  {
+    akxo localakxo = new akxo();
+    localakxo.a();
+    return localakxo;
+  }
+  
+  String a()
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      return "LBS_REQ_OK";
+    case 1: 
+      return "LBS_REQ_PENDING";
+    }
+    return "LBS_REQ_PERM_OK";
+  }
+  
+  void a()
+  {
+    if (this.jdField_a_of_type_Akxo == null) {
+      this.jdField_a_of_type_Akxo = new akxo();
+    }
+  }
+  
+  boolean a(String paramString)
+  {
+    akxm.a("startLocation", String.format("filterId=%s , IdList=%s", new Object[] { paramString, this.jdField_a_of_type_JavaUtilArrayList.toString() }), null);
+    return this.jdField_a_of_type_JavaUtilArrayList.contains(paramString);
+  }
+  
+  void b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  void c()
+  {
+    this.jdField_a_of_type_Akxo.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Akxo.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Akxo.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Akxo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Akxo.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+  }
 }
 
 

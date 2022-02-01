@@ -1,14 +1,21 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-final class bhks
-  implements MediaPlayer.OnCompletionListener
+class bhks
+  implements Animator.AnimatorListener
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  bhks(bhkq parambhkq) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramMediaPlayer.release();
-    bhkm.a = null;
+    this.a.a();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

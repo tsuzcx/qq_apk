@@ -1,34 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.RspBody;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.RectF;
 
-class aoiq
-  extends nkq
+public class aoiq
 {
-  aoiq(aoip paramaoip) {}
+  public int a;
+  public RectF a;
+  public String a;
+  aoip[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public aoiq()
   {
-    if (paramInt == 0)
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_c_of_type_Int = -1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ssoErrCode:").append(this.jdField_a_of_type_Int).append(",ssoErrMsg:").append(this.jdField_a_of_type_JavaLangString).append(",errCode:").append(this.jdField_b_of_type_Int).append(",errMsg:").append(this.jdField_b_of_type_JavaLangString).append(",sessionId:").append(this.jdField_c_of_type_JavaLangString).append(",moreUrl:").append(this.d);
+    int i = 0;
+    while ((this.jdField_a_of_type_ArrayOfAoip != null) && (i < this.jdField_a_of_type_ArrayOfAoip.length))
     {
-      paramBundle = new oidb_0x496.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        aoip.a(this.a, paramBundle);
-        aoip.b(this.a, paramBundle);
-        aoip.c(this.a, paramBundle);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.i("TroopHandler", 2, "getTroopConfig, e=" + paramArrayOfByte.toString());
-        return;
-      }
+      localStringBuilder.append("\n{index=").append(i).append(":").append(this.jdField_a_of_type_ArrayOfAoip[i].toString()).append("}\n");
+      i += 1;
     }
-    QLog.i("TroopHandler", 1, "getTroopConfig, errorCode=" + paramInt);
+    return localStringBuilder.toString();
   }
 }
 

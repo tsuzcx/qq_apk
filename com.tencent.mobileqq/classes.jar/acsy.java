@@ -1,101 +1,55 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.gdtad.api.motivevideo.GdtMvViewAnimationAbs.1;
-import com.tencent.gdtad.api.motivevideo.GdtMvViewAnimationAbs.2;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity.14.1;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import mqq.os.MqqHandler;
 
 public class acsy
+  implements bjsd
 {
-  public acsl a;
-  protected Context a;
-  protected Handler a;
+  public acsy(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  protected acsy(Context paramContext)
+  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  }
-  
-  private void a(acsl paramacsl)
-  {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramacsl.h.getLayoutParams();
-    localLayoutParams.height = paramacsl.n;
-    localLayoutParams.width = paramacsl.o;
-    localLayoutParams.addRule(3, 0);
-    localLayoutParams.addRule(12, 0);
-    localLayoutParams.addRule(14);
-    localLayoutParams.addRule(15);
-    paramacsl.h.setLayoutParams(localLayoutParams);
-    paramacsl.h.postInvalidate();
-  }
-  
-  public static void a(View paramView)
-  {
-    if ((paramView == null) || (paramView.getVisibility() != 0)) {
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.ag_();
       return;
     }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(200L);
-    paramView.startAnimation(localAlphaAnimation);
-    paramView.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
   }
   
-  public static void b(View paramView)
+  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    if (paramView == null) {
+    if (this.a.jdField_a_of_type_Boolean) {
       return;
     }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation.setDuration(100L);
-    paramView.startAnimation(localAlphaAnimation);
-    paramView.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
   }
   
-  public void a()
+  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
-    if ((this.jdField_a_of_type_Acsl == null) || (this.jdField_a_of_type_Acsl.g == null)) {
-      return;
+    if (this.a.jdField_a_of_type_Boolean) {
+      return true;
     }
-    a(this.jdField_a_of_type_Acsl.g);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new GdtMvViewAnimationAbs.1(this), 300L);
-  }
-  
-  public void a(int paramInt) {}
-  
-  protected void a(acsl paramacsl, View paramView)
-  {
-    paramacsl.h = paramView;
-    paramacsl.o = acwn.a(470, 750, acwn.f(this.jdField_a_of_type_AndroidContentContext));
-    paramacsl.n = acwn.a(470, 1334, acwn.e(this.jdField_a_of_type_AndroidContentContext));
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2)
-  {
-    a(paramView, paramInt1, paramInt2, -1);
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramView == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountActivity", 2, "onViewCompleteVisableAndReleased begin refresh");
     }
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
-    int i = localLayoutParams.topMargin;
-    int j = localLayoutParams.leftMargin;
-    int k = localLayoutParams.rightMargin;
-    a(paramView);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new GdtMvViewAnimationAbs.2(this, localLayoutParams, i, paramInt1, j, paramInt2, paramInt3, k, paramView), 200L);
+    if (this.a.c())
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
+      this.a.b = true;
+      AssociatedAccountActivity.b(this.a, false, true);
+      return true;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
+    this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new AssociatedAccountActivity.14.1(this), 800L);
+    return true;
   }
   
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidContentContext = null;
-  }
+  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

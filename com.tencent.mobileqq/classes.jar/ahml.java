@@ -1,43 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
 
 public class ahml
+  implements ahmn
 {
-  public static void a(MessageRecord paramMessageRecord)
-  {
-    paramMessageRecord.isFolded = false;
-  }
+  public ahml(StickerBubbleListView paramStickerBubbleListView, int[] paramArrayOfInt) {}
   
-  public static boolean a(MessageRecord paramMessageRecord)
+  public void a(View paramView)
   {
-    if (paramMessageRecord.isSendFromLocal()) {}
-    for (;;)
+    if ((paramView.getTag() instanceof Integer))
     {
-      return false;
-      String str = paramMessageRecord.getExtInfoFromExtStr("key_message_extra_info_flag");
-      if (QLog.isColorLevel()) {
-        QLog.d("MessageFoldable", 2, "strFlag: " + str + ", mr: " + paramMessageRecord);
-      }
-      if (TextUtils.isEmpty(str)) {
-        continue;
-      }
-      try
-      {
-        i = Integer.parseInt(str);
-        if ((i & 0x8) == 0) {
-          continue;
-        }
-        return paramMessageRecord.isFolded;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        for (;;)
-        {
-          localNumberFormatException.printStackTrace();
-          int i = 0;
-        }
-      }
+      paramView = (Integer)paramView.getTag();
+      this.jdField_a_of_type_ArrayOfInt[0] = paramView.intValue();
     }
   }
 }

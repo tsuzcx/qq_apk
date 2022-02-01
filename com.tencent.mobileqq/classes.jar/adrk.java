@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adrk
-  extends AccountObserver
+  extends Handler
 {
-  public adrk(AccountManageActivity paramAccountManageActivity) {}
+  public adrk(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
+  public void handleMessage(Message paramMessage)
   {
-    AccountManageActivity.b(this.a);
-  }
-  
-  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
-  {
-    AccountManageActivity.b(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("MoveToGroupActivity", 2, "mWaitingDialogControlHandler operationFinished = " + MoveToGroupActivity.b(this.a));
+    }
+    MoveToGroupActivity.c(this.a, true);
+    if (MoveToGroupActivity.b(this.a))
+    {
+      this.a.a(true);
+      return;
+    }
+    paramMessage = MoveToGroupActivity.a(this.a).obtainMessage(0);
+    MoveToGroupActivity.a(this.a).sendMessageDelayed(paramMessage, 60000L);
+    MoveToGroupActivity.a(this.a, true);
   }
 }
 

@@ -1,21 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.fragment.DeleteFaceFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class atqy
-  implements aunf
+public class atqy
+  implements View.OnClickListener
 {
-  atqy(atqx paramatqx, FileManagerEntity paramFileManagerEntity, Runnable paramRunnable) {}
+  public atqy(DeleteFaceFragment paramDeleteFaceFragment, FragmentActivity paramFragmentActivity) {}
   
-  public void a(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = paramString1;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strApkPackageName = paramString2;
-    this.jdField_a_of_type_Atqx.a.a().a().a(paramString2, new atqz(this));
+    bcef.b(null, "dc00898", "", "", "0X800A320", "0X800A320", 0, 0, "", "", "", "");
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://accounts.qq.com/face/delete");
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivityForResult(localIntent, 1001);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqy
  * JD-Core Version:    0.7.0.1
  */

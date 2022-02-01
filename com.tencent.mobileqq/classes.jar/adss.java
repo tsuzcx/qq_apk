@@ -1,35 +1,42 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.ims.AlertReport.ButtonAction;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class adss
-  implements URLDrawable.URLDrawableListener
+  implements DialogInterface.OnClickListener
 {
-  public adss(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public adss(NotificationActivity paramNotificationActivity, int paramInt, String paramString) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramURLDrawable != null)
+    try
     {
-      paramURLDrawable = bhmq.a(paramURLDrawable);
-      QQAppInterface localQQAppInterface = this.a.app;
-      paramURLDrawable = QQAppInterface.a(paramURLDrawable, 50, 50);
-      this.a.a.setImageDrawable(new BitmapDrawable(paramURLDrawable));
+      paramDialogInterface = new AlertReport.ButtonAction();
+      paramDialogInterface.uint32_cmd.set(1);
+      paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
+      paramDialogInterface.str_package_name.set(bjhj.c());
+      paramDialogInterface.uint32_app_id.set(AppSetting.a());
+      nmb.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), 34, "SecuritySvc.AlertReport");
+      bcef.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007535", "0X8007535", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adss
  * JD-Core Version:    0.7.0.1
  */

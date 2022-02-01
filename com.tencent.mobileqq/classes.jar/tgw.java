@@ -1,7 +1,19 @@
-import kotlin.Metadata;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/DebugBridgeInvokeHandler$Companion;", "", "()V", "DETAIL_LOG", "", "NS_DEBUG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tgw {}
+public class tgw
+  implements TopGestureLayout.OnGestureListener
+{
+  public tgw(ViolaFragment paramViolaFragment, ViewGroup paramViewGroup) {}
+  
+  public void flingLToR()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.mViolaInitDelegate.a(this.jdField_a_of_type_AndroidViewViewGroup, true);
+  }
+  
+  public void flingRToL() {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

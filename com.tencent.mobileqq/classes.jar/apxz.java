@@ -1,27 +1,36 @@
-import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-final class apxz
-  extends apzf
+public class apxz
 {
-  apxz(String paramString, apyo paramapyo)
-  {
-    super(paramString);
-  }
+  public boolean a;
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public static apxz a(String paramString)
   {
-    String str = null;
-    if (paramBoolean) {
-      str = paramBundle.getString("pskey", null);
+    if (paramString == null) {}
+    for (;;)
+    {
+      return null;
+      try
+      {
+        apxz localapxz = new apxz();
+        if (new JSONObject(paramString).optInt("openSwitch", 0) == 1) {}
+        for (boolean bool = true;; bool = false)
+        {
+          localapxz.a = bool;
+          return localapxz;
+        }
+        if (!QLog.isColorLevel()) {}
+      }
+      catch (Exception paramString) {}
     }
-    if (this.a != null) {
-      this.a.a(str);
-    }
+    QLog.e("GlobalSearchConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apxz
  * JD-Core Version:    0.7.0.1
  */

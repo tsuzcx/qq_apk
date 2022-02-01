@@ -1,6 +1,10 @@
-public abstract interface lte
+public class lte
 {
-  public abstract void a();
+  public float a;
+  public float b;
+  public float c;
+  public float d;
+  public float e;
 }
 
 

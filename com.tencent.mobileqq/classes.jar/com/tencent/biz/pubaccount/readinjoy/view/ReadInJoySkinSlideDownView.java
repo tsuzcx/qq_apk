@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import acvi;
+import abrs;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Build.VERSION;
@@ -10,12 +10,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.RelativeLayout;
-import bdxf;
-import bdxi;
-import bdxj;
-import bdxx;
-import bhsi;
-import bnrf;
+import bcqw;
+import bcqz;
+import bcra;
+import bcro;
+import bfyz;
+import bkwm;
 import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -25,13 +25,13 @@ import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import ocd;
+import odq;
 import org.json.JSONException;
-import paa;
-import qtq;
-import skb;
-import skc;
-import skd;
+import pbg;
+import rao;
+import soc;
+import sod;
+import soe;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.ThirdPartyMonitorUrls;
@@ -46,7 +46,7 @@ public class ReadInJoySkinSlideDownView
   public MediaPlayer a;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   ViewTreeObserver jdField_a_of_type_AndroidViewViewTreeObserver;
-  private bdxj jdField_a_of_type_Bdxj;
+  private bcra jdField_a_of_type_Bcra;
   public SpriteNativeView a;
   private String jdField_a_of_type_JavaLangString;
   protected boolean a;
@@ -65,8 +65,8 @@ public class ReadInJoySkinSlideDownView
     this.jdField_b_of_type_Int = paramInt2;
     this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener1;
     this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener3;
-    LayoutInflater.from(getContext()).inflate(2131562801, this);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = ((SpriteNativeView)findViewById(2131377777));
+    LayoutInflater.from(getContext()).inflate(2131562680, this);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = ((SpriteNativeView)findViewById(2131377544));
     setClickable(true);
     this.jdField_a_of_type_AndroidViewViewTreeObserver = getViewTreeObserver();
     this.jdField_a_of_type_AndroidViewViewTreeObserver.addOnGlobalLayoutListener(this);
@@ -74,7 +74,7 @@ public class ReadInJoySkinSlideDownView
   
   private void a(int paramInt, Context paramContext, String paramString1, String paramString2, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
   {
-    new bdxx().a(paramString2).a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getWidth()).a(new skd(this, paramOnClickListener1, paramString1, paramInt, paramString2, paramContext, paramOnClickListener2)).a(new skc(this)).a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView, new skb(this));
+    new bcro().a(paramString2).a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getWidth()).a(new soe(this, paramOnClickListener1, paramString1, paramInt, paramString2, paramContext, paramOnClickListener2)).a(new sod(this)).a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView, new soc(this));
   }
   
   private void a(int paramInt1, String paramString, int paramInt2)
@@ -84,34 +84,34 @@ public class ReadInJoySkinSlideDownView
     Object localObject3;
     if ((localObject1 instanceof BaseActivity))
     {
-      bhsi.u((Context)localObject1, ((BaseActivity)localObject1).getCurrentAccountUin());
+      bfyz.t((Context)localObject1, ((BaseActivity)localObject1).getCurrentAccountUin());
       localObject2 = (BaseActivity)localObject1;
-      localObject3 = (qtq)((BaseActivity)localObject2).app.getManager(270);
-      localObject1 = ((qtq)localObject3).a();
-      localObject2 = ((qtq)localObject3).a((Context)localObject2, 0);
-      localObject3 = new paa();
+      localObject3 = (rao)((BaseActivity)localObject2).app.getManager(270);
+      localObject1 = ((rao)localObject3).a();
+      localObject2 = ((rao)localObject3).a((Context)localObject2, 0);
+      localObject3 = new pbg();
     }
     for (;;)
     {
       try
       {
-        ((paa)localObject3).b().c().a(paramInt1).e().f().g().h().d(0).e(2).a();
+        ((pbg)localObject3).b().c().a(paramInt1).e().f().g().h().d(0).e(2).a();
         if (TextUtils.isEmpty(paramString)) {}
-        ((paa)localObject3).a("jump_url", paramString);
-        ((paa)localObject3).a("guide_id", (String)localObject1);
-        ((paa)localObject3).a("jump_url_type", paramInt2);
+        ((pbg)localObject3).a("jump_url", paramString);
+        ((pbg)localObject3).a("guide_id", (String)localObject1);
+        ((pbg)localObject3).a("jump_url_type", paramInt2);
         if ((localObject2 == null) || (!((RefreshData)localObject2).isAD)) {
           continue;
         }
         paramInt1 = 1;
-        ((paa)localObject3).a("ad_page", paramInt1);
+        ((pbg)localObject3).a("ad_page", paramInt1);
       }
       catch (JSONException paramString)
       {
         paramString.printStackTrace();
         continue;
       }
-      ocd.a(null, "CliOper", "", "", "0X800969C", "0X800969C", 0, 0, bnrf.a("default_feeds_proteus_offline_bid"), "", "", ((paa)localObject3).a(), false);
+      odq.a(null, "CliOper", "", "", "0X800969C", "0X800969C", 0, 0, bkwm.a("default_feeds_proteus_offline_bid"), "", "", ((pbg)localObject3).a(), false);
       if ((localObject2 != null) && (((RefreshData)localObject2).isAD) && (((RefreshData)localObject2).adClickReports != null) && (((RefreshData)localObject2).adClickReports.size() > 0)) {}
       try
       {
@@ -119,7 +119,7 @@ public class ReadInJoySkinSlideDownView
         long l = ((RefreshData)localObject2).adId.longValue();
         paramString.report_info.trace_info.aid.set(l);
         paramString.report_info.thirdparty_monitor_urls.api_click_monitor_url.set(((RefreshData)localObject2).getUrls(((RefreshData)localObject2).adClickReports));
-        acvi.a(1, 1, paramString);
+        abrs.a(1, 1, paramString);
         return;
       }
       catch (NumberFormatException paramString)
@@ -132,13 +132,13 @@ public class ReadInJoySkinSlideDownView
   
   public String a()
   {
-    Iterator localIterator = this.jdField_a_of_type_Bdxj.a().iterator();
+    Iterator localIterator = this.jdField_a_of_type_Bcra.a().iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (bdxf)localIterator.next();
-      if ((localObject instanceof bdxi))
+      Object localObject = (bcqw)localIterator.next();
+      if ((localObject instanceof bcqz))
       {
-        localObject = ((bdxi)localObject).a();
+        localObject = ((bcqz)localObject).a();
         if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals("close")) && (!((String)localObject).equals("open_sound")) && (!((String)localObject).equals("use_skin"))) {
           return localObject;
         }
@@ -239,7 +239,7 @@ public class ReadInJoySkinSlideDownView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView
  * JD-Core Version:    0.7.0.1
  */

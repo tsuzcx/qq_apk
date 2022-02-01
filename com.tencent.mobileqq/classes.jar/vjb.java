@@ -1,34 +1,61 @@
-import android.app.ActivityManager;
-import android.graphics.Bitmap;
-import com.tencent.component.media.utils.LruCache;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class vjb
+  extends vja<vji>
 {
-  private static LruCache<Integer, Bitmap> jdField_a_of_type_ComTencentComponentMediaUtilsLruCache;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  
-  public static vjb a()
+  public String a(AddressItem paramAddressItem)
   {
-    return vjd.a();
+    return "city:" + paramAddressItem.city + " district:" + paramAddressItem.district + " building:" + paramAddressItem.building;
   }
   
-  public LruCache<Integer, Bitmap> a()
+  protected List<vil> a(List<vim> paramList)
   {
-    if (jdField_a_of_type_ComTencentComponentMediaUtilsLruCache == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    Object localObject1 = new HashMap();
+    paramList = paramList.iterator();
+    Object localObject2;
+    while (paramList.hasNext())
     {
-      if (jdField_a_of_type_ComTencentComponentMediaUtilsLruCache == null)
+      localObject2 = (vim)paramList.next();
+      Object localObject3 = ((vim)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem;
+      if (localObject3 != null)
       {
-        int j = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getMemoryClass() * 131072;
-        int i = j;
-        if (j > 52428800) {
-          i = 52428800;
+        localObject3 = a((AddressItem)localObject3);
+        if (((HashMap)localObject1).containsKey(localObject3))
+        {
+          ((List)((HashMap)localObject1).get(localObject3)).add(localObject2);
         }
-        jdField_a_of_type_ComTencentComponentMediaUtilsLruCache = new vjc(this, i);
+        else
+        {
+          ArrayList localArrayList = new ArrayList();
+          localArrayList.add(localObject2);
+          ((HashMap)localObject1).put(localObject3, localArrayList);
+        }
       }
-      return jdField_a_of_type_ComTencentComponentMediaUtilsLruCache;
+      else
+      {
+        xvv.a("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "handleSplit pic poi is null picPath=%s", ((vim)localObject2).jdField_a_of_type_JavaLangString);
+      }
     }
+    paramList = new ArrayList();
+    localObject1 = ((HashMap)localObject1).entrySet().iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (List)((Map.Entry)((Iterator)localObject1).next()).getValue();
+      if (((List)localObject2).size() >= a().b)
+      {
+        localObject2 = new vil(a().a, (List)localObject2);
+        ((vil)localObject2).a(this.a);
+        ((vil)localObject2).a(a());
+        paramList.add(localObject2);
+      }
+    }
+    return paramList;
   }
 }
 

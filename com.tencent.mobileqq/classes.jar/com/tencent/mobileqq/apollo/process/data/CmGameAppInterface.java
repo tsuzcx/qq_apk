@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import anat;
-import anbd;
-import ancz;
-import ande;
-import andn;
+import alvn;
+import alvx;
+import alxt;
+import alxy;
+import alyh;
+import alzh;
+import amkk;
 import android.content.Intent;
-import anen;
-import anpq;
-import anud;
-import anui;
-import beuo;
-import bevk;
-import bihw;
+import bgog;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.NetEngineFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
@@ -34,88 +34,88 @@ public class CmGameAppInterface
   extends AppInterface
   implements IToolProcEventListener
 {
-  private bevk jdField_a_of_type_Bevk;
   private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
-  List<anui> jdField_a_of_type_JavaUtilList = new Vector();
+  private NetEngineFactory jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory;
+  List<BusinessObserver> jdField_a_of_type_JavaUtilList = new Vector();
   Map<Integer, Manager> jdField_a_of_type_JavaUtilMap = new HashMap(20);
-  private anud[] jdField_a_of_type_ArrayOfAnud = new anud[1];
-  List<anui> b = new Vector();
-  List<anui> c = new Vector();
+  private BusinessHandler[] jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler = new BusinessHandler[1];
+  List<BusinessObserver> b = new Vector();
+  List<BusinessObserver> c = new Vector();
   
   public CmGameAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
     super(paramBaseApplicationImpl, paramString);
     QLog.i("cmgame_process.CmGameAppInterface", 1, "new CmGameAppInterface obj.");
-    anat.a();
+    alvn.a();
     TVK_SDKMgr.initSdk(BaseApplicationImpl.getContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-    TVK_SDKMgr.installPlugin(BaseApplicationImpl.getContext(), new ancz(this));
+    TVK_SDKMgr.installPlugin(BaseApplicationImpl.getContext(), new alxt(this));
   }
   
   private void a()
   {
-    ande localande = anbd.a();
-    if (localande != null) {
-      anbd.a(localande.a());
+    alxy localalxy = alvx.a();
+    if (localalxy != null) {
+      alvx.a(localalxy.a());
     }
   }
   
-  private anud b(int paramInt)
+  private BusinessHandler b(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     }
-    return new anen(this);
+    return new alzh(this);
   }
   
-  public anud a(int paramInt)
+  public BusinessHandler a(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfAnud[paramInt];
+    Object localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler[paramInt];
     if (localObject1 != null) {
       return localObject1;
     }
-    synchronized (this.jdField_a_of_type_ArrayOfAnud)
+    synchronized (this.jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler)
     {
-      anud localanud = this.jdField_a_of_type_ArrayOfAnud[paramInt];
-      localObject1 = localanud;
-      if (localanud == null)
+      BusinessHandler localBusinessHandler = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler[paramInt];
+      localObject1 = localBusinessHandler;
+      if (localBusinessHandler == null)
       {
-        localanud = b(paramInt);
-        localObject1 = localanud;
-        if (localanud != null)
+        localBusinessHandler = b(paramInt);
+        localObject1 = localBusinessHandler;
+        if (localBusinessHandler != null)
         {
-          this.jdField_a_of_type_ArrayOfAnud[paramInt] = localanud;
-          localObject1 = localanud;
+          this.jdField_a_of_type_ArrayOfComTencentMobileqqAppBusinessHandler[paramInt] = localBusinessHandler;
+          localObject1 = localBusinessHandler;
         }
       }
       return localObject1;
     }
   }
   
-  public void addObserver(anui paramanui)
+  public void addObserver(BusinessObserver paramBusinessObserver)
   {
-    addObserver(paramanui, false);
+    addObserver(paramBusinessObserver, false);
   }
   
-  public void addObserver(anui paramanui, boolean paramBoolean)
+  public void addObserver(BusinessObserver paramBusinessObserver, boolean paramBoolean)
   {
-    if (paramanui == null) {
+    if (paramBusinessObserver == null) {
       return;
     }
     if (paramBoolean) {
       synchronized (this.b)
       {
-        if (!this.b.contains(paramanui)) {
-          this.b.add(paramanui);
+        if (!this.b.contains(paramBusinessObserver)) {
+          this.b.add(paramBusinessObserver);
         }
         return;
       }
     }
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramanui)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramanui);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramBusinessObserver)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramBusinessObserver);
       }
       return;
     }
@@ -131,7 +131,7 @@ public class CmGameAppInterface
     return AppSetting.a();
   }
   
-  public List<anui> getBusinessObserver(int paramInt)
+  public List<BusinessObserver> getBusinessObserver(int paramInt)
   {
     if (paramInt == 1) {
       return this.jdField_a_of_type_JavaUtilList;
@@ -187,16 +187,16 @@ public class CmGameAppInterface
             return localObject1;
           }
           finally {}
-          localObject1 = new andn(this);
+          localObject1 = new alyh(this);
           break;
         case 256: 
-          localObject4 = new bevk();
+          localObject4 = new NetEngineFactory();
         }
       }
       finally {}
-      this.jdField_a_of_type_Bevk = ((bevk)localObject4);
+      this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = ((NetEngineFactory)localObject4);
       continue;
-      Object localObject4 = new bihw(this);
+      Object localObject4 = new bgog(this);
       continue;
       Object localObject5 = localObject4;
       if (localObject4 != null)
@@ -212,12 +212,12 @@ public class CmGameAppInterface
     return "cmshowgame_module";
   }
   
-  public beuo getNetEngine(int paramInt)
+  public INetEngine getNetEngine(int paramInt)
   {
-    if (this.jdField_a_of_type_Bevk == null) {
-      this.jdField_a_of_type_Bevk = ((bevk)getManager(256));
+    if (this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory == null) {
+      this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory = ((NetEngineFactory)getManager(256));
     }
-    return this.jdField_a_of_type_Bevk.a(this, paramInt);
+    return this.jdField_a_of_type_ComTencentMobileqqTransfileNetEngineFactory.getEngineInstance(this, paramInt);
   }
   
   public void onBeforeExitProc()
@@ -260,7 +260,7 @@ public class CmGameAppInterface
     }
     label114:
     this.jdField_a_of_type_JavaUtilMap.clear();
-    anpq.a();
+    amkk.a();
   }
   
   public boolean onReceiveAccountAction(String paramString, Intent paramIntent)
@@ -273,7 +273,7 @@ public class CmGameAppInterface
   public boolean onReceiveLegalExitProcAction(Intent paramIntent)
   {
     QLog.i("cmgame_process.CmGameAppInterface", 1, "[onReceiveLegalExitProcAction]");
-    if (anbd.a() != null)
+    if (alvx.a() != null)
     {
       QLog.i("cmgame_process.CmGameAppInterface", 1, "NOT kill tool process");
       return true;
@@ -281,24 +281,24 @@ public class CmGameAppInterface
     return false;
   }
   
-  public void removeObserver(anui paramanui)
+  public void removeObserver(BusinessObserver paramBusinessObserver)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramanui);
+      this.jdField_a_of_type_JavaUtilList.remove(paramBusinessObserver);
       synchronized (this.b)
       {
-        this.b.remove(paramanui);
+        this.b.remove(paramBusinessObserver);
       }
     }
     synchronized (this.c)
     {
-      this.c.remove(paramanui);
+      this.c.remove(paramBusinessObserver);
       return;
-      paramanui = finally;
-      throw paramanui;
-      paramanui = finally;
-      throw paramanui;
+      paramBusinessObserver = finally;
+      throw paramBusinessObserver;
+      paramBusinessObserver = finally;
+      throw paramBusinessObserver;
     }
   }
 }

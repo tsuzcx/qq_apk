@@ -1,45 +1,25 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import org.jetbrains.annotations.NotNull;
+import android.os.Message;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$PrivacyHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "checkIv", "Landroid/widget/ImageView;", "getCheckIv", "()Landroid/widget/ImageView;", "setCheckIv", "(Landroid/widget/ImageView;)V", "titleTv", "Landroid/widget/TextView;", "getTitleTv", "()Landroid/widget/TextView;", "setTitleTv", "(Landroid/widget/TextView;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class baju
-  extends RecyclerView.ViewHolder
+class baju
+  extends MqqHandler
 {
-  @NotNull
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  @NotNull
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  baju(bajt parambajt) {}
   
-  public baju(@NotNull View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramView);
-    View localView = paramView.findViewById(2131379040);
-    if (localView == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.widget.TextView");
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      QQToast.a(bajt.a(this.a).mContext, 2131718446, 0).a();
+      return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView);
-    paramView = paramView.findViewById(2131364503);
-    if (paramView == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.widget.ImageView");
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView);
-  }
-  
-  @NotNull
-  public final ImageView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  @NotNull
-  public final TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    paramMessage = (String)paramMessage.obj;
+    bfvo.a(bajt.a(this.a).mContext, paramMessage);
+    QQToast.a(bajt.a(this.a).mContext, 2, amtj.a(2131699292), 0).a();
   }
 }
 

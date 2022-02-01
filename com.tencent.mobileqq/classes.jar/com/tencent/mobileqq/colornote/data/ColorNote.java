@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.colornote.data;
 
 import android.os.Bundle;
-import aqrv;
-import aqsd;
-import bhsr;
+import aple;
+import aplm;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.Arrays;
@@ -64,24 +64,24 @@ public class ColorNote
     this.mPicUrl = paramBundle.getString("param_pic_url");
     this.mReserve = paramBundle.getByteArray("param_reserve");
     this.mExtLong = paramBundle.getLong("param_extra_flag", 0L);
-    if (((this.mServiceType == -1) || (bhsr.a(this.mSubType))) && (QLog.isColorLevel())) {
+    if (((this.mServiceType == -1) || (StringUtil.isEmpty(this.mSubType))) && (QLog.isColorLevel())) {
       QLog.d("ColorNote", 2, "Illegal param mServiceType = " + this.mServiceType + ", mSubType = " + this.mSubType);
     }
   }
   
-  public ColorNote(aqrv paramaqrv)
+  public ColorNote(aple paramaple)
   {
-    this.mServiceType = paramaqrv.jdField_a_of_type_Int;
-    this.mSubType = paramaqrv.jdField_a_of_type_JavaLangString;
-    this.mSubTitle = paramaqrv.c;
-    this.mMainTitle = paramaqrv.jdField_b_of_type_JavaLangString;
-    this.mPicUrl = paramaqrv.d;
-    this.mReserve = paramaqrv.jdField_a_of_type_ArrayOfByte;
-    this.mExtra = paramaqrv.jdField_b_of_type_Int;
-    this.mExtLong = paramaqrv.jdField_a_of_type_Long;
-    this.mUniKey = (paramaqrv.jdField_a_of_type_Int + paramaqrv.jdField_a_of_type_JavaLangString + paramaqrv.jdField_b_of_type_Int);
+    this.mServiceType = paramaple.jdField_a_of_type_Int;
+    this.mSubType = paramaple.jdField_a_of_type_JavaLangString;
+    this.mSubTitle = paramaple.c;
+    this.mMainTitle = paramaple.jdField_b_of_type_JavaLangString;
+    this.mPicUrl = paramaple.d;
+    this.mReserve = paramaple.jdField_a_of_type_ArrayOfByte;
+    this.mExtra = paramaple.jdField_b_of_type_Int;
+    this.mExtLong = paramaple.jdField_a_of_type_Long;
+    this.mUniKey = (paramaple.jdField_a_of_type_Int + paramaple.jdField_a_of_type_JavaLangString + paramaple.jdField_b_of_type_Int);
     this.mTime = NetConnInfoCenter.getServerTime();
-    if (((this.mServiceType == -1) || (bhsr.a(this.mSubType))) && (QLog.isColorLevel())) {
+    if (((this.mServiceType == -1) || (StringUtil.isEmpty(this.mSubType))) && (QLog.isColorLevel())) {
       QLog.d("ColorNote", 2, "Illegal param mServiceType = " + this.mServiceType + ", mSubType = " + this.mSubType);
     }
   }
@@ -120,7 +120,7 @@ public class ColorNote
     {
       return false;
       paramObject = (ColorNote)paramObject;
-    } while ((this.mServiceType != paramObject.getServiceType()) || (!aqsd.a(this.mSubType, paramObject.getSubType())) || (!aqsd.a(this.mMainTitle, paramObject.getMainTitle())) || (!aqsd.a(this.mSubTitle, paramObject.getSubTitle())) || (this.mExtra != paramObject.mExtra));
+    } while ((this.mServiceType != paramObject.getServiceType()) || (!aplm.a(this.mSubType, paramObject.getSubType())) || (!aplm.a(this.mMainTitle, paramObject.getMainTitle())) || (!aplm.a(this.mSubTitle, paramObject.getSubTitle())) || (this.mExtra != paramObject.mExtra));
     return true;
   }
   
@@ -181,7 +181,7 @@ public class ColorNote
   
   public boolean isTitleAndPicValid()
   {
-    return (!bhsr.a(this.mMainTitle)) && (!bhsr.a(this.mSubTitle)) && (!bhsr.a(this.mPicUrl));
+    return (!StringUtil.isEmpty(this.mMainTitle)) && (!StringUtil.isEmpty(this.mSubTitle)) && (!StringUtil.isEmpty(this.mPicUrl));
   }
   
   public Bundle parseBundle()

@@ -1,390 +1,60 @@
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.AudioDeviceInterface;
-import com.tencent.sharp.jni.TraeAudioManager;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.locks.ReentrantLock;
+import cooperation.weiyun.channel.pb.WeiyunPB.MsgHead;
 
-public class blff
+final class blff
 {
-  String jdField_a_of_type_JavaLangString = "DEVICE_NONE";
-  HashMap<String, blfg> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
-  boolean jdField_a_of_type_Boolean = false;
-  String b = "DEVICE_NONE";
-  String c = "DEVICE_NONE";
-  String d = "unknow";
+  private static String a = "PBSerialization-L";
   
-  public blff(TraeAudioManager paramTraeAudioManager) {}
-  
-  public int a()
+  public static blfe a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    int i = this.jdField_a_of_type_JavaUtilHashMap.size();
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-    return i;
-  }
-  
-  public int a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    paramString = (blfg)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (paramString != null) {}
-    for (int i = paramString.a();; i = -1)
+    Object localObject = new blfd();
+    if (paramArrayOfByte.length < blfd.d)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      return i;
+      QLog.w(a, 1, "buffer length is short than 16!");
+      return null;
     }
-  }
-  
-  public String a()
-  {
-    return this.d;
-  }
-  
-  public String a(int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    Object localObject = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    int i = 0;
-    Map.Entry localEntry;
-    if (((Iterator)localObject).hasNext())
+    ((blfd)localObject).a(paramArrayOfByte);
+    if (paramArrayOfByte.length < ((blfd)localObject).a())
     {
-      localEntry = (Map.Entry)((Iterator)localObject).next();
-      if (i != paramInt) {}
+      QLog.w(a, 1, "buffer length is short!");
+      return null;
     }
-    for (localObject = (blfg)localEntry.getValue();; localObject = null)
+    int i = ((blfd)localObject).a() - ((blfd)localObject).b() - blfd.d;
+    int j = ((blfd)localObject).b();
+    localObject = new byte[i];
+    byte[] arrayOfByte = new byte[j];
+    System.arraycopy(paramArrayOfByte, blfd.d, localObject, 0, i);
+    System.arraycopy(paramArrayOfByte, i + blfd.d, arrayOfByte, 0, j);
+    paramArrayOfByte = new WeiyunPB.MsgHead();
+    try
     {
-      if (localObject != null) {}
-      for (localObject = ((blfg)localObject).a();; localObject = "DEVICE_NONE")
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-        return localObject;
-        i += 1;
-        break;
-      }
+      paramArrayOfByte.mergeFrom((byte[])localObject);
+      paramArrayOfByte = new blfe(paramArrayOfByte, arrayOfByte);
+      return paramArrayOfByte;
     }
-  }
-  
-  public String a(String paramString)
-  {
-    Object localObject1 = null;
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      Object localObject2 = (Map.Entry)localIterator.next();
-      ((Map.Entry)localObject2).getKey();
-      ((Map.Entry)localObject2).getValue();
-      blfg localblfg = (blfg)((Map.Entry)localObject2).getValue();
-      if ((localblfg != null) && (localblfg.a()) && (!localblfg.a().equals(paramString)))
-      {
-        if (localObject1 == null) {
-          localObject2 = localblfg;
-        }
-        for (;;)
-        {
-          localObject1 = localObject2;
-          break;
-          localObject2 = localblfg;
-          if (localblfg.a() < localObject1.a()) {
-            localObject2 = localObject1;
-          }
-        }
-      }
+      QLog.e(a, 1, "throw InvalidProtocolBufferException.");
     }
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-    if (localObject1 != null) {
-      return localObject1.a();
-    }
-    return "DEVICE_SPEAKERPHONE";
+    return null;
   }
   
-  public ArrayList<String> a()
+  public static byte[] a(blfe paramblfe)
   {
-    new ArrayList();
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    ArrayList localArrayList = b();
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-    return localArrayList;
-  }
-  
-  public HashMap<String, Object> a()
-  {
-    HashMap localHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    localHashMap.put("EXTRA_DATA_AVAILABLEDEVICE_LIST", b());
-    localHashMap.put("EXTRA_DATA_CONNECTEDDEVICE", f());
-    localHashMap.put("EXTRA_DATA_PREV_CONNECTEDDEVICE", g());
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-    return localHashMap;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_JavaLangString = "DEVICE_NONE";
-    this.b = "DEVICE_NONE";
-    this.c = "DEVICE_NONE";
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString == null)
-    {
-      this.d = "unknow";
-      return;
-    }
-    if (paramString.isEmpty())
-    {
-      this.d = "unknow";
-      return;
-    }
-    this.d = paramString;
-  }
-  
-  public boolean a()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    boolean bool = this.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-    return bool;
-  }
-  
-  public boolean a(String paramString)
-  {
-    AudioDeviceInterface.LogTraceEntry(" strConfigs:" + paramString);
-    if ((paramString == null) || (paramString.length() <= 0)) {}
-    do
-    {
-      String str;
-      do
-      {
-        return false;
-        str = paramString.replace("\n", "").replace("\r", "");
-      } while ((str == null) || (str.length() <= 0));
-      paramString = str;
-      if (str.indexOf(";") < 0) {
-        paramString = str + ";";
-      }
-      paramString = paramString.split(";");
-    } while ((paramString == null) || (1 > paramString.length));
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    int i = 0;
-    while (i < paramString.length)
-    {
-      a(paramString[i], i);
-      i += 1;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-    this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a();
-    return true;
-  }
-  
-  boolean a(String paramString, int paramInt)
-  {
-    AudioDeviceInterface.LogTraceEntry(" devName:" + paramString + " priority:" + paramInt);
-    blfg localblfg = new blfg(this);
-    if (localblfg.a(paramString, paramInt)) {
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
-        if (QLog.isColorLevel()) {
-          QLog.e("TraeAudioManager", 2, "err dev exist!");
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return false;
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localblfg);
-      this.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.w("TraeAudioManager", 2, " n" + a() + " 0:" + a(0));
-      }
-      AudioDeviceInterface.LogTraceExit();
-      return true;
-    }
-    QLog.e("TraeAudioManager", 2, " err dev init!");
-    return false;
-  }
-  
-  public boolean a(String paramString, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    Object localObject = (blfg)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if ((localObject != null) && (((blfg)localObject).a() != paramBoolean))
-    {
-      ((blfg)localObject).a(paramBoolean);
-      ((blfg)localObject).b(paramBoolean);
-      this.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder().append(" ++setVisible:").append(paramString);
-        if (!paramBoolean) {
-          break label101;
-        }
-        paramString = " Y";
-        QLog.w("TraeAudioManager", 2, paramString);
-      }
-    }
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      return paramBoolean;
-      label101:
-      paramString = " N";
-      break;
-    }
-  }
-  
-  public String b()
-  {
-    Object localObject1 = null;
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject2 = (Map.Entry)localIterator.next();
-      ((Map.Entry)localObject2).getKey();
-      ((Map.Entry)localObject2).getValue();
-      blfg localblfg = (blfg)((Map.Entry)localObject2).getValue();
-      if ((localblfg != null) && (localblfg.a()) && (localblfg.b()))
-      {
-        if (localObject1 == null) {
-          localObject2 = localblfg;
-        }
-        for (;;)
-        {
-          localObject1 = localObject2;
-          break;
-          localObject2 = localblfg;
-          if (localblfg.a() < localObject1.a()) {
-            localObject2 = localObject1;
-          }
-        }
-      }
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-    if (localObject1 != null) {
-      return localObject1.a();
-    }
-    return "DEVICE_SPEAKERPHONE";
-  }
-  
-  ArrayList<String> b()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      blfg localblfg = (blfg)((Map.Entry)localIterator.next()).getValue();
-      if ((localblfg != null) && (localblfg.a()) && (localblfg.b())) {
-        localArrayList.add(localblfg.a());
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-  }
-  
-  public boolean b(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    paramString = (blfg)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (paramString != null) {}
-    for (boolean bool = paramString.a();; bool = false)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      return bool;
-    }
-  }
-  
-  public String c()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    Object localObject = (blfg)this.jdField_a_of_type_JavaUtilHashMap.get(this.c);
-    if ((localObject != null) && (((blfg)localObject).a())) {}
-    for (localObject = this.c;; localObject = null)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      return localObject;
-    }
-  }
-  
-  public boolean c(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    blfg localblfg = (blfg)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if ((localblfg != null) && (localblfg.a())) {
-      this.c = paramString;
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      return bool;
-    }
-  }
-  
-  public String d()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    String str = f();
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-    return str;
-  }
-  
-  public boolean d(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    blfg localblfg = (blfg)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if ((localblfg != null) && (localblfg.a()))
-    {
-      if ((this.b != null) && (!this.b.equals(paramString))) {
-        this.jdField_a_of_type_JavaLangString = this.b;
-      }
-      this.b = paramString;
-      this.c = "";
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      return bool;
-    }
-  }
-  
-  public String e()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    String str = g();
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-    return str;
-  }
-  
-  String f()
-  {
-    blfg localblfg = (blfg)this.jdField_a_of_type_JavaUtilHashMap.get(this.b);
-    if ((localblfg != null) && (localblfg.a())) {
-      return this.b;
-    }
-    return "DEVICE_NONE";
-  }
-  
-  String g()
-  {
-    blfg localblfg = (blfg)this.jdField_a_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_JavaLangString);
-    if ((localblfg != null) && (localblfg.a())) {
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    return "DEVICE_NONE";
+    byte[] arrayOfByte1 = paramblfe.a().toByteArray();
+    paramblfe = paramblfe.a();
+    int i = blfd.d + arrayOfByte1.length + paramblfe.length;
+    Object localObject = new blfd();
+    ((blfd)localObject).b(paramblfe.length);
+    ((blfd)localObject).a(i);
+    localObject = ((blfd)localObject).a();
+    byte[] arrayOfByte2 = new byte[i];
+    System.arraycopy(localObject, 0, arrayOfByte2, 0, localObject.length);
+    System.arraycopy(arrayOfByte1, 0, arrayOfByte2, localObject.length, arrayOfByte1.length);
+    i = localObject.length;
+    System.arraycopy(paramblfe, 0, arrayOfByte2, arrayOfByte1.length + i, paramblfe.length);
+    return arrayOfByte2;
   }
 }
 

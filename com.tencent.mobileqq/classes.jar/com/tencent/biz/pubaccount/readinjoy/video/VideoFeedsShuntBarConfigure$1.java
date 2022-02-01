@@ -1,30 +1,30 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.util.SparseIntArray;
-import bnrf;
+import bkwm;
 import com.tencent.qphone.base.util.QLog;
-import ruk;
+import sbo;
 
 public class VideoFeedsShuntBarConfigure$1
   implements Runnable
 {
-  public VideoFeedsShuntBarConfigure$1(ruk paramruk) {}
+  public VideoFeedsShuntBarConfigure$1(sbo paramsbo) {}
   
   public void run()
   {
     int i = 0;
     try
     {
-      while (i < ruk.a(this.this$0).size())
+      while (i < sbo.a(this.this$0).size())
       {
-        int j = ruk.a(this.this$0).keyAt(i);
-        int k = ruk.a(this.this$0).valueAt(i);
+        int j = sbo.a(this.this$0).keyAt(i);
+        int k = sbo.a(this.this$0).valueAt(i);
         if (k != 0)
         {
-          int m = ((Integer)bnrf.a(ruk.a(this.this$0) + j, Integer.valueOf(0))).intValue();
-          bnrf.a(ruk.a(this.this$0) + j, Integer.valueOf(k + m));
+          int m = ((Integer)bkwm.a(sbo.a(this.this$0) + j, Integer.valueOf(0))).intValue();
+          bkwm.a(sbo.a(this.this$0) + j, Integer.valueOf(k + m));
           if (QLog.isColorLevel()) {
-            QLog.d(ruk.a(), 2, "video_source_id: " + j + ", has display counts: " + (m + k));
+            QLog.d(sbo.a(), 2, "video_source_id: " + j + ", has display counts: " + (m + k));
           }
         }
         i += 1;
@@ -34,7 +34,7 @@ public class VideoFeedsShuntBarConfigure$1
     catch (Exception localException)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(ruk.a(), 2, "更新引流条配置出现错误: " + localException.getMessage());
+        QLog.d(sbo.a(), 2, "更新引流条配置出现错误: " + localException.getMessage());
       }
     }
   }

@@ -1,30 +1,26 @@
-import com.tencent.common.app.AppInterface;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface anbv
+class anbv
+  implements bgfg
 {
-  public abstract int a(int paramInt);
+  anbv(anbt paramanbt, bdbk parambdbk, Context paramContext, Bundle paramBundle) {}
   
-  public abstract int a(amwx paramamwx, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3, float paramFloat);
-  
-  public abstract int a(AppInterface paramAppInterface);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt, AppInterface paramAppInterface);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract int b(int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt, String paramString);
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt, String paramString);
+  public void a(int paramInt, String paramString1, String paramString2)
+  {
+    QLog.e("Theme.ThemeHandler", 1, "onQueryItemVer: " + paramInt + "," + paramString1 + "," + paramString2);
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_Bdbk.a(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2);
+      this.jdField_a_of_type_AndroidOsBundle.putString("themePath", this.jdField_a_of_type_Bdbk.d());
+      anbt.a(this.jdField_a_of_type_Anbt, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsBundle.putString("themeId", "1000");
+    this.jdField_a_of_type_AndroidOsBundle.remove("themePath");
+    anbt.a(this.jdField_a_of_type_Anbt, this.jdField_a_of_type_AndroidOsBundle);
+  }
 }
 
 

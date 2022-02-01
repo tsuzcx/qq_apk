@@ -5,11 +5,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bhlo;
-import bjjo;
-import bjtx;
-import bjty;
-import bjwp;
+import bhpc;
+import bhzm;
+import bhzn;
+import bibx;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.tmassistantbase.util.GlobalUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 public class DownloadInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DownloadInfo> CREATOR = new bjwp();
+  public static final Parcelable.Creator<DownloadInfo> CREATOR = new bibx();
   protected static final String a;
   public int a;
   public long a;
@@ -274,16 +274,16 @@ public class DownloadInfo
     if (TextUtils.isEmpty(paramString)) {
       return "";
     }
-    return bjty.a(paramString);
+    return bhzn.a(paramString);
   }
   
   private static String c(String paramString)
   {
     try
     {
-      paramString = "" + bjjo.a().a() + bhlo.a() + System.currentTimeMillis() + paramString;
-      bjtx.b(jdField_a_of_type_JavaLangString, ">genUniqueId ori=" + paramString);
-      paramString = bjty.a(paramString);
+      paramString = "" + bhpc.a().a() + DeviceInfoUtil.getIMEI() + System.currentTimeMillis() + paramString;
+      bhzm.b(jdField_a_of_type_JavaLangString, ">genUniqueId ori=" + paramString);
+      paramString = bhzn.a(paramString);
       return paramString;
     }
     catch (Throwable paramString) {}
@@ -315,7 +315,7 @@ public class DownloadInfo
   {
     if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(this.y)))
     {
-      bjtx.b(jdField_a_of_type_JavaLangString, ">getExtParam empty params:" + paramString + "|" + this.y);
+      bhzm.b(jdField_a_of_type_JavaLangString, ">getExtParam empty params:" + paramString + "|" + this.y);
       return "";
     }
     try
@@ -324,7 +324,7 @@ public class DownloadInfo
       if (localObject != null)
       {
         localObject = ((JSONObject)localObject).optString(paramString);
-        bjtx.b(jdField_a_of_type_JavaLangString, ">getExtParam " + paramString + "=" + (String)localObject);
+        bhzm.b(jdField_a_of_type_JavaLangString, ">getExtParam " + paramString + "=" + (String)localObject);
         return localObject;
       }
     }
@@ -361,7 +361,7 @@ public class DownloadInfo
     }
     catch (JSONException localJSONException)
     {
-      bjtx.c(jdField_a_of_type_JavaLangString, "onNetworkConnect " + localJSONException.getMessage(), localJSONException);
+      bhzm.c(jdField_a_of_type_JavaLangString, "onNetworkConnect " + localJSONException.getMessage(), localJSONException);
     }
     return localJSONObject;
   }
@@ -374,7 +374,7 @@ public class DownloadInfo
         break label45;
       }
       this.jdField_b_of_type_JavaLangString = b(this.jdField_d_of_type_JavaLangString);
-      bjtx.b(jdField_a_of_type_JavaLangString, "gen ticket by urlStr");
+      bhzm.b(jdField_a_of_type_JavaLangString, "gen ticket by urlStr");
     }
     for (;;)
     {
@@ -384,16 +384,16 @@ public class DownloadInfo
       if (!TextUtils.isEmpty(this.jdField_i_of_type_JavaLangString))
       {
         this.jdField_b_of_type_JavaLangString = b(this.jdField_i_of_type_JavaLangString);
-        bjtx.b(jdField_a_of_type_JavaLangString, "gen ticket by urlPatch");
+        bhzm.b(jdField_a_of_type_JavaLangString, "gen ticket by urlPatch");
       }
       else if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
       {
         this.jdField_b_of_type_JavaLangString = a(this.jdField_e_of_type_JavaLangString, this.jdField_b_of_type_Int);
-        bjtx.b(jdField_a_of_type_JavaLangString, "gen ticket by packageName & versionCode");
+        bhzm.b(jdField_a_of_type_JavaLangString, "gen ticket by packageName & versionCode");
       }
       else
       {
-        bjtx.e(jdField_a_of_type_JavaLangString, "bad download INFO!!!");
+        bhzm.e(jdField_a_of_type_JavaLangString, "bad download INFO!!!");
       }
     }
   }
@@ -426,14 +426,14 @@ public class DownloadInfo
       try
       {
         localJSONObject1.put(paramString1, paramString2);
-        bjtx.b(jdField_a_of_type_JavaLangString, ">setExtParam " + paramString1 + "=" + paramString2);
+        bhzm.b(jdField_a_of_type_JavaLangString, ">setExtParam " + paramString1 + "=" + paramString2);
         this.y = localJSONObject1.toString();
         return true;
       }
       catch (Exception paramString1)
       {
         JSONObject localJSONObject2;
-        bjtx.c(jdField_a_of_type_JavaLangString, ">setExtParam failed:", paramString1);
+        bhzm.c(jdField_a_of_type_JavaLangString, ">setExtParam failed:", paramString1);
       }
       try
       {

@@ -1,13 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.app.face.FaceInfo;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class anhy
-  implements DialogInterface.OnClickListener
+class anhy
+  extends anhs
 {
-  public anhy(ApolloGameActivity paramApolloGameActivity) {}
+  anhy(anhx paramanhx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(boolean paramBoolean, FaceInfo paramFaceInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onUpdateStrangerHead.faceInfo=" + paramFaceInfo + ", isSuccess=" + paramBoolean);
+    }
+    if ((this.a.mCancelled) || (this.a.mFaceInfo == null) || (paramFaceInfo == null)) {}
+    while ((paramFaceInfo.b != this.a.mFaceInfo.b) || (!this.a.mFaceInfo.a.equals(paramFaceInfo.a))) {
+      return;
+    }
+    if ((this.a.jdField_a_of_type_Anhs != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.a.jdField_a_of_type_Anhs);
+    }
+    if (paramBoolean)
+    {
+      paramFaceInfo = this.a.getBitmapFromCache();
+      if (paramFaceInfo != null)
+      {
+        this.a.onDecodeTaskCompleted(this.a.mFaceInfo, paramFaceInfo);
+        return;
+      }
+      this.a.requestDecode();
+      return;
+    }
+    this.a.onDecodeTaskCompleted(this.a.mFaceInfo, null);
+  }
 }
 
 

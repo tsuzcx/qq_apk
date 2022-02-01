@@ -1,8 +1,8 @@
-import android.graphics.Bitmap;
-
 public abstract interface bbsm
 {
-  public abstract void a(String paramString1, String paramString2, Bitmap paramBitmap, int paramInt);
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
 }
 
 

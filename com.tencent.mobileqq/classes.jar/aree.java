@@ -1,93 +1,104 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class aree
-  extends arac<ared>
+class aree
+  extends bgod
 {
-  @NonNull
-  public ared a(int paramInt)
+  aree(areb paramareb, String paramString1, String paramString2)
   {
-    return new ared();
+    super(paramString1, paramString2);
   }
   
-  @Nullable
-  public ared a(araj[] paramArrayOfaraj)
+  public void onDone(bgoe parambgoe)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterConfProcessor", 2, "[onParsed]");
-    }
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    try
     {
-      ared localared = new ared();
-      localared.a = paramArrayOfaraj[0].a;
-      return localared;
-    }
-    return null;
-  }
-  
-  public void a(ared paramared)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterConfProcessor", 2, "[onUpdate]");
-    }
-    amsx localamsx = (amsx)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(153);
-    if (paramared != null) {}
-    for (paramared = paramared.a;; paramared = null)
-    {
-      localamsx.d(paramared);
+      super.onDone(parambgoe);
+      Bundle localBundle = parambgoe.a();
+      EmoticonPackage localEmoticonPackage = (EmoticonPackage)localBundle.getSerializable("emoticonPackage");
+      this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localEmoticonPackage.epId);
+      int i = localBundle.getInt("businessType");
+      if (parambgoe.a() != 3) {}
+      for (boolean bool = true;; bool = false)
+      {
+        long l1 = parambgoe.h;
+        long l2 = parambgoe.g;
+        this.a.a(localBundle, parambgoe, bool, parambgoe.jdField_a_of_type_Int, parambgoe.d, l1 - l2, i);
+        return;
+      }
       return;
     }
+    catch (Exception parambgoe)
+    {
+      QLog.e(areb.a(), 1, "onDone failed", parambgoe);
+    }
   }
   
-  public Class<ared> clazz()
+  public void onDoneFile(bgoe parambgoe)
   {
-    return ared.class;
+    int i;
+    EmoticonPackage localEmoticonPackage;
+    try
+    {
+      Object localObject = parambgoe.a();
+      i = ((Bundle)localObject).getInt(parambgoe.c);
+      localEmoticonPackage = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
+      if (localEmoticonPackage == null) {
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(areb.a(), 2, "emotionDownloadListener | onDoneFile epId=" + localEmoticonPackage.epId + ",task:" + parambgoe);
+      }
+      areb.jdField_a_of_type_Area.b(localEmoticonPackage, (int)parambgoe.jdField_a_of_type_Long, (int)parambgoe.b);
+      if (i == 9)
+      {
+        localObject = ((Bundle)localObject).getString(parambgoe.c + "emoticonId");
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          areb.a(this.a, localEmoticonPackage.epId, (String)localObject, parambgoe.jdField_a_of_type_Int);
+        }
+      }
+      if (parambgoe.jdField_a_of_type_Int != 0)
+      {
+        QLog.e(areb.a(), 1, "onDoneFile : ondone error , reportCode = " + parambgoe.jdField_a_of_type_Int);
+        if (areb.a(i)) {
+          areb.jdField_a_of_type_Area.a(localEmoticonPackage, i, -1, parambgoe.jdField_a_of_type_Int);
+        }
+        bggr.a("emotionType", "emotionActionDownload", "10", localEmoticonPackage.epId, "", "", parambgoe.jdField_a_of_type_Int + "", "", "", "");
+        return;
+      }
+    }
+    catch (Exception parambgoe)
+    {
+      QLog.e(areb.a(), 1, "onDoneFile failed", parambgoe);
+      return;
+    }
+    if (areb.a(i)) {
+      areb.jdField_a_of_type_Area.a(localEmoticonPackage, i, 0, 0);
+    }
+    while ((localEmoticonPackage.jobType == 3) || (localEmoticonPackage.jobType == 5))
+    {
+      this.a.b(parambgoe);
+      return;
+      if (i == 7) {
+        this.a.a(parambgoe);
+      }
+    }
   }
   
-  public boolean isNeedCompressed()
+  public boolean onStart(bgoe parambgoe)
   {
+    EmoticonPackage localEmoticonPackage = (EmoticonPackage)parambgoe.a().getSerializable("emoticonPackage");
+    areb.jdField_a_of_type_Area.a(localEmoticonPackage);
+    super.onStart(parambgoe);
     return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public void onReqNoReceive()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterConfProcessor", 2, "[onReqNoReceive]");
-    }
-    ared localared = (ared)aran.a().a(417);
-    if (localared != null) {
-      ((amsx)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(153)).d(localared.a);
-    }
-  }
-  
-  public int type()
-  {
-    return 417;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aree
  * JD-Core Version:    0.7.0.1
  */

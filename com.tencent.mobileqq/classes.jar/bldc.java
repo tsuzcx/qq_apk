@@ -1,38 +1,61 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.vip.jsoninflate.model.AlumBasicData;
+import java.util.ArrayList;
 
-public class bldc
-  extends Handler
+class bldc
+  implements AdapterView.OnItemClickListener
 {
-  public bldc(QSecFramework paramQSecFramework, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bldc(bldb parambldb, blcs paramblcs) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    try
+    Object localObject;
+    if (this.jdField_a_of_type_Blcs != null)
     {
-      if ((paramMessage.what == 1) && (!TextUtils.isEmpty((CharSequence)paramMessage.obj)))
+      this.jdField_a_of_type_Blcs.dismiss();
+      if ((this.jdField_a_of_type_Blcs.a != null) && (paramInt < this.jdField_a_of_type_Blcs.a.size()))
       {
-        long l = Long.parseLong((String)paramMessage.obj);
-        if (l != 0L)
+        localObject = (blcy)this.jdField_a_of_type_Blcs.a.get(paramInt);
+        if (((blcy)localObject).a != 1) {
+          break label148;
+        }
+        if ((!TextUtils.isEmpty(((blcy)localObject).c)) && (blda.a(this.jdField_a_of_type_Bldb.a) != null))
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("QSecFramework", 2, "handle native msg for cookie:" + l);
-          }
-          QSecFramework.a(6L, l, 0L, 0L, null, null, null, null);
+          Intent localIntent = new Intent(blda.a(this.jdField_a_of_type_Bldb.a), QQBrowserActivity.class);
+          localIntent.putExtra("url", ((blcy)localObject).c);
+          blda.a(this.jdField_a_of_type_Bldb.a).startActivity(localIntent);
         }
       }
-      return;
     }
-    catch (Exception paramMessage)
+    for (;;)
     {
-      paramMessage.printStackTrace();
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      label148:
+      if (((blcy)localObject).a == 2)
+      {
+        if (blda.a(this.jdField_a_of_type_Bldb.a) != null)
+        {
+          if (!TextUtils.isEmpty(blda.a(this.jdField_a_of_type_Bldb.a).f))
+          {
+            localObject = blda.a(this.jdField_a_of_type_Bldb.a).f.replace("__ACT_TYPE__", "2001");
+            this.jdField_a_of_type_Bldb.a.a((String)localObject);
+          }
+          if (blda.a(this.jdField_a_of_type_Bldb.a) != null) {
+            this.jdField_a_of_type_Bldb.a.a(3, blda.a(this.jdField_a_of_type_Bldb.a).a, blda.a(this.jdField_a_of_type_Bldb.a) + 1);
+          }
+        }
+        if (this.jdField_a_of_type_Bldb.a.a != null) {
+          this.jdField_a_of_type_Bldb.a.a.a();
+        }
+      }
     }
   }
 }

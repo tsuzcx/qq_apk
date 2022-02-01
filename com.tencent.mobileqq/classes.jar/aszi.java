@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aszi
-  implements atds
+final class aszi
+  implements DialogInterface.OnClickListener
 {
-  public aszi(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  aszi(aszj paramaszj) {}
   
-  public void a(String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setText(paramString);
-    this.a.a.setSelection(this.a.a.length());
-    this.a.a(paramString);
+    this.a.onNo();
+    paramDialogInterface.dismiss();
   }
 }
 

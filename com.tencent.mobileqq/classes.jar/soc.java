@@ -1,40 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView.1.1;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class soc
-  implements onp
+  implements bcrx
 {
-  public soc(FastWebActivity paramFastWebActivity) {}
+  public soc(ReadInJoySkinSlideDownView paramReadInJoySkinSlideDownView) {}
   
-  public void a(ons paramons)
+  public void a(bcra parambcra)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onBiuAndCommentSend fastWeb");
-    if (paramons == null) {}
-    for (Object localObject = "null";; localObject = Integer.valueOf(paramons.a()))
-    {
-      QLog.d("FastWebActivity", 1, localObject);
-      if ((paramons == null) || (paramons.a() != 0)) {
-        break;
-      }
-      if (FastWebActivity.a(this.a) != null)
-      {
-        localObject = FastWebActivity.a(this.a);
-        ((FastWebArticleInfo)localObject).b += 1L;
-        FastWebActivity.a(this.a).a(this.a, FastWebActivity.a(this.a), this.a.a);
-      }
-      ono.a(paramons.c(), paramons.a(), paramons.c(), paramons.b(), paramons.a(), paramons.d(), paramons.e(), paramons.a());
-      if ((paramons.c() == 1) && (!FastWebActivity.g(this.a)))
-      {
-        FastWebActivity.e(this.a, true);
-        sro.a(this.a);
-      }
-      return;
-    }
-    QQToast.a(BaseApplication.getContext(), 1, anzj.a(2131711767), 0).a();
+    ReadInJoySkinSlideDownView.a(this.a, parambcra);
+    this.a.a.post(new ReadInJoySkinSlideDownView.1.1(this, parambcra));
   }
 }
 

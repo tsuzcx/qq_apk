@@ -1,22 +1,11 @@
-import UserGrowth.stPostCommentReplyV2Rsp;
-import UserGrowth.stSimpleMetaReply;
-import com.tribe.async.dispatch.Dispatcher;
-
 class uff
-  implements ukd
+  implements tiv
 {
-  uff(ufb paramufb, stSimpleMetaReply paramstSimpleMetaReply) {}
+  uff(ufd paramufd) {}
   
-  public void a(uko paramuko)
+  public void a(String paramString1, String paramString2)
   {
-    if ((paramuko.jdField_a_of_type_JavaLangObject instanceof stPostCommentReplyV2Rsp))
-    {
-      stPostCommentReplyV2Rsp localstPostCommentReplyV2Rsp = (stPostCommentReplyV2Rsp)paramuko.jdField_a_of_type_JavaLangObject;
-      paramuko = this.jdField_a_of_type_Ufb.a(new Object[] { Integer.valueOf(4), Integer.valueOf(paramuko.b), paramuko.jdField_a_of_type_JavaLangString, localstPostCommentReplyV2Rsp, this.jdField_a_of_type_UserGrowthStSimpleMetaReply, this.jdField_a_of_type_UserGrowthStSimpleMetaReply.id, Integer.valueOf(this.jdField_a_of_type_Ufb.hashCode()) });
-      wjj.a().dispatch(paramuko);
-      return;
-    }
-    uqf.d(ufb.a(), "添加回复失败new！");
+    this.a.callJs(paramString1, new String[] { paramString2 });
   }
 }
 

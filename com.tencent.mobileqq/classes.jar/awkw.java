@@ -1,55 +1,26 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.qqcircle.requests.QCircleGetCircleSwitchRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import common.config.service.QzoneConfig;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
 
 public class awkw
-  extends RecyclerView.ViewHolder
+  implements AdapterView.OnItemClickListener
 {
-  FormSwitchItem a;
+  public awkw(GameQuickWordsPanel paramGameQuickWordsPanel) {}
   
-  public awkw(Context paramContext, View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super(paramView);
-    this.a = ((FormSwitchItem)paramView.findViewById(2131369824));
-  }
-  
-  private void a(FormSwitchItem paramFormSwitchItem)
-  {
-    QzoneConfig.getInstance();
-    if (QzoneConfig.isQQCircleShowLebaBySwitchButton()) {
-      paramFormSwitchItem.setChecked(true);
-    }
-    for (;;)
-    {
-      paramFormSwitchItem.setOnCheckedChangeListener(new awkx(this));
-      QCircleGetCircleSwitchRequest localQCircleGetCircleSwitchRequest = new QCircleGetCircleSwitchRequest("qqcircle", "qqcircle_entrance_enable");
-      VSNetworkHelper.a().a(localQCircleGetCircleSwitchRequest, new awkz(this, paramFormSwitchItem));
-      return;
-      paramFormSwitchItem.setChecked(false);
-    }
-  }
-  
-  public void a(awkq paramawkq)
-  {
-    if (!TextUtils.isEmpty(paramawkq.a))
-    {
-      this.a.setText(paramawkq.a);
-      this.a.setVisibility(0);
-      a(this.a);
-    }
-    for (;;)
-    {
-      if (paramawkq.b != 0) {
-        this.a.setLeftIcon(paramawkq.b);
-      }
-      return;
-      this.a.setVisibility(8);
-    }
+    paramAdapterView = (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramView = new acwc();
+    paramView.c = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+    paramView.a = System.currentTimeMillis();
+    acvv.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramAdapterView, null, paramView);
+    this.a.jdField_a_of_type_Ahgc.hideAllPanels();
+    bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "send_default", 0, 0, "", "", "", "");
   }
 }
 

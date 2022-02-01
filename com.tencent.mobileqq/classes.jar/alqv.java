@@ -1,28 +1,8 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
-
-public class alqv
-  extends alqi
+public abstract interface alqv
 {
-  public alqv(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = anzj.a(2131697018);
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
   
-  public Object a(int paramInt, bfoy parambfoy, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramObject instanceof alqv))
-    {
-      paramObject = (alqv)paramObject;
-      paramObject.jdField_a_of_type_Bfoz.a(parambfoy.jdField_a_of_type_Bfoz);
-      return paramObject;
-    }
-    paramObject = new alqv(BaseApplication.getContext());
-    paramObject.jdField_a_of_type_Bfoz = new bfoz(parambfoy.jdField_a_of_type_Bfoz);
-    return paramObject;
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

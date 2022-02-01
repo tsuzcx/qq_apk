@@ -1,20 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import tencent.im.oidb.cmd0x857.TroopTips0x857.RedGrayTipsInfo;
 
-public class bfea
-  implements View.OnTouchListener
+class bfea
 {
-  public bfea(TribeVideoPreviewFragment paramTribeVideoPreviewFragment) {}
+  String jdField_a_of_type_JavaLangString;
+  TroopTips0x857.RedGrayTipsInfo jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$RedGrayTipsInfo;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bfea(bfdz parambfdz, String paramString, TroopTips0x857.RedGrayTipsInfo paramRedGrayTipsInfo)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.getActivity().finish();
-    }
-    return true;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$RedGrayTipsInfo = paramRedGrayTipsInfo;
   }
 }
 

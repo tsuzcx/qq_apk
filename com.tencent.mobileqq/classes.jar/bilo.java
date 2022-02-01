@@ -1,28 +1,25 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import cooperation.liveroom.LiveRoomGiftCallback;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.util.Pair;
 
-class bilo
-  implements MediaPlayer.OnCompletionListener
+public class bilo
+  extends Handler
 {
-  bilo(biln parambiln) {}
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public bilo(biln parambiln, Looper paramLooper)
   {
-    if (biln.a(this.a)) {
-      this.a.a.start();
-    }
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      if (biln.a(this.a) != null) {
-        biln.a(this.a).onCall(7, "");
-      }
+    default: 
       return;
-      biln.a(this.a, false);
-      if (biln.a(this.a) != null) {
-        biln.a(this.a).onCompletion(this.a.a);
-      }
     }
+    paramMessage = (Pair)paramMessage.obj;
+    biln.a(this.a, biln.a(this.a), (byte[])paramMessage.first, ((Integer)paramMessage.second).intValue());
   }
 }
 

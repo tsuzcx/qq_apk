@@ -1,20 +1,42 @@
-import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.RemoteCallbackList;
+import android.os.RemoteException;
 import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-public class lxi
-  implements aoog
+class lxi
+  extends nmf
 {
-  public lxi(QQServiceForAV paramQQServiceForAV) {}
+  lxi(lxh paramlxh, String paramString, int paramInt) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle arg3)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAV", 2, "onDecodeTaskCompleted");
+      QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "sendNearbyVideoChatPbReq, cmd " + this.jdField_a_of_type_JavaLangString + "==>onResult, errorCode:" + paramInt);
     }
-    new lxz(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new lxj(this, paramString, paramBitmap));
+    synchronized (this.jdField_a_of_type_Lxh.a.a)
+    {
+      int j = this.jdField_a_of_type_Lxh.a.a.beginBroadcast();
+      int i = 0;
+      for (;;)
+      {
+        if (i < j) {
+          try
+          {
+            ((lwi)this.jdField_a_of_type_Lxh.a.a.getBroadcastItem(i)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt, paramArrayOfByte);
+            i += 1;
+          }
+          catch (RemoteException paramArrayOfByte)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "callBack RemoteException", paramArrayOfByte);
+            }
+          }
+        }
+      }
+      this.jdField_a_of_type_Lxh.a.a.finishBroadcast();
+      return;
+    }
   }
 }
 

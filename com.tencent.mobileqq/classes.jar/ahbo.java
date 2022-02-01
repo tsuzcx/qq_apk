@@ -1,15 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class ahbo
-  implements DialogInterface.OnClickListener
+public abstract interface ahbo
 {
-  ahbo(ahbn paramahbn) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a();
 }
 
 

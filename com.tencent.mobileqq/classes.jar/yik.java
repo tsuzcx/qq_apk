@@ -1,21 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
-class yik
-  implements ValueAnimator.AnimatorUpdateListener
+public class yik
+  implements DialogInterface.OnClickListener
 {
-  yik(yii paramyii, StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
+  public yik(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.scrollTo((int)(300.0F - f * 300.0F), 0);
-      return;
-    }
-    catch (Exception paramValueAnimator) {}
+    paramDialogInterface.dismiss();
   }
 }
 

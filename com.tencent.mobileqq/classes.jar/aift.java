@@ -1,52 +1,160 @@
-import android.graphics.Color;
-import android.widget.TextView;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.data.KplRoleInfo.WZRYUIinfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aift
-  extends aifp
 {
-  akwu a;
-  
-  public aift(QQAppInterface paramQQAppInterface, aigj paramaigj, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, aghj paramaghj)
+  public static void a(Context paramContext, String paramString)
   {
-    super(paramQQAppInterface, paramaigj, paramQQWalletBaseMsgElem, paramInt, paramaghj);
-    this.jdField_a_of_type_Akwu = ((akwu)paramQQAppInterface.getManager(125));
-    if (a(this.jdField_a_of_type_Akwu.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId)))
-    {
-      this.i = 0;
-      return;
-    }
-    this.i = paramQQWalletBaseMsgElem.effectsId;
+    ProfileActivity.b(paramContext, new ProfileActivity.AllInOne(paramString, 1));
   }
   
-  public boolean b()
+  private static void a(Context paramContext, String paramString, long paramLong, int paramInt1, int paramInt2, Intent paramIntent, KplRoleInfo.WZRYUIinfo paramWZRYUIinfo)
   {
-    boolean bool = super.b();
-    if (bool) {
-      return bool;
+    switch (paramInt1)
+    {
+    default: 
+      if ((paramInt2 != 3007) && (paramInt2 != 3019) && (paramInt2 != 2007) && (paramInt2 != 4007) && (paramInt2 != 2019)) {
+        break label222;
+      }
+      paramString = new ProfileActivity.AllInOne(paramString, 25);
+      paramString.h = 109;
+      if ((paramInt2 != 3007) && (paramInt2 != 2007) && (paramInt2 != 4007)) {
+        break;
+      }
     }
-    this.jdField_a_of_type_Aigj.b.setVisibility(0);
-    this.jdField_a_of_type_Aigj.b.setTextColor(-8947849);
-    this.jdField_a_of_type_Aigj.b.setText(aifu.m);
-    return true;
+    for (paramString.h = 14;; paramString.h = 15) {
+      do
+      {
+        paramWZRYUIinfo = new Bundle();
+        paramWZRYUIinfo.putInt("param_mode", 3);
+        paramWZRYUIinfo.putParcelable("sysInfoExtres", paramIntent);
+        NearbyPeopleProfileActivity.a(paramContext, paramString, paramWZRYUIinfo);
+        return;
+        a(paramContext, paramString, paramLong, paramInt2, paramIntent, paramWZRYUIinfo);
+        return;
+        a(paramContext, paramString, paramLong, paramInt2, paramIntent);
+        return;
+      } while ((paramInt2 != 3019) && (paramInt2 != 2019));
+    }
+    label222:
+    paramString = new ProfileActivity.AllInOne(paramString, 25);
+    paramString.h = 109;
+    paramString.jdField_d_of_type_Int = 1;
+    if (paramInt1 == 6) {
+      paramString.jdField_d_of_type_Int = 0;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("sysInfoExtres", paramIntent);
+    if (paramWZRYUIinfo != null) {
+      paramString.b.putSerializable("param_wzry_data", paramWZRYUIinfo);
+    }
+    ProfileActivity.a(paramContext, paramString, localBundle);
   }
   
-  public void f()
+  private static void a(Context paramContext, String paramString, long paramLong, int paramInt, Intent paramIntent)
   {
-    super.f();
-    try
+    if ((paramInt == 3007) || (paramInt == 3019) || (paramInt == 2007) || (paramInt == 4007) || (paramInt == 2019))
     {
-      this.jdField_a_of_type_Aigj.a.setTextColor(Color.parseColor("#604121"));
-      this.jdField_a_of_type_Aigj.a.setText(alil.a(this.jdField_a_of_type_Aigj.a.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataQQWalletBaseMsgElem.title, 330, this.jdField_a_of_type_Aigj.a.getPaint()));
-      return;
+      paramString = new ProfileActivity.AllInOne(paramString, 25);
+      paramString.h = 109;
+      if ((paramInt == 3007) || (paramInt == 2007) || (paramInt == 4007)) {}
+      for (paramString.h = 14;; paramString.h = 15) {
+        do
+        {
+          localBundle = new Bundle();
+          localBundle.putInt("param_mode", 3);
+          localBundle.putParcelable("sysInfoExtres", paramIntent);
+          NearbyPeopleProfileActivity.a(paramContext, paramString, localBundle);
+          return;
+        } while ((paramInt != 3019) && (paramInt != 2019));
+      }
     }
-    catch (Throwable localThrowable)
+    paramString = new ProfileActivity.AllInOne(paramString, 25);
+    paramString.h = 109;
+    paramString.i = paramInt;
+    paramString.jdField_d_of_type_JavaLangString = String.valueOf(paramLong);
+    paramString.jdField_d_of_type_Int = 1;
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("sysInfoExtres", paramIntent);
+    ProfileActivity.a(paramContext, paramString, localBundle);
+  }
+  
+  private static void a(Context paramContext, String paramString, long paramLong, int paramInt, Intent paramIntent, KplRoleInfo.WZRYUIinfo paramWZRYUIinfo)
+  {
+    if ((paramInt == 3007) || (paramInt == 3019) || (paramInt == 2007) || (paramInt == 2019) || (paramInt == 4007))
     {
-      localThrowable.printStackTrace();
+      paramString = new ProfileActivity.AllInOne(paramString, 28);
+      paramString.h = 109;
+      if ((paramInt == 3007) || (paramInt == 2007) || (paramInt == 4007)) {}
+      for (paramString.h = 14;; paramString.h = 15) {
+        do
+        {
+          paramWZRYUIinfo = new Bundle();
+          paramWZRYUIinfo.putInt("param_mode", 3);
+          paramWZRYUIinfo.putParcelable("sysInfoExtres", paramIntent);
+          NearbyPeopleProfileActivity.a(paramContext, paramString, paramWZRYUIinfo);
+          return;
+        } while ((paramInt != 3019) && (paramInt != 2019));
+      }
     }
+    paramString = new ProfileActivity.AllInOne(paramString, 28);
+    paramString.h = 109;
+    paramString.i = paramInt;
+    paramString.jdField_d_of_type_JavaLangString = String.valueOf(paramLong);
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("sysInfoExtres", paramIntent);
+    if (paramWZRYUIinfo != null) {
+      paramString.b.putSerializable("param_wzry_data", paramWZRYUIinfo);
+    }
+    ProfileActivity.a(paramContext, paramString, localBundle);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, long paramLong, int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    bcef.b(paramQQAppInterface, "CliOper", "", "", "Verify_msg", "Verify_msg_prof", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("SystemMessageHelper", 2, "openProfileCard | sourceId = " + paramInt2);
+    }
+    paramQQAppInterface = (amsw)paramQQAppInterface.getManager(51);
+    if (paramQQAppInterface != null) {}
+    for (boolean bool = paramQQAppInterface.b(paramString);; bool = false)
+    {
+      if (bool)
+      {
+        paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 1);
+        paramQQAppInterface.h = 109;
+        ProfileActivity.b(paramContext, paramQQAppInterface);
+      }
+      for (;;)
+      {
+        return true;
+        Object localObject = null;
+        paramQQAppInterface = localObject;
+        if (paramIntent != null)
+        {
+          paramQQAppInterface = localObject;
+          if (paramIntent.hasExtra("param_wzry_data")) {
+            paramQQAppInterface = (KplRoleInfo.WZRYUIinfo)paramIntent.getSerializableExtra("param_wzry_data");
+          }
+        }
+        a(paramContext, paramString, paramLong, paramInt1, paramInt2, paramIntent, paramQQAppInterface);
+      }
+    }
+  }
+  
+  public static void b(Context paramContext, String paramString)
+  {
+    paramString = new ProfileActivity.AllInOne(paramString, 1);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("key_need_track_back", true);
+    ProfileActivity.a(paramContext, paramString, localBundle);
   }
 }
 

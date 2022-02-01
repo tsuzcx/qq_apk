@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.ar.ScanningData;
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.colornote.anim.MusicDanceDrawable;
 
 public class aplc
-  implements azds
 {
-  public aplc(ScanningSurfaceView paramScanningSurfaceView, ScanningData paramScanningData) {}
+  private int jdField_a_of_type_Int;
+  private int b;
+  private int c;
+  private int d;
   
-  public void a()
+  private aplc(MusicDanceDrawable paramMusicDanceDrawable, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanningSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArScanningData.c);
-    }
-    ScanningSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArScanningData.c);
-    bdll.b(null, "dc00898", "", "", "0X8008351", "0X8008351", 0, 0, "", "", "", "");
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
   }
   
-  public void b()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.a.a();
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

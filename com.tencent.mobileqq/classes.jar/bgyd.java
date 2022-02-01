@@ -1,11 +1,16 @@
-import android.view.animation.Interpolator;
+import java.util.ArrayList;
 
 public class bgyd
-  implements Interpolator
 {
-  public float getInterpolation(float paramFloat)
+  public static int a;
+  public static ArrayList<String> a;
+  public static boolean a;
+  public static boolean b;
+  
+  static
   {
-    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_Int = -1;
   }
 }
 

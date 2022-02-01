@@ -1,10 +1,8 @@
 public abstract interface pln
 {
-  public abstract void a();
+  public abstract void l();
   
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract void m();
 }
 
 

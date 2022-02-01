@@ -1,12 +1,15 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerView;
 
-final class zch
-  implements FilenameFilter
+public class zch
+  implements zbv
 {
-  public boolean accept(File paramFile, String paramString)
+  public zch(RecommendBannerView paramRecommendBannerView) {}
+  
+  public void a(boolean paramBoolean, int paramInt)
   {
-    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp"));
+    if (paramBoolean) {
+      RecommendBannerView.a(this.a, paramInt);
+    }
   }
 }
 

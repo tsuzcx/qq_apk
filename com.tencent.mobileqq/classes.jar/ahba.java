@@ -1,15 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class ahba
-  implements DialogInterface.OnClickListener
 {
-  ahba(ahax paramahax) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    azir.a("0X800B0B0");
-  }
+  private static final ahay a = new ahay(null);
 }
 
 

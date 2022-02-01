@@ -1,33 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
-import com.tencent.superplayer.api.SuperPlayerVideoInfo;
-import java.util.ArrayList;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
 
-public class aidj
-  implements atvt
+class aidj
+  extends aliz
 {
-  public aidj(AIOImageProviderService paramAIOImageProviderService, aufc paramaufc, long paramLong, int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E", new String[] { String.valueOf(paramInt), paramString }, null, null, -1, null);
-    }
-  }
-  
-  public void a(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a != null)
-    {
-      ArrayList localArrayList = paramSuperPlayerVideoInfo.getCookie();
-      Bundle localBundle = new Bundle();
-      localBundle.putString("savepath", paramSuperPlayerVideoInfo.getLocalSavePath());
-      localBundle.putStringArrayList("cookies", localArrayList);
-      localBundle.putString("contextid", this.jdField_a_of_type_Aufc.a());
-      localBundle.putString("fileid", paramSuperPlayerVideoInfo.getFileId());
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Aufc.b(), paramSuperPlayerVideoInfo.getPlayUrls(), null, null, -1, localBundle);
-    }
-  }
+  public TextView a;
+  public MayKnowRecommend a;
+  public TroopLabelLayout a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

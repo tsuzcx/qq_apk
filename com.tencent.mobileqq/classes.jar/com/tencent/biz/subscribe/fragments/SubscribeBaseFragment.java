@@ -2,18 +2,6 @@ package com.tencent.biz.subscribe.fragments;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import aaed;
-import aaek;
-import aagc;
-import aakt;
-import aaku;
-import aakv;
-import aakw;
-import aame;
-import aamm;
-import aapa;
-import abac;
-import abbe;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,52 +15,64 @@ import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aqre;
-import bhrw;
-import bhsr;
-import bmko;
+import apkn;
+import bfys;
+import bkov;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.videostory.config.VSConfigManager;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.io.File;
 import java.util.HashMap;
+import zbb;
+import zbi;
+import zda;
+import zhr;
+import zhs;
+import zht;
+import zhu;
+import zjc;
+import zjk;
+import zlv;
+import zxp;
 
 public abstract class SubscribeBaseFragment
   extends IphoneTitleBarFragment
-  implements aamm
+  implements zjk
 {
   public CertifiedAccountMeta.StFeed a;
-  protected aame a;
-  public aapa a;
   private Handler a;
-  protected aqre a;
+  protected apkn a;
   public ExtraTypeInfo a;
+  protected zjc a;
+  public zlv a;
   public boolean a;
   protected boolean b;
   
   private void a(int paramInt, ExtraTypeInfo paramExtraTypeInfo)
   {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) && (!bhsr.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get()))) {
-      abbe.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "exp_" + aapa.a(paramExtraTypeInfo), paramInt, 0, new String[0]);
+    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) && (!StringUtil.isEmpty(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get()))) {
+      zxp.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_share", "exp_" + zlv.a(paramExtraTypeInfo), paramInt, 0, new String[0]);
     }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Aqre != null) {
+    if (this.jdField_a_of_type_Apkn != null) {
       return;
     }
-    this.jdField_a_of_type_Aqre = new aqre(getActivity(), false, true);
-    this.jdField_a_of_type_Aqre.a(getActivity());
-    this.jdField_a_of_type_Aqre.a(new aaku(this));
-    this.jdField_a_of_type_Aqre.a(new aakv(this));
-    this.jdField_a_of_type_Aqre.a(new aakw(this));
+    this.jdField_a_of_type_Apkn = new apkn(getActivity(), false, true);
+    this.jdField_a_of_type_Apkn.a(getActivity());
+    this.jdField_a_of_type_Apkn.a(new zhs(this));
+    this.jdField_a_of_type_Apkn.a(new zht(this));
+    this.jdField_a_of_type_Apkn.a(new zhu(this));
   }
   
   private void c()
@@ -92,7 +92,7 @@ public abstract class SubscribeBaseFragment
     }
     for (;;)
     {
-      abbe.a(str, abbe.a(0L, System.currentTimeMillis() - l));
+      zxp.a(str, zxp.a(0L, System.currentTimeMillis() - l));
       return;
       str = "subscribe_open_video_detail_page_time";
       continue;
@@ -112,19 +112,19 @@ public abstract class SubscribeBaseFragment
   
   private void e()
   {
-    File localFile = new File(aaek.a());
-    if ((localFile.exists()) || (bhrw.a() == null))
+    File localFile = new File(zbi.a());
+    if ((localFile.exists()) || (bfys.a() == null))
     {
       QLog.i("DownLoadZipFile", 1, "DownLoadZipFile Save file is exist");
       return;
     }
-    aaek.a(localFile, (String)abac.a().a("KEY_SUBSCRIBE_LOADING_VIEW_DOWNLOAD_URL", "https://down.qq.com/video_story/certified_account/certified_account_download_pics.zip"));
+    zbi.a(localFile, (String)VSConfigManager.getInstance().getValue("KEY_SUBSCRIBE_LOADING_VIEW_DOWNLOAD_URL", "https://down.qq.com/video_story/certified_account/certified_account_download_pics.zip"));
   }
   
   private void f()
   {
     QLog.i("SubscribeBaseFragment", 1, "downloadAnimationPic");
-    String[] arrayOfString = aaed.jdField_a_of_type_ArrayOfJavaLangString;
+    String[] arrayOfString = zbb.jdField_a_of_type_ArrayOfJavaLangString;
     int j = arrayOfString.length;
     int i = 0;
     for (;;)
@@ -133,7 +133,7 @@ public abstract class SubscribeBaseFragment
       if (i < j)
       {
         str1 = arrayOfString[i];
-        str2 = (String)aaed.b.get(str1);
+        str2 = (String)zbb.b.get(str1);
         localFile = new File(str2);
         if ((localFile.exists()) && (localFile.isDirectory())) {
           QLog.i("DownLoadZipFile", 1, "DownLoadZipFile " + str2 + " Save file is exist");
@@ -143,9 +143,9 @@ public abstract class SubscribeBaseFragment
       {
         return;
       }
-      String str2 = (String)aaed.jdField_c_of_type_JavaUtilHashMap.get(str1);
-      String str1 = (String)aaed.jdField_a_of_type_JavaUtilHashMap.get(str1);
-      aaek.a(localFile, (String)abac.a().a(str2, str1), aaed.jdField_c_of_type_JavaLangString);
+      String str2 = (String)zbb.jdField_c_of_type_JavaUtilHashMap.get(str1);
+      String str1 = (String)zbb.jdField_a_of_type_JavaUtilHashMap.get(str1);
+      zbi.a(localFile, (String)VSConfigManager.getInstance().getValue(str2, str1), zbb.jdField_c_of_type_JavaLangString);
       i += 1;
     }
   }
@@ -169,7 +169,7 @@ public abstract class SubscribeBaseFragment
   
   protected void a()
   {
-    if (aaek.a()) {
+    if (zbi.a()) {
       d();
     }
     a(this.mContentView);
@@ -177,28 +177,28 @@ public abstract class SubscribeBaseFragment
   
   protected void a(CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public void a(aagc paramaagc)
+  protected abstract void a(View paramView);
+  
+  public void a(zda paramzda)
   {
-    if (paramaagc != null)
+    if (paramzda != null)
     {
-      if ((paramaagc.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null)) {
-        paramaagc.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+      if ((paramzda.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null)) {
+        paramzda.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
       }
-      if ((paramaagc.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null)) {
-        paramaagc.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+      if ((paramzda.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null)) {
+        paramzda.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
       }
-      if (this.jdField_a_of_type_Aapa != null)
+      if (this.jdField_a_of_type_Zlv != null)
       {
-        a(paramaagc.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
-        this.jdField_a_of_type_Aapa.a(paramaagc, this.jdField_a_of_type_Aqre);
+        a(paramzda.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo);
+        this.jdField_a_of_type_Zlv.a(paramzda, this.jdField_a_of_type_Apkn);
       }
-      if ((isNeedMiniMsg()) && (a() != null) && (paramaagc.jdField_a_of_type_Int == 1) && (a().getVisibility() == 0) && (getMiniMsgUser() != null)) {
+      if ((isNeedMiniMsg()) && (a() != null) && (paramzda.jdField_a_of_type_Int == 1) && (a().getVisibility() == 0) && (getMiniMsgUser() != null)) {
         getMiniMsgUser().onClick(a());
       }
     }
   }
-  
-  protected abstract void a(View paramView);
   
   public int[] a(int paramInt1, int paramInt2)
   {
@@ -227,18 +227,18 @@ public abstract class SubscribeBaseFragment
       if (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null) {
         this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = new ExtraTypeInfo();
       }
-      this.jdField_a_of_type_Aapa = new aapa(getActivity(), new aakt(this));
+      this.jdField_a_of_type_Zlv = new zlv(getActivity(), new zhr(this));
       if (getActivity().getIntent().hasExtra("bundle_key_parms_extra"))
       {
         paramLayoutInflater = getActivity().getIntent().getBundleExtra("bundle_key_parms_extra");
-        if (aame.a(paramLayoutInflater))
+        if (zjc.a(paramLayoutInflater))
         {
-          this.jdField_a_of_type_Aame = new aame(paramLayoutInflater, this);
-          if (this.jdField_a_of_type_Aame.a() != null)
+          this.jdField_a_of_type_Zjc = new zjc(paramLayoutInflater, this);
+          if (this.jdField_a_of_type_Zjc.a() != null)
           {
             paramLayoutInflater = new RelativeLayout.LayoutParams(-1, -1);
-            paramLayoutInflater.addRule(3, 2131376731);
-            this.titleRoot.addView(this.jdField_a_of_type_Aame.a(), paramLayoutInflater);
+            paramLayoutInflater.addRule(3, 2131376501);
+            this.titleRoot.addView(this.jdField_a_of_type_Zjc.a(), paramLayoutInflater);
           }
         }
       }
@@ -301,7 +301,7 @@ public abstract class SubscribeBaseFragment
       a(localStFeed);
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
       return;
-      bmko.a(super.getActivity(), paramIntent);
+      bkov.a(super.getActivity(), paramIntent);
       return;
     }
     catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
@@ -316,7 +316,7 @@ public abstract class SubscribeBaseFragment
   public boolean onBackEvent()
   {
     if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) {
-      abbe.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_" + aapa.a(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo), "clk_return", 0, 0, new String[] { "", "" });
+      zxp.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_" + zlv.a(this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo), "clk_return", 0, 0, new String[] { "", "" });
     }
     if ((getActivity() != null) && (getActivity().getIntent() != null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo != null) && (this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.sourceType == 9001))
     {
@@ -329,21 +329,21 @@ public abstract class SubscribeBaseFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Aqre != null) {
-      this.jdField_a_of_type_Aqre.c();
+    if (this.jdField_a_of_type_Apkn != null) {
+      this.jdField_a_of_type_Apkn.c();
     }
     this.b = true;
     a().removeCallbacksAndMessages(null);
-    if (this.jdField_a_of_type_Aapa != null) {
-      this.jdField_a_of_type_Aapa.a();
+    if (this.jdField_a_of_type_Zlv != null) {
+      this.jdField_a_of_type_Zlv.a();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Aqre != null) {
-      this.jdField_a_of_type_Aqre.b();
+    if (this.jdField_a_of_type_Apkn != null) {
+      this.jdField_a_of_type_Apkn.b();
     }
   }
   
@@ -351,8 +351,8 @@ public abstract class SubscribeBaseFragment
   {
     super.onResume();
     b();
-    if (this.jdField_a_of_type_Aqre != null) {
-      this.jdField_a_of_type_Aqre.a();
+    if (this.jdField_a_of_type_Apkn != null) {
+      this.jdField_a_of_type_Apkn.a();
     }
   }
 }

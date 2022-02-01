@@ -1,32 +1,24 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import msf.msgcomm.msg_comm.MsgType0x210;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.tablequery.TableQueryViewer;
 
 public class bctj
-  implements bctr
 {
-  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
+  TextView d;
+  
+  public bctj(TableQueryViewer paramTableQueryViewer, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PCWalletPayDecoder", 2, "<---decodeC2CMsgPkg_MsgType0x210 : subtype 0x66");
-    }
-    long l1 = paramMsg.msg_head.from_uin.get();
-    int i = paramMsg.msg_head.msg_seq.get();
-    long l2 = paramMsg.msg_head.msg_uid.get();
-    int j = paramMsg.msg_head.msg_type.get();
-    bcrw.a(paramMessageHandler, l1, i, l2, j);
-    paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
-    akyb.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramMsgType0x210, l1, i, l2, j);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378146));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(10.0F);
+    this.b = ((TextView)paramView.findViewById(2131378144));
+    this.b.setTextSize(10.0F);
+    this.c = ((TextView)paramView.findViewById(2131378149));
+    this.c.setTextSize(10.0F);
+    this.d = ((TextView)paramView.findViewById(2131378142));
+    this.d.setTextSize(10.0F);
   }
 }
 

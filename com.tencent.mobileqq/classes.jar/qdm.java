@@ -1,104 +1,38 @@
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class qdm
-  implements pyg
+class qdm
+  implements ViewBase.OnClickListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new qdn(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private final ProteusItemView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView;
-  private ppu jdField_a_of_type_Ppu;
-  private boolean jdField_a_of_type_Boolean;
+  qdm(qdf paramqdf, pvc parampvc, ViewBase paramViewBase) {}
   
-  public qdm(ProteusItemView paramProteusItemView)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView = paramProteusItemView;
-    b();
-  }
-  
-  private static float a()
+  public void onClick(ViewBase paramViewBase)
   {
     try
     {
-      float f = Float.valueOf((String)bnrf.a("kandian_daily_wrapper_alpha", "1.0")).floatValue();
-      if ((f >= 0.0F) && (f <= 1.0F)) {
-        return f;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.d("ProteusItemHelper", 1, localException, new Object[] { "" });
-    }
-    return 1.0F;
-  }
-  
-  private boolean a()
-  {
-    return false;
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.a(this);
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    ocd.a(null, "", "0X8009882", "0X8009882", 0, 0, "", "", "", ozs.a().b("jump_src", pbd.b()).a(), false);
-  }
-  
-  public ppu a()
-  {
-    return this.jdField_a_of_type_Ppu;
-  }
-  
-  public void a()
-  {
-    if (a())
-    {
-      if (this.jdField_a_of_type_AndroidViewView == null)
+      if ((this.jdField_a_of_type_Pvc.a().mSocialFeedInfo.jdField_a_of_type_Rfe.a) && (this.jdField_a_of_type_Pvc.a().mSocialFeedInfo.jdField_a_of_type_Rex != null))
       {
-        this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.getContext()).inflate(2131560148, null, false);
-        localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378786);
-        ((TextView)localObject).setTextSize(0, Utils.dp2px(14.0D));
-        ((TextView)localObject).setText(sgr.a(((TextView)localObject).getContext()));
-        f = a();
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130849381);
-        this.jdField_a_of_type_AndroidViewView.getBackground().setAlpha((int)(f * 255.0F));
-        this.jdField_a_of_type_AndroidViewView.setPadding(0, 0, 0, 0);
-        localObject = new RelativeLayout.LayoutParams(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.getWidth(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.getHeight());
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
-        c();
+        String str = this.jdField_a_of_type_Pvc.a().mSocialFeedInfo.jdField_a_of_type_Rex.a.h;
+        paramViewBase = paramViewBase.getNativeView();
+        qdf.a(this.jdField_a_of_type_Qdf, paramViewBase, str);
+        paramViewBase = this.jdField_a_of_type_Pvc.a();
+        if ((paramViewBase != null) && (paramViewBase.isPGCShortContent()))
+        {
+          paramViewBase.clickArea = 11;
+          paramViewBase.clickJumpTarget = qgg.a(str, "-1");
+          pay.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView().getContext(), paramViewBase, (int)paramViewBase.mChannelID);
+        }
       }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    }
-    while (this.jdField_a_of_type_AndroidViewView == null)
-    {
-      Object localObject;
-      float f;
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView.removeView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidViewView = null;
-  }
-  
-  public void a(ppu paramppu)
-  {
-    this.jdField_a_of_type_Ppu = paramppu;
+    catch (NullPointerException paramViewBase)
+    {
+      QLog.e("PgcShortContentProteusItem", 1, paramViewBase.getLocalizedMessage());
+    }
   }
 }
 

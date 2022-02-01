@@ -1,50 +1,51 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.videostory.config.VSConfigManager;
+import org.json.JSONObject;
 
 public class zwp
-  implements ShareActionSheet.OnItemClickListener
 {
-  public zwp(QRDisplayActivity paramQRDisplayActivity) {}
+  private String a = VSConfigManager.MINE_VIDEOSTORY_ENTRANCE_DEFVALUE;
+  private String b = "1";
+  private String c = VSConfigManager.MINE_VIDEOSTORY_CHOUTI_ENTRANCE_DEFVALUE;
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  public static zwp a(String paramString)
   {
-    paramShareActionSheet.dismiss();
-    QLog.d("QRDisplayActivity", 2, " showMyQrCodeActionSheet() click item = " + paramActionSheetItem.action);
-    switch (paramActionSheetItem.action)
-    {
-    default: 
-      return;
-    case 26: 
-      QRDisplayActivity.a(this.a, 6000, antf.z);
-      return;
-    case 72: 
-      QRDisplayActivity.a(this.a, paramActionSheetItem.uinType, paramActionSheetItem.uin);
-      return;
-    case 2: 
-      this.a.i = 0;
-      QRDisplayActivity.a(this.a);
-      return;
-    case 3: 
-      this.a.i = 1;
-      QRDisplayActivity.a(this.a);
-      return;
-    case 9: 
-      this.a.i = 2;
-      QRDisplayActivity.a(this.a);
-      return;
-    case 10: 
-      this.a.i = 3;
-      QRDisplayActivity.a(this.a);
-      return;
-    case 39: 
-      this.a.e();
-      return;
+    if (paramString == null) {
+      return null;
     }
-    this.a.i = 4;
-    QRDisplayActivity.d(this.a);
+    try
+    {
+      zwp localzwp = new zwp();
+      paramString = new JSONObject(paramString);
+      localzwp.a = paramString.optString("mine_videostory_entrance", VSConfigManager.MINE_VIDEOSTORY_ENTRANCE_DEFVALUE);
+      localzwp.b = paramString.optString("enable_click_take_picture", "1");
+      localzwp.c = paramString.optString("mine_videostory_drawer_entrance", VSConfigManager.MINE_VIDEOSTORY_CHOUTI_ENTRANCE_DEFVALUE);
+      return localzwp;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String toString()
+  {
+    return "k = mine_videostory_entrance, value = " + this.a + "\n k = enableClickTakePicture, value = " + this.b + "\n k = mine_videostory_chouti_entrance, value = " + this.c;
   }
 }
 

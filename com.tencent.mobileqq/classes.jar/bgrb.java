@@ -1,39 +1,31 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowRequest;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoRequest;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.os.Handler;
+import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class bgrb
+  extends bgqy
 {
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, nkq paramnkq)
+  public bgrb(VipFunCallPreviewActivity paramVipFunCallPreviewActivity) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramLong <= 0L) {
+    switch (paramInt)
+    {
+    case 1: 
+    case 2: 
+    default: 
       return;
     }
-    mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.4.5,3,4745");
-    localGetPublicAccountDetailInfoRequest.version.set(1);
-    localGetPublicAccountDetailInfoRequest.seqno.set(0);
-    localGetPublicAccountDetailInfoRequest.luin.set(paramLong);
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("uin", paramLong);
-    nkm.a(paramQQAppInterface, paramnkq, localGetPublicAccountDetailInfoRequest.toByteArray(), "PubAccountSvc.get_detail_info", localBundle);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, nkq paramnkq, Bundle paramBundle)
-  {
-    mobileqq_mp.FollowRequest localFollowRequest = new mobileqq_mp.FollowRequest();
-    localFollowRequest.luin.set(paramLong);
-    localFollowRequest.ext.set("0");
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
+    Collections.sort(this.a.jdField_a_of_type_JavaUtilArrayList);
+    this.a.c = this.a.jdField_a_of_type_JavaUtilArrayList.toString();
+    this.a.a(false, 0);
+    this.a.jdField_a_of_type_Boolean = paramBoolean;
+    if (!paramBoolean) {
+      VipFunCallPreviewActivity.a(this.a, (Bundle)paramObject);
     }
-    nkm.a(paramQQAppInterface, paramnkq, localFollowRequest.toByteArray(), "PubAccountSvc.follow", localBundle);
-    ocd.a(paramQQAppInterface, "" + paramLong, 0);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(50);
   }
 }
 

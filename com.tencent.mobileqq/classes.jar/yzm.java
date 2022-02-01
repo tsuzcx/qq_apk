@@ -1,18 +1,12 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public class yzm
-  implements xvt
+class yzm
+  extends RecyclerView.ViewHolder
 {
-  public yzm(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
-  
-  public void a_(xvo paramxvo)
+  public yzm(yzj paramyzj, View paramView)
   {
-    yuk.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
-    LocalVideoSelectActivity.a(this.a).c();
-    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
+    super(paramView);
   }
 }
 

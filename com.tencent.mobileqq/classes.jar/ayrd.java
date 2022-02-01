@@ -1,6 +1,14 @@
+import android.view.View;
+
 public abstract interface ayrd
 {
-  public abstract void a(int paramInt);
+  public abstract void a(View paramView);
+  
+  public abstract void a(View paramView, float paramFloat);
+  
+  public abstract void a(View paramView, float paramFloat1, float paramFloat2);
+  
+  public abstract void b(View paramView);
 }
 
 

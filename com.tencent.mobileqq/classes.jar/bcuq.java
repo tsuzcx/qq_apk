@@ -1,52 +1,67 @@
-import CliLogSvc.strupbuff;
-import android.os.Bundle;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import org.json.JSONObject;
 
 public class bcuq
-  extends abiv
+  extends bcup
 {
-  private static final String[] a = { "CliLogSvc" };
+  private asdv jdField_a_of_type_Asdv = new bcur(this);
+  FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
   
-  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  public bcuq(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
   {
-    paramUniPacket.setServantName("QQService.CliLogSvc.MainServantObj");
-    paramUniPacket.setFuncName("UploadReq");
-    String[] arrayOfString = paramToServiceMsg.extraData.getStringArray("data");
-    strupbuff localstrupbuff = new strupbuff();
-    HashMap localHashMap = new HashMap();
-    ArrayList localArrayList = new ArrayList();
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      localArrayList.add(arrayOfString[i].getBytes());
-      i += 1;
-    }
-    if (paramToServiceMsg.extraData.containsKey("log_key")) {}
-    for (paramToServiceMsg = paramToServiceMsg.extraData.getString("log_key");; paramToServiceMsg = "PLUG_PB")
-    {
-      localHashMap.put(paramToServiceMsg, localArrayList);
-      localstrupbuff.setLogstring(localHashMap);
-      paramUniPacket.put("Data", localstrupbuff);
-      return true;
-    }
+    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
   }
   
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  private boolean a(JSONObject paramJSONObject)
   {
-    if ("CliLogSvc.UploadReq".equals(paramToServiceMsg.getServiceCmd())) {
-      return b(paramToServiceMsg, paramUniPacket);
+    if (paramJSONObject == null) {}
+    while (TextUtils.isEmpty(paramJSONObject.optString("ownertype"))) {
+      return false;
     }
-    return false;
+    return true;
   }
   
-  public String[] a()
+  public void a(QQAppInterface paramQQAppInterface)
   {
-    return a;
+    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
+    {
+      if ((!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString))) {
+        break label247;
+      }
+      MessageRecord localMessageRecord = paramQQAppInterface.getMessageFacade().queryMsgItemByUniseq(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long);
+      if ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForFile))) {
+        break label226;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.j = localMessageRecord.senderuin;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = aszt.a(paramQQAppInterface, (MessageForFile)localMessageRecord);
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.getFileManagerDataCenter().a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int);
+      }
+      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid))) {
+        break label247;
+      }
+      paramQQAppInterface.getFileTransferHandler().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileIdCrc, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend, false, this.jdField_a_of_type_Asdv);
+    }
+    label226:
+    label247:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Bcum.f(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      }
+      this.jdField_a_of_type_Bcum.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.getFileManagerDataCenter().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
+      break;
+    }
   }
 }
 

@@ -1,20 +1,35 @@
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.Constants.PropertiesKey;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
 
-public class ayvy
+class ayvy
+  implements Animator.AnimatorListener
 {
-  public static aoot a(FragmentActivity paramFragmentActivity)
+  ayvy(ayvw paramayvw, View paramView, long paramLong, int paramInt) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    String str = aywr.a();
-    Drawable localDrawable = aoot.a(1, 3);
-    return aoot.a(paramFragmentActivity.app, 1, str, 3, localDrawable, localDrawable, null);
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    ayvw.a = false;
+    if (this.jdField_a_of_type_Long != 0L) {
+      aywa.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    }
   }
   
-  public static String a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return BaseApplicationImpl.getApplication().getProperty(Constants.PropertiesKey.nickName.toString() + aywr.a());
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    ayvw.a = false;
+    if (this.jdField_a_of_type_Long != 0L) {
+      aywa.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    ayvw.a = true;
   }
 }
 

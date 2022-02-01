@@ -1,10 +1,22 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
-public abstract interface yod
+public class yod
 {
-  public abstract Bitmap a(Bitmap paramBitmap);
+  public View a;
+  public View b;
   
-  public abstract String a();
+  public yod(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView.findViewById(2131380520);
+  }
+  
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
+  {
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new yoe(this));
+  }
 }
 
 

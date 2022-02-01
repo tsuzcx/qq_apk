@@ -1,33 +1,32 @@
-import android.text.TextUtils;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneIPCModule;
-import java.util.List;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aitj
-  implements aitl
+public class aitj
+  implements View.OnClickListener
 {
-  aitj(aiti paramaiti) {}
+  public aitj(ImgPreviewAdapter paramImgPreviewAdapter) {}
   
-  public void a(List<aism> paramList, String paramString1, String paramString2, int paramInt, String paramString3)
+  public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(paramString1))
-    {
-      paramString1 = new StringBuilder().append("OnImgUpdated: empty data or text ").append(paramString1).append(" ");
-      if (paramList == null) {}
-      for (paramList = "null";; paramList = Integer.valueOf(paramList.size()))
-      {
-        QLog.i("StickerRecManager", 2, paramList);
-        return;
+    EmoticonFromGroupEntity localEmoticonFromGroupEntity = this.a.a(ImgPreviewAdapter.a(this.a).getCurrentItem());
+    if (localEmoticonFromGroupEntity != null) {
+      if (localEmoticonFromGroupEntity.msg != null) {
+        ImgPreviewAdapter.a(this.a).a(ImgPreviewAdapter.a(this.a), localEmoticonFromGroupEntity.msg, paramView);
       }
     }
-    paramList = QzoneIPCModule.a(paramList);
-    if (paramList == null)
+    for (;;)
     {
-      QLog.i("StickerRecManager", 2, "OnImgUpdated: failed to parse img data");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      QLog.e("ImgPreviewAdapter.msgnull", 1, "img click msg is null.");
+      continue;
+      QLog.e("ImgPreviewAdapter.emonull", 1, "img click emo is null.");
     }
-    QzoneIPCModule.a().a(paramString1, paramList.toString(), paramString2);
   }
 }
 

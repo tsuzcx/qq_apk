@@ -1,38 +1,65 @@
-import com.tencent.biz.qqcircle.fragments.main.QCircleFolderFollowTabFragment;
-import com.tencent.biz.qqcircle.fragments.main.QCircleFolderFollowTabFragment.5;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudCommon.Result;
-import feedcloud.FeedCloudRead.StClearCountRsp;
+import android.os.Handler;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadProgressManager.ProgressStatus.1;
 
 public class vof
-  implements aaav<FeedCloudRead.StClearCountRsp>
 {
-  public vof(QCircleFolderFollowTabFragment.5 param5) {}
+  public int a;
+  private Runnable a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  private boolean b;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StClearCountRsp paramStClearCountRsp)
+  private vof(voe paramvoe)
   {
-    paramString = new StringBuilder();
-    if ((paramBoolean) && (paramLong == 0L))
+    this.jdField_a_of_type_JavaLangRunnable = new StoryVideoUploadProgressManager.ProgressStatus.1(this);
+  }
+  
+  private void c()
+  {
+    switch (this.jdField_a_of_type_Int)
     {
-      paramLong = vtd.b();
-      if (this.a.a > paramLong) {
-        vtd.b(this.a.a);
-      }
-      paramString.append("[sendClearFollowTabRedPointRequest] clear outer red dot success!");
-      if (paramStClearCountRsp != null) {
-        paramString.append(", result.retCode: ").append(paramStClearCountRsp.result.retCode.get()).append(", result.msg: ").append(paramStClearCountRsp.result.msg.get());
-      }
-      paramString.append(", followTabFeedListLastPreRspTimestamp: ").append(this.a.a).append(", followTabFeedListLastRspTimestamp: ").append(paramLong);
-      QLog.d("QCircleEeveeRedPoint_" + QCircleFolderFollowTabFragment.e, 1, new Object[] { paramString });
+    default: 
+    case 0: 
+    case 1: 
+    case 2: 
+    case 3: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            this.jdField_b_of_type_Int = 0;
+            return;
+            this.jdField_b_of_type_Int += 1;
+          } while (this.jdField_b_of_type_Int < 60);
+          this.jdField_b_of_type_Int = 59;
+          return;
+          this.jdField_b_of_type_Int += 1;
+        } while (this.jdField_b_of_type_Int < 95);
+        this.jdField_b_of_type_Int = 94;
+        return;
+        this.jdField_b_of_type_Int += 1;
+      } while (this.jdField_b_of_type_Int < 100);
+      this.jdField_b_of_type_Int = 99;
       return;
     }
-    paramString.append("[sendClearFollowTabRedPointRequest] clear outer red dot error! isSuccess : ").append(paramBoolean).append(", retCode: ").append(paramLong);
-    if (paramStClearCountRsp != null) {
-      paramString.append(", result.retCode: ").append(paramStClearCountRsp.result.retCode.get()).append(", result.msg: ").append(paramStClearCountRsp.result.msg.get());
-    }
-    QLog.e("QCircleEeveeRedPoint_" + QCircleFolderFollowTabFragment.e, 1, new Object[] { paramString });
+    this.jdField_b_of_type_Int = 100;
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    voe.a(this.jdField_a_of_type_Voe).postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
+  }
+  
+  public void b()
+  {
+    this.jdField_b_of_type_Boolean = true;
+    voe.a(this.jdField_a_of_type_Voe).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

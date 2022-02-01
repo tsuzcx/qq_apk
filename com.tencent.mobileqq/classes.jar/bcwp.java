@@ -1,47 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
-public class bcwp
+class bcwp
+  implements DialogInterface.OnClickListener
 {
-  int a;
-  int b;
-  int c;
-  int d;
+  bcwp(bcwn parambcwn) {}
   
-  public static bcwp a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      paramString = new JSONObject(paramString).getJSONArray("showDetail");
-      if (paramString.length() < 0)
-      {
-        JSONObject localJSONObject = paramString.getJSONObject(0);
-        bcwp localbcwp = new bcwp();
-        String str = localJSONObject.optString("name");
-        if ("photo".equals(str))
-        {
-          localbcwp.c = localJSONObject.optInt("showRed", 0);
-          localbcwp.d = localJSONObject.optInt("version", 0);
-          return localbcwp;
-        }
-        paramString = localbcwp;
-        if (!"gif".equals(str)) {
-          return paramString;
-        }
-        localbcwp.a = localJSONObject.optInt("showRed", 0);
-        localbcwp.b = localJSONObject.optInt("version", 0);
-        return localbcwp;
-      }
+    if (this.a.a.b == 1) {
+      bcef.b(TeamWorkAuthorizeSettingFragment.a(this.a.a), "dc00898", "", "", "0x8007CFE", "0x8007CFE", 0, 0, "", "", "", "");
     }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ShortVideoAndHotPicRedDotConfProcessor", 2, "handleGetPtvHotPicConfig Exception :", paramString);
-      }
-      paramString = null;
-    }
-    return paramString;
   }
 }
 

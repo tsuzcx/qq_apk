@@ -1,54 +1,20 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 public class ajws
+  implements bhbx
 {
-  public int a;
-  public long a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public ajws(RedPacketPopFragment paramRedPacketPopFragment, Context paramContext) {}
   
-  public JSONObject a()
+  public void onClick(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    try
-    {
-      localJSONObject = new JSONObject();
-      localJSONException1.printStackTrace();
-    }
-    catch (JSONException localJSONException1)
-    {
-      try
-      {
-        localJSONObject.put("entryID", this.jdField_a_of_type_Int);
-        localJSONObject.put("redDotVersion", this.jdField_b_of_type_Int);
-        localJSONObject.put("showRedDot", this.jdField_a_of_type_Boolean);
-        localJSONObject.put("userCanceled", this.jdField_b_of_type_Boolean);
-        localJSONObject.put("lastCancelTime", this.jdField_a_of_type_Long);
-        return localJSONObject;
-      }
-      catch (JSONException localJSONException2)
-      {
-        JSONObject localJSONObject;
-        break label68;
-      }
-      localJSONException1 = localJSONException1;
-      localJSONObject = null;
-    }
-    label68:
-    return localJSONObject;
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null)
-    {
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("entryID");
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("redDotVersion");
-      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("showRedDot");
-      this.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("userCanceled");
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("lastCancelTime");
-    }
+    paramClickableColorSpanTextView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramClickableColorSpanTextView);
   }
 }
 

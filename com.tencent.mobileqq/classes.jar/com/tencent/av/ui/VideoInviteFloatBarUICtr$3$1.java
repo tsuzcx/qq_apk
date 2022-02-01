@@ -1,19 +1,19 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.app.VideoAppInterface;
-import mlc;
-import mlf;
+import mkl;
+import mko;
 
 public class VideoInviteFloatBarUICtr$3$1
   implements Runnable
 {
-  public VideoInviteFloatBarUICtr$3$1(mlf parammlf, long paramLong) {}
+  public VideoInviteFloatBarUICtr$3$1(mko parammko, long paramLong) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Mlf.a.jdField_a_of_type_Lff.al = true;
-    if (this.jdField_a_of_type_Mlf.a.b == 1) {
-      this.jdField_a_of_type_Mlf.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Mko.a.jdField_a_of_type_Lez.al = true;
+    if (this.jdField_a_of_type_Mko.a.b == 1) {
+      this.jdField_a_of_type_Mko.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Long);
     }
   }
 }

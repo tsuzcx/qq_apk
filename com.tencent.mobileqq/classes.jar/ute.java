@@ -1,68 +1,64 @@
-import UserGrowth.stNewIconStyle;
-import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import android.view.ViewStub;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_UserInfo;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ute
-  extends uej<usv>
+  extends usj<TVK_UserInfo, TVK_PlayerVideoInfo>
 {
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private utf jdField_a_of_type_Utf;
-  private uuy jdField_a_of_type_Uuy;
-  
-  public ute(Context paramContext, uuy paramuuy)
+  public int a(int paramInt)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Uuy = paramuuy;
-  }
-  
-  private stSimpleMetaFeed a()
-  {
-    usv localusv = (usv)a();
-    if ((localusv != null) && ((localusv.a() instanceof stSimpleMetaFeed))) {
-      return (stSimpleMetaFeed)localusv.a();
+    if (paramInt == 101) {
+      return 2;
     }
-    return null;
+    return 103;
   }
   
-  private void b(usv paramusv)
+  public TVK_PlayerVideoInfo a()
   {
-    if ((a() != null) && (a().new_icon != null) && (a().new_icon.tag_type == 0))
-    {
-      if (this.jdField_a_of_type_Utf == null)
-      {
-        this.jdField_a_of_type_Utf = new utf(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Uuy);
-        this.jdField_a_of_type_Utf.a(this.jdField_a_of_type_AndroidViewViewStub);
-      }
-      this.jdField_a_of_type_Utf.a(paramusv);
+    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(a(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, "");
+    localTVK_PlayerVideoInfo.setPreLoad(this.jdField_b_of_type_Boolean);
+    if (this.jdField_a_of_type_Long > 0L) {
+      localTVK_PlayerVideoInfo.setConfigMap("filesize", String.valueOf(this.jdField_a_of_type_Long));
     }
-  }
-  
-  protected void a() {}
-  
-  public void a(usv paramusv)
-  {
-    super.a(paramusv);
-    b(paramusv);
-  }
-  
-  protected int b()
-  {
-    return 2131560035;
-  }
-  
-  protected void b() {}
-  
-  protected void c()
-  {
-    if (this.jdField_a_of_type_Utf != null) {
-      this.jdField_a_of_type_Utf.c();
+    if (this.jdField_b_of_type_Int > 0) {
+      localTVK_PlayerVideoInfo.setConfigMap("duration", String.valueOf(this.jdField_b_of_type_Int / 1000));
     }
+    if (this.c) {
+      localTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
+    }
+    localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", urv.jdField_a_of_type_JavaLangString);
+    if (!this.jdField_a_of_type_Boolean) {
+      localTVK_PlayerVideoInfo.setConfigMap("software_play", "true");
+    }
+    if ((this.d) && (this.jdField_b_of_type_Boolean)) {
+      localTVK_PlayerVideoInfo.setConfigMap("enable_cover_frame", "true");
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("shouq_bus_type", "bus_type_weishi_feeds");
+    localTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
+    return localTVK_PlayerVideoInfo;
   }
   
-  protected void e()
+  public TVK_UserInfo a()
   {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131380704));
+    return new TVK_UserInfo("", "");
+  }
+  
+  public TVK_PlayerVideoInfo b()
+  {
+    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(a(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, "");
+    localTVK_PlayerVideoInfo.setConfigMap("cache_duration", "2");
+    localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", urv.jdField_a_of_type_JavaLangString);
+    if (this.jdField_b_of_type_Int > 0) {
+      localTVK_PlayerVideoInfo.setConfigMap("duration", String.valueOf(this.jdField_b_of_type_Int));
+    }
+    return localTVK_PlayerVideoInfo;
+  }
+  
+  public TVK_UserInfo b()
+  {
+    return new TVK_UserInfo("", "");
   }
 }
 

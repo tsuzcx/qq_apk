@@ -35,6 +35,93 @@ public class EntityManager
     this.mName = paramString;
   }
   
+  private void assignCursorValueByField(Cursor paramCursor, Entity paramEntity, Field paramField, Class paramClass, int paramInt)
+  {
+    boolean bool = true;
+    if (!paramField.isAccessible()) {
+      paramField.setAccessible(true);
+    }
+    if (paramClass == Long.TYPE) {
+      paramField.set(paramEntity, Long.valueOf(paramCursor.getLong(paramInt)));
+    }
+    do
+    {
+      return;
+      if (paramClass == Integer.TYPE)
+      {
+        paramField.set(paramEntity, Integer.valueOf(paramCursor.getInt(paramInt)));
+        return;
+      }
+      if (paramClass == String.class)
+      {
+        paramField.set(paramEntity, paramCursor.getString(paramInt));
+        return;
+      }
+      if (paramClass == Byte.TYPE)
+      {
+        paramField.set(paramEntity, Byte.valueOf((byte)paramCursor.getShort(paramInt)));
+        return;
+      }
+      if (paramClass == [B.class)
+      {
+        paramField.set(paramEntity, paramCursor.getBlob(paramInt));
+        return;
+      }
+      if (paramClass == Short.TYPE)
+      {
+        paramField.set(paramEntity, Short.valueOf(paramCursor.getShort(paramInt)));
+        return;
+      }
+      if (paramClass == Boolean.TYPE)
+      {
+        if (paramCursor.getInt(paramInt) != 0) {}
+        for (;;)
+        {
+          paramField.set(paramEntity, Boolean.valueOf(bool));
+          return;
+          bool = false;
+        }
+      }
+      if (paramClass == Float.TYPE)
+      {
+        paramField.set(paramEntity, Float.valueOf(paramCursor.getFloat(paramInt)));
+        return;
+      }
+    } while (paramClass != Double.TYPE);
+    paramField.set(paramEntity, Double.valueOf(paramCursor.getDouble(paramInt)));
+  }
+  
+  private void assignEntityFieldsValue(Cursor paramCursor, NoColumnErrorHandler paramNoColumnErrorHandler, Entity paramEntity)
+  {
+    List localList = TableBuilder.getValidField(paramEntity);
+    int j = localList.size();
+    int i = 0;
+    if (i < j)
+    {
+      Field localField = (Field)localList.get(i);
+      Class localClass = localField.getType();
+      if (Entity.class.isAssignableFrom(localClass))
+      {
+        localObject = cursor2Entity(localClass, paramCursor);
+        ((Entity)localObject)._status = 1002;
+        localField.set(paramEntity, localObject);
+      }
+      Object localObject = localField.getName();
+      int k = paramCursor.getColumnIndex((String)localObject);
+      if (k != -1) {
+        assignCursorValueByField(paramCursor, paramEntity, localField, localClass, k);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if (paramNoColumnErrorHandler != null) {
+          paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError((String)localObject, localClass));
+        }
+      }
+    }
+  }
+  
   private boolean createTable(String paramString, Entity paramEntity, boolean paramBoolean)
   {
     String str = getCacheKeyFromTableName(paramString);
@@ -80,6 +167,23 @@ public class EntityManager
     return this.mName + "_" + paramString;
   }
   
+  private long getEntityId(Cursor paramCursor)
+  {
+    long l = -1L;
+    try
+    {
+      if (paramCursor.getColumnIndex("_id") >= 0) {
+        l = paramCursor.getLong(paramCursor.getColumnIndex("_id"));
+      }
+      return l;
+    }
+    catch (Exception paramCursor)
+    {
+      QLog.d("EntityManager", 1, paramCursor, new Object[0]);
+    }
+    return -1L;
+  }
+  
   private Cursor queryInner(boolean paramBoolean, String paramString1, String[] paramArrayOfString1, String paramString2, String[] paramArrayOfString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt)
   {
     try
@@ -115,14 +219,14 @@ public class EntityManager
     //   10: aload 7
     //   12: aload 8
     //   14: aload 9
-    //   16: invokevirtual 174	com/tencent/mobileqq/persistence/EntityManager:query	(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   16: invokevirtual 326	com/tencent/mobileqq/persistence/EntityManager:query	(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   19: astore 5
     //   21: aload 5
     //   23: ifnull +122 -> 145
-    //   26: new 176	com/tencent/mobileqq/persistence/CursorOpt
+    //   26: new 328	com/tencent/mobileqq/persistence/CursorOpt
     //   29: dup
     //   30: aload 5
-    //   32: invokespecial 179	com/tencent/mobileqq/persistence/CursorOpt:<init>	(Landroid/database/Cursor;)V
+    //   32: invokespecial 331	com/tencent/mobileqq/persistence/CursorOpt:<init>	(Landroid/database/Cursor;)V
     //   35: astore 4
     //   37: aload 4
     //   39: astore 5
@@ -131,12 +235,12 @@ public class EntityManager
     //   43: aload_2
     //   44: aload 4
     //   46: aload 10
-    //   48: invokevirtual 183	com/tencent/mobileqq/persistence/EntityManager:cursor2List	(Ljava/lang/Class;Ljava/lang/String;Landroid/database/Cursor;Lcom/tencent/mobileqq/persistence/NoColumnErrorHandler;)Ljava/util/List;
+    //   48: invokevirtual 335	com/tencent/mobileqq/persistence/EntityManager:cursor2List	(Ljava/lang/Class;Ljava/lang/String;Landroid/database/Cursor;Lcom/tencent/mobileqq/persistence/NoColumnErrorHandler;)Ljava/util/List;
     //   51: astore_1
     //   52: aload 4
     //   54: ifnull +10 -> 64
     //   57: aload 4
-    //   59: invokeinterface 188 1 0
+    //   59: invokeinterface 338 1 0
     //   64: aload_1
     //   65: areturn
     //   66: astore_2
@@ -144,19 +248,19 @@ public class EntityManager
     //   68: astore_1
     //   69: aload_1
     //   70: astore 5
-    //   72: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   72: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   75: ifeq +16 -> 91
     //   78: aload_1
     //   79: astore 5
     //   81: ldc 18
     //   83: iconst_2
     //   84: aload_2
-    //   85: invokestatic 167	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   88: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   85: invokestatic 319	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   88: invokestatic 322	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   91: aload_1
     //   92: ifnull +51 -> 143
     //   95: aload_1
-    //   96: invokeinterface 188 1 0
+    //   96: invokeinterface 338 1 0
     //   101: aconst_null
     //   102: areturn
     //   103: astore_1
@@ -165,7 +269,7 @@ public class EntityManager
     //   107: aload 5
     //   109: ifnull +10 -> 119
     //   112: aload 5
-    //   114: invokeinterface 188 1 0
+    //   114: invokeinterface 338 1 0
     //   119: aload_1
     //   120: athrow
     //   121: astore_1
@@ -281,134 +385,39 @@ public class EntityManager
     if (paramCursor.isBeforeFirst()) {
       paramCursor.moveToFirst();
     }
-    long l = -1L;
+    long l = getEntityId(paramCursor);
     try
     {
-      if (paramCursor.getColumnIndex("_id") >= 0) {
-        l = paramCursor.getLong(paramCursor.getColumnIndex("_id"));
-      }
-      for (;;)
+      Entity localEntity = (Entity)paramClass.newInstance();
+      paramClass = localEntity;
+      if (localEntity != null)
       {
-        Entity localEntity;
-        int i;
-        Field localField;
-        Class localClass;
-        Object localObject;
-        int k;
-        try
-        {
-          localEntity = (Entity)paramClass.newInstance();
-          paramClass = localEntity;
-          if (localEntity != null)
-          {
-            localEntity._id = l;
-            if (localEntity.entityByCursor(paramCursor)) {
-              break label528;
-            }
-            paramClass = TableBuilder.getValidField(localEntity);
-            int j = paramClass.size();
-            i = 0;
-            if (i >= j) {
-              break label528;
-            }
-            localField = (Field)paramClass.get(i);
-            localClass = localField.getType();
-            if (Entity.class.isAssignableFrom(localClass))
-            {
-              localObject = cursor2Entity(localClass, paramCursor);
-              ((Entity)localObject)._status = 1002;
-              localField.set(localEntity, localObject);
-            }
-            localObject = localField.getName();
-            k = paramCursor.getColumnIndex((String)localObject);
-            if (k == -1) {
-              break label502;
-            }
-            if (!localField.isAccessible()) {
-              localField.setAccessible(true);
-            }
-            if (localClass == Long.TYPE) {
-              localField.set(localEntity, Long.valueOf(paramCursor.getLong(k)));
-            } else if (localClass == Integer.TYPE) {
-              localField.set(localEntity, Integer.valueOf(paramCursor.getInt(k)));
-            }
-          }
+        localEntity._id = l;
+        if (!localEntity.entityByCursor(paramCursor)) {
+          assignEntityFieldsValue(paramCursor, paramNoColumnErrorHandler, localEntity);
         }
-        catch (Exception paramClass)
+        if ((l != -1L) && (paramString != null)) {}
+        for (localEntity._status = 1001;; localEntity._status = 1002)
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("EntityManager", 2, MsfSdkUtils.getStackTraceString(paramClass));
-          }
-          paramClass = null;
-          return paramClass;
-          if (localClass == String.class) {
-            localField.set(localEntity, paramCursor.getString(k));
-          }
+          localEntity.postRead();
+          return localEntity;
         }
-        catch (OutOfMemoryError paramClass)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("EntityManager", 2, MsfSdkUtils.getStackTraceString(paramClass));
-          }
-          return null;
-        }
-        if (localClass == Byte.TYPE)
-        {
-          localField.set(localEntity, Byte.valueOf((byte)paramCursor.getShort(k)));
-        }
-        else if (localClass == [B.class)
-        {
-          localField.set(localEntity, paramCursor.getBlob(k));
-        }
-        else if (localClass == Short.TYPE)
-        {
-          localField.set(localEntity, Short.valueOf(paramCursor.getShort(k)));
-        }
-        else if (localClass == Boolean.TYPE)
-        {
-          if (paramCursor.getInt(k) == 0) {
-            break;
-          }
-          bool = true;
-          localField.set(localEntity, Boolean.valueOf(bool));
-        }
-        else if (localClass == Float.TYPE)
-        {
-          localField.set(localEntity, Float.valueOf(paramCursor.getFloat(k)));
-        }
-        else
-        {
-          label528:
-          if (localClass == Double.TYPE)
-          {
-            localField.set(localEntity, Double.valueOf(paramCursor.getDouble(k)));
-            break label568;
-            label502:
-            if (paramNoColumnErrorHandler != null)
-            {
-              paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError((String)localObject, localClass));
-              break label568;
-              if ((l != -1L) && (paramString != null)) {}
-              for (localEntity._status = 1001;; localEntity._status = 1002)
-              {
-                localEntity.postRead();
-                return localEntity;
-              }
-            }
-          }
-        }
-        label568:
-        i += 1;
       }
+      return paramClass;
     }
-    catch (Exception localException)
+    catch (Exception paramClass)
     {
-      for (;;)
-      {
-        l = -1L;
-        continue;
-        boolean bool = false;
+      if (QLog.isColorLevel()) {
+        QLog.e("EntityManager", 2, MsfSdkUtils.getStackTraceString(paramClass));
       }
+      return null;
+    }
+    catch (OutOfMemoryError paramClass)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("EntityManager", 2, MsfSdkUtils.getStackTraceString(paramClass));
+      }
+      paramClass = null;
     }
   }
   
@@ -928,12 +937,12 @@ public class EntityManager
     //   4: astore 7
     //   6: aload_0
     //   7: getfield 51	com/tencent/mobileqq/persistence/EntityManager:dbHelper	Lcom/tencent/mobileqq/app/SQLiteOpenHelper;
-    //   10: invokevirtual 157	com/tencent/mobileqq/app/SQLiteOpenHelper:getReadableDatabase	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   10: invokevirtual 309	com/tencent/mobileqq/app/SQLiteOpenHelper:getReadableDatabase	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
     //   13: aload_2
     //   14: aload_3
     //   15: aload 4
     //   17: aload 5
-    //   19: invokevirtual 579	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   19: invokevirtual 594	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   22: astore_2
     //   23: aload 7
     //   25: astore_3
@@ -945,7 +954,7 @@ public class EntityManager
     //   33: aload_1
     //   34: aconst_null
     //   35: aload_2
-    //   36: invokevirtual 581	com/tencent/mobileqq/persistence/EntityManager:cursor2List	(Ljava/lang/Class;Ljava/lang/String;Landroid/database/Cursor;)Ljava/util/List;
+    //   36: invokevirtual 596	com/tencent/mobileqq/persistence/EntityManager:cursor2List	(Ljava/lang/Class;Ljava/lang/String;Landroid/database/Cursor;)Ljava/util/List;
     //   39: astore_1
     //   40: aload_1
     //   41: astore_3
@@ -954,7 +963,7 @@ public class EntityManager
     //   44: aload_2
     //   45: ifnull +11 -> 56
     //   48: aload_2
-    //   49: invokeinterface 188 1 0
+    //   49: invokeinterface 338 1 0
     //   54: aload_3
     //   55: astore_1
     //   56: aload_1
@@ -964,21 +973,21 @@ public class EntityManager
     //   60: astore_2
     //   61: aload_2
     //   62: astore_3
-    //   63: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   63: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   66: ifeq +15 -> 81
     //   69: aload_2
     //   70: astore_3
     //   71: ldc 18
     //   73: iconst_2
     //   74: aload_1
-    //   75: invokestatic 167	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   78: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   75: invokestatic 319	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   78: invokestatic 322	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   81: aload 6
     //   83: astore_1
     //   84: aload_2
     //   85: ifnull -29 -> 56
     //   88: aload_2
-    //   89: invokeinterface 188 1 0
+    //   89: invokeinterface 338 1 0
     //   94: aconst_null
     //   95: areturn
     //   96: astore_1
@@ -987,7 +996,7 @@ public class EntityManager
     //   99: aload_3
     //   100: ifnull +9 -> 109
     //   103: aload_3
-    //   104: invokeinterface 188 1 0
+    //   104: invokeinterface 338 1 0
     //   109: aload_1
     //   110: athrow
     //   111: astore_1
@@ -1024,10 +1033,10 @@ public class EntityManager
     //   4: astore 5
     //   6: aload_0
     //   7: getfield 51	com/tencent/mobileqq/persistence/EntityManager:dbHelper	Lcom/tencent/mobileqq/app/SQLiteOpenHelper;
-    //   10: invokevirtual 157	com/tencent/mobileqq/app/SQLiteOpenHelper:getReadableDatabase	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   10: invokevirtual 309	com/tencent/mobileqq/app/SQLiteOpenHelper:getReadableDatabase	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
     //   13: aload_2
     //   14: aload_3
-    //   15: invokevirtual 586	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   15: invokevirtual 601	com/tencent/mobileqq/app/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   18: astore_2
     //   19: aload 5
     //   21: astore_3
@@ -1039,7 +1048,7 @@ public class EntityManager
     //   29: aload_1
     //   30: aconst_null
     //   31: aload_2
-    //   32: invokevirtual 581	com/tencent/mobileqq/persistence/EntityManager:cursor2List	(Ljava/lang/Class;Ljava/lang/String;Landroid/database/Cursor;)Ljava/util/List;
+    //   32: invokevirtual 596	com/tencent/mobileqq/persistence/EntityManager:cursor2List	(Ljava/lang/Class;Ljava/lang/String;Landroid/database/Cursor;)Ljava/util/List;
     //   35: astore_1
     //   36: aload_1
     //   37: astore_3
@@ -1048,7 +1057,7 @@ public class EntityManager
     //   40: aload_2
     //   41: ifnull +11 -> 52
     //   44: aload_2
-    //   45: invokeinterface 188 1 0
+    //   45: invokeinterface 338 1 0
     //   50: aload_3
     //   51: astore_1
     //   52: aload_1
@@ -1058,21 +1067,21 @@ public class EntityManager
     //   56: astore_2
     //   57: aload_2
     //   58: astore_3
-    //   59: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   59: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   62: ifeq +15 -> 77
     //   65: aload_2
     //   66: astore_3
     //   67: ldc 18
     //   69: iconst_2
     //   70: aload_1
-    //   71: invokestatic 167	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   74: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   71: invokestatic 319	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   74: invokestatic 322	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   77: aload 4
     //   79: astore_1
     //   80: aload_2
     //   81: ifnull -29 -> 52
     //   84: aload_2
-    //   85: invokeinterface 188 1 0
+    //   85: invokeinterface 338 1 0
     //   90: aconst_null
     //   91: areturn
     //   92: astore_1
@@ -1080,21 +1089,21 @@ public class EntityManager
     //   94: astore_2
     //   95: aload_2
     //   96: astore_3
-    //   97: invokestatic 117	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   97: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   100: ifeq +15 -> 115
     //   103: aload_2
     //   104: astore_3
     //   105: ldc 18
     //   107: iconst_2
     //   108: aload_1
-    //   109: invokestatic 167	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   112: invokestatic 170	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   109: invokestatic 319	com/tencent/mobileqq/msf/sdk/MsfSdkUtils:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   112: invokestatic 322	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   115: aload 4
     //   117: astore_1
     //   118: aload_2
     //   119: ifnull -67 -> 52
     //   122: aload_2
-    //   123: invokeinterface 188 1 0
+    //   123: invokeinterface 338 1 0
     //   128: aconst_null
     //   129: areturn
     //   130: astore_1
@@ -1103,7 +1112,7 @@ public class EntityManager
     //   133: aload_3
     //   134: ifnull +9 -> 143
     //   137: aload_3
-    //   138: invokeinterface 188 1 0
+    //   138: invokeinterface 338 1 0
     //   143: aload_1
     //   144: athrow
     //   145: astore_1

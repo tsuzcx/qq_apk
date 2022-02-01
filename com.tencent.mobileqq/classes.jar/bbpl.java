@@ -1,21 +1,31 @@
-import android.content.Context;
-import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class bbpl
-  implements aumz
+public class bbpl
+  extends MSFServlet
 {
-  bbpl(bbpk parambbpk, Context paramContext, AIOFileVideoData paramAIOFileVideoData, bbqw parambbqw) {}
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
   
-  public void a()
+  public void onSend(Intent paramIntent, Packet paramPacket) {}
+  
+  public void service(Intent paramIntent)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData != null) && (this.jdField_a_of_type_Bbqw != null))
+    String str = paramIntent.getAction();
+    if ((str != null) && ("gif_ui_show".equals(str)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.g = true;
-      this.jdField_a_of_type_Bbqw.i();
+      int i = paramIntent.getIntExtra("gif_ui_show_bid", 0);
+      long l = paramIntent.getLongExtra("gif_ui_show_seq", 0L);
+      paramIntent = new Bundle();
+      paramIntent.putInt("gif_ui_show_bid", i);
+      paramIntent.putLong("gif_ui_show_seq", l);
+      notifyObserver(null, 0, true, paramIntent, axkx.class);
+      return;
     }
+    super.service(paramIntent);
   }
-  
-  public void b() {}
 }
 
 

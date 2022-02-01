@@ -1,70 +1,19 @@
-import BOSSStrategyCenter.tAdvAppInfo;
-import NS_MOBILE_QBOSS_PROTO.MobileQbossAdvReq;
-import NS_MOBILE_QBOSS_PROTO.MobileQbossAdvRsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.Bitmap;
 
 public class bnfu
-  extends QzoneExternalRequest
 {
-  JceStruct a;
+  public final Bitmap a;
+  public final int c;
   
-  public bnfu(long paramLong, ArrayList<Integer> paramArrayList, boolean paramBoolean)
+  public bnfu(int paramInt, Bitmap paramBitmap)
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.needCompress = false;
-    MobileQbossAdvReq localMobileQbossAdvReq = new MobileQbossAdvReq();
-    localMobileQbossAdvReq.uiUin = paramLong;
-    ArrayList localArrayList = new ArrayList(paramArrayList.size());
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      Integer localInteger = (Integer)paramArrayList.next();
-      tAdvAppInfo localtAdvAppInfo = new tAdvAppInfo();
-      localtAdvAppInfo.app_id = localInteger.intValue();
-      localtAdvAppInfo.i_need_adv_cnt = 5;
-      localArrayList.add(localtAdvAppInfo);
-    }
-    localMobileQbossAdvReq.vecReqApp = localArrayList;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localMobileQbossAdvReq.iPullAsExposeOper = i;
-      localMobileQbossAdvReq.iReqFlag = 1;
-      this.a = localMobileQbossAdvReq;
-      return;
-    }
+    this.c = paramInt;
+    this.a = paramBitmap;
   }
   
-  public static MobileQbossAdvRsp a(byte[] paramArrayOfByte)
+  public String toString()
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    paramArrayOfByte = (MobileQbossAdvRsp)decode(paramArrayOfByte, "get");
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    bnfz.a(paramArrayOfByte);
-    return paramArrayOfByte;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.mobileqboss.get";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "get";
+    return "VideoFragmentInfo{blockIndex=" + this.c + '}';
   }
 }
 

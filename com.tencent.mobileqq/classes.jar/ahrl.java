@@ -1,72 +1,66 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.widget.CircleBubbleImageView;
-import java.net.URL;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.upcoming.UpComingMsgModel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class ahrl
-  extends CircleBubbleImageView
+public abstract class ahrl
 {
-  URLDrawable a;
-  URLDrawable b;
+  protected QQAppInterface a;
   
-  public ahrl(Context paramContext)
+  protected String a(SessionInfo paramSessionInfo, String paramString)
   {
-    super(paramContext);
-    a(true);
-  }
-  
-  public void a(URLDrawable paramURLDrawable)
-  {
-    if (this.a != null) {
-      this.a.setURLDrawableListener(null);
+    if ((paramSessionInfo != null) && (paramSessionInfo.curType != 0) && (1 != paramSessionInfo.curType) && (3000 != paramSessionInfo.curType)) {
+      return paramString;
     }
-    paramURLDrawable.setURLDrawableListener(this);
-    this.a = paramURLDrawable;
-    paramURLDrawable.startDownload();
+    return "";
   }
   
-  public boolean a(String paramString)
+  protected boolean a(List<MessageRecord> paramList)
   {
-    return (this.b == null) || (!this.b.getURL().getPath().equals(paramString));
-  }
-  
-  public void b(URLDrawable paramURLDrawable)
-  {
-    setImageDrawable(paramURLDrawable);
-    if (this.b != paramURLDrawable) {
-      this.b = paramURLDrawable;
-    }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (paramURLDrawable == this.a)
+    boolean bool2;
+    if (paramList != null)
     {
-      b(paramURLDrawable);
-      return;
+      paramList = paramList.iterator();
+      boolean bool1 = true;
+      bool2 = bool1;
+      if (!paramList.hasNext()) {
+        break label46;
+      }
+      if (((MessageRecord)paramList.next()).isSend()) {
+        break label48;
+      }
+      bool1 = false;
     }
-    super.onLoadFialed(paramURLDrawable, paramThrowable);
-  }
-  
-  @TargetApi(11)
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable == this.a) {
-      b(paramURLDrawable);
-    }
-    super.onLoadSuccessed(paramURLDrawable);
-  }
-  
-  public void setImageDrawable(Drawable paramDrawable)
-  {
-    super.setImageDrawable(paramDrawable);
-    if (this.a != null)
+    label46:
+    label48:
+    for (;;)
     {
-      this.a.setURLDrawableListener(null);
-      this.a = null;
+      break;
+      bool2 = true;
+      return bool2;
     }
+  }
+  
+  protected byte[] a(List<MessageRecord> paramList, int paramInt, String paramString1, String paramString2)
+  {
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(Long.valueOf(((MessageRecord)localIterator.next()).uniseq));
+    }
+    int j = 8;
+    int i = j;
+    if (paramList.size() == 1)
+    {
+      i = j;
+      if (paramInt == 1) {
+        i = ahrr.a((MessageRecord)paramList.get(0));
+      }
+    }
+    return new UpComingMsgModel(((MessageRecord)paramList.get(0)).frienduin, paramString2, localArrayList, ((MessageRecord)paramList.get(0)).istroop, paramInt, i, paramString1).toJson().getBytes();
   }
 }
 

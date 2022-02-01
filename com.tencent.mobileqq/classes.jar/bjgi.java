@@ -1,99 +1,94 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import java.util.HashSet;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class bjgi
-  extends Handler
+class bjgi
+  implements bleb
 {
-  private bjgi(bjgf parambjgf) {}
+  private AsyncResult jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void handleMessage(Message paramMessage)
+  public bjgi(bjgg parambjgg, String paramString, AsyncResult paramAsyncResult)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("TVKVideoController", 4, new Object[] { "PlayerStatusHandler msg:", Integer.valueOf(paramMessage.what), " ,arg:", Integer.valueOf(paramMessage.arg1) });
-    }
-    switch (paramMessage.what)
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult = paramAsyncResult;
+  }
+  
+  public HashSet<String> getFilterCmds()
+  {
+    HashSet localHashSet = new HashSet();
+    localHashSet.add("13169");
+    return localHashSet;
+  }
+  
+  public void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject)
+  {
+    paramIntent = null;
+    Object localObject = null;
+    QLog.i("ThirdAppProxyImpl", 1, "onCmdRsp ret=" + paramLong + ",cmd=" + paramString + ",dataJson=" + paramJSONObject);
+    AsyncResult localAsyncResult;
+    if ("13169".equals(paramString))
     {
-    }
-    do
-    {
-      do
+      try
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                if (QLog.isColorLevel()) {
-                  QLog.d("TVKVideoController", 2, new Object[] { "MEDIA_PREPAREING viewW:", Integer.valueOf(bjgf.a(this.a).getWidth()), " ,viewH:", Integer.valueOf(bjgf.a(this.a).getHeight()), " ,videoW:", Integer.valueOf(bjgf.a(this.a)), " ,videoH:", Integer.valueOf(bjgf.b(this.a)) });
-                }
-                if (bjgf.a(this.a) != null)
-                {
-                  bjgf.a(this.a).onSetVideoCover(bjgf.a(this.a));
-                  bjgf.a(this.a).onVideoSize(bjgf.a(this.a), bjgf.b(this.a));
-                }
-                this.a.a(bjgf.a(this.a), bjgf.b(this.a));
-                bjgf.a(this.a, 2);
-                return;
-                if (bjgf.a(this.a).get())
-                {
-                  if (bjgf.a(this.a) != null) {
-                    bjgf.a(this.a).onVideoStart((int)bjgf.a(this.a).c());
-                  }
-                  bjgf.c(this.a);
-                  bjgf.a(this.a).set(false);
-                  return;
-                }
-                bjgf.a(this.a, 3);
-                return;
-              } while (!QLog.isColorLevel());
-              QLog.d("TVKVideoController", 2, "onSeekComplete");
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.d("TVKVideoController", 2, "onPlaybackComplete");
-              }
-              bjgf.a(this.a, true);
-              bjgf.a(this.a, 0);
-              bjgf.a(this.a).removeCallbacks(this.a.a);
-              if (bjgf.a(this.a) != null) {
-                bjgf.a(this.a).e = 0L;
-              }
-              bjgf.d(this.a);
-            } while (bjgf.a(this.a) == null);
-            bjgf.a(this.a).onVideoComplete(true);
-            bjgf.a(this.a).onVideoProgressUpdate(0);
-            return;
-          } while (!QLog.isColorLevel());
-          QLog.d("TVKVideoController", 2, "onVideoSizeChanged");
+        localAsyncResult = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult;
+        if (localAsyncResult == null) {
           return;
-          if (QLog.isColorLevel()) {
-            QLog.d("TVKVideoController", 2, "MEDIA_INSTALL_SUCCESS");
-          }
-        } while ((bjgf.a(this.a) == null) || (bjgf.a(this.a) == null));
-        bjgf.a(this.a, bjgf.a(this.a).a((Context)bjgf.a(this.a).get()));
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("TVKVideoController", 2, "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
         }
-        bjgf.a(this.a, paramMessage.arg1, paramMessage.arg2);
-        return;
-      } while ((bjgf.a(this.a) == null) || (bjgf.c(this.a) == 4));
-      if (paramMessage.arg1 == 929)
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult = null;
+        if (paramLong != 0L)
+        {
+          localAsyncResult.onReceiveResult(false, null);
+          return;
+        }
+      }
+      catch (Throwable paramIntent)
       {
-        bjgf.a(this.a).onVideoBuffering();
+        QLog.e("ThirdAppProxyImpl", 1, "exception. ", paramIntent);
         return;
       }
-    } while (paramMessage.arg1 != 92);
-    bjgf.a(this.a).onVideoStart((int)bjgf.a(this.a).c());
+      paramString = localObject;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramJSONObject = paramJSONObject.getJSONArray("v_appd_down_load_info");
+        if (paramJSONObject == null) {
+          break label186;
+        }
+        paramString = localObject;
+        paramIntent = paramJSONObject.getJSONObject(0);
+      }
+      catch (Throwable paramIntent)
+      {
+        QLog.e("ThirdAppProxyImpl", 1, "exception. ", paramIntent);
+        if (paramString == null) {
+          break label179;
+        }
+      }
+      paramString = paramIntent;
+      localAsyncResult.onReceiveResult(bool, paramIntent);
+      return;
+      boolean bool = true;
+      label162:
+      localAsyncResult.onReceiveResult(bool, paramString);
+      return;
+      label179:
+      label186:
+      do
+      {
+        bool = false;
+        break;
+        bool = false;
+        break label162;
+        return;
+      } while (paramIntent == null);
+      bool = true;
+    }
   }
 }
 

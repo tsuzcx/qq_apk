@@ -1,69 +1,291 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.content.Context;
+import android.support.v4.util.ArrayMap;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.HotVideoBlurTaskManager.1;
+import com.tencent.mobileqq.hotpic.HotVideoData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class auhp
-  implements auey
+public class auhp
 {
-  auhp(auha paramauha) {}
+  static ArrayList<WeakReference<auhp>> a;
+  public static boolean a;
+  public Context a;
+  public ArrayMap<HotVideoData, auhb> a;
+  boolean b = false;
+  
+  static
+  {
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  auhp(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  /* Error */
+  public static auhp a(Context paramContext)
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: iconst_0
+    //   4: invokestatic 37	auhp:a	(Z)V
+    //   7: aload_0
+    //   8: ifnonnull +10 -> 18
+    //   11: aconst_null
+    //   12: astore_0
+    //   13: ldc 2
+    //   15: monitorexit
+    //   16: aload_0
+    //   17: areturn
+    //   18: new 2	auhp
+    //   21: dup
+    //   22: aload_0
+    //   23: invokespecial 39	auhp:<init>	(Landroid/content/Context;)V
+    //   26: astore_1
+    //   27: aload_1
+    //   28: astore_0
+    //   29: getstatic 21	auhp:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   32: invokevirtual 43	java/util/ArrayList:size	()I
+    //   35: iconst_3
+    //   36: if_icmpge -23 -> 13
+    //   39: getstatic 21	auhp:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   42: new 45	java/lang/ref/WeakReference
+    //   45: dup
+    //   46: aload_1
+    //   47: invokespecial 48	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   50: invokevirtual 52	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   53: pop
+    //   54: aload_1
+    //   55: astore_0
+    //   56: goto -43 -> 13
+    //   59: astore_0
+    //   60: ldc 2
+    //   62: monitorexit
+    //   63: aload_0
+    //   64: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	65	0	paramContext	Context
+    //   26	29	1	localauhp	auhp
+    // Exception table:
+    //   from	to	target	type
+    //   3	7	59	finally
+    //   18	27	59	finally
+    //   29	54	59	finally
+  }
+  
+  public static void a(auhp paramauhp)
+  {
+    for (;;)
+    {
+      try
+      {
+        a(false);
+        if (paramauhp == null) {
+          return;
+        }
+        if (jdField_a_of_type_JavaUtilArrayList.size() < 3)
+        {
+          Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+          int i;
+          if (localIterator.hasNext())
+          {
+            Object localObject = (WeakReference)localIterator.next();
+            if (localObject != null)
+            {
+              localObject = (auhp)((WeakReference)localObject).get();
+              if ((localObject != null) && (paramauhp.equals(localObject)))
+              {
+                i = 1;
+                if (i == 0) {
+                  jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramauhp));
+                }
+              }
+            }
+          }
+          else
+          {
+            i = 0;
+          }
+        }
+      }
+      finally {}
+    }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    for (;;)
+    {
+      WeakReference localWeakReference;
+      try
+      {
+        ArrayList localArrayList = new ArrayList();
+        Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localWeakReference = (WeakReference)localIterator.next();
+        if (localWeakReference == null)
+        {
+          localArrayList.add(localWeakReference);
+          continue;
+        }
+        localauhp = (auhp)localWeakReference.get();
+      }
+      finally {}
+      auhp localauhp;
+      if (localauhp == null) {
+        localObject.add(localWeakReference);
+      } else if ((paramBoolean) && (!localauhp.b)) {
+        localauhp.a();
+      }
+    }
+  }
+  
+  public static void b()
+  {
+    jdField_a_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("HotVideoBlurTaskManager", 2, "pauseAllBlurTask HotVideoBlurTaskLock is:" + jdField_a_of_type_Boolean);
+    }
+  }
+  
+  /* Error */
+  public static void b(auhp paramauhp)
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: iconst_0
+    //   4: invokestatic 37	auhp:a	(Z)V
+    //   7: aload_0
+    //   8: ifnonnull +7 -> 15
+    //   11: ldc 2
+    //   13: monitorexit
+    //   14: return
+    //   15: getstatic 21	auhp:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   18: invokevirtual 57	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   21: astore_1
+    //   22: aload_1
+    //   23: invokeinterface 63 1 0
+    //   28: ifeq -17 -> 11
+    //   31: aload_1
+    //   32: invokeinterface 67 1 0
+    //   37: checkcast 45	java/lang/ref/WeakReference
+    //   40: astore_2
+    //   41: aload_2
+    //   42: ifnull -20 -> 22
+    //   45: aload_2
+    //   46: invokevirtual 70	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   49: checkcast 2	auhp
+    //   52: astore_3
+    //   53: aload_3
+    //   54: ifnull -32 -> 22
+    //   57: aload_0
+    //   58: aload_3
+    //   59: invokevirtual 73	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   62: ifeq -40 -> 22
+    //   65: getstatic 21	auhp:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   68: aload_2
+    //   69: invokevirtual 107	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
+    //   72: pop
+    //   73: goto -62 -> 11
+    //   76: astore_0
+    //   77: ldc 2
+    //   79: monitorexit
+    //   80: aload_0
+    //   81: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	82	0	paramauhp	auhp
+    //   21	11	1	localIterator	Iterator
+    //   40	29	2	localWeakReference	WeakReference
+    //   52	7	3	localauhp	auhp
+    // Exception table:
+    //   from	to	target	type
+    //   3	7	76	finally
+    //   15	22	76	finally
+    //   22	41	76	finally
+    //   45	53	76	finally
+    //   57	73	76	finally
+  }
+  
+  public static void c()
+  {
+    jdField_a_of_type_Boolean = false;
+    a(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("HotVideoBlurTaskManager", 2, "resmueAllBlurTask HotVideoBlurTaskLock is:" + jdField_a_of_type_Boolean + " TaskManagerList size is " + jdField_a_of_type_JavaUtilArrayList.size());
+    }
+  }
   
   public void a()
   {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Auei.a();
-    bftf localbftf = this.a.a(localFileManagerEntity);
-    if ((TextUtils.isEmpty(auha.a(this.a))) && (localbftf.a != null)) {
-      auha.a(this.a, localbftf.a.toString());
+    if (QLog.isColorLevel()) {
+      QLog.d("HotVideoBlurTaskManager", 2, "tryStartBlurTask HotVideoBlurTaskLock is:" + jdField_a_of_type_Boolean);
     }
-    bfsf localbfsf = new bfsf(localFileManagerEntity.TroopUin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity);
-    if ((localbftf.b == 10) || (localbftf.b == 9)) {
-      if (localbftf.a != null)
-      {
-        localbfsf.b(localbftf.a);
-        localFileManagerEntity.status = 2;
-      }
-    }
-    do
+    if ((this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.size() == 0) || (jdField_a_of_type_Boolean))
     {
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.i("TroopFileModel<FileAssistant>", 2, "TroopFileModel doStartDownload : resumeDownload error, infoId is null");
+      this.b = false;
       return;
-      if (localbftf.b == 7)
-      {
-        if (localFileManagerEntity.isZipInnerFile) {
-          localbfsf.a(localFileManagerEntity);
-        }
-        for (;;)
-        {
-          localFileManagerEntity.status = 2;
-          return;
-          localbfsf.a(localFileManagerEntity.strTroopFilePath, localbftf.g, localbftf.c, localbftf.h);
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopFileModel<FileAssistant>", 2, "TroopFileModel doStartDownload : can not handle file info status,download error");
+    }
+    this.b = true;
+    ThreadManager.post(new HotVideoBlurTaskManager.1(this), 5, null, true);
   }
   
-  public void b()
+  public void a(auhb paramauhb, HotVideoData paramHotVideoData)
   {
-    Object localObject = this.a.jdField_a_of_type_Auei.a();
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).TroopUin);
-    localObject = this.a.a((FileManagerEntity)localObject);
-    if ((TextUtils.isEmpty(auha.a(this.a))) && (((bftf)localObject).a != null)) {
-      auha.a(this.a, ((bftf)localObject).a.toString());
+    if ((paramauhb == null) || (paramHotVideoData == null)) {
+      return;
     }
-    if (!TextUtils.isEmpty(auha.a(this.a)))
+    for (;;)
     {
-      localTroopFileTransferManager.d(UUID.fromString(auha.a(this.a)));
-      if (auoo.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-        this.a.a("0x8009D61", null);
+      try
+      {
+        if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.containsKey(paramHotVideoData))
+        {
+          int i = this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.indexOfKey(paramHotVideoData);
+          this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.setValueAt(i, paramauhb);
+          if (QLog.isColorLevel()) {
+            QLog.d("HotVideoBlurTaskManager", 2, "addBlurTask HotVideoData.Name is:" + paramHotVideoData.name + " mBlurTasks size is " + this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.size());
+          }
+          if (this.b) {
+            break;
+          }
+          a();
+          break;
+        }
       }
+      finally {}
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(paramHotVideoData, paramauhb);
     }
-    auha.a(this.a, (bftf)localObject);
+  }
+  
+  public void a(HotVideoData paramHotVideoData)
+  {
+    if (paramHotVideoData == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.containsKey(paramHotVideoData)) {
+          this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.remove(paramHotVideoData);
+        }
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("HotVideoBlurTaskManager", 2, "removeTaskByData HotVideoData.Name is:" + paramHotVideoData.name + " mBlurTasks size is " + this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.size());
+      }
+      finally {}
+    }
   }
 }
 

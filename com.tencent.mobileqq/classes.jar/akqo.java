@@ -1,93 +1,64 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory.Options;
-import android.os.AsyncTask;
-import android.os.Handler;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.PortraitImageview;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
-import com.tencent.mobileqq.activity.photo.RegionView;
-import com.tencent.mobileqq.widget.QQToast;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import android.os.Build;
+import android.text.TextUtils;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
 
 public class akqo
-  extends AsyncTask<Void, Void, Bitmap>
+  implements MediaPlayer.OnErrorListener
 {
-  private int jdField_a_of_type_Int;
+  public akqo(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  private akqo(PhotoCropActivity paramPhotoCropActivity) {}
-  
-  protected Bitmap a(Void... paramVarArgs)
+  private String[] a()
   {
-    try
-    {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_Boolean) {}
-      for (paramVarArgs = Bitmap.Config.ARGB_8888;; paramVarArgs = Bitmap.Config.RGB_565)
-      {
-        localOptions.inPreferredConfig = paramVarArgs;
-        localOptions.inJustDecodeBounds = true;
-        bhmq.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_JavaLangString, localOptions);
-        localOptions.inSampleSize = aksj.a(localOptions, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.g, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.g);
-        localOptions.inJustDecodeBounds = false;
-        paramVarArgs = bhmq.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_JavaLangString, localOptions);
-        return new bezd(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_JavaLangString).a(paramVarArgs);
-      }
+    String str = QzoneConfig.getInstance().getConfig("VideoEdit", "VideoLoadErrorReturnCode");
+    if (str == null) {
       return null;
     }
-    catch (OutOfMemoryError paramVarArgs)
-    {
-      this.jdField_a_of_type_Int = 1;
-      return null;
-    }
-    catch (Exception paramVarArgs)
-    {
-      this.jdField_a_of_type_Int = 2;
-      QLog.d("PhotoCropActivity", 1, "LoadBitmapTask err " + paramVarArgs);
-    }
+    return str.split(",");
   }
   
-  protected void a(Bitmap paramBitmap)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (paramBitmap != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setRestrict(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.d);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setImageBitmap(paramBitmap);
-      paramBitmap = new ViewGroup.LayoutParams(-1, -1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView = new RegionView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.e, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.f, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.h, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview, paramBitmap);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView, paramBitmap);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 250L);
-      }
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.getIntent().getBooleanExtra("open_chat_from_avator", false))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setRestrict(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.d);
-      paramBitmap = new ViewGroup.LayoutParams(-1, -1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView = new RegionView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.e, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.f, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.h, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview, paramBitmap);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView, paramBitmap);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      return;
-    }
-    if (this.jdField_a_of_type_Int == 1) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, anzj.a(2131706942), 0).a();
-    }
+    QLog.e("EditLocalVideoActivity", 2, "VideoView onError, what:" + paramInt1 + ", extra:" + paramInt2);
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.finish();
-      return;
-      if (this.jdField_a_of_type_Int == 2) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, anzj.a(2131706943), 0).a();
-      } else {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, anzj.a(2131706941), 0).a();
+      try
+      {
+        Toast.makeText(this.a.getApplicationContext(), amtj.a(2131702778), 1).show();
+        paramMediaPlayer = a();
+        if (paramMediaPlayer == null)
+        {
+          EditLocalVideoActivity.a(this.a, "play_local_video", "play_local_video_success", "4", "what: " + paramInt1 + ",   extra: " + paramInt2 + ",   " + Build.MODEL);
+          this.a.setResult(0);
+          return true;
+        }
+        int k = paramMediaPlayer.length;
+        int i = 0;
+        int j = 1;
+        if (i < k)
+        {
+          if (TextUtils.equals(paramMediaPlayer[i], paramInt1 + "-" + paramInt2)) {
+            j = 0;
+          }
+        }
+        else
+        {
+          if (j == 0) {
+            continue;
+          }
+          EditLocalVideoActivity.a(this.a, "play_local_video", "play_local_video_success", "4", "what: " + paramInt1 + ",   extra: " + paramInt2 + ",   " + Build.MODEL);
+          continue;
+        }
+        i += 1;
+      }
+      catch (Exception paramMediaPlayer)
+      {
+        QLog.e("EditLocalVideoActivity", 2, "VideoView onError", paramMediaPlayer);
+        return true;
       }
     }
   }

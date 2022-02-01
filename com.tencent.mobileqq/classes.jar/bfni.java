@@ -1,13 +1,8 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
 
-public class bfni
-  extends amof
+public abstract interface bfni
 {
-  public CheckBox a;
-  public Object a;
-  public TextView d;
-  public TextView e;
+  public abstract void a(int paramInt, UpgradeDetailWrapper paramUpgradeDetailWrapper, bfng parambfng);
 }
 
 

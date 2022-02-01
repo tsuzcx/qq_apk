@@ -1,38 +1,31 @@
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.5.1;
+import java.util.Map;
+import java.util.UUID;
 
 public class bfbo
-  extends bfbw
+  extends zsb
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<bewy> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public boolean c = false;
+  public bfbo(TroopFileTransferManager paramTroopFileTransferManager) {}
   
-  public bfbo()
+  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = 0L;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append(" fileID:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" isExist:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" blockSize:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" netChg:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
-    return localStringBuilder.toString();
+    if (!paramBoolean) {}
+    do
+    {
+      do
+      {
+        return;
+        paramString = paramBundle.getString("itemKey");
+      } while (paramString == null);
+      paramString = UUID.fromString(paramString);
+      paramBundle = paramBundle.getString("fileId");
+      paramString = (bebc)this.a.a().b.get(paramString);
+    } while ((paramString == null) || (paramInt1 != 0));
+    zrj.a(this.a.a, this.a.e, paramString.a, paramString.b, TroopFileTransferManager.a(this.a));
+    ThreadManager.executeOnSubThread(new TroopFileTransferManager.5.1(this, paramBundle, paramString));
   }
 }
 

@@ -20,19 +20,19 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.immersive.SystemBarCompact;
-import xkw;
-import xky;
-import xkz;
-import xla;
-import xli;
+import wmh;
+import wmj;
+import wmk;
+import wml;
+import wmt;
 
 public class StoryPlayerFragment
   extends ReportV4Fragment
-  implements xli
+  implements wmt
 {
   private int jdField_a_of_type_Int;
   public AnimationParam a;
-  protected xla a;
+  protected wml a;
   private boolean jdField_a_of_type_Boolean;
   
   @NonNull
@@ -55,20 +55,20 @@ public class StoryPlayerFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.jdField_a_of_type_Xla.a(paramBundle, getArguments());
+    this.jdField_a_of_type_Wml.a(paramBundle, getArguments());
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.jdField_a_of_type_Xla.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Wml.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_Xla = new xla();
-    this.jdField_a_of_type_Xla.a(this);
+    this.jdField_a_of_type_Wml = new wml();
+    this.jdField_a_of_type_Wml.a(this);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -79,7 +79,7 @@ public class StoryPlayerFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561809, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561687, paramViewGroup, false);
     paramViewGroup = getActivity();
     this.jdField_a_of_type_Int = paramViewGroup.getWindow().getAttributes().flags;
     if ((this.jdField_a_of_type_Int & 0x400) != 1024) {
@@ -93,9 +93,9 @@ public class StoryPlayerFragment
       }
     }
     if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam != null) {
-      paramLayoutInflater.getViewTreeObserver().addOnPreDrawListener(new xkw(this, paramLayoutInflater));
+      paramLayoutInflater.getViewTreeObserver().addOnPreDrawListener(new wmh(this, paramLayoutInflater));
     }
-    paramLayoutInflater.setOnTouchListener(new xky(this));
+    paramLayoutInflater.setOnTouchListener(new wmj(this));
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -103,7 +103,7 @@ public class StoryPlayerFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Xla.g();
+    this.jdField_a_of_type_Wml.g();
   }
   
   public void onDestroyView()
@@ -124,33 +124,33 @@ public class StoryPlayerFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Xla.e();
+    this.jdField_a_of_type_Wml.e();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Xla.d();
+    this.jdField_a_of_type_Wml.d();
   }
   
   public void onStart()
   {
     super.onStart();
-    this.jdField_a_of_type_Xla.c();
+    this.jdField_a_of_type_Wml.c();
     getView().setFocusableInTouchMode(true);
     getView().requestFocus();
-    getView().setOnKeyListener(new xkz(this));
+    getView().setOnKeyListener(new wmk(this));
   }
   
   public void onStop()
   {
     super.onStop();
-    this.jdField_a_of_type_Xla.f();
+    this.jdField_a_of_type_Wml.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerFragment
  * JD-Core Version:    0.7.0.1
  */

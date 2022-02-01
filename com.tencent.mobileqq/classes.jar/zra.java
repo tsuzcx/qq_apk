@@ -1,43 +1,22 @@
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils.EllipsizeCallback;
+import android.widget.TextView;
+import com.tencent.biz.troop.file.MoveFileActivity;
 
 public class zra
-  implements zqq
+  implements TextUtils.EllipsizeCallback
 {
-  public long a;
-  public zqq a;
+  public zra(MoveFileActivity paramMoveFileActivity, TextView paramTextView) {}
   
-  public zra(zqq paramzqq)
+  public void ellipsized(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Zqq = paramzqq;
-  }
-  
-  public void onFailure(String paramString)
-  {
-    if (this.jdField_a_of_type_Zqq != null) {
-      this.jdField_a_of_type_Zqq.onFailure(paramString);
+    if (paramInt1 == paramInt2)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity));
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, "play_video hflip video Error:" + paramString);
-    }
-  }
-  
-  public void onFinish(boolean paramBoolean) {}
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
-  {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    paramString = String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
-    yup.a("play_video", "down_watermark_hfliptime", 0, 0, new String[] { paramString });
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "play_video down_watermark_hfliptime:" + paramString);
-    }
+    String str1 = MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).substring(0, paramInt1);
+    String str2 = MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).substring(paramInt2, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).length());
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + "..." + str2);
   }
 }
 

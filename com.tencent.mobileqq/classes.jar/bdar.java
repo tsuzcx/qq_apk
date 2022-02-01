@@ -1,18 +1,15 @@
+import android.os.IInterface;
+
 public abstract interface bdar
+  extends IInterface
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2, int paramInt3);
+  public abstract void beginSwitch();
   
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
+  public abstract void doSwitch(String paramString1, String paramString2);
   
-  public abstract void a(String paramString, int paramInt, long paramLong);
+  public abstract void onProgress(long paramLong1, long paramLong2);
   
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void c();
+  public abstract void postSwitch(int paramInt);
 }
 
 

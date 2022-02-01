@@ -1,12 +1,4 @@
-public abstract interface biel
-{
-  public abstract void a();
-  
-  public abstract void a(biem parambiem);
-  
-  public abstract void b();
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     biel

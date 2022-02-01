@@ -1,13 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public class amix
-  implements DialogInterface.OnClickListener
+class amix
+  implements Comparator<ApolloActionData>
 {
-  public amix(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  amix(amir paramamir) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  {
+    if (paramApolloActionData2.version == paramApolloActionData1.version) {
+      return 0;
+    }
+    if (paramApolloActionData2.version > paramApolloActionData1.version) {
+      return 1;
+    }
+    return -1;
+  }
 }
 
 

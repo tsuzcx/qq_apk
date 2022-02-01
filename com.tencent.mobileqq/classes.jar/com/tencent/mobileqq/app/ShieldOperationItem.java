@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app;
 
+import anay;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aohj;
 
 public class ShieldOperationItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<ShieldOperationItem> CREATOR = new aohj();
+  public static final Parcelable.Creator<ShieldOperationItem> CREATOR = new anay();
   public int a;
   public long[] a;
   public int b;

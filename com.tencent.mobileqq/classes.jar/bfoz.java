@@ -1,166 +1,39 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.RectF;
+import android.graphics.Shader.TileMode;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bfoz
+final class bfoz
+  implements DownloadParams.DecodeHandler
 {
-  public int a;
-  public long a;
-  public long b;
-  
-  public bfoz()
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    a();
-  }
-  
-  public bfoz(bfoz parambfoz)
-  {
-    a(parambfoz);
-  }
-  
-  public static boolean a(int paramInt1, long paramLong1, int paramInt2, long paramLong2)
-  {
-    return (paramLong2 != -1L) && ((paramLong1 == -1L) || ((paramInt1 == paramInt2) && (paramLong1 > paramLong2)) || ((paramInt1 != paramInt2) && (bfoy.a(paramInt2, paramInt1))));
-  }
-  
-  public String a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("biz_type", this.jdField_a_of_type_Int);
-      localJSONObject.put("shmsgseq", this.jdField_a_of_type_Long);
-      localJSONObject.put("uniseq", this.b);
-      return localJSONObject.toString();
+    if (paramBitmap == null) {
+      return null;
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = -1L;
-    this.b = -1L;
-  }
-  
-  public void a(int paramInt, long paramLong)
-  {
-    if ((this.jdField_a_of_type_Int == paramInt) && (this.jdField_a_of_type_Long != -1L))
-    {
-      this.b = paramLong;
-      if (QLog.isColorLevel()) {
-        QLog.d("Navigate.MessageNavInfo", 2, "updateMsgSeq, preBizType = " + this.jdField_a_of_type_Int + ", newBizType = " + paramInt + ", msgSeq = " + paramLong);
-      }
-    }
-  }
-  
-  public void a(bfoz parambfoz)
-  {
-    if (parambfoz != null)
-    {
-      this.jdField_a_of_type_Int = parambfoz.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Long = parambfoz.jdField_a_of_type_Long;
-      this.b = parambfoz.b;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Int = paramString.optInt("biz_type");
-      this.jdField_a_of_type_Long = paramString.getLong("shmsgseq");
-      this.b = paramString.getLong("uniseq");
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Long != -1L;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return this.jdField_a_of_type_Int == paramInt;
-  }
-  
-  public boolean a(int paramInt, long paramLong)
-  {
-    return a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, paramInt, paramLong);
-  }
-  
-  public boolean a(int paramInt, long paramLong1, long paramLong2)
-  {
-    boolean bool = a(paramInt, paramLong1);
-    if (QLog.isColorLevel()) {
-      QLog.d("Navigate.MessageNavInfo", 2, "update, preBizType = " + this.jdField_a_of_type_Int + ", newBizType = " + paramInt + ", needUpdate = " + bool + ", shmsgseq = " + paramLong1 + ", uniseq = " + paramLong2);
-    }
-    if (bool)
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_Long = paramLong1;
-      this.b = paramLong2;
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(bfoz parambfoz)
-  {
-    if (parambfoz == null) {
-      return false;
-    }
-    return a(parambfoz.jdField_a_of_type_Int, parambfoz.jdField_a_of_type_Long, parambfoz.b);
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString, long paramLong1, long paramLong2)
-  {
-    int j = 27;
-    int i = j;
-    if (paramQQAppInterface != null)
-    {
-      i = j;
-      if (paramBoolean)
-      {
-        paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(52)).c(paramString);
-        i = j;
-        if (paramQQAppInterface != null)
-        {
-          i = j;
-          if (paramQQAppInterface.hasOrgs()) {
-            i = 14;
-          }
-        }
-      }
-    }
-    return a(i, paramLong1, paramLong2);
-  }
-  
-  public void b(int paramInt, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Navigate.MessageNavInfo", 2, "updateShMsgSeq, preBizType = " + this.jdField_a_of_type_Int + ", newBizType = " + paramInt + ", newShMsgSeq = " + paramLong);
-    }
-    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != paramInt)) {
-      return;
-    }
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    paramDownloadParams = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+    RectF localRectF = new RectF(0.0F, 0.0F, i, j);
+    Canvas localCanvas = new Canvas(paramDownloadParams);
+    BitmapShader localBitmapShader = new BitmapShader(paramBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+    Paint localPaint = new Paint();
+    localPaint.setStyle(Paint.Style.FILL);
+    localPaint.setAntiAlias(true);
+    localPaint.setShader(localBitmapShader);
+    localCanvas.drawRoundRect(localRectF, 12.0F, 12.0F, localPaint);
+    localPaint.setShader(new LinearGradient(0.0F, 0.0F, 0.0F, j / 2, Color.parseColor("#80000000"), Color.parseColor("#00000000"), Shader.TileMode.CLAMP));
+    localCanvas.drawRoundRect(localRectF, 12.0F, 12.0F, localPaint);
+    paramBitmap.recycle();
+    return paramDownloadParams;
   }
 }
 

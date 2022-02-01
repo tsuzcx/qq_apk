@@ -1,42 +1,19 @@
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.observer.AccountObserver;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 class akse
-  extends AccountObserver
+  implements Handler.Callback
 {
-  akse(aksb paramaksb) {}
+  akse(aksd paramaksd) {}
   
-  public void onUpdateSKey(String paramString1, String paramString2)
+  public boolean handleMessage(Message paramMessage)
   {
-    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    if (paramString1 == null)
-    {
-      for (;;)
-      {
-        int j = i - 1;
-        if (i <= 0) {
-          break;
-        }
-        paramString1 = aksb.a(this.a, ((TroopClipPic)this.a.jdField_a_of_type_JavaUtilArrayList.get(j)).ts);
-        if (paramString1 == null)
-        {
-          i = j;
-        }
-        else
-        {
-          this.a.jdField_a_of_type_JavaUtilList.remove(paramString1);
-          this.a.b(paramString1);
-          i = j;
-        }
-      }
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("LBSDetetor", 2, "check timeout. reqCookie:" + paramMessage.what);
     }
-    this.a.a(this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, paramString1, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    aksd.a(this.a, false, null, paramMessage.what);
+    return false;
   }
 }
 

@@ -1,63 +1,48 @@
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
 import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class nma
-  extends anud
+  extends MSFServlet
 {
-  public nma(QQAppInterface paramQQAppInterface)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super(paramQQAppInterface);
-  }
-  
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool2 = false;
-    if (paramObject == null)
-    {
-      notifyUI(1001, false, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("MSFServlet", 2, "onReceive");
+    }
+    if (paramIntent == null) {
       return;
     }
-    int i = ((Bundle)paramObject).getInt("result");
-    paramToServiceMsg = (BmqqUserSimpleInfo)((Bundle)paramObject).getParcelable("info");
-    boolean bool1 = bool2;
-    if (i == 0)
+    Bundle localBundle = paramIntent.getExtras();
+    if (paramFromServiceMsg.isSuccess()) {}
+    for (byte[] arrayOfByte = bgau.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
     {
-      bool1 = bool2;
-      if (paramToServiceMsg != null)
-      {
-        ((bkgt)this.mApp.getManager(165)).a(paramToServiceMsg);
-        bool1 = true;
+      localBundle.putByteArray("data", arrayOfByte);
+      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
+      if (!QLog.isColorLevel()) {
+        break;
       }
-    }
-    notifyUI(1001, bool1, paramToServiceMsg);
-  }
-  
-  public void a(String paramString)
-  {
-    if (!nmd.a(this.app.getApplication(), paramString)) {
+      QLog.i("MSFServlet", 2, "onReceive exit");
       return;
+      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
+      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
     }
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("hrtxformqq.service", this.app.getCurrentAccountUin(), "hrtxformqq.getUsrSimpleInfo");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("uin", Long.valueOf(paramString));
-    localToServiceMsg.setAttributes(localHashMap);
-    send(localToServiceMsg);
   }
   
-  protected Class<? extends anui> observerClass()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return nmb.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("hrtxformqq.getUsrSimpleInfo".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.i("MSFServlet", 2, "onSend");
+    }
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bgau.a(arrayOfByte));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    if (QLog.isColorLevel()) {
+      QLog.i("MSFServlet", 2, "onSend exit");
     }
   }
 }

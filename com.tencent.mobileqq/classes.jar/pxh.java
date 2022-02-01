@@ -1,15 +1,34 @@
-class pxh
-  implements qoe
+import java.util.List;
+
+public abstract interface pxh<BEAN>
 {
-  pxh(pxe parampxe, ppu paramppu) {}
+  public abstract void setCenterEmpty();
   
-  public void a()
-  {
-    sgf localsgf = this.jdField_a_of_type_Ppu.a().a();
-    if (localsgf != null) {
-      localsgf.a(null, this.jdField_a_of_type_Ppu.a(), 1);
-    }
-  }
+  public abstract void setCenterError(int paramInt, String paramString);
+  
+  public abstract void setCenterHide();
+  
+  public abstract void setCenterLoading();
+  
+  public abstract void setFooterError(int paramInt, String paramString);
+  
+  public abstract void setFooterHasMore();
+  
+  public abstract void setFooterHide();
+  
+  public abstract void setFooterLoading();
+  
+  public abstract void setFooterNoMore();
+  
+  public abstract void setHeaderError(int paramInt, String paramString);
+  
+  public abstract void setHeaderLoading();
+  
+  public abstract void setHeaderSuccess();
+  
+  public abstract void setListData(List<BEAN> paramList, boolean paramBoolean);
+  
+  public abstract void setTotal(int paramInt);
 }
 
 

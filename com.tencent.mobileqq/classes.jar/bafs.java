@@ -1,18 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Comparator;
 
 class bafs
-  implements View.OnClickListener
+  implements Comparator<baep>
 {
-  bafs(bafq parambafq, TextView paramTextView, int paramInt) {}
+  bafs(bafq parambafq) {}
   
-  public void onClick(View paramView)
+  public int a(baep parambaep1, baep parambaep2)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    bhzu.a(paramView.getContext(), bhzq.b(this.jdField_a_of_type_Int), bhzq.c(this.jdField_a_of_type_Int), 3, false, true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (parambaep2.b() > parambaep1.b()) {}
+    do
+    {
+      return -1;
+      if (parambaep2.b() < parambaep1.b()) {
+        return 1;
+      }
+    } while (parambaep2.a() > parambaep1.a());
+    if (parambaep2.a() == parambaep1.a()) {
+      return 0;
+    }
+    return 1;
   }
 }
 

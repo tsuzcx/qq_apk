@@ -1,20 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.Comparator;
 
-public class anid
-  implements DialogInterface.OnClickListener
+class anid
+  implements Comparator<Entity>
 {
-  public anid(ApolloGameActivity paramApolloGameActivity, anpf paramanpf, int paramInt) {}
+  anid(anic paramanic) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(Entity paramEntity1, Entity paramEntity2)
   {
-    if (this.jdField_a_of_type_Anpf != null) {
-      this.jdField_a_of_type_Anpf.a(1);
+    int j = -1;
+    paramEntity1 = (RecentUser)paramEntity1;
+    paramEntity2 = (RecentUser)paramEntity2;
+    long l1 = Math.max(paramEntity1.lastmsgtime, paramEntity1.lastmsgdrafttime);
+    long l2 = Math.max(paramEntity2.lastmsgtime, paramEntity2.lastmsgdrafttime);
+    int i;
+    if (l1 < l2)
+    {
+      i = 1;
+      if (paramEntity1.getType() != paramEntity2.getType()) {
+        break label80;
+      }
     }
-    VipUtils.a(null, "cmshow", "Apollo", "sendToDesktopSusessful", 0, 1, new String[] { String.valueOf(this.jdField_a_of_type_Int) });
-    paramDialogInterface.dismiss();
+    label80:
+    do
+    {
+      do
+      {
+        return i;
+        if (l1 == l2)
+        {
+          i = 0;
+          break;
+        }
+        i = -1;
+        break;
+        i = j;
+      } while (paramEntity1.getType() == 0);
+      if (paramEntity2.getType() == 0) {
+        return 1;
+      }
+      i = j;
+    } while (paramEntity1.getType() - paramEntity2.getType() > 0);
+    return 1;
   }
 }
 

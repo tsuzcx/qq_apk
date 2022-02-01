@@ -6,14 +6,14 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import bicz;
-import bidb;
-import bide;
+import bgjk;
+import bgjm;
+import bgjp;
 import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
 
 public class QQVipArkHeaderView
   extends RelativeLayout
-  implements bidb
+  implements bgjm
 {
   private int jdField_a_of_type_Int;
   private QQVipMsgInfo jdField_a_of_type_ComTencentMobileqqVasQvipQQVipMsgInfo;
@@ -22,10 +22,10 @@ public class QQVipArkHeaderView
   public QQVipArkHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(getContext()).inflate(2131559597, this);
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQvipArkView = ((QvipArkView)findViewById(2131374508));
+    LayoutInflater.from(getContext()).inflate(2131559599, this);
+    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQvipArkView = ((QvipArkView)findViewById(2131374276));
     this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQvipArkView.setmQqVipArkHeaderView(this);
-    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQvipArkView.addOnLayoutChangeListener(new bide(this));
+    this.jdField_a_of_type_ComTencentMobileqqVasQvipViewQvipArkView.addOnLayoutChangeListener(new bgjp(this));
   }
   
   public void a(QQVipMsgInfo paramQQVipMsgInfo, Activity paramActivity, int paramInt)
@@ -38,7 +38,7 @@ public class QQVipArkHeaderView
     }
     try
     {
-      bicz.a(117, paramQQVipMsgInfo, paramInt);
+      bgjk.a(117, paramQQVipMsgInfo, paramInt);
       return;
     }
     catch (Throwable paramQQVipMsgInfo)

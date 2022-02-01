@@ -1,9 +1,4 @@
-import android.os.Bundle;
-
-public abstract interface zvj
-{
-  public abstract void a(Bundle paramBundle);
-}
+public abstract interface zvj {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

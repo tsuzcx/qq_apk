@@ -7,11 +7,14 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import cooperation.qzone.util.QZLog;
-import nmj;
+import nny;
 
 public class GdtPreLoadOfflinePackageService
   extends Service
 {
+  private static final String TAG = "GdtPreLoadOfflinePackageService";
+  public static final String URL = "url";
+  
   @Nullable
   public IBinder onBind(Intent paramIntent)
   {
@@ -29,8 +32,8 @@ public class GdtPreLoadOfflinePackageService
         try
         {
           BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-          nmj.a();
-          nmj.a(str, localBaseApplicationImpl.getRuntime());
+          nny.a();
+          nny.a(str, localBaseApplicationImpl.getRuntime());
         }
         catch (Exception localException)
         {

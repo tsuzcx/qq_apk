@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class azfz
-  implements DialogInterface.OnDismissListener
+public abstract interface azfz
 {
-  azfz(azfy paramazfy) {}
+  public abstract int a();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a.a(1030);
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(byte[] paramArrayOfByte, long paramLong);
+  
+  public abstract int b();
+  
+  public abstract void b(long paramLong);
 }
 
 

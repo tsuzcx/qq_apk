@@ -1,13 +1,22 @@
-class xgr
-  extends xgd
+import com.tencent.biz.qqstory.database.CommentEntry;
+
+public abstract interface xgr
 {
-  xgr(xgp paramxgp, xhw paramxhw) {}
+  public abstract void H_();
   
-  public boolean b()
-  {
-    this.jdField_a_of_type_Xhw.a = ((String)a("UploadImageJob_out_image_url"));
-    return true;
-  }
+  public abstract void I_();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(CommentEntry paramCommentEntry, int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void b(CommentEntry paramCommentEntry, int paramInt);
+  
+  public abstract void f();
 }
 
 

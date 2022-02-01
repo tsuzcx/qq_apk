@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.emosm.web;
 
-import amsx;
-import amyl;
+import alnr;
+import altf;
+import amtj;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Message;
-import anzj;
-import asiw;
+import arcu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
@@ -23,7 +23,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$29
   implements Runnable
 {
-  public MessengerService$IncomingHandler$29(asiw paramasiw, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$29(arcu paramarcu, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
@@ -61,14 +61,14 @@ public class MessengerService$IncomingHandler$29
               return;
             }
             localJSONObject.put("result", 1);
-            localJSONObject.put("msg", anzj.a(2131705558));
+            localJSONObject.put("msg", amtj.a(2131705788));
             continue;
             QLog.e("Q.emoji.web.MessengerService", 2, "delFavAction json error + " + localJSONException.toString());
           }
           catch (JSONException localJSONException)
           {
             if (!QLog.isColorLevel()) {
-              break label787;
+              break label789;
             }
           }
           return;
@@ -105,7 +105,7 @@ public class MessengerService$IncomingHandler$29
             else
             {
               localJSONException.put("result", 1);
-              localJSONException.put("msg", anzj.a(2131705578));
+              localJSONException.put("msg", amtj.a(2131705808));
             }
           }
           else
@@ -113,7 +113,7 @@ public class MessengerService$IncomingHandler$29
             if (!"danUpgrade".equals(localObject2)) {
               break;
             }
-            ((VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 128, "refreshAction");
+            ((VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(71)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 128, "refreshAction");
             if (QLog.isColorLevel()) {
               QLog.d("Q.emoji.web.MessengerService", 2, "ipc call danUpgrade,maybe have new slave action");
             }
@@ -128,16 +128,16 @@ public class MessengerService$IncomingHandler$29
       if (((JSONObject)localObject1).has("audio"))
       {
         i = ((JSONObject)localObject1).optInt("audio");
-        break label788;
+        break label790;
       }
     }
     for (;;)
     {
-      amyl.a(bool);
+      altf.a(bool);
       break;
       QLog.e("ApolloJsApi", 1, "drawerVoice has no val");
       i = 0;
-      break label788;
+      break label790;
       if (!"lastShopScheme".equals(localObject2)) {
         break;
       }
@@ -149,10 +149,10 @@ public class MessengerService$IncomingHandler$29
         break;
       }
       localObject1 = ((JSONObject)localObject1).optString("lastShopScheme");
-      ((amsx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).c((String)localObject1);
+      ((alnr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).c((String)localObject1);
       break;
-      label787:
-      label788:
+      label789:
+      label790:
       do
       {
         bool = true;
@@ -168,7 +168,7 @@ public class MessengerService$IncomingHandler$29
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.29
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import dov.com.qq.im.aeeditor.view.timebar.ScaleView;
 
-class bmov
-  extends aoeg
+public class bmov
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  bmov(bmou parambmou, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
+  public bmov(ScaleView paramScaleView) {}
   
-  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    paramString = new Bundle();
-    paramString.putBoolean("isSuccess", paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(paramString);
+    this.a.a.a(paramScaleGestureDetector.getScaleFactor());
+    if (ScaleView.a(this.a) != null) {
+      ScaleView.a(this.a).a();
+    }
+    return true;
   }
+  
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return true;
+  }
+  
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

@@ -1,7 +1,7 @@
-public abstract interface alhd
-{
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString);
-}
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebViewPlugin$Companion;", "", "()V", "METHOD_NOTIFY_ARK", "", "METHOD_RECEIVE_WEB", "NAME_SPACE", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class alhd {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

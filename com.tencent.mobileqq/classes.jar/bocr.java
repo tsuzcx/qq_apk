@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import dov.com.qq.im.QIMCameraCaptureUnit.13;
-
 public class bocr
-  implements DialogInterface.OnCancelListener
 {
-  public bocr(QIMCameraCaptureUnit.13 param13) {}
+  public static Object a;
+  public static String a;
+  public static volatile boolean a;
+  public static String b = "tag_v";
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  static
   {
-    this.a.this$0.a.setCameraPermissionResult(false);
+    jdField_a_of_type_JavaLangObject = new Object();
+    jdField_a_of_type_JavaLangString = "captureTest";
   }
 }
 

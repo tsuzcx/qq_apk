@@ -1,52 +1,96 @@
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
+import android.os.AsyncTask;
+import android.text.TextUtils;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.PoiMapActivity.PoiMapNameTask.1;
+import com.tencent.map.lib.basemap.data.GeoPoint;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.apache.http.client.HttpClient;
 
-class nls
-  implements axrb
+public class nls
+  extends AsyncTask<Void, Void, String>
 {
-  nls(nlr paramnlr) {}
+  public GeoPoint a;
+  protected HttpClient a;
+  protected GeoPoint b;
   
-  public String getToken()
-  {
-    return QQPlayerService.a(5, "" + this.a.a);
-  }
+  public nls(PoiMapActivity paramPoiMapActivity) {}
   
-  public void onPlaySongChanged(SongInfo paramSongInfo)
+  protected String a(Void... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQMusicService", 2, "onPlaySongChanged:" + paramSongInfo.c);
-    }
-  }
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQMusicService", 2, "onPlayStateChanged:" + paramInt);
-    }
-    Object localObject = QQPlayerService.b();
-    localObject = nlr.a(this.a, (SongInfo)localObject);
-    if (localObject != null) {}
-    try
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity.m = "Unknown Address";
+    int i = 0;
+    if (i < 3)
     {
-      ((JSONObject)localObject).put("state", paramInt);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add("*.qq.com");
-      awgm.a("qbrowserMusicStateChange", (JSONObject)localObject, localArrayList, null);
+      if ((isCancelled()) || (this.b.getLatitudeE6() != this.jdField_a_of_type_ComTencentBizPoiMapActivity.h) || (this.b.getLongitudeE6() != this.jdField_a_of_type_ComTencentBizPoiMapActivity.i))
+      {
+        localObject = "Unknown Address";
+        label60:
+        return localObject;
+      }
+      paramVarArgs = bfyn.a(this.jdField_a_of_type_ComTencentBizPoiMapActivity.getApplicationContext(), this.b.getLatitudeE6() / 1000000.0D, this.b.getLongitudeE6() / 1000000.0D, 3, this.jdField_a_of_type_OrgApacheHttpClientHttpClient);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("rec_locate", "call_googlestation", "", "", "", "");
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append(i).append(" time: ReverseGeocode.getFromLocation, address: ");
+        if (paramVarArgs != null) {
+          break label187;
+        }
+      }
+      label187:
+      for (Object localObject = "";; localObject = paramVarArgs)
+      {
+        QLog.i("fetch_address", 2, (String)localObject);
+        if (paramVarArgs != null)
+        {
+          localObject = paramVarArgs;
+          if (paramVarArgs.length() > 0) {
+            break label60;
+          }
+        }
+        i += 1;
+        break;
+      }
+    }
+    return "Unknown Address";
+  }
+  
+  public void a(GeoPoint paramGeoPoint)
+  {
+    this.b = paramGeoPoint;
+  }
+  
+  protected void a(String paramString)
+  {
+    if ((this.b.getLatitudeE6() != this.jdField_a_of_type_ComTencentBizPoiMapActivity.h) || (this.b.getLongitudeE6() != this.jdField_a_of_type_ComTencentBizPoiMapActivity.i)) {
       return;
     }
-    catch (JSONException localJSONException)
+    if (TextUtils.isEmpty(paramString)) {}
+    for (String str = "Unknown Address";; str = paramString)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQMusicService", 2, "onPlayStateChanged:" + localJSONException.getStackTrace());
-        }
-        localJSONException.printStackTrace();
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.m = paramString;
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.runOnUiThread(new PoiMapActivity.PoiMapNameTask.1(this, str));
+      if (this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint == null) {
+        break;
       }
+      paramString = new nls(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
+      paramString.a(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a = paramString;
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.execute(new Void[0]);
+      this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = null;
+      return;
+    }
+  }
+  
+  protected void onCancelled()
+  {
+    if ((this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint != null) && (this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() == this.jdField_a_of_type_ComTencentBizPoiMapActivity.h) && (this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() == this.jdField_a_of_type_ComTencentBizPoiMapActivity.i))
+    {
+      nls localnls = new nls(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
+      localnls.a(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a = localnls;
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.execute(new Void[0]);
+      this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = null;
     }
   }
 }

@@ -1,108 +1,48 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class rmp
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/managecolumn/CreateTopicDispatcher;", "", "()V", "createTopicListenerList", "", "Lkotlin/Function1;", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ColumnInfo;", "Lkotlin/ParameterName;", "name", "topicInfo", "", "addCreateTopicListener", "listener", "notifyTopicCreate", "removeCreateTopicListener", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rmp
 {
-  private static rmp jdField_a_of_type_Rmp = new rmp();
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = -1L;
-  private List<?> jdField_a_of_type_JavaUtilList;
-  private rmo jdField_a_of_type_Rmo;
-  private rmq jdField_a_of_type_Rmq;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -100;
-  private long jdField_b_of_type_Long = -1L;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = -100;
-  private long jdField_c_of_type_Long = -1L;
-  private boolean jdField_c_of_type_Boolean;
-  private int d = -100;
+  private static final List<Function1<ColumnInfo, Unit>> a;
+  public static final rmp a;
   
-  public static rmp a()
+  static
   {
-    return jdField_a_of_type_Rmp;
+    jdField_a_of_type_Rmp = new rmp();
+    jdField_a_of_type_JavaUtilList = (List)new ArrayList();
   }
   
-  private void b()
+  @JvmStatic
+  public static final void a(@NotNull ColumnInfo paramColumnInfo)
   {
-    rmq localrmq = this.jdField_a_of_type_Rmq;
-    if ((localrmq == null) || (localrmq.a())) {
-      return;
+    Intrinsics.checkParameterIsNotNull(paramColumnInfo, "topicInfo");
+    Iterator localIterator = ((Iterable)jdField_a_of_type_JavaUtilList).iterator();
+    while (localIterator.hasNext()) {
+      ((Function1)localIterator.next()).invoke(paramColumnInfo);
     }
-    localrmq.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localrmq.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoBehaviorsReporter", 2, "doReportVideoBehaviorsSeq(): " + localrmq.toString());
-    }
-    ozs.f(BaseApplication.getContext(), ozs.a(), true, localrmq.a());
-    this.jdField_a_of_type_Rmq.a();
   }
   
-  public void a()
+  @JvmStatic
+  public static final void a(@NotNull Function1<? super ColumnInfo, Unit> paramFunction1)
   {
-    b();
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = -100;
-    this.jdField_c_of_type_Int = -100;
-    this.d = -100;
-    this.jdField_c_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_Rmo = null;
-    this.jdField_a_of_type_Rmq = null;
+    Intrinsics.checkParameterIsNotNull(paramFunction1, "listener");
+    jdField_a_of_type_JavaUtilList.add(paramFunction1);
   }
   
-  public void a(int paramInt)
+  @JvmStatic
+  public static final void b(@NotNull Function1<? super ColumnInfo, Unit> paramFunction1)
   {
-    if (!this.jdField_c_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(sel paramsel, List<?> paramList)
-  {
-    if (!this.jdField_c_of_type_Boolean) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_JavaUtilList == null)
-      {
-        this.jdField_a_of_type_JavaUtilList = paramList;
-        if ((this.jdField_c_of_type_Long == -1L) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-        {
-          this.jdField_c_of_type_Long = ((BaseArticleInfo)this.jdField_a_of_type_JavaUtilList.get(0)).mRecommendSeq;
-          if (QLog.isColorLevel()) {
-            QLog.d("VideoBehaviorsReporter", 2, "bindVideoChannel(): 2,  mFirstVideoSeq = " + this.jdField_c_of_type_Long);
-          }
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoBehaviorsReporter", 2, "bindVideoChannel(): 1, mFirstVideoSeq = " + this.jdField_c_of_type_Long);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (!this.jdField_c_of_type_Boolean) {}
-    while (this.jdField_a_of_type_Boolean == paramBoolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    if (!this.jdField_c_of_type_Boolean) {
-      return;
-    }
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    Intrinsics.checkParameterIsNotNull(paramFunction1, "listener");
+    jdField_a_of_type_JavaUtilList.remove(paramFunction1);
   }
 }
 

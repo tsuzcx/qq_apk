@@ -1,6 +1,27 @@
-public abstract interface blmg
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.tavcut.exporter.MovieExporter;
+
+class blmg
+  implements View.OnClickListener
 {
-  public abstract void a();
+  blmg(blmd paramblmd) {}
+  
+  public void onClick(View paramView)
+  {
+    if (blmd.a(this.a) != null)
+    {
+      if (blmd.a(this.a) != null) {
+        blmd.a(this.a).cancelCompress();
+      }
+      blmd.a(this.a).dismiss();
+      blmd.a(this.a, null);
+      blmd.a(this.a, null);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

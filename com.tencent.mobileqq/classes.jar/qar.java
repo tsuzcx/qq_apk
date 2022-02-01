@@ -1,20 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.CustomMethodsRegister.CustomMethodInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class qar
-  implements CustomMethodsRegister.CustomMethodInterface
+  implements View.OnClickListener
 {
-  public Object invoke(String paramString, Object... paramVarArgs)
+  qar(qaq paramqaq, pvc parampvc) {}
+  
+  public void onClick(View paramView)
   {
-    String str = "";
-    paramString = str;
-    if (paramVarArgs != null)
-    {
-      paramString = str;
-      if (paramVarArgs.length >= 1) {
-        paramString = bcsa.b(String.valueOf(paramVarArgs[0]));
-      }
-    }
-    return new begp(paramString, 3, 16);
+    pgw.a(this.jdField_a_of_type_Pvc.a(), 0, 1);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

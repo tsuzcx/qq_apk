@@ -3,12 +3,12 @@ package com.tencent.mobileqq.filemanager.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import atzj;
+import aslt;
 
 public class OfflineFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<OfflineFileInfo> CREATOR = new atzj();
+  public static final Parcelable.Creator<OfflineFileInfo> CREATOR = new aslt();
   public int a;
   public long a;
   public String a;
@@ -85,7 +85,7 @@ public class OfflineFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.OfflineFileInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAioGuideView;
+import com.tencent.mobileqq.data.Friends;
 
-public class rou
-  implements Animation.AnimationListener
+class rou
 {
-  public rou(VideoFeedsAioGuideView paramVideoFeedsAioGuideView) {}
+  public int a;
+  public Friends a;
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation)
+  public rou(Friends paramFriends, int paramInt)
   {
-    VideoFeedsAioGuideView.a(this.a).setStartOffset(360L);
+    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
+    this.jdField_a_of_type_Int = paramInt;
   }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

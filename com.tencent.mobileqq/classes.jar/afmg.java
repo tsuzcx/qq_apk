@@ -1,350 +1,165 @@
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper.7;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.photo.ImageInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.mqsafeedit.MD5;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.graphics.Path;
+import android.graphics.PathMeasure;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import mqq.os.MqqHandler;
 
-public class afmg
+public abstract class afmg
 {
-  public int a;
-  protected afmn a;
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new afmj(this);
-  protected Bundle a;
-  public atpa a;
-  private beyf jdField_a_of_type_Beyf = new afmh(this);
-  public bhpc a;
-  public BaseActivity a;
-  public QQAppInterface a;
-  INetEventHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler = null;
-  public String a;
-  public ArrayList<afmn> a;
-  List<FileManagerEntity> jdField_a_of_type_JavaUtilList = null;
-  protected boolean a;
-  public int b;
-  DialogInterface.OnClickListener b;
-  public String b;
-  protected boolean b;
-  public int c;
-  DialogInterface.OnClickListener c;
-  protected String c;
-  protected boolean c;
-  public String d;
-  public boolean d;
+  private float jdField_a_of_type_Float = 1.0F;
+  private int jdField_a_of_type_Int = 10;
+  private int b = 25;
   
-  public afmg(BaseActivity paramBaseActivity)
+  private float a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Atpa = new afmi(this);
-    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new afmk(this);
-    this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener = new afml(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime());
-    this.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131717903);
+    if (paramInt1 <= 1) {
+      return (paramFloat1 + paramFloat2) / 2.0F;
+    }
+    return (paramFloat2 - paramFloat1) * (paramInt2 + 1) / paramInt1 + paramFloat1;
   }
   
-  private long a(String paramString1, int paramInt, String paramString2, String paramString3)
+  private long a(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    if (bhmi.a(paramString1))
+    if (paramInt1 <= 1) {
+      return (paramLong1 + paramLong2) / 2L;
+    }
+    return (paramLong2 - paramLong1) * (paramInt2 + 1) / paramInt1 + paramLong1;
+  }
+  
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List<afmn> paramList);
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Float = paramFloat;
+    if (this.jdField_a_of_type_Int <= 0) {
+      this.jdField_a_of_type_Int = 10;
+    }
+    if (this.b <= 0) {
+      this.b = 25;
+    }
+    if (this.jdField_a_of_type_Float <= 0.0F) {
+      this.jdField_a_of_type_Float = 1.0F;
+    }
+  }
+  
+  public abstract void a(Path paramPath, List<afmn> paramList);
+  
+  public void a(List<afmn> paramList, int paramInt)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    int i;
+    do
     {
-      if ((paramInt != 1) && (paramInt != 0) && (paramInt != 1001) && (paramInt != 10002) && (paramInt != 3000)) {
-        break label192;
+      return;
+      i = paramInt;
+      if (paramInt < 0) {
+        i = 0;
       }
-      bhmq.a(-1L, paramInt, true, "compress_start", "SendMultiPictureHelper.doSendPictues");
-      String str = bhmq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString1, paramInt);
-      ImageInfo localImageInfo = new ImageInfo();
-      bhmq.a(4, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString1, str, true, localImageInfo, paramInt);
-      paramString1 = localImageInfo.jdField_b_of_type_JavaLangString;
-    }
-    label192:
-    for (;;)
+    } while (paramList.size() <= i);
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = (afmn)paramList.get(i);
+    paramInt = i + 1;
+    while (paramInt < paramList.size())
     {
-      long l1;
-      if (!bhmq.a(null, paramString1, 1, null, "SendMultiPictureHelper.doSendPictues")) {
-        l1 = 0L;
+      afmn localafmn = (afmn)paramList.get(paramInt);
+      if ((localafmn.a() - ((afmn)localObject).a() < this.b) && (Math.abs(localafmn.a() - ((afmn)localObject).a()) < this.jdField_a_of_type_Float))
+      {
+        ((afmn)localObject).a(localafmn);
+        paramInt += 1;
       }
-      long l2;
-      do
+      else
       {
-        return l1;
-        l2 = a(paramString1, paramString2, paramString3, paramInt);
-        a(paramInt, paramString3, paramString1, l2, 1009);
-        l1 = l2;
-      } while (!QLog.isColorLevel());
-      QLog.d("streamptt", 2, "ChatActivity.handleForwardData uploadImage,uniseq:" + l2 + ",filePath:" + paramString1 + ",curType:" + paramInt);
-      return l2;
-      return 0L;
+        localArrayList.add(localObject);
+        if (((afmn)localObject).a() != localafmn.a()) {
+          localafmn.a(0);
+        }
+        for (;;)
+        {
+          localObject = localafmn;
+          break;
+          localafmn.a(((afmn)localObject).a() + 1);
+        }
+      }
     }
+    localArrayList.add(localObject);
+    paramList.clear();
+    paramList.addAll(localArrayList);
   }
   
-  private long a(String paramString1, String paramString2, String paramString3, int paramInt)
+  public abstract void a(List<afmi> paramList, Path paramPath, List<afmn> paramList1);
+  
+  public abstract void a(List<afmi> paramList, Path paramPath, List<afmn> paramList1, int paramInt);
+  
+  protected boolean a(List<afmn> paramList, Path paramPath)
   {
-    long l = 0L;
-    if (paramString1 != null)
+    if ((paramList == null) || (paramPath == null) || (paramList.size() == 0)) {
+      return false;
+    }
+    PathMeasure localPathMeasure = new PathMeasure(paramPath, false);
+    float f3 = localPathMeasure.getLength();
+    int i = 0;
+    float f1;
+    for (float f2 = 0.0F; i < paramList.size(); f2 = f1)
     {
-      paramString2 = bcry.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString3, paramString2, paramInt);
-      paramString2.path = paramString1;
-      paramString2.size = 0L;
-      paramString2.type = 1;
-      paramString2.isRead = true;
-      paramString2.localUUID = azqk.a();
-      paramString2.md5 = bhml.a(MD5.getFileMd5(paramString2.path));
-      paramString2.serial();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      l = paramString2.uniseq;
+      Path localPath = new Path();
+      float f4 = ((afmn)paramList.get(i)).b() + f2;
+      f1 = f4;
+      if (f4 > f3) {
+        f1 = f3;
+      }
+      localPathMeasure.getSegment(f2, f1, localPath, true);
+      localPath.rLineTo(0.0F, 0.0F);
+      paramPath.addPath(localPath);
+      ((afmn)paramList.get(i)).a(localPath);
+      i += 1;
     }
-    return l;
+    return true;
   }
   
-  private void a(int paramInt, String paramString, long paramLong)
+  protected boolean a(List<afmn> paramList, Path paramPath, float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
   {
-    paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString + paramLong);
-    if ((paramString instanceof berp)) {
-      ((berp)paramString).c();
+    if (paramList == null) {
+      return false;
     }
-  }
-  
-  private void a(int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2)
-  {
-    beyg localbeyg = new beyg();
-    localbeyg.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    localbeyg.jdField_c_of_type_JavaLangString = paramString1;
-    localbeyg.jdField_a_of_type_Int = paramInt1;
-    localbeyg.jdField_b_of_type_Int = 1;
-    localbeyg.jdField_a_of_type_Long = paramLong;
-    localbeyg.jdField_a_of_type_Boolean = true;
-    localbeyg.e = paramInt2;
-    localbeyg.i = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbeyg);
-  }
-  
-  private void e()
-  {
-    berp localberp = (berp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Afmn.jdField_a_of_type_Long);
-    if (localberp != null)
+    PathMeasure localPathMeasure = new PathMeasure(paramPath, false);
+    float f2 = localPathMeasure.getLength();
+    int j = (int)Math.ceil(f2 / this.jdField_a_of_type_Int);
+    if (j == 0) {
+      return false;
+    }
+    int i = 0;
+    paramPath = null;
+    if (i < j)
     {
-      if (this.jdField_c_of_type_Boolean)
-      {
-        this.jdField_c_of_type_Boolean = false;
-        QLog.w("SendMultiPictureHelper", 2, this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Afmn.jdField_a_of_type_Long + "has error");
-        localberp.k();
-        a();
+      Object localObject = new Path();
+      float f3 = (i + 1) * this.jdField_a_of_type_Int;
+      float f1 = f3;
+      if (f3 > f2) {
+        f1 = f2;
+      }
+      localPathMeasure.getSegment(this.jdField_a_of_type_Int * i, f1, (Path)localObject, true);
+      ((Path)localObject).rLineTo(0.0F, 0.0F);
+      localObject = new afmn((Path)localObject);
+      ((afmn)localObject).a(a(paramFloat1, paramFloat2, j, i));
+      ((afmn)localObject).a(a(paramLong1, paramLong2, j, i));
+      ((afmn)localObject).b(f1 - this.jdField_a_of_type_Int * i);
+      if ((paramPath != null) && (paramPath.a() == ((afmn)localObject).a())) {
+        ((afmn)localObject).a(paramPath.a() + 1);
       }
       for (;;)
       {
-        QLog.w("SendMultiPictureHelper", 2, "continue send " + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Afmn.jdField_a_of_type_Long);
-        return;
-        localberp.b();
+        paramList.add(localObject);
+        i += 1;
+        paramPath = (Path)localObject;
+        break;
+        ((afmn)localObject).a(0);
       }
     }
-    QLog.w("SendMultiPictureHelper", 2, "processor null");
-    if (this.jdField_c_of_type_Boolean) {
-      a();
-    }
-    this.jdField_c_of_type_Boolean = false;
+    return true;
   }
   
-  private void f()
-  {
-    if (this.jdField_a_of_type_Afmn.jdField_a_of_type_Long == -1L) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SendMultiPictureHelper", 2, "uniseq -1");
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        berp localberp = (berp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Afmn.jdField_a_of_type_Long);
-        if (localberp == null) {
-          break;
-        }
-        localberp.k();
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Afmn.jdField_a_of_type_Long);
-      } while (!QLog.isColorLevel());
-      QLog.d("SendMultiPictureHelper", 2, "stop send " + this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Afmn.jdField_a_of_type_Long);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("SendMultiPictureHelper", 2, "processor null");
-  }
-  
-  private void g() {}
-  
-  void a()
-  {
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-      {
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("SendMultiPictureHelper", 2, "sendNext " + (this.jdField_a_of_type_Int + 1));
-        }
-        this.jdField_a_of_type_Int += 1;
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
-          break label261;
-        }
-        afmn localafmn = (afmn)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-        Object localObject2 = localafmn.jdField_a_of_type_JavaLangString;
-        this.jdField_a_of_type_Afmn = localafmn;
-        localObject2 = new File((String)localObject2);
-        if (!((File)localObject2).exists())
-        {
-          this.jdField_c_of_type_Boolean = true;
-          Toast.makeText(BaseApplicationImpl.getApplication(), ((File)localObject2).getName() + anzj.a(2131712699), 0).show();
-          if (!this.jdField_b_of_type_Boolean) {
-            a();
-          }
-          return;
-        }
-        if (((File)localObject2).length() == 0L)
-        {
-          if (this.jdField_c_of_type_Int == 0) {
-            Toast.makeText(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131692206), 0).show();
-          }
-        }
-        else
-        {
-          a(localafmn, this.jdField_c_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-          return;
-        }
-      }
-      Toast.makeText(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131694351), 0).show();
-      continue;
-      label261:
-      if (this.jdField_a_of_type_Bhpc != null) {
-        this.jdField_a_of_type_Bhpc.cancel();
-      }
-      c();
-    }
-  }
-  
-  public void a(afmn paramafmn, int paramInt, String paramString1, String paramString2)
-  {
-    ThreadManager.getFileThreadHandler().post(new SendMultiPictureHelper.7(this, paramafmn, paramInt, paramString1, paramString2));
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt, String paramString3, Bundle paramBundle, ArrayList<String> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Beyf);
-    this.jdField_a_of_type_Beyf.addFilter(new Class[] { berv.class, besa.class, betv.class, beth.class });
-    this.jdField_a_of_type_Bhpc = bhlq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131690921), null, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-    this.jdField_a_of_type_Bhpc.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_Bhpc.setCancelable(false);
-    this.jdField_a_of_type_Bhpc.show();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    paramString1 = paramArrayList.iterator();
-    while (paramString1.hasNext())
-    {
-      paramString2 = (String)paramString1.next();
-      paramString3 = new afmn(this);
-      paramString3.jdField_a_of_type_JavaLangString = paramString2;
-      paramString3.jdField_a_of_type_Long = -1L;
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramString3);
-    }
-    paramString1 = ((afmn)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_JavaUtilArrayList.size();
-    this.jdField_a_of_type_Afmn = ((afmn)this.jdField_a_of_type_JavaUtilArrayList.get(0));
-    this.jdField_a_of_type_Int = 0;
-    if (!bhnv.d(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity))
-    {
-      this.jdField_d_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Atpa);
-      paramInt = 0;
-      while (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        this.jdField_a_of_type_Bhpc.setMessage(String.format(this.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(paramInt + 1), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(0) }));
-        a((afmn)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), this.jdField_c_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-        paramInt += 1;
-      }
-      c();
-      return;
-    }
-    this.jdField_a_of_type_Bhpc.setMessage(String.format(this.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(1), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(0) }));
-    if (new File(paramString1).length() == 0L)
-    {
-      if (this.jdField_c_of_type_Int != 0) {
-        break label521;
-      }
-      Toast.makeText(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131692206), 0).show();
-    }
-    for (;;)
-    {
-      a((afmn)this.jdField_a_of_type_JavaUtilArrayList.get(0), this.jdField_c_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler == null) {
-        this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler = new afmm(this);
-      }
-      AppNetConnInfo.registerNetChangeReceiver(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler);
-      return;
-      label521:
-      Toast.makeText(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131694351), 0).show();
-    }
-  }
-  
-  void b()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131690922);
-    localObject = bhlq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131718699), (String)localObject, 2131692675, 2131693994, this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
-    ((bhpc)localObject).setCancelable(false);
-    ((bhpc)localObject).show();
-  }
-  
-  public void c()
-  {
-    Intent localIntent = agej.a(new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, SplashActivity.class), new int[] { 2 });
-    localIntent.putExtra("isFromShare", true);
-    localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(-1);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Beyf);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Atpa);
-    try
-    {
-      this.jdField_a_of_type_Bhpc.dismiss();
-      label35:
-      this.jdField_a_of_type_Bhpc = null;
-      if (this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler != null) {
-        AppNetConnInfo.unregisterNetEventHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler);
-      }
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label35;
-    }
-  }
+  public abstract void b(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List<afmn> paramList);
 }
 
 

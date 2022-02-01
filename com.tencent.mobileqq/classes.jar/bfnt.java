@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
 
 public class bfnt
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public bfnt(NewTroopCreateActivity paramNewTroopCreateActivity) {}
+  public bfnt(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

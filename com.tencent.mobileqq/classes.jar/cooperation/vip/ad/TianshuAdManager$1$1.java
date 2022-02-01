@@ -1,17 +1,17 @@
 package cooperation.vip.ad;
 
-import bntn;
-import bnto;
+import bkyu;
+import bkyv;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 
 public class TianshuAdManager$1$1
   implements Runnable
 {
-  public TianshuAdManager$1$1(bnto parambnto, TianShuAccess.GetAdsRsp paramGetAdsRsp) {}
+  public TianshuAdManager$1$1(bkyv parambkyv, TianShuAccess.GetAdsRsp paramGetAdsRsp) {}
   
   public void run()
   {
-    bntn.a(this.jdField_a_of_type_Bnto.a, this.jdField_a_of_type_CooperationVipPbTianShuAccess$GetAdsRsp);
+    bkyu.a(this.jdField_a_of_type_Bkyv.a, this.jdField_a_of_type_CooperationVipPbTianShuAccess$GetAdsRsp);
   }
 }
 

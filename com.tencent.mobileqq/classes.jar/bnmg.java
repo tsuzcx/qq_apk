@@ -1,54 +1,27 @@
-public class bnmg
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+
+class bnmg
+  implements URLDrawable.URLDrawableListener
 {
-  public static String a;
-  public static String[] a;
-  public static String b;
-  public static String c;
-  public static String d;
-  public static String e;
-  public static String f;
-  public static String g;
-  public static String h;
-  public static String i;
-  public static final String j;
-  public static final String k;
+  bnmg(bnmf parambnmf, String paramString1, bnln parambnln, ImageView paramImageView, String paramString2) {}
   
-  static
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    jdField_a_of_type_JavaLangString = "JsFamousShare";
-    b = "famousShareToQQFriend";
-    c = "famousShareToQzone";
-    d = "famousShareToWxFriend";
-    e = "famousShareToWxPengyouquan";
-    f = "famousJubao";
-    g = "setUserHomePageMsgBoardGate";
-    h = "SetHostMessage";
-    i = "writeMood";
-    j = anzj.a(2131710806);
-    k = anzj.a(2131710805);
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "SetPersonalizeFinished", "setAvatar", "SetNaviDeco", "setFloat", "updateCustomPraise", "setcardfinish", "updatePloymorphicPraise", "setResponsiveLike", "OpenCustomVipSucc", "SetFacade", "setFriendNaviDeco", "SetPlayerDeco", "setDefaultFont", "refreshFeeds", "setCustomTrack" };
+    xvv.b("NormalFaceAdapter", "applyNormalPaster onLoadFialed path:" + this.jdField_a_of_type_JavaLangString);
   }
   
-  public static boolean a(String paramString)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    boolean bool2 = false;
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    int n = arrayOfString.length;
-    int m = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (m < n)
-      {
-        if (arrayOfString[m].equalsIgnoreCase(paramString)) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      m += 1;
-    }
+    xvv.b("NormalFaceAdapter", "applyNormalPaster onLoadSuccessed path:" + this.jdField_a_of_type_JavaLangString);
+    paramURLDrawable.setBounds(0, 0, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
+    bnmf.a(this.jdField_a_of_type_Bnmf).a(this.jdField_a_of_type_JavaLangString, paramURLDrawable);
+    bnmf.a(this.jdField_a_of_type_Bnmf, this.jdField_a_of_type_Bnln, paramURLDrawable, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString, this.b, 1);
   }
 }
 

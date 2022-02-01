@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import alpb;
+import akms;
 import android.content.Context;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import pqx;
-import twk;
-import tzq;
+import pwr;
+import uda;
+import ugf;
 
 public class SubscriptionInfoModule$5
   implements Runnable
 {
-  public SubscriptionInfoModule$5(pqx parampqx, String paramString, Context paramContext) {}
+  public SubscriptionInfoModule$5(pwr parampwr, String paramString, Context paramContext) {}
   
   public void run()
   {
-    twk.a().a(this.jdField_a_of_type_JavaLangString, (QQAppInterface)this.this$0.a, this.jdField_a_of_type_AndroidContentContext, pqx.a(this.this$0));
-    int i = tzq.b((QQAppInterface)this.this$0.a, this.jdField_a_of_type_JavaLangString);
-    alpb.b((QQAppInterface)this.this$0.a, this.jdField_a_of_type_JavaLangString, i);
-    ((QQAppInterface)this.this$0.a).a().c(this.jdField_a_of_type_JavaLangString, 1008);
+    uda.a().a(this.jdField_a_of_type_JavaLangString, (QQAppInterface)this.this$0.a, this.jdField_a_of_type_AndroidContentContext, pwr.a(this.this$0));
+    int i = ugf.b((QQAppInterface)this.this$0.a, this.jdField_a_of_type_JavaLangString);
+    akms.b((QQAppInterface)this.this$0.a, this.jdField_a_of_type_JavaLangString, i);
+    ((QQAppInterface)this.this$0.a).getMessageFacade().setReaded(this.jdField_a_of_type_JavaLangString, 1008);
   }
 }
 

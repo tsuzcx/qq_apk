@@ -1,67 +1,32 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView;
 
 public class arir
-  extends arac<ariq>
+  extends RecyclerView.ViewHolder
 {
-  @NonNull
-  public ariq a(int paramInt)
+  private ExtendFriendCampusVerifyTipsView a;
+  
+  public arir(View paramView, arpx paramarpx)
   {
-    return new ariq();
+    super(paramView);
+    this.a = ((ExtendFriendCampusVerifyTipsView)paramView);
+    this.a.setOnClickListener(paramarpx);
   }
   
-  @Nullable
-  public ariq a(araj[] paramArrayOfaraj)
+  public void a(arjk paramarjk, int paramInt)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    if ((paramarjk instanceof aris))
     {
-      ariq localariq = ariq.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("RelationVipGrayProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
-      }
-      return localariq;
+      paramarjk = (aris)paramarjk;
+      this.a.setTipsType(paramarjk.a);
+      this.a.setPadding(0, paramInt, 0, 0);
     }
-    return new ariq();
-  }
-  
-  public void a(ariq paramariq) {}
-  
-  public Class<ariq> clazz()
-  {
-    return ariq.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 490;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arir
  * JD-Core Version:    0.7.0.1
  */

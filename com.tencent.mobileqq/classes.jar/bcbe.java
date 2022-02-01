@@ -1,21 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.ContactUtilsProxy.Proxy;
+import com.tencent.mobileqq.utils.ContactUtils;
 
-public class bcbe
-  implements View.OnClickListener
+public final class bcbe
+  implements RecentRoute.ContactUtilsProxy.Proxy
 {
-  public bcbe(UniteSearchActivity paramUniteSearchActivity) {}
-  
-  public void onClick(View paramView)
+  public String getBuddyName(IMCoreAppRuntime paramIMCoreAppRuntime, String paramString, boolean paramBoolean)
   {
-    UniteSearchActivity.e = 1;
-    this.a.a.setText("");
-    this.a.a();
-    bcjy.a(this.a.app, 0, this.a.c, "0X8009D2B", 0, 0, null, null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    String str = paramString;
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
+      str = ContactUtils.getBuddyName((QQAppInterface)paramIMCoreAppRuntime, paramString, true);
+    }
+    return str;
+  }
+  
+  public String getTroopName(IMCoreAppRuntime paramIMCoreAppRuntime, String paramString, boolean paramBoolean)
+  {
+    String str = paramString;
+    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
+      str = ContactUtils.getTroopName((QQAppInterface)paramIMCoreAppRuntime, paramString, true);
+    }
+    return str;
   }
 }
 

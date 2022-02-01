@@ -1,8 +1,23 @@
-public class qpo
+import android.widget.PopupWindow.OnDismissListener;
+
+class qpo
+  implements PopupWindow.OnDismissListener
 {
-  public int a;
-  public long a;
-  public int b;
+  qpo(qpk paramqpk, bjrh parambjrh) {}
+  
+  public void onDismiss()
+  {
+    this.jdField_a_of_type_Bjrh.a(1.0F);
+    if (this.jdField_a_of_type_Qpk.a.c())
+    {
+      sdc localsdc = this.jdField_a_of_type_Qpk.a.a();
+      if (localsdc != null)
+      {
+        localsdc.c();
+        this.jdField_a_of_type_Qpk.a.b(false);
+      }
+    }
+  }
 }
 
 

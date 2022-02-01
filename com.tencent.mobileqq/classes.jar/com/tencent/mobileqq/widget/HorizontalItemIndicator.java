@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.Scroller;
 import android.widget.TextView;
-import biyq;
+import bhes;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.widget.AbsSpinner;
 
@@ -25,7 +25,7 @@ public class HorizontalItemIndicator
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
-  private biyq jdField_a_of_type_Biyq;
+  private bhes jdField_a_of_type_Bhes;
   private int b;
   private int c;
   private int d;
@@ -104,8 +104,8 @@ public class HorizontalItemIndicator
     int k = getChildAt(paramInt).getLeft();
     this.f = this.e;
     this.e = paramInt;
-    if (this.jdField_a_of_type_Biyq != null) {
-      this.jdField_a_of_type_Biyq.a(paramInt);
+    if (this.jdField_a_of_type_Bhes != null) {
+      this.jdField_a_of_type_Bhes.a(paramInt);
     }
     this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, j + k - i, 0);
     requestLayout();
@@ -258,8 +258,8 @@ public class HorizontalItemIndicator
     }
     this.f = this.e;
     this.e = paramInt;
-    if (this.jdField_a_of_type_Biyq != null) {
-      this.jdField_a_of_type_Biyq.a(paramInt);
+    if (this.jdField_a_of_type_Bhes != null) {
+      this.jdField_a_of_type_Bhes.a(paramInt);
     }
     requestLayout();
   }
@@ -273,9 +273,9 @@ public class HorizontalItemIndicator
     setCurrItem(i);
   }
   
-  public void setOnItemChanged(biyq parambiyq)
+  public void setOnItemChanged(bhes parambhes)
   {
-    this.jdField_a_of_type_Biyq = parambiyq;
+    this.jdField_a_of_type_Bhes = parambhes;
   }
   
   public void setPrevItem()

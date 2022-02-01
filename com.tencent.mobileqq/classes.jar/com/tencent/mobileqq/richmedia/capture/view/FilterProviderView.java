@@ -1,25 +1,17 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import android.os.Bundle;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListAdapter;
-import bben;
-import bbfg;
-import bbfi;
-import bbgf;
-import bbii;
-import bbio;
-import bbix;
-import bbjb;
-import bbjc;
-import bljm;
+import azzp;
+import baah;
+import baaj;
+import babc;
+import bacv;
+import bacy;
+import bacz;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.adapter.FilterProviderPagerAdapter;
 import com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
@@ -27,38 +19,29 @@ import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
 import com.tencent.mobileqq.widget.QQViewPager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.GridView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.os.MqqHandler;
 
 public class FilterProviderView
   extends ProviderView
-  implements ViewPager.OnPageChangeListener, bbfi, bbio, bbjb, bljm
+  implements ViewPager.OnPageChangeListener, baaj, bacy, AdapterView.OnItemClickListener
 {
   public int a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   FilterProviderPagerAdapter jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterFilterProviderPagerAdapter;
   QQViewPager jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
-  String jdField_a_of_type_JavaLangString = "";
-  public List<FilterCategory> a;
-  boolean jdField_a_of_type_Boolean = true;
-  public int b = 0;
-  private boolean d = true;
+  String jdField_a_of_type_JavaLangString;
+  List<FilterCategory> jdField_a_of_type_JavaUtilList;
+  boolean jdField_a_of_type_Boolean;
+  private boolean d;
   
-  public FilterProviderView(Context paramContext, int paramInt)
-  {
-    super(paramContext);
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-    this.b = paramInt;
-  }
-  
-  private void d()
+  private void c()
   {
     this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(bbfg.a().a());
+    this.jdField_a_of_type_JavaUtilList.addAll(baah.a().a());
     if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView != null) {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(a());
     }
@@ -77,21 +60,21 @@ public class FilterProviderView
     }
   }
   
-  public ArrayList<bbjc> a()
+  public ArrayList<bacz> a()
   {
-    bbfg localbbfg = bbfg.a();
+    baah localbaah = baah.a();
     ArrayList localArrayList = new ArrayList();
-    int j = localbbfg.a();
+    int j = localbaah.a();
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      bbjc localbbjc = new bbjc();
+      bacz localbacz = new bacz();
       FilterCategory localFilterCategory = (FilterCategory)this.jdField_a_of_type_JavaUtilList.get(i);
-      localbbjc.jdField_a_of_type_JavaLangString = localFilterCategory.jdField_a_of_type_JavaLangString;
-      localbbjc.jdField_a_of_type_Boolean = localbbfg.a(2, ((FilterCategory)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int, "");
-      localArrayList.add(localbbjc);
+      localbacz.jdField_a_of_type_JavaLangString = localFilterCategory.jdField_a_of_type_JavaLangString;
+      localbacz.jdField_a_of_type_Boolean = localbaah.a(2, ((FilterCategory)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int, "");
+      localArrayList.add(localbacz);
       if ((j != -1) && (j == localFilterCategory.jdField_a_of_type_Int)) {
-        localbbfg.a(5, 0, null);
+        localbaah.a(5, 0, null);
       }
       i += 1;
     }
@@ -112,65 +95,23 @@ public class FilterProviderView
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(paramInt);
     }
-    bbfg.a().a(2, ((FilterCategory)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int, "");
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bbii(this, null);
-    getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("action_brocassreceiver_for_filter"));
-    bbfg.a().a(this);
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(bbfg.a().a());
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(a());
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.setTabCheckListener(this);
-    if (this.jdField_a_of_type_AndroidViewView == null) {}
-    for (this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)LayoutInflater.from(getContext()).inflate(2131561508, this, false));; this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)this.jdField_a_of_type_AndroidViewView))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterFilterProviderPagerAdapter = new FilterProviderPagerAdapter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterFilterProviderPagerAdapter.a(this);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterFilterProviderPagerAdapter.a(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setOnPageChangeListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterFilterProviderPagerAdapter);
-      a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager);
-      if (QLog.isColorLevel()) {
-        QLog.d("FilterProviderView", 2, "FilterProviderView onCreate size=" + this.jdField_a_of_type_JavaUtilList.size());
-      }
-      int i = bbfg.a().a();
-      if (i == -1) {
-        break;
-      }
-      setTab(i);
-      return;
-    }
-    setTab(0);
+    baah.a().a(2, ((FilterCategory)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int, "");
   }
   
   public void a(FilterCategoryItem paramFilterCategoryItem)
   {
     if ((paramFilterCategoryItem != null) && (paramFilterCategoryItem.jdField_a_of_type_Boolean))
     {
-      if (this.jdField_a_of_type_Bbix != null) {
-        this.jdField_a_of_type_Bbix.b(paramFilterCategoryItem);
+      if (this.jdField_a_of_type_Bacv != null) {
+        this.jdField_a_of_type_Bacv.b(paramFilterCategoryItem);
       }
       return;
     }
-    bbfg.a().a(paramFilterCategoryItem);
-    if ((this.jdField_a_of_type_Bbix != null) && (paramFilterCategoryItem != null)) {
-      this.jdField_a_of_type_Bbix.a(paramFilterCategoryItem);
+    baah.a().a(paramFilterCategoryItem);
+    if ((this.jdField_a_of_type_Bacv != null) && (paramFilterCategoryItem != null)) {
+      this.jdField_a_of_type_Bacv.a(paramFilterCategoryItem);
     }
     b();
-  }
-  
-  public void aI_()
-  {
-    FilterCategoryItem localFilterCategoryItem = bbfg.a().a();
-    if (localFilterCategoryItem != null) {
-      setTab(localFilterCategoryItem.b);
-    }
-    b();
-    this.d = true;
   }
   
   public void b()
@@ -184,9 +125,9 @@ public class FilterProviderView
       while (i < j)
       {
         int k = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterFilterProviderPagerAdapter.a.keyAt(i);
-        ListAdapter localListAdapter = ((GridView)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterFilterProviderPagerAdapter.a.get(k)).a();
-        if ((localListAdapter instanceof bben)) {
-          ((bben)localListAdapter).notifyDataSetChanged();
+        ListAdapter localListAdapter = ((GridView)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAdapterFilterProviderPagerAdapter.a.get(k)).getAdapter();
+        if ((localListAdapter instanceof azzp)) {
+          ((azzp)localListAdapter).notifyDataSetChanged();
         }
         i += 1;
       }
@@ -229,7 +170,7 @@ public class FilterProviderView
     }
     this.jdField_a_of_type_Int = paramInt;
     if (!this.d) {
-      bbgf.b(((FilterCategory)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int + "");
+      babc.b(((FilterCategory)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int + "");
     }
   }
   

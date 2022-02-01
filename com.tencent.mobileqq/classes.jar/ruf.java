@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import org.jetbrains.annotations.NotNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-class ruf
-  extends ual
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class ruf
+  implements View.OnClickListener
 {
-  ruf(rsx paramrsx) {}
+  ruf(rtv paramrtv, VideoInfo paramVideoInfo, rvs paramrvs) {}
   
-  public boolean a(int paramInt, @NotNull ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public final void onClick(View paramView)
   {
-    return this.a.a(paramInt, paramActionSheetItem);
+    rtv.a(this.jdField_a_of_type_Rtv, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_Rvs);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

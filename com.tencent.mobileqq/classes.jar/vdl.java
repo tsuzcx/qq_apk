@@ -1,31 +1,59 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.qqcircle.fragments.QCircleBlockContainer;
-import com.tencent.biz.richframework.part.block.base.NestScrollRecyclerView;
+import UserGrowth.stSimpleMetaFeed;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-class vdl
-  implements vwp
+public class vdl
+  extends vdc
 {
-  vdl(vdj paramvdj) {}
+  private String a;
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void b()
+  public vdl(uzq paramuzq)
   {
-    vdj.a(this.a).a().scrollToPosition(0);
-    vdj.a(this.a).a().e();
-    vdj.a(this.a).clearData();
-    this.a.a(true, false, true);
-    if (vdj.a(this.a) == 1) {
-      vtn.a(87, 6, vdj.a(this.a), this.a.c());
-    }
-    for (;;)
+    super(paramuzq);
+  }
+  
+  public List<vaq> a(ArrayList paramArrayList)
+  {
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      QLog.d("QCircleLightInteractListPart", 3, "dismiss");
-      return;
-      vtn.a(75, 2, vdj.a(this.a), this.a.c());
+      if ((paramArrayList.get(0) instanceof stSimpleMetaFeed))
+      {
+        stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)paramArrayList.get(0);
+        localstSimpleMetaFeed.isLoop = true;
+        this.a = localstSimpleMetaFeed.id;
+      }
+      return WSVerticalDataManager.a().a(paramArrayList);
     }
+    return Collections.emptyList();
+  }
+  
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    super.a(paramViewHolder, paramInt);
+    uya.d("WSVerticalForMiniAppPresenter", "WSVerticalForMiniAppPresenter onPageSelected: " + paramInt);
+    if ((paramViewHolder instanceof vct))
+    {
+      paramViewHolder = (vct)paramViewHolder;
+      com.tencent.biz.pubaccount.weishi_new.WSHomeFragment.a = 1;
+      paramViewHolder = new unv(4, new Object[] { Integer.valueOf(paramInt), paramViewHolder.a });
+      vli.a().dispatch(paramViewHolder);
+    }
+  }
+  
+  public void a(String paramString, vaa paramvaa, long paramLong)
+  {
+    paramString = new urj(new uwk(paramString), null, new vdm(this, paramLong, paramvaa), 4002);
+    urc.a().a(paramString);
+  }
+  
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    a(this.a, this, System.currentTimeMillis());
+    return true;
   }
 }
 

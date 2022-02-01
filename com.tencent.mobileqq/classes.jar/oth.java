@@ -1,18 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class oth
-  implements DialogInterface.OnClickListener
+public class oth
+  implements View.OnClickListener
 {
-  oth(otg paramotg, String paramString, int paramInt) {}
+  public oth(ReadInJoyCommentListView paramReadInJoyCommentListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    QQToast.a(this.jdField_a_of_type_Otg.jdField_a_of_type_Otd.a, 2, anzj.a(2131711922), 0).a();
-    if (this.jdField_a_of_type_Otg.jdField_a_of_type_Osv != null) {
-      this.jdField_a_of_type_Otg.jdField_a_of_type_Osv.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt);
-    }
+    QLog.d("ReadInJoyCommentListView", 2, "loadmore comment when network not available");
+    ReadInJoyCommentListView.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

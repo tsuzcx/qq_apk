@@ -1,43 +1,22 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
+import com.tencent.mobileqq.activity.TroopClassChoiceActivity.GetClassChoiceCallBack.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class aeks
-  extends anyu
+  implements bfke
 {
-  public aeks(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public aeks(TroopClassChoiceActivity paramTroopClassChoiceActivity) {}
   
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  public void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.a.a();
-      DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
-      DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
-    }
-    while ((this.a.jdField_a_of_type_Bjbs == null) || (!this.a.jdField_a_of_type_Bjbs.isShowing()) || (this.a.isFinishing())) {
+      this.a.a = bfkc.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getContext(), TroopClassChoiceActivity.a(this.a));
+      this.a.runOnUiThread(new TroopClassChoiceActivity.GetClassChoiceCallBack.1(this));
       return;
     }
-    this.a.jdField_a_of_type_Bjbs.dismiss();
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin != null))
-      {
-        paramString = ((anyw)this.a.app.getManager(51)).e(this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin + "");
-        if (paramString != null) {
-          this.a.d = paramString.name;
-        }
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("DiscussionInfoCardActivity", 2, "onUpdateFriendInfo get owner name failed");
+    QLog.e("IphoneTitleBarActivity", 1, "getClassChoiceFromServer failed!");
   }
 }
 

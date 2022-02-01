@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<animation-list android:oneshot="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:topLeftRadius="9.0dip" android:topRightRadius="9.0dip" />
-    <solid android:color="@color/al3" />
-</shape>
+    <item android:duration="100" android:drawable="@drawable/fzq" />
+    <item android:duration="100" android:drawable="@drawable/fzr" />
+    <item android:duration="100" android:drawable="@drawable/fzs" />
+    <item android:duration="100" android:drawable="@drawable/fzt" />
+    <item android:duration="100" android:drawable="@drawable/fzu" />
+    <item android:duration="100" android:drawable="@drawable/fzv" />
+    <item android:duration="100" android:drawable="@drawable/fzw" />
+    <item android:duration="100" android:drawable="@drawable/fzx" />
+    <item android:duration="100" android:drawable="@drawable/fzy" />
+    <item android:duration="100" android:drawable="@drawable/fzz" />
+    <item android:duration="100" android:drawable="@drawable/g00" />
+    <item android:duration="100" android:drawable="@drawable/g01" />
+    <item android:duration="100" android:drawable="@drawable/g02" />
+    <item android:duration="100" android:drawable="@drawable/g03" />
+    <item android:duration="100" android:drawable="@drawable/g04" />
+</animation-list>

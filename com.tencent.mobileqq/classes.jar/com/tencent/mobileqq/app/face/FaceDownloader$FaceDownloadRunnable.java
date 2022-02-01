@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.app.face;
 
 import android.os.Process;
-import aoor;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -10,75 +9,75 @@ import java.util.concurrent.atomic.AtomicInteger;
 class FaceDownloader$FaceDownloadRunnable
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = true;
+  private int index;
+  private boolean isRunning = true;
   
   public FaceDownloader$FaceDownloadRunnable(FaceDownloader paramFaceDownloader, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.index = paramInt;
   }
   
-  public void a()
+  public void close()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.isRunning = false;
   }
   
   public void run()
   {
-    Thread.currentThread().setName("FaceDownloadThread" + this.jdField_a_of_type_Int);
-    if (FaceDownloader.a(this.this$0).b != -2147483648) {
-      Process.setThreadPriority(FaceDownloader.a(this.this$0).b);
+    Thread.currentThread().setName("FaceDownloadThread" + this.index);
+    if (FaceDownloader.access$000(this.this$0).priority != -2147483648) {
+      Process.setThreadPriority(FaceDownloader.access$000(this.this$0).priority);
     }
     int j = 0;
     for (;;)
     {
       int i;
-      if (((j < FaceDownloader.a(this.this$0)) || (this.this$0.jdField_a_of_type_JavaUtilArrayList.size() > 0)) && (this.jdField_a_of_type_Boolean)) {
-        synchronized (this.this$0.jdField_a_of_type_JavaUtilArrayList)
+      if (((j < FaceDownloader.access$100(this.this$0)) || (this.this$0.mRequestQueue.size() > 0)) && (this.isRunning)) {
+        synchronized (this.this$0.mRequestQueue)
         {
-          i = this.this$0.jdField_a_of_type_JavaUtilArrayList.size();
+          i = this.this$0.mRequestQueue.size();
           if (i == 0) {
-            this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+            this.this$0.idleThreadCount.incrementAndGet();
           }
         }
       }
       try
       {
-        this.this$0.jdField_a_of_type_JavaUtilArrayList.wait(30000L);
-        this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
+        this.this$0.mRequestQueue.wait(30000L);
+        this.this$0.idleThreadCount.decrementAndGet();
         i = j + 1;
         FaceInfo localFaceInfo = null;
         j = i;
         if (localFaceInfo == null) {
           continue;
         }
-        this.this$0.a(localFaceInfo);
-        synchronized (this.this$0.jdField_a_of_type_JavaUtilHashSet)
+        this.this$0.doDownloadFace(localFaceInfo);
+        synchronized (this.this$0.mDownloadingUrlSet)
         {
-          this.this$0.jdField_a_of_type_JavaUtilHashSet.remove(localFaceInfo.c());
+          this.this$0.mDownloadingUrlSet.remove(localFaceInfo.c());
           Thread.yield();
           j = i;
           continue;
-          if (i > FaceDownloader.b(this.this$0))
+          if (i > FaceDownloader.access$200(this.this$0))
           {
-            localFaceInfo = (FaceInfo)this.this$0.jdField_a_of_type_JavaUtilArrayList.remove(i - 1);
+            localFaceInfo = (FaceInfo)this.this$0.mRequestQueue.remove(i - 1);
             break label405;
           }
-          localFaceInfo = (FaceInfo)this.this$0.jdField_a_of_type_JavaUtilArrayList.remove(0);
+          localFaceInfo = (FaceInfo)this.this$0.mRequestQueue.remove(0);
           break label405;
           localObject1 = finally;
           throw localObject1;
         }
-        synchronized (FaceDownloader.a(this.this$0))
+        synchronized (FaceDownloader.access$300(this.this$0))
         {
-          if ((FaceDownloader.a(this.this$0) != null) && (this.jdField_a_of_type_Int < FaceDownloader.a(this.this$0).length))
+          if ((FaceDownloader.access$300(this.this$0) != null) && (this.index < FaceDownloader.access$300(this.this$0).length))
           {
-            FaceDownloader.a(this.this$0)[this.jdField_a_of_type_Int] = null;
-            FaceDownloader.a(this.this$0)[this.jdField_a_of_type_Int] = null;
+            FaceDownloader.access$300(this.this$0)[this.index] = null;
+            FaceDownloader.access$400(this.this$0)[this.index] = null;
           }
-          this.this$0.b.decrementAndGet();
+          this.this$0.currThreadCount.decrementAndGet();
           if (QLog.isColorLevel()) {
-            QLog.d("Q.qqhead.FaceDownloader", 2, "FaceDownloadThread thread exit. isRunning=" + this.jdField_a_of_type_Boolean + ", id=" + this.jdField_a_of_type_Int);
+            QLog.d("Q.qqhead.FaceDownloader", 2, "FaceDownloadThread thread exit. isRunning=" + this.isRunning + ", id=" + this.index);
           }
           return;
         }
@@ -93,6 +92,11 @@ class FaceDownloader$FaceDownloadRunnable
         }
       }
     }
+  }
+  
+  public void setIndex(int paramInt)
+  {
+    this.index = paramInt;
   }
 }
 

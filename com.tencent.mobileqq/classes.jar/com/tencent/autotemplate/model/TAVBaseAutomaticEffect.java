@@ -11,11 +11,13 @@ import java.io.File;
 public class TAVBaseAutomaticEffect
   implements TAVDecodeAndEncodeBase
 {
+  public static final String EFFECT_TYPE_CUSTOM = "Custom";
   public static final String EFFECT_TYPE_LUT = "lut";
   public static final String EFFECT_TYPE_PAG = "pag";
   public static final String EFFECT_TYPE_PITU = "pitu";
   public static final String EFFECT_TYPE_TIME = "time";
   public static final String TYPE_FILTER = "filter";
+  public static final String TYPE_GRADIENT_FACE = "GradientFace";
   public static final String TYPE_SPEED = "Speed";
   @SerializedName("duration")
   public long duration;
@@ -45,9 +47,9 @@ public class TAVBaseAutomaticEffect
     return JsonUtils.encodeObjectToJsonString(this);
   }
   
-  public float getDuration()
+  public long getDuration()
   {
-    return (float)this.duration;
+    return this.duration;
   }
   
   public TAVBaseAutomaticEffect.TAVEffectType getEffectType()
@@ -63,6 +65,9 @@ public class TAVBaseAutomaticEffect
     }
     if ("time".equalsIgnoreCase(this.effectTypeStr)) {
       return TAVBaseAutomaticEffect.TAVEffectType.TAVEffectTypeTime;
+    }
+    if ("Custom".equalsIgnoreCase(this.effectTypeStr)) {
+      return TAVBaseAutomaticEffect.TAVEffectType.TAVEffectTypeCustom;
     }
     return TAVBaseAutomaticEffect.TAVEffectType.TAVEffectTypePAG;
   }
@@ -104,6 +109,14 @@ public class TAVBaseAutomaticEffect
       return TAVMovieSticker.TAVMovieStickerMode.TAVMovieStickerModeFilter;
     }
     return TAVMovieSticker.TAVMovieStickerMode.TAVMovieStickerModeOverlay;
+  }
+  
+  public int getProcMethod()
+  {
+    if (this.parameter != null) {
+      return this.parameter.procMethod;
+    }
+    return 0;
   }
   
   public float getSpeed()

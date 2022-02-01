@@ -1,46 +1,22 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.Rect;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.DragShadowBuilder;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@TargetApi(11)
-class aypm
-  extends View.DragShadowBuilder
+public class aypm
+  implements View.OnClickListener
 {
-  public int a;
+  public aypm(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public aypm(ayot paramayot, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Ayot.a.f * 1.4D));
-  }
-  
-  public void onDrawShadow(Canvas paramCanvas)
-  {
-    getView().setDrawingCacheEnabled(false);
-    getView().setDrawingCacheEnabled(true);
-    Object localObject = new Paint();
-    ((Paint)localObject).setShadowLayer(10.0F, 0.0F, 0.0F, -16777216);
-    paramCanvas.drawRect(new Rect(10, 10, this.jdField_a_of_type_Int + 10, this.jdField_a_of_type_Int + 10), (Paint)localObject);
-    localObject = getView().getDrawingCache();
-    Matrix localMatrix = new Matrix();
-    float f = this.jdField_a_of_type_Int / ((Bitmap)localObject).getWidth();
-    localMatrix.postScale(f, f);
-    paramCanvas.drawBitmap(Bitmap.createBitmap((Bitmap)localObject, 0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight(), localMatrix, true), 10.0F, 10.0F, null);
-  }
-  
-  public void onProvideShadowMetrics(Point paramPoint1, Point paramPoint2)
-  {
-    int i = this.jdField_a_of_type_Int + 20;
-    int j = this.jdField_a_of_type_Int + 20;
-    paramPoint1.set(i, j);
-    paramPoint2.set(i / 2, j / 2);
+    this.a.a(0);
+    this.a.b(false);
+    StickyNotePublishFragment.a(this.a).setImageResource(2130844704);
+    StickyNotePublishFragment.a(this.a).setContentDescription(this.a.getActivity().getString(2131690222));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

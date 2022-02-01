@@ -1,41 +1,37 @@
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awrx
+class awrx
   implements View.OnClickListener
 {
-  public awrx(LocationPickFragment paramLocationPickFragment, Activity paramActivity) {}
+  awrx(awrw paramawrw, long paramLong1, long paramLong2, long paramLong3) {}
   
   public void onClick(View paramView)
   {
-    int i = 2;
-    if (!bhnv.a())
+    Object localObject = paramView.getContext();
+    if ((localObject instanceof BaseActivity))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131693429, 0).a();
+      localObject = (BaseActivity)localObject;
+      if ((((BaseActivity)localObject).app == null) || (this.jdField_a_of_type_Long != Long.parseLong(((BaseActivity)localObject).app.getCurrentAccountUin()))) {}
+    }
+    for (int i = 2;; i = 3)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("&from=3");
+      ((StringBuilder)localObject).append("&mode=" + i);
+      ((StringBuilder)localObject).append("&now_id=" + this.b);
+      ((StringBuilder)localObject).append("&now_user_type=" + this.c);
+      localObject = "mqq://card/show_pslcard/?uin=" + this.jdField_a_of_type_Long + "&card_type=nearby" + ((StringBuilder)localObject).toString();
+      paramView.getContext().startActivity(new Intent(paramView.getContext(), JumpActivity.class).setData(Uri.parse((String)localObject)));
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    LocationRoom.Venue localVenue = LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a();
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationPickFragment", 2, "[venue] pick confirm click: venue: " + localVenue);
-    }
-    if (LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a()) {}
-    for (;;)
-    {
-      bdll.b(null, "CliOper", "", "", "0X800A962", "0X800A962", i, 0, "", "0", "0", "");
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_picked_location", localVenue);
-      this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-      break;
-      i = 1;
     }
   }
 }

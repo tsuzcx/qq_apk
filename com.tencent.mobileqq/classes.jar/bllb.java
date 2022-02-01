@@ -1,10 +1,17 @@
-import android.view.View;
+import android.graphics.Matrix;
+import android.support.annotation.NonNull;
+import dov.com.qq.im.aeeditor.module.clip.image.EditorPicInfo;
 
-public abstract interface bllb
+public class bllb
 {
-  public abstract void a(View paramView, int paramInt, long paramLong);
+  public Matrix a;
+  public EditorPicInfo a;
   
-  public abstract void b(View paramView, int paramInt, long paramLong);
+  @NonNull
+  public String toString()
+  {
+    return "AEPhotoCropInfoWrapper{editorPicInfo=" + this.jdField_a_of_type_DovComQqImAeeditorModuleClipImageEditorPicInfo + ", matrix=" + this.jdField_a_of_type_AndroidGraphicsMatrix + "}";
+  }
 }
 
 

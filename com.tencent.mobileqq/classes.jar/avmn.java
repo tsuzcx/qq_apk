@@ -1,8 +1,11 @@
-import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
-
-public class avmn
+public abstract interface avmn
+  extends avlu
 {
-  public void a(GameCenterSessionInfo paramGameCenterSessionInfo) {}
+  public abstract boolean a();
+  
+  public abstract void setIsFullScreen(boolean paramBoolean);
+  
+  public abstract void setSurfaceCreatelistener(avmq paramavmq);
 }
 
 

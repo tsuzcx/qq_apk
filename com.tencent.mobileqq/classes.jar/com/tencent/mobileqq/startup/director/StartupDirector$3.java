@@ -1,16 +1,28 @@
 package com.tencent.mobileqq.startup.director;
 
-import bdho;
-import com.tencent.mobileqq.splashad.SplashADView;
+import acjp;
+import anbx;
+import bcad;
+import bccs;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.startup.step.Step;
 
 public class StartupDirector$3
   implements Runnable
 {
-  public StartupDirector$3(bdho parambdho, SplashADView paramSplashADView) {}
+  public StartupDirector$3(bcad parambcad) {}
   
   public void run()
   {
-    this.a.e();
+    ThreadManager.initDPC();
+    anbx.a().a(DeviceProfileManager.a());
+    if (bcad.d != 0)
+    {
+      acjp.a().a(bcad.d);
+      bcad.d = 0;
+    }
+    bccs.b(30, this.this$0, null).step();
   }
 }
 

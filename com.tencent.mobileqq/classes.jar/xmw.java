@@ -1,20 +1,32 @@
 import android.support.annotation.NonNull;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public abstract interface xmw
+public class xmw
+  extends QQUIEventReceiver<StoryMessageListActivity, wci>
 {
-  public abstract List<xmz> a(List<xms> paramList);
+  public xmw(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
+  {
+    super(paramStoryMessageListActivity);
+  }
   
-  @NonNull
-  public abstract xmv a();
+  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull wci paramwci)
+  {
+    if (paramwci.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i(this.TAG, 2, "get userinfo come back. >>>>>> " + paramwci.jdField_a_of_type_JavaUtilList);
+      }
+      paramStoryMessageListActivity.g();
+    }
+  }
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt, xmy paramxmy);
-  
-  public abstract boolean a(xmt paramxmt);
-  
-  public abstract void b();
+  public Class acceptEventClass()
+  {
+    return wci.class;
+  }
 }
 
 

@@ -1,16 +1,6 @@
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.OpenFrame;
-import com.tencent.open.agent.SocialFriendChooser;
-
-class bjph
-  implements bjok
+public abstract interface bjph
 {
-  bjph(bjpg parambjpg) {}
-  
-  public void a()
-  {
-    ((OpenFrame)this.a.a.a.getCurrentView()).g();
-  }
+  public abstract int[] a();
 }
 
 

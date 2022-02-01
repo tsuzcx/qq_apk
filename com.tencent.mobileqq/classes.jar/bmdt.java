@@ -1,80 +1,28 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.widget.TextView;
+import dov.com.qq.im.aeeditor.lyric.interaction.MoreLyricLayout;
+import dov.com.qq.im.aeeditor.lyric.widget.LyricWithBuoyView;
 
-class bmdt
-  implements bmdy
+public class bmdt
+  implements bmee
 {
-  bmdt(bmdn parambmdn) {}
+  private bmdt(MoreLyricLayout paramMoreLyricLayout) {}
   
-  public void a()
+  public void a(long paramLong)
   {
-    QLog.e("AVEngineWalper", 1, "onExitRoomComplete");
-    if (this.a.jdField_a_of_type_Bkti != null) {
-      this.a.jdField_a_of_type_Bkti.a();
-    }
+    bmbx.a("MoreLyricLayout", "onScroll() position => " + paramLong);
+    MoreLyricLayout.a(this.a);
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(long paramLong1, long paramLong2)
   {
-    QLog.e("AVEngineWalper", 1, "onRoomDisconnect   result=" + paramInt + ", errinfo=" + paramString);
-    if (this.a.jdField_a_of_type_Bkti != null) {
-      this.a.jdField_a_of_type_Bkti.c(paramInt, paramString);
+    MoreLyricLayout.a(this.a, paramLong1);
+    String str = LyricWithBuoyView.a((int)paramLong1);
+    TextView localTextView = null;
+    if (MoreLyricLayout.a(this.a) != null) {
+      localTextView = MoreLyricLayout.a(this.a).a();
     }
-  }
-  
-  public void a(int paramInt, String[] paramArrayOfString)
-  {
-    int k = paramArrayOfString.length;
-    int j = 0;
-    String str;
-    if (j < k)
-    {
-      str = paramArrayOfString[j];
-      QLog.i("AVEngineWalper", 1, String.format("onEndpointsUpdateInfo|eventid=%d, id=%s", new Object[] { Integer.valueOf(paramInt), str }));
-      if (!this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-        break label237;
-      }
-    }
-    label237:
-    for (int i = ((Integer)this.a.jdField_a_of_type_JavaUtilMap.get(str)).intValue();; i = 0)
-    {
-      switch (paramInt)
-      {
-      default: 
-        label116:
-        if (i != 0) {
-          this.a.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(i));
-        }
-        break;
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        i |= 0x20;
-        break label116;
-        i &= 0xFFFFFFDF;
-        break label116;
-        i |= 0x1;
-        break label116;
-        i &= 0xFFFFFFFE;
-        break label116;
-        if (this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-          this.a.jdField_a_of_type_JavaUtilMap.remove(str);
-        }
-      }
-      if (this.a.jdField_a_of_type_Bkti != null) {
-        this.a.jdField_a_of_type_Bkti.a(paramInt, paramArrayOfString);
-      }
-      return;
-    }
-  }
-  
-  public void a(String[] paramArrayOfString)
-  {
-    QLog.e("AVEngineWalper", 1, "onSemiAutoRecvCameraVideo");
-    if (this.a.jdField_a_of_type_Bkti != null) {
-      this.a.jdField_a_of_type_Bkti.a(paramArrayOfString);
+    if (localTextView != null) {
+      localTextView.setText(str);
     }
   }
 }

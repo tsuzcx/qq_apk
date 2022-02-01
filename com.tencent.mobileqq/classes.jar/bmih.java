@@ -1,35 +1,33 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qappcenter.remote.SendMsg;
+import android.util.SparseArray;
+import com.tencent.tavcut.session.TAVCutImageSession;
+import dov.com.qq.im.ae.view.AECompoundButton;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
 
-class bmih
-  implements ServiceConnection
+public class bmih
+  implements bmld
 {
-  bmih(bmig parambmig) {}
+  public bmih(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + bmig.a(this.a));
-    }
-    this.a.a = bmid.a(paramIBinder);
-    if (bmig.a(this.a) != null)
+    if (AEEditorImageEditFragment.a(this.a) != null)
     {
-      paramComponentName = new SendMsg("cmd.registerListener");
-      paramComponentName.a = bmig.a(this.a);
-      this.a.b(paramComponentName);
+      AEEditorImageEditFragment.a(this.a).put(AEEditorImageEditFragment.a(this.a), null);
+      AEEditorImageEditFragment.a(this.a).removeFrame(AEEditorImageEditFragment.a(this.a));
     }
-    this.a.a();
+    AEEditorImageEditFragment.a(this.a).setForegroundResource(2130837740);
+    bmbc.a().c(null);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + bmig.a(this.a));
+    if (AEEditorImageEditFragment.a(this.a) != null)
+    {
+      AEEditorImageEditFragment.a(this.a).put(AEEditorImageEditFragment.a(this.a), paramString);
+      AEEditorImageEditFragment.a(this.a).addFrame(AEEditorImageEditFragment.a(this.a), bmkn.d, paramString);
     }
-    this.a.a = null;
+    AEEditorImageEditFragment.a(this.a).setForegroundResource(2130837741);
+    bmbc.a().c(paramString);
   }
 }
 

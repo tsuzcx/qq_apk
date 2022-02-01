@@ -1,43 +1,13 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
 
-public class ajgz
-  implements ajwd
+class ajgz
+  implements bjoy
 {
-  public ajgz(TroopView paramTroopView) {}
+  ajgz(ajgy paramajgy, View paramView) {}
   
   public void a()
   {
-    if (bduy.a())
-    {
-      localMessage = TroopView.a(this.a).obtainMessage(15);
-      TroopView.a(this.a).sendMessage(localMessage);
-    }
-    do
-    {
-      return;
-      if (!bhnv.g(BaseApplication.getContext())) {
-        break label105;
-      }
-      if (this.a.a.size() <= 0) {
-        break;
-      }
-    } while ((TroopView.a(this.a) == null) || (TroopView.a(this.a) == null));
-    TroopView.a(this.a).c(TroopView.a(this.a).getCurrentItem());
-    return;
-    TroopView.b(this.a);
-    return;
-    label105:
-    if (QLog.isColorLevel()) {
-      QLog.d("addContacts.TroopView", 2, "refresh falied. network unavailable");
-    }
-    Message localMessage = TroopView.a(this.a).obtainMessage(13);
-    TroopView.a(this.a).sendMessageDelayed(localMessage, 1000L);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

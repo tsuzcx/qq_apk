@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:paddingTop="14.5dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_gravity="left" android:id="@id/n02" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mobileqq.now.widget.CircleImageView android:layout_gravity="start|center" android:id="@id/a35" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="13.0dip" android:src="@drawable/account_panel_add_icon" />
-        <TextView android:textSize="18.0sp" android:textColor="@color/afy" android:id="@id/tv_name" android:paddingLeft="45.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hello World!" />
-    </FrameLayout>
-    <FrameLayout android:layout_gravity="right" android:id="@id/n00" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="14.0dip">
-        <ImageView android:layout_gravity="end|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/fom" />
-        <TextView android:textSize="12.0sp" android:textColor="@color/afw" android:gravity="center" android:layout_gravity="end|center" android:id="@id/nth" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginRight="12.0dip" android:text="@string/wn4" />
-    </FrameLayout>
-    <android.support.v7.widget.RecyclerView android:id="@id/mo6" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="13.0dip" android:layout_below="@id/n03" />
-</FrameLayout>
+    <include android:id="@id/title" android:layout_width="fill_parent" android:layout_height="@dimen/b8m" layout="@layout/ap9" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:gravity="center_vertical" android:id="@id/nk0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="38.0dip" android:layout_marginLeft="15.0dip" />
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/njz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff878b99" android:gravity="center_vertical" android:id="@id/n8e" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="38.0dip" android:layout_marginLeft="15.0dip" />
+    <ListView android:id="@id/n8d" android:visibility="gone" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:divider="@null" android:overScrollMode="never" />
+</LinearLayout>

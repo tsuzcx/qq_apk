@@ -1,65 +1,68 @@
-import com.tencent.biz.now.NowVideoView;
-import com.tencent.image.AbsThirdDataSourceAdapter;
-import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.TroopAppInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public class nqu
-  extends AbsThirdDataSourceAdapter
+class nqu
+  implements BusinessObserver
 {
-  int jdField_a_of_type_Int = 0;
-  AbsThirdDataSourceAdapter.OnPreparedCallback jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback;
-  String jdField_a_of_type_JavaLangString;
+  nqu(nqt paramnqt, boolean paramBoolean) {}
   
-  public nqu(NowVideoView paramNowVideoView) {}
-  
-  public boolean a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (!this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_Nql.a(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time)) {
-      return true;
-    }
-    if (this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      String str = (String)this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() - 1);
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_JavaLangString = str;
-      if ((this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback != null) && (this.jdField_a_of_type_ComTencentBizNowNowVideoView.d == 0))
-      {
-        this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback.onPrepared();
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public int getPlayType()
-  {
-    return 1;
-  }
-  
-  public int getStaus()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String getURL()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void requestPrepare(String paramString, AbsThirdDataSourceAdapter.OnPreparedCallback paramOnPreparedCallback)
-  {
-    this.jdField_a_of_type_ComTencentImageAbsThirdDataSourceAdapter$OnPreparedCallback = paramOnPreparedCallback;
-    if (this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() > 0)
-    {
-      paramString = (String)this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaUtilList.size() - 1);
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_JavaLangString = paramString;
-      paramOnPreparedCallback.onPrepared();
+    if (this.jdField_a_of_type_Nqt.jdField_a_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_Nql.a(this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizNowNowVideoView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time);
+    if ((!paramBoolean) || (paramBundle == null))
+    {
+      nqt.a(this.jdField_a_of_type_Nqt);
+      return;
+    }
+    paramBundle = paramBundle.getByteArray("data");
+    Object localObject = new oidb_sso.OIDBSSOPkg();
+    try
+    {
+      ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramBundle);
+      if ((localObject == null) || (!((oidb_sso.OIDBSSOPkg)localObject).uint32_result.has()) || (((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get() != 0) || (!((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.has()) || (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get() == null))
+      {
+        nqt.a(this.jdField_a_of_type_Nqt);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopCardAppInfoHandler", 2, "handleGetTroopAppBriefList error " + QLog.getStackTraceString(paramBundle));
+      }
+      nqt.a(this.jdField_a_of_type_Nqt);
+      return;
+    }
+    localObject = nqt.a(this.jdField_a_of_type_Nqt, (oidb_sso.OIDBSSOPkg)localObject);
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        nqt.a(this.jdField_a_of_type_Nqt, (List)localObject);
+        return;
+      }
+      paramBundle = new ArrayList();
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Long localLong = (Long)((Iterator)localObject).next();
+        new TroopAppInfo().appId = localLong.longValue();
+      }
+      nqt.a(this.jdField_a_of_type_Nqt, paramBundle);
+      return;
+    }
+    nqt.a(this.jdField_a_of_type_Nqt);
   }
 }
 

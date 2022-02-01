@@ -1,14 +1,11 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-public class wol
+public abstract interface wol
 {
-  public static void a(Object paramObject)
-  {
-    if ((paramObject instanceof QQAppInterface)) {
-      wom.a = new WeakReference((QQAppInterface)paramObject);
-    }
-  }
+  public abstract void a(ErrorMessage paramErrorMessage, List<wod> paramList);
+  
+  public abstract void a(List<woe> paramList, boolean paramBoolean);
 }
 
 

@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-class beol
-  extends beox
+public abstract interface beol
 {
-  beol(beoh parambeoh, EditorState paramEditorState, List paramList)
-  {
-    super(parambeoh, paramEditorState, paramList);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void a(EditorState paramEditorState)
-  {
-    super.a(paramEditorState);
-    if (!arkn.a(beoh.a(this.a))) {
-      beoh.a(this.a).a(false, false);
-    }
-  }
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder);
+  
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean);
+  
+  public abstract void b(RecyclerView.ViewHolder paramViewHolder);
+  
+  public abstract void c(RecyclerView.ViewHolder paramViewHolder);
+  
+  public abstract void d(RecyclerView.ViewHolder paramViewHolder);
 }
 
 

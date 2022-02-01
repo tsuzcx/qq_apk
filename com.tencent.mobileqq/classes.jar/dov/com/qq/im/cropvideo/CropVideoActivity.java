@@ -1,7 +1,7 @@
 package dov.com.qq.im.cropvideo;
 
 import Override;
-import android.app.Activity;
+import amtj;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -28,15 +28,14 @@ import android.view.View.OnClickListener;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anzj;
-import bhhz;
-import bpxe;
-import bpxf;
-import bpxg;
-import bpxh;
-import bpxi;
-import bpxk;
-import bpxn;
+import bnab;
+import bnac;
+import bnad;
+import bnae;
+import bnaf;
+import bnah;
+import bnak;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
 import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -48,8 +47,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-import lqq;
-import zqi;
+import lpy;
 
 public class CropVideoActivity
   extends BaseActivity
@@ -65,11 +63,11 @@ public class CropVideoActivity
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private bpxn jdField_a_of_type_Bpxn;
+  private bnak jdField_a_of_type_Bnak;
   private RegionView jdField_a_of_type_DovComQqImCropvideoRegionView;
   public Runnable a;
   private String jdField_a_of_type_JavaLangString;
-  private lqq jdField_a_of_type_Lqq;
+  private lpy jdField_a_of_type_Lpy;
   private boolean jdField_a_of_type_Boolean;
   private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
   private int jdField_b_of_type_Int;
@@ -89,7 +87,7 @@ public class CropVideoActivity
   public CropVideoActivity()
   {
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new bpxi(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bnaf(this);
     this.jdField_a_of_type_JavaLangRunnable = new CropVideoActivity.6(this);
   }
   
@@ -141,9 +139,9 @@ public class CropVideoActivity
           k = Integer.parseInt(str1);
           m = Integer.parseInt(str2);
           i2 = Integer.parseInt(paramString);
-          paramString = this.jdField_a_of_type_Bpxn.a();
-          n = this.jdField_a_of_type_Bpxn.a();
-          i1 = this.jdField_a_of_type_Bpxn.b();
+          paramString = this.jdField_a_of_type_Bnak.a();
+          n = this.jdField_a_of_type_Bnak.a();
+          i1 = this.jdField_a_of_type_Bnak.b();
           i3 = this.jdField_a_of_type_DovComQqImCropvideoRegionView.c();
           i4 = this.jdField_a_of_type_DovComQqImCropvideoRegionView.d();
           if (Build.VERSION.SDK_INT >= 21)
@@ -232,33 +230,10 @@ public class CropVideoActivity
     }
   }
   
-  public static void a(Activity paramActivity, long paramLong1, long paramLong2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "jumpToCropVideoActivity videoPath: " + paramString + ", startTime: " + paramLong1 + ", endTime: " + paramLong2);
-    }
-    Intent localIntent = new Intent(paramActivity, CropVideoActivity.class);
-    localIntent.putExtra("PhotoConst.CLIP_WIDTH", 750);
-    localIntent.putExtra("PhotoConst.CLIP_HEIGHT", 520);
-    localIntent.putExtra("PhotoConst.TARGET_WIDTH", 750);
-    localIntent.putExtra("PhotoConst.TARGET_HEIGHT", 520);
-    int k = bhhz.c(paramActivity);
-    int m = k * 520 / 750;
-    localIntent.putExtra("PhotoConst.CLIP_WIDTH", k);
-    localIntent.putExtra("PhotoConst.CLIP_HEIGHT", m);
-    localIntent.putExtra("PhotoConst.TARGET_WIDTH", 750);
-    localIntent.putExtra("PhotoConst.TARGET_HEIGHT", 520);
-    localIntent.putExtra("video_start_time", paramLong1);
-    localIntent.putExtra("video_end_time", paramLong2);
-    localIntent.putExtra("video_local_path", paramString);
-    localIntent.addFlags(603979776);
-    paramActivity.startActivity(localIntent);
-  }
-  
   private void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2)
   {
-    zqi localzqi = zqi.a(getApplicationContext());
-    if (localzqi.a())
+    FFmpeg localFFmpeg = FFmpeg.getInstance(getApplicationContext());
+    if (localFFmpeg.isFFmpegCommandRunning())
     {
       if (QLog.isColorLevel()) {
         QLog.d("CropVideoActivity", 2, "ffmpeg is running!");
@@ -282,7 +257,7 @@ public class CropVideoActivity
     localArrayList.add(paramString2);
     try
     {
-      localzqi.a((String[])localArrayList.toArray(new String[0]), new bpxk(this));
+      localFFmpeg.execute((String[])localArrayList.toArray(new String[0]), new bnah(this));
       return;
     }
     catch (FFmpegCommandAlreadyRunningException paramString1)
@@ -299,12 +274,12 @@ public class CropVideoActivity
   {
     if (this.jdField_a_of_type_AndroidAppProgressDialog == null)
     {
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(this, 2131755824);
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(this, 2131755826);
       this.jdField_a_of_type_AndroidAppProgressDialog.setCanceledOnTouchOutside(false);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559572);
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559574);
     }
-    ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131372578)).setText(anzj.a(2131701532));
+    ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131372546)).setText(amtj.a(2131701767));
     if ((!this.jdField_a_of_type_AndroidAppProgressDialog.isShowing()) && (!isFinishing())) {
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
     }
@@ -328,14 +303,15 @@ public class CropVideoActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    super.setContentView(2131560959);
+    super.setContentView(2131560839);
     super.doOnCreate(paramBundle);
     if (QLog.isColorLevel()) {
       QLog.i("CropVideoActivity", 2, "doOnCreate");
@@ -346,7 +322,7 @@ public class CropVideoActivity
       this.mSystemBarComp.setStatusBarColor(0);
       this.mSystemBarComp.setStatusDrawable(null);
       k = ImmersiveUtils.getStatusBarHeight(this);
-      paramBundle = findViewById(2131364062);
+      paramBundle = findViewById(2131364085);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramBundle.getLayoutParams();
       localLayoutParams.topMargin = (k + localLayoutParams.topMargin);
       paramBundle.setLayoutParams(localLayoutParams);
@@ -360,14 +336,14 @@ public class CropVideoActivity
     int m = paramBundle.getIntExtra("PhotoConst.CLIP_HEIGHT", 520);
     int n = paramBundle.getIntExtra("PhotoConst.TARGET_WIDTH", 750);
     int i1 = paramBundle.getIntExtra("PhotoConst.TARGET_HEIGHT", 520);
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = ((GLSurfaceView)findViewById(2131367593));
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = ((GLSurfaceView)findViewById(2131367622));
     this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setEGLContextClientVersion(2);
     this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setRenderer(this);
     this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setRenderMode(0);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373040));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373010));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(100);
-    this.jdField_a_of_type_DovComQqImCropvideoRegionView = ((RegionView)findViewById(2131376454));
+    this.jdField_a_of_type_DovComQqImCropvideoRegionView = ((RegionView)findViewById(2131376222));
     this.jdField_a_of_type_DovComQqImCropvideoRegionView.setMaskColor(-2147483648);
     this.jdField_a_of_type_DovComQqImCropvideoRegionView.setUsedARGB(true);
     this.jdField_a_of_type_DovComQqImCropvideoRegionView.setMaskShapeType(1);
@@ -375,12 +351,12 @@ public class CropVideoActivity
     this.jdField_a_of_type_DovComQqImCropvideoRegionView.setTargetHeight(i1);
     this.jdField_a_of_type_DovComQqImCropvideoRegionView.setClipWidth(k);
     this.jdField_a_of_type_DovComQqImCropvideoRegionView.setClipHeight(m);
-    findViewById(2131364153).setOnClickListener(this);
-    findViewById(2131365210).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this, new bpxe(this));
-    this.jdField_a_of_type_Lqq = new lqq(this, new bpxf(this));
-    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(this, new bpxg(this));
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setOnTouchListener(new bpxh(this));
+    findViewById(2131364175).setOnClickListener(this);
+    findViewById(2131365235).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this, new bnab(this));
+    this.jdField_a_of_type_Lpy = new lpy(this, new bnac(this));
+    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(this, new bnad(this));
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setOnTouchListener(new bnae(this));
     this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
     try
     {
@@ -482,10 +458,10 @@ public class CropVideoActivity
       {
         this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
         this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
-        this.jdField_a_of_type_Bpxn.a(this.jdField_a_of_type_ArrayOfFloat);
+        this.jdField_a_of_type_Bnak.a(this.jdField_a_of_type_ArrayOfFloat);
         this.jdField_a_of_type_Boolean = false;
       }
-      this.jdField_a_of_type_Bpxn.a(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bnak.a(this.jdField_a_of_type_Int);
       return;
     }
     finally {}
@@ -511,14 +487,14 @@ public class CropVideoActivity
     if (QLog.isColorLevel()) {
       QLog.d("CropVideoActivity", 2, "onSurfaceChanged width: " + paramInt1 + ", height: " + paramInt2);
     }
-    this.jdField_a_of_type_Bpxn.b(paramInt1, paramInt2);
+    this.jdField_a_of_type_Bnak.b(paramInt1, paramInt2);
     int n = this.jdField_a_of_type_DovComQqImCropvideoRegionView.a();
     int m = this.jdField_a_of_type_DovComQqImCropvideoRegionView.b();
     int k = (paramInt1 - n) / 2;
     paramInt1 = (n + paramInt1) / 2;
     n = (paramInt2 - m) / 2;
     paramInt2 = (m + paramInt2) / 2;
-    this.jdField_a_of_type_Bpxn.a(k, n, paramInt1, paramInt2);
+    this.jdField_a_of_type_Bnak.a(k, n, paramInt1, paramInt2);
   }
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
@@ -526,12 +502,12 @@ public class CropVideoActivity
     if (QLog.isColorLevel()) {
       QLog.d("CropVideoActivity", 2, "onSurfaceCreated");
     }
-    if (this.jdField_a_of_type_Bpxn == null)
+    if (this.jdField_a_of_type_Bnak == null)
     {
-      this.jdField_a_of_type_Bpxn = new bpxn();
-      this.jdField_a_of_type_Bpxn.a();
-      this.jdField_a_of_type_Bpxn.b(4.0F);
-      this.jdField_a_of_type_Bpxn.a(1.0F);
+      this.jdField_a_of_type_Bnak = new bnak();
+      this.jdField_a_of_type_Bnak.a();
+      this.jdField_a_of_type_Bnak.b(4.0F);
+      this.jdField_a_of_type_Bnak.a(1.0F);
     }
     if (this.jdField_a_of_type_Int == -1)
     {
@@ -580,7 +556,7 @@ public class CropVideoActivity
     if (QLog.isColorLevel()) {
       QLog.d("CropVideoActivity", 2, "onVideoSizeChanged: " + paramInt1 + " " + paramInt2);
     }
-    this.jdField_a_of_type_Bpxn.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Bnak.a(paramInt1, paramInt2);
   }
 }
 

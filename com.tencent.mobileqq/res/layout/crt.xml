@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/mmp" android:paddingBottom="3.0dip" android:visibility="invisible" android:layout_width="@dimen/bb9" android:layout_height="@dimen/b66" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/nnm" android:layout_width="@dimen/bb_" android:layout_height="@dimen/bb_" android:layout_marginLeft="@dimen/bba" android:scaleType="fitCenter" android:layout_toRightOf="@id/mmp" android:layout_alignTop="@id/mmp" />
-    <ImageView android:id="@id/mgn" android:background="@drawable/gt8" android:visibility="invisible" android:layout_width="@dimen/bbh" android:layout_height="@dimen/bbf" android:layout_marginLeft="@dimen/bbg" android:layout_alignLeft="@id/nnm" android:layout_alignTop="@id/mmp" />
-    <ImageView android:id="@id/nnp" android:layout_width="@dimen/bbe" android:layout_height="@dimen/bbe" android:layout_marginTop="@dimen/bbb" android:layout_marginRight="@dimen/bbd" android:layout_alignRight="@id/mgn" />
-    <View android:id="@id/mmo" android:background="@drawable/gt8" android:visibility="invisible" android:layout_width="@dimen/bbh" android:layout_height="@dimen/bbf" android:layout_marginTop="@dimen/bbc" android:layout_alignTop="@id/nnp" android:layout_alignRight="@id/mgn" />
-</RelativeLayout>

@@ -1,91 +1,22 @@
-import android.net.Network;
-import android.support.annotation.RequiresApi;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-@RequiresApi(api=21)
 class awvk
-  implements awvj
+  implements View.OnTouchListener
 {
-  private Network jdField_a_of_type_AndroidNetNetwork;
-  private awvj jdField_a_of_type_Awvj;
+  awvk(awur paramawur) {}
   
-  awvk(awvj paramawvj, Network paramNetwork)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Awvj = paramawvj;
-    this.jdField_a_of_type_AndroidNetNetwork = paramNetwork;
-  }
-  
-  private void a()
-  {
-    try
-    {
-      if (awvg.b() != null) {
-        awvg.b().a();
-      }
-      return;
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      this.a.a.findViewById(2131377267).setAlpha(0.5F);
     }
-    finally {}
-  }
-  
-  private boolean a()
-  {
-    boolean bool = true;
     for (;;)
     {
-      try
-      {
-        if (awvg.b() == null) {
-          return true;
-        }
-        if (!this.jdField_a_of_type_AndroidNetNetwork.equals(awvg.b(awvg.b()))) {
-          return bool;
-        }
-      }
-      finally {}
-      bool = false;
+      return false;
+      this.a.a.findViewById(2131377267).setAlpha(1.0F);
     }
-  }
-  
-  public void a(int paramInt, Exception paramException)
-  {
-    if (a())
-    {
-      QLog.d("GateWayVerifyManager", 1, "GatewayCallbackWrapper onGetTokenError, but this request is expired");
-      return;
-    }
-    a();
-    this.jdField_a_of_type_Awvj.a(paramInt, paramException);
-  }
-  
-  public void a(Exception paramException)
-  {
-    if (a())
-    {
-      QLog.d("GateWayVerifyManager", 1, "GatewayCallbackWrapper onChangeNetworkError, but this request is expired");
-      return;
-    }
-    a();
-    this.jdField_a_of_type_Awvj.a(paramException);
-  }
-  
-  public void a(String paramString)
-  {
-    if (a())
-    {
-      QLog.d("GateWayVerifyManager", 1, "GatewayCallbackWrapper onRedirect, but this request is expired");
-      return;
-    }
-    this.jdField_a_of_type_Awvj.a(paramString);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (a())
-    {
-      QLog.d("GateWayVerifyManager", 1, "GatewayCallbackWrapper onResponse, bbut this request is expired");
-      return;
-    }
-    this.jdField_a_of_type_Awvj.a(paramString1, paramString2);
   }
 }
 

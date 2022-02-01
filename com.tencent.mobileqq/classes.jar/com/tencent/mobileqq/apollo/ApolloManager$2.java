@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.apollo;
 
-import alih;
-import amsx;
-import amvf;
-import amys;
+import alnr;
+import alpz;
+import altm;
+import amal;
+import amhk;
+import amhn;
+import amil;
+import amio;
+import amip;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import anfr;
-import anmq;
-import anmt;
-import annr;
-import annu;
-import annv;
-import bhmi;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.utils.OSUtils;
 import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Timer;
@@ -25,7 +25,7 @@ import java.util.Timer;
 public class ApolloManager$2
   implements Runnable
 {
-  public ApolloManager$2(amsx paramamsx) {}
+  public ApolloManager$2(alnr paramalnr) {}
   
   public void run()
   {
@@ -38,25 +38,25 @@ public class ApolloManager$2
       if (QLog.isColorLevel()) {
         l = System.currentTimeMillis();
       }
-      amsx.a(this.this$0);
-      amsx.b(this.this$0);
-      bhmi.c(annv.a + "/.nomedia");
+      alnr.a(this.this$0);
+      alnr.b(this.this$0);
+      FileUtils.createFileIfNotExits(amip.a + "/.nomedia");
       this.this$0.a();
-      anmq.a(new anmt().a(1).a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).a());
-      new anfr(0, null);
-      amsx.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
-      amsx.b(false);
+      amhk.a(new amhn().a(1).a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).a());
+      new amal(0, null);
+      alnr.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
+      alnr.b(false);
       localObject = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_pet_sp", 0);
       this.this$0.j = ((SharedPreferences)localObject).getString("pet_config", null);
       if (QLog.isColorLevel()) {
         QLog.d("ApolloManager", 2, "init apollo data from db done cost: " + (System.currentTimeMillis() - l) + ", mApp: " + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
-      amys.a();
-      annr.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      amsx.b = true;
+      altm.a();
+      amil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      alnr.b = true;
       this.this$0.k();
       ApolloUtil.a();
-      amvf.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, false);
+      alpz.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, false);
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
       {
         localObject = this.this$0.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
@@ -68,14 +68,14 @@ public class ApolloManager$2
         }
       }
       CmGameCmdChannel.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      new File(annv.i).mkdirs();
-      localObject = alih.b();
+      new File(amip.i).mkdirs();
+      localObject = OSUtils.getEMUIVersion();
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         if (!((String)localObject).contains("EmotionUI ")) {
           break label422;
         }
-        if (annu.a(((String)localObject).substring("EmotionUI ".length()), "10") < 0) {
+        if (amio.a(((String)localObject).substring("EmotionUI ".length()), "10") < 0) {
           break label459;
         }
         bool1 = true;
@@ -93,7 +93,7 @@ public class ApolloManager$2
       if (((String)localObject).contains("EmotionUI_"))
       {
         bool1 = bool2;
-        if (annu.a(((String)localObject).substring("EmotionUI ".length()), "10") >= 0)
+        if (amio.a(((String)localObject).substring("EmotionUI ".length()), "10") >= 0)
         {
           bool1 = true;
           continue;

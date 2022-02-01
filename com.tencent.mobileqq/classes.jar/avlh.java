@@ -1,122 +1,88 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ConversationInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.message.TinyInfo;
+import android.os.Vibrator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.concurrent.CountDownLatch;
 
-public class avlh
+class avlh
+  implements avlt
 {
-  public static avlh a()
-  {
-    return avlj.a;
-  }
+  avlh(avlg paramavlg) {}
   
-  private boolean a(ConversationInfo paramConversationInfo)
+  public void a()
   {
-    if (TextUtils.isEmpty(paramConversationInfo.extString))
-    {
-      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "isValid() called, info is invalid!" + paramConversationInfo);
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("Action", 2, "fun startMagicPlay begins, sumPlayTimes:" + this.a.jdField_c_of_type_Int + ",actionGlobalData.openSound:" + this.a.jdField_a_of_type_Avli.d);
     }
-    if ((paramConversationInfo.tinyInfo == null) || (TextUtils.isEmpty(paramConversationInfo.tinyInfo.fromRoleId)) || (TextUtils.isEmpty(paramConversationInfo.tinyInfo.toRoleId)))
+    Object localObject;
+    if (this.a.jdField_c_of_type_Int == 0)
     {
-      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "isValid() called, info is invalid!" + paramConversationInfo);
-      return false;
-    }
-    return true;
-  }
-  
-  @Nullable
-  public ConversationInfo a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    if (paramQQAppInterface == null)
-    {
-      paramQQAppInterface = null;
-      return paramQQAppInterface;
-    }
-    ConversationInfo localConversationInfo = paramQQAppInterface.a().a(paramString, paramInt);
-    if (localConversationInfo != null)
-    {
-      paramQQAppInterface = paramQQAppInterface.a(10007).a(paramString, paramInt);
-      if (paramQQAppInterface == null) {
-        break label116;
-      }
-      paramString = paramQQAppInterface.getExtInfoFromExtStr("ext_key_game_msg_info");
-      if (!TextUtils.isEmpty(paramString))
+      this.a.b();
+      if ((this.a.jdField_a_of_type_Avlw.c != null) && (this.a.jdField_a_of_type_Avlw.c.length() > 0) && (this.a.jdField_a_of_type_Avli.d))
       {
-        localConversationInfo.tinyInfo = new TinyInfo(paramString, paramQQAppInterface.isSend());
-        localConversationInfo.extString = paramString;
+        if (this.a.jdField_a_of_type_Avlw.e > 0)
+        {
+          localObject = this.a.jdField_a_of_type_Avlw;
+          ((avlw)localObject).e -= 1;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Action", 2, "fun startMagicPlay begins, start play Sound.");
+        }
+        this.a.jdField_a_of_type_Avmi.a(this.a.jdField_a_of_type_Avlw.c, this.a.jdField_a_of_type_Avlw.e);
+      }
+      if (this.a.jdField_a_of_type_Avlw.a)
+      {
+        this.a.jdField_a_of_type_AndroidOsVibrator = ((Vibrator)BaseApplicationImpl.getContext().getSystemService("vibrator"));
+        if (this.a.jdField_a_of_type_Avlw.h != -1) {
+          break label311;
+        }
+        this.a.jdField_a_of_type_AndroidOsVibrator.vibrate(new long[] { 0L, 1000L }, 0);
       }
     }
     for (;;)
     {
-      paramQQAppInterface = localConversationInfo;
-      if (!QLog.isColorLevel()) {
-        break;
+      localObject = this.a;
+      ((avlg)localObject).jdField_c_of_type_Int += 1;
+      if (QLog.isColorLevel()) {
+        QLog.d("Action", 2, "fun startMagicPlay ends, sumPlayTimes:" + this.a.jdField_c_of_type_Int);
       }
-      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfo info = " + localConversationInfo);
-      return localConversationInfo;
-      label116:
-      if (!TextUtils.isEmpty(localConversationInfo.extString)) {
-        localConversationInfo.tinyInfo = new TinyInfo(localConversationInfo.extString);
-      }
+      return;
+      label311:
+      this.a.jdField_a_of_type_AndroidOsVibrator.vibrate(this.a.jdField_a_of_type_Avlw.h * 1000);
     }
   }
   
-  public List<ConversationInfo> a(QQAppInterface paramQQAppInterface)
+  public void b()
   {
-    Object localObject = paramQQAppInterface.a().a();
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((Set)localObject).iterator();
-    label241:
-    while (((Iterator)localObject).hasNext())
+    if (QLog.isColorLevel()) {
+      QLog.d("Action", 2, "func endMagicPlay begins, isStop:" + this.a.jdField_c_of_type_Boolean + ",timeout:" + this.a.jdField_a_of_type_Int + ",playTimes:" + this.a.jdField_b_of_type_Int + ",sumPlayTimes:" + this.a.jdField_c_of_type_Int + ",isTimeout:" + this.a.jdField_b_of_type_Boolean);
+    }
+    if (this.a.jdField_c_of_type_Boolean) {
+      this.a.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    }
+    do
     {
-      ConversationInfo localConversationInfo = (ConversationInfo)((Iterator)localObject).next();
-      if (localConversationInfo.type == 10007)
+      return;
+      if (this.a.jdField_a_of_type_Int == -1)
       {
-        MessageRecord localMessageRecord = paramQQAppInterface.a(10007).a(localConversationInfo.uin, localConversationInfo.type);
-        if (localMessageRecord != null)
+        if (this.a.jdField_b_of_type_Int == -1)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList item = " + localMessageRecord.getBaseInfoString());
-          }
-          String str = localMessageRecord.getExtInfoFromExtStr("ext_key_game_msg_info");
-          if (!TextUtils.isEmpty(str))
-          {
-            localConversationInfo.extString = str;
-            localConversationInfo.tinyInfo = new TinyInfo(str, localMessageRecord.isSend());
-          }
+          this.a.jdField_a_of_type_Avmi.a(this.a.jdField_a_of_type_Avlw);
+          return;
         }
-        for (;;)
+        if (this.a.jdField_b_of_type_Int > this.a.jdField_c_of_type_Int)
         {
-          if (!a(localConversationInfo)) {
-            break label241;
-          }
-          localArrayList.add(localConversationInfo);
-          break;
-          if (!TextUtils.isEmpty(localConversationInfo.extString))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList info = " + localConversationInfo);
-            }
-            localConversationInfo.tinyInfo = new TinyInfo(localConversationInfo.extString);
-          }
+          this.a.jdField_a_of_type_Avmi.a(this.a.jdField_a_of_type_Avlw);
+          return;
+        }
+        if (this.a.jdField_b_of_type_Int == this.a.jdField_c_of_type_Int)
+        {
+          this.a.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+          return;
         }
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList mock before = " + localArrayList);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.tiny_msg.unread.TinyConvProxy", 2, "getTinyConvInfoList size = " + localArrayList.size());
-    }
-    return localArrayList;
+    } while (this.a.jdField_b_of_type_Boolean);
+    this.a.jdField_a_of_type_Avmi.a(this.a.jdField_a_of_type_Avlw);
   }
 }
 

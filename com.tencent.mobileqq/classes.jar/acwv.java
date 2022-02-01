@@ -1,45 +1,22 @@
 import android.content.Context;
-import com.tencent.ad.tangram.canvas.report.AdDMPReportUtil;
-import com.tencent.ad.tangram.canvas.views.form.AdFormData;
-import com.tencent.ad.tangram.canvas.views.form.AdFormError;
-import com.tencent.ad.tangram.canvas.views.form.framework.AdFormCommitListener;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.views.form.framework.GdtFormCommitUtil.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class acwv
+public final class acwv
+  implements DialogInterface.OnClickListener
 {
-  public static void a(Context paramContext, GdtAd paramGdtAd, AdFormData paramAdFormData, WeakReference<AdFormCommitListener> paramWeakReference)
-  {
-    if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
-      ((AdFormCommitListener)paramWeakReference.get()).beforeCommit();
-    }
-    ThreadManager.post(new GdtFormCommitUtil.1(paramContext, paramGdtAd, paramAdFormData, paramWeakReference), 5, null, true);
-  }
+  public acwv(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener, String paramString, int paramInt3) {}
   
-  private static AdFormError b(Context paramContext, GdtAd paramGdtAd, AdFormData paramAdFormData)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject;
-    if ((paramGdtAd == null) || (!paramGdtAd.isValid()) || (paramGdtAd.actionSetId == -2147483648L) || (paramAdFormData == null) || (!paramAdFormData.isValid()))
-    {
-      acvc.d("GdtFormCommitUtil", "commit error");
-      localObject = new AdFormError(4, -1, null);
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
+    bcef.b(null, "dc00899", "Grp_video", "", "video_jump", "Clk_jump", 0, 0, this.jdField_a_of_type_JavaLangString + "", this.c + "", "0", "");
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    AdFormError localAdFormError;
-    do
-    {
-      do
-      {
-        return localObject;
-        acww.a(paramContext, paramGdtAd, paramAdFormData);
-        localAdFormError = acxc.a(paramAdFormData);
-        localObject = localAdFormError;
-      } while (localAdFormError == null);
-      localObject = localAdFormError;
-    } while (localAdFormError.type != 1);
-    AdDMPReportUtil.reportUpload(paramContext, paramGdtAd, paramAdFormData);
-    return localAdFormError;
   }
 }
 

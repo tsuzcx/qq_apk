@@ -1,47 +1,53 @@
-import com.qq.taf.jce.JceStruct;
-import com.tencent.tmassistant.common.ProtocolPackage;
-import com.tencent.tmassistant.common.jce.ReqHead;
-import com.tencent.tmassistant.common.jce.Request;
-import com.tencent.tmassistant.common.jce.SdkInfo;
-import com.tencent.tmassistant.common.jce.Ticket;
-import com.tencent.tmassistant.common.jce.TicketWtLogin;
-import com.tencent.tmassistantbase.network.PostHttpRequest;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.GestureSelectGridView;
 
-public abstract class bjqv
-  extends PostHttpRequest
+public class bjqv
+  implements AbsListView.OnScrollListener
 {
-  public int a(JceStruct paramJceStruct)
+  public bjqv(GestureSelectGridView paramGestureSelectGridView) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    try
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      paramJceStruct = ProtocolPackage.buildRequest(paramJceStruct);
-      if (paramJceStruct == null) {
-        return -1;
+      int i = paramInt1 + paramInt2;
+      if ((!this.a.jdField_b_of_type_Boolean) || (Math.abs(i - this.a.c) < 3) || (Math.abs(i - this.a.c) > 5)) {
+        break label161;
       }
+      if (this.a.c + 3 <= paramInt3 - 1) {
+        break label140;
+      }
+      this.a.c = (paramInt3 - 1);
+      this.a.jdField_a_of_type_Bjqw.a(this.a.jdField_b_of_type_Int, this.a.c);
     }
-    catch (Throwable paramJceStruct)
-    {
+    label140:
+    GestureSelectGridView localGestureSelectGridView;
+    label161:
+    while ((this.a.jdField_b_of_type_Boolean) || (Math.abs(paramInt1 - this.a.c) < 3) || (Math.abs(paramInt1 - this.a.c) > 5)) {
       for (;;)
       {
-        paramJceStruct = null;
+        if (this.a.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
+          this.a.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+        }
+        return;
+        localGestureSelectGridView = this.a;
+        localGestureSelectGridView.c += 3;
       }
-      Object localObject = new SdkInfo();
-      ((SdkInfo)localObject).versionCode = 1;
-      ((SdkInfo)localObject).versionName = bjjo.a().c();
-      ((SdkInfo)localObject).name = "AppNews";
-      ((SdkInfo)localObject).channel = "";
-      ((SdkInfo)localObject).builderNum = "";
-      paramJceStruct.head.sdkInfo = ((SdkInfo)localObject);
-      localObject = new TicketWtLogin();
-      ((TicketWtLogin)localObject).uin = bjjo.a().a();
-      ((TicketWtLogin)localObject).A2 = bjjo.a().b().getBytes();
-      Ticket localTicket = new Ticket();
-      localTicket.value = ProtocolPackage.jceStructToUTF8Byte((JceStruct)localObject);
-      localTicket.type = 1;
-      paramJceStruct.head.ticket = localTicket;
-      int i = paramJceStruct.head.requestId;
-      sendRequest(ProtocolPackage.buildPostData(paramJceStruct));
-      return i;
+    }
+    if (this.a.c - 3 < 0) {}
+    for (this.a.c = 0;; localGestureSelectGridView.c -= 3)
+    {
+      this.a.jdField_a_of_type_Bjqw.a(this.a.jdField_b_of_type_Int, this.a.c);
+      break;
+      localGestureSelectGridView = this.a;
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (this.a.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
+      this.a.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
 }

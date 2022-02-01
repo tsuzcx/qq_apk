@@ -3,17 +3,17 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import antf;
-import bhmi;
-import bhzb;
-import biht;
-import bihu;
-import bihw;
-import bihz;
-import bioy;
-import biqx;
+import bgfm;
+import bgod;
+import bgoe;
+import bgog;
+import bgoj;
+import bgve;
+import bgxd;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
@@ -24,7 +24,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import niz;
+import nko;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,11 +32,11 @@ import org.json.JSONObject;
 public class LocalDataJsPlugin
   extends VasWebviewJsPlugin
 {
-  private static final String[] FILE_PATH_WHITE_LIST = { antf.bZ };
+  private static final String[] FILE_PATH_WHITE_LIST = { AppConstants.SDCARD_SIGNATURE_TEMPLATE_ROOT };
   public static final String NAME_SPACE = "localData";
   private static final String TAG = "LocalDataJsPlugin";
   private BrowserAppInterface browserApp;
-  biht sigTplResDownloadListener = new LocalDataJsPlugin.1(this);
+  bgod sigTplResDownloadListener = new LocalDataJsPlugin.1(this);
   
   public LocalDataJsPlugin()
   {
@@ -45,10 +45,10 @@ public class LocalDataJsPlugin
   
   private boolean existDynamicSource(String paramString)
   {
-    paramString = bhzb.a(paramString, "dynamic_aio");
+    paramString = bgfm.a(paramString, "dynamic_aio");
     File localFile = new File(paramString);
     if ((!localFile.exists()) || (!localFile.isDirectory())) {}
-    while (bhmi.a(paramString).size() <= 0) {
+    while (FileUtils.getChildFiles(paramString).size() <= 0) {
       return false;
     }
     return true;
@@ -62,7 +62,7 @@ public class LocalDataJsPlugin
       paramString2 = new JSONObject();
       localObject2 = new JSONObject();
       localObject3 = new JSONArray();
-      localObject1 = new File(bhzb.a((String)localObject1, "dynamic_aio")).listFiles();
+      localObject1 = new File(bgfm.a((String)localObject1, "dynamic_aio")).listFiles();
       int i = localObject1.length;
       paramInt = 0;
       while (paramInt < i)
@@ -96,21 +96,21 @@ public class LocalDataJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("LocalDataJsPlugin", 2, "handleSignatureRequest file not exist, start download");
     }
-    Object localObject2 = ((bihw)this.browserApp.getManager(47)).a(1);
-    paramString2 = new bihu(paramString2, new File(bhzb.a((String)localObject1, "temp.zip")));
+    Object localObject2 = ((bgog)this.browserApp.getManager(47)).a(1);
+    paramString2 = new bgoe(paramString2, new File(bgfm.a((String)localObject1, "temp.zip")));
     Object localObject3 = new Bundle();
     ((Bundle)localObject3).putString("callbackId", paramString1);
     ((Bundle)localObject3).putString("itemId", (String)localObject1);
     if (paramJSONObject != null) {
       ((Bundle)localObject3).putString("localRules", paramJSONObject.toString());
     }
-    ((bihz)localObject2).a(paramString2, this.sigTplResDownloadListener, (Bundle)localObject3);
+    ((bgoj)localObject2).a(paramString2, this.sigTplResDownloadListener, (Bundle)localObject3);
   }
   
   private boolean hasInterceptRight(String paramString)
   {
-    niz localniz = niz.a();
-    Object localObject = (biqx)super.getBrowserComponent(-2);
+    nko localnko = nko.a();
+    Object localObject = (bgxd)super.getBrowserComponent(-2);
     if (localObject == null)
     {
       QLog.e("LocalDataJsPlugin", 1, "hasInterceptRight SwiftBrowserStatistics = null");
@@ -118,13 +118,13 @@ public class LocalDataJsPlugin
     }
     int j;
     int i;
-    if (((biqx)localObject).a.size() > 0)
+    if (((bgxd)localObject).a.size() > 0)
     {
-      localObject = (String)((biqx)localObject).a.get(((biqx)localObject).a.size() - 1);
+      localObject = (String)((bgxd)localObject).a.get(((bgxd)localObject).a.size() - 1);
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         break label174;
       }
-      if (localniz.a((String)localObject, "localData.getFileInfo"))
+      if (localnko.a((String)localObject, "localData.getFileInfo"))
       {
         localObject = FILE_PATH_WHITE_LIST;
         j = localObject.length;
@@ -141,7 +141,7 @@ public class LocalDataJsPlugin
         if (paramString.startsWith(localObject[i]))
         {
           return true;
-          localObject = ((biqx)localObject).d;
+          localObject = ((bgxd)localObject).d;
           break;
         }
         i += 1;

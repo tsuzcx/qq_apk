@@ -1,52 +1,52 @@
-import android.content.Context;
-import android.content.IntentFilter;
-import com.tencent.av.app.VideoAppInterface;
-import mqq.app.MobileQQ;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.av.app.InviteMemberObserverWithoutCache.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 public class leo
+  implements Observer
 {
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private lep jdField_a_of_type_Lep;
+  Handler a = null;
   
-  public leo(VideoAppInterface paramVideoAppInterface)
+  private void a(Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-  }
-  
-  public void a()
-  {
-    try
+    paramObject = (Object[])paramObject;
+    int i = ((Integer)paramObject[0]).intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("qav.GAudioUIObserver", 2, "OnUpdate，msgType = " + i);
+    }
+    if (paramObject.length < 4)
     {
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-      localIntentFilter.addAction("android.intent.action.USER_PRESENT");
-      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      this.jdField_a_of_type_Lep = new lep();
-      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().registerReceiver(this.jdField_a_of_type_Lep, localIntentFilter);
+      if (QLog.isColorLevel()) {
+        QLog.d("qav.GAudioUIObserver", 2, "quit for message length");
       }
       return;
     }
-    catch (Throwable localThrowable)
+    switch (i)
     {
-      localThrowable.printStackTrace();
-    }
-  }
-  
-  public void b()
-  {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.jdField_a_of_type_Lep != null)) {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().unregisterReceiver(this.jdField_a_of_type_Lep);
-      }
+    default: 
       return;
     }
-    catch (Throwable localThrowable)
+    a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), (ArrayList)paramObject[3]);
+  }
+  
+  protected void a(long paramLong1, long paramLong2, ArrayList<lnl> paramArrayList) {}
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    paramObservable = Looper.getMainLooper();
+    if (Thread.currentThread() != paramObservable.getThread())
     {
-      localThrowable.printStackTrace();
+      if (this.a == null) {
+        this.a = new Handler(paramObservable);
+      }
+      this.a.post(new InviteMemberObserverWithoutCache.1(this, paramObject));
+      return;
     }
+    a(paramObject);
   }
 }
 

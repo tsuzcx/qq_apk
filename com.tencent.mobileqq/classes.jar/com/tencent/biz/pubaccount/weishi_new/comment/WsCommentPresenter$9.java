@@ -1,34 +1,34 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
-import aajx;
 import android.widget.TextView;
-import ufr;
+import umj;
+import zgv;
 
 public class WsCommentPresenter$9
   implements Runnable
 {
-  public WsCommentPresenter$9(ufr paramufr) {}
+  public WsCommentPresenter$9(umj paramumj) {}
   
   public void run()
   {
-    if (ufr.b(this.this$0) != null)
+    if (umj.b(this.this$0) != null)
     {
-      if (ufr.b(this.this$0) > 0L)
+      if (umj.b(this.this$0) > 0L)
       {
-        ufr.b(this.this$0).setText(aajx.a(ufr.b(this.this$0)));
-        ufr.b(this.this$0).setVisibility(0);
+        umj.b(this.this$0).setText(zgv.a(umj.b(this.this$0)));
+        umj.b(this.this$0).setVisibility(0);
       }
     }
     else {
       return;
     }
-    ufr.b(this.this$0).setText("");
-    ufr.b(this.this$0).setVisibility(8);
+    umj.b(this.this$0).setText("");
+    umj.b(this.this$0).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentPresenter.9
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,24 @@
-import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
 
-public abstract interface aiwf
-  extends aiwj
+public class aiwf
+  extends asbj
 {
-  public abstract int a();
+  public aiwf(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
   
-  public abstract View a(Object... paramVarArgs);
+  protected void onFileTransferEnd(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+  }
+  
+  protected void onFileTransferProgress(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+  }
+  
+  protected void onFileTransferStart(long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+  }
 }
 
 

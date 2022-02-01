@@ -1,6 +1,6 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel;
+import com.tencent.mobileqq.widget.QQToast;
 
 class AEEditorVideoEditFragment$17
   implements Runnable
@@ -9,8 +9,7 @@ class AEEditorVideoEditFragment$17
   
   public void run()
   {
-    this.this$0.a.b(false);
-    this.this$0.a.a(1);
+    QQToast.a(this.this$0.a, 2131689841, 0).a();
   }
 }
 

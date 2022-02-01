@@ -1,24 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Map;
 
 public class akbb
-  implements DialogInterface.OnCancelListener
+  extends bgod
 {
-  private final WeakReference<ChatHistoryC2CAllFragment> a;
+  public akbb(PreloadManager paramPreloadManager, akbe paramakbe) {}
   
-  public akbb(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment)
+  public void onDoneFile(bgoe parambgoe)
   {
-    this.a = new WeakReference(paramChatHistoryC2CAllFragment);
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    ChatHistoryC2CAllFragment localChatHistoryC2CAllFragment = (ChatHistoryC2CAllFragment)this.a.get();
-    if ((localChatHistoryC2CAllFragment != null) && (localChatHistoryC2CAllFragment.getActivity() != null) && (!localChatHistoryC2CAllFragment.getActivity().isFinishing())) {
-      paramDialogInterface.dismiss();
+    int i = -5;
+    super.onDoneFile(parambgoe);
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadManager", 2, "downloadRes|done" + parambgoe.jdField_a_of_type_JavaLangString + "|" + parambgoe.jdField_a_of_type_Int);
+    }
+    Object localObject = parambgoe.a();
+    PreloadModule localPreloadModule = (PreloadModule)((Bundle)localObject).getSerializable("module");
+    localObject = (PreloadResource)((Bundle)localObject).getSerializable("resource");
+    if (parambgoe.jdField_a_of_type_Int == 0)
+    {
+      i = 0;
+      if (localObject != null) {
+        break label146;
+      }
+    }
+    label146:
+    for (localObject = null;; localObject = ((PreloadResource)localObject).getResInfo(localPreloadModule))
+    {
+      this.jdField_a_of_type_Akbe.onDownloadResFinished(localPreloadModule.mid, i, ((File)parambgoe.jdField_a_of_type_JavaUtilMap.get(parambgoe.jdField_a_of_type_JavaLangString)).getAbsolutePath(), (ResourceInfo)localObject);
+      return;
+      if (parambgoe.jdField_a_of_type_Int == -5) {
+        break;
+      }
+      i = -6;
+      break;
     }
   }
 }

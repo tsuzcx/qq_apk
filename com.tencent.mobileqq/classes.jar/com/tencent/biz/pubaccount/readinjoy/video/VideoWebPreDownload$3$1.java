@@ -2,20 +2,20 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.text.TextUtils;
 import java.util.HashMap;
-import rxp;
-import rxq;
-import rxs;
-import scv;
+import set;
+import seu;
+import sew;
+import sjt;
 
 public class VideoWebPreDownload$3$1
   implements Runnable
 {
-  public VideoWebPreDownload$3$1(rxq paramrxq, scv paramscv) {}
+  public VideoWebPreDownload$3$1(seu paramseu, sjt paramsjt) {}
   
   public void run()
   {
-    if (!rxp.a(this.jdField_a_of_type_Rxq.jdField_a_of_type_Rxp, this.jdField_a_of_type_Scv.a, this.jdField_a_of_type_Scv.b, this.jdField_a_of_type_Rxq.jdField_a_of_type_Int)) {
-      rxp.a(this.jdField_a_of_type_Rxq.jdField_a_of_type_Rxp, this.jdField_a_of_type_Scv.a, this.jdField_a_of_type_Scv.b, this.jdField_a_of_type_Rxq.jdField_a_of_type_Long, this.jdField_a_of_type_Rxq.jdField_a_of_type_Int);
+    if (!set.a(this.jdField_a_of_type_Seu.jdField_a_of_type_Set, this.jdField_a_of_type_Sjt.a, this.jdField_a_of_type_Sjt.b, this.jdField_a_of_type_Seu.jdField_a_of_type_Int)) {
+      set.a(this.jdField_a_of_type_Seu.jdField_a_of_type_Set, this.jdField_a_of_type_Sjt.a, this.jdField_a_of_type_Sjt.b, this.jdField_a_of_type_Seu.jdField_a_of_type_Long, this.jdField_a_of_type_Seu.jdField_a_of_type_Int);
     }
     String str;
     do
@@ -23,10 +23,10 @@ public class VideoWebPreDownload$3$1
       do
       {
         return;
-      } while (rxp.a(this.jdField_a_of_type_Rxq.jdField_a_of_type_Rxp) == null);
-      str = (String)rxp.a(this.jdField_a_of_type_Rxq.jdField_a_of_type_Rxp).get(this.jdField_a_of_type_Scv.b);
+      } while (set.a(this.jdField_a_of_type_Seu.jdField_a_of_type_Set) == null);
+      str = (String)set.a(this.jdField_a_of_type_Seu.jdField_a_of_type_Set).get(this.jdField_a_of_type_Sjt.b);
     } while (TextUtils.isEmpty(str));
-    rxp.a(this.jdField_a_of_type_Rxq.jdField_a_of_type_Rxp).a(this.jdField_a_of_type_Scv.b, 1, str);
+    set.a(this.jdField_a_of_type_Seu.jdField_a_of_type_Set).a(this.jdField_a_of_type_Sjt.b, 1, str);
   }
 }
 

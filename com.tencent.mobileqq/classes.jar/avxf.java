@@ -1,26 +1,15 @@
-import android.os.Bundle;
-import eipc.EIPCResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class avxf
-  extends ayxn
+  implements DialogInterface.OnClickListener
 {
-  avxf(avxe paramavxe, int paramInt) {}
+  avxf(avwv paramavwv) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("cmd", paramString1);
-    localBundle.putInt("code", paramInt);
-    localBundle.putString("msg", paramString2);
-    this.jdField_a_of_type_Avxe.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(-102, localBundle));
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("usable", paramBoolean);
-    localBundle.putString("msg", paramString);
-    this.jdField_a_of_type_Avxe.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, localBundle));
+    paramDialogInterface.dismiss();
+    bcef.b(this.a.a, "CliOper", "", "", avwv.b, avwv.b, 0, 0, "", "", "", "");
   }
 }
 

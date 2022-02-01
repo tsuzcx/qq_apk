@@ -1,19 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class bhee
-  implements DialogInterface.OnKeyListener
+class bhee
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bhee(UpgradeActivity paramUpgradeActivity) {}
+  bhee(bheb parambheb) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt == 4) {
-      this.a.a();
-    }
-    return false;
+    bheb.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidateSelf();
   }
 }
 

@@ -1,31 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pushdialog.AIOPushDialogHelper.1.1;
+import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-final class azda
-  implements beup
+public class azda
+  implements azdg
 {
-  public void a(bevl parambevl, bevm parambevm)
+  azda(azcz paramazcz) {}
+  
+  public void a(List<PushDialogTemplate> paramList)
   {
-    if ((parambevl == null) || (parambevm == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(parambevl instanceof beum));
-      parambevl = (beum)parambevl;
-      parambevl.jdField_a_of_type_Long += parambevm.c;
-      parambevm.c = 0L;
-      parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
-      parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
-      parambevm = parambevl.jdField_a_of_type_JavaLangString;
-      if (parambevm.contains("range="))
-      {
-        String str = parambevm.substring(0, parambevm.lastIndexOf("range="));
-        parambevl.jdField_a_of_type_JavaLangString = (str + "range=" + parambevl.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("OlympicResources", 2, "IBreakDownFix, " + parambevm);
+    ThreadManager.getUIHandler().post(new AIOPushDialogHelper.1.1(this, paramList));
   }
 }
 

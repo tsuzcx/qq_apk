@@ -1,47 +1,89 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.audiotrans.AudioTransClientTransInfo.IntC2SFailedRsp;
+import com.tencent.mobileqq.audiotrans.AudioTransClientTransInfo.IntHead;
+import com.tencent.mobileqq.audiotrans.AudioTransClientTransInfo.IntRspBody;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.MsfSocketInputBuffer;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
 
-class badk
-  implements biaz
+public class badk
 {
-  badk(bade parambade) {}
-  
-  public void a()
+  public void a(MsfSocketInputBuffer paramMsfSocketInputBuffer)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsProfileHeaderComponent", 2, "ZanDoubleDialog: onLeftClick: ");
-    }
-    if (bade.e(this.a).getIntent().hasExtra("troopUin")) {}
-    for (Object localObject = "1";; localObject = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage(bade.d(this.a).getCurrentAccountUin(), "thumbup", "click_getit", "", 1, 0, 0, "", (String)localObject, "");
-      localObject = new Intent(bade.f(this.a), QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("fragmentStyle", 3);
-      ((Intent)localObject).putExtra("url", "https://m.vip.qq.com/freedom/dbzan.html?_nav_alpha=0");
-      ((Intent)localObject).putExtra("isTransparentTitle", true);
-      ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-      bade.g(this.a).startActivity((Intent)localObject);
-      return;
-    }
+    byte[] arrayOfByte = new byte[paramMsfSocketInputBuffer.getBufferlen()];
+    System.arraycopy(paramMsfSocketInputBuffer.getBuffer(), 0, arrayOfByte, 0, arrayOfByte.length);
+    a(arrayOfByte);
   }
   
-  public void b()
+  public boolean a(byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsProfileHeaderComponent", 2, "ZanDoubleDialog: onRightClick: ");
-    }
-    if (bade.h(this.a).getIntent().hasExtra("troopUin")) {}
-    for (String str = "1";; str = "0")
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length > 60))
     {
-      VasWebviewUtil.reportCommercialDrainage(bade.e(this.a).getCurrentAccountUin(), "thumbup", "click_pay", "", 1, 0, 0, "", str, "");
-      bhzu.a(bade.i(this.a), "mvip.n.a.dbzan_dbzan", "CJCLUBT", 3, false, true);
-      bade.a(this.a).set(true);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("PeakAudioTransHandler", 2, "decodeS2CData data error");
+      }
+      return false;
+    }
+    Object localObject = null;
+    for (;;)
+    {
+      try
+      {
+        for (;;)
+        {
+          paramArrayOfByte = lfq.a(paramArrayOfByte);
+          localObject = paramArrayOfByte.a;
+          paramArrayOfByte = paramArrayOfByte.b;
+          AudioTransClientTransInfo.IntHead localIntHead = new AudioTransClientTransInfo.IntHead();
+          try
+          {
+            localObject = (AudioTransClientTransInfo.IntHead)localIntHead.mergeFrom((byte[])localObject);
+            if (!((AudioTransClientTransInfo.IntHead)localObject).uint32_error_no.has()) {
+              break label353;
+            }
+            i = ((AudioTransClientTransInfo.IntHead)localObject).uint32_error_no.get();
+            if (((AudioTransClientTransInfo.IntHead)localObject).enum_body_type.has())
+            {
+              j = ((AudioTransClientTransInfo.IntHead)localObject).enum_body_type.get();
+              long l = 0L;
+              if (((AudioTransClientTransInfo.IntHead)localObject).str_session_id.has()) {
+                l = Long.valueOf(((AudioTransClientTransInfo.IntHead)localObject).str_session_id.get()).longValue();
+              }
+              QLog.d("SubTitleProtocoDataCodec", 2, "onReceive result:" + i + " sessionid:" + l + " bodyType:" + j);
+              paramArrayOfByte = (AudioTransClientTransInfo.IntRspBody)new AudioTransClientTransInfo.IntRspBody().mergeFrom(paramArrayOfByte);
+              if (i == 0)
+              {
+                if ((j != 10) || (!QLog.isColorLevel())) {
+                  break;
+                }
+                QLog.d("PeakAudioTransHandler", 2, "decodeS2CData INT_C2S_HEART_BEAT_RSP heartbeat !");
+                return false;
+              }
+            }
+          }
+          catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+          {
+            paramArrayOfByte.printStackTrace();
+            QLog.e("SubTitleProtocoDataCodec", 2, "decodeS2CData exception = " + paramArrayOfByte.getMessage(), paramArrayOfByte);
+            return false;
+          }
+        }
+      }
+      catch (OutOfMemoryError paramArrayOfByte)
+      {
+        QLog.e("SubTitleProtocoDataCodec", 2, "decodeS2CData OOM!!");
+        paramArrayOfByte = (byte[])localObject;
+        continue;
+        paramArrayOfByte = (AudioTransClientTransInfo.IntC2SFailedRsp)paramArrayOfByte.msg_failed_rsp.get();
+        QLog.d("SubTitleProtocoDataCodec", 2, "create session rsp fail msg: " + ((AudioTransClientTransInfo.IntHead)localObject).uint32_error_no.get() + " uint32_errcode = " + paramArrayOfByte.uint32_errcode.get() + " str_errmsg = " + paramArrayOfByte.str_errmsg.get());
+        return false;
+      }
+      int j = 0;
+      continue;
+      label353:
+      int i = 0;
     }
   }
 }

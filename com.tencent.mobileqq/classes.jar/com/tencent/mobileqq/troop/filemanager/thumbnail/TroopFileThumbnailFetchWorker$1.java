@@ -1,45 +1,45 @@
 package com.tencent.mobileqq.troop.filemanager.thumbnail;
 
 import android.text.TextUtils;
-import bfvr;
-import bfxf;
-import bguk;
-import bhmi;
-import bhnv;
+import befc;
+import begq;
+import bfdy;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class TroopFileThumbnailFetchWorker$1
   implements Runnable
 {
-  public TroopFileThumbnailFetchWorker$1(bfxf parambfxf) {}
+  public TroopFileThumbnailFetchWorker$1(begq parambegq) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean)
     {
-      bfvr.b("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] start. had stoped");
+      befc.b("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] start. had stoped");
       return;
     }
     this.this$0.c();
     this.this$0.e = this.this$0.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getThumbnailFile(this.this$0.jdField_a_of_type_Long, this.this$0.jdField_a_of_type_Int);
     this.this$0.d = (this.this$0.e + ".ttmp");
-    if (bhmi.b(this.this$0.e))
+    if (FileUtils.fileExistsAndNotEmpty(this.this$0.e))
     {
-      bfvr.b("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] thumb had exsited");
+      befc.b("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] thumb had exsited");
       this.this$0.a(true);
       return;
     }
-    if (!bhnv.g(BaseApplication.getContext()))
+    if (!NetworkUtil.isNetworkAvailable(BaseApplication.getContext()))
     {
-      bfvr.a("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] no network");
-      this.this$0.c(bguk.k);
+      befc.a("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] no network");
+      this.this$0.c(bfdy.k);
       return;
     }
     if (TextUtils.isEmpty(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath))
     {
-      bfvr.a("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] filepath is null");
-      this.this$0.c(bguk.w);
+      befc.a("TroopFileDownloadWorker", befc.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] filepath is null");
+      this.this$0.c(bfdy.w);
       return;
     }
     this.this$0.b();

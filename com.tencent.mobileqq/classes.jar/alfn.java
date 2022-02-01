@@ -1,64 +1,26 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler.1;
 
-public abstract class alfn
+public class alfn
+  extends Handler
 {
-  protected Context a;
-  protected Rect a;
-  protected DoodleView a;
-  
-  public alfn(DoodleView paramDoodleView)
+  public alfn(VipSpecialCareHandler.1 param1, Looper paramLooper)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    if (paramDoodleView == null) {
-      throw new IllegalStateException("DoodleView can not be null.");
-    }
-    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView = paramDoodleView;
+    super(paramLooper);
   }
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView.invalidate();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+    switch (paramMessage.what)
+    {
+    default: 
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
+    alfm.a(this.a.this$0, "-->request timeout");
+    alfm.a(this.a.this$0, -2);
   }
-  
-  public final void a(Canvas paramCanvas)
-  {
-    b(paramCanvas);
-  }
-  
-  public boolean a()
-  {
-    return b();
-  }
-  
-  public final boolean a(MotionEvent paramMotionEvent)
-  {
-    a();
-    return b(paramMotionEvent);
-  }
-  
-  protected abstract void b(Canvas paramCanvas);
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  protected abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

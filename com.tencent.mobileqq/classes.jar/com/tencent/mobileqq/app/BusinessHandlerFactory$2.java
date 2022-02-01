@@ -2,10 +2,10 @@ package com.tencent.mobileqq.app;
 
 import java.util.ArrayList;
 
-public final class BusinessHandlerFactory$2
+final class BusinessHandlerFactory$2
   extends ArrayList<Integer>
 {
-  public BusinessHandlerFactory$2()
+  BusinessHandlerFactory$2()
   {
     add(Integer.valueOf(60));
     add(Integer.valueOf(88));

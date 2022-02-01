@@ -3,7 +3,7 @@ package com.tencent.avgame.qav;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import nft;
+import nhb;
 
 class AVGameCameraAssistant$1
   implements Runnable
@@ -17,9 +17,9 @@ class AVGameCameraAssistant$1
       Iterator localIterator = AVGameCameraAssistant.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        nft localnft = (nft)localIterator.next();
-        if (localnft != null) {
-          localnft.b(this.a);
+        nhb localnhb = (nhb)localIterator.next();
+        if (localnhb != null) {
+          localnhb.b(this.a);
         }
       }
       return;

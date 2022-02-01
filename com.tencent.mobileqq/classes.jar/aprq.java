@@ -1,15 +1,80 @@
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+import com.tencent.mobileqq.remind.widget.WheelTextView;
+import com.tencent.mobileqq.remind.widget.WheelView;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.VerticalGallery.LayoutParams;
+
 public class aprq
-  extends aprj
+  extends BaseAdapter
 {
-  public aprq(int paramInt)
+  private int jdField_a_of_type_Int = 25;
+  private int b;
+  
+  public aprq(TimeSelectView paramTimeSelectView, int paramInt1, int paramInt2)
   {
-    super(paramInt);
-    this.j = "    float u_screenWeight = 1.0;\n    float u_balance = 1.0;\n    float u_clipBlack = 0.0;\n    float u_clipWhite = 1.0;\n    float screenFmin = min(min(u_screenColor.r, u_screenColor.g), u_screenColor.b);\n    float screenFmax = max(max(u_screenColor.r, u_screenColor.g), u_screenColor.b);\n    vec3 screenPrimary = step(screenFmax, u_screenColor.rgb);\n    float secondaryComponents = dot(1.0 - screenPrimary, u_screenColor.rgb);\n    float screenSat = screenFmax - mix(secondaryComponents - screenFmin, secondaryComponents / 2.0, u_balance);\n    float fmin = min(min(gl_FragColor.r, gl_FragColor.g), gl_FragColor.b);\n    float fmax = max(max(gl_FragColor.r, gl_FragColor.g), gl_FragColor.b);\n    vec3 pixelPrimary = step(fmax, gl_FragColor.rgb);\n    secondaryComponents = dot(1.0 - pixelPrimary, gl_FragColor.rgb);\n    float pixelSat = fmax - mix(secondaryComponents - fmin, secondaryComponents / 2.0, u_balance);\n    float diffPrimary = dot(abs(pixelPrimary - screenPrimary), vec3(1.0));\n    float solid = step(1.0, step(pixelSat, 0.1) + step(fmax, 0.1) + diffPrimary);\n    float alpha = max(0.0, 1.0 - pixelSat / screenSat);\n    alpha = smoothstep(u_clipBlack, u_clipWhite, alpha);\n    vec4 semiTransparentPixel = vec4((gl_FragColor.rgb - (1.0 - alpha) * u_screenColor.rgb * u_screenWeight), alpha);\n    vec4 pixel = mix(semiTransparentPixel, gl_FragColor, solid);\n    gl_FragColor = pixel;\n";
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramTimeSelectView.getResources().getDisplayMetrics()));
   }
   
-  protected void a() {}
+  public int getCount()
+  {
+    return TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView).a(this.b);
+  }
   
-  protected void a(aprm paramaprm) {}
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView.getContext());
+      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+      paramView.setFocusable(true);
+      paramView.setFocusableInTouchMode(true);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TimeSelectView", 2, "getView column:" + this.b + ", position: " + paramInt);
+      }
+      String str = TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView).a(this.b, paramInt);
+      Object localObject = paramView.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).height = DisplayUtil.dip2px(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView.getContext(), TimeSelectView.a());
+      if (QLog.isColorLevel()) {
+        QLog.d("TimeSelectView", 2, "view height 33dp -> " + ((ViewGroup.LayoutParams)localObject).height + "px");
+      }
+      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = (WheelTextView)paramView;
+      ((WheelTextView)localObject).setTextSize(20.0F);
+      ((WheelTextView)localObject).setTextColor(TimeSelectView.jdField_a_of_type_Int);
+      if (TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView)[0].getId() == paramViewGroup.getId()) {
+        ((WheelTextView)localObject).setGravity(8388613);
+      }
+      for (;;)
+      {
+        ((WheelTextView)localObject).setText(str);
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        ((WheelTextView)localObject).setGravity(8388611);
+      }
+    }
+  }
 }
 
 

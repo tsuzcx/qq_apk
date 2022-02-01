@@ -1,33 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ahfl
-  implements bliz
+  implements DialogInterface.OnClickListener
 {
-  ahfl(ahfk paramahfk, blir paramblir) {}
+  ahfl(ahff paramahff) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Blir.dismiss();
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (this.jdField_a_of_type_Ahfk.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000);
-    try
-    {
-      long l = Long.valueOf(this.jdField_a_of_type_Ahfk.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
-      paramView = (antz)this.jdField_a_of_type_Ahfk.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
-      if (paramView != null) {
-        paramView.a(l);
-      }
-      bdll.b(this.jdField_a_of_type_Ahfk.jdField_a_of_type_Ahed.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_discuss", "", "grey", "Clk", 0, 0, "", String.valueOf(this.jdField_a_of_type_Ahfk.jdField_a_of_type_Int), "", "");
-      return;
-    }
-    catch (NumberFormatException paramView) {}
+    paramDialogInterface.dismiss();
   }
 }
 

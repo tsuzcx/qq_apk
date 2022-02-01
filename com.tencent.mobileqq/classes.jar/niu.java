@@ -1,74 +1,88 @@
-import android.graphics.Bitmap;
-import android.opengl.GLES20;
-import android.opengl.GLUtils;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
+import com.tencent.avgame.ui.AvGameLoadingActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class niu
+  extends mya
 {
-  public static int a(Bitmap paramBitmap, int paramInt)
+  public niu(AvGameLoadingActivity paramAvGameLoadingActivity) {}
+  
+  public void a(int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong1, long paramLong2)
   {
-    int[] arrayOfInt = new int[1];
-    if (paramInt == -1)
-    {
-      GLES20.glGenTextures(1, arrayOfInt, 0);
-      GLES20.glBindTexture(3553, arrayOfInt[0]);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10242, 33071.0F);
-      GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLUtils.texImage2D(3553, 0, paramBitmap, 0);
+    AvGameLoadingActivity.a(this.a, true, paramInt, paramString, paramRoomInfo, paramArrayOfByte, paramLong1, paramLong2);
+  }
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AvGameManagerAvGameLoadingActivity", 2, String.format("onStrangerMatchNotify isSuc:%b type:%d roomId:%d mWaitingStrangerMatchPush:%b", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), Long.valueOf(paramLong), Boolean.valueOf(AvGameLoadingActivity.c(this.a)) }));
     }
+    if (AvGameLoadingActivity.c(this.a))
+    {
+      AvGameLoadingActivity.a(this.a, false);
+      AvGameLoadingActivity.a(this.a, -1);
+      this.a.a.removeMessages(9);
+      if (paramBoolean)
+      {
+        bcef.b(null, "dc00898", "", "", "0X800B495", "0X800B495", 0, 0, "", "", "", "");
+        if (paramInt != 1) {
+          break label144;
+        }
+        AvGameLoadingActivity.a(this.a, AvGameLoadingActivity.a(this.a), null);
+      }
+    }
+    label144:
+    while (paramInt != 2) {
+      return;
+    }
+    AvGameLoadingActivity.b(this.a, AvGameLoadingActivity.c(this.a, 6));
+    AvGameLoadingActivity.a(this.a, AvGameLoadingActivity.a(this.a), String.valueOf(paramLong), null);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AvGameManagerAvGameLoadingActivity", 2, String.format("onStrangerMatchStart isSuc:%b uin:%d shareId:%d errCode:%d errMsg:%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString }));
+    }
+    if ((AvGameLoadingActivity.a(this.a)) && (!AvGameLoadingActivity.b(this.a)))
+    {
+      if (paramBoolean)
+      {
+        AvGameLoadingActivity.a(this.a, true);
+        AvGameLoadingActivity.a(this.a, paramInt1);
+      }
+    }
+    else {
+      return;
+    }
+    if (paramInt2 == 601) {}
     for (;;)
     {
-      return arrayOfInt[0];
-      GLES20.glBindTexture(3553, paramInt);
-      GLUtils.texSubImage2D(3553, 0, 0, 0, paramBitmap);
-      arrayOfInt[0] = paramInt;
+      if (TextUtils.isEmpty(paramString)) {
+        paramString = this.a.getString(2131690387);
+      }
+      for (;;)
+      {
+        AvGameLoadingActivity.a(this.a, null, paramString, this.a.getString(2131690397), new niv(this), null, null);
+        bcef.b(null, "dc00898", "", "", "0X800B496", "0X800B496", paramInt2, 0, "", "", "", "");
+        return;
+      }
+      paramString = null;
     }
   }
   
-  public static int a(String paramString, int paramInt)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
   {
-    int[] arrayOfInt = new int[1];
-    paramInt = GLES20.glCreateShader(paramInt);
-    GLES20.glShaderSource(paramInt, paramString);
-    GLES20.glCompileShader(paramInt);
-    GLES20.glGetShaderiv(paramInt, 35713, arrayOfInt, 0);
-    if (arrayOfInt[0] == 0)
-    {
-      bkdp.a("OpenGlUtils", "Compilation\n" + GLES20.glGetShaderInfoLog(paramInt));
-      return 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("AvGameManagerAvGameLoadingActivity", 2, String.format("onStrangerMatchStop isSuc:%b uin:%d errCode:%d errMsg:%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), Integer.valueOf(paramInt), paramString }));
     }
-    return paramInt;
   }
   
-  public static int a(String paramString1, String paramString2)
+  public void b(int paramInt, String paramString, RoomInfo paramRoomInfo, byte[] paramArrayOfByte, long paramLong1, long paramLong2)
   {
-    int[] arrayOfInt = new int[1];
-    int i = a(paramString1, 35633);
-    if (i == 0)
-    {
-      bkdp.a("OpenGlUtils", "Vertex Shader Failed");
-      return 0;
-    }
-    int j = a(paramString2, 35632);
-    if (j == 0)
-    {
-      bkdp.a("OpenGlUtils", "Fragment Shader Failed");
-      return 0;
-    }
-    int k = GLES20.glCreateProgram();
-    GLES20.glAttachShader(k, i);
-    GLES20.glAttachShader(k, j);
-    GLES20.glLinkProgram(k);
-    GLES20.glGetProgramiv(k, 35714, arrayOfInt, 0);
-    if (arrayOfInt[0] <= 0)
-    {
-      bkdp.a("OpenGlUtils", "Linking Failed");
-      return 0;
-    }
-    GLES20.glDeleteShader(i);
-    GLES20.glDeleteShader(j);
-    return k;
+    AvGameLoadingActivity.a(this.a, false, paramInt, paramString, paramRoomInfo, paramArrayOfByte, paramLong1, paramLong2);
   }
 }
 

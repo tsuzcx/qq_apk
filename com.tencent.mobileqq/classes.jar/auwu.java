@@ -1,369 +1,398 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QFlutterAppData;
-import com.tencent.mobileqq.earlydownload.xmldata.QFlutterEngineData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.util.Base64;
+import android.view.View;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.jubao.JubaoMsgData;
+import com.tencent.mobileqq.mini.sdk.JsonORM;
+import com.tencent.mobileqq.mini.sdk.JsonORM.JsonParseException;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class auwu
+  extends WebViewPlugin
 {
-  public static Handler a;
-  private static auwv jdField_a_of_type_Auwv = new auwv(null);
-  private static ArrayList<auww> jdField_a_of_type_JavaUtilArrayList;
-  private static volatile boolean jdField_a_of_type_Boolean;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "libflutter.so" };
-  private static auwv jdField_b_of_type_Auwv = new auwv(null);
-  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { "libapp.so", "libqflutter-resource-loader.so", "res.apk" };
+  private String a;
+  private String b;
+  private final String c = "0x800A851";
+  private String d = amtj.a(2131705021);
   
-  static
+  public auwu()
   {
-    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.mPluginNameSpace = "jubao";
   }
   
-  public static String a()
+  public static String a(int paramInt, String paramString)
   {
-    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
-    return localFile.getAbsolutePath() + File.separator + "qflutter";
-  }
-  
-  public static String a(String paramString)
-  {
-    return new File(a(), paramString).getAbsolutePath();
-  }
-  
-  private static void a()
-  {
-    String[] arrayOfString = jdField_b_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      bhmi.d(a(arrayOfString[i]));
-      i += 1;
-    }
-  }
-  
-  public static void a(int paramInt, long paramLong1, long paramLong2) {}
-  
-  public static void a(int paramInt, boolean paramBoolean)
-  {
-    boolean bool = true;
-    label161:
-    for (;;)
-    {
-      try
-      {
-        QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("onDownloadFinish, type: %s, isSuccess: %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) }));
-        if (paramInt == 0)
-        {
-          jdField_a_of_type_Auwv.a(paramBoolean, false);
-          if ((jdField_b_of_type_Auwv.a()) && (jdField_a_of_type_Auwv.a()))
-          {
-            if ((!jdField_b_of_type_Auwv.jdField_a_of_type_Boolean) || (!jdField_a_of_type_Auwv.jdField_a_of_type_Boolean)) {
-              break label161;
-            }
-            paramBoolean = bool;
-            long l = Math.max(auwv.a(jdField_b_of_type_Auwv), auwv.a(jdField_a_of_type_Auwv));
-            a(paramBoolean, auwv.a(jdField_a_of_type_Auwv), auwv.a(jdField_b_of_type_Auwv));
-            auxn.a(paramBoolean, l, auwv.a(jdField_a_of_type_Auwv), auwv.a(jdField_b_of_type_Auwv));
-          }
-        }
-        else
-        {
-          if (paramInt != 1) {
-            continue;
-          }
-          jdField_b_of_type_Auwv.a(paramBoolean, false);
-          continue;
-        }
-        paramBoolean = false;
-      }
-      finally {}
-    }
-  }
-  
-  private static void a(auww paramauww)
-  {
-    if (paramauww != null) {}
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      if (!jdField_a_of_type_JavaUtilArrayList.contains(paramauww)) {
-        jdField_a_of_type_JavaUtilArrayList.add(paramauww);
-      }
-      return;
+      localJSONObject.put("result", paramInt);
+      localJSONObject.put("uuid", paramString);
+      return localJSONObject.toString();
     }
-    finally
+    catch (JSONException paramString)
     {
-      paramauww = finally;
-      throw paramauww;
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, auww paramauww)
-  {
-    boolean bool1 = true;
-    for (;;)
-    {
-      boolean bool2;
-      boolean bool3;
-      try
-      {
-        bool2 = a(paramQQAppInterface);
-        bool3 = b(paramQQAppInterface);
-        a(paramauww);
-        StringBuilder localStringBuilder = new StringBuilder().append("install isEngineReady:").append(bool2).append(" isAppReady:").append(bool3).append(" installCallback:");
-        if (paramauww != null)
-        {
-          QLog.i("QFlutter.QFlutterDownloadManager", 1, bool1);
-          if ((bool2) && (bool3)) {
-            a(true, true, true);
-          }
-        }
-        else
-        {
-          bool1 = false;
-          continue;
-        }
-        if (jdField_a_of_type_Boolean)
-        {
-          QLog.d("QFlutter.QFlutterDownloadManager", 1, "install, is downloading...");
-          continue;
-        }
-        jdField_a_of_type_Boolean = true;
-      }
-      finally {}
-      paramQQAppInterface = (asde)paramQQAppInterface.getManager(77);
-      if (!bool2)
-      {
-        jdField_a_of_type_Auwv.a();
-        ((auwt)paramQQAppInterface.a("qq.android.flutter.engine.v8.3.9")).a(true);
-      }
       for (;;)
       {
-        if (bool3) {
-          break label194;
-        }
-        jdField_b_of_type_Auwv.a();
-        ((auws)paramQQAppInterface.a("qq.android.flutter.app.v8.3.9")).a(true);
-        break;
-        jdField_a_of_type_Auwv.a(true, true);
+        paramString.printStackTrace();
       }
-      label194:
-      jdField_a_of_type_Auwv.a(true, true);
     }
   }
   
-  private static void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public static String a(ArrayList<ChatMessage> paramArrayList)
   {
+    Object localObject2 = "";
+    int j = 0;
+    int i = j;
+    Object localObject1 = localObject2;
+    if (paramArrayList != null)
+    {
+      i = j;
+      localObject1 = localObject2;
+      if (paramArrayList.size() > 0)
+      {
+        i = paramArrayList.size();
+        localObject1 = new JSONArray();
+        paramArrayList = paramArrayList.iterator();
+        while (paramArrayList.hasNext())
+        {
+          localObject2 = JubaoMsgData.transfer((ChatMessage)paramArrayList.next());
+          try
+          {
+            ((JSONArray)localObject1).put(((JubaoMsgData)localObject2).toJson());
+          }
+          catch (JsonORM.JsonParseException localJsonParseException)
+          {
+            localJsonParseException.printStackTrace();
+          }
+        }
+        localObject1 = ((JSONArray)localObject1).toString();
+      }
+    }
+    paramArrayList = new JSONObject();
+    try
+    {
+      paramArrayList.put("msgcount", i);
+      paramArrayList.put("msgs", localObject1);
+      return paramArrayList.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  private void a(String... paramVarArgs)
+  {
+    paramVarArgs = paramVarArgs[0];
+    if (TextUtils.isEmpty(paramVarArgs)) {
+      return;
+    }
     for (;;)
     {
-      int i;
+      Object localObject2;
+      String str;
       try
       {
-        QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("notifyResult, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean1) }));
-        i = 0;
-        if (i < jdField_a_of_type_JavaUtilArrayList.size())
+        JSONObject localJSONObject = new JSONObject(paramVarArgs);
+        localObject1 = localJSONObject.optString("chatuin", "");
+        localObject2 = localJSONObject.optString("groupcode", "");
+        j = localJSONObject.optInt("chattype", 0);
+        k = localJSONObject.optInt("topicid", 0);
+        str = localJSONObject.optString("uinname", "");
+        Object localObject3 = localJSONObject.optString("msgs");
+        paramVarArgs = (String[])localObject1;
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          paramVarArgs = aabc.c((String)localObject1, aabc.b(1));
+        }
+        if (TextUtils.isEmpty(str)) {
+          break label437;
+        }
+        str = new String(Base64.decode(str, 0));
+        if (QLog.isColorLevel()) {
+          QLog.i("NewReportPlugin", 2, String.format("jumpChatMsg [%s, %s, %s, %s, %s]", new Object[] { paramVarArgs, Integer.valueOf(j), localObject2, Integer.valueOf(k), str }));
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject3)) {
+          break label440;
+        }
+        JubaoMsgData[] arrayOfJubaoMsgData = (JubaoMsgData[])JsonORM.parseFrom(new JSONArray((String)localObject3), JubaoMsgData.class);
+        localObject3 = new ArrayList();
+        int m = arrayOfJubaoMsgData.length;
+        int i = 0;
+        localObject1 = localObject3;
+        if (i < m)
         {
-          auww localauww = (auww)jdField_a_of_type_JavaUtilArrayList.get(i);
-          if (paramBoolean1) {
-            localauww.a(true, a(), paramBoolean2, paramBoolean3);
-          } else {
-            localauww.a(false, null, paramBoolean2, paramBoolean3);
+          ((ArrayList)localObject3).add(arrayOfJubaoMsgData[i]);
+          i += 1;
+          continue;
+        }
+        this.a = localJSONObject.optString("callback", "");
+        if (j == 1) {
+          break label446;
+        }
+        if (j != 3000) {
+          break label434;
+        }
+      }
+      catch (JSONException paramVarArgs)
+      {
+        int j;
+        int k;
+        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
+        return;
+        localObject2 = new Intent(this.mRuntime.a(), ChatActivity.class);
+        ((Intent)localObject2).putExtra("uin", paramVarArgs);
+        ((Intent)localObject2).putExtra("uintype", j);
+        if (TextUtils.isEmpty(str)) {
+          continue;
+        }
+        if ((j != 1033) && (j != 1034)) {
+          break label421;
+        }
+        ((Intent)localObject2).putExtra("key_confessor_nick", str);
+        ((Intent)localObject2).putExtra("key_confess_topicid", k);
+        if (localObject1 == null) {
+          continue;
+        }
+        ((Intent)localObject2).putExtra("msgs", (Serializable)localObject1);
+        ((Intent)localObject2).putExtra("entrance", 9);
+        startActivityForResult((Intent)localObject2, (byte)0);
+        return;
+      }
+      catch (JsonORM.JsonParseException paramVarArgs)
+      {
+        paramVarArgs.printStackTrace();
+        return;
+      }
+      if (TextUtils.isEmpty(paramVarArgs))
+      {
+        QLog.d("jubaoApiPlugin", 1, "jumpChatMsg openChatUin is null");
+        return;
+      }
+      label421:
+      ((Intent)localObject2).putExtra("uinname", str);
+      continue;
+      label434:
+      continue;
+      label437:
+      continue;
+      label440:
+      Object localObject1 = null;
+      continue;
+      label446:
+      paramVarArgs = (String[])localObject2;
+    }
+  }
+  
+  private void b(String... paramVarArgs)
+  {
+    if (!NetworkUtil.isNetworkAvailable(this.mRuntime.a()))
+    {
+      paramVarArgs = a(5, "");
+      callJs(this.b, new String[] { paramVarArgs });
+      return;
+    }
+    paramVarArgs = paramVarArgs[0];
+    if (TextUtils.isEmpty(paramVarArgs))
+    {
+      paramVarArgs = a(0, "");
+      callJs(this.b, new String[] { paramVarArgs });
+      QLog.d("jubaoApiPlugin", 1, "doUploadChatMsg js args is empty ");
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject = new JSONObject(paramVarArgs);
+        paramVarArgs = ((JSONObject)localObject).optString("chatuin", "");
+        str = ((JSONObject)localObject).optString("groupcode", "");
+        j = ((JSONObject)localObject).optInt("chattype", 0);
+        if (!TextUtils.isEmpty(paramVarArgs))
+        {
+          paramVarArgs = aabc.c(paramVarArgs, aabc.b(1));
+          JubaoMsgData[] arrayOfJubaoMsgData = (JubaoMsgData[])JsonORM.parseFrom(new JSONArray(((JSONObject)localObject).optString("msgs")), JubaoMsgData.class);
+          localArrayList = new ArrayList();
+          int k = arrayOfJubaoMsgData.length;
+          int i = 0;
+          if (i < k)
+          {
+            localArrayList.add(arrayOfJubaoMsgData[i]);
+            i += 1;
+          }
+          else
+          {
+            this.b = ((JSONObject)localObject).optString("callback", "");
+            if ((localArrayList == null) || (localArrayList.size() == 0))
+            {
+              QLog.e("jubaoApiPlugin", 2, "ipc upload  to msgServer msg size = 0 ");
+              paramVarArgs = a(1, "");
+              callJs(this.b, new String[] { paramVarArgs });
+              return;
+            }
           }
         }
       }
-      finally {}
-      jdField_a_of_type_JavaUtilArrayList.clear();
-      jdField_a_of_type_Boolean = false;
-      return;
-      i += 1;
-    }
-  }
-  
-  private static boolean a(asdn paramasdn)
-  {
-    if (paramasdn == null) {
-      return false;
-    }
-    paramasdn = paramasdn.a();
-    if (paramasdn == null)
-    {
-      QLog.d("QFlutter.QFlutterDownloadManager", 1, "isEarlyDownloadConfigReady, data == null");
-      return false;
-    }
-    if ((TextUtils.isEmpty(paramasdn.strPkgName)) || (TextUtils.isEmpty(paramasdn.strResURL_big)))
-    {
-      QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("isEarlyDownloadConfigReady, strPkgName: %s, strResURL_big: %s", new Object[] { paramasdn.strPkgName, paramasdn.strResURL_big }));
-      return false;
-    }
-    return true;
-  }
-  
-  private static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return false;
-    }
-    paramQQAppInterface = (auwt)((asde)paramQQAppInterface.getManager(77)).a("qq.android.flutter.engine.v8.3.9");
-    boolean bool2 = a(paramQQAppInterface);
-    if ((!bool2) && (paramQQAppInterface != null) && (paramQQAppInterface.g()) && (a((QFlutterEngineData)paramQQAppInterface.a()))) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QFlutter.QFlutterDownloadManager", 2, String.format("isEngineConfigReady : %s, isEngineInstalled: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) }));
-      }
-      return bool1;
-    }
-  }
-  
-  private static boolean a(QFlutterAppData paramQFlutterAppData)
-  {
-    if (paramQFlutterAppData == null)
-    {
-      QLog.d("QFlutter.QFlutterDownloadManager", 1, "checkAppFiles, engineData == null");
-      return false;
-    }
-    Object localObject1 = new HashMap();
-    ((HashMap)localObject1).put(a("libapp.so"), paramQFlutterAppData.libAppSoMD5);
-    ((HashMap)localObject1).put(a("libqflutter-resource-loader.so"), paramQFlutterAppData.libSkinSoMD5);
-    ((HashMap)localObject1).put(a("res.apk"), paramQFlutterAppData.assetResMD5);
-    paramQFlutterAppData = ((HashMap)localObject1).entrySet().iterator();
-    Object localObject2;
-    boolean bool;
-    if (paramQFlutterAppData.hasNext())
-    {
-      localObject2 = (Map.Entry)paramQFlutterAppData.next();
-      localObject1 = (String)((Map.Entry)localObject2).getKey();
-      if (!auog.a((String)localObject1))
+      catch (JSONException paramVarArgs)
       {
-        QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("checkAppFiles, %s is not exist", new Object[] { localObject1 }));
-        bool = false;
+        int j;
+        ArrayList localArrayList;
+        str = a(2, "");
+        callJs(this.b, new String[] { str });
+        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("jubaoApiPlugin", 2, "ipc upload  msg size = " + localArrayList.size());
+        }
+        Object localObject = new Bundle();
+        ((Bundle)localObject).putString("jubao_chat_uin", paramVarArgs);
+        ((Bundle)localObject).putString("jubao_group_code", str);
+        ((Bundle)localObject).putInt("jubao_chat_type", j);
+        ((Bundle)localObject).putSerializable("jubao_msg_list", localArrayList);
+        QIPCClientHelper.getInstance().callServer("JubaoIPCServer", "", (Bundle)localObject, new auwv(this));
+        bcef.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 2, 0, "", "", "", "");
+        return;
       }
+      catch (JsonORM.JsonParseException paramVarArgs)
+      {
+        String str = a(2, "");
+        callJs(this.b, new String[] { str });
+        QLog.e("jubaoApiPlugin", 1, paramVarArgs, new Object[0]);
+        return;
+      }
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    QLog.e("jubaoApiPlugin", 2, "receiver msgServer resp  isSucesss =  " + paramBoolean);
+    int j = 1;
+    int i = 0;
+    bcef.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 3, 0, "", "", "", "");
+    String str;
+    if (paramInt == 0)
+    {
+      str = "";
+      if ((!paramBoolean) || (paramBundle == null)) {
+        break label226;
+      }
+      str = paramBundle.getString("jubao_uuid");
+      paramInt = paramBundle.getInt("jubao_result_code", 0);
+      i = 0;
+      paramBundle = str;
     }
     for (;;)
     {
-      QLog.d("QFlutter.QFlutterDownloadManager", 1, "checkAppFiles result: " + bool);
-      return bool;
-      String str = azul.a((String)localObject1);
-      localObject2 = (String)((Map.Entry)localObject2).getValue();
-      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (((String)localObject2).equalsIgnoreCase(str))) {
-        break;
-      }
-      QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("checkAppFiles, %s md5 check fail, md5: %s fileMD5: %s", new Object[] { localObject1, localObject2, str }));
-      bool = false;
-      continue;
-      bool = true;
-    }
-  }
-  
-  private static boolean a(QFlutterEngineData paramQFlutterEngineData)
-  {
-    if (paramQFlutterEngineData == null)
-    {
-      QLog.d("QFlutter.QFlutterDownloadManager", 1, "checkEngineFiles, engineData == null");
-      return false;
-    }
-    Object localObject = new File(a(), "libflutter.so");
-    if (!((File)localObject).exists())
-    {
-      QLog.d("QFlutter.QFlutterDownloadManager", 1, "checkEngineFiles, libEngineFile is not exist");
-      return false;
-    }
-    localObject = azul.a(((File)localObject).getAbsolutePath());
-    if ((TextUtils.isEmpty(paramQFlutterEngineData.libEngineSoMD5)) || (!paramQFlutterEngineData.libEngineSoMD5.equalsIgnoreCase((String)localObject)))
-    {
-      QLog.d("QFlutter.QFlutterDownloadManager", 1, String.format("checkEngineFiles, libEngineFile md5 check fail, md5: %s fileMD5: %s", new Object[] { paramQFlutterEngineData.libEngineSoMD5, localObject }));
-      return false;
-    }
-    QLog.d("QFlutter.QFlutterDownloadManager", 1, "checkEngineFiles success");
-    return true;
-  }
-  
-  public static boolean a(String paramString, QFlutterAppData paramQFlutterAppData)
-  {
-    try
-    {
-      a();
-      bhmi.a(paramString, a(), false);
-      if (!a(paramQFlutterAppData))
+      str = a(paramInt, paramBundle);
+      callJs(this.b, new String[] { str });
+      QLog.d("jubaoApiPlugin", 1, "upload resp uuid = " + paramBundle + ",result = " + paramInt);
+      j = i;
+      i = paramInt;
+      bcef.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 2, 0, "" + j, "" + i, "", "");
+      return;
+      label226:
+      if (paramBundle != null)
       {
-        QLog.d("QFlutter.QFlutterDownloadManager", 1, "installApp check failed, srcPath: " + paramString);
-        a();
-        return false;
+        paramInt = paramBundle.getInt("jubao_result_code", 1);
+        i = 1;
+        paramBundle = str;
       }
-    }
-    catch (IOException paramQFlutterAppData)
-    {
-      paramQFlutterAppData.printStackTrace();
-      QLog.d("QFlutter.QFlutterDownloadManager", 1, "uncompressZip fail: " + paramString);
-      a();
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean a(String paramString, QFlutterEngineData paramQFlutterEngineData)
-  {
-    try
-    {
-      b();
-      bhmi.a(paramString, a(), false);
-      if (!a(paramQFlutterEngineData))
+      else
       {
-        QLog.d("QFlutter.QFlutterDownloadManager", 1, "installEngine check failed, srcPath: " + paramString);
-        b();
-        return false;
+        paramInt = 0;
+        i = 1;
+        paramBundle = str;
       }
-    }
-    catch (IOException paramQFlutterEngineData)
-    {
-      paramQFlutterEngineData.printStackTrace();
-      QLog.d("QFlutter.QFlutterDownloadManager", 1, "uncompressZip fail: " + paramString);
-      b();
-      return false;
-    }
-    return true;
-  }
-  
-  private static void b()
-  {
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      bhmi.d(a(arrayOfString[i]));
-      i += 1;
     }
   }
   
-  private static boolean b(QQAppInterface paramQQAppInterface)
+  public void callJs(String paramString, String... paramVarArgs)
   {
-    if (paramQQAppInterface == null) {
-      return false;
+    if ((paramString != null) && (this.b != null) && (paramString.equals(this.b))) {
+      bcef.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 4, 0, "", "", "", "");
     }
-    paramQQAppInterface = (auws)((asde)paramQQAppInterface.getManager(77)).a("qq.android.flutter.app.v8.3.9");
-    boolean bool2 = a(paramQQAppInterface);
-    if ((!bool2) && (paramQQAppInterface != null) && (paramQQAppInterface.g()) && (a((QFlutterAppData)paramQQAppInterface.a()))) {}
-    for (boolean bool1 = true;; bool1 = false)
+    super.callJs(paramString, paramVarArgs);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    QLog.d("jubaoApiPlugin", 1, "handleJsRequest methodName= " + paramString3);
+    if ("jubao".equals(paramString2))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QFlutter.QFlutterDownloadManager", 2, String.format("isAppConfigReady: %s, isAppInstalled: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) }));
+      if ("selectMsgs".equalsIgnoreCase(paramString3))
+      {
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0))
+        {
+          paramJsBridgeListener = (InputMethodManager)this.mRuntime.a().getSystemService("input_method");
+          if (paramJsBridgeListener != null) {
+            paramJsBridgeListener.hideSoftInputFromWindow(this.mRuntime.a().getWindow().getDecorView().getWindowToken(), 0);
+          }
+          a(paramVarArgs);
+          bcef.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 0, 0, "" + 0, "", "", "");
+        }
+        return true;
       }
-      return bool1;
+      if ("uploadMsgs".equalsIgnoreCase(paramString3))
+      {
+        if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+          break label248;
+        }
+        b(new String[] { paramVarArgs[0] });
+      }
     }
+    label248:
+    for (int i = 0;; i = 1)
+    {
+      bcef.b(null, "dc00898", "", "", "0x800A851", "0x800A851", 1, 0, "" + i, "", "", "");
+      return true;
+      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    }
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    QLog.d("jubaoApiPlugin", 1, "onActivityResult ");
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    if (paramByte == 0)
+    {
+      if (paramInt != -1) {
+        break label81;
+      }
+      paramIntent = paramIntent.getStringExtra("msgs");
+      if (QLog.isDevelopLevel()) {
+        QLog.d("jubaoApiPlugin", 4, "onActivityResult msgs= " + paramIntent);
+      }
+      callJs(this.a, new String[] { paramIntent });
+    }
+    label81:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("jubaoApiPlugin", 2, "onActivityResult user cancel select msg = ");
+  }
+  
+  public void startActivityForResult(Intent paramIntent, byte paramByte)
+  {
+    QLog.e("jubaoApiPlugin", 1, "startActivityForResult ");
+    super.startActivityForResult(paramIntent, paramByte);
   }
 }
 

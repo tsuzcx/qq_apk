@@ -1,37 +1,19 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
+import android.app.Activity;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class alai
-  extends RecyclerView.ItemDecoration
+class alai
+  implements View.OnClickListener
 {
-  private int a;
-  private int b;
+  alai(alag paramalag) {}
   
-  private alai(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    int i = paramRecyclerView.getChildPosition(paramView);
-    if (i == 0)
-    {
-      paramRect.left = this.a;
-      return;
-    }
-    if (i == paramRecyclerView.getAdapter().getItemCount() - 1)
-    {
-      paramRect.left = this.b;
-      paramRect.right = this.a;
-      return;
-    }
-    paramRect.left = this.b;
+    GroupManagerActivity.a((Activity)alag.a(this.a));
+    bcef.b(alag.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

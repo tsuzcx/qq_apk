@@ -1,59 +1,19 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 public class afpz
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public afpz(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
-  
-  public void onGlobalLayout()
+  public static boolean a(BaseChatPie paramBaseChatPie)
   {
-    Object localObject = new Rect();
-    this.a.mUIStyleHandler.d.getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = this.a.mUIStyleHandler.d.getRootView().getHeight();
-    int j = i - ((Rect)localObject).bottom;
-    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.e != j))
-    {
-      localObject = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, 0, j);
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.a.e = j;
+    if (paramBaseChatPie == null) {
+      return false;
     }
-    if (j > i / 3)
-    {
-      if (this.a.c) {
-        this.a.b(false);
-      }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_Int == 2) {
-          this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-        }
-        i = (int)mvd.b(BaseApplicationImpl.getApplication(), this.a.b + j);
-        return;
-        this.a.b(true);
-      }
-    }
-    this.a.b(false);
-    if (this.a.jdField_a_of_type_Int == 2) {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    }
-    if (this.a.jdField_a_of_type_Int == 2) {
-      i = (int)mvd.b(BaseApplicationImpl.getApplication(), this.a.b);
-    }
-    for (;;)
-    {
-      this.a.d = false;
-      return;
-      if (this.a.jdField_a_of_type_Int != 1) {}
+    boolean bool1 = ((avcl)paramBaseChatPie.getHelper(33)).c();
+    boolean bool2 = ((afsw)paramBaseChatPie.getHelper(43)).c();
+    boolean bool3 = ((ahql)paramBaseChatPie.getHelper(75)).d();
+    boolean bool4 = ((bkjp)paramBaseChatPie.getHelper(81)).d();
+    if ((bool1) || (bool2) || (bool3) || (bool4)) {}
+    for (bool1 = true;; bool1 = false) {
+      return bool1;
     }
   }
 }

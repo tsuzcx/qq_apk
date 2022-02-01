@@ -16,13 +16,13 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.ScaleGestureDetector.OnScaleGestureListener;
 import android.view.View;
-import bqmd;
-import bqme;
-import bqmg;
-import bqmi;
-import bqmj;
+import bnip;
+import bniq;
+import bnis;
+import bniu;
+import bniv;
 import com.tencent.TMG.utils.QLog;
-import yuq;
+import xwb;
 
 public class CropNewView
   extends View
@@ -31,9 +31,9 @@ public class CropNewView
   private int jdField_a_of_type_Int;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
-  private bqme jdField_a_of_type_Bqme;
-  private bqmg jdField_a_of_type_Bqmg = new bqmg();
-  private bqmi jdField_a_of_type_Bqmi;
+  private bniq jdField_a_of_type_Bniq;
+  private bnis jdField_a_of_type_Bnis = new bnis();
+  private bniu jdField_a_of_type_Bniu;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
@@ -50,59 +50,59 @@ public class CropNewView
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new bqmj(this, null));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new bniv(this, null));
     this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(paramContext, this);
   }
   
   private void a(Canvas paramCanvas, boolean paramBoolean)
   {
     paramCanvas.save();
-    RectF localRectF = this.jdField_a_of_type_Bqmg.a();
-    paramCanvas.rotate(this.jdField_a_of_type_Bqmg.b(), localRectF.centerX(), localRectF.centerY());
-    this.jdField_a_of_type_Bqmg.a(paramCanvas);
-    this.jdField_a_of_type_Bqmg.b(paramCanvas);
+    RectF localRectF = this.jdField_a_of_type_Bnis.a();
+    paramCanvas.rotate(this.jdField_a_of_type_Bnis.b(), localRectF.centerX(), localRectF.centerY());
+    this.jdField_a_of_type_Bnis.a(paramCanvas);
+    this.jdField_a_of_type_Bnis.b(paramCanvas);
     paramCanvas.restore();
     if (paramBoolean)
     {
       paramCanvas.save();
       paramCanvas.translate(getScrollX(), getScrollY());
-      this.jdField_a_of_type_Bqmg.a(paramCanvas, getScrollX(), getScrollY());
+      this.jdField_a_of_type_Bnis.a(paramCanvas, getScrollX(), getScrollY());
       paramCanvas.restore();
     }
   }
   
-  private void a(bqmd parambqmd)
+  private void a(bnip parambnip)
   {
-    this.jdField_a_of_type_Bqmg.c(parambqmd.c);
-    this.jdField_a_of_type_Bqmg.b(parambqmd.d);
-    if (!a(Math.round(parambqmd.a), Math.round(parambqmd.b))) {
+    this.jdField_a_of_type_Bnis.c(parambnip.c);
+    this.jdField_a_of_type_Bnis.b(parambnip.d);
+    if (!a(Math.round(parambnip.a), Math.round(parambnip.b))) {
       invalidate();
     }
   }
   
-  private void a(bqmd parambqmd1, bqmd parambqmd2)
+  private void a(bnip parambnip1, bnip parambnip2)
   {
-    if (this.jdField_a_of_type_Bqme == null)
+    if (this.jdField_a_of_type_Bniq == null)
     {
-      this.jdField_a_of_type_Bqme = new bqme();
-      this.jdField_a_of_type_Bqme.addUpdateListener(this);
-      this.jdField_a_of_type_Bqme.addListener(this);
+      this.jdField_a_of_type_Bniq = new bniq();
+      this.jdField_a_of_type_Bniq.addUpdateListener(this);
+      this.jdField_a_of_type_Bniq.addListener(this);
     }
-    this.jdField_a_of_type_Bqme.a(parambqmd1, parambqmd2);
-    this.jdField_a_of_type_Bqme.start();
+    this.jdField_a_of_type_Bniq.a(parambnip1, parambnip2);
+    this.jdField_a_of_type_Bniq.start();
   }
   
   private boolean a(float paramFloat1, float paramFloat2)
   {
-    bqmd localbqmd = this.jdField_a_of_type_Bqmg.a(getScrollX(), getScrollY(), -paramFloat1, -paramFloat2);
-    if (localbqmd != null)
+    bnip localbnip = this.jdField_a_of_type_Bnis.a(getScrollX(), getScrollY(), -paramFloat1, -paramFloat2);
+    if (localbnip != null)
     {
-      if ((this.jdField_a_of_type_Bqmi != null) && (!this.b))
+      if ((this.jdField_a_of_type_Bniu != null) && (!this.b))
       {
-        this.jdField_a_of_type_Bqmi.c();
+        this.jdField_a_of_type_Bniu.b();
         setCrop(true);
       }
-      a(localbqmd);
+      a(localbnip);
       return true;
     }
     return a(getScrollX() + Math.round(paramFloat1), getScrollY() + Math.round(paramFloat2));
@@ -127,30 +127,30 @@ public class CropNewView
   {
     invalidate();
     f();
-    bqmd localbqmd1 = this.jdField_a_of_type_Bqmg.b(getScrollX(), getScrollY());
-    bqmd localbqmd2 = this.jdField_a_of_type_Bqmg.c(getScrollX(), getScrollY());
+    bnip localbnip1 = this.jdField_a_of_type_Bnis.b(getScrollX(), getScrollY());
+    bnip localbnip2 = this.jdField_a_of_type_Bnis.c(getScrollX(), getScrollY());
     if (this.jdField_a_of_type_Boolean)
     {
       setResetHome(false);
-      localbqmd2.a = 0.0F;
-      localbqmd2.b = 0.0F;
+      localbnip2.a = 0.0F;
+      localbnip2.b = 0.0F;
     }
-    a(localbqmd1, localbqmd2);
+    a(localbnip1, localbnip2);
   }
   
   private void f()
   {
-    if (this.jdField_a_of_type_Bqme != null) {
-      this.jdField_a_of_type_Bqme.cancel();
+    if (this.jdField_a_of_type_Bniq != null) {
+      this.jdField_a_of_type_Bniq.cancel();
     }
   }
   
   public Bitmap a()
   {
-    float f = 1.0F / this.jdField_a_of_type_Bqmg.c();
-    RectF localRectF = new RectF(this.jdField_a_of_type_Bqmg.a());
+    float f = 1.0F / this.jdField_a_of_type_Bnis.c();
+    RectF localRectF = new RectF(this.jdField_a_of_type_Bnis.a());
     Object localObject = new Matrix();
-    ((Matrix)localObject).setRotate(this.jdField_a_of_type_Bqmg.b(), localRectF.centerX(), localRectF.centerY());
+    ((Matrix)localObject).setRotate(this.jdField_a_of_type_Bnis.b(), localRectF.centerX(), localRectF.centerY());
     ((Matrix)localObject).mapRect(localRectF);
     ((Matrix)localObject).setScale(f, f, localRectF.left, localRectF.top);
     ((Matrix)localObject).mapRect(localRectF);
@@ -164,15 +164,15 @@ public class CropNewView
   
   public void a()
   {
-    this.jdField_a_of_type_Bqmg.c();
+    this.jdField_a_of_type_Bnis.c();
     e();
     setCrop(false);
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bqmi != null) {
-      this.jdField_a_of_type_Bqmi.a(paramInt);
+    if (this.jdField_a_of_type_Bniu != null) {
+      this.jdField_a_of_type_Bniu.a(paramInt);
     }
   }
   
@@ -184,10 +184,10 @@ public class CropNewView
     }
     if (!b())
     {
-      this.jdField_a_of_type_Bqmg.d(getScrollX(), getScrollY());
+      this.jdField_a_of_type_Bnis.d(getScrollX(), getScrollY());
       e();
-      if (this.jdField_a_of_type_Bqmi != null) {
-        this.jdField_a_of_type_Bqmi.c();
+      if (this.jdField_a_of_type_Bniu != null) {
+        this.jdField_a_of_type_Bniu.b();
       }
       bool = true;
     }
@@ -207,11 +207,11 @@ public class CropNewView
     default: 
       return bool;
     case 0: 
-      this.jdField_a_of_type_Bqmg.b(paramMotionEvent.getX(), paramMotionEvent.getY());
+      this.jdField_a_of_type_Bnis.b(paramMotionEvent.getX(), paramMotionEvent.getY());
       a(1);
       return bool;
     }
-    this.jdField_a_of_type_Bqmg.c(getScrollX(), getScrollY());
+    this.jdField_a_of_type_Bnis.c(getScrollX(), getScrollY());
     a(2);
     e();
     return bool;
@@ -221,28 +221,28 @@ public class CropNewView
   {
     if (!b())
     {
-      this.jdField_a_of_type_Bqmg.a(-90);
+      this.jdField_a_of_type_Bnis.a(-90);
       e();
     }
   }
   
   boolean b()
   {
-    return (this.jdField_a_of_type_Bqme != null) && (this.jdField_a_of_type_Bqme.isRunning());
+    return (this.jdField_a_of_type_Bniq != null) && (this.jdField_a_of_type_Bniq.isRunning());
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Bqmg.b();
-    this.jdField_a_of_type_Bqmg.b(true);
+    this.jdField_a_of_type_Bnis.b();
+    this.jdField_a_of_type_Bnis.b(true);
     setResetHome(true);
     e();
   }
   
   public boolean c()
   {
-    this.jdField_a_of_type_Bqmg.a(getScrollX(), getScrollY());
-    this.jdField_a_of_type_Bqmg.b(true);
+    this.jdField_a_of_type_Bnis.a(getScrollX(), getScrollY());
+    this.jdField_a_of_type_Bnis.b(true);
     setResetHome(true);
     e();
     return true;
@@ -250,7 +250,7 @@ public class CropNewView
   
   public void d()
   {
-    this.jdField_a_of_type_Bqmg.a();
+    this.jdField_a_of_type_Bnis.a();
     e();
   }
   
@@ -259,7 +259,7 @@ public class CropNewView
     if (QLog.isColorLevel()) {
       QLog.i("CropNewView", 0, "onAnimationCancel!");
     }
-    this.jdField_a_of_type_Bqmg.c(this.jdField_a_of_type_Bqme.a());
+    this.jdField_a_of_type_Bnis.c(this.jdField_a_of_type_Bniq.a());
   }
   
   public void onAnimationEnd(Animator paramAnimator)
@@ -267,8 +267,8 @@ public class CropNewView
     if (QLog.isColorLevel()) {
       QLog.i("CropNewView", 0, "onAnimationEnd!");
     }
-    if (this.jdField_a_of_type_Bqmg.a(getScrollX(), getScrollY(), this.jdField_a_of_type_Bqme.a())) {
-      a(this.jdField_a_of_type_Bqmg.a(getScrollX(), getScrollY()));
+    if (this.jdField_a_of_type_Bnis.a(getScrollX(), getScrollY(), this.jdField_a_of_type_Bniq.a())) {
+      a(this.jdField_a_of_type_Bnis.a(getScrollX(), getScrollY()));
     }
   }
   
@@ -279,13 +279,13 @@ public class CropNewView
     if (QLog.isColorLevel()) {
       QLog.i("CropNewView", 0, "onAnimationStart!");
     }
-    this.jdField_a_of_type_Bqmg.a(this.jdField_a_of_type_Bqme.a());
+    this.jdField_a_of_type_Bnis.a(this.jdField_a_of_type_Bniq.a());
   }
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Bqmg.d(paramValueAnimator.getAnimatedFraction());
-    a((bqmd)paramValueAnimator.getAnimatedValue());
+    this.jdField_a_of_type_Bnis.d(paramValueAnimator.getAnimatedFraction());
+    a((bnip)paramValueAnimator.getAnimatedValue());
   }
   
   protected void onDetachedFromWindow()
@@ -303,7 +303,7 @@ public class CropNewView
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (paramBoolean) {
-      this.jdField_a_of_type_Bqmg.a(paramInt3 - paramInt1, paramInt4 - paramInt2);
+      this.jdField_a_of_type_Bnis.a(paramInt3 - paramInt1, paramInt4 - paramInt2);
     }
   }
   
@@ -311,7 +311,7 @@ public class CropNewView
   {
     if (this.jdField_a_of_type_Int > 1)
     {
-      this.jdField_a_of_type_Bqmg.b(paramScaleGestureDetector.getScaleFactor(), getScrollX() + paramScaleGestureDetector.getFocusX(), getScrollY() + paramScaleGestureDetector.getFocusY());
+      this.jdField_a_of_type_Bnis.b(paramScaleGestureDetector.getScaleFactor(), getScrollX() + paramScaleGestureDetector.getFocusX(), getScrollY() + paramScaleGestureDetector.getFocusY());
       invalidate();
       return true;
     }
@@ -322,7 +322,7 @@ public class CropNewView
   {
     if (this.jdField_a_of_type_Int > 1)
     {
-      this.jdField_a_of_type_Bqmg.d();
+      this.jdField_a_of_type_Bnis.d();
       return true;
     }
     return false;
@@ -330,8 +330,8 @@ public class CropNewView
   
   public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
   {
-    this.jdField_a_of_type_Bqmg.e();
-    yuq.b("0X800A9AB");
+    this.jdField_a_of_type_Bnis.e();
+    xwb.b("0X800A9AB");
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -360,15 +360,15 @@ public class CropNewView
     this.b = paramBoolean;
   }
   
-  public void setCropListener(bqmi parambqmi)
+  public void setCropListener(bniu parambniu)
   {
-    this.jdField_a_of_type_Bqmi = parambqmi;
+    this.jdField_a_of_type_Bniu = parambniu;
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Bqmg.a(this);
-    this.jdField_a_of_type_Bqmg.a(paramBitmap);
+    this.jdField_a_of_type_Bnis.a(this);
+    this.jdField_a_of_type_Bnis.a(paramBitmap);
     setResetHome(false);
     setCrop(false);
     invalidate();

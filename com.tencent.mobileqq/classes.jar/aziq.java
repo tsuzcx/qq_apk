@@ -1,6 +1,6 @@
 public abstract interface aziq
 {
-  public abstract void a(azib paramazib);
+  public abstract void a(String paramString);
 }
 
 

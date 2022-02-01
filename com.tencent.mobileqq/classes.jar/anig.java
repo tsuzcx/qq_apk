@@ -1,17 +1,8 @@
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
 
-public class anig
-  extends anae
+public abstract interface anig
 {
-  public anig(ApolloGameActivity paramApolloGameActivity) {}
-  
-  public void a(boolean paramBoolean, long paramLong, Object paramObject)
-  {
-    if (ApolloGameActivity.a(this.a) != null) {
-      ApolloGameActivity.a(this.a).a(paramBoolean, paramLong);
-    }
-  }
+  public abstract void a(FullMessageSearchResult paramFullMessageSearchResult);
 }
 
 

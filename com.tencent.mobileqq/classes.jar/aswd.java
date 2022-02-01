@@ -1,43 +1,17 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendFeedView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aswd
-  extends RecyclerView.ViewHolder
+class aswd
   implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  aszz jdField_a_of_type_Aszz;
-  public bnxu a;
-  public ExtendFriendFeedView a;
+  aswd(aswb paramaswb) {}
   
-  public aswd(View paramView, Context paramContext, aszz paramaszz, bnxu parambnxu)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedView = ((ExtendFriendFeedView)paramView);
-    this.jdField_a_of_type_Bnxu = parambnxu;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aszz = paramaszz;
-    if (this.jdField_a_of_type_Bnxu != null) {
-      this.jdField_a_of_type_Bnxu.a(this.jdField_a_of_type_Bnxu.a(), new aswe(this));
-    }
+    aszt.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Asst.d());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a(aswd paramaswd, asxh paramasxh, int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedView != null) && (paramasxh != null))
-    {
-      int i = paramaswd.getPosition();
-      paramaswd.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendFeedView.setFeedBgParams(i, paramasxh.mVoiceUrl, paramInt, false);
-    }
-    if ((this.jdField_a_of_type_Bnxu != null) && (paramasxh != null) && (paramasxh.mAlumbasicdata != null)) {
-      paramaswd.jdField_a_of_type_Bnxu.a(paramasxh.mAlumbasicdata, paramaswd.getAdapterPosition());
-    }
-  }
-  
-  public void onClick(View paramView) {}
 }
 
 

@@ -1,48 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.JvmStatic;
-import kotlin.jvm.functions.Function1;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.articlesummary.articlesummary.SubscriptInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/ugc/managecolumn/CreateTopicDispatcher;", "", "()V", "createTopicListenerList", "", "Lkotlin/Function1;", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ColumnInfo;", "Lkotlin/ParameterName;", "name", "topicInfo", "", "addCreateTopicListener", "listener", "notifyTopicCreate", "removeCreateTopicListener", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rfp
+public class rfp
 {
-  private static final List<Function1<ColumnInfo, Unit>> a;
-  public static final rfp a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
   
-  static
+  public static void a(BaseArticleInfo paramBaseArticleInfo, articlesummary.SubscriptInfo paramSubscriptInfo)
   {
-    jdField_a_of_type_Rfp = new rfp();
-    jdField_a_of_type_JavaUtilList = (List)new ArrayList();
-  }
-  
-  @JvmStatic
-  public static final void a(@NotNull ColumnInfo paramColumnInfo)
-  {
-    Intrinsics.checkParameterIsNotNull(paramColumnInfo, "topicInfo");
-    Iterator localIterator = ((Iterable)jdField_a_of_type_JavaUtilList).iterator();
-    while (localIterator.hasNext()) {
-      ((Function1)localIterator.next()).invoke(paramColumnInfo);
+    if (paramBaseArticleInfo == null)
+    {
+      QLog.d("SubscriptInfo", 2, "articleinfo == null");
+      return;
     }
+    paramBaseArticleInfo.subscriptWording = qlg.a(paramSubscriptInfo.bytes_subscript_txt, "");
+    paramBaseArticleInfo.subscriptWordingColor = qlg.a(paramSubscriptInfo.bytes_subscript_color, "");
+    paramBaseArticleInfo.subscriptBgColor = qlg.a(paramSubscriptInfo.bytes_background_color, "");
+    paramBaseArticleInfo.subscriptLocation = qlg.a(paramSubscriptInfo.uint32_is_show_top, 0);
+    paramBaseArticleInfo.subscriptType = qlg.a(paramSubscriptInfo.uint32_subscript_type, 0);
+    QLog.d("SubscriptInfo", 2, "parseByPB | wording: " + paramBaseArticleInfo.subscriptWording + " \ntxtColor : " + paramBaseArticleInfo.subscriptWordingColor + " \nbgColor : " + paramBaseArticleInfo.subscriptBgColor + " \nisShowTop : " + paramBaseArticleInfo.subscriptLocation + " \ntype : " + paramBaseArticleInfo.subscriptType + " \n");
   }
   
-  @JvmStatic
-  public static final void a(@NotNull Function1<? super ColumnInfo, Unit> paramFunction1)
+  public String toString()
   {
-    Intrinsics.checkParameterIsNotNull(paramFunction1, "listener");
-    jdField_a_of_type_JavaUtilList.add(paramFunction1);
-  }
-  
-  @JvmStatic
-  public static final void b(@NotNull Function1<? super ColumnInfo, Unit> paramFunction1)
-  {
-    Intrinsics.checkParameterIsNotNull(paramFunction1, "listener");
-    jdField_a_of_type_JavaUtilList.remove(paramFunction1);
+    return "SubscriptInfo{wording='" + this.jdField_a_of_type_JavaLangString + '\'' + ", wordingColor='" + this.jdField_b_of_type_JavaLangString + '\'' + ", bgColor='" + this.c + '\'' + ", type=" + this.jdField_a_of_type_Int + ", location=" + this.jdField_b_of_type_Int + '}';
   }
 }
 

@@ -1,10 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+
 public class acpf
+  implements DialogInterface.OnClickListener
 {
-  private acpg a;
+  public acpf(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void a(acpg paramacpg)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramacpg;
+    this.a.finish();
   }
 }
 

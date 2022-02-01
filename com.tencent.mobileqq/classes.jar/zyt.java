@@ -1,16 +1,18 @@
-import java.util.Comparator;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.TextView;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
 
-class zyt
-  implements Comparator<zyr>
+public class zyt
+  extends AnimatorListenerAdapter
 {
-  zyt(zys paramzys) {}
+  public zyt(SingleLyricView paramSingleLyricView) {}
   
-  public int a(zyr paramzyr1, zyr paramzyr2)
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
   {
-    if (paramzyr1.d > paramzyr2.d) {
-      return 1;
+    if (SingleLyricView.a(this.a) != null) {
+      SingleLyricView.a(this.a).setAlpha(1.0F);
     }
-    return -1;
   }
 }
 

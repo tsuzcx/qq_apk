@@ -1,6 +1,17 @@
-public abstract interface bfer
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.troop.widget.BorderURLImageView;
+
+public class bfer
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  ajnr jdField_a_of_type_Ajnr;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  BorderURLImageView jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView;
+  
+  protected bfer(bfeq parambfeq) {}
 }
 
 

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import adxp;
-import bjbs;
+import acup;
+import bhht;
 
 public class AutoLoginHelper$5
   implements Runnable
 {
-  public AutoLoginHelper$5(adxp paramadxp) {}
+  public AutoLoginHelper$5(acup paramacup) {}
   
   public void run()
   {
     try
     {
-      if ((adxp.a(this.this$0) == null) && (!adxp.a(this.this$0).isFinishing()))
+      if ((acup.a(this.this$0) == null) && (!acup.a(this.this$0).isFinishing()))
       {
-        adxp.a(this.this$0, new bjbs(adxp.a(this.this$0), adxp.a(this.this$0).getTitleBarHeight()));
-        adxp.a(this.this$0).c(2131694176);
+        acup.a(this.this$0, new bhht(acup.a(this.this$0), acup.a(this.this$0).getTitleBarHeight()));
+        acup.a(this.this$0).c(2131694279);
       }
-      if ((adxp.a(this.this$0) != null) && (!adxp.a(this.this$0).isShowing())) {
-        adxp.a(this.this$0).show();
+      if ((acup.a(this.this$0) != null) && (!acup.a(this.this$0).isShowing())) {
+        acup.a(this.this$0).show();
       }
       return;
     }

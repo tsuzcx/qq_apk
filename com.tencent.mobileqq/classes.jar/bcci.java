@@ -1,17 +1,21 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
-public class bcci
+public final class bcci
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
+  public bcci(View paramView) {}
   
-  public bcci(AssociateSearchWordsFragment paramAssociateSearchWordsFragment) {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.setAlpha(1.0F - f);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcci
  * JD-Core Version:    0.7.0.1
  */

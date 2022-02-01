@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 
-public class atzp
-  extends atzt
+public abstract interface atzp
 {
-  public CharSequence c()
-  {
-    Object localObject = (FileManagerEntity)this.a.get(0);
-    String str1 = auoy.b(((FileManagerEntity)localObject).srvTime);
-    String str2 = aunj.b((FileManagerEntity)localObject);
-    localObject = auog.a(((FileManagerEntity)localObject).fileSize);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str2).append("  ").append(str1).append("  ").append((String)localObject);
-    this.b = localStringBuilder;
-    return localStringBuilder;
-  }
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(MessageRecord paramMessageRecord, Activity paramActivity);
+  
+  public abstract void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity, int paramInt);
+  
+  public abstract void b();
 }
 
 

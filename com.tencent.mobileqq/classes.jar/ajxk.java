@@ -1,17 +1,16 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
 public class ajxk
-  extends ajsp
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public boolean a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
+  public ajxk(TransactionActivity paramTransactionActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

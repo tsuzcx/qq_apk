@@ -1,40 +1,75 @@
-import android.view.View.OnClickListener;
-import androidx.annotation.Nullable;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.ContactCard;
-import com.tencent.mobileqq.data.TroopMemberCard;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.remind.widget.WheelTextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.VerticalGallery.LayoutParams;
 
 public class azxr
+  extends BaseAdapter
 {
-  public int a;
-  public long a;
-  public View.OnClickListener a;
-  public azxy a;
-  @Nullable
-  public bahx a;
-  public bhdh a;
-  public bjaz a;
-  public ProfileActivity.AllInOne a;
-  public Card a;
-  public ContactCard a;
-  public TroopMemberCard a;
-  public RichStatus a;
-  public String a;
-  public boolean a;
-  public String[] a;
-  public int b = -1;
-  public long b;
-  public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
+  private int jdField_a_of_type_Int = 25;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private int b;
+  private int c;
   
-  public azxr()
+  public azxr(Context paramContext, String[] paramArrayOfString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
+    this.b = paramContext.getColor(2131167102);
+    this.c = paramContext.getColor(2131167072);
+  }
+  
+  public View a(int paramInt)
+  {
+    return getView(paramInt, null, null);
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_ArrayOfJavaLangString != null) {
+      return this.jdField_a_of_type_ArrayOfJavaLangString.length;
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    if (paramView == null)
+    {
+      localObject1 = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
+      ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+    }
+    for (paramView = (WheelTextView)localObject1;; paramView = (View)localObject2)
+    {
+      String str = this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+      localObject2 = paramView;
+      if (paramView == null) {
+        localObject2 = (WheelTextView)localObject1;
+      }
+      ((WheelTextView)localObject2).setTextSize(20.0F);
+      ((WheelTextView)localObject2).setTextColor(this.b);
+      ((WheelTextView)localObject2).setGravity(17);
+      ((WheelTextView)localObject2).setText(str);
+      ((WheelTextView)localObject2).setBackgroundColor(this.c);
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+      return localObject1;
+      localObject1 = paramView;
+    }
   }
 }
 

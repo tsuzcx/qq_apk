@@ -1,0 +1,26 @@
+package com.tencent.mobileqq.utils;
+
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout.DispatchKeyEventListener;
+
+class QQCustomDialogWtihInputAndChoose$4
+  implements MyLinearLayout.DispatchKeyEventListener
+{
+  QQCustomDialogWtihInputAndChoose$4(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose) {}
+  
+  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+  {
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.this$0.mIsWindowAdded))
+    {
+      this.this$0.hideChooseList();
+      return true;
+    }
+    return false;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+ * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose.4
+ * JD-Core Version:    0.7.0.1
+ */

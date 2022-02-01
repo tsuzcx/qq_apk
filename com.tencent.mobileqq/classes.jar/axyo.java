@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.21.1.1;
-import java.util.List;
+import com.tencent.map.geolocation.TencentDirectionListener;
 
-public class axyo
-  implements axzw
+class axyo
+  implements TencentDirectionListener
 {
-  axyo(axyn paramaxyn) {}
+  axyo(axym paramaxym) {}
   
-  public void a(List<axzx> paramList, boolean paramBoolean)
+  public void onDirectionChanged(double paramDouble, int paramInt)
   {
-    this.a.a.b = paramList;
-    this.a.a.g = paramBoolean;
-    this.a.a.runOnUiThread(new GameRoomInviteActivity.21.1.1(this, paramList, paramBoolean));
+    if (axym.a(this.a) != null)
+    {
+      axym.a(this.a, 180.0D + paramDouble);
+      axym.a(this.a, false);
+    }
   }
 }
 

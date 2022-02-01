@@ -1,16 +1,12 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import android.os.Bundle;
 
-final class beha
-  extends Editable.Factory
+public abstract interface beha
 {
-  public Editable newEditable(CharSequence paramCharSequence)
-  {
-    if ((paramCharSequence instanceof begz)) {
-      return (Editable)paramCharSequence;
-    }
-    return new begz(paramCharSequence, 3);
-  }
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(long paramLong1, String paramString, long paramLong2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, Bundle paramBundle, int paramInt);
+  
+  public abstract void b(long paramLong1, long paramLong2, long paramLong3);
 }
 
 

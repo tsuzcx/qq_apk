@@ -2,6 +2,7 @@ package com.tencent.autotemplate.filter;
 
 import android.graphics.PointF;
 import android.util.Log;
+import android.util.Pair;
 import com.tencent.autotemplate.TAVAutomaticRenderContext;
 import com.tencent.tav.coremedia.CGRect;
 import com.tencent.tav.coremedia.CGSize;
@@ -10,18 +11,13 @@ import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.coremedia.TextureInfo;
 import com.tencent.tav.decoder.RenderContext;
-import com.tencent.tavkit.ciimage.CIContext;
 import com.tencent.tavkit.ciimage.CIImage;
-import com.tencent.tavkit.composition.TAVClip;
 import com.tencent.tavkit.composition.model.TAVVideoCompositionTrack;
-import com.tencent.tavkit.composition.model.TAVVideoConfiguration;
 import com.tencent.tavkit.composition.model.TAVVideoConfiguration.TAVVideoConfigurationContentMode;
 import com.tencent.tavkit.composition.video.ImageCollection;
 import com.tencent.tavkit.composition.video.ImageCollection.TrackImagePair;
 import com.tencent.tavkit.composition.video.RenderInfo;
 import com.tencent.tavkit.composition.video.TAVVideoMixEffect;
-import com.tencent.tavkit.composition.video.TAVVideoMixEffect.Filter;
-import com.tencent.tavkit.report.IReportable;
 import com.tencent.tavkit.report.MemoryReportHelper;
 import com.tencent.tavkit.utils.BenchUtil;
 import com.tencent.tavsticker.log.TLog;
@@ -30,125 +26,107 @@ import com.tencent.tavsticker.model.TAVSticker;
 import com.tencent.tavsticker.utils.CollectionUtil;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
 class TAVOneClickFilmStickerEffect$StickerVideoCompositionMixerEffect
-  implements TAVVideoMixEffect.Filter, IReportable
+  extends TAVBaseMixFilter
 {
-  private CMTime currentTime = CMTime.CMTimeZero;
-  private RenderContext renderContext;
-  private HashMap<String, Integer> sizeKeys = new HashMap();
+  private TAVFaceMorphingFilter faceMorphingFilter;
   private TAVAutomaticRenderContext stickerContext;
-  private HashMap<String, TextureInfo> textureMap = new HashMap();
   
   private TAVOneClickFilmStickerEffect$StickerVideoCompositionMixerEffect(TAVOneClickFilmStickerEffect paramTAVOneClickFilmStickerEffect, TAVAutomaticRenderContext paramTAVAutomaticRenderContext)
   {
     this.stickerContext = paramTAVAutomaticRenderContext;
-  }
-  
-  private void sortTrackImages(List<ImageCollection.TrackImagePair> paramList)
-  {
-    if (CollectionUtil.isEmptyList(paramList)) {
-      return;
+    if (!CollectionUtil.isEmptyList(TAVOneClickFilmStickerEffect.access$100(paramTAVOneClickFilmStickerEffect))) {
+      this.faceMorphingFilter = new TAVFaceMorphingFilter(TAVOneClickFilmStickerEffect.access$100(paramTAVOneClickFilmStickerEffect));
     }
-    Collections.sort(paramList, new TAVOneClickFilmStickerEffect.StickerVideoCompositionMixerEffect.1(this));
   }
   
   public CIImage apply(TAVVideoMixEffect paramTAVVideoMixEffect, ImageCollection paramImageCollection, RenderInfo paramRenderInfo)
   {
-    List localList = paramImageCollection.getVideoChannelImages();
+    Object localObject2 = null;
+    super.apply(paramTAVVideoMixEffect, paramImageCollection, paramRenderInfo);
     CGSize localCGSize = paramRenderInfo.getRenderSize();
-    this.currentTime = paramRenderInfo.getTime();
-    this.stickerContext.setRenderSize(localCGSize);
+    Object localObject1 = new ArrayList();
     ArrayList localArrayList = new ArrayList();
-    this.renderContext = paramRenderInfo.getCiContext().getRenderContext();
-    this.sizeKeys.clear();
-    if (!CollectionUtil.isEmptyList(localList))
+    if ((this.faceMorphingFilter != null) && (this.faceMorphingFilter.needRender(paramImageCollection, this.currentTime)))
     {
-      sortTrackImages(localList);
-      if (localList.size() > 1) {
-        removeRedundantImage(localList);
+      paramTAVVideoMixEffect = this.faceMorphingFilter.apply(paramTAVVideoMixEffect, paramImageCollection, paramRenderInfo);
+      paramTAVVideoMixEffect = getCachedTexture(paramTAVVideoMixEffect, paramTAVVideoMixEffect.getSize(), paramRenderInfo);
+      ((List)localObject1).add(new TAVSourceImage(paramTAVVideoMixEffect, true, 0));
+      this.stickerContext.setRenderSize(localCGSize);
+      BenchUtil.benchStart("renderStickerChain");
+      long l = this.currentTime.getTimeUs() / 1000L;
+      localObject1 = this.stickerContext.renderStickerChainWithTexture(l, (List)localObject1);
+      BenchUtil.benchEnd("renderStickerChain");
+      this.renderContext.makeCurrent();
+      if (localObject1 == null) {
+        break label190;
       }
-      int k = localList.size();
-      int i = 0;
-      if (i < k)
+      paramTAVVideoMixEffect = new CIImage(((CMSampleBuffer)localObject1).getTextureInfo());
+    }
+    label190:
+    do
+    {
+      return paramTAVVideoMixEffect;
+      localObject1 = getCachedTextures(paramImageCollection.getVideoChannelImages(), localArrayList, paramRenderInfo, localCGSize);
+      paramTAVVideoMixEffect = null;
+      break;
+      if (paramTAVVideoMixEffect != null) {
+        return new CIImage(paramTAVVideoMixEffect);
+      }
+      paramTAVVideoMixEffect = localObject2;
+    } while (!needCropTexture(paramImageCollection));
+    return getOutputImage((TextureInfo)localArrayList.get(0), paramRenderInfo);
+  }
+  
+  public List<TAVSourceImage> getCachedTextures(List<ImageCollection.TrackImagePair> paramList, List<TextureInfo> paramList1, RenderInfo paramRenderInfo, CGSize paramCGSize)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (CollectionUtil.isEmptyList(paramList)) {
+      return localArrayList;
+    }
+    int j = paramList.size();
+    int i = 0;
+    if (i < j)
+    {
+      Object localObject = (ImageCollection.TrackImagePair)paramList.get(i);
+      int k;
+      if (localObject != null)
       {
-        paramTAVVideoMixEffect = (ImageCollection.TrackImagePair)localList.get(i);
-        int j;
-        if (paramTAVVideoMixEffect != null)
-        {
-          paramImageCollection = paramTAVVideoMixEffect.getTrack().getExtraTrackInfo("pag_layer_index");
-          j = -1;
-          if ((paramImageCollection instanceof String)) {
-            j = Integer.parseInt((String)paramImageCollection);
-          }
-          if ((TAVOneClickFilmStickerEffect.access$100(this.this$0) != 1) || (j != -1)) {
-            break label180;
-          }
+        k = getPAGLayerIndex((ImageCollection.TrackImagePair)localObject);
+        if ((TAVOneClickFilmStickerEffect.access$200(this.this$0) != 1) || (k != -1)) {
+          break label89;
         }
-        for (;;)
-        {
-          i += 1;
-          break;
-          label180:
-          label246:
-          int m;
-          int n;
-          Object localObject;
-          if (((paramTAVVideoMixEffect.getTrack() instanceof TAVClip)) && (TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill.equals(((TAVClip)paramTAVVideoMixEffect.getTrack()).getVideoConfiguration().getContentMode())))
-          {
-            paramTAVVideoMixEffect = paramTAVVideoMixEffect.getImage().clone();
-            paramTAVVideoMixEffect.applyFillInFrame(new CGRect(new PointF(), localCGSize), TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill);
-            paramImageCollection = localCGSize;
-            m = (int)paramImageCollection.width;
-            n = (int)paramImageCollection.height;
-            paramImageCollection = m + "_" + n;
-            localObject = (Integer)this.sizeKeys.get(paramImageCollection);
-            if (localObject != null) {
-              break label539;
-            }
-            this.sizeKeys.put(paramImageCollection, Integer.valueOf(1));
-          }
-          for (;;)
-          {
-            String str = paramImageCollection + "_" + this.sizeKeys.get(paramImageCollection);
-            localObject = (TextureInfo)this.textureMap.get(str);
-            paramImageCollection = (ImageCollection)localObject;
-            if (localObject == null)
-            {
-              this.renderContext.makeCurrent();
-              paramImageCollection = CIContext.newTextureInfo(m, n);
-              this.textureMap.put(str, paramImageCollection);
-            }
-            paramRenderInfo.getCiContext().convertImageToTexture(paramTAVVideoMixEffect, paramImageCollection);
-            TLog.d("TAVStickerOverlayEffect", "PAGImage::layerIndex: " + i + ", renderSize: " + paramImageCollection.width + ", " + paramImageCollection.height + ", textureID: " + paramImageCollection.textureID + ", textureKey: " + str + ", context: " + this.renderContext.eglContext());
-            if (j != -1) {
-              break label561;
-            }
-            localArrayList.add(new TAVSourceImage(paramImageCollection, true, i));
-            break;
-            paramTAVVideoMixEffect = paramTAVVideoMixEffect.getImage();
-            paramImageCollection = paramTAVVideoMixEffect.getSize();
-            break label246;
-            label539:
-            this.sizeKeys.put(paramImageCollection, Integer.valueOf(((Integer)localObject).intValue() + 1));
-          }
-          label561:
-          localArrayList.add(new TAVSourceImage(paramImageCollection, true, j));
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        label89:
+        localObject = applyContentMode((ImageCollection.TrackImagePair)localObject, paramCGSize, paramRenderInfo);
+        localObject = getCachedTexture((CIImage)((Pair)localObject).first, (CGSize)((Pair)localObject).second, paramRenderInfo);
+        paramList1.add(localObject);
+        TLog.d("TAVStickerOverlayEffect", "PAGImage::layerIndex: " + i + ", renderSize: " + ((TextureInfo)localObject).width + ", " + ((TextureInfo)localObject).height + ", textureID: " + ((TextureInfo)localObject).textureID + ", context: " + this.renderContext.eglContext());
+        if (k == -1) {
+          localArrayList.add(new TAVSourceImage((TextureInfo)localObject, true, i));
+        } else {
+          localArrayList.add(new TAVSourceImage((TextureInfo)localObject, true, k));
         }
       }
     }
-    BenchUtil.benchStart("renderStickerChain");
-    paramTAVVideoMixEffect = this.stickerContext.renderStickerChainWithTexture(paramRenderInfo.getTime().getTimeUs() / 1000L, localArrayList);
-    BenchUtil.benchEnd("renderStickerChain");
-    this.renderContext.makeCurrent();
-    if (paramTAVVideoMixEffect != null) {
-      return new CIImage(paramTAVVideoMixEffect.getTextureInfo());
-    }
-    return null;
+    return localArrayList;
+  }
+  
+  public CIImage getOutputImage(TextureInfo paramTextureInfo, RenderInfo paramRenderInfo)
+  {
+    paramTextureInfo = new CIImage(paramTextureInfo);
+    paramTextureInfo.applyFillInFrame(new CGRect(new PointF(), paramRenderInfo.getRenderSize()), TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill);
+    CGSize localCGSize = paramTextureInfo.getSize();
+    localCGSize.width = paramRenderInfo.getRenderWidth();
+    localCGSize.height = paramRenderInfo.getRenderHeight();
+    return paramTextureInfo;
   }
   
   public String getReportKey()
@@ -173,40 +151,28 @@ class TAVOneClickFilmStickerEffect$StickerVideoCompositionMixerEffect
     return null;
   }
   
+  public boolean needCropTexture(ImageCollection paramImageCollection)
+  {
+    paramImageCollection = paramImageCollection.getVideoChannelImages();
+    if (!paramImageCollection.isEmpty())
+    {
+      paramImageCollection = ((ImageCollection.TrackImagePair)paramImageCollection.get(0)).getTrack();
+      if ((isTAVClip(paramImageCollection)) && (paramImageCollection.getExtraTrackInfo("extra_frame_info") != null)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
   public void release()
   {
-    if (this.renderContext != null) {
-      this.renderContext.makeCurrent();
-    }
+    super.release();
     if (this.stickerContext != null)
     {
       this.stickerContext.release();
       this.stickerContext = null;
     }
-    if (this.textureMap != null)
-    {
-      Iterator localIterator = this.textureMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((TextureInfo)localIterator.next()).release();
-      }
-      this.textureMap.clear();
-    }
-    if (this.sizeKeys != null) {
-      this.sizeKeys.clear();
-    }
     TLog.d("TAVStickerOverlayEffect", "release cache." + Log.getStackTraceString(new RuntimeException()));
-  }
-  
-  public void removeRedundantImage(List<ImageCollection.TrackImagePair> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      ImageCollection.TrackImagePair localTrackImagePair = (ImageCollection.TrackImagePair)paramList.next();
-      if ((localTrackImagePair != null) && (localTrackImagePair.getTrack() != null) && (localTrackImagePair.getTrack().getExtraTrackInfo("trackIndex") == null) && (localTrackImagePair.getTrack().getExtraTrackInfo("pag_layer_index") == null)) {
-        paramList.remove();
-      }
-    }
   }
 }
 

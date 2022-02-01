@@ -1,14 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 
 public class pjv
-  implements pks
+  extends BroadcastReceiver
 {
-  public pjv(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public pjv(KandianMergeManager paramKandianMergeManager) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    tbz.a(this.a.getActivity(), null, "https://viola.qq.com/js/notes-center.js?_rij_violaUrl=1&v_nav_immer=1&v_tid=15&v_bid=3811&v_bundleName=notes-center&hideNav=1&statusBarStyle=1", null);
-    ocd.a(null, "", "0X800A607", "0X800A607", 0, 0, "", "", "", "", false);
+    paramContext = pkm.a().a();
+    if (paramContext != null) {
+      paramContext.a();
+    }
   }
 }
 

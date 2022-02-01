@@ -1,48 +1,20 @@
-import android.os.SystemClock;
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class aeyp
-  implements GestureDetector.OnDoubleTapListener
+  extends aezz
 {
-  public aeyp(MainFragment paramMainFragment) {}
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public aeyp(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Context paramContext, View.OnClickListener paramOnClickListener)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainFragment", 2, "onDoubleTap() called with: e = [" + paramMotionEvent + "]");
-    }
-    MainFragment.a(this.a, SystemClock.uptimeMillis());
-    paramMotionEvent = (Conversation)this.a.a(Conversation.class);
-    if (paramMotionEvent != null) {}
-    for (int i = paramMotionEvent.d;; i = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DynimiIcon", 2, "onDoubleTap() unReadCount = " + i);
-      }
-      paramMotionEvent = this.a.b();
-      if ((paramMotionEvent instanceof Conversation)) {
-        ((Conversation)paramMotionEvent).j();
-      }
-      if (i == 0) {
-        MainFragment.d(this.a);
-      }
-      return false;
-    }
+    super(paramQQAppInterface, paramSessionInfo, paramContext, paramOnClickListener);
   }
   
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
+  protected void a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, ViewGroup paramViewGroup, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, aezf paramaezf) {}
 }
 
 

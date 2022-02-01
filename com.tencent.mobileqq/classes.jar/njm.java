@@ -1,25 +1,12 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.ImageView;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.widget.QQMapView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class njm
-  implements ViewTreeObserver.OnPreDrawListener
+final class njm
+  implements DialogInterface.OnClickListener
 {
-  public njm(PoiMapActivity paramPoiMapActivity) {}
-  
-  public boolean onPreDraw()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.o = PoiMapActivity.e(this.a).getMeasuredHeight();
-    PoiMapActivity.a(this.a, PoiMapActivity.a(this.a).getMeasuredHeight());
-    if ((this.a.o > 0) && (PoiMapActivity.a(this.a) > 0))
-    {
-      this.a.a((this.a.o - PoiMapActivity.b(this.a)) / 2 + this.a.u, false);
-      PoiMapActivity.f(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
-      PoiMapActivity.b(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
-    }
-    return true;
+    paramDialogInterface.cancel();
   }
 }
 

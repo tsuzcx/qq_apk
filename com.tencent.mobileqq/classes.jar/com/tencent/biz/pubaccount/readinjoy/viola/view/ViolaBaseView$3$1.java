@@ -1,29 +1,29 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import bhmi;
-import ozs;
-import tji;
+import com.tencent.mobileqq.utils.FileUtils;
+import pay;
+import tos;
 
 public class ViolaBaseView$3$1
   implements Runnable
 {
-  public ViolaBaseView$3$1(tji paramtji) {}
+  public ViolaBaseView$3$1(tos paramtos) {}
   
   public void run()
   {
-    Object localObject = bhmi.a("viola_cache_file_viola_qq_page_data_new_main_js_" + ozs.a());
+    Object localObject = FileUtils.readObject("viola_cache_file_viola_qq_page_data_new_main_js_" + pay.a());
     if (localObject == null) {
-      bhmi.a("viola_cache_file_viola_qq_page_data_new_main_js_" + ozs.a(), ViolaBaseView.a(this.a.a));
+      FileUtils.writeObject("viola_cache_file_viola_qq_page_data_new_main_js_" + pay.a(), ViolaBaseView.a(this.a.a));
     }
     while ((!(localObject instanceof String)) || (ViolaBaseView.a(this.a.a).equals(localObject))) {
       return;
     }
-    bhmi.a("viola_cache_file_viola_qq_page_data_new_main_js_" + ozs.a(), ViolaBaseView.a(this.a.a));
+    FileUtils.writeObject("viola_cache_file_viola_qq_page_data_new_main_js_" + pay.a(), ViolaBaseView.a(this.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.3.1
  * JD-Core Version:    0.7.0.1
  */

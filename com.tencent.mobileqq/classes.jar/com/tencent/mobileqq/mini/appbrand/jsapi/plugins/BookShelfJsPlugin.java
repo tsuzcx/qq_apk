@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
+import amtj;
 import android.graphics.Typeface;
 import android.text.TextUtils;
 import android.widget.TextView;
 import android.widget.Toast;
-import anzj;
-import bhpc;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.util.ArrayList;
@@ -159,19 +159,19 @@ public class BookShelfJsPlugin
   {
     try
     {
-      bhpc localbhpc = new bhpc(this.jsPluginEngine.activityContext, 2131755824);
-      localbhpc.setContentView(2131558984);
-      localbhpc.setTitle(2131693681);
-      localbhpc.setTitleMutiLine();
-      localbhpc.getTitleTextView().setGravity(3);
-      localbhpc.setMessage("");
-      localbhpc.getMessageTextView().setTypeface(Typeface.defaultFromStyle(1));
-      localbhpc.setPositiveButton(anzj.a(2131693680), new BookShelfJsPlugin.3(this));
-      localbhpc.getBtnight().setTextColor(-12541697);
-      localbhpc.setNegativeButton(anzj.a(2131693694), new BookShelfJsPlugin.4(this));
-      localbhpc.setCanceledOnTouchOutside(false);
+      QQCustomDialog localQQCustomDialog = new QQCustomDialog(this.jsPluginEngine.activityContext, 2131755826);
+      localQQCustomDialog.setContentView(2131558992);
+      localQQCustomDialog.setTitle(2131693776);
+      localQQCustomDialog.setTitleMutiLine();
+      localQQCustomDialog.getTitleTextView().setGravity(3);
+      localQQCustomDialog.setMessage("");
+      localQQCustomDialog.getMessageTextView().setTypeface(Typeface.defaultFromStyle(1));
+      localQQCustomDialog.setPositiveButton(amtj.a(2131693775), new BookShelfJsPlugin.3(this));
+      localQQCustomDialog.getBtnight().setTextColor(-12541697);
+      localQQCustomDialog.setNegativeButton(amtj.a(2131693789), new BookShelfJsPlugin.4(this));
+      localQQCustomDialog.setCanceledOnTouchOutside(false);
       QLog.i("BookShelfJsPlugin", 1, "Show BookShelf Dialog");
-      localbhpc.show();
+      localQQCustomDialog.show();
       return;
     }
     catch (Throwable localThrowable)

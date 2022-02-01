@@ -1,235 +1,135 @@
-import android.graphics.Color;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.webview.WebViewTitleStyle;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.Cryptor;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.lang.ref.WeakReference;
+import tencent.im.msg.im_msg_head.Head;
+import tencent.im.msg.im_msg_head.HttpConnHead;
 
-public class bind
+class bind
+  implements INetEngine.INetEngineListener
 {
-  private static bind a;
-  public Map<String, WebViewTitleStyle> a;
-  public boolean a;
+  private int jdField_a_of_type_Int = -1;
+  private Object jdField_a_of_type_JavaLangObject;
+  private WeakReference<binb> jdField_a_of_type_JavaLangRefWeakReference;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private int b = -1;
   
-  private bind()
+  public bind(int paramInt1, binb parambinb, byte[] paramArrayOfByte, int paramInt2, Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambinb);
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
   
-  private int a(String paramString)
+  public void onResp(NetResp paramNetResp)
   {
-    int j = -1;
-    int i = j;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (!paramString.startsWith("0x")) {
-        break label86;
-      }
-      paramString = paramString.substring(2);
+    if (QLog.isColorLevel()) {
+      QLog.d("BigDataHandler", 2, "BigDataDownloadListener$onResp");
     }
-    label86:
-    for (;;)
+    binb localbinb = (binb)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localbinb == null)
     {
-      String str = paramString;
-      try
+      if (QLog.isColorLevel()) {
+        QLog.d("BigDataHandler", 2, "BigDataDownloadListener$onResp handler is null");
+      }
+      return;
+    }
+    Object localObject1;
+    if ((paramNetResp == null) || (paramNetResp.mResult != 0))
+    {
+      if (QLog.isColorLevel())
       {
-        if (!paramString.startsWith("#")) {
-          str = "#" + paramString;
+        localObject1 = new StringBuilder().append("BigDataDownloadListener$onResp | resp = ").append(paramNetResp).append(" | mResult=");
+        if (paramNetResp == null) {
+          break label130;
         }
-        i = Color.parseColor(str);
       }
-      catch (NumberFormatException paramString)
+      label130:
+      for (i = paramNetResp.mResult;; i = 0)
       {
-        do
-        {
-          i = j;
-        } while (!QLog.isDevelopLevel());
-        QLog.d("WebViewTitleStyleHelper", 4, "Illegal param _wvNb");
-        return -1;
+        QLog.d("BigDataHandler", 2, i);
+        localbinb.a(this.jdField_a_of_type_Int, false, null, this.b, this.jdField_a_of_type_JavaLangObject);
+        return;
       }
-      return i;
     }
-  }
-  
-  public static bind a()
-  {
-    if (jdField_a_of_type_Bind == null) {}
+    Object localObject2;
     try
     {
-      if (jdField_a_of_type_Bind == null) {
-        jdField_a_of_type_Bind = new bind();
+      localObject2 = paramNetResp.mRespData;
+      i = localObject2.length;
+      if ((localObject2[0] != 40) || (localObject2[(i - 1)] != 41))
+      {
+        localObject1 = "unexpected body data, len=" + i + ", data=";
+        localObject2 = localObject2.toString();
+        StringBuilder localStringBuilder = new StringBuilder().append((String)localObject1);
+        localObject1 = localObject2;
+        if (((String)localObject2).length() > 20) {
+          localObject1 = ((String)localObject2).substring(0, 20);
+        }
+        localObject1 = (String)localObject1;
+        if (QLog.isColorLevel()) {
+          QLog.d("BigDataHandler", 2, "BigDataDownloadListener$onResp | resp = " + paramNetResp + " | mResult=" + (String)localObject1);
+        }
+        localbinb.a(this.jdField_a_of_type_Int, false, null, this.b, this.jdField_a_of_type_JavaLangObject);
+        return;
       }
-      return jdField_a_of_type_Bind;
     }
-    finally {}
-  }
-  
-  public void a(AppRuntime paramAppRuntime)
-  {
-    if (paramAppRuntime == null) {}
-    for (;;)
+    catch (Exception paramNetResp)
     {
+      if (QLog.isColorLevel()) {
+        QLog.d("BigDataHandler", 2, "BigDataDownloadListener$onResp | Exception:" + paramNetResp.getMessage());
+      }
+      localbinb.a(this.jdField_a_of_type_Int, false, null, this.b, this.jdField_a_of_type_JavaLangObject);
       return;
-      try
-      {
-        this.jdField_a_of_type_JavaUtilMap.clear();
-        boolean bool = paramAppRuntime instanceof QQAppInterface;
-        try
-        {
-          localObject = VasQuickUpdateManager.getJSONFromLocal(paramAppRuntime, "vipData_app_webviewNavStyle.json", bool, null);
-          if (localObject != null) {
-            break label75;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("WebViewTitleStyleHelper", 2, "parseJson file not exists");
-        }
-        catch (Exception paramAppRuntime)
-        {
-          QLog.e("WebViewTitleStyleHelper", 1, "parseJson exception e = ", paramAppRuntime);
-        }
-        continue;
-      }
-      finally {}
-      label75:
-      this.jdField_a_of_type_Boolean = true;
-      Object localObject = ((JSONObject)localObject).optJSONArray("webViewStyleList");
-      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-      {
-        int j = ((JSONArray)localObject).length();
-        int i = 0;
-        while (i < j)
-        {
-          JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-          if (a(paramAppRuntime, localJSONObject))
-          {
-            String str = localJSONObject.optString("domain", "");
-            if (!TextUtils.isEmpty(str))
-            {
-              WebViewTitleStyle localWebViewTitleStyle = new WebViewTitleStyle();
-              localWebViewTitleStyle.b = a(localJSONObject.optString("statusColor", ""));
-              localWebViewTitleStyle.c = a(localJSONObject.optString("bgColor", ""));
-              localWebViewTitleStyle.d = a(localJSONObject.optString("titleColor", ""));
-              localWebViewTitleStyle.e = a(localJSONObject.optString("iconColor", ""));
-              this.jdField_a_of_type_JavaUtilMap.put(str, localWebViewTitleStyle);
-            }
-          }
-          i += 1;
-        }
-      }
     }
-  }
-  
-  public boolean a(AppRuntime paramAppRuntime, JSONObject paramJSONObject)
-  {
-    bool3 = false;
-    bool1 = false;
-    boolean bool2 = true;
-    if ((paramAppRuntime == null) || (paramJSONObject == null))
+    paramNetResp = new DataInputStream(new ByteArrayInputStream((byte[])localObject2));
+    paramNetResp.readByte();
+    int k = paramNetResp.readInt();
+    int j = paramNetResp.readInt();
+    if ((k > i) || (j > i))
     {
-      QLog.e("WebViewTitleStyleHelper", 1, "isConfigValid app = null || config = null");
-      bool2 = bool1;
-      return bool2;
+      if (QLog.isColorLevel()) {
+        QLog.d("BigDataHandler", 2, "unexpected length, headLen=" + k + ", bodyLen=" + j);
+      }
+      localbinb.a(this.jdField_a_of_type_Int, false, null, this.b, this.jdField_a_of_type_JavaLangObject);
+      return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("WebViewTitleStyleHelper", 2, "isConfigValid config = " + paramJSONObject.toString());
+      QLog.d("BigDataHandler", 2, "BigDataDownloadListener$onResp | headLen=" + k + " | bodyLen=" + j);
     }
-    try
+    if (k > 0)
     {
-      i = paramJSONObject.optInt("platformId");
-      if (i != 0)
+      localObject1 = new byte[k];
+      paramNetResp.read((byte[])localObject1);
+      localObject2 = new im_msg_head.Head();
+      ((im_msg_head.Head)localObject2).mergeFrom((byte[])localObject1);
+    }
+    for (int i = ((im_msg_head.HttpConnHead)((im_msg_head.Head)localObject2).msg_httpconn_head.get()).uint32_error_code.get();; i = 0)
+    {
+      if ((j > 0) && (i == 0))
       {
-        bool1 = bool3;
-        if (i != 2) {
-          break label287;
-        }
+        localObject1 = new byte[j];
+        paramNetResp.read((byte[])localObject1);
+        paramNetResp = new Cryptor().decrypt((byte[])localObject1, this.jdField_a_of_type_ArrayOfByte);
+        localbinb.a(this.jdField_a_of_type_Int, true, paramNetResp, this.b, this.jdField_a_of_type_JavaLangObject);
+        return;
       }
-      if (!paramJSONObject.has("minVersion")) {
-        break label416;
+      if (QLog.isColorLevel()) {
+        QLog.d("BigDataHandler", 2, "BigDataDownloadListener$onResp | errorCode:" + i);
       }
-      str = paramJSONObject.getString("minVersion");
-      if ((TextUtils.isEmpty(str)) || (bhyh.a(str, "8.4.5.4745"))) {
-        break label416;
-      }
-      i = 0;
-    }
-    catch (Exception paramAppRuntime)
-    {
-      for (;;)
-      {
-        String str;
-        int j;
-        int k;
-        long l1;
-        long l2;
-        long l3;
-        label287:
-        label326:
-        label367:
-        QLog.e("WebViewTitleStyleHelper", 1, "isConfigValid exception", paramAppRuntime);
-        bool1 = bool3;
-        continue;
-        int i = 1;
-        continue;
-        bool1 = false;
-      }
-    }
-    j = i;
-    if (i != 0)
-    {
-      j = i;
-      if (paramJSONObject.has("maxVersion"))
-      {
-        str = paramJSONObject.getString("maxVersion");
-        j = i;
-        if (!TextUtils.isEmpty(str))
-        {
-          j = i;
-          if (!bhyh.a("8.4.5.4745", str)) {
-            j = 0;
-          }
-        }
-      }
-    }
-    bool1 = bool3;
-    if (j != 0)
-    {
-      paramAppRuntime = paramAppRuntime.getAccount();
-      i = paramJSONObject.optInt("startIndex");
-      j = paramJSONObject.optInt("endIndex");
-      if (i < j) {
-        break label367;
-      }
-      k = paramAppRuntime.length();
-      if ((k < i) || (k < j)) {
-        break label326;
-      }
-      l1 = Long.parseLong(paramAppRuntime.substring(k - i, k - j + 1));
-      l2 = paramJSONObject.optLong("min");
-      l3 = paramJSONObject.optLong("max");
-      if ((l1 < l2) || (l1 > l3)) {
-        break label421;
-      }
-    }
-    for (bool1 = bool2;; bool1 = bool3)
-    {
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("WebViewTitleStyleHelper", 2, "isConfigValid valid = " + bool1);
-      return bool1;
-      QLog.e("WebViewTitleStyleHelper", 1, "parseJson, index config error, uin length=" + k + ", config=" + paramJSONObject.toString());
-      break label421;
-      QLog.e("WebViewTitleStyleHelper", 1, "parseJson, startIndex < endIndex, element=" + paramJSONObject);
+      localbinb.a(this.jdField_a_of_type_Int, false, null, this.b, this.jdField_a_of_type_JavaLangObject);
+      return;
     }
   }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

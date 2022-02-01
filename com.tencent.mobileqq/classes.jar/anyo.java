@@ -1,19 +1,33 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendListHandler.QQHeadDetails;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class anyo
-  implements anyr
+class anyo
+  implements SoundPool.OnLoadCompleteListener
 {
-  public anyo(FriendListHandler paramFriendListHandler) {}
+  anyo(anyn paramanyn) {}
   
-  public String a(int paramInt1, int paramInt2, FriendListHandler.QQHeadDetails paramQQHeadDetails)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    return "qcall_" + paramInt2 + "_" + paramQQHeadDetails.a;
-  }
-  
-  public String b(int paramInt1, int paramInt2, FriendListHandler.QQHeadDetails paramQQHeadDetails)
-  {
-    return "qcall_" + paramInt2 + "_" + paramQQHeadDetails.a;
+    if (paramInt2 != 0) {}
+    try
+    {
+      QLog.e("ARMusicController", 2, "load fire music failed. " + anyn.a(this.a));
+      return;
+    }
+    catch (Exception paramSoundPool)
+    {
+      paramSoundPool.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMusicController", 2, "load fire music success. : " + anyn.a(this.a));
+    }
+    anyn.a(this.a, true);
+    if (anyn.a(this.a))
+    {
+      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
+      return;
+    }
   }
 }
 

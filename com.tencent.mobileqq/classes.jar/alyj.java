@@ -1,125 +1,35 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.process.data.CmGameManager.GameEventReceiver.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 
-class alyj
-  implements INetInfoHandler
+public class alyj
+  extends BroadcastReceiver
 {
-  alyj(alyi paramalyi) {}
-  
-  public void onNetMobile2None()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool = true;
-    synchronized (this.a)
+    if (paramIntent == null) {
+      QLog.e("cmgame_process.CmGameManager", 1, "[onReceive] intent null");
+    }
+    do
     {
-      if (alyi.a(this.a) == null) {
+      do
+      {
         return;
+        paramContext = paramIntent.getAction();
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] action=", paramContext });
+        }
+      } while ((!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) || (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))));
+      paramContext = paramIntent.getStringExtra("data");
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] data=", paramContext });
       }
-      if (alyi.a(this.a).a == null) {
-        return;
-      }
-    }
-    alyi localalyi2 = this.a;
-    if (!alyi.a(this.a).c) {}
-    for (;;)
-    {
-      localalyi2.a(bool, true);
-      return;
-      bool = false;
-    }
-  }
-  
-  public void onNetMobile2Wifi(String arg1)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(alyi.a(), 2, "onNetMobile2Wifi, AutoTranslate:  ");
-    }
-    synchronized (this.a)
-    {
-      if (alyi.a(this.a) == null) {
-        return;
-      }
-      if (alyi.a(this.a).a == null) {
-        return;
-      }
-    }
-    this.a.a(false, true);
-    alyi.a(this.a);
-  }
-  
-  public void onNetNone2Mobile(String arg1)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(alyi.a(), 2, "onNetNone2Mobile ");
-    }
-    synchronized (this.a)
-    {
-      if (alyi.a(this.a) == null) {
-        return;
-      }
-      if (alyi.a(this.a).a == null) {
-        return;
-      }
-    }
-    this.a.a(false, true);
-    alyi.a(this.a);
-  }
-  
-  public void onNetNone2Wifi(String arg1)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(alyi.a(), 2, "onNetNone2Wifi, AutoTranslate:  ");
-    }
-    synchronized (this.a)
-    {
-      if (alyi.a(this.a) == null) {
-        return;
-      }
-      if (alyi.a(this.a).a == null) {
-        return;
-      }
-    }
-    this.a.a(false, true);
-    alyi.a(this.a);
-  }
-  
-  public void onNetWifi2Mobile(String arg1)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(alyi.a(), 2, "onNetWifi2Mobile, need restore:  ");
-    }
-    synchronized (this.a)
-    {
-      if (alyi.a(this.a) == null) {
-        return;
-      }
-      if (alyi.a(this.a).a == null) {
-        return;
-      }
-    }
-    this.a.a(false, true);
-    alyi.a(this.a);
-  }
-  
-  public void onNetWifi2None()
-  {
-    boolean bool = true;
-    synchronized (this.a)
-    {
-      if (alyi.a(this.a) == null) {
-        return;
-      }
-      if (alyi.a(this.a).a == null) {
-        return;
-      }
-    }
-    alyi localalyi2 = this.a;
-    if (!alyi.a(this.a).c) {}
-    for (;;)
-    {
-      localalyi2.a(bool, true);
-      return;
-      bool = false;
-    }
+    } while (TextUtils.isEmpty(paramContext));
+    ThreadManagerV2.excute(new CmGameManager.GameEventReceiver.1(this, paramContext), 16, null, false);
   }
 }
 

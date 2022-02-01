@@ -1,14 +1,57 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowHelper$1", "Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowLayout$OnFollowActionListener;", "onFollowClick", "", "videoInfo", "Lcom/tencent/biz/pubaccount/VideoInfo;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rva
-  implements rvj
+class rva
+  implements INetInfoHandler
 {
-  public void d(@Nullable VideoInfo paramVideoInfo)
+  rva(ruw paramruw) {}
+  
+  public void onNetMobile2None()
   {
-    ruz.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetMobile2None()");
+    }
+    ruw.b(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetMobile2Wifi() ssid=" + paramString);
+    }
+    ruw.a(this.a, true);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetNone2Mobile() apn=" + paramString);
+    }
+    ruw.a(this.a, false);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetNone2Wifi() ssid=" + paramString);
+    }
+    ruw.a(this.a, true);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetWifi2Mobile() apn=" + paramString);
+    }
+    ruw.a(this.a, false);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "INetInfoHandler onNetWifi2None()");
+    }
+    ruw.b(this.a);
   }
 }
 

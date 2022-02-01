@@ -1,27 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 
 public class teb
-  implements tch
+  implements tdu
 {
-  public teb(BridgeModule paramBridgeModule, String paramString) {}
+  private final ViewPagerCompat a;
   
-  public void a()
+  public teb(ViewPagerCompat paramViewPagerCompat)
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("result", false);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(BridgeModule.TAG, 2, "canOpenPage error" + localException.getMessage());
-    }
+    this.a = paramViewPagerCompat;
   }
+  
+  public void a(tdz paramtdz)
+  {
+    this.a.setCurrentItem(paramtdz.a());
+  }
+  
+  public void b(tdz paramtdz) {}
+  
+  public void c(tdz paramtdz) {}
 }
 
 

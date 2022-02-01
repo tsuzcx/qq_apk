@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.nearby.now.view;
 
+import amtj;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -7,7 +8,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import anzj;
 
 public class QQStoryVideoPlayerErrorView
   extends FrameLayout
@@ -29,7 +29,7 @@ public class QQStoryVideoPlayerErrorView
   
   public void a()
   {
-    this.a.setText(anzj.a(2131709969));
+    this.a.setText(amtj.a(2131710201));
     this.a.setVisibility(0);
     this.b.setVisibility(8);
   }
@@ -42,9 +42,9 @@ public class QQStoryVideoPlayerErrorView
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559512, this, true);
-    this.a = ((TextView)paramContext.findViewById(2131376594));
-    this.b = ((TextView)paramContext.findViewById(2131378898));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559514, this, true);
+    this.a = ((TextView)paramContext.findViewById(2131376360));
+    this.b = ((TextView)paramContext.findViewById(2131378669));
   }
   
   public void setOnRetryClickListener(View.OnClickListener paramOnClickListener)

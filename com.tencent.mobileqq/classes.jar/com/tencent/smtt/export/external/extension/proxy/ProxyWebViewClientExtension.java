@@ -276,6 +276,13 @@ public abstract class ProxyWebViewClientExtension
     }
   }
   
+  public void onReportMemoryCachedResponse(String paramString, int paramInt, HashMap<String, String> paramHashMap)
+  {
+    if (this.mWebViewClientExt != null) {
+      this.mWebViewClientExt.onReportMemoryCachedResponse(paramString, paramInt, paramHashMap);
+    }
+  }
+  
   public void onReportResponseHeaders(String paramString, int paramInt, HashMap<String, String> paramHashMap)
   {
     if (this.mWebViewClientExt != null) {

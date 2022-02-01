@@ -1,9 +1,20 @@
-import android.annotation.SuppressLint;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.data.RecentRecommendTroopItem;
+import com.tencent.widget.SingleLineTextView;
 
 class aisc
+  extends aliz
 {
-  @SuppressLint({"StaticFieldLeak"})
-  private static airy a = new airy(null);
+  public View a;
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public RecentRecommendTroopItem a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 

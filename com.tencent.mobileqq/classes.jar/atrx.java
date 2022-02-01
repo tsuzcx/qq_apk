@@ -1,31 +1,19 @@
-class atrx
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+
+public class atrx
+  implements bjog
 {
-  private int jdField_a_of_type_Int;
-  private atrs jdField_a_of_type_Atrs;
+  public atrx(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public atrx(atrw paramatrw, atrs paramatrs)
+  public void onDismiss()
   {
-    this.jdField_a_of_type_Atrs = paramatrs;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public atrs a()
-  {
-    return this.jdField_a_of_type_Atrs;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a.a = null;
+    this.a.o();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atrx
  * JD-Core Version:    0.7.0.1
  */

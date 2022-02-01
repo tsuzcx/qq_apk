@@ -1,13 +1,4 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class ahvv
-  extends ahvs
-{
-  public ahvv(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
-}
+public abstract interface ahvv {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

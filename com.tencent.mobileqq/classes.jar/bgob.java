@@ -1,12 +1,13 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
 public class bgob
 {
-  public ImageView a;
-  public TextView a;
-  public bgop a;
-  public ImageView b;
+  public int a;
+  public String a;
+  
+  public bgob()
+  {
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
 }
 
 

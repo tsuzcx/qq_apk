@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.identification;
 
-import avxk;
-import avxm;
-import avxp;
+import aukk;
+import aukm;
+import aukp;
 
 public class IdentificationPoseReflect$5$2
   implements Runnable
 {
-  public IdentificationPoseReflect$5$2(avxm paramavxm) {}
+  public IdentificationPoseReflect$5$2(aukm paramaukm) {}
   
   public void run()
   {

@@ -1,62 +1,85 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class aslp
 {
-  private float jdField_a_of_type_Float;
-  private final bihu jdField_a_of_type_Bihu;
-  private String jdField_a_of_type_JavaLangString;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
+  public int a;
+  public long a;
+  public final String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  public long e;
+  public String e;
+  public long f;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  String l = null;
   
-  public aslp(String paramString, bihu parambihu)
+  public aslp(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bihu = parambihu;
+    this.jdField_a_of_type_JavaLangString = "actFilePreview";
+    this.l = paramString;
   }
   
-  public float a()
+  private HashMap<String, String> a()
   {
-    if (this.jdField_a_of_type_Bihu != null) {
-      return this.jdField_a_of_type_Bihu.jdField_a_of_type_Float;
-    }
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public Bundle a(QQAppInterface paramQQAppInterface)
-  {
-    if (this.jdField_a_of_type_Bihu != null) {
-      return this.jdField_a_of_type_Bihu.a();
-    }
-    return (Bundle)((bhzq)paramQQAppInterface.getManager(235)).a.a.get(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    if (this.jdField_a_of_type_Bihu != null) {
-      this.jdField_a_of_type_Bihu.a(true);
-    }
-    String str;
-    do
+    HashMap localHashMap = new HashMap();
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      return;
-      str = "bqmall.android.h5magic." + this.jdField_a_of_type_JavaLangString + ".zip";
-      paramQQAppInterface = (VasQuickUpdateManager)paramQQAppInterface.getManager(184);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.cancelDwonloadItem(1004L, str);
+      this.jdField_d_of_type_JavaLangString = String.valueOf(9004);
+      this.h += "_NotNetWork";
+    }
+    localHashMap.put("param_serverip", String.valueOf(this.jdField_b_of_type_JavaLangString));
+    localHashMap.put("param_uuid", String.valueOf(this.jdField_c_of_type_JavaLangString));
+    localHashMap.put("param_FailCode", String.valueOf(this.jdField_d_of_type_JavaLangString));
+    localHashMap.put("param_fsizeo", String.valueOf(this.jdField_b_of_type_Long));
+    localHashMap.put("param_url", String.valueOf(this.jdField_e_of_type_JavaLangString));
+    localHashMap.put("param_key", String.valueOf(this.jdField_f_of_type_JavaLangString));
+    localHashMap.put("param_retry", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("param_errMsg", String.valueOf(this.h));
+    localHashMap.put("param_fileName", String.valueOf(this.g));
+    localHashMap.put("param_fileExt", String.valueOf(this.i));
+    localHashMap.put("param_source", String.valueOf(this.j));
+    localHashMap.put("param_stage", String.valueOf(this.k));
+    localHashMap.put("param_stagetimelen", String.valueOf(this.jdField_c_of_type_Long));
+    localHashMap.put("param_staytimelen", String.valueOf(this.jdField_d_of_type_Long));
+    this.h = "";
+    return localHashMap;
   }
   
-  public boolean a()
+  public void a()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    HashMap localHashMap = a();
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doReport:bSuccess[" + this.jdField_a_of_type_Boolean + "],");
+      localStringBuilder.append("strReportUin[" + this.l + "],");
+      localStringBuilder.append("startTime[" + this.jdField_e_of_type_Long + "],");
+      localStringBuilder.append("endTime[" + this.jdField_f_of_type_Long + "],");
+      Iterator localIterator = localHashMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localStringBuilder.append(str + "[" + (String)localHashMap.get(str) + "]");
+      }
+      QLog.i("FilePreviewDataReporter<FileAssistant>", 4, "doReport:" + localStringBuilder.toString());
+    }
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.l, "actFilePreview", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "");
   }
 }
 

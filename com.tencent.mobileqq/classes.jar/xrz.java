@@ -1,34 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tribe.async.reactive.SimpleObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class xrz<T>
-  extends SimpleObserver<T>
+public class xrz
+  implements View.OnClickListener
 {
-  private xrz(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public xrz(StoryListPresenter.4.1 param1) {}
   
-  public void onCancel()
+  public void onClick(View paramView)
   {
-    super.onCancel();
-    yuk.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  CANCEL", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    yuk.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  ERROR", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
-  }
-  
-  public void onNext(T paramT)
-  {
-    super.onNext(paramT);
-    yuk.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s] DONE", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
+    xwa.a("home_page", "clk_up_know", 0, 0, new String[0]);
+    this.a.a.this$0.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

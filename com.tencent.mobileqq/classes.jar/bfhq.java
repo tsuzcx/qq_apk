@@ -1,19 +1,10 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.view.MotionEvent;
 
-public class bfhq
-  extends BroadcastReceiver
+public abstract interface bfhq
 {
-  public bfhq(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ((paramIntent != null) && (paramIntent.getAction().equals("cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.handleQunDetailDelete"))) {
-      this.a.finish();
-    }
-  }
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

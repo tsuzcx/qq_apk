@@ -1,17 +1,16 @@
 package cooperation.qzone.share;
 
-import bnhm;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 
-public class WXShareFromQZHelper$1
+class WXShareFromQZHelper$1
   implements Runnable
 {
-  public WXShareFromQZHelper$1(bnhm parambnhm) {}
+  WXShareFromQZHelper$1(WXShareFromQZHelper paramWXShareFromQZHelper) {}
   
   public void run()
   {
-    QQToast.a(BaseApplication.getContext(), 2131716695, 0).a();
+    QQToast.a(BaseApplication.getContext(), 2131716929, 0).a();
   }
 }
 

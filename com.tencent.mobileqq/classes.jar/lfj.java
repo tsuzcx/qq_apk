@@ -1,19 +1,22 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
 
-public class lfj
+class lfj
   extends BroadcastReceiver
 {
-  public lfj(VideoAppInterface paramVideoAppInterface) {}
+  lfj(lfi paramlfi) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramContext = paramIntent.getAction();
-    QLog.d(VideoAppInterface.c(), 2, String.format("onReceive action=%s", new Object[] { paramContext }));
-    System.exit(0);
+    paramIntent = paramIntent.getAction();
+    if (paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE")) {
+      this.a.d(paramContext);
+    }
+    while (!paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) {
+      return;
+    }
+    this.a.d(paramContext);
   }
 }
 

@@ -1,49 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
 
-public class aoet
-  extends BroadcastReceiver
+public final class aoet
+  implements Parcelable.Creator<ARCommonConfigInfo.NativeSoRes>
 {
-  public aoet(QQAppInterface paramQQAppInterface) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public ARCommonConfigInfo.NativeSoRes a(Parcel paramParcel)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if ((paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())))
-          {
-            avsj.a();
-            ayus.a();
-            aziu.c();
-            return;
-          }
-        } while (!paramContext.equals("com.tencent.mobileqq.kickedLogin.otherDevice"));
-        paramContext = paramIntent.getStringExtra("kickedUin");
-      } while ((TextUtils.isEmpty(paramContext)) || (!paramContext.equals(this.a.getAccount())));
-      paramContext = this.a.getKickIntent();
-    } while (paramContext == null);
-    paramContext.putExtra("isSameDevice", false);
-    paramIntent = paramIntent.getStringExtra("msg");
-    if (!TextUtils.isEmpty(paramIntent)) {
-      paramContext.putExtra("msg", paramIntent);
-    }
-    this.a.setKickIntent(paramContext);
+    return new ARCommonConfigInfo.NativeSoRes(paramParcel);
+  }
+  
+  public ARCommonConfigInfo.NativeSoRes[] a(int paramInt)
+  {
+    return new ARCommonConfigInfo.NativeSoRes[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoet
  * JD-Core Version:    0.7.0.1
  */

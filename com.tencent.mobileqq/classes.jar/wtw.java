@@ -1,17 +1,28 @@
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+
 class wtw
-  implements wvd
+  implements wuu
 {
-  wtw(wtv paramwtv) {}
+  wtw(wtr paramwtr, StoryVideoItem paramStoryVideoItem) {}
   
-  public void a(boolean paramBoolean, wuz paramwuz)
+  public boolean a(wur paramwur, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    yuk.b("WeatherDataProvider", "WeatherLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
-    if ((paramBoolean) && (paramwuz != null))
-    {
-      this.a.a(paramwuz.b, paramwuz.a);
-      return;
+    if (this.jdField_a_of_type_Wtr.isCanceled()) {
+      return true;
     }
-    this.a.a(false, null);
+    xvv.e(this.jdField_a_of_type_Wtr.a.a, "onError, setOnErrorListener [videoView, model=%d, what=%d, position=%d, extra=%s, Info=%s] = ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, paramObject });
+    if (paramInt2 == 102)
+    {
+      paramwur.d();
+      return true;
+    }
+    VideoViewVideoHolder.c(this.jdField_a_of_type_Wtr.a, 7);
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Wtr.a, false);
+    VideoViewVideoHolder.b(this.jdField_a_of_type_Wtr.a, paramInt2);
+    wtr.b(this.jdField_a_of_type_Wtr, new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_Wtr.a), "wht=" + paramInt2 + ", mod=" + paramInt1 + ", " + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid));
+    return true;
   }
 }
 

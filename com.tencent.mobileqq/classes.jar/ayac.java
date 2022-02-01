@@ -1,32 +1,15 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.nearby.gift.TroopGiftPanelForNearby;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.openapi.OpenApiManager;
+import com.tencent.mobileqq.transfile.FileMsg;
 
 public class ayac
-  extends bgst
+  implements afbb
 {
-  public ayac(TroopGiftPanelForNearby paramTroopGiftPanelForNearby) {}
+  public ayac(OpenApiManager paramOpenApiManager) {}
   
-  public void a(int paramInt)
+  public void a(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2)
   {
-    aocz.a("gift_store", "suc_one", this.a.a(), TroopGiftPanelForNearby.a(this.a) + "", "", "");
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
-    }
-    if (paramInt == 20007) {
-      QQToast.a(TroopGiftPanelForNearby.a(this.a), anzj.a(2131714207), 0).b(this.a.getResources().getDimensionPixelSize(2131299011));
-    }
-    for (;;)
-    {
-      aocz.a("gift_store", "fail_one", this.a.a(), TroopGiftPanelForNearby.b(this.a) + "", "", "");
-      return;
-      QQToast.a(TroopGiftPanelForNearby.b(this.a), anzj.a(2131714204), 0).b(this.a.getResources().getDimensionPixelSize(2131299011));
-    }
+    this.a.onFileTransStatusChanged(paramFileMsg, paramInt1, paramInt2);
   }
 }
 

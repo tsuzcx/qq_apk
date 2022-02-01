@@ -1,47 +1,47 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.RectF;
-import android.graphics.drawable.ColorDrawable;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class asda
-  extends ColorDrawable
 {
-  private float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private final int b;
+  private QQAppInterface a;
   
-  public asda(int paramInt1, float paramFloat, int paramInt2, int paramInt3)
+  public asda(QQAppInterface paramQQAppInterface)
   {
-    super(paramInt1);
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt1);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramInt2, paramInt3);
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
+    this.a = paramQQAppInterface;
   }
   
-  public void draw(Canvas paramCanvas)
+  public void a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, long paramLong, String paramString5, asdf paramasdf)
   {
-    paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    aseg localaseg = this.a.getFileManagerEngine().a();
+    asei localasei = new asei();
+    localasei.jdField_a_of_type_JavaLangString = paramString4;
+    localasei.jdField_a_of_type_Long = paramLong;
+    localasei.c = paramString5;
+    localasei.b = paramString3;
+    if (paramInt1 != 3000)
+    {
+      localaseg.a(paramString1, paramInt1, paramString2, paramInt2, localasei, 5000, 5, new asdd(this, paramasdf));
+      return;
+    }
+    localaseg.a(paramString1, paramString2, localasei, new asde(this, paramasdf));
   }
   
-  public int getIntrinsicHeight()
+  public void a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, long paramLong, int paramInt2, asdf paramasdf)
   {
-    return this.b;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.jdField_a_of_type_Int;
+    aseg localaseg = this.a.getFileManagerEngine().a();
+    asei localasei = new asei();
+    localasei.jdField_a_of_type_JavaLangString = paramString4;
+    localasei.jdField_a_of_type_Long = paramLong;
+    if ((paramInt1 == 3000) || (paramInt1 == 1))
+    {
+      localaseg.a(paramString2, paramString1, localasei, paramInt2, 5000, 3, new asdb(this, paramasdf));
+      return;
+    }
+    localaseg.a(paramString1, paramInt1, paramString2, paramString3, 5000, 3, new asdc(this, paramasdf));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asda
  * JD-Core Version:    0.7.0.1
  */

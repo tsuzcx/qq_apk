@@ -1,36 +1,13 @@
-import android.text.InputFilter;
-import android.text.Spanned;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class aguo
-  implements InputFilter
+public class aguo
+  implements agut
 {
-  aguo(aguk paramaguk) {}
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    paramInt3 = 4500 - (paramSpanned.length() - (paramInt4 - paramInt3));
-    if (paramInt3 <= 0)
-    {
-      aguk.a(this.a);
-      return "";
-    }
-    if (paramInt3 >= paramInt2 - paramInt1) {
-      return null;
-    }
-    paramInt3 += paramInt1;
-    paramInt2 = paramInt3;
-    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
-    {
-      paramInt3 -= 1;
-      paramInt2 = paramInt3;
-      if (paramInt3 == paramInt1)
-      {
-        aguk.a(this.a);
-        return "";
-      }
-    }
-    aguk.a(this.a);
-    return paramCharSequence.subSequence(paramInt1, paramInt2);
+    paramagap.d(paramagcc.b);
   }
 }
 

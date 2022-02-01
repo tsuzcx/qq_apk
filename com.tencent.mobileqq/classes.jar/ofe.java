@@ -1,519 +1,587 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
+import android.content.Context;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.ecshopassit.EcShopData;
-import com.tencent.common.app.AppInterface;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoReporter.1;
+import com.tencent.biz.pubaccount.VideoReporter.2;
+import com.tencent.biz.pubaccount.VideoReporter.3;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.im.oidb.qqshop.qqshop_report.SQQSHPCliLogInfo;
-import tencent.im.oidb.qqshop.qqshop_report.SQQSHPCliLogReq;
-import tencent.im.oidb.qqshop.qqshop_richmsg.SQQSHPFolderAdMsg;
-import tencent.im.oidb.qqshop.qqshop_richmsg.SQQSHPRichMsg;
-import tencent.im.oidb.qqshop.qqshop_richmsg.SQQSHPRichMsgReq;
-import tencent.im.oidb.qqshop.qqshop_richmsg.SQQSHPRichMsgRsp;
 
 public class ofe
-  extends anud
 {
-  static String a;
-  static final String b = BaseApplication.getContext().getFilesDir() + File.separator + "qqshp_client_log_wl_conf.json";
-  public aocj a;
+  public static int a;
+  public static String a;
+  public static HashMap<Class<?>, String> a;
   
-  public ofe(AppInterface paramAppInterface)
+  static
   {
-    super(paramAppInterface);
-    this.jdField_a_of_type_Aocj = new off(this);
+    jdField_a_of_type_JavaLangString = "8.4.8".replace(".", "");
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public static List<String> a(JSONArray paramJSONArray)
+  public static int a()
   {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
-      return localArrayList;
+    boolean bool1 = bkwm.i();
+    boolean bool2 = bkwm.j();
+    if (!bool1) {
+      return 0;
     }
-    int i = 0;
-    while (i < paramJSONArray.length())
+    if (bool2) {
+      return 3;
+    }
+    return 1;
+  }
+  
+  public static int a(int paramInt)
+  {
+    switch (paramInt)
     {
-      localArrayList.add(paramJSONArray.optString(i));
-      i += 1;
+    default: 
+      return 0;
+    case 1: 
+      return 1;
+    case 4: 
+      return 2;
     }
-    return localArrayList;
+    return 3;
   }
   
-  public void a()
+  public static int a(int paramInt, String paramString)
   {
-    boolean bool = true;
-    Object localObject = new File(b);
-    if ((((File)localObject).exists()) && (((File)localObject).isFile())) {
-      localObject = bhmi.a((File)localObject);
+    int j = 1;
+    int i;
+    if (paramInt != 2)
+    {
+      i = j;
+      if (paramInt != 3) {}
+    }
+    else
+    {
+      i = j;
+      if (!TextUtils.isEmpty(paramString)) {
+        i = paramString.hashCode();
+      }
+    }
+    return i;
+  }
+  
+  public static int a(ArticleInfo paramArticleInfo)
+  {
+    if (paramArticleInfo == null) {
+      return -1;
+    }
+    if (paramArticleInfo.videoJumpChannelID > 0) {
+      return paramArticleInfo.videoJumpChannelID;
+    }
+    if (bkwm.d(BaseApplicationImpl.getApplication().getRuntime()) == 1) {
+      return 56;
+    }
+    return 409409;
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    int j = 2;
+    if (paramInt == 1)
+    {
+      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
+      if (paramQQAppInterface == null) {
+        break label74;
+      }
+      paramQQAppInterface = paramQQAppInterface.c(paramString);
+      if (paramQQAppInterface == null) {
+        break label74;
+      }
+    }
+    label74:
+    for (paramInt = paramQQAppInterface.wMemberNum;; paramInt = 2)
+    {
+      int i = paramInt;
+      do
+      {
+        do
+        {
+          return i;
+          i = j;
+        } while (paramInt != 3000);
+        paramQQAppInterface = (amrb)paramQQAppInterface.getManager(53);
+        i = j;
+      } while (paramQQAppInterface == null);
+      return paramQQAppInterface.a(paramString);
+    }
+  }
+  
+  public static Bundle a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, boolean paramBoolean3, int paramInt3)
+  {
+    int j = 0;
+    int i = 1;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder("makeAdVideoPlayParam(in) ");
+      ((StringBuilder)localObject).append("autoPlay:").append(paramBoolean1).append(", ");
+      ((StringBuilder)localObject).append("bt:").append(paramInt1).append(", ");
+      ((StringBuilder)localObject).append("et:").append(paramInt2).append(", ");
+      ((StringBuilder)localObject).append("bf:").append(paramBoolean2).append(", ");
+      ((StringBuilder)localObject).append("ef:").append(paramBoolean3).append(", ");
+      ((StringBuilder)localObject).append("pa:").append(paramInt3);
+      QLog.d("VideoReporter", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("arg_video_bt", paramInt1);
+    ((Bundle)localObject).putInt("arg_video_et", paramInt2);
+    if (paramBoolean2)
+    {
+      paramInt1 = 1;
+      ((Bundle)localObject).putInt("arg_video_bf", paramInt1);
+      paramInt1 = j;
+      if (paramBoolean3) {
+        paramInt1 = 1;
+      }
+      ((Bundle)localObject).putInt("arg_video_ef", paramInt1);
+      ((Bundle)localObject).putInt("arg_video_pp", 2);
+      ((Bundle)localObject).putInt("arg_video_pa", paramInt3);
+      if (!paramBoolean1) {
+        break label265;
+      }
+    }
+    label265:
+    for (paramInt1 = i;; paramInt1 = 2)
+    {
+      ((Bundle)localObject).putInt("arg_video_pb", paramInt1);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoReporter", 2, "makeAdVideoPlayParam(out) param:" + ((Bundle)localObject).toString());
+      }
+      return localObject;
+      paramInt1 = 0;
+      break;
+    }
+  }
+  
+  public static String a()
+  {
+    int i = NetworkUtil.getSystemNetwork(BaseApplicationImpl.getApplication().getApplicationContext());
+    if (i == 1) {
+      return "0";
+    }
+    if ((i == 3) || (i == 4)) {
+      return "1";
+    }
+    return "2";
+  }
+  
+  public static String a(int paramInt, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    try
+    {
+      Object localObject = new JSONObject(paramString);
+      ((JSONObject)localObject).put("jump_to_channel", paramInt);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (Exception localException) {}
+    return paramString;
+  }
+  
+  public static String a(int paramInt, String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString2)) {
+      return "";
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramString2);
+      localJSONObject.put("jump_to_channel", paramInt);
+      localJSONObject.put("video_session_id", paramString1);
+      paramString1 = localJSONObject.toString();
+      return paramString1;
+    }
+    catch (Exception paramString1) {}
+    return paramString2;
+  }
+  
+  public static String a(int paramInt, JSONObject paramJSONObject)
+  {
+    return a(null, null, null, null, paramInt, paramJSONObject);
+  }
+  
+  public static String a(String paramString)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("download", paramString);
+      a(localJSONObject, 2);
+      paramString = a(localJSONObject);
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return "";
+  }
+  
+  public static String a(String paramString1, String paramString2, int paramInt, JSONObject paramJSONObject)
+  {
+    return a(null, null, paramString1, paramString2, paramInt, paramJSONObject);
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, JSONObject paramJSONObject)
+  {
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("channel_id", paramInt);
+      label28:
+      return a(paramString1, paramString2, paramString3, paramString4, localJSONObject);
+    }
+    catch (Exception paramJSONObject)
+    {
+      break label28;
+    }
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2, JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      paramJSONObject = new JSONObject();
     }
     for (;;)
     {
       try
       {
-        localObject = new JSONObject((String)localObject);
-        JSONArray localJSONArray1 = ((JSONObject)localObject).optJSONArray("report_list");
-        JSONArray localJSONArray2 = ((JSONObject)localObject).optJSONArray("gtk_list");
-        ArrayList localArrayList = new ArrayList();
-        oek.c = new ArrayList();
-        if (((JSONObject)localObject).optInt("aio_auto_play", 1) != 1) {
-          break label236;
-        }
-        oek.a = bool;
-        int i;
-        if ((localJSONArray1 != null) && (localJSONArray1.length() > 0))
-        {
-          i = 0;
-          if (i < localJSONArray1.length())
-          {
-            localArrayList.add(String.valueOf(localJSONArray1.getLong(i)));
-            i += 1;
-            continue;
-          }
-        }
-        oek.b = localArrayList;
-        if ((localJSONArray2 != null) && (localJSONArray2.length() > 0))
-        {
-          i = 0;
-          if (i < localJSONArray2.length())
-          {
-            oek.c.add(String.valueOf(localJSONArray2.getLong(i)));
-            i += 1;
-            continue;
-          }
-        }
-        if (oek.b != null) {
-          break label219;
-        }
+        paramJSONObject.put("video_duration", paramLong2);
+        return a(paramString1, paramString2, paramString3, paramString4, paramLong1, paramJSONObject);
       }
-      catch (Exception localException)
-      {
-        QLog.e("Ecshop_EcshopReportHandler", 2, localException, new Object[0]);
-      }
-      oek.b = new ArrayList();
-      label219:
-      if (oek.c == null) {
-        oek.c = new ArrayList();
-      }
-      return;
-      label236:
-      bool = false;
+      catch (Exception localException) {}
     }
   }
   
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean)
+  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, JSONObject paramJSONObject)
   {
-    a(paramInt, paramString1, paramString2, paramString3, paramString4, null, paramLong1, paramLong2, paramLong3, paramLong4, paramBoolean);
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, boolean paramBoolean)
-  {
-    a(paramInt, paramString1, paramString2, paramString3, paramString4, paramLong, 0L, 0L, 0L, paramBoolean);
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean)
-  {
-    QLog.i("Ecshop_EcshopReportHandler", 2, "real time report:[" + Integer.toHexString(paramInt) + "," + paramString1 + "," + paramString2 + "," + paramString3 + "," + paramString4 + "," + paramString5 + "," + paramLong1 + "," + paramBoolean + "]");
-    long l1 = 0L;
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
+    }
     try
     {
-      i = bhnv.a(this.app.getApp().getApplicationContext());
-      long l2 = Long.parseLong(paramString1);
-      l1 = l2;
+      localJSONObject.put("current_duration", paramLong);
+      label28:
+      return a(paramString1, paramString2, paramString3, paramString4, localJSONObject);
     }
-    catch (Exception paramString1)
+    catch (Exception paramJSONObject)
     {
-      for (;;)
+      break label28;
+    }
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, JSONObject paramJSONObject)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      a(paramString1, paramString2, paramString3, paramString4, localJSONObject);
+      if (paramJSONObject != null)
       {
-        qqshop_report.SQQSHPCliLogReq localSQQSHPCliLogReq;
-        qqshop_report.SQQSHPCliLogInfo localSQQSHPCliLogInfo;
-        PBStringField localPBStringField;
-        Object localObject;
-        int i = 0;
-        QLog.e("Ecshop_EcshopReportHandler", 2, "doReport error:", paramString1);
+        paramString1 = paramJSONObject.keys();
+        while (paramString1.hasNext())
+        {
+          paramString2 = (String)paramString1.next();
+          localJSONObject.put(paramString2, paramJSONObject.getString(paramString2));
+        }
+      }
+      paramString1 = localJSONObject.toString();
+    }
+    catch (JSONException paramString1)
+    {
+      paramString1.printStackTrace();
+      return "";
+    }
+    return paramString1;
+  }
+  
+  public static String a(JSONObject paramJSONObject)
+  {
+    return a(null, null, null, null, paramJSONObject);
+  }
+  
+  public static JSONObject a(JSONObject paramJSONObject)
+  {
+    double d1 = 0.0D;
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
+    }
+    for (;;)
+    {
+      try
+      {
+        Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
+        paramJSONObject = pay.a();
+        if (paramJSONObject != null)
+        {
+          paramJSONObject = paramJSONObject.mLocation;
+          if (paramJSONObject != null)
+          {
+            d2 = paramJSONObject.mLon02;
+            d1 = paramJSONObject.mLat02;
+            localJSONObject.put("longitude", d2);
+            localJSONObject.put("latitude", d1);
+            if (localContext != null)
+            {
+              paramJSONObject = pay.a(localContext);
+              localJSONObject.put("wifi_ssid", pay.b(localContext));
+              localJSONObject.put("wifi_mac", paramJSONObject);
+            }
+            localJSONObject.put("imei", pay.i());
+            localJSONObject.put("imsi", pay.j());
+            localJSONObject.put("androidid", DeviceInfoUtil.getAndroidID());
+            return localJSONObject;
+          }
+        }
+        else
+        {
+          paramJSONObject = null;
+          continue;
+        }
+        double d2 = 0.0D;
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return localJSONObject;
+      }
+    }
+  }
+  
+  public static JSONObject a(JSONObject paramJSONObject, int paramInt)
+  {
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("oper_time", System.currentTimeMillis());
+      localJSONObject.put("company_id", paramInt);
+      return localJSONObject;
+    }
+    catch (Exception paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+    return localJSONObject;
+  }
+  
+  public static void a(int paramInt1, long paramLong, String paramString1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, rdz paramrdz, int paramInt7, String paramString2, String paramString3)
+  {
+    ThreadManager.post(new VideoReporter.1(paramInt1, paramLong, paramString1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramrdz, paramInt7, paramString2, paramString3), 5, null, true);
+  }
+  
+  public static void a(long paramLong1, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong2, rdz paramrdz, int paramInt5, String paramString2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    ReportInfo localReportInfo = new ReportInfo();
+    localReportInfo.mUin = pay.a();
+    localReportInfo.mSource = 0;
+    if (paramInt1 == 56)
+    {
+      localReportInfo.mOpSource = 11;
+      localReportInfo.mSourceArticleId = paramLong1;
+      localReportInfo.mInnerId = paramString1;
+      localReportInfo.mChannelId = paramInt1;
+      localReportInfo.mAlgorithmId = paramInt2;
+      localReportInfo.mStrategyId = paramInt3;
+      localReportInfo.mOperation = paramInt4;
+      localReportInfo.mPlayTimeLength = ((int)paramLong2);
+      localReportInfo.mVideoExtraRepoerData = paramrdz;
+      localReportInfo.mColumnID = paramInt5;
+      localReportInfo.videoReportInfo = paramString2;
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder().append("reportVideoUserOperationByOidbOfFeed--mUin:").append(localReportInfo.mUin).append("; mSourceArticleId:").append(localReportInfo.mSourceArticleId).append("; mSource:").append(localReportInfo.mSource).append("; mOpSource:").append(localReportInfo.mOpSource).append("; mInnerId:").append(localReportInfo.mInnerId).append("; mChannelId:").append(localReportInfo.mChannelId).append("; mAlgorithmId:").append(localReportInfo.mAlgorithmId).append("; mStrategyId:").append(localReportInfo.mStrategyId).append("; mOperation:").append(localReportInfo.mOperation).append("; mPlayTimeLength:").append(localReportInfo.mPlayTimeLength).append("; mColumnID:").append(localReportInfo.mColumnID).append("; videoReportInfo:").append(localReportInfo.videoReportInfo).append("; videoExtraRepoerData:");
+        if (paramrdz == null) {
+          break label366;
+        }
+      }
+    }
+    label366:
+    for (paramString1 = paramrdz.toString();; paramString1 = "null")
+    {
+      QLog.d("VideoReporter", 2, paramString1);
+      localArrayList.add(localReportInfo);
+      new pwu(null, null, qli.a(), null).a(localArrayList);
+      return;
+      localReportInfo.mOpSource = 0;
+      break;
+    }
+  }
+  
+  public static void a(VideoInfo paramVideoInfo, int paramInt1, int paramInt2, int paramInt3, rdz paramrdz, String paramString)
+  {
+    long l = paramVideoInfo.c;
+    String str = paramVideoInfo.g;
+    int j = (int)paramVideoInfo.f;
+    int k = paramVideoInfo.q;
+    if (paramVideoInfo.a != null) {}
+    for (int i = paramVideoInfo.a.a;; i = -1)
+    {
+      a(18, l, str, paramInt1, j, k, paramInt2, paramInt3, paramrdz, i, paramVideoInfo.y, paramString);
+      return;
+    }
+  }
+  
+  public static void a(BaseArticleInfo paramBaseArticleInfo, int paramInt1, int paramInt2, long paramLong, rdz paramrdz)
+  {
+    long l = paramBaseArticleInfo.mArticleID;
+    String str = paramBaseArticleInfo.innerUniqueID;
+    int j = (int)paramBaseArticleInfo.mAlgorithmID;
+    int k = paramBaseArticleInfo.mStrategyId;
+    if (paramBaseArticleInfo.mVideoColumnInfo != null) {}
+    for (int i = paramBaseArticleInfo.mVideoColumnInfo.a;; i = -1)
+    {
+      a(l, str, paramInt1, j, k, paramInt2, paramLong, paramrdz, i, paramBaseArticleInfo.videoReportInfo);
+      return;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, long paramLong)
+  {
+    ThreadManager.executeOnSubThread(new VideoReporter.2(paramInt1, paramQQAppInterface, paramString, paramInt2, paramLong));
+  }
+  
+  public static void a(MessageRecord paramMessageRecord)
+  {
+    ThreadManager.executeOnSubThread(new VideoReporter.3(paramMessageRecord));
+  }
+  
+  public static void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  {
+    String str = "";
+    if (paramInt1 == 1008) {
+      str = "1";
+    }
+    if (paramInt1 == 0) {
+      str = "2";
+    }
+    for (;;)
+    {
+      odq.a(null, "CliOper", "", "", paramString1, paramString1, 0, 0, str, Integer.toString(paramInt2), paramString3, paramString2, false);
+      return;
+      if (paramInt1 == 1) {
+        str = "3";
+      } else if (paramInt1 == 3000) {
+        str = "4";
+      }
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, JSONObject paramJSONObject)
+  {
+    i = 1;
+    for (;;)
+    {
+      try
+      {
+        if (TextUtils.isEmpty(paramString1)) {
+          continue;
+        }
+        paramJSONObject.put("md5", paramString1);
+        paramJSONObject.put("network_type", a());
+        paramJSONObject.put("os", "1");
+        if (jdField_a_of_type_JavaLangString == null) {
+          jdField_a_of_type_JavaLangString = "8.4.8".replace(".", "");
+        }
+        paramJSONObject.put("version", jdField_a_of_type_JavaLangString);
+        paramJSONObject.put("imei", pay.i());
+        paramJSONObject.put("imsi", pay.j());
+        paramJSONObject.put("kandian_mode_new", a());
+        paramJSONObject.put("kandian_mode", pay.e());
+        paramJSONObject.put("report_timestamp", System.currentTimeMillis());
+        if (bgoa.a() != 1) {
+          continue;
+        }
+        paramString1 = "1";
+      }
+      catch (JSONException paramString1)
+      {
+        paramString1.printStackTrace();
         continue;
-        paramString1 = this.app.getCurrentAccountUin();
+        paramString1 = "0";
+        continue;
+        i = 0;
+        continue;
       }
+      paramJSONObject.put("simCardType", paramString1);
+      paramJSONObject.put("diandianfeeds_type", RecommendFeedsDiandianEntranceManager.a().a());
+      if (!pay.c) {
+        continue;
+      }
+      paramJSONObject.put("from_aio", i);
+      a(paramJSONObject);
+      return;
+      paramJSONObject.put("aid", paramString4);
+      paramJSONObject.put("article_id", paramString4);
+      paramJSONObject.put("vid", paramString3);
+      paramJSONObject.put("puin", paramString2);
     }
-    if (this.app == null)
+  }
+  
+  public static String b()
+  {
+    if ((pay.a() instanceof QQAppInterface))
     {
-      paramString1 = "";
-      localSQQSHPCliLogReq = new qqshop_report.SQQSHPCliLogReq();
-      localSQQSHPCliLogInfo = new qqshop_report.SQQSHPCliLogInfo();
-      localSQQSHPCliLogInfo.puin.set(l1);
-      localSQQSHPCliLogInfo.network.set(i);
-      localSQQSHPCliLogInfo.cnt.set(1);
-      localPBStringField = localSQQSHPCliLogInfo.strp1;
-      localObject = paramString2;
-      if (TextUtils.isEmpty(paramString2)) {
-        localObject = "";
-      }
-      localPBStringField.set((String)localObject);
-      localObject = localSQQSHPCliLogInfo.strp2;
-      paramString2 = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        paramString2 = "";
-      }
-      ((PBStringField)localObject).set(paramString2);
-      paramString3 = localSQQSHPCliLogInfo.strp3;
-      paramString2 = paramString4;
-      if (TextUtils.isEmpty(paramString4)) {
-        paramString2 = "";
-      }
-      paramString3.set(paramString2);
-      paramString3 = localSQQSHPCliLogInfo.strp4;
-      paramString2 = paramString5;
-      if (TextUtils.isEmpty(paramString5)) {
-        paramString2 = "";
-      }
-      paramString3.set(paramString2);
-      localSQQSHPCliLogInfo.tvalue.set(paramInt);
-      localSQQSHPCliLogInfo.uintp1.set(paramLong1);
-      localSQQSHPCliLogInfo.uintp2.set(paramLong2);
-      localSQQSHPCliLogInfo.uintp3.set(paramLong3);
-      localSQQSHPCliLogInfo.uintp4.set(paramLong4);
-      if (paramBoolean)
-      {
-        if ((jdField_a_of_type_JavaLangString == null) && (this.app != null) && (this.app.getApp() != null))
-        {
-          paramString2 = (WifiManager)this.app.getApp().getSystemService("wifi");
-          if ((paramString2 != null) && (paramString2.getConnectionInfo() != null)) {
-            jdField_a_of_type_JavaLangString = paramString2.getConnectionInfo().getMacAddress();
-          }
-        }
-        if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-          localSQQSHPCliLogInfo.wifimac.set(jdField_a_of_type_JavaLangString);
-        }
-      }
-      localSQQSHPCliLogReq.logs.add(localSQQSHPCliLogInfo);
-      paramString1 = new ToServiceMsg("mobileqq.service", paramString1, "SQQShopCliLog.RtReport");
-      paramString1.putWupBuffer(localSQQSHPCliLogReq.toByteArray());
-      super.sendPbReq(paramString1);
+      QQAppInterface localQQAppInterface = (QQAppInterface)pay.a();
+      return MD5Utils.toMD5(localQQAppInterface.getCurrentUin() + "_" + System.currentTimeMillis());
+    }
+    return MD5Utils.toMD5("_" + System.currentTimeMillis());
+  }
+  
+  public static void b(VideoInfo paramVideoInfo, int paramInt1, int paramInt2, int paramInt3, rdz paramrdz, String paramString)
+  {
+    long l = paramVideoInfo.c;
+    String str = paramVideoInfo.g;
+    int j = (int)paramVideoInfo.f;
+    int k = paramVideoInfo.q;
+    if (paramVideoInfo.a != null) {}
+    for (int i = paramVideoInfo.a.a;; i = -1)
+    {
+      a(5, l, str, paramInt1, j, k, paramInt2, paramInt3, paramrdz, i, paramVideoInfo.y, paramString);
       return;
     }
   }
   
-  public void a(MessageRecord paramMessageRecord)
+  public static String c()
   {
-    if ((paramMessageRecord == null) || (this.app == null)) {}
-    qqshop_richmsg.SQQSHPRichMsgReq localSQQSHPRichMsgReq;
-    ArrayList localArrayList;
-    do
-    {
-      return;
-      oek localoek = (oek)this.app.getManager(88);
-      localSQQSHPRichMsgReq = new qqshop_richmsg.SQQSHPRichMsgReq();
-      localArrayList = new ArrayList();
-      String str = paramMessageRecord.getExtInfoFromExtStr("public_account_msg_id");
-      Object localObject = new qqshop_richmsg.SQQSHPRichMsg();
-      ((qqshop_richmsg.SQQSHPRichMsg)localObject).msg_id.set(Long.parseLong(str));
-      ((qqshop_richmsg.SQQSHPRichMsg)localObject).puin.set(Long.parseLong(paramMessageRecord.senderuin));
-      ((qqshop_richmsg.SQQSHPRichMsg)localObject).sendtime.set(paramMessageRecord.time);
-      localArrayList.add(localObject);
-      QLog.i("Ecshop_EcshopReportHandler", 2, "get rich msg:" + str + "," + paramMessageRecord.senderuin + "," + paramMessageRecord.time);
-      localObject = localoek.a(paramMessageRecord.senderuin);
-      ((EcShopData)localObject).mLastMsgTime = paramMessageRecord.time;
-      paramMessageRecord = this.app.a().a(((EcShopData)localObject).mUin, 1008);
-      if (paramMessageRecord != null)
-      {
-        long l = paramMessageRecord.time;
-        if (l > ((EcShopData)localObject).mLastMsgTime) {
-          ((EcShopData)localObject).mLastMsgTime = l;
-        }
-      }
-      ((EcShopData)localObject).msgId = str;
-      ((EcShopData)localObject).mImgInfo = "";
-      localoek.a((EcShopData)localObject);
-    } while (localArrayList.isEmpty());
-    localSQQSHPRichMsgReq.rich_msgs.addAll(localArrayList);
-    paramMessageRecord = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "SQQShopMsgSvc.GetRichMsgInfo");
-    paramMessageRecord.putWupBuffer(localSQQSHPRichMsgReq.toByteArray());
-    super.sendPbReq(paramMessageRecord);
-  }
-  
-  public void a(boolean paramBoolean, MessageRecord paramMessageRecord, int paramInt, String paramString)
-  {
-    try
-    {
-      Object localObject = paramMessageRecord.getExtInfoFromExtStr("public_account_msg_id");
-      if ("1".equals(paramMessageRecord.getExtInfoFromExtStr("is_AdArrive_Msg")))
-      {
-        if ((paramMessageRecord instanceof MessageForStructing))
-        {
-          paramString = ((MessageForStructing)paramMessageRecord).structingMsg;
-          if ((paramString instanceof StructMsgForGeneralShare))
-          {
-            paramString = (StructMsgForGeneralShare)paramString;
-            if ((paramString.mStructMsgItemLists != null) && (paramString.mStructMsgItemLists.size() > 0))
-            {
-              paramString = (bdol)paramString.mStructMsgItemLists.get(0);
-              if ((paramString != null) && ("0".equals(paramString.Y)))
-              {
-                localObject = new oeu();
-                ((oeu)localObject).a = 3;
-                paramMessageRecord = oer.a((oeu)localObject, paramMessageRecord);
-                paramMessageRecord.f = paramInt;
-                ((oer)this.app.a(139)).a(paramMessageRecord, null);
-              }
-              acvi.a(1, 2, oek.a(paramString));
-            }
-          }
-        }
-      }
-      else
-      {
-        if (paramBoolean)
-        {
-          a(134243864, paramMessageRecord.senderuin, (String)localObject, paramString, null, paramInt, false);
-          return;
-        }
-        a(134243858, paramMessageRecord.senderuin, (String)localObject, paramString, null, paramInt, false);
-      }
-      return;
-    }
-    catch (Throwable paramMessageRecord) {}
-  }
-  
-  public void b(MessageRecord paramMessageRecord)
-  {
-    int j = 0;
-    int i = 0;
-    QLog.d("Ecshop_EcshopReportHandler", 1, "doArrivalReport " + paramMessageRecord);
-    Object localObject1;
-    Object localObject2;
-    try
-    {
-      localObject1 = paramMessageRecord.getExtInfoFromExtStr("public_account_msg_id");
-      localObject2 = paramMessageRecord.getExtInfoFromExtStr("is_AdArrive_Msg");
-      QLog.i("Ecshop_EcshopReportHandler", 1, "doArrivalReport hasAdver: " + (String)localObject2);
-      if ("1".equals(localObject2))
-      {
-        localObject1 = new oeu();
-        ((oeu)localObject1).a = 1;
-        localObject1 = oer.a((oeu)localObject1, paramMessageRecord);
-        ((oer)this.app.a(139)).a((oeu)localObject1, null);
-      }
-    }
-    catch (Throwable paramMessageRecord)
-    {
-      label138:
-      QLog.e("Ecshop_EcshopReportHandler", 1, "doArrivalReport occur an error: " + paramMessageRecord);
-      return;
-    }
-    try
-    {
-      j = Integer.parseInt(ofz.a(paramMessageRecord));
-      i = j;
-    }
-    catch (Exception localException1)
-    {
-      Object localObject3;
-      break label138;
-    }
-    if ((paramMessageRecord instanceof MessageForStructing))
-    {
-      paramMessageRecord = ((MessageForStructing)paramMessageRecord).structingMsg;
-      if ((paramMessageRecord instanceof StructMsgForGeneralShare))
-      {
-        paramMessageRecord = (StructMsgForGeneralShare)paramMessageRecord;
-        if ((paramMessageRecord.mStructMsgItemLists != null) && (paramMessageRecord.mStructMsgItemLists.size() > 0))
-        {
-          paramMessageRecord = (bdol)paramMessageRecord.mStructMsgItemLists.get(0);
-          acvi.a(0, 2, oek.a(paramMessageRecord));
-          if ((paramMessageRecord.a instanceof StructMsgForGeneralShare))
-          {
-            ofz.a(paramMessageRecord.g, false);
-            ogd.a(this.app, "qgg.push.arrive", ((StructMsgForGeneralShare)paramMessageRecord.a).mContentTitle, NetConnInfoCenter.getServerTimeMillis() + "", "", i);
-            ogd.b(this.app, "qgg_push_arrive", ((StructMsgForGeneralShare)paramMessageRecord.a).mContentTitle, NetConnInfoCenter.getServerTimeMillis() + "", "", i);
-          }
-        }
-      }
-    }
-    else if ((paramMessageRecord instanceof MessageForArkApp))
-    {
-      localObject1 = oek.a(paramMessageRecord);
-      if (localObject1 != null) {
-        acvi.a(0, 2, (qq_ad_get.QQAdGetRsp.AdInfo)localObject1);
-      }
-      localObject1 = (MessageForArkApp)paramMessageRecord;
-      localObject2 = ((MessageForArkApp)localObject1).ark_app_message;
-      if ((localObject2 != null) && (!bhsr.a(((ArkAppMessage)localObject2).mSourceAd)) && ("gw".equals(new JSONObject(((ArkAppMessage)localObject2).mSourceAd).optString("from"))))
-      {
-        paramMessageRecord = ogd.a(this.app, paramMessageRecord);
-        ogd.a(this.app, "qgg.push.arrive", ((MessageForArkApp)localObject1).msg, NetConnInfoCenter.getServerTimeMillis() + "", paramMessageRecord, i);
-        ogd.b(this.app, "qgg_push_arrive", ((MessageForArkApp)localObject1).msg, NetConnInfoCenter.getServerTimeMillis() + "", paramMessageRecord, i);
-        return;
-        if ((paramMessageRecord instanceof MessageForArkApp))
-        {
-          localObject2 = (MessageForArkApp)paramMessageRecord;
-          localObject3 = ((MessageForArkApp)localObject2).ark_app_message;
-          if ((localObject3 != null) && (!bhsr.a(((ArkAppMessage)localObject3).mSourceAd)))
-          {
-            localObject3 = new JSONObject(((ArkAppMessage)localObject3).mSourceAd);
-            if (QLog.isColorLevel()) {
-              QLog.i("Ecshop_EcshopReportHandler", 1, "sourceAdObj: " + localObject3);
-            }
-            if ("gw".equals(((JSONObject)localObject3).optString("from"))) {
-              localObject3 = ogd.a(this.app, paramMessageRecord);
-            }
-          }
-        }
-        try
-        {
-          i = Integer.parseInt(ofz.a(paramMessageRecord));
-          ogd.a(this.app, "qgg.push.arrive", ((MessageForArkApp)localObject2).msg, NetConnInfoCenter.getServerTimeMillis() + "", (String)localObject3, i);
-          ogd.b(this.app, "qgg_push_arrive", ((MessageForArkApp)localObject2).msg, NetConnInfoCenter.getServerTimeMillis() + "", (String)localObject3, i);
-          a(134243862, paramMessageRecord.senderuin, (String)localObject1, null, null, 0L, false);
-          return;
-          a(134243856, paramMessageRecord.senderuin, (String)localObject1, null, null, 0L, false);
-          return;
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            i = j;
-          }
-        }
-      }
-    }
-  }
-  
-  protected Class<? extends anui> observerClass()
-  {
-    return oep.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    QLog.i("Ecshop_EcshopReportHandler", 2, "on receive:" + paramToServiceMsg.getServiceCmd());
-    if ((!"SQQShopMsgSvc.GetRichMsgInfo".equals(paramToServiceMsg.getServiceCmd())) || (this.app == null) || (paramObject == null)) {}
-    label432:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramFromServiceMsg = new qqshop_richmsg.SQQSHPRichMsgRsp();
-          paramToServiceMsg = (oek)this.app.getManager(88);
-          localObject1 = paramToServiceMsg.a();
-          try
-          {
-            paramFromServiceMsg.mergeFrom((byte[])paramObject);
-            paramObject = paramFromServiceMsg.rich_msgs.get();
-            j = paramObject.size();
-            int i = 0;
-            for (;;)
-            {
-              if (i >= j) {
-                break label432;
-              }
-              localObject2 = (qqshop_richmsg.SQQSHPRichMsg)paramObject.get(i);
-              if ((((qqshop_richmsg.SQQSHPRichMsg)localObject2).img_url.has()) && (((qqshop_richmsg.SQQSHPRichMsg)localObject2).msg_id.has()) && (((qqshop_richmsg.SQQSHPRichMsg)localObject2).puin.has())) {
-                break;
-              }
-              i += 1;
-            }
-          }
-          catch (Exception paramObject)
-          {
-            int j;
-            for (;;)
-            {
-              QLog.e("Ecshop_EcshopReportHandler", 2, "merge exception:" + paramObject);
-              continue;
-              String str1 = String.valueOf(((qqshop_richmsg.SQQSHPRichMsg)localObject2).msg_id.get());
-              String str2 = String.valueOf(((qqshop_richmsg.SQQSHPRichMsg)localObject2).puin.get());
-              Object localObject3 = ((qqshop_richmsg.SQQSHPRichMsg)localObject2).img_url.get();
-              Object localObject2 = new StringBuilder();
-              Object localObject4 = ((List)localObject3).iterator();
-              while (((Iterator)localObject4).hasNext())
-              {
-                ((StringBuilder)localObject2).append((String)((Iterator)localObject4).next());
-                ((StringBuilder)localObject2).append(",");
-              }
-              QLog.i("Ecshop_EcshopReportHandler", 2, "recv rich msg:" + str1 + "," + str2 + "," + localObject3.toString());
-              localObject3 = ((List)localObject1).iterator();
-              do
-              {
-                if (!((Iterator)localObject3).hasNext()) {
-                  break;
-                }
-                localObject4 = (EcShopData)((Iterator)localObject3).next();
-              } while ((!str1.equals(((EcShopData)localObject4).msgId)) || (!str2.equals(((EcShopData)localObject4).mUin)));
-              ((EcShopData)localObject4).mImgInfo = ((StringBuilder)localObject2).substring(0, ((StringBuilder)localObject2).length() - 1).toString();
-              paramToServiceMsg.a((EcShopData)localObject4);
-            }
-            if (j > 0) {
-              super.notifyUI(6, true, null);
-            }
-          }
-        } while (!paramFromServiceMsg.ad_msgs.has());
-        paramFromServiceMsg = (qqshop_richmsg.SQQSHPFolderAdMsg)paramFromServiceMsg.ad_msgs.get(0);
-        localObject1 = this.app.getCurrentAccountUin();
-      } while (paramFromServiceMsg == null);
-      paramObject = paramFromServiceMsg.pic_url.get();
-    } while ((TextUtils.isEmpty((CharSequence)localObject1)) || (paramObject == null) || (paramObject.isEmpty()));
-    Object localObject1 = this.app.getApp().getSharedPreferences("ecshop_sp" + (String)localObject1, 0);
-    long l = ((SharedPreferences)localObject1).getLong("ad_puin", 0L);
-    oek.g = String.valueOf(l);
-    localObject1 = ((SharedPreferences)localObject1).edit();
-    if (l != 0L) {
-      paramToServiceMsg.b(String.valueOf(l));
-    }
-    ((SharedPreferences.Editor)localObject1).putBoolean("is_ad_added", false);
-    ((SharedPreferences.Editor)localObject1).putInt("ad_start", paramFromServiceMsg.begin_time.get());
-    ((SharedPreferences.Editor)localObject1).putInt("ad_end", paramFromServiceMsg.end_time.get());
-    ((SharedPreferences.Editor)localObject1).putLong("ad_id", paramFromServiceMsg.ad_id.get());
-    ((SharedPreferences.Editor)localObject1).putLong("ad_puin", paramFromServiceMsg.puin.get());
-    ((SharedPreferences.Editor)localObject1).putString("ad_icon_url", paramFromServiceMsg.ad_url.get());
-    ((SharedPreferences.Editor)localObject1).putString("ad_title", paramFromServiceMsg.title.get());
-    ((SharedPreferences.Editor)localObject1).putString("ad_nick", paramFromServiceMsg.name.get());
-    ((SharedPreferences.Editor)localObject1).putString("ad_url", paramFromServiceMsg.ad_content_url.get());
-    if (paramFromServiceMsg.verify_flag.get() == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ((SharedPreferences.Editor)localObject1).putBoolean("ad_cert", bool);
-      paramToServiceMsg = new StringBuilder();
-      paramObject = paramObject.iterator();
-      while (paramObject.hasNext())
-      {
-        paramToServiceMsg.append((String)paramObject.next());
-        paramToServiceMsg.append(",");
-      }
-    }
-    paramToServiceMsg = paramToServiceMsg.substring(0, paramToServiceMsg.length() - 1).toString();
-    QLog.i("Ecshop_EcshopReportHandler", 2, "v_flag" + paramFromServiceMsg.verify_flag.get() + ",puin:" + paramFromServiceMsg.puin.get() + ",ad pics:" + paramToServiceMsg);
-    ((SharedPreferences.Editor)localObject1).putString("ad_pics", paramToServiceMsg);
-    ((SharedPreferences.Editor)localObject1).commit();
-    a(134246435, null, null, null, null, paramFromServiceMsg.ad_id.get(), false);
+    return a(null);
   }
 }
 

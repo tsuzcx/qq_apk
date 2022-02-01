@@ -1,39 +1,39 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import java.lang.ref.WeakReference;
-import pez;
-import pfd;
-import ppo;
+import pkl;
+import pkp;
+import puw;
 
 public class ReadInJoyFollowingMemberPrefetcher$4
   implements Runnable
 {
-  public ReadInJoyFollowingMemberPrefetcher$4(pez parampez, boolean paramBoolean) {}
+  public ReadInJoyFollowingMemberPrefetcher$4(pkl parampkl, boolean paramBoolean) {}
   
   public void run()
   {
     if (com.tencent.TMG.utils.QLog.isColorLevel()) {
       com.tencent.TMG.utils.QLog.d("ReadInJoyFollowingMemberPrefetcher", 0, "fetch following members");
     }
-    ppo localppo = (ppo)pez.a(this.this$0).get();
-    if (localppo != null)
+    puw localpuw = (puw)pkl.a(this.this$0).get();
+    if (localpuw != null)
     {
       if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
         com.tencent.qphone.base.util.QLog.d("ReadInJoyFollowingMemberPrefetcher", 2, "preload all following members, force=" + this.a);
       }
       try
       {
-        if ((pez.b(this.this$0).get() == null) || (pez.a(this.this$0)))
+        if ((pkl.b(this.this$0).get() == null) || (pkl.a(this.this$0)))
         {
           if (com.tencent.TMG.utils.QLog.isColorLevel()) {
             com.tencent.TMG.utils.QLog.e("ReadInJoyFollowingMemberPrefetcher", 0, "fetch following member when appinterface is null or uninitialized!");
           }
           return;
         }
-        pez.a(this.this$0, true);
-        pfd.a().a(this.this$0);
+        pkl.a(this.this$0, true);
+        pkp.a().a(this.this$0);
         this.this$0.c();
-        localppo.a(1000, 1, true);
+        localpuw.a(1000, 1, true);
         return;
       }
       finally {}

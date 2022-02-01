@@ -1,17 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
+import java.util.concurrent.Callable;
 
 public class auqs
-  implements CompoundButton.OnCheckedChangeListener
+  implements Callable<aumc>
 {
-  public auqs(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
+  public auqs(ODLoadingActivity paramODLoadingActivity, String paramString) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public aumc a()
   {
-    atul.a().b(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    return auml.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoOdODLoadingActivity, this.jdField_a_of_type_JavaLangString, localQQAppInterface.getCurrentUin());
   }
 }
 

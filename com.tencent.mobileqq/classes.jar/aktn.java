@@ -1,40 +1,19 @@
-import NS_MOBILE_OPERATION.PicInfo;
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
-import com.tencent.mobileqq.activity.photo.album.PhotoPreviewBaseData;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aktn
-  extends PhotoPreviewBaseData
+  implements bbup
 {
-  public int a;
-  public String a;
-  public HashMap<String, PhotoSendParams> a;
-  public zkk a;
-  public boolean a;
-  public int b;
-  public String b;
-  public HashMap<String, PhotoSendParams> b;
-  public boolean b;
-  public int c;
-  public String c;
-  public HashMap<String, PicInfo> c;
-  public boolean c;
-  public int d;
-  public HashMap<String, PicInfo> d;
-  public boolean d;
-  public int e;
-  public HashMap<String, byte[]> e;
-  public boolean e;
-  public int f = 1052;
-  public boolean f;
-  public int g;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
-  public boolean k;
-  public boolean l;
-  public boolean m;
+  public aktn(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  
+  public void onAutoFocusCallback(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".photo", 2, "shot photo with custom camera focus " + paramBoolean1);
+    }
+    aktv.a(paramBoolean1);
+    NewFlowCameraActivity.b(this.a);
+  }
 }
 
 

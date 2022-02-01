@@ -16,13 +16,13 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bguq;
-import bgvh;
-import bgvi;
+import bfes;
+import bfet;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
-import zps;
 
 public class AvatarWallViewPager
   extends RelativeLayout
@@ -57,7 +57,7 @@ public class AvatarWallViewPager
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new bgvh(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new bfes(this, Looper.getMainLooper());
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a();
   }
@@ -67,11 +67,11 @@ public class AvatarWallViewPager
     View localView = new View(this.jdField_a_of_type_AndroidContentContext);
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
     {
-      int i = zps.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
+      int i = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 6.0F);
       this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(i, i);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = zps.a(this.jdField_a_of_type_AndroidContentContext, 7.0F);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = bguq.a(getResources(), Color.parseColor("#80ffffff"), getResources().getDrawable(2130843683));
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = bguq.a(getResources(), Color.parseColor("#ffffffff"), getResources().getDrawable(2130843683));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 7.0F);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.getTroopLevelBgDrawable(getResources(), Color.parseColor("#80ffffff"), getResources().getDrawable(2130843745));
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = TroopUtils.getTroopLevelBgDrawable(getResources(), Color.parseColor("#ffffffff"), getResources().getDrawable(2130843745));
       if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
       {
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
@@ -96,14 +96,14 @@ public class AvatarWallViewPager
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(12);
     localLayoutParams.addRule(11);
-    localLayoutParams.rightMargin = zps.a(this.jdField_a_of_type_AndroidContentContext, 13.0F);
-    localLayoutParams.bottomMargin = zps.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+    localLayoutParams.rightMargin = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 13.0F);
+    localLayoutParams.bottomMargin = UIUtils.dip2px(this.jdField_a_of_type_AndroidContentContext, 10.0F);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = a();
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(getResources().getColor(17170445));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(5);
     addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, localLayoutParams);
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.setOnPageChangeListener(new AvatarWallViewPager.RollerChangeListener(this));
-    new bgvi(this, this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator()).a();
+    new bfet(this, this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator()).a();
   }
   
   public void b()

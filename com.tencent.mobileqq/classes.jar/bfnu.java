@@ -1,20 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
-import com.tencent.mobileqq.widget.TabBarView2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
 
 public class bfnu
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public bfnu(NewTroopCreateActivity paramNewTroopCreateActivity) {}
+  public bfnu(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
-    paramValueAnimator.topMargin = i;
-    this.a.a.setLayoutParams(paramValueAnimator);
+    UpgradeActivity.b(this.a);
+    this.a.finish();
   }
 }
 

@@ -1,41 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Headers;
-import okhttp3.Response;
+import android.graphics.Bitmap;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
-class aaac
-  implements Callback
+public class aaac
+  extends aaag
 {
-  aaac(zzz paramzzz, String paramString1, zzv paramzzv, boolean paramBoolean, String paramString2) {}
-  
-  public void onFailure(Call paramCall, IOException paramIOException)
+  public aaac(AbsBaseWebViewActivity paramAbsBaseWebViewActivity)
   {
-    QLog.d("RFWDownloader", 1, "checkResource:" + this.jdField_a_of_type_JavaLangString + " onFailure");
-    this.jdField_a_of_type_Zzv.a(false, this.jdField_a_of_type_Boolean, false, this.b);
+    super(paramAbsBaseWebViewActivity, null);
   }
   
-  public void onResponse(Call paramCall, Response paramResponse)
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    try
-    {
-      paramCall = paramResponse.headers().get("X-COS-META-MD5");
-      if ((TextUtils.isEmpty(paramCall)) || (this.b.equals(paramCall)))
-      {
-        QLog.d("RFWDownloader", 1, "checkResource:" + this.jdField_a_of_type_JavaLangString + " is up to date");
-        this.jdField_a_of_type_Zzv.a(true, this.jdField_a_of_type_Boolean, false, paramCall);
-        return;
-      }
-      QLog.d("RFWDownloader", 1, "checkResource:" + this.jdField_a_of_type_JavaLangString + " need update");
-      this.jdField_a_of_type_Zzv.a(true, this.jdField_a_of_type_Boolean, true, paramCall);
-      return;
-    }
-    catch (Throwable paramCall)
-    {
-      paramCall.printStackTrace();
-    }
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  {
+    return a(paramWebView, paramString);
   }
 }
 

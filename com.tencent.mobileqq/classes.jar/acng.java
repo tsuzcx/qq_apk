@@ -1,59 +1,33 @@
-import com.tencent.ad.tangram.canvas.download.AdCanvasDownloadListenerAdapter;
-import com.tencent.ad.tangram.canvas.download.IAdDownloader.Callback;
-import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppDownloadManager;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acng
-  implements AdCanvasDownloadListenerAdapter
+  implements View.OnClickListener
 {
-  private List<IAdDownloader.Callback> a = new CopyOnWriteArrayList();
+  public acng(AboutActivity paramAboutActivity, ResourcePluginInfo paramResourcePluginInfo, FormSimpleItem paramFormSimpleItem) {}
   
-  public IAdDownloader.Callback getDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
+  public void onClick(View paramView)
   {
-    if ((this.a != null) && (this.a.size() > 0))
-    {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)localIterator.next();
-        if (((localCallback instanceof acnf)) && (((acnf)localCallback).a() == paramAdAppDownloadManager)) {
-          return localCallback;
-        }
-      }
+    aptb.a(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName.equals("com.tencent.Feedback_5_8")) {
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X8005742", "0X8005742", 0, 0, "", "", "", "");
     }
-    return null;
-  }
-  
-  public void removeDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
-  {
-    if ((this.a == null) || (paramAdAppDownloadManager == null)) {}
     for (;;)
     {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightIcon(null);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)localIterator.next();
-        if ((localCallback instanceof acnf))
-        {
-          AdAppDownloadManager localAdAppDownloadManager = ((acnf)localCallback).a();
-          if ((localAdAppDownloadManager != null) && (localAdAppDownloadManager == paramAdAppDownloadManager)) {
-            this.a.remove(localCallback);
-          }
-        }
+      if (this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName.equals("com.tencent.help_5_8")) {
+        bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X8005741", "0X8005741", 0, 0, "", "", "", "");
+      } else if (this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName.equals("com.tx.aboutfunction_8_0_3")) {
+        bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X8005744", "0X8005744", 0, 0, "", "", "", "");
+      } else if (this.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName.equals("com.tx.aboutimage")) {
+        bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X8005743", "0X8005743", 0, 0, "", "", "", "");
       }
-    }
-  }
-  
-  public void setDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
-  {
-    if ((this.a != null) && (paramAdAppDownloadManager != null))
-    {
-      acnf localacnf = new acnf();
-      localacnf.a(paramAdAppDownloadManager);
-      this.a.add(localacnf);
     }
   }
 }

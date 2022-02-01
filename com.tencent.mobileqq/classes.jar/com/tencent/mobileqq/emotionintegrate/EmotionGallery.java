@@ -7,14 +7,14 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
-import asun;
-import brkm;
+import argn;
+import bodx;
 import com.tencent.mobileqq.activity.photo.DragGallery;
 
 public class EmotionGallery
   extends DragGallery
 {
-  private asun a;
+  private argn a;
   
   public EmotionGallery(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,47 +35,47 @@ public class EmotionGallery
     if (paramInt > paramFloat) {}
     for (paramFloat /= paramInt;; paramFloat = Math.min(1.5F, paramFloat / paramInt))
     {
-      setMaxScale((float)brkm.a / paramInt);
+      setMaxScale((float)bodx.a / paramInt);
       return paramFloat;
     }
   }
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Asun != null)
+    if (this.jdField_a_of_type_Argn != null)
     {
       float f = a();
-      this.jdField_a_of_type_Asun.c(f);
+      this.jdField_a_of_type_Argn.c(f);
     }
     return super.onDoubleTap(paramMotionEvent);
   }
   
   public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Asun != null) {
-      this.jdField_a_of_type_Asun.b();
+    if (this.jdField_a_of_type_Argn != null) {
+      this.jdField_a_of_type_Argn.b();
     }
     return super.onScaleBegin(paramScaleGestureDetector);
   }
   
   public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Asun != null)
+    if (this.jdField_a_of_type_Argn != null)
     {
       float f = a();
-      this.jdField_a_of_type_Asun.b(f);
+      this.jdField_a_of_type_Argn.b(f);
     }
     super.onScaleEnd(paramScaleGestureDetector);
   }
   
-  public void setOnScaleChangeListener(asun paramasun)
+  public void setOnScaleChangeListener(argn paramargn)
   {
-    this.jdField_a_of_type_Asun = paramasun;
+    this.jdField_a_of_type_Argn = paramargn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.EmotionGallery
  * JD-Core Version:    0.7.0.1
  */

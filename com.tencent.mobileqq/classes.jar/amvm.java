@@ -1,42 +1,74 @@
-import com.tencent.mobileqq.apollo.FriendCardApolloViewController;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_PAIR.sweet_pair_check_rsp;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class amvm
-  extends bhzs
+  extends BusinessHandler
 {
-  private java.lang.ref.WeakReference<FriendCardApolloViewController> a;
-  
-  public amvm(FriendCardApolloViewController paramFriendCardApolloViewController)
+  protected amvm(AppInterface paramAppInterface)
   {
-    this.a = new mqq.util.WeakReference(paramFriendCardApolloViewController);
+    super(paramAppInterface);
   }
   
-  protected void onGetExploreMsg(boolean paramBoolean, Object paramObject)
+  protected amvm(QQAppInterface paramQQAppInterface)
   {
-    if (paramBoolean) {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendCardApolloViewController", 1, "[onGetExploreMsg] get info end");
-        }
-        paramObject = new JSONObject((String)paramObject);
-        if (paramObject.optInt("entry_id", -1) != 2) {
-          return;
-        }
-        FriendCardApolloViewController localFriendCardApolloViewController = (FriendCardApolloViewController)this.a.get();
-        if (localFriendCardApolloViewController == null) {
-          return;
-        }
-        FriendCardApolloViewController.a(localFriendCardApolloViewController, paramObject.optString("icon_url"));
-        QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] iconUrl:" + FriendCardApolloViewController.a(localFriendCardApolloViewController));
-        return;
+    super(paramQQAppInterface);
+  }
+  
+  private void a(long paramLong)
+  {
+    if ((this.app != null) && (paramLong > 0L))
+    {
+      SharedPreferences localSharedPreferences = this.app.getPreferences();
+      if (localSharedPreferences != null) {
+        localSharedPreferences.edit().putLong("love_uin_for_current_user", paramLong).apply();
       }
-      catch (Exception paramObject) {}
-    } else if (QLog.isColorLevel()) {
-      QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] result:" + paramBoolean);
     }
   }
+  
+  public void a(int paramInt)
+  {
+    if (this.app != null)
+    {
+      SharedPreferences localSharedPreferences = this.app.getPreferences();
+      if (localSharedPreferences != null) {
+        localSharedPreferences.edit().putInt("love_state_for_current_uin" + this.app.getCurrentUin(), paramInt).apply();
+      }
+    }
+    notifyUI(1, true, Integer.valueOf(paramInt));
+  }
+  
+  public void a(boolean paramBoolean, sweet_pair_check_rsp paramsweet_pair_check_rsp)
+  {
+    if ((paramBoolean) && (paramsweet_pair_check_rsp != null)) {
+      if (paramsweet_pair_check_rsp.host_state != 3) {
+        break label42;
+      }
+    }
+    label42:
+    for (int i = 1;; i = 0)
+    {
+      a(i);
+      if (paramsweet_pair_check_rsp.req_comm != null) {
+        a(paramsweet_pair_check_rsp.req_comm.loveuin);
+      }
+      return;
+    }
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return amvn.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.minigame.publicaccount;
 
-import agej;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,8 +7,9 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import avmq;
-import bhsw;
+import atzp;
+import bfzl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.gamecenter.view.MoreMsgHeaderView;
 import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -40,77 +40,77 @@ class MiniGamePublicAccountWebFragment$HeadPageAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject = null;
+    Object localObject2 = null;
+    Object localObject1;
     if ((MiniGamePublicAccountWebFragment.access$000(this.this$0) == null) || (MiniGamePublicAccountWebFragment.access$000(this.this$0).size() == 0))
     {
-      localObject = this.this$0.createEmptyView();
-      paramViewGroup.addView((View)localObject);
-      return localObject;
+      localObject1 = this.this$0.createEmptyView();
+      paramViewGroup.addView((View)localObject1);
+      return localObject1;
     }
     for (;;)
     {
       synchronized (MiniGamePublicAccountWebFragment.access$000(this.this$0))
       {
         if (paramInt >= MiniGamePublicAccountWebFragment.access$000(this.this$0).size()) {
-          break label494;
+          break label460;
         }
-        localQQGameMsgInfo = (QQGameMsgInfo)MiniGamePublicAccountWebFragment.access$000(this.this$0).get(paramInt);
-        avmq localavmq = (avmq)this.this$0.mHeaderRecords.get(paramInt);
-        if (localavmq == null)
+        localObject1 = (QQGameMsgInfo)MiniGamePublicAccountWebFragment.access$000(this.this$0).get(paramInt);
+        atzp localatzp = (atzp)this.this$0.mHeaderRecords.get(paramInt);
+        if (localatzp == null)
         {
           if (QLog.isColorLevel()) {
             QLog.d("MiniGamePublicAccountWebFragment", 2, "headerView = null");
           }
           return null;
         }
-        if (((localavmq instanceof MoreMsgHeaderView)) && (paramInt != MiniGamePublicAccountWebFragment.access$000(this.this$0).size())) {
+        if (((localatzp instanceof MoreMsgHeaderView)) && (paramInt != MiniGamePublicAccountWebFragment.access$000(this.this$0).size())) {
           return null;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("MiniGamePublicAccountWebFragment", 2, "headerView = " + localavmq.getClass().getSimpleName());
+          QLog.d("MiniGamePublicAccountWebFragment", 2, "headerView = " + localatzp.getClass().getSimpleName());
         }
         RelativeLayout localRelativeLayout = new RelativeLayout(paramViewGroup.getContext());
-        if (((View)localavmq).getParent() != null) {
-          ((ViewGroup)((View)localavmq).getParent()).removeView((View)localavmq);
+        if (((View)localatzp).getParent() != null) {
+          ((ViewGroup)((View)localatzp).getParent()).removeView((View)localatzp);
         }
-        if (localQQGameMsgInfo == null) {
-          break label488;
+        if (localObject1 == null) {
+          break label451;
         }
         localTextView = new TextView(this.this$0.getActivity());
         localTextView.setTextColor(-1);
         localTextView.setTextSize(1, 10.0F);
-        localTextView.setText(bhsw.a(this.this$0.getActivity(), 3, localQQGameMsgInfo.msgTime * 1000L));
+        localTextView.setText(bfzl.a(this.this$0.getActivity(), 3, ((QQGameMsgInfo)localObject1).msgTime * 1000L));
         localTextView.setPadding(12, 0, 12, 0);
-        localTextView.setId(2131378854);
-        localObject = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
-        if (localObject == null)
+        localTextView.setId(2131378618);
+        localObject1 = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
+        if (localObject1 == null)
         {
-          localObject = new RelativeLayout.LayoutParams(-2, agej.a(15.0F, this.this$0.getResources()));
+          localObject1 = new RelativeLayout.LayoutParams(-2, AIOUtils.dp2px(15.0F, this.this$0.getResources()));
           localTextView.setGravity(17);
-          ((RelativeLayout.LayoutParams)localObject).addRule(14);
-          ((RelativeLayout.LayoutParams)localObject).addRule(10);
+          ((RelativeLayout.LayoutParams)localObject1).addRule(14);
+          ((RelativeLayout.LayoutParams)localObject1).addRule(10);
           localTextView.bringToFront();
           if (localTextView != null) {
-            localRelativeLayout.addView(localTextView, (ViewGroup.LayoutParams)localObject);
+            localRelativeLayout.addView(localTextView, (ViewGroup.LayoutParams)localObject1);
           }
-          localObject = new RelativeLayout.LayoutParams(-1, -2);
-          ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131378854);
-          localRelativeLayout.addView((View)localavmq, (ViewGroup.LayoutParams)localObject);
-          paramViewGroup.addView(localRelativeLayout, (ViewGroup.LayoutParams)localObject);
-          if (localQQGameMsgInfo != null)
-          {
-            localavmq.a(localQQGameMsgInfo, this.this$0.getActivity(), paramInt);
-            return localRelativeLayout;
+          localObject1 = new RelativeLayout.LayoutParams(-1, -2);
+          ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131378618);
+          localRelativeLayout.addView((View)localatzp, (ViewGroup.LayoutParams)localObject1);
+          paramViewGroup.addView(localRelativeLayout, (ViewGroup.LayoutParams)localObject1);
+          if (paramInt == 0) {
+            MiniGamePublicAccountWebFragment.access$1100(this.this$0, 0);
           }
-          localavmq.a(new QQGameMsgInfo(), this.this$0.getActivity(), paramInt);
+          return localRelativeLayout;
         }
       }
       continue;
-      label488:
+      label451:
       TextView localTextView = null;
+      localObject1 = localObject2;
       continue;
-      label494:
-      QQGameMsgInfo localQQGameMsgInfo = null;
+      label460:
+      localObject1 = null;
     }
   }
   

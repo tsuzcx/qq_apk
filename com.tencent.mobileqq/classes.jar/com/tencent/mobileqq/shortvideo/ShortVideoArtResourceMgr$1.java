@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.shortvideo;
 
-import alxd;
-import bcwr;
-import bcyc;
-import bcyd;
-import bhmi;
+import akus;
+import bbqc;
+import bbrm;
+import bbrn;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 
 public final class ShortVideoArtResourceMgr$1
@@ -12,8 +12,8 @@ public final class ShortVideoArtResourceMgr$1
 {
   public void run()
   {
-    String str1 = bcwr.b();
-    String str2 = bcwr.a();
+    String str1 = bbqc.b();
+    String str2 = bbqc.a();
     File[] arrayOfFile = new File(str1).listFiles();
     int j;
     Object localObject1;
@@ -37,12 +37,12 @@ public final class ShortVideoArtResourceMgr$1
           localObject2 = arrayOfFile[k].getName();
           if (!str2.equalsIgnoreCase((String)localObject2))
           {
-            localObject3 = bcyc.a((String)localObject2);
-            m = ((bcyd)localObject3).a();
+            localObject3 = bbrm.a((String)localObject2);
+            m = ((bbrn)localObject3).a();
             if (m == 0) {
               break label197;
             }
-            VideoEnvironment.a("[executeClearArtFilterSoCache] errorCodec=" + m + " filename=" + (String)localObject2, null);
+            VideoEnvironment.LogDownLoad("[executeClearArtFilterSoCache] errorCodec=" + m + " filename=" + (String)localObject2, null);
             localObject2 = new File(str1 + (String)localObject2);
             if ((((File)localObject2).exists()) && (((File)localObject2).isFile())) {
               ((File)localObject2).delete();
@@ -50,7 +50,7 @@ public final class ShortVideoArtResourceMgr$1
           }
         }
         label197:
-        localObject3 = ((bcyd)localObject3).b();
+        localObject3 = ((bbrn)localObject3).b();
       }
     }
     label419:
@@ -68,21 +68,21 @@ public final class ShortVideoArtResourceMgr$1
       }
       catch (NumberFormatException localNumberFormatException)
       {
-        VideoEnvironment.a("[executeClearArtFilterSoCache] filename=" + (String)localObject2 + "  tempVersion=" + (String)localObject3, localNumberFormatException);
+        VideoEnvironment.LogDownLoad("[executeClearArtFilterSoCache] filename=" + (String)localObject2 + "  tempVersion=" + (String)localObject3, localNumberFormatException);
       }
       break;
-      VideoEnvironment.a("[executeClearArtFilterSoCache] deleteName=" + (String)localObject1 + "  validNumPendantCache=" + i + " leastVersion=" + j, null);
+      VideoEnvironment.LogDownLoad("[executeClearArtFilterSoCache] deleteName=" + (String)localObject1 + "  validNumPendantCache=" + i + " leastVersion=" + j, null);
       if (i >= 2)
       {
         localObject1 = new File(str1 + (String)localObject1);
         if ((((File)localObject1).exists()) && (((File)localObject1).isFile()))
         {
-          VideoEnvironment.a("[executeClearArtFilterSoCache] deletePath=" + ((File)localObject1).getAbsolutePath(), null);
+          VideoEnvironment.LogDownLoad("[executeClearArtFilterSoCache] deletePath=" + ((File)localObject1).getAbsolutePath(), null);
           ((File)localObject1).delete();
         }
       }
-      if (new File(alxd.c).exists()) {
-        bhmi.a(alxd.c);
+      if (new File(akus.c).exists()) {
+        FileUtils.deleteDirectory(akus.c);
       }
       return;
     }
@@ -90,7 +90,7 @@ public final class ShortVideoArtResourceMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoArtResourceMgr.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,18 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.util.List;
 
-public class qbk
-  extends ViewBase
+class qbk
+  implements ViewBase.OnClickListener
 {
-  private NativeAwesomeCommentView a;
+  qbk(qbf paramqbf, Context paramContext, rdl paramrdl, ArticleInfo paramArticleInfo) {}
   
-  public qbk(VafContext paramVafContext)
+  public void onClick(ViewBase paramViewBase)
   {
-    super(paramVafContext);
-    this.a = new NativeAwesomeCommentView(paramVafContext.getContext());
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.a.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (this.a != null) {
-      this.a.layout(paramInt1, paramInt2, paramInt3, paramInt4);
-    }
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    if (this.a != null) {
-      this.a.measure(paramInt1, paramInt2);
-    }
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return super.setAttribute(paramInt, paramObject);
-      if (((paramObject instanceof qvm)) && (this.a != null)) {
-        this.a.setAwesomeCommentInfo((qvm)paramObject);
-      }
-    }
+    rwv.a(this.jdField_a_of_type_AndroidContentContext, ((rfo)this.jdField_a_of_type_Rdl.a.get(1)).a);
+    qbf.a(this.jdField_a_of_type_Qbf, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
   }
 }
 

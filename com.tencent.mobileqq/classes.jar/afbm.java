@@ -1,45 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.IntimateInfo;
 
-public class afbm
-  extends BroadcastReceiver
+class afbm
+  implements DialogInterface.OnClickListener
 {
-  public afbm(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  afbm(afbj paramafbj) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.PCActive"))
+    if ((!TextUtils.isEmpty(this.a.a)) && (afbj.a(this.a) != null))
     {
-      paramContext = paramIntent.getStringExtra("uin");
-      NotifyPushSettingActivity.a(this.a, paramContext);
-    }
-    do
-    {
-      boolean bool;
-      do
-      {
-        return;
-        if (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.ConfigPCActive")) {
-          break;
-        }
-        paramContext = paramIntent.getStringExtra("uin");
-        bool = paramIntent.getBooleanExtra("configPCActive", false);
-      } while (!this.a.app.getAccount().equals(paramContext));
-      if (true == bool)
-      {
-        NotifyPushSettingActivity.g(this.a).setVisibility(0);
-        return;
+      if (afbj.a(this.a) == 1) {
+        afbj.b(this.a, this.a.a);
       }
-      NotifyPushSettingActivity.g(this.a).setVisibility(8);
+    }
+    else {
       return;
-    } while (!paramContext.equals("com.tencent.mobileqq.activity.NotifyPushSettingActivity.HelloLiveMessage"));
-    paramContext = paramIntent.getStringExtra("uin");
-    NotifyPushSettingActivity.b(this.a, paramContext);
+    }
+    afbj.a(this.a, this.a.a, afbj.a(this.a).maskType);
   }
 }
 

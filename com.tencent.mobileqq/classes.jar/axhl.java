@@ -1,23 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
+import android.view.View;
 
-public class axhl
-  implements DialogInterface.OnClickListener
+public abstract interface axhl
 {
-  public axhl(MsgBackupBaseFragment paramMsgBackupBaseFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.a.b == 2) {
-      MsgBackupCompleteFragment.d(this.a.getActivity(), this.a.c, this.a.d);
-    }
-    while (this.a.b != 3) {
-      return;
-    }
-    MsgBackupCompleteFragment.j(this.a.getActivity(), this.a.c, this.a.d);
-  }
+  public abstract void onClick(View paramView);
 }
 
 

@@ -9,10 +9,8 @@ import android.os.Build.VERSION;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import lfo;
-import lof;
-import loh;
-import lol;
+import lfi;
+import lnu;
 
 @SuppressLint({"NewApi"})
 public class DeviceCheck
@@ -128,14 +126,14 @@ public class DeviceCheck
   @TargetApi(16)
   public static boolean c()
   {
-    List localList = lof.a(lof.b);
+    List localList = AndroidCodec.getDecoderInfos(AndroidCodec.HEVC_CODEC_MIME);
     int i = 0;
     for (;;)
     {
       MediaCodecInfo.CodecCapabilities localCodecCapabilities;
       if (i < localList.size())
       {
-        localCodecCapabilities = lof.a((MediaCodecInfo)localList.get(i), lof.b);
+        localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)localList.get(i), AndroidCodec.HEVC_CODEC_MIME);
         if ((localCodecCapabilities != null) && (localCodecCapabilities.colorFormats != null)) {}
       }
       else
@@ -158,14 +156,14 @@ public class DeviceCheck
   @TargetApi(16)
   public static boolean d()
   {
-    List localList = lof.b(lof.b);
+    List localList = AndroidCodec.getEndoderInfos(AndroidCodec.HEVC_CODEC_MIME);
     int i = 0;
     for (;;)
     {
       MediaCodecInfo.CodecCapabilities localCodecCapabilities;
       if (i < localList.size())
       {
-        localCodecCapabilities = lof.a((MediaCodecInfo)localList.get(i), lof.b);
+        localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)localList.get(i), AndroidCodec.HEVC_CODEC_MIME);
         if (localCodecCapabilities != null) {}
       }
       else
@@ -189,13 +187,13 @@ public class DeviceCheck
   public static boolean e()
   {
     boolean bool2 = false;
-    List localList = lof.a(lof.a);
+    List localList = AndroidCodec.getDecoderInfos(AndroidCodec.AVC_CODEC_MIME);
     int i = 0;
     boolean bool1 = bool2;
     MediaCodecInfo.CodecCapabilities localCodecCapabilities;
     if (i < localList.size())
     {
-      localCodecCapabilities = lof.a((MediaCodecInfo)localList.get(i), lof.a);
+      localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)localList.get(i), AndroidCodec.AVC_CODEC_MIME);
       if ((localCodecCapabilities != null) && (localCodecCapabilities.colorFormats != null)) {}
     }
     for (;;)
@@ -220,7 +218,7 @@ public class DeviceCheck
   public static boolean f()
   {
     boolean bool2 = false;
-    List localList = lof.b(lof.a);
+    List localList = AndroidCodec.getEndoderInfos(AndroidCodec.AVC_CODEC_MIME);
     int i = 0;
     for (;;)
     {
@@ -229,7 +227,7 @@ public class DeviceCheck
       int j;
       if (i < localList.size())
       {
-        localCodecCapabilities = lof.a((MediaCodecInfo)localList.get(i), lof.a);
+        localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)localList.get(i), AndroidCodec.AVC_CODEC_MIME);
         if (localCodecCapabilities != null) {
           j = 0;
         }
@@ -253,19 +251,19 @@ public class DeviceCheck
   public static boolean g()
   {
     if (h()) {}
-    lol locallol;
-    loh localloh1;
-    loh localloh2;
+    lnu locallnu;
+    AndroidCodec.HWCodecAbility localHWCodecAbility1;
+    AndroidCodec.HWCodecAbility localHWCodecAbility2;
     do
     {
       do
       {
         return false;
       } while (Build.VERSION.SDK_INT < 21);
-      locallol = new lol(lfo.a(BaseApplicationImpl.getContext()));
-      localloh1 = locallol.d();
-      localloh2 = locallol.c();
-    } while ((localloh1 == null) || (!localloh1.a) || (!locallol.a(2)) || (localloh2 == null) || (!localloh2.a) || (!locallol.a(1)));
+      locallnu = new lnu(lfi.a(BaseApplicationImpl.getContext()));
+      localHWCodecAbility1 = locallnu.d();
+      localHWCodecAbility2 = locallnu.c();
+    } while ((localHWCodecAbility1 == null) || (!localHWCodecAbility1.isHWCodec) || (!locallnu.a(2)) || (localHWCodecAbility2 == null) || (!localHWCodecAbility2.isHWCodec) || (!locallnu.a(1)));
     if (QLog.isColorLevel()) {
       QLog.d("DeviceCheck", 2, "SUPPORT Async API");
     }

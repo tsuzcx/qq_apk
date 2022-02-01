@@ -1,63 +1,29 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bbco
+class bbco
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private bbcq jdField_a_of_type_Bbcq;
-  private bbcr jdField_a_of_type_Bbcr = new bbcp(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  bbco(bbcm parambbcm, bayy parambayy) {}
   
-  public bbco(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("OneWayFriendHelper", 0, String.format("OneWayFriendHelper app=%s curType=%s friendUin=%s", new Object[] { paramQQAppInterface, Integer.valueOf(paramInt), paramString }));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Bbcr);
-  }
-  
-  private void a(String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OneWayFriendHelper", 0, String.format("notifyOneWayFriend friendUin=%s oneWayFriend=%s", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
-    }
-    if (this.jdField_a_of_type_Bbcq != null) {
-      this.jdField_a_of_type_Bbcq.a(paramString, paramBoolean);
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
-  {
-    paramQQAppInterface = (anyw)paramQQAppInterface.getManager(51);
-    return (paramInt == 0) && (!paramQQAppInterface.b(paramString));
-  }
-  
-  public void a()
-  {
-    if (a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString))
+    this.jdField_a_of_type_Bayy.a(paramView);
+    Object localObject = new MiniAppInfo();
+    ((MiniAppInfo)localObject).appId = this.jdField_a_of_type_Bayy.a.appId;
+    MiniAppConfig localMiniAppConfig = new MiniAppConfig((MiniAppInfo)localObject);
+    if (this.jdField_a_of_type_Bayy.a.showMask == 1) {}
+    for (localObject = "used";; localObject = "unused")
     {
-      bbcn localbbcn = (bbcn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(179);
-      if (localbbcn != null) {
-        localbbcn.a(Long.parseLong(this.jdField_a_of_type_JavaLangString));
-      }
+      MiniProgramLpReportDC04239.reportAsync(localMiniAppConfig, "search", "result_click", (String)localObject, this.jdField_a_of_type_Bayy.a());
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    a(this.jdField_a_of_type_JavaLangString, false);
-  }
-  
-  public void a(bbcq parambbcq)
-  {
-    this.jdField_a_of_type_Bbcq = parambbcq;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bbcq = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Bbcr);
   }
 }
 

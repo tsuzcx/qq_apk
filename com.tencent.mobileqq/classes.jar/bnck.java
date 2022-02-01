@@ -1,6 +1,11 @@
 public abstract interface bnck
+  extends bned
 {
   public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

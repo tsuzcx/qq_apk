@@ -1,56 +1,114 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.LRULinkedHashMap;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-class anlf
+public class anlf
 {
-  public String a;
-  public WeakReference<WebViewPlugin> a;
-  private WeakReference<anle> b;
-  
-  public anlf(anle paramanle, String paramString, WebViewPlugin paramWebViewPlugin)
+  public static int a(MessageRecord paramMessageRecord, int paramInt)
   {
-    this.b = new WeakReference(paramanle);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWebViewPlugin);
+    paramMessageRecord = a(paramMessageRecord);
+    int j;
+    if (paramMessageRecord != null)
+    {
+      paramMessageRecord = paramMessageRecord.iterator();
+      int i = 0;
+      j = i;
+      if (!paramMessageRecord.hasNext()) {
+        break label62;
+      }
+      anlg localanlg = (anlg)paramMessageRecord.next();
+      if (localanlg.a != paramInt) {
+        break label64;
+      }
+      i = localanlg.b + i;
+    }
+    label62:
+    label64:
+    for (;;)
+    {
+      break;
+      j = 0;
+      return j;
+    }
   }
   
-  public void a(anlg paramanlg, anlh paramanlh)
+  public static List<anlg> a(MessageRecord paramMessageRecord)
   {
-    anle localanle = (anle)this.b.get();
-    WebViewPlugin localWebViewPlugin;
-    if ((localanle != null) && (paramanlg != null))
+    ArrayList localArrayList;
+    String str;
+    int j;
+    int i;
+    if (((paramMessageRecord instanceof MessageForStructing)) && ((((MessageForStructing)paramMessageRecord).structingMsg instanceof AbsShareMsg)) && (((MessageForStructing)paramMessageRecord).structingMsg.mMsgServiceID == 52))
     {
-      localWebViewPlugin = (WebViewPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localWebViewPlugin != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      paramMessageRecord = (AbsShareMsg)((MessageForStructing)paramMessageRecord).structingMsg;
+      localArrayList = new ArrayList();
+      Iterator localIterator = paramMessageRecord.iterator();
+      for (;;)
       {
-        if (paramanlh != null) {
-          paramanlh.d = System.currentTimeMillis();
+        if (localIterator.hasNext())
+        {
+          paramMessageRecord = (bcgw)localIterator.next();
+          if (paramMessageRecord != null)
+          {
+            str = amtj.a(2131704391);
+            j = 1;
+            if ((paramMessageRecord instanceof bcji))
+            {
+              i = ((bcji)paramMessageRecord).a.getInt("count");
+              j = 1;
+              paramMessageRecord = str;
+            }
+          }
         }
-        if (anlg.a(paramanlg) == null) {
-          break label175;
-        }
-        localWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { anlg.a(paramanlg).toString() });
       }
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebDataCallBack, onSSOCallBack, plugin.callJs.mResultJson:" + anlg.a(paramanlg));
-      }
-      if (anle.a(localanle) != null)
+      localArrayList.add(new anlg(paramMessageRecord, j, i));
+      break;
+      Object localObject = paramMessageRecord.h;
+      if (localObject != null)
       {
-        anle.a(localanle).remove(anlg.a(paramanlg));
-        if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebDataCallBack, onSSOCallBack, remove sso from mPreloadSSODatas:" + anlg.a(paramanlg));
+        i = j;
+        paramMessageRecord = str;
+        try
+        {
+          localObject = new JSONObject((String)localObject);
+          i = j;
+          paramMessageRecord = str;
+          str = ((JSONObject)localObject).getString("giftName");
+          i = j;
+          paramMessageRecord = str;
+          j = ((JSONObject)localObject).getInt("giftType");
+          i = j;
+          paramMessageRecord = str;
+          int k = ((JSONObject)localObject).getInt("giftCount");
+          i = k;
+          paramMessageRecord = str;
         }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+          j = i;
+          i = 0;
+        }
+        continue;
+        return localArrayList;
+        return null;
       }
-      return;
-      label175:
-      localWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
+      else
+      {
+        i = 0;
+        j = 1;
+        paramMessageRecord = localJSONException;
+      }
     }
   }
 }

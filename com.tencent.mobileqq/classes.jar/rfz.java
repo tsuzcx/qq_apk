@@ -1,102 +1,60 @@
-import android.util.Base64;
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import tencent.im.oidb.cmd0xe33.oidb_0xe33.ReqBody;
-import tencent.im.oidb.cmd0xe33.oidb_0xe33.TopicInfoSetReq;
-import tencent.kandian.ugc.topic_info.TopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
 
-public class rfz
-  implements rfv
+public final class rfz
 {
-  private QQAppInterface a;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
+  private String d;
   
-  public rfz(QQAppInterface paramQQAppInterface)
+  public TopicInfo a()
   {
-    this.a = paramQQAppInterface;
+    return new TopicInfo(this, null);
   }
   
-  private void a(@NotNull ColumnInfo paramColumnInfo, rft paramrft, int paramInt)
+  public rfz a(long paramLong)
   {
-    oidb_0xe33.TopicInfoSetReq localTopicInfoSetReq;
-    if (QLog.isColorLevel())
-    {
-      if (paramInt == 1) {
-        QLog.e("RIJUGC.ManagerColumnModel", 2, "ManageColumnModel createColumn: columnInfo : " + paramColumnInfo.toString());
-      }
-    }
-    else
-    {
-      localTopicInfoSetReq = new oidb_0xe33.TopicInfoSetReq();
-      if (paramInt != 1) {
-        break label155;
-      }
-      localTopicInfoSetReq.operate_type.set(1);
-    }
-    for (;;)
-    {
-      localTopicInfoSetReq.info.set(paramColumnInfo.parseToTopicInfo());
-      paramColumnInfo = new oidb_0xe33.ReqBody();
-      paramColumnInfo.topic_info_set_req.set(localTopicInfoSetReq);
-      nkm.a(this.a, new rga(this, paramrft, paramInt), paramColumnInfo.toByteArray(), "OidbSvc.0xe33", 3635, 1);
-      return;
-      if (paramInt != 2) {
-        break;
-      }
-      QLog.e("RIJUGC.ManagerColumnModel", 2, "ManageColumnModel editColumn: columnInfo : " + paramColumnInfo.toString());
-      break;
-      label155:
-      if (paramInt == 2) {
-        localTopicInfoSetReq.operate_type.set(2);
-      }
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
   }
   
-  @Nullable
-  public ColumnInfo a()
+  public rfz a(String paramString)
   {
-    Object localObject1 = (String)bnrf.a("key_sp_readinjoy_column_info_sketch", "");
-    if (((String)localObject1).isEmpty()) {
-      return null;
-    }
-    topic_info.TopicInfo localTopicInfo = new topic_info.TopicInfo();
-    try
-    {
-      localTopicInfo.mergeFrom(Base64.decode((String)localObject1, 0));
-      localObject1 = new ColumnInfo(localTopicInfo);
-      return localObject1;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("RIJUGC.ManagerColumnModel", 1, "getColumnSketch exception, e=" + localException.getMessage());
-        Object localObject2 = null;
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
   
-  public void a()
+  public rfz a(boolean paramBoolean)
   {
-    bnrf.a("key_sp_readinjoy_column_info_sketch", "");
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
   }
   
-  public void a(@NotNull ColumnInfo paramColumnInfo)
+  public rfz b(long paramLong)
   {
-    bnrf.a("key_sp_readinjoy_column_info_sketch", Base64.encodeToString(paramColumnInfo.parseToTopicInfo().toByteArray(), 0));
+    this.jdField_b_of_type_Long = paramLong;
+    return this;
   }
   
-  public void a(@NotNull ColumnInfo paramColumnInfo, rft paramrft)
+  public rfz b(String paramString)
   {
-    a(paramColumnInfo, paramrft, 1);
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
   }
   
-  public void b(@NotNull ColumnInfo paramColumnInfo, rft paramrft)
+  public rfz c(String paramString)
   {
-    a(paramColumnInfo, paramrft, 2);
+    this.c = paramString;
+    return this;
+  }
+  
+  public rfz d(String paramString)
+  {
+    this.d = paramString;
+    return this;
   }
 }
 

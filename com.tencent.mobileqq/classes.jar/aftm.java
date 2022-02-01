@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.view.MotionEvent;
+import com.tencent.qphone.base.util.QLog;
 
-public class aftm
-  implements DialogInterface.OnClickListener
+class aftm
+  implements bhdq
 {
-  public aftm(TroopInfoActivity paramTroopInfoActivity) {}
+  aftm(aftj paramaftj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.e("TroopRobotHelper", 2, "TroopRobotHelper.DrawerFrame.TouchEventConsumer");
+    }
+    return this.a.a(paramMotionEvent);
   }
 }
 

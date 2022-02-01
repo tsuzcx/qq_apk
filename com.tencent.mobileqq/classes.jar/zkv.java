@@ -1,6 +1,21 @@
-public abstract interface zkv
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.superplayer.view.ISPlayerVideoView;
+
+public class zkv
+  implements bhly
 {
-  public abstract void a(zjv paramzjv);
+  public zkv(VideoPlayerView paramVideoPlayerView) {}
+  
+  public void a()
+  {
+    if ((this.a.a() != null) && (VideoPlayerView.a(this.a) != null))
+    {
+      VideoPlayerView.c(this.a, false);
+      VideoPlayerView.a(this.a).onOrientationChange(VideoPlayerView.c(this.a));
+      VideoPlayerView.a(this.a).onVideoSize(this.a.a().getRenderViewWidth(), this.a.a().getRenderViewHeight());
+    }
+  }
 }
 
 

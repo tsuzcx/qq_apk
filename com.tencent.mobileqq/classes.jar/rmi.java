@@ -1,14 +1,21 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.AbsPublishColumnFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-class rmi
-  implements tss
+public class rmi
+  implements QQPermissionCallback
 {
-  rmi(rmg paramrmg, AdvertisementInfo paramAdvertisementInfo, rwc paramrwc) {}
+  public rmi(AbsPublishColumnFragment paramAbsPublishColumnFragment) {}
   
-  public void a(View paramView, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Rmg.a(paramView.getContext(), paramInt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_Rwc.a);
+    QLog.i("RIJUGC.PublishTopicFragment", 1, "request camera permissions, deny");
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("RIJUGC.PublishTopicFragment", 1, "request camera permissions, grant");
+    AbsPublishColumnFragment.a(this.a);
   }
 }
 

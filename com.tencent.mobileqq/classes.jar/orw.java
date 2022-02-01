@@ -1,6 +1,17 @@
-public abstract interface orw
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class orw
+  implements ViewBase.OnClickListener
 {
-  public abstract void a(long paramLong);
+  orw(ouc paramouc, ouo paramouo) {}
+  
+  public final void onClick(ViewBase paramViewBase)
+  {
+    this.jdField_a_of_type_Ouc.b(this.jdField_a_of_type_Ouo);
+  }
 }
 
 

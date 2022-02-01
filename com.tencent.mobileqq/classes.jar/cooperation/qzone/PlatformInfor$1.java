@@ -1,22 +1,21 @@
 package cooperation.qzone;
 
 import android.content.Context;
-import bmsv;
 import common.config.service.QzoneConfig;
 
-public class PlatformInfor$1
+class PlatformInfor$1
   implements Runnable
 {
-  public PlatformInfor$1(bmsv parambmsv, Context paramContext) {}
+  PlatformInfor$1(PlatformInfor paramPlatformInfor, Context paramContext) {}
   
   public void run()
   {
     if (QzoneConfig.getInstance().getConfig("QZoneSetting", "qzoneSharppGate", 1) == 1)
     {
-      bmsv.a(this.this$0, SharpPDec.a(this.a));
+      PlatformInfor.access$002(this.this$0, SharpPDec.isSupportSharpP(this.val$context));
       return;
     }
-    bmsv.a(this.this$0, 0);
+    PlatformInfor.access$002(this.this$0, 0);
   }
 }
 

@@ -1,40 +1,22 @@
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.applets.data.AppletItem;
-import com.tencent.mobileqq.fragment.AppletsSettingFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
 
-public class avdn
-  implements avdp
+class avdn
+  implements bjoe
 {
-  public avdn(AppletsSettingFragment paramAppletsSettingFragment) {}
+  avdn(avdm paramavdm, bjnw parambjnw) {}
   
-  public void a(CompoundButton paramCompoundButton, boolean paramBoolean, AppletItem paramAppletItem)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = 1;
-    ArrayList localArrayList;
-    if (paramAppletItem != null)
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppletsSettingFragment", 2, "OnChangeSwitchListener onChangeSwitchListener " + paramAppletItem.toString() + ",  isChecked:" + paramBoolean);
-      }
-      this.a.a(true);
-      paramCompoundButton.setChecked(paramBoolean);
-      paramCompoundButton = (apeb)AppletsSettingFragment.a(this.a).a(148);
-      localArrayList = new ArrayList();
-      if (!paramBoolean) {
-        break label113;
-      }
     }
     for (;;)
     {
-      paramAppletItem.a(i);
-      localArrayList.add(paramAppletItem);
-      paramCompoundButton.a(localArrayList);
+      this.jdField_a_of_type_Bjnw.e();
       return;
-      label113:
-      i = 0;
+      avdm.a(this.jdField_a_of_type_Avdm);
+      continue;
+      avdm.b(this.jdField_a_of_type_Avdm);
     }
   }
 }

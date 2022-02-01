@@ -1,44 +1,20 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentDocFileTabView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public class atoc
-  extends auoi
+class atoc
+  extends RecyclerView.ViewHolder
 {
-  public atoc(QfileRecentDocFileTabView paramQfileRecentDocFileTabView) {}
+  public int a = atnv.b;
   
-  public void a()
+  public atoc(View paramView)
   {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().o();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().E();
+    super(paramView);
+    paramView.setTag(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atoc
  * JD-Core Version:    0.7.0.1
  */

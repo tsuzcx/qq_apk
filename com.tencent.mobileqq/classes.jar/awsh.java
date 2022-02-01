@@ -1,15 +1,26 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class awsh
+  implements bjoe
 {
-  private int jdField_a_of_type_Int;
-  private awsj jdField_a_of_type_Awsj;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private final List<LocationRoom.Venue> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public awsh(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, bjnw parambjnw) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Bjnw != null) {
+        this.jdField_a_of_type_Bjnw.dismiss();
+      }
+      return;
+      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+    }
+  }
 }
 
 

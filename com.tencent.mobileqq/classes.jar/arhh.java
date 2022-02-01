@@ -1,87 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
-public class arhh
-  extends arac<bpud>
+class arhh
+  implements BusinessObserver
 {
-  @NonNull
-  public bpud a(int paramInt)
-  {
-    return new bpud();
-  }
+  arhh(arhg paramarhg, String paramString, int paramInt1, int paramInt2) {}
   
-  @Nullable
-  public bpud a(araj[] paramArrayOfaraj)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length == 0)) {
-      return null;
-    }
-    paramArrayOfaraj = paramArrayOfaraj[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMFilterConfigProcessor", 2, "handleGetQIMFilterConfig onParsed, content:" + paramArrayOfaraj);
-    }
-    return new bpua().a(paramArrayOfaraj, lbm.e(), "temp_filter_zip", new arhi(this));
-  }
-  
-  public void a(bpud parambpud)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMFilterConfigProcessor", 2, "handleGetQIMFilterConfig onUpdate");
-    }
-  }
-  
-  public Class<bpud> clazz()
-  {
-    return bpud.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (!new File(brdl.a + "filter_config_new.xml").exists()) {
-      return 0;
-    }
-    return bqzz.a(BaseApplicationImpl.getContext());
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMFilterConfigProcessor", 2, "handleGetQIMFilterConfig onReqFailed");
-    }
-  }
-  
-  public int onSend(int paramInt)
-  {
-    if (!new File(brdl.a + "filter_config_new.xml").exists())
+    if (paramBoolean)
     {
-      QLog.i("QIMFilterConfigProcessor", 1, "config file not exist");
-      aran.a().a(306, 0);
-      return 0;
+      paramObject = (amsw)this.jdField_a_of_type_Arhg.app.getManager(51);
+      Card localCard = paramObject.c(this.jdField_a_of_type_JavaLangString);
+      localCard.clothesId = this.jdField_a_of_type_Int;
+      localCard.fontId = this.b;
+      localCard.updateTime = NetConnInfoCenter.getServerTimeMillis();
+      paramObject.a(localCard);
+      this.jdField_a_of_type_Arhg.notifyUI(1, paramBoolean, null);
     }
-    return super.onSend(paramInt);
-  }
-  
-  public int type()
-  {
-    return 306;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arhh
  * JD-Core Version:    0.7.0.1
  */

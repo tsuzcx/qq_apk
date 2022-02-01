@@ -1,27 +1,147 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class ooh
-  implements View.OnTouchListener
+public class ooh
 {
-  ooh(oof paramoof, Context paramContext) {}
+  private ooj a = new ooj();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static ooh a()
   {
-    if (paramMotionEvent.getAction() == 1) {
-      if ((this.jdField_a_of_type_AndroidContentContext == null) || (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) || (((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent() == null)) {
-        break label67;
+    return ook.a();
+  }
+  
+  public static ooj a(opd paramopd, boolean paramBoolean)
+  {
+    ooj localooj = new ooj();
+    if (paramopd == null) {
+      return localooj;
+    }
+    QLog.d("RIJNewBiuCardTransformManager", 1, "convertRespToBiuInfo | respData : " + paramopd.toString() + " ,isFromRecommentFeeds:" + paramBoolean);
+    localooj.jdField_a_of_type_Boolean = paramBoolean;
+    localooj.jdField_a_of_type_Long = paramopd.a();
+    localooj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramopd.a();
+    localooj.jdField_a_of_type_JavaLangString = paramopd.c();
+    localooj.b = paramopd.d();
+    localooj.e = paramopd.f();
+    localooj.c = paramopd.g();
+    localooj.d = paramopd.b();
+    localooj.jdField_a_of_type_Int = paramopd.e();
+    return localooj;
+  }
+  
+  public static boolean a(ArticleInfo paramArticleInfo)
+  {
+    if (paramArticleInfo == null) {
+      return false;
+    }
+    int i = pgb.a(paramArticleInfo, 0);
+    QLog.d("RIJNewBiuCardTransformManager", 2, "checkBiuCardWhiteList | type : " + i);
+    if ((i == 0) || (i == 3) || (i == 1) || (i == 5) || (i == 6) || (i == 126) || (b(paramArticleInfo)))
+    {
+      QLog.d("RIJNewBiuCardTransformManager", 2, "checkBiuCardWhiteList | valid type : " + i);
+      return true;
+    }
+    QLog.d("RIJNewBiuCardTransformManager", 2, "checkBiuCardWhiteList not in white list");
+    return false;
+  }
+  
+  public static boolean b(ArticleInfo paramArticleInfo)
+  {
+    if (paramArticleInfo == null)
+    {
+      QLog.d("RIJNewBiuCardTransformManager", 2, "checkShortContentType articleInfo is null");
+      return false;
+    }
+    if (!paramArticleInfo.isPGCShortContent())
+    {
+      QLog.d("RIJNewBiuCardTransformManager", 2, "checkShortContentType | is not pgcShortContent");
+      return false;
+    }
+    if ((paramArticleInfo.mSocialFeedInfo == null) || (paramArticleInfo.mSocialFeedInfo.a == null))
+    {
+      QLog.d("RIJNewBiuCardTransformManager", 2, "checkShortContentType | socialFeedsInfo is null");
+      return true;
+    }
+    int i = paramArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Int;
+    if ((i == 1) || (i == 3) || (i == 4) || (i == 2) || (i == 5))
+    {
+      QLog.d("RIJNewBiuCardTransformManager", 2, "checkShortContentType | longContent out");
+      return false;
+    }
+    QLog.d("RIJNewBiuCardTransformManager", 2, "checkShortContentType | valid shortContent type");
+    return true;
+  }
+  
+  public void a()
+  {
+    if (this.a == null)
+    {
+      QLog.d("RIJNewBiuCardTransformManager", 2, "transformCard | mBiuInfo is null");
+      return;
+    }
+    pkm.a().a(this.a);
+    QLog.d("RIJNewBiuCardTransformManager", 1, " transformCard | mBiuInfo " + this.a);
+  }
+  
+  public void a(ooj paramooj)
+  {
+    if (paramooj != null)
+    {
+      this.a = paramooj;
+      QLog.d("RIJNewBiuCardTransformManager", 2, "updateBiuInfo | mBiuInfo  : " + this.a);
+      b();
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool = true;
+    if (this.a == null)
+    {
+      QLog.d("RIJNewBiuCardTransformManager", 2, "shouldAutoRefresh | false, biuInfo is null");
+      return false;
+    }
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null)
+    {
+      QLog.d("RIJNewBiuCardTransformManager", 2, "shouldAutoRefresh | false, articleInfo is null");
+      return false;
+    }
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      QLog.d("RIJNewBiuCardTransformManager", 2, "shouldAutoRefresh | should refresh when out from related articles");
+      return true;
+    }
+    if (!pkm.a().a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {}
+    for (;;)
+    {
+      QLog.d("RIJNewBiuCardTransformManager", 2, "shouldAutoRefresh | shouldRefresh: " + bool);
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public void b()
+  {
+    QQAppInterface localQQAppInterface = pay.a();
+    if (localQQAppInterface != null)
+    {
+      Object localObject = (pks)localQQAppInterface.getManager(163);
+      if (localObject != null)
+      {
+        localObject = ((pks)localObject).a().a();
+        if (localObject != null) {
+          ((pvu)localObject).a(localQQAppInterface.getLongAccountUin(), new ooi(this));
+        }
       }
     }
-    label67:
-    for (int i = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getIntExtra("channel_from", -1);; i = 0)
-    {
-      oof.a("0X8007BE7", null, null, null, null, i);
-      return false;
+  }
+  
+  public void c()
+  {
+    if (this.a != null) {
+      this.a.a();
     }
   }
 }

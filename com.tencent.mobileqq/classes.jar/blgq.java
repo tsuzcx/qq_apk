@@ -1,143 +1,45 @@
-import android.app.Notification;
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.badge.CommonBadgeUtilImpl;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.push.BadgeUtilImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.BadgeUtils.1;
-import com.tencent.util.BadgeUtils.2;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.OldHttpEngine;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
 
 public class blgq
 {
-  public static int a;
-  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private static Runnable jdField_a_of_type_JavaLangRunnable = new BadgeUtils.2();
-  public static boolean a;
-  public static boolean b;
-  public static boolean c;
+  private static INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+  private static IHttpCommunicatorFlowCount jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount = new blgr();
+  private static INetEngine jdField_b_of_type_ComTencentMobileqqTransfileINetEngine;
+  private static IHttpCommunicatorFlowCount jdField_b_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount = new blgs();
   
-  static
+  public static INetEngine a()
   {
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_Int = -1;
-  }
-  
-  public static int a()
-  {
-    String str = "";
-    int i;
-    if (jdField_a_of_type_Int != -1) {
-      i = jdField_a_of_type_Int;
-    }
-    for (;;)
+    if (jdField_a_of_type_ComTencentMobileqqTransfileINetEngine == null) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BadgeUtils", 2, "getLimitCount Limitcount" + i);
-      }
-      return i;
-      try
+      if (jdField_a_of_type_ComTencentMobileqqTransfileINetEngine == null)
       {
-        Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_config.name(), "-1|1=0,2=0,3=0,4=0,5=1|1|999");
-        if (QLog.isColorLevel()) {
-          QLog.d("BadgeUtils", 2, "LimitConfig:" + (String)localObject);
-        }
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length > 3) {
-          str = localObject[3];
-        }
-        jdField_a_of_type_Int = Integer.valueOf(str).intValue();
-        i = jdField_a_of_type_Int;
+        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount, 128);
+        localHttpCommunicator.start();
+        jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = new OldHttpEngine(localHttpCommunicator, true);
       }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("BadgeUtils", 2, "getLimitCount e:" + localException.toString());
-        }
-        jdField_a_of_type_Int = 999;
-        i = jdField_a_of_type_Int;
-      }
+      return jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
     }
+    finally {}
   }
   
-  public static void a()
+  public static INetEngine b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BadgeUtils", 2, "enableBadge mobileqq");
-    }
-    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    BadgeUtilImpl.enableBadge(BaseApplicationImpl.sApplication);
-  }
-  
-  public static void a(Context paramContext, int paramInt)
-  {
-    if ((!jdField_a_of_type_Boolean) && (paramInt > 0)) {}
-    int i;
-    do
+    if (jdField_b_of_type_ComTencentMobileqqTransfileINetEngine == null) {}
+    try
     {
-      do
+      if (jdField_b_of_type_ComTencentMobileqqTransfileINetEngine == null)
       {
-        return;
-      } while (!a(paramContext));
-      i = a();
-      QLog.d("BadgeUtils_UnreadMonitor", 1, "setBadge limit: " + i + ", count: " + paramInt);
-      if (Looper.myLooper() == Looper.getMainLooper()) {
-        break;
+        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_b_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount, 128);
+        localHttpCommunicator.start();
+        jdField_b_of_type_ComTencentMobileqqTransfileINetEngine = new OldHttpEngine(localHttpCommunicator, true);
       }
-      BadgeUtilImpl.setLimitCount(i);
-      try
-      {
-        BadgeUtilImpl.setBadge(paramContext, paramInt);
-        return;
-      }
-      catch (Exception paramContext) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("BadgeUtilImpl", 2, "badge not support");
-    return;
-    ThreadManager.executeOnSubThread(new BadgeUtils.1(i, paramContext, paramInt));
-  }
-  
-  public static void a(Context paramContext, int paramInt, Notification paramNotification)
-  {
-    if (!c) {
-      if (!b)
-      {
-        c = CommonBadgeUtilImpl.isMIUI6();
-        b = true;
-        if (c) {}
-      }
-      else
-      {
-        return;
-      }
+      return jdField_b_of_type_ComTencentMobileqqTransfileINetEngine;
     }
-    QLog.d("BadgeUtils_UnreadMonitor", 1, "setMIUI6Badge count: " + paramInt);
-    BadgeUtilImpl.setLimitCount(a());
-    BadgeUtilImpl.setMIUI6Badge(paramContext, paramInt, paramNotification);
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return BadgeUtilImpl.isSupportBadge(paramContext);
-  }
-  
-  public static void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BadgeUtils", 2, "disableBadge mobileqq");
-    }
-    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    BadgeUtilImpl.disableBadge(BaseApplicationImpl.sApplication);
-    jdField_a_of_type_AndroidOsHandler.postDelayed(jdField_a_of_type_JavaLangRunnable, 2000L);
-  }
-  
-  public static void c()
-  {
-    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    finally {}
   }
 }
 

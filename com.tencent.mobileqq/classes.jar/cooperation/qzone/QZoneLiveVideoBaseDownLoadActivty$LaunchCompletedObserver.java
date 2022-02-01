@@ -8,13 +8,13 @@ import com.tencent.qphone.base.util.QLog;
 public class QZoneLiveVideoBaseDownLoadActivty$LaunchCompletedObserver
   extends BroadcastReceiver
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  private String mPluginID;
+  private String mPluginName;
   
   public QZoneLiveVideoBaseDownLoadActivty$LaunchCompletedObserver(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.mPluginName = paramString1;
+    this.mPluginID = paramString2;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -24,8 +24,8 @@ public class QZoneLiveVideoBaseDownLoadActivty$LaunchCompletedObserver
     if (QLog.isColorLevel()) {
       QLog.d("QZoneLiveVideoBaseDownLoadActivty", 1, "LaunchCompletedObserver.onReceive: " + paramContext + ", " + paramIntent);
     }
-    if ((this.b.equalsIgnoreCase(paramContext)) && (paramIntent != null)) {
-      this.jdField_a_of_type_CooperationQzoneQZoneLiveVideoBaseDownLoadActivty.a();
+    if ((this.mPluginID.equalsIgnoreCase(paramContext)) && (paramIntent != null)) {
+      this.this$0.doFinish();
     }
   }
 }

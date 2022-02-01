@@ -1,14 +1,25 @@
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+
 class sij
-  extends pmr
+  implements URLDrawable.URLDrawableListener
 {
-  sij(sii paramsii, String paramString)
-  {
-    super(paramString);
-  }
+  sij(sig paramsig) {}
   
-  public void a(pmk parampmk)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    parampmk.f();
+    if ((sig.a(this.a) != null) && (sig.a(this.a).getStatus() == 1) && ((sig.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    {
+      paramURLDrawable = (RegionDrawable)sig.a(this.a).getCurrDrawable();
+      sig.a(this.a, paramURLDrawable.getBitmap());
+    }
   }
 }
 

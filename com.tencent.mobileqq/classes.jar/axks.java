@@ -1,21 +1,25 @@
-import android.support.v4.app.Fragment;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
 public class axks
-  extends GestureDetector.SimpleOnGestureListener
+  extends RecyclerView.ItemDecoration
 {
-  public axks(MultiAIOItemFragment paramMultiAIOItemFragment) {}
+  private int a;
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public axks(int paramInt)
   {
-    Fragment localFragment = this.a.getParentFragment();
-    if ((localFragment != null) && ((localFragment instanceof MultiAIOFragment))) {
-      ((MultiAIOFragment)localFragment).a(this.a.getView(), paramMotionEvent);
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    this.a = paramInt;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.top = this.a;
+    paramRect.bottom = 0;
+    paramRect.left = (this.a / 2);
+    paramRect.right = (this.a / 2);
   }
 }
 

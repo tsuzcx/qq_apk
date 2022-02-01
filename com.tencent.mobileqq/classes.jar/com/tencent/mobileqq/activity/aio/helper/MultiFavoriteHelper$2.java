@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agvi;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import afri;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class MultiFavoriteHelper$2
   implements Runnable
 {
-  public MultiFavoriteHelper$2(agvi paramagvi) {}
+  public MultiFavoriteHelper$2(afri paramafri) {}
   
   public void run()
   {
-    QQToast.a(agvi.a(this.this$0).getApp(), 2131691992, 0).b(agvi.a(this.this$0).a());
+    QQToast.a(afri.a(this.this$0).getApp(), 2131692038, 0).b(afri.a(this.this$0).getTitleBarHeight());
   }
 }
 

@@ -1,33 +1,24 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.22.1;
+import com.tencent.biz.pubaccount.readinjoy.view.RainView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class slp
-  extends pfh
+  implements bcrf
 {
-  public slp(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public slp(RainView paramRainView, bcsi parambcsi) {}
   
-  public void a(int paramInt, SelectPositionModule.PositionData paramPositionData)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyTabFrame", 2, "onLocationChanged changeType = " + paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.b(this.jdField_a_of_type_Bcsi);
+    if ((RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).incrementAndGet() == RainView.a() * RainView.b() * RainView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).get()) && (RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView) != null))
+    {
+      RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).set(0);
+      RainView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).set(0);
+      RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("SpriteGLView", 2, "rain animation end");
+      }
     }
-    ReadinjoyTabFrame.a(this.a, paramInt, paramPositionData);
-  }
-  
-  public void j()
-  {
-    super.j();
-    if (ReadinjoyTabFrame.a(this.a) != null) {
-      ReadinjoyTabFrame.a(this.a).post(new ReadinjoyTabFrame.22.1(this));
-    }
-  }
-  
-  public void k()
-  {
-    QLog.d("ReadInJoyTabFrame", 2, "onHideChannel");
   }
 }
 

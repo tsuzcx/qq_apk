@@ -1,23 +1,22 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
 
 public class nre
-  implements bliz
+  extends Handler
 {
-  public nre(EqqAccountDetailActivity paramEqqAccountDetailActivity, oag paramoag, blir paramblir, int paramInt) {}
+  public nre(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b) {}
-    do
+    switch (paramMessage.what)
     {
+    default: 
       return;
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b(this.jdField_a_of_type_Oag, paramInt + 1);
-      this.jdField_a_of_type_Blir.dismiss();
-    } while ((!((oek)EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).getManager(88)).a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity))) || (this.jdField_a_of_type_Int == paramInt));
-    ((ofe)EqqAccountDetailActivity.p(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).a(88)).a(134243867, EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), null, null, null, paramInt + 1, false);
+    }
+    paramMessage = (Bundle)paramMessage.obj;
+    this.a.jdField_a_of_type_Zon.a(17, paramMessage, this.a.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
   }
 }
 

@@ -1,37 +1,83 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class binp
-  implements View.OnLayoutChangeListener
+public class binp
+  extends WebViewPlugin
 {
-  binp(binl parambinl, View paramView) {}
+  private BroadcastReceiver a = new binq(this);
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  private void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidGraphicsRect);
-    paramInt2 = this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidGraphicsRect.right - this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidGraphicsRect.left;
-    paramInt4 = this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidGraphicsRect.top;
-    if ((this.jdField_a_of_type_Binl.jdField_c_of_type_Int != paramInt2) || (this.jdField_a_of_type_Binl.d != paramInt4))
+    if ((paramBundle != null) && (!paramBundle.isEmpty()))
     {
-      ThreadManager.getUIHandler().post(this.jdField_a_of_type_Binl.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_Binl.jdField_c_of_type_Int = paramInt2;
-      this.jdField_a_of_type_Binl.d = paramInt4;
+      paramBundle = aqyt.a("ipc_qidian_video_chat", "", 0, paramBundle);
+      ardu.a().a(paramBundle);
     }
-    paramInt1 = paramInt3 - paramInt1;
-    if (paramInt1 != paramInt7 - paramInt5)
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QidianWpaWebviewPlugin", 2, paramString2 + paramString3 + paramVarArgs[0]);
+    }
+    boolean bool1 = bool2;
+    if (paramString2.equals("qidian"))
     {
-      paramView = (FrameLayout.LayoutParams)this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      if ((paramView.leftMargin > paramInt1 / 2) && (this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView != null) && (8 == this.jdField_a_of_type_Binl.jdField_c_of_type_AndroidViewView.getVisibility()))
+      bool1 = bool2;
+      if (!paramString3.equals("videochat")) {}
+    }
+    try
+    {
+      paramString3 = new JSONObject(paramVarArgs[0]);
+      paramJsBridgeListener = paramString3.optString("request_type");
+      paramString1 = paramString3.optString("uin");
+      paramString2 = paramString3.optString("sigt");
+      paramString3 = paramString3.optString("nickname");
+      paramVarArgs = new Bundle();
+      paramVarArgs.putString("request_type", paramJsBridgeListener);
+      paramVarArgs.putString("uin", paramString1);
+      paramVarArgs.putString("sigt", paramString2);
+      paramVarArgs.putString("nickname", paramString3);
+      a(paramVarArgs);
+      bool1 = true;
+    }
+    catch (Exception paramJsBridgeListener)
+    {
+      do
       {
-        paramView.leftMargin = (paramInt1 - this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView.getWidth());
-        this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView.setLayoutParams(paramView);
-      }
+        bool1 = bool2;
+      } while (!QLog.isColorLevel());
+      QLog.d("QidianWpaWebviewPlugin", 2, "handleJsRequest ", paramJsBridgeListener);
     }
-    this.jdField_a_of_type_Binl.jdField_a_of_type_Int = paramInt1;
+    return bool1;
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    Activity localActivity = this.mRuntime.a();
+    if (localActivity != null)
+    {
+      IntentFilter localIntentFilter = new IntentFilter("com.tencent.mobileqq.qidian.openactionsheet");
+      localActivity.registerReceiver(this.a, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+    }
+    super.onCreate();
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    Activity localActivity = this.mRuntime.a();
+    if (localActivity != null) {
+      localActivity.unregisterReceiver(this.a);
+    }
   }
 }
 

@@ -1,11 +1,14 @@
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import java.util.ArrayList;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
-public abstract interface bjxx
+public class bjxx
+  extends ThreadLocal<Boolean>
 {
-  public abstract void a(String paramString);
+  public bjxx(XRecyclerView paramXRecyclerView) {}
   
-  public abstract void a(ArrayList<ApkUpdateDetail> paramArrayList);
+  protected Boolean a()
+  {
+    return Boolean.valueOf(false);
+  }
 }
 
 

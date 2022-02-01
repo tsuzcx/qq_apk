@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
+import amtj;
 import android.text.TextUtils;
-import anzj;
-import bkds;
+import bijd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
@@ -74,7 +74,7 @@ public class VoIPJsPlugin
     for (;;)
     {
       return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
-      paramJsRuntime.evaluateCallbackJs(paramInt, ApiUtil.wrapCallbackFail(paramString1, (JSONObject)localObject2, anzj.a(2131715640)).toString());
+      paramJsRuntime.evaluateCallbackJs(paramInt, ApiUtil.wrapCallbackFail(paramString1, (JSONObject)localObject2, amtj.a(2131715874)).toString());
       QLog.e("[mini] VoIPJsPlugin", 1, "参数错误 " + paramString2);
       continue;
       if ("joinVoIPChat".equals(paramString1))
@@ -138,7 +138,7 @@ public class VoIPJsPlugin
   
   public void onCreate(BaseJsPluginEngine paramBaseJsPluginEngine)
   {
-    bkds.a().a(BaseApplicationImpl.getContext(), true);
+    bijd.a().a(BaseApplicationImpl.getContext(), true);
     super.onCreate(paramBaseJsPluginEngine);
   }
   
@@ -151,7 +151,7 @@ public class VoIPJsPlugin
     try
     {
       localJSONObject.put("errCode", 2);
-      localJSONObject.put("errMsg", anzj.a(2131715639));
+      localJSONObject.put("errMsg", amtj.a(2131715873));
       JsRuntime localJsRuntime = this.jsPluginEngine.getServiceRuntime();
       if (this.isGameRuntime) {
         localJsRuntime = this.cacheJsRuntime;

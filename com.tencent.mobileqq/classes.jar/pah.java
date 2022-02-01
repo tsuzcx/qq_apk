@@ -1,31 +1,20 @@
-import androidx.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
-public class pah<V>
+public class pah
+  extends RecyclerView.ViewHolder
 {
-  private V a;
+  public View a;
+  public TextView a;
+  public TextView b;
   
-  public pah(V paramV)
+  public pah(pae parampae, View paramView)
   {
-    this.a = paramV;
-  }
-  
-  public V a()
-  {
-    return this.a;
-  }
-  
-  public void a(V paramV)
-  {
-    this.a = paramV;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    if (this.a != null) {
-      return this.a.toString();
-    }
-    return "null";
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379552));
+    this.b = ((TextView)paramView.findViewById(2131379553));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369938);
   }
 }
 

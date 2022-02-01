@@ -1,18 +1,25 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajxq
-  extends aojs
+  implements View.OnClickListener
 {
-  public ajxq(ContactsTroopAdapter paramContactsTroopAdapter) {}
+  public ajxq(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void onClick(View paramView)
   {
-    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
-    if (localBitmap != null) {
-      ContactsTroopAdapter.a(this.a, paramString, localBitmap);
+    TroopUnAccalimedRedPacketList.a(this.a, true);
+    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+      akgd.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.back", "", "");
     }
+    if (this.a.a != null) {
+      this.a.a.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,16 +1,30 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.os.Handler.Callback;
+import android.os.Message;
+import kotlin.Metadata;
 
-class tni
-  implements ViewFactory.FoundClickableViewListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"}, k=3, mv={1, 1, 16})
+final class tni
+  implements Handler.Callback
 {
-  tni(tnh paramtnh, BaseData paramBaseData, Context paramContext) {}
+  public static final tni a = new tni();
   
-  public void onFound(ViewBase paramViewBase)
+  public final boolean handleMessage(Message paramMessage)
   {
-    paramViewBase.setOnClickListener(new tnj(this));
+    if (paramMessage != null)
+    {
+      paramMessage = Integer.valueOf(paramMessage.what);
+      if (paramMessage != null) {
+        break label23;
+      }
+    }
+    for (;;)
+    {
+      return true;
+      paramMessage = null;
+      break;
+      label23:
+      if (paramMessage.intValue() != 1000) {}
+    }
   }
 }
 

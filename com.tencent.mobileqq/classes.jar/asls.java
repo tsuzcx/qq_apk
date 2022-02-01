@@ -1,35 +1,27 @@
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
-public abstract class asls
+public class asls
+  implements Cloneable
 {
-  public final EmoticonPanelController a;
+  public int a;
+  public CheckBox a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public FileInfo a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  public asls(EmoticonPanelController paramEmoticonPanelController)
-  {
-    this.a = paramEmoticonPanelController;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public abstract int[] a();
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void h() {}
-  
-  public void i() {}
-  
-  public void j() {}
-  
-  public void k() {}
+  public asls(aslr paramaslr) {}
 }
 
 

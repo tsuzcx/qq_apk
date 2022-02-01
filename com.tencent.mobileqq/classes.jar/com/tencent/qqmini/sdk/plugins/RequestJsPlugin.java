@@ -1,9 +1,11 @@
 package com.tencent.qqmini.sdk.plugins;
 
 import android.net.Uri;
+import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
 import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.utils.JSONUtil;
 import com.tencent.qqmini.sdk.core.utils.MiniappHttpUtil;
@@ -594,30 +596,8 @@ public class RequestJsPlugin
   @JsEvent({"wnsRequest"})
   public String wnsRequest(RequestEvent paramRequestEvent)
   {
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject(paramRequestEvent.jsonParams);
-      JSONObject localJSONObject1 = localJSONObject2.optJSONObject("header");
-      Object localObject = localJSONObject1;
-      if (localJSONObject1 == null) {
-        localObject = new JSONObject();
-      }
-      ((JSONObject)localObject).put("Referer", getRequestReferer());
-      localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-      if (localObject != null)
-      {
-        ((ChannelProxy)localObject).wnsCgiRequest(localJSONObject2, new RequestJsPlugin.3(this, paramRequestEvent));
-        return "";
-      }
-      callbackFail(paramRequestEvent, null, "do not support wnsRequest");
-      localObject = ApiUtil.wrapCallbackFail(paramRequestEvent.event, null, "do not support wnsRequest").toString();
-      return localObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      QMLog.e("[mini] http.RequestJsPlugin", paramRequestEvent.event + " exception:", localThrowable);
-    }
-    return ApiUtil.wrapCallbackFail(paramRequestEvent.event, null).toString();
+    ThreadManager.getSubThreadHandler().post(new RequestJsPlugin.3(this, paramRequestEvent));
+    return "";
   }
 }
 

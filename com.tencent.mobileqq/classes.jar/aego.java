@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
 
-public class aego
-  implements baey
+class aego
+  extends AccessibilityDelegateCompat
 {
-  public aego(ChatSettingForTroop paramChatSettingForTroop) {}
+  aego(aegn paramaegn) {}
   
-  public void a() {}
-  
-  public void a(String paramString)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    bdll.b(this.a.app, "grp_set", "", "", "grp_data", "grp_set_copy", 0, 0, paramString, "", "", "");
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramAccessibilityNodeInfoCompat.setSelected(true);
   }
 }
 

@@ -1,13 +1,50 @@
-import com.tencent.mobileqq.hiboom.HiBoomTextView;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.StylePagerAdapter;
-import com.tencent.mobileqq.widget.ProfileCardScrollImageView;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableContainer.DrawableContainerState;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.theme.BaseConstantState;
+import java.util.List;
 
-public class azza
+public abstract class azza
 {
-  public HiBoomTextView a;
-  public ProfileCardScrollImageView a;
+  public abstract List<azys> a(View paramView);
   
-  public azza(VipProfileCardPreviewActivity.StylePagerAdapter paramStylePagerAdapter) {}
+  void a(Drawable paramDrawable, List<azys> paramList, int paramInt)
+  {
+    if ((paramDrawable != null) && (paramDrawable.getConstantState() != null) && (paramList != null))
+    {
+      paramDrawable = paramDrawable.getConstantState();
+      if (!(paramDrawable instanceof BaseConstantState)) {
+        break label81;
+      }
+      paramList.add(new azys(paramInt, ((BaseConstantState)paramDrawable).skinData));
+      if (QLog.isColorLevel()) {
+        QLog.d("SpecialResourceNameGrab", 2, "getFileNameByConstantState BaseConstantState resourceNames -> " + paramList);
+      }
+    }
+    for (;;)
+    {
+      return;
+      label81:
+      if ((paramDrawable instanceof DrawableContainer.DrawableContainerState))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SpecialResourceNameGrab", 2, "getFileNameByConstantState DrawableContainerState");
+        }
+        paramDrawable = ((DrawableContainer.DrawableContainerState)paramDrawable).getChildren();
+        int j = paramDrawable.length;
+        int i = 0;
+        while (i < j)
+        {
+          Drawable localDrawable = paramDrawable[i];
+          if (localDrawable != null) {
+            a(localDrawable, paramList, paramInt);
+          }
+          i += 1;
+        }
+      }
+    }
+  }
 }
 
 

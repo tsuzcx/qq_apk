@@ -1,62 +1,10 @@
-import android.os.Bundle;
-import android.os.Process;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.data.MessageForPic;
 
 public class admx
-  extends QIPCModule
 {
-  private static admx a;
-  
-  public admx(String paramString)
-  {
-    super(paramString);
-  }
-  
-  public static admx a()
-  {
-    if (a == null) {}
-    try
-    {
-      a = new admx("HardCoderModule");
-      return a;
-    }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    EIPCResult localEIPCResult = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("HardCoder.QQManager", 2, "onCall action = " + paramString);
-    }
-    if (paramString.equals("start"))
-    {
-      paramInt = paramBundle.getInt("key_delay");
-      i = paramBundle.getInt("key_cpu");
-      j = paramBundle.getInt("key_io");
-      k = paramBundle.getInt("key_bind");
-      m = paramBundle.getInt("key_timeout");
-      n = paramBundle.getInt("key_scene");
-      l = paramBundle.getLong("key_action");
-      paramString = paramBundle.getString("key_tag");
-      localEIPCResult = EIPCResult.createResult(adms.a().a(paramInt, i, j, k, m, n, l, Process.myTid(), paramString), null);
-    }
-    while (!paramString.equals("stop"))
-    {
-      int i;
-      int j;
-      int k;
-      int m;
-      int n;
-      long l;
-      return localEIPCResult;
-    }
-    paramInt = paramBundle.getInt("key_code");
-    adms.a().a(paramInt);
-    return null;
-  }
+  public URLImageView a;
+  MessageForPic a;
 }
 
 

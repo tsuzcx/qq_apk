@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import agej;
+import amtj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -19,11 +19,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import anzj;
-import bcni;
-import bhez;
-import bhgr;
-import bhkv;
+import bbgk;
+import bfol;
+import bfuc;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
@@ -31,35 +29,39 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 import mqq.app.AppRuntime;
-import ocd;
+import odq;
 import org.json.JSONObject;
-import oyu;
-import ozr;
-import ozs;
-import pfa;
-import pfd;
-import pfh;
-import ppu;
-import pqk;
-import pra;
-import qjp;
-import qno;
-import qpr;
+import paa;
+import pax;
+import pay;
+import pgb;
+import pgw;
+import pkm;
+import pkp;
+import pkt;
+import pvc;
+import pwe;
+import pwu;
 import qps;
-import qpt;
-import qpu;
-import qpv;
-import qwt;
-import qxt;
-import sel;
-import ubg;
+import qtr;
+import qvu;
+import qvv;
+import qvw;
+import qvx;
+import qvy;
+import rdr;
+import rer;
+import slt;
+import uhv;
 
 public class ComponentHeaderPolymeric
   extends ComponentHeaderBase
@@ -72,7 +74,7 @@ public class ComponentHeaderPolymeric
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
   private ReadInJoyNickNameTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView;
-  protected pfh a;
+  protected pkt a;
   private boolean jdField_a_of_type_Boolean = true;
   private View jdField_b_of_type_AndroidViewView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -81,19 +83,19 @@ public class ComponentHeaderPolymeric
   public ComponentHeaderPolymeric(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Pfh = new qpv(this);
+    this.jdField_a_of_type_Pkt = new qvy(this);
   }
   
   public ComponentHeaderPolymeric(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Pfh = new qpv(this);
+    this.jdField_a_of_type_Pkt = new qvy(this);
   }
   
   public ComponentHeaderPolymeric(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Pfh = new qpv(this);
+    this.jdField_a_of_type_Pkt = new qvy(this);
   }
   
   private void a(int paramInt)
@@ -101,13 +103,13 @@ public class ComponentHeaderPolymeric
     if (paramInt == 1)
     {
       a(false);
-      QQToast.a(getContext(), anzj.a(2131701232), 0).a();
+      QQToast.a(getContext(), amtj.a(2131701467), 0).a();
     }
     while (paramInt != 2) {
       return;
     }
     a(true);
-    QQToast.a(getContext(), anzj.a(2131701237), 0).a();
+    QQToast.a(getContext(), amtj.a(2131701472), 0).a();
   }
   
   private void a(ArticleInfo paramArticleInfo, int paramInt)
@@ -117,12 +119,12 @@ public class ComponentHeaderPolymeric
     if (localObject != null) {
       ((SocializeFeedsInfo)localObject).h = paramInt;
     }
-    localObject = pfd.a();
+    localObject = pkp.a();
     long l = paramArticleInfo.mPolymericInfo.jdField_b_of_type_Long;
     if (paramArticleInfo.mPolymericInfo.e == 2) {}
     for (boolean bool = true;; bool = false)
     {
-      ((pfd)localObject).b(l, bool);
+      ((pkp)localObject).b(l, bool);
       ThreadManager.post(new ComponentHeaderPolymeric.5(this, paramArticleInfo, paramInt), 5, null, true);
       return;
     }
@@ -130,16 +132,16 @@ public class ComponentHeaderPolymeric
   
   private void a(BaseArticleInfo paramBaseArticleInfo)
   {
-    ocd.a(null, "CliOper", "", "", "0X8008F55", "0X8008F55", 0, 0, "", "", "", ozs.a(paramBaseArticleInfo.mPolymericInfo).toString(), false);
-    if (ozs.j(paramBaseArticleInfo))
+    odq.a(null, "CliOper", "", "", "0X8008F55", "0X8008F55", 0, 0, "", "", "", pay.a(paramBaseArticleInfo.mPolymericInfo).toString(), false);
+    if (pay.j(paramBaseArticleInfo))
     {
       BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramBaseArticleInfo.mGroupSubArticleList.get(0);
-      String str1 = ubg.a(getContext(), localBaseArticleInfo.mArticleID, localBaseArticleInfo.mAlgorithmID, 54, this.jdField_a_of_type_Sel.a(), localBaseArticleInfo.getInnerUniqueID(), localBaseArticleInfo.getVideoVid(), ubg.a(localBaseArticleInfo), localBaseArticleInfo.videoReportInfo);
-      String str2 = ubg.b(paramBaseArticleInfo.mChannelID);
-      ocd.a(null, "CliOper", "", String.valueOf(paramBaseArticleInfo.mPolymericInfo.jdField_b_of_type_Long), str2, str2, 0, 0, Long.toString(localBaseArticleInfo.mFeedId), String.valueOf(localBaseArticleInfo.mArticleID), Integer.toString(localBaseArticleInfo.mStrategyId), str1, false);
+      String str1 = uhv.a(getContext(), localBaseArticleInfo.mArticleID, localBaseArticleInfo.mAlgorithmID, 54, this.jdField_a_of_type_Slt.a(), localBaseArticleInfo.getInnerUniqueID(), localBaseArticleInfo.getVideoVid(), uhv.a(localBaseArticleInfo), localBaseArticleInfo.videoReportInfo);
+      String str2 = uhv.b(paramBaseArticleInfo.mChannelID);
+      odq.a(null, "CliOper", "", String.valueOf(paramBaseArticleInfo.mPolymericInfo.jdField_b_of_type_Long), str2, str2, 0, 0, Long.toString(localBaseArticleInfo.mFeedId), String.valueOf(localBaseArticleInfo.mArticleID), Integer.toString(localBaseArticleInfo.mStrategyId), str1, false);
       return;
     }
-    sel.a((ArticleInfo)paramBaseArticleInfo, this.jdField_a_of_type_Sel.a());
+    pgw.b((ArticleInfo)paramBaseArticleInfo, this.jdField_a_of_type_Slt.a());
   }
   
   private void a(AppRuntime paramAppRuntime, String paramString, ArticleInfo paramArticleInfo)
@@ -147,12 +149,12 @@ public class ComponentHeaderPolymeric
     if (QLog.isColorLevel()) {
       QLog.d("ComponentHeaderPolymeric", 2, "followUGCAccount followUin = " + paramString + ", followStatus = " + paramArticleInfo.mPolymericInfo.e + ", articleInfoID = " + paramArticleInfo.mArticleID);
     }
-    pra localpra = pfa.a().a();
+    pwu localpwu = pkm.a().a();
     paramAppRuntime = paramAppRuntime.getAccount();
     if (paramArticleInfo.mPolymericInfo.e != 2) {}
     for (boolean bool = true;; bool = false)
     {
-      localpra.a(paramAppRuntime, paramString, bool, paramArticleInfo.mPolymericInfo.c, new qpr(this, paramArticleInfo), 2);
+      localpwu.a(paramAppRuntime, paramString, bool, paramArticleInfo.mPolymericInfo.c, new qvu(this, paramArticleInfo), 2);
       return;
     }
   }
@@ -161,17 +163,17 @@ public class ComponentHeaderPolymeric
   {
     if (paramBoolean)
     {
-      this.c.setBackgroundResource(2130849338);
-      this.c.setText(anzj.a(2131701171));
+      this.c.setBackgroundResource(2130849249);
+      this.c.setText(amtj.a(2131701406));
       this.c.setTextColor(-2147483648);
       this.c.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
       return;
     }
-    this.c.setBackgroundResource(2130849337);
-    this.c.setText(anzj.a(2131701208));
+    this.c.setBackgroundResource(2130849248);
+    this.c.setText(amtj.a(2131701443));
     this.c.setTextColor(-1);
-    this.c.setCompoundDrawablePadding(agej.a(3.0F, getResources()));
-    this.c.setCompoundDrawablesWithIntrinsicBounds(2130849335, 0, 0, 0);
+    this.c.setCompoundDrawablePadding(AIOUtils.dp2px(3.0F, getResources()));
+    this.c.setCompoundDrawablesWithIntrinsicBounds(2130849246, 0, 0, 0);
   }
   
   private void b(AppRuntime paramAppRuntime, String paramString, ArticleInfo paramArticleInfo)
@@ -185,7 +187,7 @@ public class ComponentHeaderPolymeric
       if (paramArticleInfo.mPolymericInfo.e != 1) {
         break label131;
       }
-      pfa.a().a().a(paramAppRuntime.getAccount(), paramString, true, paramArticleInfo.mPolymericInfo.c, new qps(this, paramArticleInfo), 1);
+      pkm.a().a().a(paramAppRuntime.getAccount(), paramString, true, paramArticleInfo.mPolymericInfo.c, new qvv(this, paramArticleInfo), 1);
     }
     label131:
     while (paramArticleInfo.mPolymericInfo.e != 2)
@@ -197,12 +199,12 @@ public class ComponentHeaderPolymeric
       QLog.e("ComponentHeaderPolymeric", 2, "followPGCAccount fail, appInterface is null!");
       return;
     }
-    pfa.a().a().a(paramAppRuntime.getAccount(), paramString, false, paramArticleInfo.mPolymericInfo.c, new qpt(this, paramArticleInfo), 1);
+    pkm.a().a().a(paramAppRuntime.getAccount(), paramString, false, paramArticleInfo.mPolymericInfo.c, new qvw(this, paramArticleInfo), 1);
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560126, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560133, this, true);
   }
   
   public void a()
@@ -221,15 +223,15 @@ public class ComponentHeaderPolymeric
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131379163);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131376131));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376123));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131376126));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131376134));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376135));
-    this.c = ((TextView)paramView.findViewById(2131376125));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376127));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131376925);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131378933);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131375895));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375887));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131375890));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375898));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375899));
+    this.c = ((TextView)paramView.findViewById(2131375889));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375891));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131376679);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setOnClickListener(this);
@@ -241,7 +243,7 @@ public class ComponentHeaderPolymeric
     int j = 1;
     int i = 1;
     super.a(paramObject);
-    ArticleInfo localArticleInfo = ((ppu)paramObject).a();
+    ArticleInfo localArticleInfo = ((pvc)paramObject).a();
     Object localObject1;
     Object localObject2;
     if ((localArticleInfo != null) && (localArticleInfo.mPolymericInfo != null))
@@ -249,7 +251,7 @@ public class ComponentHeaderPolymeric
       if (localArticleInfo.mPolymericInfo.jdField_a_of_type_Long <= 0L) {
         break label417;
       }
-      localObject1 = ozr.a(localArticleInfo.mPolymericInfo.jdField_a_of_type_Long, true);
+      localObject1 = pax.a(localArticleInfo.mPolymericInfo.jdField_a_of_type_Long, true);
       localObject2 = localObject1;
       if (!TextUtils.isEmpty(localArticleInfo.mPolymericInfo.jdField_b_of_type_JavaLangString)) {
         localObject2 = (String)localObject1 + " " + localArticleInfo.mPolymericInfo.jdField_b_of_type_JavaLangString;
@@ -272,7 +274,7 @@ public class ComponentHeaderPolymeric
         this.jdField_a_of_type_Long = 0L;
         if (!TextUtils.isEmpty(localArticleInfo.mPolymericInfo.c))
         {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImage(ozs.a(localArticleInfo.mPolymericInfo.c));
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImage(pay.a(localArticleInfo.mPolymericInfo.c));
           localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
           if (localArticleInfo.mPolymericInfo.jdField_b_of_type_Int != 0) {
             break label957;
@@ -297,7 +299,7 @@ public class ComponentHeaderPolymeric
           QLog.d("ComponentHeaderPolymeric", 2, "articleInfo.mPolymericInfo = " + localArticleInfo.mPolymericInfo.toString());
         }
         return;
-        localObject1 = anzj.a(2131701190);
+        localObject1 = amtj.a(2131701425);
         break;
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
@@ -306,7 +308,7 @@ public class ComponentHeaderPolymeric
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText(localArticleInfo.mPolymericInfo.jdField_a_of_type_JavaLangString);
         this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
         this.jdField_a_of_type_Long = localArticleInfo.mPolymericInfo.jdField_b_of_type_Long;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageDrawable(bcni.a(this.jdField_a_of_type_Aoof, String.valueOf(this.jdField_a_of_type_Long), 1));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageDrawable(bbgk.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder, String.valueOf(this.jdField_a_of_type_Long), 1));
         continue;
         localObject2 = localArticleInfo.mPolymericInfo.jdField_a_of_type_JavaLangString;
         if (((String)localObject2).startsWith("#"))
@@ -316,8 +318,8 @@ public class ComponentHeaderPolymeric
             localObject1 = "# " + ((String)localObject2).substring(1);
           }
           localObject1 = new SpannableString((CharSequence)localObject1);
-          ((SpannableString)localObject1).setSpan(new ForegroundColorSpan(getResources().getColor(2131166863)), 0, 1, 33);
-          ((SpannableString)localObject1).setSpan(new ImageSpan(getContext(), 2130842880), 1, 2, 33);
+          ((SpannableString)localObject1).setSpan(new ForegroundColorSpan(getResources().getColor(2131166882)), 0, 1, 33);
+          ((SpannableString)localObject1).setSpan(new ImageSpan(getContext(), 2130842934), 1, 2, 33);
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText((CharSequence)localObject1);
         }
         for (;;)
@@ -331,9 +333,9 @@ public class ComponentHeaderPolymeric
           localObject2 = new ColorDrawable(0);
           ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
           ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
-          localObject1 = URLDrawable.getDrawable(ozs.a(localArticleInfo.mPolymericInfo.c), (URLDrawable.URLDrawableOptions)localObject1);
-          ((URLDrawable)localObject1).setTag(bhez.b(72, 72, bhgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.getContext(), 2.0F)));
-          ((URLDrawable)localObject1).setDecodeHandler(bhez.j);
+          localObject1 = URLDrawable.getDrawable(pay.a(localArticleInfo.mPolymericInfo.c), (URLDrawable.URLDrawableOptions)localObject1);
+          ((URLDrawable)localObject1).setTag(bfol.b(72, 72, DisplayUtil.dip2px(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.getContext(), 2.0F)));
+          ((URLDrawable)localObject1).setDecodeHandler(bfol.j);
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageDrawable((Drawable)localObject1);
           break;
           this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText(localArticleInfo.mPolymericInfo.jdField_a_of_type_JavaLangString);
@@ -345,10 +347,10 @@ public class ComponentHeaderPolymeric
         if ((localArticleInfo.mGroupSubArticleList != null) && (localArticleInfo.mGroupSubArticleList.size() > 0))
         {
           localObject1 = (BaseArticleInfo)localArticleInfo.mGroupSubArticleList.get(0);
-          if (((localObject1 instanceof ArticleInfo)) && (sel.o((ArticleInfo)localObject1)))
+          if (((localObject1 instanceof ArticleInfo)) && (pgb.o((ArticleInfo)localObject1)))
           {
             this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText(localArticleInfo.mPolymericInfo.jdField_a_of_type_JavaLangString);
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageDrawable(bcni.a(this.jdField_a_of_type_Aoof, String.valueOf(this.jdField_a_of_type_Long), 1));
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageDrawable(bbgk.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder, String.valueOf(this.jdField_a_of_type_Long), 1));
           }
           else
           {
@@ -392,13 +394,13 @@ public class ComponentHeaderPolymeric
     }
     label1263:
     label1275:
-    for (((LinearLayout.LayoutParams)localObject1).rightMargin = bhgr.a(getContext(), 12.0F);; ((LinearLayout.LayoutParams)localObject1).rightMargin = bhgr.a(getContext(), 0.0F))
+    for (((LinearLayout.LayoutParams)localObject1).rightMargin = DisplayUtil.dip2px(getContext(), 12.0F);; ((LinearLayout.LayoutParams)localObject1).rightMargin = DisplayUtil.dip2px(getContext(), 0.0F))
     {
       this.c.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      if (!(paramObject instanceof pqk)) {
+      if (!(paramObject instanceof pwe)) {
         break label1301;
       }
-      if ((((pqk)paramObject).e() != 56) || (((pqk)paramObject).jdField_b_of_type_Int == 0)) {
+      if ((((pwe)paramObject).e() != 56) || (((pwe)paramObject).jdField_b_of_type_Int == 0)) {
         break label1291;
       }
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
@@ -426,19 +428,19 @@ public class ComponentHeaderPolymeric
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
   }
   
-  public void a(qjp paramqjp)
+  public void a(qps paramqps)
   {
-    super.a(paramqjp);
+    super.a(paramqps);
   }
   
   public boolean a()
   {
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_Qno.a.a();
-    if ((localArticleInfo != null) && (localArticleInfo.mPolymericInfo != null) && ((this.jdField_a_of_type_Qno.a instanceof pqk)))
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Qtr.a.a();
+    if ((localArticleInfo != null) && (localArticleInfo.mPolymericInfo != null) && ((this.jdField_a_of_type_Qtr.a instanceof pwe)))
     {
-      pqk localpqk = (pqk)this.jdField_a_of_type_Qno.a;
+      pwe localpwe = (pwe)this.jdField_a_of_type_Qtr.a;
       int i = localArticleInfo.mPolymericInfo.jdField_a_of_type_Int;
-      if (((i == 9) || (i == 10) || (i == 11)) && (localpqk.jdField_a_of_type_Int == 56)) {
+      if (((i == 9) || (i == 10) || (i == 11)) && (localpwe.jdField_a_of_type_Int == 56)) {
         return true;
       }
       if (i == 10) {
@@ -450,25 +452,25 @@ public class ComponentHeaderPolymeric
   
   protected void d()
   {
-    AppRuntime localAppRuntime = ozs.a();
+    AppRuntime localAppRuntime = pay.a();
     ArticleInfo localArticleInfo;
     String str;
     if (localAppRuntime != null)
     {
       this.jdField_a_of_type_Boolean = false;
-      localArticleInfo = this.jdField_a_of_type_Qno.a.a();
-      if (!ubg.a(this.jdField_a_of_type_Qno.a.e())) {
+      localArticleInfo = this.jdField_a_of_type_Qtr.a.a();
+      if (!uhv.a(this.jdField_a_of_type_Qtr.a.e())) {
         break label157;
       }
       str = "0X800941D";
-      sel.a(localArticleInfo, str, str, this.jdField_a_of_type_Qno.a.e());
-      pfa.c(localArticleInfo);
+      pgw.a(localArticleInfo, str, str, this.jdField_a_of_type_Qtr.a.e());
+      pkm.c(localArticleInfo);
       str = String.valueOf(localArticleInfo.mPolymericInfo.jdField_b_of_type_Long);
       if ((localArticleInfo.mGroupSubArticleList == null) || (localArticleInfo.mGroupSubArticleList.size() <= 0)) {
         break label173;
       }
       BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)localArticleInfo.mGroupSubArticleList.get(0);
-      if ((!(localBaseArticleInfo instanceof ArticleInfo)) || (!sel.o((ArticleInfo)localBaseArticleInfo))) {
+      if ((!(localBaseArticleInfo instanceof ArticleInfo)) || (!pgb.o((ArticleInfo)localBaseArticleInfo))) {
         break label173;
       }
     }
@@ -491,29 +493,29 @@ public class ComponentHeaderPolymeric
   protected void e()
   {
     boolean bool = false;
-    Object localObject = ozs.a();
-    ArticleInfo localArticleInfo = (ArticleInfo)this.jdField_a_of_type_Qno.a.a().mGroupSubArticleList.get(0);
+    Object localObject = pay.a();
+    ArticleInfo localArticleInfo = (ArticleInfo)this.jdField_a_of_type_Qtr.a.a().mGroupSubArticleList.get(0);
     localObject = ((AppRuntime)localObject).getAccount();
     if (QLog.isColorLevel()) {
       QLog.d("ComponentHeaderPolymeric", 2, "followPGCAccount topicID = " + localArticleInfo.mPolymericInfo.f + ", followStatus = " + localArticleInfo.mPolymericInfo.e + ", articleInfoID = " + localArticleInfo.mArticleID);
     }
-    pra localpra = pfa.a().a();
+    pwu localpwu = pkm.a().a();
     String str = Long.toString(localArticleInfo.mPolymericInfo.f);
     if (localArticleInfo.mPolymericInfo.e != 2) {
       bool = true;
     }
-    localpra.a((String)localObject, str, bool, localArticleInfo.mPolymericInfo.c, new qpu(this, localArticleInfo), 3);
+    localpwu.a((String)localObject, str, bool, localArticleInfo.mPolymericInfo.c, new qvx(this, localArticleInfo), 3);
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    pfd.a().a(this.jdField_a_of_type_Pfh);
+    pkp.a().a(this.jdField_a_of_type_Pkt);
   }
   
   public void onClick(View paramView)
   {
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_Qno.a.a();
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Qtr.a.a();
     switch (paramView.getId())
     {
     }
@@ -528,18 +530,18 @@ public class ComponentHeaderPolymeric
       {
         a(localArticleInfo);
         break;
-        String str = oyu.g + bhkv.encodeToString(String.valueOf(localArticleInfo.mPolymericInfo.jdField_b_of_type_Long).getBytes(), 2);
-        ozs.a(getContext(), str);
+        String str = paa.g + bfuc.encodeToString(String.valueOf(localArticleInfo.mPolymericInfo.jdField_b_of_type_Long).getBytes(), 2);
+        pay.a(getContext(), str);
         continue;
-        str = oyu.k + bhkv.encodeToString(String.valueOf(localArticleInfo.mPolymericInfo.jdField_b_of_type_Long).getBytes(), 2);
-        ozs.a(getContext(), str);
+        str = paa.k + bfuc.encodeToString(String.valueOf(localArticleInfo.mPolymericInfo.jdField_b_of_type_Long).getBytes(), 2);
+        pay.a(getContext(), str);
         continue;
-        ozs.a(getContext(), localArticleInfo.mPolymericInfo.d);
+        pay.a(getContext(), localArticleInfo.mPolymericInfo.d);
       }
       if ((localArticleInfo.mPolymericInfo.e == 2) || (localArticleInfo.mPolymericInfo.e == 1)) {
         if (!this.jdField_a_of_type_Boolean)
         {
-          QQToast.a(getContext(), anzj.a(2131701191), 0).a();
+          QQToast.a(getContext(), amtj.a(2131701426), 0).a();
           if (QLog.isColorLevel()) {
             QLog.d("ComponentHeaderPolymeric", 2, "click when the button is disabled");
           }
@@ -559,7 +561,7 @@ public class ComponentHeaderPolymeric
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    pfd.a().b(this.jdField_a_of_type_Pfh);
+    pkp.a().b(this.jdField_a_of_type_Pkt);
   }
 }
 

@@ -93,7 +93,7 @@ public class TAVRhythmTimeEffectUtils
         localObject2 = localObject1;
         break;
         localObject1 = localObject2;
-        if (localCMTimeRange.getStart().equals(localObject2))
+        if (localCMTimeRange.getStart().equalsTo((CMTime)localObject2))
         {
           localArrayList.add(localTAVMovieTimeEffect);
           localObject1 = localCMTimeRange.getEnd();

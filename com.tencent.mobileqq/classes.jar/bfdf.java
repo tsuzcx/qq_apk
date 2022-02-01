@@ -1,31 +1,14 @@
-import android.os.Handler;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.20.1;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.20.2;
-
 public class bfdf
-  implements INetInfoHandler
 {
-  public bfdf(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public int a;
+  public String a;
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString)
+  bfdf(String paramString, int paramInt)
   {
-    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.20.1(this));
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.20.2(this));
-  }
-  
-  public void onNetWifi2None() {}
 }
 
 

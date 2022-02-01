@@ -1,16 +1,20 @@
-public abstract interface anej
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+
+public class anej
+  implements BusinessObserver
 {
-  public abstract String a(int paramInt, String paramString);
+  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle) {}
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(amxj paramamxj, long paramLong);
-  
-  public abstract void b(int paramInt, String paramString);
-  
-  public abstract void c(int paramInt, String paramString);
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBoolean, paramBundle.getInt("msgType", 0), paramBundle);
+  }
 }
 
 

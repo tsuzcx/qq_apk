@@ -1,17 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
 
-class augg
-  implements View.OnClickListener
+public abstract interface augg
 {
-  augg(aufz paramaufz) {}
+  public abstract RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt);
   
-  public void onClick(View paramView)
-  {
-    aunj.a(this.a.a, this.a.d());
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
 }
 
 

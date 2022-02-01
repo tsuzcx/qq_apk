@@ -1,16 +1,43 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
+import android.graphics.RectF;
+import com.tencent.mobileqq.text.QQText;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-final class bhgd
-  extends View.AccessibilityDelegate
+public final class bhgd
 {
-  bhgd(bhgf parambhgf) {}
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  public QQText a;
+  private List<RectF> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private List<QQText> b = new ArrayList();
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  private bhgd(QQText paramQQText)
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
-    if ((paramInt == 1) && (this.a != null)) {
-      this.a.onClick(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqTextQQText = paramQQText;
+  }
+  
+  private void a(RectF paramRectF, QQText paramQQText)
+  {
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+      } while (!paramRectF.equals((RectF)localIterator.next()));
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        this.jdField_a_of_type_JavaUtilList.add(paramRectF);
+        this.b.add(paramQQText);
+      }
+      return;
     }
   }
 }

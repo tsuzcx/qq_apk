@@ -1,6 +1,13 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.List;
+
 public abstract interface vyx
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(@Nullable vxd paramvxd, Error paramError);
+  
+  public abstract void a(@Nullable vxd paramvxd, @NonNull List<StoryVideoItem> paramList);
 }
 
 

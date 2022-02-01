@@ -1,16 +1,14 @@
-import android.widget.PopupWindow.OnDismissListener;
-
 class ovt
-  implements PopupWindow.OnDismissListener
+  extends owd
 {
-  ovt(ovs paramovs) {}
-  
-  public void onDismiss()
+  ovt(ouu paramouu, int paramInt)
   {
-    this.a.a(1.0F);
-    if (ovs.a(this.a) != null) {
-      ovs.a(this.a).a(ovs.a(this.a));
-    }
+    super(paramouu, null);
+  }
+  
+  void a(owg paramowg)
+  {
+    paramowg.onCommentCreate(false, null, null, this.jdField_a_of_type_Int);
   }
 }
 

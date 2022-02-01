@@ -1,74 +1,53 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
 
-class atxk
-  extends atxd
+public class atxk
+  extends atxg
 {
-  public atxk(atwy paramatwy)
+  private ImageView b;
+  private TextView d;
+  private TextView e;
+  
+  public atxk(Context paramContext, View paramView, ViewGroup paramViewGroup)
   {
-    super(paramatwy);
+    super(paramContext, paramView, paramViewGroup);
+    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559203, paramViewGroup, false);
+    if (paramContext != null) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramContext);
+    }
+    this.b = ((ImageView)paramContext.findViewById(2131368564));
+    this.d = ((TextView)paramContext.findViewById(2131379855));
+    this.e = ((TextView)paramContext.findViewById(2131379719));
   }
   
-  protected String a()
+  public void a(FeedsItemData paramFeedsItemData)
   {
-    return "StateChangeToOffWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (a("onResumeTrans")) {
+    super.a(paramFeedsItemData);
+    this.e.setText(paramFeedsItemData.title + "");
+    if (TextUtils.isEmpty(paramFeedsItemData.subTitle)) {
+      this.d.setVisibility(8);
+    }
+    for (;;)
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130846989);
+      localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130846989);
+      paramFeedsItemData = URLDrawable.getDrawable(paramFeedsItemData.coverImgUrl, localURLDrawableOptions);
+      this.b.setImageDrawable(paramFeedsItemData);
       return;
+      this.d.setVisibility(0);
+      this.d.setText(paramFeedsItemData.subTitle + "");
     }
-    atwy.a(this.jdField_a_of_type_Atwy, 9, 11);
-    atwy.a(this.jdField_a_of_type_Atwy, 9, 14, false);
-    a("StateUploadingWhenRecv");
-    this.jdField_a_of_type_Atxd = new atyf(this.jdField_a_of_type_Atwy);
-    this.jdField_a_of_type_Atwy.a(true, 0L);
-  }
-  
-  protected void a(int paramInt1, int paramInt2)
-  {
-    b(paramInt1, paramInt2);
-  }
-  
-  protected void a(int paramInt, String paramString)
-  {
-    if (a("onSenderUploadException")) {
-      return;
-    }
-    atwy.a(this.jdField_a_of_type_Atwy, 9, 12, true);
-    a("StateExcepInvalidWhenRecv");
-    this.jdField_a_of_type_Atxd = new atxo(this.jdField_a_of_type_Atwy);
-  }
-  
-  protected boolean a(int paramInt, String paramString, long paramLong)
-  {
-    if (a("onSenderUploadCompleted")) {
-      return false;
-    }
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-    localFileManagerEntity.Uuid = new String(paramString);
-    localFileManagerEntity.fProgress = 0.0F;
-    if ((aunj.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
-      this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
-    }
-    this.jdField_a_of_type_Atwy.a(paramLong, localFileManagerEntity.peerUin);
-    localFileManagerEntity.setCloudType(1);
-    atwy.a(this.jdField_a_of_type_Atwy, 1, 0, true);
-    a("StateGotoOffFileProcess");
-    this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
-    this.jdField_a_of_type_Atxd = new atxp(this.jdField_a_of_type_Atwy);
-    return true;
-  }
-  
-  protected void b()
-  {
-    if (a("onSenderCancelUpload")) {
-      return;
-    }
-    atwy.a(this.jdField_a_of_type_Atwy, 11, 9, true);
-    a("StateCancelUploadWhenRecv");
-    this.jdField_a_of_type_Atxd = new atxg(this.jdField_a_of_type_Atwy);
   }
 }
 

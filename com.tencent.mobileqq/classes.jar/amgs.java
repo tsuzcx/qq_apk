@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public class amgs
-  implements aabr<aagu>
+class amgs
+  extends AVAudioCtrl.EnableMicCompleteCallback
 {
-  public amgs(ShoppingFragment paramShoppingFragment) {}
+  amgs(amgo paramamgo) {}
   
-  public void a(aabu paramaabu, aagu paramaagu)
+  public void onComplete(boolean paramBoolean, int paramInt)
   {
-    if (paramaabu.e()) {
-      ShoppingFragment.a(this.a, paramaagu);
+    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean, paramInt);
     }
-    while ((!paramaabu.d()) && (!paramaabu.c())) {
-      return;
-    }
-    ShoppingFragment.b(this.a, paramaagu);
   }
 }
 

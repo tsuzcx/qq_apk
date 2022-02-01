@@ -1,25 +1,76 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
-import com.tencent.biz.qqcircle.widgets.QCirclePYMKRecommendWidget;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import qqcircle.QQCircleDitto.StItemContainer;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.qphone.base.util.QLog;
 
 public class wax
-  implements View.OnClickListener
+  extends wat
 {
-  public wax(QCirclePYMKRecommendWidget paramQCirclePYMKRecommendWidget) {}
-  
-  public void onClick(View paramView)
+  public wax(ViewGroup paramViewGroup, int paramInt)
   {
-    if (QCirclePYMKRecommendWidget.a(this.a) != null)
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a(ShareGroupItem paramShareGroupItem)
+  {
+    String str;
+    Object localObject;
+    int i;
+    RelativeLayout.LayoutParams localLayoutParams;
+    if ((paramShareGroupItem == null) || (TextUtils.isEmpty(paramShareGroupItem.getName())))
     {
-      uyx.a(this.a.getContext(), uyw.a(QCirclePYMKRecommendWidget.a(this.a).urlInfo.get(), "personRecomListUrl"), null, -1);
-      vtn.a(29, 2, QCirclePYMKRecommendWidget.a(this.a), this.a.d());
-      vud.a().a(new vuf().a("more").b("click").a(this.a.a()).a(QCirclePYMKRecommendWidget.a(this.a).mDataPosition));
+      str = amtj.a(2131713036);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      localObject = (xck)vux.a(24);
+      i = this.jdField_a_of_type_AndroidWidgetImageView.getContext().getResources().getDimensionPixelSize(2131298513);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      if (localLayoutParams != null) {
+        break label116;
+      }
+      localLayoutParams = new RelativeLayout.LayoutParams(i, i);
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      label91:
+      if (paramShareGroupItem != null) {
+        break label131;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(((xck)localObject).a());
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    label116:
+    do
+    {
+      return;
+      str = paramShareGroupItem.getName();
+      break;
+      localLayoutParams.width = i;
+      localLayoutParams.height = i;
+      break label91;
+      localObject = ((xck)localObject).a(paramShareGroupItem.headerUnionIdList, str);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    } while (!QLog.isColorLevel());
+    label131:
+    paramShareGroupItem = new StringBuilder("nickname = ").append(str).append(", headerUnionIdList = ").append(paramShareGroupItem.headerUnionIdList);
+    QLog.e("zivonxxx", 2, "ShareGroupViewHolder: " + paramShareGroupItem.toString());
+  }
+  
+  public void a(vxd paramvxd)
+  {
+    super.a(paramvxd);
+    this.itemView.setTag(paramvxd.a);
+    ShareGroupItem localShareGroupItem = ((xen)vux.a(7)).a(paramvxd.a);
+    a(localShareGroupItem);
+    if (localShareGroupItem == null) {
+      new wbr(paramvxd.a, String.valueOf(System.currentTimeMillis())).a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("zivonchen", 2, "ShareGroupViewHolder groupItem = " + localShareGroupItem + ", unionId = " + paramvxd.a);
+    }
   }
 }
 

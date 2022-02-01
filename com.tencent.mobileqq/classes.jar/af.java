@@ -6,6 +6,7 @@ import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,7 +31,7 @@ public class af
     } while ((((DLFileInfo)localObject3).a != 0) && (((DLFileInfo)localObject3).a != 3));
     for (int i = 1;; i = 0)
     {
-      anvu localanvu = (anvu)this.a.app.a(8);
+      amqd localamqd = (amqd)this.a.app.getBusinessHandler(8);
       if (i != 0)
       {
         if ((!DLFilesViewerActivity.a(this.a).isReportPause) && (DLFilesViewerActivity.a(this.a).getGroupType() == -2335))
@@ -41,7 +42,7 @@ public class af
         DLFilesViewerActivity.a(this.a).setPaused(true);
         if ((!DLFilesViewerActivity.a(this.a).isSingle()) && (DLFilesViewerActivity.a(this.a).getGroupType() != -2335))
         {
-          localanvu.a(DLFilesViewerActivity.a(this.a).getGroupId(), 0L, false);
+          localamqd.a(DLFilesViewerActivity.a(this.a).getGroupId(), 0L, false);
           DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
         }
       }
@@ -56,22 +57,22 @@ public class af
           localObject2 = (DataLineMsgRecord)((Iterator)localObject1).next();
           localObject3 = dr.a((DataLineMsgRecord)localObject2);
           if ((((DLFileInfo)localObject3).a == 0) || (((DLFileInfo)localObject3).a == 3)) {
-            localanvu.a(((DataLineMsgRecord)localObject2).groupId, ((DataLineMsgRecord)localObject2).sessionid, false);
+            localamqd.a(((DataLineMsgRecord)localObject2).groupId, ((DataLineMsgRecord)localObject2).sessionid, false);
           }
         }
         break;
-        if (bhnv.d(this.a))
+        if (NetworkUtil.isNetSupport(this.a))
         {
-          if ((aunj.a()) && (DLFilesViewerActivity.a(this.a).getFileTotalSize() > 3145728L))
+          if ((aszt.a()) && (DLFilesViewerActivity.a(this.a).getFileTotalSize() > 3145728L))
           {
             localObject1 = DLFilesViewerActivity.a(this.a).getFirstItem();
-            aunj.a(((DataLineMsgRecord)localObject1).isSendFromLocal(), this.a, new ag(this, (DataLineMsgRecord)localObject1, localanvu));
+            aszt.a(((DataLineMsgRecord)localObject1).isSendFromLocal(), this.a, new ag(this, (DataLineMsgRecord)localObject1, localamqd));
           }
           else
           {
             localObject1 = DLFilesViewerActivity.a(this.a).getFirstItem();
             if ((localObject1 != null) && (!((DataLineMsgRecord)localObject1).isSendFromLocal()) && (((DataLineMsgRecord)localObject1).strMoloKey != null)) {
-              localanvu.b(112);
+              localamqd.b(112);
             }
             DLFilesViewerActivity.a(this.a).setPaused(false);
             Iterator localIterator = DLFilesViewerActivity.a(this.a).values().iterator();
@@ -109,22 +110,22 @@ public class af
                   ((List)localObject3).add(Long.valueOf(localDataLineMsgRecord.sessionid));
                   localDataLineMsgRecord.fileMsgStatus = 0L;
                   i = DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid);
-                  this.a.app.a().a(i).c(localDataLineMsgRecord.msgId);
+                  this.a.app.getMessageFacade().getDatalineMessageManager(i).c(localDataLineMsgRecord.msgId);
                 }
                 localObject1 = localObject3;
               }
             }
             if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0)) {
-              localanvu.a((ArrayList)localObject2, true);
+              localamqd.a((ArrayList)localObject2, true);
             }
             if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
-              localanvu.a((List)localObject1);
+              localamqd.a((List)localObject1);
             }
             DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
           }
         }
         else {
-          auna.a(2131694008);
+          aszk.a(2131694108);
         }
       }
     }

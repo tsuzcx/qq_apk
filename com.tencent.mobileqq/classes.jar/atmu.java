@@ -1,22 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.forward.ForwardMultServerShare.2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class atmu
-  implements View.OnClickListener
+  implements ayeo
 {
-  public atmu(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  public atmu(ForwardMultServerShare.2 param2) {}
   
-  public void onClick(View paramView)
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
   {
-    this.a.h();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return null;
+  }
+  
+  public void onSend(ayep paramayep)
+  {
+    this.a.jdField_a_of_type_JavaUtilMap.put(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord, paramayep);
+    QLog.d(atms.a(), 1, new Object[] { "requestImageShare onSend result =", paramayep, ", isTimeOut=", Boolean.valueOf(atms.a(this.a.this$0)) });
+    if (this.a.jdField_a_of_type_JavaUtilMap.size() == atms.a(this.a.this$0).size())
+    {
+      atqa.b("KEY_STAGE_2_UPLOAD_IMAGE_MULT");
+      atms.a(this.a.this$0, this.a.jdField_a_of_type_JavaUtilMap);
+    }
+  }
+  
+  public void updateMsg(ayep paramayep)
+  {
+    if (paramayep != null) {
+      QLog.d(atms.a(), 1, "requestImageShare updateMsg info =" + paramayep);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atmu
  * JD-Core Version:    0.7.0.1
  */

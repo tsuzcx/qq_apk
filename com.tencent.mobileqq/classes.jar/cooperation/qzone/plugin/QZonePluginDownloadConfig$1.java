@@ -1,29 +1,28 @@
 package cooperation.qzone.plugin;
 
-import bdmc;
-import bnej;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
 
-public class QZonePluginDownloadConfig$1
+class QZonePluginDownloadConfig$1
   implements Runnable
 {
-  public QZonePluginDownloadConfig$1(bnej parambnej, Properties paramProperties, String paramString) {}
+  QZonePluginDownloadConfig$1(QZonePluginDownloadConfig paramQZonePluginDownloadConfig, Properties paramProperties, String paramString) {}
   
   public void run()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilProperties.entrySet().iterator();
+    Iterator localIterator = this.val$properties.entrySet().iterator();
     HashMap localHashMap = new HashMap();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       localHashMap.put(localEntry.getKey(), localEntry.getValue());
     }
-    bdmc.a(BaseApplicationImpl.getContext()).a(null, this.jdField_a_of_type_JavaLangString, true, 0L, 0L, localHashMap, null);
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(null, this.val$s, true, 0L, 0L, localHashMap, null);
   }
 }
 

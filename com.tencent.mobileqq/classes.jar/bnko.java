@@ -1,104 +1,188 @@
-import android.app.Activity;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.pluginsdk.IPluginActivity;
-import cooperation.qzone.QzonePluginProxyActivity;
-import mqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView.GLThread;
 
 public class bnko
 {
-  public static boolean a(Activity paramActivity)
+  private static String jdField_a_of_type_JavaLangString = "GLThreadManager";
+  private int jdField_a_of_type_Int;
+  private GLTextureView.GLThread jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
+  private boolean d;
+  
+  private void a()
   {
-    return a(paramActivity, new bnkp(paramActivity), 0);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Int = GLTextureView.a();
+      if (this.jdField_a_of_type_Int >= 131072) {
+        this.c = true;
+      }
+      this.jdField_a_of_type_Boolean = true;
+    }
   }
   
-  public static boolean a(Activity paramActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
+  public void a(GLTextureView.GLThread paramGLThread)
   {
-    if (paramActivity == null) {}
+    try
+    {
+      GLTextureView.GLThread.a(paramGLThread, true);
+      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread == paramGLThread) {
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread = null;
+      }
+      notifyAll();
+      return;
+    }
+    finally {}
+  }
+  
+  /* Error */
+  public void a(javax.microedition.khronos.opengles.GL10 paramGL10)
+  {
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_3
+    //   2: aload_0
+    //   3: monitorenter
+    //   4: aload_0
+    //   5: getfield 50	bnko:b	Z
+    //   8: ifne +65 -> 73
+    //   11: aload_0
+    //   12: invokespecial 52	bnko:a	()V
+    //   15: aload_1
+    //   16: sipush 7937
+    //   19: invokeinterface 58 2 0
+    //   24: astore_1
+    //   25: aload_0
+    //   26: getfield 33	bnko:jdField_a_of_type_Int	I
+    //   29: ldc 34
+    //   31: if_icmpge +23 -> 54
+    //   34: aload_1
+    //   35: ldc 60
+    //   37: invokevirtual 66	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   40: ifne +36 -> 76
+    //   43: iconst_1
+    //   44: istore_2
+    //   45: aload_0
+    //   46: iload_2
+    //   47: putfield 36	bnko:c	Z
+    //   50: aload_0
+    //   51: invokevirtual 47	java/lang/Object:notifyAll	()V
+    //   54: aload_0
+    //   55: getfield 36	bnko:c	Z
+    //   58: ifne +23 -> 81
+    //   61: iload_3
+    //   62: istore_2
+    //   63: aload_0
+    //   64: iload_2
+    //   65: putfield 68	bnko:d	Z
+    //   68: aload_0
+    //   69: iconst_1
+    //   70: putfield 50	bnko:b	Z
+    //   73: aload_0
+    //   74: monitorexit
+    //   75: return
+    //   76: iconst_0
+    //   77: istore_2
+    //   78: goto -33 -> 45
+    //   81: iconst_0
+    //   82: istore_2
+    //   83: goto -20 -> 63
+    //   86: astore_1
+    //   87: aload_0
+    //   88: monitorexit
+    //   89: aload_1
+    //   90: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	91	0	this	bnko
+    //   0	91	1	paramGL10	javax.microedition.khronos.opengles.GL10
+    //   44	39	2	bool1	boolean
+    //   1	61	3	bool2	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   4	43	86	finally
+    //   45	54	86	finally
+    //   54	61	86	finally
+    //   63	73	86	finally
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = this.d;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public boolean a(GLTextureView.GLThread paramGLThread)
+  {
+    if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread == paramGLThread) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread == null))
+    {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread = paramGLThread;
+      notifyAll();
+    }
     do
     {
-      return false;
-      if ((paramActivity instanceof BasePluginActivity)) {
-        return a((BasePluginActivity)paramActivity, paramQQPermissionCallback, paramInt);
-      }
-      if ((paramActivity instanceof QzonePluginProxyActivity)) {
-        return a((QzonePluginProxyActivity)paramActivity, paramQQPermissionCallback, paramInt);
-      }
-      if ((paramActivity instanceof BaseActivity)) {
-        return a((BaseActivity)paramActivity, paramQQPermissionCallback, paramInt);
-      }
-    } while (!(paramActivity instanceof Activity));
-    return b(paramActivity);
-  }
-  
-  public static boolean a(BasePluginActivity paramBasePluginActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
-  {
-    if (paramBasePluginActivity == null) {
-      return false;
+      return true;
+      a();
+    } while (this.c);
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread != null) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread.e();
     }
-    if ((Build.VERSION.SDK_INT >= 23) && ((paramBasePluginActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != 0) || (paramBasePluginActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)))
-    {
-      paramBasePluginActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
-      return false;
-    }
-    return true;
-  }
-  
-  private static boolean a(QzonePluginProxyActivity paramQzonePluginProxyActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
-  {
-    if (paramQzonePluginProxyActivity == null) {}
-    do
-    {
-      return false;
-      if ((Build.VERSION.SDK_INT < 23) || ((paramQzonePluginProxyActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) && (paramQzonePluginProxyActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0))) {
-        break;
-      }
-      paramQzonePluginProxyActivity = paramQzonePluginProxyActivity.a();
-    } while (paramQzonePluginProxyActivity == null);
-    paramQzonePluginProxyActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
     return false;
-    return true;
   }
   
-  private static boolean a(BaseActivity paramBaseActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
+  public void b(GLTextureView.GLThread paramGLThread)
   {
-    if (paramBaseActivity == null) {
-      return false;
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread == paramGLThread) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread = null;
     }
-    if ((Build.VERSION.SDK_INT >= 23) && ((paramBaseActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != 0) || (paramBaseActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)))
-    {
-      paramBaseActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
-      return false;
-    }
-    return true;
+    notifyAll();
   }
   
-  private static Activity b(Activity paramActivity)
+  /* Error */
+  public boolean b()
   {
-    Activity localActivity;
-    if (paramActivity == null) {
-      localActivity = null;
-    }
-    do
-    {
-      return localActivity;
-      localActivity = paramActivity;
-    } while (!(paramActivity instanceof BasePluginActivity));
-    return ((BasePluginActivity)paramActivity).getOutActivity();
-  }
-  
-  private static boolean b(Activity paramActivity)
-  {
-    if (paramActivity == null) {
-      return false;
-    }
-    if ((Build.VERSION.SDK_INT >= 23) && ((paramActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") != 0) || (paramActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") != 0)))
-    {
-      bhlq.b(b(paramActivity));
-      return false;
-    }
-    return true;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: invokespecial 52	bnko:a	()V
+    //   6: aload_0
+    //   7: getfield 36	bnko:c	Z
+    //   10: istore_1
+    //   11: iload_1
+    //   12: ifne +9 -> 21
+    //   15: iconst_1
+    //   16: istore_1
+    //   17: aload_0
+    //   18: monitorexit
+    //   19: iload_1
+    //   20: ireturn
+    //   21: iconst_0
+    //   22: istore_1
+    //   23: goto -6 -> 17
+    //   26: astore_2
+    //   27: aload_0
+    //   28: monitorexit
+    //   29: aload_2
+    //   30: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	31	0	this	bnko
+    //   10	13	1	bool	boolean
+    //   26	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	11	26	finally
   }
 }
 

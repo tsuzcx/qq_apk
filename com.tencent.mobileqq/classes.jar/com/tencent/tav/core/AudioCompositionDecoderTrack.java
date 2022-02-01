@@ -1,19 +1,19 @@
 package com.tencent.tav.core;
 
+import android.text.TextUtils;
 import com.tencent.tav.asset.AssetTrack;
 import com.tencent.tav.asset.AssetTrackSegment;
 import com.tencent.tav.asset.CompositionTrackSegment;
 import com.tencent.tav.coremedia.CMSampleBuffer;
+import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeMapping;
 import com.tencent.tav.coremedia.CMTimeRange;
-import com.tencent.tav.decoder.AudioDecoder;
 import com.tencent.tav.decoder.AudioDecoderTrack;
 import com.tencent.tav.decoder.AudioInfo;
 import com.tencent.tav.decoder.AudioMixer;
 import com.tencent.tav.decoder.DecoderAssetTrack;
 import com.tencent.tav.decoder.DecoderTrackSegment;
-import com.tencent.tav.decoder.IDecoder;
 import com.tencent.tav.decoder.IDecoder.DecodeType;
 import com.tencent.tav.decoder.IDecoderTrack;
 import com.tencent.tav.decoder.IDecoderTrack.SurfaceCreator;
@@ -76,10 +76,10 @@ public class AudioCompositionDecoderTrack
   
   private DecoderTrackSegment createDecoderTrackSegment(AssetTrack paramAssetTrack, CompositionTrackSegment paramCompositionTrackSegment)
   {
-    DecoderAssetTrack localDecoderAssetTrack = null;
+    Object localObject = null;
     if (!paramCompositionTrackSegment.isEmpty())
     {
-      localDecoderAssetTrack = new DecoderAssetTrack();
+      DecoderAssetTrack localDecoderAssetTrack = new DecoderAssetTrack();
       localDecoderAssetTrack.trackId = paramCompositionTrackSegment.getSourceTrackID();
       localDecoderAssetTrack.mediaType = paramAssetTrack.getMediaType();
       localDecoderAssetTrack.assetPath = paramCompositionTrackSegment.getSourcePath();
@@ -87,9 +87,15 @@ public class AudioCompositionDecoderTrack
       localDecoderAssetTrack.size = paramAssetTrack.getNaturalSize();
       localDecoderAssetTrack.frameRate = ((int)paramAssetTrack.getNominalFrameRate());
       localDecoderAssetTrack.preferredVolume = paramAssetTrack.getPreferredVolume();
+      localObject = localDecoderAssetTrack;
+      if (!TextUtils.isEmpty(localDecoderAssetTrack.assetPath))
+      {
+        localDecoderAssetTrack.sourceType = paramCompositionTrackSegment.getSourceType();
+        localObject = localDecoderAssetTrack;
+      }
     }
     paramAssetTrack = paramCompositionTrackSegment.getTimeMapping().getSource();
-    paramAssetTrack = new DecoderTrackSegment(new CMTimeRange(paramAssetTrack.getStart(), paramAssetTrack.getDuration()), localDecoderAssetTrack);
+    paramAssetTrack = new DecoderTrackSegment(new CMTimeRange(paramAssetTrack.getStart(), paramAssetTrack.getDuration()), localObject);
     paramAssetTrack.setScaledDuration(paramCompositionTrackSegment.getScaleDuration());
     return paramAssetTrack;
   }
@@ -101,87 +107,76 @@ public class AudioCompositionDecoderTrack
       int i;
       try
       {
-        if (Logger.LOG_VERBOSE) {
-          Logger.d("AudioCompositionDecoder", "doReadSample: start ");
-        }
+        Logger.v("AudioCompositionDecoder", "doReadSample: start ");
         if (this.decoderTrackList.isEmpty())
         {
           Logger.e("AudioCompositionDecoder", "doReadSample:[finish] decoderTrackList.isEmpty ");
-          localObject3 = new CMSampleBuffer(AudioDecoder.SAMPLE_TIME_UNSTART);
-          return localObject3;
+          localObject1 = new CMSampleBuffer(CMSampleState.fromError(-100L));
+          return localObject1;
         }
-        Object localObject4 = (AudioDecoderTrack)this.decoderTrackList.get(0);
-        localObject3 = ((AudioDecoderTrack)localObject4).readSample();
-        if (((CMSampleBuffer)localObject3).getTime().smallThan(IDecoder.SAMPLE_TIME_FINISH))
+        localObject3 = (AudioDecoderTrack)this.decoderTrackList.get(0);
+        Object localObject1 = ((AudioDecoderTrack)localObject3).readSample();
+        if (((CMSampleBuffer)localObject1).getState().getStateCode() < -1L)
         {
           Logger.e("AudioCompositionDecoder", "doReadSample:[failed]");
           continue;
         }
-        this._lastReadAudioBuffer = ((CMSampleBuffer)localObject3);
-        Object localObject1 = this._lastReadAudioBuffer.getSampleByteBuffer();
+        this._lastReadAudioBuffer = ((CMSampleBuffer)localObject1);
+        localObject1 = this._lastReadAudioBuffer.getSampleByteBuffer();
         if (this._lastReadAudioBuffer.getSampleByteBuffer() != null) {
-          break label399;
+          break label366;
         }
-        localObject1 = ((AudioDecoderTrack)localObject4).getEmptyAudioBuffer();
+        localObject1 = ((AudioDecoderTrack)localObject3).getEmptyAudioBuffer();
         if (localObject1 != null) {
           ((ByteBuffer)localObject1).position(0);
         }
         localObject1 = new CMSampleBuffer(this._lastReadAudioBuffer.getTime(), (ByteBuffer)localObject1);
         i = this.decoderTrackList.size() - 1;
         if (i <= 0) {
-          break label396;
+          break label363;
         }
-        localObject4 = (AudioDecoderTrack)this.decoderTrackList.get(i);
+        Object localObject4 = (AudioDecoderTrack)this.decoderTrackList.get(i);
         AudioCompositor localAudioCompositor = (AudioCompositor)this.audioCompositorMap.get(Integer.valueOf(((AudioDecoderTrack)localObject4).getTrackID()));
         if (localAudioCompositor == null)
         {
           Logger.e("AudioCompositionDecoder", "doReadSample: audioCompositorMap.get(decoderTrack.getTrackID(), return null!");
-          break label402;
+          break label369;
         }
-        if (Logger.LOG_VERBOSE) {
-          Logger.i("AudioCompositionDecoder", "doReadSample: readMergeSample " + i, new Object[0]);
-        }
+        Logger.v("AudioCompositionDecoder", "doReadSample: readMergeSample " + i);
         if (this.audioMix != null)
         {
           localObject3 = this.audioMix.getInputParametersWithTrackID(((AudioDecoderTrack)localObject4).getTrackID());
           localObject3 = localAudioCompositor.readMergeSample((AudioDecoderTrack)localObject4, (AudioMixInputParameters)localObject3, (CMSampleBuffer)localObject1);
-          if (Logger.LOG_VERBOSE) {
-            Logger.i("AudioCompositionDecoder", "doReadSample: readMergeSample finish " + i, new Object[0]);
-          }
+          Logger.v("AudioCompositionDecoder", "doReadSample: readMergeSample finish " + i);
           localObject1 = localObject3;
           if (localObject3 == null) {
-            break label402;
+            break label369;
           }
           localObject1 = localObject3;
-          if (!((CMSampleBuffer)localObject3).getTime().smallThan(IDecoder.SAMPLE_TIME_FINISH)) {
-            break label402;
+          if (((CMSampleBuffer)localObject3).getState().getStateCode() >= -1L) {
+            break label369;
           }
           localObject1 = localObject3;
-          localObject3 = localObject1;
-          if (!Logger.LOG_VERBOSE) {
-            continue;
-          }
           localObject4 = new StringBuilder().append("doReadSample:[success]  ");
           if (localObject1 != null) {
-            break label388;
+            break label355;
           }
           localObject3 = null;
-          Logger.d("AudioCompositionDecoder", localObject3);
-          localObject3 = localObject1;
+          Logger.v("AudioCompositionDecoder", localObject3);
           continue;
         }
         localObject3 = null;
       }
       finally {}
       continue;
-      label388:
+      label355:
       Object localObject3 = localObject2.getTime();
       continue;
-      label396:
+      label363:
       continue;
-      label399:
+      label366:
       continue;
-      label402:
+      label369:
       i -= 1;
     }
   }
@@ -295,9 +290,7 @@ public class AudioCompositionDecoderTrack
   
   public void asyncReadNextSample(CMTime arg1)
   {
-    if (Logger.LOG_VERBOSE) {
-      Logger.d("AudioCompositionDecoder", "asyncReadNextSample: " + ???);
-    }
+    Logger.v("AudioCompositionDecoder", "asyncReadNextSample: " + ???);
     if (AudioCompositionDecoderTrack.DecoderThread.access$100(this.decoderThread) == null) {
       synchronized (AudioCompositionDecoderTrack.DecoderThread.access$000(this.decoderThread))
       {
@@ -367,7 +360,7 @@ public class AudioCompositionDecoderTrack
   public CMSampleBuffer readSample()
   {
     if (this.decoderTrackList.size() == 0) {
-      ??? = new CMSampleBuffer(AudioDecoder.SAMPLE_TIME_UNSTART);
+      ??? = new CMSampleBuffer(CMSampleState.fromError(-100L));
     }
     CMSampleBuffer localCMSampleBuffer2;
     do
@@ -402,17 +395,21 @@ public class AudioCompositionDecoderTrack
   {
     try
     {
-      Logger.e("AudioCompositionDecoder", "release: " + this);
-      Iterator localIterator = this.decoderTrackList.iterator();
-      while (localIterator.hasNext()) {
-        ((AudioDecoderTrack)localIterator.next()).release();
+      Logger.d("AudioCompositionDecoder", "release: " + this);
+      Iterator localIterator1 = this.decoderTrackList.iterator();
+      while (localIterator1.hasNext()) {
+        ((AudioDecoderTrack)localIterator1.next()).release();
       }
       this.decoderTrackList.clear();
     }
     finally {}
     this.audioTracks.clear();
     this.decoderThread.release();
-    Logger.e("AudioCompositionDecoder", "release: finish" + this);
+    Iterator localIterator2 = this.audioCompositorMap.values().iterator();
+    while (localIterator2.hasNext()) {
+      ((AudioCompositor)localIterator2.next()).release();
+    }
+    Logger.d("AudioCompositionDecoder", "release: finish" + this);
   }
   
   public void removeTrack(AssetTrack paramAssetTrack)
@@ -431,9 +428,7 @@ public class AudioCompositionDecoderTrack
   
   public CMSampleBuffer seekTo(CMTime paramCMTime, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (Logger.LOG_VERBOSE) {
-      Logger.d("AudioCompositionDecoder", "seekTo:[timeUs " + paramCMTime + "] [needRead " + paramBoolean1 + "] [quickSeek " + paramBoolean2 + "]");
-    }
+    Logger.v("AudioCompositionDecoder", "seekTo:[timeUs " + paramCMTime + "] [needRead " + paramBoolean1 + "] [quickSeek " + paramBoolean2 + "]");
     synchronized (AudioCompositionDecoderTrack.DecoderThread.access$000(this.decoderThread))
     {
       AudioCompositionDecoderTrack.DecoderThread.access$102(this.decoderThread, null);
@@ -441,9 +436,7 @@ public class AudioCompositionDecoderTrack
       if (((Iterator)???).hasNext())
       {
         AudioDecoderTrack localAudioDecoderTrack = (AudioDecoderTrack)((Iterator)???).next();
-        if (Logger.LOG_VERBOSE) {
-          Logger.i("AudioCompositionDecoder", "seekTo: " + localAudioDecoderTrack, new Object[0]);
-        }
+        Logger.v("AudioCompositionDecoder", "seekTo: " + localAudioDecoderTrack);
         localAudioDecoderTrack.seekTo(paramCMTime, false, paramBoolean2);
       }
     }
@@ -497,7 +490,7 @@ public class AudioCompositionDecoderTrack
   
   public void setVolume(float paramFloat)
   {
-    Logger.d("AudioCompositionDecoder", "setVolume: " + paramFloat);
+    Logger.i("AudioCompositionDecoder", "setVolume: " + paramFloat);
     if (this.audioMix != null)
     {
       Object localObject = this.audioMix.getInputParameters();
@@ -532,7 +525,7 @@ public class AudioCompositionDecoderTrack
     int i;
     if (!this.decoderStarted)
     {
-      Logger.e("AudioCompositionDecoder", "start: " + this);
+      Logger.d("AudioCompositionDecoder", "start: " + this);
       this.decoderThread.start();
       initAudioDecodeTracks(paramCMTimeRange);
       this.decoderStarted = true;

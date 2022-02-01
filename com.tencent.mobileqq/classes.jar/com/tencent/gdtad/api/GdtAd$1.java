@@ -1,23 +1,23 @@
 package com.tencent.gdtad.api;
 
-import acor;
-import acos;
-import acvc;
+import abkz;
+import abla;
+import abrl;
 import java.lang.ref.WeakReference;
 
 class GdtAd$1
   implements Runnable
 {
-  GdtAd$1(GdtAd paramGdtAd, WeakReference paramWeakReference, acor paramacor) {}
+  GdtAd$1(GdtAd paramGdtAd, WeakReference paramWeakReference, abkz paramabkz) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (GdtAd.access$000((GdtAd)this.jdField_a_of_type_JavaLangRefWeakReference.get()) == null) || (GdtAd.access$000((GdtAd)this.jdField_a_of_type_JavaLangRefWeakReference.get()).get() == null))
     {
-      acvc.d("GdtAd", "notifyFailedToLoad error");
+      abrl.d("GdtAd", "notifyFailedToLoad error");
       return;
     }
-    ((acos)GdtAd.access$000((GdtAd)this.jdField_a_of_type_JavaLangRefWeakReference.get()).get()).onAdFailedToLoad((GdtAd)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_Acor);
+    ((abla)GdtAd.access$000((GdtAd)this.jdField_a_of_type_JavaLangRefWeakReference.get()).get()).onAdFailedToLoad((GdtAd)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_Abkz);
   }
 }
 

@@ -11,7 +11,7 @@ import com.tencent.mtt.hippy.utils.LogUtils;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
-import ozs;
+import pay;
 
 @HippyNativeModule(name="TKDStatisticModule")
 public class TKDSearchStatModule
@@ -87,7 +87,7 @@ public class TKDSearchStatModule
       paramHippyMap = hippyMapToStringMap(paramHippyMap);
       paramHippyMap.remove("eventName");
     } while (paramHippyMap.size() <= 0);
-    paramHippyMap.put("qua", ozs.c());
+    paramHippyMap.put("qua", pay.d());
     paramHippyMap.put("qq", TKDAccountModule.getCurAccountInfo().qqNum);
     boolean bool1 = false;
     try

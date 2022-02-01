@@ -1,32 +1,16 @@
-import android.os.Looper;
-import android.util.Printer;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.BaseHandler;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
 
 public class bniy
-  implements Printer
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bniy(BaseHandler paramBaseHandler) {}
+  public bniy(DoodleEditView paramDoodleEditView, bnno parambnno) {}
   
-  public void println(String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((!BaseHandler.isBusy) && (!((Boolean)BaseHandler.isRegulated.get()).booleanValue())) {}
-    do
-    {
-      return;
-      if (!BaseHandler.access$000())
-      {
-        Looper.myLooper().setMessageLogging(null);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseHandler", 2, paramString);
-      }
-      if ((paramString != null) && (paramString.contains(">>>>> Dispatching to"))) {
-        BaseHandler.access$100(this.a);
-      }
-    } while ((paramString == null) || (!paramString.contains("<<<<< Finished to")));
-    BaseHandler.access$200(this.a);
+    this.jdField_a_of_type_Bnno.n = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.invalidate();
   }
 }
 

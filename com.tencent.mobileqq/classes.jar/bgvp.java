@@ -1,10 +1,19 @@
-import android.view.MotionEvent;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
 
-public abstract interface bgvp
+class bgvp
+  implements ValueCallback<Bundle>
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  bgvp(bgvo parambgvo) {}
   
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  public void a(Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("input-box-num", 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewWrapper", 2, new Object[] { "onFakeLoginRecognised detect ", Integer.valueOf(i), " input box" });
+    }
+  }
 }
 
 

@@ -1,120 +1,48 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class ayrz
-  extends BaseAdapter
-  implements aoog
+class ayrz
+  implements bghj
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ayqv jdField_a_of_type_Ayqv;
-  private NearbyPeopleCard jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard;
-  private List<aysk> jdField_a_of_type_JavaUtilList = new ArrayList();
+  ayrz(ayrt paramayrt) {}
   
-  public ayrz(Context paramContext, QQAppInterface paramQQAppInterface)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if (paramQQAppInterface != null) {
-      this.jdField_a_of_type_Ayqv = new ayqv(paramQQAppInterface, paramContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsProfileHeaderComponent", 2, "ZanDoubleDialog: onLeftClick: ");
     }
-  }
-  
-  public List<aysk> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(NearbyPeopleCard paramNearbyPeopleCard)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard = paramNearbyPeopleCard;
-  }
-  
-  public void a(List<aysk> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-    notifyDataSetChanged();
-  }
-  
-  public void b(List<aysk> paramList)
-  {
-    if (paramList != null)
+    if (ayrt.e(this.a).getIntent().hasExtra("troopUin")) {}
+    for (Object localObject = "1";; localObject = "0")
     {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      notifyDataSetChanged();
-    }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (this.jdField_a_of_type_Ayqv == null) {
-      return -1;
-    }
-    return this.jdField_a_of_type_Ayqv.a((aysk)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (this.jdField_a_of_type_Ayqv == null) {
-      localView = null;
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      aysk localaysk = (aysk)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      int i = this.jdField_a_of_type_Ayqv.a(localaysk);
-      ayqg localayqg = this.jdField_a_of_type_Ayqv.a(i);
-      localView = paramView;
-      if (localayqg != null)
-      {
-        localayqg.a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard);
-        localView = localayqg.a(localaysk, this.jdField_a_of_type_AndroidContentContext, paramView);
-      }
-      paramView = localView;
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    if (this.jdField_a_of_type_Ayqv == null) {
-      return 1;
-    }
-    return this.jdField_a_of_type_Ayqv.a();
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    if (!TextUtils.equals(paramString, this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin)) {
+      VasWebviewUtil.reportCommercialDrainage(ayrt.d(this.a).getCurrentAccountUin(), "thumbup", "click_getit", "", 1, 0, 0, "", (String)localObject, "");
+      localObject = new Intent(ayrt.f(this.a), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("fragmentStyle", 3);
+      ((Intent)localObject).putExtra("url", "https://m.vip.qq.com/freedom/dbzan.html?_nav_alpha=0");
+      ((Intent)localObject).putExtra("isTransparentTitle", true);
+      ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+      ayrt.g(this.a).startActivity((Intent)localObject);
       return;
     }
-    notifyDataSetChanged();
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsProfileHeaderComponent", 2, "ZanDoubleDialog: onRightClick: ");
+    }
+    if (ayrt.h(this.a).getIntent().hasExtra("troopUin")) {}
+    for (String str = "1";; str = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage(ayrt.e(this.a).getCurrentAccountUin(), "thumbup", "click_pay", "", 1, 0, 0, "", str, "");
+      bgge.a(ayrt.i(this.a), "mvip.n.a.dbzan_dbzan", "CJCLUBT", 3, false, true);
+      ayrt.a(this.a).set(true);
+      return;
+    }
   }
 }
 

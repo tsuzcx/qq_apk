@@ -1,21 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import com.tencent.tavcut.bean.TextEditorData;
+import com.tencent.tavcut.session.TAVCutSession;
 
-public class bmmy
-  implements DialogInterface.OnDismissListener
+class bmmy
+  implements bmmw
 {
-  public bmmy(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
+  bmmy(bmmx parambmmx, TextEditorData paramTextEditorData, TAVCutSession paramTAVCutSession) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(TextEditorData paramTextEditorData)
   {
-    if (this.a.a) {
-      QQIndividualityBridgeActivity.b(this.a);
+    if (paramTextEditorData != null)
+    {
+      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setContent(paramTextEditorData.getContent());
+      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setTextColor(paramTextEditorData.getTextColor());
+      this.jdField_a_of_type_ComTencentTavcutSessionTAVCutSession.updateTextSticker(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
+      if (bmmx.a(this.jdField_a_of_type_Bmmx) != null)
+      {
+        bmmx.a(this.jdField_a_of_type_Bmmx).a(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
+        bmbx.a("AEEditorTextPart", "[stickerInfo] update");
+      }
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
-    }
+    bmbx.d("AEEditorTextPart", "update sticker back null.");
   }
 }
 

@@ -1,15 +1,20 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
-import com.tencent.widget.AdapterView;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
 
-public class qdv
-  implements bljm
+class qdv
+  implements slh
 {
-  public qdv(NativeGridImageView paramNativeGridImageView) {}
+  qdv(qdu paramqdu) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a()
   {
-    NativeGridImageView.a(this.a, paramInt, NativeGridImageView.a(this.a).a());
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.startPlay();
+    this.a.jdField_a_of_type_Qdw.a(true);
+  }
+  
+  public void b()
+  {
+    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.stop();
+    this.a.jdField_a_of_type_Qdw.a(false);
   }
 }
 

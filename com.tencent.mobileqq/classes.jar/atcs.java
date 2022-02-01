@@ -1,122 +1,78 @@
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import android.os.Handler;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Intent;
+import android.os.AsyncTask;
+import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.extendfriend.utils.ExtendFriendVoicePlayer.2;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar.7;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.Iterator;
+import java.util.Set;
 
 public class atcs
+  extends AsyncTask<Object, Object, Integer>
 {
-  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new atct(this);
-  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private atcu jdField_a_of_type_Atcu;
-  private bhud jdField_a_of_type_Bhud;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
+  public atcs(SendBottomBar.7 param7) {}
   
-  public atcs(atcu paramatcu, BaseActivity paramBaseActivity)
+  protected Integer a(Object... paramVarArgs)
   {
-    this.jdField_a_of_type_Atcu = paramatcu;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("audio"));
-  }
-  
-  public void a()
-  {
-    try
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (this.jdField_a_of_type_Bhud != null)
-        {
-          this.jdField_a_of_type_Bhud.e();
-          this.jdField_a_of_type_Bhud = null;
-        }
-        b();
-        return;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ExtendFriendVoicePlayer", 1, "stop e=" + localException);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (!a(paramString)) {
-      ThreadManager.executeOnFileThread(new ExtendFriendVoicePlayer.2(this, paramString));
-    }
-  }
-  
-  public boolean a(String arg1)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())) {
-      QLog.e("ExtendFriendVoicePlayer", 2, "playLocal file but activity isFinish");
-    }
-    String str;
+    paramVarArgs = aslg.a();
+    Iterator localIterator = paramVarArgs.iterator();
+    int i = 0;
+    VFSFile localVFSFile;
     for (;;)
     {
-      return false;
-      str = ???;
-      try
+      FileInfo localFileInfo;
+      if (localIterator.hasNext())
       {
-        if (!auog.a(???))
+        localFileInfo = (FileInfo)localIterator.next();
+        if (!localFileInfo.b()) {}
+      }
+      else
+      {
+        SendBottomBar.a(this.a.this$0).a(paramVarArgs);
+        bcgg.a().a(true);
+        return Integer.valueOf(i);
+      }
+      if (!SendBottomBar.a(this.a.this$0).getFileManagerRSCenter().a(localFileInfo.c())) {
+        try
         {
-          str = berv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin(), MD5.toMD5(???), 23, null);
-          File localFile = new File(str);
-          if ((!localFile.exists()) || (localFile.length() <= 0L))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.e("ExtendFriendVoicePlayer", 2, String.format("playLocal file not exist : %s", new Object[] { ??? }));
-            return false;
+          localVFSFile = new VFSFile(localFileInfo.c());
+          if (!localVFSFile.exists()) {
+            QLog.e("delDownloadFiles<FileAssistant>", 1, "local file can scan, is not existed? file:" + localFileInfo.c());
           }
         }
-      }
-      catch (Exception ???)
-      {
-        QLog.e("ExtendFriendVoicePlayer", 1, "playLocal", ???);
-        return false;
+        catch (Exception localException)
+        {
+          QLog.e("delDownloadFiles<FileAssistant>", 1, "del file error:" + localException.toString());
+        }
       }
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    for (;;)
     {
-      if (this.jdField_a_of_type_Bhud != null)
-      {
-        this.jdField_a_of_type_Bhud.e();
-        this.jdField_a_of_type_Bhud = null;
-      }
-      this.jdField_a_of_type_Bhud = new bhud(str, new Handler(), 1);
-      this.jdField_a_of_type_Bhud.b();
-      this.jdField_a_of_type_Bhud.a(this.jdField_a_of_type_Atcu);
-      this.jdField_a_of_type_Bhud.b();
-      if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
-        this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 2);
-      }
-      return true;
+      break;
+      localVFSFile.delete();
+      SendBottomBar.a(this.a.this$0, SendBottomBar.a(this.a.this$0) + localException.a());
+      i += 1;
     }
   }
   
-  public void b()
+  protected void a(Integer paramInteger)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendVoicePlayer", 2, "abandonAudioFocus");
-    }
-    if (this.jdField_a_of_type_AndroidMediaAudioManager != null) {
-      this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
-    }
+    super.onPostExecute(paramInteger);
+    this.a.this$0.d();
+    paramInteger = new Intent();
+    paramInteger.putExtra("extra_delete_total_file_size", SendBottomBar.a(this.a.this$0));
+    SendBottomBar.a(this.a.this$0).setResult(-1, paramInteger);
+    aslg.b();
+    this.a.this$0.a();
+    SendBottomBar.a(this.a.this$0).n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atcs
  * JD-Core Version:    0.7.0.1
  */

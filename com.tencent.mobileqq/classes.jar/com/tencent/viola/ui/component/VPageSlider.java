@@ -319,6 +319,14 @@ public class VPageSlider
     }
   }
   
+  @VComponentProp(name="interruptEnable")
+  public void setInterruptEnable(Boolean paramBoolean)
+  {
+    if (getHostView() != null) {
+      ((VPageSliderView)getHostView()).setInterruptEnable(paramBoolean);
+    }
+  }
+  
   public void setOnJSSetIndexListener(VPageSlider.OnJSSetIndexListener paramOnJSSetIndexListener)
   {
     this.onJSSetIndexListener = paramOnJSSetIndexListener;

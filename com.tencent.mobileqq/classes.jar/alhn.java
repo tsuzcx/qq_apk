@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyRedPacketAnimMsg.3.1;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.applets.data.AppletItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class alhn
-  implements View.OnClickListener
+class alhn
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public alhn(SpecifyRedPacketAnimMsg.3.1 param1) {}
+  alhn(alhm paramalhm) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.a.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = ((Integer)paramCompoundButton.getTag()).intValue();
+    AppletItem localAppletItem = (AppletItem)this.a.a.get(i);
+    alhm.a(this.a).a(paramCompoundButton, paramBoolean, localAppletItem);
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

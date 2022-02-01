@@ -1,31 +1,16 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.AssistantSettingActivity.37.1;
+import com.tencent.widget.HeightAdaptableListView;
 
 public class acsf
-  implements acti
+  implements airi
 {
-  public acsf(GdtMotiveVideoFragment paramGdtMotiveVideoFragment) {}
-  
-  public Activity a()
-  {
-    return this.a.getActivity();
-  }
+  public acsf(AssistantSettingActivity paramAssistantSettingActivity) {}
   
   public void a()
   {
-    Activity localActivity = a();
-    if (localActivity != null) {
-      localActivity.finish();
-    }
-  }
-  
-  public void a(int paramInt, Intent paramIntent)
-  {
-    Activity localActivity = a();
-    if (localActivity != null) {
-      localActivity.setResult(paramInt, paramIntent);
-    }
+    this.a.a.post(new AssistantSettingActivity.37.1(this));
+    AssistantSettingActivity.d(this.a);
   }
 }
 

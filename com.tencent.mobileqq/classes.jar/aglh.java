@@ -1,18 +1,20 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3.3.1;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class aglh
-  extends blgm
+  extends agld
 {
-  aglh(agle paramagle) {}
+  public RelativeLayout a;
+  public BubbleImageView a;
+  public MessageProgressView a;
+  public RelativeLayout b;
+  public int e;
+  public int f;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public aglh(aglg paramaglg)
   {
-    if ((agle.a(this.a) != null) && (agle.a(this.a).isShown())) {
-      this.a.a.post(new ComboAnimation3.3.1(this));
-    }
+    super(paramaglg);
   }
 }
 

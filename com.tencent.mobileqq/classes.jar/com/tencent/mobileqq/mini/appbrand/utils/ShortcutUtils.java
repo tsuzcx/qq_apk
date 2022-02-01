@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.utils;
 
+import amtj;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
@@ -13,8 +14,7 @@ import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.support.annotation.RequiresApi;
-import anzj;
-import bhmq;
+import bfvo;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -67,11 +67,11 @@ public class ShortcutUtils
       if (hasRightsToShortCutInVIVO(paramBaseActivity)) {
         break;
       }
-      paramBaseActivity = ShortcutUtils.PermissionDialog.createPermissionDialog(paramBaseActivity, anzj.a(2131712880), anzj.a(2131712893), anzj.a(2131712895), new ShortcutUtils.1(paramBaseActivity), new ShortcutUtils.2());
+      paramBaseActivity = ShortcutUtils.PermissionDialog.createPermissionDialog(paramBaseActivity, amtj.a(2131713112), amtj.a(2131713125), amtj.a(2131713127), new ShortcutUtils.1(paramBaseActivity), new ShortcutUtils.2());
       paramBaseActivity.showCheckbox(false);
       paramBaseActivity.show();
     } while (paramAddShortcutCallback == null);
-    paramAddShortcutCallback.onAddResult(2, anzj.a(2131712874));
+    paramAddShortcutCallback.onAddResult(2, amtj.a(2131713106));
     return;
     doAddShortcut(paramBaseActivity, paramApkgInfo, paramAddShortcutCallback);
   }
@@ -91,7 +91,7 @@ public class ShortcutUtils
     }
     for (;;)
     {
-      return bhmq.a(getResizedBitmap(paramApkgInfo, i, i), (int)(i * 0.15D));
+      return bfvo.a(getResizedBitmap(paramApkgInfo, i, i), (int)(i * 0.15D));
     }
   }
   

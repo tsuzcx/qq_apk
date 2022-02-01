@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.jsp;
 
-import awjo;
-import awjp;
-import birb;
-import biru;
-import birv;
+import auws;
+import auwt;
+import bgxh;
+import bgxw;
+import bgxx;
 import com.tencent.smtt.sdk.WebView;
 
 public class X5ApiPlugin$1
   implements Runnable
 {
-  public X5ApiPlugin$1(awjo paramawjo, awjp paramawjp, WebView paramWebView) {}
+  public X5ApiPlugin$1(auws paramauws, auwt paramauwt, WebView paramWebView) {}
   
   public void run()
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (biru.a(this.jdField_a_of_type_Awjp.a))
+    if (bgxw.a(this.jdField_a_of_type_Auwt.a))
     {
-      birv localbirv = biru.a(this.jdField_a_of_type_Awjp.a);
+      bgxx localbgxx = bgxw.a(this.jdField_a_of_type_Auwt.a);
       localObject1 = localObject2;
-      if (localbirv != null) {
-        localObject1 = localbirv.b;
+      if (localbgxx != null) {
+        localObject1 = localbgxx.b;
       }
     }
-    birb.a(this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_Awjp.a, (String)localObject1);
+    bgxh.a(this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_Auwt.a, (String)localObject1);
   }
 }
 

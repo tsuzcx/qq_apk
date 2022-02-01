@@ -1,22 +1,22 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import beum;
-import beuo;
-import bevn;
-import bhmi;
-import bhnv;
-import bplg;
-import brhn;
-import brho;
+import bmqh;
+import boba;
+import bobb;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class QIMPtvTemplateManager$4
   implements Runnable
 {
-  public QIMPtvTemplateManager$4(brhn parambrhn, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
+  public QIMPtvTemplateManager$4(boba paramboba, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
   
   public void run()
   {
@@ -27,7 +27,7 @@ public class QIMPtvTemplateManager$4
     {
       return;
       this.a.usable = false;
-      int i = (int)(bhmi.a() / 1024.0F / 1024.0F);
+      int i = (int)(FileUtils.getAvailableInnernalMemorySize() / 1024.0F / 1024.0F);
       int j = (int)(this.a.sizeFree * 1024.0D);
       if (QLog.isColorLevel()) {
         QLog.d("QIMPtvTemplateManager", 2, "preDownloadTemplates getAvailableInnernalMemorySize: " + i + " mSizeFree: " + j);
@@ -40,18 +40,18 @@ public class QIMPtvTemplateManager$4
       }
       else
       {
-        beum localbeum = new beum();
-        localbeum.jdField_a_of_type_Beuq = new brho(this);
-        localbeum.jdField_a_of_type_JavaLangString = this.a.resurl;
-        localbeum.jdField_a_of_type_Int = 0;
-        localbeum.c = new File(brhn.a(), this.a.name).getPath();
-        localbeum.b = bhnv.a(bevn.a().a());
+        HttpNetReq localHttpNetReq = new HttpNetReq();
+        localHttpNetReq.mCallback = new bobb(this);
+        localHttpNetReq.mReqUrl = this.a.resurl;
+        localHttpNetReq.mHttpMethod = 0;
+        localHttpNetReq.mOutPath = new File(boba.a(), this.a.name).getPath();
+        localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
         try
         {
-          AppInterface localAppInterface = bplg.a();
+          AppInterface localAppInterface = bmqh.a();
           if (localAppInterface != null)
           {
-            ((PeakAppInterface)localAppInterface).getNetEngine(0).a(localbeum);
+            ((PeakAppInterface)localAppInterface).getNetEngine(0).sendReq(localHttpNetReq);
             if (QLog.isColorLevel())
             {
               QLog.i("QIMPtvTemplateManager", 2, "startDownloadFilterConfigZip, url: " + this.a.resurl);

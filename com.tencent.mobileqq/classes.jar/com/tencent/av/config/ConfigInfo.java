@@ -1,10 +1,9 @@
 package com.tencent.av.config;
 
 import android.content.Context;
-import bhml;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import lbj;
+import com.tencent.mobileqq.utils.HexUtil;
+import mwv;
 
 public class ConfigInfo
 {
@@ -24,17 +23,26 @@ public class ConfigInfo
     paramContext = Common.a(paramContext, Common.b);
     if (paramContext != null)
     {
-      paramContext = new String(paramContext);
-      int i = paramContext.indexOf('|');
+      String str2 = new String(paramContext);
+      int i = str2.indexOf('|');
       if (i == -1) {
-        return "";
+        paramContext = "";
       }
-      String str1 = paramContext.substring(0, i);
-      String str2 = paramContext.substring(i + 1);
-      lbj.c(TAG, "getSharpConfigPayloadFromFile FileName=" + Common.b + "| payloadBuf:" + paramContext + "| version=" + str1 + "| payload=" + str2);
-      return str2;
+      String str3;
+      String str1;
+      do
+      {
+        return paramContext;
+        str3 = str2.substring(0, i);
+        str1 = str2.substring(i + 1);
+        paramContext = str1;
+      } while (!mwv.c());
+      mwv.b(TAG, "getSharpConfigPayloadFromFile FileName=" + Common.b + "| payloadBuf:" + str2 + "| version=" + str3 + "| payload=" + str1);
+      return str1;
     }
-    lbj.c(TAG, "getSharpConfigPayloadFromFile payloadBuf NULL");
+    if (mwv.c()) {
+      mwv.b(TAG, "getSharpConfigPayloadFromFile payloadBuf NULL");
+    }
     return "";
   }
   
@@ -48,15 +56,15 @@ public class ConfigInfo
       paramContext = new String((byte[])localObject);
       i = paramContext.indexOf('|');
       if (i <= 0) {
-        break label150;
+        break label148;
       }
       localObject = paramContext.substring(0, i);
       String str = paramContext.substring(i + 1);
-      if (QLog.isDevelopLevel()) {
-        QLog.w(TAG, 1, "getSharpConfigVersionFromFile, payloadBufTmp[" + paramContext + "], version[" + (String)localObject + "], payload[" + str + "]");
+      if (mwv.b()) {
+        mwv.c(TAG, "getSharpConfigVersionFromFile, payloadBufTmp[" + paramContext + "], version[" + (String)localObject + "], payload[" + str + "]");
       }
     }
-    label150:
+    label148:
     do
     {
       try
@@ -66,13 +74,13 @@ public class ConfigInfo
       }
       catch (Exception localException)
       {
-        QLog.w(TAG, 1, "getSharpConfigVersionFromFile Exception, payloadBufTmp[" + paramContext + "]", localException);
+        mwv.a(TAG, "getSharpConfigVersionFromFile Exception, payloadBufTmp[" + paramContext + "]", localException);
         return 0;
       }
       i = j;
-    } while (!QLog.isDevelopLevel());
-    QLog.w(TAG, 1, "getSharpConfigVersionFromFile fail, payloadBufTmp[" + paramContext + "]");
-    bhml.b(TAG, localException);
+    } while (!mwv.b());
+    mwv.a(TAG, "getSharpConfigVersionFromFile fail, payloadBufTmp[" + paramContext + "]");
+    HexUtil.printHexStringEx(TAG, localException);
     return 0;
   }
   

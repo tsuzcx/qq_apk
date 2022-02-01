@@ -1,82 +1,19 @@
-import android.os.Handler;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.qqcircle.report.QCircleLpReportDc05504.1;
-import com.tencent.biz.qqcircle.report.QCircleLpReportDc05504.2;
-import feedcloud.FeedCloudCommon.Entry;
-import java.util.List;
-
-public class vtq
+class vtq
+  implements vwt
 {
-  private static void a(int paramInt1, int paramInt2) {}
+  vtq(vtp paramvtp) {}
   
-  public static void a(String paramString, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, vwp paramvwp)
   {
-    a(paramString, paramInt1, paramInt2, 0, "", "", "", "", "");
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    a(paramString, paramInt1, paramInt2, paramInt3, "", "", "", "", "", null, -1, -1);
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    a(paramString, paramInt1, paramInt2, paramInt3, "", "", "", "", "", null, paramInt4, -1);
-  }
-  
-  public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
-  {
-    a(paramString1, paramInt1, paramInt2, paramInt3, "", "", "", "", paramString2, null, -1, -1);
-  }
-  
-  public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, int paramInt4)
-  {
-    a(paramString1, paramInt1, paramInt2, paramInt3, "", "", "", "", paramString2, null, paramInt4, -1);
-  }
-  
-  public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    a(paramString1, paramInt1, paramInt2, paramInt3, paramString2, paramString3, paramString4, paramString5, paramString6, null, -1, -1);
-  }
-  
-  public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt4)
-  {
-    a(paramString1, paramInt1, paramInt2, paramInt3, paramString2, paramString3, paramString4, paramString5, paramString6, null, paramInt4, -1);
-  }
-  
-  public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, byte[] paramArrayOfByte, int paramInt4, int paramInt5)
-  {
-    if (paramInt4 == 0)
+    xvv.b("AddressDataProvider", "AddressLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramvwp != null))
     {
-      QLog.e("QCircleReportBean_QCircleLpReportDc05504", 1, "report invalid pageId," + paramInt4 + ",actionType:" + paramInt1 + ",subActionType:" + paramInt2);
-      a(paramInt1, paramInt2);
+      xvv.a("AddressDataProvider", "AddressLbsListener: onLbsUpdate, [longitude=%s, latitude=%s]", Integer.valueOf(paramvwp.b), Integer.valueOf(paramvwp.a));
+      this.a.a(paramvwp.b, paramvwp.a);
+      return;
     }
-    vtw.a().a().post(new QCircleLpReportDc05504.2(paramString1, paramInt1, paramInt2, paramInt3, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramInt4, paramInt5, paramArrayOfByte));
-  }
-  
-  public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, byte[] paramArrayOfByte, int paramInt4, int paramInt5)
-  {
-    a(paramString1, paramInt1, paramInt2, paramInt3, paramString2, paramString3, "", paramString4, paramString5, paramString6, paramArrayOfByte, paramInt4, paramInt5);
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, List<FeedCloudCommon.Entry> paramList, byte[] paramArrayOfByte, int paramInt4)
-  {
-    if (paramInt4 == 0)
-    {
-      QLog.e("QCircleReportBean_QCircleLpReportDc05504", 1, "report invalid pageId," + paramInt4 + ",actionType:" + paramInt1 + ",subActionType:" + paramInt2);
-      a(paramInt1, paramInt2);
-    }
-    vtw.a().a().post(new QCircleLpReportDc05504.1(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramList, paramArrayOfByte));
-  }
-  
-  private static int b()
-  {
-    return 5504;
-  }
-  
-  private static boolean b(int paramInt)
-  {
-    return (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
+    xvv.e("AddressDataProvider", "AddressLbsListener: onLbsUpdate, failed.");
+    this.a.a(false, null);
   }
 }
 

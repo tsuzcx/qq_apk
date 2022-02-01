@@ -1,357 +1,287 @@
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo.QQEmoConfigItem;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import mqq.app.MobileQQ;
 
 public class asld
-  extends QQSysAndEmojiResInfo
-  implements aslc
 {
-  private int a;
-  private int b;
+  public static boolean a;
+  public static boolean b;
+  public static boolean c = true;
+  private static boolean d = true;
+  private static boolean e = true;
+  QQAppInterface a;
   
-  public int a()
+  public asld(QQAppInterface paramQQAppInterface, atag paramatag, long paramLong)
   {
-    return this.jdField_a_of_type_Int;
+    this.a = paramQQAppInterface;
+    paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences("OfflineFileConfigV2", 0).edit();
+    paramQQAppInterface.clear();
+    Object localObject1 = (HashMap)paramatag.a().get("OnlinePreView");
+    Object localObject2 = ((HashMap)localObject1).keySet().iterator();
+    Object localObject3;
+    Object localObject4;
+    Object localObject5;
+    String str1;
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject3 = (String)((Iterator)localObject2).next();
+      localObject4 = (HashMap)((HashMap)localObject1).get(localObject3);
+      localObject5 = ((HashMap)localObject4).keySet().iterator();
+      while (((Iterator)localObject5).hasNext())
+      {
+        str1 = (String)((Iterator)localObject5).next();
+        String str2 = String.valueOf(((HashMap)localObject4).get(str1));
+        paramQQAppInterface.putString(("OnlinePreView" + (String)localObject3 + str1).toLowerCase(), str2);
+      }
+    }
+    paramatag = (HashMap)paramatag.a().get("OfflineConfig");
+    localObject1 = paramatag.keySet().iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (String)((Iterator)localObject1).next();
+      localObject3 = paramatag.get(localObject2);
+      if ((localObject3 instanceof HashMap))
+      {
+        localObject3 = (HashMap)localObject3;
+        localObject4 = ((HashMap)localObject3).keySet().iterator();
+        while (((Iterator)localObject4).hasNext())
+        {
+          localObject5 = (String)((Iterator)localObject4).next();
+          str1 = String.valueOf(((HashMap)localObject3).get(localObject5));
+          paramQQAppInterface.putString(("OfflineConfig" + (String)localObject2 + (String)localObject5).toLowerCase(), str1);
+        }
+      }
+      else if ((localObject3 instanceof String))
+      {
+        paramQQAppInterface.putString(("OfflineConfig" + (String)localObject2).toLowerCase(), (String)localObject3);
+      }
+    }
+    paramQQAppInterface.putLong("FileOnlinePreviewVersionKey", paramLong);
+    long l = bbko.a();
+    paramQQAppInterface.putLong("FMConfigUpdateLastTime", l);
+    paramQQAppInterface.commit();
+    QLog.i("FMConfig<FileAssistant>", 1, "commit Config data, time[" + l + "], ver[" + paramLong + "]");
   }
   
-  public int a(int paramInt)
+  public static int a()
   {
-    int j = -1;
-    int i = j;
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    int i;
+    try
     {
-      i = j;
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-        i = Integer.parseInt(((QQSysAndEmojiResInfo.QQEmoConfigItem)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).QSid);
+      i = Integer.parseInt(b(BaseApplicationImpl.getContext(), "TimAioCount"));
+      if ((i != 0) && (TextUtils.isEmpty(a()))) {
+        return 0;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        i = 0;
       }
     }
     return i;
   }
   
-  public Drawable a(int paramInt)
+  public static long a()
   {
-    int i = asle.a(paramInt);
+    long l1 = Long.parseLong(aszt.c("OfflineConfigFlowSize"));
+    try
+    {
+      long l2 = Long.parseLong(b(BaseApplicationImpl.getContext(), "FlowSize"));
+      l1 = l2;
+    }
+    catch (Exception localException)
+    {
+      label23:
+      break label23;
+    }
+    return l1 * 1024L + 1L;
+  }
+  
+  public static String a()
+  {
+    Object localObject1 = "";
+    try
+    {
+      localObject2 = b(BaseApplicationImpl.getContext(), "TimGuideUrl");
+      localObject1 = localObject2;
+    }
+    catch (Exception localException)
+    {
+      Object localObject2;
+      label14:
+      break label14;
+    }
+    localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = "https://mma.qq.com/tim/timoffice/office.html";
+    }
+    return localObject2;
+  }
+  
+  public static String a(Context paramContext, String paramString)
+  {
+    paramContext = paramContext.getSharedPreferences("OfflineFileConfigV2", 0).getString(paramString.toLowerCase(), null);
+    if ((paramContext != null) && (paramContext.length() > 0)) {
+      return paramContext;
+    }
+    return aszt.c(paramString);
+  }
+  
+  public static String a(Context paramContext, String paramString1, String paramString2)
+  {
+    return a(paramContext, "OnlinePreView", FileUtil.getExtension(paramString1).replace(".", ""), paramString2);
+  }
+  
+  public static String a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    return a(paramContext, paramString1 + paramString2 + paramString3);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  {
+    localFile = new File(paramQQAppInterface.getApplication().getFilesDir(), "FileOnlinePreviewConfigV2");
     for (;;)
     {
       try
       {
-        localURL1 = new URL("qqsys_emoji", "host_qqsys_static", String.format("s%d.png", new Object[] { Integer.valueOf(i) }));
-        localURL2 = localURL1;
-        localURL2 = localURL1;
+        if (!HttpDownloadUtil.download(paramQQAppInterface, paramString, localFile)) {
+          continue;
+        }
+        paramString = new atag();
       }
-      catch (MalformedURLException localMalformedURLException1)
+      catch (Exception paramQQAppInterface)
       {
-        try
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.d("QQSysFaceResInfo", 2, "getDrawable url:" + localURL1.toString());
-            localURL2 = localURL1;
-          }
-          return a(localURL2, null, false, String.valueOf(paramInt));
+        if (!QLog.isColorLevel()) {
+          continue;
         }
-        catch (MalformedURLException localMalformedURLException2)
-        {
-          URL localURL1;
-          URL localURL2;
-          break label90;
+        QLog.d("FMConfig<FileAssistant>", 2, "updateGuide with: " + QLog.getStackTraceString(paramQQAppInterface));
+        return;
+        if (!QLog.isColorLevel()) {
+          continue;
         }
-        localMalformedURLException1 = localMalformedURLException1;
-        localURL1 = null;
+        QLog.d("FMConfig<FileAssistant>", 2, "updateGuide download xml failed: " + paramString);
+        continue;
       }
-      label90:
-      if (QLog.isColorLevel())
+      finally
       {
-        QLog.d("QQSysFaceResInfo", 2, "getDrawable ,", localMalformedURLException1);
-        localURL2 = localURL1;
+        localFile.delete();
       }
-    }
-  }
-  
-  public String a(int paramInt)
-  {
-    String str2 = "";
-    String str1 = str2;
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      str1 = str2;
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-        str1 = ((QQSysAndEmojiResInfo.QQEmoConfigItem)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).QDes;
-      }
-    }
-    return str1;
-  }
-  
-  public void a()
-  {
-    Object localObject1 = a();
-    if (localObject1 != null)
-    {
-      JSONArray localJSONArray = ((JSONObject)localObject1).optJSONArray("sysface");
-      if (localJSONArray != null)
+      try
       {
-        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-          this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+        SAXParserFactory.newInstance().newSAXParser().parse(localFile, paramString);
+        new asld(paramQQAppInterface, paramString, paramLong);
+        localFile.delete();
+        return;
+      }
+      catch (Throwable paramQQAppInterface)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
         }
-        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        }
-        if (this.jdField_b_of_type_JavaUtilHashMap == null) {
-          this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-        }
-        if (this.c == null) {
-          this.c = new HashMap();
-        }
-        if (this.d == null) {
-          this.d = new HashMap();
-        }
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        this.jdField_b_of_type_JavaUtilHashMap.clear();
-        this.c.clear();
-        this.d.clear();
-        long l = System.currentTimeMillis();
-        int i = 0;
-        QQSysAndEmojiResInfo.QQEmoConfigItem localQQEmoConfigItem;
-        for (;;)
-        {
-          if (i >= localJSONArray.length()) {
-            break label437;
-          }
-          localObject1 = null;
-          try
-          {
-            localObject2 = localJSONArray.getJSONObject(i);
-            localObject1 = localObject2;
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              Object localObject2;
-              localJSONException.printStackTrace();
-            }
-          }
-          localQQEmoConfigItem = (QQSysAndEmojiResInfo.QQEmoConfigItem)awfy.a((JSONObject)localObject1, QQSysAndEmojiResInfo.QQEmoConfigItem.class);
-          try
-          {
-            int j = Integer.parseInt(localQQEmoConfigItem.AQLid);
-            int k = Integer.parseInt(localQQEmoConfigItem.QSid);
-            if (!TextUtils.isEmpty(localQQEmoConfigItem.EMCode))
-            {
-              String str = "[em]e" + localQQEmoConfigItem.EMCode + "[/em]";
-              localObject2 = localQQEmoConfigItem.QDes;
-              localObject1 = localObject2;
-              if (!TextUtils.isEmpty((CharSequence)localObject2))
-              {
-                localObject1 = localObject2;
-                if (((String)localObject2).equals("/吃瓜")) {
-                  localObject1 = "/chigua";
-                }
-              }
-              this.c.put(localObject1, str);
-              this.d.put(str, Integer.valueOf(j));
-            }
-            this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(j), localQQEmoConfigItem);
-            this.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(k), Integer.valueOf(j));
-            if (!a(localQQEmoConfigItem)) {
-              this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
-            }
-            if (j > this.jdField_a_of_type_Int) {
-              this.jdField_a_of_type_Int = j;
-            }
-            if (k > this.jdField_b_of_type_Int) {
-              this.jdField_b_of_type_Int = k;
-            }
-          }
-          catch (NumberFormatException localNumberFormatException)
-          {
-            for (;;)
-            {
-              QLog.d("QQSysFaceResInfo", 1, new Object[] { "error occur in sysface AQLid:", localQQEmoConfigItem.AQLid });
-            }
-          }
-          i += 1;
-        }
-        label437:
-        if (QLog.isColorLevel()) {
-          QLog.d("QQSysFaceResInfo", 2, new Object[] { "sysface configItem:", Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()), ", orderlist:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), ", maxLid:", Integer.valueOf(this.jdField_a_of_type_Int), ", maxSid:", Integer.valueOf(this.jdField_b_of_type_Int), ", costTime = [", Long.valueOf(System.currentTimeMillis() - l), "]" });
-        }
+        QLog.d("FMConfig<FileAssistant>", 2, "updateGuide with: " + QLog.getStackTraceString(paramQQAppInterface));
       }
     }
   }
   
-  public void a(int paramInt)
+  public static boolean a()
   {
-    a(a(paramInt), paramInt);
-    a(b(paramInt), paramInt);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    int i = a(paramInt1);
-    paramInt1 = i;
-    if (i == 0) {
-      paramInt1 = 1000;
-    }
-    bdll.b(null, "dc00898", "", "", "0X800A7A2", "0X800A7A2", paramInt1, 0, String.valueOf(paramInt2), "", "", "");
-  }
-  
-  public boolean a(int paramInt)
-  {
-    boolean bool = false;
-    String str = asky.a(2, String.format("/s%d.png", new Object[] { Integer.valueOf(paramInt) }));
-    if (!TextUtils.isEmpty(str)) {
-      bool = new File(str).exists();
-    }
+    boolean bool = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131694557), "qqsetting_auto_receive_pic_key", true);
+    QLog.i("FMConfig<FileAssistant>", 1, "PreloadThumb switch is[" + bool + "]");
     return bool;
   }
   
-  /* Error */
-  public Drawable b(int paramInt)
+  public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: iload_1
-    //   4: invokestatic 54	asle:a	(I)I
-    //   7: istore_2
-    //   8: new 56	java/net/URL
-    //   11: dup
-    //   12: ldc 58
-    //   14: ldc_w 269
-    //   17: ldc_w 271
-    //   20: iconst_1
-    //   21: anewarray 64	java/lang/Object
-    //   24: dup
-    //   25: iconst_0
-    //   26: iload_2
-    //   27: invokestatic 27	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   30: aastore
-    //   31: invokestatic 70	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   34: invokespecial 73	java/net/URL:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   37: astore_3
-    //   38: aload_3
-    //   39: astore 4
-    //   41: invokestatic 79	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   44: ifeq +35 -> 79
-    //   47: ldc 81
-    //   49: iconst_2
-    //   50: new 83	java/lang/StringBuilder
-    //   53: dup
-    //   54: invokespecial 84	java/lang/StringBuilder:<init>	()V
-    //   57: ldc_w 273
-    //   60: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   63: aload_3
-    //   64: invokevirtual 94	java/net/URL:toString	()Ljava/lang/String;
-    //   67: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   70: invokevirtual 95	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   73: invokestatic 99	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   76: aload_3
-    //   77: astore 4
-    //   79: aload 6
-    //   81: astore_3
-    //   82: iload_1
-    //   83: getstatic 276	begd:jdField_a_of_type_Int	I
-    //   86: if_icmpge +8 -> 94
-    //   89: iload_1
-    //   90: invokestatic 277	asle:a	(I)Landroid/graphics/drawable/Drawable;
-    //   93: astore_3
-    //   94: aload_0
-    //   95: aload 4
-    //   97: aload_3
-    //   98: iconst_1
-    //   99: iload_1
-    //   100: invokestatic 279	java/lang/Integer:toString	(I)Ljava/lang/String;
-    //   103: invokevirtual 105	asld:a	(Ljava/net/URL;Landroid/graphics/drawable/Drawable;ZLjava/lang/String;)Landroid/graphics/drawable/Drawable;
-    //   106: areturn
-    //   107: astore 5
-    //   109: aconst_null
-    //   110: astore_3
-    //   111: aload_3
-    //   112: astore 4
-    //   114: invokestatic 79	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   117: ifeq -38 -> 79
-    //   120: ldc 81
-    //   122: iconst_2
-    //   123: ldc_w 281
-    //   126: aload 5
-    //   128: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   131: aload_3
-    //   132: astore 4
-    //   134: goto -55 -> 79
-    //   137: astore 5
-    //   139: goto -28 -> 111
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	142	0	this	asld
-    //   0	142	1	paramInt	int
-    //   7	20	2	i	int
-    //   37	95	3	localObject1	Object
-    //   39	94	4	localObject2	Object
-    //   107	20	5	localMalformedURLException1	MalformedURLException
-    //   137	1	5	localMalformedURLException2	MalformedURLException
-    //   1	79	6	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   8	38	107	java/net/MalformedURLException
-    //   41	76	137	java/net/MalformedURLException
+    return paramQQAppInterface.getApp().getSharedPreferences("file_config_" + paramQQAppInterface.getCurrentUin(), 0).getBoolean("https_c2c_up", false);
   }
   
-  public void b()
+  public static long b()
   {
-    this.jdField_a_of_type_Aslb = new aslb(this);
-  }
-  
-  public int c()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {}
-    for (;;)
+    long l1 = Long.parseLong(aszt.c("OfflineConfigFlowTime"));
+    try
     {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Integer localInteger = (Integer)localIterator.next();
-        if ((localInteger.intValue() >= 260) && (!"-1".equals(((QQSysAndEmojiResInfo.QQEmoConfigItem)this.jdField_a_of_type_JavaUtilHashMap.get(localInteger)).QSid))) {
-          ((URLDrawable)a(localInteger.intValue())).downloadImediatly();
-        }
-      }
+      long l2 = Long.parseLong(b(BaseApplicationImpl.getContext(), "FlowTime"));
+      l1 = l2;
     }
+    catch (Exception localException)
+    {
+      label25:
+      break label25;
+    }
+    return l1 * 60L;
   }
   
-  public boolean c(int paramInt)
+  public static String b(Context paramContext, String paramString)
   {
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt)))) {
-      return "1".equals(((QQSysAndEmojiResInfo.QQEmoConfigItem)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).isStatic);
-    }
-    return begd.b[paramInt] == begd.jdField_a_of_type_ArrayOfInt[paramInt];
+    return a(paramContext, "OfflineConfig", paramString, "");
   }
   
-  public boolean d(int paramInt)
+  public static boolean b(QQAppInterface paramQQAppInterface)
   {
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt)))) {
-      return "1".equals(((QQSysAndEmojiResInfo.QQEmoConfigItem)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).isCMEmoji);
+    return paramQQAppInterface.getApp().getSharedPreferences("file_config_" + paramQQAppInterface.getCurrentUin(), 0).getBoolean("https_c2c_down", false);
+  }
+  
+  public static long c()
+  {
+    long l1 = Long.parseLong(aszt.c("OfflineConfigFtnThumbMaxSize"));
+    try
+    {
+      long l2 = Long.parseLong(b(BaseApplicationImpl.getContext(), "FtnThumbMaxSize"));
+      l1 = l2;
     }
-    return false;
+    catch (Exception localException)
+    {
+      label25:
+      break label25;
+    }
+    return l1 * 1024L;
+  }
+  
+  public static boolean c(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences("file_config_" + paramQQAppInterface.getCurrentUin(), 0).getBoolean("https_c2czip_down", false);
+  }
+  
+  public static boolean d(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences("file_config_" + paramQQAppInterface.getCurrentUin(), 0).getBoolean("https_c2c_thumb", false);
+  }
+  
+  public static boolean e(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences("file_config_" + paramQQAppInterface.getCurrentUin(), 0).getBoolean("https_disc_up", false);
+  }
+  
+  public static boolean f(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences("file_config_" + paramQQAppInterface.getCurrentUin(), 0).getBoolean("https_disc_down", false);
+  }
+  
+  public static boolean g(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences("file_config_" + paramQQAppInterface.getCurrentUin(), 0).getBoolean("https_disczip_down", false);
+  }
+  
+  public static boolean h(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences("file_config_" + paramQQAppInterface.getCurrentUin(), 0).getBoolean("https_disc_thumb", false);
   }
 }
 

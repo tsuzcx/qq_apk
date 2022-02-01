@@ -1,29 +1,44 @@
-import android.graphics.Bitmap;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import tencent.im.oidb.articlesummary.articlesummary.HotWordInfo;
+import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
 
-public abstract interface rdb
-  extends rdc
+public class rdb
 {
-  public abstract int a();
+  public List<rdc> a;
   
-  public abstract ViewGroup a();
+  public static rdb a(articlesummary.HotWordInfo paramHotWordInfo)
+  {
+    rdb localrdb = new rdb();
+    if ((paramHotWordInfo != null) && (paramHotWordInfo.rpt_hot_word_item.has()))
+    {
+      localrdb.a = new ArrayList(paramHotWordInfo.rpt_hot_word_item.size());
+      paramHotWordInfo = paramHotWordInfo.rpt_hot_word_item.get().iterator();
+      while (paramHotWordInfo.hasNext())
+      {
+        rdc localrdc = rdc.a((articlesummary.HotWordItem)paramHotWordInfo.next());
+        localrdb.a.add(localrdc);
+      }
+    }
+    return localrdb;
+  }
   
-  public abstract void a(float paramFloat, boolean paramBoolean);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract void a(List<rdu> paramList);
-  
-  public abstract int b();
-  
-  public abstract void b(long paramLong);
-  
-  public abstract void b(List<rdu> paramList);
+  public byte[] a()
+  {
+    articlesummary.HotWordInfo localHotWordInfo = new articlesummary.HotWordInfo();
+    if ((this.a != null) && (this.a.size() > 0))
+    {
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(((rdc)localIterator.next()).a());
+      }
+      localHotWordInfo.rpt_hot_word_item.set(localArrayList);
+    }
+    return localHotWordInfo.toByteArray();
+  }
 }
 
 

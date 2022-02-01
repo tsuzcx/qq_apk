@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.proteus.view;
 
 import android.content.Context;
 import android.widget.ImageView;
-import qbn;
+import qhl;
 
 public class ReadInJoyBiuButton$NativeBiuButton
   extends ImageView
 {
-  qbn a;
+  qhl a;
   
   public ReadInJoyBiuButton$NativeBiuButton(Context paramContext)
   {
@@ -30,9 +30,9 @@ public class ReadInJoyBiuButton$NativeBiuButton
     super.onDetachedFromWindow();
   }
   
-  public void setOnAttachedListener(qbn paramqbn)
+  public void setOnAttachedListener(qhl paramqhl)
   {
-    this.a = paramqbn;
+    this.a = paramqhl;
   }
 }
 

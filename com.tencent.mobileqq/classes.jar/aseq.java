@@ -1,37 +1,10 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.emosm.Client;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmassistant.appinfo.data.AppDetail;
 
-public class aseq
-  extends Handler
+public abstract interface aseq
 {
-  public aseq(Client paramClient, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      do
-      {
-        return;
-        this.a.onRespFromServer(paramMessage.getData());
-      } while (!QLog.isColorLevel());
-      QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_CLIENT_RESP");
-      return;
-      this.a.onPushMsgFromServer(paramMessage.getData());
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_SERVER_DOWNLOAD_STATE");
-  }
+  public abstract void a(boolean paramBoolean, AppDetail paramAppDetail);
 }
 
 

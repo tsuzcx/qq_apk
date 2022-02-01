@@ -1,18 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
+import android.view.View;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
-public final class yvz
-  implements Parcelable.Creator<EditTakePhotoSource>
+public class yvz
+  implements bjoe
 {
-  public EditTakePhotoSource a(Parcel paramParcel)
-  {
-    return new EditTakePhotoSource(paramParcel);
-  }
+  public yvz(QRDisplayActivity paramQRDisplayActivity, bjnw parambjnw) {}
   
-  public EditTakePhotoSource[] a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new EditTakePhotoSource[paramInt];
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      bcef.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.app, "CliOper", "", "", "0X800AEB6", "0X800AEB6", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.b(7);
+      continue;
+      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.b(8);
+      bcef.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.app, "CliOper", "", "", "0X800AEB7", "0X800AEB7", 0, 0, "", "", "", "");
+    }
   }
 }
 

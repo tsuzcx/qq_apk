@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.Elem;
-import tencent.im.msg.im_msg_body.TransElem;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adig
-  extends adic
+  implements View.OnClickListener
 {
-  public int a()
-  {
-    return 1000;
-  }
+  public adig(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  public void onClick(View paramView)
   {
-    new bcrt().a(paramList, paramList1, paramStringBuilder, paramMsg);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return paramElem.trans_elem_info.has();
+    if (!this.a.getActivity().isFinishing()) {
+      ForwardTroopListFragment.a(this.a).dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

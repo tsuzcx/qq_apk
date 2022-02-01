@@ -1,279 +1,274 @@
-import android.graphics.PointF;
-import android.graphics.Typeface;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.EffectConfigBase;
 import com.tencent.av.business.manager.zimu.ZimuItem;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Observable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class lir
+public class lir
+  extends EffectConfigBase<ZimuItem>
+  implements lgo
 {
-  private static lit a;
-  protected Typeface a;
-  protected VideoAppInterface a;
-  protected final List<liq> a;
-  protected lis a;
-  protected liu a;
-  protected lix a;
+  protected boolean a;
+  boolean b = false;
+  boolean c = false;
   
-  public lir(long paramLong, VideoAppInterface paramVideoAppInterface)
+  public lir(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_Lix = ((lix)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0));
-    paramVideoAppInterface = d();
-    this.jdField_a_of_type_Lix.a(paramLong, paramVideoAppInterface);
+    super(paramVideoAppInterface);
   }
   
-  public static PointF a(PointF paramPointF)
+  public static SharedPreferences a(Context paramContext)
   {
-    if (jdField_a_of_type_Lit == null) {
-      jdField_a_of_type_Lit = new lit();
-    }
-    a("static getSmallPointInBigScreen: " + paramPointF.x + "|" + paramPointF.y);
-    return jdField_a_of_type_Lit.a(paramPointF);
+    return paramContext.getSharedPreferences("qav_zimu", 4);
   }
   
-  public static String a()
+  public static void a(Context paramContext, int paramInt)
   {
-    if (jdField_a_of_type_Lit == null) {
-      jdField_a_of_type_Lit = new lit();
-    }
-    return jdField_a_of_type_Lit.a();
+    paramContext = a(paramContext).edit();
+    paramContext.putInt("qav_zimu_is_show", paramInt);
+    paramContext.commit();
   }
   
-  public static void a(int paramInt)
+  public static boolean a(VideoAppInterface paramVideoAppInterface)
   {
-    if (jdField_a_of_type_Lit == null) {
-      jdField_a_of_type_Lit = new lit();
-    }
-    a("getSmallScreenPositionType: " + paramInt);
-    jdField_a_of_type_Lit.a(paramInt);
+    ((lir)paramVideoAppInterface.a(0)).b();
+    return a(paramVideoAppInterface.getApp()).getInt("qav_zimu_is_show", 0) == 1;
   }
   
-  public static void a(int paramInt1, int paramInt2)
+  private boolean b(String paramString)
   {
-    if (jdField_a_of_type_Lit == null) {
-      jdField_a_of_type_Lit = new lit();
-    }
-    a("UpdateSmallScreenPosition: " + paramInt1 + "|" + paramInt2);
-    jdField_a_of_type_Lit.a(paramInt1, paramInt2);
-  }
-  
-  public static void a(String paramString)
-  {
-    if (paramString == null) {}
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ARZimuTask", 2, paramString);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    if (jdField_a_of_type_Lit == null) {
-      jdField_a_of_type_Lit = new lit();
-    }
-    jdField_a_of_type_Lit.a(paramString1, paramString2);
-  }
-  
-  private void a(lgi paramlgi, boolean paramBoolean)
-  {
-    Object localObject1 = null;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
-    Object localObject3;
-    while (localIterator.hasNext())
-    {
-      localObject3 = (liq)localIterator.next();
-      localObject2 = localObject1;
-      int j = i;
-      if (!((liq)localObject3).a.a())
+    boolean bool = true;
+    if (!TextUtils.isEmpty(paramString)) {
+      try
       {
-        localObject2 = localObject1;
-        j = i;
-        if (((liq)localObject3).a.jdField_a_of_type_JavaLangString.equals(paramlgi.jdField_a_of_type_JavaLangString))
-        {
-          j = 1;
-          localObject2 = localObject1;
-          if (localObject1 == null) {
-            localObject2 = localObject3;
-          }
-          ((liq)localObject3).a(paramlgi);
-          lbj.c("ARZimuTask", "updateTextInner " + paramlgi.jdField_a_of_type_JavaLangString + " onTextChanged info:" + paramlgi.jdField_a_of_type_JavaLangCharSequence);
+        paramString = new JSONObject(paramString);
+        if (!paramString.has("switch")) {
+          return bool;
         }
+        paramString = paramString.getString("switch");
+        lba.f("EffectZimuManager", "parse ZIMU:" + paramString);
+        if ((!TextUtils.isEmpty(paramString)) && (paramString.equalsIgnoreCase("off")))
+        {
+          a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), 0);
+          return true;
+        }
+        a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), 1);
+        return true;
       }
-      i = j;
-      localObject1 = localObject2;
-    }
-    Object localObject2 = localObject1;
-    if (i == 0)
-    {
-      localObject3 = a(paramlgi, paramBoolean);
-      localObject2 = localObject1;
-      if (localObject3 != null)
+      catch (JSONException paramString)
       {
-        localObject2 = localObject1;
-        if (localObject1 == null)
-        {
-          localObject2 = localObject1;
-          if (((List)localObject3).size() > 0) {
-            localObject2 = (liq)((List)localObject3).get(0);
-          }
-        }
-        this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject3);
-        lbj.c("ARZimuTask", "updateTextInner " + paramlgi.jdField_a_of_type_JavaLangString + " addinfo:" + paramlgi.jdField_a_of_type_JavaLangCharSequence);
+        paramString.printStackTrace();
       }
+    } else {
+      bool = false;
     }
-    a((liq)localObject2);
+    return bool;
   }
   
-  public static void a(boolean paramBoolean)
+  public int a()
   {
-    if (jdField_a_of_type_Lit == null) {
-      jdField_a_of_type_Lit = new lit();
+    return 216;
+  }
+  
+  public Class<?> a()
+  {
+    return ZimuItem.class;
+  }
+  
+  public List<ZimuItem> a(int paramInt, String paramString)
+  {
+    List localList = super.a(paramInt, paramString);
+    b(paramString);
+    return localList;
+  }
+  
+  public List<ZimuItem> a(String paramString)
+  {
+    paramString = super.a(paramString);
+    ArrayList localArrayList = new ArrayList();
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      localArrayList.addAll(paramString);
     }
-    jdField_a_of_type_Lit.a(paramBoolean);
-  }
-  
-  public static String b()
-  {
-    if (jdField_a_of_type_Lit == null) {
-      jdField_a_of_type_Lit = new lit();
-    }
-    return jdField_a_of_type_Lit.b();
-  }
-  
-  public static void b(int paramInt1, int paramInt2)
-  {
-    if (jdField_a_of_type_Lit == null) {
-      jdField_a_of_type_Lit = new lit();
-    }
-    a("setSmallScreenSize: " + paramInt1 + "|" + paramInt2);
-    jdField_a_of_type_Lit.b(paramInt1, paramInt2);
-  }
-  
-  private void b(Observable paramObservable, Object paramObject)
-  {
-    ((Integer)((Object[])(Object[])paramObject)[0]).intValue();
-    a(paramObservable, paramObject);
-  }
-  
-  public static void c(int paramInt1, int paramInt2)
-  {
-    if (jdField_a_of_type_Lit == null) {
-      jdField_a_of_type_Lit = new lit();
-    }
-    a("setBigScreenSize: " + paramInt1 + "|" + paramInt2);
-    jdField_a_of_type_Lit.c(paramInt1, paramInt2);
-  }
-  
-  public abstract int a();
-  
-  protected abstract List<liq> a(lgi paramlgi, boolean paramBoolean);
-  
-  public liu a()
-  {
-    return this.jdField_a_of_type_Liu;
+    return localArrayList;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Lis = new lis(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Lis);
+    super.a();
+    lgn locallgn = (lgn)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
+    if (locallgn != null) {
+      locallgn.a(3001, this);
+    }
   }
   
-  protected void a(Observable paramObservable, Object paramObject) {}
-  
-  public void a(lgi paramlgi)
+  public void a(int paramInt, String paramString)
   {
-    if ((paramlgi == null) || (TextUtils.isEmpty(paramlgi.jdField_a_of_type_JavaLangCharSequence)) || (TextUtils.isEmpty(paramlgi.jdField_a_of_type_JavaLangString)))
+    if ((paramInt == 3002) || (paramInt == 3003)) {
+      a(AudioHelper.b(), "");
+    }
+  }
+  
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  {
+    switch (paramInt)
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("updateText error:");
-      if (paramlgi == null) {}
-      for (paramlgi = null;; paramlgi = paramlgi.toString())
+    default: 
+      return;
+    }
+    QLog.w("EffectZimuManager", 1, "onSessionStatusChanged, event[" + paramInt + "], seq[" + paramLong + "]");
+    ((lfs)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1)).a();
+    new mci(paramLong, "onSessionStatusChanged", 2, null).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+  }
+  
+  public void a(String paramString, long paramLong)
+  {
+    if (this.b)
+    {
+      lfv locallfv = (lfv)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0);
+      locallfv.a(paramString, paramLong, "TransInfo.ExitSession", null);
+      locallfv.onDestroy();
+      ((lfs)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1)).a();
+    }
+    this.b = false;
+    lsz.a().b(4);
+  }
+  
+  public void a(String paramString1, boolean paramBoolean, long paramLong, String paramString2)
+  {
+    lsz.a().a(4);
+    if (!this.b)
+    {
+      lfs locallfs = (lfs)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1);
+      locallfs.a(paramString1, "TransInfoCreate.CreateSession", paramLong, paramString2);
+      locallfs.onDestroy();
+      this.c = paramBoolean;
+    }
+    this.b = true;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    int j;
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      int i = 0;
+      j = i;
+      if (!localIterator.hasNext()) {
+        break label77;
+      }
+      ZimuItem localZimuItem = (ZimuItem)localIterator.next();
+      if ((!liq.a(localZimuItem.getId())) || (localZimuItem.isUsable() == paramBoolean)) {
+        break label82;
+      }
+      localZimuItem.setUsable(paramBoolean);
+      i = 1;
+    }
+    label77:
+    label82:
+    for (;;)
+    {
+      break;
+      j = 0;
+      if (j != 0) {}
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(long paramLong, ZimuItem paramZimuItem)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("EffectZimuManager", 1, "setCurrentItem, seq[" + paramLong + "], item[" + paramZimuItem + "]", new Throwable("打印调用栈"));
+    }
+    boolean bool = super.a(paramLong, paramZimuItem);
+    Object localObject;
+    if (bool)
+    {
+      if (paramZimuItem == null)
       {
-        lbj.e("ARZimuTask", paramlgi);
-        return;
+        localObject = null;
+        lis.a((String)localObject);
+        b("setCurrentItem_" + (String)localObject + "_" + paramLong, false);
       }
     }
-    lbj.c("ARZimuTask", "updateText :" + paramlgi.toString());
-    if (!this.jdField_a_of_type_Lix.a()) {
-      this.jdField_a_of_type_Lix.b("updateText1", true);
-    }
-    a(paramlgi, false);
-  }
-  
-  abstract void a(liq paramliq);
-  
-  public void a(liu paramliu)
-  {
-    this.jdField_a_of_type_Liu = paramliu;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Lis != null) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Lis);
-    }
-  }
-  
-  public String c()
-  {
-    Object localObject = d();
-    localObject = (ZimuItem)this.jdField_a_of_type_Lix.a((String)localObject);
-    if (localObject != null) {}
-    for (localObject = this.jdField_a_of_type_Lix.b((lgr)localObject);; localObject = "")
+    else
     {
-      lbj.c("ARZimuTask", "getGamePlayResoucePath path = " + (String)localObject);
-      return localObject;
+      localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+      if (this.jdField_a_of_type_Lgl != null) {
+        break label208;
+      }
     }
-  }
-  
-  protected void c()
-  {
-    String str;
-    Object localObject;
-    if ((this.jdField_a_of_type_AndroidGraphicsTypeface == null) && (this.jdField_a_of_type_Lix != null))
+    label208:
+    for (int i = 4;; i = 5)
     {
-      str = d();
-      localObject = (ZimuItem)this.jdField_a_of_type_Lix.a(str);
-      if (localObject != null)
+      ((VideoAppInterface)localObject).a(new Object[] { Integer.valueOf(165), Integer.valueOf(i) });
+      if (paramZimuItem != null)
       {
-        localObject = this.jdField_a_of_type_Lix.b((lgr)localObject);
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          localObject = new File((String)localObject + "font.ttf");
-          if (!((File)localObject).exists()) {
-            break label136;
-          }
+        localObject = (lgn)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
+        if (localObject != null) {
+          ((lgn)localObject).a(3001, paramZimuItem.getId());
         }
       }
+      return bool;
+      localObject = paramZimuItem.getId();
+      break;
     }
-    label136:
-    while (!AudioHelper.f()) {
-      try
-      {
-        this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile((File)localObject);
-        return;
-      }
-      catch (Exception localException)
-      {
-        while (!AudioHelper.f()) {}
-        QLog.w("ARZimuTask", 1, "createTypeface, Exception, id[" + str + "]", localException);
-        return;
-      }
-    }
-    QLog.w("ARZimuTask", 1, "createTypeface, 不存在, file[" + localException.getAbsolutePath() + "], id[" + str + "]");
   }
   
-  public abstract String d();
+  protected boolean a(String paramString)
+  {
+    return b(a());
+  }
+  
+  public int b()
+  {
+    if ((ZimuItem)a() == null) {}
+    return 4;
+  }
+  
+  public void b(String paramString, long paramLong)
+  {
+    lsz.a().a(4);
+    if (this.b)
+    {
+      lfv locallfv = (lfv)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0);
+      locallfv.a(paramString, paramLong, "TransInfo.ChangeSession", null);
+      locallfv.onDestroy();
+    }
+  }
+  
+  public void b(String paramString, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    {
+      QLog.w("EffectZimuManager", 1, "setRecievedSentence, from[" + paramString + "], mIsRecieveSentence[" + this.jdField_a_of_type_Boolean + "->" + paramBoolean + "]");
+      this.jdField_a_of_type_Boolean = paramBoolean;
+    }
+  }
+  
+  public boolean b()
+  {
+    return this.c;
+  }
+  
+  public boolean c()
+  {
+    return this.b;
+  }
 }
 
 

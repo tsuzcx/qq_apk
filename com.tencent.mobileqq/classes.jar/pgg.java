@@ -1,32 +1,52 @@
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+
 public class pgg
 {
-  public int a;
-  public long a;
-  float[] a;
-  public int b;
-  long jdField_b_of_type_Long;
-  float[] jdField_b_of_type_ArrayOfFloat;
-  public int c;
-  public int d;
-  int e;
-  int f;
-  int g;
-  int h;
-  int i;
+  private HashMap<Integer, pen> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private ped jdField_a_of_type_Ped;
+  private pen jdField_a_of_type_Pen = new pgh(this);
+  private pen b = new pgi(this);
+  private pen c = new pgj(this);
   
-  public String a()
+  public pgg(ped paramped)
   {
-    double d1 = this.g * 1.0D / this.h;
-    double d2 = 1000.0D * d1 / this.jdField_a_of_type_Long;
-    double d3 = this.jdField_a_of_type_ArrayOfFloat[0] / this.i;
-    double d4 = this.jdField_a_of_type_ArrayOfFloat[1] / this.h;
-    double d5 = this.b[0] / this.i;
-    double d6 = this.b[1] / this.h;
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (int j = 0;; j = 1) {
-      return j + "_" + String.format("%.2f", new Object[] { Double.valueOf(d1) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d2) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d4) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d3) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d6) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d5) });
+    this.jdField_a_of_type_Ped = paramped;
+    a();
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131376300), this.jdField_a_of_type_Pen);
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131375918), this.b);
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131368236), this.b);
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131361876), this.b);
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131369851), this.b);
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131376448), this.b);
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131362032), this.c);
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131380137), this.c);
+  }
+  
+  private void a(String paramString, Context paramContext)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
+    pay.a(paramContext, paa.k + bfuc.encodeToString(String.valueOf(paramString).getBytes(), 2));
+  }
+  
+  public void a(View paramView)
+  {
+    pen localpen = (pen)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramView.getId()));
+    if (localpen != null)
+    {
+      localpen.onClick(paramView);
+      return;
+    }
+    QLog.e("RIJFrameworkHandleClick", 1, "onClick, has no click handler for id(" + paramView.getId() + "}");
   }
 }
 

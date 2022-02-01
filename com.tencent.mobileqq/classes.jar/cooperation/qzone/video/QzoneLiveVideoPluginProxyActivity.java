@@ -9,94 +9,29 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import aquy;
-import bjfr;
-import bmgk;
-import bmgt;
-import bndl;
-import bndr;
-import bnfk;
-import bnlq;
+import apoh;
+import bhlx;
+import bkkq;
+import bkkz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.IPluginActivity;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.plugin.IQZonePluginManager;
+import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
+import cooperation.qzone.plugin.QZonePluginUtils;
 import java.io.File;
 
 public class QzoneLiveVideoPluginProxyActivity
   extends PluginProxyActivity
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "com.qzone.adapter.livevideo.RewardGiftActivity", "com.qzonex.module.global.FeedActionPanelActivity", "com.qzone.adapter.livevideo.LiveCommonActivity" };
-  Object jdField_a_of_type_JavaLangObject = null;
+  public static final String EC_LAUNCH_NAME = "com.qzone.adapter.livevideo.ECLiveVideoActivity";
+  public static final String QZONE_LAUNCH_NAME = "com.qzone.adapter.livevideo.QZoneLiveVideoActivity";
+  private static final String[] TRANSLUCENT_NOTITLE_ACTIVITY_LIST = { "com.qzone.adapter.livevideo.RewardGiftActivity", "com.qzonex.module.global.FeedActionPanelActivity", "com.qzone.adapter.livevideo.LiveCommonActivity" };
+  Object mPermissionCaller = null;
   
-  public static void a(Activity paramActivity, String paramString1, Intent paramIntent, int paramInt, String paramString2)
-  {
-    Class localClass = bnlq.a(paramString2);
-    paramIntent.putExtra("userQqResources", -1);
-    paramIntent.putExtra("useSkinEngine", false);
-    paramIntent.putExtra("param_plugin_gesturelock", false);
-    Object localObject = bnfk.a();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      QLog.e("PluginDebug", 1, "启动失败 错误的pluginid=" + (String)localObject);
-    }
-    for (;;)
-    {
-      return;
-      if (((String)localObject).equals("qzone_live_video_plugin_hack.apk")) {
-        if (new File(bnfk.a(paramActivity), (String)localObject).exists())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("PluginDebug", 2, "launchPluginActivityForResult 加载动态包:hackPluginID:" + (String)localObject);
-          }
-          localObject = new bndr(0);
-          ((bndr)localObject).jdField_a_of_type_JavaLangString = paramString1;
-          ((bndr)localObject).e = paramString2;
-          ((bndr)localObject).jdField_a_of_type_JavaLangClass = localClass;
-          ((bndr)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
-          ((bndr)localObject).jdField_b_of_type_Int = paramInt;
-          ((bndr)localObject).c = 15000;
-          ((bndr)localObject).f = null;
-          ((bndr)localObject).jdField_a_of_type_Boolean = false;
-          ((bndr)localObject).jdField_b_of_type_JavaLangString = "qzone_live_video_plugin_hack.apk";
-          ((bndr)localObject).d = "QZoneLiveVideo";
-          bndl.a(paramActivity, (bndr)localObject);
-        }
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d("PluginDebug", 2, "QzoneLiveVideoPluginProxyActivity.launchPluingActivityForResult");
-        return;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("PluginDebug", 2, "launchPluginActivityForResult 加载动态包不存在");
-          continue;
-          if (!"qzone_live_video_plugin.apk".equals(localObject)) {
-            break label355;
-          }
-          localObject = new bmgt(0);
-          ((bmgt)localObject).jdField_a_of_type_JavaLangString = paramString1;
-          ((bmgt)localObject).e = paramString2;
-          ((bmgt)localObject).jdField_a_of_type_JavaLangClass = localClass;
-          ((bmgt)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
-          ((bmgt)localObject).jdField_b_of_type_Int = paramInt;
-          ((bmgt)localObject).c = 15000;
-          ((bmgt)localObject).f = null;
-          ((bmgt)localObject).jdField_b_of_type_Boolean = false;
-          ((bmgt)localObject).jdField_b_of_type_JavaLangString = "qzone_live_video_plugin.apk";
-          ((bmgt)localObject).d = "QZoneLiveVideo";
-          if (QLog.isColorLevel()) {
-            QLog.d("PluginDebug", 2, "加载原始插件");
-          }
-          bmgk.a(paramActivity, (bmgt)localObject);
-        }
-      }
-    }
-    label355:
-    QLog.e("PluginDebug", 1, "启动失败 错误的pluginid=" + (String)localObject);
-  }
-  
-  private static boolean b(String[] paramArrayOfString, String paramString)
+  private static boolean isStringInArray(String[] paramArrayOfString, String paramString)
   {
     if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0) || (TextUtils.isEmpty(paramString))) {}
     for (;;)
@@ -114,17 +49,84 @@ public class QzoneLiveVideoPluginProxyActivity
     }
   }
   
+  public static void launchPluginActivityForResult(Activity paramActivity, String paramString1, Intent paramIntent, int paramInt, String paramString2)
+  {
+    Class localClass = QzoneLiveVideoPluginProxyActivity.PluginProxyFactory.getPluginProxyActivityClass(paramString2);
+    paramIntent.putExtra("userQqResources", -1);
+    paramIntent.putExtra("useSkinEngine", false);
+    paramIntent.putExtra("param_plugin_gesturelock", false);
+    Object localObject = QZonePluginUtils.getLoadQZoneLivePluginId();
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      QLog.e("PluginDebug", 1, "启动失败 错误的pluginid=" + (String)localObject);
+    }
+    for (;;)
+    {
+      return;
+      if (((String)localObject).equals("qzone_live_video_plugin_hack.apk")) {
+        if (new File(QZonePluginUtils.getPluginInstallDir(paramActivity), (String)localObject).exists())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PluginDebug", 2, "launchPluginActivityForResult 加载动态包:hackPluginID:" + (String)localObject);
+          }
+          localObject = new IQZonePluginManager.PluginParams(0);
+          ((IQZonePluginManager.PluginParams)localObject).mUin = paramString1;
+          ((IQZonePluginManager.PluginParams)localObject).mConponentName = paramString2;
+          ((IQZonePluginManager.PluginParams)localObject).mProxyActivityClass = localClass;
+          ((IQZonePluginManager.PluginParams)localObject).mIntent = paramIntent;
+          ((IQZonePluginManager.PluginParams)localObject).mRequestCode = paramInt;
+          ((IQZonePluginManager.PluginParams)localObject).mTimeOut = 15000;
+          ((IQZonePluginManager.PluginParams)localObject).mProgressTips = null;
+          ((IQZonePluginManager.PluginParams)localObject).mDialogDismissBySDK = false;
+          ((IQZonePluginManager.PluginParams)localObject).mPluginID = "qzone_live_video_plugin_hack.apk";
+          ((IQZonePluginManager.PluginParams)localObject).mPluginName = "QZoneLiveVideo";
+          IQZonePluginManager.openActivityForResult(paramActivity, (IQZonePluginManager.PluginParams)localObject);
+        }
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d("PluginDebug", 2, "QzoneLiveVideoPluginProxyActivity.launchPluingActivityForResult");
+        return;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("PluginDebug", 2, "launchPluginActivityForResult 加载动态包不存在");
+          continue;
+          if (!"qzone_live_video_plugin.apk".equals(localObject)) {
+            break label355;
+          }
+          localObject = new bkkz(0);
+          ((bkkz)localObject).jdField_a_of_type_JavaLangString = paramString1;
+          ((bkkz)localObject).e = paramString2;
+          ((bkkz)localObject).jdField_a_of_type_JavaLangClass = localClass;
+          ((bkkz)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
+          ((bkkz)localObject).jdField_b_of_type_Int = paramInt;
+          ((bkkz)localObject).c = 15000;
+          ((bkkz)localObject).f = null;
+          ((bkkz)localObject).jdField_b_of_type_Boolean = false;
+          ((bkkz)localObject).jdField_b_of_type_JavaLangString = "qzone_live_video_plugin.apk";
+          ((bkkz)localObject).d = "QZoneLiveVideo";
+          if (QLog.isColorLevel()) {
+            QLog.d("PluginDebug", 2, "加载原始插件");
+          }
+          bkkq.a(paramActivity, (bkkz)localObject);
+        }
+      }
+    }
+    label355:
+    QLog.e("PluginDebug", 1, "启动失败 错误的pluginid=" + (String)localObject);
+  }
+  
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
-    return bnlq.a(paramString);
+    return QzoneLiveVideoPluginProxyActivity.PluginProxyFactory.getPluginProxyActivityClass(paramString);
   }
   
   @Override
@@ -137,8 +139,8 @@ public class QzoneLiveVideoPluginProxyActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bjfr.a(BaseApplicationImpl.getContext(), false, 5);
-    aquy.a(BaseApplicationImpl.getContext(), 2, false);
+    bhlx.a(BaseApplicationImpl.getContext(), false, 5);
+    apoh.a(BaseApplicationImpl.getContext(), 2, false);
   }
   
   public void onDestroy()
@@ -162,7 +164,7 @@ public class QzoneLiveVideoPluginProxyActivity
   public void requestPermissions(Object paramObject, int paramInt, String... paramVarArgs)
   {
     super.requestPermissions(paramObject, paramInt, paramVarArgs);
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.mPermissionCaller = paramObject;
   }
 }
 

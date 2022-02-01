@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import adrn;
+import acog;
 
 public class AccountManageActivity$4$1
   implements Runnable
 {
-  public AccountManageActivity$4$1(adrn paramadrn) {}
+  public AccountManageActivity$4$1(acog paramacog) {}
   
   public void run()
   {

@@ -1,23 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.FaceToolbar;
+import com.tencent.av.ui.FaceToolbar.1.1;
 
 public class mdi
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public mdi(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public mdi(FaceToolbar paramFaceToolbar) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.d(this.a.d, 1, "quit double screen from reset clicker");
-    if ((this.a.a != null) && (this.a.a.get() != null) && ((this.a.a.get() instanceof AVActivity))) {
-      ((AVActivity)this.a.a.get()).BtnOnClick(paramView);
+    if (this.a.mApp == null) {
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramIntent.getAction().equalsIgnoreCase("tencent.video.q2v.ptusoDownloadRet")) {}
+    for (int i = 0;; i = 1)
+    {
+      this.a.mApp.a().postDelayed(new FaceToolbar.1.1(this, i), 2000L);
+      return;
+    }
   }
 }
 

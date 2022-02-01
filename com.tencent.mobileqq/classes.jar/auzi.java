@@ -1,160 +1,180 @@
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResultCallback;
+import java.util.Locale;
+import org.json.JSONObject;
 
 public class auzi
-  implements agvc, Handler.Callback
+  extends WebViewPlugin
+  implements avao
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private bhpc jdField_a_of_type_Bhpc;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = new SessionInfo();
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
+  private EIPCResultCallback a;
+  protected String a;
+  private EIPCResultCallback b;
+  protected String b;
+  private String c;
   
-  public auzi(BaseChatPie paramBaseChatPie)
+  public auzi()
+  {
+    this.jdField_a_of_type_EipcEIPCResultCallback = new auzj(this);
+    this.jdField_b_of_type_EipcEIPCResultCallback = new auzk(this);
+    this.mPluginNameSpace = "listenTogether";
+  }
+  
+  public void a(JSONObject paramJSONObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ForwardIMByThirdPartyHelper", 2, " init ");
+      QLog.d("ListenTogetherPlugin", 2, "statusChanged isDestroy:" + this.isDestroy + " data:" + paramJSONObject + " mCheckJoinCallback:" + this.jdField_a_of_type_JavaLangString + " mJoinListenCallback:" + this.jdField_b_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
-    {
-      this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a;
-      if (this.jdField_a_of_type_AndroidAppActivity != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface());
+    if ((paramJSONObject != null) && (TextUtils.equals(paramJSONObject.optString("type"), "checkJoin"))) {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        localJSONObject = new JSONObject();
       }
     }
-  }
-  
-  private bhpc a(String paramString)
-  {
-    return bhlq.a(this.jdField_a_of_type_AndroidAppActivity, 230).setTitle(null).setMessage(paramString).setPositiveButton(this.jdField_a_of_type_AndroidAppActivity.getString(2131690562), new auzj(this));
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if (this.jdField_b_of_type_Boolean) {
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-          a(this.jdField_a_of_type_AndroidAppActivity.getString(2131698473)).show();
-        }
-      }
-    }
-    while (!this.d)
+    do
     {
-      return;
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "", "", "0X800A40C", "0X800A40C", 0, 0, "", "", "", "");
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, true, "", true, true, null, "from_internal", null);
-      return;
-      if (this.c)
+      try
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+        localJSONObject.put("canJoin", paramJSONObject.optInt("canJoin"));
+        localJSONObject.put("isOpener", paramJSONObject.optInt("isOpener"));
+        localJSONObject.put("uinType", paramJSONObject.optInt("uinType"));
+        callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Throwable paramJSONObject)
+      {
+        QLog.e("ListenTogetherPlugin", 1, "statusChanged error:" + paramJSONObject.getMessage());
+        return;
+      }
+      if ((paramJSONObject == null) || (!TextUtils.equals(paramJSONObject.optString("type"), "joinListen"))) {
+        break;
+      }
+    } while (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("retCode", paramJSONObject.optInt("retCode"));
+      callJs(this.jdField_b_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      this.jdField_b_of_type_JavaLangString = null;
+      return;
+    }
+    catch (Throwable paramJSONObject)
+    {
+      for (;;)
+      {
+        QLog.e("ListenTogetherPlugin", 1, "statusChanged error:" + paramJSONObject.getMessage());
+      }
+    }
+    dispatchJsEvent("musicStatusChange", paramJSONObject, null);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ListenTogetherPlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
+    }
+    if ("listenTogether".equals(paramString2))
+    {
+      paramJsBridgeListener = WebViewPlugin.getJsonFromJSBridge(paramString1);
+      if (paramJsBridgeListener == null) {}
+      do
+      {
+        do
         {
-          a(this.jdField_a_of_type_AndroidAppActivity.getString(2131698473)).show();
-          return;
+          do
+          {
+            do
+            {
+              return true;
+              if (QLog.isColorLevel()) {
+                QLog.d("ListenTogetherPlugin", 2, "handleJsRequest JSON = " + paramJsBridgeListener.toString());
+              }
+              this.c = paramJsBridgeListener.optString("callback");
+            } while ("awakePlugin".equals(paramString3));
+            if (!"statusChanged".equals(paramString3)) {
+              break;
+            }
+            try
+            {
+              paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+              aval.a(paramJsBridgeListener);
+              if (!"checkJoin".equals(paramJsBridgeListener.opt("type"))) {
+                continue;
+              }
+              if (paramJsBridgeListener != null)
+              {
+                this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
+                return true;
+              }
+            }
+            catch (Exception paramJsBridgeListener)
+            {
+              QLog.e("ListenTogetherPlugin", 1, "METHOD_STATUS_CHANGED exception e = ", paramJsBridgeListener);
+              return true;
+            }
+            this.jdField_a_of_type_JavaLangString = null;
+            return true;
+          } while (!"joinListen".equals(paramJsBridgeListener.opt("type")));
+          if (paramJsBridgeListener != null)
+          {
+            this.jdField_b_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
+            return true;
+          }
+          this.jdField_b_of_type_JavaLangString = null;
+          return true;
+          if (!"isOpener".equals(paramString3)) {
+            break;
+          }
+        } while (TextUtils.isEmpty(this.c));
+        aval.a(paramJsBridgeListener, "isOpener", this.jdField_b_of_type_EipcEIPCResultCallback);
+        return true;
+        if (!"isShowAtmosphere".equals(paramString3)) {
+          break;
         }
-        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "", "", "0X800A40D", "0X800A40D", 0, 0, "", "", "", "");
-        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, false, "", true, true, null, "from_internal", null);
-        return;
+      } while (TextUtils.isEmpty(this.c));
+      aval.a(paramJsBridgeListener, "isShowAtmosphere", this.jdField_a_of_type_EipcEIPCResultCallback);
+      return true;
+      if ("setPlayerId".equals(paramString3))
+      {
+        aval.a(paramJsBridgeListener, "setPlayerId", null);
+        return true;
       }
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "", "", "0X800A40B", "0X800A40B", 0, 0, "", "", "", "");
-      return;
-    }
-    a();
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Bhpc != null) {
-      this.jdField_a_of_type_Bhpc.dismiss();
-    }
-  }
-  
-  protected void a()
-  {
-    if ((this.jdField_a_of_type_Bhpc != null) && (!this.jdField_a_of_type_Bhpc.isShowing()) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
-      this.jdField_a_of_type_Bhpc.show();
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Bhpc = bhlq.a(this.jdField_a_of_type_AndroidAppActivity, 230);
-      this.jdField_a_of_type_Bhpc.setMessage(2131694652);
-      this.jdField_a_of_type_Bhpc.setTitle(2131718691);
-      auzk localauzk = new auzk(this);
-      this.jdField_a_of_type_Bhpc.setNegativeButton(2131690580, localauzk);
-      this.jdField_a_of_type_Bhpc.setPositiveButton(2131694626, localauzk);
-    } while (this.jdField_a_of_type_AndroidAppActivity.isFinishing());
-    this.jdField_a_of_type_Bhpc.show();
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
+      if ("setThemeEnabled".equals(paramString3))
       {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("ForwardIMByThirdPartyHelper", 2, "onMoveToState SHOW_FIRST_BEGIN ");
-      return;
-      b();
-    } while (!QLog.isColorLevel());
-    QLog.d("ForwardIMByThirdPartyHelper", 2, "onMoveToState DESTROY =");
+        aval.a(paramJsBridgeListener, "setThemeEnabled", null);
+        return true;
+      }
+    }
+    return false;
   }
   
-  public void a(Intent paramIntent, boolean paramBoolean)
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
+    super.onActivityResult(paramIntent, paramByte, paramInt);
     if (QLog.isColorLevel()) {
-      QLog.d("ForwardIMByThirdPartyHelper", 2, "handleForwordIM");
+      QLog.d("ListenTogetherPlugin", 2, "onActivityResult requestCode=" + paramByte + "  resultCode=" + paramInt);
     }
-    if (paramIntent == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramIntent = paramIntent.getExtras();
-      } while (paramIntent == null);
-      this.jdField_a_of_type_Boolean = paramIntent.getBoolean("thridparty_pull_aio", false);
-    } while (!this.jdField_a_of_type_Boolean);
-    this.d = paramBoolean;
-    this.jdField_b_of_type_Boolean = paramIntent.getBoolean("pull_aio_audio", false);
-    this.c = paramIntent.getBoolean("pull_aio_video", false);
-    this.jdField_a_of_type_JavaLangString = paramIntent.getString("openid", "");
-    this.jdField_b_of_type_JavaLangString = paramIntent.getString("appid", "");
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = paramIntent.getString("uin");
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = paramIntent.getInt("uintype");
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e = paramIntent.getString("phonenum");
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramIntent.getString("uinname", "");
-    a(true);
   }
   
-  public int[] a()
+  public void onCreate()
   {
-    return new int[] { 6, 13 };
+    super.onCreate();
+    if (QLog.isColorLevel()) {
+      QLog.d("ListenTogetherPlugin", 2, "onCreate");
+    }
+    aval.a().a(this);
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void onDestroy()
   {
-    return true;
+    super.onDestroy();
+    if (QLog.isColorLevel()) {
+      QLog.d("ListenTogetherPlugin", 2, "onDestroy");
+    }
+    aval.a().b(this);
   }
 }
 

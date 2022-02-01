@@ -1,55 +1,23 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.util.LruCache;
+import android.os.Looper;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.vip.lianghao.RegisterLHAssistant.2;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class bgpx
-  extends Handler
+  implements bgqc
 {
-  public void handleMessage(Message paramMessage)
+  public bgpx(RegisterLHAssistant.2 param2) {}
+  
+  public void a(boolean paramBoolean)
   {
-    if (paramMessage.what == 1001) {}
-    try
-    {
-      paramMessage = (String)paramMessage.obj;
-      if (QLog.isColorLevel()) {
-        QLog.d("NonMainAppListViewFaceLoader", 2, "DecodeHandler handle MSG_DECODE_FACE_BITMAP uin:" + paramMessage);
-      }
-      Bitmap localBitmap1 = bhmq.a((String)this.a.b.get(paramMessage), null);
-      if (localBitmap1 != null)
-      {
-        Bitmap localBitmap2 = this.a.a(localBitmap1);
-        if (localBitmap2 != null)
-        {
-          Message localMessage = Message.obtain();
-          Bundle localBundle = new Bundle();
-          localBundle.putParcelable("bmp", localBitmap2);
-          localBundle.putString("uin", paramMessage);
-          localMessage.obj = localBundle;
-          localMessage.what = 1002;
-          this.a.a.sendMessage(localMessage);
-          if (QLog.isColorLevel()) {
-            QLog.d("NonMainAppListViewFaceLoader", 2, "decodeFile, uin:" + paramMessage);
-          }
-        }
-        if ((localBitmap1 != null) && (!localBitmap1.isRecycled())) {
-          localBitmap1.recycle();
-        }
-      }
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.i(bgpv.a, 4, String.format(Locale.getDefault(), "checkVipQQStatus, needShow: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    catch (OutOfMemoryError paramMessage)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("NonMainAppListViewFaceLoader", 2, "decodeFile, OutOfMemoryError");
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("NonMainAppListViewFaceLoader", 2, "decodeFile, exception:" + paramMessage.toString());
+    bgpv.a(this.a.this$0, paramBoolean);
+    if ((bgpv.a(this.a.this$0)) && (bgpv.a(this.a.this$0).isEnabled()) && (Thread.currentThread() == Looper.getMainLooper().getThread()) && (bgpv.a(this.a.this$0).getVisibility() == 8)) {
+      this.a.this$0.b(true);
     }
   }
 }

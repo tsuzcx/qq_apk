@@ -1,19 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class oka
-  implements nmg
+class oka
+  implements sng
 {
-  public oka(ReadInJoyFeedsActivity.1 param1) {}
+  private WeakReference<ojv> a;
   
-  public void loaded(String paramString, int paramInt)
+  oka(ojv paramojv)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2378 html web resource finish");
-    }
+    this.a = new WeakReference(paramojv);
   }
   
-  public void progress(int paramInt) {}
+  public void a(ChannelCoverInfo paramChannelCoverInfo)
+  {
+    ojv localojv = (ojv)this.a.get();
+    if ((localojv == null) || (ojv.a(localojv).a()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyNaviController", 2, "ChannelButtonListenerImpl. ReadInJoyNavigationGridview has destoryed");
+      }
+      return;
+    }
+    localojv.a(paramChannelCoverInfo);
+  }
 }
 
 

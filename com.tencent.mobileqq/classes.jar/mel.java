@@ -1,59 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class mel
-  implements View.OnClickListener
+  extends ldz
 {
-  public mel(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity, blir paramblir) {}
+  public mel(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(long paramLong, ArrayList<lcp> paramArrayList, int paramInt1, int paramInt2)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().W) {
-      if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().j == 1) {
-        bdll.b(null, "CliOper", "", "", "0X8005C28", "0X8005C28", 0, 0, "", "", "", "");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.b, 2, "onUserListALLUpdate");
     }
-    for (;;)
-    {
-      if (!this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().W) {
-        bool = true;
-      }
-      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.b(bool);
-      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().c("OnClick", bool);
-      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a();
-      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.b();
-      try
-      {
-        this.jdField_a_of_type_Blir.dismiss();
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().j != 3000) {
-          continue;
-        }
-        bdll.b(null, "CliOper", "", "", "0X8005C23", "0X8005C23", 0, 0, "", "", "", "");
-        continue;
-        if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().j == 1)
-        {
-          bdll.b(null, "CliOper", "", "", "0X8005C27", "0X8005C27", 0, 0, "", "", "", "");
-          continue;
-        }
-        if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().j != 3000) {
-          continue;
-        }
-        bdll.b(null, "CliOper", "", "", "0X8005C22", "0X8005C22", 0, 0, "", "", "", "");
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          localThrowable.printStackTrace();
-        }
-      }
+    MultiIncomingCallsActivity.a(this.a, paramLong, paramArrayList, paramInt1);
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.b, 2, "onMembersChange");
     }
+    if ((paramLong != this.a.a) || (paramBoolean)) {}
+    while (((paramInt != 10) && (paramInt != 1)) || (!this.a.isResume())) {
+      return;
+    }
+    MultiIncomingCallsActivity.a(this.a, paramInt);
   }
 }
 

@@ -381,16 +381,22 @@ public class MultiViewerFilter
   
   public Frame renderEffectFilter(Frame paramFrame1, Frame paramFrame2)
   {
-    Frame localFrame = paramFrame1;
     if (this.effectFilter != null)
     {
       BenchUtil.benchStart(TAG + " effectFilter.RenderProcess");
       this.effectFilter.RenderProcess(paramFrame1.getTextureId(), paramFrame2.width, paramFrame2.height, -1, 0.0D, paramFrame2);
       BenchUtil.benchEnd(TAG + " effectFilter.RenderProcess");
-      localFrame = FrameUtil.getLastRenderFrame(paramFrame2);
+      paramFrame1 = FrameUtil.getLastRenderFrame(paramFrame2);
       this.isSrcRendered = true;
+      return paramFrame1;
     }
-    return localFrame;
+    if (this.copyFilter == null)
+    {
+      this.copyFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+      this.copyFilter.apply();
+    }
+    this.copyFilter.RenderProcess(paramFrame1.getTextureId(), paramFrame1.width, paramFrame1.height, paramFrame2.width, paramFrame2.height, -1, 0.0D, paramFrame2);
+    return paramFrame2;
   }
   
   public Frame renderEffectTriggerBefore(Frame paramFrame, PTFaceAttr paramPTFaceAttr)

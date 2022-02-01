@@ -1,26 +1,14 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-class ayhi
-  implements aycj
+public class ayhi
+  extends aygp
 {
-  ayhi(ayhf paramayhf) {}
-  
-  public void a(Comments.Comment paramComment, int paramInt)
+  public void b(BaseChatPie paramBaseChatPie)
   {
-    if (ayhf.a(this.a) != null)
-    {
-      if (paramInt == 0)
-      {
-        ayhf.a(this.a).b(paramComment);
-        ayhf.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131695716));
-        bdll.b(null, "dc02676", "grp_lbs", "", "comment", "delete_comment", 0, 0, "", "", "", "");
-      }
-    }
-    else {
-      return;
-    }
-    ayhf.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131695715));
+    a(paramBaseChatPie.sessionInfo.curType, 201);
+    a(paramBaseChatPie.sessionInfo.curType, 202);
+    a(paramBaseChatPie.sessionInfo.curType, 208);
   }
 }
 

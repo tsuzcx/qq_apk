@@ -1,103 +1,110 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RelatedSearchData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mfsdk.collector.DropFrameMonitor;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-public final class srq
-  implements Parcelable.Creator<FastWebArticleInfo>
+public class srq
+  implements AbsListView.OnScrollListener
 {
-  public FastWebArticleInfo a(Parcel paramParcel)
+  public srq(FastWebActivity paramFastWebActivity) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    boolean bool2 = true;
-    int j = 0;
-    FastWebArticleInfo localFastWebArticleInfo = new FastWebArticleInfo();
-    localFastWebArticleInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localFastWebArticleInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localFastWebArticleInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localFastWebArticleInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localFastWebArticleInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localFastWebArticleInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localFastWebArticleInfo.e = paramParcel.readString();
-    localFastWebArticleInfo.f = paramParcel.readString();
-    localFastWebArticleInfo.h = paramParcel.readString();
-    localFastWebArticleInfo.g = paramParcel.readString();
-    localFastWebArticleInfo.j = paramParcel.readString();
-    localFastWebArticleInfo.i = paramParcel.readString();
-    localFastWebArticleInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localFastWebArticleInfo.l = paramParcel.readString();
-    if (paramParcel.readInt() == 1)
+    if (FastWebActivity.a(this.a) != null)
     {
-      bool1 = true;
-      localFastWebArticleInfo.jdField_b_of_type_Boolean = bool1;
-      localFastWebArticleInfo.o = paramParcel.readString();
-      localFastWebArticleInfo.jdField_d_of_type_Long = paramParcel.readLong();
-      if (paramParcel.readInt() != 1) {
-        break label291;
-      }
+      FastWebActivity.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      FastWebActivity.a(this.a).a(this.a.app, paramAbsListView, paramInt1, paramInt2);
     }
-    int k;
-    Object localObject;
-    int i;
-    label291:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localFastWebArticleInfo.jdField_c_of_type_Boolean = bool1;
-      localFastWebArticleInfo.q = paramParcel.readString();
-      k = paramParcel.readInt();
-      if (k < 0) {
-        break label413;
-      }
-      localObject = new ArrayList();
-      i = 0;
-      while (i < k)
-      {
-        sos localsos = new sos();
-        localsos.jdField_a_of_type_JavaLangString = paramParcel.readString();
-        localsos.jdField_a_of_type_Long = paramParcel.readLong();
-        localsos.jdField_b_of_type_JavaLangString = paramParcel.readString();
-        ((List)localObject).add(localsos);
-        i += 1;
-      }
-      bool1 = false;
-      break;
+    FastWebActivity.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (FastWebActivity.a(this.a) != null) {
+      FastWebActivity.a(this.a).a(FastWebActivity.a(this.a), FastWebActivity.a(this.a).getFirstVisiblePosition(), paramInt2);
     }
-    label413:
-    for (localFastWebArticleInfo.jdField_a_of_type_JavaUtilList = ((List)localObject);; localFastWebArticleInfo.jdField_a_of_type_JavaUtilList = null)
+    FastWebActivity.a(this.a, paramAbsListView, paramInt1 + paramInt2 - 1, false);
+    FastWebActivity.c(this.a, 0);
+    paramAbsListView = paramAbsListView.getChildAt(0);
+    if ((paramAbsListView != null) && (FastWebActivity.c(this.a) != paramAbsListView.getTop()))
     {
-      k = paramParcel.readInt();
-      if (k <= 0) {
-        break label455;
-      }
-      localFastWebArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataRelatedSearchData = new RelatedSearchData(localFastWebArticleInfo);
-      localFastWebArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataRelatedSearchData.jdField_a_of_type_JavaUtilList = new ArrayList();
-      i = j;
-      while (i < k)
-      {
-        localObject = new soy();
-        ((soy)localObject).jdField_a_of_type_JavaLangString = paramParcel.readString();
-        ((soy)localObject).jdField_b_of_type_JavaLangString = paramParcel.readString();
-        ((soy)localObject).jdField_a_of_type_Float = paramParcel.readFloat();
-        ((soy)localObject).jdField_c_of_type_JavaLangString = paramParcel.readString();
-        ((soy)localObject).jdField_a_of_type_Int = paramParcel.readInt();
-        i += 1;
-      }
+      FastWebActivity.d(this.a, paramAbsListView.getTop());
+      FastWebActivity.a(this.a).b();
     }
-    localFastWebArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataRelatedSearchData.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    for (;;)
+    if ((paramAbsListView != null) && (paramAbsListView.getTop() == 0) && (paramInt1 == 0))
     {
-      localFastWebArticleInfo.jdField_c_of_type_Int = paramParcel.readInt();
-      localFastWebArticleInfo.p = paramParcel.readString();
-      return localFastWebArticleInfo;
-      label455:
-      localFastWebArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataRelatedSearchData = null;
+      QLog.d("FastWebActivity", 2, "on scroller top");
+      FastWebActivity.c(this.a, 1);
+    }
+    if (paramInt2 + paramInt1 == paramInt3)
+    {
+      QLog.d("FastWebActivity", 2, "on scroller bottom");
+      FastWebActivity.c(this.a, 2);
     }
   }
   
-  public FastWebArticleInfo[] a(int paramInt)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    return new FastWebArticleInfo[paramInt];
+    boolean bool1 = FastWebActivity.a(this.a, FastWebActivity.a(this.a).getLastVisiblePosition());
+    String str1;
+    String str2;
+    if (bool1)
+    {
+      str1 = "list_comment_kandian";
+      str2 = str1;
+      if (qny.a().b())
+      {
+        str2 = str1;
+        if (TextUtils.equals(str1, "list_kandian_native_web")) {
+          str2 = "list_kandian_native_web_lite";
+        }
+      }
+      if (paramInt != 0) {
+        break label348;
+      }
+      AbstractGifImage.resumeAll();
+      int i = FastWebActivity.a(this.a).getFirstVisiblePosition();
+      FastWebActivity.e(this.a);
+      FastWebActivity.a(this.a, i, FastWebActivity.a(this.a));
+      DropFrameMonitor.getInstance().stopMonitorScene(str2, false);
+      label108:
+      boolean bool2 = FastWebActivity.b(this.a, FastWebActivity.a(this.a).getFirstVisiblePosition());
+      swy.a(paramAbsListView, paramInt, this.a.a.innerUniqueID, FastWebActivity.a(this.a, paramAbsListView, paramInt), bool2);
+      if (FastWebActivity.a(this.a) != null) {
+        FastWebActivity.a(this.a).a(paramAbsListView, paramInt);
+      }
+      FastWebActivity.a(this.a).a(paramAbsListView, paramInt);
+      FastWebActivity.f(this.a);
+      if (FastWebActivity.a(this.a) != null) {
+        FastWebActivity.a(this.a).a(paramAbsListView, paramInt);
+      }
+      if (paramInt == 1) {
+        FastWebActivity.e(this.a);
+      }
+      if (!bool1) {
+        break label362;
+      }
+      FastWebActivity.a(this.a).a();
+      if ((FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a).a() != null)) {
+        FastWebActivity.a(this.a).a().a(FastWebActivity.a(this.a).getFirstVisiblePosition() - FastWebActivity.a(this.a).getCount(), FastWebActivity.a(this.a).getLastVisiblePosition() - FastWebActivity.a(this.a).getCount());
+      }
+    }
+    for (;;)
+    {
+      this.a.a(paramAbsListView, paramInt);
+      return;
+      str1 = "list_kandian_native_web";
+      break;
+      label348:
+      AbstractGifImage.pauseAll();
+      DropFrameMonitor.getInstance().startMonitorScene(str2);
+      break label108;
+      label362:
+      FastWebActivity.a(this.a).b();
+    }
   }
 }
 

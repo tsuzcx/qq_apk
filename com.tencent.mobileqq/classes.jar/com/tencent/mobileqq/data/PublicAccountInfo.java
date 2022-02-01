@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
+import ampx;
 import android.content.Context;
 import android.os.SystemClock;
-import anvp;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.EqqAccountInfo;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import nok;
+import npt;
 import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.ConfigGroupInfo;
 import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.ConfigInfo;
 import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.PublicAccountInfo;
@@ -139,8 +139,8 @@ public class PublicAccountInfo
   {
     PublicAccountInfo localPublicAccountInfo = new PublicAccountInfo();
     localPublicAccountInfo.uin = 0L;
-    localPublicAccountInfo.name = paramContext.getString(2131689651);
-    localPublicAccountInfo.displayNumber = paramContext.getString(2131689651);
+    localPublicAccountInfo.name = paramContext.getString(2131689650);
+    localPublicAccountInfo.displayNumber = paramContext.getString(2131689650);
     localPublicAccountInfo.summary = "";
     localPublicAccountInfo.extendType = 1;
     return localPublicAccountInfo;
@@ -167,7 +167,7 @@ public class PublicAccountInfo
     localPublicAccountInfo.mIsAgreeSyncLbs = paramAccountDetail.isAgreeSyncLbs;
     localPublicAccountInfo.mIsSyncLbsSelected = paramAccountDetail.isSyncLbsSelected;
     localPublicAccountInfo.dateTime = paramLong;
-    anvp.a(localPublicAccountInfo);
+    ampx.a(localPublicAccountInfo);
     return localPublicAccountInfo;
   }
   
@@ -721,7 +721,7 @@ public class PublicAccountInfo
   {
     if (2 == this.extendType)
     {
-      if (nok.a) {
+      if (npt.a) {
         break label31;
       }
       if (QLog.isDevelopLevel()) {
@@ -747,7 +747,7 @@ public class PublicAccountInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PublicAccountInfo
  * JD-Core Version:    0.7.0.1
  */

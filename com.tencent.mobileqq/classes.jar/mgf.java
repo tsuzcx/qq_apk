@@ -1,21 +1,57 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.av.ui.MultiMembersAudioUI;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import java.util.ArrayList;
 
-class mgf
-  implements View.OnClickListener
+public class mgf
+  extends ldz
 {
-  mgf(mge parammge) {}
+  public mgf(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.j();
+    if (this.a.b()) {
+      return;
     }
-    bdll.b(null, "CliOper", "", "", "0X8005DF1", "0X8005DF1", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.c(paramInt);
+  }
+  
+  protected void a(long paramLong, ArrayList<lcp> paramArrayList, int paramInt1, int paramInt2)
+  {
+    if (this.a.b()) {
+      return;
+    }
+    this.a.a(paramLong, paramArrayList, paramInt1, paramInt2);
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  {
+    if (this.a.b()) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (paramLong != this.a.jdField_a_of_type_Long);
+      if (paramBoolean)
+      {
+        this.a.b(paramInt);
+        return;
+      }
+    } while (((paramInt != 10) && (paramInt != 1)) || (!MultiVideoEnterPageActivity.a(this.a)));
+    this.a.a(paramInt);
+  }
+  
+  protected void e()
+  {
+    if (this.a.b()) {}
+    while (this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
+    super.e();
+    ArrayList localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.e();
+    localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.a(localArrayList.size(), localArrayList);
+    this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a(localArrayList);
   }
 }
 

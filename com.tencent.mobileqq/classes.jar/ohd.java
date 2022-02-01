@@ -1,22 +1,91 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.qqshop.qq_ad.QQAdGetRsp;
 
 class ohd
-  implements ViewBase.OnClickListener
+  implements BusinessObserver
 {
-  ohd(ohc paramohc) {}
+  ohd(ohc paramohc, ohg paramohg) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramViewBase.getEventAttachedData() == null)
-    {
-      QLog.e("DailyHeaderViewController", 1, "[onClick] attach event data is null");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("EcshopMinusViewChatPie", 2, "isSuccess: " + paramBoolean);
     }
-    ogs.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject);
-    ozs.a(paramViewBase.getNativeView().getContext(), paramViewBase.getEventAttachedData());
+    if (paramInt != 1) {}
+    for (;;)
+    {
+      return;
+      qq_ad.QQAdGetRsp localQQAdGetRsp = new qq_ad.QQAdGetRsp();
+      try
+      {
+        localQQAdGetRsp.mergeFrom(paramBundle.getByteArray("data"));
+        if (localQQAdGetRsp.qgg_msgs.has())
+        {
+          paramBundle = localQQAdGetRsp.qgg_msgs.get();
+          if ((paramBundle != null) && (!paramBundle.isEmpty()))
+          {
+            paramBundle = paramBundle.iterator();
+            paramInt = 0;
+            while (paramBundle.hasNext())
+            {
+              String str = (String)paramBundle.next();
+              MessageForArkApp localMessageForArkApp = (MessageForArkApp)bbli.a(-5008);
+              localMessageForArkApp.msgtype = -5008;
+              ArkAppMessage localArkAppMessage = new ArkAppMessage();
+              localArkAppMessage.fromAppXml(str);
+              localMessageForArkApp.msgData = localArkAppMessage.toBytes();
+              localMessageForArkApp.parse();
+              if ((!TextUtils.isEmpty(localMessageForArkApp.ark_app_message.appName)) && (!TextUtils.isEmpty(localMessageForArkApp.ark_app_message.appView)))
+              {
+                ohc.a(this.jdField_a_of_type_Ohc).add(localMessageForArkApp);
+                localMessageForArkApp.time = System.currentTimeMillis();
+                if (paramInt == 0) {
+                  localMessageForArkApp.saveExtInfoToExtStr("add_title", "minus_view_title_second");
+                }
+              }
+              ohq.a().a.put(Long.valueOf(localMessageForArkApp.uniseq), localMessageForArkApp);
+              paramInt += 1;
+            }
+          }
+        }
+        paramBundle = BaseApplicationImpl.getApplication().getRuntime();
+        if ((paramBundle instanceof QQAppInterface))
+        {
+          paramBundle = (oge)((QQAppInterface)paramBundle).getBusinessHandler(139);
+          if (paramBundle != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("EcshopMinusViewChatPie", 2, "-----deleteRiskAd----");
+            }
+            paramBundle.a(localQQAdGetRsp);
+          }
+        }
+        if (this.jdField_a_of_type_Ohg != null) {
+          this.jdField_a_of_type_Ohg.a(ohc.a(this.jdField_a_of_type_Ohc));
+        }
+        if ((localQQAdGetRsp.qgg_prompt.has()) && (localQQAdGetRsp.qgg_prompt_id.has()))
+        {
+          ohm.a(localQQAdGetRsp.qgg_prompt.get(), localQQAdGetRsp.qgg_prompt_id.get());
+          return;
+        }
+      }
+      catch (Throwable paramBundle)
+      {
+        paramBundle.printStackTrace();
+      }
+    }
   }
 }
 

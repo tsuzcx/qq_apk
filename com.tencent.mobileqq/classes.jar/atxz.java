@@ -1,29 +1,46 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
 
-class atxz
-  extends atxd
+public class atxz
 {
-  public atxz(atwy paramatwy)
-  {
-    super(paramatwy);
-  }
+  private static atxz jdField_a_of_type_Atxz;
+  private GameCenterVideoViewController jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController;
   
-  protected String a()
+  public static atxz a()
   {
-    return "StateSaveToWeiYunByPCWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Atwy.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    try
     {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+      if (jdField_a_of_type_Atxz == null) {
+        jdField_a_of_type_Atxz = new atxz();
+      }
+      atxz localatxz = jdField_a_of_type_Atxz;
+      return localatxz;
     }
-    atwy.b(this.jdField_a_of_type_Atwy, 11, 7);
-    atwy.c(this.jdField_a_of_type_Atwy, 11, 7);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Atwy.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Atxd.a() + "->StateSaveToWeiYunByPC)");
-    this.jdField_a_of_type_Atxd = new atxx(this.jdField_a_of_type_Atwy);
+    finally {}
+  }
+  
+  public GameCenterVideoViewController a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.stop();
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.release();
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController = null;
+    }
+  }
+  
+  public void a(GameCenterVideoViewController paramGameCenterVideoViewController)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != paramGameCenterVideoViewController) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.stop();
+      this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.release();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController = paramGameCenterVideoViewController;
   }
 }
 

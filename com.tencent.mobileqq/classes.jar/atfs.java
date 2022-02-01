@@ -1,43 +1,54 @@
-import android.content.res.Resources;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-public class atfs
-  implements View.OnClickListener
+class atfs
+  implements asrk
 {
-  public atfs(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
+  atfs(atfo paramatfo) {}
   
-  public void onClick(View paramView)
+  public void a(assv paramassv)
   {
-    Object localObject;
-    if (bhnv.d(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity))
+    paramassv = ((asro)paramassv).a();
+    if (paramassv == null) {}
+    label12:
+    do
     {
-      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.d();
-      localObject = Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).obtainMessage();
-      ((Message)localObject).what = 2;
-      ((Message)localObject).arg1 = 2;
-      ((Message)localObject).obj = this.jdField_a_of_type_JavaLangString;
-      Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).sendMessage((Message)localObject);
-      bdll.b(null, "CliOper", "", "", "0X80050EF", "0X80050EF", 2, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      do
+      {
+        do
+        {
+          break label12;
+          do
+          {
+            return;
+          } while ((TextUtils.isEmpty(paramassv.a())) || (aszt.a(paramassv.a()) != 0) || (!TextUtils.isEmpty(paramassv.g())));
+          paramassv = paramassv.a();
+          if (paramassv != null) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.i("DeviceFileModel<FileAssistant>", 2, "mEntity = null");
+        return;
+        if (TextUtils.isEmpty(paramassv.strThumbPath)) {
+          break;
+        }
+      } while (atfo.c(this.a) == null);
+      atfo.d(this.a).a(String.valueOf(paramassv.nSessionId), paramassv.strThumbPath);
       return;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getResources().getString(2131691948);
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 0, (CharSequence)localObject, 0).b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getTitleBarHeight());
-    }
+      paramassv = atfo.a(this.a).getMessageFacade().getMsgItemByUniseq(paramassv.peerUin, paramassv.peerType, paramassv.msgSeq);
+    } while (paramassv == null);
+    paramassv = (MessageForDeviceSingleStruct)paramassv;
+    aave localaave = ((aavk)atfo.b(this.a).getBusinessHandler(49)).a();
+    atfo.a(this.a, localaave.a(paramassv, null, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atfs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,31 @@
-import android.util.SparseArray;
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import androidx.annotation.NonNull;
 
 public class axyc
-  implements biug<oidb_0x8e4.RspBody>
+  extends axvj
 {
-  public axyc(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public axyd a;
+  public axye a;
+  public boolean a;
+  public String d;
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public axyc() {}
+  
+  public axyc(long paramLong, String paramString1, String paramString2, axyd paramaxyd, String paramString3, axye paramaxye, String paramString4, boolean paramBoolean)
   {
-    if ((paramInt == 0) || (paramInt == 1004))
-    {
-      this.a.jdField_a_of_type_Axxr.d();
-      bhsi.a(this.a, this.a.app.getCurrentAccountUin(), false, System.currentTimeMillis());
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_b_of_type_Long = this.a.app.getLongAccountUin();
-      this.a.jdField_b_of_type_JavaLangString = null;
-      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = null;
-      this.a.jdField_a_of_type_JavaUtilList = null;
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      if (this.a.jdField_b_of_type_JavaUtilList != null) {
-        this.a.jdField_b_of_type_JavaUtilList.clear();
-      }
-      this.a.f = false;
-      this.a.a();
-      paramRspBody = this.a.a();
-      if ((paramRspBody != null) && (paramRspBody.jdField_a_of_type_Boolean)) {
-        QQToast.a(this.a, anzj.a(2131703955), 0).a();
-      }
-      this.a.jdField_a_of_type_Axyy.notifyDataSetChanged();
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.a.jdField_b_of_type_AndroidViewView.setEnabled(true);
-      return;
-      this.a.a(paramInt, paramRspBody, (String)GameRoomInviteActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.d = paramString2;
+    this.jdField_a_of_type_Axyd = paramaxyd;
+    this.b = paramString3;
+    this.jdField_a_of_type_Axye = paramaxye;
+    this.c = paramString4;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "AutoStatus [id=" + this.jdField_a_of_type_Long + ", type=" + this.d + ", title=" + this.jdField_a_of_type_JavaLangString + ", category=" + this.jdField_a_of_type_Axyd + ", sensor=" + this.jdField_a_of_type_Axye + ", isHide=" + this.jdField_a_of_type_Boolean + "]";
   }
 }
 

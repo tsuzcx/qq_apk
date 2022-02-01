@@ -1,8 +1,21 @@
-import com.tencent.av.ui.VoiceChangeItemView1;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.text.TextUtils;
 
-public abstract interface mmj
+class mmj
+  extends AccessibilityDelegateCompat
 {
-  public abstract void a(VoiceChangeItemView1 paramVoiceChangeItemView1, int paramInt);
+  mmj(mmf parammmf) {}
+  
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramView = TextUtils.emoticonToTextForTalkBack(((EditText)paramView).getText().toString());
+    paramAccessibilityNodeInfoCompat.setText(paramView);
+    paramAccessibilityNodeInfoCompat.setContentDescription(paramView);
+  }
 }
 
 

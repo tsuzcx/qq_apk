@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.util.Xml;
-import apjh;
-import aplf;
+import aocu;
+import aoes;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.ar.ARRecognition;
 import com.tencent.mobileqq.ar.ARRelationShipAIOMsg;
@@ -25,7 +25,7 @@ import org.xmlpull.v1.XmlPullParser;
 public class ARCommonConfigInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<ARCommonConfigInfo> CREATOR = new aplf();
+  public static final Parcelable.Creator<ARCommonConfigInfo> CREATOR = new aoes();
   public static final long DEFAULT_AR_CLOUD_UPLOAD_CHECK_TIMEOUT = 5000L;
   public static final long DEFAULT_AR_CLOUD_UPLOAD_DELAY = 2000L;
   public static final long DEFAULT_AR_LOCAL_START_DELAY = 0L;
@@ -529,19 +529,19 @@ public class ARCommonConfigInfo
             break;
             if (str5.equalsIgnoreCase("Begin"))
             {
-              ((ARScanAR)localObject1).jdField_a_of_type_Long = apjh.a(localException1.nextText());
+              ((ARScanAR)localObject1).jdField_a_of_type_Long = aocu.a(localException1.nextText());
             }
             else if (str5.equalsIgnoreCase("End"))
             {
-              ((ARScanAR)localObject1).jdField_b_of_type_Long = apjh.a(localException1.nextText());
+              ((ARScanAR)localObject1).jdField_b_of_type_Long = aocu.a(localException1.nextText());
             }
             else if (str5.equalsIgnoreCase("UserGuideBeginTime"))
             {
-              ((ARScanAR)localObject1).jdField_c_of_type_Long = apjh.a(localException1.nextText());
+              ((ARScanAR)localObject1).jdField_c_of_type_Long = aocu.a(localException1.nextText());
             }
             else if (str5.equalsIgnoreCase("UserGuideEndTime"))
             {
-              ((ARScanAR)localObject1).jdField_d_of_type_Long = apjh.a(localException1.nextText());
+              ((ARScanAR)localObject1).jdField_d_of_type_Long = aocu.a(localException1.nextText());
             }
             else if (str5.equalsIgnoreCase("ActType"))
             {
@@ -772,7 +772,7 @@ public class ARCommonConfigInfo
             if (!((String)localObject1).equalsIgnoreCase("Begin")) {
               break label1485;
             }
-            localARCommonConfigInfo.aRCloudBegin = apjh.a(localException1.nextText());
+            localARCommonConfigInfo.aRCloudBegin = aocu.a(localException1.nextText());
           }
           label1485:
           label1663:
@@ -784,7 +784,7 @@ public class ARCommonConfigInfo
               break;
               if (((String)localObject1).equalsIgnoreCase("End"))
               {
-                localARCommonConfigInfo.aRCloudEnd = apjh.a(localException1.nextText());
+                localARCommonConfigInfo.aRCloudEnd = aocu.a(localException1.nextText());
               }
               else
               {
@@ -1056,18 +1056,18 @@ public class ARCommonConfigInfo
     //   187: invokevirtual 558	java/io/BufferedOutputStream:flush	()V
     //   190: aload 7
     //   192: aload 6
-    //   194: invokestatic 563	bhmi:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   194: invokestatic 564	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
     //   197: istore 4
     //   199: aload_1
     //   200: ifnull +7 -> 207
     //   203: aload_1
-    //   204: invokevirtual 564	java/io/BufferedOutputStream:close	()V
+    //   204: invokevirtual 565	java/io/BufferedOutputStream:close	()V
     //   207: iload 4
     //   209: istore_3
     //   210: aload_2
     //   211: ifnull -135 -> 76
     //   214: aload_2
-    //   215: invokevirtual 565	java/io/FileOutputStream:close	()V
+    //   215: invokevirtual 566	java/io/FileOutputStream:close	()V
     //   218: iload 4
     //   220: ireturn
     //   221: astore_0
@@ -1077,7 +1077,7 @@ public class ARCommonConfigInfo
     //   228: ireturn
     //   229: astore_0
     //   230: aload_0
-    //   231: invokevirtual 566	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   231: invokevirtual 567	java/io/UnsupportedEncodingException:printStackTrace	()V
     //   234: aload_1
     //   235: astore_0
     //   236: goto -106 -> 130
@@ -1095,11 +1095,11 @@ public class ARCommonConfigInfo
     //   257: aload_1
     //   258: ifnull +7 -> 265
     //   261: aload_1
-    //   262: invokevirtual 564	java/io/BufferedOutputStream:close	()V
+    //   262: invokevirtual 565	java/io/BufferedOutputStream:close	()V
     //   265: aload_0
     //   266: ifnull +7 -> 273
     //   269: aload_0
-    //   270: invokevirtual 565	java/io/FileOutputStream:close	()V
+    //   270: invokevirtual 566	java/io/FileOutputStream:close	()V
     //   273: iconst_0
     //   274: ireturn
     //   275: astore_1
@@ -1118,11 +1118,11 @@ public class ARCommonConfigInfo
     //   296: aload_1
     //   297: ifnull +7 -> 304
     //   300: aload_1
-    //   301: invokevirtual 564	java/io/BufferedOutputStream:close	()V
+    //   301: invokevirtual 565	java/io/BufferedOutputStream:close	()V
     //   304: aload_2
     //   305: ifnull +7 -> 312
     //   308: aload_2
-    //   309: invokevirtual 565	java/io/FileOutputStream:close	()V
+    //   309: invokevirtual 566	java/io/FileOutputStream:close	()V
     //   312: aload_0
     //   313: athrow
     //   314: astore_1

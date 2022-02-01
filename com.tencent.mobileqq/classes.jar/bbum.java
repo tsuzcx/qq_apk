@@ -1,23 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
 
-public class bbum
-  implements bliz
+class bbum
+  implements Camera.AutoFocusCallback
 {
-  public bbum(SignatureHistoryFragment paramSignatureHistoryFragment, int paramInt1, int paramInt2, int paramInt3) {}
+  bbum(bbuk parambbuk, bbup parambbup) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    if (paramInt == 0)
-    {
-      VasWebviewUtil.reportCommercialDrainage("signature_history", "sheet", "", 0, 0, 0, "", "", "" + this.jdField_a_of_type_Int, "", "", "", "", 0, 0, 0, 0);
-      bhto.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity().app, 0, "signature_history", -1, this.b, this.c, null);
-    }
-    if (SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment) != null) {
-      SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).dismiss();
-    }
+    this.jdField_a_of_type_Bbup.onAutoFocusCallback(paramBoolean, false);
   }
 }
 

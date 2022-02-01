@@ -1,34 +1,32 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.AutoReplyText;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
 import java.util.ArrayList;
+import java.util.List;
 
-class azgk
-  implements View.OnClickListener
+final class azgk
+  implements bczp
 {
-  azgk(azgj paramazgj) {}
+  azgk(List paramList, Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if (azgj.a(this.a).size() > 10) {
-      QQToast.a(azgj.a(this.a), 1, 2131690204, 1).a();
+    azgj.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidAppActivity);
+  }
+  
+  public void a(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
     }
-    while (azgj.a(this.a) == null)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (paramString != null) {
+      localArrayList.add(paramString);
     }
-    if (azgj.a(this.a).size() > 1) {}
-    for (int i = azgj.a(this.a).size() - 1;; i = 0)
-    {
-      AutoReplyText localAutoReplyText = new AutoReplyText("", i);
-      localAutoReplyText.getExtra().putBoolean("addFlag", true);
-      azgj.a(this.a).b(localAutoReplyText, false);
-      break;
-    }
+    azgj.a(localArrayList, this.jdField_a_of_type_AndroidAppActivity);
+  }
+  
+  public void b(int paramInt)
+  {
+    azgj.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

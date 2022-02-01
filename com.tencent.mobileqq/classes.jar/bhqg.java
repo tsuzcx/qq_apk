@@ -1,28 +1,24 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.open.agent.AuthorityControlFragment;
 
-class bhqg
-  implements TextWatcher
+public class bhqg
+  implements DialogInterface.OnCancelListener
 {
-  bhqg(bhpy parambhpy, int paramInt) {}
+  public bhqg(AuthorityControlFragment paramAuthorityControlFragment) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((this.jdField_a_of_type_Bhpy.a.getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
-    {
-      this.jdField_a_of_type_Bhpy.a.setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
-      this.jdField_a_of_type_Bhpy.a.setSelection(this.jdField_a_of_type_Int - 1);
+    paramDialogInterface = this.a.getActivity();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.doOnBackPressed();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhqg
  * JD-Core Version:    0.7.0.1
  */

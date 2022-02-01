@@ -1,8 +1,8 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
-import lff;
-import mct;
+import lez;
+import mcc;
 
 class AVActivity$12
   implements Runnable
@@ -12,34 +12,34 @@ class AVActivity$12
   public void run()
   {
     if (this.this$0.jdField_a_of_type_ComTencentAvVideoController == null) {}
-    lff locallff;
+    lez locallez;
     do
     {
       return;
-      locallff = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
-    } while (!locallff.b());
-    this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(locallff.jdField_d_of_type_JavaLangString, 229);
+      locallez = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
+    } while (!locallez.b());
+    this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(locallez.jdField_d_of_type_JavaLangString, 229);
     this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(229);
-    int i = locallff.jdField_d_of_type_Int;
-    this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(locallff.jdField_d_of_type_JavaLangString, 21);
+    int i = locallez.jdField_d_of_type_Int;
+    this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(locallez.jdField_d_of_type_JavaLangString, 21);
     if (i == 1)
     {
-      locallff.a(this.a, "av.onResume.1", 3);
-      if (!locallff.c()) {
+      locallez.a(this.a, "av.onResume.1", 3);
+      if (!locallez.c()) {
         break label158;
       }
     }
     label158:
-    for (locallff.j = 1;; locallff.j = 3000)
+    for (locallez.j = 1;; locallez.j = 3000)
     {
-      locallff.b(this.a, false);
-      locallff.c("AVActivity.onResume", 0);
-      this.this$0.jdField_a_of_type_Mct.a(this.a);
+      locallez.b(this.a, false);
+      locallez.c("AVActivity.onResume", 0);
+      this.this$0.jdField_a_of_type_Mcc.a(this.a);
       return;
       if (i != 2) {
         break;
       }
-      locallff.a(this.a, "av.onResume.2", 4);
+      locallez.a(this.a, "av.onResume.2", 4);
       break;
     }
   }

@@ -1,12 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Point;
 
-class ahme
-  implements DialogInterface.OnClickListener
+public class ahme
 {
-  ahme(ahlt paramahlt) {}
+  private int jdField_a_of_type_Int;
+  private ahlu jdField_a_of_type_Ahlu;
+  private ahlv jdField_a_of_type_Ahlv;
+  private Point jdField_a_of_type_AndroidGraphicsPoint;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  ahme(Point paramPoint, String paramString, boolean paramBoolean, ahlv paramahlv, ahlu paramahlu, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Ahlv = paramahlv;
+    this.jdField_a_of_type_Ahlu = paramahlu;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

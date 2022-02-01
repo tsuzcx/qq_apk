@@ -3,7 +3,7 @@ package com.tencent.mobileqq.app;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.ArrayList;
 
@@ -14,9 +14,9 @@ class TroopManager$8
   
   public void run()
   {
-    Object localObject = this.this$0.a.a().createEntityManager();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.getStatus() == 1000) {
-      ((EntityManager)localObject).persistOrReplace(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+    Object localObject = this.this$0.a.getEntityManagerFactory().createEntityManager();
+    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.getStatus() == 1000) {
+      ((EntityManager)localObject).persistOrReplace(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo);
     }
     for (;;)
     {
@@ -24,7 +24,7 @@ class TroopManager$8
       localObject = this.this$0.c(this.jdField_a_of_type_JavaLangString);
       new Handler(Looper.getMainLooper()).post(new TroopManager.8.1(this, (ArrayList)localObject));
       return;
-      ((EntityManager)localObject).update(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      ((EntityManager)localObject).update(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo);
     }
   }
 }

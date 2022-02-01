@@ -1,95 +1,73 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextUtils;
-import com.tencent.biz.subscribe.comment.CommentEditText;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.annotation.TargetApi;
+import com.tencent.common.config.AppSetting;
 
-class vkm
-  implements asmr
+@TargetApi(14)
+public class vkm
 {
-  vkm(vkl paramvkl) {}
+  public static final Boolean a;
+  public static final String a;
+  public static boolean a;
+  public static final String b;
+  public static final String c;
+  public static final String d;
+  public static final String e;
+  public static final String f;
+  public static final String g;
+  public static final String h;
+  public static final String i;
+  public static final String j;
+  public static final String k;
+  public static final String l;
+  public static final String m;
+  public static final String n;
+  public static final String o;
+  public static final String p;
+  public static final String q;
+  public static final String r;
+  public static final String s;
+  public static final String t;
+  public static final String u;
   
-  public void a(asmu paramasmu)
+  static
   {
-    int i;
-    int j;
-    if ((paramasmu instanceof assp))
-    {
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
-      if ((i < 0) || (j < 0) || (j < i)) {}
-    }
-    assj localassj;
-    int k;
-    int m;
-    do
-    {
-      this.a.a.getEditableText().replace(i, j, behh.b(((assp)paramasmu).a));
-      do
-      {
-        return;
-      } while (!(paramasmu instanceof assj));
-      localassj = (assj)paramasmu;
-      i = this.a.a.getSelectionStart();
-      j = this.a.a.getSelectionEnd();
-      k = localassj.a;
-      m = localassj.b;
-      if ((i < 0) || (j < 0) || (j < i)) {
-        break;
-      }
-    } while ((k == 2) && (m == -1));
-    if (k == 1) {}
-    for (paramasmu = behh.b(m);; paramasmu = behh.a(m))
-    {
-      this.a.a.getEditableText().replace(i, j, paramasmu);
-      this.a.a.requestFocus();
-      if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-        break;
-      }
-      localassj.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
-      return;
-    }
+    jdField_a_of_type_JavaLangString = amtj.a(2131709924);
+    b = amtj.a(2131709921);
+    jdField_a_of_type_Boolean = AppSetting.a().contains("r");
+    c = aktw.jdField_a_of_type_JavaLangString + "/qqstory/";
+    d = c + "debug/";
+    e = c + "upload/";
+    f = e + ".music/";
+    g = c + ".tmp/";
+    h = g + "download/preload/";
+    i = g + "download/mine/";
+    j = g + ".tmp/";
+    k = j + "watermark/";
+    l = j + "merge/";
+    m = j + "audio/";
+    n = j + "video/";
+    o = j + "slideshow/";
+    p = j + "textfilter/";
+    q = j + "pk/result/";
+    r = k + "source/";
+    s = k + "doodle/";
+    t = k + "composite/";
+    u = k + "download/";
+    jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
   }
   
-  public void a(asmu paramasmu1, asmu paramasmu2, Drawable paramDrawable) {}
-  
-  public boolean a(asmu paramasmu)
+  public static String a(int paramInt)
   {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a.a.getSelectionStart() == 0) {}
-    for (;;)
+    switch (paramInt)
     {
-      return;
-      try
-      {
-        Editable localEditable = this.a.a.getText();
-        int i = this.a.a.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.a.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+    default: 
+      return "UNKNOWN";
+    case 0: 
+      return "VIDEO";
+    case 1: 
+      return "MASK_PIC";
     }
+    return "THUMBNAIL";
   }
-  
-  public void b(asmu paramasmu) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 

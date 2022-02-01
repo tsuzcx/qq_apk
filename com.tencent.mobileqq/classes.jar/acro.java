@@ -1,11 +1,44 @@
-import com.tencent.gdtad.api.motivevideo.GdtDemoMvFragment;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acro
-  implements acpe
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public acro(GdtDemoMvFragment paramGdtDemoMvFragment) {}
+  public acro(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onDismiss() {}
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    if (AppSetting.c) {
+      this.a.g.setContentDescription(amtj.a(2131699928));
+    }
+    QQAppInterface localQQAppInterface = this.a.app;
+    int i;
+    if (paramBoolean)
+    {
+      i = 1;
+      bcef.b(localQQAppInterface, "CliOper", "", "", "Shake_screenshot", "Shake_screenshot_switch", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131694546), "qqsetting_screenshot_key", paramBoolean);
+      if (!paramBoolean) {
+        break label106;
+      }
+      this.a.turnOnShake();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      i = 0;
+      break;
+      label106:
+      this.a.turnOffShake();
+    }
+  }
 }
 
 

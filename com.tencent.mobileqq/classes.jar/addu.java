@@ -1,20 +1,22 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.Card;
 
 public class addu
-  implements adci
+  extends CardObserver
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    ((bduh)paramQQAppInterface.getManager(17)).a(paramMsgType0x210.vProtobuf);
-  }
+  public addu(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      if ((paramBoolean) && (paramObject != null) && (DiscussionInfoCardActivity.a(this.a) != null)) {
+        DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+      }
+      return;
+    }
   }
 }
 

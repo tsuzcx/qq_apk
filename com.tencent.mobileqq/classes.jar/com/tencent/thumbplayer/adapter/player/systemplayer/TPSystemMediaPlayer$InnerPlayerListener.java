@@ -22,47 +22,50 @@ class TPSystemMediaPlayer$InnerPlayerListener
   
   private int heightToCgiHeight(int paramInt)
   {
-    if (TPSystemMediaPlayer.access$2600(this.this$0) > 0) {
-      paramInt = TPSystemMediaPlayer.access$2600(this.this$0);
+    if (TPSystemMediaPlayer.access$3000(this.this$0) > 0) {
+      paramInt = TPSystemMediaPlayer.access$3000(this.this$0);
     }
     return paramInt;
   }
   
   private int widthToCgiWidth(int paramInt)
   {
-    if (TPSystemMediaPlayer.access$2500(this.this$0) > 0) {
-      paramInt = TPSystemMediaPlayer.access$2500(this.this$0);
+    if (TPSystemMediaPlayer.access$2900(this.this$0) > 0) {
+      paramInt = TPSystemMediaPlayer.access$2900(this.this$0);
     }
     return paramInt;
   }
   
-  public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
-  {
-    long l2 = ((float)(this.this$0.getDurationMs() * paramInt) / 100.0F);
-    paramMediaPlayer = this.this$0;
-    long l1 = l2;
-    if (l2 <= 0L) {
-      l1 = TPSystemMediaPlayer.access$2700(this.this$0);
-    }
-    TPSystemMediaPlayer.access$2702(paramMediaPlayer, l1);
-  }
+  public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt) {}
   
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    TPLogUtil.i(TPSystemMediaPlayer.access$400(this.this$0), "onCompletion, : ");
-    TPSystemMediaPlayer.access$302(this.this$0, TPSystemMediaPlayer.PlayerState.COMPLETE);
-    TPSystemMediaPlayer.access$1600(this.this$0);
-    if (TPSystemMediaPlayer.access$1700(this.this$0) != null) {
-      TPSystemMediaPlayer.access$1700(this.this$0).onCompletion();
+    if (TPSystemMediaPlayer.access$1800(this.this$0)) {
+      TPLogUtil.w(TPSystemMediaPlayer.access$500(this.this$0), "onCompletion, unknown err.");
     }
+    do
+    {
+      return;
+      TPLogUtil.i(TPSystemMediaPlayer.access$500(this.this$0), "onCompletion.");
+      TPSystemMediaPlayer.access$302(this.this$0, TPSystemMediaPlayer.PlayerState.COMPLETE);
+      TPSystemMediaPlayer.access$600(this.this$0);
+      TPSystemMediaPlayer.access$2000(this.this$0);
+      paramMediaPlayer = TPSystemMediaPlayer.access$2100(this.this$0);
+    } while (paramMediaPlayer == null);
+    paramMediaPlayer.onCompletion();
   }
   
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
     int j = 2000;
-    TPLogUtil.i(TPSystemMediaPlayer.access$400(this.this$0), "onError, what: " + paramInt1 + ", extra: " + paramInt2);
-    TPSystemMediaPlayer.access$600(this.this$0);
-    TPSystemMediaPlayer.access$1600(this.this$0);
+    if ((TPSystemMediaPlayer.access$300(this.this$0) == TPSystemMediaPlayer.PlayerState.COMPLETE) || (TPSystemMediaPlayer.access$300(this.this$0) == TPSystemMediaPlayer.PlayerState.STOPPED) || (TPSystemMediaPlayer.access$300(this.this$0) == TPSystemMediaPlayer.PlayerState.RELEASE) || (TPSystemMediaPlayer.access$300(this.this$0) == TPSystemMediaPlayer.PlayerState.IDLE) || (TPSystemMediaPlayer.access$300(this.this$0) == TPSystemMediaPlayer.PlayerState.ERROR))
+    {
+      TPLogUtil.i(TPSystemMediaPlayer.access$500(this.this$0), "onError, illegal state:" + TPSystemMediaPlayer.access$300(this.this$0) + ", what:" + paramInt1 + ", extra:" + paramInt2);
+      return true;
+    }
+    TPLogUtil.i(TPSystemMediaPlayer.access$500(this.this$0), "onError, what: " + paramInt1 + ", extra: " + paramInt2);
+    TPSystemMediaPlayer.access$700(this.this$0);
+    TPSystemMediaPlayer.access$2000(this.this$0);
     TPSystemMediaPlayer.access$302(this.this$0, TPSystemMediaPlayer.PlayerState.ERROR);
     int i = j;
     switch (paramInt2)
@@ -78,9 +81,12 @@ class TPSystemMediaPlayer$InnerPlayerListener
     }
     for (;;)
     {
-      if (TPSystemMediaPlayer.access$700(this.this$0) != null) {
-        TPSystemMediaPlayer.access$700(this.this$0).onError(i, TPSystemMediaPlayer.access$800(this.this$0, paramInt1), paramInt2, 0L);
+      TPSystemMediaPlayer.access$600(this.this$0);
+      paramMediaPlayer = TPSystemMediaPlayer.access$800(this.this$0);
+      if (paramMediaPlayer == null) {
+        break;
       }
+      paramMediaPlayer.onError(i, TPSystemMediaPlayer.access$900(paramInt1), paramInt2, 0L);
       return true;
       i = 2001;
       continue;
@@ -90,7 +96,7 @@ class TPSystemMediaPlayer$InnerPlayerListener
   
   public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    TPLogUtil.i(TPSystemMediaPlayer.access$400(this.this$0), "mediaplayer, onInfo. what:" + paramInt1 + ", extra:" + paramInt2);
+    TPLogUtil.i(TPSystemMediaPlayer.access$500(this.this$0), "mediaplayer, onInfo. what:" + paramInt1 + ", extra:" + paramInt2);
     switch (paramInt1)
     {
     default: 
@@ -98,17 +104,18 @@ class TPSystemMediaPlayer$InnerPlayerListener
       if (paramInt1 != -1)
       {
         if ((200 != paramInt1) && (201 != paramInt1)) {
-          break label307;
+          break label325;
         }
-        if (!TPSystemMediaPlayer.access$1800(this.this$0))
+        if (!TPSystemMediaPlayer.access$2200(this.this$0))
         {
           if (200 != paramInt1) {
-            break label297;
+            break label306;
           }
-          TPSystemMediaPlayer.access$1900(this.this$0);
-          label125:
-          if (TPSystemMediaPlayer.access$2000(this.this$0) != null) {
-            TPSystemMediaPlayer.access$2000(this.this$0).onInfo(paramInt1, 0L, 0L, null);
+          TPSystemMediaPlayer.access$1202(this.this$0, true);
+          TPSystemMediaPlayer.access$2300(this.this$0);
+          label134:
+          if (TPSystemMediaPlayer.access$2400(this.this$0) != null) {
+            TPSystemMediaPlayer.access$2400(this.this$0).onInfo(paramInt1, 0L, 0L, null);
           }
         }
       }
@@ -120,12 +127,12 @@ class TPSystemMediaPlayer$InnerPlayerListener
       {
         paramInt1 = widthToCgiWidth(paramMediaPlayer.getVideoWidth());
         paramInt2 = heightToCgiHeight(paramMediaPlayer.getVideoHeight());
-        if (((paramInt2 != TPSystemMediaPlayer.access$2100(this.this$0)) || (paramInt1 != TPSystemMediaPlayer.access$2200(this.this$0))) && (paramInt2 > 0) && (paramInt1 > 0))
+        if (((paramInt2 != TPSystemMediaPlayer.access$2500(this.this$0)) || (paramInt1 != TPSystemMediaPlayer.access$2600(this.this$0))) && (paramInt2 > 0) && (paramInt1 > 0))
         {
-          TPSystemMediaPlayer.access$2102(this.this$0, paramInt2);
-          TPSystemMediaPlayer.access$2202(this.this$0, paramInt1);
-          if (TPSystemMediaPlayer.access$2300(this.this$0) != null) {
-            TPSystemMediaPlayer.access$2300(this.this$0).onVideoSizeChanged(TPSystemMediaPlayer.access$2200(this.this$0), TPSystemMediaPlayer.access$2100(this.this$0));
+          TPSystemMediaPlayer.access$2502(this.this$0, paramInt2);
+          TPSystemMediaPlayer.access$2602(this.this$0, paramInt1);
+          if (TPSystemMediaPlayer.access$2700(this.this$0) != null) {
+            TPSystemMediaPlayer.access$2700(this.this$0).onVideoSizeChanged(TPSystemMediaPlayer.access$2600(this.this$0), TPSystemMediaPlayer.access$2500(this.this$0));
           }
         }
       }
@@ -136,15 +143,16 @@ class TPSystemMediaPlayer$InnerPlayerListener
       break;
       paramInt1 = 106;
       break;
-      TPSystemMediaPlayer.access$1202(this.this$0, true);
+      TPSystemMediaPlayer.access$1602(this.this$0, true);
       paramInt1 = -1;
       break;
-      label297:
-      TPSystemMediaPlayer.access$1100(this.this$0);
-      break label125;
-      label307:
-      if (TPSystemMediaPlayer.access$2000(this.this$0) != null) {
-        TPSystemMediaPlayer.access$2000(this.this$0).onInfo(paramInt1, 0L, 0L, null);
+      label306:
+      TPSystemMediaPlayer.access$1202(this.this$0, false);
+      TPSystemMediaPlayer.access$1300(this.this$0);
+      break label134;
+      label325:
+      if (TPSystemMediaPlayer.access$2400(this.this$0) != null) {
+        TPSystemMediaPlayer.access$2400(this.this$0).onInfo(paramInt1, 0L, 0L, null);
       }
     }
   }
@@ -153,54 +161,55 @@ class TPSystemMediaPlayer$InnerPlayerListener
   {
     if (TPSystemMediaPlayer.access$300(this.this$0) != TPSystemMediaPlayer.PlayerState.PREPARING)
     {
-      TPLogUtil.i(TPSystemMediaPlayer.access$400(this.this$0), "onPrepared() is called in a wrong situation, mState = " + TPSystemMediaPlayer.access$300(this.this$0));
+      TPLogUtil.i(TPSystemMediaPlayer.access$500(this.this$0), "onPrepared() is called in a wrong situation, mState = " + TPSystemMediaPlayer.access$300(this.this$0));
       return;
     }
-    long l = TPSystemMediaPlayer.access$500(this.this$0).getDuration();
+    TPSystemMediaPlayer.access$1402(this.this$0, TPSystemMediaPlayer.PlayerState.PREPARED);
+    long l = TPSystemMediaPlayer.access$1500(this.this$0).getDuration();
     if (l <= 0L) {
-      TPSystemMediaPlayer.access$1202(this.this$0, true);
+      TPSystemMediaPlayer.access$1602(this.this$0, true);
     }
-    TPLogUtil.i(TPSystemMediaPlayer.access$400(this.this$0), "onPrepared() , mStartPositionMs=" + TPSystemMediaPlayer.access$1300(this.this$0) + ", duration:" + l + ", mIsLive:" + TPSystemMediaPlayer.access$1400(this.this$0));
-    TPSystemMediaPlayer.access$600(this.this$0);
-    TPSystemMediaPlayer.access$1500(this.this$0);
+    TPLogUtil.i(TPSystemMediaPlayer.access$500(this.this$0), "onPrepared() , mStartPositionMs=" + TPSystemMediaPlayer.access$1700(this.this$0) + ", duration:" + l + ", mIsLive:" + TPSystemMediaPlayer.access$1800(this.this$0));
+    TPSystemMediaPlayer.access$700(this.this$0);
+    TPSystemMediaPlayer.access$1900(this.this$0);
   }
   
   public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    if (TPSystemMediaPlayer.access$500(this.this$0) == null) {}
+    if (TPSystemMediaPlayer.access$1500(this.this$0) == null) {}
     do
     {
       return;
-      TPLogUtil.i(TPSystemMediaPlayer.access$400(this.this$0), "onSeekComplete().");
-    } while ((TPSystemMediaPlayer.PlayerState.PREPARED == TPSystemMediaPlayer.access$300(this.this$0)) || (TPSystemMediaPlayer.access$2400(this.this$0) == null));
-    TPSystemMediaPlayer.access$2400(this.this$0).onSeekComplete();
+      TPLogUtil.i(TPSystemMediaPlayer.access$500(this.this$0), "onSeekComplete().");
+    } while ((TPSystemMediaPlayer.PlayerState.PREPARED == TPSystemMediaPlayer.access$300(this.this$0)) || (TPSystemMediaPlayer.access$2800(this.this$0) == null));
+    TPSystemMediaPlayer.access$2800(this.this$0).onSeekComplete();
   }
   
   public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
     if ((paramInt1 == 0) || (paramInt2 == 0))
     {
-      TPLogUtil.e(TPSystemMediaPlayer.access$400(this.this$0), "onVideoSizeChanged() size error, width:" + paramInt1 + " height:" + paramInt2);
+      TPLogUtil.e(TPSystemMediaPlayer.access$500(this.this$0), "onVideoSizeChanged() size error, width:" + paramInt1 + " height:" + paramInt2);
       return;
     }
     paramInt1 = widthToCgiWidth(paramInt1);
     paramInt2 = heightToCgiHeight(paramInt2);
     try
     {
-      if (((paramInt1 != TPSystemMediaPlayer.access$2200(this.this$0)) || (paramInt2 != TPSystemMediaPlayer.access$2100(this.this$0))) && (paramInt2 > 0) && (paramInt1 > 0)) {
-        TPSystemMediaPlayer.access$2300(this.this$0).onVideoSizeChanged(paramInt1, paramInt2);
+      if (((paramInt1 != TPSystemMediaPlayer.access$2600(this.this$0)) || (paramInt2 != TPSystemMediaPlayer.access$2500(this.this$0))) && (paramInt2 > 0) && (paramInt1 > 0)) {
+        TPSystemMediaPlayer.access$2700(this.this$0).onVideoSizeChanged(paramInt1, paramInt2);
       }
     }
     catch (Exception paramMediaPlayer)
     {
       for (;;)
       {
-        TPLogUtil.w(TPSystemMediaPlayer.access$400(this.this$0), paramMediaPlayer.toString());
+        TPLogUtil.w(TPSystemMediaPlayer.access$500(this.this$0), paramMediaPlayer.toString());
       }
     }
-    TPSystemMediaPlayer.access$2202(this.this$0, paramInt1);
-    TPSystemMediaPlayer.access$2102(this.this$0, paramInt2);
-    TPLogUtil.i(TPSystemMediaPlayer.access$400(this.this$0), "onVideoSizeChanged(), width:" + paramInt1 + " height:" + paramInt2);
+    TPSystemMediaPlayer.access$2602(this.this$0, paramInt1);
+    TPSystemMediaPlayer.access$2502(this.this$0, paramInt2);
+    TPLogUtil.i(TPSystemMediaPlayer.access$500(this.this$0), "onVideoSizeChanged(), width:" + paramInt1 + " height:" + paramInt2);
   }
 }
 

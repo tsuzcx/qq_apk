@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.utils.confighandler.NormalConfigHandler.GetConfigListen;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig;
+import com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler;
 
 public class bgaw
-  implements bljd
+  implements NormalConfigHandler.GetConfigListen<QAVFunCallConfig>
 {
-  public bgaw(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  public bgaw(QAVFunCallHandler paramQAVFunCallHandler) {}
   
-  public void ak_()
+  public void a(AppInterface paramAppInterface, QAVFunCallConfig paramQAVFunCallConfig)
   {
-    this.a.a.a();
-    this.a.i();
+    this.a.setConfig(paramQAVFunCallConfig);
+    this.a.onGetConfig(paramAppInterface);
+    QAVFunCallHandler.access$000(this.a, "onGetConfig", paramAppInterface);
   }
 }
 

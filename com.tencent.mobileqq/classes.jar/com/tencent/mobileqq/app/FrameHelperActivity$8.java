@@ -14,7 +14,7 @@ class FrameHelperActivity$8
     do
     {
       return;
-      this.this$0.p();
+      this.this$0.q();
     } while (this.this$0.a == null);
     this.this$0.a.sendEmptyMessage(9);
   }

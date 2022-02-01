@@ -1,23 +1,20 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
+import com.tencent.mobileqq.widget.TabBarView2;
+
 public class bdxe
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public int d = 0;
+  public bdxe(NewTroopCreateActivity paramNewTroopCreateActivity) {}
   
-  public bdxe()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("result:").append(this.jdField_b_of_type_Int).append(" mainAccount:").append(this.jdField_a_of_type_JavaLangString).append(" errorType:").append(this.jdField_a_of_type_Int).append(" errorMsg:").append(this.jdField_b_of_type_JavaLangString).append(" interval:").append(this.c).append(" allLastMsgTime:").append(this.d);
-    return localStringBuilder.toString();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+    paramValueAnimator.topMargin = i;
+    this.a.a.setLayoutParams(paramValueAnimator);
   }
 }
 

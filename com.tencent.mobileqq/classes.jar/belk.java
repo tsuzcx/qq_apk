@@ -1,28 +1,17 @@
-import androidx.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class belk
+  implements View.OnClickListener
 {
-  private StringBuilder a = new StringBuilder();
+  public belk(ReciteFragment paramReciteFragment) {}
   
-  public void a(belm parambelm)
+  public void onClick(View paramView)
   {
-    this.a.append(parambelm.jdField_a_of_type_JavaLangString);
-    if (parambelm.b > 0) {
-      this.a.append('|').append(beks.a(parambelm.b));
-    }
-    this.a.append(parambelm.jdField_a_of_type_Char);
-    this.a.append(beks.a(parambelm.jdField_a_of_type_Int));
-  }
-  
-  public void c()
-  {
-    this.a.delete(0, this.a.length());
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return this.a.toString();
+    this.a.m();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

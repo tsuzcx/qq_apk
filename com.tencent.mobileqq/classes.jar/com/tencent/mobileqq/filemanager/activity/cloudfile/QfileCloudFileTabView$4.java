@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.cloudfile;
 
-import auoy;
+import atbg;
 import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,7 +19,7 @@ class QfileCloudFileTabView$4
     while (localIterator.hasNext())
     {
       WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)localIterator.next();
-      String str = auoy.a(localWeiYunFileInfo.b);
+      String str = atbg.a(localWeiYunFileInfo.b);
       if (!this.this$0.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
         this.this$0.jdField_a_of_type_JavaUtilLinkedHashMap.put(str, new ArrayList());
       }
@@ -32,7 +32,7 @@ class QfileCloudFileTabView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView.4
  * JD-Core Version:    0.7.0.1
  */

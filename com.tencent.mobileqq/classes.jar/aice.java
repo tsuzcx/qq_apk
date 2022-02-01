@@ -1,53 +1,24 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.24.1;
+import com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.XListView;
 
 public class aice
-  implements aibl
+  extends amyh
 {
-  aice(aibr paramaibr) {}
+  public aice(PublicView paramPublicView) {}
   
-  public void a(int paramInt)
+  public void onUpdateRecommendList(boolean paramBoolean)
   {
-    View localView;
-    if (paramInt == 0)
+    if (true == paramBoolean)
     {
-      localView = this.a.a().findViewById(2131367352);
-      if (localView != null) {}
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localView.setVisibility(0);
-          AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-          localAlphaAnimation.setDuration(300L);
-          localView.startAnimation(localAlphaAnimation);
-          localView.postDelayed(new AIOGalleryScene.24.1(this, localView), 8000L);
-          return;
-          if (1 != paramInt) {
-            break;
-          }
-        } while ((this.a.jdField_a_of_type_Bdcy == null) || (((aibr.J(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)aibr.K(this.a)).b)) || (this.a.c));
-        this.a.c(null);
-        return;
-        if (2 != paramInt) {
-          break;
-        }
-        this.a.a(null);
-      } while ((this.a.jdField_a_of_type_Bdcy == null) || (((aibr.L(this.a) instanceof AIOGalleryActivity)) && (((AIOGalleryActivity)aibr.M(this.a)).b)) || (this.a.c));
-      this.a.jdField_a_of_type_Bdcy.b(this.a.jdField_a_of_type_Aicx.a().jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData);
+      PublicView.a(this.a).a(0);
+      PublicView.a(this.a).sendEmptyMessage(1);
+      PublicView.a(this.a).sendEmptyMessage(3);
       return;
-    } while (3 != paramInt);
-    this.a.jdField_a_of_type_Aicx.a().jdField_a_of_type_Aidx.i = true;
-    this.a.e.setText("");
-    this.a.u();
+    }
+    PublicView.a(this.a).springBackOverScrollHeaderView();
+    PublicView.a(this.a, 1, 2131718604);
+    PublicView.a(this.a);
   }
 }
 

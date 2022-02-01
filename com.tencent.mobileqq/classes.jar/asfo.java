@@ -1,29 +1,10 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
 
-class asfo
-  implements aset
+public abstract interface asfo
 {
-  asfo(asfn paramasfn) {}
+  public abstract void a(String paramString, Bundle paramBundle);
   
-  public void a(List<asmu> paramList)
-  {
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = new ArrayList();
-    }
-    QLog.d("FavEmoRoamingHandler", 1, new Object[] { "fav emoticon size:", Integer.valueOf(((List)localObject).size()) });
-    if (((List)localObject).size() >= asha.a) {
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CFA", "0X8005CFA", 0, 0, "", "", "", "");
-    }
-    if (((List)localObject).size() >= asha.b) {
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CFB", "0X8005CFB", 0, 0, "", "", "", "");
-    }
-    if (this.a.jdField_a_of_type_Asfd != null) {
-      this.a.jdField_a_of_type_Asfd.b((List)localObject);
-    }
-  }
+  public abstract void a(String paramString, boolean paramBoolean);
 }
 
 

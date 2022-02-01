@@ -1,23 +1,9 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-
-class tru
-  extends rlt
+public class tru
 {
-  tru(trt paramtrt) {}
-  
-  public void a(rwf paramrwf, Object paramObject)
-  {
-    QLog.d("KandianAdPandent", 2, "onVideoPrepared");
-    trt.a(this.a).d();
-  }
-  
-  public void b(rwf paramrwf)
-  {
-    super.b(paramrwf);
-    QLog.d("KandianAdPandent", 2, "onCompletion");
-    trt.a(this.a).sendEmptyMessage(2);
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

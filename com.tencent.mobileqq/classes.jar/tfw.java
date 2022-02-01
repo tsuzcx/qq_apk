@@ -1,31 +1,28 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 
-class tfw
-  implements bjig
+public class tfw
+  implements View.OnLayoutChangeListener
 {
-  tfw(tfv paramtfv) {}
+  public tfw(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    boolean bool = true;
-    if ((tfv.a(this.a) == null) || (!tfv.a(this.a).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    if ((CommonSuspensionGestureLayout.a(this.a) != null) && ((CommonSuspensionGestureLayout.a(this.a).getLayoutParams() instanceof FrameLayout.LayoutParams)))
     {
-    case -1: 
-    default: 
-      zyx.a(1, 2131718139);
-      bool = false;
+      paramView = (FrameLayout.LayoutParams)CommonSuspensionGestureLayout.a(this.a).getLayoutParams();
+      CommonSuspensionGestureLayout.a(this.a, CommonSuspensionGestureLayout.a(CommonSuspensionGestureLayout.a(this.a)));
+      if (paramView.bottomMargin != CommonSuspensionGestureLayout.a(this.a))
+      {
+        paramView.gravity = 80;
+        paramView.bottomMargin = CommonSuspensionGestureLayout.a(CommonSuspensionGestureLayout.a(this.a));
+        CommonSuspensionGestureLayout.a(this.a).setLayoutParams(paramView);
+      }
+      this.a.c();
     }
-    for (;;)
-    {
-      uao.a.a(bool);
-      return;
-      zyx.a(2, 2131718157);
-      continue;
-      bool = false;
-    }
+    this.a.a();
   }
 }
 

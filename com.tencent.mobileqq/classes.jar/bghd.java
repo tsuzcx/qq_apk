@@ -1,60 +1,29 @@
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONObject;
 
-public class bghd
-  extends WebViewPlugin
+class bghd
+  implements URLDrawableDownListener
 {
-  protected aasb a;
-  protected AtomicBoolean a;
+  bghd(bghc parambghc, String paramString, URLImageView paramURLImageView) {}
   
-  public bghd()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    QLog.e("friends_king", 1, "namePlateOfKing drawable fail url = " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    boolean bool = false;
-    if ((!"GroupAppPanel".equals(paramString2)) || (("launchGroupApp".equals(paramString3)) && (paramVarArgs.length > 0) && (this.jdField_a_of_type_Aasb != null))) {}
-    try
-    {
-      paramString3 = new JSONObject(paramVarArgs[0]);
-      paramJsBridgeListener = paramString3.getString("groupCode");
-      paramString1 = paramString3.getString("appID");
-      paramString2 = paramString3.getString("url");
-      paramString3 = paramString3.getString("source");
-      this.jdField_a_of_type_Aasb.a(paramJsBridgeListener, paramString1, paramString2, paramString3);
-      bool = true;
-      return bool;
-    }
-    catch (Exception paramJsBridgeListener)
-    {
-      for (;;)
-      {
-        paramJsBridgeListener.printStackTrace();
-        QLog.e("TroopAppPanelJsPlugin", 2, "launchGroupApp: args error");
-      }
-    }
-  }
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
   
-  public void onCreate()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-    {
-      this.jdField_a_of_type_Aasb = aasb.a();
-      this.jdField_a_of_type_Aasb.a();
-    }
-  }
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void onDestroy()
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    super.onDestroy();
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      this.jdField_a_of_type_Aasb.b();
-    }
+    this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
   }
 }
 

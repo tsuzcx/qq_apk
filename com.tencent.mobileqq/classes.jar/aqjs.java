@@ -1,107 +1,90 @@
-import com.tencent.mm.vfs.VFSFile;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.1;
-import com.tencent.mobileqq.data.RockDownloadInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import mqq.manager.Manager;
 
 public class aqjs
-  implements Manager
 {
-  private QQAppInterface a;
+  private boolean a;
+  private boolean b;
   
-  public aqjs(QQAppInterface paramQQAppInterface)
+  public static aqjs a(aptx[] paramArrayOfaptx)
   {
-    this.a = paramQQAppInterface;
-    ThreadManagerV2.executeOnFileThread(new RockDownloaderManager.1(this));
-  }
-  
-  private void a()
-  {
-    long l = System.currentTimeMillis();
-    Object localObject1 = aqjp.a().query(RockDownloadInfo.class);
-    RockDownloadInfo localRockDownloadInfo;
-    int i;
-    if (localObject1 != null)
-    {
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localRockDownloadInfo = (RockDownloadInfo)((Iterator)localObject1).next();
-        Object localObject2;
-        if (localRockDownloadInfo.endTime + 604800L < l / 1000L)
-        {
-          localObject2 = new VFSFile(localRockDownloadInfo.localPath);
-          if (((VFSFile)localObject2).exists()) {
-            ((VFSFile)localObject2).delete();
-          }
-          aqjp.a().remove(localRockDownloadInfo);
-          if (QLog.isColorLevel()) {
-            QLog.d("RockDownloaderManager", 2, new Object[] { "remove info because has overdue", localRockDownloadInfo });
-          }
-        }
-        else
-        {
-          localObject2 = bhny.d(this.a.getApp(), localRockDownloadInfo.getPackageName());
-          try
-          {
-            i = Integer.parseInt((String)localObject2);
-            if ((localRockDownloadInfo.realVersionCode <= 0) || (i < localRockDownloadInfo.realVersionCode)) {
-              continue;
-            }
-            localObject2 = new VFSFile(localRockDownloadInfo.localPath);
-            if (((VFSFile)localObject2).exists()) {
-              ((VFSFile)localObject2).delete();
-            }
-            aqjp.a().remove(localRockDownloadInfo);
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("RockDownloaderManager", 2, new Object[] { "remove info because has install", localRockDownloadInfo });
-          }
-          catch (NumberFormatException localNumberFormatException) {}
-          if (QLog.isColorLevel()) {
-            QLog.d("RockDownloaderManager", 2, new Object[] { "get install info error", localRockDownloadInfo, " error=", localNumberFormatException.getMessage() });
-          }
-        }
-      }
+    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length <= 0)) {
+      return null;
     }
-    localObject1 = new VFSFile(aqjp.a());
-    if (((VFSFile)localObject1).exists())
+    aqjs localaqjs = new aqjs();
+    ArrayList localArrayList = new ArrayList();
+    int j = paramArrayOfaptx.length;
+    int i = 0;
+    while (i < j)
     {
-      localObject1 = ((VFSFile)localObject1).listFiles();
-      if ((localObject1 != null) && (localObject1.length > 0))
+      localArrayList.add(paramArrayOfaptx[i].a);
+      i += 1;
+    }
+    if (localArrayList.size() > 0)
+    {
+      paramArrayOfaptx = new HashMap();
+      i = 0;
+      if (i < localArrayList.size())
       {
-        int j = localObject1.length;
-        i = 0;
-        while (i < j)
+        Object localObject = (String)localArrayList.get(i);
+        if (QLog.isColorLevel()) {
+          QLog.d("TencentDocConfigBean", 2, "handleTencentDocsConfigCmd receiveAllConfigs |type: 294,content: " + (String)localObject);
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject)) {}
+        for (;;)
         {
-          localRockDownloadInfo = localObject1[i];
-          if (localRockDownloadInfo.lastModified() + 604800000L < l)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("RockDownloaderManager", 2, new Object[] { "remove file", localRockDownloadInfo.getAbsolutePath() });
-            }
-            localRockDownloadInfo.delete();
-          }
           i += 1;
+          break;
+          localObject = ((String)localObject).split("=");
+          if (localObject.length == 2)
+          {
+            if (!TextUtils.isEmpty(localObject[1])) {
+              localObject[1] = localObject[1].trim();
+            }
+            paramArrayOfaptx.put(localObject[0], localObject[1]);
+            if (QLog.isColorLevel()) {
+              QLog.i("TencentDocConfigBean", 2, "handleTencentDocsConfigCmd, name=" + localObject[0] + ", val=" + localObject[1]);
+            }
+          }
         }
+      }
+      localaqjs.a = "1".equals(paramArrayOfaptx.get("enable_tencent_docs_assistant"));
+      localaqjs.b = "1".equals(paramArrayOfaptx.get("preload_tool_process"));
+      paramArrayOfaptx = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramArrayOfaptx instanceof QQAppInterface))
+      {
+        paramArrayOfaptx = (QQAppInterface)paramArrayOfaptx;
+        bcvs.b(paramArrayOfaptx, localaqjs.b);
+        bcvs.a(paramArrayOfaptx, localaqjs.a);
+      }
+    }
+    for (;;)
+    {
+      return localaqjs;
+      if (QLog.isColorLevel()) {
+        QLog.d("TencentDocConfigBean", 2, "handleTencentDocsConfigCmd receiveAllConfigs|type: 294,content_list is empty ");
       }
     }
   }
   
-  public void onDestroy()
+  public boolean a()
   {
-    this.a = null;
+    return this.a;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqjs
  * JD-Core Version:    0.7.0.1
  */

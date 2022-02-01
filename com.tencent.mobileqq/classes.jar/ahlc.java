@@ -1,17 +1,84 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import java.util.List;
 
-public class ahlc
-  implements bizc
+class ahlc
+  extends anax
 {
-  public ahlc(LightVideoItemBuilder paramLightVideoItemBuilder, ahld paramahld) {}
+  ahlc(ahkz paramahkz) {}
   
-  public void a(String paramString)
+  protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ahld.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahld.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Ahld.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
+    
+    if (this.a.sessionInfo == null) {
+      return;
+    }
+    String str = this.a.sessionInfo.curFriendUin;
+    if (this.a.sessionInfo.curType == 1006) {
+      str = this.a.sessionInfo.contactUin;
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      int k;
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        k = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (bftf.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k == 0) {
+        break;
+      }
+      ChatActivityUtils.a(this.a.mActivity, paramBoolean, false);
+      if (!paramBoolean) {
+        break;
+      }
+      this.a.updateAddFriendAndShieldView();
+      return;
+    }
+  }
+  
+  protected void b(boolean paramBoolean, List<Long> paramList)
+  {
+    int k = 0;
+    ChatActivityUtils.b();
+    if (this.a.sessionInfo == null) {
+      return;
+    }
+    String str = this.a.sessionInfo.curFriendUin;
+    if (this.a.sessionInfo.curType == 1006) {
+      str = this.a.sessionInfo.contactUin;
+    }
+    for (;;)
+    {
+      if (paramList == null) {}
+      for (int i = 0;; i = paramList.size())
+      {
+        int j = 0;
+        while ((k == 0) && (j < i))
+        {
+          if (bftf.a(String.valueOf(paramList.get(j)), str)) {
+            k = 1;
+          }
+          j += 1;
+        }
+      }
+      if (k == 0) {
+        break;
+      }
+      ChatActivityUtils.b();
+      if (!paramBoolean) {
+        break;
+      }
+      this.a.updateAddFriendAndShieldView();
+      return;
     }
   }
 }

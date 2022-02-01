@@ -1,19 +1,15 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import UserGrowth.stReportItem;
+import UserGrowth.stWeishiReportReq;
+import UserGrowth.stWeishiReportRsp;
+import java.util.ArrayList;
 
-class uwv
-  implements View.OnTouchListener
+public class uwv
+  extends urg<stWeishiReportRsp>
 {
-  uwv(uwt paramuwt, int paramInt) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public uwv(ArrayList<stReportItem> paramArrayList)
   {
-    uwt.a(this.jdField_a_of_type_Uwt, paramView);
-    this.jdField_a_of_type_Uwt.d = this.jdField_a_of_type_Int;
-    uwt.a(this.jdField_a_of_type_Uwt).onTouchEvent(paramMotionEvent);
-    return false;
+    super("WeishiReport");
+    this.a = new stWeishiReportReq(paramArrayList);
   }
 }
 

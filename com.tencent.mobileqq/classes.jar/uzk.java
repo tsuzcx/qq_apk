@@ -1,32 +1,20 @@
-import com.tencent.biz.qqcircle.events.QCircleCloseBannerEvent;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import qqcircle.QQCircleDitto.StSinglePicBanner;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class uzk
-  implements vyc
+  implements View.OnClickListener
 {
   uzk(uzj paramuzj) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    QLog.d("QCircleInviteBannerBlock", 1, "clickBanner actionType" + uzj.a(this.a).actionType.get() + "   actionUrl" + uzj.a(this.a).actionUrl.get());
-    if ((uzj.a(this.a).actionType.get() == 1) || (uzj.a(this.a).actionType.get() == 2))
-    {
-      uyx.a(uzj.a(this.a), uzj.a(this.a).actionUrl.get());
-      return;
+    if (uzj.a(this.a).getActivity() != null) {
+      uzj.a(this.a).getActivity().doOnBackPressed();
     }
-    QLog.d("QCircleInviteBannerBlock", 1, "unDefined banner jump action:" + uzj.a(this.a).actionType.get());
-    uyx.a(uzj.b(this.a), uzj.a(this.a).actionUrl.get());
-  }
-  
-  public void b()
-  {
-    uyk.a().f();
-    aaak.a().a(new QCircleCloseBannerEvent());
-    this.a.a(false);
-    QLog.d("QCircleInviteBannerBlock", 1, "clickClose");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.3.1;
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.3.2;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.widget.HorizontalListView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import org.json.JSONObject;
 
-public class alwj
-  implements bcwn
+class alwj
+  implements MediaPlayer.OnPreparedListener
 {
-  alwj(alwg paramalwg) {}
+  alwj(alwf paramalwf, JSONObject paramJSONObject, alxf paramalxf) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    this.a.a.post(new PtvTemplateAdapter.3.2(this, paramPtvTemplateInfo, paramInt));
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    this.a.a.post(new PtvTemplateAdapter.3.1(this, paramPtvTemplateInfo, paramBoolean));
-    if (!paramBoolean) {
-      alug.a("", "0X80075BB", "", "", "", "");
+    this.jdField_a_of_type_Alwf.a(3);
+    if (alwf.a(this.jdField_a_of_type_Alwf)) {
+      this.jdField_a_of_type_Alwf.b(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Alxf);
+    }
+    if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
+      alwf.a(this.jdField_a_of_type_Alwf, this.jdField_a_of_type_Alxf, this.jdField_a_of_type_OrgJsonJSONObject);
     }
   }
 }

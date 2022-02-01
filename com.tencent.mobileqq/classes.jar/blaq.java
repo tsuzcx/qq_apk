@@ -1,18 +1,70 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.2;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 
 public class blaq
-  implements DialogInterface.OnClickListener
+  extends blas
 {
-  public blaq(VideoJsProxyImpl.2 param2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public blaq(String paramString, View paramView)
   {
-    blao.a(this.a.this$0, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Boolean, this.a.b);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    super(paramString, paramView);
+  }
+  
+  private int b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      throw new RuntimeException(getClass().getName() + " setGravity value can not be null");
     }
+    if ("center".equals(paramString)) {
+      return 13;
+    }
+    if ("center_horizontal".equals(paramString)) {
+      return 14;
+    }
+    if ("center_vertical".equals(paramString)) {
+      return 15;
+    }
+    return 9;
+  }
+  
+  protected ViewGroup.LayoutParams a(int paramInt1, int paramInt2)
+  {
+    return new RelativeLayout.LayoutParams(paramInt1, paramInt2);
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    super.a(paramString1, paramString2);
+    if (!(this.a instanceof RelativeLayout)) {}
+  }
+  
+  protected void a(String paramString1, String paramString2, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    super.a(paramString1, paramString2, paramLayoutParams);
+    paramLayoutParams = (RelativeLayout.LayoutParams)paramLayoutParams;
+    if ("gravity".equals(paramString1)) {
+      paramLayoutParams.addRule(b(paramString2));
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (!"relative".equals(paramString1));
+        paramString1 = paramString2.split(" ");
+      } while ((paramString1 == null) || (paramString1.length != 2));
+      if ("bottom".equals(paramString1[1]))
+      {
+        paramLayoutParams.addRule(3, Integer.parseInt(paramString1[0]));
+        paramLayoutParams.addRule(5, Integer.parseInt(paramString1[0]));
+        return;
+      }
+    } while (!"right".equals(paramString1[1]));
+    paramLayoutParams.addRule(6, Integer.parseInt(paramString1[0]));
   }
 }
 

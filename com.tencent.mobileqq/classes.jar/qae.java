@@ -1,42 +1,33 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class qae
-  implements ViewBase.OnClickListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  sel jdField_a_of_type_Sel;
-  
-  public qae(ArticleInfo paramArticleInfo, Context paramContext, sel paramsel)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Sel = paramsel;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if (sel.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-      ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, false, 0, 1);
-    }
-    for (;;)
-    {
-      oxw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Sel);
-      pzu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009442", "0X8009445");
-      return;
-      if (ozs.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo))
-      {
-        ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-        oxw.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009A77", null);
-      }
-      else
-      {
-        ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0, false, 0, 1);
-      }
-    }
+    JSONObject localJSONObject1 = new JSONObject();
+    qai.y(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("id_content_wrapper", new JSONObject());
+    localJSONObject1.put("id_article_wrapper", new JSONObject());
+    localJSONObject1.put("id_summary_wrapper", new JSONObject());
+    localJSONObject1.put("id_info_wrapper", new JSONObject());
+    qai.d(paramBaseArticleInfo, localJSONObject1);
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("summary_text", amtj.a(2131711942));
+    localJSONObject1.put("id_summary", localJSONObject2);
+    localJSONObject1.put("id_image_content", new JSONObject());
+    localJSONObject2 = new JSONObject();
+    localJSONObject2.put("article_small_imge_url", paramBaseArticleInfo.mSinglePicture.getFile());
+    localJSONObject1.put("id_article_small_imge", localJSONObject2);
+    qai.a(paramBaseArticleInfo, localJSONObject1, true);
+    qai.g(paramBaseArticleInfo, localJSONObject1);
+    qai.n(paramBaseArticleInfo, localJSONObject1);
+    qai.E(paramBaseArticleInfo, localJSONObject1);
+    qai.F(paramBaseArticleInfo, localJSONObject1);
+    qai.b(localJSONObject1);
+    localJSONObject1.put("style_ID", "ReadInjoy_topic_recommend_pgc_big_cell");
+    return localJSONObject1;
   }
 }
 

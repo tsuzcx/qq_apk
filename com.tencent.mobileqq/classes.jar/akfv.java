@@ -1,39 +1,50 @@
-import android.text.TextUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.soload.SoLoadInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class akfv
+final class akfv
+  implements EIPCResultCallback
 {
-  int jdField_a_of_type_Int = 0;
-  final List<Long> jdField_a_of_type_JavaUtilList = new ArrayList(5);
+  akfv(bbzg parambbzg) {}
   
-  public akfv(String paramString)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    try
+    SoLoadInfo localSoLoadInfo2 = SoLoadInfo.sDefault;
+    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null)) {}
+    for (;;)
     {
-      paramString = aqzs.a(paramString, "troop_member_list_config");
-      if (paramString != null)
+      try
       {
-        Object localObject = new JSONObject(paramString);
-        this.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("maxTroopMemberSize");
-        localObject = ((JSONObject)localObject).optJSONArray("troopClassIdList");
-        while ((localObject != null) && (i < ((JSONArray)localObject).length()))
+        SoLoadInfo localSoLoadInfo1 = (SoLoadInfo)paramEIPCResult.data.getSerializable("res");
+        paramEIPCResult = localSoLoadInfo1;
+        if (localSoLoadInfo1 == null) {}
+        QLog.e("SoLoadWidget.IPC", 1, localThrowable1, new Object[0]);
+      }
+      catch (Throwable localThrowable1)
+      {
+        try
         {
-          this.jdField_a_of_type_JavaUtilList.add(Long.valueOf(((JSONArray)localObject).optLong(i)));
-          i += 1;
+          paramEIPCResult = SoLoadInfo.sDefault;
+          if (this.a != null) {
+            this.a.a(paramEIPCResult);
+          }
+          return;
         }
+        catch (Throwable localThrowable3)
+        {
+          for (;;)
+          {
+            paramEIPCResult = localThrowable1;
+            Throwable localThrowable2 = localThrowable3;
+          }
+        }
+        localThrowable1 = localThrowable1;
+        paramEIPCResult = localSoLoadInfo2;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopMemberAddFrdHelper", 2, String.format("TroopMemberListConfig max: %s, idList: %s, config: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), TextUtils.join(",", this.jdField_a_of_type_JavaUtilList), paramString }));
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
+      continue;
+      paramEIPCResult = localThrowable3;
     }
   }
 }

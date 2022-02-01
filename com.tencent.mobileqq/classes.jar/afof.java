@@ -1,29 +1,44 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
-public class afof
-  implements CompoundButton.OnCheckedChangeListener
+class afof
+  extends amwl
 {
-  public afof(SoundAndVibrateActivity paramSoundAndVibrateActivity, SharedPreferences paramSharedPreferences) {}
+  private WeakReference<BaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  private afof(afoc paramafoc, BaseActivity paramBaseActivity)
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    ((SharedPreferences.Editor)localObject).putBoolean("theme_voice_setting_" + this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app.getCurrentAccountUin(), paramBoolean);
-    ((SharedPreferences.Editor)localObject).commit();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
+  }
+  
+  public void onMsgRevokeNotice(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  {
+    super.onMsgRevokeNotice(paramBoolean1, paramList, paramBoolean2);
+    if ((afoc.a(this.jdField_a_of_type_Afoc, paramList)) && (paramBoolean1)) {}
+    for (paramBoolean2 = true;; paramBoolean2 = false)
     {
-      bdll.b((QQAppInterface)localObject, "CliOper", "", "", "ThemeSound", "SwitchTabSound", 0, i, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      paramList = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("MergeForwardRevokeHelper", 2, "onMsgRevokeNotice  hasMsgRevoked:" + paramBoolean2 + "; isSuccess:" + paramBoolean1);
+      }
+      if ((paramBoolean2) && (paramList != null))
+      {
+        if (!this.jdField_a_of_type_Afoc.a) {
+          break;
+        }
+        paramList.finish();
+      }
       return;
     }
+    if (afoc.a() == paramList)
+    {
+      afoc.a(this.jdField_a_of_type_Afoc, paramList);
+      return;
+    }
+    paramList.finish();
   }
 }
 

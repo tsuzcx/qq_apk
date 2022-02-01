@@ -12,8 +12,8 @@ class QQToast$ProtectedToast$1
   public void run()
   {
     this.this$0.cancel();
-    this.this$0.getView().findViewById(2131379115);
-    AnimationUtils.loadAnimation(BaseApplicationImpl.context, 2130772241);
+    this.this$0.getView().findViewById(2131378884);
+    AnimationUtils.loadAnimation(BaseApplicationImpl.context, 2130772239);
   }
 }
 

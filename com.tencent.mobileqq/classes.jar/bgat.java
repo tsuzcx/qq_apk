@@ -1,20 +1,10 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class bgat
-  implements View.OnClickListener
+public abstract interface bgat
 {
-  public bgat(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  public abstract void a(int paramInt1, String paramString, int paramInt2);
   
-  public void onClick(View paramView)
-  {
-    blgx.b(paramView);
-    this.a.getActivity().doOnBackPressed();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void b(String paramString, int paramInt1, int paramInt2);
 }
 
 

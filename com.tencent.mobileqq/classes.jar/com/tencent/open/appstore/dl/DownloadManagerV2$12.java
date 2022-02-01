@@ -1,16 +1,16 @@
 package com.tencent.open.appstore.dl;
 
-import bjsz;
+import bhyo;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 public class DownloadManagerV2$12
   implements Runnable
 {
-  public DownloadManagerV2$12(bjsz parambjsz, DownloadInfo paramDownloadInfo) {}
+  public DownloadManagerV2$12(bhyo parambhyo, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    bjsz.c(this.this$0, this.a);
+    bhyo.c(this.this$0, this.a);
   }
 }
 

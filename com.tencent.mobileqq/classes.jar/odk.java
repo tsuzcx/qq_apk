@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.TopBarInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class odk
-  implements Parcelable.Creator<VideoInfo.TopBarInfo>
+class odk
+  implements DialogInterface.OnClickListener
 {
-  public VideoInfo.TopBarInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.TopBarInfo(paramParcel);
-  }
+  odk(ocw paramocw) {}
   
-  public VideoInfo.TopBarInfo[] a(int paramInt)
-  {
-    return new VideoInfo.TopBarInfo[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

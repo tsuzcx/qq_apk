@@ -1,93 +1,76 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.ExpiredPushBanner;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
 public class aybb
-  extends PopupWindow
+  extends OGAbstractDao
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aybc(this);
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aybd jdField_a_of_type_Aybd;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public aybb(Context paramContext, int paramInt1, int paramInt2)
+  public aybb()
   {
-    super(paramContext);
-    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Int = paramInt2;
-    setWidth(this.jdField_a_of_type_Int);
-    setHeight((int)(this.jdField_a_of_type_Float * 42.0F + 0.5D));
-    View localView = LayoutInflater.from(paramContext).inflate(2131559583, null);
-    setContentView(localView);
-    a(paramContext, localView, paramInt1);
-    setOutsideTouchable(true);
+    this.columnLen = 3;
   }
   
-  private void a(Context paramContext, View paramView, int paramInt)
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380297));
-    this.jdField_a_of_type_AndroidWidgetTextView.getTextSize();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363783));
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.findViewById(2131368578).getLayoutParams();
-    int i = (int)(10.0F * this.jdField_a_of_type_Float + 0.5D);
-    if (paramInt <= 0) {
-      localLayoutParams.leftMargin = 0;
+    paramEntity = (ExpiredPushBanner)paramEntity;
+    if (paramNoColumnErrorHandler == null)
+    {
+      paramEntity.cid = paramCursor.getLong(paramCursor.getColumnIndex("cid"));
+      paramEntity.md5 = paramCursor.getString(paramCursor.getColumnIndex("md5"));
+      paramEntity.endtime = paramCursor.getLong(paramCursor.getColumnIndex("endtime"));
+      return paramEntity;
+    }
+    int i = paramCursor.getColumnIndex("cid");
+    if (i == -1)
+    {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("cid", Long.TYPE));
+      i = paramCursor.getColumnIndex("md5");
+      if (i != -1) {
+        break label187;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("md5", String.class));
     }
     for (;;)
     {
-      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      setBackgroundDrawable(paramContext.getResources().getDrawable(2130850680));
-      return;
-      if (paramInt < (this.jdField_a_of_type_Int - i) / 2)
-      {
-        localLayoutParams.leftMargin = ((int)((this.jdField_a_of_type_Float * 40.0F - i) / 2.0F) + paramInt);
+      i = paramCursor.getColumnIndex("endtime");
+      if (i != -1) {
+        break label202;
       }
-      else if (paramInt > paramContext.getResources().getDisplayMetrics().widthPixels - (int)(this.jdField_a_of_type_Float * 40.0F + 0.5D) - (this.jdField_a_of_type_Int - i) / 2)
-      {
-        int j = this.jdField_a_of_type_Int;
-        localLayoutParams.leftMargin = ((int)((this.jdField_a_of_type_Float * 40.0F - i) / 2.0F) + (j + paramInt) - paramContext.getResources().getDisplayMetrics().widthPixels);
-      }
-      else
-      {
-        localLayoutParams.leftMargin = ((int)((this.jdField_a_of_type_Int - i) / 2 + 0.5D));
-      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("endtime", Long.TYPE));
+      return paramEntity;
+      paramEntity.cid = paramCursor.getLong(i);
+      break;
+      label187:
+      paramEntity.md5 = paramCursor.getString(i);
     }
+    label202:
+    paramEntity.endtime = paramCursor.getLong(i);
+    return paramEntity;
   }
   
-  public void a(aybd paramaybd)
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
   {
-    this.jdField_a_of_type_Aybd = paramaybd;
+    paramEntity = (ExpiredPushBanner)paramEntity;
+    paramContentValues.put("cid", Long.valueOf(paramEntity.cid));
+    paramContentValues.put("md5", paramEntity.md5);
+    paramContentValues.put("endtime", Long.valueOf(paramEntity.endtime));
   }
   
-  public void a(InterestTagInfo paramInterestTagInfo)
+  public String getCreateTableSql(String paramString)
   {
-    if (paramInterestTagInfo == null) {
-      return;
-    }
-    if (!TextUtils.isEmpty(paramInterestTagInfo.tagName))
-    {
-      this.jdField_a_of_type_JavaLangString = paramInterestTagInfo.tagName;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_Long = paramInterestTagInfo.tagId;
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,cid INTEGER UNIQUE ,md5 TEXT ,endtime INTEGER)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aybb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,28 @@
-import android.graphics.drawable.Drawable;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
-public abstract interface yss
+public class yss
+  extends AccessibilityDelegateCompat
 {
-  public abstract void a(Drawable paramDrawable);
+  public yss(LeftTabBarView paramLeftTabBarView) {}
+  
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (LeftTabBarView.a(this.a, paramView) == LeftTabBarView.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramAccessibilityNodeInfoCompat.setSelected(bool);
+      return;
+    }
+  }
+  
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    super.sendAccessibilityEvent(paramView, paramInt);
+  }
 }
 
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aiuz;
+import ahpk;
 import java.util.TimerTask;
 import mqq.os.MqqHandler;
 
 public class FraudTipsBar$1
   extends TimerTask
 {
-  public FraudTipsBar$1(aiuz paramaiuz) {}
+  public FraudTipsBar$1(ahpk paramahpk) {}
   
   public void run()
   {
-    aiuz.a(this.this$0).post(new FraudTipsBar.1.1(this));
+    ahpk.a(this.this$0).post(new FraudTipsBar.1.1(this));
   }
 }
 

@@ -1,15 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.data.ApolloActionPush;
 
-class aloo
-  implements DialogInterface.OnDismissListener
+public abstract interface aloo
 {
-  aloo(alol paramalol) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    alol.a(this.a, false);
-  }
+  public abstract void a(int paramInt, ApolloActionPush paramApolloActionPush);
 }
 
 

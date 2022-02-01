@@ -5,17 +5,16 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.util.Base64;
-import bdmc;
-import blhn;
-import bmac;
-import bnbw;
-import bnbx;
-import bngp;
+import bjnd;
+import bkea;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.QzoneModuleConfigManager;
+import cooperation.qzone.networkedmodule.QzoneModuleConfigManager.QzoneModuleRecord;
 import cooperation.qzone.networkedmodule.QzoneModuleManager;
 import cooperation.qzone.util.NetworkState;
 import java.lang.reflect.Method;
@@ -88,7 +87,7 @@ public class MachineLearingSmartReport
     {
       HashMap localHashMap = (HashMap)paramArrayList.next();
       if (localHashMap != null) {
-        bdmc.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), this.report_cmd, true, 0L, 0L, localHashMap, null, true);
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(BaseApplicationImpl.getApplication().getRuntime().getAccount(), this.report_cmd, true, 0L, 0L, localHashMap, null, true);
       }
     }
     return true;
@@ -477,7 +476,7 @@ public class MachineLearingSmartReport
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_FailCode", String.valueOf(paramInt));
       localHashMap.put("param_FailMsg", paramString);
-      bdmc.a(BaseApplication.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "qzonesmartreport", true, 0L, 0L, localHashMap, null, true);
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "qzonesmartreport", true, 0L, 0L, localHashMap, null, true);
       if ((!TextUtils.isEmpty(paramString)) && (QLog.isColorLevel())) {
         QLog.w("MachineLearingSmartReport", 2, paramString);
       }
@@ -645,7 +644,7 @@ public class MachineLearingSmartReport
   
   public void downloadDataAcquisitionModule()
   {
-    String str1 = bmac.a().a("ClientReport", "SmartReportDataAcquisitionConfig", "");
+    String str1 = bkea.a().a("ClientReport", "SmartReportDataAcquisitionConfig", "");
     Object localObject1;
     String str2;
     Object localObject2;
@@ -653,7 +652,7 @@ public class MachineLearingSmartReport
     {
       try
       {
-        localObject1 = blhn.b(str1);
+        localObject1 = bjnd.b(str1);
         if (!checkAbsoluteTime((Map)localObject1))
         {
           exceptionReport(2, "downloadDataAcquisitionModule is out of date");
@@ -688,13 +687,13 @@ public class MachineLearingSmartReport
         exceptionReport(12, "downloadDataAcquisitionModule moudlemethod is null");
         return;
       }
-      localObject2 = bnbw.a().a(str2);
+      localObject2 = QzoneModuleConfigManager.getInstance().getModuleRecord(str2);
       if (localObject2 == null)
       {
         exceptionReport(9, "downloadDataAcquisitionModule modulerecord is null");
         return;
       }
-      localObject2 = ((bnbx)localObject2).f;
+      localObject2 = ((QzoneModuleConfigManager.QzoneModuleRecord)localObject2).mKeyClassName;
       if (TextUtils.isEmpty((CharSequence)localObject2))
       {
         exceptionReport(11, (String)localObject2 + " not set");
@@ -724,7 +723,7 @@ public class MachineLearingSmartReport
       }
       if (BaseApplicationImpl.sProcessId == 2)
       {
-        QzoneModuleManager.getInstance().downloadModule(str2, new bngp(this, str2, (String)localObject2, (String)localObject1));
+        QzoneModuleManager.getInstance().downloadModule(str2, new MachineLearingSmartReport.1(this, str2, (String)localObject2, (String)localObject1));
         return;
       }
       if (QLog.isColorLevel()) {
@@ -759,7 +758,7 @@ public class MachineLearingSmartReport
   public boolean isNeedReport()
   {
     boolean bool2 = false;
-    Object localObject = bmac.a().a("ClientReport", "MachinelearningSmartReportConfig", "");
+    Object localObject = bkea.a().a("ClientReport", "MachinelearningSmartReportConfig", "");
     if (QLog.isColorLevel()) {
       QLog.i("MachineLearingSmartReport", 2, "reportconfig:" + (String)localObject);
     }

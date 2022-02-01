@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.qphone.base.util.QLog;
+import android.util.LruCache;
 
-public class altu
-  implements bdbf
+class altu
+  extends LruCache<String, altv>
 {
-  public altu(FlowCameraActivity2 paramFlowCameraActivity2) {}
-  
-  public void a(Exception paramException)
+  altu(altt paramaltt, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FlowCameraActivity", 2, "[onCameraException]", paramException);
-    }
+    super(paramInt);
   }
   
-  public void a(RuntimeException paramRuntimeException)
+  protected int a(String paramString, altv paramaltv)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
+    if ((paramaltv == null) || (paramaltv.a == null)) {
+      return 0;
     }
+    return paramaltv.a.length;
   }
 }
 

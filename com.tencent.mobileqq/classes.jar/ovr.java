@@ -1,20 +1,14 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class ovr
-  implements View.OnClickListener
+  extends owd
 {
-  ovr(ovq paramovq, otp paramotp, Context paramContext) {}
-  
-  public void onClick(View paramView)
+  ovr(ouu paramouu, int paramInt1, ouo paramouo, int paramInt2)
   {
-    QLog.d("GuideHelper", 1, "getBottomGuideView : " + ovq.a(this.jdField_a_of_type_Ovq));
-    ovq.a(this.jdField_a_of_type_Ovq, "0X8009FEA", this.jdField_a_of_type_Otp.a);
-    ozs.a(this.jdField_a_of_type_AndroidContentContext, ovq.a(this.jdField_a_of_type_Ovq));
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramouu, null);
+  }
+  
+  void a(owg paramowg)
+  {
+    paramowg.onCommentDelete(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Ouo, this.b);
   }
 }
 

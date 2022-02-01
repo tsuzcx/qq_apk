@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.search.searchengine;
 
 import android.os.Bundle;
-import bced;
-import bcey;
-import bcfb;
-import bcfd;
-import bcfn;
-import bcfp;
-import bcfq;
-import bcfr;
-import bclc;
-import bcmb;
-import bcmd;
-import bcmq;
-import bcni;
+import baxf;
+import baya;
+import bayd;
+import bayf;
+import bayp;
+import bayr;
+import bays;
+import bayt;
+import bbee;
+import bbfd;
+import bbff;
+import bbfs;
+import bbgk;
 import com.tencent.mobileqq.search.util.SearchConfigManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -26,19 +26,19 @@ import java.util.concurrent.CountDownLatch;
 class GroupSearchEngine$TroopMemberSearchRunnable
   implements Runnable
 {
-  private bcmd jdField_a_of_type_Bcmd;
-  private bcmq jdField_a_of_type_Bcmq;
+  private bbff jdField_a_of_type_Bbff;
+  private bbfs jdField_a_of_type_Bbfs;
   private String jdField_a_of_type_JavaLangString;
   private WeakReference<GroupSearchEngine> jdField_a_of_type_JavaLangRefWeakReference;
-  private ArrayList<bcfp> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<bayr> jdField_a_of_type_JavaUtilArrayList;
   private CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch;
   private boolean jdField_a_of_type_Boolean;
   
-  public GroupSearchEngine$TroopMemberSearchRunnable(bcmq parambcmq, ArrayList<bcfp> paramArrayList, bcmd parambcmd, String paramString, CountDownLatch paramCountDownLatch, GroupSearchEngine paramGroupSearchEngine)
+  public GroupSearchEngine$TroopMemberSearchRunnable(bbfs parambbfs, ArrayList<bayr> paramArrayList, bbff parambbff, String paramString, CountDownLatch paramCountDownLatch, GroupSearchEngine paramGroupSearchEngine)
   {
-    this.jdField_a_of_type_Bcmq = parambcmq;
+    this.jdField_a_of_type_Bbfs = parambbfs;
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Bcmd = parambcmd;
+    this.jdField_a_of_type_Bbff = parambbff;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch = paramCountDownLatch;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramGroupSearchEngine);
@@ -49,7 +49,7 @@ class GroupSearchEngine$TroopMemberSearchRunnable
     a(this.jdField_a_of_type_JavaUtilArrayList);
   }
   
-  public void a(ArrayList<bcfp> paramArrayList)
+  public void a(ArrayList<bayr> paramArrayList)
   {
     try
     {
@@ -66,20 +66,20 @@ class GroupSearchEngine$TroopMemberSearchRunnable
         {
           localInterruptedException.printStackTrace();
         }
-      } while (this.jdField_a_of_type_Bcmd == null);
-      if (this.jdField_a_of_type_Bcmq.a.getBoolean("hasLocalPeopleOrTroop", false))
+      } while (this.jdField_a_of_type_Bbff == null);
+      if (this.jdField_a_of_type_Bbfs.a.getBoolean("hasLocalPeopleOrTroop", false))
       {
-        this.jdField_a_of_type_Bcmd.a(paramArrayList, 5);
+        this.jdField_a_of_type_Bbff.a(paramArrayList, 5);
         return;
       }
-      this.jdField_a_of_type_Bcmd.a(paramArrayList, 4);
+      this.jdField_a_of_type_Bbff.a(paramArrayList, 4);
     }
   }
   
   public void b()
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bcmd = null;
+    this.jdField_a_of_type_Bbff = null;
     while (this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.getCount() > 0L) {
       this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
     }
@@ -123,11 +123,11 @@ class GroupSearchEngine$TroopMemberSearchRunnable
       localObject2 = localObject1;
       if (i < ((ArrayList)localObject3).size())
       {
-        if ((((bcmb)((ArrayList)localObject3).get(i)).a instanceof bclc))
+        if ((((bbfd)((ArrayList)localObject3).get(i)).a instanceof bbee))
         {
-          localObject2 = (bclc)((bcmb)((ArrayList)localObject3).get(i)).a;
+          localObject2 = (bbee)((bbfd)((ArrayList)localObject3).get(i)).a;
           localObject1 = localObject2;
-          if (((bclc)localObject2).a() == 64) {}
+          if (((bbee)localObject2).a() == 64) {}
         }
       }
       else
@@ -143,7 +143,7 @@ class GroupSearchEngine$TroopMemberSearchRunnable
     if (QLog.isColorLevel()) {
       QLog.d("GroupSearchEngine", 2, "TroopMemberSearchRunnable, start search");
     }
-    localObject3 = ((bclc)localObject2).a(this.jdField_a_of_type_Bcmq);
+    localObject3 = ((bbee)localObject2).a(this.jdField_a_of_type_Bbfs);
     if ((this.jdField_a_of_type_Boolean) || (localObject3 == null) || (((List)localObject3).isEmpty()))
     {
       a();
@@ -159,14 +159,14 @@ class GroupSearchEngine$TroopMemberSearchRunnable
       i = -1;
       while (((Iterator)localObject3).hasNext())
       {
-        localObject4 = (bcfp)((Iterator)localObject3).next();
+        localObject4 = (bayr)((Iterator)localObject3).next();
         k = i + 1;
         i = k;
-        if ((localObject4 instanceof bcfb))
+        if ((localObject4 instanceof bayd))
         {
-          localObject3 = ((bcfb)localObject4).a.iterator();
+          localObject3 = ((bayd)localObject4).a.iterator();
           while (((Iterator)localObject3).hasNext()) {
-            ((List)localObject1).add((bcfn)((Iterator)localObject3).next());
+            ((List)localObject1).add((bayp)((Iterator)localObject3).next());
           }
           i1 = 1;
           i = k;
@@ -186,14 +186,14 @@ class GroupSearchEngine$TroopMemberSearchRunnable
         i = n;
         while (((Iterator)localObject3).hasNext())
         {
-          localObject4 = (bcfp)((Iterator)localObject3).next();
+          localObject4 = (bayr)((Iterator)localObject3).next();
           k = i + 1;
           i = k;
-          if ((localObject4 instanceof bcfd))
+          if ((localObject4 instanceof bayf))
           {
-            localObject3 = ((bcfd)localObject4).a.iterator();
+            localObject3 = ((bayf)localObject4).a.iterator();
             while (((Iterator)localObject3).hasNext()) {
-              ((List)localObject1).add((bcfn)((Iterator)localObject3).next());
+              ((List)localObject1).add((bayp)((Iterator)localObject3).next());
             }
             n = 1;
             i = k;
@@ -208,7 +208,7 @@ class GroupSearchEngine$TroopMemberSearchRunnable
           this.jdField_a_of_type_JavaUtilArrayList.remove(i - 1);
         }
         localObject3 = new ArrayList();
-        ((bclc)localObject2).a((List)localObject1, (List)localObject3, null, str);
+        ((bbee)localObject2).a((List)localObject1, (List)localObject3, null, str);
         if ((this.jdField_a_of_type_Boolean) || (((List)localObject3).isEmpty()))
         {
           a();
@@ -219,8 +219,8 @@ class GroupSearchEngine$TroopMemberSearchRunnable
         i = m;
         while (((Iterator)localObject1).hasNext())
         {
-          localObject3 = (bcfn)((Iterator)localObject1).next();
-          if ((localObject3 instanceof bced))
+          localObject3 = (bayp)((Iterator)localObject1).next();
+          if ((localObject3 instanceof baxf))
           {
             k = i + 1;
             i = k;
@@ -245,8 +245,8 @@ class GroupSearchEngine$TroopMemberSearchRunnable
           localObject2 = ((List)localObject2).iterator();
           while (((Iterator)localObject2).hasNext())
           {
-            localObject4 = (bcfn)((Iterator)localObject2).next();
-            if (bcni.a((bcfr)localObject4)) {
+            localObject4 = (bayp)((Iterator)localObject2).next();
+            if (bbgk.a((bayt)localObject4)) {
               ((List)localObject1).add(localObject4);
             } else {
               ((List)localObject3).add(localObject4);
@@ -257,14 +257,14 @@ class GroupSearchEngine$TroopMemberSearchRunnable
         localObject2 = new ArrayList();
         if (localObject3 != null)
         {
-          localObject3 = new bcfb((List)localObject3, str, j);
-          ((ArrayList)localObject2).add(new bcey((bcfq)localObject3));
+          localObject3 = new bayd((List)localObject3, str, j);
+          ((ArrayList)localObject2).add(new baya((bays)localObject3));
           ((ArrayList)localObject2).add(localObject3);
         }
         if ((SearchConfigManager.needSeparate) && (localObject1 != null) && (((List)localObject1).size() > 0))
         {
-          localObject1 = new bcfd((List)localObject1, str, j);
-          ((ArrayList)localObject2).add(new bcey((bcfq)localObject1));
+          localObject1 = new bayf((List)localObject1, str, j);
+          ((ArrayList)localObject2).add(new baya((bays)localObject1));
           ((ArrayList)localObject2).add(localObject1);
         }
         if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
@@ -275,7 +275,7 @@ class GroupSearchEngine$TroopMemberSearchRunnable
           a();
           return;
         }
-        if ((this.jdField_a_of_type_Bcmd != null) && (!((ArrayList)localObject2).isEmpty())) {
+        if ((this.jdField_a_of_type_Bbff != null) && (!((ArrayList)localObject2).isEmpty())) {
           a((ArrayList)localObject2);
         }
         localObject1 = (GroupSearchEngine)this.jdField_a_of_type_JavaLangRefWeakReference.get();
@@ -294,7 +294,7 @@ class GroupSearchEngine$TroopMemberSearchRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.GroupSearchEngine.TroopMemberSearchRunnable
  * JD-Core Version:    0.7.0.1
  */

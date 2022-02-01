@@ -1,26 +1,49 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-
 public class ahsl
-  implements Animator.AnimatorListener
 {
-  public ahsl(SixCombolEffectView paramSixCombolEffectView, ahso paramahso) {}
+  boolean a = false;
+  boolean b = false;
+  boolean c = false;
+  boolean d = false;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(boolean paramBoolean)
   {
-    if (!SixCombolEffectView.a) {
-      return;
-    }
-    this.jdField_a_of_type_Ahso.b.start();
+    this.a = paramBoolean;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public boolean a()
+  {
+    return this.a;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+  }
+  
+  public boolean c()
+  {
+    return this.c;
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    this.d = paramBoolean;
+  }
+  
+  public boolean d()
+  {
+    return this.d;
+  }
 }
 
 

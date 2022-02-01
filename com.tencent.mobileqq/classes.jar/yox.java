@@ -1,16 +1,39 @@
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import android.os.Message;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
 
-final class yox
-  implements yqh
+class yox
+  extends Handler
 {
-  yox(WeakReference paramWeakReference) {}
+  yox(yow paramyow) {}
   
-  public void a(String paramString)
+  yox(yow paramyow, Handler paramHandler)
   {
-    paramString = (yoz)this.a.get();
-    if (paramString != null) {
-      paramString.a(Integer.valueOf(((Integer)((wta)wth.a(10)).b("qqstory_i_am_vip", Integer.valueOf(-1))).intValue()));
+    super(paramHandler.getLooper());
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message " + paramMessage);
+    case 1: 
+      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onShowPress(this.a.jdField_a_of_type_AndroidViewMotionEvent);
     }
+    do
+    {
+      return;
+      this.a.a();
+      return;
+    } while (this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener == null);
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onSingleTapConfirmed(this.a.jdField_a_of_type_AndroidViewMotionEvent);
+      return;
+    }
+    this.a.b = true;
   }
 }
 

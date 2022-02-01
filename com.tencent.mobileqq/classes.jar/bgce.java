@@ -1,21 +1,29 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.Button;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-
-public class bgce
-  implements Animation.AnimationListener
+class bgce
 {
-  public bgce(ReciteFragment paramReciteFragment, Button paramButton) {}
+  static final int[] jdField_a_of_type_ArrayOfInt = new int[0];
+  static final long[] jdField_a_of_type_ArrayOfLong = new long[0];
+  static final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[0];
   
-  public void onAnimationEnd(Animation paramAnimation)
+  static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+    int i = 0;
+    int j = paramInt1 - 1;
+    paramInt1 = i;
+    i = j;
+    while (paramInt1 <= i)
+    {
+      j = paramInt1 + i >>> 1;
+      int k = paramArrayOfInt[j];
+      if (k < paramInt2) {
+        paramInt1 = j + 1;
+      } else if (k > paramInt2) {
+        i = j - 1;
+      } else {
+        return j;
+      }
+    }
+    return paramInt1 ^ 0xFFFFFFFF;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

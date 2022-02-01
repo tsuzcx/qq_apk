@@ -1,7 +1,4 @@
-public abstract interface yfe
-{
-  public abstract void a(yff paramyff);
-}
+public abstract interface yfe {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

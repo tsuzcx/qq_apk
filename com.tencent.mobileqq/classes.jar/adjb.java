@@ -1,47 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.GrpTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 
-public class adjb
-  implements adbw
+class adjb
+  implements DialogInterface.OnClickListener
 {
-  public int a()
-  {
-    return 1000;
-  }
+  adjb(adja paramadja) {}
   
-  public boolean a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    if ((!TextUtils.isEmpty(paramMessageRecord.senderuin)) && (Long.valueOf(paramMessageRecord.senderuin).longValue() != 0L) && (!TextUtils.equals(paramMessageRecord.senderuin, paramMessageRecord.selfuin)) && (TextUtils.equals(paramMessageRecord.senderuin, paramMessageRecord.frienduin))) {}
-    paramQQAppInterface = new msg_svc.GrpTmp();
-    if (TextUtils.isEmpty(paramMessageRecord.senderuin))
-    {
-      paramQQAppInterface.group_uin.set(Long.valueOf(paramMessageRecord.selfuin).longValue());
-      if (QLog.isColorLevel()) {
-        QLog.d("GrpTmpRoutingType", 2, "createSendRichTextMsgReq, senderuin error, senderuin: " + paramMessageRecord.senderuin + " frienduin: " + paramMessageRecord.frienduin + " msgtype: " + paramMessageRecord.msgtype);
-      }
+    paramDialogInterface.dismiss();
+    this.a.a.f();
+    bcef.b(this.a.a.app, "CliOper", "", "", "P_prof", "Pp_send_msg", ProfileActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h), 0, Integer.toString(ProfileActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), Integer.toString(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.k), "", "");
+    if (this.a.a.a.b) {
+      new bcek(this.a.a.app).a("dc00899").b("Grp_mem_card").c("page").d("msg_clk").a(new String[] { this.a.a.a.jdField_a_of_type_JavaLangString }).a();
     }
-    for (;;)
-    {
-      paramQQAppInterface.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-      paramRoutingHead.grp_tmp.set(paramQQAppInterface);
-      return true;
-      paramQQAppInterface.group_uin.set(Long.valueOf(paramMessageRecord.senderuin).longValue());
-    }
-  }
-  
-  public int b()
-  {
-    return 6000;
   }
 }
 

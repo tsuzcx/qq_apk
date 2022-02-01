@@ -1,6 +1,15 @@
-public abstract interface qjf
-  extends qjg
-{}
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+
+public class qjf
+  implements ViewBase.IBuilder
+{
+  public ViewBase build(VafContext paramVafContext)
+  {
+    return new qje(paramVafContext);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

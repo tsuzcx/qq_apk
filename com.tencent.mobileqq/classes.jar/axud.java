@@ -1,8 +1,19 @@
-public abstract class axud
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+
+public class axud
+  implements DialogInterface.OnClickListener
 {
-  public void a(long paramLong1, long paramLong2) {}
+  public axud(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  public void a(axue paramaxue) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (!this.a.getActivity().isFinishing()) {
+      this.a.getActivity().finish();
+    }
+  }
 }
 
 

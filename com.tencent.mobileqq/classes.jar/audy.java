@@ -1,18 +1,20 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService.1;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
+import java.util.List;
 
 public class audy
-  implements MediaPlayer.OnPreparedListener
+  implements avtc<T, List<FontBubble>>
 {
-  public audy(FileViewMusicService.1 param1, MediaPlayer paramMediaPlayer) {}
+  public audy(FontBubblePanelView paramFontBubblePanelView) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public List<FontBubble> a(T paramT)
   {
-    int i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService$1.a.a(i);
+    paramT = FontBubblePanelView.a(this.a).a(FontBubblePanelView.a(this.a).app, paramT);
+    FontBubble localFontBubble = new FontBubble();
+    localFontBubble.viewType = 0;
+    paramT.add(localFontBubble);
+    return paramT;
   }
 }
 

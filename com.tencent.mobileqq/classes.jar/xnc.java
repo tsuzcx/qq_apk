@@ -1,35 +1,25 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.MemoriesFeedPlayInfo;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
 
-class xnc
-  extends QQUIEventReceiver<xnb, wzr>
+public class xnc
+  extends vkt<xng>
 {
-  public xnc(@NonNull xnb paramxnb)
+  private Stream<xgq> a;
+  
+  public void a(xng paramxng)
   {
-    super(paramxnb);
+    this.a = Stream.of(paramxng).map(new ThreadOffFunction("Q.qqstory.home.data.FeedCommentBackgroundSyncer", 2)).map(new xne(null));
+    this.a.subscribe(new xnd(this));
   }
   
-  public void a(@NonNull xnb paramxnb, @NonNull wzr paramwzr)
+  public void c()
   {
-    if ((!TextUtils.equals(xnb.a(paramxnb).mContext, paramwzr.jdField_a_of_type_JavaLangString)) || (xnb.a(paramxnb) == null)) {
-      return;
-    }
-    if (paramwzr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    xvv.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull consumer destroy");
+    if (this.a != null)
     {
-      yuk.a(this.TAG, "pull feedId list fail %s", paramwzr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg);
-      xnb.a(paramxnb).a(new ErrorMessage(paramwzr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, paramwzr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg), null, false);
-      return;
+      this.a.cancel();
+      this.a = null;
     }
-    xnb.a(paramxnb).mIsEnd = paramwzr.jdField_a_of_type_Boolean;
-    xnb.a(paramxnb).b(new ErrorMessage(), xnb.b(paramwzr.jdField_a_of_type_JavaUtilList), paramwzr.jdField_a_of_type_Boolean);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wzr.class;
   }
 }
 

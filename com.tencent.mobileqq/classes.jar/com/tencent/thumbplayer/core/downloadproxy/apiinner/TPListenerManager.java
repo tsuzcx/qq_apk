@@ -21,7 +21,9 @@ public class TPListenerManager
   private static final int MSG_DOWNLOAD_STATUS = 8;
   private static final int MSG_ERROR = 4;
   private static final int MSG_FINISH = 3;
+  private static final int MSG_NOTIFY_HTTP_HEADER = 2006;
   private static final int MSG_NOTIFY_LOSE_PACKAGE_CEHCK = 2004;
+  private static final int MSG_NOTIFY_M3U8_CONTENT = 2007;
   private static final int MSG_NOTIFY_PLAYER_SWITCH_DEFINITION = 2003;
   private static final int MSG_PLAY_VIDEO_NOT_FOUND = 101;
   private static final int MSG_PREPARE_FINISH = 50;
@@ -29,22 +31,14 @@ public class TPListenerManager
   private static final int MSG_URL_EXPIRED = 7;
   private static final Object OFFLINE_LISTENER_MAP_MUTEX = new Object();
   private static final Object PLAY_LISTENER_MAP_MUTEX = new Object();
-  private static final Object PRELOAD_LISTENER_MAP_MUTEX;
-  private static final Object PROXY_PLAY_LISTENER_MAP_MUTEX = new Object();
+  private static final Object PRELOAD_LISTENER_MAP_MUTEX = new Object();
   private static final String THREAD_NAME = "TVKDL-Listener";
   private Handler mMsgHandler;
   private HandlerThread mMsgHandlerThread;
   private Map<Integer, ITPOfflineDownloadListener> mOfflineDownloadListenerMap = new HashMap();
   private Map<Integer, ITPPlayListener> mPlayListenerMap = new HashMap();
   private Map<Integer, ITPPreLoadListener> mPreLoadListenerMap = new HashMap();
-  private Map<Integer, ITPPlayListener> mProxyPlayListenerMap = new HashMap();
   private Runnable updatePlayerInfo = new TPListenerManager.1(this);
-  private Runnable updateProxyPlayerInfo = new TPListenerManager.2(this);
-  
-  static
-  {
-    PRELOAD_LISTENER_MAP_MUTEX = new Object();
-  }
   
   private void dispatchCallbackMessage(int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
   {
@@ -55,12 +49,6 @@ public class TPListenerManager
     do
     {
       return;
-      localObject = getProxyPlayListener(paramInt2);
-      if (localObject != null)
-      {
-        dispatchPlayMessage((ITPPlayListener)localObject, paramInt1, paramInt2, paramObject1, paramObject2, paramObject3, paramObject4, paramObject5);
-        return;
-      }
       localObject = getPreLoadListener(paramInt2);
       if (localObject != null)
       {
@@ -122,6 +110,7 @@ public class TPListenerManager
     long l;
     switch (paramInt1)
     {
+    case 4: 
     default: 
       return;
     case 2: 
@@ -129,9 +118,6 @@ public class TPListenerManager
       return;
     case 3: 
       paramITPPlayListener.onDownloadFinish();
-      return;
-    case 4: 
-      paramITPPlayListener.onDownloadError(((Integer)paramObject1).intValue(), ((Integer)paramObject2).intValue(), TPDLProxyUtils.byteArrayToString((byte[])paramObject3));
       return;
     case 5: 
       paramITPPlayListener.onDownloadCdnUrlUpdate(TPDLProxyUtils.byteArrayToString((byte[])paramObject1));
@@ -170,9 +156,15 @@ public class TPListenerManager
     case 2003: 
       paramITPPlayListener.onPlayCallback(2, TPDLProxyUtils.byteArrayToString((byte[])paramObject1), TPDLProxyUtils.byteArrayToString((byte[])paramObject2), Integer.valueOf(TPDLProxyUtils.objectToInt(paramObject3, 0)), null);
       return;
+    case 2004: 
+      paramInt1 = TPDLProxyUtils.objectToInt(paramObject2, 0);
+      TVKThreadUtil.getScheduledExecutorServiceInstance().execute(new TPListenerManager.3(this, paramInt1));
+      return;
+    case 2006: 
+      paramITPPlayListener.onPlayCallback(3, TPDLProxyUtils.byteArrayToString((byte[])paramObject1), null, null, null);
+      return;
     }
-    paramInt1 = TPDLProxyUtils.objectToInt(paramObject2, 0);
-    TVKThreadUtil.getScheduledExecutorServiceInstance().execute(new TPListenerManager.4(this, paramInt1));
+    paramITPPlayListener.onPlayCallback(4, TPDLProxyUtils.byteArrayToString((byte[])paramObject1), null, null, null);
   }
   
   private void dispatchPreLoadMessage(ITPPreLoadListener paramITPPreLoadListener, int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
@@ -226,20 +218,11 @@ public class TPListenerManager
     }
   }
   
-  public ITPPlayListener getProxyPlayListener(int paramInt)
-  {
-    synchronized (PROXY_PLAY_LISTENER_MAP_MUTEX)
-    {
-      ITPPlayListener localITPPlayListener = (ITPPlayListener)this.mProxyPlayListenerMap.get(Integer.valueOf(paramInt));
-      return localITPPlayListener;
-    }
-  }
-  
   public void handleCallbackMessage(int paramInt1, int paramInt2, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4, Object paramObject5)
   {
     try
     {
-      this.mMsgHandler.post(new TPListenerManager.3(this, paramInt1, paramInt2, paramObject1, paramObject2, paramObject3, paramObject4, paramObject5));
+      this.mMsgHandler.post(new TPListenerManager.2(this, paramInt1, paramInt2, paramObject1, paramObject2, paramObject3, paramObject4, paramObject5));
       return;
     }
     finally
@@ -257,7 +240,6 @@ public class TPListenerManager
       this.mMsgHandlerThread.start();
       this.mMsgHandler = new Handler(this.mMsgHandlerThread.getLooper());
       this.mMsgHandler.postDelayed(this.updatePlayerInfo, 1000L);
-      this.mMsgHandler.postDelayed(this.updateProxyPlayerInfo, 1000L);
     }
   }
   
@@ -312,17 +294,6 @@ public class TPListenerManager
     }
   }
   
-  public void removeProxyPlayListener(int paramInt)
-  {
-    if (paramInt > 0) {
-      synchronized (PROXY_PLAY_LISTENER_MAP_MUTEX)
-      {
-        this.mProxyPlayListenerMap.remove(Integer.valueOf(paramInt));
-        return;
-      }
-    }
-  }
-  
   public void setOfflineDownloadListener(int paramInt, ITPOfflineDownloadListener paramITPOfflineDownloadListener)
   {
     if ((paramInt > 0) && (paramITPOfflineDownloadListener != null)) {
@@ -351,17 +322,6 @@ public class TPListenerManager
       synchronized (PRELOAD_LISTENER_MAP_MUTEX)
       {
         this.mPreLoadListenerMap.put(Integer.valueOf(paramInt), paramITPPreLoadListener);
-        return;
-      }
-    }
-  }
-  
-  public void setProxyPlayListener(int paramInt, ITPPlayListener paramITPPlayListener)
-  {
-    if ((paramInt > 0) && (paramITPPlayListener != null)) {
-      synchronized (PROXY_PLAY_LISTENER_MAP_MUTEX)
-      {
-        this.mProxyPlayListenerMap.put(Integer.valueOf(paramInt), paramITPPlayListener);
         return;
       }
     }

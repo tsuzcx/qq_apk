@@ -1,18 +1,27 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.widget.FixSizeImageView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletFullWindowActivity.QWalletFullWindowFragment;
 
-class ajvi
-  extends RecyclerView.ViewHolder
+public class ajvi
+  extends BroadcastReceiver
 {
-  public FixSizeImageView a;
-  public FixSizeImageView b;
+  public ajvi(QWalletFullWindowActivity.QWalletFullWindowFragment paramQWalletFullWindowFragment) {}
   
-  public ajvi(ajvg paramajvg, View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)paramView.findViewById(2131367895));
-    this.b = ((FixSizeImageView)paramView.findViewById(2131370633));
+    if (paramIntent == null) {}
+    do
+    {
+      return;
+      if ("action_close_camera".equals(paramIntent.getAction()))
+      {
+        QWalletFullWindowActivity.QWalletFullWindowFragment.a(this.a).finish();
+        return;
+      }
+    } while ((!"cn.abel.action.broadcast".equals(paramIntent.getAction())) || (paramIntent.getBooleanExtra("isOpen", false)));
+    QWalletFullWindowActivity.QWalletFullWindowFragment.b(this.a).finish();
   }
 }
 

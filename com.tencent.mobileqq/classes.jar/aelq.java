@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class aelq
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public aelq(TroopInfoActivity paramTroopInfoActivity, boolean paramBoolean) {}
   
-  private aelq(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      bcef.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    }
+  }
 }
 
 

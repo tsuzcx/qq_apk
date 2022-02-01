@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import agiq;
-import agjd;
+import afbj;
+import afbw;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.RequiresApi;
@@ -22,13 +22,13 @@ class IntimateInfoView$18$1
   {
     RelativeLayout localRelativeLayout;
     ImageView localImageView;
-    if ((agiq.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.this$0) != null) && (agjd.a(agiq.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.this$0)) != null))
+    if ((afbj.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.this$0) != null) && (afbw.a(afbj.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.this$0)) != null))
     {
-      int i = agjd.a(agiq.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.this$0)).indexOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.a);
-      localRelativeLayout = (RelativeLayout)agiq.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.this$0).getChild(i);
+      int i = afbw.a(afbj.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.this$0)).indexOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.a);
+      localRelativeLayout = (RelativeLayout)afbj.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.this$0).getChild(i);
       if (localRelativeLayout != null)
       {
-        localImageView = (ImageView)localRelativeLayout.findViewById(2131367246);
+        localImageView = (ImageView)localRelativeLayout.findViewById(2131367269);
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoView$18.a.type != 17) {
           break label147;
         }
@@ -51,7 +51,7 @@ class IntimateInfoView$18$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.18.1
  * JD-Core Version:    0.7.0.1
  */

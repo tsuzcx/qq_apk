@@ -1,20 +1,29 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agzs
-  implements QQPermissionCallback
+  implements DialogInterface.OnClickListener
 {
-  agzs(agzq paramagzq, BaseActivity paramBaseActivity) {}
+  agzs(agzo paramagzo, int paramInt) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bhlq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
-    this.jdField_a_of_type_Agzq.denied();
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Agzq.grant();
+    if (paramInt == 1)
+    {
+      if (this.jdField_a_of_type_Int != 0) {
+        break label47;
+      }
+      this.jdField_a_of_type_Agzo.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(1) });
+    }
+    for (;;)
+    {
+      agzo.b(this.jdField_a_of_type_Agzo, null);
+      return;
+      label47:
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_Agzo.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(2) });
+      }
+    }
   }
 }
 

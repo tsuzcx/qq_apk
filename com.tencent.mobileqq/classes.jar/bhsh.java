@@ -1,20 +1,20 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.GroupListOpenFrame;
 
-class bhsh
-  implements View.OnClickListener
+public class bhsh
+  implements View.OnTouchListener
 {
-  bhsh(bhsg parambhsg) {}
+  public bhsh(GroupListOpenFrame paramGroupListOpenFrame) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.a.c();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return true;
   }
 }
 

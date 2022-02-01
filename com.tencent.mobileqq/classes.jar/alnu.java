@@ -1,133 +1,81 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Vector;
 
 class alnu
-  extends blpy
+  extends Handler
 {
-  alnu(alnt paramalnt, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  alnu(alnr paramalnr, Looper paramLooper)
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+    super(paramLooper);
   }
   
-  public void a(int paramInt, Object paramObject, blpx[] paramArrayOfblpx)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramArrayOfblpx == null) || (paramArrayOfblpx.length <= 0)) {
-      return;
-    }
-    if ((paramObject instanceof RecentBaseData)) {}
-    label146:
-    label407:
-    label433:
-    for (int k = ((RecentBaseData)paramObject).mMenuFlag;; k = 0)
+    if (paramMessage.what == alnr.jdField_a_of_type_Int)
     {
-      if (((paramObject instanceof RecentBaseData)) && ((((RecentBaseData)paramObject).getRecentUserType() == 1008) || (((RecentBaseData)paramObject).getRecentUserType() == 7220)))
-      {
-        if ((!alol.a(((RecentBaseData)paramObject).getRecentUserUin())) || (!alor.a().a()) || (alor.a().a(((RecentBaseData)paramObject).getRecentUserUin()))) {
-          break label473;
-        }
-        paramArrayOfblpx[0].b = 6;
-        paramArrayOfblpx[0].a = 1;
+      paramMessage = (VasExtensionHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(71);
+      if (paramMessage != null) {
+        localObject = new ArrayList(alnr.jdField_a_of_type_JavaUtilVector.size());
       }
-      label203:
-      label467:
-      label473:
-      for (int i = 1;; i = 0)
+    }
+    while (paramMessage.what != alnr.jdField_b_of_type_Int)
+    {
+      try
       {
-        paramInt = i;
-        if (i < paramArrayOfblpx.length)
+        Iterator localIterator = alnr.jdField_a_of_type_JavaUtilVector.iterator();
+        while (localIterator.hasNext())
         {
-          paramArrayOfblpx[i].b = 0;
-          paramArrayOfblpx[i].a = 0;
-          paramInt = i + 1;
+          String str = (String)localIterator.next();
+          if (!((ArrayList)localObject).contains(str)) {
+            ((ArrayList)localObject).add(Long.valueOf(Long.parseLong(str)));
+          }
         }
-        while (paramInt < paramArrayOfblpx.length)
+        paramMessage.a((ArrayList)localObject, "troop");
+      }
+      catch (Exception localException) {}
+      for (;;)
+      {
+        alnr.jdField_a_of_type_JavaUtilVector.clear();
+        if (alnr.jdField_b_of_type_JavaUtilVector.size() > 0)
         {
-          paramArrayOfblpx[paramInt].b = -1;
-          paramArrayOfblpx[paramInt].a = -1;
-          paramInt += 1;
-          continue;
-          paramInt = k & 0xF0;
-          if (paramInt != 32) {
-            break label407;
-          }
-          paramArrayOfblpx[0].b = 2;
-          paramArrayOfblpx[0].a = 1;
-          i = 1;
+          paramMessage.a((String[])alnr.jdField_b_of_type_JavaUtilVector.toArray(new String[0]));
+          alnr.jdField_b_of_type_JavaUtilVector.clear();
         }
-        for (;;)
-        {
-          paramInt = i;
-          int j;
-          if (i < paramArrayOfblpx.length)
-          {
-            paramInt = i;
-            if ((paramObject instanceof RecentBaseData))
-            {
-              paramInt = i;
-              if (((RecentBaseData)paramObject).isUnreadMsgNumInTabNum())
-              {
-                j = 0xF0000 & k;
-                if (j != 65536) {
-                  break label433;
-                }
-                paramArrayOfblpx[i].b = 4;
-                paramArrayOfblpx[i].a = 1;
-                paramInt = i + 1;
-              }
-            }
-          }
-          for (;;)
-          {
-            i = paramInt;
-            if (paramInt < paramArrayOfblpx.length)
-            {
-              i = paramInt;
-              if ((0xF000000 & k) == 16777216)
-              {
-                paramArrayOfblpx[paramInt].b = 9;
-                paramArrayOfblpx[paramInt].a = 1;
-                i = paramInt + 1;
-              }
-            }
-            j = i;
-            if (i < paramArrayOfblpx.length)
-            {
-              j = i;
-              if ((k & 0xF) == 1)
-              {
-                paramArrayOfblpx[i].b = 0;
-                paramArrayOfblpx[i].a = 0;
-                j = i + 1;
-              }
-            }
-            paramInt = j;
-            if (j >= paramArrayOfblpx.length) {
-              break label146;
-            }
-            paramInt = j;
-            if ((k & 0x300000) != 2097152) {
-              break label146;
-            }
-            paramArrayOfblpx[j].b = 6;
-            paramArrayOfblpx[j].a = 1;
-            paramInt = j + 1;
-            break label146;
-            break;
-            if (paramInt != 16) {
-              break label467;
-            }
-            paramArrayOfblpx[0].b = 3;
-            paramArrayOfblpx[0].a = 0;
-            i = 1;
-            break label203;
-            paramInt = i;
-            if (j == 131072)
-            {
-              paramArrayOfblpx[i].b = 5;
-              paramArrayOfblpx[i].a = 1;
-              paramInt = i + 1;
-            }
-          }
-          i = 0;
+        return;
+        if ((alnr.a(this.a) != null) && (alnr.a(this.a).apolloLocalTS != alnr.a(this.a).apolloServerTS) && (!((ArrayList)localObject).contains(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin()))) {
+          ((ArrayList)localObject).add(Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin()));
+        }
+      }
+    }
+    Object localObject = (String)paramMessage.obj;
+    if (paramMessage.arg1 == 1) {
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!alnr.jdField_a_of_type_JavaUtilVector.contains(localObject)))
+      {
+        alnr.jdField_a_of_type_JavaUtilVector.add(localObject);
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloManager", 2, "addToBulkPullMap-->dress uin:" + (String)localObject);
+        }
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(alnr.jdField_a_of_type_Int);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(alnr.jdField_a_of_type_Int, 200L);
+      return;
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!alnr.jdField_b_of_type_JavaUtilVector.contains(localObject)))
+      {
+        alnr.jdField_b_of_type_JavaUtilVector.add(localObject);
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloManager", 2, "addToBulkPullMap-->info uin:" + (String)localObject);
         }
       }
     }

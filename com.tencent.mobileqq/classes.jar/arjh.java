@@ -1,123 +1,62 @@
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppExposureData;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class arjh
+  extends RecyclerView.Adapter<arjg>
 {
-  private HashMap<String, arji> a = new HashMap();
+  private List<MiniAppRecommInfo.MiniApp> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public arjh()
+  public arjh(arjf paramarjf) {}
+  
+  public arjg a(ViewGroup paramViewGroup, int paramInt)
   {
-    arji localarji = new arji();
-    localarji.a(true);
-    localarji.a("pages/detail/detail");
-    this.a.put("s_qq_mini_importing", localarji);
+    paramViewGroup = LayoutInflater.from(arjf.a(this.jdField_a_of_type_Arjf)).inflate(2131559486, null, false);
+    return new arjg(arjf.a(this.jdField_a_of_type_Arjf), paramViewGroup);
   }
   
-  public static arjh a(araj[] paramArrayOfaraj)
+  public void a(arjg paramarjg, int paramInt)
   {
-    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0)) {
-      return null;
-    }
-    for (;;)
+    MiniAppRecommInfo.MiniApp localMiniApp = (MiniAppRecommInfo.MiniApp)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramarjg.a(localMiniApp);
+    paramarjg.a(paramInt);
+    if ((localMiniApp != null) && (localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo != null))
     {
-      arjh localarjh;
-      int i;
-      JSONObject localJSONObject;
-      try
-      {
-        localarjh = new arjh();
-        i = 0;
-        if (i >= paramArrayOfaraj.length) {
-          break label516;
-        }
-        localJSONObject = new JSONObject(paramArrayOfaraj[i].a);
-        if (localJSONObject.has("MiniCodeConfigAioMsg"))
-        {
-          localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigAioMsg");
-          localarjh.a.put("docs_miniapp_config_aio_msg", arji.a(localJSONObject));
-        }
-        else if (localJSONObject.has("MiniCodeConfigAioEdit"))
-        {
-          localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigAioEdit");
-          localarjh.a.put("docs_miniapp_config_aio_edit", arji.a(localJSONObject));
-        }
-      }
-      catch (Exception paramArrayOfaraj)
-      {
-        paramArrayOfaraj.printStackTrace();
-        return null;
-      }
-      if (localJSONObject.has("MiniCodeConfigBottomEdit"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigBottomEdit");
-        localarjh.a.put("docs_miniapp_config_bottom_edit", arji.a(localJSONObject));
-      }
-      else if (localJSONObject.has("MiniCodeConfigMyFile"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigMyFile");
-        localarjh.a.put("docs_miniapp_config_my_file", arji.a(localJSONObject));
-      }
-      else if (localJSONObject.has("MiniCodeConfigTroopFile"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigTroopFile");
-        localarjh.a.put("docs_miniapp_config_troop_file", arji.a(localJSONObject));
-      }
-      else if (localJSONObject.has("MiniCodeConfigGrayBar"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigGrayBar");
-        localarjh.a.put("docs_miniapp_config_gray_bar", arji.a(localJSONObject));
-      }
-      else if (localJSONObject.has("MiniCodeConfigMenuEdit"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigMenuEdit");
-        localarjh.a.put("docs_miniapp_config_menu_edit", arji.a(localJSONObject));
-      }
-      else if (localJSONObject.has("MiniCodeConfigDownloadEdit"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigDownloadEdit");
-        localarjh.a.put("docs_miniapp_config_download_edit", arji.a(localJSONObject));
-      }
-      else if (localJSONObject.has("docs_miniapp_config_online_preview"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("docs_miniapp_config_online_preview");
-        localarjh.a.put("docs_miniapp_config_online_preview", arji.a(localJSONObject));
-      }
-      else if (localJSONObject.has("MiniCodeConfigTemplateList"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigTemplateList");
-        localarjh.a.put("docs_miniapp_config_templatelist", arji.a(localJSONObject));
-      }
-      else if (localJSONObject.has("MiniCodeConfigOcrSave"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigOcrSave");
-        localarjh.a.put("docs_miniapp_config_ocr_save", arji.a(localJSONObject));
-      }
-      else if (localJSONObject.has("MiniCodeConfigUrl2Doc"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigUrl2Doc");
-        localarjh.a.put("docs_miniapp_config_url_2_doc", arji.a(localJSONObject));
-      }
-      else if (localJSONObject.has("MiniCodeConfigAioArkH5"))
-      {
-        localJSONObject = (JSONObject)localJSONObject.get("MiniCodeConfigAioArkH5");
-        localarjh.a.put("docs_miniapp_config_aio_ark_h5", arji.a(localJSONObject));
-        break label518;
-        label516:
-        return localarjh;
-      }
-      label518:
-      i += 1;
+      MiniAppConfig localMiniAppConfig = new MiniAppConfig(localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo);
+      localMiniAppConfig.launchParam.scene = 2065;
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(new MiniAppExposureManager.MiniAppExposureData(localMiniAppConfig, paramInt));
+      MiniProgramLpReportDC04239.reportPageView(localArrayList, "expo");
+      arjf.a(101, paramInt, localMiniApp.jdField_a_of_type_Int);
+    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramarjg, paramInt, getItemId(paramInt));
+  }
+  
+  public void a(List<MiniAppRecommInfo.MiniApp> paramList)
+  {
+    if (paramList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
     }
   }
   
-  public HashMap<String, arji> a()
+  public int getItemCount()
   {
-    return this.a;
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arjh
  * JD-Core Version:    0.7.0.1
  */

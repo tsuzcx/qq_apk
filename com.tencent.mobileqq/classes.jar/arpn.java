@@ -1,61 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import kotlin.Metadata;
 
-public class arpn
-  extends arac<arpm>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"}, k=3, mv={1, 1, 16})
+final class arpn
+  implements DialogInterface.OnCancelListener
 {
-  public static arpm a()
+  public static final arpn a = new arpn();
+  
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    return (arpm)aran.a().a(500);
-  }
-  
-  @NonNull
-  public arpm a(int paramInt)
-  {
-    return new arpm();
-  }
-  
-  @Nullable
-  public arpm a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arpm.a(paramArrayOfaraj);
-    }
-    return null;
-  }
-  
-  public void a(arpm paramarpm) {}
-  
-  public Class<arpm> clazz()
-  {
-    return arpm.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 500;
+    bcef.b(null, "dc00898", "", "", "0X800B2CF", "0X800B2CF", 2, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arpn
  * JD-Core Version:    0.7.0.1
  */

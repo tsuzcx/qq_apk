@@ -1,135 +1,49 @@
-public class vxq<T>
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class vxq
+  extends JobSegment<List<wkm>, List<wkm>>
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private T jdField_a_of_type_JavaLangObject;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int c;
+  private final wkl a;
   
-  private vxq(int paramInt)
+  public vxq()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this(new vxr());
   }
   
-  public static <T> vxq<T> a()
+  public vxq(wkl paramwkl)
   {
-    return new vxq(0);
+    this.a = paramwkl;
   }
   
-  public static <T> vxq<T> a(int paramInt1, int paramInt2)
+  protected void a(JobContext paramJobContext, List<wkm> paramList)
   {
-    return new vxq(5).a(paramInt1).b(paramInt2);
-  }
-  
-  public static <T> vxq<T> a(String paramString)
-  {
-    return new vxq(4).b(paramString);
-  }
-  
-  public static <T> vxq<T> a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 2;; i = 3) {
-      return new vxq(i);
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "list empty");
+      }
+      notifyResult(paramList);
+      return;
     }
-  }
-  
-  public static <T> vxq<T> b()
-  {
-    return new vxq(1);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public T a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public vxq<T> a(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public vxq<T> a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public vxq<T> a(boolean paramBoolean, T paramT)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    return this;
-  }
-  
-  public vxq<T> a(byte[] paramArrayOfByte)
-  {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    return this;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public vxq<T> b(int paramInt)
-  {
-    this.c = paramInt;
-    return this;
-  }
-  
-  public vxq<T> b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public vxq<T> b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    return this.c;
-  }
-  
-  public vxq<T> c(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info start");
+    }
+    paramJobContext = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext()) {
+      paramJobContext.add(((wkm)localIterator.next()).b);
+    }
+    paramJobContext = new wkg(paramJobContext);
+    if (this.a != null) {
+      paramJobContext.a = this.a;
+    }
+    paramJobContext.a(new vxs(this, paramList));
+    paramJobContext.b();
   }
 }
 

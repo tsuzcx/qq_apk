@@ -1,26 +1,57 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.widget.ADView;
 
-class bhax
-  implements ValueAnimator.AnimatorUpdateListener
+public class bhax
+  implements bhkf
 {
-  bhax(bhav parambhav) {}
+  public bhax(ADView paramADView, LinearLayout paramLinearLayout) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    ((RelativeLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.getLayoutParams()).topMargin = paramValueAnimator.intValue();
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.requestLayout();
-    if (paramValueAnimator.intValue() <= -bhav.jdField_a_of_type_Int + this.a.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299011))
+    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    int i = 0;
+    View localView;
+    while (i < j)
     {
-      if (this.a.jdField_a_of_type_Bfpy != null) {
-        this.a.jdField_a_of_type_Bfpy.a(false);
+      localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      if (localView != null) {
+        localView.setEnabled(false);
       }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setVisibility(8);
+      i += 1;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetADView.f) {
+      if (paramInt == -1) {
+        i = j - 1;
+      }
+    }
+    for (;;)
+    {
+      if ((i > -1) && (i < j))
+      {
+        localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+        if (localView != null) {
+          localView.setEnabled(true);
+        }
+      }
+      return;
+      i = paramInt;
+      if (paramInt == j)
+      {
+        i = 0;
+        continue;
+        if (paramInt == -1)
+        {
+          i = 0;
+        }
+        else
+        {
+          i = paramInt;
+          if (paramInt == j) {
+            i = j - 1;
+          }
+        }
+      }
     }
   }
 }

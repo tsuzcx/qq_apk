@@ -1,40 +1,39 @@
 package com.tencent.biz.richframework.network.servlet;
 
-import aaap;
-import aaaq;
-import aaar;
-import aaau;
-import aaba;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.richframework.network.cache.Cache;
+import com.tencent.biz.richframework.network.cache.Cache.CacheInputStream;
+import com.tencent.biz.richframework.network.cache.CacheHelper;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
 import com.tencent.mobileqq.pb.MessageMicro;
-import yuk;
+import xvv;
 
-public class VSBaseServlet$1
+class VSBaseServlet$1
   implements Runnable
 {
-  public VSBaseServlet$1(aaba paramaaba, VSBaseRequest paramVSBaseRequest) {}
+  VSBaseServlet$1(VSBaseServlet paramVSBaseServlet, VSBaseRequest paramVSBaseRequest) {}
   
   public void run()
   {
     try
     {
       long l = System.currentTimeMillis();
-      Object localObject = this.a.getRequestKey();
-      localObject = aaar.a().a((String)localObject);
-      if ((localObject == null) || (((aaaq)localObject).a() == null))
+      Object localObject = this.val$req.getRequestKey();
+      localObject = CacheHelper.fileCache().getStream((String)localObject);
+      if ((localObject == null) || (((Cache.CacheInputStream)localObject).getInputStream() == null))
       {
-        yuk.b("VSNetworkHelper| Protocol Cache", "cache not found or bundle deserialized failed,CmdName:" + this.a.getCmdName() + " Seq:" + this.a.getCurrentSeq());
+        xvv.b("VSNetworkHelper| Protocol Cache", "cache not found or bundle deserialized failed,CmdName:" + this.val$req.getCmdName() + " Seq:" + this.val$req.getCurrentSeq());
         return;
       }
-      localObject = this.a.decode(aaba.a(this.this$0, ((aaaq)localObject).a()));
-      VSNetworkHelper.a().a(this.a, (MessageMicro)localObject);
-      yuk.b("VSNetworkHelper| Protocol Cache", "send Cache Success costTime:" + (System.currentTimeMillis() - l) + ",CmdName:" + this.a.getCmdName() + " Seq:" + this.a.getCurrentSeq());
+      localObject = this.val$req.decode(VSBaseServlet.access$000(this.this$0, ((Cache.CacheInputStream)localObject).getInputStream()));
+      VSNetworkHelper.getDispatchObserver().sendCacheToTargetCallBack(this.val$req, (MessageMicro)localObject);
+      xvv.b("VSNetworkHelper| Protocol Cache", "send Cache Success costTime:" + (System.currentTimeMillis() - l) + ",CmdName:" + this.val$req.getCmdName() + " Seq:" + this.val$req.getCurrentSeq());
       return;
     }
     catch (Exception localException)
     {
-      yuk.d("VSNetworkHelper| Protocol Cache", localException.toString());
+      xvv.d("VSNetworkHelper| Protocol Cache", localException.toString());
     }
   }
 }

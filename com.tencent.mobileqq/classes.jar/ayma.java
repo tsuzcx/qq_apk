@@ -1,36 +1,20 @@
-import android.content.res.Resources;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.graphics.Point;
+import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
+import java.util.Comparator;
 
-class ayma
-  implements Animation.AnimationListener
+public class ayma
+  implements Comparator<aylv>
 {
-  ayma(aykx paramaykx) {}
+  Point jdField_a_of_type_AndroidGraphicsPoint;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public ayma(TagCloudView paramTagCloudView, Point paramPoint)
   {
-    if (paramAnimation == aykx.b(this.a))
-    {
-      aykx.a(this.a).setVisibility(8);
-      aykx.a(this.a).clearAnimation();
-      aykx.a(this.a).setBackgroundResource(2130849155);
-      aykx.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166690));
-    }
+    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public int a(aylv paramaylv1, aylv paramaylv2)
   {
-    if (paramAnimation == aykx.a(this.a))
-    {
-      aykx.a(this.a).setVisibility(0);
-      aykx.a(this.a).setBackgroundResource(2130850668);
-      aykx.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166984));
-    }
+    return TagCloudView.a(paramaylv1.a(), this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramaylv2.a(), this.jdField_a_of_type_AndroidGraphicsPoint);
   }
 }
 

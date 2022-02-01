@@ -1,8 +1,14 @@
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
-public abstract interface omr
+public class omr
+  implements bjog
 {
-  public abstract void a(@NotNull Runnable paramRunnable);
+  public omr(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  
+  public void onDismiss()
+  {
+    ReadInJoySettingActivity.c(this.a).cancel();
+  }
 }
 
 

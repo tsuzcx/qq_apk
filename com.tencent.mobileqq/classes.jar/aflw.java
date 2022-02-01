@@ -1,20 +1,8 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-
-public class aflw
-  implements blpp
+public abstract interface aflw
 {
-  public aflw(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public abstract void a();
   
-  public void a(View paramView)
-  {
-    SearchMightKnowFragment.a(this.a, false);
-  }
-  
-  public void b(View paramView)
-  {
-    SearchMightKnowFragment.a(this.a, true);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

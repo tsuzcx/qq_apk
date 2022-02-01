@@ -1,91 +1,55 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class may
+public class may
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = -1;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
-  SpannableString jdField_a_of_type_AndroidTextSpannableString = null;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = -1;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int = -1;
-  boolean jdField_c_of_type_Boolean = false;
-  int d = -1;
+  public may(AVActivity paramAVActivity) {}
   
-  static may a(Resources paramResources, mbd parammbd, mav parammav)
+  public void onClick(View paramView)
   {
-    may localmay = new may();
-    if (!TextUtils.isEmpty(parammbd.a())) {
-      localmay.jdField_a_of_type_AndroidTextSpannableString = new SpannableString(parammbd.a());
-    }
-    localmay.jdField_a_of_type_Int = parammav.d;
-    localmay.jdField_b_of_type_Int = parammav.jdField_a_of_type_Int;
-    localmay.jdField_c_of_type_Int = parammav.jdField_b_of_type_Int;
-    localmay.d = parammav.jdField_c_of_type_Int;
-    switch (parammbd.a())
+    if (this.a.isDestroyed()) {}
+    label237:
+    for (;;)
     {
-    }
-    do
-    {
-      return localmay;
-      parammbd = (mbf)parammbd;
-      if ((parammbd.a() instanceof BitmapDrawable)) {
-        localmay.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)parammbd.a()).getBitmap();
-      }
-      for (;;)
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Object localObject = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
+      if (!((lez)localObject).x)
       {
-        switch (parammbd.k())
+        int i = ((lez)localObject).d;
+        long l = AudioHelper.b();
+        QLog.w(this.a.b, 1, "onMsgClick, sessionType[" + i + "], state[" + ((lez)localObject).jdField_g_of_type_Int + "], seq[" + l + "]");
+        if ((i == 1) || (i == 2))
         {
-        default: 
-          return localmay;
-        case 1: 
-          localmay.jdField_a_of_type_Boolean = true;
-          return localmay;
-          parammav = parammbd.b();
-          if (!TextUtils.isEmpty(parammav)) {
-            localmay.jdField_a_of_type_AndroidGraphicsBitmap = mqr.a(paramResources, parammav);
+          if (!((lez)localObject).o()) {
+            this.a.a(l, this.a.c, this.a.d, this.a.k);
           }
-          break;
+        }
+        else {
+          for (;;)
+          {
+            if (AVActivity.a(this.a) == null) {
+              break label237;
+            }
+            AVActivity.a(this.a).a();
+            break;
+            if ((i == 3) || (i == 4))
+            {
+              localObject = String.valueOf(((lez)localObject).jdField_g_of_type_Long);
+              String str = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.a.d, (String)localObject, null);
+              this.a.a(l, (String)localObject, this.a.d, str);
+            }
+          }
         }
       }
-      localmay.jdField_b_of_type_Boolean = true;
-      return localmay;
-      localmay.jdField_c_of_type_Boolean = ((mbg)parammbd).b();
-      return localmay;
-      paramResources = (mbe)parammbd;
-      if (paramResources.h() != -1) {
-        localmay.jdField_a_of_type_Int = paramResources.h();
-      }
-      if (paramResources.j() != -1) {
-        localmay.jdField_c_of_type_Int = paramResources.j();
-      }
-      if (paramResources.i() != -1) {
-        localmay.d = paramResources.i();
-      }
-    } while (localmay.jdField_a_of_type_AndroidTextSpannableString == null);
-    int j = paramResources.f();
-    if (paramResources.g() == -1) {}
-    for (int i = parammbd.a().length() + j;; i = paramResources.g() + j)
-    {
-      localmay.jdField_a_of_type_AndroidTextSpannableString.setSpan(new maz(paramResources), j, i, 33);
-      paramResources = new ForegroundColorSpan(localmay.jdField_c_of_type_Int);
-      localmay.jdField_a_of_type_AndroidTextSpannableString.setSpan(paramResources, j, i, 17);
-      return localmay;
     }
-  }
-  
-  static void a(TextView paramTextView, int paramInt1, int paramInt2)
-  {
-    paramTextView.setTag(2131378419, Integer.valueOf(paramInt2));
-    paramTextView.setTag(2131378420, Integer.valueOf(paramInt1));
-    paramTextView.setMovementMethod((luj)luj.a());
-    paramTextView.setHighlightColor(0);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.tts;
 
-import anzj;
+import amtj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
@@ -11,7 +11,7 @@ class SilkStreamPlayer$SilkStreamPlayerThread$2
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.context, anzj.a(2131713030), 0).a();
+    QQToast.a(BaseApplicationImpl.context, amtj.a(2131713262), 0).a();
   }
 }
 

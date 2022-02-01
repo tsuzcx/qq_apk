@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import acor;
-import acos;
+import abkz;
+import abla;
 import com.tencent.ad.tangram.util.AdExposureChecker;
 import com.tencent.gdtad.api.GdtAd;
 import com.tencent.mobileqq.mini.util.AdUtils;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 class GameActivity$38
-  implements acos
+  implements abla
 {
   GameActivity$38(GameActivity paramGameActivity) {}
   
@@ -29,18 +29,18 @@ class GameActivity$38
     QLog.i("[minigame] GameActivity", 1, "bannerad onAdClosed");
   }
   
-  public void onAdFailedToLoad(GdtAd paramGdtAd, acor paramacor)
+  public void onAdFailedToLoad(GdtAd paramGdtAd, abkz paramabkz)
   {
     int i;
-    if (paramacor != null)
+    if (paramabkz != null)
     {
-      i = paramacor.a();
-      if (paramacor == null) {
+      i = paramabkz.a();
+      if (paramabkz == null) {
         break label58;
       }
     }
     label58:
-    for (paramGdtAd = paramacor.a();; paramGdtAd = "")
+    for (paramGdtAd = paramabkz.a();; paramGdtAd = "")
     {
       QLog.i("[minigame] GameActivity", 1, "bannerad onAdFailedToLoad code=" + i + ", msg=" + paramGdtAd);
       return;

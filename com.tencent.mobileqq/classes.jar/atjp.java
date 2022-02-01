@@ -1,29 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ExpandableListView;
-
-class atjp
-  implements View.OnClickListener
+public abstract interface atjp
 {
-  atjp(atjm paramatjm, int paramInt) {}
+  public abstract void onProgress(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    if (atjm.a(this.jdField_a_of_type_Atjm).c(this.jdField_a_of_type_Int)) {
-      atjm.a(this.jdField_a_of_type_Atjm).b(this.jdField_a_of_type_Int);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      atjm.a(this.jdField_a_of_type_Atjm).a(this.jdField_a_of_type_Int);
-    }
-  }
+  public abstract void onResult(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atjp
  * JD-Core Version:    0.7.0.1
  */

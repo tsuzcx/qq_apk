@@ -1,107 +1,26 @@
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 import java.util.List;
 
 public class ube
+  implements blbv
 {
-  public static String a;
-  private List<ubf> a;
+  public ube(FolderRecommendTabFragment paramFolderRecommendTabFragment) {}
   
-  static
+  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
   {
-    jdField_a_of_type_JavaLangString = "ReadinjoyH5ElementManager";
-  }
-  
-  public ube()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return;
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        ubf localubf = (ubf)this.jdField_a_of_type_JavaUtilList.get(i);
-        if ((localubf != null) && (paramString.equals(localubf.jdField_a_of_type_JavaLangString)))
-        {
-          this.jdField_a_of_type_JavaUtilList.remove(i);
-          return;
-        }
-        i += 1;
-      }
+    List localList = null;
+    if (paramBoolean) {
+      localList = bdda.a(paramBoolean, paramGetAdsRsp, 476);
     }
-  }
-  
-  public void a(String paramString, Rect paramRect)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (a(paramString))) {
-      return;
-    }
-    ubf localubf = new ubf();
-    localubf.jdField_a_of_type_JavaLangString = paramString;
-    localubf.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-    this.jdField_a_of_type_JavaUtilList.add(localubf);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilList.isEmpty();
-  }
-  
-  public boolean a(Point paramPoint)
-  {
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "pt.x = " + paramPoint.x + "  pt.y=" + paramPoint.y);
-    }
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        ubf localubf = (ubf)this.jdField_a_of_type_JavaUtilList.get(i);
-        if ((localubf != null) && (localubf.jdField_a_of_type_AndroidGraphicsRect != null) && (localubf.jdField_a_of_type_AndroidGraphicsRect.contains(paramPoint.x, paramPoint.y))) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return false;
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        ubf localubf = (ubf)this.jdField_a_of_type_JavaUtilList.get(i);
-        if ((localubf != null) && (paramString.equals(localubf.jdField_a_of_type_JavaLangString))) {
-          return true;
-        }
-        i += 1;
-      }
+    if (FolderRecommendTabFragment.a(this.a) != null) {
+      FolderRecommendTabFragment.a(this.a).a(localList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ube
  * JD-Core Version:    0.7.0.1
  */

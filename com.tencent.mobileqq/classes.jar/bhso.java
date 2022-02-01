@@ -1,6 +1,21 @@
-public abstract interface bhso
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityAccountView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class bhso
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public bhso(OpenAuthorityAccountView paramOpenAuthorityAccountView) {}
+  
+  public void onClick(View paramView)
+  {
+    Object localObject = paramView.getTag();
+    if ((localObject != null) && ((localObject instanceof String))) {
+      this.a.b((String)localObject);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

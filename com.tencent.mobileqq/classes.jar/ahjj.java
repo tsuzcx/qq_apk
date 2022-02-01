@@ -1,18 +1,22 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import org.json.JSONObject;
 
 class ahjj
-  extends ahkx
+  implements bezd
 {
-  ahjj(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahjj(ahiu paramahiu) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    return new LightVideoItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (paramJSONObject == null) {}
+    while (paramJSONObject.optInt("retcode", -1) != 0) {
+      return;
+    }
+    paramJSONObject = (bfas)this.a.app.getManager(132);
+    paramInt = paramJSONObject.a(this.a.sessionInfo.curFriendUin);
+    paramJSONObject.a(this.a.sessionInfo.curFriendUin, 0, paramInt & 0xF);
   }
 }
 

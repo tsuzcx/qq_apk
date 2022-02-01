@@ -607,13 +607,14 @@ public abstract class PluginProxyActivity
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     if (sActivityDispatchCallback != null) {
       sActivityDispatchCallback.disaptchTouchEventCallback(this, paramMotionEvent);
     }
     if (this.mPluginActivity != null) {}
     for (boolean bool = this.mPluginActivity.IDispatchTouchEvent(paramMotionEvent);; bool = super.dispatchTouchEvent(paramMotionEvent))
     {
-      EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+      EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
       return bool;
     }
   }

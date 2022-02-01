@@ -1,88 +1,52 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import msf.msgcomm.msg_comm.MsgType0x210;
-import tencent.im.s2c.msgtype0x210.submsgtype0x6b.SubMsgType0x6b.MsgBody;
+import android.view.Display;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.mobileqq.tablequery.TableQueryViewer;
 
 public class bcti
-  implements bctr
+  implements View.OnTouchListener
 {
-  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
+  public bcti(TableQueryViewer paramTableQueryViewer) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    parambcre = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("Push_PCActive_Notice_Decode", 2, "get notice from decodeC2CMsgPkg_MsgType0x210");
+    paramView = this.a.getContext();
+    int i = paramMotionEvent.getAction();
+    int j = (int)paramMotionEvent.getRawY();
+    if (i == 0) {
+      TableQueryViewer.a(this.a, (int)paramMotionEvent.getY());
     }
-    paramMsgType0x210 = paramMsgType0x210.msg_content.get().toByteArray();
-    try
+    label171:
+    do
     {
-      Object localObject = new SubMsgType0x6b.MsgBody();
-      ((SubMsgType0x6b.MsgBody)localObject).mergeFrom(paramMsgType0x210);
-      long l = ((SubMsgType0x6b.MsgBody)localObject).uint64_to_uin.get();
-      if (!SettingCloneUtil.readValue(BaseApplicationImpl.getApplication(), Long.toString(l), null, "qqsetting_pcactive_key", false))
+      return false;
+      if (i == 2)
       {
-        if (!((SubMsgType0x6b.MsgBody)localObject).bytes_tips_content.has()) {
-          break label337;
-        }
-        paramMsgType0x210 = new String(((SubMsgType0x6b.MsgBody)localObject).bytes_tips_content.get().toByteArray(), "utf-8");
-        if (!((SubMsgType0x6b.MsgBody)localObject).bytes_yes_text.has()) {
-          break label332;
-        }
-        paramList = new String(((SubMsgType0x6b.MsgBody)localObject).bytes_yes_text.get().toByteArray(), "utf-8");
-        if (((SubMsgType0x6b.MsgBody)localObject).bytes_no_text.has()) {
-          parambcre = new String(((SubMsgType0x6b.MsgBody)localObject).bytes_no_text.get().toByteArray(), "utf-8");
-        }
-        BaseApplicationImpl.getApplication().setPCActiveNotice(Long.toString(l), paramMsgType0x210, parambcre, paramList);
-        localObject = new Intent("mqq.intent.action.PCACTIVE_TIPS");
-        ((Intent)localObject).putExtra("uin", Long.toString(l));
-        ((Intent)localObject).putExtra("Message", paramMsgType0x210);
-        ((Intent)localObject).putExtra("lButton", parambcre);
-        ((Intent)localObject).putExtra("rButton", paramList);
-        if (NotifyPCActiveActivity.a == null) {
-          BaseApplicationImpl.getApplication().startActivity((Intent)localObject);
-        }
-      }
-      bcrw.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramMsgType0x210)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Push_PCActive_Notice_Decode", 2, "failed to get msg0x210.SubMsgType0x6b");
-        }
-      }
-    }
-    catch (UnsupportedEncodingException paramMsgType0x210)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel())
+        if ((TableQueryViewer.a(this.a)) || (Math.abs(paramMotionEvent.getY() - TableQueryViewer.a(this.a)) > com.tencent.mobileqq.util.DisplayUtil.dip2px(paramView, 10.0F)))
         {
-          QLog.d("Push_PCActive_Notice_Decode", 2, "failed to parse msg0x210.SubMsgType0x6b");
-          continue;
-          label332:
-          paramList = null;
-          continue;
-          label337:
-          paramMsgType0x210 = null;
+          TableQueryViewer.a(this.a, true);
+          paramMotionEvent = (WindowManager.LayoutParams)this.a.getLayoutParams();
+          paramMotionEvent.y = (j - TableQueryViewer.a(this.a) - com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil.dip2px(paramView, 0.0F));
+          i = TableQueryViewer.a(this.a).getDefaultDisplay().getHeight();
+          if (paramMotionEvent.y >= 0) {
+            break label171;
+          }
+          paramMotionEvent.y = 0;
+        }
+        for (;;)
+        {
+          TableQueryViewer.a(this.a).updateViewLayout(TableQueryViewer.a(this.a), paramMotionEvent);
+          return true;
+          if (paramMotionEvent.y > i - this.a.getHeight()) {
+            paramMotionEvent.y = (i - this.a.getHeight());
+          }
         }
       }
-    }
+    } while ((i != 1) && (i != 3));
+    return false;
   }
 }
 

@@ -1,22 +1,13 @@
-import android.content.res.Resources;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.widget.ksong.KSongView;
+import android.support.annotation.NonNull;
+import android.view.View;
 
-public class akyn
-  extends bjet
+public abstract interface akyn
 {
-  public akyn(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  public abstract void a();
   
-  public void a()
-  {
-    super.a();
-    this.a.b = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a();
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.getResources().getDrawable(2130847314));
-    this.a.c.setText(anzj.a(2131712185));
-  }
+  public abstract void a(@NonNull View paramView1, int paramInt1, int paramInt2, @NonNull View paramView2, boolean paramBoolean);
+  
+  public abstract boolean a();
 }
 
 

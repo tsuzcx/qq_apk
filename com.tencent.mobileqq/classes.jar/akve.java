@@ -1,19 +1,22 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog.4.1;
 
 public class akve
-  extends aktf
+  implements vtx<vts>
 {
-  akve(NewPhotoListActivity paramNewPhotoListActivity)
-  {
-    super(paramNewPhotoListActivity);
-  }
+  public akve(P2VEditMusicDialog paramP2VEditMusicDialog) {}
   
-  public void initData(Intent paramIntent)
+  public void a(boolean paramBoolean, vts paramvts)
   {
-    super.initData(paramIntent);
-    ((aktm)this.mOtherCommonData).a = 6291456;
-    paramIntent.putExtra("PhotoConst.SHOULD_SEND_RAW_PHOTO", true);
+    xvv.b(P2VEditMusicDialog.a(), "onAddressUpdate.");
+    if ((paramBoolean) && (paramvts != null))
+    {
+      xvv.a(P2VEditMusicDialog.a(), "onAddressUpdate success, address=%s", paramvts);
+      this.a.a.post(new P2VEditMusicDialog.4.1(this, paramvts));
+      return;
+    }
+    xvv.e(P2VEditMusicDialog.a(), "onAddressUpdate failed.");
   }
 }
 

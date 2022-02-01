@@ -1,24 +1,27 @@
-import android.os.Handler;
-import com.tencent.avgame.gameroom.video.AVGameNetWorkQualityManager;
+import com.tencent.avgame.gameroom.stage.StageView;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.qphone.base.util.QLog;
 
 public class nen
-  extends mxs
+  implements ncc
 {
-  public nen(AVGameNetWorkQualityManager paramAVGameNetWorkQualityManager) {}
+  public nen(StageView paramStageView) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(LottieDrawable paramLottieDrawable)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AVGameNetWorkQualityManager", 2, "onNetTypeChange, [" + paramInt1 + "-->" + paramInt2 + "]");
+      QLog.d("StageView", 2, "onLoad " + paramLottieDrawable);
     }
-    AVGameNetWorkQualityManager.b(this.a).removeCallbacks(AVGameNetWorkQualityManager.a(this.a));
-    AVGameNetWorkQualityManager.b(this.a).post(AVGameNetWorkQualityManager.a(this.a));
+    if (paramLottieDrawable != null)
+    {
+      this.a.b = paramLottieDrawable;
+      this.a.b.addAnimatorListener(new neo(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nen
  * JD-Core Version:    0.7.0.1
  */

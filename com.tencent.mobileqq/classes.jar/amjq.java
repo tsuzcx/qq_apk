@@ -1,62 +1,14 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class amjq
+public final class amjq
+  implements alob
 {
-  public List<amjr> a = new ArrayList();
+  public amjq(amjx paramamjx, QQAppInterface paramQQAppInterface) {}
   
-  public static amjq a(JSONObject paramJSONObject)
+  public void a()
   {
-    if (paramJSONObject == null) {
-      paramJSONObject = new amjq();
-    }
-    for (;;)
-    {
-      return paramJSONObject;
-      localamjq = new amjq();
-      try
-      {
-        JSONArray localJSONArray = new JSONArray(paramJSONObject.getString("items"));
-        paramJSONObject = localamjq;
-        if (localJSONArray == null) {
-          continue;
-        }
-        paramJSONObject = localamjq;
-        if (localJSONArray.length() < 0) {
-          continue;
-        }
-        int j = localJSONArray.length();
-        int i = 0;
-        for (;;)
-        {
-          paramJSONObject = localamjq;
-          if (i >= j) {
-            break;
-          }
-          paramJSONObject = amjr.a(localJSONArray.getJSONObject(i));
-          localamjq.a.add(paramJSONObject);
-          i += 1;
-        }
-        return localamjq;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return localamjq;
-      }
-      catch (OutOfMemoryError paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return localamjq;
-      }
-      catch (Exception paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_Amjx.b(ApolloGameUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
   }
 }
 

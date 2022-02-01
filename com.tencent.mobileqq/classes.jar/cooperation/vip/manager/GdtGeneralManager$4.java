@@ -1,6 +1,6 @@
 package cooperation.vip.manager;
 
-import bnvx;
+import blbc;
 import cooperation.qzone.util.QZLog;
 import java.net.MalformedURLException;
 import java.net.URL;

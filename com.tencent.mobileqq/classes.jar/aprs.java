@@ -1,51 +1,10 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
-
-public abstract class aprs
-  implements apsd
+public abstract interface aprs
 {
-  public int a;
-  protected Context a;
-  protected AppInterface a;
-  protected int b;
+  public abstract int a();
   
-  public aprs()
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  public abstract int a(int paramInt);
   
-  public int a()
-  {
-    return 0;
-  }
-  
-  public void a(Context paramContext, AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void g()
-  {
-    this.jdField_a_of_type_Int = 2;
-  }
-  
-  public void h()
-  {
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  public void i() {}
-  
-  public void j()
-  {
-    this.jdField_a_of_type_Int = 5;
-  }
+  public abstract String a(int paramInt1, int paramInt2);
 }
 
 

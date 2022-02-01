@@ -1,30 +1,9 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.widget.TextView;
 
-class alhl
-  implements bdyi
+public class alhl
 {
-  boolean jdField_a_of_type_Boolean = false;
-  
-  alhl(alhk paramalhk, bdyi parambdyi) {}
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("SpecifyRedPacketAnimMsg", 2, "showAnim onFrameEnd");
-    }
-    if ((this.jdField_a_of_type_Boolean) || (alhk.a(this.jdField_a_of_type_Alhk))) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = true;
-      if (alhk.a(this.jdField_a_of_type_Alhk) != null) {
-        ThreadManager.getUIHandler().removeCallbacks(alhk.a(this.jdField_a_of_type_Alhk));
-      }
-    } while (this.jdField_a_of_type_Bdyi == null);
-    this.jdField_a_of_type_Bdyi.a();
-  }
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

@@ -1,29 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment.ViewHolder.1.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import java.util.Comparator;
 
 public class onl
-  implements pql
+  implements Comparator<onq>
 {
-  onl(onk paramonk) {}
+  public onl(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
   
-  public void onLoadUserInfoFailed(String paramString1, String paramString2)
+  public int a(onq paramonq1, onq paramonq2)
   {
-    QLog.d("ReadInjoyFriendsBiuComponentFragment", 1, "setComments infoFailed. uin:" + paramString1 + " errMsg:" + paramString2);
-  }
-  
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
-  {
-    if ((paramReadInJoyUserInfo != null) && (this.a.a != null)) {
-      ThreadManager.getUIHandler().post(new ReadInjoyFriendsBiuComponentFragment.ViewHolder.1.1(this));
-    }
-    if (paramReadInJoyUserInfo != null) {}
-    for (paramReadInJoyUserInfo = paramReadInJoyUserInfo.nick;; paramReadInJoyUserInfo = "null")
+    int j = 2147483647;
+    int i;
+    if (TextUtils.isEmpty(onq.a(paramonq1)))
     {
-      QLog.d("ReadInjoyFriendsBiuComponentFragment", 1, new Object[] { "setComments infoSuccess nick = ", paramReadInJoyUserInfo, "  uin:" + paramString, " mContents:" + this.a.a });
-      return;
+      i = 2147483647;
+      if (!TextUtils.isEmpty(onq.a(paramonq2))) {
+        break label44;
+      }
+    }
+    for (;;)
+    {
+      return i - j;
+      i = onq.a(paramonq1).codePointAt(0);
+      break;
+      label44:
+      j = onq.a(paramonq2).codePointAt(0);
     }
   }
 }

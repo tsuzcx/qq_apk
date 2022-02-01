@@ -1,47 +1,30 @@
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import dov.com.qq.im.QIMCameraCaptureUnit.11;
+import mqq.app.AppRuntime;
 
-public final class blhx
+public class blhx
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public static int a(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString).versionCode;
-  }
+  public blhx(QIMCameraCaptureUnit.11 param11) {}
   
-  public static PackageInfo a(Context paramContext, String paramString)
+  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    return paramContext.getPackageManager().getPackageInfo(paramString, 0);
-  }
-  
-  @Nullable
-  public static String a(Context paramContext, String paramString)
-  {
-    try
+    if (!paramBoolean)
     {
-      paramContext = paramContext.getPackageManager();
-      paramString = paramContext.getApplicationInfo(paramString, 128);
-      return (String)paramContext.getApplicationLabel(paramString);
+      this.a.this$0.a(101);
+      return;
     }
-    catch (Exception paramContext)
+    blhu.a(this.a.this$0, false);
+    if (!BaseApplicationImpl.getApplication().getRuntime().isBackgroundPause)
     {
-      QLog.e("PackageUtil", 1, "getApplicationName: failed. ", paramContext);
+      this.a.this$0.a(this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, paramLocalMediaInfo);
+      return;
     }
-    return null;
-  }
-  
-  public static boolean a(Context paramContext, String paramString)
-  {
-    try
-    {
-      a(paramContext, paramString);
-      return true;
-    }
-    catch (PackageManager.NameNotFoundException paramContext) {}
-    return false;
+    this.a.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
+    this.a.this$0.b = this.a.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult;
+    this.a.this$0.d = true;
   }
 }
 

@@ -1,22 +1,22 @@
 package cooperation.vip.tianshu;
 
-import bnwq;
+import blbw;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TianShuManager$1
   implements Runnable
 {
-  public TianShuManager$1(bnwq parambnwq) {}
+  public TianShuManager$1(blbw paramblbw) {}
   
   public void run()
   {
-    synchronized (bnwq.a(this.this$0))
+    synchronized (blbw.a(this.this$0))
     {
-      ArrayList localArrayList2 = new ArrayList(bnwq.a(this.this$0));
-      bnwq.a(this.this$0).clear();
-      bnwq.a(this.this$0).set(false);
-      bnwq.a(this.this$0, localArrayList2);
+      ArrayList localArrayList2 = new ArrayList(blbw.a(this.this$0));
+      blbw.a(this.this$0).clear();
+      blbw.a(this.this$0).set(false);
+      blbw.a(this.this$0, localArrayList2);
       return;
     }
   }

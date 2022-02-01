@@ -1,21 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager.6;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class rtd
-  implements DialogInterface.OnCancelListener
+public class rtd
+  implements bezd
 {
-  rtd(rsx paramrsx) {}
+  public rtd(ReadInJoyWebDataManager.6 param6) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    rsx.a(this.a, "mShareActionSheet cancle button OnClick");
-    if (rsx.a(this.a) != null) {
-      rsx.a(this.a).c();
+    QLog.w("ReadInJoyWebDataManager", 2, Long.toString(Thread.currentThread().getId()));
+    if (paramJSONObject != null) {}
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("ReadInJoyWebDataManager", 2, "sendLog result:" + paramJSONObject.toString());
+        }
+        return;
+      }
+      catch (Exception paramJSONObject)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.w("ReadInJoyWebDataManager", 2, "sendLog result Exception :" + paramJSONObject);
+        return;
+      }
     }
-    paramDialogInterface = rsx.a(this.a);
-    rsx.a(this.a, paramDialogInterface, String.valueOf(ozs.a()), paramDialogInterface.g, paramDialogInterface.a, paramDialogInterface.f, -1, -1, true);
+    QLog.w("ReadInJoyWebDataManager", 2, "sendLog result null");
   }
 }
 

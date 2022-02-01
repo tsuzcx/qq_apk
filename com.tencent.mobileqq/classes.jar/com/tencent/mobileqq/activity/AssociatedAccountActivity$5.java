@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import adab;
-import anzj;
+import abwp;
+import amtj;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.SubAccountInfo;
@@ -17,13 +17,13 @@ class AssociatedAccountActivity$5
     if (this.this$0.isFinishing()) {
       return;
     }
-    Object localObject2 = new StringBuilder(anzj.a(2131699699)).append(this.this$0.getString(2131718523));
+    Object localObject2 = new StringBuilder(amtj.a(2131699934)).append(this.this$0.getString(2131718771));
     int i;
     Object localObject1;
     if (this.a != null)
     {
-      i = this.a.b();
-      localObject1 = this.this$0.app.a();
+      i = this.a.getUnreadMsgsNum();
+      localObject1 = this.this$0.app.getConversationFacade();
       if ((localObject1 == null) || (this.this$0.a == null)) {
         break label255;
       }
@@ -31,7 +31,7 @@ class AssociatedAccountActivity$5
       localArrayList.addAll(this.this$0.a);
       Iterator localIterator = localArrayList.iterator();
       while (localIterator.hasNext()) {
-        i -= ((adab)localObject1).a(((SubAccountInfo)localIterator.next()).subuin, 7000);
+        i -= ((abwp)localObject1).a(((SubAccountInfo)localIterator.next()).subuin, 7000);
       }
       localArrayList.clear();
     }

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.photo;
 
 import Override;
-import agej;
-import akqq;
-import akqr;
-import akqs;
+import ajoo;
+import ajop;
+import ajoq;
+import amsw;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -18,9 +18,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import anyw;
-import bhsi;
+import bfyz;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -39,17 +39,17 @@ public class PhotoCropForPortraitActivity
   private void d()
   {
     boolean bool = true;
-    Object localObject = (RelativeLayout)findViewById(2131363594);
+    Object localObject = (RelativeLayout)findViewById(2131363623);
     if (localObject == null) {
       return;
     }
-    ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this).inflate(2131559566, null);
+    ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this).inflate(2131559568, null);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(9);
     localLayoutParams.addRule(12);
-    localLayoutParams.bottomMargin = agej.a(20.0F, getResources());
+    localLayoutParams.bottomMargin = AIOUtils.dp2px(20.0F, getResources());
     ((RelativeLayout)localObject).addView(localViewGroup, localLayoutParams);
-    int i = bhsi.ae(this, getCurrentAccountUin());
+    int i = bfyz.af(this, getCurrentAccountUin());
     if (i == -1)
     {
       try
@@ -80,13 +80,13 @@ public class PhotoCropForPortraitActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131378311));
+      this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131378078));
       if (i != 0) {}
       for (;;)
       {
         this.d = bool;
         this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.d);
-        localViewGroup.setOnClickListener(new akqs(this));
+        localViewGroup.setOnClickListener(new ajoq(this));
         return;
         this.i = 3;
         break;
@@ -99,11 +99,11 @@ public class PhotoCropForPortraitActivity
   
   void a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    Object localObject = (anyw)this.app.getManager(51);
+    Object localObject = (amsw)this.app.getManager(51);
     String str = this.app.getCurrentAccountUin();
-    localObject = ((anyw)localObject).a(str);
+    localObject = ((amsw)localObject).a(str);
     if ((localObject != null) && (((ExtensionInfo)localObject).isPendantValid()) && (this.e)) {
-      this.jdField_a_of_type_AndroidOsHandler = new akqr(this, (ExtensionInfo)localObject, str);
+      this.jdField_a_of_type_AndroidOsHandler = new ajop(this, (ExtensionInfo)localObject, str);
     }
     super.a(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
     if (100 == this.jdField_a_of_type_Int) {
@@ -114,8 +114,9 @@ public class PhotoCropForPortraitActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -128,9 +129,9 @@ public class PhotoCropForPortraitActivity
     {
       if (getIntent().getBooleanExtra("open_chat_from_avator", false))
       {
-        this.c = ((Button)super.findViewById(2131367344));
+        this.c = ((Button)super.findViewById(2131367368));
         this.c.setVisibility(0);
-        this.c.setOnClickListener(new akqq(this));
+        this.c.setOnClickListener(new ajoo(this));
       }
       return bool;
       getWindow().setFlags(16777216, 16777216);

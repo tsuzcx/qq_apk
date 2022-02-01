@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import agej;
+import amtj;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,22 +15,22 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import anzj;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.io.File;
-import sea;
-import seb;
+import sli;
+import slj;
 
 public class KandianProgressView
   extends LinearLayout
 {
   public Bundle a;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new sea(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new sli(this);
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public String a;
-  public seb a;
+  public slj a;
   ImageView jdField_b_of_type_AndroidWidgetImageView;
   TextView jdField_b_of_type_AndroidWidgetTextView;
   String jdField_b_of_type_JavaLangString = "";
@@ -39,12 +39,12 @@ public class KandianProgressView
   TextView d;
   TextView e;
   
-  public KandianProgressView(Context paramContext, Bundle paramBundle, seb paramseb)
+  public KandianProgressView(Context paramContext, Bundle paramBundle, slj paramslj)
   {
     super(paramContext);
-    LayoutInflater.from(paramContext).inflate(2131560366, this);
+    LayoutInflater.from(paramContext).inflate(2131560374, this);
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("mTaskID");
-    this.jdField_a_of_type_Seb = paramseb;
+    this.jdField_a_of_type_Slj = paramslj;
     this.jdField_b_of_type_JavaLangString = paramBundle.getString("arg_video_cover");
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
     b();
@@ -64,15 +64,15 @@ public class KandianProgressView
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366281));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377005));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376602));
-    this.d = ((TextView)findViewById(2131365379));
-    this.e = ((TextView)findViewById(2131371941));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373048));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365164));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376594));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365363));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366308));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376755));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376368));
+    this.d = ((TextView)findViewById(2131365411));
+    this.e = ((TextView)findViewById(2131371907));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373018));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365191));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376360));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365396));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -103,7 +103,7 @@ public class KandianProgressView
   public void a(int paramInt)
   {
     this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
-    this.e.setText(anzj.a(2131704837) + paramInt + "%");
+    this.e.setText(amtj.a(2131705067) + paramInt + "%");
     a(true);
   }
   
@@ -115,8 +115,8 @@ public class KandianProgressView
       Object localObject = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
       BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
-      int i = agej.a(100.0F, getResources());
-      int k = agej.a(100.0F, getResources());
+      int i = AIOUtils.dp2px(100.0F, getResources());
+      int k = AIOUtils.dp2px(100.0F, getResources());
       float f1 = ((BitmapFactory.Options)localObject).outWidth / i;
       float f2 = ((BitmapFactory.Options)localObject).outHeight / k;
       i = j;

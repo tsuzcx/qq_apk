@@ -1,13 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import android.view.View;
 
-public class tcm
-  implements aqvj
+class tcm
+  implements bjoe
 {
-  public tcm(ViolaFragment paramViolaFragment) {}
+  tcm(tch paramtch, bjnw parambjnw) {}
   
-  public void a() {}
-  
-  public void b() {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    this.jdField_a_of_type_Bjnw.dismiss();
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+    } while ((!tch.b(this.jdField_a_of_type_Tch)) || (!tch.a(this.jdField_a_of_type_Tch, "deleteFeeds")));
+    swb.a(tch.a(this.jdField_a_of_type_Tch), tch.a(this.jdField_a_of_type_Tch));
+  }
 }
 
 

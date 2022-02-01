@@ -1,17 +1,10 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-public class awmx
+final class awmx
   implements DialogInterface.OnClickListener
 {
-  public awmx(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ListenTogetherOverlayFragment.a(this.a).finish();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

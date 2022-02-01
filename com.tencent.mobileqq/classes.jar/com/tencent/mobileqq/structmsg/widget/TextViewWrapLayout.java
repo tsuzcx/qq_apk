@@ -39,8 +39,8 @@ public class TextViewWrapLayout
       super.onMeasure(paramInt1, paramInt2);
       if (this.a)
       {
-        TextView localTextView1 = (TextView)findViewById(2131380141);
-        TextView localTextView2 = (TextView)findViewById(2131380110);
+        TextView localTextView1 = (TextView)findViewById(2131379877);
+        TextView localTextView2 = (TextView)findViewById(2131379856);
         if ((localTextView2 != null) && (localTextView1 != null) && (4 - localTextView1.getLineCount() > 0)) {
           localTextView2.setMaxLines(4 - localTextView1.getLineCount());
         }
@@ -53,7 +53,7 @@ public class TextViewWrapLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.widget.TextViewWrapLayout
  * JD-Core Version:    0.7.0.1
  */

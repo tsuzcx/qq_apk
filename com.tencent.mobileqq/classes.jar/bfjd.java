@@ -1,25 +1,23 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
 
 public class bfjd
-  implements blih
+  implements bcrf
 {
-  int jdField_a_of_type_Int = 0;
+  public bfjd(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
   
-  public bfjd(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a()
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size() - 1))
+    if (TroopGiftToAllSurfaceView.a(this.a).d == 0) {
+      this.a.a(1, TroopGiftToAllSurfaceView.a(this.a));
+    }
+    for (;;)
     {
-      paramInt = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size();
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a(paramInt, false);
+      if ((TroopGiftToAllSurfaceView.a(this.a) instanceof VideoSprite)) {
+        ((VideoSprite)TroopGiftToAllSurfaceView.a(this.a)).c(TroopGiftToAllSurfaceView.a(this.a));
+      }
+      return;
+      this.a.a(0, TroopGiftToAllSurfaceView.a(this.a));
     }
   }
 }

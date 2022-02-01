@@ -40,8 +40,8 @@ public class WebSettings
   public static String getDefaultUserAgent(Context paramContext)
   {
     String str = null;
-    if (v.a().b()) {
-      str = v.a().c().i(paramContext);
+    if (x.a().b()) {
+      str = x.a().c().i(paramContext);
     }
     while (Build.VERSION.SDK_INT < 17) {
       return str;

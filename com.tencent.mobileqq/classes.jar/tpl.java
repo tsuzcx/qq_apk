@@ -1,48 +1,41 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView;
-import com.tencent.widget.AbsListView;
-import java.lang.ref.WeakReference;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.List;
 
-final class tpl
-  implements blih
+public class tpl
 {
-  tpl(ReadInJoyCommentListView paramReadInJoyCommentListView, sph paramsph) {}
+  private static final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public static void a()
   {
-    if (this.jdField_a_of_type_Sph != null) {
-      this.jdField_a_of_type_Sph.a(paramAbsListView);
+    if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.size() <= 0)) {}
+  }
+  
+  public static void a(String paramString1, String paramString2, double paramDouble)
+  {
+    if (!a(paramDouble)) {}
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, double paramDouble)
+  {
+    if (!a(paramDouble)) {}
+  }
+  
+  private static boolean a(double paramDouble)
+  {
+    return false;
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_JavaUtilList != null) {
+      jdField_a_of_type_JavaUtilList.clear();
     }
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  private static void b(String paramString)
   {
-    if ((tpk.a() == null) || (tpk.a().size() == 0)) {}
-    for (;;)
-    {
-      return;
-      paramInt = tpk.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView);
-      int i = paramAbsListView.getFirstVisiblePosition();
-      int j = paramAbsListView.getLastVisiblePosition();
-      paramAbsListView = tpk.a().iterator();
-      while (paramAbsListView.hasNext())
-      {
-        Object localObject = (tpm)paramAbsListView.next();
-        int k = ((tpm)localObject).jdField_a_of_type_Int;
-        localObject = (ReadInJoyArticleBottomVideoView)((tpm)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
-        if ((k >= i - paramInt) && (k <= j - paramInt))
-        {
-          if (localObject != null) {
-            ((ReadInJoyArticleBottomVideoView)localObject).n();
-          }
-        }
-        else if (localObject != null) {
-          ((ReadInJoyArticleBottomVideoView)localObject).q();
-        }
-      }
-    }
+    odq.a(pay.a(), "", "0X800A064", "0X800A064", 0, 0, "", "", "", paramString, false);
   }
 }
 

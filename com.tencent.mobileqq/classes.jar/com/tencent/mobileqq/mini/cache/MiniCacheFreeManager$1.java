@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.cache;
 
+import amtj;
 import android.app.Activity;
-import anzj;
-import bhlq;
-import bhpc;
+import bfur;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
 final class MiniCacheFreeManager$1
@@ -22,11 +22,11 @@ final class MiniCacheFreeManager$1
       return;
       try
       {
-        bhpc localbhpc = bhlq.a(this.val$activity, 230, null, this.val$dialogContext, anzj.a(2131709099), anzj.a(2131709100), new MiniCacheFreeManager.1.1(this), new MiniCacheFreeManager.1.2(this));
-        localbhpc.setCanceledOnTouchOutside(false);
+        QQCustomDialog localQQCustomDialog = bfur.a(this.val$activity, 230, null, this.val$dialogContext, amtj.a(2131709331), amtj.a(2131709332), new MiniCacheFreeManager.1.1(this), new MiniCacheFreeManager.1.2(this));
+        localQQCustomDialog.setCanceledOnTouchOutside(false);
         if ((this.val$activity != null) && (!this.val$activity.isFinishing()))
         {
-          localbhpc.show();
+          localQQCustomDialog.show();
           return;
         }
       }

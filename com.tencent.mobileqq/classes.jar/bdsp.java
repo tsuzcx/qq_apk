@@ -1,165 +1,58 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.troop.widget.PublishItemContainer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bdsp
-  extends bdom
+  implements View.OnClickListener
 {
-  protected boolean a;
+  public bdsp(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  protected int b()
+  public void onClick(View paramView)
   {
-    return 2;
-  }
-  
-  @TargetApi(16)
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Boolean = paramBundle.getBoolean("pre_dialog", false);
-    Resources localResources = paramContext.getResources();
-    AbsShareMsg localAbsShareMsg = (AbsShareMsg)this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
-    int i = agej.a(10.0F, localResources);
-    if (paramView == null)
+    switch (((afcl)paramView.getTag()).a)
     {
-      paramBundle = new LinearLayout(paramContext);
-      paramBundle.setOrientation(1);
-      bdsr localbdsr = new bdsr(null);
-      paramBundle.setTag(2131374951, localbdsr);
-      paramView = paramBundle.getLayoutParams();
-      if (paramView == null)
-      {
-        paramView = new LinearLayout.LayoutParams(-1, -2);
-        paramBundle.setLayoutParams(paramView);
-        paramView = new TextView(paramContext);
-        paramView.setSingleLine(true);
-        paramView.setCompoundDrawablePadding(i);
-        paramView.setGravity(16);
-        paramView.setEllipsize(TextUtils.TruncateAt.END);
-        paramView.setTextColor(-16777216);
-        paramView.setTextSize(2, 16.0F);
-        paramView.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-        paramView.setPadding(i, i, i, i);
-        paramBundle.addView(paramView);
-        TextView localTextView = new TextView(paramContext);
-        localTextView.setTextColor(-16777216);
-        localTextView.setMaxLines(2);
-        localTextView.setEllipsize(TextUtils.TruncateAt.END);
-        localTextView.setTextSize(2, 12.0F);
-        localTextView.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-        localTextView.setPadding(i, 0, i, i);
-        paramBundle.addView(localTextView);
-        ImageView localImageView = new ImageView(paramContext);
-        Object localObject = new LinearLayout.LayoutParams(BaseChatItemLayout.B, (int)(BaseChatItemLayout.f * 0.468D));
-        ((LinearLayout.LayoutParams)localObject).gravity = 1;
-        localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        paramBundle.addView(localImageView);
-        paramContext = new TextView(paramContext);
-        paramContext.setTextColor(-7829368);
-        paramContext.setTextSize(2, 12.0F);
-        paramContext.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-        paramContext.setCompoundDrawablePadding(agej.a(5.0F, localResources));
-        localObject = localResources.getDrawable(2130847336);
-        ((Drawable)localObject).setBounds(0, 0, agej.a(18.0F, localResources), agej.a(10.0F, localResources));
-        paramContext.setCompoundDrawables((Drawable)localObject, null, null, null);
-        paramContext.setPadding(i, i, i, i);
-        paramBundle.addView(paramContext);
-        localbdsr.jdField_a_of_type_AndroidWidgetTextView = paramView;
-        localbdsr.b = localTextView;
-        localbdsr.jdField_a_of_type_AndroidWidgetImageView = localImageView;
-        localbdsr.c = paramContext;
-        localbdsr.jdField_a_of_type_AndroidWidgetLinearLayout = paramBundle;
-        paramView = localbdsr;
-        paramContext = paramBundle;
-        label443:
-        if (!this.jdField_a_of_type_Boolean) {
-          break label517;
-        }
-        paramContext.setPadding(i, i, i, i);
-        label462:
-        if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) {
-          break label528;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("StructMsgItemLayoutMicro", 2, "getView but parentMsg or message is null");
-        }
-      }
     }
     for (;;)
     {
-      return paramContext;
-      paramView.width = -1;
-      paramView.height = -2;
-      break;
-      paramContext = (LinearLayout)paramView;
-      paramView = (bdsr)paramContext.getTag(2131374951);
-      break label443;
-      label517:
-      paramContext.setPadding(0, 0, 0, 0);
-      break label462;
-      label528:
-      i = agej.a(24.0F, localResources);
-      try
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      TroopBarReplyActivity.b(this.a);
+      continue;
+      TroopBarReplyActivity.c(this.a);
+      continue;
+      TroopBarReplyActivity.d(this.a);
+      continue;
+      if (this.a.k)
       {
-        paramBundle = URLDrawable.URLDrawableOptions.obtain();
-        paramBundle.mRequestWidth = i;
-        paramBundle.mRequestHeight = i;
-        paramBundle = URLDrawable.getDrawable(localAbsShareMsg.mContentCover, paramBundle);
-        paramBundle.setDecodeHandler(bhez.a);
-        paramBundle.setBounds(0, 0, i, i);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramBundle, null, null, null);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localAbsShareMsg.mContentTitle);
-        paramView.b.setText(localAbsShareMsg.mContentSummary);
-        paramView.c.setText(anzj.a(2131713415));
-        if (!TextUtils.isEmpty(localAbsShareMsg.mMsg_I_ActionData))
-        {
-          try
-          {
-            paramBundle = URLDrawable.getDrawable(localAbsShareMsg.mMsg_I_ActionData, null);
-            paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
-            return paramContext;
-          }
-          catch (IllegalArgumentException paramView) {}
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("StructMsgItemLayoutMicro", 2, "getView fail");
-          return paramContext;
-        }
+        bfaj.a(this.a.m, this.a.n, "Clk_music", this.a.o, "", "", "");
+        bfaj.b("reply_page_new", "Clk_music", this.a.o, "", "", "");
       }
-      catch (Throwable paramBundle)
-      {
-        for (;;)
+      if (!this.a.a(4)) {
+        if ((this.a.a.a() != 0) && (this.a.a.a() != 3))
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("StructMsgItemLayoutMicro", 2, "getTitleView fail e=" + paramBundle.getMessage());
+          this.a.a(3);
+        }
+        else
+        {
+          this.a.b(4);
+          continue;
+          if (this.a.k)
+          {
+            bfaj.a(this.a.m, this.a.n, "Clk_video", this.a.o, "", "", "");
+            bfaj.b("reply_page_new", "Clk_video", this.a.o, "", "", "");
+          }
+          if (!this.a.a(8)) {
+            if ((this.a.a.a() != 0) && (this.a.a.a() != 4)) {
+              this.a.a(7);
+            } else {
+              this.a.b(3);
+            }
           }
         }
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
       }
     }
-    return paramContext;
-  }
-  
-  public String b()
-  {
-    return "layoutMicro";
   }
 }
 

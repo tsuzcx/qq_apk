@@ -1,31 +1,31 @@
 package com.tencent.biz.pubaccount.readinjoy.automator;
 
-import omn;
-import omo;
-import omp;
-import oms;
-import omt;
+import ony;
+import onz;
+import ooa;
+import ood;
+import ooe;
 
 public class Automator$6
   implements Runnable
 {
-  public Automator$6(omo paramomo, omp paramomp) {}
+  public Automator$6(onz paramonz, ooa paramooa) {}
   
   public void run()
   {
     this.a.c();
-    oms localoms = this.a.a();
-    if ((localoms instanceof omn))
+    ood localood = this.a.a();
+    if ((localood instanceof ony))
     {
-      ((omn)localoms).b();
+      ((ony)localood).b();
       return;
     }
-    if ((localoms instanceof omt))
+    if ((localood instanceof ooe))
     {
-      ((omt)localoms).b();
+      ((ooe)localood).b();
       return;
     }
-    omo.a(this.this$0);
+    onz.a(this.this$0);
   }
 }
 

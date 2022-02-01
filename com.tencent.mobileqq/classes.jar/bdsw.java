@@ -1,63 +1,31 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
 public class bdsw
+  implements WXShareHelper.WXShareListener
 {
-  public static View a(Context paramContext, View paramView, agjk paramagjk, Bundle paramBundle)
+  public bdsw(TroopCreateLogicActivity paramTroopCreateLogicActivity) {}
+  
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    paramagjk = paramContext.getResources();
-    int i;
-    label37:
-    Object localObject;
-    if (paramBundle.getInt("longMsgHolderType", -1) == 1)
+    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    switch (paramBaseResp.errCode)
     {
-      i = 1;
-      if ((paramView == null) || (!(paramView instanceof RelativeLayout))) {
-        break label237;
-      }
-      ((RelativeLayout)paramView).removeAllViews();
-      paramView = (RelativeLayout)paramView;
-      paramView.setLayoutParams(new RelativeLayout.LayoutParams(-1, agej.a(75.0F, paramagjk)));
-      paramBundle = new RelativeLayout(paramContext);
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(13);
-      paramView.addView(paramBundle, (ViewGroup.LayoutParams)localObject);
-      localObject = new ImageView(paramContext);
-      paramContext = new TextView(paramContext);
-      if (i == 0) {
-        break label249;
-      }
-      ((ImageView)localObject).setImageResource(2130841668);
-      paramContext.setText(paramagjk.getString(2131695767));
+    case -1: 
+    default: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131718380, 1).a();
     }
     for (;;)
     {
-      ((ImageView)localObject).setId(2131378092);
-      ((ImageView)localObject).setLayoutParams(new RelativeLayout.LayoutParams(agej.a(23.5F, paramagjk), agej.a(22.5F, paramagjk)));
-      paramBundle.addView((View)localObject);
-      paramContext.setTextSize(2, 14.0F);
-      paramContext.setTextColor(Color.parseColor("#777777"));
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131378092);
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = agej.a(7.5F, paramagjk);
-      paramBundle.addView(paramContext, (ViewGroup.LayoutParams)localObject);
-      return paramView;
-      i = 0;
-      break;
-      label237:
-      paramView = new RelativeLayout(paramContext);
-      break label37;
-      label249:
-      ((ImageView)localObject).setImageResource(2130841667);
-      paramContext.setText(paramagjk.getString(2131695766));
+      WXShareHelper.getInstance().removeObserver(this);
+      return;
+      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131718398, 1).a();
     }
   }
 }

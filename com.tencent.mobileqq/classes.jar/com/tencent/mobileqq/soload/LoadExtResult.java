@@ -2,12 +2,12 @@ package com.tencent.mobileqq.soload;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bdge;
-import bdgo;
-import bhnv;
+import bbys;
+import bbzc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.Collection;
@@ -22,10 +22,10 @@ public class LoadExtResult
 {
   private int downloadSoNum;
   private int failIndex;
-  public bdge failInfo;
+  public bbys failInfo;
   private boolean isFirstlyLoad = true;
   private boolean isNeedRetry;
-  private Map<String, bdgo> mPathsMap = new HashMap();
+  private Map<String, bbzc> mPathsMap = new HashMap();
   private String reportStr = "";
   int resCode;
   private int soNum;
@@ -96,13 +96,13 @@ public class LoadExtResult
       localLoadExtResult.downloadSoNum = paramInt2;
       localLoadExtResult.isFirstlyLoad = paramSoLoadInfo.isFirstlyLoad;
       if (localLoadExtResult.resCode != 0) {
-        break label220;
+        break label206;
       }
       paramInt2 = 0;
       label58:
       localLoadExtResult.failIndex = paramInt2;
       if (((paramLoadOptions.flag & 0x4) == 0) || (paramSoLoadInfo.soDetailInfo.relatedFileInfo == null) || (!TextUtils.isEmpty(paramSoLoadInfo.rFileFolder))) {
-        break label225;
+        break label211;
       }
     }
     for (;;)
@@ -115,25 +115,21 @@ public class LoadExtResult
         Object localObject1 = localObject2;
         if (paramInt1 == 0)
         {
-          LoadOptions localLoadOptions = paramLoadOptions;
-          if (paramLoadOptions == null) {
-            localLoadOptions = LoadOptions.sDefault;
-          }
           localObject1 = localObject2;
-          if ((localLoadOptions.flag & 0x2) != 0) {
+          if ((paramLoadOptions.flag & 0x2) != 0) {
             localObject1 = paramSoLoadInfo.soPathToLoad;
           }
         }
-        paramSoLoadInfo = new bdgo((String)localObject1, paramSoLoadInfo.rFileFolder, paramSoLoadInfo.getVer());
+        paramSoLoadInfo = new bbzc((String)localObject1, paramSoLoadInfo.rFileFolder, paramSoLoadInfo.getVer());
         localLoadExtResult.mPathsMap.put(paramString, paramSoLoadInfo);
       }
       return localLoadExtResult;
       paramInt2 = 0;
       break;
-      label220:
+      label206:
       paramInt2 = 1;
       break label58;
-      label225:
+      label211:
       bool = false;
     }
   }
@@ -156,7 +152,7 @@ public class LoadExtResult
       if ((!a(this.failInfo.jdField_a_of_type_Int, this.failInfo.b)) && (!b(this.failInfo.jdField_a_of_type_Int, this.failInfo.b))) {
         break label164;
       }
-      int i = bhnv.b(BaseApplicationImpl.getApplication());
+      int i = NetworkUtil.getNetworkType(BaseApplicationImpl.getApplication());
       if (QLog.isColorLevel()) {
         QLog.i("LoadExtResult", 2, "[getDelayAyncTime]curNetType:" + i);
       }
@@ -176,14 +172,14 @@ public class LoadExtResult
   {
     Iterator localIterator = this.mPathsMap.values().iterator();
     if (localIterator.hasNext()) {
-      return ((bdgo)localIterator.next()).b;
+      return ((bbzc)localIterator.next()).b;
     }
     return "";
   }
   
   public String getRelatedFilesFolder(String paramString)
   {
-    paramString = (bdgo)this.mPathsMap.get(paramString);
+    paramString = (bbzc)this.mPathsMap.get(paramString);
     if (paramString == null) {
       return "";
     }
@@ -216,14 +212,14 @@ public class LoadExtResult
   {
     Iterator localIterator = this.mPathsMap.values().iterator();
     if (localIterator.hasNext()) {
-      return ((bdgo)localIterator.next()).a;
+      return ((bbzc)localIterator.next()).a;
     }
     return "";
   }
   
   public String getSoLoadPath(String paramString)
   {
-    paramString = (bdgo)this.mPathsMap.get(paramString);
+    paramString = (bbzc)this.mPathsMap.get(paramString);
     if (paramString == null) {
       return "";
     }
@@ -234,23 +230,27 @@ public class LoadExtResult
   {
     Iterator localIterator = this.mPathsMap.values().iterator();
     if (localIterator.hasNext()) {
-      return ((bdgo)localIterator.next()).c;
+      return ((bbzc)localIterator.next()).c;
     }
     return "";
   }
   
   public String getVer(String paramString)
   {
-    paramString = (bdgo)this.mPathsMap.get(paramString);
+    paramString = (bbzc)this.mPathsMap.get(paramString);
     if (paramString == null) {
       return "";
     }
     return paramString.c;
   }
   
-  public boolean isNeedRetry()
+  public boolean isNeedRetry(LoadParam paramLoadParam)
   {
-    return (!isSucc()) || (this.isNeedRetry);
+    if (LoadParam.isCloseRetry(paramLoadParam)) {}
+    while ((isSucc()) && (!this.isNeedRetry)) {
+      return false;
+    }
+    return true;
   }
   
   public boolean isSucc()
@@ -270,7 +270,7 @@ public class LoadExtResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.soload.LoadExtResult
  * JD-Core Version:    0.7.0.1
  */

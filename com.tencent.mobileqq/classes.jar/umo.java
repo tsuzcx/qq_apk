@@ -1,30 +1,24 @@
-import android.os.Parcel;
-import org.json.JSONObject;
+import android.widget.TextView;
 
-public class umo
+class umo
+  implements umi
 {
-  public String mAbTest;
-  public int mType;
+  umo(umj paramumj, boolean paramBoolean) {}
   
-  protected umo(Parcel paramParcel)
+  public void a()
   {
-    this.mType = paramParcel.readInt();
-    this.mAbTest = paramParcel.readString();
-  }
-  
-  protected umo(JSONObject paramJSONObject)
-  {
-    this.mType = paramJSONObject.optInt("type");
-    this.mAbTest = paramJSONObject.optString("qq_abtest");
-    parseJson(paramJSONObject);
-  }
-  
-  protected void parseJson(JSONObject paramJSONObject) {}
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    paramParcel.writeInt(this.mType);
-    paramParcel.writeString(this.mAbTest);
+    umj.a(this.jdField_a_of_type_Umj, null);
+    if ((umj.a(this.jdField_a_of_type_Umj) != null) && (umj.a(this.jdField_a_of_type_Umj)) && (umj.a(this.jdField_a_of_type_Umj) != null)) {
+      umj.a(this.jdField_a_of_type_Umj).setText(umj.a(this.jdField_a_of_type_Umj).a());
+    }
+    if ((umj.b(this.jdField_a_of_type_Umj)) && (umj.a(this.jdField_a_of_type_Umj) != 0L))
+    {
+      umj.b(this.jdField_a_of_type_Umj);
+      umj.b(this.jdField_a_of_type_Umj, false);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      umj.c(this.jdField_a_of_type_Umj);
+    }
   }
 }
 

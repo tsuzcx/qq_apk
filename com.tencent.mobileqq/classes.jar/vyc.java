@@ -1,9 +1,6 @@
-public abstract interface vyc
-{
-  public abstract void a();
-  
-  public abstract void b();
-}
+public final class vyc
+  extends vko
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

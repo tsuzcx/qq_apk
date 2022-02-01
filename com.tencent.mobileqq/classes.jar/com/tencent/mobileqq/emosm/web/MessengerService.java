@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.emosm.web;
 
-import amkp;
-import anbd;
+import alfm;
+import alvx;
+import amsu;
+import amzh;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build.VERSION;
@@ -14,34 +16,32 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.text.TextUtils;
-import anuw;
-import anyu;
-import aofr;
-import asik;
-import asil;
-import asim;
-import asin;
-import asio;
-import asip;
-import asiq;
-import asir;
-import asis;
-import asit;
-import asiu;
-import asiv;
-import asiw;
-import asjv;
-import askc;
-import askd;
-import asko;
-import askq;
-import bbsw;
-import bbvd;
-import bebi;
-import biia;
-import bikp;
-import bkia;
-import com.tencent.mobileqq.activity.Conversation;
+import arci;
+import arcj;
+import arck;
+import arcl;
+import arcm;
+import arcn;
+import arco;
+import arcp;
+import arcq;
+import arcr;
+import arcs;
+import arct;
+import arcu;
+import ardt;
+import area;
+import areb;
+import arem;
+import areo;
+import bamr;
+import baoy;
+import bcuz;
+import bgok;
+import bgqy;
+import binf;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.profile.VipProfileCardPhotoHandlerActivity;
@@ -53,31 +53,31 @@ import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.app.AppService;
 import mqq.os.MqqHandler;
-import oez;
+import ogm;
 
 public class MessengerService
   extends AppService
-  implements asik
+  implements arci
 {
-  public amkp a;
+  public alfm a;
+  public amsu a;
+  public amzh a;
   public Bundle a;
   public Handler a;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   public Messenger a;
-  public anuw a;
-  public anyu a;
-  public aofr a;
-  private asiw jdField_a_of_type_Asiw;
-  public asjv a;
-  public asko a;
-  public askq a;
-  public bbsw a;
-  public bebi a;
-  public biia a;
-  public bikp a;
-  public bkia a;
+  private arcu jdField_a_of_type_Arcu;
+  public ardt a;
+  public arem a;
+  public areo a;
+  public bamr a;
+  public bcuz a;
+  public bgok a;
+  public bgqy a;
+  public binf a;
+  public CardObserver a;
   public List<Bundle> a;
-  oez jdField_a_of_type_Oez = new asim(this);
+  ogm jdField_a_of_type_Ogm = new arck(this);
   public Bundle b;
   Messenger b;
   public Bundle c = null;
@@ -86,22 +86,22 @@ public class MessengerService
   public MessengerService()
   {
     this.jdField_a_of_type_AndroidOsMessenger = null;
-    this.jdField_a_of_type_Askq = new asil(this);
-    this.jdField_a_of_type_Asko = new asio(this);
-    this.jdField_a_of_type_Bebi = new asip(this);
-    this.jdField_a_of_type_Bikp = new asiq(this);
-    this.jdField_a_of_type_Biia = new asir(this);
-    this.jdField_a_of_type_Asjv = new asjv(this);
-    this.jdField_a_of_type_Aofr = new aofr(this.jdField_a_of_type_Asjv);
+    this.jdField_a_of_type_Areo = new arcj(this);
+    this.jdField_a_of_type_Arem = new arcm(this);
+    this.jdField_a_of_type_Bcuz = new arcn(this);
+    this.jdField_a_of_type_Bgqy = new arco(this);
+    this.jdField_a_of_type_Bgok = new arcp(this);
+    this.jdField_a_of_type_Ardt = new ardt(this);
+    this.jdField_a_of_type_Amzh = new amzh(this.jdField_a_of_type_Ardt);
     this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
     this.jdField_a_of_type_AndroidOsBundle = null;
-    this.jdField_a_of_type_Anuw = new asis(this);
-    this.jdField_a_of_type_Amkp = new asit(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppCardObserver = new arcq(this);
+    this.jdField_a_of_type_Alfm = new arcr(this);
     this.jdField_b_of_type_AndroidOsBundle = null;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_Bbsw = new asiu(this);
-    this.jdField_a_of_type_Anyu = new asiv(this);
-    this.jdField_a_of_type_Bkia = new asin(this);
+    this.jdField_a_of_type_Bamr = new arcs(this);
+    this.jdField_a_of_type_Amsu = new arct(this);
+    this.jdField_a_of_type_Binf = new arcl(this);
   }
   
   public static void a(MessengerService paramMessengerService)
@@ -188,11 +188,11 @@ public class MessengerService
       super.onCreate();
       this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("Vas_MessengerServiceWorkerThread", -2);
       this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_Asiw = new asiw(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-      this.jdField_b_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_Asiw);
+      this.jdField_a_of_type_Arcu = new arcu(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+      this.jdField_b_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_Arcu);
       if ((this.app != null) && ((this.app instanceof QQAppInterface)))
       {
-        ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_Amkp);
+        ((QQAppInterface)this.app).addObserver(this.jdField_a_of_type_Alfm);
         return;
       }
     }
@@ -217,17 +217,17 @@ public class MessengerService
   public void onDestroy()
   {
     Object localObject;
-    if (this.jdField_a_of_type_Asiw != null)
+    if (this.jdField_a_of_type_Arcu != null)
     {
       if ((this.app != null) && ((this.app instanceof QQAppInterface)))
       {
         localObject = (VasQuickUpdateManager)((QQAppInterface)this.app).getManager(184);
         if (localObject != null) {
-          ((VasQuickUpdateManager)localObject).removeCallBacker(this.jdField_a_of_type_Asiw.a);
+          ((VasQuickUpdateManager)localObject).removeCallBacker(this.jdField_a_of_type_Arcu.a);
         }
       }
-      this.jdField_a_of_type_Asiw.getLooper().quit();
-      this.jdField_a_of_type_Asiw = null;
+      this.jdField_a_of_type_Arcu.getLooper().quit();
+      this.jdField_a_of_type_Arcu = null;
     }
     if (this.jdField_a_of_type_AndroidOsHandlerThread != null) {
       this.jdField_a_of_type_AndroidOsHandlerThread = null;
@@ -239,50 +239,50 @@ public class MessengerService
     if ((this.app != null) && ((this.app instanceof QQAppInterface)))
     {
       localObject = (QQAppInterface)this.app;
-      if ((askd)this.app.getManager(43) != null) {
-        askd.a.b(this.jdField_a_of_type_Askq);
+      if ((areb)this.app.getManager(43) != null) {
+        areb.a.b(this.jdField_a_of_type_Areo);
       }
-      if (this.jdField_a_of_type_Aofr != null)
+      if (this.jdField_a_of_type_Amzh != null)
       {
-        this.jdField_a_of_type_Aofr.a();
-        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Aofr);
-        this.jdField_a_of_type_Aofr = null;
+        this.jdField_a_of_type_Amzh.a();
+        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Amzh);
+        this.jdField_a_of_type_Amzh = null;
       }
-      this.jdField_a_of_type_Asjv = null;
-      if (this.jdField_a_of_type_Anuw != null)
+      this.jdField_a_of_type_Ardt = null;
+      if (this.jdField_a_of_type_ComTencentMobileqqAppCardObserver != null)
       {
-        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Anuw);
-        this.jdField_a_of_type_Anuw = null;
+        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
+        this.jdField_a_of_type_ComTencentMobileqqAppCardObserver = null;
       }
-      if (this.jdField_a_of_type_Bikp != null)
+      if (this.jdField_a_of_type_Bgqy != null)
       {
-        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Bikp);
-        this.jdField_a_of_type_Bikp = null;
+        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Bgqy);
+        this.jdField_a_of_type_Bgqy = null;
       }
-      if (this.jdField_a_of_type_Bebi != null)
+      if (this.jdField_a_of_type_Bcuz != null)
       {
-        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Bebi);
-        this.jdField_a_of_type_Bebi = null;
+        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Bcuz);
+        this.jdField_a_of_type_Bcuz = null;
       }
-      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_Amkp);
-      this.jdField_a_of_type_Amkp.a();
-      if (this.jdField_a_of_type_Oez != null)
+      ((QQAppInterface)this.app).removeObserver(this.jdField_a_of_type_Alfm);
+      this.jdField_a_of_type_Alfm.a();
+      if (this.jdField_a_of_type_Ogm != null)
       {
-        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Oez);
-        this.jdField_a_of_type_Oez = null;
+        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Ogm);
+        this.jdField_a_of_type_Ogm = null;
       }
-      if (this.jdField_a_of_type_Anyu != null)
+      if (this.jdField_a_of_type_Amsu != null)
       {
-        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Anyu);
-        this.jdField_a_of_type_Anyu = null;
+        ((QQAppInterface)localObject).removeObserver(this.jdField_a_of_type_Amsu);
+        this.jdField_a_of_type_Amsu = null;
       }
-      if (this.jdField_a_of_type_Bbsw != null)
+      if (this.jdField_a_of_type_Bamr != null)
       {
-        localObject = (bbvd)((QQAppInterface)localObject).getManager(15);
+        localObject = (baoy)((QQAppInterface)localObject).getManager(15);
         if (localObject != null)
         {
-          ((bbvd)localObject).b(this.jdField_a_of_type_Bbsw);
-          this.jdField_a_of_type_Bbsw = null;
+          ((baoy)localObject).b(this.jdField_a_of_type_Bamr);
+          this.jdField_a_of_type_Bamr = null;
         }
       }
       if (this.jdField_a_of_type_AndroidOsHandler != null)
@@ -303,13 +303,13 @@ public class MessengerService
     if (QLog.isColorLevel()) {
       QLog.i("Q.emoji.web.MessengerService", 2, "MessengerService onUnbind");
     }
-    anbd.b();
+    alvx.b();
     return super.onUnbind(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService
  * JD-Core Version:    0.7.0.1
  */

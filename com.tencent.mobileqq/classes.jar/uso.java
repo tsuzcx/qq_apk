@@ -1,6 +1,8 @@
-class uso
+public abstract interface uso
 {
-  private static final usm a = new usm(null);
+  public abstract void a(String paramString1, int paramInt, String paramString2);
+  
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

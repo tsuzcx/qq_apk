@@ -1,34 +1,11 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
 
 public class ajrr
-  implements View.OnClickListener
+  extends ajqk
 {
-  public ajrr(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
-  
-  public void onClick(View paramView)
+  protected ajrr(AlbumListFragment paramAlbumListFragment)
   {
-    Object localObject;
-    if ((paramView.getTag() instanceof ajpx))
-    {
-      localObject = (ajpx)paramView.getTag();
-      if (localObject != null) {
-        break label30;
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label30:
-      localObject = TroopInfoActivity.a(((ajpx)localObject).b, 4);
-      ((Bundle)localObject).putInt("t_s_f", 1002);
-      bguq.a(this.a.getActivity(), (Bundle)localObject, 2);
-    }
+    super(paramAlbumListFragment);
   }
 }
 

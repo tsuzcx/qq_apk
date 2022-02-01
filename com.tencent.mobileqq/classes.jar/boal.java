@@ -1,52 +1,19 @@
-public final class boal
-  implements Cloneable
+import com.tencent.qphone.base.util.QLog;
+
+final class boal
+  implements bnnz<Boolean, bnoe>
 {
-  public volatile int a;
-  public long a;
-  public boak a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c = "";
-  public String d = "";
+  boal(boam paramboam) {}
   
-  public boal()
+  public Void a(Boolean paramBoolean, bnoe parambnoe)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
-  public boal a()
-  {
-    try
+    if (parambnoe.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      boal localboal = (boal)super.clone();
-      return localboal;
+      this.a.jdField_a_of_type_AndroidGraphicsBitmap = parambnoe.jdField_a_of_type_AndroidGraphicsBitmap;
+      this.a.jdField_a_of_type_Long = parambnoe.jdField_a_of_type_Long;
+      QLog.e(boaj.a(), 2, "MediaCodecThumbnailGenerator progress " + parambnoe.jdField_a_of_type_Long);
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
     return null;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 5) || (this.jdField_a_of_type_Int == 3) || ((this.jdField_a_of_type_Int == 1) && ((this.jdField_b_of_type_Int == 1810003) || (this.jdField_b_of_type_Int == 1810004)));
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2);
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_Int == 1) && (this.jdField_b_of_type_Int != 1810003) && (this.jdField_b_of_type_Int != 1810004);
-  }
-  
-  public boolean d()
-  {
-    return (this.jdField_a_of_type_Int == 1) && ((this.jdField_b_of_type_Int == 1810003) || (this.jdField_b_of_type_Int == 1810004));
   }
 }
 

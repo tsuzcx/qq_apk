@@ -1,11 +1,13 @@
-import android.widget.TextView;
-import com.tencent.biz.now.NowVideoLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 public class bdpx
+  implements DialogInterface.OnClickListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  NowVideoLayout jdField_a_of_type_ComTencentBizNowNowVideoLayout;
-  TextView b;
+  public bdpx(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,27 +1,19 @@
 import android.view.View;
-import android.view.ViewTreeObserver.OnScrollChangedListener;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.widget.BubblePopupWindow;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.AEPituCameraUnit.15;
 
 public class blka
-  implements ViewTreeObserver.OnScrollChangedListener
+  implements View.OnClickListener
 {
-  public blka(BubblePopupWindow paramBubblePopupWindow) {}
+  public blka(AEPituCameraUnit.15 param15) {}
   
-  public void onScrollChanged()
+  public void onClick(View paramView)
   {
-    if (BubblePopupWindow.a(this.a) != null) {}
-    for (View localView = (View)BubblePopupWindow.a(this.a).get();; localView = null)
-    {
-      if ((localView != null) && (BubblePopupWindow.a(this.a) != null))
-      {
-        WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)BubblePopupWindow.a(this.a).getLayoutParams();
-        BubblePopupWindow.a(this.a, localView, localLayoutParams, BubblePopupWindow.a(this.a), BubblePopupWindow.b(this.a));
-        this.a.a(localLayoutParams.x, localLayoutParams.y, -1, -1, true);
-      }
-      return;
+    if (this.a.this$0.a != null) {
+      this.a.this$0.a.e();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

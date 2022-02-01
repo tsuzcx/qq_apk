@@ -1,28 +1,29 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.ocr.OCRResultActivity.9.1;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipDiyView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayys
-  extends ayxv
+  implements View.OnClickListener
 {
-  public ayys(OCRResultActivity paramOCRResultActivity) {}
+  public ayys(VasProfileQVipDiyView paramVasProfileQVipDiyView) {}
   
-  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
+  public void onClick(View paramView)
   {
-    if (OCRResultActivity.a(this.a)) {
-      return;
-    }
-    this.a.runOnUiThread(new OCRResultActivity.9.1(this, paramBoolean, paramInt, paramTranslateResult));
-    HashMap localHashMap = new HashMap();
-    if (paramTranslateResult != null) {}
-    for (int i = paramTranslateResult.b;; i = 2000)
+    switch (paramView.getId())
     {
-      localHashMap.put("errCode", String.valueOf(i));
-      localHashMap.put("type", String.valueOf(paramInt));
-      bdmc.a(BaseApplicationImpl.getContext()).a("", "SCAN_TRANSLATE_RESULT", paramBoolean, 0L, 0L, localHashMap, "", false);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      VasProfileQVipDiyView.a(this.a, VasProfileQVipDiyView.a(this.a));
+      bfyi.a(VasProfileQVipDiyView.a(this.a).a, VasProfileQVipDiyView.e(this.a), VasProfileQVipDiyView.a(this.a));
+      bcef.b(VasProfileQVipDiyView.f(this.a), "dc00898", "", "", "qvip", "0X8009E7B", 0, 0, "", "", "", "");
+      continue;
+      VasProfileQVipDiyView.a(this.a, VasProfileQVipDiyView.a(this.a));
+      bfrj.b(VasProfileQVipDiyView.g(this.a));
+      bcef.b(VasProfileQVipDiyView.h(this.a), "dc00898", "", "", "qvip", "0X8009E7C", 0, 0, "", "", "", "");
     }
   }
 }

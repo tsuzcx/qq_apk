@@ -1,15 +1,15 @@
 package com.tencent.biz.TroopRedpoint;
 
-import nku;
+import nmj;
 
 public class TroopRedTouchHandler$1
   implements Runnable
 {
-  public TroopRedTouchHandler$1(nku paramnku) {}
+  public TroopRedTouchHandler$1(nmj paramnmj) {}
   
   public void run()
   {
-    nku.a(this.this$0);
+    nmj.a(this.this$0);
   }
 }
 

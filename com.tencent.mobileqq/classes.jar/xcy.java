@@ -1,43 +1,27 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileStoryFeedIdList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 
 public class xcy
-  extends wpa
+  implements bjoe
 {
-  public String a;
-  public String b;
+  public xcy(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, bjnw parambjnw) {}
   
-  public String a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return wnu.a("StorySvc.get_profile_feed_id_list");
-  }
-  
-  public wov a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspProfileStoryFeedIdList localRspProfileStoryFeedIdList = new qqstory_service.RspProfileStoryFeedIdList();
-    try
+    if (UIUtils.isFastDoubleClick()) {}
+    do
     {
-      localRspProfileStoryFeedIdList.mergeFrom(paramArrayOfByte);
-      return new xcz(localRspProfileStoryFeedIdList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqProfileStoryFeedIdList localReqProfileStoryFeedIdList = new qqstory_service.ReqProfileStoryFeedIdList();
-    localReqProfileStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    localReqProfileStoryFeedIdList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localReqProfileStoryFeedIdList.toByteArray();
+      return;
+      this.jdField_a_of_type_Bjnw.e();
+      paramView = this.jdField_a_of_type_Bjnw.a(paramInt);
+    } while (!amtj.a(2131710151).equals(paramView));
+    paramView = TroopInfoActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.c, 0);
+    paramView.putInt("extra_last_open_from", this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.a);
+    TroopUtils.openTroopInfoActivity(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity, paramView, 2);
   }
 }
 

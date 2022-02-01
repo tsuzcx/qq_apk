@@ -2,10 +2,10 @@ package com.tencent.mobileqq.minigame.publicaccount;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import antf;
-import apeg;
+import anxs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -51,7 +51,7 @@ public class MiniGamePublicAccountIPCModule
     try
     {
       int j = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGamePublicAccountMsgListCount", 4);
-      List localList = paramQQAppInterface.a().a(antf.aW, 1008, 10);
+      List localList = paramQQAppInterface.getMessageFacade().getMessages(AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN, 1008, 10);
       ArrayList localArrayList = new ArrayList();
       int i;
       if ((localList != null) && (localList.size() > 0)) {
@@ -62,7 +62,7 @@ public class MiniGamePublicAccountIPCModule
         if (i >= 0)
         {
           MessageRecord localMessageRecord = (MessageRecord)localList.get(i);
-          if (antf.aW.equals(localMessageRecord.frienduin))
+          if (AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN.equals(localMessageRecord.frienduin))
           {
             String str = paramQQAppInterface.getAccount();
             if ((localMessageRecord instanceof MessageForArkApp))
@@ -107,7 +107,7 @@ public class MiniGamePublicAccountIPCModule
         paramMessageRecord = new JSONObject((String)localObject1).optString("report_key_bytes_oac_msg_extend", "");
         if (!TextUtils.isEmpty(paramMessageRecord))
         {
-          Bundle localBundle = apeg.a(paramMessageRecord);
+          Bundle localBundle = anxs.a(paramMessageRecord);
           if ((localBundle != null) && (!TextUtils.isEmpty(paramQQGameMsgInfo.arkMetaList)))
           {
             localObject2 = new JSONObject(paramQQGameMsgInfo.arkMetaList);
@@ -158,7 +158,7 @@ public class MiniGamePublicAccountIPCModule
         return null;
       }
     } while (!"action_do_on_resume".equals(paramString));
-    ((QQAppInterface)paramBundle).a().a(antf.aW, 1008, true, true);
+    ((QQAppInterface)paramBundle).getMessageFacade().setReaded(AppConstants.MINI_GAME_PUBLIC_ACCOUNT_UIN, 1008, true, true);
     return null;
   }
 }

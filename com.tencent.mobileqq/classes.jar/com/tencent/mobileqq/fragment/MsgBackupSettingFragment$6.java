@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.fragment;
 
 import android.support.v4.app.FragmentActivity;
-import axfx;
-import axhi;
+import avte;
+import avup;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msgbackup.transport.MsgBackupJniProxy;
@@ -18,7 +18,7 @@ class MsgBackupSettingFragment$6
   
   public void run()
   {
-    axhi localaxhi = new axhi();
+    avup localavup = new avup();
     ArrayList localArrayList = new ArrayList(2);
     QLog.d("MsgBackup", 1, "loadSo start");
     this.this$0.a = new MsgBackupJniProxy(this.this$0.getActivity());
@@ -28,14 +28,14 @@ class MsgBackupSettingFragment$6
     QLog.d("MsgBackup", 1, "createSession end, session = " + l);
     i = this.this$0.a.start(l, MsgBackupSettingFragment.a(this.this$0), MsgBackupSettingFragment.a(this.this$0), MsgBackupSettingFragment.b(this.this$0));
     QLog.d("MsgBackup", 1, "start ret = " + i + ", ip = " + MsgBackupSettingFragment.a(this.this$0)[0] + ", udpport = " + MsgBackupSettingFragment.a(this.this$0) + ", tcpport = " + MsgBackupSettingFragment.b(this.this$0));
-    localaxhi.c(MsgBackupSettingFragment.b(this.this$0)[1]);
-    localaxhi.b(MsgBackupSettingFragment.b(this.this$0)[0]);
-    localaxhi.a(MsgBackupSettingFragment.a(this.this$0)[0]);
+    localavup.c(MsgBackupSettingFragment.b(this.this$0)[1]);
+    localavup.b(MsgBackupSettingFragment.b(this.this$0)[0]);
+    localavup.a(MsgBackupSettingFragment.a(this.this$0)[0]);
     localArrayList.add(Integer.valueOf(MsgBackupSettingFragment.b(this.this$0).intValue()));
     localArrayList.add(Integer.valueOf(MsgBackupSettingFragment.a(this.this$0).intValue()));
-    localaxhi.a(localArrayList);
-    localaxhi.a(4);
-    MsgBackupSettingFragment.a(this.this$0).a(localaxhi.a(), 3, true);
+    localavup.a(localArrayList);
+    localavup.a(4);
+    MsgBackupSettingFragment.a(this.this$0).a(localavup.a(), 3, true);
   }
 }
 

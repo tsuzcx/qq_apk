@@ -1,767 +1,234 @@
-import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.medalwall.MedalWallMng;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItemExtMsg;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.ConfirmQrReq;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.ConfirmQrRsp;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.GetQrReq;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.GetQrRsp;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.QueryStateReq;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.QueryStateRsp;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.RejectQrReq;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.ReqBody;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.RspBody;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.UserData;
-import tencent.im.oidb.cmd0xcdd.oidb_cmd0xcdd.VerifyTokenReq;
-import tencent.im.oidb.cmd0xcde.oidb_cmd0xcde.GetDecryptKeyReq;
-import tencent.im.oidb.cmd0xcde.oidb_cmd0xcde.GetDecryptKeyRsp;
-import tencent.im.oidb.cmd0xcde.oidb_cmd0xcde.GetEncrptkeyReq;
-import tencent.im.oidb.cmd0xcde.oidb_cmd0xcde.GetEncryptKeyRsp;
-import tencent.im.oidb.cmd0xcde.oidb_cmd0xcde.ReqBody;
-import tencent.im.oidb.cmd0xcde.oidb_cmd0xcde.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.util.WeakReference;
+import org.json.JSONObject;
+import tencent.im.oidb.redInfo.RedInfo;
 
 public class axfx
-  extends anud
+  implements axgg
 {
-  public axfx(QQAppInterface paramQQAppInterface)
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  WeakReference<axfy> jdField_a_of_type_MqqUtilWeakReference;
+  
+  public axfx(QQAppInterface paramQQAppInterface, axfy paramaxfy)
   {
-    super(paramQQAppInterface);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramaxfy);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  private void a(String paramString, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  public static String a(int paramInt)
   {
-    int j = -1;
-    int i = j;
-    if (paramOIDBSSOPkg != null)
-    {
-      i = j;
-      if (paramOIDBSSOPkg.uint32_result.has())
-      {
-        j = paramOIDBSSOPkg.uint32_result.get();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcde|OIDBSSOPke. GetDecryptKeyReq result=" + j);
-          i = j;
-        }
-      }
+    return "file_redpoint_handler_" + BaseApplicationImpl.getApplication().getRuntime().getAccount() + "_" + paramInt;
+  }
+  
+  public axfy a()
+  {
+    if (this.jdField_a_of_type_MqqUtilWeakReference == null) {
+      return null;
     }
-    if ((i == 0) && (paramOIDBSSOPkg.bytes_bodybuffer.has()) && (paramOIDBSSOPkg.bytes_bodybuffer.get() != null))
-    {
-      localObject = paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray();
-      paramOIDBSSOPkg = new oidb_cmd0xcde.RspBody();
+    return (axfy)this.jdField_a_of_type_MqqUtilWeakReference.get();
+  }
+  
+  public void a(RedTouchItem paramRedTouchItem, int paramInt)
+  {
+    if ((paramInt == 10016) || (paramInt == 10015)) {
+      paramRedTouchItem.isClosed = true;
     }
-    while (!QLog.isColorLevel())
+    do
     {
-      do
+      return;
+      if (paramInt == 100601)
       {
-        try
+        if (!axgj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
+        for (bool1 = true;; bool1 = false)
         {
-          Object localObject;
-          paramOIDBSSOPkg.mergeFrom((byte[])localObject);
-          if (paramOIDBSSOPkg.get_decrypt_key_rsp.has())
-          {
-            localObject = (oidb_cmd0xcde.GetDecryptKeyRsp)paramOIDBSSOPkg.get_decrypt_key_rsp.get();
-            if (((oidb_cmd0xcde.GetDecryptKeyRsp)localObject).dncrypt_key.has())
-            {
-              localObject = ((oidb_cmd0xcde.GetDecryptKeyRsp)localObject).dncrypt_key.get().toStringUtf8();
-              axgj.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject);
-              if (QLog.isDevelopLevel()) {
-                QLog.d("MsgBackup.MsgBackupAuthHandler", 4, "GetDecryptKeyReq decryptKey=" + (String)localObject + "encrytKey = " + paramOIDBSSOPkg.get_encrypt_key_rsp);
-              }
-              return;
-            }
-          }
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          for (;;)
-          {
-            QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
-          }
-        }
-        catch (Exception localException)
-        {
-          do
-          {
-            for (;;)
-            {
-              QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localException.getMessage(), localException);
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcde|OIDBSSOPke. GetDecryptKeyRsp has no dncrypt_key!");
+          paramRedTouchItem.isClosed = bool1;
           return;
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcde|OIDBSSOPke. GetDecryptKeyRsp has no get_decrypt_key_rsp!");
-      return;
-    }
-    QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcde|OIDBSSOPke. GetDecryptKeyRsp error ");
-  }
-  
-  private void a(oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
-  {
-    int j = -1;
-    int i = j;
-    if (paramOIDBSSOPkg != null)
-    {
-      i = j;
-      if (paramOIDBSSOPkg.uint32_result.has())
-      {
-        j = paramOIDBSSOPkg.uint32_result.get();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcdd|OIDBSSOPke. processRejectQrRsp result=" + j);
-          i = j;
-        }
       }
-    }
-    if (i == 0)
+    } while (!axge.a(paramInt));
+    Object localObject1 = "";
+    Object localObject2;
+    Object localObject4;
+    boolean bool2;
+    if (paramRedTouchItem.extMsgs.size() > 0)
     {
-      notifyUI(5, true, null);
-      return;
-    }
-    notifyUI(5, false, null);
-  }
-  
-  private void b(oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
-  {
-    int j = -1;
-    int i = j;
-    if (paramOIDBSSOPkg != null)
-    {
-      i = j;
-      if (paramOIDBSSOPkg.uint32_result.has())
-      {
-        j = paramOIDBSSOPkg.uint32_result.get();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcdd|OIDBSSOPke. processQueryStateRsp result=" + j);
-          i = j;
-        }
+      RedTouchItemExtMsg localRedTouchItemExtMsg2 = (RedTouchItemExtMsg)paramRedTouchItem.extMsgs.get(0);
+      if ((localRedTouchItemExtMsg2.bytesData == null) || (localRedTouchItemExtMsg2.bytesData.length <= 0)) {
+        break label438;
       }
-    }
-    Object localObject;
-    if ((i == 0) && (paramOIDBSSOPkg.bytes_bodybuffer.has()) && (paramOIDBSSOPkg.bytes_bodybuffer.get() != null))
-    {
-      localObject = paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray();
-      paramOIDBSSOPkg = new oidb_cmd0xcdd.RspBody();
+      try
+      {
+        localObject2 = new redInfo.RedInfo();
+      }
+      catch (Throwable localThrowable1)
+      {
+        label175:
+        localObject2 = null;
+      }
     }
     try
     {
-      paramOIDBSSOPkg.mergeFrom((byte[])localObject);
-      if (paramOIDBSSOPkg.query_state_rsp.has())
-      {
-        localObject = new axhe();
-        paramOIDBSSOPkg = (oidb_cmd0xcdd.QueryStateRsp)paramOIDBSSOPkg.query_state_rsp.get();
-        if (paramOIDBSSOPkg.state.has())
-        {
-          i = paramOIDBSSOPkg.state.get();
-          ((axhe)localObject).a(i);
-          if (i == 2)
-          {
-            if (paramOIDBSSOPkg.token.has()) {
-              ((axhe)localObject).a(paramOIDBSSOPkg.token.get().toStringUtf8());
-            }
-            if (paramOIDBSSOPkg.encrypt_key.has()) {
-              ((axhe)localObject).b(paramOIDBSSOPkg.encrypt_key.get().toStringUtf8());
-            }
-            if (paramOIDBSSOPkg.user_data.has()) {
-              ((axhe)localObject).a(a((oidb_cmd0xcdd.UserData)paramOIDBSSOPkg.user_data.get()));
-            }
-            if (paramOIDBSSOPkg.biz_type.has()) {
-              ((axhe)localObject).b(paramOIDBSSOPkg.biz_type.get());
-            }
-          }
-        }
-        notifyUI(4, true, ((axhe)localObject).a());
-        return;
+      ((redInfo.RedInfo)localObject2).mergeFrom(localRedTouchItemExtMsg2.bytesData);
+      localObject4 = localObject2;
+      if ((localObject4 == null) || (!localObject4.uint64_from_uin.has())) {
+        break label428;
       }
+      localObject2 = localObject4.uint64_from_uin.get() + "";
+      bool2 = true;
     }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    catch (Throwable localThrowable2)
     {
-      for (;;)
-      {
-        QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
-      }
+      break label323;
+      bool2 = false;
+      localObject2 = localObject1;
+      break label175;
     }
-    catch (Exception localException)
+    localObject1 = localObject2;
+    boolean bool1 = bool2;
+    if (localRedTouchItemExtMsg2.bytesData.length > 102400)
     {
-      for (;;)
-      {
-        QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localException.getMessage(), localException);
-      }
-      notifyUI(4, false, null);
-    }
-  }
-  
-  private void c(oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
-  {
-    int j = -1;
-    int i = j;
-    if (paramOIDBSSOPkg != null)
-    {
-      i = j;
-      if (paramOIDBSSOPkg.uint32_result.has())
-      {
-        j = paramOIDBSSOPkg.uint32_result.get();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcdd|OIDBSSOPke. processVerifyTokenRsp result=" + j);
-          i = j;
-        }
-      }
-    }
-    if (i == 0)
-    {
-      notifyUI(3, true, null);
-      return;
-    }
-    notifyUI(3, false, null);
-  }
-  
-  private void d(oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
-  {
-    int j = -1;
-    int i = j;
-    if (paramOIDBSSOPkg != null)
-    {
-      i = j;
-      if (paramOIDBSSOPkg.uint32_result.has())
-      {
-        j = paramOIDBSSOPkg.uint32_result.get();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcde|OIDBSSOPke. GetEncryptKeyRsp result=" + j);
-          i = j;
-        }
-      }
-    }
-    if ((i == 0) && (paramOIDBSSOPkg.bytes_bodybuffer.has()) && (paramOIDBSSOPkg.bytes_bodybuffer.get() != null))
-    {
-      localObject = paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray();
-      paramOIDBSSOPkg = new oidb_cmd0xcde.RspBody();
-    }
-    label304:
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        try
-        {
-          Object localObject;
-          paramOIDBSSOPkg.mergeFrom((byte[])localObject);
-          if (paramOIDBSSOPkg.get_encrypt_key_rsp.has())
-          {
-            paramOIDBSSOPkg = (oidb_cmd0xcde.GetEncryptKeyRsp)paramOIDBSSOPkg.get_encrypt_key_rsp.get();
-            if (paramOIDBSSOPkg.encrypt_key.has())
-            {
-              localObject = paramOIDBSSOPkg.encrypt_key.get().toStringUtf8();
-              axgj.b = (String)localObject;
-              if (QLog.isDevelopLevel()) {
-                QLog.d("MsgBackup.MsgBackupAuthHandler", 4, "GetEncryptKeyRsp encryptKey=" + (String)localObject);
-              }
-              if (!paramOIDBSSOPkg.file_meta.has()) {
-                break label304;
-              }
-              paramOIDBSSOPkg = paramOIDBSSOPkg.file_meta.get().toStringUtf8();
-              axgj.jdField_a_of_type_JavaLangString = paramOIDBSSOPkg;
-              if (QLog.isDevelopLevel()) {
-                QLog.d("MsgBackup.MsgBackupAuthHandler", 4, "GetEncryptKeyRsp fileMeta=" + paramOIDBSSOPkg);
-              }
-            }
-          }
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          for (;;)
-          {
-            QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
-          }
-        }
-        catch (Exception localException)
-        {
-          do
-          {
-            for (;;)
-            {
-              QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localException.getMessage(), localException);
-              continue;
-              if (QLog.isColorLevel()) {
-                QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcde|OIDBSSOPke. GetEncryptKeyRsp has no encrypt_key!");
-              }
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcde|OIDBSSOPke. GetEncryptKeyRsp has no file_meta!");
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcde|OIDBSSOPke. GetEncryptKeyRsp has no get_encrypt_key_rsp!");
-      return;
-    }
-    QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcde|OIDBSSOPke. GetEncryptKeyRsp error ");
-  }
-  
-  private void e(oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
-  {
-    int j = -1;
-    int i = j;
-    if (paramOIDBSSOPkg != null)
-    {
-      i = j;
-      if (paramOIDBSSOPkg.uint32_result.has())
-      {
-        j = paramOIDBSSOPkg.uint32_result.get();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcdd|OIDBSSOPke. processConfirmQrRsp result=" + j);
-          i = j;
-        }
-      }
-    }
-    if ((i == 0) && (paramOIDBSSOPkg.bytes_bodybuffer.has()) && (paramOIDBSSOPkg.bytes_bodybuffer.get() != null))
-    {
-      Object localObject = paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray();
-      paramOIDBSSOPkg = new oidb_cmd0xcdd.RspBody();
-      try
-      {
-        paramOIDBSSOPkg.mergeFrom((byte[])localObject);
-        if (paramOIDBSSOPkg.confirm_qr_rsp.has())
-        {
-          localObject = new axgu();
-          paramOIDBSSOPkg = (oidb_cmd0xcdd.ConfirmQrRsp)paramOIDBSSOPkg.confirm_qr_rsp.get();
-          if (paramOIDBSSOPkg.token.has()) {
-            ((axgu)localObject).a(paramOIDBSSOPkg.token.get().toStringUtf8());
-          }
-          if (paramOIDBSSOPkg.encrypt_key.has()) {
-            ((axgu)localObject).b(paramOIDBSSOPkg.encrypt_key.get().toStringUtf8());
-          }
-          if (paramOIDBSSOPkg.user_data.has()) {
-            ((axgu)localObject).a(a((oidb_cmd0xcdd.UserData)paramOIDBSSOPkg.user_data.get()));
-          }
-          if (paramOIDBSSOPkg.biz_type.has()) {
-            ((axgu)localObject).a(paramOIDBSSOPkg.biz_type.get());
-          }
-          paramOIDBSSOPkg = ((axgu)localObject).a();
-          if (QLog.isColorLevel()) {
-            QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "processGetQrRsp getQrResponse= " + paramOIDBSSOPkg);
-          }
-          axjk.a();
-          axjk.a.a = true;
-          axjk.a.c = 0;
-          notifyUI(2, true, paramOIDBSSOPkg);
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        for (;;)
-        {
-          QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localException.getMessage(), localException);
-        }
-      }
-    }
-    axjk.a();
-    axjk.a.a = false;
-    axjk.a.c = i;
-    notifyUI(2, false, Integer.valueOf(i));
-  }
-  
-  private void f(oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
-  {
-    int j = -1;
-    int i = j;
-    if (paramOIDBSSOPkg != null)
-    {
-      i = j;
-      if (paramOIDBSSOPkg.uint32_result.has())
-      {
-        j = paramOIDBSSOPkg.uint32_result.get();
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "handle OidbSvc.0xcdd|OIDBSSOPke. processGetQrRsp result=" + j);
-          i = j;
-        }
-      }
-    }
-    if ((i == 0) && (paramOIDBSSOPkg.bytes_bodybuffer.has()) && (paramOIDBSSOPkg.bytes_bodybuffer.get() != null))
-    {
-      Object localObject = paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray();
-      paramOIDBSSOPkg = new oidb_cmd0xcdd.RspBody();
-      try
-      {
-        paramOIDBSSOPkg.mergeFrom((byte[])localObject);
-        if (paramOIDBSSOPkg.get_qr_rsp.has())
-        {
-          localObject = new axgy();
-          paramOIDBSSOPkg = (oidb_cmd0xcdd.GetQrRsp)paramOIDBSSOPkg.get_qr_rsp.get();
-          if (paramOIDBSSOPkg.qr_sig.has()) {
-            ((axgy)localObject).a(paramOIDBSSOPkg.qr_sig.get().toStringUtf8());
-          }
-          if (paramOIDBSSOPkg.token.has()) {
-            ((axgy)localObject).b(paramOIDBSSOPkg.token.get().toStringUtf8());
-          }
-          if (paramOIDBSSOPkg.encrypt_key.has()) {
-            ((axgy)localObject).c(paramOIDBSSOPkg.encrypt_key.get().toStringUtf8());
-          }
-          if (paramOIDBSSOPkg.user_data.has()) {
-            ((axgy)localObject).a(a((oidb_cmd0xcdd.UserData)paramOIDBSSOPkg.user_data.get()));
-          }
-          if (paramOIDBSSOPkg.biz_type.has()) {
-            ((axgy)localObject).a(paramOIDBSSOPkg.biz_type.get());
-          }
-          paramOIDBSSOPkg = ((axgy)localObject).a();
-          if (QLog.isColorLevel()) {
-            QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "processGetQrRsp getQrResponse= " + paramOIDBSSOPkg);
-          }
-          axjk.a();
-          axjk.a.a = true;
-          axjk.a.c = 0;
-          notifyUI(1, true, paramOIDBSSOPkg);
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        for (;;)
-        {
-          QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.w("MsgBackup.MsgBackupAuthHandler", 4, localException.getMessage(), localException);
-        }
-      }
-    }
-    axjk.a();
-    axjk.a.a = false;
-    axjk.a.c = i;
-    notifyUI(1, false, Integer.valueOf(i));
-  }
-  
-  public MsgBackupUserData a(oidb_cmd0xcdd.UserData paramUserData)
-  {
-    axhi localaxhi = new axhi();
-    if (paramUserData.ip.has()) {
-      localaxhi.a(paramUserData.ip.get().toStringUtf8());
-    }
-    if (paramUserData.port.has()) {
-      localaxhi.a(paramUserData.port.get());
-    }
-    if (paramUserData.ssid.has()) {
-      localaxhi.b(paramUserData.ssid.get().toStringUtf8());
-    }
-    if (paramUserData.bssid.has()) {
-      localaxhi.c(paramUserData.bssid.get().toStringUtf8());
-    }
-    return localaxhi.a();
-  }
-  
-  public void a()
-  {
-    Object localObject1 = new oidb_cmd0xcde.ReqBody();
-    Object localObject2 = new oidb_cmd0xcde.GetEncrptkeyReq();
-    ((oidb_cmd0xcde.ReqBody)localObject1).get_encrypt_key_req.set((MessageMicro)localObject2);
-    localObject2 = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(3294);
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_result.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(1);
-    ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_cmd0xcde.ReqBody)localObject1).toByteArray()));
-    localObject1 = createToServiceMsg("OidbSvc.0xcde");
-    ((ToServiceMsg)localObject1).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject2).toByteArray());
-    sendPbReq((ToServiceMsg)localObject1);
-  }
-  
-  public void a(MsgBackupUserData paramMsgBackupUserData, int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "getQrRequest called: userdata = " + paramMsgBackupUserData + ", ispush = " + paramBoolean);
-    }
-    oidb_cmd0xcdd.ReqBody localReqBody = new oidb_cmd0xcdd.ReqBody();
-    oidb_cmd0xcdd.GetQrReq localGetQrReq = new oidb_cmd0xcdd.GetQrReq();
-    localGetQrReq.push.set(paramBoolean);
-    oidb_cmd0xcdd.UserData localUserData = new oidb_cmd0xcdd.UserData();
-    localUserData.ip.set(ByteStringMicro.copyFromUtf8(paramMsgBackupUserData.a()));
-    localUserData.port.set(paramMsgBackupUserData.a());
-    Object localObject = paramMsgBackupUserData.b();
-    PBBytesField localPBBytesField = localUserData.ssid;
-    if (localObject != null)
-    {
-      localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
-      localObject = paramMsgBackupUserData.c();
-      localPBBytesField = localUserData.bssid;
-      if (localObject == null) {
-        break label297;
-      }
+      QLog.d("DefaultRedPointPrePostHandler", 1, String.format("onPreHandle() id=[%d] msgs.size=%d bytes_data.len=%d too large !!", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramRedTouchItem.extMsgs.size()), Integer.valueOf(localRedTouchItemExtMsg2.bytesData.length) }));
+      bool1 = bool2;
+      localObject1 = localObject2;
     }
     for (;;)
     {
-      localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
-      localUserData.platform.set(paramMsgBackupUserData.a());
-      localGetQrReq.user_data.set(localUserData);
-      localGetQrReq.biz_type.set(paramInt);
-      localReqBody.get_qr_req.set(localGetQrReq);
-      paramMsgBackupUserData = new oidb_sso.OIDBSSOPkg();
-      paramMsgBackupUserData.uint32_command.set(3293);
-      paramMsgBackupUserData.uint32_result.set(0);
-      paramMsgBackupUserData.uint32_service_type.set(1);
-      paramMsgBackupUserData.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-      localObject = createToServiceMsg("OidbSvc.0xcdd");
-      ((ToServiceMsg)localObject).putWupBuffer(paramMsgBackupUserData.toByteArray());
-      ((ToServiceMsg)localObject).addAttribute("MsgBackup_request_type", Integer.valueOf(1));
-      sendPbReq((ToServiceMsg)localObject);
-      return;
-      localObject = "";
-      break;
-      label297:
-      localObject = "";
-    }
-  }
-  
-  public void a(MsgBackupUserData paramMsgBackupUserData, String paramString, int paramInt)
-  {
-    oidb_cmd0xcdd.ReqBody localReqBody = new oidb_cmd0xcdd.ReqBody();
-    oidb_cmd0xcdd.ConfirmQrReq localConfirmQrReq = new oidb_cmd0xcdd.ConfirmQrReq();
-    localConfirmQrReq.qr_sig.set(ByteStringMicro.copyFromUtf8(paramString));
-    paramString = new oidb_cmd0xcdd.UserData();
-    paramString.ip.set(ByteStringMicro.copyFromUtf8(paramMsgBackupUserData.a()));
-    paramString.port.set(paramMsgBackupUserData.a());
-    if (paramMsgBackupUserData.b() != null) {
-      paramString.ssid.set(ByteStringMicro.copyFromUtf8(paramMsgBackupUserData.b()));
-    }
-    if (paramMsgBackupUserData.c() != null) {
-      paramString.bssid.set(ByteStringMicro.copyFromUtf8(paramMsgBackupUserData.c()));
-    }
-    paramString.platform.set(paramMsgBackupUserData.a());
-    localConfirmQrReq.user_data.set(paramString);
-    localConfirmQrReq.biz_type.set(paramInt);
-    localReqBody.confirm_qr_req.set(localConfirmQrReq);
-    paramMsgBackupUserData = new oidb_sso.OIDBSSOPkg();
-    paramMsgBackupUserData.uint32_command.set(3293);
-    paramMsgBackupUserData.uint32_result.set(0);
-    paramMsgBackupUserData.uint32_service_type.set(2);
-    paramMsgBackupUserData.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-    paramString = createToServiceMsg("OidbSvc.0xcdd");
-    paramString.putWupBuffer(paramMsgBackupUserData.toByteArray());
-    sendPbReq(paramString);
-  }
-  
-  public void a(String paramString)
-  {
-    Object localObject = new oidb_cmd0xcdd.ReqBody();
-    oidb_cmd0xcdd.VerifyTokenReq localVerifyTokenReq = new oidb_cmd0xcdd.VerifyTokenReq();
-    localVerifyTokenReq.token.set(ByteStringMicro.copyFromUtf8(paramString));
-    ((oidb_cmd0xcdd.ReqBody)localObject).verify_token_req.set(localVerifyTokenReq);
-    paramString = new oidb_sso.OIDBSSOPkg();
-    paramString.uint32_command.set(3293);
-    paramString.uint32_result.set(0);
-    paramString.uint32_service_type.set(3);
-    paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_cmd0xcdd.ReqBody)localObject).toByteArray()));
-    localObject = createToServiceMsg("OidbSvc.0xcdd");
-    ((ToServiceMsg)localObject).putWupBuffer(paramString.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    Object localObject = new oidb_cmd0xcdd.ReqBody();
-    oidb_cmd0xcdd.RejectQrReq localRejectQrReq = new oidb_cmd0xcdd.RejectQrReq();
-    localRejectQrReq.qr_sig.set(ByteStringMicro.copyFromUtf8(paramString));
-    localRejectQrReq.biz_type.set(paramInt);
-    ((oidb_cmd0xcdd.ReqBody)localObject).reject_qr_req.set(localRejectQrReq);
-    paramString = new oidb_sso.OIDBSSOPkg();
-    paramString.uint32_command.set(3293);
-    paramString.uint32_result.set(0);
-    paramString.uint32_service_type.set(5);
-    paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_cmd0xcdd.ReqBody)localObject).toByteArray()));
-    localObject = createToServiceMsg("OidbSvc.0xcdd");
-    ((ToServiceMsg)localObject).putWupBuffer(paramString.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public void b(String paramString)
-  {
-    Object localObject1 = new oidb_cmd0xcde.ReqBody();
-    Object localObject2 = new oidb_cmd0xcde.GetDecryptKeyReq();
-    ((oidb_cmd0xcde.GetDecryptKeyReq)localObject2).file_meta.set(ByteStringMicro.copyFromUtf8(paramString));
-    ((oidb_cmd0xcde.ReqBody)localObject1).get_decrypt_key_req.set((MessageMicro)localObject2);
-    localObject2 = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(3294);
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_result.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(2);
-    ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_cmd0xcde.ReqBody)localObject1).toByteArray()));
-    localObject1 = createToServiceMsg("OidbSvc.0xcde");
-    ((ToServiceMsg)localObject1).extraData.putString("req_key_file_meta", paramString);
-    ((ToServiceMsg)localObject1).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject2).toByteArray());
-    ((ToServiceMsg)localObject1).setTimeout(15000L);
-    sendPbReq((ToServiceMsg)localObject1);
-  }
-  
-  public void c(String paramString)
-  {
-    Object localObject = new oidb_cmd0xcdd.ReqBody();
-    oidb_cmd0xcdd.QueryStateReq localQueryStateReq = new oidb_cmd0xcdd.QueryStateReq();
-    localQueryStateReq.qr_sig.set(ByteStringMicro.copyFromUtf8(paramString));
-    ((oidb_cmd0xcdd.ReqBody)localObject).query_state_req.set(localQueryStateReq);
-    paramString = new oidb_sso.OIDBSSOPkg();
-    paramString.uint32_command.set(3293);
-    paramString.uint32_result.set(0);
-    paramString.uint32_service_type.set(4);
-    paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_cmd0xcdd.ReqBody)localObject).toByteArray()));
-    localObject = createToServiceMsg("OidbSvc.0xcdd");
-    ((ToServiceMsg)localObject).putWupBuffer(paramString.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
-  }
-  
-  public boolean msgCmdFilter(String paramString)
-  {
-    if (this.allowCmdSet == null)
-    {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("OidbSvc.0xcdd");
-      this.allowCmdSet.add("OidbSvc.0xcde");
-    }
-    return !this.allowCmdSet.contains(paramString);
-  }
-  
-  protected Class<? extends anui> observerClass()
-  {
-    return axfz.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "MsgBackupAuthHandler cmd=" + paramFromServiceMsg.getServiceCmd() + ", isSuccess = " + paramFromServiceMsg.isSuccess() + ", resultcode = " + paramFromServiceMsg.getResultCode());
-    }
-    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupAuthHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
-      }
-    }
-    label107:
-    do
-    {
-      int i;
-      do
+      RedTouchItemExtMsg localRedTouchItemExtMsg1 = localRedTouchItemExtMsg2;
+      localObject2 = localObject1;
+      bool2 = bool1;
+      label323:
+      Object localObject3;
+      if (paramRedTouchItem.extMsgs.size() > 1)
       {
-        do
+        paramInt = paramRedTouchItem.extMsgs.size() - 1;
+        for (;;)
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                break label107;
-                break label107;
-                break label107;
-                break label107;
-                do
-                {
-                  return;
-                } while ((!"OidbSvc.0xcdd".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"OidbSvc.0xcde".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())));
-                if (!paramFromServiceMsg.isSuccess()) {
-                  break label331;
-                }
-                oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-                try
-                {
-                  paramObject = (oidb_sso.OIDBSSOPkg)localOIDBSSOPkg.mergeFrom((byte[])paramObject);
-                  i = paramObject.uint32_service_type.get();
-                  if (!"OidbSvc.0xcdd".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-                    break;
-                  }
-                  if (i == 1)
-                  {
-                    f(paramObject);
-                    return;
-                  }
-                }
-                catch (InvalidProtocolBufferMicroException paramObject)
-                {
-                  for (;;)
-                  {
-                    QLog.w("MsgBackup.MsgBackupAuthHandler", 4, paramObject.getMessage(), paramObject);
-                    paramObject = localOIDBSSOPkg;
-                  }
-                }
-                catch (Exception paramObject)
-                {
-                  for (;;)
-                  {
-                    QLog.w("MsgBackup.MsgBackupAuthHandler", 4, paramObject.getMessage(), paramObject);
-                    paramObject = localOIDBSSOPkg;
-                  }
-                  if (i == 2)
-                  {
-                    e(paramObject);
-                    return;
-                  }
-                  if (i == 3)
-                  {
-                    c(paramObject);
-                    return;
-                  }
-                  if (i == 4)
-                  {
-                    b(paramObject);
-                    return;
-                  }
-                }
-              } while (i != 5);
-              a(paramObject);
-              return;
-            } while (!"OidbSvc.0xcde".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()));
-            if (i == 1)
-            {
-              d(paramObject);
-              return;
-            }
-          } while (i != 2);
-          a(paramToServiceMsg.extraData.getString("req_key_file_meta"), paramObject);
-          return;
-          paramToServiceMsg = paramToServiceMsg.getAttribute("MsgBackup_request_type");
-        } while (!(paramToServiceMsg instanceof Integer));
-        i = ((Integer)paramToServiceMsg).intValue();
-        if (!"OidbSvc.0xcdd".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+          localRedTouchItemExtMsg1 = localRedTouchItemExtMsg2;
+          localObject2 = localObject1;
+          bool2 = bool1;
+          if (paramInt <= 0) {
+            break;
+          }
+          paramRedTouchItem.extMsgs.remove(paramInt);
+          paramInt -= 1;
+        }
+        localObject4 = localObject2;
+        if (!QLog.isColorLevel()) {
           break;
         }
-      } while (i != 1);
-      f(null);
+        QLog.i("DefaultRedPointPrePostHandler", 2, localThrowable1.getMessage(), localThrowable1);
+        localObject4 = localObject2;
+        break;
+        localObject3 = null;
+        bool2 = false;
+        localObject2 = localObject1;
+      }
+      if (bool2) {
+        FileUtils.writeObject(a(-4), localObject3);
+      }
+      for (;;)
+      {
+        QLog.d("DefaultRedPointPrePostHandler", 1, new Object[] { "isQQSettingMeBubbleMsg show=", Boolean.valueOf(bool2), " uin=", StringUtil.getSimpleUinForPrint((String)localObject2) });
+        return;
+        paramRedTouchItem.count = 0;
+      }
+      label428:
+      label438:
+      bool1 = false;
+    }
+  }
+  
+  public void a(List<RedTouchItem> paramList)
+  {
+    axfy localaxfy = a();
+    if ((paramList == null) || (localaxfy == null)) {
       return;
-    } while (!"OidbSvc.0xcde".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()));
-    label331:
+    }
+    Object localObject2 = null;
+    Object localObject3 = paramList.iterator();
+    while (((Iterator)localObject3).hasNext())
+    {
+      localObject1 = localObject2;
+      if (((RedTouchItem)((Iterator)localObject3).next()).taskId == 10005) {
+        localObject1 = "0X800761B";
+      }
+      localObject2 = localObject1;
+      if (localObject1 != null)
+      {
+        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", (String)localObject1, (String)localObject1, 0, 0, "", "", "", "");
+        localObject2 = localObject1;
+      }
+    }
+    localObject3 = localaxfy.a(10015);
+    Object localObject1 = localObject2;
+    if (localObject3 != null)
+    {
+      localObject1 = localObject2;
+      if (paramList.contains(localObject3))
+      {
+        localObject1 = "0X8007391";
+        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007391", "0X8007391", 0, 0, "", "", "", "");
+        ((MedalWallMng)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(250)).b();
+      }
+    }
+    localObject2 = localaxfy.a(10016);
+    if ((localObject2 != null) && (paramList.contains(localObject2)) && (((RedTouchItem)localObject2).bytes != null) && (((RedTouchItem)localObject2).bytes.length > 0)) {}
+    for (;;)
+    {
+      try
+      {
+        int i = new JSONObject(new String(((RedTouchItem)localObject2).bytes, "utf-8")).optInt("type", 1);
+        switch (i)
+        {
+        default: 
+          localObject2 = localObject1;
+        }
+      }
+      catch (Exception localException)
+      {
+        localObject2 = localObject1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("DefaultRedPointPrePostHandler", 2, localException, new Object[0]);
+        localObject2 = localObject1;
+        continue;
+        paramList.a((RedTouchItem)localObject1);
+      }
+      if (localObject2 != null) {
+        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
+      }
+      localObject1 = localaxfy.a(10018);
+      if ((localObject1 == null) || (!paramList.contains(localObject1)) || (((RedTouchItem)localObject1).extMsgs == null) || (((RedTouchItem)localObject1).extMsgs.size() <= 0) || (!((RedTouchItem)localObject1).unReadFlag)) {
+        break;
+      }
+      paramList = (apsa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(269);
+      localObject2 = paramList.a();
+      if ((localObject2 != null) && (((aprw)localObject2).c())) {
+        continue;
+      }
+      ((RedTouchItem)localObject1).unReadFlag = false;
+      localaxfy.c();
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("DefaultRedPointPrePostHandler", 2, "onPostDealReachedRedPoints frdRecMsgSwitch is off");
+      return;
+      localObject2 = "0X8007396";
+      continue;
+      localObject2 = "0X80073B5";
+    }
   }
 }
 

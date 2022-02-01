@@ -1,30 +1,44 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.DotStyleNavBar;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class bfze
-  implements ViewPager.OnPageChangeListener
+class bfze
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public bfze(DotStyleNavBar paramDotStyleNavBar) {}
+  bfze(bfzd parambfzd) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onGlobalLayout()
   {
-    if (DotStyleNavBar.a(this.a) != null) {
-      DotStyleNavBar.a(this.a).onPageScrollStateChanged(paramInt);
-    }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (DotStyleNavBar.a(this.a) != null) {
-      DotStyleNavBar.a(this.a).onPageScrolled(paramInt1, paramFloat, paramInt2);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    this.a.setCurrent(paramInt);
-    if (DotStyleNavBar.a(this.a) != null) {
-      DotStyleNavBar.a(this.a).onPageSelected(paramInt);
+    if (!bfzd.a(this.a)) {}
+    for (;;)
+    {
+      return;
+      Object localObject = new Rect();
+      bfzd.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
+      int j = bfzd.a(this.a) - ((Rect)localObject).height();
+      bfzd.a(this.a, ((Rect)localObject).height());
+      if (j > bfzd.b(this.a) / 3) {}
+      for (int i = 1; i != 0; i = 0)
+      {
+        bfzd.a(this.a, false);
+        if (QLog.isColorLevel()) {
+          QLog.d("SoftKeyboardHeight", 2, new Object[] { "onGlobalLayout, keyboard height:", Integer.valueOf(j) });
+        }
+        localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_soft_keyboard", 0);
+        if (((SharedPreferences)localObject).getInt("key_height", 0) != j) {
+          ((SharedPreferences)localObject).edit().putInt("key_height", j).commit();
+        }
+        if (bfzd.a(this.a) != null) {
+          bfzd.a(this.a).onShowed(j, false);
+        }
+        this.a.a();
+        return;
+      }
     }
   }
 }

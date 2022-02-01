@@ -1,22 +1,15 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class xnw
-  implements woy<xdm, xdn>
+public class xnw
+  extends vko
 {
-  xnw(xnv paramxnv, xmy paramxmy) {}
+  public int a;
+  public String a;
   
-  public void a(@NonNull xdm paramxdm, @Nullable xdn paramxdn, @NonNull ErrorMessage paramErrorMessage)
+  public xnw(@NonNull String paramString, int paramInt)
   {
-    if ((paramErrorMessage.isFail()) || (paramxdn == null))
-    {
-      yuk.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
-      this.jdField_a_of_type_Xmy.a(paramErrorMessage, null, false);
-      return;
-    }
-    this.jdField_a_of_type_Xnv.a.a(paramxdn.jdField_a_of_type_JavaUtilList, paramxdn.jdField_a_of_type_JavaLangString, paramxdn.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Xmy.a(paramErrorMessage, xmg.b(paramxdn.jdField_a_of_type_JavaUtilList), paramxdn.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

@@ -1,19 +1,6 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-class bgxc
-  extends bgxd
+public abstract interface bgxc
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  
-  bgxc(bgxb parambgxb)
-  {
-    super(parambgxb.a);
-  }
+  public abstract void a(String paramString);
 }
 
 

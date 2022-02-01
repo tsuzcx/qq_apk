@@ -1,165 +1,182 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mfsdk.MagnifierSDK;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.Iterator;
+import java.util.Vector;
+import mqq.app.Foreground;
 
 public class acit
+  implements Handler.Callback
 {
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private String b;
-  private String c;
+  public static int a;
+  private static acit jdField_a_of_type_Acit;
+  public static ArrayList<String> a;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+  private Vector<acho> jdField_a_of_type_JavaUtilVector = new Vector();
+  public boolean a;
   
-  public acit(AppInterface paramAppInterface)
+  static
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    jdField_a_of_type_Int = 0;
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public acit a(int paramInt, String paramString)
+  private acit()
   {
-    if ((paramInt >= 1) && (paramInt <= 40))
+    this.jdField_a_of_type_Boolean = MagnifierSDK.a().a().b();
+    a(aafp.a());
+  }
+  
+  public static acit a()
+  {
+    if (jdField_a_of_type_Acit == null) {}
+    try
     {
-      if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-        this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      if (jdField_a_of_type_Acit == null) {
+        jdField_a_of_type_Acit = new acit();
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(String.valueOf(paramInt), paramString);
+      return jdField_a_of_type_Acit;
     }
-    return this;
+    finally {}
   }
   
-  public acit a(String paramString)
+  private void a(int paramInt, aafm paramaafm)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    synchronized (this.jdField_a_of_type_JavaUtilVector)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilVector.iterator();
+      if (localIterator.hasNext()) {
+        ((acho)localIterator.next()).a(paramInt, paramaafm);
+      }
+    }
   }
   
-  public boolean a()
+  private void c()
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(this.b)) && (TextUtils.isEmpty(this.c)) && ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.size() == 0))) {
-      return false;
+    long l1 = Runtime.getRuntime().totalMemory();
+    long l2 = Runtime.getRuntime().freeMemory();
+    long l3 = (100 - MagnifierSDK.a().a().jdField_a_of_type_Int) * Runtime.getRuntime().maxMemory() / 100L;
+    if (QLog.isColorLevel()) {
+      QLog.d("MemoryReporter", 2, new Object[] { "ReportDump  calculateSharpMemory heapSize= ", Long.valueOf(l1 - l2) });
+    }
+    if (jdField_a_of_type_Int == 0) {}
+  }
+  
+  public void a()
+  {
+    if (MagnifierSDK.a().a().jdField_a_of_type_Aafl.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilVector)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilVector.iterator();
+      if (localIterator.hasNext()) {
+        ((acho)localIterator.next()).a(paramLong);
+      }
+    }
+  }
+  
+  public void a(acho paramacho)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilVector)
+    {
+      this.jdField_a_of_type_JavaUtilVector.add(paramacho);
+      return;
+    }
+  }
+  
+  public boolean a(long paramLong1, long paramLong2, aafl paramaafl, int paramInt)
+  {
+    aafm localaafm = paramaafl.a(paramInt);
+    if ((localaafm != null) && (paramLong1 >= localaafm.jdField_a_of_type_Int * paramLong2 / 100L))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MemoryReporter", 2, "onNeedTrimMemory|maxHeap=" + paramLong2 / 1024L / 1024L + ",totalSize=" + paramLong1 / 1024L / 84L);
+      }
+      paramaafl.jdField_a_of_type_Int = localaafm.b;
+      a(paramInt, localaafm);
+      return true;
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    jdField_a_of_type_Int = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("MemoryReporter", 2, new Object[] { "ReportDump setDumpReported = ", Integer.valueOf(jdField_a_of_type_Int) });
+    }
+  }
+  
+  public void b(acho paramacho)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilVector)
+    {
+      this.jdField_a_of_type_JavaUtilVector.remove(paramacho);
+      return;
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (Foreground.sCountResume > 0) {}
+    for (boolean bool = true;; bool = false) {
+      switch (paramMessage.what)
+      {
+      default: 
+        return true;
+      }
+    }
+    c();
+    aafp.a().a(bool);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    paramMessage = this.jdField_a_of_type_AndroidOsHandler;
+    if (bool) {}
+    for (long l1 = 5000L;; l1 = 30000L)
+    {
+      paramMessage.sendEmptyMessageDelayed(1, l1);
+      break;
+    }
+    l1 = Runtime.getRuntime().totalMemory();
+    long l2 = Runtime.getRuntime().maxMemory();
+    paramMessage = MagnifierSDK.a().a().jdField_a_of_type_Aafl;
+    aafp.a().b();
+    int i;
+    if (a(l1, l2, paramMessage, 1)) {
+      i = paramMessage.jdField_a_of_type_Int * 1000;
     }
     for (;;)
     {
-      try
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+      int j = i;
+      if (!bool)
       {
-        if (this.jdField_a_of_type_JavaUtilList == null) {
-          this.jdField_a_of_type_JavaUtilList = new ArrayList();
-        }
-        this.jdField_a_of_type_JavaUtilList.clear();
-        long l = NetConnInfoCenter.getServerTime();
-        this.jdField_a_of_type_JavaUtilList.add(String.valueOf(l));
-        this.jdField_a_of_type_JavaUtilList.add("1");
-        this.jdField_a_of_type_JavaUtilList.add("8.4.5");
-        this.jdField_a_of_type_JavaUtilList.add("");
-        this.jdField_a_of_type_JavaUtilList.add("2");
-        this.jdField_a_of_type_JavaUtilList.add(Build.BRAND);
-        int j = nnr.a();
-        if (j >= 0)
-        {
-          i = j;
-          if (j < antf.c.length)
-          {
-            this.jdField_a_of_type_JavaUtilList.add(antf.c[i]);
-            Object localObject2 = "";
-            Object localObject1 = localObject2;
-            if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
-            {
-              BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp();
-              localObject1 = localObject2;
-              if (localBaseApplication != null)
-              {
-                localObject1 = localBaseApplication.getResources().getDisplayMetrics();
-                localObject1 = ((DisplayMetrics)localObject1).widthPixels + "*" + ((DisplayMetrics)localObject1).heightPixels;
-              }
-            }
-            this.jdField_a_of_type_JavaUtilList.add(localObject1);
-            this.jdField_a_of_type_JavaUtilList.add("0");
-            this.jdField_a_of_type_JavaUtilList.add("0");
-            this.jdField_a_of_type_JavaUtilList.add("1");
-            this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaLangString);
-            this.jdField_a_of_type_JavaUtilList.add(this.b);
-            this.jdField_a_of_type_JavaUtilList.add("0");
-            this.jdField_a_of_type_JavaUtilList.add(this.c);
-            a(14, Build.MODEL);
-            a(15, Build.VERSION.RELEASE);
-            if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.size() > 0))
-            {
-              i = 1;
-              if (i <= 40)
-              {
-                localObject1 = String.valueOf(i);
-                localObject2 = this.jdField_a_of_type_JavaUtilList;
-                if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject1)) {
-                  break label495;
-                }
-                localObject1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
-                ((List)localObject2).add(localObject1);
-                i += 1;
-                continue;
-              }
-            }
-            bmbt.a(null, "dc00087", this.jdField_a_of_type_JavaUtilList);
-            return true;
-          }
+        j = i;
+        if (i >= 30000) {
+          j = i * 2;
         }
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return false;
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, j);
+      break;
+      if (a(l1, l2, paramMessage, 2)) {
+        i = paramMessage.jdField_a_of_type_Int * 1000;
+      } else if (a(l1, l2, paramMessage, 3)) {
+        i = paramMessage.jdField_a_of_type_Int * 1000;
+      } else {
+        i = 30000;
       }
-      int i = 0;
-      continue;
-      label495:
-      String str = "";
     }
-  }
-  
-  public acit b(String paramString)
-  {
-    this.b = paramString;
-    return this;
-  }
-  
-  public acit c(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
-  
-  public acit d(String paramString)
-  {
-    return a(4, paramString);
-  }
-  
-  public acit e(String paramString)
-  {
-    return a(1, paramString);
-  }
-  
-  public acit f(String paramString)
-  {
-    return a(11, paramString);
-  }
-  
-  public acit g(String paramString)
-  {
-    return a(12, paramString);
-  }
-  
-  public acit h(String paramString)
-  {
-    return a(35, paramString);
   }
 }
 

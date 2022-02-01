@@ -1,27 +1,66 @@
-import android.content.BroadcastReceiver;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
+import QQService.EVIPSPEC;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.Comparator;
 
-public class row
+class row
+  implements Comparator<rou>
 {
-  private static int jdField_a_of_type_Int = 5;
-  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new rox();
-  private static final String jdField_a_of_type_JavaLangString = row.class.getSimpleName();
-  private static Thread jdField_a_of_type_JavaLangThread;
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private static AtomicInteger b;
-  
-  static
+  public int a(rou paramrou)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    b = new AtomicInteger(0);
+    if (paramrou.jdField_a_of_type_Int != -1) {
+      return paramrou.jdField_a_of_type_Int;
+    }
+    Friends localFriends = paramrou.jdField_a_of_type_ComTencentMobileqqDataFriends;
+    int k = ContactUtils.getFriendStatus(localFriends.detalStatusFlag, localFriends.iTermType);
+    int j;
+    int i;
+    if ((k != 6) && (k != 0))
+    {
+      j = 65536;
+      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
+        break label132;
+      }
+      i = 4096;
+      switch (k)
+      {
+      case 5: 
+      case 6: 
+      default: 
+        label64:
+        i = j | i | (int)localFriends.getLastLoginType();
+      }
+    }
+    for (;;)
+    {
+      paramrou.jdField_a_of_type_Int = i;
+      return i;
+      j = 131072;
+      break;
+      label132:
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
+      {
+        i = 8192;
+        break label64;
+      }
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
+      {
+        i = 12288;
+        break label64;
+      }
+      i = 16384;
+      break label64;
+      i = j | i | 0x1;
+      continue;
+      i = j | i | 0x2;
+      continue;
+      i = j | i | 0x3;
+    }
   }
   
-  private static long b()
+  public int a(rou paramrou1, rou paramrou2)
   {
-    for (long l = 0L; jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1; l += 1L) {}
-    return l;
+    return a(paramrou1) - a(paramrou2);
   }
 }
 

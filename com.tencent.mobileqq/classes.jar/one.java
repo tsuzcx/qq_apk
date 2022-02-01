@@ -1,27 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarFragment;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarFragment.3;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class one
-  implements View.OnClickListener
+  implements bezd
 {
-  public one(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  public one(ReadInJoyUploadAvatarFragment.3 param3) {}
   
-  public void onClick(View paramView)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if ((ReadInJoyDeliverBiuActivity.c(this.a)) && ((!ReadInJoyDeliverBiuActivity.d(this.a)) || (ReadInJoyDeliverBiuActivity.k(this.a) != -1))) {
-      this.a.e(ReadInJoyDeliverBiuActivity.l(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d(ReadInJoyUploadAvatarFragment.a, 2, "uploadImage->onResult");
     }
-    for (;;)
+    if (paramJSONObject != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ocd.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.l(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
-      this.a.finish();
-      ReadInJoyDeliverBiuActivity.a(this.a, false);
+      paramInt = paramJSONObject.optInt("retcode");
+      if (paramJSONObject.optJSONObject("result") != null) {}
+      for (paramJSONObject = paramJSONObject.optJSONObject("result").optString("url");; paramJSONObject = null)
+      {
+        paramBundle = new Message();
+        if ((paramInt == 0) && (!TextUtils.isEmpty(paramJSONObject)))
+        {
+          paramBundle.what = 1003;
+          paramBundle.obj = paramJSONObject;
+        }
+        this.a.a.sendMessage(paramBundle);
+        return;
+      }
     }
+    this.a.a.sendMessage(new Message());
   }
 }
 

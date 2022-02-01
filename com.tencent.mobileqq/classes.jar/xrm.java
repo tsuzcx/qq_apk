@@ -1,19 +1,6 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-
-public class xrm
-  implements xjl
+public abstract interface xrm<T>
 {
-  public xrm(VideoViewVideoHolder paramVideoViewVideoHolder) {}
-  
-  public void a()
-  {
-    yuk.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoaded");
-  }
-  
-  public void b()
-  {
-    yuk.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoadedFailed");
-  }
+  public abstract void a(T paramT);
 }
 
 

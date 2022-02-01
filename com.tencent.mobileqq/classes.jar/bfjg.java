@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView.5;
 
 public class bfjg
-  extends apcq
+  implements bcrf
 {
-  public bfjg(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public bfjg(TroopGiftToAllSurfaceView.5 param5) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(TroopBarPublishLocationSelectActivity.a(this.a), 2, "onLocationFinish() errCode=" + paramInt);
-    }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      double d1 = paramSosoLbsInfo.a.a;
-      double d2 = paramSosoLbsInfo.a.b;
-      TroopBarPublishLocationSelectActivity.a(this.a, (int)(d1 * 1000000.0D), (int)(d2 * 1000000.0D), 0, true, this.a);
-    }
+    TroopGiftToAllSurfaceView.a(this.a.this$0).a(new bcre[] { new bcrk(600, 0, 255), new bcrn(new bcre[] { new bcrm(300, 0.0F, 1.2F), new bcrm(300, 1.2F, 1.0F) }) });
   }
 }
 

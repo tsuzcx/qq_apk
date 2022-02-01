@@ -1,62 +1,49 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class bdcf
 {
-  double a;
+  public static final int[] a = { 1, 2, 3, 4 };
   
-  bdcf(double paramDouble)
+  public static final int a(int paramInt)
   {
-    this.a = paramDouble;
+    if ((paramInt >= 0) && (paramInt < a.length)) {
+      return a[paramInt];
+    }
+    return -1;
   }
   
-  public boolean a(int[][] paramArrayOfInt)
+  public static final String a(int paramInt)
   {
-    double d2 = 0.0D;
-    int k = paramArrayOfInt.length;
-    int m = paramArrayOfInt[0].length;
-    double[] arrayOfDouble1 = new double[k];
-    double[] arrayOfDouble2 = new double[m];
-    double d1 = 0.0D;
+    switch (paramInt)
+    {
+    default: 
+      return "unknown";
+    case 0: 
+      return "BUSID_INTIMATE_ANNIVERSARY";
+    case 1: 
+      return "BUSID_BASE_PROFILE";
+    case 2: 
+      return "BUSID_NICE_PICS";
+    }
+    return "BUSID_NEWFRD_MINI_CARD";
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    bcef.b(paramQQAppInterface, "dc00898", "", paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, paramInt, 0, "0", "0", "", "");
+  }
+  
+  public static final int b(int paramInt)
+  {
     int i = 0;
-    int j;
-    while (i < k)
+    while (i < a.length)
     {
-      j = 0;
-      while (j < m)
-      {
-        arrayOfDouble1[i] += paramArrayOfInt[i][j];
-        d1 += paramArrayOfInt[i][j];
-        j += 1;
+      if (a[i] == paramInt) {
+        return i;
       }
       i += 1;
     }
-    i = 0;
-    while (i < m)
-    {
-      j = 0;
-      while (j < k)
-      {
-        arrayOfDouble2[i] += paramArrayOfInt[j][i];
-        j += 1;
-      }
-      i += 1;
-    }
-    i = 0;
-    while (i < k)
-    {
-      j = 0;
-      while (j < m)
-      {
-        double d4 = 1.0D * arrayOfDouble1[i] * arrayOfDouble2[j] / d1;
-        double d5 = paramArrayOfInt[i][j];
-        double d3 = d2;
-        if (d4 > 0.0D) {
-          d3 = d2 + (d4 - d5) * (d4 - d5) / d4;
-        }
-        j += 1;
-        d2 = d3;
-      }
-      i += 1;
-    }
-    return d2 > this.a + 1.0E-008D;
+    return -1;
   }
 }
 

@@ -1,22 +1,44 @@
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.text.Editable;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
 public class axnz
-  extends aojs
+  implements axnu
 {
-  public axnz(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  public axnz(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public Activity a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.MultiCardRecommendFragment", 2, "onUpdateTroopGetMemberList（） troopUin =  " + paramString);
+    return this.a;
+  }
+  
+  public void a(View paramView)
+  {
+    if (paramView == null) {
+      this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
     }
-    if ((paramInt1 == 9) && (paramString.equals(MultiCardRecommendFragment.a(this.a))) && (this.a.a != null)) {
-      this.a.a.sendEmptyMessage(4);
+    for (;;)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
+      a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      return;
+      this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     }
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.a(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.jdField_a_of_type_Axoa.a(paramBoolean);
   }
 }
 

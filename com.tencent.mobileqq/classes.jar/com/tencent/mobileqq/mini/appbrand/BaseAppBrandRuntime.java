@@ -8,8 +8,7 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
-import bhlo;
-import bjbs;
+import bhht;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.MiniAppInterface;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
@@ -28,6 +27,7 @@ import com.tencent.mobileqq.mini.share.MiniProgramShareUtils.OnShareListener;
 import com.tencent.mobileqq.mini.ui.NavigationBar;
 import com.tencent.mobileqq.mini.util.ImageUtil;
 import com.tencent.mobileqq.minigame.jsapi.GameBrandRuntime;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.List;
@@ -40,7 +40,7 @@ public abstract class BaseAppBrandRuntime
   public MiniAppInterface appInterface;
   public boolean isGettingScreenShot;
   public List<IJsPlugin> pluginList;
-  private bjbs shareScreenshotProgressDialog;
+  private bhht shareScreenshotProgressDialog;
   
   public boolean canLaunchApp()
   {
@@ -56,7 +56,7 @@ public abstract class BaseAppBrandRuntime
       localObject = this.activity.getResources().getDisplayMetrics();
       j = ((DisplayMetrics)localObject).widthPixels;
     }
-    for (int i = (int)(((DisplayMetrics)localObject).widthPixels * 0.8D);; i = (int)(bhlo.l() * 0.8D))
+    for (int i = (int)(((DisplayMetrics)localObject).widthPixels * 0.8D);; i = (int)(DeviceInfoUtil.getHeight() * 0.8D))
     {
       paramBitmap = ImageUtil.cutOutImg(Bitmap.createBitmap(paramBitmap), j, i);
       localObject = ImageUtil.compressImage(paramBitmap, 1044480);
@@ -69,7 +69,7 @@ public abstract class BaseAppBrandRuntime
         break;
       }
       return localFile.getAbsolutePath();
-      j = (int)bhlo.k();
+      j = (int)DeviceInfoUtil.getWidth();
     }
     return null;
   }

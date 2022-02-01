@@ -1,15 +1,50 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.listentogether.ui.MusicPanelView;
+import com.tencent.mobileqq.nearby.now.view.SplitedProgressBar;
+import java.security.InvalidParameterException;
 
 public class awpe
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public awpe(MusicPanelView paramMusicPanelView) {}
+  private SplitedProgressBar a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public awpe(SplitedProgressBar paramSplitedProgressBar)
   {
-    MusicPanelView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    if (paramSplitedProgressBar == null) {
+      throw new InvalidParameterException("ProgressControler: progressBar is null");
+    }
+    this.a = paramSplitedProgressBar;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 0) {
+      return;
+    }
+    this.a.setTotalCount(paramInt);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 < this.a.b) {
+      this.a.setProgress(paramInt1, paramInt2);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    SplitedProgressBar localSplitedProgressBar = this.a;
+    if (paramBoolean) {}
+    for (int i = 8;; i = 0)
+    {
+      localSplitedProgressBar.setVisibility(i);
+      return;
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (paramInt == 0) {
+      return;
+    }
+    this.a.setShowMaxCount(paramInt);
   }
 }
 

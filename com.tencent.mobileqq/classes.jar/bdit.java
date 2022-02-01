@@ -1,13 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.GetStaticProxy;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public final class bdit
-  implements IMCoreProxyRoute.GetStaticProxy<AppRuntime>
+class bdit
+  extends bdji<EditorState>
 {
-  public AppRuntime a()
+  public bdit(EditorState paramEditorState, List<EditorState> paramList)
   {
-    return BaseApplicationImpl.getApplication().getRuntime();
+    super(paramList, localList);
+  }
+  
+  public void a(EditorState paramEditorState)
+  {
+    bdid.a(this.c).b(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("EditorStateMachineContr", 2, "[onEnter] enter: " + this.a + ", lastState: " + paramEditorState);
+    }
   }
 }
 

@@ -1,53 +1,16 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class zfj
-  extends zfg<zfa>
-  implements View.OnClickListener
+class zfj
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountWrite.StDoLikeRsp>
 {
-  public zfj(Context paramContext)
-  {
-    super(paramContext);
-  }
+  zfj(zfb paramzfb) {}
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
   {
-    if (this.jdField_a_of_type_Zex == null)
-    {
-      localObject = paramView;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject;
-    }
-    if (paramView == null) {}
-    for (Object localObject = new zfk(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((zfa)this.jdField_a_of_type_Zex).a(), ((zfa)this.jdField_a_of_type_Zex).a(), this);; localObject = (zfk)paramView)
-    {
-      ((zfk)localObject).a((zfa)this.jdField_a_of_type_Zex, paramInt, getCount());
-      break;
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    int i = ((Integer)paramView.getTag(2131378427)).intValue();
-    zfb localzfb = (zfb)((zfa)this.jdField_a_of_type_Zex).a.get(i);
-    ImageView localImageView = (ImageView)paramView;
-    Boolean localBoolean = (Boolean)localImageView.getTag(2131378405);
-    if ((localBoolean != null) && (localBoolean.booleanValue()))
-    {
-      localzfb.a = localImageView.getDrawable();
-      this.jdField_a_of_type_Zez.a(localzfb);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      yuk.b("LocationFaceAdapter", "ImageView drawable has not been downloaded.");
-    }
+    vli.a().dispatch(this.a.a(new Object[] { Integer.valueOf(7), Long.valueOf(paramLong), paramString, paramStDoLikeRsp }));
   }
 }
 

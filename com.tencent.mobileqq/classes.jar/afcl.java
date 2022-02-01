@@ -1,37 +1,12 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class afcl
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public afcl(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    boolean bool = true;
-    if (!bhnv.g(this.a))
-    {
-      QQToast.a(BaseApplication.getContext(), 1, 2131694009, 0).b(this.a.getTitleBarHeight());
-      FormSwitchItem localFormSwitchItem = this.a.j;
-      if (!paramBoolean) {
-        localFormSwitchItem.setChecked(bool);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bool = false;
-      break;
-      ((anum)this.a.app.a(2)).g(paramBoolean);
-    }
-  }
+  public int a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView b;
 }
 
 

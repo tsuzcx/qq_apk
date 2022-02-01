@@ -1,103 +1,63 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonResp;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.BuiltInServlet;
-import mqq.app.NewIntent;
+import java.util.ArrayList;
+import mqq.util.WeakReference;
 
-public class arfh
-  extends arac<arfg>
+class arfh
+  extends amrh
 {
-  @NonNull
-  public arfg a(int paramInt)
+  final WeakReference<arfd> a;
+  
+  public arfh(arfd paramarfd)
   {
-    return new arfg();
+    this.a = new WeakReference(paramarfd);
   }
   
-  @Nullable
-  public arfg a(araj[] paramArrayOfaraj)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    QLog.i("MultiChannelReportProcessor", 1, "[onParsed] config");
-    Object localObject = null;
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmoji", 2, "func onEmosmBack begins, isSuccess:" + paramBoolean + ",type:" + paramInt);
+    }
+    if ((!paramBoolean) || (paramObject == null) || (paramInt != 3)) {}
+    do
     {
-      localarfg = arfg.a(paramArrayOfaraj[0].a);
-      localObject = localarfg;
-      if (QLog.isColorLevel())
+      arfd localarfd;
+      do
       {
-        QLog.d("MultiChannelReportProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
-        localObject = localarfg;
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      arfg localarfg;
-      return localObject;
-    }
-    QLog.d("MultiChannelReportProcessor", 2, "onParsed is null");
-    return null;
-  }
-  
-  public void a(arfg paramarfg)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (localAppRuntime != null) {}
-    try
-    {
-      paramarfg = arfg.a(paramarfg);
-      QLog.i("MultiChannelReportProcessor", 1, "[onUpdate], strConfig = " + paramarfg);
-      NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), BuiltInServlet.class);
-      localNewIntent.putExtra("action", 2214);
-      localNewIntent.putExtra("manager_config", paramarfg);
-      localAppRuntime.startServlet(localNewIntent);
+        do
+        {
+          do
+          {
+            return;
+            localarfd = (arfd)this.a.get();
+            if (localarfd == null)
+            {
+              QLog.d("SogouEmoji", 2, "WeakReference error");
+              return;
+            }
+            paramObject = (EmoticonResp)paramObject;
+          } while (paramObject.data == null);
+          paramObject = (ArrayList)paramObject.data;
+        } while (paramObject.size() == 0);
+        paramBoolean = localarfd.a.a(localarfd.b);
+        if (QLog.isColorLevel()) {
+          QLog.d("SogouEmoji", 2, "func onEmojiKeyBack begins, isTaskExist:" + paramBoolean);
+        }
+        if (paramBoolean) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("SogouEmoji", 2, "func onEmojiKeyBack ends, task CANCELLED by user.");
       return;
-    }
-    catch (Throwable paramarfg)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MultiChannelReportProcessor", 2, "update msf config, but throw t", paramarfg);
-    }
-  }
-  
-  public Class<arfg> clazz()
-  {
-    return arfg.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.i("MultiChannelReportProcessor", 1, "[onReqFailed] failCode=" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 640;
+      localarfd.a((Emoticon)paramObject.get(0));
+    } while (!QLog.isColorLevel());
+    QLog.d("SogouEmoji", 2, "func onEmojiKeyBack ends, Ready to send.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arfh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,209 +1,287 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.soload.LoadOptions;
-import com.tencent.mobileqq.soload.LoadParam;
-import com.tencent.mobileqq.soload.LoadParam.LoadItem;
-import com.tencent.mobileqq.soload.SoLoadInfo;
-import com.tencent.mobileqq.soload.config.SoConfig.RelatedFileInfo;
-import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
-import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
+import android.view.ActionMode.Callback;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.together.writetogether.data.OpenDocParam;
+import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.widget.XEditTextEx;
 
 public class bdgh
-  extends bdgd
+  implements afrc, afrp
 {
-  private static final Map<String, List<bdgs>> a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ActionMode.Callback jdField_a_of_type_AndroidViewActionMode$Callback;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  static
+  public bdgh(afqw paramafqw, BaseChatPie paramBaseChatPie)
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.app;
+    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.mContext;
+    paramafqw.a(this);
   }
   
-  public bdgh(LoadParam paramLoadParam, LoadParam.LoadItem paramLoadItem)
+  private String a()
   {
-    super(paramLoadParam, paramLoadItem);
-  }
-  
-  private void a(int paramInt)
-  {
-    SoLoadInfo localSoLoadInfo = a(paramInt);
-    synchronized (jdField_a_of_type_JavaUtilMap)
+    String str2 = "";
+    String str1;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) {
+      str1 = str2;
+    }
+    for (;;)
     {
-      Object localObject3 = (List)jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name);
-      jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name);
-      if (localObject3 != null)
+      if (TextUtils.isEmpty(str1)) {}
+      return str1;
+      str1 = str2;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo != null)
       {
-        ??? = ((List)localObject3).iterator();
-        while (((Iterator)???).hasNext())
-        {
-          localObject3 = (bdgs)((Iterator)???).next();
-          if (localObject3 != null) {
-            ((bdgs)localObject3).a(localSoLoadInfo);
-          }
+        str1 = str2;
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin != null) {
+          str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin;
         }
       }
     }
   }
   
-  private void a(aldq paramaldq)
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, BaseChatPie paramBaseChatPie, String paramString1, String paramString2, int paramInt)
   {
-    DownloadParam localDownloadParam = new DownloadParam();
-    localDownloadParam.filePos = 1;
-    localDownloadParam.url = this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo.relatedFileInfo.url;
-    localDownloadParam.md5ForChecked = this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo.relatedFileInfo.md5;
-    if (this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mCallType == LoadParam.CALL_TYPE_ASYNC_BY_SYNC) {
-      localDownloadParam.isPreDownload = true;
-    }
-    PreloadManager.a().a(localDownloadParam, paramaldq);
-  }
-  
-  private void a(LoadParam.LoadItem paramLoadItem)
-  {
-    boolean bool2 = false;
-    paramLoadItem = bdgv.b(paramLoadItem, this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo);
-    boolean bool3 = a(paramLoadItem);
-    boolean bool4 = a(paramLoadItem, this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo);
-    if (((this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.lops.flag & 0x4) != 0) && (this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mCallType != LoadParam.CALL_TYPE_ASYNC_BY_SYNC)) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "[handleConfig] soExist=" + bool3 + ",rfolderOk=" + bool4 + ",isWeak:" + bool1);
-      }
-      if (!bool3) {
-        bool2 = true;
-      }
-      this.jdField_b_of_type_Boolean = bool2;
-      if (bool3) {
-        break;
-      }
-      b(new bdgk(this, bool4, bool1, paramLoadItem));
+    if (!a(paramContext)) {}
+    while (TextUtils.isEmpty(paramString1)) {
       return;
     }
-    a(bool4, bool1, paramLoadItem, paramLoadItem.c, paramLoadItem.a, 1);
-  }
-  
-  private void a(LoadParam.LoadItem paramLoadItem, SoConfig.SoInfo paramSoInfo)
-  {
-    if (!a(paramSoInfo))
+    if (QLog.isColorLevel()) {
+      QLog.d("WriteTogetherHelper", 2, "[Launch Editor] - Click WT message. docId: " + paramString1);
+    }
+    paramQQAppInterface = new Bundle();
+    paramQQAppInterface.putString("KEY_CANCEL_OR_BACK", "VALUE_BACK");
+    OpenDocParam localOpenDocParam = new OpenDocParam();
+    localOpenDocParam.jdField_f_of_type_Int = paramInt;
+    localOpenDocParam.k = paramString2;
+    localOpenDocParam.jdField_f_of_type_JavaLangString = paramString1;
+    localOpenDocParam.g = 0;
+    paramQQAppInterface.putParcelable("KEY_LAUNCH_EDITOR_PARAM", localOpenDocParam);
+    if ((paramContext instanceof Activity))
     {
-      a(2);
+      WriteTogetherEditorFragment.a((Activity)paramContext, WriteTogetherEditorFragment.class, paramQQAppInterface, 18005);
       return;
     }
-    paramSoInfo = bdgv.a(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name, this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo.ver);
-    if ((paramSoInfo != null) && (paramSoInfo.c()))
+    if ((paramBaseChatPie != null) && ((paramBaseChatPie.mActivity instanceof Activity)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "[handleConfig] InLoadCrashProtectMode, crashInfo=" + paramSoInfo);
-      }
-      this.c = "loadcrash";
-      a(8);
+      WriteTogetherEditorFragment.a(paramBaseChatPie.mActivity, WriteTogetherEditorFragment.class, paramQQAppInterface, 18005);
       return;
     }
-    if ((paramSoInfo != null) && (paramSoInfo.f()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "[handleConfig] isNeedReqForCrash, crashInfo=" + paramSoInfo);
-      }
-      String str = this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo.ver;
-      bdhb.a().a(paramLoadItem.name, paramSoInfo, new bdgj(this, str, paramSoInfo, paramLoadItem));
+    WriteTogetherEditorFragment.a(paramContext, WriteTogetherEditorFragment.class, paramQQAppInterface);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, int paramInt)
+  {
+    a(paramQQAppInterface, paramContext, null, paramString1, paramString2, paramInt);
+  }
+  
+  private static boolean a(Context paramContext)
+  {
+    boolean bool = NetworkUtil.isNetworkAvailable(paramContext);
+    if (!bool) {
+      QQToast.a(paramContext, 2131719716, 0).a();
+    }
+    return bool;
+  }
+  
+  private static boolean a(Context paramContext, String paramString)
+  {
+    boolean bool = nmy.a().a(paramString);
+    if (bool) {
+      QQToast.a(paramContext, 2131719697, 0).a();
+    }
+    return bool;
+  }
+  
+  private static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  {
+    boolean bool = a(paramQQAppInterface, paramString);
+    if (bool) {
+      QQToast.a(paramContext, 2131719707, 0).a();
+    }
+    return bool;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    return ((bfbz)paramQQAppInterface.getManager(48)).a(paramString, true).a;
+  }
+  
+  private boolean b()
+  {
+    Object localObject = a();
+    localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a((String)localObject, true);
+    return (localObject != null) && (((TroopInfo)localObject).exitTroopReason == 0);
+  }
+  
+  private void c()
+  {
+    if (this.jdField_a_of_type_AndroidViewActionMode$Callback != null) {}
+    while (Build.VERSION.SDK_INT < 23) {
       return;
     }
-    a(paramLoadItem);
+    this.jdField_a_of_type_AndroidViewActionMode$Callback = new bdgi(this);
   }
   
-  private void a(String paramString1, String paramString2, long paramLong, int paramInt)
+  private void d()
   {
-    if (a(paramString2, paramLong, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem, this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo, paramInt))
-    {
-      this.jdField_b_of_type_JavaLangString = paramString1;
-      this.jdField_a_of_type_JavaLangString = paramString2;
-      a(0);
+    ChatXListView localChatXListView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.listView;
+    localChatXListView.setSelectionFromBottom(localChatXListView.getCount() - 1, 0);
+  }
+  
+  public ActionMode.Callback a()
+  {
+    c();
+    return this.jdField_a_of_type_AndroidViewActionMode$Callback;
+  }
+  
+  public void a()
+  {
+    c();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 0) {
+      a();
+    }
+    while (paramInt != 13) {
       return;
     }
-    a(10);
+    b();
   }
   
-  private void a(boolean paramBoolean1, boolean paramBoolean2, bdhi parambdhi, String paramString, long paramLong, int paramInt)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (paramBoolean1)
-    {
-      a(parambdhi.f, paramString, paramLong, paramInt);
-      return;
-    }
-    if (paramBoolean2)
-    {
-      a(null);
-      a(null, paramString, paramLong, paramInt);
-      return;
-    }
-    a(new bdgl(this, paramString, paramLong, paramInt));
-  }
-  
-  private boolean a(bdgs parambdgs)
-  {
-    synchronized (jdField_a_of_type_JavaUtilMap)
-    {
-      Object localObject = jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        String str = (String)localEntry.getKey();
-        if ((!TextUtils.isEmpty(str)) && (TextUtils.equals(str, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name)))
-        {
-          ((List)localEntry.getValue()).add(parambdgs);
-          return true;
-        }
-      }
-      localObject = new LinkedList();
-      ((List)localObject).add(parambdgs);
-      jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name, localObject);
-      return false;
-    }
-  }
-  
-  private void b(aldq paramaldq)
-  {
-    DownloadParam localDownloadParam = new DownloadParam();
-    localDownloadParam.filePos = 1;
-    localDownloadParam.url = this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo.url;
-    localDownloadParam.md5ForChecked = this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo.md5;
-    localDownloadParam.isFlowControl = this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo.isFlowControl;
-    VACDReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mReportSeq, null, "load.item.download.start", null, 0, null);
-    if (this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mCallType == LoadParam.CALL_TYPE_ASYNC_BY_SYNC) {
-      localDownloadParam.isPreDownload = true;
-    }
-    PreloadManager.a().a(localDownloadParam, paramaldq);
-  }
-  
-  public void a(bdgs parambdgs)
-  {
-    if (a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "not main process get loadInfo by IPC");
-      }
-      alib.a(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem, parambdgs);
-    }
+    if (paramInt1 != 18005) {}
     do
     {
       return;
-      if (!a(parambdgs)) {
+      if ((paramInt2 & 0x1) == 0) {
         break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "insert into same req list");
+      if ((paramInt2 & 0x2) != 0) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.input.setText("");
+      }
+      if ((paramInt2 & 0x4) != 0)
+      {
+        paramIntent = (afqj)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getHelper(24);
+        if (paramIntent != null) {
+          paramIntent.a(true);
+        }
+      }
+    } while ((paramInt2 & 0x8) == 0);
+    d();
     return;
-    VACDReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mReportSeq, null, "load.item.getconfig.start", this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name, 0, null);
-    bdhb.a().a(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name, new bdgi(this), false);
+    QLog.e("WriteTogetherHelper", 1, "[onActivityResult] failed code: " + paramInt2);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, paramString, a(), paramInt);
+  }
+  
+  public boolean a()
+  {
+    boolean bool = true;
+    if (!aqeg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      return false;
+    }
+    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo;
+    if ((localSessionInfo != null) && (localSessionInfo.curType == 1) && (b())) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 0, 13 };
+  }
+  
+  public void b() {}
+  
+  public void b(String paramString, int paramInt)
+  {
+    int i = 1;
+    if (!a(this.jdField_a_of_type_AndroidContentContext)) {}
+    Object localObject;
+    do
+    {
+      return;
+      localObject = a();
+    } while ((a(this.jdField_a_of_type_AndroidContentContext, (String)localObject)) || (a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, (String)localObject)));
+    if (!bdgn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject))
+    {
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131719699, 0).a();
+      return;
+    }
+    String str1 = paramString;
+    if (paramString == null) {
+      str1 = "";
+    }
+    int j;
+    if (QLog.isColorLevel())
+    {
+      if (paramInt == 1)
+      {
+        paramString = "input box";
+        QLog.d("WriteTogetherHelper", 2, "[Launch Editor] - " + paramString);
+      }
+    }
+    else
+    {
+      paramString = new Bundle();
+      String str2 = bdgn.a(str1);
+      paramString.putString("leftViewText", amtj.a(2131719668));
+      paramString.putString("KEY_CANCEL_OR_BACK", "VALUE_CANCEL");
+      OpenDocParam localOpenDocParam = new OpenDocParam();
+      localOpenDocParam.a = str2;
+      localOpenDocParam.jdField_f_of_type_Int = paramInt;
+      localOpenDocParam.k = ((String)localObject);
+      if ((paramInt == 5) || (paramInt == 6)) {
+        localOpenDocParam.g = 0;
+      }
+      paramString.putParcelable("KEY_LAUNCH_EDITOR_PARAM", localOpenDocParam);
+      WriteTogetherEditorFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mActivity, WriteTogetherEditorFragment.class, paramString, 18005);
+      j = bdgn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject);
+      paramString = "" + bdgn.a(paramInt);
+      localObject = new StringBuilder().append("");
+      if (!TextUtils.isEmpty(str1)) {
+        break label346;
+      }
+    }
+    label346:
+    for (paramInt = i;; paramInt = 2)
+    {
+      bcef.b(null, "dc00898", "", "", "0X800AF2F", "0X800AF2F", j, 0, paramString, paramInt, "", "");
+      return;
+      if (paramInt == 2)
+      {
+        paramString = "full screen";
+        break;
+      }
+      paramString = "unknown";
+      break;
+    }
   }
 }
 

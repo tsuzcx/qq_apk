@@ -1,47 +1,39 @@
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 class bevb
-  implements ITransactionCallback
+  extends aiin<betu>
 {
-  public int a;
-  public bboi a;
-  public Transaction a;
-  
-  bevb(beuw parambeuw) {}
-  
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  bevb(beuy parambeuy, Context paramContext, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG>TransactionListener.onFailed  erroCode: " + paramInt + " sendInfo:" + this.jdField_a_of_type_Bboi);
-    }
-    this.jdField_a_of_type_Beuw.f(paramInt);
+    super(paramContext, paramInt);
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  protected aiix a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG>TransactionListener.onSuccess  erroCode:  sendInfo:" + this.jdField_a_of_type_Bboi);
-    }
-    paramArrayOfByte = this.jdField_a_of_type_Beuw.jdField_a_of_type_Bete;
-    paramArrayOfByte.e += this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.totalLength;
-    if (this.jdField_a_of_type_Beuw.jdField_a_of_type_Bboi != null) {
-      this.jdField_a_of_type_Beuw.j();
-    }
-    this.jdField_a_of_type_Beuw.f(this.jdField_a_of_type_Bboi);
+    paramViewGroup = LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false);
+    paramContext = new bevh(paramContext, paramViewGroup);
+    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131377360));
+    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131377361));
+    paramContext.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewGroup.findViewById(2131377364));
+    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131377365));
+    return paramContext;
   }
   
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
+  protected void a(aiix paramaiix, betu parambetu, int paramInt)
+  {
+    beuy.a(this.a, paramaiix, parambetu, paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bevb
  * JD-Core Version:    0.7.0.1
  */

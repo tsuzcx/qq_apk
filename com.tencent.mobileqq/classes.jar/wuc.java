@@ -1,20 +1,29 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+
 public class wuc
+  implements Animator.AnimatorListener
 {
-  @zoq(a="id")
-  public int a;
-  @zoq(a="name")
-  public String a;
-  @zoq(a="items")
-  public wue[] a;
+  public wuc(XViewPager paramXViewPager) {}
   
-  public String toString()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("FilterConfig{id=").append(this.jdField_a_of_type_Int).append(", name='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", items-size=");
-    if (this.jdField_a_of_type_ArrayOfWue != null) {}
-    for (int i = this.jdField_a_of_type_ArrayOfWue.length;; i = 0) {
-      return i + '}';
+    if (XViewPager.a(this.a) != null) {
+      XViewPager.a(this.a).b(0);
     }
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (XViewPager.a(this.a) != null) {
+      XViewPager.a(this.a).b(0);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

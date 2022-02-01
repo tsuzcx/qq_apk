@@ -1,40 +1,91 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.2.1;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.2.2;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
 
 public class bhov
-  implements ArkViewImplement.LoadCallback
 {
-  bhov(bhot parambhot) {}
+  public static String a = "ctnet";
+  public static String b = "ctwap";
+  public static String c = "cmnet";
+  public static String d = "cmwap";
+  public static String e = "uninet";
+  public static String f = "uniwap";
+  public static String g = "3gnet";
+  public static String h = "3gwap";
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public static int a(Context paramContext)
   {
-    onLoadState(paramInt1);
+    int i = 0;
+    switch (AppNetConnInfo.getConnInfo())
+    {
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("NetUtil", 2, "getNetType " + i);
+      }
+      return i;
+      switch (AppNetConnInfo.getMobileInfo())
+      {
+      default: 
+        break;
+      case 1: 
+        i = 2;
+        break;
+      case 2: 
+        i = 3;
+        break;
+      case 3: 
+        i = 4;
+        continue;
+        i = 1;
+      }
+    }
   }
   
-  public void onLoadState(int paramInt)
+  public static String a(Context paramContext)
   {
-    WeakReference localWeakReference = new WeakReference(this.a);
-    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.1(this, localWeakReference, paramInt));
-    if (paramInt == 0) {}
+    String str1 = "nomatch";
+    String str2 = AppNetConnInfo.getCurrentAPN();
+    paramContext = str1;
+    if (!TextUtils.isEmpty(str2))
+    {
+      if (!str2.startsWith(a)) {
+        break label32;
+      }
+      paramContext = a;
+    }
+    label32:
     do
     {
-      return;
-      bhot.a(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQCustomArkDialog", 2, new Object[] { "arkView init finish,load state = ", Integer.valueOf(paramInt), ";outsideShowDialog = ", Boolean.valueOf(bhot.a(this.a)), ";alreadyShowDialog:", Boolean.valueOf(bhot.b(this.a)) });
+      return paramContext;
+      if (str2.startsWith(b)) {
+        return b;
       }
-    } while (!bhot.a(this.a));
-    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.2(this));
+      if (str2.startsWith(c)) {
+        return c;
+      }
+      if (str2.startsWith(d)) {
+        return d;
+      }
+      if (str2.startsWith(e)) {
+        return e;
+      }
+      if (str2.startsWith(f)) {
+        return f;
+      }
+      if (str2.startsWith(g)) {
+        return g;
+      }
+      paramContext = str1;
+    } while (!str2.startsWith(h));
+    return h;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhov
  * JD-Core Version:    0.7.0.1
  */

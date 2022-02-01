@@ -1,33 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCircleProgressLoadingView;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class wbf
-  implements ValueAnimator.AnimatorUpdateListener
+class wbf
+  extends SimpleJob<Object>
 {
-  private WeakReference<QCircleProgressLoadingView> a;
-  
-  public wbf(QCircleProgressLoadingView paramQCircleProgressLoadingView)
+  wbf(wbd paramwbd, String paramString)
   {
-    this.a = new WeakReference(paramQCircleProgressLoadingView);
+    super(paramString);
   }
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (this.a != null)
-    {
-      Object localObject = (QCircleProgressLoadingView)this.a.get();
-      if (localObject != null)
-      {
-        localObject = ((QCircleProgressLoadingView)localObject).a();
-        if ((localObject != null) && (((View)localObject).getBackground() != null)) {
-          ((View)localObject).getBackground().setAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-        }
-      }
+    if (this.a.jdField_a_of_type_Wbg == null) {
+      this.a.jdField_a_of_type_Wbg = new wbg(this.a, this.a.d);
     }
+    this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Wbg.jdField_a_of_type_JavaLangString;
+    wbd.a(this.a);
+    return null;
   }
 }
 

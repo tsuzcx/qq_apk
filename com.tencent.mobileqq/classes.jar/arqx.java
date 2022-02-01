@@ -1,45 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-public class arqx
+class arqx
+  implements Animation.AnimationListener
 {
-  private Map<String, Long> a = new HashMap();
+  arqx(arqw paramarqw) {}
   
-  public static arqx a(araj[] paramArrayOfaraj)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0)) {
-      return null;
-    }
-    localarqx = new arqx();
-    try
-    {
-      paramArrayOfaraj = new JSONObject(paramArrayOfaraj[0].a);
-      Iterator localIterator = paramArrayOfaraj.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        localarqx.a.put(str, Long.valueOf(paramArrayOfaraj.getLong(str)));
-      }
-      return localarqx;
-    }
-    catch (JSONException paramArrayOfaraj)
-    {
-      QLog.e("TencentDocPreviewConfigBean", 1, paramArrayOfaraj.getLocalizedMessage(), paramArrayOfaraj);
-    }
+    this.a.a.c.setVisibility(8);
+    this.a.a.a = false;
   }
   
-  public Map<String, Long> a()
-  {
-    return this.a;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqx
  * JD-Core Version:    0.7.0.1
  */

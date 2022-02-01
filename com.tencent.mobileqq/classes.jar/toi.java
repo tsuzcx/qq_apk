@@ -1,28 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
-
-public class toi
-  implements pye
+public abstract interface toi
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  public abstract void a();
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    return pue.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2) {}
-  
-  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
-  {
-    return false;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

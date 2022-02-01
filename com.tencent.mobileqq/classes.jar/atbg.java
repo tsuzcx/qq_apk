@@ -1,88 +1,91 @@
-import android.content.DialogInterface.OnDismissListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.math.BigDecimal;
-import mqq.app.QQPermissionCallback;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class atbg
 {
-  public static String a(int paramInt)
-  {
-    if (paramInt < 1000) {
-      return paramInt + "m";
-    }
-    float f = new BigDecimal(paramInt / 1000.0F).setScale(1, 1).floatValue();
-    return f + "km";
-  }
+  private static Calendar a = ;
   
-  public static void a(BaseActivity paramBaseActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
+  public static String a(long paramLong)
   {
-    if ((paramBaseActivity != null) && (paramQQPermissionCallback != null)) {
-      paramBaseActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (paramQQAppInterface != null) {
-      bhsi.a(paramQQAppInterface.getCurrentAccountUin(), "extend_friend_config_785").edit().putBoolean("sp_extend_friend_signal_guide", paramBoolean).commit();
-    }
-  }
-  
-  public static boolean a()
-  {
-    if ((Build.VERSION.SDK_INT >= 23) && (BaseApplicationImpl.getApplication().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0))
+    Calendar localCalendar1 = Calendar.getInstance();
+    Calendar localCalendar2 = Calendar.getInstance();
+    localCalendar1.setTimeInMillis(bbko.a() * 1000L);
+    localCalendar2.setTimeInMillis(paramLong);
+    int k = localCalendar1.get(1);
+    int i = localCalendar1.get(6) - localCalendar2.get(6);
+    int j = i;
+    if (localCalendar2.get(1) != k)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SignalBombHelper", 2, "hasLocationPermission no permission " + Build.VERSION.SDK_INT);
-      }
-      return false;
+      localCalendar1 = (Calendar)localCalendar2.clone();
+      do
+      {
+        j = i + localCalendar1.getActualMaximum(6);
+        localCalendar1.add(1, 1);
+        i = j;
+      } while (localCalendar1.get(1) != k);
     }
-    return true;
+    if (j <= 7) {
+      return "7天内";
+    }
+    return a(paramLong, "yyyy年MM月");
   }
   
-  public static boolean a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, DialogInterface.OnDismissListener paramOnDismissListener)
+  public static String a(long paramLong, String paramString)
   {
-    if ((paramBaseActivity != null) && (paramQQAppInterface != null) && (!paramBaseActivity.isFinishing()))
-    {
-      paramQQAppInterface = (asvi)paramQQAppInterface.getManager(264);
-      if (!paramQQAppInterface.j()) {
-        break label49;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SignalBombHelper", 2, "checkAndShowSignalBombCardDialogIfNeed waiting");
-      }
+    if (paramLong == 0L) {
+      return "";
     }
-    label49:
-    do
+    try
     {
-      return false;
-      paramQQAppInterface = paramQQAppInterface.a();
-    } while (paramQQAppInterface == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("SignalBombHelper", 2, "checkAndShowSignalBombCardDialogIfNeed show dialog");
+      paramString = new SimpleDateFormat(paramString).format(new Date(paramLong));
+      return paramString;
     }
-    atdz.a(paramBaseActivity, paramQQAppInterface, paramOnDismissListener);
-    return true;
+    catch (Exception paramString)
+    {
+      paramString = new SimpleDateFormat("yyyy-MM-dd");
+      try
+      {
+        paramString = paramString.format(new Date(paramLong));
+        return paramString;
+      }
+      catch (Exception paramString) {}
+    }
+    return null;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public static String b(long paramLong)
   {
-    boolean bool = false;
-    if (paramQQAppInterface != null) {
-      bool = bhsi.a(paramQQAppInterface.getCurrentAccountUin(), "extend_friend_config_785").getBoolean("sp_extend_friend_signal_guide", false);
+    a.setTimeInMillis(System.currentTimeMillis());
+    int i = a.get(1);
+    int j = a.get(2);
+    int k = a.get(5);
+    a.setTimeInMillis(paramLong);
+    int m = a.get(1);
+    int n = a.get(2);
+    int i1 = a.get(5);
+    if (i != m) {
+      return new SimpleDateFormat("yyyy-MM-dd ", BaseApplicationImpl.getContext().getResources().getConfiguration().locale).format(new Date(paramLong));
     }
-    return bool;
+    if (j != n) {
+      return new SimpleDateFormat("MM-dd ", BaseApplicationImpl.getContext().getResources().getConfiguration().locale).format(new Date(paramLong));
+    }
+    if (k == i1) {
+      return new SimpleDateFormat("HH:mm ", BaseApplicationImpl.getContext().getResources().getConfiguration().locale).format(new Date(paramLong));
+    }
+    if (k - i1 <= 1) {
+      return amtj.a(2131708822);
+    }
+    return new SimpleDateFormat("MM-dd ", BaseApplicationImpl.getContext().getResources().getConfiguration().locale).format(new Date(paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atbg
  * JD-Core Version:    0.7.0.1
  */

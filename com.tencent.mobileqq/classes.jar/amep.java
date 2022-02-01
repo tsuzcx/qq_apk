@@ -1,23 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.2.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
 
 public class amep
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public amep(SelectMemberActivity paramSelectMemberActivity) {}
+  public amep(ApolloCardWindow paramApolloCardWindow, TextView paramTextView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.onBackEvent();
-    if (AppSetting.c) {
-      this.a.c.post(new SelectMemberActivity.2.1(this));
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    {
+      if (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow)) {
+        break label42;
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(amem.c(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    label42:
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_AndroidWidgetTextView == ApolloCardWindow.b(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow))
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(amem.b(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+        return;
+      }
+    } while (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.c(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(amem.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
   }
 }
 

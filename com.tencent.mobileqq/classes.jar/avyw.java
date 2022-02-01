@@ -1,18 +1,10 @@
-import java.io.File;
-import java.util.concurrent.Callable;
-
-class avyw
-  implements Callable<File>
+public class avyw
 {
-  avyw(avyv paramavyv) {}
-  
-  public File a()
-  {
-    if (avyv.a(this.a).exists()) {
-      return avyv.a(this.a);
-    }
-    return null;
-  }
+  public float a;
+  public int a;
+  public Object a;
+  public boolean a;
+  public float b;
 }
 
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ark;
 
-import aean;
-import agyv;
+import acvv;
+import afvh;
+import amtj;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import anzj;
-import apzq;
-import apzs;
-import aqca;
-import aqcm;
-import aqcy;
+import aotd;
+import aotf;
+import aovl;
+import aovx;
+import aowj;
 import com.tencent.ark.open.ArkAppCacheMgr;
-import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
@@ -31,29 +31,29 @@ import org.w3c.dom.Text;
 public class ArkAdapterItemForTextMsg$2$1
   implements Runnable
 {
-  public ArkAdapterItemForTextMsg$2$1(apzs paramapzs) {}
+  public ArkAdapterItemForTextMsg$2$1(aotf paramaotf) {}
   
   public void run()
   {
     try
     {
-      if (this.a.jdField_a_of_type_Apzq.a.mArkContainer == null)
+      if (this.a.jdField_a_of_type_Aotd.a.mArkContainer == null)
       {
-        apzq.a(this.a.jdField_a_of_type_Apzq, this.a.jdField_a_of_type_Aqcm.a);
+        aotd.a(this.a.jdField_a_of_type_Aotd, this.a.jdField_a_of_type_Aovx.a);
         return;
       }
       ArkAppMessage localArkAppMessage = new ArkAppMessage();
       localArkAppMessage.appMinVersion = "0.0.0.1";
-      localArkAppMessage.appName = this.a.jdField_a_of_type_Apzq.a.mArkContainer.getAppName();
+      localArkAppMessage.appName = this.a.jdField_a_of_type_Aotd.a.mArkContainer.getAppName();
       if (TextUtils.isEmpty(localArkAppMessage.appName))
       {
-        apzq.a(this.a.jdField_a_of_type_Apzq, this.a.jdField_a_of_type_Aqcm.a);
+        aotd.a(this.a.jdField_a_of_type_Aotd, this.a.jdField_a_of_type_Aovx.a);
         return;
       }
     }
     catch (Exception localException)
     {
-      apzq.a(this.a.jdField_a_of_type_Apzq, this.a.jdField_a_of_type_Aqcm.a);
+      aotd.a(this.a.jdField_a_of_type_Aotd, this.a.jdField_a_of_type_Aovx.a);
       if (QLog.isColorLevel())
       {
         QLog.d("ArkAdapterItemForTextMsg", 2, "setSendClick parse ark app exception=" + localException);
@@ -67,13 +67,13 @@ public class ArkAdapterItemForTextMsg$2$1
         if (TextUtils.isEmpty(localException.appDesc)) {
           localException.appDesc = localException.appName;
         }
-        localException.promptText = String.format(anzj.a(2131699555), new Object[] { localException.appDesc });
+        localException.promptText = String.format(amtj.a(2131699790), new Object[] { localException.appDesc });
         localObject1 = new JSONObject();
         ((JSONObject)localObject1).put("forward", 1);
         ((JSONObject)localObject1).put("autosize", 1);
         ((JSONObject)localObject1).put("type", "card");
         localException.config = ((JSONObject)localObject1).toString();
-        localObject1 = this.a.jdField_a_of_type_Apzq.a.mArkContainer.getViewShare();
+        localObject1 = this.a.jdField_a_of_type_Aotd.a.mArkContainer.getViewShare();
         Object localObject2;
         int i;
         if (!TextUtils.isEmpty((CharSequence)localObject1))
@@ -92,7 +92,7 @@ public class ArkAdapterItemForTextMsg$2$1
                 if ((localObject2 != null) && (((Node)localObject2).getChildNodes().getLength() > 0))
                 {
                   JSONObject localJSONObject = new JSONObject();
-                  if (aqcy.a(((Node)localObject2).getFirstChild(), localJSONObject))
+                  if (aowj.a(((Node)localObject2).getFirstChild(), localJSONObject))
                   {
                     localException.metaList = localJSONObject.toString();
                     i = 1;
@@ -116,30 +116,30 @@ public class ArkAdapterItemForTextMsg$2$1
         {
           if (j == 0)
           {
-            if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_Apzq.a.appView)) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_Apzq.a.meta)))
+            if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_Aotd.a.appView)) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_Aotd.a.meta)))
             {
-              localException.appView = this.a.jdField_a_of_type_Apzq.a.appView;
-              localException.metaList = this.a.jdField_a_of_type_Apzq.a.meta;
+              localException.appView = this.a.jdField_a_of_type_Aotd.a.appView;
+              localException.metaList = this.a.jdField_a_of_type_Aotd.a.meta;
             }
           }
           else
           {
-            localObject1 = ((FragmentActivity)this.a.jdField_a_of_type_Aqcm.a).getChatFragment().a();
+            localObject1 = ((FragmentActivity)this.a.jdField_a_of_type_Aovx.a).getChatFragment().a();
             if (localObject1 == null) {
               break label744;
             }
-            localObject2 = ((BaseChatPie)localObject1).a();
-            if ((localObject2 == null) || (((BaseChatPie)localObject1).a == null)) {
+            localObject2 = ((BaseChatPie)localObject1).getSessionInfo();
+            if ((localObject2 == null) || (((BaseChatPie)localObject1).app == null)) {
               break label744;
             }
-            aean.b(((BaseChatPie)localObject1).a, (SessionInfo)localObject2, localException);
-            aqca.a(((BaseChatPie)localObject1).a, localException.appName, "AIOCardSendMessage", 0, 0, 0L, 0L, 0L, "", "");
+            acvv.b(((BaseChatPie)localObject1).app, (SessionInfo)localObject2, localException);
+            aovl.a(((BaseChatPie)localObject1).app, localException.appName, "AIOCardSendMessage", 0, 0, 0L, 0L, 0L, "", "");
             return;
           }
-          apzq.a(this.a.jdField_a_of_type_Apzq, this.a.jdField_a_of_type_Aqcm.a);
+          aotd.a(this.a.jdField_a_of_type_Aotd, this.a.jdField_a_of_type_Aovx.a);
           return;
           label744:
-          apzq.a(this.a.jdField_a_of_type_Apzq, this.a.jdField_a_of_type_Aqcm.a);
+          aotd.a(this.a.jdField_a_of_type_Aotd, this.a.jdField_a_of_type_Aovx.a);
           return;
           i = 0;
           break;

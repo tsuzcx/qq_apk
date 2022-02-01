@@ -1,176 +1,109 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGlobalHolder.GroupOnPageChangeListener.1;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupAdapter;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.Collection;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class xqq
-  implements xsx
+  implements vqp<weg, wgd>, xrq
 {
-  int jdField_a_of_type_Int = 0;
-  private String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = -1;
+  protected xqt a;
+  protected xrr a;
+  protected xrs a;
   
-  private xqq(xqp paramxqp) {}
-  
-  public void a(int paramInt)
+  public Object a()
   {
-    xqp.a(this.jdField_a_of_type_Xqp);
-    Object localObject1 = xqp.a(this.jdField_a_of_type_Xqp).a();
-    if ((localObject1 != null) && (paramInt < ((List)localObject1).size())) {
-      xqp.a(this.jdField_a_of_type_Xqp, ((xmt)((List)localObject1).get(paramInt)).a);
-    }
-    localObject1 = this.jdField_a_of_type_Xqp.a(paramInt);
-    boolean bool1;
-    boolean bool2;
-    if (localObject1 != null)
+    return this.jdField_a_of_type_Xqt;
+  }
+  
+  public String a()
+  {
+    return getClass().getSimpleName();
+  }
+  
+  public void a()
+  {
+    xvv.c("GetMyStoryFeatureDataStep", "GetMyStoryFeatureDataStep");
+    if ((this.jdField_a_of_type_Xqt == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Xqt.jdField_a_of_type_JavaLangString)))
     {
-      Object localObject2 = ((StoryPlayerGroupHolder)localObject1).a();
-      yuk.a("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, Group=%s, Video=%s", localObject1, localObject2);
-      if (localObject2 != null)
+      if (this.jdField_a_of_type_Xrs != null)
       {
-        if (((StoryPlayerGroupHolder)localObject1).b != ((StoryPlayerGroupHolder)localObject1).a.size() - 1) {
-          break label323;
-        }
-        bool1 = true;
-        if (((StoryPlayerGroupHolder)localObject1).b != 0) {
-          break label328;
-        }
-        bool2 = true;
-        label128:
-        boolean bool3 = bool1;
-        if (bool1)
-        {
-          bool3 = bool1;
-          if (((StoryPlayerGroupHolder)localObject1).d()) {
-            bool3 = false;
-          }
-        }
-        this.jdField_a_of_type_Xqp.a.setEnableScrollDirection(bool3, bool2, true, true);
-        if (xqp.a(this.jdField_a_of_type_Xqp) != null) {
-          xqp.a(this.jdField_a_of_type_Xqp).a(paramInt, ((xrg)localObject2).b, ((xrg)localObject2).b);
-        }
+        this.jdField_a_of_type_Xrs.a(a());
+        return;
       }
-      label197:
-      if (!(xqp.a(this.jdField_a_of_type_Xqp) instanceof xng)) {
-        break label357;
-      }
-      localObject1 = ((xng)xqp.a(this.jdField_a_of_type_Xqp)).a;
-      if (localObject1 != null)
+      xvv.d("GetMyStoryFeatureDataStep", "finish callBack is null");
+      return;
+    }
+    weg localweg = new weg();
+    localweg.a = Arrays.asList(new String[] { this.jdField_a_of_type_Xqt.jdField_a_of_type_JavaLangString });
+    vqn.a().a(localweg, this);
+  }
+  
+  public void a(Object paramObject)
+  {
+    this.jdField_a_of_type_Xqt = ((xqt)paramObject);
+  }
+  
+  public void a(@NonNull weg paramweg, @Nullable wgd paramwgd, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if ((paramwgd != null) && (paramErrorMessage.isSuccess()) && (paramwgd.a != null) && (paramwgd.a.size() > 0))
+    {
+      this.jdField_a_of_type_Xqt.jdField_a_of_type_Vwa = ((vwa)paramwgd.a.get(0));
+      paramweg = (vuq)vux.a(10);
+      paramweg.b("qqstory_key_story_latest_feed_feature_feed_id", this.jdField_a_of_type_Xqt.jdField_a_of_type_Vwa.jdField_a_of_type_JavaLangString);
+      paramweg.b("qqstory_key_story_latest_feed_feature_total_like_count", Integer.valueOf(this.jdField_a_of_type_Xqt.jdField_a_of_type_Vwa.jdField_a_of_type_Int));
+      paramweg.b("qqstory_key_story_latest_feed_feature_total_comment_count", Integer.valueOf(this.jdField_a_of_type_Xqt.jdField_a_of_type_Vwa.b));
+      paramweg.b("qqstory_key_story_latest_feed_feature_total_view_count", Integer.valueOf(this.jdField_a_of_type_Xqt.jdField_a_of_type_Vwa.c));
+      if (this.jdField_a_of_type_Xrs != null)
       {
-        if (TextUtils.equals(((wvn)localObject1).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)) {
-          break label343;
-        }
-        this.jdField_a_of_type_JavaLangString = ((wvn)localObject1).jdField_a_of_type_JavaLangString;
-        localObject2 = new wwp();
-        ((wwp)localObject2).c = ((wvn)localObject1).jdField_a_of_type_Int;
-        ((wwp)localObject2).jdField_b_of_type_JavaLangString = ((wvn)localObject1).jdField_a_of_type_JavaLangString;
-        ((wwp)localObject2).jdField_b_of_type_Long = ((wvn)localObject1).e;
-        ((wvn)localObject1).c = false;
-        wow.a().a((wpa)localObject2, null);
-        yuk.a("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, send MsgTabNodeClickRequest:%s", localObject1);
+        this.jdField_a_of_type_Xrs.a(a());
+        return;
       }
+      xvv.d("GetMyStoryFeatureDataStep", "finish callBack is null");
+      return;
+    }
+    int i = paramErrorMessage.errorCode;
+    if (paramwgd == null) {
+      paramweg = "rsp is null";
     }
     for (;;)
     {
-      c(paramInt);
+      xvv.e("GetMyStoryFeatureDataStep", "请求Features失败 errorCode: %d %s", new Object[] { Integer.valueOf(i), paramweg });
+      this.jdField_a_of_type_Xqt.jdField_a_of_type_Vwa = new vwa();
+      this.jdField_a_of_type_Xqt.jdField_a_of_type_Vwa.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Xqt.jdField_a_of_type_JavaLangString;
+      if (this.jdField_a_of_type_Xrs == null) {
+        break;
+      }
+      this.jdField_a_of_type_Xrs.a(a());
       return;
-      label323:
-      bool1 = false;
-      break;
-      label328:
-      bool2 = false;
-      break label128;
-      yuk.e("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, GroupHolder=null");
-      break label197;
-      label343:
-      yuk.a("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, repeat unionId : %s", this.jdField_a_of_type_JavaLangString);
-      continue;
-      label357:
-      yuk.b("Q.qqstory.playernew.StoryPlayerGlobalHolder", "onPageSelected, read node event error");
+      if (paramwgd.a == null) {
+        paramweg = "features is null";
+      } else {
+        paramweg = "invalid rsp";
+      }
     }
+    xvv.d("GetMyStoryFeatureDataStep", "finish callBack is null");
   }
   
-  public void a(int paramInt1, float paramFloat, int paramInt2)
+  public void a(xrr paramxrr)
   {
-    if (xqp.a(this.jdField_a_of_type_Xqp) != null) {
-      xqp.a(this.jdField_a_of_type_Xqp).a(this.jdField_a_of_type_Xqp.a.c(), paramInt1, paramFloat, paramInt2);
-    }
+    this.jdField_a_of_type_Xrr = paramxrr;
   }
   
-  public void b(int paramInt)
+  public void a(xrs paramxrs)
   {
-    int i = this.jdField_a_of_type_Xqp.a.c();
-    Object localObject = this.jdField_a_of_type_Xqp.a(i);
-    if (localObject != null)
-    {
-      localObject = ((StoryPlayerGroupHolder)localObject).a();
-      if ((localObject instanceof xrh))
-      {
-        localObject = (VideoViewVideoHolder)((xrh)localObject).b(VideoViewVideoHolder.class);
-        if (localObject != null)
-        {
-          if (paramInt != 1) {
-            break label94;
-          }
-          yuk.b("Q.qqstory.playernew.StoryPlayerGlobalHolder", "Vertical, pause because of dragging");
-          ((VideoViewVideoHolder)localObject).e();
-        }
-      }
-    }
-    for (;;)
-    {
-      if (xqp.a(this.jdField_a_of_type_Xqp) != null) {
-        xqp.a(this.jdField_a_of_type_Xqp).a(i, paramInt);
-      }
-      return;
-      label94:
-      if (paramInt == 0)
-      {
-        yuk.a("Q.qqstory.playernew.StoryPlayerGlobalHolder", "Vertical, start because of idle. direction=%d", Integer.valueOf(this.jdField_a_of_type_Xqp.a.b()));
-        if (!((VideoViewVideoHolder)localObject).a.a()) {
-          ((VideoViewVideoHolder)localObject).d();
-        }
-        ThreadManager.executeOnSubThread(new StoryPlayerGlobalHolder.GroupOnPageChangeListener.1(this));
-      }
-    }
+    this.jdField_a_of_type_Xrs = paramxrs;
   }
   
-  public void c(int paramInt)
+  public boolean a()
   {
-    Iterator localIterator = xqp.a(this.jdField_a_of_type_Xqp).a.values().iterator();
-    paramInt = 0;
-    if (localIterator.hasNext())
-    {
-      StoryPlayerGroupHolder localStoryPlayerGroupHolder = (StoryPlayerGroupHolder)localIterator.next();
-      if ((paramInt != 0) || (localStoryPlayerGroupHolder.e()))
-      {
-        paramInt = 1;
-        label55:
-        if (paramInt == 0) {
-          break label77;
-        }
-      }
-    }
-    for (;;)
-    {
-      if (paramInt == 0) {
-        this.jdField_a_of_type_Xqp.a(null);
-      }
-      return;
-      paramInt = 0;
-      break label55;
-      label77:
-      break;
-    }
+    return false;
   }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

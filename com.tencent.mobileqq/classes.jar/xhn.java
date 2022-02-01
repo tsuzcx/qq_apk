@@ -1,69 +1,48 @@
-public abstract class xhn
-  extends xgp
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.List;
+
+public class xhn
+  extends vqm
 {
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
+  public List<LikeEntry> a;
+  public int b;
+  public int c;
   
-  protected String a(int paramInt)
+  public xhn(qqstory_service.RspFeedLikeList paramRspFeedLikeList)
   {
-    return null;
+    super(paramRspFeedLikeList.result);
+    paramRspFeedLikeList = (qqstory_struct.FeedLikeInfo)paramRspFeedLikeList.feed_like_info.get();
+    this.a = a(paramRspFeedLikeList);
+    this.b = paramRspFeedLikeList.like_total_count.get();
+    this.c = paramRspFeedLikeList.has_like.get();
   }
   
-  public void a(xht paramxht)
+  public List<LikeEntry> a(qqstory_struct.FeedLikeInfo paramFeedLikeInfo)
   {
-    super.a(paramxht);
-    paramxht.a = this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public void a(xhv paramxhv)
-  {
-    super.a(paramxhv);
-    paramxhv.b = 2;
-    paramxhv.d = ("[" + win.a + "] " + this.a);
-    paramxhv.a = this.d;
-    paramxhv.k = this.a;
-    paramxhv.l = this.b;
-    paramxhv.h = this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public void a(xhw paramxhw)
-  {
-    super.a(paramxhw);
-    paramxhw.jdField_c_of_type_JavaLangString = this.a;
-    paramxhw.d = this.b;
-    paramxhw.a = this.d;
-    paramxhw.e = this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public void a(xhx paramxhx)
-  {
-    super.a(paramxhx);
-    paramxhx.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    paramxhx.e = this.d;
-    paramxhx.a = this.a;
-    paramxhx.d = xif.a(this.d);
-  }
-  
-  public void a(xhy paramxhy)
-  {
-    super.a(paramxhy);
-    paramxhy.jdField_c_of_type_JavaLangString = this.b;
-    paramxhy.a = this.a;
-    paramxhy.d = this.jdField_c_of_type_JavaLangString;
-    paramxhy.e = this.d;
-    paramxhy.jdField_c_of_type_Boolean = true;
-  }
-  
-  public void b(xhy paramxhy)
-  {
-    super.b(paramxhy);
-    paramxhy.jdField_c_of_type_JavaLangString = this.b;
-    paramxhy.a = this.a;
-    paramxhy.d = this.jdField_c_of_type_JavaLangString;
-    paramxhy.e = this.d;
-    paramxhy.jdField_c_of_type_Boolean = true;
+    paramFeedLikeInfo = paramFeedLikeInfo.like_list.get();
+    ArrayList localArrayList1 = new ArrayList();
+    vvj localvvj = (vvj)vux.a(2);
+    ArrayList localArrayList2 = new ArrayList();
+    int i = 0;
+    while (i < paramFeedLikeInfo.size())
+    {
+      LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)paramFeedLikeInfo.get(i));
+      if (localvvj.b(localLikeEntry.unionId) == null) {
+        localArrayList2.add(new vwe("", localLikeEntry.unionId));
+      }
+      localArrayList1.add(localLikeEntry);
+      i += 1;
+    }
+    if (!localArrayList2.isEmpty()) {
+      new wcg().a(1, localArrayList2);
+    }
+    return localArrayList1;
   }
 }
 

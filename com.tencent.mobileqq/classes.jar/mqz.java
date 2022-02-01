@@ -1,6 +1,17 @@
-abstract interface mqz
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class mqz
+  implements View.OnClickListener
 {
-  public abstract void a();
+  mqz(mqx parammqx) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

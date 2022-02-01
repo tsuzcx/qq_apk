@@ -1,16 +1,23 @@
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.widget.SingleLineTextView;
 
 class bclh
 {
-  String jdField_a_of_type_JavaLangString;
-  List<bcfn> jdField_a_of_type_JavaUtilList;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
+  RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  RelativeLayout c;
   
-  public bclh(String paramString, List<bcfn> paramList)
-  {
-    this.jdField_a_of_type_JavaLangString = paramList;
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
+  bclh(bcle parambcle) {}
 }
 
 

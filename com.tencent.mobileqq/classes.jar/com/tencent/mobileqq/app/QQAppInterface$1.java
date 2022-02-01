@@ -10,12 +10,12 @@ class QQAppInterface$1
   
   public void run()
   {
-    QQAppInterface.a(this.this$0);
+    QQAppInterface.access$1400(this.this$0);
     IntentFilter localIntentFilter = new IntentFilter("com.tencent.qzone.cleanunreadcount");
     localIntentFilter.addAction("com.tecent.qzone.clearAlbumRedTouch");
-    QQAppInterface.c(this.this$0).registerReceiver(QQAppInterface.a(this.this$0), localIntentFilter);
+    QQAppInterface.access$1600(this.this$0).registerReceiver(QQAppInterface.access$1500(this.this$0), localIntentFilter);
     VideoBroadcastReceiver.a(this.this$0);
-    if (this.this$0.f()) {}
+    if (this.this$0.isAccLoginSuccess()) {}
   }
 }
 

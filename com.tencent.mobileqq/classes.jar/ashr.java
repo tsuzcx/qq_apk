@@ -1,13 +1,38 @@
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class ashr
-  implements ashw
+class ashr
+  implements asht
 {
-  public ashr(DragSortListView paramDragSortListView) {}
+  private bjyw jdField_a_of_type_Bjyw = new bjyw();
   
-  public float a(float paramFloat, long paramLong)
+  public ashr(ashq paramashq)
   {
-    return this.a.e * paramFloat;
+    this.jdField_a_of_type_Bjyw.a();
+  }
+  
+  public int a(long paramLong1, long paramLong2)
+  {
+    int j = this.jdField_a_of_type_Bjyw.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
+    int k = bjyz.a(BaseApplication.getContext());
+    int i;
+    if (k != 1)
+    {
+      i = j;
+      if (k != 2) {}
+    }
+    else
+    {
+      i = j;
+      if (j > 16384) {
+        i = 16384;
+      }
+    }
+    return i;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bjyw.b();
   }
 }
 

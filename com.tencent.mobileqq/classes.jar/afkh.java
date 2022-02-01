@@ -1,21 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import mqq.app.AppActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class afkh
-  implements DialogInterface.OnClickListener
+  extends aubs
 {
-  public afkh(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, AppActivity paramAppActivity) {}
+  public afkh(TroopChatPie paramTroopChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a()
   {
-    if (paramInt == 1)
-    {
-      RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, true);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.a.a(this.jdField_a_of_type_MqqAppAppActivity, false)) {
-        RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).b();
-      }
+    if (((aubl)this.a.app.getManager(156)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) {
+      this.a.mTipsMgr.a(this.a.a, new Object[0]);
+    }
+  }
+  
+  protected void b()
+  {
+    if (((aubl)this.a.app.getManager(156)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) {
+      this.a.a.a();
+    }
+  }
+  
+  protected void c()
+  {
+    if ((((aubl)this.a.app.getManager(156)).a(this.a.sessionInfo.curType, this.a.sessionInfo.curFriendUin)) && (this.a.mTipsMgr.a() == 14)) {
+      this.a.mTipsMgr.a();
     }
   }
 }

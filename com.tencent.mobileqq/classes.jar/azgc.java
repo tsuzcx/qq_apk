@@ -1,19 +1,14 @@
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
+import androidx.annotation.Nullable;
 
-class azgc
-  extends View.AccessibilityDelegate
+public abstract interface azgc
 {
-  azgc(azfn paramazfn, ClickableSpan paramClickableSpan) {}
+  public abstract void a(@Nullable Object paramObject);
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    super.sendAccessibilityEvent(paramView, paramInt);
-    if ((paramInt == 1) && (this.jdField_a_of_type_AndroidTextStyleClickableSpan != null)) {
-      this.jdField_a_of_type_AndroidTextStyleClickableSpan.onClick(paramView);
-    }
-  }
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

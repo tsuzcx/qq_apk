@@ -1,55 +1,36 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.InputFilter;
+import android.text.Spanned;
 
-public class afqn
-  extends biht
+class afqn
+  implements InputFilter
 {
-  public afqn(TextPreviewActivity paramTextPreviewActivity, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  afqn(afqj paramafqj) {}
   
-  public void onCancel(bihu parambihu)
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambihu);
-    }
-    super.onCancel(parambihu);
-  }
-  
-  public void onDone(bihu parambihu)
-  {
-    super.onDone(parambihu);
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onDone| task:" + parambihu);
-    }
-    if (parambihu.b()) {}
-    do
+    paramInt3 = 4500 - (paramSpanned.length() - (paramInt4 - paramInt3));
+    if (paramInt3 <= 0)
     {
-      return;
-      if (parambihu.a() == -1)
-      {
-        parambihu = new Message();
-        parambihu.what = 17;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(parambihu);
-        return;
-      }
-      parambihu = this.a.jdField_a_of_type_Gc.a(this.a.e);
-    } while (parambihu == null);
-    Message localMessage = new Message();
-    localMessage.what = 18;
-    localMessage.obj = parambihu;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public boolean onStart(bihu parambihu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onStart| task:" + parambihu);
+      afqj.a(this.a);
+      return "";
     }
-    return super.onStart(parambihu);
+    if (paramInt3 >= paramInt2 - paramInt1) {
+      return null;
+    }
+    paramInt3 += paramInt1;
+    paramInt2 = paramInt3;
+    if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3 - 1)))
+    {
+      paramInt3 -= 1;
+      paramInt2 = paramInt3;
+      if (paramInt3 == paramInt1)
+      {
+        afqj.a(this.a);
+        return "";
+      }
+    }
+    afqj.a(this.a);
+    return paramCharSequence.subSequence(paramInt1, paramInt2);
   }
 }
 

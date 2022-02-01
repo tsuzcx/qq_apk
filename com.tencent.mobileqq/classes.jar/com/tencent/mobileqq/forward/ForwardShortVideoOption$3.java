@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.forward;
 
 import android.app.Activity;
-import beyq;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
 
 class ForwardShortVideoOption$3
   implements Runnable
@@ -11,7 +11,7 @@ class ForwardShortVideoOption$3
   
   public void run()
   {
-    beyq.a(this.a, null, false);
+    URLDrawableHelper.decodeLocalImage(this.a, null, false);
     this.this$0.a.runOnUiThread(new ForwardShortVideoOption.3.1(this));
   }
 }

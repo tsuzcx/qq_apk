@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ajan;
-import alms;
+import ahux;
+import akkk;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class RecentAdapter$4
   implements Runnable
 {
-  public RecentAdapter$4(alms paramalms) {}
+  public RecentAdapter$4(akkk paramakkk) {}
   
   public void run()
   {
-    ((ajan)this.this$0.a.getManager(138)).b(true);
+    ((ahux)this.this$0.a.getManager(138)).b(true);
   }
 }
 

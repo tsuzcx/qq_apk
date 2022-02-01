@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bnrf;
+import bkwm;
 
 public class KandianOx210MsgInfo$7
   implements Runnable
 {
   public void run()
   {
-    SharedPreferences.Editor localEditor = bnrf.a(this.a, true, false).edit();
+    SharedPreferences.Editor localEditor = bkwm.a(this.a, true, false).edit();
     localEditor.remove("kandian_push_0x210_msg_for_follow_show_in_folder");
     localEditor.remove("kandian_push_0x210_c5_msg_time");
-    bnrf.a(localEditor, true);
+    bkwm.a(localEditor, true);
   }
 }
 

@@ -1,33 +1,59 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.dispatch.Dispatcher;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.ProgressControler.2;
+import com.tencent.biz.qqstory.playvideo.ProgressControler.3;
+import java.lang.ref.WeakReference;
+import java.util.Timer;
+import java.util.TimerTask;
 
-class wly
-  extends Job<Object, Object, Object>
+public class wly
 {
-  wly(wlt paramwlt, String paramString1, String paramString2, StoryVideoItem paramStoryVideoItem)
+  protected long a;
+  public Handler a;
+  public WeakReference<wur> a;
+  public Timer a;
+  private TimerTask a;
+  public boolean a;
+  public long b;
+  public long c;
+  
+  private void a()
   {
-    super(paramString1);
+    ProgressControler.2 local2 = new ProgressControler.2(this);
+    this.jdField_a_of_type_AndroidOsHandler.post(local2);
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  private void b()
   {
-    paramJobContext = new wsm(new ErrorMessage(), this.jdField_a_of_type_JavaLangString, true);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)
-    {
-      paramJobContext.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
-      paramJobContext.c = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.shareGroupId;
-      paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
-      if (paramJobContext.a == 0L) {
-        paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
-      }
+    Timer localTimer = new Timer();
+    ProgressControler.3 local3 = new ProgressControler.3(this);
+    localTimer.scheduleAtFixedRate(local3, 0L, 50L);
+    this.jdField_a_of_type_JavaUtilTimer = localTimer;
+    this.jdField_a_of_type_JavaUtilTimerTask = local3;
+  }
+  
+  public void a(long paramLong1, long paramLong2, wur paramwur)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.c = this.jdField_a_of_type_Long;
+    this.b = paramLong2;
+    if (this.jdField_a_of_type_JavaUtilTimer != null) {
+      this.jdField_a_of_type_JavaUtilTimer.cancel();
     }
-    wjj.a().dispatch(paramJobContext);
-    return null;
+    if (this.jdField_a_of_type_JavaUtilTimerTask != null) {
+      this.jdField_a_of_type_JavaUtilTimerTask.cancel();
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+    if (paramLong2 <= 0L)
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramwur);
+      a();
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      return;
+    }
+    b();
   }
 }
 

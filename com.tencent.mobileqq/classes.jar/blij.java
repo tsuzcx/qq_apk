@@ -1,12 +1,36 @@
-import android.view.View;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface blij
+class blij
+  extends BroadcastReceiver
 {
-  public abstract void b(View paramView);
+  blij(blii paramblii) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ("tencent.video.q2v.startUploadPTV".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QIMWebEffectCameraCaptureUnit", 2, "receive ACTION_BLESS_UPLOAD_PTV.");
+      }
+      switch (paramIntent.getIntExtra("broadcastType", 1))
+      {
+      }
+    }
+    do
+    {
+      return;
+      paramContext = blii.a(this.a).a();
+    } while ((paramContext == null) || (paramContext.isFinishing()));
+    paramContext.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blij
  * JD-Core Version:    0.7.0.1
  */

@@ -11,17 +11,17 @@ import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import ozs;
-import pql;
-import sjf;
+import pay;
+import pwf;
+import snl;
 
 public class ReadInJoyNickNameTextView
   extends TextView
-  implements pql
+  implements pwf
 {
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
-  private sjf jdField_a_of_type_Sjf;
+  private snl jdField_a_of_type_Snl;
   private boolean jdField_a_of_type_Boolean;
   
   public ReadInJoyNickNameTextView(Context paramContext)
@@ -46,11 +46,11 @@ public class ReadInJoyNickNameTextView
     {
       return;
       if (this.jdField_a_of_type_Boolean) {
-        setText(ozs.e(paramReadInJoyUserInfo.nick));
+        setText(pay.e(paramReadInJoyUserInfo.nick));
       }
-      while (this.jdField_a_of_type_Sjf != null)
+      while (this.jdField_a_of_type_Snl != null)
       {
-        this.jdField_a_of_type_Sjf.a(paramReadInJoyUserInfo.nick);
+        this.jdField_a_of_type_Snl.a(paramReadInJoyUserInfo.nick);
         return;
         setText(paramReadInJoyUserInfo.nick);
       }
@@ -88,7 +88,7 @@ public class ReadInJoyNickNameTextView
     {
       localObject = str;
       if (this.jdField_a_of_type_Boolean) {
-        localObject = ozs.e(str);
+        localObject = pay.e(str);
       }
       setText((CharSequence)localObject);
       return;
@@ -124,9 +124,9 @@ public class ReadInJoyNickNameTextView
     setNickNameByUin(l1, paramBoolean);
   }
   
-  public void setOnSetNickNameListener(sjf paramsjf)
+  public void setOnSetNickNameListener(snl paramsnl)
   {
-    this.jdField_a_of_type_Sjf = paramsjf;
+    this.jdField_a_of_type_Snl = paramsnl;
   }
   
   public void setPrefix(String paramString)
@@ -145,7 +145,7 @@ public class ReadInJoyNickNameTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView
  * JD-Core Version:    0.7.0.1
  */

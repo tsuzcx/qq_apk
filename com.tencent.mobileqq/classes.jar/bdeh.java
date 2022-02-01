@@ -1,142 +1,33 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.text.TextUtils;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import android.support.v4.util.ArrayMap;
+import android.support.v4.util.SparseArrayCompat;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.tencent.util.Pair;
+import java.lang.reflect.Type;
 
-public class bdeh
+final class bdeh
+  implements JsonDeserializer<bdef>
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private bbmd jdField_a_of_type_Bbmd;
-  public bbme a;
-  private String jdField_a_of_type_JavaLangString;
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  
-  private static long a(int paramInt)
+  public bdef a(JsonElement paramJsonElement, Type paramType, JsonDeserializationContext paramJsonDeserializationContext)
   {
-    return paramInt * 1000000000L / 25L;
-  }
-  
-  private Bitmap a(Bitmap paramBitmap)
-  {
-    Bitmap localBitmap = paramBitmap;
-    if (paramBitmap.getWidth() % 2 == 1)
+    paramType = paramJsonElement.getAsJsonObject();
+    paramJsonElement = new bdef();
+    paramJsonElement.jdField_a_of_type_Int = paramType.get("nextNum").getAsInt();
+    paramType = paramType.get("numToAttrib").getAsJsonObject();
+    int i = 0;
+    while (i < paramJsonElement.jdField_a_of_type_Int)
     {
-      localBitmap = Bitmap.createBitmap(paramBitmap.getWidth() + 1, paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(localBitmap);
-      localCanvas.drawARGB(0, 0, 0, 0);
-      localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, null);
+      Object localObject = paramType.get(i + "").getAsJsonArray();
+      paramJsonDeserializationContext = ((JsonArray)localObject).get(0).getAsString();
+      localObject = ((JsonArray)localObject).get(1).getAsString();
+      paramJsonElement.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(i, new Pair(paramJsonDeserializationContext, localObject));
+      paramJsonElement.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(bdef.a(paramJsonDeserializationContext, (String)localObject), Integer.valueOf(i));
+      i += 1;
     }
-    return localBitmap;
-  }
-  
-  private void a()
-  {
-    yuk.b("Q.qqstory.publish.upload.PicToVideoConverter", "preparing.");
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    yuk.b("Q.qqstory.publish.upload.PicToVideoConverter", "bitmap's width = " + this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + ", height = " + this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-    bbmc localbbmc = new bbmc(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), 532480, 1, false, 0);
-    localbbmc.d = 25;
-    this.jdField_a_of_type_Bbme = new bbme();
-    this.jdField_a_of_type_Bbme.a(localbbmc);
-    this.jdField_a_of_type_Bbmd = new bbmd();
-    this.jdField_a_of_type_Bbmd.a(localbbmc, this.jdField_a_of_type_Bbme.a());
-    this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
-  }
-  
-  private void b()
-  {
-    yuk.b("Q.qqstory.publish.upload.PicToVideoConverter", "releasing.");
-    if (this.jdField_a_of_type_Bbmd != null)
-    {
-      this.jdField_a_of_type_Bbmd.a();
-      this.jdField_a_of_type_Bbmd = null;
-    }
-  }
-  
-  public int a(String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      throw new IllegalStateException("convert image to video failed. because input path or target path is null!");
-    }
-    yuk.d("Q.qqstory.publish.upload.PicToVideoConverter", "input file path is %s. output file path is %s.", new Object[] { paramString1, paramString2 });
-    if (!zom.c(paramString1))
-    {
-      yuk.e("Q.qqstory.publish.upload.PicToVideoConverter", "input file does not exists or is empty.");
-      return 940007;
-    }
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(paramString1);
-      l = System.currentTimeMillis();
-    }
-    catch (OutOfMemoryError paramString2)
-    {
-      try
-      {
-        for (;;)
-        {
-          a();
-          i = 0;
-          for (;;)
-          {
-            if (i < 75)
-            {
-              this.jdField_a_of_type_Bbme.a();
-              this.jdField_a_of_type_Bbmd.a(3553, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, null, a(i));
-              i += 1;
-              continue;
-              paramString2 = paramString2;
-              System.gc();
-              try
-              {
-                Thread.sleep(1000L);
-                this.jdField_a_of_type_AndroidGraphicsBitmap = bhmq.a(paramString1, 540, 960);
-                if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-                  this.jdField_a_of_type_AndroidGraphicsBitmap = bhmq.a(paramString1, 360, 640);
-                }
-                if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-                  break;
-                }
-                yuk.e("Q.qqstory.publish.upload.PicToVideoConverter", "decode bitmap <%s> error:%s", new Object[] { paramString1, paramString2 });
-                return 942014;
-              }
-              catch (InterruptedException localInterruptedException)
-              {
-                for (;;)
-                {
-                  localInterruptedException.printStackTrace();
-                }
-              }
-            }
-          }
-        }
-        this.jdField_a_of_type_Bbme.b();
-        b();
-        i = 0;
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          long l;
-          yuk.b("Q.qqstory.publish.upload.PicToVideoConverter", "convert picture to video error. %s.", paramString1);
-          int i = 942013;
-          this.jdField_a_of_type_Bbme.c();
-          b();
-        }
-      }
-      finally
-      {
-        b();
-      }
-      yuk.d("Q.qqstory.publish.upload.PicToVideoConverter", "convert image to video done. cost time %d. errorCode is %d.", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(i) });
-      return i;
-    }
+    return paramJsonElement;
   }
 }
 

@@ -1,46 +1,18 @@
-import android.os.SystemClock;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ocr.data.TranslateResult.Record;
 
-public class axns
-  implements View.OnClickListener
+public final class axns
+  implements Parcelable.Creator<TranslateResult.Record>
 {
-  public axns(MultiCardPageIndicator paramMultiCardPageIndicator) {}
-  
-  public void onClick(View paramView)
+  public TranslateResult.Record a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
-    }
-    MultiCardPageIndicator.a(this.a, SystemClock.uptimeMillis());
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof axnv)) {}
-    for (localObject = (axnv)localObject;; localObject = null)
-    {
-      if (localObject == null) {}
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        int i = MultiCardPageIndicator.a(this.a).a();
-        int j = ((axnv)localObject).jdField_a_of_type_Int;
-        this.a.setCurrentItem(j);
-        bdll.b(null, "dc00898", "", "", "0X800A216", "0X800A216", 0, 0, "", "", "", "");
-        ((axnv)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        MultiCardPageIndicator.a(this.a).setCurrentItem(j);
-        if ((i == j) && (MultiCardPageIndicator.a(this.a) != null)) {
-          MultiCardPageIndicator.a(this.a).a(j);
-        }
-        if (MultiCardPageIndicator.a(this.a) != null) {
-          MultiCardPageIndicator.a(this.a).a(j);
-        }
-      }
-    }
+    return new TranslateResult.Record(paramParcel);
+  }
+  
+  public TranslateResult.Record[] a(int paramInt)
+  {
+    return new TranslateResult.Record[paramInt];
   }
 }
 

@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniAppSearchFragment$4
@@ -24,6 +25,7 @@ class MiniAppSearchFragment$4
       {
         this.val$searchDataManager.updateHistorySearchList(paramKeyEvent);
         QLog.d("MiniAppSearchFragment", 2, "initHistorySearch, record search content: " + paramKeyEvent);
+        MiniProgramLpReportDC04239.reportAsync("desktop", "search", "search_button", paramKeyEvent);
       }
       for (;;)
       {

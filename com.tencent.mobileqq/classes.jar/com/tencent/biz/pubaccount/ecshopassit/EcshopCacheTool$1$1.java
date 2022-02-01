@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import ofa;
-import ofi;
+import ogn;
+import ogv;
 
 class EcshopCacheTool$1$1
   implements Runnable

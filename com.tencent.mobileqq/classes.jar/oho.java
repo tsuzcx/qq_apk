@@ -1,104 +1,102 @@
-import android.content.res.Configuration;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.List;
+import com.google.gson.Gson;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
-class oho
-  extends pfh
+public class oho
 {
-  private oho(ohm paramohm) {}
-  
-  public void a(int paramInt)
+  public static ArrayList<ogu> a()
   {
-    if ((ohm.a(this.a) != null) && ((ohm.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohm.a(this.a)).a(paramInt);
+    ArrayList localArrayList = new ArrayList();
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null) {
+      localArrayList = (ArrayList)new Gson().fromJson(ohr.a(localAppRuntime, "redpoint_info_" + ohm.a(localAppRuntime)), new ohp().getType());
+    }
+    return localArrayList;
+  }
+  
+  public static void a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null) {
+      ohr.a(localAppRuntime, "redpoint_info_" + ohm.a(localAppRuntime), "");
     }
   }
   
-  public void a(int paramInt, ArticleInfo paramArticleInfo, String paramString1, String paramString2)
+  public static void a(int paramInt)
   {
-    if ((ohm.a(this.a) != null) && ((ohm.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohm.a(this.a)).a(paramInt, paramArticleInfo, paramString1, paramString2);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null) {
+      ohr.a(localAppRuntime, "redpoint_show_" + paramInt + "_" + ohm.a(localAppRuntime), true);
     }
   }
   
-  public void a(int paramInt, List<Long> paramList)
+  public static void a(int paramInt1, int paramInt2)
   {
-    if ((ohm.a(this.a) != null) && ((ohm.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohm.a(this.a)).a(paramInt, paramList);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    QLog.i("Ecshop_RedPointUtil", 2, "[saveRedpoingClickTag]  taksId: " + paramInt2);
+    if (localAppRuntime != null) {
+      ohr.a(localAppRuntime, "redpoint_click_" + paramInt1 + "_" + ohm.a(localAppRuntime), paramInt2);
     }
   }
   
-  public void a(Configuration paramConfiguration)
+  public static void a(ArrayList<ogu> paramArrayList)
   {
-    if ((ohm.a(this.a) == 56) && (ohm.a(this.a) != null))
+    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {}
+    AppRuntime localAppRuntime;
+    do
     {
-      ohm.a(this.a).f();
-      ohm.a(this.a).g();
-    }
-    if ((ohm.a(this.a) != null) && ((ohm.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohm.a(this.a)).a(paramConfiguration);
-    }
+      return;
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    } while (localAppRuntime == null);
+    ohr.a(localAppRuntime, "redpoint_info_" + ohm.a(localAppRuntime), new Gson().toJson(paramArrayList));
   }
   
-  public void a(TopBannerInfo paramTopBannerInfo)
+  public static boolean a(int paramInt)
   {
-    if ((ohm.a(this.a) != null) && ((ohm.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohm.a(this.a)).a(paramTopBannerInfo);
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, long paramLong, List<Long> paramList, List<ArticleInfo> paramList1)
-  {
-    if ((ohm.a(this.a) != null) && ((ohm.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohm.a(this.a)).a(paramBoolean, paramInt, paramLong, paramList, paramList1);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if ((ohm.a(this.a) != null) && ((ohm.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohm.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
-    }
-  }
-  
-  public void as_()
-  {
-    if ((ohm.a(this.a) != null) && ((ohm.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohm.a(this.a)).p();
-    }
-  }
-  
-  public void b(int paramInt, List<Long> paramList)
-  {
-    if ((ohm.a(this.a) != null) && ((ohm.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohm.a(this.a)).c(paramInt, paramList);
-    }
-  }
-  
-  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if ((ohm.a(this.a) != null) && ((ohm.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohm.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
-    }
-  }
-  
-  public void c(int paramInt, List<Long> paramList)
-  {
-    if ((ohm.a(this.a) != null) && ((ohm.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ohm.a(this.a)).b(paramInt, paramList);
-    }
-  }
-  
-  public void d(int paramInt, List<oor> paramList)
-  {
-    if ((ohm.a(this.a) instanceof ReadInJoyListViewGroup))
+    boolean bool = false;
+    try
     {
-      pmm localpmm = (pmm)((ReadInJoyListViewGroup)ohm.a(this.a)).a(2);
-      if (localpmm != null) {
-        localpmm.b(paramInt, paramList);
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if (localAppRuntime != null) {
+        bool = ohr.a(localAppRuntime, "redpoint_show_" + paramInt + "_" + ohm.a(localAppRuntime));
       }
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("Ecshop_RedPointUtil", 1, "[getRedpointClickTag] fail.", localException);
+    }
+    return false;
+  }
+  
+  public static boolean a(int paramInt1, int paramInt2)
+  {
+    try
+    {
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if (localAppRuntime != null)
+      {
+        paramInt1 = ohr.a(localAppRuntime, "redpoint_click_" + paramInt1 + "_" + ohm.a(localAppRuntime));
+        if (QLog.isColorLevel()) {
+          QLog.i("Ecshop_RedPointUtil", 2, "[getRedpointClickTag] cachedTaskId: " + paramInt1 + " taskId: " + paramInt2);
+        }
+        return paramInt1 == paramInt2;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("Ecshop_RedPointUtil", 1, "[getRedpointClickTag] fail.", localException);
+    }
+    return false;
+  }
+  
+  public static void b(int paramInt)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null) {
+      ohr.a(localAppRuntime, "redpoint_show_" + paramInt + "_" + ohm.a(localAppRuntime), false);
     }
   }
 }

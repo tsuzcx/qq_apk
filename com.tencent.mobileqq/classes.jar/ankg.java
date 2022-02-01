@@ -1,72 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONArray;
 
 class ankg
-  implements anje
+  extends BroadcastReceiver
 {
-  ankg(ankf paramankf, JSONArray paramJSONArray, File paramFile, AppInterface paramAppInterface, String paramString1, int[] paramArrayOfInt, String paramString2) {}
-  
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.d("ApolloPluginRscLoader", 1, new Object[] { "getCombination onDownLoadFinish sucess:", Boolean.valueOf(paramBoolean) });
-    label75:
-    int i;
-    if (paramInt1 > 0)
+    QLog.d("AccountPhoneUnityManager", 1, "onReceive broadcast");
+    bcef.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "dc00898", "", "", "0X800B3EB", "0X800B3EB", 0, 0, "", "", "", "");
+    paramIntent = anjy.a().a(anjz.class);
+    if ((paramIntent instanceof anjz))
     {
-      paramString = this.jdField_a_of_type_Ankf;
-      if (ApolloUtil.d(paramInt1))
-      {
-        paramInt2 = 0;
-        paramString = ankf.a(paramString, 1, String.valueOf(paramInt1), paramInt2);
-        this.jdField_a_of_type_OrgJsonJSONArray.put(paramString);
-      }
+      ((anjz)paramIntent).d();
+      anjz.a((anjz)paramIntent, paramContext);
     }
-    else
-    {
-      if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0)) {
-        break label147;
-      }
-      paramInt1 = 0;
-      if (paramInt1 >= paramArrayOfInt.length) {
-        break label147;
-      }
-      paramString = this.jdField_a_of_type_Ankf;
-      i = paramArrayOfInt[paramInt1];
-      if (!ApolloUtil.c(paramArrayOfInt[paramInt1])) {
-        break label141;
-      }
-    }
-    label141:
-    for (paramInt2 = 0;; paramInt2 = 2)
-    {
-      paramString = ankf.a(paramString, 2, String.valueOf(i), paramInt2);
-      this.jdField_a_of_type_OrgJsonJSONArray.put(paramString);
-      paramInt1 += 1;
-      break label75;
-      paramInt2 = 2;
-      break;
-    }
-    label147:
-    if ((this.jdField_a_of_type_JavaIoFile != null) && (!this.jdField_a_of_type_JavaIoFile.exists()))
-    {
-      aniv.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, new ankh(this));
-      return;
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      paramString = ankf.a(this.jdField_a_of_type_Ankf, 6, this.jdField_a_of_type_JavaLangString, 0);
-      this.jdField_a_of_type_OrgJsonJSONArray.put(paramString);
-    }
-    if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_a_of_type_ArrayOfInt.length <= 0))
-    {
-      this.jdField_a_of_type_Ankf.a(this.b, anzj.a(2131699402), this.jdField_a_of_type_OrgJsonJSONArray);
-      return;
-    }
-    ankf.a(this.jdField_a_of_type_Ankf, this.jdField_a_of_type_ArrayOfInt, this.b, this.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 

@@ -21,7 +21,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tcw;
+import tha;
 
 @HippyNativeModule(name="http")
 public class HippyQQHttpModule
@@ -37,7 +37,7 @@ public class HippyQQHttpModule
   public static final String HTTP_SUCCESS = "success";
   public static final String MODULE_NAME = "http";
   public static String TAG = "HttpModule";
-  private IHttpAdapter mAdapter = new tcw();
+  private IHttpAdapter mAdapter = new tha();
   
   public HippyQQHttpModule(HippyEngineContext paramHippyEngineContext)
   {

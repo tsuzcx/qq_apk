@@ -1,131 +1,184 @@
-import android.net.Uri;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.ecshopassit.EcShopData;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import org.json.JSONObject;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
-public class ofy
+class ofy
+  extends BroadcastReceiver
 {
-  public static String a(QQAppInterface paramQQAppInterface, String paramString)
+  ofy(ofx paramofx) {}
+  
+  public void onReceive(Context arg1, Intent paramIntent)
   {
-    if (bhsr.a(paramString)) {
-      paramQQAppInterface = "";
-    }
+    if ((paramIntent == null) || (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
     for (;;)
     {
-      return paramQQAppInterface;
-      paramQQAppInterface = a(paramQQAppInterface);
-      if (paramQQAppInterface == null) {
-        return "";
+      return;
+      ??? = paramIntent.getAction();
+      Object localObject;
+      if ("action_get_PA_head".equals(???))
+      {
+        ??? = paramIntent.getStringExtra("uin");
+        if ((TextUtils.isEmpty(???)) || (this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder == null)) {
+          continue;
+        }
+        paramIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.getBitmapFromCache(1, ???);
+        if (paramIntent != null)
+        {
+          localObject = new Intent("action_decode_finish");
+          ((Intent)localObject).putExtra("bitmap", paramIntent);
+          ((Intent)localObject).putExtra("uin", ???);
+          BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject);
+          return;
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.requestDecodeFace(???, 1, true);
+        return;
       }
-      paramString = paramQQAppInterface.optString(paramString);
-      if (bhsr.a(paramString)) {
-        return "";
+      int i;
+      boolean bool;
+      long l;
+      if ("action_shop_set_read".equals(???))
+      {
+        localObject = paramIntent.getStringExtra("uin");
+        i = paramIntent.getIntExtra("unReadNum", 0);
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          continue;
+        }
+        bool = paramIntent.getBooleanExtra("needDelete", false);
+        synchronized (ofx.a(this.a))
+        {
+          paramIntent = (EcShopData)ofx.a(this.a).get(localObject);
+          if (paramIntent == null) {
+            continue;
+          }
+          ??? = null;
+          paramIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
+          if (paramIntent != null) {
+            ??? = paramIntent.getLastMessage((String)localObject, 1008);
+          }
+          if (??? != null)
+          {
+            akms.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, 1008);
+            paramIntent = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade();
+            if (paramIntent != null) {
+              paramIntent.a(???.frienduin, ???.istroop, true);
+            }
+          }
+          if (!bool) {
+            continue;
+          }
+          this.a.b((String)localObject);
+          if (((String)localObject).equals(ofx.g))
+          {
+            l = ofx.a().getLong("ad_id", 0L);
+            ((ogr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(88)).a(134246438, null, null, null, null, l, false);
+            ??? = ofx.a().edit();
+            ???.remove("ad_id");
+            ???.putBoolean("is_ad_added", false);
+            ???.commit();
+            ofx.g = "";
+            return;
+          }
+        }
+        bcef.b(null, "dc00899", "Pb_account_lifeservice", (String)localObject, "0X80064D2", "0X80064D2", 0, 0, "" + i, "", "", "");
+        return;
       }
-      paramQQAppInterface = paramString;
+      if ("action_folder_set_read".equals(???))
+      {
+        ??? = paramIntent.getStringExtra("uin");
+        if (!TextUtils.isEmpty(???))
+        {
+          ??? = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMessage(???, 1008);
+          if (??? != null) {
+            this.a.a(???.time);
+          }
+        }
+        ??? = ofx.a();
+        this.a.e = false;
+        if (???.getBoolean("folder_reddot", false)) {
+          ???.edit().putBoolean("folder_reddot", false).commit();
+        }
+        ??? = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+        if (??? == null) {
+          continue;
+        }
+        ???.sendEmptyMessage(1009);
+        return;
+      }
+      if ("action_folder_destroy".equals(???))
+      {
+        if (paramIntent.getLongExtra("stay_time", 0L) >= this.a.jdField_a_of_type_Long) {
+          ofx.a().edit().putLong("last_stay_folder", System.currentTimeMillis());
+        }
+        this.a.f = false;
+        return;
+      }
+      if ("action_folder_msg_change".equals(???))
+      {
+        ??? = paramIntent.getStringExtra("msg");
+        i = paramIntent.getIntExtra("type", -1);
+        paramIntent = this.a.a();
+        if ((TextUtils.isEmpty(???)) || (paramIntent == null)) {
+          continue;
+        }
+        paramIntent = ofx.a().edit();
+        paramIntent.putString("str_ecshop_diy", ???);
+        paramIntent.putInt("last_show_time1", (int)(System.currentTimeMillis() / 1000L));
+        paramIntent.putInt("FOLDER_MSG_TYPE", i);
+        paramIntent.putString("PUSH_JUMP_URL", "");
+        paramIntent.commit();
+        return;
+      }
+      if ("action_set_folder_tab_red".equals(???))
+      {
+        ofx.a().edit().putBoolean("folder_tab_red", true).commit();
+        return;
+      }
+      if (!"action_follow_status".equals(???)) {
+        continue;
+      }
+      ??? = paramIntent.getStringExtra("puin");
+      if (TextUtils.isEmpty(???)) {
+        continue;
+      }
       try
       {
-        if (!"qqshop".equals(Uri.parse(paramString).getScheme())) {
-          return "";
+        l = Long.parseLong(???);
+        if (l == -1L) {
+          continue;
         }
+        bool = ((amxz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56)).a(Long.valueOf(l));
+        paramIntent = new Intent("action_follow_status_finish");
+        paramIntent.putExtra("isFollow", bool);
+        paramIntent.putExtra("uin", String.valueOf(l));
+        BaseApplicationImpl.getContext().sendBroadcast(paramIntent);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("EcShopAssistantManager", 2, "follow_status uin:" + ??? + ",isfollow:" + bool);
+        return;
       }
-      catch (Throwable paramQQAppInterface)
+      catch (Exception paramIntent)
       {
-        QLog.e("QQShopFakeUrlHelper", 1, paramQQAppInterface, new Object[0]);
-      }
-    }
-    return paramString;
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (paramQQAppInterface == null) {
-      return "";
-    }
-    try
-    {
-      Iterator localIterator = paramQQAppInterface.keys();
-      while (localIterator.hasNext())
-      {
-        Uri localUri = Uri.parse(paramQQAppInterface.optString((String)localIterator.next()));
-        if ((localUri != null) && (localUri.getHost() != null) && (localUri.getHost().equals(paramString1)))
+        for (;;)
         {
-          paramQQAppInterface = localUri.getQueryParameter(paramString2);
-          return paramQQAppInterface;
+          l = -1L;
         }
       }
     }
-    catch (Throwable paramQQAppInterface)
-    {
-      QLog.e("QQShopFakeUrlHelper", 1, paramQQAppInterface, new Object[0]);
-    }
-    return "";
-  }
-  
-  public static String a(String paramString)
-  {
-    if (bhsr.a(paramString)) {
-      return "";
-    }
-    try
-    {
-      paramString = Uri.parse(paramString).getHost();
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("QQShopFakeUrlHelper", 1, paramString, new Object[0]);
-    }
-    return "";
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    if (bhsr.a(paramString1)) {
-      return "";
-    }
-    try
-    {
-      paramString1 = Uri.parse(paramString1).getQueryParameter(paramString2);
-      return paramString1;
-    }
-    catch (Throwable paramString1)
-    {
-      QLog.e("QQShopFakeUrlHelper", 1, paramString1, new Object[0]);
-    }
-    return "";
-  }
-  
-  private static JSONObject a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = (alao)paramQQAppInterface.getManager(245);
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.a("qqshop") != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QQShopFakeUrlHelper", 2, " getQQShopConfig: " + paramQQAppInterface.a("qqshop"));
-      }
-      return paramQQAppInterface.a("qqshop");
-    }
-    return null;
-  }
-  
-  public static String b(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface = a(paramQQAppInterface, paramString);
-    if (bhsr.a(paramQQAppInterface)) {
-      return "";
-    }
-    try
-    {
-      paramQQAppInterface = Uri.parse(paramQQAppInterface).getHost();
-      return paramQQAppInterface;
-    }
-    catch (Throwable paramQQAppInterface)
-    {
-      QLog.e("QQShopFakeUrlHelper", 1, paramQQAppInterface, new Object[0]);
-    }
-    return "";
   }
 }
 

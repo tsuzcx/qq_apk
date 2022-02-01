@@ -1,25 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
 
-class ahwb
-  implements View.OnClickListener
+public class ahwb
+  implements ajbj
 {
-  ahwb(ahvz paramahvz) {}
+  public ahwb(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment) {}
   
-  public void onClick(View paramView)
+  public void a(MotionEvent paramMotionEvent)
   {
-    if (paramView.getId() == 2131363693) {
-      ahvz.a(this.a).a(paramView);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView.getId() == 2131363694) {
-        ahvz.a(this.a).b(paramView);
-      }
-    }
+    this.a.a.a(paramMotionEvent);
   }
 }
 

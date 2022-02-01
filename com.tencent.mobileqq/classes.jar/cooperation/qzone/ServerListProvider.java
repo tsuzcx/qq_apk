@@ -4,8 +4,8 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.os.Process;
-import bmxr;
 import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.cache.QZoneFilePath;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ServerListProvider
 {
-  private static String SERVER_DIR = bmxr.l;
+  private static String SERVER_DIR = QZoneFilePath.SERVER_DIR;
   private static final String TAG = "ServerListProvider";
   public static final int VALUE_DB2 = 13;
   public static final int VALUE_DB3 = 86;
@@ -91,7 +91,7 @@ public class ServerListProvider
   {
     try
     {
-      File localFile = new File(bmxr.m);
+      File localFile = new File(QZoneFilePath.TESTSERVER_PATH);
       if ((localFile != null) && (localFile.exists())) {
         localFile.delete();
       }
@@ -117,62 +117,62 @@ public class ServerListProvider
     //   1: astore_3
     //   2: aconst_null
     //   3: astore_2
-    //   4: invokestatic 206	cooperation/qzone/ServerListProvider:isServerFileExits	()Z
+    //   4: invokestatic 204	cooperation/qzone/ServerListProvider:isServerFileExits	()Z
     //   7: ifeq +4 -> 11
     //   10: return
-    //   11: new 170	java/io/File
+    //   11: new 168	java/io/File
     //   14: dup
-    //   15: getstatic 161	cooperation/qzone/ServerListProvider:SERVER_DIR	Ljava/lang/String;
-    //   18: invokespecial 176	java/io/File:<init>	(Ljava/lang/String;)V
+    //   15: getstatic 159	cooperation/qzone/ServerListProvider:SERVER_DIR	Ljava/lang/String;
+    //   18: invokespecial 174	java/io/File:<init>	(Ljava/lang/String;)V
     //   21: astore_0
     //   22: aload_0
-    //   23: invokevirtual 180	java/io/File:exists	()Z
+    //   23: invokevirtual 178	java/io/File:exists	()Z
     //   26: ifne +8 -> 34
     //   29: aload_0
-    //   30: invokevirtual 209	java/io/File:mkdirs	()Z
+    //   30: invokevirtual 207	java/io/File:mkdirs	()Z
     //   33: pop
-    //   34: new 170	java/io/File
+    //   34: new 168	java/io/File
     //   37: dup
-    //   38: getstatic 173	bmxr:m	Ljava/lang/String;
-    //   41: invokespecial 176	java/io/File:<init>	(Ljava/lang/String;)V
+    //   38: getstatic 171	cooperation/qzone/cache/QZoneFilePath:TESTSERVER_PATH	Ljava/lang/String;
+    //   41: invokespecial 174	java/io/File:<init>	(Ljava/lang/String;)V
     //   44: astore_0
     //   45: aload_0
-    //   46: invokevirtual 180	java/io/File:exists	()Z
+    //   46: invokevirtual 178	java/io/File:exists	()Z
     //   49: ifne -39 -> 10
     //   52: aload_0
-    //   53: invokevirtual 212	java/io/File:createNewFile	()Z
+    //   53: invokevirtual 210	java/io/File:createNewFile	()Z
     //   56: ifeq +165 -> 221
-    //   59: new 214	java/io/FileWriter
+    //   59: new 212	java/io/FileWriter
     //   62: dup
     //   63: aload_0
-    //   64: invokespecial 217	java/io/FileWriter:<init>	(Ljava/io/File;)V
+    //   64: invokespecial 215	java/io/FileWriter:<init>	(Ljava/io/File;)V
     //   67: astore_0
-    //   68: new 219	java/io/BufferedWriter
+    //   68: new 217	java/io/BufferedWriter
     //   71: dup
     //   72: aload_0
-    //   73: invokespecial 222	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
+    //   73: invokespecial 220	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
     //   76: astore_1
     //   77: aload_1
-    //   78: ldc 224
-    //   80: invokevirtual 227	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   78: ldc 222
+    //   80: invokevirtual 225	java/io/BufferedWriter:write	(Ljava/lang/String;)V
     //   83: aload_1
-    //   84: invokevirtual 230	java/io/BufferedWriter:close	()V
+    //   84: invokevirtual 228	java/io/BufferedWriter:close	()V
     //   87: aload_1
     //   88: ifnull +7 -> 95
     //   91: aload_1
-    //   92: invokevirtual 230	java/io/BufferedWriter:close	()V
+    //   92: invokevirtual 228	java/io/BufferedWriter:close	()V
     //   95: aload_0
     //   96: ifnull -86 -> 10
     //   99: aload_0
-    //   100: invokevirtual 231	java/io/FileWriter:close	()V
+    //   100: invokevirtual 229	java/io/FileWriter:close	()V
     //   103: return
     //   104: astore_0
     //   105: aload_0
-    //   106: invokevirtual 234	java/lang/Exception:printStackTrace	()V
+    //   106: invokevirtual 232	java/lang/Exception:printStackTrace	()V
     //   109: return
     //   110: astore_1
     //   111: aload_1
-    //   112: invokevirtual 234	java/lang/Exception:printStackTrace	()V
+    //   112: invokevirtual 232	java/lang/Exception:printStackTrace	()V
     //   115: goto -20 -> 95
     //   118: astore_0
     //   119: aconst_null
@@ -182,19 +182,19 @@ public class ServerListProvider
     //   123: aload_1
     //   124: ifnull +7 -> 131
     //   127: aload_1
-    //   128: invokevirtual 230	java/io/BufferedWriter:close	()V
+    //   128: invokevirtual 228	java/io/BufferedWriter:close	()V
     //   131: aload_0
     //   132: ifnull -122 -> 10
     //   135: aload_0
-    //   136: invokevirtual 231	java/io/FileWriter:close	()V
+    //   136: invokevirtual 229	java/io/FileWriter:close	()V
     //   139: return
     //   140: astore_0
     //   141: aload_0
-    //   142: invokevirtual 234	java/lang/Exception:printStackTrace	()V
+    //   142: invokevirtual 232	java/lang/Exception:printStackTrace	()V
     //   145: return
     //   146: astore_1
     //   147: aload_1
-    //   148: invokevirtual 234	java/lang/Exception:printStackTrace	()V
+    //   148: invokevirtual 232	java/lang/Exception:printStackTrace	()V
     //   151: goto -20 -> 131
     //   154: astore_0
     //   155: aconst_null
@@ -204,20 +204,20 @@ public class ServerListProvider
     //   159: aload_1
     //   160: ifnull +7 -> 167
     //   163: aload_1
-    //   164: invokevirtual 230	java/io/BufferedWriter:close	()V
+    //   164: invokevirtual 228	java/io/BufferedWriter:close	()V
     //   167: aload_2
     //   168: ifnull +7 -> 175
     //   171: aload_2
-    //   172: invokevirtual 231	java/io/FileWriter:close	()V
+    //   172: invokevirtual 229	java/io/FileWriter:close	()V
     //   175: aload_0
     //   176: athrow
     //   177: astore_1
     //   178: aload_1
-    //   179: invokevirtual 234	java/lang/Exception:printStackTrace	()V
+    //   179: invokevirtual 232	java/lang/Exception:printStackTrace	()V
     //   182: goto -15 -> 167
     //   185: astore_1
     //   186: aload_1
-    //   187: invokevirtual 234	java/lang/Exception:printStackTrace	()V
+    //   187: invokevirtual 232	java/lang/Exception:printStackTrace	()V
     //   190: goto -15 -> 175
     //   193: astore_3
     //   194: aconst_null
@@ -309,7 +309,7 @@ public class ServerListProvider
     boolean bool2 = false;
     try
     {
-      File localFile = new File(bmxr.m);
+      File localFile = new File(QZoneFilePath.TESTSERVER_PATH);
       boolean bool1 = bool2;
       if (localFile.exists())
       {

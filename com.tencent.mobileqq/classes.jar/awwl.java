@@ -1,16 +1,12 @@
-public class awwl
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+
+class awwl
+  extends RecyclerView.ViewHolder
 {
-  public final int a;
-  public final long a;
-  public final int b;
-  public final long b;
-  
-  public awwl(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
+  public awwl(View paramView)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    super(paramView);
   }
 }
 

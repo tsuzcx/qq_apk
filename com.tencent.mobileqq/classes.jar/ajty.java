@@ -1,21 +1,30 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.photo.album.PhotoPreviewBaseData;
+import com.tencent.mobileqq.activity.photo.album.PhotoPreviewLogicBase;
+import com.tencent.mobileqq.activity.photo.album.preview.BasePreviewAdapter;
+import com.tencent.mobileqq.activity.photo.album.preview.BasePreviewPresent;
+import com.tencent.mobileqq.activity.photo.album.preview.PreviewBean;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import java.io.File;
 
-class ajty
-  implements Animation.AnimationListener
+public class ajty
+  extends BasePreviewAdapter
 {
-  ajty(ajtx paramajtx, abur paramabur, View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public ajty(PhotoPreviewLogicBase paramPhotoPreviewLogicBase)
   {
-    this.jdField_a_of_type_Abur.a("");
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839402);
+    super(paramPhotoPreviewLogicBase);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public BasePreviewPresent generatePreviewPresent(PreviewBean paramPreviewBean)
+  {
+    if ((this.mPhotoPreviewData.canUseURL) && (AlbumUtil.isNetUrl(paramPreviewBean.getPath()))) {
+      return new ajua(paramPreviewBean);
+    }
+    String str = paramPreviewBean.getPath();
+    if ((str != null) && (new File(str).exists()) && (paramPreviewBean.mMediaType == 1)) {
+      return new ajtz(paramPreviewBean);
+    }
+    return super.generatePreviewPresent(paramPreviewBean);
+  }
 }
 
 

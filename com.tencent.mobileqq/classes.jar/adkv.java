@@ -1,11 +1,20 @@
-public abstract interface adkv
-  extends adks
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+
+public class adkv
+  implements bdan
 {
-  public abstract String a();
+  public adkv(GeneralSettingActivity paramGeneralSettingActivity, int paramInt1, int paramInt2) {}
   
-  public abstract void a();
+  public void onCancel()
+  {
+    GeneralSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity, this.jdField_a_of_type_Int, this.b);
+  }
   
-  public abstract void a(String paramString, Object[] paramArrayOfObject);
+  public void onConfirm()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity.b();
+    GeneralSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity, this.jdField_a_of_type_Int, this.b);
+  }
 }
 
 

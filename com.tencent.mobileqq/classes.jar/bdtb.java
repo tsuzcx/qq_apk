@@ -1,12 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
 
-class bdtb
-  implements DialogInterface.OnClickListener
+public class bdtb
+  implements URLDrawable.DownloadListener
 {
-  bdtb(bdsy parambdsy) {}
+  public bdtb(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, bdtc parambdtc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onFileDownloadFailed(int paramInt)
+  {
+    this.jdField_a_of_type_Bdtc.a(null);
+  }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    Bitmap localBitmap = bhzk.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
+    this.jdField_a_of_type_Bdtc.a(localBitmap);
+  }
 }
 
 

@@ -1,36 +1,43 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.qapmsdk.battery.BatteryMonitor;
-import com.tencent.qapmsdk.battery.IBatteryListener;
-import com.tencent.qphone.base.util.QLog.ILogCallback;
-import mqq.util.IServiceCmdCallback;
-import org.jetbrains.annotations.NotNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import mqq.util.WeakReference;
 
-class adll
-  implements IBatteryListener, QLog.ILogCallback, IServiceCmdCallback
+public class adll
+  implements DialogInterface.OnDismissListener
 {
-  @NotNull
-  public String getSosoClassName()
+  WeakReference<GeneralSettingActivity> a;
+  WeakReference<CompoundButton> b;
+  
+  public adll(GeneralSettingActivity paramGeneralSettingActivity, CompoundButton paramCompoundButton)
   {
-    return SosoInterface.class.getPackage().getName();
+    this.a = new WeakReference(paramGeneralSettingActivity);
+    this.b = new WeakReference(paramCompoundButton);
   }
   
-  public void onCmdRequest(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    BatteryMonitor.getInstance().onCmdRequest(paramString);
+    CompoundButton localCompoundButton = null;
+    if (this.a == null)
+    {
+      paramDialogInterface = null;
+      if (this.b != null) {
+        break label47;
+      }
+    }
+    for (;;)
+    {
+      if ((paramDialogInterface != null) && (localCompoundButton != null)) {
+        paramDialogInterface.a(localCompoundButton, false);
+      }
+      return;
+      paramDialogInterface = (GeneralSettingActivity)this.a.get();
+      break;
+      label47:
+      localCompoundButton = (CompoundButton)this.b.get();
+    }
   }
-  
-  public void onCmdResponse(String paramString) {}
-  
-  public void onPrintLog(@NotNull String paramString) {}
-  
-  public void onUsageAlarm(int paramInt1, int paramInt2, int paramInt3, @NotNull String paramString1, @NotNull String paramString2) {}
-  
-  public void onWriteLog(String paramString1, String paramString2)
-  {
-    BatteryMonitor.getInstance().onWriteLog(paramString1, paramString2);
-  }
-  
-  public void onWriteLog(String paramString, byte[] paramArrayOfByte) {}
 }
 
 

@@ -1,31 +1,16 @@
-public class asct
+class asct
+  implements ascz
 {
-  public int a;
-  public String a;
-  public boolean a;
+  asct(asbj paramasbj) {}
   
-  public asct(String paramString, int paramInt)
+  public void a(Object[] paramArrayOfObject)
   {
-    this(paramString, paramInt, true);
-  }
-  
-  public asct(String paramString, int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("ComboObject:");
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString).append(',').append(this.jdField_a_of_type_Int).append(',').append(this.jdField_a_of_type_Boolean);
-    return localStringBuffer.toString();
+    asbj.access$3000(this.a, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asct
  * JD-Core Version:    0.7.0.1
  */

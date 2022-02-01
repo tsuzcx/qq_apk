@@ -1,67 +1,41 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.VideoReport;
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 public class sgl
-  implements blih
 {
-  List<blih> a = new ArrayList();
-  
-  public void a()
+  public static String a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.clear();
-  }
-  
-  public void a(blih paramblih)
-  {
-    if (!this.a.contains(paramblih)) {
-      this.a.add(paramblih);
-    }
-  }
-  
-  public void b(blih paramblih)
-  {
-    this.a.remove(paramblih);
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    int j = 1;
+    if (paramInt2 == 1300080)
     {
-      blih localblih = (blih)localIterator.next();
-      try
+      paramInt3 = 1;
+      if (paramInt1 == 202)
       {
-        localblih.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+        i = j;
+        if (paramInt2 == 108) {}
       }
-      catch (Throwable localThrowable) {}
-      if (QLog.isColorLevel()) {
-        QLog.e("ReadInJoyBaseListView", 2, "onScroll exp", localThrowable);
+      else
+      {
+        if (paramInt2 != 1300062) {
+          break label87;
+        }
       }
     }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    label87:
+    for (int i = j;; i = 0)
     {
-      blih localblih = (blih)localIterator.next();
-      try
-      {
-        localblih.onScrollStateChanged(paramAbsListView, paramInt);
+      if (i == 0) {
+        break label92;
       }
-      catch (Throwable localThrowable) {}
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseListView", 2, "onScrollStateChanged exp", localThrowable);
-      }
+      return amtj.a(2131717583) + " (" + paramInt1 + "-" + paramInt2 + ")";
+      paramInt3 = 0;
+      break;
     }
-    if (paramInt == 0) {
-      VideoReport.traverseExposure();
+    label92:
+    if (paramInt1 == 4000) {
+      return amtj.a(2131715250) + paramInt1 + "-" + paramInt2 + ")";
     }
+    if (paramInt3 != 0) {
+      return amtj.a(2131715181) + paramInt1 + "-" + paramInt2 + ")";
+    }
+    return amtj.a(2131715207) + paramInt1 + "-" + paramInt2 + ")";
   }
 }
 

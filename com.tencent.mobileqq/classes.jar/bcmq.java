@@ -1,33 +1,27 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerListener;
+import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
 
 public class bcmq
+  extends CountDownTimer.CountDownTimerListener
 {
-  public Bundle a;
-  public String a;
-  public byte[] a;
-  
-  public bcmq(String paramString)
+  public bcmq(CountdownTextView paramCountdownTextView, long paramLong, bcmr parambcmr)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramLong);
   }
   
-  public bcmq(String paramString, Bundle paramBundle)
+  public void onFinish()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    if (this.jdField_a_of_type_Bcmr != null) {
+      this.jdField_a_of_type_Bcmr.a();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.a();
   }
   
-  public bcmq(String paramString, byte[] paramArrayOfByte)
+  public void onTick(long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public bcmq(String paramString, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    if (this.jdField_a_of_type_Bcmr != null) {
+      this.jdField_a_of_type_Bcmr.a(paramLong);
+    }
   }
 }
 

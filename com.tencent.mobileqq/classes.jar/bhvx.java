@@ -1,9 +1,34 @@
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public abstract interface bhvx
+class bhvx
+  extends Handler
 {
-  public abstract boolean a(@ColorInt int paramInt, @NonNull float[] paramArrayOfFloat);
+  bhvx(bhvw parambhvw, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      bhvw localbhvw = this.a;
+      if (paramMessage.obj == null) {}
+      for (String str = null;; str = (String)paramMessage.obj)
+      {
+        localbhvw.a(str);
+        break;
+      }
+      this.a.a();
+    }
+  }
 }
 
 

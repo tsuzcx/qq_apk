@@ -1,8 +1,19 @@
-public abstract interface azdv
+public class azdv
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d;
+  public long e;
+  public long f;
+  public long g;
+  public long h;
+  public long i;
 }
 
 

@@ -1,32 +1,18 @@
-import android.os.Looper;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 
 public class afkl
-  implements bikc
+  extends bcvj
 {
-  private final WeakReference<RegisterQQNumberActivity> a;
+  public afkl(TroopChatPie paramTroopChatPie) {}
   
-  public afkl(RegisterQQNumberActivity paramRegisterQQNumberActivity)
+  public void c(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    this.a = new WeakReference(paramRegisterQQNumberActivity);
+    bcvs.c(this.a.app, this.a.mContext, this.a.uiHandler, paramBoolean, paramArrayOfObject);
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public void d(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-      if (QLog.isColorLevel()) {
-        QLog.i("RegisterQQNumberActivity", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
-      }
-    }
-    RegisterQQNumberActivity localRegisterQQNumberActivity;
-    do
-    {
-      return;
-      localRegisterQQNumberActivity = (RegisterQQNumberActivity)this.a.get();
-    } while (localRegisterQQNumberActivity == null);
-    localRegisterQQNumberActivity.a(paramString, paramBoolean);
+    bcvs.d(this.a.app, this.a.mContext, this.a.uiHandler, paramBoolean, paramArrayOfObject);
   }
 }
 

@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class wcv
-  implements View.OnClickListener
+public class wcv
+  implements vqp<wcw, wcx>
 {
-  wcv(wct paramwct, long paramLong) {}
-  
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    if (wcp.a(this.jdField_a_of_type_Wct.a.a) != null) {
-      wcp.a(this.jdField_a_of_type_Wct.a.a).a(this.jdField_a_of_type_Long);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramString = new wcw(this, paramString);
+    vqn.a().a(paramString, this);
+  }
+  
+  public void a(@NonNull wcw paramwcw, @Nullable wcx paramwcx, @NonNull ErrorMessage paramErrorMessage)
+  {
+    new wcy(paramErrorMessage, paramwcw.b);
   }
 }
 

@@ -1,14 +1,6 @@
-import android.view.MotionEvent;
-
 public abstract interface mnd
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, long paramLong);
-  
-  public abstract void a(int paramInt, long paramLong);
-  
-  public abstract void a(MotionEvent paramMotionEvent);
-  
-  public abstract void a(String paramString);
+  public abstract void a(long paramLong, int paramInt, String paramString);
 }
 
 

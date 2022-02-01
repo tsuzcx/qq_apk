@@ -1,20 +1,55 @@
-import com.tencent.mobileqq.data.OpenID;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import tencent.im.sso.offlinpkg.OfflinePkg.RspBody;
 
-public class noa
-  extends aocj
+final class noa
+  implements BusinessObserver
 {
-  protected void a(boolean paramBoolean, OpenID paramOpenID) {}
+  noa(NewIntent paramNewIntent, nnv paramnnv, boolean paramBoolean1, boolean paramBoolean2, AppRuntime paramAppRuntime, boolean paramBoolean3) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("HtmlCheckUpdate", 2, "-->offline:checkUpdate,onReceive:isSuccess=" + paramBoolean);
     }
-    QLog.d("openid", 2, "isSuccess=" + paramBoolean + ",data=" + paramObject);
-    a(paramBoolean, (OpenID)paramObject);
+    if (paramBoolean) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          return;
+        }
+        OfflinePkg.RspBody localRspBody = new OfflinePkg.RspBody();
+        localRspBody.mergeFrom(paramBundle);
+        paramBundle = new String(localRspBody.str_offline_pkg.get().toByteArray(), "UTF-8");
+        if (this.jdField_a_of_type_Nnv != null) {
+          this.jdField_a_of_type_Nnv.loaded(paramBundle, 0);
+        }
+        if (!this.jdField_a_of_type_Boolean) {
+          return;
+        }
+        if (this.b)
+        {
+          nny.c(paramBundle, this.jdField_a_of_type_MqqAppAppRuntime, this.c, this.jdField_a_of_type_Nnv);
+          return;
+        }
+        nny.c(paramBundle, this.jdField_a_of_type_MqqAppAppRuntime, this.c, null);
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        this.jdField_a_of_type_Nnv.loaded("{\"r\":-1}", 2);
+        return;
+      }
+    } else if (this.jdField_a_of_type_Nnv != null) {
+      this.jdField_a_of_type_Nnv.loaded("{\"r\":-1}", 2);
+    }
   }
 }
 

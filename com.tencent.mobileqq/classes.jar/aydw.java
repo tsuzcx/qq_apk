@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.1.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pic.PicShareToWX.2.1;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import mqq.os.MqqHandler;
 
-public class aydw
-  implements ayeg
+public final class aydw
+  implements EIPCResultCallback
 {
-  aydw(aydv paramaydv) {}
-  
-  public void a(boolean paramBoolean)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (paramBoolean) {
-      ThreadManagerV2.excute(new ShortVideoShareUtil.1.1.1(this, (axup)this.a.a.getManager(106)), 16, null, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PicShareToWX", 2, "onCallback, eipcResult.code = " + paramEIPCResult.code);
     }
+    ThreadManager.getUIHandler().post(new PicShareToWX.2.1(this, paramEIPCResult));
   }
 }
 

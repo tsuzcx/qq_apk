@@ -1,37 +1,22 @@
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class akqj
+  implements akre
 {
-  PhotoCropActivity jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  public akqj(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public akqj(PhotoCropActivity paramPhotoCropActivity)
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity = paramPhotoCropActivity;
+    EditLocalVideoActivity.a(this.a, paramString);
+    EditLocalVideoActivity.g(this.a);
   }
   
-  public void a()
+  public void b()
   {
-    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
-    {
-      blir localblir = (blir)blji.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, null);
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-      {
-        localblir.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], 1);
-        i += 1;
-      }
-      localblir.c(2131690580);
-      localblir.a(new akqk(this, localblir));
-      localblir.show();
-    }
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(String[] paramArrayOfString)
-  {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    QQToast.a(this.a, 2131694435, 1).a();
   }
 }
 

@@ -1,8 +1,16 @@
-import android.hardware.Camera.Face;
-
-public abstract interface aqpt
+public class aqpt
 {
-  public abstract void a(Camera.Face[] paramArrayOfFace, aqpx paramaqpx);
+  private long a;
+  
+  public long a()
+  {
+    return this.a;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.a = paramLong;
+  }
 }
 
 

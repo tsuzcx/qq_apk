@@ -1,89 +1,54 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.PluginPreloader.1;
-import cooperation.plugin.PluginInfo;
-import mqq.app.AppRuntime;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
 
 public class bmay
+  extends QIPCModule
 {
-  private static final Handler a;
+  private static boolean a;
   
-  static
+  public bmay(String paramString)
   {
-    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("PluginPreloader", 0);
-    localHandlerThread.start();
-    a = new Handler(localHandlerThread.getLooper());
+    super(paramString);
   }
   
-  public static void a(bmau parambmau)
+  public static bmay a()
   {
-    a(parambmau, 0L);
+    return bmaz.a;
   }
   
-  public static void a(bmau parambmau, long paramLong)
+  public static void a()
   {
-    if ((parambmau == null) || (parambmau.jdField_a_of_type_JavaLangString == null))
+    if (!a)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PluginPreloader", 2, "the preload strategy or target process is null.");
-      }
-      return;
+      QIPCClientHelper.getInstance().getClient().registerModule(a());
+      a = true;
     }
-    a.postDelayed(new PluginPreloader.1(parambmau), paramLong);
   }
   
-  public static void a(AppRuntime paramAppRuntime, bmau parambmau, int paramInt, bmba parambmba)
+  public static void b()
   {
-    parambmau.a(parambmba);
-    if (parambmau.jdField_b_of_type_JavaLangString != null)
+    if (a)
     {
-      bmgk localbmgk = (bmgk)paramAppRuntime.getManager(27);
-      if (localbmgk == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PluginPreloader", 2, "pluginType:" + parambmau.jdField_b_of_type_Int + " preload:fail:nopluginmanager");
-        }
-        bmas.a(paramAppRuntime, 1, parambmau.jdField_b_of_type_Int, parambmau.c, 3, "preload:fail:nopluginmanager", paramInt, new String[] { String.valueOf(parambmau.d) });
-        return;
-      }
-      PluginInfo localPluginInfo = localbmgk.a(parambmau.jdField_b_of_type_JavaLangString);
-      if (localPluginInfo == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PluginPreloader", 2, "pluginType:" + parambmau.jdField_b_of_type_Int + " preload:fail:noplugininfo");
-        }
-        bmas.a(paramAppRuntime, 1, parambmau.jdField_b_of_type_Int, parambmau.c, 3, "preload:fail:noplugininfo", paramInt, new String[] { String.valueOf(parambmau.d) });
-        return;
-      }
-      if (localPluginInfo.mState == 4)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PluginPreloader", 2, "plugin already installed, do preload.");
-        }
-        bmas.a(paramAppRuntime, 0, parambmau.jdField_b_of_type_Int, parambmau.c, parambmba.jdField_a_of_type_Int, parambmba.jdField_a_of_type_JavaLangString, paramInt, new String[] { String.valueOf(parambmau.d) });
-        parambmau.a();
-        return;
-      }
-      if ((parambmau.jdField_a_of_type_Boolean) && (bhnv.h(BaseApplicationImpl.getContext())))
-      {
-        localbmgk.installPlugin(parambmau.jdField_b_of_type_JavaLangString, new bmaz(paramAppRuntime, parambmau, parambmba, paramInt));
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PluginPreloader", 2, "pluginType:" + parambmau.jdField_b_of_type_Int + " preload:fail:uninstall");
-      }
-      bmas.a(paramAppRuntime, 1, parambmau.jdField_b_of_type_Int, parambmau.c, 3, "preload:fail:uninstall", paramInt, new String[] { String.valueOf(parambmau.d) });
-      return;
+      QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
+      a = false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginPreloader", 2, "do preload");
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("action_get_send_to_info".equals(paramString)) {
+      bmbc.a().a(Long.valueOf(paramBundle.getLong("key_receiver_type")));
     }
-    bmas.a(paramAppRuntime, 0, parambmau.jdField_b_of_type_Int, parambmau.c, parambmba.jdField_a_of_type_Int, parambmba.jdField_a_of_type_JavaLangString, paramInt, new String[] { String.valueOf(parambmau.d) });
-    parambmau.a();
+    for (;;)
+    {
+      return null;
+      if ("action_get_cancle_send_info".equals(paramString)) {
+        bmbc.a().aa();
+      }
+    }
   }
 }
 

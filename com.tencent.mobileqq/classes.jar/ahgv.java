@@ -1,17 +1,20 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
 class ahgv
-  extends ahkx
+  implements bhai<oidb_0x8ed.RspBody>
 {
-  ahgv(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahgv(ahgc paramahgc) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    return new ahbb(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if ((paramInt == 0) && (this.a.k))
+    {
+      QQToast.a(this.a.mContext, 2, amtj.a(2131704243), 0).a();
+      bfyz.f(this.a.getActivity(), this.a.app.getCurrentAccountUin(), false);
+      this.a.a.a(this.a.mContext);
+    }
   }
 }
 

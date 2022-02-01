@@ -1,6 +1,6 @@
 package com.tencent.biz.webviewplugin;
 
-import abfe;
+import aabp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.util.List;
 public final class NewerGuidePlugin$RecommendedListResp
   implements Parcelable
 {
-  public static final Parcelable.Creator<RecommendedListResp> CREATOR = new abfe();
+  public static final Parcelable.Creator<RecommendedListResp> CREATOR = new aabp();
   public int a;
   public long a;
   public List<NewerGuidePlugin.PhoneInfo> a;

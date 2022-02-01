@@ -10,25 +10,24 @@ import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
 public class MediaUtils$LoadVideoImageTask
   extends AsyncTask<String, Integer, File>
 {
   private MediaUtils.OnLoadVideoImageListener listener;
-  private WeakReference<IMiniAppContext> miniAppContextWeakReference;
+  private IMiniAppContext miniAppContext;
   
-  public MediaUtils$LoadVideoImageTask(WeakReference<IMiniAppContext> paramWeakReference, MediaUtils.OnLoadVideoImageListener paramOnLoadVideoImageListener)
+  public MediaUtils$LoadVideoImageTask(IMiniAppContext paramIMiniAppContext, MediaUtils.OnLoadVideoImageListener paramOnLoadVideoImageListener)
   {
     this.listener = paramOnLoadVideoImageListener;
+    this.miniAppContext = paramIMiniAppContext;
   }
   
   protected File doInBackground(String... paramVarArgs)
   {
     MediaMetadataRetriever localMediaMetadataRetriever;
     Bitmap localBitmap;
-    Object localObject;
     try
     {
       localMediaMetadataRetriever = new MediaMetadataRetriever();
@@ -39,31 +38,31 @@ public class MediaUtils$LoadVideoImageTask
       for (;;)
       {
         localBitmap = localMediaMetadataRetriever.getFrameAtTime();
-        localObject = (IMiniAppContext)this.miniAppContextWeakReference.get();
-        if (localObject != null) {
+        if (this.miniAppContext != null) {
           break;
         }
         return null;
         localMediaMetadataRetriever.setDataSource(paramVarArgs);
       }
-      localObject = new File(((MiniAppFileManager)((IMiniAppContext)localObject).getManager(MiniAppFileManager.class)).getTmpPath("jpg"));
+      localFile = new File(((MiniAppFileManager)this.miniAppContext.getManager(MiniAppFileManager.class)).getTmpPath("jpg"));
     }
     catch (Exception paramVarArgs)
     {
       QMLog.e("MediaUtils", "getImageForVideo error." + paramVarArgs);
       return null;
     }
-    if (((File)localObject).exists()) {
-      ((File)localObject).delete();
+    File localFile;
+    if (localFile.exists()) {
+      localFile.delete();
     }
     try
     {
-      FileOutputStream localFileOutputStream = new FileOutputStream((File)localObject);
+      FileOutputStream localFileOutputStream = new FileOutputStream(localFile);
       localBitmap.compress(Bitmap.CompressFormat.JPEG, 90, localFileOutputStream);
       localFileOutputStream.flush();
       localFileOutputStream.close();
       localMediaMetadataRetriever.release();
-      return localObject;
+      return localFile;
     }
     catch (Exception localException)
     {

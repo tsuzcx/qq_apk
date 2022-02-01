@@ -1,17 +1,19 @@
 package dov.com.qq.im.ae;
 
-import bofh;
+import amtj;
+import bljy;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class AEPituCameraUnit$14
   implements Runnable
 {
-  public AEPituCameraUnit$14(bofh parambofh) {}
+  public AEPituCameraUnit$14(bljy parambljy) {}
   
   public void run()
   {
-    if (!bofh.c(this.this$0)) {
-      bofh.a(this.this$0, bofh.b(this.this$0));
-    }
+    QQToast.a(BaseApplicationImpl.getContext(), amtj.a(2131689680), 0).a();
+    this.this$0.J();
   }
 }
 

@@ -1,9 +1,9 @@
 package Wallet;
 
-import bhlo;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.util.ArrayList;
 
 public final class JudgeDownloadReq
@@ -34,12 +34,12 @@ public final class JudgeDownloadReq
     JudgeDownloadReq localJudgeDownloadReq = new JudgeDownloadReq();
     localJudgeDownloadReq.iUin = paramLong;
     localJudgeDownloadReq.vecResInfo = paramArrayList;
-    localJudgeDownloadReq.sPhoneType = bhlo.i();
-    localJudgeDownloadReq.sQQVersion = bhlo.c();
-    localJudgeDownloadReq.fMinCPUFreq = ((float)bhlo.a());
-    localJudgeDownloadReq.fMaxCPUFreq = ((float)bhlo.b());
-    localJudgeDownloadReq.iCores = bhlo.b();
-    localJudgeDownloadReq.iMemory = (bhlo.d() / 1024L);
+    localJudgeDownloadReq.sPhoneType = DeviceInfoUtil.getModel();
+    localJudgeDownloadReq.sQQVersion = DeviceInfoUtil.getQQVersion();
+    localJudgeDownloadReq.fMinCPUFreq = ((float)DeviceInfoUtil.getCpuFrequency());
+    localJudgeDownloadReq.fMaxCPUFreq = ((float)DeviceInfoUtil.getCpuMaxFreq());
+    localJudgeDownloadReq.iCores = DeviceInfoUtil.getCpuNumber();
+    localJudgeDownloadReq.iMemory = (DeviceInfoUtil.getSystemTotalMemory() / 1024L);
     localJudgeDownloadReq.iRetryTimes = paramInt;
     return localJudgeDownloadReq;
   }

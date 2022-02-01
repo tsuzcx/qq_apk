@@ -2,12 +2,12 @@ package com.tencent.mobileqq.fts;
 
 import android.os.Looper;
 import android.text.TextUtils;
-import avhm;
-import avht;
-import avhu;
-import avib;
-import avic;
-import avid;
+import atus;
+import atuz;
+import atva;
+import atvh;
+import atvi;
+import atvj;
 import com.tencent.mobileqq.fts.entity.FTSEntity;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class FTSDatabase
 {
-  private static avht jdField_a_of_type_Avht = new avhu();
+  private static atuz jdField_a_of_type_Atuz = new atva();
   private boolean jdField_a_of_type_Boolean;
   private boolean b = true;
   
@@ -29,14 +29,14 @@ public class FTSDatabase
     }
   }
   
-  public static avht a()
+  public static atuz a()
   {
-    return jdField_a_of_type_Avht;
+    return jdField_a_of_type_Atuz;
   }
   
-  public static void a(avht paramavht)
+  public static void a(atuz paramatuz)
   {
-    jdField_a_of_type_Avht = paramavht;
+    jdField_a_of_type_Atuz = paramatuz;
   }
   
   private void b()
@@ -91,7 +91,7 @@ public class FTSDatabase
     return i;
   }
   
-  public List<FTSEntity> a(avhm paramavhm)
+  public List<FTSEntity> a(atus paramatus)
   {
     b();
     if (!d()) {
@@ -102,7 +102,7 @@ public class FTSDatabase
     {
       return null;
       Object localObject1 = new ArrayList();
-      localObject3 = avid.a(paramavhm, (List)localObject1);
+      localObject3 = atvj.a(paramatus, (List)localObject1);
       int[] arrayOfInt = new int[((List)localObject1).size()];
       int i = 0;
       while (i < ((List)localObject1).size())
@@ -121,7 +121,7 @@ public class FTSDatabase
         {
           localObject1 = ((List)localObject1).iterator();
           while (((Iterator)localObject1).hasNext()) {
-            ((List)localObject3).add(avid.a((Map)((Iterator)localObject1).next(), paramavhm.a));
+            ((List)localObject3).add(atvj.a((Map)((Iterator)localObject1).next(), paramatus.a));
           }
         }
       }
@@ -192,7 +192,7 @@ public class FTSDatabase
       log("Q.fts.troop.FTSDatabase", "w", "init failed because so is not available.");
       return;
     }
-    avic.a(new File(paramString));
+    atvi.a(new File(paramString));
     try
     {
       log("Q.fts.troop.FTSDatabase", "i", Thread.currentThread().getName() + " native initNative V2");
@@ -244,7 +244,7 @@ public class FTSDatabase
       return bool2;
       ArrayList localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
-      paramFTSEntity = avid.a(paramFTSEntity, localArrayList2, localArrayList1);
+      paramFTSEntity = atvj.a(paramFTSEntity, localArrayList2, localArrayList1);
       int[] arrayOfInt = new int[localArrayList2.size()];
       int i = 0;
       while (i < localArrayList2.size())
@@ -292,7 +292,7 @@ public class FTSDatabase
     String str2;
     for (;;)
     {
-      str2 = avid.a(paramClass, avib.a(), bool1, bool2, bool3);
+      str2 = atvj.a(paramClass, atvh.a(), bool1, bool2, bool3);
       try
       {
         bool4 = execSQLNative(str2);
@@ -308,7 +308,7 @@ public class FTSDatabase
           String str1 = getErrorMsg();
           Object localObject = str1;
           log("Q.fts.troop.FTSDatabase", "e", "Can't create virtual table. " + (String)localObject);
-          if (!avib.a())
+          if (!atvh.a())
           {
             log("Q.fts.troop.FTSDatabase", "e", "createTable failed." + (String)localObject);
             return false;

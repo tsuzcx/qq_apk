@@ -1,34 +1,18 @@
-import android.content.Intent;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
-
-public class afji
-  implements ampo
+class afji
+  implements aewy
 {
-  public afji(RecommendFriendActivity paramRecommendFriendActivity) {}
+  afji(afiw paramafiw) {}
   
-  public void a()
+  public void a(ahqq paramahqq)
   {
-    RecommendFriendActivity.a(this.a).setVisibility(0);
+    ((avcj)this.a.getHelper(32)).a(1, paramahqq);
+    ((afsw)this.a.getHelper(43)).b(1, paramahqq);
   }
   
-  public void a(String paramString)
+  public void b(ahqq paramahqq)
   {
-    RecommendFriendActivity.a(this.a, paramString);
-  }
-  
-  public void a(List<MayKnowRecommend> paramList)
-  {
-    Intent localIntent = this.a.getIntent();
-    int i = localIntent.getIntExtra("EntranceId", 0);
-    RecommendFriendActivity.a(this.a, localIntent, i, paramList);
-  }
-  
-  public void b()
-  {
-    RecommendFriendActivity.a(this.a).setVisibility(8);
+    ((avcj)this.a.getHelper(32)).b(1, paramahqq);
+    ((afsw)this.a.getHelper(43)).a(1, paramahqq);
   }
 }
 

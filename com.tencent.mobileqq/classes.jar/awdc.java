@@ -1,48 +1,25 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.intervideo.nowproxy.customized_interface.IShadow;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.1;
-import com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.2;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import java.util.concurrent.ExecutorService;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class awdc
-  implements IShadow
 {
-  private avzc a;
+  public static HashMap<Integer, String> a = new HashMap();
   
-  private void a(String paramString)
+  static
   {
-    try
-    {
-      awde.a().a().b("enter_shadow_err").c(paramString).b();
-      ThreadManagerV2.getUIHandlerV2().post(new NowShadowImpl.2(this));
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    a.put(Integer.valueOf(10001), BaseApplication.getContext().getString(2131717774));
+    a.put(Integer.valueOf(10002), BaseApplication.getContext().getString(2131717772));
+    a.put(Integer.valueOf(10003), BaseApplication.getContext().getString(2131718572));
+    a.put(Integer.valueOf(10004), BaseApplication.getContext().getString(2131691177));
+    a.put(Integer.valueOf(10005), BaseApplication.getContext().getString(2131717769));
+    a.put(Integer.valueOf(10006), BaseApplication.getContext().getString(2131717786));
+    a.put(Integer.valueOf(10007), BaseApplication.getContext().getString(2131717773));
   }
   
-  public avzc a(Context paramContext, String paramString1, String paramString2)
+  public static String a(int paramInt)
   {
-    return avzl.a(paramContext, paramString1, paramString2);
+    return (String)a.get(Integer.valueOf(paramInt));
   }
-  
-  public void enter(Context paramContext, long paramLong, String paramString1, String paramString2, Bundle paramBundle, EnterCallback paramEnterCallback)
-  {
-    aoik.b(192).execute(new NowShadowImpl.1(this, paramContext, paramString1, paramString2, paramLong, paramBundle, paramEnterCallback));
-  }
-  
-  public boolean hasPluginManager()
-  {
-    return this.a != null;
-  }
-  
-  public void setILoggerFactory() {}
 }
 
 

@@ -1,16 +1,25 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"}, k=3, mv={1, 1, 16})
 final class rqa
-  extends AnimatorListenerAdapter
+  implements ValueAnimator.AnimatorUpdateListener
 {
   rqa(View paramView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.a.setTag(2131362696, null);
+    View localView = this.a;
+    Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "it");
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if (paramValueAnimator == null) {
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
+    }
+    localView.setTranslationY(((Float)paramValueAnimator).floatValue());
   }
 }
 

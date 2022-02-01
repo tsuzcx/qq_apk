@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.7;
+import android.os.Bundle;
 
-public class awra
-  implements DialogInterface.OnClickListener
+class awra
+  extends nme
 {
-  public awra(LocationDialogUtil.7 param7) {}
+  awra(awqu paramawqu, awrb paramawrb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.a.finish();
+    if (this.jdField_a_of_type_Awrb != null) {
+      this.jdField_a_of_type_Awrb.a(paramInt, paramArrayOfByte, paramBundle);
+    }
   }
 }
 

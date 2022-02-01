@@ -1,17 +1,29 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahis
-  extends ahkx
+  implements View.OnClickListener
 {
-  ahis(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahis(ahik paramahik) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new ahnd(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    if ((this.a.sessionInfo.curType == 1001) || (this.a.sessionInfo.curType == 10002)) {
+      bcef.b(this.a.app, "CliOper", "", "", "0X800514F", "0X800514F", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      bcef.b(this.a.app, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
+      afcm.a(this.a.app, this.a.mActivity, this.a.sessionInfo, true, null, this.a);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.a.sessionInfo.curType == 1010) {
+        bcef.b(this.a.app, "CliOper", "", "", "0X80049C6", "0X80049C6", 0, 0, "", "", "", "");
+      }
+    }
   }
 }
 

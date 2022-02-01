@@ -1,33 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class aqnw
-  implements View.OnClickListener
+public abstract interface aqnw
 {
-  public aqnw(CardPicGalleryActivity paramCardPicGalleryActivity, blir paramblir) {}
+  public abstract void a(aqoa paramaqoa, aqpx paramaqpx, aqpn paramaqpn);
   
-  public void onClick(View paramView)
-  {
-    QQAppInterface localQQAppInterface;
-    if (2 == this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.d)
-    {
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.app;
-      if (!this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.b) {
-        break label70;
-      }
-    }
-    label70:
-    for (String str = "1";; str = "2")
-    {
-      bdll.b(localQQAppInterface, "dc00898", "", "", "0X800A88C", "0X800A88C", 4, 0, str, "", "", "");
-      this.jdField_a_of_type_Blir.dismiss();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(List<aqoa> paramList);
+  
+  public abstract void f();
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.Doraemon.util;
 
-import admy;
+import acjr;
 
 public final class DoraemonUtil$2
   implements Runnable
 {
-  public DoraemonUtil$2(admy paramadmy, int paramInt, String paramString) {}
+  public DoraemonUtil$2(acjr paramacjr, int paramInt, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Admy.onFailure(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Admy.onComplete();
+    this.jdField_a_of_type_Acjr.onFailure(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Acjr.onComplete();
   }
 }
 

@@ -1,10 +1,26 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-abstract interface srh
+public class srh
+  implements otv
 {
-  public abstract void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData);
+  public srh(FastWebActivity paramFastWebActivity) {}
+  
+  public void a() {}
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.a(false, null, null);
+    }
+  }
 }
 
 

@@ -4,9 +4,9 @@ import android.content.ComponentCallbacks2;
 import android.content.res.Configuration;
 import android.os.Debug.MemoryInfo;
 import android.os.Process;
-import bhlo;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.utils.GameLog;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
@@ -26,7 +26,7 @@ public final class MemoryPlugin$handleNativeRequest$1
   public void onLowMemory()
   {
     Object localObject2 = null;
-    Debug.MemoryInfo localMemoryInfo = bhlo.a(Process.myPid());
+    Debug.MemoryInfo localMemoryInfo = DeviceInfoUtil.getProcessMemory(Process.myPid());
     GameLog localGameLog = GameLog.getInstance();
     StringBuilder localStringBuilder = new StringBuilder().append("onLowMemory!!!!!! ").append("Meminfo:dalvikPss[");
     if (localMemoryInfo != null)

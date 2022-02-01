@@ -1,23 +1,35 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupAdapter;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserVidList;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
 
 public class xqt
-  implements xpy
 {
-  public xqt(StoryPlayerGroupAdapter paramStoryPlayerGroupAdapter) {}
+  public int a;
+  public final PBRepeatMessageField<qqstory_struct.UserVidList> a;
+  public String a;
+  public final ArrayList<String> a;
+  public vwa a;
+  public boolean a;
   
-  public void a(int paramInt1, int paramInt2)
+  public xqt()
   {
-    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2);
+    this(0, null);
   }
   
-  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3)
+  public xqt(int paramInt, PBRepeatMessageField<qqstory_struct.UserVidList> paramPBRepeatMessageField)
   {
-    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2, paramFloat, paramInt3);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Vwa = new vwa();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField = paramPBRepeatMessageField;
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public static xqt a(String paramString)
   {
-    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2, paramInt3);
+    xqt localxqt = new xqt();
+    localxqt.jdField_a_of_type_JavaLangString = paramString;
+    return localxqt;
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.automator.step;
 
 import android.os.Build.VERSION;
-import bmug;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.automator.AsyncStep;
+import cooperation.qzone.QZoneStartupMonitor;
 
 public class CheckQZoneOatFile
   extends AsyncStep
@@ -11,7 +11,7 @@ public class CheckQZoneOatFile
   public int a()
   {
     if ((BaseApplicationImpl.sProcessId == 1) && (19 < Build.VERSION.SDK_INT)) {
-      bmug.a().b();
+      QZoneStartupMonitor.getInstance().monitor();
     }
     return super.a();
   }

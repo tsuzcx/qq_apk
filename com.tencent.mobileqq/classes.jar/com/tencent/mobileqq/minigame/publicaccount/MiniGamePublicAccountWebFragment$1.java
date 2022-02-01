@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.minigame.publicaccount;
 
-import alhw;
+import akfp;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import avmq;
-import avnc;
+import atzp;
+import auab;
 import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import eipc.EIPCResult;
@@ -40,23 +40,24 @@ class MiniGamePublicAccountWebFragment$1
       while (paramEIPCResult.hasNext())
       {
         QQGameMsgInfo localQQGameMsgInfo = (QQGameMsgInfo)paramEIPCResult.next();
-        avmq localavmq = avnc.a(localQQGameMsgInfo, this.this$0.getActivity());
-        this.this$0.mHeaderRecords.add(localavmq);
+        atzp localatzp = auab.a(localQQGameMsgInfo, this.this$0.getActivity());
+        this.this$0.mHeaderRecords.add(localatzp);
         if (!TextUtils.isEmpty(localQQGameMsgInfo.arkAppName))
         {
-          alhw.a().a(localQQGameMsgInfo.arkAppName);
+          akfp.a().a(localQQGameMsgInfo.arkAppName);
           MiniGamePublicAccountWebFragment.access$100(this.this$0).add(localQQGameMsgInfo.arkAppName);
         }
       }
-      alhw.a().a(MiniGamePublicAccountWebFragment.access$100(this.this$0));
+      akfp.a().a(MiniGamePublicAccountWebFragment.access$100(this.this$0));
       MiniGamePublicAccountWebFragment.access$200(this.this$0, 0);
       if ((this.this$0.mHeaderRecords != null) && (this.this$0.mHeaderRecords.size() < 0)) {
-        MiniGamePublicAccountWebFragment.access$302(this.this$0, (avmq)this.this$0.mHeaderRecords.get(0));
+        MiniGamePublicAccountWebFragment.access$302(this.this$0, (atzp)this.this$0.mHeaderRecords.get(0));
       }
       this.this$0.getActivity().runOnUiThread(new MiniGamePublicAccountWebFragment.1.1(this));
       MiniProgramLpReportDC04239.reportAsync("minigamechengzaiye", "top_news_more", "expo", null);
       MiniGamePublicAccountWebFragment.access$702(this.this$0, new ArrayList(Collections.nCopies(i, Boolean.valueOf(false))));
-      MiniGamePublicAccountWebFragment.access$800(this.this$0, 0, false);
+      MiniGamePublicAccountWebFragment.access$802(this.this$0, new ArrayList(Collections.nCopies(i, Boolean.valueOf(false))));
+      MiniGamePublicAccountWebFragment.access$900(this.this$0, 0, false);
       return;
     }
     this.this$0.getActivity().runOnUiThread(new MiniGamePublicAccountWebFragment.1.2(this));

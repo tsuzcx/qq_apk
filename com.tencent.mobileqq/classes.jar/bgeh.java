@@ -1,68 +1,18 @@
-import android.text.TextUtils;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.vas.FriendCloneSettingFragment;
 
 public class bgeh
+  implements DialogInterface.OnCancelListener
 {
-  static HashMap<String, Integer> a = new HashMap();
+  public bgeh(FriendCloneSettingFragment paramFriendCloneSettingFragment) {}
   
-  static
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    a.put("str", Integer.valueOf(0));
-    a.put("img", Integer.valueOf(1));
-    a.put("video", Integer.valueOf(2));
-    a.put("voice", Integer.valueOf(3));
-    a.put("recite", Integer.valueOf(4));
-    a.put("calculation", Integer.valueOf(7));
-  }
-  
-  public static bgeg a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    if (this.a.a != null) {
+      this.a.a.finish();
     }
-    try
-    {
-      paramString = a(new JSONObject(paramString));
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static bgeg a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      Object localObject = paramJSONObject.getString("type");
-      localObject = (Integer)a.get(localObject);
-      if (localObject == null) {
-        return null;
-      }
-      switch (((Integer)localObject).intValue())
-      {
-      case 0: 
-        paramJSONObject = new bgep(paramJSONObject);
-        return paramJSONObject;
-      }
-    }
-    catch (Exception paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-      break label142;
-      return new bgel(paramJSONObject);
-      return new bger(paramJSONObject);
-      return new bgef(paramJSONObject);
-      return new bgei(paramJSONObject);
-      paramJSONObject = new bged(paramJSONObject);
-      return paramJSONObject;
-    }
-    label142:
-    return null;
   }
 }
 

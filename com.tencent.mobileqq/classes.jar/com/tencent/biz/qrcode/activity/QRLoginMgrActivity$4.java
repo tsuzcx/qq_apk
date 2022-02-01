@@ -1,6 +1,6 @@
 package com.tencent.biz.qrcode.activity;
 
-import bjbs;
+import bhht;
 
 class QRLoginMgrActivity$4
   implements Runnable
@@ -21,8 +21,8 @@ class QRLoginMgrActivity$4
             QRLoginMgrActivity.a(this.this$0).cancel();
             QRLoginMgrActivity.a(this.this$0, null);
           }
-          QRLoginMgrActivity.a(this.this$0, new bjbs(QRLoginMgrActivity.a(this.this$0), this.this$0.getTitleBarHeight()));
-          QRLoginMgrActivity.a(this.this$0).c(2131717414);
+          QRLoginMgrActivity.a(this.this$0, new bhht(QRLoginMgrActivity.a(this.this$0), this.this$0.getTitleBarHeight()));
+          QRLoginMgrActivity.a(this.this$0).c(2131717646);
           int i = this.a;
           switch (i)
           {
@@ -38,7 +38,7 @@ class QRLoginMgrActivity$4
         QRLoginMgrActivity.a(this.this$0).show();
       }
       return;
-      QRLoginMgrActivity.a(this.this$0).c(2131694176);
+      QRLoginMgrActivity.a(this.this$0).c(2131694279);
     }
   }
 }

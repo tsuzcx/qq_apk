@@ -1,23 +1,41 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.effect.base.P2VGlobalConfig;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class akvg
-  implements MediaScanner.OnMediaInfoScannerListener
+public class akvg
 {
-  akvg(akvf paramakvf, Intent paramIntent, ArrayList paramArrayList) {}
-  
-  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public static void a(Context paramContext)
   {
-    ((NewPhotoListActivity)this.jdField_a_of_type_Akvf.mActivity).cancleProgressDailog();
-    if (bqyp.a(this.jdField_a_of_type_Akvf.mActivity, paramLocalMediaInfo))
+    P2VGlobalConfig.P2V_VIDEO_ROOT = paramContext.getFilesDir().getAbsolutePath() + File.separator + "qzone_dynamic_video" + File.separator;
+    P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT = paramContext.getFilesDir().getAbsolutePath() + File.separator + "tencent" + File.separator + "dynamic_video_cache" + File.separator;
+    P2VGlobalConfig.NO_AUDIO_MP4 = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "no_audio.mp4";
+    P2VGlobalConfig.CONCAT_FINAL_M4A = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "concat_final.m4a";
+    P2VGlobalConfig.CONCAT_FINAL_MP3 = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "concat_final.mp3";
+    P2VGlobalConfig.P2V_MATERIAL_ROOT = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "p2v_material" + File.separator;
+    P2VGlobalConfig.P2V_MATERIAL_WATER_MARKER_PNG_NAME = P2VGlobalConfig.P2V_MATERIAL_ROOT + "qzone_p2v_watermark.png";
+    P2VGlobalConfig.P2V_MATERIAL_DUMMY_VIDEO_NAME = P2VGlobalConfig.P2V_MATERIAL_ROOT + "resizeddummy.mp4";
+    try
     {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-      PhotoUtils.a(this.jdField_a_of_type_Akvf.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
+      paramContext = new File(P2VGlobalConfig.P2V_VIDEO_ROOT);
+      if (!paramContext.exists()) {
+        paramContext.mkdirs();
+      }
+      paramContext = new File(P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT);
+      if (!paramContext.exists()) {
+        paramContext.mkdirs();
+      }
     }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        QLog.d("P2VEffectLoader", 2, "initP2VCacheRootSpace exception", paramContext);
+      }
+    }
+    FileUtils.createFileIfNotExits(P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + ".nomedia");
+    FileUtils.createFileIfNotExits(P2VGlobalConfig.P2V_MATERIAL_ROOT + ".nomedia");
   }
 }
 

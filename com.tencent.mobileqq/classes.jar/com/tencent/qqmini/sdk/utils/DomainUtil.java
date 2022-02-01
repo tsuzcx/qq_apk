@@ -21,8 +21,9 @@ import org.jetbrains.annotations.Nullable;
 public class DomainUtil
 {
   private static final String CONFIG_SPLIT = ";";
-  private static final String[] DOMAIN_NAME_LIST = { "Request", "Websocket", "Download", "Upload", "Webview" };
+  private static final String[] DOMAIN_NAME_LIST = { "Request", "Websocket", "Download", "Upload", "Webview", "UDP" };
   public static final int DOMIAN_TYPE_DOWNLOAD = 2;
+  public static final int DOMIAN_TYPE_DUP = 5;
   public static final int DOMIAN_TYPE_REQUEST = 0;
   public static final int DOMIAN_TYPE_UPLOAD = 3;
   public static final int DOMIAN_TYPE_WEBSOCKET = 1;
@@ -48,12 +49,13 @@ public class DomainUtil
       case 2: 
       case 3: 
       case 4: 
+      case 5: 
         for (;;)
         {
           for (;;)
           {
             if (!paramMiniAppInfo.hasNext()) {
-              break label224;
+              break label236;
             }
             localObject = (String)paramMiniAppInfo.next();
             try
@@ -73,6 +75,8 @@ public class DomainUtil
                   break;
                   paramMiniAppInfo = paramMiniAppInfo.businessDomainList;
                   break;
+                  paramMiniAppInfo = paramMiniAppInfo.udpIpList;
+                  break;
                 }
                 QMLog.i("[mini] http.domainValid", "request:" + paramDomainConfig + ",allow:" + localObject);
               }
@@ -85,7 +89,7 @@ public class DomainUtil
         }
       }
     }
-    label224:
+    label236:
     return false;
   }
   
@@ -101,16 +105,23 @@ public class DomainUtil
   
   private static boolean checkProtocol(MiniAppInfo paramMiniAppInfo, String paramString1, int paramInt, String paramString2)
   {
-    if (paramInt == 4) {}
-    for (boolean bool = true; !isValidPrefix(paramString2, bool); bool = false)
+    if (!needCheckProtocol(paramInt)) {}
+    for (;;)
     {
-      QMLog.e("[mini] http.domainValid", DOMAIN_NAME_LIST[paramInt] + ":请求域名不合法，请使用https或wss协议,reqeustUrl:" + paramString1);
-      if (!isOnlineVersion(paramMiniAppInfo)) {
+      return false;
+      if (paramInt == 4) {}
+      for (boolean bool = true; !isValidPrefix(paramString2, bool); bool = false)
+      {
+        QMLog.e("[mini] http.domainValid", DOMAIN_NAME_LIST[paramInt] + ":请求域名不合法，请使用https或wss协议,reqeustUrl:" + paramString1);
+        if (isOnlineVersion(paramMiniAppInfo)) {
+          break label89;
+        }
         ThreadManager.getUIHandler().post(new DomainUtil.2(paramInt, paramString2));
+        return true;
       }
-      return true;
     }
-    return false;
+    label89:
+    return true;
   }
   
   @Nullable
@@ -276,6 +287,11 @@ public class DomainUtil
       }
     }
     return false;
+  }
+  
+  private static boolean needCheckProtocol(int paramInt)
+  {
+    return paramInt != 5;
   }
   
   private static void putDomainConfigToCache(DomainConfig paramDomainConfig, int paramInt)

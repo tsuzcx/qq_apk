@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/naz" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:ellipsize="marquee" android:id="@id/lal" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:onClick="BtnOnClick" />
-    <ImageView android:id="@id/lam" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:src="@drawable/g0s" android:layout_toRightOf="@id/lal" android:layout_centerVertical="true" android:onClick="BtnOnClick" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/n90" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/skin_black" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/fmg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="18.0dip" android:layout_marginRight="10.0dip" android:text="@string/wqs" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="18.0dip">
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="18.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="18.0dip" android:text="@string/wqr" />
+    </LinearLayout>
+</LinearLayout>

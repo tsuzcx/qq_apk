@@ -1,23 +1,78 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.qqcircle.widgets.QCircleLottileAnimView;
-import com.tencent.biz.qqcircle.widgets.QCirclePushToastView;
-import com.tencent.biz.qqcircle.widgets.QCirclePushToastView.1;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wbr
-  implements Animator.AnimatorListener
+  extends wbb
+  implements vqp<wet, wgj>
 {
-  public wbr(QCirclePushToastView.1 param1) {}
+  protected String a;
+  private final List<String> jdField_a_of_type_JavaUtilList;
+  private wbt jdField_a_of_type_Wbt;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public wbr(String paramString1, String paramString2)
   {
-    QCirclePushToastView.a(this.a.this$0).setVisibility(0);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(paramString1);
+    this.jdField_a_of_type_JavaLangString = paramString2;
+  }
+  
+  public wbr(List<String> paramList, String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public wbr a(wbt paramwbt)
+  {
+    this.jdField_a_of_type_Wbt = paramwbt;
+    return this;
+  }
+  
+  public void a()
+  {
+    wet localwet = new wet();
+    localwet.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    vqn.a().a(localwet, this);
+  }
+  
+  public void a(@NonNull wet paramwet, @Nullable wgj paramwgj, @NonNull ErrorMessage paramErrorMessage)
+  {
+    paramwet = new wbs();
+    paramwet.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    paramwet.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    if ((paramErrorMessage.isSuccess()) && (paramwgj != null))
+    {
+      paramErrorMessage = new ArrayList();
+      xen localxen = (xen)vux.a(7);
+      if ((paramwgj.jdField_a_of_type_JavaUtilList != null) && (!paramwgj.jdField_a_of_type_JavaUtilList.isEmpty()))
+      {
+        paramwgj = paramwgj.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramwgj.hasNext()) {
+          paramErrorMessage.add(localxen.a((ShareGroupItem)paramwgj.next()));
+        }
+      }
+      if (!paramErrorMessage.isEmpty()) {
+        paramwet.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = ((ShareGroupItem)paramErrorMessage.get(0));
+      }
+      paramwet.jdField_a_of_type_JavaUtilList = paramErrorMessage;
+      b();
+    }
+    for (;;)
+    {
+      vli.a().dispatch(paramwet);
+      paramwgj = this.jdField_a_of_type_Wbt;
+      if (paramwgj != null) {
+        paramwgj.a(paramwet);
+      }
+      return;
+      c();
+    }
   }
 }
 

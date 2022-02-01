@@ -1,6 +1,14 @@
-public abstract interface oxu
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+
+public class oxu
+  implements ViewBase.IBuilder
 {
-  public abstract void a(String paramString, Object paramObject);
+  public ViewBase build(VafContext paramVafContext)
+  {
+    return new oxt(paramVafContext);
+  }
 }
 
 

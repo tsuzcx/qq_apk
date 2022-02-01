@@ -1,7 +1,28 @@
-class bbrc
-  implements bbro
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+
+public class bbrc
+  implements INetInfoHandler
 {
-  bbrc(bbrb parambbrb) {}
+  public bbrc(ShortVideoResourceManager paramShortVideoResourceManager) {}
+  
+  public void onNetMobile2None()
+  {
+    ShortVideoResourceManager.a(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    ShortVideoResourceManager.a(this.a);
+  }
 }
 
 

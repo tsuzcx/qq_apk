@@ -1,6 +1,6 @@
 package com.tencent.avgame.ui;
 
-import nbo;
+import ncp;
 
 class AVGameActivity$7
   implements Runnable
@@ -9,7 +9,7 @@ class AVGameActivity$7
   
   public void run()
   {
-    nbo.a(AVGameActivity.a(this.this$0));
+    ncp.a(AVGameActivity.a(this.this$0));
   }
 }
 

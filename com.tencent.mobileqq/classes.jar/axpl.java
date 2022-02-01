@@ -1,77 +1,90 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import com.tencent.mobileqq.ocr.view.gesture.control.GestureController;
 
 public class axpl
+  implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener, axpq
 {
-  public int a;
-  public SessionInfo a;
-  public MessageForStructing a;
-  public AbsStructMsg a;
-  private Object a = new Object();
-  public HashMap<String, ArrayList<MessageRecord>> a;
-  public List<ChatMessage> a;
-  public Map<String, String> a;
-  public boolean a;
-  public int b;
-  public List<MessageForStructing> b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  private int h;
-  private int i;
+  private GestureController a;
   
-  public int a()
+  public axpl(GestureController paramGestureController)
   {
-    synchronized (this.a)
-    {
-      int j = this.h;
-      return j;
-    }
+    this.a = paramGestureController;
   }
   
-  public String a()
+  public void a(axpp paramaxpp)
   {
-    return String.valueOf(hashCode());
+    this.a.a(paramaxpp);
   }
   
-  public void a(int paramInt)
+  public boolean a(axpp paramaxpp)
   {
-    synchronized (this.a)
-    {
-      this.h ^= paramInt;
-      return;
-    }
+    return this.a.b(paramaxpp);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public boolean b(axpp paramaxpp)
   {
-    synchronized (this.a)
-    {
-      int j = this.i;
-      if (paramInt1 == 0) {
-        paramInt2 = 0;
-      }
-      this.i = (j + paramInt2);
-      return;
-    }
+    return this.a.a(paramaxpp);
   }
   
-  public int b()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    synchronized (this.a)
-    {
-      int j = this.i;
-      return j;
-    }
+    return false;
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return this.a.e(paramMotionEvent);
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return this.a.b(paramMotionEvent);
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return this.a.b(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    this.a.b(paramMotionEvent);
+  }
+  
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return this.a.b(paramScaleGestureDetector);
+  }
+  
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return this.a.a(paramScaleGestureDetector);
+  }
+  
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    this.a.a(paramScaleGestureDetector);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return this.a.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return this.a.d(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return this.a.c(paramMotionEvent);
   }
 }
 

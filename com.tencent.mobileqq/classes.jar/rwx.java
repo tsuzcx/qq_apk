@@ -1,11 +1,22 @@
-class rwx
-  implements sgo
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.widget.TextView;
+
+final class rwx
+  extends ClickableSpan
 {
-  rwx(rwu paramrwu) {}
+  rwx(TextView paramTextView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.g();
+    this.a.performClick();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.parseColor("#FF00CAFC"));
   }
 }
 

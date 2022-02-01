@@ -1,47 +1,40 @@
-import android.content.res.ColorStateList;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.device.datadef.DeviceInfo;
 
-public class aaqs
-  extends ClickableSpan
+public final class aaqs
+  implements Parcelable.Creator<DeviceInfo>
 {
-  private int jdField_a_of_type_Int;
-  private aaqt jdField_a_of_type_Aaqt;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public aaqs(String paramString, int paramInt, aaqt paramaaqt)
+  public DeviceInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Aaqt = paramaaqt;
+    DeviceInfo localDeviceInfo = new DeviceInfo();
+    localDeviceInfo.osPlatform = paramParcel.readString();
+    localDeviceInfo.osVersion = paramParcel.readString();
+    localDeviceInfo.netType = paramParcel.readInt();
+    localDeviceInfo.netDetail = paramParcel.readString();
+    localDeviceInfo.netAddress = paramParcel.readString();
+    localDeviceInfo.netAPN = paramParcel.readString();
+    localDeviceInfo.name = paramParcel.readString();
+    localDeviceInfo.remark = paramParcel.readString();
+    localDeviceInfo.type = paramParcel.readString();
+    localDeviceInfo.serialNum = paramParcel.readString();
+    localDeviceInfo.productId = paramParcel.readInt();
+    localDeviceInfo.appSecret = paramParcel.readString();
+    localDeviceInfo.din = paramParcel.readLong();
+    localDeviceInfo.isAdmin = paramParcel.readInt();
+    localDeviceInfo.status = ((short)paramParcel.readInt());
+    localDeviceInfo.userStatus = ((short)paramParcel.readInt());
+    localDeviceInfo.productType = ((short)paramParcel.readInt());
+    localDeviceInfo.displayName = paramParcel.readString();
+    localDeviceInfo.productVer = paramParcel.readInt();
+    localDeviceInfo.SSOBid_Platform = paramParcel.readInt();
+    localDeviceInfo.SSOBid_Version = paramParcel.readString();
+    return localDeviceInfo;
   }
   
-  public aaqs(String paramString, ColorStateList paramColorStateList, aaqt paramaaqt)
+  public DeviceInfo[] a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-    this.jdField_a_of_type_Aaqt = paramaaqt;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Aaqt != null)) {
-      this.jdField_a_of_type_Aaqt.a(this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    if (this.jdField_a_of_type_Int > 0) {
-      paramTextPaint.setColor(this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
-      paramTextPaint.setColor(this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(paramTextPaint.drawableState, 0));
-    }
-    paramTextPaint.setUnderlineText(false);
+    return new DeviceInfo[paramInt];
   }
 }
 

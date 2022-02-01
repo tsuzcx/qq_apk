@@ -1,119 +1,75 @@
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo;
-import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo.ImageItem;
-import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo.VideoItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.RoundRectBitmap;
+import com.tencent.image.SafeBitmapFactory.SafeDecodeOption;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.image.downloader.GalleryDecoder;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.widget.Gallery;
+import java.io.File;
+import java.util.HashMap;
 
-class ahbc
-  implements View.OnClickListener
+public class ahbc
+  extends GalleryDecoder
 {
-  ahbc(ahbb paramahbb) {}
+  private BaseApplicationImpl mApp;
   
-  public void onClick(View paramView)
+  public ahbc(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    int j = 1;
-    Object localObject1 = paramView.getTag();
-    if (!(localObject1 instanceof ahbd)) {}
-    ahbd localahbd;
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localahbd = (ahbd)localObject1;
-      localObject1 = ahbd.a(localahbd);
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break;
-      }
-      Log.i("AutoVideoItemBuilder", "onClick: empty schema");
-      label54:
-      localObject1 = bhni.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.a.jdField_a_of_type_AndroidContentContext, (String)localObject1);
-      if (localObject1 != null) {
-        ((bhmr)localObject1).a();
-      }
-      if ((localahbd.a instanceof MessageForStructing))
-      {
-        localObject1 = (MessageForStructing)localahbd.a;
-        if ((((MessageForStructing)localObject1).structingMsg instanceof StructMsgSubImageVideo))
-        {
-          localObject1 = (StructMsgSubImageVideo)((MessageForStructing)localObject1).structingMsg;
-          if (((StructMsgSubImageVideo)localObject1).getVideoItem() == null) {
-            break label480;
-          }
-          localObject1 = ((StructMsgSubImageVideo)localObject1).getVideoItem().title;
-          label148:
-          if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
-            break label505;
-          }
-          bdll.b(null, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "auth_aio", "clk_content", 0, 0, "", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, (String)localObject1);
-        }
-      }
+    super(BaseApplicationImpl.getContext());
+    this.mApp = paramBaseApplicationImpl;
+  }
+  
+  public Object decodeVideo(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    int i = 0;
+    if (paramDownloadParams.tag != null) {
+      i = ((Integer)paramDownloadParams.tag).intValue();
     }
-    int i;
-    label223:
-    label243:
-    int k;
-    if ((!((String)localObject1).contains("&width=")) && (!((String)localObject1).contains("?width=")))
+    if (i == 3)
     {
-      i = 1;
-      if ((((String)localObject1).contains("&height=")) || (((String)localObject1).contains("?height="))) {
-        break label342;
-      }
-      if ((i == 0) && (j == 0)) {
-        break label514;
-      }
-      k = ((String)localObject1).indexOf("?");
-      if (k >= 0) {
-        break label347;
-      }
-      localObject1 = (String)localObject1 + "?width=" + localahbd.e + "&height=" + localahbd.f;
+      paramURLDrawableHandler = ThumbnailUtils.createVideoThumbnail(paramFile.getAbsolutePath(), 1);
+      int j = paramURLDrawableHandler.getWidth();
+      i = paramURLDrawableHandler.getHeight();
+      float f = Gallery.a(j, i, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight, null);
+      j = (int)(j * f);
+      i = (int)(i * f);
+      return ThumbnailUtils.createVideoThumbnail(paramFile.getAbsolutePath(), 1);
     }
-    label514:
-    for (;;)
+    return null;
+  }
+  
+  public String getLogTag()
+  {
+    return "PEAK";
+  }
+  
+  public void reportSafeDecode(SafeBitmapFactory.SafeDecodeOption paramSafeDecodeOption)
+  {
+    if ((!paramSafeDecodeOption.isInJustDecodeBounds) && (paramSafeDecodeOption.needRegionDecode))
     {
-      label308:
-      Log.i("AutoVideoItemBuilder", "onClick: " + (String)localObject1);
-      break label54;
-      i = 0;
-      break label223;
-      label342:
-      j = 0;
-      break label243;
-      label347:
-      if (k == ((String)localObject1).length() - 1)
-      {
-        localObject1 = (String)localObject1 + "width=" + localahbd.e + "&height=" + localahbd.f;
-      }
-      else
-      {
-        if (i != 0) {}
-        for (Object localObject2 = (String)localObject1 + "&width=" + localahbd.e;; localObject2 = localObject1)
-        {
-          localObject1 = localObject2;
-          if (j == 0) {
-            break label308;
-          }
-          localObject1 = (String)localObject2 + "&height=" + localahbd.f;
-          break label308;
-          label480:
-          if (((StructMsgSubImageVideo)localObject1).getImageItem() != null)
-          {
-            localObject1 = ((StructMsgSubImageVideo)localObject1).getImageItem().title;
-            break label148;
-          }
-          localObject1 = null;
-          break label148;
-          label505:
-          break;
-        }
-      }
+      HashMap localHashMap = paramSafeDecodeOption.getInfo();
+      localHashMap.put("from", "GalleryDecoder");
+      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "safeDecode", paramSafeDecodeOption.isGetBitmap, paramSafeDecodeOption.runTime, paramSafeDecodeOption.rawHeight * paramSafeDecodeOption.rawWidth, localHashMap, "");
     }
+  }
+  
+  public RoundRectBitmap resizeAndClipBitmap(Bitmap paramBitmap, int paramInt)
+  {
+    try
+    {
+      RoundRectBitmap localRoundRectBitmap = new RoundRectBitmap(paramBitmap, paramInt);
+      return localRoundRectBitmap;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError) {}
+    return new RoundRectBitmap(paramBitmap, 12.0F);
+  }
+  
+  public boolean useJpegTurbo()
+  {
+    return ayfc.b();
   }
 }
 

@@ -1,24 +1,44 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class adva
-  implements CompoundButton.OnCheckedChangeListener
+  implements URLDrawable.URLDrawableListener
 {
-  public adva(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public adva(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    auvv.a(this.a.app).a(paramBoolean, this.a.app);
-    if (paramBoolean) {
-      bdll.b(this.a.app, "CliOper", "", "", "0X8008C75", "0X8008C75", 0, 0, "", "", "", "");
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, 0, 0);
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bdll.b(this.a.app, "CliOper", "", "", "0X8008C74", "0X8008C74", 0, 0, "", "", "", "");
+    if (PermisionPrivacyActivity.b(this.a) != null) {
+      PermisionPrivacyActivity.b(this.a).postInvalidate();
+    }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, 0, 0);
+    }
+    if (PermisionPrivacyActivity.b(this.a) != null) {
+      PermisionPrivacyActivity.b(this.a).postInvalidate();
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, UIUtils.dip2px(this.a.app.getApp(), 47.0F), UIUtils.dip2px(this.a.app.getApp(), 14.0F));
+    }
+    if (PermisionPrivacyActivity.b(this.a) != null) {
+      PermisionPrivacyActivity.b(this.a).postInvalidate();
     }
   }
 }

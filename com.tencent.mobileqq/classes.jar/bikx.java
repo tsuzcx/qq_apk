@@ -1,11 +1,24 @@
+import com.tencent.image.URLDrawableHandler;
+
 class bikx
-  implements nmg
+  implements URLDrawableHandler
 {
-  bikx(bikv parambikv) {}
+  bikx(bikw parambikw) {}
   
-  public void loaded(String paramString, int paramInt) {}
+  public void doCancel() {}
   
-  public void progress(int paramInt) {}
+  public boolean isCancelled()
+  {
+    return false;
+  }
+  
+  public void onFileDownloadFailed(int paramInt) {}
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
+  
+  public void publishProgress(int paramInt) {}
 }
 
 

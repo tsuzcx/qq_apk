@@ -1,16 +1,24 @@
-import android.util.Log;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
 class lgg
+  implements Observer
 {
-  Class<?> jdField_a_of_type_JavaLangClass;
-  String jdField_a_of_type_JavaLangString;
-  Class<?> b;
+  private WeakReference<lgf> a;
   
-  void a(String paramString, long paramLong)
+  lgg(lgf paramlgf)
   {
-    if ((this.b == null) || (this.jdField_a_of_type_JavaLangClass == null)) {
-      Log.d(paramString, "check ClassInfo, seq[" + paramLong + "], " + this.jdField_a_of_type_JavaLangString);
+    this.a = new WeakReference(paramlgf);
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    lgf locallgf = (lgf)this.a.get();
+    if (locallgf == null) {
+      return;
     }
+    lgf.a(locallgf, paramObservable, paramObject);
   }
 }
 

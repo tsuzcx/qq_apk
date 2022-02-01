@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:textColor="@color/skin_input_theme_version2" android:ellipsize="end" android:gravity="center" android:id="@id/mrh" android:background="@drawable/e47" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="0.0dip" android:layout_marginBottom="8.0dip" android:singleLine="true" android:includeFontPadding="false" android:textAlignment="center" />
-    <com.tencent.widget.ThemeImageView android:gravity="center" android:id="@id/bft" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="2.0dip" android:src="@drawable/gue" android:layout_alignRight="@id/mrh" />
-</RelativeLayout>

@@ -1,20 +1,13 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-
-public class ahlp
-  extends aggl
+class ahlp
+  extends anam
 {
-  public ambx a;
-  protected ViewGroup a;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected ETTextView a;
-  protected TextView b;
-  public ETTextView b;
-  public View c;
+  ahlp(ahlo paramahlo) {}
   
-  public ahlp(ahlj paramahlj) {}
+  public void a(String paramString, int paramInt)
+  {
+    super.a(paramString, paramInt);
+    ahlo.a(this.a).b();
+  }
 }
 
 

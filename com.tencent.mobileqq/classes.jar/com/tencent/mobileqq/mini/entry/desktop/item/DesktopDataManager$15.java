@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import acvb;
+import abrk;
 import android.util.Log;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -28,7 +28,7 @@ class DesktopDataManager$15
       while (i < ((JSONArray)localObject1).length())
       {
         Object localObject2 = ((JSONArray)localObject1).optJSONObject(i);
-        localObject2 = MiniAppInfo.from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(acvb.a(new INTERFACE.StApiAppInfo(), localObject2)));
+        localObject2 = MiniAppInfo.from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(abrk.a(new INTERFACE.StApiAppInfo(), localObject2)));
         DesktopAppInfo localDesktopAppInfo = new DesktopAppInfo(2, (MiniAppInfo)localObject2);
         ((DesktopAppInfo)localDesktopAppInfo).fromBackup = 1;
         localArrayList.add(localDesktopAppInfo);

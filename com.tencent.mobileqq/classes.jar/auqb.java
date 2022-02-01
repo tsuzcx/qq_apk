@@ -1,128 +1,27 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RouterHandler;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar.15;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
-import cooperation.troop.TroopFileProxyActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
 
-public class auqb
-  extends AsyncTask<Void, Void, Void>
+class auqb
+  implements ActionCallback
 {
-  public auqb(SendBottomBar.15 param15) {}
+  auqb(aupz paramaupz) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void onResult(String paramString)
   {
-    paramVarArgs = SendBottomBar.a(this.a.this$0).a();
-    int i = SendBottomBar.a(this.a.this$0).a();
-    Object localObject1 = SendBottomBar.a(this.a.this$0).b();
-    if (i == 5)
+    try
     {
-      TroopFileProxyActivity.a.addAll(atyw.a());
-      return null;
+      i = Integer.parseInt(paramString);
+      if (aupz.a(this.a) != null) {
+        aupz.a(this.a).a(i, "");
+      }
+      return;
     }
-    Object localObject2;
-    if (paramVarArgs.equals(antf.z))
+    catch (Exception paramString)
     {
-      localObject1 = new ArrayList();
-      ((ArrayList)localObject1).addAll(atyw.a());
-      paramVarArgs = (anvu)SendBottomBar.a(this.a.this$0).a(8);
-      paramVarArgs.a((ArrayList)localObject1);
-      localObject1 = atyw.b().iterator();
-      i = 0;
-      if (((Iterator)localObject1).hasNext())
+      for (;;)
       {
-        localObject2 = (FileManagerEntity)((Iterator)localObject1).next();
-        if (((FileManagerEntity)localObject2).nFileType == 13)
-        {
-          int j = i;
-          if (paramVarArgs.a((FileManagerEntity)localObject2) == 0L) {
-            j = i | 0x1;
-          }
-          i = j;
-        }
+        int i = -1;
       }
     }
-    for (;;)
-    {
-      break;
-      if ((((FileManagerEntity)localObject2).getCloudType() == 2) && (((FileManagerEntity)localObject2).WeiYunFileId != null))
-      {
-        paramVarArgs.a((FileManagerEntity)localObject2);
-      }
-      else if (!paramVarArgs.a().a((FileManagerEntity)localObject2))
-      {
-        i |= 0x4;
-        continue;
-        localObject1 = atyw.d().iterator();
-        while (((Iterator)localObject1).hasNext()) {
-          paramVarArgs.a((WeiYunFileInfo)((Iterator)localObject1).next());
-        }
-        if (atyw.e().size() > 0) {
-          SendBottomBar.a(this.a.this$0).a().a().a(atyw.e(), antf.z, 6000, null);
-        }
-        if ((i & 0x2) != 0) {}
-        label606:
-        for (;;)
-        {
-          return null;
-          if (i == 6002)
-          {
-            localObject1 = new ArrayList();
-            ((ArrayList)localObject1).addAll(atyw.a());
-            ((RouterHandler)SendBottomBar.a(this.a.this$0).a(48)).a((ArrayList)localObject1, null, null, Long.parseLong(paramVarArgs));
-          }
-          else if (i == 9501)
-          {
-            localObject1 = (abzb)SendBottomBar.a(this.a.this$0).a(49);
-            localObject2 = new ArrayList();
-            ((ArrayList)localObject2).addAll(atyw.a());
-            ((abzb)localObject1).a().a(paramVarArgs, (List)localObject2);
-          }
-          else
-          {
-            boolean bool = SendBottomBar.a(this.a.this$0).i();
-            SendBottomBar.a(this.a.this$0).a().a(bool, (String)localObject1, paramVarArgs, i);
-            paramVarArgs = atyw.b().iterator();
-            do
-            {
-              if (!paramVarArgs.hasNext()) {
-                break;
-              }
-            } while (((FileManagerEntity)paramVarArgs.next()).nFileType != 13);
-            for (i = 1;; i = 0)
-            {
-              if (i == 0) {
-                break label606;
-              }
-              if (SendBottomBar.a(this.a.this$0) == 3)
-              {
-                bdll.b(SendBottomBar.a(this.a.this$0).app, "dc00898", "", "", "0X800A088", "0X800A088", 0, 0, "", "", "", "");
-                break;
-              }
-              if (SendBottomBar.a(this.a.this$0) != 21) {
-                break;
-              }
-              bdll.b(SendBottomBar.a(this.a.this$0).app, "dc00898", "", "", "0X800A08D", "0X800A08D", 0, 0, "", "", "", "");
-              break;
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    super.onPostExecute(paramVoid);
-    this.a.this$0.d();
-    atyw.b();
-    SendBottomBar.j(this.a.this$0);
   }
 }
 

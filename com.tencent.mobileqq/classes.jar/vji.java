@@ -1,38 +1,46 @@
-class vji
+import java.util.List;
+
+public class vji
 {
   public int a;
   public String a;
+  public List<String> a;
   public int b;
+  public String b;
+  public int c;
   
-  public vji(int paramInt1, int paramInt2, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public vji() {}
   
-  public boolean equals(Object paramObject)
+  public vji(vhw paramvhw)
   {
-    if (this == paramObject) {}
-    do
+    this.jdField_a_of_type_Int = paramvhw.jdField_e_of_type_Int;
+    if (paramvhw.g > 0) {}
+    for (int i = paramvhw.g;; i = vjh.a(this.jdField_a_of_type_Int))
     {
-      return true;
-      if (getClass() != paramObject.getClass()) {
-        break;
-      }
-      paramObject = (vji)paramObject;
-    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b) && (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)));
-    return false;
-    return false;
+      this.jdField_b_of_type_Int = i;
+      this.jdField_a_of_type_JavaLangString = paramvhw.jdField_e_of_type_JavaLangString;
+      this.jdField_b_of_type_JavaLangString = paramvhw.d;
+      this.c = paramvhw.f;
+      this.jdField_a_of_type_JavaUtilList = paramvhw.jdField_a_of_type_JavaUtilList;
+      return;
+    }
   }
   
-  public int hashCode()
+  public String toString()
   {
-    int j = this.jdField_a_of_type_Int;
-    int k = this.b;
-    if (this.jdField_a_of_type_JavaLangString != null) {}
-    for (int i = this.jdField_a_of_type_JavaLangString.hashCode();; i = 0) {
-      return i + (k + j);
+    StringBuilder localStringBuilder1 = new StringBuilder("BaseSplitConfig =[");
+    localStringBuilder1.append(" type=").append(this.jdField_a_of_type_Int);
+    localStringBuilder1.append(" mTransId=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder1.append(" mTextId=").append(this.c);
+    localStringBuilder1.append(" mAlbumMinPicCount=").append(this.jdField_b_of_type_Int);
+    localStringBuilder1.append(" mAlbumDesc=").append(this.jdField_a_of_type_JavaLangString);
+    StringBuilder localStringBuilder2 = localStringBuilder1.append(" mTransList=");
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (String str = "";; str = this.jdField_a_of_type_JavaUtilList.toString())
+    {
+      localStringBuilder2.append(str);
+      localStringBuilder1.append("]");
+      return localStringBuilder1.toString();
     }
   }
 }

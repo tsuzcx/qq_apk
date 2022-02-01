@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class afdy
-  implements DialogInterface.OnClickListener
+class afdy
+  extends AnimatorListenerAdapter
 {
-  public afdy(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  afdy(afdx paramafdx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    ProfileLabelEditorActivity.a(this.a);
+    this.a.d();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.d();
   }
 }
 

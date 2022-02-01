@@ -1,170 +1,76 @@
-import QC.GetWatchWordShareRsp;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import android.view.Window;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.vas.ipc.RemoteProxy;
-import com.tencent.mobileqq.vas.watchword.VasWatchWord.showContentDialog.jumpDialog.1;
-import com.tencent.qphone.base.util.BaseApplication;
-import eipc.EIPCResultCallback;
-import java.util.Collection;
-import java.util.HashMap;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import kotlin.jvm.functions.Function1;
-import kotlin.jvm.internal.Intrinsics;
-import kotlin.text.StringsKt;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.util.concurrent.ConcurrentHashMap;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/watchword/VasWatchWord;", "", "()V", "ERROR_BID", "", "ERR_WATCHWORD_EXPIRED", "ERR_WATCHWORD_ITEM_VALID", "ERR_WATCHWORD_USED", "RET_SUCCESS", "addObserver", "", "clearClipboard", "copyToClipboard", "watchWord", "", "getBid", "url", "(Ljava/lang/String;)Ljava/lang/Integer;", "invalidateDialog", "context", "Landroid/content/Context;", "errmsg", "shareWatchWord", "shareUrl", "showContentDialog", "rsp", "LQC/GetWatchWordShareRsp;", "startWebView", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class biev
+class biev
+  extends Handler
 {
-  public static final biev a = new biev();
-  
-  @Nullable
-  public final Integer a(@NotNull String paramString)
+  public biev(bies parambies, Looper paramLooper)
   {
-    Object localObject = null;
-    Intrinsics.checkParameterIsNotNull(paramString, "url");
-    if ((!TextUtils.isEmpty((CharSequence)paramString)) && (StringsKt.contains$default((CharSequence)paramString, (CharSequence)"?", false, 2, null)))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    String str1 = null;
+    bhzm.b("PCPushProxy", "handleMessage msg.what = " + paramMessage.what + ", msg.obj = " + paramMessage.obj);
+    String str2;
+    bieu localbieu;
+    switch (paramMessage.what)
     {
-      paramString = ((Collection)StringsKt.split$default((CharSequence)paramString, new String[] { "?" }, false, 0, 6, null)).toArray(new String[0]);
-      if (paramString == null) {
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
-      }
-      paramString = bjrc.a(((String[])paramString)[1]);
-      String str = (String)paramString.get("appid");
-      paramString = (String)paramString.get("itemid");
-      if ((!TextUtils.isEmpty((CharSequence)str)) && (!TextUtils.isEmpty((CharSequence)paramString)))
+    default: 
+      str2 = (String)paramMessage.obj;
+      if (str2 != null)
       {
-        paramString = localObject;
-        if (str != null) {
-          paramString = Integer.valueOf(Integer.parseInt(str));
+        localbieu = (bieu)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str2);
+        if (localbieu == null) {
+          bhzm.e("PCPushProxy", "handleMessage get entry = null, key = " + str2);
         }
-        return paramString;
       }
+      break;
     }
-    return Integer.valueOf(-1);
-  }
-  
-  public final void a()
-  {
-    qsp.a.a().a((qsr)new biew());
-  }
-  
-  public final void a(@NotNull GetWatchWordShareRsp paramGetWatchWordShareRsp)
-  {
-    Intrinsics.checkParameterIsNotNull(paramGetWatchWordShareRsp, "rsp");
-    Object localObject = paramGetWatchWordShareRsp.detailurl;
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "rsp.detailurl");
-    localObject = a((String)localObject);
-    if (localObject != null) {}
-    for (int i = ((Integer)localObject).intValue();; i = 0)
+    do
     {
-      localObject = BaseActivity.sTopActivity;
-      if (localObject == null) {
+      do
+      {
         return;
-      }
-      localObject = ((BaseActivity)localObject).getWindow();
-      if (localObject == null) {
+        bias.a("200", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
         return;
-      }
-      localObject = ((Window)localObject).getDecorView();
-      if (localObject == null) {
+        bias.a("100", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
         return;
+        if (localbieu.jdField_b_of_type_Int != 1) {
+          str1 = localbieu.jdField_b_of_type_JavaLangString.substring(localbieu.jdField_b_of_type_JavaLangString.indexOf("#") + 1);
+        }
+        for (;;)
+        {
+          switch (paramMessage.what)
+          {
+          default: 
+            return;
+          case 1: 
+            this.a.jdField_a_of_type_Bier.a(this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+            return;
+            str1 = localbieu.jdField_b_of_type_JavaLangString;
+            continue;
+            bhzm.e("PCPushProxy", "handleMessage get key = null");
+            localbieu = null;
+          }
+        }
+      } while (localbieu == null);
+      if (localbieu.c.startsWith("ANDROIDQQ.PCPUSH.")) {
+        bias.a("100", localbieu.c, str1);
       }
-      if (localObject != null) {
-        break;
+      for (;;)
+      {
+        this.a.jdField_a_of_type_Bier.a(localbieu);
+        return;
+        bias.a("100", "ANDROIDQQ.PCPUSH." + localbieu.c, str1);
       }
-      throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
-    }
-    localObject = (ViewGroup)localObject;
-    String str1 = paramGetWatchWordShareRsp.shareuinnick;
-    Intrinsics.checkExpressionValueIsNotNull(str1, "rsp.shareuinnick");
-    String str2 = paramGetWatchWordShareRsp.sharemsg;
-    Intrinsics.checkExpressionValueIsNotNull(str2, "rsp.sharemsg");
-    localObject = new biez((ViewGroup)localObject, str1, str2, (Function1)new VasWatchWord.showContentDialog.jumpDialog.1(paramGetWatchWordShareRsp, i));
-    str1 = paramGetWatchWordShareRsp.itemmsg;
-    Intrinsics.checkExpressionValueIsNotNull(str1, "rsp.itemmsg");
-    ((biez)localObject).a(str1);
-    int j = paramGetWatchWordShareRsp.portrait;
-    paramGetWatchWordShareRsp = paramGetWatchWordShareRsp.thumbnailurl;
-    Intrinsics.checkExpressionValueIsNotNull(paramGetWatchWordShareRsp, "rsp.thumbnailurl");
-    ((biez)localObject).a(j, paramGetWatchWordShareRsp);
-    ((biez)localObject).a();
-    bdll.b(null, "dc00898", "", "", "qq_vip", "0X800AF79", i, 0, "", "", "", "");
-  }
-  
-  public final void a(@Nullable Context paramContext, @NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "shareUrl");
-    if (!StringsKt.contains$default((CharSequence)paramString, (CharSequence)"?", false, 2, null))
-    {
-      zyx.a(1, 2131719289);
+      this.a.jdField_a_of_type_Bier.a(str2);
       return;
-    }
-    paramContext = ((Collection)StringsKt.split$default((CharSequence)paramString, new String[] { "?" }, false, 0, 6, null)).toArray(new String[0]);
-    if (paramContext == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
-    }
-    paramString = bjrc.a(((String[])paramContext)[1]);
-    paramContext = (String)paramString.get("itemid");
-    paramString = (String)paramString.get("appid");
-    if ((TextUtils.isEmpty((CharSequence)paramString)) || (TextUtils.isEmpty((CharSequence)paramContext)))
-    {
-      zyx.a(1, 2131719289);
-      return;
-    }
-    if (paramString == null) {
-      Intrinsics.throwNpe();
-    }
-    bdll.b(null, "dc00898", "", "", "qq_vip", "0X800AF78", Integer.parseInt(paramString), 0, paramContext, "", "", "");
-    Object localObject = RemoteProxy.getProxy(bidk.class);
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.vas.remote.IWatchWordProtocol");
-    }
-    ((bidj)localObject).a(paramString, paramContext, null, -1, (EIPCResultCallback)new biey(paramString, paramContext));
-  }
-  
-  public final void a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "watchWord");
-    ClipboardManager localClipboardManager = (ClipboardManager)BaseApplicationImpl.getContext().getSystemService("clipboard");
-    if (localClipboardManager != null) {
-      localClipboardManager.setPrimaryClip(ClipData.newPlainText((CharSequence)"RIJShareClip", (CharSequence)paramString));
-    }
-  }
-  
-  public final void b()
-  {
-    ClipboardManager localClipboardManager = (ClipboardManager)BaseApplicationImpl.getContext().getSystemService("clipboard");
-    if (localClipboardManager != null) {
-      localClipboardManager.setPrimaryClip(ClipData.newPlainText(null, (CharSequence)""));
-    }
-  }
-  
-  public final void b(@NotNull Context paramContext, @NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    Intrinsics.checkParameterIsNotNull(paramString, "url");
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    paramContext.startActivity(localIntent);
-  }
-  
-  public final void c(@NotNull Context paramContext, @NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    Intrinsics.checkParameterIsNotNull(paramString, "errmsg");
-    bhlq.a(paramContext, 230, paramContext.getString(2131719292), (CharSequence)paramString, null, paramContext.getString(2131719291), (DialogInterface.OnClickListener)new bhme(), null).show();
+    } while (localbieu == null);
+    bias.a("500", localbieu.c, str1);
   }
 }
 

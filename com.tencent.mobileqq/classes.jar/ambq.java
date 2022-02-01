@@ -1,31 +1,13 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.activity.richmedia.view.SensorFrameImageView;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class ambq
-  implements SensorEventListener
+public final class ambq
+  implements EIPCResultCallback
 {
-  public ambq(SensorFrameImageView paramSensorFrameImageView) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    switch (paramSensorEvent.sensor.getType())
-    {
-    }
-    for (;;)
-    {
-      SensorFrameImageView.a(this.a);
-      SensorFrameImageView.b(this.a);
-      return;
-      SensorFrameImageView.a(this.a, paramSensorEvent.values);
-      continue;
-      SensorFrameImageView.b(this.a, paramSensorEvent.values);
-      continue;
-      SensorFrameImageView.c(this.a, paramSensorEvent.values);
-    }
+    QLog.i("CmShow_CmShowRenderView", 1, "openCmShowStore CmShow code:" + paramEIPCResult.code);
   }
 }
 

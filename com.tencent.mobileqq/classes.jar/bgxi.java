@@ -1,66 +1,24 @@
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.smtt.sdk.TbsDownloader.TbsDownloaderCallback;
+
 class bgxi
-  extends bgwn
+  implements TbsDownloader.TbsDownloaderCallback
 {
-  bgxi(bgxh parambgxh, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  bgxi(bgxh parambgxh) {}
   
-  public void a(int paramInt, Object paramObject, blpx[] paramArrayOfblpx)
+  public void onNeedDownloadFinish(boolean paramBoolean, int paramInt)
   {
-    if ((paramObject instanceof Object[]))
+    if (paramBoolean)
     {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length == 2) {
-        break label22;
+      QbSdk.setUploadCode(BaseApplication.getContext(), 156);
+      if (QLog.isColorLevel()) {
+        QLog.d("TBS_update", 2, "tbs need download");
       }
-    }
-    label22:
-    do
-    {
-      do
-      {
-        return;
-        paramObject = paramObject[0];
-      } while (!(paramObject instanceof boolean[]));
-      paramObject = (boolean[])paramObject;
-    } while ((paramArrayOfblpx == null) || (paramArrayOfblpx.length <= 0) || (paramObject.length != 3));
-    if ((paramArrayOfblpx.length < 0) && (paramObject[0] != 0))
-    {
-      paramArrayOfblpx[0].b = 0;
-      paramArrayOfblpx[0].a = 0;
-    }
-    for (int i = 1;; i = 0)
-    {
-      paramInt = i;
-      if (i < paramArrayOfblpx.length)
-      {
-        paramInt = i;
-        if (paramObject[1] != 0)
-        {
-          paramArrayOfblpx[i].b = 1;
-          paramArrayOfblpx[i].a = 1;
-          paramInt = i + 1;
-        }
-      }
-      i = paramInt;
-      if (paramInt < paramArrayOfblpx.length)
-      {
-        i = paramInt;
-        if (paramObject[2] != 0)
-        {
-          paramArrayOfblpx[paramInt].b = 2;
-          paramArrayOfblpx[paramInt].a = 0;
-          i = paramInt + 1;
-        }
-      }
-      while (i < paramArrayOfblpx.length)
-      {
-        paramArrayOfblpx[i].b = -1;
-        paramArrayOfblpx[i].a = -1;
-        i += 1;
-      }
-      break;
+      this.a.a.browserApp.a(false);
     }
   }
 }

@@ -1,16 +1,28 @@
-class auhv
-  implements aumz
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class auhv
+  implements View.OnClickListener
 {
-  auhv(auht paramauht) {}
+  public auhv(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (auht.a(this.a) != null) {
-      auht.a(this.a);
+    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
+    if (this.a.a == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (HotVideoMongoliaRelativeLayout.a(this.a) != null) {
+        HotVideoMongoliaRelativeLayout.a(this.a).b(HotVideoMongoliaRelativeLayout.a(this.a));
+      }
+      QLog.d("HotVideoRelativeLayout", 2, "click round rect send view");
     }
   }
-  
-  public void b() {}
 }
 
 

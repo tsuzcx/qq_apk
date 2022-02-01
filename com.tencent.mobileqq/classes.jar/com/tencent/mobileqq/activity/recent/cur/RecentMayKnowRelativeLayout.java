@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.recent.cur;
 
-import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -12,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.lang.ref.SoftReference;
 
 public class RecentMayKnowRelativeLayout
@@ -48,8 +48,8 @@ public class RecentMayKnowRelativeLayout
     this.jdField_a_of_type_Boolean = false;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850234);
-      this.jdField_a_of_type_Int = agej.a(0.5F, getResources());
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850155);
+      this.jdField_a_of_type_Int = AIOUtils.dp2px(0.5F, getResources());
       return;
     }
     catch (Throwable paramContext)

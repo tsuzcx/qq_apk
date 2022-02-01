@@ -1,30 +1,56 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class asiv
-  extends anyu
+  extends ashp
 {
-  public asiv(MessengerService paramMessengerService) {}
+  asbj jdField_a_of_type_Asbj = null;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  protected void onGetSigZanInfo(boolean paramBoolean, Object paramObject)
+  public asiv(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    if (this.a.b != null)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    if (TextUtils.isEmpty(paramString1)) {
+      QLog.e("OfflinePreviewController<FileAssistant>", 1, " init OfflinePreviewController error,uuid is null,stack:" + aszt.a());
+    }
+    b();
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Asbj != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().deleteObserver(this.jdField_a_of_type_Asbj);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      this.a.b.putString("cmd", "ipc_signature_setlike");
-      paramObject = new Bundle();
-      if (!paramBoolean) {
-        break label81;
+      QLog.e("OfflinePreviewController<FileAssistant>", 1, " init OfflinePreviewController error,uuid is null,stack:" + aszt.a());
+      if (this.jdField_a_of_type_Aruk != null) {
+        this.jdField_a_of_type_Aruk.a(false, "", "", -100005L, "", "", null, this.jdField_a_of_type_JavaLangString, null);
       }
+      return false;
     }
-    label81:
-    for (int i = 0;; i = 101)
-    {
-      paramObject.putInt("result", i);
-      this.a.b.putBundle("response", paramObject);
-      this.a.a(this.a.b);
-      this.a.b = null;
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(this.jdField_a_of_type_JavaLangString, this.b);
+    return true;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Asbj = new asiw(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_Asbj);
   }
 }
 

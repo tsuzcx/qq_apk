@@ -1,16 +1,10 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import java.lang.ref.WeakReference;
 
 public class aoui
 {
-  public int a;
-  public long a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public String c;
-  public String d;
+  public WeakReference<PreDownloadController> a;
+  public boolean a = false;
 }
 
 

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
-import arfd;
+import apyt;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
@@ -12,12 +12,14 @@ import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MiniAppLauncher
 {
+  private static final String CONFIG_SPLIT = ",";
   private static final String TAG = "MiniAppLauncher";
   private static final String URL_PATTERN_OF_AD_SCHEME = "mqqapi://miniapp/adopen(/[0-9]+)?\\?";
   private static final String URL_PREFIX_HTTP_MINIAPP_AD_REAL_HEAD_SCHEME_V3 = "mqqapi://miniapp/adopen";
@@ -27,6 +29,8 @@ public class MiniAppLauncher
   private static final String URL_PREFIX_MINIAPP_URL = "https://m.q.qq.com/a/";
   private static final String URL_PREFIX_MINIAPP_URL_HTTP = "https://m.q.qq.com/a/";
   private static final String URL_PREFIX_WX_MINIAPP_HTTPS = "https://mp.weixin.qq.com/a/";
+  private static ArrayList<String> arkSceneWhiteList;
+  private static String mArkSceneWhiteListConfig;
   static long mLastGameTime;
   
   private static void LaunchMiniAppBySchemeRequest(Context paramContext, String paramString, LaunchParam paramLaunchParam, MiniAppLauncher.MiniAppLaunchListener paramMiniAppLaunchListener)
@@ -204,7 +208,7 @@ public class MiniAppLauncher
         }
         QLog.i("MiniAppLauncher", 1, "launchMiniAppByScheme appid:" + paramEntryModel + ", param:" + localLaunchParam);
         if (verifyAppid_Scence_Fakeurl_Model(paramEntryModel, localLaunchParam.scene, localLaunchParam.fakeUrl)) {
-          break label511;
+          break label513;
         }
         QLog.e("MiniAppLauncher", 1, "Appid is： " + paramEntryModel + ",scence:" + localLaunchParam.scene + ",fakeurl:" + localLaunchParam.fakeUrl + " is forbidden!!!");
         AppBrandTask.runTaskOnUiThread(new MiniAppLauncher.4());
@@ -253,7 +257,7 @@ public class MiniAppLauncher
         }
       }
     }
-    label511:
+    label513:
     return openMiniApp(paramContext, localLaunchParam, paramMiniAppLaunchListener);
   }
   
@@ -340,14 +344,14 @@ public class MiniAppLauncher
             paramEntryModel = URLDecoder.decode(paramString, "UTF-8");
             str = (String)localHashMap.get("appid");
             if (!TextUtils.isEmpty(str)) {
-              break label435;
+              break label437;
             }
             localObject = (String)localHashMap.get("mini_appid");
           }
           for (;;)
           {
             if (verifyAppid_Scence_Fakeurl_Model((String)localObject, paramInt, paramEntryModel)) {
-              break label464;
+              break label466;
             }
             QLog.e("MiniAppLauncher", 1, "Appid is： " + (String)localObject + ",scence:" + localLaunchParam.scene + ",fakeurl:" + localLaunchParam.fakeUrl + " is forbidden!!!");
             AppBrandTask.runTaskOnUiThread(new MiniAppLauncher.2());
@@ -357,14 +361,14 @@ public class MiniAppLauncher
             }
             paramEntryModel = (String)localHashMap.get("fakeUrl");
             break;
-            label435:
+            label437:
             localObject = str;
             if (TextUtils.isEmpty(str)) {
               localObject = (String)localHashMap.get("_mappid");
             }
           }
         }
-        label464:
+        label466:
         if (!isMiniAppADSchemeV3(paramString)) {}
       }
       catch (Throwable paramEntryModel)
@@ -379,19 +383,19 @@ public class MiniAppLauncher
       {
         localObject = Pattern.compile("mqqapi://miniapp/adopen(/[0-9]+)?\\?").matcher(paramString);
         if (!((Matcher)localObject).find()) {
-          break label668;
+          break label670;
         }
         localObject = ((Matcher)localObject).group();
         if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label668;
+          break label670;
         }
         localObject = Pattern.compile("(\\d+)").matcher((CharSequence)localObject);
         if (!((Matcher)localObject).find()) {
-          break label668;
+          break label670;
         }
         paramInt = Integer.parseInt(((Matcher)localObject).group());
         if (paramInt > 0) {
-          break label665;
+          break label667;
         }
         paramInt = i;
       }
@@ -413,9 +417,9 @@ public class MiniAppLauncher
       return true;
       QLog.e("MiniAppLauncher", 1, "launchMiniApp parameter error: dc04239" + paramString);
       return false;
-      label665:
+      label667:
       continue;
-      label668:
+      label670:
       paramInt = 2054;
     }
   }
@@ -451,7 +455,7 @@ public class MiniAppLauncher
   
   private static boolean verifyAppid_Scence_Fakeurl_Model(String paramString1, int paramInt, String paramString2)
   {
-    String str1 = arfd.a("mini_app_outsite_black_list", "");
+    String str1 = apyt.a("mini_app_outsite_black_list", "");
     QLog.i("MiniAppLauncher", 1, "verifyAppid_Scence_Fakeurl_Model appid:" + paramString1 + ", scene:" + paramInt + ", fakeUrl:" + paramString2 + ", blackList:" + str1);
     for (;;)
     {
@@ -466,7 +470,7 @@ public class MiniAppLauncher
         {
           String[] arrayOfString = localObject[i].split("\\|");
           if (arrayOfString.length < 3) {
-            break label245;
+            break label244;
           }
           String str2 = arrayOfString[0];
           String str3 = arrayOfString[1];
@@ -475,16 +479,16 @@ public class MiniAppLauncher
             str1 = arrayOfString[3];
           }
           if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (!str2.equals(paramString1)) || (Integer.valueOf(arrayOfString[1]).intValue() != paramInt)) {
-            break label245;
+            break label244;
           }
           if (!TextUtils.isEmpty(str1))
           {
             if (TextUtils.isEmpty(str1)) {
-              break label245;
+              break label244;
             }
             boolean bool = str1.equals(paramString2);
             if (!bool) {
-              break label245;
+              break label244;
             }
           }
           return false;
@@ -495,8 +499,43 @@ public class MiniAppLauncher
         QLog.e("MiniAppLauncher", 1, "verify appidWhiteList failed: " + paramString1);
       }
       return true;
-      label245:
+      label244:
       i += 1;
+    }
+  }
+  
+  public static boolean verifyArkScene(int paramInt)
+  {
+    if (arkSceneWhiteList == null)
+    {
+      String str1 = apyt.a("ark_scene_white_list", "1007,1008,1014,1036,2061,2072,2075,2085,2105,2112,2114,2217,2218,4012,4016,4017");
+      if ((str1 != null) && (!str1.equals(mArkSceneWhiteListConfig)))
+      {
+        arkSceneWhiteList = new ArrayList();
+        try
+        {
+          String[] arrayOfString = str1.split(",");
+          if (arrayOfString != null)
+          {
+            int j = arrayOfString.length;
+            int i = 0;
+            while (i < j)
+            {
+              String str2 = arrayOfString[i];
+              if (!TextUtils.isEmpty(str2)) {
+                arkSceneWhiteList.add(str2);
+              }
+              i += 1;
+            }
+          }
+          return arkSceneWhiteList.contains(String.valueOf(paramInt));
+        }
+        catch (Throwable localThrowable)
+        {
+          QLog.e("MiniAppLauncher", 1, "verifyArkScene failed  ", localThrowable);
+          mArkSceneWhiteListConfig = str1;
+        }
+      }
     }
   }
 }

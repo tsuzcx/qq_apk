@@ -1,188 +1,224 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.ApolloGameNormalStartHandler.1;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import eipc.EIPCResult;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class amsv
+  extends QIPCModule
 {
-  private long jdField_a_of_type_Long;
-  private anql jdField_a_of_type_Anql;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private WeakReference<Activity> b;
+  private static volatile amsv a;
   
-  public amsv(QQAppInterface paramQQAppInterface)
+  public amsv(String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    super(paramString);
   }
   
-  public void a()
+  public static amsv a()
   {
-    if (this.jdField_a_of_type_Anql != null) {
-      this.jdField_a_of_type_Anql.dismiss();
-    }
-  }
-  
-  public void a(Activity paramActivity, int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2, int paramInt4, long paramLong, String paramString3, String paramString4, String paramString5)
-  {
-    if (paramActivity == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 2000L)
-    {
-      QLog.e("ApolloGameNormalStartHandler", 1, "current - mLastLuanchGameTime < 2000");
-      return;
-    }
-    this.jdField_a_of_type_Long = l;
-    this.b = new WeakReference(paramActivity);
-    paramActivity.runOnUiThread(new ApolloGameNormalStartHandler.1(this, paramInt1, paramLong, paramInt2, paramInt3, localQQAppInterface, paramString2, paramInt4, paramString5, paramString1, paramString3, paramString4, paramActivity));
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameNormalStartHandler", 2, new Object[] { "startGameFromArkApp, args:", paramString });
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    JSONObject localJSONObject;
-    int k;
-    for (;;)
-    {
-      return;
-      try
-      {
-        localJSONObject = new JSONObject(paramString);
-        if (!localJSONObject.optBoolean("isGameApp"))
-        {
-          int m = localJSONObject.getInt("gameID");
-          int n = localJSONObject.getInt("gameMode");
-          str2 = localJSONObject.optString("roomId");
-          int i1 = localJSONObject.getInt("src");
-          String str3 = localJSONObject.optString("gameParam");
-          String str4 = localJSONObject.optString("gameName");
-          k = 0;
-          j = 0;
-          str1 = "";
-          localObject2 = BaseActivity.sTopActivity;
-          localObject1 = localObject2;
-          i = k;
-          paramString = str1;
-          if ((BaseActivity.sTopActivity instanceof FragmentActivity))
-          {
-            ChatFragment localChatFragment = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-            localObject1 = localObject2;
-            i = k;
-            paramString = str1;
-            if (localChatFragment != null)
-            {
-              localObject1 = localChatFragment.a();
-              i = j;
-              paramString = str1;
-              if (((BaseChatPie)localObject1).a() != null)
-              {
-                i = ((BaseChatPie)localObject1).a().jdField_a_of_type_Int;
-                paramString = ((BaseChatPie)localObject1).a().jdField_a_of_type_JavaLangString;
-              }
-              localObject1 = ((BaseChatPie)localObject1).a();
-            }
-          }
-          str1 = localJSONObject.optString("tempAIOUin");
-          localObject2 = localJSONObject.optString("tempAIONickName");
-          long l = 0L;
-          if (!TextUtils.isEmpty(str2)) {
-            l = Long.parseLong(str2);
-          }
-          a((Activity)localObject1, m, n, str3, i, paramString, i1, l, str1, (String)localObject2, str4);
-          if ((i != 1036) || (l <= 0L) || (TextUtils.isEmpty(str1))) {
-            continue;
-          }
-          paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if (paramString != null) {
-            anaf.b(paramString, str1, i, m, l);
-          }
-          aihy.T = true;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("ApolloGameNormalStartHandler", 1, "startGameFromArkApp, exception=", paramString);
-        return;
-      }
-    }
-    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramString == null)
-    {
-      QLog.w("ApolloGameNormalStartHandler", 1, "[startGameFromArkApp] app null");
-      return;
-    }
-    Object localObject1 = localJSONObject.optString("appID");
-    String str1 = localJSONObject.optString("paramsStr");
-    Object localObject2 = localJSONObject.optString("packageName");
-    String str2 = localJSONObject.optString("flags");
-    localJSONObject.optString("type");
-    if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)))
-    {
-      QLog.e("ApolloGameNormalStartHandler", 1, "[startGameFromArkApp] game app param error");
-      return;
-    }
-    if (!bhny.a(BaseActivity.sTopActivity, (String)localObject2))
-    {
-      paramString = String.format("https://m.gamecenter.qq.com/directout/detail/%s?_wv=2147484679&_wwv=4&ADTAG=limixiuteam&autodownload=1&pf=invite&appid=%s&notShowPub=1&asyncMode=3&appType=1&_nav_bgclr=ffffff&_nav_titleclr=ffffff&_nav_txtclr=ffffff&_nav_anim=true&_nav_alpha=0", new Object[] { localObject1, localObject1 });
-      localObject1 = new Intent(BaseActivity.sTopActivity, QQBrowserActivity.class);
-      ((Intent)localObject1).putExtra("big_brother_source_key", "biz_src_zf_lmx");
-      VasWebviewUtil.openQQBrowserActivity(BaseActivity.sTopActivity, paramString, -1L, (Intent)localObject1, false, -1);
-      return;
-    }
-    j = 268435456;
+    if (a == null) {}
     try
     {
-      k = Integer.parseInt(str2);
-      if ((0x4000000 & k) != 67108864) {
-        break label627;
+      if (a == null) {
+        a = new amsv("FriendQIPCModule");
       }
-      j = 335544320;
+      return a;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("ApolloGameNormalStartHandler", 1, "[startGameFromArkApp] parse flag exception:", localException);
-        continue;
-        j = 268435456;
-      }
-    }
-    int i = j;
-    if ((0x20000000 & k) == 536870912) {
-      i = j | 0x20000000;
-    }
-    j = i;
-    if ((k & 0x400000) == 4194304) {
-      j = i | 0x400000;
-    }
-    QLog.d("ApolloGameNormalStartHandler", 1, "[startGameFromArkApp] start game app");
-    new bcqt().a(paramString, BaseActivity.sTopActivity, (String)localObject1, str1, (String)localObject2, j);
+    finally {}
   }
   
-  public void b()
+  private EIPCResult a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
   {
-    a();
+    paramBundle = paramBundle.getString("KEY_UIN");
+    paramQQAppInterface = (amsw)paramQQAppInterface.getManager(51);
+    Bundle localBundle = new Bundle();
+    if (paramQQAppInterface != null) {}
+    for (boolean bool = paramQQAppInterface.b(paramBundle);; bool = false)
+    {
+      localBundle.putBoolean("KEY_IS_FRIEND", bool);
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendQIPCModule", 2, String.format("onCall uin: %s, isFriend: %s", new Object[] { paramBundle, Boolean.valueOf(bool) }));
+      }
+      return EIPCResult.createSuccessResult(localBundle);
+    }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  {
+    int i = 1;
+    String str = paramBundle.getString("KEY_UIN");
+    int j = paramBundle.getInt("KEY_SCF_SWITCH_TYPE");
+    boolean bool = paramBundle.getBoolean("KEY_SCF_SWITCH_STATUS");
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendQIPCModule", 2, String.format("SCP set switch, switchType: %s, switchStatus", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool) }));
+    }
+    paramBundle = (amsw)paramQQAppInterface.getManager(51);
+    if (j == 1) {
+      if (bool)
+      {
+        paramBundle.e(str);
+        SpecialCareInfo localSpecialCareInfo = new SpecialCareInfo();
+        localSpecialCareInfo.globalSwitch = 1;
+        localSpecialCareInfo.specialRingSwitch = 1;
+        localSpecialCareInfo.friendRingId = 1;
+        localSpecialCareInfo.qzoneSwitch = 1;
+        localSpecialCareInfo.uin = str;
+        paramBundle.a(localSpecialCareInfo);
+        alem.a(str, "1", paramQQAppInterface);
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        paramBundle.e(str);
+        return;
+      } while (j != 2);
+      paramQQAppInterface = paramBundle.a(str);
+    } while (paramQQAppInterface == null);
+    if (bool) {}
+    for (;;)
+    {
+      paramQQAppInterface.qzoneSwitch = i;
+      paramBundle.a(paramQQAppInterface);
+      return;
+      i = 0;
+    }
+  }
+  
+  private EIPCResult b(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getString("KEY_UIN");
+    amsw localamsw = (amsw)paramQQAppInterface.getManager(51);
+    Bundle localBundle = new Bundle();
+    boolean bool;
+    if (localamsw != null)
+    {
+      bool = localamsw.b(paramBundle);
+      if (!bool) {
+        break label157;
+      }
+      paramQQAppInterface = (PhoneContactManagerImp)paramQQAppInterface.getManager(11);
+      if (paramQQAppInterface == null) {
+        break label157;
+      }
+      int i = paramQQAppInterface.d();
+      if (((i != 9) && (i != 8) && (i != 4) && (i != 2)) || (!paramQQAppInterface.m())) {
+        break label157;
+      }
+      paramQQAppInterface = paramQQAppInterface.a(paramBundle);
+      if (paramQQAppInterface == null) {
+        break label157;
+      }
+    }
+    label157:
+    for (paramQQAppInterface = paramQQAppInterface.unifiedCode;; paramQQAppInterface = null)
+    {
+      localBundle.putString("PHONE_NUMBER", paramQQAppInterface);
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendQIPCModule", 2, String.format("onCall uin: %s, phoneNumber: %s", new Object[] { paramBundle, paramQQAppInterface }));
+      }
+      return EIPCResult.createSuccessResult(localBundle);
+      bool = false;
+      break;
+    }
+  }
+  
+  private EIPCResult c(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  {
+    String str1 = paramBundle.getString("KEY_UIN");
+    paramBundle = ((amsw)paramQQAppInterface.getManager(51)).a(str1);
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("KEY_SCF_INFO", paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendQIPCModule", 2, String.format("getSCFInfo: %s", new Object[] { paramBundle }));
+    }
+    SharedPreferences localSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
+    String str2 = "special_care_voice_red_dot" + paramQQAppInterface.getCurrentAccountUin();
+    paramBundle = bfza.a(localSharedPreferences, str2, null);
+    paramQQAppInterface = paramBundle;
+    if (paramBundle == null) {
+      paramQQAppInterface = new HashSet();
+    }
+    if (paramQQAppInterface.add(str1))
+    {
+      localBundle.putBoolean("KEY_SCF_VOICE_NEW_FLAG", true);
+      paramBundle = localSharedPreferences.edit();
+      bfza.a(paramBundle, str2, paramQQAppInterface.toArray());
+      paramBundle.commit();
+    }
+    for (;;)
+    {
+      return EIPCResult.createSuccessResult(localBundle);
+      localBundle.putBoolean("KEY_SCF_VOICE_NEW_FLAG", false);
+    }
+  }
+  
+  private EIPCResult d(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getString("KEY_UIN");
+    ExtensionInfo localExtensionInfo = ((amsw)paramQQAppInterface.getManager(51)).a(paramBundle, false);
+    if (localExtensionInfo != null) {}
+    for (int i = localExtensionInfo.friendRingId;; i = 0)
+    {
+      paramQQAppInterface = apka.a(paramQQAppInterface).a(i, paramBundle, 0);
+      paramBundle = new Bundle();
+      paramBundle.putString("KEY_SCF_RING_NAME", paramQQAppInterface);
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendQIPCModule", 2, String.format("SCP getRingName, ringId: %s, ringName: %s", new Object[] { Integer.valueOf(i), paramQQAppInterface }));
+      }
+      return EIPCResult.createSuccessResult(paramBundle);
+    }
+  }
+  
+  private EIPCResult e(QQAppInterface paramQQAppInterface, Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getStringArrayList("KEY_BE_DELETE_SINGLE_WAY_FRIENDS");
+    QLog.d("FriendQIPCModule", 1, "delete single way friends: " + paramBundle);
+    if ((paramBundle != null) && (!paramBundle.isEmpty())) {
+      ((anbm)paramQQAppInterface.getBusinessHandler(26)).notifyUI(5, true, paramBundle);
+    }
+    return EIPCResult.createSuccessResult(null);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localObject instanceof QQAppInterface)) {
+      return null;
+    }
+    localObject = (QQAppInterface)localObject;
+    if ("ACTION_IS_FRIEND".equals(paramString)) {
+      return a((QQAppInterface)localObject, paramBundle);
+    }
+    if ("ACTION_GET_PHONE_NUMBER".equals(paramString)) {
+      return b((QQAppInterface)localObject, paramBundle);
+    }
+    if ("ACTION_GET_SPECIAL_CARE_INFO".equals(paramString)) {
+      return c((QQAppInterface)localObject, paramBundle);
+    }
+    if ("ACTION_GET_SCF_RING_NAME".equals(paramString)) {
+      return d((QQAppInterface)localObject, paramBundle);
+    }
+    if ("ACTION_SET_SAVE_SWITCH".equals(paramString)) {
+      a((QQAppInterface)localObject, paramBundle);
+    }
+    while (!"ACTION_DELETE_SINGLE_WAY_FRIENDS".equals(paramString)) {
+      return null;
+    }
+    return e((QQAppInterface)localObject, paramBundle);
   }
 }
 

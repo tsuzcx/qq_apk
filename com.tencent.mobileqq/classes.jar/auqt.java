@@ -1,17 +1,43 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View;
+import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import java.lang.ref.WeakReference;
 
 public class auqt
-  implements CompoundButton.OnCheckedChangeListener
+  implements EnterCallback
 {
-  public auqt(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
+  private final WeakReference<ODLoadingActivity> a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public auqt(ODLoadingActivity paramODLoadingActivity)
   {
-    atul.a().c(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    this.a = new WeakReference(paramODLoadingActivity);
+  }
+  
+  public void onCloseLoadingView()
+  {
+    ODLoadingActivity localODLoadingActivity = (ODLoadingActivity)this.a.get();
+    if (localODLoadingActivity == null) {
+      return;
+    }
+    localODLoadingActivity.a();
+  }
+  
+  public void onEnterComplete()
+  {
+    ODLoadingActivity localODLoadingActivity = (ODLoadingActivity)this.a.get();
+    if (localODLoadingActivity == null) {
+      return;
+    }
+    localODLoadingActivity.b();
+  }
+  
+  public void onShowLoadingView(View paramView)
+  {
+    ODLoadingActivity localODLoadingActivity = (ODLoadingActivity)this.a.get();
+    if (localODLoadingActivity == null) {
+      return;
+    }
+    localODLoadingActivity.a(paramView);
   }
 }
 

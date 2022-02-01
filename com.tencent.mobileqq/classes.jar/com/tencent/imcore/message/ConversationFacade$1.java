@@ -1,18 +1,18 @@
 package com.tencent.imcore.message;
 
-import adab;
+import abwp;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ConversationFacade$1
   implements Runnable
 {
-  public ConversationFacade$1(adab paramadab) {}
+  public ConversationFacade$1(abwp paramabwp) {}
   
   public void run()
   {
-    adab.a(this.this$0);
-    adab.a(this.this$0).a().notifyUI(8023, true, null);
+    abwp.a(this.this$0);
+    abwp.a(this.this$0).getMsgHandler().notifyUI(8023, true, null);
   }
 }
 

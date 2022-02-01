@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.hotpic;
 
 import android.util.SparseArray;
-import avtm;
+import augn;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class HotPicManager$2
   implements Runnable
 {
-  public HotPicManager$2(avtm paramavtm, int paramInt1, int paramInt2) {}
+  public HotPicManager$2(augn paramaugn, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -33,7 +33,7 @@ public class HotPicManager$2
       if (bool) {}
       for (i = 10003;; i = 10002)
       {
-        ((avtm)localObject).a(0, 15, j, k, true, i);
+        ((augn)localObject).a(0, 15, j, k, true, i);
         if (!QLog.isColorLevel()) {
           break;
         }
@@ -41,23 +41,23 @@ public class HotPicManager$2
         return;
       }
     case 10002: 
-      localArrayList = (ArrayList)avtm.a(this.this$0).get(this.b);
+      localArrayList = (ArrayList)augn.a(this.this$0).get(this.b);
       localObject = localArrayList;
       if (localArrayList == null)
       {
         localObject = new ArrayList();
-        avtm.a(this.this$0).put(this.b, localObject);
+        augn.a(this.this$0).put(this.b, localObject);
       }
       i = ((ArrayList)localObject).size();
       this.this$0.a(i, 16 + i - 1, this.this$0.b(), this.b, false, this.a);
       return;
     }
-    ArrayList localArrayList = (ArrayList)avtm.a(this.this$0).get(this.b);
+    ArrayList localArrayList = (ArrayList)augn.a(this.this$0).get(this.b);
     Object localObject = localArrayList;
     if (localArrayList == null)
     {
       localObject = new ArrayList();
-      avtm.a(this.this$0).put(this.b, localObject);
+      augn.a(this.this$0).put(this.b, localObject);
     }
     int i = ((ArrayList)localObject).size();
     this.this$0.a(i, 8 + i - 1, this.this$0.b(), this.b, false, this.a);

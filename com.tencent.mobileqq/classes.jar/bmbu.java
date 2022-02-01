@@ -1,10 +1,6 @@
-final class bmbu
-  extends ThreadLocal<char[]>
+public class bmbu
 {
-  protected char[] a()
-  {
-    return new char[1024];
-  }
+  public static bmbr a = new bmbr();
 }
 
 

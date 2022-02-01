@@ -1,44 +1,57 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.widgets.polymerization.QCirclePolymerizationFuelListItemView;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-import qqcircle.QQCircleFeedBase.StTagPageData;
-import qqcircle.QQCircleRankinglist.RankingItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTranslateToken;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspTranslateToken;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
-class wfl
-  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+public class wfl
+  extends vqr
 {
-  private wfl(wfi paramwfi) {}
+  public static final String a = vpl.a("StorySvc.translate_share_parameters_to_token");
+  public String b;
+  public int c;
+  public String c;
   
-  public int getItemCount()
+  public String a()
   {
-    if (wfi.a(this.a) == null) {
-      return 0;
-    }
-    return wfi.a(this.a).fuelCircleRankItem.size();
+    return a;
   }
   
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public vqm a(byte[] paramArrayOfByte)
   {
-    if ((wfi.a(this.a) == null) || (wfi.a(this.a).fuelCircleRankItem.size() < paramInt)) {}
-    for (;;)
+    qqstory_service.RspTranslateToken localRspTranslateToken = new qqstory_service.RspTranslateToken();
+    try
     {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
-      ((wfk)paramViewHolder).a((QQCircleRankinglist.RankingItem)wfi.a(this.a).fuelCircleRankItem.get().get(paramInt), paramInt);
+      localRspTranslateToken.mergeFrom(paramArrayOfByte);
+      return new wfm(localRspTranslateToken);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("Q.qqstory.share.trans.req", 2, "decode failed", paramArrayOfByte);
+        }
+      }
     }
   }
   
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  protected byte[] a()
   {
-    paramViewGroup = new QCirclePolymerizationFuelListItemView(wfi.a(this.a).getContext());
-    paramViewGroup.setReportBean(this.a.a());
-    paramViewGroup.a(paramInt);
-    return new wfk(paramViewGroup);
+    qqstory_service.ReqTranslateToken localReqTranslateToken = new qqstory_service.ReqTranslateToken();
+    localReqTranslateToken.src_buffer.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqTranslateToken.type.set(this.jdField_c_of_type_Int);
+    if ((this.jdField_c_of_type_Int == 1) && (this.jdField_c_of_type_JavaLangString != null)) {
+      localReqTranslateToken.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    }
+    return localReqTranslateToken.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "StoryShareTranslateTokenRequest{feedId='" + this.jdField_c_of_type_JavaLangString + '\'' + ", srcBuffer='" + this.b + '\'' + ", type=" + this.jdField_c_of_type_Int + '}';
   }
 }
 

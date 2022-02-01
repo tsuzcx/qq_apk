@@ -1,54 +1,89 @@
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.widgets.polymerization.QCircleTagPolymerizationHeadView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import qqcircle.QQCircleFeedBase.StFeedListBusiRspData;
-import qqcircle.QQCircleFeedBase.StTagPageData;
+import UserGrowth.stFriendFeed;
+import UserGrowth.stFriendFeedRsp;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
+import java.util.List;
 
 public class vah
-  extends vbn
 {
-  private QCircleTagPolymerizationHeadView a;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public vah(Bundle paramBundle)
+  public static vah a()
   {
-    super(paramBundle);
+    return vaj.a();
   }
   
-  protected BaseWidgetView a(ViewGroup paramViewGroup, aabp paramaabp)
+  private void a(urj paramurj, vaa paramvaa)
   {
-    this.a = new QCircleTagPolymerizationHeadView(paramViewGroup.getContext());
-    this.a.setReportBean(a());
-    return this.a;
-  }
-  
-  protected String a()
-  {
-    return "QCircleTagPolymerizationHeadBlock";
-  }
-  
-  public void loadData(aabu paramaabu) {}
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((this.mDataList == null) || (this.mDataList.size() < 1) || (this.a == null)) {}
-    for (;;)
+    boolean bool = true;
+    if (!paramurj.a())
     {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-      return;
-      QLog.d("QCircleTagPolymerizationHeadBlock", 1, "QcircleTagPolymerizationHeadView setData i" + paramInt);
-      if ((this.mDataList.get(paramInt) instanceof QQCircleFeedBase.StFeedListBusiRspData)) {
-        this.a.setData(((QQCircleFeedBase.StFeedListBusiRspData)this.mDataList.get(paramInt)).tagPageData.get());
+      uya.d("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][onTaskResponse] failed code:" + paramurj.jdField_a_of_type_Int + ", msg:" + paramurj.jdField_a_of_type_JavaLangString);
+      if (paramvaa != null) {
+        paramvaa.a(paramurj.jdField_a_of_type_Int, paramurj.jdField_a_of_type_JavaLangString);
       }
     }
+    label214:
+    do
+    {
+      do
+      {
+        return;
+        if (!(paramurj.jdField_a_of_type_JavaLangObject instanceof stFriendFeedRsp)) {
+          break;
+        }
+        Object localObject = (stFriendFeedRsp)paramurj.jdField_a_of_type_JavaLangObject;
+        if (((stFriendFeedRsp)localObject).isFinished == 1) {}
+        for (;;)
+        {
+          this.jdField_a_of_type_Boolean = bool;
+          localObject = ((stFriendFeedRsp)localObject).friendFeed;
+          if (localObject == null) {
+            break label214;
+          }
+          this.jdField_a_of_type_JavaLangString = ((stFriendFeed)localObject).attachInfo;
+          paramurj = ((stFriendFeed)localObject).friendFeeds;
+          paramurj = WSVerticalDataManager.a().a(paramurj, "", this.jdField_a_of_type_Boolean);
+          uya.e("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][onTaskResponse] itemDataList size:" + paramurj.size() + ", mAttachInfo:" + this.jdField_a_of_type_JavaLangString + ", mIsFinished:" + this.jdField_a_of_type_Boolean);
+          if (paramvaa == null) {
+            break;
+          }
+          paramvaa.a(paramurj, false, false, null);
+          return;
+          bool = false;
+        }
+        uya.d("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][onTaskResponse] stFriendFeed is null!");
+      } while (paramvaa == null);
+      paramvaa.a(paramurj.b, "stFriendFeed is null!");
+      return;
+      uya.d("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][onTaskResponse] mResultBean instanceof stFriendFeedRsp: false!");
+    } while (paramvaa == null);
+    paramvaa.a(paramurj.b, paramurj.jdField_a_of_type_JavaLangString);
   }
   
-  public void onInitBlock(Bundle paramBundle) {}
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    uya.e("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][setAttachInfo] attachInfo:" + paramString);
+  }
+  
+  public void a(vaa paramvaa)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      uya.e("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][onTaskResponse] finished!");
+      return;
+    }
+    paramvaa = new vai(this, paramvaa);
+    uya.e("WSFriendFeedDataManager", "[WSFriendFeedDataManager.java][fetchData] attachInfo:" + this.jdField_a_of_type_JavaLangString);
+    paramvaa = new urj(new uwh(this.jdField_a_of_type_JavaLangString), null, paramvaa, 4012);
+    urc.a().a(paramvaa);
+  }
 }
 
 

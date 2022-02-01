@@ -1,18 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.VideoInviteActivity;
 
-public class mkc
+class mkc
   implements DialogInterface.OnClickListener
 {
-  public mkc(VideoControlUI paramVideoControlUI, long paramLong) {}
+  mkc(mkb parammkb) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a != null) {
-      QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionDialog.Cancel, seq[" + this.jdField_a_of_type_Long + "]");
-    }
+    this.a.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(this.a.jdField_a_of_type_Long, true);
   }
 }
 

@@ -1,22 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.util.BaseApplication;
 
-final class behp
-  implements DialogInterface.OnClickListener
+class behp
 {
-  behp(behr parambehr) {}
+  private bjyw jdField_a_of_type_Bjyw = new bjyw();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public behp(beho parambeho)
   {
-    behm.a("0X800A5CB");
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "showThemeDarkModeTips");
+    this.jdField_a_of_type_Bjyw.a();
+  }
+  
+  public int a(long paramLong1, long paramLong2)
+  {
+    int j = this.jdField_a_of_type_Bjyw.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
+    int k = bjyz.a(BaseApplication.getContext());
+    int i;
+    if (k != 1)
+    {
+      i = j;
+      if (k != 2) {}
     }
-    behm.a(false);
-    if (this.a != null) {
-      this.a.onConfirm();
+    else
+    {
+      i = j;
+      if (j > 16384) {
+        i = 16384;
+      }
     }
+    return i;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bjyw.b();
   }
 }
 

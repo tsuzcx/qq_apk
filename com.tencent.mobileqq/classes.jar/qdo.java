@@ -1,29 +1,14 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
-
-public class qdo
-  extends ClickableSpan
+class qdo
+  implements quh
 {
-  public qdo(NativeAwesomeCommentView paramNativeAwesomeCommentView) {}
+  qdo(qdf paramqdf, pvc parampvc) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (NativeAwesomeCommentView.a(this.a) != null)
-    {
-      long l = NativeAwesomeCommentView.a(this.a).a;
-      NativeAwesomeCommentView.a(this.a, true);
-      osp.a(l + "", this.a.getContext());
+    pet localpet = this.jdField_a_of_type_Pvc.a().a().a();
+    if (localpet != null) {
+      localpet.a(null, this.jdField_a_of_type_Pvc.a(), 1);
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
-    paramTextPaint.setUnderlineText(false);
   }
 }
 

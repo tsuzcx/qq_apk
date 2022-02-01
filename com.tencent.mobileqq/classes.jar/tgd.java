@@ -1,24 +1,53 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class tgd
-  extends tgb
+final class tgd
+  implements tgj
 {
-  tgd(tfy paramtfy1, Activity paramActivity, tfy paramtfy2, JSONObject paramJSONObject)
+  public void a()
   {
-    super(paramtfy1, paramActivity, paramtfy2, paramJSONObject);
+    Object localObject = tgc.a("https://viola/viola_config.json?v_bid=3192");
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      try
+      {
+        localObject = new JSONObject((String)localObject);
+        JSONArray localJSONArray = (JSONArray)((JSONObject)localObject).get("preload_bids");
+        int i = 0;
+        while (i < localJSONArray.length())
+        {
+          tgc.a((String)localJSONArray.get(i), null);
+          i += 1;
+        }
+        tgc.jdField_a_of_type_JavaLangString = pay.a();
+        tgc.jdField_a_of_type_Long = System.currentTimeMillis();
+        if (((JSONObject)localObject).has("use_main")) {
+          tgc.jdField_a_of_type_Boolean = ((Boolean)((JSONObject)localObject).get("use_main")).booleanValue();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ViolaAccessHelper", 2, "pre load all offline from offline is success!");
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ViolaAccessHelper", 2, "pre load all offline from offline is exception:" + localException.getMessage());
+        }
+        tgc.b();
+        return;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaAccessHelper", 2, "pre load all offline from offline is empty!");
+    }
+    tgc.b();
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
-  {
-    paramString1 = null;
-    if (paramActionSheetItem.action == 72) {
-      paramString1 = paramActionSheetItem.uin;
-    }
-    tfy.a(this.jdField_a_of_type_Tfy).mShareUtils.a(this.jdField_a_of_type_OrgJsonJSONObject, paramInt, this.jdField_a_of_type_AndroidAppActivity, paramString1, paramActionSheetItem.uinType, paramActionSheetItem.label);
-  }
+  public void a(int paramInt) {}
+  
+  public void b() {}
 }
 
 

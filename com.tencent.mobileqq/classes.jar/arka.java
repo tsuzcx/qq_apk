@@ -1,78 +1,48 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
+import cooperation.qzone.api.FeedListView.ExpandHead;
 
 public class arka
-  extends arac<arjz>
+  implements FeedListView.ExpandHead
 {
-  @NonNull
-  public arjz a(int paramInt)
-  {
-    return new arjz();
-  }
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  @Nullable
-  public arjz a(araj[] paramArrayOfaraj)
+  public arka(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
+  
+  private boolean a()
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
-    {
-      arjz localarjz = arjz.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
-      }
-      return localarjz;
+    long l = System.nanoTime();
+    if (l - this.jdField_a_of_type_Long < 400000000L) {
+      return true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public void a(arjz paramarjz)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "onUpdate " + paramarjz.toString());
-    }
-  }
-  
-  public Class<arjz> clazz()
-  {
-    return arjz.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
+    this.jdField_a_of_type_Long = l;
     return false;
   }
   
-  public int migrateOldVersion()
+  public void hide()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, "migrateOldVersion");
+    if ((!this.jdField_a_of_type_Boolean) || (a())) {
+      return;
     }
-    return 0;
+    ExtendFriendCampusFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendCampusFragment).b();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = System.nanoTime();
   }
   
-  public void onReqFailed(int paramInt)
+  public void show()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVPreloadPskeyConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    if ((this.jdField_a_of_type_Boolean) || (a())) {
+      return;
     }
-  }
-  
-  public int type()
-  {
-    return 585;
+    ExtendFriendCampusFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendCampusFragment).a();
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = System.nanoTime();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arka
  * JD-Core Version:    0.7.0.1
  */

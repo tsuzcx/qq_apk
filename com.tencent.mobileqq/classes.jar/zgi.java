@@ -1,28 +1,19 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class zgi
-  extends zfy
+class zgi
+  implements View.OnClickListener
 {
-  public final int c;
+  zgi(zgc paramzgc, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public zgi(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    super(paramInt3, paramString, paramInt1);
-    this.c = paramInt2;
-  }
-  
-  @NonNull
-  public Class<? extends zfz> a()
-  {
-    return zgj.class;
-  }
-  
-  @NonNull
-  public zfz a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new zgj(this, paramContext, paramViewGroup);
+    zfs.a(this.jdField_a_of_type_Zgc.a, zfs.a(this.jdField_a_of_type_Zgc.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
+    zfs.a(this.jdField_a_of_type_Zgc.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

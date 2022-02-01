@@ -1,30 +1,65 @@
-import com.tencent.widget.AuthorizationItem;
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 
-public final class bljx
+public class bljx
+  extends blic
 {
-  public final int a;
-  public final String a;
-  public final String b;
+  private bllr jdField_a_of_type_Bllr;
+  private bnbo jdField_a_of_type_Bnbo;
+  private bnbp jdField_a_of_type_Bnbp;
   
-  public bljx(String paramString1, String paramString2, int paramInt)
+  public bljx(bnbp parambnbp, bnbo parambnbo)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bnbp = parambnbp;
+    this.jdField_a_of_type_Bnbo = parambnbo;
   }
   
-  public static bljx a(int paramInt)
+  public View a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return AuthorizationItem.d;
-    case 0: 
-      return AuthorizationItem.a;
-    case 1: 
-      return AuthorizationItem.b;
+    return this.jdField_a_of_type_Bnbp.a().getLayoutInflater().inflate(2131558583, null);
+  }
+  
+  public void a()
+  {
+    Intent localIntent = this.jdField_a_of_type_Bnbp.a().getIntent();
+    localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 9);
+    localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM_VIDEO", 1);
+    localIntent.putExtra("PhotoConst.IS_SINGLE_MODE", false);
+    localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 7);
+    this.jdField_a_of_type_Bllr = new bllr();
+    this.jdField_a_of_type_Bnbp.a().getFragmentManager().beginTransaction().add(2131366745, this.jdField_a_of_type_Bllr).commit();
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Bnbp == null) {
+      return false;
     }
-    return AuthorizationItem.c;
+    if ((this.jdField_a_of_type_Bllr != null) && (this.jdField_a_of_type_Bllr.a != null)) {
+      this.jdField_a_of_type_Bllr.a.a(null);
+    }
+    return true;
+  }
+  
+  public void e()
+  {
+    super.e();
+    this.jdField_a_of_type_Bnbp.a().finish();
+  }
+  
+  public void o()
+  {
+    super.o();
   }
 }
 

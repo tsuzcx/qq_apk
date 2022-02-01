@@ -1,46 +1,15 @@
-import com.tencent.qapmsdk.base.listener.IMemoryCellingListener;
-import com.tencent.qapmsdk.memory.DumpMemInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class admh
-  implements IMemoryCellingListener
+  implements DialogInterface.OnDismissListener
 {
-  static void a(long paramLong) {}
+  public admh(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onBeforeUploadJson()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QLog.i("QAPM_QQ_Impl", 1, "Celling onBeforeUploadJson");
-  }
-  
-  public boolean onCanDump(long paramLong)
-  {
-    a(paramLong);
-    return false;
-  }
-  
-  public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2) {}
-  
-  public void onHprofDumped(@NotNull String paramString) {}
-  
-  public void onLowMemory(long paramLong)
-  {
-    adma.a().a(paramLong);
-  }
-  
-  @NotNull
-  public List<String> onPrepareDump(@NotNull String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramString = DumpMemInfoHandler.generateHprof(paramString);
-    boolean bool = ((Boolean)paramString[0]).booleanValue();
-    if ((bool) && (paramString[1] != null)) {
-      localArrayList.add((String)paramString[1]);
-    }
-    QLog.i("QAPM_QQ_Impl", 1, "Celling onBeforeDump " + bool);
-    return localArrayList;
+    GroupManagerActivity.a(this.a, null);
   }
 }
 

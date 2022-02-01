@@ -1,34 +1,37 @@
-import java.io.PrintStream;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.qqstory.utils.UIUtils;
 
-public class bdxu
-  extends bdxn
+class bdxu
+  extends AnimatorListenerAdapter
 {
-  private int f;
-  private int g;
+  bdxu(bdxs parambdxs, boolean paramBoolean, View paramView, int paramInt) {}
   
-  public bdxu(int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramInt1, 8, 0);
-    this.f = paramInt2;
-    this.g = paramInt3;
-  }
-  
-  protected void a(int paramInt, float paramFloat)
-  {
-    System.out.println("time = " + paramInt + ", percent = " + paramFloat);
-    this.b = ((int)(this.f + (this.g - this.f) * paramFloat));
-    if (this.g - this.f > 0) {
-      if (this.b >= this.g) {
-        this.b = this.g;
-      }
+    boolean bool = false;
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    for (;;)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      super.a(paramInt, paramFloat);
-      return;
-      if (this.b <= this.g) {
-        this.b = this.g;
+      paramAnimator = new int[2];
+      this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(paramAnimator);
+      i = UIUtils.getWindowScreenHeight(this.jdField_a_of_type_Bdxs.jdField_a_of_type_AndroidContentContext) - paramAnimator[1];
+      if (i >= this.jdField_a_of_type_Int) {}
+    }
+    for (int i = this.jdField_a_of_type_Int - i;; i = 0)
+    {
+      if (this.jdField_a_of_type_Bdxs.jdField_a_of_type_Bdxw != null)
+      {
+        paramAnimator = this.jdField_a_of_type_Bdxs.jdField_a_of_type_Bdxw;
+        if (!this.jdField_a_of_type_Boolean) {
+          bool = true;
+        }
+        paramAnimator.a(bool, i);
       }
+      return;
     }
   }
 }

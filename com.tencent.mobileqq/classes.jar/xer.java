@@ -1,30 +1,18 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPOIPosters;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.POIPosterData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class xer
-  extends wov
+  implements ysv
 {
-  public final ArrayList<wum> a = new ArrayList();
+  public xer(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public xer(qqstory_service.RspGetPOIPosters paramRspGetPOIPosters)
-  {
-    a(paramRspGetPOIPosters);
-  }
+  public void a() {}
   
-  private void a(qqstory_service.RspGetPOIPosters paramRspGetPOIPosters)
+  public boolean a(boolean paramBoolean)
   {
-    int i = 0;
-    while (i < paramRspGetPOIPosters.poi_posters.size())
-    {
-      Object localObject = (qqstory_struct.POIPosterData)paramRspGetPOIPosters.poi_posters.get(i);
-      localObject = new wum(((qqstory_struct.POIPosterData)localObject).poster_name.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).name.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).thumb_url.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).poster_url.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).poster_json_layout_desc.get().toStringUtf8());
-      this.a.add(localObject);
-      i += 1;
+    if (this.a.jdField_a_of_type_Xkw != null) {
+      this.a.jdField_a_of_type_Xkw.a(this.a.jdField_a_of_type_Xff.a());
     }
+    return true;
   }
 }
 

@@ -1,37 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
-import com.tencent.robolectric.ShadowParcel;
-import java.util.Arrays;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 class aotz
-  implements PermissionMonitor.Listener
+  implements aouh
 {
-  static
+  aotz(aotv paramaotv, aouf paramaouf, aouh paramaouh, String paramString) {}
+  
+  public void a(boolean paramBoolean)
   {
-    if (!aotx.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    if (paramBoolean)
     {
-      jdField_a_of_type_Boolean = bool;
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update success, name=%s", new Object[] { this.jdField_a_of_type_Aouf.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_Aouh.a(true);
       return;
     }
-  }
-  
-  aotz(aotx paramaotx) {}
-  
-  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
-  {
-    if (aotx.a(this.jdField_a_of_type_Aotx) != Thread.currentThread()) {}
-    while ((!aotx.a(this.jdField_a_of_type_Aotx)) || (paramArrayOfObject.length != 2)) {
-      return;
-    }
-    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aotx.a(this.jdField_a_of_type_Aotx))) {
-      throw new AssertionError();
-    }
-    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[1].getClass() != Float.class)) {
-      throw new AssertionError();
-    }
-    ShadowParcel.a((int)aotx.a(this.jdField_a_of_type_Aotx), ((Float)paramArrayOfObject[1]).floatValue());
-    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, try full update, name=%s", new Object[] { this.jdField_a_of_type_Aouf.jdField_a_of_type_JavaLangString }));
+    aotv.a(this.jdField_a_of_type_Aotv, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aouf, new aoua(this));
   }
 }
 

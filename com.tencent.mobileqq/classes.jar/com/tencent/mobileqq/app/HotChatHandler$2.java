@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import anzp;
-import axxr;
+import amtp;
+import awkz;
 import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -9,11 +9,11 @@ import java.util.List;
 public class HotChatHandler$2
   implements Runnable
 {
-  public HotChatHandler$2(anzp paramanzp, boolean paramBoolean, List paramList) {}
+  public HotChatHandler$2(amtp paramamtp, boolean paramBoolean, List paramList) {}
   
   public void run()
   {
-    if ((!axxr.a().jdField_a_of_type_Boolean) && (!axxr.a().c))
+    if ((!awkz.a().jdField_a_of_type_Boolean) && (!awkz.a().c))
     {
       if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
         break label110;
@@ -21,11 +21,11 @@ public class HotChatHandler$2
       localHotChatInfo = (HotChatInfo)this.jdField_a_of_type_JavaUtilList.get(0);
     }
     label110:
-    while (axxr.a().a() != 1) {
+    while (awkz.a().a() != 1) {
       try
       {
         long l = Long.parseLong(localHotChatInfo.troopUin);
-        axxr.a().a(1, null, l, localHotChatInfo.name);
+        awkz.a().a(1, null, l, localHotChatInfo.name);
         return;
       }
       catch (Exception localException)
@@ -36,7 +36,7 @@ public class HotChatHandler$2
         return;
       }
     }
-    axxr.a().d();
+    awkz.a().d();
   }
 }
 

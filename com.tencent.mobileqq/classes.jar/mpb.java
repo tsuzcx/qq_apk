@@ -1,56 +1,48 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
-import com.tencent.common.app.AppInterface;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.service.AVRedPacketConfig;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 
-public final class mpb
-  extends mhi
+class mpb
+  extends lwa
 {
-  WeakReference<ZimuToolbar> a;
+  mpb(mpa parammpa) {}
   
-  public mpb(AppInterface paramAppInterface, Context paramContext, ArrayList<mii> paramArrayList, HorizontalListView paramHorizontalListView, ZimuToolbar paramZimuToolbar)
+  public void a(boolean paramBoolean, AVRedPacketConfig paramAVRedPacketConfig)
   {
-    super(paramAppInterface, paramContext, paramArrayList, paramHorizontalListView);
-    this.a = new WeakReference(paramZimuToolbar);
+    this.a.jdField_a_of_type_Mpd = new mpd();
+    this.a.jdField_a_of_type_Mpd.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig = paramAVRedPacketConfig;
+    if ((paramBoolean) && (paramAVRedPacketConfig != null) && (paramAVRedPacketConfig.mainSwitch)) {
+      this.a.jdField_a_of_type_Mpd.jdField_a_of_type_Boolean = true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.i, 1, "onGetAVRedPacketConfig红包配置获取结果, isSuccess[" + paramBoolean + "], config[" + paramAVRedPacketConfig + "], mMainSwitch[" + this.a.jdField_a_of_type_Mpd.jdField_a_of_type_Boolean + "], mNeedDownloadRes[" + this.a.jdField_a_of_type_Mpd.jdField_b_of_type_Boolean + "], Thread[" + Thread.currentThread().getId() + "]");
+    }
+    this.a.a(this.a.jdField_a_of_type_Mpd);
+    if ((this.a.jdField_a_of_type_Mpd.jdField_b_of_type_Boolean) && (paramAVRedPacketConfig != null))
+    {
+      if (!this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.a.jdField_a_of_type_Lvz))
+      {
+        QLog.w(this.a.i, 1, "startDownloadAVRedPacketRes, 调用失败");
+        return;
+      }
+      this.a.b(this.a.jdField_a_of_type_Mpd);
+      return;
+    }
+    this.a.b(this.a.jdField_a_of_type_Mpd);
   }
   
-  public void a(String paramString1, long paramLong, String paramString2)
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    boolean bool1 = false;
-    int j;
-    int i;
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      j = getCount();
-      i = 1;
-      if (i < j)
-      {
-        mii localmii = a(i);
-        if ((localmii != null) && (paramString2.equals(localmii.a))) {
-          bool1 = true;
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.i, 1, "红包资源下载结果, isSuccess[" + paramBoolean + "], resPath[" + paramString1 + "], bgMusicPath[" + paramString2 + "]");
     }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.w("QAVPtvTemplateAdapter", 1, "setSelectedItem, id[" + paramString2 + "], find[" + bool1 + "], seq[" + paramLong + "], from[" + paramString1 + "], mCurSelectedPosition[" + this.d + "]");
-      }
-      j = this.d;
-      boolean bool2 = a(i);
-      if (bool2) {
-        a(paramLong, this.d);
-      }
-      QLog.w("QAVPtvTemplateAdapter", 1, "setSelectedItem end, from[" + paramString1 + "], seq[" + paramLong + "], id[" + paramString2 + "], find[" + bool1 + "], index[" + i + "], Pos[" + j + "->" + this.d + "], selectResult[" + bool2 + "]");
-      return;
-      i += 1;
-      break;
-      i = 1;
+    this.a.jdField_a_of_type_Mpd.jdField_a_of_type_JavaLangString = paramString1;
+    this.a.jdField_a_of_type_Mpd.jdField_b_of_type_JavaLangString = paramString2;
+    this.a.jdField_a_of_type_Mpd.c = paramBoolean;
+    if (paramBoolean) {
+      mqa.a(paramString1);
     }
+    this.a.b(this.a.jdField_a_of_type_Mpd);
   }
 }
 

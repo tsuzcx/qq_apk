@@ -1,7 +1,21 @@
-import kotlin.Metadata;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmallVideo;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/service/redpacket/RIJAidlServerRedPacketModule$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qsl {}
+public class qsl
+  extends qsd
+{
+  public qsl(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
+  {
+    super(paramContext, paramFaceDecoder, paramslt);
+  }
+  
+  public qpk g()
+  {
+    this.jdField_a_of_type_Qpj = new ComponentContentSmallVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

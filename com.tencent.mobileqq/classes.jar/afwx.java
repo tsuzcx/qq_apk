@@ -1,39 +1,17 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.ArkViewModelBase.AppInfo;
+import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper;
+import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper.2.1;
 
 public class afwx
-  implements View.OnClickListener
+  extends athr
 {
-  public afwx(TroopRequestActivity paramTroopRequestActivity) {}
+  public afwx(ArkFlashChatContainerWrapper paramArkFlashChatContainerWrapper) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    aohx localaohx = (aohx)this.a.app.a(26);
-    ArrayList localArrayList = new ArrayList();
-    try
-    {
-      if (!TextUtils.isEmpty(this.a.b)) {
-        localArrayList.add(Long.valueOf(Long.parseLong(this.a.b)));
-      }
-      localaohx.a(localArrayList);
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.systemmsg.TroopRequestActivity", 2, "delete Stranger parseLong() error", localNumberFormatException);
-        }
-      }
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    ArkDispatchTask.getInstance().postDelayed(ArkFlashChatContainerWrapper.a(this.a).name, new ArkFlashChatContainerWrapper.2.1(this, paramBoolean, paramBundle), 1000L);
   }
 }
 

@@ -1,27 +1,12 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class vng
-  extends var
+public abstract interface vng
 {
-  vng(vmw paramvmw) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public Drawable a()
-  {
-    return vmw.a(this.a);
-  }
+  public abstract void a(String paramString, int paramInt, ErrorMessage paramErrorMessage);
   
-  public QCirclePolyLikeAniView a()
-  {
-    return vmw.a(this.a);
-  }
-  
-  public void a(String paramString, vas paramvas)
-  {
-    if (this.a.a() != null) {
-      this.a.a().a(paramString, paramvas);
-    }
-  }
+  public abstract void b(String paramString, int paramInt);
 }
 
 

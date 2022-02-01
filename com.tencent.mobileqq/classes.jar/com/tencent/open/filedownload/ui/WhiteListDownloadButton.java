@@ -1,10 +1,10 @@
 package com.tencent.open.filedownload.ui;
 
+import amtj;
 import android.content.Context;
 import android.util.AttributeSet;
-import anzj;
-import bdll;
-import bjyu;
+import bcef;
+import biec;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -40,7 +40,7 @@ public class WhiteListDownloadButton
     label70:
     for (paramString = "";; paramString = this.a.h)
     {
-      bdll.b(localQQAppInterface, "dc00898", "", "", "0X8009AC6", "0X8009AC6", 0, 0, "", "", paramString, "");
+      bcef.b(localQQAppInterface, "dc00898", "", "", "0X8009AC6", "0X8009AC6", 0, 0, "", "", paramString, "");
       return;
     }
   }
@@ -48,9 +48,9 @@ public class WhiteListDownloadButton
   protected String b(int paramInt)
   {
     if (paramInt == 4) {
-      return anzj.a(2131715737);
+      return amtj.a(2131715971);
     }
-    return anzj.a(2131715738);
+    return amtj.a(2131715972);
   }
 }
 

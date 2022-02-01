@@ -1,8 +1,16 @@
-public abstract interface wcr
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
+
+public class wcr
+  implements vqp<wfk, wgv>
 {
-  public abstract void a(long paramLong);
-  
-  public abstract void b(long paramLong);
+  public void a(@NonNull wfk paramwfk, @Nullable wgv paramwgv, @NonNull ErrorMessage paramErrorMessage)
+  {
+    paramwfk = new wcs(this, paramErrorMessage, paramwfk.b, paramwfk.jdField_c_of_type_JavaLangString, paramwfk.jdField_c_of_type_Int);
+    vli.a().dispatch(paramwfk);
+  }
 }
 
 

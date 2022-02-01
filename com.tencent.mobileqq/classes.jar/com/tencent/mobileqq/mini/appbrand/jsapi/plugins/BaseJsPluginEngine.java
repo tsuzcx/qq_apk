@@ -3,6 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import NS_MINI_INTERFACE.INTERFACE.StGetUserSettingRsp;
 import NS_MINI_INTERFACE.INTERFACE.StSubscribeMessage;
 import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
+import amtj;
 import android.content.DialogInterface.OnDismissListener;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -14,8 +15,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-import anzj;
-import bhsr;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.MiniAppInterface;
@@ -42,6 +41,7 @@ import com.tencent.mobileqq.mini.widget.AuthDialog.AuthDialogResBuilder;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.util.QZLog;
@@ -710,7 +710,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
     }
     catch (JSONException paramString)
     {
-      callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", null, anzj.a(2131699922), paramInt);
+      callbackJsEventFail(paramJsRuntime, "subscribeAppMsg", null, amtj.a(2131700157), paramInt);
       return;
     }
     if ((i == 4) || (this.isSubAuthIgnore))
@@ -979,7 +979,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
         localObject1 = (String)AuthorizeCenter.negativeButtonDesMap.get(str5);
         paramMessage = (Message)localObject1;
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          paramMessage = anzj.a(2131699925);
+          paramMessage = amtj.a(2131700160);
         }
         if (this.appBrandRuntime == null) {
           break;
@@ -1028,7 +1028,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
         }
       }
       localObject3 = new AuthDialog.AuthDialogResBuilder();
-      ((AuthDialog.AuthDialogResBuilder)localObject3).setMiniAppIconUrl(str3).setMiniAppName(str4).setAuthTitle((String)localObject2).setAuthDesc(str1).setReportSubAction(str2).setMiniAppConfig(this.appBrandRuntime.getApkgInfo().appConfig).setLeftBtnText(paramMessage).setLeftBtnClickListener(new BaseJsPluginEngine.9(this)).setRightBtnText(anzj.a(2131699923)).setRightBtnClickListener(new BaseJsPluginEngine.8(this));
+      ((AuthDialog.AuthDialogResBuilder)localObject3).setMiniAppIconUrl(str3).setMiniAppName(str4).setAuthTitle((String)localObject2).setAuthDesc(str1).setReportSubAction(str2).setMiniAppConfig(this.appBrandRuntime.getApkgInfo().appConfig).setLeftBtnText(paramMessage).setLeftBtnClickListener(new BaseJsPluginEngine.9(this)).setRightBtnText(amtj.a(2131700158)).setRightBtnClickListener(new BaseJsPluginEngine.8(this));
       if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0)) {
         ((AuthDialog.AuthDialogResBuilder)localObject3).setPhoneNumberList((JSONArray)localObject1);
       }
@@ -1134,7 +1134,7 @@ public class BaseJsPluginEngine<ActivityContext extends BaseActivity>
         if (localObject != null)
         {
           str2 = AuthorizeCenter.getSystemPermission(paramString1, paramString2);
-          if (bhsr.a(str2)) {
+          if (StringUtil.isEmpty(str2)) {
             break label450;
           }
           if (((BaseActivity)localObject).checkSelfPermission(str2) != 0) {

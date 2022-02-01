@@ -1,29 +1,81 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.beauty.QavBeautyMenuPanel;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.Context;
+import com.tencent.av.app.VideoAppInterface;
 
 public class mit
-  implements mik
+  extends mis
 {
-  public mit(QavPanel paramQavPanel) {}
-  
-  public void a(View paramView, int paramInt)
+  protected mit(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
-    paramView = this.a.a(paramInt);
-    if ((paramView instanceof QavBeautyMenuPanel)) {
-      ((QavBeautyMenuPanel)paramView).f();
-    }
-    long l = AudioHelper.b();
-    this.a.a(l, paramInt, true);
+    super(paramContext, paramVideoAppInterface);
   }
   
-  public void a(View paramView1, View paramView2)
+  public static int a(int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.onClick(paramView2);
+    return (paramInt << 16) / 1201 >> 6;
+  }
+  
+  private void a(mdy parammdy1, mdy parammdy2, int paramInt)
+  {
+    int i = paramInt >> 1;
+    int j = b(paramInt);
+    parammdy1.a(0, 0, 0, 0);
+    parammdy1.b(0, 0, i, j);
+    parammdy1.d(-15197410);
+    parammdy2.a(0, 0, 0, 0);
+    parammdy2.b(i, 0, paramInt, j);
+    parammdy2.d(-15197410);
+  }
+  
+  public static int b(int paramInt)
+  {
+    return paramInt * 1201 >> 10;
+  }
+  
+  public int a()
+  {
+    return 2;
+  }
+  
+  public void a(lez paramlez, mdy[] paramArrayOfmdy, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4) {}
+  
+  public void a(mdy[] paramArrayOfmdy, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
+  
+  public void a(mdy[] paramArrayOfmdy, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
+  {
+    boolean bool;
+    if (!this.a.getCurrentAccountUin().equals(paramArrayOfmdy[1].a(0)))
+    {
+      bool = true;
+      lba.f("ScreenLayoutDoubleScreen", "layoutCommon: " + paramBoolean + "|" + bool);
+      if (!bool) {
+        break label112;
+      }
+      if (paramBoolean) {
+        break label94;
+      }
+      paramBoolean = true;
     }
+    label94:
+    label112:
+    for (;;)
+    {
+      if (paramBoolean)
+      {
+        a(paramArrayOfmdy[1], paramArrayOfmdy[0], paramInt1);
+        return;
+        bool = false;
+        break;
+        paramBoolean = false;
+        continue;
+      }
+      a(paramArrayOfmdy[0], paramArrayOfmdy[1], paramInt1);
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 

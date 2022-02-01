@@ -1,16 +1,6 @@
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.53;
-
-public class aior
-  implements bimf
+public abstract interface aior
 {
-  public aior(PublicAccountChatPie.53 param53) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.this$0.a.a();
-    }
-  }
+  public abstract void b(int paramInt);
 }
 
 

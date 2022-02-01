@@ -1,5 +1,6 @@
 package com.tencent.biz.qqstory.storyHome;
 
+import amtj;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,7 +13,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import anzj;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
@@ -27,7 +27,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import wjj;
+import vli;
 
 public abstract class QQStoryBaseFragment
   extends IphoneTitleBarFragment
@@ -61,7 +61,7 @@ public abstract class QQStoryBaseFragment
       this.rightViewText.setOnClickListener(paramOnClickListener);
     }
     if (AppSetting.c) {
-      this.rightViewText.setContentDescription(this.rightViewText.getText() + anzj.a(2131709679));
+      this.rightViewText.setContentDescription(this.rightViewText.getText() + amtj.a(2131709911));
     }
   }
   
@@ -85,7 +85,7 @@ public abstract class QQStoryBaseFragment
       Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localObject2).getKey();
       localObject2 = (String)((Map.Entry)localObject2).getValue();
-      wjj.a().registerSubscriber((String)localObject2, localSubscriber);
+      vli.a().registerSubscriber((String)localObject2, localSubscriber);
     }
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.c = true;
@@ -116,7 +116,7 @@ public abstract class QQStoryBaseFragment
     while (localIterator.hasNext())
     {
       Subscriber localSubscriber = (Subscriber)((Map.Entry)localIterator.next()).getKey();
-      wjj.a().unRegisterSubscriber(localSubscriber);
+      vli.a().unRegisterSubscriber(localSubscriber);
     }
     super.onDestroyView();
   }

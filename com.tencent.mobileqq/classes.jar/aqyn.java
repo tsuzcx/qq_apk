@@ -1,82 +1,44 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import com.tencent.mobileqq.emosm.Client;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqyn
-  extends alnt
+  implements ServiceConnection
 {
-  int a;
+  public aqyn(Client paramClient) {}
   
-  public View a(int paramInt, Object paramObject, alno paramalno, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, alpv paramalpv)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    paramOnClickListener = paramContext.getResources();
-    if (paramView == null)
+    try
     {
-      paramalno = null;
-      if ((paramView == null) || (!(paramView.getTag() instanceof aqyo))) {
-        break label179;
+      this.a.mIsBound = true;
+      this.a.mService = new Messenger(paramIBinder);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.Client", 2, "ServiceConnection Attached.");
       }
-      paramalno = (aqyo)paramalno;
-      label35:
-      paramInt = paramViewGroup.getMeasuredHeight() - this.a;
-      if (paramInt >= 0) {
-        break label348;
-      }
-      paramInt = (int)(this.a * 1.5F);
+      ardu.a().a();
+      paramComponentName = Message.obtain(null, 1);
+      paramComponentName.replyTo = this.a.mMessenger;
+      this.a.mService.send(paramComponentName);
+      return;
     }
-    label81:
-    label348:
-    for (;;)
+    catch (Exception paramComponentName)
     {
-      if ((paramView.getLayoutParams() instanceof AbsListView.LayoutParams))
-      {
-        paramViewGroup = (AbsListView.LayoutParams)paramView.getLayoutParams();
-        paramViewGroup.width = -1;
-        paramViewGroup.height = paramInt;
-        paramView.setLayoutParams(paramViewGroup);
-        if ((paramObject instanceof Integer))
-        {
-          paramInt = ((Integer)paramObject).intValue();
-          if (paramInt != 16) {
-            break label294;
-          }
-          paramalno.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839414);
-          if ((paramalno.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
-            ((Animatable)paramalno.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
-          }
-          paramalno.jdField_a_of_type_AndroidWidgetTextView.setText(2131697916);
-        }
-      }
-      while (paramInt != 17)
-      {
-        return paramView;
-        paramalno = paramView.getTag();
-        break;
-        paramView = LayoutInflater.from(paramContext).inflate(2131561134, null);
-        paramalno = new aqyo();
-        paramalno.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131369629));
-        paramalno.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368212));
-        paramalno.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380216));
-        paramView.setTag(paramalno);
-        this.a = (paramOnClickListener.getDimensionPixelSize(2131298072) + paramOnClickListener.getDimensionPixelSize(2131298074) + paramOnClickListener.getDimensionPixelSize(2131298073) * 2);
-        break label35;
-        paramViewGroup = new AbsListView.LayoutParams(-1, paramInt);
-        break label81;
-      }
-      if ((paramalno.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
-        ((Animatable)paramalno.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).stop();
-      }
-      paramalno.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      paramalno.jdField_a_of_type_AndroidWidgetTextView.setText(2131697915);
-      return paramView;
+      while (!QLog.isColorLevel()) {}
+      QLog.e("Q.emoji.web.Client", 2, paramComponentName.getMessage());
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    this.a.mService = null;
+    this.a.onDisconnectWithService();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.web.Client", 2, "Disconnected.");
     }
   }
 }

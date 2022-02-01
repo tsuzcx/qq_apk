@@ -1,34 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class oxy
+  implements ViewBase.IBuilder
 {
-  public BaseArticleInfo a;
-  public String a;
-  public String b;
-  public String c;
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  
-  public oxy(BaseArticleInfo paramBaseArticleInfo)
+  public ViewBase build(VafContext paramVafContext)
   {
-    this.a = paramBaseArticleInfo;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    while (!(paramObject instanceof oxy)) {
-      return false;
-    }
-    paramObject = (oxy)paramObject;
-    return this.a.equals(paramObject.a);
-  }
-  
-  public int hashCode()
-  {
-    return this.a.hashCode();
+    return new oxx(paramVafContext);
   }
 }
 

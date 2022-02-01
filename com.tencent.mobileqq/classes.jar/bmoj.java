@@ -1,36 +1,7 @@
-import cooperation.qqreader.QRBridgeUtil;
-import java.util.Map;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import kotlin.Metadata;
 
-public final class bmoj
-  implements WtTicketPromise
-{
-  public bmoj(String paramString) {}
-  
-  public void Done(Ticket paramTicket)
-  {
-    if (paramTicket != null)
-    {
-      bmqw.d("QRBridgeUtil", "preGetKeyInPreloadService : Done");
-      paramTicket = (byte[])paramTicket._pskey_map.get(this.a);
-      if (paramTicket != null) {
-        QRBridgeUtil.access$000().put(this.a, new String(paramTicket));
-      }
-    }
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    bmqw.d("QRBridgeUtil", "preGetKeyInPreloadService failed " + paramErrMsg);
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    bmqw.d("QRBridgeUtil", "preGetKeyInPreloadService timeout!" + paramErrMsg);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Ldov/com/qq/im/aeeditor/view/reorder/ReorderContainerView$SpacingAdapter$Companion;", "", "()V", "TYPE_ITEM", "", "TYPE_SPACING", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bmoj {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

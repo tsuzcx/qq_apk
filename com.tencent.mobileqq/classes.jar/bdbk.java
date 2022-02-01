@@ -1,17 +1,97 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
-class bdbk
-  implements Camera.AutoFocusCallback
+public class bdbk
 {
-  bdbk(bdbj parambdbj) {}
+  private String a;
+  private String b;
+  private String c;
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public bdbk a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraProxy", 2, "Request Focus onAutoFocus");
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    return a("999").a(localBaseApplication, "999_540", "999_540");
+  }
+  
+  public bdbk a(Context paramContext, String paramString1, String paramString2)
+  {
+    paramContext = a(paramContext);
+    this.b = (paramContext + paramString1 + ".zip");
+    this.c = (paramContext + paramString1 + File.separator + paramString2 + File.separator);
+    return this;
+  }
+  
+  public bdbk a(String paramString)
+  {
+    this.a = paramString;
+    return this;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String a(Context paramContext)
+  {
+    paramContext = paramContext.getDir("theme_810", 0).getAbsolutePath();
+    StringBuilder localStringBuilder = AIOUtils.obtainStringBuilder().append(paramContext);
+    if (!paramContext.endsWith(File.separator)) {
+      localStringBuilder.append(File.separator);
     }
+    return this.a + File.separator;
+  }
+  
+  public boolean a()
+  {
+    return new File(this.b).exists();
+  }
+  
+  public bdbk b()
+  {
+    return a(BaseApplicationImpl.getContext(), "test", "test");
+  }
+  
+  public String b()
+  {
+    return ThemeUtil.getThemeConfigID(this.a);
+  }
+  
+  public String b(Context paramContext)
+  {
+    paramContext = a(paramContext);
+    return paramContext + "3_" + b() + ".cfg";
+  }
+  
+  public boolean b()
+  {
+    return new File(this.c).exists();
+  }
+  
+  public bdbk c()
+  {
+    this.b = null;
+    this.c = null;
+    return this;
+  }
+  
+  public String c()
+  {
+    return this.b;
+  }
+  
+  public String d()
+  {
+    return this.c;
+  }
+  
+  public String toString()
+  {
+    return this.b;
   }
 }
 

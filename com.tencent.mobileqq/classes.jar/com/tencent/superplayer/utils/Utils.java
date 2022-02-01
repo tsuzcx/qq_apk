@@ -80,8 +80,6 @@ public class Utils
       return 0;
     case 101: 
       return 100;
-    case 102: 
-      return 106;
     case 103: 
       return 102;
     case 104: 

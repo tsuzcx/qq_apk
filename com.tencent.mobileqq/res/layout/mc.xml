@@ -11,12 +11,8 @@
         <RelativeLayout android:id="@id/aas" android:background="@color/bp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentBottom="true" />
         <RelativeLayout android:id="@id/lq0" android:background="@color/aju" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
         <include android:id="@id/amy" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/lq0" layout="@layout/mp" />
-        <ViewStub android:id="@id/gyv" android:layout="@layout/b8j" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ViewStub android:id="@id/gyu" android:layout="@layout/b8h" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ViewStub android:id="@id/hy" android:layout="@layout/b4w" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <ViewStub android:id="@id/dnb" android:layout="@layout/b6u" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <include android:id="@id/b_m" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/mm" />
-        <dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView android:orientation="vertical" android:id="@id/zn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" />
         <RelativeLayout android:id="@id/cai" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
             <RelativeLayout android:id="@id/efs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
                 <com.tencent.biz.qqstory.view.widget.QQStoryLoadingView android:id="@id/ef8" android:visibility="visible" android:layout_width="55.0dip" android:layout_height="55.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />

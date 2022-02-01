@@ -1,22 +1,27 @@
 package com.tencent.av.core;
 
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import lld;
+import mqq.os.MqqHandler;
 
 class VcControllerImpl$2
   implements Runnable
 {
-  VcControllerImpl$2(VcControllerImpl paramVcControllerImpl, int paramInt1, int paramInt2) {}
+  VcControllerImpl$2(VcControllerImpl paramVcControllerImpl, long paramLong, int paramInt) {}
   
   public void run()
   {
-    if (VcControllerImpl.mDisableReOpen) {
-      QLog.w("VcControllerImpl", 1, "changePreviewSize, 禁止响应重开摄像头, w[" + this.a + "], h[" + this.b + "]");
-    }
-    while (this.this$0.mEventListener == null) {
+    QLog.d("VcControllerImpl", 1, "closeVideo start.");
+    VcControllerImpl.access$002(this.this$0, this.this$0.close(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int));
+    ThreadManager.getUIHandler().removeCallbacks(VcControllerImpl.access$300(this.this$0));
+    VcControllerImpl.access$202(this.this$0, -1);
+    VcControllerImpl.access$102(this.this$0, null);
+    QLog.d("VcControllerImpl", 1, "closeVideo end. mCloseResult = " + VcControllerImpl.access$000(this.this$0));
+    synchronized (VcControllerImpl.access$400(this.this$0))
+    {
+      VcControllerImpl.access$400(this.this$0).notify();
       return;
     }
-    this.this$0.mEventListener.a(this.a, this.b);
   }
 }
 

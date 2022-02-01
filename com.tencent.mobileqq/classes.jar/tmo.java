@@ -1,26 +1,35 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideo;
+import com.tencent.viola.adapter.VComponentAdapter.OnVideoViewMethodListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class tmo
-  implements DialogInterface.OnClickListener
+public class tmo
+  implements VComponentAdapter.OnVideoViewMethodListener
 {
-  tmo(tmk paramtmk, boolean paramBoolean) {}
+  public tmo(VVideo paramVVideo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnMethodError(String paramString, JSONObject paramJSONObject)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      if (!tmk.a(this.jdField_a_of_type_Tmk)) {}
-    }
-    while (!(tmk.a(this.jdField_a_of_type_Tmk) instanceof Activity))
+    try
     {
-      return;
-      this.jdField_a_of_type_Tmk.b();
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("code", paramString);
+      localJSONObject.put("extra", paramJSONObject);
+      this.a.videoFireEvent("error", localJSONObject);
       return;
     }
-    tqa.b(tmk.a(this.jdField_a_of_type_Tmk));
-    tpp.a(tmk.a(this.jdField_a_of_type_Tmk), tmk.a(this.jdField_a_of_type_Tmk).p, tmk.a(this.jdField_a_of_type_Tmk).q, "");
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public void OnMethodSuccess(String paramString, Object paramObject)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      VVideo.access$000(this.a, paramString, paramObject);
+    }
   }
 }
 

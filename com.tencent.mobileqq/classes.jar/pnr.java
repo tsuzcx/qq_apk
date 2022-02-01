@@ -1,25 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class pnr
+  implements View.OnClickListener
 {
-  public static void a(List<ArticleInfo> paramList)
+  public pnr(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {}
-    for (;;)
-    {
-      return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ArticleInfo localArticleInfo = (ArticleInfo)paramList.next();
-        if ((localArticleInfo != null) && (localArticleInfo.mFeedType == 29)) {
-          QLog.d("ReadInJoyLogHelper", 1, new Object[] { "printProteusOnline: \n", localArticleInfo.toProteusOnlineString() });
-        }
-      }
-    }
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

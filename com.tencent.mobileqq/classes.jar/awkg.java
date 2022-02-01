@@ -1,41 +1,31 @@
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 class awkg
-  extends awkl
+  implements atgv
 {
-  public BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, String paramString)
+  awkg(awke paramawke) {}
+  
+  public void a(int paramInt, Bundle paramBundle) {}
+  
+  public void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (String.valueOf(1130).equals(paramString))) {
-      return null;
-    }
-    paramQQAppInterface = ((bbav)paramQQAppInterface.getManager(36)).a(0, paramString);
-    if ((RedTouch.a(paramQQAppInterface)) && (paramQQAppInterface.type.get() != 5) && (paramQQAppInterface.red_display_info.has()) && (paramQQAppInterface.red_display_info.get() != null) && (paramQQAppInterface.red_display_info.red_type_info.has()) && (paramQQAppInterface.red_display_info.red_type_info.get() != null))
-    {
-      paramString = paramQQAppInterface.red_display_info.red_type_info.get().iterator();
-      while (paramString.hasNext())
-      {
-        BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)paramString.next();
-        if (localRedTypeInfo.red_type.get() == 11) {
-          localRedTypeInfo.red_type.set(0);
-        }
-      }
-    }
-    return paramQQAppInterface;
+    QLog.d(awke.a(this.a), 2, "onDownloadFailed,errCode=" + paramInt);
   }
   
-  public void a(RedTouch paramRedTouch, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public void a(String paramString, long paramLong, Bundle paramBundle)
   {
-    paramRedTouch.a(paramAppInfo);
+    if (!TextUtils.isEmpty(paramString)) {
+      QLog.d(awke.a(this.a), 2, "onDownloadSucess,filePath:" + paramString);
+    }
   }
+  
+  public void b(int paramInt, Bundle paramBundle) {}
+  
+  public void c(int paramInt, Bundle paramBundle) {}
+  
+  public void d(int paramInt, Bundle paramBundle) {}
 }
 
 

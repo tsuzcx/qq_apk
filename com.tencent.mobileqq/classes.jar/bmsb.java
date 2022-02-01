@@ -1,6 +1,42 @@
-public abstract interface bmsb
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.data.CaptureTemplateManager.2;
+
+public class bmsb
+  implements INetEngine.INetEngineListener
 {
-  public abstract byte[] flushMsgData(int paramInt);
+  public bmsb(CaptureTemplateManager.2 param2) {}
+  
+  public void onResp(NetResp paramNetResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CaptureTemplateManager", 2, "onResp url: " + this.a.c + " resultcode: " + paramNetResp.mHttpCode);
+    }
+    boolean bool = false;
+    if (paramNetResp.mResult == 0)
+    {
+      bool = bmsa.a(this.a.this$0, this.a.a, this.a.b);
+      if (bool)
+      {
+        PreDownloadController localPreDownloadController = (PreDownloadController)this.a.this$0.getApp().getManager(193);
+        if (localPreDownloadController.isEnable()) {
+          localPreDownloadController.preDownloadSuccess(this.a.c, paramNetResp.mTotalFileLen);
+        }
+      }
+    }
+    if (!bool) {
+      bmsa.a(this.a.this$0, this.a.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("CaptureTemplateManager", 2, "onResp url: " + this.a.c + " downloadSuccess " + bool);
+    }
+  }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

@@ -1,18 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.ExpandableListConnector.GroupMetadata;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-public final class bllf
-  implements Parcelable.Creator<ExpandableListConnector.GroupMetadata>
+class bllf
+  implements AdapterView.OnItemClickListener
 {
-  public ExpandableListConnector.GroupMetadata a(Parcel paramParcel)
-  {
-    return ExpandableListConnector.GroupMetadata.a(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readLong());
-  }
+  private bllf(bllc parambllc) {}
   
-  public ExpandableListConnector.GroupMetadata[] a(int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return new ExpandableListConnector.GroupMetadata[paramInt];
+    paramAdapterView = this.a.jdField_a_of_type_Blky.a(paramInt);
+    paramView = this.a.getActivity().getIntent();
+    if ((paramAdapterView == null) || (paramAdapterView.mMediaFileCount <= 0) || (TextUtils.isEmpty(paramAdapterView.name))) {
+      QQToast.a(this.a.getActivity(), 2131689988, 0).a();
+    }
+    boolean bool;
+    do
+    {
+      return;
+      bool = this.a.jdField_a_of_type_Bllu.a(paramAdapterView, paramInt, paramView);
+    } while (this.a.jdField_a_of_type_Bllg == null);
+    this.a.jdField_a_of_type_Bllg.a(paramAdapterView, paramInt, bool);
   }
 }
 

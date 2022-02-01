@@ -1,16 +1,16 @@
 package com.tencent.biz.subscribe.widget;
 
-import agej;
 import android.content.Context;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class SubscribeBannerView$DotsIndicator
   extends LinearLayout
 {
-  public int a = 2130839065;
+  public int a = 2130839100;
   public int b;
   public int c;
   public int d;
@@ -23,9 +23,9 @@ public class SubscribeBannerView$DotsIndicator
   
   private void a()
   {
-    this.b = agej.a(10.0F, getResources());
-    this.c = agej.a(7.0F, getResources());
-    this.d = agej.a(7.0F, getResources());
+    this.b = AIOUtils.dp2px(10.0F, getResources());
+    this.c = AIOUtils.dp2px(7.0F, getResources());
+    this.d = AIOUtils.dp2px(7.0F, getResources());
     setLayoutParams(new FrameLayout.LayoutParams(-2, -2));
   }
   

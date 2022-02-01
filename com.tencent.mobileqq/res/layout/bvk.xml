@@ -5,5 +5,5 @@
     <com.tencent.mobileqq.redtouch.RedTouchTextView android:id="@id/item_txt" android:text="@string/qq_setting_xiangce" style="@style/g6" />
     <com.tencent.mobileqq.loverzone.LoveZoneTabRedDotView android:id="@id/fuf" android:layout_width="0.0dip" android:layout_height="fill_parent" />
     <com.tencent.widget.ThemeLabelTextView android:id="@id/dqu" style="@style/g4" />
-    <ImageView android:id="@id/dqt" android:visibility="visible" android:src="@drawable/common_arrow_right_selector" style="@style/g5" />
+    <ImageView android:id="@id/dqt" android:visibility="visible" android:src="@drawable/skin_icon_arrow_right_normal_theme_version3" style="@style/g5" />
 </LinearLayout>

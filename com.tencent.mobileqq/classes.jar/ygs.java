@@ -1,16 +1,24 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract interface ygs
+public class ygs
+  implements ViewPager.OnPageChangeListener
 {
-  public abstract void a(int paramInt);
+  public ygs(FaceViewPager paramFaceViewPager) {}
   
-  public abstract void a(CommentEntry paramCommentEntry);
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public abstract void a(CommentEntry paramCommentEntry, int paramInt);
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
   
-  public abstract void b(CommentEntry paramCommentEntry);
-  
-  public abstract void c(CommentEntry paramCommentEntry);
+  public void onPageSelected(int paramInt)
+  {
+    Iterator localIterator = FaceViewPager.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((ygt)localIterator.next()).b(paramInt);
+    }
+  }
 }
 
 

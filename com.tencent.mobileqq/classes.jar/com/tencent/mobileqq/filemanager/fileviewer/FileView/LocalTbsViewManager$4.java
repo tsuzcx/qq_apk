@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.fileviewer.FileView;
 
-import audj;
+import aspt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.tbs.reader.ITbsReaderCallback;
 import com.tencent.tbs.reader.ReaderEngine;
@@ -8,7 +8,7 @@ import com.tencent.tbs.reader.ReaderEngine;
 public class LocalTbsViewManager$4
   implements Runnable
 {
-  public LocalTbsViewManager$4(audj paramaudj, ITbsReaderCallback paramITbsReaderCallback) {}
+  public LocalTbsViewManager$4(aspt paramaspt, ITbsReaderCallback paramITbsReaderCallback) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class LocalTbsViewManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager.4
  * JD-Core Version:    0.7.0.1
  */

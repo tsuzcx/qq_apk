@@ -1,26 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avfi
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public avfi(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
+  public avfi(LocationPickFragment paramLocationPickFragment, EditText paramEditText) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    SettingCloneUtil.writeValue(this.a.getActivity(), null, this.a.getString(2131694443), "qqsetting_auto_receive_magic_face_key", paramBoolean);
-    QQAppInterface localQQAppInterface = QQSettingAutoDownloadAndSaveFragment.a(this.a);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      bdll.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-    }
+    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

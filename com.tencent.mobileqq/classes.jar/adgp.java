@@ -1,37 +1,23 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.c2c.msgtype0x210.submsgtype0xeb.submsgtype0xeb.MsgBody;
+import android.content.Context;
+import android.view.View;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public class adgp
-  implements adci
+  extends agqd
 {
-  private static void a(adan paramadan, MsgType0x210 paramMsgType0x210)
+  public adgp(FontSettingActivity paramFontSettingActivity, QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xeb");
-    }
-    try
-    {
-      submsgtype0xeb.MsgBody localMsgBody = new submsgtype0xeb.MsgBody();
-      if (paramadan.a(paramMsgType0x210)) {
-        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      }
-      aold.a(paramadan.a(), localMsgBody);
-      return;
-    }
-    catch (Exception paramadan)
-    {
-      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0xeb], errInfo->" + paramadan.getMessage());
-    }
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
   }
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramadan, paramMsgType0x210);
-    return null;
-  }
+  public void a(aezf paramaezf, ChatMessage paramChatMessage) {}
+  
+  public void b(View paramView) {}
 }
 
 

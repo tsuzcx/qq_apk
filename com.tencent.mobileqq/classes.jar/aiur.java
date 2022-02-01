@@ -1,32 +1,17 @@
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ProgressBar;
 
-class aiur
-  implements View.OnClickListener
+final class aiur
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aiur(aiuq paramaiuq) {}
+  aiur(ProgressBar paramProgressBar) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
-    {
-      Object localObject = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if (localObject != null)
-      {
-        localObject = ((ChatFragment)localObject).a();
-        if (localObject != null) {
-          ((BaseChatPie)localObject).b(aiuq.a(this.a));
-        }
-      }
-      aqcz.a().a();
+    if (this.a != null) {
+      this.a.setProgress(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

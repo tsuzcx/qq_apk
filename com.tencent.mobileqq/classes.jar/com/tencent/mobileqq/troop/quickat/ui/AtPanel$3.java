@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.quickat.ui;
 
-import bgjf;
+import besn;
 
 public class AtPanel$3
   implements Runnable
 {
-  public AtPanel$3(bgjf parambgjf) {}
+  public AtPanel$3(besn parambesn) {}
   
   public void run()
   {

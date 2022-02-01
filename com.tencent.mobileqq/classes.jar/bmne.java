@@ -1,10 +1,6 @@
-import android.os.Bundle;
-import android.os.IInterface;
-
 public abstract interface bmne
-  extends IInterface
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 

@@ -1,17 +1,14 @@
-class bkhx
-  extends bkia
+public class bkhx
 {
-  bkhx(bkhw parambkhw) {}
+  public int a;
+  public String a;
+  public String b;
   
-  protected void a(boolean paramBoolean)
+  public bkhx(int paramInt, String paramString1, String paramString2)
   {
-    super.a(paramBoolean);
-    if (paramBoolean)
-    {
-      bkhw.a(this.a);
-      return;
-    }
-    bkhw.b(this.a);
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
   }
 }
 

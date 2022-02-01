@@ -1,10 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.stickerbubble.PokeEmoItemView;
 
-final class agkb
-  implements DialogInterface.OnClickListener
+public class agkb
+  extends aezf
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  PokeEmoItemView jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePokeEmoItemView;
+  
+  public agkb(agjz paramagjz) {}
 }
 
 

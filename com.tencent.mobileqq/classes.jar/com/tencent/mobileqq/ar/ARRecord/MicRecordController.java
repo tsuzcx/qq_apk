@@ -2,6 +2,7 @@ package com.tencent.mobileqq.ar.ARRecord;
 
 import android.media.AudioRecord;
 import android.os.SystemClock;
+import aoav;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -14,9 +15,9 @@ public class MicRecordController
   private byte[] jdField_a_of_type_ArrayOfByte;
   private volatile boolean b;
   
-  public MicRecordController(VideoRecordController paramVideoRecordController)
+  public MicRecordController(aoav paramaoav)
   {
-    super(paramVideoRecordController);
+    super(paramaoav);
   }
   
   public void a()
@@ -28,12 +29,12 @@ public class MicRecordController
           int i = this.jdField_a_of_type_AndroidMediaAudioRecord.read(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int);
           if (i > 0)
           {
-            VideoRecordController localVideoRecordController = (VideoRecordController)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-            if (localVideoRecordController != null)
+            aoav localaoav = (aoav)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+            if (localaoav != null)
             {
               byte[] arrayOfByte = new byte[i];
               System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, arrayOfByte, 0, i);
-              localVideoRecordController.a(arrayOfByte, SystemClock.elapsedRealtimeNanos());
+              localaoav.a(arrayOfByte, SystemClock.elapsedRealtimeNanos());
             }
           }
         }

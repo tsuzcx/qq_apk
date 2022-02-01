@@ -1,32 +1,42 @@
-import com.tencent.kwstudio.office.base.Log;
-import com.tencent.kwstudio.office.preview.IHostInterface.IHttpListener;
+import android.app.Activity;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
 
-public final class autd
-  implements beuq
+public class autd
+  extends WebViewPlugin
 {
-  private final IHostInterface.IHttpListener jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener;
-  private final String jdField_a_of_type_JavaLangString;
+  private Activity a;
   
-  private autd(String paramString, IHostInterface.IHttpListener paramIHttpListener)
+  public autd()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener = paramIHttpListener;
+    this.mPluginNameSpace = "accounts";
   }
   
-  public void onResp(bevm parambevm)
+  private Activity a()
   {
-    if ((parambevm.c == 200) || (parambevm.c == 206)) {}
-    for (String str = new String(parambevm.a);; str = null)
+    for (Activity localActivity = this.mRuntime.a(); (localActivity instanceof BasePluginActivity); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (("accounts".equals(paramString2)) && ("faceDelete".equals(paramString3)))
     {
-      if (this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener != null) {
-        this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IHttpListener.onResponse(parambevm.c, str);
-      }
-      Log.i("TdsReaderView_", "onResp url:" + this.jdField_a_of_type_JavaLangString + ", status=" + parambevm.c + ", rsp=" + str);
-      return;
+      QLog.d("AccountsPlugin", 1, "receive api METHOD_DELETE_FACE");
+      this.a.setResult(-1);
+      this.a.finish();
+      return true;
     }
+    return false;
   }
   
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
+  public void onCreate()
+  {
+    super.onCreate();
+    this.a = a();
+  }
 }
 
 

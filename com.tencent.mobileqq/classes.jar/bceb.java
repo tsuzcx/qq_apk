@@ -1,255 +1,130 @@
-import android.text.SpannableStringBuilder;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Pair;
-import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.DiscussionMemberInfo;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pluginsdk.exception.ExceptionTracker;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class bceb
-  extends bcfn
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private DiscussionMemberInfo jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
-  
-  public bceb(QQAppInterface paramQQAppInterface, int paramInt, DiscussionMemberInfo paramDiscussionMemberInfo)
+  private static String a(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface, paramInt, 0L);
-    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo = paramDiscussionMemberInfo;
-  }
-  
-  private void a()
-  {
-    switch (this.jdField_a_of_type_Int)
+    switch (NetworkUtil.getNetworkType(paramQQAppInterface.getApp()))
     {
     default: 
-      this.jdField_a_of_type_JavaLangString = "";
-      return;
+      return "unknown";
     case 0: 
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark))
-      {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark;
-        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin;
-        return;
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName))
-      {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName;
-        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin;
-        return;
-      }
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin;
-      this.jdField_b_of_type_JavaLangString = null;
-      return;
+      return "none";
+    case 1: 
+      return "Wi-Fi";
     case 2: 
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName))
-      {
-        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName;
-        return;
-      }
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin;
-      return;
+      return "2G";
+    case 3: 
+      return "3G";
+    case 4: 
+      return "4G";
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark))
-    {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark;
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName;
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName;
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin;
+    return "5G";
   }
   
-  protected long a(String paramString)
+  private static String a(QQAppInterface paramQQAppInterface, bcgb parambcgb, int paramInt)
   {
-    DiscussionInfo localDiscussionInfo = ((anws)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.discussionUin);
-    if ((localDiscussionInfo == null) || (localDiscussionInfo.isDiscussHrMeeting()) || (localDiscussionInfo.isHidden()))
-    {
-      this.jdField_a_of_type_Long = -9223372036854775808L;
-      return this.jdField_a_of_type_Long;
-    }
-    this.c = paramString;
-    this.jdField_a_of_type_Long = -9223372036854775808L;
-    long l = bcni.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark, bbzf.k);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 2;
-    }
-    l = bcni.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName, bbzf.l);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 1;
-    }
-    l = bcni.a(paramString, this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin, bbzf.o, false);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 0;
-    }
-    if (this.jdField_a_of_type_Long != -9223372036854775808L)
-    {
-      this.jdField_a_of_type_Long += bbzf.H;
-      a();
-    }
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Pair<CharSequence, CharSequence> a()
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
+    if (parambcgb == null) {
       return null;
-    case 0: 
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark)) {
-        return new Pair(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark, bcni.c(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin, this.c, 6, false));
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName)) {
-        return new Pair(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName, bcni.c(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin, this.c, 6, false));
-      }
-      return new Pair(bcni.b(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin, this.c, 6, false), null);
-    case 2: 
-      return new Pair(bcni.b(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark, this.c, 6, true), null);
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark)) {
-      return new Pair(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark, bcni.c(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName, this.c, 6, true));
+    parambcgb.a = DeviceInfoUtil.getDeviceModel();
+    SosoInterface.SosoLbsInfo localSosoLbsInfo = SosoInterface.getSosoInfo();
+    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.mLocation != null)) {
+      parambcgb.c = localSosoLbsInfo.mLocation.city;
     }
-    return new Pair(bcni.b(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName, this.c, 6, true), null);
+    if (paramQQAppInterface == null) {}
+    for (parambcgb.b = "${network_unknown}";; parambcgb.b = a(paramQQAppInterface)) {
+      return parambcgb.a(paramInt);
+    }
   }
   
-  public Object a()
+  public static void a(QQAppInterface paramQQAppInterface, bcge parambcge)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin;
+    a("dc01983", paramQQAppInterface, parambcge);
   }
   
-  public String a()
+  private static void a(String paramString, QQAppInterface paramQQAppInterface, bcgb parambcgb)
   {
-    return this.c;
-  }
-  
-  public void a(View paramView)
-  {
-    super.a(paramView);
-    if (bcni.a(this.jdField_b_of_type_Int))
+    if (parambcgb == null)
     {
-      alpb.a = true;
-      alpb.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin, this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.discussionUin, 1004, this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberName, false);
-      bcni.a(this.c, 20, 1, paramView);
-      aoha.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c);
-      bcni.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a().toString(), this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin, this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.discussionUin, 1004);
-      bcni.a(this.c, 20, paramView, false);
-      bcni.a(this, paramView);
-      if (SearchConfigManager.needSeparate) {
-        bcni.a("search", "contact", "contacts", 0, 0, new String[] { bcni.a(this.jdField_b_of_type_Int) });
-      }
-      if (((a() instanceof String)) && (!this.jdField_b_of_type_Boolean)) {
-        bcni.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c, this.i, (String)a(), e());
-      }
-      if ((paramView.getContext() instanceof UniteSearchActivity))
-      {
-        if ((this.i != null) && (!TextUtils.isEmpty(this.i))) {
-          bcjy.a(null, 0, this.jdField_b_of_type_Int, "0X8009D31", 1, 0, null, null);
-        }
-      }
-      else {
-        return;
-      }
-      bcjy.a(null, 0, this.jdField_b_of_type_Int, "0X8009D37", 0, 0, null, null);
-      return;
-    }
-    bcni.a(paramView, this);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.memberUin;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public CharSequence c()
-  {
-    if (bcni.a(this.jdField_b_of_type_Int)) {
-      return anzj.a(2131701468);
-    }
-    return anzj.a(2131701429);
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int d()
-  {
-    return 1004;
-  }
-  
-  public CharSequence d()
-  {
-    return null;
-  }
-  
-  public String d()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public int e()
-  {
-    return 1;
-  }
-  
-  public CharSequence e()
-  {
-    Object localObject = a();
-    CharSequence localCharSequence = b();
-    switch (this.jdField_a_of_type_Int)
-    {
+      ExceptionTracker.trackException("QIMReportController", "QIM Report not runtime Tag(" + paramString + ") report item is null");
+      if (!QLog.isColorLevel()) {}
     }
     do
     {
-      localObject = super.e();
-      SpannableStringBuilder localSpannableStringBuilder;
-      do
-      {
-        return localObject;
-        localSpannableStringBuilder = new SpannableStringBuilder();
-        if (localObject != null) {
-          localSpannableStringBuilder.append((CharSequence)localObject);
-        }
-        localObject = localSpannableStringBuilder;
-      } while (localCharSequence == null);
-      localSpannableStringBuilder.append(localCharSequence);
-      return localSpannableStringBuilder;
-      return localObject;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.inteRemark)) {
-        return localObject;
+      return;
+      if (!TextUtils.isEmpty(parambcgb.d)) {
+        break;
       }
-    } while ((localCharSequence == null) || (localCharSequence.length() <= 2));
-    return localCharSequence.subSequence(1, localCharSequence.length() - 1);
+    } while (!QLog.isColorLevel());
+    return;
+    if (QLog.isColorLevel()) {}
+    Object localObject = paramQQAppInterface;
+    if (paramQQAppInterface == null)
+    {
+      localObject = paramQQAppInterface;
+      if (BaseApplicationImpl.sProcessId == 1)
+      {
+        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+        localObject = paramQQAppInterface;
+        if (localAppRuntime != null)
+        {
+          localObject = paramQQAppInterface;
+          if ((localAppRuntime instanceof QQAppInterface)) {
+            localObject = (QQAppInterface)localAppRuntime;
+          }
+        }
+      }
+    }
+    if (localObject == null)
+    {
+      paramQQAppInterface = a((QQAppInterface)localObject, parambcgb, 0);
+      localObject = new Intent();
+      ((Intent)localObject).setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      ((Intent)localObject).putExtra("reporting_tag", paramString);
+      ((Intent)localObject).putExtra("reporting_detail", paramQQAppInterface);
+      if ((parambcgb instanceof bcgd)) {
+        ((Intent)localObject).putExtra("reporting_count", 0);
+      }
+      for (;;)
+      {
+        ((Intent)localObject).putExtra("is_runtime", 0);
+        BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject);
+        return;
+        if ((parambcgb instanceof bcgc)) {
+          ((Intent)localObject).putExtra("reporting_count", ((bcgc)parambcgb).a);
+        } else if ((parambcgb instanceof bcge)) {
+          ((Intent)localObject).putExtra("reporting_count", ((bcge)parambcgb).a);
+        }
+      }
+    }
+    a(paramString, (QQAppInterface)localObject, a((QQAppInterface)localObject, parambcgb, 0));
   }
   
-  public String e()
+  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo.discussionUin;
+    if ((!TextUtils.isEmpty(paramString2)) && (paramQQAppInterface != null))
+    {
+      String str = paramString2;
+      if (paramString2.contains("${network_unknown}")) {
+        str = paramString2.replace("${network_unknown}", a(paramQQAppInterface));
+      }
+      paramQQAppInterface = paramQQAppInterface.getReportController();
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.a(paramString1, str, 1);
+      }
+    }
   }
 }
 

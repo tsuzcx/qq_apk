@@ -1,6 +1,21 @@
-public abstract interface mvv
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.widget.stageview.StageEffectView.5.1;
+import com.tencent.av.widget.stageview.StageMemberView;
+
+public class mvv
+  implements Animation.AnimationListener
 {
-  public abstract void a(int paramInt, long paramLong, String paramString1, String paramString2);
+  public mvv(StageEffectView.5.1 param1) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.a.a(true);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

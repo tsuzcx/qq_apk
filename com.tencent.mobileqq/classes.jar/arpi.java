@@ -1,21 +1,25 @@
-import org.jetbrains.annotations.NotNull;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class arpi
+final class arpi
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
+  arpi(Dialog paramDialog) {}
   
-  @NotNull
-  public String toString()
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder("{");
-    localStringBuilder.append("topicId: ").append(this.jdField_a_of_type_Int).append(",topicName: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    return localStringBuilder.toString();
+    bcef.b(null, "dc00898", "", "", "kuolie", "0X80097DF", 0, 0, "", "", "", "");
+    if ((this.a != null) && (this.a.isShowing())) {
+      this.a.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arpi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.DiscoverTab;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-public final class bnae
-  implements Parcelable.Creator<DiscoverTab>
+public class bnae
+  implements View.OnTouchListener
 {
-  public DiscoverTab a(Parcel paramParcel)
-  {
-    return new DiscoverTab(paramParcel);
-  }
+  public bnae(CropVideoActivity paramCropVideoActivity) {}
   
-  public DiscoverTab[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new DiscoverTab[paramInt];
+    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
+    CropVideoActivity.a(this.a).a(paramMotionEvent);
+    CropVideoActivity.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

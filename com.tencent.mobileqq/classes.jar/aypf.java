@@ -1,37 +1,19 @@
-import android.annotation.TargetApi;
-import android.content.ClipData;
-import android.content.ClipData.Item;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
 
-class aypf
-  implements View.OnLongClickListener
+public class aypf
+  implements DialogInterface.OnClickListener
 {
-  aypf(ayot paramayot) {}
+  public aypf(StickyNotePublishFragment paramStickyNotePublishFragment, aypc paramaypc) {}
   
-  @TargetApi(11)
-  public boolean onLongClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.getChildCount() <= 1) {
-      return true;
-    }
-    Object localObject = new ClipData.Item("");
-    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new aypm(this.a, paramView), paramView, 0);
-    localObject = ayot.a(this.a, (PicInfo)paramView.getTag(), null);
-    ((RelativeLayout)localObject).setVisibility(4);
-    ayot.a(this.a, (RelativeLayout)localObject);
-    int i = this.a.a.indexOfChild(paramView);
-    if (i != -1)
-    {
-      this.a.a.removeView(paramView);
-      this.a.a.addView(ayot.a(this.a), i);
-      return true;
-    }
-    paramView.setVisibility(4);
-    return true;
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.b.obtainMessage(3, this.jdField_a_of_type_Aypc).sendToTarget();
+    bcef.b(null, "dc00898", "", "", "0X800AB31", "0X800AB31", 1, 0, "0", "0", "", "");
   }
 }
 

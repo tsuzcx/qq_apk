@@ -1,14 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class anqs
-  implements DialogInterface.OnClickListener
+public class anqs
+  extends anri
 {
-  anqs(anqo paramanqo) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    paramDialogInterface.dismiss();
+    paramQQAppInterface = new anqr(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "nearby_entry";
+    paramQQAppInterface.c = "nearby_feed";
+    return paramQQAppInterface;
   }
 }
 

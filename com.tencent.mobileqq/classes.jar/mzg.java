@@ -1,25 +1,62 @@
-import android.os.CountDownTimer;
-import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class mzg
-  extends CountDownTimer
+public abstract class mzg<T extends myy>
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  mzg(mzf parammzf, long paramLong1, long paramLong2, long paramLong3, int paramInt)
+  protected int a;
+  protected T a;
+  protected mzi a;
+  
+  public mzg(@NonNull View paramView)
   {
-    super(paramLong1, paramLong2);
+    super(paramView);
+    a();
   }
   
-  public void onFinish()
+  public final void a()
   {
-    int i = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
-    mzf.a(this.jdField_a_of_type_Mzf, this.jdField_a_of_type_Int - i);
+    this.itemView.setOnClickListener(this);
   }
   
-  public void onTick(long paramLong) {}
+  public void a(mzi parammzi)
+  {
+    this.jdField_a_of_type_Mzi = parammzi;
+  }
+  
+  public void a(mzj parammzj, T paramT, int paramInt) {}
+  
+  public final void b(mzj parammzj, myy parammyy, int paramInt)
+  {
+    if (parammyy != null)
+    {
+      this.jdField_a_of_type_Myy = parammyy;
+      a(parammzj, this.jdField_a_of_type_Myy, paramInt);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+      this.jdField_a_of_type_Myy = null;
+      a(parammzj, null, paramInt);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Mzi != null) {
+      this.jdField_a_of_type_Mzi.a(paramView, this.jdField_a_of_type_Myy, this.jdField_a_of_type_Int);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mzg
  * JD-Core Version:    0.7.0.1
  */

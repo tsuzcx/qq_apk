@@ -1,42 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.PAMessage;
-import com.tencent.mobileqq.data.PAMessage.Item;
-import java.util.ArrayList;
+import android.os.Handler;
 
-final class ahjf
-  implements ahky
+class ahjf
+  implements odl
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  ahjf(ahiu paramahiu) {}
+  
+  public void a()
   {
-    int j = 0;
-    paramQQAppInterface = ((MessageForPubAccount)paramChatMessage).mPAMessage;
-    int i = j;
-    if (paramQQAppInterface != null)
-    {
-      i = j;
-      if (paramQQAppInterface.items != null)
-      {
-        i = j;
-        if (paramQQAppInterface.items.size() != 0)
-        {
-          if (((PAMessage.Item)paramQQAppInterface.items.get(0)).cover == null) {
-            break label85;
-          }
-          if (paramQQAppInterface.items.size() != 1) {
-            break label74;
-          }
-          i = 6;
-        }
-      }
-    }
-    return i;
-    label74:
-    paramQQAppInterface.items.size();
-    return 7;
-    label85:
-    return 8;
+    ahiu.b(this.a, false);
+    this.a.a.sendEmptyMessage(1);
   }
 }
 

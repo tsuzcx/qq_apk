@@ -1,21 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.AccountSettingFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.pb.oac.OACProfilePb.ProfileDataRsp;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
-public class nvp
-  implements ocn<OACProfilePb.ProfileDataRsp>
+class nvp
+  implements View.OnClickListener
 {
-  public nvp(AccountSettingFragment paramAccountSettingFragment) {}
+  nvp(num paramnum, int paramInt, obr paramobr) {}
   
-  public void a(int paramInt, boolean paramBoolean, OACProfilePb.ProfileDataRsp paramProfileDataRsp, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      AccountSettingFragment.a(this.a, new AccountDetail(paramProfileDataRsp));
-      AccountSettingFragment.a(this.a, AccountSettingFragment.a(this.a));
-      AccountSettingFragment.b(this.a);
-    }
+    zsf.a((BaseActivity)this.jdField_a_of_type_Num.jdField_a_of_type_JavaLangRefWeakReference.get(), new zsh(this.jdField_a_of_type_Num.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Num.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Num.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, num.a(this.jdField_a_of_type_Num), this.jdField_a_of_type_Int);
+    num.a(this.jdField_a_of_type_Num, this.jdField_a_of_type_Obr.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

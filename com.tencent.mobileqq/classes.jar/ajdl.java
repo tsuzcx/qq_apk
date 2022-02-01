@@ -1,24 +1,62 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class ajdl
-  implements View.OnClickListener
+  extends TransProcessorHandler
 {
-  public ajdl(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  final WeakReference<Conversation> a;
   
-  public void onClick(View paramView)
+  public ajdl(Conversation paramConversation)
   {
-    InputMethodManager localInputMethodManager = (InputMethodManager)this.a.getSystemService("input_method");
-    if ((localInputMethodManager != null) && (localInputMethodManager.isActive())) {
-      localInputMethodManager.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
-    }
-    this.a.setResult(1);
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = new WeakReference(paramConversation);
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int j = 0;
+    Conversation localConversation = (Conversation)this.a.get();
+    if (localConversation == null) {}
+    do
+    {
+      FileMsg localFileMsg;
+      int k;
+      int i;
+      do
+      {
+        do
+        {
+          return;
+          localFileMsg = (FileMsg)paramMessage.obj;
+        } while ((Conversation.a(localConversation) == null) || (localFileMsg == null) || (TextUtils.isEmpty(localFileMsg.mUin)));
+        k = paramMessage.what;
+        if (localFileMsg.fileType != 1)
+        {
+          i = j;
+          if (localFileMsg.fileType != 2) {}
+        }
+        else if ((k != 1001) && (k != 1002) && (k != 1000) && (k != 1005))
+        {
+          i = j;
+          if (k != 1003) {}
+        }
+        else
+        {
+          i = 1;
+        }
+      } while ((i == 0) && (((k != 1003) && (k != 2003)) || ((localFileMsg.fileType != 2) && (!localConversation.f))));
+      localConversation.a(8, localFileMsg.mUin, -2147483648);
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.recent", 2, "refresh recent, from_transferListener2");
   }
 }
 

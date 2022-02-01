@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import java.util.List;
+import android.view.View;
+import android.view.ViewStub;
+import android.view.ViewStub.OnInflateListener;
 
 class ucs
-  implements ulk
+  implements ViewStub.OnInflateListener
 {
-  ucs(ucr paramucr) {}
+  ucs(ucp paramucp) {}
   
-  public List<ull> a(int paramInt, boolean paramBoolean)
+  public void onInflate(ViewStub paramViewStub, View paramView)
   {
-    return upw.a(this.a.a(), paramInt, paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return AppNetConnInfo.isWifiConn();
+    this.a.a = paramView;
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ucs
  * JD-Core Version:    0.7.0.1
  */

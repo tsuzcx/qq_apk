@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.widget.immersive.ImmersiveTitleBar2 android:id="@id/jq6" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
-    <FrameLayout android:id="@id/j_a" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat android:layout_gravity="center_horizontal" android:id="@id/nmh" android:layout_width="fill_parent" android:layout_height="44.0dip" app:tabCompatContentEnd="12.0dip" app:tabCompatContentStart="12.0dip" app:tabCompatMinWidth="88.0dip" app:tabCompatPaddingEnd="12.0dip" app:tabCompatPaddingStart="12.0dip" />
-        <ImageView android:gravity="center_vertical" android:id="@id/az_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:src="@drawable/do6" android:drawablePadding="5.0dip" />
-    </FrameLayout>
-    <com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat android:id="@id/nmi" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-</LinearLayout>
+<merge android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/a4f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView android:id="@id/nfe" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="-2.5dip" android:layout_marginTop="-2.5dip" android:layout_marginRight="-2.5dip" android:layout_marginBottom="-2.5dip" />
+    <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:id="@id/a2o" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="3.5dip" android:layout_marginTop="3.5dip" android:layout_marginRight="3.5dip" android:layout_marginBottom="3.5dip" />
+    <com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView android:layout_gravity="bottom|center|right" android:id="@id/mtl" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+    <com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView android:id="@id/n0l" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="3.5dip" android:layout_marginTop="3.5dip" android:layout_marginRight="3.5dip" android:layout_marginBottom="3.5dip" />
+</merge>

@@ -1,43 +1,41 @@
-import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class bfbh
-  extends bfbf
 {
   public int a;
   public long a;
-  public String a;
-  public byte[] a;
+  public ByteStringMicro a;
+  public List<bebc> a;
+  public Map<String, bebc> a;
+  public boolean a;
   public int b;
-  public long b;
-  public String b;
-  public byte[] b;
+  public boolean b;
   public int c;
-  public int d;
-  public int e;
-  public String f;
-  public int g;
-  public String g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
+  public int d = 0;
   
-  public String toString()
+  public bfbh(bfbb parambfbb, long paramLong)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" fromChatType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" toChatType:").append(this.b);
-    localStringBuilder.append(" fromBusiType:").append(this.c);
-    localStringBuilder.append(" toBusiType:").append(this.d);
-    localStringBuilder.append(" md5:").append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-    localStringBuilder.append(" format:").append(this.j);
-    localStringBuilder.append(" str_file_name:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" uint64_file_size:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" fileTime:").append(this.k);
-    localStringBuilder.append(" uuid:").append(this.f);
-    localStringBuilder.append(" fromUin:").append(this.g);
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = ByteStringMicro.copyFromUtf8("");
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    if (paramLong == 0L) {
+      this.c = 0;
+    }
+    for (;;)
+    {
+      this.c = i;
+      return;
+      i = 3;
+    }
   }
 }
 

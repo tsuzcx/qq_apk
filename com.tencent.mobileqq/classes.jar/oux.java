@@ -1,14 +1,22 @@
+import java.util.ArrayList;
+
 class oux
-  extends ovd
+  extends owd
 {
-  oux(otv paramotv, otp paramotp, boolean paramBoolean, int paramInt)
+  oux(ouu paramouu, int paramInt)
   {
-    super(paramotv, null);
+    super(paramouu, null);
   }
   
-  void a(ovg paramovg)
+  void a(owg paramowg)
   {
-    paramovg.onCommentCreate(true, this.jdField_a_of_type_Otp, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Otv.a(this.jdField_a_of_type_Int), this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Int == 1) {
+      paramowg.onCommentListLoad(1, false, new ArrayList(), false, 6, 6);
+    }
+    while (this.jdField_a_of_type_Int != 2) {
+      return;
+    }
+    paramowg.onCommentLoadMore(1, false, new ArrayList(), false, 6);
   }
 }
 

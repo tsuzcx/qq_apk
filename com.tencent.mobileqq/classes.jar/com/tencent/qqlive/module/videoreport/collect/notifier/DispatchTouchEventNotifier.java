@@ -7,6 +7,7 @@ import com.tencent.qqlive.module.videoreport.collect.IEventListener;
 public class DispatchTouchEventNotifier
   implements IEventNotifier
 {
+  private boolean mBefore;
   private MotionEvent mEvent;
   private boolean mResult;
   private Object mSender;
@@ -17,17 +18,18 @@ public class DispatchTouchEventNotifier
     return 10;
   }
   
-  public void init(Object paramObject, Window paramWindow, MotionEvent paramMotionEvent, boolean paramBoolean)
+  public void init(Object paramObject, Window paramWindow, MotionEvent paramMotionEvent, boolean paramBoolean1, boolean paramBoolean2)
   {
     this.mSender = paramObject;
     this.mWindow = paramWindow;
     this.mEvent = paramMotionEvent;
-    this.mResult = paramBoolean;
+    this.mResult = paramBoolean1;
+    this.mBefore = paramBoolean2;
   }
   
   public void notifyEvent(IEventListener paramIEventListener)
   {
-    paramIEventListener.onDispatchTouchEvent(this.mSender, this.mWindow, this.mEvent, this.mResult);
+    paramIEventListener.onDispatchTouchEvent(this.mSender, this.mWindow, this.mEvent, this.mResult, this.mBefore);
   }
   
   public void reset()

@@ -1,20 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aezl
-  implements DialogInterface.OnClickListener
+public abstract interface aezl
 {
-  public aezl(NotificationActivity paramNotificationActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.finish();
-  }
+  public abstract void onCheckedChanged(ChatMessage paramChatMessage, CompoundButton paramCompoundButton, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aezl
  * JD-Core Version:    0.7.0.1
  */

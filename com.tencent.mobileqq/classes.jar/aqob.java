@@ -1,8 +1,6 @@
-import com.tencent.image.URLImageView;
-
-public class aqob
+public abstract interface aqob
 {
-  URLImageView a;
+  public abstract void a(aqoa paramaqoa);
 }
 
 

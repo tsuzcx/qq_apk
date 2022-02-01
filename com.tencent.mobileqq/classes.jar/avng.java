@@ -1,61 +1,88 @@
-import android.graphics.Camera;
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.gamecenter.view.ScrollTextView;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.recent.data.RecentItemPullActivePush;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import mqq.manager.Manager;
 
 public class avng
-  extends Animation
+  implements Manager
 {
-  private float jdField_a_of_type_Float;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private final boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private final boolean jdField_b_of_type_Boolean;
+  public static String a;
+  public static String b = "extra_notify_msg";
+  public Intent a;
+  public RecentItemPullActivePush a;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MessageForText jdField_a_of_type_ComTencentMobileqqDataMessageForText;
   
-  public avng(ScrollTextView paramScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
+  static
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
+    jdField_a_of_type_JavaLangString = "QQ";
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public avng(QQAppInterface paramQQAppInterface)
   {
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.jdField_b_of_type_Float;
-    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
-    int i;
-    if (this.jdField_b_of_type_Boolean)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush == null) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public MessageForText a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush == null) {
+      return null;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText == null)
     {
-      i = 1;
-      paramTransformation = paramTransformation.getMatrix();
-      localCamera.save();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label99;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText = ((MessageForText)bbli.a(-1000));
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msgtype = -1000;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.istroop = 9653;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.isread = false;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.senderuin = AppConstants.PULL_ACTIVE_PUSH_UIN;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.frienduin = AppConstants.PULL_ACTIVE_PUSH_UIN;
+      if (this.jdField_a_of_type_AndroidContentIntent != null) {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = this.jdField_a_of_type_AndroidContentIntent.getStringExtra(b);
       }
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.time;
     }
-    for (;;)
-    {
-      localCamera.getMatrix(paramTransformation);
-      localCamera.restore();
-      paramTransformation.preTranslate(-f1, -f2);
-      paramTransformation.postTranslate(f1, f2);
-      return;
-      i = -1;
-      break;
-      label99:
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg.equals(this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.mTitleName))) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.mTitleName;
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time != this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.time) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.time = this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.time;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForText;
   }
   
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a()
   {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView.getHeight();
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqGamecenterViewScrollTextView.getWidth();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush = null;
   }
+  
+  public void a(Intent paramIntent)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush == null)
+    {
+      localObject = new RecentUser(AppConstants.PULL_ACTIVE_PUSH_UIN, 9653);
+      ((RecentUser)localObject).msgType = -1000;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush = new RecentItemPullActivePush((RecentUser)localObject);
+    }
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    Object localObject = paramIntent.getStringExtra(b);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentDataRecentItemPullActivePush.a((String)localObject, l);
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+  }
+  
+  public void onDestroy() {}
 }
 
 

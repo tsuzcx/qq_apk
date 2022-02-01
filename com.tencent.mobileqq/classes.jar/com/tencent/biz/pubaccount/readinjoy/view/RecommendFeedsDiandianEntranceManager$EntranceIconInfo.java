@@ -4,19 +4,21 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import smj;
-import tay;
+import sqk;
+import tfb;
 
 public class RecommendFeedsDiandianEntranceManager$EntranceIconInfo
-  implements Parcelable, tay
+  implements Parcelable, tfb
 {
-  public static final Parcelable.Creator<EntranceIconInfo> CREATOR = new smj();
+  public static final Parcelable.Creator<EntranceIconInfo> CREATOR = new sqk();
   public int a;
   public RecommendFeedsDiandianEntranceManager.ExtraInfo a;
   public String a;
   public boolean a;
+  public int b;
   public String b = "";
   public String c = "";
+  public String d = "";
   
   public RecommendFeedsDiandianEntranceManager$EntranceIconInfo()
   {
@@ -109,7 +111,7 @@ public class RecommendFeedsDiandianEntranceManager$EntranceIconInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo
  * JD-Core Version:    0.7.0.1
  */

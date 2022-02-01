@@ -1,44 +1,16 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-class avab
-  implements View.OnClickListener
+public class avab
+  implements DialogInterface.OnClickListener
 {
-  avab(auzt paramauzt, DialogInterface.OnClickListener paramOnClickListener) {}
+  public avab(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Auzt.hideSoftInputFromWindow();
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Auzt, 0);
-    }
-    if (auzt.a(this.jdField_a_of_type_Auzt))
-    {
-      auzt.a(this.jdField_a_of_type_Auzt).removeView(auzt.a(this.jdField_a_of_type_Auzt));
-      auzt.a(this.jdField_a_of_type_Auzt, false);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Auzt.isShowing()) {
-        this.jdField_a_of_type_Auzt.dismiss();
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Forward.NewVersion.Dialog", 2, Log.getStackTraceString(localException));
-        }
-      }
-    }
+    ListenTogetherOverlayFragment.a(this.a).finish();
   }
 }
 

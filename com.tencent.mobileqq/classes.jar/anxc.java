@@ -1,94 +1,80 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.app.utils.NumberWheelView;
+import com.tencent.mobileqq.remind.widget.WheelTextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.VerticalGallery.LayoutParams;
+import java.util.ArrayList;
+import java.util.List;
 
 public class anxc
-  extends QIPCModule
+  extends BaseAdapter
 {
-  private static volatile anxc a;
+  private int jdField_a_of_type_Int = 36;
+  private Context jdField_a_of_type_AndroidContentContext;
+  public List<Integer> a;
   
-  public anxc(String paramString)
+  public anxc(NumberWheelView paramNumberWheelView, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramString);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt1, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
+    a(paramInt2, paramInt3);
   }
   
-  public static anxc a()
+  public View a(int paramInt)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new anxc("ExtendFriendQIPCModule");
-      }
-      return a;
-    }
-    finally {}
+    return getView(paramInt, null, null);
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof QQAppInterface)) {
-      return null;
-    }
-    localObject = (QQAppInterface)localObject;
-    boolean bool;
-    if ("notifyCampusFriendCertificateResult".equals(paramString))
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    while (paramInt1 <= paramInt2)
     {
-      bool = paramBundle.getBoolean("key_result");
-      if (QLog.isColorLevel()) {
-        QLog.d("ExtendFriendQIPCModule", 2, "onCall ACTION_NOTIFY_CAMPUS_FRIEND_CERTIFICATE_RESULT ,result = " + bool);
-      }
-      paramString = (asvi)((QQAppInterface)localObject).getManager(264);
-      if (paramString != null)
-      {
-        if (!bool) {
-          break label132;
-        }
-        paramInt = 2;
-        paramString.a(paramInt, 1);
-        ((asvg)((QQAppInterface)localObject).a(127)).notifyUI(20, true, new Object[] { Integer.valueOf(2) });
-      }
+      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(paramInt1));
+      paramInt1 += 1;
     }
-    for (;;)
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    if (paramView == null)
     {
-      return null;
-      label132:
-      paramInt = 3;
-      break;
-      if ("notifyUploadSutudentIDResult".equals(paramString))
-      {
-        bool = paramBundle.getBoolean("key_result");
-        paramString = (asvi)((QQAppInterface)localObject).getManager(264);
-        if (bool)
-        {
-          paramString.a(1, 2);
-          ((asvg)((QQAppInterface)localObject).a(127)).notifyUI(20, true, new Object[] { Integer.valueOf(2) });
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ExtendFriendQIPCModule", 2, "onCall ACTION_NOTIFY_STUDENTID_UPLOAD_RESULT ,result = " + bool);
-        }
+      localObject1 = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
+      ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+    }
+    for (paramView = (WheelTextView)localObject1;; paramView = (View)localObject2)
+    {
+      localObject2 = paramView;
+      if (paramView == null) {
+        localObject2 = (WheelTextView)localObject1;
       }
-      else if ("notifyUpdateSchoolInfo".equals(paramString))
-      {
-        paramString = paramBundle.getString("name", "");
-        paramInt = paramBundle.getInt("category", 0);
-        String str1 = paramBundle.getString("schoolid", "");
-        int i = paramBundle.getInt("idx", 0);
-        asvi localasvi = (asvi)((QQAppInterface)localObject).getManager(264);
-        String str2 = localasvi.g();
-        if (QLog.isColorLevel()) {
-          QLog.d("ExtendFriendQIPCModule", 2, "onCall ACTION_NOTIFY_SCHOOL_INFO_UPDATE ，schoolName = " + paramString + "，oldSchoolName = " + str2);
-        }
-        if (!paramString.equals(str2)) {
-          localasvi.a(0, -1);
-        }
-        localasvi.a(i, paramString, str1, paramInt);
-        ((asvg)((QQAppInterface)localObject).a(127)).notifyUI(22, true, paramBundle);
-      }
+      paramView = String.format("%d", new Object[] { this.jdField_a_of_type_JavaUtilList.get(paramInt) });
+      ((WheelTextView)localObject2).setTextSize(18.0F);
+      ((WheelTextView)localObject2).setTextColor(-7829368);
+      ((WheelTextView)localObject2).setGravity(5);
+      ((WheelTextView)localObject2).setVisibility(0);
+      ((WheelTextView)localObject2).setText(paramView);
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+      return localObject1;
+      localObject1 = paramView;
     }
   }
 }

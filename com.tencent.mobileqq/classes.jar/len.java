@@ -1,72 +1,52 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.MemoryInfo;
-import android.content.ComponentCallbacks2;
-import android.content.Context;
-import android.content.res.Configuration;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.av.app.InviteMemberObserver.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
-class len
-  implements ComponentCallbacks2
+public class len
+  implements Observer
 {
-  len(lem paramlem) {}
+  Handler a = null;
   
-  private void a(int paramInt)
+  private void a(Object paramObject)
   {
-    VideoController localVideoController = this.a.a.a();
-    if (localVideoController != null) {
-      localVideoController.a("lowMemoryLevel", String.valueOf(paramInt));
+    paramObject = (Object[])paramObject;
+    int i = ((Integer)paramObject[0]).intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("qav.GAudioUIObserver", 2, "OnUpdate，msgType = " + i);
     }
-    try
+    if (paramObject.length < 4)
     {
-      ActivityManager localActivityManager = (ActivityManager)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("activity");
-      ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
-      localActivityManager.getMemoryInfo(localMemoryInfo);
-      localVideoController = localVideoController.a("availMem", String.valueOf(localMemoryInfo.availMem / 1048576L)).a("threshold", String.valueOf(localMemoryInfo.threshold / 1048576L));
-      if (localMemoryInfo.lowMemory) {}
-      for (paramInt = 1;; paramInt = 0)
-      {
-        localVideoController.a("lowMemory", String.valueOf(paramInt));
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("qav.GAudioUIObserver", 2, "quit for message length");
       }
       return;
     }
-    catch (Throwable localThrowable)
+    switch (i)
     {
-      lbj.e("GMemoryMonitor", localThrowable.getMessage());
+    default: 
+      return;
     }
+    a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), (ArrayList)paramObject[3]);
   }
   
-  public void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GMemoryMonitor", 2, "onConfigurationChanged called");
-    }
-  }
+  protected void a(long paramLong1, long paramLong2, ArrayList<lcp> paramArrayList) {}
   
-  public void onLowMemory()
+  public void update(Observable paramObservable, Object paramObject)
   {
-    QLog.d("GMemoryMonitor", 1, "onLowMemory called");
-    this.a.a(-10, this.a.a.e);
-    a(-10);
-  }
-  
-  public void onTrimMemory(int paramInt)
-  {
-    if (paramInt >= 15) {
-      lic.a(41, paramInt);
-    }
-    if (paramInt == 15)
+    paramObservable = Looper.getMainLooper();
+    if (Thread.currentThread() != paramObservable.getThread())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GMemoryMonitor", 2, "onTrimMemory called ,level = " + paramInt);
+      if (this.a == null) {
+        this.a = new Handler(paramObservable);
       }
-      this.a.a(paramInt, this.a.a.e);
-      ((lie)this.a.a.a(4)).a(27, paramInt);
-      a(paramInt);
+      this.a.post(new InviteMemberObserver.1(this, paramObject));
+      return;
     }
+    a(paramObject);
   }
 }
 

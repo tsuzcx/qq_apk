@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerHorizontal="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:layout_gravity="center_horizontal" android:id="@id/ns8" android:layout_width="43.0dip" android:layout_height="43.0dip" android:layout_marginLeft="14.0dip" android:layout_marginRight="14.0dip" android:layout_marginBottom="21.0dip" android:scaleType="centerCrop" />
+    <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:layout_gravity="center_horizontal" android:id="@id/mx7" android:layout_width="27.0dip" android:layout_height="18.0dip" android:layout_marginLeft="8.0dip" android:layout_marginTop="34.0dip" android:scaleType="fitXY" android:layout_alignLeft="@id/ns8" android:layout_marginStart="8.0dip" android:layout_alignStart="@id/ns8" />
+</RelativeLayout>

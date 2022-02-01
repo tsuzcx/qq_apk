@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import com.tencent.theme.SkinData;
 
 public class azys
-  implements DialogInterface.OnClickListener
 {
-  public azys(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  public int a;
+  public SkinData a;
+  public int[] a;
+  public int[][] a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public azys(int paramInt, SkinData paramSkinData)
   {
-    this.a.e();
-    this.a.g();
-    bdll.b(this.a.app, "P_CliOper", "Vip_SummaryCard", "", "SummaryCard", "CLICK_VIPOPENSERVICE", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentThemeSkinData = paramSkinData;
   }
 }
 

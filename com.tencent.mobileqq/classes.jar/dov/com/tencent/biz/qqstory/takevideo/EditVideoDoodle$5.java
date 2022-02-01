@@ -1,17 +1,19 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bqeq;
-import bqkv;
-import wth;
+import bndn;
+import bnhs;
+import java.util.Collections;
 
 public class EditVideoDoodle$5
   implements Runnable
 {
-  public EditVideoDoodle$5(bqeq parambqeq) {}
+  public EditVideoDoodle$5(bndn parambndn) {}
   
   public void run()
   {
-    ((bqkv)wth.a(39)).c();
+    if (!this.this$0.jdField_a_of_type_Boolean) {
+      this.this$0.jdField_a_of_type_Bnhs.a(1, Collections.EMPTY_LIST);
+    }
   }
 }
 

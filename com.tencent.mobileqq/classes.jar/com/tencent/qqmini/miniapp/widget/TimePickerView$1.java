@@ -12,21 +12,21 @@ class TimePickerView$1
   public void onTimeChanged(TimePicker paramTimePicker, int paramInt1, int paramInt2)
   {
     TimePickerView.access$002(this.this$0, paramInt1);
-    if (paramInt1 == TimePickerView.access$100(this.this$0).getMinValue())
+    TimePickerView.access$102(this.this$0, paramInt2);
+    if (paramInt1 == TimePickerView.access$200(this.this$0).getMinValue())
     {
-      TimePickerView.access$300(this.this$0).setMinValue(TimePickerView.access$200(this.this$0));
-      TimePickerView.access$300(this.this$0).setMaxValue(59);
+      TimePickerView.access$400(this.this$0).setMinValue(TimePickerView.access$300(this.this$0));
+      TimePickerView.access$400(this.this$0).setMaxValue(59);
       return;
     }
-    if (paramInt1 == TimePickerView.access$100(this.this$0).getMaxValue())
+    if (paramInt1 == TimePickerView.access$200(this.this$0).getMaxValue())
     {
-      TimePickerView.access$300(this.this$0).setMinValue(0);
-      TimePickerView.access$300(this.this$0).setMaxValue(TimePickerView.access$400(this.this$0));
+      TimePickerView.access$400(this.this$0).setMinValue(0);
+      TimePickerView.access$400(this.this$0).setMaxValue(TimePickerView.access$500(this.this$0));
       return;
     }
-    TimePickerView.access$300(this.this$0).setMinValue(0);
-    TimePickerView.access$300(this.this$0).setMaxValue(59);
-    TimePickerView.access$502(this.this$0, paramInt2);
+    TimePickerView.access$400(this.this$0).setMinValue(0);
+    TimePickerView.access$400(this.this$0).setMaxValue(59);
   }
 }
 

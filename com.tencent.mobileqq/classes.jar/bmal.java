@@ -1,15 +1,25 @@
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-class bmal<K, V>
-  extends WeakReference<V>
+class bmal
+  implements Observer<Boolean>
 {
-  K a;
+  bmal(bmai parambmai) {}
   
-  public bmal(K paramK, V paramV, ReferenceQueue<V> paramReferenceQueue)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    super(paramV, paramReferenceQueue);
-    this.a = paramK;
+    if (paramBoolean == null) {}
+    while (!bmai.b(this.a)) {
+      return;
+    }
+    View localView = bmai.a(this.a);
+    if (paramBoolean.booleanValue()) {}
+    for (int i = 0;; i = 4)
+    {
+      localView.setVisibility(i);
+      return;
+    }
   }
 }
 

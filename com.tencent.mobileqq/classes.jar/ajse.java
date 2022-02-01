@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajse
-  extends anuw
+class ajse
+  implements DialogInterface.OnClickListener
 {
-  private ajse(AlphabetFriendFragment paramAlphabetFriendFragment) {}
+  ajse(ajsc paramajsc, Runnable paramRunnable) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (AlphabetFriendFragment.b(this.a))) {
-      AlphabetFriendFragment.a(this.a, 1400L, true);
-    }
-  }
-  
-  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
-      }
-      AlphabetFriendFragment.a(this.a, 1400L, false);
-    }
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

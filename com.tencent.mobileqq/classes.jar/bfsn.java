@@ -1,20 +1,35 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.util.Pair;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-class bfsn
-  implements bjhv
+public class bfsn
 {
-  bfsn(bfsf parambfsf, TroopFileTransferManager paramTroopFileTransferManager, String paramString1, String paramString2, long paramLong, int paramInt) {}
-  
-  public void a(int paramInt)
+  public static ArrayList<Pair<String, Long>> a(ArrayList<Pair<String, Long>> paramArrayList)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    Object[] arrayOfObject = new Object[paramArrayList.size()];
+    int i = 0;
+    Object localObject;
+    while (i < paramArrayList.size())
+    {
+      localObject = (Pair)paramArrayList.get(i);
+      arrayOfObject[i] = { (String)((Pair)localObject).first, String.valueOf(((Pair)localObject).second) };
+      i += 1;
     }
+    Arrays.sort(arrayOfObject, new bfso());
+    paramArrayList.clear();
+    i = 0;
+    while (i < arrayOfObject.length)
+    {
+      localObject = (String[])arrayOfObject[i];
+      paramArrayList.add(Pair.create(localObject[0], Long.valueOf(Long.parseLong(localObject[1]))));
+      i += 1;
+    }
+    return paramArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfsn
  * JD-Core Version:    0.7.0.1
  */

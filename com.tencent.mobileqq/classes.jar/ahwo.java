@@ -1,12 +1,17 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
 
 public class ahwo
-  extends ahwf
+  implements View.OnTouchListener
 {
-  public TroopSignVideoView a;
-  public View e;
-  public View f;
+  public ahwo(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return (paramMotionEvent.getAction() == 2) && ((this.a.a == null) || (this.a.a.getCount() == 0));
+  }
 }
 
 

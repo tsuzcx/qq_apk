@@ -1,17 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-
-class afyq
-  implements DialogInterface.OnClickListener
+public class afyq
 {
-  afyq(afyo paramafyo, bhpc parambhpc) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bdll.b(this.jdField_a_of_type_Afyo.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Afyo.a.a, "", "", "");
-    this.jdField_a_of_type_Bhpc.cancel();
-  }
+  public int a;
+  public String a;
+  public int b;
+  public int c;
 }
 
 

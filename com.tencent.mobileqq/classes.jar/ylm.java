@@ -1,33 +1,14 @@
-public class ylm
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+
+public abstract interface ylm
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public abstract void a();
   
-  public void a()
-  {
-    this.a = null;
-    this.b = null;
-    this.c = null;
-    this.d = null;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void a(ylm paramylm)
-  {
-    if (paramylm.a != null) {
-      this.a = paramylm.a;
-    }
-    if (paramylm.b != null) {
-      this.b = paramylm.b;
-    }
-    if (paramylm.c != null) {
-      this.c = paramylm.c;
-    }
-    if (paramylm.d != null) {
-      this.d = paramylm.d;
-    }
-  }
+  public abstract void a(SlideItemInfo paramSlideItemInfo);
+  
+  public abstract void a(String paramString);
 }
 
 

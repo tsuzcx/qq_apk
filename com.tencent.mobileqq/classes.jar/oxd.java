@@ -1,65 +1,31 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeExposeReplyCommentView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.os.Bundle;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class oxd
-  extends ViewBase
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/handler/CreateSubCommentHandler$send0xd1eRequest$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oxd
+  extends nmf
 {
-  private NativeExposeReplyCommentView a;
-  
-  public oxd(VafContext paramVafContext)
+  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
   {
-    super(paramVafContext);
-    this.a = new NativeExposeReplyCommentView(paramVafContext.getContext());
-  }
-  
-  public void a(orv paramorv)
-  {
-    this.a.setAdapter(paramorv);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.a.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.a.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
+      oxc.a(this.a, paramArrayOfByte);
+      return;
     }
-    do
+    this.a.a(paramInt, "Empty error message.");
+  }
+  
+  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
+  {
+    paramBundle = this.a;
+    if (paramString != null) {}
+    for (;;)
     {
-      return super.setAttribute(paramInt, paramObject);
-    } while ((!(paramObject instanceof otp)) || (((otp)paramObject).a == null));
-    this.a.a((otp)paramObject);
-    return true;
+      paramBundle.a(paramInt, paramString);
+      return true;
+      paramString = "Empty error message.";
+    }
   }
 }
 

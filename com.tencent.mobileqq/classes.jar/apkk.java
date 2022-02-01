@@ -1,10 +1,37 @@
-public abstract interface apkk
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
+public class apkk
 {
-  public abstract void a(int paramInt);
+  int a = -1;
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public static apkk a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      try
+      {
+        apkk localapkk = new apkk();
+        localapkk.a = new JSONObject(paramString).getInt("maxcount");
+        aplh.a = localapkk.a;
+        if (QLog.isColorLevel()) {
+          QLog.e("ColorNoteConfigProcessor", 2, "ColorNoteConfigProcessor onParsed maxcount " + localapkk.a);
+        }
+        return localapkk;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ColorNoteConfigProcessor", 2, "ColorNoteConfigProcessor onParsed erro " + paramString.toString());
+    return null;
+  }
   
-  public abstract void b(int paramInt1, int paramInt2);
+  public int a()
+  {
+    return this.a;
+  }
 }
 
 

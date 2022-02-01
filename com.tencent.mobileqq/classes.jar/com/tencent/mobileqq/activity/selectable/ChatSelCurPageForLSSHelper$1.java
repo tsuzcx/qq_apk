@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.selectable;
 
-import aggs;
-import amca;
+import aezn;
+import akyb;
+import amat;
 import android.view.View;
 import android.view.ViewGroup;
-import anfz;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -15,17 +15,17 @@ import java.util.List;
 public class ChatSelCurPageForLSSHelper$1
   implements Runnable
 {
-  public ChatSelCurPageForLSSHelper$1(amca paramamca) {}
+  public ChatSelCurPageForLSSHelper$1(akyb paramakyb) {}
   
   public void run()
   {
-    int i = amca.a(this.this$0).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
-    int j = amca.a(this.this$0).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getFirstVisiblePosition();
+    int i = akyb.a(this.this$0).listView.getHeaderViewsCount();
+    int j = akyb.a(this.this$0).listView.getFirstVisiblePosition();
     List localList;
     if (j >= i)
     {
       j -= i;
-      localList = amca.a(this.this$0).jdField_a_of_type_Aggs.a();
+      localList = akyb.a(this.this$0).listAdapter.a();
       if (j < localList.size()) {
         break label115;
       }
@@ -43,16 +43,16 @@ public class ChatSelCurPageForLSSHelper$1
         return;
         j = 0;
         break;
-        k = amca.a(this.this$0).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() - i;
+        k = akyb.a(this.this$0).listView.getLastVisiblePosition() - i;
         i = k;
         if (k >= localList.size()) {
           i = localList.size() - 1;
         }
         k = i;
-        if (amca.a(this.this$0).c != null)
+        if (akyb.a(this.this$0).mAIORootView != null)
         {
-          Object localObject3 = amca.a(this.this$0).c.findViewById(2131367316);
-          localObject1 = amca.a(this.this$0).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(amca.a(this.this$0).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() - 1);
+          Object localObject3 = akyb.a(this.this$0).mAIORootView.findViewById(2131367340);
+          localObject1 = akyb.a(this.this$0).listView.getChildAt(akyb.a(this.this$0).listView.getChildCount() - 1);
           k = i;
           if (localObject3 != null)
           {
@@ -82,10 +82,10 @@ public class ChatSelCurPageForLSSHelper$1
         }
       } while ((j < 0) || (k < j));
       Object localObject1 = (ChatMessage)localList.get(j);
-      localObject2 = (AIOLongShotHelper)amca.a(this.this$0).a(15);
+      localObject2 = (AIOLongShotHelper)akyb.a(this.this$0).getHelper(15);
       ((AIOLongShotHelper)localObject2).a((ChatMessage)localObject1);
-      amca.a(this.this$0).j(true);
-      anfz.a(amca.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "select_more_msg", true);
+      akyb.a(this.this$0).hideTroopFCView(true);
+      amat.a(akyb.a(this.this$0).app, "select_more_msg", true);
     } while (k <= j);
     ((AIOLongShotHelper)localObject2).a((ChatMessage)localList.get(k), null, true);
   }

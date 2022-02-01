@@ -1,20 +1,11 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.2.1;
-import com.tencent.widget.AdapterView;
+import android.view.animation.Interpolator;
 
 public class bfhp
-  implements bljn
+  implements Interpolator
 {
-  public bfhp(TroopAvatarWallPreviewActivity.2.1 param1) {}
-  
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public float getInterpolation(float paramFloat)
   {
-    if ((this.a.a.this$0.e) || (this.a.a.this$0.d)) {
-      TroopAvatarWallPreviewActivity.c(this.a.a.this$0);
-    }
-    return true;
+    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
   }
 }
 

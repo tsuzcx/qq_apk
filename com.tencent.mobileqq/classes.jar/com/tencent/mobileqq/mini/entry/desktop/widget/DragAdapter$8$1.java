@@ -14,7 +14,7 @@ class DragAdapter$8$1
       QLog.d("DragAdapter", 2, "--setUserAppTop success--.");
       return;
     }
-    QLog.d("DragAdapter", 2, "--setUserAppTop success--.");
+    QLog.d("DragAdapter", 2, "--setUserAppTop fail--.");
   }
 }
 

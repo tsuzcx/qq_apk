@@ -1,40 +1,75 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.activity.selectable.TranslateSelectableMenu.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.mobileqq.widget.ContainerView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ScrollView;
+import java.lang.ref.WeakReference;
 
 public class akyu
-  implements TextWatcher
+  extends akyf<TextPreviewTranslateActivity>
 {
-  public akyu(RedPacketKuaKuaFragment paramRedPacketKuaKuaFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  protected void a(ContainerView paramContainerView)
   {
-    if (this.a.jdField_c_of_type_Int > 0) {
-      this.a.jdField_c_of_type_AndroidWidgetTextView.setText(paramEditable.length() + "/" + this.a.jdField_c_of_type_Int);
+    super.a(paramContainerView);
+    TextPreviewTranslateActivity localTextPreviewTranslateActivity = (TextPreviewTranslateActivity)this.b.get();
+    if (localTextPreviewTranslateActivity != null) {
+      paramContainerView.setOutScrollView((ScrollView)localTextPreviewTranslateActivity.findViewById(2131376863));
     }
-    if (paramEditable.length() > 0)
+    paramContainerView.jdField_a_of_type_Boolean = false;
+    paramContainerView.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.post(new TranslateSelectableMenu.1(this, paramContainerView));
+  }
+  
+  protected void a(ContainerView paramContainerView, View paramView)
+  {
+    super.a(paramContainerView, paramView);
+    bcef.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A435", "0X800A435", 0, 0, "", "", "", "");
+  }
+  
+  public void onClick(View paramView)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    switch (paramView.getId())
     {
-      this.a.a(anzj.a(2131704866));
-      RedPacketKuaKuaFragment.a(this.a).removeCallbacks(RedPacketKuaKuaFragment.a(this.a));
-      RedPacketKuaKuaFragment.a(this.a).postDelayed(RedPacketKuaKuaFragment.a(this.a), this.a.jdField_a_of_type_Long * 1000L);
-      return;
     }
-    this.a.a(anzj.a(2131704868));
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((paramInt1 == 0) && (paramInt3 > paramInt1)) {
-      bdll.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "kuakua.get.begin", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.title, "", "", "");
+    for (;;)
+    {
+      if ((paramView.getId() != 2131377014) && (akxv.a().c())) {
+        akxv.a().d();
+      }
+      for (;;)
+      {
+        for (;;)
+        {
+          EventCollector.getInstance().onViewClicked(paramView);
+          return;
+          try
+          {
+            bdaf.a(a(), "TextPreview");
+            bcef.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A437", "0X800A437", 0, 0, "", "", "", "");
+          }
+          catch (Exception localException) {}
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e("TranslateSelectableMenu", 2, localException.toString());
+        }
+      }
+      bdaf.a((Activity)paramView.getContext(), a());
+      bcef.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A438", "0X800A438", 0, 0, "", "", "", "");
+      continue;
+      if (localException != null) {
+        bdaf.a((Activity)paramView.getContext(), localException, a());
+      }
+      bcef.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A439", "0X800A439", 0, 0, "", "", "", "");
+      continue;
+      akxv.a().a(null);
+      bcef.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A436", "0X800A436", 0, 0, "", "", "", "");
     }
   }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

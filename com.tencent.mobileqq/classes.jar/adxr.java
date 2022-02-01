@@ -1,54 +1,72 @@
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.Fragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.PublicBaseFragment;
 
-class adxr
-  extends azov
+public class adxr
 {
-  adxr(adxp paramadxp) {}
-  
-  protected void a(boolean paramBoolean, int paramInt)
+  public static void a(Activity paramActivity, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "onUploadContact  isSuccess = " + paramBoolean);
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
     }
+    localIntent.setClass(paramActivity, paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    paramActivity.startActivityForResult(localIntent, paramInt);
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  public static void a(Context paramContext, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "RegisterQQNumberActivity onGetBindUinWithPhone isSuccess = " + paramBoolean1 + "; isBindOk = " + paramBoolean2 + ";hadbind = " + paramBoolean3 + ";uin =" + paramString);
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
     }
-    if (paramBoolean1)
-    {
-      if (paramBoolean2)
-      {
-        adxp.a(this.a, true);
-        adxp.b(this.a);
-      }
-      do
-      {
-        return;
-        if ((!paramBoolean3) || (TextUtils.isEmpty(paramString))) {
-          break;
-        }
-        adxp.a(this.a);
-      } while (adxp.a(this.a) == null);
-      Intent localIntent = new Intent(adxp.a(this.a), VerifyPhoneNumActivity.class);
-      localIntent.putExtra("phonenum", this.a.a);
-      localIntent.putExtra("key", this.a.b);
-      localIntent.putExtra("uin", adxp.a(this.a));
-      localIntent.putExtra("key_register_sign", adxp.a(this.a));
-      localIntent.putExtra("key_register_binduin", paramString);
-      adxp.a(this.a).startActivity(localIntent);
-      adxp.a(this.a).finish();
-      return;
-      adxp.b(this.a);
-      return;
+    localIntent.setClass(paramContext, paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    paramContext.startActivity(localIntent);
+  }
+  
+  public static void a(Context paramContext, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
+  {
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
     }
-    adxp.b(this.a);
+    localIntent.setClass(paramContext, paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    ((Activity)paramContext).startActivityForResult(localIntent, paramInt);
+  }
+  
+  public static void a(Context paramContext, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
+  {
+    a(paramContext, null, paramClass, paramClass1);
+  }
+  
+  public static void a(Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
+  {
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.setClass(BaseApplicationImpl.getApplication(), paramClass);
+    localIntent.addFlags(268435456);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    BaseApplicationImpl.getApplication().startActivity(localIntent);
+  }
+  
+  public static void a(Fragment paramFragment, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
+  {
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.setClass(paramFragment.getActivity(), paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    paramFragment.startActivityForResult(localIntent, paramInt);
   }
 }
 

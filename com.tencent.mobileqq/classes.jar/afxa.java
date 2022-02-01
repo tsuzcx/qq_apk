@@ -1,38 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import java.lang.ref.WeakReference;
 
-public class afxa
-  extends bgrc
+class afxa
+  implements afws
 {
-  public afxa(TroopRequestActivity paramTroopRequestActivity) {}
+  afxa(afwy paramafwy, MessageForArkFlashChat paramMessageForArkFlashChat) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    if ((paramBoolean) && (paramBundle != null)) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("structMsg");
-        new structmsg.StructMsg().mergeFrom(paramBundle);
-        TroopRequestActivity.a(this.a, 1);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.systemmsg.TroopRequestActivity", 2, "structMsg merge error");
-        }
-        this.a.i();
-        QQToast.a(this.a, this.a.getString(2131696702), 0).b(this.a.getTitleBarHeight());
-        return;
-      }
+    AutoStartProgressBar localAutoStartProgressBar = (AutoStartProgressBar)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.mSendingProgress.get();
+    if ((localAutoStartProgressBar != null) && (localAutoStartProgressBar.getTag() == this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat))
+    {
+      localAutoStartProgressBar.b();
+      localAutoStartProgressBar.setVisibility(8);
     }
-    this.a.i();
-    QQToast.a(this.a, this.a.getString(2131696702), 0).b(this.a.getTitleBarHeight());
   }
+  
+  public void b() {}
 }
 
 

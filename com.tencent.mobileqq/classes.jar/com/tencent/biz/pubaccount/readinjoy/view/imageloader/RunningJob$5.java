@@ -3,8 +3,8 @@ package com.tencent.biz.pubaccount.readinjoy.view.imageloader;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.Set;
-import sum;
-import sun;
+import sym;
+import syn;
 
 class RunningJob$5
   implements Runnable
@@ -17,15 +17,15 @@ class RunningJob$5
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
-      if ((localWeakReference.get() != null) && (this.this$0.jdField_a_of_type_Sun != null)) {
-        this.this$0.jdField_a_of_type_Sun.a(this.this$0.jdField_a_of_type_Suo, (sum)localWeakReference.get());
+      if ((localWeakReference.get() != null) && (this.this$0.jdField_a_of_type_Syn != null)) {
+        this.this$0.jdField_a_of_type_Syn.a(this.this$0.jdField_a_of_type_Syo, (sym)localWeakReference.get());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob.5
  * JD-Core Version:    0.7.0.1
  */

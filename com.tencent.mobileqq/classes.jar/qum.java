@@ -1,8 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface qum
+public class qum
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt, String paramString, BaseResData paramBaseResData);
+  public qum(ComponentContentNoteCard paramComponentContentNoteCard) {}
+  
+  public void onClick(View paramView)
+  {
+    ComponentContentNoteCard.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.app.automator.step.GetCheckUpdate;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class aomh
-  extends antg
 {
-  private aomh(GetCheckUpdate paramGetCheckUpdate) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    this.a.a(7);
-  }
+  public static int a = ScreenUtil.SCREEN_WIDTH;
+  public static int b = ScreenUtil.SCREEN_HIGHT;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aomh
  * JD-Core Version:    0.7.0.1
  */

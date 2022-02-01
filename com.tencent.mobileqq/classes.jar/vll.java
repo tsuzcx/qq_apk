@@ -1,57 +1,29 @@
-import com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart;
-import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.IEventReceiver;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class vll
-  extends var
+public abstract class vll<T extends IEventReceiver, EVENT extends vko>
+  extends QQUIEventReceiver<T, EVENT>
 {
-  public vll(QCircleBaseTabFragment paramQCircleBaseTabFragment) {}
-  
-  public int a()
+  public vll(T paramT)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart != null)
+    super(paramT);
+  }
+  
+  public final void a(@NonNull T paramT, @NonNull EVENT paramEVENT)
+  {
+    if ((paramEVENT.a != null) && (paramEVENT.a.isFail()))
     {
-      Object localObject = this.a.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart.a().a("get_current_page_index", null);
-      if ((localObject instanceof Integer)) {
-        return ((Integer)localObject).intValue();
-      }
+      c(paramT, paramEVENT);
+      return;
     }
-    return -1;
+    b(paramT, paramEVENT);
   }
   
-  public QCirclePolyLikeAniView a()
-  {
-    return this.a.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView;
-  }
+  public abstract void b(@NonNull T paramT, @NonNull EVENT paramEVENT);
   
-  public String a()
-  {
-    if (this.a.jdField_a_of_type_Vbe != null) {
-      return this.a.jdField_a_of_type_Vbe.b();
-    }
-    return "";
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (this.a.jdField_a_of_type_Vfi != null) {
-      this.a.jdField_a_of_type_Vfi.a("share_action_show_share_sheet", paramObject);
-    }
-  }
-  
-  public void a(String paramString, vas paramvas)
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart.a().a(paramString, paramvas);
-    }
-  }
-  
-  public void a(vdq paramvdq)
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqcircleBizpartsQCircleFolderFragmentsPart.a().a("light_interact_list_show", paramvdq);
-    }
-  }
+  public abstract void c(@NonNull T paramT, @NonNull EVENT paramEVENT);
 }
 
 

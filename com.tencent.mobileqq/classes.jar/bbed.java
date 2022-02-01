@@ -1,15 +1,16 @@
-import android.os.Bundle;
-import android.os.IInterface;
-import com.tencent.mobileqq.pic.CompressInfo;
-
-public abstract interface bbed
-  extends IInterface
+public class bbed
 {
-  public abstract Bundle a(int paramInt, Bundle paramBundle);
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
   
-  public abstract void a(int paramInt, Bundle paramBundle);
-  
-  public abstract void a(CompressInfo paramCompressInfo);
+  public bbed(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

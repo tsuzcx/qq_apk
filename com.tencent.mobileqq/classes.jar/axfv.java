@@ -1,6 +1,10 @@
-public abstract interface axfv<P, R>
+public class axfv
+  extends axfu
 {
-  public abstract R a(P paramP);
+  public int a;
+  public String a;
+  public int b;
+  public long b;
 }
 
 

@@ -1,24 +1,13 @@
-import android.support.annotation.NonNull;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class qjd
+  implements ViewBase.IBuilder
 {
-  public int a;
-  public long a;
-  public Set<String> a;
-  public Set<String> b = new HashSet();
-  
-  public qjd()
+  public ViewBase build(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "time:" + this.jdField_a_of_type_Long + "effectTime:" + this.jdField_a_of_type_Int + "  " + this.jdField_a_of_type_JavaUtilSet + "  " + this.b;
+    return new qja(paramVafContext);
   }
 }
 

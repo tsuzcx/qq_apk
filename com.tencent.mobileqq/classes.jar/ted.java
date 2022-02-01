@@ -1,21 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import android.content.Context;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.AnimationTextView;
 
 public class ted
-  implements nmg
+  extends QQCustomDialog
 {
-  public ted(BridgeModule paramBridgeModule, String paramString) {}
+  AnimationTextView a;
   
-  public void loaded(String paramString, int paramInt)
+  public ted(Context paramContext, int paramInt)
   {
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, null);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, paramString);
+    super(paramContext, paramInt);
+    a();
   }
   
-  public void progress(int paramInt) {}
+  private void a()
+  {
+    this.a = ((AnimationTextView)findViewById(2131376977));
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.a != null) {
+      this.a.setText(paramString);
+    }
+  }
+  
+  public void setContentView(int paramInt)
+  {
+    super.setContentView(paramInt);
+    a();
+  }
 }
 
 

@@ -1,19 +1,14 @@
-class pvm
-  extends rfm
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.ReqBody;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.RspBody;
+
+public abstract interface pvm
 {
-  pvm(pvl parampvl) {}
+  public abstract int a();
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    boolean bool = true;
-    if (paramInt2 == 1) {}
-    for (;;)
-    {
-      pvl.a(this.a, paramInt1, bool);
-      return;
-      bool = false;
-    }
-  }
+  public abstract void a(ToServiceMsg paramToServiceMsg, oidb_cmd0xed4.RspBody paramRspBody, int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(qlr paramqlr, oidb_cmd0xed4.ReqBody paramReqBody);
 }
 
 

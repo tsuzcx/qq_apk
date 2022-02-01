@@ -1,67 +1,85 @@
-import android.content.Context;
-import android.os.Environment;
-import android.os.StatFs;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
-import java.text.SimpleDateFormat;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
 
-public class mny
+class mny
+  extends Handler
 {
-  public static String a = ".mp4";
+  private WeakReference<mnx> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public static long a()
+  public mny(mnx parammnx1, Looper paramLooper, mnx parammnx2)
   {
-    File localFile = Environment.getExternalStorageDirectory();
-    try
-    {
-      StatFs localStatFs = new StatFs(localFile.getPath());
-      long l1 = localStatFs.getBlockSize();
-      long l2 = localStatFs.getAvailableBlocks();
+    super(paramLooper);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammnx2);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    int i = paramMessage.what;
+    mnx localmnx = (mnx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localmnx == null) {
       if (QLog.isColorLevel()) {
-        QLog.d("FileSwapHelper", 2, "getStorageLeft left=" + l1 * l2);
+        QLog.w("QavVideoAudioRecorder", 2, "RecodeHandler.handleMessage: encoder is null");
       }
-      return l1 * l2;
     }
-    catch (Throwable localThrowable)
+    do
     {
-      QLog.e("FileSwapHelper", 1, "getSpaceLeft exception:" + localThrowable + ", path=" + localFile, localThrowable);
-    }
-    return 2147483647L;
-  }
-  
-  public static long a(File paramFile)
-  {
-    if (paramFile.exists())
+      for (;;)
+      {
+        return;
+        switch (i)
+        {
+        default: 
+          throw new RuntimeException("Unhandled msg what=" + i);
+        case 0: 
+          if (mnx.a(this.jdField_a_of_type_Mnx) == null) {
+            mnx.a(this.jdField_a_of_type_Mnx, new ByteArrayOutputStream(32768));
+          }
+          if (paramMessage.obj != null)
+          {
+            mnx.a(localmnx, (bafx)paramMessage.obj);
+            return;
+          }
+          throw new RuntimeException("MSG_START_RECORDING bundle == null");
+        case 1: 
+          mnx.a(localmnx);
+          try
+          {
+            if (mnx.a(this.jdField_a_of_type_Mnx) != null)
+            {
+              mnx.a(this.jdField_a_of_type_Mnx).flush();
+              mnx.a(this.jdField_a_of_type_Mnx).close();
+              mnx.a(this.jdField_a_of_type_Mnx, null);
+              return;
+            }
+          }
+          catch (IOException paramMessage) {}
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("QavVideoAudioRecorder", 2, "AudioBuf.close() ", paramMessage);
+    return;
+    if (paramMessage.obj != null)
     {
-      paramFile = new FileInputStream(paramFile);
-      long l = paramFile.available();
-      paramFile.close();
-      return l;
+      paramMessage = (Object[])paramMessage.obj;
+      if ((paramMessage == null) || (paramMessage.length != 5)) {
+        throw new IllegalArgumentException("args == null || args.length != 5");
+      }
+      mnx.a(localmnx, ((Integer)paramMessage[0]).intValue(), ((Integer)paramMessage[1]).intValue(), (float[])paramMessage[2], (float[])paramMessage[3], ((Long)paramMessage[4]).longValue());
+      return;
     }
-    QLog.e("FileSwapHelper", 1, new Object[] { "获取文件大小", "文件不存在!" });
-    return 0L;
-  }
-  
-  public static String a()
-  {
-    String str = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath();
-    str = str + "/QQVideo/";
-    str = str + new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(Long.valueOf(System.currentTimeMillis()));
-    str = str + a;
-    File localFile = new File(str).getParentFile();
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    throw new RuntimeException("MSG_VIDEO_FRAME_AVAILABLE bundle == null");
+    if (paramMessage.obj != null)
+    {
+      paramMessage = (Object[])paramMessage.obj;
+      localmnx.b((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue());
+      return;
     }
-    return str;
-  }
-  
-  public static void a(String paramString, Context paramContext)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileSwapHelper", 2, "notifyMp4Saved=" + paramString);
-    }
-    zom.a(paramContext, new File(paramString));
+    throw new RuntimeException("MSG_AUDIO_FRAME_AVAILABLE bundle == null");
   }
 }
 

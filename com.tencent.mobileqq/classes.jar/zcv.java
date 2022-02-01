@@ -1,35 +1,77 @@
+import android.content.Context;
+import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
+import android.view.ViewStub;
 
-class zcv
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract class zcv<T>
+  extends zcu<T>
 {
-  private zcv(zcn paramzcn) {}
+  protected int c = -1;
   
-  public void onGlobalLayout()
+  public zcv(Context paramContext, boolean paramBoolean)
   {
-    int i = this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom();
-    if (this.a.c < 0)
-    {
-      this.a.c = i;
-      this.a.jdField_a_of_type_Zcu.a();
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.c - i <= this.a.b);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-      this.a.c = i;
-      this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
-    } while (this.a.jdField_a_of_type_Zcu == null);
-    this.a.jdField_a_of_type_Zcu.a(true, null);
-    this.a.jdField_a_of_type_Zcu.a(this.a.a());
+    super(paramContext, paramBoolean);
   }
+  
+  protected abstract View a();
+  
+  protected View a(int paramInt)
+  {
+    if (this.a != null) {
+      return this.a.findViewById(paramInt);
+    }
+    return null;
+  }
+  
+  protected void a()
+  {
+    this.a = a();
+    g();
+  }
+  
+  public void a(View paramView)
+  {
+    if ((paramView != null) && (a())) {
+      ((ViewGroup)this.a).addView(paramView);
+    }
+  }
+  
+  public void a(ViewStub paramViewStub)
+  {
+    if (paramViewStub == null) {
+      return;
+    }
+    if (this.c != -1)
+    {
+      a(paramViewStub, this.c);
+      return;
+    }
+    paramViewStub.setLayoutResource(b());
+    this.a = paramViewStub.inflate();
+    if (b() == 2131562428) {
+      a(a());
+    }
+    g();
+  }
+  
+  public void a(ViewStub paramViewStub, int paramInt)
+  {
+    if (paramViewStub != null)
+    {
+      paramViewStub.setLayoutResource(paramInt);
+      this.a = paramViewStub.inflate();
+      g();
+    }
+  }
+  
+  protected boolean a()
+  {
+    return (this.a != null) && ((this.a instanceof ViewGroup));
+  }
+  
+  protected abstract int b();
+  
+  protected abstract void g();
 }
 
 

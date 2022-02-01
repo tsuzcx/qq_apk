@@ -1,24 +1,13 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import java.lang.ref.WeakReference;
-
 class ajsd
-  implements View.OnLongClickListener
+  implements bhnm
 {
-  private WeakReference<ajry> a;
+  ajsd(ajsc paramajsc, Runnable paramRunnable) {}
   
-  public ajsd(ajry paramajry)
+  public void a(int paramInt)
   {
-    this.a = new WeakReference(paramajry);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    ajry localajry = (ajry)this.a.get();
-    if (localajry != null) {
-      return localajry.onLongClick(paramView);
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
-    return false;
   }
 }
 

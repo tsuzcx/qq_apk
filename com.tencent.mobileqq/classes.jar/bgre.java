@@ -1,515 +1,499 @@
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.support.v4.util.LruCache;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import mqq.app.NewIntent;
 import mqq.manager.Manager;
 
 public class bgre
   implements Manager
 {
-  private static final ArrayList<Long> a;
-  protected SharedPreferences a;
-  protected LruCache<String, Bundle> a;
-  protected QQAppInterface a;
-  protected TroopManager a;
-  protected String a;
-  protected HashMap<String, Long> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public long a;
+  private bgrd jdField_a_of_type_Bgrd = new bgrd();
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private final String jdField_a_of_type_JavaLangString = "VipGiftManager";
+  private String b;
   
   public bgre(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(10);
+    this.jdField_a_of_type_Long = 10000L;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)paramQQAppInterface.getManager(52));
-    this.jdField_a_of_type_AndroidContentSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_troop_bind_pb", 0);
+    this.jdField_b_of_type_JavaLangString = a();
+    a();
   }
   
-  @Deprecated
-  public static boolean a(MessageRecord paramMessageRecord)
+  private String b()
   {
-    return (paramMessageRecord != null) && (paramMessageRecord.msgtype == -3006);
-  }
-  
-  public int a(String paramString)
-  {
-    paramString = paramString + "_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_temp_follow_state";
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramString, -1);
-  }
-  
-  public Bundle a(String paramString)
-  {
-    return (Bundle)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
-  }
-  
-  public String a()
-  {
-    try
-    {
-      String str = this.jdField_a_of_type_JavaLangString;
-      return str;
+    if (this.jdField_a_of_type_Bgrd != null) {
+      return this.jdField_a_of_type_Bgrd.jdField_a_of_type_JavaLangString + "|" + this.jdField_a_of_type_Bgrd.jdField_b_of_type_JavaLangString + "|" + this.jdField_a_of_type_Bgrd.jdField_b_of_type_Long + "|" + this.jdField_a_of_type_Bgrd.jdField_c_of_type_Long + "|" + this.jdField_a_of_type_Bgrd.jdField_d_of_type_Long + "|" + this.jdField_a_of_type_Bgrd.jdField_a_of_type_Long + "|" + this.jdField_a_of_type_Bgrd.jdField_c_of_type_JavaLangString + "|" + this.jdField_a_of_type_Bgrd.jdField_d_of_type_JavaLangString + "|" + this.jdField_a_of_type_Bgrd.e + "|" + this.jdField_a_of_type_Bgrd.f;
     }
-    finally
+    return null;
+  }
+  
+  public bgrd a()
+  {
+    return this.jdField_a_of_type_Bgrd;
+  }
+  
+  public final String a()
+  {
+    String str1 = Build.MODEL;
+    String str2 = Build.VERSION.RELEASE;
+    return "{\"model\":\"" + str1 + "\",\"systemName\":\"android\",\"systemVersion\":\"" + str2 + "\"}";
+  }
+  
+  public void a()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getString("Gif_Download_info_key_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null);
+    if ((localObject != null) && (this.jdField_a_of_type_Bgrd != null))
     {
-      localObject = finally;
-      throw localObject;
+      localObject = ((String)localObject).split("\\|");
+      if ((localObject != null) && (localObject.length == 10) && (this.jdField_a_of_type_Bgrd != null))
+      {
+        this.jdField_a_of_type_Bgrd.jdField_a_of_type_JavaLangString = localObject[0];
+        this.jdField_a_of_type_Bgrd.jdField_b_of_type_JavaLangString = localObject[1];
+        this.jdField_a_of_type_Bgrd.jdField_b_of_type_Long = Long.parseLong(localObject[2]);
+        this.jdField_a_of_type_Bgrd.jdField_c_of_type_Long = Long.parseLong(localObject[3]);
+        this.jdField_a_of_type_Bgrd.jdField_d_of_type_Long = Long.parseLong(localObject[4]);
+        this.jdField_a_of_type_Bgrd.jdField_a_of_type_Long = Long.parseLong(localObject[5]);
+        this.jdField_a_of_type_Bgrd.jdField_c_of_type_JavaLangString = localObject[6];
+        this.jdField_a_of_type_Bgrd.jdField_d_of_type_JavaLangString = localObject[7];
+        this.jdField_a_of_type_Bgrd.e = Long.parseLong(localObject[8]);
+        this.jdField_a_of_type_Bgrd.f = Long.parseLong(localObject[9]);
+      }
     }
   }
   
   public void a(long paramLong)
   {
-    if (!jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramLong))) {
-      jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
+    this.jdField_a_of_type_Bgrd.e = NetConnInfoCenter.getServerTimeMillis();
+    a(1L, paramLong);
+    Object localObject2 = null;
+    int i;
+    boolean bool1;
+    boolean bool2;
+    do
+    {
+      do
+      {
+        try
+        {
+          Uri localUri = Uri.parse(this.jdField_a_of_type_Bgrd.jdField_d_of_type_JavaLangString);
+          Object localObject1 = localObject2;
+          if (localUri != null)
+          {
+            localObject1 = localObject2;
+            if (localUri.isHierarchical()) {
+              localObject1 = localUri.getQueryParameter("_bid");
+            }
+          }
+          if ((localObject1 == null) || (((String)localObject1).length() == 0))
+          {
+            a(5L, paramLong);
+            return;
+          }
+        }
+        catch (Exception localException)
+        {
+          a(5L, paramLong);
+          return;
+        }
+        i = NetworkUtil.getSystemNetwork(BaseApplicationImpl.getContext());
+        long l = System.currentTimeMillis();
+        bool1 = a(localException);
+        if (QLog.isColorLevel()) {
+          QLog.d("VipGiftManager", 2, "OfflineSecurity.verify bid:" + localException + ",cost:" + (System.currentTimeMillis() - l) + ",bigFlag:" + bool1);
+        }
+        l = System.currentTimeMillis();
+        bool2 = a("280");
+        if (QLog.isColorLevel()) {
+          QLog.d("VipGiftManager", 2, "OfflineSecurity.verify smalbid:280,cost:" + (System.currentTimeMillis() - l) + ",smallFlag:" + bool2);
+        }
+        if (i != 0) {
+          break label290;
+        }
+        if (!bool1) {
+          break;
+        }
+      } while (!a(2L, paramLong));
+      a(localException, paramLong);
+      return;
+    } while ((!bool2) || (!a(2L, paramLong)));
+    a("https://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
+    a("280", paramLong);
+    return;
+    label290:
+    if (a(i, bool2, bool1))
+    {
+      if (bool2)
+      {
+        if (a(2L, paramLong))
+        {
+          a("https://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
+          a("280", paramLong);
+        }
+        nny.b("280", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, new bgrf(this));
+        return;
+      }
+      a("280", null, paramLong);
+      return;
     }
+    if (bool1)
+    {
+      if (a(2L, paramLong)) {
+        a(localException, paramLong);
+      }
+      nny.b(localException, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, new bgrg(this));
+      return;
+    }
+    a(localException, "280", paramLong);
+  }
+  
+  public void a(bgrd parambgrd, BaseActivity paramBaseActivity)
+  {
+    a(3L, parambgrd.jdField_a_of_type_Long);
+    String str = null;
+    Object localObject;
+    try
+    {
+      Uri localUri = Uri.parse(parambgrd.jdField_c_of_type_JavaLangString);
+      localObject = str;
+      if (localUri != null)
+      {
+        localObject = str;
+        if (localUri.isHierarchical())
+        {
+          str = localUri.getQueryParameter("_bid");
+          localObject = str;
+          if (TextUtils.isEmpty(str))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("VipGiftManager", 2, "TextUtils.isEmpty(bid) false");
+            }
+            a(5L, parambgrd.jdField_a_of_type_Long);
+            return;
+          }
+        }
+      }
+    }
+    catch (Exception paramBaseActivity)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipGiftManager", 2, "exception bid");
+      }
+      a(5L, parambgrd.jdField_a_of_type_Long);
+      return;
+    }
+    if (a((String)localObject))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipGiftManager", 2, "showGifAnnimate.veryfyBid(" + (String)localObject + ") true,url:" + parambgrd.jdField_c_of_type_JavaLangString);
+      }
+      if (((String)localObject).equalsIgnoreCase("280")) {
+        a("https://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
+      }
+      a("0X8004B41", "2", "1", parambgrd.jdField_c_of_type_JavaLangString);
+      localObject = new Intent(BaseApplication.getContext(), QQTranslucentBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", parambgrd.jdField_c_of_type_JavaLangString);
+      ((Intent)localObject).putExtra("Gif_msg_uniseq_key", parambgrd.jdField_a_of_type_Long);
+      paramBaseActivity.startActivity((Intent)localObject);
+      return;
+    }
+    if (a("280"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipGiftManager", 2, "showGifAnnimate.veryfyBid(" + (String)localObject + ") false,url:" + parambgrd.jdField_c_of_type_JavaLangString);
+      }
+      a("https://imgcache.qq.com/club/client/gift/resource/0/index.html?_wv=524289&_bid=280");
+      a("0X8004B41", "2", "1", parambgrd.jdField_c_of_type_JavaLangString);
+      localObject = new Intent(BaseApplication.getContext(), QQTranslucentBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", parambgrd.jdField_c_of_type_JavaLangString);
+      ((Intent)localObject).putExtra("Gif_msg_uniseq_key", parambgrd.jdField_a_of_type_Long);
+      paramBaseActivity.startActivity((Intent)localObject);
+      return;
+    }
+    a(5L, parambgrd.jdField_a_of_type_Long);
   }
   
   public void a(String paramString)
   {
-    synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
-    {
-      try
-      {
-        paramString = paramString + "_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_temp_follow_state";
-        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-        localEditor.remove(paramString);
-        localEditor.commit();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopBindPublicAccountMgr.tempFollow", 2, "deletePubAccTempFollowState:" + paramString);
-        }
-        return;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("TroopBindPublicAccountMgr.tempFollow", 2, "deletePubAccTempFollowState:" + paramString.toString());
-          }
-        }
-      }
-    }
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
-    {
-      try
-      {
-        paramString = paramString + "_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "_temp_follow_state";
-        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-        paramInt1 = paramInt1 << 4 | paramInt2;
-        localEditor.putInt(paramString, paramInt1);
-        localEditor.commit();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopBindPublicAccountMgr.tempFollow", 2, "saveTroopTempFollowState:" + paramString + ", " + paramInt1);
-        }
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("TroopBindPublicAccountMgr.tempFollow", 2, "saveTroopTempFollowState:" + paramString.toString());
-          }
-        }
-      }
-      return;
-    }
+    this.jdField_a_of_type_Bgrd.jdField_c_of_type_JavaLangString = paramString;
+    b();
   }
   
   public void a(String paramString, long paramLong)
   {
-    synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
-    {
-      try
-      {
-        paramString = paramString + "_btm_pbmsg_seq";
-        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-        localEditor.putLong(paramString, paramLong);
-        localEditor.commit();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopBindPublicAccountMgr.bottom", 2, "setTroopLastPubAccountMsgUniseq:" + paramString + ", " + paramLong);
-        }
-        return;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("TroopBindPublicAccountMgr.bottom", 2, "setTroopLastPubAccountMsgUniseq:" + paramString.toString());
-          }
-        }
-      }
-    }
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), bbpl.class);
+    localNewIntent.setAction("gif_ui_show");
+    localNewIntent.putExtra("gif_ui_show_bid", Integer.parseInt(paramString));
+    localNewIntent.putExtra("gif_ui_show_seq", paramLong);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
   }
   
-  public void a(String paramString, Bundle paramBundle)
+  public void a(String paramString1, String paramString2, long paramLong)
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, paramBundle);
+    long l = System.currentTimeMillis();
+    nny.b(paramString1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, new bgrh(this, l, paramString1, paramLong, paramString2));
   }
   
-  public void a(String paramString, List<ChatMessage> arg2)
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    Object localObject2;
-    boolean bool;
-    try
-    {
-      localObject2 = paramString + "_btm_pbmsg_seq";
-      synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
-      {
-        l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong((String)localObject2, -1L);
-        if (QLog.isColorLevel())
-        {
-          ??? = new StringBuilder().append("checkMovePubMsg2Bottom:").append(paramString).append(", hasPubMsg=");
-          if (l <= 0L) {
-            break label230;
-          }
-          bool = true;
-          QLog.d("TroopBindPublicAccountMgr.bottom", 2, bool);
-        }
-        if ((l >= 0L) && (??? != null))
-        {
-          i = ???.size();
-          if (i != 0) {
-            break label236;
-          }
-        }
-        return;
-      }
-      ??? = paramString + "_unread_pbmsg_cnt";
+    String str = paramString4;
+    if (paramString4 == null) {
+      str = this.jdField_a_of_type_Bgrd.jdField_c_of_type_JavaLangString;
     }
-    catch (Exception ???)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopBindPublicAccountMgr.bottom", 2, "checkMoveLastPubMsgToBottom:" + ???.toString());
-      }
-      b(paramString);
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
-      {
-        if (this.jdField_a_of_type_AndroidContentSharedPreferences.getInt((String)???, 0) == 1) {
-          d(paramString);
-        }
-        return;
-      }
-      label230:
-      bool = false;
-      break;
-      label236:
-      j = ???.size();
-      i = 0;
-      label246:
-      if (i >= j) {
-        break label746;
-      }
-      if (((ChatMessage)???.get(i)).uniseq != l) {
-        break label754;
-      }
-      label271:
-      bool = this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopBindPublicAccountMgr.bottom", 2, "lastPubMsgIdxInList: lastPubMsgIdx=" + i + ", listSize=" + j + ", inBottomBefore=" + bool);
-      }
-      ??? = null;
-      if (i < 0)
-      {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramString, 1, l);
-        if ((localObject2 instanceof ChatMessage)) {
-          ??? = (ChatMessage)localObject2;
-        }
-        if (!QLog.isColorLevel()) {
-          break label751;
-        }
-        QLog.d("TroopBindPublicAccountMgr.bottom", 2, "queryMsgItemByseq:" + (localObject2 instanceof ChatMessage));
-        break label751;
-      }
-      label408:
-      while (??? == null)
-      {
-        b(paramString);
-        return;
-        ??? = (ChatMessage)???.remove(i);
-      }
-      if (bool) {
-        break label537;
-      }
-      ???.add(???);
-      i = ???.size();
-      if (i > 1)
-      {
-        l = ((ChatMessage)???.get(i - 2)).shmsgseq;
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(l));
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopBindPublicAccountMgr.bottom", 2, "put2InsertSeqMap:" + paramString + "," + l);
-        }
-      }
-    }
-    label537:
-    long l = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).longValue();
-    int j = ???.size();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        if (((ChatMessage)???.get(i)).shmsgseq < l) {}
-      }
-      else
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopBindPublicAccountMgr.bottom", 2, "inBottomBefore, lastSeq=" + l + ", insertIdx=" + i);
-          }
-          if (i < 0) {
-            ???.add(???);
-          }
-          for (;;)
-          {
-            bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "oper", "bottom_one", 0, 0, paramString, "", "", "");
-            break;
-            if (((ChatMessage)???.get(i)).shmsgseq > l) {
-              ???.add(i, ???);
-            } else if (((ChatMessage)???.get(i)).shmsgseq == l) {
-              ???.add(i + 1, ???);
-            }
-          }
-          i = -1;
-        }
-        label746:
-        i = -1;
-        break label271;
-        label751:
-        break label408;
-        label754:
-        i += 1;
-        break label246;
-      }
-      i += 1;
-    }
+    paramString4 = this.jdField_b_of_type_JavaLangString;
+    VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "Vip_Gift", paramString1, paramString1, 0, 0, new String[] { paramString2, paramString3, str, paramString4 });
   }
   
-  public boolean a(long paramLong)
+  public boolean a()
   {
-    return jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramLong));
-  }
-  
-  /* Error */
-  public boolean a(String paramString)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: invokestatic 294	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6: ifne +63 -> 69
-    //   9: aload_1
-    //   10: aload_0
-    //   11: getfield 33	bgre:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   14: invokevirtual 299	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   17: ifeq +52 -> 69
-    //   20: iconst_1
-    //   21: istore_2
-    //   22: invokestatic 148	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   25: ifeq +40 -> 65
-    //   28: ldc_w 301
-    //   31: iconst_2
-    //   32: new 63	java/lang/StringBuilder
-    //   35: dup
-    //   36: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   39: ldc_w 303
-    //   42: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: aload_1
-    //   46: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: ldc_w 259
-    //   52: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: iload_2
-    //   56: invokevirtual 205	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   59: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   62: invokestatic 156	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   65: aload_0
-    //   66: monitorexit
-    //   67: iload_2
-    //   68: ireturn
-    //   69: iconst_0
-    //   70: istore_2
-    //   71: goto -49 -> 22
-    //   74: astore_1
-    //   75: aload_0
-    //   76: monitorexit
-    //   77: aload_1
-    //   78: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	79	0	this	bgre
-    //   0	79	1	paramString	String
-    //   21	50	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   2	20	74	finally
-    //   22	65	74	finally
-  }
-  
-  public boolean a(String arg1, long paramLong)
-  {
-    String str = ??? + "_btm_pbmsg_seq";
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
-      {
-        long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(str, -1L);
-        if ((l > 0L) && (l == paramLong))
-        {
-          bool = true;
-          return bool;
-        }
-      }
-      boolean bool = false;
+    if (this.jdField_a_of_type_Bgrd == null) {
+      this.jdField_a_of_type_Bgrd = new bgrd();
     }
-  }
-  
-  public void b(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
+    if ((this.jdField_a_of_type_Bgrd != null) && (this.jdField_a_of_type_Bgrd.jdField_d_of_type_Long == 1L))
     {
-      try
-      {
-        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-        String str = paramString + "_btm_pbmsg_seq";
-        localEditor.remove(str);
-        localEditor.commit();
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopBindPublicAccountMgr.bottom", 2, "removeTroopLastPubAccountMsgUniseq:" + str);
-        }
-        return;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("TroopBindPublicAccountMgr.bottom", 2, "removeTroopLastPubAccountMsgUniseq:" + paramString.toString());
-          }
-        }
-      }
-    }
-  }
-  
-  public boolean b(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForStructing))
-    {
-      MessageForStructing localMessageForStructing = (MessageForStructing)paramMessageRecord;
-      if (a(paramMessageRecord)) {
-        return (a(paramMessageRecord.frienduin, paramMessageRecord.uniseq)) && (!a(paramMessageRecord.uniseq));
+      long l = NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Bgrd.e;
+      if ((l > this.jdField_a_of_type_Long) || (l <= 0L)) {
+        return true;
       }
     }
     return false;
   }
   
-  public boolean b(String paramString)
+  public boolean a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
+    if (Build.VERSION.SDK_INT < 11) {}
+    do
+    {
+      return true;
+      if (paramBoolean2) {
+        return false;
+      }
+    } while (paramInt == 2);
+    return false;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Bgrd != null)
+    {
+      this.jdField_a_of_type_Bgrd.f = paramLong;
+      return b();
+    }
+    return false;
+  }
+  
+  /* Error */
+  public boolean a(long paramLong1, long paramLong2)
+  {
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore 6
+    //   3: aload_0
+    //   4: monitorenter
+    //   5: iload 6
+    //   7: istore 5
+    //   9: lload_3
+    //   10: aload_0
+    //   11: getfield 26	bgre:jdField_a_of_type_Bgrd	Lbgrd;
+    //   14: getfield 63	bgrd:jdField_a_of_type_Long	J
+    //   17: lcmp
+    //   18: ifne +31 -> 49
+    //   21: lload_1
+    //   22: ldc2_w 202
+    //   25: lcmp
+    //   26: ifne +28 -> 54
+    //   29: aload_0
+    //   30: getfield 26	bgre:jdField_a_of_type_Bgrd	Lbgrd;
+    //   33: getfield 62	bgrd:jdField_d_of_type_Long	J
+    //   36: lstore_3
+    //   37: lload_3
+    //   38: ldc2_w 341
+    //   41: lcmp
+    //   42: ifne +12 -> 54
+    //   45: iload 6
+    //   47: istore 5
+    //   49: aload_0
+    //   50: monitorexit
+    //   51: iload 5
+    //   53: ireturn
+    //   54: aload_0
+    //   55: getfield 26	bgre:jdField_a_of_type_Bgrd	Lbgrd;
+    //   58: lload_1
+    //   59: putfield 62	bgrd:jdField_d_of_type_Long	J
+    //   62: aload_0
+    //   63: invokevirtual 290	bgre:b	()Z
+    //   66: istore 5
+    //   68: goto -19 -> 49
+    //   71: astore 7
+    //   73: aload_0
+    //   74: monitorexit
+    //   75: aload 7
+    //   77: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	78	0	this	bgre
+    //   0	78	1	paramLong1	long
+    //   0	78	3	paramLong2	long
+    //   7	60	5	bool1	boolean
+    //   1	45	6	bool2	boolean
+    //   71	5	7	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   9	21	71	finally
+    //   29	37	71	finally
+    //   54	68	71	finally
+  }
+  
+  public boolean a(MessageForStructing paramMessageForStructing)
+  {
+    if (paramMessageForStructing == null) {
+      return false;
+    }
+    if (paramMessageForStructing.structingMsg == null) {
+      return false;
+    }
+    a("0X8004B41", "1", "0", paramMessageForStructing.structingMsg.mResid);
+    if (this.jdField_a_of_type_Bgrd == null) {
+      this.jdField_a_of_type_Bgrd = new bgrd();
+    }
+    Uri localUri;
+    boolean bool;
+    try
+    {
+      localUri = Uri.parse(paramMessageForStructing.structingMsg.mResid);
+      if ((localUri != null) && (localUri.isHierarchical()))
+      {
+        bool = TextUtils.isEmpty(localUri.getQueryParameter("_bid"));
+        if (bool) {
+          return false;
+        }
+      }
+      else
+      {
+        return false;
+      }
+    }
+    catch (Exception paramMessageForStructing)
+    {
+      return false;
+    }
+    long l;
+    for (;;)
+    {
+      try
+      {
+        str = localUri.getQueryParameter("_gv");
+        bool = TextUtils.isEmpty(str);
+        if (!bool) {
+          continue;
+        }
+        l = 0L;
+      }
+      catch (Exception localException)
+      {
+        String str;
+        l = 0L;
+        continue;
+        if (this.jdField_a_of_type_Bgrd == null) {
+          break label421;
+        }
+      }
+      if (this.jdField_a_of_type_Bgrd.f > l)
+      {
+        a("0X8004B41", "2", "3", paramMessageForStructing.structingMsg.mResid);
+        return false;
+        l = Long.parseLong(str);
+      }
+      else if ((paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null))
+      {
+        if (((this.jdField_a_of_type_Bgrd.jdField_d_of_type_Long == 0L) && (paramMessageForStructing.time < this.jdField_a_of_type_Bgrd.jdField_b_of_type_Long)) || (this.jdField_a_of_type_Bgrd.jdField_d_of_type_Long == 4L) || (this.jdField_a_of_type_Bgrd.jdField_d_of_type_Long == 999L) || (this.jdField_a_of_type_Bgrd.jdField_d_of_type_Long == 5L) || (this.jdField_a_of_type_Bgrd.jdField_d_of_type_Long == 6L) || (a()))
+        {
+          this.jdField_a_of_type_Bgrd.jdField_a_of_type_JavaLangString = paramMessageForStructing.selfuin;
+          this.jdField_a_of_type_Bgrd.jdField_b_of_type_JavaLangString = paramMessageForStructing.senderuin;
+          this.jdField_a_of_type_Bgrd.jdField_b_of_type_Long = paramMessageForStructing.time;
+          this.jdField_a_of_type_Bgrd.jdField_c_of_type_Long = 0L;
+          this.jdField_a_of_type_Bgrd.jdField_d_of_type_Long = 0L;
+          this.jdField_a_of_type_Bgrd.jdField_a_of_type_Long = paramMessageForStructing.uniseq;
+          this.jdField_a_of_type_Bgrd.jdField_d_of_type_JavaLangString = paramMessageForStructing.structingMsg.mResid;
+          this.jdField_a_of_type_Bgrd.jdField_c_of_type_JavaLangString = paramMessageForStructing.structingMsg.mResid;
+          this.jdField_a_of_type_Bgrd.e = 0L;
+        }
+      }
+    }
+    try
+    {
+      l = Long.parseLong(localUri.getQueryParameter("_to").trim());
+      if (l > 0L) {
+        this.jdField_a_of_type_Long = l;
+      }
+    }
+    catch (Exception paramMessageForStructing)
+    {
+      label399:
+      label421:
+      break label399;
+    }
+    return b();
+    a("0X8004B41", "2", "2", paramMessageForStructing.structingMsg.mResid);
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool1 = false;
     if (TextUtils.isEmpty(paramString)) {}
-    while (this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString) != null) {
+    String str;
+    boolean bool2;
+    do
+    {
+      do
+      {
+        return bool1;
+      } while (nny.a(paramString) == null);
+      str = noe.a(paramString) + paramString;
+      bool2 = npi.a(str, paramString);
+      bool1 = bool2;
+    } while (bool2);
+    nny.a(str, paramString);
+    return bool2;
+  }
+  
+  public boolean b()
+  {
+    SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
+    localEditor.putString("Gif_Download_info_key_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), b());
+    if (QLog.isColorLevel()) {
+      QLog.d("VipGiftManager", 2, "writeToSp:" + b());
+    }
+    return localEditor.commit();
+  }
+  
+  public boolean b(long paramLong)
+  {
+    if (this.jdField_a_of_type_Bgrd == null) {}
+    while ((this.jdField_a_of_type_Bgrd.jdField_d_of_type_Long == 999L) || (this.jdField_a_of_type_Bgrd.jdField_d_of_type_Long == 5L) || (this.jdField_a_of_type_Bgrd.jdField_d_of_type_Long >= 2L) || (paramLong < this.jdField_a_of_type_Bgrd.jdField_b_of_type_Long)) {
       return false;
     }
     return true;
   }
   
-  public void c(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
-    {
-      try
-      {
-        paramString = paramString + "_unread_pbmsg_cnt";
-        int i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramString, 0) + 1;
-        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-        localEditor.putInt(paramString, i);
-        localEditor.commit();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopBindPublicAccountMgr.redDot", 2, "increaseTroopPubMsgUnreadCount:" + paramString + ", " + i);
-        }
-        return;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("TroopBindPublicAccountMgr.redDot", 2, "increaseTroopPubMsgUnreadCount:" + paramString.toString());
-          }
-        }
-      }
-    }
-  }
-  
-  public void d(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_AndroidContentSharedPreferences)
-    {
-      try
-      {
-        paramString = paramString + "_unread_pbmsg_cnt";
-        SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-        localEditor.remove(paramString);
-        localEditor.commit();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopBindPublicAccountMgr.redDot", 2, "clearTroopPubMsgUnreadCount:" + paramString);
-        }
-        return;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("TroopBindPublicAccountMgr.redDot", 2, "clearTroopPubMsgUnreadCount:" + paramString.toString());
-          }
-        }
-      }
-    }
-  }
-  
-  public void e(String paramString)
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopBindPublicAccountMgr", 2, "setCurentAIOUin:" + paramString);
-      }
-      this.jdField_a_of_type_JavaLangString = paramString;
-      return;
-    }
-    finally {}
-  }
-  
-  public void onDestroy()
-  {
-    jdField_a_of_type_JavaUtilArrayList.clear();
-  }
+  public void onDestroy() {}
 }
 
 

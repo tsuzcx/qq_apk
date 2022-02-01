@@ -2,8 +2,8 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbux;
-import bhzd;
+import baos;
+import bgfo;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
@@ -27,7 +27,7 @@ class SignJsPlugin$1
     JSONObject localJSONObject1 = new JSONObject();
     for (;;)
     {
-      bhzd localbhzd;
+      bgfo localbgfo;
       try
       {
         if ((paramEIPCResult.code != 0) || (paramEIPCResult.data == null)) {
@@ -38,8 +38,8 @@ class SignJsPlugin$1
           continue;
         }
         paramEIPCResult = (RichStatus)paramEIPCResult;
-        if (bbux.a().a == null) {
-          bbux.a().b(paramEIPCResult);
+        if (baos.a().a == null) {
+          baos.a().b(paramEIPCResult);
         }
         localJSONObject2 = new JSONObject();
         localJSONObject2.put("bgId", paramEIPCResult.tplId);
@@ -47,8 +47,8 @@ class SignJsPlugin$1
         localJSONObject2.put("fontType", paramEIPCResult.fontType);
         localJSONObject2.put("actionId", paramEIPCResult.actionId);
         localJSONObject2.put("actionText", paramEIPCResult.actionText);
-        localbhzd = bbux.a().a(paramEIPCResult.tplId);
-        if (!localbhzd.a.get()) {
+        localbgfo = baos.a().a(paramEIPCResult.tplId);
+        if (!localbgfo.a.get()) {
           break label319;
         }
         if (paramEIPCResult.mStickerInfos == null) {
@@ -78,7 +78,7 @@ class SignJsPlugin$1
       int i = 1;
       continue;
       label319:
-      i = localbhzd.g;
+      i = localbgfo.g;
       continue;
       label328:
       i = 0;

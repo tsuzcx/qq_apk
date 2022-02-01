@@ -1,25 +1,14 @@
-import android.os.Handler;
-import com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView;
-
-public class atev
-  implements aqmj
+public abstract interface atev
 {
-  public atev(SignalBombAnimationView paramSignalBombAnimationView) {}
+  public abstract void a();
   
-  public void a() {}
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public void a(int paramInt)
-  {
-    if (paramInt == SignalBombAnimationView.a(this.a)) {
-      SignalBombAnimationView.a(this.a).sendEmptyMessage(2);
-    }
-  }
-  
-  public void b() {}
+  public abstract void a(Object paramObject, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atev
  * JD-Core Version:    0.7.0.1
  */

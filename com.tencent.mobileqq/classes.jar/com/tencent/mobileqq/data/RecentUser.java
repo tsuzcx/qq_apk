@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import alqb;
-import alqe;
-import alqf;
+import akns;
+import aknv;
+import aknw;
 import android.database.Cursor;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.persistence.ConflictClause;
@@ -35,7 +35,7 @@ public class RecentUser
   
   public void doParse()
   {
-    this.msg = alqf.a(this.msgType, this.msgData);
+    this.msg = aknw.a(this.msgType, this.msgData);
   }
   
   public boolean entityByCursor(Cursor paramCursor)
@@ -86,7 +86,7 @@ public class RecentUser
   
   public void prewrite()
   {
-    this.msgData = alqf.a(this.msgType, this.msg);
+    this.msgData = aknw.a(this.msgType, this.msg);
     super.prewrite();
   }
   
@@ -97,7 +97,7 @@ public class RecentUser
     }
     if (paramQQAppInterface != null)
     {
-      paramQQAppInterface = ((alqe)paramQQAppInterface.getManager(366)).a(this.msgType);
+      paramQQAppInterface = ((aknv)paramQQAppInterface.getManager(366)).a(this.msgType);
       if (paramQQAppInterface != null) {
         return paramQQAppInterface.a();
       }
@@ -107,7 +107,7 @@ public class RecentUser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.RecentUser
  * JD-Core Version:    0.7.0.1
  */

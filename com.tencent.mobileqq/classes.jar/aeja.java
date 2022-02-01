@@ -1,16 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation.53.1;
-import com.tencent.util.Pair;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeja
-  implements DialogInterface.OnClickListener
+  implements View.OnLongClickListener
 {
-  public aeja(Conversation.53.1 param1, bdwt parambdwt, Pair paramPair) {}
+  public aeja(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_Bdwt.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
+    if (!TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).a("web_view_long_click", true))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
+      }
+      return true;
+    }
+    if (!TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.b(this.a).a("image_long_click", false))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
+      }
+      return false;
+    }
+    bgwg localbgwg = (bgwg)this.a.mComponentsProvider.a(8);
+    if ((localbgwg != null) && (localbgwg.a(paramView))) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
   }
 }
 

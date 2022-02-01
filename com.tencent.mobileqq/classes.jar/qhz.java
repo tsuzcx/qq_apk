@@ -1,95 +1,177 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 public class qhz
+  extends ViewBase
 {
-  private JSONObject a;
+  private int jdField_a_of_type_Int = -1;
+  private NativeMiddleBodyView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView;
+  private int b = -1;
+  private int c = -1;
+  private int d = -1;
   
-  public qhz()
+  public qhz(VafContext paramVafContext)
   {
-    this.a = new JSONObject();
-    a();
+    super(paramVafContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView = new NativeMiddleBodyView(paramVafContext.getContext());
   }
   
-  public qhz(String paramString)
+  public int a()
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        this.a = new JSONObject(paramString);
-        a();
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("PTSReport", 1, "e = " + paramString);
-        this.a = new JSONObject();
-        a();
-        return;
-      }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(RelativeLayout.LayoutParams paramLayoutParams)
+  {
+    if (a()) {
+      paramLayoutParams.setMargins(0, 0, 0, 0);
     }
-    this.a = new JSONObject();
-    a();
   }
   
-  private void a()
+  public boolean a()
   {
-    for (;;)
+    return (this.mPaddingLeft > 0) || (this.mPaddingRight > 0);
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public int d()
+  {
+    return this.d;
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    switch (paramInt)
     {
-      try
-      {
-        this.a.put("os", "1");
-        this.a.put("version", "8.4.5");
-        this.a.put("pts_engine_version", qgu.a().a());
-        this.a.put("pts_app_version", qgs.a().a());
-        this.a.put("sdk_version", String.valueOf(Build.VERSION.SDK_INT));
-        JSONObject localJSONObject = this.a;
-        if (!TextUtils.isEmpty(Build.BRAND))
-        {
-          String str1 = Build.BRAND;
-          localJSONObject.put("device_brand", str1);
-          localJSONObject = this.a;
-          if (!TextUtils.isEmpty(Build.MODEL))
-          {
-            str1 = Build.MODEL;
-            localJSONObject.put("device_model", str1);
-            this.a.put("is_debug", "0");
-            return;
-          }
-          str1 = "";
-          continue;
-        }
-        String str2 = "";
-      }
-      catch (JSONException localJSONException)
-      {
-        QLog.e("PTSReport", 1, "[initCommonField], e = " + localJSONException);
-        return;
-      }
+    default: 
+      bool1 = super.setAttribute(paramInt, paramObject);
     }
-  }
-  
-  public String a()
-  {
-    return this.a.toString();
-  }
-  
-  public qhz a(String paramString1, String paramString2)
-  {
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (!(paramObject instanceof JSONArray));
+      paramObject = (JSONArray)paramObject;
+      bool1 = bool2;
+    } while (paramObject.length() < 4);
     try
     {
-      this.a.put(paramString1, paramString2);
-      return this;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeMiddleBodyView.setRadius(paramObject.getString(0), paramObject.getString(1), paramObject.getString(2), paramObject.getString(3));
+      return true;
     }
-    catch (JSONException paramString1)
+    catch (JSONException paramObject)
     {
-      QLog.e("PTSReport", 1, "[addString], e = " + paramString1);
+      QLog.d("ReadInJoyMiddleBodyView", 2, "", paramObject);
     }
-    return this;
+    return true;
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return super.setAttribute(paramInt, paramString);
+    case 1188: 
+      try
+      {
+        this.b = Color.parseColor(String.valueOf(paramString));
+        QLog.d("ReadInJoyMiddleBodyView", 1, "setEmotionFontColor: " + this.b);
+        return true;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("ReadInJoyMiddleBodyView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1187: 
+      try
+      {
+        this.jdField_a_of_type_Int = Utils.dp2px(Integer.valueOf(String.valueOf(paramString)).intValue());
+        QLog.d("ReadInJoyMiddleBodyView", 1, "setEmotionFontSize: " + this.jdField_a_of_type_Int);
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("ReadInJoyMiddleBodyView", 1, paramString, new Object[0]);
+        return false;
+      }
+    case 1189: 
+      try
+      {
+        this.c = Utils.rp2px(Float.valueOf(String.valueOf(paramString)).floatValue());
+        QLog.d("ReadInJoyMiddleBodyView", 1, "setEmotionlineSpace: " + this.c);
+        return true;
+      }
+      catch (NumberFormatException paramString)
+      {
+        QLog.e("ReadInJoyMiddleBodyView", 1, paramString, new Object[0]);
+        return false;
+      }
+    }
+    try
+    {
+      this.d = Color.parseColor(String.valueOf(paramString));
+      QLog.d("ReadInJoyMiddleBodyView", 1, "setLinkTextColor: " + this.d);
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ReadInJoyMiddleBodyView", 1, paramString, new Object[0]);
+    }
+    return false;
   }
 }
 

@@ -1,18 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-
-public class aknu
-  implements DialogInterface.OnClickListener
+public abstract interface aknu
 {
-  public aknu(BindNumberActivity paramBindNumberActivity) {}
+  public abstract void a(byte[] paramArrayOfByte);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a("dc00898", "0X8009F15", 0);
-    paramDialogInterface.dismiss();
-    BindNumberActivity.b(this.a);
-  }
+  public abstract byte[] a();
 }
 
 

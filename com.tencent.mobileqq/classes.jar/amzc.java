@@ -1,33 +1,109 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.ArrayList;
 
-public class amzc
-  implements Observer
+class amzc
+  extends BroadcastReceiver
 {
-  public amzc(ApolloGameStateMachine paramApolloGameStateMachine) {}
+  amzc(amzb paramamzb) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramObject != null) && ((paramObject instanceof Bundle)))
-    {
-      paramObservable = (Bundle)paramObject;
-      long l1 = paramObservable.getLong("START_TIME_KEY");
-      long l2 = paramObservable.getLong("END_TIME_KEY");
-      paramObject = paramObservable.getString("MESSAGE");
-      int i = paramObservable.getInt("FROM");
-      int j = paramObservable.getInt("TO");
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameStateMachine", 2, new Object[] { "[pipLineObserver] cost:[", Long.valueOf(l2 - l1), "ms] message:[", paramObject, "] from:[", Integer.valueOf(i), "] to:[", Integer.valueOf(j), "] start:[", Long.valueOf(l1), "] end:[", Long.valueOf(l2), "]" });
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQMapActivityProxy", 2, "QQMapActivityProxy-onReceive:" + hashCode() + ", action=" + paramContext);
+    }
+    if (paramContext.equals("com.tencent.mobileqq.addLbsObserver")) {
+      if (amzb.a(this.a) != null) {
+        amzb.a(this.a).addObserver(amzb.a(this.a));
       }
     }
+    do
+    {
+      do
+      {
+        int i;
+        int j;
+        int k;
+        int m;
+        int n;
+        do
+        {
+          String str;
+          int i1;
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  return;
+                  if (!paramContext.equals("com.tencent.mobileqq.removeLbsObserver")) {
+                    break;
+                  }
+                } while (amzb.a(this.a) == null);
+                amzb.a(this.a).removeObserver(amzb.a(this.a));
+                return;
+                if (!paramContext.equals("com.tencent.mobileqq.getStreetViewUrl")) {
+                  break;
+                }
+              } while (amzb.a(this.a) == null);
+              ((amuu)amzb.a(this.a).getBusinessHandler(3)).b((int)(paramIntent.getDoubleExtra("latitude", 0.0D) * 1000000.0D), (int)(paramIntent.getDoubleExtra("longitude", 0.0D) * 1000000.0D));
+              return;
+              if (!paramContext.equals("com.tencent.mobileqq.unregisterReceiver")) {
+                break;
+              }
+              try
+              {
+                amzb.a(this.a).unregisterReceiver(amzb.a(this.a));
+                return;
+              }
+              catch (Exception paramContext) {}
+            } while (!QLog.isColorLevel());
+            QLog.w("QQMapActivityProxy", 2, "mBroadcastReceiver throw an exception when receive UNREGISTER_RECEIVER : " + paramContext.toString());
+            return;
+            if (!paramContext.equals("com.tencent.mobileqq.getLbsShareSearch")) {
+              break;
+            }
+            i = paramIntent.getIntExtra("latitude", 0);
+            j = paramIntent.getIntExtra("longitude", 0);
+            k = paramIntent.getIntExtra("coordinate", 0);
+            paramContext = paramIntent.getStringExtra("keyword");
+            str = paramIntent.getStringExtra("category");
+            m = paramIntent.getIntExtra("page", 0);
+            n = paramIntent.getIntExtra("count", 0);
+            i1 = paramIntent.getIntExtra("requireMyLbs", 0);
+          } while (amzb.a(this.a) == null);
+          ((amuu)amzb.a(this.a).getBusinessHandler(3)).a(i, j, k, paramContext, str, m, n, i1);
+          return;
+          if (!paramContext.equals("com.tencent.mobileqq.getLbsShareShop")) {
+            break;
+          }
+          i = paramIntent.getIntExtra("latitude", 0);
+          j = paramIntent.getIntExtra("longitude", 0);
+          k = paramIntent.getIntExtra("coordinate", 0);
+          m = paramIntent.getIntExtra("begin", 0);
+          n = paramIntent.getIntExtra("count", 0);
+        } while (amzb.a(this.a) == null);
+        ((amuu)amzb.a(this.a).getBusinessHandler(3)).a(i, j, k, m, n);
+        return;
+      } while (!paramContext.equals("com.tencent.mobileqq.getShareShopDetail"));
+      paramContext = paramIntent.getStringExtra("shop_id");
+    } while ((TextUtils.isEmpty(paramContext)) || (amzb.a(this.a) == null));
+    paramIntent = new ArrayList();
+    paramIntent.add(paramContext);
+    ((amuu)amzb.a(this.a).getBusinessHandler(3)).a(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amzc
  * JD-Core Version:    0.7.0.1
  */

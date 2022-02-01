@@ -1,22 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.LbsBaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1;
+import cooperation.qwallet.plugin.FakeUrl.FakeInfo;
+import cooperation.qwallet.plugin.FakeUrl.FakeListener;
 
 public class aevi
-  implements View.OnClickListener
+  implements FakeUrl.FakeListener
 {
-  public aevi(LbsBaseActivity paramLbsBaseActivity) {}
+  public aevi(QQNotifySettingBaseFragment.2.1 param1) {}
   
-  public void onClick(View paramView)
+  public boolean onBlHandleFakeurl(FakeUrl.FakeInfo paramFakeInfo, int paramInt)
   {
-    axws.a(this.a.getAppInterface().getAccount(), true);
-    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
-      this.a.a(LbsBaseActivity.a(this.a));
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return false;
+  }
+  
+  public boolean onClickUrl(String paramString)
+  {
+    return false;
   }
 }
 

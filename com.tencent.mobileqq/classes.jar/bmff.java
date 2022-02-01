@@ -1,34 +1,73 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
 
-public class bmff
+class bmff
+  implements bmbs
 {
-  private static int a = -1;
+  bmff(bmfc parambmfc, bmfg parambmfg, String paramString1, AEEditorDownloadResBean paramAEEditorDownloadResBean, String paramString2, String paramString3) {}
   
-  public static void a(Context paramContext)
+  public void a(int paramInt)
   {
-    QLog.i("IlivePluginHelper", 1, "Ilive start preloadOdexPlugin");
-    bmfi.a().enter(paramContext, 1002L, BaseApplicationImpl.getApplication().getRuntime().getAccount(), "", new Bundle(), null);
+    if (this.jdField_a_of_type_Bmfg != null) {
+      this.jdField_a_of_type_Bmfg.a(paramInt);
+    }
   }
   
-  public static void a(Context paramContext, Intent paramIntent, String paramString, EnterCallback paramEnterCallback)
+  public void a(NetResp paramNetResp)
   {
-    if (paramIntent != null) {}
-    for (paramIntent = paramIntent.getExtras();; paramIntent = null)
+    boolean bool3 = false;
+    if (paramNetResp == null)
     {
-      Object localObject = paramIntent;
-      if (paramIntent == null) {
-        localObject = new Bundle();
+      if (this.jdField_a_of_type_Bmfg != null) {
+        this.jdField_a_of_type_Bmfg.a(false);
       }
-      ((Bundle)localObject).putString("KEY_ACTIVITY_CLASSNAME", paramString);
-      ((Bundle)localObject).putLong("start_plugin_act_begin_time", System.currentTimeMillis());
-      bmfi.a().enter(paramContext, 1003L, BaseApplicationImpl.getApplication().getRuntime().getAccount(), "", (Bundle)localObject, paramEnterCallback);
+      this.jdField_a_of_type_Bmfc.a(this.jdField_a_of_type_JavaLangString, false);
       return;
+    }
+    boolean bool1;
+    boolean bool2;
+    if (paramNetResp.mResult == 0)
+    {
+      bool1 = true;
+      bmbx.b(this.jdField_a_of_type_Bmfc.c, "downLoadOneResInternal-onDownloadFinish---isSuccess=" + bool1 + ", id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
+      bool2 = bool3;
+      if (bool1)
+      {
+        String str = FileUtils.calcMd5(this.b);
+        if ((str == null) || (!str.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
+          break label321;
+        }
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        bool2 = this.jdField_a_of_type_Bmfc.a(this.b, this.c, this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId(), this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_Bmfc.a(bool1, paramNetResp.mErrCode, paramNetResp.reqCost, this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
+        if (!bool2) {
+          FileUtils.deleteDirectory(this.c);
+        }
+        FileUtils.deleteFile(this.b);
+        bmbx.b(this.jdField_a_of_type_Bmfc.c, "downLoadOneResInternal-onDownloadFinish---REAL result=" + bool2 + ", id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
+        if (this.jdField_a_of_type_Bmfg != null) {
+          this.jdField_a_of_type_Bmfg.a(bool2);
+        }
+        this.jdField_a_of_type_Bmfc.a(this.jdField_a_of_type_JavaLangString, bool2);
+        return;
+        bool1 = false;
+      }
+      catch (Exception localException)
+      {
+        bmbx.a(this.jdField_a_of_type_Bmfc.c, "downLoadOneResInternal-onDownloadFinish---unZipFile failed, id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId(), localException);
+        localException.printStackTrace();
+        bool2 = bool3;
+        continue;
+      }
+      label321:
+      bmbx.d(this.jdField_a_of_type_Bmfc.c, "downLoadOneResInternal-onDownloadFinish---MD5 check failed, id=" + this.jdField_a_of_type_DovComQqImAeeditorDataAEEditorDownloadResBean.getId());
+      bool2 = bool3;
     }
   }
 }

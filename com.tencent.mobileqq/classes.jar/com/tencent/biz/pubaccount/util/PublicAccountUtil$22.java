@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.util;
 
-import antf;
-import oyc;
-import oyf;
-import tzq;
+import com.tencent.mobileqq.app.AppConstants;
+import ozh;
+import ozk;
+import ugf;
 
 public final class PublicAccountUtil$22
   implements Runnable
@@ -12,22 +12,22 @@ public final class PublicAccountUtil$22
   
   public void run()
   {
-    if (antf.aQ.equals(this.a))
+    if (AppConstants.KANDIAN_SUBSCRIBE_UIN.equals(this.a))
     {
-      oyf.a();
+      ozk.a();
       return;
     }
-    if (antf.aR.equals(this.a))
+    if (AppConstants.KANDIAN_DAILY_UIN.equals(this.a))
     {
-      oyc.a();
+      ozh.a();
       return;
     }
-    tzq.c(this.a);
+    ugf.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PublicAccountUtil.22
  * JD-Core Version:    0.7.0.1
  */

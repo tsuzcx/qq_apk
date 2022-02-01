@@ -1,29 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 class alkn
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  alkn(aljw paramaljw) {}
+  alkn(alkj paramalkj) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(-1, null);
-    if (bhdu.a().a() == 4)
-    {
-      bdll.b(aljw.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, bhdt.b(), bhdu.b(), bhdu.a(), "1");
-      bhdu.a().a(aljw.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendMoreSysMsgAdapter", 2, "clear click");
     }
-    for (;;)
+    if (NetworkUtil.isNetSupport(alkj.a(this.a)))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      bcef.b(this.a.a, "dc00898", "", "", "0X800A328", "0X800A328", 2, 0, "", "", "", "");
+      alkj.b(this.a);
+      this.a.a.getMsgHandler().a().f();
+      ((FriendListHandler)this.a.a.getBusinessHandler(1)).deleteAllSuspiciousMsg();
       return;
-      bdll.b(aljw.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, bhdt.b(), bhdu.b(), bhdu.a(), "1");
-      UpgradeDetailActivity.a(aljw.a(this.a), bhdu.a().a(), true, true, true);
     }
+    QQToast.a(alkj.a(this.a), 2131694073, 0).a();
   }
 }
 

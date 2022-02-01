@@ -1,46 +1,18 @@
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothClass;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothHeadset;
-import android.bluetooth.BluetoothProfile;
-import android.bluetooth.BluetoothProfile.ServiceListener;
-import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
-import java.util.List;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agfk
-  implements BluetoothProfile.ServiceListener
+  extends aghj
 {
-  agfk(agfj paramagfj, AudioPlayerBase paramAudioPlayerBase, String paramString, int paramInt, BluetoothAdapter paramBluetoothAdapter) {}
-  
-  public void onServiceConnected(int paramInt, BluetoothProfile paramBluetoothProfile)
+  agfk(agcw paramagcw)
   {
-    Object localObject;
-    if (paramInt == 1)
-    {
-      paramBluetoothProfile = (BluetoothHeadset)paramBluetoothProfile;
-      localObject = paramBluetoothProfile.getConnectedDevices();
-      if ((localObject == null) || (((List)localObject).size() <= 0)) {
-        break label86;
-      }
-      localObject = (BluetoothDevice)((List)localObject).get(0);
-      if (localObject != null) {
-        break label75;
-      }
-      paramInt = 0;
-    }
-    label75:
-    label86:
-    for (AudioPlayerBase.b = paramInt;; AudioPlayerBase.b = 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayerBase.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.closeProfileProxy(1, paramBluetoothProfile);
-      return;
-      paramInt = ((BluetoothDevice)localObject).getBluetoothClass().getDeviceClass();
-      break;
-    }
+    super(paramagcw, null);
   }
   
-  public void onServiceDisconnected(int paramInt) {}
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new apsw(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

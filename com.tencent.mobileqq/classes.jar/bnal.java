@@ -1,148 +1,158 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.GpsInfo4LocalImage;
-import cooperation.qzone.model.ImageTagInfo;
-import cooperation.qzone.model.PhotoInfo;
-import cooperation.qzone.model.VideoInfo;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.os.Parcelable;
+import com.tencent.commonsdk.util.HexUtil;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import eipc.EIPCResult;
+import eipc.EIPCServer;
 
-public final class bnal
-  implements Parcelable.Creator<PhotoInfo>
+public class bnal
 {
-  public PhotoInfo a(Parcel paramParcel)
+  public static Pair<Boolean, Boolean> a(String paramString)
   {
-    boolean bool2 = true;
-    PhotoInfo localPhotoInfo = new PhotoInfo();
-    localPhotoInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localPhotoInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localPhotoInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localPhotoInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localPhotoInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localPhotoInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    localPhotoInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localPhotoInfo.jdField_d_of_type_Int = paramParcel.readInt();
-    if (paramParcel.readInt() == 1)
-    {
-      bool1 = true;
-      localPhotoInfo.jdField_a_of_type_Boolean = bool1;
-      localPhotoInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.jdField_h_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.jdField_i_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.jdField_j_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.jdField_a_of_type_JavaUtilMap = paramParcel.readHashMap(getClass().getClassLoader());
-      localPhotoInfo.jdField_a_of_type_JavaUtilArrayList = paramParcel.readArrayList(getClass().getClassLoader());
-      localPhotoInfo.jdField_e_of_type_Int = paramParcel.readInt();
-      localPhotoInfo.jdField_f_of_type_Int = paramParcel.readInt();
-      localPhotoInfo.jdField_g_of_type_Int = paramParcel.readInt();
-      localPhotoInfo.jdField_h_of_type_Int = paramParcel.readInt();
-      localPhotoInfo.jdField_a_of_type_CooperationQzoneModelGpsInfo4LocalImage = ((GpsInfo4LocalImage)paramParcel.readParcelable(getClass().getClassLoader()));
-      if (paramParcel.readInt() != 1) {
-        break label697;
-      }
-      bool1 = true;
-      label232:
-      localPhotoInfo.jdField_b_of_type_Boolean = bool1;
-      localPhotoInfo.jdField_a_of_type_Long = paramParcel.readLong();
-      localPhotoInfo.jdField_b_of_type_Long = paramParcel.readLong();
-      localPhotoInfo.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-      paramParcel.readTypedList(localPhotoInfo.jdField_c_of_type_JavaUtilArrayList, ImageTagInfo.CREATOR);
-      if (paramParcel.readInt() != 1) {
-        break label702;
-      }
-      bool1 = true;
-      label290:
-      localPhotoInfo.jdField_h_of_type_Boolean = bool1;
-      localPhotoInfo.jdField_k_of_type_Int = paramParcel.readInt();
-      localPhotoInfo.jdField_i_of_type_Int = paramParcel.readInt();
-      localPhotoInfo.jdField_o_of_type_Int = paramParcel.readInt();
-      localPhotoInfo.jdField_p_of_type_Int = paramParcel.readInt();
-      localPhotoInfo.jdField_q_of_type_Int = paramParcel.readInt();
-      localPhotoInfo.jdField_a_of_type_CooperationQzoneModelVideoInfo = ((VideoInfo)paramParcel.readParcelable(VideoInfo.class.getClassLoader()));
-      localPhotoInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.jdField_r_of_type_Int = paramParcel.readInt();
-      localPhotoInfo.jdField_s_of_type_Int = paramParcel.readInt();
-      localPhotoInfo.jdField_k_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.jdField_c_of_type_Long = paramParcel.readLong();
-      localPhotoInfo.jdField_t_of_type_Int = paramParcel.readInt();
-      localPhotoInfo.jdField_l_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.jdField_m_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.n = paramParcel.readString();
-      localPhotoInfo.jdField_u_of_type_Int = paramParcel.readInt();
-      localPhotoInfo.jdField_o_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.jdField_p_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.jdField_b_of_type_JavaUtilMap = paramParcel.readHashMap(getClass().getClassLoader());
-      if (paramParcel.readInt() != 1) {
-        break label707;
-      }
-      bool1 = true;
-      label492:
-      localPhotoInfo.jdField_i_of_type_Boolean = bool1;
-      localPhotoInfo.jdField_q_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.jdField_r_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.jdField_s_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.jdField_t_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.jdField_u_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.jdField_v_of_type_Int = paramParcel.readInt();
-      localPhotoInfo.jdField_w_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readInt() != 1) {
-        break label712;
-      }
-      bool1 = true;
-      label571:
-      localPhotoInfo.jdField_j_of_type_Boolean = bool1;
-      localPhotoInfo.jdField_d_of_type_JavaUtilArrayList = ((ArrayList)paramParcel.readSerializable());
-      if (paramParcel.readInt() != 1) {
-        break label717;
-      }
-      bool1 = true;
-      label599:
-      localPhotoInfo.jdField_k_of_type_Boolean = bool1;
-      localPhotoInfo.jdField_d_of_type_Long = paramParcel.readLong();
-      if (paramParcel.readInt() != 1) {
-        break label722;
-      }
-      bool1 = true;
-      label624:
-      localPhotoInfo.jdField_l_of_type_Boolean = bool1;
-      localPhotoInfo.jdField_v_of_type_JavaLangString = paramParcel.readString();
-      localPhotoInfo.jdField_w_of_type_JavaLangString = paramParcel.readString();
-      if (paramParcel.readInt() != 1) {
-        break label727;
-      }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("troop_uin", paramString);
+    paramString = QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_get_troop_info", localBundle);
+    if ((paramString != null) && (paramString.isSuccess()) && (paramString.data != null)) {
+      return new Pair(Boolean.valueOf(paramString.data.getBoolean("troop_owner")), Boolean.valueOf(paramString.data.getBoolean("troop_code")));
     }
-    label697:
-    label702:
-    label707:
-    label712:
-    label717:
-    label722:
-    label727:
-    for (boolean bool1 = bool2;; bool1 = false)
+    return null;
+  }
+  
+  public static String a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("uin", paramString);
+    paramString = QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_get_name", localBundle);
+    if ((paramString != null) && (paramString.isSuccess()) && (paramString.data != null))
     {
-      localPhotoInfo.jdField_m_of_type_Boolean = bool1;
-      localPhotoInfo.jdField_b_of_type_JavaUtilArrayList = paramParcel.readArrayList(getClass().getClassLoader());
-      localPhotoInfo.jdField_b_of_type_Float = paramParcel.readFloat();
-      return localPhotoInfo;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label232;
-      bool1 = false;
-      break label290;
-      bool1 = false;
-      break label492;
-      bool1 = false;
-      break label571;
-      bool1 = false;
-      break label599;
-      bool1 = false;
-      break label624;
+      paramString = paramString.data.getString("uinname");
+      if (QLog.isColorLevel()) {
+        QLog.i("PeakIpcController", 2, "getFriendName success name = " + paramString);
+      }
+      return paramString;
+    }
+    return null;
+  }
+  
+  public static void a(bnpz parambnpz)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PeakIpcController", 2, "cancelSendVideoOrPhoto uinseq:" + parambnpz.jdField_a_of_type_Long);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("key_uinsequence", parambnpz.jdField_a_of_type_Long);
+    localBundle.putString("uin", parambnpz.jdField_a_of_type_JavaLangString);
+    localBundle.putInt("uintype", parambnpz.jdField_a_of_type_Int);
+    QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_cancel_send", localBundle, new bnan(parambnpz));
+  }
+  
+  public static void a(MessageRecord paramMessageRecord, int paramInt1, int paramInt2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("key_status", paramInt1);
+    localBundle.putInt("key_progress", paramInt2);
+    localBundle.putLong("key_uinsequence", paramMessageRecord.uniseq);
+    localBundle.putString("uin", paramMessageRecord.frienduin);
+    localBundle.putInt("uintype", paramMessageRecord.istroop);
+    if ((paramMessageRecord instanceof MessageForShortVideo)) {
+      localBundle.putString("key_file_md5", ((MessageForShortVideo)paramMessageRecord).md5);
+    }
+    for (;;)
+    {
+      paramMessageRecord = QIPCServerHelper.getInstance().getServer().callClient("com.tencent.mobileqq:peak", 1, "PeakIpcModuleClient", "action_update_status", localBundle);
+      boolean bool2 = false;
+      boolean bool1 = bool2;
+      if (paramMessageRecord != null)
+      {
+        bool1 = bool2;
+        if (paramMessageRecord.data != null) {
+          bool1 = paramMessageRecord.data.getBoolean("key_result");
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("PeakIpcController", 2, "client result:" + bool1);
+      }
+      return;
+      if ((paramMessageRecord instanceof MessageForPic)) {
+        localBundle.putString("key_file_md5", ((MessageForPic)paramMessageRecord).md5);
+      }
     }
   }
   
-  public PhotoInfo[] a(int paramInt)
+  public static void a(String paramString1, bnpz parambnpz, String paramString2, String paramString3)
   {
-    return new PhotoInfo[paramInt];
+    if (parambnpz == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PeakIpcController", 2, "sendPhoto editVideoInfo is null");
+      }
+      return;
+    }
+    parambnpz.jdField_a_of_type_Long = 0L;
+    Object localObject = HexUtil.bytes2HexStr(aszt.e(paramString1));
+    if (localObject == null)
+    {
+      QLog.e("PeakIpcController", 1, "sendPic file md5 fail!");
+      return;
+    }
+    parambnpz.g = ((String)localObject);
+    localObject = new SessionInfo();
+    ((SessionInfo)localObject).curFriendUin = parambnpz.jdField_a_of_type_JavaLangString;
+    ((SessionInfo)localObject).curType = parambnpz.jdField_a_of_type_Int;
+    ((SessionInfo)localObject).troopUin = parambnpz.b;
+    parambnpz = new Bundle();
+    parambnpz.putParcelable("key_session", (Parcelable)localObject);
+    parambnpz.putString("key_file_path", paramString1);
+    parambnpz.putString("widgetinfo", paramString2);
+    parambnpz.putString("key_camera_material_name", paramString3);
+    bmbx.b("PeakIpcController", "sendPhoto---takeSameName=" + paramString3);
+    QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_pic_start_send", parambnpz, new bnao());
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("troop_uin", paramString1);
+    localBundle.putString("uin", paramString2);
+    QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_get_troop_member_name", localBundle, new bnaq(paramString2));
+  }
+  
+  public static void a(String paramString1, String paramString2, bnpz parambnpz, String paramString3, String paramString4)
+  {
+    bmbx.b("PeakIpcController", "sendVideo---takeSameName=" + paramString4);
+    parambnpz.jdField_a_of_type_Long = 0L;
+    paramString1 = bnfm.a(paramString1, paramString2, parambnpz, paramString3, paramString4);
+    paramString2 = new Bundle();
+    paramString2.putParcelable("key_intent", paramString1);
+    QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_start_send", paramString2, new bnam());
+  }
+  
+  public static void b(bnpz parambnpz)
+  {
+    if (parambnpz == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PeakIpcController", 2, "reSendMessage editVideoInfo is null");
+      }
+      return;
+    }
+    if (parambnpz.jdField_a_of_type_Long <= 0L)
+    {
+      QLog.e("PeakIpcController", 1, "reSendMessage error!");
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("key_uinsequence", parambnpz.jdField_a_of_type_Long);
+    localBundle.putString("uin", parambnpz.jdField_a_of_type_JavaLangString);
+    localBundle.putInt("uintype", parambnpz.jdField_a_of_type_Int);
+    QIPCClientHelper.getInstance().callServer("PeakIpcModuleServer", "action_re_send", localBundle, new bnap());
   }
 }
 

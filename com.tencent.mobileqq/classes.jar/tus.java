@@ -1,54 +1,55 @@
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.FolderRecommendHeadItemView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import cooperation.vip.pb.TianShuAccess.AdItem;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tus
-  extends aacq
 {
-  public FolderRecommendTabFragment.FolderRecommendHeadItemView a;
-  
-  public tus(FolderRecommendTabFragment paramFolderRecommendTabFragment, Bundle paramBundle)
+  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
   {
-    super(paramBundle);
-  }
-  
-  protected BaseWidgetView a(ViewGroup paramViewGroup, aabp paramaabp)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView = new FolderRecommendTabFragment.FolderRecommendHeadItemView(paramViewGroup.getContext());
-    if (FolderRecommendTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment) != null) {
-      FolderRecommendTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment).a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView);
-    }
-    return this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView;
-  }
-  
-  public void a(List<beke> paramList)
-  {
-    FolderRecommendTabFragment.FolderRecommendHeadItemView.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView).a(paramList);
-    if ((paramList != null) && (paramList.size() > 0))
+    try
     {
-      FolderRecommendTabFragment.a("227", "227", ((beke)paramList.get(0)).a.iAdId + "", 101, 1);
-      this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.a(true);
-      return;
+      if (paramAdData.a == null) {
+        return paramJSONObject;
+      }
+      paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_video_game_cell");
+      if (!TextUtils.isEmpty(paramAdData.B)) {
+        paramJSONObject.put("id_game_small_img", new JSONObject());
+      }
+      if (!TextUtils.isEmpty(paramAdData.i))
+      {
+        localJSONObject = new JSONObject();
+        localJSONObject.put("text", paramAdData.i);
+        paramJSONObject.put("id_tv_author", localJSONObject);
+      }
+      if (!TextUtils.isEmpty(paramAdData.c))
+      {
+        localJSONObject = new JSONObject();
+        localJSONObject.put("text", paramAdData.c);
+        paramJSONObject.put("id_tv_title", localJSONObject);
+      }
+      paramJSONObject.put("id_ad_banner_bottom_video", new JSONObject());
+      JSONObject localJSONObject = new JSONObject();
+      if (!TextUtils.isEmpty(paramAdData.D))
+      {
+        localJSONObject.put("text", paramAdData.D);
+        paramJSONObject.put("id_ad_dislike_button", localJSONObject);
+      }
+      paramJSONObject.put("id_game_operate_area", new JSONObject());
+      paramJSONObject.put("id_separator", new JSONObject());
+      paramJSONObject.put("id_ad_title", new JSONObject());
+      paramJSONObject.put("id_ad_title_rl", new JSONObject());
+      localJSONObject = new JSONObject();
+      localJSONObject.put("innerGameModel", paramAdData);
+      paramJSONObject.put("id_view_AdDownloadView", localJSONObject);
+      return paramJSONObject;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.a(false);
+    catch (JSONException paramAdData)
+    {
+      paramAdData.printStackTrace();
+    }
+    return paramJSONObject;
   }
-  
-  public void loadData(aabu paramaabu)
-  {
-    paramaabu = new ArrayList();
-    bnwo localbnwo = new bnwo();
-    localbnwo.a = 476;
-    localbnwo.b = 6;
-    paramaabu.add(localbnwo);
-    bnwq.a().a(paramaabu, FolderRecommendTabFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment));
-  }
-  
-  public void onInitBlock(Bundle paramBundle) {}
 }
 
 

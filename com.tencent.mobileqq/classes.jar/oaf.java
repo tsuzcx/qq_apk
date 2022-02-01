@@ -1,99 +1,24 @@
-import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import java.net.URL;
 
 public class oaf
+  implements vgd
 {
-  public int a;
-  public List<oag> a;
+  public oaf(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public oaf()
+  public void a(URL paramURL, int paramInt) {}
+  
+  public void a(URL paramURL, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    ReadInJoyNativeAdFragment.b(this.a, 3);
   }
   
-  public oaf(int paramInt, mobileqq_mp.ConfigGroupInfo paramConfigGroupInfo)
+  public void a(URL paramURL, syk paramsyk)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (paramConfigGroupInfo == null) {}
-    for (;;)
-    {
-      return;
-      paramConfigGroupInfo = paramConfigGroupInfo.config_info.get();
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(paramConfigGroupInfo.size());
-      paramConfigGroupInfo = paramConfigGroupInfo.iterator();
-      while (paramConfigGroupInfo.hasNext()) {
-        this.jdField_a_of_type_JavaUtilList.add(new oag((mobileqq_mp.ConfigInfo)paramConfigGroupInfo.next()));
-      }
-    }
-  }
-  
-  public oaf(mobileqq_mp.ConfigGroupInfo paramConfigGroupInfo)
-  {
-    this(0, paramConfigGroupInfo);
-  }
-  
-  public static List<oaf> a(List<mobileqq_mp.ConfigGroupInfo> paramList)
-  {
-    if (paramList == null) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localArrayList.add(new oaf((mobileqq_mp.ConfigGroupInfo)paramList.next()));
-    }
-    return localArrayList;
-  }
-  
-  public static List<oaf> a(JSONArray paramJSONArray)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramJSONArray == null) {
-      return localArrayList;
-    }
-    for (;;)
-    {
-      try
-      {
-        int k = paramJSONArray.length();
-        int i = 0;
-        if (i >= k) {
-          break;
-        }
-        Object localObject = paramJSONArray.getJSONObject(i);
-        oaf localoaf = new oaf();
-        localoaf.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("type");
-        localObject = ((JSONObject)localObject).getJSONArray("config");
-        int m = ((JSONArray)localObject).length();
-        int j = 0;
-        if (j < m)
-        {
-          oag localoag = oag.a(((JSONArray)localObject).getJSONObject(j));
-          if (localoag != null) {
-            localoaf.jdField_a_of_type_JavaUtilList.add(localoag);
-          }
-        }
-        else
-        {
-          localArrayList.add(localoaf);
-          i += 1;
-          continue;
-        }
-        j += 1;
-      }
-      catch (Exception paramJSONArray)
-      {
-        paramJSONArray.printStackTrace();
-        return localArrayList;
-      }
-    }
+    ReadInJoyNativeAdFragment.b(this.a, 2);
+    ReadInJoyNativeAdFragment.a(this.a).setPublicAccountImageDownListener(null);
+    ReadInJoyNativeAdFragment.a(this.a, null);
   }
 }
 

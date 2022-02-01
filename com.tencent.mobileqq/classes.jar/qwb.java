@@ -1,59 +1,41 @@
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
+
 public class qwb
+  implements pwy
 {
-  private Integer jdField_a_of_type_JavaLangInteger;
-  private Long jdField_a_of_type_JavaLangLong;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
+  public qwb(ComponentHeaderRecommend paramComponentHeaderRecommend) {}
   
-  public Long a()
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangLong;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(Integer paramInteger)
-  {
-    this.jdField_a_of_type_JavaLangInteger = paramInteger;
-  }
-  
-  public void a(Long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public void b(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public String toString()
-  {
-    return "FollowingMember{uin='" + this.jdField_a_of_type_JavaLangLong + '\'' + ", nickname='" + this.jdField_a_of_type_JavaLangString + '\'' + ", headUrl='" + this.b + '\'' + '}';
+    ComponentHeaderRecommend.a(this.a).setText(amtj.a(2131701448));
+    ComponentHeaderRecommend.a(this.a).setTextColor(Color.parseColor("#BBBBBB"));
+    ComponentHeaderRecommend.a(this.a).setEnabled(false);
+    ComponentHeaderRecommend.a(this.a).getPaint().setFakeBoldText(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentHeaderRecommend", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
+    }
+    ArticleInfo localArticleInfo;
+    String str;
+    if ((this.a.a.a != null) && (this.a.a.a.a() != null))
+    {
+      localArticleInfo = this.a.a.a.a();
+      str = pay.a(localArticleInfo.mAlgorithmID, pay.a(localArticleInfo), this.a.a.a.e(), 0, 0, NetworkUtil.isWifiConnected(this.a.getContext()), ComponentHeaderRecommend.a(this.a) + "", null, localArticleInfo.innerUniqueID, null, localArticleInfo);
+      if (!uhv.a(this.a.a.a.e())) {
+        break label305;
+      }
+    }
+    label305:
+    for (paramString = "0X800941D";; paramString = "0X80080EC")
+    {
+      odq.a(null, ComponentHeaderRecommend.a(this.a) + "", paramString, paramString, 0, 0, String.valueOf(localArticleInfo.mFeedId), String.valueOf(localArticleInfo.mArticleID), Integer.toString(localArticleInfo.mStrategyId), str, false);
+      return;
+    }
   }
 }
 

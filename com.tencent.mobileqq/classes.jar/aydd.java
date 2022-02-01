@@ -1,19 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.MedalItem;
+import android.content.Intent;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.pic.CompressInfo;
+import java.util.ArrayList;
 
-public final class aydd
-  implements Parcelable.Creator<MedalItem>
+public abstract interface aydd
 {
-  public MedalItem a(Parcel paramParcel)
-  {
-    return new MedalItem(paramParcel);
-  }
+  public abstract aydn a(Intent paramIntent);
   
-  public MedalItem[] a(int paramInt)
-  {
-    return new MedalItem[paramInt];
-  }
+  public abstract aydn a(MessageForPic paramMessageForPic, int paramInt, String paramString1, String paramString2, String paramString3);
+  
+  public abstract ayeb a(Intent paramIntent);
+  
+  public abstract CompressInfo a(Intent paramIntent);
+  
+  public abstract ArrayList<aydn> a(MessageForMixedMsg paramMessageForMixedMsg, int paramInt, String paramString1, String paramString2, String paramString3);
 }
 
 

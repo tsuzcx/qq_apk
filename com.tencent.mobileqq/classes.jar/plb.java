@@ -1,40 +1,51 @@
+import android.os.Bundle;
 import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 
 public class plb
-  implements URLDrawable.URLDrawableListener
+  implements Handler.Callback
 {
-  public plb(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, int paramInt1, int paramInt2) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final plc jdField_a_of_type_Plc;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public plb(plc paramplc)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadCanceled");
-    }
+    this.jdField_a_of_type_Plc = paramplc;
+    this.jdField_a_of_type_AndroidOsHandler = new bjng(Looper.getMainLooper(), this);
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadFialed");
-    }
+    this.b = false;
+    do
+    {
+      while (!this.b) {
+        switch (this.jdField_a_of_type_Plc.a(paramBundle))
+        {
+        }
+      }
+      return;
+    } while (!this.jdField_a_of_type_Boolean);
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    localMessage.setData(paramBundle);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadProgressed =" + paramInt);
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
     }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment, this.jdField_a_of_type_Int, this.b);
-    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).removeMessages(-2);
-    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).sendEmptyMessage(-2);
+    if (!this.b) {
+      a(paramMessage.getData());
+    }
+    return true;
   }
 }
 

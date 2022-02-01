@@ -1,17 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
 
-class actb
-  implements DialogInterface.OnClickListener
+public class actb
+  implements bjoe
 {
-  actb(acsz paramacsz) {}
+  public actb(AssociatedAccountActivity paramAssociatedAccountActivity, boolean paramBoolean, bjnw parambjnw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    QLog.i("GdtMvViewController", 1, " DialogInterface onClick confirm");
-    acsz.a(this.a, false);
-    this.a.f();
+    int i = paramInt;
+    if (!this.jdField_a_of_type_Boolean) {
+      i = paramInt + 1;
+    }
+    this.jdField_a_of_type_Bjnw.cancel();
+    switch (i)
+    {
+    default: 
+      return;
+    case 0: 
+      AssociatedAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007149", "0X8007149", 0, 0, "", "", "", "");
+      return;
+    case 2: 
+      AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007145", "0X8007145", 0, 0, "", "", "", "");
+      return;
+    }
+    AssociatedAccountActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app, "CliOper", "", "", "0X8007148", "0X8007148", 0, 0, "", "", "", "");
   }
 }
 

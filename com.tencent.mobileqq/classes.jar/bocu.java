@@ -1,160 +1,37 @@
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.Lifecycle.Event;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.LifecycleRegistry;
-import android.arch.lifecycle.ViewModelStore;
-import android.arch.lifecycle.ViewModelStoreOwner;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.CallSuper;
-import android.support.annotation.NonNull;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.hardware.Camera;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
 public class bocu
-  implements LifecycleOwner, ViewModelStoreOwner, bqaj
+  extends PreviewContext
+  implements SurfaceHolder.Callback, bbur
 {
-  private LifecycleRegistry jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry = new LifecycleRegistry(this);
-  private ViewModelStore jdField_a_of_type_AndroidArchLifecycleViewModelStore;
-  
-  public View a()
+  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    return null;
+    getPreviewFrame(paramArrayOfByte, paramCamera);
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(Intent paramIntent) {}
-  
-  @CallSuper
-  public void a(Bundle paramBundle)
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry = new LifecycleRegistry(this);
-    try
+    this.mCamera.a(paramInt1, paramInt2, paramInt3);
+    this.mCamera.a(null, paramSurfaceHolder, this, true);
+  }
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  {
+    this.mCamera.a();
+  }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    if (this.mCamera != null)
     {
-      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
-      return;
-    }
-    catch (Throwable paramBundle)
-    {
-      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(int paramInt, KeyEvent paramKeyEvent, boolean paramBoolean)
-  {
-    return false;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    return false;
-  }
-  
-  public void b(Bundle paramBundle) {}
-  
-  public void b_(int paramInt1, int paramInt2) {}
-  
-  @CallSuper
-  public void d()
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
-    }
-  }
-  
-  @CallSuper
-  public void e()
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
-      if (this.jdField_a_of_type_AndroidArchLifecycleViewModelStore != null) {
-        this.jdField_a_of_type_AndroidArchLifecycleViewModelStore.clear();
+      this.mCamera.b();
+      this.mCamera.b(true);
+      if (this.mActivtiyDestory) {
+        this.mCamera = null;
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
-      }
-    }
-  }
-  
-  @CallSuper
-  public void f()
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
-    }
-  }
-  
-  public Lifecycle getLifecycle()
-  {
-    return this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry;
-  }
-  
-  @NonNull
-  public ViewModelStore getViewModelStore()
-  {
-    if (BaseApplicationImpl.getApplication() == null) {
-      throw new IllegalStateException("Your activity is not yet attached to the Application instance. You can't request ViewModel before onCreate call.");
-    }
-    if (this.jdField_a_of_type_AndroidArchLifecycleViewModelStore == null) {
-      this.jdField_a_of_type_AndroidArchLifecycleViewModelStore = new ViewModelStore();
-    }
-    return this.jdField_a_of_type_AndroidArchLifecycleViewModelStore;
-  }
-  
-  @CallSuper
-  public void p()
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
-    }
-  }
-  
-  public void s() {}
-  
-  @CallSuper
-  public void t()
-  {
-    try
-    {
-      this.jdField_a_of_type_AndroidArchLifecycleLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QIMCameraLifeCycleBaseUnit", 1, "mLifecycleRegistry 初始化失败");
     }
   }
 }

@@ -1,45 +1,16 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.4;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class andc
-  implements bjig
+public abstract interface andc
 {
-  public andc(CmGameCommonShare.4 param4) {}
+  public abstract void a(String paramString);
   
-  public void onWXShareResp(BaseResp paramBaseResp)
-  {
-    if (paramBaseResp == null) {
-      return;
-    }
-    QLog.i("apollo_cmGame_CmGameCommonShare", 1, "[shareResult2WXFriendOrCircle], resp.errCode:" + paramBaseResp.errCode);
-    if (paramBaseResp.errCode == 0) {
-      if (this.a.a == 0) {
-        anda.a(this.a.this$0, 0, 2);
-      }
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      anda.a(this.a.this$0, 0, 3);
-      continue;
-      if (paramBaseResp.errCode == -2)
-      {
-        if (this.a.a == 0) {
-          anda.a(this.a.this$0, 2, 2);
-        } else {
-          anda.a(this.a.this$0, 2, 3);
-        }
-      }
-      else if (this.a.a == 0) {
-        anda.a(this.a.this$0, 1, 2);
-      } else {
-        anda.a(this.a.this$0, 1, 3);
-      }
-    }
-  }
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(ArrayList<String> paramArrayList);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void b(String paramString1, String paramString2);
 }
 
 

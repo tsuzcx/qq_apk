@@ -1,36 +1,32 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class avbs
-  implements View.OnClickListener
+public class avbs
+  extends BroadcastReceiver
 {
-  avbs(avbr paramavbr) {}
+  private avbs(QQMusicPlayService paramQQMusicPlayService) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg == null) {}
-    for (;;)
+    if (paramIntent != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      String str = this.a.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl.trim();
-      if (QLog.isColorLevel()) {
-        QLog.e("ForwardOption.ForwardSdkBaseOption", 2, "gotoWeb " + str);
+      QLog.d("QQMusicPlay.QQMusicPlayService", 1, "QQMusicPlayBroadcastReceiver onReceive,action:" + paramIntent.getAction());
+      paramContext = paramIntent.getAction();
+      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("QQMusicPlay_exit_action"))))
+      {
+        if (QQMusicPlayService.a(this.a) == null) {
+          break label150;
+        }
+        QQMusicPlayService.a(this.a).sendEmptyMessage(11);
       }
-      Intent localIntent = new Intent(this.a.a.jdField_a_of_type_AndroidAppActivity, QQBrowserDelegationActivity.class);
-      localIntent.putExtra("param_force_internal_browser", true);
-      localIntent.putExtra("reqType", 7);
-      localIntent.putExtra("hide_more_button", true);
-      localIntent.putExtra("url", str);
-      agbh.a(this.a.a.jdField_a_of_type_AndroidAppActivity, localIntent, str);
-      this.a.a.F();
     }
+    return;
+    label150:
+    this.a.stopSelf();
   }
 }
 

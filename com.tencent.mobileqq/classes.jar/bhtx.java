@@ -1,53 +1,51 @@
-import android.view.View;
-import com.tencent.mobileqq.utils.VipUtils.UpdateRecentEfficientVipIconTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback.1;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhtx
+  implements biaf
 {
-  private static ArrayList<VipUtils.UpdateRecentEfficientVipIconTask> a = new ArrayList();
+  protected bhtx(bhtw parambhtw) {}
   
-  public static void a(View paramView)
+  public void a(Exception paramException)
   {
-    Iterator localIterator = a.iterator();
-    VipUtils.UpdateRecentEfficientVipIconTask localUpdateRecentEfficientVipIconTask2;
-    View localView;
-    do
+    bhzm.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramException.getMessage(), paramException);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    try
     {
-      if (!localIterator.hasNext()) {
-        break label80;
-      }
-      localUpdateRecentEfficientVipIconTask2 = (VipUtils.UpdateRecentEfficientVipIconTask)localIterator.next();
-      localView = VipUtils.UpdateRecentEfficientVipIconTask.a(localUpdateRecentEfficientVipIconTask2);
-      localUpdateRecentEfficientVipIconTask1 = localUpdateRecentEfficientVipIconTask2;
-      if (localView == paramView) {
-        break;
-      }
-    } while (localView != null);
-    label80:
-    for (VipUtils.UpdateRecentEfficientVipIconTask localUpdateRecentEfficientVipIconTask1 = localUpdateRecentEfficientVipIconTask2;; localUpdateRecentEfficientVipIconTask1 = null)
-    {
-      if (localUpdateRecentEfficientVipIconTask1 != null)
+      int i = paramJSONObject.getInt("ret");
+      Object localObject = paramJSONObject.getString("msg");
+      if (i == 0)
       {
-        a.remove(localUpdateRecentEfficientVipIconTask1);
-        VipUtils.UpdateRecentEfficientVipIconTask.a(localUpdateRecentEfficientVipIconTask1, false);
-        if (QLog.isColorLevel()) {
-          QLog.w("VipUtils", 1, "updateRecentEfficientVipIcon async - diable");
+        localObject = paramJSONObject.getJSONArray("update_list");
+        i = ((JSONArray)localObject).length();
+        if (i > 0) {
+          ThreadManager.executeOnSubThread(new OpenSdkFriendService.CheckAvatarUpdateCallback.1(this, i, (JSONArray)localObject));
+        }
+        localObject = biew.a(bhpc.a().a(), "prefer_last_avatar_update_time").edit();
+        ((SharedPreferences.Editor)localObject).putString(this.a.b, paramJSONObject.getString("time"));
+        ((SharedPreferences.Editor)localObject).commit();
+        if (this.a.a != null) {
+          this.a.a.a();
         }
       }
-      return;
+      else
+      {
+        bhzm.e("OpenSdkFriendService", "CheckAvatarUpdateCallback error. ret=" + i + ", msg=" + (String)localObject);
+        return;
+      }
     }
-  }
-  
-  public static void a(VipUtils.UpdateRecentEfficientVipIconTask paramUpdateRecentEfficientVipIconTask)
-  {
-    a.add(paramUpdateRecentEfficientVipIconTask);
-  }
-  
-  public static void b(VipUtils.UpdateRecentEfficientVipIconTask paramUpdateRecentEfficientVipIconTask)
-  {
-    a.remove(paramUpdateRecentEfficientVipIconTask);
+    catch (JSONException paramJSONObject)
+    {
+      bhzm.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramJSONObject.getMessage(), paramJSONObject);
+    }
   }
 }
 

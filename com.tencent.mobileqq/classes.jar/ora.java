@@ -1,26 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Color;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "onDismiss"}, k=3, mv={1, 1, 16})
 final class ora
-  implements DialogInterface.OnClickListener
+  implements bjoy
 {
-  ora(otd paramotd, otp paramotp) {}
+  ora(oqz paramoqz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void a()
   {
-    if (paramInt == 1)
-    {
-      if (this.jdField_a_of_type_Otd != null)
-      {
-        paramDialogInterface = this.jdField_a_of_type_Otd.a();
-        if (paramDialogInterface != null)
-        {
-          paramDialogInterface.a(this.jdField_a_of_type_Otp);
-          this.jdField_a_of_type_Otd.notifyDataSetChanged();
-        }
-      }
-      bnrf.a("family_comment_card_hide_timestamp", Long.valueOf(System.currentTimeMillis()));
-    }
+    ViewBase localViewBase = this.a.a;
+    Intrinsics.checkExpressionValueIsNotNull(localViewBase, "commentContentView");
+    localViewBase.getNativeView().setBackgroundColor(Color.parseColor("#FFFFFF"));
   }
 }
 

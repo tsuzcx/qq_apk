@@ -1,19 +1,24 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.Map;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-final class sat
-  extends sav
+class sat
+  extends sif
 {
-  sat(BaseArticleInfo paramBaseArticleInfo, int paramInt1, int paramInt2, Map paramMap, Activity paramActivity)
-  {
-    super(paramBaseArticleInfo, paramInt1, paramInt2, paramMap);
-  }
+  sat(sab paramsab) {}
   
-  public void a(JSONObject paramJSONObject)
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    sas.a(this.a, this, paramJSONObject);
+    if ((sab.a(this.a) != null) && (sab.a(this.a).c()))
+    {
+      QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690790), 5000).a();
+      sab.a(this.a).f();
+      QLog.d("VideoFeedsShareController", 2, "mColorNoteController ： delete colorNote");
+    }
   }
 }
 

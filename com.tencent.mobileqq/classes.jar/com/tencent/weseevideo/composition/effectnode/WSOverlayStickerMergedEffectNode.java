@@ -3,6 +3,7 @@ package com.tencent.weseevideo.composition.effectnode;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import com.tencent.tav.coremedia.CGSize;
+import com.tencent.tavkit.composition.video.TAVVideoEffect.Filter;
 import com.tencent.tavmovie.filter.TAVStickerOverlayEffect;
 import com.tencent.tavsticker.core.TAVStickerContext;
 import com.tencent.tavsticker.core.TAVStickerRenderContext;
@@ -100,13 +101,27 @@ public class WSOverlayStickerMergedEffectNode
     VideoEffectNodeFactory.addPagOverlayEffectNode(this.mSubtitleModel, paramCGSize, getStickerContext(), this.mContextCreator);
   }
   
+  public TAVVideoEffect.Filter createFilter()
+  {
+    if (this.count == 0)
+    {
+      this.count += 1;
+      return new WSOverlayStickerMergedEffectNode.WsVideoCompositionEffect(this, this.stickerContext, null);
+    }
+    return new WSOverlayStickerMergedEffectNode.WsVideoCompositionEffect(this, this.stickerContext.copy(), null);
+  }
+  
   @NonNull
   public String effectId()
   {
     if (isEmpty()) {
       return "";
     }
-    return this.sEffectId;
+    StringBuilder localStringBuilder = new StringBuilder().append(this.sEffectId);
+    if (this.stickerContext != null) {}
+    for (String str = this.stickerContext.getClass().getSimpleName();; str = "") {
+      return str;
+    }
   }
   
   public List<StickerModel> getStickerModels()

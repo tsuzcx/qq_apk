@@ -1,28 +1,27 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.app.Activity;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
-class xsl
-  implements xtj
+public class xsl
+  implements ysc
 {
-  xsl(xsg paramxsg, StoryVideoItem paramStoryVideoItem) {}
-  
-  public boolean a(xtg paramxtg, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void a(SegmentList paramSegmentList)
   {
-    if (this.jdField_a_of_type_Xsg.isCanceled()) {
-      return true;
+    if (!(paramSegmentList instanceof MystoryListView)) {
+      throw new IllegalArgumentException("arg should match type!");
     }
-    yuk.e(this.jdField_a_of_type_Xsg.a.a, "onError, setOnErrorListener [videoView, model=%d, what=%d, position=%d, extra=%s, Info=%s] = ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, paramObject });
-    if (paramInt2 == 102)
-    {
-      paramxtg.d();
-      return true;
-    }
-    VideoViewVideoHolder.c(this.jdField_a_of_type_Xsg.a, 7);
-    VideoViewVideoHolder.a(this.jdField_a_of_type_Xsg.a, false);
-    VideoViewVideoHolder.b(this.jdField_a_of_type_Xsg.a, paramInt2);
-    xsg.b(this.jdField_a_of_type_Xsg, new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_Xsg.a), "wht=" + paramInt2 + ", mod=" + paramInt1 + ", " + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid));
-    return true;
+    paramSegmentList = (MystoryListView)paramSegmentList;
+    Activity localActivity = paramSegmentList.jdField_a_of_type_AndroidAppActivity;
+    Object localObject = paramSegmentList.jdField_a_of_type_Xsi;
+    boolean bool = paramSegmentList.a();
+    paramSegmentList.a(vpl.a(localActivity, 5));
+    paramSegmentList.a(new xuh(localActivity, (xsi)localObject));
+    paramSegmentList.a(new xug(localActivity));
+    paramSegmentList.a(new xtx(localActivity));
+    localObject = new xss(localActivity, localActivity, 10, (xsi)localObject, bool);
+    paramSegmentList.a((ysg)localObject);
+    paramSegmentList.a(new xva(localActivity, "FeedSegment", amtj.a(2131706176) + vkm.a + "\n拍摄一段视频，分享眼前的世界", 2130846520, 2130846521));
+    ((xss)localObject).d_(true);
   }
 }
 

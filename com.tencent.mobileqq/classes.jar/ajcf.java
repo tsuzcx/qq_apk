@@ -1,27 +1,18 @@
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.activity.home.Conversation;
 
 public class ajcf
-  implements blih
+  extends asbj
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public ajcf(Conversation paramConversation) {}
   
-  public ajcf(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  protected void onFileTransferEnd(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this.b = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Ajck.getCount();
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+    this.a.a(8, paramString1, -2147483648);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  protected void onFileTransferProgress(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.c) || (this.b <= 0)) {}
-    while ((paramInt != 0) || (this.b > this.jdField_a_of_type_Int)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.a(21);
+    this.a.a(8, paramString, -2147483648);
   }
 }
 

@@ -1,71 +1,40 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPhotographyGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
 public class xqv
-  implements xsx
+  extends vqr
 {
-  public xqv(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
+  public static final String a = vpl.a("StorySvc.get_photography_guide");
   
-  public void a(int paramInt)
+  public String a()
   {
-    yuk.a(this.a.jdField_a_of_type_JavaLangString, "onPageSelected : position = %d", Integer.valueOf(paramInt));
-    int i = this.a.b;
-    this.a.b = paramInt;
-    Object localObject = this.a.a();
-    if (localObject != null)
-    {
-      localObject = (xri)((xrg)localObject).a(xri.class);
-      if ((localObject != null) && (((xri)localObject).b.getVisibility() != 0)) {
-        this.a.a(true, true);
-      }
-    }
-    localObject = (xpv)this.a.b(xpv.class);
-    if (localObject != null) {
-      ((xpv)localObject).a().a(paramInt);
-    }
-    c(paramInt);
-    if (StoryPlayerGroupHolder.a(this.a) != null) {
-      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, i, paramInt);
-    }
+    return a;
   }
   
-  public void a(int paramInt1, float paramFloat, int paramInt2)
+  public vqm a(byte[] paramArrayOfByte)
   {
-    if (StoryPlayerGroupHolder.a(this.a) != null) {
-      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt1, paramFloat, paramInt2);
+    qqstory_service.RspGetPhotographyGuide localRspGetPhotographyGuide = new qqstory_service.RspGetPhotographyGuide();
+    try
+    {
+      localRspGetPhotographyGuide.mergeFrom(paramArrayOfByte);
+      return new xqw(localRspGetPhotographyGuide);
     }
-    xpv localxpv = (xpv)this.a.b(xpv.class);
-    if (localxpv != null) {
-      localxpv.a().a(paramInt1, paramFloat, paramInt2);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      xvv.d("Q.qqstory:GetPhotographyGuideRequest", "" + paramArrayOfByte);
     }
+    return null;
   }
   
-  public void b(int paramInt)
+  protected byte[] a()
   {
-    if ((paramInt == 1) && (this.a.d()) && (this.a.c()))
-    {
-      ((xpv)this.a.b(xpv.class)).d();
-      yuk.a(this.a.jdField_a_of_type_JavaLangString + "Q.qqstory.weishi", "onPageScrolled, showLoadingMoreWidget position=%d", Integer.valueOf(this.a.b));
-    }
-    xpv localxpv = (xpv)this.a.b(xpv.class);
-    if (localxpv != null) {
-      localxpv.a().b(paramInt);
-    }
-    if (StoryPlayerGroupHolder.a(this.a) != null) {
-      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt);
-    }
+    return new qqstory_service.ReqGetPhotographyGuide().toByteArray();
   }
   
-  public void c(int paramInt)
+  public String toString()
   {
-    yuk.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected : position = %d", Integer.valueOf(paramInt));
-    xrg localxrg = this.a.a();
-    if ((localxrg != null) && (TextUtils.equals(StoryPlayerGroupHolder.a(this.a).a().jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Xms.jdField_a_of_type_JavaLangString)) && (!localxrg.c()))
-    {
-      yuk.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected, setSelected => %s", localxrg);
-      this.a.a(localxrg);
-    }
+    return "GetPhotographyGuideRequest{}";
   }
 }
 

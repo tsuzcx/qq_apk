@@ -1,8 +1,6 @@
-import com.tencent.av.ui.QavListItemBase;
-
 public abstract interface mig
 {
-  public abstract void a(long paramLong, int paramInt, QavListItemBase paramQavListItemBase);
+  public abstract void a(boolean paramBoolean);
 }
 
 

@@ -1,36 +1,39 @@
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QUA;
+import cooperation.qzone.QZoneShareManager;
+
 public class antp
-  implements anui
+  extends anrh
 {
-  protected void a() {}
-  
-  protected void a(Object paramObject) {}
-  
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject) {}
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public antp(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    switch (paramInt)
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private boolean C()
+  {
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname();
+    String str3 = QUA.getQUA3();
+    QZoneShareManager.shareToQZoneForRedPocket(this.jdField_a_of_type_AndroidContentContext, str1, null, 0, str2, str3);
+    return true;
+  }
+  
+  public boolean a()
+  {
+    try
     {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
-    case 2: 
-      a(paramObject);
-      return;
-    case 3: 
-      a();
-      return;
-    case 4: 
-      b(paramBoolean, paramObject);
-      return;
+      boolean bool = C();
+      return bool;
     }
-    a(paramBoolean);
+    catch (Exception localException)
+    {
+      QLog.e("QzoneRedpocketShareAction", 1, "doAction error: " + localException.getMessage());
+      a("QzoneRedpocketShareAction");
+    }
+    return false;
   }
 }
 

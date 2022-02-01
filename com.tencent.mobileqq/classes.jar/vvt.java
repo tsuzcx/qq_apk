@@ -1,24 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.qqcircle.transition.QCircleTransitionLayout;
-
 public class vvt
-  implements Animator.AnimatorListener
 {
-  public vvt(QCircleTransitionLayout paramQCircleTransitionLayout) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QCircleTransitionLayout.a(this.a) != null) {
-      QCircleTransitionLayout.a(this.a).b();
-    }
-  }
+  @ypm(a="align")
+  public int a;
+  @ypm(a="image")
+  public String a;
+  @ypm(a="picture_margin")
+  public int[] a;
+  @ypm(a="picture_width")
+  public int b;
+  @ypm(a="picture_height")
+  public int c;
+  @ypm(a="standard_width")
+  public int d;
 }
 
 

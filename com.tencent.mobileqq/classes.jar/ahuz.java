@@ -1,26 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.mobileqq.data.MessageForTribeShortVideo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.Properties;
 
-class ahuz
-  extends biht
+public class ahuz
 {
-  ahuz(ahux paramahux, ahvc paramahvc, MessageForTribeShortVideo paramMessageForTribeShortVideo) {}
-  
-  public void onDone(bihu parambihu)
+  public static void a(String paramString, Properties paramProperties)
   {
-    String str = parambihu.a().getString("filePath");
-    if (parambihu.a == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("TribeShortVideoItemBuilder", 2, "download video success! videoFile:" + str);
-      }
-      this.jdField_a_of_type_Ahvc.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Ahvc.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.b();
-      this.jdField_a_of_type_Ahvc.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(8);
-      this.jdField_a_of_type_Ahux.a(this.jdField_a_of_type_Ahvc.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.videoWidth, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.videoHeight, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTribeShortVideo.coverImgUrl, str);
-    }
+    bcdu.a(VideoEnvironment.getContext()).reportKVEvent(paramString, paramProperties);
+  }
+  
+  public static void a(String paramString, Properties paramProperties, int paramInt)
+  {
+    bcdu.a(VideoEnvironment.getContext()).reportTimeKVEvent(paramString, paramProperties, paramInt);
   }
 }
 

@@ -1,9 +1,20 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAioGuideView;
 
-public abstract interface rvw
+public class rvw
+  implements Animation.AnimationListener
 {
-  public abstract List<rld> a(List<VideoInfo> paramList);
+  public rvw(VideoFeedsAioGuideView paramVideoFeedsAioGuideView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    VideoFeedsAioGuideView.a(this.a).setStartOffset(360L);
+  }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

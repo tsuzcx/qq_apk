@@ -1,120 +1,237 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.imcore.message.BaseMessageManager;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import android.os.Build;
+import com.tencent.ark.ArkEnvironmentManager;
+import com.tencent.ark.ark;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.util.SharePreferenceUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aoth
-  extends BaseMessageManager
 {
-  public aoth(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, adah paramadah)
+  public static String a;
+  private static List<String> jdField_a_of_type_JavaUtilList;
+  public static Map<String, List<aoti>> a;
+  public static boolean a;
+  public static volatile boolean b;
+  public static volatile boolean c;
+  public static boolean d;
+  public static boolean e;
+  public static boolean f;
+  public static boolean g;
+  public static boolean h;
+  public static boolean i;
+  public static boolean j;
+  private aots jdField_a_of_type_Aots;
+  private aotv jdField_a_of_type_Aotv;
+  private ArkAppCenter jdField_a_of_type_ComTencentMobileqqArkArkAppCenter;
+  
+  static
   {
-    super(paramQQAppInterface, paramQQMessageFacade, paramadah);
+    jdField_a_of_type_Boolean = true;
+    f = true;
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (Build.MODEL.contains("Android SDK built for x86")) {
+      c = true;
+    }
+    String str1 = Build.CPU_ABI;
+    String str2 = Build.CPU_ABI2;
+    if ((!c) && ((a(str1).booleanValue()) || (a(str2).booleanValue()))) {
+      jdField_b_of_type_Boolean = true;
+    }
   }
   
-  public long a(MessageRecord paramMessageRecord)
+  public aoth(ArkAppCenter paramArkAppCenter)
   {
-    return 0L;
+    this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter = paramArkAppCenter;
+    Object localObject = apvq.b(159).a();
+    if ((localObject != null) && (((apvo)localObject).a() != null))
+    {
+      localObject = ((apvo)localObject).a();
+      jdField_a_of_type_Boolean = ((apwi)localObject).jdField_a_of_type_Boolean;
+      f = ((apwi)localObject).jdField_b_of_type_Boolean;
+    }
+    this.jdField_a_of_type_Aots = new aots(paramArkAppCenter.b());
+    this.jdField_a_of_type_Aotv = new aotv(paramArkAppCenter.b());
+    d();
+    a();
+    paramArkAppCenter = apvq.b(186).a();
+    if ((paramArkAppCenter != null) && (paramArkAppCenter.a() != null))
+    {
+      ArkAppCenter.c("ArkApp.AI", "ArkAiAppCenter updateDialogConfig content =" + paramArkAppCenter.a());
+      a(paramArkAppCenter.a());
+    }
   }
   
-  public void a(MessageRecord paramMessageRecord, EntityManager paramEntityManager, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, aczl paramaczl)
+  private static Boolean a(String paramString)
   {
-    if (paramMessageRecord == null) {
+    if ((paramString.equalsIgnoreCase("armeabi-v7a")) || (paramString.equalsIgnoreCase("arm64-v8a"))) {}
+    for (boolean bool = true;; bool = false) {
+      return Boolean.valueOf(bool);
+    }
+  }
+  
+  public static String a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if (localAppRuntime == null) {
+      return "";
+    }
+    return localAppRuntime.getAccount();
+  }
+  
+  public static String a(String paramString)
+  {
+    return SharePreferenceUtils.get(BaseApplication.getContext(), paramString + a());
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    SharePreferenceUtils.set(BaseApplication.getContext(), paramString1 + a(), paramString2);
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (String str = "open";; str = "close")
+    {
+      SharePreferenceUtils.set(BaseApplication.getContext(), "ark_use_android_http_" + a(), str);
       return;
     }
-    if (paramMessageRecord.time == 0L) {
-      paramMessageRecord.time = bcrg.a();
-    }
-    if (paramMessageRecord.msgseq == 0L) {
-      paramMessageRecord.msgseq = ((int)paramMessageRecord.time);
-    }
-    a(paramMessageRecord, true, 1);
   }
   
-  public void a(String paramString, int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2, Bundle paramBundle) {}
-  
-  public void a(String paramString, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
+  public static boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded uin=" + paramString + ",type=" + paramInt1 + ",needDelMark=" + paramBoolean2);
+    try
+    {
+      boolean bool = "open".equals(SharePreferenceUtils.get(BaseApplication.getContext(), "ark_use_android_http_" + a()));
+      return bool;
     }
-    if (paramString == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded return : uin=null");
+    catch (Exception localException) {}
+    return false;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return jdField_a_of_type_JavaUtilList.contains(paramString);
+  }
+  
+  public static void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (String str = "open";; str = "close") {
+      try
+      {
+        SharePreferenceUtils.set(BaseApplication.getContext(), "ark_support_android9_emoji", str);
+        return;
       }
+      catch (Exception localException)
+      {
+        ArkAppCenter.c("ArkApp.AI", "setAndroid9EmojiSupportState exception: " + localException.getMessage());
+      }
+    }
+  }
+  
+  public static boolean b()
+  {
+    try
+    {
+      boolean bool = "open".equals(SharePreferenceUtils.get(BaseApplication.getContext(), "ark_support_android9_emoji"));
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      ArkAppCenter.c("ArkApp.AI", "getAndroid9EmojiSupportState exception: " + localException.getMessage());
+    }
+    return false;
+  }
+  
+  private void d()
+  {
+    aots.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter.b());
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Aotv.a();
+  }
+  
+  public void a(apwn paramapwn)
+  {
+    if (paramapwn == null)
+    {
+      ArkAppCenter.c("ArkApp.AI", String.format("updateDialogConfig,dialogConfig is null", new Object[0]));
+      return;
+    }
+    e = paramapwn.jdField_a_of_type_Boolean;
+    d = this.jdField_a_of_type_Aotv.a(paramapwn.jdField_b_of_type_JavaLangString);
+    g = paramapwn.jdField_b_of_type_Boolean;
+    a(g);
+    if (ArkAppCenter.jdField_b_of_type_Boolean) {
+      ark.SetUseAndroidHTTP(g);
+    }
+    h = paramapwn.c;
+    b(h);
+    if (ArkAppCenter.jdField_b_of_type_Boolean) {
+      ark.arkSetAndroid9EmojiFeatureSupport(h);
+    }
+    i = paramapwn.d;
+    Object localObject;
+    if (i) {
+      localObject = "true";
     }
     for (;;)
     {
-      return;
-      if (!antf.x.equals(paramString)) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded return : clean all");
-      }
-      paramString = (bdxc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(61);
-      if (paramString != null)
+      a("ark_engine_multi_thread", (String)localObject);
+      jdField_a_of_type_JavaLangString = paramapwn.jdField_a_of_type_JavaLangString;
+      boolean bool;
+      if (ArkAppCenter.jdField_b_of_type_Boolean)
       {
-        paramString = paramString.a().iterator();
-        while (paramString.hasNext())
+        localObject = ArkEnvironmentManager.getInstance();
+        if (i) {
+          break label183;
+        }
+        bool = true;
+        ((ArkEnvironmentManager)localObject).setSingleThreadMode(bool);
+        ArkEnvironmentManager.getInstance().setThreadMode();
+      }
+      try
+      {
+        localObject = new JSONObject(jdField_a_of_type_JavaLangString);
+        ArkEnvironmentManager.getInstance().setHardwareDisableList((JSONObject)localObject);
+        j = paramapwn.e;
+        return;
+        localObject = "false";
+        continue;
+        label183:
+        bool = false;
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
         {
-          String str = (String)paramString.next();
-          if (!TextUtils.isEmpty(str)) {
-            c(str, paramInt1, paramBoolean1, paramBoolean1);
-          }
+          ArkAppCenter.c("ArkApp.AI", String.format("updateDialogConfig, parse json failed, err=%s", new Object[] { localJSONException.getMessage() }));
         }
       }
     }
-    c(paramString, paramInt1, paramBoolean1, paramBoolean2);
   }
   
-  public void b(String paramString, int paramInt)
+  public void b()
   {
-    super.b(paramString, paramInt);
-    arjg localarjg = (arjg)aran.a().a(607);
-    if ((localarjg == null) || (localarjg.a)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramString, paramInt, 0);
+    aots localaots = this.jdField_a_of_type_Aots;
+    aots.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter.a());
   }
   
-  public void b(String paramString, int paramInt1, int paramInt2, aday paramaday) {}
-  
-  public void c(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString, paramInt) > 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setReaded clean one uin = " + paramString);
-      }
-      localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramInt).a(paramString, paramInt);
-      localadab = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      if (localMessageRecord != null)
-      {
-        l = a(localMessageRecord);
-        localadab.a(paramString, paramInt, l, paramBoolean1, paramBoolean2);
-        b(paramString, paramInt);
-        this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(paramString, paramInt));
-      }
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramString, paramInt) <= 0) {
-      for (;;)
-      {
-        MessageRecord localMessageRecord;
-        adab localadab;
-        return;
-        long l = 0L;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager", 2, "SubMessageManager setTroopReaded clean one uin = " + paramString);
-    }
-    b(paramString, paramInt);
+    this.jdField_a_of_type_Aots.b();
   }
 }
 

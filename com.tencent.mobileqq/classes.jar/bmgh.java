@@ -1,19 +1,16 @@
-import java.io.File;
-import java.util.Comparator;
+import java.util.concurrent.CountDownLatch;
 
-public final class bmgh
-  implements Comparator<File>
+final class bmgh
+  implements bmfg
 {
-  public int a(File paramFile1, File paramFile2)
+  bmgh(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(boolean paramBoolean)
   {
-    long l = paramFile1.length() - paramFile2.length();
-    if (l > 0L) {
-      return 1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return -1;
+    this.jdField_a_of_type_ArrayOfBoolean[0] = paramBoolean;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
 }
 

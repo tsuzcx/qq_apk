@@ -1,11 +1,11 @@
 package dov.com.qq.im.aeeditor.lyric.interaction;
 
-import bpcl;
+import bmdv;
 
 public class ViewDragHelper$2
   implements Runnable
 {
-  public ViewDragHelper$2(bpcl parambpcl) {}
+  public ViewDragHelper$2(bmdv parambmdv) {}
   
   public void run()
   {

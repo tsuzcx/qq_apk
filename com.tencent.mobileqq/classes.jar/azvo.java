@@ -1,23 +1,94 @@
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.redtouch.VipBannerInfo.2;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
 public class azvo
-  extends RecyclerView.ViewHolder
+  implements azvk
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public azvo(VipBannerInfo.2 param2) {}
   
-  public azvo(CustomCoverFragment paramCustomCoverFragment, View paramView)
+  public boolean a(azvn paramazvn)
   {
-    super(paramView);
-    this.itemView.setTag(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367040));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367031));
-    this.itemView.setBackgroundColor(paramCustomCoverFragment.getResources().getColor(2131167302));
+    if (paramazvn == null) {}
+    label98:
+    label357:
+    label362:
+    label368:
+    label372:
+    for (;;)
+    {
+      return false;
+      Object localObject = (QQAppInterface)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+      if (localObject != null)
+      {
+        int i;
+        int j;
+        int k;
+        if (1 == paramazvn.jdField_b_of_type_Int)
+        {
+          this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("blue_banner_time_out" + ((QQAppInterface)localObject).getAccount(), System.currentTimeMillis() + paramazvn.jdField_a_of_type_Long).commit();
+          paramazvn.jdField_b_of_type_Long = paramazvn.jdField_a_of_type_Long;
+          i = 1;
+          if (paramazvn.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo == null) {
+            break label350;
+          }
+          m = paramazvn.jdField_a_of_type_Int;
+          if ((1 != paramazvn.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.iNewFlag.get()) || (i == 0) || (TextUtils.isEmpty(paramazvn.jdField_b_of_type_JavaLangString)) || (m < 1) || (m > 4)) {
+            continue;
+          }
+          if ((1 != m) || (VipUtils.c((QQAppInterface)localObject))) {
+            break label352;
+          }
+          i = 1;
+          if ((2 != m) || (VipUtils.b((QQAppInterface)localObject))) {
+            break label357;
+          }
+          j = 1;
+          if ((3 != m) || (!VipUtils.c((QQAppInterface)localObject))) {
+            break label362;
+          }
+          k = 1;
+          if ((4 != m) || (!VipUtils.b((QQAppInterface)localObject))) {
+            break label368;
+          }
+        }
+        for (int m = 1;; m = 0)
+        {
+          if ((i == 0) && (j == 0) && (k == 0) && (m == 0)) {
+            break label372;
+          }
+          this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(9);
+          localObject = this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(8, paramazvn);
+          ((Message)localObject).obj = paramazvn;
+          this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
+          return true;
+          long l = this.a.jdField_a_of_type_AndroidContentSharedPreferences.getLong("blue_banner_time_out" + ((QQAppInterface)localObject).getAccount(), -1L);
+          if (l > System.currentTimeMillis())
+          {
+            paramazvn.jdField_b_of_type_Long = (l - System.currentTimeMillis());
+            i = 1;
+            break label98;
+          }
+          i = 0;
+          break label98;
+          break;
+          i = 0;
+          break label167;
+          j = 0;
+          break label183;
+          k = 0;
+          break label200;
+        }
+      }
+    }
   }
 }
 

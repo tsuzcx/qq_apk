@@ -1,74 +1,96 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.FriendTabView;
-import com.tencent.mobileqq.activity.selectmember.FriendTabView.3.1;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
 
-public class amdq
-  implements View.OnClickListener
+final class amdq
+  implements amdy
 {
-  public amdq(FriendTabView paramFriendTabView) {}
+  amdq(int[] paramArrayOfInt, alnr paramalnr, int paramInt, AppInterface paramAppInterface, amdy paramamdy, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    QLog.d("FriendTabView", 2, "----->onBuddyListClick");
-    amfg localamfg = (amfg)paramView.getTag();
-    String str;
-    boolean bool;
-    if ((localamfg != null) && (localamfg.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localamfg.jdField_a_of_type_JavaLangObject != null))
-    {
-      str = "";
-      if (!(localamfg.jdField_a_of_type_JavaLangObject instanceof Friends)) {
-        break label243;
-      }
-      str = ((Friends)localamfg.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
-      if (localamfg.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
+    File localFile;
+    if (paramBoolean) {
+      if (BaseApplicationImpl.sProcessId == 1)
       {
-        if (!localamfg.jdField_a_of_type_JavaLangString.startsWith("+")) {
-          break label269;
-        }
-        bool = this.a.a.a(localamfg.jdField_a_of_type_JavaLangString, str, 4, "-1", "");
-        label110:
-        if (QLog.isDevelopLevel()) {
-          QLog.d("FriendTabView", 2, "----->onBuddyListClick = " + bool);
-        }
-        localamfg.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-        if (AppSetting.c)
-        {
-          if (!localamfg.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-            break label294;
-          }
-          paramView.setContentDescription(localamfg.d.getText().toString() + anzj.a(2131703840));
-        }
+        paramArrayOfInt = new File(amdp.a(1, paramInt1), "dress.zip");
+        localFile = new File(amdp.a(1, paramInt1), System.currentTimeMillis() + "dress.zip");
+        FileUtils.copyFile(paramArrayOfInt, localFile);
+        if ((localFile.exists()) && (paramInt1 == 0)) {}
       }
     }
-    for (;;)
+    do
     {
-      this.a.c();
-      if (AppSetting.c) {
-        paramView.postDelayed(new FriendTabView.3.1(this, paramView), 2000L);
+      for (;;)
+      {
+        try
+        {
+          paramArrayOfInt = amip.f;
+          localStringBuilder = new StringBuilder();
+        }
+        catch (Exception paramArrayOfInt)
+        {
+          StringBuilder localStringBuilder;
+          int[] arrayOfInt;
+          int j;
+          FileUtils.deleteFile(localFile);
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("ApolloResDownloader", 2, "downloadApolloResOrder unZipFile file error resType->" + paramInt1 + " error->" + paramArrayOfInt.getMessage(), paramArrayOfInt);
+          continue;
+        }
+        catch (OutOfMemoryError paramArrayOfInt)
+        {
+          FileUtils.deleteFile(localFile);
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("ApolloResDownloader", 2, "downloadApolloResOrder unZipFile file error resType->" + paramInt1 + " error->" + paramArrayOfInt.getMessage());
+          continue;
+          if (this.jdField_a_of_type_Amdy == null) {
+            continue;
+          }
+          this.jdField_a_of_type_Amdy.onDownLoadFinish(true, paramString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
+          return;
+        }
+        try
+        {
+          new File(paramArrayOfInt).mkdirs();
+          arrayOfInt = amdp.a(paramInt1);
+          j = npo.a(localFile, paramArrayOfInt, new amdr(this, localStringBuilder, paramArrayOfInt));
+          if ((arrayOfInt != null) && (arrayOfInt.length > 0))
+          {
+            int k = arrayOfInt.length;
+            int i = 0;
+            if (i < k)
+            {
+              int m = arrayOfInt[i];
+              amdp.a(this.jdField_a_of_type_Alnr, 2, m);
+              i += 1;
+              continue;
+              paramArrayOfInt = amip.c + "/def/dress/";
+              continue;
+            }
+          }
+          FileUtils.deleteFile(localFile);
+          localStringBuilder.append(", unzipRet: ").append(j);
+          QLog.d("ApolloResDownloader", 1, "downloadApolloResOrder succ roleId: " + this.jdField_a_of_type_Int + ", unzipRoleDress: " + localStringBuilder.toString() + ", uin: " + paramString);
+          if ((this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0))
+          {
+            amdp.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString, this.jdField_a_of_type_Amdy, -1, this.jdField_a_of_type_ArrayOfInt, -1, -1, this.jdField_a_of_type_Boolean);
+            return;
+          }
+        }
+        finally {}
       }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label243:
-      if (!(localamfg.jdField_a_of_type_JavaLangObject instanceof PhoneContact)) {
-        break;
+      if (this.jdField_a_of_type_Amdy != null) {
+        this.jdField_a_of_type_Amdy.onDownLoadFinish(false, paramString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
       }
-      str = ((PhoneContact)localamfg.jdField_a_of_type_JavaLangObject).name;
-      break;
-      label269:
-      bool = this.a.a.a(localamfg.jdField_a_of_type_JavaLangString, str, 0, "-1", "");
-      break label110;
-      label294:
-      paramView.setContentDescription(localamfg.d.getText().toString() + anzj.a(2131703841));
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloResDownloader", 2, "downloadApolloResOrder down load role fail id: " + this.jdField_a_of_type_Int + ", uin:" + paramString);
   }
 }
 

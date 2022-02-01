@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.ark.setting;
 
 import Override;
-import agej;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,7 +9,8 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import aqfk;
+import aoyv;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -23,8 +23,9 @@ public class ArkAppListActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -34,10 +35,10 @@ public class ArkAppListActivity
     super.doOnCreate(paramBundle);
     paramBundle = new LinearLayout(this);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
-    paramBundle.setBackgroundResource(2130838779);
+    paramBundle.setBackgroundResource(2130838892);
     paramBundle.setLayoutParams(localLayoutParams);
     paramBundle.setOrientation(1);
-    paramBundle.setPadding(0, agej.a(20.0F, getResources()), 0, 0);
+    paramBundle.setPadding(0, AIOUtils.dp2px(20.0F, getResources()), 0, 0);
     this.a = paramBundle;
     paramBundle = getIntent().getStringArrayExtra("intent_extra_authority_app_list");
     if ((paramBundle != null) && (paramBundle.length > 0))
@@ -51,14 +52,14 @@ public class ArkAppListActivity
           FormSimpleItem localFormSimpleItem = new FormSimpleItem(this);
           localFormSimpleItem.setLeftText(localLayoutParams);
           localFormSimpleItem.a(true);
-          localFormSimpleItem.setOnClickListener(new aqfk(this, localLayoutParams));
+          localFormSimpleItem.setOnClickListener(new aoyv(this, localLayoutParams));
           this.a.addView(localFormSimpleItem);
         }
         i += 1;
       }
     }
     super.setContentView(this.a);
-    super.setTitle(2131690093);
+    super.setTitle(2131690112);
     return true;
   }
   

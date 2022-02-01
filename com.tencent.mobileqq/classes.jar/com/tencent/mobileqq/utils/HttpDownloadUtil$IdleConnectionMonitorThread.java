@@ -47,13 +47,13 @@ public class HttpDownloadUtil$IdleConnectionMonitorThread
     //   34: getstatic 46	java/util/concurrent/TimeUnit:SECONDS	Ljava/util/concurrent/TimeUnit;
     //   37: invokeinterface 50 4 0
     //   42: invokestatic 56	java/lang/System:currentTimeMillis	()J
-    //   45: getstatic 61	com/tencent/mobileqq/utils/HttpDownloadUtil:a	J
+    //   45: getstatic 62	com/tencent/mobileqq/utils/HttpDownloadUtil:lastUseTime	J
     //   48: lsub
-    //   49: ldc2_w 62
+    //   49: ldc2_w 63
     //   52: lcmp
     //   53: ifle -53 -> 0
     //   56: aload_0
-    //   57: invokevirtual 65	com/tencent/mobileqq/utils/HttpDownloadUtil$IdleConnectionMonitorThread:a	()V
+    //   57: invokevirtual 66	com/tencent/mobileqq/utils/HttpDownloadUtil$IdleConnectionMonitorThread:a	()V
     //   60: goto -60 -> 0
     //   63: astore_1
     //   64: aload_0
@@ -61,11 +61,11 @@ public class HttpDownloadUtil$IdleConnectionMonitorThread
     //   66: aload_1
     //   67: athrow
     //   68: astore_1
-    //   69: ldc 67
+    //   69: ldc 68
     //   71: iconst_1
-    //   72: ldc 69
+    //   72: ldc 70
     //   74: aload_1
-    //   75: invokestatic 75	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   75: invokestatic 76	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   78: goto -36 -> 42
     //   81: astore_1
     //   82: goto -66 -> 16

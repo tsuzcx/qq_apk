@@ -1,114 +1,141 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.Context;
+import android.opengl.Matrix;
+import android.os.Build;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import msf.msgsvc.msg_svc.PbSendMsgResp;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class aoce
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private FromServiceMsg jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-  private ToServiceMsg jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
-  private String jdField_a_of_type_JavaLangString;
-  private msg_svc.PbSendMsgResp jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp;
-  private boolean jdField_a_of_type_Boolean;
-  private Object[] jdField_a_of_type_ArrayOfJavaLangObject;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
+  public static boolean a;
+  public static final float[] a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private aocg jdField_a_of_type_Aocg;
+  private apag jdField_a_of_type_Apag;
+  private apak jdField_a_of_type_Apak = new aocf(this);
+  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
   private boolean jdField_b_of_type_Boolean;
+  private float[] jdField_b_of_type_ArrayOfFloat = new float[16];
+  private float[] c;
+  private float[] d = new float[4];
   
-  public aoce(MessageHandler paramMessageHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, String paramString, msg_svc.PbSendMsgResp paramPbSendMsgResp, int paramInt1, long paramLong1, long paramLong2, boolean paramBoolean, Object[] paramArrayOfObject, int paramInt2)
+  static
   {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp = paramPbSendMsgResp;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramArrayOfObject;
-    this.jdField_b_of_type_Int = paramInt2;
+    jdField_a_of_type_ArrayOfFloat = new float[16];
+    Matrix.setIdentityM(jdField_a_of_type_ArrayOfFloat, 0);
+    jdField_a_of_type_Boolean = true;
   }
   
-  public aoce a()
+  public static boolean a()
   {
-    Object localObject;
-    if ((this.jdField_a_of_type_Int == 10) || (this.jdField_a_of_type_Int == 34))
+    boolean bool2 = false;
+    String str = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.ARCfg.name());
+    boolean bool1;
+    if (!TextUtils.isEmpty(str))
     {
-      this.jdField_b_of_type_Boolean = true;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_b_of_type_Long);
-      if (MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, (MessageRecord)localObject, this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.removeMessageObserver(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg)))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_a_of_type_Long);
-        this.jdField_a_of_type_Boolean = true;
-        return this;
+      String[] arrayOfString = new String[1];
+      arrayOfString[0] = "";
+      int i = DeviceProfileManager.a(str, arrayOfString, new amqt());
+      if (i >= 1) {
+        if (Integer.valueOf(arrayOfString[0]).intValue() == 1)
+        {
+          bool1 = true;
+          QLog.i("AREngine_SensorTrackManager", 1, "arCfg = " + str + ", size = " + i + ", params[0] = " + arrayOfString[0] + ", isUseGameRotationVector = " + bool1);
+        }
       }
-    }
-    long l2;
-    long l1;
-    if (this.jdField_a_of_type_Int == 299)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "<---handleSendTroopMessageRespPB MessageRecord send fail uinseq = " + this.jdField_b_of_type_Long + ", msgseq = " + this.jdField_a_of_type_Long);
-      }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_b_of_type_Long);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.a().a(this.jdField_a_of_type_JavaLangString, 1, this.jdField_b_of_type_Long);
-      if (localObject == null) {
-        break label401;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "<---handleSendTroopMessageRespPB MessageRecord send fail, MessageRecord=" + ((MessageRecord)localObject).toString());
-      }
-      l2 = ((MessageRecord)localObject).shmsgseq;
-      l1 = ((MessageRecord)localObject).time;
     }
     for (;;)
     {
-      localObject = new MessageForUniteGrayTip();
-      avpd localavpd = new avpd(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangObject[6].toString(), 1, -5040, 131082, l1);
-      ((MessageForUniteGrayTip)localObject).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app, localavpd);
-      ((MessageForUniteGrayTip)localObject).isread = true;
-      ((MessageForUniteGrayTip)localObject).shmsgseq = l2;
-      avpe.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app, (MessageForUniteGrayTip)localObject);
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp);
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ArrayOfJavaLangObject, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getUin(), this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(3002, false, this.jdField_a_of_type_ArrayOfJavaLangObject);
-      this.jdField_a_of_type_Boolean = false;
-      return this;
-      label401:
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "<---handleSendTroopMessageRespPB MessageRecord send fail, uniseq not match !");
-      }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.a().b(this.jdField_a_of_type_JavaLangString, 1);
-      if ((localObject != null) && (!((List)localObject).isEmpty()) && (((MessageRecord)((List)localObject).get(((List)localObject).size() - 1)).shmsgseq > 0L))
+      if (!bool1)
       {
-        l2 = ((MessageRecord)((List)localObject).get(((List)localObject).size() - 1)).shmsgseq;
-        l1 = ((MessageRecord)((List)localObject).get(((List)localObject).size() - 1)).time;
+        bool1 = bool2;
+        if (!b()) {}
       }
       else
       {
-        l1 = bcrg.a();
-        l2 = 0L;
+        bool1 = true;
       }
+      return bool1;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break;
+      bool1 = false;
     }
   }
   
-  public boolean a()
+  private static boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return (Build.MODEL.equalsIgnoreCase("HRY-AL00T")) || (Build.MODEL.equalsIgnoreCase("SM-G955F")) || (Build.MODEL.equalsIgnoreCase("AQM-AL00")) || (Build.MODEL.equalsIgnoreCase("MI CC9 Pro"));
   }
   
-  public boolean b()
+  public void a()
   {
-    return this.jdField_b_of_type_Boolean;
+    a(true);
+  }
+  
+  public void a(Context paramContext, aocg paramaocg)
+  {
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Aocg = paramaocg;
+    b();
+    jdField_a_of_type_Boolean = this.jdField_a_of_type_Apag.b();
+    aoji.a().c(System.currentTimeMillis() - l);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_b_of_type_Boolean != paramBoolean)
+    {
+      this.jdField_b_of_type_Boolean = paramBoolean;
+      QLog.d("SensorTrackManager", 2, "enableSensor enabled: " + paramBoolean);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Apag == null) {
+      if (!a()) {
+        break label57;
+      }
+    }
+    label57:
+    for (this.jdField_a_of_type_Apag = new apag(this.jdField_a_of_type_AndroidContentContext, 5);; this.jdField_a_of_type_Apag = new apag(this.jdField_a_of_type_AndroidContentContext, 4))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SensorTrackManager", 2, "startupSensor");
+      }
+      this.jdField_a_of_type_Apag.a(this.jdField_a_of_type_Apak, 1);
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SensorTrackManager", 2, "stopSensor");
+    }
+    if (this.jdField_a_of_type_Apag != null)
+    {
+      this.jdField_a_of_type_Apag.a();
+      this.jdField_a_of_type_Apag = null;
+    }
+  }
+  
+  public void d()
+  {
+    a(false);
+  }
+  
+  public void e()
+  {
+    c();
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_b_of_type_Boolean = false;
+    this.c = null;
   }
 }
 

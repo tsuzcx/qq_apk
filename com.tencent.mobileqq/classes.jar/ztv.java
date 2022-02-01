@@ -1,65 +1,26 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.view.LayoutInflater;
-import android.view.Window;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.graphics.Color;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ztv
-  extends ReportDialog
+  implements View.OnClickListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boolean jdField_a_of_type_Boolean;
+  public ztv(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public ztv(Context paramContext)
+  public void onClick(View paramView)
   {
-    super(paramContext);
-    super.requestWindowFeature(1);
-    super.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    paramContext = LayoutInflater.from(paramContext).inflate(2131561680, null);
-    super.setCanceledOnTouchOutside(true);
-    super.setContentView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131367771));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131367769));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367801));
-    paramContext = new ScaleAnimation(1.0F, 1.6F, 1.0F, 1.6F, 1, 0.5F, 1, 0.5F);
-    paramContext.setDuration(1000L);
-    paramContext.setRepeatCount(-1);
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.8F, 0.0F);
-    localAlphaAnimation.setDuration(1000L);
-    localAlphaAnimation.setRepeatCount(-1);
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    localAnimationSet.addAnimation(localAlphaAnimation);
-    localAnimationSet.addAnimation(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localAnimationSet);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnTouchListener(new ztw(this));
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(300L);
-    localAlphaAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localAlphaAnimation);
-    localAlphaAnimation.setAnimationListener(new ztx(this));
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    TroopGiftPanel.b(this.a).setSelected(false);
+    this.a.a.a(-1);
+    TroopGiftPanel.a(this.a).setSelected(true);
+    ((TextView)TroopGiftPanel.b(this.a).findViewById(2131379646)).setTextColor(Color.parseColor("#ff878b99"));
+    TroopGiftPanel.b(this.a).findViewById(2131380792).setVisibility(8);
+    ((TextView)TroopGiftPanel.a(this.a).findViewById(2131379645)).setTextColor(Color.parseColor("#ffff5b84"));
+    TroopGiftPanel.a(this.a).findViewById(2131380798).setVisibility(0);
+    this.a.onTabSelected(this.a.h, TroopGiftPanel.d);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,30 +1,49 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.format.DateUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-class scf
-  extends sbh
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowHelper$Companion;", "", "()V", "DEFAULT_STEENGTHEN_ENABLE", "", "DEFAULT_STRENGTHEN_COUNT_LIMIT", "DEFAULT_STRENGTHEN_INTERVAL", "", "KEY_STRESS_COUNT", "", "KEY_STRESS_TIME", "SP_STRESS_COUNT", "TAG", "nowStressCount", "getNowStressCount", "()I", "setNowStressCount", "(I)V", "showStrengthenInterval", "getShowStrengthenInterval", "()F", "setShowStrengthenInterval", "(F)V", "stressCountLimit", "getStressCountLimit", "setStressCountLimit", "stressEnable", "", "getStressEnable", "()Z", "setStressEnable", "(Z)V", "cleanLastDayStressCount", "", "readStressCount", "saveStressCount", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class scf
 {
-  scf(sbi paramsbi) {}
-  
-  public int a()
+  private final void a()
   {
-    return 19;
+    Object localObject = BaseApplicationImpl.getContext().getSharedPreferences("SP_STRESS_FOLLOW_LAYOUT_COUNT", 0);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getC…NT, Context.MODE_PRIVATE)");
+    localObject = ((SharedPreferences)localObject).edit();
+    scf localscf = (scf)this;
+    localscf.a(localscf.a() + 1);
+    ((SharedPreferences.Editor)localObject).putInt("KEY_STRESS_FOLLOW_LAYOUT_COUNT", localscf.a()).putLong("KEY_STRESS_TIME", System.currentTimeMillis()).apply();
   }
   
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  private final void b()
   {
-    sbi.a(this.a, false);
-    sbi.a(this.a, sbi.a(this.a), paramActionSheetItem.uin, paramActionSheetItem.uinType, paramActionSheetItem.label);
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("SP_STRESS_FOLLOW_LAYOUT_COUNT", 0);
+    Intrinsics.checkExpressionValueIsNotNull(localSharedPreferences, "BaseApplicationImpl.getC…NT, Context.MODE_PRIVATE)");
+    ((scf)this).a(localSharedPreferences.getInt("KEY_STRESS_FOLLOW_LAYOUT_COUNT", 0));
+    ((scf)this).c();
   }
   
-  public int b()
+  private final void c()
   {
-    return 0;
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("SP_STRESS_FOLLOW_LAYOUT_COUNT", 0);
+    Intrinsics.checkExpressionValueIsNotNull(localSharedPreferences, "BaseApplicationImpl.getC…NT, Context.MODE_PRIVATE)");
+    if (!DateUtils.isToday(localSharedPreferences.getLong("KEY_STRESS_TIME", 0L))) {
+      ((scf)this).a(0);
+    }
   }
   
-  public int c()
+  public final int a()
   {
-    return 1;
+    return scd.a();
+  }
+  
+  public final void a(int paramInt)
+  {
+    scd.a(paramInt);
   }
 }
 

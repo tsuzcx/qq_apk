@@ -1,17 +1,6 @@
-import java.util.Comparator;
-
-class lsm
-  implements Comparator<lsh>
+public abstract interface lsm
 {
-  lsm(lsk paramlsk) {}
-  
-  public int a(lsh paramlsh1, lsh paramlsh2)
-  {
-    if (paramlsh1.d() >= paramlsh2.d()) {
-      return 1;
-    }
-    return -1;
-  }
+  public abstract void a();
 }
 
 

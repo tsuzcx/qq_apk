@@ -1,21 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.5;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.1;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.2;
+import com.tencent.mobileqq.filemanager.settings.FMSettings.5.1.1.3;
 
 public class aszb
-  implements View.OnClickListener
+  implements asyx
 {
-  public aszb(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment, ExtendFriendProfileEditFragment.ExtendFriendInfo paramExtendFriendInfo) {}
+  aszb(asza paramasza) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.getActivity() != null) {
-      atcb.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.g, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.h, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.d, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment$ExtendFriendInfo.c);
+    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.3(this));
+    asyy.a(this.a.a.this$0);
+    aszr.a("0X8005BE2");
+    synchronized (BaseApplicationImpl.getContext())
+    {
+      this.a.a.this$0.b = false;
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
+  
+  public void a(int paramInt)
+  {
+    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.2(this));
+    asyy.a(this.a.a.this$0);
+    synchronized (BaseApplicationImpl.getContext())
+    {
+      this.a.a.this$0.b = false;
+      return;
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    this.a.a.a.runOnUiThread(new FMSettings.5.1.1.1(this, paramLong1, paramLong2));
+  }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 

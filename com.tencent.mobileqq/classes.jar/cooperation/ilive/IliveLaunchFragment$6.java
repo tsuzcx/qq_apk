@@ -20,9 +20,9 @@ class IliveLaunchFragment$6
       return;
     }
     IliveLaunchFragment.access$500(this.this$0, (Activity)localObject);
-    localObject = LayoutInflater.from((Context)localObject).inflate(2131562005, null);
-    IliveLaunchFragment.access$602(this.this$0, (TextView)((View)localObject).findViewById(2131380213));
-    IliveLaunchFragment.access$702(this.this$0, (ProgressBar)((View)localObject).findViewById(2131372350));
+    localObject = LayoutInflater.from((Context)localObject).inflate(2131561882, null);
+    IliveLaunchFragment.access$602(this.this$0, (TextView)((View)localObject).findViewById(2131379941));
+    IliveLaunchFragment.access$702(this.this$0, (ProgressBar)((View)localObject).findViewById(2131372316));
     IliveLaunchFragment.access$800(this.this$0).addView((View)localObject);
   }
 }

@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet;
 
 import Override;
+import amtj;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -15,14 +16,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import anzj;
-import bdmc;
-import bhgp;
+import bfqa;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.activity.qwallet.widget.ImmersionBar;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qwallet.plugin.QWalletHelper;
 import org.json.JSONException;
@@ -50,7 +50,7 @@ public class QrcodeHbGuiderActivity
   
   private void c()
   {
-    new ImmersionBar(this, -468046, findViewById(2131377964));
+    new ImmersionBar(this, -468046, findViewById(2131377733));
     d();
     e();
     f();
@@ -58,17 +58,17 @@ public class QrcodeHbGuiderActivity
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131373795));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369088));
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(anzj.a(2131710072));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369042));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369073));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(anzj.a(2131710071));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131373717));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369115));
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(amtj.a(2131710304));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369068));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369099));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(amtj.a(2131710303));
   }
   
   private void e()
   {
-    this.jdField_a_of_type_JavaLangString = this.app.c();
+    this.jdField_a_of_type_JavaLangString = this.app.getCurrentUin();
     this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra("app_info");
     this.jdField_a_of_type_Long = getIntent().getLongExtra("vacreport_key_seq", 0L);
     if (this.jdField_a_of_type_Long == 0L) {
@@ -142,7 +142,7 @@ public class QrcodeHbGuiderActivity
     {
       localStringBuilder.append(getPackageManager().getPackageInfo(getPackageName(), 0).versionName);
       localStringBuilder.append("|");
-      localStringBuilder.append(bhgp.a());
+      localStringBuilder.append(bfqa.a());
       localStringBuilder.append("|");
       localStringBuilder.append(this.jdField_a_of_type_Int);
       localStringBuilder.append(".");
@@ -151,7 +151,7 @@ public class QrcodeHbGuiderActivity
       }
       localStringBuilder.append("|");
       VACDReportUtil.a(this.jdField_a_of_type_Long, null, paramString, "op_type=" + this.jdField_c_of_type_JavaLangString, 0, "");
-      bdmc.a(BaseApplication.getContext()).b(this.app, localStringBuilder.toString());
+      StatisticCollector.getInstance(BaseApplication.getContext()).reportToPCliOper(this.app, localStringBuilder.toString());
       return;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
@@ -217,8 +217,9 @@ public class QrcodeHbGuiderActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -226,7 +227,7 @@ public class QrcodeHbGuiderActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    setContentView(2131560535);
+    setContentView(2131560545);
     c();
     a("face2face.index.show");
     return true;

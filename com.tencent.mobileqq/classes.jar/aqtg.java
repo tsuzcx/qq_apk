@@ -1,23 +1,12 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aqtg
-  implements Animator.AnimatorListener
+  implements DialogInterface.OnClickListener
 {
-  aqtg(aqsy paramaqsy) {}
+  aqtg(aqte paramaqte) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (aqsy.a(this.a) != null) {
-      aqsy.a(this.a).b();
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

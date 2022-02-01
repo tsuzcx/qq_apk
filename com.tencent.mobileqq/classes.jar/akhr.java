@@ -1,23 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akhr
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  akhr(akha paramakha, String paramString) {}
+  akhr(akho paramakho) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent(this.jdField_a_of_type_Akha.a, SearchContactsActivity.class);
-    paramDialogInterface.putExtra("from_key", 0);
-    paramDialogInterface.putExtra("fromType", 13);
-    paramDialogInterface.putExtra("start_search_key", this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.putExtra("auto_add_and_prohibit_auto_search", true);
-    this.jdField_a_of_type_Akha.a.startActivity(paramDialogInterface);
+    Intent localIntent = new Intent(akho.a(this.a), NotifyPushSettingActivity.class);
+    akho.a(this.a).startActivity(localIntent);
+    bcef.b(akho.a(this.a).app, "CliOper", "", "", "0X8009EBB", "0X8009EBB", 0, 1, "", "", "", "");
+    bcef.a(akho.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 2, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

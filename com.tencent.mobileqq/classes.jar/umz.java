@@ -1,44 +1,69 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.TMG.utils.QLog;
 
 public class umz
+  extends aptq<umy>
 {
-  public static umw a(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
+  @NonNull
+  public umy a(int paramInt)
   {
-    if (paramWSRedDotPushMsg == null) {}
-    do
+    return new umy();
+  }
+  
+  @Nullable
+  public umy a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
     {
-      return null;
-      int i;
-      if (paramWSRedDotPushMsg.mStrategyInfo != null) {
-        i = paramWSRedDotPushMsg.mStrategyInfo.getType();
+      uya.d("WeSeeConfigProcessor", "onParsed:" + paramArrayOfaptx[0].a);
+      umy localumy = new umy();
+      localumy.a(paramArrayOfaptx[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WeSeeConfigProcessor", 0, "onParsed " + paramArrayOfaptx[0].a);
       }
-      while (paramInt == 2) {
-        if (i == 1)
-        {
-          return new una(paramWSRedDotPushMsg);
-          i = 0;
-        }
-        else if (i == 5)
-        {
-          return new umx(paramWSRedDotPushMsg);
-        }
-      }
-      if (i == 2) {
-        return new unb(paramWSRedDotPushMsg, paramInt, paramIntent);
-      }
-      if (i == 3) {
-        return new unc(paramWSRedDotPushMsg, paramInt, paramIntent);
-      }
-      if (i == 4) {
-        return new umy(paramWSRedDotPushMsg, paramInt);
-      }
-      if (paramInt == 2) {
-        return new una(paramWSRedDotPushMsg);
-      }
-    } while (paramInt != 6);
-    return new unb(paramWSRedDotPushMsg, paramInt, paramIntent);
+      return localumy;
+    }
+    return null;
+  }
+  
+  public void a(umy paramumy)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WeSeeConfigProcessor", 0, "onUpdate " + paramumy);
+    }
+  }
+  
+  public Class<umy> clazz()
+  {
+    return umy.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 447;
   }
 }
 

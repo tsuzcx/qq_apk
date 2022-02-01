@@ -1,24 +1,27 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afdv
-  implements View.OnClickListener
 {
-  public afdv(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  public float a;
+  public int a;
+  public long a;
+  public afdu a;
+  public View a;
+  public boolean a;
+  public float b;
+  public int b;
+  public boolean b;
+  public float c = 0.0F;
+  public float d = 1.0F;
+  public float e = 1.0F;
+  public float f = 1.0F;
   
-  public void onClick(View paramView)
+  public afdv()
   {
-    String str = this.a.getIntent().getStringExtra("uin");
-    if ((str != null) && (str.equals(this.a.app.getCurrentAccountUin())))
-    {
-      ProfileLabelEditorActivity.a(this.a);
-      bdll.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "4", "", "", "");
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 

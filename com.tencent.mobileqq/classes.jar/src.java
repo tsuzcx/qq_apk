@@ -1,15 +1,21 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
-class src
-  implements srh
+public class src
+  implements InvocationHandler
 {
-  src(sqr paramsqr) {}
+  public src(FastWebActivity.1 param1) {}
   
-  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    srt.a(paramProteusItemData.b, paramProteusItemData.a);
+    this.a.this$0.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    FastWebActivity.a(this.a.this$0).setMaskBackGroundDrawable(new ColorDrawable(0));
+    return null;
   }
 }
 

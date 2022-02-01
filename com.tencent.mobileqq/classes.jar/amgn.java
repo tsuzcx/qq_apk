@@ -1,19 +1,10 @@
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import java.util.Comparator;
+import com.tencent.TMG.sdk.AVContext.StartParam;
 
 public class amgn
-  implements Comparator<TroopMemberInfo>
+  extends AVContext.StartParam
 {
-  private amgn(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
-  
-  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
-  {
-    if ((paramTroopMemberInfo1 != null) && (paramTroopMemberInfo1.displayedNamePinyinFirst != null) && (paramTroopMemberInfo2 != null)) {
-      return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
-    }
-    return 0;
-  }
+  public int a;
+  public long a;
 }
 
 

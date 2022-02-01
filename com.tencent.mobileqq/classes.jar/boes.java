@@ -1,13 +1,23 @@
-import java.io.File;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
 
 public class boes
+  extends boev
 {
-  public static final String a = bofe.a + File.separator + "aiscene";
-  public static final String b = a + File.separator + "res";
-  public static final String c = a + File.separator + "res_zip_download";
-  public static final String d = b + File.separator + "AISceneGuide";
-  public static final String e = b + File.separator + "AISceneLoading";
-  public static final String f = b + File.separator + "AutoAISceneAni";
+  public boes(TCProgressBar paramTCProgressBar)
+  {
+    super(paramTCProgressBar);
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    this.a.b.left = this.f;
+    this.a.b.right = (this.f + this.g);
+    this.a.a.setColor(this.a.m);
+    paramCanvas.drawRect(this.a.b, this.a.a);
+    super.a(paramCanvas);
+  }
 }
 
 

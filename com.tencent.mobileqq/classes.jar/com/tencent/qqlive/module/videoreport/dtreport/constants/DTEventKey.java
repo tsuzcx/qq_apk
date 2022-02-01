@@ -12,6 +12,7 @@ public class DTEventKey
   public static final String CLICK = "dt_clck";
   public static final String IMP = "dt_imp";
   public static final String IMP_END = "dt_imp_end";
+  public static final String ORIGIN_VST = "dt_origin_vst";
   public static final String PG_IN = "dt_pgin";
   public static final String PG_OUT = "dt_pgout";
   public static final String VST = "dt_vst";

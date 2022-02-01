@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
-
 public class akdl
-  implements bgrl
 {
-  private long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  boolean b;
   
-  public akdl(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, long paramLong)
+  public akdl(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
   }
 }
 

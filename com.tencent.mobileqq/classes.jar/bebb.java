@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import org.json.JSONObject;
 
 public class bebb
-  extends beay
 {
-  public bebb(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
-  {
-    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
-  }
+  public String a;
+  public String b;
+  public String c;
   
-  public void a(QQAppInterface paramQQAppInterface)
+  public static bebb a(JSONObject paramJSONObject)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
+    if (paramJSONObject != null)
     {
-      this.jdField_a_of_type_Beav.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      this.jdField_a_of_type_Beav.g(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      bebb localbebb = new bebb();
+      localbebb.a = paramJSONObject.optString("apurl");
+      localbebb.c = paramJSONObject.optString("img");
+      localbebb.b = paramJSONObject.optString("rl");
+      return localbebb;
     }
+    return null;
   }
 }
 

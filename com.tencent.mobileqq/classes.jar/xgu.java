@@ -1,37 +1,19 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import java.util.List;
 
-class xgu
-  extends xfr
+public class xgu
 {
-  xgu(xgp paramxgp, StoryVideoItem paramStoryVideoItem)
-  {
-    super(paramStoryVideoItem);
-  }
+  public int a;
+  public List<LikeEntry> a;
+  public boolean a;
+  public int b;
   
-  public boolean b()
+  public xgu(boolean paramBoolean, List<LikeEntry> paramList, int paramInt1, int paramInt2)
   {
-    Object localObject = (String)a("result");
-    try
-    {
-      localObject = new URI((String)localObject);
-      if ("file".equals(((URI)localObject).getScheme()))
-      {
-        localObject = new File((URI)localObject);
-        if (((File)localObject).exists())
-        {
-          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
-          return true;
-        }
-      }
-    }
-    catch (URISyntaxException localURISyntaxException)
-    {
-      yuk.c(this.b, "Error: 评分投票失败", localURISyntaxException);
-    }
-    return false;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 

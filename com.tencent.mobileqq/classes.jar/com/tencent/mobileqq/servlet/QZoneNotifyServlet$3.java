@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.servlet;
 
-import bcvp;
+import bboz;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,7 +11,7 @@ public final class QZoneNotifyServlet$3
   {
     try
     {
-      SosoInterface.a(bcvp.a());
+      SosoInterface.startLocation(bboz.a());
       return;
     }
     catch (Exception localException)
@@ -22,7 +22,7 @@ public final class QZoneNotifyServlet$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneNotifyServlet.3
  * JD-Core Version:    0.7.0.1
  */

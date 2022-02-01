@@ -1,20 +1,12 @@
-import com.tencent.mobileqq.extendfriend.wiget.SignalBombAnimationView;
-import java.io.File;
-import java.util.Comparator;
-
-public class atez
-  implements Comparator<File>
+public abstract interface atez
 {
-  public atez(SignalBombAnimationView paramSignalBombAnimationView) {}
+  public abstract void a(boolean paramBoolean);
   
-  public int a(File paramFile1, File paramFile2)
-  {
-    return paramFile1.getName().compareToIgnoreCase(paramFile2.getName());
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atez
  * JD-Core Version:    0.7.0.1
  */

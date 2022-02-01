@@ -1,25 +1,43 @@
-class ailv
-  implements bgwh
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+
+public class ailv
+  extends RecyclerView.OnScrollListener
 {
-  ailv(ailn paramailn) {}
+  public ailv(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if ((paramBoolean) && (this.a.g.equals(paramString)))
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.a.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 0)
     {
-      this.a.W = true;
-      paramString = (agwy)this.a.a(23);
-      if (paramString != null) {
-        paramString.a(true);
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopSuspiciousFragment.a(this.a).getItemCount())) {
+        TroopSuspiciousFragment.a(this.a);
       }
     }
-    do
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null)
     {
+      if (paramInt == 0) {
+        break label94;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.cancelPendingRequests();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.pause();
+    }
+    label94:
+    while (!this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.isPausing()) {
       return;
-      this.a.W = false;
-      paramString = (agwy)this.a.a(23);
-    } while (paramString == null);
-    paramString.a(false);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.resume();
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 

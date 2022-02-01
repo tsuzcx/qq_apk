@@ -1,41 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
 
 public class arek
 {
-  private boolean a;
-  
-  public static arek a(String paramString)
-  {
-    if (paramString == null) {}
-    do
-    {
-      return null;
-      try
-      {
-        arek localarek = new arek();
-        localarek.a = new JSONObject(paramString).optBoolean("needSeparatePersonWithGroup", false);
-        return localarek;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("GlobalSearchConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
-  }
-  
-  public boolean a()
-  {
-    return this.a;
-  }
-  
-  public String toString()
-  {
-    return "needSeparate:" + this.a;
-  }
+  public double a;
+  public float a = 1.0F;
+  public int a;
+  public Drawable a;
+  public EmojiStickerManager.StickerInfo a;
+  public String a;
+  public boolean a;
+  public int b;
+  public Drawable b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arek
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,34 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class aepq
-  implements aojk
+  implements View.OnClickListener
 {
-  public aepq(FriendProfileCardActivity paramFriendProfileCardActivity, Intent paramIntent) {}
+  public aepq(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void a(Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramObject instanceof String))
+    ProfileActivity.AllInOne localAllInOne;
+    if (((amsw)this.a.app.getManager(51)).b(TroopRequestActivity.a(this.a))) {
+      localAllInOne = new ProfileActivity.AllInOne(TroopRequestActivity.a(this.a), 1);
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
+      bcef.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, this.a.a.msg.group_code.get() + "", "3", "", "");
+      ProfileActivity.b(this.a, localAllInOne);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localAllInOne = new ProfileActivity.AllInOne(TroopRequestActivity.a(this.a), 24);
+      TroopUtils.prepareTroopNotifyData(this.a.a, localAllInOne);
     }
   }
 }

@@ -1,69 +1,44 @@
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.apollo.process.data.CmGameScreenRotate.1;
+
 public class alyq
 {
-  private int jdField_a_of_type_Int;
-  private short[] jdField_a_of_type_ArrayOfShort;
-  private int b;
+  public int a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private ApolloSurfaceView jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView;
+  private CmGameInitParams jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams;
   
-  public alyq(int paramInt)
+  public alyq(ApolloSurfaceView paramApolloSurfaceView, CmGameInitParams paramCmGameInitParams, Activity paramActivity)
   {
-    if (paramInt > 0) {
-      this.jdField_a_of_type_ArrayOfShort = new short[paramInt];
-    }
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView = paramApolloSurfaceView;
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams = paramCmGameInitParams;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public void a()
+  public static int a(int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-  }
-  
-  public void a(short[] paramArrayOfShort, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_ArrayOfShort == null) {}
+    if (paramInt == 1) {}
     do
     {
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int < paramInt2) {
-          break;
-        }
-        System.arraycopy(paramArrayOfShort, paramInt1, this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_Int, paramInt2);
-        this.jdField_a_of_type_Int += paramInt2;
-        if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfShort.length) {
-          this.jdField_a_of_type_Int = 0;
-        }
-        this.b += paramInt2;
-      } while (this.b <= this.jdField_a_of_type_ArrayOfShort.length);
-      this.b = this.jdField_a_of_type_ArrayOfShort.length;
-      return;
-      System.arraycopy(paramArrayOfShort, paramInt1, this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int);
-      System.arraycopy(paramArrayOfShort, this.jdField_a_of_type_ArrayOfShort.length + paramInt1 - this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfShort, 0, paramInt2 - (this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_Int = (paramInt2 - (this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int));
-      if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfShort.length) {
-        this.jdField_a_of_type_Int = 0;
+      return 1;
+      if (paramInt == 3) {
+        return 0;
       }
-      this.b += paramInt2;
-    } while (this.b <= this.jdField_a_of_type_ArrayOfShort.length);
-    this.b = this.jdField_a_of_type_ArrayOfShort.length;
+    } while (paramInt != 2);
+    return 8;
   }
   
-  public short[] a()
+  public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ArrayOfShort == null) || (this.b == 0) || (this.b > this.jdField_a_of_type_ArrayOfShort.length)) {
-      return null;
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(new CmGameScreenRotate.1(this, paramInt));
     }
-    short[] arrayOfShort = new short[this.b];
-    if (this.jdField_a_of_type_Int >= this.b)
-    {
-      System.arraycopy(this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_Int - this.b, arrayOfShort, 0, this.b);
-      return arrayOfShort;
-    }
-    System.arraycopy(this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_ArrayOfShort.length - (this.b - this.jdField_a_of_type_Int), arrayOfShort, 0, this.b - this.jdField_a_of_type_Int);
-    System.arraycopy(this.jdField_a_of_type_ArrayOfShort, 0, arrayOfShort, this.b - this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-    return arrayOfShort;
   }
 }
 

@@ -1,20 +1,22 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
+import android.os.Handler;
+import android.os.Message;
 
 class agsa
-  extends TroopAppShortcutContainer
+  extends Handler
 {
-  agsa(agrz paramagrz, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, SessionInfo paramSessionInfo, String paramString, int paramInt)
-  {
-    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramSessionInfo, paramString, paramInt);
-  }
+  boolean jdField_a_of_type_Boolean = true;
   
-  public void a(boolean paramBoolean)
+  agsa(agrz paramagrz) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a(true);
+    if (paramMessage.what == agrz.b()) {}
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (paramMessage.what != agrz.c()) {}
+    }
   }
 }
 

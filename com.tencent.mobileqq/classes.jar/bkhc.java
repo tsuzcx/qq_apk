@@ -1,42 +1,109 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.qidian.QidianProfileCardActivity;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class bkhc
-  implements bliz
+public class bkhc<K, V>
+  implements Map<K, V>
 {
-  public bkhc(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
+  private final HashMap<K, V> a = new HashMap();
+  private final HashMap<V, K> b = new HashMap();
   
-  public void OnClick(View paramView, int paramInt)
+  public K a(Object paramObject)
   {
-    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 1) {
-      if (paramInt == 0) {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
-      }
+    return this.b.get(paramObject);
+  }
+  
+  public K b(Object paramObject)
+  {
+    paramObject = this.b.remove(paramObject);
+    if (paramObject != null) {
+      this.a.remove(paramObject);
     }
-    for (;;)
+    return paramObject;
+  }
+  
+  public void clear()
+  {
+    this.a.clear();
+    this.b.clear();
+  }
+  
+  public boolean containsKey(Object paramObject)
+  {
+    return this.a.containsKey(paramObject);
+  }
+  
+  public boolean containsValue(Object paramObject)
+  {
+    return this.b.containsKey(paramObject);
+  }
+  
+  public Set<Map.Entry<K, V>> entrySet()
+  {
+    return this.a.entrySet();
+  }
+  
+  public V get(Object paramObject)
+  {
+    return this.a.get(paramObject);
+  }
+  
+  public boolean isEmpty()
+  {
+    return this.a.isEmpty();
+  }
+  
+  public Set<K> keySet()
+  {
+    return this.a.keySet();
+  }
+  
+  public V put(K paramK, V paramV)
+  {
+    if ((paramK == null) || (paramV == null)) {
+      return null;
+    }
+    Object localObject = remove(paramK);
+    b(paramV);
+    this.a.put(paramK, paramV);
+    this.b.put(paramV, paramK);
+    return localObject;
+  }
+  
+  public void putAll(Map<? extends K, ? extends V> paramMap)
+  {
+    paramMap = paramMap.entrySet().iterator();
+    while (paramMap.hasNext())
     {
-      QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity).dismiss();
-      return;
-      if (paramInt == 1)
-      {
-        if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Bkgt.d(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Azxr.a.jdField_a_of_type_JavaLangString)) {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
-        } else {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
-        }
-      }
-      else if (paramInt == 2)
-      {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
-        continue;
-        if (paramInt == 0) {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
-        } else if (paramInt == 1) {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
-        }
+      Object localObject2 = (Map.Entry)paramMap.next();
+      Object localObject1 = ((Map.Entry)localObject2).getKey();
+      localObject2 = ((Map.Entry)localObject2).getValue();
+      if ((localObject1 != null) && (localObject2 != null)) {
+        put(localObject1, localObject2);
       }
     }
+  }
+  
+  public V remove(Object paramObject)
+  {
+    paramObject = this.a.remove(paramObject);
+    if (paramObject != null) {
+      this.b.remove(paramObject);
+    }
+    return paramObject;
+  }
+  
+  public int size()
+  {
+    return this.a.size();
+  }
+  
+  public Collection<V> values()
+  {
+    return this.a.values();
   }
 }
 

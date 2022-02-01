@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import antf;
-import bgrx;
+import bfbl;
+import com.tencent.mobileqq.app.AppConstants;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,7 +18,7 @@ public final class TroopFileTransferManager$1
       try
       {
         Thread.sleep(3000L);
-        File localFile = new File(antf.bs);
+        File localFile = new File(AppConstants.SDCARD_FILE_SAVE_TROOPTMP_PATH);
         if (!localFile.isDirectory()) {
           return;
         }
@@ -28,7 +28,7 @@ public final class TroopFileTransferManager$1
         localInterruptedException.printStackTrace();
         return;
       }
-      arrayOfFile = localInterruptedException.listFiles(new bgrx(this));
+      arrayOfFile = localInterruptedException.listFiles(new bfbl(this));
     } while ((arrayOfFile == null) || (arrayOfFile.length < 100));
     Object localObject = new ArrayList(arrayOfFile.length);
     int j = arrayOfFile.length;

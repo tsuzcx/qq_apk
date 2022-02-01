@@ -4,8 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import binb;
-import bnpz;
+import bgtj;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
@@ -13,6 +12,7 @@ import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
 import com.tencent.mobileqq.webview.webso.WebSoService;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
+import cooperation.qzone.webviewwrapper.QzoneWebViewBaseBuilder;
 
 public class PayForFriendView
   extends TouchWebView
@@ -47,7 +47,7 @@ public class PayForFriendView
     this.mWebView.getSettings().setCacheMode(2);
     PayForFriendView.1 local1 = new PayForFriendView.1(this, getContext(), this.mActivity, null, this.mActivity.getAppInterface(), false);
     local1.setWebView(this.mWebView);
-    new binb(local1).a(null, MiniAppUtils.getAppInterface(), null);
+    new bgtj(local1).a(null, MiniAppUtils.getAppInterface(), null);
   }
   
   public String getAppIconUrl()

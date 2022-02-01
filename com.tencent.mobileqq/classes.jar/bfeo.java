@@ -1,39 +1,34 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.concurrent.atomic.AtomicInteger;
-import tencent.im.msg.im_msg_body.RichText;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.map.lib.basemap.data.GeoPoint;
+import com.tencent.mobileqq.troop.widget.AutoLocationMapView;
+import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.model.BitmapDescriptorFactory;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
 
-class bfeo
-  implements azrg
+public class bfeo
+  extends Handler
 {
-  bfeo(bfen parambfen) {}
+  public bfeo(AutoLocationMapView paramAutoLocationMapView) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void handleMessage(Message paramMessage)
   {
-    return null;
-  }
-  
-  public void a(azrh paramazrh) {}
-  
-  public void b(azrh paramazrh)
-  {
-    if (paramazrh.jdField_b_of_type_Int == 0)
+    GeoPoint localGeoPoint = (GeoPoint)paramMessage.obj;
+    this.a.getMap().clear();
+    if (paramMessage.arg1 == 0)
     {
-      this.a.a.c = paramazrh.jdField_b_of_type_JavaLangString;
-      this.a.a.a = paramazrh.c;
-      bfen.a(this.a);
-      bfen.a(this.a, new ErrorMessage());
-      return;
+      this.a.getMap().moveCamera(CameraUpdateFactory.newLatLng(new LatLng(localGeoPoint.getLatitudeE6() / 1000000.0D, localGeoPoint.getLongitudeE6() / 1000000.0D)));
+      this.a.getMap().moveCamera(CameraUpdateFactory.zoomTo(this.a.getMap().getMaxZoomLevel()));
+      Bitmap localBitmap = bfpx.a(this.a.getContext().getResources(), 2130842507);
+      avgm.a(this.a.getMap().addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(localBitmap)).snippet("").position(new LatLng(localGeoPoint.getLatitudeE6() / 1000000.0D, localGeoPoint.getLongitudeE6() / 1000000.0D))));
     }
-    if ((paramazrh.jdField_b_of_type_Int == bext.a(940010)) && (bfen.a(this.a).getAndIncrement() < 2))
-    {
-      bfen.b(this.a);
-      yuk.d("tribe_publish_TribeVideoFileObject", "retry load file");
-      return;
+    if (this.a.a != null) {
+      this.a.a.a(paramMessage.arg1, localGeoPoint);
     }
-    bfen.c(this.a);
-    paramazrh = new ErrorMessage(paramazrh.jdField_b_of_type_Int, paramazrh.a);
-    bfen.a(this.a, paramazrh);
   }
 }
 

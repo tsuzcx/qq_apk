@@ -1,46 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.DownloadBarInfo;
 
-class oen
-  extends biht
+public final class oen
+  implements Parcelable.Creator<VideoInfo.DownloadBarInfo>
 {
-  private WeakReference<oek> a;
-  
-  oen(oek paramoek)
+  public VideoInfo.DownloadBarInfo a(Parcel paramParcel)
   {
-    this.a = new WeakReference(paramoek);
+    return new VideoInfo.DownloadBarInfo(paramParcel);
   }
   
-  public void onDone(bihu parambihu)
+  public VideoInfo.DownloadBarInfo[] a(int paramInt)
   {
-    super.onDone(parambihu);
-    if (this.a != null)
-    {
-      Object localObject = (oek)this.a.get();
-      if (localObject != null)
-      {
-        QQAppInterface localQQAppInterface = ((oek)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        if ((parambihu.a == 0) && (localQQAppInterface != null))
-        {
-          localQQAppInterface.getPreferences().edit().putLong("last_modified_time", parambihu.i).commit();
-          ((oek)localObject).b();
-        }
-        if (QLog.isColorLevel())
-        {
-          localObject = new File(oek.jdField_a_of_type_JavaLangString);
-          long l = 0L;
-          if (((File)localObject).exists()) {
-            l = ((File)localObject).lastModified();
-          }
-          QLog.d("EcShopAssistantManager", 2, "download onDone status=" + parambihu.a() + ",errCode=" + parambihu.a + ",httpCode=" + parambihu.f + ",local lastModify=" + l + ",server lastModify=" + parambihu.i);
-        }
-      }
-    }
+    return new VideoInfo.DownloadBarInfo[paramInt];
   }
 }
 

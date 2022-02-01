@@ -1,22 +1,22 @@
 package com.tencent.mqp.app.sec;
 
-import bjim;
-import bjin;
+import bhoa;
+import bhob;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 
 public class MQPSensitiveMsgUtil$1$1
   implements Runnable
 {
-  public MQPSensitiveMsgUtil$1$1(bjin parambjin) {}
+  public MQPSensitiveMsgUtil$1$1(bhob parambhob) {}
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.this$0.b, this.this$0.c, this.this$0.jdField_a_of_type_Long);
+    MessageRecord localMessageRecord = this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.getMsgItemByUniseq(this.this$0.b, this.this$0.c, this.this$0.jdField_a_of_type_Long);
     if (localMessageRecord == null) {
       return;
     }
-    bjim.a(localMessageRecord);
+    bhoa.a(localMessageRecord);
     try
     {
       localMessageRecord.saveExtInfoToExtStr("sens_msg_confirmed", "1");
@@ -25,8 +25,8 @@ public class MQPSensitiveMsgUtil$1$1
       localMessageRecord.removeExtInfoToExtStr("sens_msg_need_mask");
       localMessageRecord.removeExtInfoToExtStr("sens_msg_attr");
       localMessageRecord.removeExtInfoToExtStr("sens_msg_has_not_confirmed_msg");
-      this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.this$0.b, this.this$0.c, this.this$0.jdField_a_of_type_Long, "extStr", localMessageRecord.extStr);
-      this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(localMessageRecord);
+      this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.updateMsgFieldByUniseq(this.this$0.b, this.this$0.c, this.this$0.jdField_a_of_type_Long, "extStr", localMessageRecord.extStr);
+      this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.setChangeAndNotify(localMessageRecord);
       return;
     }
     catch (Exception localException)

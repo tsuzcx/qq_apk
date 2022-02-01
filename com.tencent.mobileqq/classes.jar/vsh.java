@@ -1,24 +1,60 @@
-import android.content.Context;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyBaseLikeView;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeFreeView;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeMoreView;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikePayView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqLikeFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class vsh
+  extends vsz
 {
-  static QCirclePolyBaseLikeView a(Context paramContext, int paramInt1, int paramInt2)
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  int b = -1;
+  
+  public vsh(String paramString, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    paramInt1 |= paramInt2;
-    switch (paramInt2)
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+  }
+  
+  public String a()
+  {
+    return vse.b;
+  }
+  
+  public vta a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspLikeFeed localRspLikeFeed = new qqstory_service.RspLikeFeed();
+    try
     {
-    default: 
-      return new vsi(paramContext, paramInt1);
-    case 1: 
-      return new QCirclePolyLikeFreeView(paramContext, paramInt1);
-    case 2: 
-      return new QCirclePolyLikePayView(paramContext, paramInt1);
+      localRspLikeFeed.mergeFrom(paramArrayOfByte);
+      return new vsi(localRspLikeFeed);
     }
-    return new QCirclePolyLikeMoreView(paramContext, paramInt1);
+    catch (Exception paramArrayOfByte)
+    {
+      xvv.d("Q.qqstory:FeedLikeDataProvider", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqLikeFeed localReqLikeFeed = new qqstory_service.ReqLikeFeed();
+    localReqLikeFeed.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    PBUInt32Field localPBUInt32Field = localReqLikeFeed.operation;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 2)
+    {
+      localPBUInt32Field.set(i);
+      localReqLikeFeed.source.set(this.jdField_a_of_type_Int);
+      if (this.b != -1) {
+        localReqLikeFeed.type.set(this.b);
+      }
+      return localReqLikeFeed.toByteArray();
+    }
   }
 }
 

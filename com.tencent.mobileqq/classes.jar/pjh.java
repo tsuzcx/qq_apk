@@ -1,13 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
 
-public class pjh
-  implements pks
+class pjh
+  implements View.OnClickListener
 {
-  public pjh(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  pjh(pjg parampjg) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    ReadInJoySelfFragment.c(this.a);
+    int i = ((pji)paramView.getTag()).getAdapterPosition() - pjg.a(this.a).c();
+    int j = this.a.getItemViewType(i);
+    ArticleInfo localArticleInfo = (ArticleInfo)pjg.a(this.a, i);
+    if (localArticleInfo == null) {
+      QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onItemClick onClick articleInfo is null.");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onItemClick, position = ", Integer.valueOf(i), ", itemViewType = ", Integer.valueOf(j) });
+      this.a.a(i, paramView);
+      localArticleInfo.invalidateProteusTemplateBean();
+      pay.a = localArticleInfo;
+      pkm.a().a(localArticleInfo.mArticleID, System.currentTimeMillis());
+      this.a.notifyItemChanged(i);
+      pay.b(pjg.a(this.a), localArticleInfo, (int)localArticleInfo.mChannelID);
+    }
   }
 }
 

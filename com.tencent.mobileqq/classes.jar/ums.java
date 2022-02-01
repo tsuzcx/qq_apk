@@ -1,19 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushPreloadModel;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public final class ums
-  implements Parcelable.Creator<WSPushPreloadModel>
+public class ums
 {
-  public WSPushPreloadModel a(Parcel paramParcel)
-  {
-    return new WSPushPreloadModel(paramParcel);
-  }
-  
-  public WSPushPreloadModel[] a(int paramInt)
-  {
-    return new WSPushPreloadModel[paramInt];
-  }
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public LinearLayout b;
+  public TextView b;
+  public TextView c;
 }
 
 

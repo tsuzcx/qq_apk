@@ -1,151 +1,46 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.ReadInJoyDynamicChannelBaseFragment;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Set;
 
 public class pdm
-  extends pde<DynamicChannelDataModel>
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  public int a(DynamicChannelDataModel paramDynamicChannelDataModel)
-  {
-    if (paramDynamicChannelDataModel == null) {
-      return b;
-    }
-    paramDynamicChannelDataModel = (Integer)this.jdField_a_of_type_JavaUtilMap.get(paramDynamicChannelDataModel.styleID);
-    if (paramDynamicChannelDataModel == null)
-    {
-      QLog.d("DynamicItemViewHelperCompatCGI", 2, "getType, type is null");
-      return b;
-    }
-    if ((paramDynamicChannelDataModel.intValue() < b) || (paramDynamicChannelDataModel.intValue() >= this.d))
-    {
-      QLog.d("DynamicItemViewHelperCompatCGI", 2, "getType, type is out of range");
-      return b;
-    }
-    return paramDynamicChannelDataModel.intValue();
-  }
+  public static String a = "ViolaPicDetailConfigHandler";
   
-  protected TemplateBean a(DynamicChannelDataModel paramDynamicChannelDataModel)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (paramDynamicChannelDataModel == null)
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    Map localMap = pbt.a(paramString);
+    Object localObject = localMap.keySet();
+    try
     {
-      QLog.d("DynamicItemViewHelperCompatCGI", 1, "getTemplateBean, data is null.");
-      return null;
-    }
-    QLog.d("DynamicItemViewHelperCompatCGI", 2, new Object[] { "styleID = ", paramDynamicChannelDataModel.styleID, ", channelID = ", Integer.valueOf(paramDynamicChannelDataModel.channelID) });
-    if ((paramDynamicChannelDataModel.mTemplateBean != null) && (!((suz)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getTemplateFactory()).a(paramDynamicChannelDataModel.mTemplateBean))) {
-      return paramDynamicChannelDataModel.mTemplateBean;
-    }
-    JSONObject localJSONObject;
-    TemplateBean localTemplateBean;
-    if (!TextUtils.isEmpty(paramDynamicChannelDataModel.proteusData))
-    {
-      localJSONObject = pdg.a(paramDynamicChannelDataModel.proteusData);
-      localTemplateBean = pdg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localJSONObject, ReadInJoyDynamicChannelBaseFragment.a(paramDynamicChannelDataModel.channelID));
-      paramDynamicChannelDataModel.mTemplateBean = localTemplateBean;
-      paramDynamicChannelDataModel = localTemplateBean;
-      if (localTemplateBean != null)
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        paramDynamicChannelDataModel = localTemplateBean;
-        if (localTemplateBean.getViewBean() != null)
-        {
-          paramDynamicChannelDataModel = localTemplateBean;
-          if (localJSONObject != null)
-          {
-            paramDynamicChannelDataModel = localTemplateBean;
-            if (!localJSONObject.has("report_feeds_type")) {}
-          }
+        String str1 = (String)((Iterator)localObject).next();
+        String str2 = (String)localMap.get(str1);
+        if (TextUtils.equals(str1, "viola_pic_detail_switch")) {
+          bkwm.c(Integer.parseInt(str2));
         }
       }
+      return true;
     }
-    for (;;)
+    catch (Throwable localThrowable)
     {
-      try
-      {
-        localTemplateBean.getViewBean().putDynamicValue("report_feeds_type", localJSONObject.getString("report_feeds_type"));
-        paramDynamicChannelDataModel = localTemplateBean;
-      }
-      catch (JSONException paramDynamicChannelDataModel)
-      {
-        QLog.d("DynamicItemViewHelperCompatCGI", 1, new Object[] { "getTemplateBean exception, ", paramDynamicChannelDataModel.toString() });
-        paramDynamicChannelDataModel = localTemplateBean;
-        continue;
-      }
-      return paramDynamicChannelDataModel;
-      paramDynamicChannelDataModel = null;
+      QLog.e(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString + " , error= " + localThrowable.getMessage());
     }
   }
   
-  public void a(ProteusItemView paramProteusItemView, int paramInt1, DynamicChannelDataModel paramDynamicChannelDataModel, VafContext paramVafContext, int paramInt2)
+  public void onWipeConfig(int paramInt)
   {
-    blqm.a("bindData");
-    if ((paramProteusItemView == null) || (paramProteusItemView.a() == null))
-    {
-      blqm.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("DynamicItemViewHelperCompatCGI", 2, new Object[] { "bindData, adapterViewType = ", Integer.valueOf(paramInt1) });
-      }
-      if (paramProteusItemView != null) {
-        paramProteusItemView.setVisibility(8);
-      }
-      return;
-    }
-    if (paramInt1 == b)
-    {
-      paramProteusItemView.setVisibility(8);
-      return;
-    }
-    QLog.d("DynamicItemViewHelperCompatCGI", 1, new Object[] { "bindData, adapterViewType = ", Integer.valueOf(paramInt1), ", data = ", paramDynamicChannelDataModel });
-    Object localObject = paramProteusItemView.a();
-    TemplateBean localTemplateBean = a(paramDynamicChannelDataModel);
-    paramDynamicChannelDataModel = (DynamicChannelDataModel)localObject;
-    if (localObject != null)
-    {
-      paramDynamicChannelDataModel = (DynamicChannelDataModel)localObject;
-      if (localTemplateBean != null)
-      {
-        paramDynamicChannelDataModel = (DynamicChannelDataModel)localObject;
-        if (!localTemplateBean.equals(localObject))
-        {
-          paramDynamicChannelDataModel = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean);
-          if (paramDynamicChannelDataModel != null)
-          {
-            paramDynamicChannelDataModel.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841693));
-            paramProteusItemView.d();
-            paramProteusItemView.a(paramDynamicChannelDataModel);
-          }
-          paramDynamicChannelDataModel = null;
-        }
-      }
-    }
-    localObject = paramProteusItemView.a();
-    paramProteusItemView.setTemplateBean(localTemplateBean);
-    if (localTemplateBean != null) {
-      oyj.a((Container)localObject, paramDynamicChannelDataModel, localTemplateBean);
-    }
-    oyj.a((Container)localObject, paramVafContext, localTemplateBean);
-    blqm.a();
-  }
-  
-  public void a(VafContext paramVafContext, int paramInt)
-  {
-    super.a(paramVafContext, paramInt);
-  }
-  
-  public boolean a(DynamicChannelDataModel paramDynamicChannelDataModel)
-  {
-    return (paramDynamicChannelDataModel != null) && (!TextUtils.isEmpty(paramDynamicChannelDataModel.styleID));
+    super.onWipeConfig(paramInt);
+    bkwm.c(0);
   }
 }
 

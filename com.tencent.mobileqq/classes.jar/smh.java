@@ -1,29 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.BubblePopupWindow;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
 
-public class smh
-  implements View.OnClickListener
+final class smh
+  implements DialogInterface.OnClickListener
 {
-  public smh(ReadinjoyTabbar paramReadinjoyTabbar) {}
+  smh(Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((ReadinjoyTabbar.a(this.a) != null) && (ReadinjoyTabbar.a(this.a).b())) {}
-    try
+    if (paramInt == 1)
     {
-      ReadinjoyTabbar.a(this.a).a(3, 257, null, true);
-      ReadinjoyTabbar.a(this.a).b();
-      label49:
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      bkwm.d(1);
+      bkwm.a(true);
+      okj.a(this.a, 9);
     }
-    catch (Exception localException)
+    for (;;)
     {
-      break label49;
+      if ((this.a instanceof Activity)) {
+        ((Activity)this.a).finish();
+      }
+      return;
+      paramDialogInterface = new Intent(this.a, SplashActivity.class);
+      paramDialogInterface.putExtra("fragment_id", 1);
+      paramDialogInterface.putExtra("open_kandian_tab_fragment", true);
+      paramDialogInterface.putExtra("arg_channel_cover_id", 0);
+      paramDialogInterface.setFlags(335544320);
+      this.a.startActivity(paramDialogInterface);
     }
   }
 }

@@ -1,25 +1,14 @@
-import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import com.tencent.mobileqq.app.TroopManager;
 
 public class ancz
-  implements TVK_SDKMgr.InstallListener
 {
-  public ancz(CmGameAppInterface paramCmGameAppInterface) {}
+  public long a;
+  public String a;
   
-  public void onInstallProgress(float paramFloat)
+  public ancz(TroopManager paramTroopManager, String paramString, long paramLong)
   {
-    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstallProgress] v:" + paramFloat);
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledFailed], i:" + paramInt);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledSuccessed]");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

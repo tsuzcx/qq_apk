@@ -1,25 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.agent.datamodel.Friend;
+import com.tencent.widget.DynamicGridView;
 
-public final class bjpy
-  implements Parcelable.Creator<Friend>
+public class bjpy
+  implements bjpz
 {
-  public Friend a(Parcel paramParcel)
+  private int jdField_a_of_type_Int;
+  private int b;
+  
+  public bjpy(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
   {
-    Friend localFriend = new Friend();
-    localFriend.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localFriend.b = paramParcel.readString();
-    localFriend.c = paramParcel.readString();
-    localFriend.d = paramParcel.readString();
-    localFriend.jdField_a_of_type_Int = paramParcel.readInt();
-    localFriend.e = paramParcel.readString();
-    return localFriend;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public Friend[] a(int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    return new Friend[paramInt];
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.jdField_a_of_type_Int);
+    DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.b);
   }
 }
 

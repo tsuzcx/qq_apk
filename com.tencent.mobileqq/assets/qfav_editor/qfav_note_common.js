@@ -280,9 +280,6 @@ function initAudioEvents() {
         var duration = audioTag.getAttribute('duration');
         var progress = getAudioProgress(audioTag);
         progress = progress * duration;
-        if(isPlaying(playbtns[0])) {
-             playAudio(fid, fileName);
-        }
     }
 
     function move(event) {

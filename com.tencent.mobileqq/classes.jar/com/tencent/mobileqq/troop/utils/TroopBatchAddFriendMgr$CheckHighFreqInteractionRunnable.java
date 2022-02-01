@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.utils;
 
-import aoip;
-import bbbv;
+import anca;
+import azwi;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
@@ -49,17 +49,17 @@ public class TroopBatchAddFriendMgr$CheckHighFreqInteractionRunnable
     do
     {
       return;
-      String str = ((TroopChatPie)localObject).a.jdField_a_of_type_JavaLangString;
-      int i = ((TroopChatPie)localObject).a.jdField_a_of_type_Int;
+      String str = ((TroopChatPie)localObject).sessionInfo.curFriendUin;
+      int i = ((TroopChatPie)localObject).sessionInfo.curType;
       l1 = ((TroopManager)localQQAppInterface.getManager(52)).a().i * 60;
       long l2 = NetConnInfoCenter.getServerTime();
-      localObject = localQQAppInterface.a().a(str, i, ((TroopChatPie)localObject).f, 250, String.format("time>=%d and (extLong & 2)=%d", new Object[] { Long.valueOf(l2 - l1), Integer.valueOf(0) }));
+      localObject = localQQAppInterface.getMessageFacade().queryMessageByTimeOrSeq(str, i, ((TroopChatPie)localObject).b, 250, String.format("time>=%d and (extLong & 2)=%d", new Object[] { Long.valueOf(l2 - l1), Integer.valueOf(0) }));
       ArrayList localArrayList = TroopBatchAddFriendMgr.a((List)localObject, localQQAppInterface);
       if (QLog.isColorLevel()) {
         QLog.d("CheckHighFreqInteractionRunnable", 2, String.format("checkHighFreqInteractionUinTask msgSize=%d uins = ", new Object[] { Integer.valueOf(((List)localObject).size()), Arrays.toString(localArrayList.toArray()) }));
       }
       if ((localArrayList.size() > 0) && (!this.jdField_a_of_type_Boolean)) {
-        ((aoip)localQQAppInterface.a(20)).a().a(str, localArrayList, 3);
+        ((anca)localQQAppInterface.getBusinessHandler(20)).a().a(str, localArrayList, 3);
       }
     } while ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null) || (this.b.get() == null));
     ThreadManager.getSubThreadHandler().postDelayed(this, 1000L * l1);

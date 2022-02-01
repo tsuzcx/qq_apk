@@ -1,218 +1,152 @@
-import SWEET_NEW_BASE.sweet_req_comm;
-import SWEET_NEW_BASE.sweet_rsp_comm;
-import SWEET_NEW_ICON.lighting_sweet_key_rsp;
-import SWEET_NEW_ICON.sweet_upgrade_key_notify_rsp;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
+import android.content.Intent;
+import android.os.Message;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity.CoverTransProcessorHandler.1;
+import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity.CoverTransProcessorHandler.2;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import mqq.util.WeakReference;
 
 public class apcb
-  implements BusinessObserver
+  extends TransProcessorHandler
 {
-  private static volatile apcb jdField_a_of_type_Apcb;
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private volatile boolean jdField_a_of_type_Boolean;
-  private volatile boolean b;
+  WeakReference<QQAppInterface> a;
+  WeakReference<SelectCoverActivity> b;
   
-  public static apcb a()
+  public apcb(QQAppInterface paramQQAppInterface, SelectCoverActivity paramSelectCoverActivity)
   {
-    if (jdField_a_of_type_Apcb == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Apcb == null) {
-        jdField_a_of_type_Apcb = new apcb();
-      }
-      return jdField_a_of_type_Apcb;
-    }
+    this.a = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramSelectCoverActivity);
   }
   
-  private void a(boolean paramBoolean, Bundle paramBundle)
+  public void handleMessage(Message paramMessage)
   {
-    paramBundle = (sweet_upgrade_key_notify_rsp)paramBundle.getSerializable("rsp_data");
-    if ((paramBundle == null) || (!paramBoolean) || (paramBundle.req_comm == null))
-    {
-      QLog.i("QzoneLoverService", 1, "onGetLoverCheckData succed(false)");
-      c();
-    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    SelectCoverActivity localSelectCoverActivity = (SelectCoverActivity)this.b.get();
+    if ((localQQAppInterface == null) || (localSelectCoverActivity == null)) {}
     Object localObject;
-    long l;
+    label298:
     do
     {
-      do
+      return;
+      localObject = (FileMsg)paramMessage.obj;
+      switch (paramMessage.what)
       {
+      case 1004: 
+      default: 
         return;
-        if ((paramBundle.rsp_comm == null) || (paramBundle.rsp_comm.retcode != 0))
+      case 1003: 
+        if (((FileMsg)localObject).fileType == 48)
         {
-          localObject = new StringBuilder().append("onGetLoverCheckData succed(false), ret code: ");
-          if (paramBundle.rsp_comm == null) {}
-          for (paramBundle = "null";; paramBundle = String.valueOf(paramBundle.rsp_comm.retcode))
+          paramMessage = ((NearbyPeoplePhotoUploadProcessor)((FileMsg)localObject).processor).mPhotoUrl;
+          if (QLog.isColorLevel()) {
+            QLog.i("SelectCoverActivity", 2, "mPhotoUploadHandler.handleMessage(), static avatar upload success. photoId = " + paramMessage);
+          }
+          paramMessage = (amov)localQQAppInterface.getBusinessHandler(2);
+          if (paramMessage != null) {
+            paramMessage.a(true, localQQAppInterface.getCurrentAccountUin(), 0);
+          }
+          bfrj.a(null);
+          if (((Integer)awka.a(localQQAppInterface.getAccount(), "qq_avatar_type", Integer.valueOf(-1))).intValue() != 1) {
+            awka.a(localQQAppInterface.getAccount(), "qq_avatar_type", Integer.valueOf(1));
+          }
+          if (localSelectCoverActivity.jdField_d_of_type_Int != 3)
           {
-            QLog.i("QzoneLoverService", 1, paramBundle);
-            c();
+            int i = localSelectCoverActivity.f;
+            localObject = localSelectCoverActivity.c;
+            String str = localSelectCoverActivity.jdField_d_of_type_JavaLangString;
+            if (localSelectCoverActivity.jdField_a_of_type_Boolean)
+            {
+              paramMessage = "1";
+              bcef.b(localQQAppInterface, "dc00898", "", "", "0X800711D", "0X800711D", 0, 0, String.valueOf(i), (String)localObject, str, paramMessage);
+            }
+          }
+          else
+          {
+            if (!SelectCoverActivity.a(localSelectCoverActivity)) {
+              break label298;
+            }
+            paramMessage = new Intent();
+            paramMessage.putExtra("key_photo_file_path", SelectCoverActivity.a(localSelectCoverActivity));
+            localSelectCoverActivity.setResult(-1, paramMessage);
+          }
+          for (;;)
+          {
+            localSelectCoverActivity.finish();
             return;
+            paramMessage = "0";
+            break;
+            if (localSelectCoverActivity.jdField_d_of_type_Int == 3)
+            {
+              paramMessage = new Intent(localSelectCoverActivity, AvatarPendantActivity.class);
+              localObject = localSelectCoverActivity.getIntent();
+              paramMessage.putExtra("fromThirdApp", true);
+              paramMessage.putExtra("pkg_name", ((Intent)localObject).getStringExtra("pkg_name"));
+              paramMessage.putExtra("app_name", ((Intent)localObject).getStringExtra("app_name"));
+              localObject = ((Intent)localObject).getStringExtra("share_id");
+              paramMessage.putExtra("share_id", (String)localObject);
+              bcef.b(localQQAppInterface, "dc00898", "", "", "0X8009DFA", "0X8009DFA", 0, 0, (String)localObject, "", "", "");
+              paramMessage.putExtra("AllInOne", new ProfileActivity.AllInOne(localQQAppInterface.getCurrentAccountUin(), 0));
+              localSelectCoverActivity.startActivity(paramMessage);
+            }
+            else
+            {
+              localSelectCoverActivity.setResult(-1);
+            }
           }
         }
-        if (paramBundle.req_comm.uin != BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin())
+        if (((FileMsg)localObject).fileType == 36)
         {
-          QLog.i("QzoneLoverService", 1, "onGetLoverCheckData succed(" + paramBoolean + "), uin: " + paramBundle.req_comm.uin + ", loginUin: " + BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+          paramMessage = ((NearbyPeoplePhotoUploadProcessor)((FileMsg)localObject).processor).mVideoId;
+          if (QLog.isColorLevel()) {
+            QLog.i("SelectCoverActivity", 2, "mPhotoUploadHandler.handleMessage(), big video upload success. videoId = " + paramMessage);
+          }
+          ThreadManager.post(new SelectCoverActivity.CoverTransProcessorHandler.1(this, localSelectCoverActivity, localQQAppInterface), 8, null, true);
           return;
         }
-        b();
-        l = paramBundle.req_comm.loveuin;
-      } while (l <= 10000L);
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-    } while (!(localObject instanceof QQAppInterface));
-    ((FriendListHandler)((QQAppInterface)localObject).a(1)).a(String.valueOf(l));
-    QLog.i("QzoneLoverService", 1, "onGetLoverCheckData succed(" + paramBoolean + "), uin:" + paramBundle.req_comm.uin);
-  }
-  
-  private void b()
-  {
-    BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0).edit().putBoolean("checkQzoneLoverSend2", true).apply();
-  }
-  
-  private void b(boolean paramBoolean, Bundle paramBundle)
-  {
-    this.b = false;
-    paramBundle = (lighting_sweet_key_rsp)paramBundle.getSerializable("rsp_data");
-    if ((paramBundle == null) || (!paramBoolean))
-    {
-      QLog.i("QzoneLoverService", 1, "onGetLoverLightingData succed(false)");
-      e();
-      return;
-    }
-    if ((paramBundle.rsp_comm == null) || (paramBundle.rsp_comm.retcode != 0))
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("onGetLoverLightingData succed(false), ret code: ");
-      if (paramBundle.rsp_comm == null) {}
-      for (paramBundle = "null";; paramBundle = String.valueOf(paramBundle.rsp_comm.retcode))
-      {
-        QLog.i("QzoneLoverService", 1, paramBundle);
-        e();
-        return;
-      }
-    }
-    d();
-    QLog.i("QzoneLoverService", 1, "onGetLoverLightingData succed(" + paramBoolean + ")");
-  }
-  
-  private boolean b()
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
-    if (System.currentTimeMillis() / 1000L / 3600L / 24L != localSharedPreferences.getLong("lightingQzoneLoverLastFailTime", 0L)) {}
-    while (localSharedPreferences.getInt("lightingQzoneLoverFailCount", 0) < QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneLoverMaxFailCount", 10)) {
-      return false;
-    }
-    return true;
-  }
-  
-  private void c()
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
-    long l = System.currentTimeMillis() / 1000L / 3600L / 24L;
-    if (l != localSharedPreferences.getLong("checkQzoneLoverLastFailTime", 0L)) {
-      localSharedPreferences.edit().putInt("checkQzoneLoverFailCount", 1);
-    }
-    for (;;)
-    {
-      localSharedPreferences.edit().putLong("checkQzoneLoverLastFailTime", l);
-      localSharedPreferences.edit().apply();
-      return;
-      int i = localSharedPreferences.getInt("checkQzoneLoverFailCount", 0);
-      localSharedPreferences.edit().putInt("checkQzoneLoverFailCount", i + 1);
-    }
-  }
-  
-  private void d()
-  {
-    long l = System.currentTimeMillis() / 1000L / 3600L / 24L;
-    BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0).edit().putLong("lightingQzoneLoverTime", l).apply();
-  }
-  
-  private void e()
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
-    long l = System.currentTimeMillis() / 1000L / 3600L / 24L;
-    if (l != localSharedPreferences.getLong("lightingQzoneLoverLastFailTime", 0L)) {
-      localSharedPreferences.edit().putInt("lightingQzoneLoverFailCount", 1);
-    }
-    for (;;)
-    {
-      localSharedPreferences.edit().putLong("lightingQzoneLoverLastFailTime", l);
-      localSharedPreferences.edit().apply();
-      return;
-      int i = localSharedPreferences.getInt("lightingQzoneLoverFailCount", 0);
-      localSharedPreferences.edit().putInt("lightingQzoneLoverFailCount", i + 1);
-    }
-  }
-  
-  public void a()
-  {
-    if (this.b) {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneLoverService", 1, "startQzoneLoverLightingRequest sending...");
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (a()) {
-          break;
+        if (((FileMsg)localObject).fileType == 37)
+        {
+          paramMessage = ((NearbyPeoplePhotoUploadProcessor)((FileMsg)localObject).processor).mVideoId;
+          if (QLog.isColorLevel()) {
+            QLog.i("SelectCoverActivity", 2, "mPhotoUploadHandler.handleMessage(), medium video upload success. videoId = " + paramMessage);
+          }
+          ThreadManager.post(new SelectCoverActivity.CoverTransProcessorHandler.2(this, localSelectCoverActivity, localQQAppInterface), 8, null, true);
+          return;
         }
-      } while (!QLog.isColorLevel());
-      QLog.i("QzoneLoverService", 1, "startQzoneLoverLightingRequest false");
-      return;
-      if (!b()) {
         break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("QzoneLoverService", 1, "startQzoneLoverLightingRequest fail count hit max count!!!");
-    return;
-    this.b = true;
-    QLog.i("QzoneLoverService", 1, "startQzoneLoverLightingRequest true");
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getContext(), apca.class);
-    apca.a(localNewIntent, BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      BaseApplicationImpl.getApplication().getRuntime().registObserver(this);
-      this.jdField_a_of_type_Boolean = true;
-    }
-    BaseApplicationImpl.getApplication().getRuntime().startServlet(localNewIntent);
-  }
-  
-  public boolean a()
-  {
-    boolean bool = false;
-    long l1 = BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0).getLong("lightingQzoneLoverTime", 0L);
-    long l2 = System.currentTimeMillis() / 1000L / 3600L / 24L;
+    } while (((FileMsg)localObject).fileType != 38);
+    paramMessage = ((NearbyPeoplePhotoUploadProcessor)((FileMsg)localObject).processor).mVideoId;
     if (QLog.isColorLevel()) {
-      QLog.i("QzoneLoverService", 2, "startQzoneLoverLightingRequest curDay(" + l2 + "), lastDay(" + l1 + ")");
+      QLog.i("SelectCoverActivity", 2, "mPhotoUploadHandler.handleMessage(), small video upload success. videoId = " + paramMessage);
     }
-    if (l2 != l1) {
-      bool = true;
+    apby.a(localQQAppInterface, localSelectCoverActivity.b);
+    bfrj.a(localSelectCoverActivity.b);
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.i("SelectCoverActivity", 2, String.format("mPhotoUploadHandler.handleMessage() upload photo failed, errorCode=%s", new Object[] { Integer.valueOf(((FileMsg)localObject).errorCode) }));
     }
-    return bool;
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramInt == 1) {
-      a(paramBoolean, paramBundle);
+    if (((FileMsg)localObject).errorCode == 1503)
+    {
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131698461, 0).b(localSelectCoverActivity.getTitleBarHeight());
+      if (localSelectCoverActivity.jdField_a_of_type_Bhhw != null) {
+        localSelectCoverActivity.jdField_a_of_type_Bhhw.b();
+      }
     }
-    while (paramInt != 291) {
+    for (;;)
+    {
+      bfrj.a(null);
       return;
+      SelectCoverActivity.a(localSelectCoverActivity, 2, localSelectCoverActivity.getString(2131712819), 0);
     }
-    b(paramBoolean, paramBundle);
   }
 }
 

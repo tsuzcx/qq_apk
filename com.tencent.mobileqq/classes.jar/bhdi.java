@@ -1,316 +1,82 @@
-import android.text.TextUtils;
-import java.util.List;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.widget.DraggableGridView;
+import com.tencent.mobileqq.widget.MeasureGridView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bhdi
+  extends BaseAdapter
 {
-  public static void a(int paramInt1, int paramInt2, String[] paramArrayOfString, bhdh parambhdh)
+  public bhdi(DraggableGridView paramDraggableGridView) {}
+  
+  public int getCount()
   {
-    switch (paramInt1)
-    {
-    default: 
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-      parambhdh.jdField_a_of_type_JavaUtilList.clear();
-      return;
-    case 2: 
-      a(paramArrayOfString, parambhdh);
-      return;
-    case 3: 
-      a(paramInt2, paramArrayOfString, parambhdh);
-      return;
-    case 4: 
-      b(paramInt2, paramArrayOfString, parambhdh);
-      return;
-    case 5: 
-      c(paramInt2, paramArrayOfString, parambhdh);
-      return;
-    case 6: 
-      d(paramInt2, paramArrayOfString, parambhdh);
-      return;
-    case 7: 
-      e(paramInt2, paramArrayOfString, parambhdh);
-      return;
-    case 8: 
-      g(paramInt2, paramArrayOfString, parambhdh);
-      return;
-    case 9: 
-    case 11: 
-      f(paramInt2, paramArrayOfString, parambhdh);
-      return;
+    if (DraggableGridView.a(this.a) != null) {
+      return DraggableGridView.a(this.a).a() * 2;
     }
-    h(paramInt2, paramArrayOfString, parambhdh);
+    return 0;
   }
   
-  public static void a(int paramInt, String[] paramArrayOfString, bhdh parambhdh)
+  public Object getItem(int paramInt)
   {
-    parambhdh.jdField_a_of_type_JavaUtilList.clear();
-    if (paramInt == 2) {
-      if (!TextUtils.isEmpty(paramArrayOfString[1]))
+    if ((DraggableGridView.a(this.a) != null) && (paramInt % 2 == 0)) {
+      return DraggableGridView.a(this.a).a(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt % 2 == 0) {
+      return DraggableGridView.a(this.a).b(paramInt / 2) + 1;
+    }
+    return DraggableGridView.a();
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (getItemViewType(paramInt) == DraggableGridView.a())
+    {
+      if (paramView == null)
       {
-        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 1;
-        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[1];
-        if (!TextUtils.isEmpty(paramArrayOfString[4]))
-        {
-          localbhdg = new bhdg();
-          localbhdg.jdField_a_of_type_Int = 4;
-          localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
-          parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
-        }
-        if (!TextUtils.isEmpty(paramArrayOfString[3]))
-        {
-          localbhdg = new bhdg();
-          localbhdg.jdField_a_of_type_Int = 3;
-          localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-          parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
-        }
+        localObject = (MeasureGridView)LayoutInflater.from(this.a.getContext()).inflate(2131560588, paramViewGroup, false);
+        ((MeasureGridView)localObject).setClickable(false);
+        ((MeasureGridView)localObject).setNumColumns(DraggableGridView.a(this.a));
+        ((MeasureGridView)localObject).setAdapter(new bhdj(this.a, paramInt / 2));
+        paramView = (View)localObject;
+      }
+      for (;;)
+      {
+        ((MeasureGridView)localObject).setTag(Integer.valueOf(paramInt / 2));
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        localObject = (MeasureGridView)paramView;
+        ((bhdj)((MeasureGridView)localObject).getAdapter()).a(paramInt / 2);
       }
     }
-    while (paramInt != 1)
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (TextUtils.isEmpty(paramArrayOfString[4])) {
-            break;
-          }
-          parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 4;
-          parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
-        } while (TextUtils.isEmpty(paramArrayOfString[3]));
-        localbhdg = new bhdg();
-        localbhdg.jdField_a_of_type_Int = 3;
-        localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-        parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
-        return;
-        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
-        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-      } while (TextUtils.isEmpty(paramArrayOfString[3]));
-      bhdg localbhdg = new bhdg();
-      localbhdg.jdField_a_of_type_Int = 3;
-      localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-      parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
-      return;
+    if (paramView == null) {
+      paramView = DraggableGridView.a(this.a).a(LayoutInflater.from(this.a.getContext()), paramInt / 2, paramViewGroup);
     }
-    if (!TextUtils.isEmpty(paramArrayOfString[1]))
+    for (Object localObject = paramView;; localObject = paramView)
     {
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 1;
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[1];
-      return;
-    }
-    if (!TextUtils.isEmpty(paramArrayOfString[6]))
-    {
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 6;
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[6];
-      return;
-    }
-    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
-    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-  }
-  
-  public static void a(String[] paramArrayOfString, bhdh parambhdh)
-  {
-    parambhdh.jdField_a_of_type_JavaUtilList.clear();
-    if (!TextUtils.isEmpty(paramArrayOfString[4]))
-    {
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 4;
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
-      if (!TextUtils.isEmpty(paramArrayOfString[3]))
-      {
-        localbhdg = new bhdg();
-        localbhdg.jdField_a_of_type_Int = 3;
-        localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-        parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
+      if (DraggableGridView.a(this.a) != null) {
+        DraggableGridView.a(this.a).a(paramView, paramInt / 2);
       }
+      paramView = (View)localObject;
+      break;
     }
-    do
-    {
-      return;
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-    } while (TextUtils.isEmpty(paramArrayOfString[3]));
-    bhdg localbhdg = new bhdg();
-    localbhdg.jdField_a_of_type_Int = 3;
-    localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-    parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
   }
   
-  public static void b(int paramInt, String[] paramArrayOfString, bhdh parambhdh)
+  public int getViewTypeCount()
   {
-    if (paramInt == 2) {
-      a(paramArrayOfString, parambhdh);
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    parambhdh.jdField_a_of_type_JavaUtilList.clear();
-    if (!TextUtils.isEmpty(paramArrayOfString[6]))
-    {
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 6;
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[6];
-      return;
-    }
-    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
-    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-  }
-  
-  public static void c(int paramInt, String[] paramArrayOfString, bhdh parambhdh)
-  {
-    parambhdh.jdField_a_of_type_JavaUtilList.clear();
-    if (paramInt == 2) {
-      if (!TextUtils.isEmpty(paramArrayOfString[4]))
-      {
-        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 4;
-        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
-      }
-    }
-    while (paramInt != 1)
-    {
-      do
-      {
-        return;
-        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
-        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-      } while (TextUtils.isEmpty(paramArrayOfString[2]));
-      bhdg localbhdg = new bhdg();
-      localbhdg.jdField_a_of_type_Int = 2;
-      localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[2];
-      parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
-      return;
-    }
-    if (!TextUtils.isEmpty(paramArrayOfString[2]))
-    {
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 2;
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[2];
-      return;
-    }
-    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
-    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-  }
-  
-  public static void d(int paramInt, String[] paramArrayOfString, bhdh parambhdh)
-  {
-    parambhdh.jdField_a_of_type_JavaUtilList.clear();
-    if (paramInt == 2) {
-      if (!TextUtils.isEmpty(paramArrayOfString[4]))
-      {
-        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 4;
-        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[4];
-        if (!TextUtils.isEmpty(paramArrayOfString[3]))
-        {
-          localbhdg = new bhdg();
-          localbhdg.jdField_a_of_type_Int = 3;
-          localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-          parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
-        }
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
-        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-      } while (TextUtils.isEmpty(paramArrayOfString[3]));
-      localbhdg = new bhdg();
-      localbhdg.jdField_a_of_type_Int = 3;
-      localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-      parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
-      return;
-      if (paramInt == 1)
-      {
-        localbhdg = new bhdg();
-        localbhdg.jdField_a_of_type_Int = 0;
-        localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-        parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
-        if (!TextUtils.isEmpty(paramArrayOfString[3]))
-        {
-          parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 3;
-          parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-          return;
-        }
-        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
-        parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-        return;
-      }
-    } while (paramInt != 3);
-    bhdg localbhdg = new bhdg();
-    localbhdg.jdField_a_of_type_Int = 7;
-    localbhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-    parambhdh.jdField_a_of_type_JavaUtilList.add(localbhdg);
-    if (!TextUtils.isEmpty(paramArrayOfString[3]))
-    {
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 3;
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-      return;
-    }
-    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
-    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-  }
-  
-  public static void e(int paramInt, String[] paramArrayOfString, bhdh parambhdh)
-  {
-    if (paramInt == 2) {
-      a(paramArrayOfString, parambhdh);
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
-    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-    parambhdh.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public static void f(int paramInt, String[] paramArrayOfString, bhdh parambhdh)
-  {
-    if (paramInt == 2) {
-      a(paramArrayOfString, parambhdh);
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    parambhdh.jdField_a_of_type_JavaUtilList.clear();
-    if (!TextUtils.isEmpty(paramArrayOfString[5]))
-    {
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 5;
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[5];
-      return;
-    }
-    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
-    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-  }
-  
-  public static void g(int paramInt, String[] paramArrayOfString, bhdh parambhdh)
-  {
-    if (paramInt == 2) {
-      a(paramArrayOfString, parambhdh);
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    parambhdh.jdField_a_of_type_JavaUtilList.clear();
-    if (!TextUtils.isEmpty(paramArrayOfString[3]))
-    {
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 3;
-      parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[3];
-      return;
-    }
-    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
-    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-  }
-  
-  public static void h(int paramInt, String[] paramArrayOfString, bhdh parambhdh)
-  {
-    if (paramInt == 2) {
-      a(paramArrayOfString, parambhdh);
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_Int = 0;
-    parambhdh.jdField_a_of_type_Bhdg.jdField_a_of_type_JavaLangString = paramArrayOfString[0];
-    parambhdh.jdField_a_of_type_JavaUtilList.clear();
+    return DraggableGridView.a(this.a).b() + 1;
   }
 }
 

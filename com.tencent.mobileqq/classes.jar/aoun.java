@@ -1,11 +1,12 @@
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.List;
-
-public abstract interface aoun
+class aoun
+  implements aouu
 {
-  public abstract void a(String paramString, Entity paramEntity);
+  aoun(aoul paramaoul) {}
   
-  public abstract void a(String paramString, List<? extends Entity> paramList);
+  public void a(aoux paramaoux, boolean paramBoolean, byte[] paramArrayOfByte)
+  {
+    aoul.a(this.a, (aouz)paramaoux, paramBoolean, paramArrayOfByte);
+  }
 }
 
 

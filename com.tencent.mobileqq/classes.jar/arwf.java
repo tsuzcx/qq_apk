@@ -1,39 +1,4 @@
-import android.annotation.TargetApi;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.data.ArkBabyqCardInfo;
-import com.tencent.qphone.base.util.QLog;
-
-public class arwf
-  implements ArkViewImplement.LoadCallback
-{
-  public arwf(ArkBabyqCardInfo paramArkBabyqCardInfo, aqcq paramaqcq, aqcm paramaqcm, agyv paramagyv, int paramInt) {}
-  
-  @TargetApi(14)
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
-  {
-    onLoadState(paramInt1);
-  }
-  
-  @TargetApi(14)
-  public void onLoadState(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkBabyqCardInfo", 2, "attachArkView onLoadFinish ArkBabyqCardInfo state=" + paramInt);
-    }
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_Aqcq.b.setVisibility(0);
-      this.jdField_a_of_type_Aqcm.a(this.jdField_a_of_type_Aqcq, this.jdField_a_of_type_ComTencentMobileqqDataArkBabyqCardInfo);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aqcm.a(this.jdField_a_of_type_Agyv, this.jdField_a_of_type_Int);
-      return;
-      this.jdField_a_of_type_Aqcq.b.setVisibility(8);
-    }
-  }
-}
+class arwf {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

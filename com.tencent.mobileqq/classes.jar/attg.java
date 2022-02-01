@@ -1,14 +1,29 @@
-abstract class attg
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.RadioGroup;
+import com.tencent.mobileqq.fragment.SimpleDebugFragment;
+
+public class attg
+  implements bhle
 {
-  attg(atsi paramatsi) {}
+  public attg(SimpleDebugFragment paramSimpleDebugFragment, RadioGroup paramRadioGroup) {}
   
-  abstract void a(String paramString, int paramInt);
-  
-  abstract void a(String paramString, int paramInt, atte paramatte);
+  public void onItemSelect(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    switch (this.jdField_a_of_type_AndroidWidgetRadioGroup.getCheckedRadioButtonId())
+    {
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFragmentSimpleDebugFragment.getActivity().finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     attg
  * JD-Core Version:    0.7.0.1
  */

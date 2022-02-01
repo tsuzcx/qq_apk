@@ -1,18 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.emoticonview.EmotionPreviewInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.HexUtil;
+import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.ReqBody;
 
-public final class asqa
-  implements Parcelable.Creator<EmotionPreviewInfo>
+public class asqa
 {
-  public EmotionPreviewInfo a(Parcel paramParcel)
+  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    return new EmotionPreviewInfo(paramParcel);
+    return "http://" + paramString1 + "/ftn_handler/" + paramString2 + "/?fname=" + HexUtil.String2HexString(paramString3) + paramString5;
   }
   
-  public EmotionPreviewInfo[] a(int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, asqc paramasqc)
   {
-    return new EmotionPreviewInfo[paramInt];
+    if (paramLong < 0L) {
+      return;
+    }
+    oidb_0x6e7.ReqBody localReqBody = new oidb_0x6e7.ReqBody();
+    localReqBody.uint64_group_code.set(paramLong);
+    localReqBody.str_app_src.set("android");
+    localReqBody.str_version.set("8.4.8");
+    nmb.b(paramQQAppInterface, new asqb(paramasqc), localReqBody.toByteArray(), "OidbSvc.oidb_0x6e7", 1767, 0, null);
   }
 }
 

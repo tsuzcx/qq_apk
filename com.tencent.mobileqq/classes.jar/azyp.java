@@ -1,36 +1,16 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import java.util.HashSet;
+import rx.functions.Action0;
 
-public class azyp
-  extends Handler
+class azyp
+  implements Action0
 {
-  public azyp(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  azyp(azym paramazym, azyr paramazyr, HashSet paramHashSet) {}
   
-  public void handleMessage(Message paramMessage)
+  public void call()
   {
-    if (!this.a.a(paramMessage)) {}
-    switch (paramMessage.what)
-    {
-    case 5: 
-    case 8: 
-    default: 
-      return;
-    case 6: 
-      if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String)))
-      {
-        Toast.makeText(this.a.a.getApplicationContext(), (String)paramMessage.obj, 0).show();
-        return;
-      }
-      Toast.makeText(this.a.a.getApplicationContext(), 2131694586, 0).show();
-      return;
-    case 7: 
-      Toast.makeText(this.a.a.getApplicationContext(), 2131694535, 0).show();
-      return;
+    if (this.jdField_a_of_type_Azyr != null) {
+      this.jdField_a_of_type_Azyr.a(this.jdField_a_of_type_JavaUtilHashSet);
     }
-    this.a.d();
   }
 }
 

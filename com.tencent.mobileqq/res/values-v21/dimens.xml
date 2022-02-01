@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="bbo">0.0dip</dimen>
-    <dimen name="bbr">0.0dip</dimen>
-    <dimen name="bbs">12.0dip</dimen>
+    <dimen name="bd6">0.0dip</dimen>
+    <dimen name="bd9">0.0dip</dimen>
+    <dimen name="bd_">12.0dip</dimen>
 </resources>

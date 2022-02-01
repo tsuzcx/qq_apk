@@ -1,21 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import kotlin.Metadata;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.upload.UploadManager;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"}, k=3, mv={1, 1, 16})
-final class atei
-  implements DialogInterface.OnCancelListener
+class atei
+  implements blhi
 {
-  public static final atei a = new atei();
+  atei(atdx paramatdx) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public void a(long paramLong, float paramFloat) {}
+  
+  public void a(String paramString)
   {
-    bdll.b(null, "dc00898", "", "", "0X800B08B", "0X800B08B", 2, 0, "", "", "", "");
+    atdx.b(this.a, false);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    atdx.a(this.a, true);
+    atdx.b(this.a, false);
+    blei.a(atdx.a(this.a).getApplication(), true);
+    WeiyunTransmissionGlobal.getInstance().getUploadManager().loadLibFromPath(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atei
  * JD-Core Version:    0.7.0.1
  */

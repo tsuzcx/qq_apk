@@ -1,12 +1,12 @@
 package cooperation.vip.vipcomponent.util;
 
-import bnxe;
-import bnxh;
+import blck;
+import blcn;
 
 public class ZipResDownloadManager$2
   implements Runnable
 {
-  public ZipResDownloadManager$2(bnxe parambnxe, String paramString1, String paramString2, bnxh parambnxh, int paramInt) {}
+  public ZipResDownloadManager$2(blck paramblck, String paramString1, String paramString2, blcn paramblcn, int paramInt) {}
   
   /* Error */
   public void run()
@@ -20,22 +20,22 @@ public class ZipResDownloadManager$2
     //   5: getfield 19	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   8: astore 4
     //   10: aload 4
-    //   12: invokestatic 39	bnxe:a	(Ljava/lang/String;)Ljava/io/File;
-    //   15: invokestatic 42	bnxe:a	(Ljava/io/File;)Z
+    //   12: invokestatic 39	blck:a	(Ljava/lang/String;)Ljava/io/File;
+    //   15: invokestatic 42	blck:a	(Ljava/io/File;)Z
     //   18: ifeq +346 -> 364
     //   21: aload 4
     //   23: aload_0
     //   24: getfield 21	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:b	Ljava/lang/String;
-    //   27: invokestatic 45	bnxe:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
+    //   27: invokestatic 45	blck:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
     //   30: astore 5
     //   32: aload 5
-    //   34: invokestatic 47	bnxe:b	(Ljava/io/File;)Z
+    //   34: invokestatic 47	blck:b	(Ljava/io/File;)Z
     //   37: ifeq +302 -> 339
     //   40: aload_0
     //   41: monitorenter
     //   42: aload_0
-    //   43: getfield 17	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:this$0	Lbnxe;
-    //   46: invokestatic 50	bnxe:a	(Lbnxe;)Landroid/support/v4/util/LruCache;
+    //   43: getfield 17	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:this$0	Lblck;
+    //   46: invokestatic 50	blck:a	(Lblck;)Landroid/support/v4/util/LruCache;
     //   49: new 52	java/lang/StringBuilder
     //   52: dup
     //   53: invokespecial 53	java/lang/StringBuilder:<init>	()V
@@ -53,22 +53,22 @@ public class ZipResDownloadManager$2
     //   83: aload_1
     //   84: ifnull +213 -> 297
     //   87: aload_0
-    //   88: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Bnxh	Lbnxh;
+    //   88: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Blcn	Lblcn;
     //   91: ifnull +69 -> 160
     //   94: aload_0
-    //   95: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Bnxh	Lbnxh;
+    //   95: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Blcn	Lblcn;
     //   98: astore_2
     //   99: aload_2
     //   100: monitorenter
     //   101: aload_0
-    //   102: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Bnxh	Lbnxh;
+    //   102: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Blcn	Lblcn;
     //   105: astore_3
     //   106: aload_3
     //   107: aload_3
-    //   108: getfield 76	bnxh:mCount	I
+    //   108: getfield 76	blcn:mCount	I
     //   111: iconst_1
     //   112: isub
-    //   113: putfield 76	bnxh:mCount	I
+    //   113: putfield 76	blcn:mCount	I
     //   116: aload_2
     //   117: monitorexit
     //   118: aload_1
@@ -80,18 +80,18 @@ public class ZipResDownloadManager$2
     //   130: invokespecial 85	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/graphics/Bitmap;)V
     //   133: astore_2
     //   134: aload_2
-    //   135: invokestatic 91	bhtq:c	()F
+    //   135: invokestatic 91	com/tencent/mobileqq/utils/ViewUtils:getDensityDpi	()F
     //   138: f2i
     //   139: invokevirtual 94	android/graphics/drawable/BitmapDrawable:setTargetDensity	(I)V
     //   142: aload_0
-    //   143: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Bnxh	Lbnxh;
+    //   143: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Blcn	Lblcn;
     //   146: aload 4
     //   148: aload_0
     //   149: getfield 25	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Int	I
     //   152: aload_0
     //   153: getfield 21	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:b	Ljava/lang/String;
     //   156: aload_2
-    //   157: invokevirtual 98	bnxh:onDownloaded	(Ljava/lang/String;ILjava/lang/String;Landroid/graphics/drawable/Drawable;)V
+    //   157: invokevirtual 98	blcn:onDownloaded	(Ljava/lang/String;ILjava/lang/String;Landroid/graphics/drawable/Drawable;)V
     //   160: aload_0
     //   161: monitorexit
     //   162: return
@@ -110,8 +110,8 @@ public class ZipResDownloadManager$2
     //   180: aload_1
     //   181: ifnull -19 -> 162
     //   184: aload_0
-    //   185: getfield 17	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:this$0	Lbnxe;
-    //   188: invokestatic 50	bnxe:a	(Lbnxe;)Landroid/support/v4/util/LruCache;
+    //   185: getfield 17	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:this$0	Lblck;
+    //   188: invokestatic 50	blck:a	(Lblck;)Landroid/support/v4/util/LruCache;
     //   191: new 52	java/lang/StringBuilder
     //   194: dup
     //   195: invokespecial 53	java/lang/StringBuilder:<init>	()V
@@ -127,22 +127,22 @@ public class ZipResDownloadManager$2
     //   219: invokevirtual 111	android/support/v4/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   222: pop
     //   223: aload_0
-    //   224: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Bnxh	Lbnxh;
+    //   224: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Blcn	Lblcn;
     //   227: ifnull -65 -> 162
     //   230: aload_0
-    //   231: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Bnxh	Lbnxh;
+    //   231: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Blcn	Lblcn;
     //   234: astore_2
     //   235: aload_2
     //   236: monitorenter
     //   237: aload_0
-    //   238: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Bnxh	Lbnxh;
+    //   238: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Blcn	Lblcn;
     //   241: astore_3
     //   242: aload_3
     //   243: aload_3
-    //   244: getfield 76	bnxh:mCount	I
+    //   244: getfield 76	blcn:mCount	I
     //   247: iconst_1
     //   248: isub
-    //   249: putfield 76	bnxh:mCount	I
+    //   249: putfield 76	blcn:mCount	I
     //   252: aload_2
     //   253: monitorexit
     //   254: aload_1
@@ -154,23 +154,23 @@ public class ZipResDownloadManager$2
     //   266: invokespecial 85	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/graphics/Bitmap;)V
     //   269: astore_1
     //   270: aload_1
-    //   271: invokestatic 91	bhtq:c	()F
+    //   271: invokestatic 91	com/tencent/mobileqq/utils/ViewUtils:getDensityDpi	()F
     //   274: f2i
     //   275: invokevirtual 94	android/graphics/drawable/BitmapDrawable:setTargetDensity	(I)V
     //   278: aload_0
-    //   279: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Bnxh	Lbnxh;
+    //   279: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Blcn	Lblcn;
     //   282: aload 4
     //   284: aload_0
     //   285: getfield 25	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Int	I
     //   288: aload_0
     //   289: getfield 21	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:b	Ljava/lang/String;
     //   292: aload_1
-    //   293: invokevirtual 98	bnxh:onDownloaded	(Ljava/lang/String;ILjava/lang/String;Landroid/graphics/drawable/Drawable;)V
+    //   293: invokevirtual 98	blcn:onDownloaded	(Ljava/lang/String;ILjava/lang/String;Landroid/graphics/drawable/Drawable;)V
     //   296: return
     //   297: aload 5
     //   299: invokevirtual 116	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   302: aconst_null
-    //   303: invokestatic 121	bnwv:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   303: invokestatic 121	blcb:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   306: astore_2
     //   307: aload_2
     //   308: astore_1
@@ -196,38 +196,38 @@ public class ZipResDownloadManager$2
     //   337: aload_1
     //   338: athrow
     //   339: aload_0
-    //   340: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Bnxh	Lbnxh;
+    //   340: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Blcn	Lblcn;
     //   343: ifnull -181 -> 162
     //   346: aload_0
-    //   347: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Bnxh	Lbnxh;
+    //   347: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Blcn	Lblcn;
     //   350: aload 4
     //   352: aload_0
     //   353: getfield 25	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Int	I
     //   356: aload_0
     //   357: getfield 21	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:b	Ljava/lang/String;
-    //   360: invokevirtual 126	bnxh:onFailed	(Ljava/lang/String;ILjava/lang/String;)V
+    //   360: invokevirtual 126	blcn:onFailed	(Ljava/lang/String;ILjava/lang/String;)V
     //   363: return
     //   364: aload_0
-    //   365: getfield 17	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:this$0	Lbnxe;
+    //   365: getfield 17	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:this$0	Lblck;
     //   368: aload 4
     //   370: aload_0
     //   371: getfield 25	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Int	I
     //   374: aload_0
     //   375: getfield 21	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:b	Ljava/lang/String;
     //   378: aload_0
-    //   379: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Bnxh	Lbnxh;
-    //   382: invokestatic 129	bnxe:a	(Lbnxe;Ljava/lang/String;ILjava/lang/String;Lbnxh;)Lbnxg;
+    //   379: getfield 23	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:jdField_a_of_type_Blcn	Lblcn;
+    //   382: invokestatic 129	blck:a	(Lblck;Ljava/lang/String;ILjava/lang/String;Lblcn;)Lblcm;
     //   385: astore_1
     //   386: aload_0
-    //   387: getfield 17	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:this$0	Lbnxe;
+    //   387: getfield 17	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:this$0	Lblck;
     //   390: aload 4
     //   392: aload_1
-    //   393: invokestatic 132	bnxe:a	(Lbnxe;Ljava/lang/String;Lbnxg;)Z
+    //   393: invokestatic 132	blck:a	(Lblck;Ljava/lang/String;Lblcm;)Z
     //   396: ifeq -234 -> 162
     //   399: aload_0
-    //   400: getfield 17	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:this$0	Lbnxe;
+    //   400: getfield 17	cooperation/vip/vipcomponent/util/ZipResDownloadManager$2:this$0	Lblck;
     //   403: aload_1
-    //   404: invokestatic 135	bnxe:a	(Lbnxe;Lbnxg;)V
+    //   404: invokestatic 135	blck:a	(Lblck;Lblcm;)V
     //   407: return
     //   408: astore_2
     //   409: goto -92 -> 317
@@ -245,9 +245,9 @@ public class ZipResDownloadManager$2
     //   168	4	2	localOutOfMemoryError1	java.lang.OutOfMemoryError
     //   408	1	2	localException1	java.lang.Exception
     //   412	1	2	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   3	105	3	localbnxh1	bnxh
+    //   3	105	3	localblcn1	blcn
     //   163	4	3	localObject7	Object
-    //   241	3	3	localbnxh2	bnxh
+    //   241	3	3	localblcn2	blcn
     //   312	102	3	localException2	java.lang.Exception
     //   8	383	4	str	String
     //   30	268	5	localFile	java.io.File

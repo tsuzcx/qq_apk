@@ -1,28 +1,17 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class rxh
-  extends PhoneStateListener
+final class rxh
+  extends AnimatorListenerAdapter
 {
-  rxh(rxg paramrxg) {}
+  rxh(View paramView) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.c(true);
-      return;
-    case 2: 
-      this.a.c(true);
-      return;
-    }
-    this.a.c();
+    this.a.setAlpha(1.0F);
+    this.a.setLayerType(0, null);
+    this.a.setVisibility(8);
   }
 }
 

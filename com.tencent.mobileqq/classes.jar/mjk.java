@@ -1,81 +1,46 @@
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class mjk
-  extends mjj
+  implements DialogInterface.OnClickListener
 {
-  protected mjk(Context paramContext, VideoAppInterface paramVideoAppInterface)
+  public mjk(VideoControlUI paramVideoControlUI, long paramLong) {}
+  
+  public void onClick(DialogInterface arg1, int paramInt)
   {
-    super(paramContext, paramVideoAppInterface);
-  }
-  
-  public static int a(int paramInt)
-  {
-    return (paramInt << 16) / 1201 >> 6;
-  }
-  
-  private void a(mep parammep1, mep parammep2, int paramInt)
-  {
-    int i = paramInt >> 1;
-    int j = b(paramInt);
-    parammep1.a(0, 0, 0, 0);
-    parammep1.b(0, 0, i, j);
-    parammep1.d(-15197410);
-    parammep2.a(0, 0, 0, 0);
-    parammep2.b(i, 0, paramInt, j);
-    parammep2.d(-15197410);
-  }
-  
-  public static int b(int paramInt)
-  {
-    return paramInt * 1201 >> 10;
-  }
-  
-  public int a()
-  {
-    return 2;
-  }
-  
-  public void a(lff paramlff, mep[] paramArrayOfmep, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4) {}
-  
-  public void a(mep[] paramArrayOfmep, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
-  
-  public void a(mep[] paramArrayOfmep, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
-  {
-    boolean bool;
-    if (!this.a.getCurrentAccountUin().equals(paramArrayOfmep[1].a(0)))
+    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h()) {}
+    long l;
+    do
     {
-      bool = true;
-      lbj.c("ScreenLayoutDoubleScreen", "layoutCommon: " + paramBoolean + "|" + bool);
-      if (!bool) {
-        break label112;
-      }
-      if (paramBoolean) {
-        break label94;
-      }
-      paramBoolean = true;
-    }
-    label94:
-    label112:
-    for (;;)
-    {
-      if (paramBoolean)
+      do
       {
-        a(paramArrayOfmep[1], paramArrayOfmep[0], paramInt1);
         return;
-        bool = false;
-        break;
-        paramBoolean = false;
-        continue;
+        QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "]");
+        if ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.m) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g != null)) {
+          bcef.b(null, "CliOper", "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g, 0, 0, "", "", this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h, "");
+        }
+        mum.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a());
+      } while ((this.jdField_a_of_type_ComTencentAvUiVideoControlUI.z != 2) && (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.z != 1));
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.b.update(null, new Object[] { Integer.valueOf(106), Long.valueOf(this.jdField_a_of_type_Long) });
+      l = Long.valueOf(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()).longValue();
+      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().a(l, 1);
+    } while (paramInt == -1);
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c.remove(paramInt);
+    synchronized (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d)
+    {
+      paramInt = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().b(l, 1);
+      if (paramInt != -1)
+      {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().d.remove(paramInt);
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvVideoController.a().c();
       }
-      a(paramArrayOfmep[0], paramArrayOfmep[1], paramInt1);
       return;
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
   }
 }
 

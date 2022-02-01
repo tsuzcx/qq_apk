@@ -1,8 +1,24 @@
-import android.graphics.RectF;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface sxc
+class sxc
+  implements zop
 {
-  public abstract void a(RectF paramRectF);
+  sxc(sxb paramsxb, boolean paramBoolean) {}
+  
+  public void callback(Bundle paramBundle)
+  {
+    int j = paramBundle.getInt("readinjoy_to_wx_config");
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("", 2, "config = " + j + ", scene" + i);
+      }
+      this.jdField_a_of_type_Sxb.a(j, i);
+      return;
+    }
+  }
 }
 
 

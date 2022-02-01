@@ -1,39 +1,52 @@
-import android.view.View;
-import java.lang.ref.WeakReference;
+import CliLogSvc.strupbuff;
+import android.os.Bundle;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-class bboa
+public class bboa
+  extends aafe
 {
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<agif> b;
-  WeakReference<bete> c;
+  private static final String[] a = { "CliLogSvc" };
   
-  public bboa(bbnz parambbnz, View paramView, agif paramagif)
+  private boolean b(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramagif);
-  }
-  
-  public agif a()
-  {
-    return (agif)this.b.get();
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public bete a()
-  {
-    if (this.c == null) {
-      return null;
+    paramUniPacket.setServantName("QQService.CliLogSvc.MainServantObj");
+    paramUniPacket.setFuncName("UploadReq");
+    String[] arrayOfString = paramToServiceMsg.extraData.getStringArray("data");
+    strupbuff localstrupbuff = new strupbuff();
+    HashMap localHashMap = new HashMap();
+    ArrayList localArrayList = new ArrayList();
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      localArrayList.add(arrayOfString[i].getBytes());
+      i += 1;
     }
-    return (bete)this.c.get();
+    if (paramToServiceMsg.extraData.containsKey("log_key")) {}
+    for (paramToServiceMsg = paramToServiceMsg.extraData.getString("log_key");; paramToServiceMsg = "PLUG_PB")
+    {
+      localHashMap.put(paramToServiceMsg, localArrayList);
+      localstrupbuff.setLogstring(localHashMap);
+      paramUniPacket.put("Data", localstrupbuff);
+      return true;
+    }
   }
   
-  public void a(bete parambete)
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    this.c = new WeakReference(parambete);
+    if ("CliLogSvc.UploadReq".equals(paramToServiceMsg.getServiceCmd())) {
+      return b(paramToServiceMsg, paramUniPacket);
+    }
+    return false;
+  }
+  
+  public String[] a()
+  {
+    return a;
   }
 }
 

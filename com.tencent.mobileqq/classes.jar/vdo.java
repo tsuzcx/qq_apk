@@ -1,117 +1,201 @@
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.bizparts.QCircleLightInteractListPart.LightInteractListAdapter.1;
-import com.tencent.biz.qqcircle.widgets.QCircleLightInteractPolyLikeWidget;
-import com.tencent.biz.qqcircle.widgets.QCircleLightInteractPushWidget;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StLightInteractInfo;
-import java.util.ArrayList;
-import java.util.List;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stSimpleMetaGdtAdInfo;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.report.GdtAdWsVideoReport.1;
+import com.tencent.mobileqq.pb.PBStringField;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import java.net.URLEncoder;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 
 public class vdo
-  extends vbl<FeedCloudMeta.StLightInteractInfo>
 {
-  private int jdField_a_of_type_Int;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
+  private static String jdField_a_of_type_JavaLangString = "GdtAdWsVideoReport";
+  private static boolean jdField_a_of_type_Boolean;
+  private static boolean b;
   
-  public vdo(vdj paramvdj, Bundle paramBundle)
+  private static String a(stSimpleMetaFeed paramstSimpleMetaFeed, urt paramurt)
   {
-    super(paramBundle);
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
+    String str2 = "";
+    String str1 = str2;
+    if (paramstSimpleMetaFeed != null)
     {
-      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.isComputingLayout()) {
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.post(new QCircleLightInteractListPart.LightInteractListAdapter.1(this));
+      str1 = str2;
+      if (paramstSimpleMetaFeed.gdt_ad_type == 1)
+      {
+        str1 = str2;
+        if (paramstSimpleMetaFeed.gdt_ad_info != null)
+        {
+          paramstSimpleMetaFeed = var.a(paramstSimpleMetaFeed).report_info;
+          str1 = str2;
+          if (paramstSimpleMetaFeed != null)
+          {
+            str1 = str2;
+            if (paramstSimpleMetaFeed.exposure_url != null)
+            {
+              str1 = str2;
+              if (paramurt != null)
+              {
+                str1 = str2;
+                if (paramurt.jdField_a_of_type_Urw != null) {
+                  str1 = paramstSimpleMetaFeed.exposure_url.get();
+                }
+              }
+            }
+          }
+        }
       }
     }
-    else {
+    return str1;
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    try
+    {
+      StringBuffer localStringBuffer = new StringBuffer();
+      if (!TextUtils.isEmpty(paramString1)) {
+        localStringBuffer.append(paramString1);
+      }
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        localStringBuffer.append("&video=");
+        localStringBuffer.append(URLEncoder.encode(paramString2));
+      }
+      paramString1 = localStringBuffer.toString();
+      return paramString1;
+    }
+    catch (Exception paramString1)
+    {
+      uya.a(jdField_a_of_type_JavaLangString, " @getGdtInfo getHttpVideoPlayUrl" + paramString1.toString());
+    }
+    return "";
+  }
+  
+  public static String a(vbh paramvbh)
+  {
+    int j = 1;
+    if (paramvbh == null) {
+      return "";
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("bt", paramvbh.jdField_a_of_type_Long);
+      localJSONObject.put("et", paramvbh.jdField_b_of_type_Long + "");
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (paramvbh.jdField_a_of_type_Boolean)
+      {
+        i = 1;
+        localJSONObject.put("bf", i + "");
+        localStringBuilder = new StringBuilder();
+        if (!paramvbh.jdField_b_of_type_Boolean) {
+          break label214;
+        }
+      }
+      label214:
+      for (int i = j;; i = 0)
+      {
+        localJSONObject.put("ef", i + "");
+        localJSONObject.put("pp", "11");
+        localJSONObject.put("pa", paramvbh.jdField_b_of_type_Int);
+        localJSONObject.put("ft", paramvbh.c);
+        if (paramvbh.d != 0) {
+          localJSONObject.put("ps", paramvbh.d + "");
+        }
+        paramvbh = localJSONObject.toString();
+        return paramvbh;
+        i = 0;
+        break;
+      }
+      return null;
+    }
+    catch (Exception paramvbh)
+    {
+      uya.a(jdField_a_of_type_JavaLangString, " @getGdtInfo createGDTVideoAttachment" + paramvbh.toString());
+    }
+  }
+  
+  public static void a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
+  {
+    vbi localvbi = new vbi();
+    localvbi.a(paramLong1).b(paramBoolean2).b(paramLong2).d(paramInt4).a(paramInt1).a(paramBoolean1).b(paramInt2).c(paramInt3);
+    a(localvbi.a(), paramString);
+  }
+  
+  private static void a(String paramString)
+  {
+    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").postDelayed(new GdtAdWsVideoReport.1(paramString), 0L);
+  }
+  
+  public static void a(vaq paramvaq, urt paramurt)
+  {
+    if ((paramvaq == null) || (paramurt == null) || (paramvaq.a() == null) || (paramurt.jdField_a_of_type_Urx == null) || (paramvaq.a() == null)) {}
+    do
+    {
+      return;
+      paramvaq.a().numbersOfGdtAdPlayed += 1;
+      localObject = paramvaq.a();
+    } while (!(localObject instanceof stSimpleMetaFeed));
+    Object localObject = a((stSimpleMetaFeed)localObject, paramurt);
+    if ((paramvaq.a().numbersOfGdtAdPlayed > 1) && (!TextUtils.isEmpty((CharSequence)localObject)))
+    {
+      a(0L, paramurt.jdField_a_of_type_Urx.c * 1000, false, true, 11, 13, 3, 0, (String)localObject);
       return;
     }
-    notifyDataSetChanged();
+    a(paramurt.jdField_a_of_type_Long, paramurt.jdField_a_of_type_Urx.c * 1000, false, true, 11, 11, 3, 0, (String)localObject);
+    paramvaq.a().numbersOfGdtAdPlayed += 1;
   }
   
-  protected String a()
+  public static void a(vaq paramvaq, urt paramurt, int paramInt)
   {
-    return "LightInteractListAdapter";
-  }
-  
-  public void a(RecyclerView paramRecyclerView)
-  {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-  }
-  
-  public void a(List<FeedCloudMeta.StLightInteractInfo> paramList)
-  {
-    this.mDataList.addAll(this.mDataList.size(), paramList);
-    a();
-  }
-  
-  public void a(List<FeedCloudMeta.StLightInteractInfo> paramList, FeedCloudMeta.StFeed paramStFeed, int paramInt)
-  {
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
-    this.jdField_a_of_type_Int = paramInt;
-    if (paramList != null)
+    if ((paramvaq == null) || (paramurt == null) || ((paramvaq.a() == null) && (paramvaq.a() == null)) || (paramurt.jdField_a_of_type_Urx == null)) {}
+    Object localObject;
+    do
     {
-      this.mDataList.clear();
-      a();
-      this.mDataList.addAll(paramList);
-      a();
-    }
-  }
-  
-  public void clearData()
-  {
-    this.mDataList.clear();
-    a();
-  }
-  
-  public int getItemCount()
-  {
-    return this.mDataList.size();
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    return vdj.a(this.jdField_a_of_type_Vdj);
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 2;
-  }
-  
-  public void loadData(aabu paramaabu) {}
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((this.mDataList.size() > paramInt) && ((paramViewHolder instanceof vdp))) {
-      ((vdp)paramViewHolder).a(this.jdField_a_of_type_Vdj.a, this.mDataList.get(paramInt), paramInt, this.jdField_a_of_type_Int, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, vdj.a(this.jdField_a_of_type_Vdj));
-    }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    if ((paramInt == 2) || (paramInt == 4))
+      do
+      {
+        return;
+        localObject = paramvaq.a();
+      } while (!(localObject instanceof stSimpleMetaFeed));
+      localObject = a((stSimpleMetaFeed)localObject, paramurt);
+    } while ((paramurt.jdField_a_of_type_Urw == null) || (TextUtils.isEmpty((CharSequence)localObject)));
+    long l = paramurt.jdField_a_of_type_Urw.a();
+    int i = paramurt.jdField_a_of_type_Urx.c;
+    if (l == 0L)
     {
-      paramViewGroup = new QCircleLightInteractPolyLikeWidget(getContext(), paramInt);
-      paramViewGroup.setReportBeanAgent(this.jdField_a_of_type_Vdj);
-      return new vdp(this.jdField_a_of_type_Vdj, paramViewGroup);
+      jdField_b_of_type_Boolean = true;
+      if (l != i) {
+        break label152;
+      }
     }
-    paramViewGroup = new QCircleLightInteractPushWidget(getContext(), paramInt);
-    paramViewGroup.setReportBeanAgent(this.jdField_a_of_type_Vdj);
-    return new vdp(this.jdField_a_of_type_Vdj, paramViewGroup);
+    label152:
+    for (jdField_a_of_type_Boolean = true;; jdField_a_of_type_Boolean = false)
+    {
+      if (paramvaq.a().numbersOfGdtAdPlayed <= 1) {
+        break label159;
+      }
+      a(paramurt.jdField_a_of_type_Long, l, jdField_b_of_type_Boolean, jdField_a_of_type_Boolean, 11, 13, paramInt, 0, (String)localObject);
+      return;
+      jdField_b_of_type_Boolean = false;
+      break;
+    }
+    label159:
+    a(paramurt.jdField_a_of_type_Long, l, jdField_b_of_type_Boolean, jdField_a_of_type_Boolean, 11, 11, paramInt, 0, (String)localObject);
   }
   
-  public void onInitBlock(Bundle paramBundle) {}
+  private static void a(vbh paramvbh, String paramString)
+  {
+    if ((paramvbh == null) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    paramvbh = a(paramvbh);
+    paramString = a(paramString, paramvbh);
+    uya.a(jdField_a_of_type_JavaLangString, 2, "reportHttpVideoUrl = " + paramvbh);
+    a(paramString);
+  }
 }
 
 

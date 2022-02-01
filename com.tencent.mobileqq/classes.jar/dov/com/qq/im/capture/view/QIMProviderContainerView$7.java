@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import bpuq;
+import bmxw;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
@@ -25,7 +25,7 @@ class QIMProviderContainerView$7
         if (QIMProviderContainerView.a(this.this$0).a(i))
         {
           int k = ((Integer)((ImageView)this.this$0.a.getChildAt(i)).getTag()).intValue();
-          arrayOfDrawable[i] = this.this$0.getResources().getDrawable(QIMProviderContainerView.a(this.this$0).c(k));
+          arrayOfDrawable[i] = this.this$0.getResources().getDrawable(QIMProviderContainerView.a(this.this$0).b(k));
         }
         i += 1;
       }

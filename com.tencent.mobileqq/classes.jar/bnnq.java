@@ -1,31 +1,35 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import org.json.JSONObject;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
-public class bnnq
-  extends bnnn
+public abstract class bnnq
 {
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public final int a;
+  public final String a;
+  public final int b;
+  public String b;
+  
+  public bnnq(int paramInt1, String paramString, int paramInt2)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ("jumpNuanProfile".equals(paramString3))
-    {
-      bool1 = bool2;
-      if (!"Qzone".equals(paramString2)) {}
-    }
-    try
-    {
-      paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("uin", "");
-      paramString1 = bmtk.a();
-      paramString1.a = this.a.mRuntime.a().getAccount();
-      bmtd.b(this.a.mRuntime.a(), paramString1, paramJsBridgeListener, -1);
-      bool1 = true;
-      return bool1;
-    }
-    catch (Throwable paramJsBridgeListener) {}
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+  }
+  
+  @NonNull
+  public abstract bnnr a(@NonNull Context paramContext, ViewGroup paramViewGroup);
+  
+  @NonNull
+  public abstract Class<? extends bnnr> a();
+  
+  public boolean a()
+  {
     return false;
+  }
+  
+  public String toString()
+  {
+    return "Filter:{" + this.jdField_a_of_type_JavaLangString + "}";
   }
 }
 

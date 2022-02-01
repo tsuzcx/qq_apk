@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
 
-class bhak
-  implements bdyi
+public class bhak
+  implements awla
 {
-  bhak(bhaj parambhaj) {}
+  public bhak(WerewolvesHostInterface paramWerewolvesHostInterface) {}
   
-  public void a()
+  public void g()
   {
-    this.a.a.a.this$0.a();
-    if (this.a.a.a.jdField_a_of_type_Bdyi != null) {
-      this.a.a.a.jdField_a_of_type_Bdyi.a();
-    }
-    this.a.a.a.this$0.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.a.this$0.a, true);
+    this.a.mGameRoomAVController.c();
   }
+  
+  public void h() {}
 }
 
 

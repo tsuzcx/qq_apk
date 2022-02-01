@@ -1,14 +1,30 @@
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.GetAioListCallback;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.List;
+
 public class abyx
+  implements QQMessageFacade.GetAioListCallback
 {
-  public int a;
-  public long a;
-  public String a;
-  
-  public abyx(abyv paramabyv, String paramString, int paramInt, long paramLong)
+  public void onGetAioList(String paramString, int paramInt1, long paramLong, int paramInt2, boolean paramBoolean, List<ChatMessage> paramList, QQMessageFacade paramQQMessageFacade)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
+    if ((paramInt1 != 1001) && (paramInt1 != 10002) && (abwz.a(paramInt1) != 1032)) {
+      return;
+    }
+    if (paramList == null) {}
+    for (paramInt1 = 0;; paramInt1 = paramList.size())
+    {
+      paramInt1 -= 1;
+      while (paramInt1 >= 0)
+      {
+        paramString = (ChatMessage)paramList.get(paramInt1);
+        if ((paramString != null) && (paramString.msgtype == -4011)) {
+          paramList.remove(paramString);
+        }
+        paramInt1 -= 1;
+      }
+      break;
+    }
   }
 }
 

@@ -5,7 +5,7 @@ import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/triton/filesystem/GameDataFileSystem;", "", "getFile", "Ljava/io/File;", "pathInGame", "", "getFilePathInGame", "file", "newTempFile", "Lcom/tencent/mobileqq/triton/filesystem/TemporaryFile;", "hash", "TritonAPI_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/triton/filesystem/GameDataFileSystem;", "", "getFile", "Ljava/io/File;", "pathInGame", "", "getFilePathInGame", "file", "newTempFile", "Lcom/tencent/mobileqq/triton/filesystem/TemporaryFile;", "hash", "suffix", "TritonAPI_release"}, k=1, mv={1, 1, 16})
 public abstract interface GameDataFileSystem
 {
   @NotNull
@@ -15,7 +15,7 @@ public abstract interface GameDataFileSystem
   public abstract String getFilePathInGame(@NotNull File paramFile);
   
   @NotNull
-  public abstract TemporaryFile newTempFile(@Nullable String paramString);
+  public abstract TemporaryFile newTempFile(@Nullable String paramString1, @Nullable String paramString2);
 }
 
 

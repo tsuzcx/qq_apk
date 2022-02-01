@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.jsp;
 
-import awgk;
-import bebl;
-import bioy;
+import autl;
+import bcvc;
+import bgve;
 import com.tencent.common.app.AppInterface;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -10,7 +10,7 @@ import java.util.Iterator;
 public class DocxApiPlugin$5
   implements Runnable
 {
-  public DocxApiPlugin$5(awgk paramawgk, ArrayList paramArrayList) {}
+  public DocxApiPlugin$5(autl paramautl, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class DocxApiPlugin$5
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      bebl.a(this.this$0.mRuntime.a().getCurrentAccountUin(), bebl.a(str), str);
+      bcvc.a(this.this$0.mRuntime.a().getCurrentAccountUin(), bcvc.a(str), str);
     }
   }
 }

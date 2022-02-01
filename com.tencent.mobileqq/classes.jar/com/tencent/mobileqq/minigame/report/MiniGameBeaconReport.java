@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.minigame.report;
 
-import bhlo;
-import bmsw;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.beacon.upload.TunnelInfo;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -11,6 +9,8 @@ import com.tencent.mobileqq.mini.tfs.TaskExecutionStatics;
 import com.tencent.mobileqq.mini.tfs.TaskStaticsVisualizer;
 import com.tencent.mobileqq.mini.tfs.TaskStaticsVisualizer.TaskVisitor;
 import com.tencent.mobileqq.triton.statistic.TraceStatistics;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import cooperation.qzone.QUA;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executor;
@@ -87,7 +87,7 @@ public final class MiniGameBeaconReport
       localMap = MapsKt.toMutableMap(paramMap);
       if (localMap != null)
       {
-        paramMap = bmsw.a();
+        paramMap = QUA.getQUA3();
         Intrinsics.checkExpressionValueIsNotNull(paramMap, "QUA.getQUA3()");
         localMap.put("qua", paramMap);
         paramMap = BaseApplicationImpl.getApplication();
@@ -99,7 +99,7 @@ public final class MiniGameBeaconReport
           if (paramMap != null)
           {
             localMap.put("uid", paramMap);
-            localMap.put("perfLevel", String.valueOf(bhlo.f()));
+            localMap.put("perfLevel", String.valueOf(DeviceInfoUtil.getPerfLevel()));
           }
         }
       }

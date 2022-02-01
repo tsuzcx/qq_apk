@@ -2,22 +2,22 @@ package dov.com.qq.im.ae.camera.ui;
 
 import android.view.View;
 import android.view.ViewGroup;
-import bojq;
+import blnv;
 
 public class AECaptureController$1
   implements Runnable
 {
-  public AECaptureController$1(bojq parambojq, boolean paramBoolean) {}
+  public AECaptureController$1(blnv paramblnv, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((bojq.a(this.this$0) == null) && (bojq.a(this.this$0) != null)) {
-      bojq.a(this.this$0, bojq.a(this.this$0).findViewById(2131379644));
+    if ((blnv.a(this.this$0) == null) && (blnv.a(this.this$0) != null)) {
+      blnv.a(this.this$0, blnv.a(this.this$0).findViewById(2131379426));
     }
     View localView;
-    if (bojq.a(this.this$0) != null)
+    if (blnv.a(this.this$0) != null)
     {
-      localView = bojq.a(this.this$0);
+      localView = blnv.a(this.this$0);
       if (!this.a) {
         break label73;
       }

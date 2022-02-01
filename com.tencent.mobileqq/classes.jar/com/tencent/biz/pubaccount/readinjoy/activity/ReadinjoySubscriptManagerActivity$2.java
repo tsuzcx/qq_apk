@@ -8,9 +8,9 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import omf;
-import twk;
-import tzq;
+import onq;
+import uda;
+import ugf;
 
 class ReadinjoySubscriptManagerActivity$2
   implements Runnable
@@ -19,7 +19,7 @@ class ReadinjoySubscriptManagerActivity$2
   
   public void run()
   {
-    Object localObject = twk.a().c(this.this$0.app);
+    Object localObject = uda.a().c(this.this$0.app);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     if (localObject != null)
@@ -28,14 +28,14 @@ class ReadinjoySubscriptManagerActivity$2
       while (((Iterator)localObject).hasNext())
       {
         PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)((Iterator)localObject).next();
-        omf localomf = new omf(this.this$0, null);
-        omf.a(localomf, localPublicAccountInfo.getUin());
-        omf.b(localomf, localPublicAccountInfo.name);
-        omf.c(localomf, ChnToSpell.a(omf.b(localomf), 2));
-        if (tzq.b(this.this$0.app, localPublicAccountInfo.getUin())) {
-          localArrayList2.add(localomf);
+        onq localonq = new onq(this.this$0, null);
+        onq.a(localonq, localPublicAccountInfo.getUin());
+        onq.b(localonq, localPublicAccountInfo.name);
+        onq.c(localonq, ChnToSpell.a(onq.b(localonq), 2));
+        if (ugf.b(this.this$0.app, localPublicAccountInfo.getUin())) {
+          localArrayList2.add(localonq);
         } else {
-          localArrayList1.add(localomf);
+          localArrayList1.add(localonq);
         }
       }
     }

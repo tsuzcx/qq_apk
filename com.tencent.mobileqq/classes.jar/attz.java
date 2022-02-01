@@ -1,25 +1,30 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
+import com.tencent.mobileqq.friends.intimate.CommonTroopListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class attz
-  implements DialogInterface.OnClickListener
+public class attz
+  implements View.OnClickListener
 {
-  attz(atty paramatty, long paramLong, UUID paramUUID, Activity paramActivity) {}
+  public attz(CommonTroopListActivity paramCommonTroopListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if ((paramView.getTag() instanceof IntimateInfo.CommonTroopInfo))
     {
-    default: 
-      return;
-    case 0: 
-      TroopFileTransferManager.a(this.jdField_a_of_type_Atty.a, this.jdField_a_of_type_Long).a(this.jdField_a_of_type_JavaUtilUUID);
-      return;
+      IntimateInfo.CommonTroopInfo localCommonTroopInfo = (IntimateInfo.CommonTroopInfo)paramView.getTag();
+      Intent localIntent = AIOUtils.setOpenAIOIntent(new Intent(CommonTroopListActivity.a(this.a), SplashActivity.class), null);
+      localIntent.putExtra("uin", localCommonTroopInfo.troopCode);
+      localIntent.putExtra("uintype", 1);
+      localIntent.putExtra("uinname", localCommonTroopInfo.troopName);
+      this.a.startActivity(localIntent);
     }
-    new bfsf(this.jdField_a_of_type_Long, this.jdField_a_of_type_Atty.a, this.jdField_a_of_type_AndroidAppActivity).b(this.jdField_a_of_type_JavaUtilUUID);
+    bcef.b(null, "dc00898", "", "", "0X8009F54", "0X8009F54", CommonTroopListActivity.a(this.a), 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

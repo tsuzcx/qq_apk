@@ -1,51 +1,22 @@
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class amjm
-  extends Handler
+class amjm
+  implements AdapterView.OnItemClickListener
 {
-  public amjm(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
+  amjm(amjl paramamjl, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 8193: 
-    case 8194: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (QQSpecialFriendSettingActivity.a(this.a) == null)
-            {
-              QQSpecialFriendSettingActivity.a(this.a, new bjbs(this.a, this.a.getTitleBarHeight()));
-              if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
-                QQSpecialFriendSettingActivity.a(this.a).a((String)paramMessage.obj);
-              }
-            }
-          } while ((this.a.isFinishing()) || (QQSpecialFriendSettingActivity.a(this.a).isShowing()));
-          try
-          {
-            QQSpecialFriendSettingActivity.a(this.a).show();
-            return;
-          }
-          catch (Exception paramMessage) {}
-        } while (!QLog.isColorLevel());
-        QLog.e("QQSpecialFriendSettingActivity", 2, "QQProgressDialog show exception.", paramMessage);
-        return;
-      } while ((QQSpecialFriendSettingActivity.a(this.a) == null) || (!QQSpecialFriendSettingActivity.a(this.a).isShowing()));
-      QQSpecialFriendSettingActivity.a(this.a).dismiss();
-      QQSpecialFriendSettingActivity.a(this.a, null);
-      return;
-    }
-    QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight());
+    Message localMessage = this.jdField_a_of_type_Amjl.a.obtainMessage();
+    localMessage.what = ((int)paramLong);
+    localMessage.obj = this.jdField_a_of_type_JavaLangString;
+    localMessage.sendToTarget();
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

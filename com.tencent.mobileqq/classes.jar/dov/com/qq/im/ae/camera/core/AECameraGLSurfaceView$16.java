@@ -1,18 +1,18 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bojl;
+import blnt;
 
 class AECameraGLSurfaceView$16
   implements Runnable
 {
-  AECameraGLSurfaceView$16(AECameraGLSurfaceView paramAECameraGLSurfaceView, int paramInt) {}
+  AECameraGLSurfaceView$16(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
   
   public void run()
   {
-    bojl localbojl = (bojl)AECameraGLSurfaceView.a(this.this$0);
-    if (localbojl != null) {
-      localbojl.a(this.a);
+    if (AECameraGLSurfaceView.access$000(this.this$0) != null) {
+      AECameraGLSurfaceView.access$000(this.this$0).a(true, AECameraGLSurfaceView.access$700(this.this$0), this.this$0);
     }
+    this.this$0.requestRender();
   }
 }
 

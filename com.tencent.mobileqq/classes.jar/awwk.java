@@ -1,36 +1,98 @@
-import com.tencent.mobileqq.lyric.common.TimerTaskManager.InternalTaskEntry.1;
-import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
-import java.util.concurrent.ScheduledFuture;
+import android.support.v4.util.SparseArrayCompat;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awwk
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  private long jdField_a_of_type_Long = -9223372036854775808L;
-  private TimerTaskManager.TimerTaskRunnable jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new TimerTaskManager.InternalTaskEntry.1(this);
-  private String jdField_a_of_type_JavaLangString;
-  private ScheduledFuture<?> jdField_a_of_type_JavaUtilConcurrentScheduledFuture;
+  private SparseArrayCompat<View> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
+  private RecyclerView.Adapter jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
+  private SparseArrayCompat<View> b = new SparseArrayCompat();
   
-  public static awwk a(TimerTaskManager.TimerTaskRunnable paramTimerTaskRunnable)
+  public awwk(RecyclerView.Adapter paramAdapter)
   {
-    awwk localawwk = new awwk();
-    TimerTaskManager.TimerTaskRunnable.a(paramTimerTaskRunnable, true);
-    localawwk.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable = paramTimerTaskRunnable;
-    return localawwk;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramAdapter;
   }
   
-  public String toString()
+  private boolean a(int paramInt)
   {
-    boolean bool2 = false;
-    long l = this.jdField_a_of_type_Long;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable != null)
-    {
-      bool1 = bool2;
-      if (TimerTaskManager.TimerTaskRunnable.a(this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable)) {
-        bool1 = true;
-      }
+    return paramInt < a();
+  }
+  
+  private boolean b(int paramInt)
+  {
+    return paramInt >= a() + c();
+  }
+  
+  private int c()
+  {
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size();
+  }
+  
+  public RecyclerView.Adapter a()
+  {
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size() + 100000, paramView);
+  }
+  
+  public int b()
+  {
+    return this.b.size();
+  }
+  
+  public void b(View paramView)
+  {
+    this.b.put(this.b.size() + 200000, paramView);
+  }
+  
+  public int getItemCount()
+  {
+    return a() + c() + b();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (a(paramInt)) {
+      return this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.keyAt(paramInt);
     }
-    return String.format("Period = %d; IsValid = %b;", new Object[] { Long.valueOf(l), Boolean.valueOf(bool1) });
+    if (b(paramInt)) {
+      return this.b.keyAt(paramInt - a() - c());
+    }
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemViewType(paramInt - a());
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((a(paramInt)) || (b(paramInt))) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+      return;
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - a());
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt) != null) {
+      return new awwl((View)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt));
+    }
+    if (this.b.get(paramInt) != null) {
+      return new awwl((View)this.b.get(paramInt));
+    }
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
   }
 }
 

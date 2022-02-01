@@ -1,16 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.beauty.BeautyView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.chatroom.VideoChatRoomContainer;
 
-public class mmq
-  implements DialogInterface.OnClickListener
+class mmq
+  implements Animation.AnimationListener
 {
-  public mmq(BeautyView paramBeautyView) {}
+  mmq(mmp parammmp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramDialogInterface.dismiss();
+    if (mmp.a(this.a) != null) {
+      mmp.a(this.a).setVisibility(8);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

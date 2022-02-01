@@ -4,33 +4,40 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.text.TextUtils;
-import bhlo;
-import bhmi;
-import bnrf;
+import bkwm;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
+import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import nmp;
-import nnz;
-import ocd;
+import noe;
+import npi;
+import odq;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
-import ozs;
+import pay;
 
 public class TaskManager
 {
@@ -62,7 +69,7 @@ public class TaskManager
     try
     {
       isConfigureOn = getConfigOn();
-      SCRIPT_ROOT_PATH = nmp.a("3412") + "3412";
+      SCRIPT_ROOT_PATH = noe.a("3412") + "3412";
       JSSCRIPT_EXTRACTION_DIR = SCRIPT_ROOT_PATH + "/extraction";
       JSSCRIPT_PROCESS_DIR = SCRIPT_ROOT_PATH + "/process";
       JSSCRIPT_DISTRIBUTION_DIR = SCRIPT_ROOT_PATH + "/distribution";
@@ -124,6 +131,18 @@ public class TaskManager
       }
     }
     paramArrayList.add(localConfigItem);
+  }
+  
+  @NotNull
+  private JSContext.Callback alertCallback()
+  {
+    return new TaskManager.13(this);
+  }
+  
+  @NotNull
+  private JSContext.Callback clearIntervalCallback()
+  {
+    return new TaskManager.23(this);
   }
   
   public static String compress(String paramString)
@@ -189,6 +208,51 @@ public class TaskManager
     return localStringBuilder.toString().replaceAll("\r\n", "\\\\r\\\\n");
   }
   
+  @NotNull
+  private JSContext.Callback createRIJStorageCallback()
+  {
+    return new TaskManager.21(this);
+  }
+  
+  @NotNull
+  private JSContext.Callback decodeBase64Callback()
+  {
+    return new TaskManager.11(this);
+  }
+  
+  private void doNext(JSContext paramJSContext, Object[] paramArrayOfObject, Task.ConfigItem[] paramArrayOfConfigItem, Task paramTask)
+  {
+    if (paramArrayOfConfigItem != null)
+    {
+      int i = 0;
+      while (i < paramArrayOfConfigItem.length)
+      {
+        String str1 = paramArrayOfConfigItem[i].value;
+        String str2 = (String)paramArrayOfObject[1];
+        StringBuffer localStringBuffer = new StringBuffer();
+        str1 = str1 + "('" + str2 + "'," + formatArray(paramArrayOfConfigItem[i].args) + ")";
+        if (paramJSContext != null)
+        {
+          paramJSContext.evaluteStringWithException(str1, localStringBuffer);
+          reportJsException(localStringBuffer, paramTask, str1);
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  @NotNull
+  private JSContext.Callback doNextCallback(Task paramTask)
+  {
+    return new TaskManager.29(this, paramTask);
+  }
+  
+  @NotNull
+  private JSContext.Callback encodeBase64Callback()
+  {
+    return new TaskManager.10(this);
+  }
+  
   private String formatArray(ArrayList<String> paramArrayList)
   {
     if (paramArrayList != null)
@@ -211,6 +275,18 @@ public class TaskManager
     }
     String str2 = "[";
     return str2 + "]";
+  }
+  
+  @NotNull
+  private JSContext.Callback generateCustomDataCallback(Task paramTask)
+  {
+    return new TaskManager.15(this);
+  }
+  
+  @NotNull
+  private JSContext.Callback getAladdinConfigCallback()
+  {
+    return new TaskManager.12(this);
   }
   
   private ArrayList<String> getArgsByValue(ArrayList<Task.ConfigItem> paramArrayList, String paramString)
@@ -251,7 +327,7 @@ public class TaskManager
   
   public static boolean getConfigOn()
   {
-    return ((Integer)bnrf.a("kandianreport_ON", Integer.valueOf(0))).intValue() == 1;
+    return ((Integer)bkwm.a("kandianreport_ON", Integer.valueOf(0))).intValue() == 1;
   }
   
   public static TaskManager getInstance()
@@ -261,7 +337,7 @@ public class TaskManager
   
   private String getMmapUtilsName(String paramString)
   {
-    String str = ozs.a().getAccount();
+    String str = pay.a().getAccount();
     return str + "_" + paramString;
   }
   
@@ -276,6 +352,18 @@ public class TaskManager
       }
     }
     return null;
+  }
+  
+  @NotNull
+  private JSContext.Callback getPlatformInfoCallback()
+  {
+    return new TaskManager.22(this);
+  }
+  
+  @NotNull
+  private JSContext.Callback getTaskIdCallback(Task paramTask)
+  {
+    return new TaskManager.26(this, paramTask);
   }
   
   private Task.ConfigItem[] getTasksById(ArrayList<Task.ConfigItem> paramArrayList, ArrayList<String> paramArrayList1)
@@ -301,6 +389,12 @@ public class TaskManager
     return null;
   }
   
+  @NotNull
+  private JSContext.Callback getUserUinCallback()
+  {
+    return new TaskManager.9(this);
+  }
+  
   private String[] getValueById(ArrayList<Task.ConfigItem> paramArrayList, ArrayList<String> paramArrayList1)
   {
     if ((paramArrayList1 != null) && (paramArrayList1.size() > 0))
@@ -322,6 +416,12 @@ public class TaskManager
       return arrayOfString;
     }
     return null;
+  }
+  
+  @NotNull
+  private JSContext.Callback getValueForKeyCallback()
+  {
+    return new TaskManager.19(this);
   }
   
   public static String getWifiStateJson(String paramString)
@@ -356,6 +456,12 @@ public class TaskManager
     return localJSONObject1.toString();
   }
   
+  @NotNull
+  private JSContext.Callback httpCallback(Task paramTask)
+  {
+    return new TaskManager.14(this, paramTask);
+  }
+  
   private void importJs(Task paramTask, ArrayList<Task.ConfigItem> paramArrayList, int paramInt)
   {
     JSContext localJSContext = paramTask.jsContext;
@@ -379,7 +485,7 @@ public class TaskManager
           if (((File)localObject1).exists())
           {
             localObject2 = new StringBuffer();
-            localObject1 = bhmi.b((File)localObject1);
+            localObject1 = FileUtils.readFileToString((File)localObject1);
             if (localJSContext == null) {
               continue;
             }
@@ -421,40 +527,98 @@ public class TaskManager
     paramTask.jsContext = new JSContext();
     paramTask.jsContext.task = paramTask;
     paramTask.jsContext.initRIJStorage();
-    paramTask.jsContext.registerFunction("doNext", new TaskManager.8(this, paramTask));
-    paramTask.jsContext.registerFunction("setTimeout", new TaskManager.9(this, paramTask));
-    paramTask.jsContext.registerFunction("QLog", new TaskManager.10(this));
-    paramTask.jsContext.registerFunction("getTaskId", new TaskManager.11(this, paramTask));
-    paramTask.jsContext.registerFunction("setInterval", new TaskManager.12(this, paramTask));
-    paramTask.jsContext.registerFunction("reportToServer", new TaskManager.13(this));
-    paramTask.jsContext.registerFunction("clearInterval", new TaskManager.14(this));
-    paramTask.jsContext.registerFunction("getPlatformInfo", new TaskManager.15(this));
-    paramTask.jsContext.registerFunction("createRIJStorage", new TaskManager.16(this));
-    paramTask.jsContext.registerFunction("setValueForKey", new TaskManager.17(this));
-    paramTask.jsContext.registerFunction("getValueForKey", new TaskManager.18(this));
-    paramTask.jsContext.registerFunction("removeKey", new TaskManager.19(this));
-    paramTask.jsContext.registerFunction("invalidate", new TaskManager.20(this));
-    paramTask.jsContext.registerFunction("reportCustomEvent", new TaskManager.21(this));
-    paramTask.jsContext.registerFunction("generateCustomData", new TaskManager.22(this));
-    paramTask.jsContext.registerFunction("httpRequest", new TaskManager.23(this, paramTask));
-    paramTask.jsContext.registerFunction("alert", new TaskManager.24(this));
-    paramTask.jsContext.registerFunction("getAladdinConfig", new TaskManager.25(this));
-    paramTask.jsContext.registerFunction("decodeBase64", new TaskManager.26(this));
-    paramTask.jsContext.registerFunction("encodeBase64", new TaskManager.27(this));
-    paramTask.jsContext.registerFunction("getUserUin", new TaskManager.28(this));
-    paramTask.jsContext.registerFunction("isPublicVersion", new TaskManager.29(this));
+    paramTask.jsContext.registerFunction("doNext", doNextCallback(paramTask));
+    paramTask.jsContext.registerFunction("setTimeout", setTimeOutCallback(paramTask));
+    paramTask.jsContext.registerFunction("QLog", qlogCallback());
+    paramTask.jsContext.registerFunction("getTaskId", getTaskIdCallback(paramTask));
+    paramTask.jsContext.registerFunction("setInterval", setIntervalCallback(paramTask));
+    paramTask.jsContext.registerFunction("reportToServer", reportToServerCallback());
+    paramTask.jsContext.registerFunction("clearInterval", clearIntervalCallback());
+    paramTask.jsContext.registerFunction("getPlatformInfo", getPlatformInfoCallback());
+    paramTask.jsContext.registerFunction("createRIJStorage", createRIJStorageCallback());
+    paramTask.jsContext.registerFunction("setValueForKey", setValueForKeyCallback());
+    paramTask.jsContext.registerFunction("getValueForKey", getValueForKeyCallback());
+    paramTask.jsContext.registerFunction("removeKey", removeKeyCallback());
+    paramTask.jsContext.registerFunction("invalidate", invalidateCallback());
+    paramTask.jsContext.registerFunction("reportCustomEvent", reportCustomEventCallback());
+    paramTask.jsContext.registerFunction("generateCustomData", generateCustomDataCallback(paramTask));
+    paramTask.jsContext.registerFunction("httpRequest", httpCallback(paramTask));
+    paramTask.jsContext.registerFunction("alert", alertCallback());
+    paramTask.jsContext.registerFunction("getAladdinConfig", getAladdinConfigCallback());
+    paramTask.jsContext.registerFunction("decodeBase64", decodeBase64Callback());
+    paramTask.jsContext.registerFunction("encodeBase64", encodeBase64Callback());
+    paramTask.jsContext.registerFunction("getUserUin", getUserUinCallback());
+    paramTask.jsContext.registerFunction("isPublicVersion", isPublicVersionCallback());
     paramTask.status = Task.STATUS_INIT;
+  }
+  
+  @NotNull
+  private JSContext.Callback invalidateCallback()
+  {
+    return new TaskManager.17(this);
+  }
+  
+  @NotNull
+  private JSContext.Callback isPublicVersionCallback()
+  {
+    return new TaskManager.8(this);
   }
   
   private boolean isTaskAvailable(Task paramTask)
   {
-    int i = ((Integer)bnrf.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(0))).intValue();
+    int i = ((Integer)bkwm.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(0))).intValue();
     return (i != Task.STATUS_FAIL) && (i != Task.STATUS_QUIT);
+  }
+  
+  private void onResp(NetResp paramNetResp, String paramString, JSContext paramJSContext, Task paramTask)
+  {
+    if (paramNetResp.mRespData != null) {}
+    for (String str1 = new String(paramNetResp.mRespData);; str1 = "")
+    {
+      StringBuffer localStringBuffer = new StringBuffer();
+      if (paramNetResp.mRespProperties != null)
+      {
+        localObject1 = new JSONObject();
+        Iterator localIterator = paramNetResp.mRespProperties.entrySet().iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject2 = (Map.Entry)localIterator.next();
+          String str2 = (String)((Map.Entry)localObject2).getKey();
+          localObject2 = (String)((Map.Entry)localObject2).getValue();
+          try
+          {
+            ((JSONObject)localObject1).put(str2, localObject2);
+          }
+          catch (JSONException localJSONException)
+          {
+            QLog.e("kandianreport.taskmanager", 2, localJSONException.getMessage());
+          }
+        }
+      }
+      for (Object localObject1 = ((JSONObject)localObject1).toString();; localObject1 = "")
+      {
+        str1 = compress(str1);
+        localObject1 = compress((String)localObject1);
+        paramNetResp = paramString + "(" + paramNetResp.mHttpCode + ",'" + (String)localObject1 + "','" + str1 + "')";
+        if (paramJSContext != null)
+        {
+          paramJSContext.evaluteStringWithException(paramNetResp, localStringBuffer);
+          reportJsException(localStringBuffer, paramTask, paramNetResp);
+        }
+        return;
+      }
+    }
+  }
+  
+  @NotNull
+  private JSContext.Callback qlogCallback()
+  {
+    return new TaskManager.27(this);
   }
   
   private Task readTaskConfigFile(File paramFile)
   {
-    return readTaskConfigJson(bhmi.a(paramFile));
+    return readTaskConfigJson(FileUtils.readFileContent(paramFile));
   }
   
   private Task readTaskConfigJson(String paramString)
@@ -526,7 +690,7 @@ public class TaskManager
   private void readTasksFromConfigFile()
   {
     QLog.d("kandianreport.taskmanager", 1, "readTasksFromConfigFile...");
-    if (bhmi.a(TASK_CONFIG_DIR))
+    if (FileUtils.fileExists(TASK_CONFIG_DIR))
     {
       Object localObject1 = new File(TASK_CONFIG_DIR).listFiles();
       this.taskList.clear();
@@ -570,6 +734,28 @@ public class TaskManager
     }
   }
   
+  @NotNull
+  private JSContext.Callback removeKeyCallback()
+  {
+    return new TaskManager.18(this);
+  }
+  
+  @NotNull
+  private JSContext.Callback reportCustomEventCallback()
+  {
+    return new TaskManager.16(this);
+  }
+  
+  private void reportJsException(StringBuffer paramStringBuffer, Task paramTask, String paramString)
+  {
+    if (!TextUtils.isEmpty(paramStringBuffer))
+    {
+      markTaskFail(paramTask);
+      QLog.d("kandianreport.taskmanager", 1, "evaluate js exception: " + paramString + " " + paramStringBuffer);
+      TaskException.reportException(paramTask.id, "evaluate js exception: " + paramString + " " + paramStringBuffer);
+    }
+  }
+  
   private void reportToServer(JSContext paramJSContext, String paramString1, String paramString2)
   {
     if (paramJSContext == null) {
@@ -607,10 +793,34 @@ public class TaskManager
     paramString1.put("version", scriptVersion + "");
     paramString1.put("so_version", KandianReportSoLoader.getSoVersion() + "");
     paramString1.put("phone", Build.MODEL);
-    paramString1.put("sys_version", bhlo.e());
-    paramString1.put("qq_version", bhlo.c());
+    paramString1.put("sys_version", DeviceInfoUtil.getDeviceOSVersion());
+    paramString1.put("qq_version", DeviceInfoUtil.getQQVersion());
     paramString1.put("appid", AppSetting.a() + "");
-    ocd.a(null, "", "0X800982F", "0X800982F", 0, 0, "", "", "", paramString1.toString(), false);
+    odq.a(null, "", "0X800982F", "0X800982F", 0, 0, "", "", "", paramString1.toString(), false);
+  }
+  
+  @NotNull
+  private JSContext.Callback reportToServerCallback()
+  {
+    return new TaskManager.24(this);
+  }
+  
+  @NotNull
+  private JSContext.Callback setIntervalCallback(Task paramTask)
+  {
+    return new TaskManager.25(this, paramTask);
+  }
+  
+  @NotNull
+  private JSContext.Callback setTimeOutCallback(Task paramTask)
+  {
+    return new TaskManager.28(this, paramTask);
+  }
+  
+  @NotNull
+  private JSContext.Callback setValueForKeyCallback()
+  {
+    return new TaskManager.20(this);
   }
   
   private void startTask(Task paramTask)
@@ -634,7 +844,7 @@ public class TaskManager
       if (isStarted) {
         return;
       }
-      if (bhmi.a(SCRIPT_ROOT_PATH)) {
+      if (FileUtils.fileExists(SCRIPT_ROOT_PATH)) {
         break label124;
       }
       QLog.d("kandianreport.taskmanager", 1, "startTasksIfExist: offline root dir is null");
@@ -648,7 +858,7 @@ public class TaskManager
         return;
         try
         {
-          if (nnz.a(SCRIPT_ROOT_PATH, "3412")) {
+          if (npi.a(SCRIPT_ROOT_PATH, "3412")) {
             continue;
           }
           KandianReportSoLoader.logAndReport("startTasksIfExist: verification failed");
@@ -786,7 +996,7 @@ public class TaskManager
   {
     QLog.d("kandianreport.taskmanager", 2, "mark task fail " + paramTask.id);
     paramTask.status = Task.STATUS_FAIL;
-    bnrf.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(Task.STATUS_FAIL));
+    bkwm.a("kandianreport.taskmanager" + paramTask.id, Integer.valueOf(Task.STATUS_FAIL));
   }
   
   public void qlog(int paramInt, String paramString)
@@ -807,7 +1017,7 @@ public class TaskManager
           initTask(localTask);
           startTask(localTask);
           localTask.status = Task.STATUS_ACCEPT;
-          bnrf.a("kandianreport.taskmanager" + paramString, Integer.valueOf(Task.STATUS_ACCEPT));
+          bkwm.a("kandianreport.taskmanager" + paramString, Integer.valueOf(Task.STATUS_ACCEPT));
         }
         catch (Exception localException)
         {
@@ -840,7 +1050,7 @@ public class TaskManager
   public void restore()
   {
     QLog.d("kandianreport.taskmanager", 1, "restore");
-    bnrf.a("kandianreport_ON", Integer.valueOf(1));
+    bkwm.a("kandianreport_ON", Integer.valueOf(1));
   }
   
   public void startAllTasks()

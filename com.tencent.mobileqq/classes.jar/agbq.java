@@ -1,54 +1,37 @@
+import android.content.Context;
 import android.content.res.Resources;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.ActivatePageAdapter;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
-public class agbq
-  extends anuw
+class agbq
+  extends ClickableSpan
 {
-  public agbq(ActivateFriendActivity paramActivateFriendActivity) {}
+  agbq(agap paramagap) {}
   
-  protected void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
+    if (NetworkUtil.isNetSupport(this.a.jdField_a_of_type_AndroidContentContext))
     {
-      aolc.a(this.a.app, false, true, false, true);
-      this.a.a();
-    }
-    ActivateFriendActivity.a(this.a, paramBoolean2);
-  }
-  
-  protected void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
-    {
-      aolc.a(this.a.app, false, true, false, true);
-      this.a.a();
-    }
-    if (!this.a.isFinishing())
-    {
-      if (!paramBoolean1) {
-        break label161;
-      }
-      ActivateFriendActivity.a(this.a, paramBoolean2);
-      if (!ActivateFriendActivity.a(this.a)) {
-        break label148;
-      }
-    }
-    label148:
-    for (String str = this.a.getString(2131689528);; str = this.a.getString(2131689529))
-    {
-      str = this.a.getString(2131689531, new Object[] { str });
-      QQToast.a(this.a, 2, str, 0).b(this.a.getTitleBarHeight());
-      if (ActivateFriendActivity.a(this.a) != null)
-      {
-        ActivateFriendActivity.a(this.a).c();
-        ActivateFriendActivity.b(this.a);
-      }
+      paramView = (FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(1);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
+      paramView.gatherContacts((short)1, localArrayList, false);
       return;
     }
-    label161:
-    QQToast.a(this.a, 1, this.a.getResources().getString(2131717966), 0).b(this.a.getTitleBarHeight());
+    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692035), 1).b(((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).getTitleBarHeight());
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 

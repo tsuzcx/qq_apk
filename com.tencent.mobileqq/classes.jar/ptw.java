@@ -1,43 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.Comparator;
 
-public class ptw
+class ptw
+  implements Comparator<ArticleInfo>
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  ptw(ptv paramptv) {}
+  
+  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    localJSONObject1.put("id_test", new JSONObject());
-    JSONObject localJSONObject2 = new JSONObject();
-    String str;
-    if (paramBaseArticleInfo.mSinglePicture != null)
-    {
-      str = paramBaseArticleInfo.mSinglePicture.getFile();
-      localJSONObject2.put("article_large_imge_url", str);
-      localJSONObject1.put("id_article_large_imge", localJSONObject2);
-      puo.a(paramBaseArticleInfo, localJSONObject1, true);
-      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
-        break label130;
-      }
-      puo.a(paramBaseArticleInfo, localJSONObject1);
-      puo.b(paramBaseArticleInfo, localJSONObject1);
+    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
+      return 0;
     }
-    for (;;)
-    {
-      puo.l(paramBaseArticleInfo, localJSONObject1);
-      puo.e(paramBaseArticleInfo, localJSONObject1);
-      puo.g(paramBaseArticleInfo, localJSONObject1);
-      puo.X(paramBaseArticleInfo, localJSONObject1);
-      localJSONObject1.put("style_ID", "ReadInjoy_large_cell");
-      puo.a(localJSONObject1, paramBaseArticleInfo);
-      puo.aa(paramBaseArticleInfo, localJSONObject1);
-      return localJSONObject1;
-      str = null;
-      break;
-      label130:
-      puo.d(paramBaseArticleInfo, localJSONObject1);
+    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
+      return -1;
     }
+    return 1;
   }
 }
 

@@ -1,12 +1,28 @@
-class ufi
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+final class ufi
+  implements EIPCResultCallback
 {
-  public String a;
-  public boolean a;
-  public boolean b;
+  ufi(tiv paramtiv, String paramString) {}
   
-  public String toString()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return "CommentResponse{hasMore=" + this.jdField_a_of_type_Boolean + ", attachInfo='" + this.jdField_a_of_type_JavaLangString + '\'' + ", hasResponse='" + this.b + '\'' + '}';
+    String str2 = "";
+    String str1 = str2;
+    if (paramEIPCResult != null)
+    {
+      str1 = str2;
+      if (paramEIPCResult.data != null) {
+        str1 = paramEIPCResult.data.getString("action_get_user_info");
+      }
+    }
+    QLog.e("PublicAccountH5AbilityPlugin", 1, "getUserInfoIpc is " + str1);
+    if (this.jdField_a_of_type_Tiv != null) {
+      this.jdField_a_of_type_Tiv.a(this.jdField_a_of_type_JavaLangString, str1);
+    }
   }
 }
 

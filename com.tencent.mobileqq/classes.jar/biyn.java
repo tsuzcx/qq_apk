@@ -1,15 +1,20 @@
-import android.widget.FrameLayout.LayoutParams;
-
-public class biyn
-  extends FrameLayout.LayoutParams
+public abstract class biyn
 {
-  public int a;
-  public int b;
+  public abstract void a();
   
-  public biyn(int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(int paramInt, String[] paramArrayOfString);
+  
+  public abstract void a(boolean paramBoolean, int paramInt);
+  
+  public abstract void a(String[] paramArrayOfString);
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void b(boolean paramBoolean, int paramInt);
+  
+  public abstract void c(int paramInt, String paramString);
 }
 
 

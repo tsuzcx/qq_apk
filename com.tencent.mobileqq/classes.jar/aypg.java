@@ -1,33 +1,19 @@
-class aypg
-  implements aqxz
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+
+public class aypg
+  implements DialogInterface.OnClickListener
 {
-  aypg(ayot paramayot) {}
+  public aypg(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public int a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 2;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 >= 0)
-    {
-      paramInt1 = paramInt2;
-      if (paramInt2 <= 1) {}
-    }
-    else
-    {
-      paramInt1 = 0;
-    }
-    if (paramInt1 == 0) {
-      return anzj.a(2131706157);
-    }
-    return anzj.a(2131706258);
+    paramDialogInterface.dismiss();
+    this.a.b.obtainMessage(3, "").sendToTarget();
+    bcef.b(null, "dc00898", "", "", "0X800AB31", "0X800AB31", 2, 0, "0", "0", "", "");
   }
 }
 

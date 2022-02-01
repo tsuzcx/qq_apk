@@ -1,49 +1,90 @@
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.automator.AsyncSteps.1;
+import com.tencent.biz.pubaccount.readinjoy.automator.AsyncSteps.2;
+import org.jetbrains.annotations.NotNull;
 
-public class ony
-  extends bqeb
+public final class ony
+  extends ooa
+  implements ood
 {
-  public ony(@NonNull bqgk parambqgk, long paramLong)
-  {
-    super(parambqgk, paramLong);
-  }
+  private int jdField_a_of_type_Int;
+  private final ooa[] jdField_a_of_type_ArrayOfOoa;
   
-  private void j()
+  public ony(@NotNull onz paramonz, @NotNull ooa[] paramArrayOfooa)
   {
-    a(2131379182).setVisibility(8);
-    ((TextView)a(2131365109)).setText(anzj.a(2131711740));
+    super(paramonz, false, "AsyncSteps");
+    this.jdField_a_of_type_ArrayOfOoa = paramArrayOfooa;
+    paramonz = this.jdField_a_of_type_ArrayOfOoa;
+    int j = paramonz.length;
+    while (i < j)
+    {
+      paramonz[i].a(this);
+      i += 1;
+    }
   }
   
   public void a()
   {
     super.a();
-    j();
+    ooa[] arrayOfooa = this.jdField_a_of_type_ArrayOfOoa;
+    int j = arrayOfooa.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfooa[i].a();
+      i += 1;
+    }
   }
   
-  public void onClick(View paramView)
+  public boolean a()
   {
-    super.onClick(paramView);
-    int i = paramView.getId();
-    Long localLong = (Long)this.a.get(i);
-    if (localLong != null) {
-      switch ((int)localLong.longValue())
+    super.a();
+    this.jdField_a_of_type_Int = 0;
+    return true;
+  }
+  
+  public final void b()
+  {
+    this.jdField_a_of_type_Int += 1;
+    a("AsyncSteps onEnd: mFinishCount = " + this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfOoa.length) {
+      d();
+    }
+  }
+  
+  public boolean b()
+  {
+    ooa[] arrayOfooa = this.jdField_a_of_type_ArrayOfOoa;
+    int j = arrayOfooa.length;
+    int i = 0;
+    if (i < j)
+    {
+      Object localObject = arrayOfooa[i];
+      AsyncSteps.1 local1;
+      if (((ooa)localObject).a())
       {
+        local1 = new AsyncSteps.1(this, (ooa)localObject);
+        if (((ooa)localObject).c()) {
+          local1.run();
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localObject = a().a();
+        if (localObject != null)
+        {
+          ((ooc)localObject).a(local1);
+        }
+        else
+        {
+          new Thread(local1).start();
+          continue;
+          a().b(new AsyncSteps.2(this, (ooa)localObject));
+        }
       }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ocd.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "3", "", "", "", false);
-      continue;
-      ocd.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "1", "", "", "", false);
-      continue;
-      ocd.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "2", "", "", "", false);
-    }
+    return false;
   }
 }
 

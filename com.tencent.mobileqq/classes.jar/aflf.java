@@ -1,107 +1,52 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ims.QQProtectRisks.QQProtectRisksResponse;
-import com.tencent.ims.QQProtectRisks.RiskInfo;
-import com.tencent.mobileqq.activity.RiskInfoActivity;
-import com.tencent.mobileqq.activity.RiskInfoItem;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView.1.1;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView.1.2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
 
 public class aflf
-  extends nkq
+  implements afkv
 {
-  public aflf(RiskInfoActivity paramRiskInfoActivity) {}
+  public aflf(DoodleMsgView paramDoodleMsgView) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(String paramString, int paramInt)
   {
-    boolean bool1;
-    boolean bool2;
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("RiskInfoDetails", 2, "request risks info,onResult error=" + paramInt + " data=" + paramArrayOfByte);
-      }
-      bool1 = false;
-      paramBundle = new HashMap();
-      bool2 = bool1;
-      if (!bool1) {}
-    }
+    QLog.d("DoodleMsgView", 2, "onDataState:" + paramInt + " - " + paramString);
+    this.a.a(new DoodleMsgView.1.2(this, paramInt));
+  }
+  
+  public void a(String arg1, long paramLong, Bitmap paramBitmap)
+  {
+    if (DoodleMsgView.a(this.a) == null) {}
     for (;;)
     {
-      try
-      {
-        QQProtectRisks.QQProtectRisksResponse localQQProtectRisksResponse = new QQProtectRisks.QQProtectRisksResponse();
-        localQQProtectRisksResponse.mergeFrom(paramArrayOfByte);
-        paramInt = 0;
-        if (localQQProtectRisksResponse.uint32_sec_cmd.has()) {
-          paramInt = localQQProtectRisksResponse.uint32_sec_cmd.get();
-        }
-        bool2 = bool1;
-        if (paramInt == 1)
-        {
-          bool2 = bool1;
-          if (localQQProtectRisksResponse.risk_info_list.has())
+      return;
+      if (paramBitmap != null) {
+        if (DoodleMsgView.a(this.a, paramBitmap.getWidth(), paramBitmap.getHeight())) {
+          if (DoodleMsgView.a(this.a) == null)
           {
-            bool2 = bool1;
-            if (!localQQProtectRisksResponse.risk_info_list.isEmpty())
-            {
-              paramInt = 0;
-              bool2 = bool1;
-              if (paramInt < localQQProtectRisksResponse.risk_info_list.size())
-              {
-                new QQProtectRisks.RiskInfo();
-                paramArrayOfByte = (QQProtectRisks.RiskInfo)localQQProtectRisksResponse.risk_info_list.get(paramInt);
-                if ((paramArrayOfByte.uint32_item_type.has()) && (paramArrayOfByte.uint32_item_type.get() == 1)) {
-                  break label511;
-                }
-                RiskInfoItem localRiskInfoItem = new RiskInfoItem();
-                localRiskInfoItem.jdField_a_of_type_JavaLangString = paramArrayOfByte.str_left_text.get();
-                localRiskInfoItem.d = paramArrayOfByte.str_jump_target.get();
-                if ((TextUtils.isEmpty(localRiskInfoItem.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(localRiskInfoItem.d))) {
-                  break label511;
-                }
-                localRiskInfoItem.jdField_b_of_type_JavaLangString = paramArrayOfByte.str_right_text.get();
-                localRiskInfoItem.c = paramArrayOfByte.str_desc_text.get();
-                localRiskInfoItem.jdField_a_of_type_Int = paramArrayOfByte.uint32_click_report_id.get();
-                if (paramArrayOfByte.uint32_item_id.has()) {
-                  localRiskInfoItem.jdField_b_of_type_Int = paramArrayOfByte.uint32_item_id.get();
-                }
-                if (paramArrayOfByte.str_right_text_open.has()) {
-                  localRiskInfoItem.e = paramArrayOfByte.str_right_text_open.get();
-                }
-                paramArrayOfByte = String.format("%d", new Object[] { Integer.valueOf(localRiskInfoItem.jdField_b_of_type_Int) });
-                if (localRiskInfoItem.jdField_b_of_type_Int == 0) {
-                  paramArrayOfByte = localRiskInfoItem.d;
-                }
-                paramBundle.put(paramArrayOfByte, localRiskInfoItem);
-                QLog.d("RiskInfoDetails", 1, String.format("%s, %s, %s, %s, %d, %d, %s", new Object[] { localRiskInfoItem.jdField_a_of_type_JavaLangString, localRiskInfoItem.jdField_b_of_type_JavaLangString, localRiskInfoItem.c, localRiskInfoItem.d, Integer.valueOf(localRiskInfoItem.jdField_a_of_type_Int), Integer.valueOf(localRiskInfoItem.jdField_b_of_type_Int), localRiskInfoItem.e }));
-              }
-            }
+            DoodleMsgView.a(this.a, new Paint());
+            DoodleMsgView.a(this.a).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
+            DoodleMsgView.a(this.a).setAntiAlias(true);
           }
         }
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      synchronized (this.a)
       {
-        QLog.d("RiskInfoDetails", 1, "error protobuf content");
-        bool2 = false;
-        RiskInfoActivity.a(this.a, paramBundle, bool2);
+        DoodleMsgView.a(this.a).drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(0, 0, DoodleMsgView.a(this.a).getWidth(), DoodleMsgView.a(this.a).getHeight()), DoodleMsgView.a(this.a));
+        this.a.postInvalidate();
+        if ((!DoodleMsgView.a(this.a)) || (paramLong < DoodleMsgView.a(this.a).a()) || (DoodleMsgView.a(this.a) < DoodleMsgView.a(this.a).a())) {
+          continue;
+        }
+        this.a.d();
+        this.a.a(new DoodleMsgView.1.1(this));
         return;
       }
-      catch (Throwable paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        bool2 = bool1;
-        continue;
-      }
-      bool1 = true;
-      break;
-      label511:
-      paramInt += 1;
     }
   }
 }

@@ -1,17 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.vas.avatar.VasAvatar;
 
 public class afhx
-  implements bbst
 {
-  public afhx(QQSettingMe paramQQSettingMe) {}
-  
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void a(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout, int paramInt)
   {
-    if ((this.a.c) && (paramBitmap != null) && (QQSettingMe.a(this.a).a().actionId == paramInt1) && (paramInt2 == 200)) {
-      this.a.z();
-    }
+    paramChatMessage = paramBaseChatItemLayout.a;
+    afhr localafhr = new afhr();
+    Handler localHandler = new Handler(Looper.getMainLooper());
+    paramBaseChatItemLayout = new afhq(paramBaseChatItemLayout.getContext(), localafhr, localHandler);
+    localafhr.a(paramBaseChatItemLayout);
+    paramChatMessage.setOnTouchListener(new afhy(this));
+    paramChatMessage.setTag(2131362344, paramBaseChatItemLayout);
+    paramBaseChatItemLayout.a(paramChatMessage);
   }
 }
 

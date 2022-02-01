@@ -1,37 +1,21 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class avfs
-  extends Handler
+class avfs
+  extends amsu
 {
-  public avfs(QQSettingMsgClearFragment paramQQSettingMsgClearFragment) {}
+  avfs(avfq paramavfq) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    super.onUpdateDelFriend(paramBoolean, paramObject);
+    paramObject = String.valueOf(paramObject);
+    if ((paramBoolean) && (paramObject.equals(avfq.a(this.a).a())))
     {
-    }
-    do
-    {
-      return;
-      paramMessage = this.a.getActivity();
-      if ((paramMessage != null) && (!paramMessage.isFinishing()))
-      {
-        this.a.jdField_a_of_type_Bjbs.a(this.a.getString(2131690709));
-        this.a.jdField_a_of_type_Bjbs.d(2130849677);
-        this.a.jdField_a_of_type_Bjbs.b(false);
+      avfq.a(avfq.a(this.a), 0, String.valueOf(paramObject));
+      if (avfq.a(this.a) != null) {
+        avfq.a(this.a).finish();
       }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
-      return;
-    } while ((this.a.jdField_a_of_type_Bjbs == null) || (!this.a.jdField_a_of_type_Bjbs.isShowing()));
-    this.a.jdField_a_of_type_Bjbs.cancel();
-    this.a.jdField_a_of_type_Bjbs.a(this.a.getString(2131690711));
-    this.a.jdField_a_of_type_Bjbs.c(true);
-    this.a.jdField_a_of_type_Bjbs.a(false);
-    this.a.jdField_a_of_type_Bjbs.b(true);
+    }
   }
 }
 

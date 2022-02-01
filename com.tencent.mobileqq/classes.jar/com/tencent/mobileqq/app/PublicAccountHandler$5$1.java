@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import aoec;
+import amyd;
 
 public class PublicAccountHandler$5$1
   implements Runnable
 {
-  public PublicAccountHandler$5$1(aoec paramaoec) {}
+  public PublicAccountHandler$5$1(amyd paramamyd) {}
   
   public void run()
   {

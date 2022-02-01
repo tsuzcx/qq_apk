@@ -1,32 +1,17 @@
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import cooperation.qlink.QlAndQQInterface.WorkState;
-import java.util.ArrayList;
+import android.content.DialogInterface.OnDismissListener;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment.11;
 
-class bmip
-  implements DialogInterface.OnClickListener
+public class bmip
+  implements DialogInterface.OnDismissListener
 {
-  bmip(bmim parambmim, ArrayList paramArrayList, Activity paramActivity, int paramInt, boolean paramBoolean) {}
+  public bmip(AEEditorVideoEditFragment.11 param11) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Bmim.a("0X8004855", 1);
-    this.jdField_a_of_type_Bmim.a(bmim.a(this.jdField_a_of_type_Bmim).mPeerUin, this.jdField_a_of_type_JavaUtilArrayList);
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("string_filepaths", this.jdField_a_of_type_JavaUtilArrayList);
-    localBundle.putBoolean("STRING_CONTINUE_SEND_TO_", true);
-    bmim.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, localBundle);
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    }
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmip
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,46 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.graphics.Point;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.colornote.anim.MusicDanceImageView;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import com.tencent.mobileqq.util.DisplayUtil;
+
 public class apny
+  implements Animator.AnimatorListener
 {
-  public int a;
-  public long a;
-  public apnp a;
-  public apnq a;
-  public apnr a;
-  public apns a;
-  public apnx a;
-  public apnz a;
-  public apoa a;
-  public ayxq a;
-  public String a;
-  public int b;
-  public long b;
-  public apnq b;
-  public String b;
-  public int c = -1;
-  public long c;
+  public apny(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout) {}
   
-  public apny()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Long = 0L;
+    paramAnimator = (LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams();
+    if (!this.a.a())
+    {
+      paramAnimator.leftMargin = DisplayUtil.dip2px(this.a.getContext(), 14.5F);
+      paramAnimator.rightMargin = 0;
+    }
+    ColorNoteSmallScreenRelativeLayout.a(this.a).setLayoutParams(paramAnimator);
+    ColorNoteSmallScreenRelativeLayout.a(this.a).setVisibility(0);
+    ((LinearLayout.LayoutParams)ColorNoteSmallScreenRelativeLayout.a(this.a).getLayoutParams()).leftMargin = DisplayUtil.dip2px(this.a.getContext(), 13.5F);
+    ColorNoteSmallScreenRelativeLayout.a(this.a).x = this.a.g();
+    paramAnimator = this.a;
+    if (ColorNoteSmallScreenRelativeLayout.a(this.a).x < 0) {}
+    for (int i = 0;; i = 1)
+    {
+      ColorNoteSmallScreenRelativeLayout.b(paramAnimator, i);
+      ColorNoteSmallScreenRelativeLayout.d(this.a, false);
+      return;
+    }
   }
   
-  public String toString()
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return "ARCloudReqInfo{sessionId = " + this.jdField_a_of_type_JavaLangString + ", fileInfo = " + this.jdField_a_of_type_Apnx + ", longitude = " + this.jdField_a_of_type_Int + ", latitude = " + this.jdField_b_of_type_Int + ", recogType = " + this.jdField_a_of_type_Long + ", businessType = " + this.c + ", markerInfo = " + this.jdField_a_of_type_Apnz + ", objectClassifyInfo = " + this.jdField_a_of_type_Apnq + ", preOcrInfo = " + this.jdField_a_of_type_Apnr + ", sceneRecogInfo = " + this.jdField_a_of_type_Apns + ", ocrInfo = " + this.jdField_a_of_type_Ayxq + ", appid = " + this.jdField_b_of_type_JavaLangString + ", uin = " + this.jdField_b_of_type_Long + '}';
+    ColorNoteSmallScreenRelativeLayout.d(this.a, true);
   }
 }
 

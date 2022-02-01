@@ -1,32 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-
 class asbz
-  extends Handler
+  implements ascz
 {
-  asbz(asbx paramasbx, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  asbz(asbj paramasbj) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(Object[] paramArrayOfObject)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (asbx.a(this.a));
-    QLog.e("CameraHelper", 1, "checkPermission uncertain");
-    asbx.a(this.a, false, 1830004);
+    asbj.access$1300(this.a, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asbz
  * JD-Core Version:    0.7.0.1
  */

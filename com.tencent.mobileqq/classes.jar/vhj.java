@@ -1,58 +1,10 @@
-import com.tencent.biz.qqcircle.bizparts.danmaku.core.PhotoDanmakuDrawer;
-
-public class vhj
-  extends vhb
+public abstract interface vhj
 {
-  public vhj(vgp paramvgp, vhc paramvhc, vhe paramvhe)
-  {
-    super(paramvgp, paramvhc, paramvhe);
-  }
+  public abstract void a();
   
-  public float a()
-  {
-    return 0.0F;
-  }
+  public abstract void a(int paramInt);
   
-  public int a()
-  {
-    return 0;
-  }
-  
-  public float[] a(long paramLong)
-  {
-    return new float[4];
-  }
-  
-  public float b()
-  {
-    return 0.0F;
-  }
-  
-  protected void b() {}
-  
-  public void b(PhotoDanmakuDrawer paramPhotoDanmakuDrawer, float paramFloat1, float paramFloat2) {}
-  
-  public float[] b(long paramLong)
-  {
-    return new float[4];
-  }
-  
-  public float c()
-  {
-    return 0.0F;
-  }
-  
-  public float d()
-  {
-    return 0.0F;
-  }
-  
-  public void d() {}
-  
-  public float e()
-  {
-    return 0.0F;
-  }
+  public abstract void b(int paramInt);
 }
 
 

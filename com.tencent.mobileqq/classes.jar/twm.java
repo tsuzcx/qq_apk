@@ -1,6 +1,16 @@
-public class twm
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class twm
+  implements DialogInterface.OnClickListener
 {
-  static twk a = new twk(null);
+  twm(DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.onClick(paramDialogInterface, paramInt);
+  }
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.view;
 
+import amlu;
+import amlw;
 import android.view.View;
 import android.view.ViewParent;
-import anra;
-import anrc;
-import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.mobileqq.utils.VipUtils;
@@ -25,11 +25,11 @@ class ApolloLinearLayout$CheckForLongPress
   public void run()
   {
     ViewParent localViewParent = ApolloLinearLayout.a(this.this$0);
-    anrc localanrc;
+    amlw localamlw;
     if ((localViewParent != null) && (this.jdField_a_of_type_Int == ApolloLinearLayout.a(this.this$0)) && (this.this$0.jdField_a_of_type_AndroidViewView != null))
     {
-      localanrc = (anrc)this.this$0.jdField_a_of_type_AndroidViewView.getTag();
-      if ((localanrc != null) && (localanrc.a != null) && (localanrc.a.jdField_a_of_type_ComTencentMobileqqDataApolloActionData != null)) {
+      localamlw = (amlw)this.this$0.jdField_a_of_type_AndroidViewView.getTag();
+      if ((localamlw != null) && (localamlw.a != null) && (localamlw.a.jdField_a_of_type_ComTencentMobileqqDataApolloActionData != null)) {
         break label72;
       }
     }
@@ -42,10 +42,10 @@ class ApolloLinearLayout$CheckForLongPress
         this.this$0.b = true;
         localViewParent.requestDisallowInterceptTouchEvent(true);
         ApolloLinearLayout.a(this.this$0, 2);
-      } while ((localanrc.a == null) || (localanrc.a.b == 1) || (localanrc.a.jdField_a_of_type_ComTencentMobileqqDataApolloActionData == null));
-      this.this$0.a(this.this$0.jdField_a_of_type_AndroidViewView, localanrc.a);
-    } while ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null));
-    VipUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "long_press_icon", this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, ApolloUtil.b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), 0, new String[] { "" + localanrc.a.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId, "" + localanrc.a.jdField_a_of_type_Int, "", String.valueOf(System.currentTimeMillis() / 1000L) });
+      } while ((localamlw.a == null) || (localamlw.a.b == 1) || (localamlw.a.jdField_a_of_type_ComTencentMobileqqDataApolloActionData == null));
+      this.this$0.a(this.this$0.jdField_a_of_type_AndroidViewView, localamlw.a);
+    } while ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null));
+    VipUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "cmshow", "Apollo", "long_press_icon", this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, ApolloUtil.b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType), 0, new String[] { "" + localamlw.a.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId, "" + localamlw.a.jdField_a_of_type_Int, "", String.valueOf(System.currentTimeMillis() / 1000L) });
   }
 }
 

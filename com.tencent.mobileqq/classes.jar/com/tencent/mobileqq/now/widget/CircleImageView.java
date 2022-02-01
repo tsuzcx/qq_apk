@@ -130,9 +130,13 @@ public class CircleImageView
       if (localBitmap == null) {
         localObject = a();
       }
-      paramCanvas.drawBitmap(a(((Bitmap)localObject).copy(((Bitmap)localObject).getConfig(), true), getWidth() - this.a * 2), this.a, this.a, null);
-      paramCanvas.save();
-      paramCanvas.restore();
+      localObject = a(((Bitmap)localObject).copy(((Bitmap)localObject).getConfig(), true), getWidth() - this.a * 2);
+      if (localObject != null)
+      {
+        paramCanvas.drawBitmap((Bitmap)localObject, this.a, this.a, null);
+        paramCanvas.save();
+        paramCanvas.restore();
+      }
       return;
     }
     catch (Exception paramCanvas)

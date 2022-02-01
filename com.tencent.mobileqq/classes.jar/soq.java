@@ -1,12 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class soq
-  implements View.OnClickListener
 {
-  soq(sop paramsop) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
   
-  public void onClick(View paramView) {}
+  private soq(soo paramsoo) {}
 }
 
 

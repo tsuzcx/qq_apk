@@ -1,124 +1,72 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bdma
+public class bdma
+  implements lar
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public long f;
-  public String f;
-  public long g;
-  public long h;
-  public long i = 0L;
-  public long j = 4L;
-  public long k = a();
-  public long l = Build.VERSION.SDK_INT;
-  public long m;
-  public long n = 0L;
-  public long o = 0L;
-  public long p = 0L;
-  public long q = 0L;
+  public bdma(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public bdma()
-  {
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "8.4.5";
-    this.jdField_c_of_type_JavaLangString = Build.MODEL;
-  }
+  public void a() {}
   
-  public int a()
+  public void a(Bundle paramBundle)
   {
-    int i2 = 0;
-    int i1;
-    if (AppNetConnInfo.isWifiConn()) {
-      i1 = 2;
+    int j = 0;
+    paramBundle = paramBundle.getString("sso_GdtLoadAd_rsp_json");
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, "json = " + paramBundle);
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreReportController", 2, "getNetType: " + i1);
-      }
-      return i1;
-      i1 = i2;
-      if (AppNetConnInfo.isMobileConn()) {
-        switch (AppNetConnInfo.getMobileInfo())
+      int i;
+      int k;
+      try
+      {
+        JSONObject localJSONObject1 = new JSONObject(paramBundle);
+        paramBundle = localJSONObject1.optJSONArray("pos_ads_info");
+        localJSONObject1 = new JSONObject(localJSONObject1.optString("busi_cookie")).optJSONObject("index");
+        i = 0;
+        if (i < paramBundle.length())
         {
-        default: 
-          i1 = i2;
-          break;
-        case 1: 
-          i1 = 3;
-          break;
-        case 2: 
-          i1 = 4;
-          break;
-        case 3: 
-          i1 = 5;
+          Object localObject = paramBundle.optJSONObject(i);
+          JSONObject localJSONObject2 = ((JSONObject)localObject).optJSONArray("ads_info").optJSONObject(0);
+          k = j;
+          if (localJSONObject2 != null)
+          {
+            int m = localJSONObject1.optInt(((JSONObject)localObject).optString("pos_id"));
+            k = j;
+            if (m - 1 > 0)
+            {
+              k = j;
+              if (m - 1 < this.a.jdField_a_of_type_JavaUtilArrayList.size())
+              {
+                localObject = new bdmt(localJSONObject2);
+                this.a.jdField_a_of_type_JavaUtilArrayList.add(m - 1, localObject);
+                k = 1;
+              }
+            }
+          }
+        }
+        else
+        {
+          if (j != 0) {
+            this.a.jdField_a_of_type_Bdmh.notifyDataSetChanged();
+          }
+          return;
         }
       }
+      catch (JSONException paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+      i += 1;
+      j = k;
     }
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_f_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.g);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.h);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.i);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.j);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.k);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.l);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.m);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.n);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.o);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.p);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.q);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    return localStringBuilder.toString();
   }
 }
 

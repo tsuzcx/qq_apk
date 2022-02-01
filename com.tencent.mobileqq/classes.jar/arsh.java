@@ -1,111 +1,29 @@
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 public class arsh
+  implements Animation.AnimationListener
 {
-  public byte a;
-  public int a;
-  public long a;
-  public LebaPluginInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
+  public arsh(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, View paramView) {}
   
-  public arsh()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 2147483647;
+    paramAnimation = new AlphaAnimation(0.2F, 0.0F);
+    paramAnimation.setDuration(500L);
+    paramAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
   }
   
-  public static String a(List<arsh> paramList)
-  {
-    if (paramList == null) {
-      return " print lebaData == null";
-    }
-    if (paramList.isEmpty()) {
-      return " print lebaData.isEmpty()";
-    }
-    StringBuilder localStringBuilder = new StringBuilder(" print lebaData size = ").append(paramList.size());
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      arsh localarsh = (arsh)paramList.next();
-      if (localarsh == null)
-      {
-        localStringBuilder.append("|item = null");
-      }
-      else
-      {
-        localStringBuilder.append("|item = ").append(localarsh.jdField_a_of_type_Long).append("|").append(localarsh.jdField_a_of_type_JavaLangString).append("|").append(localarsh.jdField_b_of_type_JavaLangString).append("|").append(localarsh.jdField_a_of_type_Int).append("|").append(localarsh.jdField_a_of_type_Byte).append("|").append(localarsh.jdField_b_of_type_Long).append("|").append(localarsh.jdField_a_of_type_Boolean).append("|");
-        if (localarsh.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) {
-          localStringBuilder.append("info=null");
-        } else {
-          localStringBuilder.append(localarsh.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.toString());
-        }
-      }
-    }
-    return localStringBuilder.toString();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a()
-  {
-    this.jdField_a_of_type_Byte = 0;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Byte == 0;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Byte = 1;
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.cCanChangeState != 0);
-  }
-  
-  public boolean c()
-  {
-    return (!b()) || (this.jdField_b_of_type_Int == 2147483647);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramObject == null) || (this.jdField_a_of_type_Long == 0L)) {
-      bool1 = false;
-    }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (this == paramObject);
-      if (!(paramObject instanceof arsh)) {
-        break;
-      }
-      paramObject = (arsh)paramObject;
-      bool1 = bool2;
-    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return Long.valueOf(this.jdField_a_of_type_Long).hashCode();
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arsh
  * JD-Core Version:    0.7.0.1
  */

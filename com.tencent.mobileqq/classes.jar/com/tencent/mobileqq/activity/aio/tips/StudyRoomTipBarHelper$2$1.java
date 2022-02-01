@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aiwc;
+import ahqn;
 
 public class StudyRoomTipBarHelper$2$1
   implements Runnable
 {
-  public StudyRoomTipBarHelper$2$1(aiwc paramaiwc, int paramInt) {}
+  public StudyRoomTipBarHelper$2$1(ahqn paramahqn, int paramInt) {}
   
   public void run()
   {
-    aiwc.a(this.jdField_a_of_type_Aiwc, this.jdField_a_of_type_Int);
+    ahqn.a(this.jdField_a_of_type_Ahqn, this.jdField_a_of_type_Int);
   }
 }
 

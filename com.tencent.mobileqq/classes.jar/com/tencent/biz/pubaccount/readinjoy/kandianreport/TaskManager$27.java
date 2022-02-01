@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import bhkv;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
 
@@ -11,7 +10,14 @@ class TaskManager$27
   
   public Object invoke(JSContext paramJSContext, int paramInt, Object[] paramArrayOfObject)
   {
-    return new String(bhkv.encode(((String)paramArrayOfObject[0]).getBytes(), 2));
+    paramJSContext = (Double)paramArrayOfObject[0];
+    paramArrayOfObject = (String)paramArrayOfObject[1];
+    if (paramJSContext.doubleValue() == 0.0D) {}
+    for (paramInt = 1;; paramInt = 2)
+    {
+      this.this$0.qlog(paramInt, paramArrayOfObject);
+      return null;
+    }
   }
 }
 

@@ -1,107 +1,205 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.mobileqq.vip.diy.ETTextViewPlus;
-import com.tencent.mobileqq.vip.diy.ProfileTemplateNickNameContainer;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.msf.sdk.MsfMsgUtil;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class biit
-  extends bnvn
+  extends MSFServlet
 {
-  private String a;
-  private String b = "";
-  private int c = -1;
-  private int d = -1;
+  protected AppRuntime a;
   
-  public biit(String paramString1, View paramView, String paramString2)
+  private void a(Intent paramIntent, Bundle paramBundle)
   {
-    super(paramString1, paramView);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = paramString2;
+    paramBundle = paramBundle.getByteArray("wup_buffer");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, this.a.getAccount(), "SharpSvr.c2s");
+    localToServiceMsg.setNeedCallback(false);
+    localToServiceMsg.putWupBuffer(paramBundle);
+    sendToMSF(paramIntent, localToServiceMsg);
   }
   
-  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
+  private void a(String paramString, int paramInt)
   {
-    paramLayoutParams.width = -1;
-    paramLayoutParams.height = -2;
-    int i = ((ViewGroup.MarginLayoutParams)paramLayoutParams).leftMargin;
-    ((ViewGroup.MarginLayoutParams)paramLayoutParams).leftMargin = 0;
-    if ((this.jdField_a_of_type_AndroidViewView instanceof ProfileTemplateNickNameContainer))
-    {
-      ProfileTemplateNickNameContainer localProfileTemplateNickNameContainer = (ProfileTemplateNickNameContainer)this.jdField_a_of_type_AndroidViewView;
-      localProfileTemplateNickNameContainer.setTextViewX(i);
-      if ("center_horizontal".equals(paramJSONObject.optString("gravity"))) {
-        localProfileTemplateNickNameContainer.setTextCenter();
-      }
-    }
-    return paramLayoutParams;
+    biiq.a().a(paramString, paramInt);
   }
   
-  protected void a(String paramString1, String paramString2)
+  private void a(byte[] paramArrayOfByte)
   {
-    if ("f".equals(paramString1)) {}
-    for (;;)
+    biiq.a().a(paramArrayOfByte);
+  }
+  
+  private void b(Intent paramIntent, Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getByteArray("wup_buffer");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, this.a.getAccount(), "SharpSvr.s2cack");
+    localToServiceMsg.setNeedCallback(false);
+    localToServiceMsg.putWupBuffer(paramBundle);
+    sendToMSF(paramIntent, localToServiceMsg);
+  }
+  
+  private void b(byte[] paramArrayOfByte)
+  {
+    biiq.a().c(paramArrayOfByte);
+  }
+  
+  private void c(Intent paramIntent, Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getByteArray("wup_buffer");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, this.a.getAccount(), "MultiVideo.c2s");
+    localToServiceMsg.setNeedCallback(false);
+    localToServiceMsg.putWupBuffer(paramBundle);
+    sendToMSF(paramIntent, localToServiceMsg);
+  }
+  
+  private void c(byte[] paramArrayOfByte)
+  {
+    biiq.a().d(paramArrayOfByte);
+  }
+  
+  private void d(Intent paramIntent, Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getByteArray("wup_buffer");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, this.a.getAccount(), "MultiVideo.s2cack");
+    localToServiceMsg.setNeedCallback(false);
+    localToServiceMsg.putWupBuffer(paramBundle);
+    sendToMSF(paramIntent, localToServiceMsg);
+  }
+  
+  private void d(byte[] paramArrayOfByte)
+  {
+    biiq.a().e(paramArrayOfByte);
+  }
+  
+  private void e(Intent paramIntent, Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("app_id");
+    paramBundle = MsfMsgUtil.getGatewayIpMsg(null);
+    paramBundle.setTimeout(30000L);
+    paramBundle.setNeedCallback(true);
+    paramBundle.setNeedRemindSlowNetwork(false);
+    paramBundle.setAppId(i);
+    sendToMSF(paramIntent, paramBundle);
+  }
+  
+  private void e(byte[] paramArrayOfByte)
+  {
+    biiq.a().f(paramArrayOfByte);
+  }
+  
+  private void f(Intent paramIntent, Bundle paramBundle)
+  {
+    paramBundle = paramBundle.getByteArray("wup_buffer");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, this.a.getAccount(), "VideoCCSvc.Adaptation");
+    localToServiceMsg.putWupBuffer(paramBundle);
+    localToServiceMsg.setTimeout(10000L);
+    sendToMSF(paramIntent, localToServiceMsg);
+  }
+  
+  private void g(Intent paramIntent, Bundle paramBundle)
+  {
+    byte[] arrayOfByte = paramBundle.getByteArray("wup_buffer");
+    paramBundle = new ToServiceMsg(null, String.valueOf(paramBundle.getLong("uin")), "CliLogSvc.UploadReq");
+    paramBundle.putWupBuffer(arrayOfByte);
+    paramBundle.setNeedCallback(false);
+    sendToMSF(paramIntent, paramBundle);
+  }
+  
+  public String[] getPreferSSOCommands()
+  {
+    return new String[] { "SharpSvr.c2sack", "SharpSvr.s2c", "MultiVideo.c2sack", "MultiVideo.s2c" };
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.a = getAppRuntime();
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramFromServiceMsg == null) {}
+    do
     {
-      try
+      return;
+      paramIntent = paramFromServiceMsg.getServiceCmd();
+      bija.c("VideoChannelServlet", String.format("onReceive cmd=%s", new Object[] { paramIntent }));
+      if ("SharpSvr.s2c".equalsIgnoreCase(paramIntent))
       {
-        this.c = Integer.parseInt(paramString2);
-        if (QLog.isColorLevel()) {
-          QLog.d("DIYProfileTemplate.ProfileTemplateNickNameViewModule", 1, "parse name font id=" + this.c);
-        }
+        a(paramFromServiceMsg.getWupBuffer());
         return;
       }
-      catch (NumberFormatException paramString1)
+      if ("SharpSvr.c2sack".equalsIgnoreCase(paramIntent))
       {
-        yuk.e("DIYProfileTemplate.ProfileTemplateNickNameViewModule", "pf_name font id illegal :" + paramString2 + " error=" + paramString1);
+        b(paramFromServiceMsg.getWupBuffer());
         return;
       }
-      if ("ft".equals(paramString1)) {
-        try
-        {
-          this.d = Integer.parseInt(paramString2);
-          if (QLog.isColorLevel())
-          {
-            QLog.d("DIYProfileTemplate.ProfileTemplateNickNameViewModule", 1, "parse name font type=" + this.d);
-            return;
-          }
-        }
-        catch (NumberFormatException paramString1)
-        {
-          yuk.e("DIYProfileTemplate.ProfileTemplateNickNameViewModule", "pf_name font type illegal :" + paramString2 + " error=" + paramString1);
-          return;
-        }
+      if ("MultiVideo.s2c".equalsIgnoreCase(paramIntent))
+      {
+        c(paramFromServiceMsg.getWupBuffer());
+        return;
       }
-    }
-    if ("bg".equals(paramString1))
+      if ("MultiVideo.c2sack".equalsIgnoreCase(paramIntent))
+      {
+        d(paramFromServiceMsg.getWupBuffer());
+        return;
+      }
+      if (!"cmd_getGatewayIp".equalsIgnoreCase(paramIntent)) {
+        break;
+      }
+      paramIntent = (String)paramFromServiceMsg.getAttribute("cmd_getGatewayIp");
+    } while (paramIntent == null);
+    bija.c("VideoChannelServlet", String.format(">>> ip=%s", new Object[] { paramIntent }));
+    a(paramIntent, 0);
+    return;
+    if ("VideoCCSvc.Adaptation".equalsIgnoreCase(paramIntent))
     {
-      this.jdField_a_of_type_JavaLangString = paramString2;
+      if (paramFromServiceMsg.isSuccess())
+      {
+        e(paramFromServiceMsg.getWupBuffer());
+        return;
+      }
+      bija.a("VideoChannelServlet", String.format("onReceive get config fail, resultCode=%s", new Object[] { Integer.valueOf(paramFromServiceMsg.getResultCode()) }));
       return;
     }
-    super.a(paramString1, paramString2);
+    bija.b("VideoChannelServlet", "onReceive handle not process cmd.");
   }
   
-  protected void b()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    super.b();
-    if ((this.jdField_a_of_type_AndroidViewView instanceof ProfileTemplateNickNameContainer))
-    {
-      ETTextViewPlus localETTextViewPlus = ((ProfileTemplateNickNameContainer)this.jdField_a_of_type_AndroidViewView).a();
-      if ((this.c <= 0) || (this.d <= 0)) {
-        break label112;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("DIYProfileTemplate.ProfileTemplateNickNameViewModule", 1, "set name font id=" + this.c + " type=" + this.d);
-      }
-      localETTextViewPlus.setFontAsync(this.c, this.d);
-    }
-    for (;;)
-    {
-      ((ProfileTemplateNickNameContainer)this.jdField_a_of_type_AndroidViewView).setTextBgUrl(this.jdField_a_of_type_JavaLangString);
+    paramPacket = paramIntent.getExtras();
+    if (paramPacket == null) {
       return;
-      label112:
-      yuk.e("DIYProfileTemplate.ProfileTemplateNickNameViewModule", "profile nick name set font error because font id=" + this.c + " type=" + this.d + " is illegal!");
     }
+    int i = paramPacket.getInt("req_type", -1);
+    bija.c("VideoChannelServlet", String.format("onSend reqType=%s", new Object[] { Integer.valueOf(i) }));
+    switch (i)
+    {
+    default: 
+      bija.b("VideoChannelServlet", "onSend handle not define reqType.");
+      return;
+    case 1: 
+      a(paramIntent, paramPacket);
+      return;
+    case 2: 
+      b(paramIntent, paramPacket);
+      return;
+    case 3: 
+      c(paramIntent, paramPacket);
+      return;
+    case 4: 
+      d(paramIntent, paramPacket);
+      return;
+    case 5: 
+      e(paramIntent, paramPacket);
+      return;
+    case 6: 
+      f(paramIntent, paramPacket);
+      return;
+    }
+    g(paramIntent, paramPacket);
   }
 }
 

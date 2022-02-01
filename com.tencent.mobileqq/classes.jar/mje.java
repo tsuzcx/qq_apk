@@ -1,32 +1,33 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.content.Context;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class mje
-  implements ValueAnimator.AnimatorUpdateListener
+public class mje
+  extends mcc
 {
-  mje(mjd parammjd) {}
+  public mje(VideoControlUI paramVideoControlUI, long paramLong1, long paramLong2) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void a(long paramLong, boolean paramBoolean, String paramString)
   {
-    paramValueAnimator.getAnimatedFraction();
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    float f;
-    if (i <= 220)
+    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.h()) {
+      if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this);
+      }
+    }
+    do
     {
-      f = i / 220.0F;
-      mjd.a(this.a).setAlpha(f);
-    }
-    if (i <= 160)
-    {
-      f = i / 100.0F;
-      mjd.a(this.a).setAlpha(f);
-    }
-    if (mjd.a(this.a) != null) {
-      mjd.a(this.a).requestLayout();
-    }
+      do
+      {
+        return;
+        QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "onNotify_ScreenShot_Finish, flag[" + this.jdField_a_of_type_Long + "], _flag[" + paramLong + "], path[" + paramString + "], ret[" + paramBoolean + "], seq[" + this.b + "]");
+      } while (this.jdField_a_of_type_Long != paramLong);
+      if (paramBoolean) {
+        barb.a((Context)this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString);
+      }
+    } while (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null);
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this);
   }
 }
 

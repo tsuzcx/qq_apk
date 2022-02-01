@@ -1,121 +1,47 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.1;
+import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.2;
 import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.util.WeakReference;
 
 public class pyh
-  implements pye
+  implements pwl
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  private SelectPositionModule jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule = pkm.a().a();
+  private WeakReference<pyi> jdField_a_of_type_MqqUtilWeakReference;
+  
+  public pyh(pyi parampyi)
   {
-    return null;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule.a(this);
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(parampyi);
   }
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  private void b(List<pyf> paramList)
   {
-    ptl localptl = new ptl();
-    String str2;
-    String str1;
-    if ((paramBaseArticleInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.a != null) && (paramBaseArticleInfo.mSocialFeedInfo.a.a != null))
-    {
-      String str3 = "ReadInjoy_QA_NoImage_cell";
-      String str4 = "";
-      str2 = str4;
-      str1 = str3;
-      if (paramBaseArticleInfo.mSocialFeedInfo.a.c != null)
-      {
-        str2 = str4;
-        str1 = str3;
-        if (paramBaseArticleInfo.mSocialFeedInfo.a.c.size() > 0)
-        {
-          str2 = str4;
-          str1 = str3;
-          if (paramBaseArticleInfo.mSocialFeedInfo.a.a.b == 1)
-          {
-            str1 = "ReadInjoy_QA_Image_cell";
-            str2 = ((String)paramBaseArticleInfo.mSocialFeedInfo.a.c.get(0)).trim();
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        localptl.a(str1).d(paramBaseArticleInfo, str2).i(paramBaseArticleInfo).q(paramBaseArticleInfo);
-        return localptl.a();
-      }
-      catch (JSONException paramBaseArticleInfo)
-      {
-        paramBaseArticleInfo.printStackTrace();
-        continue;
-      }
-      try
-      {
-        localptl.a("ReadInjoy_QA_NoImage_cell");
-      }
-      catch (JSONException paramBaseArticleInfo)
-      {
-        paramBaseArticleInfo.printStackTrace();
-      }
+    pyi localpyi = (pyi)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if ((localpyi != null) && (paramList != null)) {
+      localpyi.a(paramList);
     }
   }
   
-  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2)
+  public void a()
   {
-    Object localObject = paramContainer.getVirtualView();
-    if ((localObject == null) || (paramppu == null) || (paramppu.a() == null)) {}
-    NativeTextImp localNativeTextImp;
-    do
-    {
-      do
-      {
-        return;
-        localObject = ((ViewBase)localObject).findViewBaseByName("id_summary");
-      } while ((localObject == null) || (((ViewBase)localObject).getNativeView() == null) || (!(((ViewBase)localObject).getNativeView() instanceof NativeTextImp)));
-      localNativeTextImp = (NativeTextImp)((ViewBase)localObject).getNativeView();
-    } while (localNativeTextImp == null);
-    boolean bool = pfa.a().a(paramppu.a().mArticleID);
-    localNativeTextImp.setTextSize(2, 15.0F);
-    if (bool) {}
-    for (localObject = "#999999";; localObject = "#4c4c4c")
-    {
-      localNativeTextImp.setTextColor(Color.parseColor((String)localObject));
-      paramContainer = paramContainer.getContext().getResources().getDisplayMetrics();
-      paramInt2 = 3;
-      paramInt1 = paramInt2;
-      if (paramContainer.widthPixels <= 720)
-      {
-        paramInt1 = paramInt2;
-        if (!ozs.j(paramppu.a())) {
-          paramInt1 = 2;
-        }
-      }
-      localNativeTextImp.setMaxLines(paramInt1);
-      localNativeTextImp.setLineSpacing(Utils.rp2px(2.0D), 1.0F);
-      if (Build.VERSION.SDK_INT < 21) {
-        break;
-      }
-      localNativeTextImp.setLetterSpacing(0.02F);
-      return;
+    SelectPositionModule localSelectPositionModule = pkm.a().a();
+    if (localSelectPositionModule != null) {
+      b(localSelectPositionModule.a());
     }
   }
   
-  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
+  public void a(SelectPositionModule.PositionData paramPositionData)
   {
-    return false;
+    bijk.a().post(new SelectCityPresenter.2(this, paramPositionData));
+  }
+  
+  public void a(List<pyf> paramList)
+  {
+    bijk.a().post(new SelectCityPresenter.1(this, paramList));
   }
 }
 

@@ -1,25 +1,28 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import android.os.Bundle;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import java.util.List;
+import mqq.observer.BusinessObserver;
 
-class ywi
-  implements yyl
+public class ywi
+  implements BusinessObserver
 {
-  ywi(ywh paramywh) {}
+  public ywi(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void a()
-  {
-    yuk.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
-  }
+  protected void a(boolean paramBoolean, List<String> paramList1, List<String> paramList2) {}
   
-  public void a(TroopBarPOI paramTroopBarPOI)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    yuk.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
-    if (paramTroopBarPOI != null)
+    switch (paramInt)
     {
-      this.a.a.setLocation(paramTroopBarPOI.a());
+    default: 
       return;
     }
-    this.a.a.setLocation("None for test!!");
+    if (paramBoolean)
+    {
+      a(paramBoolean, paramBundle.getStringArrayList("nickname_list"), paramBundle.getStringArrayList("uin_list"));
+      return;
+    }
+    this.b.i();
   }
 }
 

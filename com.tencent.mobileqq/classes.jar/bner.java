@@ -1,16 +1,18 @@
-import cooperation.qzone.plugin.PluginRecord;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bner
+class bner
+  implements bhhk
 {
-  public abstract void a(PluginRecord paramPluginRecord);
+  bner(bneo parambneo) {}
   
-  public abstract void a(PluginRecord paramPluginRecord, int paramInt);
+  public void onProgressChanged(bhhi parambhhi, int paramInt1, int paramInt2) {}
   
-  public abstract void b(PluginRecord paramPluginRecord);
-  
-  public abstract void b(PluginRecord paramPluginRecord, int paramInt);
-  
-  public abstract void c(PluginRecord paramPluginRecord);
+  public void onProgressCompleted(bhhi parambhhi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambhhi);
+    }
+  }
 }
 
 

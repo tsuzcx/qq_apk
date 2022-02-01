@@ -1,19 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.util.List;
 
-public class sno
-  implements spf
+class sno
+  extends pse
 {
-  public sno(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
-  
-  public BaseData a()
+  sno(snn paramsnn, String paramString, List paramList)
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+    super(paramString);
   }
   
-  public void a()
+  public void a(prx paramprx)
   {
-    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+    paramprx.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

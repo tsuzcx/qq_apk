@@ -1,43 +1,30 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.av.VideoController;
-
 public class lct
-  extends OrientationEventListener
 {
-  private long jdField_a_of_type_Long;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public int d;
+  public long d;
+  public int e;
   
-  public lct(VideoController paramVideoController, Context paramContext, int paramInt)
+  public boolean a()
   {
-    super(paramContext, paramInt);
+    return this.jdField_a_of_type_Int == 3;
   }
   
-  public void onOrientationChanged(int paramInt)
+  public String toString()
   {
-    if (paramInt == -1) {}
-    long l;
-    do
-    {
-      return;
-      l = System.currentTimeMillis();
-    } while (l - this.jdField_a_of_type_Long < 50L);
-    this.jdField_a_of_type_Long = l;
-    if ((paramInt > 315) || (paramInt <= 45))
-    {
-      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 1);
-      return;
+    StringBuilder localStringBuilder = new StringBuilder().append("VideoPacket{roomId=").append(this.jdField_a_of_type_Long).append(", bodyType=").append(this.jdField_a_of_type_Int).append(", uin=").append(this.jdField_b_of_type_Long).append(", fromuin=").append(this.jdField_c_of_type_Long).append(", subServiceType=").append(this.jdField_b_of_type_Int).append(", seq=").append(this.jdField_c_of_type_Int).append(", business_flag=").append(this.jdField_d_of_type_Int).append(", terminal_switch_flag =").append(this.jdField_a_of_type_Boolean).append(", u32AccountType =").append(this.e).append(", uint64_group_uin =").append(this.jdField_d_of_type_Long).append(", str_from_nation =").append(this.jdField_b_of_type_JavaLangString).append(", str_from_mobile =");
+    if (this.jdField_a_of_type_JavaLangString != null) {}
+    for (boolean bool = true;; bool = false) {
+      return bool + '}';
     }
-    if ((paramInt > 45) && (paramInt <= 135))
-    {
-      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 2);
-      return;
-    }
-    if ((paramInt > 135) && (paramInt <= 225))
-    {
-      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 3);
-      return;
-    }
-    VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 4);
   }
 }
 

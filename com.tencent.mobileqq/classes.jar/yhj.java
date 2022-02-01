@@ -1,79 +1,53 @@
+import android.content.Context;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import java.util.List;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class yhj
-  extends wjm<yhc, wqm>
+  extends ygz<yhi>
 {
-  public yhj(yhc paramyhc)
+  public final ImageView a;
+  public final TextView a;
+  public final TextView b = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378444);
+  
+  yhj(yhi paramyhi, @NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    super(paramyhc);
+    super(paramContext, paramViewGroup);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378367));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368344));
   }
   
-  public void a(@NonNull yhc paramyhc, @NonNull wqm paramwqm)
+  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    if ((paramwqm.jdField_a_of_type_Int == 2) || (!paramwqm.jdField_a_of_type_JavaLangString.equals(yhc.a(paramyhc))) || (yhc.a(paramyhc) == null))
-    {
-      yuk.b(this.TAG, "ignore this feed info change event. %s.", paramwqm.toString());
-      return;
-    }
-    yuk.a(this.TAG, "receive feed info change event. %s.", paramwqm.toString());
-    switch (paramwqm.b)
-    {
-    default: 
-      return;
-    case 1: 
-      if (paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
-      {
-        yhc.a(paramyhc).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
-        yhc.a(paramyhc).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount;
-        yhc.a(paramyhc).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount;
-      }
-      localObject = (wse)wth.a(17);
-      localList = ((wse)localObject).a(paramwqm.jdField_a_of_type_JavaLangString, true);
-      yhc.a(paramyhc).a(localList, true, true);
-      if (yhc.a(paramyhc).a())
-      {
-        paramwqm = ((wse)localObject).a(paramwqm.jdField_a_of_type_JavaLangString, false);
-        yhc.a(paramyhc).a(paramwqm, true, false);
-      }
-      paramyhc.a();
-      return;
-    case 2: 
-      if (paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
-      {
-        yhc.a(paramyhc).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
-        yhc.a(paramyhc).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount;
-        yhc.a(paramyhc).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount;
-      }
-      yhc.a(paramyhc).a(paramwqm.c);
-      paramyhc.a();
-      return;
-    }
-    if (paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
-    {
-      yhc.a(paramyhc).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike = paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike;
-      yhc.a(paramyhc).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount = paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount;
-      yhc.a(paramyhc).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendLikeCount = paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendLikeCount;
-      yhc.a(paramyhc).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanLikeCount = paramwqm.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanLikeCount;
-    }
-    Object localObject = (wst)wth.a(15);
-    List localList = ((wst)localObject).a(paramwqm.jdField_a_of_type_JavaLangString, true);
-    yhc.a(paramyhc).b(localList, true, true);
-    if (yhc.a(paramyhc).a())
-    {
-      paramwqm = ((wst)localObject).a(paramwqm.jdField_a_of_type_JavaLangString, false);
-      yhc.a(paramyhc).b(paramwqm, true, false);
-    }
-    paramyhc.a();
+    return LayoutInflater.from(paramContext).inflate(2131561616, paramViewGroup, false);
   }
   
-  public Class acceptEventClass()
+  public void a()
   {
-    return wqm.class;
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
   }
   
-  public void b(@NonNull yhc paramyhc, @NonNull wqm paramwqm) {}
+  public void a(yhi paramyhi, int paramInt)
+  {
+    super.a(paramyhi, paramInt);
+    if ((this.jdField_a_of_type_Ygy != null) && (((yhi)this.jdField_a_of_type_Ygy).c != 0) && (((yhi)this.jdField_a_of_type_Ygy).a != null))
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(((yhi)this.jdField_a_of_type_Ygy).c);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(((yhi)this.jdField_a_of_type_Ygy).a);
+      this.b.setText(((yhi)this.jdField_a_of_type_Ygy).b);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.b.setText("");
+  }
 }
 
 

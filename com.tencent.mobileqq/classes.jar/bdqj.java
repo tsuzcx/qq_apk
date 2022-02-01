@@ -1,22 +1,22 @@
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 class bdqj
-  implements View.OnLongClickListener
+  implements bjoe
 {
-  bdqj(bdqi parambdqi) {}
+  bdqj(bdqi parambdqi, bjnw parambjnw) {}
   
-  public boolean onLongClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.a != null)
+    switch (paramInt)
     {
-      agjk localagjk = (agjk)this.a.a.get();
-      if (localagjk != null) {
-        return localagjk.onLongClick(paramView);
-      }
     }
-    return false;
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      this.jdField_a_of_type_Bdqi.a.a(this.jdField_a_of_type_Bdqi.a.a);
+    }
   }
 }
 

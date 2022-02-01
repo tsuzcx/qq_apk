@@ -1,23 +1,26 @@
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.12.1;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class aemg
-  extends anuw
+  implements DialogInterface.OnClickListener
 {
-  public aemg(EditInfoActivity paramEditInfoActivity) {}
+  public aemg(TroopInfoActivity paramTroopInfoActivity) {}
   
-  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.j) {}
-    do
+    QQAppInterface localQQAppInterface = this.a.app;
+    String str2 = this.a.a.troopUin;
+    if (this.a.a.bOwner) {}
+    for (String str1 = "0";; str1 = "1")
     {
+      bcef.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "1", "");
+      paramDialogInterface.dismiss();
+      this.a.k();
       return;
-      this.a.j = false;
-      this.a.runOnUiThread(new EditInfoActivity.12.1(this, paramBoolean, paramCard, paramInt));
-    } while (!QLog.isColorLevel());
-    QLog.d("EditInfoActivity", 2, String.format("onGetDetailInfo, isSuccess: %s, resultCode:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
+    }
   }
 }
 

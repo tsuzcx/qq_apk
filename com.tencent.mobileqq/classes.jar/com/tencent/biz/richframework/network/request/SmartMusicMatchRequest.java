@@ -4,7 +4,7 @@ import NS_COMM.COMM.Entry;
 import NS_COMM.COMM.StCommonExt;
 import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicReq;
 import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
-import bjve;
+import biaq;
 import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
@@ -22,6 +22,7 @@ import java.util.Iterator;
 public class SmartMusicMatchRequest
   extends VSBaseRequest
 {
+  private static final int VIDEO_LOCATION_DIVIDE = 1000000;
   private static final long serialVersionUID = 6159666206339855822L;
   private final CLIENT.StSmartMatchMusicReq req = new CLIENT.StSmartMatchMusicReq();
   
@@ -29,8 +30,8 @@ public class SmartMusicMatchRequest
   {
     if (paramSosoLocation != null)
     {
-      this.req.fLat.set(paramSosoLocation.a);
-      this.req.fLon.set(paramSosoLocation.b);
+      this.req.fLat.set(paramSosoLocation.mLat02);
+      this.req.fLon.set(paramSosoLocation.mLon02);
     }
     paramSosoLocation = this.req.videoType;
     if (paramBoolean) {}
@@ -56,7 +57,7 @@ public class SmartMusicMatchRequest
     }
     paramArrayList = new COMM.Entry();
     paramArrayList.key.set("wifi_mac");
-    paramArrayList.value.set(bjve.a());
+    paramArrayList.value.set(biaq.a());
     this.req.extInfo.mapInfo.add(paramArrayList);
   }
   

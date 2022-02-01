@@ -1,37 +1,57 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.config.ConfigInfo;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.DoubleVideoCtrlUI.RecordInfo.1;
+import com.tencent.qphone.base.util.QLog;
 
-class mcs
-  extends BroadcastReceiver
+public class mcs
 {
-  mcs(mcr parammcr) {}
+  private int jdField_a_of_type_Int = 0;
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private AVActivity jdField_a_of_type_ComTencentAvUiAVActivity;
+  public Runnable a;
+  private int b;
+  private int c = 2130842216;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private mcs()
   {
-    paramIntent = paramIntent.getAction();
-    if (paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE"))
-    {
-      if (!mcr.a(this.a))
-      {
-        mcr.a(this.a, true);
-        if (mcr.b(this.a)) {
-          mcr.a(this.a);
-        }
-      }
-      int i = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
-      lwd.a().a("update", i);
+    this.jdField_a_of_type_JavaLangRunnable = new DoubleVideoCtrlUI.RecordInfo.1(this);
+  }
+  
+  public void a()
+  {
+    this.c = 2130842216;
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
+    this.jdField_a_of_type_ComTencentAvUiAVActivity = null;
+  }
+  
+  void a(long paramLong)
+  {
+    QLog.w("RecordInfo", 1, "onClick_Record, cancel, seq[" + paramLong + "]");
+    a();
+  }
+  
+  public void a(long paramLong, VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
+  {
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    if (this.jdField_a_of_type_Int == 0) {
+      a(paramLong, paramAVActivity);
     }
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) || (mcr.b(this.a)));
-      mcr.b(this.a, true);
-    } while (!mcr.a(this.a));
-    mcr.a(this.a);
+    while (this.jdField_a_of_type_Int != 1) {
+      return;
+    }
+    a(paramLong);
+  }
+  
+  void a(long paramLong, AVActivity paramAVActivity)
+  {
+    QLog.w("RecordInfo", 1, "onClick_Record, start, seq[" + paramLong + "]");
+    this.jdField_a_of_type_Int = 1;
+    this.c = 2130842219;
+    this.jdField_a_of_type_ComTencentAvUiAVActivity = paramAVActivity;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
   }
 }
 

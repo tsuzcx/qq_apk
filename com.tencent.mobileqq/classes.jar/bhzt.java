@@ -1,72 +1,58 @@
-import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.View;
+import android.widget.Toast;
+import com.tencent.open.base.ToastUtil.1;
+import com.tencent.open.base.ToastUtil.2;
+import com.tencent.open.base.ToastUtil.3;
 
 public class bhzt
-  extends MSFServlet
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  protected static bhzt a;
+  protected Handler a;
+  public Toast a;
+  public Toast b;
+  
+  public bhzt()
   {
-    long l = 0L;
-    if (QLog.isColorLevel())
-    {
-      l = System.currentTimeMillis();
-      QLog.d("VasExtensionServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bhvd.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    for (;;)
-    {
-      VasExtensionHandler localVasExtensionHandler = (VasExtensionHandler)((QQAppInterface)super.getAppRuntime()).a(71);
-      if (localVasExtensionHandler != null) {
-        localVasExtensionHandler.a(paramIntent, paramFromServiceMsg, arrayOfByte);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VasExtensionServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
-      }
-      return;
-      arrayOfByte = null;
-    }
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public static bhzt a()
   {
-    String str = paramIntent.getStringExtra("cmd");
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    long l = paramIntent.getLongExtra("timeout", 30000L);
-    if (!TextUtils.isEmpty(str))
-    {
-      paramPacket.setSSOCommand(str);
-      paramPacket.setTimeout(l);
-      if (arrayOfByte == null) {
-        break label117;
-      }
-      paramIntent = new byte[arrayOfByte.length + 4];
-      bhvd.a(paramIntent, 0, arrayOfByte.length + 4);
-      bhvd.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
+    if (jdField_a_of_type_Bhzt == null) {
+      jdField_a_of_type_Bhzt = new bhzt();
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VasExtensionServlet", 2, "onSend exit cmd=" + str);
-      }
+    return jdField_a_of_type_Bhzt;
+  }
+  
+  public void a(int paramInt)
+  {
+    a(paramInt, 0);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new ToastUtil.2(this, paramInt1, paramInt2));
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new ToastUtil.3(this, paramView, paramInt));
+  }
+  
+  public void a(String paramString)
+  {
+    a(paramString, 0);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      label117:
-      paramIntent = new byte[4];
-      bhvd.a(paramIntent, 0, 4L);
-      paramPacket.putSendData(paramIntent);
     }
+    this.jdField_a_of_type_AndroidOsHandler.post(new ToastUtil.1(this, paramString, paramInt));
   }
 }
 

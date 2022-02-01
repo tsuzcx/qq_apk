@@ -1,82 +1,59 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
-
 public class bcgm
-  extends bcga
 {
-  public static final String a;
-  public List<bcds> a;
-  public String b;
-  public String j;
-  public String k;
+  private int jdField_a_of_type_Int;
+  private short jdField_a_of_type_Short;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private boolean b;
   
-  static
+  bcgm(int paramInt)
   {
-    jdField_a_of_type_JavaLangString = bcgm.class.getSimpleName();
+    this.jdField_a_of_type_ArrayOfByte = new byte[paramInt];
   }
   
-  public bcgm(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public int a()
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    return this.jdField_a_of_type_Int;
   }
   
-  public bcgm(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  public short a()
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    return this.jdField_a_of_type_Short;
   }
   
-  public void a(String paramString)
+  public void a(int paramInt)
   {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.b = paramString.optString("askIcon");
-      this.j = paramString.optString("headLine");
-      this.k = paramString.optString("answerNumText");
-      paramString = paramString.optJSONArray("answers");
-      if (paramString != null)
-      {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList(paramString.length());
-        int i = 0;
-        while (i < paramString.length())
-        {
-          Object localObject2 = paramString.optJSONObject(i);
-          Object localObject1 = ((JSONObject)localObject2).optString("leftIcon");
-          String str1 = ((JSONObject)localObject2).optString("userNameText");
-          String str2 = ((JSONObject)localObject2).optString("praiseText");
-          String str3 = ((JSONObject)localObject2).optString("answerText");
-          int n = ((JSONObject)localObject2).optInt("imageTotalCount");
-          localObject2 = ((JSONObject)localObject2).optJSONArray("imageList");
-          ArrayList localArrayList = new ArrayList();
-          if (localObject2 != null)
-          {
-            int m = 0;
-            while (m < ((JSONArray)localObject2).length())
-            {
-              JSONObject localJSONObject = ((JSONArray)localObject2).optJSONObject(m);
-              localArrayList.add(new bcft(localJSONObject.optString("url"), localJSONObject.optInt("type")));
-              m += 1;
-            }
-          }
-          localObject1 = new bcds((String)localObject1, str1, str2, str3, n, localArrayList);
-          this.jdField_a_of_type_JavaUtilList.add(localObject1);
-          i += 1;
-        }
-      }
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(short paramShort)
+  {
+    this.jdField_a_of_type_Short = paramShort;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfByte;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
   }
 }
 

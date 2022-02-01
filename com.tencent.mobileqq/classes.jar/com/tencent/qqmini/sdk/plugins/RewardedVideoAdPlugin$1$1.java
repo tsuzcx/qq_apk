@@ -31,6 +31,7 @@ class RewardedVideoAdPlugin$1$1
       RewardedVideoAdPlugin.access$1000(this.this$1.this$0).performAction(AudioFocusEvent.obtain(1));
     }
     AdFrequencyLimit.setRewardVideoAdShowing(false);
+    RewardedVideoAdPlugin.access$1102(this.this$1.this$0, true);
   }
   
   public void onADExpose()
@@ -58,22 +59,23 @@ class RewardedVideoAdPlugin$1$1
   public void onError(int paramInt, String paramString)
   {
     QMLog.i("RewardedVideoAdPlugin", "onError, time = " + System.currentTimeMillis() + ", errCode = " + paramInt + ", errMsg = " + paramString);
-    RewardedVideoAdPlugin.access$1100(this.this$1.this$0, this.this$1.val$req, paramInt, this.this$1.val$compId);
+    RewardedVideoAdPlugin.access$1200(this.this$1.this$0, this.this$1.val$req, paramInt, this.this$1.val$compId);
     RewardedVideoAdPlugin.access$002(this.this$1.this$0, false);
     RewardedVideoAdPlugin.access$102(this.this$1.this$0, null);
+    RewardedVideoAdPlugin.access$1102(this.this$1.this$0, true);
     paramString = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
     if ((paramString != null) && (paramString.isGooglePlayVersion())) {
       if (WnsConfig.getConfig("qqminiapp", "mini_app_google_play_ad_switch", 0) != 1) {
-        break label170;
+        break label182;
       }
     }
-    label170:
+    label182:
     for (paramInt = 1;; paramInt = 0)
     {
-      if ((paramInt == 0) && (!RewardedVideoAdPlugin.access$1200(this.this$1.this$0)))
+      if ((paramInt == 0) && (!RewardedVideoAdPlugin.access$1300(this.this$1.this$0)))
       {
         AppBrandTask.runTaskOnUiThread(new RewardedVideoAdPlugin.1.1.2(this));
-        RewardedVideoAdPlugin.access$1202(this.this$1.this$0, true);
+        RewardedVideoAdPlugin.access$1302(this.this$1.this$0, true);
       }
       return;
     }

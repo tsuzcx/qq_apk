@@ -1,17 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.ColorNickManagerProxy.Proxy;
 
-public class bcbf
-  implements View.OnClickListener
+public final class bcbf
+  implements RecentRoute.ColorNickManagerProxy.Proxy
 {
-  public bcbf(UniteSearchActivity paramUniteSearchActivity) {}
-  
-  public void onClick(View paramView)
+  public CharSequence transformMessageWithAtTroopMember(String paramString1, String paramString2)
   {
-    this.a.g();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return bgdk.a(paramString1, paramString2, 16, null, 3);
   }
 }
 

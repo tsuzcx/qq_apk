@@ -1,47 +1,10 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.view.View;
 
-final class tce
-  implements tjn
+public abstract interface tce
 {
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaAccessHelper", 2, "pre load all offline from net is fail");
-    }
-  }
+  public abstract void a(View paramView, int paramInt, long paramLong);
   
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      JSONArray localJSONArray = (JSONArray)paramString.get("preload_bids");
-      int i = 0;
-      while (i < localJSONArray.length())
-      {
-        tbz.a((String)localJSONArray.get(i), null);
-        i += 1;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ViolaAccessHelper", 2, "pre load all offline from net is success");
-      }
-      tbz.jdField_a_of_type_JavaLangString = ozs.a();
-      tbz.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (paramString.has("use_main")) {
-        tbz.jdField_a_of_type_Boolean = ((Boolean)paramString.get("use_main")).booleanValue();
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ViolaAccessHelper", 2, "pre load all offline from net is exception:" + paramString.getMessage());
-    }
-  }
+  public abstract void b(View paramView, int paramInt, long paramLong);
 }
 
 

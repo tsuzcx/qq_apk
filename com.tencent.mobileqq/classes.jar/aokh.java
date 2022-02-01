@@ -1,10 +1,13 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import pb.unite.search.RequestSearchWord.Rcmd;
+import java.util.List;
 
 public abstract interface aokh
+  extends aoka
 {
-  public abstract void a(PBRepeatMessageField<RequestSearchWord.Rcmd> paramPBRepeatMessageField, PBStringField paramPBStringField);
+  public abstract void a(long paramLong);
+  
+  public abstract void a(List<aojx> paramList, long paramLong);
+  
+  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2);
 }
 
 

@@ -16,9 +16,9 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
-import azby;
-import azce;
-import azcn;
+import axpg;
+import axpm;
+import axpv;
 
 public class GestureFrameLayout
   extends FrameLayout
@@ -47,7 +47,7 @@ public class GestureFrameLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy.a().a(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy.a(new azby(this));
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy.a(new axpg(this));
   }
   
   protected static int a(int paramInt1, int paramInt2, int paramInt3)
@@ -100,11 +100,11 @@ public class GestureFrameLayout
   }
   
   @TargetApi(16)
-  public void a(azcn paramazcn)
+  public void a(axpv paramaxpv)
   {
     if ((!isHardwareAccelerated()) || (this.jdField_a_of_type_AndroidViewView == null))
     {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.set(paramazcn.a());
+      this.jdField_a_of_type_AndroidGraphicsMatrix.set(paramaxpv.a());
       this.jdField_a_of_type_AndroidGraphicsMatrix.invert(this.b);
       if (a().a() != null) {
         a().a().a(this.b);
@@ -116,11 +116,11 @@ public class GestureFrameLayout
       return;
       this.jdField_a_of_type_AndroidViewView.setPivotX(0.0F);
       this.jdField_a_of_type_AndroidViewView.setPivotY(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setScaleX(paramazcn.c());
-      this.jdField_a_of_type_AndroidViewView.setScaleY(paramazcn.c());
-      this.jdField_a_of_type_AndroidViewView.setTranslationX(paramazcn.a());
-      this.jdField_a_of_type_AndroidViewView.setTranslationY(paramazcn.b());
-      this.c.set(paramazcn.a());
+      this.jdField_a_of_type_AndroidViewView.setScaleX(paramaxpv.c());
+      this.jdField_a_of_type_AndroidViewView.setScaleY(paramaxpv.c());
+      this.jdField_a_of_type_AndroidViewView.setTranslationX(paramaxpv.a());
+      this.jdField_a_of_type_AndroidViewView.setTranslationY(paramaxpv.b());
+      this.c.set(paramaxpv.a());
       this.c.invert(this.d);
     } while (a().a() == null);
     a().a().a(this.d);

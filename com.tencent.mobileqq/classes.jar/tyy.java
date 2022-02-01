@@ -1,23 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class tyy
-  implements View.OnClickListener
+  implements tqt
 {
-  tyy(tyo paramtyo, String paramString) {}
+  tyy(tyx paramtyx) {}
   
-  public void onClick(View paramView)
+  public void a(txh paramtxh, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Tyo.j();
-    this.jdField_a_of_type_Tyo.o = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Tyo.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a(paramtxh, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tyy
  * JD-Core Version:    0.7.0.1
  */

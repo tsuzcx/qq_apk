@@ -1,17 +1,17 @@
 package com.tencent.biz.subscribe.comment;
 
-import aakh;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import zhf;
 
 public class SubscribeCommentInputPopupWindow$10
   implements Runnable
 {
-  public SubscribeCommentInputPopupWindow$10(aakh paramaakh, View paramView) {}
+  public SubscribeCommentInputPopupWindow$10(zhf paramzhf, View paramView) {}
   
   public void run()
   {
-    aakh.a(this.this$0).hideSoftInputFromWindow(this.a.getWindowToken(), 0);
+    zhf.a(this.this$0).hideSoftInputFromWindow(this.a.getWindowToken(), 0);
   }
 }
 

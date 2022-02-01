@@ -4,8 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bmyr;
-import bmys;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.app.common.ParcelableWrapper;
 import com.tencent.component.app.common.SmartParcelable;
@@ -25,7 +23,7 @@ import java.util.Set;
 public class ExoticEvent
   implements Parcelable
 {
-  public static final Parcelable.Creator<ExoticEvent> CREATOR = new bmyr();
+  public static final Parcelable.Creator<ExoticEvent> CREATOR = new ExoticEvent.1();
   private static final String TAG = "ExoticEvent";
   private static final int TYPE_BYTE_ARRAY = 5;
   private static final int TYPE_CHAR_ARRAY = 6;
@@ -87,12 +85,12 @@ public class ExoticEvent
     }
   }
   
-  private ExoticEvent(bmys parambmys, int paramInt, String paramString)
+  private ExoticEvent(ExoticEvent.TypeCheckDoc paramTypeCheckDoc, int paramInt, String paramString)
   {
-    this.mTypes = bmys.a(parambmys);
+    this.mTypes = ExoticEvent.TypeCheckDoc.access$000(paramTypeCheckDoc);
     this.what = paramInt;
     this.sourceName = paramString;
-    this.param = bmys.a(parambmys);
+    this.param = ExoticEvent.TypeCheckDoc.access$100(paramTypeCheckDoc);
   }
   
   private static Object foreachReadFromParcel(Parcel paramParcel, List<Integer> paramList, ClassLoader paramClassLoader)
@@ -297,17 +295,17 @@ public class ExoticEvent
     }
   }
   
-  private static boolean foreachType(bmys parambmys)
+  private static boolean foreachType(ExoticEvent.TypeCheckDoc paramTypeCheckDoc)
   {
-    int i = getType(bmys.b(parambmys));
-    bmys.a(parambmys).add(Integer.valueOf(i));
+    int i = getType(ExoticEvent.TypeCheckDoc.access$300(paramTypeCheckDoc));
+    ExoticEvent.TypeCheckDoc.access$000(paramTypeCheckDoc).add(Integer.valueOf(i));
     switch (i)
     {
     }
     for (;;)
     {
-      return bmys.a(parambmys);
-      Object localObject1 = (Object[])bmys.b(parambmys);
+      return ExoticEvent.TypeCheckDoc.access$400(paramTypeCheckDoc);
+      Object localObject1 = (Object[])ExoticEvent.TypeCheckDoc.access$300(paramTypeCheckDoc);
       Object localObject2 = new Object[localObject1.length];
       i = 0;
       Object localObject3;
@@ -316,19 +314,19 @@ public class ExoticEvent
         if (i >= localObject1.length) {
           break label147;
         }
-        localObject3 = new bmys(parambmys, localObject1[i]);
-        if (!foreachType((bmys)localObject3))
+        localObject3 = new ExoticEvent.TypeCheckDoc(paramTypeCheckDoc, localObject1[i]);
+        if (!foreachType((ExoticEvent.TypeCheckDoc)localObject3))
         {
-          bmys.a(parambmys, false);
+          ExoticEvent.TypeCheckDoc.access$402(paramTypeCheckDoc, false);
           break;
         }
-        localObject2[i] = bmys.a((bmys)localObject3);
+        localObject2[i] = ExoticEvent.TypeCheckDoc.access$100((ExoticEvent.TypeCheckDoc)localObject3);
         i += 1;
       }
       label147:
-      bmys.a(parambmys, localObject2);
+      ExoticEvent.TypeCheckDoc.access$102(paramTypeCheckDoc, localObject2);
       continue;
-      localObject2 = (List)bmys.b(parambmys);
+      localObject2 = (List)ExoticEvent.TypeCheckDoc.access$300(paramTypeCheckDoc);
       localObject1 = new ArrayList(((List)localObject2).size());
       localObject2 = ((List)localObject2).iterator();
       for (;;)
@@ -336,18 +334,18 @@ public class ExoticEvent
         if (!((Iterator)localObject2).hasNext()) {
           break label242;
         }
-        localObject3 = new bmys(parambmys, ((Iterator)localObject2).next());
-        if (!foreachType((bmys)localObject3))
+        localObject3 = new ExoticEvent.TypeCheckDoc(paramTypeCheckDoc, ((Iterator)localObject2).next());
+        if (!foreachType((ExoticEvent.TypeCheckDoc)localObject3))
         {
-          bmys.a(parambmys, false);
+          ExoticEvent.TypeCheckDoc.access$402(paramTypeCheckDoc, false);
           break;
         }
-        ((List)localObject1).add(bmys.a((bmys)localObject3));
+        ((List)localObject1).add(ExoticEvent.TypeCheckDoc.access$100((ExoticEvent.TypeCheckDoc)localObject3));
       }
       label242:
-      bmys.a(parambmys, localObject1);
+      ExoticEvent.TypeCheckDoc.access$102(paramTypeCheckDoc, localObject1);
       continue;
-      localObject2 = (Set)bmys.b(parambmys);
+      localObject2 = (Set)ExoticEvent.TypeCheckDoc.access$300(paramTypeCheckDoc);
       localObject1 = new LinkedHashSet();
       localObject2 = ((Set)localObject2).iterator();
       for (;;)
@@ -355,18 +353,18 @@ public class ExoticEvent
         if (!((Iterator)localObject2).hasNext()) {
           break label331;
         }
-        localObject3 = new bmys(parambmys, ((Iterator)localObject2).next());
-        if (!foreachType((bmys)localObject3))
+        localObject3 = new ExoticEvent.TypeCheckDoc(paramTypeCheckDoc, ((Iterator)localObject2).next());
+        if (!foreachType((ExoticEvent.TypeCheckDoc)localObject3))
         {
-          bmys.a(parambmys, false);
+          ExoticEvent.TypeCheckDoc.access$402(paramTypeCheckDoc, false);
           break;
         }
-        ((Set)localObject1).add(bmys.a((bmys)localObject3));
+        ((Set)localObject1).add(ExoticEvent.TypeCheckDoc.access$100((ExoticEvent.TypeCheckDoc)localObject3));
       }
       label331:
-      bmys.a(parambmys, localObject1);
+      ExoticEvent.TypeCheckDoc.access$102(paramTypeCheckDoc, localObject1);
       continue;
-      localObject2 = (Map)bmys.b(parambmys);
+      localObject2 = (Map)ExoticEvent.TypeCheckDoc.access$300(paramTypeCheckDoc);
       localObject1 = new LinkedHashMap();
       localObject2 = ((Map)localObject2).entrySet().iterator();
       for (;;)
@@ -379,20 +377,20 @@ public class ExoticEvent
         localObject4 = ((Map.Entry)localObject4).getValue();
         if ((localObject3 != null) && (localObject4 != null))
         {
-          localObject3 = new bmys(parambmys, localObject3);
-          localObject4 = new bmys(parambmys, localObject4);
-          if ((!foreachType((bmys)localObject3)) || (!foreachType((bmys)localObject4)))
+          localObject3 = new ExoticEvent.TypeCheckDoc(paramTypeCheckDoc, localObject3);
+          localObject4 = new ExoticEvent.TypeCheckDoc(paramTypeCheckDoc, localObject4);
+          if ((!foreachType((ExoticEvent.TypeCheckDoc)localObject3)) || (!foreachType((ExoticEvent.TypeCheckDoc)localObject4)))
           {
-            bmys.a(parambmys, false);
+            ExoticEvent.TypeCheckDoc.access$402(paramTypeCheckDoc, false);
             break;
           }
-          ((Map)localObject1).put(bmys.a((bmys)localObject3), bmys.a((bmys)localObject4));
+          ((Map)localObject1).put(ExoticEvent.TypeCheckDoc.access$100((ExoticEvent.TypeCheckDoc)localObject3), ExoticEvent.TypeCheckDoc.access$100((ExoticEvent.TypeCheckDoc)localObject4));
         }
       }
       label485:
-      bmys.a(parambmys, localObject1);
+      ExoticEvent.TypeCheckDoc.access$102(paramTypeCheckDoc, localObject1);
       continue;
-      bmys.a(parambmys, false);
+      ExoticEvent.TypeCheckDoc.access$402(paramTypeCheckDoc, false);
     }
   }
   
@@ -542,7 +540,7 @@ public class ExoticEvent
   {
     try
     {
-      ClassLoader localClassLoader1 = QzonePluginProxyActivity.a(BaseApplicationImpl.getApplication());
+      ClassLoader localClassLoader1 = QzonePluginProxyActivity.getQZonePluginClassLoader(BaseApplicationImpl.getApplication());
       ClassLoader localClassLoader2 = localClassLoader1;
       if (localClassLoader1 == null) {
         localClassLoader2 = ExoticEvent.class.getClassLoader();
@@ -621,7 +619,7 @@ public class ExoticEvent
     for (;;)
     {
       return null;
-      paramObject = new bmys(paramObject, null);
+      paramObject = new ExoticEvent.TypeCheckDoc(paramObject, null);
       try
       {
         bool = foreachType(paramObject);

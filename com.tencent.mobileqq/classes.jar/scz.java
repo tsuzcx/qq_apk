@@ -1,8 +1,8 @@
 public abstract interface scz
 {
-  public abstract void a(int paramInt);
+  public abstract void a(rsd paramrsd1, rsd paramrsd2, int paramInt, boolean paramBoolean);
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void j();
 }
 
 

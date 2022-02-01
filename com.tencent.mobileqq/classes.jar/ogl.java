@@ -1,34 +1,18 @@
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.biz.pubaccount.ecshopassit.view.EcshopTabFragment;
-import com.tencent.biz.pubaccount.ecshopassit.view.EcshopWebview;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.smtt.sdk.WebView;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class ogl
-  extends ogk
+class ogl
+  implements PopupWindow.OnDismissListener
 {
-  public ogl(EcshopTabFragment paramEcshopTabFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView, String paramString)
-  {
-    super(paramContext, paramActivity, paramAppInterface, paramTouchWebView, paramString);
-  }
+  ogl(ogk paramogk) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void onDismiss()
   {
-    super.onPageFinished(paramWebView, paramString);
-    EcshopTabFragment.a(this.a).setVisibility(0);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    return super.shouldOverrideUrlLoading(paramWebView, paramString);
+    WindowManager.LayoutParams localLayoutParams = ((Activity)this.a.a).getWindow().getAttributes();
+    localLayoutParams.alpha = 1.0F;
+    ((Activity)this.a.a).getWindow().setAttributes(localLayoutParams);
   }
 }
 

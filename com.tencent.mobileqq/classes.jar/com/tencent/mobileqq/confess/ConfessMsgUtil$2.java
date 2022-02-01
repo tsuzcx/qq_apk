@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.confess;
 
-import aqzb;
+import apsm;
 
 public final class ConfessMsgUtil$2
   implements Runnable
 {
-  public ConfessMsgUtil$2(aqzb paramaqzb) {}
+  public ConfessMsgUtil$2(apsm paramapsm) {}
   
   public void run()
   {

@@ -1,15 +1,29 @@
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity.ScanSpaceTask;
-import com.tencent.mobileqq.widget.CircleProgressBar;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class afhp
-  implements afhn
+  extends Handler
 {
-  public afhp(QQSettingCleanActivity.ScanSpaceTask paramScanSpaceTask) {}
-  
-  public void a(int paramInt)
+  public afhp(RecordSoundPanel paramRecordSoundPanel, Looper paramLooper)
   {
-    this.a.this$0.a.setPercent(paramInt);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a.stopAudioRecord(1);
+    this.a.d();
+    QQToast.a(this.a.a.getActivity(), this.a.a.getActivity().getString(2131697962), 1).a();
   }
 }
 

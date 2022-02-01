@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
+import android.os.Message;
+import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
+import com.tencent.mobileqq.app.BusinessObserver;
+import cooperation.vip.pb.VacAdvGetAccess.VacMemberGetOrderCntRsp;
+import mqq.os.MqqHandler;
 
-class alby
-  implements nks
+public class alby
+  implements BusinessObserver
 {
-  alby(albx paramalbx) {}
+  public alby(ShoppingFragment paramShoppingFragment) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramBoolean)
+    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof VacAdvGetAccess.VacMemberGetOrderCntRsp)))
     {
-      WordChainHbFragment.a(this.a.a, 8);
-      return;
+      Message localMessage = Message.obtain();
+      localMessage.obj = paramObject;
+      localMessage.what = 1001;
+      ShoppingFragment.a(this.a).sendMessage(localMessage);
     }
-    WordChainHbFragment.a(this.a.a, 0);
   }
 }
 

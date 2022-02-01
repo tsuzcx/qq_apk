@@ -1,45 +1,27 @@
-import android.content.ComponentName;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContactAdd;
+import com.tencent.mobileqq.data.QIMNotifyAddFriend;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class alks
-  implements View.OnClickListener
+public class alks
+  extends bjtz
 {
-  alks(aljw paramaljw) {}
-  
-  public void onClick(View paramView)
-  {
-    Object localObject = QQPlayerService.a();
-    int i;
-    if (localObject != null)
-    {
-      aljw.a(this.a).startActivity((Intent)localObject);
-      localObject = ((Intent)localObject).getComponent().getClassName();
-      if (!((String)localObject).equals(MusicPlayerActivity.class.getName())) {
-        break label132;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      bdll.a(aljw.a(this.a).app, "dc00898", "", "", "0X8009EE4", "0X8009EE4", 1, 0, "", "", "", "");
-      bdll.b(aljw.a(this.a).app, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label132:
-      if (((String)localObject).equals(MusicGeneQQBrowserActivity.class.getName())) {
-        i = 1;
-      } else {
-        i = -1;
-      }
-    }
-  }
+  public int a;
+  public long a;
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public PhoneContactAdd a;
+  public QIMNotifyAddFriend a;
+  public String a;
+  public structmsg.StructMsg a;
+  public long b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

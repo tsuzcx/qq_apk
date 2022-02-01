@@ -1,69 +1,22 @@
-import com.tencent.mobileqq.app.GuardProcessExitListener;
+import com.tencent.mobileqq.troop.associations.AllianceItem;
+import com.tencent.qphone.base.util.QLog;
 
 class bdvk
-  extends GuardProcessExitListener
+  extends andd
 {
   bdvk(bdvj parambdvj) {}
   
-  public String a()
+  protected void onGetRelatedTroopList(boolean paramBoolean, String paramString, int paramInt, long paramLong, AllianceItem paramAllianceItem)
   {
-    return "com.tencent.mobileqq:live";
-  }
-  
-  /* Error */
-  public void a(boolean paramBoolean)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 10	bdvk:a	Lbdvj;
-    //   4: invokestatic 25	bdvj:a	(Lbdvj;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
-    //   7: ifnull +48 -> 55
-    //   10: aload_0
-    //   11: getfield 10	bdvk:a	Lbdvj;
-    //   14: invokestatic 25	bdvj:a	(Lbdvj;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
-    //   17: invokevirtual 31	com/tencent/shadow/dynamic/host/DynamicPluginManager:getManagerImpl	()Lcom/tencent/shadow/dynamic/host/PluginManager;
-    //   20: instanceof 33
-    //   23: ifeq +32 -> 55
-    //   26: aload_0
-    //   27: getfield 10	bdvk:a	Lbdvj;
-    //   30: invokestatic 25	bdvj:a	(Lbdvj;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
-    //   33: invokevirtual 31	com/tencent/shadow/dynamic/host/DynamicPluginManager:getManagerImpl	()Lcom/tencent/shadow/dynamic/host/PluginManager;
-    //   36: checkcast 33	com/tencent/mobileqq/intervideo/shadow/PluginProcessKiller
-    //   39: astore_2
-    //   40: aload_2
-    //   41: invokeinterface 36 1 0
-    //   46: aload_0
-    //   47: getfield 10	bdvk:a	Lbdvj;
-    //   50: aconst_null
-    //   51: invokestatic 39	bdvj:a	(Lbdvj;Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
-    //   54: pop
-    //   55: return
-    //   56: astore_2
-    //   57: aload_0
-    //   58: getfield 10	bdvk:a	Lbdvj;
-    //   61: aconst_null
-    //   62: invokestatic 39	bdvj:a	(Lbdvj;Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
-    //   65: pop
-    //   66: return
-    //   67: astore_2
-    //   68: aload_0
-    //   69: getfield 10	bdvk:a	Lbdvj;
-    //   72: aconst_null
-    //   73: invokestatic 39	bdvj:a	(Lbdvj;Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;)Lcom/tencent/shadow/dynamic/host/DynamicPluginManager;
-    //   76: pop
-    //   77: aload_2
-    //   78: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	79	0	this	bdvk
-    //   0	79	1	paramBoolean	boolean
-    //   39	2	2	localPluginProcessKiller	com.tencent.mobileqq.intervideo.shadow.PluginProcessKiller
-    //   56	1	2	localIllegalArgumentException	java.lang.IllegalArgumentException
-    //   67	11	2	localObject	java.lang.Object
-    // Exception table:
-    //   from	to	target	type
-    //   40	46	56	java/lang/IllegalArgumentException
-    //   40	46	67	finally
+    if (paramAllianceItem == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopAssociationsListWrapper", 1, "TroopAssociationsListWrapper onGetRelatedTroopList: allianceItem is null");
+      }
+      this.a.a(paramBoolean, paramString, paramInt, null, 0, null, paramLong);
+      return;
+    }
+    this.a.a(paramBoolean, paramString, paramInt, paramAllianceItem.nextTroopUin, paramAllianceItem.associatedTroopCount, paramAllianceItem.associatedTroopList, paramLong);
   }
 }
 

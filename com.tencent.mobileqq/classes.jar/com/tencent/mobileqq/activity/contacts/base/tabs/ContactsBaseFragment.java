@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contacts.base.tabs;
 
-import ajtd;
-import ajtg;
-import ajth;
-import ajti;
+import aioa;
+import aiod;
+import aioe;
+import aiof;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.graphics.Rect;
@@ -13,7 +13,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import blih;
 import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -21,15 +20,16 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public abstract class ContactsBaseFragment
   extends ReportV4Fragment
-  implements ajtd, blih
+  implements aioa, AbsListView.OnScrollListener
 {
   public static Rect a;
   private int a;
-  protected ajth a;
-  public ajti a;
+  protected aioe a;
+  public aiof a;
   public BaseActivity a;
   public QQAppInterface a;
   public boolean a;
@@ -51,14 +51,14 @@ public abstract class ContactsBaseFragment
   
   public abstract void a();
   
-  public void a(ajth paramajth)
+  public void a(aioe paramaioe)
   {
-    this.jdField_a_of_type_Ajth = paramajth;
+    this.jdField_a_of_type_Aioe = paramaioe;
   }
   
-  public void a(ajti paramajti)
+  public void a(aiof paramaiof)
   {
-    this.jdField_a_of_type_Ajti = paramajti;
+    this.jdField_a_of_type_Aiof = paramaiof;
   }
   
   public void a(BaseActivity paramBaseActivity)
@@ -77,7 +77,7 @@ public abstract class ContactsBaseFragment
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract void ap_();
+  public abstract void af_();
   
   public int b()
   {
@@ -154,7 +154,7 @@ public abstract class ContactsBaseFragment
     this.jdField_b_of_type_AndroidViewView = a(paramLayoutInflater, paramBundle);
     paramLayoutInflater = a();
     if ((paramLayoutInflater != null) && (Build.VERSION.SDK_INT >= 14)) {
-      paramLayoutInflater.setAccessibilityDelegate(new ajtg(this));
+      paramLayoutInflater.setAccessibilityDelegate(new aiod(this));
     }
     if ((this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean))
     {
@@ -180,8 +180,8 @@ public abstract class ContactsBaseFragment
     }
     this.jdField_b_of_type_AndroidViewView = null;
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Ajth != null) {
-      this.jdField_a_of_type_Ajth.a(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Aioe != null) {
+      this.jdField_a_of_type_Aioe.a(this.jdField_a_of_type_Int);
     }
   }
   

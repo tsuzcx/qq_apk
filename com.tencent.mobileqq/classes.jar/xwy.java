@@ -1,14 +1,17 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.playvideo.playerwidget.BottomVideoInfoWidget.8.1;
+import com.tencent.biz.qqstory.takevideo.EditPicActivity;
 
 public class xwy
-  implements xxg
+  extends bbpx
 {
-  public xwy(BottomVideoInfoWidget.8.1 param1, Activity paramActivity) {}
+  public xwy(EditPicActivity paramEditPicActivity) {}
   
   public void a()
   {
-    xwr.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_Xwr, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.b, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.c, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.d, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.e, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.f, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+    xvv.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
+    xwj localxwj = (xwj)this.a.a.a(xwj.class);
+    if (localxwj != null) {
+      localxwj.S_();
+    }
   }
 }
 

@@ -1,15 +1,10 @@
-class awps
-  extends anyu
+import com.tencent.mobileqq.nearby.now.model.Comments;
+
+public abstract interface awps
 {
-  awps(awpq paramawpq) {}
+  public abstract void a();
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    super.onUpdateDelFriend(paramBoolean, paramObject);
-    if ((paramBoolean) && ((paramObject instanceof Long))) {
-      awsk.a(this.a.app, 0, String.valueOf(paramObject));
-    }
-  }
+  public abstract void a(Comments paramComments);
 }
 
 

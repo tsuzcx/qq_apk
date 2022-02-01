@@ -98,7 +98,7 @@ class ValueBean$ValueNode
         catch (JSONException paramObject1)
         {
           LogUtil.QLog.e("ValueBean", 2, "setTrueValue: ", paramObject1);
-          break label469;
+          break label494;
         }
         paramObject1 = null;
         if (i < ((JSONArray)localObject2).length()) {
@@ -111,22 +111,22 @@ class ValueBean$ValueNode
         ((JSONArray)localObject2).put(i, paramObject2);
         bool2 = setTrueValue(localObject3, paramObject2, paramString, paramObject3);
         bool2 = bool1 | bool2;
-        break label465;
+        break label490;
       }
     }
     else
     {
       if (!(paramObject1 instanceof JSONObject)) {
-        break label463;
+        break label488;
       }
       localObject1 = (JSONObject)paramObject1;
       localObject2 = (JSONObject)paramObject2;
       localObject3 = ((JSONObject)localObject1).keys();
     }
-    label463:
-    label465:
-    label469:
-    label482:
+    label488:
+    label490:
+    label494:
+    label507:
     for (boolean bool1 = false;; bool1 = bool2) {
       if (((Iterator)localObject3).hasNext())
       {
@@ -162,17 +162,25 @@ class ValueBean$ValueNode
         catch (JSONException paramObject1)
         {
           LogUtil.QLog.e("ValueBean", 2, "setTrueValue: ", paramObject1);
-          break label482;
+          break label507;
         }
-        paramObject2 = ((JSONObject)localObject2).opt(str);
-        paramObject1 = paramObject2;
-        if (paramObject2 == null)
+        if ((localObject4 instanceof Integer))
         {
-          paramObject1 = createJsonType(localObject4);
-          ((JSONObject)localObject2).put(str, paramObject1);
+          ((JSONObject)localObject2).put(str, localObject4);
+          bool2 = bool1;
         }
-        bool2 = setTrueValue(localObject4, paramObject1, paramString, paramObject3);
-        bool2 = bool1 | bool2;
+        else
+        {
+          paramObject2 = ((JSONObject)localObject2).opt(str);
+          paramObject1 = paramObject2;
+          if (paramObject2 == null)
+          {
+            paramObject1 = createJsonType(localObject4);
+            ((JSONObject)localObject2).put(str, paramObject1);
+          }
+          bool2 = setTrueValue(localObject4, paramObject1, paramString, paramObject3);
+          bool2 = bool1 | bool2;
+        }
       }
       else
       {
@@ -221,7 +229,7 @@ class ValueBean$ValueNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ValueBean.ValueNode
  * JD-Core Version:    0.7.0.1
  */

@@ -1,76 +1,118 @@
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.pb.PBStringField;
-import localpb.richMsg.SafeMsg.SafeMoreInfo;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
-class adaq
+public class adaq
+  extends andd
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private MsgInfo jdField_a_of_type_OnlinePushPackMsgInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
+  public adaq(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public adaq(adan paramadan, MsgInfo paramMsgInfo, long paramLong1, long paramLong2)
+  protected void onAddRobot(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_OnlinePushPackMsgInfo = paramMsgInfo;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public adaq a()
-  {
-    this.jdField_a_of_type_JavaLangString = new String(bcsa.a(this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg), "utf-8");
-    Object localObject = ((anyw)this.jdField_a_of_type_Adan.a.getManager(51)).e(this.jdField_b_of_type_Long + "");
-    if ((localObject != null) && (((Friends)localObject).isFriend())) {
-      this.jdField_a_of_type_Int = 0;
-    }
-    for (;;)
+    if (!paramBoolean) {}
+    String str;
+    do
     {
-      localObject = new SafeMsg.SafeMoreInfo();
-      ((SafeMsg.SafeMoreInfo)localObject).strFromMobile.set(this.jdField_a_of_type_OnlinePushPackMsgInfo.strFromMobile);
-      ((SafeMsg.SafeMoreInfo)localObject).strFromName.set(this.jdField_a_of_type_OnlinePushPackMsgInfo.strFromName);
-      ((SafeMsg.SafeMoreInfo)localObject).strMsgTxt.set(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ArrayOfByte = ((SafeMsg.SafeMoreInfo)localObject).toByteArray();
-      this.jdField_b_of_type_Int = -1002;
-      this.jdField_a_of_type_Boolean = true;
-      return this;
-      localObject = ((axfr)this.jdField_a_of_type_Adan.a.getManager(11)).b(String.valueOf(this.jdField_a_of_type_Long));
-      if ((localObject != null) && (((String)localObject).length() != 0)) {
-        this.jdField_a_of_type_Int = 1006;
-      } else {
-        this.jdField_a_of_type_Int = 1000;
+      return;
+      str = paramLong1 + "";
+    } while ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin == null) || (!str.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin)));
+    ChatSettingForTroop.a(this.a, true);
+  }
+  
+  protected void onDelRobotByWeb(String paramString1, String paramString2, String paramString3)
+  {
+    if ((paramString1 == null) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin))) {
+      return;
+    }
+    ChatSettingForTroop.a(this.a, true);
+  }
+  
+  protected void onDeleteRobot(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
+  {
+    if (!paramBoolean) {}
+    String str;
+    do
+    {
+      return;
+      str = paramLong1 + "";
+    } while ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin == null) || (!str.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin)));
+    ChatSettingForTroop.a(this.a, true);
+  }
+  
+  protected void onDeleteTroopMember(boolean paramBoolean, int paramInt, ArrayList<String> paramArrayList, String paramString)
+  {
+    super.onDeleteTroopMember(paramBoolean, paramInt, paramArrayList, paramString);
+    if (!paramBoolean) {
+      if (paramInt == 2) {
+        QQToast.a(this.a, 1, amtj.a(2131700899), 0).b(this.a.getTitleBarHeight());
       }
     }
+    Object localObject1;
+    do
+    {
+      return;
+      localObject2 = "";
+      localObject1 = localObject2;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo != null)
+      {
+        localObject1 = localObject2;
+        if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin != null) {
+          localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin;
+        }
+      }
+    } while (this.a.e == null);
+    Object localObject2 = new HashSet();
+    if ((paramString != null) && (paramString.equals(localObject1)))
+    {
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        paramString = (String)paramArrayList.next();
+        localObject1 = this.a.e.iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          oidb_0x899.memberlist localmemberlist = (oidb_0x899.memberlist)((Iterator)localObject1).next();
+          if (paramString.equals(localmemberlist.uint64_member_uin.get() + "")) {
+            ((Collection)localObject2).add(localmemberlist);
+          }
+        }
+      }
+      paramArrayList = ((Collection)localObject2).iterator();
+      while (paramArrayList.hasNext())
+      {
+        paramString = (oidb_0x899.memberlist)paramArrayList.next();
+        this.a.e.remove(paramString);
+      }
+    }
+    this.a.a(this.a.e);
   }
   
-  public String a()
+  protected void onOIDB0XA80_0_Ret(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if ((paramString1 == null) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin))) {}
+    while (paramInt2 != 512) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      anjp.a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo);
+      return;
+    }
+    ChatSettingForTroop.b(this.a);
   }
   
-  public boolean a()
+  protected void onTroopFileRedDotForTimShow(boolean paramBoolean, String paramString)
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
+    super.onTroopFileRedDotForTimShow(paramBoolean, paramString);
+    ChatSettingForTroop.a(this.a);
   }
 }
 

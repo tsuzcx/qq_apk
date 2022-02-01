@@ -1,27 +1,31 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
+import android.opengl.GLSurfaceView.Renderer;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.activity.home.Conversation.22.1;
+import com.tencent.mobileqq.activity.home.Conversation.22.2;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
 public class ajbv
-  implements ajcc
+  implements GLSurfaceView.Renderer
 {
-  public ajbv(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment) {}
+  public ajbv(Conversation paramConversation) {}
   
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
+  public void onDrawFrame(GL10 paramGL10) {}
+  
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2) {}
+  
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    if ((paramArrayOfAIORichMediaData != null) && (paramArrayOfAIORichMediaData.length > 0))
-    {
-      this.a.a = paramArrayOfAIORichMediaData[(paramArrayOfAIORichMediaData.length - 1)];
-      if (QLog.isColorLevel()) {
-        QLog.i("chatHistory.troop.portal", 2, "get the first media data");
-      }
+    Conversation.a(this.a, paramGL10.glGetString(7937));
+    if (Conversation.a(this.a) != null) {
+      ThreadManager.post(new Conversation.22.1(this), 5, null, true);
     }
-    do
-    {
-      return;
-      this.a.a = null;
-    } while (!QLog.isColorLevel());
-    QLog.i("chatHistory.troop.portal", 2, "no media data found");
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_GPU", 2, "onSurfaceCreated|GL_RENDERER= " + Conversation.a(this.a));
+    }
+    this.a.b(new Conversation.22.2(this));
   }
 }
 

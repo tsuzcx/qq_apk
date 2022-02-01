@@ -1,6 +1,17 @@
-public abstract interface aqtr
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+
+public class aqtr
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a();
+  public aqtr(DataReportViewer paramDataReportViewer) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
+  }
 }
 
 

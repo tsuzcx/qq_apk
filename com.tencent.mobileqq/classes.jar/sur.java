@@ -1,76 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class sur<T>
+class sur
+  implements ViewBase.OnClickListener
 {
-  public static final String a;
-  private int jdField_a_of_type_Int;
-  private T jdField_a_of_type_JavaLangObject;
-  private final sus<T> jdField_a_of_type_Sus;
+  sur(suq paramsuq) {}
   
-  static
+  public void onClick(ViewBase paramViewBase)
   {
-    jdField_a_of_type_JavaLangString = "zimage." + sur.class.getSimpleName();
-  }
-  
-  public sur(T paramT, sus<T> paramsus)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    this.jdField_a_of_type_Sus = paramsus;
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public T a()
-  {
-    try
-    {
-      Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-      return localObject1;
-    }
-    finally
-    {
-      localObject2 = finally;
-      throw localObject2;
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_Int += 1;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void b()
-  {
-    try
-    {
-      this.jdField_a_of_type_Int -= 1;
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        if (QLog.isColorLevel()) {
-          suv.a("Reference", " decReference 0 " + this.jdField_a_of_type_JavaLangObject);
-        }
-        if (this.jdField_a_of_type_JavaLangObject != null)
-        {
-          this.jdField_a_of_type_Sus.a(this.jdField_a_of_type_JavaLangObject);
-          this.jdField_a_of_type_JavaLangObject = null;
-        }
-      }
-      return;
-    }
-    finally {}
+    int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
+    sup.a(this.a.jdField_a_of_type_Sup, i).a(paramViewBase, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     sur
  * JD-Core Version:    0.7.0.1
  */

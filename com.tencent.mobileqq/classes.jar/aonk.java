@@ -1,134 +1,57 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aonk
-  extends aoni
+  implements View.OnClickListener
 {
-  private String b;
-  private String c;
-  private String d;
-  private String e;
+  public aonk(QRScanEntryView paramQRScanEntryView) {}
   
-  public aonk(Activity paramActivity, String paramString1, String paramString2, long paramLong, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
+  public void onClick(View paramView)
   {
-    super(paramActivity, paramString1, paramString2, paramLong, paramString3, paramInt);
-    this.b = paramString4;
-    this.c = paramString5;
-    this.d = paramString6;
-    this.e = paramString7;
-    if (TextUtils.isEmpty(this.d)) {
-      this.d = paramActivity.getResources().getString(2131690266);
-    }
-    if (TextUtils.isEmpty(this.e)) {
-      this.e = "https://qqvgame.qq.com/116da9321d03f927e434a165c14c7c1b.png";
-    }
-  }
-  
-  protected Intent a()
-  {
-    QLog.d("AVGameShareResultLink", 1, "getShareArkIntent");
-    if (a() == null)
+    boolean bool2 = false;
+    boolean bool1;
+    if (QRScanEntryView.a(this.a))
     {
-      QLog.e("AVGameShareResultLink", 1, "getShareArkIntent error: activity is null");
-      return null;
-    }
-    Intent localIntent = new Intent(a(), ForwardRecentActivity.class);
-    try
-    {
-      localIntent.putExtra("forward_type", 27);
-      localIntent.putExtra("is_ark_display_share", true);
-      localIntent.putExtra("forward_ark_app_name", "com.tencent.avgame");
-      localIntent.putExtra("forward_ark_app_view", "invite");
-      localIntent.putExtra("forward_ark_app_ver", "1.0.0.1");
-      localIntent.putExtra("forward_ark_app_prompt", "邀请你领礼包");
-      localIntent.putExtra("selection_mode", 2);
-      localIntent.putExtra("avgame_share_callback_key", false);
-      String str = h();
-      QLog.d("AVGameShareResultLink", 1, "getShareArkIntent metaDataString: " + str);
-      localIntent.putExtra("forward_ark_app_meta", str);
-      localIntent.putExtras(bhow.a("com.tencent.avgame", "invite", "1.0.0.1", str, aqbx.a(), null, null));
-      return localIntent;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      Object localObject = aoln.a();
+      if (!QRScanEntryView.b(this.a))
       {
-        QLog.e("AVGameShareResultLink", 1, "getShareArkIntent exception message: " + localJSONException.getMessage());
+        bool1 = true;
+        if (((aoln)localObject).a(bool1))
+        {
+          localObject = this.a;
+          if (QRScanEntryView.b(this.a)) {
+            break label131;
+          }
+          bool1 = true;
+          label56:
+          QRScanEntryView.a((QRScanEntryView)localObject, bool1);
+          localObject = (aols)this.a.a;
+          bool1 = bool2;
+          if (!QRScanEntryView.b(this.a)) {
+            bool1 = true;
+          }
+          ((aols)localObject).a(bool1, 0L);
+          QRScanEntryView.a(this.a, true);
+          QRScanEntryView.b(this.a, QRScanEntryView.b(this.a));
+        }
       }
     }
-  }
-  
-  protected String a(int paramInt)
-  {
-    return this.b;
-  }
-  
-  protected boolean a()
-  {
-    return true;
-  }
-  
-  protected int b()
-  {
-    return -1;
-  }
-  
-  protected String b(int paramInt)
-  {
-    return this.c;
-  }
-  
-  protected boolean b()
-  {
-    return true;
-  }
-  
-  protected String d()
-  {
-    return this.b;
-  }
-  
-  protected String e()
-  {
-    return this.c;
-  }
-  
-  protected String f()
-  {
-    return this.e;
-  }
-  
-  protected String g()
-  {
-    return this.e;
-  }
-  
-  protected String h()
-  {
-    b();
-    long l = this.a;
-    String str = a();
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    localJSONObject2.put("type", "award");
-    JSONObject localJSONObject3 = new JSONObject();
-    StringBuilder localStringBuilder = new StringBuilder("mqqapi://avgame/create_room");
-    localStringBuilder.append("?").append("gameType").append("=").append("4");
-    localJSONObject3.put("jump_url", localStringBuilder.toString());
-    localJSONObject3.put("h5_url", str);
-    localJSONObject3.put("icon_url", this.e);
-    localJSONObject3.put("title", this.b);
-    localJSONObject3.put("summary", this.c);
-    localJSONObject3.put("button", this.d);
-    localJSONObject2.put("extra", localJSONObject3);
-    localJSONObject1.put("invite", localJSONObject2);
-    return localJSONObject1.toString();
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bool1 = false;
+      break;
+      label131:
+      bool1 = false;
+      break label56;
+      if (QLog.isColorLevel()) {
+        QLog.d("AREngine_QRScanEntryView", 2, "initView click mFlashLightTips when view invisble.");
+      }
+    }
   }
 }
 

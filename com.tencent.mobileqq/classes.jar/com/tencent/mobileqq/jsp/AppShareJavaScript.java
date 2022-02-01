@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.jsp;
 
 import android.content.Context;
-import awfv;
-import awfw;
-import awhh;
-import bhny;
+import ausv;
+import ausw;
+import auui;
+import bfwv;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 import java.util.List;
 
 @Deprecated
 public class AppShareJavaScript
-  extends awfw
+  extends ausw
 {
   Context jdField_a_of_type_AndroidContentContext;
-  private awhh jdField_a_of_type_Awhh;
+  private auui jdField_a_of_type_Auui;
   private boolean jdField_a_of_type_Boolean;
   
   public AppShareJavaScript(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Awhh = new awhh();
+    this.jdField_a_of_type_Auui = new auui();
     try
     {
-      Field localField = awhh.class.getDeclaredField("a");
+      Field localField = auui.class.getDeclaredField("a");
       localField.setAccessible(true);
-      localField.set(this.jdField_a_of_type_Awhh, paramContext);
+      localField.set(this.jdField_a_of_type_Auui, paramContext);
       this.jdField_a_of_type_Boolean = true;
       return;
     }
@@ -35,7 +35,7 @@ public class AppShareJavaScript
     }
   }
   
-  public void call(String paramString, List<String> paramList, awfv paramawfv)
+  public void call(String paramString, List<String> paramList, ausv paramausv)
   {
     if (!this.jdField_a_of_type_Boolean)
     {
@@ -49,8 +49,8 @@ public class AppShareJavaScript
       {
         if (("isAppInstalled".equals(paramString)) && (i == 1))
         {
-          paramList = Boolean.valueOf(bhny.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0)));
-          paramawfv.a(paramList);
+          paramList = Boolean.valueOf(bfwv.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0)));
+          paramausv.a(paramList);
           return;
         }
       }
@@ -61,23 +61,23 @@ public class AppShareJavaScript
       }
       if (("checkAppInstalled".equals(paramString)) && (i == 1))
       {
-        paramList = bhny.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
+        paramList = bfwv.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
       }
       else if (("checkAppInstalledBatch".equals(paramString)) && (i == 1))
       {
-        paramList = bhny.b(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
+        paramList = bfwv.b(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
       }
       else if (("isAppInstalledBatch".equals(paramString)) && (i == 1))
       {
-        paramList = bhny.c(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
+        paramList = bfwv.c(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
       }
       else if (("startAppWithPkgName".equals(paramString)) && (i == 1))
       {
-        paramList = Boolean.valueOf(bhny.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0), null));
+        paramList = Boolean.valueOf(bfwv.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0), null));
       }
       else if (("startAppWithPkgNameAndOpenId".equals(paramString)) && (i == 2))
       {
-        paramList = Boolean.valueOf(bhny.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0), (String)paramList.get(1)));
+        paramList = Boolean.valueOf(bfwv.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0), (String)paramList.get(1)));
       }
       else if (("getOpenidBatch".equals(paramString)) && (i == 1))
       {
@@ -85,12 +85,12 @@ public class AppShareJavaScript
       }
       else if (("launchAppWithTokens".equals(paramString)) && (i == 4))
       {
-        this.jdField_a_of_type_Awhh.a((String)paramList.get(0), (String)paramList.get(1), (String)paramList.get(2), (String)paramList.get(3), null, "");
+        this.jdField_a_of_type_Auui.a((String)paramList.get(0), (String)paramList.get(1), (String)paramList.get(2), (String)paramList.get(3), null, "");
         paramList = null;
       }
       else if (("getAppsVerionCodeBatch".equals(paramString)) && (i == 1))
       {
-        paramList = bhny.d(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
+        paramList = bfwv.d(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
       }
       else if (("setShareURL".equals(paramString)) && (i == 1))
       {
@@ -108,7 +108,7 @@ public class AppShareJavaScript
         paramList = Boolean.valueOf(false);
       }
     }
-    paramawfv.a();
+    paramausv.a();
   }
 }
 

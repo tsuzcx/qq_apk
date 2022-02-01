@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager;
-import com.tencent.mobileqq.app.message.messageclean.ScanSpaceManager.ScanSpaceTask;
-
-public class aouu
-  implements afhn
+public abstract interface aouu
 {
-  public aouu(ScanSpaceManager.ScanSpaceTask paramScanSpaceTask) {}
-  
-  public void a(int paramInt)
-  {
-    ScanSpaceManager.a(this.a.this$0, paramInt);
-  }
+  public abstract void a(aoux paramaoux, boolean paramBoolean, byte[] paramArrayOfByte);
 }
 
 

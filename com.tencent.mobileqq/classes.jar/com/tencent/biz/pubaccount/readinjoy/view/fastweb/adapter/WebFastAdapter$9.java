@@ -6,22 +6,23 @@ import com.tencent.mobileqq.app.ThreadManager;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
-import ohk;
+import oix;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sop;
+import ssq;
+import swa;
 
 public class WebFastAdapter$9
   implements Runnable
 {
-  public WebFastAdapter$9(sop paramsop) {}
+  public WebFastAdapter$9(ssq paramssq) {}
   
   public void run()
   {
     Iterator localIterator = this.this$0.a().iterator();
     int i = 0;
-    label283:
-    label285:
+    label310:
+    label312:
     for (;;)
     {
       int k;
@@ -40,13 +41,15 @@ public class WebFastAdapter$9
             try
             {
               if (localJSONObject.opt("id_recommend_category_txt") == null) {
-                break label283;
+                break label310;
               }
               j = i;
               k = i;
-              if (localJSONObject.opt("kd_ug_download_url") == null) {
-                break label283;
+              if (localJSONObject.optString("kd_ug_rsp_info") == null) {
+                break label310;
               }
+              j = i;
+              swa localswa = new swa(localJSONObject.optString("kd_ug_rsp_info"));
               Object localObject3;
               if (i == 0)
               {
@@ -74,9 +77,9 @@ public class WebFastAdapter$9
                 }
               }
               j = i;
-              ohk.a(ohk.a("https://qbdsp.html5.qq.com/ug/stat?st=CgBOEgABiDILFgcxMDY5Mjc2IiAAAAA2JTkuMTQ2LjE0NC42MV8xNTgzMTMzNDQ0Njk1XzExNTYyNzY1MTNCXlyzBFkMgAOdAAAbDBABJgY0MTk3NjI2CTY2NjY2NjY2NkYAUAFsqAw%3D&itemid=ARTICLE_ID&qq=USER_QQ&acttype=ACTION_TYPE", (String)localObject1, "19"));
+              oix.a(oix.a(localswa.a, (String)localObject1, "19"));
               j = i;
-              ohk.a(ohk.a("https://qbdsp.html5.qq.com/ug/stat?st=CgBOEgABiDILFgcxMDY5Mjc2IiAAAAA2JTkuMTQ2LjE0NC42MV8xNTgzMTMzNDQ0Njk1XzExNTYyNzY1MTNCXlyzBFkMgAOdAAAbDBABJgY0MTk3NjI2CTY2NjY2NjY2NkYAUAFsqAw%3D&itemid=ARTICLE_ID&qq=USER_QQ&acttype=ACTION_TYPE", (String)localObject1, "106"));
+              oix.a(oix.a(localswa.a, (String)localObject1, "106"));
               j = i;
               ThreadManager.getUIHandler().postDelayed(new WebFastAdapter.9.1(this), 200L);
               k = 1;
@@ -84,7 +87,7 @@ public class WebFastAdapter$9
               j = i;
               localObject1 = localJSONObject.getJSONObject("id_recommend_category_txt");
               j = i;
-              ((JSONObject)localObject1).put("text", "前往快报阅读");
+              ((JSONObject)localObject1).put("text", localswa.g);
               j = i;
               ((JSONObject)localObject1).put("label_ug_progress_progress", 100);
             }
@@ -98,7 +101,7 @@ public class WebFastAdapter$9
         else
         {
           i = j;
-          break label285;
+          break label312;
         }
       }
       else
@@ -114,7 +117,7 @@ public class WebFastAdapter$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter.WebFastAdapter.9
  * JD-Core Version:    0.7.0.1
  */

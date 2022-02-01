@@ -1,26 +1,14 @@
-import org.json.JSONObject;
+import android.os.Binder;
+import com.tencent.device.qfind.BluetoothLeService;
 
 public class aawt
+  extends Binder
 {
-  public int a;
-  public aawo a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public aawt(BluetoothLeService paramBluetoothLeService) {}
   
-  public aawt(JSONObject paramJSONObject)
+  public BluetoothLeService a()
   {
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("tabID");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
-    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("width");
-    this.jdField_c_of_type_Int = paramJSONObject.optInt("height");
-    if (paramJSONObject.optJSONObject("aioActivityBubble") != null) {
-      this.jdField_a_of_type_Aawo = new aawo(paramJSONObject.optJSONObject("aioActivityBubble"));
-    }
+    return this.a;
   }
 }
 

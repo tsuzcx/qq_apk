@@ -1,56 +1,32 @@
-import android.content.Context;
+import android.os.Build.VERSION;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acsn
-  extends acsy
+  implements View.OnClickListener
 {
-  protected acsn(Context paramContext)
-  {
-    super(paramContext);
-  }
+  public acsn(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    super.a(paramInt);
-    acvc.b("GdtMotiveVideoAd", "185V doAnimation " + this.jdField_a_of_type_Acsl + " targetMode " + paramInt);
-    acsj localacsj;
-    if (this.jdField_a_of_type_Acsl != null)
+    if ((Build.VERSION.SDK_INT < 23) || (BaseApplicationImpl.getContext().checkSelfPermission("android.permission.RECORD_AUDIO") == 0)) {}
+    for (int i = 1;; i = 0)
     {
-      localacsj = (acsj)this.jdField_a_of_type_Acsl;
-      a();
-      if (paramInt == 1)
-      {
-        a(localacsj.jdField_a_of_type_AndroidViewView, localacsj.jdField_a_of_type_Int, 0);
-        a(localacsj.f, localacsj.j, localacsj.k);
+      boolean bool = FloatingScreenPermission.checkPermission(BaseApplicationImpl.getContext());
+      if (i == 0) {
+        this.a.requestPermissions(new acso(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
       }
-    }
-    else
-    {
+      if (!bool) {
+        FloatingScreenPermission.requestPermission(this.a);
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    a(localacsj.jdField_a_of_type_AndroidViewView, -localacsj.jdField_a_of_type_Int, 0);
-    a(localacsj.f, -localacsj.j, -localacsj.k);
-  }
-  
-  public void a(View paramView1, View paramView2, View paramView3, View paramView4)
-  {
-    acsj localacsj = new acsj();
-    localacsj.jdField_a_of_type_AndroidViewView = paramView1;
-    localacsj.f = paramView2;
-    localacsj.g = paramView3;
-    localacsj.jdField_a_of_type_Int = acwn.a(-306, 1334, acwn.e(this.jdField_a_of_type_AndroidContentContext));
-    localacsj.j = acwn.a(-406, 1334, acwn.e(this.jdField_a_of_type_AndroidContentContext));
-    localacsj.k = acwn.a(125, 750, acwn.f(this.jdField_a_of_type_AndroidContentContext));
-    float f = acwn.a(400, 750, acwn.f(this.jdField_a_of_type_AndroidContentContext));
-    if (f > 0.0F)
-    {
-      localacsj.jdField_a_of_type_Float = (Float.valueOf(f * 1.0F / acwn.f(this.jdField_a_of_type_AndroidContentContext)).floatValue() - 1.0F);
-      localacsj.b = localacsj.jdField_a_of_type_Float;
-    }
-    localacsj.l = acwn.a(50, 750, acwn.f(this.jdField_a_of_type_AndroidContentContext));
-    localacsj.m = acwn.a(-100, 1334, acwn.e(this.jdField_a_of_type_AndroidContentContext));
-    a(localacsj, paramView4);
-    this.jdField_a_of_type_Acsl = localacsj;
   }
 }
 

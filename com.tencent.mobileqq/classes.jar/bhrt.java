@@ -1,25 +1,30 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.OpenFrame;
+import com.tencent.open.agent.datamodel.Friend;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 
 public class bhrt
+  implements AdapterView.OnItemClickListener
 {
-  public static ShareActionSheetBuilder.ActionSheetItem a(int paramInt, ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList)
-  {
-    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = ShareActionSheetBuilder.ActionSheetItem.build(paramInt);
-    paramArrayList.add(localActionSheetItem);
-    return localActionSheetItem;
-  }
+  public bhrt(FriendChooser paramFriendChooser) {}
   
-  public static ShareActionSheetBuilder.ActionSheetItem a(int paramInt1, ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList, String paramString, int paramInt2)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = a(paramInt1, paramArrayList);
-    paramArrayList = paramString;
-    if (paramString == null) {
-      paramArrayList = "";
+    Friend localFriend = (Friend)this.a.jdField_a_of_type_Bhrx.getItem(paramInt);
+    if ((localFriend != null) && (this.a.jdField_a_of_type_Bhvo.a(localFriend.a)))
+    {
+      this.a.jdField_a_of_type_Bhvo.b(localFriend.a);
+      this.a.b.remove(localFriend);
+      this.a.e();
+      ((OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).g();
+      this.a.b(false);
     }
-    localActionSheetItem.argus = paramArrayList;
-    localActionSheetItem.firstLineCount = paramInt2;
-    return localActionSheetItem;
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

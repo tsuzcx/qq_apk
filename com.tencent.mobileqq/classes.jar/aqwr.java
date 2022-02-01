@@ -1,52 +1,172 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.annotation.TargetApi;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.drawable.Drawable;
+import android.util.LruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.doutu.combo.ComboEggView;
+import com.tencent.mobileqq.doutu.combo.ComboResource.1;
+import com.tencent.mobileqq.doutu.combo.ComboResource.2;
+import com.tencent.mobileqq.transfile.richmediavfs.RmVFSUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
+@TargetApi(12)
 public class aqwr
-  extends MSFServlet
 {
-  public String[] getPreferSSOCommands()
+  public static float a;
+  private static LruCache<String, aqws> a;
+  public static final String a;
+  public static boolean a;
+  public static final String[] a;
+  public static final String b;
+  public static final String[] b;
+  public static final String[] c;
+  public static final String[] d;
+  
+  static
   {
-    return new String[] { "OnlinePush.ReqPush", "MessageSvc.PushGroupMsg", "MessageSvc.PushForceOffline", "MessageSvc.PushNotify", "MessageSvc.PushForceOffline", "MessageSvc.RequestPushStatus", "MessageSvc.RequestBatchPushFStatus", "MessageSvc.PushFStatus", "AccostSvc.SvrMsg", "ADMsgSvc.PushMsg", "StreamSvr.PushStreamMsg", "friendlist.getOnlineFriend", "MessageSvc.PushReaded", "OnlinePush.PbPushTransMsg", "baseSdk.Msf.NotifyResp", "RegPrxySvc.PushParam", "OnlinePush.PbPushGroupMsg", "OnlinePush.PbPushBindUinGroupMsg", "OnlinePush.PbPushDisMsg", "OnlinePush.PbC2CMsgSync", "OnlinePush.PbPushC2CMsg", "StatSvc.SvcReqKikOut", "NearFieldTranFileSvr.NotifyList", "NearFieldDiscussSvr.NotifyList", "RegPrxySvc.QueryIpwdStat", "StatSvc.SvcReqMSFLoginNotify", "ImStatus.ReqPushStatus" };
+    jdField_a_of_type_JavaLangString = RmVFSUtils.getVFSPath(aqwg.jdField_a_of_type_JavaLangString + "combo" + File.separator);
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "ribbon0.png", "ribbon1.png", "ribbon2.png", "ribbon3.png", "ribbon4.png", "ribbon5.png", "ribbon6.png", "ribbon7.png", "ribbon8.png", "ribbon9.png" };
+    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "0.png", "1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png", "9.png" };
+    jdField_a_of_type_Float = 2.0F;
+    c = new String[] { "1bitX.png", "2bitX.png", "3bitX.png" };
+    jdField_b_of_type_JavaLangString = aqwg.jdField_a_of_type_JavaLangString;
+    d = new String[] { jdField_b_of_type_JavaLangString + "bonus_8" + File.separator + "doutuX8_", jdField_b_of_type_JavaLangString + "bonus_18" + File.separator + "doutuX18_", jdField_b_of_type_JavaLangString + "bonus_88" + File.separator + "doutuX88_", jdField_b_of_type_JavaLangString + "bonus_888" + File.separator + "doutuX888_" };
+    jdField_a_of_type_AndroidUtilLruCache = new LruCache(15);
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public static aqws a()
   {
-    if (paramIntent != null)
+    return a(jdField_a_of_type_JavaLangString + "dui.png", 2);
+  }
+  
+  public static aqws a(int paramInt)
+  {
+    return a(jdField_a_of_type_JavaLangString + jdField_a_of_type_ArrayOfJavaLangString[paramInt], 2);
+  }
+  
+  public static aqws a(String paramString, int paramInt)
+  {
+    int i = 0;
+    Object localObject1 = (aqws)jdField_a_of_type_AndroidUtilLruCache.get(paramString);
+    if (localObject1 != null) {
+      return localObject1;
+    }
+    if (!new File(paramString).exists())
     {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d("ComboUIManager", 2, "resource missing: " + paramString);
+      }
+      if (!jdField_a_of_type_Boolean)
+      {
+        jdField_a_of_type_Boolean = true;
+        ThreadManager.post(new ComboResource.1(), 5, null, false);
+      }
+      return null;
+    }
+    Object localObject2 = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject2);
+    localObject1 = BaseApplicationImpl.sApplication.getResources();
+    int j = ((BitmapFactory.Options)localObject2).outHeight;
+    int k = ((BitmapFactory.Options)localObject2).outWidth;
+    try
+    {
+      localObject2 = Drawable.createFromPath(paramString);
+      if ((k == 0) || (j == 0) || (localObject2 == null))
+      {
+        if (!jdField_a_of_type_Boolean)
+        {
+          jdField_a_of_type_Boolean = true;
+          ThreadManager.post(new ComboResource.2(), 5, null, false);
+        }
+        return null;
+      }
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ComboUIManager", 2, "load resource oom: " + paramString);
+      }
+      return null;
+    }
+    switch (paramInt)
+    {
+    default: 
+      paramInt = 0;
     }
     for (;;)
     {
-      if ((getAppRuntime() instanceof QQAppInterface)) {
-        ((QQAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
-      }
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+      aqws localaqws = new aqws();
+      localaqws.jdField_a_of_type_Int = i;
+      localaqws.b = paramInt;
+      localaqws.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)localObject2);
+      jdField_a_of_type_AndroidUtilLruCache.put(paramString, localaqws);
+      return localaqws;
+      i = AIOUtils.dp2px(k / jdField_a_of_type_Float, localaqws);
+      paramInt = AIOUtils.dp2px(j / jdField_a_of_type_Float, localaqws);
+      continue;
+      paramInt = AIOUtils.dp2px(32.0F, localaqws);
+      i = (int)(paramInt / j * k);
+      continue;
+      paramInt = AIOUtils.dp2px(24.0F, localaqws);
+      i = (int)(paramInt / j * k);
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public static void a()
   {
-    if (paramIntent != null)
+    jdField_a_of_type_AndroidUtilLruCache.evictAll();
+  }
+  
+  public static File[] a(int paramInt)
+  {
+    int i = 0;
+    String str = null;
+    while (i < ComboEggView.a.length)
     {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
+      if (paramInt == ComboEggView.a[i]) {
+        str = d[i];
       }
+      i += 1;
     }
+    if (str == null) {}
+    ArrayList localArrayList;
+    do
+    {
+      return null;
+      localArrayList = new ArrayList();
+      paramInt = 1;
+      while (paramInt <= 31)
+      {
+        File localFile = new File(str + paramInt + ".png");
+        if (localFile.exists()) {
+          localArrayList.add(localFile);
+        }
+        paramInt += 1;
+      }
+    } while (localArrayList.size() <= 0);
+    return (File[])localArrayList.toArray(new File[localArrayList.size()]);
+  }
+  
+  public static aqws b()
+  {
+    return a(jdField_a_of_type_JavaLangString + "ribbonX.png", 3);
+  }
+  
+  public static aqws b(int paramInt)
+  {
+    return a(jdField_a_of_type_JavaLangString + jdField_b_of_type_ArrayOfJavaLangString[paramInt], 1);
+  }
+  
+  public static aqws c(int paramInt)
+  {
+    return a(jdField_a_of_type_JavaLangString + c[(paramInt - 1)], 1);
   }
 }
 

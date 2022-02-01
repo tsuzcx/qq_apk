@@ -1,12 +1,15 @@
+import com.tencent.mobileqq.webview.webso.WebSoService;
+
 public class bgys
 {
-  public long a;
-  public String a;
-  public String b;
-  
-  public String toString()
+  public static void a(String paramString)
   {
-    return "CheckInResEntity{filePath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", cover='" + this.b + '\'' + ", videoDuration=" + this.jdField_a_of_type_Long + '}';
+    long l = System.currentTimeMillis();
+    if ((bgzd.b(paramString)) && (!bgzd.d(paramString)) && (aqhy.c().b > 0))
+    {
+      WebSoService.a().a(paramString, null, true);
+      bgzd.a("preload spned time = " + (System.currentTimeMillis() - l));
+    }
   }
 }
 

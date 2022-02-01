@@ -1,40 +1,18 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class zgf
-  extends zfy
+class zgf
+  implements View.OnClickListener
 {
-  protected EditVideoParams a;
-  public String c;
+  zgf(zgc paramzgc, CertifiedAccountMeta.StComment paramStComment) {}
   
-  public zgf(int paramInt1, String paramString, int paramInt2)
+  public void onClick(View paramView)
   {
-    super(paramInt1, paramString, paramInt2);
-  }
-  
-  public zgf(int paramInt1, String paramString, int paramInt2, EditVideoParams paramEditVideoParams)
-  {
-    super(paramInt1, paramString, paramInt2);
-    this.a = paramEditVideoParams;
-  }
-  
-  @NonNull
-  public Class<? extends zfz> a()
-  {
-    return zgh.class;
-  }
-  
-  @NonNull
-  public zfz a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new zgh(this, paramContext, paramViewGroup, null);
-  }
-  
-  public boolean a()
-  {
-    return true;
+    zfs.a(this.jdField_a_of_type_Zgc.a, zfs.a(this.jdField_a_of_type_Zgc.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, null);
+    zfs.a(this.jdField_a_of_type_Zgc.a).dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,18 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
-class bmze
-  implements EIPCResultCallback
+public abstract interface bmze
 {
-  bmze(bmzc parambmzc) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FontManager", 2, "startFontSoDownload download so success");
-    }
-  }
+  public abstract void a();
 }
 
 

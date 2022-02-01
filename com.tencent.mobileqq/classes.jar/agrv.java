@@ -1,46 +1,47 @@
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.widget.DrawerFrame;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.MessageForTroopFee;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class agrv
-  implements View.OnLayoutChangeListener
+  implements View.OnClickListener
 {
-  agrv(agrt paramagrt, View paramView) {}
+  agrv(agru paramagru) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onClick(View paramView)
   {
-    if ((paramInt1 == paramInt5) && (paramInt2 == paramInt6) && (paramInt3 == paramInt7) && (paramInt4 == paramInt8)) {
+    agrw localagrw = (agrw)AIOUtils.getHolder(paramView);
+    Object localObject = (MessageForTroopFee)localagrw.a;
+    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+    localIntent.putExtra("url", ((MessageForTroopFee)localObject).actionUrl);
+    paramView.getContext().startActivity(localIntent);
+    localObject = ((TroopManager)this.a.a.getManager(52)).b(localagrw.b);
+    int i;
+    if (localObject != null)
+    {
+      if (!((TroopInfo)localObject).isTroopOwner(this.a.a.getCurrentAccountUin())) {
+        break label160;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      bcef.b(this.a.a, "P_CliOper", "Grp_pay", "", "grp_aio", "Clk_payobj", 0, 0, localagrw.b, i + "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    paramView = new int[2];
-    paramInt1 = 0;
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      this.jdField_a_of_type_AndroidViewView.getLocationInWindow(paramView);
-      paramInt1 = paramView[1] + this.jdField_a_of_type_AndroidViewView.getHeight();
-    }
-    if (agrt.a(this.jdField_a_of_type_Agrt) != null)
-    {
-      paramInt2 = agrt.a(this.jdField_a_of_type_Agrt).getRight();
-      label81:
-      if (agrt.a(this.jdField_a_of_type_Agrt) == null) {
-        break label180;
+      label160:
+      if (((TroopInfo)localObject).isAdmin()) {
+        i = 1;
+      } else {
+        i = 2;
       }
-    }
-    label180:
-    for (paramInt3 = agrt.a(this.jdField_a_of_type_Agrt).getHeight();; paramInt3 = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseChatDrawer", 2, String.format("setTouchableBound, drawerWidth: %s, drawerHeight: %s, titleBarBottom: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1) }));
-      }
-      if ((paramInt2 <= 0) || (paramInt3 <= 0) || (paramInt1 <= 0)) {
-        break;
-      }
-      agrt.a(this.jdField_a_of_type_Agrt).setTouchableBound(0, paramInt1, paramInt2, paramInt3);
-      return;
-      paramInt2 = 0;
-      break label81;
     }
   }
 }

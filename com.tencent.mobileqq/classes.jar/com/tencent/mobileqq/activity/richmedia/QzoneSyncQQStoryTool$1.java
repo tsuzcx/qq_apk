@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import alwx;
-import bnqk;
+import akum;
+import cooperation.qzone.widget.QzoneGuideBubbleHelper;
 
 public final class QzoneSyncQQStoryTool$1
   implements Runnable
 {
   public void run()
   {
-    bnqk.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, alwx.a, 1, 14.0F, 5.0D, 10.0D, 5000L, -15550475, false, true, 0, null, 0);
+    QzoneGuideBubbleHelper.getInstance().showGuideBubble(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidViewView, akum.a, 1, 14.0F, 5.0D, 10.0D, 5000L, -15550475, false, true, 0, null, 0);
   }
 }
 

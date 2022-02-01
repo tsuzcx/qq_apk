@@ -1,34 +1,34 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bnrf;
+import bkwm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import ozs;
-import rwr;
+import pay;
+import sdv;
 
 public class VideoRecommendManager$1
   implements Runnable
 {
-  public VideoRecommendManager$1(rwr paramrwr) {}
+  public VideoRecommendManager$1(sdv paramsdv) {}
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)ozs.a();
-    rwr.a(this.this$0, bnrf.B(localQQAppInterface));
-    rwr.b(this.this$0, bnrf.C(localQQAppInterface));
-    rwr.a(this.this$0, bnrf.a(localQQAppInterface));
-    rwr.c(this.this$0, bnrf.D(localQQAppInterface));
-    if ((rwr.a(this.this$0) < 0.0F) || (rwr.a(this.this$0) > 1.0D)) {
-      rwr.a(this.this$0, 0.8F);
+    QQAppInterface localQQAppInterface = (QQAppInterface)pay.a();
+    sdv.a(this.this$0, bkwm.y(localQQAppInterface));
+    sdv.b(this.this$0, bkwm.z(localQQAppInterface));
+    sdv.a(this.this$0, bkwm.a(localQQAppInterface));
+    sdv.c(this.this$0, bkwm.A(localQQAppInterface));
+    if ((sdv.a(this.this$0) < 0.0F) || (sdv.a(this.this$0) > 1.0D)) {
+      sdv.a(this.this$0, 0.8F);
     }
-    if (rwr.a(this.this$0) < 1000) {
-      rwr.b(this.this$0, 40000);
+    if (sdv.a(this.this$0) < 1000) {
+      sdv.b(this.this$0, 40000);
     }
-    if (rwr.b(this.this$0) == 1) {
-      rwr.a(this.this$0, true);
+    if (sdv.b(this.this$0) == 1) {
+      sdv.a(this.this$0, true);
     }
     if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoReommendManager", 2, "init() 开关配置，mIsOpened = " + rwr.a(this.this$0) + ", mStrategyID = " + rwr.b(this.this$0) + ", mStrategyDurationLimit = " + rwr.a(this.this$0) + ", mStrategyDurationPercent = " + rwr.a(this.this$0) + ", mOperator = " + rwr.c(this.this$0));
+      QLog.d("Q.pubaccount.video.feeds.VideoReommendManager", 2, "init() 开关配置，mIsOpened = " + sdv.a(this.this$0) + ", mStrategyID = " + sdv.b(this.this$0) + ", mStrategyDurationLimit = " + sdv.a(this.this$0) + ", mStrategyDurationPercent = " + sdv.a(this.this$0) + ", mOperator = " + sdv.c(this.this$0));
     }
   }
 }

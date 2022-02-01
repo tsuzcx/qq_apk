@@ -1,37 +1,39 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.flutter.channel.qqcircle.QCircleFlutterRequest;
+import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.MethodChannel.Result;
+import java.util.HashMap;
+import java.util.Map;
 
-public class atiq
-  implements TextWatcher
+class atiq
+  implements VSDispatchObserver.onVSRspCallBack
 {
-  public atiq(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
+  atiq(atip paramatip, MethodChannel.Result paramResult) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onReceive(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, Object paramObject)
   {
-    paramEditable = MPFileVerifyPwdView.a(this.a).getText().toString();
-    if ((!TextUtils.isEmpty(paramEditable)) && (paramEditable.length() >= 16)) {
-      auna.a(BaseApplicationImpl.getContext().getString(2131693824));
-    }
-    while (TextUtils.isEmpty(paramEditable)) {
+    paramObject = paramVSBaseRequest.getCmdName();
+    QLog.i("flutter.QQCircleChannelHandler", 1, "[sendSsoRequest][onReceive] cmd=" + paramObject + ", success=" + paramBoolean + ", retCode=" + paramLong + ", errMsg=" + paramString);
+    if (!(paramVSBaseRequest instanceof QCircleFlutterRequest))
+    {
+      QLog.e("flutter.QQCircleChannelHandler", 1, "[onReceive] invalid request, request=" + paramVSBaseRequest);
       return;
     }
-    MPFileVerifyPwdView.b(this.a).setEnabled(true);
-    MPFileVerifyPwdView.b(this.a).setTextColor(Color.parseColor("#00a5e0"));
+    byte[] arrayOfByte = ((QCircleFlutterRequest)paramVSBaseRequest).getResponseByteData();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("cmd", paramObject);
+    localHashMap.put("isSuc", Boolean.valueOf(paramBoolean));
+    localHashMap.put("errCode", Long.valueOf(paramLong));
+    localHashMap.put("errDesc", paramString);
+    localHashMap.put("body", arrayOfByte);
+    localHashMap.put("ssoSeq", Integer.valueOf(paramVSBaseRequest.getCurrentSeq()));
+    this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel$Result.success(localHashMap);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atiq
  * JD-Core Version:    0.7.0.1
  */

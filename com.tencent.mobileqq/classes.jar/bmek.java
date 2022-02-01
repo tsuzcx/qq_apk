@@ -1,10 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.util.Log;
 
-public final class bmek
-  implements DialogInterface.OnDismissListener
+class bmek
+  implements bmer
 {
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  bmek(bmej parambmej) {}
+  
+  public void a(int paramInt)
+  {
+    Log.d("ModuleController", "onScrolling() top => " + paramInt);
+    this.a.d(paramInt);
+  }
+  
+  public void b(int paramInt)
+  {
+    Log.d("ModuleController", "onScrollStop -> top:" + paramInt);
+    this.a.c(paramInt);
+  }
 }
 
 

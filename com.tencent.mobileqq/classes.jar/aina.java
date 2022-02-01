@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.12.1;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import java.lang.ref.WeakReference;
 
-public class aina
-  extends aojs
+class aina
+  implements View.OnLongClickListener
 {
-  aina(aimx paramaimx) {}
+  private WeakReference<aimv> a;
   
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public aina(aimv paramaimv)
   {
-    paramString = this.a;
-    if ((paramBoolean1) && (paramBoolean2)) {}
-    for (paramBoolean1 = true;; paramBoolean1 = false)
-    {
-      paramString.Y = paramBoolean1;
-      aimx.a(this.a).post(new NearbyChatPie.12.1(this));
-      return;
+    this.a = new WeakReference(paramaimv);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    aimv localaimv = (aimv)this.a.get();
+    if (localaimv != null) {
+      return localaimv.onLongClick(paramView);
     }
+    return false;
   }
 }
 

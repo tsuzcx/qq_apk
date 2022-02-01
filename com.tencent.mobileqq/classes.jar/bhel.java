@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import android.widget.BaseAdapter;
 
-public class bhel
-  implements DialogInterface.OnDismissListener
+public abstract class bhel
+  extends BaseAdapter
 {
-  public bhel(UpgradeActivity paramUpgradeActivity) {}
+  protected int a = 0;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public abstract int a();
+  
+  public abstract int a(int paramInt);
+  
+  public void a(int paramInt)
   {
-    this.a.finish();
+    this.a = paramInt;
   }
+  
+  public abstract int b(int paramInt);
 }
 
 

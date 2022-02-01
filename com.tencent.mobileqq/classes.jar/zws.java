@@ -1,46 +1,85 @@
-import android.view.View;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.videostory.config.VSConfigManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class zws
-  implements URLDrawable.URLDrawableListener
+  extends aptq<zwr>
 {
-  public zws(QRDisplayActivity paramQRDisplayActivity, arie paramarie, int paramInt, boolean paramBoolean) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  private void a(String paramString1, String paramString2)
   {
-    QRDisplayActivity.e(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity);
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "onLoadCanceled:" + this.jdField_a_of_type_Arie.a);
+    QLog.d("Q.videostory.config.VSEntranceStyleProcessor", 2, "onUpdate() apply new style config");
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      VSConfigManager.getInstance().setValue("KEY_BOOLEAN_APPLY_STYLE_CONFIG", Boolean.valueOf(true));
+      VSConfigManager.getInstance().setValue("KEY_VS_ENTRANCE_STYLE_MD5", paramString1);
+      VSConfigManager.getInstance().setValue("KEY_VS_ENTRANCE_STYLE_CONTENT", paramString2);
     }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  @NonNull
+  public zwr a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "onLoadFialed: urlDrawable = " + paramURLDrawable + " bkgURL = " + this.jdField_a_of_type_Arie.a);
-    }
-    if (paramURLDrawable != null) {
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.i.setBackgroundDrawable(paramURLDrawable.getCurrDrawable());
-    }
-    QRDisplayActivity.e(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity);
-    QQToast.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.getString(2131695802), 0).a();
+    return new zwr();
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  @Nullable
+  public zwr a(aptx[] paramArrayOfaptx)
   {
-    QRDisplayActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, this.jdField_a_of_type_Arie, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "onLoadSuccessed: urlDrawable = " + paramURLDrawable + " bkgURL = " + this.jdField_a_of_type_Arie.a);
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    {
+      QLog.i("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
+      zwr localzwr = zwr.a(paramArrayOfaptx[0].a);
+      if (localzwr == null)
+      {
+        QLog.e("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed error!");
+        return null;
+      }
+      String str = (String)VSConfigManager.getInstance().getValue("KEY_VS_ENTRANCE_STYLE_MD5", "");
+      if ((!TextUtils.isEmpty(localzwr.b())) && (!localzwr.b().equals(str)))
+      {
+        zxg.a().a(localzwr);
+        a(localzwr.b(), paramArrayOfaptx[0].a);
+      }
+      return localzwr;
     }
-    if (paramURLDrawable != null) {
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.i.setBackgroundDrawable(paramURLDrawable.getCurrDrawable());
+    QLog.e("Q.videostory.config.VSEntranceStyleProcessor", 2, "onParsed conf content is null!");
+    return null;
+  }
+  
+  public void a(zwr paramzwr)
+  {
+    if (paramzwr != null) {
+      QLog.i("Q.videostory.config.VSEntranceStyleProcessor", 2, "onUpdate:" + paramzwr.toString());
     }
+  }
+  
+  public Class<zwr> clazz()
+  {
+    return zwr.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 473;
   }
 }
 

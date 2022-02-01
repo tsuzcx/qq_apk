@@ -1,6 +1,21 @@
-class bmzv
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import dov.com.qq.im.capture.view.StoryToastView;
+
+public class bmzv
+  extends AnimatorListenerAdapter
 {
-  private static final bmzn a = new bmzn();
+  public bmzv(StoryToastView paramStoryToastView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    this.a.setVisibility(8);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.setVisibility(8);
+  }
 }
 
 

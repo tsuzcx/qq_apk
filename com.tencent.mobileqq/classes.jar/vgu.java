@@ -1,23 +1,18 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qqcircle.bizparts.danmaku.core.PhotoDanmakuDrawer;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.ImageLoader.Options;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-public class vgu
-  implements ImageLoader.ImageLoadListener
+class vgu
+  implements Callable<Boolean>
 {
-  public vgu(PhotoDanmakuDrawer paramPhotoDanmakuDrawer, vhb paramvhb) {}
+  vgu(vgs paramvgs, File paramFile) {}
   
-  public void onImageCanceled(String paramString, ImageLoader.Options paramOptions) {}
-  
-  public void onImageFailed(String paramString, ImageLoader.Options paramOptions) {}
-  
-  public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
+  public Boolean a()
   {
-    this.jdField_a_of_type_Vhb.f(true);
+    if ((vgs.a(this.jdField_a_of_type_Vgs) != null) && (vgs.a(this.jdField_a_of_type_Vgs).exists()) && (vgs.a(this.jdField_a_of_type_Vgs) == this.jdField_a_of_type_JavaIoFile)) {}
+    for (boolean bool = true;; bool = false) {
+      return Boolean.valueOf(bool);
+    }
   }
-  
-  public void onImageProgress(String paramString, float paramFloat, ImageLoader.Options paramOptions) {}
 }
 
 

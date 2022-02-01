@@ -1,24 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class aemd
-  implements View.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  public aemd(EditInfoActivity paramEditInfoActivity) {}
+  public aemd(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847906);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anzj.a(2131702525));
-    this.a.jdField_a_of_type_Boolean = false;
-    EventCollector.getInstance().onViewClicked(paramView);
+    TroopInfoActivity.b(this.a);
   }
 }
 

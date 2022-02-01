@@ -1,152 +1,84 @@
-import NS_KING_SOCIALIZE_META.stMetaUgcImage;
-import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
-import UserGrowth.stFloatingLayerCardStyle;
-import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stSimpleMetaPerson;
-import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.google.gson.Gson;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashMap<Ljava.lang.String;Ljava.lang.String;>;
-import org.json.JSONObject;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
 
 public class ujx
 {
-  private stSimpleMetaFeed a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null)
-    {
-      Gson localGson = new Gson();
-      stSimpleMetaFeed localstSimpleMetaFeed = new stSimpleMetaFeed();
-      localstSimpleMetaFeed.id = paramJSONObject.optString("id");
-      localstSimpleMetaFeed.ding_count = paramJSONObject.optInt("dingCount");
-      localstSimpleMetaFeed.is_ding = paramJSONObject.optInt("isDing");
-      localstSimpleMetaFeed.total_comment_num = paramJSONObject.optInt("commentNum");
-      localstSimpleMetaFeed.material_desc = paramJSONObject.optString("materialDesc");
-      localstSimpleMetaFeed.material_thumburl = paramJSONObject.optString("materialThumburl");
-      localstSimpleMetaFeed.feed_desc = paramJSONObject.optString("feedDesc");
-      localstSimpleMetaFeed.video = ((stMetaUgcVideoSeg)localGson.fromJson(paramJSONObject.optJSONObject("video").toString(), stMetaUgcVideoSeg.class));
-      localstSimpleMetaFeed.video_url = paramJSONObject.optString("videoUrl");
-      ArrayList localArrayList = new ArrayList();
-      stMetaUgcImage localstMetaUgcImage = new stMetaUgcImage();
-      localstMetaUgcImage.url = paramJSONObject.optString("coverUrl");
-      localstMetaUgcImage.height = paramJSONObject.optInt("coverHeight");
-      localstMetaUgcImage.width = paramJSONObject.optInt("coverWidth");
-      localArrayList.add(localstMetaUgcImage);
-      localstSimpleMetaFeed.images = localArrayList;
-      localstSimpleMetaFeed.poster_id = paramJSONObject.optString("posterId");
-      localstSimpleMetaFeed.poster = ((stSimpleMetaPerson)localGson.fromJson(paramJSONObject.optJSONObject("poster").toString(), stSimpleMetaPerson.class));
-      paramJSONObject = new stFloatingLayerCardStyle();
-      paramJSONObject.cardType = 1;
-      localstSimpleMetaFeed.floatingLayerCardStyle = paramJSONObject;
-      return localstSimpleMetaFeed;
-    }
-    return null;
-  }
+  private URLDrawableDownListener jdField_a_of_type_ComTencentImageURLDrawableDownListener = new ujy(this);
+  private udu jdField_a_of_type_Udu;
+  private boolean jdField_a_of_type_Boolean;
   
-  public static String a(String paramString)
+  private URLDrawable a(String paramString, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    String str = "_ct=" + System.currentTimeMillis();
-    if (paramString.contains("?")) {}
-    for (paramString = paramString + "&" + str;; paramString = paramString + "?" + str) {
-      return paramString;
-    }
-  }
-  
-  private ArrayList<stSimpleMetaFeed> a(HashMap<String, String> paramHashMap)
-  {
-    if (paramHashMap == null) {
-      return null;
-    }
-    Object localObject = (String)paramHashMap.get("feeds");
-    paramHashMap = (String)paramHashMap.get("scene");
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return null;
-    }
-    if (TextUtils.isEmpty(paramHashMap)) {
-      uqt.d(paramHashMap);
-    }
-    try
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = paramBoolean;
+    paramString = URLDrawable.getDrawable(udt.a(paramString), (URLDrawable.URLDrawableOptions)localObject);
+    if ((paramString.getCurrDrawable() instanceof GifDrawable))
     {
-      paramHashMap = URLDecoder.decode((String)localObject, "UTF-8");
-      uqf.b("WSMiniAppHelper", "小程序传过来的feed： " + paramHashMap);
-    }
-    catch (UnsupportedEncodingException paramHashMap)
-    {
-      for (;;)
-      {
-        try
-        {
-          localObject = new ArrayList();
-          paramHashMap = a(new JSONObject(paramHashMap));
-          if (paramHashMap != null) {
-            ((ArrayList)localObject).add(paramHashMap);
-          }
-          return localObject;
-        }
-        catch (Exception paramHashMap)
-        {
-          paramHashMap.printStackTrace();
-          uqf.d("WSMiniAppHelper", "parse json error: " + paramHashMap.getMessage());
-        }
-        paramHashMap = paramHashMap;
-        paramHashMap.printStackTrace();
-        paramHashMap = (HashMap<String, String>)localObject;
+      localObject = ((GifDrawable)paramString.getCurrDrawable()).getImage();
+      if (paramBoolean) {
+        break label54;
       }
+      paramString.setIndividualPause(true);
     }
-    return null;
-  }
-  
-  public static ujx a()
-  {
-    return ujz.a();
-  }
-  
-  public void a(Context paramContext, String paramString)
-  {
-    ueg.a(paramContext, paramString, new ujy(this));
-  }
-  
-  public boolean a(Context paramContext, HashMap<String, String> paramHashMap)
-  {
-    if (paramContext == null) {
-      return false;
-    }
-    ArrayList localArrayList = a(paramHashMap);
-    String str2 = "mini_app_personal_guest";
-    String str3 = "homepage_guest";
-    String str1 = str2;
-    paramHashMap = str3;
-    if (localArrayList != null)
+    for (;;)
     {
-      str1 = str2;
-      paramHashMap = str3;
-      if (localArrayList.size() > 0)
+      ((AbstractGifImage)localObject).reset();
+      return paramString;
+      label54:
+      paramString.setIndividualPause(false);
+    }
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      a();
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Udu != null) {
+      this.jdField_a_of_type_Udu.a();
+    }
+    AbstractGifImage.pauseAll();
+  }
+  
+  public void a(URLImageView paramURLImageView, Drawable paramDrawable, String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      paramURLImageView.setImageDrawable(paramDrawable);
+      return;
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean2;
+    paramDrawable = a(paramString, paramBoolean1);
+    if (paramDrawable.getStatus() == 1)
+    {
+      if ((paramDrawable.getCurrDrawable() instanceof GifDrawable))
       {
-        stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)localArrayList.get(0);
-        str1 = str2;
-        paramHashMap = str3;
-        if (localstSimpleMetaFeed.poster != null)
+        AbstractGifImage localAbstractGifImage = ((GifDrawable)paramDrawable.getCurrDrawable()).getImage();
+        if ((localAbstractGifImage instanceof udu))
         {
-          str1 = str2;
-          paramHashMap = str3;
-          if (TextUtils.equals(localstSimpleMetaFeed.poster.id, uqt.f()))
-          {
-            str1 = "mini_app_personal_main";
-            paramHashMap = "homepage_main";
-          }
+          this.jdField_a_of_type_Udu = ((udu)localAbstractGifImage);
+          this.jdField_a_of_type_Udu.a(new ujz(this, paramURLImageView, paramString));
         }
       }
+      this.jdField_a_of_type_ComTencentImageURLDrawableDownListener.onLoadSuccessed(paramURLImageView, paramDrawable);
     }
-    WSVerticalPageFragment.a(paramContext, str1, paramHashMap, localArrayList, 0, true);
-    return true;
+    for (;;)
+    {
+      paramURLImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener);
+      paramURLImageView.setImageDrawable(paramDrawable);
+      return;
+      paramDrawable.startDownload();
+    }
   }
 }
 

@@ -1,24 +1,32 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class aesq
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public aesq(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public aesq(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!GesturePWDUnlockActivity.a(this.a))
+    this.a.n();
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      GesturePWDUnlockActivity.a(this.a, true);
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.e();
+      this.a.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout.setVisibility(0);
+      this.a.f();
+    }
+    if (!TextUtils.isEmpty(this.a.a())) {}
+    for (paramDialogInterface = "1";; paramDialogInterface = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), paramDialogInterface, "1");
       return;
     }
-    this.a.e();
-    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
-    bdmc.a(this.a.getBaseContext()).a(this.a.app, this.a.app.getCurrentAccountUin(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import antf;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class TroopNotifyAndRecommendView$6
@@ -11,7 +11,7 @@ class TroopNotifyAndRecommendView$6
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_JavaUtilList = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(antf.N, 0, null);
+    this.this$0.jdField_a_of_type_JavaUtilList = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getAllMessages(AppConstants.TROOP_SYSTEM_MSG_UIN, 0, null);
   }
 }
 

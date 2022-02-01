@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import agcp;
-import agcq;
-import agdi;
+import aevj;
+import aevk;
+import aewc;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,15 +12,15 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import aser;
-import asev;
-import asjw;
-import bhsr;
-import bioy;
+import aqyp;
+import aqyt;
+import ardu;
+import bgve;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingInnerFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.FakeUrl;
@@ -30,7 +30,7 @@ import org.json.JSONObject;
 
 public class QWalletMixJsPlugin
   extends VasWebviewJsPlugin
-  implements agcq
+  implements aevk
 {
   public static final String ERROR_MSG_PARAM_ERROR = "params error";
   public static final String ERROR_MSG_UNKNOWN_ERROR = "client_unknown_error";
@@ -68,13 +68,13 @@ public class QWalletMixJsPlugin
   {
     String str = paramJSONObject.optString("msgid");
     paramJSONObject = paramJSONObject.optString("busiid");
-    if ((bhsr.a(str)) || (bhsr.a(str)))
+    if ((StringUtil.isEmpty(str)) || (StringUtil.isEmpty(str)))
     {
       handJsError("4", "params error");
       return;
     }
     Handler localHandler = new Handler(Looper.getMainLooper());
-    agdi.a(this.app, str, new QWalletMixJsPlugin.1(this, localHandler, paramJSONObject, str));
+    aewc.a(this.app, str, new QWalletMixJsPlugin.1(this, localHandler, paramJSONObject, str));
   }
   
   private void doCallback(String paramString)
@@ -170,14 +170,14 @@ public class QWalletMixJsPlugin
   {
     String str1 = paramJSONObject.optString("msgid");
     paramJSONObject = paramJSONObject.optString("busiid");
-    if (bhsr.a(str1)) {
+    if (StringUtil.isEmpty(str1)) {
       handJsError("4", "params error");
     }
     while (this.mRuntime == null) {
       return;
     }
     String str2 = Uri.parse(this.mRuntime.a().getUrl()).getHost();
-    agcp.a(this.mRuntime.a(), str1, str2, paramJSONObject, 48128);
+    aevj.a(this.mRuntime.a(), str1, str2, paramJSONObject, 48128);
   }
   
   private void notifydelMsgUI(String paramString1, String paramString2)
@@ -185,8 +185,8 @@ public class QWalletMixJsPlugin
     Bundle localBundle = new Bundle();
     localBundle.putString("busiid", paramString1);
     localBundle.putString("msgid", paramString2);
-    paramString1 = asev.a("ipc_cmd_is_qq_notify_all_notify", this.mCallback, this.mOnRemoteResp.key, localBundle);
-    asjw.a().a(paramString1);
+    paramString1 = aqyt.a("ipc_cmd_is_qq_notify_all_notify", this.mCallback, this.mOnRemoteResp.key, localBundle);
+    ardu.a().a(paramString1);
   }
   
   private void parseCallback(String paramString)
@@ -209,20 +209,20 @@ public class QWalletMixJsPlugin
   {
     String str = paramJSONObject.optString("msgid");
     paramJSONObject = paramJSONObject.optString("busiid");
-    if (bhsr.a(str)) {
+    if (StringUtil.isEmpty(str)) {
       handJsError("4", "params error");
     }
     while (this.mRuntime == null) {
       return;
     }
-    agcp.a(str, Uri.parse(this.mRuntime.a().getUrl()).getHost(), paramJSONObject, this);
+    aevj.a(str, Uri.parse(this.mRuntime.a().getUrl()).getHost(), paramJSONObject, this);
   }
   
   private void subscribeNotify(JSONObject paramJSONObject)
   {
     String str1 = paramJSONObject.optString("msgid");
     paramJSONObject = paramJSONObject.optString("busiid");
-    if ((bhsr.a(str1)) || (bhsr.a(str1))) {
+    if ((StringUtil.isEmpty(str1)) || (StringUtil.isEmpty(str1))) {
       handJsError("4", "params error");
     }
     while (this.mRuntime == null) {
@@ -333,7 +333,7 @@ public class QWalletMixJsPlugin
   
   public void queryHasSetNotify(Bundle paramBundle1, Bundle paramBundle2)
   {
-    doCallback(agcp.a(paramBundle1));
+    doCallback(aevj.a(paramBundle1));
   }
 }
 

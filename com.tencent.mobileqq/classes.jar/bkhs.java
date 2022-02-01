@@ -1,42 +1,74 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qidian.QidianProfileCardActivity.QidianCompoundProfileItem;
+import com.tencent.TMG.sdk.AVAudioCtrl;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVRoomMulti.AVCustomData;
+import com.tencent.TMG.sdk.AVRoomMulti.EventListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bkhs
-  implements Parcelable.Creator<QidianProfileCardActivity.QidianCompoundProfileItem>
+class bkhs
+  implements AVRoomMulti.EventListener
 {
-  public QidianProfileCardActivity.QidianCompoundProfileItem a(Parcel paramParcel)
+  bkhs(bkhr parambkhr) {}
+  
+  public void onCameraSettingNotify(int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onDisableAudioIssue() {}
+  
+  public void onEndpointsUpdateInfo(int paramInt, String[] paramArrayOfString)
   {
-    boolean bool2 = true;
-    QidianProfileCardActivity.QidianCompoundProfileItem localQidianCompoundProfileItem = new QidianProfileCardActivity.QidianCompoundProfileItem();
-    localQidianCompoundProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localQidianCompoundProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localQidianCompoundProfileItem.c = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localQidianCompoundProfileItem.jdField_a_of_type_Boolean = bool1;
-      localQidianCompoundProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label103;
-      }
-    }
-    label103:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localQidianCompoundProfileItem.jdField_b_of_type_Boolean = bool1;
-      localQidianCompoundProfileItem.d = paramParcel.readString();
-      localQidianCompoundProfileItem.e = paramParcel.readString();
-      return localQidianCompoundProfileItem;
-      bool1 = false;
-      break;
+    QLog.i("AVManager", 1, String.format("onEndpointsUpdateInfo|eventid=%d", new Object[] { Integer.valueOf(paramInt) }));
+    if (this.a.jdField_a_of_type_Bkhv != null) {
+      this.a.jdField_a_of_type_Bkhv.a(paramInt, paramArrayOfString);
     }
   }
   
-  public QidianProfileCardActivity.QidianCompoundProfileItem[] a(int paramInt)
+  public void onEnterRoomComplete(int paramInt, String paramString)
   {
-    return new QidianProfileCardActivity.QidianCompoundProfileItem[paramInt];
+    QLog.i("AVManager", 1, "mRoomEventListener.onEnterRoomComplete| result = " + paramInt + paramString);
+    if (paramInt != 0) {
+      this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
+    }
+    if (this.a.jdField_a_of_type_Bkhu != null) {
+      this.a.jdField_a_of_type_Bkhu.a(paramInt, paramString);
+    }
   }
+  
+  public void onExitRoomComplete()
+  {
+    QLog.i("AVManager", 1, "mRoomEventListener.onExitRoomComplete");
+    this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
+    if (this.a.jdField_a_of_type_Bkhv != null) {
+      this.a.jdField_a_of_type_Bkhv.a();
+    }
+  }
+  
+  public void onHwStateChangeNotify(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString) {}
+  
+  public void onPrivilegeDiffNotify(int paramInt) {}
+  
+  public void onRecvCustomData(AVRoomMulti.AVCustomData paramAVCustomData, String paramString) {}
+  
+  public void onRoomDisconnect(int paramInt, String paramString)
+  {
+    if (this.a.jdField_a_of_type_Bkhv != null) {
+      this.a.jdField_a_of_type_Bkhv.a(paramInt, paramString);
+    }
+  }
+  
+  public void onRoomEvent(int paramInt1, int paramInt2, Object paramObject) {}
+  
+  public void onSemiAutoRecvCameraVideo(String[] paramArrayOfString)
+  {
+    QLog.i("AVManager", 1, String.format("onSemiAutoRecvCameraVideo", new Object[0]));
+    if (this.a.jdField_a_of_type_Bkhv != null) {
+      this.a.jdField_a_of_type_Bkhv.a(paramArrayOfString);
+    }
+  }
+  
+  public void onSemiAutoRecvMediaFileVideo(String[] paramArrayOfString) {}
+  
+  public void onSemiAutoRecvScreenVideo(String[] paramArrayOfString) {}
+  
+  public void onSwitchRoomComplete(int paramInt, String paramString) {}
 }
 
 

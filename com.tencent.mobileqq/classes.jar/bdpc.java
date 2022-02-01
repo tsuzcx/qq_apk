@@ -1,16 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.activity.TroopAdminList;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class bdpc
-  implements View.OnTouchListener
+  extends amsu
 {
-  public bdpc(StructMsgForGeneralShare paramStructMsgForGeneralShare, agjk paramagjk) {}
+  public bdpc(TroopAdminList paramTroopAdminList) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    return this.jdField_a_of_type_Agjk.onTouch(paramView, paramMotionEvent);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
+      this.a.c();
+    }
+  }
+  
+  protected void onUpdateFriendInfoFinished(ArrayList paramArrayList, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopAdminList", 2, "onUpdateFriendInfoFinished ");
+    }
+    this.a.c();
   }
 }
 

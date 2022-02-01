@@ -1,37 +1,21 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.graphics.Bitmap;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class lwt
-  implements lwr
+public class lwt
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  private IBinder a;
+  public lwt(QQServiceForAV paramQQServiceForAV) {}
   
-  lwt(IBinder paramIBinder)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    this.a = paramIBinder;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
-    {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceCallback");
-      localParcel.writeInt(paramInt1);
-      localParcel.writeInt(paramInt2);
-      localParcel.writeInt(paramInt3);
-      this.a.transact(1, localParcel, null, 1);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAV", 2, "onDecodeTaskCompleted");
     }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
+    new lxk(((QQAppInterface)this.a.a()).getApp().getApplicationContext()).a(new lwu(this, paramString, paramBitmap));
   }
 }
 

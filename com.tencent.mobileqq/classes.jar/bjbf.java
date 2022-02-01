@@ -1,30 +1,15 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoPreparedListener;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnVideoPreparedListener;
 
-public class bjbf
-  implements URLDrawable.URLDrawableListener
+class bjbf
+  implements ISuperPlayer.OnVideoPreparedListener
 {
-  final WeakReference<View> a;
+  bjbf(bjbd parambjbd, AbsVideoPlayer.OnVideoPreparedListener paramOnVideoPreparedListener) {}
   
-  public bjbf(View paramView)
+  public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
   {
-    this.a = new WeakReference(paramView);
-  }
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = (View)this.a.get();
-    if (paramURLDrawable != null) {
-      paramURLDrawable.postInvalidate();
-    }
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnVideoPreparedListener.onVideoPrepared(this.jdField_a_of_type_Bjbd);
   }
 }
 

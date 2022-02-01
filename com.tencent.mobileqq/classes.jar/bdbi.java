@@ -1,14 +1,52 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
+import android.os.RemoteException;
+import com.tencent.qphone.base.util.QLog;
 
 class bdbi
-  implements Camera.AutoFocusCallback
+  extends bdbp
 {
-  bdbi(bdbg parambdbg, bdbl parambdbl) {}
+  bdbi(bdbh parambdbh, bdar parambdar) {}
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public void a()
   {
-    this.jdField_a_of_type_Bdbl.a(paramBoolean, false);
+    try
+    {
+      this.jdField_a_of_type_Bdar.beginSwitch();
+      return;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      QLog.e("ThemeIPCModule", 1, "beginSwitch: ", localRemoteException);
+    }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_Bdar.postSwitch(paramInt);
+      return super.a(paramInt);
+    }
+    catch (RemoteException localRemoteException)
+    {
+      for (;;)
+      {
+        QLog.e("ThemeIPCModule", 1, "postSwitch: ", localRemoteException);
+      }
+    }
+  }
+  
+  public boolean a(bdbk parambdbk)
+  {
+    try
+    {
+      this.jdField_a_of_type_Bdar.doSwitch(parambdbk.a(), parambdbk.d());
+      return true;
+    }
+    catch (RemoteException parambdbk)
+    {
+      QLog.e("ThemeIPCModule", 1, "beforeSwitch: ", parambdbk);
+    }
+    return true;
   }
 }
 

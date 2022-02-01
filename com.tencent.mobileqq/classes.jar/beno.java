@@ -1,6 +1,34 @@
-public abstract interface beno
+import org.json.JSONObject;
+
+public abstract class beno
 {
-  public abstract void b();
+  protected JSONObject a;
+  protected boolean b = true;
+  public int c;
+  
+  public abstract int a();
+  
+  public JSONObject a()
+  {
+    return this.a;
+  }
+  
+  public void a(String paramString) {}
+  
+  public boolean a()
+  {
+    return this.b;
+  }
+  
+  public abstract int b();
+  
+  public String toString()
+  {
+    if (this.a != null) {
+      return this.a.toString();
+    }
+    return "";
+  }
 }
 
 

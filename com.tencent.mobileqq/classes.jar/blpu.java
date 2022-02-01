@@ -1,14 +1,24 @@
-import android.view.View;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface blpu
+class blpu
+  implements Animator.AnimatorListener
 {
-  public abstract void a(View paramView);
+  blpu(blpr paramblpr) {}
   
-  public abstract boolean a(View paramView);
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public abstract void b(boolean paramBoolean);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AEBottomListPart", 2, "Watermark panel down");
+    }
+  }
   
-  public abstract void d();
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

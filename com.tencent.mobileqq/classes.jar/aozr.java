@@ -1,22 +1,29 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
 
-public class aozr
-  extends aoxg
+class aozr
+  implements Animator.AnimatorListener
 {
-  public aozr(QQAppInterface paramQQAppInterface, Context paramContext)
+  aozr(aozm paramaozm, View paramView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramQQAppInterface, paramContext);
+    this.jdField_a_of_type_Aozm.l();
   }
   
-  private boolean C()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return true;
+    this.jdField_a_of_type_Aozm.l();
   }
   
-  public boolean a()
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return C();
+    if (this.jdField_a_of_type_Aozm.e) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
   }
 }
 

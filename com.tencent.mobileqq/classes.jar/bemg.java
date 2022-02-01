@@ -1,31 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
 
-class bemg
-  implements View.OnClickListener
+public class bemg
+  implements TextWatcher
 {
-  bemg(beme parambeme) {}
+  public bemg(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    switch (((bekf)paramView.getTag()).b)
+    if (paramEditable.length() == 0)
     {
-    }
-    for (;;)
-    {
-      this.a.dismiss();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.d();
-      continue;
       this.a.e();
-      continue;
-      this.a.f();
-      continue;
-      this.a.g();
+      this.a.a(false);
+      return;
     }
+    this.a.jdField_a_of_type_Bemp.a();
+    this.a.jdField_a_of_type_Bemp.notifyDataSetChanged();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.a.a(false);
+    this.a.b = 0;
+    this.a.a(true);
+    paramEditable = paramEditable.toString();
+    this.a.b(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

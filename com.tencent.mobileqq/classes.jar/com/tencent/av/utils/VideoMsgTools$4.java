@@ -10,7 +10,7 @@ final class VideoMsgTools$4
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.selfuin);
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.addMessage(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.selfuin);
   }
 }
 

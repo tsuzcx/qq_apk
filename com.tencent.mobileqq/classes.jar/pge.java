@@ -1,80 +1,15 @@
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
 import com.tencent.widget.ListView;
 
-public class pge
+class pge
+  extends udp
 {
-  static int jdField_a_of_type_Int = -1;
-  static long jdField_a_of_type_Long;
-  static int jdField_b_of_type_Int = -1;
-  static long jdField_b_of_type_Long;
-  static int c;
+  pge(pgd parampgd, ped paramped) {}
   
-  public static int a()
+  public void a(udq paramudq)
   {
-    return c;
-  }
-  
-  static void a(AbsListView paramAbsListView)
-  {
-    pgg localpgg = new pgg();
-    int i = paramAbsListView.getLastVisiblePosition();
-    int j = ((ListAdapter)paramAbsListView.getAdapter()).getCount();
-    localpgg.jdField_a_of_type_Int = b();
-    localpgg.jdField_b_of_type_Int = Math.abs(jdField_b_of_type_Int - jdField_a_of_type_Int);
-    localpgg.jdField_a_of_type_Long = (jdField_b_of_type_Long - jdField_a_of_type_Long);
-    localpgg.c = (j - i);
-    localpgg.jdField_b_of_type_Long = jdField_b_of_type_Long;
-    localpgg.d = j;
-    pgf.a(localpgg);
-  }
-  
-  public static void a(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramAbsListView == null) || (paramAbsListView.getChildCount() == 0) || (paramAbsListView.getAdapter() == null)) {}
-    do
-    {
-      do
-      {
-        return;
-        b(paramAbsListView, paramInt);
-      } while ((pgf.jdField_a_of_type_Long < 0L) || (pgf.jdField_b_of_type_Long < 0L));
-      switch (paramInt)
-      {
-      default: 
-        return;
-      }
-    } while ((jdField_b_of_type_Int >= 0) || (jdField_b_of_type_Long >= 0L));
-    jdField_b_of_type_Int = paramAbsListView.getFirstVisiblePosition();
-    jdField_b_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-    a(paramAbsListView);
-    return;
-    jdField_a_of_type_Int = paramAbsListView.getFirstVisiblePosition();
-    jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-    jdField_b_of_type_Int = -1;
-    jdField_b_of_type_Long = -1L;
-  }
-  
-  static int b()
-  {
-    if (jdField_a_of_type_Int > jdField_b_of_type_Int) {
-      return 0;
+    if (paramudq != null) {
+      pei.a(paramudq, this.jdField_a_of_type_Ped.a().a().a().getHeaderViewsCount(), this.jdField_a_of_type_Ped);
     }
-    return 1;
-  }
-  
-  private static void b(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt != 0) {
-      return;
-    }
-    c = paramAbsListView.getFirstVisiblePosition() - ((ListView)paramAbsListView).getHeaderViewsCount();
-    if (c < 0) {
-      c = 0;
-    }
-    QLog.d("ReadinjoySPEventReport", 2, new Object[] { "[onScrollStateChanged] record firstItemPos : ", Integer.valueOf(c) });
   }
 }
 

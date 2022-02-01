@@ -1,27 +1,24 @@
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.open.agent.TroopAbilityPreVerificationFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.widget.DynamicGridView;
 
 public class bjpm
-  extends noa
+  extends AnimatorListenerAdapter
 {
-  public bjpm(TroopAbilityPreVerificationFragment paramTroopAbilityPreVerificationFragment) {}
+  public bjpm(DynamicGridView paramDynamicGridView, View paramView) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    QLog.d("TroopAbility.PreVerification", 1, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID);
-    if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
-    {
-      if (!paramOpenID.openID.equals(this.a.b))
-      {
-        this.a.d();
-        TroopAbilityPreVerificationFragment.a(this.a);
-        return;
-      }
-      this.a.c();
-      return;
-    }
-    this.a.c(anzj.a(2131713914));
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, false);
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, true);
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
   }
 }
 

@@ -1,30 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
-class aucu
-  implements aumz
+public class aucu
 {
-  aucu(auct paramauct) {}
+  public List<auct> a;
+  public Set<String> a;
   
-  public void a()
+  public aucu()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    localQQAppInterface.a().a(this.a.jdField_a_of_type_JavaLangString, null, localQQAppInterface.getAccount(), 0, false);
-    aunj.a(this.a.jdField_a_of_type_JavaLangString);
-    auna.d(BaseActivity.sTopActivity.getString(2131692445));
-    if (this.a.jdField_a_of_type_Auef != null) {
-      this.a.jdField_a_of_type_Auef.a(1);
-    }
-    if (this.a.jdField_a_of_type_Auef.c())
-    {
-      long l = this.a.jdField_a_of_type_Auef.a().b();
-      aunj.a(this.a.jdField_a_of_type_Auef.a(), l);
-    }
+    this.jdField_a_of_type_JavaUtilSet = new TreeSet();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
-  
-  public void b() {}
 }
 
 

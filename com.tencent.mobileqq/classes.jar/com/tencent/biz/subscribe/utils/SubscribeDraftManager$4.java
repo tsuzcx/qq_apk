@@ -1,30 +1,30 @@
 package com.tencent.biz.subscribe.utils;
 
-import aanf;
-import aanj;
-import bhmi;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.util.Pair;
+import zka;
+import zke;
 
 public class SubscribeDraftManager$4
   implements Runnable
 {
-  public SubscribeDraftManager$4(aanf paramaanf, String paramString1, String paramString2, aanj paramaanj) {}
+  public SubscribeDraftManager$4(zka paramzka, String paramString1, String paramString2, zke paramzke) {}
   
   public void run()
   {
-    Pair localPair = aanf.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
+    Pair localPair = zka.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
     if (localPair != null)
     {
-      bhmi.d((String)localPair.first);
-      bhmi.d((String)localPair.second);
-      if (this.jdField_a_of_type_Aanj != null) {
-        this.jdField_a_of_type_Aanj.a(2, true, this.b, new Object[0]);
+      FileUtils.deleteFile((String)localPair.first);
+      FileUtils.deleteFile((String)localPair.second);
+      if (this.jdField_a_of_type_Zke != null) {
+        this.jdField_a_of_type_Zke.a(2, true, this.b, new Object[0]);
       }
     }
-    while (this.jdField_a_of_type_Aanj == null) {
+    while (this.jdField_a_of_type_Zke == null) {
       return;
     }
-    this.jdField_a_of_type_Aanj.a(2, false, this.b, new Object[0]);
+    this.jdField_a_of_type_Zke.a(2, false, this.b, new Object[0]);
   }
 }
 

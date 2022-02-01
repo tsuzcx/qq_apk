@@ -23,6 +23,7 @@ public class MediaQueryHelper
   List<ICursor> mCursors;
   public int mEachCount = 300;
   private int mLimit = -1;
+  ICursor.FilterListener mListener;
   private PriorityQueue<MediaQueryHelper.MergeSlot> mQueue;
   public boolean mTraversalDone = false;
   public List<LocalMediaInfo> mediaList;
@@ -30,6 +31,13 @@ public class MediaQueryHelper
   private void init(List<ICursor> paramList, int paramInt1, int paramInt2)
   {
     this.mCursors = paramList;
+    if (this.mCursors != null)
+    {
+      paramList = this.mCursors.iterator();
+      while (paramList.hasNext()) {
+        ((ICursor)paramList.next()).setListener(this.mListener);
+      }
+    }
     this.mLimit = paramInt1;
     if (paramInt2 > 300) {
       this.mEachCount = paramInt2;
@@ -128,7 +136,7 @@ public class MediaQueryHelper
         this.mTraversalDone = true;
         continue;
         int k = j;
-        if (localStaleDataException.mImage != null)
+        if (localStaleDataException.need)
         {
           k = j + 1;
           this.mediaList.add(localStaleDataException.mImage);
@@ -162,6 +170,7 @@ public class MediaQueryHelper
   
   public void setListener(ICursor.FilterListener paramFilterListener)
   {
+    this.mListener = paramFilterListener;
     if (this.mCursors != null)
     {
       Iterator localIterator = this.mCursors.iterator();

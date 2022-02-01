@@ -1,10 +1,8 @@
+import com.tencent.mobileqq.data.DiscussionInfo;
+
 public abstract interface aliw
 {
-  public abstract void l();
-  
-  public abstract void m();
-  
-  public abstract void n();
+  public abstract void a(DiscussionInfo paramDiscussionInfo);
 }
 
 

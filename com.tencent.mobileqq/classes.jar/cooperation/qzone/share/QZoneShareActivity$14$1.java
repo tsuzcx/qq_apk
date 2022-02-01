@@ -1,8 +1,8 @@
 package cooperation.qzone.share;
 
+import amtj;
 import android.content.res.Resources;
 import android.widget.TextView;
-import anzj;
 import com.tencent.mobileqq.widget.QQToast;
 
 class QZoneShareActivity$14$1
@@ -12,28 +12,28 @@ class QZoneShareActivity$14$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a == null) {}
+    if (this.this$1.this$0.viewTextCount == null) {}
     do
     {
       do
       {
         return;
-        if (this.jdField_a_of_type_Int <= 0) {
+        if (this.val$exceedCount <= 0) {
           break;
         }
-        String str = anzj.a(2131711211) + this.jdField_a_of_type_Int + anzj.a(2131711223);
-        int i = this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.getResources().getColor(2131166748);
-        this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a.setTextColor(i);
-        this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a.setText(str);
-        if (this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a.getVisibility() != 0) {
-          this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a.setVisibility(0);
+        String str = amtj.a(2131711443) + this.val$exceedCount + amtj.a(2131711455);
+        int i = this.this$1.this$0.getResources().getColor(2131166767);
+        this.this$1.this$0.viewTextCount.setTextColor(i);
+        this.this$1.this$0.viewTextCount.setText(str);
+        if (this.this$1.this$0.viewTextCount.getVisibility() != 0) {
+          this.this$1.this$0.viewTextCount.setVisibility(0);
         }
-      } while (!this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.b);
-      QQToast.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0, 2131716980, 0).a();
-      this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.b = false;
+      } while (!this.this$1.this$0.showMaxLen);
+      QQToast.a(this.this$1.this$0, 2131717214, 0).a();
+      this.this$1.this$0.showMaxLen = false;
       return;
-    } while (this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a.getVisibility() == 8);
-    this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$14.this$0.a.setVisibility(8);
+    } while (this.this$1.this$0.viewTextCount.getVisibility() == 8);
+    this.this$1.this$0.viewTextCount.setVisibility(8);
   }
 }
 

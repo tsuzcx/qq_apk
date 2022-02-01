@@ -1,76 +1,58 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import tencent.im.s2c.msgtype0x210.submsgtype0xc7.submsgtype0xc7.RelationalChainInfo;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForLongMsg;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class agia
+class agia
+  implements View.OnClickListener
 {
-  public int a;
-  public agib a;
-  public agic a;
-  public byte[] a;
+  agia(aghv paramaghv) {}
   
-  public static agia a(submsgtype0xc7.RelationalChainInfo paramRelationalChainInfo)
+  public void onClick(View paramView)
   {
-    if (paramRelationalChainInfo != null)
+    if (this.a.a()) {}
+    for (;;)
     {
-      agia localagia = new agia();
-      localagia.jdField_a_of_type_Int = paramRelationalChainInfo.uint64_type.get();
-      if (paramRelationalChainInfo.bytes_attr.has()) {
-        localagia.jdField_a_of_type_Agic = agic.a(localagia.jdField_a_of_type_Int, paramRelationalChainInfo.bytes_attr.get().toByteArray());
-      }
-      if (paramRelationalChainInfo.bytes_intimate_info.has()) {
-        localagia.jdField_a_of_type_Agib = agib.a(paramRelationalChainInfo.bytes_intimate_info.get().toByteArray());
-      }
-      if (paramRelationalChainInfo.bytes_mutualmark_alienation.has()) {
-        localagia.jdField_a_of_type_ArrayOfByte = paramRelationalChainInfo.bytes_mutualmark_alienation.get().toByteArray();
-      }
-      return localagia;
-    }
-    return null;
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Agic != null) {
-      return (int)this.jdField_a_of_type_Agic.b;
-    }
-    if ((this.jdField_a_of_type_Agib != null) && ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 3))) {
-      return this.jdField_a_of_type_Agib.jdField_a_of_type_Int;
-    }
-    return 0;
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_Agic != null) {
-      return (int)this.jdField_a_of_type_Agic.h;
-    }
-    return 0;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ExtSnsRelationalChainPushInfo{");
-    localStringBuilder.append("relation_type:").append(this.jdField_a_of_type_Int).append(", ");
-    localStringBuilder.append("mutualMarkInfo:").append(this.jdField_a_of_type_Agic).append(", ");
-    localStringBuilder.append("intimateInfo:").append(this.jdField_a_of_type_Agib).append(", ");
-    localStringBuilder.append("relationIconFlag:");
-    if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length > 0))
-    {
-      int i = 0;
-      while ((i < this.jdField_a_of_type_ArrayOfByte.length) && (i < 10))
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Object localObject = AIOUtils.getMessage(paramView);
+      if (!(localObject instanceof MessageForLongMsg))
       {
-        localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte[0]).append(" ");
-        i += 1;
+        if (QLog.isColorLevel()) {
+          QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForLongMsg");
+        }
+      }
+      else
+      {
+        localObject = (MessageForLongMsg)localObject;
+        if ((((MessageForLongMsg)localObject).mSourceMsgInfo != null) && ((this.a.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: isReplyMsg = true");
+          }
+          BaseChatPie localBaseChatPie = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
+          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 0) && ((localBaseChatPie instanceof afiw)))
+          {
+            ((afiw)localBaseChatPie).a(22, ((MessageForLongMsg)localObject).mSourceMsgInfo.origUid, ((MessageForLongMsg)localObject).mSourceMsgInfo.mSourceMsgTime, null);
+          }
+          else if (localBaseChatPie.supportRefreshHeadMessage())
+          {
+            localBaseChatPie.refreshHeadMessage(22, ((MessageForLongMsg)localObject).mSourceMsgInfo.mSourceMsgSeq, (int)(((MessageForLongMsg)localObject).shmsgseq - ((MessageForLongMsg)localObject).mSourceMsgInfo.mSourceMsgSeq), (MessageRecord)localObject);
+            MessageForReplyText.reportReplyMsg(null, "replyMsg_bubble", "clk_original", ((MessageForLongMsg)localObject).frienduin, (ChatMessage)localObject);
+          }
+        }
       }
     }
-    localStringBuilder.append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
   }
 }
 

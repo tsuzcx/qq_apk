@@ -1,87 +1,28 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import com.tencent.image.NativeGifIndex8;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import java.net.URL;
 
-public class assv
-  extends NativeGifIndex8
+public abstract interface assv
 {
-  private boolean a = true;
-  private boolean b;
-  private boolean c;
+  public abstract int a();
   
-  public assv(File paramFile, int paramInt, boolean paramBoolean)
-  {
-    super(paramFile, paramBoolean, true, 0, 0, 0.0F);
-  }
+  public abstract String a();
   
-  public void a()
-  {
-    this.a = true;
-  }
+  public abstract URL a();
   
-  public void b()
-  {
-    this.a = false;
-    this.b = true;
-  }
+  public abstract void a(int paramInt);
   
-  public void doApplyNextFrame()
-  {
-    super.doApplyNextFrame();
-    if (this.c)
-    {
-      this.c = false;
-      this.b = false;
-    }
-  }
+  public abstract void a(String paramString);
   
-  public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
-  {
-    initHandlerAndRunnable();
-    if ((!this.a) && (this.mFirstFrameBitmap != null)) {
-      if (this.mFirstFrameBitmap != null) {
-        paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
-      }
-    }
-    do
-    {
-      return;
-      if (!this.b) {
-        break;
-      }
-      if (this.mFirstFrameBitmap != null) {
-        paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
-      }
-      if (!sPaused)
-      {
-        executeNewTask();
-        return;
-      }
-    } while (this.mIsInPendingAction);
-    sPendingActions.add(new WeakReference(this));
-    this.mIsInPendingAction = true;
-    return;
-    super.draw(paramCanvas, paramRect, paramPaint, paramBoolean);
-  }
+  public abstract boolean a();
   
-  public void getNextFrame()
-  {
-    try
-    {
-      if (this.b)
-      {
-        this.c = true;
-        super.reset();
-      }
-      super.getNextFrame();
-      return;
-    }
-    finally {}
-  }
+  public abstract boolean a(String paramString);
+  
+  public abstract int b();
+  
+  public abstract String b();
+  
+  public abstract void b(String paramString);
+  
+  public abstract boolean b();
 }
 
 

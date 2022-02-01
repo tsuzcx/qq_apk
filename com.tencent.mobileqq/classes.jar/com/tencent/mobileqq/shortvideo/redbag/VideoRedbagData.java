@@ -27,7 +27,7 @@ public class VideoRedbagData
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return ((QQAppInterface)localAppRuntime).a().createEntityManager();
+      return ((QQAppInterface)localAppRuntime).getEntityManagerFactory().createEntityManager();
     }
     return null;
   }
@@ -93,15 +93,19 @@ public class VideoRedbagData
   
   public static boolean updateRewardStat(String paramString)
   {
+    boolean bool = false;
     EntityManager localEntityManager = getEntityManager();
     ContentValues localContentValues = new ContentValues();
     localContentValues.put("redBagStat", Boolean.valueOf(true));
-    return localEntityManager.update(VideoRedbagData.class.getSimpleName(), localContentValues, "shortVideoId=?", new String[] { paramString });
+    if (localEntityManager != null) {
+      bool = localEntityManager.update(VideoRedbagData.class.getSimpleName(), localContentValues, "shortVideoId=?", new String[] { paramString });
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.redbag.VideoRedbagData
  * JD-Core Version:    0.7.0.1
  */

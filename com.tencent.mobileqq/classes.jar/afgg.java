@@ -1,39 +1,19 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import com.tencent.mobileqq.util.DisplayUtil;
 
-public class afgg
-  implements bliz
+class afgg
+  implements bcrf
 {
-  public afgg(QQLSActivity paramQQLSActivity, MessageForPtt paramMessageForPtt, blir paramblir) {}
+  afgg(afgf paramafgf) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    aean.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    paramView = aean.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), new SessionInfo(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    if (paramView != null) {}
-    try
-    {
-      ((MessageForPtt)paramView).c2cViaOffline = true;
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("DiyTextId", paramView.vipBubbleDiyTextId);
-      aean.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath(), paramView.uniseq, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength * 1000, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceChangeFlag, 0, true, paramView.vipSubBubbleId, localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.d();
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-    }
-    catch (RuntimeException paramView)
-    {
-      for (;;)
-      {
-        paramView.printStackTrace();
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, paramView.getMessage(), 0).a();
-      }
-    }
+    int i = this.a.a.jdField_a_of_type_Int / 2;
+    int j = (int)(this.a.a.b - DisplayUtil.dip2px(this.a.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.a.jdField_a_of_type_Bcsi.b / 2.0F);
+    int k = (int)(this.a.a.b - DisplayUtil.dip2px(this.a.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.a.jdField_a_of_type_Bcsi.b / 2.0F);
+    bcrn localbcrn = new bcrn(new bcre[] { new bcri(450, i, j, i, k), new bcri(450, i, k, i, j) });
+    localbcrn.a = true;
+    this.a.a.jdField_a_of_type_Bcsi.a(new bcre[] { localbcrn });
   }
 }
 

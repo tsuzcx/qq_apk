@@ -1,187 +1,169 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.lifeachivement.LifeAchivementPanelView;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.opengl.EGL14;
+import android.opengl.EGLConfig;
+import android.opengl.EGLContext;
+import android.opengl.EGLDisplay;
+import android.opengl.EGLExt;
+import android.opengl.EGLSurface;
+import android.view.Surface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-public class bafv
-  extends badd
+@TargetApi(18)
+public final class bafv
 {
-  private anuw a;
+  private EGLConfig jdField_a_of_type_AndroidOpenglEGLConfig;
+  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext = EGL14.EGL_NO_CONTEXT;
+  private EGLDisplay jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.EGL_NO_DISPLAY;
   
-  public bafv(baei parambaei, azxr paramazxr)
+  public bafv(EGLContext paramEGLContext, int paramInt)
   {
-    super(parambaei, paramazxr);
-    this.jdField_a_of_type_Anuw = new bafw(this);
-  }
-  
-  private void a(Card paramCard, boolean paramBoolean, LifeAchivementPanelView paramLifeAchivementPanelView)
-  {
-    a(paramLifeAchivementPanelView, true);
-    if (paramBoolean)
-    {
-      i = paramCard.lifeAchievementTotalCount;
-      String str = String.format(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698141), new Object[] { Integer.valueOf(i) });
-      TextView localTextView = new TextView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      localTextView.setText(str);
-      paramLifeAchivementPanelView.d.removeAllViews();
-      paramLifeAchivementPanelView.d.addView(localTextView);
-      paramLifeAchivementPanelView.d.setVisibility(0);
-      paramLifeAchivementPanelView.a(paramCard.lifeAchivementList, paramCard.lifeAchievementTotalCount);
-      a(null, localTextView);
-      return;
+    if (this.jdField_a_of_type_AndroidOpenglEGLDisplay != EGL14.EGL_NO_DISPLAY) {
+      throw new RuntimeException("EGL already set up");
     }
-    paramLifeAchivementPanelView.d.removeAllViews();
-    paramLifeAchivementPanelView.d.setVisibility(8);
-    paramLifeAchivementPanelView.b();
-    paramBoolean = ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (((azxr)this.b).jdField_a_of_type_Azxy != null) {}
-    for (int i = 1;; i = 0)
+    EGLContext localEGLContext1 = paramEGLContext;
+    if (paramEGLContext == null)
     {
-      if ((paramBoolean) || (i != 0)) {
-        ((URLImageView)paramLifeAchivementPanelView.findViewById(2131369595)).setVisibility(4);
-      }
-      paramCard = (TextView)paramLifeAchivementPanelView.findViewById(2131379638);
-      paramLifeAchivementPanelView = (TextView)paramLifeAchivementPanelView.findViewById(2131379639);
-      a(paramCard, null);
-      a(paramLifeAchivementPanelView, null);
-      return;
+      localEGLContext1 = EGL14.EGL_NO_CONTEXT;
+      QLog.e("EglCore", 2, "sharedContext == null");
     }
-  }
-  
-  private void a(boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    Object localObject;
-    azzn localazzn;
-    if (!paramBoolean) {
-      if ((((azxr)this.b).jdField_a_of_type_ComTencentMobileqqDataCard != null) && (((azxr)this.b).jdField_a_of_type_ComTencentMobileqqDataCard.lifeAchivementList != null))
+    this.jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.eglGetDisplay(0);
+    if (this.jdField_a_of_type_AndroidOpenglEGLDisplay == EGL14.EGL_NO_DISPLAY) {
+      throw new RuntimeException("unable to get EGL14 display");
+    }
+    paramEGLContext = new int[2];
+    if (!EGL14.eglInitialize(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLContext, 0, paramEGLContext, 1))
+    {
+      this.jdField_a_of_type_AndroidOpenglEGLDisplay = null;
+      throw new RuntimeException("unable to initialize EGL14");
+    }
+    if ((paramInt & 0x2) != 0)
+    {
+      paramEGLContext = a(paramInt, 3);
+      if (paramEGLContext != null)
       {
-        localObject = ((azxr)this.b).jdField_a_of_type_ComTencentMobileqqDataCard.lifeAchivementList.iterator();
-        while (((Iterator)localObject).hasNext())
+        EGLContext localEGLContext2 = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLContext, localEGLContext1, new int[] { 12440, 3, 12344 }, 0);
+        if (EGL14.eglGetError() == 12288)
         {
-          localazzn = (azzn)((Iterator)localObject).next();
-          if (localazzn.b == paramInt2)
-          {
-            if (paramInt1 != 1) {
-              break label151;
-            }
-            localazzn.c -= 1;
-            localazzn.a = false;
-          }
+          this.jdField_a_of_type_AndroidOpenglEGLConfig = paramEGLContext;
+          this.jdField_a_of_type_AndroidOpenglEGLContext = localEGLContext2;
         }
       }
     }
-    for (;;)
+    if (this.jdField_a_of_type_AndroidOpenglEGLContext == EGL14.EGL_NO_CONTEXT)
     {
-      localObject = BaseApplicationImpl.getApplication();
-      QQToast.a((Context)localObject, ((Context)localObject).getString(2131694175), 0).a();
-      if (this.jdField_a_of_type_JavaLangObject != null) {
-        a(((azxr)this.b).jdField_a_of_type_ComTencentMobileqqDataCard, false);
+      paramEGLContext = a(paramInt, 2);
+      if (paramEGLContext == null) {
+        throw new RuntimeException("Unable to find a suitable EGLConfig");
       }
-      return;
-      label151:
-      if (paramInt1 == 2)
-      {
-        localazzn.c += 1;
-        localazzn.a = true;
-      }
+      localEGLContext1 = EGL14.eglCreateContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLContext, localEGLContext1, new int[] { 12440, 2, 12344 }, 0);
+      a("eglCreateContext");
+      this.jdField_a_of_type_AndroidOpenglEGLConfig = paramEGLContext;
+      this.jdField_a_of_type_AndroidOpenglEGLContext = localEGLContext1;
+    }
+    paramEGLContext = new int[1];
+    EGL14.eglQueryContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLContext, 12440, paramEGLContext, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("EglCore", 2, "EGLContext created, client version " + paramEGLContext[0]);
     }
   }
   
-  private boolean a(Card paramCard, boolean paramBoolean)
+  private EGLConfig a(int paramInt1, int paramInt2)
   {
-    int i = 2;
-    if (((azxr)this.b).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0)
+    if (paramInt2 >= 3) {}
+    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    EGLDisplay localEGLDisplay = this.jdField_a_of_type_AndroidOpenglEGLDisplay;
+    paramInt1 = arrayOfEGLConfig.length;
+    if (!EGL14.eglChooseConfig(localEGLDisplay, new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12339, 1, 12344 }, 0, arrayOfEGLConfig, 0, paramInt1, arrayOfInt, 0))
     {
-      paramBoolean = true;
-      if ((paramCard == null) || (paramCard.lifeAchivementList == null) || (paramCard.lifeAchivementList.size() <= 0)) {
-        break label125;
-      }
-    }
-    label125:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      bool2 = azzo.a(paramCard, this.jdField_a_of_type_Bjaz, paramBoolean, bool1);
       if (QLog.isColorLevel()) {
-        QLog.d("ProfileAchievementComponent", 2, String.format("makeOrRefreshLifeAchievement isSelf=%s hasLifeAchievement=%s showLifeAchievement=%s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+        QLog.w("EglCore", 2, "unable to find RGB8888 / " + paramInt2 + " EGLConfig");
       }
-      if (bool2) {
-        break label131;
-      }
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        break label263;
-      }
-      this.jdField_a_of_type_JavaLangObject = null;
-      return true;
-      paramBoolean = false;
-      break;
+      return null;
     }
-    label131:
-    LifeAchivementPanelView localLifeAchivementPanelView;
-    if (this.jdField_a_of_type_JavaLangObject == null)
+    return arrayOfEGLConfig[0];
+  }
+  
+  private void b(String paramString)
+  {
+    int i = EGL14.eglGetError();
+    if (i != 12288) {
+      QLog.e("EglCore", 2, new RuntimeException(paramString + ": EGL error: 0x" + Integer.toHexString(i)), new Object[0]);
+    }
+  }
+  
+  public EGLSurface a(int paramInt1, int paramInt2)
+  {
+    EGLSurface localEGLSurface = EGL14.eglCreatePbufferSurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLConfig, new int[] { 12375, paramInt1, 12374, paramInt2, 12344 }, 0);
+    b("eglCreatePbufferSurface");
+    if (localEGLSurface == null) {
+      throw new RuntimeException("surface was null");
+    }
+    return localEGLSurface;
+  }
+  
+  public EGLSurface a(Object paramObject)
+  {
+    if ((!(paramObject instanceof Surface)) && (!(paramObject instanceof SurfaceTexture))) {
+      throw new RuntimeException("invalid surface: " + paramObject);
+    }
+    paramObject = EGL14.eglCreateWindowSurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLConfig, paramObject, new int[] { 12344 }, 0);
+    b("eglCreateWindowSurface");
+    if (paramObject == null) {
+      throw new RuntimeException("surface was null");
+    }
+    return paramObject;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidOpenglEGLDisplay != EGL14.EGL_NO_DISPLAY)
     {
-      localLifeAchivementPanelView = new LifeAchivementPanelView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      localLifeAchivementPanelView.setCardHandler((anum)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2));
-      localLifeAchivementPanelView.setTitle(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131691032));
-      this.jdField_a_of_type_JavaLangObject = localLifeAchivementPanelView;
+      EGL14.eglMakeCurrent(this.jdField_a_of_type_AndroidOpenglEGLDisplay, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_SURFACE, EGL14.EGL_NO_CONTEXT);
+      EGL14.eglDestroyContext(this.jdField_a_of_type_AndroidOpenglEGLDisplay, this.jdField_a_of_type_AndroidOpenglEGLContext);
+      EGL14.eglReleaseThread();
+      EGL14.eglTerminate(this.jdField_a_of_type_AndroidOpenglEGLDisplay);
     }
-    for (boolean bool2 = true;; bool2 = false)
+    this.jdField_a_of_type_AndroidOpenglEGLDisplay = EGL14.EGL_NO_DISPLAY;
+    this.jdField_a_of_type_AndroidOpenglEGLContext = EGL14.EGL_NO_CONTEXT;
+    this.jdField_a_of_type_AndroidOpenglEGLConfig = null;
+  }
+  
+  public void a(EGLSurface paramEGLSurface)
+  {
+    EGL14.eglDestroySurface(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLSurface);
+  }
+  
+  public void a(EGLSurface paramEGLSurface, long paramLong)
+  {
+    EGLExt.eglPresentationTimeANDROID(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLSurface, paramLong);
+  }
+  
+  void a(String paramString)
+  {
+    int i = EGL14.eglGetError();
+    if (i != 12288)
     {
-      localLifeAchivementPanelView = (LifeAchivementPanelView)this.jdField_a_of_type_JavaLangObject;
-      localLifeAchivementPanelView.a(paramCard, (azxr)this.b);
-      a(paramCard, bool1, localLifeAchivementPanelView);
-      if (paramBoolean) {
-        i = 1;
-      }
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "", "", "0X800AE53", "0X800AE53", i, 0, "", "", "", "");
-      return bool2;
+      new RuntimeException(paramString + ": EGL error: 0x" + Integer.toHexString(i));
+      new StringBuilder().append("EGL14.eglGetCurrentContext() = ").append(EGL14.eglGetCurrentContext()).append(", mEGLContext = ").append(this.jdField_a_of_type_AndroidOpenglEGLContext).toString();
+      a();
     }
-    label263:
-    return false;
   }
   
-  public int a()
+  public boolean a(EGLSurface paramEGLSurface)
   {
-    return 1007;
+    return EGL14.eglSwapBuffers(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLSurface);
   }
   
-  public String a()
+  public void b(EGLSurface paramEGLSurface)
   {
-    return "ProfileAchievementComponent";
-  }
-  
-  public void a(BaseActivity paramBaseActivity, Bundle paramBundle)
-  {
-    super.a(paramBaseActivity, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Anuw);
-  }
-  
-  public boolean a(azxr paramazxr)
-  {
-    boolean bool = super.a(paramazxr);
-    return a(((azxr)this.b).jdField_a_of_type_ComTencentMobileqqDataCard, ((azxr)this.b).d) | bool;
-  }
-  
-  public String a_()
-  {
-    return "map_key_life_achievement";
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anuw);
-    super.f();
+    if ((this.jdField_a_of_type_AndroidOpenglEGLDisplay == EGL14.EGL_NO_DISPLAY) && (QLog.isColorLevel())) {
+      QLog.d("EglCore", 2, "NOTE: makeCurrent w/o display");
+    }
+    if (!EGL14.eglMakeCurrent(this.jdField_a_of_type_AndroidOpenglEGLDisplay, paramEGLSurface, paramEGLSurface, this.jdField_a_of_type_AndroidOpenglEGLContext)) {
+      throw new RuntimeException("eglMakeCurrent failed");
+    }
   }
 }
 

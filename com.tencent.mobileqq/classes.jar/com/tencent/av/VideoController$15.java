@@ -1,16 +1,19 @@
 package com.tencent.av;
 
-import com.tencent.av.app.VideoAppInterface;
-import lff;
+import com.tencent.qphone.base.util.QLog;
+import lez;
 
 class VideoController$15
   implements Runnable
 {
-  VideoController$15(VideoController paramVideoController, lff paramlff) {}
+  VideoController$15(VideoController paramVideoController) {}
   
   public void run()
   {
-    this.this$0.a.a(new Object[] { Integer.valueOf(33), this.a.d, Boolean.valueOf(false) });
+    if (QLog.isColorLevel()) {
+      QLog.d(VideoController.a, 2, "mSwitchToMultiRunnable timeOut ");
+    }
+    this.this$0.b(this.this$0.a().d, 2);
   }
 }
 

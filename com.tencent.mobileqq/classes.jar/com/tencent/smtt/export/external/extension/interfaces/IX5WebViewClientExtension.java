@@ -91,6 +91,8 @@ public abstract interface IX5WebViewClientExtension
   
   public abstract void onReportHtmlInfo(int paramInt, String paramString);
   
+  public abstract void onReportMemoryCachedResponse(String paramString, int paramInt, HashMap<String, String> paramHashMap);
+  
   public abstract void onReportResponseHeaders(String paramString, int paramInt, HashMap<String, String> paramHashMap);
   
   public abstract void onResponseReceived(WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse, int paramInt);

@@ -1,77 +1,41 @@
-import android.os.Bundle;
-import android.widget.Button;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import android.view.View;
+import com.tencent.device.msg.data.MessageForDevLittleVideo;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import mqq.app.MobileQQ;
 
-public class aaup
-  extends aavg
+class aaup
+  implements bjoe
 {
-  public aaup(MoveFileActivity paramMoveFileActivity) {}
+  aaup(aaun paramaaun, MessageForDevLittleVideo paramMessageForDevLittleVideo, agok paramagok, bjnw parambjnw) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, ByteStringMicro paramByteStringMicro, List<bfrs> paramList, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a(true);
-    if ((!paramBoolean1) || (paramList == null)) {
+    switch (paramInt)
+    {
+    case 1: 
+    default: 
+      this.jdField_a_of_type_Bjnw.dismiss();
       return;
     }
-    MoveFileActivity.a(this.a, paramInt3);
-    MoveFileActivity.a(this.a, paramBoolean2);
-    paramBoolean1 = paramBundle.getBoolean("isFirstPage");
-    paramByteStringMicro = paramList.iterator();
-    while (paramByteStringMicro.hasNext())
+    boolean bool = NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_Aaun.a.getApplication().getApplicationContext());
+    paramView = this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo;
+    if (bool) {}
+    for (paramInt = 1002;; paramInt = 1005)
     {
-      paramBundle = (bfrs)paramByteStringMicro.next();
-      if (MoveFileActivity.a(this.a).c.get(paramBundle.b) == null)
-      {
-        paramBundle.a = UUID.randomUUID();
-        MoveFileActivity.a(this.a).c.put(paramBundle.b, paramBundle);
+      paramView.videoFileStatus = paramInt;
+      this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.videoFileProgress = 0;
+      this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.serial();
+      this.jdField_a_of_type_Aaun.a.getMessageFacade().updateMsgContentByUniseq(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.frienduin, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.istroop, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.uniseq, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.msgData);
+      if (!bool) {
+        break;
       }
-    }
-    if (paramBoolean1)
-    {
-      MoveFileActivity.a(this.a).clear();
-      if (!MoveFileActivity.c(this.a).equals("/"))
-      {
-        paramByteStringMicro = new bfrs();
-        paramByteStringMicro.c = anzj.a(2131705791);
-        paramByteStringMicro.b = "/";
-        paramByteStringMicro.d = true;
-        paramByteStringMicro.f = -1;
-        MoveFileActivity.a(this.a).add(paramByteStringMicro);
-      }
-    }
-    MoveFileActivity.b(this.a, paramInt1);
-    if (!MoveFileActivity.c(this.a).equals("/"))
-    {
-      paramInt1 = paramList.size() - 1;
-      if (paramInt1 >= 0)
-      {
-        if (!((bfrs)paramList.get(paramInt1)).b.equals(MoveFileActivity.c(this.a))) {
-          break label389;
-        }
-        if (MoveFileActivity.a(this.a) == -1)
-        {
-          MoveFileActivity.c(this.a, paramInt1 + MoveFileActivity.a(this.a).size() - 1);
-          MoveFileActivity.a(this.a).setEnabled(true);
-          MoveFileActivity.a(this.a).setBackgroundResource(2130839312);
-          MoveFileActivity.a(this.a).setTextAppearance(this.a.getActivity(), 2131755342);
-        }
-      }
-      MoveFileActivity.a(this.a).addAll(MoveFileActivity.a(this.a).size() - 1, paramList);
-    }
-    for (;;)
-    {
-      MoveFileActivity.a(this.a).notifyDataSetChanged();
-      return;
-      label389:
-      paramInt1 -= 1;
+      this.jdField_a_of_type_Aaun.a(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo);
+      this.jdField_a_of_type_Agok.a.setFailedIconVisable(false, this.jdField_a_of_type_Aaun);
+      aaun.a(this.jdField_a_of_type_Aaun, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo, this.jdField_a_of_type_Agok, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.videoFileProgress, false);
       break;
-      MoveFileActivity.a(this.a).addAll(paramList);
     }
   }
 }

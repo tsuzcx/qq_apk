@@ -1,17 +1,18 @@
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.LinearLayout;
 
-class bcjl
-  implements View.OnClickListener
+public class bcjl
 {
-  bcjl(bcjk parambcjk, bcga parambcga) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Bcga.a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public Bundle a;
+  public View a;
+  public LinearLayout a;
+  public boolean a;
+  public View b;
+  public LinearLayout b;
+  public View c;
+  public View d;
+  public View e;
 }
 
 

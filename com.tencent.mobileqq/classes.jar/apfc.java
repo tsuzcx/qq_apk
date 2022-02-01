@@ -1,32 +1,70 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.qphone.base.util.QLog;
-
-class apfc
-  implements SoundPool.OnLoadCompleteListener
+public class apfc
+  extends apfa
 {
-  apfc(apfb paramapfb) {}
+  public float a;
+  public float b;
+  public boolean b;
+  public float c;
+  public boolean c;
+  public float d;
+  public float e;
+  public int e;
+  public float f;
+  public int f;
+  public float g;
+  public int g;
+  public float h;
+  public int h;
+  public int i;
+  public int j = 1;
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public apfc()
   {
-    if (paramInt2 != 0) {}
-    try
+    this.jdField_e_of_type_Int = 0;
+    this.jdField_f_of_type_Int = 100;
+    this.jdField_g_of_type_Int = 100;
+  }
+  
+  public apfc a()
+  {
+    apfc localapfc = new apfc();
+    localapfc.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
+    localapfc.jdField_b_of_type_Float = this.d;
+    localapfc.jdField_c_of_type_Float = this.jdField_a_of_type_Float;
+    localapfc.d = this.jdField_b_of_type_Float;
+    this.jdField_a_of_type_JavaLangString += "reverse";
+    boolean bool;
+    if (!this.jdField_b_of_type_Boolean)
     {
-      QLog.e("ARMusicController", 2, "load fire music failed. " + apfb.a(this.a));
-      return;
+      bool = true;
+      localapfc.jdField_b_of_type_Boolean = bool;
+      localapfc.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      localapfc.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      localapfc.jdField_f_of_type_Int = this.jdField_g_of_type_Int;
+      localapfc.jdField_g_of_type_Int = this.jdField_f_of_type_Int;
+      localapfc.jdField_h_of_type_Int = this.i;
+      localapfc.i = this.jdField_h_of_type_Int;
+      if (!this.jdField_c_of_type_Boolean) {
+        break label214;
+      }
+      localapfc.jdField_e_of_type_Float = this.jdField_e_of_type_Float;
+      localapfc.jdField_g_of_type_Float = this.jdField_g_of_type_Float;
+      localapfc.jdField_f_of_type_Float = this.jdField_f_of_type_Float;
     }
-    catch (Exception paramSoundPool)
+    for (localapfc.jdField_h_of_type_Float = this.jdField_h_of_type_Float;; localapfc.jdField_h_of_type_Float = this.jdField_f_of_type_Float)
     {
-      paramSoundPool.printStackTrace();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMusicController", 2, "load fire music success. : " + apfb.a(this.a));
-    }
-    apfb.a(this.a, true);
-    if (apfb.a(this.a))
-    {
-      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
-      return;
+      localapfc.jdField_e_of_type_Int = this.jdField_e_of_type_Int;
+      localapfc.jdField_c_of_type_Boolean = this.jdField_c_of_type_Boolean;
+      localapfc.j = this.j;
+      localapfc.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+      localapfc.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      return localapfc;
+      bool = false;
+      break;
+      label214:
+      localapfc.jdField_e_of_type_Float = this.jdField_g_of_type_Float;
+      localapfc.jdField_g_of_type_Float = this.jdField_e_of_type_Float;
+      localapfc.jdField_f_of_type_Float = this.jdField_h_of_type_Float;
     }
   }
 }

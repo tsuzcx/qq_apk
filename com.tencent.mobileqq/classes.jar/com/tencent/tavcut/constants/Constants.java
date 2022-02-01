@@ -2,6 +2,8 @@ package com.tencent.tavcut.constants;
 
 public class Constants
 {
+  public static final int DEFAULT_CROPPED_HEIGHT = 1080;
+  public static final int DEFAULT_CROPPED_WIDTH = 720;
   public static final String EMPTY_STRING = "";
   public static final String FRAME_PARAMS_KEY_COLOR = "FRAME_PARAMS_KEY_COLOR";
   public static final String FRAME_PARAMS_KEY_IS_ON = "FRAME_PARAMS_KEY_IS_ON";

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.fragment.searchentry.hotword;
 
+import andr;
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import aokg;
-import aoki;
-import bbzo;
-import bcnf;
+import andt;
+import bass;
+import bbgh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -17,12 +17,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SearchHotwordHandler
-  extends aoki
+  extends andt
 {
   private QQAppInterface app;
   private final HotWordSearchEntryDataModel dataModel;
   private SearchHippyEventEmitter eventEmitter;
-  private final aokg uniteSearchHandler;
+  private final andr uniteSearchHandler;
   
   public SearchHotwordHandler()
   {
@@ -32,7 +32,7 @@ public class SearchHotwordHandler
       this.app.addObserver(this);
     }
     this.dataModel = new HotWordSearchEntryDataModel(this.app, 7, 10, false);
-    this.uniteSearchHandler = new aokg(this.app);
+    this.uniteSearchHandler = new andr(this.app);
   }
   
   @NonNull
@@ -47,7 +47,7 @@ public class SearchHotwordHandler
     String str2 = paramHotSearchItem.jumpUrl;
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = bcnf.a(paramHotSearchItem.recallWord, 5, "kandian_recomword");
+      str1 = bbgh.a(paramHotSearchItem.recallWord, 5, "kandian_recomword");
     }
     localSmartBox_HotWordsItem.sUrl = str1;
     localSmartBox_HotWordsItem.sAppend = paramHotSearchItem.sAppend;
@@ -91,7 +91,7 @@ public class SearchHotwordHandler
   
   public boolean isHotwordVisible()
   {
-    return bbzo.a(this.app);
+    return bass.a(this.app);
   }
   
   public void notifyFEHotwordChanged()
@@ -113,12 +113,12 @@ public class SearchHotwordHandler
   
   public void setHotwordVisibility(boolean paramBoolean)
   {
-    bbzo.a(this.app, paramBoolean);
+    bass.a(this.app, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.hotword.SearchHotwordHandler
  * JD-Core Version:    0.7.0.1
  */

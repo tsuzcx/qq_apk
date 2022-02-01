@@ -1,28 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.ttpic.openapi.initializer.PtuToolsInitializer;
+import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
+import com.tencent.ttpic.util.Coffee;
+import com.tencent.ttpic.util.DecryptListener;
 
-class bljg
-  implements DialogInterface.OnDismissListener
+final class bljg
+  implements DecryptListener
 {
-  private WeakReference<DialogInterface.OnDismissListener> a;
-  
-  public bljg(DialogInterface.OnDismissListener paramOnDismissListener)
+  public byte[] decrypt(byte[] paramArrayOfByte)
   {
-    this.a = new WeakReference(paramOnDismissListener);
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.a.get();
-    if (localOnDismissListener != null) {
-      localOnDismissListener.onDismiss(paramDialogInterface);
+    if (!FeatureManager.Features.PTU_TOOLS.isFunctionReady()) {
+      return paramArrayOfByte;
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("Q.dating", 2, "CustomDismissListener, lis is null");
+    return Coffee.drink(paramArrayOfByte, Coffee.getDefaultSign());
   }
 }
 

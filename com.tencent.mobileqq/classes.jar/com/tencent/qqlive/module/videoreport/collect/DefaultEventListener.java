@@ -36,7 +36,7 @@ public class DefaultEventListener
   
   public void onDialogShow(Activity paramActivity, Dialog paramDialog) {}
   
-  public void onDispatchTouchEvent(Object paramObject, Window paramWindow, MotionEvent paramMotionEvent, boolean paramBoolean) {}
+  public void onDispatchTouchEvent(Object paramObject, Window paramWindow, MotionEvent paramMotionEvent, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void onFragmentDestroyView(FragmentCompat paramFragmentCompat) {}
   

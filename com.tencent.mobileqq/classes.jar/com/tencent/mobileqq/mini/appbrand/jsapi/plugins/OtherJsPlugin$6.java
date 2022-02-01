@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import aqre;
-import bhpc;
+import apkn;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class OtherJsPlugin$6
   implements Runnable
 {
-  OtherJsPlugin$6(OtherJsPlugin paramOtherJsPlugin, aqre paramaqre, JsRuntime paramJsRuntime, String paramString, int paramInt) {}
+  OtherJsPlugin$6(OtherJsPlugin paramOtherJsPlugin, apkn paramapkn, JsRuntime paramJsRuntime, String paramString, int paramInt) {}
   
   public void run()
   {
-    bhpc localbhpc = new bhpc(this.this$0.jsPluginEngine.getActivityContext(), 2131755824);
-    localbhpc.setContentView(2131559383);
-    localbhpc.setMessage("是否将" + this.this$0.jsPluginEngine.getAppInfo().name + "添加到彩签？");
-    localbhpc.setPositiveButton("确定", new OtherJsPlugin.6.1(this));
-    localbhpc.setNegativeButton("取消", new OtherJsPlugin.6.2(this));
-    localbhpc.setCanceledOnTouchOutside(false);
-    localbhpc.show();
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(this.this$0.jsPluginEngine.getActivityContext(), 2131755826);
+    localQQCustomDialog.setContentView(2131559385);
+    localQQCustomDialog.setMessage("是否将" + this.this$0.jsPluginEngine.getAppInfo().name + "添加到彩签？");
+    localQQCustomDialog.setPositiveButton("确定", new OtherJsPlugin.6.1(this));
+    localQQCustomDialog.setNegativeButton("取消", new OtherJsPlugin.6.2(this));
+    localQQCustomDialog.setCanceledOnTouchOutside(false);
+    localQQCustomDialog.show();
   }
 }
 

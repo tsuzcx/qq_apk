@@ -1,14 +1,13 @@
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import android.graphics.Canvas;
 
-class bncb
+public abstract interface bncb
+  extends bned
 {
-  long jdField_a_of_type_Long;
-  bnbx jdField_a_of_type_Bnbx;
-  ModuleDownloadListener jdField_a_of_type_CooperationQzoneNetworkedmoduleModuleDownloadListener;
-  Object jdField_a_of_type_JavaLangObject;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  public abstract int a(int paramInt);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract boolean a(int paramInt1, Canvas paramCanvas, int paramInt2, int paramInt3);
 }
 
 

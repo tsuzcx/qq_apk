@@ -1,21 +1,36 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.polylike.flowlayout.QCircleFlowLayoutItemView;
-import com.tencent.biz.qqcircle.polylike.flowlayout.QCircleTagFlowLayout;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
 public class vsp
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public vsp(QCircleTagFlowLayout paramQCircleTagFlowLayout, QCircleFlowLayoutItemView paramQCircleFlowLayoutItemView, int paramInt) {}
+  public vsp(StoryInputBarView paramStoryInputBarView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QCircleTagFlowLayout.a(this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleTagFlowLayout, this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleFlowLayoutItemView, this.jdField_a_of_type_Int);
-    if (QCircleTagFlowLayout.a(this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleTagFlowLayout) != null) {
-      QCircleTagFlowLayout.a(this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleTagFlowLayout).a(this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleFlowLayoutItemView, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqcirclePolylikeFlowlayoutQCircleTagFlowLayout);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      StoryInputBarView.a(this.a);
+      if (this.a.jdField_a_of_type_Boolean) {
+        break label94;
+      }
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Xgj.jdField_a_of_type_Boolean);
+      paramView = this.a;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
+        break label89;
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    label89:
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.jdField_a_of_type_Boolean = bool;
+      return false;
+    }
+    label94:
+    this.a.a();
+    return false;
   }
 }
 

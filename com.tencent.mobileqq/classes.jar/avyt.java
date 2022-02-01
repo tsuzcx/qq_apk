@@ -1,46 +1,41 @@
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.CountDownLatch;
+import android.graphics.Rect;
+import android.support.v4.view.OnApplyWindowInsetsListener;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.WindowInsetsCompat;
+import android.view.View;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
 
-class avyt
-  implements awbm
+public class avyt
+  implements OnApplyWindowInsetsListener
 {
-  avyt(avyr paramavyr, File paramFile, Exception[] paramArrayOfException, long paramLong, CountDownLatch paramCountDownLatch) {}
+  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   
-  public void a()
+  public avyt(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
+  
+  public WindowInsetsCompat onApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
   {
-    QLog.d("shadow::CdnPmUpdater", 1, " download cdn success");
-    if (!avyr.a(this.jdField_a_of_type_Avyr).renameTo(this.jdField_a_of_type_JavaIoFile)) {
-      this.jdField_a_of_type_ArrayOfJavaLangException[0] = new RuntimeException(anzj.a(2131700380) + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+    paramView = ViewCompat.onApplyWindowInsets(paramView, paramWindowInsetsCompat);
+    if (paramView.isConsumed()) {
+      return paramView;
     }
-    if (avyr.b(this.jdField_a_of_type_Avyr)) {}
-    for (String str = "33669797";; str = "33669802")
+    paramWindowInsetsCompat = this.jdField_a_of_type_AndroidGraphicsRect;
+    paramWindowInsetsCompat.left = paramView.getSystemWindowInsetLeft();
+    paramWindowInsetsCompat.top = paramView.getSystemWindowInsetTop();
+    paramWindowInsetsCompat.right = paramView.getSystemWindowInsetRight();
+    paramWindowInsetsCompat.bottom = paramView.getSystemWindowInsetBottom();
+    int i = 0;
+    int j = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.getChildCount();
+    while (i < j)
     {
-      awbj.b(str);
-      avyr.a(this.jdField_a_of_type_Avyr).opType("onDownloadComplete").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-      return;
+      WindowInsetsCompat localWindowInsetsCompat = ViewCompat.dispatchApplyWindowInsets(this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.getChildAt(i), paramView);
+      paramWindowInsetsCompat.left = Math.min(localWindowInsetsCompat.getSystemWindowInsetLeft(), paramWindowInsetsCompat.left);
+      paramWindowInsetsCompat.top = Math.min(localWindowInsetsCompat.getSystemWindowInsetTop(), paramWindowInsetsCompat.top);
+      paramWindowInsetsCompat.right = Math.min(localWindowInsetsCompat.getSystemWindowInsetRight(), paramWindowInsetsCompat.right);
+      paramWindowInsetsCompat.bottom = Math.min(localWindowInsetsCompat.getSystemWindowInsetBottom(), paramWindowInsetsCompat.bottom);
+      i += 1;
     }
+    return paramView.replaceSystemWindowInsets(paramWindowInsetsCompat.left, paramWindowInsetsCompat.top, paramWindowInsetsCompat.right, paramWindowInsetsCompat.bottom);
   }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    this.jdField_a_of_type_ArrayOfJavaLangException[0] = new Exception("下载失败 retcode:" + paramInt1 + " httpCode:" + paramInt2 + " err:" + paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("shadow::CdnPmUpdater", 2, " onDownloadFailed retCode =  " + paramInt1);
-    }
-    if (avyr.b(this.jdField_a_of_type_Avyr)) {}
-    for (paramString = "33669798";; paramString = "33669803")
-    {
-      awbj.b(paramString);
-      avyr.a(this.jdField_a_of_type_Avyr).opType("onDownloadFailed").opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-      return;
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2, int paramInt) {}
 }
 
 

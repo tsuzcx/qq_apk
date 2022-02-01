@@ -1,30 +1,37 @@
-import android.app.Activity;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class ahen
-  extends ClickableSpan
+  extends amwl
 {
-  ahen(ahed paramahed) {}
+  ahen(ahek paramahek) {}
   
-  public void onClick(View paramView)
+  public void onMsgStartSendingUI(String paramString)
   {
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      paramView = blir.a(this.a.jdField_a_of_type_AndroidContentContext);
-      paramView.b(2131718782);
-      paramView.c(2131690580);
-      paramView.a(new aheo(this));
-      paramView.a(new ahep(this, paramView));
-      paramView.show();
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
     }
+    this.a.refresh(131072);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
   {
-    paramTextPaint.setColor(-12541697);
+    onSendResult(paramBoolean, paramString, paramLong, null);
+  }
+  
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong, amwf paramamwf)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(this.a.sessionInfo.curFriendUin)) {
+      return;
+    }
+    this.a.hasSentRecvMsg = true;
+    this.a.refresh(262144, paramamwf, paramLong);
+  }
+  
+  protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
+  {
+    this.a.refresh(65536);
   }
 }
 

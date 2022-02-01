@@ -1,31 +1,35 @@
-import android.app.Activity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class ayjl
-  extends abkg
+final class ayjl
+  implements INetEngine.IBreakDownFix
 {
-  public ayjl(PicBrowserActivity paramPicBrowserActivity) {}
-  
-  public abjn a(Activity paramActivity, abjt paramabjt)
+  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
   {
-    return super.a(paramActivity, paramabjt);
-  }
-  
-  public abjp a(Activity paramActivity, abjt paramabjt)
-  {
-    return new ayjn((PicBrowserActivity)paramActivity, paramabjt);
-  }
-  
-  public abjt a(Activity paramActivity)
-  {
-    paramActivity = new ayjt(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
-    paramActivity.a(this.a.jdField_b_of_type_Int);
-    return paramActivity;
-  }
-  
-  public abju a(Activity paramActivity, abjt paramabjt)
-  {
-    return null;
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!(paramNetReq instanceof HttpNetReq));
+      paramNetReq = (HttpNetReq)paramNetReq;
+      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
+      paramNetResp.mWrittenBlockLen = 0L;
+      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
+      paramNetReq.mReqProperties.put("Range", paramNetResp);
+      paramNetResp = paramNetReq.mReqUrl;
+      if (paramNetResp.contains("range="))
+      {
+        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+        paramNetReq.mReqUrl = (str + "range=" + paramNetReq.mStartDownOffset);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("PrecoverResDownloader", 2, "IBreakDownFix, " + paramNetResp);
   }
 }
 

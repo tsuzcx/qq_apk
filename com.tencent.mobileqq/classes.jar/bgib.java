@@ -1,18 +1,15 @@
-import java.util.Comparator;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class bgib
-  implements Comparator<Long>
+final class bgib
+  implements EIPCResultCallback
 {
-  public int a(Long paramLong1, Long paramLong2)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    int i = 0;
-    if (paramLong1.longValue() - paramLong2.longValue() > 0L) {
-      i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("GLDrawableDownloadHelper", 2, "requestDownloadDepends success");
     }
-    while (paramLong1.longValue() - paramLong2.longValue() >= 0L) {
-      return i;
-    }
-    return -1;
   }
 }
 

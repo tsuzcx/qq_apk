@@ -1,32 +1,11 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import android.os.Environment;
+import java.io.File;
 
-class uif
-  implements ura
+public final class uif
 {
-  uif(uhz paramuhz) {}
-  
-  public void a(String paramString, int paramInt)
-  {
-    uqh.a(uhz.a(this.a), "biz_src_jc_gzh_weishi", paramString);
-    uhz.a(this.a, "content", unz.c);
-  }
-  
-  public void b(String paramString, int paramInt) {}
-  
-  public void c(String paramString, int paramInt)
-  {
-    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
-    localWSDownloadParams.mScene = 1;
-    localWSDownloadParams.mLinkStrategyType = 0;
-    localWSDownloadParams.mEventId = 700;
-    localWSDownloadParams.mTestId = uqt.a(9);
-    localWSDownloadParams.mScheme = paramString;
-    ugz.a((Activity)uhz.b(this.a), localWSDownloadParams, false);
-    uhz.a(this.a, "content", unz.b);
-  }
-  
-  public void d(String paramString, int paramInt) {}
+  public static final String a = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_PICTURES + File.separator + "Screenshots" + File.separator;
+  public static final String b = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_DCIM + File.separator + "Screenshots" + File.separator;
+  public static final String c = Environment.getExternalStorageDirectory() + File.separator + amtj.a(2131712697) + File.separator;
 }
 
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bcwg;
-import bcwz;
-import bcyb;
-import beyb;
-import beyg;
+import bbpq;
+import bbqj;
+import bbrl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,10 +16,10 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
   implements Runnable
 {
   public int a;
-  public ArrayList<bcwz> a;
-  public ArrayList<bcyb> b;
+  public ArrayList<bbqj> a;
+  public ArrayList<bbrl> b;
   
-  public BaseShortVideoOprerator$MultiForwardShortVideoTask(ArrayList<bcwz> paramArrayList)
+  public BaseShortVideoOprerator$MultiForwardShortVideoTask(ArrayList<bbqj> paramArrayList)
   {
     this.jdField_a_of_type_Int = 0;
     Object localObject;
@@ -37,7 +37,7 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
         Iterator localIterator = this.b.iterator();
         if (localIterator.hasNext())
         {
-          if (((bcyb)localIterator.next()).jdField_a_of_type_Int == -2) {
+          if (((bbrl)localIterator.next()).jdField_a_of_type_Int == -2) {
             i += 1;
           }
         }
@@ -57,7 +57,7 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
     int i;
     int j;
     label105:
-    bcwz localbcwz;
+    bbqj localbbqj;
     Object localObject;
     if (this.jdField_a_of_type_Int + BaseShortVideoOprerator.d < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
@@ -69,11 +69,11 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
       if (j >= i) {
         break label456;
       }
-      localbcwz = (bcwz)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-      if (localbcwz.jdField_a_of_type_JavaLangObject == null) {
+      localbbqj = (bbqj)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+      if (localbbqj.a == null) {
         break label178;
       }
-      localObject = (MessageForShortVideo)localbcwz.jdField_a_of_type_JavaLangObject;
+      localObject = (MessageForShortVideo)localbbqj.a;
       label141:
       if (localObject != null) {
         break label192;
@@ -89,27 +89,27 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
       i = this.jdField_a_of_type_JavaUtilArrayList.size();
       break;
       label178:
-      localObject = this.this$0.a(localbcwz);
+      localObject = this.this$0.a(localbbqj);
       break label141;
       label192:
       this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject);
       long l = System.currentTimeMillis();
-      beyg localbeyg = new beyg();
-      localbeyg.jdField_b_of_type_JavaLangString = ((MessageRecord)localObject).selfuin;
-      localbeyg.c = ((MessageRecord)localObject).frienduin;
-      localbeyg.jdField_a_of_type_Int = ((MessageRecord)localObject).istroop;
-      localbeyg.jdField_b_of_type_Int = 20;
-      localbeyg.jdField_a_of_type_JavaLangObject = localbcwz;
-      localbeyg.jdField_a_of_type_Long = ((MessageRecord)localObject).uniseq;
-      localbeyg.jdField_a_of_type_Boolean = true;
-      localbeyg.e = 1010;
-      localbeyg.f = localbcwz.e;
-      localbeyg.i = (localbcwz.h + "QQ_&_MoblieQQ_&_QQ" + localbcwz.i + "QQ_&_MoblieQQ_&_QQ" + localbcwz.j + "QQ_&_MoblieQQ_&_QQ" + localbcwz.g);
-      localbeyg.jdField_a_of_type_Azrg = new bcwg(this, j);
-      localbeyg.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbeyg);
+      TransferRequest localTransferRequest = new TransferRequest();
+      localTransferRequest.mSelfUin = ((MessageRecord)localObject).selfuin;
+      localTransferRequest.mPeerUin = ((MessageRecord)localObject).frienduin;
+      localTransferRequest.mUinType = ((MessageRecord)localObject).istroop;
+      localTransferRequest.mFileType = 20;
+      localTransferRequest.mExtraObj = localbbqj;
+      localTransferRequest.mUniseq = ((MessageRecord)localObject).uniseq;
+      localTransferRequest.mIsUp = true;
+      localTransferRequest.mBusiType = 1010;
+      localTransferRequest.mMd5 = localbbqj.e;
+      localTransferRequest.mLocalPath = (localbbqj.h + "QQ_&_MoblieQQ_&_QQ" + localbbqj.i + "QQ_&_MoblieQQ_&_QQ" + localbbqj.j + "QQ_&_MoblieQQ_&_QQ" + localbbqj.g);
+      localTransferRequest.mUpCallBack = new bbpq(this, j);
+      localTransferRequest.mRec = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().transferAsync(localTransferRequest);
       if (QLog.isColorLevel()) {
-        QLog.d("BaseShortVideoOprerator", 2, "MultiForwardShortVideo req" + j + ": " + localbeyg.toString() + " ,cost:" + (System.currentTimeMillis() - l));
+        QLog.d("BaseShortVideoOprerator", 2, "MultiForwardShortVideo req" + j + ": " + localTransferRequest.toString() + " ,cost:" + (System.currentTimeMillis() - l));
       }
     }
     label456:
@@ -131,10 +131,10 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (bcwz)localIterator.next();
-      localObject = new bcyb();
-      ((bcyb)localObject).jdField_a_of_type_Int = -2;
-      ((bcyb)localObject).jdField_a_of_type_Bcxn = this.this$0.jdField_a_of_type_Bcxn;
+      Object localObject = (bbqj)localIterator.next();
+      localObject = new bbrl();
+      ((bbrl)localObject).jdField_a_of_type_Int = -2;
+      ((bbrl)localObject).jdField_a_of_type_Bbqx = this.this$0.jdField_a_of_type_Bbqx;
       this.b.add(localObject);
     }
     a();
@@ -142,7 +142,7 @@ public class BaseShortVideoOprerator$MultiForwardShortVideoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator.MultiForwardShortVideoTask
  * JD-Core Version:    0.7.0.1
  */

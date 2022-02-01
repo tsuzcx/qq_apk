@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.servlet;
 
-import bcvn;
-import bcvp;
-import bmtd;
+import bbox;
+import bboz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneHelper;
 import mqq.app.NewIntent;
 
 public class QZoneManagerImp$4
   implements Runnable
 {
-  public QZoneManagerImp$4(bcvn parambcvn, int paramInt) {}
+  public QZoneManagerImp$4(bbox parambbox, int paramInt) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
     if (QLog.isColorLevel()) {
-      QLog.d("QZoneManagerImp..UndealCount", 2, "sendGetFeedByTime.click leba.nowtime: " + l + ",QZoneNotifyServlet.lastGetFeedTime: " + bcvp.c + ",config interval:" + bmtd.a() + "difference: " + (l - bcvp.c));
+      QLog.d("QZoneManagerImp..UndealCount", 2, "sendGetFeedByTime.click leba.nowtime: " + l + ",QZoneNotifyServlet.lastGetFeedTime: " + bboz.c + ",config interval:" + QZoneHelper.getUpdateCountIntervalWhenClickFeedTab() + "difference: " + (l - bboz.c));
     }
     QQAppInterface localQQAppInterface;
-    if (l - bcvp.c > bmtd.a())
+    if (l - bboz.c > QZoneHelper.getUpdateCountIntervalWhenClickFeedTab())
     {
-      localQQAppInterface = bcvn.a(this.this$0);
+      localQQAppInterface = bbox.a(this.this$0);
       if ((localQQAppInterface != null) && (localQQAppInterface.getApplication() != null)) {
         break label103;
       }
@@ -30,7 +30,7 @@ public class QZoneManagerImp$4
     do
     {
       return;
-      NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApplication(), bcvp.class);
+      NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApplication(), bboz.class);
       localNewIntent.setAction("Qzone_Get_NewAndUnread_Count");
       localNewIntent.putExtra("qzone_send_by_time", this.a);
       localNewIntent.putExtra("scene", 103);
@@ -41,7 +41,7 @@ public class QZoneManagerImp$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneManagerImp.4
  * JD-Core Version:    0.7.0.1
  */

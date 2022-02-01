@@ -9,13 +9,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import bhlq;
-import bhpc;
-import boxq;
-import boxr;
-import boxs;
-import boxt;
-import bpkx;
+import bfur;
+import bmnt;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tavcut.player.MoviePlayer;
@@ -29,33 +25,33 @@ public class AEVideoPreviewFragment
   extends AbsAEPublishVideoProcessFragment
   implements View.OnClickListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
-  public TextView a;
-  boolean jdField_a_of_type_Boolean = false;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  private ImageView c;
+  private ImageView ivClose;
+  private ImageView ivDelete;
+  private ImageView ivPlayOrPause;
+  boolean needPlayWhenResume = false;
+  private RelativeLayout rlVideoController;
+  private SeekBar seekBarVideoProgress;
+  TextView tvCurrentDuration;
+  TextView tvTotalDuration;
   
-  private void a()
+  private void pause()
   {
-    this.c.setVisibility(0);
-    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.pause();
+    this.ivPlayOrPause.setVisibility(0);
+    this.mMoviePlayer.pause();
   }
   
-  private void b()
+  private void play()
   {
-    this.c.setVisibility(8);
-    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.play();
+    this.ivPlayOrPause.setVisibility(8);
+    this.mMoviePlayer.play();
   }
   
-  private void c()
+  private void showCustomAlertDialog()
   {
     String str = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "UploadGiveUpVideo", "放弃上传这个视频吗？");
     try
     {
-      bhlq.a(getActivity(), 230, str, null, getResources().getString(2131690580), getResources().getString(2131690912), new boxs(this), new boxt(this)).show();
+      bfur.a(getActivity(), 230, str, null, getResources().getString(2131690620), getResources().getString(2131690952), new AEVideoPreviewFragment.3(this), new AEVideoPreviewFragment.4(this)).show();
       return;
     }
     catch (Exception localException)
@@ -64,42 +60,42 @@ public class AEVideoPreviewFragment
     }
   }
   
-  protected int a()
+  void bindViews(View paramView)
   {
-    return 2131558568;
+    this.tavCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378228));
+    this.rlVideoController = ((RelativeLayout)paramView.findViewById(2131376651));
+    this.ivClose = ((ImageView)paramView.findViewById(2131369194));
+    this.ivDelete = ((ImageView)paramView.findViewById(2131369212));
+    this.ivPlayOrPause = ((ImageView)paramView.findViewById(2131369325));
+    this.seekBarVideoProgress = ((SeekBar)paramView.findViewById(2131377001));
+    this.tvTotalDuration = ((TextView)paramView.findViewById(2131379891));
+    this.tvCurrentDuration = ((TextView)paramView.findViewById(2131379551));
+    this.rlVideoController.setOnClickListener(this);
+    this.ivClose.setOnClickListener(this);
+    this.ivDelete.setOnClickListener(this);
+    this.ivPlayOrPause.setOnClickListener(this);
+    this.seekBarVideoProgress.setOnSeekBarChangeListener(new AEVideoPreviewFragment.2(this));
   }
   
-  void a(View paramView)
+  void customizeBindingData(VideoResourceModel paramVideoResourceModel)
   {
-    this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378461));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376897));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369171));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369190));
-    this.c = ((ImageView)paramView.findViewById(2131369315));
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)paramView.findViewById(2131377251));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380157));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379768));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.c.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new boxr(this));
-  }
-  
-  void a(VideoResourceModel paramVideoResourceModel)
-  {
-    b();
-    if ((this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession != null) && (this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getDuration() != null))
+    play();
+    if ((this.tavCutVideoSession != null) && (this.tavCutVideoSession.getDuration() != null))
     {
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setMax((int)this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getDuration().getTimeUs());
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(bpkx.a((this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getDuration().getTimeSeconds() * 1000.0F)));
+      this.seekBarVideoProgress.setMax((int)this.tavCutVideoSession.getDuration().getTimeUs());
+      this.tvTotalDuration.setText(bmnt.a((this.tavCutVideoSession.getDuration().getTimeSeconds() * 1000.0F)));
     }
-    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.setVideoProgressListener(new boxq(this));
+    this.mMoviePlayer.setVideoProgressListener(new AEVideoPreviewFragment.1(this));
   }
   
-  protected int b()
+  protected int getLayoutId()
   {
-    return getResources().getColor(2131165343);
+    return 2131558570;
+  }
+  
+  protected int getPlayerBackColor()
+  {
+    return getResources().getColor(2131165351);
   }
   
   public void onClick(View paramView)
@@ -113,16 +109,16 @@ public class AEVideoPreviewFragment
       return;
       getActivity().finish();
       continue;
-      c();
+      showCustomAlertDialog();
       continue;
-      if (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null)
+      if (this.mMoviePlayer != null)
       {
-        b();
+        play();
         continue;
-        if ((this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) && (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.isPlaying())) {
-          a();
-        } else if (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer != null) {
-          b();
+        if ((this.mMoviePlayer != null) && (this.mMoviePlayer.isPlaying())) {
+          pause();
+        } else if (this.mMoviePlayer != null) {
+          play();
         }
       }
     }
@@ -136,17 +132,17 @@ public class AEVideoPreviewFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.isPlaying();
-    if (this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.isPlaying()) {
-      a();
+    this.needPlayWhenResume = this.mMoviePlayer.isPlaying();
+    if (this.mMoviePlayer.isPlaying()) {
+      pause();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Boolean) {
-      b();
+    if (this.needPlayWhenResume) {
+      play();
     }
   }
 }

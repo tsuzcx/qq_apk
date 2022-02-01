@@ -1,26 +1,17 @@
-import android.support.annotation.Nullable;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart;
-import java.util.ArrayList;
+import android.view.View.OnTouchListener;
 
-public class vcw
-  implements tac
+class vcw
+  implements View.OnTouchListener
 {
-  public vcw(QCircleFolderFragmentsPart paramQCircleFolderFragmentsPart) {}
+  vcw(vcu paramvcu) {}
   
-  public View a(ViewGroup paramViewGroup)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramViewGroup = new vzy(paramViewGroup);
-    QCircleFolderFragmentsPart.a(this.a).add(paramViewGroup);
-    return paramViewGroup.a();
-  }
-  
-  public void a(szz paramszz1, @Nullable szz paramszz2, int paramInt)
-  {
-    if (paramszz1 != null) {
-      QCircleFolderFragmentsPart.a(this.a, paramszz1.a(), 1);
-    }
+    vcu.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:orientation="vertical" android:paddingLeft="@dimen/ms" android:paddingRight="@dimen/ms" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:id="@id/b_7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="@dimen/mw" android:layout_alignLeft="@id/mzf" android:layout_alignTop="@id/mzf" android:layout_alignRight="@id/mzf" android:layout_alignBottom="@id/mzf" />
-    <com.tencent.mobileqq.now.widget.NiceImageView android:id="@id/mzf" android:clickable="false" android:layout_width="fill_parent" android:layout_height="195.0dip" android:scaleType="fitXY" app:corner_radius_value="@dimen/mw" />
-</RelativeLayout>
+<FrameLayout android:layout_width="32.0dip" android:layout_height="32.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqstory.shareGroup.infocard.view.CircleImageView android:layout_gravity="center" android:id="@id/dcw" android:layout_width="30.0dip" android:layout_height="30.0dip" android:scaleType="centerCrop" />
+</FrameLayout>

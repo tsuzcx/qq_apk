@@ -1,24 +1,27 @@
-import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aomk
-  extends anyu
+  implements MessageQueue.IdleHandler
 {
-  private aomk(GetGeneralSettings paramGetGeneralSettings) {}
+  public aomk(ARScanEntryView paramARScanEntryView) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public boolean queueIdle()
   {
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      this.a.a.a = 3;
-      this.a.a(7);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "queueIdle called ");
     }
-    this.a.a(6);
+    if ((ARScanEntryView.a(this.a) != null) && (this.a.m)) {
+      ARScanEntryView.a(this.a).c();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aomk
  * JD-Core Version:    0.7.0.1
  */

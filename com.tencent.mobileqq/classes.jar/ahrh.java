@@ -1,44 +1,20 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.customviews.VideoProgressView;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView;
-import java.util.concurrent.CopyOnWriteArraySet;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class ahrh
-  extends aggl
+class ahrh
+  extends amwl
 {
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLDrawable a;
-  public VideoProgressView a;
-  public CropBubbleVideoView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  ahrh(ahrg paramahrg) {}
   
-  public ahrh(ahqw paramahqw) {}
-  
-  public void a()
+  public void onMsgRevokeNotice(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView != null)
-    {
-      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getCurPlayingPos();
-      if (l > 0L)
-      {
-        MessageForShortVideo localMessageForShortVideo = bhjz.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getId()));
-        if (localMessageForShortVideo != null) {
-          ahqw.a(this.jdField_a_of_type_Ahqw, localMessageForShortVideo, l);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.releasePlayer(true);
-      ahqw.a().remove(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView);
+    super.onMsgRevokeNotice(paramBoolean1, paramList, paramBoolean2);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("UpComingMsgLogic.AIOUpComingMsgHelper", 4, "onMsgRevokeNotice isSuccess=" + paramBoolean1);
+    }
+    if ((paramBoolean1) && (paramList != null) && (!paramList.isEmpty())) {
+      ahrg.a(this.a, (MessageRecord)paramList.get(0));
     }
   }
 }

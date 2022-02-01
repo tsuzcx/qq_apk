@@ -9,6 +9,7 @@ import com.tencent.qqlive.module.videoreport.Configuration;
 import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.data.DataBinder;
 import com.tencent.qqlive.module.videoreport.data.DataEntity;
+import com.tencent.qqlive.module.videoreport.data.DataEntityOperator;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 import com.tencent.qqlive.module.videoreport.report.AppEventReporter;
 import com.tencent.qqlive.module.videoreport.report.AppEventReporter.IAppEventListener;
@@ -56,6 +57,11 @@ public class PageManager
       onPageOut(this.mCurrentPageInfo, paramBoolean);
       this.mLastPageIsDisappear = true;
     }
+  }
+  
+  private void copyCurPageInfo()
+  {
+    this.mCurrentPageDataEntity = DataEntityOperator.copy(this.mCurrentPageDataEntity);
   }
   
   public static PageManager getInstance()
@@ -146,6 +152,7 @@ public class PageManager
     if (VideoReportInner.getInstance().isDebugMode()) {
       Log.d("PageManager", "onPageOut: ");
     }
+    copyCurPageInfo();
     this.mListenerMgr.startNotify(new PageManager.2(this, paramPageInfo, paramBoolean));
   }
   
@@ -161,6 +168,18 @@ public class PageManager
   {
     paramDataEntity = new PageContext(paramInt, paramDataEntity);
     PageContextManager.getInstance().set(paramPageInfo.getPage(), paramDataEntity);
+  }
+  
+  public void clearPageContext(Object paramObject)
+  {
+    if (!PageFinder.isPage(paramObject))
+    {
+      if (VideoReportInner.getInstance().isDebugMode()) {
+        Log.d("PageManager", "clearPageContext: object is not page, object = " + paramObject);
+      }
+      return;
+    }
+    PageContextManager.getInstance().remove(paramObject);
   }
   
   public PageInfo getCurrentPageInfo()
@@ -185,8 +204,10 @@ public class PageManager
   
   public void onPageAppear(@NonNull PageInfo paramPageInfo)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
       Log.i("PageManager", "onPageAppear: page = " + paramPageInfo + ", pageStep = " + this.mPgStp);
+      Log.d("LazyInitSequence", "page Appear");
     }
     if (isPotentialPageChange(paramPageInfo, this.mCurrentPageInfo, this.mLastPageIsDisappear)) {
       updatePageContext(paramPageInfo, this.mPgStp, this.mCurrentPageDataEntity);

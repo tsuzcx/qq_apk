@@ -1,57 +1,37 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
-import com.tencent.qphone.base.util.QLog;
-
-final class anhq
-  implements angy
+class anhq
+  extends amsu
 {
-  anhq(CmShowRenderView paramCmShowRenderView) {}
+  private anhq(anho paramanho) {}
   
-  public void a(int paramInt1, int paramInt2)
+  protected void onUpdateApolloHead(boolean paramBoolean, String paramString, int paramInt)
   {
-    QLog.i("CmShowTest", 1, "onViewReady w:" + paramInt1);
-    this.a.a("1669140032", "1174992642", 1.0F, 0, null);
-    anho.a(this.a);
+    this.a.a(135, paramBoolean, new Object[] { paramString, Integer.valueOf(paramInt) });
   }
   
-  public void a(int paramInt, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    QLog.i("CmShowTest", 1, "onClick apolloId:" + paramString);
+    this.a.a(4, paramBoolean, new Object[] { paramString });
   }
   
-  public void a(String paramString)
+  public void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
   {
-    QLog.i("CmShowTest", 1, "onLongTouch name:" + paramString);
+    this.a.a(39, paramBoolean, new Object[] { paramString });
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    QLog.i("CmShowTest", 1, "onActionStart actionId:" + paramInt1);
+    this.a.a(6, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle)
+  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
   {
-    QLog.i("CmShowTest", 1, "onActionComplete actionId:" + paramInt1 + " actionSeqId:" + paramInt2 + " playFragment:" + paramInt3);
-    if (paramInt2 == 100)
-    {
-      anho.b(this.a);
-      return;
-    }
-    if (paramInt2 == 101)
-    {
-      if (anho.a() < 3)
-      {
-        anho.b();
-        anho.b(this.a);
-        return;
-      }
-      anho.c(this.a);
-      return;
-    }
-    anho.a(0);
+    this.a.a(5, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
   }
   
-  public void a(boolean paramBoolean, int paramInt) {}
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    this.a.a(30, paramBoolean, new Object[] { paramString });
+  }
 }
 
 

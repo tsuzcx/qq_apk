@@ -1,23 +1,18 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.LocationInfo;
 
-class awqh
-  implements bliz
+public final class awqh
+  implements Parcelable.Creator<LocationInfo>
 {
-  awqh(awqg paramawqg, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public LocationInfo a(Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.e();
-      return;
-      awqg.a(this.jdField_a_of_type_Awqg);
-      continue;
-      awqg.b(this.jdField_a_of_type_Awqg);
-    }
+    return new LocationInfo(paramParcel);
+  }
+  
+  public LocationInfo[] a(int paramInt)
+  {
+    return new LocationInfo[paramInt];
   }
 }
 

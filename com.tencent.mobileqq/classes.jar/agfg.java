@@ -1,16 +1,12 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.ChatMessage;
 
 final class agfg
-  implements agfh
+  implements aghk
 {
-  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    paramString = new ProfileActivity.AllInOne(paramMessageRecord.senderuin, 46);
-    paramString.h = bhlg.c(paramQQAppInterface, paramMessageRecord.frienduin, paramMessageRecord.senderuin);
-    return paramString;
+    return asgg.a(paramQQAppInterface, paramChatMessage);
   }
 }
 

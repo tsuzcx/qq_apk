@@ -1,19 +1,31 @@
-public final class bkwa
+import android.os.Bundle;
+
+public abstract class bkwa
 {
-  private static int jdField_a_of_type_Int;
-  private bkwm jdField_a_of_type_Bkwm;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  private bkwa(bkwm parambkwm)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bkwm = parambkwm;
+    this.jdField_a_of_type_JavaLangString = paramBundle.getString("_mqqpay_baseapi_appid");
+    this.c = paramBundle.getString("_mqqpay_baseapi_apptype");
+    this.b = paramBundle.getString("_mqqpay_baseapi_sdkversion");
+    this.d = paramBundle.getString("_mqqpay_baseapi_apiname");
+    this.jdField_a_of_type_Int = paramBundle.getInt("_mqqpay_baseapi_apimark");
   }
   
-  private String a()
+  public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("AD_PROXY_ACTION_MOTIVE_BROWSING_END#index#");
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    return i;
+    StringBuilder localStringBuilder = new StringBuilder(50);
+    localStringBuilder.append("ai=" + this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("&sv=" + this.b);
+    localStringBuilder.append("&at=" + this.c);
+    localStringBuilder.append("&an=" + this.d);
+    localStringBuilder.append("&am=" + this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

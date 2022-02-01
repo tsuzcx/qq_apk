@@ -1,36 +1,16 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 
-public class xty
-  implements TVK_SDKMgr.OnLogListener
+class xty
+  implements xud
 {
-  public int d(String paramString1, String paramString2)
-  {
-    yuk.b(paramString1, paramString2);
-    return 0;
-  }
+  xty(xtx paramxtx, ImageView paramImageView) {}
   
-  public int e(String paramString1, String paramString2)
+  public void a(Drawable paramDrawable)
   {
-    yuk.e(paramString1, paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    yuk.c(paramString1, paramString2);
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    yuk.b(paramString1, paramString2);
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    yuk.d(paramString1, paramString2);
-    return 0;
+    if (paramDrawable != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+    }
   }
 }
 

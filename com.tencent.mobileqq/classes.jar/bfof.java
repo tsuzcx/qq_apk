@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
 
-public abstract interface bfof
+public class bfof
+  implements DialogInterface.OnClickListener
 {
-  public abstract ArrayList<ResultRecord> a();
+  public bfof(UpgradeActivity paramUpgradeActivity) {}
   
-  public abstract void a();
-  
-  public abstract ArrayList<String> b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bcef.b(this.a.app, "CliOper", "", "", "0X800417F", "0X800417F", 0, 0, "", "", "", "");
+    if (UpgradeActivity.a(this.a)) {
+      bcef.b(this.a.app, "CliOper", "", "", "0X800714D", "0X800714D", 0, 0, "", "", "", "");
+    }
+    bcef.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, bfnf.b(), String.valueOf(2), bfng.a(), "0");
+    bfng.a().a(this.a.app);
+    this.a.finish();
+  }
 }
 
 

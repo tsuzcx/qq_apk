@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
 import Override;
-import agej;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -16,30 +15,31 @@ import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import antf;
-import bffz;
-import bfga;
-import bfgb;
-import bfgc;
-import bfgd;
-import bfge;
-import bfgf;
-import bfgg;
-import bfgh;
-import bgvw;
-import bhlq;
-import bhpc;
-import blir;
-import blji;
+import bdon;
+import bdoo;
+import bdop;
+import bdoq;
+import bdor;
+import bdos;
+import bdot;
+import bdou;
+import bdov;
+import bffh;
+import bfur;
+import bjnw;
+import bjon;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
 import com.tencent.image.QQLiveImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.Utils;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.Gallery;
@@ -47,7 +47,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import lzq;
+import lzb;
 
 public class MediaPreviewActivity
   extends BaseActivity
@@ -58,7 +58,7 @@ public class MediaPreviewActivity
   protected View a;
   protected FrameLayout a;
   public TextView a;
-  public bgvw a;
+  public bffh a;
   protected Gallery a;
   protected Runnable a;
   protected ArrayList<MediaPreviewInfo> a;
@@ -69,33 +69,33 @@ public class MediaPreviewActivity
   {
     if (this.jdField_a_of_type_ComTencentWidgetGallery == null)
     {
-      QQToast.a(this, getString(2131692838), 0).a();
+      QQToast.a(this, getString(2131692889), 0).a();
       return;
     }
     Object localObject = this.jdField_a_of_type_ComTencentWidgetGallery.getSelectedView();
     if (localObject == null)
     {
-      QQToast.a(this, getString(2131692838), 0).a();
+      QQToast.a(this, getString(2131692889), 0).a();
       return;
     }
-    localObject = ((ImageView)((View)localObject).findViewById(2131368320)).getDrawable();
+    localObject = ((ImageView)((View)localObject).findViewById(2131368344)).getDrawable();
     if ((localObject == null) || (!(localObject instanceof URLDrawable)))
     {
-      QQToast.a(this, getString(2131692838), 0).a();
+      QQToast.a(this, getString(2131692889), 0).a();
       return;
     }
     localObject = (URLDrawable)localObject;
     if (((URLDrawable)localObject).getStatus() != 1)
     {
-      QQToast.a(this, getString(2131692838), 0).a();
+      QQToast.a(this, getString(2131692889), 0).a();
       return;
     }
-    blir localblir = (blir)blji.a(this, null);
-    localblir.a(2131692962, 1);
-    localblir.a(2131692968, 1);
-    localblir.c(2131690580);
-    localblir.a(new bfge(this, localblir, (URLDrawable)localObject));
-    localblir.show();
+    bjnw localbjnw = (bjnw)bjon.a(this, null);
+    localbjnw.a(2131693017, 1);
+    localbjnw.a(2131693023, 1);
+    localbjnw.c(2131690620);
+    localbjnw.a(new bdos(this, localbjnw, (URLDrawable)localObject));
+    localbjnw.show();
   }
   
   public void a()
@@ -112,7 +112,7 @@ public class MediaPreviewActivity
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new bfga(this));
+    localAnimationSet.setAnimationListener(new bdoo(this));
     if (this.jdField_a_of_type_JavaLangRunnable == null) {
       this.jdField_a_of_type_JavaLangRunnable = new MediaPreviewActivity.11(this);
     }
@@ -123,7 +123,7 @@ public class MediaPreviewActivity
   
   protected void a(Bundle paramBundle)
   {
-    Intent localIntent = agej.a(new Intent(this, SplashActivity.class), null);
+    Intent localIntent = AIOUtils.setOpenAIOIntent(new Intent(this, SplashActivity.class), null);
     localIntent.putExtras(new Bundle(paramBundle));
     startActivity(localIntent);
     finish();
@@ -136,8 +136,8 @@ public class MediaPreviewActivity
     for (;;)
     {
       return;
-      new File(antf.bg).mkdirs();
-      str = antf.bg + Utils.Crc64String(paramURLDrawable.getURL().toString());
+      new File(AppConstants.SDCARD_IMG_SAVE).mkdirs();
+      str = AppConstants.SDCARD_IMG_SAVE + Utils.Crc64String(paramURLDrawable.getURL().toString());
       File localFile = new File(str);
       if (!localFile.exists()) {
         try
@@ -150,29 +150,30 @@ public class MediaPreviewActivity
         }
         catch (IOException paramURLDrawable)
         {
-          QQToast.a(this, getString(2131694369), 0).a();
+          QQToast.a(this, getString(2131694483), 0).a();
           return;
         }
       }
     }
-    bhlq.a(this, 230).setTitle(getString(2131717553)).setMessage(getString(2131694365)).setPositiveButton(getString(2131717445), new bfgg(this, paramURLDrawable, str)).setNegativeButton(getString(2131693994), new bfgf(this)).show();
+    bfur.a(this, 230).setTitle(getString(2131717789)).setMessage(getString(2131694479)).setPositiveButton(getString(2131717677), new bdou(this, paramURLDrawable, str)).setNegativeButton(getString(2131694094), new bdot(this)).show();
   }
   
   public void a(URLDrawable paramURLDrawable, String paramString)
   {
-    new bfgd(this, paramURLDrawable, paramString).execute(new Void[0]);
+    new bdor(this, paramURLDrawable, paramString).execute(new Void[0]);
   }
   
   public void b(URLDrawable paramURLDrawable, String paramString)
   {
-    new bfgh(this, paramURLDrawable, paramString).execute(new Void[0]);
+    new bdov(this, paramURLDrawable, paramString).execute(new Void[0]);
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -194,29 +195,29 @@ public class MediaPreviewActivity
         return false;
       }
     }
-    setContentView(2131559260);
+    setContentView(2131559266);
     ??? = getIntent().getExtras();
     this.jdField_a_of_type_Int = ???.getInt("index", -1);
     this.jdField_a_of_type_JavaUtilArrayList = ???.getParcelableArrayList("mediaInfoList");
     if (this.jdField_a_of_type_JavaUtilArrayList != null) {
       this.jdField_b_of_type_Int = this.jdField_a_of_type_JavaUtilArrayList.size();
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131376928));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131376682));
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131367342));
+    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131367366));
     this.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378603));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378367));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131363243);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131363274);
     this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-16777216);
-    this.jdField_a_of_type_Bgvw = new bgvw(this, this.jdField_a_of_type_ComTencentWidgetGallery);
-    this.jdField_a_of_type_Bgvw.a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_Bgvw);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297091));
+    this.jdField_a_of_type_Bffh = new bffh(this, this.jdField_a_of_type_ComTencentWidgetGallery);
+    this.jdField_a_of_type_Bffh.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_Bffh);
+    this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131297146));
     this.jdField_a_of_type_ComTencentWidgetGallery.setSelection(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new bffz(this));
-    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new bfgb(this));
-    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new bfgc(this));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new bdon(this));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new bdop(this));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemLongClickListener(new bdoq(this));
     ThreadManager.post(new MediaPreviewActivity.4(this), 8, null, true);
     return true;
   }
@@ -270,8 +271,8 @@ public class MediaPreviewActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Bgvw != null) {
-      this.jdField_a_of_type_Bgvw.a();
+    if (this.jdField_a_of_type_Bffh != null) {
+      this.jdField_a_of_type_Bffh.a();
     }
     QQLiveImage.releaseAll(this);
     synchronized (jdField_a_of_type_JavaLangObject)
@@ -284,7 +285,7 @@ public class MediaPreviewActivity
   public void onPause()
   {
     super.onPause();
-    lzq.a(this, false);
+    lzb.a(this, false);
     AbstractGifImage.pauseAll();
     QQLiveImage.pauseAll(this);
     ApngImage.pauseAll();
@@ -293,7 +294,7 @@ public class MediaPreviewActivity
   public void onResume()
   {
     super.onResume();
-    lzq.a(this, true);
+    lzb.a(this, true);
     AbstractGifImage.resumeAll();
     QQLiveImage.resumeAll(this);
     ApngImage.resumeAll();

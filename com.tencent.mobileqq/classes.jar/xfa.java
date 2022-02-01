@@ -1,27 +1,19 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFeedVisitor;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserSimpleInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class xfa
-  extends wov
+class xfa
+  implements View.OnClickListener
 {
-  public long a;
-  public List<qqstory_struct.UserSimpleInfo> a;
-  public long b;
+  xfa(xez paramxez) {}
   
-  public xfa(String paramString, qqstory_service.RspGetFeedVisitor paramRspGetFeedVisitor)
+  public void onClick(View paramView)
   {
-    super(paramRspGetFeedVisitor.result);
-    this.b = paramRspGetFeedVisitor.view_total_num.get();
-    this.jdField_a_of_type_JavaUtilList = paramRspGetFeedVisitor.user_list.get();
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public String toString()
-  {
-    return "GetVideoWatcherListResponse{totalReadTime=" + this.b + "totalWatcherCount=" + this.jdField_a_of_type_Long + ", userList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    int i = ((Integer)paramView.getTag()).intValue();
+    if (this.a.a.a != null) {
+      this.a.a.a.a(paramView, this.a.a.a(i));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

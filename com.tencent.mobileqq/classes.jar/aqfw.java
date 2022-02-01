@@ -1,171 +1,193 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.config.business.qfile.QfileFileAssistantTipsConfigBean.5;
+import com.tencent.mobileqq.config.business.qfile.QfileFileAssistantTipsConfigBean.6;
+import com.tencent.mobileqq.config.business.qfile.QfileFileAssistantTipsConfigBean.7;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Set;
-import tencent.im.oidb.cmd0x95a.cmd0x95a.GetArActivityRedReq;
-import tencent.im.oidb.cmd0x95a.cmd0x95a.GetArActivityRedRsp;
-import tencent.im.oidb.cmd0x95a.cmd0x95a.ReqBody;
-import tencent.im.oidb.cmd0x95a.cmd0x95a.RspBody;
-import tencent.im.oidb.cmd0x95a.cmd0x95a.UpdateArCountRsp;
+import java.util.TimeZone;
+import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqfw
-  extends anud
+  implements apts<String>, aqex
 {
-  public aqfw(AppInterface paramAppInterface)
+  private int jdField_a_of_type_Int = 5;
+  private long jdField_a_of_type_Long;
+  public String a;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = 30;
+  private String jdField_b_of_type_JavaLangString = "";
+  private int jdField_c_of_type_Int = 10;
+  private String jdField_c_of_type_JavaLangString = "";
+  private int jdField_d_of_type_Int;
+  private String jdField_d_of_type_JavaLangString = "";
+  private int jdField_e_of_type_Int;
+  private String jdField_e_of_type_JavaLangString = "";
+  private int f;
+  
+  public aqfw()
   {
-    super(paramAppInterface);
+    this.jdField_a_of_type_JavaLangString = "{}";
   }
   
-  public void a(long paramLong1, long paramLong2)
+  public aqey a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArMapHandler", 2, "reqActRedDotInfo,uin :" + paramLong1 + ",actID :" + paramLong2);
+    if (this.jdField_d_of_type_JavaLangString.equalsIgnoreCase("url")) {
+      return new aqfx(this);
     }
-    Object localObject = new cmd0x95a.GetArActivityRedReq();
-    ((cmd0x95a.GetArActivityRedReq)localObject).uint64_uin.set(paramLong1);
-    ((cmd0x95a.GetArActivityRedReq)localObject).uint64_client_activity_id.set(paramLong2);
-    cmd0x95a.ReqBody localReqBody = new cmd0x95a.ReqBody();
-    localReqBody.msg_get_ar_activity_red_req.set((MessageMicro)localObject);
-    localObject = makeOIDBPkg("OidbSvc.0x95a", 2394, 5, localReqBody.toByteArray());
-    ((ToServiceMsg)localObject).extraData.putInt("subcmd", 5);
-    sendPbReq((ToServiceMsg)localObject);
+    if (this.jdField_d_of_type_JavaLangString.equalsIgnoreCase("mqqapi")) {
+      return new aqfy(this);
+    }
+    if (this.jdField_d_of_type_JavaLangString.equalsIgnoreCase("system")) {
+      return new aqfz(this);
+    }
+    if (this.jdField_d_of_type_JavaLangString.equalsIgnoreCase("custom")) {
+      return new aqga(this);
+    }
+    return null;
   }
   
-  void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public String a()
   {
-    int i = -1;
-    boolean bool;
-    int j;
-    Object localObject;
-    if (paramFromServiceMsg == null)
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    ThreadManager.getFileThreadHandler().post(new QfileFileAssistantTipsConfigBean.5(this));
+  }
+  
+  public void a(String paramString)
+  {
+    boolean bool = true;
+    if (TextUtils.isEmpty(paramString))
     {
-      bool = false;
-      j = paramToServiceMsg.extraData.getInt("subcmd", -1);
-      localObject = "";
-      if (bool)
+      QLog.e("QfileFileAssistantTipsConfigBean<FileAssistant>", 1, "receiveAllConfigs|type: 606configContent is empty");
+      return;
+    }
+    if (QLog.isDebugVersion()) {
+      QLog.i("QfileFileAssistantTipsConfigBean<FileAssistant>", 1, paramString);
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (paramString.has("local_day_times")) {
+        this.jdField_d_of_type_Int = paramString.getInt("local_day_times");
+      }
+      if (paramString.has("local_day_last_time"))
       {
-        localObject = new cmd0x95a.RspBody();
-        i = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
-        paramFromServiceMsg = paramFromServiceMsg.extraData.getString("str_error_msg");
-        if (i == 0) {
-          switch (j)
-          {
-          }
+        this.jdField_a_of_type_Long = paramString.getLong("local_day_last_time");
+        long l = bbko.a();
+        if (!aszt.a(this.jdField_a_of_type_Long * 1000L, l * 1000L, TimeZone.getDefault()))
+        {
+          QLog.i("QfileFileAssistantTipsConfigBean<FileAssistant>", 1, "is not one day, set mLocalDayTims:0");
+          this.jdField_d_of_type_Int = 0;
         }
       }
+      if (paramString.has("local_max_times")) {
+        this.jdField_e_of_type_Int = paramString.getInt("local_max_times");
+      }
+      this.jdField_b_of_type_Int = paramString.getInt("max_count");
+      if (this.jdField_e_of_type_Int >= this.jdField_b_of_type_Int)
+      {
+        QLog.i("QfileFileAssistantTipsConfigBean<FileAssistant>", 1, "mLocalMaxTimes:" + this.jdField_e_of_type_Int + " >= mMaxTimes:" + this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_Boolean = false;
+        return;
+      }
     }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+      return;
+    }
+    if (paramString.has("local_click_times")) {
+      this.f = paramString.getInt("local_click_times");
+    }
+    if (this.f >= this.jdField_c_of_type_Int)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      QLog.i("QfileFileAssistantTipsConfigBean<FileAssistant>", 1, "mLocalClickTimes:" + this.f + " >= mMaxClickTimes:" + this.jdField_c_of_type_Int);
+      return;
+    }
+    if (paramString.getInt("switch") == 1) {}
     for (;;)
     {
-      localObject = paramFromServiceMsg;
-      if (QLog.isColorLevel()) {
-        QLog.d("ArMapHandler", 2, "handle0x95a errMsg:" + (String)localObject + ",result:" + i + ",isSuc:" + bool + ",subCmd:" + j);
-      }
-      return;
-      bool = paramFromServiceMsg.isSuccess();
-      break;
-      if (((cmd0x95a.RspBody)localObject).msg_update_ar_count_rsp.has())
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_b_of_type_JavaLangString = paramString.getString("txt_content");
+      this.jdField_c_of_type_JavaLangString = paramString.getString("jump_txt");
+      this.jdField_a_of_type_Int = paramString.getInt("one_day_max");
+      if (this.jdField_d_of_type_Int >= this.jdField_a_of_type_Int)
       {
-        paramToServiceMsg = (cmd0x95a.UpdateArCountRsp)((cmd0x95a.RspBody)localObject).msg_update_ar_count_rsp.get();
-        if (paramToServiceMsg.uint64_uin.has()) {}
-        for (long l = paramToServiceMsg.uint64_uin.get();; l = -1L)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ArMapHandler", 2, "handle0x95a report scanQRCode result,uin = " + l);
-          }
-          localObject = paramFromServiceMsg;
-          break;
-        }
-        a(paramToServiceMsg, bool, i, (cmd0x95a.RspBody)localObject);
-      }
-    }
-  }
-  
-  void a(ToServiceMsg paramToServiceMsg, boolean paramBoolean, int paramInt, cmd0x95a.RspBody paramRspBody)
-  {
-    long l2 = 0L;
-    long l1;
-    if ((paramBoolean) && (paramInt == 0) && (paramRspBody != null))
-    {
-      if (!paramRspBody.msg_get_ar_activity_red_rsp.has()) {
-        break label177;
-      }
-      paramToServiceMsg = (cmd0x95a.GetArActivityRedRsp)paramRspBody.msg_get_ar_activity_red_rsp.get();
-      if (paramToServiceMsg != null)
-      {
-        if (!paramToServiceMsg.uint64_uin.has()) {
-          break label182;
-        }
-        l1 = paramToServiceMsg.uint64_uin.get();
-        label62:
-        if (!paramToServiceMsg.uint32_red_switch.has()) {
-          break label188;
-        }
-      }
-    }
-    label177:
-    label182:
-    label188:
-    for (paramInt = paramToServiceMsg.uint32_red_switch.get();; paramInt = 0)
-    {
-      if (paramToServiceMsg.uint64_server_activity_id.has()) {
-        l2 = paramToServiceMsg.uint64_server_activity_id.get();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ArMapHandler", 2, "handleGetARActRedDotInfo uin:" + l1 + ",redSwitch:" + paramInt + ",actId:" + l2);
-      }
-      notifyUI(20, paramBoolean, new Object[] { Integer.valueOf(paramInt), Long.valueOf(l2) });
-      return;
-      paramToServiceMsg = null;
-      break;
-      l1 = 0L;
-      break label62;
-    }
-  }
-  
-  protected boolean msgCmdFilter(String paramString)
-  {
-    if (this.allowCmdSet == null)
-    {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("OidbSvc.0x95a");
-    }
-    return !this.allowCmdSet.contains(paramString);
-  }
-  
-  protected Class<? extends anui> observerClass()
-  {
-    return aqfx.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
-    String str;
-    do
-    {
-      do
-      {
+        this.jdField_a_of_type_Boolean = false;
+        QLog.i("QfileFileAssistantTipsConfigBean<FileAssistant>", 1, "mLocalDayTims:" + this.jdField_d_of_type_Int + " >= mOneDayMaxTimes:" + this.jdField_a_of_type_Int);
         return;
-        str = paramFromServiceMsg.getServiceCmd();
-        if (!msgCmdFilter(str)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ArMapHandler", 2, "onReceive, msgCmdFilter is true,cmd  = " + str);
+      }
+      this.jdField_c_of_type_Int = paramString.getInt("click_max");
+      this.jdField_d_of_type_JavaLangString = paramString.getString("jump_type");
+      if (this.jdField_d_of_type_JavaLangString.equalsIgnoreCase("url"))
+      {
+        this.jdField_e_of_type_JavaLangString = new JSONObject(paramString.getString("url")).getString("url");
+        return;
+      }
+      if (this.jdField_d_of_type_JavaLangString.equalsIgnoreCase("mqqapi"))
+      {
+        this.jdField_e_of_type_JavaLangString = new JSONObject(paramString.getString("mqqapi")).getString("url");
+        return;
+      }
+      if (this.jdField_d_of_type_JavaLangString.equalsIgnoreCase("custom"))
+      {
+        this.jdField_e_of_type_JavaLangString = new JSONObject(paramString.getString("custom")).toString();
+        return;
+      }
+      if (!this.jdField_d_of_type_JavaLangString.equalsIgnoreCase("system")) {
+        break;
+      }
+      this.jdField_e_of_type_JavaLangString = new JSONObject(paramString.getString("system")).getString("url");
       return;
-    } while (!"OidbSvc.0x95a".equals(str));
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      bool = false;
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.f >= this.jdField_c_of_type_Int)
+    {
+      QLog.i("QfileFileAssistantTipsConfigBean<FileAssistant>", 1, "mLocalClickTimes:" + this.f + " >= mMaxClickTimes:" + this.jdField_c_of_type_Int);
+      this.jdField_a_of_type_Boolean = false;
+    }
+    if (this.jdField_d_of_type_Int >= this.jdField_a_of_type_Int)
+    {
+      QLog.i("QfileFileAssistantTipsConfigBean<FileAssistant>", 1, "mLocalDayTims:" + this.jdField_d_of_type_Int + " >= mOneDayMaxTimes:" + this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Boolean = false;
+    }
+    if (this.jdField_e_of_type_Int >= this.jdField_b_of_type_Int)
+    {
+      QLog.i("QfileFileAssistantTipsConfigBean<FileAssistant>", 1, "mLocalMaxTimes:" + this.jdField_e_of_type_Int + " >= mMaxTimes:" + this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_Boolean = false;
+    }
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public void b()
+  {
+    ThreadManager.getFileThreadHandler().post(new QfileFileAssistantTipsConfigBean.6(this));
+  }
+  
+  public void c()
+  {
+    ThreadManager.getFileThreadHandler().post(new QfileFileAssistantTipsConfigBean.7(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqfw
  * JD-Core Version:    0.7.0.1
  */

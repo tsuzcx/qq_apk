@@ -1,14 +1,6 @@
-import android.os.Bundle;
-
 public abstract interface bnye
 {
-  public abstract void a();
-  
-  public abstract void a(float paramFloat, boolean paramBoolean);
-  
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract void b();
+  public abstract void a(String paramString);
 }
 
 

@@ -1,43 +1,52 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.viola.lottie.KdLottieView;
-import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
-import com.tencent.viola.adapter.HttpResponse;
-import com.tencent.viola.adapter.IHttpAdapter.OnHttpListener;
-import com.tencent.viola.ui.component.VLottie.IVLottieLoadListener;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class tdo
-  implements IHttpAdapter.OnHttpListener
+  extends tbk
 {
-  public tdo(KdLottieView paramKdLottieView, String paramString, VLottie.IVLottieLoadListener paramIVLottieLoadListener) {}
+  private int jdField_a_of_type_Int;
+  private BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+  private tdr jdField_a_of_type_Tdr;
+  protected boolean b;
   
-  public void onHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
-  
-  public void onHttpFinish(HttpResponse paramHttpResponse)
+  public tdo(Activity paramActivity, tdr paramtdr)
   {
-    int i = Integer.parseInt(paramHttpResponse.statusCode);
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (i == 200) {
-      bool1 = bool2;
-    }
-    try
-    {
-      if (paramHttpResponse.originalData != null)
-      {
-        paramHttpResponse = new JSONObject(new String(paramHttpResponse.originalData, "utf-8"));
-        bool1 = true;
-        LottieComposition.Factory.fromJson(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaLottieKdLottieView.getContext().getResources(), paramHttpResponse, new tdp(this));
-      }
-      this.jdField_a_of_type_ComTencentViolaUiComponentVLottie$IVLottieLoadListener.onResult(bool1);
-      return;
-    }
-    catch (Exception paramHttpResponse) {}
+    super(paramActivity);
+    this.jdField_a_of_type_Tdr = paramtdr;
   }
   
-  public void onHttpStart() {}
+  public View a(LayoutInflater paramLayoutInflater)
+  {
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560243, null);
+    paramLayoutInflater.setLayoutParams(new FrameLayout.LayoutParams(-1, AIOUtils.dp2px(60.0F, this.jdField_a_of_type_AndroidAppActivity.getResources())));
+    ImageView localImageView = (ImageView)paramLayoutInflater.findViewById(2131368939);
+    localImageView.setImageResource(2130841691);
+    ((TextView)paramLayoutInflater.findViewById(2131369015)).setVisibility(8);
+    ((TextView)paramLayoutInflater.findViewById(2131369019)).setText(amtj.a(2131713264));
+    paramLayoutInflater.findViewById(2131369003).setVisibility(8);
+    paramLayoutInflater.findViewById(2131377134).setVisibility(8);
+    paramLayoutInflater.setOnClickListener(new tdp(this));
+    localImageView.setOnClickListener(new tdq(this));
+    return paramLayoutInflater;
+  }
+  
+  public void a(View paramView, BaseArticleInfo paramBaseArticleInfo, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
+    this.jdField_a_of_type_Int = paramInt;
+    if (!this.b)
+    {
+      a();
+      this.b = true;
+    }
+    a(paramView);
+  }
 }
 
 

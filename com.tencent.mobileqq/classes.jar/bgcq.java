@@ -1,20 +1,27 @@
-import android.os.CountDownTimer;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.vas.VasApngUtil;
 
 public class bgcq
-  extends CountDownTimer
+  implements bgcp
 {
-  public bgcq(ReciteRecordLayout paramReciteRecordLayout, long paramLong1, long paramLong2)
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public bgcq(String paramString, int paramInt)
   {
-    super(paramLong1, paramLong2);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onFinish()
+  public URLDrawable a(Drawable paramDrawable)
   {
-    ReciteRecordLayout.a(this.a);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("key_loop", this.jdField_a_of_type_Int);
+    localBundle.putBoolean("key_use_cache", false);
+    return VasApngUtil.getApngDrawable(this.jdField_a_of_type_JavaLangString, "dontCacheMe", paramDrawable, null, this.jdField_a_of_type_JavaLangString, localBundle);
   }
-  
-  public void onTick(long paramLong) {}
 }
 
 

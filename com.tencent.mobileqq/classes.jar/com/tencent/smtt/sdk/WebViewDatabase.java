@@ -32,10 +32,10 @@ public class WebViewDatabase
   
   public void clearFormData()
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().g(this.b);
+      localx.c().g(this.b);
       return;
     }
     android.webkit.WebViewDatabase.getInstance(this.b).clearFormData();
@@ -43,10 +43,10 @@ public class WebViewDatabase
   
   public void clearHttpAuthUsernamePassword()
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().e(this.b);
+      localx.c().e(this.b);
       return;
     }
     android.webkit.WebViewDatabase.getInstance(this.b).clearHttpAuthUsernamePassword();
@@ -55,10 +55,10 @@ public class WebViewDatabase
   @Deprecated
   public void clearUsernamePassword()
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      localv.c().c(this.b);
+      localx.c().c(this.b);
       return;
     }
     android.webkit.WebViewDatabase.getInstance(this.b).clearUsernamePassword();
@@ -66,18 +66,18 @@ public class WebViewDatabase
   
   public boolean hasFormData()
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().f(this.b);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().f(this.b);
     }
     return android.webkit.WebViewDatabase.getInstance(this.b).hasFormData();
   }
   
   public boolean hasHttpAuthUsernamePassword()
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().d(this.b);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().d(this.b);
     }
     return android.webkit.WebViewDatabase.getInstance(this.b).hasHttpAuthUsernamePassword();
   }
@@ -85,9 +85,9 @@ public class WebViewDatabase
   @Deprecated
   public boolean hasUsernamePassword()
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().b(this.b);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().b(this.b);
     }
     return android.webkit.WebViewDatabase.getInstance(this.b).hasUsernamePassword();
   }

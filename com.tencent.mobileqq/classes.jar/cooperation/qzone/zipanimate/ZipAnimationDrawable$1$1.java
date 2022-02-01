@@ -1,16 +1,13 @@
 package cooperation.qzone.zipanimate;
 
-import bnqp;
-import bnqq;
-
-public class ZipAnimationDrawable$1$1
+class ZipAnimationDrawable$1$1
   implements Runnable
 {
-  public ZipAnimationDrawable$1$1(bnqq parambnqq) {}
+  ZipAnimationDrawable$1$1(ZipAnimationDrawable.1 param1) {}
   
   public void run()
   {
-    this.a.a.invalidateSelf();
+    this.this$1.this$0.invalidateSelf();
   }
 }
 

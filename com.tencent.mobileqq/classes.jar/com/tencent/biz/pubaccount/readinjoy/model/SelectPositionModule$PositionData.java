@@ -19,14 +19,14 @@ public class SelectPositionModule$PositionData
     if (paramSosoLocation == null) {
       return;
     }
-    this.country = paramSosoLocation.c;
-    this.province = paramSosoLocation.d;
-    if ((paramSosoLocation.e != null) && (paramSosoLocation.e.endsWith("市")))
+    this.country = paramSosoLocation.nation;
+    this.province = paramSosoLocation.province;
+    if ((paramSosoLocation.city != null) && (paramSosoLocation.city.endsWith("市")))
     {
-      this.city = paramSosoLocation.e.substring(0, paramSosoLocation.e.length() - 1);
-      if ((paramSosoLocation.f != null) && (paramSosoLocation.f.length() > 2))
+      this.city = paramSosoLocation.city.substring(0, paramSosoLocation.city.length() - 1);
+      if ((paramSosoLocation.cityCode != null) && (paramSosoLocation.cityCode.length() > 2))
       {
-        if (!paramSosoLocation.f.startsWith("11")) {
+        if (!paramSosoLocation.cityCode.startsWith("11")) {
           break label151;
         }
         this.cityCode = "110000";
@@ -34,19 +34,19 @@ public class SelectPositionModule$PositionData
     }
     for (;;)
     {
-      this.cityGPS = paramSosoLocation.e;
+      this.cityGPS = paramSosoLocation.city;
       return;
-      this.city = paramSosoLocation.e;
+      this.city = paramSosoLocation.city;
       break;
       label151:
-      if (paramSosoLocation.f.startsWith("12")) {
+      if (paramSosoLocation.cityCode.startsWith("12")) {
         this.cityCode = "120000";
-      } else if (paramSosoLocation.f.startsWith("31")) {
+      } else if (paramSosoLocation.cityCode.startsWith("31")) {
         this.cityCode = "310000";
-      } else if (paramSosoLocation.f.startsWith("50")) {
+      } else if (paramSosoLocation.cityCode.startsWith("50")) {
         this.cityCode = "500000";
       } else {
-        this.cityCode = (paramSosoLocation.f.substring(0, paramSosoLocation.f.length() - 2) + "00");
+        this.cityCode = (paramSosoLocation.cityCode.substring(0, paramSosoLocation.cityCode.length() - 2) + "00");
       }
     }
   }

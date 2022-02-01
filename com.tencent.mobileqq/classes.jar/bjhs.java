@@ -1,36 +1,22 @@
-import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.wifisdk.TMSDKCustomConfig.IThreadPoolManager;
+import android.os.Bundle;
 
-final class bjhs
-  implements TMSDKCustomConfig.IThreadPoolManager
+class bjhs
+  extends nmf
 {
-  public void addTask(int paramInt, Runnable paramRunnable, String paramString)
+  protected bjiq a;
+  protected byte[] a;
+  
+  public bjhs(byte[] paramArrayOfByte, bjiq parambjiq)
   {
-    ThreadManagerV2.excute(paramRunnable, 16, null, false);
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Bjiq = parambjiq;
   }
   
-  public void addTypeTask(Runnable paramRunnable, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    int i = 16;
-    if (paramInt == 3) {
-      i = 64;
+    if (this.jdField_a_of_type_Bjiq != null) {
+      this.jdField_a_of_type_Bjiq.a(paramInt, this.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
     }
-    for (;;)
-    {
-      ThreadManagerV2.excute(paramRunnable, i, null, false);
-      return;
-      if (paramInt == 4) {
-        i = 128;
-      } else if (paramInt == 2) {
-        i = 32;
-      }
-    }
-  }
-  
-  public Looper getSubThreadLooper()
-  {
-    return ThreadManagerV2.getSubThreadLooper();
   }
 }
 

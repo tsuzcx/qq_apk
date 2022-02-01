@@ -1,57 +1,18 @@
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class aefc
-  extends aocj
+class aefc
+  implements DialogInterface.OnClickListener
 {
-  public aefc(ChatSettingActivity paramChatSettingActivity) {}
+  aefc(aeey paramaeey) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
-    }
-    ChatSettingActivity.c(this.a, false);
-    ChatSettingActivity.g(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "onInsertIntoBlackList, isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, true);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, "onInsertIntoBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
-      }
-      ChatSettingActivity.b(this.a);
-      return;
-    }
-    ChatSettingActivity.a(this.a, 2131718178, 1);
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
-    }
-    ChatSettingActivity.c(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "onRemoveFromBlackList, isSuccess=" + paramBoolean);
-    }
-    ChatSettingActivity.g(this.a);
-    if (paramBoolean)
-    {
-      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, false);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, "onRemoveFromBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
-      }
-      ChatSettingActivity.b(this.a);
-      return;
-    }
-    ChatSettingActivity.a(this.a, 2131718178, 1);
+    this.a.b = true;
+    aeey.b(this.a);
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 

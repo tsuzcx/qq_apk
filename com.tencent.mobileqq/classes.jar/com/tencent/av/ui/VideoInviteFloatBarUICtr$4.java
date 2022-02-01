@@ -3,21 +3,21 @@ package com.tencent.av.ui;
 import android.os.Handler;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import mlb;
-import mlc;
-import mvd;
+import mkk;
+import mkl;
+import mum;
 
 public class VideoInviteFloatBarUICtr$4
   implements Runnable
 {
-  public VideoInviteFloatBarUICtr$4(mlc parammlc) {}
+  public VideoInviteFloatBarUICtr$4(mkl parammkl) {}
   
   public void run()
   {
-    String str = mvd.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a());
-    if (this.this$0.jdField_a_of_type_Mlb != null)
+    String str = mum.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a());
+    if (this.this$0.jdField_a_of_type_Mkk != null)
     {
-      this.this$0.jdField_a_of_type_Mlb.a(str);
+      this.this$0.jdField_a_of_type_Mkk.a(str);
       if (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a() % 60L >= 1L) {
         this.this$0.a();
       }

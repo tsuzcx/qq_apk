@@ -1,23 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 class axxx
-  implements ValueAnimator.AnimatorUpdateListener
+  implements axxz
 {
-  axxx(axxu paramaxxu, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
+  axxx(axxv paramaxxv, LatLng paramLatLng, int paramInt, axxz paramaxxz) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(PoiBean paramPoiBean)
   {
-    if (this.jdField_a_of_type_Axxu.b)
-    {
-      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = i;
-      this.jdField_a_of_type_Axxu.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_Axxu.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("PoiLoader", 2, "[status][poiLoader][" + axxv.a(this.jdField_a_of_type_Axxv) + "] loadPoiFromDisk. latLng: " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " poiBean: " + paramPoiBean);
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    if (paramPoiBean != null) {
+      axxv.a(this.jdField_a_of_type_Axxv).a(paramPoiBean.latLng, this.jdField_a_of_type_Int, paramPoiBean);
+    }
+    this.jdField_a_of_type_Axxz.a(paramPoiBean);
   }
 }
 

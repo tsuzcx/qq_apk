@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aflf;
+import aedx;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -13,15 +13,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bdll;
-import bhnv;
-import blbf;
+import bcef;
+import bjhj;
 import com.tencent.common.config.AppSetting;
 import com.tencent.ims.QQProtectRisks.QQProtectRisksRequest;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import nkm;
+import nmb;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
 
 public class RiskInfoActivity
@@ -45,10 +45,10 @@ public class RiskInfoActivity
   {
     QQProtectRisks.QQProtectRisksRequest localQQProtectRisksRequest = new QQProtectRisks.QQProtectRisksRequest();
     localQQProtectRisksRequest.uint32_sec_cmd.set(1);
-    localQQProtectRisksRequest.str_package_name.set(blbf.c());
+    localQQProtectRisksRequest.str_package_name.set(bjhj.c());
     localQQProtectRisksRequest.uint32_app_id.set(AppSetting.a());
-    a("ALL", getResources().getString(2131715979));
-    nkm.a(this.app, new aflf(this), localQQProtectRisksRequest.toByteArray(), "AccountSafeSvc.RiskDetect");
+    a("ALL", getResources().getString(2131716213));
+    nmb.a(this.app, new aedx(this), localQQProtectRisksRequest.toByteArray(), "AccountSafeSvc.RiskDetect");
   }
   
   private void a(String paramString1, String paramString2)
@@ -60,7 +60,7 @@ public class RiskInfoActivity
       FormSimpleItem localFormSimpleItem;
       if (localObject != null)
       {
-        localFormSimpleItem = (FormSimpleItem)((View)localObject).findViewById(2131376718);
+        localFormSimpleItem = (FormSimpleItem)((View)localObject).findViewById(2131376487);
         if (localFormSimpleItem != null)
         {
           localObject = (RiskInfoItem)localFormSimpleItem.getTag(2017021601);
@@ -107,12 +107,12 @@ public class RiskInfoActivity
       break label47;
       break;
       label76:
-      View localView = getLayoutInflater().inflate(2131561952, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-      LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131376719);
-      FormSimpleItem localFormSimpleItem = (FormSimpleItem)localView.findViewById(2131376718);
+      View localView = getLayoutInflater().inflate(2131561829, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+      LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131376488);
+      FormSimpleItem localFormSimpleItem = (FormSimpleItem)localView.findViewById(2131376487);
       localFormSimpleItem.setLeftText(localRiskInfoItem.jdField_a_of_type_JavaLangString);
       localFormSimpleItem.setRightText(localRiskInfoItem.jdField_b_of_type_JavaLangString);
-      ((TextView)localView.findViewById(2131376712)).setText(localRiskInfoItem.c);
+      ((TextView)localView.findViewById(2131376481)).setText(localRiskInfoItem.c);
       String str = localRiskInfoItem.d;
       localLinearLayout.setTag(2017021601, localRiskInfoItem);
       localFormSimpleItem.setTag(2017021601, localRiskInfoItem);
@@ -143,7 +143,7 @@ public class RiskInfoActivity
           String str3 = localRiskInfoItem.e;
           String str2 = str3;
           if (TextUtils.isEmpty(str3)) {
-            str2 = getResources().getString(2131691797);
+            str2 = getResources().getString(2131691843);
           }
           a(str1, str2);
           if (localRiskInfoItem.d.equalsIgnoreCase("devlock")) {
@@ -164,10 +164,10 @@ public class RiskInfoActivity
       {
         if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo == null)
         {
-          if (bhnv.d(this)) {
+          if (NetworkUtil.isNetSupport(this)) {
             return;
           }
-          QQToast.a(this, getString(2131691989), 0).b(getTitleBarHeight());
+          QQToast.a(this, getString(2131692035), 0).b(getTitleBarHeight());
           return;
         }
         if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.DevSetup == 1)
@@ -281,8 +281,9 @@ public class RiskInfoActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -297,7 +298,7 @@ public class RiskInfoActivity
     RiskInfoItem localRiskInfoItem = (RiskInfoItem)paramView.getTag(2017021601);
     QLog.d("RiskInfoDetails", 1, String.format("set jump: %s", new Object[] { localRiskInfoItem.d }));
     a(localRiskInfoItem.d);
-    bdll.b(this.app, "dc00899", "Safe_RiskInfo", "", localRiskInfoItem.jdField_a_of_type_JavaLangString, localRiskInfoItem.d, localRiskInfoItem.jdField_a_of_type_Int, 0, "", "", "", "");
+    bcef.b(this.app, "dc00899", "Safe_RiskInfo", "", localRiskInfoItem.jdField_a_of_type_JavaLangString, localRiskInfoItem.d, localRiskInfoItem.jdField_a_of_type_Int, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
@@ -311,9 +312,9 @@ public class RiskInfoActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131561951);
-    setTitle(2131715976);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131374825));
+    super.setContentView(2131561828);
+    setTitle(2131716210);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131374590));
     paramBundle = getIntent().getExtras();
     this.jdField_a_of_type_JavaUtilList = paramBundle.getParcelableArrayList("data");
     this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = ((DevlockInfo)paramBundle.get("DevlockInfo"));
@@ -327,7 +328,7 @@ public class RiskInfoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RiskInfoActivity
  * JD-Core Version:    0.7.0.1
  */

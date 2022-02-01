@@ -12,19 +12,19 @@ import android.graphics.Rect;
 import android.media.ThumbnailUtils;
 import android.provider.MediaStore.Video.Thumbnails;
 import android.util.DisplayMetrics;
-import bdmc;
-import beyq;
-import bezb;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.SafeBitmapFactory.SafeDecodeOption;
 import com.tencent.mobileqq.activity.photo.album.QAlbumUtil;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.HashMap;
 
 public class FlowThumbDecoder
-  implements bezb
+  implements BitmapDecoder
 {
   static final int SCALE_MODE_BY_HEIGHT = 2;
   static final int SCALE_MODE_BY_WIDTH = 1;
@@ -44,9 +44,9 @@ public class FlowThumbDecoder
   {
     Resources localResources = paramContext.getResources();
     this.mDensity = localResources.getDisplayMetrics().density;
-    sFlowItemHeight = localResources.getDimension(2131297043);
-    sFlowItemMaxWidth = localResources.getDimension(2131297041);
-    sFlowItemMinWidth = localResources.getDimension(2131297042);
+    sFlowItemHeight = localResources.getDimension(2131297098);
+    sFlowItemMaxWidth = localResources.getDimension(2131297096);
+    sFlowItemMinWidth = localResources.getDimension(2131297097);
     sRatioMax = sFlowItemMaxWidth / sFlowItemHeight;
     sRatioMin = sFlowItemMinWidth / sFlowItemHeight;
     if (sFlowItemHeight == 0.0F) {
@@ -242,11 +242,11 @@ public class FlowThumbDecoder
         {
           paramOptions = paramContext.getInfo();
           paramOptions.put("from", "FlowThumbDecoder");
-          bdmc localbdmc = bdmc.a(BaseApplication.getContext());
+          StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
           boolean bool = paramContext.isGetBitmap;
           long l = paramContext.runTime;
           i = paramContext.rawHeight;
-          localbdmc.a(null, "safeDecode", bool, l, paramContext.rawWidth * i, paramOptions, "");
+          localStatisticCollector.collectPerformance(null, "safeDecode", bool, l, paramContext.rawWidth * i, paramOptions, "");
         }
         return paramLocalMediaInfo;
       }
@@ -315,7 +315,7 @@ public class FlowThumbDecoder
   {
     paramURL = this.mContext;
     LocalMediaInfo localLocalMediaInfo = this.mInfo;
-    int i = beyq.a(localLocalMediaInfo.path);
+    int i = URLDrawableHelper.getExifRotation(localLocalMediaInfo.path);
     if ((i != 0) && (i != localLocalMediaInfo.orientation))
     {
       if (QLog.isColorLevel()) {

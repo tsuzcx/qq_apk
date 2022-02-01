@@ -1,27 +1,41 @@
-import android.app.Activity;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.HandlerThread;
+import android.os.IBinder;
+import android.os.Messenger;
+import android.util.SparseArray;
 import com.tencent.qphone.base.util.QLog;
 
 class andh
-  implements anps
+  implements ServiceConnection
 {
-  andh(ande paramande) {}
+  andh(andf paramandf) {}
   
-  public void a(int paramInt)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    QLog.i("cmgame_process.CmGameLauncher", 1, "[onSoLoadComplete], ret:" + paramInt);
-    anpq.b(ande.a(this.a));
-    Activity localActivity = this.a.a();
-    if (paramInt == 0) {
-      if ((localActivity != null) && (!ande.c(this.a)))
-      {
-        ande.a(this.a, true);
-        ande.c(this.a);
-      }
+    andf.a(this.a, 2);
+    andf.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadPhoto", 2, "onServiceConnected()...");
     }
-    while (localActivity == null) {
-      return;
+    this.a.jdField_a_of_type_AndroidOsMessenger = new Messenger(paramIBinder);
+    this.a.b = new Messenger(this.a.jdField_a_of_type_AndroidOsHandler);
+    andf.b(this.a);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadPhoto", 2, "onServiceDisconnected()...");
     }
-    localActivity.finish();
+    this.a.jdField_a_of_type_AndroidOsMessenger = null;
+    andf.a(this.a, 4);
+    this.a.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    this.a.b = null;
+    andf.a(this.a, true);
+    if (andf.a(this.a) != null) {
+      andf.a(this.a).interrupt();
+    }
   }
 }
 

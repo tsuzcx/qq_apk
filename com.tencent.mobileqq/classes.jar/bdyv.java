@@ -1,32 +1,29 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.2;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
 
-public class bdyv
-  implements MediaPlayer.OnSeekCompleteListener
+class bdyv
+  implements Animation.AnimationListener
 {
-  public bdyv(VideoSprite.2 param2) {}
+  bdyv(bdyt parambdyt) {}
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
-    {
-      this.a.this$0.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      this.a.this$0.g = true;
-      if (this.a.this$0.jdField_a_of_type_Bdyz != null) {
-        this.a.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.this$0, 33L);
-      }
-      return;
+    if (bdyt.a(this.a) != null) {
+      bdyt.a(this.a).a.clearAnimation();
     }
-    catch (Exception paramMediaPlayer)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("VideoSprite", 2, "playVideo: " + QLog.getStackTraceString(paramMediaPlayer));
+    bdyt.a(this.a);
+    if ((bdyt.a(this.a) != null) && (!bdyt.a(this.a).isSend())) {
+      ((bdzb)this.a.a.getManager(225)).a(this.a.a.getCurrentAccountUin(), bdyt.a(this.a).getExtInfoFromExtStr("key_aio_keyword"), Integer.valueOf(bdyt.a(this.a).ruleId));
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

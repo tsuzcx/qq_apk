@@ -1,13 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class owu
-  implements ViewBase.IBuilder
+class owu
+  implements ViewFactory.FoundClickableViewListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  owu(ows paramows) {}
+  
+  public void onFound(ViewBase paramViewBase)
   {
-    return new owt(paramVafContext);
+    if ((paramViewBase.getNativeView() == null) || (paramViewBase.getClickEvnet() == null)) {
+      return;
+    }
+    paramViewBase.setOnClickListener(new owv(this));
   }
 }
 

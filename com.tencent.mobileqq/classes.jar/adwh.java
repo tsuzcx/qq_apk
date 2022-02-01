@@ -1,31 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.PreloadWebService;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class adwh
-  implements View.OnClickListener
+  extends WebViewClient
 {
-  public adwh(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  public adwh(PreloadWebService paramPreloadWebService) {}
   
-  public void onClick(View paramView)
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    if (paramView.getParent() == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      View localView = (View)paramView.getParent().getParent();
-      if ((localView != null) && (localView.getTag() != null))
-      {
-        bdll.b(this.a.app, "CliOper", "", "", "0X8007147", "0X8007147", 0, 0, "", "", "", "");
-        if ((localView.getTag() instanceof SimpleAccount)) {
-          this.a.a((SimpleAccount)localView.getTag());
-        }
-      }
-    }
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    return true;
   }
 }
 

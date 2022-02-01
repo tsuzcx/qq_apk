@@ -1,14 +1,19 @@
-public abstract interface axpz
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.olympic.OlyimpicConfig;
+
+public final class axpz
+  implements Parcelable.Creator<OlyimpicConfig>
 {
-  public abstract void a();
+  public OlyimpicConfig a(Parcel paramParcel)
+  {
+    return new OlyimpicConfig(paramParcel);
+  }
   
-  public abstract void a(axpx paramaxpx);
-  
-  public abstract void a(axpx paramaxpx, int paramInt);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public OlyimpicConfig[] a(int paramInt)
+  {
+    return new OlyimpicConfig[paramInt];
+  }
 }
 
 

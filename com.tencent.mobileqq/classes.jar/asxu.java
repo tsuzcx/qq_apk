@@ -1,21 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import java.util.List;
 
-public class asxu
-  implements View.OnClickListener
+class asxu
+  implements aszj
 {
-  public asxu(ExtendFriendCampusFragment paramExtendFriendCampusFragment) {}
+  asxu(asxp paramasxp, List paramList) {}
   
-  public void onClick(View paramView)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    if (this.a.a != null)
-    {
-      this.a.a.a();
-      atci.a().b(3);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    aszk.d(asxp.a(this.jdField_a_of_type_Asxp).getString(2131692493));
+    bfby.a(asxp.a(this.jdField_a_of_type_Asxp), asxp.a(this.jdField_a_of_type_Asxp), this.jdField_a_of_type_JavaUtilList);
   }
 }
 

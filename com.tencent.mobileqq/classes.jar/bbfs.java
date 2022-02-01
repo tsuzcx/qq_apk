@@ -1,20 +1,33 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.List;
+import android.os.Bundle;
 
 public class bbfs
 {
-  public int a;
+  public Bundle a;
   public String a;
-  public List<PtvTemplateManager.PtvTemplateInfo> a;
-  public boolean a;
-  public int b;
-  public String b;
-  
-  public bbfs() {}
+  public byte[] a;
   
   public bbfs(String paramString)
   {
-    this.a = paramString;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public bbfs(String paramString, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public bbfs(String paramString, byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+  }
+  
+  public bbfs(String paramString, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
 }
 

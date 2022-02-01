@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
-class aekf
-  implements DialogInterface.OnClickListener
+public class aekf
+  implements bjta
 {
-  aekf(aeke paramaeke) {}
+  public aekf(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.a.a();
-    DevlockQuickLoginActivity.b(this.a.a);
-    DevlockQuickLoginActivity.b(this.a.a, 0, 2130772001);
+    bfpm.b(this.a.findViewById(2131378819), true);
   }
 }
 

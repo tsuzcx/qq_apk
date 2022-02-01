@@ -1,24 +1,15 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class yrx
-  extends QQUIEventReceiver<yrh, wsl>
+  implements Handler.Callback
 {
-  public yrx(@NonNull yrh paramyrh)
-  {
-    super(paramyrh);
-  }
+  public yrx(SegmentList paramSegmentList) {}
   
-  public void a(@NonNull yrh paramyrh, @NonNull wsl paramwsl)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (paramwsl.a) {
-      yrh.d(paramyrh);
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wsl.class;
+    return SegmentList.a(this.a, paramMessage);
   }
 }
 

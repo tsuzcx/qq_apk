@@ -48,7 +48,7 @@ class TbsLinuxToolsJni
       break label220;
       break label63;
     }
-    for (Object localObject1 = new File((String)localObject1);; localObject1 = n.a().q(paramContext))
+    for (Object localObject1 = new File((String)localObject1);; localObject1 = p.a().q(paramContext))
     {
       if (localObject1 != null)
       {
@@ -63,7 +63,7 @@ class TbsLinuxToolsJni
         {
           localObject2 = localObject1;
           if (!TbsShareManager.isThirdPartyApp(paramContext)) {
-            localObject2 = n.a().p(paramContext);
+            localObject2 = p.a().p(paramContext);
           }
         }
         if (localObject2 != null)

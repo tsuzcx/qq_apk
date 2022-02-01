@@ -1,8 +1,17 @@
-public abstract class awuv
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class awuv
+  implements View.OnClickListener
 {
-  public abstract void a();
+  awuv(awur paramawur) {}
   
-  public abstract void a(awpk paramawpk);
+  public void onClick(View paramView)
+  {
+    this.a.b(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

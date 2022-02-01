@@ -1,42 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.profile.like.PraiseManager;
+import java.lang.ref.WeakReference;
 
-public class ardo
+class ardo
+  implements ayop
 {
-  private boolean a;
+  ardo(arcu paramarcu) {}
   
-  public static ardo a(String paramString)
+  public void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
   {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
+    MessengerService localMessengerService = (MessengerService)this.a.a.get();
+    if (localMessengerService != null)
     {
-      ardo localardo = new ardo();
-      if (new JSONObject(paramString).optInt("isDefaultOpen", 1) == 1) {}
-      for (;;)
-      {
-        localardo.a = bool;
-        return localardo;
-        bool = false;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("id", paramInt2);
+      localBundle.putInt("code", paramInt1);
+      localBundle.putString("url", paramString);
+      paramBundle.putBundle("response", localBundle);
+      localMessengerService.a(paramBundle);
+      if ((paramInt1 == 0) && (MessengerService.e(localMessengerService) != null) && ((MessengerService.f(localMessengerService) instanceof QQAppInterface))) {
+        ((PraiseManager)((QQAppInterface)MessengerService.g(localMessengerService)).getManager(209)).a(paramInt2, true, "from_praise_mall");
       }
-      return null;
     }
-    catch (Exception paramString)
-    {
-      QLog.e("DarkModeConfigProcessor", 2, "DarkModeConfigBean parse error", paramString);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardo
  * JD-Core Version:    0.7.0.1
  */

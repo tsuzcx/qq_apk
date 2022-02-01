@@ -1,21 +1,93 @@
-import android.content.Context;
-import java.lang.ref.WeakReference;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class bjuk
 {
-  public String a;
-  public WeakReference<Context> a;
-  public String b;
-  public WeakReference<bjuv> b;
-  public String c;
+  public static int a;
+  public static int b;
+  public static int c = 3;
+  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  boolean jdField_a_of_type_Boolean = true;
+  boolean b;
+  int d;
+  private int e = jdField_a_of_type_Int;
+  private int f = ThemeUtil.NIGHTMODE_MASKCOLOR;
   
-  public bjuk(bjuj parambjuj, Context paramContext, String paramString1, String paramString2, String paramString3, bjuv parambjuv)
+  static
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(parambjuv);
+    jdField_a_of_type_Int = 1;
+    jdField_b_of_type_Int = 2;
+  }
+  
+  public bjuk()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
+    this.d = this.jdField_a_of_type_AndroidGraphicsPaint.getColor();
+  }
+  
+  public static boolean a()
+  {
+    return ("1103".equals(ThemeUtil.curThemeId)) || ("2920".equals(ThemeUtil.curThemeId));
+  }
+  
+  public static boolean b()
+  {
+    return "2920".equals(ThemeUtil.curThemeId);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.e = paramInt;
+  }
+  
+  public void a(Canvas paramCanvas, bjul parambjul)
+  {
+    if ((paramCanvas == null) || (parambjul == null)) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Boolean) && (a()))
+    {
+      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, parambjul.getWidth(), parambjul.getHeight());
+      int i = this.e;
+      if (b()) {
+        i = c;
+      }
+      if (i == jdField_a_of_type_Int)
+      {
+        parambjul.a(paramCanvas);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(null);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
+        paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), this.jdField_a_of_type_AndroidGraphicsRectF.centerY(), this.jdField_a_of_type_AndroidGraphicsPaint);
+        return;
+      }
+      if (i == jdField_b_of_type_Int)
+      {
+        parambjul.a(paramCanvas);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(null);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
+        paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+        return;
+      }
+      if (this.jdField_a_of_type_AndroidGraphicsPaint.getColorFilter() == null) {
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(ThemeUtil.NIGHTMODE_COLORFILTER);
+      }
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
+      paramCanvas.saveLayer(null, this.jdField_a_of_type_AndroidGraphicsPaint, 31);
+      parambjul.a(paramCanvas);
+      paramCanvas.restore();
+      return;
+    }
+    parambjul.a(paramCanvas);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

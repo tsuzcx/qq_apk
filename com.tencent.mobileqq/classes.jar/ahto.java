@@ -1,33 +1,55 @@
-import android.view.View;
-import android.view.ViewGroup;
-import java.lang.ref.SoftReference;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahto
+class ahto
+  extends Handler
 {
-  public String a;
-  SoftReference<View> a;
-  SoftReference<ViewGroup> b;
-  
-  public ahto(String paramString, View paramView, ViewGroup paramViewGroup)
+  ahto(ahtj paramahtj, Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView);
-    this.b = new SoftReference(paramViewGroup);
+    super(paramLooper);
   }
   
-  public View a()
+  public void handleMessage(Message paramMessage)
   {
-    return (View)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-  }
-  
-  public ViewGroup a()
-  {
-    return (ViewGroup)this.b.get();
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    this.b = new SoftReference(paramViewGroup);
+    switch (paramMessage.what)
+    {
+    }
+    int i;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramMessage = (ahua)paramMessage.obj;
+          if (QLog.isColorLevel()) {
+            QLog.d("ZhituManager", 2, ahtj.a(paramMessage.d, "main handler", paramMessage.a, "all img process is finished, now is in main thread"));
+          }
+          this.a.e(paramMessage);
+          return;
+          paramMessage = (String)paramMessage.obj;
+          if (QLog.isColorLevel()) {
+            QLog.d("ZhituManager", 2, "response is empty, errorMsg is " + paramMessage);
+          }
+        } while (this.a.jdField_a_of_type_Ahtv == null);
+        this.a.jdField_a_of_type_Ahtv.a(paramMessage);
+        return;
+        i = paramMessage.arg1;
+        paramMessage = (String)paramMessage.obj;
+        if (paramMessage.equals(this.a.a())) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("ZhituManager", 2, ahtj.a(paramMessage, "main handler", "reqKey is outdated, skip"));
+      return;
+      if (this.a.jdField_a_of_type_Ahty != null) {
+        this.a.jdField_a_of_type_Ahty.a(i, paramMessage);
+      }
+    } while (this.a.jdField_a_of_type_Ahtv == null);
+    this.a.jdField_a_of_type_Ahtv.a(i, paramMessage);
   }
 }
 

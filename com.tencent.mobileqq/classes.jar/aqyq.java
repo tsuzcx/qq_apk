@@ -1,76 +1,267 @@
+import android.os.Looper;
 import android.text.TextUtils;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.CustomEmotionBase;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.emosm.CustomEmotionRoamingDBManagerBase.1;
+import com.tencent.mobileqq.emosm.CustomEmotionRoamingDBManagerBase.2;
+import com.tencent.mobileqq.emosm.CustomEmotionRoamingDBManagerBase.3;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import mqq.manager.Manager;
 
-public class aqyq
+public abstract class aqyq<T extends CustomEmotionBase>
+  implements Manager
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public int g;
+  public QQAppInterface a;
+  protected List<T> a;
   
-  public static aqyq a(String paramString)
+  public aqyq(QQAppInterface paramQQAppInterface)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    aqyq localaqyq = new aqyq();
-    try
-    {
-      paramString = new JSONObject(paramString);
-      localaqyq.jdField_a_of_type_Int = paramString.optInt("nTopicId");
-      localaqyq.jdField_b_of_type_Int = paramString.optInt("nBGType");
-      localaqyq.jdField_c_of_type_Int = paramString.optInt("nConfessorSex");
-      localaqyq.jdField_a_of_type_JavaLangString = paramString.optString("strRecNick");
-      localaqyq.jdField_b_of_type_JavaLangString = paramString.optString("strRecUin");
-      localaqyq.jdField_c_of_type_JavaLangString = paramString.optString("strConfessorUin");
-      localaqyq.jdField_d_of_type_JavaLangString = paramString.optString("strConfessorDesc");
-      localaqyq.jdField_e_of_type_JavaLangString = paramString.optString("strConfessorNick");
-      localaqyq.g = paramString.optInt("flag");
-      localaqyq.jdField_a_of_type_Long = paramString.optInt("confessTime");
-      localaqyq.jdField_d_of_type_Int = paramString.optInt("nConfessNum");
-      localaqyq.jdField_e_of_type_Int = paramString.optInt("nGetConfessSex");
-      localaqyq.f = paramString.optInt("nBizType");
-      return localaqyq;
-    }
-    catch (Exception paramString) {}
-    return null;
+    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public String a()
+  public T a(String paramString)
   {
-    try
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+    do
     {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("nTopicId", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("nBGType", this.jdField_b_of_type_Int);
-      ((JSONObject)localObject).put("nConfessorSex", this.jdField_c_of_type_Int);
-      ((JSONObject)localObject).put("strRecNick", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("strRecUin", this.jdField_b_of_type_JavaLangString);
-      ((JSONObject)localObject).put("strConfessorUin", this.jdField_c_of_type_JavaLangString);
-      ((JSONObject)localObject).put("strConfessorDesc", this.jdField_d_of_type_JavaLangString);
-      ((JSONObject)localObject).put("strConfessorNick", this.jdField_e_of_type_JavaLangString);
-      ((JSONObject)localObject).put("flag", this.g);
-      ((JSONObject)localObject).put("confessTime", this.jdField_a_of_type_Long);
-      ((JSONObject)localObject).put("nConfessNum", this.jdField_d_of_type_Int);
-      ((JSONObject)localObject).put("nGetConfessSex", this.jdField_e_of_type_Int);
-      ((JSONObject)localObject).put("nBizType", this.f);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
+      EntityManager localEntityManager;
+      do
+      {
+        return null;
+        localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+      } while (localEntityManager == null);
+      paramString = localEntityManager.query(a(), false, "url=?", new String[] { paramString }, null, null, null, null);
+      localEntityManager.close();
+    } while ((paramString == null) || (paramString.size() != 1));
+    return (CustomEmotionBase)paramString.get(0);
+  }
+  
+  public abstract EmoticonInfo a(T paramT);
+  
+  public abstract Class a();
+  
+  public abstract List<T> a();
+  
+  public List<String> a(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (TextUtils.isEmpty(paramString)) {
+      return localArrayList;
     }
-    catch (Exception localException)
+    if (QLog.isColorLevel()) {
+      QLog.i("CustomEmotionRoamingDBManagerBase", 2, "Call getEmoticonDataList from getCustomEmoticonResIdsByType.");
+    }
+    Object localObject = a();
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      localException.printStackTrace();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        CustomEmotionBase localCustomEmotionBase = (CustomEmotionBase)((Iterator)localObject).next();
+        String str = localCustomEmotionBase.resid;
+        if ((localCustomEmotionBase.RomaingType.equals(paramString)) && (str != null) && (!"".equals(str))) {
+          localArrayList.add(str);
+        }
+      }
     }
-    return "";
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      CustomEmotionBase localCustomEmotionBase = (CustomEmotionBase)localIterator.next();
+      if (localCustomEmotionBase.RomaingType.equals("failed")) {
+        localArrayList.add(localCustomEmotionBase);
+      }
+    }
+    this.jdField_a_of_type_JavaUtilList.removeAll(localArrayList);
+    this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
+  }
+  
+  public void a(aqyr paramaqyr)
+  {
+    if (paramaqyr == null) {
+      return;
+    }
+    ThreadManager.post(new CustomEmotionRoamingDBManagerBase.3(this, paramaqyr), 5, null, true);
+  }
+  
+  public void a(T paramT)
+  {
+    if (paramT != null)
+    {
+      b(paramT, 4);
+      a(paramT, 4);
+    }
+  }
+  
+  public void a(T paramT, int paramInt)
+  {
+    if (paramT == null) {
+      return;
+    }
+    a(new CustomEmotionRoamingDBManagerBase.2(this, paramInt, paramT), 8);
+  }
+  
+  public void a(Runnable paramRunnable, int paramInt)
+  {
+    if (paramRunnable != null)
+    {
+      if (Looper.myLooper() != Looper.getMainLooper()) {
+        paramRunnable.run();
+      }
+    }
+    else {
+      return;
+    }
+    ThreadManager.post(paramRunnable, paramInt, null, true);
+  }
+  
+  public void a(List<T> paramList)
+  {
+    if ((paramList == null) || (paramList.size() < 1)) {
+      return;
+    }
+    int i = 0;
+    while (i < paramList.size())
+    {
+      b((CustomEmotionBase)paramList.get(i), 4);
+      i += 1;
+    }
+    a(paramList, 4);
+  }
+  
+  protected void a(List<T> paramList, int paramInt)
+  {
+    if ((paramList == null) || (paramList.size() < 1)) {
+      return;
+    }
+    a(new CustomEmotionRoamingDBManagerBase.1(this, paramList, paramInt), 8);
+  }
+  
+  public abstract List<EmoticonInfo> b();
+  
+  public List<T> b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    List localList;
+    do
+    {
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.i("CustomEmotionRoamingDBManagerBase", 2, "Call getEmoticonDataList from getEmoticonDatasByType.");
+      }
+      localList = a();
+    } while ((localList == null) || (localList.size() <= 0));
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < localList.size())
+    {
+      CustomEmotionBase localCustomEmotionBase = (CustomEmotionBase)localList.get(i);
+      if (localCustomEmotionBase.RomaingType.equals(paramString)) {
+        localArrayList.add(localCustomEmotionBase);
+      }
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  public void b(T paramT)
+  {
+    if (paramT != null)
+    {
+      b(paramT, 2);
+      a(paramT, 2);
+    }
+  }
+  
+  protected void b(T paramT, int paramInt)
+  {
+    if (paramT == null) {}
+    CustomEmotionBase localCustomEmotionBase;
+    do
+    {
+      return;
+      Iterator localIterator;
+      while (!localIterator.hasNext())
+      {
+        do
+        {
+          switch (paramInt)
+          {
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("CustomEmotionRoamingDBManagerBase", 2, "can not update fav emoticon cache data, type:" + paramInt);
+        return;
+        this.jdField_a_of_type_JavaUtilList.add(paramT);
+        return;
+        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localCustomEmotionBase = (CustomEmotionBase)localIterator.next();
+        } while (localCustomEmotionBase.emoId != paramT.emoId);
+        localCustomEmotionBase.replace(paramT);
+        return;
+        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      }
+      localCustomEmotionBase = (CustomEmotionBase)localIterator.next();
+    } while (localCustomEmotionBase.emoId != paramT.emoId);
+    this.jdField_a_of_type_JavaUtilList.remove(localCustomEmotionBase);
+  }
+  
+  public abstract List<EmoticonInfo> c();
+  
+  public List<T> c(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CustomEmotionRoamingDBManagerBase", 2, "Call getEmoticonDataList from findMagicEmosById.");
+    }
+    List localList = a();
+    ArrayList localArrayList = new ArrayList();
+    if ((localList != null) && (localList.size() > 0))
+    {
+      int i = 0;
+      while (i < localList.size())
+      {
+        CustomEmotionBase localCustomEmotionBase = (CustomEmotionBase)localList.get(i);
+        if ((localCustomEmotionBase != null) && (localCustomEmotionBase.emoPath.equals(paramString))) {
+          localArrayList.add(localCustomEmotionBase);
+        }
+        i += 1;
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void c(T paramT)
+  {
+    if (paramT != null)
+    {
+      b(paramT, 1);
+      a(paramT, 1);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.minigame.api;
 
-import bmsv;
 import com.tencent.mobileqq.mini.apkg.ApkgManager;
 import com.tencent.mobileqq.mini.apkg.DebugInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -16,6 +15,7 @@ import com.tencent.mobileqq.triton.filesystem.GamePackage.Orientation;
 import com.tencent.mobileqq.triton.filesystem.GamePackage.SubpackageListener;
 import com.tencent.mobileqq.triton.filesystem.GamePluginPackage;
 import com.tencent.mobileqq.triton.filesystem.GamePluginPackage.Companion;
+import cooperation.qzone.PlatformInfor;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
@@ -64,9 +64,9 @@ public final class QQMiniGamePackageManager
         localHashMap = new HashMap();
         ((Map)localHashMap).put("accountInfo", MapsKt.mapOf(new Pair[] { TuplesKt.to("appId", ((MiniAppInfo)localObject2).appId), TuplesKt.to("icon", ((MiniAppInfo)localObject2).iconUrl) }));
         localObject1 = (Map)localHashMap;
-        localObject3 = bmsv.a();
+        localObject3 = PlatformInfor.g();
         Intrinsics.checkExpressionValueIsNotNull(localObject3, "PlatformInfor.g()");
-        localObject3 = ((bmsv)localObject3).f();
+        localObject3 = ((PlatformInfor)localObject3).getSimpleDeviceInfor();
         Intrinsics.checkExpressionValueIsNotNull(localObject3, "PlatformInfor.g().simpleDeviceInfor");
         ((Map)localObject1).put("deviceinfo", localObject3);
         localObject1 = (Map)localHashMap;

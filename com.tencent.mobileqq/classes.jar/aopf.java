@@ -1,12 +1,7 @@
-class aopf
-  extends anwt
+public abstract interface aopf
+  extends aoph
 {
-  private aopf(aope paramaope) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    this.a.b(1007, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
-  }
+  public abstract void a(boolean paramBoolean, double paramDouble1, double paramDouble2);
 }
 
 

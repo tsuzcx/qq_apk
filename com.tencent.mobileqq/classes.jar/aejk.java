@@ -1,28 +1,41 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aejk
-  implements alpv
+  extends axld
 {
-  private final int jdField_a_of_type_Int = -2147483648;
+  public aejk(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  private aejk(Conversation paramConversation) {}
-  
-  public void a(int paramInt, List<RecentBaseData> paramList) {}
-  
-  public void onChange(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
+  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
   {
-    if (paramDragFrameLayout.a() == -1)
+    TextPreviewTranslateActivity.b(this.a);
+    if ((paramBoolean) && (paramTranslateResult != null) && (paramTranslateResult.b()) && (!paramTranslateResult.a()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b.sendEmptyMessage(10);
-      FrameHelperActivity.c(true);
+      TextPreviewTranslateActivity.a(this.a, paramTranslateResult);
       return;
     }
-    FrameHelperActivity.c(false);
+    String str2 = this.a.getResources().getString(2131698411);
+    String str1 = str2;
+    if (paramTranslateResult != null)
+    {
+      if (TextUtils.isEmpty(paramTranslateResult.e)) {
+        break label92;
+      }
+      str1 = paramTranslateResult.e;
+    }
+    for (;;)
+    {
+      QQToast.a(this.a, 1, str1, 0).a();
+      return;
+      label92:
+      str1 = str2;
+      if (paramTranslateResult.a()) {
+        str1 = this.a.getResources().getString(2131698398);
+      }
+    }
   }
 }
 

@@ -9,11 +9,11 @@ import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 final class GameCloseManager$2
   implements DialogInterface.OnClickListener
 {
-  GameCloseManager$2(MiniAppInfo paramMiniAppInfo, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity) {}
+  GameCloseManager$2(MiniAppInfo paramMiniAppInfo, String paramString, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GameCloseManager.access$000(this.val$finalMoreAppInfo, paramDialogInterface, paramInt, this.val$closeListener, this.val$gameActivity, true);
+    GameCloseManager.access$000(this.val$finalMoreAppInfo, this.val$moreAppLink, paramDialogInterface, paramInt, this.val$closeListener, this.val$gameActivity, true);
     MiniProgramLpReportDC04239.reportAsync("minigame_popup", "moregame", "click", "");
   }
 }

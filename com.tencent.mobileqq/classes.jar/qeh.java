@@ -1,16 +1,50 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.ProteusRecycleView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.SideBarView;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class qeh
-  implements ValueAnimator.AnimatorUpdateListener
+  implements qdy
 {
-  public qeh(ProteusRecycleView paramProteusRecycleView) {}
+  public static String a;
+  public static String[] a;
+  public static String[] b = { "search_word_show_1", "search_word_show_2", "search_word_show_3", "search_word_show_4" };
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  static
   {
-    this.a.setPadding(0, 0, (int)ProteusRecycleView.a(this.a).a(), 0);
+    jdField_a_of_type_JavaLangString = "search_word_title";
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "search_word_click_1", "search_word_click_2", "search_word_click_3", "search_word_click_4" };
+  }
+  
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  {
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return qah.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2)
+  {
+    ArticleInfo localArticleInfo = parampvc.a();
+    if ((localArticleInfo != null) && (localArticleInfo.isAccountShown)) {
+      qga.a(paramContainer, parampvc);
+    }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
+  {
+    if ((paramViewBase != null) && (!TextUtils.isEmpty(paramViewBase.getClickEvnet())) && (paramViewBase.getClickEvnet().startsWith("search_word_click_")))
+    {
+      paramViewBase.setOnClickListener(new qei(this, parampvc, paramContainer));
+      return true;
+    }
+    return false;
   }
 }
 

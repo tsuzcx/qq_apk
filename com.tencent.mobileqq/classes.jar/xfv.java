@@ -1,74 +1,20 @@
-import android.text.TextUtils;
-import java.io.File;
-import java.util.Map;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
 
 public class xfv
-  extends xho
+  extends Handler
 {
-  private String a;
-  public ybh a;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
+  private xfv(QQStoryMainController paramQQStoryMainController) {}
   
-  public xfv()
+  public void handleMessage(Message paramMessage)
   {
-    this("", null, false);
-  }
-  
-  public xfv(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    a(false, true);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_c_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a()
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    switch (paramMessage.what)
     {
-      a(this.jdField_a_of_type_JavaLangString);
+    default: 
       return;
     }
-    b(false);
-  }
-  
-  public void a(String paramString)
-  {
-    File localFile1 = new File(this.jdField_c_of_type_JavaLangString);
-    try
-    {
-      File localFile2 = localFile1.getParentFile();
-      if ((localFile2 != null) && (!localFile2.exists())) {
-        localFile2.mkdirs();
-      }
-      if (localFile1.exists()) {
-        localFile1.delete();
-      }
-    }
-    catch (Exception localException)
-    {
-      label45:
-      break label45;
-    }
-    this.jdField_a_of_type_Ybh = new ybe();
-    this.jdField_a_of_type_Ybh.a(paramString, 0, 0, new xfw(this, paramString));
-  }
-  
-  protected void a(Map<String, Object> paramMap)
-  {
-    if ((paramMap != null) && (!paramMap.isEmpty()))
-    {
-      if (paramMap.containsKey("DownloadPic2FileJob_iiu")) {
-        this.jdField_a_of_type_JavaLangString = ((String)a("DownloadPic2FileJob_iiu"));
-      }
-      if (paramMap.containsKey("DownloadPic2FileJob_isfp")) {
-        this.jdField_c_of_type_JavaLangString = ((String)a("DownloadPic2FileJob_isfp"));
-      }
-      if (paramMap.containsKey("DownloadPic2FileJob_IN_ROUND")) {
-        this.jdField_c_of_type_Boolean = ((Boolean)a("DownloadPic2FileJob_IN_ROUND")).booleanValue();
-      }
-    }
+    this.a.a.a(false);
   }
 }
 

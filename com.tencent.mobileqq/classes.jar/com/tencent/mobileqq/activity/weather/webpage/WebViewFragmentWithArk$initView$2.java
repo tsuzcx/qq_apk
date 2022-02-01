@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.weather.webpage;
 
-import ammk;
+import alhe;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "p1", "Lcom/tencent/mobileqq/activity/weather/webpage/WebPageData;", "Lkotlin/ParameterName;", "name", "data", "invoke"}, k=3, mv={1, 1, 16})
 final class WebViewFragmentWithArk$initView$2
   extends FunctionReference
-  implements Function1<ammk, Unit>
+  implements Function1<alhe, Unit>
 {
   WebViewFragmentWithArk$initView$2(WebViewFragmentWithArk arg1) {}
   
@@ -21,7 +21,7 @@ final class WebViewFragmentWithArk$initView$2
   
   public final String getSignature() {}
   
-  public final void invoke(@NotNull ammk arg1) {}
+  public final void invoke(@NotNull alhe arg1) {}
 }
 
 

@@ -40,7 +40,6 @@
                     "type": "match_parent"
                 },
                 "attributes":{
-                    "setFrameString:":"-1",
                     "setBackgroundColorString:":"#E6E6E6"
                 }
             },
@@ -63,6 +62,16 @@
                         ["#000000","#000000"],
                         ["0","0"],
                         ["0","1"]
+                    ],
+                    "setDTElementID:withParams:": [
+                        "like_button",
+                        {
+                            "rowkey": "$dt_rowkey",
+                            "content_type": "5",
+                            "dt_pgid": "1",
+                            "actionid": "$dt_like_actionid",
+                            "click_type": "single"
+                        }
                     ]
                 }
             },
@@ -93,9 +102,9 @@
                 "align_parent_center_vertical":"YES",
                 "align_parent_center_horizontal":"YES",
                 "height":{
-                          "type":"relative",
-                          "value":"46"
-                 },
+                    "type":"relative",
+                    "value":"46"
+                },
                 "width":{
                     "type":"relative",
                     "value":"125"
@@ -106,6 +115,16 @@
                         ["#000000","#000000"],
                         ["0","0"],
                         ["0","1"]
+                    ],
+                    "setDTElementID:withParams:": [
+                        "collect_button",
+                        {
+                            "rowkey": "$dt_rowkey",
+                            "content_type": "5",
+                            "dt_pgid": "1",
+                            "actionid": "click_collect",
+                            "click_type": "single"
+                        }
                     ]
                 }
             },
@@ -135,15 +154,25 @@
                 "default_visible":"YES",
                 "align_parent_center_vertical":"YES",
                 "height":{
-                   "type":"relative",
-                   "value":"46"
+                    "type":"relative",
+                    "value":"46"
                 },
                 "width":{
                     "type":"relative",
                     "value":"125"
                 },
                 "attributes":{
-                    "setImage:": "NativeArticleBiu"
+                    "setImage:": "NativeArticleBiu",
+                    "setDTElementID:withParams:": [
+                        "biu_button",
+                        {
+                            "rowkey": "$dt_rowkey",
+                            "content_type": "5",
+                            "dt_pgid": "1",
+                            "actionid": "click_biu",
+                            "click_type": "single"
+                        }
+                    ]
                 }
             }
         ]

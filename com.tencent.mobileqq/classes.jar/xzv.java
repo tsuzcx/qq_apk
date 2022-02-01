@@ -1,18 +1,10 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
-public class xzv
+public abstract interface xzv
 {
-  public List<String> a = new ArrayList();
-  public List<String> b = new ArrayList();
+  public abstract void a();
   
-  public void a(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (!this.b.contains(paramString))) {
-      this.b.add(paramString);
-    }
-  }
+  public abstract void a(TroopBarPOI paramTroopBarPOI);
 }
 
 

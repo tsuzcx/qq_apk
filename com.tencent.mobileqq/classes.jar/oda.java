@@ -1,18 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.DownloadBarInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public final class oda
-  implements Parcelable.Creator<VideoInfo.DownloadBarInfo>
+class oda
+  extends BroadcastReceiver
 {
-  public VideoInfo.DownloadBarInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.DownloadBarInfo(paramParcel);
-  }
+  oda(ocw paramocw) {}
   
-  public VideoInfo.DownloadBarInfo[] a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new VideoInfo.DownloadBarInfo[paramInt];
+    if (this.a.a == 2)
+    {
+      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
+      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
+      this.a.a(null, 0, 14, i, paramIntent);
+    }
+    try
+    {
+      paramContext.unregisterReceiver(this.a.b);
+      label50:
+      this.a.b = null;
+      this.a.a = 0;
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      break label50;
+    }
   }
 }
 

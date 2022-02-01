@@ -1,17 +1,18 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.bizparts.QCircleFolderFragmentsPart;
-import java.util.List;
-import qqcircle.QQCircleFeedBase.StTabInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class vcy
-  implements Observer<vxq<List<QQCircleFeedBase.StTabInfo>>>
+class vcy
+  implements View.OnClickListener
 {
-  public vcy(QCircleFolderFragmentsPart paramQCircleFolderFragmentsPart) {}
+  vcy(vcx paramvcx) {}
   
-  public void a(@Nullable vxq<List<QQCircleFeedBase.StTabInfo>> paramvxq)
+  public void onClick(View paramView)
   {
-    QCircleFolderFragmentsPart.a(this.a, paramvxq);
+    if ((this.a.a() instanceof vcj)) {
+      ((vcj)this.a.a()).f();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

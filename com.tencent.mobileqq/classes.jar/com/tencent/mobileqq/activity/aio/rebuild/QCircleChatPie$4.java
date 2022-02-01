@@ -1,49 +1,49 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aipe;
+import ahkr;
 import android.text.TextUtils;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qqcircle.chat.QCircleChatUtil;
 import java.util.List;
-import vjo;
 
 public class QCircleChatPie$4
   implements Runnable
 {
-  public QCircleChatPie$4(aipe paramaipe) {}
+  public QCircleChatPie$4(ahkr paramahkr) {}
   
   public void run()
   {
-    List localList = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, null, 500);
+    List localList = this.this$0.app.getMessageFacade().getAllMessages(this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, null, 500);
     if (localList != null) {
-      aipe.a(this.this$0, localList.size());
+      ahkr.a(this.this$0, localList.size());
     }
     if ((localList != null) && (localList.size() > 0))
     {
-      aipe.b(this.this$0, (MessageRecord)localList.get(0));
-      aipe.a(this.this$0, (MessageRecord)localList.get(localList.size() - 1));
+      ahkr.b(this.this$0, (MessageRecord)localList.get(0));
+      ahkr.a(this.this$0, (MessageRecord)localList.get(localList.size() - 1));
     }
-    if ((vjo.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localList)) && (!TextUtils.isEmpty(aipe.a(this.this$0))))
+    if ((QCircleChatUtil.filterFuelTipsGrayMessage(this.this$0.app, this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, localList)) && (!TextUtils.isEmpty(ahkr.a(this.this$0))))
     {
-      aipe.a(this.this$0, vjo.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, aipe.a(this.this$0), aipe.a(this.this$0)));
-      QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "showFuelTips:" + aipe.a(this.this$0));
+      ahkr.a(this.this$0, QCircleChatUtil.addShowFuelTipsGrayMessage(this.this$0.app, this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, ahkr.a(this.this$0), ahkr.a(this.this$0)));
+      QLog.d(this.this$0.tag, 2, "showFuelTips:" + ahkr.a(this.this$0));
     }
-    aipe.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    if (!vjo.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+    ahkr.a(this.this$0, this.this$0.sessionInfo.curFriendUin);
+    if (!QCircleChatUtil.getIceBreakMsgHasShownFromSp(this.this$0.app, this.this$0.sessionInfo.curFriendUin))
     {
-      QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "showIceBreakMessage");
-      aipe.a(this.this$0, vjo.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, aipe.a(this.this$0), aipe.b(this.this$0)));
-      if (aipe.a(this.this$0) != null) {
-        vjo.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      QLog.d(this.this$0.tag, 2, "showIceBreakMessage");
+      ahkr.a(this.this$0, QCircleChatUtil.addIceBreakMessage(this.this$0.app, this.this$0.sessionInfo.curFriendUin, this.this$0.sessionInfo.curType, ahkr.a(this.this$0), ahkr.b(this.this$0)));
+      if (ahkr.a(this.this$0) != null) {
+        QCircleChatUtil.setIceBreakMsgHasShownToSp(this.this$0.app, this.this$0.sessionInfo.curFriendUin);
       }
     }
     if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "mAllMsgCount " + aipe.b(this.this$0));
+      QLog.d(this.this$0.tag, 2, "mAllMsgCount " + ahkr.b(this.this$0));
     }
-    this.this$0.f(65536);
+    this.this$0.refresh(65536);
   }
 }
 

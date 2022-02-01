@@ -1,21 +1,21 @@
 package cooperation.vip.manager;
 
-import bnvx;
-import bnwa;
+import blbc;
+import blbf;
 import cooperation.qzone.util.QZLog;
 
 public class GdtGeneralManager$2
   implements Runnable
 {
-  public GdtGeneralManager$2(bnvx parambnvx, long paramLong, int paramInt1, int paramInt2, String paramString) {}
+  public GdtGeneralManager$2(blbc paramblbc, long paramLong, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
     if (QZLog.isColorLevel()) {
       QZLog.i("GdtGeneralManager", "getGdtInfoRequest uin= " + this.jdField_a_of_type_Long + "advType = " + this.jdField_a_of_type_Int + "busineestype =" + this.b);
     }
-    bnvx.a(this.this$0, this.this$0.a());
-    bnwa.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, bnvx.a(this.this$0));
+    blbc.a(this.this$0, this.this$0.a());
+    blbf.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, blbc.a(this.this$0));
   }
 }
 

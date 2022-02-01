@@ -1,143 +1,170 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Iterator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
-import java.util.List<Lwgh;>;
+import java.util.Map;
 
 public class wgz
-  extends wgv<whd>
+  implements wjt
 {
-  static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-  private int jdField_a_of_type_Int = 1;
-  private wgu jdField_a_of_type_Wgu;
+  private whd jdField_a_of_type_Whd = new whb(this);
+  private whe jdField_a_of_type_Whe;
+  private final whg jdField_a_of_type_Whg = new wha(this);
+  private wif jdField_a_of_type_Wif;
+  private wjt jdField_a_of_type_Wjt;
+  private wju jdField_a_of_type_Wju;
   
-  private int a(List<wgh> paramList)
+  public wgz() {}
+  
+  private wgz(@NonNull Activity paramActivity)
   {
-    int i = 1;
-    new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    long l2 = -1L;
-    int m = 0;
-    for (;;)
+    this.jdField_a_of_type_Wju = new wjp(paramActivity);
+  }
+  
+  public static wgz a(@NonNull Activity paramActivity)
+  {
+    return new wgz(paramActivity);
+  }
+  
+  public static wgz a(@NonNull Activity paramActivity, wju paramwju)
+  {
+    return new wgz().a(paramwju);
+  }
+  
+  public wgz a()
+  {
+    if (this.jdField_a_of_type_Wju.a() == null) {
+      return this;
+    }
+    this.jdField_a_of_type_Wju.jdField_a_of_type_Boolean = false;
+    return this;
+  }
+  
+  public wgz a(int paramInt)
+  {
+    Activity localActivity = this.jdField_a_of_type_Wju.a();
+    if (localActivity == null) {
+      return this;
+    }
+    this.jdField_a_of_type_Wju.jdField_a_of_type_JavaLangString = localActivity.getString(paramInt);
+    return this;
+  }
+  
+  public wgz a(@NonNull String paramString)
+  {
+    this.jdField_a_of_type_Wju.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public wgz a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_Wif == null) {
+      throw new IllegalStateException("Error: mShareMode is null! StoryShare should init mode() first!");
+    }
+    this.jdField_a_of_type_Wif.b.put(paramString1, paramString2);
+    return this;
+  }
+  
+  public wgz a(@NonNull List<int[]> paramList)
+  {
+    this.jdField_a_of_type_Wju.jdField_a_of_type_JavaUtilList = paramList;
+    return this;
+  }
+  
+  public wgz a(whe paramwhe)
+  {
+    this.jdField_a_of_type_Whe = paramwhe;
+    return this;
+  }
+  
+  public wgz a(@NonNull wif paramwif)
+  {
+    this.jdField_a_of_type_Wif = paramwif;
+    this.jdField_a_of_type_Wif.a(this.jdField_a_of_type_Wju.a());
+    this.jdField_a_of_type_Wif.jdField_a_of_type_Whd = this.jdField_a_of_type_Whd;
+    this.jdField_a_of_type_Wjt = new whc(this);
+    return this;
+  }
+  
+  public wgz a(wju paramwju)
+  {
+    this.jdField_a_of_type_Wju = paramwju;
+    return this;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public boolean a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (paramInt1 == 29782)
     {
-      int j;
-      long l1;
-      int k;
-      if (m < paramList.size())
+      Activity localActivity = this.jdField_a_of_type_Wju.a();
+      if ((paramInt2 == -1) && (localActivity != null)) {}
+      for (;;)
       {
-        if (l2 < 0L) {
-          j = i;
-        }
         try
         {
-          l1 = a(((wgh)paramList.get(m)).b);
-          k = i;
+          bflj.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), (Activity)localActivity, paramInt2, paramIntent);
+          if (this.jdField_a_of_type_Whe != null) {
+            this.jdField_a_of_type_Whe.a(1);
+          }
+          if (this.jdField_a_of_type_Whe != null) {
+            this.jdField_a_of_type_Whe.a();
+          }
         }
-        catch (ParseException localParseException)
+        catch (Exception paramIntent)
         {
-          localParseException.printStackTrace();
-          znw.a("we found the error time pic:" + paramList.get(m), new Object[0]);
-          k = j;
-          l1 = l2;
+          if (this.jdField_a_of_type_Whe == null) {
+            continue;
+          }
+          this.jdField_a_of_type_Whe.c(1);
+          if (this.jdField_a_of_type_Whe == null) {
+            continue;
+          }
+          this.jdField_a_of_type_Whe.a();
+          continue;
         }
-        j = i;
-        k = i;
-        l1 = l2;
-        if (((wgh)paramList.get(m)).b - l2 > 86400L)
-        {
-          k = i + 1;
-          j = k;
-          l1 = a(((wgh)paramList.get(m)).b);
+        return true;
+        if (this.jdField_a_of_type_Whe != null) {
+          this.jdField_a_of_type_Whe.d(1);
+        }
+        if (this.jdField_a_of_type_Whe != null) {
+          this.jdField_a_of_type_Whe.a();
         }
       }
-      else
-      {
-        yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.KMeansSplitStrategy", "caculatePictureDistribution=" + i);
-        return i;
-      }
-      m += 1;
-      i = k;
-      l2 = l1;
     }
+    return false;
   }
   
-  private long a(long paramLong)
+  public wgz b()
   {
-    return jdField_a_of_type_JavaTextSimpleDateFormat.parse(jdField_a_of_type_JavaTextSimpleDateFormat.format(Long.valueOf(paramLong * 1000L))).getTime() / 1000L;
-  }
-  
-  protected List<wgg> a(@NonNull List<wgh> paramList)
-  {
-    Object localObject1 = new whq();
-    paramList = new ArrayList(paramList);
-    wfv.b(paramList);
-    int i = a(paramList) / this.jdField_a_of_type_Int;
-    String[] arrayOfString = new String[1];
-    ((whq)localObject1).a(i + 1);
-    paramList = ((whq)localObject1).a(paramList, arrayOfString);
-    ArrayList localArrayList = new ArrayList();
-    i = 0;
-    while (i < paramList.size())
-    {
-      localObject1 = (List)paramList.get(i);
-      Collections.sort((List)localObject1, new wha(this));
-      localObject2 = new wgg(this.jdField_a_of_type_Wgg.jdField_a_of_type_Int, (List)localObject1);
-      ((wgg)localObject2).a(((wgh)((List)localObject1).get(0)).b, ((wgh)((List)localObject1).get(((List)localObject1).size() - 1)).b);
-      localArrayList.add(localObject2);
-      i += 1;
-    }
-    paramList = "k means split : k=" + localArrayList.size();
-    Collections.sort(localArrayList, new whb(this));
-    localObject1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    Object localObject2 = localArrayList.iterator();
-    Object localObject3;
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = (wgg)((Iterator)localObject2).next();
-      paramList = paramList + "[ s=" + ((SimpleDateFormat)localObject1).format(Long.valueOf(((wgg)localObject3).f() * 1000L)) + " e=" + ((SimpleDateFormat)localObject1).format(Long.valueOf(((wgg)localObject3).g() * 1000L)) + " c=" + ((wgg)localObject3).b() + "]";
-    }
-    yuk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.KMeansSplitStrategy", paramList);
-    localObject2 = "(k=" + localArrayList.size() + " " + paramList + ");";
-    paramList = (String)((wta)wth.a(10)).b("key_album_debug_k", "");
-    if (!TextUtils.isEmpty(paramList))
-    {
-      localObject3 = paramList.split(";");
-      paramList = "";
-      i = 0;
-      localObject1 = paramList;
-      if (i < localObject3.length)
-      {
-        paramList = localObject3[i] + paramList;
-        if (i != 8) {
-          break label500;
-        }
-        localObject1 = paramList;
+    xvv.a("StoryShare", "show(): %s", toString());
+    if (this.jdField_a_of_type_Wif == null) {
+      if (this.jdField_a_of_type_Whe != null) {
+        this.jdField_a_of_type_Whe.c(0);
       }
     }
-    for (paramList = (String)localObject2 + (String)localObject1;; paramList = (List<wgh>)localObject2)
+    do
     {
-      this.jdField_a_of_type_Wgu.a = paramList;
-      this.jdField_a_of_type_Wgu.b = arrayOfString[0];
-      return localArrayList;
-      label500:
-      i += 1;
-      break;
-    }
+      return this;
+      this.jdField_a_of_type_Wju.a(this.jdField_a_of_type_Wjt);
+      if (this.jdField_a_of_type_Whe != null) {
+        this.jdField_a_of_type_Whe.b();
+      }
+      this.jdField_a_of_type_Wju.d();
+    } while (this.jdField_a_of_type_Whe == null);
+    this.jdField_a_of_type_Whe.c();
+    return this;
   }
   
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public void b() {}
   
-  public void a(wgu paramwgu)
-  {
-    this.jdField_a_of_type_Wgu = paramwgu;
-  }
+  public void c() {}
 }
 
 

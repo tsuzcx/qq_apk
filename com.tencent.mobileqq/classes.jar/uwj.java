@@ -1,18 +1,20 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
+import NS_KING_INTERFACE.stGetFeedCommentListV2Req;
+import UserGrowth.stQQGetFeedCommentListV2Req;
+import UserGrowth.stQQGetFeedCommentListV2Rsp;
 
-class uwj
-  extends View.AccessibilityDelegate
+public class uwj
+  extends urg<stQQGetFeedCommentListV2Rsp>
 {
-  uwj(uwh paramuwh) {}
-  
-  @TargetApi(14)
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public uwj()
   {
-    if (paramInt != 32) {
-      super.sendAccessibilityEvent(paramView, paramInt);
-    }
+    super("QQGetFeedCommentListV2");
+    this.a = new stGetFeedCommentListV2Req("", "76C9BjPDT1HaN4nHs", "", 0, "", 0);
+  }
+  
+  public uwj(String paramString1, String paramString2, int paramInt)
+  {
+    super("QQGetFeedCommentListV2", 10003);
+    this.a = new stQQGetFeedCommentListV2Req(new stGetFeedCommentListV2Req(paramString1, paramString2, "", 0, "", paramInt));
   }
 }
 

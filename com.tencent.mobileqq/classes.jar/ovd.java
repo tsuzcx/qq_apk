@@ -1,8 +1,15 @@
-public abstract class ovd
+class ovd
+  extends owd
 {
-  private ovd(otv paramotv) {}
+  ovd(ouu paramouu)
+  {
+    super(paramouu, null);
+  }
   
-  public abstract void a(ovg paramovg);
+  void a(owg paramowg)
+  {
+    paramowg.onCommentStateError(1001);
+  }
 }
 
 

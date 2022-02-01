@@ -1,18 +1,33 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import kotlin.Metadata;
 
-public class rcb
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterOutsideLink;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rcb
+  extends rby
 {
-  public rcb(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
-  
-  public void onClick(View paramView)
+  protected void a()
   {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    Object localObject = a();
+    if (localObject != null) {
+      ((SocializeFeedsInfo)localObject).a = 19191924;
+    }
+    localObject = a();
+    if (localObject != null) {
+      ((rfe)localObject).a = true;
+    }
+    BaseArticleInfo localBaseArticleInfo = a();
+    localObject = a();
+    if (localObject != null)
+    {
+      localObject = ((rex)localObject).a;
+      if (localObject == null) {}
+    }
+    for (localObject = ((rfd)localObject).a;; localObject = null)
+    {
+      localBaseArticleInfo.mTitle = ((String)localObject);
+      return;
+    }
   }
 }
 

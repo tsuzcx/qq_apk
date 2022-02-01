@@ -1,65 +1,82 @@
-import SWEET_NEW_BASE.sweet_rsp_comm;
-import SWEET_NEW_PAIR.sweet_pair_check_rsp;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import cooperation.qzone.QzoneExternalRequest;
-
-public class bnvp
-  extends bnvr
+public final class bnvp
+  implements akxd
 {
-  public QQAppInterface a()
+  private boolean a(char paramChar)
   {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    return null;
+    Character.UnicodeBlock localUnicodeBlock = Character.UnicodeBlock.of(paramChar);
+    return (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS) || (localUnicodeBlock == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A) || (localUnicodeBlock == Character.UnicodeBlock.GENERAL_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION) || (localUnicodeBlock == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS);
   }
   
-  public QzoneExternalRequest a(Intent paramIntent)
+  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    return new bnvq(this, paramIntent);
-  }
-  
-  public void a(long paramLong)
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("currentUin", paramLong);
-    a(localIntent);
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    boolean bool = false;
-    paramIntent = a();
-    if (paramIntent != null)
+    int i;
+    if (paramInt1 <= paramInt2)
     {
-      paramIntent = (aobj)paramIntent.a(172);
-      if (paramIntent != null) {
-        if (paramFromServiceMsg == null) {
-          break label90;
+      i = paramInt1;
+      if (paramInt1 > paramInt2) {
+        break label75;
+      }
+    }
+    int j;
+    for (;;)
+    {
+      j = 0;
+      paramInt1 = i;
+      while ((paramInt1 < paramInt2) && (paramInt1 < paramCharSequence.length()))
+      {
+        int k = j;
+        if (a(paramCharSequence.charAt(paramInt1))) {
+          k = j + 1;
+        }
+        paramInt1 += 1;
+        j = k;
+      }
+      i = paramInt2;
+      break;
+      label75:
+      paramInt2 = paramInt1;
+    }
+    return j + (paramInt2 - i);
+  }
+  
+  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    int m = 0;
+    int i;
+    if (paramInt1 <= paramInt2)
+    {
+      i = paramInt1;
+      if (paramInt1 > paramInt2) {
+        break label83;
+      }
+      label16:
+      paramInt1 = i;
+    }
+    int k;
+    for (int j = 0;; j = k)
+    {
+      k = m;
+      if (paramInt1 < paramCharSequence.length())
+      {
+        k = j;
+        if (a(paramCharSequence.charAt(paramInt1))) {
+          k = j + 1;
+        }
+        if (paramInt1 + k >= paramInt2) {
+          k = paramInt1 - i;
         }
       }
-    }
-    label90:
-    for (int i = paramFromServiceMsg.getResultCode(); i == 1000; i = -1)
-    {
-      paramFromServiceMsg = (sweet_pair_check_rsp)bnke.a(paramFromServiceMsg.getWupBuffer(), "getPairState");
-      if (paramFromServiceMsg == null) {
+      else
+      {
+        return k;
+        i = paramInt2;
         break;
+        label83:
+        paramInt2 = paramInt1;
+        break label16;
       }
-      sweet_rsp_comm localsweet_rsp_comm = paramFromServiceMsg.rsp_comm;
-      if (localsweet_rsp_comm == null) {
-        break;
-      }
-      if (localsweet_rsp_comm.retcode == 0) {
-        bool = true;
-      }
-      paramIntent.a(bool, paramFromServiceMsg);
-      return;
+      paramInt1 += 1;
     }
-    paramIntent.a(false, null);
   }
 }
 

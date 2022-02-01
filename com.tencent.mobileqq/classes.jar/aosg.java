@@ -1,25 +1,8 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
 
-public class aosg
-  extends aosf
+public abstract interface aosg
 {
-  public aosg(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
-  {
-    super(paramQQAppInterface, paramQQMessageFacade);
-    this.jdField_a_of_type_JavaLangString = antf.z;
-    this.jdField_a_of_type_Int = 6000;
-  }
-  
-  protected apas a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(0);
-  }
-  
-  protected void a()
-  {
-    ((anvu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(false);
-  }
+  public abstract void a(Bundle paramBundle, aosi paramaosi);
 }
 
 

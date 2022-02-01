@@ -1,83 +1,73 @@
-import android.text.TextUtils;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.Display;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.app.SignatureManager;
-import com.tencent.sharpP.SharpPUtil;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
-import mqq.app.AppRuntime;
-import org.apache.http.Header;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.NoScrollGridView;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bexo
-  extends beqz
+  extends bexn
 {
-  private static String a(int paramInt, String paramString)
+  protected List<beyd> a;
+  protected int b = (((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay().getWidth() - AIOUtils.dp2px(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) - AIOUtils.dp2px(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) - AIOUtils.dp2px(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) * 3) / 4;
+  protected boolean c = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
+  
+  public bexo(Context paramContext, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Bundle paramBundle)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("https://gxh.vip.qq.com/xydata/");
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
+    super(paramContext, paramQQAppInterface, paramFragmentActivity, null, paramBundle);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public int a()
   {
-    paramURLDrawableHandler = paramDownloadParams.url.getFile();
-    paramOutputStream = paramURLDrawableHandler;
-    if (paramURLDrawableHandler.startsWith(File.separator)) {
-      paramOutputStream = paramURLDrawableHandler.substring(1);
-    }
-    String str = paramDownloadParams.url.getHost();
-    Object localObject = paramDownloadParams.getHeader("my_uin");
-    paramURLDrawableHandler = null;
-    if (localObject != null) {
-      paramURLDrawableHandler = ((Header)localObject).getValue();
-    }
-    paramURLDrawableHandler = BaseApplicationImpl.sApplication.getAppRuntime(paramURLDrawableHandler);
-    localObject = new File(bhzb.a(paramOutputStream, str));
-    if (((File)localObject).exists()) {
-      return localObject;
-    }
-    if (paramDownloadParams.useSharpPImage)
-    {
-      localObject = new File(blem.a((File)localObject));
-      if (((File)localObject).exists()) {
-        return localObject;
-      }
-    }
-    return a(paramURLDrawableHandler, paramOutputStream, str, paramDownloadParams.useSharpPImage);
+    return 1;
   }
   
-  public File a(AppRuntime paramAppRuntime, String paramString1, String paramString2, boolean paramBoolean)
+  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    String str = a(Integer.parseInt(paramString1), paramString2);
-    paramString2 = new File(bhzb.a(paramString1, paramString2));
-    bihu localbihu = new bihu(str, paramString2);
-    localbihu.k = paramBoolean;
-    if (paramAppRuntime != null)
+    if (paramView == null)
     {
-      if (bihw.a(localbihu, paramAppRuntime) != 0) {
-        break label102;
-      }
-      if ((!paramString2.exists()) || (SignatureManager.a(paramString2.getAbsolutePath()))) {
-        break label88;
-      }
-      paramString2.delete();
+      paramViewGroup = new bexr();
+      paramView = new NoScrollGridView(this.jdField_a_of_type_AndroidContentContext);
+      paramView.setNumColumns(4);
+      paramView.setVerticalSpacing(AIOUtils.dp2px(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      paramView.setHorizontalSpacing(AIOUtils.dp2px(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      paramView.setPadding(AIOUtils.dp2px(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      paramView.setColumnWidth(this.b);
+      paramView.setSelector(new ColorDrawable(0));
+      paramView.setVerticalScrollBarEnabled(false);
+      paramView.setStretchMode(0);
+      paramViewGroup.a = new bexp(this, this.b);
+      paramViewGroup.a.a(this.jdField_a_of_type_JavaUtilList);
+      paramView.setAdapter(paramViewGroup.a);
+      paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      return new File(antf.ba);
-      label88:
-      if (SharpPUtil.isSharpPFile(paramString2)) {
-        return blem.a(paramString2);
-      }
-      return paramString2;
-      label102:
-      biaa.a(null, "individual_v2_signature_download_fail", "" + localbihu.a, "error code = " + localbihu.a + " errorMsg = " + localbihu.b + "url = " + str, null, 0.0F);
-      bhzz.a("individual_v2_signature_download_fail", "tlpId:" + paramString1 + " errCode:" + localbihu.a + " errMsg:" + localbihu.b);
+      paramView.setClickable(false);
+      return paramView;
+      ((bexr)paramView.getTag()).a.a(this.jdField_a_of_type_JavaUtilList);
+    }
+  }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a_(Object paramObject)
+  {
+    if ((paramObject instanceof ArrayList)) {
+      this.jdField_a_of_type_JavaUtilList = ((List)paramObject);
     }
   }
 }

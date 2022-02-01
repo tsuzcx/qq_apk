@@ -1,186 +1,137 @@
-import com.qq.jce.wup.UniAttribute;
-import com.qq.taf.RequestPacket;
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceUtil;
-import java.nio.ByteBuffer;
-import java.util.HashMap;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stWaterFallCardStyle;
+import android.content.Context;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendAdapter.1;
+import com.tencent.biz.pubaccount.weishi_new.download.RockDownloadListenerWrapper;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
+import java.util.List;
 
 public class ukg
-  extends UniAttribute
+  extends bjwv<stSimpleMetaFeed, bjwy<stSimpleMetaFeed>>
 {
-  static HashMap<String, byte[]> a;
-  static HashMap<String, HashMap<String, byte[]>> b;
-  protected RequestPacket a;
+  public static int b;
+  public int a;
+  public RockDownloadListenerWrapper a;
+  private WSRedDotPushMsg jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg;
+  public RecyclerViewWithHeaderFooter a;
+  private ukh jdField_a_of_type_Ukh;
+  public unp a;
+  public int c;
+  public final int d;
+  public final int e;
+  public final int f;
+  public final int g;
   
-  public ukg()
+  public ukg(Context paramContext, RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter)
   {
-    this.jdField_a_of_type_ComQqTafRequestPacket = new RequestPacket();
-    this.jdField_a_of_type_ComQqTafRequestPacket.iVersion = 2;
+    super(paramContext);
+    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter = paramRecyclerViewWithHeaderFooter;
+    this.d = ScreenUtil.getRealWidth(paramContext);
+    this.e = ScreenUtil.dip2px(5.0F);
+    this.f = ScreenUtil.dip2px(18.0F);
+    this.g = ScreenUtil.dip2px(14.0F);
   }
   
-  private void a()
+  public int a(int paramInt)
   {
-    JceInputStream localJceInputStream = new JceInputStream(this.jdField_a_of_type_ComQqTafRequestPacket.sBuffer);
-    localJceInputStream.setServerEncoding(this.encodeName);
-    if (jdField_a_of_type_JavaUtilHashMap == null)
+    Object localObject = a();
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      jdField_a_of_type_JavaUtilHashMap.put("", new byte[0]);
-    }
-    this._newData = localJceInputStream.readMap(jdField_a_of_type_JavaUtilHashMap, 0, false);
-  }
-  
-  private void b()
-  {
-    JceInputStream localJceInputStream = new JceInputStream(this.jdField_a_of_type_ComQqTafRequestPacket.sBuffer);
-    localJceInputStream.setServerEncoding(this.encodeName);
-    if (b == null)
-    {
-      b = new HashMap();
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("", new byte[0]);
-      b.put("", localHashMap);
-    }
-    this._data = localJceInputStream.readMap(b, 0, false);
-    this.cachedClassName = new HashMap();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_ComQqTafRequestPacket.iTimeout = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_ComQqTafRequestPacket.sServantName = paramString;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_ComQqTafRequestPacket.iRequestId = paramInt;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName = paramString;
-  }
-  
-  public void decode(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte.length < 4) {
-      throw new IllegalArgumentException("decode package must include size head");
-    }
-    try
-    {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
-      paramArrayOfByte.setServerEncoding(this.encodeName);
-      this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
-      if (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion == 3)
+      localObject = (stSimpleMetaFeed)((List)localObject).get(paramInt);
+      if ((localObject != null) && (((stSimpleMetaFeed)localObject).waterFallCardStyle != null))
       {
-        a();
-        return;
+        paramInt = ((stSimpleMetaFeed)localObject).waterFallCardStyle.cardType;
+        if (upl.a(paramInt)) {
+          return paramInt;
+        }
+        return 1;
       }
-      this._newData = null;
-      b();
-      return;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      throw new RuntimeException(paramArrayOfByte);
-    }
+    return 1;
   }
   
-  public void decodeVersion2(byte[] paramArrayOfByte)
+  public bjwy<stSimpleMetaFeed> a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (paramArrayOfByte.length < 4) {
-      throw new IllegalArgumentException("decode package must include size head");
-    }
-    try
-    {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
-      paramArrayOfByte.setServerEncoding(this.encodeName);
-      this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
-      b();
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      throw new RuntimeException(paramArrayOfByte);
-    }
+    return upl.a(paramInt, paramViewGroup, this);
   }
   
-  public void decodeVersion3(byte[] paramArrayOfByte)
+  public RockDownloadListenerWrapper a()
   {
-    if (paramArrayOfByte.length < 4) {
-      throw new IllegalArgumentException("decode package must include size head");
+    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadRockDownloadListenerWrapper == null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadRockDownloadListenerWrapper = new WSRecommendAdapter.1(this);
     }
-    try
-    {
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
-      paramArrayOfByte.setServerEncoding(this.encodeName);
-      this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
-      a();
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      throw new RuntimeException(paramArrayOfByte);
-    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadRockDownloadListenerWrapper;
   }
   
-  public byte[] encode()
+  public unp a()
   {
-    if (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion == 2)
-    {
-      if ((this.jdField_a_of_type_ComQqTafRequestPacket.sServantName == null) || (this.jdField_a_of_type_ComQqTafRequestPacket.sServantName.equals(""))) {
-        throw new IllegalArgumentException("servantName can not is null");
-      }
-      if ((this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName == null) || (this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName.equals(""))) {
-        throw new IllegalArgumentException("funcName can not is null");
-      }
+    if (this.jdField_a_of_type_Unp == null) {
+      this.jdField_a_of_type_Unp = unq.a(100, 2);
     }
-    else
-    {
-      if (this.jdField_a_of_type_ComQqTafRequestPacket.sServantName == null) {
-        this.jdField_a_of_type_ComQqTafRequestPacket.sServantName = "";
-      }
-      if (this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName == null) {
-        this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName = "";
-      }
+    return this.jdField_a_of_type_Unp;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    int i = paramInt1 + this.c;
+    if ((i < 0) || (i >= a().size())) {
+      uya.c("weishi-ding", "点赞position越界:" + i);
     }
-    Object localObject = new JceOutputStream(0);
-    ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
-    if ((this.jdField_a_of_type_ComQqTafRequestPacket.iVersion != 2) && (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion != 1)) {
-      ((JceOutputStream)localObject).write(this._newData, 0);
+    stSimpleMetaFeed localstSimpleMetaFeed;
+    do
+    {
+      return;
+      localstSimpleMetaFeed = (stSimpleMetaFeed)a(i);
+    } while (localstSimpleMetaFeed == null);
+    paramInt1 = localstSimpleMetaFeed.ding_count;
+    if (paramInt2 == 1) {
+      paramInt1 += 1;
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComQqTafRequestPacket.sBuffer = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
-      localObject = new JceOutputStream(0);
-      ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
-      this.jdField_a_of_type_ComQqTafRequestPacket.writeTo((JceOutputStream)localObject);
-      localObject = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
-      int i = localObject.length;
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(i + 4);
-      localByteBuffer.putInt(i + 4).put((byte[])localObject).flip();
-      return localByteBuffer.array();
-      ((JceOutputStream)localObject).write(this._data, 0);
+      localstSimpleMetaFeed.ding_count = paramInt1;
+      localstSimpleMetaFeed.is_ding = paramInt2;
+      notifyItemChanged(i);
+      uya.b("weishi-ding", "第" + i + "个条目的点赞改变了~~~");
+      return;
+      paramInt1 -= 1;
     }
   }
   
-  public <T> void put(String paramString, T paramT)
+  public void a(bjwy<stSimpleMetaFeed> parambjwy)
   {
-    if (paramString.startsWith(".")) {
-      throw new IllegalArgumentException("put name can not startwith . , now is " + paramString);
+    if (this.jdField_a_of_type_Ukh != null) {
+      this.jdField_a_of_type_Ukh.a(parambjwy);
     }
-    super.put(paramString, paramT);
   }
   
-  public void useVersion3()
+  public void a(bjwy<stSimpleMetaFeed> parambjwy, int paramInt)
   {
-    super.useVersion3();
-    this.jdField_a_of_type_ComQqTafRequestPacket.iVersion = 3;
+    stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)a(paramInt);
+    if (localstSimpleMetaFeed != null) {
+      parambjwy.a(localstSimpleMetaFeed);
+    }
+  }
+  
+  public void a(WSRedDotPushMsg paramWSRedDotPushMsg)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSRedDotPushMsg = paramWSRedDotPushMsg;
+  }
+  
+  public void a(List<stSimpleMetaFeed> paramList)
+  {
+    List localList = a();
+    if ((localList != null) && (localList.addAll(paramList))) {
+      notifyItemRangeChanged(localList.size() - paramList.size(), paramList.size());
+    }
+  }
+  
+  public void a(ukh paramukh)
+  {
+    this.jdField_a_of_type_Ukh = paramukh;
   }
 }
 

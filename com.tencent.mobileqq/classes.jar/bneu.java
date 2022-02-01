@@ -1,14 +1,17 @@
-import cooperation.qzone.plugin.PluginRecord;
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
 
 class bneu
-  implements bney
+  implements bhhk
 {
   bneu(bnet parambnet) {}
   
-  public boolean a(PluginRecord paramPluginRecord, File paramFile)
+  public void onProgressChanged(bhhi parambhhi, int paramInt1, int paramInt2) {}
+  
+  public void onProgressCompleted(bhhi parambhhi)
   {
-    return bnet.a(this.a, paramPluginRecord);
+    if (QLog.isColorLevel()) {
+      QLog.i("EditVideoStoryButton", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambhhi);
+    }
   }
 }
 

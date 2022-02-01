@@ -1,25 +1,24 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.profile.lifeachivement.LifeAchivementPanelView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter.2.1;
+import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter.2.2;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
 public class azzs
-  extends RecyclerView.OnScrollListener
+  implements bbpy
 {
-  public azzs(LifeAchivementPanelView paramLifeAchivementPanelView) {}
+  azzs(azzq paramazzq) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0) {
-      if (!LifeAchivementPanelView.a(this.a)) {
-        break label47;
-      }
+    if (this.a.a != null) {
+      this.a.a.runOnUiThread(new PtvTemplateAdapter.2.2(this, paramPtvTemplateInfo, paramInt));
     }
-    label47:
-    for (paramInt = 1;; paramInt = 2)
-    {
-      bdll.b(null, "", "", "", "0X800AE55", "0X800AE55", paramInt, 0, "", "", "", "");
-      return;
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  {
+    if (this.a.a != null) {
+      this.a.a.runOnUiThread(new PtvTemplateAdapter.2.1(this, paramPtvTemplateInfo, paramBoolean));
     }
   }
 }

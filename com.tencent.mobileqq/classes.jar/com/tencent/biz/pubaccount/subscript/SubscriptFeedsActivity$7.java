@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.subscript;
 
-import aody;
+import amxz;
 import com.tencent.mobileqq.app.QQAppInterface;
-import twk;
+import uda;
 
 class SubscriptFeedsActivity$7
   implements Runnable
@@ -11,13 +11,13 @@ class SubscriptFeedsActivity$7
   
   public void run()
   {
-    ((aody)this.this$0.app.getManager(56)).a();
-    twk.a().c(this.this$0.app);
+    ((amxz)this.this$0.app.getManager(56)).a();
+    uda.a().c(this.this$0.app);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.7
  * JD-Core Version:    0.7.0.1
  */

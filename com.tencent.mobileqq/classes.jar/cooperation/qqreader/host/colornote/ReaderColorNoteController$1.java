@@ -1,9 +1,9 @@
 package cooperation.qqreader.host.colornote;
 
-import aqvd;
+import apom;
 
 class ReaderColorNoteController$1
-  implements aqvd
+  implements apom
 {
   ReaderColorNoteController$1(ReaderColorNoteController paramReaderColorNoteController, OnColorNoteAnimFinishCallback paramOnColorNoteAnimFinishCallback) {}
   

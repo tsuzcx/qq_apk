@@ -1,18 +1,8 @@
-import android.opengl.GLES20;
-
-public class lrv
-  extends lru
+public abstract interface lrv
 {
-  public lrv(String paramString)
-  {
-    super(paramString);
-  }
+  public abstract void a(int paramInt);
   
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(paramInt, this.jdField_a_of_type_JavaLangString);
-    lsv.a();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

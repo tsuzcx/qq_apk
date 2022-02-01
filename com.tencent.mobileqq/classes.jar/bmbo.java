@@ -1,24 +1,6 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-
-public class bmbo
-  implements bmcz
+class bmbo
 {
-  private WeakReference<Handler> a;
-  
-  public bmbo(Handler paramHandler)
-  {
-    this.a = new WeakReference(paramHandler);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    Handler localHandler = (Handler)this.a.get();
-    if (localHandler != null) {
-      localHandler.obtainMessage(1001, paramInt, 0, paramString).sendToTarget();
-    }
-  }
+  private static final bmbk a = new bmbk(null);
 }
 
 

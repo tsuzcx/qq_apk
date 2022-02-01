@@ -1,17 +1,17 @@
 package com.tencent.imcore.message;
 
-import aczw;
-import bkio;
+import abwi;
+import bint;
 import com.tencent.mobileqq.data.MessageRecord;
 
 public class C2CMessageProcessor$4
   implements Runnable
 {
-  public C2CMessageProcessor$4(aczw paramaczw, MessageRecord paramMessageRecord) {}
+  public C2CMessageProcessor$4(abwi paramabwi, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    bkio.a(this.this$0.a, this.a.istroop, this.a.frienduin, String.valueOf(this.a.mQidianMasterUin), String.valueOf(this.a.mQidianTaskId), this.a.mQidianTipText, this.a.time);
+    bint.a(this.this$0.a, this.a.istroop, this.a.frienduin, String.valueOf(this.a.mQidianMasterUin), String.valueOf(this.a.mQidianTaskId), this.a.mQidianTipText, this.a.time);
   }
 }
 

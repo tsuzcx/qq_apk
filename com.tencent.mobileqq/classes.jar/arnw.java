@@ -1,70 +1,71 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.LoadingLayoutBase;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class arnw
-  extends armf<arnv>
+  implements arnv
 {
-  public static arnv a = new arnv();
+  private final HashSet<LoadingLayoutBase> a = new HashSet();
   
-  public static arnv c()
+  public void a(LoadingLayoutBase paramLoadingLayoutBase)
   {
-    arnv localarnv2 = (arnv)aran.a().a(423);
-    arnv localarnv1 = localarnv2;
-    if (localarnv2 == null) {
-      localarnv1 = new arnv();
-    }
-    return localarnv1;
-  }
-  
-  @NonNull
-  public arnv a()
-  {
-    return a;
-  }
-  
-  @NonNull
-  public arnv a(araj[] paramArrayOfaraj)
-  {
-    boolean bool = true;
-    localarnv = new arnv();
-    paramArrayOfaraj = paramArrayOfaraj[0].a;
-    try
-    {
-      if (new JSONObject(paramArrayOfaraj).optInt("show_red_name_card", 0) == 1) {}
-      for (;;)
-      {
-        localarnv.a = bool;
-        return localarnv;
-        bool = false;
-      }
-      return localarnv;
-    }
-    catch (JSONException paramArrayOfaraj)
-    {
-      yuk.e("QVipRedNameCardProcessor", "QVipRedNameCardConfig onParsed exception :" + paramArrayOfaraj.getMessage());
+    if (paramLoadingLayoutBase != null) {
+      this.a.add(paramLoadingLayoutBase);
     }
   }
   
-  @NonNull
-  public arnv b()
+  public void setLastUpdatedLabel(CharSequence paramCharSequence)
   {
-    return a;
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setLastUpdatedLabel(paramCharSequence);
+    }
   }
   
-  public Class<arnv> clazz()
+  public void setLoadingDrawable(Drawable paramDrawable)
   {
-    return arnv.class;
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setLoadingDrawable(paramDrawable);
+    }
   }
   
-  public int type()
+  public void setPullLabel(CharSequence paramCharSequence)
   {
-    return 423;
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setPullLabel(paramCharSequence);
+    }
+  }
+  
+  public void setRefreshResultLabel(CharSequence paramCharSequence)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setRefreshResultLabel(paramCharSequence);
+    }
+  }
+  
+  public void setRefreshingLabel(CharSequence paramCharSequence)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setRefreshingLabel(paramCharSequence);
+    }
+  }
+  
+  public void setReleaseLabel(CharSequence paramCharSequence)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((LoadingLayoutBase)localIterator.next()).setReleaseLabel(paramCharSequence);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arnw
  * JD-Core Version:    0.7.0.1
  */

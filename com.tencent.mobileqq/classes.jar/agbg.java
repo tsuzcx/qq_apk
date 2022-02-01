@@ -1,16 +1,30 @@
+import android.app.Activity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class agbg
-  implements View.OnClickListener
+  extends ClickableSpan
 {
-  agbg(agbd paramagbd, agba paramagba) {}
+  agbg(agap paramagap) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Agbd.a.a(this.jdField_a_of_type_Agba);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      paramView = bjnw.a(this.a.jdField_a_of_type_AndroidContentContext);
+      paramView.b(2131719041);
+      paramView.c(2131690620);
+      paramView.a(new agbh(this));
+      paramView.a(new agbi(this, paramView));
+      paramView.show();
+      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005975", "0X8005975", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 

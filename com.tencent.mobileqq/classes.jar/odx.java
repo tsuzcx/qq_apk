@@ -1,36 +1,29 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.qphone.base.util.QLog;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 
-class odx
-  implements URLDrawableDownListener
+public class odx
+  extends odw
 {
-  odx(odw paramodw) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  protected byte[] a(FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PubAccountTipsManager", 2, "img Load Failed.");
+    paramFromServiceMsg = super.a(paramFromServiceMsg);
+    if (paramFromServiceMsg != null)
+    {
+      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+      try
+      {
+        localStQWebRsp.mergeFrom(paramFromServiceMsg);
+        paramFromServiceMsg = localStQWebRsp.busiBuff.get().toByteArray();
+        return paramFromServiceMsg;
+      }
+      catch (Throwable paramFromServiceMsg)
+      {
+        paramFromServiceMsg.printStackTrace();
+      }
     }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("PubAccountTipsManager", 2, "img Load Interrupted.");
-    }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (odw.a(this.a) != null) {
-      odw.a(this.a).setVisibility(0);
-    }
+    return null;
   }
 }
 

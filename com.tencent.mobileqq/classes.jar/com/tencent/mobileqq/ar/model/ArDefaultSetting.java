@@ -3,12 +3,12 @@ package com.tencent.mobileqq.ar.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apru;
+import aolh;
 
 public class ArDefaultSetting
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArDefaultSetting> CREATOR = new apru();
+  public static final Parcelable.Creator<ArDefaultSetting> CREATOR = new aolh();
   public int a;
   public String a;
   public int b;

@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import blqj;
+import bjuk;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.widget.ThemeImageView;
@@ -21,12 +21,12 @@ class GameCloseManager$MiniAppViewItem
   public GameCloseManager$MiniAppViewItem(Context paramContext)
   {
     this.context = paramContext;
-    this.root = LayoutInflater.from(paramContext).inflate(2131559428, null, false);
-    this.imageView = ((ImageView)this.root.findViewById(2131371286));
+    this.root = LayoutInflater.from(paramContext).inflate(2131559430, null, false);
+    this.imageView = ((ImageView)this.root.findViewById(2131371255));
     if ((this.imageView instanceof ThemeImageView)) {
-      ((ThemeImageView)this.imageView).setMaskShape(blqj.c);
+      ((ThemeImageView)this.imageView).setMaskShape(bjuk.c);
     }
-    this.textView = ((TextView)this.root.findViewById(2131371287));
+    this.textView = ((TextView)this.root.findViewById(2131371256));
   }
   
   public void setData(MiniAppInfo paramMiniAppInfo, View.OnClickListener paramOnClickListener)

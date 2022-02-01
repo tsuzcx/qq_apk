@@ -1,11 +1,32 @@
-public abstract interface awzg
-  extends awyn
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+
+class awzg
+  implements atgv
 {
-  public abstract boolean a();
+  awzg(awyf paramawyf, String paramString) {}
   
-  public abstract void setIsFullScreen(boolean paramBoolean);
+  public void a(int paramInt, Bundle paramBundle) {}
   
-  public abstract void setSurfaceCreatelistener(awzj paramawzj);
+  public void a(int paramInt, String paramString, Bundle paramBundle) {}
+  
+  public void a(String paramString, long paramLong, Bundle paramBundle)
+  {
+    QLog.i("NearbyProfileDisplayPanel", 1, "onDownloadSucess() called with: filePath = [" + paramString + "], fileSize = [" + paramLong + "], extData = [" + paramBundle + "]");
+    paramBundle = BaseApplicationImpl.getContext().getSharedPreferences(this.jdField_a_of_type_JavaLangString, 4);
+    paramBundle.edit().putInt("state", 1);
+    paramBundle.edit().putString("filePath", paramString);
+  }
+  
+  public void b(int paramInt, Bundle paramBundle) {}
+  
+  public void c(int paramInt, Bundle paramBundle) {}
+  
+  public void d(int paramInt, Bundle paramBundle) {}
 }
 
 

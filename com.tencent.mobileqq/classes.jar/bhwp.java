@@ -1,63 +1,60 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bhwp
 {
-  public String a;
-  public JSONObject a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  protected static volatile bhwp a;
+  protected List<bhwq> a;
+  protected boolean a;
   
-  public bhwp(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public bhwp()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
-    this.b = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public JSONObject a(Context paramContext)
+  public static bhwp a()
   {
-    Object localObject = null;
-    for (;;)
+    if (jdField_a_of_type_Bhwp == null) {
+      jdField_a_of_type_Bhwp = new bhwp();
+    }
+    return jdField_a_of_type_Bhwp;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    try
     {
-      try
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      b(paramBoolean);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      bhwq[] arrayOfbhwq = new bhwq[this.jdField_a_of_type_JavaUtilList.size()];
+      this.jdField_a_of_type_JavaUtilList.toArray(arrayOfbhwq);
+      if (arrayOfbhwq != null)
       {
-        if (this.jdField_a_of_type_OrgJsonJSONObject != null)
+        int j = arrayOfbhwq.length;
+        int i = 0;
+        if (i < j)
         {
-          paramContext = this.jdField_a_of_type_OrgJsonJSONObject;
-          return paramContext;
-        }
-        if ((paramContext == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-        {
-          QLog.e("TaskInfo", 1, "readLocalJsonFile, context or json_name null, context=" + paramContext + ", json_name=" + this.jdField_a_of_type_JavaLangString);
-          paramContext = localObject;
-          continue;
-        }
-        paramContext = new File(paramContext.getFilesDir(), this.jdField_a_of_type_JavaLangString);
-      }
-      finally {}
-      if (paramContext.exists()) {
-        paramContext = bhmi.a(paramContext);
-      }
-      try
-      {
-        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramContext);
-        paramContext = this.jdField_a_of_type_OrgJsonJSONObject;
-      }
-      catch (Exception paramContext)
-      {
-        for (;;)
-        {
-          this.jdField_a_of_type_OrgJsonJSONObject = null;
-          QLog.e("TaskInfo", 1, "readLocalJsonFile, exception=" + MsfSdkUtils.getStackTraceString(paramContext));
+          arrayOfbhwq[i].a(paramBoolean);
+          i += 1;
         }
       }
     }

@@ -1,27 +1,24 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import java.io.File;
-import java.util.Comparator;
+import android.os.Bundle;
 
-public class aomb
-  implements Comparator<File>
+public final class aomb
 {
-  public aomb(CleanCache paramCleanCache) {}
-  
-  public int a(File paramFile1, File paramFile2)
+  public static Bundle a(Bundle paramBundle)
   {
-    long l = paramFile1.lastModified() - paramFile2.lastModified();
-    if (l > 0L) {
-      return -1;
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
     }
-    if (l < 0L) {
-      return 1;
-    }
-    return 0;
+    paramBundle = new aomg(localBundle);
+    paramBundle.a(10L);
+    paramBundle.b(true);
+    paramBundle.a(true);
+    paramBundle.b(4096L);
+    return paramBundle.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aomb
  * JD-Core Version:    0.7.0.1
  */

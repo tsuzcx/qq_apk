@@ -12,11 +12,11 @@ import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewParent;
-import bguj;
+import bfdx;
 import com.tencent.mobileqq.R.styleable;
-import taq;
-import tar;
-import tas;
+import teq;
+import ter;
+import tes;
 
 public class RollViewPager
   extends ViewPager
@@ -25,9 +25,9 @@ public class RollViewPager
   protected float a;
   protected int a;
   private ViewPager.PageTransformer jdField_a_of_type_AndroidSupportV4ViewViewPager$PageTransformer;
-  protected taq a;
-  private tar jdField_a_of_type_Tar;
-  private tas jdField_a_of_type_Tas;
+  protected teq a;
+  private ter jdField_a_of_type_Ter;
+  private tes jdField_a_of_type_Tes;
   protected float b;
   private int b;
   protected float c;
@@ -84,14 +84,14 @@ public class RollViewPager
       return bool2;
     case 0: 
     case 261: 
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Taq.a();
+      this.jdField_b_of_type_Int = this.jdField_a_of_type_Teq.a();
       requestDisallowInterceptTouchEvent(true);
       this.c = f1;
       this.jdField_a_of_type_Float = f1;
       this.d = f2;
       this.jdField_b_of_type_Float = f2;
-      if (this.jdField_a_of_type_Tar != null) {
-        this.jdField_a_of_type_Tar.a(0);
+      if (this.jdField_a_of_type_Ter != null) {
+        this.jdField_a_of_type_Ter.a(0);
       }
       return super.dispatchTouchEvent(paramMotionEvent);
     case 2: 
@@ -132,13 +132,13 @@ public class RollViewPager
     for (;;)
     {
       bool2 = bool1;
-      if (this.jdField_a_of_type_Tar == null) {
+      if (this.jdField_a_of_type_Ter == null) {
         break;
       }
-      this.jdField_a_of_type_Tar.a(1);
+      this.jdField_a_of_type_Ter.a(1);
       return bool1;
-      if (this.jdField_a_of_type_Tas != null) {
-        this.jdField_a_of_type_Tas.c();
+      if (this.jdField_a_of_type_Tes != null) {
+        this.jdField_a_of_type_Tes.c();
       }
       bool1 = bool2;
     }
@@ -153,7 +153,7 @@ public class RollViewPager
     }
     catch (IllegalArgumentException paramMotionEvent)
     {
-      bguj.a("avatarWallViewPager", "ote_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
+      bfdx.a("avatarWallViewPager", "ote_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
       paramMotionEvent.printStackTrace();
     }
     return false;
@@ -187,7 +187,7 @@ public class RollViewPager
     }
     catch (IllegalArgumentException paramMotionEvent)
     {
-      bguj.a("avatarWallViewPager", "te_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
+      bfdx.a("avatarWallViewPager", "te_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
       paramMotionEvent.printStackTrace();
     }
     return false;
@@ -196,17 +196,17 @@ public class RollViewPager
   public void setAdapter(PagerAdapter paramPagerAdapter)
   {
     super.setAdapter(paramPagerAdapter);
-    this.jdField_a_of_type_Taq = ((taq)paramPagerAdapter);
+    this.jdField_a_of_type_Teq = ((teq)paramPagerAdapter);
   }
   
-  public void setOnTouchStateChangeListener(tar paramtar)
+  public void setOnTouchStateChangeListener(ter paramter)
   {
-    this.jdField_a_of_type_Tar = paramtar;
+    this.jdField_a_of_type_Ter = paramter;
   }
   
-  public void setOnUserFling(tas paramtas)
+  public void setOnUserFling(tes paramtes)
   {
-    this.jdField_a_of_type_Tas = paramtas;
+    this.jdField_a_of_type_Tes = paramtes;
   }
   
   public void setPageTransformer(boolean paramBoolean, ViewPager.PageTransformer paramPageTransformer)
@@ -217,7 +217,7 @@ public class RollViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager
  * JD-Core Version:    0.7.0.1
  */

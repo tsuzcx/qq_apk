@@ -17,15 +17,15 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
-import bhcn;
-import bhco;
-import bhcp;
-import bhcq;
-import birz;
-import bjtz;
+import bflz;
+import bfma;
+import bfmb;
+import bfmc;
+import bgyb;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.io.File;
@@ -45,13 +45,13 @@ public class SnapshotService
   private static boolean jdField_a_of_type_Boolean;
   private static String jdField_b_of_type_JavaLangString = "SnapshotService";
   private long jdField_a_of_type_Long;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bhcn(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bflz(this);
   public Handler a;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private bhcq jdField_a_of_type_Bhcq;
+  private bfmc jdField_a_of_type_Bfmc;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private Queue<bhco> jdField_a_of_type_JavaUtilQueue;
-  private bhcq jdField_b_of_type_Bhcq;
+  private Queue<bfma> jdField_a_of_type_JavaUtilQueue;
+  private bfmc jdField_b_of_type_Bfmc;
   
   static
   {
@@ -63,17 +63,17 @@ public class SnapshotService
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
   }
   
-  private void a(Bitmap paramBitmap, bhco parambhco, bhcq parambhcq)
+  private void a(Bitmap paramBitmap, bfma parambfma, bfmc parambfmc)
   {
     int j = 1;
-    if ((parambhcq == null) || (parambhcq.jdField_a_of_type_Bhcp == null) || (parambhcq.jdField_a_of_type_Bhcp.mWebview.getX5WebViewExtension() == null))
+    if ((parambfmc == null) || (parambfmc.jdField_a_of_type_Bfmb == null) || (parambfmc.jdField_a_of_type_Bfmb.mWebview.getX5WebViewExtension() == null))
     {
       if (QLog.isColorLevel()) {
         QLog.i(jdField_b_of_type_JavaLangString, 2, "snapshotVisibleWithBitmap: null");
       }
       return;
     }
-    Object localObject1 = parambhcq.jdField_a_of_type_Bhcp.mWebview.getX5WebViewExtension().getClass().getInterfaces();
+    Object localObject1 = parambfmc.jdField_a_of_type_Bfmb.mWebview.getX5WebViewExtension().getClass().getInterfaces();
     int k = localObject1.length;
     int i = 0;
     label69:
@@ -91,7 +91,7 @@ public class SnapshotService
         if (QLog.isColorLevel()) {
           QLog.i(jdField_b_of_type_JavaLangString, 2, "call snapshotVisibleWithBitmap");
         }
-        ((Method)localObject1).invoke(parambhcq.jdField_a_of_type_Bhcp.mWebview.getX5WebViewExtension(), new Object[] { paramBitmap, Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Integer.valueOf(1), Integer.valueOf(1), new SnapshotService.2(this, paramBitmap, parambhco, parambhcq) });
+        ((Method)localObject1).invoke(parambfmc.jdField_a_of_type_Bfmb.mWebview.getX5WebViewExtension(), new Object[] { paramBitmap, Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Integer.valueOf(1), Integer.valueOf(1), new SnapshotService.2(this, paramBitmap, parambfma, parambfmc) });
         i = j;
       }
       catch (Exception paramBitmap)
@@ -106,11 +106,11 @@ public class SnapshotService
       if (i != 0) {
         break;
       }
-      if (parambhcq.jdField_a_of_type_AndroidOsResultReceiver != null)
+      if (parambfmc.jdField_a_of_type_AndroidOsResultReceiver != null)
       {
         paramBitmap = new Bundle();
-        paramBitmap.putLong("seq", parambhco.jdField_a_of_type_Long);
-        parambhcq.jdField_a_of_type_AndroidOsResultReceiver.send(3, paramBitmap);
+        paramBitmap.putLong("seq", parambfma.jdField_a_of_type_Long);
+        parambfmc.jdField_a_of_type_AndroidOsResultReceiver.send(3, paramBitmap);
       }
       finish();
       return;
@@ -120,23 +120,23 @@ public class SnapshotService
     }
   }
   
-  private void a(bhco parambhco, bhcq parambhcq)
+  private void a(bfma parambfma, bfmc parambfmc)
   {
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new SnapshotService.1(this, parambhcq, parambhco), parambhcq.jdField_a_of_type_Long);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new SnapshotService.1(this, parambfmc, parambfma), parambfmc.jdField_a_of_type_Long);
   }
   
-  private void a(bhcq parambhcq)
+  private void a(bfmc parambfmc)
   {
     if (QLog.isColorLevel()) {
       QLog.i(jdField_b_of_type_JavaLangString, 2, "mQueue size = " + this.jdField_a_of_type_JavaUtilQueue.size());
     }
-    bhco localbhco = (bhco)this.jdField_a_of_type_JavaUtilQueue.peek();
-    if (localbhco != null)
+    bfma localbfma = (bfma)this.jdField_a_of_type_JavaUtilQueue.peek();
+    if (localbfma != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_b_of_type_JavaLangString, 2, "current cmd=" + localbhco.jdField_a_of_type_Long);
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "current cmd=" + localbfma.jdField_a_of_type_Long);
       }
-      a(localbhco, parambhcq);
+      a(localbfma, parambfmc);
     }
   }
   
@@ -147,46 +147,46 @@ public class SnapshotService
   
   private boolean a(Intent arg1)
   {
-    bhco localbhco = new bhco();
-    localbhco.jdField_a_of_type_Long = ???.getLongExtra("seq", -1L);
-    localbhco.jdField_a_of_type_JavaLangString = ???.getStringExtra("seqKey");
-    localbhco.b = ???.getIntExtra("maxSnapshotCount", 5);
-    localbhco.jdField_a_of_type_Int = 0;
-    localbhco.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    bfma localbfma = new bfma();
+    localbfma.jdField_a_of_type_Long = ???.getLongExtra("seq", -1L);
+    localbfma.jdField_a_of_type_JavaLangString = ???.getStringExtra("seqKey");
+    localbfma.b = ???.getIntExtra("maxSnapshotCount", 5);
+    localbfma.jdField_a_of_type_Int = 0;
+    localbfma.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     if (QLog.isColorLevel()) {
-      QLog.i(jdField_b_of_type_JavaLangString, 2, "new Command seq=" + localbhco.jdField_a_of_type_Long);
+      QLog.i(jdField_b_of_type_JavaLangString, 2, "new Command seq=" + localbfma.jdField_a_of_type_Long);
     }
-    if (localbhco.jdField_a_of_type_Long == -1L) {
+    if (localbfma.jdField_a_of_type_Long == -1L) {
       return false;
     }
     synchronized (this.jdField_a_of_type_JavaUtilQueue)
     {
       if (this.jdField_a_of_type_JavaUtilQueue.isEmpty())
       {
-        this.jdField_a_of_type_JavaUtilQueue.offer(localbhco);
-        a(this.jdField_a_of_type_Bhcq);
+        this.jdField_a_of_type_JavaUtilQueue.offer(localbfma);
+        a(this.jdField_a_of_type_Bfmc);
         return true;
       }
-      this.jdField_a_of_type_JavaUtilQueue.offer(localbhco);
+      this.jdField_a_of_type_JavaUtilQueue.offer(localbfma);
     }
   }
   
-  private boolean a(Intent paramIntent, bhcq parambhcq)
+  private boolean a(Intent paramIntent, bfmc parambfmc)
   {
-    bhcq.a(parambhcq, paramIntent.getLongExtra("id", -1L));
-    parambhcq.jdField_a_of_type_AndroidOsResultReceiver = ((ResultReceiver)paramIntent.getParcelableExtra("callback"));
-    parambhcq.jdField_a_of_type_Long = paramIntent.getLongExtra("delay", 10000L);
-    parambhcq.jdField_b_of_type_Long = 3000L;
-    parambhcq.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("debugUrl");
-    if (!TextUtils.isEmpty(parambhcq.jdField_a_of_type_JavaLangString))
+    bfmc.a(parambfmc, paramIntent.getLongExtra("id", -1L));
+    parambfmc.jdField_a_of_type_AndroidOsResultReceiver = ((ResultReceiver)paramIntent.getParcelableExtra("callback"));
+    parambfmc.jdField_a_of_type_Long = paramIntent.getLongExtra("delay", 10000L);
+    parambfmc.jdField_b_of_type_Long = 3000L;
+    parambfmc.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("debugUrl");
+    if (!TextUtils.isEmpty(parambfmc.jdField_a_of_type_JavaLangString))
     {
-      parambhcq.jdField_b_of_type_JavaLangString = (bhcq.a(parambhcq) + bjtz.d(parambhcq.jdField_a_of_type_JavaLangString));
+      parambfmc.jdField_b_of_type_JavaLangString = (bfmc.a(parambfmc) + MD5Utils.toMD5(parambfmc.jdField_a_of_type_JavaLangString));
       return true;
     }
     return false;
   }
   
-  private void b(Bitmap paramBitmap, bhco parambhco, bhcq parambhcq)
+  private void b(Bitmap paramBitmap, bfma parambfma, bfmc parambfmc)
   {
     try
     {
@@ -194,18 +194,18 @@ public class SnapshotService
       if (!((File)localObject).exists()) {
         ((File)localObject).mkdirs();
       }
-      parambhcq = new StringBuilder().append("/Snapshot_").append(parambhcq.jdField_b_of_type_JavaLangString).append("_");
-      int i = parambhco.jdField_a_of_type_Int;
-      parambhco.jdField_a_of_type_Int = (i + 1);
-      parambhcq = new File((File)localObject, i + ".png");
-      localObject = new FileOutputStream(parambhcq);
+      parambfmc = new StringBuilder().append("/Snapshot_").append(parambfmc.jdField_b_of_type_JavaLangString).append("_");
+      int i = parambfma.jdField_a_of_type_Int;
+      parambfma.jdField_a_of_type_Int = (i + 1);
+      parambfmc = new File((File)localObject, i + ".png");
+      localObject = new FileOutputStream(parambfmc);
       paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject);
       ((OutputStream)localObject).flush();
       ((OutputStream)localObject).close();
       paramBitmap.recycle();
-      parambhco.jdField_a_of_type_JavaUtilArrayList.add(parambhcq.getAbsolutePath());
+      parambfma.jdField_a_of_type_JavaUtilArrayList.add(parambfmc.getAbsolutePath());
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_b_of_type_JavaLangString, 2, "saveSnapshotBitmap file path = " + parambhcq.getAbsolutePath());
+        QLog.d(jdField_b_of_type_JavaLangString, 2, "saveSnapshotBitmap file path = " + parambfmc.getAbsolutePath());
       }
       return;
     }
@@ -216,21 +216,21 @@ public class SnapshotService
     }
   }
   
-  private void b(bhco arg1, bhcq parambhcq)
+  private void b(bfma arg1, bfmc parambfmc)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(jdField_b_of_type_JavaLangString, 2, "finish once debug, webview id =" + bhcq.a(parambhcq) + ", seq=" + ???.jdField_a_of_type_Long);
+      QLog.i(jdField_b_of_type_JavaLangString, 2, "finish once debug, webview id =" + bfmc.a(parambfmc) + ", seq=" + ???.jdField_a_of_type_Long);
     }
     Bundle localBundle;
     int i;
-    if (parambhcq.jdField_a_of_type_AndroidOsResultReceiver != null)
+    if (parambfmc.jdField_a_of_type_AndroidOsResultReceiver != null)
     {
       localBundle = new Bundle();
       localBundle.putStringArrayList("snapshotPaths", ???.jdField_a_of_type_JavaUtilArrayList);
       localBundle.putLong("seq", ???.jdField_a_of_type_Long);
       localBundle.putString("seqKey", ???.jdField_a_of_type_JavaLangString);
-      ??? = parambhcq.jdField_a_of_type_AndroidOsResultReceiver;
-      if (bhcq.a(parambhcq) <= 0L) {
+      ??? = parambfmc.jdField_a_of_type_AndroidOsResultReceiver;
+      if (bfmc.a(parambfmc) <= 0L) {
         break label168;
       }
       i = 1;
@@ -245,7 +245,7 @@ public class SnapshotService
         }
         if (this.jdField_a_of_type_Long > 0L)
         {
-          a(parambhcq);
+          a(parambfmc);
           return;
           label168:
           i = 0;
@@ -255,22 +255,22 @@ public class SnapshotService
     finish();
   }
   
-  private void c(bhco parambhco, bhcq parambhcq)
+  private void c(bfma parambfma, bfmc parambfmc)
   {
-    if ((parambhcq.jdField_a_of_type_Bhcp.mWebview.getWidth() <= 0) || (parambhcq.jdField_a_of_type_Bhcp.mWebview.getHeight() <= 0))
+    if ((parambfmc.jdField_a_of_type_Bfmb.mWebview.getWidth() <= 0) || (parambfmc.jdField_a_of_type_Bfmb.mWebview.getHeight() <= 0))
     {
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_b_of_type_JavaLangString, 2, "webview width =" + parambhcq.jdField_a_of_type_Bhcp.mWebview.getWidth() + ", height=" + parambhcq.jdField_a_of_type_Bhcp.mWebview.getHeight());
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "webview width =" + parambfmc.jdField_a_of_type_Bfmb.mWebview.getWidth() + ", height=" + parambfmc.jdField_a_of_type_Bfmb.mWebview.getHeight());
       }
-      if ((this.jdField_a_of_type_Long > 0L) && (parambhcq.jdField_a_of_type_AndroidOsResultReceiver != null))
+      if ((this.jdField_a_of_type_Long > 0L) && (parambfmc.jdField_a_of_type_AndroidOsResultReceiver != null))
       {
         localObject = new Bundle();
-        ((Bundle)localObject).putString("debugUrl", parambhcq.jdField_a_of_type_JavaLangString);
-        ((Bundle)localObject).putInt("maxCount", parambhco.b);
-        ((Bundle)localObject).putLong("delay", parambhcq.jdField_a_of_type_Long);
-        ((Bundle)localObject).putLong("seq", parambhco.jdField_a_of_type_Long);
-        ((Bundle)localObject).putString("seqKey", parambhco.jdField_a_of_type_JavaLangString);
-        parambhcq.jdField_a_of_type_AndroidOsResultReceiver.send(2, (Bundle)localObject);
+        ((Bundle)localObject).putString("debugUrl", parambfmc.jdField_a_of_type_JavaLangString);
+        ((Bundle)localObject).putInt("maxCount", parambfma.b);
+        ((Bundle)localObject).putLong("delay", parambfmc.jdField_a_of_type_Long);
+        ((Bundle)localObject).putLong("seq", parambfma.jdField_a_of_type_Long);
+        ((Bundle)localObject).putString("seqKey", parambfma.jdField_a_of_type_JavaLangString);
+        parambfmc.jdField_a_of_type_AndroidOsResultReceiver.send(2, (Bundle)localObject);
         if (QLog.isColorLevel()) {
           QLog.d(jdField_b_of_type_JavaLangString, 2, "WebView is invalid and send to restart alive webview.");
         }
@@ -278,57 +278,57 @@ public class SnapshotService
       finish();
       return;
     }
-    Object localObject = Bitmap.createBitmap(parambhcq.jdField_a_of_type_Bhcp.mWebview.getWidth(), parambhcq.jdField_a_of_type_Bhcp.mWebview.getHeight(), Bitmap.Config.ARGB_8888);
-    if (parambhcq.jdField_a_of_type_Bhcp.mWebview.getX5WebViewExtension() != null)
+    Object localObject = Bitmap.createBitmap(parambfmc.jdField_a_of_type_Bfmb.mWebview.getWidth(), parambfmc.jdField_a_of_type_Bfmb.mWebview.getHeight(), Bitmap.Config.ARGB_8888);
+    if (parambfmc.jdField_a_of_type_Bfmb.mWebview.getX5WebViewExtension() != null)
     {
       if (QLog.isColorLevel()) {
         QLog.i(jdField_b_of_type_JavaLangString, 2, "start x5 snapshot");
       }
-      a((Bitmap)localObject, parambhco, parambhcq);
+      a((Bitmap)localObject, parambfma, parambfmc);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.i(jdField_b_of_type_JavaLangString, 2, "start webview snapshot");
     }
     Canvas localCanvas = new Canvas((Bitmap)localObject);
-    parambhcq.jdField_a_of_type_Bhcp.mWebview.draw(localCanvas);
-    if (parambhco.jdField_a_of_type_Int == 0) {
-      parambhco.jdField_a_of_type_Int += 1;
+    parambfmc.jdField_a_of_type_Bfmb.mWebview.draw(localCanvas);
+    if (parambfma.jdField_a_of_type_Int == 0) {
+      parambfma.jdField_a_of_type_Int += 1;
     }
     for (;;)
     {
-      d(parambhco, parambhcq);
+      d(parambfma, parambfmc);
       return;
-      b((Bitmap)localObject, parambhco, parambhcq);
+      b((Bitmap)localObject, parambfma, parambfmc);
     }
   }
   
-  private void d(bhco parambhco, bhcq parambhcq)
+  private void d(bfma parambfma, bfmc parambfmc)
   {
     int j;
     int i;
     boolean bool;
-    if (parambhcq.jdField_a_of_type_Bhcp.mWebview.getX5WebViewExtension() != null)
+    if (parambfmc.jdField_a_of_type_Bfmb.mWebview.getX5WebViewExtension() != null)
     {
       j = 1;
       if (j == 0) {
         break label217;
       }
-      i = parambhcq.jdField_a_of_type_Bhcp.mWebview.getHeight();
+      i = parambfmc.jdField_a_of_type_Bfmb.mWebview.getHeight();
       if (QLog.isColorLevel())
       {
-        QLog.i(jdField_b_of_type_JavaLangString, 2, "webview width =" + parambhcq.jdField_a_of_type_Bhcp.mWebview.getWidth() + ", height=" + parambhcq.jdField_a_of_type_Bhcp.mWebview.getHeight());
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "webview width =" + parambfmc.jdField_a_of_type_Bfmb.mWebview.getWidth() + ", height=" + parambfmc.jdField_a_of_type_Bfmb.mWebview.getHeight());
         QLog.i(jdField_b_of_type_JavaLangString, 2, "webview scroll height =" + i);
       }
-      parambhcq.jdField_a_of_type_Bhcp.mWebview.loadUrl("javascript:window.scrollBy(0, " + i + " / window.devicePixelRatio)");
+      parambfmc.jdField_a_of_type_Bfmb.mWebview.loadUrl("javascript:window.scrollBy(0, " + i + " / window.devicePixelRatio)");
       bool = false;
       label159:
       if (j == 0) {
         break label233;
       }
-      i = parambhco.b;
+      i = parambfma.b;
       label169:
-      if (parambhco.jdField_a_of_type_Int >= i) {
+      if (parambfma.jdField_a_of_type_Int >= i) {
         break label243;
       }
       i = 1;
@@ -342,35 +342,36 @@ public class SnapshotService
       if (i == 0) {
         break label275;
       }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new SnapshotService.3(this, parambhco, parambhcq), parambhcq.jdField_b_of_type_Long);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new SnapshotService.3(this, parambfma, parambfmc), parambfmc.jdField_b_of_type_Long);
       return;
       j = 0;
       break;
       label217:
-      bool = parambhcq.jdField_a_of_type_Bhcp.mWebview.pageDown(false);
+      bool = parambfmc.jdField_a_of_type_Bfmb.mWebview.pageDown(false);
       break label159;
       label233:
-      i = parambhco.b + 1;
+      i = parambfma.b + 1;
       break label169;
       label243:
       i = 0;
       break label179;
       label248:
-      if ((parambhco.jdField_a_of_type_Int <= 1) || ((bool) && (i != 0))) {
+      if ((parambfma.jdField_a_of_type_Int <= 1) || ((bool) && (i != 0))) {
         i = 1;
       } else {
         i = 0;
       }
     }
     label275:
-    b(parambhco, parambhcq);
+    b(parambfma, parambfmc);
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -387,22 +388,22 @@ public class SnapshotService
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     this.jdField_a_of_type_JavaUtilQueue.clear();
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bhcq != null) {
-      this.jdField_a_of_type_Bhcq.jdField_a_of_type_Bhcp.c();
+    if (this.jdField_a_of_type_Bfmc != null) {
+      this.jdField_a_of_type_Bfmc.jdField_a_of_type_Bfmb.c();
     }
-    if (this.jdField_b_of_type_Bhcq != null) {
-      this.jdField_b_of_type_Bhcq.jdField_a_of_type_Bhcp.c();
+    if (this.jdField_b_of_type_Bfmc != null) {
+      this.jdField_b_of_type_Bfmc.jdField_a_of_type_Bfmb.c();
     }
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Bhcq != null) {
-      this.jdField_a_of_type_Bhcq.jdField_a_of_type_Bhcp.b();
+    if (this.jdField_a_of_type_Bfmc != null) {
+      this.jdField_a_of_type_Bfmc.jdField_a_of_type_Bfmb.b();
     }
-    if (this.jdField_b_of_type_Bhcq != null) {
-      this.jdField_b_of_type_Bhcq.jdField_a_of_type_Bhcp.b();
+    if (this.jdField_b_of_type_Bfmc != null) {
+      this.jdField_b_of_type_Bfmc.jdField_a_of_type_Bfmb.b();
     }
   }
   
@@ -433,18 +434,18 @@ public class SnapshotService
       }
       super.finish();
     }
-    birz.b();
+    bgyb.b();
     this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
     this.jdField_a_of_type_Long = getIntent().getLongExtra("id", -1L);
     if (this.jdField_a_of_type_Long > 0L)
     {
-      this.jdField_a_of_type_Bhcq = new bhcq(this);
-      if (!a(getIntent(), this.jdField_a_of_type_Bhcq)) {
+      this.jdField_a_of_type_Bfmc = new bfmc(this);
+      if (!a(getIntent(), this.jdField_a_of_type_Bfmc)) {
         finish();
       }
-      this.jdField_a_of_type_Bhcq.jdField_a_of_type_Bhcp = new bhcp(getBaseContext(), this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-      this.jdField_a_of_type_Bhcq.jdField_a_of_type_Bhcp.a(super.getIntent());
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Bhcq.jdField_a_of_type_Bhcp.mWebview, new ViewGroup.LayoutParams(-1, -1));
+      this.jdField_a_of_type_Bfmc.jdField_a_of_type_Bfmb = new bfmb(getBaseContext(), this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      this.jdField_a_of_type_Bfmc.jdField_a_of_type_Bfmb.a(super.getIntent());
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Bfmc.jdField_a_of_type_Bfmb.mWebview, new ViewGroup.LayoutParams(-1, -1));
       super.setContentView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
       super.moveTaskToBack(true);
       if (QLog.isColorLevel()) {
@@ -459,7 +460,7 @@ public class SnapshotService
         QLog.i(jdField_b_of_type_JavaLangString, 2, "registered receiver: android.intent.action.ultimatesnapshot");
       }
       jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Bhcq.jdField_a_of_type_Bhcp.a(this.jdField_a_of_type_Bhcq.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Bfmc.jdField_a_of_type_Bfmb.a(this.jdField_a_of_type_Bfmc.jdField_a_of_type_JavaLangString);
       if (!a(getIntent())) {
         finish();
       }
@@ -468,16 +469,16 @@ public class SnapshotService
     do
     {
       return;
-      this.jdField_b_of_type_Bhcq = new bhcq(this);
-      if (!a(getIntent(), this.jdField_b_of_type_Bhcq)) {
+      this.jdField_b_of_type_Bfmc = new bfmc(this);
+      if (!a(getIntent(), this.jdField_b_of_type_Bfmc)) {
         finish();
       }
-      this.jdField_b_of_type_Bhcq.jdField_a_of_type_Bhcp = new bhcp(getBaseContext(), this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-      this.jdField_b_of_type_Bhcq.jdField_a_of_type_Bhcp.a(super.getIntent());
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_Bhcq.jdField_a_of_type_Bhcp.mWebview, new ViewGroup.LayoutParams(-1, -1));
+      this.jdField_b_of_type_Bfmc.jdField_a_of_type_Bfmb = new bfmb(getBaseContext(), this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      this.jdField_b_of_type_Bfmc.jdField_a_of_type_Bfmb.a(super.getIntent());
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_Bfmc.jdField_a_of_type_Bfmb.mWebview, new ViewGroup.LayoutParams(-1, -1));
       break;
-      this.jdField_b_of_type_Bhcq.jdField_a_of_type_Bhcp.a(this.jdField_b_of_type_Bhcq.jdField_a_of_type_JavaLangString);
-      paramBundle = new bhco();
+      this.jdField_b_of_type_Bfmc.jdField_a_of_type_Bfmb.a(this.jdField_b_of_type_Bfmc.jdField_a_of_type_JavaLangString);
+      paramBundle = new bfma();
       paramBundle.jdField_a_of_type_Long = getIntent().getLongExtra("seq", -1L);
       paramBundle.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("seqKey");
       paramBundle.b = getIntent().getIntExtra("maxSnapshotCount", 5);
@@ -487,7 +488,7 @@ public class SnapshotService
         QLog.i(jdField_b_of_type_JavaLangString, 2, "new Command seq=" + paramBundle.jdField_a_of_type_Long);
       }
     } while (paramBundle.jdField_a_of_type_Long == -1L);
-    a(paramBundle, this.jdField_b_of_type_Bhcq);
+    a(paramBundle, this.jdField_b_of_type_Bfmc);
   }
   
   public void onNewIntent(Intent paramIntent)
@@ -498,29 +499,29 @@ public class SnapshotService
     long l = paramIntent.getLongExtra("id", -1L);
     if (l < 0L)
     {
-      if (this.jdField_b_of_type_Bhcq == null)
+      if (this.jdField_b_of_type_Bfmc == null)
       {
-        this.jdField_b_of_type_Bhcq = new bhcq(this);
-        this.jdField_b_of_type_Bhcq.jdField_a_of_type_Bhcp = new bhcp(getBaseContext(), this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-        this.jdField_b_of_type_Bhcq.jdField_a_of_type_Bhcp.a(super.getIntent());
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_Bhcq.jdField_a_of_type_Bhcp.mWebview, new ViewGroup.LayoutParams(-1, -1));
+        this.jdField_b_of_type_Bfmc = new bfmc(this);
+        this.jdField_b_of_type_Bfmc.jdField_a_of_type_Bfmb = new bfmb(getBaseContext(), this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+        this.jdField_b_of_type_Bfmc.jdField_a_of_type_Bfmb.a(super.getIntent());
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_Bfmc.jdField_a_of_type_Bfmb.mWebview, new ViewGroup.LayoutParams(-1, -1));
       }
-      a(paramIntent, this.jdField_b_of_type_Bhcq);
-      bhco localbhco = new bhco();
-      localbhco.jdField_a_of_type_Long = paramIntent.getLongExtra("seq", -1L);
-      localbhco.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("seqKey");
-      localbhco.b = paramIntent.getIntExtra("maxSnapshotCount", 5);
-      localbhco.jdField_a_of_type_Int = 0;
-      localbhco.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      a(paramIntent, this.jdField_b_of_type_Bfmc);
+      bfma localbfma = new bfma();
+      localbfma.jdField_a_of_type_Long = paramIntent.getLongExtra("seq", -1L);
+      localbfma.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("seqKey");
+      localbfma.b = paramIntent.getIntExtra("maxSnapshotCount", 5);
+      localbfma.jdField_a_of_type_Int = 0;
+      localbfma.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
       if (QLog.isColorLevel())
       {
         QLog.i(jdField_b_of_type_JavaLangString, 2, "new Command in onNewIntent()");
-        QLog.i(jdField_b_of_type_JavaLangString, 2, "new Command seq=" + localbhco.jdField_a_of_type_Long);
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "new Command seq=" + localbfma.jdField_a_of_type_Long);
       }
-      if (localbhco.jdField_a_of_type_Long != -1L)
+      if (localbfma.jdField_a_of_type_Long != -1L)
       {
-        this.jdField_b_of_type_Bhcq.jdField_a_of_type_Bhcp.a(this.jdField_b_of_type_Bhcq.jdField_a_of_type_JavaLangString);
-        a(localbhco, this.jdField_b_of_type_Bhcq);
+        this.jdField_b_of_type_Bfmc.jdField_a_of_type_Bfmb.a(this.jdField_b_of_type_Bfmc.jdField_a_of_type_JavaLangString);
+        a(localbfma, this.jdField_b_of_type_Bfmc);
       }
     }
     do
@@ -528,12 +529,12 @@ public class SnapshotService
       do
       {
         return;
-        if (this.jdField_a_of_type_Bhcq == null)
+        if (this.jdField_a_of_type_Bfmc == null)
         {
-          this.jdField_a_of_type_Bhcq = new bhcq(this);
-          this.jdField_a_of_type_Bhcq.jdField_a_of_type_Bhcp = new bhcp(getBaseContext(), this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-          this.jdField_a_of_type_Bhcq.jdField_a_of_type_Bhcp.a(super.getIntent());
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Bhcq.jdField_a_of_type_Bhcp.mWebview, new ViewGroup.LayoutParams(-1, -1));
+          this.jdField_a_of_type_Bfmc = new bfmc(this);
+          this.jdField_a_of_type_Bfmc.jdField_a_of_type_Bfmb = new bfmb(getBaseContext(), this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+          this.jdField_a_of_type_Bfmc.jdField_a_of_type_Bfmb.a(super.getIntent());
+          this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Bfmc.jdField_a_of_type_Bfmb.mWebview, new ViewGroup.LayoutParams(-1, -1));
         }
         switch (paramIntent.getIntExtra("action", 2))
         {
@@ -545,8 +546,8 @@ public class SnapshotService
       if (QLog.isColorLevel()) {
         QLog.i(jdField_b_of_type_JavaLangString, 2, "onNewIntent(), just snapshot for loaded url");
       }
-      this.jdField_a_of_type_Bhcq.jdField_a_of_type_Long = 1000L;
-      this.jdField_a_of_type_Bhcq.jdField_b_of_type_Long = 1000L;
+      this.jdField_a_of_type_Bfmc.jdField_a_of_type_Long = 1000L;
+      this.jdField_a_of_type_Bfmc.jdField_b_of_type_Long = 1000L;
       a(paramIntent);
       return;
       if (QLog.isColorLevel()) {
@@ -561,19 +562,19 @@ public class SnapshotService
         }
       }
       jdField_a_of_type_Boolean = true;
-    } while ((!a(getIntent(), this.jdField_a_of_type_Bhcq)) || (!a(getIntent())));
-    this.jdField_a_of_type_Bhcq.jdField_a_of_type_Bhcp.a(this.jdField_a_of_type_Bhcq.jdField_a_of_type_JavaLangString);
+    } while ((!a(getIntent(), this.jdField_a_of_type_Bfmc)) || (!a(getIntent())));
+    this.jdField_a_of_type_Bfmc.jdField_a_of_type_Bfmb.a(this.jdField_a_of_type_Bfmc.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_Long = l;
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Bhcq != null) {
-      this.jdField_a_of_type_Bhcq.jdField_a_of_type_Bhcp.a();
+    if (this.jdField_a_of_type_Bfmc != null) {
+      this.jdField_a_of_type_Bfmc.jdField_a_of_type_Bfmb.a();
     }
-    if (this.jdField_b_of_type_Bhcq != null) {
-      this.jdField_b_of_type_Bhcq.jdField_a_of_type_Bhcp.a();
+    if (this.jdField_b_of_type_Bfmc != null) {
+      this.jdField_b_of_type_Bfmc.jdField_a_of_type_Bfmb.a();
     }
   }
 }

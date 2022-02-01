@@ -25,8 +25,7 @@
                     "type": "relative",
                     "value": "146"
                 },
-                "attributes": {
-                    "setFrameString:": "-1",
+                "attributes":{
                     "setCornerRadiusString:": "8",
                     "setImageWithURLString:lineup:": [
                         "http://img.nfa.qq.com/gmaster_test/15916608/gmaster_fphsszvemew_game_cell_bg.png",
@@ -69,8 +68,7 @@
                             "type": "relative",
                             "value": "61"
                         },
-                        "attributes": {
-                            "setFrameString:": "-1",
+                        "attributes":{
                             "setCornerRadiusString:": "8",
                             "setImageWithURLString:lineup:": [
                                 "$game_icon",
@@ -237,8 +235,7 @@
                                 "width": {
                                     "type": "wrap_content"
                                 },
-                                "attributes": {
-                                    "setFrameString:": "-1",
+                                "attributes":{
                                     "setText:lineSpace:": [
                                         "$game_gray_label",
                                         "2"
@@ -267,8 +264,7 @@
                             "type": "relative",
                             "value": "96"
                         },
-                        "attributes": {
-                            "setFrameString:": "-1",
+                        "attributes":{
                             "setText:": "$game_button_label",
                             "setTextAlignmentString:": "1",
                             "setTextColorString:": "#FFFFFF",

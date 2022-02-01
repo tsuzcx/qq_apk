@@ -1,71 +1,58 @@
-import android.support.annotation.NonNull;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Map;
 
-public class arbf
-  extends armf<arbe>
+class arbf
+  extends arep
 {
-  @NonNull
-  public arbe a()
-  {
-    return new arbe();
-  }
+  arbf(arbb paramarbb) {}
   
-  @NonNull
-  public arbe a(@NonNull araj[] paramArrayOfaraj)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
   {
-    QLog.e("VasUpdateConfProcessor", 1, "onParsed ");
-    if (paramArrayOfaraj != null) {
-      try
-      {
-        if (paramArrayOfaraj.length > 0)
-        {
-          int j = paramArrayOfaraj.length;
-          int i = 0;
-          while (i < j)
-          {
-            araj localaraj = paramArrayOfaraj[i];
-            if (localaraj != null)
-            {
-              arbe localarbe = arbe.a(localaraj.a);
-              if (QLog.isColorLevel()) {
-                QLog.d("VasUpdateConfProcessor", 2, "onParsed " + localaraj.a);
-              }
-              if (localarbe != null) {
-                return localarbe;
-              }
-            }
-            i += 1;
-          }
-        }
-        return new arbe();
-      }
-      catch (Exception paramArrayOfaraj)
-      {
-        paramArrayOfaraj.printStackTrace();
-        QLog.e("VasUpdateConfProcessor", 1, "onParsed Exception = " + paramArrayOfaraj.getMessage());
-      }
+    if (!this.a.a.containsKey(paramEmoticonPackage.epId)) {
+      return;
     }
-  }
-  
-  @NonNull
-  public arbe b()
-  {
-    return new arbe();
-  }
-  
-  public Class<arbe> clazz()
-  {
-    return arbe.class;
-  }
-  
-  public int type()
-  {
-    return 649;
+    areb localareb = (areb)arbb.l(this.a).getManager(43);
+    if (paramInt == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FavroamingManager", 2, "onJsonComplete, start download fav emoticon: " + paramEmoticonPackage.epId);
+      }
+      paramInt = paramBundle.getInt("jsonType", areb.c);
+      paramBundle = new File(EmoticonUtils.emoticonJsonFilePath.replace("[epId]", paramEmoticonPackage.epId));
+      ArrayList localArrayList = new ArrayList();
+      arfb localarfb = new arfb();
+      if (paramBundle.exists()) {}
+      for (paramBundle = FileUtils.fileToBytes(paramBundle);; paramBundle = null)
+      {
+        paramBundle = areq.a(arbb.m(this.a), paramEmoticonPackage, paramInt, paramBundle, localArrayList, localarfb);
+        if (paramBundle == null) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("FavroamingManager", 2, "parse Json Error:" + paramBundle);
+        }
+        bggr.a("emotionType", "emotionActionFav", "2", paramEmoticonPackage.epId, "", "", paramBundle, "", "", "");
+        return;
+      }
+      this.a.a(paramEmoticonPackage, localareb, localArrayList, localarfb);
+      this.a.a(paramEmoticonPackage, localareb);
+      return;
+    }
+    this.a.a(paramEmoticonPackage);
+    bggr.a("emotionType", "emotionActionFav", "1", paramEmoticonPackage.epId, "", NetworkUtil.getNetworkType(arbb.n(this.a).getApplication()) + "", paramInt + "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbf
  * JD-Core Version:    0.7.0.1
  */

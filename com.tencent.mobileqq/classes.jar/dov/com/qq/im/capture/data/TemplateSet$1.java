@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.data;
 
-import bpnw;
+import bmsr;
 
 public class TemplateSet$1
   implements Runnable
 {
-  public TemplateSet$1(bpnw parambpnw) {}
+  public TemplateSet$1(bmsr parambmsr) {}
   
   public void run()
   {

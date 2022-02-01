@@ -1,12 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.face.FaceInfo;
+import com.tencent.ark.ark.VariantWrapper;
 
-public abstract interface aooc
+class aooc
+  implements aopi
 {
-  public abstract void a(AppInterface paramAppInterface, FaceInfo paramFaceInfo);
+  aooc(aooa paramaooa, long paramLong) {}
   
-  public abstract void a(FaceInfo paramFaceInfo, Bitmap paramBitmap);
+  public void a(long paramLong)
+  {
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aooa.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    aonx.a(this.jdField_a_of_type_Aooa.a, this.jdField_a_of_type_Long, paramBoolean, "Orientation", paramFloat1, paramFloat2, paramFloat3);
+  }
 }
 
 

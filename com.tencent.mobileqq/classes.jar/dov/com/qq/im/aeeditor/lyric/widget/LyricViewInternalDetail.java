@@ -6,8 +6,8 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import bpam;
-import bpcy;
+import bmbx;
+import bmei;
 import com.tencent.weseevideo.editor.sticker.music.lyric.data.Lyric;
 import com.tencent.weseevideo.editor.sticker.music.lyric.data.LyricCharacter;
 import com.tencent.weseevideo.editor.sticker.music.lyric.data.Sentence;
@@ -54,7 +54,7 @@ public class LyricViewInternalDetail
         }
         else
         {
-          bpam.a("LyricViewInternalDetail", "computeHilightWhileScrolling() y => " + paramInt + ",position => " + m);
+          bmbx.a("LyricViewInternalDetail", "computeHilightWhileScrolling() y => " + paramInt + ",position => " + m);
           return m;
         }
         j += 1;
@@ -178,9 +178,9 @@ public class LyricViewInternalDetail
     }
   }
   
-  public void a(bpcy parambpcy)
+  public void a(bmei parambmei)
   {
-    super.a(parambpcy);
+    super.a(parambmei);
     this.x = ((this.jdField_d_of_type_Int + this.e) * 2);
   }
   

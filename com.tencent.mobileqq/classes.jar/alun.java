@@ -1,20 +1,10 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-
-class alun
-  implements Handler.Callback
+public abstract interface alun
 {
-  alun(alum paramalum) {}
+  public abstract void a();
   
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "check timeout. reqCookie:" + paramMessage.what);
-    }
-    alum.a(this.a, false, null, paramMessage.what);
-    return false;
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

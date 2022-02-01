@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import com.tencent.widget.XPanelContainer;
+import mqq.os.MqqHandler;
 
 public class aevy
-  extends anuw
+  extends anep
 {
-  public aevy(Leba paramLeba) {}
+  public aevy(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
   
-  protected void onGetWholePeopleVoteLebaSwitch(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba", 2, String.format(Locale.getDefault(), "onGetWholePeopleVoteLebaSwitch isSuc: %b cur: %b pre: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
+    this.a.b();
+    SendBirthdayWishesActivity.a(this.a, paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.a);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 0) {
+      this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
     }
-    if ((paramBoolean1) && (paramBoolean2 != paramBoolean3)) {
-      this.a.a.sendEmptyMessage(11340002);
+    if (paramInt != 2)
+    {
+      SendBirthdayWishesActivity.a(this.a).removeCallbacks(SendBirthdayWishesActivity.a(this.a));
+      SendBirthdayWishesActivity.a(this.a).postDelayed(SendBirthdayWishesActivity.a(this.a), 600L);
     }
   }
 }

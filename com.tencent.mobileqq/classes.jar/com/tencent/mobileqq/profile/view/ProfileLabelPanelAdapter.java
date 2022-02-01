@@ -10,10 +10,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ToggleButton;
-import asrd;
-import bacc;
-import bacd;
-import bacf;
+import ayqr;
+import ayqs;
+import ayqu;
+import com.tencent.mobileqq.emoticonview.PanelRecycleBin;
 import com.tencent.mobileqq.profile.ProfileLabelInfo;
 import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -26,16 +26,16 @@ public class ProfileLabelPanelAdapter
   public float a;
   protected int a;
   public Context a;
-  protected SparseArray<bacf> a;
-  protected asrd a;
-  protected bacc a;
-  public bacd a;
-  protected bacf a;
+  protected SparseArray<ayqu> a;
+  protected ayqr a;
+  public ayqs a;
+  protected ayqu a;
+  protected PanelRecycleBin a;
   protected List<ProfileLabelTypeInfo> a;
   
   public ProfileLabelPanelAdapter(Context paramContext, List<ProfileLabelTypeInfo> paramList)
   {
-    this.jdField_a_of_type_Asrd = new asrd();
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin = new PanelRecycleBin();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
@@ -57,32 +57,32 @@ public class ProfileLabelPanelAdapter
     if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
       this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     }
-    this.jdField_a_of_type_Bacf = ((bacf)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
-    if (this.jdField_a_of_type_Bacf == null)
+    this.jdField_a_of_type_Ayqu = ((ayqu)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    if (this.jdField_a_of_type_Ayqu == null)
     {
-      this.jdField_a_of_type_Bacf = new bacf(this, null);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Bacf);
+      this.jdField_a_of_type_Ayqu = new ayqu(this, null);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, this.jdField_a_of_type_Ayqu);
     }
     paramView = (GridView)paramView;
-    this.jdField_a_of_type_Bacf.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
-    paramView.setAdapter(this.jdField_a_of_type_Bacf);
+    this.jdField_a_of_type_Ayqu.a(((ProfileLabelTypeInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labels);
+    paramView.setAdapter(this.jdField_a_of_type_Ayqu);
   }
   
-  public void a(bacc parambacc)
+  public void a(ayqr paramayqr)
   {
-    this.jdField_a_of_type_Bacc = parambacc;
+    this.jdField_a_of_type_Ayqr = paramayqr;
   }
   
-  public void a(bacd parambacd)
+  public void a(ayqs paramayqs)
   {
-    this.jdField_a_of_type_Bacd = parambacd;
+    this.jdField_a_of_type_Ayqs = paramayqs;
   }
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
     GridView localGridView = (GridView)paramObject;
     ((ViewGroup)paramView).removeView(localGridView);
-    this.jdField_a_of_type_Asrd.a((View)paramObject);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.addScrapView((View)paramObject);
   }
   
   public int getCount()
@@ -92,7 +92,7 @@ public class ProfileLabelPanelAdapter
   
   public Object instantiateItem(View paramView, int paramInt)
   {
-    GridView localGridView2 = (GridView)this.jdField_a_of_type_Asrd.a();
+    GridView localGridView2 = (GridView)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.getScrapView();
     GridView localGridView1 = localGridView2;
     if (localGridView2 == null) {
       localGridView1 = a();
@@ -114,10 +114,10 @@ public class ProfileLabelPanelAdapter
     ToggleButton localToggleButton = (ToggleButton)paramView;
     localToggleButton.toggle();
     ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)paramView.getTag();
-    bacc localbacc;
+    ayqr localayqr;
     if (localProfileLabelInfo != null)
     {
-      localbacc = this.jdField_a_of_type_Bacc;
+      localayqr = this.jdField_a_of_type_Ayqr;
       if (localProfileLabelInfo.labelStatus != ProfileLabelInfo.STATUS_CHECKED) {
         break label64;
       }
@@ -125,7 +125,7 @@ public class ProfileLabelPanelAdapter
     label64:
     for (boolean bool = false;; bool = true)
     {
-      localbacc.a(localProfileLabelInfo, localToggleButton, Boolean.valueOf(bool));
+      localayqr.a(localProfileLabelInfo, localToggleButton, Boolean.valueOf(bool));
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }

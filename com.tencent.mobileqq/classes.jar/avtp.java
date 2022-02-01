@@ -1,74 +1,296 @@
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.hotpic.HotPicData;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.HashMap;
+import java.util.List;
+import org.json.JSONObject;
 
 public class avtp
-  extends avte
+  implements avtl
 {
-  public static URL b(String paramString)
+  private asxg jdField_a_of_type_Asxg;
+  private asxh jdField_a_of_type_Asxh;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  public avtp(QQAppInterface paramQQAppInterface)
   {
-    try
-    {
-      paramString = new URL("hot_pic_origin", "", paramString);
-      return paramString;
-    }
-    catch (MalformedURLException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  protected String a(HotPicData paramHotPicData)
+  private asxf a(int paramInt)
   {
-    return paramHotPicData.originalUrl;
-  }
-  
-  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramDownloadParams = (HotPicData)paramDownloadParams.mExtraInfo;
-    String str = a(paramDownloadParams);
-    File localFile = a(str);
-    if (localFile.exists())
+    QLog.i("MsgBackupFileProcessor<QFile>", 1, "getMsgBackupHandler: chatTYpe[" + paramInt + "]");
+    Object localObject1 = null;
+    if (paramInt == 1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "loadImageFile file exist:" + localFile.getAbsolutePath());
+      if (this.jdField_a_of_type_Asxg == null) {
+        this.jdField_a_of_type_Asxg = new asxg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
-      return localFile;
+      localObject1 = this.jdField_a_of_type_Asxg;
     }
-    localFile.getParentFile().mkdirs();
-    if ((bhjx.a()) && (bhjx.b() < 20971520L)) {
-      throw new IOException("SD card free space is " + bhjx.b());
-    }
-    Object localObject = new File(a);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdir();
-    }
-    int i = a(str, localFile);
-    if (i == 0)
+    for (;;)
     {
-      localObject = azul.a(localFile.getAbsolutePath());
-      if (!paramDownloadParams.originalMD5.equalsIgnoreCase((String)localObject))
+      Object localObject2 = localObject1;
+      if (localObject1 == null)
       {
-        localFile.delete();
-        paramURLDrawableHandler.onFileDownloadFailed(0);
-        return null;
+        QLog.i("MsgBackupFileProcessor<QFile>", 1, "getMsgBackupHandler: target backup handle is null");
+        if (this.jdField_a_of_type_Asxg == null) {
+          this.jdField_a_of_type_Asxg = new asxg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        }
+        localObject2 = this.jdField_a_of_type_Asxg;
       }
-      paramURLDrawableHandler.onFileDownloadSucceed(localFile.length());
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->0");
+      return localObject2;
+      if (paramInt == 2)
+      {
+        if (this.jdField_a_of_type_Asxg == null) {
+          this.jdField_a_of_type_Asxg = new asxg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        }
+        localObject1 = this.jdField_a_of_type_Asxg;
       }
-      return localFile;
+      else if (paramInt == 3)
+      {
+        if (this.jdField_a_of_type_Asxh == null) {
+          this.jdField_a_of_type_Asxh = new asxh(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        }
+        localObject1 = this.jdField_a_of_type_Asxh;
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->" + i);
+  }
+  
+  private asxf a(MessageRecord paramMessageRecord)
+  {
+    Object localObject = null;
+    if (paramMessageRecord.isMultiMsg)
+    {
+      paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType");
+      if (!TextUtils.isEmpty(paramMessageRecord))
+      {
+        if (Integer.parseInt(paramMessageRecord) != 3) {
+          break label72;
+        }
+        if (this.jdField_a_of_type_Asxh == null) {
+          this.jdField_a_of_type_Asxh = new asxh(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        }
+        localObject = this.jdField_a_of_type_Asxh;
+      }
     }
-    return null;
+    for (;;)
+    {
+      if (localObject == null) {
+        QLog.i("MsgBackupFileProcessor<QFile>", 1, "getMsgBackupHandler: target backup handle is null");
+      }
+      return localObject;
+      label72:
+      if (this.jdField_a_of_type_Asxg == null) {
+        this.jdField_a_of_type_Asxg = new asxg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      }
+      localObject = this.jdField_a_of_type_Asxg;
+      continue;
+      if ((paramMessageRecord instanceof MessageForFile))
+      {
+        if (this.jdField_a_of_type_Asxg == null) {
+          this.jdField_a_of_type_Asxg = new asxg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        }
+        localObject = this.jdField_a_of_type_Asxg;
+      }
+      else if ((paramMessageRecord instanceof MessageForTroopFile))
+      {
+        if (this.jdField_a_of_type_Asxh == null) {
+          this.jdField_a_of_type_Asxh = new asxh(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        }
+        localObject = this.jdField_a_of_type_Asxh;
+      }
+    }
+  }
+  
+  private HashMap<String, String> a(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return localHashMap;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        String str;
+        if (paramString.has("uint64_sender_uin"))
+        {
+          str = paramString.getString("uint64_sender_uin");
+          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo senderUin[" + str + "]");
+          localHashMap.put("uint64_sender_uin", str);
+        }
+        if (paramString.has("uint64_receiver_uin"))
+        {
+          str = paramString.getString("uint64_receiver_uin");
+          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo recvUin[" + str + "]");
+          localHashMap.put("uint64_receiver_uin", str);
+        }
+        int i;
+        if (paramString.has("uint32_file_type"))
+        {
+          i = paramString.getInt("uint32_file_type");
+          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo peerType[" + i + "]");
+          localHashMap.put("uint32_file_type", String.valueOf(i));
+        }
+        if (paramString.has("bytes_file_uuid"))
+        {
+          str = paramString.getString("bytes_file_uuid");
+          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo fileUuid[" + str + "]");
+          localHashMap.put("bytes_file_uuid", str);
+        }
+        if (paramString.has("str_file_name"))
+        {
+          str = paramString.getString("str_file_name");
+          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo fileName[" + str + "]");
+          localHashMap.put("str_file_name", str);
+        }
+        if (paramString.has("uint64_file_size"))
+        {
+          long l = paramString.getLong("uint64_file_size");
+          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo fileSize[" + l + "]");
+          localHashMap.put("uint64_file_size", String.valueOf(l));
+        }
+        if (paramString.has("md5"))
+        {
+          str = paramString.getString("md5");
+          if (!TextUtils.isEmpty(str))
+          {
+            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo fileMd5[" + str + "]");
+            localHashMap.put("md5", str);
+          }
+        }
+        if (paramString.has("md510"))
+        {
+          str = paramString.getString("md510");
+          if (!TextUtils.isEmpty(str))
+          {
+            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo file10Md5[" + str + "]");
+            localHashMap.put("md510", str);
+          }
+        }
+        if (paramString.has("sha"))
+        {
+          str = paramString.getString("sha");
+          if (!TextUtils.isEmpty(str))
+          {
+            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo sha[" + str + "]");
+            localHashMap.put("sha", str);
+          }
+        }
+        if (paramString.has("sha3"))
+        {
+          str = paramString.getString("sha3");
+          if (!TextUtils.isEmpty(str))
+          {
+            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo sha3[" + str + "]");
+            localHashMap.put("sha3", str);
+          }
+        }
+        if (paramString.has("uint32_img_width"))
+        {
+          i = paramString.getInt("uint32_img_width");
+          if (i != 0)
+          {
+            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo imgWidth[" + i + "]");
+            localHashMap.put("uint32_img_width", String.valueOf(i));
+          }
+        }
+        if (paramString.has("uint32_img_height"))
+        {
+          i = paramString.getInt("uint32_img_height");
+          if (i != 0)
+          {
+            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo imgWidth[" + i + "]");
+            localHashMap.put("uint32_img_height", String.valueOf(i));
+            return localHashMap;
+          }
+        }
+      }
+      catch (Exception paramString) {}
+    }
+    return localHashMap;
+  }
+  
+  private void a(String paramString1, String paramString2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MsgBackupFileProcessor<QFile>", 1, paramString2);
+    }
+  }
+  
+  public avty a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    avty localavty = new avty();
+    if (paramMsgBackupResEntity == null)
+    {
+      QLog.i("MsgBackupFileProcessor<QFile>", 1, "isNeedDownloadRes: res entity is null.");
+      localavty.a = false;
+      return localavty;
+    }
+    if (paramMsgBackupResEntity.msgType != 5)
+    {
+      QLog.i("MsgBackupFileProcessor<QFile>", 1, "isNeedDownloadRes: res entity is null.");
+      localavty.a = false;
+      return localavty;
+    }
+    String str = (String)a(paramMsgBackupResEntity.extraDataStr).get("uint32_file_type");
+    if (TextUtils.isEmpty(str))
+    {
+      QLog.i("MsgBackupFileProcessor<QFile>", 1, "isNeedDownloadRes: can not find chatType from extInfo. resInfo[" + paramMsgBackupResEntity.toLogString() + "]");
+      localavty.a = false;
+      return localavty;
+    }
+    localavty.a = a(Integer.parseInt(str)).a(paramMessageRecord, paramMsgBackupResEntity);
+    return localavty;
+  }
+  
+  public String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    paramMessageRecord = new File(asxf.b);
+    if (!paramMessageRecord.exists()) {
+      paramMessageRecord.mkdirs();
+    }
+    paramMessageRecord = new File(asxf.a);
+    if (!paramMessageRecord.exists()) {
+      paramMessageRecord.mkdirs();
+    }
+    return a(Integer.parseInt((String)a(paramMsgBackupResEntity.extraDataStr).get("uint32_file_type"))).a(paramMsgBackupResEntity);
+  }
+  
+  public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  {
+    asxf localasxf = a(paramMessageRecord);
+    if (localasxf != null) {
+      localasxf.a(paramMessageRecord, paramList);
+    }
+  }
+  
+  public boolean a(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForTroopFile)) {}
+    while ((paramMessageRecord instanceof MessageForFile)) {
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    return (paramMsgBackupResEntity != null) && (paramMsgBackupResEntity.msgType == 5);
+  }
+  
+  public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  {
+    asxf localasxf = a(paramMessageRecord);
+    if (localasxf != null) {
+      localasxf.b(paramMessageRecord, paramList);
+    }
   }
 }
 

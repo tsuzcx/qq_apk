@@ -1,23 +1,23 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
 import android.app.Activity;
-import bolg;
-import boll;
+import blpm;
+import blpr;
 import java.util.List;
 
 public class AEBottomListPart$7
   implements Runnable
 {
-  public AEBottomListPart$7(boll paramboll, List paramList) {}
+  public AEBottomListPart$7(blpr paramblpr, List paramList) {}
   
   public void run()
   {
-    if ((boll.a(this.this$0) != null) && (!boll.b(this.this$0).isFinishing()))
+    if ((blpr.a(this.this$0) != null) && (!blpr.b(this.this$0).isFinishing()))
     {
-      if (boll.b(this.this$0)) {
+      if (blpr.b(this.this$0)) {
         this.this$0.jdField_a_of_type_DovComQqImAeCameraUiBottomAEBottomListScrollView.setVisibility(0);
       }
-      this.this$0.jdField_a_of_type_Bolg.a(this.a);
+      this.this$0.jdField_a_of_type_Blpm.a(this.a);
     }
   }
 }

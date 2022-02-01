@@ -1,19 +1,43 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
-class pzq
-  implements pql
+public class pzq
 {
-  pzq(pzp parampzp, QQAppInterface paramQQAppInterface, String paramString) {}
-  
-  public void onLoadUserInfoFailed(String paramString1, String paramString2)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    pzp.a(this.jdField_a_of_type_Pzp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, "", true);
-  }
-  
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
-  {
-    pzp.a(this.jdField_a_of_type_Pzp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, paramReadInJoyUserInfo.faceUrl + "140", true);
+    JSONObject localJSONObject1 = new JSONObject();
+    localJSONObject1.put("id_test", new JSONObject());
+    JSONObject localJSONObject2 = new JSONObject();
+    String str;
+    if (paramBaseArticleInfo.mSinglePicture != null)
+    {
+      str = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_large_imge_url", str);
+      localJSONObject1.put("id_article_large_imge", localJSONObject2);
+      qai.a(paramBaseArticleInfo, localJSONObject1, true);
+      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
+        break label130;
+      }
+      qai.a(paramBaseArticleInfo, localJSONObject1);
+      qai.d(paramBaseArticleInfo, localJSONObject1);
+    }
+    for (;;)
+    {
+      qai.n(paramBaseArticleInfo, localJSONObject1);
+      qai.g(paramBaseArticleInfo, localJSONObject1);
+      qai.i(paramBaseArticleInfo, localJSONObject1);
+      qai.Z(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_large_cell");
+      qai.a(localJSONObject1, paramBaseArticleInfo);
+      qai.ac(paramBaseArticleInfo, localJSONObject1);
+      return localJSONObject1;
+      str = null;
+      break;
+      label130:
+      qai.f(paramBaseArticleInfo, localJSONObject1);
+    }
   }
 }
 

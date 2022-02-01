@@ -1,42 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.qphone.base.util.QLog;
-
-public class aptk
-  implements apsi
+class aptk
 {
-  public aptk(ARScanEntryView paramARScanEntryView) {}
+  public byte a;
+  public String a;
+  public byte b;
+  public String b = "";
   
-  public void a()
+  aptk(aptj paramaptj)
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResDownloadComplete ;" + this.a.m);
-    if (!this.a.m) {
-      return;
-    }
-    ARScanEntryView.a(this.a, 100);
-    ARScanEntryView.a(this.a).removeMessages(324);
-    ARScanEntryView.a(this.a).sendEmptyMessage(324);
-    this.a.k();
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResUpdateProgress " + paramInt + ";" + this.a.m);
-    if (!this.a.m) {
-      return;
-    }
-    ARScanEntryView.a(this.a, paramInt);
-    ARScanEntryView.a(this.a);
-  }
-  
-  public void b()
-  {
-    this.a.k();
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aptk
  * JD-Core Version:    0.7.0.1
  */

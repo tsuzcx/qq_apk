@@ -1,27 +1,20 @@
-import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class bneh
-  extends bndw
+  extends SimpleJob<Object>
 {
-  bneh(bneg parambneg, bndq parambndq, Context paramContext, bndr parambndr) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, float paramFloat, long paramLong) {}
-  
-  public void a(String paramString, int paramInt)
+  bneh(bnee parambnee, String paramString)
   {
-    if (paramInt == 2)
-    {
-      this.jdField_a_of_type_Bndq.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bndr);
-      return;
-    }
-    this.jdField_a_of_type_Bndq.a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bndr);
+    super(paramString);
   }
   
-  public void b(String paramString)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    this.jdField_a_of_type_Bndq.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bndr);
+    xwb.a("0X80076BC");
+    return null;
   }
 }
 

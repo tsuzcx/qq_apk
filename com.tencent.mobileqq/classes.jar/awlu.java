@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.component.network.utils.NetworkUtils;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awlu
-  implements awmo
+  implements View.OnClickListener
 {
-  public awlu(ListenTogetherManager paramListenTogetherManager, BaseActivity paramBaseActivity, int paramInt, String paramString) {}
+  public awlu(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if ((ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager)) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())) {
-      return;
+    if (!NetworkUtils.isNetworkAvailable(this.a)) {
+      QQToast.a(this.a, 1, 2131694064, 1).a();
     }
-    ListenTogetherManager.a(ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager)).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1002);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.d();
+      this.a.a("invite_page", "clk_exit");
+    }
   }
-  
-  public void b() {}
 }
 
 

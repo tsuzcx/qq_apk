@@ -1,15 +1,11 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 public class bfbt
-  extends bfbw
 {
   public int a;
-  public ArrayList<bewy> a = new ArrayList();
-  public byte[] a;
-  public int b;
-  public byte[] b;
-  public byte[] c;
-  public byte[] d;
+  public String a;
+  
+  public bfbt(TroopFileTransferManager paramTroopFileTransferManager) {}
 }
 
 

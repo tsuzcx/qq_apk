@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.entry;
 
-import apeb;
+import anxn;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class MiniAppDesktop$4
@@ -11,14 +11,14 @@ class MiniAppDesktop$4
   public void run()
   {
     if (this.val$app == null) {}
-    apeb localapeb;
+    anxn localanxn;
     do
     {
       return;
-      localapeb = (apeb)this.val$app.a(148);
-    } while (localapeb == null);
-    localapeb.a();
-    localapeb.c();
+      localanxn = (anxn)this.val$app.getBusinessHandler(148);
+    } while (localanxn == null);
+    localanxn.a();
+    localanxn.c();
   }
 }
 

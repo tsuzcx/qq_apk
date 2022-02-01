@@ -1,18 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.MessageForMarketFace;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
-public final class agii
-  implements Parcelable.Creator<ForwardUtils.SectionBase>
+class agii
+  implements bjoe
 {
-  public ForwardUtils.SectionBase a(Parcel paramParcel)
-  {
-    return new ForwardUtils.SectionBase(paramParcel);
-  }
+  agii(agif paramagif, PicEmoticonInfo paramPicEmoticonInfo, bjnw parambjnw, MessageForMarketFace paramMessageForMarketFace) {}
   
-  public ForwardUtils.SectionBase[] a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new ForwardUtils.SectionBase[paramInt];
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon.jobType != 1) {
+        break;
+      }
+    }
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon.jobType == 3) {}
+      for (boolean bool2 = true;; bool2 = false)
+      {
+        EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Agif.b, this.jdField_a_of_type_Agif.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon.epId, bool1, bool2);
+        this.jdField_a_of_type_Bjnw.cancel();
+        return;
+      }
+      acvv.a(this.jdField_a_of_type_Agif.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agif.b, this.jdField_a_of_type_Agif.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.uniseq);
+      this.jdField_a_of_type_Bjnw.cancel();
+      return;
+    }
   }
 }
 

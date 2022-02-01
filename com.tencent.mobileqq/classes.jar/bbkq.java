@@ -1,23 +1,13 @@
 public class bbkq
-  implements bbkr
 {
-  public void a(int paramInt, Throwable paramThrowable) {}
-  
-  public void a(long paramLong) {}
-  
-  public void b(long paramLong) {}
-  
-  public void f() {}
-  
-  public void g() {}
-  
-  public void i() {}
-  
-  public void l() {}
+  public long a;
+  public String a;
+  public boolean a = true;
+  public boolean b = true;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbkq
  * JD-Core Version:    0.7.0.1
  */

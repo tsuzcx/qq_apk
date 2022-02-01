@@ -1,14 +1,34 @@
-import android.media.MediaScannerConnection.OnScanCompletedListener;
-import android.net.Uri;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
 import com.tencent.qphone.base.util.QLog;
 
-final class auoa
-  implements MediaScannerConnection.OnScanCompletedListener
+public final class auoa
+  extends BroadcastReceiver
 {
-  public void onScanCompleted(String paramString, Uri paramUri)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.i("FilePathUtil<FileAssistant>", 1, "MediaScannerConnection Scanned:\n" + paramString + ":\nuri=" + paramUri);
+    if (QLog.isColorLevel()) {
+      QLog.d("HuayangPluginLauncher", 2, "onReceive ACTION_FORCE_UPDATE");
+    }
+    if (TextUtils.equals(paramIntent.getAction(), "action_iv_plugin_update"))
+    {
+      paramIntent = (InstalledPlugin)paramIntent.getSerializableExtra("plugin");
+      if (paramIntent != null)
+      {
+        boolean bool = auod.a(paramContext, paramIntent).a();
+        if (QLog.isColorLevel()) {
+          QLog.d("HuayangPluginLauncher", 2, "onReceive isCalled:" + bool);
+        }
+        if (!bool)
+        {
+          com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity.a = 0L;
+          Process.killProcess(Process.myPid());
+        }
+      }
     }
   }
 }

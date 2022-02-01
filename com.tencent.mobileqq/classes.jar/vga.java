@@ -1,26 +1,9 @@
-class vga
-  implements aabr
+public class vga
 {
-  vga(vfx paramvfx) {}
-  
-  public void a(aabu paramaabu, Object paramObject)
-  {
-    if (paramaabu.e()) {
-      if (vfx.a(this.a) != null) {
-        vfx.a(this.a).a(vfx.a(this.a), vfx.b(this.a), true, false);
-      }
-    }
-    do
-    {
-      return;
-      if (paramaabu.d())
-      {
-        vfx.a(this.a, false);
-        return;
-      }
-    } while (!paramaabu.c());
-    vfx.a(this.a, true);
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

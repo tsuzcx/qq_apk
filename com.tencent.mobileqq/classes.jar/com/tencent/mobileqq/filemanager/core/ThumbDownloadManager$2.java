@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atym;
+import askw;
 
 public class ThumbDownloadManager$2
   implements Runnable
 {
-  public ThumbDownloadManager$2(atym paramatym, String paramString) {}
+  public ThumbDownloadManager$2(askw paramaskw, String paramString) {}
   
   public void run()
   {
-    atym.a(this.this$0, this.a);
-    atym.b(this.this$0, this.a);
+    askw.a(this.this$0, this.a);
+    askw.b(this.this$0, this.a);
   }
 }
 

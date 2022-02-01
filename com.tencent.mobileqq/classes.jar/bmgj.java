@@ -1,9 +1,11 @@
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.SmartFilterReqItem;
+import java.util.ArrayList;
 
-public class bmgj
+public abstract interface bmgj
 {
-  static final Executor a = ;
+  public abstract void a(int paramInt);
+  
+  public abstract void a(ArrayList<SmartFilterReqItem> paramArrayList);
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.qav.observer;
 
-import bkdw;
-import bkdx;
+import bijh;
+import biji;
 
 public class FilterableObservable$1
   implements Runnable
 {
-  public FilterableObservable$1(bkdw parambkdw, bkdx parambkdx, int paramInt, Object[] paramArrayOfObject) {}
+  public FilterableObservable$1(bijh parambijh, biji parambiji, int paramInt, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bkdx.update(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    this.jdField_a_of_type_Biji.update(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
   }
 }
 

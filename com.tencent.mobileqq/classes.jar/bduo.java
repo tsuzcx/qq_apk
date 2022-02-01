@@ -1,21 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.studymode.ModeRadioGroup;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.activity.TroopNickRuleFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-public final class bduo
-  implements View.OnClickListener
+public class bduo
+  extends andd
 {
-  public bduo(ModeRadioGroup paramModeRadioGroup, int paramInt) {}
+  public bduo(TroopNickRuleFragment paramTroopNickRuleFragment) {}
   
-  public final void onClick(View paramView)
+  public void onModifyTroopNickRule(boolean paramBoolean, long paramLong1, long paramLong2, String paramString)
   {
-    if (ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup)) {
-      ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup, this.jdField_a_of_type_Int, true, false, 4, null);
+    if (paramBoolean)
+    {
+      QLog.d("TroopNickRuleFragment", 2, "onModifyTroopNickRule success uin = " + paramLong1);
+      if (TroopNickRuleFragment.a(this.a).equals(String.valueOf(paramLong1))) {
+        this.a.c();
+      }
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.i("TroopNickRuleFragment", 2, "onModifyTroopNickRule failed errCode = " + paramLong2 + ", errInfo = " + paramString);
+    paramString = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    int i;
+    QQAppInterface localQQAppInterface;
+    String str;
+    if (paramLong2 == 1298L)
+    {
+      i = 2131719273;
+      QQToast.a(paramString, i, 0).a();
+      localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      str = String.valueOf(TroopNickRuleFragment.a(this.a));
+      if (paramLong2 != 1298L) {
+        break label191;
+      }
+    }
+    label191:
+    for (paramString = "3";; paramString = "1")
+    {
+      localQQAppInterface.reportClickEvent("dc00899", "Grp_set", "", "nickname rule", "nickname rule_sub_failure", 0, 0, str, paramString, "", "");
+      return;
+      i = 2131719272;
+      break;
+    }
   }
 }
 

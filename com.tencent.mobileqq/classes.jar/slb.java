@@ -1,8 +1,83 @@
-import android.view.MotionEvent;
+import android.view.View;
+import android.widget.PopupWindow;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract interface slb
+public class slb
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
+  private List<bjtk> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private List<Float> b = new ArrayList();
+  
+  private void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if ((this.jdField_a_of_type_Boolean) && (this.b.isEmpty()))
+    {
+      this.b.add(Float.valueOf(0.941F));
+      this.b.add(Float.valueOf(1.0F));
+      this.b.add(Float.valueOf(1.118F));
+      this.b.add(Float.valueOf(1.235F));
+      this.b.add(Float.valueOf(1.353F));
+    }
+  }
+  
+  private float b(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.b.size())) {
+      return ((Float)this.b.get(paramInt)).floatValue();
+    }
+    return 1.0F;
+  }
+  
+  public float a(int paramInt)
+  {
+    float f2 = 0.0F;
+    float f1;
+    if (this.jdField_a_of_type_Boolean) {
+      f1 = b(paramInt);
+    }
+    do
+    {
+      do
+      {
+        return f1;
+        f1 = f2;
+      } while (this.jdField_a_of_type_JavaUtilList == null);
+      f1 = f2;
+    } while (paramInt >= this.jdField_a_of_type_JavaUtilList.size());
+    return ((bjtk)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a();
+  }
+  
+  public slb a(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 83, 0, 0);
+    }
+    return this;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+      this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing());
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    }
+  }
 }
 
 

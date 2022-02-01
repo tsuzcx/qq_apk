@@ -1,111 +1,187 @@
 import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.qwallet.RedPacketVoiceFragment;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.data.KplRoleInfo.WZRYUIinfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONObject;
+import java.util.List;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-class aige
-  implements View.OnClickListener
+public class aige
+  extends amwl
 {
-  aige(aifz paramaifz) {}
+  public aige(SystemMsgListView paramSystemMsgListView) {}
   
-  public void onClick(View paramView)
+  public void onAddFriendByContact(String paramString)
   {
-    if (paramView.getTag() == null) {}
+    if (SystemMsgListView.a(this.a) != null) {
+      SystemMsgListView.a(this.a).c();
+    }
+  }
+  
+  protected void onGetDelSystemMsgError()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetDelSystemMsgError");
+    }
+    this.a.k();
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1016);
+  }
+  
+  protected void onGetDelSystemMsgFin(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetDelSystemMsgFin.bengin");
+    }
+    this.a.k();
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.newfriendSystemMsgListView", 2, "onGetDelSystemMsgFin.success");
+      }
+      if (SystemMsgListView.a(this.a) != null) {
+        SystemMsgListView.a(this.a).c();
+      }
+    }
+    while (!paramBoolean2) {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1016);
+  }
+  
+  protected void onGetSystemMsgFin(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetSystemMsgFin.bengin");
+    }
+    if (((Activity)SystemMsgListView.a(this.a)).isFinishing()) {}
+    while (!paramBoolean1) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetSystemMsgFin.success");
+    }
+    try
+    {
+      if (SystemMsgListView.a(this.a) != null) {
+        SystemMsgListView.a(this.a).c();
+      }
+      this.a.i();
+      return;
+    }
+    catch (Exception paramList)
+    {
+      paramList.printStackTrace();
+    }
+  }
+  
+  protected void onSendSystemMsgActionError(String paramString)
+  {
+    if (this.a.jdField_a_of_type_Aidp.a())
+    {
+      paramString = SystemMsgListView.a(this.a).getResources().getString(2131718765);
+      QQToast.a(SystemMsgListView.a(this.a), 1, paramString, 0).b(this.a.a());
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("Q.newfriendSystemMsgListView", 2, "onSendSystemMsgActionError");
+  }
+  
+  protected void onSendSystemMsgActionFin(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    long l1 = bcsy.a().b();
+    if (!TextUtils.isEmpty(paramString1)) {}
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.a.jdField_a_of_type_Alad != null) {
-        this.a.jdField_a_of_type_Alad.a(2);
-      }
-      long l = System.currentTimeMillis();
-      if (alik.a(aifz.jdField_a_of_type_Long, l))
+      structmsg.StructMsg localStructMsg;
+      try
       {
-        aifz.jdField_a_of_type_Long = l;
-        MessageForQQWalletMsg localMessageForQQWalletMsg = (MessageForQQWalletMsg)paramView.getTag();
-        Object localObject1 = localMessageForQQWalletMsg.mQQWalletRedPacketMsg;
-        Object localObject2 = (akwu)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(125);
-        if (nlj.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
-        {
-          ((akwu)localObject2).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 2);
-          if (QLog.isColorLevel()) {
-            QLog.d("PasswdRedBagManager", 2, "current is in Anonymous, dont show passwdredbag tips");
-          }
+        l2 = Long.parseLong(paramString1);
+        l1 = l2;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1012);
+        localStructMsg = bcsy.a().a(Long.valueOf(l1));
+        if (this.a.jdField_a_of_type_Aidp.a()) {
+          break label90;
         }
-        else
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.newfriendSystemMsgListView", 2, "onSendSystemMsgActionFin");
+        }
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        paramString1.printStackTrace();
+      }
+      continue;
+      label90:
+      if (!paramBoolean)
+      {
+        if (!TextUtils.isEmpty(paramString3)) {}
+        for (;;)
         {
-          if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
-          {
-            localObject3 = (bgsl)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(48);
-            boolean bool = ((bgsl)localObject3).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-            localObject3 = ((bgsl)localObject3).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, false);
-            if ((bool) || ((localObject3 != null) && (((bgsr)localObject3).jdField_a_of_type_Boolean)))
-            {
-              ((akwu)localObject2).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 2);
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.d("PasswdRedBagManager", 2, "current is in TroopMemberGag, dont show passwdredbag tips");
-              continue;
-            }
+          QQToast.a(SystemMsgListView.a(this.a), 1, paramString3, 0).b(this.a.a());
+          bcta.a(localStructMsg, paramInt3, paramString2, paramString4);
+          return;
+          paramString3 = SystemMsgListView.a(this.a).getResources().getString(2131718115);
+        }
+      }
+      paramString1 = SystemMsgListView.a(this.a).getResources().getString(2131692460);
+      QQToast.a(SystemMsgListView.a(this.a), 2, paramString1, 0).b(this.a.a());
+      long l2 = bcsy.a().a();
+      bcta.a(localStructMsg, paramInt1, paramString2, paramInt2);
+      if ((l2 != 0L) && (localStructMsg != null)) {}
+      try
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().updateMsgContentByUniseq(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, l2, localStructMsg.toByteArray());
+        if ((paramInt1 != 0) || (localStructMsg == null)) {
+          continue;
+        }
+        paramString3 = new Bundle();
+        paramString3.putString("base_uin", String.valueOf(localStructMsg.req_uin.get()));
+        paramString2 = localStructMsg.msg.req_uin_nick.get();
+        paramString1 = paramString2;
+        if (TextUtils.isEmpty(paramString2)) {
+          paramString1 = String.valueOf(localStructMsg.req_uin.get());
+        }
+        paramString3.putString("base_nick", paramString1);
+        paramString3.putInt("verfy_type", localStructMsg.msg.sub_type.get());
+        paramString3.putString("verfy_msg", localStructMsg.msg.msg_additional.get());
+        if (aigj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(localStructMsg.req_uin.get()), localStructMsg, false))
+        {
+          paramString4 = new String(localStructMsg.msg.bytes_game_nick.get().toByteArray());
+          paramString2 = paramString1;
+          if (!TextUtils.isEmpty(paramString4)) {
+            paramString2 = KplRoleInfo.WZRYUIinfo.buildNickName(paramString1, paramString4);
           }
-          Object localObject3 = ((akwu)localObject2).a(((QQWalletRedPacketMsg)localObject1).redPacketId);
-          l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-          if ((localObject3 != null) && ((((akwt)localObject3).jdField_a_of_type_Boolean) || (((akwt)localObject3).b) || (((akwt)localObject3).c) || (((akwt)localObject3).jdField_a_of_type_Long < l)))
-          {
-            ((akwu)localObject2).a(((QQWalletRedPacketMsg)localObject1).redPacketId, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-            l = VACDReportUtil.a(null, "qqwallet", "graphb", "pwd.click", "msgType=13", 0, null);
-            localObject1 = aljb.b(localMessageForQQWalletMsg);
-            ((akwu)localObject2).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (akwt)localObject3, l, 65536, (String)localObject1, localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.skinId, localMessageForQQWalletMsg.fromHBList, null);
-            if (QLog.isColorLevel()) {
-              QLog.d("PasswdRedBagManager", 2, "click open passwdredbag, isPasswdRedBagOpen=" + ((akwt)localObject3).jdField_a_of_type_Boolean + ",isPasswdRedBagFinish=" + ((akwt)localObject3).b + ",isPasswdRedBagOverDue=" + ((akwt)localObject3).c);
-            }
-          }
-          else
-          {
-            localObject2 = new Intent();
-            if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-              ((Intent)localObject2).putExtra("session", this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-            }
-            ((Intent)localObject2).putExtra("uniseq", localMessageForQQWalletMsg.uniseq);
-            ((Intent)localObject2).putExtra("public_fragment_window_feature", 1);
-            localObject3 = localMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId;
-            Object localObject4 = localMessageForQQWalletMsg.mQQWalletRedPacketMsg.authkey;
-            Object localObject5 = alik.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-            int j = ((Bundle)localObject5).getInt("groupType");
-            localObject5 = ((Bundle)localObject5).getString("name");
-            int i = 0;
-            if (localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem != null) {
-              i = localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.resourceType;
-            }
-            localObject3 = alik.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, j, (String)localObject5, (String)localObject3, (String)localObject4, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "appid#1344242394|bargainor_id#1000030201|channel#detailtips", "redgiftDetail", null, localMessageForQQWalletMsg.mQQWalletRedPacketMsg.redChannel, i, localMessageForQQWalletMsg.fromHBList);
-            localObject4 = new Bundle();
-            ((Bundle)localObject4).putString("json", ((JSONObject)localObject3).toString());
-            ((Bundle)localObject4).putString("callbackSn", "0");
-            ((Intent)localObject2).putExtra("detail_bundle", (Bundle)localObject4);
-            ((Intent)localObject2).putExtra("fromHBList", localMessageForQQWalletMsg.fromHBList);
-            ((Intent)localObject2).putExtra("redPacketId", localMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId);
-            if (!(paramView.getContext() instanceof Activity)) {
-              ((Intent)localObject2).addFlags(268435456);
-            }
-            afez.a(paramView.getContext(), (Intent)localObject2, PublicTransFragmentActivity.class, RedPacketVoiceFragment.class);
-            if (QLog.isColorLevel()) {
-              QLog.d("PasswdRedBagManager", 2, "show passwdredbag tips = " + ((QQWalletRedPacketMsg)localObject1).elem.title);
-            }
+          paramString3.putString("base_nick", paramString2);
+          paramString3.putBoolean("isFromWzry", true);
+        }
+        AutoRemarkActivity.a(this.a.jdField_a_of_type_Aidp.getActivity(), 0, String.valueOf(localStructMsg.req_uin.get()), l1, paramString3);
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        for (;;)
+        {
+          paramString1.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.newfriendSystemMsgListView", 2, "onSendSystemMsgActionFin Exception!");
           }
         }
       }

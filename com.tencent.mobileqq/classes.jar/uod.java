@@ -1,19 +1,52 @@
-public abstract class uod
+import UserGrowth.stFriendFeed;
+import UserGrowth.stSimpleMetaFeed;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+
+public class uod
 {
-  private int a;
-  
-  public uod(int paramInt)
+  public static List<uof> a(stFriendFeed paramstFriendFeed)
   {
-    this.a = paramInt;
+    if (paramstFriendFeed == null) {
+      return Collections.emptyList();
+    }
+    paramstFriendFeed = paramstFriendFeed.friendFeeds;
+    if ((paramstFriendFeed == null) || (paramstFriendFeed.size() == 0)) {
+      return Collections.emptyList();
+    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(a((stSimpleMetaFeed)paramstFriendFeed.get(0)));
+    int i = 1;
+    while (i < paramstFriendFeed.size())
+    {
+      Object localObject = (stSimpleMetaFeed)paramstFriendFeed.get(i);
+      uof localuof = (uof)localArrayList.get(localArrayList.size() - 1);
+      if (!localuof.a((stSimpleMetaFeed)localObject))
+      {
+        a(localuof);
+        localObject = a((stSimpleMetaFeed)localObject);
+        ((uof)localObject).a(i);
+        localArrayList.add(localObject);
+      }
+      i += 1;
+    }
+    a((uof)localArrayList.get(localArrayList.size() - 1));
+    ulf.a().c(localArrayList);
+    return localArrayList;
   }
   
-  abstract String a();
-  
-  abstract String b();
-  
-  public String c()
+  private static uof a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    return uqt.a(this.a);
+    uof localuof = new uof();
+    localuof.a(paramstSimpleMetaFeed);
+    return localuof;
+  }
+  
+  private static void a(uof paramuof)
+  {
+    paramuof.a(ulf.a().a().contains(paramuof.a()));
   }
 }
 

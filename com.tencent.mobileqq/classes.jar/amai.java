@@ -1,6 +1,16 @@
 public abstract interface amai
 {
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, String paramString);
+  
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void e();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 

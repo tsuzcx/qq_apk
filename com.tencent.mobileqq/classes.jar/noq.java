@@ -1,86 +1,71 @@
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import java.util.HashMap;
 
-public class noq
-  extends nor
+class noq
+  implements ITMAssistantDownloadClientListener
 {
-  protected int a;
-  protected int b;
+  noq(nop paramnop) {}
   
-  public static noq a(ByteBuffer paramByteBuffer)
+  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
   {
-    return a(paramByteBuffer, new noq());
+    if (paramTMAssistantDownloadClient == null) {}
+    do
+    {
+      return;
+      paramTMAssistantDownloadClient = (nok)nop.a().get(paramString);
+    } while ((paramTMAssistantDownloadClient == null) || (paramTMAssistantDownloadClient.a == null));
+    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+    paramTMAssistantDownloadClient.a.progress(i);
   }
   
-  public static noq a(ByteBuffer paramByteBuffer, noq paramnoq)
+  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    paramByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-    if (paramByteBuffer.capacity() < paramByteBuffer.position() + 4) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("OfflineDownload", 2, "task onDownloadSDKTaskStateChanged + url = " + paramString1 + ", state = " + paramInt1 + ", errorCode = " + paramInt2);
     }
-    return paramnoq.a(paramByteBuffer.getInt(paramByteBuffer.position()) + paramByteBuffer.position(), paramByteBuffer);
-  }
-  
-  private int b(int paramInt)
-  {
-    paramInt = (paramInt + 2) * 2;
-    if (paramInt < this.b) {
-      return this.jdField_a_of_type_JavaNioByteBuffer.getShort(paramInt + this.jdField_a_of_type_Int);
-    }
-    return 0;
-  }
-  
-  public long a(int paramInt, long paramLong)
-  {
-    paramInt = b(paramInt);
-    if (paramInt != 0) {
-      paramLong = this.jdField_a_of_type_JavaNioByteBuffer.getLong(paramInt + this.c);
-    }
-    return paramLong;
-  }
-  
-  public String a(int paramInt)
-  {
-    paramInt = b(paramInt);
-    if (paramInt != 0) {
-      return b(paramInt + this.c);
-    }
-    return null;
-  }
-  
-  public nop a(int paramInt)
-  {
-    return a(paramInt, new nop());
-  }
-  
-  public nop a(int paramInt, nop paramnop)
-  {
-    paramInt = b(paramInt);
-    if (paramInt != 0) {
-      return paramnop.a(a(paramInt + this.c), this.jdField_a_of_type_JavaNioByteBuffer);
-    }
-    return null;
-  }
-  
-  public noq a(int paramInt, ByteBuffer paramByteBuffer)
-  {
-    if ((paramInt < 0) || (paramByteBuffer.capacity() < paramInt + 4)) {
-      paramByteBuffer = null;
+    if (paramTMAssistantDownloadClient == null) {
+      this.a.a(null, paramString1, null, -1, "client is null, " + paramString2);
     }
     do
     {
-      return paramByteBuffer;
-      this.c = paramInt;
-      this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
-      this.jdField_a_of_type_Int = (this.c - this.jdField_a_of_type_JavaNioByteBuffer.getInt(this.c));
-      if (!a(this.jdField_a_of_type_Int, 2)) {
-        return null;
-      }
-      this.b = this.jdField_a_of_type_JavaNioByteBuffer.getShort(this.jdField_a_of_type_Int);
-      paramByteBuffer = this;
-    } while (a(this.jdField_a_of_type_Int, this.b));
-    return null;
+      do
+      {
+        do
+        {
+          return;
+          paramString2 = (nok)nop.a().get(paramString1);
+          if ((paramString2 == null) || (paramString2.a == null))
+          {
+            this.a.a(null, paramString1, null, -1, "download info is null or callback is null");
+            return;
+          }
+          switch (paramInt1)
+          {
+          default: 
+            return;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("OfflineDownload", 2, "task downloading + url = " + paramString1);
+        return;
+        this.a.a(paramTMAssistantDownloadClient, paramString2, paramString1);
+        return;
+        this.a.a(paramString2.a, paramString1, paramString2.c, paramInt2, "offline zip download fail");
+        try
+        {
+          this.a.a.cancelDownloadTask(paramString1);
+          return;
+        }
+        catch (Exception paramTMAssistantDownloadClient) {}
+      } while (!QLog.isDevelopLevel());
+      QLog.d("OfflineDownload", 4, paramTMAssistantDownloadClient.toString());
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("OfflineDownload", 2, "task paused + url = " + paramString1);
   }
+  
+  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
 }
 
 

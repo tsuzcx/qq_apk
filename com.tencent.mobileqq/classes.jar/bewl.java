@@ -1,26 +1,45 @@
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
+
 public class bewl
-  extends bewn
+  extends andd
 {
-  private int a = 480000;
-  private int b = 9;
-  private int c = 3;
-  private int d = 20000;
-  private int e = 40000;
-  private int f = 5000;
+  public bewl(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public int a()
+  public void onQueryJoinTroopCanNoVerify(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    return this.d;
-  }
-  
-  public int b()
-  {
-    return this.e;
+    if (QLog.isColorLevel()) {
+      QLog.d("VisitorTroopCardFragment.Activity", 2, "onQueryJoinTroopCanNoVerify result:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VisitorTroopCardFragment.Activity", 2, "onQueryJoinTroopCanNoVerify noVerify:" + paramInt);
+      }
+      this.a.b = paramInt;
+      if (this.a.b == 1)
+      {
+        if (this.a.a.isHomeworkTroop())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("VisitorTroopCardFragment.Activity", 2, "onQueryJoinTroopCanNoVerify isHomeworkTroop true");
+          }
+          this.a.b(1);
+          return;
+        }
+        this.a.e();
+        return;
+      }
+      VisitorTroopCardFragment.b(this.a);
+      return;
+    }
+    VisitorTroopCardFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bewl
  * JD-Core Version:    0.7.0.1
  */

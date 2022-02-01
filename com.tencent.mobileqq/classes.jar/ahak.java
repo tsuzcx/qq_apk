@@ -1,297 +1,242 @@
-import android.text.TextUtils;
-import com.tencent.ark.ark.RuntimeClassCallbackWrapper;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import android.os.Looper;
+import android.support.v4.util.ArrayMap;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class ahak
-  implements ahaj, ark.RuntimeClassCallbackWrapper
 {
-  private ahai jdField_a_of_type_Ahai;
-  private ark.VariantWrapper jdField_a_of_type_ComTencentArkArk$VariantWrapper;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private int jdField_a_of_type_Int;
+  private ArrayMap<String, List<Object>> jdField_a_of_type_AndroidSupportV4UtilArrayMap = new ArrayMap();
+  private ArrayMap<String, Boolean> b = new ArrayMap();
   
-  public ahak(QQAppInterface paramQQAppInterface, String paramString)
+  private int a(String paramString, int paramInt, List<Object> paramList)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-  }
-  
-  private void a(ark.VariantWrapper paramVariantWrapper)
-  {
-    if (this.jdField_a_of_type_ComTencentArkArk$VariantWrapper != null)
+    a();
+    if ((paramString == null) || (paramInt <= 0) || (paramList == null)) {
+      return -1;
+    }
+    int i = 0;
+    while (i < paramList.size())
     {
-      this.jdField_a_of_type_ComTencentArkArk$VariantWrapper.Reset();
-      this.jdField_a_of_type_ComTencentArkArk$VariantWrapper = null;
+      Object localObject = paramList.get(i);
+      if (((localObject instanceof String)) && (((String)localObject).equals(paramString))) {
+        return i + paramInt;
+      }
+      i += 1;
     }
-    if (paramVariantWrapper != null) {
-      this.jdField_a_of_type_ComTencentArkArk$VariantWrapper = paramVariantWrapper.Copy();
-    }
+    return -1;
   }
   
-  private void b()
+  private void a(int paramInt, String paramString, List<Object> paramList)
   {
-    if (this.jdField_a_of_type_Ahai != null)
-    {
-      this.jdField_a_of_type_Ahai.a(null);
-      this.jdField_a_of_type_Ahai.a();
-      this.jdField_a_of_type_Ahai = null;
-    }
-  }
-  
-  public boolean Destruct()
-  {
-    b();
-    a(null);
-    return true;
-  }
-  
-  public boolean HasMethod(String paramString)
-  {
-    return (paramString.equals("Open")) || (paramString.equals("Abort")) || (paramString.equals("AttachEvent")) || (paramString.equals("DetachEvent")) || (paramString.equals("Send")) || (paramString.equals("SetTimeout")) || (paramString.equals("IsSuccess")) || (paramString.equals("GetData"));
-  }
-  
-  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
+    a();
+    if ((paramString == null) || (paramInt < 0) || (paramList == null)) {}
     do
     {
-      return false;
-      if (paramString.equals("Open")) {
-        return a(paramArrayOfVariantWrapper, paramVariantWrapper);
-      }
-      if (paramString.equals("Abort")) {
-        return b(paramArrayOfVariantWrapper, paramVariantWrapper);
-      }
-      if (paramString.equals("AttachEvent")) {
-        return c(paramArrayOfVariantWrapper, paramVariantWrapper);
-      }
-      if (paramString.equals("DetachEvent")) {
-        return d(paramArrayOfVariantWrapper, paramVariantWrapper);
-      }
-      if (paramString.equals("Send")) {
-        return e(paramArrayOfVariantWrapper, paramVariantWrapper);
-      }
-      if (paramString.equals("SetTimeout")) {
-        return f(paramArrayOfVariantWrapper, paramVariantWrapper);
-      }
-      if (paramString.equals("IsSuccess")) {
-        return g(paramArrayOfVariantWrapper, paramVariantWrapper);
-      }
-    } while (!paramString.equals("GetData"));
-    return h(paramArrayOfVariantWrapper, paramVariantWrapper);
+      return;
+      paramString = (List)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString);
+    } while (paramString == null);
+    int i = paramString.size();
+    while ((i > 0) && (paramInt < paramList.size()))
+    {
+      paramList.remove(paramInt);
+      i -= 1;
+    }
+    paramInt = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (paramString.size() + paramInt);
   }
   
-  public boolean IsModule()
+  private void b(int paramInt, String paramString, List<Object> paramList)
   {
-    return false;
-  }
-  
-  protected String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
+    a();
+    if ((paramString == null) || (paramInt < 0) || (paramList == null)) {}
     do
     {
-      return null;
-      i = paramString.indexOf("://");
-    } while (i < 0);
-    return paramString.substring(0, i);
+      return;
+      paramString = (List)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString);
+    } while (paramString == null);
+    paramList.addAll(paramInt, paramString);
+    this.jdField_a_of_type_Int -= paramString.size();
+  }
+  
+  public int a()
+  {
+    a();
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public List<Object> a(String paramString)
+  {
+    a();
+    return (List)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Ahai == null) {}
-    while ((this.jdField_a_of_type_ComTencentArkArk$VariantWrapper == null) || (!this.jdField_a_of_type_ComTencentArkArk$VariantWrapper.IsFunction())) {
-      return;
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      throw new RuntimeException("This method must be called on UI thread");
     }
-    this.jdField_a_of_type_ComTencentArkArk$VariantWrapper.InvokeDefault(null, null);
   }
   
-  protected boolean a(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public void a(List<Object> paramList, int paramInt)
   {
-    b();
-    if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2)) {}
+    a();
+    if ((paramList == null) || (paramInt <= 0)) {}
     for (;;)
     {
-      paramVariantWrapper.SetBool(false);
-      return true;
-      paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[1].GetString();
-      if (!TextUtils.isEmpty(paramArrayOfVariantWrapper))
+      return;
+      int i = 0;
+      while (i < paramList.size())
       {
-        Object localObject = a(paramArrayOfVariantWrapper);
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equalsIgnoreCase("sso")))
+        Object localObject = paramList.get(i);
+        if (((localObject instanceof String)) && (this.b.get((String)localObject) != null) && (!((Boolean)this.b.get((String)localObject)).booleanValue()) && (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject) != null)) {
+          paramList.addAll(i + paramInt, (Collection)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject));
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, List<Object> paramList)
+  {
+    a();
+    if ((paramList == null) || (paramInt <= 0)) {}
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.clear();
+      Object localObject2 = null;
+      int i = 0;
+      Object localObject3;
+      if (i < paramList.size())
+      {
+        localObject3 = paramList.get(i);
+        if ((localObject3 instanceof String))
         {
-          localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if (localObject != null) {}
-          for (this.jdField_a_of_type_Ahai = new ahav((QQAppInterface)localObject, this.jdField_a_of_type_JavaLangString); this.jdField_a_of_type_Ahai.a(paramArrayOfVariantWrapper); this.jdField_a_of_type_Ahai = new ahat(this.jdField_a_of_type_JavaLangString))
+          localObject2 = (List)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject3);
+          localObject1 = localObject2;
+          if (localObject2 == null)
           {
-            paramVariantWrapper.SetBool(true);
-            return true;
+            localObject1 = new ArrayList();
+            this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.put((String)localObject3, localObject1);
+          }
+        }
+        for (;;)
+        {
+          i += 1;
+          localObject2 = localObject1;
+          break;
+          localObject1 = localObject2;
+          if (localObject2 != null) {
+            if ((!(localObject3 instanceof aham)) && (localObject3 != agzn.b) && (!(localObject3 instanceof argo)))
+            {
+              localObject1 = localObject2;
+              if (localObject3 != arga.c) {}
+            }
+            else
+            {
+              ((List)localObject2).add(localObject3);
+              localObject1 = localObject2;
+            }
           }
         }
       }
-    }
-  }
-  
-  protected boolean b(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    b();
-    paramVariantWrapper.SetBool(true);
-    return true;
-  }
-  
-  protected boolean c(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 3)) {}
-    String str;
-    do
-    {
-      paramVariantWrapper.SetBool(false);
-      return true;
-      str = paramArrayOfVariantWrapper[1].GetString();
-      paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[2];
-    } while ((TextUtils.isEmpty(str)) || (paramArrayOfVariantWrapper == null) || (!paramArrayOfVariantWrapper.IsFunction()) || (!str.equals("OnComplete")));
-    a(paramArrayOfVariantWrapper);
-    paramVariantWrapper.SetBool(true);
-    return true;
-  }
-  
-  protected boolean d(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2)) {}
-    do
-    {
-      paramVariantWrapper.SetBool(false);
-      return true;
-      paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[1].GetString();
-    } while ((TextUtils.isEmpty(paramArrayOfVariantWrapper)) || (!paramArrayOfVariantWrapper.equals("OnComplete")));
-    a(null);
-    paramVariantWrapper.SetBool(true);
-    return true;
-  }
-  
-  protected boolean e(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    if ((this.jdField_a_of_type_Ahai == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2)) {}
-    do
-    {
-      paramVariantWrapper.SetBool(false);
-      return true;
-      paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[1];
-    } while (paramArrayOfVariantWrapper == null);
-    if (paramArrayOfVariantWrapper.GetType() == 1) {
-      paramArrayOfVariantWrapper = null;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Ahai.a(this);
-      if (!this.jdField_a_of_type_Ahai.b(paramArrayOfVariantWrapper)) {
+      this.jdField_a_of_type_Int = 0;
+      if (!paramBoolean) {
         break;
       }
-      paramVariantWrapper.SetBool(true);
-      return true;
-      if (paramArrayOfVariantWrapper.GetType() == 5)
+      Object localObject1 = this.b.entrySet().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        paramArrayOfVariantWrapper = paramArrayOfVariantWrapper.GetString();
-      }
-      else
-      {
-        if ((!paramArrayOfVariantWrapper.IsArray()) && (!paramArrayOfVariantWrapper.IsTable())) {
-          break;
+        localObject3 = (Map.Entry)((Iterator)localObject1).next();
+        localObject2 = (String)((Map.Entry)localObject3).getKey();
+        localObject3 = (Boolean)((Map.Entry)localObject3).getValue();
+        if ((localObject3 != null) && (!((Boolean)localObject3).booleanValue())) {
+          a(a((String)localObject2, paramInt, paramList), (String)localObject2, paramList);
         }
-        paramArrayOfVariantWrapper = paramArrayOfVariantWrapper.GetTableAsJsonString();
       }
     }
+    this.b.clear();
   }
   
-  protected boolean f(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public boolean a(String paramString)
   {
-    int j = 0;
-    if ((this.jdField_a_of_type_Ahai == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2))
-    {
-      paramVariantWrapper.SetBool(false);
-      return true;
+    a();
+    paramString = (Boolean)this.b.get(paramString);
+    if (paramString != null) {
+      return paramString.booleanValue();
     }
-    paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[1];
-    int i;
-    if (paramArrayOfVariantWrapper == null) {
-      i = 0;
+    return true;
+  }
+  
+  public boolean a(String paramString, int paramInt, List<Object> paramList)
+  {
+    boolean bool2 = true;
+    a();
+    if (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramString) == null) {
+      return false;
     }
-    for (;;)
+    if (this.b.get(paramString) != null) {}
+    for (boolean bool1 = ((Boolean)this.b.get(paramString)).booleanValue();; bool1 = true)
     {
-      if (i < 0) {
-        i = j;
+      ArrayMap localArrayMap = this.b;
+      if (!bool1)
+      {
+        localArrayMap.put(paramString, Boolean.valueOf(bool2));
+        paramInt = a(paramString, paramInt, paramList);
+        if (bool1) {
+          break label99;
+        }
+        b(paramInt, paramString, paramList);
       }
       for (;;)
       {
-        this.jdField_a_of_type_Ahai.a(i);
-        paramVariantWrapper.SetBool(true);
-        return true;
-        if (paramArrayOfVariantWrapper.GetType() == 3)
-        {
-          i = paramArrayOfVariantWrapper.GetInt();
-          break;
-        }
-        if (paramArrayOfVariantWrapper.GetType() != 4) {
-          break label97;
-        }
-        i = (int)paramArrayOfVariantWrapper.GetDouble();
+        return bool1;
+        bool2 = false;
+        break;
+        label99:
+        a(paramInt, paramString, paramList);
+      }
+    }
+  }
+  
+  public boolean a(List<Object> paramList, int paramInt)
+  {
+    a();
+    boolean bool2;
+    if ((this.b.isEmpty()) || (paramList == null))
+    {
+      bool2 = false;
+      return bool2;
+    }
+    int i = 0;
+    boolean bool1 = false;
+    label29:
+    if (i < paramList.size())
+    {
+      Object localObject = paramList.get(i);
+      if ((!(localObject instanceof String)) || (this.b.get((String)localObject) == null) || (((Boolean)this.b.get((String)localObject)).booleanValue()) || (this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject) == null)) {
+        break label155;
+      }
+      paramList.addAll(i + paramInt, (Collection)this.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localObject));
+      bool1 = true;
+    }
+    label155:
+    for (;;)
+    {
+      i += 1;
+      break label29;
+      bool2 = bool1;
+      if (!bool1) {
         break;
       }
-      label97:
-      i = 0;
+      this.b.clear();
+      return bool1;
     }
-  }
-  
-  protected boolean g(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    boolean bool = false;
-    if ((this.jdField_a_of_type_Ahai == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1))
-    {
-      paramVariantWrapper.SetBool(false);
-      return true;
-    }
-    if (this.jdField_a_of_type_Ahai.a() == 0) {
-      bool = true;
-    }
-    paramVariantWrapper.SetBool(bool);
-    return true;
-  }
-  
-  protected boolean h(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    if ((this.jdField_a_of_type_Ahai == null) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2)) {}
-    String str;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              paramVariantWrapper.SetNull();
-              return true;
-            } while (this.jdField_a_of_type_Ahai.a() != 0);
-            str = this.jdField_a_of_type_Ahai.a();
-          } while (str == null);
-          paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[1].GetString();
-        } while (TextUtils.isEmpty(paramArrayOfVariantWrapper));
-        if (!paramArrayOfVariantWrapper.equals("text")) {
-          break;
-        }
-        paramArrayOfVariantWrapper = str;
-        if (str == null) {
-          paramArrayOfVariantWrapper = "";
-        }
-      } while (!paramVariantWrapper.SetString(paramArrayOfVariantWrapper));
-      return true;
-    } while ((!paramArrayOfVariantWrapper.equals("json")) || (!paramVariantWrapper.SetTableAsJsonString(str)));
-    return true;
   }
 }
 

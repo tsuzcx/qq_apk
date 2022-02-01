@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.storyHome.memory.view.segment;
 
 import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import yku;
-import yuk;
+import xmf;
+import xvv;
 
 public class MemoriesVideoListSegment$3
   implements Runnable
 {
-  public MemoriesVideoListSegment$3(yku paramyku, int paramInt, VideoCollectionItem paramVideoCollectionItem, String paramString) {}
+  public MemoriesVideoListSegment$3(xmf paramxmf, int paramInt, VideoCollectionItem paramVideoCollectionItem, String paramString) {}
   
   public void run()
   {
-    yuk.b("Q.qqstory.memories.MemoriesVideoListSegment", "doScrollHorizal, findViewHolder, null, waiting done");
-    yku.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem, this.jdField_a_of_type_JavaLangString, true);
+    xvv.b("Q.qqstory.memories.MemoriesVideoListSegment", "doScrollHorizal, findViewHolder, null, waiting done");
+    xmf.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem, this.jdField_a_of_type_JavaLangString, true);
   }
 }
 

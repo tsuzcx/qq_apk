@@ -1,26 +1,10 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.gamecenter.adapter.QQGamePubFeedsAdapter.FeedsItemVH.2.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.image.URLDrawable;
 
-public class avjg
-  implements avla
+public abstract interface avjg
 {
-  avjg(avjd paramavjd) {}
+  public abstract void a(avjd paramavjd);
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    ThreadManager.getUIHandler().post(new QQGamePubFeedsAdapter.FeedsItemVH.2.1(this, paramInt1));
-  }
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void b(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGamePubFeedsAdapter", 4, "onAudioMute id=" + paramInt + " mute=" + paramBoolean);
-    }
-  }
+  public abstract void a(URLDrawable paramURLDrawable);
 }
 
 

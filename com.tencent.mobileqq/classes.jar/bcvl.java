@@ -1,50 +1,31 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bcvl
-  extends MSFServlet
+class bcvl
+  implements View.OnClickListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
-    {
-      paramIntent = bmtb.a(paramFromServiceMsg.getWupBuffer());
-      if (paramIntent != null)
-      {
-        paramFromServiceMsg = new Bundle();
-        paramFromServiceMsg.putSerializable("data", paramIntent);
-        notifyObserver(null, 1002, true, paramFromServiceMsg, ayxo.class);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneAlbumListNumServlet", 2, "inform QZoneAlbumListNumServlet isSuccess false");
-      }
-      notifyObserver(null, 1002, false, new Bundle(), ayxo.class);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneAlbumListNumServlet", 2, "inform QZoneAlbumListNumServlet resultcode fail.");
-    }
-    notifyObserver(null, 1002, false, new Bundle(), ayxo.class);
-  }
+  bcvl(bcvk parambcvk, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onClick(View paramView)
   {
-    if (paramIntent == null) {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bcvk, 1);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Bcvk.isShowing()) {
+        this.jdField_a_of_type_Bcvk.dismiss();
+      }
+      label38:
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    byte[] arrayOfByte = new bmtb(paramIntent.getLongExtra("selfuin", 0L), paramIntent.getStringExtra("refer")).encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null) {
-      paramIntent = new byte[4];
+    catch (Exception localException)
+    {
+      break label38;
     }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + "getAlbumListNum");
-    paramPacket.putSendData(paramIntent);
   }
 }
 

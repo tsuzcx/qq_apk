@@ -1,84 +1,251 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
+import com.tencent.mobileqq.app.proxy.GroupActionResp;
+import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import friendlist.GetOnlineInfoResp;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-class aipp
-  extends aohi
+public class aipp
+  extends amsu
 {
-  aipp(aipm paramaipm) {}
+  private aipp(FriendFragment paramFriendFragment) {}
   
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  protected void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
-      return;
-    }
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006) {
-      str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f;
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bhjx.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k == 0) {
-        break;
-      }
-      ChatActivityUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramBoolean, false);
-      if (!paramBoolean) {
-        break;
-      }
-      this.a.m();
-      return;
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
     }
   }
   
-  protected void b(boolean paramBoolean, List<Long> paramList)
+  protected void onDeleteGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    int k = 0;
-    ChatActivityUtils.b();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
-      return;
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
     }
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006) {
-      str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f;
+  }
+  
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
     }
-    for (;;)
-    {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
+  }
+  
+  protected void onGroupDataInited()
+  {
+    FriendFragment.a(this.a, 1400L, true);
+  }
+  
+  protected void onRenameGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onResortGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onSetSpecialCareSwitch_global(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.FriendFragment", 2, "onSetSpecialCareSwitch_global isSuccess: " + paramBoolean);
+    }
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+    if ((paramBoolean) && (this.a.isResumed())) {
+      try
       {
-        int j = 0;
-        while ((k == 0) && (j < i))
+        String[] arrayOfString = (String[])paramArrayOfObject[1];
+        paramArrayOfObject = (boolean[])paramArrayOfObject[2];
+        if (QLog.isColorLevel()) {
+          QLog.d("contacts.fragment.FriendFragment", 2, new Object[] { "onSetSpecialCareSwitch_global uinArray=%s stateArray=%s", Arrays.toString(arrayOfString), Arrays.toString(paramArrayOfObject) });
+        }
+        if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
         {
-          if (bhjx.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
+          if (paramArrayOfObject[0] != 0)
+          {
+            QQToast.a(this.a.getActivity(), 2, amtj.a(2131703992), 0).a();
+            return;
           }
-          j += 1;
+          QQToast.a(this.a.getActivity(), 2, amtj.a(2131703993), 0).a();
+          return;
         }
       }
-      if (k == 0) {
-        break;
+      catch (Exception paramArrayOfObject)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("contacts.fragment.FriendFragment", 2, "onSetSpecialCareSwitch_global fail!", paramArrayOfObject);
+        }
       }
-      ChatActivityUtils.b();
-      if (!paramBoolean) {
-        break;
+    }
+  }
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.FriendFragment", 2, "onUpdateAddFriend isSucess= " + paramBoolean1 + ",addSuccess=" + paramBoolean2 + " addDirect=" + paramBoolean3);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && (paramBoolean3)) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      FriendFragment.a(this.a, 5000L, false);
+    }
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.FriendFragment", 2, "onUpdateDelFriend isSucess= " + paramBoolean);
+    }
+    if (paramBoolean) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    FriendFragment localFriendFragment = this.a;
+    boolean bool;
+    if ((paramBoolean2) || (!paramBoolean1))
+    {
+      bool = true;
+      FriendFragment.a(localFriendFragment, bool);
+      if (QLog.isColorLevel()) {
+        QLog.d("contacts.fragment.FriendFragment", 2, "onUpdateFriendList isSucess= " + paramBoolean1 + ",isComplete=" + paramBoolean2);
       }
-      this.a.m();
+      paramBoolean2 = FriendFragment.a(this.a);
+      if (FriendFragment.a(this.a))
+      {
+        if (FriendFragment.b(this.a))
+        {
+          FriendFragment.b(this.a, false);
+          if (FriendFragment.a(this.a) != null) {
+            FriendFragment.b(this.a).a(this.a.b(), paramBoolean1, null);
+          }
+        }
+        localFriendFragment = this.a;
+        if (!FriendFragment.b(this.a)) {
+          break label189;
+        }
+      }
+    }
+    label189:
+    for (long l = 0L;; l = 1400L)
+    {
+      FriendFragment.a(localFriendFragment, l, true);
+      if ((!paramBoolean2) && (FriendFragment.b(this.a))) {
+        FriendFragment.a(this.a, 1400L, true);
+      }
       return;
+      bool = false;
+      break;
+    }
+  }
+  
+  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if ((paramBoolean1) && (paramBoolean2) && (paramBoolean3)) {
+      FriendFragment.a(this.a, 0L, true);
+    }
+  }
+  
+  protected void onUpdateHotFriendLevel(boolean paramBoolean, ArrayList<String> paramArrayList)
+  {
+    FriendFragment.a(this.a, 1400L, false);
+  }
+  
+  protected void onUpdateLastLoginInfo(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      FriendFragment.a(this.a, 1400L, false);
+    }
+  }
+  
+  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
+  {
+    if ((paramString != null) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateOlympicTorchList(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      FriendFragment.a(this.a, 1400L, false);
+    }
+  }
+  
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
+  }
+  
+  protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, false);
+    }
+  }
+  
+  protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List<SpecialCareInfo> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.FriendFragment", 2, "onUpdateSpecialCareList isSucess= " + paramBoolean1 + ",isComplete=" + paramBoolean2);
+    }
+    if ((paramBoolean1) && (this.a.a != null)) {
+      this.a.a.notifyDataSetChanged();
     }
   }
 }

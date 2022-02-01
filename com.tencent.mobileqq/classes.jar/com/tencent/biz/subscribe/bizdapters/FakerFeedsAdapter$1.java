@@ -1,19 +1,19 @@
 package com.tencent.biz.subscribe.bizdapters;
 
-import aagr;
 import com.tencent.biz.subscribe.event.SubscribeFeedsEvent;
 import java.util.ArrayList;
+import zdp;
 
 public class FakerFeedsAdapter$1
   implements Runnable
 {
-  public FakerFeedsAdapter$1(aagr paramaagr, SubscribeFeedsEvent paramSubscribeFeedsEvent) {}
+  public FakerFeedsAdapter$1(zdp paramzdp, SubscribeFeedsEvent paramSubscribeFeedsEvent) {}
   
   public void run()
   {
-    this.this$0.getDataList().add(0, this.a.mSingleFakeFeed);
+    this.this$0.a().add(0, this.a.mSingleFakeFeed);
     this.this$0.notifyDataSetChanged();
-    this.this$0.a();
+    this.this$0.c();
   }
 }
 

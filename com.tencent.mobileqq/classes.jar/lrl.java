@@ -1,71 +1,52 @@
-import android.util.Log;
-import com.tencent.aekit.openrender.internal.Frame;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.opengl.texture.YUVTexture;
 
 public class lrl
+  extends Handler
 {
-  private int jdField_a_of_type_Int;
-  public Frame a;
-  private String jdField_a_of_type_JavaLangString = "RefFrame-" + Integer.toHexString(hashCode());
-  public List<lrm> a;
-  
-  private lrl(Frame paramFrame)
+  public lrl(YUVTexture paramYUVTexture, Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = paramFrame;
+    super(paramLooper);
   }
   
-  private lrl(Frame paramFrame, List<lrm> paramList)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = paramFrame;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public static lrl a(Frame paramFrame)
-  {
-    return new lrl(paramFrame);
-  }
-  
-  public static lrl a(Frame paramFrame, List<lrm> paramList)
-  {
-    return new lrl(paramFrame, paramList);
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.unlock();
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_Int == 0)
+    int i = paramMessage.what;
+    this.a.d = true;
+    switch (i)
     {
-      b();
-      return;
-    }
-    b(1);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int += paramInt;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty());
-  }
-  
-  void b(int paramInt)
-  {
-    if (paramInt > this.jdField_a_of_type_Int) {
-      Log.e(this.jdField_a_of_type_JavaLangString, "unlock: count=" + paramInt + ", ref=" + this.jdField_a_of_type_Int);
     }
     do
     {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+          } while (YUVTexture.a(this.a) == null);
+          YUVTexture.a(this.a).c();
+          return;
+        } while (YUVTexture.a(this.a) == null);
+        YUVTexture.a(this.a).b();
+        return;
+      } while (YUVTexture.a(this.a) == null);
+      YUVTexture.a(this.a).a();
       return;
-      this.jdField_a_of_type_Int -= paramInt;
-    } while (this.jdField_a_of_type_Int != 0);
-    b();
+    } while (YUVTexture.a(this.a) == null);
+    if (YUVTexture.a(this.a) == null) {
+      YUVTexture.a(this.a, new mwz('=', ';'));
+    }
+    paramMessage = (String)paramMessage.obj;
+    YUVTexture.a(this.a).a(paramMessage);
+    i = YUVTexture.a(this.a).a("width");
+    int j = YUVTexture.a(this.a).a("height");
+    int k = YUVTexture.a(this.a).a("angle");
+    int m = YUVTexture.a(this.a).a("rotation", -1);
+    YUVTexture.a(this.a).a(i, j, k, m);
   }
 }
 

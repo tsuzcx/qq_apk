@@ -1,44 +1,52 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.View;
-import com.tencent.biz.qqcircle.events.QCircleFeedPicPositionEvent;
-import com.tencent.biz.qqcircle.fragments.QCircleBaseFragment;
-import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresenter;
-import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StFeed;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedComment;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedCommentInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wdp
-  implements ViewPager.OnPageChangeListener
+  extends vqm
 {
-  public wdp(QCircleFeedItemPicPresenter paramQCircleFeedItemPicPresenter) {}
+  public List<wdq> a;
+  public List<xng> b = new ArrayList(0);
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public wdp(ErrorMessage paramErrorMessage)
   {
-    QCircleFeedItemPicPresenter.a(this.a, paramInt);
-    Object localObject;
-    if ((this.a.a() != null) && (this.a.a() != null))
+    super(paramErrorMessage.errorCode, paramErrorMessage.errorMsg);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public wdp(qqstory_service.RspBatchFeedComment paramRspBatchFeedComment)
+  {
+    super(paramRspBatchFeedComment.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramRspBatchFeedComment = paramRspBatchFeedComment.feed_comment_info_list.get().iterator();
+    while (paramRspBatchFeedComment.hasNext())
     {
-      localObject = new QCircleFeedPicPositionEvent(this.a.a().id.get(), paramInt);
-      ((QCircleFeedPicPositionEvent)localObject).mHashCode = this.a.a().getContext().hashCode();
-      aaak.a().a((SimpleBaseEvent)localObject);
-    }
-    QCircleFeedItemPicPresenter.b(this.a, paramInt);
-    if (QCircleFeedItemPicPresenter.a(this.a) != null)
-    {
-      localObject = QCircleFeedItemPicPresenter.a(this.a);
-      if (paramInt != 0) {
-        break label112;
+      Object localObject = (qqstory_struct.FeedCommentInfo)paramRspBatchFeedComment.next();
+      wdq localwdq = new wdq();
+      localwdq.jdField_a_of_type_JavaLangString = ((qqstory_struct.FeedCommentInfo)localObject).feed_id.get().toStringUtf8();
+      localwdq.jdField_a_of_type_Int = ((qqstory_struct.FeedCommentInfo)localObject).comment_total_num.get();
+      localwdq.jdField_b_of_type_JavaLangString = ((qqstory_struct.FeedCommentInfo)localObject).next_cookie.get().toStringUtf8();
+      localwdq.jdField_b_of_type_Int = ((qqstory_struct.FeedCommentInfo)localObject).is_end.get();
+      if (localwdq.jdField_b_of_type_Int != 1) {
+        this.b.add(new xng(localwdq.jdField_a_of_type_JavaLangString, 1, ((qqstory_struct.FeedCommentInfo)localObject).next_cookie.get().toStringUtf8()));
       }
-    }
-    label112:
-    for (boolean bool = true;; bool = false)
-    {
-      ((QCircleBaseFragment)localObject).c(bool);
-      return;
+      localObject = ((qqstory_struct.FeedCommentInfo)localObject).comment_list.get().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)((Iterator)localObject).next());
+        localCommentEntry.feedId = localwdq.jdField_a_of_type_JavaLangString;
+        localwdq.jdField_a_of_type_JavaUtilList.add(localCommentEntry);
+      }
+      this.jdField_a_of_type_JavaUtilList.add(localwdq);
     }
   }
 }

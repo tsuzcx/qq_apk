@@ -1,30 +1,25 @@
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import UserGrowth.stSchema;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class uqc
+  implements uqb
 {
-  private String a;
-  
-  public static uqc a()
+  public upq a(ups paramups)
   {
-    return uqe.a();
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    WSRedDotPushMsg localWSRedDotPushMsg = uqt.a();
-    if (localWSRedDotPushMsg != null) {
-      this.a = localWSRedDotPushMsg.mPushId;
+    if ((yqu.a(BaseApplicationImpl.getContext())) && (!TextUtils.isEmpty(paramups.a().schema))) {
+      return new upu(paramups);
     }
-  }
-  
-  public void b()
-  {
-    this.a = "";
+    if (!TextUtils.isEmpty(paramups.a().miniAppSchema)) {
+      return new upx(paramups);
+    }
+    if (!TextUtils.isEmpty(paramups.a().H5Url)) {
+      return new uqa(paramups);
+    }
+    if (yqu.a(BaseApplicationImpl.getContext())) {
+      return new upu(paramups);
+    }
+    return new upw(paramups);
   }
 }
 

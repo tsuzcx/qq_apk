@@ -1,58 +1,128 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import android.graphics.Bitmap;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.settings.QQStoryShieldListActivity;
+import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class xbu
-  extends wzm
-  implements woy<xdy, xfh>
+  extends BaseAdapter
 {
-  public static int a = 20;
-  private long c;
+  List<QQStoryUserInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public xdy a(int paramInt, ArrayList<wsy> paramArrayList)
+  public xbu(List<QQStoryUserInfo> paramList)
   {
-    if (paramArrayList.size() > a) {
-      yuk.d("Q.qqstory:WatchVideoBatchHandler", "too much data");
+    Collection localCollection;
+    if (localCollection != null)
+    {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList(localCollection);
+      Collections.sort(this.jdField_a_of_type_JavaUtilList);
     }
-    xdy localxdy = new xdy();
-    localxdy.c = paramInt;
-    localxdy.a = paramArrayList;
-    wow.a().a(localxdy, this);
-    this.c = System.currentTimeMillis();
-    return localxdy;
   }
   
-  public void a(@NonNull xdy paramxdy, @Nullable xfh paramxfh, @NonNull ErrorMessage paramErrorMessage)
+  public void a(List<QQStoryUserInfo> paramList)
   {
-    wsx localwsx = (wsx)wth.a(13);
-    if ((paramxfh == null) || (paramErrorMessage.isFail()))
-    {
-      yuk.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. errorInfo=%s", new Object[] { paramErrorMessage.toString() });
-      paramxfh = paramxdy.a.iterator();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      Collections.sort(this.jdField_a_of_type_JavaUtilList);
     }
-    while (paramxfh.hasNext())
+    super.notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject;
+    if (paramView == null)
     {
-      localwsx.a((wsy)paramxfh.next(), false);
-      continue;
-      localwsx.a(paramxfh.a);
-      yuk.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. succList.size=%d. requestList.size=%d", new Object[] { Integer.valueOf(paramxfh.a.size()), Integer.valueOf(paramxdy.a.size()) });
-      paramErrorMessage = paramxdy.a.iterator();
-      while (paramErrorMessage.hasNext())
+      localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity).inflate(2131561725, null);
+      paramView = new xbv(this);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366241));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371615));
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.a.widthPixels - AIOUtils.dp2px(175.0F, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.getResources()));
+      paramView.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131365402));
+      paramView.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity);
+      localView.setTag(paramView);
+      localObject = (QQStoryUserInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramView.jdField_a_of_type_JavaLangString = ((QQStoryUserInfo)localObject).uin;
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((QQStoryUserInfo)localObject).nick);
+      paramView.jdField_a_of_type_AndroidWidgetButton.setTag(localObject);
+      if (this.jdField_a_of_type_JavaUtilList.size() <= 2) {
+        break label289;
+      }
+      if (paramInt != 0) {
+        break label254;
+      }
+      localView.setBackgroundResource(2130839491);
+      label186:
+      localObject = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.app.getFaceBitmap(((QQStoryUserInfo)localObject).uin, true);
+      if (localObject == null) {
+        break label349;
+      }
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (xbv)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label254:
+      if (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1)
       {
-        wsy localwsy = (wsy)paramErrorMessage.next();
-        if (!paramxfh.a.contains(localwsy)) {
-          localwsx.a(localwsy, false);
+        localView.setBackgroundResource(2130839482);
+        break label186;
+      }
+      localView.setBackgroundResource(2130839485);
+      break label186;
+      label289:
+      if (this.jdField_a_of_type_JavaUtilList.size() == 2)
+      {
+        if (paramInt == 0)
+        {
+          localView.setBackgroundResource(2130839491);
+          break label186;
         }
+        localView.setBackgroundResource(2130839482);
+        break label186;
       }
-      if (paramxdy.a.size() > paramxfh.a.size()) {
-        yup.b("home_page", "batch_watch_video", 0, paramxdy.a.size() - paramxfh.a.size(), new String[] { "", String.valueOf(System.currentTimeMillis() - this.c), yup.a(BaseApplication.getContext()) });
+      if (this.jdField_a_of_type_JavaUtilList.size() != 1) {
+        break label186;
       }
+      localView.setBackgroundResource(2130839482);
+      break label186;
+      label349:
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bfvo.a());
     }
-    localwsx.a(paramxdy);
   }
 }
 

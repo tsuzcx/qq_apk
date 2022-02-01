@@ -1,26 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Book;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class arwm
-  implements Parcelable.Creator
+class arwm
+  implements View.OnClickListener
 {
-  public IPSiteModel.Book a(Parcel paramParcel)
-  {
-    IPSiteModel.Book localBook = new IPSiteModel.Book();
-    localBook.cover = paramParcel.readString();
-    localBook.desc = paramParcel.readString();
-    localBook.id = paramParcel.readString();
-    localBook.jumpUrl = paramParcel.readString();
-    localBook.name = paramParcel.readString();
-    localBook.recommDesc = paramParcel.readString();
-    localBook.authorName = paramParcel.readString();
-    return localBook;
-  }
+  arwm(arwl paramarwl, View paramView) {}
   
-  public IPSiteModel.Book[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new IPSiteModel.Book[paramInt];
+    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((localObject instanceof arvu))
+    {
+      localObject = (WeiYunFileInfo)((arvu)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+      if ((aslg.a(((WeiYunFileInfo)localObject).a)) && (QLog.isColorLevel())) {
+        QLog.d(QfileBaseCloudFileTabView.b, 2, "there is a bug ");
+      }
+      QfileBaseCloudFileTabView.b(this.jdField_a_of_type_Arwl.a).getFileManagerEngine().a((WeiYunFileInfo)localObject);
+      this.jdField_a_of_type_Arwl.a.al_();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((localObject instanceof arxa))
+      {
+        localObject = (WeiYunFileInfo)((arxa)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e(QfileBaseCloudFileTabView.b, 2, "unknow Object");
+      }
+    }
   }
 }
 

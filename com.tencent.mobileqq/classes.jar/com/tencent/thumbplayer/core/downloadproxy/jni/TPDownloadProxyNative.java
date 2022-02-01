@@ -62,7 +62,7 @@ public class TPDownloadProxyNative
   
   public String getNativeVersion()
   {
-    String str = "1.7.0.00016";
+    String str = "1.9.0.00016";
     if (isLoadDownloadProxySucceed) {
       str = TPDLProxyUtils.byteArrayToString(getVersion());
     }

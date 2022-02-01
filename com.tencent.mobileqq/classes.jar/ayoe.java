@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.profile.lifeachivement.LifeAchivementPanelView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ayoe
-  implements DialogInterface.OnClickListener
+public class ayoe
+  implements View.OnClickListener
 {
-  ayoe(ayob paramayob, bhpc parambhpc) {}
+  public ayoe(LifeAchivementPanelView paramLifeAchivementPanelView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bhpc.dismiss();
-    this.jdField_a_of_type_Ayob.a.f();
+    if (QLog.isColorLevel()) {
+      QLog.d("LifeAchivementPanelView", 2, "addAchivementBtn onClicked");
+    }
+    ayod.a(LifeAchivementPanelView.a(this.a));
+    bcef.b(null, "", "", "", "0X800AE54", "0X800AE54", 1, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

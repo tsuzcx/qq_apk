@@ -1,26 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGallery;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.pts.utils.PTSDeviceUtil;
+import java.util.ArrayList;
+import kotlin.Metadata;
+import kotlin.collections.CollectionsKt;
 
-public class qnw
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/util/PTSLiteItemViewUtil;", "", "()V", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qnw
 {
-  public qnw(ComponentContentGallery paramComponentContentGallery, ArticleInfo paramArticleInfo, int paramInt1, String paramString, int paramInt2) {}
+  private static final int jdField_a_of_type_Int;
+  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = CollectionsKt.arrayListOf(new String[] { "3289295241", "834584377", "616690602" });
+  public static final qnx a;
+  private static int b;
+  private static int c;
   
-  public void onClick(View paramView)
+  static
   {
-    if (ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery) == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      sgc localsgc = ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery).a();
-      if (localsgc != null) {
-        localsgc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1, ComponentContentGallery.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGallery), this.b);
-      }
-    }
+    jdField_a_of_type_Qnx = new qnx(null);
+    jdField_a_of_type_Int = PTSDeviceUtil.dp2pxInt(5.0F);
+    b = PTSDeviceUtil.rp2pxInt(12.0F);
+    c = PTSDeviceUtil.rp2pxInt(24.0F);
   }
 }
 

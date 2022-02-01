@@ -1,7 +1,7 @@
 package com.tencent.open.downloadnew;
 
 import android.os.Bundle;
-import bjxd;
+import bicl;
 
 public final class DownloadApi$3
   implements Runnable
@@ -10,7 +10,7 @@ public final class DownloadApi$3
   
   public void run()
   {
-    bjxd.a().b(this.a);
+    bicl.a().b(this.a);
   }
 }
 

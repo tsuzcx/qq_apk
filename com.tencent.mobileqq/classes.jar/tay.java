@@ -1,18 +1,15 @@
-public abstract interface tay
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.OverlayView;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.UCropView;
+
+public class tay
+  implements tba
 {
-  public abstract void b(String paramString);
+  public tay(UCropView paramUCropView) {}
   
-  public abstract boolean b();
-  
-  public abstract String c();
-  
-  public abstract boolean c();
-  
-  public abstract String d();
-  
-  public abstract boolean d();
-  
-  public abstract String e();
+  public void a(float paramFloat)
+  {
+    UCropView.a(this.a).setTargetAspectRatio(paramFloat);
+  }
 }
 
 

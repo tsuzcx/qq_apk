@@ -1,18 +1,20 @@
-import android.os.Bundle;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class adoj
-  extends adnf
+public class adoj
+  implements View.OnClickListener
 {
-  adoj(adoi paramadoi, admy paramadmy) {}
+  public adoj(LbsBaseActivity paramLbsBaseActivity) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramBundle != null)
-    {
-      adqf.a(this.jdField_a_of_type_Admy, adna.a(paramBundle));
-      return;
+    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
+      this.a.a(LbsBaseActivity.a(this.a));
     }
-    adqf.a(this.jdField_a_of_type_Admy, 1, "get user info error, try again");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

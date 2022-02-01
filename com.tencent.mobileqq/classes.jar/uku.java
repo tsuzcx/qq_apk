@@ -1,63 +1,16 @@
-import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
-public class uku
-  implements INetInfoHandler
+class uku
+  implements DialogInterface.OnCancelListener
 {
-  private WSPlayerManager a;
+  uku(ukq paramukq, String paramString) {}
   
-  public uku(WSPlayerManager paramWSPlayerManager)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a = paramWSPlayerManager;
-  }
-  
-  private void a()
-  {
-    if ((this.a != null) && (this.a.a() != null))
-    {
-      ukz localukz = this.a.a();
-      if ((!this.a.f()) && (!this.a.e())) {
-        break label55;
-      }
-      this.a.b(localukz, false);
-    }
-    label55:
-    while (!this.a.g()) {
-      return;
-    }
-    this.a.a();
-  }
-  
-  public void onNetMobile2None()
-  {
-    uqf.b("WSPlayerForNetInfoHandler", "onNetMobile2None");
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    uqf.b("WSPlayerForNetInfoHandler", "onNetMobile2Wifi s:" + paramString);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    uqf.b("WSPlayerForNetInfoHandler", "onNetNone2Mobile s:" + paramString);
-    a();
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    uqf.b("WSPlayerForNetInfoHandler", "onNetNone2Wifi s:" + paramString);
-    a();
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    uqf.b("WSPlayerForNetInfoHandler", "onNetWifi2Mobile s:" + paramString);
-  }
-  
-  public void onNetWifi2None()
-  {
-    uqf.b("WSPlayerForNetInfoHandler", "onNetWifi2None");
+    uya.a("WSUserAuthDialog", "dialog cancel");
+    WSPublicAccReport.getInstance().reportCallDialog("gzh_click", this.jdField_a_of_type_JavaLangString, "authorized_window", 1000001);
   }
 }
 

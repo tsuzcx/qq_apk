@@ -19,7 +19,7 @@ class BlockAdView$SingleBlockAdView$1
   {
     GdtHandler.Params localParams = new GdtHandler.Params();
     localParams.c = 11;
-    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((Activity)BlockAdView.SingleBlockAdView.access$200(this.this$1));
+    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((Activity)BlockAdView.SingleBlockAdView.access$000(this.this$1));
     localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = this.val$gdtAd;
     localParams.jdField_a_of_type_Boolean = true;
     localParams.b = true;

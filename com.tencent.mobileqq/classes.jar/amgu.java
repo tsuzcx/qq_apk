@@ -1,63 +1,45 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListRsp;
-import NS_COMM.COMM.StCommonExt;
-import android.text.TextUtils;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.biz.subscribe.network.GetSubscribeFeedListRequest;
-import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
-import com.tencent.mobileqq.activity.shopping.ShoppingHeadView;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.TMG.utils.SoUtil;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-public class amgu
-  implements aaav<CertifiedAccountRead.StGetFeedListRsp>
+class amgu
+  implements AVCallback
 {
-  public amgu(ShoppingFragment paramShoppingFragment, GetSubscribeFeedListRequest paramGetSubscribeFeedListRequest, aagu paramaagu) {}
+  amgu(amgo paramamgo) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedListRsp paramStGetFeedListRsp)
+  public void onComplete(int paramInt, String paramString)
   {
-    boolean bool1 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d(ShoppingFragment.a, 2, "refreshAliveList:" + paramBoolean + " " + paramLong + " " + paramString);
-    }
-    boolean bool2 = VSNetworkHelper.a(paramString);
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStGetFeedListRsp == null))
+    if (paramInt == 0)
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        QQToast.a(ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingFragment), 1, paramString, 0).a();
-      }
-      if (!bool2) {
-        VSBaseRequest.reMoveCache(this.jdField_a_of_type_ComTencentBizSubscribeNetworkGetSubscribeFeedListRequest);
-      }
-      if (this.jdField_a_of_type_Aagu.getItemCount() == 0) {
-        ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingFragment).a(true);
-      }
-      this.jdField_a_of_type_Aagu.notifyLoadingComplete(paramBoolean);
-      return;
-    }
-    ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingFragment).a(false);
-    this.jdField_a_of_type_Aagu.getLoadInfo().d(paramStGetFeedListRsp.livePageInfo.get());
-    paramString = paramStGetFeedListRsp.hotLive.get();
-    if ((paramString != null) && (paramString.size() > 0))
-    {
-      aagu localaagu = this.jdField_a_of_type_Aagu;
-      COMM.StCommonExt localStCommonExt = paramStGetFeedListRsp.extInfo;
-      if (paramStGetFeedListRsp.isFinish.get() == 1) {
-        localaagu.a(paramString, localStCommonExt, bool1);
+      QLog.e("AVEngineWalper", 1, "AVCallback make connection successfully!!!");
+      if (!this.a.a())
+      {
+        FileUtils.copyFile(amhf.a() + "libqav_graphics.so", amhf.a() + "libtmg_graphics.so");
+        boolean bool = SoUtil.loadSo("tmg_graphics");
+        QLog.e("AVEngineWalper", 1, "first check failed, rename bLoad = " + bool);
+        if (!this.a.a())
+        {
+          QLog.e("AVEngineWalper", 1, "Second check failed, stop engine~~~");
+          amgo.a(this.a, false);
+          this.a.a();
+          paramInt = 1;
+        }
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Aagu.notifyLoadingComplete(paramBoolean);
+      if (this.a.a != null) {
+        this.a.a.a(paramInt, paramString);
+      }
       return;
-      bool1 = false;
-      break;
-      this.jdField_a_of_type_Aagu.clearData();
-      ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingFragment).a(true);
+      amgo.a(this.a, true);
+      QLog.e("AVEngineWalper", 1, "start successfully second try~~~~");
+      continue;
+      amgo.a(this.a, true);
+      QLog.e("AVEngineWalper", 1, "start successfully~~~~");
+      continue;
+      QLog.e("AVEngineWalper", 1, "AVCallback result=" + paramInt + ", errorInfo=" + paramString);
     }
   }
 }

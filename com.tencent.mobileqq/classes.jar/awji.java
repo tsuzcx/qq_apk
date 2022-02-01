@@ -1,482 +1,318 @@
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.StatFs;
-import android.text.TextUtils;
-import android.text.format.Time;
 import android.util.Base64;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.jsp.WebRecordApiPlugin;
-import com.tencent.mobileqq.jsp.WebRecordApiPlugin.AudioApiHelper.2;
-import com.tencent.mobileqq.jsp.WebRecordApiPlugin.AudioUploadTask;
-import com.tencent.mobileqq.troop.data.AudioInfo;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.NumRedInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.NumRedPath;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import org.json.JSONArray;
-import org.json.JSONException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.List<Lcom.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;>;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.app.NewIntent;
 import org.json.JSONObject;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import tencent.im.s2c.msgtype0x210.submsgtype0x89.Submsgtype0x89.NumRedBusiInfo;
 
 public class awji
-  implements bhrh, bhue
 {
-  private double jdField_a_of_type_Double;
-  int jdField_a_of_type_Int = 0;
-  private Handler jdField_a_of_type_AndroidOsHandler = new awjj(this, Looper.getMainLooper());
-  private bhud jdField_a_of_type_Bhud;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  public BaseActivity a;
-  protected WebRecordApiPlugin.AudioUploadTask a;
-  private QQRecorder jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int b = 1;
-  private int c = 60000;
+  private static awji jdField_a_of_type_Awji = new awji();
+  private amzx jdField_a_of_type_Amzx = new awjj(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public awji(WebRecordApiPlugin paramWebRecordApiPlugin, AppInterface paramAppInterface, BaseActivity paramBaseActivity)
+  public static awji a()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    return jdField_a_of_type_Awji;
   }
   
-  private String a()
+  private void b(QQAppInterface paramQQAppInterface)
   {
-    try
-    {
-      Thread.sleep(1L);
-      long l = System.currentTimeMillis();
-      String str = new SimpleDateFormat("yyyyMMddHHmmssSS").format(new Date(l));
-      return str;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
-    }
-    finally {}
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), bbol.class);
+    localNewIntent.setAction("gc_refresh_ui");
+    localNewIntent.putExtra("gc_notify_type", 6);
+    paramQQAppInterface.startServlet(localNewIntent);
   }
   
-  private String a(int paramInt, boolean paramBoolean)
+  private void c(QQAppInterface paramQQAppInterface, List<Submsgtype0x89.NumRedBusiInfo> paramList)
   {
-    String str1 = antf.ba + "webrecord/";
-    Object localObject = null;
-    switch (paramInt)
-    {
-    }
-    for (;;)
+    if ((paramList == null) || (paramList.size() <= 0))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("WebRecordApiPlugin", 2, "getTransferFilePath dir: " + str1);
+        QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "queryNearbyMsgInfo: numRedPaths is null.");
       }
-      String str2 = a();
-      File localFile = new File(str1);
-      if (!localFile.exists()) {
-        localFile.mkdirs();
-      }
-      localObject = new File(str1 + str2 + (String)localObject);
-      if ((paramBoolean) && (!((File)localObject).exists())) {}
-      try
-      {
-        ((File)localObject).createNewFile();
-        label163:
-        if (QLog.isColorLevel()) {
-          QLog.d("WebRecordApiPlugin", 2, "getTransferFilePath : " + ((File)localObject).getAbsoluteFile().toString());
-        }
-        return ((File)localObject).getAbsoluteFile().toString();
-        localObject = ".amr";
-        continue;
-        localObject = ".slk";
-      }
-      catch (IOException localIOException)
-      {
-        break label163;
-      }
-    }
-  }
-  
-  private int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  private void c(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private void e(String paramString)
-  {
-    Object localObject = new Time();
-    ((Time)localObject).setToNow();
-    if (((Time)localObject).hour < 3) {}
-    String str;
-    do
-    {
       return;
-      localObject = bhjc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "LAST_DELETE_TIME");
-      str = new SimpleDateFormat("yyyyMMdd").format(new Date(System.currentTimeMillis()));
-    } while ((localObject != null) && (str.equals(localObject)));
-    ThreadManager.post(new WebRecordApiPlugin.AudioApiHelper.2(this, paramString), 8, null, false);
+    }
+    ((azvd)paramQQAppInterface.getManager(65)).a(paramList, "nearby_num_red_dot", new awjk(this, paramQQAppInterface));
   }
   
-  public int a()
+  public List<Submsgtype0x89.NumRedBusiInfo> a(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "AudioApiHelper.onRecorderStart() is called");
+    Object localObject = ((azvi)paramQQAppInterface.getManager(36)).a(7719);
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "queryNearbyMsgInfo: numRedPaths is null.");
+      }
+      return null;
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 2000L);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.b(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':0,'recordID':'" + this.jdField_a_of_type_JavaLangString + "','msg':''}" });
-    return 250;
-  }
-  
-  public int a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "AudioApiHelper.onBeginReceiveData() is called");
+    paramQQAppInterface = new ArrayList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      BusinessInfoCheckUpdate.NumRedPath localNumRedPath = (BusinessInfoCheckUpdate.NumRedPath)((Iterator)localObject).next();
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "queryNearbyMsgInfo:  numRedPath=" + localNumRedPath.str_path.get() + " msgStatus=" + localNumRedPath.uint32_msg_status.get());
+      }
+      if (localNumRedPath.uint32_msg_status.get() <= 1)
+      {
+        Submsgtype0x89.NumRedBusiInfo localNumRedBusiInfo = new Submsgtype0x89.NumRedBusiInfo();
+        localNumRedBusiInfo.uint64_msgid.set(localNumRedPath.uint64_msgid.get());
+        localNumRedBusiInfo.uint32_android_app_id.set(7719);
+        localNumRedBusiInfo.str_android_path.set(localNumRedPath.str_path.get());
+        paramQQAppInterface.add(localNumRedBusiInfo);
+      }
     }
-    this.c -= 200;
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(16711687, this.c);
-    return this.c + 200;
+    return paramQQAppInterface;
   }
   
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "AudioApiHelper.onInitSuccess() is called");
+      QLog.d("NearbyNewRedDotManager", 2, "onDestroy()");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amzx);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
     }
   }
   
-  public void a(int paramInt)
+  public void a(QQAppInterface paramQQAppInterface)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "AudioApiHelper.onRecorderVolumeStateChanged() is called");
+      QLog.d("NearbyNewRedDotManager", 2, "init()");
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amzx);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Amzx);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(QQAppInterface paramQQAppInterface, List<BusinessInfoCheckUpdate.NumRedInfo> paramList)
   {
-    if ((paramInt1 == 1) || (paramInt1 == 0)) {
-      this.b = paramInt1;
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "queryNearbyMsgInfos");
     }
-    if ((paramInt2 > 0) && (paramInt2 * 1000 < this.c)) {
-      this.c = (paramInt2 * 1000);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a()))
+    if (paramList.size() > 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.b(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':-1,'recordID':'-1','msg':'is recording now'}" });
-      return;
-    }
-    Object localObject = Environment.getExternalStorageDirectory();
-    if ((((File)localObject).exists()) && (((File)localObject).canWrite()))
-    {
-      paramInt1 = 1;
-      if ((!Environment.getExternalStorageState().equals("mounted")) || (paramInt1 == 0)) {
-        break label247;
-      }
-      paramInt1 = 1;
-    }
-    for (;;)
-    {
-      if (paramInt1 != 0)
+      ArrayList localArrayList = new ArrayList();
+      Object localObject1 = new HashMap();
+      paramList = paramList.iterator();
+      Object localObject2;
+      while (paramList.hasNext())
       {
-        localObject = bhlo.b();
-        if ((new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1) && (localObject != null) && (localObject[1] > 2L))
+        localObject2 = (BusinessInfoCheckUpdate.NumRedInfo)paramList.next();
+        if ((((BusinessInfoCheckUpdate.NumRedInfo)localObject2).appid.get() == 7719) && (((BusinessInfoCheckUpdate.NumRedInfo)localObject2).num_red_path.get().size() > 0))
         {
-          if (AudioHelper.b(1))
+          localObject2 = ((BusinessInfoCheckUpdate.NumRedInfo)localObject2).num_red_path.get().iterator();
+          while (((Iterator)localObject2).hasNext())
           {
-            this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.b(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':-1,'recordID':'-1','msg':'" + this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131697750) + "," + this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131697751) + "'}" });
-            return;
-            paramInt1 = 0;
-            break;
-            label247:
-            paramInt1 = 0;
-            continue;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("WebRecordApiPlugin", 2, "startRecord() is called");
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder == null) {
-            this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = new QQRecorder(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-          }
-          e(antf.ba + "webrecord/");
-          if (this.b == 0) {
-            localObject = new QQRecorder.RecorderParam(bhrp.jdField_a_of_type_Int, 0, 0);
-          }
-          for (this.jdField_a_of_type_JavaLangString = a(2, true);; this.jdField_a_of_type_JavaLangString = a(25, true))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a((QQRecorder.RecorderParam)localObject);
-            if (QLog.isColorLevel()) {
-              QLog.i("QQRecorder", 2, "path: " + this.jdField_a_of_type_JavaLangString);
+            BusinessInfoCheckUpdate.NumRedPath localNumRedPath = (BusinessInfoCheckUpdate.NumRedPath)((Iterator)localObject2).next();
+            QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "numRedPath = " + localNumRedPath.str_path.get() + "msg_id = " + localNumRedPath.uint64_msgid.get());
+            if (!((Map)localObject1).containsKey(Long.valueOf(localNumRedPath.uint64_msgid.get()))) {
+              ((Map)localObject1).put(String.valueOf(localNumRedPath.uint64_msgid.get()), localNumRedPath);
             }
-            this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(this);
-            bhkm.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, true);
-            this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.b(this.jdField_a_of_type_JavaLangString);
-            c(0);
-            return;
-            localObject = new QQRecorder.RecorderParam(bhrp.b, 16000, 1);
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.b(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':-1,'recordID':'-1','msg':'" + this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131717722) + "'}" });
-        return;
       }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.b(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':-1,'recordID':'-1','msg':'" + this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131694020) + "'}" });
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2)
-  {
-    c(paramString);
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "AudioApiHelper.onRecorderNotReady() is called,path is:" + paramString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.b(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':-1,'recordID':'-1','msg':'onRecorderNotReady is called'}" });
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "AudioApiHelper.onRecorderPrepare() is called");
-    }
-    paramRecorderParam = bhrp.a(paramRecorderParam.c, paramRecorderParam.jdField_a_of_type_Int);
-    balu.a(paramString);
-    balu.a(paramString, paramRecorderParam, paramRecorderParam.length);
-    bhkm.b(2131230745, false);
-  }
-  
-  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "AudioApiHelper.onRecorderEnd() is called");
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    }
-    int i = b();
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "fateOfRecorder is:" + i);
-    }
-    byte[] arrayOfByte;
-    Object localObject;
-    if (i == 0)
-    {
-      balu.b(paramString);
-      bhjc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, Double.toString(this.jdField_a_of_type_Double));
-      arrayOfByte = bhmi.a(paramString);
-      localObject = null;
-      paramRecorderParam = (QQRecorder.RecorderParam)localObject;
-      if (arrayOfByte == null) {}
-    }
-    try
-    {
-      paramRecorderParam = Base64.encodeToString(arrayOfByte, 0);
-      localObject = paramRecorderParam;
-      if (TextUtils.isEmpty(paramRecorderParam)) {
-        localObject = "";
+      paramList = ((Map)localObject1).entrySet().iterator();
+      while (paramList.hasNext())
+      {
+        localObject1 = (Map.Entry)paramList.next();
+        localObject2 = new Submsgtype0x89.NumRedBusiInfo();
+        ((Submsgtype0x89.NumRedBusiInfo)localObject2).uint64_msgid.set(((BusinessInfoCheckUpdate.NumRedPath)((Map.Entry)localObject1).getValue()).uint64_msgid.get());
+        ((Submsgtype0x89.NumRedBusiInfo)localObject2).uint32_android_app_id.set(7719);
+        ((Submsgtype0x89.NumRedBusiInfo)localObject2).str_android_path.set(((BusinessInfoCheckUpdate.NumRedPath)((Map.Entry)localObject1).getValue()).str_path.get());
+        localArrayList.add(localObject2);
       }
-      paramRecorderParam = new JSONObject();
-      do
+      ((azvd)paramQQAppInterface.getManager(65)).a(localArrayList, "nearby_num_red_dot", new awjl(this, paramQQAppInterface));
+    }
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface, List<NumRedMsg.NumMsgBusi> paramList)
+  {
+    Object localObject1 = null;
+    long l1 = 0L;
+    HashMap localHashMap1 = new HashMap();
+    nmq localnmq = (nmq)paramQQAppInterface.getManager(70);
+    HashMap localHashMap2 = new HashMap();
+    Object localObject3 = paramList.iterator();
+    paramList = (List<NumRedMsg.NumMsgBusi>)localObject1;
+    while (((Iterator)localObject3).hasNext())
+    {
+      NumRedMsg.NumMsgBusi localNumMsgBusi = (NumRedMsg.NumMsgBusi)((Iterator)localObject3).next();
+      i = localNumMsgBusi.ui_appid.get();
+      long l2 = localNumMsgBusi.ui64_msgid.get();
+      String str2 = localNumMsgBusi.str_path.get();
+      localObject1 = localNumMsgBusi.str_ext.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "parsePushRedPointInfo: appid = " + i + ", path = " + str2 + ", content = " + (String)localObject1);
+      }
+      if ((localObject1 != null) && (((String)localObject1).length() > 0) && (str2 != null) && (str2.length() > 0)) {}
+      try
+      {
+        Object localObject4 = Base64.decode(new JSONObject((String)localObject1).getString("_red_ext_0x69"), 0);
+        localObject1 = new oidb_0x791.RedDotInfo();
+        ((oidb_0x791.RedDotInfo)localObject1).mergeFrom((byte[])localObject4);
+        localObject4 = (azvi)paramQQAppInterface.getManager(36);
+        if ((!str2.equals("7719.771901")) && (!str2.equals("7719.771903")) && (!str2.equals("7719.771904"))) {
+          break label1153;
+        }
+        i = ((azvi)localObject4).a(str2, 0);
+        i = ((azvi)localObject4).a(str2, 1) + i;
+      }
+      catch (Exception localException3)
+      {
+        for (;;)
+        {
+          continue;
+          continue;
+          continue;
+          i = 0;
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "parsePushRedPointInfo: num = " + i);
+      }
+      ((oidb_0x791.RedDotInfo)localObject1).uint32_number.set(i);
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "parsePushRedPointInfo: str_custom_buffer = " + ((oidb_0x791.RedDotInfo)localObject1).str_custom_buffer.get());
+      }
+      if ((((oidb_0x791.RedDotInfo)localObject1).uint32_appid.get() == 38) || (nmi.h(((oidb_0x791.RedDotInfo)localObject1).uint32_appid.get()))) {
+        localHashMap1.put(Long.valueOf(l2), localObject1);
+      }
+      if ((((oidb_0x791.RedDotInfo)localObject1).uint32_appid.get() != 38) && (((oidb_0x791.RedDotInfo)localObject1).uint32_appid.get() != 42) && (((oidb_0x791.RedDotInfo)localObject1).uint32_appid.get() != 59) && (((oidb_0x791.RedDotInfo)localObject1).uint32_appid.get() != 60) && (((oidb_0x791.RedDotInfo)localObject1).uint32_appid.get() != 54) && (((oidb_0x791.RedDotInfo)localObject1).uint32_appid.get() != 53) && (!nmi.h(((oidb_0x791.RedDotInfo)localObject1).uint32_appid.get()))) {
+        break label1150;
+      }
+      if (localNumMsgBusi.ui64_msgid.get() <= l1) {
+        break label1147;
+      }
+      l2 = localNumMsgBusi.ui64_msgid.get();
+      l1 = l2;
+      try
+      {
+        localHashMap2.put(Integer.valueOf(((oidb_0x791.RedDotInfo)localObject1).uint32_appid.get()), localObject1);
+        paramList = (List<NumRedMsg.NumMsgBusi>)localObject1;
+      }
+      catch (Exception localException4)
       {
         try
         {
-          paramRecorderParam.put("code", 1);
-          paramRecorderParam.put("recordID", paramString);
-          paramRecorderParam.put("msg", localObject);
-          paramString = paramRecorderParam.toString();
-          if (QLog.isColorLevel()) {
-            QLog.d("WebRecordApiPlugin", 2, "onRecorderEnd result=" + paramString);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.b(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { paramString });
-          return;
+          axfz.a().a(paramQQAppInterface, (oidb_0x791.RedDotInfo)localObject1);
         }
-        catch (JSONException paramString)
+        catch (Exception localException2)
+        {
+          Object localObject2;
+          break label576;
+        }
+        localException4 = localException4;
+        paramList = (List<NumRedMsg.NumMsgBusi>)localObject1;
+        localObject1 = localException4;
+      }
+      label576:
+      ((Exception)localObject1).printStackTrace();
+    }
+    localObject1 = localHashMap2.keySet().iterator();
+    i = 0;
+    if (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (Integer)((Iterator)localObject1).next();
+      localObject3 = localnmq.a(((Integer)localObject2).intValue());
+      if ((localObject3 != null) && (nmi.h(((oidb_0x791.RedDotInfo)localObject3).uint32_appid.get()))) {
+        i = 1;
+      }
+      for (;;)
+      {
+        break;
+        if ((localObject3 != null) && (((oidb_0x791.RedDotInfo)localObject3).uint32_number.get() == ((oidb_0x791.RedDotInfo)localHashMap2.get(localObject2)).uint32_number.get()))
+        {
+          QLog.d("NearbyNewRedDotManager", 2, "this appid not has new reddot: appid  = " + localObject2 + " num =  " + ((oidb_0x791.RedDotInfo)localHashMap2.get(localObject2)).uint32_number.get());
+        }
+        else
+        {
+          localnmq.a((oidb_0x791.RedDotInfo)localHashMap2.get(localObject2));
+          i = 1;
+        }
+      }
+    }
+    if (i == 0) {
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "parsePushRedPointInfo: unread num not change, just return");
+      }
+    }
+    label943:
+    do
+    {
+      for (;;)
+      {
+        return;
+        localnmq.a(true);
+        try
+        {
+          localnmq.a(localHashMap1);
+          localObject2 = new bcek(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("nearby_push_red_tmp");
+          if (paramList != null)
+          {
+            localObject1 = Integer.valueOf(paramList.uint32_appid.get());
+            ((bcek)localObject2).a(new String[] { String.valueOf(localObject1) }).a();
+            if (paramList != null) {
+              break label943;
+            }
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "setAllRedDotMsgInfo(): latestrRedDotInfo is null.");
+          }
+        }
+        catch (Exception localException1)
         {
           for (;;)
           {
-            paramString.printStackTrace();
+            if (QLog.isColorLevel())
+            {
+              QLog.e("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "setAllRedDotMsgInfo exp: e = " + localException1.getMessage());
+              continue;
+              String str1 = "";
+            }
+          }
+          if (paramList.uint32_appid.get() == 59)
+          {
+            new bcek(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("like_exp_red").a();
+            return;
+          }
+          if (paramList.uint32_appid.get() == 60)
+          {
+            if (paramList.uint64_cmd_uin.get() == 1822701914L)
+            {
+              new bcek(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("assist_exp_red").a();
+              return;
+            }
+            new bcek(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("c2c_exp_red").a();
+            return;
           }
         }
-      } while (i != 1);
-      balu.a(paramString);
-      return;
-    }
-    catch (Exception paramRecorderParam)
-    {
-      for (;;)
-      {
-        paramRecorderParam = (QQRecorder.RecorderParam)localObject;
       }
-    }
-  }
-  
-  public void a(String paramString1, QQRecorder.RecorderParam paramRecorderParam, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "AudioApiHelper.onRecorderError() is called");
-    }
-    balu.a(paramString1);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.b(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':-1,'recordID':'-1','msg':'onRecorderError is called'}" });
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "AudioApiHelper.onRecorderSilceEnd() is called maxAmplitude=" + paramInt2);
-    }
-    balu.a(paramString, paramArrayOfByte, paramInt1);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    }
-    this.jdField_a_of_type_Double = paramDouble;
-  }
-  
-  public void a(JSONArray paramJSONArray, String paramString1, String paramString2)
-  {
-    int i = 0;
-    if (i < paramJSONArray.length())
-    {
-      Object localObject = paramJSONArray.optString(i, "");
-      File localFile = new File((String)localObject);
-      String str = bhjc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (String)localObject);
-      long l;
-      if ((localFile.exists()) && (!TextUtils.isEmpty(str)))
-      {
-        double d = Double.valueOf(str).doubleValue();
-        localFile = new File((String)localObject);
-        if (localFile.exists())
-        {
-          l = localFile.length();
-          label97:
-          localObject = new AudioInfo((String)localObject, (int)d, l);
-          this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioUploadTask = new WebRecordApiPlugin.AudioUploadTask(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidOsHandler, paramString1, paramString2, (AudioInfo)localObject);
-          ThreadManager.post(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioUploadTask, 5, null, true);
-        }
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        l = 0L;
-        break label97;
-        this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.a(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':1,'recordID':'" + (String)localObject + "','msg':'record not found or its duration is 0'}" });
-      }
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a());
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null) && (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.b()) && (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(16711686)))
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(16711688);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(16711686);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(16711687);
-      if (QLog.isColorLevel()) {
-        QLog.d("WebRecordApiPlugin", 2, "stopRecord() is called,time is:" + System.currentTimeMillis());
-      }
-      this.jdField_a_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null)
-      {
-        Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(16711686);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 200L);
-      }
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    Object localObject = new File(paramString);
-    if ((((File)localObject).exists()) && (bhjc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString) != null))
-    {
-      double d = Double.valueOf(bhjc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString)).doubleValue();
-      long l;
-      if (((File)localObject).exists())
-      {
-        l = ((File)localObject).length();
-        localObject = new AudioInfo(paramString, (int)d, l);
-        if (this.jdField_a_of_type_Bhud != null) {
-          break label196;
-        }
-        this.jdField_a_of_type_Bhud = new bhud(((AudioInfo)localObject).path, new Handler(), ((AudioInfo)localObject).getAudioType());
-        this.jdField_a_of_type_Bhud.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-        this.jdField_a_of_type_Bhud.b();
-        this.jdField_a_of_type_Bhud.a(this);
-        this.jdField_a_of_type_Bhud.b();
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.c(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':0,'recordID':'" + paramString + "'}" });
-        return;
-        l = 0L;
-        break;
-        label196:
-        this.jdField_a_of_type_Bhud.c();
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.c(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':3,'recordID':'" + paramString + "'}" });
-  }
-  
-  public void b(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void b(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "AudioApiHelper.onRecorderAbnormal() is called");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.b(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':-1,'recordID':'-1','msg':'onRecorderAbnormal is called'}" });
-  }
-  
-  public void c(String paramString)
-  {
-    if (this.jdField_a_of_type_Bhud != null)
-    {
-      this.jdField_a_of_type_Bhud.e();
-      this.jdField_a_of_type_Bhud = null;
-      this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.c(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':2,'recordID':'" + paramString + "'}" });
-    }
-  }
-  
-  public void c(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "AudioApiHelper.onInitFailed() is called");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.b(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':-1,'recordID':'-1','msg':'onInitFailed is called'}" });
-  }
-  
-  public void d(String paramString)
-  {
-    if (this.jdField_a_of_type_Bhud != null)
-    {
-      this.jdField_a_of_type_Bhud.d();
-      this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin.callJs(WebRecordApiPlugin.c(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin), new String[] { "{'code':1,'recordID':'" + paramString + "'}" });
-    }
+    } while (paramList.uint32_appid.get() != 61);
+    new bcek(paramQQAppInterface).a("dc00899").b("grp_lbs").c("entry").d("paried_exp_red").a();
   }
 }
 

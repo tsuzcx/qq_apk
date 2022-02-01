@@ -1,36 +1,35 @@
 package com.tencent.mobileqq.activity.photo;
 
-import akps;
-import aksb;
-import bgup;
+import ajnr;
+import bfed;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class TroopPhotoController$2
+class TroopPhotoController$2
   implements Runnable
 {
-  public TroopPhotoController$2(aksb paramaksb, bgup parambgup, akps paramakps, int paramInt) {}
+  TroopPhotoController$2(TroopPhotoController paramTroopPhotoController, bfed parambfed, ajnr paramajnr, int paramInt) {}
   
   public void run()
   {
-    int i = this.jdField_a_of_type_Bgup.c;
-    this.jdField_a_of_type_Akps.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Akps.b = 1;
-    this.jdField_a_of_type_Akps.c = false;
-    this.this$0.c(this.jdField_a_of_type_Akps);
+    int i = this.val$state.c;
+    this.val$info.jdField_a_of_type_Boolean = false;
+    this.val$info.b = 1;
+    this.val$info.c = false;
+    this.this$0.initVerifyFlag(this.val$info);
     i &= 0x7FFFFFFF;
     if ((i < 0) || (i >= 1)) {
-      this.this$0.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Akps);
+      this.this$0.update2DB(this.val$picId, this.val$info);
     }
-    Iterator localIterator = this.this$0.a.iterator();
+    Iterator localIterator = this.this$0.mUploadPaths.iterator();
     while (localIterator.hasNext())
     {
       TroopClipPic localTroopClipPic = (TroopClipPic)localIterator.next();
-      if (localTroopClipPic.ts == this.jdField_a_of_type_Akps.jdField_a_of_type_Long) {
-        this.this$0.a.remove(localTroopClipPic);
+      if (localTroopClipPic.ts == this.val$info.jdField_a_of_type_Long) {
+        this.this$0.mUploadPaths.remove(localTroopClipPic);
       }
     }
-    this.this$0.a(this.jdField_a_of_type_Akps, this.jdField_a_of_type_Bgup);
+    this.this$0.notifyUpdate(this.val$info, this.val$state);
   }
 }
 

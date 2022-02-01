@@ -1,21 +1,16 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.studymode.KidModeVerifyFragment;
 
-public abstract interface bcnz
-  extends bcnx
+public class bcnz
+  implements Handler.Callback
 {
-  public abstract View a(String paramString);
+  public bcnz(KidModeVerifyFragment paramKidModeVerifyFragment) {}
   
-  public abstract ImageView a();
-  
-  public abstract TextView a();
-  
-  public abstract TextView b();
-  
-  public abstract TextView c();
-  
-  public abstract TextView d();
+  public boolean handleMessage(Message paramMessage)
+  {
+    return false;
+  }
 }
 
 

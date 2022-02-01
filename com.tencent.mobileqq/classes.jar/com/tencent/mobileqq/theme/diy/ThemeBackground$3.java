@@ -1,25 +1,22 @@
 package com.tencent.mobileqq.theme.diy;
 
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import kotlin.jvm.functions.Function0;
 
 final class ThemeBackground$3
-  implements View.OnLayoutChangeListener
+  implements Function0<Drawable>
 {
-  ThemeBackground$3(int paramInt, ThemeBackground paramThemeBackground) {}
+  ThemeBackground$3(int paramInt) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public Drawable invoke()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ThemeBackground", 2, "onLayoutChange bgType:" + this.val$bgType + " isAnimate:" + ThemeUtil.isHorizontalAnimate() + " view width:" + paramView.getWidth() + " height:" + paramView.getHeight());
+    if (this.val$defaultResId > 0) {
+      return BaseApplicationImpl.getApplication().getBaseContext().getResources().getDrawable(this.val$defaultResId);
     }
-    if (paramView.getHeight() > 0)
-    {
-      paramView.removeOnLayoutChangeListener(this);
-      ThemeBackground.setThemeDrawArea(paramView, this.val$bgType, this.val$themeBackground);
-    }
+    return null;
   }
 }
 

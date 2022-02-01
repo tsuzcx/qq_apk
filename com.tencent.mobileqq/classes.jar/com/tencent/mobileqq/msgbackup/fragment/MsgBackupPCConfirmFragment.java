@@ -9,16 +9,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import axfy;
-import axgj;
-import axgt;
-import axid;
-import axjd;
-import axjk;
-import axjn;
-import bhtq;
+import avtf;
+import avtq;
+import avua;
+import avvk;
+import avwk;
+import avwr;
+import avwu;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -32,7 +32,7 @@ public class MsgBackupPCConfirmFragment
   protected void a()
   {
     super.a();
-    axgj.a().a().a(this);
+    avtq.a().a().a(this);
   }
   
   protected void a(boolean paramBoolean, Object paramObject)
@@ -42,7 +42,7 @@ public class MsgBackupPCConfirmFragment
       QLog.d("MsgBackupMsgBackupPCConfirmFragment", 2, "mBizType = " + this.jdField_b_of_type_Int);
     }
     if (paramBoolean) {
-      paramObject = (axgt)paramObject;
+      paramObject = (avua)paramObject;
     }
   }
   
@@ -55,37 +55,37 @@ public class MsgBackupPCConfirmFragment
   protected void c()
   {
     super.c();
-    bhtq.b(this.c, 0);
-    bhtq.b(this.d, 8);
-    bhtq.b(this.jdField_b_of_type_AndroidWidgetButton, 8);
-    bhtq.b(this.jdField_a_of_type_AndroidWidgetButton, 0);
-    bhtq.b(this.jdField_b_of_type_AndroidWidgetButton, 8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131690405);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131690453);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841284);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131690386);
+    ViewUtils.setVisible(this.c, 0);
+    ViewUtils.setVisible(this.d, 8);
+    ViewUtils.setVisible(this.jdField_b_of_type_AndroidWidgetButton, 8);
+    ViewUtils.setVisible(this.jdField_a_of_type_AndroidWidgetButton, 0);
+    ViewUtils.setVisible(this.jdField_b_of_type_AndroidWidgetButton, 8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131690445);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131690493);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841320);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131690426);
     if (AppSetting.c) {
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131690386));
+      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131690426));
     }
     if (this.jdField_b_of_type_Int == 2)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841283);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690459));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841319);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getActivity().getString(2131690499));
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       if (AppSetting.c) {
-        this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131690458));
+        this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131690498));
       }
-      this.jdField_a_of_type_AndroidWidgetButton.setText(getActivity().getString(2131690458));
-      axjk.a("0X800A280");
+      this.jdField_a_of_type_AndroidWidgetButton.setText(getActivity().getString(2131690498));
+      avwr.a("0X800A280");
     }
     if (this.e)
     {
       this.vg.setLeftBackVisible(8);
-      this.vg.setRightButton(2131690398);
+      this.vg.setRightButton(2131690438);
     }
-    this.vg.setOnItemSelectListener(new axid(this));
-    if (axgj.c) {
-      axjk.a("0X800A254");
+    this.vg.setOnItemSelectListener(new avvk(this));
+    if (avtq.c) {
+      avwr.a("0X800A254");
     }
   }
   
@@ -93,8 +93,8 @@ public class MsgBackupPCConfirmFragment
   {
     if (paramInt == 4)
     {
-      axjd.a().c();
-      paramInt = axfy.a().a();
+      avwk.a().c();
+      paramInt = avtf.a().a();
       if (paramInt == 2) {
         onBackEvent();
       }
@@ -115,7 +115,7 @@ public class MsgBackupPCConfirmFragment
   public boolean handleMessage(Message paramMessage)
   {
     if (getActivity() == null) {
-      axjn.a("MsgBackupMsgBackupPCConfirmFragment", "activity is null------------->", new Object[0]);
+      avwu.a("MsgBackupMsgBackupPCConfirmFragment", "activity is null------------->", new Object[0]);
     }
     int i;
     do
@@ -126,7 +126,7 @@ public class MsgBackupPCConfirmFragment
       default: 
         return false;
       }
-      i = axfy.a().a();
+      i = avtf.a().a();
       if (i == 2)
       {
         onBackEvent();
@@ -146,7 +146,7 @@ public class MsgBackupPCConfirmFragment
   {
     super.initWindowStyleAndAnimation(paramActivity);
     if ((paramActivity != null) && (this.e)) {
-      paramActivity.overridePendingTransition(2130772094, 2130772093);
+      paramActivity.overridePendingTransition(2130772100, 2130772099);
     }
   }
   
@@ -160,7 +160,7 @@ public class MsgBackupPCConfirmFragment
     {
       jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupPCConfirmFragment = this;
       return;
-      axjn.b("MsgBackupMsgBackupPCConfirmFragment", "fight1111.onAttach getActivity = null,sInstance = null", new Object[0]);
+      avwu.b("MsgBackupMsgBackupPCConfirmFragment", "fight1111.onAttach getActivity = null,sInstance = null", new Object[0]);
     }
   }
   
@@ -181,9 +181,9 @@ public class MsgBackupPCConfirmFragment
         localIntent.putExtra("backup_select_from", 1);
         localIntent.putExtra("0x11bpush_extra", this.jdField_a_of_type_JavaLangString);
         PublicFragmentActivity.a(getActivity(), localIntent, MsgBackupSelectionFragment.class, 1000);
-        axjn.a("MsgBackupMsgBackupPCConfirmFragment", "migrate_btn onclick BIZ_TYPE_BACKUP", new Object[0]);
+        avwu.a("MsgBackupMsgBackupPCConfirmFragment", "migrate_btn onclick BIZ_TYPE_BACKUP", new Object[0]);
         if (this.e) {
-          axjk.a("0X800A255");
+          avwr.a("0X800A255");
         }
       }
       else
@@ -192,8 +192,8 @@ public class MsgBackupPCConfirmFragment
         localIntent.putExtra("param_start", 2);
         localIntent.putExtra("0x11bpush_extra", this.jdField_a_of_type_JavaLangString);
         PublicFragmentActivity.a(getActivity(), localIntent, MsgBackupPCTransportFragment.class, 1000);
-        axjn.a("MsgBackupMsgBackupPCConfirmFragment", "migrate_btn onclick BIZ_TYPE_RESTORE", new Object[0]);
-        axjk.a("0X800A281");
+        avwu.a("MsgBackupMsgBackupPCConfirmFragment", "migrate_btn onclick BIZ_TYPE_RESTORE", new Object[0]);
+        avwr.a("0X800A281");
       }
     }
   }
@@ -201,8 +201,8 @@ public class MsgBackupPCConfirmFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (!axgj.a) {
-      axgj.a().a().a(null);
+    if (!avtq.a) {
+      avtq.a().a().a(null);
     }
   }
   
@@ -212,7 +212,7 @@ public class MsgBackupPCConfirmFragment
     if (jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupPCConfirmFragment == this) {
       jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupPCConfirmFragment = null;
     }
-    axjn.b("MsgBackupMsgBackupPCConfirmFragment", "fight1111.onDetach l", new Object[0]);
+    avwu.b("MsgBackupMsgBackupPCConfirmFragment", "fight1111.onDetach l", new Object[0]);
   }
 }
 

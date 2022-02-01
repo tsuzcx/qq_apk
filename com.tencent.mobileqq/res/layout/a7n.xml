@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:padding="1.0dip" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:id="@id/mw1" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</merge>
+    <com.tencent.image.URLImageView android:id="@id/fq6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <RelativeLayout android:id="@id/fq5" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/ad2" android:background="@drawable/ag7" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_alignParentBottom="true" />
+        <ImageView android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/cgy" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <TextView android:textColor="@color/al3" android:id="@id/fqb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_marginBottom="5.0dip" android:text="00:00" android:shadowColor="#66000000" android:shadowDy="1.0" android:shadowRadius="6.0" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <ImageView android:id="@id/fui" android:background="@color/bz" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_centerInParent="true" />
+    <RelativeLayout android:id="@id/fq8" android:visibility="gone" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+        <com.tencent.mobileqq.widget.NumberCheckBox android:id="@id/fq9" android:clickable="false" android:layout_marginTop="7.0dip" android:layout_marginRight="6.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_centerInParent="true" style="@style/z7" />
+    </RelativeLayout>
+</RelativeLayout>

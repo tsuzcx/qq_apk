@@ -1,38 +1,24 @@
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.profilecard.bussiness.anonymous.views.AnonymousView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/NativeUiJumpScheme;", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "nativeUiIntent", "needCustomJump", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ayvc
-  extends ayup
+public class ayvc
+  extends RecyclerView.OnScrollListener
 {
-  @NotNull
-  protected PendingIntent a(@NotNull ayut paramayut)
-  {
-    Intrinsics.checkParameterIsNotNull(paramayut, "pushComponent");
-    return e(paramayut);
-  }
+  public ayvc(AnonymousView paramAnonymousView) {}
   
-  protected boolean a()
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    return true;
-  }
-  
-  @NotNull
-  public final PendingIntent e(@NotNull ayut paramayut)
-  {
-    Intrinsics.checkParameterIsNotNull(paramayut, "pushComponent");
-    BaseApplication localBaseApplication = BaseApplication.context;
-    Intent localIntent = new Intent((Context)localBaseApplication, NotifyPushSettingActivity.class);
-    localIntent.addFlags(268435456);
-    paramayut = PendingIntent.getActivity((Context)localBaseApplication, paramayut.d, localIntent, 134217728);
-    Intrinsics.checkExpressionValueIsNotNull(paramayut, "PendingIntent.getActivit…tent.FLAG_UPDATE_CURRENT)");
-    return paramayut;
+    if ((paramInt != 0) && (paramInt != 1))
+    {
+      AnonymousView.a(this.a).cancelPendingRequests();
+      AnonymousView.a(this.a).pause();
+    }
+    while (!AnonymousView.a(this.a).isPausing()) {
+      return;
+    }
+    AnonymousView.a(this.a).resume();
   }
 }
 

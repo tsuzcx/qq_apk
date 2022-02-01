@@ -1,127 +1,152 @@
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgTimerController.1;
+import com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgTimerController.2;
+import com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgTimerController.3;
+import com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgTimerController.4;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/vas/VasDiyData;", "", "urlPrefix", "", "titleStyle", "", "mainColor", "headerJson", "bodyJson", "Lorg/json/JSONObject;", "bgJson", "(Ljava/lang/String;IILjava/lang/Object;Lorg/json/JSONObject;Ljava/lang/Object;)V", "getBgJson", "()Ljava/lang/Object;", "getBodyJson", "()Lorg/json/JSONObject;", "getHeaderJson", "getMainColor", "()I", "getTitleStyle", "getUrlPrefix", "()Ljava/lang/String;", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "hashCode", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class bahx
+public class bahx
+  implements Handler.Callback
 {
-  private final int jdField_a_of_type_Int;
-  @NotNull
-  private final Object jdField_a_of_type_JavaLangObject;
-  @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  @NotNull
-  private final JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private final int jdField_b_of_type_Int;
-  @NotNull
-  private final Object jdField_b_of_type_JavaLangObject;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), null);
+  private bahy jdField_a_of_type_Bahy;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private HashMap<Long, Runnable> jdField_a_of_type_JavaUtilHashMap;
+  private boolean jdField_a_of_type_Boolean;
+  private Handler b = new Handler(ThreadManager.getSubThreadLooper(), this);
   
-  public bahx(@NotNull String paramString, int paramInt1, int paramInt2, @NotNull Object paramObject1, @NotNull JSONObject paramJSONObject, @NotNull Object paramObject2)
+  public bahx(bahy parambahy)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangObject = paramObject1;
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_b_of_type_JavaLangObject = paramObject2;
+    this.jdField_a_of_type_Bahy = parambahy;
   }
   
-  public final int a()
+  public Runnable a(long paramLong)
   {
-    return this.jdField_a_of_type_Int;
+    OrderMediaMsgTimerController.1 local1 = new OrderMediaMsgTimerController.1(this, paramLong);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(local1, 8000L);
+    return local1;
   }
   
-  @NotNull
-  public final Object a()
+  public Runnable a(String paramString)
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    paramString = new OrderMediaMsgTimerController.2(this, paramString);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramString, 8000L);
+    return paramString;
   }
   
-  @NotNull
-  public final String a()
+  public void a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  @NotNull
-  public final JSONObject a()
-  {
-    return this.jdField_a_of_type_OrgJsonJSONObject;
-  }
-  
-  public final int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  @NotNull
-  public final Object b()
-  {
-    return this.jdField_b_of_type_JavaLangObject;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if (this != paramObject)
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
-      if ((paramObject instanceof bahx))
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong))))
+    {
+      if (this.jdField_a_of_type_AndroidOsHandler != null) {
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks((Runnable)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)));
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
+    }
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong))) {
+      return;
+    }
+    OrderMediaMsgTimerController.4 local4 = new OrderMediaMsgTimerController.4(this, paramLong, paramInt1, paramInt2);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(local4, 30000L);
+    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), local4);
+  }
+  
+  public void a(Runnable paramRunnable)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(paramRunnable);
+    }
+  }
+  
+  public boolean a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaLangRunnable = new OrderMediaMsgTimerController.3(this, paramLong);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
+    this.jdField_a_of_type_Boolean = true;
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (localIterator.hasNext())
       {
-        paramObject = (bahx)paramObject;
-        if ((!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int) || (!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangObject, paramObject.jdField_a_of_type_JavaLangObject)) || (!Intrinsics.areEqual(this.jdField_a_of_type_OrgJsonJSONObject, paramObject.jdField_a_of_type_OrgJsonJSONObject)) || (!Intrinsics.areEqual(this.jdField_b_of_type_JavaLangObject, paramObject.jdField_b_of_type_JavaLangObject))) {}
+        Runnable localRunnable = (Runnable)localIterator.next();
+        if (this.jdField_a_of_type_AndroidOsHandler != null) {
+          this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localRunnable);
+        }
       }
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.jdField_a_of_type_JavaUtilHashMap = null;
     }
-    else {
-      return true;
-    }
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    int m = 0;
-    Object localObject = this.jdField_a_of_type_JavaLangString;
-    int i;
-    int n;
-    int i1;
-    int j;
-    if (localObject != null)
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
-      i = localObject.hashCode();
-      n = this.jdField_a_of_type_Int;
-      i1 = this.jdField_b_of_type_Int;
-      localObject = this.jdField_a_of_type_JavaLangObject;
-      if (localObject == null) {
-        break label119;
-      }
-      j = localObject.hashCode();
-      label49:
-      localObject = this.jdField_a_of_type_OrgJsonJSONObject;
-      if (localObject == null) {
-        break label124;
-      }
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler = null;
     }
-    label119:
-    label124:
-    for (int k = localObject.hashCode();; k = 0)
+    if (this.b != null)
     {
-      localObject = this.jdField_b_of_type_JavaLangObject;
-      if (localObject != null) {
-        m = localObject.hashCode();
-      }
-      return (k + (j + ((i * 31 + n) * 31 + i1) * 31) * 31) * 31 + m;
-      i = 0;
-      break;
-      j = 0;
-      break label49;
+      this.b.removeCallbacksAndMessages(null);
+      this.b = null;
     }
   }
   
-  @NotNull
-  public String toString()
+  public boolean handleMessage(Message paramMessage)
   {
-    return "VasDiyData(urlPrefix=" + this.jdField_a_of_type_JavaLangString + ", titleStyle=" + this.jdField_a_of_type_Int + ", mainColor=" + this.jdField_b_of_type_Int + ", headerJson=" + this.jdField_a_of_type_JavaLangObject + ", bodyJson=" + this.jdField_a_of_type_OrgJsonJSONObject + ", bgJson=" + this.jdField_b_of_type_JavaLangObject + ")";
+    long l = 0L;
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMessage.obj != null) && (this.jdField_a_of_type_Bahy != null))
+      {
+        this.jdField_a_of_type_Bahy.a(paramMessage.obj);
+        continue;
+        if (paramMessage.obj != null) {
+          l = ((Long)paramMessage.obj).longValue();
+        }
+        if (this.jdField_a_of_type_Bahy != null)
+        {
+          this.jdField_a_of_type_Bahy.a(l);
+          continue;
+          if (paramMessage.obj != null) {
+            l = ((Long)paramMessage.obj).longValue();
+          }
+          if (this.jdField_a_of_type_Bahy != null) {
+            this.jdField_a_of_type_Bahy.a(l, paramMessage.arg1, paramMessage.arg2);
+          }
+        }
+      }
+    }
   }
 }
 

@@ -1,104 +1,50 @@
-import com.tencent.beacon.event.UserAction;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.Context;
+import android.text.TextUtils;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class bhoo
 {
-  public static void a()
+  public Context a;
+  public bhol a;
+  private Map<String, Object> a;
+  
+  public bhoo(Context paramContext, bhol parambhol)
   {
-    a("0X8008CC3");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bhol = parambhol;
   }
   
-  public static void a(int paramInt)
+  public Object a(String paramString)
   {
-    if (paramInt == 4) {
-      a("0X8009187");
+    Object localObject1 = null;
+    Object localObject2 = null;
+    if (TextUtils.isEmpty(paramString)) {
+      return localObject2;
     }
-    while (paramInt != 2) {
-      return;
+    if (this.jdField_a_of_type_JavaUtilMap == null) {
+      this.jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
     }
-    a("0X8009188");
-  }
-  
-  public static void a(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("QAVGroupConfig", 1, "reportAVGroupNum, num[" + paramInt + "], isVideo[" + paramBoolean + "]");
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+      return this.jdField_a_of_type_JavaUtilMap.get(paramString);
     }
-    HashMap localHashMap;
-    if (paramBoolean)
-    {
-      localHashMap = new HashMap();
-      localHashMap.put("num", String.valueOf(paramInt));
-      UserAction.onUserAction("reportAVGroupNum_video", true, -1L, -1L, localHashMap, true);
+    if (TextUtils.equals(paramString, "intchk")) {
+      localObject1 = new bhor(this);
     }
     for (;;)
     {
-      localHashMap = new HashMap();
-      localHashMap.put("isVideo", String.valueOf(paramBoolean));
-      localHashMap.put("num", String.valueOf(paramInt));
-      UserAction.onUserAction("reportAVGroupNum", true, -1L, -1L, localHashMap, true);
-      return;
-      localHashMap = new HashMap();
-      localHashMap.put("num", String.valueOf(paramInt));
-      UserAction.onUserAction("reportAVGroupNum_audio", true, -1L, -1L, localHashMap, true);
+      localObject2 = localObject1;
+      if (localObject1 == null) {
+        break;
+      }
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject1);
+      return localObject1;
+      if (TextUtils.equals(paramString, "app_scan")) {
+        localObject1 = new bhoq(this);
+      } else if (TextUtils.equals(paramString, "sig_check")) {
+        localObject1 = new bhot(this);
+      }
     }
-  }
-  
-  public static void a(String paramString)
-  {
-    if (!QLog.isDevelopLevel()) {}
-    for (;;)
-    {
-      bdll.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
-      return;
-      QLog.w("QAVGroupConfig", 1, "reportClickEvent, key[" + paramString + "]");
-    }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      a("0X8008CC7");
-      return;
-    }
-    a("0X8008CC8");
-  }
-  
-  public static void b()
-  {
-    a("0X8008CC4");
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      a("0X8008CBA");
-      return;
-    }
-    a("0X8008CB5");
-  }
-  
-  public static void c()
-  {
-    a("0X8008CC5");
-  }
-  
-  public static void c(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      a("0X8008E7D");
-      return;
-    }
-    a("0X8008E7E");
-  }
-  
-  public static void d()
-  {
-    a("0X8008CC6");
   }
 }
 

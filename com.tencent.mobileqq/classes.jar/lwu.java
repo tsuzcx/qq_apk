@@ -1,40 +1,15 @@
-import android.app.Notification;
 import android.graphics.Bitmap;
-import android.os.IInterface;
-import com.tencent.av.service.AVPbInfo;
 
-public abstract interface lwu
-  extends IInterface
+class lwu
+  implements lxl
 {
-  public abstract int a(long paramLong, int paramInt);
+  lwu(lwt paramlwt, String paramString, Bitmap paramBitmap) {}
   
-  public abstract AVPbInfo a(byte[] paramArrayOfByte);
-  
-  public abstract void a();
-  
-  public abstract void a(long paramLong);
-  
-  public abstract void a(long paramLong, String paramString);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, Bitmap paramBitmap);
-  
-  public abstract void a(lwr paramlwr);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean, Notification paramNotification);
-  
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract void b();
-  
-  public abstract void b(byte[] paramArrayOfByte);
-  
-  public abstract void c();
-  
-  public abstract void c(byte[] paramArrayOfByte);
+  public void a(lxk paramlxk)
+  {
+    paramlxk.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    paramlxk.a();
+  }
 }
 
 

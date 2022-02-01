@@ -1,23 +1,35 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
 
-public class xkz
-  implements View.OnKeyListener
+class xkz
+  extends SimpleJob<Object>
 {
-  public xkz(StoryPlayerFragment paramStoryPlayerFragment) {}
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  xkz(xkw paramxkw, String paramString1, String paramString2)
   {
-    if (paramInt == 4)
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramJobContext = (vuk)vux.a(19);
+    paramVarArgs = paramJobContext.a(wbd.a(this.jdField_a_of_type_Xkw.b));
+    xlb localxlb = new xlb(this.jdField_a_of_type_Xkw.c);
+    ArrayList localArrayList = new ArrayList();
+    localxlb.jdField_a_of_type_JavaUtilList = paramJobContext.a(this.jdField_a_of_type_JavaLangString, localArrayList);
+    localxlb.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1)) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (paramKeyEvent.getAction() == 1) {
-        this.a.finish();
-      }
-      return true;
+      localxlb.jdField_a_of_type_Boolean = bool;
+      vli.a().dispatch(localxlb);
+      xvv.a("Q.qqstory.memories:MemoryDataPuller", "Get memory key list %s", localxlb.jdField_a_of_type_JavaUtilList);
+      return null;
     }
-    return false;
   }
 }
 

@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.text;
 
-import befz;
+import bczq;
 import java.io.File;
 
-public final class EmotcationConstants$1
+final class EmotcationConstants$1
   implements Runnable
 {
-  public EmotcationConstants$1(File paramFile1, File paramFile2, File paramFile3) {}
+  EmotcationConstants$1(File paramFile1, File paramFile2, File paramFile3) {}
   
   public void run()
   {
-    if (this.a.exists()) {
-      this.a.delete();
+    if (this.val$indexFile.exists()) {
+      this.val$indexFile.delete();
     }
-    if (this.b.exists()) {
-      this.b.delete();
+    if (this.val$emojiFile.exists()) {
+      this.val$emojiFile.delete();
     }
-    befz.a(this.c);
+    bczq.a(this.val$zipfile);
   }
 }
 

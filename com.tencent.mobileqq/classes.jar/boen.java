@@ -1,13 +1,14 @@
-import com.tencent.ttpic.video.AECoderFactory.AEDecoderFactory;
-import com.tencent.ttpic.video.AEDecoder;
-
-final class boen
-  implements AECoderFactory.AEDecoderFactory
+public abstract interface boen
 {
-  public AEDecoder createDecoder(String paramString)
-  {
-    return new bbki(paramString);
-  }
+  public abstract boeo a(int paramInt1, int paramInt2);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(Throwable paramThrowable);
+  
+  public abstract void b();
 }
 
 

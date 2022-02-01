@@ -1,173 +1,117 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
 
 public class lia
 {
-  public static void a()
+  public int a;
+  public long a;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  long[] jdField_a_of_type_ArrayOfLong = new long[41];
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public String d;
+  
+  lia()
   {
-    try
-    {
-      boolean bool = a("QuaVChatNewIntent", true, null);
-      QLog.d("VideoBeaconReporter", 1, "event_QuaVChatNewIntent, isSucceed[true],  ret[" + bool + "]");
-      return;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_d_of_type_JavaLangString = "KilledBySystem";
+  }
+  
+  public String a()
+  {
+    String str1 = Build.MODEL;
+    String str2 = String.valueOf(Build.VERSION.SDK_INT);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Android").append('|');
+    localStringBuilder.append(str1).append('|');
+    localStringBuilder.append(str2).append('|');
+    localStringBuilder.append(str2).append('|');
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append('|');
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append('|');
+    if (this.jdField_b_of_type_Int != -1) {
+      localStringBuilder.append(this.jdField_b_of_type_Int).append('|');
     }
-    catch (Throwable localThrowable)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("VideoBeaconReporter", 2, "event_QuaVChatNewIntent:", localThrowable);
+      localStringBuilder.append(this.jdField_a_of_type_Int).append('|');
+      return localStringBuilder.toString();
+      localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[20])).append('|');
     }
   }
   
-  public static void a(int paramInt, long paramLong1, long paramLong2, String paramString)
+  public String a(int paramInt, long paramLong)
   {
-    boolean bool2 = true;
-    QLog.d("VideoBeaconReporter", 1, "reportQuaOnCloseVideo_onCloseVideo :reason[" + paramInt + "], param0[" + paramLong1 + "], param1[" + paramLong2 + "], param2[" + paramString + "], ");
-    for (;;)
+    if ((paramInt >= 0) && (paramInt < 41))
     {
-      try
+      StringBuilder localStringBuilder;
+      if (paramLong == 1L)
       {
-        localHashMap = new HashMap();
-        l = paramLong1;
-        if (paramLong2 != 0L)
+        this.jdField_a_of_type_ArrayOfLong[paramInt] = 1L;
+        localStringBuilder = new StringBuilder();
+        paramInt = 0;
+        label34:
+        if (paramInt >= 41) {
+          break label242;
+        }
+        switch (paramInt)
         {
-          i = (int)paramLong2 + 1000;
-          paramInt = i;
-          l = paramLong1;
-          if (paramString == null) {}
+        default: 
+          localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[paramInt])).append('|');
         }
       }
-      catch (Throwable paramString)
+      for (;;)
       {
-        HashMap localHashMap;
-        long l;
-        int i;
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("VideoBeaconReporter", 2, "event_QuaOnCloseVideo:", paramString);
-        return;
-        boolean bool1 = false;
-        continue;
-        if (l != 0L) {
-          continue;
-        }
-        bool1 = bool2;
-        continue;
-      }
-      try
-      {
-        l = Long.parseLong(paramString);
-        paramInt = i;
-      }
-      catch (Exception paramString)
-      {
-        paramInt = i;
-        l = paramLong1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("VideoBeaconReporter", 2, "parseLong error:", paramString);
-        paramInt = i;
-        l = paramLong1;
-      }
-    }
-    localHashMap.put("reason", "" + paramInt);
-    localHashMap.put("error_code", "" + l);
-    if (paramInt == 1)
-    {
-      bool1 = bool2;
-      if (l != 1L)
-      {
-        bool1 = bool2;
-        if (l != 2L) {}
-      }
-      else
-      {
-        bool2 = a("QuaOnCloseVideo", bool1, localHashMap);
-        QLog.d("VideoBeaconReporter", 1, "event_QuaOnCloseVideo, isSucceed[" + bool1 + "], node_reason[" + (String)localHashMap.get("reason") + "], node_error_code[" + (String)localHashMap.get("error_code") + "],     ret[" + bool2 + "]");
-        return;
-      }
-    }
-  }
-  
-  public static void a(long paramLong)
-  {
-    boolean bool1 = true;
-    for (;;)
-    {
-      long l;
-      try
-      {
-        new HashMap();
-        l = -1L;
-        if (paramLong <= 0L) {
-          break label107;
-        }
-        l = System.currentTimeMillis() - paramLong;
-      }
-      catch (Throwable localThrowable)
-      {
-        boolean bool2;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("VideoBeaconReporter", 2, "event_QuaInviteClose:", localThrowable);
-        return;
-      }
-      bool2 = a("QuaInviteClose", bool1, null);
-      QLog.d("VideoBeaconReporter", 1, "event_QuaInviteClose, isSucceed[" + bool1 + "],  ret[" + bool2 + "]");
-      return;
-      label107:
-      while (l <= 2000L)
-      {
-        bool1 = false;
+        paramInt += 1;
+        break label34;
+        this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
         break;
-      }
-    }
-  }
-  
-  public static void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    boolean bool = true;
-    for (;;)
-    {
-      try
-      {
-        localHashMap = new HashMap();
-        if (!paramBoolean1) {
-          continue;
+        if (this.jdField_a_of_type_ArrayOfLong[14] == 0L)
+        {
+          this.jdField_a_of_type_JavaLangString = lhy.a();
+          this.jdField_a_of_type_ArrayOfLong[14] = 1L;
         }
-        localHashMap.put("broadcast_created", "1");
-        if (!paramBoolean2) {
-          continue;
-        }
-        localHashMap.put("vchat_created", "1");
-        paramBoolean1 = bool;
-      }
-      catch (Throwable localThrowable)
-      {
-        HashMap localHashMap;
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("VideoBeaconReporter", 2, "event_QuaProcessWakeUp:", localThrowable);
-        return;
-        localThrowable.put("vchat_created", "0");
-        paramBoolean1 = false;
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append('|');
         continue;
+        localStringBuilder.append(this.jdField_d_of_type_JavaLangString).append('|');
+        continue;
+        localStringBuilder.append(0).append('|');
+        continue;
+        if (this.jdField_b_of_type_Long > 0L) {
+          this.jdField_c_of_type_Long = ((System.currentTimeMillis() - this.jdField_b_of_type_Long) / 1000L);
+        }
+        localStringBuilder.append(this.jdField_c_of_type_Long).append('|');
       }
-      paramBoolean2 = a("QuaProcessWakeUp", paramBoolean1, localHashMap);
-      QLog.d("VideoBeaconReporter", 1, "event_QuaProcessWakeUp, isSucceed[" + paramBoolean1 + "], node_broadcast_created[" + (String)localHashMap.get("broadcast_created") + "], node_vchat_created[" + (String)localHashMap.get("vchat_created") + "],     ret[" + paramBoolean2 + "]");
-      return;
-      localHashMap.put("broadcast_created", "0");
+      label242:
+      return localStringBuilder.toString();
     }
+    lba.g("VideoNodeReporter", "buildBody report error:" + paramInt);
+    return null;
   }
   
-  private static boolean a(String paramString, boolean paramBoolean, HashMap<String, String> paramHashMap)
+  public void a(lez paramlez, String paramString)
   {
-    bdmc.a(BaseApplicationImpl.getContext()).a(null, paramString, paramBoolean, 0L, 0L, paramHashMap, null);
-    return true;
+    if (paramlez != null)
+    {
+      if (paramlez.k != -1) {
+        this.jdField_a_of_type_Int = paramlez.k;
+      }
+      if (paramlez.jdField_d_of_type_Int != 0) {
+        this.jdField_b_of_type_Int = paramlez.jdField_d_of_type_Int;
+      }
+      if (!TextUtils.isEmpty(paramlez.jdField_d_of_type_JavaLangString)) {
+        this.jdField_b_of_type_JavaLangString = paramlez.jdField_d_of_type_JavaLangString;
+      }
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      this.jdField_c_of_type_JavaLangString = paramString;
+    }
   }
 }
 

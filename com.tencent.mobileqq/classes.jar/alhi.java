@@ -1,43 +1,135 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.text.DecimalFormat;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class alhi
+  extends BaseAdapter
 {
-  public static String a;
-  public static DecimalFormat a;
-  private static boolean a;
-  public static String b;
-  public static String c;
-  private static String d;
-  public int a;
-  public long a;
-  public int b;
-  public long b;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  static
+  public alhi(Context paramContext)
   {
-    jdField_a_of_type_JavaLangString = "https://i.gtimg.cn/channel/exclusive_hb/socialpay_makehb_ani_";
-    jdField_b_of_type_JavaLangString = "https://i.gtimg.cn/channel/exclusive_hb/socialpay_aio_ani_";
-    c = jdField_a_of_type_JavaLangString;
-    d = jdField_b_of_type_JavaLangString;
-    jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("#0.00");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public static String a()
+  private alhk a(String paramString, Context paramContext)
   {
-    if (!jdField_a_of_type_Boolean)
-    {
-      QQAppInterface localQQAppInterface = alil.a();
-      if (localQQAppInterface != null) {
-        d = ((alao)localQQAppInterface.getManager(245)).a("hb_exclusive", jdField_b_of_type_JavaLangString, new String[] { "aio_red", "prefix" });
-      }
+    int i = 0;
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "seed";
     }
-    return d;
+    paramString = new alhk(null);
+    String[] arrayOfString = paramContext.getResources().getStringArray(2130968660);
+    paramContext = paramContext.getResources().getStringArray(2130968659);
+    if (TextUtils.isEmpty(str)) {}
+    for (;;)
+    {
+      paramString.a = arrayOfString[(i % arrayOfString.length)];
+      paramString.b = paramContext[(i % paramContext.length)];
+      return paramString;
+      i = str.charAt(0);
+    }
   }
   
-  public String toString()
+  private ColorStateList a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return "SpecifyAnimInfo{aId=" + this.jdField_a_of_type_Int + ", minPrice=" + this.jdField_a_of_type_Long + ", maxPrice=" + this.jdField_b_of_type_Long + ", skinId=" + this.jdField_b_of_type_Int + '}';
+    return new ColorStateList(new int[][] { { 16842919, 16842910 }, { 16842910, 16842908 }, { 16842910 }, { 16842908 }, { 16842909 }, new int[0] }, new int[] { paramInt2, paramInt3, paramInt1, paramInt3, paramInt4, paramInt1 });
+  }
+  
+  private Drawable a(int paramInt)
+  {
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setCornerRadius(25.0F);
+    localGradientDrawable.setColor(paramInt);
+    return localGradientDrawable;
+  }
+  
+  private Drawable a(int paramInt1, int paramInt2)
+  {
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    Drawable localDrawable = a(paramInt1);
+    localStateListDrawable.addState(new int[] { 16842919 }, localDrawable);
+    localDrawable = a(paramInt1);
+    localStateListDrawable.addState(new int[] { 16842908 }, localDrawable);
+    localDrawable = a(paramInt1);
+    localStateListDrawable.addState(new int[] { 16842913 }, localDrawable);
+    localDrawable = a(paramInt2);
+    localStateListDrawable.addState(new int[0], localDrawable);
+    return localStateListDrawable;
+  }
+  
+  public String a(int paramInt)
+  {
+    return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public void a(List<String> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561066, null, false);
+      paramView = new alhl();
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379599));
+      localView.setTag(paramView);
+    }
+    for (;;)
+    {
+      Object localObject = a(paramInt);
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        paramView.jdField_a_of_type_Int = paramInt;
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+        localObject = a((String)localObject, this.jdField_a_of_type_AndroidContentContext);
+        int i = Color.parseColor(((alhk)localObject).a);
+        int j = Color.parseColor(((alhk)localObject).b);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setFocusable(false);
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(a(j, j));
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a(i, i, i, i));
+      }
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (alhl)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+    }
   }
 }
 

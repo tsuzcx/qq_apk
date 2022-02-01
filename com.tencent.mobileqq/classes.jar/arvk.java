@@ -1,209 +1,65 @@
-import android.graphics.Canvas;
-import android.os.Build.VERSION;
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import android.view.SurfaceView;
-import android.view.View.OnTouchListener;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.concurrent.locks.ReentrantLock;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.1;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.2;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.3;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.4;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.5;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.6;
+import com.tencent.qphone.base.util.QLog;
 
 public class arvk
-  implements SurfaceHolder.Callback, arvi
+  implements atgv
 {
-  private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
-  private SurfaceView jdField_a_of_type_AndroidViewSurfaceView;
-  private arvj jdField_a_of_type_Arvj;
-  private volatile Object jdField_a_of_type_JavaLangObject;
-  private volatile ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private volatile Object jdField_b_of_type_JavaLangObject;
-  private volatile boolean jdField_b_of_type_Boolean;
+  public arvk(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public arvk(SurfaceView paramSurfaceView)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewSurfaceView = paramSurfaceView;
-    this.jdField_a_of_type_AndroidViewSurfaceView.setWillNotCacheDrawing(true);
-    this.jdField_a_of_type_AndroidViewSurfaceView.setDrawingCacheEnabled(false);
-    this.jdField_a_of_type_AndroidViewSurfaceView.setWillNotDraw(true);
-    this.jdField_a_of_type_AndroidViewSurfaceView.setZOrderMediaOverlay(true);
-    this.jdField_a_of_type_AndroidViewSurfaceHolder = this.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
-    this.jdField_a_of_type_AndroidViewSurfaceHolder.addCallback(this);
-    this.jdField_a_of_type_AndroidViewSurfaceHolder.setFormat(-2);
-  }
-  
-  private boolean a()
-  {
-    c();
-    return (this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock != null) && (this.jdField_a_of_type_JavaLangObject != null) && (this.jdField_b_of_type_JavaLangObject != null);
-  }
-  
-  private Canvas b()
-  {
-    Object localObject2;
-    if (artl.a().a().b())
-    {
-      localObject2 = this.jdField_a_of_type_AndroidViewSurfaceHolder.lockHardwareCanvas();
-      return localObject2;
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadStart progress = " + paramInt);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    e();
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_JavaLangObject != null)) {}
-    for (;;)
-    {
-      try
-      {
-        Canvas localCanvas = this.jdField_a_of_type_AndroidViewSurfaceHolder.getSurface().lockHardwareCanvas();
-        localObject2 = localCanvas;
-        if (localCanvas != null) {
-          break;
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-        return null;
-      }
-      catch (Exception localException)
-      {
-        arwe.a("SurfaceDanmakuView", "Exception locking surface", localException);
-      }
-      Object localObject1 = null;
+    this.a.runOnUiThread(new UniformDownloadActivity.11.2(this));
+  }
+  
+  public void a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadFailed errCode = " + paramInt);
     }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.6(this));
   }
   
-  private void b(Canvas paramCanvas)
+  public void a(String paramString, long paramLong, Bundle paramBundle)
   {
-    if (artl.a().a().b()) {
-      this.jdField_a_of_type_AndroidViewSurfaceHolder.unlockCanvasAndPost(paramCanvas);
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadSucess ");
     }
-    do
-    {
-      return;
-      this.jdField_a_of_type_AndroidViewSurfaceHolder.getSurface().unlockCanvasAndPost(paramCanvas);
-    } while (this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock == null);
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    this.a.runOnUiThread(new UniformDownloadActivity.11.1(this));
+    bcef.b(null, "dc00898", "", "", "0X8008FFA", "0X8008FFA", 1, 0, "", "", "", "");
   }
   
-  private boolean b()
+  public void b(int paramInt, Bundle paramBundle)
   {
-    return (aruz.a()) && (((Build.VERSION.SDK_INT == 23) && (a())) || (artl.a().a().b()));
-  }
-  
-  private void c()
-  {
-    d();
-    e();
-  }
-  
-  private void d()
-  {
-    Object localObject = artl.a().a().a(SurfaceView.class, "mSurfaceLock", this.jdField_a_of_type_AndroidViewSurfaceView);
-    if ((localObject instanceof ReentrantLock)) {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = ((ReentrantLock)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadProgress progress = " + paramInt);
     }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.4(this, paramInt));
   }
   
-  private void e()
+  public void c(int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangObject = artl.a().a().a(SurfaceView.class, "mDrawingStopped", this.jdField_a_of_type_AndroidViewSurfaceView);
-    this.jdField_b_of_type_JavaLangObject = artl.a().a().a(SurfaceView.class, "mWindow", this.jdField_a_of_type_AndroidViewSurfaceView);
-    if ((this.jdField_a_of_type_JavaLangObject instanceof Boolean)) {
-      this.jdField_a_of_type_Boolean = ((Boolean)this.jdField_a_of_type_JavaLangObject).booleanValue();
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadPause progress = " + paramInt);
     }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.5(this));
   }
   
-  public float a()
+  public void d(int paramInt, Bundle paramBundle)
   {
-    return this.jdField_a_of_type_AndroidViewSurfaceView.getY();
-  }
-  
-  public Canvas a()
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      return b();
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadResume progress = " + paramInt);
     }
-    return this.jdField_a_of_type_AndroidViewSurfaceHolder.lockCanvas();
-  }
-  
-  public void a()
-  {
-    ReentrantLock localReentrantLock = (ReentrantLock)artl.a().a().a(SurfaceView.class, "mSurfaceLock", this.jdField_a_of_type_AndroidViewSurfaceView);
-    Surface localSurface = this.jdField_a_of_type_AndroidViewSurfaceView.getHolder().getSurface();
-    try
-    {
-      Method localMethod = Surface.class.getDeclaredMethod("nativeRelease", new Class[] { Long.TYPE });
-      localMethod.setAccessible(true);
-      Field localField = Surface.class.getDeclaredField("mLockedObject");
-      localField.setAccessible(true);
-      Long localLong = (Long)localField.get(localSurface);
-      arwe.c("surface_lock", "SurfaceDanmakuView unlock lockObjectValue = " + localLong);
-      if (localLong.longValue() != 0L) {
-        localMethod.invoke(null, new Object[] { localLong });
-      }
-      localField.setLong(localSurface, 0L);
-      arwe.b("surface_lock", "SurfaceDanmakuView unlock: release success");
-      return;
-    }
-    catch (Exception localException)
-    {
-      arwe.a("surface_lock", "SurfaceDanmakuView unlock:release failed", localException);
-      return;
-    }
-    finally
-    {
-      arwe.c("surface_lock", "SurfaceDanmakuView unlock surfaceLock = " + localReentrantLock);
-      if ((localReentrantLock != null) && (localReentrantLock.isLocked()))
-      {
-        arwe.c("surface_lock", "SurfaceDanmakuView unlock");
-        localReentrantLock.unlock();
-      }
-    }
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    if (this.jdField_b_of_type_Boolean)
-    {
-      b(paramCanvas);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewSurfaceHolder.unlockCanvasAndPost(paramCanvas);
-  }
-  
-  public void a(View.OnTouchListener paramOnTouchListener)
-  {
-    this.jdField_a_of_type_AndroidViewSurfaceView.setOnTouchListener(paramOnTouchListener);
-  }
-  
-  public void a(arvj paramarvj)
-  {
-    this.jdField_a_of_type_Arvj = paramarvj;
-  }
-  
-  public void b() {}
-  
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.jdField_a_of_type_Arvj != null) {
-      this.jdField_a_of_type_Arvj.j();
-    }
-    arwe.c("SurfaceDanmakuView", "surfaceChanged, width = " + paramInt2 + ", height = " + paramInt3);
-  }
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    if (this.jdField_a_of_type_Arvj != null) {
-      this.jdField_a_of_type_Arvj.i();
-    }
-    this.jdField_b_of_type_Boolean = b();
-    arwe.c("SurfaceDanmakuView", "surfaceCreated, isHardwareAccelerateEnable = " + this.jdField_b_of_type_Boolean);
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (this.jdField_a_of_type_Arvj != null) {
-      this.jdField_a_of_type_Arvj.k();
-    }
-    arwe.c("SurfaceDanmakuView", "surfaceDestroyed");
+    this.a.runOnUiThread(new UniformDownloadActivity.11.3(this));
   }
 }
 

@@ -1,108 +1,217 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class avit
-  extends BaseAdapter
 {
-  int jdField_a_of_type_Int = -1;
-  SparseArray<URLDrawable> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private List<String> jdField_a_of_type_JavaUtilList;
-  
-  public avit(List<String> paramList)
+  private static int a(Context paramContext)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (paramContext == null) {
+      return -1;
+    }
+    if (!a(paramContext)) {
+      return 0;
+    }
+    if (Build.VERSION.SDK_INT >= 26) {
+      return c(paramContext);
+    }
+    if (Build.VERSION.SDK_INT >= 22) {
+      return b(paramContext);
+    }
+    return d(paramContext);
   }
   
-  public String a(int paramInt)
+  public static void a(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (paramInt >= 0)) {
-      return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public String a(String paramString)
-  {
-    String str;
-    if (TextUtils.isEmpty(paramString)) {
-      str = "";
-    }
-    do
-    {
-      return str;
-      if (paramString.startsWith("//")) {
-        return "file:/" + paramString;
-      }
-      str = paramString;
-    } while (!paramString.startsWith("/"));
-    return "file://" + paramString;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView != null)
-    {
-      localObject1 = paramView;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-    }
-    Object localObject2 = a(a(paramInt));
-    Object localObject3 = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("BigImageAdapter", 2, "getView position=" + paramInt + ",cache=" + localObject3 + ",url=" + (String)localObject2);
-    }
-    Object localObject1 = new AbstractImageAdapter.URLImageView2(paramViewGroup.getContext());
-    if ((localObject3 != null) && (((URLDrawable)localObject3).getStatus() == 1)) {
-      ((ImageView)localObject1).setImageDrawable((Drawable)localObject3);
+    if (paramContext == null) {
+      QLog.e("GatewayReportUtil", 1, "reportLoginSimCardNum but context is null");
     }
     for (;;)
     {
-      ((ImageView)localObject1).setContentDescription(anzj.a(2131707019) + paramInt);
-      break;
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        int i = paramViewGroup.getWidth();
-        int j = paramViewGroup.getHeight();
-        localObject3 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = i;
-        ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = j;
-        ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = beyq.a;
-        localObject2 = URLDrawable.getDrawable((String)localObject2, (URLDrawable.URLDrawableOptions)localObject3);
-        switch (((URLDrawable)localObject2).getStatus())
-        {
-        default: 
-          ((URLDrawable)localObject2).setTag(Integer.valueOf(1));
-          ((URLDrawable)localObject2).startDownload();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("BigImageAdapter", 2, "getView position=" + paramInt + ",parentWidth=" + i + ",parentHeight=" + j);
-        }
-        ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
+      return;
+      int i = a(paramContext);
+      QLog.d("GatewayReportUtil", 1, new Object[] { "sim card num is ", Integer.valueOf(i) });
+      paramContext = null;
+      if (i == 0) {
+        paramContext = "0X800B0A9";
       }
+      while (paramContext != null)
+      {
+        bcef.a(paramQQAppInterface, "dc00898", "", "", paramContext, paramContext, 0, 0, "", "", "", "");
+        return;
+        if (i == 1) {
+          paramContext = "0X800B0AB";
+        } else if (i == 2) {
+          paramContext = "0X800B0A1";
+        }
+      }
+    }
+  }
+  
+  public static void a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    if (paramContext == null) {
+      QLog.e("GatewayReportUtil", 1, "reportSimCardNum but context is null");
+    }
+    for (;;)
+    {
+      return;
+      int i = a(paramContext);
+      QLog.d("GatewayReportUtil", 1, new Object[] { "sim card num is ", Integer.valueOf(i) });
+      paramContext = null;
+      if (i == 0) {
+        paramContext = "0X800B0AA";
+      }
+      while (paramContext != null)
+      {
+        bcef.a(paramQQAppInterface, "dc00898", "", paramString, paramContext, paramContext, paramInt, 0, "", "", "", "");
+        return;
+        if (i == 1) {
+          paramContext = "0X800B0AC";
+        } else if (i == 2) {
+          paramContext = "0X800B0A3";
+        }
+      }
+    }
+  }
+  
+  private static boolean a(Context paramContext)
+  {
+    boolean bool;
+    switch (((TelephonyManager)paramContext.getSystemService("phone")).getSimState())
+    {
+    default: 
+      bool = true;
+    }
+    for (;;)
+    {
+      QLog.d("GatewayReportUtil", 1, new Object[] { "hasSimCard result : ", Boolean.valueOf(bool) });
+      return bool;
+      bool = false;
+      continue;
+      bool = false;
+    }
+  }
+  
+  @RequiresApi(api=22)
+  private static int b(Context paramContext)
+  {
+    try
+    {
+      SubscriptionManager localSubscriptionManager = (SubscriptionManager)paramContext.getSystemService("telephony_subscription_service");
+      if (ActivityCompat.checkSelfPermission(paramContext, "android.permission.READ_PHONE_STATE") != 0)
+      {
+        QLog.e("GatewayReportUtil", 1, "getSimCardNumV22 no permission");
+        return -1;
+      }
+      int i = localSubscriptionManager.getActiveSubscriptionInfoCount();
+      return i;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("GatewayReportUtil", 1, new Object[] { "getSimCardNumV22 error : ", paramContext.getMessage() });
+    }
+    return -1;
+  }
+  
+  @RequiresApi(api=26)
+  private static int c(Context paramContext)
+  {
+    try
+    {
+      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
+      int j = 0;
+      int k;
+      for (int i = 0;; i = k)
+      {
+        k = i;
+        if (j >= 2) {
+          break;
+        }
+        int m = paramContext.getSimState(j);
+        k = i;
+        if (m == 5) {
+          k = i + 1;
+        }
+        j += 1;
+      }
+      return k;
+    }
+    catch (Exception paramContext)
+    {
+      k = -1;
+      QLog.d("GatewayReportUtil", 1, new Object[] { "getSimCardNumV26 error : ", paramContext.getMessage() });
+    }
+  }
+  
+  private static int d(Context paramContext)
+  {
+    for (;;)
+    {
+      try
+      {
+        paramContext = (TelephonyManager)paramContext.getSystemService("phone");
+        i = paramContext.getSimState();
+        if (i == 5)
+        {
+          i = 1;
+          int j;
+          return i;
+        }
+      }
+      catch (NoSuchMethodException paramContext)
+      {
+        try
+        {
+          j = ((Integer)TelephonyManager.class.getMethod("getSimState", new Class[] { Integer.TYPE }).invoke(paramContext, new Object[] { Integer.valueOf(1) })).intValue();
+          if (j != 5) {
+            break label234;
+          }
+          return 2;
+        }
+        catch (InvocationTargetException paramContext)
+        {
+          continue;
+        }
+        catch (IllegalAccessException paramContext)
+        {
+          continue;
+        }
+        catch (NoSuchMethodException paramContext)
+        {
+          continue;
+        }
+        paramContext = paramContext;
+        i = 0;
+        QLog.e("GatewayReportUtil", 1, new Object[] { "getSimCardNumV21 NoSuchMethodException, count : ", Integer.valueOf(i), " error msg : ", paramContext.getMessage() });
+        return i;
+      }
+      catch (IllegalAccessException paramContext)
+      {
+        i = 0;
+        QLog.e("GatewayReportUtil", 1, new Object[] { "getSimCardNumV21 IllegalAccessException, count : ", Integer.valueOf(i), " error msg : ", paramContext.getMessage() });
+        return i;
+      }
+      catch (InvocationTargetException paramContext)
+      {
+        i = 0;
+        QLog.e("GatewayReportUtil", 1, new Object[] { "getSimCardNumV21 InvocationTargetException, count : ", Integer.valueOf(i), " error msg : ", paramContext.getMessage() });
+        return i;
+      }
+      catch (Exception paramContext)
+      {
+        QLog.e("GatewayReportUtil", 1, new Object[] { "getSimCardNumV21 other exception, count : ", Integer.valueOf(-1), " error msg : ", paramContext.getMessage() });
+        return -1;
+      }
+      label234:
+      int i = 0;
     }
   }
 }

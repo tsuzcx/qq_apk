@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
 
-public final class arwu
-  implements Parcelable.Creator<IntimateInfo.CommonTroopInfo>
+public class arwu
+  implements bjqj
 {
-  public IntimateInfo.CommonTroopInfo a(Parcel paramParcel)
-  {
-    return new IntimateInfo.CommonTroopInfo(paramParcel);
-  }
+  public arwu(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public IntimateInfo.CommonTroopInfo[] a(int paramInt)
+  public void a(int paramInt)
   {
-    return new IntimateInfo.CommonTroopInfo[paramInt];
+    if ((paramInt == this.a.jdField_a_of_type_Arvv.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
+    }
   }
 }
 

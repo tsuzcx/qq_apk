@@ -1,49 +1,38 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.proxyimpl.ShareProxyImpl.6;
-import com.tencent.qqmini.proxyimpl.ShareProxyImpl.6.1;
-import java.io.File;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
 
-public class bkzz
-  implements URLDrawable.URLDrawableListener
+class bkzz
+  implements ModuleDownloadListener
 {
-  public bkzz(ShareProxyImpl.6.1 param1) {}
+  bkzz(bkzx parambkzx, blac paramblac) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onDownloadCanceled(String paramString)
   {
-    QLog.e("ShareProxyImpl", 1, "onLoadCanceled");
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onDownloadFailed(String paramString)
   {
-    QLog.e("ShareProxyImpl", 1, "shareNetworkPicMessage failed, because of picture downloadFailed");
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+    bkzx.b(this.jdField_a_of_type_Bkzx, false);
+    this.jdField_a_of_type_Blac.a(false);
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onDownloadProgress(String paramString, float paramFloat)
   {
-    paramURLDrawable = paramURLDrawable.getFileInLocal();
-    if ((paramURLDrawable != null) && (paramURLDrawable.exists())) {}
-    for (int i = 1;; i = 0)
-    {
-      this.a.jdField_a_of_type_Bjbs.dismiss();
-      if (i == 0) {
-        QQToast.a(this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$6.jdField_a_of_type_AndroidAppActivity, 1, anzj.a(2131701642), 1).b(this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$6.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299011));
-      }
-      if (i == 0) {
-        break;
-      }
-      this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$6.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.isLocalPic = true;
-      this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$6.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.sharePicPath = paramURLDrawable.getPath();
-      bkzs.a(this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$6.this$0, this.a.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl$6.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData);
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("libTar.so")) {
       return;
     }
-    QLog.e("ShareProxyImpl", 1, "shareNetworkPicMessage failed, because of picture downloadFailed");
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bkzx.c(), " onDownloadSucceed = ", bkzx.d() });
+    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bkzx.d());
+    bkzx.b(this.jdField_a_of_type_Bkzx);
+    this.jdField_a_of_type_Blac.a(bkzx.b(this.jdField_a_of_type_Bkzx));
   }
 }
 

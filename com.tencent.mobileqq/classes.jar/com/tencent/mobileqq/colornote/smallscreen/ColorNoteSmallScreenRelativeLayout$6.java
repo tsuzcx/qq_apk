@@ -2,7 +2,7 @@ package com.tencent.mobileqq.colornote.smallscreen;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import aquq;
+import apnz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
@@ -20,7 +20,7 @@ public class ColorNoteSmallScreenRelativeLayout$6
     try
     {
       InputStream localInputStream = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getAssets().open(this.jdField_a_of_type_JavaLangString);
-      ColorNoteSmallScreenRelativeLayout.a(this.this$0, LottieComposition.Factory.fromInputStream(this.jdField_a_of_type_AndroidContentContext, localInputStream, new aquq(this)));
+      ColorNoteSmallScreenRelativeLayout.a(this.this$0, LottieComposition.Factory.fromInputStream(this.jdField_a_of_type_AndroidContentContext, localInputStream, new apnz(this)));
       return;
     }
     catch (Throwable localThrowable)

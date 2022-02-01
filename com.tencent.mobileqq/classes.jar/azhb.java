@@ -1,20 +1,34 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import android.text.TextPaint;
-import android.widget.EditText;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class azhb
-  extends Editable.Factory
+class azhb
+  implements View.OnClickListener
 {
-  public azhb(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  azhb(azgy paramazgy) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public void onClick(View paramView)
   {
-    if ((paramCharSequence instanceof begz)) {
-      return (Editable)paramCharSequence;
+    bcef.b(null, "dc00898", "", "", "0X800B44C", "0X800B44C", 0, 0, "", "", "", "");
+    try
+    {
+      azge.a(azeu.a(), false);
+      azhh.a().a(false);
+      this.a.a = -1;
+      this.a.dismiss();
+      QQToast.a(BaseApplicationImpl.getApplication(), 2, BaseApplicationImpl.getApplication().getString(2131694842), 1).a();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    return new begz(paramCharSequence, 3, (int)(AutoReplyEditActivity.a(this.a).getTextSize() / AutoReplyEditActivity.a(this.a).getPaint().density));
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        azeu.a("HelloQQWake", "QQAssistantGuider cardHandler.setQQAssistantSwitch:" + localException.getMessage());
+      }
+    }
   }
 }
 

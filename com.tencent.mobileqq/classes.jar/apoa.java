@@ -1,26 +1,23 @@
-import android.text.TextUtils;
+import android.graphics.Point;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
-public class apoa
+public abstract interface apoa
 {
-  public String a;
-  public String b;
-  public String c;
+  public abstract int a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
   
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.b)) {
-      return "";
-    }
-    return this.b;
-  }
+  public abstract void a(Point paramPoint, int paramInt);
   
-  public String b()
-  {
-    if (TextUtils.isEmpty(this.c)) {
-      return "";
-    }
-    return this.c;
-  }
+  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
+  
+  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(Point paramPoint, boolean paramBoolean);
+  
+  public abstract int b(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
 }
 
 

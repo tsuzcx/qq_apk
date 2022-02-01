@@ -1,18 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.asyncdb.BaseCache;
+import com.tencent.mobileqq.app.asyncdb.BaseCacheManager;
 
-class aneq
-  implements DialogInterface.OnKeyListener
+public class aneq
+  extends BaseCacheManager
 {
-  aneq(anep paramanep, anex paramanex) {}
+  private QQAppInterface a;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public aneq(QQAppInterface paramQQAppInterface)
   {
-    if (paramInt == 4) {
-      this.jdField_a_of_type_Anep.a(this.jdField_a_of_type_Anex);
+    super(paramQQAppInterface);
+    this.a = paramQQAppInterface;
+  }
+  
+  public BaseCache createCacheByName(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 2: 
+      return new anet(this.a, this.dbDelayManager);
     }
-    return true;
+    return new anev(this.a, this.dbDelayManager);
   }
 }
 

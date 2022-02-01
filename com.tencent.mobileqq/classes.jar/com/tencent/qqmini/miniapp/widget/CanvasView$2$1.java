@@ -46,14 +46,14 @@ class CanvasView$2$1
     //   71: invokevirtual 69	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2pxInt	(D)I
     //   74: istore 11
     //   76: iload 10
-    //   78: ifgt +894 -> 972
+    //   78: ifgt +896 -> 974
     //   81: aload_0
     //   82: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
     //   85: getfield 51	com/tencent/qqmini/miniapp/widget/CanvasView$2:this$0	Lcom/tencent/qqmini/miniapp/widget/CanvasView;
     //   88: invokevirtual 75	com/tencent/qqmini/miniapp/widget/CanvasView:getWidth	()I
     //   91: istore 10
     //   93: iload 11
-    //   95: ifgt +874 -> 969
+    //   95: ifgt +876 -> 971
     //   98: aload_0
     //   99: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
     //   102: getfield 51	com/tencent/qqmini/miniapp/widget/CanvasView$2:this$0	Lcom/tencent/qqmini/miniapp/widget/CanvasView;
@@ -116,7 +116,7 @@ class CanvasView$2$1
     //   228: aload_0
     //   229: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
     //   232: getfield 109	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$isPngFile	Z
-    //   235: ifeq +209 -> 444
+    //   235: ifeq +208 -> 443
     //   238: getstatic 115	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
     //   241: astore 13
     //   243: iload 4
@@ -127,415 +127,415 @@ class CanvasView$2$1
     //   254: aload 14
     //   256: astore 12
     //   258: aload 12
-    //   260: ifnonnull +698 -> 958
+    //   260: ifnonnull +700 -> 960
     //   263: aload_0
     //   264: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
     //   267: getfield 109	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$isPngFile	Z
-    //   270: ifeq +194 -> 464
+    //   270: ifeq +195 -> 465
     //   273: ldc2_w 122
     //   276: iload 4
-    //   278: i2l
-    //   279: ldiv
+    //   278: i2d
+    //   279: ddiv
     //   280: iload 5
-    //   282: i2l
-    //   283: ldiv
+    //   282: i2d
+    //   283: ddiv
     //   284: ldc2_w 124
-    //   287: ldiv
-    //   288: l2d
-    //   289: invokestatic 131	java/lang/Math:sqrt	(D)D
-    //   292: dstore_1
-    //   293: dload_1
-    //   294: d2f
-    //   295: fstore_3
-    //   296: fload_3
-    //   297: fconst_1
-    //   298: fcmpg
-    //   299: ifge +659 -> 958
-    //   302: iload 4
-    //   304: i2f
-    //   305: fload_3
-    //   306: fmul
-    //   307: f2i
-    //   308: istore 7
-    //   310: fload_3
-    //   311: iload 5
-    //   313: i2f
-    //   314: fmul
-    //   315: f2i
-    //   316: istore 6
-    //   318: iload 7
-    //   320: iload 6
-    //   322: aload 13
-    //   324: invokestatic 121	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-    //   327: astore 14
-    //   329: aload 14
-    //   331: astore 12
-    //   333: iload 6
-    //   335: istore 8
-    //   337: iload 7
-    //   339: istore 9
-    //   341: aload 12
-    //   343: ifnonnull +633 -> 976
-    //   346: iload 7
-    //   348: i2d
-    //   349: ldc2_w 132
-    //   352: ddiv
-    //   353: d2i
-    //   354: istore 9
-    //   356: iload 6
-    //   358: i2d
-    //   359: ldc2_w 132
-    //   362: ddiv
-    //   363: d2i
-    //   364: istore 6
-    //   366: iload 9
-    //   368: iload 6
-    //   370: aload 13
-    //   372: invokestatic 121	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-    //   375: astore 13
-    //   377: iload 9
-    //   379: istore 7
-    //   381: aload 13
-    //   383: astore 12
-    //   385: aload 12
-    //   387: ifnonnull +131 -> 518
-    //   390: aload_0
-    //   391: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
-    //   394: getfield 41	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$req	Lcom/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent;
-    //   397: invokevirtual 47	com/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent:fail	()Ljava/lang/String;
-    //   400: pop
-    //   401: return
-    //   402: astore 12
-    //   404: ldc 27
-    //   406: new 87	java/lang/StringBuilder
-    //   409: dup
-    //   410: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   413: ldc 135
-    //   415: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   418: aload 12
-    //   420: invokestatic 141	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   423: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   426: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   429: invokestatic 35	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   432: aload_0
-    //   433: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
-    //   436: getfield 41	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$req	Lcom/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent;
-    //   439: invokevirtual 47	com/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent:fail	()Ljava/lang/String;
-    //   442: pop
-    //   443: return
-    //   444: getstatic 144	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   447: astore 13
-    //   449: goto -206 -> 243
-    //   452: astore 14
-    //   454: ldc 27
-    //   456: ldc 146
-    //   458: invokestatic 149	com/tencent/qqmini/sdk/launcher/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   461: goto -203 -> 258
-    //   464: ldc2_w 122
-    //   467: iload 4
-    //   469: i2l
-    //   470: ldiv
-    //   471: iload 5
-    //   473: i2l
-    //   474: ldiv
-    //   475: ldc2_w 124
-    //   478: ldiv
-    //   479: l2d
+    //   287: ddiv
+    //   288: invokestatic 131	java/lang/Math:sqrt	(D)D
+    //   291: dstore_1
+    //   292: dload_1
+    //   293: d2f
+    //   294: fstore_3
+    //   295: fload_3
+    //   296: fconst_1
+    //   297: fcmpg
+    //   298: ifge +662 -> 960
+    //   301: iload 4
+    //   303: i2f
+    //   304: fload_3
+    //   305: fmul
+    //   306: f2i
+    //   307: istore 7
+    //   309: fload_3
+    //   310: iload 5
+    //   312: i2f
+    //   313: fmul
+    //   314: f2i
+    //   315: istore 6
+    //   317: iload 7
+    //   319: iload 6
+    //   321: aload 13
+    //   323: invokestatic 121	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   326: astore 14
+    //   328: aload 14
+    //   330: astore 12
+    //   332: iload 6
+    //   334: istore 8
+    //   336: iload 7
+    //   338: istore 9
+    //   340: aload 12
+    //   342: ifnonnull +636 -> 978
+    //   345: iload 7
+    //   347: i2d
+    //   348: ldc2_w 132
+    //   351: ddiv
+    //   352: d2i
+    //   353: istore 9
+    //   355: iload 6
+    //   357: i2d
+    //   358: ldc2_w 132
+    //   361: ddiv
+    //   362: d2i
+    //   363: istore 6
+    //   365: iload 9
+    //   367: iload 6
+    //   369: aload 13
+    //   371: invokestatic 121	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   374: astore 13
+    //   376: iload 9
+    //   378: istore 7
+    //   380: aload 13
+    //   382: astore 12
+    //   384: aload 12
+    //   386: ifnonnull +134 -> 520
+    //   389: aload_0
+    //   390: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
+    //   393: getfield 41	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$req	Lcom/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent;
+    //   396: invokevirtual 47	com/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent:fail	()Ljava/lang/String;
+    //   399: pop
+    //   400: return
+    //   401: astore 12
+    //   403: ldc 27
+    //   405: new 87	java/lang/StringBuilder
+    //   408: dup
+    //   409: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   412: ldc 135
+    //   414: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   417: aload 12
+    //   419: invokestatic 141	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   422: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   425: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   428: invokestatic 35	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   431: aload_0
+    //   432: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
+    //   435: getfield 41	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$req	Lcom/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent;
+    //   438: invokevirtual 47	com/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent:fail	()Ljava/lang/String;
+    //   441: pop
+    //   442: return
+    //   443: getstatic 144	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
+    //   446: astore 13
+    //   448: goto -205 -> 243
+    //   451: astore 14
+    //   453: ldc 27
+    //   455: ldc 146
+    //   457: aload 14
+    //   459: invokestatic 150	com/tencent/qqmini/sdk/launcher/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   462: goto -204 -> 258
+    //   465: ldc2_w 122
+    //   468: iload 4
+    //   470: i2d
+    //   471: ddiv
+    //   472: iload 5
+    //   474: i2d
+    //   475: ddiv
+    //   476: ldc2_w 124
+    //   479: ddiv
     //   480: invokestatic 131	java/lang/Math:sqrt	(D)D
     //   483: d2f
     //   484: fstore_3
-    //   485: goto -189 -> 296
+    //   485: goto -190 -> 295
     //   488: astore 14
     //   490: ldc 27
-    //   492: ldc 151
-    //   494: invokestatic 149	com/tencent/qqmini/sdk/launcher/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   497: goto -164 -> 333
-    //   500: astore 13
-    //   502: ldc 27
-    //   504: ldc 153
-    //   506: aload 13
-    //   508: invokestatic 156	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   511: iload 6
-    //   513: istore 8
-    //   515: goto +461 -> 976
-    //   518: new 158	android/graphics/Canvas
-    //   521: dup
-    //   522: aload 12
-    //   524: invokespecial 161	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
-    //   527: astore 13
-    //   529: aload 13
-    //   531: new 163	android/graphics/PaintFlagsDrawFilter
-    //   534: dup
-    //   535: iconst_0
-    //   536: iconst_3
-    //   537: invokespecial 166	android/graphics/PaintFlagsDrawFilter:<init>	(II)V
-    //   540: invokevirtual 170	android/graphics/Canvas:setDrawFilter	(Landroid/graphics/DrawFilter;)V
-    //   543: new 172	android/graphics/Rect
-    //   546: dup
-    //   547: iconst_0
-    //   548: iconst_0
-    //   549: iload 7
-    //   551: iload 6
-    //   553: invokespecial 175	android/graphics/Rect:<init>	(IIII)V
-    //   556: astore 14
-    //   558: aload_0
-    //   559: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
-    //   562: getfield 51	com/tencent/qqmini/miniapp/widget/CanvasView$2:this$0	Lcom/tencent/qqmini/miniapp/widget/CanvasView;
-    //   565: aload_0
-    //   566: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
-    //   569: getfield 55	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$paramObj	Lorg/json/JSONObject;
-    //   572: ldc 177
-    //   574: dconst_0
-    //   575: invokevirtual 63	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
-    //   578: invokevirtual 69	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2pxInt	(D)I
-    //   581: istore 8
-    //   583: aload_0
-    //   584: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
-    //   587: getfield 51	com/tencent/qqmini/miniapp/widget/CanvasView$2:this$0	Lcom/tencent/qqmini/miniapp/widget/CanvasView;
-    //   590: aload_0
-    //   591: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
-    //   594: getfield 55	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$paramObj	Lorg/json/JSONObject;
-    //   597: ldc 179
-    //   599: dconst_0
-    //   600: invokevirtual 63	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
-    //   603: invokevirtual 69	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2pxInt	(D)I
-    //   606: istore 9
-    //   608: new 172	android/graphics/Rect
-    //   611: dup
-    //   612: iload 8
-    //   614: iload 9
-    //   616: iload 10
-    //   618: iload 8
-    //   620: iadd
-    //   621: iload 11
-    //   623: iload 9
-    //   625: iadd
-    //   626: invokespecial 175	android/graphics/Rect:<init>	(IIII)V
-    //   629: astore 15
-    //   631: aload 13
-    //   633: aload_0
-    //   634: getfield 16	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:val$currBitmap	Landroid/graphics/Bitmap;
-    //   637: aload 15
-    //   639: aload 14
-    //   641: aconst_null
-    //   642: invokevirtual 183	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
-    //   645: aload_0
-    //   646: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
-    //   649: getfield 51	com/tencent/qqmini/miniapp/widget/CanvasView$2:this$0	Lcom/tencent/qqmini/miniapp/widget/CanvasView;
-    //   652: invokestatic 187	com/tencent/qqmini/miniapp/widget/CanvasView:access$200	(Lcom/tencent/qqmini/miniapp/widget/CanvasView;)Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
-    //   655: ldc 189
-    //   657: invokeinterface 195 2 0
-    //   662: checkcast 189	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager
-    //   665: aload_0
-    //   666: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
-    //   669: getfield 199	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$fileType	Ljava/lang/String;
-    //   672: invokevirtual 203	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
-    //   675: astore 14
-    //   677: aload 14
-    //   679: invokestatic 209	com/tencent/qqmini/sdk/core/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
-    //   682: astore 13
-    //   684: new 211	java/io/FileOutputStream
-    //   687: dup
-    //   688: aload 13
-    //   690: invokespecial 214	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   693: astore 13
-    //   695: iload 7
-    //   697: iload 6
-    //   699: imul
-    //   700: iload 4
-    //   702: idiv
-    //   703: iload 5
-    //   705: idiv
-    //   706: i2f
-    //   707: fstore_3
-    //   708: aload_0
-    //   709: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
-    //   712: getfield 109	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$isPngFile	Z
-    //   715: ifeq +132 -> 847
-    //   718: aload_0
-    //   719: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
-    //   722: getfield 55	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$paramObj	Lorg/json/JSONObject;
-    //   725: ldc 216
-    //   727: dconst_1
-    //   728: invokevirtual 63	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
-    //   731: fload_3
-    //   732: f2d
-    //   733: ddiv
-    //   734: dstore_1
-    //   735: aload 12
-    //   737: getstatic 222	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
-    //   740: dload_1
-    //   741: ldc2_w 223
-    //   744: dmul
-    //   745: d2i
-    //   746: aload 13
-    //   748: invokevirtual 228	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   751: pop
-    //   752: new 59	org/json/JSONObject
-    //   755: dup
-    //   756: invokespecial 229	org/json/JSONObject:<init>	()V
-    //   759: astore 12
-    //   761: aload 12
-    //   763: ldc 231
-    //   765: aload_0
-    //   766: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
-    //   769: getfield 51	com/tencent/qqmini/miniapp/widget/CanvasView$2:this$0	Lcom/tencent/qqmini/miniapp/widget/CanvasView;
-    //   772: invokestatic 187	com/tencent/qqmini/miniapp/widget/CanvasView:access$200	(Lcom/tencent/qqmini/miniapp/widget/CanvasView;)Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
-    //   775: ldc 189
-    //   777: invokeinterface 195 2 0
-    //   782: checkcast 189	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager
-    //   785: aload 14
-    //   787: invokevirtual 234	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getWxFilePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   790: invokevirtual 238	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   793: pop
-    //   794: aload_0
-    //   795: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
-    //   798: getfield 41	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$req	Lcom/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent;
-    //   801: aload 12
-    //   803: invokevirtual 242	com/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent:ok	(Lorg/json/JSONObject;)Ljava/lang/String;
-    //   806: pop
-    //   807: aload 13
-    //   809: ifnull +13 -> 822
-    //   812: aload 13
-    //   814: invokevirtual 245	java/io/FileOutputStream:flush	()V
-    //   817: aload 13
-    //   819: invokevirtual 248	java/io/FileOutputStream:close	()V
-    //   822: aload_0
-    //   823: getfield 16	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:val$currBitmap	Landroid/graphics/Bitmap;
-    //   826: ifnull +149 -> 975
-    //   829: aload_0
-    //   830: getfield 16	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:val$currBitmap	Landroid/graphics/Bitmap;
-    //   833: invokevirtual 252	android/graphics/Bitmap:isRecycled	()Z
-    //   836: ifne +139 -> 975
-    //   839: aload_0
-    //   840: getfield 16	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:val$currBitmap	Landroid/graphics/Bitmap;
-    //   843: invokevirtual 255	android/graphics/Bitmap:recycle	()V
-    //   846: return
-    //   847: aload_0
-    //   848: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
-    //   851: getfield 55	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$paramObj	Lorg/json/JSONObject;
-    //   854: ldc_w 257
-    //   857: dconst_1
-    //   858: invokevirtual 63	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
-    //   861: fload_3
-    //   862: f2d
-    //   863: ddiv
-    //   864: dstore_1
-    //   865: aload 12
-    //   867: getstatic 260	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   870: dload_1
-    //   871: ldc2_w 223
-    //   874: dmul
-    //   875: d2i
-    //   876: aload 13
-    //   878: invokevirtual 228	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   881: pop
-    //   882: goto -130 -> 752
-    //   885: astore 12
-    //   887: aload 13
-    //   889: ifnull +13 -> 902
-    //   892: aload 13
-    //   894: invokevirtual 245	java/io/FileOutputStream:flush	()V
-    //   897: aload 13
-    //   899: invokevirtual 248	java/io/FileOutputStream:close	()V
-    //   902: aload_0
-    //   903: getfield 16	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:val$currBitmap	Landroid/graphics/Bitmap;
-    //   906: ifnull +20 -> 926
-    //   909: aload_0
-    //   910: getfield 16	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:val$currBitmap	Landroid/graphics/Bitmap;
-    //   913: invokevirtual 252	android/graphics/Bitmap:isRecycled	()Z
-    //   916: ifne +10 -> 926
-    //   919: aload_0
-    //   920: getfield 16	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:val$currBitmap	Landroid/graphics/Bitmap;
-    //   923: invokevirtual 255	android/graphics/Bitmap:recycle	()V
-    //   926: aload 12
-    //   928: athrow
-    //   929: astore 12
-    //   931: aload 12
-    //   933: invokevirtual 263	org/json/JSONException:printStackTrace	()V
-    //   936: aload_0
-    //   937: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
-    //   940: getfield 41	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$req	Lcom/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent;
-    //   943: invokevirtual 47	com/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent:fail	()Ljava/lang/String;
-    //   946: pop
-    //   947: goto -140 -> 807
-    //   950: astore 12
-    //   952: aconst_null
-    //   953: astore 13
-    //   955: goto -68 -> 887
-    //   958: iload 5
-    //   960: istore 6
-    //   962: iload 4
-    //   964: istore 7
-    //   966: goto -633 -> 333
-    //   969: goto -859 -> 110
-    //   972: goto -879 -> 93
-    //   975: return
-    //   976: iload 8
-    //   978: istore 6
-    //   980: iload 9
-    //   982: istore 7
-    //   984: goto -599 -> 385
+    //   492: ldc 152
+    //   494: aload 14
+    //   496: invokestatic 150	com/tencent/qqmini/sdk/launcher/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   499: goto -167 -> 332
+    //   502: astore 13
+    //   504: ldc 27
+    //   506: ldc 154
+    //   508: aload 13
+    //   510: invokestatic 156	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   513: iload 6
+    //   515: istore 8
+    //   517: goto +461 -> 978
+    //   520: new 158	android/graphics/Canvas
+    //   523: dup
+    //   524: aload 12
+    //   526: invokespecial 161	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   529: astore 13
+    //   531: aload 13
+    //   533: new 163	android/graphics/PaintFlagsDrawFilter
+    //   536: dup
+    //   537: iconst_0
+    //   538: iconst_3
+    //   539: invokespecial 166	android/graphics/PaintFlagsDrawFilter:<init>	(II)V
+    //   542: invokevirtual 170	android/graphics/Canvas:setDrawFilter	(Landroid/graphics/DrawFilter;)V
+    //   545: new 172	android/graphics/Rect
+    //   548: dup
+    //   549: iconst_0
+    //   550: iconst_0
+    //   551: iload 7
+    //   553: iload 6
+    //   555: invokespecial 175	android/graphics/Rect:<init>	(IIII)V
+    //   558: astore 14
+    //   560: aload_0
+    //   561: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
+    //   564: getfield 51	com/tencent/qqmini/miniapp/widget/CanvasView$2:this$0	Lcom/tencent/qqmini/miniapp/widget/CanvasView;
+    //   567: aload_0
+    //   568: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
+    //   571: getfield 55	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$paramObj	Lorg/json/JSONObject;
+    //   574: ldc 177
+    //   576: dconst_0
+    //   577: invokevirtual 63	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   580: invokevirtual 69	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2pxInt	(D)I
+    //   583: istore 8
+    //   585: aload_0
+    //   586: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
+    //   589: getfield 51	com/tencent/qqmini/miniapp/widget/CanvasView$2:this$0	Lcom/tencent/qqmini/miniapp/widget/CanvasView;
+    //   592: aload_0
+    //   593: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
+    //   596: getfield 55	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$paramObj	Lorg/json/JSONObject;
+    //   599: ldc 179
+    //   601: dconst_0
+    //   602: invokevirtual 63	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   605: invokevirtual 69	com/tencent/qqmini/miniapp/widget/CanvasView:mpx2pxInt	(D)I
+    //   608: istore 9
+    //   610: new 172	android/graphics/Rect
+    //   613: dup
+    //   614: iload 8
+    //   616: iload 9
+    //   618: iload 10
+    //   620: iload 8
+    //   622: iadd
+    //   623: iload 11
+    //   625: iload 9
+    //   627: iadd
+    //   628: invokespecial 175	android/graphics/Rect:<init>	(IIII)V
+    //   631: astore 15
+    //   633: aload 13
+    //   635: aload_0
+    //   636: getfield 16	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:val$currBitmap	Landroid/graphics/Bitmap;
+    //   639: aload 15
+    //   641: aload 14
+    //   643: aconst_null
+    //   644: invokevirtual 183	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
+    //   647: aload_0
+    //   648: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
+    //   651: getfield 51	com/tencent/qqmini/miniapp/widget/CanvasView$2:this$0	Lcom/tencent/qqmini/miniapp/widget/CanvasView;
+    //   654: invokestatic 187	com/tencent/qqmini/miniapp/widget/CanvasView:access$200	(Lcom/tencent/qqmini/miniapp/widget/CanvasView;)Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
+    //   657: ldc 189
+    //   659: invokeinterface 195 2 0
+    //   664: checkcast 189	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager
+    //   667: aload_0
+    //   668: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
+    //   671: getfield 199	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$fileType	Ljava/lang/String;
+    //   674: invokevirtual 203	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
+    //   677: astore 14
+    //   679: aload 14
+    //   681: invokestatic 209	com/tencent/qqmini/sdk/core/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
+    //   684: astore 13
+    //   686: new 211	java/io/FileOutputStream
+    //   689: dup
+    //   690: aload 13
+    //   692: invokespecial 214	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   695: astore 13
+    //   697: iload 7
+    //   699: iload 6
+    //   701: imul
+    //   702: iload 4
+    //   704: idiv
+    //   705: iload 5
+    //   707: idiv
+    //   708: i2f
+    //   709: fstore_3
+    //   710: aload_0
+    //   711: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
+    //   714: getfield 109	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$isPngFile	Z
+    //   717: ifeq +132 -> 849
+    //   720: aload_0
+    //   721: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
+    //   724: getfield 55	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$paramObj	Lorg/json/JSONObject;
+    //   727: ldc 216
+    //   729: dconst_1
+    //   730: invokevirtual 63	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   733: fload_3
+    //   734: f2d
+    //   735: ddiv
+    //   736: dstore_1
+    //   737: aload 12
+    //   739: getstatic 222	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   742: dload_1
+    //   743: ldc2_w 223
+    //   746: dmul
+    //   747: d2i
+    //   748: aload 13
+    //   750: invokevirtual 228	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   753: pop
+    //   754: new 59	org/json/JSONObject
+    //   757: dup
+    //   758: invokespecial 229	org/json/JSONObject:<init>	()V
+    //   761: astore 12
+    //   763: aload 12
+    //   765: ldc 231
+    //   767: aload_0
+    //   768: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
+    //   771: getfield 51	com/tencent/qqmini/miniapp/widget/CanvasView$2:this$0	Lcom/tencent/qqmini/miniapp/widget/CanvasView;
+    //   774: invokestatic 187	com/tencent/qqmini/miniapp/widget/CanvasView:access$200	(Lcom/tencent/qqmini/miniapp/widget/CanvasView;)Lcom/tencent/qqmini/sdk/launcher/core/IMiniAppContext;
+    //   777: ldc 189
+    //   779: invokeinterface 195 2 0
+    //   784: checkcast 189	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager
+    //   787: aload 14
+    //   789: invokevirtual 234	com/tencent/qqmini/sdk/core/manager/MiniAppFileManager:getWxFilePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   792: invokevirtual 238	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   795: pop
+    //   796: aload_0
+    //   797: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
+    //   800: getfield 41	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$req	Lcom/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent;
+    //   803: aload 12
+    //   805: invokevirtual 242	com/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent:ok	(Lorg/json/JSONObject;)Ljava/lang/String;
+    //   808: pop
+    //   809: aload 13
+    //   811: ifnull +13 -> 824
+    //   814: aload 13
+    //   816: invokevirtual 245	java/io/FileOutputStream:flush	()V
+    //   819: aload 13
+    //   821: invokevirtual 248	java/io/FileOutputStream:close	()V
+    //   824: aload_0
+    //   825: getfield 16	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:val$currBitmap	Landroid/graphics/Bitmap;
+    //   828: ifnull +149 -> 977
+    //   831: aload_0
+    //   832: getfield 16	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:val$currBitmap	Landroid/graphics/Bitmap;
+    //   835: invokevirtual 252	android/graphics/Bitmap:isRecycled	()Z
+    //   838: ifne +139 -> 977
+    //   841: aload_0
+    //   842: getfield 16	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:val$currBitmap	Landroid/graphics/Bitmap;
+    //   845: invokevirtual 255	android/graphics/Bitmap:recycle	()V
+    //   848: return
+    //   849: aload_0
+    //   850: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
+    //   853: getfield 55	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$paramObj	Lorg/json/JSONObject;
+    //   856: ldc_w 257
+    //   859: dconst_1
+    //   860: invokevirtual 63	org/json/JSONObject:optDouble	(Ljava/lang/String;D)D
+    //   863: fload_3
+    //   864: f2d
+    //   865: ddiv
+    //   866: dstore_1
+    //   867: aload 12
+    //   869: getstatic 260	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   872: dload_1
+    //   873: ldc2_w 223
+    //   876: dmul
+    //   877: d2i
+    //   878: aload 13
+    //   880: invokevirtual 228	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   883: pop
+    //   884: goto -130 -> 754
+    //   887: astore 12
+    //   889: aload 13
+    //   891: ifnull +13 -> 904
+    //   894: aload 13
+    //   896: invokevirtual 245	java/io/FileOutputStream:flush	()V
+    //   899: aload 13
+    //   901: invokevirtual 248	java/io/FileOutputStream:close	()V
+    //   904: aload_0
+    //   905: getfield 16	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:val$currBitmap	Landroid/graphics/Bitmap;
+    //   908: ifnull +20 -> 928
+    //   911: aload_0
+    //   912: getfield 16	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:val$currBitmap	Landroid/graphics/Bitmap;
+    //   915: invokevirtual 252	android/graphics/Bitmap:isRecycled	()Z
+    //   918: ifne +10 -> 928
+    //   921: aload_0
+    //   922: getfield 16	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:val$currBitmap	Landroid/graphics/Bitmap;
+    //   925: invokevirtual 255	android/graphics/Bitmap:recycle	()V
+    //   928: aload 12
+    //   930: athrow
+    //   931: astore 12
+    //   933: aload 12
+    //   935: invokevirtual 263	org/json/JSONException:printStackTrace	()V
+    //   938: aload_0
+    //   939: getfield 14	com/tencent/qqmini/miniapp/widget/CanvasView$2$1:this$1	Lcom/tencent/qqmini/miniapp/widget/CanvasView$2;
+    //   942: getfield 41	com/tencent/qqmini/miniapp/widget/CanvasView$2:val$req	Lcom/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent;
+    //   945: invokevirtual 47	com/tencent/qqmini/sdk/launcher/core/action/NativeViewRequestEvent:fail	()Ljava/lang/String;
+    //   948: pop
+    //   949: goto -140 -> 809
+    //   952: astore 12
+    //   954: aconst_null
+    //   955: astore 13
+    //   957: goto -68 -> 889
+    //   960: iload 5
+    //   962: istore 6
+    //   964: iload 4
+    //   966: istore 7
+    //   968: goto -636 -> 332
+    //   971: goto -861 -> 110
+    //   974: goto -881 -> 93
+    //   977: return
+    //   978: iload 8
+    //   980: istore 6
+    //   982: iload 9
+    //   984: istore 7
+    //   986: goto -602 -> 384
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	987	0	this	1
-    //   292	579	1	d	double
-    //   295	567	3	f	float
-    //   144	819	4	i	int
-    //   124	835	5	j	int
-    //   140	839	6	k	int
-    //   308	675	7	m	int
-    //   335	642	8	n	int
-    //   339	642	9	i1	int
-    //   49	572	10	i2	int
-    //   74	552	11	i3	int
-    //   226	160	12	localObject1	Object
-    //   402	334	12	localThrowable1	java.lang.Throwable
-    //   759	107	12	localJSONObject	org.json.JSONObject
-    //   885	42	12	localObject2	Object
-    //   929	3	12	localJSONException	org.json.JSONException
-    //   950	1	12	localObject3	Object
-    //   241	207	13	localObject4	Object
-    //   500	7	13	localThrowable2	java.lang.Throwable
-    //   527	427	13	localObject5	Object
-    //   252	78	14	localBitmap	Bitmap
-    //   452	1	14	localThrowable3	java.lang.Throwable
-    //   488	1	14	localThrowable4	java.lang.Throwable
-    //   556	230	14	localObject6	Object
-    //   629	9	15	localRect	android.graphics.Rect
+    //   0	989	0	this	1
+    //   291	582	1	d	double
+    //   294	570	3	f	float
+    //   144	821	4	i	int
+    //   124	837	5	j	int
+    //   140	841	6	k	int
+    //   307	678	7	m	int
+    //   334	645	8	n	int
+    //   338	645	9	i1	int
+    //   49	574	10	i2	int
+    //   74	554	11	i3	int
+    //   226	159	12	localObject1	Object
+    //   401	337	12	localThrowable1	java.lang.Throwable
+    //   761	107	12	localJSONObject	org.json.JSONObject
+    //   887	42	12	localObject2	Object
+    //   931	3	12	localJSONException	org.json.JSONException
+    //   952	1	12	localObject3	Object
+    //   241	206	13	localObject4	Object
+    //   502	7	13	localThrowable2	java.lang.Throwable
+    //   529	427	13	localObject5	Object
+    //   252	77	14	localBitmap	Bitmap
+    //   451	7	14	localThrowable3	java.lang.Throwable
+    //   488	7	14	localThrowable4	java.lang.Throwable
+    //   558	230	14	localObject6	Object
+    //   631	9	15	localRect	android.graphics.Rect
     // Exception table:
     //   from	to	target	type
-    //   0	25	402	java/lang/Throwable
-    //   26	76	402	java/lang/Throwable
-    //   81	93	402	java/lang/Throwable
-    //   98	110	402	java/lang/Throwable
-    //   110	142	402	java/lang/Throwable
-    //   151	166	402	java/lang/Throwable
-    //   175	190	402	java/lang/Throwable
-    //   190	225	402	java/lang/Throwable
-    //   228	243	402	java/lang/Throwable
-    //   263	293	402	java/lang/Throwable
-    //   390	401	402	java/lang/Throwable
-    //   444	449	402	java/lang/Throwable
-    //   454	461	402	java/lang/Throwable
-    //   464	485	402	java/lang/Throwable
-    //   490	497	402	java/lang/Throwable
-    //   502	511	402	java/lang/Throwable
-    //   518	684	402	java/lang/Throwable
-    //   812	822	402	java/lang/Throwable
-    //   822	846	402	java/lang/Throwable
-    //   892	902	402	java/lang/Throwable
-    //   902	926	402	java/lang/Throwable
-    //   926	929	402	java/lang/Throwable
-    //   243	254	452	java/lang/Throwable
-    //   318	329	488	java/lang/Throwable
-    //   366	377	500	java/lang/Throwable
-    //   695	752	885	finally
-    //   752	807	885	finally
-    //   847	882	885	finally
-    //   931	947	885	finally
-    //   752	807	929	org/json/JSONException
-    //   684	695	950	finally
+    //   0	25	401	java/lang/Throwable
+    //   26	76	401	java/lang/Throwable
+    //   81	93	401	java/lang/Throwable
+    //   98	110	401	java/lang/Throwable
+    //   110	142	401	java/lang/Throwable
+    //   151	166	401	java/lang/Throwable
+    //   175	190	401	java/lang/Throwable
+    //   190	225	401	java/lang/Throwable
+    //   228	243	401	java/lang/Throwable
+    //   263	292	401	java/lang/Throwable
+    //   389	400	401	java/lang/Throwable
+    //   443	448	401	java/lang/Throwable
+    //   453	462	401	java/lang/Throwable
+    //   465	485	401	java/lang/Throwable
+    //   490	499	401	java/lang/Throwable
+    //   504	513	401	java/lang/Throwable
+    //   520	686	401	java/lang/Throwable
+    //   814	824	401	java/lang/Throwable
+    //   824	848	401	java/lang/Throwable
+    //   894	904	401	java/lang/Throwable
+    //   904	928	401	java/lang/Throwable
+    //   928	931	401	java/lang/Throwable
+    //   243	254	451	java/lang/Throwable
+    //   317	328	488	java/lang/Throwable
+    //   365	376	502	java/lang/Throwable
+    //   697	754	887	finally
+    //   754	809	887	finally
+    //   849	884	887	finally
+    //   933	949	887	finally
+    //   754	809	931	org/json/JSONException
+    //   686	697	952	finally
   }
 }
 

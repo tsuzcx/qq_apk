@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.robotchat;
 
-import aipj;
+import ahkw;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import bbwo;
-import bgpy;
-import bgty;
-import bgwh;
-import bgwj;
-import bgwk;
-import bhsi;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import baqj;
+import bezm;
+import bfdm;
+import bfft;
+import bffv;
+import bffw;
+import bfyz;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.troop.widget.RobotPanelLayoutBase;
 import com.tencent.qphone.base.util.QLog;
@@ -36,39 +36,39 @@ public class RobotChatPanelLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private String a(String paramString1, String paramString2, bgwj parambgwj, bgty parambgty)
+  private String a(String paramString1, String paramString2, bffv parambffv, bfdm parambfdm)
   {
     String str = "";
     int i;
-    if (parambgwj.jdField_b_of_type_Boolean)
+    if (parambffv.jdField_b_of_type_Boolean)
     {
-      parambgwj.jdField_b_of_type_Boolean = false;
-      parambgty.a();
-      i = parambgwj.jdField_b_of_type_Bgwk.c.indexOf("content=");
+      parambffv.jdField_b_of_type_Boolean = false;
+      parambfdm.a();
+      i = parambffv.jdField_b_of_type_Bffw.c.indexOf("content=");
       paramString2 = str;
       if (i > 0) {
-        paramString2 = parambgwj.jdField_b_of_type_Bgwk.c.substring(i + 8);
+        paramString2 = parambffv.jdField_b_of_type_Bffw.c.substring(i + 8);
       }
-      str = parambgwj.jdField_b_of_type_Bgwk.jdField_a_of_type_JavaLangString;
-      parambgty = paramString2;
+      str = parambffv.jdField_b_of_type_Bffw.jdField_a_of_type_JavaLangString;
+      parambfdm = paramString2;
       paramString2 = str;
     }
     for (;;)
     {
-      b("1", paramString1, parambgty, parambgwj);
+      b("1", paramString1, parambfdm, parambffv);
       return paramString2;
-      str = parambgwj.a.jdField_a_of_type_JavaLangString;
-      parambgwj.jdField_b_of_type_Boolean = true;
-      parambgty.a(paramString1, paramString2);
-      i = parambgwj.a.c.indexOf("content=");
+      str = parambffv.a.jdField_a_of_type_JavaLangString;
+      parambffv.jdField_b_of_type_Boolean = true;
+      parambfdm.a(paramString1, paramString2);
+      i = parambffv.a.c.indexOf("content=");
       if (i > 0)
       {
-        parambgty = parambgwj.a.c.substring(i + 8);
+        parambfdm = parambffv.a.c.substring(i + 8);
         paramString2 = str;
       }
       else
       {
-        parambgty = "";
+        parambfdm = "";
         paramString2 = str;
       }
     }
@@ -76,7 +76,7 @@ public class RobotChatPanelLayout
   
   private void b(String paramString)
   {
-    if (this.jdField_a_of_type_Bgty == null) {}
+    if (this.jdField_a_of_type_Bfdm == null) {}
     label99:
     do
     {
@@ -85,7 +85,7 @@ public class RobotChatPanelLayout
         do
         {
           return;
-          paramString = this.jdField_a_of_type_Bgty.a("1", paramString);
+          paramString = this.jdField_a_of_type_Bfdm.a("1", paramString);
           if (paramString == null) {
             break label99;
           }
@@ -112,21 +112,21 @@ public class RobotChatPanelLayout
     QLog.d("RobotChatPanelLayout", 2, "data is null");
   }
   
-  public String a(bgwj parambgwj)
+  public String a(bffv parambffv)
   {
-    if (this.jdField_a_of_type_Bgty == null)
+    if (this.jdField_a_of_type_Bfdm == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("RobotChatPanelLayout", 2, "troopRobotManager = null");
       }
-      parambgwj = null;
+      parambffv = null;
     }
     String str;
     do
     {
-      return parambgwj;
-      str = a(this.jdField_a_of_type_JavaLangString, this.b, parambgwj, this.jdField_a_of_type_Bgty);
-      parambgwj = str;
+      return parambffv;
+      str = a(this.jdField_a_of_type_JavaLangString, this.b, parambffv, this.jdField_a_of_type_Bfdm);
+      parambffv = str;
     } while (!QLog.isColorLevel());
     QLog.d("RobotChatPanelLayout", 2, "talking: " + str);
     return str;
@@ -137,9 +137,9 @@ public class RobotChatPanelLayout
     super.a();
   }
   
-  public void a(bgwj parambgwj)
+  public void a(bffv parambffv)
   {
-    if (this.jdField_a_of_type_Bgty == null) {
+    if (this.jdField_a_of_type_Bfdm == null) {
       if (QLog.isColorLevel()) {
         QLog.e("RobotChatPanelLayout", 2, "troopRobotManager = null");
       }
@@ -147,22 +147,22 @@ public class RobotChatPanelLayout
     do
     {
       return;
-      a(getContext(), parambgwj.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, false, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+      a(getContext(), parambffv.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, false, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
     } while (!QLog.isColorLevel());
-    QLog.d("RobotChatPanelLayout", 2, "send to robot: " + parambgwj.a.jdField_a_of_type_JavaLangString);
+    QLog.d("RobotChatPanelLayout", 2, "send to robot: " + parambffv.a.jdField_a_of_type_JavaLangString);
   }
   
-  public void a(bgwj parambgwj, String paramString)
+  public void a(bffv parambffv, String paramString)
   {
-    bgpy.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "0X800A48C", this.jdField_a_of_type_JavaLangString, paramString);
+    bezm.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "0X800A48C", this.jdField_a_of_type_JavaLangString, paramString);
   }
   
-  public void a(String paramString1, String paramString2, aipj paramaipj, bgwh parambgwh)
+  public void a(String paramString1, String paramString2, ahkw paramahkw, bfft parambfft)
   {
-    super.a(paramString1, paramString2, paramaipj, parambgwh);
+    super.a(paramString1, paramString2, paramahkw, parambfft);
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
-    if (this.jdField_a_of_type_Bgty == null) {
+    if (this.jdField_a_of_type_Bfdm == null) {
       if (QLog.isColorLevel()) {
         QLog.e("RobotChatPanelLayout", 2, "troopRobotManager = null");
       }
@@ -179,8 +179,8 @@ public class RobotChatPanelLayout
         if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_JavaLangString.equals(paramString1))) {
           a(false);
         }
-        int i = bhsi.ao(getContext(), "1_" + paramString1);
-        this.jdField_a_of_type_Bgty.a(l, i, new bbwo(this, l, i, paramString1, parambgwh));
+        int i = bfyz.ap(getContext(), "1_" + paramString1);
+        this.jdField_a_of_type_Bfdm.a(l, i, new baqj(this, l, i, paramString1, parambfft));
         return;
       }
       catch (Exception paramString2)
@@ -193,32 +193,32 @@ public class RobotChatPanelLayout
     }
   }
   
-  public void b(bgwj parambgwj)
+  public void b(bffv parambffv)
   {
-    if (this.jdField_a_of_type_Bgty == null)
+    if (this.jdField_a_of_type_Bfdm == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("RobotChatPanelLayout", 2, "troopRobotManager = null");
       }
       return;
     }
-    int i = parambgwj.a.c.indexOf("content=");
+    int i = parambffv.a.c.indexOf("content=");
     if (i > 0) {}
-    for (String str = parambgwj.a.c.substring(i + 8);; str = null)
+    for (String str = parambffv.a.c.substring(i + 8);; str = null)
     {
-      a(getContext(), parambgwj.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, true, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
-      a("1", this.jdField_a_of_type_JavaLangString, str, parambgwj);
+      a(getContext(), parambffv.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, true, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+      a("1", this.jdField_a_of_type_JavaLangString, str, parambffv);
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.d("RobotChatPanelLayout", 2, "send to server: " + parambgwj.a.jdField_a_of_type_JavaLangString);
+      QLog.d("RobotChatPanelLayout", 2, "send to server: " + parambffv.a.jdField_a_of_type_JavaLangString);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.robotchat.RobotChatPanelLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,103 +1,37 @@
-import android.os.Handler;
-import android.os.SystemClock;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager.RunnableShowForKey;
-import com.tencent.mobileqq.listentogether.data.ISong;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class awlx
-  implements awog
+  implements awnc
 {
-  public awlx(ListenTogetherManager paramListenTogetherManager) {}
+  public awlx(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void a(String paramString, int paramInt)
+  public void a(View paramView)
   {
-    QLog.d("ListenTogether.Manager", 1, new Object[] { "onPlayStateChanged: " + awob.a(paramInt), " songId:", paramString, " curSongID:", QQMusicPlayService.a().a() });
-    HashMap localHashMap = new HashMap();
-    if (paramInt == 8)
+    this.a.f();
+    bcef.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_more", 0, 0, "", "", "", "");
+  }
+  
+  public void a(View paramView, awnf paramawnf)
+  {
+    if (paramawnf.jdField_a_of_type_Boolean) {
+      QQToast.a(this.a, 1, amtj.a(2131704233), 1).a();
+    }
+    do
     {
-      ListenTogetherManager.a(this.a);
-      if (paramInt != 2) {
-        break label302;
-      }
-      if (ListenTogetherManager.a(this.a).c())
+      return;
+      GameRoomInviteActivity.a(this.a, paramawnf.jdField_a_of_type_JavaLangString, paramawnf.jdField_a_of_type_Int);
+      paramawnf.jdField_a_of_type_Boolean = true;
+      this.a.a.a(paramView, paramawnf.jdField_a_of_type_Boolean);
+      if (paramawnf.jdField_a_of_type_Int == 1)
       {
-        ListenTogetherManager.a(this.a).k();
-        ListenTogetherManager.a(this.a).m();
+        bcef.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
+        return;
       }
-      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
-      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
-      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
-      localHashMap.put("status", String.valueOf(paramInt));
-      label190:
-      if (paramInt != 2) {
-        break label381;
-      }
-      ListenTogetherManager.a(this.a).removeMessages(1001);
-      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, awlq.a().a);
-    }
-    for (;;)
-    {
-      ListenTogetherManager.a(this.a, paramString, paramInt);
-      if (!localHashMap.isEmpty()) {
-        bdmc.a(BaseApplication.getContext()).a("", "listen_together_player_status", true, 0L, 0L, localHashMap, "");
-      }
-      if (QQMusicPlayService.a() != null) {
-        azlk.a().a(paramInt);
-      }
-      return;
-      if ((paramInt != 5) && (paramInt != 7)) {
-        break;
-      }
-      localHashMap.put("status", String.valueOf(paramInt));
-      break;
-      label302:
-      if ((paramInt != 4) && (paramInt != 5) && (paramInt != 7)) {
-        break label190;
-      }
-      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
-      ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
-      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
-      break label190;
-      label381:
-      ListenTogetherManager.a(this.a).removeMessages(1001);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    QLog.i("ListenTogether.Manager", 1, "onNetChanged: " + paramBoolean);
-    if (paramBoolean) {
-      ListenTogetherManager.b(this.a);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    QLog.i("ListenTogether.Manager", 1, "onFocusChanged: " + paramBoolean1 + " isTransient:" + paramBoolean2);
-    ListenTogetherManager.a(this.a, paramBoolean1);
-    if (paramBoolean1)
-    {
-      ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
-      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
-      ListenTogetherManager.b(this.a).a(ListenTogetherManager.b(this.a));
-      ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.b(this.a), ListenTogetherManager.a(this.a));
-      ListenTogetherManager.a(this.a, 0L);
-      return;
-    }
-    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.a(this.a));
-    ListenTogetherManager.a(this.a).removeCallbacks(ListenTogetherManager.b(this.a));
-    ListenTogetherManager.a(this.a).a(ListenTogetherManager.b(this.a));
-    ListenTogetherManager.a(this.a).postDelayed(ListenTogetherManager.a(this.a), ListenTogetherManager.a(this.a));
-    if (paramBoolean2)
-    {
-      ListenTogetherManager.a(this.a, 0L);
-      return;
-    }
-    ListenTogetherManager.a(this.a, SystemClock.elapsedRealtime());
+    } while (paramawnf.jdField_a_of_type_Int != 0);
+    bcef.b(this.a.app, "dc00899", "Grp_wolf", "", "invite_page", "clk_invite", 0, 0, "1", "", "", "");
   }
 }
 

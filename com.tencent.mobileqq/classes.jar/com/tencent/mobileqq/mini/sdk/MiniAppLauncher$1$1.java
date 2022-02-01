@@ -17,7 +17,7 @@ class MiniAppLauncher$1$1
       QQToast.a(BaseApplicationImpl.getContext(), 1, str, 0).a();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131694387, 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131694501, 0).a();
   }
 }
 

@@ -1,181 +1,85 @@
-import android.content.Context;
-import android.text.TextUtils;
+import android.graphics.Rect;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.HorizontalListView;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.HashSet;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
 public class ool
-  implements View.OnClickListener, AdapterView.OnItemClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private String jdField_a_of_type_JavaLangString;
-  private HashSet<Long> jdField_a_of_type_JavaUtilHashSet;
-  private ooi jdField_a_of_type_Ooi;
-  private qzb jdField_a_of_type_Qzb;
-  private TextView b;
+  public ool(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  private void b()
+  public void onGlobalLayout()
   {
-    if ((this.jdField_a_of_type_Qzb != null) && (this.jdField_a_of_type_Qzb.jdField_a_of_type_JavaUtilArrayList != null))
+    Object localObject = new Rect();
+    ReadInJoyDeliverBiuActivity.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = ReadInJoyDeliverBiuActivity.b(this.a).getRootView().getHeight();
+    int j = i - ((Rect)localObject).height();
+    boolean bool;
+    if (j > 100)
     {
-      int i = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
-      while (i <= this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getLastVisiblePosition())
-      {
-        if ((i >= 1) && (i <= this.jdField_a_of_type_Qzb.jdField_a_of_type_JavaUtilArrayList.size()))
-        {
-          qzd localqzd = (qzd)this.jdField_a_of_type_Qzb.jdField_a_of_type_JavaUtilArrayList.get(i - 1);
-          pfa.a().a(Long.valueOf(localqzd.a));
-          this.jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(localqzd.a));
-        }
-        i += 1;
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout screenHeight:" + i + ", ExternalPanelheight:" + j + ", isShowKeybroad:" + bool);
       }
-    }
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_Qzb == null) || (this.jdField_a_of_type_Qzb.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_Qzb.jdField_a_of_type_JavaUtilArrayList.size() == 0))
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      if (this.jdField_a_of_type_ComTencentWidgetListView != null) {
-        this.jdField_a_of_type_ComTencentWidgetListView.removeHeaderView(this.jdField_a_of_type_AndroidViewView);
+      i = ReadInJoyDeliverBiuActivity.a(this.a).getHeight();
+      if (bool == ReadInJoyDeliverBiuActivity.a(this.a)) {
+        break label394;
       }
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if ((this.jdField_a_of_type_ComTencentWidgetListView != null) && (this.jdField_a_of_type_ComTencentWidgetListView.getHeaderViewsCount() < 1)) {
-      this.jdField_a_of_type_ComTencentWidgetListView.addHeaderView(this.jdField_a_of_type_AndroidViewView);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      if ((this.jdField_a_of_type_Qzb.jdField_a_of_type_Qzc != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Qzb.jdField_a_of_type_Qzc.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Qzb.jdField_a_of_type_Qzc.jdField_a_of_type_JavaLangString);
+      if (j > ReadInJoyDeliverBiuActivity.a(this.a)) {
+        ReadInJoyDeliverBiuActivity.a(this.a, j);
       }
-    }
-    else
-    {
-      if ((this.b == null) || (this.jdField_a_of_type_Qzb.b == null) || (TextUtils.isEmpty(this.jdField_a_of_type_Qzb.b.jdField_b_of_type_JavaLangString))) {
-        break label272;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout mMAXExternalPanelheight:" + ReadInJoyDeliverBiuActivity.b(this.a));
       }
-      this.b.setVisibility(0);
-      if (TextUtils.isEmpty(this.jdField_a_of_type_Qzb.b.jdField_a_of_type_JavaLangString)) {
-        break label257;
+      j = i - ReadInJoyDeliverBiuActivity.c(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout contentHeight:" + i + ", fixedHeight:" + ReadInJoyDeliverBiuActivity.d(this.a) + ", maxHeight:" + j);
       }
-      this.b.setText(this.jdField_a_of_type_Qzb.b.jdField_a_of_type_JavaLangString);
-      label220:
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Qzb.b.jdField_b_of_type_JavaLangString;
+      ReadInJoyDeliverBiuActivity.a(this.a).setMaxHeight(j);
+      ReadInJoyDeliverBiuActivity.a(this.a, bool);
+      localObject = this.a;
+      if (i >= ReadInJoyDeliverBiuActivity.e(this.a)) {
+        break label372;
+      }
+      j = i;
+      label283:
+      ReadInJoyDeliverBiuActivity.b((ReadInJoyDeliverBiuActivity)localObject, j);
+      localObject = this.a;
+      if (i <= ReadInJoyDeliverBiuActivity.f(this.a)) {
+        break label383;
+      }
+      label307:
+      ReadInJoyDeliverBiuActivity.c((ReadInJoyDeliverBiuActivity)localObject, i);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Ooi.notifyDataSetChanged();
+      ReadInJoyDeliverBiuActivity.d(this.a, ReadInJoyDeliverBiuActivity.h(this.a));
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout mExternalPanelheight:" + ReadInJoyDeliverBiuActivity.g(this.a));
+      }
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131703564));
+      bool = false;
       break;
-      label257:
-      this.b.setText(anzj.a(2131703565));
-      break label220;
-      label272:
-      if (this.b != null)
+      label372:
+      j = ReadInJoyDeliverBiuActivity.e(this.a);
+      break label283;
+      label383:
+      i = ReadInJoyDeliverBiuActivity.f(this.a);
+      break label307;
+      label394:
+      if ((ReadInJoyDeliverBiuActivity.g(this.a) != ReadInJoyDeliverBiuActivity.h(this.a)) && (i == ReadInJoyDeliverBiuActivity.f(this.a)))
       {
-        this.b.setVisibility(8);
-        this.jdField_a_of_type_JavaLangString = null;
-      }
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    do
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-    ozs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    str3 = "";
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("folder_status", "" + ozs.d);
-        if (!bhnv.h(this.jdField_a_of_type_AndroidContentContext)) {
-          continue;
+        i -= ReadInJoyDeliverBiuActivity.h(this.a);
+        j = i - ReadInJoyDeliverBiuActivity.i(this.a);
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout contentHeight:" + i + ", fixedHeight:" + ReadInJoyDeliverBiuActivity.j(this.a) + ", maxHeight:" + j);
         }
-        str1 = "2";
-        localJSONObject.put("network_type", str1);
-        str1 = localJSONObject.toString();
+        ReadInJoyDeliverBiuActivity.b(this.a).setMaxHeight(j);
       }
-      catch (JSONException localJSONException)
-      {
-        String str1;
-        localJSONException.printStackTrace();
-        String str2 = str3;
-        continue;
-      }
-      ocd.a(null, "", "0X8008451", "0X8008451", 0, 0, "", "", "", str1, false);
-      break;
-      str1 = "1";
-    }
-  }
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    if ((paramInt == 0) || (paramInt == this.jdField_a_of_type_Ooi.getCount() - 1)) {}
-    qzd localqzd;
-    do
-    {
-      do
-      {
-        EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-        return;
-      } while ((this.jdField_a_of_type_Qzb == null) || (this.jdField_a_of_type_Qzb.jdField_a_of_type_JavaUtilArrayList == null) || (paramInt < 1) || (paramInt > this.jdField_a_of_type_Qzb.jdField_a_of_type_JavaUtilArrayList.size()));
-      localqzd = (qzd)this.jdField_a_of_type_Qzb.jdField_a_of_type_JavaUtilArrayList.get(paramInt - 1);
-    } while ((localqzd == null) || (TextUtils.isEmpty(localqzd.jdField_b_of_type_JavaLangString)));
-    ozs.a(this.jdField_a_of_type_AndroidContentContext, localqzd.jdField_b_of_type_JavaLangString);
-    str3 = "";
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("folder_status", "" + ozs.d);
-        if (!bhnv.h(this.jdField_a_of_type_AndroidContentContext)) {
-          continue;
-        }
-        str1 = "2";
-        localJSONObject.put("network_type", str1);
-        str1 = localJSONObject.toString();
-      }
-      catch (JSONException localJSONException)
-      {
-        String str1;
-        localJSONException.printStackTrace();
-        String str2 = str3;
-        continue;
-      }
-      ocd.a(null, "", "0X8008450", "0X8008450", 0, 0, String.valueOf(localqzd.a), String.valueOf(paramInt - 1), String.valueOf(localqzd.jdField_b_of_type_Int), str1, false);
-      localqzd.jdField_b_of_type_Int = 0;
-      pfa.a().a(this.jdField_a_of_type_Qzb);
-      this.jdField_a_of_type_Ooi.a(this.jdField_a_of_type_Qzb.jdField_a_of_type_JavaUtilArrayList);
-      a();
-      break;
-      str1 = "1";
     }
   }
 }

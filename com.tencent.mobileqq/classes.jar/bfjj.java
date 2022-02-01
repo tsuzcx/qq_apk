@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
-
-public final class bfjj
-  implements QQPermissionCallback
+class bfjj
+  implements bcrf
 {
-  public bfjj(BaseActivity paramBaseActivity) {}
+  bfjj(bfji parambfji) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a()
   {
-    if (!this.a.isFinishing()) {
-      bhlq.b(this.a);
+    if (this.a.a != null) {
+      this.a.a.a();
     }
   }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

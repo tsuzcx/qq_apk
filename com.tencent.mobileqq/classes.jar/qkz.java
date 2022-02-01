@@ -1,19 +1,12 @@
-import android.view.MotionEvent;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
 
-class qkz
-  implements View.OnTouchListener
+public class qkz
+  extends RecyclerView.ViewHolder
 {
-  qkz(qkv paramqkv, LinearLayout paramLinearLayout) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public qkz(qks paramqks, View paramView)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
-    }
-    return false;
+    super(paramView);
   }
 }
 

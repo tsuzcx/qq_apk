@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="100" android:drawable="@drawable/fcp" />
-    <item android:duration="100" android:drawable="@drawable/ffp" />
-    <item android:duration="100" android:drawable="@drawable/fgx" />
-    <item android:duration="100" android:drawable="@drawable/fj0" />
-    <item android:duration="100" android:drawable="@drawable/fkw" />
-    <item android:duration="100" android:drawable="@drawable/fkx" />
-    <item android:duration="100" android:drawable="@drawable/fl0" />
-    <item android:duration="100" android:drawable="@drawable/fl1" />
-    <item android:duration="100" android:drawable="@drawable/fl2" />
-    <item android:duration="100" android:drawable="@drawable/fm7" />
-    <item android:duration="100" android:drawable="@drawable/fny" />
-    <item android:duration="100" android:drawable="@drawable/fnz" />
-    <item android:duration="100" android:drawable="@drawable/fo3" />
-    <item android:duration="100" android:drawable="@drawable/fo4" />
-    <item android:duration="100" android:drawable="@drawable/fo7" />
-</animation-list>
+    <corners android:radius="10.0dip" />
+    <solid android:color="@color/ajp" />
+    <stroke android:width="2.0dip" android:color="@color/al3" />
+</shape>

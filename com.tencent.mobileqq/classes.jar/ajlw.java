@@ -1,104 +1,63 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.phone.BindNumberFromPcActivity;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.activity.phone.RebindActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ajlw
-  extends aocj
+  extends aycd
 {
-  public ajlw(SystemRequestInfoView paramSystemRequestInfoView) {}
+  public ajlw(BindNumberFromPcActivity paramBindNumberFromPcActivity) {}
   
-  protected void a(String paramString)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.a())
+    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+    this.a.b();
+    int i;
+    if (paramBoolean)
     {
-      paramString = this.a.getResources().getString(2131718517);
-      QQToast.a(this.a.getContext(), 1, paramString, 0).b(this.a.a());
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionError");
-  }
-  
-  protected void a(boolean paramBoolean, String paramString) {}
-  
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionFin");
-    }
-    if (!this.a.a()) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionFin stopProgress = fasle");
+      i = paramBundle.getInt("k_result");
+      if ((i == 104) || (i == 0))
+      {
+        paramBundle = new Intent(this.a, BindVerifyActivity.class);
+        paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
+        paramBundle.putExtra("k_country_code", this.a.b);
+        if ((paramBundle != null) && (!this.a.isFinishing()))
+        {
+          paramBundle.addFlags(536870912);
+          this.a.startActivityForResult(paramBundle, 1);
+        }
       }
     }
-    long l1;
-    structmsg.StructMsg localStructMsg;
     for (;;)
     {
+      this.a.app.unRegistObserver(BindNumberFromPcActivity.a(this.a));
+      BindNumberFromPcActivity.a(this.a, null);
       return;
-      long l2 = bdzh.a().b();
-      l1 = l2;
-      if (!TextUtils.isEmpty(paramString1)) {}
-      try
+      if (i == 107)
       {
-        l1 = Long.parseLong(paramString1);
-        localStructMsg = bdzh.a().a(Long.valueOf(l1));
-        if (!paramBoolean) {
-          if (!TextUtils.isEmpty(paramString3))
-          {
-            QQToast.a(this.a.getContext(), 1, paramString3, 0).b(this.a.a());
-            if (!bdzj.a(localStructMsg, paramInt3, paramString2, paramString4)) {
-              continue;
-            }
-            SystemRequestInfoView.a(this.a).finish();
-            return;
-          }
-        }
+        Intent localIntent = new Intent(this.a, RebindActivity.class);
+        localIntent.putExtra("k_uin", paramBundle.getString("k_uin"));
+        localIntent.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
+        localIntent.putExtra("k_country_code", this.a.b);
+        paramBundle = localIntent;
+        break;
       }
-      catch (Exception paramString1)
+      if (i == 106)
       {
-        for (;;)
-        {
-          paramString1.printStackTrace();
-          l1 = l2;
-          continue;
-          paramString3 = this.a.getResources().getString(2131717877);
-        }
-        bdzj.a(localStructMsg, paramInt1, paramString2, paramInt2);
-        paramString2 = null;
-        if (paramInt1 != 1) {
-          break label234;
-        }
+        this.a.setResult(-1);
+        this.a.finish();
+        paramBundle = null;
+        break;
       }
-    }
-    SystemRequestInfoView.a(this.a).finish();
-    paramString1 = this.a.getResources().getString(2131692418);
-    for (;;)
-    {
-      QQToast.a(this.a.getContext(), 2, paramString1, 0).b(this.a.a());
-      return;
-      label234:
-      paramString1 = paramString2;
-      if (paramInt1 == 0)
-      {
-        paramString1 = paramString2;
-        if (localStructMsg != null)
-        {
-          paramString1 = this.a.getResources().getString(2131692412);
-          AutoRemarkActivity.a(SystemRequestInfoView.a(this.a), 1017, String.valueOf(localStructMsg.req_uin.get()), l1, null);
-        }
-      }
+      this.a.a(a(i));
+      paramBundle = null;
+      break;
+      this.a.a(2131717686);
     }
   }
-  
-  protected void b(boolean paramBoolean, String paramString) {}
 }
 
 

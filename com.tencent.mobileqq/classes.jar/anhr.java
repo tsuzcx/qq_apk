@@ -1,68 +1,11 @@
-import com.tencent.mobileqq.apollo.sdk.CmShowViewListener.1;
-import com.tencent.mobileqq.apollo.sdk.CmShowViewListener.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
-public class anhr
-  extends bhzs
-  implements amwd
+class anhr
+  extends andd
 {
-  private int jdField_a_of_type_Int = 3;
-  private angy jdField_a_of_type_Angy;
-  private WeakReference<anhc> jdField_a_of_type_JavaLangRefWeakReference;
+  private anhr(anho paramanho) {}
   
-  public anhr(anhc paramanhc, int paramInt)
+  protected void onUpdateNewTroopFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramanhc);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(angy paramangy)
-  {
-    this.jdField_a_of_type_Angy = paramangy;
-  }
-  
-  protected void onApolloDressChange(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmShow_ApolloDrawerInfoViewListener", 2, "[onApolloDressChange], result:" + paramBoolean + ",data:" + paramObject);
-    }
-    ThreadManager.post(new CmShowViewListener.2(this, paramBoolean, paramObject), 5, null, true);
-  }
-  
-  public void onNotifyLongTouch(String paramString)
-  {
-    QLog.d("CmShow_ApolloDrawerInfoViewListener", 1, new Object[] { "onNotifyLongTouch name", paramString });
-    if (this.jdField_a_of_type_Angy != null) {
-      this.jdField_a_of_type_Angy.a(paramString);
-    }
-  }
-  
-  public void onNotifyStatusChanged(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmShow_ApolloDrawerInfoViewListener", 2, new Object[] { "[onNotifyStatusChanged], clickPart:", Integer.valueOf(paramInt), ",apolloId:", paramString });
-    }
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
-    {
-      anhd localanhd = ((anhc)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
-      if (localanhd != null) {
-        localanhd.a(angi.a(paramInt), null, paramString);
-      }
-    }
-    QLog.d("CmShow_ApolloDrawerInfoViewListener", 1, new Object[] { "onNotifyStatusChanged clickPart:", Integer.valueOf(paramInt), " apolloId:" + paramString });
-    if (this.jdField_a_of_type_Angy != null) {
-      this.jdField_a_of_type_Angy.a(paramInt, paramString);
-    }
-  }
-  
-  public void onSurfaceReady(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmShow_ApolloDrawerInfoViewListener", 2, "[onSurfaceReady], w:" + paramInt1 + ",h:" + paramInt2);
-    }
-    ThreadManager.post(new CmShowViewListener.1(this, paramInt1, paramInt2), 8, null, true);
+    this.a.c(106, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
   }
 }
 

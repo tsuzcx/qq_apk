@@ -1,53 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class aexs
-  extends WtloginObserver
+final class aexs
+  implements aeya
 {
-  public aexs(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
-  
-  public void onCheckSMSVerifyLoginAccount(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount appid=" + paramLong1 + " subAppid=" + paramLong2 + " countryCode=" + paramString1 + " mobile=" + bhoe.a(paramString2));
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount msg=" + paramString3 + " msgCnt=" + paramInt1 + " timeLimit=" + paramInt2 + " ret=" + paramInt3);
-      if (paramErrMsg != null) {
-        QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
-      }
-    }
-    this.a.c();
-    if (this.a.isFinishing()) {
-      return;
-    }
-    if (paramInt3 == 0)
-    {
-      this.a.a();
-      return;
-    }
-    paramString1 = null;
-    if (paramErrMsg != null) {
-      paramString1 = paramErrMsg.getMessage();
-    }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      this.a.a(this.a.getString(2131691796), paramString1);
-      if (!TextUtils.isEmpty(paramString1)) {
-        break label299;
-      }
-      paramString1 = this.a.getString(2131717456);
-    }
-    label299:
-    for (;;)
-    {
-      bdll.a(this.a.app, "dc00898", "", LoginPhoneNumActivity.a(this.a), "0X800B107", "0X800B107", LoginPhoneNumActivity.a(this.a), 0, "", "", paramString1, "");
-      return;
-      this.a.a(2131717456, 1);
-      break;
-    }
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 42);
+    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
+    return paramQQAppInterface;
   }
 }
 

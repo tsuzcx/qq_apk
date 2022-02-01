@@ -1,53 +1,76 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat.TabLayoutOnPageChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import android.content.Context;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import com.tencent.qphone.base.util.QLog;
 
-public class szv
-  extends DataSetObserver
+public abstract class szv
+  implements soj
 {
-  private boolean jdField_a_of_type_Boolean;
+  private static final String a;
+  protected int a;
+  protected Context a;
+  protected SlideActiveAnimController a;
+  protected szw a;
+  protected szx a;
+  public zvb a;
   
-  public szv(TabLayoutCompat paramTabLayoutCompat) {}
-  
-  void a()
+  static
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a != null) && (TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat) != null))
-    {
-      int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a.getCurrentItem();
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b() == i) {
-        TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat).b(i, 300);
-      }
+    jdField_a_of_type_JavaLangString = szv.class.getSimpleName();
+  }
+  
+  public szv(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    if (this.jdField_a_of_type_Szw != null) {
+      this.jdField_a_of_type_Szw.a(paramInt1, paramInt2);
     }
-    if (TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat) != null) {
-      TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat).a();
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isDebugVersion()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 4, "onPullRefreshing percent:" + paramInt + " isTopRefreshing:" + paramBoolean);
     }
+  }
+  
+  public void a(SlideActiveAnimController paramSlideActiveAnimController)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewSlideActiveAnimController = paramSlideActiveAnimController;
+  }
+  
+  public void a(szw paramszw)
+  {
+    this.jdField_a_of_type_Szw = paramszw;
+  }
+  
+  public void a(szx paramszx)
+  {
+    this.jdField_a_of_type_Szx = paramszx;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Szx != null) {
+      this.jdField_a_of_type_Szx.a(paramBoolean);
+    }
   }
   
-  public void onChanged()
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b();
-      return;
-    }
-    a();
+    return false;
   }
   
-  public void onInvalidated()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b();
-      return;
-    }
-    a();
-  }
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
 }
 
 

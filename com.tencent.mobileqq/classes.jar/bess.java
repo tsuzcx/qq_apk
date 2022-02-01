@@ -1,51 +1,57 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.media.ThumbnailUtils;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.text.SpannableString;
 
 class bess
-  implements bezb
 {
-  bess(besr parambesr) {}
+  public final int a;
+  public final SpannableString a;
   
-  public Bitmap getBitmap(URL paramURL)
+  public bess(int paramInt, SpannableString paramSpannableString)
   {
-    LocalMediaInfo localLocalMediaInfo = this.a.a(paramURL);
-    if (localLocalMediaInfo == null) {}
-    for (;;)
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidTextSpannableString = paramSpannableString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      return null;
-      paramURL = new BitmapFactory.Options();
-      paramURL.inDensity = 160;
-      paramURL.inTargetDensity = 160;
-      paramURL.inScreenDensity = 160;
-      try
-      {
-        paramURL = BitmapFactory.decodeFile(localLocalMediaInfo.path, paramURL);
-        if (paramURL == null) {
-          continue;
-        }
-        return ThumbnailUtils.extractThumbnail(paramURL, localLocalMediaInfo.thumbWidth, localLocalMediaInfo.thumbHeight, 2);
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-      catch (OutOfMemoryError paramURL)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("VIdeoThumbDownloader", 2, "DeviceImgBitmapDecoder getBitmap", paramURL);
-          }
-          paramURL = null;
-        }
+      paramObject = (bess)paramObject;
+      if (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) {
+        return false;
       }
+      if (this.jdField_a_of_type_AndroidTextSpannableString != null) {
+        return this.jdField_a_of_type_AndroidTextSpannableString.equals(paramObject.jdField_a_of_type_AndroidTextSpannableString);
+      }
+    } while (paramObject.jdField_a_of_type_AndroidTextSpannableString == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    int j = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_AndroidTextSpannableString != null) {}
+    for (int i = this.jdField_a_of_type_AndroidTextSpannableString.hashCode();; i = 0) {
+      return i + j * 31;
     }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("AtTag{");
+    localStringBuilder.append("startIndex=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", atSpan=").append(this.jdField_a_of_type_AndroidTextSpannableString);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bess
  * JD-Core Version:    0.7.0.1
  */

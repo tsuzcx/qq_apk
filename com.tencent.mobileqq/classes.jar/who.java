@@ -1,39 +1,38 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.album.tools.PhotoSelecter;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
 
-public class who
-  implements Comparable<who>
+class who
+  extends vqq<wfl, wfm>
 {
-  public int a;
-  Bitmap a;
-  public wgh a;
+  who(whn paramwhn, String[] paramArrayOfString) {}
   
-  public int a(@NonNull who paramwho)
+  public void a(@NonNull wfl paramwfl, @Nullable wfm paramwfm, @NonNull ErrorMessage paramErrorMessage)
   {
-    return (int)(this.jdField_a_of_type_Wgh.b - paramwho.jdField_a_of_type_Wgh.b);
-  }
-  
-  public Bitmap a(Context paramContext)
-  {
-    BitmapFactory.Options localOptions;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      localOptions = new BitmapFactory.Options();
-    }
-    try
+    if ((paramwfm == null) || (paramwfm.jdField_a_of_type_Int != 0))
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Wgh.a(paramContext, 1, localOptions);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = whp.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      return this.jdField_a_of_type_AndroidGraphicsBitmap;
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
+      if (paramwfm != null) {}
+      for (int i = paramwfm.jdField_a_of_type_Int;; i = -1)
       {
-        yuk.c(PhotoSelecter.a, "get thumbnail failed!", paramContext);
+        if (QLog.isColorLevel()) {
+          QLog.e("EncryptUrlJob", 2, "encrypt failed, error code = " + i);
+        }
+        whn.a(this.jdField_a_of_type_Whn, false);
+        return;
       }
+    }
+    if (((Boolean)((vuq)vux.a(10)).b("key_share_encrypt_flag", Boolean.valueOf(false))).booleanValue()) {}
+    for (paramwfl = wjv.a(this.jdField_a_of_type_ArrayOfJavaLangString[1], whn.a(this.jdField_a_of_type_Whn));; paramwfl = this.jdField_a_of_type_ArrayOfJavaLangString[1])
+    {
+      paramwfl = this.jdField_a_of_type_ArrayOfJavaLangString[0] + "?token=" + paramwfm.jdField_a_of_type_JavaLangString + "&" + paramwfl;
+      if (QLog.isColorLevel()) {
+        QLog.d("EncryptUrlJob", 2, new Object[] { "encrypt done url:", paramwfl });
+      }
+      this.jdField_a_of_type_Whn.a("EncryptUrlJob_coverUrl", paramwfm.c);
+      this.jdField_a_of_type_Whn.a("EncryptUrlJob_encryptedUrl", paramwfl);
+      whn.b(this.jdField_a_of_type_Whn, true);
+      return;
     }
   }
 }

@@ -1,36 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import android.view.View;
 
-public class zvw
-  implements DialogInterface.OnClickListener
+class zvw
+  implements zwc
 {
-  public zvw(QRCardActivity paramQRCardActivity, String paramString) {}
+  zvw(zvt paramzvt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView, float paramFloat)
   {
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString.toLowerCase();
-    if (paramDialogInterface.startsWith("www.")) {
-      paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
-    }
-    for (;;)
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity, QQBrowserDelegationActivity.class);
-      localIntent.putExtra("url", paramDialogInterface);
-      localIntent.putExtra("key_isReadModeEnabled", true);
-      localIntent.putExtra("injectrecommend", false);
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.startActivity(localIntent);
-      return;
-      if (paramDialogInterface.startsWith("https:")) {
-        paramDialogInterface = "https" + this.jdField_a_of_type_JavaLangString.substring(5);
-      } else if (paramDialogInterface.startsWith("http:")) {
-        paramDialogInterface = "http" + this.jdField_a_of_type_JavaLangString.substring(4);
-      } else {
-        paramDialogInterface = "http://" + this.jdField_a_of_type_JavaLangString;
-      }
-    }
+    paramView.getLayoutParams().width = ((int)paramFloat);
+    paramView.requestLayout();
   }
 }
 

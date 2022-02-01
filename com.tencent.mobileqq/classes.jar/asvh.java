@@ -1,24 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class asvh
-  implements anui
+  implements View.OnClickListener
 {
-  asvh(asvg paramasvg, String paramString, int paramInt1, int paramInt2) {}
+  asvh(asvf paramasvf) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      paramObject = (anyw)this.jdField_a_of_type_Asvg.app.getManager(51);
-      Card localCard = paramObject.c(this.jdField_a_of_type_JavaLangString);
-      localCard.clothesId = this.jdField_a_of_type_Int;
-      localCard.fontId = this.b;
-      localCard.updateTime = NetConnInfoCenter.getServerTimeMillis();
-      paramObject.a(localCard);
-      this.jdField_a_of_type_Asvg.notifyUI(1, paramBoolean, null);
-    }
+    asvf.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

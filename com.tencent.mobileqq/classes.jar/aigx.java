@@ -1,29 +1,19 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.mobileqq.data.PhoneContactAdd;
 
 public class aigx
-  extends aigs
+  extends aigo
 {
-  public AnimationView.AnimationInfo a;
-  public String b;
+  public PhoneContactAdd a;
   
-  public aigx(String paramString)
+  public aigx(PhoneContactAdd paramPhoneContactAdd)
   {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
-    {
-      this.b = paramRedPacketInfo.background;
-      this.a = paramRedPacketInfo.animInfo;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDataPhoneContactAdd = paramPhoneContactAdd;
+    this.jdField_a_of_type_Long = paramPhoneContactAdd.timestamp;
   }
   
   public boolean a()
   {
-    return (this.b != null) || (this.a != null);
+    return true;
   }
 }
 

@@ -1,47 +1,26 @@
-public abstract class bnie
+import android.support.annotation.NonNull;
+import dov.com.qq.im.capture.text.EditTextPreView;
+
+class bnie
+  implements bnry
 {
-  protected String a;
-  protected boolean a;
+  bnie(bnhv parambnhv) {}
   
-  public bnie(String paramString, boolean paramBoolean)
+  public void a(@NonNull bnsf parambnsf)
   {
-    a(paramString);
-    a(paramBoolean);
-  }
-  
-  public abstract String a();
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String d()
-  {
-    if (a()) {
-      return a();
+    switch (parambnsf.a)
+    {
     }
-    return null;
+    int i;
+    do
+    {
+      return;
+      i = parambnsf.b;
+      this.a.jdField_a_of_type_Bnhf.a = i;
+      this.a.c = i;
+    } while (!(this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem instanceof bmwl));
+    ((bmwl)this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem).a(i);
+    this.a.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView.invalidate();
   }
 }
 

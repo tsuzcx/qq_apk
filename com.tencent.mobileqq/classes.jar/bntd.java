@@ -1,6 +1,19 @@
-public abstract interface bntd
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+
+class bntd
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  bntd(bntb parambntb) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    ((bnsx)this.a.a).e(true);
+    bntb.a(this.a).setSelected(true);
+    ((bnsx)this.a.a).c(3002);
+  }
 }
 
 

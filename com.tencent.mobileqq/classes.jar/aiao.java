@@ -1,6 +1,6 @@
 public abstract interface aiao
 {
-  public abstract boolean a(Object paramObject);
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

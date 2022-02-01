@@ -9,8 +9,7 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import bpws;
-import bpwt;
+import bmzv;
 
 public abstract class StoryToastView
   extends LinearLayout
@@ -18,7 +17,6 @@ public abstract class StoryToastView
 {
   private Animator jdField_a_of_type_AndroidAnimationAnimator;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(this);
-  private Animator b;
   
   public StoryToastView(Context paramContext)
   {
@@ -42,62 +40,23 @@ public abstract class StoryToastView
   {
     if (this.jdField_a_of_type_AndroidAnimationAnimator == null)
     {
-      this.jdField_a_of_type_AndroidAnimationAnimator = ObjectAnimator.ofFloat(this, "alpha", new float[] { 0.0F, 1.0F });
+      this.jdField_a_of_type_AndroidAnimationAnimator = ObjectAnimator.ofFloat(this, "alpha", new float[] { 1.0F, 0.0F });
       this.jdField_a_of_type_AndroidAnimationAnimator.setDuration(300L);
-      this.jdField_a_of_type_AndroidAnimationAnimator.addListener(new bpws(this));
+      this.jdField_a_of_type_AndroidAnimationAnimator.addListener(new bmzv(this));
     }
     return this.jdField_a_of_type_AndroidAnimationAnimator;
   }
   
-  private Animator b()
-  {
-    if (this.b == null)
-    {
-      this.b = ObjectAnimator.ofFloat(this, "alpha", new float[] { 1.0F, 0.0F });
-      this.b.setDuration(300L);
-      this.b.addListener(new bpwt(this));
-    }
-    return this.b;
-  }
-  
-  private void c()
+  private void a()
   {
     if (getVisibility() == 8) {
       return;
     }
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    b().start();
-  }
-  
-  public void a()
-  {
-    a(true);
+    a().start();
   }
   
   protected abstract void a(Context paramContext);
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      setVisibility(0);
-      a().start();
-      return;
-    }
-    setVisibility(0);
-  }
-  
-  public void b()
-  {
-    if (a().isRunning()) {
-      a().cancel();
-    }
-    if (getVisibility() == 0)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      setVisibility(4);
-    }
-  }
   
   public boolean handleMessage(Message paramMessage)
   {
@@ -107,7 +66,7 @@ public abstract class StoryToastView
     for (;;)
     {
       return true;
-      c();
+      a();
     }
   }
 }

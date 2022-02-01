@@ -1,22 +1,57 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import com.tencent.image.ApngDrawable;
 
-class bgkz
-  implements View.OnClickListener
+public class bgkz
+  implements bgkw
 {
-  bgkz(bgkx parambgkx) {}
+  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   
-  public void onClick(View paramView)
+  public bgkz(Drawable paramDrawable)
   {
-    if (bgkx.a(this.a) != null)
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof ApngDrawable))
     {
-      bgkx.a(this.a).a(paramView);
-      if (bgkx.a(this.a) != null) {
-        bgkx.a(this.a).b(paramView, 0);
+      if (paramBoolean) {
+        ((ApngDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).resume();
       }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    else {
+      return;
+    }
+    ((ApngDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).pause();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    {
+      a(true);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(true, false);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.invalidateSelf();
+    }
+  }
+  
+  public void a(bgkx parambgkx)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new bgla(this, parambgkx);
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    {
+      a(false);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(false, false);
+    }
   }
 }
 

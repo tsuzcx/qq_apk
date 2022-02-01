@@ -1,22 +1,16 @@
-final class bnzf
-  implements boba
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayoutNew;
+
+public class bnzf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void a(String paramString) {}
+  public bnzf(QIMCameraSegmentCaptureButtonLayoutNew paramQIMCameraSegmentCaptureButtonLayoutNew) {}
   
-  public void a(String paramString, long paramLong, boal paramboal, boolean paramBoolean)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramBoolean)
-    {
-      if (paramboal.a != 5) {
-        break label25;
-      }
-      bocf.a(paramString, "actFileWyDown", paramboal, false, paramLong);
-    }
-    label25:
-    while (paramboal.a != 4) {
-      return;
-    }
-    bocf.a(paramString, "actFileWyDown", paramboal, true, paramLong);
+    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a(this.a.c);
   }
 }
 

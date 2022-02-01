@@ -1,69 +1,45 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetPOIList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetPOIList;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspShareVideoCollectionList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupFeed;
+import com.tencent.biz.qqstory.storyHome.memory.model.ShareGroupCollectionItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class wgk
-  extends wpa<wgl>
+  extends vqm
 {
-  private static final String jdField_a_of_type_JavaLangString = wnu.a("StorySvc.batch_get_poi_list");
-  private List<whl> jdField_a_of_type_JavaUtilList;
+  public long a;
+  public String a;
+  public ArrayList<ShareGroupCollectionItem> a;
+  public boolean a;
+  public int b;
   
-  public int a()
+  public wgk(String paramString, qqstory_service.RspShareVideoCollectionList paramRspShareVideoCollectionList)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public wgl a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspBatchGetPOIList localRspBatchGetPOIList = new qqstory_service.RspBatchGetPOIList();
-    try
+    super(paramRspShareVideoCollectionList.result);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.b = paramRspShareVideoCollectionList.total_share_group_count.get();
+    this.jdField_a_of_type_JavaLangString = paramRspShareVideoCollectionList.next_cookie.get().toStringUtf8();
+    this.jdField_a_of_type_Long = paramRspShareVideoCollectionList.seqno.get();
+    if (paramRspShareVideoCollectionList.is_end.get() == 1) {}
+    for (;;)
     {
-      localRspBatchGetPOIList.mergeFrom(paramArrayOfByte);
-      return new wgl(localRspBatchGetPOIList);
+      this.jdField_a_of_type_Boolean = bool;
+      paramRspShareVideoCollectionList = paramRspShareVideoCollectionList.collection_list.get().iterator();
+      while (paramRspShareVideoCollectionList.hasNext())
+      {
+        qqstory_struct.ShareGroupFeed localShareGroupFeed = (qqstory_struct.ShareGroupFeed)paramRspShareVideoCollectionList.next();
+        ShareGroupCollectionItem localShareGroupCollectionItem = new ShareGroupCollectionItem();
+        localShareGroupCollectionItem.convertFrom(paramString, localShareGroupFeed);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localShareGroupCollectionItem);
+      }
+      bool = false;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
-  }
-  
-  public void a(@NonNull List<whl> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  protected byte[] a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      throw new QQStoryCmdHandler.IllegalUinException("req gps list is null");
-    }
-    if ((QLog.isDebugVersion()) && (this.jdField_a_of_type_JavaUtilList.size() > 100)) {
-      throw new QQStoryCmdHandler.IllegalUinException("over LIMIT_MX data to send LIMIT_MX=100");
-    }
-    qqstory_service.ReqBatchGetPOIList localReqBatchGetPOIList = new qqstory_service.ReqBatchGetPOIList();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(((whl)localIterator.next()).a());
-    }
-    localReqBatchGetPOIList.gps.addAll(localArrayList);
-    return localReqBatchGetPOIList.toByteArray();
   }
 }
 

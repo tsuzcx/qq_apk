@@ -1,14 +1,19 @@
-import android.net.Uri;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
 
-public class bfjw
-  implements bfjp
+class bfjw
+  implements bcrz
 {
-  public bfjw(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  bfjw(bfjv parambfjv) {}
   
-  public void a(Uri paramUri)
+  public void a()
   {
-    this.a.a = paramUri;
+    this.a.a.a.this$0.a();
+    if (this.a.a.a.jdField_a_of_type_Bcrz != null) {
+      this.a.a.a.jdField_a_of_type_Bcrz.a();
+    }
+    this.a.a.a.this$0.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.a.this$0.a, true);
   }
 }
 

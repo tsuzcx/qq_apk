@@ -1,10 +1,17 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public abstract interface avxa
+class avxa
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(avxb paramavxb);
+  avxa(avwv paramavwv) {}
   
-  public abstract void a(View... paramVarArgs);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.e();
+    avwv.a(this.a).setLeftCheckBoxVisible(false, null, false);
+  }
 }
 
 

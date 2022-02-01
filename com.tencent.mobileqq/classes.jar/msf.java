@@ -1,17 +1,12 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class msf
-  implements DialogInterface.OnClickListener
+public class msf
 {
-  msf(Context paramContext) {}
+  public byte a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    msd.a(this.a);
-    paramDialogInterface.dismiss();
-  }
+  public msf(msc parammsc) {}
 }
 
 

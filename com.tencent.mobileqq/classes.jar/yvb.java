@@ -1,195 +1,125 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.EditGifImage;
-import com.tencent.image.AbstractGifImage.DoAccumulativeRunnable;
-import com.tencent.image.NativeGifImage;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.widget.FastAnimationDrawable;
+import java.util.ArrayList;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+import mqq.observer.BusinessObserver;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class yvb
-  extends yxr
-  implements View.OnClickListener
+  extends MSFServlet
 {
-  protected double a;
-  protected final int a;
-  protected LinearLayout a;
-  protected SeekBar a;
-  protected TextView a;
-  protected boolean a;
-  protected int b;
-  protected TextView b;
-  protected int c;
-  protected int d = 50;
-  protected int e = -1;
-  protected int f;
-  protected int g;
+  private static String a = "QRCodeServlet";
   
-  public yvb(@NonNull yxt paramyxt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super(paramyxt);
-    this.jdField_a_of_type_Int = AbstractGifImage.DoAccumulativeRunnable.DELAY;
-  }
-  
-  private void f()
-  {
-    this.f = bnlj.f;
-    this.g = (this.c * bnlj.g);
-    this.jdField_a_of_type_Double = ((this.f - this.g) / 100.0D);
-    if (QLog.isColorLevel()) {
-      QLog.d("EditGifSpeedControl", 2, "calculateSpeedChangeByLimit | defaultY:" + this.c + " maxSpeed:" + this.f + " minSpeed:" + this.g + " k1:" + this.jdField_a_of_type_Double);
+    if (paramFromServiceMsg != null) {
+      QLog.d(a, 2, paramFromServiceMsg.toString());
     }
-  }
-  
-  public void a()
-  {
-    super.a();
-    AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
-    NativeGifImage.QZONE_DELAY = -1;
-    this.jdField_b_of_type_Int = 50;
-    if (QLog.isColorLevel()) {
-      QLog.d("EditGifSpeedControl", 2, "onCreate | defaultX:" + this.jdField_b_of_type_Int + " defaultY:" + this.c + " delayTime:" + this.e);
-    }
-    f();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131377258));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131377253));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131377254));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)a(2131367555));
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(100);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new yvc(this));
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
+    Object localObject = null;
+    boolean bool;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramFromServiceMsg.getResultCode() == 1000))
     {
-    default: 
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      return;
-    }
-    if (this.e == -1)
-    {
-      if (!this.jdField_a_of_type_Yxt.a.jdField_a_of_type_Boolean) {
-        break label193;
-      }
-      paramInt = (int)this.jdField_a_of_type_Yxt.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.a();
-      this.e = paramInt;
-      this.c = paramInt;
-    }
-    for (NativeGifImage.QZONE_DELAY = paramInt;; NativeGifImage.QZONE_DELAY = paramInt)
-    {
-      f();
-      paramInt = (int)((this.c - this.g) / this.jdField_a_of_type_Double);
-      this.d = paramInt;
-      this.jdField_b_of_type_Int = paramInt;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      if (QLog.isColorLevel()) {
-        QLog.d("EditGifSpeedControl", 2, "editVideoStateChanged | delayTime:" + this.e + " barPosition:" + this.d);
-      }
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.d);
-      this.c = this.e;
-      this.jdField_b_of_type_Int = this.d;
-      return;
-      label193:
-      paramInt = NativeGifImage.GIF_DEFAULT_DELAY;
-      this.e = paramInt;
-      this.c = paramInt;
-    }
-  }
-  
-  public void a(@NonNull zih paramzih)
-  {
-    if (this.e == -1) {
-      if (this.jdField_a_of_type_Yxt.a.jdField_a_of_type_Boolean)
-      {
-        paramzih.a.jdField_b_of_type_Int = ((int)this.jdField_a_of_type_Yxt.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.a());
-        paramzih.a.c = this.jdField_a_of_type_Boolean;
-        if (QLog.isColorLevel()) {
-          QLog.d("EditGifSpeedControl", 2, "editVideoPrePublish | get defaultY:" + this.c + " isDelayTimeChange:" + this.jdField_a_of_type_Boolean);
-        }
-      }
-    }
-    do
-    {
-      return;
-      zil localzil = paramzih.a;
-      if (NativeGifImage.GIF_DEFAULT_DELAY != -1) {}
-      for (int i = NativeGifImage.GIF_DEFAULT_DELAY;; i = bnlj.d)
-      {
-        localzil.jdField_b_of_type_Int = i;
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("EditGifSpeedControl", 2, "editVideoPrePublish | get delayTime:" + this.e + " isDelayTimeChange:" + this.jdField_a_of_type_Boolean);
-      }
-      paramzih.a.jdField_b_of_type_Int = this.e;
-      paramzih.a.c = this.jdField_a_of_type_Boolean;
-      if (this.e < this.c)
-      {
-        LpReportInfo_pf00064.allReport(628, 5, 3);
-        return;
-      }
-    } while (this.e <= this.c);
-    LpReportInfo_pf00064.allReport(628, 5, 2);
-  }
-  
-  public boolean a()
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_Yxt.jdField_b_of_type_Int == 21)
-    {
-      NativeGifImage.QZONE_DELAY = this.c;
-      if (this.jdField_a_of_type_Yxt.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable != null) {
-        this.jdField_a_of_type_Yxt.a.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable.a(NativeGifImage.QZONE_DELAY);
-      }
-      this.e = this.c;
-      this.d = this.jdField_b_of_type_Int;
-      if (QLog.isColorLevel()) {
-        QLog.d("EditGifSpeedControl", 2, "onBackPressed | delayTime:" + this.e + " barPosition:" + this.d);
-      }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_a_of_type_Yxt.a(0);
       bool = true;
-      LpReportInfo_pf00064.allReport(628, 5, 4);
-    }
-    return bool;
-  }
-  
-  public void d()
-  {
-    super.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("EditGifSpeedControl", 2, "onDestroy | DEFAULT_DELAY:" + this.jdField_a_of_type_Int);
-    }
-    AbstractGifImage.DoAccumulativeRunnable.DELAY = this.jdField_a_of_type_Int;
-    NativeGifImage.QZONE_DELAY = -1;
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
+      if (!bool) {
+        break label120;
+      }
+      paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
+      if (paramFromServiceMsg != null) {
+        break label75;
+      }
+      bool = false;
+      paramFromServiceMsg = (FromServiceMsg)localObject;
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      notifyObserver(paramIntent, 0, bool, paramFromServiceMsg, BusinessObserver.class);
       return;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      if (this.jdField_a_of_type_Yxt.jdField_b_of_type_Int == 21)
+      bool = false;
+      break;
+      label75:
+      localObject = bgau.b(paramFromServiceMsg);
+      paramFromServiceMsg = new Bundle();
+      localObject = new String((byte[])localObject);
+      paramFromServiceMsg.putString("result", (String)localObject);
+      QLog.d(a, 2, (String)localObject);
+      continue;
+      label120:
+      QLog.e(a, 2, " MSF response is null");
+      paramFromServiceMsg = null;
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent == null) {
+      return;
+    }
+    Object localObject1 = new JSONObject();
+    for (;;)
+    {
+      int i;
+      String str;
+      Object localObject2;
+      try
       {
-        this.jdField_a_of_type_Yxt.a(0);
-        continue;
-        a();
+        paramIntent = paramIntent.getExtras();
+        String[] arrayOfString = new String[15];
+        arrayOfString[0] = "skey";
+        arrayOfString[1] = "no_verify_token";
+        arrayOfString[2] = "d";
+        arrayOfString[3] = "appid";
+        arrayOfString[4] = "ul";
+        arrayOfString[5] = "bqq";
+        arrayOfString[6] = "md5";
+        arrayOfString[7] = "fromuin";
+        arrayOfString[8] = "touin";
+        arrayOfString[9] = "imei";
+        arrayOfString[10] = "ip";
+        arrayOfString[11] = "url";
+        arrayOfString[12] = "guid";
+        arrayOfString[13] = "uuid";
+        arrayOfString[14] = "type";
+        int j = arrayOfString.length;
+        i = 0;
+        if (i >= j) {
+          break label245;
+        }
+        str = arrayOfString[i];
+        if (!paramIntent.containsKey(str)) {
+          break label315;
+        }
+        localObject2 = paramIntent.get(str);
+        if ((localObject2 instanceof ArrayList)) {
+          ((JSONObject)localObject1).put(str, new JSONArray((ArrayList)localObject2));
+        } else if (TextUtils.equals("type", str)) {
+          ((JSONObject)localObject1).put(str, Integer.valueOf(localObject2.toString()));
+        }
       }
+      catch (JSONException paramIntent)
+      {
+        QLog.d(a, 2, "json error");
+        return;
+      }
+      ((JSONObject)localObject1).put(str, localObject2);
+      break label315;
+      label245:
+      localObject1 = ((JSONObject)localObject1).toString();
+      paramPacket.setTimeout(30000L);
+      paramPacket.setSSOCommand(paramIntent.getString("cmd"));
+      paramPacket.putSendData(bgau.a(((String)localObject1).getBytes()));
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i(a, 2, "onSend result: " + (String)localObject1);
+      return;
+      label315:
+      i += 1;
     }
   }
 }

@@ -1,42 +1,53 @@
-import android.graphics.Bitmap;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.lang.ref.WeakReference;
 
-final class aunk
-  implements aunv
+class aunk
+  extends BroadcastReceiver
 {
-  aunk(String paramString1, String paramString2) {}
+  aunk(aunj paramaunj) {}
   
-  public void a(Bitmap paramBitmap)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramBitmap == null) {
-      return;
+    paramContext = paramIntent.getAction();
+    int j = paramIntent.getIntExtra("key_state", -1);
+    if (aunj.a(this.a)) {
+      aunj.a(this.a, j);
     }
-    try
+    if (paramContext.equals(aunx.a(aunj.a(this.a))))
     {
-      auog.a(paramBitmap, this.a);
-      paramBitmap.recycle();
-      int i = ff.a(this.b);
-      ff.a(this.a, i);
-      return;
-    }
-    catch (FileNotFoundException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail FileNotFoundException:" + paramBitmap.getMessage());
-      return;
-    }
-    catch (IOException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail IOException:" + paramBitmap.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail OutOfMemoryError:" + paramBitmap.getMessage());
+      paramContext = (aunl)aunj.a(this.a).get();
+      if (paramContext != null) {
+        paramContext.a(j, paramIntent.getExtras());
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("GroupVideoManager.IVPluginLoader", 2, "state:" + j);
+        }
+        paramContext = aunj.jdField_a_of_type_ArrayOfInt;
+        int k = paramContext.length;
+        int i = 0;
+        while (i < k)
+        {
+          if ((j == paramContext[i]) && (aunj.b(this.a)))
+          {
+            aunj.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
+            aunj.a(this.a, false);
+          }
+          i += 1;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e("GroupVideoManager.IVPluginLoader", 2, "loadListener null");
+        }
+      }
+      if ((aunj.c(this.a)) && (j == 4))
+      {
+        aunj.a().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
+        aunj.a(this.a, false);
+      }
     }
   }
 }

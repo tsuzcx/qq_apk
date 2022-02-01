@@ -1,30 +1,30 @@
-import android.view.KeyEvent;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.open.agent.AuthorityControlFragment;
 
-class bhqe
-  implements assq
+public class bhqe
+  implements View.OnTouchListener
 {
-  bhqe(bhpy parambhpy) {}
+  public bhqe(AuthorityControlFragment paramAuthorityControlFragment) {}
   
-  public boolean a(KeyEvent paramKeyEvent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.c))
+    switch (paramMotionEvent.getAction())
     {
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
-      this.a.c = false;
-      paramKeyEvent = this.a.getWindow().getAttributes();
-      paramKeyEvent.y = 0;
-      this.a.getWindow().setAttributes(paramKeyEvent);
-      bhpy.a(this.a);
-      return true;
     }
-    return false;
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhqe
  * JD-Core Version:    0.7.0.1
  */

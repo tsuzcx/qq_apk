@@ -1,70 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class areg
-  extends arac<aref>
+class areg
+  extends arep
 {
-  public static aref a()
-  {
-    return (aref)aran.a().a(660);
-  }
+  areg(areb paramareb, String paramString, Object paramObject) {}
   
-  @NonNull
-  public aref a(int paramInt)
+  public void a(EmoticonPackage arg1, int paramInt, Bundle paramBundle)
   {
-    return new aref();
-  }
-  
-  @Nullable
-  public aref a(araj[] paramArrayOfaraj)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterEnterConfProc", 2, "GameCenterEnterConfProcessor onParsed ");
+    if (???.epId.equals(this.jdField_a_of_type_JavaLangString)) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_a_of_type_JavaLangObject.notify();
+        return;
+      }
     }
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return aref.a(paramArrayOfaraj);
-    }
-    return null;
-  }
-  
-  public void a(aref paramaref) {}
-  
-  public Class<aref> clazz()
-  {
-    return aref.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 660;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     areg
  * JD-Core Version:    0.7.0.1
  */

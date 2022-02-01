@@ -1,8 +1,18 @@
-import android.view.View;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
 
-public abstract interface bloh
+class bloh
+  implements Observer<blst>
 {
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  bloh(bloe parambloe) {}
+  
+  public void a(@Nullable blst paramblst)
+  {
+    bloe.a(this.a, paramblst);
+    if (bloe.a(this.a) != null) {
+      bloe.a(this.a).a(bloe.a(this.a).a(), bloe.c(this.a));
+    }
+  }
 }
 
 

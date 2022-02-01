@@ -1,32 +1,46 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.5;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.5.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nxj
-  implements TVK_SDKMgr.InstallListener
+  implements View.OnClickListener
 {
-  public nxj(VideoCoverView.5 param5) {}
+  public nxj(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverView", 2, "installSDK onInstalledFailed arg0=" + paramInt);
+    switch (paramView.getId())
+    {
     }
-    this.a.this$0.b = false;
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverView", 2, "installSDK onInstalledSuccessed");
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      PublicAccountAdvertisementActivity.a(this.a);
+      PublicAccountAdvertisementActivity.c(this.a);
+      PublicAccountAdvertisementActivity.b(this.a);
+      nxz.a().a(this.a.getAppInterface(), 4, PublicAccountAdvertisementActivity.a(this.a));
+      PublicAccountAdvertisementActivity.a(this.a).setVisibility(8);
+      this.a.finish();
+      continue;
+      if ((PublicAccountAdvertisementActivity.c(this.a)) && (PublicAccountAdvertisementActivity.a(this.a) != null))
+      {
+        PublicAccountAdvertisementActivity.a(this.a).setCurrentPage(1);
+        PublicAccountAdvertisementActivity.b(this.a, 1);
+        continue;
+        this.a.b();
+        continue;
+        bcef.b(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8009032", "0X8009032", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
+        PublicAccountAdvertisementActivity.d(this.a);
+        continue;
+        PublicAccountAdvertisementActivity.a(this.a, 2);
+        continue;
+        PublicAccountAdvertisementActivity.a(this.a, 1);
+      }
     }
-    this.a.this$0.b = true;
-    ThreadManager.getUIHandler().post(new VideoCoverView.5.1.1(this));
   }
 }
 

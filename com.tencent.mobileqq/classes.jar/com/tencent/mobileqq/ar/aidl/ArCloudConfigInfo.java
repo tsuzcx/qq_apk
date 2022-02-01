@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import apfo;
-import aplj;
+import anza;
+import aoew;
 import com.tencent.mobileqq.ar.model.ARRelationShip;
 import com.tencent.mobileqq.ar.model.ArAwardInfo;
 import com.tencent.mobileqq.ar.model.ArFeatureInfo;
@@ -19,10 +19,10 @@ import java.util.ArrayList;
 public class ArCloudConfigInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArCloudConfigInfo> CREATOR = new aplj();
+  public static final Parcelable.Creator<ArCloudConfigInfo> CREATOR = new aoew();
   public static int f = 3;
   public int a;
-  public apfo a;
+  public anza a;
   public ARRelationShip a;
   public ArAwardInfo a;
   public ArFeatureInfo a;

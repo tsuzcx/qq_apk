@@ -1,6 +1,10 @@
 public abstract interface anvi
 {
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public abstract void a();
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
 }
 
 

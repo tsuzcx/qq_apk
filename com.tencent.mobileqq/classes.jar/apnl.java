@@ -1,55 +1,44 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class apnl
-  extends apoz
+  implements View.OnClickListener
 {
-  public float a;
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public apnl(HistoryFormItem paramHistoryFormItem) {}
   
-  public apnl()
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_Long = 64L;
-  }
-  
-  public static boolean a(apnl paramapnl)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramapnl != null)
+    boolean bool = true;
+    int i;
+    HistoryFormItem localHistoryFormItem;
+    if (apkr.a())
     {
-      bool1 = bool2;
-      if (paramapnl.a())
+      i = 1;
+      if ((i != 0) && (this.a.a()))
       {
-        bool1 = bool2;
-        if (paramapnl.b()) {
-          bool1 = true;
+        localHistoryFormItem = this.a;
+        if (HistoryFormItem.a(this.a)) {
+          break label119;
         }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARCloudPreOcrResult", 2, "isRecogSuccess result = " + bool1);
+    for (;;)
+    {
+      HistoryFormItem.a(localHistoryFormItem, bool);
+      this.a.a(paramView, HistoryFormItem.a(this.a));
+      if (HistoryFormItem.a(this.a) != null) {
+        HistoryFormItem.a(this.a).a(paramView, HistoryFormItem.a(this.a), HistoryFormItem.a(this.a));
+      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      aplm.a(paramView.getContext());
+      i = 0;
+      break;
+      label119:
+      bool = false;
     }
-    return bool1;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0);
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_c_of_type_Int == 1;
-  }
-  
-  public String toString()
-  {
-    return "ARCloudPreOcrResult{recogType = " + this.jdField_b_of_type_Long + ", recogSvrRetCode = " + this.jdField_a_of_type_Int + ", recogSvrRetMsg = " + this.jdField_a_of_type_JavaLangString + ", sessionId = " + this.jdField_b_of_type_JavaLangString + ", arWordDetectRetCode = " + this.jdField_b_of_type_Int + ", arWordDetectRetMsg = " + this.jdField_c_of_type_JavaLangString + ", wordType = " + this.jdField_c_of_type_Int + ", confidence = " + this.jdField_a_of_type_Float + '}';
   }
 }
 

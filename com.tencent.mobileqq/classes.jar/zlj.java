@@ -1,60 +1,36 @@
-import android.graphics.Color;
-import android.text.TextUtils;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1.1;
+import com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2.1.2;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-class zlj
+public class zlj
+  implements INetEngine.INetEngineListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  TextView c;
-  TextView d;
+  public zlj(AbsSubscribeShareCardView.2 param2) {}
   
-  public zlj(View paramView)
+  public void onResp(NetResp paramNetResp)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378413));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378436));
-    this.b = ((TextView)paramView.findViewById(2131378404));
-    this.c = ((TextView)paramView.findViewById(2131378403));
-    this.d = ((TextView)paramView.findViewById(2131378441));
-  }
-  
-  private void a(TextView paramTextView, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
+    if (paramNetResp.mResult == 0)
     {
-      paramTextView.setVisibility(8);
-      return;
-    }
-    paramTextView.setVisibility(0);
-    paramTextView.setText(paramString);
-  }
-  
-  public void a(zlk paramzlk1, zlk paramzlk2)
-  {
-    a(this.jdField_a_of_type_AndroidWidgetTextView, paramzlk1.jdField_a_of_type_Zll.jdField_a_of_type_JavaLangString);
-    a(this.b, paramzlk1.jdField_a_of_type_Zll.b);
-    if (paramzlk1.jdField_a_of_type_Int <= 0) {
-      this.c.setVisibility(8);
-    }
-    for (;;)
-    {
-      a(this.d, paramzlk1.jdField_a_of_type_JavaLangString);
-      if (!paramzlk1.equals(paramzlk2)) {
-        break;
+      ((ImageView)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.jdField_a_of_type_Int)).setImageBitmap(SafeBitmapFactory.decodeFile(this.a.jdField_a_of_type_JavaLangString));
+      AbsSubscribeShareCardView.a(this.a.this$0);
+      if (AbsSubscribeShareCardView.b(this.a.this$0) == this.a.b.size()) {
+        ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.1(this));
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846848);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFA34B"));
       return;
-      a(this.c, paramzlk1.jdField_a_of_type_Int + anzj.a(2131709933));
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846852);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
+    ThreadManager.getUIHandler().post(new AbsSubscribeShareCardView.2.1.2(this));
   }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

@@ -1,33 +1,60 @@
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import mqq.app.AppRuntime;
+
 public class bggs
-  implements Comparable<bggs>
+  implements Handler.Callback
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+  private bggt jdField_a_of_type_Bggt;
+  private bggu jdField_a_of_type_Bggu;
   
-  public bggs(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public bggs(AppRuntime paramAppRuntime, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Bggu = new bggu(paramInt, this.jdField_a_of_type_AndroidOsHandler);
   }
   
-  public int a(bggs parambggs)
+  public bggt a()
   {
-    if (this.jdField_b_of_type_Int < parambggs.jdField_b_of_type_Int) {
-      return -1;
-    }
-    if (this.jdField_b_of_type_Int > parambggs.jdField_b_of_type_Int) {
-      return 1;
-    }
-    return 0;
+    return this.jdField_a_of_type_Bggt;
   }
   
-  public String toString()
+  public bggu a()
   {
-    return "TroopHonor{id=" + this.jdField_a_of_type_Int + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", iconUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", priority='" + this.jdField_b_of_type_Int + '\'' + '}';
+    return this.jdField_a_of_type_Bggu;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bggt != null) {
+      this.jdField_a_of_type_Bggt.c();
+    }
+  }
+  
+  public void a(bggt parambggt)
+  {
+    this.jdField_a_of_type_Bggt = parambggt;
+    this.jdField_a_of_type_Bggt.b();
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (this.jdField_a_of_type_Bggt == null) {
+      return false;
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.jdField_a_of_type_Bggt.a(paramMessage.arg1, (Bundle)paramMessage.obj);
+      return true;
+      this.jdField_a_of_type_Bggt.b();
+    }
   }
 }
 

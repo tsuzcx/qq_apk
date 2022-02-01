@@ -1,17 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import java.util.Map;
+import org.json.JSONObject;
 
-public class shr
-  extends pmr
+final class shr
+  extends sht
 {
-  public shr(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Map paramMap, boolean paramBoolean)
+  shr(BaseArticleInfo paramBaseArticleInfo, int paramInt1, int paramInt2, Map paramMap, Activity paramActivity)
   {
-    super(paramString);
+    super(paramBaseArticleInfo, paramInt1, paramInt2, paramMap);
   }
   
-  public void a(pmk parampmk)
+  public void a(JSONObject paramJSONObject)
   {
-    parampmk.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
+    shq.a(this.a, this, paramJSONObject);
   }
 }
 

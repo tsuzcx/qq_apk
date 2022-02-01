@@ -1,36 +1,59 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.av.smallscreen.SmallScreenService;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class lzm
-  extends BroadcastReceiver
 {
-  public lzm(SmallScreenService paramSmallScreenService) {}
+  public static String a;
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e;
+  public int a;
+  @Deprecated
+  lke a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  static
   {
-    long l = AudioHelper.b();
-    paramContext = paramIntent.getAction();
+    jdField_b_of_type_JavaLangString = "sharp/small_window/" + "close_flag";
+    jdField_a_of_type_JavaLangString = "sharp/small_window/" + "version";
+    jdField_c_of_type_JavaLangString = "sharp/small_window/" + "use_textureview";
+    jdField_d_of_type_JavaLangString = "sharp/small_window/" + "close_video";
+    jdField_e_of_type_JavaLangString = "sharp/small_window/" + "close_audio";
     if (QLog.isColorLevel()) {
-      QLog.w("SmallScreenService", 1, "onReceive, action[" + paramContext + "], seq[" + l + "]");
+      QLog.d("SmallScreenConfigParser", 2, " SmallScreenConfigParser --> key_open_flag = " + jdField_b_of_type_JavaLangString + " , key_version = " + jdField_a_of_type_JavaLangString + " , key_textureview = " + jdField_c_of_type_JavaLangString + " , key_close_video_flag = " + jdField_d_of_type_JavaLangString + " , key_close_audio_flag = " + jdField_e_of_type_JavaLangString);
     }
-    if (paramContext.equals("android.intent.action.NEW_OUTGOING_CALL"))
+  }
+  
+  public lzm()
+  {
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_Lke = null;
+  }
+  
+  public boolean a(lke paramlke)
+  {
+    try
     {
-      paramContext = paramIntent.getStringExtra("android.intent.extra.PHONE_NUMBER");
+      this.jdField_a_of_type_Int = paramlke.a(jdField_a_of_type_JavaLangString, 0);
+      this.jdField_b_of_type_Int = paramlke.a(jdField_b_of_type_JavaLangString, 0);
+      this.jdField_c_of_type_Int = paramlke.a(jdField_c_of_type_JavaLangString, -1);
+      this.jdField_d_of_type_Int = paramlke.a(jdField_d_of_type_JavaLangString, 0);
+      this.jdField_e_of_type_Int = paramlke.a(jdField_e_of_type_JavaLangString, 0);
       if (QLog.isColorLevel()) {
-        QLog.d("SmallScreenService", 2, "onReceive NEW_OUTGOING_CALL phoneNumber = " + paramContext);
+        QLog.d("SmallScreenConfigParser", 2, "value_version = " + this.jdField_a_of_type_Int + " , value_close_flag = " + this.jdField_b_of_type_Int + " , value_use_textureview = " + this.jdField_c_of_type_Int + " ,value_close_video = " + this.jdField_d_of_type_Int + " , value_close_audio = " + this.jdField_e_of_type_Int);
+      }
+      return true;
+    }
+    catch (Exception paramlke)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SmallScreenConfigParser", 2, "parseConfig --> Error");
       }
     }
-    while ((!paramContext.equals("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED")) || (this.a.a == null)) {
-      return;
-    }
-    this.a.a().removeCallbacks(this.a.a);
-    this.a.a.a = l;
-    this.a.a().postDelayed(this.a.a, 200L);
+    return false;
   }
 }
 

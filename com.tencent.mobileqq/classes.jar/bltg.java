@@ -1,8 +1,19 @@
-public abstract interface bltg
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.view.AECompoundButton;
+
+class bltg
+  implements Observer<bltn>
 {
-  public abstract boolean a(boolean paramBoolean);
+  bltg(bltd parambltd) {}
   
-  public abstract void c();
+  public void a(@Nullable bltn parambltn)
+  {
+    if (parambltn == null) {
+      return;
+    }
+    bltd.e(this.a).setSelected(parambltn.a());
+  }
 }
 
 

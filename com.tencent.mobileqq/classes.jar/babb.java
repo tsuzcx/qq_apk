@@ -1,33 +1,43 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class babb
-  extends RecyclerView.OnScrollListener
 {
-  public babb(StickyNoteShopLayout paramStickyNoteShopLayout) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public static int a()
   {
-    if (paramInt == 0)
+    int j = 2;
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4);
+    long l = localSharedPreferences.getLong("key_open_camera_time", 0L);
+    int i = j;
+    if (l != 0L)
     {
-      paramRecyclerView = StickyNoteShopLayout.a(this.a).getLayoutManager();
-      int i = 0;
-      if ((paramRecyclerView instanceof StaggeredGridLayoutManager))
-      {
-        int[] arrayOfInt = new int[((StaggeredGridLayoutManager)paramRecyclerView).getSpanCount()];
-        arrayOfInt = ((StaggeredGridLayoutManager)paramRecyclerView).findLastVisibleItemPositions(arrayOfInt);
-        i = StickyNoteShopLayout.a(this.a, arrayOfInt);
-      }
-      if ((paramRecyclerView.getChildCount() > 0) && (i >= paramRecyclerView.getItemCount() - 1))
-      {
-        this.a.a(true);
-        QLog.d("StickyNoteShopLayout", 2, " load more shop data newState:" + paramInt + " lastVisiblePosition:" + i);
+      i = j;
+      if (System.currentTimeMillis() - l < 300000L) {
+        i = localSharedPreferences.getInt("camera", 2);
       }
     }
+    return i;
+  }
+  
+  public static void a()
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).edit();
+    localEditor.putLong("key_open_camera_time", System.currentTimeMillis());
+    localEditor.apply();
+  }
+  
+  public static void a(int paramInt)
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).edit();
+    localEditor.putInt("camera", paramInt);
+    localEditor.putLong("key_open_camera_time", System.currentTimeMillis());
+    localEditor.apply();
+  }
+  
+  public static boolean a()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).contains("camera");
   }
 }
 

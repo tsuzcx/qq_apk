@@ -1,20 +1,24 @@
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerViewNew;
+import android.content.ComponentCallbacks2;
+import android.content.res.Configuration;
+import com.tencent.common.app.ToolRuntimeBase;
 
 public class aafk
-  implements aaex
+  implements ComponentCallbacks2
 {
-  public aafk(RecommendBannerViewNew paramRecommendBannerViewNew) {}
+  public aafk(ToolRuntimeBase paramToolRuntimeBase) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onConfigurationChanged(Configuration paramConfiguration) {}
+  
+  public void onLowMemory() {}
+  
+  public void onTrimMemory(int paramInt)
   {
-    if (paramBoolean) {
-      RecommendBannerViewNew.a(this.a, paramInt);
-    }
+    this.a.onTrimMemory(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aafk
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ public final class RecommendTroopManagerImp$4
         if (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
           break label89;
         }
-        localEntityManager = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).a().createEntityManager();
+        localEntityManager = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).getEntityManagerFactory().createEntityManager();
         break;
         if (this.jdField_a_of_type_Int == 2) {}
         for (Entity localEntity = localEntityManager.find(NotificationRecommendTroopItem.class, this.jdField_a_of_type_JavaLangString); localEntity != null; localEntity = null)

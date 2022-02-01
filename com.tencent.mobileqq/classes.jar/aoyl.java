@@ -1,28 +1,34 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class aoyl
-  extends aoxg
+class aoyl
+  implements EIPCResultCallback
 {
-  public aoyl(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  aoyl(aoyk paramaoyk, String paramString1, String paramString2, IArkDelegateNetCallback paramIArkDelegateNetCallback, int paramInt) {}
   
-  public boolean a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    try
+    QLog.d("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkMultiProc.sendAppMsg cmd=", this.jdField_a_of_type_JavaLangString, ", msg=", this.b, ", ipc call back code=", Integer.valueOf(paramEIPCResult.code) });
+    switch (paramEIPCResult.code)
     {
-      boolean bool = bano.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
-      return bool;
     }
-    catch (Exception localException)
+    do
     {
-      QLog.e("QbossLoaderAction", 1, "doAction error: " + localException.getMessage());
-      a("QbossLoaderAction");
-    }
-    return false;
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback == null);
+      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onUpdate(this.jdField_a_of_type_Int, false, null);
+      return;
+      paramEIPCResult = paramEIPCResult.data;
+    } while ((paramEIPCResult == null) || (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback == null));
+    int i = paramEIPCResult.getInt("type");
+    boolean bool = paramEIPCResult.getBoolean("sucess");
+    paramEIPCResult = paramEIPCResult.getString("data");
+    this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onUpdate(i, bool, paramEIPCResult);
   }
 }
 

@@ -3,11 +3,9 @@ package com.tencent.mobileqq.search.model;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import bbzo;
-import bcfm;
-import bcgy;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
+import bass;
+import bayo;
+import bbaa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
@@ -17,11 +15,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
 
 public class HotWordSearchEntryDataModel
-  extends bcgy
+  extends bbaa
 {
   private static final Object b;
   public final int a;
-  public final bcfm a;
+  public final bayo a;
   public final HotWordSearchEntryDataModel.GIFInfo a;
   public String a;
   public final CopyOnWriteArrayList<HotWordSearchEntryDataModel.HotSearchItem> a;
@@ -37,7 +35,7 @@ public class HotWordSearchEntryDataModel
     super(paramQQAppInterface, paramInt1, paramInt2, paramBoolean);
     this.jdField_a_of_type_Int = 15;
     this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_Bcfm = new bcfm(this);
+    this.jdField_a_of_type_Bayo = new bayo(this);
     this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo = new HotWordSearchEntryDataModel.GIFInfo();
   }
   
@@ -46,7 +44,7 @@ public class HotWordSearchEntryDataModel
     super(paramQQAppInterface, paramInt1, paramArrayOfByte, paramInt2, paramBoolean);
     this.jdField_a_of_type_Int = 15;
     this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_Bcfm = new bcfm(this);
+    this.jdField_a_of_type_Bayo = new bayo(this);
     this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo = new HotWordSearchEntryDataModel.GIFInfo();
     a(paramArrayOfByte);
   }
@@ -215,50 +213,50 @@ public class HotWordSearchEntryDataModel
     //   177: checkcast 249	pb/unite/search/DynamicDiscovery$TitleHeaderItem
     //   180: astore_3
     //   181: aload_0
-    //   182: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bcfm	Lbcfm;
+    //   182: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bayo	Lbayo;
     //   185: aload_3
     //   186: getfield 255	pb/unite/search/DynamicDiscovery$TitleHeaderItem:icon_url	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   189: invokevirtual 193	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   192: invokevirtual 198	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   195: putfield 257	bcfm:b	Ljava/lang/String;
+    //   195: putfield 257	bayo:b	Ljava/lang/String;
     //   198: aload_0
-    //   199: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bcfm	Lbcfm;
+    //   199: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bayo	Lbayo;
     //   202: aload_3
     //   203: getfield 259	pb/unite/search/DynamicDiscovery$TitleHeaderItem:title	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   206: invokevirtual 193	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   209: invokevirtual 198	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   212: putfield 260	bcfm:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   212: putfield 260	bayo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   215: aload_0
-    //   216: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bcfm	Lbcfm;
+    //   216: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bayo	Lbayo;
     //   219: aload_3
     //   220: getfield 263	pb/unite/search/DynamicDiscovery$TitleHeaderItem:morn_text	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   223: invokevirtual 193	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   226: invokevirtual 198	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   229: putfield 266	bcfm:c	Ljava/lang/String;
+    //   229: putfield 266	bayo:c	Ljava/lang/String;
     //   232: aload_0
-    //   233: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bcfm	Lbcfm;
+    //   233: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bayo	Lbayo;
     //   236: aload_3
     //   237: getfield 269	pb/unite/search/DynamicDiscovery$TitleHeaderItem:morn_url	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   240: invokevirtual 193	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   243: invokevirtual 198	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   246: putfield 272	bcfm:d	Ljava/lang/String;
+    //   246: putfield 272	bayo:d	Ljava/lang/String;
     //   249: aload_0
-    //   250: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bcfm	Lbcfm;
+    //   250: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bayo	Lbayo;
     //   253: aload_3
     //   254: getfield 275	pb/unite/search/DynamicDiscovery$TitleHeaderItem:header_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   257: invokevirtual 235	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   260: putfield 276	bcfm:jdField_a_of_type_Int	I
+    //   260: putfield 276	bayo:jdField_a_of_type_Int	I
     //   263: aload_3
     //   264: getfield 279	pb/unite/search/DynamicDiscovery$TitleHeaderItem:qq_index_jump_url	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   267: invokevirtual 283	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   270: ifeq +20 -> 290
     //   273: aload_0
-    //   274: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bcfm	Lbcfm;
+    //   274: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bayo	Lbayo;
     //   277: aload_3
     //   278: getfield 279	pb/unite/search/DynamicDiscovery$TitleHeaderItem:qq_index_jump_url	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   281: invokevirtual 193	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   284: invokevirtual 198	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   287: putfield 286	bcfm:e	Ljava/lang/String;
+    //   287: putfield 286	bayo:e	Ljava/lang/String;
     //   290: getstatic 22	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_b_of_type_JavaLangObject	Ljava/lang/Object;
     //   293: astore_3
     //   294: aload_3
@@ -501,50 +499,50 @@ public class HotWordSearchEntryDataModel
     //   848: checkcast 474	pb/unify/search/UnifySearchDiscovery$TitleHeaderItem
     //   851: astore_3
     //   852: aload_0
-    //   853: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bcfm	Lbcfm;
+    //   853: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bayo	Lbayo;
     //   856: aload_3
     //   857: getfield 476	pb/unify/search/UnifySearchDiscovery$TitleHeaderItem:icon_url	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   860: invokevirtual 193	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   863: invokevirtual 198	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   866: putfield 257	bcfm:b	Ljava/lang/String;
+    //   866: putfield 257	bayo:b	Ljava/lang/String;
     //   869: aload_0
-    //   870: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bcfm	Lbcfm;
+    //   870: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bayo	Lbayo;
     //   873: aload_3
     //   874: getfield 477	pb/unify/search/UnifySearchDiscovery$TitleHeaderItem:title	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   877: invokevirtual 193	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   880: invokevirtual 198	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   883: putfield 260	bcfm:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   883: putfield 260	bayo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   886: aload_0
-    //   887: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bcfm	Lbcfm;
+    //   887: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bayo	Lbayo;
     //   890: aload_3
     //   891: getfield 478	pb/unify/search/UnifySearchDiscovery$TitleHeaderItem:morn_text	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   894: invokevirtual 193	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   897: invokevirtual 198	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   900: putfield 266	bcfm:c	Ljava/lang/String;
+    //   900: putfield 266	bayo:c	Ljava/lang/String;
     //   903: aload_0
-    //   904: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bcfm	Lbcfm;
+    //   904: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bayo	Lbayo;
     //   907: aload_3
     //   908: getfield 479	pb/unify/search/UnifySearchDiscovery$TitleHeaderItem:morn_url	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   911: invokevirtual 193	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   914: invokevirtual 198	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   917: putfield 272	bcfm:d	Ljava/lang/String;
+    //   917: putfield 272	bayo:d	Ljava/lang/String;
     //   920: aload_0
-    //   921: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bcfm	Lbcfm;
+    //   921: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bayo	Lbayo;
     //   924: aload_3
     //   925: getfield 480	pb/unify/search/UnifySearchDiscovery$TitleHeaderItem:header_type	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   928: invokevirtual 235	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   931: putfield 276	bcfm:jdField_a_of_type_Int	I
+    //   931: putfield 276	bayo:jdField_a_of_type_Int	I
     //   934: aload_3
     //   935: getfield 481	pb/unify/search/UnifySearchDiscovery$TitleHeaderItem:qq_index_jump_url	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   938: invokevirtual 283	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   941: ifeq +20 -> 961
     //   944: aload_0
-    //   945: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bcfm	Lbcfm;
+    //   945: getfield 40	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_Bayo	Lbayo;
     //   948: aload_3
     //   949: getfield 481	pb/unify/search/UnifySearchDiscovery$TitleHeaderItem:qq_index_jump_url	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   952: invokevirtual 193	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   955: invokevirtual 198	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   958: putfield 286	bcfm:e	Ljava/lang/String;
+    //   958: putfield 286	bayo:e	Ljava/lang/String;
     //   961: aload_0
     //   962: getfield 33	com/tencent/mobileqq/search/model/HotWordSearchEntryDataModel:jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList	Ljava/util/concurrent/CopyOnWriteArrayList;
     //   965: invokevirtual 289	java/util/concurrent/CopyOnWriteArrayList:clear	()V
@@ -740,33 +738,15 @@ public class HotWordSearchEntryDataModel
   
   public List<HotWordSearchEntryDataModel.HotSearchItem> b()
   {
-    int i = -1;
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(313);
-    if (localAladdinConfig != null) {
-      i = localAladdinConfig.getIntegerFromString("SearchPage_UIType", -1);
-    }
-    if ((this.c == 1) || (i == 5)) {
-      return this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-    }
-    return a(bbzo.jdField_a_of_type_Int);
-  }
-  
-  public List<HotWordSearchEntryDataModel.HotSearchItem> c()
-  {
     if (this.c == 1) {
       return this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
     }
-    int i = 8;
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(313);
-    if (localAladdinConfig != null) {
-      i = localAladdinConfig.getIntegerFromString("SearchPage_RwordNum", 20);
-    }
-    return a(i);
+    return a(bass.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel
  * JD-Core Version:    0.7.0.1
  */

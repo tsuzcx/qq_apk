@@ -1,20 +1,16 @@
-import Wallet.PopDialog;
-import Wallet.SkinInfo;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.14;
 
-class alco
+public class alco
   implements DialogInterface.OnClickListener
 {
-  alco(alcn paramalcn, alch paramalch) {}
+  public alco(ShortVideoPlayActivity.14 param14) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_Alch.a.pop_dialog.left_url;
-    if (!TextUtils.isEmpty(paramDialogInterface)) {
-      bmrq.a(alck.a(this.jdField_a_of_type_Alcn.a), paramDialogInterface);
-    }
+    this.a.this$0.s();
   }
 }
 

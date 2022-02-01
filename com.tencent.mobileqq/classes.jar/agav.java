@@ -1,34 +1,24 @@
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class agav
-  extends aogx
+class agav
+  implements View.OnClickListener
 {
-  public agav(VisitorsActivity paramVisitorsActivity) {}
+  agav(agap paramagap, long paramLong) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VisitorsActivity", 2, "onVipStatusChanged: ");
-    }
-    if ((this.a.app != null) && (VipUtils.b(this.a.app)))
-    {
-      this.a.a(true);
-      this.a.b(true);
-      if (VisitorsActivity.b(this.a).compareAndSet(true, false))
-      {
-        if (VisitorsActivity.a(this.a).get())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("VisitorsActivity", 2, "onVipStatusChanged: showDialog");
-          }
-          bhlq.a(this.a, 232, null, anzj.a(2131715597), null, anzj.a(2131715594), new agaw(this), null).show();
-        }
-        this.a.removeObserver(VisitorsActivity.a(this.a));
-      }
-    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("uinType", this.jdField_a_of_type_Agap.a.curType);
+    localIntent.putExtra("uniseq", this.jdField_a_of_type_Long);
+    localIntent.putExtra("public_fragment_window_feature", 1);
+    adxr.a(paramView.getContext(), localIntent, PublicTransFragmentActivity.class, ScoreQAVFragment.class);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

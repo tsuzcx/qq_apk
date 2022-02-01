@@ -1,16 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
 
-final class bjwm
-  implements DialogInterface.OnClickListener
+class bjwm
+  extends GestureDetector.SimpleOnGestureListener
 {
-  bjwm(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
+  bjwm(bjwf parambjwf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    bjwk.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    return true;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    Object localObject = this.a.findChildView(paramMotionEvent);
+    if (localObject != null)
+    {
+      localObject = this.a.mRecyclerView.getChildViewHolder((View)localObject);
+      if ((localObject != null) && (this.a.mCallback.hasDragFlag(this.a.mRecyclerView, (RecyclerView.ViewHolder)localObject))) {
+        break label57;
+      }
+    }
+    label57:
+    do
+    {
+      do
+      {
+        return;
+      } while (paramMotionEvent.getPointerId(0) != this.a.mActivePointerId);
+      int i = paramMotionEvent.findPointerIndex(this.a.mActivePointerId);
+      float f1 = paramMotionEvent.getX(i);
+      float f2 = paramMotionEvent.getY(i);
+      this.a.mInitialTouchX = f1;
+      this.a.mInitialTouchY = f2;
+      paramMotionEvent = this.a;
+      this.a.mDy = 0.0F;
+      paramMotionEvent.mDx = 0.0F;
+    } while (!this.a.mCallback.isLongPressDragEnabled());
+    this.a.select((RecyclerView.ViewHolder)localObject, 2);
   }
 }
 

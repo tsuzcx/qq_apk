@@ -1,35 +1,140 @@
-import com.tencent.biz.qqcircle.requests.QCircleBaseRequest;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
-
 public class vux
-  implements aads<QCircleBaseRequest>
+  implements vuf
 {
-  private List<aadq> a = new ArrayList();
-  private List<aadr> b = new ArrayList();
+  public final vuf[] a = new vuf[40];
   
-  public vux a(aadq paramaadq)
+  public static vuf a(int paramInt)
   {
-    this.a.add(paramaadq);
-    return this;
+    return vuz.a.b(paramInt);
   }
   
-  public vux a(aadr paramaadr)
+  public static vux a()
   {
-    this.b.add(paramaadr);
-    return this;
+    return vuz.a;
   }
   
-  public void a(QCircleBaseRequest paramQCircleBaseRequest, aadt paramaadt)
+  private void a(int paramInt, vuf paramvuf)
   {
-    ArrayList localArrayList1 = new ArrayList();
-    localArrayList1.addAll(this.a);
-    localArrayList1.add(new aadp());
-    localArrayList1.add(new vvb());
-    ArrayList localArrayList2 = new ArrayList();
-    localArrayList2.addAll(this.b);
-    new vuz(localArrayList1, localArrayList2, new WeakReference(paramaadt), 0).a(paramQCircleBaseRequest);
+    this.a[paramInt] = paramvuf;
+  }
+  
+  public void a() {}
+  
+  public vuf b(int paramInt)
+  {
+    vuf localvuf1 = this.a[paramInt];
+    if (localvuf1 == null) {}
+    for (;;)
+    {
+      vuf localvuf2;
+      synchronized (this.a)
+      {
+        localvuf2 = this.a[paramInt];
+        if (localvuf2 == null) {
+          break label408;
+        }
+        return localvuf2;
+        if (localvuf1 != null)
+        {
+          localvuf1.a();
+          xvv.b("Q.qqstory.SuperManager", "onInit manager : %s", localvuf1);
+        }
+        a(paramInt, localvuf1);
+        return localvuf1;
+      }
+      Object localObject2 = this;
+      continue;
+      localObject2 = new vvd();
+      continue;
+      localObject2 = new xck();
+      continue;
+      localObject2 = new vvv();
+      continue;
+      localObject2 = new vuq();
+      continue;
+      localObject2 = new vwq();
+      continue;
+      localObject2 = new ydh();
+      continue;
+      localObject2 = new bnhh();
+      continue;
+      localObject2 = new vvj();
+      continue;
+      localObject2 = new vna();
+      continue;
+      localObject2 = new vlm();
+      continue;
+      localObject2 = new vns();
+      continue;
+      localObject2 = new vuu();
+      continue;
+      localObject2 = new vun();
+      continue;
+      localObject2 = new voj();
+      continue;
+      localObject2 = new vuj();
+      continue;
+      localObject2 = new vul();
+      continue;
+      localObject2 = new vtu();
+      continue;
+      localObject2 = new vuk();
+      continue;
+      localObject2 = new vty();
+      continue;
+      localObject2 = new vvi();
+      continue;
+      localObject2 = new vud();
+      continue;
+      localObject2 = new xnp();
+      continue;
+      localObject2 = new xnv();
+      continue;
+      localObject2 = new vvf();
+      continue;
+      localObject2 = new xen();
+      continue;
+      localObject2 = new vue();
+      continue;
+      localObject2 = new vva();
+      continue;
+      localObject2 = new vls();
+      continue;
+      localObject2 = new vuv();
+      continue;
+      localObject2 = new via();
+      continue;
+      return localObject2;
+      label408:
+      localObject2 = localvuf2;
+      switch (paramInt)
+      {
+      }
+      localObject2 = localvuf2;
+    }
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    vuf[] arrayOfvuf = this.a;
+    int i = 0;
+    try
+    {
+      while (i < this.a.length)
+      {
+        vuf localvuf = this.a[i];
+        xvv.b("Q.qqstory.SuperManager", "destroy manager : %s", localvuf);
+        if (localvuf != null) {
+          localvuf.b();
+        }
+        this.a[i] = null;
+        i += 1;
+      }
+      return;
+    }
+    finally {}
   }
 }
 

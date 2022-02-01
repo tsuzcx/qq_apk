@@ -1,12 +1,31 @@
-import com.tencent.mobileqq.startup.step.Step;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.togetherui.writetogether.SavingAnimView;
 
-public abstract interface bdjz
+public class bdjz
+  implements Animator.AnimatorListener
 {
-  public abstract Step a(int paramInt, bdho parambdho, int[] paramArrayOfInt);
+  public bdjz(SavingAnimView paramSavingAnimView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    SavingAnimView.a(this.a, 2);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (SavingAnimView.a(this.a) != null) {
+      SavingAnimView.a(this.a).b();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdjz
  * JD-Core Version:    0.7.0.1
  */

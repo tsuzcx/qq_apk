@@ -1,15 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.gaudio.GaInviteActivity;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.ui.QavPanel;
 
-class lni
-  implements DialogInterface.OnClickListener
+public class lni
+  implements mho
 {
-  lni(lnh paramlnh) {}
+  public lni(GaInviteLockActivity paramGaInviteLockActivity, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.a.a(-1040L, 11);
+    if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a != null)
+    {
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131373411, false);
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131373412, false);
+    }
+  }
+  
+  public void b()
+  {
+    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, this.jdField_a_of_type_Long);
+    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, 0, 2130772177);
   }
 }
 

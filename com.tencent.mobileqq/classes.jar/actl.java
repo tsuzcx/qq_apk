@@ -1,21 +1,41 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
-class actl
-  extends BroadcastReceiver
+public class actl
+  extends AccountObserver
 {
-  private actl(actj paramactj) {}
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public actl(AssociatedAccountManageActivity paramAssociatedAccountManageActivity, String paramString, boolean paramBoolean)
   {
-    int i = paramIntent.getIntExtra("android.media.EXTRA_VOLUME_STREAM_TYPE", -1);
-    if (i == 3) {}
-    for (boolean bool = true;; bool = false)
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void onDeleteAccount(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountManage", 2, "DelHistoryAccountObserver onDeleteAccount isSuccess " + paramBoolean + ",peerUin:" + this.jdField_a_of_type_JavaLangString + ",isDeleteHistory:" + this.jdField_a_of_type_Boolean);
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity;
+    if (Build.VERSION.SDK_INT > 10) {}
+    for (int i = 4;; i = 0)
     {
-      acvc.a("VolumeBroadcastReceiver", "VolumeBroadcastReceiver action type = " + paramIntent.getAction() + ", isStreamMusic = " + bool + ", streamType = " + i);
-      if (("android.media.VOLUME_CHANGED_ACTION".equals(paramIntent.getAction())) && (bool) && (actj.a(this.a) != null)) {
-        actj.a(this.a).a(new Object[0]);
+      localObject = ((AssociatedAccountManageActivity)localObject).getSharedPreferences("Last_Login", i);
+      if ((paramBoolean) && (localObject != null) && (((SharedPreferences)localObject).contains("uin")) && (((SharedPreferences)localObject).getString("uin", "").equals(this.jdField_a_of_type_JavaLangString)))
+      {
+        ((SharedPreferences)localObject).edit().remove("uin").commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("AssociatedAccountManage", 2, "delete Last_Login");
+        }
+      }
+      if ((paramBoolean) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.a(this.jdField_a_of_type_JavaLangString);
       }
       return;
     }

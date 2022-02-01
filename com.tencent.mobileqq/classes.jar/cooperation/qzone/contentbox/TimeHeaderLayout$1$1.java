@@ -7,7 +7,7 @@ class TimeHeaderLayout$1$1
   
   public void run()
   {
-    TimeHeaderLayout.a(this.a.this$0);
+    TimeHeaderLayout.access$000(this.this$1.this$0);
   }
 }
 

@@ -1,32 +1,49 @@
-import com.tencent.av.app.DeviceCapabilityExamination;
+import android.content.IntentFilter;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-public final class ldt
-  implements ldr
+public class ldt
 {
-  public ldt(long paramLong1, int paramInt, lds paramlds, lbr paramlbr, VideoAppInterface paramVideoAppInterface, long paramLong2, ldr paramldr) {}
+  public static String a;
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  ldu jdField_a_of_type_Ldu;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void a(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2)
+  static
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    paramString2 = DeviceCapabilityExamination.a(this.jdField_a_of_type_Int, paramInt1, paramInt3, this.jdField_a_of_type_Lds.a, paramString1, paramInt2, l1 - l2);
-    paramString2.f = this.jdField_a_of_type_Lbr.jdField_a_of_type_Int;
-    paramString2.g = this.jdField_a_of_type_Lbr.b;
-    paramString2.h = this.jdField_a_of_type_Lbr.c;
-    paramString2.i = this.jdField_a_of_type_Lbr.d;
-    if ((paramInt1 == 1) && (this.jdField_a_of_type_Lds.a()) && (this.jdField_a_of_type_Lbr.jdField_a_of_type_Boolean)) {
-      new mvo(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.b).a(this.jdField_a_of_type_Lds.d, new ldu(this, paramString2, paramInt1, paramString1, paramInt2, paramInt3));
-    }
-    for (;;)
+    jdField_a_of_type_JavaLangString = "AccountReceiver";
+  }
+  
+  public ldt(VideoAppInterface paramVideoAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_Ldu = new ldu(paramVideoAppInterface);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      com.tencent.av.mediacodec.NativeCodec.printLog = false;
-      return;
-      paramString2.j = -10000;
-      DeviceCapabilityExamination.a(paramString2, this.jdField_a_of_type_Int, paramInt1);
-      if (this.jdField_a_of_type_Ldr != null) {
-        this.jdField_a_of_type_Ldr.a(paramInt1, paramString1, paramInt2, paramInt3, null);
-      }
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Ldu);
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "regist QQ Account Receiver, Declare permissions");
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_KICKED");
+    localIntentFilter.addAction("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getPackageName());
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
+    localIntentFilter.addAction("tencent.video.q2v.membersChange");
+    localIntentFilter.addAction("mqq.intent.action.LOGOUT");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Ldu, localIntentFilter, "com.tencent.msg.permission.pushnotify", null) != null) {
+      this.jdField_a_of_type_Boolean = true;
     }
   }
 }

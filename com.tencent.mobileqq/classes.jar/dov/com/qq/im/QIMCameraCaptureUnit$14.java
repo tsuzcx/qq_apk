@@ -1,27 +1,21 @@
 package dov.com.qq.im;
 
-import bocn;
-import bqai;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import bfur;
+import blhu;
+import blhz;
+import blia;
+import bnbp;
 
 public class QIMCameraCaptureUnit$14
   implements Runnable
 {
-  public QIMCameraCaptureUnit$14(bocn parambocn) {}
+  public QIMCameraCaptureUnit$14(blhu paramblhu, String paramString) {}
   
   public void run()
   {
-    LiuHaiUtils.a();
-    LiuHaiUtils.a(this.this$0.a.a());
-    if (LiuHaiUtils.c()) {
-      LiuHaiUtils.b(this.this$0.a.a());
-    }
-    for (;;)
-    {
-      this.this$0.T();
-      return;
-      LiuHaiUtils.c(this.this$0.a.a());
-    }
+    blhz localblhz = new blhz(this);
+    blia localblia = new blia(this);
+    bfur.a(this.this$0.a.a(), null, this.a, localblhz, localblhz, localblia);
   }
 }
 

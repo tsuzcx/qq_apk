@@ -1,80 +1,63 @@
-import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aozc
-  extends aoxg
 {
-  public aozc(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public HashMap<String, String> a;
+  public boolean a;
+  public long b;
+  public long c;
+  public long d;
   
-  private boolean C()
+  public JSONObject a()
   {
-    if (this.jdField_a_of_type_JavaLangString != null)
+    JSONObject localJSONObject = new JSONObject();
+    String str;
+    for (;;)
     {
-      if (!bnkq.a().b(this.e, this.jdField_a_of_type_JavaLangString))
+      try
       {
-        QLog.e("QzoneAction", 1, "has no right to handle this schema");
-        return false;
-      }
-      String str;
-      if (this.jdField_a_of_type_JavaLangString.startsWith("mqqzone"))
-      {
-        str = "mqzone" + this.jdField_a_of_type_JavaLangString.substring("mqqzone".length());
-        if (TextUtils.isEmpty(str)) {
-          break label198;
-        }
-        Intent localIntent = new Intent();
-        localIntent.putExtra("cmd", "Schema");
-        localIntent.putExtra("schema", str);
-        uqt.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, this.d);
-        ueg.a(this.jdField_a_of_type_AndroidContentContext, this.d, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, localIntent);
-      }
-      for (;;)
-      {
-        for (;;)
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
         {
-          return true;
-          str = (String)blhn.a(this.jdField_a_of_type_JavaLangString).get("schema");
-          if (!TextUtils.isEmpty(str)) {
-            try
-            {
-              str = new String(Base64.decode(str, 0), "utf-8");
-            }
-            catch (Exception localException)
-            {
-              QLog.e("QzoneAction", 1, localException, new Object[0]);
-            }
+          Object localObject = this.jdField_a_of_type_JavaLangString;
+          localJSONObject.put("evt", localObject);
+          localJSONObject.put("index", this.jdField_a_of_type_Int);
+          localJSONObject.put("result", this.jdField_a_of_type_Boolean);
+          localJSONObject.put("startTime", this.jdField_a_of_type_Long);
+          localJSONObject.put("endTime", this.b);
+          localJSONObject.put("costTime", this.c);
+          localJSONObject.put("net", this.d);
+          localObject = new JSONObject();
+          if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+            break;
           }
+          Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          Map.Entry localEntry = (Map.Entry)localIterator.next();
+          ((JSONObject)localObject).put((String)localEntry.getKey(), localEntry.getValue());
+          continue;
         }
-        Object localObject = null;
-        break;
-        label198:
-        QLog.e("QzoneAction", 1, "gotoQzoneHandleSchema,schema=null");
+        str = "";
+      }
+      catch (JSONException localJSONException)
+      {
+        QLog.e("ArkVipReportItem", 1, "getJsonObject()", localJSONException);
+        return localJSONObject;
       }
     }
-    return false;
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = C();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QzoneAction", 1, "doAction error: " + localException.getMessage());
-      a("QzoneAction");
-    }
-    return false;
+    localJSONObject.put("param", str);
+    return localJSONObject;
   }
 }
 

@@ -1,19 +1,17 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adgj
-  implements adci
+  implements View.OnClickListener
 {
-  private static void a()
-  {
-    yup.a("dyn", "refresh", 0, 0, new String[] { "2" });
-  }
+  public adgj(FontSettingActivity paramFontSettingActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onClick(View paramView)
   {
-    a();
-    return null;
+    this.a.c();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

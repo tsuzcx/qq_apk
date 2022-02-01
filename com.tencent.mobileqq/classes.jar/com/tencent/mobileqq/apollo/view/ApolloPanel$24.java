@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.view;
 
-import amtq;
+import alok;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import java.util.concurrent.atomic.AtomicInteger;
 
 class ApolloPanel$24
@@ -13,7 +13,7 @@ class ApolloPanel$24
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a == null)) {}
+    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app == null)) {}
     for (;;)
     {
       return;

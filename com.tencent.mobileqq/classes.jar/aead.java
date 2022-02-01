@@ -1,19 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-final class aead
+public class aead
   implements DialogInterface.OnClickListener
 {
-  aead(aebz paramaebz) {}
+  public aead(QQSettingCleanActivity paramQQSettingCleanActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a != null) {
-      this.a.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    bcef.b(this.a.app, "dc00898", "", "", "0X8007915", "0X8007915", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
   }
 }
 

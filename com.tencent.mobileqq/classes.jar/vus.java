@@ -1,70 +1,25 @@
-import android.view.View;
-import feedcloud.FeedCloudMeta.StFeed;
-
 public class vus
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private View jdField_a_of_type_AndroidViewView;
-  private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
-  private long b;
-  private long c;
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public FeedCloudMeta.StFeed a()
-  {
-    return this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.b = paramLong;
-    this.c = (this.b - this.jdField_a_of_type_Long);
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(FeedCloudMeta.StFeed paramStFeed)
-  {
-    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
-  }
-  
-  public long b()
-  {
-    return this.b;
-  }
-  
-  public long c()
-  {
-    return this.c;
-  }
+  @ypm(a="story_home_preload_count")
+  public int a;
+  @ypm(a="story_global_log_level")
+  public String a;
+  @ypm(a="disable_revert")
+  public vut[] a;
+  @ypm(a="story_video_preload_duration")
+  public int b;
+  @ypm(a="story_auto_play_report_control")
+  public String b;
+  @ypm(a="disable_fast")
+  public vut[] b;
+  @ypm(a="disable_slow")
+  public vut[] c;
+  @ypm(a="disable_hw_encode")
+  public vut[] d;
+  @ypm(a="disable_flow_decode")
+  public vut[] e;
+  @ypm(a="use_flow_decode_first")
+  public vut[] f;
 }
 
 

@@ -1,31 +1,40 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.debug.ArkAsyncShareMiniAppTest.1.1;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
 public class aqds
-  implements aqfn
 {
-  public boolean needProcess(JSONObject paramJSONObject)
+  public int a = 1;
+  public int b = 1;
+  
+  public static aqds a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.mArkMessagePreprocessor needProcess=", Boolean.valueOf(true) });
+    aqds localaqds = new aqds();
+    try
+    {
+      paramString = new JSONObject(paramString);
+      localaqds.a = paramString.optInt("preloadPskey", 1);
+      localaqds.b = paramString.optInt("enableFTSMerge", 1);
+      QLog.d("WVPreloadPskeyConfProcessor", 2, "confBean = " + localaqds.toString());
+      return localaqds;
     }
-    return true;
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("WVPreloadPskeyConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    }
+    return localaqds;
   }
   
-  public void process(JSONObject paramJSONObject, aqfo paramaqfo, Object paramObject)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process msgJson=", paramJSONObject.toString() });
-    }
-    ThreadManager.getFileThreadHandler().postDelayed(new ArkAsyncShareMiniAppTest.1.1(this, paramJSONObject, paramaqfo, paramObject), 20000L);
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("preloadPskey:").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqds
  * JD-Core Version:    0.7.0.1
  */

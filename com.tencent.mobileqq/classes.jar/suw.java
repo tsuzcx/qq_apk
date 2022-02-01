@@ -1,12 +1,32 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
-public class suw
-  extends BitmapDrawable
+class suw
+  implements View.OnClickListener
 {
-  public suw(Bitmap paramBitmap)
+  suw(suv paramsuv) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramBitmap);
+    try
+    {
+      ((ClipboardManager)paramView.getContext().getSystemService("clipboard")).setText(this.a.a.c.getString("id_attribute_text"));
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.d("WebProteusViewCreator", 1, "showAsDropDown error,msg:" + localException.toString());
+      }
+    }
   }
 }
 

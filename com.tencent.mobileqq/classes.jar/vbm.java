@@ -1,40 +1,27 @@
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
-public abstract class vbm
-  extends aabe
-  implements aabg<QCircleReportBean>
+public class vbm
+  extends vbo
 {
-  protected QCircleReportBean a;
-  
-  protected int a()
+  public vbm(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    return QCircleReportBean.getParentPageId(a(), this.a);
+    super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
   }
   
-  public QCircleReportBean a()
+  public vbl a(int paramInt)
   {
-    if (this.a == null) {
-      this.a = new QCircleReportBean();
-    }
-    return QCircleReportBean.getReportBean(a(), this.a.setModuleIdStr(b()));
+    return new vcs(a(), this);
   }
   
-  public void a(QCircleReportBean paramQCircleReportBean)
+  public boolean b()
   {
-    this.a = QCircleReportBean.setReportBean(a(), paramQCircleReportBean);
+    return false;
   }
   
-  protected int b()
+  public boolean c()
   {
-    return QCircleReportBean.getPageId(a(), this.a);
-  }
-  
-  protected String b()
-  {
-    if (this.a != null) {
-      return this.a.getModuleIdStr();
-    }
-    return null;
+    return false;
   }
 }
 

@@ -1,45 +1,20 @@
-import android.content.Context;
-import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.File;
 
-public class afon
+class afon
   implements View.OnClickListener
 {
-  public afon(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  afon(afom paramafom) {}
   
   public void onClick(View paramView)
   {
-    this.a.b(3);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.b);
-    if (this.a.a().booleanValue())
-    {
-      this.a.b();
-      Object localObject = ThemeUtil.getThemeVoiceRootPath();
-      if (localObject == null) {
-        break label126;
-      }
-      localObject = new File((String)localObject + File.separatorChar + "message.mp3");
-      if (!((File)localObject).exists()) {
-        break label126;
-      }
-      this.a.b();
-      this.a.a(Uri.fromFile((File)localObject));
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label126:
-      this.a.b();
-      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
-    }
+    afom.a(this.a).dismissDialog(230);
+    aabc.a(afom.a(this.a), afom.a(this.a).curType, afom.a(this.a).curFriendUin, afom.a(this.a).getAccount());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

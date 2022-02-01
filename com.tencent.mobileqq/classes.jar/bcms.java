@@ -1,20 +1,17 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
-import java.util.Set;
+import com.tencent.mobileqq.data.MessageForPtt;
 
 public class bcms
-  extends bclc
+  extends bcmt
 {
-  private Comparator<bcfn> a = new bcmt(this);
-  
-  public bcms(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
+  public bcms(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
+    super(paramQQAppInterface);
   }
   
-  public Comparator<bcfn> a()
+  public Long a(MessageForPtt paramMessageForPtt, int paramInt)
   {
-    return this.a;
+    return b(paramMessageForPtt, paramInt);
   }
 }
 

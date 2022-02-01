@@ -1,7 +1,7 @@
 package com.tencent.qqmini.miniapp.core.service;
 
 import android.webkit.ValueCallback;
-import com.tencent.tissue.v8rt.engine.Callback;
+import com.tencent.qqmini.v8rt.engine.Callback;
 
 class AppV8JsService$3
   implements Callback

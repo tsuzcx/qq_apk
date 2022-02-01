@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.minigame.task;
 
+import amtj;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import anzj;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.report.MiniAppReportManager2;
@@ -134,7 +134,7 @@ public class TritonEngineInitTask
         onTaskSucceed();
         return;
       }
-      onTaskFailed(this.mEngineLoadResult, anzj.a(2131703945));
+      onTaskFailed(this.mEngineLoadResult, amtj.a(2131704174));
       return;
     }
     if (isGameSatisfy(this.mEnginePackage, this.mAppConfig))
@@ -153,7 +153,7 @@ public class TritonEngineInitTask
       }
       MiniProgramLpReportDC04239.reportPageView(this.mAppConfig, "1", null, "load_fail", "load_baselib_fail");
       MiniAppReportManager2.reportPageView("2launch_fail", "load_baselib_fail", null, this.mAppConfig);
-      onTaskFailed(this.mEngineLoadResult, anzj.a(2131703945));
+      onTaskFailed(this.mEngineLoadResult, amtj.a(2131704174));
       return;
     }
     if ((this.mAppConfig != null) && (this.mAppConfig.config != null) && (!TextUtils.isEmpty(this.mAppConfig.config.appId))) {

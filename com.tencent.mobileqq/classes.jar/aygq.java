@@ -1,6 +1,15 @@
-public abstract interface aygq
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+
+public class aygq
+  extends aygp
 {
-  public abstract boolean a(aygm paramaygm, int paramInt, Object paramObject);
+  protected void b(BaseChatPie paramBaseChatPie)
+  {
+    a(paramBaseChatPie.sessionInfo.curType, 202);
+    a(paramBaseChatPie.sessionInfo.curType, 206);
+    a(paramBaseChatPie.sessionInfo.curType, 208);
+  }
 }
 
 

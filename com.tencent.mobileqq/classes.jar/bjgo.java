@@ -1,28 +1,19 @@
-import android.view.View;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.2;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/widget/qus/QUSDragFloatController;", "", "createContentView", "Landroid/view/View;", "defaultHeight", "", "maxHeight", "minHeight", "onEmptyClick", "", "onShowDefault", "onShowMin", "onShowTotal", "showMode", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface bjgo
+public class bjgo
+  implements DialogInterface.OnClickListener
 {
-  public abstract int a();
+  public bjgo(VideoJsProxyImpl.2 param2) {}
   
-  @Nullable
-  public abstract View a();
-  
-  public abstract void a();
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract int d();
-  
-  public abstract void d();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bjgl.a(this.a.this$0, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Boolean);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 

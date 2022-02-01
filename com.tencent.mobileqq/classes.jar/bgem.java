@@ -1,71 +1,26 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import android.text.TextUtils;
 
 public class bgem
-  extends JobSegment<bgel, bgel>
+  extends bgep
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c = 20;
   
-  public bgem(int paramInt)
+  public bgem()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 100;
   }
   
-  protected void a(JobContext paramJobContext, bgel parambgel)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment start. info status=", Integer.valueOf(parambgel.g) });
+    if (TextUtils.isEmpty(this.a)) {
+      return "";
     }
-    bgel.b();
-    try
-    {
-      String str = TroopHWJsPlugin.a(-1, parambgel.a, this.jdField_a_of_type_Int, null);
-      if (auog.b(str)) {}
-      for (parambgel.c = str;; parambgel.c = parambgel.a)
-      {
-        QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment. in path=", parambgel.a, ", out path=", parambgel.c });
-        if (isCanceled()) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment notifyResult. info status=", Integer.valueOf(parambgel.g) });
-        }
-        notifyResult(parambgel);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.e("CompressImageSegment", 2, "CompressImageSegment failed.");
-        }
-      }
-      return;
-    }
-    catch (Exception paramJobContext)
-    {
-      QLog.e("CompressImageSegment", 1, "CompressImageSegment Exception: ", paramJobContext);
-      notifyError(new Error("101"));
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      QLog.e("CompressImageSegment", 1, "CompressImageSegment error. OutOfMemoryError");
-      URLDrawable.clearMemoryCache();
-      System.gc();
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        a(paramJobContext, parambgel);
-        return;
-      }
-      notifyError(new Error("-1"));
-    }
-  }
-  
-  public void onCancel()
-  {
-    notifyError(new Error("c_1000"));
+    return this.a;
   }
 }
 

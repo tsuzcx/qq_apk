@@ -1,10 +1,10 @@
 package com.tencent.open.wadl;
 
 import android.text.TextUtils;
-import bhmi;
-import bkaf;
-import bkag;
-import bnyy;
+import bifp;
+import bifq;
+import blec;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
@@ -12,29 +12,29 @@ import java.util.HashMap;
 public class WadlConfigCenter$1
   implements Runnable
 {
-  public WadlConfigCenter$1(bkag parambkag) {}
+  public WadlConfigCenter$1(bifq parambifq) {}
   
   public void run()
   {
-    ??? = bnyy.a();
+    ??? = blec.a();
     String str = null;
     if (((File)???).exists()) {
-      str = bhmi.a((File)???);
+      str = FileUtils.readFileContent((File)???);
     }
     if (QLog.isColorLevel()) {
       QLog.d("WadlConfigCenter", 2, "loadConfig content=" + str);
     }
-    synchronized (bkag.a(this.this$0))
+    synchronized (bifq.a(this.this$0))
     {
-      bkag.a(this.this$0).clear();
+      bifq.a(this.this$0).clear();
       boolean bool = TextUtils.isEmpty(str);
       if (!bool) {}
       try
       {
-        bkaf localbkaf = new bkaf();
-        localbkaf.a = "comminfo";
-        localbkaf.a(str);
-        bkag.a(this.this$0).put("comminfo", localbkaf);
+        bifp localbifp = new bifp();
+        localbifp.a = "comminfo";
+        localbifp.a(str);
+        bifq.a(this.this$0).put("comminfo", localbifp);
         return;
       }
       catch (Exception localException)

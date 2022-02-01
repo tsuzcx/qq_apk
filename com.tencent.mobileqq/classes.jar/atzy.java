@@ -1,131 +1,96 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.BitmapFactory.Options;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.ImageSwitcher;
+import com.tencent.TMG.utils.QLog;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class atzy
-  extends bcji
+  implements Handler.Callback
 {
-  private BitmapFactory.Options a = new BitmapFactory.Options();
+  private int jdField_a_of_type_Int;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private WeakReference<ImageSwitcher> jdField_a_of_type_JavaLangRefWeakReference;
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private int jdField_b_of_type_Int = 1;
+  private WeakReference<ImageSwitcher> jdField_b_of_type_JavaLangRefWeakReference;
   
-  public atzy(aoof paramaoof)
+  public atzy(ImageSwitcher paramImageSwitcher1, ImageSwitcher paramImageSwitcher2)
   {
-    super(paramaoof);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageSwitcher1);
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramImageSwitcher2);
+    paramImageSwitcher1.setAnimateFirstView(false);
+    paramImageSwitcher1.setAnimateFirstView(false);
+    AlphaAnimation localAlphaAnimation1 = new AlphaAnimation(0.0F, 1.0F);
+    localAlphaAnimation1.setDuration(1400L);
+    AlphaAnimation localAlphaAnimation2 = new AlphaAnimation(0.0F, 1.0F);
+    localAlphaAnimation2.setDuration(1400L);
+    paramImageSwitcher1.setInAnimation(localAlphaAnimation1);
+    paramImageSwitcher2.setInAnimation(localAlphaAnimation2);
+    localAlphaAnimation1 = new AlphaAnimation(1.0F, 0.0F);
+    localAlphaAnimation1.setDuration(1400L);
+    paramImageSwitcher1.setOutAnimation(localAlphaAnimation1);
+    paramImageSwitcher2.setOutAnimation(localAlphaAnimation1);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   }
   
-  public void a(bcfr parambcfr, bcnz parambcnz)
+  public void a(List<String> paramList)
   {
-    parambcnz.a().setMaxWidth(800);
-    Object localObject = (atzt)parambcfr;
-    ImageView localImageView = parambcnz.b();
-    localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    localImageView.setImageDrawable(null);
-    localImageView.setBackgroundDrawable(null);
-    if (((atzt)localObject).a == null) {
-      return;
-    }
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)((atzt)localObject).a.get(0);
-    int i = aunj.a(localFileManagerEntity.fileName);
-    if ((i == 0) || (i == 2))
-    {
-      if (bhmi.b(localFileManagerEntity.strThumbPath)) {
-        localObject = localFileManagerEntity.strThumbPath;
-      }
-      for (;;)
-      {
-        localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = parambcnz.b().getHeight();
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = parambcnz.b().getWidth();
-        parambcnz = parambcnz.d();
-        if ((parambcnz != null) && (!TextUtils.isEmpty(parambcfr.d())))
-        {
-          parambcnz.setText(parambcfr.d());
-          parambcnz.setVisibility(0);
-        }
-        parambcfr = auob.a(localFileManagerEntity);
-        if (parambcfr == null) {
-          break;
-        }
-        parambcfr = URLDrawable.getDrawable(parambcfr, (URLDrawable.URLDrawableOptions)localObject);
-        if (parambcfr == null) {
-          localImageView.setImageDrawable(localImageView.getContext().getResources().getDrawable(2130844316));
-        }
-        localImageView.setImageDrawable(parambcfr);
-        return;
-        if (bhmi.b(localFileManagerEntity.strLargeThumPath))
-        {
-          localObject = localFileManagerEntity.strLargeThumPath;
-        }
-        else
-        {
-          if (!bhmi.b(localFileManagerEntity.getFilePath())) {
-            break label265;
-          }
-          localFileManagerEntity.getFilePath();
-        }
-      }
-      label265:
-      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localFileManagerEntity.getCloudType() == 1) {
-        localObject = ((QQAppInterface)localObject).a().a(localFileManagerEntity, 7);
-      }
-    }
-    for (;;)
-    {
-      if (TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localImageView.setImageDrawable(BaseApplicationImpl.getContext().getResources().getDrawable(2130844316));
-        return;
-        if (localFileManagerEntity.getCloudType() == 2) {
-          localObject = ((QQAppInterface)localObject).a().a(localFileManagerEntity.WeiYunFileId, localFileManagerEntity.strLargeThumPath, 3, localFileManagerEntity);
-        }
-      }
-      else
-      {
-        localFileManagerEntity.strThumbPath = ((String)localObject);
-        break;
-        aunj.a(localImageView, localFileManagerEntity);
-        return;
-      }
-      localObject = "";
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameImagePlayHelper", 0, "[startPlay] set next image :" + this);
     }
   }
   
-  public void b(bcfr parambcfr, bcnz parambcnz)
+  public boolean handleMessage(Message paramMessage)
   {
-    super.b(parambcfr, parambcnz);
-    if ((parambcnz.a() != null) && (!TextUtils.isEmpty(parambcfr.a())))
+    switch (paramMessage.what)
     {
-      parambcnz.a().setVisibility(0);
-      parambcnz.a().setText(parambcfr.a());
+    default: 
+      return false;
     }
-    if ((parambcnz.b() != null) && (!TextUtils.isEmpty(parambcfr.b())))
+    try
     {
-      parambcnz.b().setVisibility(0);
-      parambcnz.b().setText(parambcfr.b());
+      if (QLog.isColorLevel()) {
+        QLog.d("QQGameImagePlayHelper", 0, "[handleMessage] set next image");
+      }
+      int i;
+      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+      {
+        paramMessage = (ImageSwitcher)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        i = this.jdField_a_of_type_Int + 1;
+        this.jdField_a_of_type_Int = i;
+        if (i == this.jdField_a_of_type_JavaUtilList.size()) {
+          this.jdField_a_of_type_Int = 0;
+        }
+        paramMessage.setImageDrawable(URLDrawable.getDrawable((String)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)));
+      }
+      if ((this.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() != null))
+      {
+        paramMessage = (ImageSwitcher)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+        i = this.jdField_b_of_type_Int + 1;
+        this.jdField_b_of_type_Int = i;
+        if (i == this.jdField_a_of_type_JavaUtilList.size()) {
+          this.jdField_b_of_type_Int = 0;
+        }
+        paramMessage.setImageDrawable(URLDrawable.getDrawable((String)this.jdField_a_of_type_JavaUtilList.get(this.jdField_b_of_type_Int)));
+      }
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
+      return false;
     }
-    if ((parambcnz.c() != null) && (!TextUtils.isEmpty(parambcfr.c())))
+    catch (Exception paramMessage)
     {
-      parambcnz.c().setVisibility(0);
-      parambcnz.c().setText(parambcfr.c());
+      QLog.e("QQGameImagePlayHelper", 1, "[handleMessage] ");
     }
-    if ((parambcfr.d() == null) && (parambcnz.d() != null)) {
-      parambcnz.d().setVisibility(8);
-    }
-    if ((parambcnz.d() != null) && (parambcfr.d() != null))
-    {
-      parambcnz.d().setVisibility(0);
-      parambcnz.d().setText(parambcfr.d());
-    }
+    return false;
   }
 }
 

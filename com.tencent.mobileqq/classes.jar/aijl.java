@@ -1,24 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class aijl
-  implements DialogInterface.OnClickListener
+public class aijl
+  implements View.OnClickListener
 {
-  aijl(aijj paramaijj, String paramString) {}
+  public aijl(NotificationView paramNotificationView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ((anws)this.jdField_a_of_type_Aijj.a.a.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Aijj.a.a.a().a();
-    RecentUser localRecentUser = (RecentUser)paramDialogInterface.findRecentUser(this.jdField_a_of_type_JavaLangString, 3000);
-    if (localRecentUser != null) {
-      paramDialogInterface.delRecentUser(localRecentUser);
+    aijj localaijj = (aijj)paramView.getTag();
+    if (localaijj.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() == 2)
+    {
+      this.a.a(localaijj);
+      if (localaijj.jdField_a_of_type_Int == 82) {
+        bcef.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", localaijj.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
+      }
     }
-    ((anwo)this.jdField_a_of_type_Aijj.a.a.a(6)).a();
-    this.jdField_a_of_type_Aijj.a.I();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

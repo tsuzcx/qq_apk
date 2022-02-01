@@ -1,36 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
+import com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdHelper.MiniAppCmdCallback;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import org.json.JSONObject;
 
 class bjck
-  implements DialogInterface.OnDismissListener
+  implements MiniAppSSOCmdHelper.MiniAppCmdCallback<INTERFACE.StJudgeTimingRsp>
 {
-  private WeakReference<DialogInterface.OnDismissListener> a;
+  bjck(bjce parambjce, AsyncResult paramAsyncResult) {}
   
-  public bjck(DialogInterface.OnDismissListener paramOnDismissListener)
+  public void a(boolean paramBoolean, INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp)
   {
-    this.a = new WeakReference(paramOnDismissListener);
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (this.a == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneProgressDialog", 2, "CustomDismissListener mDismissLis, lis is null");
+    JSONObject localJSONObject;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("response", paramStJudgeTimingRsp);
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(paramBoolean, localJSONObject);
+      return;
+    }
+    catch (Throwable paramStJudgeTimingRsp)
+    {
+      for (;;)
+      {
+        QLog.e("ChannelProxyImpl", 1, "tianshuRequestAdv", paramStJudgeTimingRsp);
       }
     }
-    do
-    {
-      return;
-      DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.a.get();
-      if (localOnDismissListener != null)
-      {
-        localOnDismissListener.onDismiss(paramDialogInterface);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("QzoneProgressDialog", 2, "CustomDismissListener, lis is null");
   }
 }
 

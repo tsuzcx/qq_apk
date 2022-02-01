@@ -1,138 +1,138 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-
 public class anwn
+  extends bgod
 {
-  public static void a(Context paramContext)
+  /* Error */
+  public void onDone(bgoe parambgoe)
   {
-    SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("sp_d_stable", 0);
-    if (!localSharedPreferences.contains("key_mnt"))
-    {
-      localObject = localSharedPreferences.edit();
-      if (Math.random() >= 0.001F) {
-        break label101;
-      }
-    }
-    long l3;
-    long l2;
-    label101:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      ((SharedPreferences.Editor)localObject).putBoolean("key_mnt", bool1).commit();
-      if (localSharedPreferences.getBoolean("key_mnt", false))
-      {
-        l3 = localSharedPreferences.getLong("k_last_stable_ts_785", 0L);
-        l2 = System.currentTimeMillis();
-        if (l2 - l3 >= 86400000L) {
-          break;
-        }
-      }
-      return;
-    }
-    Object localObject = paramContext.getSharedPreferences(paramContext.getPackageName() + "_preferences", 0);
-    long l4 = ((SharedPreferences)localObject).getLong("k_last_stable_ts_785", 0L);
-    File localFile = new File(paramContext.getFilesDir(), "file_stable");
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    localSharedPreferences.edit().remove("k_last_stable_ts");
-    ((SharedPreferences)localObject).edit().remove("k_last_stable_ts");
-    localFile = new File(paramContext.getFilesDir(), "file_stable_785");
-    String str = bhmi.a(localFile);
-    long l1;
-    int i;
-    if (!TextUtils.isEmpty(str))
-    {
-      l1 = Long.parseLong(str);
-      if ((l4 > 0L) || (l3 > 0L) || (l1 > 0L))
-      {
-        if ((l3 < l1) || ((l3 - l1) % 86400000L != 0L)) {
-          break label832;
-        }
-        if ((l4 < l3) || ((l4 - l3) % 86400000L != 0L)) {
-          break label827;
-        }
-        i = 0;
-        label310:
-        QLog.d("DeviceStability", 1, new Object[] { "check sp file.", Long.valueOf(l4), ", ", Long.valueOf(l3), ", ", Long.valueOf(l1) });
-        HashMap localHashMap = new HashMap(4);
-        localHashMap.put("fileCode", String.valueOf(i));
-        if (i != 0)
-        {
-          localHashMap.put("big_sp_time", String.valueOf(l4));
-          localHashMap.put("sm_sp_time", String.valueOf(l3));
-          localHashMap.put("file_time", str);
-        }
-        bdmc.a(paramContext).a("", "actSpFileStable", true, i, 0L, localHashMap, "");
-        if (i == 0)
-        {
-          boolean bool3 = ((SharedPreferences)localObject).getBoolean("k_last_stable_sw", false);
-          boolean bool2 = localSharedPreferences.getBoolean("k_last_stable_sw", false);
-          if (l4 / 24L / 60L / 60L / 1000L % 2L != 0L) {
-            break label837;
-          }
-          bool1 = true;
-          label498:
-          int j = i;
-          if (bool3 != bool1) {
-            j = i | 0x1;
-          }
-          if (l3 / 24L / 60L / 60L / 1000L % 2L != 0L) {
-            break label842;
-          }
-          bool1 = true;
-          label539:
-          i = j;
-          if (bool2 != bool1) {
-            i = j | 0x2;
-          }
-          localHashMap = new HashMap(4);
-          localHashMap.put("fileCode", String.valueOf(i));
-          if (i != 0)
-          {
-            localHashMap.put("big_sp_time", String.valueOf(l4));
-            localHashMap.put("sm_sp_time", String.valueOf(l3));
-            localHashMap.put("file_time", str);
-          }
-          bdmc.a(paramContext).a("", "actSpContentStable", true, i, 0L, localHashMap, "");
-        }
-      }
-      l1 = 86400000L * (l2 / 86400000L);
-      if (l2 / 86400000L % 2L != 0L) {
-        break label847;
-      }
-    }
-    label827:
-    label832:
-    label837:
-    label842:
-    label847:
-    for (bool1 = true;; bool1 = false)
-    {
-      QLog.d("DeviceStability", 1, "write now = " + l2);
-      ((SharedPreferences)localObject).edit().putLong("k_last_stable_ts_785", l1).putBoolean("k_last_stable_sw", bool1).commit();
-      QLog.d("DeviceStability", 1, "write switch = " + bool1);
-      localSharedPreferences.edit().putLong("k_last_stable_ts_785", l1).putBoolean("k_last_stable_sw", bool1).commit();
-      QLog.d("DeviceStability", 1, "write sp end");
-      bool1 = bhmi.a(localFile.getAbsolutePath(), String.valueOf(l1), false);
-      QLog.d("DeviceStability", 1, "write content end " + bool1);
-      return;
-      l1 = 0L;
-      break;
-      i = 1;
-      break label310;
-      i = 2;
-      break label310;
-      bool1 = false;
-      break label498;
-      bool1 = false;
-      break label539;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: aload_1
+    //   2: invokespecial 17	bgod:onDone	(Lbgoe;)V
+    //   5: iconst_3
+    //   6: aload_1
+    //   7: invokevirtual 23	bgoe:a	()I
+    //   10: if_icmpne +103 -> 113
+    //   13: aload_1
+    //   14: getfield 26	bgoe:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   17: invokeinterface 31 1 0
+    //   22: iconst_1
+    //   23: if_icmpne +90 -> 113
+    //   26: aload_1
+    //   27: getfield 34	bgoe:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   30: aload_1
+    //   31: getfield 37	bgoe:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   34: invokeinterface 43 2 0
+    //   39: checkcast 45	java/io/File
+    //   42: astore 4
+    //   44: aload 4
+    //   46: invokevirtual 49	java/io/File:exists	()Z
+    //   49: ifeq +64 -> 113
+    //   52: aload 4
+    //   54: new 51	java/lang/StringBuilder
+    //   57: dup
+    //   58: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   61: aload 4
+    //   63: invokevirtual 56	java/io/File:getParent	()Ljava/lang/String;
+    //   66: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: getstatic 63	java/io/File:separator	Ljava/lang/String;
+    //   72: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: invokestatic 71	npo:a	(Ljava/io/File;Ljava/lang/String;)V
+    //   81: aload_1
+    //   82: invokevirtual 74	bgoe:a	()Landroid/os/Bundle;
+    //   85: astore_1
+    //   86: aload_1
+    //   87: ifnull +20 -> 107
+    //   90: aload_1
+    //   91: ldc 76
+    //   93: invokevirtual 82	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   96: lstore_2
+    //   97: lconst_0
+    //   98: lload_2
+    //   99: lcmp
+    //   100: ifeq +7 -> 107
+    //   103: lload_2
+    //   104: invokestatic 87	anwk:a	(J)V
+    //   107: aload 4
+    //   109: invokevirtual 90	java/io/File:delete	()Z
+    //   112: pop
+    //   113: return
+    //   114: astore_1
+    //   115: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   118: ifeq +31 -> 149
+    //   121: ldc 97
+    //   123: iconst_2
+    //   124: new 51	java/lang/StringBuilder
+    //   127: dup
+    //   128: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   131: ldc 99
+    //   133: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   136: aload_1
+    //   137: invokevirtual 102	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   140: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   143: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   146: invokestatic 106	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   149: aload 4
+    //   151: invokevirtual 90	java/io/File:delete	()Z
+    //   154: pop
+    //   155: return
+    //   156: astore_1
+    //   157: return
+    //   158: astore_1
+    //   159: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   162: ifeq +31 -> 193
+    //   165: ldc 97
+    //   167: iconst_2
+    //   168: new 51	java/lang/StringBuilder
+    //   171: dup
+    //   172: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   175: ldc 108
+    //   177: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   180: aload_1
+    //   181: invokevirtual 109	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   184: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   187: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   190: invokestatic 106	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   193: aload 4
+    //   195: invokevirtual 90	java/io/File:delete	()Z
+    //   198: pop
+    //   199: return
+    //   200: astore_1
+    //   201: return
+    //   202: astore_1
+    //   203: aload 4
+    //   205: invokevirtual 90	java/io/File:delete	()Z
+    //   208: pop
+    //   209: aload_1
+    //   210: athrow
+    //   211: astore_1
+    //   212: return
+    //   213: astore 4
+    //   215: goto -6 -> 209
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	218	0	this	anwn
+    //   0	218	1	parambgoe	bgoe
+    //   96	8	2	l	long
+    //   42	162	4	localFile	java.io.File
+    //   213	1	4	localException	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   52	86	114	java/lang/Exception
+    //   90	97	114	java/lang/Exception
+    //   103	107	114	java/lang/Exception
+    //   149	155	156	java/lang/Exception
+    //   52	86	158	java/lang/OutOfMemoryError
+    //   90	97	158	java/lang/OutOfMemoryError
+    //   103	107	158	java/lang/OutOfMemoryError
+    //   193	199	200	java/lang/Exception
+    //   52	86	202	finally
+    //   90	97	202	finally
+    //   103	107	202	finally
+    //   115	149	202	finally
+    //   159	193	202	finally
+    //   107	113	211	java/lang/Exception
+    //   203	209	213	java/lang/Exception
   }
 }
 

@@ -1,45 +1,28 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class zyy
-  implements BusinessObserver
+class zyy
+  implements View.OnClickListener
 {
-  zyy(zvp paramzvp) {}
+  zyy(zyx paramzyx) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramBundle != null)) {}
-    for (paramBundle = paramBundle.getString("result");; paramBundle = null)
+    if (zyx.a(this.a) == null) {}
+    for (;;)
     {
-      try
-      {
-        paramBundle = new JSONObject(paramBundle);
-        if (paramBundle.getInt("r") != 0) {
-          continue;
-        }
-        paramBundle = paramBundle.getString("url");
-        if (paramBundle != null)
-        {
-          this.a.a(true, paramBundle);
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          paramBundle = null;
-        }
-      }
-      this.a.a(false, null);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (!zvo.a(zyx.class.getName() + "clickPanel")) {
+        zyx.a(this.a, false);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     zyy
  * JD-Core Version:    0.7.0.1
  */

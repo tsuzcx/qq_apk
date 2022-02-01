@@ -1,27 +1,10 @@
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adwj
-  extends aoib
+public final class adwj
+  implements DialogInterface.OnClickListener
 {
-  public adwj(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  protected void a(boolean paramBoolean, bdxd parambdxd)
-  {
-    this.a.e();
-    AssociatedAccountManageActivity.b(this.a);
-  }
-  
-  protected void b(boolean paramBoolean, bdxd parambdxd)
-  {
-    this.a.e();
-    AssociatedAccountManageActivity.b(this.a);
-  }
-  
-  protected void c(boolean paramBoolean, bdxd parambdxd)
-  {
-    this.a.e();
-    AssociatedAccountManageActivity.b(this.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

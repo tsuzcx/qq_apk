@@ -1,34 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.articlesummary.articlesummary.PartnerAccountInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class qag
 {
-  public static void a(Container paramContainer, ppu paramppu)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    a(paramContainer, paramppu, "id_nickname");
-  }
-  
-  public static void a(Container paramContainer, ppu paramppu, String paramString)
-  {
-    ArticleInfo localArticleInfo = paramppu.a();
-    paramContainer = paramContainer.getVirtualView();
-    qav localqav = (qav)paramContainer.findViewBaseByName("id_partner_info_avator");
-    if (localqav != null) {
-      localqav.a(paramppu);
-    }
-    paramContainer = (qdc)paramContainer.findViewBaseByName(paramString);
-    if (paramContainer != null)
-    {
-      long l = 0L;
-      if (localArticleInfo.mPartnerAccountInfo != null) {
-        l = localArticleInfo.mPartnerAccountInfo.uint64_uin.get();
-      }
-      paramContainer.a(l);
-    }
+    JSONObject localJSONObject1 = new JSONObject();
+    qai.y(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("id_content_wrapper", new JSONObject());
+    localJSONObject1.put("id_article_wrapper", new JSONObject());
+    localJSONObject1.put("id_summary_wrapper", new JSONObject());
+    localJSONObject1.put("id_info_wrapper", new JSONObject());
+    qai.d(paramBaseArticleInfo, localJSONObject1);
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("summary_text", amtj.a(2131712001));
+    localJSONObject1.put("id_summary", localJSONObject2);
+    localJSONObject1.put("id_image_content", new JSONObject());
+    localJSONObject2 = new JSONObject();
+    localJSONObject2.put("article_small_imge_url", paramBaseArticleInfo.mSinglePicture.getFile());
+    localJSONObject1.put("id_article_small_imge", localJSONObject2);
+    qai.a(paramBaseArticleInfo, localJSONObject1, true);
+    qai.g(paramBaseArticleInfo, localJSONObject1);
+    qai.n(paramBaseArticleInfo, localJSONObject1);
+    qai.E(paramBaseArticleInfo, localJSONObject1);
+    qai.F(paramBaseArticleInfo, localJSONObject1);
+    qai.b(localJSONObject1);
+    localJSONObject1.put("style_ID", "ReadInjoy_topic_recommend_pgc_small_cell");
+    return localJSONObject1;
   }
 }
 

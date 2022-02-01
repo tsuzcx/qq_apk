@@ -1,21 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class bggb
-  extends BroadcastReceiver
+class bggb
+  implements INetInfoHandler
 {
-  public bggb(HWReciteItem paramHWReciteItem) {}
+  public void onNetMobile2None() {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
   {
-    if (("com.tnecnet.mobileqq.homework.recite.stopAudio".equals(paramIntent.getAction())) && (HWReciteItem.a(this.a)) && (this.a.a != null) && (this.a.a.a != null))
-    {
-      this.a.b();
-      this.a.a.a.a();
-    }
+    bgga.a();
   }
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    bgga.a();
+  }
+  
+  public void onNetWifi2None() {}
 }
 
 

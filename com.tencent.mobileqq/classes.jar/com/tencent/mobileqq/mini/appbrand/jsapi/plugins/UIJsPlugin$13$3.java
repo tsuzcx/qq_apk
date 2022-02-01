@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.view.View;
-import blir;
-import bliz;
+import bjnw;
+import bjoe;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class UIJsPlugin$13$3
-  implements bliz
+  implements bjoe
 {
-  UIJsPlugin$13$3(UIJsPlugin.13 param13, blir paramblir) {}
+  UIJsPlugin$13$3(UIJsPlugin.13 param13, bjnw parambjnw) {}
   
   public void OnClick(View paramView, int paramInt)
   {

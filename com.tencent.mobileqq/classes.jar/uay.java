@@ -1,38 +1,26 @@
-import com.tencent.biz.pubaccount.util.ReadInjoyWebShareHelper.4;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import java.util.Comparator;
 
 public class uay
-  implements pak
+  implements Comparator<uaq>
 {
-  public uay(ReadInjoyWebShareHelper.4 param4) {}
+  public uay(uaw paramuaw) {}
   
-  public void a(BaseResp paramBaseResp)
+  public int a(uaq paramuaq1, uaq paramuaq2)
   {
-    boolean bool = true;
-    if ((this.a.this$0.a == null) || (!this.a.this$0.a.equals(paramBaseResp.transaction))) {
-      return;
+    long l1 = paramuaq1.a;
+    long l2 = paramuaq2.a;
+    if (l2 > l1) {
+      return 1;
     }
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      zyx.a(1, 2131718139);
-      bool = false;
+    if (l2 < l1) {
+      return -1;
     }
-    while (this.a.a)
-    {
-      uav.a(this.a.this$0, "we_chat", bool);
-      return;
-      zyx.a(2, 2131718157);
-      continue;
-      bool = false;
-    }
-    uav.a(this.a.this$0, "we_chat_circle", bool);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uay
  * JD-Core Version:    0.7.0.1
  */

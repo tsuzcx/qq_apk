@@ -1,51 +1,19 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.search.ChatFileSearchFragment;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.view.ImgHeaderView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class atzr
-  extends bcbj<bcfr, bcnz>
+  implements View.OnClickListener
 {
-  public atzr(ListView paramListView, aoof paramaoof, List<bcfr> paramList, String paramString, QQAppInterface paramQQAppInterface)
-  {
-    super(paramaoof, paramList);
-    if (paramString == null) {
-      return;
-    }
-    if (paramString.size() == 1)
-    {
-      paramListView = (atzp)paramString.get(0);
-      if (paramListView.jdField_a_of_type_JavaUtilList.size() > 1)
-      {
-        paramaoof = new ArrayList();
-        paramList = paramListView.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramList.hasNext())
-        {
-          paramString = (FileManagerEntity)paramList.next();
-          paramQQAppInterface = new atzp();
-          paramQQAppInterface.jdField_a_of_type_JavaLangString = paramListView.jdField_a_of_type_JavaLangString;
-          paramQQAppInterface.jdField_a_of_type_JavaUtilList.add(paramString);
-          paramaoof.add(paramQQAppInterface);
-        }
-        a(paramaoof);
-        return;
-      }
-    }
-    a(paramString);
-  }
+  public atzr(ImgHeaderView paramImgHeaderView, Activity paramActivity, MessageRecord paramMessageRecord) {}
   
-  protected bcil<bcfr, bcnz> a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new atzy(ChatFileSearchFragment.a(this.a));
-  }
-  
-  protected bcoa a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new atzs(paramViewGroup);
+    ImgHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewImgHeaderView, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

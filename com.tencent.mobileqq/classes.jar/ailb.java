@@ -1,49 +1,13 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
 
-class ailb
-  implements bliz
+public class ailb
+  implements DialogInterface.OnClickListener
 {
-  ailb(aikq paramaikq, boolean paramBoolean, blir paramblir) {}
+  public ailb(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_Blir.dismiss();
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Aikq.bA();
-      }
-      else
-      {
-        this.jdField_a_of_type_Aikq.by();
-        continue;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_Aikq.by();
-        }
-        else
-        {
-          this.jdField_a_of_type_Aikq.bx();
-          continue;
-          if (this.jdField_a_of_type_Boolean) {
-            this.jdField_a_of_type_Aikq.bx();
-          }
-        }
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

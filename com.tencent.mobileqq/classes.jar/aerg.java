@@ -1,51 +1,19 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class aerg
-  extends anyu
+  implements View.OnTouchListener
 {
-  public aerg(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public aerg(TroopTransferActivity paramTroopTransferActivity) {}
   
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(paramString1)) || (!ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))) {}
-    for (;;)
-    {
-      return;
-      if (paramBoolean)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = paramString2;
-        return;
-      }
-      paramString1 = (anyw)this.a.app.getManager(51);
-      if (paramString1 == null) {}
-      for (paramString1 = null; (paramString1 != null) && (paramString1.remark != null) && (paramString1.isRemark == 1); paramString1 = paramString1.e(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = paramString1.remark;
-        return;
-      }
+    if (paramMotionEvent.getAction() == 1) {
+      this.a.b();
     }
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramBoolean2) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a != null) && (ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))
-    {
-      localObject = (anyw)this.a.app.getManager(51);
-      if (localObject != null) {
-        break label90;
-      }
-    }
-    label90:
-    for (Object localObject = null;; localObject = ((anyw)localObject).e(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a))
-    {
-      if ((localObject != null) && (((Friends)localObject).remark != null) && (((Friends)localObject).isRemark == 1)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName = ((Friends)localObject).remark;
-      }
-      return;
-    }
+    return true;
   }
 }
 

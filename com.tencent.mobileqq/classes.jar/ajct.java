@@ -1,24 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajct
-  extends Handler
+class ajct
+  implements DialogInterface.OnClickListener
 {
-  public ajct(AddContactsActivity paramAddContactsActivity) {}
+  ajct(ajcr paramajcr) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.jdField_a_of_type_Ajdw.b();
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    txo.a().a(300);
+    paramDialogInterface.dismiss();
   }
 }
 

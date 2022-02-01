@@ -1,11 +1,19 @@
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.QQSettingMe;
+
 public class aear
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public int a;
-  public long a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public long c;
+  public aear(QQSettingMe paramQQSettingMe) {}
+  
+  public void onGlobalLayout()
+  {
+    if (QQSettingMe.a(this.a)) {
+      QQSettingMe.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+  }
 }
 
 

@@ -1,11 +1,8 @@
-class appq
-  implements beuq
+public abstract interface appq
 {
-  appq(appo paramappo) {}
+  public abstract void a();
   
-  public void onResp(bevm parambevm) {}
-  
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
+  public abstract void b();
 }
 
 

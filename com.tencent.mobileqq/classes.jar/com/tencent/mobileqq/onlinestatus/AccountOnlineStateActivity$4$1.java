@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import azfh;
-import azgj;
+import axsp;
+import axtr;
 import com.tencent.mobileqq.widget.QQToast;
 import java.util.List;
 
 public class AccountOnlineStateActivity$4$1
   implements Runnable
 {
-  public AccountOnlineStateActivity$4$1(azfh paramazfh, boolean paramBoolean, List paramList) {}
+  public AccountOnlineStateActivity$4$1(axsp paramaxsp, boolean paramBoolean, List paramList) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Boolean) {
-      if (AccountOnlineStateActivity.a(this.jdField_a_of_type_Azfh.a) != null) {
-        AccountOnlineStateActivity.a(this.jdField_a_of_type_Azfh.a).a(this.jdField_a_of_type_JavaUtilList);
+      if (AccountOnlineStateActivity.a(this.jdField_a_of_type_Axsp.a) != null) {
+        AccountOnlineStateActivity.a(this.jdField_a_of_type_Axsp.a).a(this.jdField_a_of_type_JavaUtilList);
       }
     }
-    while (AccountOnlineStateActivity.a(this.jdField_a_of_type_Azfh.a) == null) {
+    while (AccountOnlineStateActivity.a(this.jdField_a_of_type_Axsp.a) == null) {
       return;
     }
-    QQToast.a(AccountOnlineStateActivity.a(this.jdField_a_of_type_Azfh.a), 1, 2131690194, 1).a();
+    QQToast.a(AccountOnlineStateActivity.a(this.jdField_a_of_type_Axsp.a), 1, 2131690219, 1).a();
   }
 }
 

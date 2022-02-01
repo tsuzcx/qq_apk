@@ -1,49 +1,32 @@
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPackageGialog.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
 
-public final class tyb
+public class tyb
+  implements tyh
 {
-  private ProfileParams a = new ProfileParams(null);
+  tyb(txz paramtxz) {}
   
-  public ProfileParams a()
+  public void a(GiftServiceBean paramGiftServiceBean)
   {
-    return this.a;
-  }
-  
-  public tyb a(int paramInt)
-  {
-    this.a.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public tyb a(ProfileParams.CurLoginUsr paramCurLoginUsr)
-  {
-    this.a.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams$CurLoginUsr = paramCurLoginUsr;
-    return this;
-  }
-  
-  public tyb a(String paramString)
-  {
-    this.a.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public tyb b(String paramString)
-  {
-    this.a.b = paramString;
-    return this;
-  }
-  
-  public tyb c(String paramString)
-  {
-    this.a.c = paramString;
-    return this;
-  }
-  
-  public tyb d(String paramString)
-  {
-    this.a.d = paramString;
-    return this;
+    String str = txz.b(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!str.equals(paramGiftServiceBean.t)))
+    {
+      txz.b(this.a, paramGiftServiceBean);
+      txz.b(this.a).setText(paramGiftServiceBean.t);
+      if (txz.a(this.a)) {
+        txz.c(this.a, null);
+      }
+      txz.c(this.a).setText("");
+      if (txz.c(this.a) != null) {
+        txz.c(this.a).clear();
+      }
+      txz.a(this.a);
+      ThreadManager.executeOnNetWorkThread(new GiftPackageGialog.2.1(this));
+    }
   }
 }
 

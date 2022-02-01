@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import wth;
-import wtt;
+import vux;
+import vvj;
 
 class Now$3
   implements Runnable
@@ -10,12 +10,12 @@ class Now$3
   
   public void run()
   {
-    ((wtt)wth.a(2)).c();
+    ((vvj)vux.a(2)).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Now.3
  * JD-Core Version:    0.7.0.1
  */

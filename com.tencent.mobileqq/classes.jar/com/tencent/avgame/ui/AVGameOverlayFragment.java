@@ -5,38 +5,38 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import bhlq;
-import bhpc;
+import bfur;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import ngp;
+import nhw;
 
 public class AVGameOverlayFragment
   extends PublicBaseFragment
 {
   private int jdField_a_of_type_Int = -1;
   private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-  bhpc jdField_a_of_type_Bhpc;
+  QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   private String jdField_a_of_type_JavaLangString;
   
   private void a()
   {
-    if (this.jdField_a_of_type_Bhpc != null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.i("ListenTogetherOverlayFragment", 2, "showKickMeDialog");
     }
-    this.jdField_a_of_type_Bhpc = bhlq.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230).setMessage(null).setNegativeButton(null, null).setPositiveButton(2131690227, new ngp(this));
-    this.jdField_a_of_type_Bhpc.setTitle(null);
-    bhpc localbhpc = this.jdField_a_of_type_Bhpc;
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 230).setMessage(null).setNegativeButton(null, null).setPositiveButton(2131690252, new nhw(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(null);
+    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    for (String str = getString(2131690270);; str = this.jdField_a_of_type_JavaLangString)
+    for (String str = getString(2131690295);; str = this.jdField_a_of_type_JavaLangString)
     {
-      localbhpc.setMessage(str);
-      this.jdField_a_of_type_Bhpc.setCancelable(false);
-      this.jdField_a_of_type_Bhpc.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_Bhpc.show();
+      localQQCustomDialog.setMessage(str);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       return;
     }
   }

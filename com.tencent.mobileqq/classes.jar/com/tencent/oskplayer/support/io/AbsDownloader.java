@@ -2,7 +2,7 @@ package com.tencent.oskplayer.support.io;
 
 public abstract class AbsDownloader
 {
-  public AbsDownloader.DownloadListener mDownloadListener;
+  protected AbsDownloader.DownloadListener mDownloadListener;
   protected String mUrl;
   
   protected AbsDownloader(String paramString)

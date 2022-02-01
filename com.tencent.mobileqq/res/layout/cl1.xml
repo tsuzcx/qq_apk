@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nxc" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:paddingBottom="8.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:id="@id/nxr" android:layout_width="41.0dip" android:layout_height="41.0dip" android:scaleType="centerCrop" />
-    <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/nxv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="8.0dip" android:maxWidth="170.0dip" android:maxLines="1" />
-    <TextView android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/nxu" android:background="@drawable/d0_" android:paddingLeft="9.5dip" android:paddingRight="9.5dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="25.0dip" android:text="@string/xeo" />
-</LinearLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat android:id="@id/nxv" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/nxa" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <ImageView android:id="@id/nww" android:paddingLeft="@dimen/mp" android:paddingTop="@dimen/mp" android:paddingRight="@dimen/mp" android:paddingBottom="@dimen/mp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dtr" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <com.tencent.biz.pubaccount.weishi_new.view.WSTabLayout android:id="@id/nxd" android:layout_width="120.0dip" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/nwy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/crg" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <RelativeLayout android:id="@id/nx9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="52.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <com.tencent.biz.pubaccount.weishi_new.view.RoundImageView android:id="@id/nx7" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/com" />
+            <ImageView android:id="@id/nx2" android:background="@drawable/dkz" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_alignRight="@id/nx7" />
+        </RelativeLayout>
+        <View android:id="@id/nxe" android:background="#33979797" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <ViewStub android:layout_gravity="bottom|center|right" android:id="@id/nxx" android:layout="@layout/cl_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mw" android:layout_marginRight="@dimen/mw" android:layout_marginBottom="@dimen/n5" />
+    <ViewStub android:id="@id/nx5" android:layout="@layout/a9t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:layout_gravity="center|right|top" android:id="@id/nxw" android:layout="@layout/cl9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="60.0dip" />
+</FrameLayout>

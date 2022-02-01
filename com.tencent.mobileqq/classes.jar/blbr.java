@@ -1,31 +1,49 @@
-import com.tencent.ims.QSecCloudAVEngineMsg.QSecCloudRespBody;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import cooperation.qzone.util.QZLog;
+import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import java.io.File;
 
 class blbr
-  implements bldy
+  extends akkf
 {
-  blbr(blbq paramblbq) {}
+  private blbr(blbp paramblbp) {}
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void a(boolean paramBoolean)
   {
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null) && (paramObject != null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "server reply packet");
+    super.a(paramBoolean);
+    if ((paramBoolean) && (FileUtil.isFileExists(this.c)))
+    {
+      String str = QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.a.h.hashCode()));
+      File localFile = new File(this.c);
+      QzoneZipCacheHelper.unzipFile(localFile.getAbsolutePath(), str);
+      if (localFile.exists()) {
+        FileUtil.deleteFile(localFile);
+      }
+      this.c = str;
+      if (QZLog.isColorLevel()) {
+        QZLog.i("QbossADBannerConfigInfo", 2, "zip success = pathDir = " + str);
       }
     }
-    try
+  }
+  
+  public boolean a()
+  {
+    if ((TextUtils.isEmpty(this.c)) || (TextUtils.isEmpty(this.a.h))) {}
+    String str;
+    Object localObject;
+    do
     {
-      paramToServiceMsg = new QSecCloudAVEngineMsg.QSecCloudRespBody();
-      paramToServiceMsg.mergeFrom((byte[])paramObject);
-      blbq.a(this.a).sendMessage(blbq.a(this.a).obtainMessage(4, paramToServiceMsg));
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      paramToServiceMsg.printStackTrace();
-    }
+      do
+      {
+        return false;
+        str = QzoneZipCacheHelper.getBasePath("qboss_banner", String.valueOf(this.a.h.hashCode()));
+        localObject = new File(str);
+      } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
+      localObject = ((File)localObject).listFiles();
+    } while ((localObject == null) || (localObject.length <= 0));
+    this.c = str;
+    return true;
   }
 }
 

@@ -1,24 +1,22 @@
-import android.graphics.Point;
-import java.util.ArrayList;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import java.util.Iterator;
+import java.util.List;
 
-public final class blge
+class blge
+  implements ThreadPool.Job<Void>
 {
-  ArrayList<Point> a;
+  blge(blfu paramblfu, List paramList) {}
   
-  public int a()
+  public Void a(ThreadPool.JobContext paramJobContext)
   {
-    return this.a.size();
-  }
-  
-  public int a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 > this.a.size() - 1) && (paramInt1 < 0)) {
-      return 0;
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramJobContext.hasNext())
+    {
+      long l = ((Long)paramJobContext.next()).longValue();
+      this.jdField_a_of_type_Blfu.b(l);
     }
-    if (paramInt2 == 0) {
-      return ((Point)this.a.get(paramInt1)).x;
-    }
-    return ((Point)this.a.get(paramInt1)).y;
+    return null;
   }
 }
 

@@ -2,21 +2,21 @@ package dov.com.qq.im.ae.gif.video;
 
 import android.os.Handler;
 import android.os.Looper;
-import bovo;
-import bovr;
+import blzt;
+import blzw;
 
 public class PngsCreateWorkingQueue$3
   implements Runnable
 {
-  public PngsCreateWorkingQueue$3(bovo parambovo, boolean paramBoolean) {}
+  public PngsCreateWorkingQueue$3(blzt paramblzt, boolean paramBoolean) {}
   
   public void run()
   {
-    bovo.a(this.this$0).a();
+    blzt.a(this.this$0).a();
     if (this.a) {
-      bovo.a(this.this$0);
+      blzt.a(this.this$0);
     }
-    bovo.a(this.this$0).getLooper().quit();
+    blzt.a(this.this$0).getLooper().quit();
   }
 }
 

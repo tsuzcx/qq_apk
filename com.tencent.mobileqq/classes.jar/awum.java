@@ -1,41 +1,18 @@
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.window.FloatMapWidget;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-class awum
-  implements awtp
+public abstract interface awum
 {
-  awum(awuj paramawuj) {}
+  public abstract int a();
   
-  public void a(LocationRoom.Venue paramVenue) {}
+  public abstract void a();
   
-  public void a(LatLng paramLatLng) {}
+  public abstract void a(Comments.Comment paramComment);
   
-  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList)
-  {
-    if (paramList != null)
-    {
-      paramLatLng = paramList.iterator();
-      while (paramLatLng.hasNext())
-      {
-        paramList = (String)paramLatLng.next();
-        Bitmap localBitmap = this.a.a(paramList);
-        if (localBitmap != null)
-        {
-          localBitmap = bhmq.c(localBitmap, 16, 16);
-          awuj.a(this.a).a(paramList, localBitmap);
-        }
-      }
-    }
-  }
+  public abstract void b();
   
-  public void a(boolean paramBoolean, Point paramPoint) {}
+  public abstract void b(Comments.Comment paramComment);
   
-  public void a(boolean paramBoolean, awtq paramawtq) {}
+  public abstract void c();
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.task;
 
-import anlp;
+import amgj;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import mqq.app.AppRuntime;
@@ -9,7 +9,7 @@ import mqq.app.MobileQQ;
 public class ApolloMsgPlayController$3
   implements Runnable
 {
-  public ApolloMsgPlayController$3(anlp paramanlp, MessageRecord paramMessageRecord) {}
+  public ApolloMsgPlayController$3(amgj paramamgj, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class ApolloMsgPlayController$3
     {
       localObject = (QQMessageFacade)((AppRuntime)localObject).getManager(20);
       if (localObject != null) {
-        ((QQMessageFacade)localObject).a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
+        ((QQMessageFacade)localObject).updateMsgFieldByUniseq(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
       }
     }
   }

@@ -1,19 +1,6 @@
-import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
-
-class vej
-  extends var
+public abstract interface vej
 {
-  vej(vee paramvee) {}
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public QCircleInitBean a()
-  {
-    return vee.a(this.a);
-  }
+  public abstract void a();
 }
 
 

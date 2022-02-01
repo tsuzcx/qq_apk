@@ -1,18 +1,15 @@
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import android.view.View.AccessibilityDelegate;
 
-public class axza
+class axza
+  extends View.AccessibilityDelegate
 {
-  public int a;
-  public View a;
-  public ImageButton a;
-  public ImageView a;
-  public TextView a;
+  axza(axyy paramaxyy) {}
   
-  private axza(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    super.sendAccessibilityEvent(paramView, paramInt);
+  }
 }
 
 

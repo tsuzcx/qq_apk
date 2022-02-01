@@ -1,33 +1,18 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahoy
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  final agjk jdField_a_of_type_Agjk;
-  GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new ahoz(this));
-  View jdField_a_of_type_AndroidViewView = null;
+  ahoy(ahow paramahow) {}
   
-  public ahoy(ahow paramahow, agjk paramagjk)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Agjk = paramagjk;
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_Agjk != null) {
-      this.jdField_a_of_type_Agjk.onTouch(paramView, paramMotionEvent);
-    }
-    if (this.jdField_a_of_type_AndroidViewGestureDetector != null)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-      return true;
-    }
-    this.jdField_a_of_type_AndroidViewView = null;
-    return false;
+    ahow.b(this.a);
+    bcef.b(null, "dc00898", "", "", "0X800B032", "0X800B032", 0, 0, "", "", ahow.a(this.a).curFriendUin, "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

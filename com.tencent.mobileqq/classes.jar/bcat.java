@@ -1,26 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.dinifly.IDiniFlyQLog;
+import com.tencent.qphone.base.util.QLog;
 
-public class bcat
-  implements View.OnClickListener
+public final class bcat
+  implements IDiniFlyQLog
 {
-  public bcat(MixSearchWebFragment paramMixSearchWebFragment) {}
-  
-  public void onClick(View paramView)
+  public void trace(int paramInt1, String paramString1, int paramInt2, String paramString2, Throwable paramThrowable)
   {
-    this.a.a.setText("");
-    this.a.a.requestFocus();
-    InputMethodManager localInputMethodManager = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
-    if (localInputMethodManager != null) {
-      localInputMethodManager.showSoftInput(this.a.a, 0);
+    if ((1 == paramInt2) || (QLog.isColorLevel())) {}
+    switch (paramInt1)
+    {
+    case 4: 
+    default: 
+      QLog.i(paramString1, paramInt2, paramString2, null);
+      return;
+    case 5: 
+      QLog.w(paramString1, paramInt2, paramString2, null);
+      return;
+    case 6: 
+      QLog.e(paramString1, paramInt2, paramString2, null);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.d(paramString1, paramInt2, paramString2, null);
   }
 }
 

@@ -1,10 +1,20 @@
-import java.util.List;
-
 public abstract interface usf
 {
-  public abstract void a(int paramInt, String paramString);
+  public abstract void a(int paramInt);
   
-  public abstract void a(List<usv> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject);
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(int paramInt, Object paramObject);
+  
+  public abstract void a(String paramString1, boolean paramBoolean, String paramString2);
+  
+  public abstract void a(urw paramurw);
+  
+  public abstract void a(urw paramurw, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(urw paramurw);
 }
 
 

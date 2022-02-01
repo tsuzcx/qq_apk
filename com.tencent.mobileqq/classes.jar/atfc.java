@@ -1,66 +1,52 @@
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.kwstudio.office.base.Log;
+import com.tencent.kwstudio.office.debug.Debugger.IDebugCallback;
+import com.tencent.mobileqq.filemanageraux.fileviewer.FileView.TdsDebugView;
+import java.lang.ref.WeakReference;
 
-public class atfc
-  extends LinearLayoutManager
+public final class atfc
+  implements Debugger.IDebugCallback
 {
-  public atfc(Context paramContext)
+  private final WeakReference<TdsDebugView> a;
+  
+  private atfc(TdsDebugView paramTdsDebugView)
   {
-    super(paramContext);
+    this.a = new WeakReference(paramTdsDebugView);
   }
   
-  public atfc(Context paramContext, int paramInt, boolean paramBoolean)
+  public void onCleanCache(String paramString, int paramInt)
   {
-    super(paramContext, paramInt, paramBoolean);
-  }
-  
-  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
-  {
-    try
-    {
-      super.onLayoutChildren(paramRecycler, paramState);
+    Log.d("TdsDebugView", "onCleanCache: m=" + paramString + ", r=" + paramInt);
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
       return;
     }
-    catch (IndexOutOfBoundsException paramRecycler)
-    {
-      QLog.e("WrapContentLinearLayoutManager", 1, "onLayoutChildren fail!", paramRecycler);
-    }
+    Message.obtain(TdsDebugView.a(localTdsDebugView), 3, paramInt, 0, paramString).sendToTarget();
   }
   
-  public int scrollHorizontallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  public void onCleanPlugin(String paramString, int paramInt)
   {
-    try
-    {
-      paramInt = super.scrollHorizontallyBy(paramInt, paramRecycler, paramState);
-      return paramInt;
+    Log.d("TdsDebugView", "onCleanPlugin: m=" + paramString + ", r=" + paramInt);
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
+      return;
     }
-    catch (IndexOutOfBoundsException paramRecycler)
-    {
-      QLog.e("WrapContentLinearLayoutManager", 1, "scrollHorizontallyBy fail!", paramRecycler);
-    }
-    return 0;
+    Message.obtain(TdsDebugView.a(localTdsDebugView), 1, paramInt, 0, paramString).sendToTarget();
   }
   
-  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  public void onUpgradePlugin(String paramString, int paramInt)
   {
-    try
-    {
-      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
-      return paramInt;
+    Log.d("TdsDebugView", "onUpgradePlugin: m=" + paramString + ", r=" + paramInt);
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
+      return;
     }
-    catch (IndexOutOfBoundsException paramRecycler)
-    {
-      QLog.e("WrapContentLinearLayoutManager", 1, "scrollVerticallyBy fail!", paramRecycler);
-    }
-    return 0;
+    Message.obtain(TdsDebugView.a(localTdsDebugView), 2, paramInt, 0, paramString).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atfc
  * JD-Core Version:    0.7.0.1
  */

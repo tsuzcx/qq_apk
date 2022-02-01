@@ -1,48 +1,31 @@
-import android.app.Activity;
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.ContextThemeWrapper;
+import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.identity.AccountIdentityManager.2;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x9ae.cmd0x9ae.AuthTips;
-import tencent.im.oidb.cmd0x9ae.cmd0x9ae.RspBody;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
 public class aori
+  extends QIPCModule
 {
   private static volatile aori jdField_a_of_type_Aori;
-  private aoro jdField_a_of_type_Aoro;
-  private bhpc jdField_a_of_type_Bhpc;
+  private final HashMap<String, Class<? extends Object>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  private Context a()
+  private aori(String paramString)
   {
-    Object localObject;
-    if (this.jdField_a_of_type_Bhpc == null) {
-      localObject = null;
-    }
-    Context localContext;
-    do
-    {
-      do
-      {
-        return localObject;
-        localContext = this.jdField_a_of_type_Bhpc.getContext();
-        localObject = localContext;
-      } while ((localContext instanceof Activity));
-      localObject = localContext;
-    } while (!(localContext instanceof ContextThemeWrapper));
-    return ((ContextThemeWrapper)localContext).getBaseContext();
+    super(paramString);
+    a();
+  }
+  
+  public static int a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    a().a(new aorl(localArrayList));
+    return ((Integer)localArrayList.get(0)).intValue();
   }
   
   public static aori a()
@@ -51,247 +34,189 @@ public class aori
     try
     {
       if (jdField_a_of_type_Aori == null) {
-        jdField_a_of_type_Aori = new aori();
+        jdField_a_of_type_Aori = new aori("ArkQQAPIIPCModule");
       }
       return jdField_a_of_type_Aori;
     }
     finally {}
   }
   
-  private <T> T a(String paramString1, String paramString2)
+  private Object a(String paramString)
   {
-    try
+    Class localClass = (Class)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (localClass == null)
     {
-      paramString1 = new JSONObject(paramString2).opt(paramString1);
-      if (paramString1 != null) {
-        return paramString1;
-      }
-    }
-    catch (JSONException paramString1)
-    {
-      QLog.e("AccountIdentityManager", 1, new Object[] { "getValueFromPayload JSONException : ", paramString1.getMessage() });
+      QLog.i("ArkApp.ArkQQAPIIPCModule", 1, "createHandler fail, action=" + paramString);
       return null;
     }
-    catch (ClassCastException paramString1)
-    {
-      for (;;)
-      {
-        QLog.e("AccountIdentityManager", 1, new Object[] { "getValueFromPayload ClassCastException : ", paramString1.getMessage() });
-      }
-    }
-  }
-  
-  public static void a(Activity paramActivity)
-  {
-    if (jdField_a_of_type_Aori != null) {
-      jdField_a_of_type_Aori.b(paramActivity);
-    }
-  }
-  
-  private void a(Context paramContext)
-  {
-    this.jdField_a_of_type_Bhpc = null;
-    if (this.jdField_a_of_type_Aoro != null) {}
     try
     {
-      paramContext.unregisterReceiver(this.jdField_a_of_type_Aoro);
-      this.jdField_a_of_type_Aoro = null;
-      return;
+      paramString = localClass.newInstance();
+      return paramString;
     }
-    catch (Exception paramContext)
+    catch (Exception paramString) {}
+    return null;
+  }
+  
+  public static String a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    a().a(new aorp(localArrayList));
+    if (localArrayList.size() > 0) {
+      return (String)localArrayList.get(0);
+    }
+    return "";
+  }
+  
+  public static String a(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    a().a(new aorq(paramString, localArrayList));
+    if (localArrayList.size() > 0) {
+      return (String)localArrayList.get(0);
+    }
+    return "";
+  }
+  
+  public static String a(String paramString, long paramLong)
+  {
+    ArrayList localArrayList = new ArrayList();
+    a().a(new aorr(paramString, paramLong, localArrayList));
+    if (localArrayList.size() > 0) {
+      return (String)localArrayList.get(0);
+    }
+    return "";
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put("QQ.GetUin", aose.class);
+    this.jdField_a_of_type_JavaUtilHashMap.put("QQ.GetNickname", aorx.class);
+    this.jdField_a_of_type_JavaUtilHashMap.put("QQ.GetNicknameByView", aorw.class);
+    this.jdField_a_of_type_JavaUtilHashMap.put("QQ.GetSKey", aosd.class);
+    this.jdField_a_of_type_JavaUtilHashMap.put("QQ.GetPSKey", aosc.class);
+    this.jdField_a_of_type_JavaUtilHashMap.put("QQ.Login", aosk.class);
+    this.jdField_a_of_type_JavaUtilHashMap.put("QQ.GetUserInformation", aosf.class);
+    this.jdField_a_of_type_JavaUtilHashMap.put("QQ.GetAudioOutputModeHandler", aorv.class);
+    this.jdField_a_of_type_JavaUtilHashMap.put("QQ.GetPSKeyAsync", aory.class);
+  }
+  
+  public static void a(long paramLong1, long paramLong2, aosn paramaosn)
+  {
+    a().a(new aoru(paramLong1, paramLong2, paramaosn, paramLong2));
+  }
+  
+  public static void a(String paramString, aosb paramaosb)
+  {
+    a().a(new aorm(paramString, paramaosb));
+  }
+  
+  private static QQAppInterface b()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
+  
+  public static String b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    a().a(new aors(localArrayList));
+    if (localArrayList.size() > 0) {
+      return (String)localArrayList.get(0);
+    }
+    return "";
+  }
+  
+  public static String b(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    a().a(new aort(paramString, localArrayList));
+    if (localArrayList.size() > 0) {
+      return (String)localArrayList.get(0);
+    }
+    return "";
+  }
+  
+  public static String c(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    a().a(new aork(paramString, localArrayList));
+    if (localArrayList.size() > 0) {
+      return (String)localArrayList.get(0);
+    }
+    return null;
+  }
+  
+  public void a(aosh paramaosh)
+  {
+    boolean bool = true;
+    if (paramaosh == null) {
+      QLog.i("ArkApp.ArkQQAPIIPCModule", 1, "call, method is null");
+    }
+    Object localObject;
+    do
     {
+      return;
+      localObject = a(paramaosh.a());
+      if (localObject == null)
+      {
+        QLog.i("ArkApp.ArkQQAPIIPCModule", 1, "call, handler not found, method=" + paramaosh.a());
+        return;
+      }
+      if (b() == null) {
+        break;
+      }
+      if ((localObject instanceof aosj))
+      {
+        localObject = ((aosj)localObject).a(paramaosh.a());
+        if (((EIPCResult)localObject).code == 0) {}
+        for (bool = true;; bool = false)
+        {
+          paramaosh.a(bool, ((EIPCResult)localObject).data);
+          return;
+        }
+      }
+    } while (!(localObject instanceof aosg));
+    ((aosg)localObject).a(paramaosh.a(), new aorn(this, paramaosh));
+    return;
+    if ((localObject instanceof aosj))
+    {
+      localObject = QIPCClientHelper.getInstance().callServer("ArkQQAPIIPCModule", paramaosh.a(), paramaosh.a());
+      if (((EIPCResult)localObject).code != 0) {
+        QLog.i("ArkApp.ArkQQAPIIPCModule", 1, "call.sync, method=" + paramaosh.a() + " result=" + localObject);
+      }
+      if (((EIPCResult)localObject).code == 0) {}
       for (;;)
       {
-        QLog.d("AccountIdentityManager", 1, new Object[] { "DismissListener unregisterReceiver error : ", paramContext.getMessage() });
-      }
-    }
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface, cmd0x9ae.RspBody paramRspBody, ayxn paramayxn)
-  {
-    boolean bool1 = paramRspBody.bool_has_been_authenticated.get();
-    boolean bool2 = paramRspBody.bool_need_auth_tips.get();
-    Object localObject = (cmd0x9ae.AuthTips)paramRspBody.msg_auth_tips.get();
-    String str1 = ((cmd0x9ae.AuthTips)localObject).string_lbutton.get();
-    String str2 = ((cmd0x9ae.AuthTips)localObject).string_rbutton.get();
-    String str5 = ((cmd0x9ae.AuthTips)localObject).string_tips_action.get();
-    String str3 = ((cmd0x9ae.AuthTips)localObject).string_tips_action_url.get();
-    String str4 = ((cmd0x9ae.AuthTips)localObject).string_tips_context.get();
-    localObject = ((cmd0x9ae.AuthTips)localObject).string_tips_title.get();
-    paramRspBody = paramRspBody.bytes_jwt.get().toStringUtf8();
-    String str6 = paramQQAppInterface.getAccount();
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountIdentityManager", 2, new Object[] { "success, isAuthenticated : ", Boolean.valueOf(bool1), " needAuth : ", Boolean.valueOf(bool2), " leftText : ", str1, " rightText : ", str2, " tipsAction : ", str5, " url : ", str3, " content : ", str4, " title : ", localObject, " jwt : ", paramRspBody });
-    }
-    if (TextUtils.isEmpty(paramRspBody))
-    {
-      QLog.e("AccountIdentityManager", 1, "error : jwt is empty");
-      paramayxn.a("OidbSvc.0x9ae_13", -1, null);
-    }
-    do
-    {
-      return;
-      str5 = aors.a(paramRspBody, "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvpgaMJnHS3HZLto4PIoH\n8LLs/QBNSWe0jEMxWulLOPfpC3jh+jbuVAv/65lDoJEoisvBNB5eAkILd9iI8IIQ\nAaW8ehqYat32ggZTtuJ52NZWLAZtMIMk/eL2Un+o+/7ZA+P3u8aCzbruWZyR01lw\n31GchZfLcv5BeGEDHvGyrArsjAnWsoW8/jJhdqbiVBIsgMh+k+n2rEKX1iG81ATb\nktbp2mTBLxpJSExuM3FhEOPTiosz4TTbuC5oI4VMKpqsUWYkav66v3f3jKkof1ym\nUiC+tqkuDzHcRDRzy8BKCwIrv290FOY5TixXHbNcKupks4Z82H9kE/dUNb+gjssz\nIQIDAQAB\n-----END PUBLIC KEY-----");
-      if (str5 == null)
-      {
-        QLog.e("AccountIdentityManager", 1, "error : jwt parse error");
-        paramayxn.a("OidbSvc.0x9ae_13", -1, null);
+        paramaosh.a(bool, ((EIPCResult)localObject).data);
         return;
+        bool = false;
       }
-      bhsi.a(BaseApplicationImpl.getContext(), str6, true, "account_identity_time", paramRspBody);
-      if (!bool1) {
-        break;
-      }
-    } while (!a());
-    this.jdField_a_of_type_Bhpc.dismiss();
-    return;
-    if (a())
+    }
+    if ((localObject instanceof aosg))
     {
-      QLog.d("AccountIdentityManager", 1, "refreshAuthorityState showDialog, but dialog is showing");
+      QIPCClientHelper.getInstance().callServer("ArkQQAPIIPCModule", paramaosh.a(), paramaosh.a(), new aoro(this, paramaosh));
       return;
     }
-    ThreadManager.getUIHandler().postDelayed(new AccountIdentityManager.2(this, str1, str2, str3, str4, (String)localObject, str5, paramQQAppInterface), 700L);
+    QLog.i("ArkApp.ArkQQAPIIPCModule", 1, "call, invalid handler class, " + localObject.getClass().toString());
   }
   
-  private boolean a(String paramString, long paramLong)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    Object localObject = a(paramString);
+    if ((localObject instanceof aosj)) {
+      return ((aosj)localObject).a(paramBundle);
+    }
+    if ((localObject instanceof aosg))
     {
-      return false;
-      paramString = aors.a(paramString, "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvpgaMJnHS3HZLto4PIoH\n8LLs/QBNSWe0jEMxWulLOPfpC3jh+jbuVAv/65lDoJEoisvBNB5eAkILd9iI8IIQ\nAaW8ehqYat32ggZTtuJ52NZWLAZtMIMk/eL2Un+o+/7ZA+P3u8aCzbruWZyR01lw\n31GchZfLcv5BeGEDHvGyrArsjAnWsoW8/jJhdqbiVBIsgMh+k+n2rEKX1iG81ATb\nktbp2mTBLxpJSExuM3FhEOPTiosz4TTbuC5oI4VMKpqsUWYkav66v3f3jKkof1ym\nUiC+tqkuDzHcRDRzy8BKCwIrv290FOY5TixXHbNcKupks4Z82H9kE/dUNb+gjssz\nIQIDAQAB\n-----END PUBLIC KEY-----");
-      if (paramString != null) {
-        try
-        {
-          paramString = new JSONObject(paramString);
-          long l1 = paramString.optLong("iat");
-          long l2 = paramString.optLong("exp");
-          if ((paramLong > l1) && (paramLong < l2)) {
-            return true;
-          }
-        }
-        catch (JSONException paramString)
-        {
-          QLog.e("AccountIdentityManager", 1, new Object[] { "parse payload error : ", paramString.getMessage() });
-        }
-      }
+      ((aosg)localObject).a(paramBundle, new aorj(this, paramInt));
+      return null;
     }
-    return false;
-  }
-  
-  private void b(Activity paramActivity)
-  {
-    if ((a()) && (a() == paramActivity)) {
-      this.jdField_a_of_type_Bhpc.dismiss();
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if ((paramQQAppInterface == null) || (!paramQQAppInterface.isLogin())) {
-      QLog.d("AccountIdentityManager", 1, "checkAccountIdentityState, appInterface is null or is not login");
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (!a()) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("AccountIdentityManager", 2, "checkAccountIdentityState, dialog is showing");
-      return;
-      String str = paramQQAppInterface.getAccount();
-      if (!a((String)bhsi.a(BaseApplicationImpl.getContext(), str, "account_identity_time", ""), NetConnInfoCenter.getServerTime())) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AccountIdentityManager", 2, "checkAccountIdentityState, is not time");
-    return;
-    b(paramQQAppInterface);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, QQAppInterface paramQQAppInterface)
-  {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity == null) || (localBaseActivity.isFinishing()))
-    {
-      QLog.e("AccountIdentityManager", 1, "create dialog, but activity is finishing");
-      return;
-    }
-    boolean bool2 = a(paramString6);
-    boolean bool1;
-    if (!bool2)
-    {
-      bool1 = true;
-      this.jdField_a_of_type_Bhpc = bhlq.a(localBaseActivity, paramString5, paramString4, paramString1, paramString2, bool1, 5, new aork(this, bool2, localBaseActivity, paramQQAppInterface), new aorl(this, localBaseActivity, paramString3, bool2, paramQQAppInterface));
-      this.jdField_a_of_type_Bhpc.setOnDismissListener(new aorm(this, localBaseActivity));
-      this.jdField_a_of_type_Bhpc.setOnCancelListener(new aorn(this, localBaseActivity));
-      this.jdField_a_of_type_Bhpc.show();
-      if (!bool2) {
-        break label178;
-      }
-    }
-    label178:
-    for (paramString1 = "0X800B275";; paramString1 = "0X800B272")
-    {
-      bdll.b(paramQQAppInterface, "dc00898", "", "", paramString1, paramString1, 0, 0, "", "", "", "");
-      return;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  boolean a()
-  {
-    int i;
-    if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing()))
-    {
-      i = 1;
-      if (a() != BaseActivity.sTopActivity) {
-        break label86;
-      }
-    }
-    label86:
-    for (int j = 1;; j = 0)
-    {
-      if ((i != 0) && (j == 0))
-      {
-        QLog.d("AccountIdentityManager", 1, "curTopActivity is not same as dialogContext");
-        this.jdField_a_of_type_Bhpc.dismiss();
-        if (BaseActivity.sTopActivity != null) {
-          b(BaseActivity.sTopActivity.app);
-        }
-      }
-      if ((i == 0) || (j == 0)) {
-        break label91;
-      }
-      return true;
-      i = 0;
-      break;
-    }
-    label91:
-    return false;
-  }
-  
-  public boolean a(String paramString)
-  {
-    paramString = (Boolean)a("force", paramString);
-    if (paramString == null) {
-      return false;
-    }
-    return paramString.booleanValue();
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface)
-  {
-    if ((paramQQAppInterface == null) || (!paramQQAppInterface.isLogin()))
-    {
-      QLog.d("AccountIdentityManager", 1, "refreshAuthorityState, appInterface is null or is not login");
-      return;
-    }
-    bcvd.a(paramQQAppInterface, new aorj(this, paramQQAppInterface));
+    QLog.i("ArkApp.ArkQQAPIIPCModule", 1, "onCall, invalid action, " + paramString);
+    return null;
   }
 }
 

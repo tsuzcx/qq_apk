@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ark.API;
 
-import acoo;
-import acvb;
+import abkw;
+import abrk;
 import android.text.TextUtils;
-import apwi;
+import aopv;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -12,7 +12,7 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 public class ArkAppNotifyCenter$GdtNotify$5
   implements Runnable
 {
-  public ArkAppNotifyCenter$GdtNotify$5(apwi paramapwi, String paramString) {}
+  public ArkAppNotifyCenter$GdtNotify$5(aopv paramaopv, String paramString) {}
   
   public void run()
   {
@@ -24,9 +24,9 @@ public class ArkAppNotifyCenter$GdtNotify$5
         return;
       }
       Object localObject = new JSONObject(this.a);
-      localObject = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acvb.a(new qq_ad_get.QQAdGetRsp.AdInfo(), ((JSONObject)localObject).getJSONObject("adInfo"))));
+      localObject = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo(), ((JSONObject)localObject).getJSONObject("adInfo"))));
       QLog.d("ark.ArkAppNotifyCenter", 1, "ark ad_preload_after_ad_loaded start", null);
-      acoo.a().a((GdtAd)localObject);
+      abkw.a().a((GdtAd)localObject);
       return;
     }
     catch (Throwable localThrowable)

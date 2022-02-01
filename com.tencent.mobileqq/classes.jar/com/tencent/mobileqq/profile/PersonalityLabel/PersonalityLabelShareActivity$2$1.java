@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
-import zyx;
+import yyi;
 
 class PersonalityLabelShareActivity$2$1
   implements Runnable
@@ -18,14 +18,14 @@ class PersonalityLabelShareActivity$2$1
       Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
       localIntent.setData(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString));
       this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelShareActivity$2.this$0.sendBroadcast(localIntent);
-      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelShareActivity$2.this$0.getString(2131715966, new Object[] { this.jdField_a_of_type_JavaLangString }), 1).b(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelShareActivity$2.this$0.getTitleBarHeight());
+      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelShareActivity$2.this$0.getString(2131716200, new Object[] { this.jdField_a_of_type_JavaLangString }), 1).b(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelShareActivity$2.this$0.getTitleBarHeight());
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelShareActivity$2.this$0.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelShareActivity$2.this$0.b = true;
       return;
-      zyx.a(1, 2131715965);
+      yyi.a(1, 2131716199);
     }
   }
 }

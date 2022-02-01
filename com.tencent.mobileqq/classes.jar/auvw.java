@@ -1,18 +1,4 @@
-public class auvw
-{
-  public int a;
-  public long a;
-  public String a;
-  public long b = 1000L;
-  public String b;
-  
-  public auvw()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 1000L;
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auvw

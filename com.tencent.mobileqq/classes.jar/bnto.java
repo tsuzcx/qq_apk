@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.vip.ad.TianshuAdManager.1.1;
-import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bnto
-  implements bnwp
+class bnto
+  implements DialogInterface.OnClickListener
 {
-  bnto(bntn parambntn) {}
+  bnto(bntl parambntl) {}
   
-  public void onGetAdvs(boolean paramBoolean, TianShuAccess.GetAdsRsp paramGetAdsRsp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (paramGetAdsRsp != null)) {
-      ThreadManager.getUIHandler().postDelayed(new TianshuAdManager.1.1(this, paramGetAdsRsp), 500L);
-    }
+    bntl.a(this.a, "an_yuanshipin");
   }
 }
 

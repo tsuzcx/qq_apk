@@ -1,46 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.RoutingHead;
-import msf.msgsvc.msg_svc.WPATmp;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import mqq.app.QQPermissionCallback;
 
 public class adjr
-  implements adbw
+  implements QQPermissionCallback
 {
-  public int a()
+  public adjr(FriendProfileImageActivity paramFriendProfileImageActivity, String paramString) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return 1005;
+    bfur.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public boolean a()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.a().b(paramMessageRecord.frienduin);
-    msg_svc.WPATmp localWPATmp = new msg_svc.WPATmp();
-    localWPATmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    if (paramQQAppInterface != null)
-    {
-      paramMessageRecord = new byte[paramQQAppInterface.length - 2];
-      bhvd.a(paramMessageRecord, 0, paramQQAppInterface, 2, paramQQAppInterface.length - 2);
-      if (QLog.isColorLevel()) {
-        QLog.d("WPARoutingType", 2, "wpa------>" + bhml.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
-      }
-      localWPATmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
-    }
-    paramRoutingHead.wpa_tmp.set(localWPATmp);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 7000;
+    FriendProfileImageActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity, this.jdField_a_of_type_JavaLangString);
   }
 }
 

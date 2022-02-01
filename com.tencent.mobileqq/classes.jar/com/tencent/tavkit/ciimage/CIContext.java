@@ -1,6 +1,7 @@
 package com.tencent.tavkit.ciimage;
 
 import android.support.annotation.NonNull;
+import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMSampleBuffer;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.TextureInfo;
@@ -27,9 +28,17 @@ public class CIContext
     return newTextureInfo((int)paramFloat1, (int)paramFloat2);
   }
   
+  @NonNull
   public static TextureInfo newTextureInfo(int paramInt1, int paramInt2)
   {
-    return new TextureInfo(RenderContext.createTexture(3553), 3553, paramInt1, paramInt2, null, 0);
+    TextureInfo localTextureInfo = new TextureInfo(RenderContext.createTexture(3553), 3553, paramInt1, paramInt2, null, 0);
+    localTextureInfo.setFormat(6408);
+    return localTextureInfo;
+  }
+  
+  public static TextureInfo newTextureInfo(CGSize paramCGSize)
+  {
+    return newTextureInfo(paramCGSize.width, paramCGSize.height);
   }
   
   private void setDestImage(TextureInfo paramTextureInfo)

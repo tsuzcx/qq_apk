@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
 
-class aiwy
-  implements aixl
+public class aiwy
+  extends aiwz
 {
-  aiwy(aiwv paramaiwv, List paramList1, List paramList2) {}
+  public static final int[] a = { 2131690697, 2131690702, 2131690699, 2131690700, 2131690704, 2131690701, 2131690698 };
+  public static final int[] b = { 2131364417, 2131364422, 2131364419, 2131364420, 2131364423, 2131364421, 2131364418 };
   
-  public void a(long paramLong, boolean paramBoolean)
+  public aiwy(FragmentActivity paramFragmentActivity)
   {
-    if (paramBoolean)
-    {
-      aiwv.a(this.jdField_a_of_type_Aiwv, this.jdField_a_of_type_JavaUtilList, paramLong, 2);
-      aiwv.a(this.jdField_a_of_type_Aiwv).a(false, (ChatMessage)this.b.get(0), false);
-      return;
-    }
-    QQToast.a(aiwv.a(this.jdField_a_of_type_Aiwv).a(), 0, 2131719109, 0).a();
+    super(paramFragmentActivity);
+  }
+  
+  protected int[] a()
+  {
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return a;
   }
 }
 

@@ -1,43 +1,83 @@
-import android.view.View;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.widget.ImageView;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.Iterator;
+import java.util.List;
 
-public class avew
-  implements bliz
+class avew
+  implements avgv
 {
-  public avew(NearbyHybridFragment paramNearbyHybridFragment) {}
+  private long jdField_a_of_type_Long;
   
-  public void OnClick(View paramView, int paramInt)
+  avew(aveq paramaveq, Activity paramActivity) {}
+  
+  public void a(LocationRoom.Venue paramVenue) {}
+  
+  public void a(LatLng paramLatLng)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_Blir != null) {
-        this.a.jdField_a_of_type_Blir.dismiss();
-      }
-      this.a.o();
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 1000L) {
       return;
-      this.a.p();
-      continue;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a() == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.b();
-      }
-      if ((bhnv.d(BaseApplication.getContext())) && (!this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.isFinishing()))
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, "onMapStable onClick: invoked. center: " + paramLatLng);
+    }
+    aveq.a(this.jdField_a_of_type_Aveq, paramLatLng);
+    aveq.a(this.jdField_a_of_type_Aveq).a(aveq.a(this.jdField_a_of_type_Aveq), aveq.a(this.jdField_a_of_type_Aveq).getMap(), paramLatLng, "");
+    bcef.b(null, "CliOper", "", "", "0X800A95D", "0X800A95D", 0, 0, "", "0", "0", "");
+  }
+  
+  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList)
+  {
+    if (paramList != null)
+    {
+      paramLatLng = paramList.iterator();
+      while (paramLatLng.hasNext())
       {
-        aveh.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.finish();
-      }
-      else
-      {
-        QQToast.a(BaseApplication.getContext(), 1, this.a.getString(2131693963), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getTitleBarHeight());
+        paramList = (String)paramLatLng.next();
+        Bitmap localBitmap = this.jdField_a_of_type_Aveq.a(paramList);
+        if (localBitmap != null)
+        {
+          localBitmap = bfvo.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
+          aveq.a(this.jdField_a_of_type_Aveq).a(paramList, localBitmap);
+        }
       }
     }
   }
+  
+  public void a(boolean paramBoolean, Point paramPoint)
+  {
+    if (paramBoolean)
+    {
+      aveq.a(this.jdField_a_of_type_Aveq).setClickable(false);
+      if (bjuk.a()) {
+        aveq.a(this.jdField_a_of_type_Aveq).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840586));
+      }
+    }
+    Rect localRect;
+    do
+    {
+      return;
+      aveq.a(this.jdField_a_of_type_Aveq).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840585));
+      return;
+      if (paramPoint == null) {
+        break;
+      }
+      localRect = new Rect();
+      aveq.a(this.jdField_a_of_type_Aveq).getGlobalVisibleRect(localRect);
+    } while (localRect.contains(paramPoint.x, paramPoint.y));
+    aveq.a(this.jdField_a_of_type_Aveq).setClickable(true);
+    aveq.a(this.jdField_a_of_type_Aveq).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840587));
+  }
+  
+  public void a(boolean paramBoolean, avgw paramavgw) {}
 }
 
 

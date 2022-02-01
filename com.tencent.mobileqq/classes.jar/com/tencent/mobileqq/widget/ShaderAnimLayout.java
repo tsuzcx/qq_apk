@@ -10,100 +10,54 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.LinearInterpolator;
 import android.widget.RelativeLayout;
-import bhim;
-import bjdb;
-import bjdc;
+import bfrw;
 
 public class ShaderAnimLayout
   extends RelativeLayout
 {
-  public float a;
-  private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new bjdc(this);
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation = new bjdb(this);
-  public boolean a;
-  private boolean b;
+  public static final long ANIM_DURATION = 200L;
+  float mAnimFactor = 0.0F;
+  private Animation.AnimationListener mAnimListener = new ShaderAnimLayout.2(this);
+  private Animation mCalcAnimation = new ShaderAnimLayout.1(this);
+  boolean mHide = false;
+  private boolean mIsInitial;
+  private Path mPath = new Path();
   
   public ShaderAnimLayout(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
-    h();
+    init();
   }
   
   public ShaderAnimLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
-    h();
+    init();
   }
   
   public ShaderAnimLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
-    h();
+    init();
   }
   
-  private void h()
+  private void init()
   {
-    if (!this.b)
+    if (!this.mIsInitial)
     {
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(200L);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setInterpolator(new LinearInterpolator());
-      this.b = true;
+      this.mCalcAnimation.setDuration(200L);
+      this.mCalcAnimation.setInterpolator(new LinearInterpolator());
+      this.mIsInitial = true;
     }
-  }
-  
-  public void a()
-  {
-    if (getVisibility() != 0)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
-      clearAnimation();
-      setVisibility(0);
-      startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
-    clearAnimation();
-    setVisibility(0);
-    startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-  }
-  
-  public void c()
-  {
-    clearAnimation();
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
-    this.jdField_a_of_type_Boolean = false;
-    setVisibility(0);
-    this.jdField_a_of_type_Float = 1.0F;
-  }
-  
-  public void d()
-  {
-    clearAnimation();
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
-    this.jdField_a_of_type_Boolean = true;
-    setVisibility(8);
-    this.jdField_a_of_type_Float = 0.0F;
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.addRect(getWidth() * (1.0F - this.jdField_a_of_type_Float), 0.0F, getWidth(), getBottom(), Path.Direction.CW);
+    this.mPath.reset();
+    this.mPath.addRect(getWidth() * (1.0F - this.mAnimFactor), 0.0F, getWidth(), getBottom(), Path.Direction.CW);
     try
     {
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath, Region.Op.INTERSECT);
+      paramCanvas.clipPath(this.mPath, Region.Op.INTERSECT);
       super.dispatchDraw(paramCanvas);
       return;
     }
@@ -111,33 +65,72 @@ public class ShaderAnimLayout
     {
       for (;;)
       {
-        bhim.a(this, 1, null);
+        bfrw.a(this, 1, null);
       }
     }
   }
   
-  public void e()
+  public void hide()
   {
     if (getVisibility() == 0)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.mHide = true;
       clearAnimation();
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-      startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+      this.mCalcAnimation.setAnimationListener(this.mAnimListener);
+      startAnimation(this.mCalcAnimation);
     }
   }
   
-  public void f()
+  public void hideDirectly()
   {
-    this.jdField_a_of_type_Boolean = true;
     clearAnimation();
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-    startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    this.mCalcAnimation.setAnimationListener(null);
+    this.mHide = true;
+    setVisibility(8);
+    this.mAnimFactor = 0.0F;
   }
   
-  public void g()
+  public void hideIgnoreVisible()
+  {
+    this.mHide = true;
+    clearAnimation();
+    this.mCalcAnimation.setAnimationListener(this.mAnimListener);
+    startAnimation(this.mCalcAnimation);
+  }
+  
+  public void hideWithoutAnimation()
   {
     setVisibility(8);
+  }
+  
+  public void show()
+  {
+    if (getVisibility() != 0)
+    {
+      this.mHide = false;
+      this.mCalcAnimation.setAnimationListener(null);
+      clearAnimation();
+      setVisibility(0);
+      startAnimation(this.mCalcAnimation);
+    }
+  }
+  
+  public void showDirectly()
+  {
+    clearAnimation();
+    this.mCalcAnimation.setAnimationListener(null);
+    this.mHide = false;
+    setVisibility(0);
+    this.mAnimFactor = 1.0F;
+  }
+  
+  public void showIgnoreVisible()
+  {
+    this.mHide = false;
+    this.mCalcAnimation.setAnimationListener(null);
+    clearAnimation();
+    setVisibility(0);
+    startAnimation(this.mCalcAnimation);
   }
 }
 

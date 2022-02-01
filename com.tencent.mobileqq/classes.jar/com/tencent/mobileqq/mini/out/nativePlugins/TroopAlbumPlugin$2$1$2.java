@@ -20,12 +20,12 @@ class TroopAlbumPlugin$2$1$2
     paramDialogInterface.dismiss();
     paramDialogInterface = BaseApplicationImpl.sApplication.getRuntime().getAccount();
     Intent localIntent = new Intent();
-    String str = this.this$2.this$1.val$jsContext.getActivity().getResources().getString(2131716436);
-    QzonePluginProxyActivity.a(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
+    String str = this.this$2.this$1.val$jsContext.getActivity().getResources().getString(2131716670);
+    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
     localIntent.putExtra("aid", "jhan_plxz");
     localIntent.putExtra("success_tips", str);
     localIntent.putExtra("direct_go", true);
-    QzonePluginProxyActivity.a(this.this$2.this$1.val$jsContext.getActivity(), paramDialogInterface, localIntent, 4);
+    QzonePluginProxyActivity.launchPluingActivityForResult(this.this$2.this$1.val$jsContext.getActivity(), paramDialogInterface, localIntent, 4);
   }
 }
 

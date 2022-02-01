@@ -1,28 +1,31 @@
-import java.util.HashMap;
+import com.tencent.av.app.VideoAppInterface;
+import java.util.Observable;
 
 public class lfe
+  extends Observable
 {
-  public int a;
-  protected HashMap<String, Integer> a;
+  VideoAppInterface a = null;
   
-  public static int a(lfe paramlfe, String paramString)
+  public lfe(VideoAppInterface paramVideoAppInterface)
   {
-    if (paramlfe == null) {}
-    while ((paramlfe.a == null) || (!paramlfe.a.containsKey(paramString))) {
-      return 0;
+    if (paramVideoAppInterface != null) {
+      this.a = paramVideoAppInterface;
     }
-    return ((Integer)paramlfe.a.get(paramString)).intValue();
   }
   
-  public static void a(lfe paramlfe, String paramString, int paramInt)
+  public void a(Object[] paramArrayOfObject)
   {
-    if (paramlfe == null) {
+    try
+    {
+      super.setChanged();
+      super.notifyObservers(paramArrayOfObject);
       return;
     }
-    if (paramlfe.a == null) {
-      paramlfe.a = new HashMap();
+    finally
+    {
+      paramArrayOfObject = finally;
+      throw paramArrayOfObject;
     }
-    paramlfe.a.put(paramString, Integer.valueOf(paramInt));
   }
 }
 

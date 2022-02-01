@@ -1,30 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoLayerUI;
+import android.graphics.Bitmap;
 
-public class mbo
-  extends Handler
+class mbo
+  implements lmv
 {
-  public mbo(AVActivity paramAVActivity) {}
+  mbo(mbn parammbn) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(Bitmap paramBitmap, String paramString)
   {
-    switch (paramMessage.what)
+    boolean bool = false;
+    if (this.a.a != null)
     {
-    default: 
-      super.handleMessage(paramMessage);
-      return;
+      this.a.a.a(paramBitmap);
+      bool = true;
     }
-    long l = muk.a(paramMessage.obj);
-    this.a.a(l, "handleMessage", true);
-    if (this.a.jdField_a_of_type_Mjd != null) {
-      this.a.jdField_a_of_type_Mjd.n();
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI != null) {
-      this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI.k(this.a.jdField_a_of_type_Mjd.a);
-    }
-    this.a.g(-1031L);
+    return bool;
   }
 }
 

@@ -1,31 +1,23 @@
-import cooperation.qqreader.js.JsCallParams;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.qq.im.aeeditor.view.playtrack.view.PlayTrackExpandWidthView;
+import dov.com.qq.im.aeeditor.view.timebar.ScaleTimeBar;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackTimeLineView;
 
-class bmpx
+public class bmpx
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  long jdField_a_of_type_Long;
-  JsCallParams jdField_a_of_type_CooperationQqreaderJsJsCallParams;
-  long b;
+  public bmpx(VideoTrackContainerView paramVideoTrackContainerView, bmod parambmod, int paramInt1, int paramInt2) {}
   
-  bmpx(String paramString1, String paramString2, String paramString3, long paramLong, String... paramVarArgs)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_CooperationQqreaderJsJsCallParams = new JsCallParams(paramString1, paramString2, paramString3, paramVarArgs);
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = System.currentTimeMillis();
-  }
-  
-  void a()
-  {
-    this.b = System.currentTimeMillis();
-  }
-  
-  boolean a()
-  {
-    return System.currentTimeMillis() - this.b > this.jdField_a_of_type_Long;
-  }
-  
-  boolean a(bmpx parambmpx)
-  {
-    return this.jdField_a_of_type_CooperationQqreaderJsJsCallParams.a(parambmpx.jdField_a_of_type_CooperationQqreaderJsJsCallParams);
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    ((VideoTrackTimeLineView)this.jdField_a_of_type_Bmod).b(i);
+    int j = this.jdField_a_of_type_Int;
+    i = VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).a(this.b - i) + j;
+    ((VideoTrackTimeLineView)this.jdField_a_of_type_Bmod).a().scrollTo(i, 0);
+    VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).scrollTo(i, 0);
   }
 }
 

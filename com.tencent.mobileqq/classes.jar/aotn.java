@@ -1,104 +1,36 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.RspHead;
-import tencent.mobileim.structmsg.structmsg.RspSystemMsgAction;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.HorizontalListView;
+import java.util.List;
 
 class aotn
-  implements bevw
+  implements AdapterView.OnItemClickListener
 {
-  aotn(aoti paramaoti, int paramInt1, int paramInt2, structmsg.SystemMsgActionInfo paramSystemMsgActionInfo, structmsg.StructMsg paramStructMsg, long paramLong) {}
+  aotn(aotj paramaotj) {}
   
-  public void a(bevy parambevy, bevx parambevx)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    bool1 = false;
-    ToServiceMsg localToServiceMsg = (ToServiceMsg)parambevx.a;
-    if (parambevy.a.getResultCode() != 1000)
-    {
-      this.jdField_a_of_type_Aoti.a(4012, false, localToServiceMsg);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception code:" + parambevy.a.getResultCode());
-      }
-      return;
+    Object localObject = aotj.a(this.a).getSelectedView();
+    if (localObject != null) {
+      ((View)localObject).setSelected(false);
     }
-    for (;;)
-    {
-      try
-      {
-        parambevy = parambevy.a.getWupBuffer();
-        localRspSystemMsgAction = new structmsg.RspSystemMsgAction();
-        localRspSystemMsgAction.mergeFrom(parambevy);
-        j = localRspSystemMsgAction.head.result.get();
-        if (j != 0) {
-          continue;
-        }
-        bool1 = true;
-        parambevy = localRspSystemMsgAction.msg_detail.get();
-        if (parambevy != null) {
-          continue;
-        }
-        parambevy = "";
-      }
-      catch (Exception parambevy)
-      {
-        structmsg.RspSystemMsgAction localRspSystemMsgAction;
-        int j;
-        int i;
-        boolean bool2;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", parambevy);
-        bool1 = false;
-        continue;
-        if (!this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsgActionInfo.group_id.has()) {
-          continue;
-        }
-        parambevx.a(String.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsgActionInfo.group_id.get(), this.b, this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_additional.get(), false, bool2, -1L);
-        continue;
-        continue;
-      }
-      i = -1;
-      if (localRspSystemMsgAction.remark_result.has()) {
-        i = localRspSystemMsgAction.remark_result.get();
-      }
-      localToServiceMsg.extraData.putString("system_msg_action_resp_key", parambevy);
-      localToServiceMsg.extraData.putInt("system_msg_action_resp_result_code_key", localRspSystemMsgAction.head.result.get());
-      localToServiceMsg.extraData.putInt("system_msg_action_resp_type_key", localRspSystemMsgAction.type.get());
-      localToServiceMsg.extraData.putString("system_msg_action_resp_invalid_decided_key", localRspSystemMsgAction.msg_invalid_decided.get());
-      localToServiceMsg.extraData.putInt("system_msg_action_resp_remark_result_key", i);
-      bool2 = localToServiceMsg.extraData.getBoolean("isUncommonlyUsedFrd");
-      if ((bool1) && (this.jdField_a_of_type_Int == 0))
-      {
-        parambevx = (FriendListHandler)aoti.a(this.jdField_a_of_type_Aoti).a(1);
-        if ((this.b != 3016) && (this.b != 2016)) {
-          continue;
-        }
-        if ((this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsgActionInfo.group_id.has()) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_source.has())) {
-          parambevx.a(String.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsgActionInfo.group_id.get(), this.b, this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.msg_source.get(), false, bool2, -1L);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgActionResp result:" + j + " msg:" + parambevy);
-      }
-      this.jdField_a_of_type_Aoti.a(4011, bool1, localToServiceMsg);
-      return;
-      parambevx = localRspSystemMsgAction.head.msg_fail.get();
-      parambevy = parambevx;
-      if (parambevx == null) {
-        parambevy = "";
-      }
-      localToServiceMsg.extraData.putString("system_msg_action_resp_error_key", parambevy);
+    aotj.a(this.a).setSelection(paramInt);
+    localObject = aotj.a(this.a).getSelectedView();
+    if (localObject != null) {
+      ((View)localObject).setSelected(true);
     }
+    aotj.a(this.a, paramInt);
+    aotj.a(this.a, true);
+    if ((aotj.a(this.a) != null) && (aotj.a(this.a).size() > 0) && (aotj.a(this.a).size() > aotj.a(this.a)))
+    {
+      localObject = (aouk)aotj.a(this.a).get(aotj.a(this.a));
+      if (localObject != null) {
+        aovl.a(null, ((aouk)localObject).a, "AIOInputPannelTabClick", 0, 0, 0L, 0L, 0L, "", "");
+      }
+    }
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

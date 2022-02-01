@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class pke
-  implements pks
+public abstract interface pke
 {
-  public pke(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public abstract void a(MessageRecord paramMessageRecord);
   
-  public void a()
-  {
-    ReadInJoySelfFragment.m(this.a);
-  }
+  public abstract void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle);
+  
+  public abstract void b(MessageRecord paramMessageRecord);
 }
 
 

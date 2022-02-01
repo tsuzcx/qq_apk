@@ -1,272 +1,174 @@
-import android.content.SharedPreferences;
-import android.os.Environment;
+import android.app.Activity;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.biz.viewplugin.ViewPluginLoader.5;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vas.LzmaUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.device.bind.DevicePluginDownloadActivity;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import java.net.URLDecoder;
 import java.util.HashMap;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class abdj
+  extends WebViewPlugin
 {
-  public static final HashMap<String, abdj> a;
-  int jdField_a_of_type_Int = 0;
-  public abdi a;
-  public SharedPreferences a;
-  public ClassLoader a;
-  public Object a;
-  public String a;
-  nna jdField_a_of_type_Nna = new nna();
-  public volatile boolean a;
-  public String b;
-  boolean b;
-  public String c = null;
-  public String d;
-  public String e;
-  private String f;
-  
-  static
+  public abdj()
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.mPluginNameSpace = "QQConnect";
   }
   
-  public abdj(String paramString1, String paramString2)
+  private HashMap<String, String> a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = (BaseApplicationImpl.getContext().getFilesDir() + "/pluginopt/" + paramString2 + "/opt");
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("viewplugin_sp", 0);
-    jdField_a_of_type_JavaUtilHashMap.put(paramString2, this);
-    this.f = (Environment.getExternalStorageDirectory().getPath() + "/tencent/plugins/");
-  }
-  
-  public bihz a()
-  {
-    return ((bihw)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(47)).a(1);
-  }
-  
-  public void a()
-  {
-    bitz localbitz = (bitz)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(107);
-    try
-    {
-      if (this.jdField_b_of_type_Boolean)
-      {
-        localbitz.notifyUI(3, true, Integer.valueOf(4));
-        return;
-      }
-      this.jdField_b_of_type_Boolean = true;
-      String str = "https://" + this.jdField_b_of_type_JavaLangString + "?_bid=" + this.jdField_a_of_type_JavaLangString;
-      BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-      long l = System.currentTimeMillis();
-      if ((!nmj.a(BaseApplicationImpl.getContext(), str, new abdk(this, l, localbitz, localBaseApplication))) && (QLog.isColorLevel()))
-      {
-        QLog.i("ViewPluginLoader", 2, "plugin:" + this.jdField_b_of_type_JavaLangString + " transToLocalUrl: return false");
-        return;
-      }
-    }
-    finally {}
-  }
-  
-  public void a(BaseActivity paramBaseActivity)
-  {
-    if (this.jdField_a_of_type_Abdi != null)
-    {
-      this.jdField_a_of_type_Abdi = new abdi(paramBaseActivity, 0, this.jdField_a_of_type_Abdi);
-      return;
-    }
-    this.jdField_a_of_type_Abdi = new abdi(paramBaseActivity, 0, this.e, this.jdField_a_of_type_JavaLangClassLoader);
-  }
-  
-  public void a(JSONObject paramJSONObject, QQAppInterface paramQQAppInterface)
-  {
-    boolean bool1 = true;
-    int i = paramJSONObject.optInt("code");
-    paramQQAppInterface = nmp.b(this.jdField_a_of_type_JavaLangString);
-    boolean bool2;
-    if (!TextUtils.isEmpty(paramQQAppInterface)) {
-      if (i == 4)
-      {
-        paramQQAppInterface = paramQQAppInterface + this.jdField_a_of_type_JavaLangString + ".7z";
-        bool2 = false;
-      }
-    }
+    HashMap localHashMap = new HashMap();
+    if (TextUtils.isEmpty(paramString)) {}
     for (;;)
     {
-      ThreadManager.post(new ViewPluginLoader.5(this, paramJSONObject, paramQQAppInterface, new abdm(this, paramQQAppInterface, bool2, bool1)), 8, null, false);
-      return;
-      if ((i == 3) || (i == 2))
+      return localHashMap;
+      paramString = URLDecoder.decode(paramString).split("&");
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
       {
-        paramQQAppInterface = paramQQAppInterface + this.jdField_a_of_type_JavaLangString + ".zip";
-        bool2 = true;
-        bool1 = false;
-      }
-      else
-      {
-        QLog.e("ViewPluginLoader", 1, "do not know what format, use default zip name!");
-        paramQQAppInterface = paramQQAppInterface + this.jdField_a_of_type_JavaLangString + ".zip";
-        bool2 = false;
-        bool1 = false;
-        continue;
-        bool1 = false;
-        bool2 = false;
-        paramQQAppInterface = null;
+        String[] arrayOfString = paramString[i].split("=");
+        if (arrayOfString.length > 1) {
+          localHashMap.put(arrayOfString[0], arrayOfString[1]);
+        }
+        i += 1;
       }
     }
   }
   
-  public void a(boolean paramBoolean)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (paramBoolean) {}
-    b();
-  }
-  
-  public boolean a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = 1;
-    for (;;)
+    paramJsBridgeListener = null;
+    if (!"QQConnect".equals(paramString2)) {
+      return false;
+    }
+    if ("goShare".equals(paramString3))
     {
-      String str2;
-      File localFile;
+      bhzm.c(this.TAG, "goshare");
       String str1;
-      Object localObject;
+      String str2;
+      int i;
       try
       {
-        str2 = this.jdField_a_of_type_JavaLangString;
-        boolean bool = TextUtils.isEmpty(str2);
-        if (bool)
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        paramString3 = paramJsBridgeListener.getString("din");
+        paramString2 = a(paramJsBridgeListener.getString("args"));
+        paramVarArgs = (String)paramString2.get("uin");
+        str1 = (String)paramString2.get("sn");
+        str2 = (String)paramString2.get("pid");
+        i = paramJsBridgeListener.optInt("public_device", 0);
+        if ((i != 0) && ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))))
         {
-          paramBoolean2 = false;
-          return paramBoolean2;
-        }
-        if (TextUtils.isEmpty(nmp.b(str2)))
-        {
-          paramBoolean2 = false;
-          continue;
-        }
-        localFile = new File(paramString);
-        if (!localFile.exists())
-        {
-          if (!QLog.isColorLevel()) {
-            break label595;
-          }
-          QLog.i("ViewPluginLoader", 2, "doUnzipZip: no zip ! : businessId:" + str2);
-          break label595;
-        }
-        long l = System.currentTimeMillis();
-        str1 = localFile.getParent() + File.separator + str2;
-        localObject = BidDownloader.a(paramString);
-        if (QLog.isColorLevel()) {
-          QLog.i("ViewPluginLoader", 2, "fileFormat: " + (String)localObject + ", path: " + paramString);
-        }
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label378;
-        }
-        if (((String)localObject).equals("zip"))
-        {
-          i = nof.a(paramString, str1);
-          if (QLog.isColorLevel()) {
-            QLog.i("ViewPluginLoader", 2, "now delete original download offline zip, path: " + paramString);
-          }
-          noe.b(paramString);
-          if (i <= 0) {
-            break label440;
-          }
-          nmj.a(str2, 13, 0L, i, "lixian_update", "0");
-          if (!QLog.isColorLevel()) {
-            break label590;
-          }
-          QLog.i("ViewPluginLoader", 2, "unZipFolder fail!");
-          paramBoolean1 = false;
-          noe.a(str1);
-          paramBoolean2 = paramBoolean1;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.i("ViewPluginLoader", 2, "time of unzip zip：" + (System.currentTimeMillis() - l) + ", isSuccess: " + paramBoolean1);
-          paramBoolean2 = paramBoolean1;
-          continue;
-        }
-        if (!((String)localObject).equals("7z")) {
-          continue;
+          bhzt.a().a(this.mRuntime.a().getString(2131719451));
+          return true;
         }
       }
-      finally {}
-      i = LzmaUtils.a(BaseApplicationImpl.getApplication().getApplicationContext(), paramString, str1);
-      continue;
-      label378:
-      QLog.w("ViewPluginLoader", 1, "can not recognize download compress file format, " + paramString);
-      if (paramBoolean1)
+      catch (JSONException paramJsBridgeListener)
       {
-        i = nof.a(paramString, str1);
+        bhzt.a().a(this.mRuntime.a().getString(2131690204));
+        return true;
       }
-      else if (paramBoolean2)
+      paramString2 = this.mRuntime.a();
+      paramJsBridgeListener = paramString2;
+      if ((paramString2 instanceof BasePluginActivity)) {
+        paramJsBridgeListener = ((BasePluginActivity)paramString2).getOutActivity();
+      }
+      paramJsBridgeListener = new Intent(paramJsBridgeListener, DevicePluginDownloadActivity.class);
+      if (i != 0)
       {
-        i = LzmaUtils.a(BaseApplicationImpl.getApplication().getApplicationContext(), paramString, str1);
-        continue;
-        label440:
-        paramString = str1 + File.separator + str2 + ".zip";
-        localObject = new File(paramString);
-        str2 = localFile.getParent() + File.separator + str2 + ".zip";
-        if (QLog.isColorLevel()) {
-          QLog.i("ViewPluginLoader", 2, "now move zip file to location: " + str2);
-        }
-        if (((File)localObject).exists())
-        {
-          paramBoolean2 = ((File)localObject).renameTo(new File(str2));
-          paramBoolean1 = paramBoolean2;
-          if (!paramBoolean2) {
-            paramBoolean1 = bhmi.b(paramString, str2);
-          }
-        }
-        else
-        {
-          label590:
-          paramBoolean1 = false;
-          continue;
-          label595:
-          paramBoolean2 = false;
-        }
+        paramJsBridgeListener.putExtra("DevicePID", str2);
+        paramJsBridgeListener.putExtra("DeviceSN", str1);
+        paramJsBridgeListener.putExtra("DeviceToken", "");
+        paramJsBridgeListener.putExtra("public_device", i);
+      }
+      for (;;)
+      {
+        paramJsBridgeListener.putExtra("from", "share");
+        this.mRuntime.a().startActivity(paramJsBridgeListener);
+        this.mRuntime.a().finish();
+        return true;
+        paramJsBridgeListener.putExtra("troop_uin", paramString3);
+        paramJsBridgeListener.putExtra("uin", paramVarArgs);
+        paramJsBridgeListener.putExtra("url", paramString1);
       }
     }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 0;
-    nmj.a();
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if ((localQQAppInterface != null) && (localQQAppInterface.getLongAccountUin() % 10L == 6L)) {}
-    for (boolean bool = true;; bool = false)
+    if ("doReport".equals(paramString3)) {}
+    try
     {
-      nmj.a = bool;
-      String str = nmj.a(this.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.d("ViewPluginLoader", 2, "checkOfflineAndLoad version = " + str);
-      }
-      if ((!new File(nmp.a(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_JavaLangString + "/" + this.jdField_b_of_type_JavaLangString).exists()) && (!TextUtils.isEmpty(str)) && (!"0".equals(str))) {
-        bhmi.a(nmp.a(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_JavaLangString);
-      }
-      if (localQQAppInterface != null) {
-        break;
-      }
-      return;
+      bhzm.c(this.TAG, "doReport");
+      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+      abdm.a(null, paramJsBridgeListener.optString("actionName"), paramJsBridgeListener.optInt("fromType"), paramJsBridgeListener.optInt("actionResult"), paramJsBridgeListener.optInt("ext2"));
+      return true;
     }
-    nmj.a(this.jdField_a_of_type_JavaLangString, localQQAppInterface, new abdl(this, localQQAppInterface), false);
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Abdi = null;
+    catch (JSONException paramJsBridgeListener)
+    {
+      break label649;
+    }
+    if ("goBind".equals(paramString3)) {}
+    label649:
+    try
+    {
+      bhzm.c(this.TAG, "qrUrl");
+      paramString1 = new JSONObject(paramVarArgs[0]).optString("url");
+      boolean bool = TextUtils.isEmpty(paramString1);
+      if (bool) {}
+    }
+    catch (JSONException paramJsBridgeListener)
+    {
+      label428:
+      break label649;
+    }
+    try
+    {
+      paramString1 = new String(bfuc.decode(paramString1, 0));
+      paramJsBridgeListener = paramString1;
+    }
+    catch (Exception paramString1)
+    {
+      break label428;
+    }
+    if (!TextUtils.isEmpty(paramJsBridgeListener))
+    {
+      paramString2 = this.mRuntime.a();
+      paramString1 = paramString2;
+      if ((paramString2 instanceof BasePluginActivity)) {
+        paramString1 = ((BasePluginActivity)paramString2).getOutActivity();
+      }
+      paramString1 = new Intent(paramString1, DevicePluginDownloadActivity.class);
+      paramString1.putExtra("qrurl", paramJsBridgeListener);
+      paramString1.putExtra("entrance", 1);
+      paramString1.putExtra("from", "connect");
+      this.mRuntime.a().startActivity(paramString1);
+    }
+    this.mRuntime.a().finish();
+    return true;
+    if ("jumpPublicDevice".equals(paramString3)) {
+      try
+      {
+        bhzm.c(this.TAG, "METHOD_JUMP_PUBLICDEVICE");
+        paramString2 = new JSONObject(paramVarArgs[0]).optString("actionUrl");
+        if (TextUtils.isEmpty(paramString2)) {
+          return true;
+        }
+        paramString1 = this.mRuntime.a();
+        paramJsBridgeListener = paramString1;
+        if ((paramString1 instanceof BasePluginActivity)) {
+          paramJsBridgeListener = ((BasePluginActivity)paramString1).getOutActivity();
+        }
+        paramJsBridgeListener = new Intent(paramJsBridgeListener, DevicePluginDownloadActivity.class);
+        paramJsBridgeListener.putExtra("url", paramString2);
+        paramJsBridgeListener.putExtra("jumpPublicDevice", true);
+        paramJsBridgeListener.putExtra("from", "share");
+        this.mRuntime.a().startActivity(paramJsBridgeListener);
+        this.mRuntime.a().finish();
+        return true;
+      }
+      catch (JSONException paramJsBridgeListener) {}
+    }
+    return false;
   }
 }
 

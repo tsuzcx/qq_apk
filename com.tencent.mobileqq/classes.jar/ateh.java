@@ -1,27 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class ateh
-  implements View.OnClickListener
+class ateh
+  implements blgg
 {
-  ateh(ated paramated) {}
+  ateh(atdx paramatdx, String paramString, int paramInt, Object paramObject) {}
   
-  public final void onClick(View paramView)
+  public void a(String paramString, long paramLong, float paramFloat) {}
+  
+  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
   {
-    if (this.a.isShowing())
+    int i;
+    if ((paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString2)) && (new File(paramString2).exists()))
     {
-      this.a.dismiss();
-      bdll.b(null, "dc00898", "", "", "0X800B08B", "0X800B08B", 2, 0, "", "", "", "");
+      i = 1;
+      if (i == 0) {
+        break label128;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onSucceed. filePath[" + paramString2 + "]");
+      }
+      atdx.a(this.jdField_a_of_type_Atdx).getFileManagerNotifyCenter().a(true, 39, new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), paramString2, this.jdField_a_of_type_JavaLangObject });
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    label128:
+    while (!QLog.isColorLevel())
+    {
+      return;
+      i = 0;
+      break;
+    }
+    QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onFailed: errcode[" + paramInt + "], errmsg[" + paramString3 + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ateh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,229 +1,167 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.MessageHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.activateFriends.MessageForActivateFriends;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import msf.msgcomm.msg_comm.MsgType0x210;
-import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.BirthdayNotify;
-import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.GeoGraphicNotify;
-import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.MemorialDayNotify;
-import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.MsgBody;
-import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.OneBirthdayFriend;
-import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.OneMemorialDayInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.tablequery.TableQueryController.1;
+import com.tencent.mobileqq.tablequery.TableQueryViewer;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
 public class bctc
-  implements bctr
 {
-  public static boolean a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3)
+  private static bctc jdField_a_of_type_Bctc;
+  public static boolean a;
+  public static boolean b = true;
+  public static boolean c;
+  private static boolean e;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new bctd(this);
+  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
+  private bcte jdField_a_of_type_Bcte = new bcte();
+  private TableQueryViewer jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer;
+  private WeakReference<QQAppInterface> jdField_a_of_type_MqqUtilWeakReference;
+  private boolean d;
+  
+  /* Error */
+  public static bctc a()
   {
-    Object localObject2 = paramQQAppInterface.a().b(antf.ad, 0);
-    Object localObject1 = new SubMsgType0x76.MsgBody();
-    int j;
-    int i;
-    try
-    {
-      ((SubMsgType0x76.MsgBody)localObject1).mergeFrom(paramArrayOfByte);
-      j = ((SubMsgType0x76.MsgBody)localObject1).uint32_msg_type.get();
-      if (QLog.isColorLevel())
-      {
-        paramArrayOfByte = new StringBuilder().append("receive push, msg type = ").append(j).append(", local msg count = ");
-        if (localObject2 != null)
-        {
-          i = ((List)localObject2).size();
-          QLog.d("ActivateFriends.Processor", 2, i);
-        }
-      }
-      else
-      {
-        if (localObject2 == null) {
-          break label247;
-        }
-        paramArrayOfByte = ((List)localObject2).iterator();
-        for (;;)
-        {
-          label110:
-          if (paramArrayOfByte.hasNext())
-          {
-            localObject2 = (MessageRecord)paramArrayOfByte.next();
-            if ((localObject2 instanceof MessageForActivateFriends))
-            {
-              localObject2 = (MessageForActivateFriends)localObject2;
-              if ((((MessageForActivateFriends)localObject2).getMsgBody() != null) && (((MessageForActivateFriends)localObject2).getMsgBody().uint32_msg_type.get() != j)) {
-                continue;
-              }
-              paramQQAppInterface.a().b(antf.ad, 0, ((MessageForActivateFriends)localObject2).uniseq);
-              continue;
-              return false;
-            }
-          }
-        }
-      }
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 40	bctc:jdField_a_of_type_Bctc	Lbctc;
+    //   6: ifnonnull +19 -> 25
+    //   9: ldc 2
+    //   11: monitorenter
+    //   12: new 2	bctc
+    //   15: dup
+    //   16: invokespecial 41	bctc:<init>	()V
+    //   19: putstatic 40	bctc:jdField_a_of_type_Bctc	Lbctc;
+    //   22: ldc 2
+    //   24: monitorexit
+    //   25: ldc 2
+    //   27: monitorexit
+    //   28: getstatic 40	bctc:jdField_a_of_type_Bctc	Lbctc;
+    //   31: areturn
+    //   32: astore_0
+    //   33: ldc 2
+    //   35: monitorexit
+    //   36: aload_0
+    //   37: athrow
+    //   38: astore_0
+    //   39: ldc 2
+    //   41: monitorexit
+    //   42: aload_0
+    //   43: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   32	5	0	localObject1	Object
+    //   38	5	0	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   12	25	32	finally
+    //   33	36	32	finally
+    //   3	12	38	finally
+    //   25	28	38	finally
+    //   36	38	38	finally
+    //   39	42	38	finally
+  }
+  
+  public int a(bctb parambctb)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer == null) {
+      return 0;
     }
-    catch (Exception paramQQAppInterface)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ActivateFriends", 2, "parse push got error.", paramQQAppInterface);
-      }
-    }
-    label247:
-    aold localaold;
-    label386:
-    do
-    {
-      i = -1;
-      break;
-      if (!QLog.isColorLevel()) {
-        break label110;
-      }
-      QLog.e("ActivateFriends.Processor", 2, "local data is error." + localObject2);
-      break label110;
-      paramArrayOfByte = bcry.a(-5003);
-      paramArrayOfByte.selfuin = paramQQAppInterface.getCurrentAccountUin();
-      paramArrayOfByte.frienduin = antf.ad;
-      paramArrayOfByte.istroop = 9002;
-      paramArrayOfByte.senderuin = "";
-      localaold = (aold)paramQQAppInterface.getManager(85);
-      if (j != 1) {
-        break label554;
-      }
-      if (((SubMsgType0x76.MsgBody)localObject1).msg_geographic_notify.rpt_msg_one_friend.get().size() <= 0) {
-        break label537;
-      }
-      localObject2 = (MessageForActivateFriends)paramArrayOfByte;
-      ((MessageForActivateFriends)localObject2).msg = aold.a(paramQQAppInterface.getApp(), (SubMsgType0x76.MsgBody)localObject1);
-      ((MessageForActivateFriends)localObject2).msgBody = ((SubMsgType0x76.MsgBody)localObject1);
-      ((MessageForActivateFriends)localObject2).msgData = ((SubMsgType0x76.MsgBody)localObject1).toByteArray();
-      break label851;
-      bdll.b(paramQQAppInterface, "CliOper", "", "", (String)localObject1, (String)localObject2, localaold.a, 0, "", "", "", "");
-    } while (paramArrayOfByte == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("ActivateFriends", 2, "activiate_friends|rec msg  fromUin:" + paramLong1 + " toUin:" + paramLong2 + " seq:" + paramInt1);
-    }
-    paramArrayOfByte.saveExtInfoToExtStr("key_msg_ext_from_uin", String.valueOf(paramLong1));
-    paramArrayOfByte.saveExtInfoToExtStr("key_msg_ext_to_uin", String.valueOf(paramLong2));
-    paramArrayOfByte.saveExtInfoToExtStr("key_msg_ext_msg_seq", String.valueOf(paramInt1));
-    paramArrayOfByte.saveExtInfoToExtStr("key_msg_ext_msg_type", String.valueOf(paramInt2));
-    paramArrayOfByte.saveExtInfoToExtStr("key_msg_ext_msg_sub_type", String.valueOf(paramInt3));
-    localObject1 = new ArrayList();
-    ((ArrayList)localObject1).add(paramArrayOfByte);
-    paramQQAppInterface.a().a((ArrayList)localObject1, paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.isBackgroundStop);
-    localaold.a(j);
-    return true;
-    label537:
-    if (QLog.isColorLevel())
-    {
-      QLog.d("ActivateFriends", 2, "Geo friend list size = 0");
-      break label888;
-      label554:
-      MessageForActivateFriends localMessageForActivateFriends;
-      if (j == 2)
-      {
-        localObject2 = ((SubMsgType0x76.MsgBody)localObject1).msg_birthday_notify.rpt_msg_one_friend.get();
-        if (((List)localObject2).size() > 0)
-        {
-          localMessageForActivateFriends = (MessageForActivateFriends)paramArrayOfByte;
-          localMessageForActivateFriends.msgBody = ((SubMsgType0x76.MsgBody)localObject1);
-          localMessageForActivateFriends.msgData = ((SubMsgType0x76.MsgBody)localObject1).toByteArray();
-          localMessageForActivateFriends.msg = aold.a(paramQQAppInterface.getApp(), (SubMsgType0x76.MsgBody)localObject1);
-          label620:
-          localObject1 = new HashSet();
-          localObject2 = ((List)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext()) {
-            ((Set)localObject1).add(String.valueOf(((SubMsgType0x76.OneBirthdayFriend)((Iterator)localObject2).next()).uint64_uin.get()));
-          }
-        }
-        if (!QLog.isColorLevel()) {
-          break label893;
-        }
-        QLog.d("ActivateFriends", 2, "Birth friend list size = 0");
-        break label893;
-        paramQQAppInterface.a().a((Set)localObject1);
-      }
-      else
-      {
-        if (j != 3) {
-          break label903;
-        }
-        localObject2 = ((SubMsgType0x76.MsgBody)localObject1).msg_memorialday_notify.rpt_anniversary_info.get();
-        if (((List)localObject2).size() > 0)
-        {
-          localObject2 = (SubMsgType0x76.OneMemorialDayInfo)((List)localObject2).get(0);
-          localMessageForActivateFriends = (MessageForActivateFriends)paramArrayOfByte;
-          localMessageForActivateFriends.msgBody = ((SubMsgType0x76.MsgBody)localObject1);
-          localMessageForActivateFriends.msgData = ((SubMsgType0x76.MsgBody)localObject1).toByteArray();
-          localMessageForActivateFriends.msg = aold.a(paramQQAppInterface.getApp(), (SubMsgType0x76.MsgBody)localObject1);
-          bdll.b(paramQQAppInterface, "dc00898", "", "", "0X8007AD4", "0X8007AD4", (int)((SubMsgType0x76.OneMemorialDayInfo)localObject2).uint32_type.get(), 0, "", "", "", "");
-        }
-        else
-        {
-          if (!QLog.isColorLevel()) {
-            break label898;
-          }
-          QLog.d("ActivateFriends", 2, "Memorial friend list size = 0");
-          break label898;
-        }
-      }
-    }
-    label898:
-    label903:
-    label908:
-    label914:
-    for (;;)
-    {
-      localObject2 = "0X8004E04";
-      break;
-      label851:
-      if ((j == 1) || (j == 2)) {
-        if (j != 1) {
-          break label908;
-        }
-      }
-      for (localObject1 = "0X8004E03";; localObject1 = "0X8004E04")
-      {
-        if (j != 1) {
-          break label914;
-        }
-        localObject2 = "0X8004E03";
-        break;
-        label888:
-        paramArrayOfByte = null;
-        break label851;
-        label893:
-        paramArrayOfByte = null;
-        break label620;
-        paramArrayOfByte = null;
-        break label851;
-        paramArrayOfByte = null;
-        break label851;
-        break label386;
-      }
+    return this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.a(parambctb);
+  }
+  
+  public void a()
+  {
+    if (jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.a();
     }
   }
   
-  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
+  public void a(MotionEvent paramMotionEvent)
   {
-    long l1 = paramMsg.msg_head.to_uin.get();
-    long l2 = paramMsg.msg_head.from_uin.get();
-    int i = paramMsg.msg_head.msg_seq.get();
-    long l3 = paramMsg.msg_head.msg_uid.get();
-    int j = paramMsg.msg_head.msg_type.get();
-    if (a(paramMessageHandler.app, paramMsgType0x210.msg_content.get().toByteArray(), l2, l1, i, j, paramMsgType0x210.sub_msg_type.get())) {
-      paramMessageHandler.a().a("handleActivateFriendsPush2", true, 1, true, false);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      e = true;
+      if (!c) {
+        a().a();
+      }
     }
-    bcrw.a(paramMessageHandler, l2, i, l3, j);
+    while (paramMotionEvent.getAction() != 1) {
+      return;
+    }
+    paramMotionEvent = new TableQueryController.1(this);
+    ThreadManager.getSubThreadHandler().postDelayed(paramMotionEvent, 400L);
+  }
+  
+  public void a(bctb parambctb)
+  {
+    if (jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer.a(parambctb);
+    }
+  }
+  
+  public void b()
+  {
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    if (this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer == null)
+    {
+      this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)localBaseApplication.getSystemService("window"));
+      this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer = new TableQueryViewer(localBaseApplication);
+    }
+    if (!this.d) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer);
+      label56:
+      int i;
+      if (Build.VERSION.SDK_INT >= 26) {
+        i = 2038;
+      }
+      for (;;)
+      {
+        WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -2, i, 776, -2);
+        localLayoutParams.gravity = 51;
+        localLayoutParams.x = 0;
+        localLayoutParams.y = DisplayUtil.dip2px(localBaseApplication, 72.0F);
+        try
+        {
+          this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer, localLayoutParams);
+          this.d = true;
+          return;
+          i = 2003;
+        }
+        catch (Exception localException1)
+        {
+          for (;;)
+          {
+            QQToast.a(localBaseApplication, 1, localBaseApplication.getString(2131690542), 0).a();
+          }
+        }
+      }
+    }
+    catch (Exception localException2)
+    {
+      break label56;
+    }
+  }
+  
+  public void c()
+  {
+    if (this.d) {
+      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer);
+    }
+    this.d = false;
   }
 }
 

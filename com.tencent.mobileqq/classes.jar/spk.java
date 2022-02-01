@@ -1,137 +1,129 @@
-import android.content.Context;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.BitmapFactory;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.PtsData;
-import com.tencent.pts.core.PTSComposer;
-import com.tencent.pts.core.itemview.PTSItemView;
-import com.tencent.pts.core.lite.IPTSLiteEventListener;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/item/NewPtsViewCreator;", "Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/item/ItemCreator;", "()V", "eventListener", "Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/item/PtsItemViewEventListener;", "exposureItemData", "Ljava/util/ArrayList;", "Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/data/PtsData;", "pageNameToViewTypeMap", "Ljava/util/HashMap;", "", "", "buildViewTypeMap", "", "createViewHolder", "Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/item/BaseItemViewHolder;", "context", "Landroid/content/Context;", "data", "Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/data/BaseData;", "parent", "Landroid/view/ViewGroup;", "getRatio2Json", "getViewType", "isSuitable", "", "triggerItemViewExposure", "allowRepeatReport", "Companion", "PTSLiteItemViewHolder", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class spk
-  implements spj
+public class spk
+  implements spm
 {
-  public static final spl a;
-  private final ArrayList<PtsData> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final spp jdField_a_of_type_Spp = new spp();
+  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private static Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+  private int jdField_a_of_type_Int;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private KandianMsgBoxRedPntInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianMsgBoxRedPntInfo;
+  private ReadInJoyHeadImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView;
+  private View jdField_b_of_type_AndroidViewView;
   
-  static
+  public spk(Activity paramActivity, View paramView)
   {
-    jdField_a_of_type_Spl = new spl(null);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    c();
   }
   
-  private final String a(String paramString)
+  private void c()
   {
-    Object localObject = paramString;
-    if (paramString != null)
+    jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841748));
+    jdField_b_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841749));
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368236));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setRound(true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImagePlaceHolder(jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365073));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377600);
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362983);
+    if (localImageView.getDrawable() != null) {
+      localImageView.setColorFilter(this.jdField_a_of_type_AndroidViewView.getResources().getColor(2131165351), PorterDuff.Mode.SRC_IN);
+    }
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new spl(this));
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianMsgBoxRedPntInfo != null))
     {
-      paramString = new JSONObject(paramString);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("fontScale", srx.a());
-      paramString.put("$RIJArticle", localObject);
-      localObject = paramString.toString();
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      odq.a(null, "", "0X800824A", "0X800824A", 0, 0, "", "", "", pay.g(), false);
     }
-    return localObject;
   }
   
-  public int a(@NotNull BaseData paramBaseData)
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    Intrinsics.checkParameterIsNotNull(paramBaseData, "data");
-    paramBaseData = (PtsData)paramBaseData;
-    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramBaseData.b);
-    if (localInteger != null) {
-      return localInteger.intValue();
-    }
-    QLog.e("NewPtsViewCreator", 1, "[getViewType] error, pageName = " + paramBaseData.b);
-    return -1;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  @NotNull
-  public spi a(@NotNull Context paramContext, @NotNull BaseData paramBaseData, @NotNull ViewGroup paramViewGroup)
+  public void a(KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo)
   {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    Intrinsics.checkParameterIsNotNull(paramBaseData, "data");
-    Intrinsics.checkParameterIsNotNull(paramViewGroup, "parent");
-    paramViewGroup = (PtsData)paramBaseData;
-    if (paramViewGroup.a == null) {
-      PtsData.a(paramViewGroup, null, 1, null);
-    }
-    paramContext = new PTSItemView(paramContext);
-    paramViewGroup = paramViewGroup.a;
-    if (paramViewGroup != null) {
-      paramViewGroup.layoutToView(paramContext, (IPTSLiteEventListener)this.jdField_a_of_type_Spp, true);
-    }
-    paramViewGroup = paramContext.getLayoutParams();
-    if (paramViewGroup != null) {
-      paramContext.setLayoutParams((ViewGroup.LayoutParams)new AbsListView.LayoutParams(paramViewGroup));
-    }
-    return (spi)new spm(this, (View)paramContext, paramBaseData);
-  }
-  
-  public final void a()
-  {
-    Object localObject = qib.a().a("native_article");
-    if (localObject == null)
+    if ((paramKandianMsgBoxRedPntInfo == null) || (paramKandianMsgBoxRedPntInfo.equals(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianMsgBoxRedPntInfo)))
     {
-      QLog.i("NewPtsViewCreator", 1, "[initPtsLiteTypeCount], pageNameList is null");
+      QLog.d("ReadinjoySocialMsgTips", 2, "210 msgInfo is null ! " + paramKandianMsgBoxRedPntInfo);
       return;
     }
-    int i = spi.a;
-    localObject = ((List)localObject).iterator();
-    i += 1;
-    while (((Iterator)localObject).hasNext())
+    QLog.d("ReadinjoySocialMsgTips", 2, "set msg info , count : " + paramKandianMsgBoxRedPntInfo.mMsgCnt + ", uin : " + paramKandianMsgBoxRedPntInfo.mUin + ", seq : " + paramKandianMsgBoxRedPntInfo.mSeq);
+    this.jdField_a_of_type_Int += 1;
+    if (this.jdField_a_of_type_Int % 2 == 0)
     {
-      String str = (String)((Iterator)localObject).next();
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImagePlaceHolder(jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianMsgBoxRedPntInfo = paramKandianMsgBoxRedPntInfo;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianMsgBoxRedPntInfo.mMsgType != 2) {
+        break label274;
+      }
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianMsgBoxRedPntInfo.mIconUrl)) {
+        break label228;
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImage(pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianMsgBoxRedPntInfo.mIconUrl));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(bkwm.b(paramKandianMsgBoxRedPntInfo.mMsgCnt) + amtj.a(2131711887));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianMsgBoxRedPntInfo.canDoAnimation = false;
+      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImagePlaceHolder(jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      break;
+      label228:
+      Animatable localAnimatable = (Animatable)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.getResources().getDrawable(2130842950);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageDrawable((Drawable)localAnimatable);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianMsgBoxRedPntInfo.canDoAnimation)
       {
-        Map localMap = (Map)this.jdField_a_of_type_JavaUtilHashMap;
-        Intrinsics.checkExpressionValueIsNotNull(str, "pageName");
-        localMap.put(str, Integer.valueOf(i));
-        QLog.i("NewPtsViewCreator", 1, "[initPtsLiteTypeCount], pageName = " + str + ", viewType = " + i);
-      }
-      i += 1;
-    }
-    spi.a += this.jdField_a_of_type_JavaUtilHashMap.size() + 1;
-    QLog.i("NewPtsViewCreator", 1, "[initPtsLiteTypeCount], view type count = " + spi.a);
-  }
-  
-  public final void a(boolean paramBoolean, @NotNull PtsData paramPtsData)
-  {
-    Intrinsics.checkParameterIsNotNull(paramPtsData, "data");
-    if (paramBoolean)
-    {
-      paramPtsData = paramPtsData.a;
-      if (paramPtsData != null) {
-        paramPtsData.triggerExposureEvent();
+        localAnimatable.start();
+        continue;
+        label274:
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianMsgBoxRedPntInfo.mIconUrl)) {
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImage(pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianMsgBoxRedPntInfo.mIconUrl));
+        } else if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianMsgBoxRedPntInfo.mUin > 0L) {
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setHeadImgByUin(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianMsgBoxRedPntInfo.mUin);
+        }
       }
     }
-    while (this.jdField_a_of_type_JavaUtilArrayList.contains(paramPtsData)) {
-      return;
-    }
-    PTSComposer localPTSComposer = paramPtsData.a;
-    if (localPTSComposer != null) {
-      localPTSComposer.triggerExposureEvent();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramPtsData);
   }
   
-  public boolean a(@NotNull BaseData paramBaseData)
+  public void b()
   {
-    Intrinsics.checkParameterIsNotNull(paramBaseData, "data");
-    return paramBaseData instanceof PtsData;
+    this.jdField_a_of_type_AndroidAppActivity = null;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = null;
+    this.jdField_a_of_type_AndroidViewView = null;
+    this.jdField_a_of_type_AndroidWidgetTextView = null;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = null;
   }
 }
 

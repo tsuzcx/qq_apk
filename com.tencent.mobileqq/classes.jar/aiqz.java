@@ -1,14 +1,6 @@
-import android.view.View;
-
-class aiqz
-  implements bliz
+public abstract interface aiqz
 {
-  aiqz(aiqx paramaiqx, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    aiqx.a(this.jdField_a_of_type_Aiqx, paramView, paramInt, this.jdField_a_of_type_Blir);
-  }
+  public abstract long a();
 }
 
 

@@ -1,15 +1,74 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.IntentFilter;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-final class anzx
-  implements DialogInterface.OnDismissListener
+public class anzx
+  extends anzo
 {
-  anzx(Activity paramActivity, int paramInt) {}
+  static PromotionConfigInfo b;
+  final String c = "SubProcessPromotionMgr_" + AudioHelper.b();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public anzx(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(this.jdField_a_of_type_Int);
+    super(paramAppInterface);
+    a(paramAppInterface);
+    QLog.w(this.c, 1, "SubProcessPromotionMgr, sProcessId[" + BaseApplicationImpl.sProcessId + "], processName[" + BaseApplicationImpl.processName + "]");
+  }
+  
+  public void a(AppInterface paramAppInterface, anzq paramanzq)
+  {
+    if (a("snycGetConfig", paramAppInterface, paramanzq)) {
+      return;
+    }
+    paramanzq.a(a());
+  }
+  
+  public void a(AppInterface paramAppInterface, String paramString)
+  {
+    BusinessCommonConfig.notifyQQDownload(2, paramString, 0);
+  }
+  
+  void a(PromotionConfigInfo paramPromotionConfigInfo)
+  {
+    super.a(paramPromotionConfigInfo);
+    try
+    {
+      jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = paramPromotionConfigInfo;
+      return;
+    }
+    finally {}
+  }
+  
+  boolean a(AppInterface paramAppInterface)
+  {
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("tencent.businessnotify.qq.to.subprocess");
+    return paramAppInterface.getApp().registerReceiver(new anzy(this), localIntentFilter) != null;
+  }
+  
+  void b(AppInterface paramAppInterface) {}
+  
+  void b(String paramString)
+  {
+    try
+    {
+      paramString = bgax.a(this.jdField_b_of_type_JavaLangString, paramString);
+      a(paramString);
+      QLog.w(this.c, 1, "reloadConfigInfo, Uin[" + this.jdField_b_of_type_JavaLangString + "] configInfo[" + paramString + "]");
+      return;
+    }
+    finally {}
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
   }
 }
 

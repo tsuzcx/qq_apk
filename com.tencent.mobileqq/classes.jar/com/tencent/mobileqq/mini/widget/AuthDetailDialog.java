@@ -37,7 +37,7 @@ public class AuthDetailDialog
   
   public AuthDetailDialog(@NonNull Activity paramActivity, INTERFACE.StSubscribeMessage paramStSubscribeMessage, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramActivity, 2131755231);
+    super(paramActivity, 2131755232);
     this.mContext = paramActivity;
     this.mCurSubMsg = paramStSubscribeMessage;
     setCanceledOnTouchOutside(true);
@@ -66,20 +66,20 @@ public class AuthDetailDialog
   
   private void initBottomDialog(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559377, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559379, null);
     setContentView(paramContext);
-    this.ivBack = ((ImageView)paramContext.findViewById(2131369126));
-    this.tvTitle = ((TextView)paramContext.findViewById(2131379686));
-    this.lvDetail = ((ListView)paramContext.findViewById(2131370432));
+    this.ivBack = ((ImageView)paramContext.findViewById(2131369154));
+    this.tvTitle = ((TextView)paramContext.findViewById(2131379469));
+    this.lvDetail = ((ListView)paramContext.findViewById(2131370400));
   }
   
   private void initCenterDialog(@NonNull Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559378, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559380, null);
     setContentView(paramContext);
-    this.tvTitle = ((TextView)paramContext.findViewById(2131379686));
-    this.tvCenterConfirm = ((TextView)paramContext.findViewById(2131379759));
-    this.lvDetail = ((ListView)paramContext.findViewById(2131370432));
+    this.tvTitle = ((TextView)paramContext.findViewById(2131379469));
+    this.tvCenterConfirm = ((TextView)paramContext.findViewById(2131379542));
+    this.lvDetail = ((ListView)paramContext.findViewById(2131370400));
   }
   
   private void initDetailList()

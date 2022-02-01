@@ -1,39 +1,18 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
-class awmi
-  implements EIPCResultCallback
+public class awmi
 {
-  awmi(awmg paramawmg) {}
+  public int a;
+  public View a;
+  public ImageButton a;
+  public ImageView a;
+  public TextView a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    int i = 0;
-    JSONObject localJSONObject;
-    if (!TextUtils.isEmpty(awmg.a(this.a))) {
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      if (paramEIPCResult.data.getBoolean("result")) {}
-      for (;;)
-      {
-        localJSONObject.put("result", i);
-        this.a.callJs(awmg.a(this.a), new String[] { localJSONObject.toString() });
-        return;
-        i = 1;
-      }
-      return;
-    }
-    catch (JSONException paramEIPCResult)
-    {
-      paramEIPCResult.printStackTrace();
-    }
-  }
+  private awmi(GameRoomInviteActivity paramGameRoomInviteActivity) {}
 }
 
 

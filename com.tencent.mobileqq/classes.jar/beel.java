@@ -1,126 +1,213 @@
-import android.view.View;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fpsreport.FPSSwipListView;
-import com.tencent.mobileqq.teamworkforgroup.GPadInfo;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
+import com.tencent.mobileqq.troop.filemanager.TroopFileDataCenter.2;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
-import mqq.os.MqqHandler;
+import java.util.Map;
+import java.util.UUID;
 
 public class beel
-  extends beew
 {
-  public beel(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  static long jdField_a_of_type_Long;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Map<UUID, TroopFileTransferManager.Item> jdField_a_of_type_JavaUtilMap;
+  private boolean jdField_a_of_type_Boolean;
+  private long b;
   
-  public void a(boolean paramBoolean, int paramInt, String paramString)
+  @Deprecated
+  private void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("GroupTeamWorkListActivity", 2, " onDeletePanInfo success: " + paramBoolean + " \nretCode: " + paramInt + " \nerrorMsg: " + paramString);
-    }
-    if ((paramBoolean) && (paramInt == 0))
-    {
-      GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, 5);
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131691337), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131691330), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(2);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString, List<GPadInfo> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, " onGetPadTemplateList success: " + paramBoolean + " \nretCode: " + paramInt + " \nerrorMsg: " + paramString);
-    }
-    if ((paramBoolean) && (paramInt == 0))
-    {
-      GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, 2);
-      if (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity) != null) {
-        GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).notifyDataSetChanged();
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt1, String paramString, List<GPadInfo> paramList, int paramInt2, int paramInt3)
-  {
-    int i = 1;
-    int j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, " onGetPadList success: " + paramBoolean + " \nretCode: " + paramInt1 + " \nerrorMsg: " + paramString + "\n next =" + paramInt2);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.b = paramInt2;
-    if (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity))
-    {
-      if (paramBoolean)
-      {
-        paramInt2 = 1;
-        paramString = this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a.obtainMessage(111, paramInt2, 0);
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a.sendMessageDelayed(paramString, 500L);
-        GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, false);
-      }
-    }
-    else
-    {
-      if (GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(2);
-        GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, false);
-      }
-      if (paramInt3 != 2) {
-        break label211;
-      }
-      paramInt2 = 3;
-    }
     for (;;)
     {
-      if ((paramBoolean) && (paramInt1 == 0))
+      Object localObject2;
+      try
       {
-        GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, paramInt2);
-        paramInt1 = j;
-        if (paramInt1 != 0) {
-          GroupTeamWorkListActivity.d(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(8);
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (bool) {
+          return;
         }
-        return;
-        paramInt2 = 2;
-        break;
-        label211:
-        if (paramInt3 != 3) {
-          break label398;
+        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(this.b).iterator();
+        if (!localIterator.hasNext()) {
+          break label180;
         }
-        paramInt2 = 4;
-        continue;
-      }
-      if (paramInt2 == 2)
-      {
-        if ((GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity) != null) && (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).getCount() == 0))
+        localObject2 = (TroopFileTansferItemEntity)localIterator.next();
+        if ((((TroopFileTansferItemEntity)localObject2).Id == null) || ((!TextUtils.isEmpty(((TroopFileTansferItemEntity)localObject2).FilePath)) && (!((TroopFileTansferItemEntity)localObject2).FilePath.startsWith("/")) && (!((TroopFileTansferItemEntity)localObject2).isZipInnerFile))) {
+          continue;
+        }
+        localObject2 = new TroopFileTransferManager.Item((TroopFileTansferItemEntity)localObject2);
+        switch (((TroopFileTransferManager.Item)localObject2).Status)
         {
-          GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(8);
-          if (GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).getVisibility() == 0) {
-            GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(8);
-          }
-          GroupTeamWorkListActivity.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(0);
+        case 0: 
+          this.jdField_a_of_type_JavaUtilMap.put(((TroopFileTransferManager.Item)localObject2).Id, localObject2);
+          break;
+        case 1: 
+          ((TroopFileTransferManager.Item)localObject2).Status = 3;
         }
       }
-      else
-      {
-        label300:
-        if (paramInt2 != 4) {
-          break label393;
-        }
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131693401), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
-      }
-      label393:
-      for (paramInt1 = i;; paramInt1 = 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(2);
-        break;
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131693401), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
-        break label300;
-      }
-      label398:
-      paramInt2 = 2;
+      finally {}
+      continue;
+      ((TroopFileTransferManager.Item)localObject2).Status = 10;
+      continue;
+      label180:
+      ThreadManager.post(new TroopFileDataCenter.2(this), 8, null, true);
+      this.jdField_a_of_type_Boolean = true;
     }
+  }
+  
+  public static void a(long paramLong, TroopFileTransferManager.Item paramItem)
+  {
+    QQAppInterface localQQAppInterface = befa.a();
+    if (localQQAppInterface == null) {
+      return;
+    }
+    if (paramItem.troopuin == 0L)
+    {
+      befc.b("TroopFileDataCenter", befc.a, "saveStatus. item.troopuin=0, change to:" + paramLong);
+      paramItem.troopuin = paramLong;
+    }
+    if (paramItem.troopuin == 0L)
+    {
+      befc.a("TroopFileDataCenter", befc.a, "saveStatus. item.troopuin=0 err");
+      return;
+    }
+    localQQAppInterface.getProxyManager().a().a(paramItem);
+  }
+  
+  public static void a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
+  {
+    a(paramLong, paramItem, paramInt, 0);
+  }
+  
+  public static void a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt1, int paramInt2)
+  {
+    if (paramItem.Status != paramInt1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramItem.IsNewStatus = bool;
+      if (paramItem.IsNewStatus) {
+        beem.a(paramLong, paramItem, paramInt1, paramInt2);
+      }
+      paramItem.Status = paramInt1;
+      paramItem.ErrorCode = paramInt2;
+      paramItem.Pausing = 0;
+      if (paramItem.W2MPause == 1) {
+        paramItem.W2MPause = 0;
+      }
+      a(paramLong, paramItem);
+      paramItem.StatusUpdateTimeMs = 0L;
+      b(paramLong, paramItem);
+      paramItem.IsNewStatus = false;
+      b(paramLong, paramItem, paramInt2);
+      return;
+    }
+  }
+  
+  public static void a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, bfay parambfay)
+  {
+    if (paramItem.Status != paramInt) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramItem.IsNewStatus = bool;
+      paramItem.Status = paramInt;
+      paramItem.ErrorCode = parambfay.a;
+      paramItem.Pausing = 0;
+      if (paramItem.W2MPause == 1) {
+        paramItem.W2MPause = 0;
+      }
+      a(paramLong, paramItem);
+      paramItem.StatusUpdateTimeMs = 0L;
+      b(paramLong, paramItem);
+      paramItem.IsNewStatus = false;
+      bfaw.a(befa.a(), parambfay);
+      return;
+    }
+  }
+  
+  @Deprecated
+  private boolean a()
+  {
+    for (;;)
+    {
+      boolean bool;
+      TroopFileTransferManager.Item localItem;
+      try
+      {
+        Object localObject1 = this.jdField_a_of_type_JavaUtilMap.values();
+        localObject1 = ((Collection)localObject1).iterator();
+        bool = false;
+        if (!((Iterator)localObject1).hasNext()) {
+          break label232;
+        }
+        localItem = (TroopFileTransferManager.Item)((Iterator)localObject1).next();
+        if ((localItem.ThumbnailDownloading_Small) || (localItem.ThumbnailDownloading_Large) || (localItem.ThumbnailDownloading_Middle)) {
+          continue;
+        }
+        switch (localItem.Status)
+        {
+        default: 
+          if ((!localItem.HasThumbnailFile_Small) || (begv.a(this.b, localItem, 128))) {
+            break label180;
+          }
+          bool = true;
+          break;
+        case 6: 
+        case 11: 
+          if (TextUtils.isEmpty(localItem.LocalFile)) {
+            break label165;
+          }
+        }
+      }
+      finally {}
+      if (!new VFSFile(localItem.LocalFile).exists())
+      {
+        a(this.b, localItem, 7);
+        bool = true;
+        continue;
+        label165:
+        a(this.b, localItem, 7);
+        bool = true;
+        continue;
+        label180:
+        if ((localItem.HasThumbnailFile_Large) && (!begv.a(this.b, localItem, 640)))
+        {
+          bool = true;
+        }
+        else if ((localItem.HasThumbnailFile_Middle) && (!begv.a(this.b, localItem, 383)))
+        {
+          bool = true;
+          continue;
+          label232:
+          return bool;
+        }
+      }
+    }
+  }
+  
+  public static void b(long paramLong, TroopFileTransferManager.Item paramItem)
+  {
+    long l1 = SystemClock.uptimeMillis() - jdField_a_of_type_Long;
+    long l2 = SystemClock.uptimeMillis() - paramItem.StatusUpdateTimeMs;
+    if ((jdField_a_of_type_Long == 0L) || (paramItem.StatusUpdateTimeMs == 0L) || (l2 > 5000L) || (l2 < 0L) || (l1 > 1000L) || (l1 < 0L))
+    {
+      jdField_a_of_type_Long = l1 + jdField_a_of_type_Long;
+      paramItem.StatusUpdateTimeMs += l2;
+      QQAppInterface localQQAppInterface = befa.a();
+      if (localQQAppInterface != null) {
+        ((amoo)localQQAppInterface.getBusinessHandler(22)).a(paramItem.getInfo(paramLong));
+      }
+    }
+  }
+  
+  public static void b(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
+  {
+    bfaw.a(befa.a(), paramLong, paramItem.FileName, paramItem.Status, paramInt);
   }
 }
 

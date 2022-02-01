@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.activity;
 
 import android.content.res.Resources;
 import android.support.v4.app.FragmentActivity;
-import bjbs;
+import bhht;
 
 class SubscribePermissionSettingFragment$5
   implements Runnable
@@ -12,11 +12,11 @@ class SubscribePermissionSettingFragment$5
   public void run()
   {
     if (SubscribePermissionSettingFragment.access$700(this.this$0) == null) {
-      SubscribePermissionSettingFragment.access$702(this.this$0, new bjbs(this.this$0.getActivity()));
+      SubscribePermissionSettingFragment.access$702(this.this$0, new bhht(this.this$0.getActivity()));
     }
     if (!SubscribePermissionSettingFragment.access$700(this.this$0).isShowing())
     {
-      SubscribePermissionSettingFragment.access$700(this.this$0).a(this.this$0.getActivity().getResources().getString(2131694153));
+      SubscribePermissionSettingFragment.access$700(this.this$0).a(this.this$0.getActivity().getResources().getString(2131694256));
       SubscribePermissionSettingFragment.access$700(this.this$0).show();
     }
   }

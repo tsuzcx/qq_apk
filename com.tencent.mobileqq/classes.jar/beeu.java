@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.teamwork.PadInfo;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
-import java.util.Comparator;
+import java.util.Set;
 
-public class beeu
-  implements Comparator<PadInfo>
+class beeu
+  extends befy
 {
-  public beeu(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  beeu(bees parambees) {}
   
-  public int a(PadInfo paramPadInfo1, PadInfo paramPadInfo2)
+  protected void a(Set<Long> paramSet)
   {
-    long l = paramPadInfo2.lastEditTime - paramPadInfo1.lastEditTime;
-    if (l > 0L) {
-      return 1;
+    this.a.b = 1;
+    if ((paramSet != null) && (paramSet.contains(Long.valueOf(bees.c(this.a))))) {
+      this.a.b = 2;
     }
-    if (l < 0L) {
-      return -1;
+    befc.c("TroopFileTransferMgr", befc.a, "onW2MPausedDownload mW2MPausedUploadState:" + this.a.a + " mW2MPausedDownloadState:" + this.a.b);
+    if (this.a.a > 0)
+    {
+      if ((this.a.b == 2) || (this.a.a == 2)) {
+        bfaw.a(bees.b(this.a), bees.d(this.a), 107);
+      }
+      this.a.a = 0;
+      this.a.b = 0;
     }
-    return 0;
   }
 }
 

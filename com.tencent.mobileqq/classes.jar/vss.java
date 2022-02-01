@@ -1,55 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudCommon.BytesEntry;
-import feedcloud.FeedCloudCommon.StCommonExt;
-import feedcloud.FeedCloudMeta.StGPSV2;
-import feedcloud.FeedCloudRead.StGetBusiInfoReq;
-import java.util.ArrayList;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonInfo;
+import com.tencent.mobileqq.text.TextUtils;
 
 public class vss
-  extends aadf
+  implements EmoticonCallback
 {
-  FeedCloudMeta.StGPSV2 a;
+  public vss(StoryInputBarView paramStoryInputBarView) {}
   
-  public vss(FeedCloudMeta.StGPSV2 paramStGPSV2)
+  public void delete()
   {
-    this.a = paramStGPSV2;
-  }
-  
-  public void a() {}
-  
-  public void a(aadl paramaadl)
-  {
-    QCircleGetTabListRequest localQCircleGetTabListRequest = new QCircleGetTabListRequest(this.a);
-    paramaadl = new vst(this, localQCircleGetTabListRequest, paramaadl);
-    localQCircleGetTabListRequest.setEnableCache(true);
-    Object localObject = vtt.a().a();
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      localObject = ((String)localObject).getBytes();
-      FeedCloudCommon.StCommonExt localStCommonExt = new FeedCloudCommon.StCommonExt();
-      ArrayList localArrayList = new ArrayList();
-      if (localObject != null)
-      {
-        FeedCloudCommon.BytesEntry localBytesEntry = new FeedCloudCommon.BytesEntry();
-        localBytesEntry.key.set("circle_invite");
-        localBytesEntry.value.set(ByteStringMicro.copyFrom((byte[])localObject));
-        localArrayList.add(localBytesEntry);
-        localStCommonExt.mapBytesInfo.set(localArrayList);
-        if (localQCircleGetTabListRequest.mReq != null) {
-          localQCircleGetTabListRequest.mReq.extInfo.set(localStCommonExt);
-        }
-      }
+    if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
+      TextUtils.backspace(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
     }
-    VSNetworkHelper.a().a(localQCircleGetTabListRequest, paramaadl);
-    QLog.d("QCircleFolderPreLoaderTask", 1, "QCircleFolderPreLoaderTask->sendQCircleRequest: CmdName:" + localQCircleGetTabListRequest.getCmdName() + "| TraceId:" + localQCircleGetTabListRequest.getTraceId() + " | SeqId:" + localQCircleGetTabListRequest.getCurrentSeq());
   }
+  
+  public void emoticonMall() {}
+  
+  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
+  
+  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
+  {
+    return false;
+  }
+  
+  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
+  
+  public void send() {}
+  
+  public void send(EmoticonInfo paramEmoticonInfo)
+  {
+    if (((paramEmoticonInfo instanceof SystemAndEmojiEmoticonInfo)) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
+      ((SystemAndEmojiEmoticonInfo)paramEmoticonInfo).send(QQStoryContext.a(), this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, null);
+    }
+  }
+  
+  public void setting() {}
 }
 
 

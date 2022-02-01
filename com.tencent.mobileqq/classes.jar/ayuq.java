@@ -1,44 +1,14 @@
-import android.app.Notification;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.support.v4.app.NotificationCompat.BigTextStyle;
-import android.support.v4.app.NotificationCompat.Builder;
-import android.support.v4.app.NotificationCompat.Style;
-import android.text.TextUtils;
-import androidx.annotation.RequiresApi;
-import com.tencent.commonsdk.util.notification.SdkInfoUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.graphics.Color;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/NotificationBuilder;", "", "()V", "build", "Landroid/app/Notification;", "contentIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ayuq
+public class ayuq
 {
-  public static final ayuq a = new ayuq();
+  public static final int a;
+  public static final int[] a;
   
-  @RequiresApi(16)
-  @NotNull
-  public final Notification a(@Nullable PendingIntent paramPendingIntent, @NotNull ayut paramayut)
+  static
   {
-    Intrinsics.checkParameterIsNotNull(paramayut, "pushComponent");
-    NotificationCompat.BigTextStyle localBigTextStyle = new NotificationCompat.BigTextStyle();
-    localBigTextStyle.bigText((CharSequence)paramayut.c);
-    paramPendingIntent = new NotificationCompat.Builder((Context)BaseApplication.context).setSmallIcon(2130841403).setAutoCancel(true).setContentText((CharSequence)paramayut.c).setWhen(System.currentTimeMillis()).setTicker((CharSequence)paramayut.c).setContentIntent(paramPendingIntent).setPriority(2).setStyle((NotificationCompat.Style)localBigTextStyle);
-    if (!TextUtils.isEmpty((CharSequence)paramayut.a)) {
-      paramPendingIntent.setContentTitle((CharSequence)paramayut.a);
-    }
-    if ((SdkInfoUtil.isOreo()) && (SdkInfoUtil.isTargetSDKOreo())) {
-      paramPendingIntent.setChannelId("CHANNEL_ID_OTHER");
-    }
-    paramayut = ayuu.a.a(paramayut.b);
-    if (paramayut != null) {
-      paramPendingIntent.setLargeIcon(paramayut);
-    }
-    paramPendingIntent = paramPendingIntent.build();
-    Intrinsics.checkExpressionValueIsNotNull(paramPendingIntent, "notifyBuilder.build()");
-    return paramPendingIntent;
+    jdField_a_of_type_Int = Color.parseColor("#FF4D94FF");
+    jdField_a_of_type_ArrayOfInt = new int[] { Color.parseColor("#FFFFDB00"), Color.parseColor("#FF32C5FF"), Color.parseColor("#FFFF7979"), Color.parseColor("#FF64F0BD"), Color.parseColor("#FF9266FF"), Color.parseColor("#FF8FF56F"), Color.parseColor("#FFFFC1A4"), Color.parseColor("#FFFF8C5D"), Color.parseColor("#FF49B3FF"), Color.parseColor("#FFC362FF"), Color.parseColor("#FF629BFF"), Color.parseColor("#FFFE89E1"), Color.parseColor("#FFFFD957"), Color.parseColor("#FF6776FF"), Color.parseColor("#FFEB5FFF"), Color.parseColor("#FFFF63B4"), Color.parseColor("#FF76E4FF"), Color.parseColor("#FFB4E019"), Color.parseColor("#FFFFA967"), Color.parseColor("#FFFF6767") };
   }
 }
 

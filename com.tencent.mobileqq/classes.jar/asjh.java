@@ -1,29 +1,79 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.30;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Timer;
 
 public class asjh
-  implements anlr
 {
-  public asjh(MessengerService.IncomingHandler.30 param30) {}
+  private Timer a;
   
-  public void a(long paramLong, String paramString)
+  private asjh(asjc paramasjc) {}
+  
+  /* Error */
+  void a()
   {
-    Bundle localBundle = new Bundle();
-    if (paramLong == 0L) {}
-    for (int i = 0;; i = 1)
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 21	asjh:jdField_a_of_type_JavaUtilTimer	Ljava/util/Timer;
+    //   6: astore_1
+    //   7: aload_1
+    //   8: ifnull +6 -> 14
+    //   11: aload_0
+    //   12: monitorexit
+    //   13: return
+    //   14: aload_0
+    //   15: new 23	java/util/Timer
+    //   18: dup
+    //   19: invokespecial 24	java/util/Timer:<init>	()V
+    //   22: putfield 21	asjh:jdField_a_of_type_JavaUtilTimer	Ljava/util/Timer;
+    //   25: aload_0
+    //   26: getfield 21	asjh:jdField_a_of_type_JavaUtilTimer	Ljava/util/Timer;
+    //   29: new 26	com/tencent/mobileqq/filemanager/core/OnlineFileSessionCenter$UploadProgressMakeEvtPump$1
+    //   32: dup
+    //   33: aload_0
+    //   34: invokespecial 29	com/tencent/mobileqq/filemanager/core/OnlineFileSessionCenter$UploadProgressMakeEvtPump$1:<init>	(Lasjh;)V
+    //   37: ldc2_w 30
+    //   40: ldc2_w 30
+    //   43: invokevirtual 35	java/util/Timer:schedule	(Ljava/util/TimerTask;JJ)V
+    //   46: ldc 37
+    //   48: iconst_1
+    //   49: ldc 39
+    //   51: invokestatic 45	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   54: goto -43 -> 11
+    //   57: astore_1
+    //   58: aload_0
+    //   59: monitorexit
+    //   60: aload_1
+    //   61: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	62	0	this	asjh
+    //   6	2	1	localTimer	Timer
+    //   57	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	7	57	finally
+    //   14	54	57	finally
+  }
+  
+  void b()
+  {
+    try
     {
-      localBundle.putInt("result", i);
-      localBundle.putString("message", paramString);
-      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+      if (this.jdField_a_of_type_JavaUtilTimer != null)
+      {
+        this.jdField_a_of_type_JavaUtilTimer.cancel();
+        this.jdField_a_of_type_JavaUtilTimer = null;
+      }
+      QLog.i("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[]  progress make  exit. . .");
       return;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asjh
  * JD-Core Version:    0.7.0.1
  */

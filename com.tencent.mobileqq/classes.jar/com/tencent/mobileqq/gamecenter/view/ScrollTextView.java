@@ -15,8 +15,8 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher.ViewFactory;
-import avnf;
-import avng;
+import auae;
+import auaf;
 
 public class ScrollTextView
   extends TextSwitcher
@@ -25,11 +25,11 @@ public class ScrollTextView
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = 2000L;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private avng jdField_a_of_type_Avng;
+  private auaf jdField_a_of_type_Auaf;
   private boolean jdField_a_of_type_Boolean;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private long jdField_b_of_type_Long = 800L;
-  private avng jdField_b_of_type_Avng;
+  private auaf jdField_b_of_type_Auaf;
   
   public ScrollTextView(Context paramContext)
   {
@@ -42,13 +42,13 @@ public class ScrollTextView
     a();
   }
   
-  private avng a(boolean paramBoolean1, boolean paramBoolean2)
+  private auaf a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    avng localavng = new avng(this, paramBoolean1, paramBoolean2);
-    localavng.setDuration(this.jdField_b_of_type_Long);
-    localavng.setFillAfter(false);
-    localavng.setInterpolator(new AccelerateInterpolator());
-    return localavng;
+    auaf localauaf = new auaf(this, paramBoolean1, paramBoolean2);
+    localauaf.setDuration(this.jdField_b_of_type_Long);
+    localauaf.setFillAfter(false);
+    localauaf.setInterpolator(new AccelerateInterpolator());
+    return localauaf;
   }
   
   public Drawable a(int paramInt1, int paramInt2, int paramInt3)
@@ -59,21 +59,21 @@ public class ScrollTextView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new avnf(this);
+    this.jdField_a_of_type_AndroidOsHandler = new auae(this);
     setFactory(this);
-    this.jdField_a_of_type_Avng = a(true, true);
-    this.jdField_b_of_type_Avng = a(false, true);
-    setInAnimation(this.jdField_a_of_type_Avng);
-    setOutAnimation(this.jdField_b_of_type_Avng);
+    this.jdField_a_of_type_Auaf = a(true, true);
+    this.jdField_b_of_type_Auaf = a(false, true);
+    setInAnimation(this.jdField_a_of_type_Auaf);
+    setOutAnimation(this.jdField_b_of_type_Auaf);
   }
   
   public void b()
   {
-    if (getInAnimation() != this.jdField_a_of_type_Avng) {
-      setInAnimation(this.jdField_a_of_type_Avng);
+    if (getInAnimation() != this.jdField_a_of_type_Auaf) {
+      setInAnimation(this.jdField_a_of_type_Auaf);
     }
-    if (getOutAnimation() != this.jdField_b_of_type_Avng) {
-      setOutAnimation(this.jdField_b_of_type_Avng);
+    if (getOutAnimation() != this.jdField_b_of_type_Auaf) {
+      setOutAnimation(this.jdField_b_of_type_Auaf);
     }
   }
   
@@ -87,7 +87,7 @@ public class ScrollTextView
     localTextView.setTextColor(Color.parseColor("#FFFF8000"));
     if (this.jdField_a_of_type_Boolean)
     {
-      Drawable localDrawable = a(2130840172, 50, 50);
+      Drawable localDrawable = a(2130840209, 50, 50);
       if (localDrawable != null) {
         localTextView.setCompoundDrawablesWithIntrinsicBounds(localDrawable, null, null, null);
       }

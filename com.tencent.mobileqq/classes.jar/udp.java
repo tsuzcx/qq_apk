@@ -1,17 +1,134 @@
-public class udp
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+
+public abstract class udp
 {
-  public String a;
-  public String b;
+  private final String jdField_a_of_type_JavaLangString = "FeedExposureHelper";
+  private udq jdField_a_of_type_Udq;
   
-  public udp(String paramString1, String paramString2)
+  public int a(int paramInt1, int paramInt2)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    return paramInt1 + paramInt2;
+  }
+  
+  public udq a(AbsListView paramAbsListView)
+  {
+    int j = 0;
+    udq localudq = new udq();
+    localudq.jdField_a_of_type_Long = System.currentTimeMillis();
+    int k = paramAbsListView.getHeight();
+    int m = paramAbsListView.getFirstVisiblePosition();
+    int n = paramAbsListView.getChildCount();
+    int i = j;
+    if (n == 0)
+    {
+      localudq.jdField_a_of_type_Int = 0;
+      localudq.b = 10;
+      i = j;
+    }
+    if (i < n)
+    {
+      if (a(paramAbsListView.getChildAt(i), k)) {
+        localudq.jdField_a_of_type_Int = a(m, i);
+      }
+    }
+    else {
+      i = paramAbsListView.getLastVisiblePosition() - m;
+    }
+    for (;;)
+    {
+      if (i >= 0)
+      {
+        if (a(paramAbsListView.getChildAt(i), k)) {
+          localudq.b = a(m, i);
+        }
+      }
+      else
+      {
+        return localudq;
+        i += 1;
+        break;
+      }
+      i -= 1;
+    }
+  }
+  
+  public udq a(udq paramudq1, udq paramudq2)
+  {
+    if ((paramudq1 == null) || (paramudq2 == null)) {}
+    while ((paramudq1.b < paramudq2.jdField_a_of_type_Int) || (paramudq1.jdField_a_of_type_Int > paramudq2.b)) {
+      return null;
+    }
+    udq localudq = new udq();
+    if (paramudq1.jdField_a_of_type_Int > paramudq2.jdField_a_of_type_Int)
+    {
+      i = paramudq1.jdField_a_of_type_Int;
+      localudq.jdField_a_of_type_Int = i;
+      if (paramudq1.b >= paramudq2.b) {
+        break label113;
+      }
+    }
+    label113:
+    for (int i = paramudq1.b;; i = paramudq2.b)
+    {
+      localudq.b = i;
+      localudq.jdField_a_of_type_Long = Math.abs(paramudq1.jdField_a_of_type_Long - paramudq2.jdField_a_of_type_Long);
+      return localudq;
+      i = paramudq2.jdField_a_of_type_Int;
+      break;
+    }
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      paramAbsListView = a(paramAbsListView);
+      QLog.d("FeedExposureHelper", 2, "thisRange: " + paramAbsListView);
+      if (this.jdField_a_of_type_Udq != null)
+      {
+        udq localudq = a(this.jdField_a_of_type_Udq, paramAbsListView);
+        if ((localudq != null) && (localudq.jdField_a_of_type_Long > 1000L))
+        {
+          QLog.d("FeedExposureHelper", 2, "sameRange: " + localudq);
+          a(localudq);
+        }
+      }
+      this.jdField_a_of_type_Udq = paramAbsListView;
+    } while (paramInt != 5);
+    this.jdField_a_of_type_Udq = null;
+  }
+  
+  public abstract void a(udq paramudq);
+  
+  public boolean a(View paramView, int paramInt)
+  {
+    if (paramView == null) {
+      return false;
+    }
+    if (paramView.getBottom() > paramInt) {}
+    for (;;)
+    {
+      int i = paramInt;
+      if (paramView.getTop() > 0) {
+        i = paramInt - paramView.getTop();
+      }
+      if (i <= paramView.getHeight() * 0.5F) {
+        break;
+      }
+      return true;
+      paramInt = paramView.getBottom();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     udp
  * JD-Core Version:    0.7.0.1
  */

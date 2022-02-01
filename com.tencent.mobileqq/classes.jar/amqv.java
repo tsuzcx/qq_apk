@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.data.ShowExternalTroop;
-
 public class amqv
+  implements amqu<Integer>
 {
-  public int a;
-  public ShowExternalTroop a;
-  
-  public amqv(int paramInt, ShowExternalTroop paramShowExternalTroop)
+  public Integer a(String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqDataShowExternalTroop = paramShowExternalTroop;
+    return Integer.decode(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amqv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,82 +1,20 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.AudioHelper;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class axkb
+  extends axip
 {
-  public static void a(Context paramContext, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, MessageRecord paramMessageRecord)
-  {
-    a(paramContext, paramString, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramMessageRecord, null);
-  }
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
   
-  public static void a(Context paramContext, String paramString1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, MessageRecord paramMessageRecord, String paramString2)
+  public axkb(View paramView)
   {
-    if (zyx.b(paramString1))
-    {
-      paramMessageRecord = new Intent(paramContext, JoinDiscussionActivity.class);
-      int i = paramString1.indexOf("dc/ft?k=");
-      if (i > 0) {
-        paramMessageRecord.putExtra("innerSig", paramString1.substring("dc/ft?k=".length() + i));
-      }
-      for (;;)
-      {
-        paramContext.startActivity(paramMessageRecord);
-        return;
-        paramMessageRecord.putExtra("innerSig", paramString1);
-      }
-    }
-    if ((!TextUtils.isEmpty(paramString1)) && (tbz.b(paramString1)))
-    {
-      tbz.a(paramContext, null, tbz.b(paramString1), null);
-      return;
-    }
-    AudioHelper.b("gotoWebViewBrowser_" + paramString1);
-    Intent localIntent = new Intent(paramContext, QQBrowserDelegationActivity.class);
-    localIntent.putExtra("param_force_internal_browser", paramBoolean4);
-    localIntent.putExtra("key_isReadModeEnabled", paramBoolean1);
-    localIntent.putExtra("big_brother_source_key", paramString2);
-    if ((paramContext instanceof BaseActivity)) {
-      localIntent.putExtra("uin", ((BaseActivity)paramContext).getAppRuntime().getAccount());
-    }
-    localIntent.putExtra("useDefBackText", paramBoolean3);
-    localIntent.putExtra("injectrecommend", paramBoolean2);
-    if (paramMessageRecord != null)
-    {
-      localIntent.putExtra("curtype", paramMessageRecord.istroop);
-      localIntent.putExtra("friendUin", paramMessageRecord.frienduin);
-      if (paramMessageRecord.istroop != 0) {
-        break label347;
-      }
-      localIntent.putExtra("articalChannelId", 2);
-    }
-    for (;;)
-    {
-      localIntent.putExtra("url", paramString1);
-      localIntent.putExtra("fromOneCLickCLose", true);
-      localIntent.putExtra("fromAio", true);
-      tzq.a(paramMessageRecord, localIntent, paramString1);
-      paramString2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      if ((paramString2 instanceof QQAppInterface)) {
-        agdz.a(localIntent, (QQAppInterface)paramString2, paramMessageRecord);
-      }
-      agbh.a(paramContext, localIntent, paramString1);
-      bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramString1, "", "", "");
-      return;
-      label347:
-      if (paramMessageRecord.istroop == 1) {
-        localIntent.putExtra("articalChannelId", 3);
-      } else if (paramMessageRecord.istroop == 3000) {
-        localIntent.putExtra("articalChannelId", 4);
-      }
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376208));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370294));
+    this.b = ((ImageView)paramView.findViewById(2131366309));
   }
 }
 

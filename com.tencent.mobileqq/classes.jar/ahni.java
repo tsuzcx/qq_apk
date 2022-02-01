@@ -1,28 +1,75 @@
-import android.app.Activity;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatActivity;
+import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.CameraEmotionData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-class ahni
-  implements axfu<EmoticonPackage>
+public class ahni
+  extends ahms
 {
-  ahni(ahng paramahng, String paramString) {}
+  private Collection<String> a;
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public ahni(QQAppInterface paramQQAppInterface)
   {
-    if ((paramEmoticonPackage != null) && (this.jdField_a_of_type_Ahng.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1008) && (this.jdField_a_of_type_Ahng.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1000) && (this.jdField_a_of_type_Ahng.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 10004) && (this.jdField_a_of_type_Ahng.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1001) && (this.jdField_a_of_type_Ahng.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1002) && (this.jdField_a_of_type_Ahng.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1003) && (this.jdField_a_of_type_Ahng.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1004) && (this.jdField_a_of_type_Ahng.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1005) && (this.jdField_a_of_type_Ahng.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1006))
-    {
-      paramEmoticonPackage = this.jdField_a_of_type_Ahng.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-      if (paramEmoticonPackage != null) {
-        paramEmoticonPackage.obtainMessage(22, this.jdField_a_of_type_JavaLangString).sendToTarget();
-      }
-      return;
+    super(paramQQAppInterface);
+  }
+  
+  private List<ahnh> a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Ahng.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahng.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_JavaLangString, false, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecCameraEmoticonHandleListener", 2, "camera emoticon search start.");
+    }
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = (arad)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(333);
+    ahns localahns = ahns.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    localObject = ((arad)localObject).a();
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        CameraEmotionData localCameraEmotionData = (CameraEmotionData)((Iterator)localObject).next();
+        if (("normal".equals(localCameraEmotionData.RomaingType)) && (paramString.equals(localahns.b(localCameraEmotionData.strContext)))) {
+          localArrayList.add(new ahnh(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localCameraEmotionData));
+        }
+      }
+    }
+    if (localArrayList.isEmpty())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerRecCameraEmoticonHandleListener", 2, "findMatchCameraEmoticons matchList is null or empty,keyWord: " + bftf.a(paramString));
+      }
+      return null;
+    }
+    return localArrayList;
+  }
+  
+  public List<ahnh> a(String paramString, SessionInfo paramSessionInfo)
+  {
+    return a(paramString);
+  }
+  
+  public void a()
+  {
+    ahns localahns = ahns.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (localahns != null) {
+      this.jdField_a_of_type_JavaUtilCollection = localahns.a();
+    }
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilCollection == null) {
+      a();
+    }
+    return (this.jdField_a_of_type_JavaUtilCollection != null) && (this.jdField_a_of_type_JavaUtilCollection.contains(paramString));
   }
 }
 

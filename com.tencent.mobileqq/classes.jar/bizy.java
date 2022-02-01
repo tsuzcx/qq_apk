@@ -1,44 +1,37 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.ParticipleView;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qqmini.sdk.annotation.JsEvent;
+import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 
+@JsPlugin(secondary=true)
 public class bizy
-  implements ValueAnimator.AnimatorUpdateListener
+  extends BaseJsPlugin
 {
-  public bizy(ParticipleView paramParticipleView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  @JsEvent({"refreshQzoneFeed"})
+  public void refreshQzoneFeed(RequestEvent paramRequestEvent)
   {
-    long l = System.currentTimeMillis();
-    paramValueAnimator = ParticipleView.a(this.a).iterator();
-    int i = 1;
-    if (paramValueAnimator.hasNext())
+    Activity localActivity = this.mMiniAppContext.getAttachedActivity();
+    if (localActivity != null)
     {
-      bjac localbjac = (bjac)paramValueAnimator.next();
-      float f = Math.min((float)(l - bjac.a(localbjac)) / ParticipleView.a(this.a), 1.0F);
-      bjac.a(localbjac, f);
-      if (f < 1.0F) {
-        i = 0;
-      }
-      for (;;)
-      {
-        break;
-        paramValueAnimator.remove();
-      }
-    }
-    if (i != 0)
-    {
-      ParticipleView.a(this.a).cancel();
-      ParticipleView.a(this.a, null);
-      ParticipleView.a(this.a).clear();
+      Intent localIntent = new Intent("action_personalize_js2qzone");
+      Bundle localBundle = new Bundle();
+      localBundle.putString("cmd", "refreshFeed");
+      localIntent.putExtras(localBundle);
+      QZoneHelper.forwardToQzoneTransluentActivity(localActivity, QZoneHelper.UserInfo.getInstance(), localIntent);
+      paramRequestEvent.ok();
       if (QLog.isColorLevel()) {
-        QLog.d("ParticipleView", 2, "selectedAnimation end cancel");
+        QLog.i("RefreshQzoneFeedPlugin", 2, "RefreshQzoneFeed");
       }
+      return;
     }
-    this.a.invalidate();
+    QLog.e("RefreshQzoneFeedPlugin", 1, "activity is null");
   }
 }
 

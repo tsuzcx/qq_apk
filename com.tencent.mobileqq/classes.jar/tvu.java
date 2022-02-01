@@ -1,57 +1,26 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import java.util.HashMap;
 
-class tvu
-  implements View.OnClickListener
+public class tvu
 {
-  tvu(tvt paramtvt, tvs paramtvs) {}
+  private static HashMap<Integer, Integer> a = new HashMap();
   
-  public void onClick(View paramView)
+  static
   {
-    bdll.b(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005732", "0X8005732", 0, 0, "", "", "", "");
-    bdll.b(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642F", "0X800642F", 0, 0, String.valueOf(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvr.jdField_a_of_type_Long), "", "", "");
-    String str;
-    if (this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvr != null)
-    {
-      str = String.valueOf(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvr.jdField_a_of_type_Long);
-      if (!TextUtils.isEmpty(str)) {
-        break label116;
-      }
+    a.put(Integer.valueOf(1107), Integer.valueOf(4));
+    a.put(Integer.valueOf(1108), Integer.valueOf(3));
+    a.put(Integer.valueOf(1109), Integer.valueOf(4));
+    a.put(Integer.valueOf(1105), Integer.valueOf(101));
+    a.put(Integer.valueOf(1106), Integer.valueOf(102));
+    a.put(Integer.valueOf(1110), Integer.valueOf(103));
+    a.put(Integer.valueOf(1111), Integer.valueOf(104));
+  }
+  
+  public static int a(int paramInt)
+  {
+    if (a.containsKey(Integer.valueOf(paramInt))) {
+      return ((Integer)a.get(Integer.valueOf(paramInt))).intValue();
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label116:
-      if (this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvr.jdField_a_of_type_Int == 0)
-      {
-        if (!bhnv.d(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_AndroidAppActivity.getApplicationContext()))
-        {
-          QQToast.a(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_AndroidAppActivity, 2131693965, 0).b(((BaseActivity)this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight());
-        }
-        else
-        {
-          this.jdField_a_of_type_Tvt.a(2);
-          this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvr.jdField_a_of_type_Int = 2;
-          MqqHandler localMqqHandler = this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
-          if ((localMqqHandler != null) && (this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_AndroidAppActivity != null) && ((this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_AndroidAppActivity instanceof SubscriptFeedsActivity))) {
-            localMqqHandler.sendEmptyMessage(1007);
-          }
-          tzq.a(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_AndroidAppActivity, str, new tvy(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs, this.jdField_a_of_type_Tvt));
-        }
-      }
-      else {
-        tvt.a(this.jdField_a_of_type_Tvt);
-      }
-    }
+    return 0;
   }
 }
 

@@ -1,17 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.JumpInfo;
 
-public class rev
-  implements raf
+public final class rev
+  implements Parcelable.Creator<SocializeFeedsInfo.JumpInfo>
 {
-  public rev(EditVideoFragment paramEditVideoFragment) {}
-  
-  public void a(boolean paramBoolean)
+  public SocializeFeedsInfo.JumpInfo a(Parcel paramParcel)
   {
-    if (paramBoolean) {
-      rgo.a(EditVideoFragment.a(this.a)).a(EditVideoFragment.a(this.a), true);
-    }
-    QLog.i("RIJUGC.EditVideoFragment", 1, "showMobileNetworkDialog, isContinue=" + paramBoolean);
+    return new SocializeFeedsInfo.JumpInfo(paramParcel);
+  }
+  
+  public SocializeFeedsInfo.JumpInfo[] a(int paramInt)
+  {
+    return new SocializeFeedsInfo.JumpInfo[paramInt];
   }
 }
 

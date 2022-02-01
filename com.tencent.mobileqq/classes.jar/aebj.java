@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class aebj
-  implements View.OnClickListener
+public class aebj
+  extends amsu
 {
-  public aebj(Toast paramToast) {}
+  public aebj(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    this.a.cancel();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((!paramBoolean) || (paramString == null)) {
+      return;
+    }
+    this.a.a(this.a.app.getCurrentAccountUin());
   }
 }
 

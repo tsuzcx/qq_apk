@@ -1,23 +1,29 @@
-import com.tencent.pts.utils.PTSDeviceUtil;
-import java.util.ArrayList;
-import kotlin.Metadata;
-import kotlin.collections.CollectionsKt;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorSet;
+import android.widget.ImageView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/util/PTSLiteItemViewUtil;", "", "()V", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qht
+class qht
+  implements Animator.AnimatorListener
 {
-  private static final int jdField_a_of_type_Int;
-  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = CollectionsKt.arrayListOf(new String[] { "3289295241", "834584377", "616690602" });
-  public static final qhu a;
-  private static int b;
-  private static int c;
+  qht(qhs paramqhs) {}
   
-  static
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    jdField_a_of_type_Qhu = new qhu(null);
-    jdField_a_of_type_Int = PTSDeviceUtil.dp2pxInt(5.0F);
-    b = PTSDeviceUtil.rp2pxInt(12.0F);
-    c = PTSDeviceUtil.rp2pxInt(24.0F);
+    qhs.a(this.a).setSelected(this.a.isSelected());
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    qhs.a(this.a).setSelected(this.a.isSelected());
+    qhs.a(this.a).start();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    qhs.a(this.a, true);
   }
 }
 

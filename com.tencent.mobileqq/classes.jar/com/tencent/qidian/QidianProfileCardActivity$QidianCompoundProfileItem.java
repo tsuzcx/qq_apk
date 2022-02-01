@@ -3,12 +3,12 @@ package com.tencent.qidian;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bkhs;
+import bimx;
 
 public class QidianProfileCardActivity$QidianCompoundProfileItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<QidianCompoundProfileItem> CREATOR = new bkhs();
+  public static final Parcelable.Creator<QidianCompoundProfileItem> CREATOR = new bimx();
   public int a;
   public String a;
   public boolean a;

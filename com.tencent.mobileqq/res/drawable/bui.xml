@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="#00000000" android:endColor="#f2000000" android:angle="270.0" android:type="linear" android:centerColor="#b3000000" />
-</shape>
+    <item android:state_pressed="false" android:drawable="@drawable/skin_background_theme_version2" />
+    <item android:state_pressed="true" android:drawable="@drawable/skin_background_theme_version2" />
+</selector>

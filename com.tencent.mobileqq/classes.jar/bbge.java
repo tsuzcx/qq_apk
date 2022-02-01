@@ -1,22 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Color;
-import android.view.View;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.search.util.PAOfflineSearchManager.1.1;
 
-final class bbge
-  implements ValueAnimator.AnimatorUpdateListener
+public class bbge
+  implements nnv
 {
-  final int jdField_a_of_type_Int = Color.red(this.d);
-  final int b = Color.green(this.d);
-  final int c = Color.blue(this.d);
-  
-  bbge(int paramInt, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void loaded(String paramString, int paramInt)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(i, this.jdField_a_of_type_Int, this.b, this.c));
+    if (paramInt == 0) {
+      ThreadManager.post(new PAOfflineSearchManager.1.1(this), 0, null, true);
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

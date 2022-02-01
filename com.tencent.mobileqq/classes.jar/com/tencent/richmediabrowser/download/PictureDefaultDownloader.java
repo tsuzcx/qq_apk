@@ -1,5 +1,6 @@
 package com.tencent.richmediabrowser.download;
 
+import android.graphics.Bitmap;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.ProtocolDownloader.Adapter;
 import com.tencent.image.URLDrawableHandler;
@@ -8,9 +9,11 @@ import java.io.File;
 public class PictureDefaultDownloader
   extends ProtocolDownloader.Adapter
 {
+  Bitmap mBitmap;
+  
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
+    return this.mBitmap;
   }
   
   public boolean hasDiskFile(DownloadParams paramDownloadParams)
@@ -22,9 +25,11 @@ public class PictureDefaultDownloader
   {
     if (paramDownloadParams != null)
     {
-      String str = paramDownloadParams.urlStr;
-      IImageDownloadListener localIImageDownloadListener = HttpDownloadManager.getInstance().getImageDownloadListener(str);
-      HttpDownloadManager.getInstance().downloadImage(str, new PictureDefaultDownloader.1(this, localIImageDownloadListener));
+      Object localObject = paramDownloadParams.urlStr;
+      localObject = HttpDownloadManager.getInstance().downloadImageSync((String)localObject);
+      if (localObject != null) {
+        this.mBitmap = ((Bitmap)localObject);
+      }
     }
     return super.loadImageFile(paramDownloadParams, paramURLDrawableHandler);
   }

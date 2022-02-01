@@ -1,27 +1,12 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.image.URLImageView;
+import java.io.File;
+import java.io.FileFilter;
 
-public class pij
-  extends RecyclerView.ViewHolder
+final class pij
+  implements FileFilter
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-  URLImageView jdField_b_of_type_ComTencentImageURLImageView;
-  
-  pij(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, View paramView)
+  public boolean accept(File paramFile)
   {
-    super(paramView);
-  }
-  
-  protected int a()
-  {
-    return getAdapterPosition() - 1;
+    return paramFile.getName().endsWith(".json");
   }
 }
 

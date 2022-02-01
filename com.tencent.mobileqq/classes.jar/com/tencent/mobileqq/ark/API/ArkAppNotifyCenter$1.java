@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ark.API;
 
-import apwk;
+import aopx;
 
 public final class ArkAppNotifyCenter$1
   implements Runnable
 {
-  ArkAppNotifyCenter$1(apwk paramapwk, String paramString1, String paramString2, String paramString3) {}
+  ArkAppNotifyCenter$1(aopx paramaopx, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Apwk.notify(this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    this.jdField_a_of_type_Aopx.notify(this.jdField_a_of_type_JavaLangString, this.b, this.c);
   }
 }
 

@@ -1,8 +1,16 @@
-import com.tencent.mobileqq.upgrade.UpgradeTipsDialog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Paint;
 
-public abstract interface bhed
+class bhed
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(UpgradeTipsDialog paramUpgradeTipsDialog);
+  bhed(bheb parambheb) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    bheb.a(this.a).setAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+  }
 }
 
 

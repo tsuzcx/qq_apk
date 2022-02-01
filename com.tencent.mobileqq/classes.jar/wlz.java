@@ -1,31 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-class wlz
-  extends SimpleJob<Object>
+public class wlz
+  implements AbsListView.OnScrollListener
 {
-  wlz(wlt paramwlt, String paramString)
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
+  int c = 0;
+  
+  public wlz(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramString);
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    paramVarArgs = ((wte)wth.a(5)).a();
-    paramJobContext = new ArrayList(paramVarArgs.size());
-    paramVarArgs = paramVarArgs.iterator();
-    while (paramVarArgs.hasNext()) {
-      paramJobContext.add(new wnm((StoryVideoItem)paramVarArgs.next()));
+    if ((paramInt == 0) && (this.c + this.jdField_a_of_type_Int >= this.b))
+    {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.b) {
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(3);
+      }
     }
-    this.a.a(paramJobContext);
-    yuk.c("Q.qqstory.publish.upload:StoryVideoUploadManager", "had load local task size " + paramJobContext.size());
-    return null;
+    else {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(1);
+    wmb.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a);
   }
 }
 

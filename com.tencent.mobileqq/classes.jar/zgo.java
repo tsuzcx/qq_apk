@@ -1,29 +1,43 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.subscribe.comment.EmoView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zgo
-  implements TextWatcher
+  implements AdapterView.OnItemClickListener
 {
-  public zgo(zgm paramzgm) {}
+  public zgo(EmoView paramEmoView, int paramInt) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    String str = zoi.a(paramEditable.toString(), 30);
-    if (str.length() < paramEditable.length()) {
-      paramEditable.replace(0, paramEditable.length(), str);
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (paramInt == 27)
+    {
+      if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
+        bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
+      }
+      if (!bool1) {
+        EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a();
+      }
     }
-    this.a.jdField_a_of_type_JavaLangString = paramEditable.toString();
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramCharSequence = paramCharSequence.toString();
-    this.a.jdField_a_of_type_JavaLangString = paramCharSequence;
-    yuk.b("Q.qqstory.record.label.QQStoryAddVideoLabelView", "keyword = " + this.a.jdField_a_of_type_JavaLangString);
-    if (this.a.jdField_a_of_type_Zgp != null) {
-      this.a.jdField_a_of_type_Zgp.a(this.a.jdField_a_of_type_JavaLangString);
+    for (;;)
+    {
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      int i = (this.jdField_a_of_type_Int - 1) * 27 + paramInt;
+      if (i < 107)
+      {
+        String str = zhb.b[zgs.b[i]];
+        bool1 = bool2;
+        if (EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView) != null) {
+          bool1 = EmoView.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(str);
+        }
+        if (!bool1) {
+          EmoView.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoView).a(str);
+        }
+      }
     }
   }
 }

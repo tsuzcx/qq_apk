@@ -1,490 +1,400 @@
-import android.graphics.BitmapFactory.Options;
-import android.os.Bundle;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.mm.vfs.VFSFile;
+import android.util.SparseIntArray;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailFetchWorker.1;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.UUID;
+import java.io.ByteArrayInputStream;
+import java.util.HashMap;
+import tencent.im.cs.ptt_waveform.ptt_waveform.PttWaveform;
 
 public class bfxf
-  implements bfxd
 {
-  public int a;
-  public long a;
-  aavn a;
-  protected bfve a;
-  protected bfxc a;
-  protected bfxh a;
-  public TroopFileTransferManager.Item a;
-  public String a;
-  protected Timer a;
-  public boolean a;
-  protected int b;
-  protected String b;
-  protected boolean b;
-  protected String c;
-  public String d;
-  public String e;
+  private static final SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray(8);
+  private static boolean jdField_a_of_type_Boolean;
+  private static boolean b;
   
-  protected bfxf(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, bfxh parambfxh)
+  static
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Aavn = new bfxg(this);
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item = paramItem;
-    this.jdField_a_of_type_Bfxh = parambfxh;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = bfxe.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id, paramInt);
-    if (aunj.a(auog.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName)) == 2) {
-      this.jdField_b_of_type_Boolean = true;
-    }
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(4, 13);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(12, 14);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(20, 16);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(28, 18);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(36, 20);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(44, 21);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(52, 27);
+    jdField_a_of_type_AndroidUtilSparseIntArray.put(60, 32);
   }
   
-  public static bfxf a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, bfxh parambfxh)
+  public static ptt_waveform.PttWaveform a(int[] paramArrayOfInt)
   {
-    if (paramLong == 0L)
+    ptt_waveform.PttWaveform localPttWaveform = new ptt_waveform.PttWaveform();
+    if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
     {
-      bfvr.a("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "getWoker. troopuin=0");
-      return null;
-    }
-    if (paramItem == null)
-    {
-      bfvr.a("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "getWoker. item=null");
-      return null;
-    }
-    if (paramItem.Id == null)
-    {
-      bfvr.a("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "getWoker. item.id=null");
-      return null;
-    }
-    if (paramInt == 0)
-    {
-      bfvr.a("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "getWoker. nThumbSize=0");
-      return null;
-    }
-    return new bfxf(paramLong, paramItem, paramInt, parambfxh);
-  }
-  
-  private void g()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilTimer != null)
+      localPttWaveform.uin32_size.set(paramArrayOfInt.length);
+      byte[] arrayOfByte = new byte[paramArrayOfInt.length];
+      int j = 0;
+      if (j < paramArrayOfInt.length)
       {
-        this.jdField_a_of_type_JavaUtilTimer.cancel();
-        this.jdField_a_of_type_JavaUtilTimer = null;
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public UUID a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Id;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      bfvr.c("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop. but had stoped. mStatus:" + this.jdField_b_of_type_Int);
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    bfvr.c("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop fetch. mStatus:" + this.jdField_b_of_type_Int);
-    if (this.jdField_b_of_type_Int == 2)
-    {
-      if (this.jdField_a_of_type_Bfxc == null) {
-        break label197;
-      }
-      this.jdField_a_of_type_Bfxc.c();
-      this.jdField_a_of_type_Bfxc = null;
-    }
-    for (;;)
-    {
-      g();
-      if (this.jdField_a_of_type_Bfve != null)
-      {
-        aauw.a(bfvp.a(), this.jdField_a_of_type_Bfve);
-        this.jdField_a_of_type_Bfve = null;
-      }
-      e();
-      if (!TextUtils.isEmpty(this.d)) {
-        bhmi.d(this.d);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.StatusUpdateTimeMs = 0L;
-      bfva.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-      b(0);
-      return;
-      label197:
-      bfvr.b("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] stop downloader=null");
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.duration == 0) && (paramInt != 0))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.duration = paramInt;
-      this.jdField_a_of_type_Bfxc.b(true);
-    }
-  }
-  
-  protected void a(int paramInt1, String paramString, int paramInt2)
-  {
-    QQAppInterface localQQAppInterface = bfvp.a();
-    if (localQQAppInterface == null)
-    {
-      bfvr.a("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] startFetch app=null");
-      c(bguk.w);
-      return;
-    }
-    bhmi.d(this.d);
-    boolean bool3 = false;
-    boolean bool2 = false;
-    Object localObject3 = null;
-    Object localObject2 = null;
-    Object localObject1 = "/ftn_handler/" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl + "/?fname=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath + "&pictype=cut&size=" + this.jdField_a_of_type_Int + "*" + this.jdField_a_of_type_Int;
-    ArrayList localArrayList = new ArrayList();
-    int i;
-    boolean bool1;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      i = paramInt1;
-      if (paramInt1 <= 0) {
-        i = 443;
-      }
-      localObject1 = localObject2;
-      bool1 = bool2;
-      if (bgsk.d(localQQAppInterface))
-      {
-        localObject1 = localObject2;
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(paramString))
+        int k = paramArrayOfInt[j];
+        int i;
+        if (k < 0) {
+          i = 0;
+        }
+        for (;;)
         {
-          bool1 = true;
-          localObject1 = paramString;
-        }
-      }
-      if (!bool1) {
-        break label1225;
-      }
-      paramInt1 = paramInt2;
-      if (paramInt2 > 0) {}
-    }
-    label779:
-    label1171:
-    label1225:
-    for (paramInt1 = 443;; paramInt1 = i)
-    {
-      localObject2 = "/ftn_video_pic/rkey=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl + "&filetype=17&size=" + this.jdField_a_of_type_Int + "*" + this.jdField_a_of_type_Int + "&";
-      localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp + ":" + paramInt1);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS))
-      {
-        if (!atul.a().a(localQQAppInterface, 3)) {
-          break label779;
-        }
-        QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopVideo thumb. is config enable IPv6. domain[" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS + "]");
-        paramString = new atum(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS, paramInt1);
-        paramString = atul.a().a(localQQAppInterface, paramString, 3);
-        if ((paramString != null) && (!paramString.a()))
-        {
-          if (atul.a())
-          {
-            QLog.d("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopVideo thumb. debugIsDisableIPv4OnDoubleStack");
-            localArrayList.clear();
-          }
-          atul.a(paramString.a, localArrayList, false, false);
-          QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopVideo thumb. use IPv6. iplist:" + localArrayList.toString());
-        }
-      }
-      else
-      {
-        paramString = (String)localObject1;
-        localObject1 = localObject2;
-      }
-      for (;;)
-      {
-        long l = bfvp.a();
-        bfvr.c("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] startFetch. nSessionId:" + l + " firstIP=" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp + " urlParams:" + (String)localObject1 + " mTmpFilePath:" + this.d + " bUseHttps:" + bool1 + " httpsDomain:" + paramString);
-        if (this.jdField_a_of_type_Bfxc != null)
-        {
-          this.jdField_a_of_type_Bfxc.c();
-          this.jdField_a_of_type_Bfxc = null;
-        }
-        this.jdField_a_of_type_Bfxc = bfxc.a(localQQAppInterface, l, this.d, 0L, localArrayList, (String)localObject1, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue, this.jdField_b_of_type_Boolean, bool1, paramString);
-        if (this.jdField_a_of_type_Bfxc != null) {
-          break label1171;
-        }
-        c(bguk.w);
-        return;
-        QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopVideo thumb. use IPv4:");
-        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS + ":" + paramInt1);
-        break;
-        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS + ":" + paramInt1);
-        break;
-        paramString = localObject3;
-        bool1 = bool3;
-        if (bgsk.d(localQQAppInterface))
-        {
-          paramString = localObject3;
-          bool1 = bool3;
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS))
-          {
-            bool1 = true;
-            paramString = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS;
+          arrayOfByte[j] = ((byte)(i & 0xFF));
+          j += 1;
+          break;
+          i = k;
+          if (k > 255) {
+            i = 255;
           }
         }
-        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp);
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS))
-        {
-          if (atul.a().a(localQQAppInterface, 3))
-          {
-            QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopImage thumb. is config enable IPv6. domain[" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS + "]");
-            localObject2 = new atum(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS, 0);
-            localObject2 = atul.a().a(localQQAppInterface, (atum)localObject2, 3);
-            if ((localObject2 != null) && (!((atuo)localObject2).a()))
-            {
-              if (atul.a())
-              {
-                QLog.d("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopImage thumb. debugIsDisableIPv4OnDoubleStack");
-                localArrayList.clear();
-              }
-              atul.a(((atuo)localObject2).a, localArrayList, true, false);
-              QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopImage thumb. use IPv6. iplist:" + localArrayList.toString());
-            }
-            for (;;)
-            {
-              break;
-              QLog.i("TroopFileDownloadWorker", 1, "[" + this.jdField_a_of_type_JavaLangString + "] [IPv6-File] download troopImage thumb. use IPv4");
-              localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS);
-            }
-          }
-          localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS);
-        }
       }
-      this.jdField_a_of_type_Bfxc.a(this);
-      this.jdField_a_of_type_Bfxc.i();
-      this.jdField_a_of_type_Bfxc.a(false);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.duration != 0) {
-        this.jdField_a_of_type_Bfxc.b(true);
-      }
-      this.jdField_a_of_type_Bfxc.b();
-      b(2);
-      return;
+      localPttWaveform.bytes_amplitudes.set(ByteStringMicro.copyFrom(arrayOfByte));
     }
+    return localPttWaveform;
   }
   
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(String paramString)
+  public static void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    a(false);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bfve = null;
-    g();
-    if ((!paramBoolean) && (!aunj.a(new VFSFile(this.d), new VFSFile(this.e))))
+    if (!b)
     {
-      bfvr.a("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] renameFile fail  mFilePath:" + this.e);
-      if (bhmi.b(this.e)) {
-        c(bguk.o);
-      }
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_type", paramInt + "");
+      localHashMap.put("param_version", Build.VERSION.SDK_INT + "");
+      localHashMap.put("param_deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "actRPPttPlayerType", true, 0L, 0L, localHashMap, "");
+      b = true;
     }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
     do
     {
       return;
-      b(3);
-      f();
-      bfvr.c("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onFetchSuc  mFilePath:" + this.e);
-      if (!paramBoolean) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.StatusUpdateTimeMs = 0L;
-      }
-      if ((this.jdField_a_of_type_Int == 640) && (!auog.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getThumbnailFile(this.jdField_a_of_type_Long, 383)))) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.genThumb_Middle_OnGettedLargeOrOrigPic = true;
-      }
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      auob.a(this.e, localOptions);
-      if ((localOptions.outWidth > 0) && (localOptions.outHeight > 0))
+      str1 = paramQQAppInterface.getCurrentUin();
+      if (!TextUtils.equals(agkq.jdField_a_of_type_JavaLangString, str1))
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.width = localOptions.outWidth;
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.height = localOptions.outHeight;
+        agkq.jdField_a_of_type_JavaLangString = str1;
+        agkq.g = false;
+        QLog.e("vip_ptt.PttUtils", 1, "it have change the account so init ptt state value");
       }
-      bfva.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-      bfva.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-    } while (this.jdField_a_of_type_Bfxh == null);
-    this.jdField_a_of_type_Bfxh.a(a(), true, 0, this);
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    while (!paramBoolean) {
-      return;
-    }
-    bfvr.a("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onHasErr. fetch fail. errCode:" + paramInt + " transferedSize:" + paramLong);
-    int i;
-    if (paramInt == -5000) {
-      i = bguk.h;
+    } while (agkq.g);
+    String str1 = "businessinfo_ptt_auto_change_text_" + paramQQAppInterface.getCurrentAccountUin();
+    String str2 = "businessinfo_ptt_auto_change_time_" + paramQQAppInterface.getCurrentAccountUin();
+    String str3 = "businessinfo_ptt_auto_change_guide_has_show_" + paramQQAppInterface.getCurrentAccountUin();
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("check_update_sp_key", 0);
+    aqai localaqai = (aqai)apub.a().a(442);
+    aqgo localaqgo = aqgp.c();
+    boolean bool2 = VipUtils.b(paramQQAppInterface);
+    boolean bool1;
+    if (localaqgo.a > 1)
+    {
+      bool1 = bool2;
+      label159:
+      QLog.e("vip_ptt.PttUtils", 1, "ignore initAutoToTextSwitch is svip=" + bool2 + " stage=" + localaqgo.a);
+      if (((localaqai == null) || (localaqai.a())) && (!bool1)) {
+        break label334;
+      }
+      paramQQAppInterface = localSharedPreferences.edit();
+      paramQQAppInterface.putBoolean(str1, false);
+      paramQQAppInterface.apply();
+      agkq.d = false;
     }
     for (;;)
     {
-      c(i);
+      agkq.jdField_a_of_type_Long = localSharedPreferences.getLong(str2, 9223372036854775807L);
+      agkq.e = localSharedPreferences.getBoolean(str3, false);
+      agkq.g = true;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("PttUtils", 2, "initAutoToTextSwitch switch:" + agkq.d + ", time:" + agkq.jdField_a_of_type_Long + ", hasAddTips:" + agkq.e);
       return;
-      if (paramInt == -5001)
-      {
-        i = bguk.g;
+      bool1 = false;
+      break label159;
+      label334:
+      agkq.d = localSharedPreferences.getBoolean(str1, false);
+      QLog.e("vip_ptt.PttUtils", 1, "initAutoToTextSwitch enable=" + agkq.d);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    int i = 8;
+    if (paramInt == 8) {}
+    for (;;)
+    {
+      bcef.b(paramQQAppInterface, "CliOper", "", "", "0X8004603", "0X8004603", 0, 0, i + "", "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("QQRecorder", 2, "report cancle send ptt, cancel source = " + paramInt);
       }
-      else if (paramInt == 9039)
-      {
-        i = bguk.n;
-      }
-      else if (paramInt == 9004)
-      {
-        i = bguk.k;
-      }
-      else if (paramInt == 9301)
-      {
-        i = bguk.i;
-      }
-      else if (paramInt == -5001)
-      {
-        i = bguk.q;
-      }
-      else if (this.jdField_a_of_type_Bfxc.b())
-      {
-        i = bguk.p;
-      }
-      else
-      {
-        i = paramInt;
-        if (paramInt == -5003) {
-          i = bguk.y;
-        }
+      return;
+      if (paramInt == 1) {
+        i = 1;
+      } else if (paramInt == 2) {
+        i = 2;
+      } else {
+        i = 3;
       }
     }
   }
   
-  public boolean a()
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, int paramInt3)
   {
-    bfvr.c("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] start fetch thumb. filename:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName + " filePath:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath);
-    this.jdField_a_of_type_Boolean = false;
-    ThreadManager.post(new TroopFileThumbnailFetchWorker.1(this), 8, null, false);
+    if (paramInt1 == 0)
+    {
+      paramInt1 = 1;
+      if (paramInt2 != 8) {
+        break label153;
+      }
+      bcef.b(paramQQAppInterface, "CliOper", "", "", "0X8006189", "0X8006189", 0, 0, "", paramInt1 + "", paramInt3 + "", "");
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQRecorder", 2, "report send ptt, send source = " + paramInt2 + ", sessionType = " + paramInt1 + ", seconds = " + paramInt3);
+      }
+      return;
+      if (paramInt1 == 3000)
+      {
+        paramInt1 = 2;
+        break;
+      }
+      if (paramInt1 == 1)
+      {
+        paramInt1 = 3;
+        break;
+      }
+      paramInt1 = 4;
+      break;
+      label153:
+      if ((paramInt2 == 1) || (paramInt2 == 2))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        if (paramInt2 == 1) {}
+        for (int i = 1;; i = 2)
+        {
+          bcef.b(paramQQAppInterface, "CliOper", "", "", "0X8004600", "0X8004600", 0, 0, i + "", paramInt1 + "", paramInt3 + "", "");
+          break;
+        }
+      }
+      if (paramInt2 == 4) {
+        bcef.b(paramQQAppInterface, "CliOper", "", "", "0X8005C1E", "0X8005C1E", 0, 0, "", paramInt1 + "", paramInt3 + "", "");
+      } else {
+        bcef.b(paramQQAppInterface, "CliOper", "", "", "0X8004601", "0X8004601", 0, 0, "", paramInt1 + "", paramInt3 + "", "");
+      }
+    }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    HashMap localHashMap;
+    if (!jdField_a_of_type_Boolean)
+    {
+      localHashMap = new HashMap();
+      if (!paramBoolean) {
+        break label118;
+      }
+    }
+    label118:
+    for (String str = "1";; str = "0")
+    {
+      localHashMap.put("param_succ_flag", str);
+      localHashMap.put("param_version", Build.VERSION.SDK_INT + "");
+      localHashMap.put("param_deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "actRPSonicSoLoadStatus", true, 0L, 0L, localHashMap, "");
+      jdField_a_of_type_Boolean = true;
+      return;
+    }
+  }
+  
+  private static final boolean a(ByteArrayInputStream paramByteArrayInputStream, int[] paramArrayOfInt)
+  {
+    paramByteArrayInputStream.read("#!AMR\n".getBytes());
+    int j = paramByteArrayInputStream.read();
+    int i = 0;
+    if ((i >= paramArrayOfInt.length) || (j == paramArrayOfInt[i])) {
+      if (i != paramArrayOfInt.length) {
+        break label46;
+      }
+    }
+    label46:
+    do
+    {
+      return false;
+      i += 1;
+      break;
+      i = jdField_a_of_type_AndroidUtilSparseIntArray.get(j, -1);
+    } while (i == -1);
+    paramArrayOfInt = new byte[i - 1];
+    paramByteArrayInputStream.read(paramArrayOfInt);
+    for (;;)
+    {
+      i = paramByteArrayInputStream.read();
+      if (i == -1) {
+        break label96;
+      }
+      if (i != j) {
+        break;
+      }
+      paramByteArrayInputStream.read(paramArrayOfInt);
+    }
+    label96:
     return true;
   }
   
-  public void b()
+  /* Error */
+  public static final boolean a(String paramString, int[] paramArrayOfInt)
   {
-    QQAppInterface localQQAppInterface = bfvp.a();
-    if (localQQAppInterface == null)
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore_3
+    //   2: new 322	java/io/File
+    //   5: dup
+    //   6: aload_0
+    //   7: invokespecial 325	java/io/File:<init>	(Ljava/lang/String;)V
+    //   10: astore_0
+    //   11: iload_3
+    //   12: istore_2
+    //   13: aload_0
+    //   14: invokevirtual 328	java/io/File:exists	()Z
+    //   17: ifeq +14 -> 31
+    //   20: aload_0
+    //   21: invokevirtual 332	java/io/File:length	()J
+    //   24: lconst_0
+    //   25: lcmp
+    //   26: ifne +7 -> 33
+    //   29: iload_3
+    //   30: istore_2
+    //   31: iload_2
+    //   32: ireturn
+    //   33: new 304	java/io/ByteArrayInputStream
+    //   36: dup
+    //   37: aload_0
+    //   38: invokestatic 338	com/tencent/mobileqq/utils/FileUtils:fileToBytes	(Ljava/io/File;)[B
+    //   41: invokespecial 341	java/io/ByteArrayInputStream:<init>	([B)V
+    //   44: astore 4
+    //   46: aload 4
+    //   48: astore_0
+    //   49: aload 4
+    //   51: aload_1
+    //   52: invokestatic 343	bfxf:a	(Ljava/io/ByteArrayInputStream;[I)Z
+    //   55: istore_2
+    //   56: iload_2
+    //   57: istore_3
+    //   58: iload_3
+    //   59: istore_2
+    //   60: aload 4
+    //   62: ifnull -31 -> 31
+    //   65: aload 4
+    //   67: invokevirtual 346	java/io/ByteArrayInputStream:close	()V
+    //   70: iload_3
+    //   71: ireturn
+    //   72: astore_0
+    //   73: iload_3
+    //   74: ireturn
+    //   75: astore 5
+    //   77: aconst_null
+    //   78: astore_1
+    //   79: aload_1
+    //   80: astore_0
+    //   81: invokestatic 235	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   84: ifeq +16 -> 100
+    //   87: aload_1
+    //   88: astore_0
+    //   89: ldc 237
+    //   91: iconst_2
+    //   92: ldc_w 348
+    //   95: aload 5
+    //   97: invokestatic 351	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   100: iload_3
+    //   101: istore_2
+    //   102: aload_1
+    //   103: ifnull -72 -> 31
+    //   106: aload_1
+    //   107: invokevirtual 346	java/io/ByteArrayInputStream:close	()V
+    //   110: iconst_0
+    //   111: ireturn
+    //   112: astore_0
+    //   113: iconst_0
+    //   114: ireturn
+    //   115: astore_1
+    //   116: aconst_null
+    //   117: astore_0
+    //   118: aload_0
+    //   119: ifnull +7 -> 126
+    //   122: aload_0
+    //   123: invokevirtual 346	java/io/ByteArrayInputStream:close	()V
+    //   126: aload_1
+    //   127: athrow
+    //   128: astore_0
+    //   129: goto -3 -> 126
+    //   132: astore_1
+    //   133: goto -15 -> 118
+    //   136: astore 5
+    //   138: aload 4
+    //   140: astore_1
+    //   141: goto -62 -> 79
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	144	0	paramString	String
+    //   0	144	1	paramArrayOfInt	int[]
+    //   12	90	2	bool1	boolean
+    //   1	100	3	bool2	boolean
+    //   44	95	4	localByteArrayInputStream	ByteArrayInputStream
+    //   75	21	5	localThrowable1	java.lang.Throwable
+    //   136	1	5	localThrowable2	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   65	70	72	java/lang/Exception
+    //   33	46	75	java/lang/Throwable
+    //   106	110	112	java/lang/Exception
+    //   33	46	115	finally
+    //   122	126	128	java/lang/Exception
+    //   49	56	132	finally
+    //   81	87	132	finally
+    //   89	100	132	finally
+    //   49	56	136	java/lang/Throwable
+  }
+  
+  public static int[] a(ptt_waveform.PttWaveform paramPttWaveform)
+  {
+    int j;
+    int[] arrayOfInt;
+    if ((paramPttWaveform != null) && (paramPttWaveform.uin32_size.has()) && (paramPttWaveform.uin32_size.get() > 0) && (paramPttWaveform.bytes_amplitudes.has()))
     {
-      bfvr.a("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] reqFetch app=null");
-      c(bguk.w);
-      return;
-    }
-    bfvr.c("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] reqFetch");
-    this.jdField_a_of_type_Bfve = aauw.a(localQQAppInterface, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, false, false, this.jdField_a_of_type_Aavn);
-    b(1);
-  }
-  
-  protected void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(String paramString) {}
-  
-  public void c()
-  {
-    if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.c))) {
-      return;
-    }
-    this.jdField_b_of_type_JavaLangString = bfxk.a();
-    this.c = this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bfve = null;
-    g();
-    if (!TextUtils.isEmpty(this.d)) {
-      bhmi.d(this.d);
-    }
-    b(4);
-    e();
-    bfvr.a("TroopFileDownloadWorker", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_JavaLangString + "] onFetchErr  errCode:" + paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.StatusUpdateTimeMs = 0L;
-    if (paramInt == bguk.y) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.thumbInvalidCode = 1;
-    }
-    for (;;)
-    {
-      bfva.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item);
-      if (this.jdField_a_of_type_Bfxh != null) {
-        this.jdField_a_of_type_Bfxh.a(a(), false, paramInt, this);
+      j = paramPttWaveform.uin32_size.get();
+      arrayOfInt = new int[j];
+      paramPttWaveform = paramPttWaveform.bytes_amplitudes.get().toByteArray();
+      if (paramPttWaveform.length != j) {
+        QLog.e("PttUtils", 2, "changePtToWaveform, data error");
       }
-      return;
-      if (paramInt == bguk.p) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.thumbInvalidCode = 2;
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.thumbInvalidCode = 0;
-      }
     }
-  }
-  
-  public void d() {}
-  
-  protected void e()
-  {
-    bfxk.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Int == 383) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ThumbnailDownloading_Middle_Fail = true;
-    }
-  }
-  
-  protected void f()
-  {
-    bfxk.b(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int);
-    boolean bool = bfxk.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, this.e);
-    TroopFileTransferManager.Item localItem;
-    if (this.jdField_a_of_type_Int == 383)
+    else
     {
-      localItem = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item;
-      if (bool) {
-        break label58;
-      }
+      return null;
     }
-    label58:
-    for (bool = true;; bool = false)
+    int i = 0;
+    while (i < j)
     {
-      localItem.ThumbnailDownloading_Middle_Fail = bool;
-      return;
+      paramPttWaveform[i] &= 0xFF;
+      i += 1;
     }
+    return arrayOfInt;
   }
 }
 

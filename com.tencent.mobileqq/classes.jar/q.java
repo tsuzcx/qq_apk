@@ -27,6 +27,7 @@ import android.util.SparseIntArray;
 import android.view.View.MeasureSpec;
 import com.etrump.mixlayout.ETFont;
 import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.text.QQText.EmoticonSpan;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -271,7 +272,7 @@ public class q
           {
             bool = true;
             label917:
-            if ((i3 <= paramInt1) || (i1 <= i3) || (!a(fo.a(paramCharSequence, paramInt1, i3), paramInt1, i4, 0, false, i2))) {
+            if ((i3 <= paramInt1) || (i1 <= i3) || (!a(fn.a(paramCharSequence, paramInt1, i3), paramInt1, i4, 0, false, i2))) {
               break label1082;
             }
           }
@@ -306,19 +307,19 @@ public class q
           break label917;
           label1082:
           if ((localCharacterStyle instanceof ClickableSpan)) {
-            if (a(fo.a(paramCharSequence, i3, i1), i3, i4, 1, bool, i2)) {
+            if (a(fn.a(paramCharSequence, i3, i1), i3, i4, 1, bool, i2)) {
               break label951;
             }
           }
           for (;;)
           {
-            if ((paramInt2 == arrayOfCharacterStyle.length - 1) && (!bool) && (a(fo.a(paramCharSequence, i1, ((Spanned)localObject).length()), i1, i4, 0, true, i2))) {
+            if ((paramInt2 == arrayOfCharacterStyle.length - 1) && (!bool) && (a(fn.a(paramCharSequence, i1, ((Spanned)localObject).length()), i1, i4, 0, true, i2))) {
               break label1280;
             }
             paramInt2 += 1;
             paramInt1 = i1;
             break;
-            if (((localCharacterStyle instanceof begw)) || ((localCharacterStyle instanceof bbtp)))
+            if (((localCharacterStyle instanceof QQText.EmoticonSpan)) || ((localCharacterStyle instanceof bank)))
             {
               if (!a(localCharacterStyle, i3, i1, 2, bool)) {
                 continue;
@@ -327,7 +328,7 @@ public class q
             }
             if ((localCharacterStyle instanceof RelativeSizeSpan))
             {
-              if (!a((RelativeSizeSpan)localCharacterStyle, fo.a(paramCharSequence, i3, i1), i3, i4, 3, bool, i2)) {
+              if (!a((RelativeSizeSpan)localCharacterStyle, fn.a(paramCharSequence, i3, i1), i3, i4, 3, bool, i2)) {
                 continue;
               }
               break label951;
@@ -446,9 +447,9 @@ public class q
   {
     boolean bool = false;
     Object localObject;
-    if ((paramCharacterStyle instanceof begw))
+    if ((paramCharacterStyle instanceof QQText.EmoticonSpan))
     {
-      localObject = ((begw)paramCharacterStyle).a().getBounds();
+      localObject = ((QQText.EmoticonSpan)paramCharacterStyle).getDrawable().getBounds();
       paramInt2 = ((Rect)localObject).width();
       paramInt1 = ((Rect)localObject).height();
     }
@@ -490,12 +491,12 @@ public class q
       while (!paramBoolean)
       {
         return bool;
-        if (!(paramCharacterStyle instanceof bbtp)) {
+        if (!(paramCharacterStyle instanceof bank)) {
           break label423;
         }
-        localObject = (bbtp)paramCharacterStyle;
-        paramInt2 = ((bbtp)localObject).a();
-        paramInt1 = ((bbtp)localObject).b();
+        localObject = (bank)paramCharacterStyle;
+        paramInt2 = ((bank)localObject).a();
+        paramInt1 = ((bank)localObject).b();
         break;
         this.p += ((w)localObject).jdField_b_of_type_Int;
         ((w)localObject).jdField_d_of_type_Int = this.w;
@@ -859,7 +860,7 @@ public class q
     }
   }
   
-  public int a(int paramInt1, int paramInt2, gl paramgl)
+  public int a(int paramInt1, int paramInt2, gj paramgj)
   {
     int i1 = 0;
     while (i1 < this.jdField_b_of_type_JavaUtilList.size())
@@ -869,7 +870,7 @@ public class q
       {
         int i2 = localw.jdField_e_of_type_Int;
         if (paramInt2 <= localw.jdField_c_of_type_Int + i2) {
-          return paramgl.b(i1);
+          return paramgj.b(i1);
         }
       }
       i1 += 1;
@@ -1036,12 +1037,12 @@ public class q
     }
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
-      a(anzj.a(2131703752));
+      a(amtj.a(2131703982));
       return false;
     }
     if (this.jdField_a_of_type_ArrayOfInt.length <= 0)
     {
-      a(anzj.a(2131703751));
+      a(amtj.a(2131703981));
       return false;
     }
     c();
@@ -1118,7 +1119,7 @@ public class q
       n.a("FounderColorLayout", "字数：" + localCharSequence.length() + "   字号：" + this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getTextSize() + "px   排版耗时：" + d1 + "ms");
     }
     if (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView != null) {
-      gj.a("action_measure", paramETFont.mFontId, 4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getText().length(), d1);
+      gi.a("action_measure", paramETFont.mFontId, 4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getText().length(), d1);
     }
     if (b()) {
       return this.jdField_h_of_type_ArrayOfInt;
@@ -1253,15 +1254,15 @@ public class q
       this.jdField_b_of_type_AndroidGraphicsCanvas.drawBitmap((Bitmap)localObject, localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int - i2, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       continue;
       this.jdField_b_of_type_AndroidGraphicsCanvas.drawRect(localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_d_of_type_Int + localw.jdField_b_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if ((localw.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof begw))
+      if ((localw.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof QQText.EmoticonSpan))
       {
-        ((begw)localw.jdField_a_of_type_AndroidTextStyleCharacterStyle).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+        ((QQText.EmoticonSpan)localw.jdField_a_of_type_AndroidTextStyleCharacterStyle).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       }
-      else if ((localw.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bbtp))
+      else if ((localw.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bank))
       {
-        localObject = (bbtp)localw.jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        ((bbtp)localObject).jdField_a_of_type_Boolean = false;
-        ((bbtp)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+        localObject = (bank)localw.jdField_a_of_type_AndroidTextStyleCharacterStyle;
+        ((bank)localObject).jdField_a_of_type_Boolean = false;
+        ((bank)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localw.jdField_d_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int, localw.jdField_e_of_type_Int + localw.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       }
     }
   }

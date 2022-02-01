@@ -1,59 +1,75 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.JsEvent;
-import com.tencent.qqmini.sdk.annotation.JsPlugin;
-import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
-import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
-import eipc.EIPCClient;
-import org.json.JSONException;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qqreader.net.BaseCgiTask;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
+import mqq.app.AppRuntime;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-@JsPlugin(secondary=true)
 public class bkus
-  extends BaseJsPlugin
+  extends bkuk
 {
-  private JSONObject a(RequestEvent paramRequestEvent)
+  public bkus(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
+  
+  public void a(bkuj parambkuj)
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      return localJSONObject;
+    int j = 0;
+    i = 0;
+    parambkuj = parambkuj.a();
+    if ((parambkuj == null) || (parambkuj.length() == 0)) {
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: FetchTabConfigData response illegal: " + parambkuj);
     }
-    catch (JSONException localJSONException)
+    for (;;)
     {
-      QLog.e("SetAvatarNativePlugin", 1, "Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
+      if (i == 0) {
+        ForceUserUpdateActivity.b(this.a, "拉取新书城配置失败，请检查网络重试");
+      }
+      return;
+      for (;;)
+      {
+        for (;;)
+        {
+          try
+          {
+            localObject = (JSONArray)parambkuj.get("tabList");
+            if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+            {
+              bkvd.d("ForceUserUpdateActivity", "onReceiveData: FetchTabConfigData succeed, length = " + ((JSONArray)localObject).length());
+              localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+              ForceUserUpdateActivity.a(this.a).getSharedPreferences("CGI_RESPONSE", 0).edit().putString("SP_TAB_CONFIG_DATA" + (String)localObject, parambkuj.toString()).apply();
+              bkvb.d(ForceUserUpdateActivity.a(this.a), true);
+            }
+          }
+          catch (Exception parambkuj)
+          {
+            Object localObject;
+            i = j;
+          }
+          try
+          {
+            ForceUserUpdateActivity.b(this.a);
+            i = 1;
+          }
+          catch (Exception parambkuj)
+          {
+            for (;;)
+            {
+              i = 1;
+            }
+          }
+        }
+        ForceUserUpdateActivity.a(this.a, "onReceiveData: FetchTabConfigData empty: " + localObject);
+        i = 0;
+      }
+      ForceUserUpdateActivity.a(this.a, "onReceiveData: FetchTabConfigData parse failed: " + parambkuj.getMessage());
     }
-    return null;
   }
   
-  @JsEvent({"uploadAvatar"})
-  public void uploadAvatar(RequestEvent paramRequestEvent)
+  public void a(BaseCgiTask paramBaseCgiTask, String paramString)
   {
-    try
-    {
-      Object localObject = a(paramRequestEvent);
-      QLog.i("SetAvatarNativePlugin", 1, "onInvoke, param=" + localObject);
-      localObject = ((JSONObject)localObject).optJSONObject("data");
-      if (localObject == null)
-      {
-        paramRequestEvent.fail(new JSONObject("empty data"), "empty data");
-        return;
-      }
-      localObject = ((JSONObject)localObject).optString("path", null);
-      localObject = ((IMiniAppFileManager)this.mMiniAppContext.getManager(IMiniAppFileManager.class)).getAbsolutePath((String)localObject);
-      QLog.d("SetAvatarNativePlugin", 1, (String)localObject);
-      Bundle localBundle = new Bundle();
-      localBundle.putString("param_avatar_path", (String)localObject);
-      QIPCClientHelper.getInstance().getClient().callServer("CommonModule", "set_avatar", localBundle, new bkut(this, paramRequestEvent));
-      return;
-    }
-    catch (Throwable paramRequestEvent)
-    {
-      QLog.e("SetAvatarNativePlugin", 1, "setAvatar err", paramRequestEvent);
-    }
+    ForceUserUpdateActivity.a(this.a, "onConnectionError: FetchTabConfigData error: " + paramString);
   }
 }
 

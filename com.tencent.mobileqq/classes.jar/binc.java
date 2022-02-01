@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.webview.WebViewTitleStyle;
-
-public final class binc
-  implements Parcelable.Creator<WebViewTitleStyle>
+class binc
+  extends binf
 {
-  public WebViewTitleStyle a(Parcel paramParcel)
-  {
-    return new WebViewTitleStyle(paramParcel);
-  }
+  binc(binb parambinb) {}
   
-  public WebViewTitleStyle[] a(int paramInt)
+  protected void a(boolean paramBoolean)
   {
-    return new WebViewTitleStyle[paramInt];
+    super.a(paramBoolean);
+    if (paramBoolean)
+    {
+      binb.a(this.a);
+      return;
+    }
+    binb.b(this.a);
   }
 }
 

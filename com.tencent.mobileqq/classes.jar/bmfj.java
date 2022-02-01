@@ -1,33 +1,13 @@
-import android.view.View;
-import com.tencent.shadow.dynamic.host.EnterCallback;
+import java.util.concurrent.ConcurrentHashMap;
 
 class bmfj
-  implements EnterCallback
+  implements bmfl
 {
-  bmfj(bmfi parambmfi, EnterCallback paramEnterCallback, long paramLong) {}
+  bmfj(bmfi parambmfi) {}
   
-  public void onCloseLoadingView()
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
-      this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onCloseLoadingView();
-    }
-    bmqw.c("IliveAuthShadowImpl", "[onCloseLoadingView] formId = " + this.jdField_a_of_type_Long);
-  }
-  
-  public void onEnterComplete()
-  {
-    if (this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
-      this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onEnterComplete();
-    }
-    bmqw.c("IliveAuthShadowImpl", "[onEnterComplete] formId = " + this.jdField_a_of_type_Long);
-  }
-  
-  public void onShowLoadingView(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
-      this.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onShowLoadingView(paramView);
-    }
-    bmqw.c("IliveAuthShadowImpl", "[onShowLoadingView] formId = " + this.jdField_a_of_type_Long);
+    bmfh.a(this.a.jdField_a_of_type_Bmfh).put(Integer.valueOf(paramInt), this.a.jdField_a_of_type_Bmgg);
   }
 }
 

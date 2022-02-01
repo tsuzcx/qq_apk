@@ -1,66 +1,56 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.SpannableString;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.3;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class aumw
+  implements aung
 {
-  public static void a(Context paramContext, int paramInt1, int paramInt2, aumz paramaumz)
-  {
-    Object localObject = paramContext;
-    if (paramContext == null) {
-      localObject = BaseActivity.sTopActivity;
-    }
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FMDialogUtil<FileAssistant>", 2, "show dialog fail, context is null!");
-      }
-      return;
-    }
-    a((Context)localObject, ((Context)localObject).getString(paramInt1), ((Context)localObject).getString(paramInt2), paramaumz);
-  }
+  public aumw(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
   
-  public static void a(Context paramContext, String paramString, int paramInt, aumz paramaumz)
+  public void a(boolean paramBoolean)
   {
-    Object localObject = paramContext;
-    if (paramContext == null) {
-      localObject = BaseActivity.sTopActivity;
-    }
-    if (localObject == null)
+    int k = 1;
+    IVPluginDataReporter localIVPluginDataReporter;
+    int j;
+    if (!NetworkUtil.isWifiEnabled(GroupVideoLoadingFragment.a(this.a)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FMDialogUtil<FileAssistant>", 2, "show dialog fail, context is null!");
+      i = 1;
+      if (!paramBoolean) {
+        break label80;
       }
+      GroupVideoLoadingFragment.a(this.a, false);
+      localIVPluginDataReporter = GroupVideoLoadingFragment.a(this.a).opType("enterPage");
+      if (!paramBoolean) {
+        break label111;
+      }
+      j = 1;
+      label50:
+      localIVPluginDataReporter = localIVPluginDataReporter.opIn(j);
+      if (i == 0) {
+        break label116;
+      }
+    }
+    label80:
+    label111:
+    label116:
+    for (int i = k;; i = 0)
+    {
+      localIVPluginDataReporter.opResult(i).report();
       return;
-    }
-    a((Context)localObject, paramString, ((Context)localObject).getString(paramInt), paramaumz);
-  }
-  
-  public static void a(Context paramContext, String paramString, CharSequence paramCharSequence, aumz paramaumz)
-  {
-    aumx localaumx = new aumx(paramaumz);
-    paramaumz = new aumy(paramaumz);
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {}
-    do
-    {
-      new Handler(localLooper).post(new FMDialogUtil.3(paramContext, paramCharSequence, paramString, localaumx, paramaumz));
-      do
-      {
-        return;
-      } while (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()));
-      if ((paramCharSequence instanceof String))
-      {
-        bhlq.a(paramContext, 230, paramString, (String)paramCharSequence, 2131692065, 2131692069, localaumx, paramaumz).show();
-        return;
+      i = 0;
+      break;
+      if (i != 0) {
+        GroupVideoLoadingFragment.a(this.a, true);
       }
-    } while (!(paramCharSequence instanceof SpannableString));
-    bhlq.a(paramContext, 230, paramString, paramCharSequence, 2131692065, 2131692069, localaumx, paramaumz).show();
+      for (;;)
+      {
+        auoj.b("2880338");
+        break;
+        GroupVideoLoadingFragment.a(this.a, false);
+      }
+      j = 0;
+      break label50;
+    }
   }
 }
 

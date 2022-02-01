@@ -1,18 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
+import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pox;
-import qyr;
+import puf;
+import rfq;
+import tgc;
 
 public class ChannelCoverInfoModule$9
   implements Runnable
 {
-  public ChannelCoverInfoModule$9(pox parampox, List paramList1, List paramList2) {}
+  public ChannelCoverInfoModule$9(puf parampuf, List paramList1, List paramList2) {}
   
   public void run()
   {
@@ -47,21 +49,21 @@ public class ChannelCoverInfoModule$9
         localJSONObject.put("titleBgColor", localTabChannelCoverInfo.redPoint.jdField_c_of_type_Int);
         localTabChannelCoverInfo.redPointJson = localJSONObject.toString();
         label211:
+        if ((localTabChannelCoverInfo.mChannelCoverId == 70) && (!TextUtils.isEmpty(localTabChannelCoverInfo.mChannelJumpUrl))) {
+          tgc.a(localTabChannelCoverInfo.mChannelJumpUrl);
+        }
         this.this$0.a(localTabChannelCoverInfo);
         continue;
-        if (QLog.isColorLevel())
+        localObject = puf.a(this.this$0);
+        if (localObject != null)
         {
-          localObject = pox.a(this.this$0);
-          if (localObject != null)
-          {
-            QLog.i("ChannelCoverInfoModule", 2, "now channels in db are:\n");
-            localObject = ((List)localObject).iterator();
-            while (((Iterator)localObject).hasNext()) {
-              QLog.i("ChannelCoverInfoModule", 2, ((TabChannelCoverInfo)((Iterator)localObject).next()).toString());
-            }
+          QLog.i("ChannelCoverInfoModule", 1, "now channels in db are:\n");
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext()) {
+            QLog.i("ChannelCoverInfoModule", 1, ((TabChannelCoverInfo)((Iterator)localObject).next()).toString());
           }
-          QLog.i("ChannelCoverInfoModule", 2, "now channels in db are null:\n");
         }
+        QLog.i("ChannelCoverInfoModule", 1, "now channels in db are null:\n");
         return;
       }
       catch (JSONException localJSONException)

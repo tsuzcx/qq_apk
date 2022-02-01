@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.view.MotionEvent;
-import bdll;
-import blha;
-import bmgk;
+import bcef;
+import bjmp;
+import bkkq;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
@@ -19,8 +19,8 @@ public abstract class QQIndividualityBaseBridgeActivity
   extends IphoneTitleBarActivity
   implements Handler.Callback
 {
-  protected blha a;
-  protected bmgk a;
+  protected bjmp a;
+  protected bkkq a;
   
   public abstract void a();
   
@@ -31,7 +31,7 @@ public abstract class QQIndividualityBaseBridgeActivity
       if (QLog.isColorLevel()) {
         QLog.d("QQIndividuality", 2, "handlePluginInfo null == pluginInfo");
       }
-      this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1000, 200L);
+      this.jdField_a_of_type_Bjmp.sendEmptyMessageDelayed(1000, 200L);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -43,17 +43,17 @@ public abstract class QQIndividualityBaseBridgeActivity
     default: 
       return;
     case -2: 
-      this.jdField_a_of_type_Blha.sendEmptyMessage(1001);
+      this.jdField_a_of_type_Bjmp.sendEmptyMessage(1001);
       return;
     case 0: 
-      this.jdField_a_of_type_Bmgk.a("qqindividuality_plugin.apk");
-      this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1000, 200L);
+      this.jdField_a_of_type_Bkkq.a("qqindividuality_plugin.apk");
+      this.jdField_a_of_type_Bjmp.sendEmptyMessageDelayed(1000, 200L);
     case 1: 
     case 2: 
-      this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1000, 200L);
+      this.jdField_a_of_type_Bjmp.sendEmptyMessageDelayed(1000, 200L);
       return;
     case 3: 
-      this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1000, 200L);
+      this.jdField_a_of_type_Bjmp.sendEmptyMessageDelayed(1000, 200L);
       return;
     }
     b();
@@ -64,28 +64,29 @@ public abstract class QQIndividualityBaseBridgeActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Blha = new blha(this);
-    this.jdField_a_of_type_Bmgk = ((bmgk)this.app.getManager(27));
-    this.jdField_a_of_type_Blha.postDelayed(new QQIndividualityBaseBridgeActivity.1(this), 300L);
+    this.jdField_a_of_type_Bjmp = new bjmp(this);
+    this.jdField_a_of_type_Bkkq = ((bkkq)this.app.getManager(27));
+    this.jdField_a_of_type_Bjmp.postDelayed(new QQIndividualityBaseBridgeActivity.1(this), 300L);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Blha != null)
+    if (this.jdField_a_of_type_Bjmp != null)
     {
-      this.jdField_a_of_type_Blha.removeMessages(1000);
-      this.jdField_a_of_type_Blha.removeMessages(200);
-      this.jdField_a_of_type_Blha.removeMessages(1001);
+      this.jdField_a_of_type_Bjmp.removeMessages(1000);
+      this.jdField_a_of_type_Bjmp.removeMessages(200);
+      this.jdField_a_of_type_Bjmp.removeMessages(1001);
     }
   }
   
@@ -99,10 +100,10 @@ public abstract class QQIndividualityBaseBridgeActivity
       return true;
       if (!isFinishing())
       {
-        a("qqindividuality_plugin.apk", this.jdField_a_of_type_Bmgk.a("qqindividuality_plugin.apk"));
+        a("qqindividuality_plugin.apk", this.jdField_a_of_type_Bkkq.a("qqindividuality_plugin.apk"));
         continue;
         QLog.e("QQIndividuality", 2, "install plugin action error");
-        bdll.b(null, "CliOper", "", "", "ep_mall", "0X8006A99", 0, 0, "", "", "", "");
+        bcef.b(null, "CliOper", "", "", "ep_mall", "0X8006A99", 0, 0, "", "", "", "");
       }
     }
   }

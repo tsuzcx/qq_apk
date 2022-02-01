@@ -22,7 +22,7 @@ public class AnimationView$PlayItem
     this.mCycle = paramInt3;
   }
   
-  protected static PlayItem a(JSONObject paramJSONObject)
+  protected static PlayItem loadFromJson(JSONObject paramJSONObject)
   {
     int i = 1;
     if (paramJSONObject == null) {

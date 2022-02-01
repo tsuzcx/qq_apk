@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.webso;
 
 import android.os.SystemClock;
-import bisl;
+import bgyn;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -14,7 +14,7 @@ public class HybridWebReporter
   private static HybridWebReporter jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter;
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
   public static String a;
-  private static ArrayList<bisl> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static ArrayList<bgyn> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Random jdField_a_of_type_JavaUtilRandom;
   
   public static HybridWebReporter a()
@@ -57,9 +57,9 @@ public class HybridWebReporter
     return true;
   }
   
-  public void a(bisl parambisl)
+  public void a(bgyn parambgyn)
   {
-    if (parambisl == null) {}
+    if (parambgyn == null) {}
     for (;;)
     {
       return;
@@ -68,25 +68,25 @@ public class HybridWebReporter
       int j = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatUploadBatchInterval", 600);
       int k = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatUploadBatchCount", 10);
       if (QLog.isColorLevel()) {
-        QLog.d("HybridWebReporter", 2, "add report, isreported(" + parambisl.jdField_d_of_type_Boolean + "), url: " + parambisl.a);
+        QLog.d("HybridWebReporter", 2, "add report, isreported(" + parambgyn.jdField_d_of_type_Boolean + "), url: " + parambgyn.a);
       }
-      if ((parambisl.f == 0) || (parambisl.jdField_d_of_type_Boolean)) {
+      if ((parambgyn.f == 0) || (parambgyn.jdField_d_of_type_Boolean)) {
         continue;
       }
-      parambisl.jdField_d_of_type_Boolean = true;
-      if (parambisl.f < 0) {
-        parambisl.f = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatDefaultSampling", 20);
+      parambgyn.jdField_d_of_type_Boolean = true;
+      if (parambgyn.f < 0) {
+        parambgyn.f = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatDefaultSampling", 20);
       }
       try
       {
-        i = Integer.valueOf(parambisl.jdField_d_of_type_JavaLangString).intValue();
-        if (((parambisl.b != 1000) && (parambisl.b != 0)) || (i < 100) || (i > 400)) {
-          parambisl.f = 1;
+        i = Integer.valueOf(parambgyn.jdField_d_of_type_JavaLangString).intValue();
+        if (((parambgyn.b != 1000) && (parambgyn.b != 0)) || (i < 100) || (i > 400)) {
+          parambgyn.f = 1;
         }
         if (QLog.isColorLevel()) {
-          parambisl.f = 1;
+          parambgyn.f = 1;
         }
-        if (!a(parambisl.f)) {
+        if (!a(parambgyn.f)) {
           continue;
         }
       }
@@ -94,7 +94,7 @@ public class HybridWebReporter
       {
         synchronized (jdField_a_of_type_JavaUtilArrayList)
         {
-          jdField_a_of_type_JavaUtilArrayList.add(parambisl);
+          jdField_a_of_type_JavaUtilArrayList.add(parambgyn);
           if ((jdField_a_of_type_JavaUtilArrayList.size() < k) && ((l1 - l2 < j * 1000) || (jdField_a_of_type_JavaUtilArrayList.size() <= 0))) {
             continue;
           }

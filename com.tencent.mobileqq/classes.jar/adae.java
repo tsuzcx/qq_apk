@@ -1,9 +1,18 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
-public abstract interface adae
+public class adae
+  implements bamo
 {
-  public abstract boolean a(String paramString, int paramInt1, int paramInt2, aday paramaday, ArrayList<MessageRecord> paramArrayList, MessageRecord paramMessageRecord, long paramLong);
+  public adae(ChatSettingActivity paramChatSettingActivity) {}
+  
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  {
+    if ((this.a.g != null) && (this.a.a != null) && (this.a.a.actionId == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
+      ChatSettingActivity.a(this.a, this.a.a, this.a.g);
+    }
+  }
 }
 
 

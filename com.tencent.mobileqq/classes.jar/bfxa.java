@@ -1,174 +1,139 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mm.vfs.VFSFile;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.AsyncTask;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.filemanager.forward.TroopFileToTroopForwarder.2;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.manager.ServerConfigManager.ConfigType;
 
-public class bfxa
-  extends bfxq
+final class bfxa
+  extends AsyncTask<Void, Void, Void>
 {
-  aavm a;
+  bfxa(String paramString1, int paramInt, String paramString2) {}
   
-  protected bfxa(long paramLong, TroopFileTransferManager.Item paramItem)
+  protected Void a(Void... paramVarArgs)
   {
-    super(paramLong, paramItem);
-    this.jdField_a_of_type_Aavm = new bfxb(this);
-  }
-  
-  public static bfxa a(long paramLong, TroopFileTransferManager.Item paramItem)
-  {
-    if (paramLong == 0L)
-    {
-      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "getTroop2TroopForwarder. troopuin=0");
+    paramVarArgs = bfyg.a(ServerConfigManager.ConfigType.common, bfwz.p());
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PerformanceReportUtils", 4, "reportFPS openStr ：" + paramVarArgs);
+    }
+    if ((paramVarArgs == null) || (!"1".equals(paramVarArgs))) {
       return null;
     }
-    if (paramItem == null)
-    {
-      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "getTroop2TroopForwarder. item=null");
-      return null;
-    }
-    if (paramItem.Id == null)
-    {
-      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "getTroop2TroopForwarder. item.id=null");
-      return null;
-    }
-    if (paramItem.ForwardTroopuin == 0L)
-    {
-      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "getTroop2TroopForwarder. ForwardTroopuin=0");
-      return null;
-    }
-    if ((paramItem.BusId != 102) && (paramItem.BusId != 104))
-    {
-      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "getTroop2TroopForwarder. BusId err:" + paramItem.BusId);
-      return null;
-    }
-    if (TextUtils.isEmpty(paramItem.ForwardPath))
-    {
-      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "getTroop2TroopForwarder. ForwardPath=null");
-      return null;
-    }
-    return new bfxa(paramLong, paramItem);
-  }
-  
-  private final void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
-  {
-    paramString2 = bfvp.a();
-    bfvr.c("TroopFileToTroopForwarder", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult isSuccess:true retCode:" + paramInt1);
-    if (paramInt1 < 0)
-    {
-      paramInt2 = 207;
-      switch (paramInt1)
-      {
-      default: 
-        paramString1 = paramString3;
-        paramInt1 = paramInt2;
-      }
-      for (;;)
-      {
-        paramString1 = new bgrk(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardTroopuin, 5, paramInt1, paramString1);
-        bfva.a(this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 5, paramString1);
-        if (paramString2 == null) {
-          break;
-        }
-        paramString1 = paramString2.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.entrySessionID);
-        if (paramString1 != null)
-        {
-          long l = paramString1.structMsgSeq;
-          paramString2.a().b("" + this.d, 1, l);
-        }
-        return;
-        paramInt1 = 202;
-        paramString1 = paramString3;
-        continue;
-        paramInt1 = 600;
-        paramString1 = paramString3;
-        continue;
-        paramInt1 = 701;
-        paramString1 = paramString3;
-        continue;
-        paramInt1 = 706;
-        paramString1 = anzj.a(2131714128);
-        continue;
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId == 102)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId = 104;
-          if (paramString2 != null)
-          {
-            bfvr.b("TroopFileToTroopForwarder", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult: space no enough. fowrd temp.");
-            aauw.a(paramString2, false, this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.d, 0L, this.jdField_a_of_type_Aavm);
-            return;
-          }
-          paramInt1 = 204;
-          paramString1 = paramString3;
-        }
-        else
-        {
-          paramInt1 = 204;
-          paramString1 = paramString3;
-          continue;
-          paramInt1 = -139;
-          paramString1 = paramString3;
-          continue;
-          if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile)) && (new VFSFile(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile).exists()))
-          {
-            bfvr.b("TroopFileToTroopForwarder", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult: -6101. start local uploadl.");
-            bfxt.a().a(this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, null);
-            return;
-          }
-          paramInt1 = 603;
-          paramString1 = paramString3;
-          continue;
-          paramInt1 = 705;
-          paramString1 = paramString3;
-        }
-      }
-      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult fail. removeMsgByUniseq fail.");
-      return;
-    }
-    new Handler(Looper.getMainLooper()).post(new TroopFileToTroopForwarder.2(this));
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath = paramString1;
-    bfvr.c("TroopFileToTroopForwarder", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult sucess. mItem.FilePath:" + paramString1);
-    paramString3 = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(this.d);
-    if (paramString3 != null) {
-      paramString3.e = paramString1;
-    }
-    if (paramString2 != null)
-    {
-      paramString2 = paramString2.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.entrySessionID);
-      if (paramString2 != null) {
-        paramString2.strTroopFilePath = paramString1;
-      }
-    }
+    int i;
     for (;;)
     {
-      bfva.a(this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 7, 0);
-      j();
-      return;
-      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] onFowardToTroopResult sucess. update entity.strTroopFilePath fail.");
+      try
+      {
+        localSharedPreferences = bfwz.a();
+        if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_Int <= 0)) {
+          break label631;
+        }
+        if ((this.jdField_a_of_type_Int >= 60) && (QLog.isDevelopLevel())) {
+          QLog.e("PerformanceReportUtils", 4, "reportFPS  fps error fpsvalue :" + this.jdField_a_of_type_Int);
+        }
+        l2 = localSharedPreferences.getLong(this.jdField_a_of_type_JavaLangString, 0L);
+        l1 = bfwz.a();
+        paramVarArgs = bfyg.a(ServerConfigManager.ConfigType.common, bfwz.q());
+        if (paramVarArgs == null) {}
+      }
+      catch (Exception paramVarArgs)
+      {
+        SharedPreferences localSharedPreferences;
+        long l2;
+        long l1;
+        HashMap localHashMap;
+        BaseApplicationImpl localBaseApplicationImpl;
+        break label631;
+        i = 1;
+        continue;
+      }
+      try
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("PerformanceReportUtils", 4, "reportFPS  server time：" + paramVarArgs);
+        }
+        l1 = Long.valueOf(paramVarArgs).longValue();
+        l1 *= 1000L;
+      }
+      catch (Exception paramVarArgs)
+      {
+        l1 = bfwz.a();
+        continue;
+        paramVarArgs = this.jdField_a_of_type_JavaLangString + "_new";
+      }
     }
-  }
-  
-  private int b()
-  {
-    QQAppInterface localQQAppInterface = bfvp.a();
-    if (localQQAppInterface == null)
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PerformanceReportUtils", 4, "reportFPS report_time ：" + l1 + ",lastRp" + l2 + ",reportFPS fpsvalue：" + this.jdField_a_of_type_Int);
+    }
+    if ((l2 != 0L) && (SystemClock.uptimeMillis() >= l2))
     {
-      bfvr.a("TroopFileToTroopForwarder", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] startTroop2Troop app=null");
-      return -1;
+      if (SystemClock.uptimeMillis() - l2 < l1) {
+        break label633;
+      }
+      break label626;
+      bool = UnifiedMonitor.a().whetherReportThisTime(12, false);
+      if ((i == 0) && (!bool)) {
+        break label631;
+      }
+      localHashMap = new HashMap();
+      localHashMap.put("param_FPS", String.valueOf(this.jdField_a_of_type_Int));
+      localHashMap.put("aioBusiness", this.b);
+      localHashMap.put("theme_Id", QQAppInterface.getCurrentThemeId());
+      localHashMap.put("param_threadOpId", String.valueOf(anbx.a().a()));
+      if (QLog.isDevelopLevel()) {
+        QLog.d("PerformanceReportUtils", 4, "reportFPS real report  fpsvalue：" + this.jdField_a_of_type_Int);
+      }
+      localHashMap.put("param_DeviceType", String.valueOf(ajpv.a()));
+      paramVarArgs = null;
+      localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      if (localBaseApplicationImpl != null) {
+        paramVarArgs = localBaseApplicationImpl.getRuntime();
+      }
+      if ((paramVarArgs != null) && ((paramVarArgs instanceof QQAppInterface)))
+      {
+        if (((QQAppInterface)paramVarArgs).mAutomator.a == 0L) {
+          break label638;
+        }
+        bool = true;
+        label457:
+        localHashMap.put("param_is_logining", String.valueOf(bool));
+        if (((QQAppInterface)paramVarArgs).mAutomator.c()) {
+          break label644;
+        }
+      }
     }
-    bfvr.c("TroopFileToTroopForwarder", bfvr.a, "[" + this.jdField_a_of_type_JavaLangString + "] startTroop2Troop. BusId:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId + " ForwardBusId:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardBusId + " ForwardPath:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ForwardPath + " entrySessionID:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.entrySessionID + " with:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.width + " height:" + this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.height);
-    aauw.a(localQQAppInterface, false, this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.d, 0L, this.jdField_a_of_type_Aavm);
-    bfva.a(this.d, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 4, 0);
-    return 0;
-  }
-  
-  public int a()
-  {
-    return b();
+    label644:
+    for (boolean bool = true;; bool = false)
+    {
+      localHashMap.put("param_syncing_msg", String.valueOf(bool));
+      localHashMap.put("param_NetType", String.valueOf(NetworkUtil.getSystemNetwork(BaseApplication.getContext())));
+      if (i != 0)
+      {
+        paramVarArgs = this.jdField_a_of_type_JavaLangString;
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(bfyg.a(), paramVarArgs, bfwz.a(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int, 0L, localHashMap, bfwz.o());
+        if (i == 0) {
+          break label631;
+        }
+        localSharedPreferences.edit().putLong(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis()).commit();
+      }
+      label626:
+      label631:
+      return null;
+      label633:
+      i = 0;
+      break;
+      label638:
+      bool = false;
+      break label457;
+    }
   }
 }
 

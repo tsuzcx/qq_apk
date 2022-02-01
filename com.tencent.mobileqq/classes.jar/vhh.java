@@ -1,56 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Comparator;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.qcircleshadow.local.widgets.QCircleFollowView;
 
-public class vhh<T>
+public class vhh
+  implements bjoe
 {
-  private int jdField_a_of_type_Int;
-  private final Comparator<T> jdField_a_of_type_JavaUtilComparator;
-  private final vhi<T> jdField_a_of_type_Vhi = new vhi();
+  public vhh(QCircleFollowView paramQCircleFollowView, bjnw parambjnw) {}
   
-  public vhh(Comparator<T> paramComparator)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilComparator = paramComparator;
-  }
-  
-  public List<T> a(T paramT, List<T> paramList)
-  {
-    for (vhi localvhi = this.jdField_a_of_type_Vhi.jdField_a_of_type_Vhi; (localvhi != this.jdField_a_of_type_Vhi) && (this.jdField_a_of_type_JavaUtilComparator.compare(localvhi.jdField_a_of_type_JavaLangObject, paramT) <= 0); localvhi = localvhi.jdField_a_of_type_Vhi)
-    {
-      QLog.d("PhotoDanmakuDataSource", 2, "befor removeLessThanData - mDrawingDanmakuList - added");
-      paramList.add(localvhi.jdField_a_of_type_JavaLangObject);
-      this.jdField_a_of_type_Int -= 1;
+    if (!zvo.a("showUnFollowUserActionSheetClick")) {
+      switch (paramInt)
+      {
+      }
     }
-    this.jdField_a_of_type_Vhi.jdField_a_of_type_Vhi = localvhi;
-    localvhi.b = this.jdField_a_of_type_Vhi;
-    return paramList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Vhi.jdField_a_of_type_Vhi = this.jdField_a_of_type_Vhi;
-    this.jdField_a_of_type_Vhi.b = this.jdField_a_of_type_Vhi;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public boolean a(T paramT)
-  {
-    for (vhi localvhi = this.jdField_a_of_type_Vhi.b; (localvhi != this.jdField_a_of_type_Vhi) && (this.jdField_a_of_type_JavaUtilComparator.compare(localvhi.jdField_a_of_type_JavaLangObject, paramT) > 0); localvhi = localvhi.b) {}
-    paramT = new vhi(paramT, localvhi.jdField_a_of_type_Vhi, localvhi);
-    localvhi.jdField_a_of_type_Vhi.b = paramT;
-    localvhi.jdField_a_of_type_Vhi = paramT;
-    this.jdField_a_of_type_Int += 1;
-    return true;
-  }
-  
-  public boolean b(T paramT)
-  {
-    for (vhi localvhi = this.jdField_a_of_type_Vhi.jdField_a_of_type_Vhi; (localvhi != this.jdField_a_of_type_Vhi) && (this.jdField_a_of_type_JavaUtilComparator.compare(localvhi.jdField_a_of_type_JavaLangObject, paramT) < 0); localvhi = localvhi.jdField_a_of_type_Vhi) {}
-    paramT = new vhi(paramT, localvhi, localvhi.b);
-    localvhi.b.jdField_a_of_type_Vhi = paramT;
-    localvhi.b = paramT;
-    this.jdField_a_of_type_Int += 1;
-    return true;
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      if (QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView) != null) {
+        QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView).a();
+      }
+      this.jdField_a_of_type_ComTencentBizQcircleshadowLocalWidgetsQCircleFollowView.b(false);
+    }
   }
 }
 

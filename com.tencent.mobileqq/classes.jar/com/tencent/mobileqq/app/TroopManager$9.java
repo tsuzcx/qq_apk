@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app;
 
 import android.os.Handler;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.mobileqq.persistence.EntityManager;
 
 class TroopManager$9
@@ -12,16 +12,16 @@ class TroopManager$9
   
   public void run()
   {
-    EntityManager localEntityManager = this.this$0.a.a().createEntityManager();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.getStatus() == 1000) {
-      localEntityManager.persistOrReplace(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+    EntityManager localEntityManager = this.this$0.a.getEntityManagerFactory().createEntityManager();
+    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo.getStatus() == 1000) {
+      localEntityManager.persistOrReplace(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo);
     }
     for (;;)
     {
       localEntityManager.close();
       this.jdField_a_of_type_AndroidOsHandler.post(new TroopManager.9.1(this));
       return;
-      localEntityManager.update(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      localEntityManager.update(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberInfo);
     }
   }
 }

@@ -13,7 +13,7 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import bors;
+import blvx;
 
 public class AEGIFOutlineTextView
   extends View
@@ -50,7 +50,7 @@ public class AEGIFOutlineTextView
   
   private void a()
   {
-    Typeface localTypeface = bors.a().a(this.jdField_b_of_type_JavaLangString);
+    Typeface localTypeface = blvx.a().a(this.jdField_b_of_type_JavaLangString);
     this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
     this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
   }

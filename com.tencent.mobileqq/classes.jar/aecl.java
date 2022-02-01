@@ -1,13 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class aecl
   implements DialogInterface.OnClickListener
 {
-  public aecl(ChatHistory paramChatHistory) {}
+  public aecl(RegisterActivity paramRegisterActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.a.sendEmptyMessage(1);
+  }
 }
 
 

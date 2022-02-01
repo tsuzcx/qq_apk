@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
-import betj;
-
-public class ForwardSdkShareProcessor$1
+class ForwardSdkShareProcessor$1
   implements Runnable
 {
-  public ForwardSdkShareProcessor$1(betj parambetj) {}
+  ForwardSdkShareProcessor$1(ForwardSdkShareProcessor paramForwardSdkShareProcessor) {}
   
   public void run()
   {
-    this.this$0.aN_();
+    this.this$0.start();
   }
 }
 

@@ -1,55 +1,40 @@
-import android.os.Binder;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import dov.com.qq.im.ae.view.AEDownLoadingView;
 
-public abstract class bmnf
-  extends Binder
-  implements bmne
+public class bmnf
+  extends RecyclerView.ViewHolder
 {
-  public bmnf()
-  {
-    attachInterface(this, "cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
-  }
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  AEDownLoadingView jdField_a_of_type_DovComQqImAeViewAEDownLoadingView;
+  View jdField_b_of_type_AndroidViewView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  View c;
+  View d;
   
-  public static bmne a(IBinder paramIBinder)
+  public bmnf(bmnb parambmnb, View paramView)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
-    if ((localIInterface != null) && ((localIInterface instanceof bmne))) {
-      return (bmne)localIInterface;
-    }
-    return new bmng(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
-      return true;
-    }
-    paramParcel1.enforceInterface("cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface");
-    paramInt1 = paramParcel1.readInt();
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(paramInt1, paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131364567);
+    this.jdField_b_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368367));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377012));
+    this.c = paramView.findViewById(2131380311);
+    this.d = paramView.findViewById(2131380312);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView = ((AEDownLoadingView)paramView.findViewById(2131373044));
+    int i = AIOUtils.dp2px(6.0F, this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.getResources());
+    int j = AIOUtils.dp2px(2.0F, this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.getResources());
+    int k = AIOUtils.dp2px(16.0F, this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.getResources());
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setBgCorner(1.0F * k / 2.0F);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setMinimumHeight(k);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setMinimumWidth(k);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgressSizeAndMode(i, j, false);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setBgColor(0);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgressColor(-1);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.a(false);
   }
 }
 

@@ -1,24 +1,100 @@
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
-import com.tencent.widget.RecentDynamicAvatarView;
-import com.tencent.widget.SingleLineTextView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class aloe
-  extends alnv
 {
-  public Button a;
-  public RelativeLayout a;
-  public TextView a;
-  public TroopLabelLayout a;
-  public RecentDynamicAvatarView a;
-  public SingleLineTextView a;
-  public RelativeLayout b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  public static int a;
+  public static String a;
+  public static boolean a;
+  public static int b;
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e;
+  public static String f;
+  public static String g;
+  public static String h;
+  public static String i;
+  public static String j;
+  
+  static {}
+  
+  private static void a()
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_app3d_config", 0);
+    if (localSharedPreferences.getInt("show", 0) == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      jdField_a_of_type_JavaLangString = localSharedPreferences.getString("packageName", null);
+      jdField_b_of_type_JavaLangString = localSharedPreferences.getString("downloadUrl", "");
+      c = localSharedPreferences.getString("iconUrl", "");
+      d = localSharedPreferences.getString("progressUrl", "");
+      e = localSharedPreferences.getString("md5", "");
+      f = localSharedPreferences.getString("apkSize", "");
+      jdField_a_of_type_Int = localSharedPreferences.getInt("versionCode", 0);
+      h = localSharedPreferences.getString("apkSign", "");
+      i = localSharedPreferences.getString("appName", "");
+      g = localSharedPreferences.getString("appId", "");
+      jdField_b_of_type_Int = localSharedPreferences.getInt("adId", 0);
+      j = localSharedPreferences.getString("traceInfo", "");
+      QLog.d("ApolloManager", 1, new Object[] { "App3DConfig init, sShow=", Boolean.valueOf(jdField_a_of_type_Boolean) });
+      return;
+    }
+  }
+  
+  private static void b(Map<String, String> paramMap, int paramInt, String paramString)
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_app3d_config", 0);
+    try
+    {
+      boolean bool;
+      if (Integer.parseInt((String)paramMap.get("show")) == 1)
+      {
+        bool = true;
+        jdField_a_of_type_Boolean = bool;
+        jdField_a_of_type_JavaLangString = (String)paramMap.get("packageName");
+        jdField_b_of_type_JavaLangString = (String)paramMap.get("downloadUrl");
+        c = (String)paramMap.get("iconUrl");
+        d = (String)paramMap.get("progressUrl");
+        e = (String)paramMap.get("md5");
+        f = (String)paramMap.get("apkSize");
+        jdField_a_of_type_Int = Integer.parseInt((String)paramMap.get("versionCode"));
+        h = (String)paramMap.get("apkSign");
+        i = (String)paramMap.get("appName");
+        g = (String)paramMap.get("appId");
+        jdField_b_of_type_Int = paramInt;
+        j = paramString;
+        if ((TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(c)) || (TextUtils.isEmpty(g)))
+        {
+          jdField_a_of_type_Boolean = false;
+          QLog.w("ApolloManager", 1, "App3DConfig parse invalid param");
+        }
+        paramMap = localSharedPreferences.edit();
+        if (!jdField_a_of_type_Boolean) {
+          break label415;
+        }
+      }
+      label415:
+      for (paramInt = 1;; paramInt = 0)
+      {
+        paramMap.putInt("show", paramInt).putString("packageName", jdField_a_of_type_JavaLangString).putString("downloadUrl", jdField_b_of_type_JavaLangString).putString("md5", e).putString("iconUrl", c).putString("progressUrl", d).putString("apkSize", f).putInt("versionCode", jdField_a_of_type_Int).putString("apkSign", h).putString("appName", i).putString("appId", g).putInt("adId", jdField_b_of_type_Int).putString("traceInfo", j).commit();
+        QLog.d("ApolloManager", 1, new Object[] { "App3DConfig parse, sShow=", Boolean.valueOf(jdField_a_of_type_Boolean) });
+        return;
+        bool = false;
+        break;
+      }
+      return;
+    }
+    catch (Throwable paramMap)
+    {
+      QLog.e("ApolloManager", 1, "App3DConfig parse error:", paramMap);
+    }
+  }
 }
 
 

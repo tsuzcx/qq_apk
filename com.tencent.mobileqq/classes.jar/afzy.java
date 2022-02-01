@@ -1,15 +1,32 @@
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.10;
+import com.tencent.qphone.base.util.QLog;
 
 public class afzy
-  implements agag
+  implements Animation.AnimationListener
 {
-  public afzy(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public afzy(GivingHeartItemBuilder.10 param10) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.setActualViewSize(paramInt1, paramInt2);
-    this.a.a.invalidate();
+    if (QLog.isColorLevel()) {
+      QLog.d("GivingHeart", 2, "onAnimationEnd " + paramAnimation);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GivingHeart", 2, "onAnimationRepeat " + paramAnimation);
+    }
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GivingHeart", 2, "onAnimationStart " + paramAnimation);
+    }
   }
 }
 

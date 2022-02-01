@@ -1,43 +1,47 @@
-import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 
-final class xlk
-  extends xjm
+class xlk
+  extends vlc
 {
-  xlk(String paramString1, String paramString2, int paramInt, Context paramContext) {}
+  xlk(xlj paramxlj) {}
   
-  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
-    if ((paramInt == 0) && (paramStoryVideoItem != null))
+    paramInt = 1;
+    if ((this.a.a == null) || (!TextUtils.equals(paramString, this.a.a.uid))) {
+      return;
+    }
+    if (paramBoolean1)
     {
-      paramString = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString, this.b), this.jdField_a_of_type_Int).a();
-      OpenPlayerBuilder.UIStyle localUIStyle = paramString.mUIStyle;
-      if (paramStoryVideoItem.mInteractStatus == 1) {}
-      for (paramInt = 1;; paramInt = 2)
+      paramString = this.a.a;
+      if (paramBoolean2)
       {
-        localUIStyle.bottomWidgetShowFlag = paramInt;
-        paramString.mUIStyle.mPlayerRepeatMode = 1;
-        xlj.a(this.jdField_a_of_type_AndroidContentContext, paramString, null);
+        paramString.isSubscribe = paramInt;
+        paramString = (vla)wkp.a().getManager(181);
+        if (!paramBoolean2) {
+          break label128;
+        }
+        if (!paramString.h()) {
+          paramString.b();
+        }
+        QQToast.a(wkp.a(), 2, amtj.a(2131710051), 0).a();
+      }
+      for (;;)
+      {
+        xlj.a(this.a).e();
+        xlj.a(this.a).c();
         return;
+        paramInt = 0;
+        break;
+        label128:
+        QQToast.a(wkp.a(), 2, amtj.a(2131710047), 0).a();
       }
     }
-    if (paramInt == 10100)
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, anzj.a(2131713348), 0).a();
-      return;
-    }
-    if (!TextUtils.isEmpty(paramString))
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, paramString, 0).a();
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, anzj.a(2131713349) + paramInt, 0).a();
+    QQToast.a(wkp.a(), 1, amtj.a(2131710056), 0).a();
   }
 }
 

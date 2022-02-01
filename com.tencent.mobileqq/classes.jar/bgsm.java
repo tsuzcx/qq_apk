@@ -1,37 +1,29 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
-class bgsm
-  extends aojs
+public class bgsm
+  extends BroadcastReceiver
 {
-  bgsm(bgsl parambgsl) {}
+  public bgsm(WebProcessManager paramWebProcessManager) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, int paramInt1, List<oidb_0x899.memberlist> paramList, long paramLong2, int paramInt2, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel())
+    int i = paramIntent.getIntExtra("user_type", 0);
+    int j = paramIntent.getIntExtra("from_type", 0);
+    paramContext = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramContext instanceof QQAppInterface))
     {
-      StringBuilder localStringBuilder = new StringBuilder(150);
-      localStringBuilder.append("onOIDB0X899_0_Ret").append("| isSuccess = ").append(paramBoolean).append("| troopuin = ").append(paramLong1).append("| nFlag = ").append(paramInt1).append("| strErorMsg = ").append(paramString);
-      QLog.i("TroopGagMgr", 2, localStringBuilder.toString());
-    }
-    if (((paramInt1 == 6) || (paramInt1 == 3)) && (paramBoolean))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        paramString = (oidb_0x899.memberlist)paramList.next();
-        if ((paramString != null) && (paramString.uint64_member_uin.has()) && (paramString.uint32_shutup_timestap.has()))
-        {
-          paramLong2 = paramString.uint32_shutup_timestap.get();
-          long l = paramString.uint64_member_uin.get();
-          ((TroopManager)this.a.a.getManager(52)).b(paramLong1 + "", l + "", paramLong2);
-        }
+      paramContext = (amoa)((QQAppInterface)paramContext).getBusinessHandler(53);
+      if (paramContext != null) {
+        paramContext.a(i, j);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("WebProcessManager", 2, "babyq receiver recv user_type=" + i + ", from_type=" + j);
       }
     }
   }

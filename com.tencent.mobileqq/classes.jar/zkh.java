@@ -1,23 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class zkh
-  extends bpor
+final class zkh
+  implements View.OnClickListener
 {
-  zkh(zkg paramzkg) {}
+  zkh(zkl paramzkl, String paramString, bjnw parambjnw) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean) {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowPhotoListManager", 2, "SlideShowPhotoListManager onFinish key=" + paramString + " result=" + paramBoolean);
-    }
+    this.jdField_a_of_type_Zkl.a(false, this.jdField_a_of_type_JavaLangString, true);
+    this.jdField_a_of_type_Bjnw.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

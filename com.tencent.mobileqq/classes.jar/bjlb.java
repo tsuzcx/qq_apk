@@ -1,55 +1,48 @@
-import android.graphics.Bitmap;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.open.agent.BindGroupActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
-
-public class bjlb
-  extends bjpx
+public final class bjlb
+  implements Cloneable
 {
-  public bjlb(BindGroupActivity paramBindGroupActivity) {}
+  private long a;
   
-  public int getCount()
+  public bjlb(long paramLong)
   {
-    return this.a.jdField_a_of_type_JavaUtilList.size();
+    this.a = paramLong;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public bjlb(byte[] paramArrayOfByte)
   {
-    Object localObject;
-    View localView;
-    if ((paramView != null) && (paramView.getTag() != null))
-    {
-      localObject = (bjlc)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      localObject = (bjla)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((bjla)localObject).b);
-      paramView.jdField_a_of_type_JavaLangString = ((bjla)localObject).c;
-      Bitmap localBitmap = bjqd.a().a(((bjla)localObject).c);
-      if (localBitmap == null) {
-        break label171;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
+    this(paramArrayOfByte, 0);
+  }
+  
+  public bjlb(byte[] paramArrayOfByte, int paramInt)
+  {
+    this.a = (paramArrayOfByte[(paramInt + 3)] << 24 & 0xFF000000);
+    this.a += (paramArrayOfByte[(paramInt + 2)] << 16 & 0xFF0000);
+    this.a += (paramArrayOfByte[(paramInt + 1)] << 8 & 0xFF00);
+    this.a += (paramArrayOfByte[paramInt] & 0xFF);
+  }
+  
+  public long a()
+  {
+    return this.a;
+  }
+  
+  public byte[] a()
+  {
+    return new byte[] { (byte)(int)(this.a & 0xFF), (byte)(int)((this.a & 0xFF00) >> 8), (byte)(int)((this.a & 0xFF0000) >> 16), (byte)(int)((this.a & 0xFF000000) >> 24) };
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof bjlb))) {}
+    while (this.a != ((bjlb)paramObject).a()) {
+      return false;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562900, paramViewGroup, false);
-      paramView = new bjlc();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366213));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379490));
-      localView.setTag(paramView);
-      break;
-      label171:
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840502);
-      bjqd.a().a(((bjla)localObject).c, this.a);
-    }
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    return (int)this.a;
   }
 }
 

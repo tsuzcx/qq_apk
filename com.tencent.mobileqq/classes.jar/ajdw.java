@@ -1,15 +1,29 @@
-import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface ajdw
+public class ajdw
+  implements bhhy
 {
-  public abstract Activity a();
+  public ajdw(MainFragment paramMainFragment) {}
   
-  public abstract QQAppInterface a();
-  
-  public abstract void a();
-  
-  public abstract void b();
+  public void a()
+  {
+    int i = GesturePWDUtils.getGesturePWDState(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
+    int j = GesturePWDUtils.getGesturePWDMode(MainFragment.a(this.a).getApp(), MainFragment.a(this.a).getCurrentAccountUin());
+    if ((i == 2) && (j == 20))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("mainactivity", 2, "gesturepwd manual move.");
+      }
+      ((SplashActivity)this.a.getActivity()).startUnlockActivity();
+      this.a.getActivity().overridePendingTransition(2130771997, 2130771990);
+      MainFragment.a(true);
+    }
+  }
 }
 
 

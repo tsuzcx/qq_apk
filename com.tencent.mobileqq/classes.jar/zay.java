@@ -1,15 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.SeekBar;
+import com.tencent.biz.richframework.widget.BaseVideoView;
+import com.tencent.superplayer.api.ISuperPlayer;
 
-class zay
-  implements ValueAnimator.AnimatorUpdateListener
+public class zay
+  implements zvn
 {
-  zay(zax paramzax) {}
+  public zay(BaseVideoView paramBaseVideoView, SeekBar paramSeekBar) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.g();
+    Message localMessage = Message.obtain();
+    localMessage.what = -1001;
+    localMessage.arg1 = this.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    localMessage.arg2 = ((int)this.jdField_a_of_type_ComTencentBizRichframeworkWidgetBaseVideoView.a().getDurationMs());
+    localMessage.obj = Boolean.valueOf(false);
+    if (this.jdField_a_of_type_ComTencentBizRichframeworkWidgetBaseVideoView.c()) {
+      this.jdField_a_of_type_ComTencentBizRichframeworkWidgetBaseVideoView.a(this.jdField_a_of_type_AndroidWidgetSeekBar.getProgress());
+    }
+    this.jdField_a_of_type_ComTencentBizRichframeworkWidgetBaseVideoView.a().sendMessage(localMessage);
   }
 }
 

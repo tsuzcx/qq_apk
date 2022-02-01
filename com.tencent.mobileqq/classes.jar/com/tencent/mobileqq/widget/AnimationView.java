@@ -10,9 +10,10 @@ import java.util.ArrayList;
 public class AnimationView
   extends RoundImageView
 {
-  protected AnimationView.AnimationInfo a;
-  protected AnimationView.MyAnimationListener a;
-  protected AnimationView.Player a;
+  protected static final String TAG = "AnimationView";
+  protected AnimationView.AnimationInfo mAnimationInfo;
+  protected AnimationView.MyAnimationListener mListener;
+  protected AnimationView.Player mPlayer;
   
   public AnimationView(Context paramContext)
   {
@@ -31,36 +32,36 @@ public class AnimationView
   
   public AnimationView.AnimationInfo getAnimationFromInfo()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
+    return this.mAnimationInfo;
   }
   
   public AnimationView.Player getPlayer()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player;
+    return this.mPlayer;
   }
   
   public void pause()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player == null) {
+    if (this.mPlayer == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player.pause();
+    this.mPlayer.pause();
   }
   
   public void play()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player == null) {
+    if (this.mPlayer == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player.play();
+    this.mPlayer.play();
   }
   
   public void resume()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player == null) {
+    if (this.mPlayer == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player.resume();
+    this.mPlayer.resume();
   }
   
   public void setAnimationFromBitmaps(ArrayList<Bitmap> paramArrayList, int paramInt1, int paramInt2)
@@ -84,9 +85,9 @@ public class AnimationView
     do
     {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = AnimationView.AnimationInfo.loadFromFrames(paramArrayList, paramInt1, paramInt2);
-    } while (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player != null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player = new AnimationView.Player(this);
+      this.mAnimationInfo = AnimationView.AnimationInfo.loadFromFrames(paramArrayList, paramInt1, paramInt2);
+    } while (this.mPlayer != null);
+    this.mPlayer = new AnimationView.Player(this);
   }
   
   public void setAnimationFromDrawabs(Drawable[] paramArrayOfDrawable, int paramInt1, int paramInt2)
@@ -106,28 +107,28 @@ public class AnimationView
   
   public void setAnimationFromInfo(AnimationView.AnimationInfo paramAnimationInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramAnimationInfo;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player = new AnimationView.Player(this);
+    this.mAnimationInfo = paramAnimationInfo;
+    if (this.mPlayer == null) {
+      this.mPlayer = new AnimationView.Player(this);
     }
   }
   
   public void setAnimationListener(AnimationView.MyAnimationListener paramMyAnimationListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$MyAnimationListener = paramMyAnimationListener;
+    this.mListener = paramMyAnimationListener;
   }
   
   public void setPlayer(AnimationView.Player paramPlayer)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player = paramPlayer;
+    this.mPlayer = paramPlayer;
   }
   
   public void stop()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player == null) {
+    if (this.mPlayer == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player.stop();
+    this.mPlayer.stop();
   }
 }
 

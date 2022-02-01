@@ -1,45 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.confess.ConfessNewsBgView;
-import com.tencent.mobileqq.data.MessageForConfessNews;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import com.tencent.widget.RoundRectImageView;
 
 class ahby
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
   ahby(ahbx paramahbx) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject;
-    int i;
-    if ((paramView instanceof ConfessNewsBgView))
-    {
-      localObject = paramView.getTag();
-      if ((localObject instanceof MessageForConfessNews))
-      {
-        localObject = (MessageForConfessNews)localObject;
-        if (((MessageForConfessNews)localObject).istroop != 1) {
-          break label80;
-        }
-        i = 1;
-        if (i == 0) {
-          break label85;
-        }
-        aqzo.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, 2, ((MessageForConfessNews)localObject).strGroupUin, ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).strRecUin);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label80:
-      i = 0;
-      break;
-      label85:
-      aqyt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).nConfessorSex, ((MessageForConfessNews)localObject).strRecUin);
-    }
+    paramAnimation = new AnimationSet(false);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getWidth() / 2, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getHeight() / 2);
+    paramAnimation.addAnimation(this.a.b);
+    paramAnimation.addAnimation(localScaleAnimation);
+    paramAnimation.setDuration(200L);
+    this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.startAnimation(paramAnimation);
+    paramAnimation.setAnimationListener(this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,38 +1,64 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudWrite.StDoFollowRsp;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
+import com.tencent.common.app.AppInterface;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.NewIntent;
 
-class vqv
-  implements aaav<FeedCloudWrite.StDoFollowRsp>
+public class vqv
+  extends SimpleJob
 {
-  vqv(vqu paramvqu, boolean paramBoolean, String paramString) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String arg4, FeedCloudWrite.StDoFollowRsp paramStDoFollowRsp)
+  public vqv(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, vqr paramvqr)
   {
-    QLog.d("QCircleSpecialFollowMgr", 1, "doSpecialFollow: isSuccess" + paramBoolean + "retCode:" + paramLong + "    errMsg:" + ???);
-    if ((paramBoolean) && (paramLong == 0L)) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      vqu.a(this.jdField_a_of_type_Vqu, "设置失败", false);
-      return;
-    }
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  {
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_Vqu)
+      NewIntent localNewIntent;
+      try
       {
-        vqu.a(this.jdField_a_of_type_Vqu);
-        vqu.a(this.jdField_a_of_type_Vqu, "设置成功", true);
-        ??? = vqu.a(this.jdField_a_of_type_Vqu);
-        if (this.jdField_a_of_type_Boolean)
+        paramJobContext = this.jdField_a_of_type_Vqr.a();
+        paramArrayOfObject = Integer.valueOf(QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).getAndIncrement());
+        AppInterface localAppInterface = QQStoryContext.a();
+        localNewIntent = new NewIntent(localAppInterface.getApp(), vrc.class);
+        localNewIntent.putExtra("storySeq", paramArrayOfObject);
+        localNewIntent.putExtra("cmd", this.jdField_a_of_type_Vqr.a());
+        localNewIntent.putExtra("data", paramJobContext);
+        localNewIntent.putExtra("start_time", System.currentTimeMillis());
+        if (this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a.contains(Integer.valueOf(this.jdField_a_of_type_Vqr.b())))
         {
-          i = 1001;
-          ???.obtainMessage(i, this.jdField_a_of_type_JavaLangString).sendToTarget();
-          return;
+          localNewIntent.putExtra("timeout", 10000L);
+          localNewIntent.putExtra("support_retry", true);
+          QQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler).put(paramArrayOfObject, this.jdField_a_of_type_Vqr);
+          localAppInterface.startServlet(localNewIntent);
+          return null;
         }
       }
-      i = 1002;
+      catch (QQStoryCmdHandler.IllegalUinException paramJobContext)
+      {
+        Bosses.get().scheduleJobDelayed(new vqw(this, "Q.qqstory.net:QQStoryCmdHandler", paramJobContext), 100);
+        return null;
+      }
+      if (this.jdField_a_of_type_Vqr.a > 0L) {
+        localNewIntent.putExtra("timeout", this.jdField_a_of_type_Vqr.a);
+      }
     }
+  }
+  
+  public int getJobType()
+  {
+    return 16;
   }
 }
 

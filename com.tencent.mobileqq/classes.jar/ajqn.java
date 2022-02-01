@@ -1,121 +1,118 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.activity.photo.album.AlbumListAdapter;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import com.tencent.mobileqq.activity.photo.album.NewAlbumListAdapter.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.QQAlbumInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import java.util.List;
 
 public class ajqn
-  implements View.OnClickListener
+  extends AlbumListAdapter
 {
-  public ajqn(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  long jdField_a_of_type_Long;
+  private QQAlbumInfo jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo;
   
-  public void onClick(View paramView)
+  public ajqn(AlbumListFragment paramAlbumListFragment)
   {
-    Object localObject2;
-    if ((paramView.getTag() instanceof ajpp))
+    super(paramAlbumListFragment);
+  }
+  
+  private static void c(ajqo paramajqo, String paramString, QQAlbumInfo paramQQAlbumInfo)
+  {
+    String str = paramQQAlbumInfo.name;
+    if (paramString.contains("/qq_collection/"))
     {
-      localObject2 = (ajpp)paramView.getTag();
-      if (localObject2 != null) {
-        break label32;
-      }
-    }
-    label32:
-    Object localObject3;
-    int i;
-    Object localObject1;
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      paramajqo.f += paramQQAlbumInfo.mMediaFileCount;
       return;
-      localObject3 = ((ajpp)localObject2).jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg;
-      i = ((ajpp)localObject2).jdField_a_of_type_Int;
-      if (ajpz.a(i) == 0)
-      {
-        localObject1 = TroopInfoActivity.a(String.valueOf(((ajpp)localObject2).jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get()), 4);
-        ((Bundle)localObject1).putInt("t_s_f", 1001);
-        bguq.a(this.a.a(), (Bundle)localObject1, 2);
-        if ((i == 2) || (i == 10) || (i == 12))
-        {
-          i = 1;
-          label117:
-          localObject3 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-          localObject2 = ((ajpp)localObject2).jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "";
-          if (i == 0) {
-            break label201;
-          }
-        }
-        label201:
-        for (localObject1 = "0";; localObject1 = "1")
-        {
-          bdll.b((QQAppInterface)localObject3, "P_CliOper", "Grp_contacts", "", "notice", "see_data", 0, 0, (String)localObject2, (String)localObject1, "", "");
-          break;
-          i = 0;
-          break label117;
-        }
-      }
-      if ((((ajpp)localObject2).jdField_a_of_type_Int != 2) || (!TroopInfo.isQidianPrivateTroop(((ajpp)localObject2).jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.uint32_group_flagext3.get())))
-      {
-        if (((ajpp)localObject2).jdField_a_of_type_Int != 82) {
-          break;
-        }
-        localObject1 = new Intent(this.a.jdField_a_of_type_AndroidContentContext, AccountDetailActivity.class);
-        ((Intent)localObject1).putExtra("uin", ((ajpp)localObject2).jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
-        ((Intent)localObject1).putExtra("source", 112);
-        this.a.a((Intent)localObject1);
-      }
     }
-    long l = ((structmsg.StructMsg)localObject3).req_uin.get();
-    switch (ajpz.a(i))
+    if ((str.equals("qq_images")) || (paramString.contains("/mobileqq/photo")) || (paramString.contains("/mobileqq/diskcache")))
     {
-    default: 
-      localObject1 = String.valueOf(l);
-      label370:
-      if (((anyw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b((String)localObject1)) {
-        localObject1 = new ProfileActivity.AllInOne((String)localObject1, 1);
-      }
-      break;
+      paramajqo.g += paramQQAlbumInfo.mMediaFileCount;
+      return;
     }
-    for (;;)
+    if (str.equals("qqfile_recv"))
     {
-      l = ((structmsg.StructMsg)localObject3).msg.uint32_group_flagext3.get();
-      boolean bool = TroopInfo.isQidianPrivateTroop(l);
-      i = ((structmsg.StructMsg)localObject3).msg.group_msg_type.get();
-      if (QLog.isColorLevel()) {
-        QLog.d(".troop.qidian_private_troop", 2, "notification headView onClick: msgType=" + i + ", isQidianPrivateTroop=" + bool + ", flagExt3=" + l);
-      }
-      if ((bool) && (i == 2)) {
-        break;
-      }
-      ProfileActivity.b(this.a.a(), (ProfileActivity.AllInOne)localObject1);
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_contacts", "", "notice", "see_fromdata", 0, 0, ((ajpp)localObject2).jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "", "3", "", "");
-      break;
-      localObject1 = ((ajpp)localObject2).jdField_a_of_type_JavaLangString;
-      break label370;
-      localObject1 = String.valueOf(((ajpp)localObject2).jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.action_uin.get());
-      break label370;
-      if ((((structmsg.StructMsg)localObject3).msg.group_msg_type.get() == 2) && (((structmsg.StructMsg)localObject3).msg.sub_type.get() == 3))
-      {
-        localObject1 = new ProfileActivity.AllInOne((String)localObject1, 26);
-        ((ProfileActivity.AllInOne)localObject1).d = 1;
-      }
-      else
-      {
-        localObject1 = new ProfileActivity.AllInOne((String)localObject1, 24);
-        bguq.a((structmsg.StructMsg)localObject3, (ProfileActivity.AllInOne)localObject1);
-      }
+      paramajqo.h += paramQQAlbumInfo.mMediaFileCount;
+      return;
     }
+    if (str.equals("qq_favorite"))
+    {
+      paramajqo.j += paramQQAlbumInfo.mMediaFileCount;
+      return;
+    }
+    if (paramString.contains("/zebra/cache"))
+    {
+      paramajqo.i += 1;
+      return;
+    }
+    if ((str.equals("weixin")) || (str.equals("wechat")) || (str.equals("micromsg")))
+    {
+      paramajqo.k += paramQQAlbumInfo.mMediaFileCount;
+      return;
+    }
+    if (ajpv.a(paramString))
+    {
+      paramajqo.d += paramQQAlbumInfo.mMediaFileCount;
+      return;
+    }
+    paramajqo.e += paramQQAlbumInfo.mMediaFileCount;
+  }
+  
+  private static void d(ajqo paramajqo, String paramString, QQAlbumInfo paramQQAlbumInfo)
+  {
+    String str = paramQQAlbumInfo.name;
+    if (str.equals("qq_screenshot"))
+    {
+      paramajqo.b += paramQQAlbumInfo.mMediaFileCount;
+      return;
+    }
+    if ((paramString.contains("screenshot")) || (paramString.contains("截屏")) || (paramString.contains("截图")) || (paramString.equals("screen_cap")) || (paramString.equals("ScreenCapture")))
+    {
+      paramajqo.c += paramQQAlbumInfo.mMediaFileCount;
+      return;
+    }
+    if ((str.contains("camera")) || (str.equals("dcim")) || (str.equals("100MEDIA")) || (str.equals("100ANDRO")) || (str.contains("相机")) || (str.contains("照片")) || (str.contains("相片")))
+    {
+      paramajqo.a += paramQQAlbumInfo.mMediaFileCount;
+      return;
+    }
+    if (ajpv.a(paramString))
+    {
+      paramajqo.d += paramQQAlbumInfo.mMediaFileCount;
+      return;
+    }
+    paramajqo.e += paramQQAlbumInfo.mMediaFileCount;
+  }
+  
+  public void a(long paramLong)
+  {
+    if (paramLong == 0L) {
+      return;
+    }
+    this.jdField_a_of_type_Long = paramLong;
+    QQAlbumInfo localQQAlbumInfo = new QQAlbumInfo();
+    localQQAlbumInfo._id = "qzone_album";
+    localQQAlbumInfo.name = "空间相册";
+    localQQAlbumInfo.mMediaFileCount = ((int)this.jdField_a_of_type_Long);
+    if (QLog.isColorLevel()) {
+      QLog.d("AlbumListAdapter", 1, "setQzoneAlbumNum " + paramLong);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo = localQQAlbumInfo;
+  }
+  
+  public List<QQAlbumInfo> getDefaultAlbums()
+  {
+    List localList = super.getDefaultAlbums();
+    if ((localList != null) && (this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo != null)) {
+      localList.add(0, this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo);
+    }
+    return localList;
+  }
+  
+  public void setData()
+  {
+    super.setData();
+    ThreadManager.post(new NewAlbumListAdapter.1(this), 2, null, false);
   }
 }
 

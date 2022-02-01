@@ -1,79 +1,18 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajri
-  extends aocj
+class ajri
+  implements View.OnClickListener
 {
-  public ajri(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
+  ajri(ajrg paramajrg) {}
   
-  protected void a(String paramString)
+  public void onClick(View paramView)
   {
-    if ((TroopSuspiciousFragment.a(this.a) != null) && (TroopSuspiciousFragment.a(this.a).isShowing()))
-    {
-      TroopSuspiciousFragment.a(this.a).dismiss();
-      paramString = this.a.a.getResources().getString(2131718517);
-      QQToast.a(this.a.a, 1, paramString, 0).b(this.a.a());
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopSuspiciousFragment", 2, "onSendSystemMsgActionFin");
-    }
-    long l2 = bdzi.a().b();
-    long l1 = l2;
-    if (!TextUtils.isEmpty(paramString1)) {}
-    try
-    {
-      l1 = Long.parseLong(paramString1);
-      if (!paramBoolean)
-      {
-        TroopSuspiciousFragment.a(this.a, paramString2, paramInt3, paramString3, paramString4, l1);
-        return;
-      }
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        paramString1.printStackTrace();
-        l1 = l2;
-      }
-      TroopSuspiciousFragment.a(this.a, paramInt1, paramString2, paramInt2, l1);
-    }
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopSuspiciousFragment", 2, "onGetSuspiciousSystemMsgFin.bengin");
-    }
-    if (this.a.a.isFinishing()) {
-      return;
-    }
-    TroopSuspiciousFragment.d(this.a);
-    if (!paramBoolean1) {
-      TroopSuspiciousFragment.a(this.a, paramBoolean2);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopSuspiciousFragment", 2, "onGetSuspiciousSystemMsgFin.success");
-    }
-    try
-    {
-      TroopSuspiciousFragment.a(this.a, paramList);
-      return;
-    }
-    catch (Exception paramList)
-    {
-      paramList.printStackTrace();
-    }
+    ((NewPhotoPreviewActivity)this.a.mActivity).flashPicCb.toggle();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

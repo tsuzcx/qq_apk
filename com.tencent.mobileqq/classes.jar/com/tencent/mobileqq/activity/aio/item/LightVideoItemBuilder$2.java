@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import bcrn;
+import bbkv;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,7 +16,7 @@ class LightVideoItemBuilder$2
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getAIOList(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       localObject = ((List)localObject).iterator();
@@ -24,12 +24,12 @@ class LightVideoItemBuilder$2
       {
         ChatMessage localChatMessage = (ChatMessage)((Iterator)localObject).next();
         if (((localChatMessage instanceof MessageForLightVideo)) && (localChatMessage.uniseq == this.a.uniseq)) {
-          localChatMessage.saveExtInfoToExtStr(bcrn.u, "1");
+          localChatMessage.saveExtInfoToExtStr(bbkv.u, "1");
         }
       }
     }
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extLong", Integer.valueOf(this.a.extLong));
+    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().updateMsgFieldByUniseq(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().updateMsgFieldByUniseq(this.a.frienduin, this.a.istroop, this.a.uniseq, "extLong", Integer.valueOf(this.a.extLong));
   }
 }
 

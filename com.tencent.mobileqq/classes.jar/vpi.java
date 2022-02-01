@@ -1,9 +1,22 @@
-class vpi
-  implements aaav
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+
+public class vpi
+  implements vox
 {
-  vpi(vph paramvph) {}
+  public vpi(StoryVideoUploadTask paramStoryVideoUploadTask, vwm paramvwm, vot paramvot) {}
   
-  public void onReceive(boolean paramBoolean, long paramLong, String paramString, Object paramObject) {}
+  public void a(vow paramvow)
+  {
+    paramvow = this.jdField_a_of_type_Vwm;
+    if (this.jdField_a_of_type_Vot.a == 0) {}
+    for (int i = 2;; i = 3)
+    {
+      paramvow.jdField_b_of_type_Int = i;
+      this.jdField_a_of_type_Vwm.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Vot.jdField_b_of_type_JavaLangString;
+      this.jdField_a_of_type_Vwm.c = this.jdField_a_of_type_Vot.c;
+      return;
+    }
+  }
 }
 
 

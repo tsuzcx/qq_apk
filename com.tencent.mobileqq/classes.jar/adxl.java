@@ -1,136 +1,99 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.AppRuntime;
-import mqq.manager.VerifyDevLockManager.NotifyType;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.util.List;
 
 public class adxl
-  extends VerifyDevLockManager.VerifyDevLockObserver
+  extends aliy
 {
-  public adxl(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  private List<adxi> jdField_a_of_type_JavaUtilList;
   
-  private void a(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  public adxl(List<adxi> paramList)
   {
-    if (this.a.isFinishing()) {
-      return;
+    super(paramList, paramList.app, paramList.jdField_a_of_type_ComTencentWidgetXListView, 1, true);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    this.a.c();
-    if (paramInt2 == 0)
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject;
+    if (paramView == null)
     {
-      if (QLog.isColorLevel())
+      localView = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559631, paramViewGroup, false);
+      paramView = new adxo();
+      paramView.c = ((ImageView)localView.findViewById(2131368236));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371615));
+      localView.setTag(paramView);
+      localObject = getItem(paramInt);
+      if (localObject != null)
       {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode uin:" + paramString + " seq=" + paramInt1);
-        if (paramDevlockInfo != null) {
-          QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode info.TimeLimit:" + paramDevlockInfo.TimeLimit);
+        localObject = (adxi)localObject;
+        if (localObject != null)
+        {
+          paramView.jdField_a_of_type_JavaLangString = ((adxi)localObject).a.getUin();
+          paramView.jdField_a_of_type_Adxi = ((adxi)localObject);
+          paramView.c.setImageBitmap(super.a(paramView.jdField_a_of_type_JavaLangString, 1, (byte)0));
+          paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((adxi)localObject).a.name);
+          if (((adxi)localObject).a.certifiedGrade <= 0L) {
+            break label284;
+          }
+          if (this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.getResources().getDrawable(2130841793);
+            this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ImmersiveUtils.a(15.0F), ImmersiveUtils.a(15.0F));
+            ThemeUtil.setThemeFilter(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable, ThemeUtil.curThemeId);
+          }
+          paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
         }
       }
-      setSeq(paramInt1);
-      paramInt2 = 60;
-      paramInt1 = paramInt2;
-      if (paramDevlockInfo != null)
-      {
-        paramInt1 = paramInt2;
-        if (paramDevlockInfo.TimeLimit > 0) {
-          paramInt1 = paramDevlockInfo.TimeLimit;
-        }
+    }
+    for (;;)
+    {
+      if (AppSetting.c) {
+        localView.setContentDescription(paramView.jdField_a_of_type_AndroidWidgetTextView.getText());
       }
-      AuthDevVerifyCodeActivity.a(this.a, paramInt1);
-      return;
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (adxo)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label284:
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
     }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode ret = " + paramInt2 + " seq=" + paramInt1);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode  errMsg:" + paramErrMsg.getMessage() + " seq=" + paramInt1);
-      }
-    }
-    if ((paramInt2 == 9) || (paramInt2 == 155))
-    {
-      this.a.setResult(-1);
-      this.a.finish();
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      this.a.a(paramErrMsg.getMessage(), 1);
-      return;
-    }
-    paramString = this.a.getString(2131715879);
-    this.a.a(paramString, 1);
-  }
-  
-  private void b(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
-  {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    AuthDevVerifyCodeActivity.a(this.a);
-    if (paramInt2 == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult uin:" + paramString + " seq=" + paramInt1);
-      }
-      setSeq(paramInt1);
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult ret = " + paramInt2 + " seq=" + paramInt1);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult  errMsg:" + paramErrMsg.getMessage() + " seq=" + paramInt1);
-      }
-    }
-    if ((paramInt2 == 9) || (paramInt2 == 155))
-    {
-      this.a.setResult(-1);
-      this.a.finish();
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      this.a.a(paramErrMsg.getMessage(), 1);
-      return;
-    }
-    paramString = this.a.getString(2131715879);
-    this.a.a(paramString, 1);
-  }
-  
-  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvNotice uin:" + paramString + " seq=" + paramInt1);
-    }
-    if (paramNotifyType == VerifyDevLockManager.NotifyType.NOTIFY_REFRESH_SMS_RESULT)
-    {
-      a(paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
-      return;
-    }
-    b(paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
-  }
-  
-  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose ret = " + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose  errMsg:" + paramErrMsg.getMessage());
-      }
-    }
-    if (this.a.isFinishing())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose activity is finishing.");
-      }
-      return;
-    }
-    this.a.c();
-    AuthDevVerifyCodeActivity.a(this.a);
-    this.a.setResult(-1);
-    this.a.finish();
-    asvf.a().a((AppRuntime)AuthDevVerifyCodeActivity.a(this.a).get(), this.a, paramString, true);
   }
 }
 

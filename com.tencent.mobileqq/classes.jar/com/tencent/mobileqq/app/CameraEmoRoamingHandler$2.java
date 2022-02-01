@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.app;
 
-import antf;
-import anuj;
-import asfy;
-import asgf;
-import axfj;
-import bhmi;
+import amos;
+import aqzw;
+import arad;
+import avsq;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.util.List;
 
 public class CameraEmoRoamingHandler$2
   implements Runnable
 {
-  public CameraEmoRoamingHandler$2(anuj paramanuj, String paramString, List paramList1, List paramList2) {}
+  public CameraEmoRoamingHandler$2(amos paramamos, String paramString, List paramList1, List paramList2) {}
   
   public void run()
   {
-    bhmi.c(antf.bm + ".nomedia");
-    ((asfy)this.this$0.app.getManager(334)).a(this.jdField_a_of_type_JavaLangString);
-    ((asgf)this.this$0.app.getManager(333)).a(this.jdField_a_of_type_JavaUtilList, this.b, null);
+    FileUtils.createFileIfNotExits(AppConstants.SDCARD_IMG_CAMERA_EMO + ".nomedia");
+    ((aqzw)this.this$0.app.getManager(334)).a(this.jdField_a_of_type_JavaLangString);
+    ((arad)this.this$0.app.getManager(333)).a(this.jdField_a_of_type_JavaUtilList, this.b, null);
     this.this$0.a(2, true, 0);
-    axfj.e("0", 2);
+    avsq.e("0", 2);
   }
 }
 

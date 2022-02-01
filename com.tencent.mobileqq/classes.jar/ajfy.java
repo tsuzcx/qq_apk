@@ -1,36 +1,37 @@
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface ajfy
+class ajfy
+  extends axkt
 {
-  public abstract void a();
+  ajfy(ajey paramajey) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, List<ajfx> paramList);
-  
-  public abstract void a(List<String> paramList);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
+      }
+    }
+    switch (paramInt)
+    {
+    case 2: 
+    case 3: 
+    default: 
+      return;
+    case 0: 
+      this.a.g();
+      return;
+    case 1: 
+      this.a.g();
+      return;
+    case 4: 
+      this.a.g();
+      return;
+    }
+    this.a.g();
+    this.a.e();
+    this.a.f();
+  }
 }
 
 

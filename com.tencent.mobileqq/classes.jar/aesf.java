@@ -1,22 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
 
 public class aesf
-  implements View.OnClickListener
+  extends aliz
 {
-  public aesf(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public int a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  int jdField_b_of_type_Int;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
   
-  public void onClick(View paramView)
-  {
-    Intent localIntent = new Intent(this.a, FontSettingActivity.class);
-    this.a.startActivity(localIntent);
-    bdll.b(this.a.app, "CliOper", "", "", "Setting_tab", "0X8004FA2", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  private aesf(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
 }
 
 

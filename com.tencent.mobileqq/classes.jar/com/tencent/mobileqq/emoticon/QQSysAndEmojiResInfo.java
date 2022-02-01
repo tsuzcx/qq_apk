@@ -4,13 +4,13 @@ import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import asky;
-import aslb;
-import bhmi;
+import arev;
+import arey;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -24,7 +24,7 @@ public abstract class QQSysAndEmojiResInfo
 {
   private static JSONObject a;
   protected Drawable a;
-  protected aslb a;
+  protected arey a;
   protected ArrayList<Integer> a;
   protected HashMap<Integer, QQSysAndEmojiResInfo.QQEmoConfigItem> a;
   protected HashMap<Integer, Integer> b;
@@ -44,7 +44,7 @@ public abstract class QQSysAndEmojiResInfo
       long l = System.currentTimeMillis();
       paramString = new File(paramString + "face_config.json");
       if (paramString.exists()) {
-        paramString = bhmi.a(paramString);
+        paramString = FileUtils.readFileContent(paramString);
       }
       while ((paramString != null) && (paramString.length() > 0))
       {
@@ -54,7 +54,7 @@ public abstract class QQSysAndEmojiResInfo
         }
         QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "getFaceConfigJson len:", Integer.valueOf(jdField_a_of_type_OrgJsonJSONObject.length()), " ,costTime = [", Long.valueOf(System.currentTimeMillis() - l), "]， content:", paramString });
         return;
-        paramString = bhmi.d("face_config.json");
+        paramString = FileUtils.readStringFromAsset("face_config.json");
         QLog.d("QQSysAndEmojiBaseInfo", 1, "getFaceConfigJson not exist!");
         ThreadManager.getSubThreadHandler().post(new QQSysAndEmojiResInfo.1());
       }
@@ -90,7 +90,7 @@ public abstract class QQSysAndEmojiResInfo
     {
       try
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130838018);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130838043);
         localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         localURLDrawableOptions.mPlayGifImage = paramBoolean;
@@ -140,7 +140,7 @@ public abstract class QQSysAndEmojiResInfo
   public JSONObject a()
   {
     if (jdField_a_of_type_OrgJsonJSONObject == null) {
-      a(asky.b());
+      a(arev.b());
     }
     return jdField_a_of_type_OrgJsonJSONObject;
   }
@@ -198,10 +198,10 @@ public abstract class QQSysAndEmojiResInfo
   
   public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Aslb == null) {
+    if (this.jdField_a_of_type_Arey == null) {
       b();
     }
-    this.jdField_a_of_type_Aslb.a(paramInt);
+    this.jdField_a_of_type_Arey.a(paramInt);
   }
   
   public boolean b(int paramInt)
@@ -219,14 +219,14 @@ public abstract class QQSysAndEmojiResInfo
   
   public void d()
   {
-    if (this.jdField_a_of_type_Aslb != null) {
-      this.jdField_a_of_type_Aslb.a();
+    if (this.jdField_a_of_type_Arey != null) {
+      this.jdField_a_of_type_Arey.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo
  * JD-Core Version:    0.7.0.1
  */

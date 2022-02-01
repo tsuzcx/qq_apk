@@ -1,41 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.emotionintegrate.SearchEmoticonWebBean;
 
-public class argu
+public final class argu
+  implements Parcelable.Creator<SearchEmoticonWebBean>
 {
-  private int a;
-  
-  public static argu a(String paramString)
+  public SearchEmoticonWebBean a(Parcel paramParcel)
   {
-    if (paramString == null) {}
-    do
-    {
-      return null;
-      try
-      {
-        argu localargu = new argu();
-        localargu.a = new JSONObject(paramString).optInt("pttWithTextSwitch", -1);
-        return localargu;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("PttWithTextSwitchBean", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+    return new SearchEmoticonWebBean(paramParcel);
   }
   
-  public boolean a()
+  public SearchEmoticonWebBean[] a(int paramInt)
   {
-    return this.a == 1;
-  }
-  
-  public String toString()
-  {
-    return "open:" + this.a;
+    return new SearchEmoticonWebBean[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     argu
  * JD-Core Version:    0.7.0.1
  */

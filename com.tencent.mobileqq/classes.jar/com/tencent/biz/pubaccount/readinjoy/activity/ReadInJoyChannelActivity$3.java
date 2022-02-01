@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import sup;
+import syp;
 
 class ReadInJoyChannelActivity$3
   implements Runnable
@@ -9,8 +9,8 @@ class ReadInJoyChannelActivity$3
   
   public void run()
   {
-    sup.a().a();
-    sup.a().b(this.this$0.app);
+    syp.a().a();
+    syp.a().b(this.this$0.app);
   }
 }
 

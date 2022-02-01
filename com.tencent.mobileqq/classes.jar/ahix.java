@@ -1,17 +1,22 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
 class ahix
-  extends ahkx
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ahix(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahix(ahiu paramahiu, View paramView, int paramInt1, int paramInt2) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new ahbx(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    if ((paramValueAnimator == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
+      return;
+    }
+    float f1 = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() / 100.0F;
+    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    float f2 = this.jdField_a_of_type_Int;
+    paramValueAnimator.height = ((int)(f1 * (this.b - this.jdField_a_of_type_Int) + f2));
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
   }
 }
 

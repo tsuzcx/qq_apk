@@ -33,11 +33,14 @@ public class TPCodecUtils
   private static final String TAG = "TPCodecUtils";
   private static TPCodecCapability.TPVCodecMaxCapability mAVCMediaCodecMaxCapability;
   private static TPCodecCapability.TPVCodecMaxCapability mAVCSWMaxCapability;
+  private static TPCodecCapability.TPVCodecMaxCapability mAVS3WMaxCapability = new TPCodecCapability.TPVCodecMaxCapability(0, 0, 0, 30);
   private static Context mApplicationContext;
+  private static int mAvs3DeviceLevel;
   private static String mCapabilityVersion;
   private static String mCapabilityVersionKey;
   private static HashMap<String, Integer> mCodecCap;
-  private static int mDeviceLevel = -1;
+  private static int mFhdAvs3HisiIndex;
+  private static int mFhdAvs3QualcommIndex;
   private static String mHDR10CapabilityKey;
   private static String mHDR10PLUSCapabilityKey;
   private static String mHDRDOLBYVISIONCapabilityKey;
@@ -50,6 +53,7 @@ public class TPCodecUtils
   private static int mHdHevcMtkIndex;
   private static int mHdHevcQualcommIndex;
   private static int mHdHevcSumsingIndex;
+  private static int mHevcDeviceLevel = -1;
   private static boolean mIsFFmpegCapGot;
   private static int mIsInBlackListForHardwareDec;
   private static boolean mIsInitDone;
@@ -61,6 +65,7 @@ public class TPCodecUtils
   private static String mMaxVCodecSwCapabilityMapKey;
   private static boolean mNeedToReprobeDecoderCapability;
   private static boolean mNeedToReprobeHDRCapability;
+  private static int mShdAvs3QualcommIndex;
   private static int mShdHevcHisiIndex;
   private static int mShdHevcMtkIndex;
   private static int mShdHevcQualcommIndex;
@@ -81,12 +86,13 @@ public class TPCodecUtils
   
   static
   {
+    mAvs3DeviceLevel = -1;
     mCodecCap = null;
     mApplicationContext = null;
     mIsLocalCacheEnabled = false;
     mNeedToReprobeDecoderCapability = true;
     mNeedToReprobeHDRCapability = true;
-    mCapabilityVersion = "2.5.0.1086.full";
+    mCapabilityVersion = "2.8.0.1086.full";
     mHWCodecCapList = new ArrayList();
     mSoftCodecCapList = new ArrayList();
     mffmpegVCodecCapList = new ArrayList();
@@ -117,6 +123,9 @@ public class TPCodecUtils
     mHdHevcHisiIndex = 3;
     mShdHevcSumsingIndex = 8;
     mHdHevcSumsingIndex = 5;
+    mFhdAvs3QualcommIndex = 58;
+    mShdAvs3QualcommIndex = 55;
+    mFhdAvs3HisiIndex = 14;
     mCodecCap = new HashMap();
     mCodecCap.put("NX511J", Integer.valueOf(7));
     mCodecCap.put("Hi3798MV100", Integer.valueOf(7));
@@ -227,6 +236,51 @@ public class TPCodecUtils
     }
   }
   
+  public static int getAvs3SWDecodeLevel()
+  {
+    String str = TPSystemInfo.getCpuHarewareName();
+    int i = TPSystemInfo.getCpuHWProducter(str);
+    int j = TPSystemInfo.getCpuHWProductIndex(str);
+    TPNativeLog.printLog(2, "TPCodecUtils", "[getAvs3SWDecodeLevel], mCpuHWProducter = " + i + ", getMaxCpuFreq() = " + TPSystemInfo.getMaxCpuFreq() + ", numCores = " + TPSystemInfo.getNumCores() + ", mCpuHWProductIdx=" + j + ", hardware=" + str);
+    if (-1 != mAvs3DeviceLevel) {
+      return mAvs3DeviceLevel;
+    }
+    mAvs3DeviceLevel = 0;
+    if (-1 == i) {
+      mAvs3DeviceLevel = getDecodeLevelByCoresAndFreq();
+    }
+    for (;;)
+    {
+      return mAvs3DeviceLevel;
+      switch (i)
+      {
+      default: 
+        break;
+      case 0: 
+        if (j >= mFhdAvs3QualcommIndex) {
+          mAvs3DeviceLevel = 26;
+        } else if (j >= mShdAvs3QualcommIndex) {
+          mAvs3DeviceLevel = 21;
+        } else {
+          mAvs3DeviceLevel = getDecodeLevelByCoresAndFreq();
+        }
+        break;
+      case 1: 
+        mAvs3DeviceLevel = getDecodeLevelByCoresAndFreq();
+        break;
+      case 2: 
+        if (j >= mFhdAvs3HisiIndex) {
+          mAvs3DeviceLevel = 26;
+        } else {
+          mAvs3DeviceLevel = getDecodeLevelByCoresAndFreq();
+        }
+        break;
+      case 3: 
+        mAvs3DeviceLevel = getDecodeLevelByCoresAndFreq();
+      }
+    }
+  }
+  
   private static ArrayList<String> getCachedCapList(String paramString)
   {
     if (mApplicationContext != null) {
@@ -287,54 +341,7 @@ public class TPCodecUtils
     return null;
   }
   
-  /* Error */
-  public static void getDecoderMaxCapabilityMapAsync()
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 118	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsInitDone	Z
-    //   6: ifeq +16 -> 22
-    //   9: iconst_2
-    //   10: ldc 32
-    //   12: ldc_w 320
-    //   15: invokestatic 225	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
-    //   18: ldc 2
-    //   20: monitorexit
-    //   21: return
-    //   22: iconst_2
-    //   23: ldc 32
-    //   25: ldc_w 322
-    //   28: invokestatic 225	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
-    //   31: new 324	java/lang/Thread
-    //   34: dup
-    //   35: new 326	com/tencent/thumbplayer/core/common/TPCodecUtils$1
-    //   38: dup
-    //   39: invokespecial 327	com/tencent/thumbplayer/core/common/TPCodecUtils$1:<init>	()V
-    //   42: invokespecial 330	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
-    //   45: astore_0
-    //   46: aload_0
-    //   47: ldc_w 332
-    //   50: invokevirtual 336	java/lang/Thread:setName	(Ljava/lang/String;)V
-    //   53: aload_0
-    //   54: invokevirtual 339	java/lang/Thread:start	()V
-    //   57: goto -39 -> 18
-    //   60: astore_0
-    //   61: ldc 2
-    //   63: monitorexit
-    //   64: aload_0
-    //   65: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   45	9	0	localThread	java.lang.Thread
-    //   60	5	0	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	18	60	finally
-    //   22	57	60	finally
-  }
-  
-  private static int getHevcLvByCoresAndFreq()
+  private static int getDecodeLevelByCoresAndFreq()
   {
     if (TPSystemInfo.getNumCores() >= 8) {
       if (TPSystemInfo.getMaxCpuFreq() / 1000L < 1200L) {}
@@ -356,6 +363,113 @@ public class TPCodecUtils
     } while (TPSystemInfo.getMaxCpuFreq() / 1000L >= 1600L);
     return 16;
     return 6;
+  }
+  
+  /* Error */
+  public static void getDecoderMaxCapabilityMapAsync()
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 125	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsInitDone	Z
+    //   6: ifeq +16 -> 22
+    //   9: iconst_2
+    //   10: ldc 32
+    //   12: ldc_w 383
+    //   15: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   18: ldc 2
+    //   20: monitorexit
+    //   21: return
+    //   22: iconst_2
+    //   23: ldc 32
+    //   25: ldc_w 385
+    //   28: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   31: new 387	java/lang/Thread
+    //   34: dup
+    //   35: new 389	com/tencent/thumbplayer/core/common/TPCodecUtils$1
+    //   38: dup
+    //   39: invokespecial 390	com/tencent/thumbplayer/core/common/TPCodecUtils$1:<init>	()V
+    //   42: invokespecial 393	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
+    //   45: astore_0
+    //   46: aload_0
+    //   47: ldc_w 395
+    //   50: invokevirtual 399	java/lang/Thread:setName	(Ljava/lang/String;)V
+    //   53: aload_0
+    //   54: invokevirtual 402	java/lang/Thread:start	()V
+    //   57: goto -39 -> 18
+    //   60: astore_0
+    //   61: ldc 2
+    //   63: monitorexit
+    //   64: aload_0
+    //   65: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   45	9	0	localThread	java.lang.Thread
+    //   60	5	0	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	18	60	finally
+    //   22	57	60	finally
+  }
+  
+  public static int getHevcSWDecodeLevel()
+  {
+    String str = TPSystemInfo.getCpuHarewareName();
+    int i = TPSystemInfo.getCpuHWProducter(str);
+    int j = TPSystemInfo.getCpuHWProductIndex(str);
+    TPNativeLog.printLog(2, "TPCodecUtils", "[getHevcSWDecodeLevel], mCpuHWProducter = " + i + ", getMaxCpuFreq() = " + TPSystemInfo.getMaxCpuFreq() + ", numCores = " + TPSystemInfo.getNumCores() + ", mCpuHWProductIdx=" + j + ", hardware=" + str);
+    if (-1 != mHevcDeviceLevel) {
+      return mHevcDeviceLevel;
+    }
+    mHevcDeviceLevel = 0;
+    if (-1 == i) {
+      mHevcDeviceLevel = getDecodeLevelByCoresAndFreq();
+    }
+    for (;;)
+    {
+      return mHevcDeviceLevel;
+      switch (i)
+      {
+      default: 
+        break;
+      case 0: 
+        if (j >= mShdHevcQualcommIndex) {
+          mHevcDeviceLevel = 21;
+        } else if (j >= mHdHevcQualcommIndex) {
+          mHevcDeviceLevel = 16;
+        } else {
+          mHevcDeviceLevel = getDecodeLevelByCoresAndFreq();
+        }
+        break;
+      case 1: 
+        if (j >= mShdHevcMtkIndex) {
+          mHevcDeviceLevel = 21;
+        } else if (j >= mHdHevcMtkIndex) {
+          mHevcDeviceLevel = 16;
+        } else {
+          mHevcDeviceLevel = getDecodeLevelByCoresAndFreq();
+        }
+        break;
+      case 2: 
+        if (j >= mShdHevcHisiIndex) {
+          mHevcDeviceLevel = 21;
+        } else if (j >= mHdHevcHisiIndex) {
+          mHevcDeviceLevel = 16;
+        } else {
+          mHevcDeviceLevel = getDecodeLevelByCoresAndFreq();
+        }
+        break;
+      case 3: 
+        if (j >= mShdHevcSumsingIndex) {
+          mHevcDeviceLevel = 21;
+        } else if (j >= mHdHevcSumsingIndex) {
+          mHevcDeviceLevel = 16;
+        } else {
+          mHevcDeviceLevel = getDecodeLevelByCoresAndFreq();
+        }
+        break;
+      }
+    }
   }
   
   public static int getHwDolbyLevel()
@@ -440,175 +554,175 @@ public class TPCodecUtils
     //   2: monitorenter
     //   3: iconst_2
     //   4: ldc 32
-    //   6: ldc_w 451
-    //   9: invokestatic 225	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
-    //   12: getstatic 227	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
+    //   6: ldc_w 498
+    //   9: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   12: getstatic 240	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
     //   15: ifeq +23 -> 38
     //   18: iconst_2
     //   19: ldc 32
-    //   21: ldc_w 453
-    //   24: invokestatic 225	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
-    //   27: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   21: ldc_w 500
+    //   24: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   27: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   30: astore 12
     //   32: ldc 2
     //   34: monitorexit
     //   35: aload 12
     //   37: areturn
-    //   38: getstatic 97	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
+    //   38: getstatic 104	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
     //   41: ifeq +168 -> 209
-    //   44: getstatic 99	com/tencent/thumbplayer/core/common/TPCodecUtils:mNeedToReprobeDecoderCapability	Z
+    //   44: getstatic 106	com/tencent/thumbplayer/core/common/TPCodecUtils:mNeedToReprobeDecoderCapability	Z
     //   47: ifne +162 -> 209
     //   50: iconst_2
     //   51: ldc 32
-    //   53: ldc_w 455
-    //   56: invokestatic 225	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
-    //   59: getstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
+    //   53: ldc_w 502
+    //   56: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   59: getstatic 119	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
     //   62: ifnull +12 -> 74
-    //   65: getstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
-    //   68: invokevirtual 458	java/util/ArrayList:size	()I
+    //   65: getstatic 119	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
+    //   68: invokevirtual 505	java/util/ArrayList:size	()I
     //   71: ifne +21 -> 92
-    //   74: getstatic 138	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapListKey	Ljava/lang/String;
-    //   77: invokestatic 460	com/tencent/thumbplayer/core/common/TPCodecUtils:getCachedCapList	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   74: getstatic 145	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapListKey	Ljava/lang/String;
+    //   77: invokestatic 507	com/tencent/thumbplayer/core/common/TPCodecUtils:getCachedCapList	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   80: astore 12
     //   82: aload 12
     //   84: ifnull +8 -> 92
     //   87: aload 12
-    //   89: putstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
-    //   92: getstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
+    //   89: putstatic 119	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
+    //   92: getstatic 119	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
     //   95: ifnull +114 -> 209
-    //   98: getstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
-    //   101: invokevirtual 458	java/util/ArrayList:size	()I
+    //   98: getstatic 119	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
+    //   101: invokevirtual 505	java/util/ArrayList:size	()I
     //   104: ifle +105 -> 209
-    //   107: getstatic 150	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMapKey	Ljava/lang/String;
-    //   110: invokestatic 462	com/tencent/thumbplayer/core/common/TPCodecUtils:getCachedCapabilityMap	(Ljava/lang/String;)Ljava/util/HashMap;
+    //   107: getstatic 157	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMapKey	Ljava/lang/String;
+    //   110: invokestatic 509	com/tencent/thumbplayer/core/common/TPCodecUtils:getCachedCapabilityMap	(Ljava/lang/String;)Ljava/util/HashMap;
     //   113: astore 12
     //   115: aload 12
     //   117: ifnull +92 -> 209
     //   120: aload 12
-    //   122: putstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
-    //   125: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
-    //   128: invokevirtual 463	java/util/HashMap:size	()I
+    //   122: putstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   125: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   128: invokevirtual 510	java/util/HashMap:size	()I
     //   131: ifle +78 -> 209
     //   134: iconst_2
     //   135: ldc 32
-    //   137: new 270	java/lang/StringBuilder
+    //   137: new 285	java/lang/StringBuilder
     //   140: dup
-    //   141: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   144: ldc_w 465
-    //   147: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   150: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
-    //   153: invokevirtual 463	java/util/HashMap:size	()I
-    //   156: invokevirtual 468	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   159: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   162: invokestatic 225	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   141: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   144: ldc_w 512
+    //   147: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   153: invokevirtual 510	java/util/HashMap:size	()I
+    //   156: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   159: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   162: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
     //   165: iconst_1
-    //   166: putstatic 227	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
-    //   169: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   166: putstatic 240	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
+    //   169: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   172: astore 12
     //   174: goto -142 -> 32
     //   177: astore 12
     //   179: iconst_4
     //   180: ldc 32
-    //   182: new 270	java/lang/StringBuilder
+    //   182: new 285	java/lang/StringBuilder
     //   185: dup
-    //   186: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   189: ldc_w 470
-    //   192: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   186: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   189: ldc_w 514
+    //   192: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   195: aload 12
-    //   197: invokevirtual 473	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   200: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   203: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   206: invokestatic 225	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   197: invokevirtual 517	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   200: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   203: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   206: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
     //   209: iconst_0
     //   210: istore_2
     //   211: iconst_0
     //   212: istore_1
     //   213: iconst_0
     //   214: istore_0
-    //   215: ldc_w 475
-    //   218: invokestatic 481	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   215: ldc_w 519
+    //   218: invokestatic 525	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   221: astore 12
     //   223: aload 12
-    //   225: ldc_w 482
+    //   225: ldc_w 526
     //   228: iconst_0
-    //   229: anewarray 477	java/lang/Class
-    //   232: invokevirtual 486	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   229: anewarray 521	java/lang/Class
+    //   232: invokevirtual 530	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   235: astore 20
     //   237: aload 12
-    //   239: ldc_w 487
+    //   239: ldc_w 531
     //   242: iconst_1
-    //   243: anewarray 477	java/lang/Class
+    //   243: anewarray 521	java/lang/Class
     //   246: dup
     //   247: iconst_0
-    //   248: getstatic 491	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   248: getstatic 535	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   251: aastore
-    //   252: invokevirtual 486	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   252: invokevirtual 530	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   255: astore 12
-    //   257: ldc_w 493
-    //   260: invokestatic 481	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   257: ldc_w 537
+    //   260: invokestatic 525	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   263: astore 16
     //   265: aload 16
-    //   267: ldc_w 494
+    //   267: ldc_w 538
     //   270: iconst_0
-    //   271: anewarray 477	java/lang/Class
-    //   274: invokevirtual 486	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   271: anewarray 521	java/lang/Class
+    //   274: invokevirtual 530	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   277: astore 13
     //   279: aload 16
-    //   281: ldc_w 496
+    //   281: ldc_w 540
     //   284: iconst_0
-    //   285: anewarray 477	java/lang/Class
-    //   288: invokevirtual 486	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   285: anewarray 521	java/lang/Class
+    //   288: invokevirtual 530	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   291: astore 14
     //   293: aload 16
-    //   295: ldc_w 497
+    //   295: ldc_w 541
     //   298: iconst_0
-    //   299: anewarray 477	java/lang/Class
-    //   302: invokevirtual 486	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   299: anewarray 521	java/lang/Class
+    //   302: invokevirtual 530	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   305: astore 15
     //   307: aload 16
-    //   309: ldc_w 498
+    //   309: ldc_w 542
     //   312: iconst_1
-    //   313: anewarray 477	java/lang/Class
+    //   313: anewarray 521	java/lang/Class
     //   316: dup
     //   317: iconst_0
-    //   318: ldc_w 397
+    //   318: ldc_w 444
     //   321: aastore
-    //   322: invokevirtual 486	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   322: invokevirtual 530	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   325: astore 16
-    //   327: ldc_w 500
-    //   330: invokestatic 481	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   333: ldc_w 502
-    //   336: invokevirtual 506	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   327: ldc_w 544
+    //   330: invokestatic 525	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   333: ldc_w 546
+    //   336: invokevirtual 550	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   339: astore 17
-    //   341: ldc_w 508
-    //   344: invokestatic 481	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   341: ldc_w 552
+    //   344: invokestatic 525	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   347: astore 19
     //   349: aload 19
-    //   351: ldc_w 510
-    //   354: invokevirtual 506	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   351: ldc_w 554
+    //   354: invokevirtual 550	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   357: astore 18
     //   359: aload 19
-    //   361: ldc_w 512
-    //   364: invokevirtual 506	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   361: ldc_w 556
+    //   364: invokevirtual 550	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   367: astore 19
     //   369: aload 20
     //   371: aconst_null
     //   372: iconst_0
     //   373: anewarray 4	java/lang/Object
-    //   376: invokevirtual 518	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   379: checkcast 201	java/lang/Integer
-    //   382: invokevirtual 519	java/lang/Integer:intValue	()I
+    //   376: invokevirtual 562	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   379: checkcast 214	java/lang/Integer
+    //   382: invokevirtual 563	java/lang/Integer:intValue	()I
     //   385: istore 8
     //   387: iconst_2
-    //   388: new 270	java/lang/StringBuilder
+    //   388: new 285	java/lang/StringBuilder
     //   391: dup
-    //   392: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   395: ldc_w 521
-    //   398: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   392: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   395: ldc_w 565
+    //   398: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   401: iload 8
-    //   403: invokevirtual 468	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   406: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   409: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   403: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   406: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   409: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   412: iconst_0
     //   413: istore 4
     //   415: iload 4
@@ -621,17 +735,17 @@ public class TPCodecUtils
     //   429: dup
     //   430: iconst_0
     //   431: iload 4
-    //   433: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   433: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   436: aastore
-    //   437: invokevirtual 518	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   437: invokevirtual 562	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   440: astore 20
     //   442: aload 15
     //   444: aload 20
     //   446: iconst_0
     //   447: anewarray 4	java/lang/Object
-    //   450: invokevirtual 518	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   453: checkcast 526	java/lang/Boolean
-    //   456: invokevirtual 529	java/lang/Boolean:booleanValue	()Z
+    //   450: invokevirtual 562	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   453: checkcast 570	java/lang/Boolean
+    //   456: invokevirtual 573	java/lang/Boolean:booleanValue	()Z
     //   459: ifeq +14 -> 473
     //   462: iload_2
     //   463: istore_3
@@ -644,17 +758,17 @@ public class TPCodecUtils
     //   475: aload 20
     //   477: iconst_0
     //   478: anewarray 4	java/lang/Object
-    //   481: invokevirtual 518	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   484: checkcast 397	java/lang/String
-    //   487: invokevirtual 532	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   481: invokevirtual 562	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   484: checkcast 444	java/lang/String
+    //   487: invokevirtual 576	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   490: astore 21
     //   492: aload 13
     //   494: aload 20
     //   496: iconst_0
     //   497: anewarray 4	java/lang/Object
-    //   500: invokevirtual 518	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   503: checkcast 534	[Ljava/lang/String;
-    //   506: checkcast 534	[Ljava/lang/String;
+    //   500: invokevirtual 562	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   503: checkcast 578	[Ljava/lang/String;
+    //   506: checkcast 578	[Ljava/lang/String;
     //   509: astore 22
     //   511: aload 22
     //   513: arraylength
@@ -675,43 +789,43 @@ public class TPCodecUtils
     //   538: aaload
     //   539: astore 23
     //   541: iconst_2
-    //   542: new 270	java/lang/StringBuilder
+    //   542: new 285	java/lang/StringBuilder
     //   545: dup
-    //   546: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   549: ldc_w 536
-    //   552: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   546: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   549: ldc_w 580
+    //   552: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   555: aload 23
-    //   557: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   560: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   563: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   557: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   560: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   563: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   566: aload 21
-    //   568: ldc_w 538
-    //   571: invokevirtual 542	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   568: ldc_w 582
+    //   571: invokevirtual 586	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   574: ifne +36 -> 610
     //   577: aload 21
-    //   579: ldc_w 544
-    //   582: invokevirtual 542	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   579: ldc_w 588
+    //   582: invokevirtual 586	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   585: ifne +25 -> 610
     //   588: aload 21
-    //   590: ldc_w 546
-    //   593: invokevirtual 542	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   590: ldc_w 590
+    //   593: invokevirtual 586	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   596: ifne +14 -> 610
     //   599: aload 21
-    //   601: ldc_w 548
-    //   604: invokevirtual 542	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   601: ldc_w 592
+    //   604: invokevirtual 586	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   607: ifeq +15 -> 622
-    //   610: getstatic 114	com/tencent/thumbplayer/core/common/TPCodecUtils:mSoftCodecCapList	Ljava/util/ArrayList;
+    //   610: getstatic 121	com/tencent/thumbplayer/core/common/TPCodecUtils:mSoftCodecCapList	Ljava/util/ArrayList;
     //   613: aload 23
-    //   615: invokevirtual 552	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   615: invokevirtual 596	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   618: pop
     //   619: goto +1929 -> 2548
-    //   622: getstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
+    //   622: getstatic 119	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
     //   625: aload 23
-    //   627: invokevirtual 552	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   627: invokevirtual 596	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   630: pop
-    //   631: getstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
-    //   634: ldc_w 430
-    //   637: invokevirtual 554	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
+    //   631: getstatic 119	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
+    //   634: ldc_w 477
+    //   637: invokevirtual 598	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
     //   640: istore 11
     //   642: iload 11
     //   644: ifeq +1884 -> 2528
@@ -724,12 +838,12 @@ public class TPCodecUtils
     //   658: anewarray 4	java/lang/Object
     //   661: dup
     //   662: iconst_0
-    //   663: ldc_w 430
+    //   663: ldc_w 477
     //   666: aastore
-    //   667: invokevirtual 518	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   670: invokevirtual 559	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   673: checkcast 561	[Ljava/lang/Object;
-    //   676: checkcast 561	[Ljava/lang/Object;
+    //   667: invokevirtual 562	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   670: invokevirtual 603	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   673: checkcast 605	[Ljava/lang/Object;
+    //   676: checkcast 605	[Ljava/lang/Object;
     //   679: astore 23
     //   681: aload 23
     //   683: arraylength
@@ -745,79 +859,79 @@ public class TPCodecUtils
     //   696: astore 24
     //   698: aload 18
     //   700: aload 24
-    //   702: invokevirtual 559	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   705: checkcast 201	java/lang/Integer
-    //   708: invokevirtual 519	java/lang/Integer:intValue	()I
+    //   702: invokevirtual 603	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   705: checkcast 214	java/lang/Integer
+    //   708: invokevirtual 563	java/lang/Integer:intValue	()I
     //   711: istore 6
     //   713: aload 19
     //   715: aload 24
-    //   717: invokevirtual 559	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   720: checkcast 201	java/lang/Integer
-    //   723: invokevirtual 519	java/lang/Integer:intValue	()I
+    //   717: invokevirtual 603	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   720: checkcast 214	java/lang/Integer
+    //   723: invokevirtual 563	java/lang/Integer:intValue	()I
     //   726: istore 7
     //   728: iload 7
     //   730: iload 6
-    //   732: invokestatic 565	com/tencent/thumbplayer/core/common/TPCodecUtils:maxLumaSamplesForAVCProfileLevel	(II)I
+    //   732: invokestatic 609	com/tencent/thumbplayer/core/common/TPCodecUtils:maxLumaSamplesForAVCProfileLevel	(II)I
     //   735: istore 10
     //   737: iload 10
-    //   739: getstatic 236	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   742: getfield 568	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   739: getstatic 249	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   742: getfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
     //   745: if_icmplt +1812 -> 2557
-    //   748: getstatic 236	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   748: getstatic 249	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
     //   751: iload 10
-    //   753: putfield 568	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
-    //   756: getstatic 236	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   753: putfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   756: getstatic 249	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
     //   759: iload 7
-    //   761: putfield 571	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxProfile	I
-    //   764: getstatic 236	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   761: putfield 615	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxProfile	I
+    //   764: getstatic 249	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
     //   767: iload 6
-    //   769: putfield 574	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLevel	I
-    //   772: getstatic 236	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   775: getfield 568	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
-    //   778: ldc_w 575
+    //   769: putfield 618	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLevel	I
+    //   772: getstatic 249	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   775: getfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   778: ldc_w 619
     //   781: if_icmplt +40 -> 821
-    //   784: getstatic 236	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   787: getstatic 578	com/tencent/thumbplayer/core/common/TPDecoderType:TP_VIDEO_DECODER_MEDIACODEC	I
+    //   784: getstatic 249	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   787: getstatic 622	com/tencent/thumbplayer/core/common/TPDecoderType:TP_VIDEO_DECODER_MEDIACODEC	I
     //   790: bipush 26
     //   792: sipush 7680
     //   795: sipush 4320
-    //   798: invokestatic 580	com/tencent/thumbplayer/core/common/TPCodecUtils:getMaxSupportedFrameRatesFor	(IIII)I
-    //   801: putfield 583	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
+    //   798: invokestatic 624	com/tencent/thumbplayer/core/common/TPCodecUtils:getMaxSupportedFrameRatesFor	(IIII)I
+    //   801: putfield 627	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
     //   804: bipush 26
-    //   806: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   809: getstatic 236	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   812: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
-    //   815: invokestatic 587	com/tencent/thumbplayer/core/common/TPCodecUtils:replace	(Ljava/lang/Object;Ljava/lang/Object;Ljava/util/HashMap;)V
+    //   806: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   809: getstatic 249	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   812: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   815: invokestatic 631	com/tencent/thumbplayer/core/common/TPCodecUtils:replace	(Ljava/lang/Object;Ljava/lang/Object;Ljava/util/HashMap;)V
     //   818: goto +1739 -> 2557
-    //   821: getstatic 236	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   824: getfield 568	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
-    //   827: ldc_w 588
+    //   821: getstatic 249	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   824: getfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   827: ldc_w 632
     //   830: if_icmplt +258 -> 1088
-    //   833: getstatic 236	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   836: getstatic 578	com/tencent/thumbplayer/core/common/TPDecoderType:TP_VIDEO_DECODER_MEDIACODEC	I
+    //   833: getstatic 249	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   836: getstatic 622	com/tencent/thumbplayer/core/common/TPDecoderType:TP_VIDEO_DECODER_MEDIACODEC	I
     //   839: bipush 26
     //   841: sipush 4096
     //   844: sipush 2160
-    //   847: invokestatic 580	com/tencent/thumbplayer/core/common/TPCodecUtils:getMaxSupportedFrameRatesFor	(IIII)I
-    //   850: putfield 583	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
+    //   847: invokestatic 624	com/tencent/thumbplayer/core/common/TPCodecUtils:getMaxSupportedFrameRatesFor	(IIII)I
+    //   850: putfield 627	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
     //   853: goto -49 -> 804
     //   856: astore 23
     //   858: iconst_1
     //   859: istore_2
     //   860: iconst_4
-    //   861: new 270	java/lang/StringBuilder
+    //   861: new 285	java/lang/StringBuilder
     //   864: dup
-    //   865: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   868: ldc_w 590
-    //   871: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   865: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   868: ldc_w 634
+    //   871: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   874: aload 23
-    //   876: invokevirtual 591	java/lang/RuntimeException:getMessage	()Ljava/lang/String;
-    //   879: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   882: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   885: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   888: getstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
-    //   891: ldc_w 395
-    //   894: invokevirtual 554	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
+    //   876: invokevirtual 635	java/lang/RuntimeException:getMessage	()Ljava/lang/String;
+    //   879: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   882: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   885: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   888: getstatic 119	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
+    //   891: ldc_w 442
+    //   894: invokevirtual 598	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
     //   897: istore 11
     //   899: iload_1
     //   900: istore_3
@@ -834,12 +948,12 @@ public class TPCodecUtils
     //   919: anewarray 4	java/lang/Object
     //   922: dup
     //   923: iconst_0
-    //   924: ldc_w 395
+    //   924: ldc_w 442
     //   927: aastore
-    //   928: invokevirtual 518	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   931: invokevirtual 559	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   934: checkcast 561	[Ljava/lang/Object;
-    //   937: checkcast 561	[Ljava/lang/Object;
+    //   928: invokevirtual 562	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   931: invokevirtual 603	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   934: checkcast 605	[Ljava/lang/Object;
+    //   937: checkcast 605	[Ljava/lang/Object;
     //   940: astore 23
     //   942: aload 23
     //   944: arraylength
@@ -855,282 +969,282 @@ public class TPCodecUtils
     //   957: astore 24
     //   959: aload 18
     //   961: aload 24
-    //   963: invokevirtual 559	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   966: checkcast 201	java/lang/Integer
-    //   969: invokevirtual 519	java/lang/Integer:intValue	()I
+    //   963: invokevirtual 603	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   966: checkcast 214	java/lang/Integer
+    //   969: invokevirtual 563	java/lang/Integer:intValue	()I
     //   972: istore 6
     //   974: aload 19
     //   976: aload 24
-    //   978: invokevirtual 559	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   981: checkcast 201	java/lang/Integer
-    //   984: invokevirtual 519	java/lang/Integer:intValue	()I
+    //   978: invokevirtual 603	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   981: checkcast 214	java/lang/Integer
+    //   984: invokevirtual 563	java/lang/Integer:intValue	()I
     //   987: istore 7
     //   989: iload 7
     //   991: iload 6
-    //   993: invokestatic 594	com/tencent/thumbplayer/core/common/TPCodecUtils:maxLumaSamplesForHEVCProfileLevel	(II)I
+    //   993: invokestatic 638	com/tencent/thumbplayer/core/common/TPCodecUtils:maxLumaSamplesForHEVCProfileLevel	(II)I
     //   996: istore 10
     //   998: iload 10
-    //   1000: getstatic 238	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   1003: getfield 568	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   1000: getstatic 251	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1003: getfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
     //   1006: if_icmplt +75 -> 1081
-    //   1009: getstatic 238	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1009: getstatic 251	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
     //   1012: iload 10
-    //   1014: putfield 568	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
-    //   1017: getstatic 238	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1014: putfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   1017: getstatic 251	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
     //   1020: iload 7
-    //   1022: putfield 571	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxProfile	I
-    //   1025: getstatic 238	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1022: putfield 615	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxProfile	I
+    //   1025: getstatic 251	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
     //   1028: iload 6
-    //   1030: putfield 574	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLevel	I
-    //   1033: getstatic 238	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   1036: getfield 568	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
-    //   1039: ldc_w 575
+    //   1030: putfield 618	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLevel	I
+    //   1033: getstatic 251	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1036: getfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   1039: ldc_w 619
     //   1042: if_icmplt +574 -> 1616
-    //   1045: getstatic 238	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   1048: getstatic 578	com/tencent/thumbplayer/core/common/TPDecoderType:TP_VIDEO_DECODER_MEDIACODEC	I
+    //   1045: getstatic 251	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1048: getstatic 622	com/tencent/thumbplayer/core/common/TPDecoderType:TP_VIDEO_DECODER_MEDIACODEC	I
     //   1051: sipush 172
     //   1054: sipush 7680
     //   1057: sipush 4320
-    //   1060: invokestatic 580	com/tencent/thumbplayer/core/common/TPCodecUtils:getMaxSupportedFrameRatesFor	(IIII)I
-    //   1063: putfield 583	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
+    //   1060: invokestatic 624	com/tencent/thumbplayer/core/common/TPCodecUtils:getMaxSupportedFrameRatesFor	(IIII)I
+    //   1063: putfield 627	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
     //   1066: sipush 172
-    //   1069: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1072: getstatic 238	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   1075: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
-    //   1078: invokestatic 587	com/tencent/thumbplayer/core/common/TPCodecUtils:replace	(Ljava/lang/Object;Ljava/lang/Object;Ljava/util/HashMap;)V
+    //   1069: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1072: getstatic 251	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1075: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   1078: invokestatic 631	com/tencent/thumbplayer/core/common/TPCodecUtils:replace	(Ljava/lang/Object;Ljava/lang/Object;Ljava/util/HashMap;)V
     //   1081: iload_1
     //   1082: iconst_1
     //   1083: iadd
     //   1084: istore_1
     //   1085: goto -137 -> 948
-    //   1088: getstatic 236	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   1091: getfield 568	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
-    //   1094: ldc_w 595
+    //   1088: getstatic 249	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1091: getfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   1094: ldc_w 639
     //   1097: if_icmplt +108 -> 1205
-    //   1100: getstatic 236	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   1103: getstatic 578	com/tencent/thumbplayer/core/common/TPDecoderType:TP_VIDEO_DECODER_MEDIACODEC	I
+    //   1100: getstatic 249	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1103: getstatic 622	com/tencent/thumbplayer/core/common/TPDecoderType:TP_VIDEO_DECODER_MEDIACODEC	I
     //   1106: bipush 26
     //   1108: sipush 1920
     //   1111: sipush 1080
-    //   1114: invokestatic 580	com/tencent/thumbplayer/core/common/TPCodecUtils:getMaxSupportedFrameRatesFor	(IIII)I
-    //   1117: putfield 583	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
+    //   1114: invokestatic 624	com/tencent/thumbplayer/core/common/TPCodecUtils:getMaxSupportedFrameRatesFor	(IIII)I
+    //   1117: putfield 627	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
     //   1120: goto -316 -> 804
     //   1123: astore 12
     //   1125: iconst_4
-    //   1126: new 270	java/lang/StringBuilder
+    //   1126: new 285	java/lang/StringBuilder
     //   1129: dup
-    //   1130: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   1133: ldc_w 597
-    //   1136: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1130: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   1133: ldc_w 641
+    //   1136: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1139: aload 12
-    //   1141: invokevirtual 598	java/lang/reflect/InvocationTargetException:getMessage	()Ljava/lang/String;
-    //   1144: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1147: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1150: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   1141: invokevirtual 642	java/lang/reflect/InvocationTargetException:getMessage	()Ljava/lang/String;
+    //   1144: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1147: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1150: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   1153: iconst_2
-    //   1154: ldc_w 600
-    //   1157: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   1160: getstatic 97	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
+    //   1154: ldc_w 644
+    //   1157: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   1160: getstatic 104	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
     //   1163: ifeq +30 -> 1193
-    //   1166: getstatic 138	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapListKey	Ljava/lang/String;
-    //   1169: getstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
-    //   1172: invokestatic 602	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapList	(Ljava/lang/String;Ljava/util/ArrayList;)V
-    //   1175: getstatic 150	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMapKey	Ljava/lang/String;
-    //   1178: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
-    //   1181: invokestatic 604	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapabilityMap	(Ljava/lang/String;Ljava/util/HashMap;)V
+    //   1166: getstatic 145	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapListKey	Ljava/lang/String;
+    //   1169: getstatic 119	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
+    //   1172: invokestatic 646	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapList	(Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   1175: getstatic 157	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMapKey	Ljava/lang/String;
+    //   1178: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   1181: invokestatic 648	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapabilityMap	(Ljava/lang/String;Ljava/util/HashMap;)V
     //   1184: iconst_2
     //   1185: ldc 32
-    //   1187: ldc_w 606
-    //   1190: invokestatic 225	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   1187: ldc_w 650
+    //   1190: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
     //   1193: iconst_1
-    //   1194: putstatic 227	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
-    //   1197: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   1194: putstatic 240	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
+    //   1197: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   1200: astore 12
     //   1202: goto -1170 -> 32
-    //   1205: getstatic 236	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   1208: getfield 568	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
-    //   1211: ldc_w 607
+    //   1205: getstatic 249	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1208: getfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   1211: ldc_w 651
     //   1214: if_icmplt +108 -> 1322
-    //   1217: getstatic 236	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   1220: getstatic 578	com/tencent/thumbplayer/core/common/TPDecoderType:TP_VIDEO_DECODER_MEDIACODEC	I
+    //   1217: getstatic 249	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1220: getstatic 622	com/tencent/thumbplayer/core/common/TPDecoderType:TP_VIDEO_DECODER_MEDIACODEC	I
     //   1223: bipush 26
     //   1225: sipush 1280
     //   1228: sipush 720
-    //   1231: invokestatic 580	com/tencent/thumbplayer/core/common/TPCodecUtils:getMaxSupportedFrameRatesFor	(IIII)I
-    //   1234: putfield 583	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
+    //   1231: invokestatic 624	com/tencent/thumbplayer/core/common/TPCodecUtils:getMaxSupportedFrameRatesFor	(IIII)I
+    //   1234: putfield 627	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
     //   1237: goto -433 -> 804
     //   1240: astore 12
     //   1242: iconst_4
-    //   1243: new 270	java/lang/StringBuilder
+    //   1243: new 285	java/lang/StringBuilder
     //   1246: dup
-    //   1247: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   1250: ldc_w 597
-    //   1253: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1247: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   1250: ldc_w 641
+    //   1253: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1256: aload 12
-    //   1258: invokevirtual 608	java/lang/NoSuchMethodException:getMessage	()Ljava/lang/String;
-    //   1261: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1264: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1267: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   1258: invokevirtual 652	java/lang/NoSuchMethodException:getMessage	()Ljava/lang/String;
+    //   1261: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1264: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1267: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   1270: iconst_2
-    //   1271: ldc_w 600
-    //   1274: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   1277: getstatic 97	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
+    //   1271: ldc_w 644
+    //   1274: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   1277: getstatic 104	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
     //   1280: ifeq +30 -> 1310
-    //   1283: getstatic 138	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapListKey	Ljava/lang/String;
-    //   1286: getstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
-    //   1289: invokestatic 602	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapList	(Ljava/lang/String;Ljava/util/ArrayList;)V
-    //   1292: getstatic 150	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMapKey	Ljava/lang/String;
-    //   1295: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
-    //   1298: invokestatic 604	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapabilityMap	(Ljava/lang/String;Ljava/util/HashMap;)V
+    //   1283: getstatic 145	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapListKey	Ljava/lang/String;
+    //   1286: getstatic 119	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
+    //   1289: invokestatic 646	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapList	(Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   1292: getstatic 157	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMapKey	Ljava/lang/String;
+    //   1295: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   1298: invokestatic 648	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapabilityMap	(Ljava/lang/String;Ljava/util/HashMap;)V
     //   1301: iconst_2
     //   1302: ldc 32
-    //   1304: ldc_w 606
-    //   1307: invokestatic 225	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   1304: ldc_w 650
+    //   1307: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
     //   1310: iconst_1
-    //   1311: putstatic 227	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
-    //   1314: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   1311: putstatic 240	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
+    //   1314: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   1317: astore 12
     //   1319: goto -1287 -> 32
-    //   1322: getstatic 236	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1322: getstatic 249	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
     //   1325: bipush 30
-    //   1327: putfield 583	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
+    //   1327: putfield 627	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
     //   1330: goto -526 -> 804
     //   1333: astore 12
     //   1335: iconst_4
-    //   1336: new 270	java/lang/StringBuilder
+    //   1336: new 285	java/lang/StringBuilder
     //   1339: dup
-    //   1340: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   1343: ldc_w 597
-    //   1346: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1340: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   1343: ldc_w 641
+    //   1346: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1349: aload 12
-    //   1351: invokevirtual 609	java/lang/IllegalAccessException:getMessage	()Ljava/lang/String;
-    //   1354: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1357: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1360: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   1351: invokevirtual 653	java/lang/IllegalAccessException:getMessage	()Ljava/lang/String;
+    //   1354: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1357: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1360: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   1363: iconst_2
-    //   1364: ldc_w 600
-    //   1367: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   1370: getstatic 97	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
+    //   1364: ldc_w 644
+    //   1367: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   1370: getstatic 104	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
     //   1373: ifeq +30 -> 1403
-    //   1376: getstatic 138	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapListKey	Ljava/lang/String;
-    //   1379: getstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
-    //   1382: invokestatic 602	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapList	(Ljava/lang/String;Ljava/util/ArrayList;)V
-    //   1385: getstatic 150	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMapKey	Ljava/lang/String;
-    //   1388: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
-    //   1391: invokestatic 604	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapabilityMap	(Ljava/lang/String;Ljava/util/HashMap;)V
+    //   1376: getstatic 145	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapListKey	Ljava/lang/String;
+    //   1379: getstatic 119	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
+    //   1382: invokestatic 646	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapList	(Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   1385: getstatic 157	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMapKey	Ljava/lang/String;
+    //   1388: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   1391: invokestatic 648	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapabilityMap	(Ljava/lang/String;Ljava/util/HashMap;)V
     //   1394: iconst_2
     //   1395: ldc 32
-    //   1397: ldc_w 606
-    //   1400: invokestatic 225	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   1397: ldc_w 650
+    //   1400: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
     //   1403: iconst_1
-    //   1404: putstatic 227	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
-    //   1407: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   1404: putstatic 240	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
+    //   1407: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   1410: astore 12
     //   1412: goto -1380 -> 32
-    //   1415: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   1415: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   1418: bipush 26
-    //   1420: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1423: invokevirtual 612	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   1420: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1423: invokevirtual 656	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   1426: ifeq +98 -> 1524
     //   1429: iconst_2
-    //   1430: new 270	java/lang/StringBuilder
+    //   1430: new 285	java/lang/StringBuilder
     //   1433: dup
-    //   1434: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   1437: ldc_w 614
-    //   1440: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1443: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   1434: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   1437: ldc_w 658
+    //   1440: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1443: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   1446: bipush 26
-    //   1448: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1451: invokevirtual 615	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1454: checkcast 231	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability
-    //   1457: getfield 571	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxProfile	I
-    //   1460: invokevirtual 468	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1463: ldc_w 617
-    //   1466: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1469: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   1448: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1451: invokevirtual 659	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1454: checkcast 244	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability
+    //   1457: getfield 615	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxProfile	I
+    //   1460: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1463: ldc_w 661
+    //   1466: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1469: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   1472: bipush 26
-    //   1474: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1477: invokevirtual 615	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1480: checkcast 231	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability
-    //   1483: getfield 574	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLevel	I
-    //   1486: invokevirtual 468	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1489: ldc_w 619
-    //   1492: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1495: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   1474: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1477: invokevirtual 659	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1480: checkcast 244	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability
+    //   1483: getfield 618	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLevel	I
+    //   1486: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1489: ldc_w 663
+    //   1492: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1495: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   1498: bipush 26
-    //   1500: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1503: invokevirtual 615	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1506: checkcast 231	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability
-    //   1509: getfield 568	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
-    //   1512: invokevirtual 468	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1515: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1518: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   1500: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1503: invokevirtual 659	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1506: checkcast 244	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability
+    //   1509: getfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   1512: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1515: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1518: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   1521: goto +1043 -> 2564
     //   1524: iconst_2
-    //   1525: ldc_w 621
-    //   1528: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   1525: ldc_w 665
+    //   1528: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   1531: goto +1033 -> 2564
     //   1534: astore 12
     //   1536: iconst_4
-    //   1537: new 270	java/lang/StringBuilder
+    //   1537: new 285	java/lang/StringBuilder
     //   1540: dup
-    //   1541: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   1544: ldc_w 597
-    //   1547: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1541: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   1544: ldc_w 641
+    //   1547: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1550: aload 12
-    //   1552: invokevirtual 622	java/lang/NoSuchFieldException:getMessage	()Ljava/lang/String;
-    //   1555: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1558: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1561: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   1552: invokevirtual 666	java/lang/NoSuchFieldException:getMessage	()Ljava/lang/String;
+    //   1555: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1558: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1561: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   1564: iconst_2
-    //   1565: ldc_w 600
-    //   1568: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   1571: getstatic 97	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
+    //   1565: ldc_w 644
+    //   1568: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   1571: getstatic 104	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
     //   1574: ifeq +30 -> 1604
-    //   1577: getstatic 138	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapListKey	Ljava/lang/String;
-    //   1580: getstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
-    //   1583: invokestatic 602	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapList	(Ljava/lang/String;Ljava/util/ArrayList;)V
-    //   1586: getstatic 150	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMapKey	Ljava/lang/String;
-    //   1589: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
-    //   1592: invokestatic 604	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapabilityMap	(Ljava/lang/String;Ljava/util/HashMap;)V
+    //   1577: getstatic 145	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapListKey	Ljava/lang/String;
+    //   1580: getstatic 119	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
+    //   1583: invokestatic 646	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapList	(Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   1586: getstatic 157	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMapKey	Ljava/lang/String;
+    //   1589: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   1592: invokestatic 648	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapabilityMap	(Ljava/lang/String;Ljava/util/HashMap;)V
     //   1595: iconst_2
     //   1596: ldc 32
-    //   1598: ldc_w 606
-    //   1601: invokestatic 225	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   1598: ldc_w 650
+    //   1601: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
     //   1604: iconst_1
-    //   1605: putstatic 227	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
-    //   1608: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   1605: putstatic 240	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
+    //   1608: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   1611: astore 12
     //   1613: goto -1581 -> 32
-    //   1616: getstatic 238	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   1619: getfield 568	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
-    //   1622: ldc_w 588
+    //   1616: getstatic 251	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1619: getfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   1622: ldc_w 632
     //   1625: if_icmplt +226 -> 1851
-    //   1628: getstatic 238	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   1631: getstatic 578	com/tencent/thumbplayer/core/common/TPDecoderType:TP_VIDEO_DECODER_MEDIACODEC	I
+    //   1628: getstatic 251	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1631: getstatic 622	com/tencent/thumbplayer/core/common/TPDecoderType:TP_VIDEO_DECODER_MEDIACODEC	I
     //   1634: sipush 172
     //   1637: sipush 4096
     //   1640: sipush 2160
-    //   1643: invokestatic 580	com/tencent/thumbplayer/core/common/TPCodecUtils:getMaxSupportedFrameRatesFor	(IIII)I
-    //   1646: putfield 583	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
+    //   1643: invokestatic 624	com/tencent/thumbplayer/core/common/TPCodecUtils:getMaxSupportedFrameRatesFor	(IIII)I
+    //   1646: putfield 627	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
     //   1649: goto -583 -> 1066
     //   1652: astore 23
     //   1654: iconst_1
     //   1655: istore_3
     //   1656: iconst_4
-    //   1657: new 270	java/lang/StringBuilder
+    //   1657: new 285	java/lang/StringBuilder
     //   1660: dup
-    //   1661: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   1664: ldc_w 624
-    //   1667: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1661: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   1664: ldc_w 668
+    //   1667: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1670: aload 23
-    //   1672: invokevirtual 591	java/lang/RuntimeException:getMessage	()Ljava/lang/String;
-    //   1675: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1678: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1681: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   1684: getstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
-    //   1687: ldc_w 626
-    //   1690: invokevirtual 554	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
+    //   1672: invokevirtual 635	java/lang/RuntimeException:getMessage	()Ljava/lang/String;
+    //   1675: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1678: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1681: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   1684: getstatic 119	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
+    //   1687: ldc_w 670
+    //   1690: invokevirtual 598	java/util/ArrayList:contains	(Ljava/lang/Object;)Z
     //   1693: istore 11
     //   1695: iload_0
     //   1696: istore_1
@@ -1147,12 +1261,12 @@ public class TPCodecUtils
     //   1715: anewarray 4	java/lang/Object
     //   1718: dup
     //   1719: iconst_0
-    //   1720: ldc_w 626
+    //   1720: ldc_w 670
     //   1723: aastore
-    //   1724: invokevirtual 518	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   1727: invokevirtual 559	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1730: checkcast 561	[Ljava/lang/Object;
-    //   1733: checkcast 561	[Ljava/lang/Object;
+    //   1724: invokevirtual 562	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   1727: invokevirtual 603	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1730: checkcast 605	[Ljava/lang/Object;
+    //   1733: checkcast 605	[Ljava/lang/Object;
     //   1736: astore 23
     //   1738: aload 23
     //   1740: arraylength
@@ -1168,292 +1282,292 @@ public class TPCodecUtils
     //   1753: astore 24
     //   1755: aload 18
     //   1757: aload 24
-    //   1759: invokevirtual 559	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1762: checkcast 201	java/lang/Integer
-    //   1765: invokevirtual 519	java/lang/Integer:intValue	()I
+    //   1759: invokevirtual 603	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1762: checkcast 214	java/lang/Integer
+    //   1765: invokevirtual 563	java/lang/Integer:intValue	()I
     //   1768: istore 6
     //   1770: aload 19
     //   1772: aload 24
-    //   1774: invokevirtual 559	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1777: checkcast 201	java/lang/Integer
-    //   1780: invokevirtual 519	java/lang/Integer:intValue	()I
+    //   1774: invokevirtual 603	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1777: checkcast 214	java/lang/Integer
+    //   1780: invokevirtual 563	java/lang/Integer:intValue	()I
     //   1783: istore 7
     //   1785: iload 7
     //   1787: iload 6
-    //   1789: invokestatic 629	com/tencent/thumbplayer/core/common/TPCodecUtils:maxLumaSamplesForVP9ProfileLevel	(II)I
+    //   1789: invokestatic 673	com/tencent/thumbplayer/core/common/TPCodecUtils:maxLumaSamplesForVP9ProfileLevel	(II)I
     //   1792: istore 10
     //   1794: iload 10
-    //   1796: getstatic 240	com/tencent/thumbplayer/core/common/TPCodecUtils:mVP9MediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   1799: getfield 568	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   1796: getstatic 253	com/tencent/thumbplayer/core/common/TPCodecUtils:mVP9MediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1799: getfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
     //   1802: if_icmplt +42 -> 1844
-    //   1805: getstatic 240	com/tencent/thumbplayer/core/common/TPCodecUtils:mVP9MediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1805: getstatic 253	com/tencent/thumbplayer/core/common/TPCodecUtils:mVP9MediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
     //   1808: iload 10
-    //   1810: putfield 568	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
-    //   1813: getstatic 240	com/tencent/thumbplayer/core/common/TPCodecUtils:mVP9MediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1810: putfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   1813: getstatic 253	com/tencent/thumbplayer/core/common/TPCodecUtils:mVP9MediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
     //   1816: iload 7
-    //   1818: putfield 571	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxProfile	I
-    //   1821: getstatic 240	com/tencent/thumbplayer/core/common/TPCodecUtils:mVP9MediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1818: putfield 615	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxProfile	I
+    //   1821: getstatic 253	com/tencent/thumbplayer/core/common/TPCodecUtils:mVP9MediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
     //   1824: iload 6
-    //   1826: putfield 574	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLevel	I
+    //   1826: putfield 618	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLevel	I
     //   1829: sipush 166
-    //   1832: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1835: getstatic 240	com/tencent/thumbplayer/core/common/TPCodecUtils:mVP9MediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   1838: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
-    //   1841: invokestatic 587	com/tencent/thumbplayer/core/common/TPCodecUtils:replace	(Ljava/lang/Object;Ljava/lang/Object;Ljava/util/HashMap;)V
+    //   1832: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1835: getstatic 253	com/tencent/thumbplayer/core/common/TPCodecUtils:mVP9MediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1838: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   1841: invokestatic 631	com/tencent/thumbplayer/core/common/TPCodecUtils:replace	(Ljava/lang/Object;Ljava/lang/Object;Ljava/util/HashMap;)V
     //   1844: iload_0
     //   1845: iconst_1
     //   1846: iadd
     //   1847: istore_0
     //   1848: goto -104 -> 1744
-    //   1851: getstatic 238	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   1854: getfield 568	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
-    //   1857: ldc_w 595
+    //   1851: getstatic 251	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1854: getfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   1857: ldc_w 639
     //   1860: if_icmplt +109 -> 1969
-    //   1863: getstatic 238	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   1866: getstatic 578	com/tencent/thumbplayer/core/common/TPDecoderType:TP_VIDEO_DECODER_MEDIACODEC	I
+    //   1863: getstatic 251	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1866: getstatic 622	com/tencent/thumbplayer/core/common/TPDecoderType:TP_VIDEO_DECODER_MEDIACODEC	I
     //   1869: sipush 172
     //   1872: sipush 1920
     //   1875: sipush 1080
-    //   1878: invokestatic 580	com/tencent/thumbplayer/core/common/TPCodecUtils:getMaxSupportedFrameRatesFor	(IIII)I
-    //   1881: putfield 583	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
+    //   1878: invokestatic 624	com/tencent/thumbplayer/core/common/TPCodecUtils:getMaxSupportedFrameRatesFor	(IIII)I
+    //   1881: putfield 627	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
     //   1884: goto -818 -> 1066
     //   1887: astore 12
     //   1889: iconst_4
-    //   1890: new 270	java/lang/StringBuilder
+    //   1890: new 285	java/lang/StringBuilder
     //   1893: dup
-    //   1894: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   1897: ldc_w 597
-    //   1900: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1894: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   1897: ldc_w 641
+    //   1900: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1903: aload 12
-    //   1905: invokevirtual 630	java/lang/ClassNotFoundException:getMessage	()Ljava/lang/String;
-    //   1908: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1911: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1914: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   1905: invokevirtual 674	java/lang/ClassNotFoundException:getMessage	()Ljava/lang/String;
+    //   1908: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1911: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1914: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   1917: iconst_2
-    //   1918: ldc_w 600
-    //   1921: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   1924: getstatic 97	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
+    //   1918: ldc_w 644
+    //   1921: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   1924: getstatic 104	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
     //   1927: ifeq +30 -> 1957
-    //   1930: getstatic 138	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapListKey	Ljava/lang/String;
-    //   1933: getstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
-    //   1936: invokestatic 602	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapList	(Ljava/lang/String;Ljava/util/ArrayList;)V
-    //   1939: getstatic 150	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMapKey	Ljava/lang/String;
-    //   1942: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
-    //   1945: invokestatic 604	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapabilityMap	(Ljava/lang/String;Ljava/util/HashMap;)V
+    //   1930: getstatic 145	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapListKey	Ljava/lang/String;
+    //   1933: getstatic 119	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
+    //   1936: invokestatic 646	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapList	(Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   1939: getstatic 157	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMapKey	Ljava/lang/String;
+    //   1942: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   1945: invokestatic 648	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapabilityMap	(Ljava/lang/String;Ljava/util/HashMap;)V
     //   1948: iconst_2
     //   1949: ldc 32
-    //   1951: ldc_w 606
-    //   1954: invokestatic 225	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   1951: ldc_w 650
+    //   1954: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
     //   1957: iconst_1
-    //   1958: putstatic 227	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
-    //   1961: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   1958: putstatic 240	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
+    //   1961: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   1964: astore 12
     //   1966: goto -1934 -> 32
-    //   1969: getstatic 238	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   1972: getfield 568	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
-    //   1975: ldc_w 607
+    //   1969: getstatic 251	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1972: getfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   1975: ldc_w 651
     //   1978: if_icmplt +81 -> 2059
-    //   1981: getstatic 238	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
-    //   1984: getstatic 578	com/tencent/thumbplayer/core/common/TPDecoderType:TP_VIDEO_DECODER_MEDIACODEC	I
+    //   1981: getstatic 251	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   1984: getstatic 622	com/tencent/thumbplayer/core/common/TPDecoderType:TP_VIDEO_DECODER_MEDIACODEC	I
     //   1987: sipush 172
     //   1990: sipush 1280
     //   1993: sipush 720
-    //   1996: invokestatic 580	com/tencent/thumbplayer/core/common/TPCodecUtils:getMaxSupportedFrameRatesFor	(IIII)I
-    //   1999: putfield 583	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
+    //   1996: invokestatic 624	com/tencent/thumbplayer/core/common/TPCodecUtils:getMaxSupportedFrameRatesFor	(IIII)I
+    //   1999: putfield 627	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
     //   2002: goto -936 -> 1066
     //   2005: astore 12
     //   2007: iconst_2
-    //   2008: ldc_w 600
-    //   2011: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   2014: getstatic 97	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
+    //   2008: ldc_w 644
+    //   2011: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   2014: getstatic 104	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
     //   2017: ifeq +30 -> 2047
-    //   2020: getstatic 138	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapListKey	Ljava/lang/String;
-    //   2023: getstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
-    //   2026: invokestatic 602	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapList	(Ljava/lang/String;Ljava/util/ArrayList;)V
-    //   2029: getstatic 150	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMapKey	Ljava/lang/String;
-    //   2032: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
-    //   2035: invokestatic 604	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapabilityMap	(Ljava/lang/String;Ljava/util/HashMap;)V
+    //   2020: getstatic 145	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapListKey	Ljava/lang/String;
+    //   2023: getstatic 119	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
+    //   2026: invokestatic 646	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapList	(Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   2029: getstatic 157	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMapKey	Ljava/lang/String;
+    //   2032: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   2035: invokestatic 648	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapabilityMap	(Ljava/lang/String;Ljava/util/HashMap;)V
     //   2038: iconst_2
     //   2039: ldc 32
-    //   2041: ldc_w 606
-    //   2044: invokestatic 225	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   2041: ldc_w 650
+    //   2044: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
     //   2047: iconst_1
-    //   2048: putstatic 227	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
-    //   2051: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   2048: putstatic 240	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
+    //   2051: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   2054: astore 12
     //   2056: goto -2024 -> 32
-    //   2059: getstatic 238	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   2059: getstatic 251	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCMediaCodecMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
     //   2062: bipush 30
-    //   2064: putfield 583	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
+    //   2064: putfield 627	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxFramerateFormaxLumaSamples	I
     //   2067: goto -1001 -> 1066
-    //   2070: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   2070: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   2073: sipush 172
-    //   2076: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2079: invokevirtual 612	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   2076: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2079: invokevirtual 656	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   2082: ifeq +101 -> 2183
     //   2085: iconst_2
-    //   2086: new 270	java/lang/StringBuilder
+    //   2086: new 285	java/lang/StringBuilder
     //   2089: dup
-    //   2090: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   2093: ldc_w 632
-    //   2096: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2099: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   2090: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   2093: ldc_w 676
+    //   2096: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2099: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   2102: sipush 172
-    //   2105: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2108: invokevirtual 615	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   2111: checkcast 231	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability
-    //   2114: getfield 571	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxProfile	I
-    //   2117: invokevirtual 468	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2120: ldc_w 617
-    //   2123: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2126: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   2105: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2108: invokevirtual 659	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   2111: checkcast 244	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability
+    //   2114: getfield 615	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxProfile	I
+    //   2117: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2120: ldc_w 661
+    //   2123: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2126: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   2129: sipush 172
-    //   2132: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2135: invokevirtual 615	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   2138: checkcast 231	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability
-    //   2141: getfield 574	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLevel	I
-    //   2144: invokevirtual 468	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2147: ldc_w 619
-    //   2150: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2153: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   2132: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2135: invokevirtual 659	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   2138: checkcast 244	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability
+    //   2141: getfield 618	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLevel	I
+    //   2144: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2147: ldc_w 663
+    //   2150: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2153: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   2156: sipush 172
-    //   2159: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2162: invokevirtual 615	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   2165: checkcast 231	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability
-    //   2168: getfield 568	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
-    //   2171: invokevirtual 468	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2174: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2177: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   2159: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2162: invokevirtual 659	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   2165: checkcast 244	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability
+    //   2168: getfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   2171: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2174: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2177: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   2180: goto +389 -> 2569
     //   2183: iconst_2
-    //   2184: ldc_w 634
-    //   2187: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   2184: ldc_w 678
+    //   2187: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   2190: goto +379 -> 2569
-    //   2193: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   2193: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   2196: sipush 166
-    //   2199: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2202: invokevirtual 612	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   2199: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2202: invokevirtual 656	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   2205: ifeq +134 -> 2339
     //   2208: iconst_2
-    //   2209: new 270	java/lang/StringBuilder
+    //   2209: new 285	java/lang/StringBuilder
     //   2212: dup
-    //   2213: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   2216: ldc_w 636
-    //   2219: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2222: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   2213: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   2216: ldc_w 680
+    //   2219: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2222: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   2225: sipush 166
-    //   2228: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2231: invokevirtual 615	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   2234: checkcast 231	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability
-    //   2237: getfield 571	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxProfile	I
-    //   2240: invokevirtual 468	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2243: ldc_w 617
-    //   2246: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2249: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   2228: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2231: invokevirtual 659	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   2234: checkcast 244	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability
+    //   2237: getfield 615	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxProfile	I
+    //   2240: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2243: ldc_w 661
+    //   2246: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2249: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   2252: sipush 166
-    //   2255: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2258: invokevirtual 615	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   2261: checkcast 231	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability
-    //   2264: getfield 574	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLevel	I
-    //   2267: invokevirtual 468	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2270: ldc_w 619
-    //   2273: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2276: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   2255: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2258: invokevirtual 659	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   2261: checkcast 244	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability
+    //   2264: getfield 618	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLevel	I
+    //   2267: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2270: ldc_w 663
+    //   2273: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2276: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   2279: sipush 166
-    //   2282: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2285: invokevirtual 615	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   2288: checkcast 231	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability
-    //   2291: getfield 568	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
-    //   2294: invokevirtual 468	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2297: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2300: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   2282: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2285: invokevirtual 659	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   2288: checkcast 244	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability
+    //   2291: getfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   2294: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2297: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2300: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   2303: iconst_1
     //   2304: istore_0
     //   2305: iconst_2
-    //   2306: new 270	java/lang/StringBuilder
+    //   2306: new 285	java/lang/StringBuilder
     //   2309: dup
-    //   2310: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   2313: ldc_w 638
-    //   2316: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2319: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
-    //   2322: invokevirtual 463	java/util/HashMap:size	()I
-    //   2325: invokevirtual 468	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2328: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2331: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   2310: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   2313: ldc_w 682
+    //   2316: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2319: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   2322: invokevirtual 510	java/util/HashMap:size	()I
+    //   2325: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2328: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2331: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   2334: iload_3
     //   2335: istore_1
     //   2336: goto +212 -> 2548
     //   2339: iconst_2
-    //   2340: ldc_w 640
-    //   2343: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   2340: ldc_w 684
+    //   2343: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   2346: goto -43 -> 2303
     //   2349: astore 23
     //   2351: iconst_1
     //   2352: istore_1
     //   2353: iconst_4
-    //   2354: new 270	java/lang/StringBuilder
+    //   2354: new 285	java/lang/StringBuilder
     //   2357: dup
-    //   2358: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   2361: ldc_w 642
-    //   2364: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2358: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   2361: ldc_w 686
+    //   2364: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2367: aload 23
-    //   2369: invokevirtual 591	java/lang/RuntimeException:getMessage	()Ljava/lang/String;
-    //   2372: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2375: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2378: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   2369: invokevirtual 635	java/lang/RuntimeException:getMessage	()Ljava/lang/String;
+    //   2372: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2375: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2378: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   2381: iload_1
     //   2382: istore_0
     //   2383: goto -78 -> 2305
     //   2386: iconst_2
-    //   2387: ldc_w 600
-    //   2390: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   2393: getstatic 97	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
+    //   2387: ldc_w 644
+    //   2390: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   2393: getstatic 104	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
     //   2396: ifeq +30 -> 2426
-    //   2399: getstatic 138	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapListKey	Ljava/lang/String;
-    //   2402: getstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
-    //   2405: invokestatic 602	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapList	(Ljava/lang/String;Ljava/util/ArrayList;)V
-    //   2408: getstatic 150	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMapKey	Ljava/lang/String;
-    //   2411: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
-    //   2414: invokestatic 604	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapabilityMap	(Ljava/lang/String;Ljava/util/HashMap;)V
+    //   2399: getstatic 145	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapListKey	Ljava/lang/String;
+    //   2402: getstatic 119	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
+    //   2405: invokestatic 646	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapList	(Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   2408: getstatic 157	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMapKey	Ljava/lang/String;
+    //   2411: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   2414: invokestatic 648	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapabilityMap	(Ljava/lang/String;Ljava/util/HashMap;)V
     //   2417: iconst_2
     //   2418: ldc 32
-    //   2420: ldc_w 606
-    //   2423: invokestatic 225	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   2420: ldc_w 650
+    //   2423: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
     //   2426: iconst_1
-    //   2427: putstatic 227	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
-    //   2430: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   2427: putstatic 240	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
+    //   2430: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   2433: astore 12
     //   2435: goto -2403 -> 32
     //   2438: astore 12
     //   2440: iconst_4
-    //   2441: new 270	java/lang/StringBuilder
+    //   2441: new 285	java/lang/StringBuilder
     //   2444: dup
-    //   2445: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   2448: ldc_w 597
-    //   2451: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2445: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   2448: ldc_w 641
+    //   2451: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2454: aload 12
-    //   2456: invokevirtual 591	java/lang/RuntimeException:getMessage	()Ljava/lang/String;
-    //   2459: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2462: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2465: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   2456: invokevirtual 635	java/lang/RuntimeException:getMessage	()Ljava/lang/String;
+    //   2459: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2462: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2465: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   2468: iconst_2
-    //   2469: ldc_w 600
-    //   2472: invokestatic 524	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   2475: getstatic 97	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
+    //   2469: ldc_w 644
+    //   2472: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   2475: getstatic 104	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
     //   2478: ifeq +30 -> 2508
-    //   2481: getstatic 138	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapListKey	Ljava/lang/String;
-    //   2484: getstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
-    //   2487: invokestatic 602	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapList	(Ljava/lang/String;Ljava/util/ArrayList;)V
-    //   2490: getstatic 150	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMapKey	Ljava/lang/String;
-    //   2493: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
-    //   2496: invokestatic 604	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapabilityMap	(Ljava/lang/String;Ljava/util/HashMap;)V
+    //   2481: getstatic 145	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapListKey	Ljava/lang/String;
+    //   2484: getstatic 119	com/tencent/thumbplayer/core/common/TPCodecUtils:mHWCodecCapList	Ljava/util/ArrayList;
+    //   2487: invokestatic 646	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapList	(Ljava/lang/String;Ljava/util/ArrayList;)V
+    //   2490: getstatic 157	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMapKey	Ljava/lang/String;
+    //   2493: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   2496: invokestatic 648	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheCapabilityMap	(Ljava/lang/String;Ljava/util/HashMap;)V
     //   2499: iconst_2
     //   2500: ldc 32
-    //   2502: ldc_w 606
-    //   2505: invokestatic 225	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   2502: ldc_w 650
+    //   2505: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
     //   2508: iconst_1
-    //   2509: putstatic 227	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
-    //   2512: getstatic 248	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
+    //   2509: putstatic 240	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsMediaCodecCapGot	Z
+    //   2512: getstatic 263	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecHwCapabilityMap	Ljava/util/HashMap;
     //   2515: astore 12
     //   2517: goto -2485 -> 32
     //   2520: astore 12
@@ -1814,130 +1928,191 @@ public class TPCodecUtils
     //   2508	2517	2520	finally
   }
   
-  public static int getSWDecodeLevel()
+  private static int getSoftMaxSamples(int paramInt)
   {
-    String str = TPSystemInfo.getCpuHarewareName();
-    int i = TPSystemInfo.getCpuHWProducter(str);
-    int j = TPSystemInfo.getCpuHWProductIndex(str);
-    TPNativeLog.printLog(2, "TPCodecUtils", "[getSWDecodeLevel], mCpuHWProducter = " + i + ", getMaxCpuFreq() = " + TPSystemInfo.getMaxCpuFreq() + ", numCores = " + TPSystemInfo.getNumCores() + ", mCpuHWProductIdx=" + j);
-    if (-1 != mDeviceLevel) {
-      return mDeviceLevel;
-    }
-    mDeviceLevel = 0;
-    if (-1 == i) {
-      mDeviceLevel = getHevcLvByCoresAndFreq();
-    }
-    for (;;)
+    switch (paramInt)
     {
-      return mDeviceLevel;
-      switch (i)
-      {
-      default: 
-        break;
-      case 0: 
-        if (j >= mShdHevcQualcommIndex) {
-          mDeviceLevel = 21;
-        } else if (j >= mHdHevcQualcommIndex) {
-          mDeviceLevel = 16;
-        } else {
-          mDeviceLevel = getHevcLvByCoresAndFreq();
-        }
-        break;
-      case 1: 
-        if (j >= mShdHevcMtkIndex) {
-          mDeviceLevel = 21;
-        } else if (j >= mHdHevcMtkIndex) {
-          mDeviceLevel = 16;
-        } else {
-          mDeviceLevel = getHevcLvByCoresAndFreq();
-        }
-        break;
-      case 2: 
-        if (j >= mShdHevcHisiIndex) {
-          mDeviceLevel = 21;
-        } else if (j >= mHdHevcHisiIndex) {
-          mDeviceLevel = 16;
-        } else {
-          mDeviceLevel = getHevcLvByCoresAndFreq();
-        }
-        break;
-      case 3: 
-        if (j >= mShdHevcSumsingIndex) {
-          mDeviceLevel = 21;
-        } else if (j >= mHdHevcSumsingIndex) {
-          mDeviceLevel = 16;
-        } else {
-          mDeviceLevel = getHevcLvByCoresAndFreq();
-        }
-        break;
-      }
+    case 11: 
+    default: 
+      return 407040;
+    case 1: 
+      return 129600;
+    case 6: 
+      return 307200;
+    case 16: 
+      return 480000;
+    case 21: 
+      return 921600;
+    case 26: 
+      return 2073600;
+    case 28: 
+      return 8294400;
     }
+    return 8847360;
   }
   
+  /* Error */
   public static HashMap<Integer, TPCodecCapability.TPVCodecMaxCapability> getVCodecSWMaxCapabilityMap()
   {
-    int j = 407040;
-    for (;;)
-    {
-      try
-      {
-        TPNativeLog.printLog(2, "TPCodecUtils", "getVCodecSWMaxCapabilityMap func in");
-        HashMap localHashMap;
-        if (mIsFFmpegCapGot)
-        {
-          localHashMap = mMaxVCodecSwCapabilityMap;
-          return localHashMap;
-        }
-        int i = j;
-        try
-        {
-          switch (getSWDecodeLevel())
-          {
-          case 11: 
-            mAVCSWMaxCapability.maxLumaSamples = i;
-            mAVCSWMaxCapability.maxProfile = 64;
-            mAVCSWMaxCapability.maxLevel = 65536;
-            mMaxVCodecSwCapabilityMap.put(Integer.valueOf(26), mAVCSWMaxCapability);
-            mffmpegVCodecCapList.add("video/avc");
-            mHEVCSWMaxCapability.maxLumaSamples = i;
-            mHEVCSWMaxCapability.maxProfile = 2;
-            mHEVCSWMaxCapability.maxLevel = 33554432;
-            mMaxVCodecSwCapabilityMap.put(Integer.valueOf(172), mHEVCSWMaxCapability);
-            mffmpegVCodecCapList.add("video/hevc");
-            mVP9SWMaxCapability.maxLumaSamples = i;
-            mVP9SWMaxCapability.maxProfile = 8;
-            mVP9SWMaxCapability.maxLevel = 8192;
-            mMaxVCodecSwCapabilityMap.put(Integer.valueOf(166), mVP9SWMaxCapability);
-            mffmpegVCodecCapList.add("video/x-vnd.on2.vp9");
-            TPNativeLog.printLog(2, "getVCodecSWMaxCapabilityMap success, maxLumaSamples:" + i);
-            mIsFFmpegCapGot = true;
-            localHashMap = mMaxVCodecSwCapabilityMap;
-          }
-        }
-        catch (Exception localException)
-        {
-          TPNativeLog.printLog(4, "TPCodecUtils", "getVCodecSWMaxCapabilityMap exception");
-          Object localObject1 = null;
-        }
-        i = 129600;
-        continue;
-        i = 307200;
-        continue;
-        i = 480000;
-        continue;
-        i = 921600;
-        continue;
-        i = 2073600;
-        continue;
-        i = 8294400;
-        continue;
-        i = 8847360;
-        continue;
-        continue;
-        i = j;
-      }
-      finally {}
-    }
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: iconst_2
+    //   4: ldc 32
+    //   6: ldc_w 697
+    //   9: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   12: getstatic 242	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsFFmpegCapGot	Z
+    //   15: ifeq +14 -> 29
+    //   18: getstatic 265	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecSwCapabilityMap	Ljava/util/HashMap;
+    //   21: astore 4
+    //   23: ldc 2
+    //   25: monitorexit
+    //   26: aload 4
+    //   28: areturn
+    //   29: invokestatic 699	com/tencent/thumbplayer/core/common/TPCodecUtils:getHevcSWDecodeLevel	()I
+    //   32: istore_0
+    //   33: iload_0
+    //   34: invokestatic 701	com/tencent/thumbplayer/core/common/TPCodecUtils:getSoftMaxSamples	(I)I
+    //   37: istore_1
+    //   38: invokestatic 703	com/tencent/thumbplayer/core/common/TPCodecUtils:getAvs3SWDecodeLevel	()I
+    //   41: istore_2
+    //   42: iload_2
+    //   43: invokestatic 701	com/tencent/thumbplayer/core/common/TPCodecUtils:getSoftMaxSamples	(I)I
+    //   46: istore_3
+    //   47: iconst_2
+    //   48: new 285	java/lang/StringBuilder
+    //   51: dup
+    //   52: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   55: ldc_w 705
+    //   58: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: iload_0
+    //   62: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   65: ldc_w 707
+    //   68: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: iload_2
+    //   72: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   75: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   81: getstatic 255	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCSWMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   84: iload_1
+    //   85: putfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   88: getstatic 255	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCSWMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   91: bipush 64
+    //   93: putfield 615	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxProfile	I
+    //   96: getstatic 255	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCSWMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   99: ldc_w 708
+    //   102: putfield 618	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLevel	I
+    //   105: getstatic 265	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecSwCapabilityMap	Ljava/util/HashMap;
+    //   108: bipush 26
+    //   110: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   113: getstatic 255	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVCSWMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   116: invokevirtual 222	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   119: pop
+    //   120: getstatic 123	com/tencent/thumbplayer/core/common/TPCodecUtils:mffmpegVCodecCapList	Ljava/util/ArrayList;
+    //   123: ldc_w 477
+    //   126: invokevirtual 596	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   129: pop
+    //   130: getstatic 257	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCSWMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   133: iload_1
+    //   134: putfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   137: getstatic 257	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCSWMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   140: iconst_2
+    //   141: putfield 615	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxProfile	I
+    //   144: getstatic 257	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCSWMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   147: ldc_w 709
+    //   150: putfield 618	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLevel	I
+    //   153: getstatic 265	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecSwCapabilityMap	Ljava/util/HashMap;
+    //   156: sipush 172
+    //   159: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   162: getstatic 257	com/tencent/thumbplayer/core/common/TPCodecUtils:mHEVCSWMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   165: invokevirtual 222	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   168: pop
+    //   169: getstatic 123	com/tencent/thumbplayer/core/common/TPCodecUtils:mffmpegVCodecCapList	Ljava/util/ArrayList;
+    //   172: ldc_w 442
+    //   175: invokevirtual 596	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   178: pop
+    //   179: getstatic 259	com/tencent/thumbplayer/core/common/TPCodecUtils:mVP9SWMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   182: iload_1
+    //   183: putfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   186: getstatic 259	com/tencent/thumbplayer/core/common/TPCodecUtils:mVP9SWMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   189: bipush 8
+    //   191: putfield 615	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxProfile	I
+    //   194: getstatic 259	com/tencent/thumbplayer/core/common/TPCodecUtils:mVP9SWMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   197: sipush 8192
+    //   200: putfield 618	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLevel	I
+    //   203: getstatic 265	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecSwCapabilityMap	Ljava/util/HashMap;
+    //   206: sipush 166
+    //   209: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   212: getstatic 259	com/tencent/thumbplayer/core/common/TPCodecUtils:mVP9SWMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   215: invokevirtual 222	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   218: pop
+    //   219: getstatic 123	com/tencent/thumbplayer/core/common/TPCodecUtils:mffmpegVCodecCapList	Ljava/util/ArrayList;
+    //   222: ldc_w 670
+    //   225: invokevirtual 596	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   228: pop
+    //   229: getstatic 261	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVS3WMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   232: iload_3
+    //   233: putfield 612	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLumaSamples	I
+    //   236: getstatic 261	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVS3WMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   239: iconst_0
+    //   240: putfield 615	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxProfile	I
+    //   243: getstatic 261	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVS3WMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   246: iconst_0
+    //   247: putfield 618	com/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability:maxLevel	I
+    //   250: getstatic 265	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecSwCapabilityMap	Ljava/util/HashMap;
+    //   253: sipush 192
+    //   256: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   259: getstatic 261	com/tencent/thumbplayer/core/common/TPCodecUtils:mAVS3WMaxCapability	Lcom/tencent/thumbplayer/core/common/TPCodecCapability$TPVCodecMaxCapability;
+    //   262: invokevirtual 222	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   265: pop
+    //   266: iconst_2
+    //   267: new 285	java/lang/StringBuilder
+    //   270: dup
+    //   271: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   274: ldc_w 711
+    //   277: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   280: iload_1
+    //   281: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   284: ldc_w 713
+    //   287: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   290: iload_3
+    //   291: invokevirtual 334	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   294: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   297: invokestatic 568	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   300: iconst_1
+    //   301: putstatic 242	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsFFmpegCapGot	Z
+    //   304: getstatic 265	com/tencent/thumbplayer/core/common/TPCodecUtils:mMaxVCodecSwCapabilityMap	Ljava/util/HashMap;
+    //   307: astore 4
+    //   309: goto -286 -> 23
+    //   312: astore 4
+    //   314: iconst_4
+    //   315: ldc 32
+    //   317: ldc_w 715
+    //   320: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   323: aconst_null
+    //   324: astore 4
+    //   326: goto -303 -> 23
+    //   329: astore 4
+    //   331: ldc 2
+    //   333: monitorexit
+    //   334: aload 4
+    //   336: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   32	30	0	i	int
+    //   37	244	1	j	int
+    //   41	31	2	k	int
+    //   46	245	3	m	int
+    //   21	287	4	localHashMap	HashMap
+    //   312	1	4	localException	Exception
+    //   324	1	4	localObject1	Object
+    //   329	6	4	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   29	309	312	java/lang/Exception
+    //   3	23	329	finally
+    //   29	309	329	finally
+    //   314	323	329	finally
   }
   
   /* Error */
@@ -1948,54 +2123,54 @@ public class TPCodecUtils
     //   2: monitorenter
     //   3: iconst_2
     //   4: ldc 32
-    //   6: new 270	java/lang/StringBuilder
+    //   6: new 285	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 271	java/lang/StringBuilder:<init>	()V
-    //   13: ldc_w 687
-    //   16: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   10: invokespecial 286	java/lang/StringBuilder:<init>	()V
+    //   13: ldc_w 719
+    //   16: invokevirtual 292	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   19: iload_1
-    //   20: invokevirtual 690	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   23: invokevirtual 283	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   26: invokestatic 225	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   20: invokevirtual 722	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   23: invokevirtual 298	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   26: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
     //   29: aload_0
-    //   30: invokevirtual 696	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   33: putstatic 95	com/tencent/thumbplayer/core/common/TPCodecUtils:mApplicationContext	Landroid/content/Context;
+    //   30: invokevirtual 728	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   33: putstatic 102	com/tencent/thumbplayer/core/common/TPCodecUtils:mApplicationContext	Landroid/content/Context;
     //   36: iload_1
-    //   37: putstatic 97	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
+    //   37: putstatic 104	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
     //   40: iload_1
     //   41: ifeq +37 -> 78
-    //   44: getstatic 134	com/tencent/thumbplayer/core/common/TPCodecUtils:mCapabilityVersionKey	Ljava/lang/String;
-    //   47: invokestatic 698	com/tencent/thumbplayer/core/common/TPCodecUtils:getCachedStringInfo	(Ljava/lang/String;)Ljava/lang/String;
+    //   44: getstatic 141	com/tencent/thumbplayer/core/common/TPCodecUtils:mCapabilityVersionKey	Ljava/lang/String;
+    //   47: invokestatic 730	com/tencent/thumbplayer/core/common/TPCodecUtils:getCachedStringInfo	(Ljava/lang/String;)Ljava/lang/String;
     //   50: astore_0
-    //   51: getstatic 105	com/tencent/thumbplayer/core/common/TPCodecUtils:mCapabilityVersion	Ljava/lang/String;
+    //   51: getstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mCapabilityVersion	Ljava/lang/String;
     //   54: aload_0
-    //   55: invokevirtual 701	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   55: invokevirtual 733	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   58: ifne +42 -> 100
     //   61: iconst_1
-    //   62: putstatic 99	com/tencent/thumbplayer/core/common/TPCodecUtils:mNeedToReprobeDecoderCapability	Z
+    //   62: putstatic 106	com/tencent/thumbplayer/core/common/TPCodecUtils:mNeedToReprobeDecoderCapability	Z
     //   65: iconst_1
-    //   66: putstatic 101	com/tencent/thumbplayer/core/common/TPCodecUtils:mNeedToReprobeHDRCapability	Z
+    //   66: putstatic 108	com/tencent/thumbplayer/core/common/TPCodecUtils:mNeedToReprobeHDRCapability	Z
     //   69: iconst_2
     //   70: ldc 32
-    //   72: ldc_w 703
-    //   75: invokestatic 225	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
-    //   78: invokestatic 705	com/tencent/thumbplayer/core/common/TPCodecUtils:getDecoderMaxCapabilityMapAsync	()V
-    //   81: getstatic 97	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
+    //   72: ldc_w 735
+    //   75: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   78: invokestatic 737	com/tencent/thumbplayer/core/common/TPCodecUtils:getDecoderMaxCapabilityMapAsync	()V
+    //   81: getstatic 104	com/tencent/thumbplayer/core/common/TPCodecUtils:mIsLocalCacheEnabled	Z
     //   84: ifeq +12 -> 96
-    //   87: getstatic 134	com/tencent/thumbplayer/core/common/TPCodecUtils:mCapabilityVersionKey	Ljava/lang/String;
-    //   90: getstatic 105	com/tencent/thumbplayer/core/common/TPCodecUtils:mCapabilityVersion	Ljava/lang/String;
-    //   93: invokestatic 707	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheStringInfo	(Ljava/lang/String;Ljava/lang/String;)V
+    //   87: getstatic 141	com/tencent/thumbplayer/core/common/TPCodecUtils:mCapabilityVersionKey	Ljava/lang/String;
+    //   90: getstatic 112	com/tencent/thumbplayer/core/common/TPCodecUtils:mCapabilityVersion	Ljava/lang/String;
+    //   93: invokestatic 739	com/tencent/thumbplayer/core/common/TPCodecUtils:cacheStringInfo	(Ljava/lang/String;Ljava/lang/String;)V
     //   96: ldc 2
     //   98: monitorexit
     //   99: return
     //   100: iconst_0
-    //   101: putstatic 99	com/tencent/thumbplayer/core/common/TPCodecUtils:mNeedToReprobeDecoderCapability	Z
+    //   101: putstatic 106	com/tencent/thumbplayer/core/common/TPCodecUtils:mNeedToReprobeDecoderCapability	Z
     //   104: iconst_0
-    //   105: putstatic 101	com/tencent/thumbplayer/core/common/TPCodecUtils:mNeedToReprobeHDRCapability	Z
+    //   105: putstatic 108	com/tencent/thumbplayer/core/common/TPCodecUtils:mNeedToReprobeHDRCapability	Z
     //   108: iconst_2
     //   109: ldc 32
-    //   111: ldc_w 709
-    //   114: invokestatic 225	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   111: ldc_w 741
+    //   114: invokestatic 238	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
     //   117: goto -39 -> 78
     //   120: astore_0
     //   121: ldc 2

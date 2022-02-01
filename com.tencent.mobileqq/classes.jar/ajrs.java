@@ -1,33 +1,27 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
 
 public class ajrs
-  implements View.OnClickListener
+  extends ajqk
 {
-  public ajrs(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
+  boolean a;
   
-  public void onClick(View paramView)
+  protected ajrs(AlbumListFragment paramAlbumListFragment)
   {
-    Object localObject;
-    if ((paramView.getTag() instanceof ajpx))
+    super(paramAlbumListFragment);
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("PhotoConst.IS_FROM_QZONE_AND_NEED_FILTER_RECENT_IMAGES", false);
+    if (this.jdField_a_of_type_Boolean)
     {
-      localObject = (ajpx)paramView.getTag();
-      if (localObject != null) {
-        break label30;
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label30:
-      localObject = TroopInfoActivity.a(((ajpx)localObject).b, 4);
-      ((Bundle)localObject).putInt("t_s_f", 1002);
-      bguq.a(this.a.getActivity(), (Bundle)localObject, 2);
+      this.jdField_a_of_type_Ajqj.recentImagesMaxCount = paramIntent.getIntExtra("PhotoConst.RECENT_IMAGES_MAX_COUNT", 100);
+      this.jdField_a_of_type_Ajqj.recentImagesLimitSize = paramIntent.getIntExtra("PhotoConst.RECENT_IMAGES_LIMIT_SIZE", 0);
+      this.jdField_a_of_type_Ajqj.recentImagesLimitWidth = paramIntent.getIntExtra("PhotoConst.RECENT_IMAGES_LIMIT_WIDTH", -1);
+      this.jdField_a_of_type_Ajqj.recentImagesBlockPaths = paramIntent.getStringArrayListExtra("PhotoConst.RECENT_IMAGES_BLOCK_PATHS");
     }
   }
 }

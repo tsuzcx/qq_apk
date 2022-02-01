@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.tofumsg;
 
-import aggr;
-import bejg;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import aezm;
+import bdcc;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class AIOTofuMsgHelper$1
   implements Runnable
 {
-  public AIOTofuMsgHelper$1(bejg parambejg) {}
+  public AIOTofuMsgHelper$1(bdcc parambdcc) {}
   
   public void run()
   {
-    ((aggr)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(282)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a, 0);
+    ((aezm)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(282)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curFriendUin, 0);
   }
 }
 

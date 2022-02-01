@@ -1,17 +1,14 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.9;
 
-class ahkp
-  extends ahkx
+public class ahkp
+  implements odl
 {
-  ahkp(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  public ahkp(PublicAccountChatPie.9 param9) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a()
   {
-    return new ahvz(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    this.a.this$0.a.sendEmptyMessage(1);
   }
 }
 

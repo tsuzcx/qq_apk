@@ -1,17 +1,15 @@
 package com.tencent.qqlive.module.videoreport.report;
 
-import com.tencent.qqlive.module.videoreport.dtreport.time.app.AppForegroundSession;
+import com.tencent.qqlive.module.videoreport.utils.ListenerMgr.INotifyCallback;
 
 class AppEventReporter$5
-  implements Runnable
+  implements ListenerMgr.INotifyCallback<AppEventReporter.IAppEventListener>
 {
-  AppEventReporter$5(AppEventReporter paramAppEventReporter) {}
+  AppEventReporter$5(AppEventReporter paramAppEventReporter, boolean paramBoolean) {}
   
-  public void run()
+  public void onNotify(AppEventReporter.IAppEventListener paramIAppEventListener)
   {
-    if (AppEventReporter.access$500(this.this$0) != null) {
-      AppForegroundSession.reportLastHeartBeat(AppEventReporter.access$500(this.this$0).getAppSessionId());
-    }
+    paramIAppEventListener.onAppOut(this.val$isMainThread);
   }
 }
 

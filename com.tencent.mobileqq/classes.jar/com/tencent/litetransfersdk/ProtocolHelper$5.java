@@ -1,6 +1,6 @@
 package com.tencent.litetransfersdk;
 
-import auna;
+import aszk;
 
 class ProtocolHelper$5
   implements Runnable
@@ -9,7 +9,7 @@ class ProtocolHelper$5
   
   public void run()
   {
-    auna.a(2131693371);
+    aszk.a(2131693466);
   }
 }
 

@@ -2,10 +2,10 @@ package com.tencent.mobileqq.app.automator;
 
 import android.os.Process;
 import android.os.SystemClock;
-import aoln;
-import aolo;
-import bdho;
-import blqm;
+import aney;
+import anez;
+import bcad;
+import bjun;
 import com.tencent.mobileqq.app.automator.step.ActiveAccount;
 import com.tencent.mobileqq.app.automator.step.CheckPublicAccount;
 import com.tencent.mobileqq.app.automator.step.GetSubAccount;
@@ -23,7 +23,7 @@ public class AsyncStep
 {
   protected volatile int a;
   private long jdField_a_of_type_Long;
-  public aoln a;
+  public aney a;
   public Automator a;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   public String a;
@@ -85,7 +85,7 @@ public class AsyncStep
             return true;
           }
         }
-        if ((bdho.f) && (!aolo.a.contains(Integer.valueOf(this.jdField_b_of_type_Int))))
+        if ((bcad.f) && (!anez.a.contains(Integer.valueOf(this.jdField_b_of_type_Int))))
         {
           long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
           if (QLog.isColorLevel()) {
@@ -164,7 +164,7 @@ public class AsyncStep
   {
     if (this.jdField_a_of_type_Int == 1)
     {
-      blqm.a(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+      bjun.a(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 1, this.jdField_a_of_type_JavaLangString + " begin with " + this.jdField_a_of_type_Int);
       }
@@ -204,9 +204,9 @@ public class AsyncStep
       {
         break label653;
       }
-      blqm.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
-      if (this.jdField_a_of_type_Aoln != null) {
-        this.jdField_a_of_type_Aoln.a(this, this.jdField_a_of_type_Int);
+      bjun.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+      if (this.jdField_a_of_type_Aney != null) {
+        this.jdField_a_of_type_Aney.a(this, this.jdField_a_of_type_Int);
       }
     }
     try
@@ -219,9 +219,9 @@ public class AsyncStep
     {
       break label250;
     }
-    blqm.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
-    if (this.jdField_a_of_type_Aoln != null) {
-      this.jdField_a_of_type_Aoln.a(this, this.jdField_a_of_type_Int);
+    bjun.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+    if (this.jdField_a_of_type_Aney != null) {
+      this.jdField_a_of_type_Aney.a(this, this.jdField_a_of_type_Int);
     }
   }
 }

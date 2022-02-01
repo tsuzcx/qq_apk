@@ -1,19 +1,17 @@
 package com.tencent.mobileqq.utils;
 
-import bhox;
-import bhoz;
 import java.lang.ref.WeakReference;
 
-public class QQCustomArkDialogForAio$2$1
+class QQCustomArkDialogForAio$2$1
   implements Runnable
 {
-  public QQCustomArkDialogForAio$2$1(bhoz parambhoz, WeakReference paramWeakReference, int paramInt) {}
+  QQCustomArkDialogForAio$2$1(QQCustomArkDialogForAio.2 param2, WeakReference paramWeakReference, int paramInt) {}
   
   public void run()
   {
-    bhox localbhox = (bhox)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localbhox != null) {
-      bhox.a(localbhox, this.jdField_a_of_type_Int);
+    QQCustomArkDialogForAio localQQCustomArkDialogForAio = (QQCustomArkDialogForAio)this.val$weakSelf.get();
+    if (localQQCustomArkDialogForAio != null) {
+      QQCustomArkDialogForAio.access$000(localQQCustomArkDialogForAio, this.val$state);
     }
   }
 }

@@ -1,10 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
 
-public abstract interface spf
+public class spf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract BaseData a();
+  public spf(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
   
-  public abstract void a();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    ReadinjoySlidingIndicator.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
+  }
 }
 
 

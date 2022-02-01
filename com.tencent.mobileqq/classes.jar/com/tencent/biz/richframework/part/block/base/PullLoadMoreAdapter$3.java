@@ -1,13 +1,11 @@
 package com.tencent.biz.richframework.part.block.base;
 
-import aabx;
 import android.support.v7.widget.RecyclerView;
+import yzx;
 
 public class PullLoadMoreAdapter$3
   implements Runnable
 {
-  public PullLoadMoreAdapter$3(aabx paramaabx) {}
-  
   public void run()
   {
     this.this$0.a.scrollToPosition(0);

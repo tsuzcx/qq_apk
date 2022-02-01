@@ -1,19 +1,33 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import org.json.JSONObject;
 
 public class umx
-  extends umw<umn, WSPushStrategyInfo>
+  extends umt
 {
-  public umx(umn paramumn)
+  public boolean a;
+  
+  public umx(JSONObject paramJSONObject)
   {
-    super(paramumn);
+    super(paramJSONObject);
   }
   
-  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  public static umx a(JSONObject paramJSONObject)
   {
-    WSHomeFragment.a(paramContext, 0, false);
-    return true;
+    return new umx(paramJSONObject);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null)
+    {
+      this.a = paramJSONObject.optBoolean("isImmediatelyUpload");
+      return;
+    }
+    this.a = false;
+  }
+  
+  public String toString()
+  {
+    return "WeSeeBeaconReportConfigInfo{mIsImmediatelyUpload=" + this.a + "}";
   }
 }
 

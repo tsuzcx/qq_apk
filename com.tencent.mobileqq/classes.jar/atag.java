@@ -1,387 +1,165 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.manager.Manager;
+import java.util.HashMap;
+import java.util.Stack;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class atag
-  implements Manager
+  extends DefaultHandler
 {
-  static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static final Object jdField_b_of_type_JavaLangObject = new Object();
-  protected SharedPreferences a;
-  private asvt jdField_a_of_type_Asvt = new atah(this);
-  private aswv jdField_a_of_type_Aswv;
-  atba jdField_a_of_type_Atba;
-  atbk jdField_a_of_type_Atbk;
-  public atbl a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public String a;
-  private WeakReference<atal> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean = true;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean;
+  private Object jdField_a_of_type_JavaLangObject;
+  private String jdField_a_of_type_JavaLangString;
+  Stack<Object> jdField_a_of_type_JavaUtilStack = new Stack();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
   
-  public atag(QQAppInterface paramQQAppInterface)
+  public HashMap<String, Object> a()
   {
-    this.jdField_a_of_type_Atbl = new atai(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Asvt);
-    this.jdField_a_of_type_AndroidContentSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0);
+    return (HashMap)this.jdField_a_of_type_JavaLangObject;
   }
   
-  public static int a(QQAppInterface paramQQAppInterface)
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    if (paramQQAppInterface == null)
+    System.out.println("characters:");
+    if (paramInt2 > 0)
     {
-      QLog.e("ExtendFriendLimitChatManager", 2, "getMatchSexTypeFromSp with null app");
-      return 0;
-    }
-    Card localCard = ((anyw)paramQQAppInterface.getManager(51)).a(paramQQAppInterface.getCurrentAccountUin());
-    int i;
-    if (localCard == null)
-    {
-      QLog.i("ExtendFriendLimitChatManager", 2, "获取自己的资料卡性别，缓存中未获取到，使用默认值随机");
-      i = 0;
-      return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getInt("sp_match_sex_type", i);
-    }
-    if (localCard.shGender == 0) {
-      i = 2;
+      if (this.b)
+      {
+        this.jdField_a_of_type_JavaLangString = new String(paramArrayOfChar, paramInt1, paramInt2);
+        System.out.println("key:" + this.jdField_a_of_type_JavaLangString);
+      }
+      if (this.c)
+      {
+        if (!HashMap.class.equals(this.jdField_a_of_type_JavaUtilStack.peek().getClass())) {
+          break label157;
+        }
+        HashMap localHashMap = (HashMap)this.jdField_a_of_type_JavaUtilStack.peek();
+        String str = new String(paramArrayOfChar, paramInt1, paramInt2);
+        localHashMap.put(this.jdField_a_of_type_JavaLangString, str);
+      }
     }
     for (;;)
     {
-      QLog.i("ExtendFriendLimitChatManager", 2, "获取自己的资料卡性别，defaultSex:" + i);
+      System.out.println("value:" + new String(paramArrayOfChar, paramInt1, paramInt2));
+      return;
+      label157:
+      if (ArrayList.class.equals(this.jdField_a_of_type_JavaUtilStack.peek().getClass())) {
+        ((ArrayList)this.jdField_a_of_type_JavaUtilStack.peek()).add(new String(paramArrayOfChar, paramInt1, paramInt2));
+      }
+    }
+  }
+  
+  public void endDocument()
+  {
+    System.out.println(aszt.d(2131703677));
+  }
+  
+  public void endElement(String paramString1, String paramString2, String paramString3)
+  {
+    if ((!"plist".equals(paramString3)) || ("key".equals(paramString3))) {
+      this.b = false;
+    }
+    if ("string".equals(paramString3)) {
+      this.c = false;
+    }
+    if ("integer".equals(paramString3)) {
+      this.c = false;
+    }
+    if ("array".equals(paramString3)) {
+      this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaUtilStack.pop();
+    }
+    if ("dict".equals(paramString3)) {
+      this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaUtilStack.pop();
+    }
+  }
+  
+  public void startDocument()
+  {
+    System.out.println(aszt.d(2131703666));
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    boolean bool2 = false;
+    if ("plist".equals(paramString3)) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    boolean bool1;
+    if ("dict".equals(paramString3))
+    {
+      if (!this.jdField_a_of_type_Boolean) {
+        break label228;
+      }
+      this.jdField_a_of_type_JavaUtilStack.push(new HashMap());
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        bool1 = true;
+        this.jdField_a_of_type_Boolean = bool1;
+      }
+    }
+    else
+    {
+      if ("key".equals(paramString3)) {
+        this.b = true;
+      }
+      if ("true".equals(paramString3)) {
+        ((HashMap)this.jdField_a_of_type_JavaUtilStack.peek()).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
+      }
+      if ("false".equals(paramString3)) {
+        ((HashMap)this.jdField_a_of_type_JavaUtilStack.peek()).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
+      }
+      if ("array".equals(paramString3))
+      {
+        if (!this.jdField_a_of_type_Boolean) {
+          break label295;
+        }
+        paramString1 = new ArrayList();
+        this.jdField_a_of_type_JavaUtilStack.push(paramString1);
+        bool1 = bool2;
+        if (!this.jdField_a_of_type_Boolean) {
+          bool1 = true;
+        }
+        this.jdField_a_of_type_Boolean = bool1;
+      }
+    }
+    for (;;)
+    {
+      if ("string".equals(paramString3)) {
+        this.c = true;
+      }
+      if ("integer".equals(paramString3)) {
+        this.c = true;
+      }
+      return;
+      bool1 = false;
       break;
-      if (localCard.shGender == 1) {
-        i = 1;
-      } else {
-        i = 0;
+      label228:
+      paramString1 = this.jdField_a_of_type_JavaUtilStack.peek();
+      paramString2 = new HashMap();
+      if ((paramString1 instanceof ArrayList)) {
+        ((ArrayList)paramString1).add(paramString2);
       }
-    }
-  }
-  
-  public static Boolean a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null)
-    {
-      QLog.e("ExtendFriendLimitChatManager", 2, "getMatchSwitchOpenFromSp with null app");
-      return Boolean.valueOf(true);
-    }
-    return Boolean.valueOf(paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("sp_match_switch_type", false));
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    QLog.i("ExtendFriendLimitChatManager", 2, "getMatchSexTypeFromSp : " + paramInt);
-    if (paramQQAppInterface == null) {
-      QLog.e("ExtendFriendLimitChatManager", 2, "setMatchSexTypeToSp with null app");
-    }
-    do
-    {
-      return;
-      paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit();
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.putInt("sp_match_sex_type", paramInt).apply();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Boolean paramBoolean)
-  {
-    if (paramQQAppInterface == null) {
-      QLog.e("ExtendFriendLimitChatManager", 2, "setMatchSwitchToSp with null app");
-    }
-    do
-    {
-      return;
-      paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit();
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.putBoolean("sp_match_switch_type", paramBoolean.booleanValue()).apply();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, ArrayList<asxk> paramArrayList)
-  {
-    if (paramQQAppInterface == null) {
-      QLog.e("ExtendFriendLimitChatManager", 2, "setTaglistToSp with null app");
-    }
-    do
-    {
-      return;
-      paramArrayList = asxk.a(paramArrayList);
-      paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit();
-    } while ((paramArrayList == null) || (paramQQAppInterface == null));
-    paramQQAppInterface.putString("sp_tagList", paramArrayList).apply();
-  }
-  
-  public static Boolean b(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null)
-    {
-      QLog.e("ExtendFriendLimitChatManager", 2, "getMatchSwitchFlagFromSp with null app");
-      return Boolean.valueOf(false);
-    }
-    paramQQAppInterface = Boolean.valueOf(paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("sp_voice_match_switch_flag", false));
-    QLog.d("ExtendFriendLimitChatManager", 2, "getVoiceMatch " + paramQQAppInterface);
-    return paramQQAppInterface;
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, Boolean paramBoolean)
-  {
-    if (paramQQAppInterface == null) {
-      QLog.e("ExtendFriendLimitChatManager", 2, "setVoiceMatchSwitchFlagToSp with null app");
-    }
-    do
-    {
-      return;
-      QLog.d("ExtendFriendLimitChatManager", 2, "setVoiceMatch " + paramBoolean);
-      paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).edit();
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.putBoolean("sp_voice_match_switch_flag", paramBoolean.booleanValue()).apply();
-  }
-  
-  private void d()
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (localObject1 == null) {}
-    do
-    {
-      return;
-      Object localObject2;
-      try
+      for (;;)
       {
-        localObject1 = ((QQAppInterface)localObject1).a().a();
-        Object localObject3 = ((apaw)localObject1).getRecentList(false);
-        localObject2 = new ArrayList();
-        if ((localObject3 != null) && (((List)localObject3).size() > 0))
-        {
-          localObject3 = ((List)localObject3).iterator();
-          while (((Iterator)localObject3).hasNext())
-          {
-            RecentUser localRecentUser = (RecentUser)((Iterator)localObject3).next();
-            if ((localRecentUser.getType() == 1044) && (!localRecentUser.uin.equals(antf.aT))) {
-              ((List)localObject2).add(localRecentUser);
-            }
-          }
-          QLog.i("ExtendFriendLimitChatManager", 1, "[initLimitChatBox] toBeRemoved.size:" + ((List)localObject2).size());
+        this.jdField_a_of_type_JavaUtilStack.push(paramString2);
+        break;
+        if ((paramString1 instanceof HashMap)) {
+          ((HashMap)paramString1).put(this.jdField_a_of_type_JavaLangString, paramString2);
         }
       }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("ExtendFriendLimitChatManager", 1, localThrowable, new Object[0]);
-        return;
-      }
-      if (((List)localObject2).size() > 0)
-      {
-        long l = ((RecentUser)((List)localObject2).get(0)).lastmsgtime;
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext()) {
-          localThrowable.delRecentUser((RecentUser)((Iterator)localObject2).next());
-        }
-      }
-    } while (this.jdField_a_of_type_AndroidContentSharedPreferences == null);
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("init_matchchat_folder", false).commit();
-  }
-  
-  public int a()
-  {
-    return a().a();
-  }
-  
-  public atba a()
-  {
-    if (this.jdField_a_of_type_Atba != null) {
-      return this.jdField_a_of_type_Atba;
+      label295:
+      paramString1 = (HashMap)this.jdField_a_of_type_JavaUtilStack.peek();
+      paramString2 = new ArrayList();
+      this.jdField_a_of_type_JavaUtilStack.push(paramString2);
+      paramString1.put(this.jdField_a_of_type_JavaLangString, paramString2);
     }
-    synchronized (jdField_b_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Atba != null)
-      {
-        atba localatba1 = this.jdField_a_of_type_Atba;
-        return localatba1;
-      }
-    }
-    this.jdField_a_of_type_Atba = new atba(this);
-    atba localatba2 = this.jdField_a_of_type_Atba;
-    return localatba2;
-  }
-  
-  public atbk a()
-  {
-    if (this.jdField_a_of_type_Atbk != null) {
-      return this.jdField_a_of_type_Atbk;
-    }
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Atbk != null)
-      {
-        atbk localatbk1 = this.jdField_a_of_type_Atbk;
-        return localatbk1;
-      }
-    }
-    this.jdField_a_of_type_Atbk = new atbk(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_Atbk.a(this.jdField_a_of_type_Atbl);
-    atbk localatbk2 = this.jdField_a_of_type_Atbk;
-    return localatbk2;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_Aswv != null) {
-      return this.jdField_a_of_type_Aswv.jdField_b_of_type_JavaLangString;
-    }
-    return "";
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Aswv = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    a().b(101, paramInt);
-  }
-  
-  public void a(asxk paramasxk)
-  {
-    int i = 1;
-    if (paramasxk != null) {
-      i = paramasxk.a;
-    }
-    a().b(102, i);
-  }
-  
-  public void a(atal paramatal)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference.clear();
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramatal);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(boolean paramBoolean, aswu paramaswu)
-  {
-    QLog.i("ExtendFriendLimitChat", 2, "handleGetSquareStrangerList onGetMatchFeedInfo success = " + paramBoolean);
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_c_of_type_JavaLangString = paramString2;
-    this.jdField_d_of_type_JavaLangString = paramString3;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    while (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
-      return false;
-    }
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("init_matchchat_folder", true);
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    if (paramContext == null) {
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ExtendFriendLimitChatManager", 2, "showRealNameAuthDialog");
-    }
-    if ((!this.jdField_c_of_type_Boolean) && (this.jdField_d_of_type_Boolean))
-    {
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        this.jdField_b_of_type_JavaLangString = paramContext.getString(2131698311);
-      }
-      if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-        this.jdField_c_of_type_JavaLangString = paramContext.getString(2131698309);
-      }
-      if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
-        this.jdField_d_of_type_JavaLangString = "https://ti.qq.com/realname/index.html";
-      }
-      paramContext = bhlq.a(paramContext, 230, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, paramContext.getString(2131698310), paramContext.getString(2131698312), new ataj(this, paramContext), new atak(this));
-      paramContext.setCancelable(false);
-      paramContext.show();
-      return true;
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    a().a(103);
-  }
-  
-  public Boolean c(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool = false;
-    if (paramQQAppInterface != null)
-    {
-      bool = b(paramQQAppInterface).booleanValue();
-      if (!bool) {
-        break label69;
-      }
-      paramQQAppInterface = (asvi)paramQQAppInterface.getManager(264);
-      if (paramQQAppInterface == null) {
-        break label81;
-      }
-      bool = paramQQAppInterface.h();
-    }
-    label69:
-    label81:
-    for (;;)
-    {
-      QLog.d("ExtendFriendLimitChatManager", 2, "is voiceMatch ShowToUser " + bool);
-      return Boolean.valueOf(bool);
-      QLog.d("ExtendFriendLimitChatManager", 2, "is voiceMatchShowToUser xinyong not enough  ");
-    }
-  }
-  
-  public void c()
-  {
-    QLog.i("ExtendFriendLimitChatManager", 1, "[initManager], threadId:" + Thread.currentThread().getId());
-    if (a()) {
-      d();
-    }
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Atbk != null)
-    {
-      this.jdField_a_of_type_Atbk.b();
-      this.jdField_a_of_type_Atbk = null;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Asvt);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference.clear();
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    }
-    this.jdField_a_of_type_Aswv = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atag
  * JD-Core Version:    0.7.0.1
  */

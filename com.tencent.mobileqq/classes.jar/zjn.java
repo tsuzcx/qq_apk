@@ -1,32 +1,14 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
-
-public class zjn
+final class zjn
+  implements bjog
 {
-  TroopInfo a;
-  public boolean a;
+  zjn(bjnw parambjnw, zjq paramzjq) {}
   
-  public zjn(boolean paramBoolean, TroopInfo paramTroopInfo)
+  public void onDismiss()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramTroopInfo;
-  }
-  
-  public static ArrayList<zjn> a(ArrayList<TroopInfo> paramArrayList, ArrayList<String> paramArrayList1)
-  {
-    ArrayList localArrayList = new ArrayList(paramArrayList.size());
-    int i = 0;
-    while (i < paramArrayList.size())
-    {
-      TroopInfo localTroopInfo = (TroopInfo)paramArrayList.get(i);
-      zjn localzjn = new zjn(false, localTroopInfo);
-      if ((paramArrayList1 != null) && (paramArrayList1.contains(localTroopInfo.troopuin))) {
-        localzjn.jdField_a_of_type_Boolean = true;
-      }
-      localArrayList.add(localzjn);
-      i += 1;
+    this.jdField_a_of_type_Bjnw.dismiss();
+    if (this.jdField_a_of_type_Zjq != null) {
+      this.jdField_a_of_type_Zjq.a(true);
     }
-    return localArrayList;
   }
 }
 

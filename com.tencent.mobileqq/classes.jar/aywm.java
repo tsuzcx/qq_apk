@@ -1,60 +1,65 @@
-import com.tencent.mobileqq.now.loginmerge.LoginMergedProto.LoginReq;
-import com.tencent.mobileqq.now.loginmerge.LoginMergedProto.LoginTicketInfo;
-import com.tencent.mobileqq.now.loginmerge.LoginMergedProto.LogoutReq;
-import com.tencent.mobileqq.now.loginmerge.LoginMergedProto.TicketInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 
 public class aywm
 {
-  private static aywm jdField_a_of_type_Aywm;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  public static aywm a()
+  public static aywj a(QQAppInterface paramQQAppInterface, aymg paramaymg)
   {
-    if (jdField_a_of_type_Aywm == null)
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramQQAppInterface != null)
     {
-      jdField_a_of_type_Aywm = new aywm();
-      aywi.a().b(ayvf.b());
+      localObject1 = localObject2;
+      if (paramaymg != null)
+      {
+        localObject1 = new aywj();
+        ((aywj)localObject1).jdField_a_of_type_Boolean = a(paramQQAppInterface, paramaymg);
+        if (paramaymg.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
+          break label84;
+        }
+        i = 1;
+      }
     }
-    return jdField_a_of_type_Aywm;
+    while ((i != 0) && (paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard != null))
+    {
+      paramaymg = paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard;
+      if (paramaymg.iNewCount > 0)
+      {
+        ((aywj)localObject1).b = true;
+        ((aywj)localObject1).jdField_a_of_type_Int = paramaymg.iNewCount;
+        return localObject1;
+        label84:
+        i = 0;
+      }
+      else
+      {
+        paramQQAppInterface = (axfy)paramQQAppInterface.getManager(160);
+        if (!paramQQAppInterface.a(paramQQAppInterface.a(10016), false)) {
+          break label140;
+        }
+      }
+    }
+    label140:
+    for (int i = 1;; i = 0)
+    {
+      if ((paramaymg.iUpgradeCount > 0) || (i != 0))
+      {
+        ((aywj)localObject1).b = true;
+        ((aywj)localObject1).jdField_a_of_type_Int = 0;
+      }
+      return localObject1;
+    }
   }
   
-  public static void a()
+  private static boolean a(QQAppInterface paramQQAppInterface, aymg paramaymg)
   {
-    jdField_a_of_type_Aywm = null;
-  }
-  
-  public void a(aywp paramaywp)
-  {
-    LoginMergedProto.LoginReq localLoginReq = new LoginMergedProto.LoginReq();
-    LoginMergedProto.LoginTicketInfo localLoginTicketInfo = new LoginMergedProto.LoginTicketInfo();
-    localLoginTicketInfo.client_version.set(0);
-    localLoginTicketInfo.login_type.set(0);
-    localLoginTicketInfo.client_type.set(16130);
-    LoginMergedProto.TicketInfo localTicketInfo = new LoginMergedProto.TicketInfo();
-    localLoginTicketInfo.account_id.set(aywr.a());
-    localLoginTicketInfo.auth_appid.set("16");
-    localTicketInfo.auth_key.set(aywr.c());
-    localLoginTicketInfo.ticket_info.set(localTicketInfo);
-    localLoginReq.login_ticket_info.set(localLoginTicketInfo);
-    aywi.a().a(30840, 1, localLoginReq.toByteArray(), new aywn(this, paramaywp));
-  }
-  
-  public boolean a()
-  {
-    return this.b;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    LoginMergedProto.LogoutReq localLogoutReq = new LoginMergedProto.LogoutReq();
-    aywi.a().a(30840, 2, localLogoutReq.toByteArray(), new aywo(this));
-    aywi.b();
-    aywr.a();
-    a();
+    if ((paramQQAppInterface == null) || (paramaymg == null) || (paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard == null) || ((paramaymg.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) && (!ProfileActivity.AllInOne.b(paramaymg.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))) {}
+    while (((paramaymg.b) && (TroopInfo.isQidianPrivateTroop(paramQQAppInterface, paramaymg.jdField_a_of_type_JavaLangString))) || (bfyz.X(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1) || (paramaymg.jdField_a_of_type_ComTencentMobileqqDataCard.medalSwitchDisable) || (bftf.b(paramaymg.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) {
+      return false;
+    }
+    return true;
   }
 }
 

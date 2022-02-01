@@ -1,34 +1,61 @@
-import android.view.View;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.PrecoverData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aqxu
-  implements bljo
+  extends aqxl
 {
-  public aqxu(IphonePickerView paramIphonePickerView) {}
-  
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public aqxu(QQAppInterface paramQQAppInterface)
   {
-    IphonePickerView.a(this.a, paramView, 1);
-    IphonePickerView.a(this.a, paramView, true);
-    if ((paramView != null) && (paramView.getTag() != null))
-    {
-      int i = Integer.parseInt(paramView.getTag().toString());
-      int j = paramAdapterView.getChildCount();
-      paramInt = 0;
-      while (paramInt < j)
-      {
-        if (i != paramInt)
-        {
-          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
-          IphonePickerView.a(this.a, paramAdapterView.getChildAt(paramInt), false);
-        }
-        paramInt += 1;
-      }
+    super("qq.android.early.precover", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10045;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return PrecoverData.class;
+  }
+  
+  public String a()
+  {
+    return "actEarlyPrecover";
+  }
+  
+  public void a(XmlData paramXmlData)
+  {
+    super.a(paramXmlData);
+    if ((QLog.isColorLevel()) && (paramXmlData != null) && ((paramXmlData instanceof PrecoverData))) {
+      QLog.d("PrecoverHandler", 2, new Object[] { "doOnServerResp, xmlData=", paramXmlData });
     }
   }
   
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public String b()
+  {
+    return "prd";
+  }
+  
+  public boolean i()
+  {
+    File localFile = new File(c());
+    return (localFile != null) && (localFile.exists());
+  }
+  
+  public boolean j()
+  {
+    File localFile = new File(d());
+    return (localFile != null) && (localFile.exists());
+  }
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aife;
+import ahbu;
 
 public class PhotoListPanel$SwipeUpAndDragListener$1
   implements Runnable
 {
-  public PhotoListPanel$SwipeUpAndDragListener$1(aife paramaife) {}
+  public PhotoListPanel$SwipeUpAndDragListener$1(ahbu paramahbu) {}
   
   public void run()
   {

@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeoe
-  extends anyu
+  implements View.OnClickListener
 {
-  public aeoe(ForwardRecentActivity paramForwardRecentActivity) {}
+  public aeoe(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      ForwardRecentActivity.f(this.a);
+    if (this.a.d == 11) {
+      bcef.b(this.a.app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
     }
+    this.a.b.cancel();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeoe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,6 @@
-import java.util.Comparator;
-
-public class aouh
-  implements Comparator<aoui>
+public abstract interface aouh
 {
-  private int a;
-  
-  public aouh(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public int a(aoui paramaoui1, aoui paramaoui2)
-  {
-    if (this.a == 2) {
-      if (paramaoui1.b <= paramaoui2.b) {}
-    }
-    while (paramaoui1.a > paramaoui2.a)
-    {
-      return -1;
-      if (paramaoui1.b < paramaoui2.b) {
-        return 1;
-      }
-      return 0;
-    }
-    if (paramaoui1.a < paramaoui2.a) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

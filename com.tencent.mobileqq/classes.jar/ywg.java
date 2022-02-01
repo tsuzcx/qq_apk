@@ -1,14 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+
 public class ywg
+  implements DialogInterface.OnDismissListener
 {
-  public final int a;
-  public final CharSequence a;
-  public final int b;
+  public ywg(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public ywg(int paramInt1, int paramInt2, CharSequence paramCharSequence)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.a.h = false;
   }
 }
 

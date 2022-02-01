@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bgoq;
+import beye;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -68,7 +68,7 @@ public class TroopAppShortcutFragment
     paramLayoutInflater = getActivity().getIntent().getStringExtra("troop_uin");
     paramViewGroup = (SessionInfo)getActivity().getIntent().getParcelableExtra("session_info");
     int i = getActivity().getIntent().getIntExtra("reportfrom", 2);
-    this.a = new bgoq(this, getActivity().app, getActivity(), getActivity(), paramViewGroup, paramLayoutInflater, 2);
+    this.a = new beye(this, getActivity().app, getActivity(), getActivity(), paramViewGroup, paramLayoutInflater, 2);
     if ((this.a == null) || (this.a.a() == null)) {}
     for (paramLayoutInflater = null;; paramLayoutInflater = this.a.a())
     {

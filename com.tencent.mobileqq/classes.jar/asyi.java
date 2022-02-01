@@ -1,27 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-
 public class asyi
-  implements DialogInterface.OnClickListener
 {
-  public asyi(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    String str = "";
-    paramDialogInterface = str;
-    if (ExtendFriendEditFragment.a(this.a) != null)
-    {
-      paramDialogInterface = str;
-      if (ExtendFriendEditFragment.a(this.a).app != null) {
-        paramDialogInterface = ((asvi)ExtendFriendEditFragment.a(this.a).app.getManager(264)).f();
-      }
-    }
-    atcb.a(this.a.getActivity(), paramDialogInterface);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public byte[] a;
+  public long b;
+  public String b;
+  public byte[] b;
+  public long c;
+  public long d;
 }
 
 

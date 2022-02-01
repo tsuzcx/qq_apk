@@ -1,12 +1,12 @@
-import android.graphics.Path;
-import java.util.List;
+import android.widget.TextView;
 
 public class agqz
+  extends aexg
 {
-  public int a;
-  public Path a;
-  public List<agqt> a;
-  public boolean a;
+  public TextView b;
+  public TextView c;
+  
+  public agqz(agqx paramagqx) {}
 }
 
 

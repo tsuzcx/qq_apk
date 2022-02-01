@@ -1,45 +1,36 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
-final class bhfb
-  implements DownloadParams.DecodeHandler
+public class bhfb
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public bhfb(InputMethodRelativeLayout paramInputMethodRelativeLayout) {}
+  
+  public void onGlobalLayout()
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    do
+    int i;
+    if (this.a.a != null)
     {
-      do
+      i = InputMethodRelativeLayout.a(this.a);
+      if (i != InputMethodRelativeLayout.b(this.a))
       {
-        Object localObject;
-        do
-        {
-          do
-          {
-            return paramDownloadParams;
-            localObject = paramDownloadParams.tag;
-            paramDownloadParams = paramBitmap;
-          } while (!(localObject instanceof int[]));
-          paramDownloadParams = paramBitmap;
-        } while (((int[])localObject).length != 3);
-        paramDownloadParams = (int[])localObject;
-        if (paramDownloadParams[0] == 0) {
-          paramDownloadParams[0] = paramBitmap.getWidth();
+        int j = this.a.getRootView().getHeight();
+        if (j - i <= j / 4) {
+          break label102;
         }
-        if (paramDownloadParams[1] == 0) {
-          paramDownloadParams[1] = paramBitmap.getHeight();
-        }
-        paramBitmap = bhmq.c(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
-        paramDownloadParams = paramBitmap;
-      } while (paramBitmap != null);
-      paramDownloadParams = paramBitmap;
-    } while (!QLog.isDevelopLevel());
-    QLog.w(bhez.a(), 2, "ROUND_CORNER_DECODER bitmap == null");
-    return paramBitmap;
+        InputMethodRelativeLayout.a(this.a, true);
+      }
+    }
+    for (;;)
+    {
+      this.a.a.a(InputMethodRelativeLayout.a(this.a), InputMethodRelativeLayout.b(this.a), i);
+      this.a.requestLayout();
+      InputMethodRelativeLayout.a(this.a, i);
+      return;
+      label102:
+      InputMethodRelativeLayout.a(this.a, false);
+    }
   }
 }
 

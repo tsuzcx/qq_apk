@@ -1,24 +1,58 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DataBridgeInvokeHandler.isFollowUin..inlined.also.lambda.1;
-import java.util.Map;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "result", "", "uinsFollowStatus", "", "", "Lcom/tencent/biz/pubaccount/readinjoy/struct/FollowingMember;", "requestFollowStatusBack", "com/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/DataBridgeInvokeHandler$isFollowUin$1$1$1"}, k=3, mv={1, 1, 16})
-public final class tgu
-  implements ppq
+public class tgu
+  implements tpb
 {
-  public tgu(DataBridgeInvokeHandler.isFollowUin..inlined.also.lambda.1 param1) {}
+  public tgu(ViolaFragment paramViolaFragment) {}
   
-  public final void a(int paramInt, @Nullable Map<Long, ? extends qwb> paramMap)
+  public void a()
   {
-    if ((paramMap != null) && (paramMap.get(Long.valueOf(Long.parseLong(this.a.a))) != null))
+    this.a.mViolaUiDelegate.b();
+    this.a.mViolaUiDelegate.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "initViola success!");
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.mViolaUiDelegate.b();
+    this.a.mViolaUiDelegate.c();
+    if (QLog.isColorLevel()) {
+      QLog.e("ViolaFragment", 2, "initViola error,error code=" + paramInt);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
+  {
+    if ((this.a.mViolaUiDelegate.b()) && (paramBoolean))
     {
-      paramMap = (qwb)paramMap.get(Long.valueOf(Long.parseLong(this.a.a)));
-      if (paramMap != null)
-      {
-        boolean bool = paramMap.a();
-        tgs.a(this.a.this$0, bool, this.a.b);
+      if (Math.abs(paramInt1) < this.a.mViolaUiDelegate.a() / 2) {
+        break label79;
       }
+      if (!ViolaFragment.access$100(this.a))
+      {
+        this.a.setStatusBarFontColor(Boolean.valueOf(false));
+        akfw.a(this.a.getActivity(), true);
+        ViolaFragment.access$102(this.a, true);
+      }
+    }
+    label79:
+    while (!ViolaFragment.access$100(this.a)) {
+      return;
+    }
+    this.a.setStatusBarFontColor(Boolean.valueOf(true));
+    akfw.a(this.a.getActivity(), false);
+    ViolaFragment.access$102(this.a, false);
+  }
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "initViola process,process code=" + paramInt);
     }
   }
 }

@@ -1,38 +1,95 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
-import com.tencent.mobileqq.widget.ParticipleView;
-import java.lang.ref.WeakReference;
+import android.text.Editable;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XEditTextEx;
 
-public final class afqo
-  extends FlingGestureHandler
+class afqo
+  implements ActionMode.Callback
 {
-  private WeakReference<TextPreviewActivity> b;
+  afqo(afqj paramafqj) {}
   
-  private afqo(TextPreviewActivity paramTextPreviewActivity)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    super(paramTextPreviewActivity);
-    this.b = new WeakReference(paramTextPreviewActivity);
+    boolean bool2 = false;
+    Object localObject = afqj.a(this.a).app;
+    boolean bool1;
+    if (paramMenuItem.getItemId() == 1)
+    {
+      bcef.b((QQAppInterface)localObject, "dc00898", "", "", "0X800A513", "0X800A513", afqj.a(this.a), 0, "", "", "", "");
+      afqj.a(this.a).input.getText().insert(afqj.a(this.a).input.getSelectionStart(), "\n");
+      paramActionMode.finish();
+      bool1 = true;
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return bool1;
+          if (paramMenuItem.getItemId() == 2)
+          {
+            if (this.a.a())
+            {
+              bcef.b((QQAppInterface)localObject, "dc00898", "", "", "0X800A514", "0X800A514", afqj.a(this.a), 0, "", "", "", "");
+              this.a.a(false);
+            }
+            for (;;)
+            {
+              paramActionMode.finish();
+              return true;
+              bcef.b((QQAppInterface)localObject, "dc00898", "", "", "0X8009F28", "0X8009F28", afqj.a(this.a), 0, "", "", "", "");
+              afqj.b(this.a);
+            }
+          }
+          bool1 = bool2;
+        } while (paramMenuItem.getItemId() != 3);
+        localObject = (bdgh)afqj.a(this.a).getHelper(74);
+        bool1 = bool2;
+      } while (localObject == null);
+      localObject = ((bdgh)localObject).a();
+      bool1 = bool2;
+    } while (localObject == null);
+    return ((ActionMode.Callback)localObject).onActionItemClicked(paramActionMode, paramMenuItem);
   }
   
-  public void flingLToR()
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.b.get();
-    int i;
-    if (localTextPreviewActivity != null) {
-      if ((localTextPreviewActivity.a != null) && (localTextPreviewActivity.a.getVisibility() == 0)) {
-        i = 1;
-      }
-    }
-    for (;;)
+    if (!bbyp.b())
     {
-      if (i == 0) {
-        super.flingLToR();
+      paramMenu.add(0, 1, 196608, amtj.a(2131704086));
+      if (!this.a.a()) {
+        break label100;
       }
-      return;
-      i = 0;
-      continue;
-      i = 0;
     }
+    label100:
+    for (Object localObject = amtj.a(2131704087);; localObject = amtj.a(2131704084))
+    {
+      paramMenu.add(0, 2, 196608, (CharSequence)localObject);
+      if (this.a.a() == 0)
+      {
+        localObject = (bdgh)afqj.a(this.a).getHelper(74);
+        if (localObject != null)
+        {
+          localObject = ((bdgh)localObject).a();
+          if (localObject != null) {
+            ((ActionMode.Callback)localObject).onCreateActionMode(paramActionMode, paramMenu);
+          }
+        }
+      }
+      return true;
+    }
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

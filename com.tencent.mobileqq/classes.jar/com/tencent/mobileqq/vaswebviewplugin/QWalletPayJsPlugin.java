@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import alig;
+import akfz;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,13 +9,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import bhsr;
-import bioy;
-import bmrz;
+import bgve;
+import bkwg;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
@@ -24,7 +24,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Map;
-import mqq.util.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -71,11 +70,11 @@ public class QWalletPayJsPlugin
   {
     String str1 = paramJSONObject.optString("listid");
     String str2 = paramJSONObject.optString("uin", "");
-    if ((!bhsr.a(str1)) && (str2.equals(this.app.getCurrentAccountUin())))
+    if ((!StringUtil.isEmpty(str1)) && (str2.equals(this.app.getCurrentAccountUin())))
     {
-      Object localObject = bmrz.a().b(str1);
+      Object localObject = bkwg.a().b(str1);
       paramJSONObject = (JSONObject)localObject;
-      if (bhsr.a((String)localObject)) {
+      if (StringUtil.isEmpty((String)localObject)) {
         paramJSONObject = SharedPreferencesProxyManager.getInstance().getProxy("common_h5_hb_info" + str2, 0).getString(str1, "");
       }
       if (QLog.isColorLevel()) {
@@ -143,7 +142,7 @@ public class QWalletPayJsPlugin
       if (QLog.isColorLevel()) {
         QLog.d("QWalletPayJsHandler", 2, "grapH5CommonHb params: " + paramJSONObject);
       }
-      paramJSONObject = alig.a(this.app, paramJSONObject);
+      paramJSONObject = akfz.a(this.app, paramJSONObject);
       if (QLog.isColorLevel()) {
         QLog.d("QWalletPayJsHandler", 2, "grapH5CommonHb extraData: " + paramJSONObject);
       }
@@ -152,7 +151,7 @@ public class QWalletPayJsPlugin
         if ((this.mRuntime != null) && (this.mRuntime.a() != null) && (this.mRuntime.a().getUrl() != null)) {
           paramJSONObject.put("domain", new URL(this.mRuntime.a().getUrl()).getHost());
         }
-        alig.a(this.app, paramJSONObject.toString(), this.mRecevicer);
+        akfz.a(this.app, paramJSONObject.toString(), this.mRecevicer);
         return;
       }
       handJsError("-1001", "params error");
@@ -290,7 +289,7 @@ public class QWalletPayJsPlugin
       if (bool) {
         try
         {
-          alig.a(this.app, localJSONObject, "redgiftH5CommonDetail", this.mRecevicer);
+          akfz.a(this.app, localJSONObject, "redgiftH5CommonDetail", this.mRecevicer);
         }
         catch (Throwable localThrowable)
         {
@@ -394,7 +393,7 @@ public class QWalletPayJsPlugin
       {
         this.app = this.mRuntime.a();
         this.mContext = this.mActivity.getApplicationContext();
-        this.mRecevicer = new QWalletPayJsPlugin.QWalletPayJsPluginResultReceiver(this, new Handler(), this.app, new WeakReference(this.mActivity));
+        this.mRecevicer = new QWalletPayJsPlugin.QWalletPayJsPluginResultReceiver(this, new Handler());
       }
     }
   }

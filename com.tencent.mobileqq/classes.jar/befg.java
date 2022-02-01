@@ -1,21 +1,16 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.SingleLineHotwordTextView;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class befg
-  extends bedx
+  implements View.OnClickListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  SingleLineHotwordTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetSingleLineHotwordTextView;
-  TextView b;
-  TextView c;
+  befg(beff parambeff) {}
   
-  private befg(befe parambefe)
+  public void onClick(View paramView)
   {
-    super(parambefe);
+    this.a.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

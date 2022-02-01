@@ -1,5 +1,6 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
+import amtj;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
 import android.content.Context;
@@ -15,34 +16,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import anzj;
-import bhlj;
-import bhlq;
-import bhpc;
-import bozv;
-import bozy;
-import bozz;
-import bpam;
-import bpbk;
-import bpez;
-import bpfb;
-import bpfe;
-import bpfx;
-import bpfy;
-import bpfz;
-import bpga;
-import bpgb;
-import bpgc;
-import bphp;
-import bphr;
-import bphx;
-import bpjv;
-import bpkb;
-import bpke;
-import bpkk;
-import bpkp;
+import bfum;
+import bfur;
+import bmbg;
+import bmbj;
+import bmbk;
+import bmbx;
+import bmcu;
+import bmgl;
+import bmgn;
+import bmgu;
+import bmhn;
+import bmho;
+import bmhp;
+import bmhq;
+import bmhr;
+import bmhs;
+import bmkl;
+import bmkn;
+import bmkt;
+import bmmr;
+import bmmx;
+import bmna;
+import bmng;
+import bmnl;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.YoutuResultItem;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.tavcut.bean.TextEditorData;
 import com.tencent.tavcut.session.TAVCutImageSession;
@@ -72,7 +72,7 @@ import mqq.os.MqqHandler;
 
 public abstract class AEEditorCommonEditFragment
   extends AEEditorBaseFragment
-  implements Handler.Callback, bpjv, bpkp
+  implements Handler.Callback, bmmr, bmnl
 {
   public static int a;
   private static final String c = AEEditorCommonEditFragment.class.getSimpleName();
@@ -81,16 +81,16 @@ public abstract class AEEditorCommonEditFragment
   protected SparseArray<Map<String, String>> a;
   protected FrameLayout a;
   protected TextView a;
-  public bhlj a;
-  protected bpfx a;
-  public bpkb a;
+  public bfum a;
+  protected bmhn a;
+  public bmmx a;
   public TextEditorData a;
   public AEEditorAILoadingView a;
   protected AEEditorControlPanelContainer a;
   public AEEditorFilterControlPanel a;
   public AEEditorTextControlPanel a;
   public AEEditorToolBar a;
-  public AEEditorTopBar a;
+  protected AEEditorTopBar a;
   public boolean a;
   protected String b;
   protected boolean b;
@@ -107,41 +107,41 @@ public abstract class AEEditorCommonEditFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar = ((AEEditorTopBar)paramView.findViewById(2131379154));
-    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.setTitle(c());
+    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar = ((AEEditorTopBar)paramView.findViewById(2131378924));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.setTitle(b());
     this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.setTopBarClickListener(this);
   }
   
   private void b(View paramView)
   {
-    this.jdField_a_of_type_DovComQqImAeeditorModuleToolbarAEEditorToolBar = ((AEEditorToolBar)paramView.findViewById(2131379144));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleToolbarAEEditorToolBar = ((AEEditorToolBar)paramView.findViewById(2131378914));
     this.jdField_a_of_type_DovComQqImAeeditorModuleToolbarAEEditorToolBar.setToolBarListener(a());
   }
   
   private void c(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131366717));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131366747));
   }
   
   private void d(View paramView)
   {
-    this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelAEEditorControlPanelContainer = ((AEEditorControlPanelContainer)paramView.findViewById(2131365107));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelAEEditorControlPanelContainer = ((AEEditorControlPanelContainer)paramView.findViewById(2131365134));
     this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel = this.jdField_a_of_type_DovComQqImAeeditorModuleControlpanelAEEditorControlPanelContainer.a(a());
     this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.a();
     this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.a(a(b()));
     this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.a(b());
     this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.setFilterControlListener(a());
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366665));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366692));
     this.jdField_a_of_type_DovComQqImAeeditorModuleFilterAEEditorFilterControlPanel.a(this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel = ((AEEditorTextControlPanel)paramView.findViewById(2131378648));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel = ((AEEditorTextControlPanel)paramView.findViewById(2131378412));
     if ((this instanceof AEEditorVideoEditFragment)) {
       this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel.setIsChooseImage(false);
     }
     for (;;)
     {
       this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel.setTextStickerControlListener(this);
-      this.jdField_a_of_type_AndroidArchLifecycleObserver = new bpga(this);
-      bphr.a().a().observeForever(this.jdField_a_of_type_AndroidArchLifecycleObserver);
+      this.jdField_a_of_type_AndroidArchLifecycleObserver = new bmhq(this);
+      bmkn.a().a().observeForever(this.jdField_a_of_type_AndroidArchLifecycleObserver);
       return;
       this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel.setIsChooseImage(true);
     }
@@ -149,20 +149,20 @@ public abstract class AEEditorCommonEditFragment
   
   private void e(View paramView)
   {
-    this.jdField_a_of_type_Bpkb = new bpkb();
-    this.jdField_a_of_type_Bpkb.a(a());
+    this.jdField_a_of_type_Bmmx = new bmmx();
+    this.jdField_a_of_type_Bmmx.a(a());
   }
   
   private void f(View paramView) {}
   
-  private void q()
+  private void r()
   {
-    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.setTitle(anzj.a(2131689685));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.setTitle(amtj.a(2131689684));
     this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.b();
     this.jdField_a_of_type_DovComQqImAeeditorModuleToolbarAEEditorToolBar.b();
   }
   
-  private void r()
+  private void s()
   {
     if (AEEditorAILoadingView.a()) {
       return;
@@ -172,38 +172,40 @@ public abstract class AEEditorCommonEditFragment
   
   protected abstract int a();
   
-  protected abstract bphp a();
+  protected abstract bmkl a();
   
-  protected abstract bphx a();
+  protected abstract bmkt a();
   
-  protected abstract bpke a();
+  protected abstract bmna a();
   
-  protected abstract bpkk a();
+  protected abstract bmng a();
   
   protected abstract TAVCutSession a();
   
-  public ArrayList<String> a(bpez parambpez)
+  public ArrayList<String> a(bmgl parambmgl)
   {
-    getResources().getString(2131717584);
-    Object localObject = getResources().getString(2131717585);
-    String str = getResources().getString(2131717585);
-    if ((parambpez instanceof bpfb))
+    getResources().getString(2131717820);
+    Object localObject = getResources().getString(2131717821);
+    String str = getResources().getString(2131717821);
+    if ((parambmgl instanceof bmgn))
     {
-      this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView.setSceneText(getResources().getString(2131689686), "", "");
+      if (this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView != null) {
+        this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView.setSceneText(getResources().getString(2131689687), "", "");
+      }
       return null;
     }
-    if (parambpez != null)
+    if (parambmgl != null)
     {
-      if (!TextUtils.isEmpty(parambpez.a())) {
-        parambpez.a();
+      if (!TextUtils.isEmpty(parambmgl.a())) {
+        parambmgl.a();
       }
-      if ((parambpez instanceof bpfe))
+      if ((parambmgl instanceof bmgu))
       {
-        List localList = ((bpfe)parambpez).a;
+        List localList = ((bmgu)parambmgl).a;
         if (localList != null) {
           if ((localList.size() > 0) && (localList.get(0) != null))
           {
-            parambpez = ((YoutuResultItem)localList.get(0)).Label;
+            parambmgl = ((YoutuResultItem)localList.get(0)).Label;
             if ((localList.size() > 1) && (localList.get(1) != null)) {
               str = ((YoutuResultItem)localList.get(1)).Label;
             }
@@ -214,13 +216,13 @@ public abstract class AEEditorCommonEditFragment
     for (;;)
     {
       localObject = new ArrayList();
-      ((ArrayList)localObject).add(parambpez);
+      ((ArrayList)localObject).add(parambmgl);
       ((ArrayList)localObject).add(str);
       return localObject;
       continue;
-      parambpez = (bpez)localObject;
+      parambmgl = (bmgl)localObject;
       break;
-      parambpez = (bpez)localObject;
+      parambmgl = (bmgl)localObject;
     }
   }
   
@@ -247,7 +249,7 @@ public abstract class AEEditorCommonEditFragment
         if ((localTAVCutSession instanceof TAVCutImageSession)) {
           paramInt = ((TAVCutImageSession)localTAVCutSession).getCurrentIndex();
         }
-        this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData = this.jdField_a_of_type_Bpkb.a(localTAVCutSession, paramAEEditorTextBean, paramInt);
+        this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData = this.jdField_a_of_type_Bmmx.a(localTAVCutSession, paramAEEditorTextBean, paramInt);
         return;
         if (paramAEEditorTextBean.type == 0)
         {
@@ -274,12 +276,19 @@ public abstract class AEEditorCommonEditFragment
       this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setTextColor(paramAEEditorTextBean.textColor);
       this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setBackGroundColor("bgcolor", paramAEEditorTextBean.backgroundColor);
       this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setType(paramAEEditorTextBean.type);
-      String str = bphr.a().a(paramAEEditorTextBean.fontId, 0);
+      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setStickerType(AEEditorTextBean.textBeanType2stickerConfigType(paramAEEditorTextBean));
+      if (paramAEEditorTextBean.type == 3)
+      {
+        this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setBlurTextPath(paramAEEditorTextBean.blurTextPath);
+        this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setBlurTexturePath(paramAEEditorTextBean.blurTexturePath);
+        paramAEEditorTextBean.content = this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.getContent();
+      }
+      String str = bmkn.a().a(paramAEEditorTextBean.fontId, 0);
       this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setFont(str);
       if (!this.jdField_b_of_type_Boolean) {
         this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setContent(paramAEEditorTextBean.content);
       }
-      this.jdField_a_of_type_Bpkb.a(localTAVCutSession, this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
+      this.jdField_a_of_type_Bmmx.a(localTAVCutSession, this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
       return;
       if (paramAEEditorTextBean.type == 0)
       {
@@ -288,44 +297,49 @@ public abstract class AEEditorCommonEditFragment
         }
         this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel.a(paramAEEditorTextBean.textColor);
       }
+      else if (paramAEEditorTextBean.type == 3)
+      {
+        paramAEEditorTextBean.blurTextPath = bmkn.a().f(paramAEEditorTextBean.id);
+        paramAEEditorTextBean.blurTexturePath = bmkn.a().g(paramAEEditorTextBean.id);
+      }
     }
-    bpam.d(c, "[onTextStickerSelected] mCurrentTextEditorData == null");
+    bmbx.d(c, "[onTextStickerSelected] mCurrentTextEditorData == null");
   }
   
-  protected void a(bpez parambpez)
+  protected void a(bmgl parambmgl)
   {
-    String str1 = getResources().getString(2131717584);
-    Object localObject1 = getResources().getString(2131717585);
-    String str2 = getResources().getString(2131717585);
-    if ((parambpez instanceof bpfb)) {
-      this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView.setSceneText(getResources().getString(2131689686), "", "");
+    String str1 = getResources().getString(2131717820);
+    Object localObject1 = getResources().getString(2131717821);
+    String str2 = getResources().getString(2131717821);
+    if ((parambmgl instanceof bmgn)) {
+      this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView.setSceneText(getResources().getString(2131689687), "", "");
     }
     label201:
     for (;;)
     {
       return;
       Object localObject2;
-      if (parambpez != null) {
-        if (!TextUtils.isEmpty(parambpez.a()))
+      if (parambmgl != null) {
+        if (!TextUtils.isEmpty(parambmgl.a()))
         {
-          str1 = parambpez.a();
+          str1 = parambmgl.a();
           localObject2 = localObject1;
-          if ((parambpez instanceof bpfe))
+          if ((parambmgl instanceof bmgu))
           {
-            List localList = ((bpfe)parambpez).a;
+            List localList = ((bmgu)parambmgl).a;
             localObject2 = localObject1;
             if (localList != null)
             {
-              parambpez = (bpez)localObject1;
+              parambmgl = (bmgl)localObject1;
               if (localList.size() > 0) {
-                parambpez = ((YoutuResultItem)localList.get(0)).Label;
+                parambmgl = ((YoutuResultItem)localList.get(0)).Label;
               }
-              localObject2 = parambpez;
+              localObject2 = parambmgl;
               if (localList.size() > 1)
               {
                 localObject2 = ((YoutuResultItem)localList.get(1)).Label;
-                localObject1 = parambpez;
-                parambpez = (bpez)localObject2;
+                localObject1 = parambmgl;
+                parambmgl = (bmgl)localObject2;
               }
             }
           }
@@ -336,13 +350,13 @@ public abstract class AEEditorCommonEditFragment
         if (this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView == null) {
           break label201;
         }
-        this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView.setSceneText(str1, (String)localObject1, parambpez);
+        this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView.setSceneText(str1, (String)localObject1, parambmgl);
         return;
-        parambpez = str2;
+        parambmgl = str2;
         localObject1 = localObject2;
         continue;
         break;
-        parambpez = str2;
+        parambmgl = str2;
       }
     }
   }
@@ -393,7 +407,7 @@ public abstract class AEEditorCommonEditFragment
     }
     if (this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData == null)
     {
-      bpam.d(c, "textEditorData null.");
+      bmbx.d(c, "textEditorData null.");
       return;
     }
     switch (this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.getType())
@@ -401,7 +415,7 @@ public abstract class AEEditorCommonEditFragment
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bpkb.a(paramString2, this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
+      this.jdField_a_of_type_Bmmx.a(paramString2, this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
       return;
       this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setTextColor(paramInt1);
       continue;
@@ -412,7 +426,7 @@ public abstract class AEEditorCommonEditFragment
         if (paramString1 != null) {
           this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setTextColor(paramString1.intValue());
         } else {
-          bpam.d(c, "[onTextColorChoose] intelligent color bar is not ready");
+          bmbx.d(c, "[onTextColorChoose] intelligent color bar is not ready");
         }
       }
       else if (paramInt1 == -1)
@@ -428,7 +442,7 @@ public abstract class AEEditorCommonEditFragment
   
   public void a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Bpfx != null) {
+    if (this.jdField_a_of_type_Bmhn != null) {
       ThreadManager.getUIHandler().post(new AEEditorCommonEditFragment.4(this, paramString1, paramString2));
     }
   }
@@ -469,8 +483,8 @@ public abstract class AEEditorCommonEditFragment
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = "none";
     }
-    bozv.a().a().jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramList);
-    bozv.a().a().b.put(paramInt, localObject1);
+    bmbg.a().a().jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramList);
+    bmbg.a().a().b.put(paramInt, localObject1);
   }
   
   public void a(boolean paramBoolean)
@@ -480,7 +494,7 @@ public abstract class AEEditorCommonEditFragment
   
   public void a(String... paramVarArgs)
   {
-    if (this.jdField_a_of_type_Bpfx != null) {
+    if (this.jdField_a_of_type_Bmhn != null) {
       ThreadManager.getUIHandler().post(new AEEditorCommonEditFragment.5(this, paramVarArgs));
     }
   }
@@ -488,12 +502,12 @@ public abstract class AEEditorCommonEditFragment
   public boolean a()
   {
     Object localObject = getActivity();
-    localObject = bhlq.a((Context)localObject, 230).setTitle(anzj.a(2131689710)).setMessage(((Context)localObject).getString(2131689711)).setPositiveButton(((Context)localObject).getString(2131689710), new bpgc(this)).setNegativeButton(((Context)localObject).getString(2131689689), new bpgb(this));
+    localObject = bfur.a((Context)localObject, 230).setTitle(amtj.a(2131689720)).setMessage(((Context)localObject).getString(2131689721)).setPositiveButton(((Context)localObject).getString(2131689720), new bmhs(this)).setNegativeButton(((Context)localObject).getString(2131689690), new bmhr(this));
     if (localObject != null) {}
     try
     {
-      if (!((bhpc)localObject).isShowing()) {
-        ((bhpc)localObject).show();
+      if (!((QQCustomDialog)localObject).isShowing()) {
+        ((QQCustomDialog)localObject).show();
       }
       label83:
       return true;
@@ -506,18 +520,20 @@ public abstract class AEEditorCommonEditFragment
   
   protected abstract boolean a(int paramInt);
   
-  public void aQ_()
+  public void aB_()
   {
     a().a(getActivity(), true);
   }
   
-  public void aR_()
+  public void aC_()
   {
     n();
     g();
   }
   
   protected abstract int b();
+  
+  protected abstract String b();
   
   public boolean b()
   {
@@ -537,8 +553,6 @@ public abstract class AEEditorCommonEditFragment
     }
     return false;
   }
-  
-  protected abstract String c();
   
   protected abstract void c();
   
@@ -586,7 +600,7 @@ public abstract class AEEditorCommonEditFragment
   
   protected boolean e()
   {
-    return bozz.a().a("SP_KEY_HAS_SINGLE_IMAGE_USE_AIFILTER", true, 0);
+    return bmbk.a().a("SP_KEY_HAS_SINGLE_IMAGE_USE_AIFILTER", true, 0);
   }
   
   protected abstract void f();
@@ -603,7 +617,7 @@ public abstract class AEEditorCommonEditFragment
     for (;;)
     {
       return false;
-      bpam.a(c, "sendMessage");
+      bmbx.a(c, "sendMessage");
       f();
     }
   }
@@ -618,8 +632,8 @@ public abstract class AEEditorCommonEditFragment
     }
     this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel.e();
     h();
-    q();
-    this.jdField_a_of_type_Bhlj.removeMessages(0);
+    r();
+    this.jdField_a_of_type_Bfum.removeMessages(0);
     this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel.a();
   }
   
@@ -629,9 +643,9 @@ public abstract class AEEditorCommonEditFragment
     this.jdField_a_of_type_DovComQqImAeeditorModuleTopbarAEEditorTopBar.a();
     this.jdField_a_of_type_DovComQqImAeeditorModuleToolbarAEEditorToolBar.c();
     this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel.a(null);
-    this.jdField_a_of_type_Bhlj.removeMessages(0);
+    this.jdField_a_of_type_Bfum.removeMessages(0);
     if (this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData != null) {
-      this.jdField_a_of_type_Bhlj.sendEmptyMessageDelayed(0, 2000L);
+      this.jdField_a_of_type_Bfum.sendEmptyMessageDelayed(0, 2000L);
     }
   }
   
@@ -644,7 +658,7 @@ public abstract class AEEditorCommonEditFragment
     if ((this instanceof AEEditorVideoEditFragment)) {}
     for (this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView = new AEEditorAIVideoLoadingView(getActivity());; this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView = new AEEditorAILoadingView(getActivity()))
     {
-      this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView.setLoadingListener(new bpfy(this));
+      this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView.setLoadingListener(new bmho(this));
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView);
       return;
     }
@@ -657,7 +671,7 @@ public abstract class AEEditorCommonEditFragment
     }
     this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
     this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView = new AEEditorComicLoadingView(getActivity());
-    this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView.setLoadingListener(new bpfz(this));
+    this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView.setLoadingListener(new bmhp(this));
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_DovComQqImAeeditorModuleAifilterAEEditorAILoadingView);
   }
   
@@ -673,24 +687,24 @@ public abstract class AEEditorCommonEditFragment
   
   protected void o()
   {
-    bozz.a().a("SP_KEY_HAS_SINGLE_IMAGE_USE_AIFILTER", false, 0);
+    bmbk.a().a("SP_KEY_HAS_SINGLE_IMAGE_USE_AIFILTER", false, 0);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    bpam.b(c, "onCreate");
+    bmbx.b(c, "onCreate");
     super.onCreate(paramBundle);
     this.jdField_a_of_type_AndroidContentContext = getActivity();
-    bphr.a().a();
-    r();
+    bmkn.a().a();
+    s();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    bpam.b(c, "onCreateView");
+    bmbx.b(c, "onCreateView");
     c();
     jdField_a_of_type_Int = OfflineConfig.getPhonePerfLevel();
-    this.jdField_a_of_type_Bhlj = new bhlj(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Bfum = new bfum(Looper.getMainLooper(), this);
     paramLayoutInflater = paramLayoutInflater.inflate(a(), paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -698,16 +712,16 @@ public abstract class AEEditorCommonEditFragment
   
   public void onDestroyView()
   {
-    bpam.b(c, "onDestroyView");
+    bmbx.b(c, "onDestroyView");
     super.onDestroyView();
-    bphr.a().a().removeObserver(this.jdField_a_of_type_AndroidArchLifecycleObserver);
-    this.jdField_a_of_type_Bhlj.removeMessages(0);
-    AEEditorTextControlPanel.f();
+    bmkn.a().a().removeObserver(this.jdField_a_of_type_AndroidArchLifecycleObserver);
+    this.jdField_a_of_type_Bfum.removeMessages(0);
+    AEEditorTextControlPanel.g();
   }
   
   public void onPause()
   {
-    bpam.b(c, "onPause");
+    bmbx.b(c, "onPause");
     super.onPause();
     n();
     this.jdField_a_of_type_Boolean = true;
@@ -715,22 +729,22 @@ public abstract class AEEditorCommonEditFragment
   
   public void onResume()
   {
-    bpam.b(c, "onResume");
+    bmbx.b(c, "onResume");
     super.onResume();
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Bpkb != null) {
-      this.jdField_a_of_type_Bpkb.a();
+    if (this.jdField_a_of_type_Bmmx != null) {
+      this.jdField_a_of_type_Bmmx.a();
     }
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
-    bpam.b(c, "onViewCreated");
+    bmbx.b(c, "onViewCreated");
     super.onViewCreated(paramView, paramBundle);
     this.jdField_b_of_type_JavaLangString = getArguments().getString("editor_filter_id");
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
-      bpam.b(c, "jump from scheme, filterID=" + this.jdField_b_of_type_JavaLangString);
+      bmbx.b(c, "jump from scheme, filterID=" + this.jdField_b_of_type_JavaLangString);
       getArguments().putString("editor_filter_id", "");
     }
     f(paramView);
@@ -742,6 +756,13 @@ public abstract class AEEditorCommonEditFragment
   }
   
   public void p()
+  {
+    if (this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel != null) {
+      this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel.f();
+    }
+  }
+  
+  public void q()
   {
     f();
     j();

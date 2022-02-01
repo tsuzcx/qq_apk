@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.weather;
 
-import amkx;
+import alfu;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import java.util.List;
@@ -8,19 +8,19 @@ import java.util.List;
 public class SessionClearFragment$1$1
   implements Runnable
 {
-  public SessionClearFragment$1$1(amkx paramamkx, List paramList) {}
+  public SessionClearFragment$1$1(alfu paramalfu, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Amkx.a.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_Amkx.a.b();
-    SessionClearFragment.a(this.jdField_a_of_type_Amkx.a).setVisibility(0);
+    this.jdField_a_of_type_Alfu.a.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_Alfu.a.b();
+    SessionClearFragment.a(this.jdField_a_of_type_Alfu.a).setVisibility(0);
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
     {
-      SessionClearFragment.a(this.jdField_a_of_type_Amkx.a).setVisibility(0);
+      SessionClearFragment.a(this.jdField_a_of_type_Alfu.a).setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_Amkx.a.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Alfu.a.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 

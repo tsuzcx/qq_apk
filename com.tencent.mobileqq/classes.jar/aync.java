@@ -1,52 +1,6 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.ProgressButton;
-import com.tencent.mobileqq.widget.QQToast;
-
-class aync
-  extends Handler
+public class aync
 {
-  aync(aymj paramaymj) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-            } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
-            this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131698303);
-            return;
-          } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(paramMessage.arg1);
-          return;
-        } while (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton == null);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setProgress(100);
-        return;
-      } while ((this.a.jdField_a_of_type_Aypz == null) || (aymj.a(this.a) == null));
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton.setText(2131697963);
-      }
-      this.a.jdField_a_of_type_Aypz.a(aymj.a(this.a).uRoomid);
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_bootstrap", 0, 0, aymj.a(this.a).uin, "", "yes", "android");
-      return;
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 2131698300, 0).a();
-      return;
-    } while (this.a.jdField_a_of_type_Aypz == null);
-    this.a.jdField_a_of_type_Aypz.a();
-  }
+  public static final int[] a = { -1000, -2000, -20000, -2002, -2022, -1035, -2001, -2007, -1049, -2058 };
 }
 
 

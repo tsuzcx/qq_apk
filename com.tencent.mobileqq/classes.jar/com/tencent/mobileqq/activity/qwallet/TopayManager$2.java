@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet;
 
 import Wallet.PfaFriendRsp;
-import akzk;
-import alil;
-import alir;
-import bhmi;
+import ajxc;
+import akgd;
+import akgj;
 import com.qq.taf.jce.JceOutputStream;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 
 public final class TopayManager$2
@@ -14,25 +14,25 @@ public final class TopayManager$2
 {
   public void run()
   {
-    if (akzk.a == null) {
+    if (ajxc.a == null) {
       return;
     }
     Object localObject1 = "";
-    Object localObject2 = alil.a();
+    Object localObject2 = akgd.a();
     if (localObject2 != null) {}
     try
     {
       localObject1 = ((QQAppInterface)localObject2).getCurrentAccountUin();
-      localObject2 = alir.e + (String)localObject1;
+      localObject2 = akgj.e + (String)localObject1;
       localObject1 = localObject2;
-      if (akzk.b == 1)
+      if (ajxc.b == 1)
       {
         localObject1 = localObject2;
-        if (akzk.c > 0)
+        if (ajxc.c > 0)
         {
           localObject1 = localObject2;
-          if (akzk.c < 3) {
-            localObject1 = (String)localObject2 + "_" + akzk.b + "_" + akzk.c;
+          if (ajxc.c < 3) {
+            localObject1 = (String)localObject2 + "_" + ajxc.b + "_" + ajxc.c;
           }
         }
       }
@@ -42,8 +42,8 @@ public final class TopayManager$2
       }
       localObject2 = new JceOutputStream();
       ((JceOutputStream)localObject2).setServerEncoding("utf-8");
-      akzk.a.writeTo((JceOutputStream)localObject2);
-      bhmi.a(((JceOutputStream)localObject2).toByteArray(), (String)localObject1);
+      ajxc.a.writeTo((JceOutputStream)localObject2);
+      FileUtils.writeFile(((JceOutputStream)localObject2).toByteArray(), (String)localObject1);
       return;
     }
     catch (Exception localException)

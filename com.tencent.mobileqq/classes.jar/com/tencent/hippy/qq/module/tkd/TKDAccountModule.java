@@ -9,7 +9,7 @@ import com.tencent.mtt.hippy.annotation.HippyNativeModule;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleBase;
-import tzq;
+import ugf;
 
 @HippyNativeModule(name="TKDAccountModule")
 public class TKDAccountModule
@@ -23,7 +23,7 @@ public class TKDAccountModule
     super(paramHippyEngineContext);
   }
   
-  private HippyMap convertAccountInfo2HippyMap(@NonNull TKDAccountModule.AccountInfo paramAccountInfo)
+  public static HippyMap convertAccountInfo2HippyMap(@NonNull TKDAccountModule.AccountInfo paramAccountInfo)
   {
     HippyMap localHippyMap = new HippyMap();
     localHippyMap.pushInt("type", 1);
@@ -48,8 +48,8 @@ public class TKDAccountModule
       if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
       {
         localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        localObject1 = ((QQAppInterface)localObject2).c();
-        localObject2 = tzq.a((QQAppInterface)localObject2, (String)localObject1);
+        localObject1 = ((QQAppInterface)localObject2).getCurrentUin();
+        localObject2 = ugf.a((QQAppInterface)localObject2, (String)localObject1);
       }
     }
     localObject3 = new TKDAccountModule.AccountInfo();

@@ -1,23 +1,11 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
-import java.util.List;
+import android.view.View;
 
-class beop
-  extends bepm<EditorState>
+public class beop
+  extends beon<benx>
 {
-  beop(beoh parambeoh, EditorState paramEditorState, List paramList)
+  public beop(View paramView)
   {
-    super(paramEditorState, paramList);
-  }
-  
-  public void a(EditorState paramEditorState)
-  {
-    beoh.a(this.a).a(true, false);
-    beoh.a(this.a).a();
-  }
-  
-  public boolean a()
-  {
-    return true;
+    super(paramView);
   }
 }
 

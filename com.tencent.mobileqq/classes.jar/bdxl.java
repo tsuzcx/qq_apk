@@ -1,6 +1,22 @@
-public abstract interface bdxl<T extends bdxf>
+import java.util.Comparator;
+import java.util.Map.Entry;
+
+class bdxl
+  implements Comparator<Map.Entry<String, bdxm>>
 {
-  public abstract int c();
+  bdxl(bdxj parambdxj) {}
+  
+  public int a(Map.Entry<String, bdxm> paramEntry1, Map.Entry<String, bdxm> paramEntry2)
+  {
+    long l = ((bdxm)paramEntry2.getValue()).a - ((bdxm)paramEntry1.getValue()).a;
+    if (l > 0L) {
+      return 1;
+    }
+    if (l < 0L) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

@@ -4,13 +4,15 @@ import com.tencent.widget.ListView;
 import com.tencent.widget.XListView;
 
 public class ct
-  implements blnt
+  implements bjsd
 {
   public ct(PrinterActivity paramPrinterActivity) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView) {}
+  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView) {}
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView) {}
+  
+  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
     paramInt = PrinterActivity.a(this.a).a.a();
     if (paramInt > 0)
@@ -22,9 +24,7 @@ public class ct
     return false;
   }
   
-  public void b(int paramInt, View paramView, ListView paramListView) {}
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
+  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

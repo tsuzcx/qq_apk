@@ -1,12 +1,12 @@
 package cooperation.troop;
 
 import Override;
+import amtj;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
 import android.widget.TextView;
-import anzj;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -21,7 +21,7 @@ public class TroopBaseProxyActivity
     {
       try
       {
-        paramActivity = new ReportDialog(paramActivity, 2131755824);
+        paramActivity = new ReportDialog(paramActivity, 2131755826);
         Activity localActivity = paramActivity;
       }
       catch (OutOfMemoryError localOutOfMemoryError1)
@@ -29,9 +29,9 @@ public class TroopBaseProxyActivity
         try
         {
           paramActivity.setCancelable(true);
-          paramActivity.setContentView(2131559572);
+          paramActivity.setContentView(2131559574);
           paramActivity.show();
-          ((TextView)paramActivity.findViewById(2131372578)).setText(anzj.a(2131714036));
+          ((TextView)paramActivity.findViewById(2131372546)).setText(amtj.a(2131714268));
           localActivity = paramActivity;
           return localActivity;
         }
@@ -50,8 +50,9 @@ public class TroopBaseProxyActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   

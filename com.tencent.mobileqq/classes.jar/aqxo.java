@@ -1,37 +1,74 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.widget.XListView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.HotFriendResData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aqxo
-  implements bbst
+  extends aqxl
 {
-  public aqxo(SearchResultActivity paramSearchResultActivity) {}
-  
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public aqxo(QQAppInterface paramQQAppInterface)
   {
-    if ((paramBitmap == null) || (paramInt2 == 201)) {}
-    for (;;)
+    super("qq.android.hotfriend.res", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10042;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return HotFriendResData.class;
+  }
+  
+  public String a()
+  {
+    return "HotFriendResHandler";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess:" + paramString);
+    }
+    if (!new File(paramString).exists())
     {
+      if (QLog.isColorLevel()) {
+        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess sorse not exists");
+      }
       return;
-      if (this.a.jdField_a_of_type_Int == 0)
-      {
-        int i = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-        paramInt2 = 0;
-        while (paramInt2 < i)
-        {
-          paramBitmap = this.a.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt2).getTag();
-          if ((paramBitmap != null) && ((paramBitmap instanceof aqxq)))
-          {
-            paramBitmap = (aqxq)paramBitmap;
-            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
-              SearchResultActivity.a(this.a, paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
-            }
-          }
-          paramInt2 += 1;
-        }
+    }
+    try
+    {
+      String str = awgw.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess imagePath=" + str);
+      }
+      if (!TextUtils.isEmpty(str)) {
+        FileUtils.uncompressZip(paramString, str, false);
       }
     }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+    super.a(paramString);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 

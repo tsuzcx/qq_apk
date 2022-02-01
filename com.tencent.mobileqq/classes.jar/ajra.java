@@ -1,25 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import mqq.os.MqqHandler;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-public class ajra
-  implements bliz
+class ajra
+  implements aszj
 {
-  public ajra(TroopSuspiciousFragment paramTroopSuspiciousFragment, blir paramblir) {}
+  ajra(ajqv paramajqv) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onNo()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a.sendEmptyMessage(1014);
-      }
-    }
+    ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
+  }
+  
+  public void onYes()
+  {
+    this.a.b();
   }
 }
 

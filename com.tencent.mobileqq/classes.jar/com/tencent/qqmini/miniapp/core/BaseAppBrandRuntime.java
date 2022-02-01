@@ -45,6 +45,7 @@ public abstract class BaseAppBrandRuntime
   protected AppStateManager mAppStateManager;
   protected String mEntryPath;
   public EventListener mEventListener = new EventListener(this);
+  private boolean mIsForground = true;
   protected MiniAppInfo mMiniAppInfo;
   protected boolean mPrecacheFetched = false;
   protected ViewGroup mRootLayout;
@@ -117,6 +118,11 @@ public abstract class BaseAppBrandRuntime
     this.appBrandService.setAppBrandEventInterface(this.mEventListener);
   }
   
+  public boolean isForground()
+  {
+    return this.mIsForground;
+  }
+  
   public boolean isMiniGame()
   {
     return false;
@@ -165,19 +171,22 @@ public abstract class BaseAppBrandRuntime
   public void loadMiniApp(MiniAppInfo paramMiniAppInfo)
   {
     QMLog.i("minisdk-start_BaseAppBrandRuntime", " [MiniLifecycle] loadMiniApp");
-    if (this.mApkgInfo != null) {
-      return;
-    }
-    this.mMiniAppInfo = paramMiniAppInfo;
-    this.mApkgInfo = ((ApkgInfo)paramMiniAppInfo.apkgInfo);
-    ((MiniAppFileManager)getManager(MiniAppFileManager.class)).initFileManager(this.mApkgInfo, false);
-    if (!this.mPrecacheFetched)
+    if (this.mApkgInfo != null) {}
+    do
     {
-      this.mPrecacheFetched = true;
-      PreCacheManager.g().fetchPreCacheData(this.mMiniAppInfo);
-      PreCacheManager.g().fetchPreResourceIfNeed(this.mMiniAppInfo);
-    }
-    this.mEntryPath = this.mMiniAppInfo.launchParam.entryPath;
+      return;
+      this.mMiniAppInfo = paramMiniAppInfo;
+      this.mApkgInfo = ((ApkgInfo)paramMiniAppInfo.apkgInfo);
+      ((MiniAppFileManager)getManager(MiniAppFileManager.class)).initFileManager(this.mApkgInfo, false);
+      if (!this.mPrecacheFetched)
+      {
+        this.mPrecacheFetched = true;
+        PreCacheManager.g().fetchPreCacheData(this.mMiniAppInfo);
+        PreCacheManager.g().fetchPreResourceIfNeed(this.mMiniAppInfo);
+      }
+      this.mEntryPath = this.mMiniAppInfo.launchParam.entryPath;
+    } while (this.jsPluginEngine == null);
+    this.jsPluginEngine.onCreate(this);
   }
   
   public boolean onBackPress()
@@ -247,6 +256,7 @@ public abstract class BaseAppBrandRuntime
   public void onRuntimePause()
   {
     QMLog.i("minisdk-start_BaseAppBrandRuntime", " [MiniLifecycle] onRuntimePause");
+    this.mIsForground = false;
     if (this.pageContainer != null) {
       this.pageContainer.onPause();
     }
@@ -258,6 +268,7 @@ public abstract class BaseAppBrandRuntime
   public void onRuntimeResume()
   {
     QMLog.i("minisdk-start_BaseAppBrandRuntime", " [MiniLifecycle] onRuntimeResume");
+    this.mIsForground = true;
     if (this.pageContainer != null) {
       this.pageContainer.onResume();
     }

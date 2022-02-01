@@ -1,33 +1,27 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class xfp
-  implements xfo
+public final class xfp
+  implements URLDrawable.URLDrawableListener
 {
-  public void a() {}
+  public xfp(ImageView paramImageView, Drawable paramDrawable) {}
   
-  public void a(int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (paramInt == 6) {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131689987, 0).a();
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "iconDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
     }
   }
   
-  public void b() {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void b(int paramInt) {}
-  
-  public void c() {}
-  
-  public void c(int paramInt)
-  {
-    QQToast.a(BaseApplication.getContext(), anzj.a(2131706720), 0).a();
-  }
-  
-  public void d() {}
-  
-  public void d(int paramInt) {}
+  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 

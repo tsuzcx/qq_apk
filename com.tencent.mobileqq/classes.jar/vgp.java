@@ -1,135 +1,236 @@
 import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.util.SparseArray;
+import android.content.SharedPreferences;
+import android.os.Build.VERSION;
+import com.tencent.biz.qcircleshadow.lib.delegate.ILoadPluginDelegate;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.ThreadManagerExecutor;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qqcircle.QCircleConstants;
+import cooperation.qqcircle.report.QCirclePluginQualityReporter;
+import cooperation.qqcircle.report.QCirclePluginQualityReporter.ReportData;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
 public class vgp
 {
-  public static final int a;
-  public static final SparseArray<vgp> a;
-  public static final int b;
-  public static final int c;
-  public static boolean d;
-  public float a;
-  public boolean a;
-  public float b;
-  public boolean b;
-  public float c;
-  public boolean c;
-  public float d;
-  public int d;
-  public float e;
-  public int e;
-  public float f;
-  public int f;
-  public float g;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
+  private static final String jdField_a_of_type_JavaLangString = QCircleConstants.QCIRCLE_INNER_ROOT_PATH + "qcirclePlugin/";
+  private static vgp jdField_a_of_type_Vgp;
+  private static final String jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "pluginAsset/";
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.context;
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
+  private Future<vgv> jdField_a_of_type_JavaUtilConcurrentFuture;
+  private Future<vgv> jdField_b_of_type_JavaUtilConcurrentFuture;
+  private Future<vgv> c;
   
-  static
+  private String a(Future<vgv> paramFuture)
   {
-    jdField_a_of_type_Int = vwt.b(5.0F);
-    jdField_b_of_type_Int = vwt.b(10.0F);
-    jdField_c_of_type_Int = vwt.b(1.5F);
-    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    jdField_d_of_type_Boolean = true;
-  }
-  
-  private vgp(Context paramContext, int paramInt1, int paramInt2)
-  {
-    paramContext = paramContext.getResources().getDisplayMetrics();
-    paramInt1 = paramContext.widthPixels;
-    int i1 = paramContext.heightPixels;
-    if (BaseApplicationImpl.getContext().getResources().getConfiguration().orientation == 2) {
-      this.l = Math.min(paramInt1, i1);
-    }
-    for (this.k = Math.max(paramInt1, i1);; this.k = Math.min(paramInt1, i1)) {
-      switch (paramInt2)
-      {
-      default: 
-        return;
-        this.l = Math.max(paramInt1, i1);
-      }
-    }
-    this.jdField_d_of_type_Int = 8160;
-    this.jdField_e_of_type_Int = (vwt.a(jdField_a_of_type_Int) + ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication()) + bnlc.a(BaseApplicationImpl.getApplication(), null));
-    this.jdField_g_of_type_Int = vwt.a(16.0F);
-    this.h = vwt.a(9.0F);
-    this.jdField_b_of_type_Float = vwt.a(2.0F);
-    this.jdField_c_of_type_Float = vwt.a(jdField_c_of_type_Int);
-    this.jdField_f_of_type_Float = vwt.a(15.0F);
-    this.jdField_g_of_type_Float = vwt.a(10.0F);
-    this.i = 255;
-    this.jdField_a_of_type_Float = vwt.a(14.0F);
-    this.j = -1;
-    this.m = 16;
-    this.n = 200;
-    this.jdField_d_of_type_Float = vwt.a(0.0F);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_e_of_type_Float = vwt.a(6.0F);
-    this.jdField_f_of_type_Int = 2;
-    return;
-    this.jdField_d_of_type_Int = 8160;
-    this.jdField_e_of_type_Int = (vwt.a(24 + jdField_a_of_type_Int) + ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication()));
-    this.jdField_g_of_type_Int = vwt.a(4.0F);
-    this.h = vwt.a(9.0F);
-    this.jdField_b_of_type_Float = vwt.a(2.0F);
-    this.jdField_c_of_type_Float = vwt.a(jdField_c_of_type_Int);
-    this.jdField_f_of_type_Float = vwt.a(15.0F);
-    this.jdField_g_of_type_Float = vwt.a(10.0F);
-    this.i = 255;
-    this.jdField_a_of_type_Float = vwt.a(14.0F);
-    this.j = -1;
-    this.m = 10;
-    this.n = 200;
-    this.jdField_d_of_type_Float = vwt.a(0.0F);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_e_of_type_Float = vwt.a(6.0F);
-    this.jdField_f_of_type_Int = 2;
-  }
-  
-  public static vgp a(Context paramContext, int paramInt1, int paramInt2)
-  {
-    Object localObject = (vgp)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1 * 10 + paramInt2);
-    if (localObject == null) {
+    if (paramFuture != null) {
       try
       {
-        vgp localvgp = (vgp)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1 * 10 + paramInt2);
-        localObject = localvgp;
-        if (localvgp == null)
+        if (paramFuture.get() != null)
         {
-          localObject = new vgp(paramContext, paramInt1, paramInt2);
-          jdField_a_of_type_AndroidUtilSparseArray.put(paramInt1 * 10 + paramInt2, localObject);
+          paramFuture = ((vgv)paramFuture.get()).toString();
+          return paramFuture;
         }
-        return localObject;
       }
-      finally {}
+      catch (Exception paramFuture)
+      {
+        return "";
+      }
     }
-    return localObject;
+    return "";
   }
   
-  public static void a(boolean paramBoolean)
+  public static vgp a()
   {
-    jdField_d_of_type_Boolean = paramBoolean;
+    try
+    {
+      if (jdField_a_of_type_Vgp == null) {
+        jdField_a_of_type_Vgp = new vgp();
+      }
+      vgp localvgp = jdField_a_of_type_Vgp;
+      return localvgp;
+    }
+    finally {}
   }
   
-  public static boolean a()
+  private vgs a(vgv paramvgv)
   {
-    return jdField_d_of_type_Boolean;
+    if (paramvgv != null)
+    {
+      QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_wns_load_asset").setPluginType("Q_CIRCLE_PLUGIN_ASSET").setPluginVersion(paramvgv.a()));
+      QLog.i("QCIRCLE_PLUGIN", 1, "checkWNS():WNS force use asset");
+      return a(paramvgv, false);
+    }
+    QLog.i("QCIRCLE_PLUGIN", 1, "createMangerUpdate():WNS force use asset no asset info");
+    return null;
+  }
+  
+  private vgs a(vgv paramvgv1, vgv paramvgv2)
+  {
+    if (paramvgv1.a() > paramvgv2.a())
+    {
+      QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_net_compare_asset").setPluginType("Q_CIRCLE_PLUGIN_NETWORK").setPluginVersion(paramvgv1.a()).setExt1(String.valueOf(paramvgv2.a())).setRetCode(0L));
+      if (a(paramvgv1.a(), paramvgv1.c()))
+      {
+        if (paramvgv1.a() >= 1000)
+        {
+          QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_net_compare_minversion").setPluginType("Q_CIRCLE_PLUGIN_NETWORK").setPluginVersion(paramvgv1.a()).setExt1(String.valueOf(1000)).setRetCode(0L));
+          QLog.i("QCIRCLE_PLUGIN", 1, "checkNet():use netWork plugin, net version:" + paramvgv1.a() + " asset version:" + paramvgv2.a() + " MiniSupportVersion" + 1000);
+          return new vgs(paramvgv1);
+        }
+        QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_net_compare_minversion").setPluginType("Q_CIRCLE_PLUGIN_NETWORK").setPluginVersion(paramvgv1.a()).setExt1(String.valueOf(1000)).setRetCode(1L));
+        QLog.i("QCIRCLE_PLUGIN", 1, "checkNet():net plugin version:" + paramvgv1.a() + " mini not support, go to checkAsset");
+        return a(paramvgv2, true);
+      }
+      QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_net_crash_max").setPluginType("Q_CIRCLE_PLUGIN_NETWORK").setPluginVersion(paramvgv1.a()).setExt1(String.valueOf(1000)).setRetCode(1L));
+      QLog.i("QCIRCLE_PLUGIN", 1, "checkNet():net plugin version:" + paramvgv1.a() + " crash too many, go to checkAsset");
+      return a(paramvgv2, true);
+    }
+    QLog.i("QCIRCLE_PLUGIN", 1, "checkNet():net plugin version:" + paramvgv1.a() + " lower then asset, go to checkAsset");
+    QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_net_compare_asset").setPluginType("Q_CIRCLE_PLUGIN_NETWORK").setPluginVersion(paramvgv1.a()).setExt1(String.valueOf(paramvgv2.a())).setRetCode(1L));
+    return a(paramvgv2, true);
+  }
+  
+  private vgs a(vgv paramvgv, boolean paramBoolean)
+  {
+    if (a(paramvgv.a(), paramvgv.c()))
+    {
+      QLog.i("QCIRCLE_PLUGIN", 1, "checkAsset():use asset plugin , assetVersion:" + paramvgv.a() + " , hasNetPlugin: " + paramBoolean + " ,MiniSupportVersion" + 1000);
+      return new vgs(paramvgv);
+    }
+    QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_load_result").setPluginType("Q_CIRCLE_PLUGIN_ASSET").setPluginVersion(paramvgv.a()).setRetCode(3L));
+    ILoadPluginDelegate.disPatchCallback(3, "crash too many");
+    return null;
+  }
+  
+  private boolean a()
+  {
+    if (Build.VERSION.SDK_INT > 16)
+    {
+      QLog.i("QCIRCLE_PLUGIN", 1, "isUnSupport():false");
+      return false;
+    }
+    QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_system_unsupport"));
+    QLog.i("QCIRCLE_PLUGIN", 1, "isUnSupport():true");
+    return true;
+  }
+  
+  private boolean a(int paramInt, String paramString)
+  {
+    int i = BaseApplicationImpl.context.getSharedPreferences("QCircle_crash_share", 0).getInt("QCircle_crash_count_" + paramInt, 0);
+    if ("Q_CIRCLE_PLUGIN_ASSET".equals(paramString)) {}
+    while (i < QzoneConfig.getQCircleMaxCrashCount()) {
+      return true;
+    }
+    vho.a().a(paramInt);
+    QLog.i("QCIRCLE_PLUGIN", 1, "crashValidEnable():net plugin ,current version:" + paramInt + ",crashed to many times");
+    return false;
+  }
+  
+  private vgs b(vgv paramvgv)
+  {
+    if (paramvgv != null) {}
+    return null;
+  }
+  
+  public List<String> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    try
+    {
+      localArrayList.add(a(this.jdField_b_of_type_JavaUtilConcurrentFuture));
+      localArrayList.add(a(this.jdField_a_of_type_JavaUtilConcurrentFuture));
+      localArrayList.add(a(this.c));
+      return localArrayList;
+    }
+    catch (Exception localException) {}
+    return localArrayList;
+  }
+  
+  public Future<vgv> a(String paramString1, String paramString2, int paramInt)
+  {
+    if (this.c == null) {
+      this.c = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new vgq(this, "Q_CIRCLE_PLUGIN_NETWORK", paramString1, paramString2, paramInt));
+    }
+    return this.c;
+  }
+  
+  public vgs a()
+  {
+    for (;;)
+    {
+      Object localObject2;
+      try
+      {
+        Object localObject1 = (vgv)this.jdField_b_of_type_JavaUtilConcurrentFuture.get();
+        vgv localvgv2 = (vgv)this.jdField_a_of_type_JavaUtilConcurrentFuture.get();
+        if (this.c == null) {
+          break label183;
+        }
+        localvgv1 = (vgv)this.c.get();
+        if (a()) {
+          return null;
+        }
+        vgs localvgs = b((vgv)localObject1);
+        localObject2 = localvgs;
+        if (localvgs == null)
+        {
+          if (QzoneConfig.useQCircleAssetPluginAlways()) {
+            return a(localvgv2);
+          }
+          localObject1 = localvgs;
+          if (localvgv1 != null)
+          {
+            localObject1 = localvgs;
+            if (localvgv2 != null) {
+              localObject1 = a(localvgv1, localvgv2);
+            }
+          }
+          localObject2 = localObject1;
+          if (localObject1 == null)
+          {
+            localObject2 = localObject1;
+            if (localvgv2 != null)
+            {
+              localObject1 = a(localvgv2, false);
+              return localObject1;
+            }
+          }
+        }
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+        QCirclePluginQualityReporter.report(new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_load_result").setRetCode(5L));
+        ILoadPluginDelegate.disPatchCallback(5, "un know exception");
+        QLog.i("QCIRCLE_PLUGIN", 1, "createMangerUpdate():there is no plugin can be used");
+        return null;
+      }
+      catch (ExecutionException localExecutionException)
+      {
+        localExecutionException.printStackTrace();
+        continue;
+      }
+      return localObject2;
+      label183:
+      vgv localvgv1 = null;
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = ThreadManagerExecutor.getExecutorService(192);
+    this.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new vgq(this, "Q_CIRCLE_PLUGIN_ASSET", "", "", -1));
+    String str1 = AppConstants.SDCARD_ROOT + "/" + "qcircle-plugin.jpg";
+    String str2 = AppConstants.SDCARD_ROOT + "/" + "qcircle-pluginmanager.jpg";
+    this.jdField_b_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new vgq(this, "Q_CIRCLE_PLUGIN_TEST", str1, str2, -2));
   }
 }
 

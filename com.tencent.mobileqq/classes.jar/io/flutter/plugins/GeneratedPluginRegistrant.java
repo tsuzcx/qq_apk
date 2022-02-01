@@ -6,7 +6,7 @@ import com.idlefish.flutterboost.FlutterBoostPlugin;
 import com.qflutter.log.qflutter_log.QflutterLogPlugin;
 import com.qflutter.native_resources.QFlutterSkinEnginePlugin;
 import com.qflutter.qflutter_network_image.QflutterNetworkImagePlugin;
-import com.qflutter.qqcircle.TencentQQCirclePlugin;
+import com.qflutter.qqface.QQFacePlugin;
 import com.qflutter.resource_loader.QFlutterResourceLoaderPlugin;
 import com.qflutter.video.QflutterVideoviewPlugin;
 import io.flutter.embedding.engine.FlutterEngine;
@@ -28,7 +28,7 @@ public final class GeneratedPluginRegistrant
     QflutterLogPlugin.registerWith(localShimPluginRegistry.registrarFor("com.qflutter.log.qflutter_log.QflutterLogPlugin"));
     QFlutterSkinEnginePlugin.registerWith(localShimPluginRegistry.registrarFor("com.qflutter.native_resources.QFlutterSkinEnginePlugin"));
     QflutterNetworkImagePlugin.registerWith(localShimPluginRegistry.registrarFor("com.qflutter.qflutter_network_image.QflutterNetworkImagePlugin"));
-    TencentQQCirclePlugin.registerWith(localShimPluginRegistry.registrarFor("com.qflutter.qqcircle.TencentQQCirclePlugin"));
+    paramFlutterEngine.getPlugins().add(new QQFacePlugin());
     QFlutterResourceLoaderPlugin.registerWith(localShimPluginRegistry.registrarFor("com.qflutter.resource_loader.QFlutterResourceLoaderPlugin"));
   }
 }

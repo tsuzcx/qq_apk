@@ -1,24 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import IMMsgBodyPack.MsgType0x210;
+import OnlinePushPack.MsgInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class abze
-  extends aohf
+public class abze
+  implements abzb
 {
-  abze(abzb paramabzb) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString)
+  public MessageRecord a(abxc paramabxc, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
-    if (paramBoolean)
-    {
-      if (paramInt == 1)
-      {
-        asvf.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), true);
-        return;
-      }
-      asvf.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), false);
-      return;
-    }
-    asvf.a().a(this.a.app, BaseApplicationImpl.getApplication(), this.a.app.getCurrentAccountUin(), false);
+    bblf.a(paramabxc.a().getMsgHandler(), paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
+    return null;
   }
 }
 

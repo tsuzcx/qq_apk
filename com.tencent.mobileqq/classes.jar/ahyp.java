@@ -1,13 +1,48 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ahyp
-  implements ahyf
+  implements TextView.OnEditorActionListener
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public ahyp(SearchBaseActivity paramSearchBaseActivity) {}
+  
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramahed.d(paramagjk, paramahfq, paramString);
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramInt != 3)
+    {
+      bool1 = bool2;
+      if (paramKeyEvent != null)
+      {
+        bool1 = bool2;
+        if (paramKeyEvent.getKeyCode() != 66) {}
+      }
+    }
+    else
+    {
+      paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+      if ((!TextUtils.isEmpty(paramTextView)) && (!TextUtils.isEmpty(paramTextView.trim()))) {
+        break label102;
+      }
+      this.a.a(true, this.a.jdField_a_of_type_AndroidWidgetEditText);
+      QQToast.a(this.a.getApplicationContext(), amtj.a(2131712720), 0).a();
+      bool1 = true;
+    }
+    return bool1;
+    label102:
+    if (!TextUtils.isEmpty(paramTextView))
+    {
+      bbgk.a("add_page", "search", "clk_search_all", this.a.h + 1, 0, new String[] { "", "", paramTextView, "" });
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramTextView, false);
+    }
+    return true;
   }
 }
 

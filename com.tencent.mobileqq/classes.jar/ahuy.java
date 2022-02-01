@@ -1,26 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.bless.BlessTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 class ahuy
-  implements View.OnClickListener
+  extends bgod
 {
-  ahuy(ahux paramahux) {}
+  ahuy(ahux paramahux, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void onCancel(bgoe parambgoe)
   {
-    ahvc localahvc = (ahvc)agej.a(paramView);
-    if (paramView == localahvc.jdField_a_of_type_AndroidWidgetFrameLayout) {
-      this.a.b(localahvc);
-    }
-    for (;;)
+    ahux.a(this.jdField_a_of_type_Ahux).remove(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onDone(bgoe parambgoe)
+  {
+    ahux.a(this.jdField_a_of_type_Ahux).remove(this.jdField_a_of_type_JavaLangString);
+    if (parambgoe.a() == 3)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView == localahvc.jdField_a_of_type_AndroidWidgetRelativeLayout) {
-        this.a.a(localahvc);
+      if (QLog.isColorLevel()) {
+        QLog.d("BlessManager", 2, "download finished " + this.b);
+      }
+      if ((this.b != null) && (ahux.a(this.jdField_a_of_type_Ahux) != null) && (this.b.equals(ahux.a(this.jdField_a_of_type_Ahux).starVideo))) {
+        ahux.b(this.jdField_a_of_type_Ahux);
       }
     }
+    while (!QLog.isColorLevel())
+    {
+      return;
+      ahux.a(this.jdField_a_of_type_Ahux);
+      return;
+    }
+    QLog.d("BlessManager", 2, "downloadFile failed: " + parambgoe.b + " code=" + parambgoe.a);
   }
 }
 

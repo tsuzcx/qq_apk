@@ -1,13 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.hotpic.HotPicData;
 
 public class olf
-  implements bljb
+  implements auis
 {
-  public olf(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public olf(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void onDismiss()
+  public void a(HotPicData paramHotPicData)
   {
-    ReadInJoySettingActivity.c(this.a).cancel();
+    if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
+      ((ReadInJoyDeliverUGCActivity)this.a).a(paramHotPicData);
+    }
   }
 }
 

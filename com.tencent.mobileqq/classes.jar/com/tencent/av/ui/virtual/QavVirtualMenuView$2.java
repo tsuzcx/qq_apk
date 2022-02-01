@@ -5,6 +5,7 @@ import com.tencent.aekit.api.standard.ai.AIManager;
 import com.tencent.av.opengl.effects.AEFilterSupport;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.ttpicmodule.module_human_segment.PTHumanSegmenter;
+import lou;
 
 class QavVirtualMenuView$2
   implements Runnable
@@ -14,19 +15,19 @@ class QavVirtualMenuView$2
   public void run()
   {
     long l;
-    if (AEFilterSupport.a() > 3) {
+    if ((lou.b()) && (AEFilterSupport.a() > 3)) {
       l = SystemClock.elapsedRealtime();
     }
     try
     {
       AIManager.installDetector(PTHumanSegmenter.class);
-      label17:
+      label23:
       QLog.i(QavVirtualMenuView.a(this.this$0), 1, "preload PTHumanSegmenter, cost[" + (SystemClock.elapsedRealtime() - l) + "]");
       return;
     }
     catch (Throwable localThrowable)
     {
-      break label17;
+      break label23;
     }
   }
 }

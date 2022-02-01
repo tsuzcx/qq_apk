@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
 
 public class alst
-  implements DialogInterface.OnClickListener
+  implements alsz
 {
-  public alst(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public alst(CmGameDebugView paramCmGameDebugView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.a("608", "7", "2", true);
-    EditLocalVideoActivity.a(this.a, "an_yuanshipin");
+    this.a.b();
   }
 }
 

@@ -1,17 +1,32 @@
+import android.os.Bundle;
 import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
 
 class gh
   implements EIPCResultCallback
 {
-  gh(gg paramgg) {}
+  gh(gf paramgf) {}
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (paramEIPCResult.code == 0)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    switch (paramEIPCResult.data.getInt("font_type"))
     {
-      gg.a(this.a);
-      this.a.notifyObservers(Integer.valueOf(2));
+    default: 
+      bool1 = bool2;
+    }
+    for (;;)
+    {
+      if (bool1)
+      {
+        gf.b(this.a);
+        this.a.notifyObservers(Integer.valueOf(1));
+      }
+      return;
+      bool1 = gf.a(this.a, false);
+      continue;
+      bool1 = gf.b(this.a, false);
     }
   }
 }

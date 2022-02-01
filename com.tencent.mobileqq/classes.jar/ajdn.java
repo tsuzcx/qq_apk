@@ -1,18 +1,18 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajdn
-  implements MessageQueue.IdleHandler
+class ajdn
+  implements View.OnClickListener
 {
-  public ajdn(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  ajdn(ajdm paramajdm) {}
   
-  public boolean queueIdle()
+  public void onClick(View paramView)
   {
-    this.a.a.requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
-    return false;
+    this.a.a.a.b.performLongClick();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

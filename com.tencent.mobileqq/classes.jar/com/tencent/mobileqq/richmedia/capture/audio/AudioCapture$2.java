@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.audio;
 
 import android.media.AudioRecord;
-import bbet;
+import azzu;
 import com.tencent.qphone.base.util.QLog;
 
 class AudioCapture$2
@@ -21,9 +21,9 @@ class AudioCapture$2
       try
       {
         this.this$0.a.startRecording();
-        this.this$0.b(true);
+        this.this$0.a(true);
         if (AudioCapture.a(this.this$0) != null) {
-          AudioCapture.a(this.this$0).c();
+          AudioCapture.a(this.this$0).onAudioInit();
         }
         if (this.this$0.a.getState() == 0)
         {
@@ -32,7 +32,7 @@ class AudioCapture$2
           }
           if (AudioCapture.a(this.this$0) != null)
           {
-            AudioCapture.a(this.this$0).a(-4);
+            AudioCapture.a(this.this$0).onAudioError(-4);
             return;
           }
         }
@@ -50,13 +50,13 @@ class AudioCapture$2
         this.this$0.a.release();
         if (AudioCapture.a(this.this$0) != null)
         {
-          AudioCapture.a(this.this$0).a(-4);
+          AudioCapture.a(this.this$0).onAudioError(-4);
           return;
           localException1 = localException1;
           QLog.e("AudioCapture", 2, localException1, new Object[0]);
           if (AudioCapture.a(this.this$0) != null)
           {
-            AudioCapture.a(this.this$0).a(-4);
+            AudioCapture.a(this.this$0).onAudioError(-4);
             return;
           }
         }

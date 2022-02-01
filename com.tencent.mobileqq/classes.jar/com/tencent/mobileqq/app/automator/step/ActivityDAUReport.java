@@ -124,9 +124,9 @@ public class ActivityDAUReport
     //   265: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   268: invokestatic 151	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   271: invokestatic 157	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   274: invokestatic 162	bdmc:a	(Landroid/content/Context;)Lbdmc;
+    //   274: invokestatic 163	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   277: aconst_null
-    //   278: ldc 164
+    //   278: ldc 165
     //   280: iconst_1
     //   281: aload 5
     //   283: getfield 132	com/tencent/mobileqq/data/ActivityDAUInfo:displayCount	I
@@ -135,7 +135,7 @@ public class ActivityDAUReport
     //   289: getfield 136	com/tencent/mobileqq/data/ActivityDAUInfo:showTime	J
     //   292: aload 6
     //   294: aconst_null
-    //   295: invokevirtual 167	bdmc:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   295: invokevirtual 169	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   298: goto -253 -> 45
     //   301: astore_2
     //   302: ldc 36
@@ -147,13 +147,13 @@ public class ActivityDAUReport
     //   311: ifeq +75 -> 386
     //   314: ldc 113
     //   316: iconst_2
-    //   317: ldc 169
+    //   317: ldc 171
     //   319: aload_2
-    //   320: invokestatic 172	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   320: invokestatic 174	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   323: goto +63 -> 386
     //   326: aload_3
     //   327: ldc 36
-    //   329: invokevirtual 176	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/Class;)Z
+    //   329: invokevirtual 178	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/Class;)Z
     //   332: pop
     //   333: invokestatic 111	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   336: ifeq +34 -> 370
@@ -166,7 +166,7 @@ public class ActivityDAUReport
     //   348: new 115	java/lang/StringBuilder
     //   351: dup
     //   352: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   355: ldc 178
+    //   355: ldc 180
     //   357: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   360: iload_1
     //   361: invokevirtual 127	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;

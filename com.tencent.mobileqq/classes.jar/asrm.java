@@ -1,14 +1,20 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-
-public class asrm
+public abstract interface asrm
 {
-  public ImageView a;
-  public URLDrawable a;
-  public URLImageView a;
+  public abstract long a();
   
-  public asrm(asrl paramasrl) {}
+  public abstract String a();
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(ashw paramashw);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract String b();
+  
+  public abstract String c();
 }
 
 

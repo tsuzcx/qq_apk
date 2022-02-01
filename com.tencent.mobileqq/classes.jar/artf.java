@@ -1,86 +1,48 @@
-import android.content.ClipData;
-import android.content.ClipData.Item;
-import android.content.ClipDescription;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
-
 public class artf
-  implements Manager
+  extends arti
 {
-  private ClipboardManager jdField_a_of_type_AndroidContentClipboardManager;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public artf(QQAppInterface paramQQAppInterface)
+  public artf(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private ClipboardManager a()
-  {
-    if (this.jdField_a_of_type_AndroidContentClipboardManager == null) {
-      this.jdField_a_of_type_AndroidContentClipboardManager = ((ClipboardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext().getSystemService("clipboard"));
+    super(2, paramString1);
+    this.a = paramString2;
+    this.b = paramString3;
+    this.c = paramString4;
+    this.d = paramString5;
+    if (this.b == null) {
+      this.b = "";
     }
-    return this.jdField_a_of_type_AndroidContentClipboardManager;
-  }
-  
-  private SharedPreferences a()
-  {
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
-      this.jdField_a_of_type_AndroidContentSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+    if (this.e == null) {
+      this.e = "";
     }
-    return this.jdField_a_of_type_AndroidContentSharedPreferences;
   }
   
-  public String a()
+  public boolean equals(Object paramObject)
   {
-    if (Build.VERSION.SDK_INT >= 26)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof artf))
     {
-      long l1 = a().getLong("KEY_LAST_COPY_TIME", 0L);
-      Object localObject = a().getPrimaryClipDescription();
-      if (localObject != null)
+      paramObject = (artf)paramObject;
+      bool1 = bool2;
+      if (this.b.equals(paramObject.b))
       {
-        long l2 = ((ClipDescription)localObject).getTimestamp();
-        long l3 = System.currentTimeMillis();
-        if ((l2 != l1) && (l3 - l2 < 180000L))
-        {
-          a().edit().putLong("KEY_LAST_COPY_TIME", l2).apply();
-          if (a().hasPrimaryClip())
-          {
-            localObject = a().getPrimaryClip();
-            if ((localObject != null) && (((ClipData)localObject).getItemCount() > 0))
-            {
-              localObject = ((ClipData)localObject).getItemAt(0);
-              if (QLog.isColorLevel()) {
-                QLog.d("CopyPromptManager", 2, "origin copy data : " + localObject);
-              }
-              if (localObject != null)
-              {
-                localObject = ((ClipData.Item)localObject).getText();
-                if ((localObject != null) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-                  return String.valueOf(localObject);
-                }
-              }
-            }
-          }
+        bool1 = bool2;
+        if (this.e.equals(paramObject.e)) {
+          bool1 = true;
         }
       }
     }
-    return "";
+    return bool1;
   }
   
-  public void onDestroy()
+  public String toString()
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = null;
+    return this.e + "_" + this.b;
   }
 }
 

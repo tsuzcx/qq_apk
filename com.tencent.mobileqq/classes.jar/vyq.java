@@ -1,15 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleCommentListView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class vyq
-  implements DialogInterface.OnClickListener
+  implements vyx
 {
-  vyq(vyl paramvyl, int paramInt) {}
+  vyq(vyn paramvyn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@Nullable vxd paramvxd, Error paramError)
   {
-    QCircleCommentListView.a(this.jdField_a_of_type_Vyl.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView).a(this.jdField_a_of_type_Vyl.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView.getContext().hashCode(), QCircleCommentListView.a(this.jdField_a_of_type_Vyl.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView), this.jdField_a_of_type_Vyl.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Int, QCircleCommentListView.a(this.jdField_a_of_type_Vyl.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView));
+    if (QLog.isColorLevel()) {
+      QLog.e("MsgTabStoryVideoPreloader", 2, "MsgTabVideoPreloaderDataProvider load video info error", paramError);
+    }
+    this.a.b();
+  }
+  
+  public void a(@Nullable vxd paramvxd, @NonNull List<StoryVideoItem> paramList)
+  {
+    if (!paramList.isEmpty())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MsgTabStoryVideoPreloader", 2, "start download video list, list = " + paramList.size() + "\n" + paramList);
+      }
+      vyn.a(this.a, paramList);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("MsgTabStoryVideoPreloader", 2, "can not find first unread video");
+    }
+    this.a.b();
   }
 }
 

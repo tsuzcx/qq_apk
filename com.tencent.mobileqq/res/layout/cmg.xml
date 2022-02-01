@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="40.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView android:id="@id/ms6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.biz.pubaccount.readinjoy.view.ucrop.OverlayView android:id="@id/o10" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</merge>
+    <ImageView android:id="@id/my8" android:layout_width="10.0dip" android:layout_height="5.0dip" android:layout_marginRight="14.0dip" android:src="@drawable/gf_" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <FrameLayout android:background="@drawable/gg4" android:layout_width="wrap_content" android:layout_height="35.0dip" android:layout_marginTop="-0.5dip" android:layout_below="@id/my8" android:layout_alignParentRight="true">
+        <TextView android:textSize="@dimen/ayk" android:textColor="#ffffffff" android:layout_gravity="center" android:id="@id/kbr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="9.5dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="9.5dip" android:text="@string/xkm" />
+    </FrameLayout>
+</RelativeLayout>

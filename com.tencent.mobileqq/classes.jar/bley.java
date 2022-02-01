@@ -1,46 +1,36 @@
-public final class bley
-  implements Cloneable
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class bley
+  extends RemoteCommand
 {
-  private int a;
+  private static blez jdField_a_of_type_Blez;
+  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
   
-  public bley(int paramInt)
+  public bley()
   {
-    this.a = paramInt;
+    super("weiyun.notify_state");
   }
   
-  public bley(byte[] paramArrayOfByte)
+  public void a(blez paramblez)
   {
-    this(paramArrayOfByte, 0);
+    jdField_a_of_type_Blez = paramblez;
   }
   
-  public bley(byte[] paramArrayOfByte, int paramInt)
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    this.a = (paramArrayOfByte[(paramInt + 1)] << 8 & 0xFF00);
-    this.a += (paramArrayOfByte[paramInt] & 0xFF);
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public byte[] a()
-  {
-    return new byte[] { (byte)(this.a & 0xFF), (byte)((this.a & 0xFF00) >> 8) };
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof bley))) {}
-    while (this.a != ((bley)paramObject).a()) {
-      return false;
+    paramOnInvokeFinishLinstener = new Bundle();
+    int i = paramBundle.getInt("param_state", jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+    if (i != jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())
+    {
+      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(i);
+      if (jdField_a_of_type_Blez != null) {
+        jdField_a_of_type_Blez.a(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      }
     }
-    return true;
-  }
-  
-  public int hashCode()
-  {
-    return this.a;
+    return paramOnInvokeFinishLinstener;
   }
 }
 

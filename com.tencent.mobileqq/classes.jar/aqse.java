@@ -1,18 +1,32 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-final class aqse
-  implements DialogInterface.OnClickListener
+public class aqse
+  implements RadioGroup.OnCheckedChangeListener
 {
-  aqse(bhpc parambhpc, Context paramContext) {}
+  public aqse(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_Bhpc.isShowing()) {
-      this.jdField_a_of_type_Bhpc.dismiss();
+    if (paramInt == 2131365816) {
+      DBFixConfigActivity.a = 1;
     }
-    aquy.a(this.jdField_a_of_type_AndroidContentContext, true);
+    for (;;)
+    {
+      this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(DBFixManager.b, 0).edit().putInt(this.jdField_a_of_type_JavaLangString + DBFixManager.c, DBFixConfigActivity.a).commit();
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+      if (paramInt == 2131365335) {
+        DBFixConfigActivity.a = 2;
+      }
+    }
   }
 }
 

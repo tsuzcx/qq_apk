@@ -6,6 +6,15 @@
       "stickerGroupName": "默认",
       "stickers": [
         {
+          "stickerID":"blur",
+          "stickerName":"blur",
+          "thumbURL":"https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_blur.png",
+          "preDownload":1,
+          "resourceMD5":"8ff52bcd99b305e109a5f88f559b427d",
+          "resourceURL":"https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/sticker/blur.zip",
+          "backgroundColorAdjustable":0
+        },
+        {
           "stickerID": "fenxiang",
           "stickerName": "fenxiang",
           "thumbURL": "https://downv6.qq.com/shadow_qqcamera/AEEditorSticker/cover/slt_fenxiang.png",

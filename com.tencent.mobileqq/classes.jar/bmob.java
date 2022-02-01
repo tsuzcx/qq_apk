@@ -1,12 +1,10 @@
+import android.view.MotionEvent;
+
 public abstract interface bmob
 {
-  public abstract void a();
+  public abstract boolean a(MotionEvent paramMotionEvent);
   
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

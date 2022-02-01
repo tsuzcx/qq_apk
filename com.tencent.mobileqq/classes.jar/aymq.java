@@ -1,23 +1,50 @@
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 
 class aymq
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  aymq(aymj paramaymj) {}
+  aymq(aymp paramaymp) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://buluo.qq.com/mobile/xxq_setting.html?_wv=1027&uin=" + this.a.a.app.c());
-    localIntent.putExtra("reqType", 1);
-    this.a.a.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramIntent == null) {}
+    do
+    {
+      return;
+      paramContext = this.a.mRuntime.a();
+    } while ((paramContext == null) || (paramContext.isFinishing()));
+    paramIntent = this.a.mRuntime.a(this.a.mRuntime.a());
+    if ((paramIntent != null) && ((paramIntent instanceof bgzu)))
+    {
+      paramIntent = ((bgzu)paramIntent).getCurrentUrl();
+      if ((TextUtils.isEmpty(paramIntent)) || (!paramIntent.contains("entryId"))) {
+        break label232;
+      }
+    }
+    label232:
+    for (this.a.a = bjnd.a(bjnd.a(paramIntent), "entryId", 2);; this.a.a = 2)
+    {
+      paramContext.finish();
+      paramContext = new Intent(this.a.mRuntime.a(), FriendProfileCardActivity.class);
+      paramIntent = new ProfileActivity.AllInOne(this.a.mRuntime.a().getCurrentAccountUin(), 0);
+      if (this.a.a == 0) {
+        paramContext.setFlags(67108864);
+      }
+      paramContext.putExtra("AllInOne", paramIntent);
+      this.a.mRuntime.a().startActivity(paramContext);
+      paramContext = new Intent();
+      paramContext.putExtra("closeSpecialLogic", true);
+      this.a.mRuntime.a().setResult(-1, paramContext);
+      this.a.mRuntime.a().finish();
+      return;
+    }
   }
 }
 

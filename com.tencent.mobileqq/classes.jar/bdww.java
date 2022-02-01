@@ -1,28 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
 
-final class bdww
-  implements DialogInterface.OnClickListener
+public class bdww
+  implements bhho
 {
-  bdww(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
+  public bdww(NewTroopContactView paramNewTroopContactView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bdws.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    bdws.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    bdws.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    bdws.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, SplashActivity.class);
-    paramDialogInterface.putExtra("tab_index", MainFragment.b);
-    paramDialogInterface.setFlags(67108864);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
-  }
+  public void afterDraw(Bundle paramBundle) {}
+  
+  public void beforeDraw(Bundle paramBundle) {}
 }
 
 

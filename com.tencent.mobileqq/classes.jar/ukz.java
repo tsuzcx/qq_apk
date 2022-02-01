@@ -1,20 +1,35 @@
+import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.ViewStub;
 
-public class ukz
+public abstract class ukz<T>
+  extends uky<T>
 {
-  public int a = 0;
-  public long a;
-  public View a;
-  public ViewGroup a;
-  public String a;
-  public ukp a;
-  public ulc a;
-  public uld a;
-  public ulm a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  protected int c = 1;
+  
+  public ukz(Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  protected View a(int paramInt)
+  {
+    if (this.a != null) {
+      return this.a.findViewById(paramInt);
+    }
+    return null;
+  }
+  
+  public void a(ViewStub paramViewStub)
+  {
+    paramViewStub.setLayoutResource(b());
+    this.a = paramViewStub.inflate();
+    e();
+  }
+  
+  protected abstract int b();
+  
+  protected abstract void e();
 }
 
 

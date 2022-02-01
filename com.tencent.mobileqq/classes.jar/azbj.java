@@ -1,8 +1,16 @@
-public abstract interface azbj
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+public class azbj
+  implements Animation.AnimationListener
 {
-  public abstract void a();
+  public void a(Animation paramAnimation, float paramFloat) {}
   
-  public abstract void b();
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

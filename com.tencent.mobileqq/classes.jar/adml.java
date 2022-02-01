@@ -1,8 +1,16 @@
-import com.tencent.mfsdk.collector.ResultObject;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
 
-public abstract interface adml
+public class adml
+  extends anav
 {
-  public abstract boolean a(ResultObject paramResultObject, admm paramadmm);
+  public adml(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
+  
+  public void a()
+  {
+    if (this.a.jdField_a_of_type_Boolean) {
+      H5MagicPlayerActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, "{code:0}");
+    }
+  }
 }
 
 

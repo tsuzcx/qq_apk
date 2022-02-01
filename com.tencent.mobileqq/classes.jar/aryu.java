@@ -1,16 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity.7.1;
+import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
 
-class aryu
-  implements DialogInterface.OnClickListener
+public class aryu
+  extends asbj
 {
-  aryu(aryn paramaryn) {}
+  public aryu(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onFileCome(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    paramDialogInterface.cancel();
-    aryn.a(this.a).c();
+    super.onFileCome(paramLong1, paramLong2, paramString, paramInt);
+    this.a.a.a();
+  }
+  
+  protected void onNeedVerifyPwdFailed(int paramInt, String paramString)
+  {
+    if (!FileAssistantActivity.a(this.a)) {
+      aszk.a(paramString);
+    }
+  }
+  
+  protected void onNeedVerifyPwdSuccess(boolean paramBoolean)
+  {
+    if (FileAssistantActivity.a(this.a)) {
+      return;
+    }
+    this.a.runOnUiThread(new FileAssistantActivity.7.1(this, paramBoolean));
   }
 }
 

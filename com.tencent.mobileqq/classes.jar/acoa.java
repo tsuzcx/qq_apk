@@ -1,76 +1,64 @@
-import com.tencent.ad.tangram.canvas.resource.AdResourceAdapter;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qwallet.plugin.PatternLockUtils;
 
 public class acoa
-  implements AdResourceAdapter
+  implements View.OnClickListener
 {
-  public int getAppDescViewId()
-  {
-    return 2131362820;
-  }
+  public acoa(AccountManageActivity paramAccountManageActivity, Dialog paramDialog) {}
   
-  public int getAppDownloadButtonViewId()
+  public void onClick(View paramView)
   {
-    return 2131365710;
-  }
-  
-  public int getAppLogoViewId()
-  {
-    return 2131362833;
-  }
-  
-  public int getAppNameViewId()
-  {
-    return 2131362834;
-  }
-  
-  public int getAppSizeViewId()
-  {
-    return 2131362840;
-  }
-  
-  public int getArkWindowLayoutId()
-  {
-    return 2131559219;
-  }
-  
-  public int getBottomFixedButtonId()
-  {
-    return 2131367436;
-  }
-  
-  public int getCanvasContentId()
-  {
-    return 2131364176;
-  }
-  
-  public int getCanvasFixedButtonLayoutId()
-  {
-    return 2131559220;
-  }
-  
-  public int getCanvasLayoutId()
-  {
-    return 2131559221;
-  }
-  
-  public int getCloseViewId()
-  {
-    return 2131364584;
-  }
-  
-  public int getCommonFixedButtonContainerId()
-  {
-    return 2131367435;
-  }
-  
-  public int getFloatingProgressBarId()
-  {
-    return 2131366813;
-  }
-  
-  public int getTopFixedButtonId()
-  {
-    return 2131367453;
+    QLog.flushLog();
+    boolean bool = ((CheckBox)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364514)).isChecked();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d = bool;
+    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getString(2131717612), "qqsetting_receivemsg_whenexit_key", bool);
+    SyncService.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d);
+    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.getMessageFacade().getUnreadMsgsNum();
+    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.getCallFacade().a();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity().getSharedPreferences("unreadcount", 4).edit();
+    ((SharedPreferences.Editor)localObject).putInt("unread", i + j);
+    ((SharedPreferences.Editor)localObject).commit();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.i();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.bReceiveMsgOnExit = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d;
+    com.tencent.mobileqq.activity.home.MainFragment.c = true;
+    if (QQPlayerService.a())
+    {
+      localObject = new Intent();
+      ((Intent)localObject).setAction("qqplayer_exit_action");
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity().sendBroadcast((Intent)localObject);
+    }
+    PatternLockUtils.setFirstEnterAfterLoginState(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.getCurrentAccountUin(), true);
+    localObject = new Intent("QQ_ACTION_MENU_QUIT");
+    ((Intent)localObject).setClass(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), SplashActivity.class);
+    ((Intent)localObject).addFlags(67108864);
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.startActivity((Intent)localObject);
+      label275:
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app, "CliOper", "", "", "0X800932A", "0X800932A", 0, 0, "0", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label275;
+    }
   }
 }
 

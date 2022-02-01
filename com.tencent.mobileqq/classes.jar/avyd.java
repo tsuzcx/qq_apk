@@ -1,65 +1,38 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.ListView;
 
-class avyd
-  implements INetInfoHandler
+public class avyd
+  extends avze
 {
-  avya a;
+  public avyd(MultiAIOItemFragment paramMultiAIOItemFragment, AbsListView.OnScrollListener paramOnScrollListener, ListView paramListView) {}
   
-  public avyd(avya paramavya1, avya paramavya2)
+  public void b(int paramInt)
   {
-    this.a = paramavya2;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void onNetMobile2None()
-  {
-    avxz.b("onNetMobile2None");
-    if (this.a != null) {
-      avya.c(this.a);
+    super.b(paramInt);
+    boolean bool;
+    switch (paramInt)
+    {
+    default: 
+      bool = false;
+      paramInt = 0;
     }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    avxz.b("onNetMobile2Wifi");
-    if (this.a != null) {
-      avya.c(this.a);
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    avxz.b("onNetNone2Mobile");
-    if (this.a != null) {
-      avya.c(this.a);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    avxz.b("onNetNone2Wifi");
-    if (this.a != null) {
-      avya.c(this.a);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    avxz.b("onNetWifi2Mobile");
-    if (this.a != null) {
-      avya.c(this.a);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    avxz.b("onNetWifi2None");
-    if (this.a != null) {
-      avya.c(this.a);
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScrollStateChanged(this.jdField_a_of_type_ComTencentWidgetListView, paramInt);
+      if ((this.jdField_a_of_type_ComTencentWidgetListView instanceof ChatXListView))
+      {
+        ChatXListView localChatXListView = (ChatXListView)this.jdField_a_of_type_ComTencentWidgetListView;
+        int[] arrayOfInt = MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment);
+        localChatXListView.setDisableLayout(bool, arrayOfInt[0], arrayOfInt[1]);
+      }
+      return;
+      bool = false;
+      paramInt = 1;
+      continue;
+      paramInt = 2;
+      bool = true;
     }
   }
 }

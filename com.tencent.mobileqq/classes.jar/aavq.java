@@ -1,43 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.RspBody;
-import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.TransFileRspBody;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.device.msg.data.MessageForDevShortVideo;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public abstract class aavq
-  extends nkq
+public final class aavq
+  implements Parcelable.Creator<MessageForShortVideo>
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public MessageForDevShortVideo a(Parcel paramParcel)
   {
-    b(paramInt, paramArrayOfByte, paramBundle);
+    MessageForDevShortVideo localMessageForDevShortVideo = new MessageForDevShortVideo();
+    localMessageForDevShortVideo.uuid = paramParcel.readString();
+    localMessageForDevShortVideo.md5 = paramParcel.readString();
+    localMessageForDevShortVideo.videoFileName = paramParcel.readString();
+    localMessageForDevShortVideo.videoFileSize = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileFormat = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileTime = paramParcel.readInt();
+    localMessageForDevShortVideo.thumbWidth = paramParcel.readInt();
+    localMessageForDevShortVideo.thumbHeight = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileStatus = paramParcel.readInt();
+    localMessageForDevShortVideo.videoFileProgress = paramParcel.readInt();
+    localMessageForDevShortVideo.fileType = paramParcel.readInt();
+    localMessageForDevShortVideo.thumbMD5 = paramParcel.readString();
+    localMessageForDevShortVideo.fileSource = paramParcel.readString();
+    localMessageForDevShortVideo.lastModified = paramParcel.readLong();
+    return localMessageForDevShortVideo;
   }
   
-  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d9.TransFileRspBody paramTransFileRspBody, Bundle paramBundle);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public MessageForDevShortVideo[] a(int paramInt)
   {
-    if (paramInt != 0)
-    {
-      a(false, paramInt, null, paramBundle);
-      return;
-    }
-    oidb_0x6d9.RspBody localRspBody = new oidb_0x6d9.RspBody();
-    try
-    {
-      localRspBody.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d9.TransFileRspBody)localRspBody.trans_file_rsp.get();
-      if (paramArrayOfByte.int32_ret_code.has())
-      {
-        a(true, 0, paramArrayOfByte, paramBundle);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, -1, null, paramBundle);
-      return;
-    }
-    a(false, -1, null, paramBundle);
+    return new MessageForDevShortVideo[paramInt];
   }
 }
 

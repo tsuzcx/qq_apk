@@ -1,53 +1,24 @@
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class rqq
-  extends LinearLayoutManager
+class rqq
+  implements URLDrawable.URLDrawableListener
 {
-  private VideoFeedsRecyclerView a;
+  rqq(rqj paramrqj) {}
   
-  public rqq(Context paramContext, VideoFeedsRecyclerView paramVideoFeedsRecyclerView, int paramInt, boolean paramBoolean)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super(paramContext, paramInt, paramBoolean);
-    this.a = paramVideoFeedsRecyclerView;
+    rqj.b(this.a);
   }
   
-  private boolean a(View paramView)
-  {
-    if (paramView == null) {}
-    int i;
-    int j;
-    do
-    {
-      return false;
-      i = this.a.getChildViewHolder(paramView).getLayoutPosition();
-      j = this.a.b();
-    } while ((j < 0) || ((i != j + 1) && (i != j - 1)));
-    return true;
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public int getExtraLayoutSpace(RecyclerView.State paramState)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return super.getExtraLayoutSpace(paramState) + 200;
-  }
-  
-  public void removeAndRecycleView(View paramView, RecyclerView.Recycler paramRecycler)
-  {
-    if (!a(paramView)) {
-      super.removeAndRecycleView(paramView, paramRecycler);
-    }
-  }
-  
-  public void removeAndRecycleViewAt(int paramInt, RecyclerView.Recycler paramRecycler)
-  {
-    if (!a(getChildAt(paramInt))) {
-      super.removeAndRecycleViewAt(paramInt, paramRecycler);
-    }
+    paramURLDrawable = bfvo.b(paramURLDrawable.getCurrDrawable());
+    rqj.a(this.a, paramURLDrawable, rqj.a(this.a).e);
   }
 }
 

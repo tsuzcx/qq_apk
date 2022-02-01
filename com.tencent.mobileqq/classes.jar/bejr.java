@@ -1,18 +1,33 @@
-import java.util.List;
-import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfoResult;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import org.json.JSONObject;
 
 public class bejr
-  implements anui
+  implements bezd
 {
-  public void a(boolean paramBoolean, String paramString1, String paramString2, List<oidb_0xe61.BeancurdCubeInfoResult> paramList) {}
+  public bejr(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (paramInt == 0)
+    this.a.o();
+    if ((paramJSONObject != null) && (paramJSONObject.has("retcode")))
     {
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (String)paramObject[0], (String)paramObject[1], (List)paramObject[2]);
+      paramInt = paramJSONObject.optInt("retcode");
+      if (paramInt == 0) {
+        this.a.j();
+      }
     }
+    else
+    {
+      return;
+    }
+    if (paramInt == 111000)
+    {
+      QQToast.a(this.a.getActivity(), 2131696907, 0).a();
+      return;
+    }
+    QQToast.a(this.a.getActivity(), 2131696967, 0).a();
   }
 }
 

@@ -1,52 +1,24 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
+import org.json.JSONObject;
 
 class bhqa
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  bhqa(bhpy parambhpy, DialogInterface.OnClickListener paramOnClickListener) {}
+  bhqa(bhpw parambhpw, SdkAuthorize.AuthorizeResponse paramAuthorizeResponse, JSONObject paramJSONObject) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bhpy.hideSoftInputFromWindow();
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
-    {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bhpy, 0);
-      if (this.jdField_a_of_type_Bhpy.c)
-      {
-        if (!this.jdField_a_of_type_Bhpy.jdField_a_of_type_Boolean) {
-          break label100;
-        }
-        this.jdField_a_of_type_Bhpy.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bhpy.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpy.c = false;
-      try
-      {
-        if (this.jdField_a_of_type_Bhpy.isShowing()) {
-          this.jdField_a_of_type_Bhpy.dismiss();
-        }
-        label92:
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        label100:
-        this.jdField_a_of_type_Bhpy.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bhpy.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
-      }
-      catch (Exception localException)
-      {
-        break label92;
-      }
-    }
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Bhpw.a.a(this.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse.ret.get(), this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhqa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 public abstract interface mho
 {
-  public abstract void a(long paramLong);
+  public abstract void a();
   
-  public abstract void a(long paramLong, mii parammii);
+  public abstract void b();
 }
 
 

@@ -7,8 +7,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build.VERSION;
-import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.telephony.PhoneStateListener;
@@ -40,6 +38,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
+import org.json.JSONObject;
 
 public class TPReportManager
   implements ITPBusinessReportManager, ITPPluginBase
@@ -65,15 +64,14 @@ public class TPReportManager
   private int mDownloadType = 0;
   private String mErrorCode = "0";
   private TPReportManager.EventHandler mEventHandler;
-  private final Object mExitLock = new Object();
   private String mFlowId = "";
   private TPGlobalEventNofication.OnGlobalEventChangeListener mGlobalEventListener = new TPReportManager.3(this);
   private boolean mIsBuffering = false;
-  private boolean mIsExit = false;
   private boolean mIsPlayDone = true;
   private boolean mIsSeeking = false;
   private boolean mIsUseP2P = false;
   private int mLastEvent = 0;
+  private Looper mLooper;
   private long mMediaDurationMs = 0L;
   private int mMediaRate = 0;
   private String mMediaResolution = "";
@@ -87,15 +85,15 @@ public class TPReportManager
   private TPReportManager.IReportHandler mReportHandler = new TPReportManager.DefaultReportHandler(this);
   private TPDefaultReportInfo mReportInfoGetter = null;
   private TPReportParams mReportParams = null;
-  private HandlerThread mReportThread;
   private int mSeekBufferingCount = 0;
   private int mSeekBufferingDuration = 0;
   private int mSignalStrength = 0;
   private PhoneStateListener myListener;
   
-  public TPReportManager(Context paramContext)
+  public TPReportManager(Context paramContext, Looper paramLooper)
   {
     this.mContext = paramContext.getApplicationContext();
+    this.mLooper = paramLooper;
   }
   
   private String getDeviceResolution()
@@ -245,22 +243,9 @@ public class TPReportManager
     return String.format("Android %s", new Object[] { TPSystemInfo.getOsVersion() });
   }
   
-  private void handleReportThreadExit()
-  {
-    TPLogUtil.d("TPReportManager", "handleReportThreadExit");
-    synchronized (this.mExitLock)
-    {
-      this.mIsExit = true;
-      this.mExitLock.notify();
-      return;
-    }
-  }
-  
   private void init()
   {
-    this.mReportThread = new HandlerThread("TP-ReportThread");
-    this.mReportThread.start();
-    this.mEventHandler = new TPReportManager.EventHandler(this, this.mReportThread.getLooper());
+    this.mEventHandler = new TPReportManager.EventHandler(this, this.mLooper);
     this.mReportParams = new TPReportParams();
     signalStrengthRegister();
     TPGlobalEventNofication.addEventListener(this.mGlobalEventListener);
@@ -409,14 +394,16 @@ public class TPReportManager
     } while (this.mIsSeeking);
     if (this.mParamRecord.startPlayTimeMs > 0L)
     {
-      TPReportManager.ParamRecord localParamRecord = this.mParamRecord;
-      localParamRecord.playDurationMs += (int)(System.currentTimeMillis() - this.mParamRecord.startPlayTimeMs);
+      localObject = this.mParamRecord;
+      ((TPReportManager.ParamRecord)localObject).playDurationMs += (int)(System.currentTimeMillis() - this.mParamRecord.startPlayTimeMs);
       this.mParamRecord.startPlayTimeMs = 0L;
     }
     this.mParamRecord.startBufferingTimeMs = getMapValueLong(paramMap, "stime", System.currentTimeMillis());
     this.mCurBufferingParams = this.mReportParams.createBufferingOnceParams();
     this.mCurBufferingParams.starTimeUnix = this.mParamRecord.startBufferingTimeMs;
     this.mCurBufferingParams.formatInt = getMapValueInteger(paramMap, "format", 0);
+    Object localObject = this.mReportParams.getCommonParams();
+    this.mCurBufferingParams.formatInt = ((TPReportParams.CommonParams)localObject).mediaFormatInt;
     this.mCurBufferingParams.reasonInt = getMapValueInteger(paramMap, "reason", 0);
     this.mCurBufferingParams.lastEventInt = this.mLastEvent;
     this.mCurBufferingParams.sceneInt = this.mPlayScene;
@@ -426,12 +413,31 @@ public class TPReportManager
   
   private void onCdnInfoUpdate(Map<String, Object> paramMap)
   {
+    if (paramMap == null) {}
+    do
+    {
+      return;
+      this.mParamRecord.cdnUrl = getMapValueString(paramMap, "url", "");
+      this.mParamRecord.cdnIp = getMapValueString(paramMap, "cdnip", "");
+      this.mParamRecord.cdnUip = getMapValueString(paramMap, "cdnuip", "");
+    } while ((TextUtils.isEmpty(this.mParamRecord.cdnUrl)) || (!this.mParamRecord.cdnUrl.contains("sid=")));
+    int i = this.mParamRecord.cdnUrl.indexOf("sid=");
+    int j = this.mParamRecord.cdnUrl.indexOf("&", i);
+    TPReportManager.ParamRecord localParamRecord = this.mParamRecord;
+    if (j > -1) {}
+    for (paramMap = this.mParamRecord.cdnUrl.substring(i + 4, j);; paramMap = this.mParamRecord.cdnUrl.substring(i + 4))
+    {
+      localParamRecord.tuid = paramMap;
+      return;
+    }
+  }
+  
+  private void onFirstClipOpen(Map<String, Object> paramMap)
+  {
     if (paramMap == null) {
       return;
     }
-    this.mParamRecord.cdnUrl = getMapValueString(paramMap, "url", "");
-    this.mParamRecord.cdnIp = getMapValueString(paramMap, "cdnip", "");
-    this.mParamRecord.cdnUip = getMapValueString(paramMap, "cdnuip", "");
+    this.mReportParams.getFirstLoadParams().firstOpenTimeUnix = getMapValueLong(paramMap, "stime", System.currentTimeMillis());
   }
   
   private void onFirstPacketRead(Map<String, Object> paramMap)
@@ -439,7 +445,10 @@ public class TPReportManager
     if (paramMap == null) {
       return;
     }
-    this.mReportParams.getLiveExParam().getSyncFrameDurationInt = ((int)(getMapValueLong(paramMap, "stime", System.currentTimeMillis()) - this.mParamRecord.startPrepareTimeMs));
+    TPReportParams.LiveExParam localLiveExParam = this.mReportParams.getLiveExParam();
+    long l = getMapValueLong(paramMap, "stime", System.currentTimeMillis());
+    localLiveExParam.getSyncFrameDurationInt = ((int)(l - this.mParamRecord.startPrepareTimeMs));
+    this.mReportParams.getFirstLoadParams().firstPacketReadTimeUnix = l;
   }
   
   private void onGetCdn(Map<String, Object> paramMap)
@@ -474,28 +483,47 @@ public class TPReportManager
       TPLogUtil.i("TPReportManager", "onHandleHlsTag, tag is not start with #EXT-X-PROGRAM-DATE-TIME:");
       return;
     }
-    paramString = paramString.substring("#EXT-X-PROGRAM-DATE-TIME:".length());
-    paramString = paramString.substring(0, paramString.indexOf('+')).replace('T', ' ');
-    if (TextUtils.isEmpty(paramString))
+    for (;;)
     {
+      try
+      {
+        paramString = paramString.substring("#EXT-X-PROGRAM-DATE-TIME:".length());
+        int i = paramString.indexOf('+');
+        if (i == -1) {
+          continue;
+        }
+        paramString = paramString.substring(0, i).replace('T', ' ');
+      }
+      catch (Exception paramString)
+      {
+        TPLogUtil.e("TPReportManager", paramString);
+        paramString = "";
+        continue;
+      }
+      if (!TextUtils.isEmpty(paramString)) {
+        break label119;
+      }
       TPLogUtil.i("TPReportManager", "onHandleHlsTag , player_m3u8_tag , dataTime is null ");
       return;
+      TPLogUtil.i("TPReportManager", "handleOnPlayerPrivaterHlsM3u8Tag , player_m3u8_tag , tag do not contains time zone");
+      paramString = paramString.replace('T', ' ');
     }
-    l2 = 0L;
     try
     {
+      label119:
       paramString = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(paramString);
-      l1 = l2;
-      if (paramString != null) {
-        l1 = paramString.getTime();
+      if (paramString == null) {
+        break label217;
       }
+      l1 = paramString.getTime();
     }
     catch (Exception paramString)
     {
       for (;;)
       {
+        long l2;
         TPLogUtil.e("TPReportManager", paramString);
-        long l1 = l2;
+        long l1 = 0L;
       }
     }
     l2 = System.currentTimeMillis();
@@ -752,16 +780,34 @@ public class TPReportManager
   private void onProxyInfoUpdate(Map<String, Object> paramMap)
   {
     if (paramMap == null) {}
-    do
+    for (;;)
     {
       return;
       this.mNetworkSpeed = getMapValueInteger(paramMap, "speed", 0);
-      paramMap = this.mParamRecord;
-      paramMap.totalSpeed += this.mNetworkSpeed;
-      paramMap = this.mParamRecord;
-      paramMap.getSpeedCnt += 1;
-    } while (this.mNetworkSpeed <= this.mParamRecord.maxSpeed);
-    this.mParamRecord.maxSpeed = this.mNetworkSpeed;
+      TPReportManager.ParamRecord localParamRecord = this.mParamRecord;
+      localParamRecord.totalSpeed += this.mNetworkSpeed;
+      localParamRecord = this.mParamRecord;
+      localParamRecord.getSpeedCnt += 1;
+      if (this.mNetworkSpeed > this.mParamRecord.maxSpeed) {
+        this.mParamRecord.maxSpeed = this.mNetworkSpeed;
+      }
+      paramMap = getMapValueString(paramMap, "spanId", "");
+      if (!TextUtils.isEmpty(paramMap)) {
+        try
+        {
+          paramMap = new JSONObject(paramMap);
+          if ((paramMap != null) && (paramMap.has("spanId")))
+          {
+            this.mParamRecord.spanId = paramMap.getString("spanId");
+            return;
+          }
+        }
+        catch (Exception paramMap)
+        {
+          TPLogUtil.e("TPReportManager", paramMap);
+        }
+      }
+    }
   }
   
   private void onRenderingStart(Map<String, Object> paramMap)
@@ -941,7 +987,8 @@ public class TPReportManager
     this.mLastEvent = 1;
     this.mCurSeekParams = this.mReportParams.createUserSeekOnceParams();
     this.mCurSeekParams.seekStartTimeUnix = getMapValueLong(paramMap, "stime", System.currentTimeMillis());
-    this.mCurSeekParams.formatInt = getMapValueInteger(paramMap, "format", 0);
+    TPReportParams.CommonParams localCommonParams = this.mReportParams.getCommonParams();
+    this.mCurSeekParams.formatInt = localCommonParams.mediaFormatInt;
     this.mCurSeekParams.startPresentTimeLong = (getMapValueLong(paramMap, "pstime", 0L) / 1000L);
   }
   
@@ -982,40 +1029,7 @@ public class TPReportManager
     TPLogUtil.i("TPReportManager", "release: ");
     signalStrengthUnRegister();
     TPGlobalEventNofication.removeEventListener(this.mGlobalEventListener);
-    if (this.mReportThread != null)
-    {
-      if (Build.VERSION.SDK_INT < 18) {
-        break label56;
-      }
-      this.mReportThread.quitSafely();
-    }
-    for (;;)
-    {
-      this.mReportThread = null;
-      TPLogUtil.i("TPReportManager", "release: end!");
-      return;
-      label56:
-      synchronized (this.mExitLock)
-      {
-        this.mIsExit = false;
-        this.mEventHandler.sendEmptyMessage(100);
-        for (;;)
-        {
-          boolean bool = this.mIsExit;
-          if (!bool) {
-            try
-            {
-              this.mExitLock.wait(5000L, 0);
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              TPLogUtil.e("TPReportManager", localInterruptedException);
-            }
-          }
-        }
-      }
-      this.mReportThread.quit();
-    }
+    TPLogUtil.i("TPReportManager", "release: end!");
   }
   
   private void removeCacheEvent()
@@ -1084,7 +1098,7 @@ public class TPReportManager
     localCommonParams.deviceResolutionString = getDeviceResolution();
     localCommonParams.osVersionString = getOsVersion();
     localCommonParams.p2pVersionString = TPDownloadProxyHelper.getNativeLibVersion();
-    localCommonParams.playerVersionString = "2.5.0.1084";
+    localCommonParams.playerVersionString = "2.8.0.1104";
     localCommonParams.playerTypeInt = this.mPlayerType;
     label270:
     Iterator localIterator;
@@ -1092,7 +1106,7 @@ public class TPReportManager
     {
       paramInt = 1;
       localCommonParams.p2pInt = paramInt;
-      localCommonParams.playerTypeInt = this.mPlayType;
+      localCommonParams.playTypeInt = this.mPlayType;
       if ((this.mReportInfoGetter == null) || (!paramBoolean)) {
         break label548;
       }
@@ -1206,7 +1220,7 @@ public class TPReportManager
         i = 1;
         localLiveExParam.isUserPayInt = i;
         if (!((TPLiveReportInfo)this.mReportInfoGetter).isLookBack) {
-          break label671;
+          break label695;
         }
         i = 1;
         label165:
@@ -1216,7 +1230,7 @@ public class TPReportManager
         localLiveExParam.userQQString = this.mReportInfoGetter.uin;
         localLiveExParam.userIpString = this.mReportInfoGetter.uip;
         if (!this.mReportInfoGetter.enableP2p) {
-          break label676;
+          break label700;
         }
         i = 1;
         label234:
@@ -1229,7 +1243,7 @@ public class TPReportManager
         localLiveExParam.liveDelayInt = ((TPLiveReportInfo)this.mReportInfoGetter).liveDelay;
       }
       if (!this.mIsUseP2P) {
-        break label681;
+        break label705;
       }
       i = j;
       label282:
@@ -1245,19 +1259,19 @@ public class TPReportManager
         TPReportManager.ParamRecord localParamRecord = this.mParamRecord;
         localParamRecord.playDurationMs = ((int)(localParamRecord.playDurationMs + (System.currentTimeMillis() - this.mParamRecord.startPlayTimeMs)));
         if ((!this.mIsPlayDone) && (!this.mIsBuffering) && (!this.mParamRecord.isSwitchingDef)) {
-          break label686;
+          break label710;
         }
       }
     }
-    label671:
-    label676:
-    label681:
-    label686:
+    label695:
+    label700:
+    label705:
+    label710:
     for (this.mParamRecord.startPlayTimeMs = 0L;; this.mParamRecord.startPlayTimeMs = System.currentTimeMillis())
     {
       localLiveExParam.prePlayLengthInt = this.mParamRecord.playDurationMs;
       this.mParamRecord.playDurationMs = 0;
-      localLiveExParam.playerVersionString = "2.5.0.1084";
+      localLiveExParam.playerVersionString = "2.8.0.1104";
       localLiveExParam.deviceTypeInt = getDeviceType();
       localLiveExParam.networkTypeInt = getNetWorkType();
       localLiveExParam.maxSpeedInt = this.mParamRecord.maxSpeed;
@@ -1282,6 +1296,8 @@ public class TPReportManager
       this.mParamRecord.bufferingDurationMs = 0;
       localLiveExParam.errCodeInt = 0;
       localLiveExParam.fullErrCodeString = this.mErrorCode;
+      localLiveExParam.spanId = this.mParamRecord.spanId;
+      localLiveExParam.tuid = this.mParamRecord.tuid;
       localLiveExParam.paramsToProperties(paramITPReportProperties);
       return;
       i = 0;
@@ -1411,6 +1427,8 @@ public class TPReportManager
       paramInt1 = 1017;
       continue;
       paramInt1 = 1018;
+      continue;
+      paramInt1 = 1022;
     }
   }
   

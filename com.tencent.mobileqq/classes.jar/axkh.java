@@ -1,23 +1,10 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import java.util.List;
 
-public class axkh
-  extends AnimatorListenerAdapter
+public abstract interface axkh
 {
-  public axkh(MultiAIOFragment paramMultiAIOFragment) {}
+  public abstract void a(List<axki> paramList);
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    super.onAnimationCancel(paramAnimator);
-    MultiAIOFragment.e(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    MultiAIOFragment.e(this.a);
-  }
+  public abstract void b();
 }
 
 

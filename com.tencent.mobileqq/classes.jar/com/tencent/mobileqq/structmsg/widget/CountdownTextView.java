@@ -3,8 +3,8 @@ package com.tencent.mobileqq.structmsg.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bdue;
-import bduf;
+import bcmq;
+import bcmr;
 import com.tencent.mobileqq.activity.photopreview.CountDownTimer;
 import com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerListener;
 
@@ -37,12 +37,12 @@ public class CountdownTextView
     }
   }
   
-  public void a(long paramLong, bduf parambduf)
+  public void a(long paramLong, bcmr parambcmr)
   {
     CountDownTimer localCountDownTimer = this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
     if (localCountDownTimer != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener = new bdue(this, paramLong, parambduf);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener = new bcmq(this, paramLong, parambcmr);
       localCountDownTimer.addListener(this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener);
     }
   }
@@ -55,7 +55,7 @@ public class CountdownTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.widget.CountdownTextView
  * JD-Core Version:    0.7.0.1
  */

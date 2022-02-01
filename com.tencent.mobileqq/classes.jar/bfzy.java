@@ -1,22 +1,13 @@
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.graphics.PointF;
 
-public class bfzy
-  implements bgbf
+final class bfzy
+  implements bgaa<PointF>
 {
-  public bfzy(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
   {
-    long l = bgbb.a(this.a.a, paramInt1, paramInt2, paramInt3) / 1000L;
-    if (!PublishHomeWorkFragment.a(this.a, l))
-    {
-      bgbb.a(this.a.a, (bgbb)this.a.a.a());
-      return;
-    }
-    this.a.c = l;
-    this.a.a.b();
-    this.a.b.setRightText(this.a.a(l));
+    float f1 = paramPointF1.x;
+    float f2 = paramPointF1.y;
+    return new PointF(f1 + (paramPointF2.x - f1) * paramFloat, f2 + (paramPointF2.y - f2) * paramFloat);
   }
 }
 

@@ -1,20 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function3;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class qit
-  implements View.OnClickListener
+public class qit
+  extends qiv
 {
-  qit(qio paramqio) {}
-  
-  public final void onClick(View paramView)
+  public qit(VafContext paramVafContext)
   {
-    qio.a(this.a).a().invoke(Boolean.valueOf(true), Boolean.valueOf(qio.a(this.a)), Integer.valueOf(2));
-    this.a.b(true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramVafContext);
+    this.a.setIsCacheIcon(true);
+    this.a.setIsClosedoAlphaAniamation(true);
   }
 }
 

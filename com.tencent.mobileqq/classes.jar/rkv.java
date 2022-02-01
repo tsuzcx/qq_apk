@@ -1,37 +1,28 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
 
 class rkv
-  implements bcxw
+  implements rkw
 {
-  rkv(rkr paramrkr) {}
+  rkv(rku paramrku, Bitmap[] paramArrayOfBitmap) {}
   
-  public void B_()
+  public void a()
   {
-    VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", anzj.a(2131706485), null);
-    bcwy.a(3, -1500);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
+    rku.a(this.jdField_a_of_type_Rku);
+    if (rku.a(this.jdField_a_of_type_Rku) <= 3)
     {
-      if (paramInt == 0) {
-        break label95;
+      if (QLog.isColorLevel()) {
+        QLog.d("CaptureTask", 2, "onCaptureFailed try angin tryCount:" + rku.a(this.jdField_a_of_type_Rku) + "  CaptureTask:" + this.jdField_a_of_type_Rku);
       }
-      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", anzj.a(2131706488) + paramInt + "]", null);
-      bcwy.a(2, paramInt);
-    }
-    for (;;)
-    {
-      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", "onDownloadFinish name=" + paramString1 + ", result=" + paramInt + ", filePath=" + paramString2, null);
-      return;
-      label95:
-      rkr.a(this.a, true);
-      VideoEnvironment.a("ReadInJoyDeliverVideoActivity_AvCodecSo", anzj.a(2131706487) + paramInt + "]", null);
+      this.jdField_a_of_type_Rku.a(null);
     }
   }
   
-  public void a(String paramString, long paramLong1, long paramLong2) {}
+  public void a(Bitmap paramBitmap, rku paramrku)
+  {
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[0] = paramBitmap;
+    rku.a(this.jdField_a_of_type_Rku);
+  }
 }
 
 

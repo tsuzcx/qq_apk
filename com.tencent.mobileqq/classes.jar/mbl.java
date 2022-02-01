@@ -1,20 +1,6 @@
-import android.view.View;
-import com.tencent.av.camera.CameraUtils;
-import com.tencent.av.ui.AVActivity;
-
-public class mbl
-  implements bliz
+public abstract interface mbl
 {
-  public mbl(AVActivity paramAVActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    if (this.a.a != null)
-    {
-      this.a.a.a();
-      this.a.a.b();
-    }
-  }
+  public abstract void a();
 }
 
 

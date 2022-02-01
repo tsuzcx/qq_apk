@@ -1,19 +1,35 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.emoticonview.EmotionPanelData;
 
 public class bgcz
-  implements bgde
+  extends EmotionPanelData
 {
-  public bgcz(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
-  
-  public void a(View paramView, int paramInt)
-  {
-    paramView = this.a.jdField_a_of_type_Bgdd.a(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramView.length());
-    bhju.a("Grp_edu", "Grp_recite", "Recommend_Clk", 0, 0, new String[] { this.a.jdField_a_of_type_JavaLangString, paramView });
-  }
+  public static int a = 1;
+  public static int b = 2;
+  public static int c = 3;
+  public static int d = 4;
+  public static int e = 5;
+  public static int f = 6;
+  public static int g = 7;
+  public static int h = 8;
+  public static int i;
+  public static int j = 1;
+  public static int k = 6;
+  public static int l = 1;
+  public static int m = 2;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public int n;
+  public int o;
+  public int p;
+  public int q;
+  public int r;
+  public int s;
 }
 
 

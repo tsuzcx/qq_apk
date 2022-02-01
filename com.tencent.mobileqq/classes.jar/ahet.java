@@ -1,22 +1,12 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.smartdevice.SmartDevicePluginProxyActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ahet
-  implements aunx
+  implements DialogInterface.OnClickListener
 {
-  ahet(ahed paramahed) {}
+  ahet(ahek paramahek) {}
   
-  public void onClick(View paramView)
-  {
-    paramView = new Intent();
-    paramView.putExtra("uin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    paramView.putExtra("uinname", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-    bnrt.a().a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramView, "com.tencent.device.activities.DeviceGroupChatConfirmActivity", -1, null, SmartDevicePluginProxyActivity.class);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,14 +1,14 @@
 package cooperation.qzone.webviewplugin;
 
-import bngf;
-import bngi;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
-public final class QzoneDeviceTagJsPlugin$2
+final class QzoneDeviceTagJsPlugin$2
   implements Runnable
 {
   public void run()
   {
-    bngf.a().a().m();
+    RemoteHandleManager.getInstance().getSender().getDeviceInfos();
   }
 }
 

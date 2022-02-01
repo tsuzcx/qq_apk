@@ -8,8 +8,8 @@ import android.text.Layout;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import begd;
-import begp;
+import com.tencent.mobileqq.text.EmotcationConstants;
+import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
@@ -95,7 +95,7 @@ public class LimitTextView
       localObject = this.jdField_a_of_type_JavaLangCharSequence.toString();
       paramInt2 = ((String)localObject).codePointAt(paramInt1 - 2);
       paramInt3 = ((String)localObject).codePointAt(paramInt1 - 1);
-      if (((paramInt2 != 20) || (paramInt3 < 0) || (paramInt3 >= begd.a)) && (paramInt2 <= 65535)) {
+      if (((paramInt2 != 20) || (paramInt3 < 0) || (paramInt3 >= EmotcationConstants.VALID_SYS_EMOTCATION_COUNT)) && (paramInt2 <= 65535)) {
         break label164;
       }
       str = this.jdField_a_of_type_JavaLangCharSequence.subSequence(0, paramInt1 - 2) + "…";
@@ -123,7 +123,7 @@ public class LimitTextView
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    super.setText(new begp(paramCharSequence, 13, 32, 1), TextView.BufferType.SPANNABLE);
+    super.setText(new QQText(paramCharSequence, 13, 32, 1), TextView.BufferType.SPANNABLE);
   }
 }
 

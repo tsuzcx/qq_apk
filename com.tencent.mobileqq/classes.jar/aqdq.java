@@ -1,27 +1,20 @@
-class aqdq
+import android.support.annotation.NonNull;
+
+public class aqdq
 {
   public String a;
   public String b;
   public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
   
-  public void a()
+  @NonNull
+  public String toString()
   {
-    this.a = null;
-    this.b = null;
-    this.c = null;
-    this.d = null;
-    this.e = null;
-    this.f = null;
-    this.g = null;
+    return " key = " + this.a + " resUrl = " + this.b + " md5 = " + this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqdq
  * JD-Core Version:    0.7.0.1
  */

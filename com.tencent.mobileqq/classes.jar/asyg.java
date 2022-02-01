@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import android.os.Bundle;
 
-public class asyg
-  implements DialogInterface.OnClickListener
+class asyg
+  implements asxy
 {
-  public asyg(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  asyg(asyf paramasyf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle)
   {
-    paramDialogInterface.dismiss();
+    if (this.a.a != null) {
+      this.a.a.a(paramInt3);
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean);
+    }
   }
 }
 

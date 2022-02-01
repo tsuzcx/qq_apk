@@ -1,97 +1,24 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
+import java.lang.ref.WeakReference;
 
 public class aiwd
-  implements aiwf, View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  private final WeakReference<ChatHistoryC2CDateFragment> a;
   
-  public aiwd(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
+  aiwd(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.a = new WeakReference(paramChatHistoryC2CDateFragment);
   }
   
-  public int a()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    return 2;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null)
-    {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2131561063, null);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378138));
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    }
-    a();
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a()
-  {
-    int i = ((bdvj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(362)).a(this.jdField_a_of_type_JavaLangString);
-    if (i > 0) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131718382, new Object[] { i + "" }));
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("StudyRoomTipsBar", 4, "update. member count :" + i + " with troopUin:" + this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 28;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (!bhnv.g(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity)) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131696546, 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Object localObject = new HashMap();
-      ((HashMap)localObject).put("groupId", this.jdField_a_of_type_JavaLangString);
-      ((bdvj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(362)).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (HashMap)localObject);
-      int i = ((bdvj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(362)).a(this.jdField_a_of_type_JavaLangString);
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("action", "click");
-      ((Bundle)localObject).putString("page", "group_page");
-      ((Bundle)localObject).putString("module", "banner");
-      ((Bundle)localObject).putString("entry_type", "1");
-      ((Bundle)localObject).putString("study_number", "" + i);
-      bdwp.a((Bundle)localObject);
+    ChatHistoryC2CDateFragment localChatHistoryC2CDateFragment = (ChatHistoryC2CDateFragment)this.a.get();
+    if ((localChatHistoryC2CDateFragment != null) && (localChatHistoryC2CDateFragment.getActivity() != null) && (!localChatHistoryC2CDateFragment.getActivity().isFinishing())) {
+      paramDialogInterface.dismiss();
     }
   }
 }

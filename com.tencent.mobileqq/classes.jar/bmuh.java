@@ -1,9 +1,21 @@
-final class bmuh
-  extends awxb<bmug, Void>
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.paster.QIMInformationPasterManager.2;
+
+public class bmuh
+  implements bmuj
 {
-  protected bmug a(Void paramVoid)
+  public bmuh(QIMInformationPasterManager.2 param2) {}
+  
+  public void a(float paramFloat, String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean, String paramString, bnli parambnli)
   {
-    return new bmug(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMInformationPasterManager", 2, "isSucess:" + paramBoolean + " url:" + paramString + " item:" + parambnli);
+    }
+    if (parambnli.a() != null) {
+      parambnli.a().a(paramBoolean);
+    }
   }
 }
 

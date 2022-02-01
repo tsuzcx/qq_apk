@@ -1,20 +1,18 @@
 package com.tencent.mobileqq.emoticonview;
 
-import assh;
-
-public class SystemAndEmojiAdapter$1
+class SystemAndEmojiAdapter$1
   implements Runnable
 {
-  public SystemAndEmojiAdapter$1(assh paramassh, int paramInt) {}
+  SystemAndEmojiAdapter$1(SystemAndEmojiAdapter paramSystemAndEmojiAdapter, int paramInt) {}
   
   public void run()
   {
-    this.this$0.a(this.a);
+    this.this$0.setSelectionToEmoticon(this.val$locEmoticonRow);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiAdapter.1
  * JD-Core Version:    0.7.0.1
  */

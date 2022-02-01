@@ -4,7 +4,6 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListReq;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedListRsp;
 import NS_COMM.COMM.StCommonExt;
-import aand;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -14,6 +13,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.vip.pb.vac_adv_get.VacFeedsAdvMetaReq;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
+import zjy;
 
 public class GetSubscribeFeedListRequest
   extends VSBaseRequest
@@ -30,7 +30,7 @@ public class GetSubscribeFeedListRequest
     if (paramStCommonExt != null) {
       this.req.extInfo.set(paramStCommonExt.get());
     }
-    paramStCommonExt = aand.a().a();
+    paramStCommonExt = zjy.a().a();
     if (paramStCommonExt != null)
     {
       vac_adv_get.VacFeedsAdvMetaReq localVacFeedsAdvMetaReq = new vac_adv_get.VacFeedsAdvMetaReq();
@@ -53,7 +53,7 @@ public class GetSubscribeFeedListRequest
     if (paramStCommonExt != null) {
       this.req.extInfo.set(paramStCommonExt.get());
     }
-    paramStCommonExt = aand.a().a();
+    paramStCommonExt = zjy.a().a();
     if (paramStCommonExt != null)
     {
       paramString2 = new vac_adv_get.VacFeedsAdvMetaReq();
@@ -80,7 +80,7 @@ public class GetSubscribeFeedListRequest
       if (paramStCommonExt != null) {
         this.req.extInfo.set(paramStCommonExt.get());
       }
-      paramStFeed = aand.a().a();
+      paramStFeed = zjy.a().a();
       if (paramStFeed != null)
       {
         paramStCommonExt = new vac_adv_get.VacFeedsAdvMetaReq();

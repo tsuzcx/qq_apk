@@ -1,24 +1,26 @@
+import android.os.FileObserver;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+
 class uid
-  implements upg
+  extends FileObserver
 {
-  uid(uhz paramuhz) {}
-  
-  public void a(String paramString)
+  uid(uic paramuic, String paramString1, int paramInt, String paramString2)
   {
-    uhz.a(this.a, true);
-    uqf.b("WSFollowFeedHolder", "[onUserClick] uid: " + paramString);
-    String str = "weishi://profile?person_id=" + paramString;
-    upw.a(uhz.a(this.a).a(), str, 700, uhz.a(this.a), "content");
-    uhz.a(this.a, paramString);
+    super(paramString1, paramInt);
   }
   
-  public void b(String paramString)
+  public void onEvent(int paramInt, String paramString)
   {
-    uhz.a(this.a, true);
-    uqf.b("WSFollowFeedHolder", "[onTopicClick] tid: " + paramString);
-    String str = "weishi://topic?topic_id=" + paramString;
-    upw.a(uhz.a(this.a).a(), str, 700, uhz.a(this.a), "content");
-    uhz.b(this.a, paramString);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ScreenshotContentObserver", 2, "onEvent->time:" + System.currentTimeMillis() + ", path:" + paramString);
+    }
+    if ((TextUtils.isEmpty(paramString)) || (paramInt != 256)) {}
+    while ((paramString.equalsIgnoreCase(uic.a(this.jdField_a_of_type_Uic))) || (paramString.contains("temp")) || (uic.a(this.jdField_a_of_type_Uic) == null)) {
+      return;
+    }
+    uic.a(this.jdField_a_of_type_Uic).a(null, this.jdField_a_of_type_JavaLangString + paramString, 1);
+    uic.a(this.jdField_a_of_type_Uic, paramString);
   }
 }
 

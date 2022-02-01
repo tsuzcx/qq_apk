@@ -1,42 +1,22 @@
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zmh
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  private Map<Integer, Long> a;
-  public int b = -1;
+  public zmh(CommodityListView paramCommodityListView, CertifiedAccountMeta.StUser paramStUser) {}
   
-  public zmh()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  }
-  
-  public void a(int paramInt, long paramLong)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
-    if (this.jdField_a_of_type_Long < paramLong)
-    {
-      this.jdField_a_of_type_Long = paramLong;
-      this.b = paramInt;
-    }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-    for (long l = 0L; localIterator.hasNext(); l = ((Long)((Map.Entry)localIterator.next()).getValue()).longValue() + l) {}
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
-      return "there_is_no_frame";
-    }
-    this.jdField_a_of_type_Int = ((int)l / this.jdField_a_of_type_JavaUtilMap.size());
-    localStringBuilder.append("avg:").append(this.jdField_a_of_type_Int).append("|max:").append(this.jdField_a_of_type_Long).append("|maxId:").append(this.b);
-    return localStringBuilder.toString();
+    zxp.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_" + zlv.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView.a()), "clk_shop", 0, 0, new String[0]);
+    zbh.a(((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.get(0)).schema.get());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

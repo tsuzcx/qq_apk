@@ -1,47 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class oyq
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/ui/RIJCommentBubbleView$clickReportOrDelete$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentUtils$ReportCommentDialogClickListener;", "onClick", "", "msg", "", "reportType", "", "which", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oyq
+  extends otu
 {
-  public static JSONObject a(JSONObject paramJSONObject, String paramString, Object paramObject)
+  public void a(@NotNull String paramString, int paramInt1, int paramInt2)
   {
-    JSONObject localJSONObject = paramJSONObject;
-    if (paramJSONObject == null) {
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put(paramString, paramObject);
-      return localJSONObject;
-    }
-    catch (Exception paramJSONObject)
-    {
-      QLog.d("RIJJsonUtils", 1, "addInfo2Json error!  msg=" + paramJSONObject);
-    }
-    return localJSONObject;
-  }
-  
-  public static void a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
-  {
-    if ((paramJSONObject1 == null) || (paramJSONObject2 == null)) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = paramJSONObject2.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        try
-        {
-          paramJSONObject1.put(str, paramJSONObject2.get(str));
-        }
-        catch (Exception localException)
-        {
-          QLog.d("RIJJsonUtils", 1, "mergeJSONData error!  msg=" + localException);
-        }
-      }
-    }
+    Intrinsics.checkParameterIsNotNull(paramString, "msg");
+    oyn.a(this.a).a().a(oyn.a(this.a).a.commentId, paramString, paramInt1);
   }
 }
 

@@ -6,12 +6,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdmc;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
@@ -89,8 +89,8 @@ public class EmojiHomeUiPlugin
     }
     int j = paramActivity.getSharedPreferences(paramString1, 0).getInt("emosm_sp_mall_new_timestamp", -1);
     Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-    int i = ((BaseActivity)paramActivity).app.a().a();
-    String str2 = ((BaseActivity)paramActivity).app.a().a();
+    int i = ((BaseActivity)paramActivity).app.getMessageFacade().getCurrChatType();
+    String str2 = ((BaseActivity)paramActivity).app.getMessageFacade().getCurrChatUin();
     String str1 = str2;
     if (str2 == null)
     {
@@ -166,8 +166,8 @@ public class EmojiHomeUiPlugin
       return;
     }
     int i = paramActivity.getSharedPreferences(paramString1, 0).getInt("emosm_sp_mall_new_timestamp", -1);
-    int j = ((BaseActivity)paramActivity).app.a().a();
-    String str = ((BaseActivity)paramActivity).app.a().a();
+    int j = ((BaseActivity)paramActivity).app.getMessageFacade().getCurrChatType();
+    String str = ((BaseActivity)paramActivity).app.getMessageFacade().getCurrChatUin();
     Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
     localIntent.putExtra("selfuin", paramString1);
     localIntent.putExtra("emojimall_src", paramInt);
@@ -236,8 +236,8 @@ public class EmojiHomeUiPlugin
       QLog.e("Q.emoji.web.EmojiUiPlugin.EmojiHomeUiPlugin", 1, "open EmosmActivity failed because selfUin is empty.srcFromType=" + paramInt + " ,hasRedDot=" + paramBoolean + " ,currentId=" + paramString2);
       return;
     }
-    int i = ((BaseActivity)paramActivity).app.a().a();
-    paramString1 = ((BaseActivity)paramActivity).app.a().a();
+    int i = ((BaseActivity)paramActivity).app.getMessageFacade().getCurrChatType();
+    paramString1 = ((BaseActivity)paramActivity).app.getMessageFacade().getCurrChatUin();
     paramString2 = new Intent(paramActivity, EmosmActivity.class);
     paramString2.putExtra("key_emojimall_detail_chat_type", i);
     paramString2.putExtra("key_emojimall_detail_chat_uin", paramString1);
@@ -252,8 +252,8 @@ public class EmojiHomeUiPlugin
     }
     int j = paramActivity.getSharedPreferences(paramString1, 0).getInt("emosm_sp_mall_new_timestamp", -1);
     Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-    int i = ((BaseActivity)paramActivity).app.a().a();
-    String str2 = ((BaseActivity)paramActivity).app.a().a();
+    int i = ((BaseActivity)paramActivity).app.getMessageFacade().getCurrChatType();
+    String str2 = ((BaseActivity)paramActivity).app.getMessageFacade().getCurrChatUin();
     String str1 = str2;
     if (str2 == null)
     {
@@ -356,7 +356,7 @@ public class EmojiHomeUiPlugin
       if (QLog.isColorLevel()) {
         QLog.i("Q.emoji.web.EmojiUiPlugin", 2, "statistic:openToOncreateGap:" + l1 + "openTogetKeyTimeGap:" + l2 + "bNeedGetKey:" + bool2 + "openToFinishOrErrorGap:" + l3 + "processStep:" + k + "isSuccess:" + bool1 + "errordescription:" + (String)localObject2 + "errorUrl:" + (String)localObject1 + "resultCode:" + j);
       }
-      bdmc.a(paramContext).a(paramString, "actOpenHomePage", bool1, 0L, 0L, localHashMap, "");
+      StatisticCollector.getInstance(paramContext).collectPerformance(paramString, "actOpenHomePage", bool1, 0L, 0L, localHashMap, "");
       return;
       label498:
       if (j == -12) {

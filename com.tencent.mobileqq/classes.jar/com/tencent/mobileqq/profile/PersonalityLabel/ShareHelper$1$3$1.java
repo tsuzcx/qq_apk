@@ -2,11 +2,11 @@ package com.tencent.mobileqq.profile.PersonalityLabel;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import azxc;
-import azxd;
-import azxf;
+import aylr;
+import ayls;
+import aylu;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
-import zyx;
+import yyi;
 
 class ShareHelper$1$3$1
   implements Runnable
@@ -15,21 +15,21 @@ class ShareHelper$1$3$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Azxd.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Ayls.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Azxd.a.jdField_a_of_type_Azxf.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Ayls.a.jdField_a_of_type_Aylu.a(false);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      zyx.a(1, 2131695816);
+      yyi.a(1, 2131695956);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Long == 2L)
     {
-      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Azxd.a.jdField_a_of_type_AndroidGraphicsBitmap, 0);
+      WXShareHelper.getInstance().shareImageToWX(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Ayls.a.jdField_a_of_type_AndroidGraphicsBitmap, 0);
       return;
     }
-    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Azxd.a.jdField_a_of_type_AndroidGraphicsBitmap, 1);
+    WXShareHelper.getInstance().shareImageToWX(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Ayls.a.jdField_a_of_type_AndroidGraphicsBitmap, 1);
   }
 }
 

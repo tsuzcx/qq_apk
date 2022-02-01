@@ -1,33 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+
 public class aphk
+  implements DialogInterface.OnClickListener
 {
-  private aphl jdField_a_of_type_Aphl = new aphl();
-  private aphm jdField_a_of_type_Aphm = new aphm();
+  public aphk(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, String paramString) {}
   
-  public aphk()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Aphl.a();
-    this.jdField_a_of_type_Aphm.a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Aphl.c();
-    this.jdField_a_of_type_Aphm.c();
-  }
-  
-  public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
-  {
-    if (paramInt1 == 36197)
-    {
-      this.jdField_a_of_type_Aphm.a(paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
-      return;
-    }
-    if (paramInt1 == 3553)
-    {
-      this.jdField_a_of_type_Aphl.a(paramInt2, paramArrayOfFloat1, paramArrayOfFloat2);
-      return;
-    }
-    throw new RuntimeException("textureType must be GLES11Ext.GL_TEXTURE_EXTERNAL_OES or GLES20.GL_TEXTURE_2D.");
+    CardPicGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
   }
 }
 

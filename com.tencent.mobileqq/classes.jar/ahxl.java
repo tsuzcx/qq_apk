@@ -1,11 +1,20 @@
-import android.widget.TextView;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
 
-class ahxl
-  extends aggl
+public class ahxl
+  implements bjts
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public ahxl(AddContactsView paramAddContactsView) {}
   
-  ahxl(ahxi paramahxi) {}
+  public void a(View paramView)
+  {
+    AddContactsView.b(this.a, false);
+  }
+  
+  public void b(View paramView)
+  {
+    AddContactsView.b(this.a, true);
+  }
 }
 
 

@@ -1,18 +1,8 @@
-import java.util.List;
-
-class asqr
-  implements asps
+public abstract interface asqr
 {
-  asqr(asqo paramasqo) {}
+  public abstract void a(String paramString);
   
-  public void a(List<aspq> paramList)
-  {
-    if (paramList != null)
-    {
-      this.a.a(paramList);
-      this.a.notifyDataSetChanged();
-    }
-  }
+  public abstract void aq_();
 }
 
 

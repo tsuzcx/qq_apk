@@ -6,7 +6,6 @@ import android.graphics.Matrix;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.view.TextureView;
-import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.webkit.URLUtil;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer;
@@ -17,6 +16,7 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnErrorListener
 import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnInfoListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnSeekCompleteListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoPreparedListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoViewInitListener;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,7 +47,7 @@ public class VideoPlayerDefault
       {
         AbsVideoPlayer.OnCaptureImageListener localOnCaptureImageListener = (AbsVideoPlayer.OnCaptureImageListener)localIterator.next();
         if (localOnCaptureImageListener != null) {
-          localOnCaptureImageListener.onCaptureImageFailed(this);
+          localOnCaptureImageListener.onCaptureImageFailed();
         }
       }
     }
@@ -62,7 +62,7 @@ public class VideoPlayerDefault
       {
         AbsVideoPlayer.OnCaptureImageListener localOnCaptureImageListener = (AbsVideoPlayer.OnCaptureImageListener)localIterator.next();
         if (localOnCaptureImageListener != null) {
-          localOnCaptureImageListener.onCaptureImageSucceed(this, paramBitmap);
+          localOnCaptureImageListener.onCaptureImageSucceed(paramBitmap);
         }
       }
     }
@@ -138,7 +138,7 @@ public class VideoPlayerDefault
     return 0;
   }
   
-  public View createVideoView(Context paramContext)
+  public void createVideoView(Context paramContext, AbsVideoPlayer.OnVideoViewInitListener paramOnVideoViewInitListener)
   {
     if (this.player != null)
     {
@@ -151,7 +151,9 @@ public class VideoPlayerDefault
     this.context = paramContext;
     this.textureView = new TextureView(paramContext);
     this.textureView.setSurfaceTextureListener(new VideoPlayerDefault.2(this));
-    return this.textureView;
+    if (paramOnVideoViewInitListener != null) {
+      paramOnVideoViewInitListener.onVideoViewInit(this.textureView);
+    }
   }
   
   public long getCurrentPostion()
@@ -388,7 +390,7 @@ public class VideoPlayerDefault
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.VideoPlayerDefault
  * JD-Core Version:    0.7.0.1
  */

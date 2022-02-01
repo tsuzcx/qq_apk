@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.applets;
 
-import ahnc;
-import amlk;
+import agjp;
+import algh;
 import android.text.TextUtils;
-import apeg;
-import bdll;
+import anxs;
+import bcef;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class PublicAccountEventReport$5
   implements Runnable
 {
-  public PublicAccountEventReport$5(String paramString1, String paramString2, int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface, String paramString3) {}
+  public PublicAccountEventReport$5(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, QQAppInterface paramQQAppInterface, String paramString5) {}
   
   public void run()
   {
@@ -19,13 +19,13 @@ public final class PublicAccountEventReport$5
     if ((this.jdField_a_of_type_Int != 0) || (this.jdField_b_of_type_Int > 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      apeg.a(str1, 137, str2, bool);
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB3", "0X8009EB3", 2, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.c, "");
+      anxs.a(str1, 137, str2, bool, this.c, this.d);
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X8009EB3", "0X8009EB3", 2, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.e, "");
       if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc05007", "", this.jdField_a_of_type_JavaLangString, "0X8009EB3", "0X8009EB3", 2, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.c, this.jdField_b_of_type_JavaLangString);
+        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc05007", "", this.jdField_a_of_type_JavaLangString, "0X8009EB3", "0X8009EB3", 2, 0, this.jdField_a_of_type_Int + "", this.jdField_b_of_type_Int + "", this.e, this.jdField_b_of_type_JavaLangString);
       }
-      if (ahnc.a(this.jdField_a_of_type_JavaLangString)) {
-        amlk.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (agjp.a(this.jdField_a_of_type_JavaLangString)) {
+        algh.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
       return;
     }

@@ -1,378 +1,49 @@
-import UserGrowth.stFloatingLayerCardStyle;
-import UserGrowth.stGlobalConfig;
-import UserGrowth.stSimpleMetaFeed;
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
 import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 import com.tencent.common.app.BaseApplicationImpl;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import org.jetbrains.annotations.Nullable;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class uvn
-  extends uvs
 {
-  protected long a;
-  private boolean b = true;
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean = true;
+  int b;
   
-  public uvn(urv paramurv)
-  {
-    super(paramurv);
-  }
+  public uvn(WSPublicAccReport paramWSPublicAccReport) {}
   
-  @Nullable
-  private stSimpleMetaFeed a()
+  public int a()
   {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    Object localObject3 = a();
-    if (localObject3 == null) {
-      localObject2 = localObject1;
-    }
-    int i;
-    do
-    {
-      do
-      {
-        return localObject2;
-        usv localusv = ((urv)localObject3).a().a();
-        uqf.a("WSVerticalForHomePresenter", "handleOnBackEvent");
-        localObject1 = localObject2;
-        if (localusv != null)
-        {
-          localObject1 = localObject2;
-          if ((localusv.a() instanceof stSimpleMetaFeed)) {
-            localObject1 = (stSimpleMetaFeed)localusv.a();
-          }
-        }
-        if ((localObject1 == null) || (TextUtils.isEmpty(((stSimpleMetaFeed)localObject1).feed_desc))) {
-          break;
-        }
-        localObject2 = localObject1;
-      } while (((stSimpleMetaFeed)localObject1).video_type != 2);
-      i = ((urv)localObject3).a().a();
-      localObject3 = ((urv)localObject3).a().a();
-      localObject2 = localObject1;
-    } while (i >= ((List)localObject3).size() - 2);
-    i += 1;
-    if (i < ((List)localObject3).size())
-    {
-      localObject2 = (stSimpleMetaFeed)((usv)((List)localObject3).get(i)).a();
-      if (((stSimpleMetaFeed)localObject2).video_type == 2) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(((stSimpleMetaFeed)localObject2).feed_desc)) {
-          return localObject1;
-        }
-        localObject1 = localObject2;
-      }
-    }
-    return localObject1;
-  }
-  
-  private Object a()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("key_should_clear_data_on_refresh", Boolean.valueOf(this.b));
-    return new JSONObject(localHashMap).toString();
-  }
-  
-  private void a(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    if (paramstSimpleMetaFeed == null) {}
-    WSVideoPreDownloadManager localWSVideoPreDownloadManager;
-    boolean bool;
-    do
-    {
-      return;
-      localWSVideoPreDownloadManager = new WSVideoPreDownloadManager(BaseApplicationImpl.sApplication);
-      bool = localWSVideoPreDownloadManager.a(paramstSimpleMetaFeed.video_url);
-      uqf.a("WSVerticalForHomePresenter", "sec itemInfo : " + paramstSimpleMetaFeed + "; isCached = " + bool);
-    } while (bool);
-    localWSVideoPreDownloadManager.a(new uvo(paramstSimpleMetaFeed));
-    localWSVideoPreDownloadManager.a(new uvp(localWSVideoPreDownloadManager, paramstSimpleMetaFeed.video_url));
-    localWSVideoPreDownloadManager.a(0);
-  }
-  
-  private void a(List<usv> paramList, boolean paramBoolean)
-  {
-    Object localObject1 = a();
-    if ((!paramBoolean) || (paramList == null) || (paramList.size() <= 1))
-    {
-      uqf.a("WSVerticalForHomePresenter", "data from cache or pushMsg");
-      return;
-    }
-    if ((localObject1 == null) || (((urv)localObject1).a() == null) || (((urv)localObject1).a().getItemCount() <= 0))
-    {
-      uqf.a("WSVerticalForHomePresenter", "not data in screen");
-      return;
-    }
-    Object localObject2 = (usv)((urv)localObject1).a().a(0);
-    localObject1 = (usv)paramList.get(0);
-    if ((localObject2 == null) || (localObject1 == null))
-    {
-      uqf.a("WSVerticalForHomePresenter", "data could be null");
-      return;
-    }
-    Object localObject3 = ((usv)localObject2).a();
-    localObject2 = ((usv)localObject1).a();
-    if ((!(localObject3 instanceof stSimpleMetaFeed)) || (!(localObject2 instanceof stSimpleMetaFeed)))
-    {
-      uqf.a("WSVerticalForHomePresenter", "data type is incorrect");
-      return;
-    }
-    localObject3 = (stSimpleMetaFeed)localObject3;
-    localObject2 = (stSimpleMetaFeed)localObject2;
-    if (TextUtils.equals(((stSimpleMetaFeed)localObject3).id, ((stSimpleMetaFeed)localObject2).id))
-    {
-      uqf.a("WSVerticalForHomePresenter", "updateFirstItem");
-      paramList.remove(localObject1);
-      a((usv)localObject1);
-      return;
-    }
-    uqf.a("WSVerticalForHomePresenter", "data not equip，feedInScreen.id = " + ((stSimpleMetaFeed)localObject3).id + "，feedFirst.id = " + ((stSimpleMetaFeed)localObject2).id);
-  }
-  
-  private void a(usv paramusv)
-  {
-    if (paramusv == null) {}
-    Object localObject;
-    do
-    {
-      return;
-      localObject = a();
-    } while ((localObject == null) || (((urv)localObject).a() == null));
-    if (((urv)localObject).a().a() != null)
-    {
-      uqf.a("WSVerticalForHomePresenter", "onSuccess getItemCount: " + ((urv)localObject).a().getItemCount());
-      localObject = ((urv)localObject).a().a().jdField_a_of_type_Uek;
-      if ((localObject instanceof utq)) {
-        ((utq)localObject).b(paramusv);
-      }
-    }
-    b(paramusv);
-  }
-  
-  private void a(boolean paramBoolean, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    if ((!paramBoolean) && (TextUtils.isEmpty("")) && (paramstSimpleMetaFeed != null)) {}
-    for (paramstSimpleMetaFeed = paramstSimpleMetaFeed.id;; paramstSimpleMetaFeed = "")
-    {
-      if (paramBoolean) {}
-      for (int i = 1;; i = 2)
-      {
-        unx.a(301, new Object[] { Integer.valueOf(paramInt), "0", paramstSimpleMetaFeed, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(2) });
-        return;
-      }
-    }
-  }
-  
-  private void a(boolean paramBoolean, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
-  {
-    if (!paramBoolean) {}
-    do
-    {
-      return;
-      localObject = a();
-    } while (!(localObject instanceof WSVerticalPageFragment));
-    Object localObject = ((WSVerticalPageFragment)localObject).getActivity();
-    uhc.a().a((Activity)localObject, paramInt, paramstSimpleMetaFeed);
-  }
-  
-  private boolean a(Object paramObject)
-  {
-    boolean bool = true;
-    if ((paramObject instanceof String)) {}
-    try
-    {
-      bool = new JSONObject((String)paramObject).optBoolean("key_should_clear_data_on_refresh", true);
-      return bool;
-    }
-    catch (JSONException paramObject)
-    {
-      paramObject.printStackTrace();
-    }
-    return true;
-  }
-  
-  private void b(usv paramusv)
-  {
-    Object localObject = a();
-    if (localObject != null)
-    {
-      localObject = ((urv)localObject).a();
-      if (localObject != null) {
-        break label21;
-      }
-    }
-    label21:
-    do
-    {
-      return;
-      usv localusv = (usv)((urj)localObject).a(0);
-      stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)localusv.a();
-      paramusv = (stSimpleMetaFeed)paramusv.a();
-      paramusv.floatingLayerCardStyle.cardType = localstSimpleMetaFeed.floatingLayerCardStyle.cardType;
-      localusv.a(paramusv);
-      localObject = ((urj)localObject).a();
-    } while ((localObject == null) || (((uuy)localObject).jdField_a_of_type_Ukz == null));
-    ((uuy)localObject).jdField_a_of_type_Ukz.a = ulb.a(paramusv);
-  }
-  
-  private boolean d()
-  {
-    Object localObject = a();
-    if (localObject == null) {}
-    do
-    {
-      return false;
-      localObject = ((urv)localObject).a();
-    } while (localObject == null);
-    return ((WSPlayerManager)localObject).e();
-  }
-  
-  private boolean e()
-  {
-    urv localurv = a();
-    if ((localurv == null) || (localurv.a() == null)) {}
-    usv localusv;
-    do
-    {
-      return false;
-      localusv = localurv.a().a();
-    } while (localusv == null);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(localusv);
-    localurv.a(localArrayList);
-    return true;
-  }
-  
-  private void g()
-  {
-    uqf.a("WSVerticalForHomePresenter", "cacheRecommendFeed");
-    Object localObject = a();
-    if ((localObject == null) || (((urv)localObject).a() == null))
-    {
-      uqf.a("WSVerticalForHomePresenter", "view == null");
-      return;
-    }
-    if (!TextUtils.equals(((urv)localObject).a(), "aio_home_page"))
-    {
-      uqf.a("WSVerticalForHomePresenter", "from is not AIO_HOME_PAGE");
-      return;
-    }
-    localObject = a();
-    if (localObject == null)
-    {
-      uqf.a("WSVerticalForHomePresenter", "itemInfo == null");
-      return;
-    }
-    uqf.a("WSVerticalForHomePresenter", "cacheRecommendFeed");
-    List localList = Arrays.asList(new stSimpleMetaFeed[] { localObject });
-    uqt.a(localList);
-    a((stSimpleMetaFeed)localObject);
-    pgj localpgj = uqt.a();
-    if (localpgj != null)
-    {
-      uqf.a("WSVerticalForHomePresenter", "saveLastFeedInfo");
-      localpgj.a((stSimpleMetaFeed)localObject);
-    }
-    uqt.a(localList, false);
-    uep.a().b(localList);
+    this.jdField_a_of_type_Boolean = false;
+    return this.b;
   }
   
   public long a()
   {
-    return this.a;
+    this.jdField_a_of_type_Boolean = false;
+    return System.currentTimeMillis() - WSPublicAccReport.access$000(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newReportWSPublicAccReport);
   }
   
   public void a(String paramString)
   {
-    urv localurv = a();
-    if (localurv == null) {
-      return;
-    }
-    this.b = true;
-    if (e())
-    {
-      this.b = false;
-      localurv.d();
-    }
-    super.a(paramString);
-  }
-  
-  public void a(List<usv> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
-  {
-    a(paramList, paramBoolean2);
-    super.a(paramList, paramBoolean1, paramBoolean2, paramObject);
-    if (paramObject == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (paramBoolean2) {
-          this.a = (System.currentTimeMillis() - this.a);
-        }
-      } while ((paramList == null) || (paramList.size() <= 0));
-      paramList = ((usv)paramList.get(0)).a();
-    } while (!(paramList instanceof stSimpleMetaFeed));
-    paramList = (stSimpleMetaFeed)paramList;
     int i = 1;
-    paramObject = ugd.a().a(12);
-    if (paramObject != null)
+    this.jdField_a_of_type_Int = 1;
+    if (new WSVideoPreDownloadManager(BaseApplicationImpl.sApplication).a(paramString)) {}
+    for (;;)
     {
-      uqf.d("WSVerticalForHomePresenter", "RockDownloader:" + paramObject.download);
-      i = paramObject.link_strategy_type;
+      this.b = i;
+      return;
+      i = 0;
     }
-    a(false, i, paramList);
-    a(paramBoolean2, paramList, i);
   }
   
   public boolean a()
   {
-    return true;
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
+  public int b()
   {
-    if (paramBoolean2) {
-      return d();
-    }
-    return (a(paramObject)) && (paramBoolean1);
-  }
-  
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    urv localurv = a();
-    if (localurv == null) {
-      return false;
-    }
-    this.a = System.currentTimeMillis();
-    WSVerticalDataManager.a().a(12, paramBoolean1, paramBoolean2, paramString, localurv.a(), this, a());
-    return true;
-  }
-  
-  public boolean b()
-  {
-    urv localurv = a();
-    return (localurv != null) && (localurv.b());
-  }
-  
-  public void f()
-  {
-    super.f();
-    g();
+    this.jdField_a_of_type_Boolean = false;
+    return this.jdField_a_of_type_Int;
   }
 }
 

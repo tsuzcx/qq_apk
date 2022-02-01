@@ -1,16 +1,8 @@
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudRead.StGetCommentListRsp;
-import qqcircle.QQCircleFeedBase.StBusiInfoCommentListData;
-
-class vkd
-  implements aaav<FeedCloudRead.StGetCommentListRsp>
+public abstract interface vkd
 {
-  vkd(vjy paramvjy, int paramInt, FeedCloudMeta.StFeed paramStFeed, QQCircleFeedBase.StBusiInfoCommentListData paramStBusiInfoCommentListData) {}
+  public abstract void a(vil paramvil);
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetCommentListRsp paramStGetCommentListRsp)
-  {
-    vjy.a(this.jdField_a_of_type_Vjy, this.jdField_a_of_type_Int, paramBoolean, paramLong, paramString, paramStGetCommentListRsp, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, false, false, true, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StBusiInfoCommentListData);
-  }
+  public abstract void b(vil paramvil);
 }
 
 

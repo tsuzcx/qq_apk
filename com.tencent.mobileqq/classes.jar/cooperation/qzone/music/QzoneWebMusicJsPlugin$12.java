@@ -1,8 +1,8 @@
 package cooperation.qzone.music;
 
-import awnh;
-import bngf;
-import bngi;
+import aval;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 import org.json.JSONObject;
 
 class QzoneWebMusicJsPlugin$12
@@ -12,8 +12,8 @@ class QzoneWebMusicJsPlugin$12
   
   public void run()
   {
-    bngf.a().a().a();
-    awnh.a(new JSONObject(), "showFloatView", null);
+    RemoteHandleManager.getInstance().getSender().resumePlay();
+    aval.a(new JSONObject(), "showFloatView", null);
   }
 }
 

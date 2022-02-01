@@ -1,36 +1,16 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import android.net.Uri;
+import android.provider.ContactsContract.Data;
 
-class aqmp
-  implements bliz
+public class aqmp
 {
-  aqmp(aqmo paramaqmo, Context paramContext, blir paramblir) {}
+  public static final Uri a;
+  public static final String[] a;
+  public static final String[] b = { "raw_contact_id", "data1" };
   
-  public void OnClick(View paramView, int paramInt)
+  static
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      do
-      {
-        return;
-        paramView = this.jdField_a_of_type_Aqmo.b + this.jdField_a_of_type_Aqmo.jdField_a_of_type_JavaLangString;
-      } while ((TextUtils.isEmpty(paramView)) || ((!paramView.startsWith("http://")) && (!paramView.startsWith("https://"))));
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      if ((this.jdField_a_of_type_Aqmo.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_Aqmo.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-        bdll.b((QQAppInterface)this.jdField_a_of_type_Aqmo.jdField_a_of_type_JavaLangRefWeakReference.get(), "P_CliOper", "aio_search", "", "aio_hotword", "search_hotword", 0, 0, "", "", this.jdField_a_of_type_Aqmo.jdField_a_of_type_JavaLangString, "");
-      }
-    }
+    jdField_a_of_type_AndroidNetUri = ContactsContract.Data.CONTENT_URI;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "_id", "mimetype", "data1" };
   }
 }
 

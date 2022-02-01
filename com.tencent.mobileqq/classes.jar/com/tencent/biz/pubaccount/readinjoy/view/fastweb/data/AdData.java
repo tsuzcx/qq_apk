@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.data;
 
+import amtj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anzj;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -12,21 +12,21 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sor;
-import ssb;
-import tlp;
-import tlq;
-import tly;
+import sss;
+import swb;
+import trf;
+import trg;
+import tro;
 
 public class AdData
   extends ProteusItemData
   implements Parcelable
 {
-  public static final Parcelable.Creator<AdData> CREATOR = new sor();
+  public static final Parcelable.Creator<AdData> CREATOR = new sss();
   public String A;
   public String B;
   public String C;
-  public String D = anzj.a(2131698740);
+  public String D = amtj.a(2131698975);
   public String E;
   public String F;
   public String G;
@@ -43,9 +43,9 @@ public class AdData
   public String a;
   public ArrayList<String> a;
   public JSONObject a;
-  public tlp a;
-  public tlq a;
-  public tly a;
+  public trf a;
+  public trg a;
+  public tro a;
   public boolean a;
   public int b;
   public long b;
@@ -178,23 +178,23 @@ public class AdData
   private void a(JSONObject paramJSONObject)
   {
     this.jdField_g_of_type_Int = paramJSONObject.optInt("appDownLoadStyle");
-    this.jdField_a_of_type_Tlp = new tlp();
+    this.jdField_a_of_type_Trf = new trf();
     if (paramJSONObject.has("appDownloadInfo"))
     {
       paramJSONObject = paramJSONObject.optJSONObject("appDownloadInfo");
-      this.jdField_a_of_type_Tlp.a(paramJSONObject);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Tlp.jdField_b_of_type_JavaLangString))
+      this.jdField_a_of_type_Trf.a(paramJSONObject);
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Trf.jdField_b_of_type_JavaLangString))
       {
-        this.h = this.jdField_a_of_type_Tlp.jdField_b_of_type_JavaLangString;
-        this.v = this.jdField_a_of_type_Tlp.jdField_b_of_type_JavaLangString;
+        this.h = this.jdField_a_of_type_Trf.jdField_b_of_type_JavaLangString;
+        this.v = this.jdField_a_of_type_Trf.jdField_b_of_type_JavaLangString;
       }
-      this.jdField_a_of_type_Tlp.jdField_f_of_type_JavaLangString = this.s;
+      this.jdField_a_of_type_Trf.jdField_f_of_type_JavaLangString = this.s;
       return;
     }
-    this.jdField_a_of_type_Tlp.jdField_b_of_type_JavaLangString = this.h;
-    this.jdField_a_of_type_Tlp.jdField_f_of_type_JavaLangString = this.s;
-    this.jdField_a_of_type_Tlp.jdField_e_of_type_JavaLangString = this.w;
-    this.jdField_a_of_type_Tlp.jdField_c_of_type_JavaLangString = String.valueOf(this.jdField_b_of_type_Long);
+    this.jdField_a_of_type_Trf.jdField_b_of_type_JavaLangString = this.h;
+    this.jdField_a_of_type_Trf.jdField_f_of_type_JavaLangString = this.s;
+    this.jdField_a_of_type_Trf.jdField_e_of_type_JavaLangString = this.w;
+    this.jdField_a_of_type_Trf.jdField_c_of_type_JavaLangString = String.valueOf(this.jdField_b_of_type_Long);
   }
   
   public static boolean a(BaseData paramBaseData)
@@ -221,7 +221,7 @@ public class AdData
           return;
           if (this.jdField_a_of_type_Int == 1)
           {
-            this.jdField_d_of_type_JavaLangString = ssb.a(localJSONArray.optString(0), true);
+            this.jdField_d_of_type_JavaLangString = swb.a(localJSONArray.optString(0), true);
             return;
           }
         } while (this.jdField_a_of_type_Int != 3);
@@ -230,18 +230,18 @@ public class AdData
         int i1 = 0;
         while (i1 < i2)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(ssb.a(localJSONArray.optString(i1), true));
+          this.jdField_a_of_type_JavaUtilArrayList.add(swb.a(localJSONArray.optString(i1), true));
           i1 += 1;
         }
       } while (i2 >= 3);
       if (i2 == 2)
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(ssb.a(localJSONArray.optString(0), true));
+        this.jdField_a_of_type_JavaUtilArrayList.add(swb.a(localJSONArray.optString(0), true));
         return;
       }
     } while (i2 != 1);
-    this.jdField_a_of_type_JavaUtilArrayList.add(ssb.a(localJSONArray.optString(0), true));
-    this.jdField_a_of_type_JavaUtilArrayList.add(ssb.a(localJSONArray.optString(0), true));
+    this.jdField_a_of_type_JavaUtilArrayList.add(swb.a(localJSONArray.optString(0), true));
+    this.jdField_a_of_type_JavaUtilArrayList.add(swb.a(localJSONArray.optString(0), true));
   }
   
   private void c(JSONObject paramJSONObject)
@@ -276,11 +276,11 @@ public class AdData
         ((JSONObject)localObject).put("wechat_ad_trace_data", paramJSONObject.optString("wechat_ad_trace_data"));
       }
       this.M = ((JSONObject)localObject).toString();
-      this.jdField_a_of_type_Tly = new tly(this.M);
+      this.jdField_a_of_type_Tro = new tro(this.M);
       if (paramJSONObject.has("ad_source"))
       {
         this.jdField_n_of_type_Int = paramJSONObject.optInt("ad_source");
-        this.jdField_a_of_type_Tly.jdField_j_of_type_Int = this.jdField_n_of_type_Int;
+        this.jdField_a_of_type_Tro.jdField_j_of_type_Int = this.jdField_n_of_type_Int;
       }
       return;
     }
@@ -473,9 +473,9 @@ public class AdData
     this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("content");
     this.jdField_a_of_type_Int = paramJSONObject.optInt("img_type");
     b(paramJSONObject);
-    this.jdField_e_of_type_JavaLangString = ssb.a(paramJSONObject.optString("click_url"), true);
-    this.jdField_f_of_type_JavaLangString = ssb.a(paramJSONObject.optString("jump_url"), true);
-    this.jdField_g_of_type_JavaLangString = ssb.a(paramJSONObject.optString("expose_url"), true);
+    this.jdField_e_of_type_JavaLangString = swb.a(paramJSONObject.optString("click_url"), true);
+    this.jdField_f_of_type_JavaLangString = swb.a(paramJSONObject.optString("jump_url"), true);
+    this.jdField_g_of_type_JavaLangString = swb.a(paramJSONObject.optString("expose_url"), true);
     this.jdField_b_of_type_Int = paramJSONObject.optInt("producttype");
     this.h = paramJSONObject.optString("pkg_name");
     this.jdField_i_of_type_JavaLangString = paramJSONObject.optString("app_name");
@@ -498,8 +498,8 @@ public class AdData
     }
     this.jdField_b_of_type_Boolean = bool;
     a(paramJSONObject);
-    this.jdField_a_of_type_Tlq = new tlq();
-    this.jdField_a_of_type_Tlq.a(paramJSONObject, this.jdField_a_of_type_Tlq, this.jdField_a_of_type_Tlp);
+    this.jdField_a_of_type_Trg = new trg();
+    this.jdField_a_of_type_Trg.a(paramJSONObject, this.jdField_a_of_type_Trg, this.jdField_a_of_type_Trf);
     this.L = paramJSONObject.optString("ext", "");
     if (TextUtils.isEmpty(this.L)) {
       this.L = new JSONObject().toString();
@@ -601,7 +601,7 @@ public class AdData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData
  * JD-Core Version:    0.7.0.1
  */

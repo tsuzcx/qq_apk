@@ -1,24 +1,44 @@
-import UserGrowth.stFeed;
-import android.view.ViewGroup;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 
 public class uij
 {
-  public static blsy<stFeed> a(int paramInt, ViewGroup paramViewGroup, ucr paramucr)
+  private amqk jdField_a_of_type_Amqk;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public uij(AppInterface paramAppInterface)
   {
-    switch (paramInt)
-    {
-    default: 
-      return uhz.a(paramViewGroup, paramucr);
-    case 1: 
-      return uik.a(paramViewGroup, paramucr);
-    case 2: 
-      return uhz.a(paramViewGroup, paramucr);
-    case 101: 
-      return uil.a(paramViewGroup, paramucr);
-    case 102: 
-      return uim.a(paramViewGroup, paramucr);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Amqk = new uik(this);
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Amqk);
     }
-    return uih.a(paramViewGroup, paramucr);
+  }
+  
+  public long a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return 0L;
+    }
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+    {
+      amqd localamqd = (amqd)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(8);
+      if (localamqd != null)
+      {
+        this.jdField_a_of_type_JavaLangString = paramString;
+        return localamqd.a(paramString, 0).longValue();
+      }
+    }
+    return 0L;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Amqk);
+    }
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
   }
 }
 

@@ -1,15 +1,13 @@
 package cooperation.qzone.plugin;
 
-import bnez;
-
-public class QZonePluginManager$2
+class QZonePluginManager$2
   implements Runnable
 {
-  public QZonePluginManager$2(bnez parambnez) {}
+  QZonePluginManager$2(QZonePluginManager paramQZonePluginManager) {}
   
   public void run()
   {
-    bnez.a(this.this$0, false);
+    QZonePluginManager.access$002(this.this$0, false);
   }
 }
 

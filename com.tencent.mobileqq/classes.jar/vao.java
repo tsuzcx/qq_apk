@@ -1,32 +1,19 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import java.util.List;
 
-class vao
-  extends RecyclerView.OnScrollListener
+public class vao
 {
-  vao(van paramvan) {}
+  public Object a;
+  public List<vaq> a;
+  public boolean a;
+  public boolean b;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public vao(List<vaq> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((van.a(this.a) instanceof StaggeredGridLayoutManager))
-    {
-      paramRecyclerView = (StaggeredGridLayoutManager)van.a(this.a);
-      int[] arrayOfInt = new int[paramRecyclerView.getColumnCountForAccessibility(null, null)];
-      paramRecyclerView.findFirstVisibleItemPositions(arrayOfInt);
-      if ((this.a.getLocalPosition(arrayOfInt[0]) <= 0) && (!van.a(this.a)))
-      {
-        van.a(this.a, true);
-        paramRecyclerView.invalidateSpanAssignments();
-      }
-      if (arrayOfInt[0] > 2) {
-        van.a(this.a, false);
-      }
-    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 

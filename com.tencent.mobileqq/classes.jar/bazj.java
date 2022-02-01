@@ -1,46 +1,117 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bazj
-  extends aocj
+  extends bazc
 {
-  public bazj(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  public static final String a;
+  public ArrayList<bazi> a;
+  protected final String b;
   
-  public void a(long paramLong1, int paramInt, long paramLong2)
+  static
   {
-    if (ReceiptMessageDetailFragment.c(this.a) == paramLong1)
+    jdField_a_of_type_JavaLangString = bazj.class.getSimpleName();
+  }
+  
+  public bazj(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    this.jdField_b_of_type_JavaLangString = "itemList";
+  }
+  
+  public bazj(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    this.jdField_b_of_type_JavaLangString = "itemList";
+  }
+  
+  public int a()
+  {
+    return 2;
+  }
+  
+  public void a(View paramView) {}
+  
+  public void a(String paramString)
+  {
+    JSONArray localJSONArray;
+    try
     {
-      if (paramInt != 0) {
-        break label109;
+      localJSONArray = new JSONObject(paramString).getJSONArray("itemList");
+      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      } else {
+        this.jdField_a_of_type_JavaUtilArrayList.clear();
       }
-      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c succs with readtime: " + paramLong2);
-      if (paramLong2 > 0L) {
-        ReceiptMessageDetailFragment.a(this.a, 1, 1, true);
-      }
-      if (this.a.isAdded())
-      {
-        ReceiptMessageDetailFragment localReceiptMessageDetailFragment = this.a;
-        if (paramLong2 <= 0L) {
-          break label104;
-        }
-        paramInt = 1;
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, paramInt, true);
-      }
-      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
     }
-    label104:
-    label109:
-    do
+    catch (JSONException paramString)
     {
-      return;
-      paramInt = 0;
-      break;
-      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c fail with reply code: " + paramInt);
-      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
-    } while (!this.a.isAdded());
-    ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(20);
+      if (!QLog.isColorLevel()) {
+        break label281;
+      }
+    }
+    QLog.e(jdField_a_of_type_JavaLangString, 2, "parseLayoutExtensions, e = " + paramString);
+    return;
+    int i = 0;
+    for (;;)
+    {
+      JSONObject localJSONObject;
+      int j;
+      try
+      {
+        if ((i >= localJSONArray.length()) || (i >= 5)) {
+          break label281;
+        }
+        localJSONObject = localJSONArray.getJSONObject(i);
+        paramString = null;
+        j = localJSONObject.optInt("type");
+        switch (j)
+        {
+        case 1: 
+          if (paramString == null) {
+            break label285;
+          }
+          this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        }
+      }
+      catch (JSONException paramString)
+      {
+        if (!QLog.isColorLevel()) {
+          break label281;
+        }
+      }
+      if ((a() instanceof DynamicSearch.ResultItem))
+      {
+        paramString = new bazk(this.g, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.c, localJSONObject, j, (DynamicSearch.ResultItem)a());
+        continue;
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "parseLayoutExtensions, e = " + paramString);
+      }
+      else if ((a() instanceof UnifySearchCommon.ResultItem))
+      {
+        paramString = new bazk(this.g, this.jdField_a_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.c, localJSONObject, j, (UnifySearchCommon.ResultItem)a());
+        continue;
+        if (localJSONArray != null) {
+          break;
+        }
+        label281:
+        return;
+        continue;
+        label285:
+        i += 1;
+      }
+    }
+  }
+  
+  public int b()
+  {
+    return 1;
   }
 }
 

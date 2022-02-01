@@ -1,28 +1,17 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
+import com.tencent.mobileqq.filemanageraux.link.LinkByWeiyunFragment;
 
-public class aspk
-  implements Animator.AnimatorListener
+class aspk
+  implements aszj
 {
-  public aspk(EmotionKeywordLayout paramEmotionKeywordLayout) {}
+  aspk(aspj paramaspj) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public void onNo() {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onYes()
   {
-    if (paramAnimator == EmotionKeywordLayout.a(this.a)) {
-      this.a.setVisibility(8);
-    }
-    if (EmotionKeywordLayout.a(this.a) != null) {
-      EmotionKeywordLayout.a(this.a).resetCurrentX(0);
-    }
+    bcef.b(null, "dc00898", "", "", "0X800AEE3", "0X800AEE3", 0, 0, "", "", "", "");
+    LinkByWeiyunFragment.a(this.a.jdField_a_of_type_AndroidAppActivity, null, this.a.jdField_a_of_type_JavaLangString, false);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

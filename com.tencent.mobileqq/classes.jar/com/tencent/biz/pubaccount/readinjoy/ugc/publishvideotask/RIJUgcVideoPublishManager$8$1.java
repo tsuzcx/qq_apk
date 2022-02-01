@@ -4,8 +4,8 @@ import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import rgo;
-import rgx;
+import rno;
+import rnx;
 
 class RIJUgcVideoPublishManager$8$1
   implements Runnable
@@ -18,14 +18,14 @@ class RIJUgcVideoPublishManager$8$1
     while (localIterator.hasNext())
     {
       UgcVideo localUgcVideo = (UgcVideo)localIterator.next();
-      if (!rgo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPublishvideotaskRIJUgcVideoPublishManager$8.this$0).contains(localUgcVideo)) {
-        rgo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPublishvideotaskRIJUgcVideoPublishManager$8.this$0).add(localUgcVideo);
+      if (!rno.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPublishvideotaskRIJUgcVideoPublishManager$8.this$0).contains(localUgcVideo)) {
+        rno.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPublishvideotaskRIJUgcVideoPublishManager$8.this$0).add(localUgcVideo);
       }
     }
-    rgo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPublishvideotaskRIJUgcVideoPublishManager$8.this$0, true);
-    localIterator = rgo.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPublishvideotaskRIJUgcVideoPublishManager$8.this$0).iterator();
+    rno.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPublishvideotaskRIJUgcVideoPublishManager$8.this$0, true);
+    localIterator = rno.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcPublishvideotaskRIJUgcVideoPublishManager$8.this$0).iterator();
     while (localIterator.hasNext()) {
-      ((rgx)localIterator.next()).a();
+      ((rnx)localIterator.next()).a();
     }
   }
 }

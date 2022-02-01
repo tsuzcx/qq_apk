@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import arfa;
-import arfb;
+import apyq;
+import apyr;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
@@ -14,8 +14,8 @@ class BaseJsPluginEngine$6
   
   public void run()
   {
-    arfa localarfa = arfb.a();
-    if ((localarfa != null) && (localarfa.a() != null) && (localarfa.a().contains(this.val$eventName))) {
+    apyq localapyq = apyr.a();
+    if ((localapyq != null) && (localapyq.a() != null) && (localapyq.a().contains(this.val$eventName))) {
       MiniProgramLpReportDC04239.reportApiInvoke(this.this$0.appBrandRuntime.getApkgInfo().appConfig, this.val$eventName);
     }
   }

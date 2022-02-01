@@ -1,14 +1,35 @@
-import java.util.List;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
 
 public class awam
+  implements avyv
 {
-  public int a;
-  public long a;
-  public List<Long> a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public awam(MultiCardFragment paramMultiCardFragment) {}
+  
+  public void a()
+  {
+    if (MultiCardFragment.a(this.a) != null) {
+      MultiCardFragment.a(this.a).a();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (MultiCardFragment.a(this.a) != null)
+    {
+      MultiCardFragment.a(this.a).setViewPagerBusy(false);
+      MultiCardFragment.a(this.a).setScrollState(2);
+      MultiCardFragment.a(this.a).fling(-paramInt);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (MultiCardFragment.a(this.a) != null) {
+      return MultiCardFragment.a(this.a).a();
+    }
+    return true;
+  }
 }
 
 

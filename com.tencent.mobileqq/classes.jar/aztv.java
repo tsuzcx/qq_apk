@@ -1,18 +1,46 @@
-import com.tencent.mobileqq.portal.PortalManager.ComboNumber;
-import java.util.Comparator;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aztv
-  implements Comparator<PortalManager.ComboNumber>
+  extends amwl
 {
-  public int a(PortalManager.ComboNumber paramComboNumber1, PortalManager.ComboNumber paramComboNumber2)
+  public aztv(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  
+  public void onReceiptMessageFetchReadStatusResult(long paramLong1, int paramInt, long paramLong2)
   {
-    if (paramComboNumber1.number > paramComboNumber2.number) {
-      return 1;
+    if (ReceiptMessageDetailFragment.c(this.a) == paramLong1)
+    {
+      if (paramInt != 0) {
+        break label109;
+      }
+      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c succs with readtime: " + paramLong2);
+      if (paramLong2 > 0L) {
+        ReceiptMessageDetailFragment.a(this.a, 1, 1, true);
+      }
+      if (this.a.isAdded())
+      {
+        ReceiptMessageDetailFragment localReceiptMessageDetailFragment = this.a;
+        if (paramLong2 <= 0L) {
+          break label104;
+        }
+        paramInt = 1;
+        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, paramInt, true);
+      }
+      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
     }
-    if (paramComboNumber1.number < paramComboNumber2.number) {
-      return -1;
-    }
-    return 0;
+    label104:
+    label109:
+    do
+    {
+      return;
+      paramInt = 0;
+      break;
+      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c fail with reply code: " + paramInt);
+      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+    } while (!this.a.isAdded());
+    ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(20);
   }
 }
 

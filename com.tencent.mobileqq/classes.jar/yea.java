@@ -1,6 +1,29 @@
-public abstract interface yea
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+
+class yea
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString);
+  yea(ydv paramydv) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(this.a.jdField_a_of_type_JavaLangString);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(this.a.d);
+    this.a.jdField_a_of_type_Yde.a = this.a.d;
+    this.a.jdField_a_of_type_Yde.d = this.a.e;
+    this.a.dismiss();
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.mBusinessId == 3)) {
+      LpReportInfo_pf00064.allReport(615, 3, 3);
+    }
+    xwb.a("0X80076C5");
+    xwb.b("0X80075D9");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,16 +1,43 @@
-import java.util.Comparator;
+import java.nio.ByteBuffer;
 
-class bcmy
-  implements Comparator<String>
+public abstract class bcmy
 {
-  bcmy(bcmx parambcmx) {}
+  protected volatile bcmx a;
   
-  public int a(String paramString1, String paramString2)
+  protected bcmy(bcmx parambcmx)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return 0;
+    this.a = parambcmx;
+  }
+  
+  protected bcmz a(bcmz parambcmz, int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte)
+  {
+    bcmz localbcmz = parambcmz;
+    if (parambcmz == null) {
+      localbcmz = new bcmz();
     }
-    return paramString2.length() - paramString1.length();
+    if (localbcmz.jdField_a_of_type_JavaNioByteBuffer == null) {
+      localbcmz.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt3);
+    }
+    if (paramInt2 >= paramInt3)
+    {
+      localbcmz.jdField_a_of_type_Boolean = true;
+      localbcmz.jdField_a_of_type_JavaNioByteBuffer.position(0);
+      localbcmz.jdField_a_of_type_JavaNioByteBuffer.put(paramArrayOfByte);
+      localbcmz.b = paramInt2;
+    }
+    do
+    {
+      do
+      {
+        return localbcmz;
+      } while (0L != (localbcmz.jdField_a_of_type_Long & paramInt4));
+      localbcmz.jdField_a_of_type_JavaNioByteBuffer.position(paramInt1);
+      localbcmz.jdField_a_of_type_JavaNioByteBuffer.put(paramArrayOfByte);
+      localbcmz.b += paramInt2;
+      localbcmz.jdField_a_of_type_Long |= paramInt4;
+    } while (localbcmz.b < paramInt3);
+    localbcmz.jdField_a_of_type_Boolean = true;
+    return localbcmz;
   }
 }
 

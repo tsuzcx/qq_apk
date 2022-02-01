@@ -1,301 +1,130 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.oskplayer.OskPlayerConfig;
-import com.tencent.oskplayer.OskPlayerCore;
-import com.tencent.oskplayer.PlayerConfig;
-import com.tencent.oskplayer.cache.DefaultCacheKeyGenerator;
-import com.tencent.oskplayer.util.DefaultLogger;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCaptureImageListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCompletionListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnControllerClickListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnErrorListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnInfoListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnSeekCompleteListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoPreparedListener;
-import common.config.service.QzoneConfig;
-import java.util.Arrays;
-import java.util.List;
+import android.util.SparseArray;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import com.tencent.mobileqq.redtouch.RedDisplayInfo;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.redtouch.RedTouchUI;
+import com.tencent.mobileqq.redtouch.RedTypeInfo;
+import cooperation.qqreader.view.ReaderTabBarView;
+import java.util.ArrayList;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bkvm
-  extends AbsVideoPlayer
 {
-  private static final String jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "MiniProgramVideoContentType", "application/octet-stream; charset=utf-8");
-  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+  public int a;
+  RedTouchUI jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI;
+  public String a;
+  public boolean a;
+  public int b = 0;
   
-  public int captureImageInTime(int paramInt1, int paramInt2)
+  public bkvm(ReaderTabBarView paramReaderTabBarView, int paramInt1, String paramString, boolean paramBoolean, int paramInt2, RedTouchUI paramRedTouchUI)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      try
-      {
-        paramInt1 = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.captureImageInTime(paramInt1, paramInt2);
-        return paramInt1;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        localIllegalAccessException.printStackTrace();
-      }
-    }
-    return 0;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramInt2;
+    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI = paramRedTouchUI;
   }
   
-  public View createVideoView(Context paramContext)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null)
-    {
-      localObject = new OskPlayerConfig();
-      ((OskPlayerConfig)localObject).setEnableHLSCache(true);
-      ((OskPlayerConfig)localObject).setDebugVersion(true);
-      ((OskPlayerConfig)localObject).setLogger(new DefaultLogger());
-      ((OskPlayerConfig)localObject).setCacheKeyGenerator(new DefaultCacheKeyGenerator());
-      OskPlayerCore.init(paramContext.getApplicationContext(), (OskPlayerConfig)localObject);
-      localObject = PlayerConfig.g().getContentTypeList();
-      if (localObject == null) {
-        break label166;
-      }
-    }
-    label166:
-    TVK_IProxyFactory localTVK_IProxyFactory;
+    if (ReaderTabBarView.a(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView).get(paramInt) == null) {}
+    label165:
     do
     {
-      for (;;)
+      do
       {
+        return;
+        this.jdField_a_of_type_Boolean = paramBoolean;
+        if ((!this.jdField_a_of_type_Boolean) && (ReaderTabBarView.a(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView).containsKey(Integer.valueOf(paramInt)))) {
+          ReaderTabBarView.a(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView).remove(Integer.valueOf(paramInt));
+        }
+        switch (this.jdField_a_of_type_Int)
+        {
+        default: 
+          paramInt = 0;
+        }
+        for (;;)
+        {
+          if (this.jdField_a_of_type_Boolean) {
+            break label165;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.d();
+          return;
+          paramInt = 0;
+          continue;
+          paramInt = -1;
+          try
+          {
+            int i = Integer.parseInt(this.jdField_a_of_type_JavaLangString);
+            paramInt = i;
+          }
+          catch (NumberFormatException localNumberFormatException)
+          {
+            for (;;)
+            {
+              bkvd.a("ReaderTabBarView", localNumberFormatException.getMessage());
+              continue;
+              paramBoolean = false;
+            }
+          }
+          if (this.jdField_a_of_type_Boolean)
+          {
+            if (paramInt <= 0) {
+              break;
+            }
+            paramBoolean = true;
+            this.jdField_a_of_type_Boolean = paramBoolean;
+          }
+          paramInt = 4;
+        }
+        RedAppInfo localRedAppInfo = new RedAppInfo();
+        localRedAppInfo.b(1);
+        localRedAppInfo.c(paramInt);
+        RedDisplayInfo localRedDisplayInfo = new RedDisplayInfo();
+        RedTypeInfo localRedTypeInfo = new RedTypeInfo();
+        localRedTypeInfo.setRedType(paramInt);
+        Object localObject;
+        if (paramInt == 4) {
+          localObject = new JSONObject();
+        }
         try
         {
-          ((List)localObject).addAll(Arrays.asList(jdField_a_of_type_JavaLangString.split("|")));
-          PlayerConfig.g().setContentTypeList((List)localObject);
-          TVK_SDKMgr.setDebugEnable(true);
-          TVK_SDKMgr.setOnLogListener(new bkvn(this));
-          TVK_SDKMgr.initSdk(paramContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-          if (TVK_SDKMgr.isInstalled(paramContext)) {
+          ((JSONObject)localObject).put("cn", "#FF0000");
+          localRedTypeInfo.setRedDesc(((JSONObject)localObject).toString());
+          localRedTypeInfo.setRedContent(this.jdField_a_of_type_JavaLangString);
+          localObject = new ArrayList();
+          ((ArrayList)localObject).add(localRedTypeInfo);
+          localRedDisplayInfo.a((ArrayList)localObject);
+          localRedAppInfo.a(localRedDisplayInfo);
+          this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(localRedAppInfo);
+          if (localRedTypeInfo.getRedType() != 0) {
             break;
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("AbsVideoPlayerImpl", 2, "TVK_SDK is not installed");
+          if (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) == 4)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 20, 8, 0).a();
+            return;
           }
-          return null;
         }
-        catch (Exception localException)
+        catch (JSONException localJSONException)
         {
-          QLog.e("AbsVideoPlayerImpl", 2, "initOskOnce contentTypeList.addAll oskPlayerContentTypeStrList get an err!!:" + localException);
-          continue;
+          for (;;)
+          {
+            bkvd.a("ReaderTabBarView", localJSONException.getMessage());
+          }
         }
-        QLog.e("AbsVideoPlayerImpl", 2, "getContentTypeList null");
-      }
-      localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
-    } while (localTVK_IProxyFactory == null);
-    IVideoViewBase localIVideoViewBase = localTVK_IProxyFactory.createVideoView_Scroll(paramContext);
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = localTVK_IProxyFactory.createMediaPlayer(paramContext, localIVideoViewBase);
-    return (View)localIVideoViewBase;
-  }
-  
-  public long getCurrentPostion()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
-    }
-    return 0L;
-  }
-  
-  public long getDuration()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
-    }
-    return 0L;
-  }
-  
-  public boolean getOutputMute()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getOutputMute();
-    }
-    return false;
-  }
-  
-  public int getVideoHeight()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getVideoHeight();
-    }
-    return 0;
-  }
-  
-  public int getVideoWidth()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getVideoWidth();
-    }
-    return 0;
-  }
-  
-  public boolean isPlaying()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying();
-    }
-    return false;
-  }
-  
-  public void openMediaPlayerByUrl(Context paramContext, String paramString, long paramLong)
-  {
-    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo;
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
-    {
-      localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
-      if ((!paramString.startsWith("http")) && (!paramString.startsWith("https"))) {
-        break label152;
-      }
-      if (!paramString.toLowerCase().contains(".m3u8")) {
-        break label85;
-      }
-      localTVK_PlayerVideoInfo.setPlayType(1);
-      if (!paramString.startsWith("https")) {
-        break label158;
-      }
-      paramString = OskPlayerCore.getInstance().getUrl(paramString);
-    }
-    label152:
-    label158:
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(paramContext, paramString, paramLong, 0L, localTVK_PlayerVideoInfo);
+      } while (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) != 5);
+      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 15, 8, 0).a();
       return;
-      label85:
-      QLog.d("AbsVideoPlayerImpl", 1, "OskPlayerCore.getInstance().getUrl: " + paramString);
-      paramString = OskPlayerCore.getInstance().getUrl(paramString);
-      QLog.d("AbsVideoPlayerImpl", 1, "OskPlayerCore.getInstance().getUrl done: " + paramString);
-      localTVK_PlayerVideoInfo.setPlayType(5);
-      continue;
-      localTVK_PlayerVideoInfo.setPlayType(4);
-    }
-  }
-  
-  public void pause()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
-    }
-  }
-  
-  public void release()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.release();
-    }
-  }
-  
-  public void seekTo(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.seekTo(paramInt);
-    }
-  }
-  
-  public void setLoopback(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setLoopback(paramBoolean);
-    }
-  }
-  
-  public void setOnCaptureImageListener(AbsVideoPlayer.OnCaptureImageListener paramOnCaptureImageListener)
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCaptureImageListener(new bkvu(this, paramOnCaptureImageListener));
-    }
-  }
-  
-  public void setOnCompletionListener(AbsVideoPlayer.OnCompletionListener paramOnCompletionListener)
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new bkvq(this, paramOnCompletionListener));
-    }
-  }
-  
-  public void setOnControllerClickListener(AbsVideoPlayer.OnControllerClickListener paramOnControllerClickListener)
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnControllerClickListener(new bkvo(this, paramOnControllerClickListener));
-    }
-  }
-  
-  public void setOnErrorListener(AbsVideoPlayer.OnErrorListener paramOnErrorListener)
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new bkvr(this, paramOnErrorListener));
-    }
-  }
-  
-  public void setOnInfoListener(AbsVideoPlayer.OnInfoListener paramOnInfoListener)
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnInfoListener(new bkvs(this, paramOnInfoListener));
-    }
-  }
-  
-  public void setOnSeekCompleteListener(AbsVideoPlayer.OnSeekCompleteListener paramOnSeekCompleteListener)
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnSeekCompleteListener(new bkvt(this, paramOnSeekCompleteListener));
-    }
-  }
-  
-  public void setOnVideoPreparedListener(AbsVideoPlayer.OnVideoPreparedListener paramOnVideoPreparedListener)
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new bkvp(this, paramOnVideoPreparedListener));
-    }
-  }
-  
-  public boolean setOutputMute(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(paramBoolean);
-    }
-    return false;
-  }
-  
-  public void setXYaxis(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setXYaxis(paramInt);
-    }
-  }
-  
-  public void start()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-    }
-  }
-  
-  public void startPlayDanmu()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.startPlayDanmu();
-    }
-  }
-  
-  public void stop()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
-    }
-  }
-  
-  public void stopPlayDanmu()
-  {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stopPlayDanmu();
-    }
+      if (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) == 4)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 30, 2, 0).a();
+        return;
+      }
+    } while (ReaderTabBarView.b(this.jdField_a_of_type_CooperationQqreaderViewReaderTabBarView) != 5);
+    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI.a(0, 25, 2, 0).a();
   }
 }
 

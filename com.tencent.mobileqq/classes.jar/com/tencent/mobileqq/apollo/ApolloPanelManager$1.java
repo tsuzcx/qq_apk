@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.apollo;
 
-import amtq;
-import anfq;
-import angf;
-import angi;
-import anra;
+import alok;
+import amak;
+import amaz;
+import ambc;
+import amlu;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ApolloPanelManager$1
   implements Runnable
 {
-  public ApolloPanelManager$1(amtq paramamtq, anra paramanra) {}
+  public ApolloPanelManager$1(alok paramalok, amlu paramamlu) {}
   
   public void run()
   {
-    this.this$0.a(this.this$0.a.get(), true, amtq.a(this.this$0));
-    if ((this.this$0.a.get() == 0) && (!amtq.a(this.this$0)) && (this.this$0.a() != null))
+    this.this$0.a(this.this$0.a.get(), true, alok.a(this.this$0));
+    if ((this.this$0.a.get() == 0) && (!alok.a(this.this$0)) && (this.this$0.a() != null))
     {
-      anfq localanfq = angi.a(this.this$0.a()).a();
-      if (localanfq != null) {
-        localanfq.a(this.this$0.b);
+      amak localamak = ambc.a(this.this$0.a()).a();
+      if (localamak != null) {
+        localamak.a(this.this$0.b);
       }
     }
-    if ((amtq.a(this.this$0)) || (this.this$0.a.get() > 0)) {
-      amtq.a(this.this$0, this.a);
+    if ((alok.a(this.this$0)) || (this.this$0.a.get() > 0)) {
+      alok.a(this.this$0, this.a);
     }
   }
 }

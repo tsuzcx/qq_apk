@@ -1,6 +1,30 @@
-public abstract interface akqd
+import android.widget.Filter;
+import android.widget.Filter.FilterResults;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import java.util.List;
+
+class akqd
+  extends Filter
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  akqd(akqc paramakqc) {}
+  
+  protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
+  {
+    paramCharSequence = new Filter.FilterResults();
+    paramCharSequence.values = this.a.a.a;
+    paramCharSequence.count = this.a.a.a.size();
+    return paramCharSequence;
+  }
+  
+  protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
+  {
+    if (paramFilterResults.count > 0)
+    {
+      this.a.notifyDataSetChanged();
+      return;
+    }
+    this.a.notifyDataSetInvalidated();
+  }
 }
 
 

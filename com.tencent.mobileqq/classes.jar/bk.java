@@ -1,7 +1,7 @@
 import com.dataline.activities.LiteActivity;
 
 public class bk
-  implements bdhy
+  implements bcan
 {
   public bk(LiteActivity paramLiteActivity) {}
   

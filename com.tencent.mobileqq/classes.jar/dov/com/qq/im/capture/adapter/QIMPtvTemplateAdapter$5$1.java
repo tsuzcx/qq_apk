@@ -1,17 +1,17 @@
 package dov.com.qq.im.capture.adapter;
 
-import bplz;
-import bpmd;
-import brhn;
+import bmqu;
+import bmqy;
+import boba;
 
 public class QIMPtvTemplateAdapter$5$1
   implements Runnable
 {
-  public QIMPtvTemplateAdapter$5$1(bpmd parambpmd) {}
+  public QIMPtvTemplateAdapter$5$1(bmqy parambmqy) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_Brhn.a(this.a.a.jdField_a_of_type_Brhn.a(), this.a.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, bplz.a(this.a.a));
+    this.a.a.jdField_a_of_type_Boba.a(this.a.a.jdField_a_of_type_Boba.getApp(), this.a.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, bmqu.a(this.a.a));
     this.a.a.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.downloading = true;
   }
 }

@@ -1,35 +1,42 @@
-import android.content.Context;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.widget.SingleLineTextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.SimpleTextView;
 
-public final class bhtt
-  implements URLDrawable.URLDrawableListener
+class bhtt
+  extends bjub
 {
-  public bhtt(boolean paramBoolean, SingleLineTextView paramSingleLineTextView, Context paramContext) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  bhtt(bhtr parambhtr, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      if (paramURLDrawable.getCurrDrawable() != null) {
-        paramURLDrawable.getCurrDrawable().setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
-      }
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public View a(int paramInt, Object paramObject, bjua parambjua, View.OnClickListener paramOnClickListener)
+  {
+    parambjua = super.a(paramInt, paramObject, parambjua, paramOnClickListener);
+    if ((parambjua instanceof SimpleTextView)) {
+      parambjua.setTag(paramObject);
     }
+    return parambjua;
+  }
+  
+  public void a(int paramInt, Object paramObject, bjua[] paramArrayOfbjua)
+  {
+    paramInt = 0;
+    if ((paramArrayOfbjua == null) || (paramArrayOfbjua.length <= 0)) {}
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, VipUtils.a(agej.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), paramURLDrawable));
       return;
-      if (paramURLDrawable.getCurrDrawable() != null) {
-        paramURLDrawable.getCurrDrawable().setColorFilter(null);
+      if (paramArrayOfbjua.length < 0)
+      {
+        paramArrayOfbjua[0].b = 0;
+        paramArrayOfbjua[0].a = 0;
+        paramInt = 1;
+      }
+      while (paramInt < paramArrayOfbjua.length)
+      {
+        paramArrayOfbjua[paramInt].b = -1;
+        paramArrayOfbjua[paramInt].a = -1;
+        paramInt += 1;
       }
     }
   }

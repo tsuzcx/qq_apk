@@ -104,6 +104,11 @@ public abstract class ProtoBufRequest
   
   protected abstract String getCmdName();
   
+  public String getCmdString()
+  {
+    return "";
+  }
+  
   public int getContentType()
   {
     return 0;

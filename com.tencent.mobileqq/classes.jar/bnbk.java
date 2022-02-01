@@ -1,30 +1,67 @@
-import android.annotation.TargetApi;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import dov.com.qq.im.ae.SessionWrap;
 
 public class bnbk
-  implements DialogInterface.OnClickListener
 {
-  public bnbk(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, int paramInt1, int paramInt2, int paramInt3) {}
+  public int a;
+  private SessionWrap jdField_a_of_type_DovComQqImAeSessionWrap;
+  private String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean = true;
+  private int c = 1;
+  private int d = 11;
+  private int e;
+  private int f;
   
-  @TargetApi(9)
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bnbk(int paramInt)
   {
-    paramDialogInterface = BaseApplication.getContext().getSharedPreferences("share", 0);
-    if (Build.VERSION.SDK_INT >= 9) {
-      paramDialogInterface.edit().putBoolean("qzone_bg_music_auto_play_warn_flag", false).apply();
-    }
-    for (;;)
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 0;
+    if (paramInt == 2) {}
+    for (paramInt = i;; paramInt = 1)
     {
-      QzoneWebMusicJsPlugin.access$400(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, this.jdField_a_of_type_Int, this.b, this.c);
+      this.jdField_b_of_type_Int = paramInt;
       return;
-      paramDialogInterface.edit().putBoolean("qzone_bg_music_auto_play_warn_flag", false).commit();
     }
+  }
+  
+  public bnbi a()
+  {
+    return new bnbi(this, null);
+  }
+  
+  public bnbk a(int paramInt)
+  {
+    this.c = paramInt;
+    return this;
+  }
+  
+  public bnbk a(SessionWrap paramSessionWrap)
+  {
+    this.jdField_a_of_type_DovComQqImAeSessionWrap = paramSessionWrap;
+    if (paramSessionWrap != null) {
+      this.d = bbpn.a(paramSessionWrap.jdField_a_of_type_Int);
+    }
+    return this;
+  }
+  
+  public bnbk a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public bnbk b(int paramInt)
+  {
+    this.e = paramInt;
+    return this;
+  }
+  
+  public bnbk b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
   }
 }
 

@@ -1,13 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.config.ResourcePluginListener;
+import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment;
+import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment.5.1;
+import com.tencent.qphone.base.util.QLog;
 
-public final class bcnp
-  implements DialogInterface.OnClickListener
+public class bcnp
+  extends ResourcePluginListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bcnp(KidModeAdvanceSettingFragment paramKidModeAdvanceSettingFragment) {}
+  
+  public void a(byte paramByte)
   {
-    com.tencent.mobileqq.search.util.VADHelper.c = false;
-    paramDialogInterface.dismiss();
+    QLog.d("leba_study", 1, "notifyLebaState ");
+    ThreadManager.excute(new KidModeAdvanceSettingFragment.5.1(this), 32, null, true);
   }
 }
 

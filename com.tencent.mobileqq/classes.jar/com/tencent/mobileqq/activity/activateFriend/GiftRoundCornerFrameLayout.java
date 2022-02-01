@@ -9,12 +9,12 @@ import android.os.Build.VERSION;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import bhtq;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class GiftRoundCornerFrameLayout
   extends FrameLayout
 {
-  private float jdField_a_of_type_Float = bhtq.b(4.0F);
+  private float jdField_a_of_type_Float = ViewUtils.dpToPx(4.0F);
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   
@@ -56,7 +56,7 @@ public class GiftRoundCornerFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.GiftRoundCornerFrameLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v4.util.LruCache;
 
 class aufq
-  implements aufb
+  extends LruCache<String, aufr>
 {
-  aufq(aufn paramaufn) {}
-  
-  public void a()
+  aufq(aufp paramaufp, int paramInt)
   {
-    this.a.a(true, aumg.a(this.a.a.a()), this.a.c(), new aufr(this));
+    super(paramInt);
   }
   
-  public void b()
+  protected int a(String paramString, aufr paramaufr)
   {
-    this.a.d();
-    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).a().a(this.a.d());
+    return 1;
   }
 }
 

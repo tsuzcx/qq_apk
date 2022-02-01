@@ -1,13 +1,39 @@
+import android.os.Handler;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
+
 class bnsm
-  implements anwh
+  extends SosoInterface.OnLocationListener
 {
-  bnsm(bnsl parambnsl) {}
+  private int jdField_a_of_type_Int = -1;
   
-  public void a(boolean paramBoolean)
+  public bnsm(bnsj parambnsj, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, int paramInt2)
   {
-    if (paramBoolean) {
-      this.a.a();
+    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_a_of_type_Int = paramInt2;
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    {
+      double d1 = paramSosoLbsInfo.mLocation.mLat02;
+      double d2 = paramSosoLbsInfo.mLocation.mLon02;
+      if (QLog.isColorLevel()) {
+        QLog.d("LBSDetetor", 2, "onLocationUpdate() latitude=" + d1 + " longitude=" + d2);
+      }
+      bnsj.a(this.jdField_a_of_type_Bnsj, d1, d2, this.jdField_a_of_type_Int);
     }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("LBSDetetor", 2, "onLocationUpdate() error");
+      }
+    } while ((bnsj.a(this.jdField_a_of_type_Bnsj) == null) || (!bnsj.a(this.jdField_a_of_type_Bnsj).hasMessages(this.jdField_a_of_type_Int)));
+    bnsj.a(this.jdField_a_of_type_Bnsj, false, null, this.jdField_a_of_type_Int);
   }
 }
 

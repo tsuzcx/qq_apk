@@ -12,7 +12,7 @@ class MiniGamePublicAccountWebFragment$8
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return MiniGamePublicAccountWebFragment.access$1500(this.this$0).onTouchEvent(paramMotionEvent);
+    return MiniGamePublicAccountWebFragment.access$1700(this.this$0).onTouchEvent(paramMotionEvent);
   }
 }
 

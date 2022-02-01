@@ -1,6 +1,31 @@
-public abstract interface syd
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+
+class syd
+  implements Animator.AnimatorListener
 {
-  public abstract void a(boolean paramBoolean);
+  syd(sya paramsya) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    sya.a(this.a).setVisibility(8);
+    sya.b(this.a).setVisibility(0);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a();
+    PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).edit().putLong("search_hotword_show_lasttime", System.currentTimeMillis()).commit();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

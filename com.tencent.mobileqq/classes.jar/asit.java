@@ -1,15 +1,10 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
 
-public class asit
-  extends amkp
+abstract interface asit
 {
-  public asit(MessengerService paramMessengerService) {}
+  public abstract void a(String paramString, Bundle paramBundle);
   
-  public void a(Bundle paramBundle)
-  {
-    this.a.a(paramBundle);
-  }
+  public abstract void a(String paramString, asis paramasis);
 }
 
 

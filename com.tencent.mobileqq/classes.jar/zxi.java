@@ -1,18 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 class zxi
-  implements DialogInterface.OnClickListener
 {
-  zxi(zxh paramzxh) {}
+  private int jdField_a_of_type_Int = -1;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ((aogj)this.a.a.app.a(10)).a(true);
-    bdll.b(null, "dc00898", "", "", "0X800A476", "0X800A476", 0, 0, "", "", "", "");
-  }
+  private zxi(zxg paramzxg) {}
 }
 
 

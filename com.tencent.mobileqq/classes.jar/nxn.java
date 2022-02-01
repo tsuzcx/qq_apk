@@ -1,19 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nxn
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnClickListener
 {
-  public nxn(VideoCoverView paramVideoCoverView) {}
+  public nxn(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.setRotation(90.0F * f1);
-    float f2 = VideoCoverView.c(this.a) * 1.0F / VideoCoverView.d(this.a);
-    this.a.setScaleX((f2 - 1.0F) * f1 + 1.0F);
-    this.a.setScaleY(f1 * 0.7774618F + 1.0F);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

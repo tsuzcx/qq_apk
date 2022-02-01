@@ -1,26 +1,22 @@
-public abstract interface alxq
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+final class alxq
+  implements EIPCResultCallback
 {
-  public abstract zhr a();
+  alxq(long paramLong, String paramString) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(zhr paramzhr);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract boolean c();
-  
-  public abstract void d();
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    paramEIPCResult = paramEIPCResult.data.getString("resData");
+    alvx.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, paramEIPCResult);
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_DRESS_PATH onCallback resJson:" + paramEIPCResult);
+    }
+  }
 }
 
 

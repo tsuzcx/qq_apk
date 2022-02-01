@@ -1,38 +1,85 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimPluginProxyService;
+import android.text.TextUtils;
+import android.util.LruCache;
+import java.util.ArrayList;
 
 public class bmnv
-  implements bmob
 {
-  public bmnv(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC) {}
+  private static LruCache<String, ArrayList<Double>> jdField_a_of_type_AndroidUtilLruCache = new LruCache(10);
+  private static ArrayList<Double> jdField_a_of_type_JavaUtilArrayList;
   
-  public void a()
+  private static double a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bmnu.a, 2, "QQPimGetTipsInfoIPC.hasInstalled() ");
+    double d2 = Math.random();
+    double d1 = d2;
+    if (d2 < 0.1D) {
+      d1 = d2 + 0.1000000014901161D;
     }
-    QQPimPluginProxyService.a(QQPimGetTipsInfoIPC.a(this.a));
+    return d1;
   }
   
-  public void a(float paramFloat)
+  static double a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bmnu.a, 2, "QQPimGetTipsInfoIPC.downloading() " + paramFloat);
+    double d;
+    if (jdField_a_of_type_JavaUtilArrayList == null)
+    {
+      bmbx.a("AEEditorMusicWaveRandomGenerator", "obtainRandomValue() mRandoms == null.");
+      d = a();
     }
+    for (;;)
+    {
+      return d;
+      if (paramInt == jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        bmbx.a("AEEditorMusicWaveRandomGenerator", "obtainRandomValue() index == mRandoms.size().");
+        d = a();
+        jdField_a_of_type_JavaUtilArrayList.add(paramInt, Double.valueOf(d));
+        return d;
+      }
+      if (paramInt < 0)
+      {
+        bmbx.a("AEEditorMusicWaveRandomGenerator", "obtainRandomValue() index < 0.");
+        return a();
+      }
+      if (paramInt <= jdField_a_of_type_JavaUtilArrayList.size()) {
+        break;
+      }
+      bmbx.a("AEEditorMusicWaveRandomGenerator", "obtainRandomValue() index > mRandoms.size().");
+      d = a();
+      int i = jdField_a_of_type_JavaUtilArrayList.size();
+      while (i <= paramInt)
+      {
+        d = a();
+        jdField_a_of_type_JavaUtilArrayList.add(i, Double.valueOf(d));
+        i += 1;
+      }
+    }
+    return ((Double)jdField_a_of_type_JavaUtilArrayList.get(paramInt)).doubleValue();
   }
   
-  public void a(int paramInt)
+  static void a(String paramString1, String paramString2, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bmnu.a, 2, "QQPimGetTipsInfoIPC.downloadError() " + paramInt);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(bmnu.a, 2, "QQPimGetTipsInfoIPC.downloadBegin()");
+    if (TextUtils.isEmpty(paramString1)) {}
+    for (;;)
+    {
+      if ((jdField_a_of_type_AndroidUtilLruCache != null) && (!TextUtils.isEmpty(paramString2)) && (jdField_a_of_type_AndroidUtilLruCache.get(paramString2) != null))
+      {
+        jdField_a_of_type_JavaUtilArrayList = (ArrayList)jdField_a_of_type_AndroidUtilLruCache.get(paramString2);
+        return;
+      }
+      int i = Math.min(paramInt, 10000);
+      paramString1 = new ArrayList();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        paramString1.add(Double.valueOf(a()));
+        paramInt += 1;
+      }
+      if (jdField_a_of_type_AndroidUtilLruCache != null) {
+        jdField_a_of_type_AndroidUtilLruCache.put(paramString2, paramString1);
+      }
+      jdField_a_of_type_JavaUtilArrayList = paramString1;
+      return;
+      paramString2 = paramString1;
     }
   }
 }

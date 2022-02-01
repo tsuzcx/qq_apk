@@ -1,121 +1,92 @@
-import android.content.Context;
-import android.graphics.PointF;
-import android.view.MotionEvent;
-import com.tencent.qphone.base.util.QLog;
+import android.util.Log;
+import java.util.LinkedList;
+import java.util.List;
 
-public class lqq
-  extends lqp
+public abstract class lqq
 {
-  private static final PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
-  private final lqr jdField_a_of_type_Lqr;
-  private PointF b;
-  private PointF c;
-  private PointF d = new PointF();
-  private PointF e = new PointF();
+  private String jdField_a_of_type_JavaLangString = getClass().getSimpleName() + "-" + Integer.toHexString(hashCode());
+  private List<lqp> jdField_a_of_type_JavaUtilList = new LinkedList();
+  lqs jdField_a_of_type_Lqs;
+  private lqv jdField_a_of_type_Lqv;
   
-  public lqq(Context paramContext, lqr paramlqr)
+  public lqq()
   {
-    super(paramContext);
-    this.jdField_a_of_type_Lqr = paramlqr;
+    Log.d(this.jdField_a_of_type_JavaLangString, "ImageSource: ");
   }
   
-  private PointF a(MotionEvent paramMotionEvent)
+  public lqq a(lqp paramlqp)
   {
-    float f1 = 0.0F;
-    int j = paramMotionEvent.getPointerCount();
-    int i = 0;
-    float f2 = 0.0F;
-    while (i < j)
+    Log.d(this.jdField_a_of_type_JavaLangString, "addTarget: " + paramlqp);
+    this.jdField_a_of_type_JavaUtilList.add(paramlqp);
+    paramlqp.a(this.jdField_a_of_type_Lqv);
+    return this;
+  }
+  
+  protected abstract void a();
+  
+  public void a(lqs paramlqs)
+  {
+    this.jdField_a_of_type_Lqs = paramlqs;
+  }
+  
+  protected abstract void b();
+  
+  protected void b(List<lqt> paramList, long paramLong)
+  {
+    int k = 0;
+    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {}
+    for (;;)
     {
-      f2 += paramMotionEvent.getX(i);
-      f1 += paramMotionEvent.getY(i);
+      return;
+      int i = 0;
+      int j;
+      for (;;)
+      {
+        j = k;
+        if (i >= paramList.size()) {
+          break;
+        }
+        ((lqt)paramList.get(i)).a(this.jdField_a_of_type_JavaUtilList.size());
+        i += 1;
+      }
+      while (j < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        ((lqp)this.jdField_a_of_type_JavaUtilList.get(j)).a(paramList, paramLong);
+        j += 1;
+      }
+    }
+  }
+  
+  public void c()
+  {
+    Log.d(this.jdField_a_of_type_JavaLangString, "isolated: ");
+    this.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public void d()
+  {
+    Log.d(this.jdField_a_of_type_JavaLangString, "init");
+    this.jdField_a_of_type_Lqv = new lqv();
+    this.jdField_a_of_type_Lqv.a = this;
+    a();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      ((lqp)this.jdField_a_of_type_JavaUtilList.get(i)).a(this.jdField_a_of_type_Lqv);
       i += 1;
     }
-    return new PointF(f2 / j, f1 / j);
   }
   
-  public float a()
+  public void e()
   {
-    return this.d.x;
-  }
-  
-  public PointF a()
-  {
-    return this.e;
-  }
-  
-  protected void a(int paramInt, MotionEvent paramMotionEvent)
-  {
-    switch (paramInt)
+    Log.d(this.jdField_a_of_type_JavaLangString, "destroy");
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-    case 1: 
-    default: 
-      return;
-    case 0: 
-      a();
-      this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-      this.jdField_a_of_type_Long = 0L;
-      a(paramMotionEvent);
-      return;
+      ((lqp)this.jdField_a_of_type_JavaUtilList.get(i)).c();
+      i += 1;
     }
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Lqr.b(this);
-  }
-  
-  protected void a(MotionEvent paramMotionEvent)
-  {
-    super.a(paramMotionEvent);
-    MotionEvent localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
-    if ((paramMotionEvent == null) || (localMotionEvent == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseGestureDetector", 2, "updateStateByEvent-->Curr Or Prev is null");
-      }
-      return;
-    }
-    this.jdField_b_of_type_AndroidGraphicsPointF = a(paramMotionEvent);
-    this.c = a(localMotionEvent);
-    int i;
-    if (localMotionEvent.getPointerCount() != paramMotionEvent.getPointerCount())
-    {
-      i = 1;
-      if (i == 0) {
-        break label125;
-      }
-    }
-    label125:
-    for (paramMotionEvent = jdField_a_of_type_AndroidGraphicsPointF;; paramMotionEvent = new PointF(this.jdField_b_of_type_AndroidGraphicsPointF.x - this.c.x, this.jdField_b_of_type_AndroidGraphicsPointF.y - this.c.y))
-    {
-      this.e = paramMotionEvent;
-      paramMotionEvent = this.d;
-      paramMotionEvent.x += this.e.x;
-      paramMotionEvent = this.d;
-      paramMotionEvent.y += this.e.y;
-      return;
-      i = 0;
-      break;
-    }
-  }
-  
-  public float b()
-  {
-    return this.d.y;
-  }
-  
-  protected void b(int paramInt, MotionEvent paramMotionEvent)
-  {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Lqr.a(this);
-      a();
-      return;
-      a(paramMotionEvent);
-    } while ((this.jdField_a_of_type_Float / this.jdField_b_of_type_Float <= 0.67F) || (!this.jdField_a_of_type_Lqr.a(this)) || (this.jdField_a_of_type_AndroidViewMotionEvent == null));
-    this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
-    this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+    b();
   }
 }
 

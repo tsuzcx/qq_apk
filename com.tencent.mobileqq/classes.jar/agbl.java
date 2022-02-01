@@ -1,29 +1,23 @@
-import Wallet.AcsMsg;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class agbl
-  implements agdq
+class agbl
+  implements bjoe
 {
-  public agbl(ActivateFriendActivity paramActivateFriendActivity, ArrayList paramArrayList, int paramInt) {}
+  agbl(agbj paramagbj, bjnw parambjnw) {}
   
-  public void a(List<AcsMsg> paramList)
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = new CopyOnWriteArrayList(paramList);
-    paramList = new Bundle();
-    paramList.putSerializable("list", (Serializable)localObject);
-    paramList.putSerializable("models", this.jdField_a_of_type_JavaUtilArrayList);
-    paramList.putInt("count", this.jdField_a_of_type_Int);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.a.obtainMessage();
-    ((Message)localObject).obj = paramList;
-    ((Message)localObject).what = 2;
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.a.sendMessage((Message)localObject);
+    this.jdField_a_of_type_Bjnw.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    ChatActivityUtils.a(this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Agbj.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendNick, null, true, this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.troopUin, true, true, null, "from_internal");
+    bcef.b(this.jdField_a_of_type_Agbj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.doutu.combo;
 
-import ascj;
+import aqwg;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class ComboResource$1
@@ -8,12 +8,12 @@ public final class ComboResource$1
 {
   public void run()
   {
-    ascj.a(BaseApplicationImpl.getApplication().getBaseContext());
+    aqwg.a(BaseApplicationImpl.getApplication().getBaseContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.combo.ComboResource.1
  * JD-Core Version:    0.7.0.1
  */

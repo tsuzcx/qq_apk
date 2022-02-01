@@ -15,14 +15,14 @@ public class h
     return h.a.a();
   }
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void a(boolean paramBoolean, String paramString1, int paramInt1, int paramInt2, String paramString2, long paramLong)
   {
     if (MsfService.getCore().getStatReporter() != null) {
       if (!paramBoolean) {
-        break label127;
+        break label140;
       }
     }
-    label127:
+    label140:
     for (int i = 0;; i = 1)
     {
       HashMap localHashMap = new HashMap();
@@ -32,6 +32,7 @@ public class h
       localHashMap.put("totalLen", String.valueOf((paramInt1 + paramInt2) / 1024));
       localHashMap.put("packageLen", String.valueOf(this.c));
       localHashMap.put("cmd", paramString2);
+      localHashMap.put("sleepByIPCBlockTime", String.valueOf(paramLong));
       MsfService.getCore().getStatReporter().a("EvtIPCTransport", paramBoolean, 0L, 0L, localHashMap, false, false);
       return;
     }

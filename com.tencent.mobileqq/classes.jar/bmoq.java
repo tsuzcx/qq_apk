@@ -1,6 +1,17 @@
-public abstract interface bmoq
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+
+final class bmoq
+  extends AnimatorListenerAdapter
 {
-  public abstract void a();
+  bmoq(View paramView, float paramFloat) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    this.jdField_a_of_type_AndroidViewView.setTranslationX(this.jdField_a_of_type_Float);
+  }
 }
 
 

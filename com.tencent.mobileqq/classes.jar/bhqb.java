@@ -1,52 +1,53 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Parcelable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
+import com.tencent.open.model.AppInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class bhqb
-  implements View.OnClickListener
+public class bhqb
+  extends biei
 {
-  bhqb(bhpy parambhpy, DialogInterface.OnClickListener paramOnClickListener) {}
+  public bhqb(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, List<AppInfo> paramList)
   {
-    this.jdField_a_of_type_Bhpy.hideSoftInputFromWindow();
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorityControlAppDetailsActivity", 2, "onDelApp: invoked.  isSuccess: " + paramBoolean + " infos: " + paramList);
+    }
+    Object localObject;
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bhpy, 1);
-      if (this.jdField_a_of_type_Bhpy.c)
+      localObject = amtj.a(2131699955) + AuthorityControlAppDetailsFragment.a(this.a).b() + amtj.a(2131699953);
+      QQToast.a(AuthorityControlAppDetailsFragment.a(this.a), 2, (CharSequence)localObject, 0).a();
+      localObject = new Intent();
+      if ((paramList != null) && (paramList.size() == 1))
       {
-        if (!this.jdField_a_of_type_Bhpy.jdField_a_of_type_Boolean) {
-          break label100;
-        }
-        this.jdField_a_of_type_Bhpy.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bhpy.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+        ((Intent)localObject).putExtra("KEY_DELETED_INFO", (Parcelable)paramList.get(0));
+        AuthorityControlAppDetailsFragment.a(this.a).setResult(-1, (Intent)localObject);
+      }
+      AuthorityControlAppDetailsFragment.a(this.a).finish();
+      localObject = AuthorityControlAppDetailsFragment.a(this.a);
+      if (!paramBoolean) {
+        break label236;
       }
     }
-    for (;;)
+    label236:
+    for (paramList = "0";; paramList = "1")
     {
-      this.jdField_a_of_type_Bhpy.c = false;
-      try
-      {
-        if (this.jdField_a_of_type_Bhpy.isShowing()) {
-          this.jdField_a_of_type_Bhpy.dismiss();
-        }
-        label92:
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        label100:
-        this.jdField_a_of_type_Bhpy.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_Bhpy.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
-      }
-      catch (Exception localException)
-      {
-        break label92;
-      }
+      bcef.b((QQAppInterface)localObject, "dc00898", "", "", "0X8009E1C", "0X8009E1C", 0, 0, paramList, "", String.valueOf(AuthorityControlAppDetailsFragment.a(this.a).a()), "");
+      return;
+      QQToast.a(AuthorityControlAppDetailsFragment.a(this.a), 1, amtj.a(2131699954), 0).a();
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhqb
  * JD-Core Version:    0.7.0.1
  */

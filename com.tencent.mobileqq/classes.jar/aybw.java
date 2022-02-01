@@ -1,55 +1,64 @@
-import com.tencent.mobileqq.nearby.now.view.SplitedProgressBar;
-import java.security.InvalidParameterException;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.TroopRemindSettingData;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
+import com.tencent.mobileqq.persistence.OGAbstractDao;
 
 public class aybw
+  extends OGAbstractDao
 {
-  private SplitedProgressBar a;
-  
-  public aybw(SplitedProgressBar paramSplitedProgressBar)
+  public aybw()
   {
-    if (paramSplitedProgressBar == null) {
-      throw new InvalidParameterException("ProgressControler: progressBar is null");
-    }
-    this.a = paramSplitedProgressBar;
+    this.columnLen = 2;
   }
   
-  public void a(int paramInt)
+  public Entity cursor2Entity(Entity paramEntity, Cursor paramCursor, boolean paramBoolean, NoColumnErrorHandler paramNoColumnErrorHandler)
   {
-    if (paramInt == 0) {
-      return;
-    }
-    this.a.setTotalCount(paramInt);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 < this.a.b) {
-      this.a.setProgress(paramInt1, paramInt2);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    SplitedProgressBar localSplitedProgressBar = this.a;
-    if (paramBoolean) {}
-    for (int i = 8;; i = 0)
+    paramEntity = (TroopRemindSettingData)paramEntity;
+    if (paramNoColumnErrorHandler == null)
     {
-      localSplitedProgressBar.setVisibility(i);
-      return;
+      paramEntity.troopUin = paramCursor.getString(paramCursor.getColumnIndex("troopUin"));
+      paramEntity.isOpenState = paramCursor.getInt(paramCursor.getColumnIndex("isOpenState"));
+      return paramEntity;
     }
+    int i = paramCursor.getColumnIndex("troopUin");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("troopUin", String.class));
+    }
+    for (;;)
+    {
+      i = paramCursor.getColumnIndex("isOpenState");
+      if (i != -1) {
+        break;
+      }
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("isOpenState", Integer.TYPE));
+      return paramEntity;
+      paramEntity.troopUin = paramCursor.getString(i);
+    }
+    paramEntity.isOpenState = paramCursor.getInt(i);
+    return paramEntity;
   }
   
-  public void b(int paramInt)
+  public void entity2ContentValues(Entity paramEntity, ContentValues paramContentValues)
   {
-    if (paramInt == 0) {
-      return;
-    }
-    this.a.setShowMaxCount(paramInt);
+    paramEntity = (TroopRemindSettingData)paramEntity;
+    paramContentValues.put("troopUin", paramEntity.troopUin);
+    paramContentValues.put("isOpenState", Integer.valueOf(paramEntity.isOpenState));
+  }
+  
+  public String getCreateTableSql(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,troopUin TEXT UNIQUE ,isOpenState INTEGER)");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aybw
  * JD-Core Version:    0.7.0.1
  */

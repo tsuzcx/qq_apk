@@ -1,6 +1,16 @@
-public abstract interface uwl
+import UserGrowth.stPublisherReq;
+import UserGrowth.stPublisherRsp;
+
+public class uwl
+  extends urg<stPublisherRsp>
 {
-  public abstract void a(uwk paramuwk);
+  public uwl()
+  {
+    super("Publisher", 10004);
+    stPublisherReq localstPublisherReq = new stPublisherReq();
+    this.a = localstPublisherReq;
+    uya.b("GetPublisherRequest", "stSimpleGetFeedDetailReq = " + localstPublisherReq.toString());
+  }
 }
 
 

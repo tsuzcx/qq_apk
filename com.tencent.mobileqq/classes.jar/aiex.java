@@ -1,10 +1,17 @@
-import android.content.Intent;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.SysSuspiciousMsg;
 
-public abstract interface aiex
+public class aiex
+  extends aliz
 {
-  public abstract void a(Intent paramIntent);
-  
-  public abstract boolean a(int paramInt);
+  public Button a;
+  public TextView a;
+  public SysSuspiciousMsg a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

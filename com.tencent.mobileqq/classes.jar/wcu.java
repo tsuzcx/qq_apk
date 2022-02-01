@@ -1,18 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class wcu
-  implements View.OnClickListener
+public class wcu
+  extends vko
 {
-  wcu(wct paramwct, long paramLong) {}
+  public final String a;
+  public final String b;
+  public final String c;
   
-  public void onClick(View paramView)
+  public wcu(ErrorMessage paramErrorMessage, String paramString1, String paramString2, String paramString3)
   {
-    if (wcp.a(this.jdField_a_of_type_Wct.a.a) != null) {
-      wcp.a(this.jdField_a_of_type_Wct.a.a).b(this.jdField_a_of_type_Long);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.c = paramString3;
+  }
+  
+  public String toString()
+  {
+    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.c + "} " + super.toString();
   }
 }
 

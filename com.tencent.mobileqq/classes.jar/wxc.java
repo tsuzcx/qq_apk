@@ -1,8 +1,6 @@
 public abstract interface wxc
 {
-  public abstract void a();
-  
-  public abstract void b();
+  public abstract boolean a(wwz paramwwz, int paramInt1, int paramInt2);
 }
 
 

@@ -1,27 +1,24 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class uxd
-  implements TextWatcher
+final class uxd
+  extends ClickableSpan
 {
-  public uxd(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  uxd(uxb paramuxb, String paramString) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(@NonNull View paramView)
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a, paramEditable.toString());
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((!TextUtils.isEmpty(paramCharSequence)) && (paramCharSequence.length() - paramInt2 + paramInt3 > 100)) {
-      QQToast.a(this.a, 0, this.a.getString(2131694648), 0).b(this.a.getTitleBarHeight());
+    if (this.jdField_a_of_type_Uxb != null) {
+      this.jdField_a_of_type_Uxb.a(this.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 

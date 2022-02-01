@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.webprocess;
 
-import biqk;
+import bgwq;
 
 class WebAccelerateHelper$4
-  implements biqk
+  implements bgwq
 {
   WebAccelerateHelper$4(WebAccelerateHelper paramWebAccelerateHelper) {}
   
@@ -12,7 +12,7 @@ class WebAccelerateHelper$4
     if (paramInt != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      biqx.b = bool;
+      bgxd.b = bool;
       return;
     }
   }

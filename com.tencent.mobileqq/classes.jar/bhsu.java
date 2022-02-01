@@ -1,100 +1,82 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.open.agent.OpenAuthorityFragment.12.1;
+import com.tencent.open.model.GetVirtualListResult;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import cooperation.qqfav.util.HandlerPlus;
 
 public class bhsu
-  implements View.OnClickListener
+  extends bhvf
 {
-  protected Context a;
-  protected View a;
-  protected bhsv a;
-  protected final blir a;
+  public bhsu(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public bhsu(Context paramContext)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Blir = ((blir)blji.a(paramContext, null));
-  }
-  
-  protected View a()
-  {
-    View localView1 = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560917, null);
-    View localView2 = localView1.findViewById(2131365208);
-    View localView3 = localView1.findViewById(2131365197);
-    View localView4 = localView1.findViewById(2131365195);
-    localView2.setOnClickListener(this);
-    localView3.setOnClickListener(this);
-    localView4.setOnClickListener(this);
-    return localView1;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = a();
+    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, new Object[] { "-->onDeleteVirtual isSuccess=", Boolean.valueOf(paramBoolean), ", code=", Integer.valueOf(paramInt) });
+    if (paramBoolean) {
+      return;
     }
-    this.jdField_a_of_type_Blir.a(this.jdField_a_of_type_AndroidViewView, null);
-    try
+    this.a.k();
+    if (paramInt == 151)
     {
-      if (!a()) {
-        this.jdField_a_of_type_Blir.show();
+      bhwf.a(this.a.getActivity(), amtj.a(2131706960), false);
+      this.a.c(OpenAuthorityFragment.b(this.a));
+      return;
+    }
+    bhwf.a(this.a.getActivity(), amtj.a(2131706962) + paramInt, false);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, bhvg parambhvg)
+  {
+    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, new Object[] { "-->onDoAuthorize isSuccess=", Boolean.valueOf(paramBoolean), ", code=", Integer.valueOf(paramInt) });
+    atqa.a("KEY_AUTHORIZE_REQUEST", OpenAuthorityFragment.a(this.a), paramBoolean);
+    Object localObject;
+    if ((paramBoolean) && (parambhvg != null))
+    {
+      localObject = this.a.a.obtainMessage();
+      ((Message)localObject).what = 1;
+      ((Message)localObject).obj = parambhvg;
+      this.a.a.sendMessage((Message)localObject);
+      return;
+    }
+    if (paramInt == 110509)
+    {
+      if (OpenAuthorityFragment.e(this.a) >= 2)
+      {
+        bhwf.a(this.a.getActivity(), amtj.a(2131706961), false);
+        parambhvg = OpenAuthorityFragment.a(this.a).a().a(OpenAuthorityFragment.a(this.a));
+        localObject = this.a;
+        if (parambhvg == null) {}
+        for (parambhvg = null;; parambhvg = parambhvg.a)
+        {
+          ((OpenAuthorityFragment)localObject).c(parambhvg);
+          return;
+        }
       }
+      OpenAuthorityFragment.f(this.a);
+      OpenAuthorityFragment.a(this.a, 1);
       return;
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("TeamWorkCreateActionSheetBuilder", 2, "actionSheet.show exception=" + localException);
+    if ((parambhvg != null) && (!TextUtils.isEmpty(parambhvg.a.get()))) {
+      QLog.e("SDK_LOGIN.OpenAuthorityFragment", 1, "-->onDoAuthorize error msg: " + parambhvg.a.get());
     }
+    bhwf.a(this.a.getActivity(), amtj.a(2131694263), false);
   }
   
-  public void a(bhsv parambhsv)
+  public void a(boolean paramBoolean, GetVirtualListResult paramGetVirtualListResult)
   {
-    this.jdField_a_of_type_Bhsv = parambhsv;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Blir.isShowing();
-  }
-  
-  public void b()
-  {
-    if (a()) {}
-    try
+    QLog.d("SDK_LOGIN.OpenAuthorityFragment", 1, new Object[] { "-->onGetVirtualList isSuccess=", Boolean.valueOf(paramBoolean) });
+    if (OpenAuthorityFragment.a(this.a))
     {
-      this.jdField_a_of_type_Blir.dismiss();
-      this.jdField_a_of_type_AndroidViewView = null;
+      QLog.e("SDK_LOGIN.OpenAuthorityFragment", 1, " activity is isInvalid");
       return;
     }
-    catch (RuntimeException localRuntimeException)
-    {
-      QLog.w("TeamWorkCreateActionSheetBuilder", 2, "Exception while dismiss", localRuntimeException);
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    int j = 1;
-    int i = j;
-    switch (paramView.getId())
-    {
-    default: 
-      i = j;
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Bhsv != null) {
-        this.jdField_a_of_type_Bhsv.a(i);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      i = 2;
-      continue;
-      i = 3;
-    }
+    atqa.a("KEY_GET_VIRTUAL_LIST_D24", OpenAuthorityFragment.a(this.a), paramBoolean);
+    this.a.getActivity().runOnUiThread(new OpenAuthorityFragment.12.1(this, paramBoolean, paramGetVirtualListResult));
   }
 }
 

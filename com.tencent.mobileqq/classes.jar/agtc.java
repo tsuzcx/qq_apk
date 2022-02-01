@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import android.view.View;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
 
 public class agtc
-  implements DialogInterface.OnClickListener
+  extends agst
 {
-  public agtc(AIOLongShotHelper paramAIOLongShotHelper) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public TroopSignVideoView a;
+  public View e;
+  public View f;
 }
 
 

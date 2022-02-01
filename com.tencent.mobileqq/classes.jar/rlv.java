@@ -1,55 +1,17 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.activity.SplashActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class rlv
-  extends OrientationEventListener
+public class rlv
+  implements rhe
 {
-  rlv(rlu paramrlu, Context paramContext, WeakReference paramWeakReference)
-  {
-    super(paramContext);
-  }
+  public rlv(EditVideoFragment paramEditVideoFragment) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    if (!rlu.a(this.jdField_a_of_type_Rlu, paramInt)) {
-      break label11;
+    if (paramBoolean) {
+      rno.a(EditVideoFragment.a(this.a)).a(EditVideoFragment.a(this.a), true);
     }
-    label11:
-    label159:
-    for (;;)
-    {
-      return;
-      if (!(this.jdField_a_of_type_Rlu.a() instanceof SplashActivity))
-      {
-        int i = rlu.a(this.jdField_a_of_type_Rlu);
-        if (((paramInt >= 0) && (paramInt <= 30)) || (paramInt > 330)) {
-          paramInt = 1;
-        }
-        for (;;)
-        {
-          if (paramInt == rlu.a(this.jdField_a_of_type_Rlu)) {
-            break label159;
-          }
-          rlu.a(this.jdField_a_of_type_Rlu, paramInt);
-          if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-            break;
-          }
-          ((rlw)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramInt);
-          return;
-          if ((paramInt > 70) && (paramInt <= 110)) {
-            paramInt = 8;
-          } else if ((paramInt > 150) && (paramInt <= 210)) {
-            paramInt = 9;
-          } else if ((paramInt > 250) && (paramInt <= 290)) {
-            paramInt = 0;
-          } else {
-            paramInt = i;
-          }
-        }
-      }
-    }
+    QLog.i("RIJUGC.EditVideoFragment", 1, "showMobileNetworkDialog, isContinue=" + paramBoolean);
   }
 }
 

@@ -1,10 +1,10 @@
 package com.etrump.mixlayout;
 
 import android.view.View;
-import begy;
-import biuz;
+import bhbb;
+import com.tencent.mobileqq.text.QQText.SmallEmojiSpan;
 import com.tencent.qphone.base.util.QLog;
-import fo;
+import fn;
 
 public class ETTextView$1
   implements Runnable
@@ -13,19 +13,19 @@ public class ETTextView$1
   
   public void run()
   {
-    if (this.this$0.getTag(2131368312) != null) {}
-    for (boolean bool = ((Boolean)this.this$0.getTag(2131368312)).booleanValue();; bool = false)
+    if (this.this$0.getTag(2131368336) != null) {}
+    for (boolean bool = ((Boolean)this.this$0.getTag(2131368336)).booleanValue();; bool = false)
     {
       if ((this.this$0.isSingleClick) && (this.this$0.onSingleClick != null) && (!bool))
       {
         if (this.this$0.isUsingHYFont())
         {
           Object localObject = this.this$0.mLayout.a(this.this$0.mEmojiX, this.this$0.mEmojiY);
-          if ((localObject instanceof begy))
+          if ((localObject instanceof QQText.SmallEmojiSpan))
           {
-            localObject = (begy)localObject;
-            this.this$0.mClickEpId = ((begy)localObject).e;
-            this.this$0.mClickcEId = ((begy)localObject).f;
+            localObject = (QQText.SmallEmojiSpan)localObject;
+            this.this$0.mClickEpId = ((QQText.SmallEmojiSpan)localObject).mEpId;
+            this.this$0.mClickcEId = ((QQText.SmallEmojiSpan)localObject).mEId;
             if (QLog.isColorLevel()) {
               QLog.d("ETTextView", 2, "click span: " + this.this$0.mClickEpId);
             }
@@ -33,14 +33,14 @@ public class ETTextView$1
         }
         this.this$0.onSingleClick.a(this.this$0);
       }
-      this.this$0.setTag(2131368312, Boolean.valueOf(false));
+      this.this$0.setTag(2131368336, Boolean.valueOf(false));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.etrump.mixlayout.ETTextView.1
  * JD-Core Version:    0.7.0.1
  */

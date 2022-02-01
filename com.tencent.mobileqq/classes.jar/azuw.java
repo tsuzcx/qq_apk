@@ -1,32 +1,28 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Bundle;
+import java.lang.ref.WeakReference;
 
-final class azuw
-  implements beup
+abstract class azuw<T>
+  extends nmf
 {
-  public void a(bevl parambevl, bevm parambevm)
+  protected T a;
+  private WeakReference<T> a;
+  
+  azuw(T paramT)
   {
-    if ((parambevl == null) || (parambevm == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(parambevl instanceof beum));
-      parambevl = (beum)parambevl;
-      parambevl.jdField_a_of_type_Long += parambevm.c;
-      parambevm.c = 0L;
-      parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
-      parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
-      parambevm = parambevl.jdField_a_of_type_JavaLangString;
-      if (parambevm.contains("range="))
-      {
-        String str = parambevm.substring(0, parambevm.lastIndexOf("range="));
-        parambevl.jdField_a_of_type_JavaLangString = (str + "range=" + parambevl.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("PrecoverResDownloader", 2, "IBreakDownFix, " + parambevm);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramT);
   }
+  
+  public final void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (this.jdField_a_of_type_JavaLangObject == null) {
+      return;
+    }
+    b(paramInt, paramArrayOfByte, paramBundle);
+    this.jdField_a_of_type_JavaLangObject = null;
+  }
+  
+  abstract void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
 }
 
 

@@ -1,35 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.Callable;
+import android.view.animation.Interpolator;
 
-class avys
-  implements Callable<File>
+public final class avys
+  implements Interpolator
 {
-  avys(avyr paramavyr) {}
-  
-  public File a()
+  public float getInterpolation(float paramFloat)
   {
-    try
-    {
-      boolean bool = avyr.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.i("shadow::CdnPmUpdater", 2, "isNeedDownload:" + bool);
-      }
-      if (!bool)
-      {
-        localFile = this.a.getLatest();
-        return localFile;
-      }
-      File localFile = this.a.a();
-      if (avyr.a(this.a) != null) {
-        avyr.a(this.a).a();
-      }
-      return localFile;
-    }
-    finally
-    {
-      avyr.a(this.a, false);
-    }
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

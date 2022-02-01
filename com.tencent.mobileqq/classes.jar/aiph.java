@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CheckBox;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.activity.contacts.friend.SimpleTextView;
+import com.tencent.widget.SingleLineTextView;
 
-class aiph
-  extends anyu
+public class aiph
 {
-  aiph(aipe paramaipe) {}
-  
-  protected void onAddFriend(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddFriend : " + paramString);
-    }
-    if ((this.a.v()) && (paramString != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
-      aipe.a(this.a);
-    }
-  }
+  public int a;
+  public CheckBox a;
+  public ProgressBar a;
+  public SimpleTextView a;
+  public SingleLineTextView a;
+  public StringBuilder a;
+  public SingleLineTextView b;
 }
 
 

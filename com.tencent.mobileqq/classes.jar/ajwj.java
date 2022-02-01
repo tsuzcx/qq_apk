@@ -1,12 +1,22 @@
-class ajwj
-  implements bduz
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.9.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+
+public class ajwj
+  implements akbj
 {
-  ajwj(ajwi paramajwi) {}
+  public ajwj(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    paramBoolean = this.a.a();
-    this.a.d(paramBoolean);
+    if ((!this.a.c()) && (paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
+    {
+      paramPathResult = AnimationView.AnimationInfo.loadFromFolder(paramPathResult.folderPath);
+      this.a.a.post(new RedPacketKSongFragment.9.1(this, paramPathResult));
+    }
   }
 }
 

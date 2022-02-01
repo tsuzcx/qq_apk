@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.confess;
 
 import com.tencent.qphone.base.util.QLog;
-import zyx;
+import yyi;
 
 class ConfessPlugin$3
   implements Runnable
@@ -12,7 +12,7 @@ class ConfessPlugin$3
   {
     try
     {
-      zyx.a(this.a, this.b);
+      yyi.a(this.a, this.b);
       return;
     }
     catch (Exception localException)

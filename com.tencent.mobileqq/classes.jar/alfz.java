@@ -1,29 +1,20 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class alfz
-  implements algc
+  implements View.OnClickListener
 {
-  public alfz(DoodleLayout paramDoodleLayout) {}
+  public alfz(SessionClearFragment paramSessionClearFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
-    }
-  }
-  
-  public void b()
-  {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(this.a.a(true, false));
-    }
+    Object localObject = amtj.a(2131712949);
+    localObject = bfur.a(SessionClearFragment.a(this.a), 230, amtj.a(2131712951), (String)localObject, 2131694094, 2131719734, new alga(this), new algb(this));
+    SessionClearFragment.a(this.a, (Dialog)localObject);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

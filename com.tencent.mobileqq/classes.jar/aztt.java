@@ -1,34 +1,50 @@
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.portal.FormalView;
-import com.tencent.mobileqq.portal.ImageShakeAnimView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aztt
-  implements ValueAnimator.AnimatorUpdateListener
+  implements URLDrawableDownListener
 {
-  public aztt(FormalView paramFormalView) {}
+  public aztt(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadCancelled: ");
     }
-    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-    int i = -(int)(FormalView.a(this.a) * f);
-    int j = -(int)((1.0F - f) * FormalView.b(this.a));
-    ((RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams()).topMargin = j;
-    paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams();
-    paramValueAnimator.leftMargin = i;
-    FormalView.a(this.a).setLayoutParams(paramValueAnimator);
-    paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.b(this.a).getLayoutParams();
-    paramValueAnimator.rightMargin = i;
-    FormalView.b(this.a).setLayoutParams(paramValueAnimator);
-    paramValueAnimator = (RelativeLayout.LayoutParams)FormalView.a(this.a).getLayoutParams();
-    paramValueAnimator.topMargin = ((int)((1.0F - f) * FormalView.c(this.a)));
-    FormalView.a(this.a).setLayoutParams(paramValueAnimator);
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadFailed: ");
+    }
+    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadInterrupted: ");
+    }
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadProgressed: " + paramURLDrawable + " / " + paramInt);
+    }
+    ReceiptMessageDetailFragment.a(this.a).setLevel(paramInt);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
+    ReceiptMessageDetailFragment.a(this.a, paramURLDrawable);
+    ReceiptMessageDetailFragment.b(this.a);
   }
 }
 

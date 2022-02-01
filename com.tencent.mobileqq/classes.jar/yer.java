@@ -1,8 +1,26 @@
-public abstract interface yer
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+
+public class yer
+  implements ycm
 {
-  public abstract void a();
+  public yer(DoodleLayout paramDoodleLayout) {}
   
-  public abstract void b();
+  public void a(Bitmap paramBitmap, boolean paramBoolean)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramBitmap, paramBoolean);
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (this.a.a != null)
+    {
+      xvv.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
+      this.a.a.a(paramArrayOfByte);
+    }
+  }
 }
 
 

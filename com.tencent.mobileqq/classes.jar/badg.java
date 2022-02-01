@@ -1,15 +1,28 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-
-class badg
-  implements Handler.Callback
+public class badg
+  implements Cloneable
 {
-  badg(bade parambade) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
   
-  public boolean handleMessage(Message paramMessage)
+  public badg(String paramString, int paramInt)
   {
-    this.a.b(paramMessage);
-    return true;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public badg a()
+  {
+    return (badg)super.clone();
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Int + " failCount:" + this.b;
   }
 }
 

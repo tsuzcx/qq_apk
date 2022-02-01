@@ -1,11 +1,17 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
-public abstract interface ajwy
+public class ajwy
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(List<MayKnowRecommend> paramList);
+  public ajwy(SendHbActivity paramSendHbActivity) {}
   
-  public abstract boolean a();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    SendHbActivity.a(this.a);
+  }
 }
 
 

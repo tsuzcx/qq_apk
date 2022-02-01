@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.view.TabLayout;
 
-class bmcn
-  implements aqrn
+public class bmcn
+  implements View.OnClickListener
 {
-  bmcn(bmcm parambmcm, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte) {}
+  public bmcn(TabLayout paramTabLayout, int paramInt) {}
   
-  public ColorNote getColorNote()
+  public void onClick(View paramView)
   {
-    return new aqrv().a(16908292).a(this.jdField_a_of_type_JavaLangString).b(this.b).c(this.c).d("resdrawable://2130838905").a(this.jdField_a_of_type_ArrayOfByte).a();
+    this.jdField_a_of_type_DovComQqImAeViewTabLayout.a(this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

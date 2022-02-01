@@ -1,41 +1,75 @@
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.LayoutInflater.Factory;
-import java.lang.reflect.Field;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StVideo;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
 public class zmm
 {
-  public static void a(@NonNull LayoutInflater paramLayoutInflater, @NonNull LayoutInflater.Factory paramFactory)
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private RoundCornerImageView jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView;
+  
+  public zmm(BlankRecommendItemView paramBlankRecommendItemView, View paramView, int paramInt)
   {
-    try
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369235));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379607));
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setBackgroundColor(Color.parseColor("#252525"));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.invalidate();
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-5723992);
+  }
+  
+  public void a(CertifiedAccountMeta.StFeed paramStFeed)
+  {
+    if (paramStFeed != null)
     {
-      paramLayoutInflater.setFactory(paramFactory);
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      zmo.c("LayoutModifier", "LayoutInflater.setFactory IllegalStateException " + localIllegalStateException);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      int i = paramStFeed.cover.width.get();
+      if (paramStFeed.cover.height.get() > i) {
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      }
       try
       {
-        Field localField1 = LayoutInflater.class.getDeclaredField("mFactory");
-        localField1.setAccessible(true);
-        Field localField2 = LayoutInflater.class.getDeclaredField("mFactory2");
-        localField2.setAccessible(true);
-        localField1.set(paramLayoutInflater, paramFactory);
-        localField2.set(paramLayoutInflater, paramFactory);
-        if ((paramLayoutInflater.getFactory() == paramFactory) && (paramLayoutInflater.getFactory2() == paramFactory))
+        for (;;)
         {
-          zmo.b("LayoutModifier", "hookLayoutInflaterFactory success");
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageURL(paramStFeed.cover.url.get());
+          if (paramStFeed.video.duration.get() <= 0L) {
+            break;
+          }
+          i = paramStFeed.video.duration.get() / 1000 / 60;
+          int j = paramStFeed.video.duration.get() / 1000;
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("%02d:%02d", new Object[] { Integer.valueOf(i), Integer.valueOf(j % 60) }));
+          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+          this.jdField_a_of_type_AndroidViewView.setOnClickListener(new zmn(this, paramStFeed));
           return;
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         }
       }
-      catch (Exception paramLayoutInflater)
+      catch (Throwable localThrowable)
       {
-        zmo.d("LayoutModifier", "hook setFactory " + paramLayoutInflater);
-        return;
+        for (;;)
+        {
+          QLog.e("BlankRecommendItemView", 2, "setData() set image url error! url: " + paramStFeed.cover.url.get(), localThrowable);
+          continue;
+          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        }
       }
-      zmo.b("LayoutModifier", "hookLayoutInflaterFactory failed");
     }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
 }
 

@@ -31,8 +31,7 @@
               "type": "relative",
               "value": "249.5"
             },
-            "attributes": {
-              "setFrameString:": "-1",
+            "attributes":{
               "setImageWithURLString:lineup:": [
                 "-1",
                 "-1"
@@ -62,8 +61,7 @@
                   "type": "relative",
                   "value": "125"
                 },
-                "attributes": {
-                  "setFrameString:": "-1",
+                "attributes":{
                   "setImageWithURLString:lineup:": [
                     "-1",
                     "-1"
@@ -92,8 +90,7 @@
                     "width": {
                       "type": "match_parent"
                     },
-                    "attributes": {
-                      "setFrameString:": "-1",
+                    "attributes":{
                       "setImageWithURLString:lineup:": [
                         "-1",
                         "-1"
@@ -124,8 +121,7 @@
                         "width": {
                           "type": "match_parent"
                         },
-                        "attributes": {
-                          "setFrameString:": "-1",
+                        "attributes":{
                           "setCornerRadiusString:": "2.0",
                           "setBackgroundColorString:": "#99010101"
                         }
@@ -144,8 +140,7 @@
                           "type": "relative",
                           "value": "12"
                         },
-                        "attributes": {
-                          "setFrameString:": "-1",
+                        "attributes":{
                           "loadImageWithPath:": "-1"
                         }
                       },
@@ -164,7 +159,6 @@
                         },
                         "attributes": {
                           "setTextAlignmentString:": "2",
-                          "setFrameString:": "-1",
                           "setTextColorString:": "#FFFFFF",
                           "setText:": "-1",
                           "setFontSizeString:": "11"
@@ -190,8 +184,7 @@
           "type": "relative",
           "value": "351"
         },
-        "attributes": {
-          "setFrameString:": "-1",
+        "attributes":{
           "setText:lineSpace:": [
             "",
             "2"
@@ -215,7 +208,7 @@
           "value": "351"
         },
         "subviews": [
-            {"$includeComponet": "componet/RIJ_follow_mark.geojson"},
+            {"$includeComponet": "componet/RIJ_bottom_mark.geojson"},
           {
             "view_type": "UILabel",
             "view_id": "id_info_status",
@@ -230,8 +223,7 @@
             "width": {
               "type": "wrap_content"
             },
-            "attributes": {
-              "setFrameString:": "-1",
+            "attributes":{
               "setText:": "-1",
               "setTextColorString:": "-1",
               "setBoldFontSizeString:": "10",
@@ -254,8 +246,7 @@
             "width": {
               "type": "wrap_content"
             },
-            "attributes": {
-              "setFrameString:": "-1",
+            "attributes":{
               "setText:": "-1",
               "setTextColorString:": "#07D0B0",
               "setFontSizeString:": "14",
@@ -277,8 +268,7 @@
             "width": {
               "type": "wrap_content"
             },
-            "attributes": {
-              "setFrameString:": "-1",
+            "attributes":{
               "setText:": "-1",
               "setTextColorString:": "#8e8e8e",
               "setFontSizeString:": "12",
@@ -299,8 +289,7 @@
             "width": {
               "type": "wrap_content"
             },
-            "attributes": {
-              "setFrameString:": "-1",
+            "attributes":{
               "setText:": "-1",
               "setTextColorString:": "#8e8e8e",
               "setFontSizeString:": "12",
@@ -320,8 +309,7 @@
             "width": {
               "type": "wrap_content"
             },
-            "attributes": {
-              "setFrameString:": "-1",
+            "attributes":{
               "setText:": "-1",
               "setTextColorString:": "#8e8e8e",
               "setFontSizeString:": "12",
@@ -362,8 +350,7 @@
         "width": {
           "type": "match_parent"
         },
-        "attributes": {
-          "setFrameString:": "-1",
+        "attributes":{
           "setBackgroundColorString:": "#eaeaea"
         }
       }

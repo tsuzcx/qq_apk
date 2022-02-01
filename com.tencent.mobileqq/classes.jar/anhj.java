@@ -1,31 +1,38 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.sdk.CmShowSpriteDrawerInfoBridge.4.1;
-import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
-import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
 
-public class anhj
+class anhj
   implements EIPCResultCallback
 {
-  anhj(anhh paramanhh, anhg paramanhg) {}
+  anhj(anhi paramanhi, String paramString) {}
+  
+  private void a(EIPCResult paramEIPCResult)
+  {
+    switch (paramEIPCResult.code)
+    {
+    default: 
+      anhi.a(this.jdField_a_of_type_Anhi).a();
+      return;
+    }
+    anhi.a(this.jdField_a_of_type_Anhi).a(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  private boolean a(EIPCResult paramEIPCResult)
+  {
+    return (paramEIPCResult == null) || (paramEIPCResult.data == null) || (anhi.a(this.jdField_a_of_type_Anhi) == null);
+  }
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    Object localObject = (IPCSpriteContext)paramEIPCResult.data.getParcelable("IPCSpriteContext");
-    paramEIPCResult = paramEIPCResult.data.getString("js_content");
-    QLog.i("CmShow_SpriteDrawerInfoBridge", 1, "checkfDressChanged CmShow_ spriteJs:" + paramEIPCResult);
-    if (TextUtils.isEmpty(paramEIPCResult)) {
-      anmq.a(this.jdField_a_of_type_Anhg.a(), 300, 301, new Object[] { "spriteJs is empty" });
-    }
-    do
+    if (a(paramEIPCResult))
     {
+      QLog.e("ThirdPartyLoginUtilImpl", 1, "toWtLoginOnOpenSdk callback params error");
       return;
-      localObject = (anhd)anhh.a(this.jdField_a_of_type_Anhh).a(100);
-    } while (localObject == null);
-    ThreadManagerV2.excute(new CmShowSpriteDrawerInfoBridge.4.1(this, paramEIPCResult, (anhd)localObject), 16, null, false);
+    }
+    QLog.d("ThirdPartyLoginUtilImpl", 1, "code=" + paramEIPCResult.code + " ssoResult=" + paramEIPCResult.data.getInt("key_sso_ret"));
+    a(paramEIPCResult);
   }
 }
 

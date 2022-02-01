@@ -1,15 +1,19 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class sqg
-  implements ViewFactory.FoundClickableViewListener
+public class sqg
+  implements View.OnClickListener
 {
-  sqg(sqf paramsqf, Context paramContext) {}
+  public sqg(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void onClick(View paramView)
   {
-    paramViewBase.setOnClickListener(new sqh(this));
+    PublicTransFragmentActivity.a(this.a.a(), ReadInJoyChannelPanelFragment.class);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

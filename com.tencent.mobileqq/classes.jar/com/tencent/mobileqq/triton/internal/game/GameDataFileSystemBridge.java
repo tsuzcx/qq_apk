@@ -39,7 +39,7 @@ public final class GameDataFileSystemBridge
   @NotNull
   public final Object[] newTempFile()
   {
-    TemporaryFile localTemporaryFile = GameDataFileSystem.DefaultImpls.newTempFile$default(this.gameDataFileSystem, null, 1, null);
+    TemporaryFile localTemporaryFile = GameDataFileSystem.DefaultImpls.newTempFile$default(this.gameDataFileSystem, null, null, 3, null);
     return new Object[] { localTemporaryFile.getFile(), localTemporaryFile.getPathInGame() };
   }
 }

@@ -1,18 +1,27 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
 
-public class alyb
+class alyb
+  implements amkm
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  alyb(alxy paramalxy) {}
   
-  private alyb(RMVideoSwitchCameraPicMgr paramRMVideoSwitchCameraPicMgr)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = true;
+    QLog.i("cmgame_process.CmGameLauncher", 1, "[onSoLoadComplete], ret:" + paramInt);
+    amkk.b(alxy.a(this.a));
+    Activity localActivity = this.a.a();
+    if (paramInt == 0) {
+      if ((localActivity != null) && (!alxy.c(this.a)))
+      {
+        alxy.a(this.a, true);
+        alxy.c(this.a);
+      }
+    }
+    while (localActivity == null) {
+      return;
+    }
+    localActivity.finish();
   }
 }
 

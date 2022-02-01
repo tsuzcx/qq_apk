@@ -1,66 +1,107 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.ReadInJoyCommentLikeView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SimpleCommentData;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.AuthorCommentDeleteReq;
+import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.AuthorCommentDeleteRsp;
+import tencent.im.oidb.oidb_0xd1e.oidb_0xd1e.ReqBody;
 
-public class owx
-  extends ViewBase
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/AuthorDeleteCommentHandler;", "", "authorDeleteCommentData", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/AuthorCommentDeleteData;", "(Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/AuthorCommentDeleteData;)V", "getAuthorDeleteCommentData", "()Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/AuthorCommentDeleteData;", "onFailedCallback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isOverTimes", "", "getOnFailedCallback", "()Lkotlin/jvm/functions/Function1;", "setOnFailedCallback", "(Lkotlin/jvm/functions/Function1;)V", "onSuccessCallback", "", "getOnSuccessCallback", "setOnSuccessCallback", "serviceType", "", "getServiceType", "()I", "generateRequestBody", "Ltencent/im/oidb/oidb_0xd1e/oidb_0xd1e$ReqBody;", "handleAuthorCommentDeleteResult", "data", "", "onCommentOperationFailed", "errorCode", "errorMsg", "onCommentOperationSuccess", "send0xd1eRequest", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class owx
 {
-  private ReadInJoyCommentLikeView a;
+  public static final owy a;
+  @Nullable
+  private Function1<? super String, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
+  @NotNull
+  private final oxk jdField_a_of_type_Oxk;
+  @Nullable
+  private Function1<? super Boolean, Unit> b;
   
-  public owx(VafContext paramVafContext)
+  static
   {
-    super(paramVafContext);
-    this.a = new ReadInJoyCommentLikeView(paramVafContext.getContext());
+    jdField_a_of_type_Owy = new owy(null);
   }
   
-  public void a(oxp paramoxp)
+  public owx(@NotNull oxk paramoxk)
   {
-    this.a.setOnLikeListener(paramoxp);
+    this.jdField_a_of_type_Oxk = paramoxk;
   }
   
-  public int getComMeasuredHeight()
+  private final void b(byte[] paramArrayOfByte)
   {
-    return this.a.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.a.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.a.setVisibility(0);
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
+    oidb_0xd1e.AuthorCommentDeleteRsp localAuthorCommentDeleteRsp = new oidb_0xd1e.AuthorCommentDeleteRsp();
+    localAuthorCommentDeleteRsp.mergeFrom(paramArrayOfByte);
+    int i = localAuthorCommentDeleteRsp.over_times.get();
+    if (i > 0)
     {
-    default: 
-      return super.setAttribute(paramInt, paramObject);
+      paramArrayOfByte = this.b;
+      if (paramArrayOfByte != null) {
+        paramArrayOfByte = (Unit)paramArrayOfByte.invoke(Boolean.valueOf(true));
+      }
+      QLog.d("AuthorDeleteCommentHandler", 1, "handleAuthorCommentDeleteResult | delteTimes " + i);
     }
-    if (((paramObject instanceof otp)) && (((otp)paramObject).a != null)) {
-      this.a.a(((otp)paramObject).a);
+    do
+    {
+      return;
+      paramArrayOfByte = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
+    } while (paramArrayOfByte == null);
+    paramArrayOfByte = (Unit)paramArrayOfByte.invoke("");
+  }
+  
+  @NotNull
+  public final oidb_0xd1e.ReqBody a()
+  {
+    oidb_0xd1e.ReqBody localReqBody = new oidb_0xd1e.ReqBody();
+    oidb_0xd1e.AuthorCommentDeleteReq localAuthorCommentDeleteReq = new oidb_0xd1e.AuthorCommentDeleteReq();
+    oxk localoxk = this.jdField_a_of_type_Oxk;
+    localAuthorCommentDeleteReq.article_id.set(localoxk.a().c());
+    localAuthorCommentDeleteReq.comment_type.set(localoxk.a());
+    localAuthorCommentDeleteReq.content_src.set(localoxk.a().d());
+    localAuthorCommentDeleteReq.first_comment_id.set(localoxk.a());
+    localAuthorCommentDeleteReq.sub_comment_id.set(localoxk.b());
+    localAuthorCommentDeleteReq.src.set(localoxk.a().c());
+    localAuthorCommentDeleteReq.business_info.set(localoxk.a().d());
+    localReqBody.author_comment_delete_req.set((MessageMicro)localAuthorCommentDeleteReq);
+    return localReqBody;
+  }
+  
+  public final void a()
+  {
+    oidb_0xd1e.ReqBody localReqBody = a();
+    nmb.a(pay.a(), (nmf)new owz(this), localReqBody.toByteArray(), "OidbSvc.0xd1e", 3358, 9);
+  }
+  
+  public final void a(int paramInt, @NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "errorMsg");
+    QLog.d("AuthorDeleteCommentHandler", 1, "onCommentOperationFailed | errCode " + paramInt + " ; errMsg " + paramString);
+    paramString = this.b;
+    if (paramString != null) {
+      paramString = (Unit)paramString.invoke(Boolean.valueOf(false));
     }
-    return true;
+  }
+  
+  public final void a(@Nullable Function1<? super String, Unit> paramFunction1)
+  {
+    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+  }
+  
+  public final void a(@NotNull byte[] paramArrayOfByte)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "data");
+    b(paramArrayOfByte);
+  }
+  
+  public final void b(@Nullable Function1<? super Boolean, Unit> paramFunction1)
+  {
+    this.b = paramFunction1;
   }
 }
 

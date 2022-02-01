@@ -1,42 +1,57 @@
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+
 public class zaf
-  implements Comparable<zaf>
+  extends StaggeredGridLayoutManager
 {
-  public int a;
-  public String a;
-  int b;
-  public String b;
-  public String c;
-  
-  public zaf()
+  public zaf(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = -1;
+    super(paramInt1, paramInt2);
   }
   
-  public zaf(int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3)
+  public int getPosition(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-  }
-  
-  public int a(zaf paramzaf)
-  {
-    if (paramzaf == null) {}
-    do
+    try
     {
-      return -1;
-      if (this.jdField_b_of_type_Int < paramzaf.jdField_b_of_type_Int) {
-        return 1;
-      }
-    } while (this.jdField_b_of_type_Int != paramzaf.jdField_b_of_type_Int);
-    return 0;
+      int i = super.getPosition(paramView);
+      return i;
+    }
+    catch (Exception paramView)
+    {
+      paramView.printStackTrace();
+    }
+    return -1;
   }
   
-  public String toString()
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
   {
-    return "FilterTemplate{id='" + this.jdField_a_of_type_Int + '\'' + ", thumbPath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", priority=" + this.jdField_b_of_type_Int + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", pron='" + this.c + '\'' + '}';
+    try
+    {
+      super.onLayoutChildren(paramRecycler, paramState);
+      return;
+    }
+    catch (Exception paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+      QLog.e("SafeStaggeredGridLayoutManager", 4, paramRecycler, new Object[0]);
+    }
+  }
+  
+  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
+      return paramInt;
+    }
+    catch (Exception paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+    }
+    return 0;
   }
 }
 

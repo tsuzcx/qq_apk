@@ -1,8 +1,19 @@
-public abstract interface ambb
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+
+public final class ambb
+  implements Parcelable.Creator<SpriteTaskParam>
 {
-  public abstract int a(CharSequence paramCharSequence, int paramInt1, int paramInt2);
+  public SpriteTaskParam a(Parcel paramParcel)
+  {
+    return new SpriteTaskParam(paramParcel);
+  }
   
-  public abstract int b(CharSequence paramCharSequence, int paramInt1, int paramInt2);
+  public SpriteTaskParam[] a(int paramInt)
+  {
+    return new SpriteTaskParam[paramInt];
+  }
 }
 
 

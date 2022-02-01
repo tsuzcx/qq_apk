@@ -1,43 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.TabBarView;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
 
-public class bjdn
-  extends Handler
+class bjdn
+  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnSeekCompleteListener
 {
-  public bjdn(TabBarView paramTabBarView) {}
+  bjdn(bjdj parambjdj, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnSeekCompleteListener paramOnSeekCompleteListener) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onSeekComplete(IMediaPlayer paramIMediaPlayer)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.a = 0.0F;
-      paramMessage = this.a;
-      paramMessage.a = ((float)(paramMessage.a + 0.1D));
-      this.a.invalidate();
-      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
-      return;
-    case 1: 
-      if (this.a.a < 1.0F)
-      {
-        paramMessage = this.a;
-        paramMessage.a = ((float)(paramMessage.a + 0.1D));
-        this.a.invalidate();
-        sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
-        return;
-      }
-      sendMessageDelayed(TabBarView.a(this.a).obtainMessage(2), 10L);
-      return;
-    }
-    TabBarView.a(this.a, this.a.o, this.a.n);
-    this.a.a = 1.0F;
-    TabBarView.b(this.a, this.a.o, this.a.n);
-    this.a.o = this.a.n;
-    this.a.invalidate();
-    TabBarView.a(this.a);
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnSeekCompleteListener.onSeekComplete(this.jdField_a_of_type_Bjdj);
   }
 }
 

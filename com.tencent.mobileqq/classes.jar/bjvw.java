@@ -1,8 +1,14 @@
-import android.content.ContentValues;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public abstract class bjvw
+class bjvw
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void writeTo(ContentValues paramContentValues);
+  bjvw(bjvv parambjvv) {}
+  
+  public void onGlobalLayout()
+  {
+    bjvv.a(this.a);
+  }
 }
 
 

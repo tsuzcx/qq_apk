@@ -1,146 +1,95 @@
-import com.tencent.biz.pubaccount.AccountDetail.jce.SetRecvMsgStateRsp;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import com.tencent.qphone.base.util.QLog;
 
-public class aoeg
-  implements anui
+class aoeg
+  extends aofn
 {
-  public static final int TYPE_ACCOUNT_DETAIL_DYNAMIC_LIST = 107;
-  public static final int TYPE_ACCOUNT_DETAIL_FUNCTION_FLAG = 109;
-  public static final int TYPE_DOWN_PUBLIC_ACCOUNT = 103;
-  public static final int TYPE_FOLLOW_PUBLIC_ACCOUNT = 101;
-  public static final int TYPE_GET_GUIDE_FRIENDS = 110;
-  public static final int TYPE_GET_HISTORY_MESSAGE = 105;
-  public static final int TYPE_GET_PUBLIC_NOTIFICATION = 106;
-  public static final int TYPE_GET_RECOMMEND_LIST = 104;
-  public static final int TYPE_GET_SUBSCRIBE_STATUS = 111;
-  public static final int TYPE_GET_USER_FOLLOW_LIST = 100;
-  public static final int TYPE_SET_KANDIAN_SUBSCRIBE = 108;
-  public static final int TYPE_SET_RECVMSG_STATUS = 112;
-  public static final int TYPE_UNFOLLOW_PUBLIC_ACCOUNT = 102;
+  aoeg(aoee paramaoee) {}
   
-  public void onDownPublicAccount() {}
-  
-  public void onDynamicListGet(boolean paramBoolean, int paramInt) {}
-  
-  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo) {}
-  
-  public void onFollowPublicAccount(boolean paramBoolean, int paramInt) {}
-  
-  public void onFollowPublicAccount(boolean paramBoolean, String paramString) {}
-  
-  public void onGetGuideFriends(boolean paramBoolean, ArrayList<Long> paramArrayList) {}
-  
-  public void onGetHistoryMsgRet(int paramInt) {}
-  
-  public void onGetPublicAccountSubscribeStatus(boolean paramBoolean, long paramLong, int paramInt) {}
-  
-  public void onPublicAccountNotification(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onSetPublicAccountSubscribeStatus(boolean paramBoolean, int paramInt, long paramLong) {}
-  
-  public void onSetRecvMsgState(boolean paramBoolean, SetRecvMsgStateRsp paramSetRecvMsgStateRsp) {}
-  
-  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo) {}
-  
-  public void onUnfollowPublicAccount(boolean paramBoolean, String paramString) {}
-  
-  public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a()
   {
-    if (100 == paramInt)
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadSuccess ");
+    }
+    if (aoee.a(this.a) == null)
     {
-      paramObject = (aoei)paramObject;
-      onUpdateUserFollowList(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean);
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadSuccess error mHandler is null ");
+      return;
+    }
+    aoee.a(this.a).sendMessage(aoee.a(this.a).obtainMessage(3));
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadError|error= " + paramInt);
+    }
+    if (aoee.a(this.a) == null)
+    {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadError error mHandler is null ");
+      return;
+    }
+    aoee.a(this.a).sendMessage(aoee.a(this.a).obtainMessage(5, Integer.valueOf(paramInt)));
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if (paramLong2 != 0L)
+    {
+      long l = 100L * paramLong1 / paramLong2;
+      if (QLog.isColorLevel()) {
+        QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadProcess percent= " + l);
+      }
+      if (aoee.a(this.a) == null) {
+        QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadProcess error mHandler is null ");
+      }
+    }
+    else
+    {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 4;
+    localMessage.arg1 = ((int)paramLong1);
+    localMessage.arg2 = ((int)paramLong2);
+    aoee.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onConfigChanged!");
+    }
+    if (aoee.a(this.a) == null) {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onConfigChanged error mHandler is null ");
     }
     do
     {
       return;
-      if (101 == paramInt)
+      if (paramArConfigInfo != null)
       {
-        if ((paramObject instanceof aoeh))
-        {
-          paramObject = (aoeh)paramObject;
-          onFollowPublicAccount(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
-          return;
-        }
-        if ((paramObject instanceof Integer))
-        {
-          onFollowPublicAccount(paramBoolean, ((Integer)paramObject).intValue());
-          return;
-        }
-        onFollowPublicAccount(paramBoolean, String.valueOf(paramObject));
-        return;
+        Message localMessage = Message.obtain();
+        localMessage.what = 1;
+        localMessage.obj = paramArConfigInfo;
+        aoee.a(this.a).sendMessage(localMessage);
       }
-      if (102 == paramInt)
+      if (paramArEffectConfig != null)
       {
-        if ((paramObject instanceof aoeh))
-        {
-          paramObject = (aoeh)paramObject;
-          onUnfollowPublicAccount(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
-          return;
-        }
-        onUnfollowPublicAccount(paramBoolean, String.valueOf(paramObject));
-        return;
+        paramArConfigInfo = Message.obtain();
+        paramArConfigInfo.what = 2;
+        paramArConfigInfo.obj = paramArEffectConfig;
+        aoee.a(this.a).sendMessage(paramArConfigInfo);
       }
-      if (103 == paramInt)
-      {
-        onDownPublicAccount();
-        return;
-      }
-      if (104 == paramInt)
-      {
-        onUpdateRecommendList(paramBoolean);
-        return;
-      }
-      if (105 == paramInt)
-      {
-        onGetHistoryMsgRet(((Integer)paramObject).intValue());
-        return;
-      }
-      if (106 == paramInt)
-      {
-        onPublicAccountNotification(paramBoolean, ((Boolean)paramObject).booleanValue());
-        return;
-      }
-      if (109 == paramInt)
-      {
-        onUpdateFunctionFlag(paramBoolean, (oag)paramObject);
-        return;
-      }
-      if (108 == paramInt)
-      {
-        paramObject = (HashMap)paramObject;
-        onSetPublicAccountSubscribeStatus(paramBoolean, ((Integer)paramObject.get("seq")).intValue(), ((Long)paramObject.get("uin")).longValue());
-        return;
-      }
-      if (110 == paramInt)
-      {
-        onGetGuideFriends(paramBoolean, (ArrayList)paramObject);
-        return;
-      }
-      if (111 == paramInt)
-      {
-        paramObject = (HashMap)paramObject;
-        long l = 0L;
-        paramInt = 0;
-        if (paramObject != null)
-        {
-          l = ((Long)paramObject.get("uin")).longValue();
-          paramInt = ((Integer)paramObject.get("status")).intValue();
-        }
-        onGetPublicAccountSubscribeStatus(paramBoolean, l, paramInt);
-        return;
-      }
-    } while ((112 != paramInt) || (!(paramObject instanceof SetRecvMsgStateRsp)));
-    onSetRecvMsgState(paramBoolean, (SetRecvMsgStateRsp)paramObject);
+    } while (paramARCommonConfigInfo == null);
+    paramArConfigInfo = Message.obtain();
+    paramArConfigInfo.what = 9;
+    paramArConfigInfo.obj = paramARCommonConfigInfo;
+    aoee.a(this.a).sendMessage(paramArConfigInfo);
   }
-  
-  public void onUpdateFunctionFlag(boolean paramBoolean, oag paramoag) {}
-  
-  public void onUpdateRecommendList(boolean paramBoolean) {}
-  
-  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean) {}
 }
 
 

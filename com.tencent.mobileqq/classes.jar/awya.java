@@ -1,88 +1,22 @@
-import android.os.Vibrator;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.CountDownLatch;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class awya
-  implements awym
+public class awya
+  implements View.OnClickListener
 {
-  awya(awxz paramawxz) {}
+  public awya(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Action", 2, "fun startMagicPlay begins, sumPlayTimes:" + this.a.jdField_c_of_type_Int + ",actionGlobalData.openSound:" + this.a.jdField_a_of_type_Awyb.d);
-    }
-    Object localObject;
-    if (this.a.jdField_c_of_type_Int == 0)
+    if ((this.a.b != null) && (!this.a.isFinishing()))
     {
-      this.a.b();
-      if ((this.a.jdField_a_of_type_Awyp.c != null) && (this.a.jdField_a_of_type_Awyp.c.length() > 0) && (this.a.jdField_a_of_type_Awyb.d))
-      {
-        if (this.a.jdField_a_of_type_Awyp.e > 0)
-        {
-          localObject = this.a.jdField_a_of_type_Awyp;
-          ((awyp)localObject).e -= 1;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Action", 2, "fun startMagicPlay begins, start play Sound.");
-        }
-        this.a.jdField_a_of_type_Awzb.a(this.a.jdField_a_of_type_Awyp.c, this.a.jdField_a_of_type_Awyp.e);
-      }
-      if (this.a.jdField_a_of_type_Awyp.a)
-      {
-        this.a.jdField_a_of_type_AndroidOsVibrator = ((Vibrator)BaseApplicationImpl.getContext().getSystemService("vibrator"));
-        if (this.a.jdField_a_of_type_Awyp.h != -1) {
-          break label311;
-        }
-        this.a.jdField_a_of_type_AndroidOsVibrator.vibrate(new long[] { 0L, 1000L }, 0);
-      }
+      this.a.b.dismiss();
+      this.a.b = null;
     }
-    for (;;)
-    {
-      localObject = this.a;
-      ((awxz)localObject).jdField_c_of_type_Int += 1;
-      if (QLog.isColorLevel()) {
-        QLog.d("Action", 2, "fun startMagicPlay ends, sumPlayTimes:" + this.a.jdField_c_of_type_Int);
-      }
-      return;
-      label311:
-      this.a.jdField_a_of_type_AndroidOsVibrator.vibrate(this.a.jdField_a_of_type_Awyp.h * 1000);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Action", 2, "func endMagicPlay begins, isStop:" + this.a.jdField_c_of_type_Boolean + ",timeout:" + this.a.jdField_a_of_type_Int + ",playTimes:" + this.a.jdField_b_of_type_Int + ",sumPlayTimes:" + this.a.jdField_c_of_type_Int + ",isTimeout:" + this.a.jdField_b_of_type_Boolean);
-    }
-    if (this.a.jdField_c_of_type_Boolean) {
-      this.a.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-    }
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_Int == -1)
-      {
-        if (this.a.jdField_b_of_type_Int == -1)
-        {
-          this.a.jdField_a_of_type_Awzb.a(this.a.jdField_a_of_type_Awyp);
-          return;
-        }
-        if (this.a.jdField_b_of_type_Int > this.a.jdField_c_of_type_Int)
-        {
-          this.a.jdField_a_of_type_Awzb.a(this.a.jdField_a_of_type_Awyp);
-          return;
-        }
-        if (this.a.jdField_b_of_type_Int == this.a.jdField_c_of_type_Int)
-        {
-          this.a.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-          return;
-        }
-      }
-    } while (this.a.jdField_b_of_type_Boolean);
-    this.a.jdField_a_of_type_Awzb.a(this.a.jdField_a_of_type_Awyp);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

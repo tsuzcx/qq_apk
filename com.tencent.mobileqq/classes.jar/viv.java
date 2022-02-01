@@ -1,106 +1,62 @@
-import android.graphics.Rect;
-import com.tencent.biz.qqcircle.bizparts.danmaku.text.TextCell;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.Iterator;
+import java.util.List;
 
 public class viv
+  extends JobSegment<List<vil>, List<vil>>
 {
-  private int jdField_a_of_type_Int;
-  private ArrayList<TextCell> jdField_a_of_type_JavaUtilArrayList;
-  private int jdField_b_of_type_Int;
-  private ArrayList<Rect> jdField_b_of_type_JavaUtilArrayList;
+  private viz a;
   
-  private void a()
+  public viv(viz paramviz)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
-    }
-    if (this.jdField_b_of_type_JavaUtilArrayList == null) {
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(1);
-    }
+    this.a = paramviz;
   }
   
-  public int a()
+  protected void a(JobContext paramJobContext, List<vil> paramList)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Rect a(int paramInt)
-  {
-    if (paramInt < 0) {}
-    while (this.jdField_b_of_type_JavaUtilArrayList == null) {
-      return null;
-    }
-    return (Rect)this.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public TextCell a(int paramInt)
-  {
-    if (paramInt < 0) {}
-    while (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return null;
-    }
-    return (TextCell)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
-    for (;;)
+    int i = 1;
+    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.Album2DBSegment", "start runSegment piccount=%d", new Object[] { Integer.valueOf(paramList.size()) });
+    if (paramList.isEmpty())
     {
+      notifyResult(paramList);
       return;
-      int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-      if (paramInt < j)
+    }
+    paramJobContext = paramList.iterator();
+    while (paramJobContext.hasNext()) {
+      ((vil)paramJobContext.next()).a(this.a);
+    }
+    via.a(paramList);
+    via localvia = (via)vux.a(30);
+    vht localvht = localvia.a();
+    paramJobContext = paramList;
+    if (!this.a.a())
+    {
+      paramJobContext = paramList;
+      if (paramList.size() > localvht.a())
       {
-        int i = 0;
-        while (i < j - paramInt)
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(j - i - 1);
-          Rect localRect = (Rect)this.jdField_b_of_type_JavaUtilArrayList.remove(j - i - 1);
-          if (localRect != null) {
-            this.jdField_a_of_type_Int -= localRect.width();
-          }
-          i += 1;
-        }
+        xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.Album2DBSegment", "we scan album=" + paramList.size() + " ,but we only need " + localvht.a());
+        paramJobContext = paramList.subList(0, localvht.a());
       }
     }
-  }
-  
-  public void a(TextCell paramTextCell, Rect paramRect)
-  {
-    a();
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramTextCell);
-    this.jdField_b_of_type_JavaUtilArrayList.add(paramRect);
-    if (paramRect != null) {
-      this.jdField_a_of_type_Int += paramRect.width();
-    }
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public int c()
-  {
-    int i;
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_b_of_type_JavaUtilArrayList == null)) {
-      i = 0;
-    }
-    int j;
-    int k;
-    do
+    if (localvia.a(paramJobContext, this.a.a()))
     {
-      return i;
-      j = this.jdField_a_of_type_JavaUtilArrayList.size();
-      k = this.jdField_b_of_type_JavaUtilArrayList.size();
-      i = j;
-    } while (j < k);
-    return k;
+      long l2;
+      for (long l1 = ((vil)paramJobContext.get(0)).e(); i < paramJobContext.size(); l1 = l2)
+      {
+        long l3 = ((vil)paramJobContext.get(i)).e();
+        l2 = l1;
+        if (l3 > l1) {
+          l2 = l3;
+        }
+        i += 1;
+      }
+      this.a.a(((vil)paramJobContext.get(0)).e());
+      notifyResult(paramJobContext);
+      return;
+    }
+    notifyError(new ErrorMessage(3, "save to db occur error!"));
   }
 }
 

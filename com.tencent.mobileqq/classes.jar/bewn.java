@@ -1,25 +1,32 @@
-public class bewn
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.data.OpenID;
+
+class bewn
+  extends npj
 {
-  private int a = 480000;
-  private int b = 9;
-  private int c = 3;
-  private int d = 20000;
-  private int e = 40000;
-  private int f = 5000;
+  bewn(bewm parambewm) {}
   
-  public int a()
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    return this.d;
-  }
-  
-  public int b()
-  {
-    return this.e;
+    if ((bewm.a(this.a) == null) || (bewm.a(this.a) == null) || (bewm.a(this.a) == null)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((bewm.a(this.a).isFinishing()) || (bewm.a(this.a)));
+      bewm.a(this.a).d();
+      if (bewm.a(this.a) != null) {
+        bewm.a(this.a).removeCallbacksAndMessages(null);
+      }
+    } while ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null) || (paramOpenID.openID.equals(bewm.a(this.a))));
+    bewm.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bewn
  * JD-Core Version:    0.7.0.1
  */

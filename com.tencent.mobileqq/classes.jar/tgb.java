@@ -1,21 +1,18 @@
-import android.app.Activity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import org.json.JSONObject;
-
-public class tgb
+public abstract interface tgb
 {
-  public Activity a;
-  public JSONObject a;
-  public tfy b;
+  public abstract void a();
   
-  tgb(tfy paramtfy1, Activity paramActivity, tfy paramtfy2, JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.b = paramtfy2;
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-  }
+  public abstract void a(int paramInt);
   
-  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt) {}
+  public abstract void a(boolean paramBoolean, int paramInt);
+  
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c();
 }
 
 

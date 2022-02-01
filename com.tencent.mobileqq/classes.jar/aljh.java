@@ -1,31 +1,16 @@
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aljh
-  implements WtTicketPromise
+  implements View.OnClickListener
 {
-  aljh(aljb paramaljb, alji paramalji) {}
+  aljh(aljg paramaljg) {}
   
-  public void Done(Ticket paramTicket)
+  public void onClick(View paramView)
   {
-    if ((paramTicket != null) && (paramTicket._sig != null) && (paramTicket._sig.length != 0))
-    {
-      paramTicket = new String(paramTicket._sig);
-      this.jdField_a_of_type_Alji.a(paramTicket);
-      return;
-    }
-    this.jdField_a_of_type_Aljb.c("get skey is null");
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    this.jdField_a_of_type_Aljb.c("get skey failed");
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    this.jdField_a_of_type_Aljb.c("get skey time out");
+    aljg.a(this.a).a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

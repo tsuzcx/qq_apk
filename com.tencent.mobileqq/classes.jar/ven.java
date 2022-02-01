@@ -1,20 +1,23 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.qqcircle.bizparts.QCirclePolymerizationClipPart.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.view.View;
 
 public class ven
-  implements aaad
 {
-  ven(vel paramvel) {}
+  protected final View a;
   
-  public void a(boolean paramBoolean, String paramString)
+  protected ven(View paramView)
   {
-    if (paramBoolean)
-    {
-      QLog.d("QCirclePolymerizationClipPart", 1, "filePath =" + paramString);
-      ThreadManager.getUIHandler().post(new QCirclePolymerizationClipPart.2.1(this, paramString));
-    }
+    this.a = paramView;
+  }
+  
+  protected Context a()
+  {
+    return this.a.getContext();
+  }
+  
+  protected <T extends View> T a(int paramInt)
+  {
+    return this.a.findViewById(paramInt);
   }
 }
 

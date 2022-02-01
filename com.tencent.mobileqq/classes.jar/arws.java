@@ -1,25 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Gxzb;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 
-public final class arws
-  implements Parcelable.Creator
+class arws
+  implements aszj
 {
-  public IPSiteModel.Gxzb a(Parcel paramParcel)
-  {
-    IPSiteModel.Gxzb localGxzb = new IPSiteModel.Gxzb();
-    localGxzb.appid = paramParcel.readInt();
-    localGxzb.appName = paramParcel.readString();
-    localGxzb.cover = paramParcel.readString();
-    localGxzb.feeType = paramParcel.readInt();
-    localGxzb.id = paramParcel.readString();
-    localGxzb.name = paramParcel.readString();
-    return localGxzb;
-  }
+  arws(arwp paramarwp, WeiYunFileInfo paramWeiYunFileInfo) {}
   
-  public IPSiteModel.Gxzb[] a(int paramInt)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    return new IPSiteModel.Gxzb[paramInt];
+    FileManagerEntity localFileManagerEntity = aszt.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo);
+    QfileBaseCloudFileTabView.i(this.jdField_a_of_type_Arwp.a).getFileManagerEngine().b(localFileManagerEntity);
+    QfileBaseCloudFileTabView.j(this.jdField_a_of_type_Arwp.a).getFileManagerDataCenter().a(localFileManagerEntity);
+    this.jdField_a_of_type_Arwp.a.a(localFileManagerEntity);
   }
 }
 

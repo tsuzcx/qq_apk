@@ -605,14 +605,14 @@ public class ProcessStats
     //   103: invokevirtual 222	java/lang/Process:getInputStream	()Ljava/io/InputStream;
     //   106: invokespecial 225	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   109: invokespecial 228	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   112: astore_1
-    //   113: aload_1
+    //   112: astore_2
+    //   113: aload_2
     //   114: invokevirtual 231	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   117: astore_2
-    //   118: aload_2
+    //   117: astore_1
+    //   118: aload_1
     //   119: ifnull +46 -> 165
     //   122: aload_3
-    //   123: aload_2
+    //   123: aload_1
     //   124: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   127: ldc 233
     //   129: invokevirtual 180	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -704,13 +704,13 @@ public class ProcessStats
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	299	0	paramInt	int
-    //   112	2	1	localBufferedReader	java.io.BufferedReader
+    //   117	7	1	str1	String
     //   136	1	1	localException1	Exception
-    //   222	29	1	str1	String
-    //   252	26	1	localObject	Object
+    //   222	29	1	str2	String
+    //   252	26	1	localObject1	Object
     //   283	1	1	localException2	Exception
     //   287	1	1	localException3	Exception
-    //   117	120	2	str2	String
+    //   112	125	2	localObject2	Object
     //   249	1	2	localException4	Exception
     //   279	1	2	localException5	Exception
     //   291	1	2	localException6	Exception
@@ -970,7 +970,7 @@ public class ProcessStats
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.monitor.common.ProcessStats
  * JD-Core Version:    0.7.0.1
  */

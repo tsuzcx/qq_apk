@@ -1,14 +1,66 @@
-public abstract interface bfqg
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
+public class bfqg
 {
-  public abstract void a();
+  private bfqi jdField_a_of_type_Bfqi;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public abstract void a(long paramLong);
+  public bfqg(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
   
-  public abstract void b();
+  private bfqi a()
+  {
+    bfqi localbfqi = new bfqi(new bfqh(this));
+    if (QLog.isColorLevel()) {
+      QLog.i("FetchInfoListManager", 2, "createFetchInfoListManager fm: " + localbfqi);
+    }
+    return localbfqi;
+  }
   
-  public abstract void b(long paramLong);
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bfqi != null)
+    {
+      this.jdField_a_of_type_Bfqi.a();
+      this.jdField_a_of_type_Bfqi = null;
+    }
+  }
   
-  public abstract void c(long paramLong);
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Bfqi == null) {
+      this.jdField_a_of_type_Bfqi = a();
+    }
+    this.jdField_a_of_type_Bfqi.a(2, paramString, null, null, null);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Bfqi == null) {
+      this.jdField_a_of_type_Bfqi = a();
+    }
+    this.jdField_a_of_type_Bfqi.a(3, paramString1, paramString2, paramString3, paramBundle);
+  }
+  
+  public void b(String paramString)
+  {
+    if (this.jdField_a_of_type_Bfqi == null) {
+      this.jdField_a_of_type_Bfqi = a();
+    }
+    this.jdField_a_of_type_Bfqi.a(1, paramString, null, null, null);
+  }
+  
+  public void c(String paramString)
+  {
+    if (this.jdField_a_of_type_Bfqi == null) {
+      this.jdField_a_of_type_Bfqi = a();
+    }
+    this.jdField_a_of_type_Bfqi.a(4, paramString, null, null, null);
+  }
 }
 
 

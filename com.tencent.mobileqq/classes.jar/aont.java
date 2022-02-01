@@ -1,57 +1,115 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.content.Context;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.ar.view.OCRScanEntryView;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.mobileqq.ar.view.ScanEntryProviderView;
+import java.util.ArrayList;
 
-class aont
-  extends mxp
+public class aont
 {
-  aont(aono paramaono, long paramLong1, Map paramMap, QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
+  private int jdField_a_of_type_Int;
+  private ArrayList<aonu> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public boolean a;
+  private final int[] jdField_a_of_type_ArrayOfInt = { 2131374516, 2131371976, 2131362880 };
+  private final String[] jdField_a_of_type_ArrayOfJavaLangString = { amtj.a(2131712621), amtj.a(2131717807), "AR" };
+  public boolean b;
+  private final int[] b;
+  public boolean c;
+  private final int[] c;
+  private final int[] d = { 2130844757, 2130844758, 2130844759, 2130844760, 2130844761, 2130844762, 2130844763, 2130844764 };
   
-  private void a(boolean paramBoolean, String paramString)
+  public aont(int paramInt)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
-    {
-      SessionInfo localSessionInfo = new SessionInfo();
-      localSessionInfo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      localSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {}
-      for (String str = "邀请你加入派对";; str = this.jdField_c_of_type_JavaLangString + "邀请你加入派对")
-      {
-        paramString = new ArkAppMessage(str, "com.tencent.avgame", null, "invite", "1.0.0.1", aoni.a(String.valueOf(this.jdField_b_of_type_Long), Long.valueOf(this.jdField_c_of_type_Long).longValue(), paramString), null, null);
-        aean.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramString);
-        return;
-      }
-    }
-    QLog.e("AvGameRoomListObserver", 1, "requestShareUrlAndSendMsg error");
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_b_of_type_ArrayOfInt = new int[] { 2130844765, 2130844766, 2130844767, 2130844768, 2130844769, 2130844770, 2130844771, 2130844772 };
+    this.jdField_c_of_type_ArrayOfInt = new int[] { 2130844740, 2130844741, 2130844742, 2130844743, 2130844744, 2130844745, 2130844746, 2130844747 };
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(boolean paramBoolean, String paramString, long paramLong)
+  public int a()
   {
-    if (paramLong != this.jdField_a_of_type_Long)
-    {
-      QLog.e("AvGameRoomListObserver", 1, "requestShareUrlAndSendMsg fail: observer not match");
-      return;
+    return this.jdField_b_of_type_ArrayOfInt.length;
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = 1;
+    if (paramInt == 1) {
+      i = 0;
     }
-    QLog.d("AvGameRoomListObserver", 1, "requestShareUrlAndSendMsg isSuccess: " + paramBoolean + " shareUrl: " + paramString + " mark: " + paramLong);
-    mxp localmxp = (mxp)this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(this.jdField_a_of_type_Long));
-    if (localmxp == null)
-    {
-      QLog.e("AvGameRoomListObserver", 1, "requestShareUrlAndSendMsg fail: observer not exist");
-      return;
+    while (paramInt == 2) {
+      return i;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(localmxp);
-    try
-    {
-      a(paramBoolean, paramString);
-      return;
+    return 2;
+  }
+  
+  public aonu a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < b())) {
+      return (aonu)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
-    catch (Exception paramString)
+    return null;
+  }
+  
+  public ScanEntryProviderView a(int paramInt, Context paramContext, aono paramaono)
+  {
+    switch (paramInt)
     {
-      QLog.e("AvGameRoomListObserver", 1, "handleSendMsg exception: " + paramString.getMessage());
+    default: 
+      return null;
+    case 1: 
+      return new QRScanEntryView(paramContext, paramaono);
+    case 3: 
+      return new ARScanEntryView(paramContext, paramaono);
     }
+    return new OCRScanEntryView(paramContext, paramaono);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(new aonu(1, amtj.a(2131712622)));
+      }
+      if (this.jdField_c_of_type_Boolean) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(new aonu(2, "OCR"));
+      }
+      if (this.jdField_b_of_type_Boolean) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(new aonu(3, "AR"));
+      }
+    }
+  }
+  
+  public int[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
+  
+  public int[] a(int paramInt)
+  {
+    if (paramInt == 0) {
+      return this.jdField_b_of_type_ArrayOfInt;
+    }
+    if (paramInt == 1) {
+      return this.d;
+    }
+    if (paramInt == 2) {
+      return this.jdField_c_of_type_ArrayOfInt;
+    }
+    return null;
+  }
+  
+  public String[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
 }
 

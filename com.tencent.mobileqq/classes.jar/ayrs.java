@@ -1,84 +1,157 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_like.FeedsLikeRsp;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profilecard.base.view.ProfileContentTitleView;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import com.tencent.widget.SingleLineTextView;
+import java.util.concurrent.ConcurrentHashMap;
 
-final class ayrs
-  implements aydt
+public abstract class ayrs
+  extends ayrr<View>
 {
-  ayrs(ayrw paramayrw) {}
+  protected aysa a;
+  protected ayyp a;
+  protected bhha a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public ayrs(aysx paramaysx, aymg paramaymg)
   {
-    bool3 = true;
-    boolean bool2 = true;
-    int j = 0;
-    int k = 0;
-    i = 0;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new oidb_0xada.RspBody();
+    super(paramaysx, paramaymg);
+  }
+  
+  private void a(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView, View paramView3, View paramView4, View paramView5, aymn paramaymn)
+  {
+    aymn.a(paramView1, "background", paramaymn, "commonItemTopBorderBackground");
+    aymn.a(paramTextView, "color", paramaymn, "commonItemContentColor");
+    aymn.a(paramView2, "color", paramaymn, "commonItemContentColor");
+    aymn.a(paramImageView, "src", paramaymn, "commonItemMoreSrc");
+    if (paramImageView != null)
+    {
+      paramView1 = paramImageView.getLayoutParams();
+      paramView1.width = -2;
+      paramView1.height = -2;
+      paramImageView.setLayoutParams(paramView1);
+    }
+    if (paramView3 != null)
+    {
+      paramView3.setBackgroundResource(0);
+      paramView3.setVisibility(8);
+    }
+    if (paramView4 != null) {
+      paramView4.setBackgroundResource(0);
+    }
+    if (paramView5 != null) {
+      paramView5.setBackgroundResource(0);
+    }
+  }
+  
+  private void b(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView, View paramView3, View paramView4, View paramView5)
+  {
+    if (paramView1 != null) {
+      paramView1.setBackgroundResource(2130839477);
+    }
+    this.jdField_a_of_type_Ayyp.a(paramTextView, paramView2, paramImageView, paramView3, paramView4, paramView5);
+  }
+  
+  private void c(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView, View paramView3, View paramView4, View paramView5)
+  {
+    Resources localResources = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
+    if (paramView1 != null) {
+      paramView1.setBackgroundResource(2130839477);
+    }
+    if (paramTextView != null) {
+      paramTextView.setTextColor(localResources.getColorStateList(2131167012));
+    }
+    if ((paramView2 instanceof TextView)) {
+      ((TextView)paramView2).setTextColor(localResources.getColorStateList(2131167092));
     }
     for (;;)
     {
-      try
+      if (paramImageView != null)
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (paramBundle.busi_buf.has())
-        {
-          paramArrayOfByte = new ilive_feeds_like.FeedsLikeRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          if (paramArrayOfByte.ret.has())
-          {
-            paramInt = paramArrayOfByte.ret.get();
-            if (paramInt == 0) {
-              i = k;
-            }
-          }
-        }
+        paramImageView.setImageResource(2130839316);
+        paramView1 = paramImageView.getLayoutParams();
+        paramView1.width = -2;
+        paramView1.height = -2;
+        paramImageView.setLayoutParams(paramView1);
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      if (paramView3 != null)
       {
-        bool1 = false;
-        paramInt = j;
+        paramView3.setBackgroundResource(0);
+        paramView3.setVisibility(8);
       }
-      try
-      {
-        j = paramArrayOfByte.total.get();
-        paramInt = j;
-        bool1 = bool2;
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          i = j;
-          QLog.i("NearbyMomentProtocol", 2, "like success, total:   " + j);
-          bool1 = bool2;
-          paramInt = j;
-        }
-        if (this.a != null) {
-          this.a.a(bool1, paramInt);
-        }
-        return;
+      if (paramView4 != null) {
+        paramView4.setBackgroundResource(0);
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramInt = i;
-          bool1 = bool3;
-        }
+      if (paramView5 != null) {
+        paramView5.setBackgroundResource(0);
       }
-      QLog.i("NearbyMomentProtocol", 1, "like error, ret=" + paramArrayOfByte.ret.get() + ",err_msg=" + paramBundle.err_msg.get());
-      bool1 = false;
-      paramInt = i;
-      continue;
-      paramArrayOfByte.printStackTrace();
+      return;
+      if ((paramView2 instanceof SingleLineTextView)) {
+        ((SingleLineTextView)paramView2).setTextColor(localResources.getColorStateList(2131167092));
+      }
     }
   }
+  
+  protected void a(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView)
+  {
+    a(paramView1, paramTextView, paramView2, paramImageView, null, null, null);
+  }
+  
+  protected void a(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView, View paramView3, View paramView4, View paramView5)
+  {
+    try
+    {
+      aymn localaymn = ((aymg)this.b).jdField_a_of_type_Aymn;
+      if ((localaymn != null) && (localaymn.a != null) && (!localaymn.a.isEmpty()))
+      {
+        a(paramView1, paramTextView, paramView2, paramImageView, paramView3, paramView4, paramView5, localaymn);
+        return;
+      }
+      if (aymn.a(((aymg)this.b).jdField_a_of_type_Long))
+      {
+        b(paramView1, paramTextView, paramView2, paramImageView, paramView3, paramView4, paramView5);
+        return;
+      }
+    }
+    catch (Exception paramView1)
+    {
+      QLog.e("AbsProfileContentComponent", 1, "updateItemTheme fail.", paramView1);
+      return;
+    }
+    c(paramView1, paramTextView, paramView2, paramImageView, paramView3, paramView4, paramView5);
+  }
+  
+  protected void a(TextView paramTextView, View paramView)
+  {
+    a(null, paramTextView, paramView, null, null, null, null);
+  }
+  
+  protected void a(TextView paramTextView, View paramView, ImageView paramImageView)
+  {
+    a(null, paramTextView, paramView, paramImageView, null, null, null);
+  }
+  
+  public void a(aysa paramaysa, bhha parambhha, ayyp paramayyp)
+  {
+    this.jdField_a_of_type_Aysa = paramaysa;
+    this.jdField_a_of_type_Bhha = parambhha;
+    this.jdField_a_of_type_Ayyp = paramayyp;
+  }
+  
+  protected void a(ProfileContentTitleView paramProfileContentTitleView, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (FrameLayout localFrameLayout = paramProfileContentTitleView.jdField_a_of_type_AndroidWidgetFrameLayout;; localFrameLayout = null)
+    {
+      a(paramProfileContentTitleView.jdField_b_of_type_AndroidViewViewGroup, paramProfileContentTitleView.jdField_a_of_type_AndroidWidgetTextView, null, paramProfileContentTitleView.jdField_b_of_type_AndroidWidgetImageView, paramProfileContentTitleView.jdField_a_of_type_AndroidWidgetImageView, paramProfileContentTitleView.c, localFrameLayout);
+      return;
+    }
+  }
+  
+  public abstract String a_();
 }
 
 

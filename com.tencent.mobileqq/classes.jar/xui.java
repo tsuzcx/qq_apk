@@ -1,51 +1,11 @@
-import android.content.Context;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-
-public class xui
+class xui
+  implements yqo<xqr>
 {
-  static volatile xui jdField_a_of_type_Xui;
-  Context jdField_a_of_type_AndroidContentContext;
-  xuj jdField_a_of_type_Xuj;
+  xui(xuh paramxuh) {}
   
-  private xui(Context paramContext)
+  public xqr a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-  }
-  
-  public static xui a(Context paramContext)
-  {
-    if (jdField_a_of_type_Xui == null) {}
-    try
-    {
-      if (jdField_a_of_type_Xui == null) {
-        jdField_a_of_type_Xui = new xui(paramContext);
-      }
-      return jdField_a_of_type_Xui;
-    }
-    finally {}
-  }
-  
-  public xuj a()
-  {
-    if (this.jdField_a_of_type_Xuj == null) {
-      this.jdField_a_of_type_Xuj = new xuj();
-    }
-    return this.jdField_a_of_type_Xuj;
-  }
-  
-  public void a()
-  {
-    TVK_SDKMgr.setOnLogListener(a());
-  }
-  
-  public void a(Context paramContext)
-  {
-    TVK_SDKMgr.initSdk(paramContext.getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-  }
-  
-  public boolean a()
-  {
-    return TVK_SDKMgr.isInstalled(null);
+    return new xqr();
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.ad.tangram.file;
 
 import android.text.TextUtils;
-import android.util.Log;
+import com.tencent.ad.tangram.log.AdLog;
 import java.io.File;
 import java.io.RandomAccessFile;
 import java.nio.channels.FileChannel;
@@ -55,10 +55,10 @@ public final class a
         }
         catch (Throwable localThrowable2)
         {
-          Log.e("AdFile", "close", localThrowable2);
+          AdLog.e("AdFile", "close", localThrowable2);
         }
         localThrowable1 = localThrowable1;
-        Log.e("AdFile", "close", localThrowable1);
+        AdLog.e("AdFile", "close", localThrowable1);
       }
     }
   }
@@ -83,11 +83,11 @@ public final class a
           localObject = "rwd";
           this.randomAccessFile = new RandomAccessFile(localFile, (String)localObject);
           if (!this.writable) {
-            break label155;
+            break label154;
           }
           this.fileLock = this.randomAccessFile.getChannel().lock();
           if ((localFile.exists()) && (localFile.isFile())) {
-            break label177;
+            break label176;
           }
           close();
           return false;
@@ -95,16 +95,16 @@ public final class a
       }
       catch (Throwable localThrowable)
       {
-        Log.e("AdFile", "open", localThrowable);
+        AdLog.e("AdFile", "open", localThrowable);
         close();
         return false;
       }
       String str = "r";
       continue;
-      label155:
+      label154:
       this.fileLock = this.randomAccessFile.getChannel().tryLock(0L, 9223372036854775807L, true);
     }
-    label177:
+    label176:
     return true;
   }
   
@@ -142,7 +142,7 @@ public final class a
         }
         catch (Throwable localThrowable)
         {
-          Log.e("AdFile", "read", localThrowable);
+          AdLog.e("AdFile", "read", localThrowable);
         }
       }
     }
@@ -167,7 +167,7 @@ public final class a
     }
     catch (Throwable paramString)
     {
-      Log.e("AdFile", "write", paramString);
+      AdLog.e("AdFile", "write", paramString);
     }
     return false;
   }

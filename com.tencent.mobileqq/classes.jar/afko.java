@@ -1,31 +1,28 @@
-import android.os.Message;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
-import mqq.os.MqqHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
 public class afko
-  extends MqqHandler
+  extends BroadcastReceiver
 {
-  public afko(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
+  public afko(TroopChatPie paramTroopChatPie) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramMessage.what)
+    if ("com.tencent.mobileqq.action.ACTION_CONFESS_START_EVENT".equals(paramIntent.getAction()))
     {
-    case 107: 
-    default: 
-      return;
-    case 106: 
-      this.a.finish();
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag, 2, "Confess action! ");
+      }
+      if (this.a.root != null)
+      {
+        this.a.root.a(35);
+        apsz.a(this.a.app, true);
+      }
     }
-    int i = 0;
-    while (i < 6)
-    {
-      RegisterVerifyCodeActivity.a(this.a)[i].setText("");
-      i += 1;
-    }
-    RegisterVerifyCodeActivity.a(this.a)[0].requestFocus();
   }
 }
 

@@ -1,38 +1,41 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqProfileYearNodeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-class weq
-  implements ScaleGestureDetector.OnScaleGestureListener
+public class weq
+  extends vqr
 {
-  weq(wep paramwep) {}
+  public String a;
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public String a()
   {
-    float f = paramScaleGestureDetector.getScaleFactor();
-    if ((Float.isNaN(f)) || (Float.isInfinite(f))) {
-      return false;
-    }
-    if (f >= 0.0F) {
-      wep.a(this.a).a(f, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
-    }
-    return true;
+    return vpl.a("StorySvc.get_profile_year_node_info");
   }
   
-  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  public vqm a(byte[] paramArrayOfByte)
   {
-    float f = paramScaleGestureDetector.getScaleFactor();
-    if (wep.a(this.a) != null) {
-      wep.a(this.a).a(f);
+    qqstory_service.RspProfileYearNodeList localRspProfileYearNodeList = new qqstory_service.RspProfileYearNodeList();
+    try
+    {
+      localRspProfileYearNodeList.mergeFrom(paramArrayOfByte);
+      return new wer(localRspProfileYearNodeList);
     }
-    return true;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
   }
   
-  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
+  protected byte[] a()
   {
-    float f = paramScaleGestureDetector.getScaleFactor();
-    if (wep.a(this.a) != null) {
-      wep.a(this.a).a(f);
-    }
+    qqstory_service.ReqProfileYearNodeList localReqProfileYearNodeList = new qqstory_service.ReqProfileYearNodeList();
+    localReqProfileYearNodeList.union_id.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localReqProfileYearNodeList.toByteArray();
   }
 }
 

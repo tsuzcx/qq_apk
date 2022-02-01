@@ -1,13 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileOption;
-
-public class auyu
-  implements DialogInterface.OnClickListener
+class auyu
 {
-  public auyu(ForwardFileOption paramForwardFileOption) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  private static final auys a = new auys(null);
 }
 
 

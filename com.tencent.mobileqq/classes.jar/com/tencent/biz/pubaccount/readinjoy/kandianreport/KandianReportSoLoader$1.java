@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import bnrf;
+import bkwm;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.os.MqqHandler;
-import ocd;
+import odq;
 
 final class KandianReportSoLoader$1
   implements TaskOfflineUtils.OfflineCallBack
@@ -17,7 +17,7 @@ final class KandianReportSoLoader$1
     if (paramInt1 == 0)
     {
       KandianReportSoLoader.access$002(paramInt2);
-      bnrf.a("kd_fc_so_download", Boolean.valueOf(true));
+      bkwm.a("kd_fc_so_download", Boolean.valueOf(true));
       QLog.d("kandianreport.KandianReportSoLoader", 1, "download so success: a new version: " + KandianReportSoLoader.access$000());
       ThreadManager.getFileThreadHandler().post(new KandianReportSoLoader.1.1(this));
     }
@@ -26,8 +26,8 @@ final class KandianReportSoLoader$1
       boolean bool = new File(KandianReportSoLoader.access$400()).exists();
       KandianReportSoLoader.logAndReport("local so file exists: " + bool);
       return;
-      if ((paramInt1 != 7) && (paramInt1 != 8) && (paramInt1 != 5) && (!((Boolean)bnrf.a("kd_fc_so_download", Boolean.valueOf(false))).booleanValue())) {
-        ocd.a(null, "", "0X8009A1C", "0X8009A1C", 0, 0, "", "", "" + paramInt1, "download fail", false);
+      if ((paramInt1 != 7) && (paramInt1 != 8) && (paramInt1 != 5) && (!((Boolean)bkwm.a("kd_fc_so_download", Boolean.valueOf(false))).booleanValue())) {
+        odq.a(null, "", "0X8009A1C", "0X8009A1C", 0, 0, "", "", "" + paramInt1, "download fail", false);
       }
       QLog.d("kandianreport.KandianReportSoLoader", 1, "download so fail or not update:" + paramInt1);
     }

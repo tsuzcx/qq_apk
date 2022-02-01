@@ -1,34 +1,89 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetShareGroupListReceiver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class yjd
-  extends QQUIEventReceiver<yja, ykd>
+  extends yja
 {
-  public yjd(@NonNull yja paramyja)
+  private boolean c;
+  
+  public yjd(Context paramContext, String paramString, int paramInt)
   {
-    super(paramyja);
+    super(paramContext, paramString, paramInt);
   }
   
-  public void a(@NonNull yja paramyja, @NonNull ykd paramykd)
+  public int a()
   {
-    if (paramykd.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 0;
+  }
+  
+  public View a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561678, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    ImageView localImageView1 = (ImageView)paramView.findViewById(2131364298);
+    ImageView localImageView2 = (ImageView)paramView.findViewById(2131364293);
+    TextView localTextView = (TextView)paramView.findViewById(2131364295);
+    paramView = paramView.findViewById(2131364289);
+    localTextView.setText(this.jdField_a_of_type_JavaLangString);
+    switch (this.jdField_a_of_type_Int)
     {
-      yuk.b("Q.qqstory.memories.MemoriesProfilePresenter", "update share group total count. %d.", Integer.valueOf(paramykd.jdField_a_of_type_Int));
-      yja.b(paramyja, paramykd.jdField_a_of_type_Int);
-      if (paramyja.a != null)
-      {
-        paramyja.a.shareGroupCount = yja.b(paramyja);
-        ThreadManager.post(new MemoriesProfilePresenter.GetShareGroupListReceiver.1(this, paramyja), 5, null, false);
+    case 10002: 
+    case 10003: 
+    default: 
+      if (this.jdField_a_of_type_Boolean) {
+        localImageView1.setVisibility(0);
       }
+      break;
     }
+    for (;;)
+    {
+      if (!this.c) {
+        break label177;
+      }
+      paramInt = -2170912;
+      QQStoryContext.a();
+      if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+        paramInt = -16444373;
+      }
+      paramView.setBackgroundColor(paramInt);
+      paramView.setVisibility(0);
+      return;
+      localImageView2.setImageResource(2130846620);
+      break;
+      localImageView2.setImageResource(2130846616);
+      break;
+      localImageView2.setImageResource(2130846619);
+      break;
+      localImageView1.setVisibility(4);
+    }
+    label177:
+    paramView.setVisibility(4);
   }
   
-  public Class acceptEventClass()
+  public void a(boolean paramBoolean) {}
+  
+  public void c(boolean paramBoolean)
   {
-    return ykd.class;
+    this.c = paramBoolean;
   }
 }
 

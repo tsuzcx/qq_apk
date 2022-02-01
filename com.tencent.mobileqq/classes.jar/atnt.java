@@ -1,43 +1,62 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.qphone.base.util.QLog;
 
-class atnt
-  implements aumz
+public class atnt
+  extends atnp
 {
-  atnt(atns paramatns, FileManagerEntity paramFileManagerEntity) {}
+  private int jdField_a_of_type_Int;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private AnimationTextView jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView;
   
-  public void a()
+  public atnt(QQCustomDialog paramQQCustomDialog)
   {
-    this.jdField_a_of_type_Atns.a.a.a().aa();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      QfileBaseRecentFileTabView.t(this.jdField_a_of_type_Atns.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    }
-    anvu localanvu;
-    ArrayList localArrayList;
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
-      }
-      localanvu = (anvu)QfileBaseRecentFileTabView.u(this.jdField_a_of_type_Atns.a).a(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localanvu.a(localArrayList));
-    auna.a(2131692318);
-    return;
-    QfileBaseRecentFileTabView.v(this.jdField_a_of_type_Atns.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    super(paramQQCustomDialog);
   }
   
-  public void b() {}
+  protected int a()
+  {
+    if (this.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Int = ((int)((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297111)) / ViewUtils.mDensity));
+    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  protected View a()
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558998, null));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView = ((AnimationTextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378381));
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new atnu(this));
+    return this.jdField_a_of_type_AndroidViewViewGroup;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardPreviewTextController", 2, " bindData ");
+    }
+    if (paramString1 != null) {
+      a(paramString1);
+    }
+    if ((paramString2 != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setText(new QQText(paramString2, 5, 20));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atnt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,114 +1,94 @@
-import ConfigPush.FileStorageServerListInfo;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.activity.contacts.alphabet.IndexBar;
+import com.tencent.mobileqq.activity.contacts.alphabet.IndexBarTipsLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
 
 public class besy
+  implements aing
 {
-  public String a;
-  public ArrayList<FileStorageServerListInfo> a;
-  public int[] a;
-  public String b;
-  public ArrayList<FileStorageServerListInfo> b;
-  public int[] b;
+  public Context a;
+  private final View jdField_a_of_type_AndroidViewView;
+  public betb a;
+  public IndexBar a;
+  public IndexBarTipsLayout a;
+  public QQAppInterface a;
+  public XListView a;
+  private String jdField_a_of_type_JavaLangString = "";
   
-  public besy()
+  public besy(QQAppInterface paramQQAppInterface, Context paramContext, TroopChatPie paramTroopChatPie, View paramView, XListView paramXListView)
   {
-    this.jdField_a_of_type_ArrayOfInt = new int[6];
-    this.jdField_b_of_type_ArrayOfInt = new int[6];
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
+    this.jdField_a_of_type_Betb = new betb(this, paramTroopChatPie);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Betb);
+    a();
   }
   
-  public ArrayList<FileStorageServerListInfo> a(String paramString)
+  private void a()
   {
-    if ((paramString != null) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
-      return this.jdField_a_of_type_JavaUtilArrayList;
-    }
-    if ((paramString != null) && (paramString.equals(this.jdField_b_of_type_JavaLangString))) {
-      return this.jdField_b_of_type_JavaUtilArrayList;
-    }
-    return null;
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout = ((IndexBarTipsLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368649));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar = ((IndexBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131368648));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBar.setOnIndexBarTouchListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout.setVisibility(8);
   }
   
-  public void a()
+  public void a(String paramString, int paramInt, float paramFloat)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_JavaUtilArrayList.size()];
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout.setText(paramString, paramFloat);
     }
-    if ((this.jdField_b_of_type_JavaUtilArrayList != null) && (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)) {
-      this.jdField_b_of_type_ArrayOfInt = new int[this.jdField_b_of_type_JavaUtilArrayList.size()];
+    if (!this.jdField_a_of_type_JavaLangString.equals(paramString))
+    {
+      this.jdField_a_of_type_JavaLangString = paramString;
+      if (!"★".equals(paramString)) {
+        break label50;
+      }
+      this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
     }
+    label50:
+    do
+    {
+      return;
+      paramInt = this.jdField_a_of_type_Betb.a(paramString);
+    } while (paramInt == -1);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(paramInt + this.jdField_a_of_type_ComTencentWidgetXListView.getHeaderViewsCount());
   }
   
-  public void a(String paramString1, String paramString2)
+  public void c(boolean paramBoolean)
   {
-    if (paramString1 != null) {}
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ListViewWrapper", 2, new Object[] { "onLetterTouching: invoked. ", " touching: ", Boolean.valueOf(paramBoolean) });
+    }
+    if (!paramBoolean) {
+      this.jdField_a_of_type_JavaLangString = "";
+    }
+    IndexBarTipsLayout localIndexBarTipsLayout;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout != null)
+    {
+      localIndexBarTipsLayout = this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetIndexBarTipsLayout;
+      if (!paramBoolean) {
+        break label67;
+      }
+    }
     for (;;)
     {
-      try
-      {
-        int i;
-        if (paramString1.equals(this.jdField_a_of_type_JavaLangString))
-        {
-          localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-          paramString1 = this.jdField_a_of_type_ArrayOfInt;
-          if ((localArrayList == null) || (localArrayList.size() <= 0) || (paramString1 == null) || (paramString1.length <= 0)) {
-            break;
-          }
-          paramString2 = new URL(paramString2).getHost();
-          if ((paramString2 == null) || (paramString2.length() <= 0)) {
-            break;
-          }
-          i = 0;
-          if (i >= localArrayList.size()) {
-            break;
-          }
-          String str = ((FileStorageServerListInfo)localArrayList.get(i)).sIP;
-          if ((str != null) && (str.equalsIgnoreCase(paramString2)))
-          {
-            if (paramString1.length <= i) {
-              break;
-            }
-            paramString1[i] += 1;
-          }
-        }
-        else
-        {
-          if ((paramString1 == null) || (!paramString1.equals(this.jdField_b_of_type_JavaLangString))) {
-            break label163;
-          }
-          localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
-          paramString1 = this.jdField_b_of_type_ArrayOfInt;
-          continue;
-        }
-        i += 1;
-        continue;
-        paramString1 = null;
-      }
-      catch (MalformedURLException paramString1)
-      {
-        return;
-      }
-      label163:
-      ArrayList localArrayList = null;
+      localIndexBarTipsLayout.setVisibility(i);
+      return;
+      label67:
+      i = 8;
     }
-  }
-  
-  public int[] a(String paramString)
-  {
-    if ((paramString != null) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
-      return this.jdField_a_of_type_ArrayOfInt;
-    }
-    if ((paramString != null) && (paramString.equals(this.jdField_b_of_type_JavaLangString))) {
-      return this.jdField_b_of_type_ArrayOfInt;
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     besy
  * JD-Core Version:    0.7.0.1
  */

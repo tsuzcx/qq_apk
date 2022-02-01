@@ -1,104 +1,30 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqcircle.events.QCircleDanmakuEvent;
-import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
-import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StReply;
-import java.util.ArrayList;
-import java.util.List;
-import qqcircle.QQCircleFeedBase.StBusiInfoCommentListData;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class vgl
-  extends vbk
-  implements aaam
+  extends QIPCModule
 {
-  public static String a;
-  private static vas a;
-  
-  private QCircleInitBean a()
+  public vgl(String paramString)
   {
-    return (QCircleInitBean)((Activity)a()).getIntent().getSerializableExtra("key_bundle_common_init_bean");
+    super(paramString);
   }
   
-  public static FeedCloudMeta.StFeed a()
+  private void a()
   {
-    if ((jdField_a_of_type_Vas == null) || (jdField_a_of_type_Vas.a == null)) {
-      return new FeedCloudMeta.StFeed();
+    azjl.a(BaseApplicationImpl.context, new vgm(this));
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    QLog.d("QCircleHostIPCModule", 1, "receive action:" + paramString + " callbackId:" + paramInt);
+    if ("HOST_ACTION_INIT_PLAY_SDK".equals(paramString)) {
+      a();
     }
-    return jdField_a_of_type_Vas.a;
-  }
-  
-  private String c()
-  {
-    String str2 = a().id.get();
-    String str1 = str2;
-    if (a() != null) {
-      str1 = str2 + a().comment.id.get() + a().reply.id.get();
-    }
-    return str1;
-  }
-  
-  public String a()
-  {
     return null;
   }
-  
-  public QQCircleFeedBase.StBusiInfoCommentListData a()
-  {
-    try
-    {
-      QCircleInitBean localQCircleInitBean = a();
-      QQCircleFeedBase.StBusiInfoCommentListData localStBusiInfoCommentListData = new QQCircleFeedBase.StBusiInfoCommentListData();
-      localStBusiInfoCommentListData.mergeFrom(localQCircleInitBean.getBusiInfoData());
-      localStBusiInfoCommentListData.setHasFlag(true);
-      return localStBusiInfoCommentListData;
-    }
-    catch (Exception localException) {}
-    return null;
-  }
-  
-  protected void a(View paramView)
-  {
-    aaak.a().a(this);
-  }
-  
-  public void a(String paramString, Object paramObject)
-  {
-    if (paramString.equals("danmaku_show"))
-    {
-      if ((paramObject instanceof vas)) {
-        jdField_a_of_type_Vas = (vas)paramObject;
-      }
-      jdField_a_of_type_JavaLangString = c();
-      if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {}
-    }
-    while (!paramString.equals("danmaku_dismiss"))
-    {
-      return;
-      paramString = vjy.a().a(jdField_a_of_type_JavaLangString);
-      if ((paramString != null) && (paramString.size() > 0))
-      {
-        aaak.a().a(new QCircleDanmakuEvent(1));
-        return;
-      }
-      aaak.a().a(new QCircleDanmakuEvent(2));
-      vjy.a().a(a().hashCode(), a(), false);
-      return;
-    }
-    aaak.a().a(new QCircleDanmakuEvent(2));
-  }
-  
-  public ArrayList<Class> getEventClass()
-  {
-    return new ArrayList();
-  }
-  
-  public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent) {}
 }
 
 

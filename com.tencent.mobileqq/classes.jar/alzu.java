@@ -1,64 +1,27 @@
-import android.content.Context;
-import android.media.AudioManager;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.webviewplugin.Hole;
+import com.tencent.mobileqq.apollo.process.ui.framework.QzoneGameFloatView;
 
 public class alzu
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static long a;
-  public static Context a;
-  public static String a;
+  public alzu(QzoneGameFloatView paramQzoneGameFloatView, View paramView, DisplayMetrics paramDisplayMetrics) {}
   
-  static
+  public void onGlobalLayout()
   {
-    jdField_a_of_type_AndroidContentContext = MobileQQ.getContext();
-    jdField_a_of_type_Long = -1L;
-  }
-  
-  public static void a()
-  {
-    try
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+    for (;;)
     {
-      ((AudioManager)MobileQQ.getContext().getSystemService("audio")).requestAudioFocus(null, 3, 1);
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_ComTencentBizWebviewpluginHole.setHole((this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.getLeft() + this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.getRight()) / 2 - 1, (this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.getTop() + this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_AndroidViewView.getBottom()) / 2 - 1, (int)(30.0F * this.jdField_a_of_type_AndroidUtilDisplayMetrics.density));
+      this.jdField_a_of_type_ComTencentMobileqqApolloProcessUiFrameworkQzoneGameFloatView.jdField_a_of_type_ComTencentBizWebviewpluginHole.invalidate();
       return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    if ((jdField_a_of_type_Long > 0L) && (jdField_a_of_type_Long == paramLong)) {}
-    Object localObject;
-    do
-    {
-      return true;
-      localObject = alzv.a().a();
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        return false;
-      }
-      jdField_a_of_type_JavaLangString = (String)localObject + File.separator + "cover" + File.separator + paramLong;
-      localObject = new File(jdField_a_of_type_JavaLangString);
-    } while ((((File)localObject).mkdirs()) || (((File)localObject).isDirectory()));
-    QLog.e("GloableValue", 2, "make cover dir: " + jdField_a_of_type_JavaLangString + " failed.");
-    return false;
-  }
-  
-  public static void b()
-  {
-    try
-    {
-      ((AudioManager)MobileQQ.getContext().getSystemService("audio")).abandonAudioFocus(null);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
   }
 }

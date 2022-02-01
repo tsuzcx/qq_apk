@@ -1,24 +1,14 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbUIFragment;
 
-class ajym
-  implements ViewPager.OnPageChangeListener
+public class ajym
+  extends ajzf
 {
-  ajym(ajyl paramajyl) {}
+  public ajym(BaseHbUIFragment paramBaseHbUIFragment) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    EmoticonFromGroupEntity localEmoticonFromGroupEntity = ajyl.a(this.a).a(paramInt);
-    if (localEmoticonFromGroupEntity != null)
-    {
-      ajyl.a(this.a, localEmoticonFromGroupEntity);
-      ajyl.b(this.a, localEmoticonFromGroupEntity);
-    }
+    this.a.a();
   }
 }
 

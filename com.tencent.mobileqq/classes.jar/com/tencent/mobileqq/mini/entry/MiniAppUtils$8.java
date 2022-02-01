@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.entry;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bhkv;
-import bisp;
+import bfuc;
+import bgyr;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
@@ -22,37 +22,37 @@ final class MiniAppUtils$8
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    bisp localbisp;
-    if ((paramMessage.obj instanceof bisp))
+    bgyr localbgyr;
+    if ((paramMessage.obj instanceof bgyr))
     {
-      localbisp = (bisp)paramMessage.obj;
-      QLog.d("MiniAppUtils", 1, new Object[] { "handleMessage ", localbisp });
-      if (localbisp.jdField_c_of_type_Int == 0) {
+      localbgyr = (bgyr)paramMessage.obj;
+      QLog.d("MiniAppUtils", 1, new Object[] { "handleMessage ", localbgyr });
+      if (localbgyr.jdField_c_of_type_Int == 0) {
         for (;;)
         {
           JSONObject localJSONObject;
           try
           {
             localJSONObject = new JSONObject();
-            if (localbisp.d == null) {
+            if (localbgyr.d == null) {
               break label212;
             }
             if (this.val$returnAsJSON)
             {
-              localJSONObject.put("data", new JSONObject(localbisp.d));
-              localJSONObject.put("statusCode", localbisp.b);
-              localJSONObject.put("wnsCode", localbisp.jdField_c_of_type_Int);
-              localJSONObject.put("header", localbisp.jdField_c_of_type_JavaLangString);
+              localJSONObject.put("data", new JSONObject(localbgyr.d));
+              localJSONObject.put("statusCode", localbgyr.b);
+              localJSONObject.put("wnsCode", localbgyr.jdField_c_of_type_Int);
+              localJSONObject.put("header", localbgyr.jdField_c_of_type_JavaLangString);
               this.val$jsPluginEngine.callbackJsEventOK(this.val$jsRuntime, this.val$eventName, localJSONObject, this.val$callBackId);
               return;
             }
-            if (localbisp.a)
+            if (localbgyr.a)
             {
-              paramMessage = bhkv.encodeToString(localbisp.d.getBytes(), 0);
+              paramMessage = bfuc.encodeToString(localbgyr.d.getBytes(), 0);
               localJSONObject.put("data", paramMessage);
               continue;
             }
-            paramMessage = localbisp.d;
+            paramMessage = localbgyr.d;
           }
           catch (JSONException paramMessage)
           {
@@ -69,7 +69,7 @@ final class MiniAppUtils$8
     }
     try
     {
-      paramMessage.put("wnsCode", localbisp.jdField_c_of_type_Int);
+      paramMessage.put("wnsCode", localbgyr.jdField_c_of_type_Int);
       label243:
       this.val$jsPluginEngine.callbackJsEventFail(this.val$jsRuntime, this.val$eventName, paramMessage, this.val$callBackId);
       return;

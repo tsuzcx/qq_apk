@@ -1,40 +1,37 @@
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.qphone.base.util.QLog;
 
-public class ardr
+class ardr
+  extends BroadcastReceiver
 {
-  private int a;
+  ardr(arcu paramarcu, MessengerService paramMessengerService, Bundle paramBundle) {}
   
-  public static ardr a(String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramString == null) {
-      return null;
+    paramContext = paramIntent.getAction();
+    if ((TextUtils.isEmpty(paramContext)) || (!TextUtils.equals(paramContext, "mqq.intent.action.DEVLOCK_ROAM"))) {
+      return;
     }
-    try
-    {
-      ardr localardr = new ardr();
-      localardr.a = new JSONObject(paramString).optInt("open_don_disturb", 0);
-      return localardr;
+    paramContext = this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext();
+    if (paramContext != null) {
+      paramContext.unregisterReceiver(this);
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.emoji.web.MessengerService", 2, "openDevLock unregisterReceiver context: " + paramContext);
     }
-    return null;
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public String toString()
-  {
-    return super.toString() + " showDonDisturb=" + this.a;
+    paramContext = new Bundle(paramIntent.getExtras());
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardr
  * JD-Core Version:    0.7.0.1
  */

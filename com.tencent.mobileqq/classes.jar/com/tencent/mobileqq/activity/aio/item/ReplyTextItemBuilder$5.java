@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adak;
-import ahpx;
-import ahqi;
+import abwz;
+import agmk;
+import agmv;
 import android.content.Context;
 import android.os.Bundle;
-import arwl;
-import bhnv;
+import aqqh;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,6 +14,7 @@ import com.tencent.mobileqq.data.MessageForMixedMsg;
 import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
 import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ import mqq.os.MqqHandler;
 public final class ReplyTextItemBuilder$5
   implements Runnable
 {
-  public ReplyTextItemBuilder$5(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, ahqi paramahqi, Context paramContext, ChatThumbView paramChatThumbView) {}
+  public ReplyTextItemBuilder$5(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, agmv paramagmv, Context paramContext, ChatThumbView paramChatThumbView) {}
   
   public void run()
   {
@@ -33,11 +33,11 @@ public final class ReplyTextItemBuilder$5
     Object localObject1;
     Object localObject4;
     boolean bool;
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof arwl))
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof aqqh))
     {
-      localObject1 = (arwl)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      localObject4 = ((arwl)localObject1).getSourceMsgInfo();
-      bool = ((arwl)localObject1).getHasPulledSourceMsg();
+      localObject1 = (aqqh)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      localObject4 = ((aqqh)localObject1).getSourceMsgInfo();
+      bool = ((aqqh)localObject1).getHasPulledSourceMsg();
     }
     for (;;)
     {
@@ -47,24 +47,24 @@ public final class ReplyTextItemBuilder$5
       if (0 == 0) {}
       label452:
       Object localObject3;
-      for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, ((MessageForReplyText.SourceMsgInfo)localObject4).mSourceMsgSeq);; localObject3 = null)
+      for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemByShmsgseq(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, ((MessageForReplyText.SourceMsgInfo)localObject4).mSourceMsgSeq);; localObject3 = null)
       {
         Object localObject5;
         if ((localObject1 == null) && (!bool) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin != null))
         {
-          if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof arwl)) {
-            ((arwl)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).setPulledSourceMsg();
+          if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof aqqh)) {
+            ((aqqh)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).setPulledSourceMsg();
           }
           Bundle localBundle = new Bundle();
-          QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+          QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
           localObject5 = new ArrayList();
-          int j = localQQMessageFacade.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
+          int j = localQQMessageFacade.pullCounter.addAndGet(1);
           localBundle.putInt("counter", j);
           localBundle.putBoolean("success", false);
-          localQQMessageFacade.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(j), localObject5);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, ((MessageForReplyText.SourceMsgInfo)localObject4).mSourceMsgSeq, ((MessageForReplyText.SourceMsgInfo)localObject4).mSourceMsgSeq, true, localBundle, 0);
-          localQQMessageFacade.b.put(adak.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop), Boolean.valueOf(false));
-          if (!bhnv.g(BaseApplication.getContext())) {}
+          localQQMessageFacade.pullCache.put(Integer.valueOf(j), localObject5);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, ((MessageForReplyText.SourceMsgInfo)localObject4).mSourceMsgSeq, ((MessageForReplyText.SourceMsgInfo)localObject4).mSourceMsgSeq, true, localBundle, 0);
+          localQQMessageFacade.autoPullCache.put(abwz.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop), Boolean.valueOf(false));
+          if (!NetworkUtil.isNetworkAvailable(BaseApplication.getContext())) {}
         }
         label458:
         label468:
@@ -83,7 +83,7 @@ public final class ReplyTextItemBuilder$5
                 break label458;
               }
               localObject5 = new StringBuilder();
-              localObject4 = ahpx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (MessageRecord)localObject1, (StringBuilder)localObject5);
+              localObject4 = agmk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (MessageRecord)localObject1, (StringBuilder)localObject5);
               if (localObject4 == null) {
                 break label458;
               }

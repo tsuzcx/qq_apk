@@ -1,26 +1,47 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.open.agent.BindGroupActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class bhql
-  implements View.OnClickListener
+public class bhql
+  extends npj
 {
-  bhql(bhqi parambhqi, Activity paramActivity) {}
+  public bhql(BindGroupActivity paramBindGroupActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    ResultRecord localResultRecord = (ResultRecord)paramView.getTag();
-    this.jdField_a_of_type_Bhqi.hideSoftInputFromWindow();
-    MiniChatActivity.a(this.jdField_a_of_type_AndroidAppActivity, localResultRecord.a(), localResultRecord.a, localResultRecord.b, 0.86F, this.jdField_a_of_type_Bhqi.a(this.jdField_a_of_type_AndroidAppActivity, 0.78F));
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("BindGroupActivity", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString());
+    }
+    if ((this.a.isFinishing()) || (this.a.jdField_c_of_type_Boolean)) {}
+    do
+    {
+      return;
+      this.a.jdField_b_of_type_Bhht.hide();
+      if (this.a.a != null) {
+        this.a.a.removeCallbacksAndMessages(null);
+      }
+      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BindGroupActivity", 2, "openIdObserver success");
+        }
+        this.a.jdField_c_of_type_JavaLangString = paramOpenID.openID;
+        if (!paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString))
+        {
+          this.a.b();
+          return;
+        }
+        this.a.a();
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("BindGroupActivity", 2, "openIdObserver fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhql
  * JD-Core Version:    0.7.0.1
  */

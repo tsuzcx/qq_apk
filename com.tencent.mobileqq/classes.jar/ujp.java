@@ -1,16 +1,26 @@
-import android.text.SpannableStringBuilder;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
 public class ujp
+  implements vei
 {
-  public int a;
-  public SpannableStringBuilder a;
-  public String a;
+  public ujp(WSHomeFragment paramWSHomeFragment) {}
   
-  public ujp(SpannableStringBuilder paramSpannableStringBuilder, int paramInt, String paramString)
+  public void a(veh paramveh)
   {
-    this.jdField_a_of_type_AndroidTextSpannableStringBuilder = paramSpannableStringBuilder;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramveh != null) {}
+    switch (paramveh.a)
+    {
+    default: 
+      return;
+    case 2131719684: 
+      WSPublicAccReport.getInstance().reportNotificationClick(WSHomeFragment.a, WSHomeFragment.b(this.a));
+      WSHomeFragment.b(this.a);
+      ((utr)this.a.b()).a(this.a.getActivity(), 602);
+      return;
+    }
+    WSPublicAccReport.getInstance().reportPersonHomeClick(WSHomeFragment.a, WSHomeFragment.b(this.a));
+    ((utr)this.a.b()).a(this.a.getActivity());
   }
 }
 

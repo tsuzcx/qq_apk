@@ -1,35 +1,65 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-final class apyh
-  extends apzj
+public class apyh
+  extends aptq<apyg>
 {
-  apyh(long paramLong1, long paramLong2, apza paramapza, long paramLong3)
+  @NonNull
+  public apyg a(int paramInt)
   {
-    super(paramLong1, paramLong2);
+    return new apyg();
   }
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  @Nullable
+  public apyg a(aptx[] paramArrayOfaptx)
   {
-    String str2 = null;
-    String str3;
-    String str1;
-    if (paramBoolean)
-    {
-      str3 = paramBundle.getString("userAccount", null);
-      str1 = paramBundle.getString("userAccount", null);
-      str2 = paramBundle.getString("openToken", null);
+    if (QLog.isColorLevel()) {
+      QLog.d("LebaRedTouchSwitchProcessor", 2, "[onParsed] config");
     }
-    for (paramBundle = str3;; paramBundle = null)
-    {
-      this.jdField_a_of_type_Apza.a(paramBundle, this.jdField_a_of_type_Long, str1, str2);
-      return;
-      str1 = null;
+    return apyg.a(paramArrayOfaptx);
+  }
+  
+  public void a(apyg paramapyg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LebaRedTouchSwitchProcessor", 2, "[onUpdate]");
     }
+  }
+  
+  public Class<apyg> clazz()
+  {
+    return apyg.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("LebaRedTouchSwitchProcessor", 1, "[onReqFailed] failCode=" + paramInt);
+  }
+  
+  public int type()
+  {
+    return 598;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apyh
  * JD-Core Version:    0.7.0.1
  */

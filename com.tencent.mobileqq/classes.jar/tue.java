@@ -1,44 +1,55 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-class tue
-  extends apee
+public class tue
+  implements qdy
 {
-  tue(tub paramtub, tua paramtua) {}
-  
-  public int a()
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    return 5;
+    return null;
   }
   
-  public void a(Object paramObject)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderFeedAdapter", 2, "unfollow success");
+    return pzv.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView();
+    Object localObject;
+    if ((parampvc != null) && (parampvc.a() != null) && (AdvertisementInfo.isAdvertisementInfo(parampvc.a())))
+    {
+      localObject = paramContainer.findViewBaseByName("id_article_brand_optimization");
+      TemplateBean localTemplateBean = parampvc.a().mProteusTemplateBean;
+      paramContainer = null;
+      if (localTemplateBean != null) {
+        paramContainer = localTemplateBean.findViewById("id_top_left_mask");
+      }
+      if ((localObject instanceof tyr))
+      {
+        localObject = (tyr)localObject;
+        ((tyr)localObject).a(parampvc);
+        if (paramContainer == null) {
+          break label96;
+        }
+        ((tyr)localObject).a(true);
+      }
     }
-    tub.b(this.jdField_a_of_type_Tub, this.jdField_a_of_type_Tua);
-    StructLongMessageDownloadProcessor.a(tub.a(this.jdField_a_of_type_Tub), this.jdField_a_of_type_Tua.a);
-    ((bgre)tub.a(this.jdField_a_of_type_Tub).getManager(132)).a(this.jdField_a_of_type_Tua.a);
+    return;
+    label96:
+    ((tyr)localObject).a(false);
   }
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderFeedAdapter", 2, "do unfollow->uin:" + this.jdField_a_of_type_Tua.a + ", success:" + String.valueOf(paramBoolean));
-    }
-    if ((tub.a(this.jdField_a_of_type_Tub) != null) && (tub.a(this.jdField_a_of_type_Tub).isResume())) {
-      tub.a(this.jdField_a_of_type_Tub).b(false);
-    }
+    return false;
   }
-  
-  public void b(Object paramObject)
-  {
-    tub.a(this.jdField_a_of_type_Tub);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

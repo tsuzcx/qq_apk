@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aihh;
-import aihq;
+import ahdt;
+import ahec;
 
 class BusinessCmrTmpChatPie$2$1$1
   implements Runnable
@@ -10,7 +10,7 @@ class BusinessCmrTmpChatPie$2$1$1
   
   public void run()
   {
-    this.a.a.a.r();
+    this.a.a.a.updateSession_updateTitleBtnCall();
   }
 }
 

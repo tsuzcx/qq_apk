@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.pb.MessageMicro;
+import android.view.View;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import cooperation.qzone.util.QZLog;
+import java.lang.ref.WeakReference;
 
-public class vbf
+class vbf
+  implements AdExposureChecker.ExposureCallback
 {
-  public long a;
-  public MessageMicro a;
-  public String a;
-  public boolean a;
+  vbf(vbc paramvbc) {}
   
-  public vbf(long paramLong, String paramString, MessageMicro paramMessageMicro, boolean paramBoolean)
+  public void onExposure(WeakReference<View> paramWeakReference)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramMessageMicro;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    QZLog.w("AdExposureChecker", "onExposure");
+    var.a(this.a.a, vbc.a(this.a));
   }
 }
 

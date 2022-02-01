@@ -1,34 +1,32 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArLBSActivity;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenFullToast;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
 
-public abstract interface apof
+public class apof
+  implements ahrt
 {
-  public abstract void a();
+  public apof(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
   
-  public abstract void a(int paramInt);
+  public void a() {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void a(int paramInt)
+  {
+    if ((ColorNoteSmallScreenService.a(this.a) != null) && (ColorNoteSmallScreenService.a(this.a).a()))
+    {
+      ColorNoteSmallScreenService.a(this.a).a();
+      ColorNoteSmallScreenService.a(this.a).b();
+    }
+    while ((this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast.a)) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast.onClick(this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenFullToast);
+  }
   
-  public abstract void a(int paramInt1, apiv paramapiv, int paramInt2);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(long paramLong, int paramInt, apht paramapht, apoz paramapoz);
-  
-  public abstract void a(long paramLong, apiv paramapiv);
-  
-  public abstract void a(long paramLong, boolean paramBoolean, apiv paramapiv);
-  
-  public abstract void a(apnb paramapnb, ArLBSActivity paramArLBSActivity);
-  
-  public abstract void a(ArCloudConfigInfo paramArCloudConfigInfo1, ArCloudConfigInfo paramArCloudConfigInfo2, int paramInt1, int paramInt2, Object paramObject);
-  
-  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, aphq paramaphq);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
+  public void b()
+  {
+    ColorNoteSmallScreenService.a(this.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqColornoteSmallscreenColorNoteSmallScreenRelativeLayout.f();
+  }
 }
 
 

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.widget.media;
 
+import amtj;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,7 +11,7 @@ import android.media.ThumbnailUtils;
 import android.os.Build;
 import android.os.Looper;
 import android.util.Log;
-import anzj;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
@@ -25,7 +26,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zqi;
 
 @SuppressLint({"ViewConstructor"})
 public class MiniAppCamera
@@ -43,7 +43,7 @@ public class MiniAppCamera
   private static WeakReference<WebviewContainer> sContainer;
   private static String videoPath;
   private int cameraId;
-  private volatile zqi ffmpeg;
+  private volatile FFmpeg ffmpeg;
   private CameraSurfaceView.CameraSurfaceViewCallBack mCallback;
   protected WeakReference<WebviewContainer> mWcRef;
   
@@ -68,9 +68,9 @@ public class MiniAppCamera
   private void execCommand(String paramString1, String paramString2, String paramString3, WebviewContainer paramWebviewContainer, String paramString4, int paramInt)
   {
     if (this.ffmpeg == null) {
-      this.ffmpeg = zqi.a(BaseApplicationImpl.getApplication());
+      this.ffmpeg = FFmpeg.getInstance(BaseApplicationImpl.getApplication());
     }
-    paramWebviewContainer.showLoading(anzj.a(2131705673));
+    paramWebviewContainer.showLoading(amtj.a(2131705903));
     paramString1 = paramString1.split(" ");
     mExecutor.execute(new MiniAppCamera.6(this, paramString2, paramString1, paramWebviewContainer, paramString4, paramInt, paramString3));
   }
@@ -231,7 +231,7 @@ public class MiniAppCamera
     //   62: getstatic 41	com/tencent/mobileqq/mini/widget/media/MiniAppCamera:cameraWidth	I
     //   65: getstatic 43	com/tencent/mobileqq/mini/widget/media/MiniAppCamera:cameraHeight	I
     //   68: iload_3
-    //   69: invokestatic 416	bhmq:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
+    //   69: invokestatic 416	bfvo:a	(Ljava/lang/String;Ljava/lang/String;III)Ljava/lang/String;
     //   72: astore_0
     //   73: aload 5
     //   75: ifnull +8 -> 83

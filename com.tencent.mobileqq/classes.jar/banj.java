@@ -1,165 +1,79 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class banj
+  extends anbd
 {
-  public String a;
-  public HashMap<String, String> a = new HashMap();
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  private banj(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public static boolean a()
+  protected void e(boolean paramBoolean, Object paramObject)
   {
-    return false;
-  }
-  
-  protected void a(bhmr parambhmr, QQAppInterface paramQQAppInterface, Context paramContext) {}
-  
-  protected void a(QQAppInterface paramQQAppInterface, Context paramContext) {}
-  
-  public boolean a(BaseActivity paramBaseActivity)
-  {
-    return a(paramBaseActivity, a());
-  }
-  
-  public boolean a(BaseActivity paramBaseActivity, boolean paramBoolean)
-  {
-    if (paramBaseActivity == null)
-    {
-      banl.a(this.g, this.f, 100);
-      return false;
-    }
-    Intent localIntent;
-    if (paramBoolean) {
-      localIntent = new Intent(paramBaseActivity, SplashActivity.class);
+    if (paramObject == null) {
+      SignTextEditFragment.a(this.a, 2);
     }
     for (;;)
     {
-      localIntent.setFlags(67108864);
-      banl.a(this, paramBoolean, localIntent);
-      QLog.d("QAssistantConfigItem", 1, "mqqaudioassistant QAssistantConfigItem.Jump item_server = " + this.c + "|" + paramBaseActivity.getClass().toString());
-      paramBaseActivity.startActivity(localIntent);
-      return true;
-      localIntent = new Intent(paramBaseActivity, SplashActivity.class);
-      localIntent.putExtra("tab_index", MainFragment.b);
-      localIntent.putExtra("fragment_id", 1);
+      return;
+      paramObject = (Bundle)paramObject;
+      int i = paramObject.getInt("param_searchResult", 0);
+      paramObject = (ArrayList)paramObject.getSerializable("param_topicInfoList");
+      if ((paramObject == null) || (paramObject.size() <= 0)) {
+        if (i == 0) {
+          SignTextEditFragment.a(this.a, 3);
+        }
+      }
+      while (this.a.jdField_a_of_type_Allv.a(paramObject, true))
+      {
+        this.a.jdField_a_of_type_Allv.notifyDataSetChanged();
+        return;
+        SignTextEditFragment.a(this.a, 2);
+        continue;
+        SignTextEditFragment.a(this.a, 4);
+      }
     }
   }
   
-  public boolean a(QQAppInterface paramQQAppInterface, Context paramContext)
+  protected void f(boolean paramBoolean, Object paramObject)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null))
+    if (paramObject == null)
     {
-      banl.a(this.g, this.f, 100);
-      return false;
+      SignTextEditFragment.a(this.a, 2);
+      return;
     }
-    QLog.d("QAssistantConfigItem", 1, "mqqaudioassistant RealJump start");
-    a(paramQQAppInterface, paramContext);
-    if (!b(paramQQAppInterface, paramContext))
+    Object localObject = (Bundle)paramObject;
+    int j = ((Bundle)localObject).getInt("param_atIndex");
+    int k = ((Bundle)localObject).getInt("param_atKeyLen");
+    paramObject = ((Bundle)localObject).getString("param_atKey");
+    long l = ((Bundle)localObject).getLong("param_reqTs");
+    localObject = (ArrayList)((Bundle)localObject).getSerializable("param_topicInfoList");
+    int i;
+    if (localObject == null)
     {
-      banl.a(this.g, this.f, 3);
-      QLog.d("QAssistantConfigItem", 1, "mqqaudioassistant checkIsSupportJump is false");
-      return false;
-    }
-    if ((bhsr.a(this.b)) && (bhsr.a(this.c)))
-    {
-      banl.a(this.g, this.f, 100);
-      return false;
-    }
-    bhmr localbhmr2;
-    bhmr localbhmr1;
-    if (!bhsr.a(this.b))
-    {
-      localbhmr2 = bhni.a(paramQQAppInterface, paramContext, this.b);
-      localbhmr1 = localbhmr2;
-      if (localbhmr2 != null)
-      {
-        localbhmr1 = localbhmr2;
-        if (!bhsr.a(this.e))
-        {
-          localbhmr1 = localbhmr2;
-          if (!bhsr.a(this.e))
-          {
-            localbhmr2.c(this.e);
-            localbhmr1 = localbhmr2;
-          }
-        }
+      i = 0;
+      if (QLog.isColorLevel()) {
+        QLog.i("SignTextEditFragment", 2, String.format("onGetTopicWithKey[%b,%d] key=[%s] [atIndex=%d, keyLen=%d],reqTs=%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), paramObject, Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l) }));
       }
-    }
-    while (localbhmr1 == null)
-    {
-      banl.a(this.g, this.f, 102);
-      return false;
-      localbhmr2 = new bhmr(paramQQAppInterface, paramContext);
-      localbhmr2.b = this.c;
-      if ((!bhsr.a(this.d)) && (!bhsr.a(this.d))) {
-        localbhmr2.c = this.d;
+      if ((localObject != null) && (((List)localObject).size() > 0)) {
+        break label240;
       }
-      localbhmr1 = localbhmr2;
-      if (!this.a.isEmpty())
-      {
-        localbhmr2.a(this.a);
-        localbhmr1 = localbhmr2;
-      }
-    }
-    QLog.d("QAssistantConfigItem", 1, "mqqaudioassistant RealJump ready Jump server = " + this.c);
-    a(localbhmr1, paramQQAppInterface, paramContext);
-    if (localbhmr1.a())
-    {
-      banl.a(this.g, this.f, 0);
-      banl.a(this.f);
+      SignTextEditFragment.a(this.a, 3);
     }
     for (;;)
     {
-      return true;
-      banl.a(this.g, this.f, 103);
-    }
-  }
-  
-  protected boolean b(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (this.f != null)
-    {
-      if (!this.f.equalsIgnoreCase("ecchat")) {
-        break label79;
+      if (this.a.jdField_a_of_type_Allv.a((List)localObject, false)) {
+        this.a.jdField_a_of_type_Allv.notifyDataSetChanged();
       }
-      int i = bhsi.a(paramQQAppInterface.getCurrentAccountUin(), "extend_friend_config_785").getInt("sp_extend_friend_entry_add_friend", 0);
-      paramQQAppInterface = (asvi)paramQQAppInterface.getManager(264);
-      if ((i != 1) || (!paramQQAppInterface.d())) {
-        break label73;
-      }
-      bool1 = true;
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setTag(new Object[] { Integer.valueOf(j), Integer.valueOf(k), paramObject, Long.valueOf(l) });
+      return;
+      i = ((List)localObject).size();
+      break;
+      label240:
+      SignTextEditFragment.a(this.a, 4);
     }
-    label73:
-    label79:
-    do
-    {
-      do
-      {
-        for (;;)
-        {
-          return bool1;
-          bool1 = false;
-        }
-        bool1 = bool2;
-      } while (!this.f.equalsIgnoreCase("confessmsg"));
-      bool1 = bool2;
-    } while (((aqyp)paramQQAppInterface.getManager(269)).a() != null);
-    return false;
   }
 }
 

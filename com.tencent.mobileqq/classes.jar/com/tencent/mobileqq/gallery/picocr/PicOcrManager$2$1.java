@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.gallery.picocr;
 
-import avim;
-import avin;
-import bhmi;
+import atvs;
+import atvt;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class PicOcrManager$2$1
   implements Runnable
 {
-  public PicOcrManager$2$1(avim paramavim) {}
+  public PicOcrManager$2$1(atvs paramatvs) {}
   
   public void run()
   {
-    bhmi.d(this.a.a.c);
+    FileUtils.deleteFile(this.a.a.c);
     if (QLog.isColorLevel()) {
       QLog.d("PicOcrManager", 2, "clear path!");
     }

@@ -1,23 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.mobileqq.gamecenter.data.GameNoticeInfo;
+import java.util.Comparator;
 
-class atwv
-  extends Handler
+public final class atwv
+  implements Comparator<GameNoticeInfo>
 {
-  atwv(atws paramatws, Looper paramLooper)
+  public int a(GameNoticeInfo paramGameNoticeInfo1, GameNoticeInfo paramGameNoticeInfo2)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    this.a.d();
+    if (paramGameNoticeInfo1.startTime == paramGameNoticeInfo2.startTime) {
+      return paramGameNoticeInfo1.bannerType - paramGameNoticeInfo2.bannerType;
+    }
+    if (paramGameNoticeInfo1.startTime < paramGameNoticeInfo2.startTime) {
+      return -1;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atwv
  * JD-Core Version:    0.7.0.1
  */

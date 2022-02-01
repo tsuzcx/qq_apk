@@ -1,27 +1,22 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-class awsx
-  implements View.OnClickListener
+public class awsx
+  implements View.OnTouchListener
 {
-  awsx(awsu paramawsu, awsk paramawsk) {}
+  public awsx(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Awsu.jdField_a_of_type_Awsk.a()) {}
-    for (;;)
+    if (paramMotionEvent.getAction() == 0)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (!paramView.isSelected())
-      {
-        this.jdField_a_of_type_Awsu.a(paramView);
-        this.jdField_a_of_type_Awsu.jdField_a_of_type_Int = 1;
-        awsk.a(this.jdField_a_of_type_Awsu.jdField_a_of_type_Awsk, Integer.valueOf(1));
-        bdll.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 2, 0, "0", "0", "0", "");
-      }
+      if (!ShortVideoCommentsView.a(this.a)) {}
+      this.a.l();
+      ShortVideoCommentsView.b(this.a);
     }
+    return false;
   }
 }
 

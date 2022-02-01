@@ -1,38 +1,61 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.beacon.upload.TunnelInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
 
-final class ahnw
-  implements DialogInterface.OnClickListener
+public class ahnw
 {
-  ahnw(QQAppInterface paramQQAppInterface, int paramInt1, Activity paramActivity, int paramInt2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    if (true == ahnt.a) {
-      ahnt.a = false;
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      QLog.d("vaspoke", 4, "dialogInterfaceOnClick mApp is null.");
-    }
-    while (((2 != this.jdField_a_of_type_Int) && (4 != this.jdField_a_of_type_Int)) || (paramInt != 1)) {
-      return;
-    }
-    if (2 == this.jdField_a_of_type_Int)
+    UserAction.registerTunnel(new TunnelInfo("00000BXKOY3QZQ1E"));
+  }
+  
+  public static void a(HashMap<String, String> paramHashMap)
+  {
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("00000BXKOY3QZQ1E", BaseApplicationImpl.getApplication().getRuntime().getAccount(), "expo", true, 0L, 0L, paramHashMap, null);
+  }
+  
+  public static void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, ahmw paramahmw)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("keyword", paramString1);
+    localHashMap.put("pic_md5", paramahmw.c());
+    localHashMap.put("pic_url", paramahmw.a());
+    localHashMap.put("aio_type", EmoticonUtils.getStickerRecAioType(paramInt));
+    if ((paramahmw instanceof ahnm))
     {
-      bhzu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, "mvip.g.a.poke_" + this.b, 3, "1450000515", "LTMCLUB", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131694534), "");
-      VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTipClick", "", 0, 0, 0, "", String.valueOf(this.b), "vip", "", "", "", "", 0, 0, 0, 0);
+      paramString1 = ((ahnm)paramahmw).m();
+      if (paramString1 != null) {
+        localHashMap.put("algo_info", paramString1);
+      }
+      paramString1 = ((ahnm)paramahmw).n();
+      if (paramString1 != null) {
+        localHashMap.put("recom_transfer", paramString1);
+      }
+    }
+    paramString1 = paramahmw.d();
+    if ((paramString1 != null) && (paramString1.length() > 1) && (paramString1.endsWith("-"))) {
+      localHashMap.put("source", paramString1.substring(0, 1));
+    }
+    if (paramString2 != null) {
+      localHashMap.put("target_qq", paramString2);
+    }
+    localHashMap.put("duration_ms", paramahmw.a() + "");
+    if (paramBoolean)
+    {
+      a(localHashMap);
       return;
     }
-    bhzu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, "mvip.g.a.poke_" + this.b, 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131718497), "");
-    VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTipClick", "", 0, 0, 0, "", String.valueOf(this.b), "svip", "", "", "", "", 0, 0, 0, 0);
+    b(localHashMap);
+  }
+  
+  public static void b(HashMap<String, String> paramHashMap)
+  {
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("00000BXKOY3QZQ1E", BaseApplicationImpl.getApplication().getRuntime().getAccount(), "click", true, 0L, 0L, paramHashMap, null);
   }
 }
 

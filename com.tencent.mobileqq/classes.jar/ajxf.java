@@ -1,20 +1,21 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.data.RecentRecommendTroopItem;
-import com.tencent.widget.SingleLineTextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TopayManager.5.1;
 
-class ajxf
-  extends amof
+public class ajxf
+  implements DialogInterface.OnClickListener
 {
-  public View a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public RecentRecommendTroopItem a;
-  public SingleLineTextView a;
-  public SingleLineTextView b;
+  public ajxf(TopayManager.5.1 param1) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    paramDialogInterface.dismiss();
+  }
 }
 
 

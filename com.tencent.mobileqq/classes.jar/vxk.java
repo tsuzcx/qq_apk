@@ -1,21 +1,18 @@
-import android.arch.lifecycle.MutableLiveData;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.qphone.base.util.QLog;
-import qqcircle.QQCirclePrivateMsgShow.StGetPMSettingRsp;
 
 class vxk
-  implements aaav<QQCirclePrivateMsgShow.StGetPMSettingRsp>
+  implements vqp<vyy, vyz>
 {
-  vxk(vxj paramvxj) {}
+  vxk(vxi paramvxi) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, QQCirclePrivateMsgShow.StGetPMSettingRsp paramStGetPMSettingRsp)
+  public void a(@NonNull vyy paramvyy, @Nullable vyz paramvyz, @NonNull ErrorMessage paramErrorMessage)
   {
-    QLog.d("QCirclePrivateMessageSettingViewModel", 1, "getPMSettingRequest isSuccess:" + paramBoolean + " retCode:" + paramLong + " errorMsg:" + paramString);
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStGetPMSettingRsp == null))
-    {
-      this.a.a.setValue(vxq.a(paramString).a(paramLong));
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, "requestQQStoryGuide onCmdRespond = " + paramvyz + " ,errorMsg = " + paramErrorMessage);
     }
-    this.a.a.setValue(vxq.a(false).a(false, paramStGetPMSettingRsp));
   }
 }
 

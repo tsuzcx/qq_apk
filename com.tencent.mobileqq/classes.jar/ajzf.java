@@ -1,24 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-class ajzf
-  implements DialogInterface.OnClickListener
+public abstract class ajzf
+  implements TextWatcher
 {
-  ajzf(ajyt paramajyt, boolean paramBoolean, String paramString) {}
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bdll.b(null, "dc00898", "", "", "0X8009DCB", "0X8009DCB", 0, 0, ajyt.a(this.jdField_a_of_type_Ajyt), "", "", "");
-    if (this.jdField_a_of_type_Boolean) {
-      ajyt.a(this.jdField_a_of_type_Ajyt, ajyt.a(this.jdField_a_of_type_Ajyt), Long.valueOf(ajyt.a(this.jdField_a_of_type_Ajyt)).longValue(), false);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Ajyt.f();
-      return;
-      ajyt.a(this.jdField_a_of_type_Ajyt, ajyt.a(this.jdField_a_of_type_Ajyt), Long.valueOf(ajyt.a(this.jdField_a_of_type_Ajyt)).longValue(), false, this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

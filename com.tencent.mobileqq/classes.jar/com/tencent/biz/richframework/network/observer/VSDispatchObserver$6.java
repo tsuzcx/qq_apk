@@ -1,26 +1,25 @@
 package com.tencent.biz.richframework.network.observer;
 
-import aaap;
-import aaar;
-import aaau;
+import com.tencent.biz.richframework.network.cache.Cache;
+import com.tencent.biz.richframework.network.cache.CacheHelper;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
-import yuk;
+import xvv;
 
-public class VSDispatchObserver$6
+class VSDispatchObserver$6
   implements Runnable
 {
-  public VSDispatchObserver$6(aaau paramaaau, VSBaseRequest paramVSBaseRequest, byte[] paramArrayOfByte) {}
+  VSDispatchObserver$6(VSDispatchObserver paramVSDispatchObserver, VSBaseRequest paramVSBaseRequest, byte[] paramArrayOfByte) {}
   
   public void run()
   {
     try
     {
-      String str = this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestVSBaseRequest.getRequestKey();
-      yuk.b("VSNetworkHelper| Protocol Cache", this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestVSBaseRequest.getCmdName() + " saveCache CacheKey:" + str);
-      aaar.a().a(str, new ByteArrayInputStream(this.jdField_a_of_type_ArrayOfByte));
-      yuk.c("VSNetworkHelper| Protocol Cache", this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestVSBaseRequest.getCmdName() + " saveCache success");
+      String str = this.val$request.getRequestKey();
+      xvv.b("VSNetworkHelper| Protocol Cache", this.val$request.getCmdName() + " saveCache CacheKey:" + str);
+      CacheHelper.fileCache().setStream(str, new ByteArrayInputStream(this.val$dataByteArray));
+      xvv.c("VSNetworkHelper| Protocol Cache", this.val$request.getCmdName() + " saveCache success");
       return;
     }
     catch (Exception localException)

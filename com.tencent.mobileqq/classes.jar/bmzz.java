@@ -1,19 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.BusinessAlbumInfo;
+import java.util.List;
 
-public final class bmzz
-  implements Parcelable.Creator<BusinessAlbumInfo>
+public abstract interface bmzz
 {
-  public BusinessAlbumInfo a(Parcel paramParcel)
-  {
-    return new BusinessAlbumInfo(paramParcel, null);
-  }
+  public abstract void a();
   
-  public BusinessAlbumInfo[] a(int paramInt)
-  {
-    return new BusinessAlbumInfo[paramInt];
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void a(long paramLong, boolean paramBoolean);
+  
+  public abstract void a(List<Long> paramList);
 }
 
 

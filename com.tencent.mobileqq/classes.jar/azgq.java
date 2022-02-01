@@ -1,31 +1,25 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.qassistant.view.VoicePanelSlideContainer;
 
-class azgq
-  extends Animation
+public class azgq
+  implements Animator.AnimatorListener
 {
-  azgq(azgj paramazgj, View paramView, int paramInt) {}
+  public azgq(VoicePanelSlideContainer paramVoicePanelSlideContainer) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    if (paramFloat == 1.0F) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    do
-    {
-      return;
-      paramTransformation = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    } while (paramTransformation == null);
-    paramTransformation.height = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramTransformation);
+    VoicePanelSlideContainer.a(this.a);
   }
   
-  public boolean willChangeBounds()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return true;
+    VoicePanelSlideContainer.a(this.a);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

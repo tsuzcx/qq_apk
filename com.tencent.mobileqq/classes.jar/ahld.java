@@ -1,38 +1,53 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.QQLiveDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder.ChatVideoView;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.utils.SendMessageHandler;
 
-public class ahld
-  extends aggl
+class ahld
+  extends amwl
 {
-  public ImageView a;
-  public TextView a;
-  public LightVideoItemBuilder.ChatVideoView a;
-  public MessageProgressView a;
-  public TextView b;
+  ahld(ahkz paramahkz) {}
   
-  public ahld(LightVideoItemBuilder paramLightVideoItemBuilder) {}
-  
-  public void a()
+  protected void onInsertIntoBlackList(boolean paramBoolean, String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage))) {
-      if (QLog.isColorLevel()) {
-        QLog.i("LightVideoItemBuilder", 2, String.format("onScrollOutScreen but not recycle, message:%d is playing", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq) }));
+    if ((paramString != null) && (this.a.sessionInfo.curFriendUin != null) && (this.a.sessionInfo.curFriendUin.equals(paramString)))
+    {
+      ChatActivityUtils.b();
+      if (paramBoolean) {
+        this.a.updateAddFriendAndShieldView();
       }
     }
-    while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView.b == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView.b.getStatus() != 1) || (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView.b.getCurrDrawable() instanceof QQLiveDrawable))) {
+  }
+  
+  protected void onRemoveFromBlackList(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.sessionInfo.curFriendUin != null) && (this.a.sessionInfo.curFriendUin.equals(paramString)))
+    {
+      ChatActivityUtils.b();
+      if (paramBoolean) {
+        this.a.updateAddFriendAndShieldView();
+      }
+    }
+  }
+  
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
+  {
+    this.a.a(paramBoolean, paramString, paramLong);
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(this.a.sessionInfo.curFriendUin)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("LightVideoItemBuilder", 2, "onScrollOutScreen(): recyleAndKeepPostion ");
-    }
-    ((QQLiveDrawable)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder$ChatVideoView.b.getCurrDrawable()).recyleAndKeepPostion();
+    this.a.hasSentRecvMsg = true;
+    this.a.refresh(262144, null, paramLong);
+  }
+  
+  protected void onUpdateMsgContent(boolean paramBoolean, String paramString)
+  {
+    this.a.refresh(65536);
+  }
+  
+  protected void onUpdateSendMsgError(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  {
+    ahkz.a(this.a, paramString1, paramInt1, paramInt2, paramLong2, paramString2);
   }
 }
 

@@ -1,6 +1,20 @@
-public abstract interface avzh
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+
+public class avzh
+  implements avza
 {
-  public abstract void a(String paramString, boolean paramBoolean, int paramInt);
+  public avzh(MultiAIOViewPager paramMultiAIOViewPager) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void b(int paramInt)
+  {
+    if (MultiAIOViewPager.a(this.a) != null) {
+      MultiAIOViewPager.a(this.a).a(paramInt);
+    }
+  }
 }
 
 

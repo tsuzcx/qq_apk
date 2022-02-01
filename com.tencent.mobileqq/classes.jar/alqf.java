@@ -1,103 +1,78 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.apollo.FriendCardApolloViewController;
+import com.tencent.mobileqq.apollo.FriendCardApolloViewController.DrawerInfoCallback.1;
+import com.tencent.mobileqq.apollo.FriendCardApolloViewController.DrawerInfoCallback.2;
+import com.tencent.mobileqq.apollo.store.ApolloBoxEnterView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class alqf
+  implements ambf, View.OnClickListener
 {
-  public static alqb a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 15: 
-    case 18: 
-    case 19: 
-    case 25: 
-    case 26: 
-    case 28: 
-    default: 
-      return null;
-    case 17: 
-      return new alqx(BaseApplication.getContext());
-    case 16: 
-      return new alqp(BaseApplication.getContext());
-    case 10: 
-      return new alqk(BaseApplication.getContext());
-    case 11: 
-    case 29: 
-      return new alqr(BaseApplication.getContext(), false);
-    case 24: 
-      return new alqh(BaseApplication.getContext());
-    case 13: 
-      return new alqg(BaseApplication.getContext());
-    case 5: 
-      return new bnth(BaseApplication.getContext());
-    case 14: 
-    case 27: 
-      return new alqu(BaseApplication.getContext());
-    case 7: 
-      return new alqn(BaseApplication.getContext());
-    case 22: 
-      return new alqv(BaseApplication.getContext());
-    case 3: 
-      return new alqq(BaseApplication.getContext(), 1);
-    case 2: 
-      return new alqq(BaseApplication.getContext(), 0);
-    case 21: 
-      return new alqj(BaseApplication.getContext());
-    case 8: 
-      return new alqs(BaseApplication.getContext());
-    case 4: 
-      return new alqo(BaseApplication.getContext());
-    case 9: 
-      return new alqy(BaseApplication.getContext());
-    case 12: 
-      return new alqt(BaseApplication.getContext());
-    case 6: 
-      return new alql(BaseApplication.getContext());
-    case 20: 
-      return new alqc(BaseApplication.getContext(), "");
-    }
-    return new alqw(BaseApplication.getContext());
-  }
+  private alqf(FriendCardApolloViewController paramFriendCardApolloViewController) {}
   
-  public static Object a(int paramInt, byte[] paramArrayOfByte)
+  public void a()
   {
-    Object localObject2 = null;
-    alqb localalqb = null;
-    Object localObject1 = localalqb;
-    if (paramArrayOfByte != null)
-    {
-      if (paramArrayOfByte.length <= 0) {
-        localObject1 = localalqb;
-      }
+    Object localObject3 = null;
+    QQAppInterface localQQAppInterface = this.a.a();
+    FriendProfileCardActivity localFriendProfileCardActivity = (FriendProfileCardActivity)FriendCardApolloViewController.a(this.a).get();
+    Object localObject1 = (View)FriendCardApolloViewController.b(this.a).get();
+    if ((localQQAppInterface == null) || (localFriendProfileCardActivity == null) || (localObject1 == null)) {
+      return;
     }
-    else {
-      return localObject1;
+    if ((!TextUtils.isEmpty(FriendCardApolloViewController.a(this.a))) && ((this.a.a == null) || (this.a.a.getVisibility() != 0))) {
+      ThreadManager.getUIHandler().post(new FriendCardApolloViewController.DrawerInfoCallback.1(this, localFriendProfileCardActivity, (View)localObject1));
     }
-    switch (paramInt)
+    Object localObject2 = localFriendProfileCardActivity.a;
+    if ((localObject2 != null) && (((aymg)localObject2).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null)) {}
+    for (localObject1 = ((aymg)localObject2).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a;; localObject1 = null)
     {
-    }
-    for (localObject1 = localObject2;; localObject1 = new String(paramArrayOfByte))
-    {
-      localalqb = a(paramInt);
-      if (localalqb == null) {
-        break;
-      }
-      localalqb.a(paramArrayOfByte);
-      return localalqb;
-    }
-  }
-  
-  public static byte[] a(int paramInt, Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
-    {
-      return null;
-      switch (paramInt)
+      if ((TextUtils.isEmpty((CharSequence)localObject1)) && (localObject2 != null) && (((aymg)localObject2).jdField_a_of_type_ComTencentMobileqqDataCard != null)) {}
+      for (localObject2 = ((aymg)localObject2).jdField_a_of_type_ComTencentMobileqqDataCard.uin;; localObject2 = localObject1)
       {
+        alnr localalnr = (alnr)localQQAppInterface.getManager(153);
+        localObject1 = localObject3;
+        if (!FriendCardApolloViewController.a(this.a)) {
+          localObject1 = localalnr.a(localQQAppInterface, (String)localObject2, new int[] { 4 });
+        }
+        int i = 5;
+        if (localObject1 == null)
+        {
+          localObject1 = new ApolloActionData();
+          ((ApolloActionData)localObject1).actionId = -1;
+          ((ApolloActionData)localObject1).actionType = 0;
+        }
+        for (;;)
+        {
+          ambc.a(FriendCardApolloViewController.a(this.a), i, (ApolloActionData)localObject1);
+          new alti((String)localObject2).a(FriendCardApolloViewController.a(this.a), localFriendProfileCardActivity, localQQAppInterface, amtj.a(2131703989));
+          return;
+          i = 12;
+        }
       }
-    } while (!(paramObject instanceof alqd));
-    return ((alqd)paramObject).a();
-    return ((String)paramObject).getBytes();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    ThreadManager.getUIHandler().post(new FriendCardApolloViewController.DrawerInfoCallback.2(this, paramInt1, paramInt2, paramString));
+  }
+  
+  public void b() {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a(1, 0, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

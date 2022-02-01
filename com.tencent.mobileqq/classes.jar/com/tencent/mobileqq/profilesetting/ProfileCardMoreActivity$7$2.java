@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.profilesetting;
 
-import bakw;
+import azaw;
 
 public class ProfileCardMoreActivity$7$2
   implements Runnable
 {
-  public ProfileCardMoreActivity$7$2(bakw parambakw, boolean paramBoolean1, boolean paramBoolean2) {}
+  public ProfileCardMoreActivity$7$2(azaw paramazaw, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bakw.a.a(this.jdField_a_of_type_Boolean, this.b);
+    this.jdField_a_of_type_Azaw.a.a(this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

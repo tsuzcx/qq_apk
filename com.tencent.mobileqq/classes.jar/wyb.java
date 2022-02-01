@@ -1,24 +1,8 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgNodeShotView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class wyb
-  extends QQUIEventReceiver<wxp, wwm>
+public abstract interface wyb
 {
-  public wyb(@NonNull wxp paramwxp)
-  {
-    super(paramwxp);
-  }
+  public abstract void a();
   
-  public void a(@NonNull wxp paramwxp, @NonNull wwm paramwwm)
-  {
-    paramwxp.a.a.d();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wwm.class;
-  }
+  public abstract void a(String paramString);
 }
 
 

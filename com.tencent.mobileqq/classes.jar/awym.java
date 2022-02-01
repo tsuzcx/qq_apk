@@ -1,10 +1,4 @@
-public abstract interface awym
-{
-  public abstract void a();
-  
-  public abstract void b();
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awym

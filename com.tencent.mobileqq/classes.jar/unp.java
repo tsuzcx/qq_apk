@@ -1,19 +1,27 @@
-import UserGrowth.stWeishiReportRsp;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.util.List;
 
-final class unp
-  implements ukd
+public class unp
+  implements DownloadListener
 {
-  unp(String paramString) {}
+  public void installSucceed(String paramString1, String paramString2) {}
   
-  public void a(uko paramuko)
-  {
-    uqf.b("weishi-report", "report " + this.a + " start...");
-    if ((paramuko != null) && (paramuko.a != null) && ((paramuko.a instanceof stWeishiReportRsp)))
-    {
-      paramuko = (stWeishiReportRsp)paramuko.a;
-      uqf.b("weishi-report", "report" + this.a + "end: " + paramuko.code + paramuko.msg);
-    }
-  }
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2) {}
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo) {}
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo) {}
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList) {}
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo) {}
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

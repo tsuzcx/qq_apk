@@ -1,21 +1,22 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class wph
-  extends SimpleJob<Void>
+class wph
+  implements vqp<wfc, wfd>
 {
-  public wph(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, wpa paramwpa)
-  {
-    super(paramString);
-  }
+  wph(wpg paramwpg, woj paramwoj) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(@NonNull wfc paramwfc, @Nullable wfd paramwfd, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a(this.jdField_a_of_type_Wpa);
-    return null;
+    if ((paramErrorMessage.isFail()) || (paramwfd == null))
+    {
+      xvv.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      this.jdField_a_of_type_Woj.a(paramErrorMessage, null, false);
+      return;
+    }
+    this.jdField_a_of_type_Wpg.a.a(paramwfd.jdField_a_of_type_JavaUtilList, paramwfd.jdField_a_of_type_JavaLangString, paramwfd.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Woj.a(paramErrorMessage, wnr.b(paramwfd.jdField_a_of_type_JavaUtilList), paramwfd.jdField_a_of_type_Boolean);
   }
 }
 

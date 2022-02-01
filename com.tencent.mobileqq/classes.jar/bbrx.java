@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
-
-class bbrx
-  implements DialogInterface.OnClickListener
+public class bbrx
 {
-  bbrx(bbrp parambbrp) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.play();
-  }
+  public int a;
+  public long a;
+  public int b;
+  public long b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import bhmi;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import ocd;
+import odq;
 
 class KandianReportSoLoader$1$1
   implements Runnable
@@ -15,23 +15,23 @@ class KandianReportSoLoader$1$1
     {
       try
       {
-        bhmi.a(KandianReportSoLoader.access$100());
+        FileUtils.deleteDirectory(KandianReportSoLoader.access$100());
         boolean bool = KandianReportSoLoader.access$200();
         if (!bool) {
           continue;
         }
         i = 1;
-        ocd.a(null, "", "0X8009A1C", "0X8009A1C", 0, i, "", "", "", "copy file step", false);
+        odq.a(null, "", "0X8009A1C", "0X8009A1C", 0, i, "", "", "", "copy file step", false);
         if (!bool)
         {
           QLog.d("kandianreport.KandianReportSoLoader", 1, "copy fail, delete so");
-          bhmi.a(KandianReportSoLoader.access$300());
+          FileUtils.deleteDirectory(KandianReportSoLoader.access$300());
         }
       }
       catch (Throwable localThrowable)
       {
         int i;
-        ocd.a(null, "", "0X8009A1C", "0X8009A1C", 0, 0, "", "", "", "copy file exception : " + localThrowable.toString(), false);
+        odq.a(null, "", "0X8009A1C", "0X8009A1C", 0, 0, "", "", "", "copy file exception : " + localThrowable.toString(), false);
         QLog.d("kandianreport.KandianReportSoLoader", 1, "jscjni downloadSoFiles read so config fail");
         continue;
       }

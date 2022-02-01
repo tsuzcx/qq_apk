@@ -1,65 +1,180 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.widget.PhotoWallView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class arpr
-  extends arac<arpq>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog$TaskAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog$TaskAdapter$ViewHolder;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "onClickListener", "Landroid/view/View$OnClickListener;", "taskList", "", "Lcom/tencent/mobileqq/extendfriend/limitchat/CompletePesonalDataTask;", "getItemCount", "", "jumpToTask", "", "task", "onBindViewHolder", "viewHolder", "i", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "updateTasks", "tasks", "", "ViewHolder", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class arpr
+  extends RecyclerView.Adapter<arps>
 {
-  public static arpq a()
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private final List<armm> jdField_a_of_type_JavaUtilList;
+  
+  public arpr(@NotNull Context paramContext)
   {
-    return (arpq)aran.a().a(334);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = ((List)new ArrayList());
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = ((View.OnClickListener)new arpt(this));
   }
   
-  @NonNull
-  public arpq a(int paramInt)
+  private final void a(armm paramarmm)
   {
-    return new arpq();
-  }
-  
-  @Nullable
-  public arpq a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arpq.a(paramArrayOfaraj);
+    switch (paramarmm.jdField_a_of_type_Int)
+    {
     }
-    return null;
+    for (;;)
+    {
+      bcef.b(null, "dc00898", "", "", "0X800B08A", "0X800B08A", paramarmm.jdField_a_of_type_Int, 0, "", "", "", "");
+      return;
+      Object localObject1 = new Intent(this.jdField_a_of_type_AndroidContentContext, FriendProfileMoreInfoActivity.class);
+      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject1);
+      continue;
+      localObject1 = this.jdField_a_of_type_AndroidContentContext;
+      if (localObject1 == null) {
+        throw new TypeCastException("null cannot be cast to non-null type android.app.Activity");
+      }
+      aroj.a((Activity)localObject1, "");
+      continue;
+      localObject1 = new Intent();
+      Object localObject2 = this.jdField_a_of_type_AndroidContentContext;
+      if (localObject2 == null) {
+        throw new TypeCastException("null cannot be cast to non-null type android.app.Activity");
+      }
+      PublicFragmentActivity.a((Activity)localObject2, (Intent)localObject1, ExtendFriendEditFragment.class, 4097);
+      continue;
+      localObject1 = new Intent(this.jdField_a_of_type_AndroidContentContext, PersonalityLabelGalleryActivity.class);
+      localObject2 = this.jdField_a_of_type_AndroidContentContext;
+      if (localObject2 == null) {
+        throw new TypeCastException("null cannot be cast to non-null type android.support.v4.app.FragmentActivity");
+      }
+      localObject2 = ((FragmentActivity)localObject2).app;
+      Intrinsics.checkExpressionValueIsNotNull(localObject2, "(context as FragmentActivity).app");
+      ((Intent)localObject1).putExtra("uin", ((QQAppInterface)localObject2).getCurrentUin());
+      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject1);
+      continue;
+      localObject1 = this.jdField_a_of_type_AndroidContentContext;
+      if (localObject1 == null) {
+        throw new TypeCastException("null cannot be cast to non-null type android.support.v4.app.FragmentActivity");
+      }
+      localObject1 = ((FragmentActivity)localObject1).app;
+      Intrinsics.checkExpressionValueIsNotNull(localObject1, "(context as FragmentActivity).app");
+      localObject1 = ((QQAppInterface)localObject1).getCurrentUin();
+      localObject2 = this.jdField_a_of_type_AndroidContentContext;
+      if (localObject2 == null) {
+        throw new TypeCastException("null cannot be cast to non-null type android.app.Activity");
+      }
+      PhotoWallView.a((Activity)localObject2, (String)localObject1, true);
+    }
   }
   
-  public void a(arpq paramarpq) {}
-  
-  public Class<arpq> clazz()
+  @NotNull
+  public arps a(@NotNull ViewGroup paramViewGroup, int paramInt)
   {
-    return arpq.class;
+    Intrinsics.checkParameterIsNotNull(paramViewGroup, "viewGroup");
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561056, paramViewGroup, false);
+    Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "convertView");
+    paramViewGroup = new arps(paramViewGroup);
+    paramViewGroup.a().setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    return paramViewGroup;
   }
   
-  public boolean isNeedCompressed()
+  public void a(@NotNull arps paramarps, int paramInt)
   {
-    return true;
+    Intrinsics.checkParameterIsNotNull(paramarps, "viewHolder");
+    if (this.jdField_a_of_type_JavaUtilList == null)
+    {
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramarps, paramInt, getItemId(paramInt));
+      return;
+    }
+    Object localObject = (armm)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    String str = ((armm)localObject).jdField_a_of_type_JavaLangString + " +" + ((armm)localObject).b;
+    Intrinsics.checkExpressionValueIsNotNull(str, "StringBuilder(task.taskD…k.rewardCount).toString()");
+    paramarps.a().setText((CharSequence)str);
+    boolean bool;
+    switch (((armm)localObject).c)
+    {
+    default: 
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698159);
+      bool = true;
+      label140:
+      if (bool)
+      {
+        paramarps.a().setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844991));
+        paramarps.a().setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167337));
+      }
+      break;
+    }
+    for (;;)
+    {
+      paramarps.a().setEnabled(bool);
+      paramarps.a().setText((CharSequence)localObject);
+      paramarps.a().setTag(Integer.valueOf(paramInt));
+      break;
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698159);
+      bool = true;
+      break label140;
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698160);
+      bool = false;
+      break label140;
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698161);
+      bool = false;
+      break label140;
+      paramarps.a().setBackgroundDrawable(null);
+      paramarps.a().setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165580));
+    }
   }
   
-  public boolean isNeedStoreLargeFile()
+  public final void a(@Nullable List<? extends armm> paramList)
   {
-    return false;
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      localList.clear();
+    }
+    localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null)
+    {
+      if (paramList == null) {
+        Intrinsics.throwNpe();
+      }
+      localList.addAll((Collection)paramList);
+    }
   }
   
-  public int migrateOldVersion()
+  public int getItemCount()
   {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      return localList.size();
+    }
     return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TencentDocAIOPlusPanelEntryConfigProcessor", 1, "AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 334;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arpr
  * JD-Core Version:    0.7.0.1
  */

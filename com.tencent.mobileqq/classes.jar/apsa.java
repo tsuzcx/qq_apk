@@ -1,422 +1,692 @@
-import android.graphics.SurfaceTexture;
-import android.hardware.Camera;
-import android.hardware.Camera.PreviewCallback;
-import android.os.Build;
-import android.os.Handler;
-import android.os.HandlerThread;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.model.CameraProxy.1;
-import com.tencent.mobileqq.ar.model.CameraProxy.2;
-import com.tencent.mobileqq.ar.model.CameraProxy.3;
+import com.tencent.mobileqq.confess.ConfessManager.1;
+import com.tencent.mobileqq.confess.ConfessManager.2;
+import com.tencent.mobileqq.confess.ConfessManager.3;
+import com.tencent.mobileqq.confess.ConfessManager.4;
+import com.tencent.mobileqq.confess.ConfessManager.5;
+import com.tencent.mobileqq.confess.ConfessManager.6;
+import com.tencent.mobileqq.data.MessageForConfessNews;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import mqq.manager.Manager;
 
 public class apsa
-  implements Camera.PreviewCallback, apms
+  implements Manager
 {
-  public static HandlerThread a;
-  private volatile int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private apmp jdField_a_of_type_Apmp;
-  private WeakReference<apsd> jdField_a_of_type_JavaLangRefWeakReference;
-  private ArrayList<WeakReference<apms>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private volatile byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int = 1;
-  private ArrayList<WeakReference<apsb>> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private int jdField_c_of_type_Int;
-  private ArrayList<WeakReference<apsd>> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-  private int d;
-  private int e = 17;
-  private int f = 10;
-  private int g;
+  final aprv jdField_a_of_type_Aprv;
+  aprw jdField_a_of_type_Aprw;
+  public apsb a;
+  public apsc a;
+  public final apsm a;
+  public QQAppInterface a;
+  final Object jdField_a_of_type_JavaLangObject = new Object();
+  final ArrayList<apsb> jdField_a_of_type_JavaUtilArrayList;
+  apsb jdField_b_of_type_Apsb = null;
+  apsc jdField_b_of_type_Apsc = null;
+  final Object jdField_b_of_type_JavaLangObject = new Object();
+  final ArrayList<apsc> jdField_b_of_type_JavaUtilArrayList;
   
-  private apsa()
+  public apsa(QQAppInterface paramQQAppInterface)
   {
-    if (jdField_a_of_type_AndroidOsHandlerThread == null)
-    {
-      jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("Camera2 Handler Thread", 0);
-      jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    }
-    this.jdField_a_of_type_Apmp = new apmp();
-    if (Build.MODEL.equalsIgnoreCase("Redmi Note 3")) {}
-    for (this.jdField_a_of_type_Long = 500L;; this.jdField_a_of_type_Long = 300L)
-    {
-      this.f = 0;
-      return;
-    }
+    this.jdField_a_of_type_Apsb = null;
+    this.jdField_a_of_type_Apsc = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Apsm = new apsm(paramQQAppInterface.getAccount());
+    this.jdField_a_of_type_Aprv = new aprv();
+    this.jdField_a_of_type_Aprw = new aprw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    ThreadManager.post(new ConfessManager.1(this), 5, null, true);
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public static apsa a()
-  {
-    return apsc.a();
-  }
-  
-  private void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  private apsb a(String paramString1, String paramString2, int paramInt)
   {
     for (;;)
     {
-      int i;
+      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      {
+        Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        if (((Iterator)localObject).hasNext())
+        {
+          localapsb = (apsb)((Iterator)localObject).next();
+          if ((localapsb == null) || (localapsb.jdField_a_of_type_Int != paramInt) || (!TextUtils.equals(localapsb.jdField_b_of_type_JavaLangString, paramString1)) || (!TextUtils.equals(localapsb.jdField_c_of_type_JavaLangString, paramString2))) {
+            continue;
+          }
+          localObject = localapsb;
+          if (localapsb == null)
+          {
+            localObject = new apsb();
+            ((apsb)localObject).jdField_b_of_type_JavaLangString = paramString1;
+            ((apsb)localObject).jdField_c_of_type_JavaLangString = paramString2;
+            ((apsb)localObject).jdField_a_of_type_Int = paramInt;
+            ((apsb)localObject).g = 0;
+            this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+          }
+          return localObject;
+        }
+      }
+      apsb localapsb = null;
+    }
+  }
+  
+  private apsc a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  {
+    for (;;)
+    {
       synchronized (this.jdField_b_of_type_JavaUtilArrayList)
       {
-        i = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
-        if (i >= 0)
+        Object localObject = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+        if (((Iterator)localObject).hasNext())
         {
-          WeakReference localWeakReference = (WeakReference)this.jdField_b_of_type_JavaUtilArrayList.get(i);
-          if ((localWeakReference == null) || (localWeakReference.get() == null)) {
-            break label102;
+          localapsc = (apsc)((Iterator)localObject).next();
+          if ((localapsc == null) || (localapsc.jdField_a_of_type_Int != paramInt) || (!TextUtils.equals(localapsc.jdField_a_of_type_JavaLangString, paramString1)) || (!TextUtils.equals(localapsc.jdField_d_of_type_JavaLangString, paramString2)) || (!TextUtils.equals(localapsc.jdField_b_of_type_JavaLangString, paramString3)) || (!TextUtils.equals(localapsc.jdField_e_of_type_JavaLangString, paramString4))) {
+            continue;
           }
-          if (paramBoolean) {
-            ((apsb)localWeakReference.get()).b();
-          } else {
-            ((apsb)localWeakReference.get()).b(paramInt1, paramInt2);
+          localObject = localapsc;
+          if (localapsc == null)
+          {
+            localObject = new apsc();
+            ((apsc)localObject).jdField_a_of_type_JavaLangString = paramString1;
+            ((apsc)localObject).jdField_d_of_type_JavaLangString = paramString2;
+            ((apsc)localObject).jdField_b_of_type_JavaLangString = paramString3;
+            ((apsc)localObject).jdField_e_of_type_JavaLangString = paramString4;
+            ((apsc)localObject).jdField_a_of_type_Int = paramInt;
+            ((apsc)localObject).jdField_e_of_type_Int = 0;
+            this.jdField_b_of_type_JavaUtilArrayList.add(localObject);
+          }
+          return localObject;
+        }
+      }
+      apsc localapsc = null;
+    }
+  }
+  
+  public int a(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getAllMessages(paramString1, 0, new int[] { -2065 });
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
+    {
+      localObject1 = ((List)localObject1).iterator();
+      Object localObject2;
+      do
+      {
+        do
+        {
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
+          }
+          localObject2 = (MessageRecord)((Iterator)localObject1).next();
+        } while (!(localObject2 instanceof MessageForConfessNews));
+        localObject2 = (MessageForConfessNews)localObject2;
+        ((MessageForConfessNews)localObject2).parse();
+      } while ((((MessageForConfessNews)localObject2).nTopicId != paramInt) || (!TextUtils.equals(paramString3, ((MessageForConfessNews)localObject2).strConfessorUin)) || (!TextUtils.equals(paramString2, ((MessageForConfessNews)localObject2).strRecUin)));
+    }
+    for (int i = 2;; i = 1)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "checkNeedAddConfessElem frdUin: %s, confessorUin: %s, topicId: %s, flag: %s", new Object[] { paramString1, paramString3, Integer.valueOf(paramInt), Integer.valueOf(i) }));
+      }
+      return i;
+    }
+  }
+  
+  public int a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  {
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getAllMessages(paramString1, 1, new int[] { -2065 });
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
+    {
+      localObject1 = ((List)localObject1).iterator();
+      Object localObject2;
+      do
+      {
+        do
+        {
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
+          }
+          localObject2 = (MessageRecord)((Iterator)localObject1).next();
+        } while (!(localObject2 instanceof MessageForConfessNews));
+        localObject2 = (MessageForConfessNews)localObject2;
+        ((MessageForConfessNews)localObject2).parse();
+      } while ((((MessageForConfessNews)localObject2).nTopicId != paramInt) || (!TextUtils.equals(paramString1, ((MessageForConfessNews)localObject2).strGroupUin)) || (!TextUtils.equals(paramString3, ((MessageForConfessNews)localObject2).senderuin)) || (!TextUtils.equals(paramString4, ((MessageForConfessNews)localObject2).strConfessorUin)) || (!TextUtils.equals(paramString2, ((MessageForConfessNews)localObject2).strRecUin)));
+    }
+    for (int i = 2;; i = 1)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "checkGroupNeedAddConfessElem groupUin: %s, sendUin: %s, confessorUin: %s, topicId: %s, flag: %s", new Object[] { paramString1, paramString3, paramString4, Integer.valueOf(paramInt), Integer.valueOf(i) }));
+      }
+      return i;
+    }
+  }
+  
+  public aprv a()
+  {
+    return this.jdField_a_of_type_Aprv;
+  }
+  
+  public aprw a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ConfessManager", 2, "getConfigSync");
+    }
+    this.jdField_a_of_type_Aprw.a();
+    return this.jdField_a_of_type_Aprw;
+  }
+  
+  public apsb a()
+  {
+    return this.jdField_a_of_type_Apsb;
+  }
+  
+  public apsc a()
+  {
+    return this.jdField_a_of_type_Apsc;
+  }
+  
+  public apsm a()
+  {
+    if (!this.jdField_a_of_type_Apsm.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Apsm.a();
+    }
+    return this.jdField_a_of_type_Apsm;
+  }
+  
+  public void a(RedTouchItem paramRedTouchItem)
+  {
+    if (paramRedTouchItem == null) {
+      return;
+    }
+    if (!this.jdField_a_of_type_Apsm.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Apsm.a();
+    }
+    if ((this.jdField_a_of_type_Apsm.jdField_a_of_type_Long < paramRedTouchItem.lastRecvTime) || (this.jdField_a_of_type_Apsm.jdField_a_of_type_Int != paramRedTouchItem.count)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (bool)
+      {
+        this.jdField_a_of_type_Apsm.a(paramRedTouchItem);
+        apse.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, false);
+        ((aprx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(125)).b(this.jdField_a_of_type_Apsm);
+      }
+      if (!QLog.isDevelopLevel()) {
+        break;
+      }
+      QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "onFrdRecNewConfess bNeedUpdate: %s, info: %s", new Object[] { Boolean.valueOf(bool), this.jdField_a_of_type_Apsm }));
+      return;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    Integer localInteger = null;
+    apsb localapsb = this.jdField_a_of_type_Apsb;
+    this.jdField_a_of_type_Apsb = null;
+    if (localapsb != null)
+    {
+      this.jdField_b_of_type_Apsb = localapsb;
+      if (localapsb.g == 1) {
+        ThreadManager.postImmediately(new ConfessManager.3(this, paramString, localapsb), null, false);
+      }
+    }
+    Locale localLocale;
+    if (QLog.isDevelopLevel())
+    {
+      localLocale = Locale.getDefault();
+      if (localapsb != null) {
+        break label90;
+      }
+    }
+    for (;;)
+    {
+      QLog.i("ConfessManager", 4, String.format(localLocale, "leaveFrdRecConfessChat frdUin: %s, flag: %s", new Object[] { paramString, localInteger }));
+      return;
+      label90:
+      localInteger = Integer.valueOf(localapsb.g);
+    }
+  }
+  
+  public void a(String paramString, apsb paramapsb)
+  {
+    if ((paramapsb == null) || (TextUtils.isEmpty(paramString))) {}
+    do
+    {
+      return;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (paramapsb.g == 1)
+        {
+          paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getAllMessages(paramString, 0, new int[] { -2065 });
+          if ((paramString != null) && (paramString.size() > 0))
+          {
+            paramString = paramString.iterator();
+            while (paramString.hasNext())
+            {
+              MessageRecord localMessageRecord = (MessageRecord)paramString.next();
+              if ((localMessageRecord instanceof MessageForConfessNews))
+              {
+                MessageForConfessNews localMessageForConfessNews = (MessageForConfessNews)localMessageRecord;
+                localMessageForConfessNews.parse();
+                if ((localMessageForConfessNews.nTopicId == paramapsb.jdField_a_of_type_Int) && (TextUtils.equals(paramapsb.jdField_c_of_type_JavaLangString, localMessageForConfessNews.strConfessorUin)) && (TextUtils.equals(paramapsb.jdField_b_of_type_JavaLangString, localMessageForConfessNews.strRecUin)))
+                {
+                  this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgFromCacheByUniseq(localMessageRecord.frienduin, 0, localMessageRecord.msgtype, localMessageRecord.uniseq);
+                  this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgByUniseq(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
+                }
+              }
+            }
           }
         }
       }
-      return;
-      label102:
-      i -= 1;
-    }
+    } while (!QLog.isDevelopLevel());
+    QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "removeFrdConfessNews frdUin: %s confessorUin: %s topicId: %s", new Object[] { paramapsb.jdField_b_of_type_JavaLangString, paramapsb.jdField_c_of_type_JavaLangString, Integer.valueOf(paramapsb.jdField_a_of_type_Int) }));
   }
   
-  public int a()
+  public void a(String paramString, apsb paramapsb, long paramLong1, long paramLong2)
   {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public String a()
-  {
-    String str = null;
-    int i = this.g;
-    if (Build.MODEL.equalsIgnoreCase("M1 E")) {
-      i = 90;
-    }
-    if (this.jdField_a_of_type_ArrayOfByte != null) {
-      str = ayzp.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_c_of_type_Int, this.d, this.e, i);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraProxy", 2, String.format("getLastPreviewFrame, path: %s, rotation: %s", new Object[] { str, Integer.valueOf(i) }));
-    }
-    return str;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Apmp != null) {
-      this.jdField_a_of_type_Apmp.c();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Int == 2)
+    if ((paramapsb == null) || (TextUtils.isEmpty(paramString))) {}
+    for (;;)
     {
-      QLog.i("CameraProxy", 2, "openCamera mCurCameraState = " + this.jdField_a_of_type_Int);
       return;
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (paramapsb.g == 0) {
+          paramapsb.g = a(paramString, paramapsb.jdField_b_of_type_JavaLangString, paramapsb.jdField_c_of_type_JavaLangString, paramapsb.jdField_a_of_type_Int);
+        }
+        int i = paramapsb.g;
+        if (i == 1) {}
+        try
+        {
+          String str = paramapsb.a();
+          if (!TextUtils.isEmpty(str))
+          {
+            MessageRecord localMessageRecord = bbli.a(-2065);
+            localMessageRecord.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString, paramString, str, paramLong1, -2065, 0, paramLong2);
+            localMessageRecord.isread = true;
+            if (!amwh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord, false)) {
+              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addMessage(localMessageRecord, localMessageRecord.selfuin);
+            }
+          }
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "addFrdConfessNews frdUin: %s recUin: %s, confessorUin: %s topicId: %s", new Object[] { paramString, paramapsb.jdField_b_of_type_JavaLangString, paramapsb.jdField_c_of_type_JavaLangString, Integer.valueOf(paramapsb.jdField_a_of_type_Int) }));
+          return;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            QLog.i("ConfessManager", 1, "addFrdConfessNews error: " + localException.getMessage());
+          }
+        }
+      }
     }
-    this.jdField_a_of_type_Int = 1;
-    this.f = 0;
-    a(new CameraProxy.1(this, paramInt));
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(String paramString, apsc paramapsc)
   {
-    if (this.jdField_a_of_type_Apmp != null) {
-      this.jdField_a_of_type_Apmp.a(paramInt1, paramInt2);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (this.jdField_a_of_type_Apmp != null) {
-      this.jdField_a_of_type_Apmp.a(paramInt1, paramInt2, paramInt3, paramInt4);
-    }
-  }
-  
-  public void a(SurfaceTexture paramSurfaceTexture)
-  {
-    if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Boolean))
+    if ((paramapsc == null) || (TextUtils.isEmpty(paramString))) {}
+    do
     {
-      QLog.i("CameraProxy", 2, "startCameraPreview return now");
       return;
-    }
-    a(new CameraProxy.2(this, paramSurfaceTexture));
+      synchronized (this.jdField_b_of_type_JavaLangObject)
+      {
+        if (paramapsc.jdField_e_of_type_Int == 1)
+        {
+          paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getAllMessages(paramString, 1, new int[] { -2065 });
+          if ((paramString != null) && (paramString.size() > 0))
+          {
+            paramString = paramString.iterator();
+            while (paramString.hasNext())
+            {
+              MessageRecord localMessageRecord = (MessageRecord)paramString.next();
+              if ((localMessageRecord instanceof MessageForConfessNews))
+              {
+                MessageForConfessNews localMessageForConfessNews = (MessageForConfessNews)localMessageRecord;
+                localMessageForConfessNews.parse();
+                if ((localMessageForConfessNews.nTopicId == paramapsc.jdField_a_of_type_Int) && (TextUtils.equals(paramapsc.jdField_a_of_type_JavaLangString, localMessageForConfessNews.strGroupUin)) && (TextUtils.equals(paramapsc.jdField_e_of_type_JavaLangString, localMessageForConfessNews.strConfessorUin)) && (TextUtils.equals(paramapsc.jdField_b_of_type_JavaLangString, localMessageForConfessNews.senderuin)) && (TextUtils.equals(paramapsc.jdField_d_of_type_JavaLangString, localMessageForConfessNews.strRecUin)))
+                {
+                  this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgFromCacheByUniseq(localMessageRecord.frienduin, 1, localMessageRecord.msgtype, localMessageRecord.uniseq);
+                  this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgByUniseq(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
+                }
+              }
+            }
+          }
+        }
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "removeGroupConfessNews groupUin: %s, strRecUin: %s, sendUin: %s, confessorUin: %s, topicId: %s", new Object[] { paramapsc.jdField_a_of_type_JavaLangString, paramapsc.jdField_d_of_type_JavaLangString, paramapsc.jdField_b_of_type_JavaLangString, paramapsc.jdField_e_of_type_JavaLangString, Integer.valueOf(paramapsc.jdField_a_of_type_Int) }));
   }
   
-  public void a(apms paramapms)
+  public void a(String paramString, apsc paramapsc, long paramLong1, long paramLong2, long paramLong3)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      if (((WeakReference)localIterator.next()).get() == paramapms) {
+    if ((paramapsc == null) || (TextUtils.isEmpty(paramString))) {}
+    for (;;)
+    {
+      return;
+      synchronized (this.jdField_b_of_type_JavaLangObject)
+      {
+        if (paramapsc.jdField_e_of_type_Int == 0) {
+          paramapsc.jdField_e_of_type_Int = a(paramString, paramapsc.jdField_d_of_type_JavaLangString, paramapsc.jdField_b_of_type_JavaLangString, paramapsc.jdField_e_of_type_JavaLangString, paramapsc.jdField_a_of_type_Int);
+        }
+        int i = paramapsc.jdField_e_of_type_Int;
+        if (i == 1) {}
+        try
+        {
+          String str = paramapsc.a();
+          if (!TextUtils.isEmpty(str))
+          {
+            MessageRecord localMessageRecord = bbli.a(-2065);
+            localMessageRecord.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString, paramapsc.jdField_b_of_type_JavaLangString, str, paramLong1, -2065, 1, paramLong2);
+            localMessageRecord.isread = true;
+            localMessageRecord.shmsgseq = paramLong3;
+            if (QLog.isDevelopLevel()) {
+              QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "addGroupConfessNews in 1 %s", new Object[] { Long.valueOf(paramLong3) }));
+            }
+            if (!amwh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord, false))
+            {
+              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addMessage(localMessageRecord, localMessageRecord.selfuin);
+              if (QLog.isDevelopLevel()) {
+                QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "addGroupConfessNews in 2", new Object[0]));
+              }
+            }
+          }
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            QLog.i("ConfessManager", 1, "addGroupConfessNews error: " + localException.getMessage());
+          }
+        }
+        if (!QLog.isDevelopLevel()) {
+          continue;
+        }
+        QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "addGroupConfessNews groupUin: %s recUin: %s, sendUin: %s, confessorUin: %s topicId: %s", new Object[] { paramString, paramapsc.jdField_d_of_type_JavaLangString, paramapsc.jdField_b_of_type_JavaLangString, paramapsc.jdField_e_of_type_JavaLangString, Integer.valueOf(paramapsc.jdField_a_of_type_Int) }));
         return;
       }
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramapms));
   }
   
-  public void a(apsb paramapsb)
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+    a(paramString1, paramString2, paramInt).g = 2;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "markFrdChatExtra recUin: %s, confessorUin: %s, topicId: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) }));
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  {
+    a(paramString1, paramString2, paramString3, paramString4, paramInt).jdField_e_of_type_Int = 2;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "markGroupChatExtra groupUin: %s recUin: %s, confessorUin: %s, topicId: %s", new Object[] { paramString1, paramString2, paramString4, Integer.valueOf(paramInt) }));
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, long paramLong)
+  {
+    Object localObject1 = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+    Object localObject2;
+    boolean bool;
+    for (;;)
     {
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        if (((WeakReference)localIterator.next()).get() == paramapsb) {
-          return;
+      if (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (apsc)((Iterator)localObject1).next();
+        if ((localObject2 != null) && (((apsc)localObject2).jdField_a_of_type_Int == paramInt) && (TextUtils.equals(((apsc)localObject2).jdField_a_of_type_JavaLangString, paramString1)) && (TextUtils.equals(((apsc)localObject2).jdField_d_of_type_JavaLangString, paramString2)) && (TextUtils.equals(((apsc)localObject2).jdField_b_of_type_JavaLangString, paramString3)) && (TextUtils.equals(((apsc)localObject2).jdField_e_of_type_JavaLangString, paramString4))) {
+          if (((apsc)localObject2).jdField_a_of_type_Boolean)
+          {
+            ((apsc)localObject2).jdField_a_of_type_Boolean = false;
+            bool = true;
+          }
         }
       }
-      this.jdField_b_of_type_JavaUtilArrayList.add(new WeakReference(paramapsb));
-      return;
     }
-  }
-  
-  public void a(apsd paramapsd)
-  {
-    if (paramapsd == null)
+    for (;;)
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-      return;
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramapsd);
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    synchronized (jdField_a_of_type_AndroidOsHandlerThread)
-    {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+      if (QLog.isDevelopLevel()) {
+        QLog.i("ConfessManager", 4, "checkUpdateGroupMessageForConfessNewsShmsgseq find: " + bool + " shmsgseq: " + paramLong);
+      }
+      if (bool)
+      {
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getAllMessages(paramString1, 1, new int[] { -2065 });
+        if ((localObject1 != null) && (((List)localObject1).size() > 0))
+        {
+          localObject1 = ((List)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (MessageRecord)((Iterator)localObject1).next();
+            if ((localObject2 instanceof MessageForConfessNews))
+            {
+              localObject2 = (MessageForConfessNews)localObject2;
+              ((MessageForConfessNews)localObject2).parse();
+              if ((((MessageForConfessNews)localObject2).nTopicId == paramInt) && (TextUtils.equals(paramString1, ((MessageForConfessNews)localObject2).strGroupUin)) && (TextUtils.equals(paramString3, ((MessageForConfessNews)localObject2).senderuin)) && (TextUtils.equals(paramString4, ((MessageForConfessNews)localObject2).strConfessorUin)) && (TextUtils.equals(paramString2, ((MessageForConfessNews)localObject2).strRecUin)))
+              {
+                this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().updateGroupMsgSeqAndTimeByUniseq(((MessageForConfessNews)localObject2).frienduin, ((MessageForConfessNews)localObject2).istroop, ((MessageForConfessNews)localObject2).uniseq, paramLong, ((MessageForConfessNews)localObject2).time);
+                if (QLog.isDevelopLevel()) {
+                  QLog.i("ConfessManager", 4, "checkUpdateGroupMessageForConfessNewsShmsgseq updated");
+                }
+              }
+            }
+          }
+        }
       }
       return;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      WeakReference localWeakReference = (WeakReference)localIterator.next();
-      if (localWeakReference.get() != null) {
-        ((apms)localWeakReference.get()).a(paramBoolean);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getMessages(paramString1, 1, 6);
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      {
+        int i = 0;
+        while (i < ((List)localObject1).size())
+        {
+          localObject2 = (MessageRecord)((List)localObject1).get(i);
+          if ((localObject2 instanceof MessageForConfessNews))
+          {
+            localObject2 = (MessageForConfessNews)localObject2;
+            ((MessageForConfessNews)localObject2).parse();
+            if ((((MessageForConfessNews)localObject2).nTopicId == paramInt) && (TextUtils.equals(paramString1, ((MessageForConfessNews)localObject2).strGroupUin)) && (TextUtils.equals(paramString3, ((MessageForConfessNews)localObject2).senderuin)) && (TextUtils.equals(paramString4, ((MessageForConfessNews)localObject2).strConfessorUin)) && (TextUtils.equals(paramString2, ((MessageForConfessNews)localObject2).strRecUin)))
+            {
+              int j = i + 1;
+              if (j < ((List)localObject1).size())
+              {
+                localObject2 = (MessageRecord)((List)localObject1).get(j);
+                this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().updateGroupMsgSeqAndTimeByUniseq(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq, ((MessageRecord)localObject2).shmsgseq, ((MessageRecord)localObject2).time);
+              }
+            }
+          }
+          i += 1;
+        }
       }
+      bool = false;
+      continue;
+      bool = false;
     }
   }
   
-  public boolean a()
+  public boolean a(String paramString)
   {
-    return this.jdField_a_of_type_Int == 2;
-  }
-  
-  public boolean a(float paramFloat, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Apmp != null) {
-      return this.jdField_a_of_type_Apmp.a(paramFloat, paramBoolean);
+    boolean bool = true;
+    apsb localapsb = this.jdField_a_of_type_Apsb;
+    if ((TextUtils.isEmpty(paramString)) || (localapsb == null) || (!TextUtils.equals(localapsb.jdField_b_of_type_JavaLangString, paramString))) {
+      bool = false;
     }
+    do
+    {
+      return bool;
+      if (localapsb.g == 0) {
+        localapsb.g = a(paramString, localapsb.jdField_b_of_type_JavaLangString, localapsb.jdField_c_of_type_JavaLangString, localapsb.jdField_a_of_type_Int);
+      }
+    } while (localapsb.g == 1);
     return false;
   }
   
-  public boolean a(boolean paramBoolean)
+  public boolean a(String paramString, Intent paramIntent)
   {
-    return this.jdField_a_of_type_Apmp.a(paramBoolean);
-  }
-  
-  public int b()
-  {
-    return this.d;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Apmp != null) {
-      this.jdField_a_of_type_Apmp.d();
+    if ((TextUtils.isEmpty(paramString)) || (paramIntent == null)) {
+      return false;
     }
+    String str1 = paramIntent.getStringExtra("key_confess_rec_uin");
+    String str2 = paramIntent.getStringExtra("key_confessor_uin");
+    int i = paramIntent.getIntExtra("key_confess_topicid", 0);
+    String str3 = paramIntent.getStringExtra("key_confess_desc");
+    String str4 = paramIntent.getStringExtra("key_confessor_nick");
+    int j = paramIntent.getIntExtra("key_confessor_sex", 0);
+    int k = paramIntent.getIntExtra("key_confess_bg_type", 0);
+    String str5 = paramIntent.getStringExtra("key_confess_rec_nick_name");
+    long l = paramIntent.getLongExtra("key_confess_time", 0L);
+    if ((!TextUtils.equals(paramString, str1)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str4)) || (TextUtils.isEmpty(str3)) || (i == 0)) {
+      return false;
+    }
+    paramIntent = a(str1, str2, i);
+    if (!TextUtils.isEmpty(str5)) {
+      paramIntent.jdField_a_of_type_JavaLangString = str5;
+    }
+    paramIntent.jdField_e_of_type_JavaLangString = str4;
+    paramIntent.jdField_c_of_type_Int = j;
+    paramIntent.jdField_d_of_type_JavaLangString = str3;
+    paramIntent.jdField_b_of_type_Int = k;
+    paramIntent.jdField_a_of_type_Long = l;
+    this.jdField_a_of_type_Apsb = paramIntent;
+    if (paramIntent.g != 2) {
+      ThreadManager.postImmediately(new ConfessManager.2(this, paramString), null, false);
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "enterFrdRecConfessChat recUin: %s, confessorUin: %s, topicId: %s, flag: %s", new Object[] { str1, str2, Integer.valueOf(i), Integer.valueOf(paramIntent.g) }));
+    }
+    return true;
   }
   
-  public void b(apms paramapms)
+  public aprw b()
   {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    if (i < j) {
-      if (((WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get() != paramapms) {}
+    return this.jdField_a_of_type_Aprw;
+  }
+  
+  public void b(String paramString)
+  {
+    Integer localInteger = null;
+    apsc localapsc = this.jdField_a_of_type_Apsc;
+    this.jdField_a_of_type_Apsc = null;
+    if (localapsc != null)
+    {
+      this.jdField_b_of_type_Apsc = localapsc;
+      if (localapsc.jdField_e_of_type_Int == 1) {
+        ThreadManager.postImmediately(new ConfessManager.5(this, paramString, localapsc), null, false);
+      }
+    }
+    Locale localLocale;
+    if (QLog.isDevelopLevel())
+    {
+      localLocale = Locale.getDefault();
+      if (localapsc != null) {
+        break label90;
+      }
     }
     for (;;)
     {
-      if (i != -1) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-      }
+      QLog.i("ConfessManager", 4, String.format(localLocale, "leaveGroupRecConfessChat groupUin: %s, flag: %s", new Object[] { paramString, localInteger }));
       return;
-      i += 1;
-      break;
-      i = -1;
+      label90:
+      localInteger = Integer.valueOf(localapsc.jdField_e_of_type_Int);
     }
   }
   
-  public void b(apsb paramapsb)
+  public boolean b(String paramString)
   {
-    for (;;)
-    {
-      synchronized (this.jdField_b_of_type_JavaUtilArrayList)
-      {
-        int j = this.jdField_b_of_type_JavaUtilArrayList.size();
-        i = 0;
-        if (i < j)
-        {
-          if (((WeakReference)this.jdField_b_of_type_JavaUtilArrayList.get(i)).get() != paramapsb) {
-            break label71;
-          }
-          if (i != -1) {
-            this.jdField_b_of_type_JavaUtilArrayList.remove(i);
-          }
-          return;
-        }
-      }
-      int i = -1;
-      continue;
-      label71:
-      i += 1;
+    apsc localapsc = this.jdField_a_of_type_Apsc;
+    if ((TextUtils.isEmpty(paramString)) || (localapsc == null) || (!TextUtils.equals(localapsc.jdField_a_of_type_JavaLangString, paramString))) {
+      return false;
     }
+    if (localapsc.jdField_e_of_type_Int == 0) {
+      localapsc.jdField_e_of_type_Int = a(paramString, localapsc.jdField_d_of_type_JavaLangString, localapsc.jdField_b_of_type_JavaLangString, localapsc.jdField_e_of_type_JavaLangString, localapsc.jdField_a_of_type_Int);
+    }
+    return localapsc.jdField_e_of_type_Int == 1;
   }
   
-  public void b(apsd paramapsd)
+  public boolean b(String paramString, Intent paramIntent)
   {
-    synchronized (this.jdField_c_of_type_JavaUtilArrayList)
-    {
-      Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        if (((WeakReference)localIterator.next()).get() == paramapsd) {
-          return;
-        }
-      }
-      this.jdField_c_of_type_JavaUtilArrayList.add(new WeakReference(paramapsd));
-      return;
+    if ((TextUtils.isEmpty(paramString)) || (paramIntent == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
+      return false;
     }
+    int i = paramIntent.getIntExtra("key_confess_topicid", 0);
+    String str1 = paramIntent.getStringExtra("key_confess_desc");
+    String str2 = paramIntent.getStringExtra("key_confessor_uin");
+    String str3 = paramIntent.getStringExtra("key_confessor_nick");
+    int j = paramIntent.getIntExtra("key_confessor_sex", 0);
+    int k = paramIntent.getIntExtra("key_confess_bg_type", 0);
+    String str4 = paramIntent.getStringExtra("key_confess_rec_uin");
+    String str5 = paramIntent.getStringExtra("key_confess_rec_nick_name");
+    long l = paramIntent.getLongExtra("key_confess_time", 0L);
+    int m = paramIntent.getIntExtra("key_confess_rec_nick_type", 0);
+    paramIntent = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
+    if ((TextUtils.isEmpty(str4)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (TextUtils.isEmpty(str1)) || (i == 0)) {
+      return false;
+    }
+    apsc localapsc = a(paramString, str4, paramIntent, str2, i);
+    if (!TextUtils.isEmpty(str5)) {
+      localapsc.jdField_c_of_type_JavaLangString = str5;
+    }
+    localapsc.g = str3;
+    localapsc.jdField_c_of_type_Int = j;
+    localapsc.f = str1;
+    localapsc.jdField_b_of_type_Int = k;
+    localapsc.jdField_a_of_type_Long = l;
+    localapsc.jdField_d_of_type_Int = m;
+    this.jdField_a_of_type_Apsc = localapsc;
+    if (localapsc.jdField_e_of_type_Int != 2) {
+      ThreadManager.postImmediately(new ConfessManager.4(this, paramString, localapsc), null, false);
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "enterGroupRecConfessChat recUin: %s, sendUin: %s, confessorUin: %s, topicId: %s, flag: %s", new Object[] { str4, paramIntent, str2, Integer.valueOf(i), Integer.valueOf(localapsc.jdField_e_of_type_Int) }));
+    }
+    return true;
   }
   
-  public boolean b()
+  public boolean c(String paramString, Intent paramIntent)
   {
-    return (this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Boolean);
+    if ((TextUtils.isEmpty(paramString)) || (paramIntent == null)) {
+      return false;
+    }
+    String str1 = paramIntent.getStringExtra("key_confess_rec_uin");
+    String str2 = paramIntent.getStringExtra("key_confessor_uin");
+    int i = paramIntent.getIntExtra("key_confess_topicid", 0);
+    String str3 = paramIntent.getStringExtra("key_confessor_nick");
+    int j = paramIntent.getIntExtra("key_confessor_sex", 0);
+    int k = paramIntent.getIntExtra("key_confessor_friend_sex", 0);
+    String str4 = paramIntent.getStringExtra("key_confess_desc");
+    int m = paramIntent.getIntExtra("key_confess_bg_type", 0);
+    long l = paramIntent.getLongExtra("key_confess_time", 0L);
+    int n = paramIntent.getIntExtra("key_confessor_num", 0);
+    if ((!TextUtils.equals(paramString, str1)) || (TextUtils.isEmpty(str4)) || (i == 0)) {
+      return false;
+    }
+    paramIntent = a(str1, str2, i);
+    paramIntent.jdField_c_of_type_Int = j;
+    paramIntent.jdField_e_of_type_Int = k;
+    paramIntent.jdField_d_of_type_JavaLangString = str4;
+    paramIntent.jdField_e_of_type_JavaLangString = str3;
+    paramIntent.jdField_b_of_type_Int = m;
+    paramIntent.jdField_a_of_type_Long = l;
+    paramIntent.jdField_d_of_type_Int = n;
+    paramIntent.f = 1;
+    this.jdField_a_of_type_Apsb = paramIntent;
+    if (paramIntent.g != 2) {
+      ThreadManager.postImmediately(new ConfessManager.6(this, paramString), null, false);
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("ConfessManager", 4, String.format(Locale.getDefault(), "enterFrdRankConfessChat recUin: %s, confessorUin: %s, topicId: %s, flag: %s, friendSex: %s, extra.strConfessorNick : %s", new Object[] { str1, str2, Integer.valueOf(i), Integer.valueOf(paramIntent.g), Integer.valueOf(k), paramIntent.jdField_e_of_type_JavaLangString }));
+    }
+    return true;
   }
   
-  public int c()
-  {
-    return this.e;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Apmp != null) {
-      this.jdField_a_of_type_Apmp.b();
-    }
-  }
-  
-  public void c(apsd paramapsd)
-  {
-    for (;;)
-    {
-      synchronized (this.jdField_c_of_type_JavaUtilArrayList)
-      {
-        int j = this.jdField_c_of_type_JavaUtilArrayList.size();
-        i = 0;
-        if (i < j)
-        {
-          if (((WeakReference)this.jdField_c_of_type_JavaUtilArrayList.get(i)).get() != paramapsd) {
-            break label71;
-          }
-          if (i != -1) {
-            this.jdField_c_of_type_JavaUtilArrayList.remove(i);
-          }
-          return;
-        }
-      }
-      int i = -1;
-      continue;
-      label71:
-      i += 1;
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Apmp != null) {
-      this.jdField_a_of_type_Apmp.e();
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      QLog.i("CameraProxy", 2, "closeCamera mCurCameraState = " + this.jdField_a_of_type_Int);
-      return;
-    }
-    this.jdField_a_of_type_Int = 3;
-    a(new CameraProxy.3(this));
-  }
-  
-  public void f()
-  {
-    synchronized (this.jdField_c_of_type_JavaUtilArrayList)
-    {
-      this.jdField_c_of_type_JavaUtilArrayList.clear();
-    }
-    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
-    {
-      this.jdField_b_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
-      localObject1 = finally;
-      throw localObject1;
-    }
-  }
-  
-  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
-  {
-    ArrayList localArrayList = this.jdField_c_of_type_JavaUtilArrayList;
-    boolean bool1 = false;
-    for (;;)
-    {
-      try
-      {
-        int i = this.jdField_c_of_type_JavaUtilArrayList.size() - 1;
-        if (i < 0) {
-          break label172;
-        }
-        WeakReference localWeakReference = (WeakReference)this.jdField_c_of_type_JavaUtilArrayList.get(i);
-        if (localWeakReference.get() != null)
-        {
-          bool2 = ((apsd)localWeakReference.get()).a(paramArrayOfByte);
-          bool1 = bool2;
-          if (bool2)
-          {
-            if ((!bool2) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-              ((apsd)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramArrayOfByte);
-            }
-            if (this.jdField_a_of_type_Int != 2) {
-              break label164;
-            }
-            this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-            if (this.jdField_a_of_type_Apmp != null) {
-              this.g = this.jdField_a_of_type_Apmp.d();
-            }
-            paramCamera.addCallbackBuffer(paramArrayOfByte);
-            return;
-          }
-        }
-        i -= 1;
-        continue;
-        this.jdField_a_of_type_ArrayOfByte = null;
-      }
-      finally {}
-      label164:
-      continue;
-      label172:
-      boolean bool2 = bool1;
-    }
-  }
+  public void onDestroy() {}
 }
 
 

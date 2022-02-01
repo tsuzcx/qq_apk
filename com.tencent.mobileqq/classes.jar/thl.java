@@ -1,26 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.viola.ui.component.image.ImageAction;
+import java.util.Set;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/PublicAccountNewBridgeInvokeHandler$getUserInfo$1$1", "Lcom/tencent/biz/pubaccount/readinjoy/model/ReadInJoyUserInfoModule$RefreshUserInfoCallBack;", "onLoadUserInfoFailed", "", "uin", "", "errMsg", "onLoadUserInfoSucceed", "userInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ReadInJoyUserInfo;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class thl
-  implements pql
+class thl
+  implements URLDrawable.URLDrawableListener
 {
-  thl(String paramString1, thj paramthj, String paramString2) {}
+  private ImageAction jdField_a_of_type_ComTencentViolaUiComponentImageImageAction;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onLoadUserInfoFailed(@NotNull String paramString1, @NotNull String paramString2)
+  public thl(thj paramthj, boolean paramBoolean, ImageAction paramImageAction)
   {
-    Intrinsics.checkParameterIsNotNull(paramString1, "uin");
-    Intrinsics.checkParameterIsNotNull(paramString2, "errMsg");
-    this.jdField_a_of_type_Thj.a(this.jdField_a_of_type_JavaLangString, tyo.a(paramString2));
+    this.jdField_a_of_type_ComTencentViolaUiComponentImageImageAction = paramImageAction;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void onLoadUserInfoSucceed(@NotNull String paramString, @NotNull ReadInJoyUserInfo paramReadInJoyUserInfo)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "uin");
-    Intrinsics.checkParameterIsNotNull(paramReadInJoyUserInfo, "userInfo");
-    this.jdField_a_of_type_Thj.a(this.jdField_a_of_type_JavaLangString, tyo.a(paramReadInJoyUserInfo));
+    if (this.jdField_a_of_type_ComTencentViolaUiComponentImageImageAction == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentViolaUiComponentImageImageAction.onCancel();
+    thj.a(this.jdField_a_of_type_Thj).remove(paramURLDrawable);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    thj.a(this.jdField_a_of_type_Thj, this.jdField_a_of_type_ComTencentViolaUiComponentImageImageAction, paramURLDrawable, paramThrowable);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    thj.a(this.jdField_a_of_type_Thj, this.jdField_a_of_type_ComTencentViolaUiComponentImageImageAction, paramURLDrawable, this.jdField_a_of_type_Boolean);
+    thj.a(this.jdField_a_of_type_Thj).remove(paramURLDrawable);
   }
 }
 

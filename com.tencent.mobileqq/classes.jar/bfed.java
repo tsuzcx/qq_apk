@@ -1,10 +1,12 @@
-public abstract class bfed
+public class bfed
 {
+  public int a;
   public long a;
   public String a;
-  public boolean a;
-  public String b;
-  public String c;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 

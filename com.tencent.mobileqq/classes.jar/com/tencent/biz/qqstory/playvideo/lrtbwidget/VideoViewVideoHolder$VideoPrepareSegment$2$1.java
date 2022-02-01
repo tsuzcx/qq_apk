@@ -5,29 +5,29 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.io.File;
 import mqq.os.MqqHandler;
-import wjt;
-import wkr;
-import wth;
-import xsg;
-import xsi;
-import yuk;
-import yup;
+import vls;
+import vmq;
+import vux;
+import wtr;
+import wtt;
+import xvv;
+import xwa;
 
 public class VideoViewVideoHolder$VideoPrepareSegment$2$1
   implements Runnable
 {
-  public VideoViewVideoHolder$VideoPrepareSegment$2$1(xsi paramxsi, String paramString1, String paramString2, File paramFile) {}
+  public VideoViewVideoHolder$VideoPrepareSegment$2$1(wtt paramwtt, String paramString1, String paramString2, File paramFile) {}
   
   public void run()
   {
-    yuk.b(this.jdField_a_of_type_Xsi.jdField_a_of_type_Xsg.a.jdField_a_of_type_JavaLangString, "onSuccess, [vid, url, fileCache] = ");
-    wjt localwjt = (wjt)wth.a(28);
-    String str = wkr.a(new File(this.jdField_a_of_type_Xsi.jdField_a_of_type_JavaLangString));
+    xvv.b(this.jdField_a_of_type_Wtt.jdField_a_of_type_Wtr.a.jdField_a_of_type_JavaLangString, "onSuccess, [vid, url, fileCache] = ");
+    vls localvls = (vls)vux.a(28);
+    String str = vmq.a(new File(this.jdField_a_of_type_Wtt.jdField_a_of_type_JavaLangString));
     if (!TextUtils.isEmpty(str)) {
-      wkr.a(this.jdField_a_of_type_Xsi.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, str, 0, yup.a(BaseApplicationImpl.getContext()));
+      vmq.a(this.jdField_a_of_type_Wtt.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, str, 0, xwa.a(BaseApplicationImpl.getContext()));
     }
-    localwjt.b(this.jdField_a_of_type_JavaLangString, 0);
-    localwjt.a(this.jdField_a_of_type_JavaLangString, 0);
+    localvls.b(this.jdField_a_of_type_JavaLangString, 0);
+    localvls.a(this.jdField_a_of_type_JavaLangString, 0);
     ThreadManager.getUIHandler().post(new VideoViewVideoHolder.VideoPrepareSegment.2.1.1(this));
   }
 }

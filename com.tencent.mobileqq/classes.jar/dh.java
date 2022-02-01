@@ -10,13 +10,13 @@ import java.util.Iterator;
 import java.util.List;
 
 class dh
-  implements bjzj
+  implements biet
 {
   dh(dg paramdg) {}
   
   public void a(int paramInt, String paramString)
   {
-    Object localObject = this.a.a.app.a(0).a(paramString);
+    Object localObject = this.a.a.app.getDataLineMsgProxy(0).a(paramString);
     switch (paramInt)
     {
     }
@@ -37,7 +37,7 @@ class dh
             localObject = (DataLineMsgRecord)paramString.next();
             ((DataLineMsgRecord)localObject).issuc = true;
             ((DataLineMsgRecord)localObject).fileMsgStatus = 0L;
-            this.a.a.app.a().a(0).c(((DataLineMsgRecord)localObject).msgId);
+            this.a.a.app.getMessageFacade().getDatalineMessageManager(0).c(((DataLineMsgRecord)localObject).msgId);
             this.a.a.a(6, true, new Object[] { Long.valueOf(0L), Long.valueOf(((DataLineMsgRecord)localObject).sessionid), ((DataLineMsgRecord)localObject).path, Byte.valueOf(0), Boolean.valueOf(false), Boolean.valueOf(true), Long.valueOf(((DataLineMsgRecord)localObject).filesize) });
           }
           continue;
@@ -53,7 +53,7 @@ class dh
               if ((!((DataLineMsgRecord)localObject).issuc) || (((DataLineMsgRecord)localObject).progress != 1.0F))
               {
                 ((DataLineMsgRecord)localObject).issuc = false;
-                this.a.a.app.a().a(0).c();
+                this.a.a.app.getMessageFacade().getDatalineMessageManager(0).c();
                 this.a.a.a(3, false, new Object[] { Long.valueOf(0L), Long.valueOf(((DataLineMsgRecord)localObject).sessionid), ((DataLineMsgRecord)localObject).path });
               }
             }
@@ -70,7 +70,7 @@ class dh
                 dq.g(this.a.a.app);
                 ((DataLineMsgRecord)localObject).issuc = true;
                 ((DataLineMsgRecord)localObject).progress = 1.0F;
-                ((DataLineMsgRecord)localObject).path = bjzi.a().a(((DataLineMsgRecord)localObject).strMoloKey);
+                ((DataLineMsgRecord)localObject).path = bies.a().a(((DataLineMsgRecord)localObject).strMoloKey);
                 if (QLog.isColorLevel())
                 {
                   if (((DataLineMsgRecord)localObject).path == null) {
@@ -81,10 +81,10 @@ class dh
               }
               for (;;)
               {
-                this.a.a.app.a(0).a(((DataLineMsgRecord)localObject).msgId, ((DataLineMsgRecord)localObject).path);
-                this.a.a.app.a().a(0).c();
+                this.a.a.app.getDataLineMsgProxy(0).a(((DataLineMsgRecord)localObject).msgId, ((DataLineMsgRecord)localObject).path);
+                this.a.a.app.getMessageFacade().getDatalineMessageManager(0).c();
                 this.a.a.a(3, true, new Object[] { Long.valueOf(0L), Long.valueOf(((DataLineMsgRecord)localObject).sessionid), ((DataLineMsgRecord)localObject).path });
-                this.a.a.a().a().a(0).a(((DataLineMsgRecord)localObject).msgId);
+                this.a.a.a().getMessageFacade().getDatalineMessageManager(0).a(((DataLineMsgRecord)localObject).msgId);
                 break label435;
                 break;
                 QLog.d("dataline.MoloHandler", 2, "PCPushProxy.getDownloadPath(" + ((DataLineMsgRecord)localObject).strMoloKey + ") NULL");
@@ -102,8 +102,8 @@ class dh
                   {
                     ((DataLineMsgRecord)localObject).issuc = false;
                     ((DataLineMsgRecord)localObject).fileMsgStatus = 2L;
-                    this.a.a.app.a().a(0).c(((DataLineMsgRecord)localObject).msgId);
-                    this.a.a.app.a().a(0).c();
+                    this.a.a.app.getMessageFacade().getDatalineMessageManager(0).c(((DataLineMsgRecord)localObject).msgId);
+                    this.a.a.app.getMessageFacade().getDatalineMessageManager(0).c();
                     this.a.a.a(3, false, new Object[] { Long.valueOf(0L), Long.valueOf(((DataLineMsgRecord)localObject).sessionid), ((DataLineMsgRecord)localObject).path });
                   }
                 }
@@ -123,16 +123,16 @@ class dh
     QLog.d("dataline.MoloHandler", 2, "OnDownloadListener.WAIT(" + paramString + ")");
   }
   
-  public void a(bjzk parambjzk, int paramInt1, String paramString, int paramInt2)
+  public void a(bieu parambieu, int paramInt1, String paramString, int paramInt2)
   {
     Object localObject;
-    if ((parambjzk == null) || (paramInt1 == -25))
+    if ((parambieu == null) || (paramInt1 == -25))
     {
       if (QLog.isColorLevel()) {
         QLog.d("dataline.MoloHandler", 2, "onDownloadError( tm exit)");
       }
-      paramString = this.a.a.a().a().a(0).a();
-      parambjzk = this.a.a.a().a().a(0).a(true);
+      paramString = this.a.a.a().getProxyManager().a(0).a();
+      parambieu = this.a.a.a().getProxyManager().a(0).a(true);
       paramString = paramString.iterator();
       while (paramString.hasNext())
       {
@@ -143,36 +143,36 @@ class dh
           if ((localDataLineMsgRecord.strMoloKey != null) && ((!localDataLineMsgRecord.issuc) || (localDataLineMsgRecord.progress != 1.0F)))
           {
             localDataLineMsgRecord.issuc = false;
-            this.a.a.app.a().a(0).c();
+            this.a.a.app.getMessageFacade().getDatalineMessageManager(0).c();
             this.a.a.a(3, false, new Object[] { Long.valueOf(0L), Long.valueOf(localDataLineMsgRecord.sessionid), localDataLineMsgRecord.path });
           }
         }
       }
-      if (parambjzk != null) {
-        parambjzk = parambjzk.iterator();
+      if (parambieu != null) {
+        parambieu = parambieu.iterator();
       }
     }
     else
     {
-      while (parambjzk.hasNext())
+      while (parambieu.hasNext())
       {
-        paramString = ((DataLineMsgSet)parambjzk.next()).values().iterator();
+        paramString = ((DataLineMsgSet)parambieu.next()).values().iterator();
         while (paramString.hasNext())
         {
           localObject = (DataLineMsgRecord)paramString.next();
           if ((((DataLineMsgRecord)localObject).strMoloKey != null) && ((!((DataLineMsgRecord)localObject).issuc) || (((DataLineMsgRecord)localObject).progress != 1.0F)))
           {
             ((DataLineMsgRecord)localObject).issuc = false;
-            this.a.a.app.a().a(0).c();
+            this.a.a.app.getMessageFacade().getDatalineMessageManager(0).c();
             this.a.a.a(3, false, new Object[] { Long.valueOf(0L), Long.valueOf(((DataLineMsgRecord)localObject).sessionid), ((DataLineMsgRecord)localObject).path });
           }
         }
         continue;
         if (QLog.isColorLevel()) {
-          QLog.d("dataline.MoloHandler", 2, "onDownloadError(" + parambjzk.toString() + "), key[" + parambjzk.a + "], errorCode" + paramInt1 + "], state[" + paramInt2);
+          QLog.d("dataline.MoloHandler", 2, "onDownloadError(" + parambieu.toString() + "), key[" + parambieu.a + "], errorCode" + paramInt1 + "], state[" + paramInt2);
         }
-        parambjzk = this.a.a.app.a(0).a(parambjzk.a);
-        if (parambjzk != null) {
+        parambieu = this.a.a.app.getDataLineMsgProxy(0).a(parambieu.a);
+        if (parambieu != null) {
           break label460;
         }
       }
@@ -181,35 +181,35 @@ class dh
     {
       return;
       label460:
-      parambjzk = parambjzk.iterator();
-      while (parambjzk.hasNext())
+      parambieu = parambieu.iterator();
+      while (parambieu.hasNext())
       {
-        paramString = (DataLineMsgRecord)parambjzk.next();
+        paramString = (DataLineMsgRecord)parambieu.next();
         dq.l(this.a.a.app);
         paramString.issuc = false;
-        this.a.a.app.a().a(0).c();
+        this.a.a.app.getMessageFacade().getDatalineMessageManager(0).c();
         this.a.a.a(3, false, new Object[] { Long.valueOf(0L), Long.valueOf(paramString.sessionid), paramString.path });
       }
     }
   }
   
-  public void a(List<bjzk> paramList)
+  public void a(List<bieu> paramList)
   {
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      bjzk localbjzk = (bjzk)paramList.next();
+      bieu localbieu = (bieu)paramList.next();
       if (QLog.isColorLevel()) {
-        QLog.d("dataline.MoloHandler", 2, "onDownloadUpdatem key[" + localbjzk.a + "], appName[" + localbjzk.e + "], progress[" + localbjzk.f);
+        QLog.d("dataline.MoloHandler", 2, "onDownloadUpdatem key[" + localbieu.a + "], appName[" + localbieu.e + "], progress[" + localbieu.f);
       }
-      Object localObject = this.a.a.app.a(0).a(localbjzk.a);
+      Object localObject = this.a.a.app.getDataLineMsgProxy(0).a(localbieu.a);
       if (localObject != null)
       {
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject).next();
-          float f = localbjzk.f / 100.0F;
+          float f = localbieu.f / 100.0F;
           if (localDataLineMsgRecord.progress < f) {
             localDataLineMsgRecord.progress = f;
           }

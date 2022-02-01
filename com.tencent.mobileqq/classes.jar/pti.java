@@ -1,20 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-class pti
-  implements View.OnClickListener
+public abstract interface pti
 {
-  pti(ptf paramptf, String paramString, ArticleInfo paramArticleInfo) {}
+  public abstract void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2);
   
-  public void onClick(View paramView)
-  {
-    String str = oyu.g + bhkv.encodeToString(this.jdField_a_of_type_JavaLangString.getBytes(), 2);
-    ozs.a(ptf.a(this.jdField_a_of_type_Ptf), str);
-    ptf.a(this.jdField_a_of_type_Ptf, ozs.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList<String> paramArrayList);
 }
 
 

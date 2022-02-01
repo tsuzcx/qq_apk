@@ -1,22 +1,23 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.2;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import java.lang.ref.WeakReference;
 
 public class nwu
-  implements TVK_SDKMgr.InstallListener
+  implements adjw
 {
-  public nwu(AdvertisementVideoPreloadManager.2 param2) {}
+  WeakReference<AccountDetailActivity> a;
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public nwu(AccountDetailActivity paramAccountDetailActivity)
   {
-    nws.c("installSDK onInstalledFailed arg0=" + paramInt);
+    this.a = new WeakReference(paramAccountDetailActivity);
   }
   
-  public void onInstalledSuccessed()
+  public void a(adjx paramadjx)
   {
-    nws.c("installSDK onInstalledSuccessed");
-    nws.a(this.a.this$0);
+    if ((this.a == null) || (this.a.get() == null)) {
+      return;
+    }
+    ((AccountDetailActivity)this.a.get()).a(paramadjx);
+    ((AccountDetailActivity)this.a.get()).S();
   }
 }
 

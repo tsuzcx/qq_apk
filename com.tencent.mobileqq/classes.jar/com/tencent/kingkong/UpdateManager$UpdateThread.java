@@ -1,17 +1,17 @@
 package com.tencent.kingkong;
 
-import adkh;
+import achb;
 import android.os.Looper;
 
 public class UpdateManager$UpdateThread
   extends Thread
 {
-  private adkh a;
+  private achb a;
   
   public void run()
   {
     Looper.prepare();
-    this.a = new adkh();
+    this.a = new achb();
     Looper.loop();
   }
 }

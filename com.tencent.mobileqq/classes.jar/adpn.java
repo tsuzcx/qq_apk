@@ -1,11 +1,23 @@
-import com.tencent.mobileqq.Doraemon.monitor.APIQuotaItem;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity.4.1;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface adpn
+public class adpn
+  extends amzt
 {
-  public abstract void a(String paramString1, int paramInt, String paramString2, String paramString3, long paramLong1, long paramLong2);
+  public adpn(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public abstract void a(String paramString, HashMap<String, APIQuotaItem> paramHashMap);
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("Q.lebatab.mgr", 4, "notifyLebaViewItemsReloaded");
+    }
+    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
+      return;
+    }
+    paramObject = ajek.a().a();
+    this.a.runOnUiThread(new LebaListMgrActivity.4.1(this, paramObject));
+  }
 }
 
 

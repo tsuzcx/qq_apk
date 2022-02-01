@@ -1,33 +1,40 @@
-import android.widget.TextView;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePageArkView;
+import android.app.Activity;
+import android.content.Context;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class agcd
-  implements ArkViewImplement.LoadCallback
+class agcd
+  extends ClickableSpan
 {
-  public agcd(BirthdayActivatePageArkView paramBirthdayActivatePageArkView) {}
+  private WeakReference<QQAppInterface> a;
+  private WeakReference<Context> b;
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  agcd(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    onLoadState(paramInt1);
+    this.a = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramContext);
   }
   
-  public void onLoadState(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1) {
+    paramView = (QQAppInterface)this.a.get();
+    if (((this.b.get() instanceof Activity)) && (paramView != null))
+    {
       if (QLog.isColorLevel()) {
-        QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  onLoadFinish  SUCCESS");
+        QLog.d("GrayTipsItemBuilder", 2, "handleHotChatToSeeTip span click ");
       }
+      HotChatManager.a(null, false);
     }
-    while (paramInt != -1) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("BirthdayActivatePageArkView", 1, "@arkgif  onLoadFinish  failed");
-    }
-    this.a.a(false);
-    BirthdayActivatePageArkView.a(this.a).setText(anzj.a(2131700064));
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 

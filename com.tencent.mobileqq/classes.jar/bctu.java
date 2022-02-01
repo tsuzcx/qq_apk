@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgType0x210;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.teamwork.ReSendCmd;
 
-public class bctu
-  implements bctr
+public final class bctu
+  implements Parcelable.Creator<ReSendCmd>
 {
-  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
+  public ReSendCmd a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.troopgetnews..troop.notification_center", 2, "decodeC2CMsgPkg_MsgType0x210, receive troop news push");
-    }
-    ((aoip)paramMessageHandler.app.a(20)).a(paramMsgType0x210.msg_content.get().toByteArray());
+    return new ReSendCmd(paramParcel);
+  }
+  
+  public ReSendCmd[] a(int paramInt)
+  {
+    return new ReSendCmd[paramInt];
   }
 }
 

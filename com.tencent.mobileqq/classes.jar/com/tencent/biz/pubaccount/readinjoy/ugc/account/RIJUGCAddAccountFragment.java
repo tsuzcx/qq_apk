@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.account;
 
-import agej;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -17,18 +16,19 @@ import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.net.MalformedURLException;
 import java.net.URL;
-import ocd;
+import odq;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ozc;
-import ozs;
-import rco;
-import rcp;
+import pai;
+import pay;
+import rjo;
+import rjp;
 
 public class RIJUGCAddAccountFragment
   extends ViolaLazyFragment
@@ -39,7 +39,7 @@ public class RIJUGCAddAccountFragment
   public static int b;
   private static boolean b;
   public static int c = 3;
-  private rcp jdField_a_of_type_Rcp;
+  private rjp jdField_a_of_type_Rjp;
   
   static
   {
@@ -54,23 +54,23 @@ public class RIJUGCAddAccountFragment
   
   public static String a()
   {
-    ReadInJoyUserInfo localReadInJoyUserInfo = a(ozs.a());
+    ReadInJoyUserInfo localReadInJoyUserInfo = a(pay.a());
     String str = ReadInJoyUserInfoModule.a();
     if (localReadInJoyUserInfo == null)
     {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "RIJUGCAddAccountFragment getNickName getReadInJoyUserInfoByUin is null! ");
-      return ozs.e(str);
+      return pay.e(str);
     }
-    return ozs.e(localReadInJoyUserInfo.nick);
+    return pay.e(localReadInJoyUserInfo.nick);
   }
   
   static void a()
   {
     try
     {
-      JSONObject localJSONObject = ozs.a();
-      localJSONObject.put("uin", ozs.a());
-      ocd.a(null, "CliOper", "", "", "0X800AD87", "0X800AD87", 0, 0, "", "", "", localJSONObject.toString(), false);
+      JSONObject localJSONObject = pay.a();
+      localJSONObject.put("uin", pay.a());
+      odq.a(null, "CliOper", "", "", "0X800AD87", "0X800AD87", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     catch (JSONException localJSONException)
@@ -83,10 +83,10 @@ public class RIJUGCAddAccountFragment
   {
     try
     {
-      JSONObject localJSONObject = ozs.a();
-      localJSONObject.put("uin", ozs.a());
+      JSONObject localJSONObject = pay.a();
+      localJSONObject.put("uin", pay.a());
       localJSONObject.put("click_area", paramInt);
-      ocd.a(null, "CliOper", "", "", "0X800AD89", "0X800AD89", 0, 0, "", "", "", localJSONObject.toString(), false);
+      odq.a(null, "CliOper", "", "", "0X800AD89", "0X800AD89", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     catch (JSONException localJSONException)
@@ -97,7 +97,7 @@ public class RIJUGCAddAccountFragment
   
   public static void a(Context paramContext)
   {
-    if (a(ozs.a()) != null) {}
+    if (a(pay.a()) != null) {}
     for (boolean bool = true;; bool = false)
     {
       jdField_a_of_type_Boolean = bool;
@@ -108,22 +108,22 @@ public class RIJUGCAddAccountFragment
   
   private void a(ViewGroup paramViewGroup)
   {
-    ViewGroup localViewGroup1 = (ViewGroup)paramViewGroup.findViewById(2131380345);
-    ViewGroup localViewGroup2 = (ViewGroup)paramViewGroup.findViewById(2131380346);
-    KandianUrlImageView localKandianUrlImageView = (KandianUrlImageView)paramViewGroup.findViewById(2131369428);
-    paramViewGroup = (KandianUrlImageView)paramViewGroup.findViewById(2131369429);
+    ViewGroup localViewGroup1 = (ViewGroup)paramViewGroup.findViewById(2131380071);
+    ViewGroup localViewGroup2 = (ViewGroup)paramViewGroup.findViewById(2131380072);
+    KandianUrlImageView localKandianUrlImageView = (KandianUrlImageView)paramViewGroup.findViewById(2131369413);
+    paramViewGroup = (KandianUrlImageView)paramViewGroup.findViewById(2131369414);
     ViewGroup.LayoutParams localLayoutParams = paramViewGroup.getLayoutParams();
     if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams))
     {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).topMargin = (ImmersiveUtils.getStatusBarHeight(getActivity()) + (getResources().getDimensionPixelSize(2131299011) - agej.a(19.5F, getResources())) / 2);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).topMargin = (ImmersiveUtils.getStatusBarHeight(getActivity()) + (getResources().getDimensionPixelSize(2131299076) - AIOUtils.dp2px(19.5F, getResources())) / 2);
       paramViewGroup.setLayoutParams(localLayoutParams);
     }
     try
     {
-      ozc.a(localKandianUrlImageView, new URL("https://pub.idqqimg.com/pc/misc/files/20200430/21b88f2ba3bd43919173a767982d649d.png"), getActivity());
-      ozc.a(paramViewGroup, new URL("https://pub.idqqimg.com/pc/misc/files/20200430/eb40275894c9455f9ab438dd91081678.png"), getActivity());
-      this.jdField_a_of_type_Rcp = new rcp(getActivity(), localViewGroup2);
-      localViewGroup1.setOnClickListener(new rco(this));
+      pai.a(localKandianUrlImageView, new URL("https://pub.idqqimg.com/pc/misc/files/20200430/21b88f2ba3bd43919173a767982d649d.png"), getActivity());
+      pai.a(paramViewGroup, new URL("https://pub.idqqimg.com/pc/misc/files/20200430/eb40275894c9455f9ab438dd91081678.png"), getActivity());
+      this.jdField_a_of_type_Rjp = new rjp(getActivity(), localViewGroup2);
+      localViewGroup1.setOnClickListener(new rjo(this));
       return;
     }
     catch (MalformedURLException paramViewGroup)
@@ -142,7 +142,7 @@ public class RIJUGCAddAccountFragment
   
   public static void b(Context paramContext)
   {
-    if (TextUtils.isEmpty(ozs.a()))
+    if (TextUtils.isEmpty(pay.a()))
     {
       QLog.e(jdField_a_of_type_JavaLangString, 2, "editUGCAccount , but uin is empty !");
       jdField_b_of_type_Boolean = false;
@@ -188,7 +188,7 @@ public class RIJUGCAddAccountFragment
   
   public int getContentViewId()
   {
-    return 2131560290;
+    return 2131560297;
   }
   
   public void initAfterVisible(Bundle paramBundle, ViewGroup paramViewGroup)
@@ -219,7 +219,7 @@ public class RIJUGCAddAccountFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Rcp.a();
+    this.jdField_a_of_type_Rjp.a();
   }
 }
 

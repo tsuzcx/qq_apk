@@ -1,41 +1,26 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class aoxg
-  extends bhmr
+public class aoxg
+  implements View.OnClickListener
 {
-  public aoxg(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  public aoxg(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    HashMap localHashMap = new HashMap(1);
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    bjnw localbjnw = (bjnw)bjon.a(BaseActivity.sTopActivity, null);
+    localbjnw.a(BaseActivity.sTopActivity.getString(2131690129));
+    localbjnw.a(2131690128, 3);
+    localbjnw.c(2131690130);
+    localbjnw.setOnDismissListener(new aoxh(this, localbjnw));
+    localbjnw.a(new aoxi(this, localbjnw));
+    if (!localbjnw.isShowing()) {
+      localbjnw.show();
     }
-    if (this.a == null) {
-      this.a = "";
-    }
-    if (this.b == null) {
-      this.b = "";
-    }
-    if (this.c == null) {
-      this.c = "";
-    }
-    paramString = new StringBuilder();
-    paramString.append(str).append("source:").append(this.a).append("server_name:").append(this.b).append("action_name:").append(this.c);
-    localHashMap.put("keyJumpParserUtilDoActionErrorInfo", paramString.toString());
-    bdmc.a(BaseApplicationImpl.getApplication()).a("", "keyJumpParserUtil", true, 0L, 0L, localHashMap, "", false);
-  }
-  
-  public boolean a()
-  {
-    return false;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

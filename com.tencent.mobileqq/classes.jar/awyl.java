@@ -1,72 +1,20 @@
-import com.tencent.mobileqq.magicface.model.MagicfaceDecoder.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class awyl
+public class awyl
+  implements View.OnClickListener
 {
-  public int a;
-  awyk a;
-  public awym a;
-  public awyn a;
-  public volatile boolean a;
-  public int b = 1000 / this.jdField_a_of_type_Int;
+  awyl(awyf paramawyf) {}
   
-  public awyl()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 8;
-    g();
-  }
-  
-  public abstract void a();
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = (1000 / paramInt);
-  }
-  
-  public void a(awyk paramawyk)
-  {
-    this.jdField_a_of_type_Awyk = paramawyk;
-  }
-  
-  public void a(awym paramawym)
-  {
-    this.jdField_a_of_type_Awym = paramawym;
-  }
-  
-  public void a(awyn paramawyn)
-  {
-    this.jdField_a_of_type_Awyn = paramawyn;
-  }
-  
-  public void c() {}
-  
-  public void d()
-  {
-    f();
-    if (!this.jdField_a_of_type_Boolean) {}
-    try
-    {
-      new Thread(new MagicfaceDecoder.1(this)).start();
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MagicfaceDecoder", 2, "startDecoder err:" + localOutOfMemoryError.getMessage());
-    }
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  protected void f() {}
-  
-  protected void g()
-  {
-    this.jdField_a_of_type_Boolean = false;
+    bjnw localbjnw = bjnw.a(this.a.a);
+    localbjnw.a(2131716953, 1);
+    localbjnw.c(2131690620);
+    localbjnw.a(new awym(this, localbjnw));
+    localbjnw.show();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

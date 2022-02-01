@@ -1,59 +1,166 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity;
-import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
 public class ofn
-  extends BroadcastReceiver
+  implements apts<String>
 {
-  public ofn(ShopWebViewFragment paramShopWebViewFragment) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
+  private String jdField_b_of_type_JavaLangString = "";
+  private boolean jdField_b_of_type_Boolean;
+  private String c = "";
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static ofn a()
   {
-    if (paramIntent == null) {}
-    do
+    ofn localofn = new ofn();
+    localofn.jdField_a_of_type_JavaLangString = uex.jdField_a_of_type_JavaLangString;
+    localofn.jdField_b_of_type_JavaLangString = uex.jdField_b_of_type_JavaLangString;
+    localofn.c = uex.c;
+    localofn.jdField_a_of_type_Boolean = uex.d;
+    return localofn;
+  }
+  
+  private ofn a(ofn paramofn, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
     {
-      Object localObject;
-      do
+      return this;
+      try
       {
-        do
+        paramString = new JSONObject(paramString);
+        if (paramString.has("pacenter_url")) {
+          this.jdField_a_of_type_JavaLangString = paramofn.jdField_a_of_type_JavaLangString;
+        }
+        if (paramString.has("pacategory_url")) {
+          this.jdField_b_of_type_JavaLangString = paramofn.jdField_b_of_type_JavaLangString;
+        }
+        if (paramString.has("readinjoy_search_url")) {
+          this.c = paramofn.c;
+        }
+        if (paramString.has("image_collection_comment")) {
+          this.jdField_a_of_type_Boolean = paramofn.jdField_a_of_type_Boolean;
+        }
+        if (paramofn.jdField_b_of_type_Boolean)
         {
-          return;
-          paramContext = paramIntent.getAction();
-          localObject = paramIntent.getStringExtra("uin");
-          Bitmap localBitmap = (Bitmap)paramIntent.getParcelableExtra("bitmap");
-          if (!"action_decode_finish".equals(paramContext)) {
-            break;
-          }
-          if ((this.a.jdField_a_of_type_Ofa != null) && (!TextUtils.isEmpty((CharSequence)localObject)) && (localBitmap != null)) {
-            this.a.jdField_a_of_type_Ofa.a((String)localObject, localBitmap);
-          }
-        } while (this.a.jdField_a_of_type_Ofi == null);
-        this.a.jdField_a_of_type_Ofi.a((String)localObject);
-        return;
-      } while (!"action_on_shop_msg_receive".equals(paramContext));
-      this.a.jdField_a_of_type_JavaUtilList = paramIntent.getParcelableArrayListExtra("datas");
-      paramContext = this.a.getActivity();
-      if ((paramContext instanceof EcshopWebActivity)) {
-        ((EcshopWebActivity)paramContext).jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_JavaUtilList;
-      }
-      paramContext = paramIntent.getStringExtra("uin");
-      paramIntent = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramIntent.hasNext())
-      {
-        localObject = (RecentShopParcel)paramIntent.next();
-        if ((!TextUtils.isEmpty(((RecentShopParcel)localObject).a)) && (((RecentShopParcel)localObject).a.equals(paramContext))) {
-          ((RecentShopParcel)localObject).b += 1;
+          this.jdField_b_of_type_Boolean = true;
+          return this;
         }
       }
-    } while ((this.a.b != 1) || (this.a.jdField_a_of_type_Ofi == null));
-    this.a.jdField_a_of_type_Ofi.a(this.a.jdField_a_of_type_JavaUtilList);
+      catch (Exception paramofn)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PublicAccountCenterUrlConfProcessor", 2, "checkPublicAccountCenterUrlConfigData error", paramofn);
+        }
+        paramofn.printStackTrace();
+      }
+    }
+    return this;
+  }
+  
+  public static ofn a(aptx[] paramArrayOfaptx)
+  {
+    Object localObject = new ofn();
+    int i = 0;
+    String str;
+    for (;;)
+    {
+      if (i >= paramArrayOfaptx.length) {
+        return localObject;
+      }
+      str = paramArrayOfaptx[i].jdField_a_of_type_JavaLangString;
+      try
+      {
+        ofn localofn = ((ofn)localObject).a((ofn)apul.a(str, ofn.class), str);
+        localObject = localofn;
+      }
+      catch (QStorageInstantiateException localQStorageInstantiateException)
+      {
+        for (;;)
+        {
+          QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + str, localQStorageInstantiateException);
+        }
+      }
+      i += 1;
+    }
+    return localObject;
+  }
+  
+  public void a()
+  {
+    uex.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    uex.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    uex.c = this.c;
+    uex.d = this.jdField_a_of_type_Boolean;
+  }
+  
+  public void a(String paramString)
+  {
+    boolean bool3 = true;
+    for (;;)
+    {
+      boolean bool2;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        String str1 = paramString.getString("pacenter_url");
+        String str2 = paramString.getString("pacategory_url");
+        if (!uex.a(str1)) {
+          break label156;
+        }
+        this.jdField_a_of_type_JavaLangString = str1;
+        bool1 = true;
+        if (uex.a(str2))
+        {
+          this.jdField_b_of_type_JavaLangString = str2;
+          bool1 = true;
+        }
+        bool2 = bool1;
+        if (paramString.has("readinjoy_search_url"))
+        {
+          str1 = paramString.getString("readinjoy_search_url");
+          bool2 = bool1;
+          if (uex.a(str1))
+          {
+            this.c = str1;
+            bool2 = true;
+          }
+        }
+        if (paramString.has("image_collection_comment"))
+        {
+          this.jdField_a_of_type_Boolean = paramString.getBoolean("image_collection_comment");
+          bool1 = bool3;
+          this.jdField_b_of_type_Boolean = bool1;
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PublicAccountCenterUrlConfProcessor", 2, "checkPublicAccountCenterUrlConfigData error", paramString);
+        }
+        paramString.printStackTrace();
+        this.jdField_b_of_type_Boolean = false;
+        return;
+      }
+      boolean bool1 = bool2;
+      continue;
+      label156:
+      bool1 = false;
+    }
+  }
+  
+  public void b()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      uex.c((QQAppInterface)localAppRuntime);
+    }
   }
 }
 

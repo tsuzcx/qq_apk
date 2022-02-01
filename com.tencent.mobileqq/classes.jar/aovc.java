@@ -1,41 +1,12 @@
-public class aovc
-  implements aouy
+import java.io.File;
+import java.io.FileFilter;
+
+public final class aovc
+  implements FileFilter
 {
-  public void a(aocj paramaocj, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, aock paramaock)
+  public boolean accept(File paramFile)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 6008: 
-      paramaocj.l(paramBoolean);
-      return;
-    case 8015: 
-      paramaocj.h(paramBoolean, paramObject);
-      return;
-    case 6014: 
-      paramaocj.d(paramArrayOfObject);
-      return;
-    case 6016: 
-      paramaocj.e(paramArrayOfObject);
-      return;
-    case 8003: 
-      paramaocj.m(paramBoolean, paramObject);
-      return;
-    case 8011: 
-      paramaocj.n(paramBoolean, paramObject);
-      return;
-    case 8004: 
-      paramaocj.o(paramBoolean, paramObject);
-      return;
-    case 8007: 
-      paramaocj.j(paramBoolean, paramArrayOfObject);
-      return;
-    case 8013: 
-      paramaocj.k(paramBoolean, paramArrayOfObject);
-      return;
-    }
-    paramaocj.a((Long[])paramObject);
+    return (paramFile.getName().startsWith("hc_")) || (paramFile.getName().startsWith(".hc_"));
   }
 }
 

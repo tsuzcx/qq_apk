@@ -1,84 +1,72 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bgmt
-  implements blih
+  extends RemoteCommand
 {
-  int jdField_a_of_type_Int = 0;
-  
-  public bgmt(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
-  
-  private int a(AbsListView paramAbsListView)
+  public bgmt()
   {
-    int i = 0;
-    View localView = paramAbsListView.getChildAt(0);
-    if (localView == null) {
-      return 0;
-    }
-    int j = paramAbsListView.getFirstVisiblePosition();
-    int k = localView.getTop();
-    if (j >= 1) {
-      i = paramAbsListView.getHeight();
-    }
-    k = -k;
-    return i + (localView.getHeight() * j + k);
+    super("running_plugin_cmd");
   }
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    if ((VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment) == null) || (VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).a().size() == 0)) {
-      return;
-    }
-    paramInt1 = a(paramAbsListView);
-    VisitorTroopCardFragment localVisitorTroopCardFragment = null;
-    if ((paramInt1 > this.jdField_a_of_type_Int) && (paramInt1 >= this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.getVisibility() != 0))
+    paramOnInvokeFinishLinstener = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramOnInvokeFinishLinstener != null) && ((paramOnInvokeFinishLinstener instanceof QQAppInterface))) {}
+    for (paramOnInvokeFinishLinstener = (QQAppInterface)paramOnInvokeFinishLinstener;; paramOnInvokeFinishLinstener = null)
     {
-      paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
-      if ((paramAbsListView != null) && (paramAbsListView != this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_AndroidWidgetRelativeLayout.getAnimation()))
+      switch (paramBundle.getInt("CommondType"))
       {
-        paramAbsListView.reset();
-        this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(paramAbsListView);
-        this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.startAnimation(paramAbsListView);
-        localVisitorTroopCardFragment = this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment;
-        if (paramAbsListView != this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_AndroidViewAnimationAlphaAnimation) {
-          break label215;
-        }
       }
-    }
-    label215:
-    for (boolean bool = true;; bool = false)
-    {
-      VisitorTroopCardFragment.a(localVisitorTroopCardFragment, bool);
-      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment);
-      this.jdField_a_of_type_Int = paramInt1;
-      return;
-      paramAbsListView = localVisitorTroopCardFragment;
-      if (paramInt1 >= this.jdField_a_of_type_Int) {
-        break;
-      }
-      paramAbsListView = localVisitorTroopCardFragment;
-      if (paramInt1 > this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_Int) {
-        break;
-      }
-      paramAbsListView = localVisitorTroopCardFragment;
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.getVisibility() != 0) {
-        break;
-      }
-      paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.b;
-      break;
-    }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) && (VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment) != null) && (VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).c)) {
-      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment, paramAbsListView);
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return null;
+              if (paramOnInvokeFinishLinstener == null) {
+                break;
+              }
+              paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.getHandler(Conversation.class);
+            } while (paramOnInvokeFinishLinstener == null);
+            try
+            {
+              Message localMessage = paramOnInvokeFinishLinstener.obtainMessage(1134043);
+              long l = paramBundle.getLong("runningState");
+              paramBundle = paramBundle.getString("cookieUrl");
+              JSONObject localJSONObject = new JSONObject();
+              localJSONObject.put("runningState", l);
+              localJSONObject.put("cookieUrl", paramBundle);
+              localMessage.obj = localJSONObject;
+              paramOnInvokeFinishLinstener.sendMessage(localMessage);
+              return null;
+            }
+            catch (JSONException paramBundle)
+            {
+              return null;
+            }
+          } while (!QLog.isColorLevel());
+          QLog.e("SportRemoteCommond", 2, "showRunningBar null");
+          return null;
+        } while (paramOnInvokeFinishLinstener == null);
+        paramBundle = paramOnInvokeFinishLinstener.getHandler(Conversation.class);
+      } while (paramBundle == null);
+      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134044), 1000L);
+      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134040), 1000L);
+      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134050), 1000L);
+      return null;
     }
   }
 }

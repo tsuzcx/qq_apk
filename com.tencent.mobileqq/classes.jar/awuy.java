@@ -1,6 +1,16 @@
-public abstract interface awuy
+import android.text.TextUtils;
+
+class awuy
+  extends awpd
 {
-  public abstract void a();
+  awuy(awur paramawur) {}
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(awur.b(this.a) + ""))) {
+      this.a.h(paramBoolean);
+    }
+  }
 }
 
 

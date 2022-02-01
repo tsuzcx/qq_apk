@@ -1,58 +1,102 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.16.1;
-import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class amem
-  extends Handler
 {
-  public amem(SelectMemberActivity paramSelectMemberActivity, Looper paramLooper)
+  public int a;
+  public long a;
+  public String a;
+  public final HashMap<Integer, ameo> a;
+  public final List<ameo> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public List<amen> b;
+  public long c;
+  public String c;
+  public List<amen> c;
+  public String d;
+  public String e;
+  
+  public amem()
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void handleMessage(Message paramMessage)
+  public static String a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
+    if (paramInt > 999999) {
+      return String.valueOf(999999) + "+";
     }
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.a.b == null) || (!this.a.b.isShowing()));
-      this.a.b.dismiss();
-      paramMessage = new Intent();
-      paramMessage.putExtra("select_member_add_request_ok", true);
-      this.a.setResult(-1, paramMessage);
-      if (!TextUtils.isEmpty(this.a.g))
-      {
-        paramMessage = this.a.g;
-        QQToast.a(this.a, 2, paramMessage, 1500).b(this.a.getTitleBarHeight());
-        postDelayed(new SelectMemberActivity.16.1(this), 1500L);
-        return;
-      }
-      if (this.a.c) {}
-      for (int i = 2131693137;; i = 2131693136)
-      {
-        paramMessage = this.a.getResources().getString(i);
-        break;
-      }
-    } while ((this.a.b == null) || (!this.a.b.isShowing()));
-    this.a.b.dismiss();
-    String str = (String)paramMessage.obj;
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131693135);
+    return String.valueOf(paramInt);
+  }
+  
+  public static String b(int paramInt)
+  {
+    if (paramInt > 99999) {
+      return String.valueOf(99999) + "+";
     }
-    QQToast.a(this.a, 1, paramMessage, 1500).b(this.a.getTitleBarHeight());
+    return String.valueOf(paramInt);
+  }
+  
+  public static String c(int paramInt)
+  {
+    if (paramInt > 9999) {
+      return String.valueOf(9999) + "+";
+    }
+    return String.valueOf(paramInt);
+  }
+  
+  public void a()
+  {
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.isEmpty())) {
+      return;
+    }
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    label40:
+    amen localamen;
+    ameo localameo;
+    for (;;)
+    {
+      if (localIterator.hasNext())
+      {
+        localamen = (amen)localIterator.next();
+        if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(String.valueOf(localamen.jdField_a_of_type_Long))))
+        {
+          if (localamen.jdField_a_of_type_Short > 4) {
+            break label165;
+          }
+          localameo = (ameo)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3));
+          if (localameo != null)
+          {
+            localameo.c += 1;
+            this.jdField_b_of_type_Int += 1;
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      if (this.c == null) {
+        this.c = new ArrayList();
+      }
+      this.c.add(localamen);
+      break label40;
+      break;
+      label165:
+      localameo = (ameo)this.jdField_a_of_type_JavaUtilHashMap.get(Short.valueOf(localamen.jdField_a_of_type_Short));
+      if (localameo != null)
+      {
+        localameo.c += localamen.f;
+        this.jdField_b_of_type_Int += localamen.f;
+      }
+    }
   }
 }
 

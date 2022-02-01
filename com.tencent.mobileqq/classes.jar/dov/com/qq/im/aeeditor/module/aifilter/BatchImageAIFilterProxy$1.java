@@ -1,20 +1,20 @@
 package dov.com.qq.im.aeeditor.module.aifilter;
 
 import android.content.Context;
-import bpeu;
-import bpex;
-import bpfa;
+import bmgg;
+import bmgj;
+import bmgm;
 import java.util.List;
 
 public class BatchImageAIFilterProxy$1
   implements Runnable
 {
-  public BatchImageAIFilterProxy$1(bpfa parambpfa, List paramList, Context paramContext, bpex parambpex) {}
+  public BatchImageAIFilterProxy$1(bmgm parambmgm, List paramList, Context paramContext, bmgj parambmgj) {}
   
   public void run()
   {
-    this.this$0.b = bpeu.a(this.jdField_a_of_type_JavaUtilList, bpfa.a(this.this$0));
-    this.this$0.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.b, this.jdField_a_of_type_Bpex);
+    this.this$0.b = bmgg.a(this.jdField_a_of_type_JavaUtilList, bmgm.a(this.this$0));
+    this.this$0.a(this.jdField_a_of_type_AndroidContentContext, this.this$0.b, this.jdField_a_of_type_Bmgj);
   }
 }
 

@@ -1,27 +1,27 @@
 package com.tencent.biz.subscribe.utils;
 
-import aand;
-import acwb;
-import acwc;
-import acwd;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
 import com.tencent.qphone.base.util.BaseApplication;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
+import zjy;
 
 public class SubscribeAdDeviceInfoHelper$1
   implements Runnable
 {
-  public SubscribeAdDeviceInfoHelper$1(aand paramaand) {}
+  public SubscribeAdDeviceInfoHelper$1(zjy paramzjy) {}
   
   public void run()
   {
-    Object localObject = new acwc();
-    ((acwc)localObject).a = "1b0ad2";
-    localObject = acwb.a(BaseApplication.getContext(), (acwc)localObject);
-    aand localaand = this.this$0;
+    Object localObject = new GdtDeviceInfoHelper.Params();
+    ((GdtDeviceInfoHelper.Params)localObject).businessIdForAidTicketAndTaidTicket = "1b0ad2";
+    localObject = GdtDeviceInfoHelper.create(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject);
+    zjy localzjy = this.this$0;
     if (localObject != null) {}
-    for (localObject = ((acwd)localObject).a;; localObject = null)
+    for (localObject = ((GdtDeviceInfoHelper.Result)localObject).deviceInfo;; localObject = null)
     {
-      aand.a(localaand, (qq_ad_get.QQAdGet.DeviceInfo)localObject);
+      zjy.a(localzjy, (qq_ad_get.QQAdGet.DeviceInfo)localObject);
       return;
     }
   }

@@ -1,6 +1,15 @@
-public abstract interface ayrx
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class ayrx
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  ayrx(ayrw paramayrw) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

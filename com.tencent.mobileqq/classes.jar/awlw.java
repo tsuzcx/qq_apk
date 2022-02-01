@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.21.1.1;
+import java.util.List;
 
 public class awlw
-  implements DialogInterface.OnDismissListener
+  implements awne
 {
-  public awlw(ListenTogetherManager paramListenTogetherManager) {}
+  awlw(awlv paramawlv) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(List<awnf> paramList, boolean paramBoolean)
   {
-    this.a.b();
+    this.a.a.b = paramList;
+    this.a.a.g = paramBoolean;
+    this.a.a.runOnUiThread(new GameRoomInviteActivity.21.1.1(this, paramList, paramBoolean));
   }
 }
 

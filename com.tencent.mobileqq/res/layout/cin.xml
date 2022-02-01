@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/jo9" android:layout_width="fill_parent" android:layout_height="@dimen/b8m" layout="@layout/ap9" />
-    <WebView android:id="@id/o1t" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:id="@id/lto" android:clipChildren="false" android:layout_width="77.0dip" android:layout_height="wrap_content">
+        <com.tencent.widget.ThemeImageView android:layout_gravity="center_horizontal" android:id="@id/exe" android:layout_width="48.0dip" android:layout_height="48.0dip" android:foreground="@drawable/av4" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff666666" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/exf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:maxEms="4" android:singleLine="true" />
+    </LinearLayout>
 </LinearLayout>

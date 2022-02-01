@@ -1,6 +1,6 @@
 package com.tencent.intervideo.nowproxy.proxyinner.channel;
 
-import adjt;
+import acgn;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,7 +9,7 @@ import android.os.Parcelable.Creator;
 public class FromService
   implements Parcelable
 {
-  public static final Parcelable.Creator<FromService> CREATOR = new adjt();
+  public static final Parcelable.Creator<FromService> CREATOR = new acgn();
   public int a;
   public Bundle a;
   public int b;

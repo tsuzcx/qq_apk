@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
+import amtj;
 import android.content.Intent;
 import android.text.TextUtils;
-import anzj;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
@@ -57,7 +57,7 @@ public class GroupPlugin
       gotoSelectMembers(paramInt, paramString2, localBaseActivity, paramString1);
       return;
     }
-    localJSContext.evaluateCallback(false, new JSONObject(), anzj.a(2131704254));
+    localJSContext.evaluateCallback(false, new JSONObject(), amtj.a(2131704484));
   }
   
   public void onDestroy()
@@ -102,7 +102,7 @@ public class GroupPlugin
       int i;
       if ((TextUtils.isEmpty((CharSequence)localObject)) || (j < 1) || (j > 3))
       {
-        paramJSContext.evaluateCallback(false, new JSONObject(), anzj.a(2131704256));
+        paramJSContext.evaluateCallback(false, new JSONObject(), amtj.a(2131704486));
         return;
         if (!QLog.isColorLevel()) {
           break;
@@ -127,7 +127,7 @@ public class GroupPlugin
           gotoSelectMembers((String)localObject, i, paramJSONObject);
           return;
         }
-        paramJSContext.evaluateCallback(false, new JSONObject(), anzj.a(2131704255));
+        paramJSContext.evaluateCallback(false, new JSONObject(), amtj.a(2131704485));
         return;
         if (localJSONObject != null) {
           break label146;

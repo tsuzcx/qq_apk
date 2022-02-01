@@ -1,14 +1,24 @@
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.view.View.OnClickListener;
+import com.tencent.device.msg.activities.DeviceTipActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aavb
+  implements View.OnClickListener
 {
-  public View a;
-  public TextView a;
-  public aujx a;
-  public AsyncImageView a;
-  public TextView b;
+  public aavb(DeviceTipActivity paramDeviceTipActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!NetworkUtil.isNetworkAvailable(this.a)) {
+      QQToast.a(this.a, amtj.a(2131702362), 2000).a();
+    }
+    DeviceTipActivity.a(this.a, 2);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,17 +1,65 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wyk
-  extends DataSetObserver
+  extends QQUIEventReceiver<wyc, wky>
 {
-  wyk(wyd paramwyd) {}
-  
-  public void onChanged()
+  public wyk(@NonNull wyc paramwyc)
   {
-    if (this.a.a == 0) {
-      ThreadManager.getUIHandler().post(new MsgTabStoryNodeListManager.7.1(this));
+    super(paramwyc);
+  }
+  
+  public void a(@NonNull wyc paramwyc, @NonNull wky paramwky)
+  {
+    if (TextUtils.equals(String.valueOf(paramwyc.hashCode()), paramwky.jdField_a_of_type_JavaLangString)) {
+      b(paramwyc, paramwky);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wky.class;
+  }
+  
+  public void b(wyc paramwyc, wky paramwky)
+  {
+    paramwyc = ((StoryPlayerGroupHolder)paramwyc.a()).a();
+    if (paramwyc != null) {
+      paramwyc.c(false);
+    }
+    if (paramwky.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
+      return;
+    }
+    boolean bool = wkp.a(paramwky.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    switch (paramwky.jdField_a_of_type_Int)
+    {
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      QQToast.a(BaseApplicationImpl.getContext(), 1, amtj.a(2131700322), 0).a();
+      return;
+    case 2: 
+      if (bool) {}
+      for (paramwyc = "2";; paramwyc = "1")
+      {
+        xwa.a("play_video", "down_suc", 0, 0, new String[] { paramwyc, "", "", paramwky.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+        QQToast.a(BaseApplicationImpl.getContext(), 2, vpl.a(2131698868), 0).a();
+        return;
+      }
+    }
+    if (bool) {}
+    for (paramwyc = "2";; paramwyc = "1")
+    {
+      xwa.a("play_video", "down_fail", 0, 0, new String[] { paramwyc, "", "", paramwky.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      QQToast.a(BaseApplicationImpl.getContext(), 1, amtj.a(2131700323), 0).a();
+      return;
     }
   }
 }

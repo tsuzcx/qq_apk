@@ -1,20 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.RelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.ShortcutUtils.4;
 
-class bjga
-  implements ValueAnimator.AnimatorUpdateListener
+public class bjga
+  implements DialogInterface.OnClickListener
 {
-  bjga(bjfy parambjfy, float paramFloat1, float paramFloat2) {}
+  public bjga(ShortcutUtils.4 param4) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = paramValueAnimator.floatValue();
-    float f3 = this.b;
-    float f4 = this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_Bjfy.a.setAlpha(f2 * (f3 - f4) + f1);
+    QLog.e("Shortcut", 2, "confirm");
+    bjfx.a(this.a.a);
   }
 }
 

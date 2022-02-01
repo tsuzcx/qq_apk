@@ -1,23 +1,12 @@
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View;
+import java.io.File;
 
 public class bljk
-  implements ContextMenu.ContextMenuInfo
 {
-  public int a;
-  public long a;
-  public View a;
-  
-  public bljk(View paramView, int paramInt, long paramLong)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-  }
+  public static final String a = bljm.f + File.separator + "camera_story_default_template.json";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bljk
  * JD-Core Version:    0.7.0.1
  */

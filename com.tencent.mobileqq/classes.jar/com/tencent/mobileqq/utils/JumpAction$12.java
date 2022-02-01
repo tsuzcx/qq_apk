@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.utils;
 
-import bhmr;
+import bfvp;
 
 public class JumpAction$12
   implements Runnable
 {
-  public JumpAction$12(bhmr parambhmr) {}
+  public JumpAction$12(bfvp parambfvp) {}
   
   public void run()
   {
-    if (this.this$0.h) {
-      this.this$0.a(2131718692);
+    if (this.this$0.i) {
+      this.this$0.b(2131718940);
     }
   }
 }

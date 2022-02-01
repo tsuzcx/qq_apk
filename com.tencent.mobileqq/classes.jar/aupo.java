@@ -1,13 +1,11 @@
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
-
-public class aupo
-  implements bjhv
+class aupo
+  implements aupx
 {
-  public aupo(QfileEditBottomBar paramQfileEditBottomBar) {}
+  aupo(aupc paramaupc, aurf paramaurf) {}
   
-  public void a(int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    QfileEditBottomBar.a(this.a);
+    this.jdField_a_of_type_Aurf.a(paramInt, paramString);
   }
 }
 

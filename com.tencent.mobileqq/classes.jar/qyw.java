@@ -1,64 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.ContentBannerItem;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class qyw
-  extends qyu
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/RIJAidlClient;", "", "()V", "TAG", "", "<set-?>", "Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IRIJAidlInterface;", "rijAidlInterface", "getRijAidlInterface", "()Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IRIJAidlInterface;", "rijServiceConnection", "Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/RIJAidlClient$RIJServiceConnection;", "bindService", "", "context", "Landroid/content/Context;", "getInstance", "unbindService", "RIJServiceConnection", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qyw
 {
-  public String f;
+  @Nullable
+  private static qyn jdField_a_of_type_Qyn;
+  public static final qyw a;
+  private static final qyx jdField_a_of_type_Qyx = new qyx();
   
-  public qyw(int paramInt)
+  static
   {
-    super(paramInt);
+    jdField_a_of_type_Qyw = new qyw();
   }
   
-  public static qyu b(oidb_cmd0xbc9.BannerItem paramBannerItem)
+  @JvmStatic
+  @NotNull
+  public static final qyw a()
   {
-    if (!paramBannerItem.msg_article_content_item.has()) {
-      return null;
-    }
-    oidb_cmd0xbc9.ContentBannerItem localContentBannerItem = paramBannerItem.msg_article_content_item;
-    if (paramBannerItem.uint32_banner_type.has()) {}
-    for (qyw localqyw = new qyw(paramBannerItem.uint32_banner_type.get());; localqyw = new qyw(4))
+    return jdField_a_of_type_Qyw;
+  }
+  
+  @Nullable
+  public final qyn a()
+  {
+    return jdField_a_of_type_Qyn;
+  }
+  
+  public final void a(@NotNull Context paramContext)
+  {
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    try
     {
-      if (localContentBannerItem.bytes_image_url.has()) {
-        localqyw.c = localContentBannerItem.bytes_image_url.get().toStringUtf8();
-      }
-      if (localContentBannerItem.bytes_link_url.has()) {
-        localqyw.f = localContentBannerItem.bytes_link_url.get().toStringUtf8();
-      }
-      if (localContentBannerItem.bytes_rowkey.has()) {
-        localqyw.e = localContentBannerItem.bytes_rowkey.get().toStringUtf8();
-      }
-      a(localqyw, paramBannerItem);
-      a(paramBannerItem, localqyw);
-      return localqyw;
+      paramContext.bindService(new Intent(paramContext, KandianVideoUploadService.class), (ServiceConnection)jdField_a_of_type_Qyx, 1);
+      return;
     }
-  }
-  
-  public oidb_cmd0xbc9.BannerItem a()
-  {
-    oidb_cmd0xbc9.BannerItem localBannerItem = super.a();
-    oidb_cmd0xbc9.ContentBannerItem localContentBannerItem = new oidb_cmd0xbc9.ContentBannerItem();
-    if (!TextUtils.isEmpty(this.c)) {
-      localContentBannerItem.bytes_image_url.set(ByteStringMicro.copyFromUtf8(this.c));
+    catch (Exception paramContext)
+    {
+      QLog.e("RIJAidlClient", 1, QLog.getStackTraceString((Throwable)paramContext));
     }
-    if (!TextUtils.isEmpty(this.f)) {
-      localContentBannerItem.bytes_link_url.set(ByteStringMicro.copyFromUtf8(this.f));
-    }
-    if (!TextUtils.isEmpty(this.e)) {
-      localContentBannerItem.bytes_rowkey.set(ByteStringMicro.copyFromUtf8(this.e));
-    }
-    localBannerItem.msg_article_content_item.set(localContentBannerItem);
-    return localBannerItem;
-  }
-  
-  public String toString()
-  {
-    return " jump: " + this.f;
   }
 }
 

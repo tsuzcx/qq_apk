@@ -1,12 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class vzj
-  implements DialogInterface.OnClickListener
+public class vzj
+  extends QQUIEventReceiver<vzf, vuc>
 {
-  vzj(vzh paramvzh) {}
+  public vzj(@NonNull vzf paramvzf)
+  {
+    super(paramvzf);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(@NonNull vzf paramvzf, @NonNull vuc paramvuc)
+  {
+    paramvzf.a.b(paramvuc);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vuc.class;
+  }
 }
 
 

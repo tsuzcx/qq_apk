@@ -1,14 +1,20 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.appstore.component.CommonTitleBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class bhyf
+  implements View.OnClickListener
 {
-  public static int b = 2;
-  public static int c = 1;
-  public int a;
-  public bhyc a;
-  public String a;
-  public bhyc b;
-  public bhyc c;
-  public int d;
-  public int e;
+  public bhyf(CommonTitleBar paramCommonTitleBar) {}
+  
+  public void onClick(View paramView)
+  {
+    if (CommonTitleBar.a(this.a) != null) {
+      CommonTitleBar.a(this.a).a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

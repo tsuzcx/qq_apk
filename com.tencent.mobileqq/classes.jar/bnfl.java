@@ -1,13 +1,8 @@
-import java.io.File;
-import java.io.FileFilter;
-
-final class bnfl
-  implements FileFilter
+public abstract interface bnfl
 {
-  public boolean accept(File paramFile)
-  {
-    return paramFile.getName().endsWith(".cfg");
-  }
+  public abstract void b();
+  
+  public abstract void k();
 }
 
 

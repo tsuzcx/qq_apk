@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.apollo.script;
 
-import anfs;
-import anfx;
-import anga;
+import amam;
+import amar;
+import amau;
 
 public class SpriteBridge$2
   implements Runnable
 {
-  public SpriteBridge$2(anfx paramanfx, anfs paramanfs, anga paramanga) {}
+  public SpriteBridge$2(amar paramamar, amam paramamam, amau paramamau) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Anfs != null) && (this.jdField_a_of_type_Anga != null))
+    if ((this.jdField_a_of_type_Amam != null) && (this.jdField_a_of_type_Amau != null))
     {
-      this.jdField_a_of_type_Anfs.a(this.jdField_a_of_type_Anga.b, false);
-      this.jdField_a_of_type_Anfs.a(this.jdField_a_of_type_Anga.a, false);
+      this.jdField_a_of_type_Amam.a(this.jdField_a_of_type_Amau.b, false);
+      this.jdField_a_of_type_Amam.a(this.jdField_a_of_type_Amau.a, false);
     }
   }
 }

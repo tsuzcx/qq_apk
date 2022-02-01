@@ -1,24 +1,18 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ufo
-  implements TextView.OnEditorActionListener
+  implements View.OnClickListener
 {
-  ufo(ufj paramufj) {}
+  ufo(ufd paramufd, int paramInt1, int paramInt2, String paramString) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    case 5: 
-    default: 
-      return false;
-    }
-    if (ufj.a(this.a) != null) {
-      ufj.a(this.a).a();
-    }
-    return true;
+    this.jdField_a_of_type_Ufd.a(this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Ufd.o = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Ufd.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

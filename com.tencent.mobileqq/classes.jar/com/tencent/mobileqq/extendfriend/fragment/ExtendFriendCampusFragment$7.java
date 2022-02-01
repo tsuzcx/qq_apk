@@ -9,12 +9,12 @@ class ExtendFriendCampusFragment$7
   
   public void run()
   {
-    ExtendFriendCampusFragment.a(this.this$0).l();
+    ExtendFriendCampusFragment.a(this.this$0).scrollToTop();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.fragment.ExtendFriendCampusFragment.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,148 +1,196 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import android.content.Context;
+import com.tencent.commonsdk.soload.SoLoadUtilNew;
+import com.tencent.mobileqq.utils.AmrInputStreamWrapper;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
 
 public class bfwy
 {
-  protected int a;
-  protected long a;
-  aavm a;
-  protected Map<UUID, TroopFileTransferManager.Item> a;
-  protected Map<UUID, Integer> b = new HashMap();
+  private static boolean jdField_a_of_type_Boolean;
+  private int jdField_a_of_type_Int = 14;
+  private long jdField_a_of_type_Long;
+  private byte[] jdField_a_of_type_ArrayOfByte = new byte[320];
+  private int jdField_b_of_type_Int = 1;
+  private long jdField_b_of_type_Long;
+  private byte[] jdField_b_of_type_ArrayOfByte;
+  private int jdField_c_of_type_Int;
+  private byte[] jdField_c_of_type_ArrayOfByte = new byte[320];
+  private int jdField_d_of_type_Int;
+  private byte[] jdField_d_of_type_ArrayOfByte = new byte[10240];
   
-  protected bfwy(long paramLong, List<TroopFileTransferManager.Item> paramList, int paramInt)
+  public bfwy(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_Aavm = new bfwz(this);
-    this.jdField_a_of_type_Long = paramLong;
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      TroopFileTransferManager.Item localItem = (TroopFileTransferManager.Item)paramList.next();
-      this.jdField_a_of_type_JavaUtilMap.put(localItem.Id, localItem);
-    }
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static bfwy a(long paramLong, List<TroopFileTransferManager.Item> paramList)
-  {
-    if (paramLong == 0L)
-    {
-      bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. troopuin=0");
-      return null;
-    }
-    if (paramList == null)
-    {
-      bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "getTroop2WeiyunForwarder. item=null");
-      return null;
-    }
-    return new bfwy(paramLong, paramList, 1);
-  }
-  
-  private final void a(TroopFileTransferManager.Item paramItem, boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
-  {
-    if (!paramBoolean) {}
+    if (!jdField_a_of_type_Boolean) {}
     try
     {
-      bnyz.a(-1);
-      this.b.put(paramItem.Id, Integer.valueOf(-1));
-      bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "[" + paramItem.Id.toString() + "] onRspMultiCopyToWeiyun fail. isSuc:" + paramBoolean);
-      return;
-    }
-    finally {}
-    bfvr.c("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "[" + paramItem.Id.toString() + "] onRspMultiCopyToWeiyun retCode:" + paramInt1);
-    bnyz.a(paramInt1);
-    if (paramInt1 == 0)
-    {
-      this.b.remove(paramItem.Id);
-      if (this.b.size() != 0) {
-        break label212;
-      }
-      paramString1 = new bgrk(paramItem.FileName, this.jdField_a_of_type_Long, 5, 604);
-      bfva.a(this.jdField_a_of_type_Long, paramItem, 5, paramString1);
-    }
-    label316:
-    for (;;)
-    {
-      return;
-      this.b.put(paramItem.Id, Integer.valueOf(paramInt1));
-      break;
-      label212:
-      paramString1 = this.b.keySet().iterator();
-      do
+      bool = SoLoadUtilNew.loadSoByName(paramContext, "amrnb");
+      if (bool)
       {
-        if (!paramString1.hasNext()) {
-          break;
+        jdField_a_of_type_Boolean = true;
+        this.jdField_b_of_type_Int = paramInt;
+        this.jdField_a_of_type_Int = bftl.a(paramInt);
+        this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
+        this.jdField_a_of_type_Long = AmrInputStreamWrapper.CreateEncoder();
+        this.jdField_b_of_type_Long = AmrInputStreamWrapper.GsmAmrEncoderNew(this.jdField_a_of_type_Long);
+        AmrInputStreamWrapper.GsmAmrEncoderInitialize(this.jdField_b_of_type_Long);
+        return;
+      }
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Pcm2AmrWrapper", 2, "libamrnb.so load failed, exception info : " + QLog.getStackTraceString(paramContext));
         }
-        paramString2 = (UUID)paramString1.next();
-      } while (((Integer)this.b.get(paramString2)).intValue() != 2147483647);
-      for (paramInt1 = 0;; paramInt1 = 1)
-      {
-        if (paramInt1 == 0) {
-          break label316;
-        }
-        paramString1 = new bgrk(paramItem.FileName, this.jdField_a_of_type_Long, 5, 605);
-        bfva.a(this.jdField_a_of_type_Long, paramItem, 5, paramString1);
-        break;
-      }
-    }
-  }
-  
-  private int b()
-  {
-    QQAppInterface localQQAppInterface = bfvp.a();
-    if (localQQAppInterface == null)
-    {
-      bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "multiTroop2weiyun app=null");
-      return -1;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      TroopFileTransferManager.Item localItem = (TroopFileTransferManager.Item)localIterator.next();
-      if (localItem.Id == null)
-      {
-        bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "multiTroop2weiyun. item.id=null");
-      }
-      else if (localItem.ForwardTroopuin == 0L)
-      {
-        bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "multiTroop2weiyun. ForwardTroopuin=0");
-      }
-      else if (localItem.BusId != 25)
-      {
-        bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "multiTroop2weiyun. BusId err:" + localItem.BusId);
-      }
-      else if (TextUtils.isEmpty(localItem.ForwardPath))
-      {
-        bfvr.a("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "multiTroop2weiyun. ForwardPath=null");
-      }
-      else
-      {
-        bfvr.c("TroopFileFromTroopForwarder", bfvr.jdField_a_of_type_Int, "[" + localItem.Id.toString() + "] multiTroop2weiyun. BusId:" + localItem.BusId + " ForwardBusId:" + localItem.ForwardBusId + " ForwardPath:" + localItem.ForwardPath);
+        boolean bool = false;
+        continue;
         try
         {
-          this.b.put(localItem.Id, Integer.valueOf(2147483647));
-          aauw.a(localQQAppInterface, true, this.jdField_a_of_type_Long, localItem, localQQAppInterface.getLongAccountUin(), 0L, this.jdField_a_of_type_Aavm);
+          System.loadLibrary("amrnb");
+          jdField_a_of_type_Boolean = true;
         }
-        finally {}
+        catch (UnsatisfiedLinkError paramContext) {}
+        if (QLog.isColorLevel()) {
+          QLog.e("Pcm2AmrWrapper", 2, "libamrnb.so load system way failed, exception info : " + QLog.getStackTraceString(paramContext));
+        }
       }
     }
-    return 0;
   }
   
-  public int a()
+  private void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if (1 == this.jdField_a_of_type_Int) {
-      return b();
+    if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_b_of_type_Long == 0L)) {
+      throw new IllegalStateException("not open");
     }
-    return -1;
+    if (AmrInputStreamWrapper.GsmAmrEncoderEncode(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_Int, paramArrayOfByte1, 0, paramArrayOfByte2, 0) < 0) {
+      b();
+    }
+  }
+  
+  /* Error */
+  public void a()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 62	bfwy:jdField_b_of_type_Long	J
+    //   4: lconst_0
+    //   5: lcmp
+    //   6: ifeq +14 -> 20
+    //   9: aload_0
+    //   10: getfield 56	bfwy:jdField_a_of_type_Long	J
+    //   13: aload_0
+    //   14: getfield 62	bfwy:jdField_b_of_type_Long	J
+    //   17: invokestatic 121	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrEncoderCleanup	(JJ)V
+    //   20: aload_0
+    //   21: getfield 62	bfwy:jdField_b_of_type_Long	J
+    //   24: lconst_0
+    //   25: lcmp
+    //   26: ifeq +14 -> 40
+    //   29: aload_0
+    //   30: getfield 56	bfwy:jdField_a_of_type_Long	J
+    //   33: aload_0
+    //   34: getfield 62	bfwy:jdField_b_of_type_Long	J
+    //   37: invokestatic 124	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrEncoderDelete	(JJ)V
+    //   40: aload_0
+    //   41: lconst_0
+    //   42: putfield 62	bfwy:jdField_b_of_type_Long	J
+    //   45: aload_0
+    //   46: invokevirtual 117	bfwy:b	()V
+    //   49: return
+    //   50: astore_1
+    //   51: aload_0
+    //   52: lconst_0
+    //   53: putfield 62	bfwy:jdField_b_of_type_Long	J
+    //   56: aload_1
+    //   57: athrow
+    //   58: astore_1
+    //   59: aload_0
+    //   60: getfield 62	bfwy:jdField_b_of_type_Long	J
+    //   63: lconst_0
+    //   64: lcmp
+    //   65: ifeq +14 -> 79
+    //   68: aload_0
+    //   69: getfield 56	bfwy:jdField_a_of_type_Long	J
+    //   72: aload_0
+    //   73: getfield 62	bfwy:jdField_b_of_type_Long	J
+    //   76: invokestatic 124	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrEncoderDelete	(JJ)V
+    //   79: aload_0
+    //   80: lconst_0
+    //   81: putfield 62	bfwy:jdField_b_of_type_Long	J
+    //   84: aload_1
+    //   85: athrow
+    //   86: astore_1
+    //   87: aload_0
+    //   88: lconst_0
+    //   89: putfield 62	bfwy:jdField_b_of_type_Long	J
+    //   92: aload_1
+    //   93: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	94	0	this	bfwy
+    //   50	7	1	localObject1	Object
+    //   58	27	1	localObject2	Object
+    //   86	7	1	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   20	40	50	finally
+    //   0	20	58	finally
+    //   59	79	86	finally
+  }
+  
+  public byte[] a(byte[] paramArrayOfByte, int paramInt)
+  {
+    if (this.jdField_c_of_type_Int + paramInt > 10240) {
+      this.jdField_d_of_type_ArrayOfByte = new byte[this.jdField_c_of_type_Int + paramInt];
+    }
+    if (this.jdField_c_of_type_Int + paramInt < 320)
+    {
+      System.arraycopy(paramArrayOfByte, 0, this.jdField_c_of_type_ArrayOfByte, this.jdField_c_of_type_Int, paramInt);
+      return null;
+    }
+    System.arraycopy(this.jdField_c_of_type_ArrayOfByte, 0, this.jdField_d_of_type_ArrayOfByte, 0, this.jdField_c_of_type_Int);
+    System.arraycopy(paramArrayOfByte, 0, this.jdField_d_of_type_ArrayOfByte, this.jdField_c_of_type_Int, paramInt);
+    this.jdField_d_of_type_Int = (this.jdField_c_of_type_Int + paramInt);
+    paramInt = this.jdField_d_of_type_Int % 320;
+    this.jdField_c_of_type_Int = paramInt;
+    if (paramInt != 0) {
+      System.arraycopy(this.jdField_d_of_type_ArrayOfByte, this.jdField_d_of_type_Int - paramInt, this.jdField_c_of_type_ArrayOfByte, 0, paramInt);
+    }
+    paramArrayOfByte = new byte[this.jdField_d_of_type_Int / 320 * this.jdField_a_of_type_Int];
+    int i = 0;
+    paramInt = 0;
+    while (this.jdField_d_of_type_Int >= 320)
+    {
+      System.arraycopy(this.jdField_d_of_type_ArrayOfByte, paramInt, this.jdField_a_of_type_ArrayOfByte, 0, 320);
+      try
+      {
+        a(this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte);
+        System.arraycopy(this.jdField_b_of_type_ArrayOfByte, 0, paramArrayOfByte, i, this.jdField_b_of_type_ArrayOfByte.length);
+        i += this.jdField_b_of_type_ArrayOfByte.length;
+        paramInt += 320;
+        this.jdField_d_of_type_Int -= 320;
+      }
+      catch (IOException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Pcm2AmrWrapper", 2, "========mPcm2Amr.pcm2amrParser==IOException=====", paramArrayOfByte);
+        }
+        b();
+        return null;
+      }
+    }
+    if (i == paramArrayOfByte.length) {
+      return paramArrayOfByte;
+    }
+    byte[] arrayOfByte = new byte[i];
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, i);
+    return arrayOfByte;
+  }
+  
+  public void b()
+  {
+    this.jdField_c_of_type_Int = 0;
   }
 }
 

@@ -1,17 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
 
 public class adrq
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adrq(AccountManageActivity paramAccountManageActivity) {}
+  public adrq(NearbyActivity paramNearbyActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.h();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 

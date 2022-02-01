@@ -8,23 +8,26 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bggn;
-import bggs;
-import bggv;
-import bhtq;
+import apub;
+import bepv;
+import beqa;
+import beqb;
+import beqd;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Collections;
 import java.util.List;
 
 public class TroopHonorView
   extends LinearLayout
 {
-  private static final int jdField_a_of_type_Int = bhtq.a(16.0F);
-  private static final int b = bhtq.a(16.0F);
-  private static final int c = bhtq.a(1.0F);
+  private static final int jdField_a_of_type_Int = ViewUtils.dip2px(16.0F);
+  private static final int b = ViewUtils.dip2px(16.0F);
+  private static final int c = ViewUtils.dip2px(1.0F);
   private String jdField_a_of_type_JavaLangString = "";
-  private List<bggs> jdField_a_of_type_JavaUtilList;
+  private List<beqa> jdField_a_of_type_JavaUtilList;
   
   public TroopHonorView(Context paramContext)
   {
@@ -47,17 +50,17 @@ public class TroopHonorView
     if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilList.size() * jdField_a_of_type_Int + (this.jdField_a_of_type_JavaUtilList.size() - 1) * jdField_a_of_type_Int + getPaddingLeft() + getPaddingRight();
+    return this.jdField_a_of_type_JavaUtilList.size() * jdField_a_of_type_Int + (this.jdField_a_of_type_JavaUtilList.size() - 1) * c + getPaddingLeft() + getPaddingRight();
   }
   
   public String a()
   {
-    return bggn.c(this.jdField_a_of_type_JavaUtilList);
+    return bepv.c(this.jdField_a_of_type_JavaUtilList);
   }
   
-  public void setHonorList(List<bggs> paramList)
+  public void setHonorList(List<beqa> paramList)
   {
-    if (this.jdField_a_of_type_JavaLangString.equals(bggn.b(paramList))) {}
+    if (this.jdField_a_of_type_JavaLangString.equals(bepv.b(paramList))) {}
     for (;;)
     {
       return;
@@ -65,7 +68,7 @@ public class TroopHonorView
         Collections.sort(paramList);
       }
       this.jdField_a_of_type_JavaUtilList = paramList;
-      this.jdField_a_of_type_JavaLangString = bggn.b(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_JavaLangString = bepv.b(this.jdField_a_of_type_JavaUtilList);
       removeAllViews();
       if ((paramList != null) && (paramList.size() > 0))
       {
@@ -73,17 +76,17 @@ public class TroopHonorView
         int k;
         for (int j = 0; i < paramList.size(); j = k)
         {
-          bggs localbggs = (bggs)paramList.get(i);
+          beqa localbeqa = (beqa)paramList.get(i);
           k = j;
-          if (!TextUtils.isEmpty(localbggs.b))
+          if (!TextUtils.isEmpty(localbeqa.b))
           {
             Object localObject = URLDrawable.URLDrawableOptions.obtain();
-            localObject = URLDrawable.getDrawable(localbggs.b, (URLDrawable.URLDrawableOptions)localObject);
+            localObject = URLDrawable.getDrawable(localbeqa.b, (URLDrawable.URLDrawableOptions)localObject);
             LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(jdField_a_of_type_Int, b);
             ImageView localImageView = new ImageView(getContext());
-            ((URLDrawable)localObject).setURLDrawableListener(new bggv(this, localImageView));
+            ((URLDrawable)localObject).setURLDrawableListener(new beqd(this, localImageView));
             localImageView.setImageDrawable((Drawable)localObject);
-            localImageView.setContentDescription(localbggs.jdField_a_of_type_JavaLangString);
+            localImageView.setContentDescription(localbeqa.jdField_a_of_type_JavaLangString);
             if (j != 0) {
               localLayoutParams.leftMargin = c;
             }
@@ -93,6 +96,44 @@ public class TroopHonorView
           i += 1;
         }
       }
+    }
+  }
+  
+  public void setHonorList(List<beqa> paramList, float paramFloat)
+  {
+    if (paramList == null) {
+      return;
+    }
+    int i = (int)((paramFloat - getPaddingLeft() - getPaddingRight() + c) / (jdField_a_of_type_Int + c));
+    Collections.sort(paramList);
+    setHonorList(paramList.subList(0, Math.min(i, paramList.size())));
+  }
+  
+  public void setHonorList(List<beqa> paramList, int paramInt)
+  {
+    if (paramList == null) {
+      return;
+    }
+    beqb localbeqb;
+    if ((paramInt == 1) || (paramInt == 2))
+    {
+      localbeqb = (beqb)apub.a().a(544);
+      if (localbeqb == null) {
+        break label114;
+      }
+    }
+    label114:
+    for (paramInt = localbeqb.jdField_a_of_type_Int;; paramInt = 3)
+    {
+      Collections.sort(paramList);
+      setHonorList(paramList.subList(0, Math.min(paramInt, paramList.size())));
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("TroopHonorView", 2, "maxNumberOfAIOIcon = " + paramInt + ",honorList.size = " + paramList.size());
+      return;
+      setHonorList(paramList);
+      return;
     }
   }
 }

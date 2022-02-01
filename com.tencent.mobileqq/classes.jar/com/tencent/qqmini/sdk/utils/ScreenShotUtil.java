@@ -59,26 +59,22 @@ public class ScreenShotUtil
     if ((paramBitmap == null) || (runtime == null)) {
       return false;
     }
-    int i = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    Object localObject = new NativeViewRequestEvent();
-    ((NativeViewRequestEvent)localObject).dispatchTarget = 3;
-    ((NativeViewRequestEvent)localObject).event = "getMenuButtonBoundingClientRect";
-    localObject = new JSONObject(getMenuButtonRect((NativeViewRequestEvent)localObject));
-    int n = ((JSONObject)localObject).optInt("top");
-    int i1 = (int)DisplayUtil.getDensity(runtime.getAttachedActivity());
-    int k = ((JSONObject)localObject).optInt("bottom");
-    int m = (int)DisplayUtil.getDensity(runtime.getAttachedActivity());
-    n = getImageRowRgb(paramBitmap, i, n * i1 + 5);
-    i1 = getImageRowRgb(paramBitmap, i, j / 2);
-    k = getImageRowRgb(paramBitmap, i, j - k * m - 5);
-    i = getImageColRgb(paramBitmap, i / 2, j);
-    if ((n != -1) && (n == i1) && (i1 == k) && (k == i))
+    int k = paramBitmap.getWidth();
+    int m = paramBitmap.getHeight();
+    NativeViewRequestEvent localNativeViewRequestEvent = new NativeViewRequestEvent();
+    localNativeViewRequestEvent.dispatchTarget = 3;
+    localNativeViewRequestEvent.event = "getMenuButtonBoundingClientRect";
+    int n = new JSONObject(getMenuButtonRect(localNativeViewRequestEvent)).optInt("bottom") * (int)DisplayUtil.getDensity(runtime.getAttachedActivity()) + DisplayUtil.getStatusBarHeight(runtime.getAttachedActivity());
+    int i = getImageRowRgb(paramBitmap, k, n + 5);
+    int j = getImageRowRgb(paramBitmap, k, m / 2);
+    n = getImageRowRgb(paramBitmap, k, m - n - 5);
+    k = getImageColRgb(paramBitmap, k / 2, m);
+    if ((i != -1) && (i == j) && (j == n) && (n == k))
     {
-      QMLog.i("ScreenShotUtil", "--- checkIfWhiteScreen:rgb1:" + n + " rgb2:" + i1 + " rgb3:" + k + " rgb4:" + i);
+      QMLog.i("ScreenShotUtil", "--- checkIfWhiteScreen:rgb1:" + i + " rgb2:" + j + " rgb3:" + n + " rgb4:" + k);
       return true;
     }
-    QMLog.i("ScreenShotUtil", "--- checkIfWhiteScreen:rgb1:" + n + " rgb2:" + i1 + " rgb3:" + k + " rgb4:" + i);
+    QMLog.i("ScreenShotUtil", "--- checkIfWhiteScreen:rgb1:" + i + " rgb2:" + j + " rgb3:" + n + " rgb4:" + k);
     return false;
   }
   

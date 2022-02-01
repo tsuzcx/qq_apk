@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import java.util.Comparator;
 
 public class aerr
-  implements DialogInterface.OnClickListener
+  implements Comparator<aert>
 {
-  public aerr(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bhpc parambhpc) {}
+  private aerr(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(aert paramaert1, aert paramaert2)
   {
-    this.jdField_a_of_type_Bhpc.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.getIntent();
-    paramDialogInterface.putExtra("delHead_fileid", FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity));
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.setResult(-1, paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.finish();
+    return paramaert1.f.compareToIgnoreCase(paramaert2.f);
   }
 }
 

@@ -10,23 +10,23 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
-import bhtq;
-import bpam;
-import bpla;
-import bplc;
-import bpld;
-import bple;
+import bmbx;
+import bmnw;
+import bmny;
+import bmnz;
+import bmoa;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class AEEditorMusicWaveView
   extends View
-  implements bpld
+  implements bmnz
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = ViewConfiguration.get(getContext()).getScaledTouchSlop();
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private bpla jdField_a_of_type_Bpla;
-  private bplc jdField_a_of_type_Bplc;
-  private bple jdField_a_of_type_Bple;
+  private bmnw jdField_a_of_type_Bmnw;
+  private bmny jdField_a_of_type_Bmny;
+  private bmoa jdField_a_of_type_Bmoa;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
@@ -50,7 +50,7 @@ public class AEEditorMusicWaveView
   private void a(MotionEvent paramMotionEvent)
   {
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bpla.a(paramMotionEvent);
+      this.jdField_a_of_type_Bmnw.a(paramMotionEvent);
     }
   }
   
@@ -63,22 +63,22 @@ public class AEEditorMusicWaveView
   
   public int a()
   {
-    return this.jdField_a_of_type_Bpla.f();
+    return this.jdField_a_of_type_Bmnw.f();
   }
   
   public int a(int paramInt)
   {
     float f2 = 0.0F;
     float f1 = f2;
-    if (this.jdField_a_of_type_Bpla != null)
+    if (this.jdField_a_of_type_Bmnw != null)
     {
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Bpla.a();
+      this.jdField_b_of_type_Int = this.jdField_a_of_type_Bmnw.a();
       f1 = f2;
-      if (this.jdField_b_of_type_Int <= this.jdField_a_of_type_Bpla.d() - this.jdField_a_of_type_Bpla.c())
+      if (this.jdField_b_of_type_Int <= this.jdField_a_of_type_Bmnw.d() - this.jdField_a_of_type_Bmnw.c())
       {
         f1 = f2;
-        if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Bpla.c()) {
-          f1 = paramInt * 1.0F / (this.jdField_a_of_type_Bpla.d() - this.jdField_a_of_type_Bpla.c() * 2) * (this.jdField_b_of_type_Int - this.jdField_a_of_type_Bpla.c());
+        if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Bmnw.c()) {
+          f1 = paramInt * 1.0F / (this.jdField_a_of_type_Bmnw.d() - this.jdField_a_of_type_Bmnw.c() * 2) * (this.jdField_b_of_type_Int - this.jdField_a_of_type_Bmnw.c());
         }
       }
     }
@@ -97,8 +97,8 @@ public class AEEditorMusicWaveView
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bpla != null) {
-      this.jdField_a_of_type_Bpla.c(paramInt);
+    if (this.jdField_a_of_type_Bmnw != null) {
+      this.jdField_a_of_type_Bmnw.c(paramInt);
     }
   }
   
@@ -106,25 +106,25 @@ public class AEEditorMusicWaveView
   {
     if (TextUtils.isEmpty(paramString2))
     {
-      bpam.d("AEEditorMusicWaveView", "audioPath is empty, can not init");
+      bmbx.d("AEEditorMusicWaveView", "audioPath is empty, can not init");
       return;
     }
     if ((paramString2.equals(this.jdField_a_of_type_JavaLangString)) && (!paramBoolean2))
     {
-      bpam.b("AEEditorMusicWaveView", "相同 audioPath， 不再重新初始化裁剪条");
+      bmbx.b("AEEditorMusicWaveView", "相同 audioPath， 不再重新初始化裁剪条");
       return;
     }
     this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Bpla = new bpla(this, paramString1, paramString2, paramInt1, paramInt2, bhtq.a(18.0F), paramBoolean1, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_Bpla != null) {
-      this.jdField_a_of_type_Bpla.a(this.h);
+    this.jdField_a_of_type_Bmnw = new bmnw(this, paramString1, paramString2, paramInt1, paramInt2, ViewUtils.dip2px(18.0F), paramBoolean1, paramInt3, paramInt4);
+    if (this.jdField_a_of_type_Bmnw != null) {
+      this.jdField_a_of_type_Bmnw.a(this.h);
     }
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_c_of_type_Boolean = true;
-    if ((!paramBoolean1) && (this.jdField_a_of_type_Bpla != null))
+    if ((!paramBoolean1) && (this.jdField_a_of_type_Bmnw != null))
     {
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Bpla.a();
-      this.jdField_c_of_type_Int = this.jdField_a_of_type_Bpla.b();
+      this.jdField_b_of_type_Int = this.jdField_a_of_type_Bmnw.a();
+      this.jdField_c_of_type_Int = this.jdField_a_of_type_Bmnw.b();
     }
     requestLayout();
   }
@@ -162,26 +162,26 @@ public class AEEditorMusicWaveView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Bpla == null) {
+    if (this.jdField_a_of_type_Bmnw == null) {
       return;
     }
-    this.jdField_a_of_type_Bpla.a(paramCanvas, this.e);
+    this.jdField_a_of_type_Bmnw.a(paramCanvas, this.e);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Bpla == null)
+    if (this.jdField_a_of_type_Bmnw == null)
     {
       setMeasuredDimension(0, 0);
       return;
     }
-    setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), this.jdField_a_of_type_Bpla.e());
+    setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), this.jdField_a_of_type_Bmnw.e());
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     if (!isEnabled()) {}
-    while ((this.jdField_a_of_type_Bpla == null) || (!a())) {
+    while ((this.jdField_a_of_type_Bmnw == null) || (!a())) {
       return false;
     }
     switch (paramMotionEvent.getAction() & 0xFF)
@@ -192,13 +192,13 @@ public class AEEditorMusicWaveView
       return this.jdField_a_of_type_Boolean;
       this.jdField_a_of_type_Float = paramMotionEvent.getX();
       this.jdField_b_of_type_Float = paramMotionEvent.getY();
-      if (this.jdField_a_of_type_Bpla != null)
+      if (this.jdField_a_of_type_Bmnw != null)
       {
-        this.jdField_b_of_type_Int = this.jdField_a_of_type_Bpla.a();
-        if ((this.g) && (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Bpla.c()) && (this.jdField_a_of_type_Float >= this.jdField_b_of_type_Int - this.jdField_c_of_type_Int / 2 - 70) && (this.jdField_a_of_type_Float <= this.jdField_b_of_type_Int + this.jdField_c_of_type_Int / 2 + 70)) {
+        this.jdField_b_of_type_Int = this.jdField_a_of_type_Bmnw.a();
+        if ((this.g) && (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Bmnw.c()) && (this.jdField_a_of_type_Float >= this.jdField_b_of_type_Int - this.jdField_c_of_type_Int / 2 - 70) && (this.jdField_a_of_type_Float <= this.jdField_b_of_type_Int + this.jdField_c_of_type_Int / 2 + 70)) {
           this.f = true;
         }
-        this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Bpla.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
+        this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Bmnw.a(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
       }
       if (!this.jdField_a_of_type_Boolean) {
         return super.onTouchEvent(paramMotionEvent);
@@ -209,14 +209,14 @@ public class AEEditorMusicWaveView
       a(paramMotionEvent);
       d();
       continue;
-      if (this.jdField_a_of_type_Bpla != null)
+      if (this.jdField_a_of_type_Bmnw != null)
       {
-        this.jdField_b_of_type_Int = this.jdField_a_of_type_Bpla.a();
-        if ((this.f) && (this.jdField_a_of_type_Bpla != null) && (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Bpla.c()) && (paramMotionEvent.getX() >= this.jdField_a_of_type_Bpla.c()) && (paramMotionEvent.getX() <= this.jdField_a_of_type_Bpla.d()))
+        this.jdField_b_of_type_Int = this.jdField_a_of_type_Bmnw.a();
+        if ((this.f) && (this.jdField_a_of_type_Bmnw != null) && (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Bmnw.c()) && (paramMotionEvent.getX() >= this.jdField_a_of_type_Bmnw.c()) && (paramMotionEvent.getX() <= this.jdField_a_of_type_Bmnw.d()))
         {
           this.jdField_b_of_type_Int = ((int)paramMotionEvent.getX());
-          this.jdField_a_of_type_Bpla.a(this.jdField_b_of_type_Int);
-          this.jdField_a_of_type_Bpla.b(this.jdField_b_of_type_Int);
+          this.jdField_a_of_type_Bmnw.a(this.jdField_b_of_type_Int);
+          this.jdField_a_of_type_Bmnw.b(this.jdField_b_of_type_Int);
           invalidate();
           continue;
         }
@@ -236,8 +236,8 @@ public class AEEditorMusicWaveView
         if (this.f)
         {
           this.f = false;
-          if (this.jdField_a_of_type_Bple != null) {
-            this.jdField_a_of_type_Bple.a(this.jdField_a_of_type_Bpla.a());
+          if (this.jdField_a_of_type_Bmoa != null) {
+            this.jdField_a_of_type_Bmoa.a(this.jdField_a_of_type_Bmnw.a());
           }
         }
         else
@@ -273,14 +273,14 @@ public class AEEditorMusicWaveView
   
   public void setCurrentPosition(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Bpla != null) {
-      this.jdField_a_of_type_Bpla.a(paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Bmnw != null) {
+      this.jdField_a_of_type_Bmnw.a(paramInt1, paramInt2);
     }
   }
   
-  public void setDragIndicatorListener(bple parambple)
+  public void setDragIndicatorListener(bmoa parambmoa)
   {
-    this.jdField_a_of_type_Bple = parambple;
+    this.jdField_a_of_type_Bmoa = parambmoa;
   }
   
   public void setEnableTrimMusic(boolean paramBoolean)
@@ -290,22 +290,22 @@ public class AEEditorMusicWaveView
   
   public void setIndicatorIndex(int paramInt)
   {
-    if ((this.jdField_a_of_type_Bpla != null) && (this.jdField_a_of_type_Bpla.g() - this.jdField_a_of_type_Bpla.f() > 0.01D))
+    if ((this.jdField_a_of_type_Bmnw != null) && (this.jdField_a_of_type_Bmnw.g() - this.jdField_a_of_type_Bmnw.f() > 0.01D))
     {
-      float f1 = this.jdField_a_of_type_Bpla.c();
-      float f2 = (paramInt - this.jdField_a_of_type_Bpla.f()) * 1.0F / (this.jdField_a_of_type_Bpla.g() - this.jdField_a_of_type_Bpla.f());
-      float f3 = this.jdField_a_of_type_Bpla.d() - this.jdField_a_of_type_Bpla.c() * 2;
-      this.jdField_a_of_type_Bpla.a((int)(f1 + f2 * f3));
+      float f1 = this.jdField_a_of_type_Bmnw.c();
+      float f2 = (paramInt - this.jdField_a_of_type_Bmnw.f()) * 1.0F / (this.jdField_a_of_type_Bmnw.g() - this.jdField_a_of_type_Bmnw.f());
+      float f3 = this.jdField_a_of_type_Bmnw.d() - this.jdField_a_of_type_Bmnw.c() * 2;
+      this.jdField_a_of_type_Bmnw.a((int)(f1 + f2 * f3));
     }
   }
   
   public void setIndicatorIndexByVideo(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Bpla != null) && (this.jdField_a_of_type_Bpla.g() - this.jdField_a_of_type_Bpla.f() > 0.01D))
+    if ((this.jdField_a_of_type_Bmnw != null) && (this.jdField_a_of_type_Bmnw.g() - this.jdField_a_of_type_Bmnw.f() > 0.01D))
     {
-      float f1 = this.jdField_a_of_type_Bpla.c() + paramInt1 * 1.0F / paramInt2 * (this.jdField_a_of_type_Bpla.d() - this.jdField_a_of_type_Bpla.c() * 2);
-      this.jdField_a_of_type_Bpla.a((int)f1);
-      this.jdField_a_of_type_Bpla.b((int)f1);
+      float f1 = this.jdField_a_of_type_Bmnw.c() + paramInt1 * 1.0F / paramInt2 * (this.jdField_a_of_type_Bmnw.d() - this.jdField_a_of_type_Bmnw.c() * 2);
+      this.jdField_a_of_type_Bmnw.a((int)f1);
+      this.jdField_a_of_type_Bmnw.b((int)f1);
     }
   }
   
@@ -314,11 +314,11 @@ public class AEEditorMusicWaveView
     this.h = paramBoolean;
   }
   
-  public void setOnMusicMoveListener(bplc parambplc)
+  public void setOnMusicMoveListener(bmny parambmny)
   {
-    this.jdField_a_of_type_Bplc = parambplc;
-    if (this.jdField_a_of_type_Bpla != null) {
-      this.jdField_a_of_type_Bpla.a(this.jdField_a_of_type_Bplc);
+    this.jdField_a_of_type_Bmny = parambmny;
+    if (this.jdField_a_of_type_Bmnw != null) {
+      this.jdField_a_of_type_Bmnw.a(this.jdField_a_of_type_Bmny);
     }
   }
 }

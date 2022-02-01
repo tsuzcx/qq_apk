@@ -1,31 +1,31 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import android.util.Pair;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class atnw
-  implements View.OnLongClickListener
+class atnw
+  extends andd
 {
-  public atnw(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  atnw(atnv paramatnv) {}
   
-  public boolean onLongClick(View paramView)
+  protected void onGetTroopMemberListBy0x787(String paramString, List<Pair<String, String>> paramList)
   {
-    if ((paramView == null) || (QfileBaseRecentFileTabView.a(this.a))) {
-      return false;
+    StringBuilder localStringBuilder = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
+    if (paramList == null) {}
+    for (int i = 0;; i = paramList.size())
+    {
+      QLog.i("Forward.Preview.Dialog", 2, i);
+      if ((atnv.a(this.a).equals(paramString)) && (atnv.a(this.a) != null))
+      {
+        this.a.e();
+        atnv.a(this.a).a(paramList);
+      }
+      return;
     }
-    paramView.setSelected(true);
-    bhuk localbhuk = new bhuk();
-    localbhuk.a(2131367081, paramView.getContext().getString(2131692400));
-    localbhuk.a(2131365346, paramView.getContext().getString(2131691323));
-    ApolloUtil.a(paramView, QfileBaseRecentFileTabView.n(this.a), localbhuk);
-    this.a.a = bhkx.a(paramView, localbhuk, new atnx(this, paramView), new atnz(this, paramView));
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atnw
  * JD-Core Version:    0.7.0.1
  */

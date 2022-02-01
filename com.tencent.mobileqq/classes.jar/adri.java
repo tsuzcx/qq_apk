@@ -1,65 +1,62 @@
-import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.AccountManageActivity.3.1;
-import com.tencent.mobileqq.widget.RotateSwitchImageView;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import java.util.List;
 
 public class adri
   implements View.OnClickListener
 {
-  public adri(AccountManageActivity paramAccountManageActivity) {}
+  public adri(MoveToGroupActivity paramMoveToGroupActivity) {}
   
   public void onClick(View paramView)
   {
-    if (!this.a.b)
+    int j = 1;
+    int k = VipUtils.a(this.a.app, null);
+    int i;
+    label31:
+    QQToast localQQToast;
+    if ((k & 0x2) != 0)
+    {
+      i = 1;
+      if ((k & 0x4) == 0) {
+        break label103;
+      }
+      if ((i == 0) && (j == 0)) {
+        break label108;
+      }
+      if (30 != MoveToGroupActivity.a(this.a).size()) {
+        break label162;
+      }
+      localQQToast = new QQToast(this.a);
+      localQQToast.d(2000);
+      localQQToast.c(2131719007);
+      localQQToast.a();
+    }
+    label162:
+    for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    Object localObject = this.a;
-    boolean bool;
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      bool = true;
-      label35:
-      ((AccountManageActivity)localObject).jdField_a_of_type_Boolean = bool;
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break label254;
-      }
-      this.a.rightViewText.setVisibility(8);
-      this.a.rightHighLView.setVisibility(0);
-      this.a.rightViewText.setText(2131692262);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131167076));
-    }
-    for (;;)
-    {
-      if (AccountManageActivity.a(this.a) != null)
-      {
-        localObject = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
-        if ((localObject instanceof ShaderAnimLayout)) {
-          ((ShaderAnimLayout)localObject).f();
-        }
-        AccountManageActivity.a(this.a).a();
-        AccountManageActivity.a(this.a, null);
-      }
-      this.a.b();
-      this.a.a(this.a.jdField_a_of_type_Boolean);
-      this.a.b = false;
-      AccountManageActivity.a(this.a).postDelayed(new AccountManageActivity.3.1(this), 400L);
-      bdll.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit", 0, 0, "", "", "", "");
+      i = 0;
       break;
-      bool = false;
-      break label35;
-      label254:
-      this.a.rightViewText.setVisibility(0);
-      this.a.rightHighLView.setVisibility(8);
-      this.a.rightViewText.setText(2131691682);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131166998));
+      label103:
+      j = 0;
+      break label31;
+      label108:
+      if (16 == MoveToGroupActivity.a(this.a).size())
+      {
+        localQQToast = new QQToast(this.a);
+        localQQToast.d(2000);
+        localQQToast.c(2131719006);
+        localQQToast.a();
+      }
+      else
+      {
+        MoveToGroupActivity.a(this.a, bfur.a(this.a, 2131692876, 2131692882, null, MoveToGroupActivity.a(this.a), null));
+      }
     }
   }
 }

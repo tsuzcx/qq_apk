@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.lyric.widget;
 
-import awxf;
+import avkm;
 
 public class LyricViewController$8
   implements Runnable

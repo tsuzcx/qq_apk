@@ -1,18 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
+import android.view.View;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import org.jetbrains.annotations.NotNull;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileOtherHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "profileOtherSettingItem", "Lcom/tencent/mobileqq/widget/FormSwitchItem;", "getProfileOtherSettingItem", "()Lcom/tencent/mobileqq/widget/FormSwitchItem;", "setProfileOtherSettingItem", "(Lcom/tencent/mobileqq/widget/FormSwitchItem;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class azaj
-  implements Parcelable.Creator<TranslateResult>
+  extends RecyclerView.ViewHolder
 {
-  public TranslateResult a(Parcel paramParcel)
+  @NotNull
+  private FormSwitchItem a;
+  
+  public azaj(@NotNull View paramView)
   {
-    return new TranslateResult(paramParcel);
+    super(paramView);
+    paramView = paramView.findViewById(2131372997);
+    if (paramView == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.widget.FormSwitchItem");
+    }
+    this.a = ((FormSwitchItem)paramView);
   }
   
-  public TranslateResult[] a(int paramInt)
+  @NotNull
+  public final FormSwitchItem a()
   {
-    return new TranslateResult[paramInt];
+    return this.a;
   }
 }
 

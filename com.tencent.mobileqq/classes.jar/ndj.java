@@ -1,24 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.avgame.gameroom.stage.guessaction.GuessActionStageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.avgame.gameroom.gamelist.GameListView;
 
 public class ndj
-  implements View.OnClickListener
+  extends RecyclerView.OnScrollListener
 {
-  public ndj(GuessActionStageView paramGuessActionStageView) {}
+  public ndj(GameListView paramGameListView) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.onClick(paramView);
+    if ((paramInt == 1) && (!this.a.c)) {
+      this.a.c = true;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ndj
  * JD-Core Version:    0.7.0.1
  */

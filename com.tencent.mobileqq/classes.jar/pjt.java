@@ -1,14 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-
 public class pjt
-  implements pks
 {
-  public pjt(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void a()
+  public String toString()
   {
-    ReadInJoySelfFragment.a(this.a);
-    ocd.a(null, "", "0X8009925", "0X8009925", 0, 0, "", "", "", "", false);
+    return "styleID = " + this.jdField_a_of_type_JavaLangString + ", proteusData = " + this.b + ", rankWeight = " + this.jdField_a_of_type_Int;
   }
 }
 

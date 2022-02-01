@@ -1,141 +1,379 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.agent.report.BaseData;
+import com.tencent.open.agent.report.ReportCenter.2;
+import com.tencent.open.agent.report.ReportCenter.3;
+import com.tencent.open.agent.report.ReportCenter.4;
+import com.tencent.open.agent.report.ReportCenter.5;
+import com.tencent.open.agent.report.ReportCenter.6;
+import com.tencent.open.agent.report.ReportCenter.7;
+import com.tencent.qphone.base.util.QLog;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Random;
+import java.util.Set;
+import java.util.concurrent.Executor;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class bhvw
+public class bhvw
 {
-  private int jdField_a_of_type_Int = 16;
-  @Nullable
-  private final Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  @Nullable
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  @Nullable
-  private final List<bhvy> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int = 12544;
-  private final List<bhwa> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private int jdField_c_of_type_Int = -1;
-  private final List<bhvx> jdField_c_of_type_JavaUtilList = new ArrayList();
+  protected static bhvw a;
+  public Handler a;
+  public ArrayList<Serializable> a;
+  protected Random a;
+  protected Executor a;
+  public ArrayList<Serializable> b;
+  protected Executor b;
+  protected Executor c = ThreadManager.newSerialExecutor();
   
-  public bhvw(@NonNull Bitmap paramBitmap)
+  protected bhvw()
   {
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
-      throw new IllegalArgumentException("Bitmap is not valid");
-    }
-    this.jdField_c_of_type_JavaUtilList.add(bhvu.a);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_b_of_type_JavaUtilList.add(bhwa.a);
-    this.jdField_b_of_type_JavaUtilList.add(bhwa.b);
-    this.jdField_b_of_type_JavaUtilList.add(bhwa.c);
-    this.jdField_b_of_type_JavaUtilList.add(bhwa.d);
-    this.jdField_b_of_type_JavaUtilList.add(bhwa.e);
-    this.jdField_b_of_type_JavaUtilList.add(bhwa.f);
+    this.jdField_a_of_type_AndroidOsHandler = new bhvx(this, Looper.getMainLooper());
+    this.jdField_a_of_type_JavaUtilRandom = new Random();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.newSerialExecutor();
+    this.jdField_b_of_type_JavaUtilConcurrentExecutor = ThreadManager.newSerialExecutor();
   }
   
-  private Bitmap a(Bitmap paramBitmap)
+  public static bhvw a()
   {
-    double d2 = -1.0D;
+    try
+    {
+      if (jdField_a_of_type_Bhvw == null) {
+        jdField_a_of_type_Bhvw = new bhvw();
+      }
+      bhvw localbhvw = jdField_a_of_type_Bhvw;
+      return localbhvw;
+    }
+    finally {}
+  }
+  
+  public int a(int paramInt)
+  {
     int i;
-    double d1;
-    if (this.jdField_b_of_type_Int > 0)
+    if (paramInt == 0)
     {
-      i = paramBitmap.getWidth() * paramBitmap.getHeight();
-      d1 = d2;
-      if (i > this.jdField_b_of_type_Int) {
-        d1 = Math.sqrt(this.jdField_b_of_type_Int / i);
+      i = biar.a(bhpc.a().a(), null).a("Common_CGIReportFrequencySuccess");
+      paramInt = i;
+      if (i == 0) {
+        paramInt = 10;
       }
     }
-    while (d1 <= 0.0D)
+    do
     {
-      return paramBitmap;
-      d1 = d2;
-      if (this.jdField_c_of_type_Int > 0)
-      {
-        i = Math.max(paramBitmap.getWidth(), paramBitmap.getHeight());
-        d1 = d2;
-        if (i > this.jdField_c_of_type_Int) {
-          d1 = this.jdField_c_of_type_Int / i;
-        }
-      }
-    }
-    return Bitmap.createScaledBitmap(paramBitmap, (int)Math.ceil(paramBitmap.getWidth() * d1), (int)Math.ceil(d1 * paramBitmap.getHeight()), false);
+      return paramInt;
+      i = biar.a(bhpc.a().a(), null).a("Common_CGIReportFrequencyFailed");
+      paramInt = i;
+    } while (i != 0);
+    return 100;
   }
   
-  private int[] a(Bitmap paramBitmap)
+  public Bundle a()
   {
-    int i = 0;
-    int j = paramBitmap.getWidth();
-    int k = paramBitmap.getHeight();
-    int[] arrayOfInt = new int[j * k];
-    paramBitmap.getPixels(arrayOfInt, 0, j, 0, 0, j, k);
-    if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
-      return arrayOfInt;
+    localObject1 = bhvy.a().a("report_cgi");
+    if (localObject1 != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject1);
     }
-    k = this.jdField_a_of_type_AndroidGraphicsRect.width();
-    int m = this.jdField_a_of_type_AndroidGraphicsRect.height();
-    paramBitmap = new int[k * m];
-    while (i < m)
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportCenter", 2, "-->prepareCgiData, itemList size: " + this.jdField_a_of_type_JavaUtilArrayList.size());
+    }
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
+      return null;
+    }
+    localObject1 = new Bundle();
+    try
     {
-      System.arraycopy(arrayOfInt, (this.jdField_a_of_type_AndroidGraphicsRect.top + i) * j + this.jdField_a_of_type_AndroidGraphicsRect.left, paramBitmap, i * k, k);
-      i += 1;
+      ((Bundle)localObject1).putString("releaseversion", bhpc.a().f());
+      ((Bundle)localObject1).putString("device", Build.DEVICE);
+      ((Bundle)localObject1).putString("qua", biaw.b);
+      ((Bundle)localObject1).putString("key", "appid,apn,frequency,commandid,resultcode,tmcost,reqsize,rspsize,detail,touin,deviceinfo");
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        Object localObject2 = (BaseData)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        ((Bundle)localObject1).putString(i + "_1", (String)((BaseData)localObject2).attrs.get("appid"));
+        ((Bundle)localObject1).putString(i + "_2", (String)((BaseData)localObject2).attrs.get("apn"));
+        ((Bundle)localObject1).putString(i + "_3", (String)((BaseData)localObject2).attrs.get("frequency"));
+        ((Bundle)localObject1).putString(i + "_4", (String)((BaseData)localObject2).attrs.get("commandid"));
+        ((Bundle)localObject1).putString(i + "_5", (String)((BaseData)localObject2).attrs.get("resultCode"));
+        ((Bundle)localObject1).putString(i + "_6", (String)((BaseData)localObject2).attrs.get("timeCost"));
+        ((Bundle)localObject1).putString(i + "_7", (String)((BaseData)localObject2).attrs.get("reqSize"));
+        ((Bundle)localObject1).putString(i + "_8", (String)((BaseData)localObject2).attrs.get("rspSize"));
+        ((Bundle)localObject1).putString(i + "_9", (String)((BaseData)localObject2).attrs.get("detail"));
+        ((Bundle)localObject1).putString(i + "_10", (String)((BaseData)localObject2).attrs.get("uin"));
+        localObject2 = biaq.h() + "&" + (String)((BaseData)localObject2).attrs.get("deviceInfo");
+        ((Bundle)localObject1).putString(i + "_11", (String)localObject2);
+        i += 1;
+      }
+      return localObject1;
     }
-    return paramBitmap;
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ReportCenter", 2, "-->prepareCgiData, exception.", localException);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ReportCenter", 2, "-->prepareCgiData, end. params: " + ((Bundle)localObject1).toString());
+      }
+    }
   }
   
-  @NonNull
-  public bhvu a()
+  public void a()
   {
-    Object localObject;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    this.jdField_b_of_type_JavaUtilConcurrentExecutor.execute(new ReportCenter.5(this));
+  }
+  
+  public void a(Bundle paramBundle, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    if (paramBundle == null) {}
+    for (;;)
     {
-      Bitmap localBitmap = a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      if (0 != 0) {
-        throw new NullPointerException();
-      }
-      localObject = this.jdField_a_of_type_AndroidGraphicsRect;
-      if ((localBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap) && (localObject != null))
+      return;
+      try
       {
-        double d = localBitmap.getWidth() / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-        ((Rect)localObject).left = ((int)Math.floor(((Rect)localObject).left * d));
-        ((Rect)localObject).top = ((int)Math.floor(((Rect)localObject).top * d));
-        ((Rect)localObject).right = Math.min((int)Math.ceil(((Rect)localObject).right * d), localBitmap.getWidth());
-        ((Rect)localObject).bottom = Math.min((int)Math.ceil(d * ((Rect)localObject).bottom), localBitmap.getHeight());
-      }
-      int[] arrayOfInt = a(localBitmap);
-      int i = this.jdField_a_of_type_Int;
-      if (this.jdField_c_of_type_JavaUtilList.isEmpty())
-      {
-        localObject = null;
-        localObject = new bhvp(arrayOfInt, i, (bhvx[])localObject);
-        if (localBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap) {
-          localBitmap.recycle();
+        bhpc.a().a(Long.valueOf(paramString2).longValue());
+        if (QLog.isColorLevel()) {
+          QLog.d("ReportCenter", 2, "-->reportVia, bundle: " + paramBundle.toString());
         }
-        localObject = ((bhvp)localObject).a();
-        if (0 != 0) {
-          throw new NullPointerException();
+        if ((!a("report_via", paramString1)) && (!paramBoolean)) {
+          continue;
+        }
+        this.jdField_b_of_type_JavaUtilConcurrentExecutor.execute(new ReportCenter.2(this, paramString2, paramBundle, paramBoolean));
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          bhpc.a().a(0L);
         }
       }
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.c.execute(new ReportCenter.4(this, paramString));
+  }
+  
+  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, String paramString3, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportCenter", 2, "-->reportCgi, command: " + paramString1 + " | responseCode: " + paramInt2 + " | uin: " + paramString2 + " | detail: " + paramString3);
+    }
+    this.c.execute(new ReportCenter.7(this, paramInt3, paramString1, paramString3, paramInt1, paramInt2, paramString2, paramBoolean));
+  }
+  
+  public void a(String paramString1, long paramLong1, long paramLong2, long paramLong3, int paramInt, long paramLong4, String paramString2, String paramString3, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportCenter", 2, "-->reportCgi, command: " + paramString1 + " | startTime: " + paramLong1 + " | reqSize:" + paramLong2 + " | rspSize: " + paramLong3 + " | responseCode: " + paramInt + " | uin: " + paramLong4 + " | appid: " + paramString2 + " | detail: " + paramString3);
+    }
+    if ((!a("report_cgi", "" + paramInt)) && (!paramBoolean)) {
+      return;
+    }
+    long l = SystemClock.elapsedRealtime();
+    this.c.execute(new ReportCenter.3(this, paramString2, paramString1, paramString3, paramInt, paramLong2, paramLong3, l - paramLong1, paramLong4, paramBoolean));
+  }
+  
+  public void a(String paramString1, String paramString2, Bundle paramBundle, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new ReportCenter.6(this, paramBundle, paramString1, paramBoolean));
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, boolean paramBoolean)
+  {
+    try
+    {
+      a(bhwf.a(paramString1, paramString2, paramString4, paramString5, paramString3, paramString6, paramString7, "", "", paramString8, paramString9), paramString3, paramString1, paramBoolean);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ReportCenter", 2, "-->reportVia 2 exception", paramString1);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, boolean paramBoolean)
+  {
+    try
+    {
+      a(bhwf.a(paramString1, paramString2, paramString4, paramString5, paramString3, paramString6, paramString5, "", "", "", ""), paramString3, paramString1, paramBoolean);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("ReportCenter", 2, "-->reportVia 1 exception", paramString1);
+    }
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    int i = 5;
+    boolean bool = false;
+    int j;
+    if (paramString.equals("report_cgi"))
+    {
+      j = biar.a(bhpc.a().a(), null).a("Common_CGIReportMaxcount");
+      if (j != 0) {}
     }
     for (;;)
     {
-      localObject = new bhvu((List)localObject, this.jdField_b_of_type_JavaUtilList);
-      ((bhvu)localObject).a();
-      if (0 != 0) {
-        throw new NullPointerException();
+      if (QLog.isColorLevel()) {
+        QLog.d("ReportCenter", 2, "-->availableCount, report: " + paramString + " | dataSize: " + paramInt + " | maxcount: " + i);
       }
-      return localObject;
-      localObject = (bhvx[])this.jdField_c_of_type_JavaUtilList.toArray(new bhvx[this.jdField_c_of_type_JavaUtilList.size()]);
-      break;
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        break label304;
+      if (paramInt >= i) {
+        bool = true;
       }
-      localObject = this.jdField_a_of_type_JavaUtilList;
+      return bool;
+      i = j;
+      continue;
+      if (paramString.equals("report_via"))
+      {
+        j = biar.a(bhpc.a().a(), null).a("Agent_ReportBatchCount");
+        if (j != 0) {
+          i = j;
+        }
+      }
+      else
+      {
+        i = 0;
+      }
     }
-    label304:
-    throw new AssertionError();
+  }
+  
+  protected boolean a(String paramString1, String paramString2)
+  {
+    boolean bool1 = true;
+    boolean bool3 = false;
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportCenter", 2, "-->availableFrequency, report: " + paramString1 + " | ext: " + paramString2);
+    }
+    if (TextUtils.isEmpty(paramString1)) {
+      return bool2;
+    }
+    if (paramString1.equals("report_cgi")) {}
+    for (;;)
+    {
+      try
+      {
+        int i = Integer.parseInt(paramString2);
+        i = a(i);
+        if (this.jdField_a_of_type_JavaUtilRandom.nextInt(100) < i)
+        {
+          bool2 = bool1;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("ReportCenter", 2, "-->availableFrequency, result: " + bool1 + " | frequency: " + i);
+          return bool1;
+        }
+        bool1 = false;
+        continue;
+        if (paramString1.equals("report_via"))
+        {
+          i = bibd.a(paramString2);
+          if (new Random().nextInt(100) < i)
+          {
+            bool1 = true;
+            continue;
+          }
+          bool1 = bool3;
+          continue;
+        }
+        i = 100;
+      }
+      catch (Exception paramString1)
+      {
+        return false;
+      }
+      bool1 = bool3;
+    }
+  }
+  
+  public Bundle b()
+  {
+    for (;;)
+    {
+      try
+      {
+        Object localObject1 = bhvy.a().a("report_via");
+        if (localObject1 != null) {
+          this.jdField_b_of_type_JavaUtilArrayList.addAll((Collection)localObject1);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ReportCenter", 2, "-->prepareViaData, itemList size: " + this.jdField_b_of_type_JavaUtilArrayList.size());
+        }
+        int i = this.jdField_b_of_type_JavaUtilArrayList.size();
+        if (i == 0)
+        {
+          localObject1 = null;
+          return localObject1;
+        }
+        localObject1 = new JSONArray();
+        localObject4 = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+        if (!((Iterator)localObject4).hasNext()) {
+          break label228;
+        }
+        Object localObject5 = (Serializable)((Iterator)localObject4).next();
+        localJSONObject = new JSONObject();
+        localObject5 = (BaseData)localObject5;
+        Iterator localIterator = ((BaseData)localObject5).attrs.keySet().iterator();
+        if (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          try
+          {
+            localJSONObject.put(str, ((BaseData)localObject5).attrs.get(str));
+          }
+          catch (JSONException localJSONException2) {}
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("ReportCenter", 2, "-->prepareViaData, put bundle to json array exception", localJSONException2);
+          continue;
+        }
+        localObject2.put(localJSONObject);
+      }
+      finally {}
+      continue;
+      label228:
+      if (QLog.isColorLevel()) {
+        QLog.d("ReportCenter", 2, "-->prepareViaData, JSONArray array: " + localObject2.toString());
+      }
+      Object localObject4 = new Bundle();
+      JSONObject localJSONObject = new JSONObject();
+      Object localObject3;
+      try
+      {
+        localJSONObject.put("data", localObject2);
+        ((Bundle)localObject4).putString("data", localJSONObject.toString());
+        localObject3 = localObject4;
+      }
+      catch (JSONException localJSONException1)
+      {
+        localObject3 = localObject4;
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ReportCenter", 2, "-->prepareViaData, put bundle to json array exception", localJSONException1);
+        localObject3 = localObject4;
+      }
+    }
   }
 }
 

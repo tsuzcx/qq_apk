@@ -1,39 +1,41 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import common.config.service.QzoneConfig;
+import cooperation.qqcircle.redpoint.QCircleRedPointManager;
+import mqq.app.AppRuntime;
+import qqcircle.QQCircleSwitch.SetCircleSwitchRsp;
 
 class auyc
-  extends anwt
+  implements VSDispatchObserver.onVSRspCallBack<QQCircleSwitch.SetCircleSwitchRsp>
 {
-  auyc(auxu paramauxu) {}
+  auyc(auyb paramauyb, boolean paramBoolean) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, QQCircleSwitch.SetCircleSwitchRsp paramSetCircleSwitchRsp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardBaseOption", 2, "updateDiscussionInfo start: isSuccess=" + paramBoolean);
-    }
-    String str = this.a.jdField_a_of_type_AndroidOsBundle.getString("uin");
-    paramObject = (ArrayList)paramObject;
-    int i = paramObject.indexOf(str);
-    if (i != -1)
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      paramObject = (Boolean)paramObject.get(i + 1);
-      if ((paramBoolean) && (paramObject.booleanValue()))
+      QLog.w("leba_sort_LebaTableMgrAdpter", 1, "setCircleSwitch success isChecked" + this.jdField_a_of_type_Boolean);
+      paramString = QzoneConfig.getInstance();
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramVSBaseRequest = "1";; paramVSBaseRequest = "0")
       {
-        paramObject = ((anws)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(str);
-        if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.discussionName)) && (this.a.jdField_a_of_type_Bhpc != null)) {
-          this.a.jdField_a_of_type_Bhpc.setTitle(anzj.a(2131703630) + auyl.g + paramObject.discussionName);
+        paramString.updateOneConfig("qqcircle", "qqcircle_entrance_enable", paramVSBaseRequest);
+        if (!this.jdField_a_of_type_Boolean)
+        {
+          ((QCircleRedPointManager)BaseApplicationImpl.getApplication().getRuntime().getManager(376)).clearPedPoint();
+          QLog.w("leba_sort_LebaTableMgrAdpter", 1, "setCircleSwitch success clearPedPoint");
         }
+        return;
       }
     }
+    QLog.w("leba_sort_LebaTableMgrAdpter", 1, "setCircleSwitch error retcode= " + paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auyc
  * JD-Core Version:    0.7.0.1
  */

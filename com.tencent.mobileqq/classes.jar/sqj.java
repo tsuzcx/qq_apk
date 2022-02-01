@@ -1,11 +1,20 @@
-class sqj
-  extends pph
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
+
+public class sqj
 {
-  sqj(sqi paramsqi) {}
+  public ReadInJoyBaseFragment a;
+  public ski a;
+  public boolean a;
+  public boolean b;
   
-  public void a(String paramString)
+  public sqj()
   {
-    pfd.a().b();
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public ReadInJoyBaseFragment a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment;
   }
 }
 

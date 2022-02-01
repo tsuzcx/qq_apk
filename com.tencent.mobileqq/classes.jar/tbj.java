@@ -1,18 +1,8 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
-
-public class tbj
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface tbj
 {
-  public tbj(TickerView paramTickerView) {}
+  public abstract void a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    TickerView.a(this.a).a(paramValueAnimator.getAnimatedFraction());
-    TickerView.a(this.a);
-    this.a.invalidate();
-  }
+  public abstract void b();
 }
 
 

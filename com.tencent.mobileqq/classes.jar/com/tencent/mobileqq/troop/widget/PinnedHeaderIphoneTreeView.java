@@ -13,7 +13,7 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import bgwa;
+import bffl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.PinnedHeaderExpandableListView;
@@ -38,7 +38,7 @@ public class PinnedHeaderIphoneTreeView
     super(paramContext);
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bgwa(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bffl(this);
     a();
   }
   
@@ -47,7 +47,7 @@ public class PinnedHeaderIphoneTreeView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bgwa(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bffl(this);
     a();
   }
   
@@ -56,7 +56,7 @@ public class PinnedHeaderIphoneTreeView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bgwa(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new bffl(this);
     a();
   }
   
@@ -162,14 +162,17 @@ public class PinnedHeaderIphoneTreeView
           b(l);
           this.jdField_b_of_type_AndroidViewView = null;
           if ((i == -1) || (!c(i))) {
-            break label763;
+            break label777;
           }
           if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Int != i))
           {
             this.jdField_a_of_type_Int = i;
             this.jdField_a_of_type_AndroidViewView = a().getGroupView(i, true, this.c, this);
-            this.jdField_a_of_type_AndroidViewView.setSelected(((View)localObject5).isSelected());
-            this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+            if (this.jdField_a_of_type_AndroidViewView != null)
+            {
+              this.jdField_a_of_type_AndroidViewView.setSelected(((View)localObject5).isSelected());
+              this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+            }
           }
           if (this.jdField_a_of_type_AndroidViewView != this.c) {
             this.c = this.jdField_a_of_type_AndroidViewView;
@@ -177,8 +180,11 @@ public class PinnedHeaderIphoneTreeView
           if (b(l) == 0) {
             this.jdField_b_of_type_AndroidViewView = ((View)localObject5);
           }
-          a(this.jdField_a_of_type_AndroidViewView, i, 0, ((View)localObject5).getWidth());
-          this.jdField_a_of_type_AndroidViewView.layout(0, 0, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
+          if (this.jdField_a_of_type_AndroidViewView != null)
+          {
+            a(this.jdField_a_of_type_AndroidViewView, i, 0, ((View)localObject5).getWidth());
+            this.jdField_a_of_type_AndroidViewView.layout(0, 0, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
+          }
         }
         break;
       }
@@ -190,12 +196,12 @@ public class PinnedHeaderIphoneTreeView
           if (this.jdField_a_of_type_AndroidViewView != null)
           {
             if ((b(a(j + 1)) != 0) || (localObject4 == null)) {
-              break label812;
+              break label826;
             }
             i = ((View)localObject4).getTop();
             j = this.jdField_a_of_type_AndroidViewView.getBottom();
             if (i >= j) {
-              break label812;
+              break label826;
             }
             localObject1 = getDivider();
             i -= j;
@@ -218,12 +224,12 @@ public class PinnedHeaderIphoneTreeView
               localObject4 = (Integer)a("mIndicatorRight");
               localObject5 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
               if (localObject3 != null) {
-                break label793;
+                break label807;
               }
               j = 0;
               m = this.jdField_a_of_type_AndroidViewView.getTop();
               if (localObject4 != null) {
-                break label802;
+                break label816;
               }
               k = 0;
               ((Drawable)localObject5).setBounds(j, m, k, this.jdField_a_of_type_AndroidViewView.getBottom());
@@ -255,7 +261,7 @@ public class PinnedHeaderIphoneTreeView
           break label74;
           k += 1;
           break label104;
-          label763:
+          label777:
           this.jdField_a_of_type_AndroidViewView = null;
         }
       }
@@ -267,13 +273,13 @@ public class PinnedHeaderIphoneTreeView
           {
             QLog.d("PinnedHeaderIphoneTreeView", 2, localNullPointerException.getMessage());
             continue;
-            label793:
+            label807:
             j = ((Integer)localObject3).intValue();
             continue;
-            label802:
+            label816:
             k = ((Integer)localObject4).intValue();
             continue;
-            label812:
+            label826:
             Object localObject2 = null;
             i = 0;
           }

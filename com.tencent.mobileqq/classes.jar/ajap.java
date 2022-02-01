@@ -1,17 +1,10 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.Properties;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class ajap
+public abstract interface ajap
 {
-  public static void a(String paramString, Properties paramProperties)
-  {
-    bdla.a(VideoEnvironment.a()).reportKVEvent(paramString, paramProperties);
-  }
+  public abstract boolean a(FileManagerEntity paramFileManagerEntity);
   
-  public static void a(String paramString, Properties paramProperties, int paramInt)
-  {
-    bdla.a(VideoEnvironment.a()).reportTimeKVEvent(paramString, paramProperties, paramInt);
-  }
+  public abstract void b(FileManagerEntity paramFileManagerEntity);
 }
 
 

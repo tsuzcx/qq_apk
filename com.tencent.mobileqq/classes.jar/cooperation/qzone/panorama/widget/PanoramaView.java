@@ -2,96 +2,64 @@ package cooperation.qzone.panorama.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import bncj;
-import bnck;
-import bncl;
-import bncm;
-import bncn;
-import bnco;
-import bncp;
-import bncz;
-import bndf;
-import bndg;
 import com.tencent.mobileqq.apollo.GLTextureView;
+import cooperation.qzone.panorama.callback.OnPanoramaClickListener;
+import cooperation.qzone.panorama.callback.OnPanoramaLoadingListener;
+import cooperation.qzone.panorama.callback.PanoramaTouchListener;
+import cooperation.qzone.panorama.controller.GyroscopeSensorController;
+import cooperation.qzone.panorama.controller.GyroscopeSensorController.SensorChangeListener;
+import cooperation.qzone.panorama.controller.PanoramaRenderer;
+import cooperation.qzone.panorama.controller.TouchController;
+import cooperation.qzone.panorama.util.PanoramaConfig.Builder;
 
 public class PanoramaView
   extends GLTextureView
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bncj jdField_a_of_type_Bncj;
-  private bncl jdField_a_of_type_Bncl = new bndf(this);
-  private bncm jdField_a_of_type_Bncm;
-  private bncn jdField_a_of_type_Bncn = new bndg(this);
-  private bnco jdField_a_of_type_Bnco;
-  private bncz jdField_a_of_type_Bncz;
+  private PanoramaConfig.Builder builder;
+  private Context context;
+  private GyroscopeSensorController gyroscopeSensorController;
+  private OnPanoramaClickListener onPanoramaClickListener;
+  private PanoramaRenderer panoramaRenderer;
+  private PanoramaTouchListener panoramaTouchListener = new PanoramaView.1(this);
+  private GyroscopeSensorController.SensorChangeListener sensorChangeListener = new PanoramaView.2(this);
   
   public PanoramaView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.context = paramContext;
   }
   
   public PanoramaView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.context = paramContext;
   }
   
-  public void a()
+  public void changeRenderMode(int paramInt)
   {
-    if (this.jdField_a_of_type_Bnco != null)
-    {
-      super.onPause();
-      if (this.jdField_a_of_type_Bncm != null) {
-        this.jdField_a_of_type_Bncm.b();
-      }
-      if (this.jdField_a_of_type_Bnco != null) {
-        this.jdField_a_of_type_Bnco.a();
-      }
-    }
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    if (this.jdField_a_of_type_Bnco != null) {
-      this.jdField_a_of_type_Bnco.a(paramFloat1, paramFloat2);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Bncz == null) {}
+    if (this.builder == null) {}
     for (;;)
     {
       return;
-      this.jdField_a_of_type_Bncz.b(paramInt);
+      this.builder.setRenderMode(paramInt);
       setRenderMode(paramInt);
       if (paramInt == 0) {
-        this.jdField_a_of_type_Bncz.a(false);
+        this.builder.setOpenGyroscopeSensor(false);
       }
-      while ((this.jdField_a_of_type_Bncm != null) && (this.jdField_a_of_type_Bncz.a()))
+      while ((this.gyroscopeSensorController != null) && (this.builder.isOpenGyroscopeSensor()))
       {
-        this.jdField_a_of_type_Bncm.a();
+        this.gyroscopeSensorController.registerGyroscopeListener();
         return;
-        this.jdField_a_of_type_Bncz.a(true);
+        this.builder.setOpenGyroscopeSensor(true);
       }
     }
   }
   
-  public void a(bncz parambncz, bnck parambnck)
+  public void changeRotate(float paramFloat1, float paramFloat2)
   {
-    if (parambncz == null) {
-      return;
+    if (this.panoramaRenderer != null) {
+      this.panoramaRenderer.setRotate(paramFloat1, paramFloat2);
     }
-    this.jdField_a_of_type_Bncz = parambncz;
-    setEGLContextClientVersion(2);
-    this.jdField_a_of_type_Bnco = new bnco(parambncz, parambnck);
-    setRenderer(this.jdField_a_of_type_Bnco);
-    setRenderMode(parambncz.c());
-    if (parambncz.b()) {
-      setOnTouchListener(new bncp(this, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bncl, parambncz));
-    }
-    this.jdField_a_of_type_Bncm = new bncm(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bncn);
   }
   
   public String getRenderThreadName()
@@ -101,30 +69,60 @@ public class PanoramaView
   
   public void onPause()
   {
-    if ((this.jdField_a_of_type_Bnco != null) && (this.jdField_a_of_type_Bncz != null))
+    if ((this.panoramaRenderer != null) && (this.builder != null))
     {
       super.onPause();
-      if ((this.jdField_a_of_type_Bncm != null) && (this.jdField_a_of_type_Bncz.a())) {
-        this.jdField_a_of_type_Bncm.b();
+      if ((this.gyroscopeSensorController != null) && (this.builder.isOpenGyroscopeSensor())) {
+        this.gyroscopeSensorController.unregisterGyroscopeListener();
+      }
+    }
+  }
+  
+  public void onRecycled()
+  {
+    if (this.panoramaRenderer != null)
+    {
+      super.onPause();
+      if (this.gyroscopeSensorController != null) {
+        this.gyroscopeSensorController.unregisterGyroscopeListener();
+      }
+      if (this.panoramaRenderer != null) {
+        this.panoramaRenderer.onRecycled();
       }
     }
   }
   
   public void onResume()
   {
-    if ((this.jdField_a_of_type_Bnco != null) && (this.jdField_a_of_type_Bncz != null))
+    if ((this.panoramaRenderer != null) && (this.builder != null))
     {
-      this.jdField_a_of_type_Bncz.a(true);
+      this.builder.setTextureChange(true);
       super.onResume();
-      if ((this.jdField_a_of_type_Bncm != null) && (this.jdField_a_of_type_Bncz.a())) {
-        this.jdField_a_of_type_Bncm.a();
+      if ((this.gyroscopeSensorController != null) && (this.builder.isOpenGyroscopeSensor())) {
+        this.gyroscopeSensorController.registerGyroscopeListener();
       }
     }
   }
   
-  public void setOnPanoramaClickListener(bncj parambncj)
+  public void setOnPanoramaClickListener(OnPanoramaClickListener paramOnPanoramaClickListener)
   {
-    this.jdField_a_of_type_Bncj = parambncj;
+    this.onPanoramaClickListener = paramOnPanoramaClickListener;
+  }
+  
+  public void startShowPanorama(PanoramaConfig.Builder paramBuilder, OnPanoramaLoadingListener paramOnPanoramaLoadingListener)
+  {
+    if (paramBuilder == null) {
+      return;
+    }
+    this.builder = paramBuilder;
+    setEGLContextClientVersion(2);
+    this.panoramaRenderer = new PanoramaRenderer(paramBuilder, paramOnPanoramaLoadingListener);
+    setRenderer(this.panoramaRenderer);
+    setRenderMode(paramBuilder.getRenderMode());
+    if (paramBuilder.isOpenTouchMove()) {
+      setOnTouchListener(new TouchController(this, this.context, this.panoramaTouchListener, paramBuilder));
+    }
+    this.gyroscopeSensorController = new GyroscopeSensorController(this.context, this.sensorChangeListener);
   }
 }
 

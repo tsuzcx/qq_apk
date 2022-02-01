@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.apkg;
 
 import android.text.TextUtils;
-import bhsr;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandUtil;
+import com.tencent.mobileqq.utils.StringUtil;
 import common.config.service.QzoneConfig;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -155,7 +155,7 @@ public class AppConfigInfo
   
   public String getRootPath(String paramString)
   {
-    if (bhsr.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return "";
     }
     String str2 = AppBrandUtil.getUrlWithoutParams(paramString);

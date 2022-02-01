@@ -1,41 +1,44 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class xmr
-  extends xmt
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  public ErrorMessage a;
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View b;
   
-  public xmr(xms paramxms, @Nullable ErrorMessage paramErrorMessage)
+  public xmr(StoryMessageListActivity paramStoryMessageListActivity, View paramView)
   {
-    super(paramxms);
-    if (paramErrorMessage == null) {}
-    for (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(97000001, "loading");; this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage)
-    {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      return;
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370267);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370295));
+    this.b = paramView.findViewById(2131371380);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371368));
+    paramView.setOnClickListener(this);
+    paramView.setOnLongClickListener(this);
   }
   
-  public boolean a()
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000000;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public boolean b()
+  public void onClick(View paramView)
   {
-    return (!a()) && (!c());
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.onItemClick(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public boolean c()
+  public boolean onLongClick(View paramView)
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 97000001;
-  }
-  
-  public String toString()
-  {
-    return "fg{g=" + this.jdField_a_of_type_Xms + ", em=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
+    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.onItemLongClick(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
   }
 }
 

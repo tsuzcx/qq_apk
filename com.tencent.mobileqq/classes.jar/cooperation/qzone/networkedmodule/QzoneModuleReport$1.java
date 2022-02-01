@@ -1,17 +1,17 @@
 package cooperation.qzone.networkedmodule;
 
-import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
 
-public final class QzoneModuleReport$1
+final class QzoneModuleReport$1
   implements Runnable
 {
-  public QzoneModuleReport$1(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap, String paramString3) {}
+  QzoneModuleReport$1(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap, String paramString3) {}
   
   public void run()
   {
-    bdmc.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, this.c);
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.val$uin, this.val$tagName, this.val$success, this.val$duration, this.val$size, this.val$params, this.val$reserved);
   }
 }
 

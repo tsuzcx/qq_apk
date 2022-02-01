@@ -1,20 +1,57 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngSoLoader;
+import com.tencent.image.LocaleFileDownloader;
+import com.tencent.image.ProtocolDownloader;
+import com.tencent.image.URLDrawableParams;
+import com.tencent.mobileqq.transfile.FileAssistantDownloader;
+import com.tencent.mobileqq.transfile.HttpDownloader;
+import com.tencent.mobileqq.vas.VasApngIPCModule;
 
-class mxe
-  implements DialogInterface.OnClickListener
+public class mxe
+  extends URLDrawableParams
 {
-  mxe(mxc parammxc, Activity paramActivity, int paramInt1, String paramString, int paramInt2) {}
+  private ProtocolDownloader jdField_a_of_type_ComTencentImageProtocolDownloader;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public mxe(AVGameAppInterface paramAVGameAppInterface, Context paramContext)
   {
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_Mxc.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
-      return;
+    super(paramContext);
+  }
+  
+  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
+  {
+    if ("fileassistantimage".equals(paramString)) {
+      return new FileAssistantDownloader(BaseApplicationImpl.getApplication());
     }
-    this.jdField_a_of_type_Mxc.a(this.jdField_a_of_type_AndroidAppActivity);
+    if ("file".equalsIgnoreCase(paramString)) {
+      return new LocaleFileDownloader();
+    }
+    if (this.jdField_a_of_type_ComTencentImageProtocolDownloader == null) {
+      this.jdField_a_of_type_ComTencentImageProtocolDownloader = new HttpDownloader();
+    }
+    return this.jdField_a_of_type_ComTencentImageProtocolDownloader;
+  }
+  
+  public String doGetLocalFilePath(String paramString)
+  {
+    return null;
+  }
+  
+  public ApngSoLoader getApngSoLoader()
+  {
+    return VasApngIPCModule.getInstance();
+  }
+  
+  public Drawable getDefaultLoadingDrawable()
+  {
+    return null;
+  }
+  
+  public Drawable getDefualtFailedDrawable()
+  {
+    return null;
   }
 }
 

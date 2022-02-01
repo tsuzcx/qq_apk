@@ -1,15 +1,22 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
+import android.support.annotation.NonNull;
 
 public class ydq
-  implements blmh
+  extends vko
 {
-  public ydq(StoryPickerHorizontalListView paramStoryPickerHorizontalListView) {}
+  public final int a;
+  public final long a;
+  @NonNull
+  public final ydg a;
+  public final boolean a;
+  public final long b;
   
-  public void onScrollStateChanged(int paramInt)
+  public ydq(@NonNull ydg paramydg, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    if ((paramInt == 4097) && (this.a.jdField_a_of_type_Ydt != null)) {
-      this.a.jdField_a_of_type_Ydt.a(this.a.jdField_a_of_type_Ydn.a);
-    }
+    this.jdField_a_of_type_Ydg = paramydg;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 

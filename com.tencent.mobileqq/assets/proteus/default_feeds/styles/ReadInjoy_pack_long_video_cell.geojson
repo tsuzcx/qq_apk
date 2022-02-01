@@ -1,0 +1,180 @@
+{
+    "ReadInjoy_pack_long_video_cell": {
+        "view_type": "UIView",
+        "view_id": "id_pack_long_video_cell",
+        "default_visible": "YES",
+        "layout_type": "layout_linear",
+        "event_type": "cmd_pack_card_click_report",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "wrap_content"
+        },
+        "attributes": {
+            "setAttatchInfo:": "$article_jump_url"
+        },
+        "data_attributes": {
+            "setRemoteInfo:": "$card_report_params"
+        },
+        "subviews": [
+            {
+                "view_type": "container",
+                "layout_type": "layout_relative",
+                "view_id": "id_container_cell",
+                "margin_left": "1.5",
+                "margin_right": "1.5",
+                "align_parent_right": "YES",
+                "height": {
+                    "type": "relative",
+                    "value": "284"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "160"
+                },
+                "subviews": [
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_article_large_imge",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "attributes": {
+                            "setImageWithURLString:lineup:": [
+                                "$article_large_imge_url",
+                                "0"
+                            ]
+                        }
+                    },
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_article_image_mask",
+                        "default_visible": "YES",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "ReadInJoy/Mask.png"
+                        }
+                    },
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_top_left_mask",
+                        "default_visible": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "left_top_round_corner"
+                        }
+                    },
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_bottom_left_mask",
+                        "default_visible": "YES",
+                        "align_parent_bottom": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "left_bottom_round_corner"
+                        }
+                    },
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_top_right_mask",
+                        "default_visible": "YES",
+                        "align_parent_right": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "right_top_round_corner"
+                        }
+                    },
+                    {
+                        "view_type": "UIImageView",
+                        "view_id": "id_bottom_right_mask",
+                        "default_visible": "YES",
+                        "align_parent_right": "YES",
+                        "align_parent_bottom": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "right_bottom_round_corner"
+                        }
+                    },
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_big_play_icon",
+                        "align_parent_center": "YES",
+                        "height": {
+                            "type": "relative",
+                            "value": "44"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "44"
+                        },
+                        "attributes": {
+                            "setImageWithURLString:lineup:": [
+                                "http://pub.idqqimg.com/pc/misc/files/20200609/9a711edcef31434296a24ad323932e46.png",
+                                "0"
+                            ],
+                            "setAttatchInfo:": "$video_play_duration"
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_duration_time_label",
+                        "align_parent_right": "YES",
+                        "align_parent_bottom": "YES",
+                        "margin_bottom": "8",
+                        "margin_right": "8",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setTextAlignmentString:": "1",
+                            "setText:": "$video_play_duration",
+                            "setTextColorString:": "#FFFFFF",
+                            "setFontSizeString:": "10",
+                            "setNumberOfLinesString:": "1"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

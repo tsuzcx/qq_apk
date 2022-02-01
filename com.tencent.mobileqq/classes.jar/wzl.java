@@ -1,38 +1,15 @@
-public abstract class wzl
+import android.app.Activity;
+import android.content.Intent;
+
+public class wzl
+  extends wrx
 {
-  protected int a;
-  protected wzj a;
+  public wzl(wzk paramwzk) {}
   
-  public abstract void a();
-  
-  public void a(wzj paramwzj)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Wzj = paramwzj;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Int < 1)
-    {
-      this.jdField_a_of_type_Int += 1;
-      yuk.d("Q.qqstory.net:BatchNetHandler", String.format("retry request , retry count = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-      a();
-      return true;
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Wzj != null) {
-      this.jdField_a_of_type_Wzj.a(this);
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Wzj != null) {
-      this.jdField_a_of_type_Wzj.b(this);
+    if ((paramInt1 == 66666) && (paramInt2 == -1)) {
+      this.a.a.b().finish();
     }
   }
 }

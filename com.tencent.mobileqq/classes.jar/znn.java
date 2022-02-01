@@ -1,12 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class znn
-  implements View.OnClickListener
+public abstract interface znn
 {
-  znn(znm paramznm) {}
-  
-  public void onClick(View paramView) {}
+  public abstract boolean onClick(String paramString);
 }
 
 

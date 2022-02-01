@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment;
 
 public class ajjp
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnCancelListener
 {
-  public ajjp(NewFriendActivity paramNewFriendActivity) {}
+  public ajjp(MiniMsgTabFragment paramMiniMsgTabFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a = null;
+    MiniMsgTabFragment.a(this.a, -1, null);
   }
 }
 

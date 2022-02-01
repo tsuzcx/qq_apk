@@ -1,29 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-
-public class yur
-  implements DialogInterface.OnKeyListener
+final class yur
 {
-  public yur(CommonPicUploadFragment paramCommonPicUploadFragment) {}
+  public float a;
+  public float b;
+  public float c;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public yur(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (paramInt == 84) {
-      return true;
-    }
-    if (paramInt == 4)
-    {
-      this.a.a();
-      paramDialogInterface = this.a.a;
-      paramKeyEvent = this.a.a;
-      paramDialogInterface.setResult(0);
-      this.a.a.finish();
-      return true;
-    }
-    return false;
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
   }
 }
 

@@ -1,21 +1,25 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.util.List;
 
-class nrm
-  implements Animation.AnimationListener
+public final class nrm
+  extends Handler
 {
-  nrm(nrk paramnrk) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public nrm(Looper paramLooper, nro paramnro)
   {
-    this.a.a.a.setVisibility(0);
-    this.a.a.a.startAnimation(this.a.b);
+    super(paramLooper);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.arg1 == 0)
+    {
+      this.a.a(paramMessage.arg1, (List)paramMessage.obj);
+      return;
+    }
+    this.a.a(paramMessage.arg1, null);
+  }
 }
 
 

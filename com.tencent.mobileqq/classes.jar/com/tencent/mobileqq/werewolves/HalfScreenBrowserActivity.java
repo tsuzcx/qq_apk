@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.werewolves;
 
 import Override;
-import agej;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -17,10 +16,11 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bhkd;
-import bitw;
+import bgzy;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.WebView;
 
@@ -49,8 +49,9 @@ public class HalfScreenBrowserActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -59,12 +60,12 @@ public class HalfScreenBrowserActivity
     setImmersiveStatus(0);
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bitw(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new bgzy(this));
     paramBundle = getIntent().getStringExtra("url");
     FrameLayout localFrameLayout = new FrameLayout(this);
     this.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130840398));
-    Object localObject = new FrameLayout.LayoutParams(agej.a(25.0F, getResources()), agej.a(25.0F, getResources()));
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130840436));
+    Object localObject = new FrameLayout.LayoutParams(AIOUtils.dp2px(25.0F, getResources()), AIOUtils.dp2px(25.0F, getResources()));
     ((FrameLayout.LayoutParams)localObject).gravity = 17;
     localFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetProgressBar, (ViewGroup.LayoutParams)localObject);
     int i;
@@ -76,7 +77,7 @@ public class HalfScreenBrowserActivity
       int j;
       if (i != 0)
       {
-        j = agej.a(338.0F, getResources());
+        j = AIOUtils.dp2px(338.0F, getResources());
         localObject = new RelativeLayout.LayoutParams(-1, j);
         ((RelativeLayout.LayoutParams)localObject).addRule(12);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localFrameLayout, (ViewGroup.LayoutParams)localObject);
@@ -87,10 +88,10 @@ public class HalfScreenBrowserActivity
       }
       try
       {
-        findViewById(2131376731).setVisibility(8);
+        findViewById(2131376501).setVisibility(8);
         label226:
         this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramBundle);
-        bhkd.anim(this, false, true);
+        AlbumUtil.anim(this, false, true);
         return true;
         i = 0;
         continue;

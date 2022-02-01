@@ -1,18 +1,30 @@
-import android.view.View;
-import android.widget.BaseAdapter;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qqmini.nativePlugins.TroopAlbumPlugin.2.1;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import cooperation.qzone.QzonePluginProxyActivity;
+import mqq.app.AppRuntime;
 
-public abstract class bjai
-  extends BaseAdapter
+public class bjai
+  implements DialogInterface.OnClickListener
 {
-  public abstract int a();
+  public bjai(TroopAlbumPlugin.2.1 param1) {}
   
-  public abstract void a(View paramView, int paramInt);
-  
-  public abstract boolean a(int paramInt);
-  
-  public boolean a(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return false;
+    paramDialogInterface.dismiss();
+    paramDialogInterface = BaseApplicationImpl.sApplication.getRuntime().getAccount();
+    Intent localIntent = new Intent();
+    String str = bjae.f(this.a.a.a).getAttachedActivity().getResources().getString(2131716670);
+    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
+    localIntent.putExtra("aid", "jhan_plxz");
+    localIntent.putExtra("success_tips", str);
+    localIntent.putExtra("direct_go", true);
+    QzonePluginProxyActivity.launchPluingActivityForResult(bjae.g(this.a.a.a).getAttachedActivity(), paramDialogInterface, localIntent, 4);
   }
 }
 

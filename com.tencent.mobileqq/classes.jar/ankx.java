@@ -1,38 +1,33 @@
-import com.tencent.common.app.AppInterface;
+import AccostSvc.MsgItem;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONObject;
 
 class ankx
 {
   public int a;
+  public long a;
   public String a;
-  public final List<anky> a;
+  public ArrayList<MsgItem> a;
+  public byte[] a;
+  public long b;
+  public String b;
+  public long c;
+  public long d;
+  public long e;
   
-  public ankx()
+  public ankx(long paramLong1, int paramInt, long paramLong2, long paramLong3, ArrayList<MsgItem> paramArrayList, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong2;
+    this.c = paramLong3;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public JSONObject a(String paramString, AppInterface paramAppInterface)
+  public ankx(long paramLong, ArrayList<MsgItem> paramArrayList)
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramAppInterface == null)) {
-      return null;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((anky)localIterator.next()).a(paramString, localJSONObject, paramAppInterface);
-    }
-    return localJSONObject;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mClientId:").append(this.jdField_a_of_type_Int).append(" mCmdSSOName:").append(this.jdField_a_of_type_JavaLangString).append(" mParameters:").append(this.jdField_a_of_type_JavaUtilList);
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
 }
 

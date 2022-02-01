@@ -1,8 +1,15 @@
-public abstract interface aadk<T>
+import com.tencent.mobileqq.pb.PBStringField;
+
+public final class aadk
 {
-  public abstract void a(aadm<T> paramaadm);
+  public PBStringField a;
+  public PBStringField b;
   
-  public abstract void b();
+  public aadk(PBStringField paramPBStringField1, PBStringField paramPBStringField2)
+  {
+    this.a = paramPBStringField1;
+    this.b = paramPBStringField2;
+  }
 }
 
 

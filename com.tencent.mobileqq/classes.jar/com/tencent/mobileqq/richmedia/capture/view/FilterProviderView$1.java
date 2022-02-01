@@ -3,7 +3,7 @@ package com.tencent.mobileqq.richmedia.capture.view;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class FilterProviderView$1
+class FilterProviderView$1
   implements Runnable
 {
   FilterProviderView$1(FilterProviderView paramFilterProviderView) {}

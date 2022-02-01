@@ -1,24 +1,26 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class wxv
-  extends QQUIEventReceiver<wxp, xqa>
+final class wxv
+  implements URLDrawable.URLDrawableListener
 {
-  public wxv(@NonNull wxp paramwxp)
+  wxv(ImageView paramImageView, Drawable paramDrawable) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super(paramwxp);
+    xvv.d("BannerVideoInfoWidget", "failed to parse the url drawable, error " + paramThrowable);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
   
-  public void a(@NonNull wxp paramwxp, @NonNull xqa paramxqa)
-  {
-    if ((paramwxp.a.a().equals(paramxqa.jdField_a_of_type_JavaLangString)) && ((paramxqa.jdField_a_of_type_Xms instanceof xng))) {
-      paramwxp.a(((xng)paramxqa.jdField_a_of_type_Xms).a(), paramxqa.b);
-    }
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public Class acceptEventClass()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return xqa.class;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
   }
 }
 

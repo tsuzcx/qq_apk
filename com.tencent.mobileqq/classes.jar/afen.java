@@ -1,18 +1,12 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class afen
-  implements View.OnClickListener
 {
-  public afen(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public int a;
+  public String a;
   
-  public void onClick(View paramView)
+  private afen(afej paramafej, String paramString, int paramInt)
   {
-    this.a.a.cancel();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

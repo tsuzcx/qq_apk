@@ -1750,11 +1750,11 @@ public class g
     //   2607: pop
     //   2608: aload_0
     //   2609: getfield 88	com/tencent/mobileqq/msf/core/g:s	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   2612: invokevirtual 227	com/tencent/mobileqq/msf/core/MsfCore:getSsoRespHandler	()Lcom/tencent/mobileqq/msf/core/ak;
+    //   2612: invokevirtual 227	com/tencent/mobileqq/msf/core/MsfCore:getSsoRespHandler	()Lcom/tencent/mobileqq/msf/core/al;
     //   2615: aload_1
     //   2616: aload_3
     //   2617: iload 6
-    //   2619: invokevirtual 709	com/tencent/mobileqq/msf/core/ak:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;I)Z
+    //   2619: invokevirtual 709	com/tencent/mobileqq/msf/core/al:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/qphone/base/remote/FromServiceMsg;I)Z
     //   2622: istore 9
     //   2624: iload 9
     //   2626: ifne +40 -> 2666

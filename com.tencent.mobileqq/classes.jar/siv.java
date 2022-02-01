@@ -1,26 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 import com.tencent.qphone.base.util.QLog;
 
-public class siv
-  extends AnimatorListenerAdapter
+class siv
+  implements DialogInterface.OnShowListener
 {
-  public siv(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  siv(sir paramsir) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    super.onAnimationEnd(paramAnimator);
-    ReadInJoyListViewGroup.a(this.a).setLayerType(0, null);
     if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
+      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "mDisLikeActionSheet onShow() on VideoChannel");
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
+    sig.a(this.a.a).getWindow().clearFlags(8);
   }
 }
 

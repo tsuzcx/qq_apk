@@ -1,8 +1,8 @@
 package com.tencent.biz.webviewplugin;
 
-import abea;
-import bioy;
-import oej;
+import aaal;
+import bgve;
+import ofw;
 
 class BusinessReportPlugin$1$1
   implements Runnable
@@ -11,7 +11,7 @@ class BusinessReportPlugin$1$1
   
   public void run()
   {
-    oej.a(this.jdField_a_of_type_ComTencentBizWebviewpluginBusinessReportPlugin$1.this$0.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.b);
+    ofw.a(this.jdField_a_of_type_ComTencentBizWebviewpluginBusinessReportPlugin$1.this$0.mRuntime.a(), this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

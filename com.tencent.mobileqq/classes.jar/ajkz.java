@@ -1,8 +1,15 @@
-import android.widget.Button;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 
 public class ajkz
+  extends axkt
 {
-  public Button a;
+  public ajkz(AvatarPendantActivity paramAvatarPendantActivity) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    AvatarPendantActivity.a(this.a);
+  }
 }
 
 

@@ -1,23 +1,17 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
 
 public class bffp
-  implements Animation.AnimationListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bffp(AudioRecordFragment paramAudioRecordFragment) {}
+  public bffp(RedDotAnimateView paramRedDotAnimateView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-    this.a.jdField_b_of_type_AndroidViewView.setBackgroundColor(2130706432);
+    this.a.c = ((int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * 255.0F));
+    this.a.invalidate();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,36 +1,50 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupStoryInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.support.annotation.NonNull;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 public class xev
-  extends wov
+  extends QQUIEventReceiver<StoryPickerFragment, wrv>
 {
-  public List<StoryVideoItem> a;
-  
-  public xev(qqstory_service.RspBatchGetVideoInfo paramRspBatchGetVideoInfo)
+  public xev(@NonNull StoryPickerFragment paramStoryPickerFragment)
   {
-    super(paramRspBatchGetVideoInfo.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (paramRspBatchGetVideoInfo.vid_info_list.has())
+    super(paramStoryPickerFragment);
+  }
+  
+  public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull wrv paramwrv)
+  {
+    paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.clear();
+    paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.addAll(paramwrv.jdField_a_of_type_JavaUtilArrayList);
+    List localList = paramStoryPickerFragment.jdField_a_of_type_Xff.a();
+    int i = 0;
+    while (i < localList.size())
     {
-      paramRspBatchGetVideoInfo = paramRspBatchGetVideoInfo.vid_info_list.get().iterator();
-      while (paramRspBatchGetVideoInfo.hasNext())
+      Iterator localIterator = ((VideoCollectionItem)localList.get(i)).collectionVideoUIItemList.iterator();
+      while (localIterator.hasNext())
       {
-        qqstory_struct.GroupStoryInfo localGroupStoryInfo = (qqstory_struct.GroupStoryInfo)paramRspBatchGetVideoInfo.next();
-        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-        localStoryVideoItem.convertFrom("Q.qqstory.shareGroup:GetShareGroupVideoInfoResponse", localGroupStoryInfo);
-        this.jdField_a_of_type_JavaUtilList.add(localStoryVideoItem);
+        xlu localxlu = (xlu)localIterator.next();
+        if (paramwrv.jdField_a_of_type_JavaUtilArrayList.contains(localxlu.jdField_a_of_type_JavaLangString)) {
+          localxlu.jdField_a_of_type_Boolean = true;
+        } else {
+          localxlu.jdField_a_of_type_Boolean = false;
+        }
       }
+      i += 1;
+    }
+    paramStoryPickerFragment.c();
+    if (paramwrv.jdField_a_of_type_Boolean) {
+      paramStoryPickerFragment.rightViewText.performClick();
     }
   }
   
-  public String toString()
+  public Class acceptEventClass()
   {
-    return "GetShareGroupVideoInfoResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", mVideoItemList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    return wrv.class;
   }
 }
 

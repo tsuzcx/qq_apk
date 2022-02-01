@@ -5,6 +5,7 @@ import NS_MINI_INTERFACE.INTERFACE.StFriendRanking;
 import NS_MINI_INTERFACE.INTERFACE.StModuleInfo;
 import NS_MINI_INTERFACE.INTERFACE.StRankingList;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
+import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -13,7 +14,6 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anzj;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -45,18 +45,18 @@ class MiniAppDesktopAdapter$FriendsPkViewHolder
   public MiniAppDesktopAdapter$FriendsPkViewHolder(View paramView)
   {
     super(paramView);
-    this.mBackground = ((ImageView)paramView.findViewById(2131371041));
-    this.mTitleIcon = ((ImageView)paramView.findViewById(2131371050));
-    this.mTitle = ((TextView)paramView.findViewById(2131371049));
-    this.mMoreIcon = ((ImageView)paramView.findViewById(2131371051));
-    this.mPkButton = ((ImageView)paramView.findViewById(2131371043));
-    this.mTopAppIcon = ((ImageView)paramView.findViewById(2131371052));
-    this.mTopAppName = ((TextView)paramView.findViewById(2131371055));
-    this.mTopAppDesc = ((TextView)paramView.findViewById(2131371054));
-    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131371045)));
-    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131371046)));
-    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131371047)));
-    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131371048)));
+    this.mBackground = ((ImageView)paramView.findViewById(2131371009));
+    this.mTitleIcon = ((ImageView)paramView.findViewById(2131371018));
+    this.mTitle = ((TextView)paramView.findViewById(2131371017));
+    this.mMoreIcon = ((ImageView)paramView.findViewById(2131371019));
+    this.mPkButton = ((ImageView)paramView.findViewById(2131371011));
+    this.mTopAppIcon = ((ImageView)paramView.findViewById(2131371020));
+    this.mTopAppName = ((TextView)paramView.findViewById(2131371023));
+    this.mTopAppDesc = ((TextView)paramView.findViewById(2131371022));
+    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131371013)));
+    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131371014)));
+    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131371015)));
+    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131371016)));
     ((MiniAppDesktopAdapter.FriendsPkViewHolder.Item)this.mRanking.get(0)).mCrown.setVisibility(0);
     ((MiniAppDesktopAdapter.FriendsPkViewHolder.Item)this.mRanking.get(3)).setOutOfRankStyle();
   }
@@ -66,7 +66,7 @@ class MiniAppDesktopAdapter$FriendsPkViewHolder
     Object localObject1 = paramDesktopFriendsPkModuleInfo.moduleInfo;
     Object localObject2 = paramDesktopFriendsPkModuleInfo.ranking;
     Object localObject3 = URLDrawable.URLDrawableOptions.obtain();
-    Drawable localDrawable = this.itemView.getContext().getResources().getDrawable(2130848407);
+    Drawable localDrawable = this.itemView.getContext().getResources().getDrawable(2130848318);
     ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = localDrawable;
     ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = localDrawable;
     ((URLDrawable.URLDrawableOptions)localObject3).mPlayGifImage = false;
@@ -78,7 +78,7 @@ class MiniAppDesktopAdapter$FriendsPkViewHolder
       MiniAppUtils.setImage(this.mPkButton, ((INTERFACE.StFriendRanking)localObject2).animationPic.get());
       this.mTopAppName.setText(((INTERFACE.StFriendRanking)localObject2).gameInfo.appInfo.appName.get());
       this.mTopAppIcon.setImageDrawable(MiniAppUtils.getIcon(this.itemView.getContext(), ((INTERFACE.StFriendRanking)localObject2).gameInfo.appInfo.icon.get(), true));
-      this.mTopAppDesc.setText(((INTERFACE.StFriendRanking)localObject2).friendsNum.get() + anzj.a(2131705687));
+      this.mTopAppDesc.setText(((INTERFACE.StFriendRanking)localObject2).friendsNum.get() + amtj.a(2131705917));
       int i = 0;
       int j;
       for (;;)

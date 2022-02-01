@@ -1,152 +1,23 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.mobileim.structmsg.structmsg.RspHead;
-import tencent.mobileim.structmsg.structmsg.RspNextSystemMsg;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 class aotk
-  implements bevw
+  implements afvl
 {
-  aotk(aoti paramaoti) {}
+  aotk(aotj paramaotj) {}
   
-  public void a(bevy parambevy, bevx parambevx)
+  public boolean closeView(afvi paramafvi)
   {
-    if (parambevy.a.getResultCode() != 1000)
+    if (aotj.a(this.a) != null)
     {
-      this.a.a(4006, false, null);
-      return;
+      aotj.a(this.a).hidePanel();
+      return true;
     }
-    Object localObject1;
-    int i;
-    for (;;)
-    {
-      structmsg.RspNextSystemMsg localRspNextSystemMsg;
-      Object localObject2;
-      Object localObject3;
-      MessageForSystemMsg localMessageForSystemMsg;
-      try
-      {
-        localObject1 = (anyw)aoti.b(this.a).getManager(51);
-        parambevx = aoti.c(this.a).getAccount();
-        localRspNextSystemMsg = new structmsg.RspNextSystemMsg();
-        localRspNextSystemMsg.mergeFrom((byte[])parambevy.a.getWupBuffer());
-        new StringBuilder();
-        if ((localRspNextSystemMsg == null) || (localRspNextSystemMsg.head.result.get() != 0)) {
-          this.a.a(4006, false, null);
-        }
-        parambevy = new ArrayList();
-        localObject2 = localRspNextSystemMsg.msgs.get();
-        j = ((List)localObject2).size();
-        if (!QLog.isColorLevel()) {
-          break label860;
-        }
-        QLog.e("Q.systemmsg.", 2, "<---sendGetNextFriendSystemMsg Resp : decode pb size = " + j);
-      }
-      catch (Exception parambevy)
-      {
-        int j;
-        long l3;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.systemmsg.", 2, "clearFriendSystemMsgResp exception", parambevy);
-        this.a.a(4006, false, null);
-        return;
-      }
-      if (i < j)
-      {
-        localObject3 = bcry.a(-2018);
-        ((MessageRecord)localObject3).msgtype = -2018;
-        ((MessageRecord)localObject3).selfuin = parambevx;
-        ((MessageRecord)localObject3).frienduin = antf.M;
-        ((MessageRecord)localObject3).senderuin = (((structmsg.StructMsg)((List)localObject2).get(i)).req_uin.get() + "");
-        ((MessageRecord)localObject3).istroop = 0;
-        ((MessageRecord)localObject3).time = ((structmsg.StructMsg)((List)localObject2).get(i)).msg_time.get();
-        ((MessageRecord)localObject3).isread = true;
-        localMessageForSystemMsg = (MessageForSystemMsg)localObject3;
-        localMessageForSystemMsg.structMsg = ((structmsg.StructMsg)((structmsg.StructMsg)((List)localObject2).get(i)).get());
-        ((MessageRecord)localObject3).msgData = localMessageForSystemMsg.structMsg.toByteArray();
-        localMessageForSystemMsg.parse();
-        parambevy.add(localMessageForSystemMsg);
-        i += 1;
-      }
-      else if (parambevy.size() > 0)
-      {
-        i = parambevy.size();
-        long l1 = ((MessageRecord)parambevy.get(0)).time;
-        long l2 = ((MessageRecord)parambevy.get(i - 1)).time;
-        l3 = bdzh.a().a(aoti.d(this.a));
-        localObject2 = aoti.e(this.a).a().a(antf.M, 0, l3).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (ChatMessage)((Iterator)localObject2).next();
-          if ((((ChatMessage)localObject3).time >= l2) && (((ChatMessage)localObject3).time <= l1))
-          {
-            aoti.f(this.a).a().b(antf.M, 0, ((ChatMessage)localObject3).uniseq, false);
-            ((Iterator)localObject2).remove();
-          }
-          else if ((localObject3 instanceof MessageForSystemMsg))
-          {
-            localMessageForSystemMsg = (MessageForSystemMsg)localObject3;
-            if (localMessageForSystemMsg.structMsg == null) {
-              localMessageForSystemMsg.parse();
-            }
-            String str = localMessageForSystemMsg.senderuin;
-            if ((localMessageForSystemMsg.structMsg.msg.sub_type.get() == 13) && (((anyw)localObject1).b(str)))
-            {
-              aoti.g(this.a).a().b(antf.M, 0, ((ChatMessage)localObject3).uniseq, false);
-              ((Iterator)localObject2).remove();
-            }
-          }
-        }
-        bdzh.a().a(aoti.h(this.a), l2);
-        if (parambevy.size() < 20) {
-          bdzh.a().a(true, aoti.i(this.a));
-        }
-        l2 = localRspNextSystemMsg.following_friend_seq.get();
-        l1 = l2;
-        if (l2 <= 0L) {
-          l1 = aoti.j(this.a).a().e("following_friend_seq_47");
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.systemmsg.", 2, "<---sendGetNextFriendSystemMsg : decode pb following_friend_seq" + l1);
-        }
-        aoti.k(this.a).a().e("following_friend_seq_47", l1);
-        localObject1 = aoti.m(this.a).a();
-        parambevx = String.valueOf(parambevx);
-        if ((!aoci.a(parambevy)) || (!aoti.l(this.a).isBackgroundStop)) {
-          break label865;
-        }
-      }
-    }
-    label860:
-    label865:
-    for (boolean bool = true;; bool = false)
-    {
-      ((QQMessageFacade)localObject1).a(parambevy, parambevx, bool);
-      this.a.a("handleGetSystemMsgResp", true, parambevy.size(), false, false);
-      for (;;)
-      {
-        this.a.a(4005, true, null);
-        return;
-        bdzh.a().a(true, aoti.n(this.a));
-      }
-      i = 0;
-      break;
-    }
+    return false;
+  }
+  
+  public boolean openCardView(afvi paramafvi, String paramString1, String paramString2)
+  {
+    return false;
   }
 }
 

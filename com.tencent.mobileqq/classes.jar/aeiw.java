@@ -1,22 +1,34 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeiw
-  extends aohk
+  implements View.OnClickListener
 {
-  public aeiw(Conversation paramConversation) {}
+  public aeiw(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!this.a.f) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, "VideoRedbag, onCheckRealNameRsp in conv");
-      }
-    } while ((!paramBoolean) || (paramInt != bdcy.a));
-    bhlq.a(this.a.a(), 0, null, this.a.a(2131718230), 2131718232, 2131718231, new aeix(this), new aeiy(this)).show();
+    int i = TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).getIntExtra("key_team_work_edit_type", -1);
+    if ((i != 1) && (i != 2)) {
+      i = this.a.a;
+    }
+    String str1 = this.a.getShareUrl();
+    String str2 = this.a.getShare().b();
+    Intent localIntent = new Intent(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a), TeamWorkAuthorizeSettingFragment.class);
+    if (!TextUtils.isEmpty(str2)) {
+      localIntent.putExtra("team_work_name", str2);
+    }
+    localIntent.putExtra("team_work_pad_url", str1);
+    localIntent.putExtra("team_work_pad_list_type", this.a.d);
+    PublicFragmentActivity.a(this.a.getActivity(), localIntent, TeamWorkAuthorizeSettingFragment.class);
+    this.a.a(14);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

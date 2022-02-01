@@ -1,58 +1,140 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.text.Spanned;
+import android.text.style.CharacterStyle;
+import com.tencent.mobileqq.text.QQText.EmoticonSpan;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class gj
 {
-  public static int a;
-  private static ConcurrentHashMap<String, AtomicInteger> a;
-  public static AtomicBoolean a;
-  public static AtomicInteger a;
+  private bjmo<CharacterStyle> jdField_a_of_type_Bjmo;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
   
-  static
+  public gj(CharSequence paramCharSequence)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, double paramDouble)
-  {
-    if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VasFont.Report", 2, "report not enable");
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    if ((paramCharSequence instanceof Spanned))
+    {
+      Spanned localSpanned = (Spanned)paramCharSequence;
+      paramCharSequence = (CharacterStyle[])localSpanned.getSpans(0, paramCharSequence.length(), CharacterStyle.class);
+      if ((paramCharSequence != null) && (paramCharSequence.length > 0))
+      {
+        this.jdField_a_of_type_Bjmo = new bjmo(paramCharSequence.length);
+        while (i < paramCharSequence.length)
+        {
+          Object localObject = paramCharSequence[i];
+          if (((localObject instanceof QQText.EmoticonSpan)) || ((localObject instanceof bank)))
+          {
+            int j = localSpanned.getSpanStart(localObject);
+            int k = localSpanned.getSpanEnd(localObject);
+            this.jdField_a_of_type_Bjmo.a(a(j, k), localObject);
+          }
+          i += 1;
+        }
       }
     }
-    AtomicInteger localAtomicInteger1;
-    long l3;
-    int i;
+  }
+  
+  private static int a(long paramLong)
+  {
+    return (int)(paramLong >>> 32);
+  }
+  
+  private static long a(int paramInt1, int paramInt2)
+  {
+    return (paramInt1 << 32) + (0xFFFFFFFF & paramInt2);
+  }
+  
+  private void a(String paramString, int paramInt1, int paramInt2)
+  {
+    QLog.e("ETTextView", 1, paramString + ":" + paramInt1 + "," + paramInt2 + " > " + this.jdField_a_of_type_JavaLangCharSequence.length() + ":" + this.jdField_a_of_type_JavaLangCharSequence);
+  }
+  
+  private static int b(long paramLong)
+  {
+    return (int)(0xFFFFFFFF & paramLong);
+  }
+  
+  public int a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaLangCharSequence == null) {}
     do
     {
-      return;
-      AtomicInteger localAtomicInteger2 = (AtomicInteger)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      localAtomicInteger1 = localAtomicInteger2;
-      if (localAtomicInteger2 == null)
+      return paramInt;
+      if ((paramInt < 0) || (paramInt > this.jdField_a_of_type_JavaLangCharSequence.length()))
       {
-        localAtomicInteger1 = new AtomicInteger();
-        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localAtomicInteger1);
+        if (paramInt > 0) {
+          a("convertToGraphIndex", paramInt, 0);
+        }
+        return -1;
       }
-      long l1 = BaseApplicationImpl.getApplication().getSharedPreferences("font_report_sp", 0).getLong(paramString, 0L);
-      long l2 = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() * 60 * 60 * 1000;
-      l3 = System.currentTimeMillis();
-      if (l3 - l1 <= l2) {
+    } while (this.jdField_a_of_type_Bjmo == null);
+    int k = this.jdField_a_of_type_Bjmo.a();
+    int j = 0;
+    int i = paramInt;
+    while (j < k)
+    {
+      long l = this.jdField_a_of_type_Bjmo.a(j);
+      int m = a(l);
+      int n = b(l);
+      if (m >= paramInt) {
+        return i;
+      }
+      if (n <= paramInt)
+      {
+        j += 1;
+        i -= n - m - 1;
+      }
+      else
+      {
+        return i - (paramInt - m);
+      }
+    }
+    return i;
+  }
+  
+  public int b(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaLangCharSequence == null) {
+      return paramInt;
+    }
+    if ((paramInt < 0) || (paramInt > this.jdField_a_of_type_JavaLangCharSequence.length()))
+    {
+      if (paramInt > 0) {
+        a("convertToTextIndex1", paramInt, 0);
+      }
+      return -1;
+    }
+    int j;
+    int i;
+    int n;
+    if (this.jdField_a_of_type_Bjmo != null)
+    {
+      int m = this.jdField_a_of_type_Bjmo.a();
+      j = 0;
+      i = paramInt;
+      k = i;
+      if (j < m)
+      {
+        long l = this.jdField_a_of_type_Bjmo.a(j);
+        k = a(l);
+        n = b(l);
+        if (k < i) {
+          break label127;
+        }
+      }
+    }
+    for (int k = i;; k = paramInt)
+    {
+      if (k > this.jdField_a_of_type_JavaLangCharSequence.length())
+      {
+        a("convertToTextIndex2", paramInt, k);
+        return -1;
+        label127:
+        j += 1;
+        i = n - k - 1 + i;
         break;
       }
-      i = localAtomicInteger1.incrementAndGet();
-    } while (i != jdField_a_of_type_Int);
-    VasWebviewUtil.reportFontPerformance(paramString, paramInt1, paramInt2, paramInt3, paramDouble, i);
-    BaseApplicationImpl.getApplication().getSharedPreferences("font_report_sp", 0).edit().putLong(paramString, l3).commit();
-    return;
-    localAtomicInteger1.set(0);
+      return k;
+    }
   }
 }
 

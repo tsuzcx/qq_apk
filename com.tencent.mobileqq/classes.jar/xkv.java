@@ -1,24 +1,10 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
-public class xkv
-  extends QQUIEventReceiver<StoryPlayerActivity, xku>
+public abstract interface xkv
 {
-  public xkv(@NonNull StoryPlayerActivity paramStoryPlayerActivity)
-  {
-    super(paramStoryPlayerActivity);
-  }
+  public abstract void a(String paramString, List<xlu> paramList);
   
-  public void a(@NonNull StoryPlayerActivity paramStoryPlayerActivity, @NonNull xku paramxku)
-  {
-    paramStoryPlayerActivity.b = paramxku.a;
-  }
-  
-  public Class acceptEventClass()
-  {
-    return xku.class;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

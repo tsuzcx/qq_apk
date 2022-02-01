@@ -1,18 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:gravity="center" android:layout_gravity="center" android:id="@id/kqp" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/an" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/an" android:text="@string/wu9" android:maxLines="1" android:drawablePadding="4.0dip" />
-    <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/kqo" android:layout_width="251.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/an" android:layout_marginTop="14.0dip" android:layout_marginRight="@dimen/an">
-        <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:layout_gravity="bottom|center|right" android:id="@id/kr7" android:visibility="gone" android:layout_width="71.5dip" android:layout_height="74.0dip" />
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <LinearLayout android:orientation="vertical" android:id="@id/kqn" android:background="@drawable/bj6" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/krq" android:paddingTop="5.0dip" android:paddingRight="7.0dip" android:paddingBottom="4.0dip" android:visibility="visible" android:layout_width="228.0dip" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginTop="6.0dip" android:maxHeight="104.0dip" android:text="@string/wu8" android:maxLines="2" />
-                <ViewStub android:layout_gravity="center_horizontal" android:id="@id/krr" android:layout="@layout/cgo" android:layout_width="228.0dip" android:layout_height="128.0dip" android:layout_marginTop="3.0dip" android:layout_marginBottom="12.0dip" />
-                <ViewStub android:layout_gravity="center_horizontal" android:id="@id/krp" android:layout="@layout/cgn" android:layout_width="228.0dip" android:layout_height="128.0dip" android:layout_marginTop="3.0dip" android:layout_marginBottom="12.0dip" />
-            </LinearLayout>
-            <LinearLayout android:background="@drawable/bj4" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:ellipsize="end" android:gravity="center_vertical" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="14.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:text="@string/wrg" android:maxLines="1" />
-            </LinearLayout>
-        </LinearLayout>
-    </FrameLayout>
-</LinearLayout>
+<com.tencent.avgame.gameroom.stage.guesstext.GuessTextStageView android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

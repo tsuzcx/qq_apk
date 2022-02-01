@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
+import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import anzj;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.mini.apkg.FirstPageInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -17,8 +17,6 @@ import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopSearchInfo;
 import com.tencent.mobileqq.mini.entry.search.ui.MiniAppSearchFragment;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.mobileqq.mini.sdk.LaunchParam;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import common.config.service.QzoneConfig;
@@ -51,7 +49,7 @@ class MiniAppDesktopAdapter$SearchViewHolder$1
     }
     for (;;)
     {
-      localObject = anzj.a(2131705686);
+      localObject = amtj.a(2131705916);
       if (MiniAppDesktopAdapter.SearchViewHolder.access$3000(this.this$0).getText() != null) {
         localObject = MiniAppDesktopAdapter.SearchViewHolder.access$3000(this.this$0).getText().toString();
       }
@@ -67,11 +65,9 @@ class MiniAppDesktopAdapter$SearchViewHolder$1
       if ((MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0) == null) || (MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0).mAppInfo == null)) {
         QLog.e("MiniAppDesktopAdapter", 1, "click search bar searchInfo is null");
       }
-      localObject = new LaunchParam();
-      ((LaunchParam)localObject).scene = 3006;
       try
       {
-        MiniAppController.launchMiniAppByAppInfo((Activity)this.val$activity.get(), MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0).mAppInfo, (LaunchParam)localObject);
+        MiniAppDesktopAdapter.startMiniApp((Activity)this.val$activity.get(), MiniAppDesktopAdapter.SearchViewHolder.access$2900(this.this$0).mAppInfo, 3006);
       }
       catch (Exception localException)
       {

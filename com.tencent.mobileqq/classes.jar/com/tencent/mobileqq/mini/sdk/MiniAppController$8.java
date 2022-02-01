@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.sdk;
 
-import avsm;
+import aufo;
 
 final class MiniAppController$8
   implements Runnable

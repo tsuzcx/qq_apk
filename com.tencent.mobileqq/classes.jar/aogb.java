@@ -1,33 +1,14 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.List;
 
-class aogb
-  implements BusinessObserver
+public abstract interface aogb
 {
-  aogb(aoga paramaoga, long paramLong) {}
+  public abstract String a();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Aoga.a.append(2, Boolean.valueOf(false));
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendTroopManagerImp", 2, "getRecommendTroopFromServer onReceive :" + paramBoolean);
-    }
-    if ((paramBoolean) && (paramBundle != null))
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle == null) {
-        break label79;
-      }
-      aoga.a(this.jdField_a_of_type_Aoga, 2, this.jdField_a_of_type_Long, paramBundle);
-    }
-    label79:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("RecommendTroopManagerImp", 2, "getRecommendTroopFromServer success data is null");
-  }
+  public abstract List<String> a();
+  
+  public abstract String b();
+  
+  public abstract String c();
 }
 
 

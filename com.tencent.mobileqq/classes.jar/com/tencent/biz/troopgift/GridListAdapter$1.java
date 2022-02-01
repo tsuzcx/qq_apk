@@ -1,22 +1,22 @@
 package com.tencent.biz.troopgift;
 
-import aawd;
-import aawe;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.GradientDrawable;
 import android.widget.LinearLayout;
-import bhgr;
+import com.tencent.mobileqq.util.DisplayUtil;
+import zsq;
+import zsr;
 
 public class GridListAdapter$1
   implements Runnable
 {
-  public GridListAdapter$1(aawd paramaawd, aawe paramaawe) {}
+  public GridListAdapter$1(zsq paramzsq, zsr paramzsr) {}
   
   public void run()
   {
-    int i = bhgr.a(this.this$0.a, 5.0F);
-    new Paint().setTextSize(bhgr.a(this.this$0.a, 11.0F));
+    int i = DisplayUtil.dip2px(this.this$0.a, 5.0F);
+    new Paint().setTextSize(DisplayUtil.dip2px(this.this$0.a, 11.0F));
     int j = this.a.a.getWidth();
     int k = this.a.a.getHeight();
     if ((j == 0) || (k == 0)) {

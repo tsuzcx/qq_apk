@@ -1,9 +1,6 @@
-import android.widget.RelativeLayout;
-
-public class asml
-  extends aslu
+public abstract interface asml
 {
-  RelativeLayout[] a;
+  public abstract String b();
 }
 
 

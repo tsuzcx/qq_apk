@@ -1,23 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import cooperation.qzone.share.QZoneShareActivity;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
 
 public class bngx
-  implements View.OnTouchListener
+  implements bngy
 {
-  public bngx(QZoneShareActivity paramQZoneShareActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(List<bngv> paramList, DoodleView paramDoodleView)
   {
-    this.a.a();
-    if ((!this.a.c) && (this.a.a != null))
-    {
-      this.a.a.setHint("");
-      this.a.c = true;
-    }
-    return false;
+    bnfz localbnfz = new bnfz(paramDoodleView);
+    bnfx localbnfx = new bnfx(paramDoodleView);
+    bngj localbngj = new bngj(paramDoodleView);
+    paramDoodleView = new bngn(paramDoodleView);
+    paramList.add(localbnfz);
+    paramList.add(localbnfx);
+    paramList.add(localbngj);
+    paramList.add(paramDoodleView);
   }
 }
 

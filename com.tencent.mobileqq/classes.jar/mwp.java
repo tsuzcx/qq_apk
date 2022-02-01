@@ -1,16 +1,10 @@
-import android.graphics.drawable.Drawable;
-
-public class mwp
+public abstract interface mwp
 {
-  public Drawable a;
-  public final String a;
-  public mwg a;
-  public String b;
+  public abstract void receiveGatewayMsg(String paramString, int paramInt);
   
-  public boolean equals(Object paramObject)
-  {
-    return ((paramObject instanceof mwp)) && (((mwp)paramObject).a.equals(this.a));
-  }
+  public abstract byte receiveSharpVideoAck(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
+  
+  public abstract byte receiveSharpVideoCall(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
 }
 
 

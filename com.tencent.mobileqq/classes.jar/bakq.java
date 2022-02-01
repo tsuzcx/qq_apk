@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.richmediabrowser.view.IBrowserViewHolder;
+import com.tencent.richmediabrowser.view.recyclerview.BrowserScaleView;
 
-public class bakq
-  implements QQPermissionCallback
+class bakq
+  extends IBrowserViewHolder
 {
-  public bakq(ProfileCardMoreActivity paramProfileCardMoreActivity1, ProfileCardMoreActivity paramProfileCardMoreActivity2) {}
+  public ImageView a;
+  public TextView a;
+  public BrowserScaleView a;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions denied...");
-    bhlq.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions grant...");
-    this.b.g();
-  }
+  bakq(bakl parambakl) {}
 }
 
 

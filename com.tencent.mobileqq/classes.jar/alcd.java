@@ -1,22 +1,14 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-
-public abstract class alcd
-  implements TextWatcher
+public abstract interface alcd
 {
-  protected EditText a;
+  public abstract void a();
   
-  public alcd(EditText paramEditText)
-  {
-    this.a = paramEditText;
-  }
+  public abstract void b();
   
-  public void afterTextChanged(Editable paramEditable) {}
+  public abstract void c();
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public abstract void d();
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public abstract void e();
 }
 
 

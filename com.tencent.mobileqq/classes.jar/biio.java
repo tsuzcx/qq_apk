@@ -1,70 +1,201 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.AppRuntime;
+import SharpSvrPack.MultiVideoMsg;
+import SharpSvrPack.SharpVideoMsg;
+import VideoSvrPack.VideoCallMsg;
+import android.os.Bundle;
+import com.qq.jce.wup.UniPacket;
+import java.util.ArrayList;
 
-public class biio
+public abstract class biio
+  implements biir
 {
-  public String a(Context paramContext)
+  private biip jdField_a_of_type_Biip;
+  private biiu jdField_a_of_type_Biiu;
+  
+  private Bundle a(byte[] paramArrayOfByte)
   {
-    paramContext = paramContext.getDir("lib", 0).getAbsolutePath();
-    if (paramContext.endsWith(File.separator)) {
-      return paramContext + "kcsdk_4.4.7.3661.jar";
-    }
-    return paramContext + File.separator + "kcsdk_4.4.7.3661.jar";
+    Bundle localBundle = new Bundle();
+    localBundle.putByteArray("buffer", paramArrayOfByte);
+    return localBundle;
   }
   
-  public void a()
+  private void a(MultiVideoMsg paramMultiVideoMsg)
   {
-    try
-    {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        ((VasQuickUpdateManager)localAppRuntime.getManager(184)).downloadItem(1004L, "kcsdk_4_4_7_3661", "KC.TMSManager");
-      }
-      return;
+    UniPacket localUniPacket = new UniPacket();
+    localUniPacket.setServantName("MultiVideo");
+    localUniPacket.setFuncName("MultiVideos2cack");
+    localUniPacket.put("MultiVideoMsg", paramMultiVideoMsg);
+    j(localUniPacket.encode());
+  }
+  
+  private void a(SharpVideoMsg paramSharpVideoMsg)
+  {
+    UniPacket localUniPacket = new UniPacket();
+    localUniPacket.setServantName("SharpSvr");
+    localUniPacket.setFuncName("s2cack");
+    localUniPacket.put("SharpVideoMsg", paramSharpVideoMsg);
+    h(localUniPacket.encode());
+  }
+  
+  private boolean a(int paramInt)
+  {
+    boolean bool = true;
+    if (this.jdField_a_of_type_Biiu != null) {
+      bool = this.jdField_a_of_type_Biiu.isSharpVideoMsgSupport(paramInt);
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    return bool;
+  }
+  
+  private boolean b(int paramInt)
+  {
+    boolean bool = true;
+    if (this.jdField_a_of_type_Biiu != null) {
+      bool = this.jdField_a_of_type_Biiu.isMultiVideoMsgSupport(paramInt);
+    }
+    return bool;
+  }
+  
+  protected abstract long a();
+  
+  protected abstract void a();
+  
+  public void a(long paramLong1, long paramLong2, byte[] paramArrayOfByte)
+  {
+    long l = a();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(Long.valueOf(paramLong1));
+    MultiVideoMsg localMultiVideoMsg = new MultiVideoMsg();
+    localMultiVideoMsg.ver = 0;
+    localMultiVideoMsg.type = 1;
+    localMultiVideoMsg.csCmd = ((short)(int)paramLong2);
+    localMultiVideoMsg.from_uin = l;
+    localMultiVideoMsg.to_uin = localArrayList;
+    localMultiVideoMsg.video_buff = paramArrayOfByte;
+    paramArrayOfByte = new UniPacket();
+    paramArrayOfByte.setServantName("MultiVideo");
+    paramArrayOfByte.setFuncName("MultiVideoMsg");
+    paramArrayOfByte.put("MultiVideoMsg", localMultiVideoMsg);
+    i(paramArrayOfByte.encode());
+  }
+  
+  public void a(biip parambiip)
+  {
+    this.jdField_a_of_type_Biip = parambiip;
+  }
+  
+  public void a(biiu parambiiu)
+  {
+    this.jdField_a_of_type_Biiu = parambiiu;
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (this.jdField_a_of_type_Biip != null) {
+      this.jdField_a_of_type_Biip.receiveGatewayMsg(paramString, paramInt);
     }
   }
   
-  public void a(Context paramContext, int paramInt)
+  public void a(byte[] paramArrayOfByte)
   {
-    if (paramInt == 0) {}
-    for (;;)
+    if (this.jdField_a_of_type_Biip != null)
     {
-      try
+      UniPacket localUniPacket = new UniPacket(true);
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramArrayOfByte);
+      paramArrayOfByte = (SharpVideoMsg)localUniPacket.getByClass("SharpVideoMsg", new SharpVideoMsg());
+      if (a(paramArrayOfByte.type))
       {
-        String str = paramContext.getDir("lib", 0).getAbsolutePath();
-        paramContext = biim.a().b(paramContext);
-        if (bhto.a(paramContext, str, "kcsdk_4.4.7.3661.jar"))
-        {
-          QLog.d("KC.TMSManager", 1, "unzip succ");
-          biim.a(biim.a());
-          return;
-        }
-        QLog.e("KC.TMSManager", 1, new Object[] { "unzip error, libDir=" + str, " zipPath=" + paramContext });
-        continue;
-        QLog.e("KC.TMSManager", 1, "error: " + paramInt);
+        a(paramArrayOfByte);
+        this.jdField_a_of_type_Biip.e(a(paramArrayOfByte.video_buff));
       }
-      finally {}
     }
   }
   
-  public String b(Context paramContext)
+  public void b()
   {
-    paramContext = paramContext.getFilesDir().getAbsolutePath();
-    if (paramContext.endsWith(File.separator)) {
-      return paramContext + "libtmsdualcore.zip";
-    }
-    return paramContext + File.separator + "libtmsdualcore.zip";
+    a();
   }
+  
+  public void b(byte[] paramArrayOfByte)
+  {
+    long l = a();
+    VideoCallMsg localVideoCallMsg = new VideoCallMsg();
+    localVideoCallMsg.ver = 1;
+    localVideoCallMsg.type = 1;
+    localVideoCallMsg.lUin = l;
+    localVideoCallMsg.uDateTime = ((int)(System.currentTimeMillis() / 1000L));
+    localVideoCallMsg.vMsg = paramArrayOfByte;
+    paramArrayOfByte = new UniPacket();
+    paramArrayOfByte.setServantName("VideoSvc");
+    paramArrayOfByte.setFuncName("SendVideoMsg");
+    paramArrayOfByte.put("VideoCallMsg", localVideoCallMsg);
+    g(paramArrayOfByte.encode());
+  }
+  
+  public void c(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Biip != null)
+    {
+      UniPacket localUniPacket = new UniPacket(true);
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramArrayOfByte);
+      paramArrayOfByte = (SharpVideoMsg)localUniPacket.getByClass("SharpVideoMsg", new SharpVideoMsg());
+      if (a(paramArrayOfByte.type)) {
+        this.jdField_a_of_type_Biip.f(a(paramArrayOfByte.video_buff));
+      }
+    }
+  }
+  
+  public void d(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Biip != null)
+    {
+      UniPacket localUniPacket = new UniPacket(true);
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramArrayOfByte);
+      paramArrayOfByte = (MultiVideoMsg)localUniPacket.getByClass("MultiVideoMsg", new MultiVideoMsg());
+      bija.c("VideoChannelBase", String.format("receiveMultiVideoMsg type=0x%X csCmd=0x%X", new Object[] { Byte.valueOf(paramArrayOfByte.type), Short.valueOf(paramArrayOfByte.csCmd) }));
+      if (b(paramArrayOfByte.type))
+      {
+        a(paramArrayOfByte);
+        this.jdField_a_of_type_Biip.g(a(paramArrayOfByte.video_buff));
+      }
+    }
+  }
+  
+  public void e(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Biip != null)
+    {
+      UniPacket localUniPacket = new UniPacket(true);
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramArrayOfByte);
+      paramArrayOfByte = (MultiVideoMsg)localUniPacket.getByClass("MultiVideoMsg", new MultiVideoMsg());
+      bija.c("VideoChannelBase", String.format("receiveMultiVideoAck type=0x%X csCmd=0x%X", new Object[] { Byte.valueOf(paramArrayOfByte.type), Short.valueOf(paramArrayOfByte.csCmd) }));
+      if (b(paramArrayOfByte.type)) {
+        this.jdField_a_of_type_Biip.h(a(paramArrayOfByte.video_buff));
+      }
+    }
+  }
+  
+  public void f(byte[] paramArrayOfByte)
+  {
+    if (this.jdField_a_of_type_Biip != null)
+    {
+      UniPacket localUniPacket = new UniPacket(true);
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramArrayOfByte);
+      paramArrayOfByte = (VideoCallMsg)localUniPacket.getByClass("VideoCallMsg", new VideoCallMsg());
+      this.jdField_a_of_type_Biip.d(a(paramArrayOfByte.vMsg));
+    }
+  }
+  
+  protected abstract void g(byte[] paramArrayOfByte);
+  
+  protected abstract void h(byte[] paramArrayOfByte);
+  
+  protected abstract void i(byte[] paramArrayOfByte);
+  
+  protected abstract void j(byte[] paramArrayOfByte);
 }
 
 

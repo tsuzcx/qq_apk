@@ -10,8 +10,8 @@ class QZoneShareActivity$14
   
   public void run()
   {
-    int i = this.this$0.b();
-    int j = this.this$0.a();
+    int i = this.this$0.getContentWordCount();
+    int j = this.this$0.getMaxWordCnt();
     ThreadManager.getUIHandler().post(new QZoneShareActivity.14.1(this, i - j));
   }
 }

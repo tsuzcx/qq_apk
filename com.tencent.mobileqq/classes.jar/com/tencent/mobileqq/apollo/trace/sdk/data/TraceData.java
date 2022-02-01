@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.trace.sdk.data;
 
-import anni;
-import annk;
-import annl;
+import amic;
+import amie;
+import amif;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
@@ -39,10 +39,10 @@ public class TraceData
   @notColumn
   public boolean isSampleFocus;
   @notColumn
-  public BlockingQueue<annl> mSpanQueue;
+  public BlockingQueue<amif> mSpanQueue;
   public String packData;
   @notColumn
-  public annk result;
+  public amie result;
   public long serverTime;
   @notColumn
   public long startTime;
@@ -53,29 +53,29 @@ public class TraceData
   public String uid;
   public String version;
   
-  private annk getResultData(JSONObject paramJSONObject)
+  private amie getResultData(JSONObject paramJSONObject)
   {
-    annk localannk = new annk();
-    localannk.jdField_a_of_type_Int = paramJSONObject.optInt("errCode");
-    localannk.b = paramJSONObject.optInt("cost");
-    localannk.d = paramJSONObject.optInt("cpu");
-    localannk.c = paramJSONObject.optInt("memory");
-    localannk.e = paramJSONObject.optInt("netType");
-    localannk.f = paramJSONObject.optInt("javaHeap");
-    localannk.g = paramJSONObject.optInt("nativeHeap");
-    return localannk;
+    amie localamie = new amie();
+    localamie.jdField_a_of_type_Int = paramJSONObject.optInt("errCode");
+    localamie.b = paramJSONObject.optInt("cost");
+    localamie.d = paramJSONObject.optInt("cpu");
+    localamie.c = paramJSONObject.optInt("memory");
+    localamie.e = paramJSONObject.optInt("netType");
+    localamie.f = paramJSONObject.optInt("javaHeap");
+    localamie.g = paramJSONObject.optInt("nativeHeap");
+    return localamie;
   }
   
-  private JSONObject getResultObject(annk paramannk)
+  private JSONObject getResultObject(amie paramamie)
   {
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("errCode", paramannk.jdField_a_of_type_Int);
-    localJSONObject.put("cost", paramannk.b);
-    localJSONObject.put("memory", paramannk.c);
-    localJSONObject.put("cpu", paramannk.d);
-    localJSONObject.put("netType", paramannk.e);
-    localJSONObject.put("javaHeap", paramannk.f);
-    localJSONObject.put("nativeHeap", paramannk.g);
+    localJSONObject.put("errCode", paramamie.jdField_a_of_type_Int);
+    localJSONObject.put("cost", paramamie.b);
+    localJSONObject.put("memory", paramamie.c);
+    localJSONObject.put("cpu", paramamie.d);
+    localJSONObject.put("netType", paramamie.e);
+    localJSONObject.put("javaHeap", paramamie.f);
+    localJSONObject.put("nativeHeap", paramamie.g);
     return localJSONObject;
   }
   
@@ -97,35 +97,35 @@ public class TraceData
         while (i < ((JSONArray)localObject1).length())
         {
           Object localObject3 = ((JSONArray)localObject1).optJSONObject(i);
-          localObject2 = new annl(((JSONObject)localObject3).optInt("spanId"));
-          ((annl)localObject2).jdField_a_of_type_Long = ((JSONObject)localObject3).optLong("timestamp");
-          ((annl)localObject2).b = ((JSONObject)localObject3).optLong("serverTime");
-          ((annl)localObject2).jdField_a_of_type_Annk = getResultData(((JSONObject)localObject3).optJSONObject("resultObject"));
+          localObject2 = new amif(((JSONObject)localObject3).optInt("spanId"));
+          ((amif)localObject2).jdField_a_of_type_Long = ((JSONObject)localObject3).optLong("timestamp");
+          ((amif)localObject2).b = ((JSONObject)localObject3).optLong("serverTime");
+          ((amif)localObject2).jdField_a_of_type_Amie = getResultData(((JSONObject)localObject3).optJSONObject("resultObject"));
           Object localObject4 = ((JSONObject)localObject3).optJSONArray("annoArray");
           int j;
           if ((localObject4 != null) && (((JSONArray)localObject4).length() > 0))
           {
-            ((annl)localObject2).jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
+            ((amif)localObject2).jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new LinkedBlockingQueue();
             j = 0;
             while (j < ((JSONArray)localObject4).length())
             {
               Object localObject5 = ((JSONArray)localObject4).optJSONObject(j);
-              localObject5 = new anni(((JSONObject)localObject5).optString("msg"), ((JSONObject)localObject5).optLong("timestamp"), ((JSONObject)localObject5).optLong("serverTime"));
-              ((annl)localObject2).jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localObject5);
+              localObject5 = new amic(((JSONObject)localObject5).optString("msg"), ((JSONObject)localObject5).optLong("timestamp"), ((JSONObject)localObject5).optLong("serverTime"));
+              ((amif)localObject2).jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localObject5);
               j += 1;
             }
           }
           localObject3 = ((JSONObject)localObject3).optJSONArray("extArray");
           if ((localObject3 != null) && (((JSONArray)localObject3).length() > 0))
           {
-            ((annl)localObject2).jdField_a_of_type_JavaUtilMap = new HashMap();
+            ((amif)localObject2).jdField_a_of_type_JavaUtilMap = new HashMap();
             j = 0;
             while (j < ((JSONArray)localObject3).length())
             {
               localObject4 = ((JSONArray)localObject3).optJSONObject(j);
               int k = ((JSONObject)localObject4).optInt("extKey" + j);
               long l = ((JSONObject)localObject4).optLong("extKey" + j);
-              ((annl)localObject2).jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(k), Long.valueOf(l));
+              ((amif)localObject2).jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(k), Long.valueOf(l));
               j += 1;
             }
           }
@@ -167,22 +167,22 @@ public class TraceData
         if (!localIterator.hasNext()) {
           break;
         }
-        localObject1 = (annl)localIterator.next();
-        localJSONObject2.put("spanId", ((annl)localObject1).jdField_a_of_type_Int);
-        localJSONObject2.put("timestamp", ((annl)localObject1).jdField_a_of_type_Long);
-        localJSONObject2.put("serverTime", ((annl)localObject1).b);
-        localJSONObject2.put("resultObject", getResultObject(((annl)localObject1).jdField_a_of_type_Annk));
-        if ((((annl)localObject1).jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null) && (((annl)localObject1).jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size() > 0))
+        localObject1 = (amif)localIterator.next();
+        localJSONObject2.put("spanId", ((amif)localObject1).jdField_a_of_type_Int);
+        localJSONObject2.put("timestamp", ((amif)localObject1).jdField_a_of_type_Long);
+        localJSONObject2.put("serverTime", ((amif)localObject1).b);
+        localJSONObject2.put("resultObject", getResultObject(((amif)localObject1).jdField_a_of_type_Amie));
+        if ((((amif)localObject1).jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null) && (((amif)localObject1).jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size() > 0))
         {
           localJSONArray2 = new JSONArray();
-          localObject2 = ((annl)localObject1).jdField_a_of_type_JavaUtilConcurrentBlockingQueue.iterator();
+          localObject2 = ((amif)localObject1).jdField_a_of_type_JavaUtilConcurrentBlockingQueue.iterator();
           if (((Iterator)localObject2).hasNext())
           {
-            localObject3 = (anni)((Iterator)localObject2).next();
+            localObject3 = (amic)((Iterator)localObject2).next();
             JSONObject localJSONObject3 = new JSONObject();
-            localJSONObject3.put("timestamp", ((anni)localObject3).jdField_a_of_type_Long);
-            localJSONObject3.put("serverTime", ((anni)localObject3).b);
-            localJSONObject3.put("msg", ((anni)localObject3).jdField_a_of_type_JavaLangString);
+            localJSONObject3.put("timestamp", ((amic)localObject3).jdField_a_of_type_Long);
+            localJSONObject3.put("serverTime", ((amic)localObject3).b);
+            localJSONObject3.put("msg", ((amic)localObject3).jdField_a_of_type_JavaLangString);
             localJSONArray2.put(localJSONObject3);
             continue;
           }
@@ -194,11 +194,11 @@ public class TraceData
         QLog.e("TraceReport", 1, "Exception:", localException);
         return;
       }
-      if ((((annl)localObject1).jdField_a_of_type_JavaUtilMap != null) && (((annl)localObject1).jdField_a_of_type_JavaUtilMap.size() > 0))
+      if ((((amif)localObject1).jdField_a_of_type_JavaUtilMap != null) && (((amif)localObject1).jdField_a_of_type_JavaUtilMap.size() > 0))
       {
         localJSONArray2 = new JSONArray();
         int i = 0;
-        localObject1 = ((annl)localObject1).jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+        localObject1 = ((amif)localObject1).jdField_a_of_type_JavaUtilMap.entrySet().iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (Map.Entry)((Iterator)localObject1).next();
@@ -235,8 +235,8 @@ public class TraceData
       Iterator localIterator = this.mSpanQueue.iterator();
       while (localIterator.hasNext())
       {
-        annl localannl = (annl)localIterator.next();
-        localStringBuilder.append("\n").append(localannl.toString());
+        amif localamif = (amif)localIterator.next();
+        localStringBuilder.append("\n").append(localamif.toString());
       }
     }
     localStringBuilder.append("}");

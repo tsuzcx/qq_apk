@@ -1,6 +1,13 @@
-public abstract interface syw
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+
+public class syw
+  extends BitmapDrawable
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public syw(Bitmap paramBitmap)
+  {
+    super(paramBitmap);
+  }
 }
 
 

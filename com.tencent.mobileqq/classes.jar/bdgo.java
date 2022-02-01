@@ -1,14 +1,19 @@
-public class bdgo
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+
+final class bdgo
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
+  bdgo(bdgq parambdgq) {}
   
-  public bdgo(String paramString1, String paramString2, String paramString3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    if (this.a != null) {
+      this.a.a(paramInt);
+    }
+    bdgn.a().edit().putBoolean("KEY_WRITE_TOGETHER_IS_FIRST_USE_", false).apply();
   }
 }
 

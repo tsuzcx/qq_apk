@@ -1,19 +1,18 @@
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import dov.com.qq.im.capture.text.DynamicTextItem;
+
 class bnib
-  extends bnie
+  implements View.OnFocusChangeListener
 {
-  bnib(bnia parambnia, String paramString, boolean paramBoolean)
-  {
-    super(paramString, paramBoolean);
-  }
+  bnib(bnhv parambnhv) {}
   
-  public String a()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    return null;
-  }
-  
-  public String b()
-  {
-    return "wspeed.qq.com";
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.a(this.a.a.b(), true);
+    }
+    xvv.b("EditTextDialog", "onFocusChange:" + paramBoolean);
   }
 }
 

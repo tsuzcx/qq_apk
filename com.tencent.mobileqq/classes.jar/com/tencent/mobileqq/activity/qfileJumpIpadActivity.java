@@ -4,7 +4,7 @@ import Override;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import antf;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class qfileJumpIpadActivity
@@ -13,15 +13,16 @@ public class qfileJumpIpadActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.a = antf.A;
+    this.a = AppConstants.DATALINE_IPAD_UIN;
     return true;
   }
   

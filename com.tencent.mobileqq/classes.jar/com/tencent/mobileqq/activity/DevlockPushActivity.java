@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import aekb;
-import aekc;
+import adcz;
+import adda;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -13,14 +13,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import asuz;
-import asvb;
-import asvf;
-import bhnv;
-import bjbs;
+import argz;
+import arhb;
+import arhf;
+import bhht;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -32,12 +32,12 @@ public class DevlockPushActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new aekb(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new adcz(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
-  public bjbs a;
+  public bhht a;
   private String jdField_a_of_type_JavaLangString;
   private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new aekc(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new adda(this);
   public DevlockInfo a;
   private boolean jdField_a_of_type_Boolean;
   private String b;
@@ -60,20 +60,20 @@ public class DevlockPushActivity
     this.leftView.setVisibility(4);
     if (this.jdField_a_of_type_Boolean)
     {
-      setRightButton(2131690580, this);
+      setRightButton(2131690620, this);
       if (AppSetting.c) {
-        this.rightViewText.setContentDescription(getString(2131690580));
+        this.rightViewText.setContentDescription(getString(2131690620));
       }
     }
-    TextView localTextView = (TextView)findViewById(2131367800);
+    TextView localTextView = (TextView)findViewById(2131367832);
     if (TextUtils.isEmpty(this.d)) {
       localTextView.setVisibility(8);
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131691832));
-      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131691801));
-      asvf.a().a(null, this.app.getCurrentAccountUin(), 1);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(getString(2131691878));
+      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(getString(2131691847));
+      arhf.a().a(null, this.app.getCurrentAccountUin(), 1);
       return;
       localTextView.setText(this.d);
     }
@@ -90,13 +90,13 @@ public class DevlockPushActivity
       QLog.d("Q.devlock.DevlockPushActivity", 2, "startGetDevLockStatus begin to CheckDevLockStatus");
     }
     String str = this.app.getCurrentAccountUin();
-    int k = asvf.a().a(this.app, str, this.jdField_a_of_type_MqqObserverWtloginObserver);
+    int k = arhf.a().a(this.app, str, this.jdField_a_of_type_MqqObserverWtloginObserver);
     if (k != 0)
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.DevlockPushActivity", 2, "startGetDevLockStatus.CheckDevLockStatus fail ret=" + k);
       }
-      str = getString(2131691830);
+      str = getString(2131691876);
       QQToast.a(getApplicationContext(), str, 0).b(getTitleBarHeight());
       return;
     }
@@ -106,7 +106,7 @@ public class DevlockPushActivity
   public void a(DevlockInfo paramDevlockInfo)
   {
     if ((paramDevlockInfo != null) && (!TextUtils.isEmpty(paramDevlockInfo.MbGuideInfo))) {
-      asvf.a().a(paramDevlockInfo.MbGuideInfo);
+      arhf.a().a(paramDevlockInfo.MbGuideInfo);
     }
     int k;
     if (paramDevlockInfo != null) {
@@ -117,7 +117,7 @@ public class DevlockPushActivity
     for (;;)
     {
       if (k != 0) {
-        asvf.a().a(this.app, this, this.app.getCurrentAccountUin(), true);
+        arhf.a().a(this.app, this, this.app.getCurrentAccountUin(), true);
       }
       for (;;)
       {
@@ -127,7 +127,7 @@ public class DevlockPushActivity
         return;
         k = 0;
         break;
-        asvf.a().a(this.app, this, this.app.getCurrentAccountUin(), false);
+        arhf.a().a(this.app, this, this.app.getCurrentAccountUin(), false);
       }
       label99:
       if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.DevSetup == 1)
@@ -141,14 +141,14 @@ public class DevlockPushActivity
         overridePendingTransition(0, 0);
         return;
       }
-      asuz localasuz = asuz.a();
-      if ((localasuz != null) && (localasuz.a() == asuz.c))
+      argz localargz = argz.a();
+      if ((localargz != null) && (localargz.a() == argz.c))
       {
         paramDevlockInfo = "";
         if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null) {
           paramDevlockInfo = this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile;
         }
-        localasuz.a(this, paramDevlockInfo);
+        localargz.a(this, paramDevlockInfo);
         return;
       }
       if ((this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null) && (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.AllowSet == 1))
@@ -179,7 +179,7 @@ public class DevlockPushActivity
         overridePendingTransition(0, 2130771997);
         return;
       }
-      asvb.a(this, this.app, asvb.c, 1003, null);
+      arhb.a(this, this.app, arhb.c, 1003, null);
       return;
       k = 0;
     }
@@ -193,8 +193,9 @@ public class DevlockPushActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -234,8 +235,8 @@ public class DevlockPushActivity
                   do
                   {
                     return;
-                    asuz.a().a(asuz.d);
-                    if (asvf.a().a())
+                    argz.a().a(argz.d);
+                    if (arhf.a().a())
                     {
                       paramIntent = new Intent(this, AuthDevEnableCompleteActivity.class);
                       if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null)
@@ -289,8 +290,8 @@ public class DevlockPushActivity
               this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile = str;
             }
           } while (!bool);
-          asvf.a().a(this.app, this, this.app.getCurrentAccountUin(), true);
-          boolean bool = asvf.a().a();
+          arhf.a().a(this.app, this, this.app.getCurrentAccountUin(), true);
+          boolean bool = arhf.a().a();
           paramIntent = new Intent();
           if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null)
           {
@@ -303,7 +304,7 @@ public class DevlockPushActivity
           for (;;)
           {
             startActivity(paramIntent);
-            QQToast.a(getApplicationContext(), 2, getString(2131691797), 0).b(getTitleBarHeight());
+            QQToast.a(getApplicationContext(), 2, getString(2131691843), 0).b(getTitleBarHeight());
             paramIntent = new Intent();
             paramIntent.putExtra("auth_dev_open", true);
             paramIntent.putExtra("allow_set", true);
@@ -327,7 +328,7 @@ public class DevlockPushActivity
         QLog.d("Q.devlock.DevlockPushActivity", 2, "onActivityResult.resultCode= RESULT_CANCELED resultMobileMask =" + paramIntent);
       }
       if (!TextUtils.isEmpty(paramIntent)) {
-        asvf.a().a(this.app, this.app.getCurrentAccountUin(), null);
+        arhf.a().a(this.app, this.app.getCurrentAccountUin(), null);
       }
     } while (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo == null);
     this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile = paramIntent;
@@ -354,13 +355,13 @@ public class DevlockPushActivity
       return;
       try
       {
-        asvf.a().a(null, this.app.getCurrentAccountUin(), 3);
+        arhf.a().a(null, this.app.getCurrentAccountUin(), 3);
         label55:
         if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo == null)
         {
-          if (!bhnv.d(this))
+          if (!NetworkUtil.isNetSupport(this))
           {
-            QQToast.a(this, getString(2131691989), 0).b(getTitleBarHeight());
+            QQToast.a(this, getString(2131692035), 0).b(getTitleBarHeight());
             continue;
           }
           a();
@@ -370,7 +371,7 @@ public class DevlockPushActivity
         continue;
         try
         {
-          asvf.a().a(null, this.app.getCurrentAccountUin(), 2);
+          arhf.a().a(null, this.app.getCurrentAccountUin(), 2);
           label125:
           finish();
           overridePendingTransition(0, 2130772001);
@@ -397,17 +398,17 @@ public class DevlockPushActivity
   public void onCreate(Bundle paramBundle)
   {
     int k = 0;
-    setTheme(2131755573);
+    setTheme(2131755575);
     super.onCreate(paramBundle);
-    super.setContentView(2131561166);
-    setTitle(2131691835);
+    super.setContentView(2131561039);
+    setTitle(2131691881);
     if (this.app == null)
     {
       finish();
       return;
     }
     this.app.setDevLockIntent(null);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131380341));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131380067));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     Object localObject = getIntent();
     if (localObject == null)
@@ -423,11 +424,11 @@ public class DevlockPushActivity
       finish();
       return;
     }
-    asvf.a().a(true);
-    asvf.a().a("Push");
+    arhf.a().a(true);
+    arhf.a().a("Push");
     this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = ((DevlockInfo)((Bundle)localObject).get("DevlockInfo"));
     if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo != null) {
-      asuz.a().a(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.TransferInfo);
+      argz.a().a(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.TransferInfo);
     }
     this.jdField_a_of_type_JavaLangString = ((Bundle)localObject).getString("uin");
     this.b = ((Bundle)localObject).getString("from_where");
@@ -459,25 +460,25 @@ public class DevlockPushActivity
       }
     }
     if (TextUtils.isEmpty(this.d)) {
-      this.d = getString(2131691831);
+      this.d = getString(2131691877);
     }
     if (TextUtils.isEmpty(this.e)) {
-      this.e = getString(2131691832);
+      this.e = getString(2131691878);
     }
     if (TextUtils.isEmpty(this.g)) {
-      this.g = getString(2131691814);
+      this.g = getString(2131691860);
     }
     if (TextUtils.isEmpty(this.h)) {
-      this.h = getString(2131691815);
+      this.h = getString(2131691861);
     }
     if (TextUtils.isEmpty(this.i)) {
-      this.i = getString(2131691811);
+      this.i = getString(2131691857);
     }
     if (TextUtils.isEmpty(this.j)) {
-      this.j = getString(2131691812);
+      this.j = getString(2131691858);
     }
     if (TextUtils.isEmpty(this.f)) {
-      this.f = getString(2131691816);
+      this.f = getString(2131691862);
     }
     c();
   }
@@ -490,7 +491,7 @@ public class DevlockPushActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DevlockPushActivity
  * JD-Core Version:    0.7.0.1
  */

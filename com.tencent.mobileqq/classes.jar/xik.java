@@ -1,6 +1,12 @@
 public abstract interface xik
 {
-  public abstract void a(xdw paramxdw, bjbs parambjbs);
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract boolean b();
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d();
 }
 
 

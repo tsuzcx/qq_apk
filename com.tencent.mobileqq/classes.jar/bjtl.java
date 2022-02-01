@@ -1,14 +1,48 @@
-import com.tencent.open.appstore.js.DownloadInterfaceNew.2;
-import com.tencent.smtt.sdk.ValueCallback;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Point;
+import com.tencent.widget.RangeButtonView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bjtl
-  implements ValueCallback<String>
 {
-  public bjtl(DownloadInterfaceNew.2 param2) {}
+  private List<bjtk> jdField_a_of_type_JavaUtilList;
   
-  public void a(String paramString)
+  public bjtl(List<bjtk> paramList)
   {
-    bjtx.b("DownloadInterfaceNew", "[jsCallBack]:" + paramString);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
+  }
+  
+  public void a(Canvas paramCanvas, Paint paramPaint)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((bjtk)localIterator.next()).a(paramCanvas, paramPaint, this.jdField_a_of_type_ComTencentWidgetRangeButtonView.a);
+      }
+    }
+  }
+  
+  public void a(ArrayList<Integer> paramArrayList, int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < paramArrayList.size())
+      {
+        bjtk localbjtk = (bjtk)this.jdField_a_of_type_JavaUtilList.get(i);
+        localbjtk.a = new Point(((Integer)paramArrayList.get(i)).intValue() - (localbjtk.a() >> 1), paramInt);
+        i += 1;
+      }
+    }
   }
 }
 

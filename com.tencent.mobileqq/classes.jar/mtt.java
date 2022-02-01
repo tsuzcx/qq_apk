@@ -1,103 +1,68 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import com.tencent.av.utils.QQFrameByFrameAnimation.1;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
 
-public class mtt
+public abstract class mtt
 {
-  public int a;
-  public Handler a;
-  View jdField_a_of_type_AndroidViewView = null;
-  Runnable jdField_a_of_type_JavaLangRunnable = new QQFrameByFrameAnimation.1(this);
-  public mts a;
-  public int[] a;
-  public int b = 0;
-  public int c = 0;
-  public int d = 0;
-  
-  public mtt()
+  public static long a(Intent paramIntent)
   {
-    this.jdField_a_of_type_Mts = null;
-    this.jdField_a_of_type_Int = 300;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    return paramIntent.getLongExtra("log_seq", 0L);
   }
   
-  public void a()
+  public static long a(Bundle paramBundle)
   {
-    this.c += 1;
-    int i;
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0))
-    {
-      i = this.jdField_a_of_type_ArrayOfInt[(this.c % this.jdField_a_of_type_ArrayOfInt.length)];
-      if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageButton)) {
-        break label67;
-      }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(i);
+    long l = 0L;
+    if (paramBundle != null) {
+      l = paramBundle.getLong("log_seq");
     }
-    label67:
-    while (!(this.jdField_a_of_type_AndroidViewView instanceof Button)) {
-      return;
+    return l;
+  }
+  
+  public static long a(ToServiceMsg paramToServiceMsg)
+  {
+    return a(paramToServiceMsg.getAttribute("log_seq"));
+  }
+  
+  public static long a(Object paramObject)
+  {
+    long l = 0L;
+    if ((paramObject instanceof Long)) {
+      l = ((Long)paramObject).longValue();
     }
-    Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(i);
-    localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    ((Button)this.jdField_a_of_type_AndroidViewView).setCompoundDrawables(null, localDrawable, null, null);
+    return l;
   }
   
-  public void a(int paramInt)
+  public static long a(HashMap<String, Object> paramHashMap)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(mts parammts)
-  {
-    this.jdField_a_of_type_Mts = parammts;
-  }
-  
-  public void a(int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > 0))
-    {
-      this.c = 0;
-      if ((this.jdField_a_of_type_AndroidViewView instanceof ImageButton)) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(this.jdField_a_of_type_ArrayOfInt[0]);
-      }
-      if ((this.jdField_a_of_type_AndroidViewView instanceof Button))
-      {
-        Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getResources().getDrawable(this.jdField_a_of_type_ArrayOfInt[0]);
-        localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-        ((Button)this.jdField_a_of_type_AndroidViewView).setCompoundDrawables(null, localDrawable, null, null);
-      }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Mts != null) {
-        this.jdField_a_of_type_Mts.d();
-      }
+    if ((paramHashMap != null) && (paramHashMap.containsKey("log_seq"))) {
+      return a(paramHashMap.get("log_seq"));
     }
+    return 0L;
   }
   
-  public void b(int paramInt)
+  public static long a(Object[] paramArrayOfObject, int paramInt)
   {
-    this.d = paramInt;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    if (this.jdField_a_of_type_Mts != null) {
-      this.jdField_a_of_type_Mts.a();
+    long l = 0L;
+    if (paramArrayOfObject.length > paramInt) {
+      l = a(paramArrayOfObject[paramInt]);
     }
+    return l;
+  }
+  
+  public static void a(Intent paramIntent, long paramLong)
+  {
+    paramIntent.putExtra("log_seq", paramLong);
+  }
+  
+  public static void a(Bundle paramBundle, long paramLong)
+  {
+    paramBundle.putLong("log_seq", paramLong);
+  }
+  
+  public static void a(HashMap<String, Object> paramHashMap, long paramLong)
+  {
+    paramHashMap.put("log_seq", Long.valueOf(paramLong));
   }
 }
 

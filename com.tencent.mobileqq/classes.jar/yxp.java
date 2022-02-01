@@ -1,21 +1,6 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-
-public class yxp
-  extends Handler
+public abstract interface yxp
 {
-  public yxp(EditVideoMusic paramEditVideoMusic) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.b();
-  }
+  public abstract void a();
 }
 
 

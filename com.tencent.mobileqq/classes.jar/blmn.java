@@ -1,13 +1,30 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.widget.NumberCheckBox;
+import java.util.ArrayList;
+import mqq.util.WeakReference;
 
 class blmn
-  implements PopupWindow.OnDismissListener
+  implements View.OnTouchListener
 {
-  blmn(blmm paramblmm) {}
+  blmn(blmi paramblmi, bllo parambllo, int paramInt) {}
   
-  public void onDismiss()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a(1.0F);
+    if (this.jdField_a_of_type_Bllo.a.isChecked())
+    {
+      paramView = (LocalMediaInfo)blmi.a(this.jdField_a_of_type_Blmi).get(this.jdField_a_of_type_Int);
+      blmi.a(this.jdField_a_of_type_Blmi, paramView, this.jdField_a_of_type_Bllo);
+      blmi.a(this.jdField_a_of_type_Blmi, this.jdField_a_of_type_Bllo);
+      blmi.a(this.jdField_a_of_type_Blmi);
+      if (blmi.b(this.jdField_a_of_type_Blmi).isEmpty()) {
+        ((bllh)this.jdField_a_of_type_Blmi.a.get()).a.notifyDataSetChanged();
+      }
+      return true;
+    }
+    return false;
   }
 }
 

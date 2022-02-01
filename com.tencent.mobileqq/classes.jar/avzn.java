@@ -1,18 +1,22 @@
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
 import com.tencent.qphone.base.util.QLog;
 
-final class avzn
-  implements avyu
+public class avzn
+  extends GestureDetector.SimpleOnGestureListener
 {
-  avzn(String paramString) {}
+  public avzn(TabPageIndicator paramTabPageIndicator) {}
   
-  public void a()
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    synchronized ()
-    {
-      avzl.a(null);
-      QLog.i("shadow::Shadow", 2, "pluginManagerWrapper pmUpdaterCallBcak : bizType:" + this.a);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
     }
+    if (TabPageIndicator.a(this.a) != null) {
+      this.a.performClick();
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

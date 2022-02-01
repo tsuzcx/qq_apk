@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.forward;
 
-import aean;
+import acvv;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import auxu;
+import atky;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.data.ArkFlashChatMessage;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 public class ForwardArkFlashChatMsgOption
-  extends auxu
+  extends atky
 {
   public ForwardArkFlashChatMsgOption(Intent paramIntent)
   {
@@ -34,13 +34,13 @@ public class ForwardArkFlashChatMsgOption
   
   public void a()
   {
-    if (m()) {
+    if (o()) {
       this.jdField_a_of_type_JavaUtilSet.add(d);
     }
-    if (n()) {
+    if (p()) {
       this.jdField_a_of_type_JavaUtilSet.add(c);
     }
-    if (o()) {
+    if (q()) {
       this.jdField_a_of_type_JavaUtilSet.add(b);
     }
   }
@@ -48,9 +48,9 @@ public class ForwardArkFlashChatMsgOption
   protected boolean a(String paramString1, int paramInt, String paramString2)
   {
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_Int = paramInt;
-    localSessionInfo.jdField_a_of_type_JavaLangString = paramString1;
-    localSessionInfo.b = paramString2;
+    localSessionInfo.curType = paramInt;
+    localSessionInfo.curFriendUin = paramString1;
+    localSessionInfo.troopUin = paramString2;
     paramString1 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_flashchat_rawcontent");
     if (TextUtils.isEmpty(paramString1)) {
       return false;
@@ -58,27 +58,27 @@ public class ForwardArkFlashChatMsgOption
     paramString2 = new ArkFlashChatMessage();
     paramString2.fromAppXml(paramString1);
     paramInt = this.jdField_a_of_type_AndroidOsBundle.getInt("KEY_MSG_FORWARD_ID");
-    aean.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramString2, paramInt);
+    acvv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramString2, paramInt);
     return true;
   }
   
   public boolean c()
   {
-    if (g())
+    if (i())
     {
       Iterator localIterator = b().iterator();
       while (localIterator.hasNext())
       {
         ResultRecord localResultRecord = (ResultRecord)localIterator.next();
-        a(localResultRecord.jdField_a_of_type_JavaLangString, localResultRecord.a(), localResultRecord.c);
+        a(localResultRecord.uin, localResultRecord.getUinType(), localResultRecord.groupUin);
       }
       return super.c();
     }
-    k_();
+    h_();
     return super.c();
   }
   
-  protected boolean k_()
+  protected boolean h_()
   {
     int i = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
     return a(this.jdField_a_of_type_AndroidOsBundle.getString("uin"), i, this.jdField_a_of_type_AndroidOsBundle.getString("troop_uin"));

@@ -1,26 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.vip.pb.TianShuAccess.AdItem;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
 
 class bntt
-  implements View.OnClickListener
+  implements VideoCompositeHelper.VideoCompositeCallBack
 {
-  bntt(bntq parambntq, String paramString) {}
+  bntt(bnts parambnts, PeakActivity paramPeakActivity, String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public void onClick(View paramView)
+  public void onVideoCompositeFinish(int paramInt, String paramString1, String paramString2)
   {
-    bntq.a(this.jdField_a_of_type_Bntq);
-    if ((bntq.a(this.jdField_a_of_type_Bntq) != null) && (bntq.a(this.jdField_a_of_type_Bntq).a() != null) && (bntq.a(this.jdField_a_of_type_Bntq).a().app != null) && (bntq.a(this.jdField_a_of_type_Bntq) != null))
+    if (paramInt == 0)
     {
-      bntp.a(bntq.a(this.jdField_a_of_type_Bntq).a().app, bntq.a(this.jdField_a_of_type_Bntq).a(), this.jdField_a_of_type_JavaLangString, 4005);
-      bntp.a(bntq.a(this.jdField_a_of_type_Bntq).a().app, 102, String.valueOf(bntq.a(this.jdField_a_of_type_Bntq).iAdId.get()), bntq.a(this.jdField_a_of_type_Bntq).traceinfo.get());
+      bnts.a(this.jdField_a_of_type_Bnts, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    bnts.a(this.jdField_a_of_type_Bnts, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
   }
 }
 

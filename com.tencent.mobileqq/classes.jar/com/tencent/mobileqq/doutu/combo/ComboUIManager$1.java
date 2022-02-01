@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.doutu.combo;
 
-import ascw;
+import aqwt;
 
 public class ComboUIManager$1
   implements Runnable
 {
-  public ComboUIManager$1(ascw paramascw) {}
+  public ComboUIManager$1(aqwt paramaqwt) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ComboUIManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.combo.ComboUIManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,22 @@
-import com.tencent.image.URLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class akqb
+  implements DialogInterface.OnClickListener
 {
-  URLImageView a;
+  public akqb(LoginView paramLoginView) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bcef.a(this.a.a, "dc00898", "", "", "0X8006797", "0X8006797", 0, 0, "", "", "", "");
+    try
+    {
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface) {}
+  }
 }
 
 

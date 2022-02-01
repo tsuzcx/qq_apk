@@ -1,16 +1,6 @@
-import android.view.MotionEvent;
-
-class boei
-  implements bpbb
+public abstract interface boei
 {
-  boei(boeg paramboeg) {}
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    if ((boeg.a(this.a) instanceof bofh)) {
-      ((bofh)boeg.a(this.a)).a(paramMotionEvent);
-    }
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

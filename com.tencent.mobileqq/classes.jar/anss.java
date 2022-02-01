@@ -1,15 +1,22 @@
+import android.app.Dialog;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class anss
+class anss
+  implements View.OnClickListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  public ImageView a;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  View b;
+  anss(ansq paramansq) {}
   
-  public anss(ansr paramansr) {}
+  public void onClick(View paramView)
+  {
+    if ((ansq.a(this.a) != null) && (ansq.a(this.a).isShowing())) {
+      ansq.a(this.a).dismiss();
+    }
+    ((BaseActivity)this.a.a).finish();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,14 +1,29 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class xwc
-  implements MediaPlayer.OnSeekCompleteListener
+public class xwc
+  implements DialogInterface.OnKeyListener
 {
-  xwc(xvy paramxvy, xvu paramxvu) {}
+  public xwc(CommonPicUploadFragment paramCommonPicUploadFragment) {}
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_Xvu.a(this.jdField_a_of_type_Xvy);
+    if (paramInt == 84) {
+      return true;
+    }
+    if (paramInt == 4)
+    {
+      this.a.a();
+      paramDialogInterface = this.a.a;
+      paramKeyEvent = this.a.a;
+      paramDialogInterface.setResult(0);
+      this.a.a.finish();
+      return true;
+    }
+    return false;
   }
 }
 

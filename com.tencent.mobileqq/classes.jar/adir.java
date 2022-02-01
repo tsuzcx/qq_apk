@@ -1,44 +1,39 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.BsnsTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import com.tencent.mfsdk.collector.DropFrameMonitor;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import java.util.Iterator;
+import java.util.List;
 
 public class adir
-  implements adbw
+  implements AbsListView.OnScrollListener
 {
-  public int a()
-  {
-    return 1021;
-  }
+  public adir(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public boolean a()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.BsnsTmp localBsnsTmp = new msg_svc.BsnsTmp();
-    localBsnsTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramMessageRecord = paramQQAppInterface.a().g(paramMessageRecord.frienduin);
-    if (paramMessageRecord != null)
+    if (FriendProfileCardActivity.a(this.a) != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CircleGroupRoutingType", 2, "circleGroup------>" + bhml.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
+      Iterator localIterator = FriendProfileCardActivity.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((AbsListView.OnScrollListener)localIterator.next()).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
       }
-      localBsnsTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
     }
-    paramRoutingHead.bsns_tmp.set(localBsnsTmp);
-    return true;
   }
   
-  public int b()
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    return 6012;
+    if (paramInt == 0) {
+      DropFrameMonitor.getInstance().stopMonitorScene("vas_profilecard_list", false);
+    }
+    while (FriendProfileCardActivity.a(this.a) != null)
+    {
+      Iterator localIterator = FriendProfileCardActivity.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((AbsListView.OnScrollListener)localIterator.next()).onScrollStateChanged(paramAbsListView, paramInt);
+      }
+      DropFrameMonitor.getInstance().startMonitorScene("vas_profilecard_list");
+    }
   }
 }
 

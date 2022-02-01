@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleExposureInfo;
-import pon;
+import ptv;
 
 public class ArticleInfoModule$53
   implements Runnable
 {
-  public ArticleInfoModule$53(pon parampon, ArticleExposureInfo paramArticleExposureInfo) {}
+  public ArticleInfoModule$53(ptv paramptv, ArticleExposureInfo paramArticleExposureInfo) {}
   
   public void run()
   {

@@ -1,9 +1,15 @@
-import com.tencent.shadow.dynamic.host.EnterCallback;
+import com.tencent.mobileqq.data.Friends;
 
-public abstract interface bdwn
-  extends EnterCallback
+class bdwn
 {
-  public abstract void a(Throwable paramThrowable);
+  public int a;
+  public Friends a;
+  
+  public bdwn(Friends paramFriends, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
+    this.jdField_a_of_type_Int = paramInt;
+  }
 }
 
 

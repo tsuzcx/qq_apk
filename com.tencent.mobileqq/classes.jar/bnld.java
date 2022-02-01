@@ -1,27 +1,10 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-
-public abstract class bnld<T>
-  extends Handler
+public abstract interface bnld
 {
-  private WeakReference<T> a;
+  public abstract void a();
   
-  public bnld(T paramT)
-  {
-    this.a = new WeakReference(paramT);
-  }
+  public abstract void a(String paramString);
   
-  public abstract void a(T paramT, Message paramMessage);
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    Object localObject = this.a.get();
-    if (localObject != null) {
-      a(localObject, paramMessage);
-    }
-  }
+  public abstract void b(String paramString);
 }
 
 

@@ -1,9 +1,19 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoGame.GameResultItem;
 
-public abstract interface bndy
+public final class bndy
+  implements Parcelable.Creator<EditVideoGame.GameResultItem>
 {
-  public abstract void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg);
+  public EditVideoGame.GameResultItem a(Parcel paramParcel)
+  {
+    return new EditVideoGame.GameResultItem(paramParcel);
+  }
+  
+  public EditVideoGame.GameResultItem[] a(int paramInt)
+  {
+    return new EditVideoGame.GameResultItem[paramInt];
+  }
 }
 
 

@@ -1,27 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
-import com.tencent.mobileqq.haoliyou.JefsClass;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqjm
-  implements DialogInterface.OnDismissListener
 {
-  public aqjm(JumpConfirmFragment paramJumpConfirmFragment) {}
+  private String a = amtj.a(2131713872);
+  private String b = "";
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static aqjm a(aptx[] paramArrayOfaptx)
   {
-    JefsClass.getInstance().b(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
-    if (this.a.getActivity() != null)
-    {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
+    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length <= 0)) {
+      return null;
     }
+    aqjm localaqjm = new aqjm();
+    try
+    {
+      paramArrayOfaptx = new JSONObject(paramArrayOfaptx[0].a);
+      localaqjm.a = paramArrayOfaptx.getString("emptyShowWording");
+      localaqjm.b = paramArrayOfaptx.getString("linkWord");
+      return localaqjm;
+    }
+    catch (JSONException paramArrayOfaptx)
+    {
+      paramArrayOfaptx.printStackTrace();
+      return localaqjm;
+    }
+    catch (NullPointerException paramArrayOfaptx)
+    {
+      paramArrayOfaptx.printStackTrace();
+    }
+    return localaqjm;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqjm
  * JD-Core Version:    0.7.0.1
  */

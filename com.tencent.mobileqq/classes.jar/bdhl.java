@@ -1,38 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.splashad.SplashADView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class bdhl
-  implements View.OnClickListener
 {
-  public bdhl(SplashADView paramSplashADView) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
-    {
-      if (!this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getOutputMute()) {
-        break label59;
-      }
-      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(false);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850435);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label59:
-      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(true);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850436);
-    }
-  }
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdhl
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
-import bfke;
+import bdsv;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -20,7 +20,7 @@ import com.tencent.smtt.sdk.WebView;
 public abstract class TroopCreateBaseActivity
   extends AbsBaseWebViewActivity
 {
-  protected bfke a;
+  protected bdsv a;
   public CustomWebView a;
   
   public void a(int paramInt)
@@ -50,8 +50,9 @@ public abstract class TroopCreateBaseActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -59,7 +60,7 @@ public abstract class TroopCreateBaseActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = b((ViewGroup)null);
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setId(2131381325);
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setId(2131381043);
     setContentView(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView);
     paramBundle = getIntent().getStringExtra("url");
     if (TextUtils.isEmpty(paramBundle)) {
@@ -75,7 +76,7 @@ public abstract class TroopCreateBaseActivity
     {
       this.b = Long.parseLong((String)localObject, 10);
       this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramBundle);
-      this.leftView.setOnClickListener(new bfke(this, 0, null));
+      this.leftView.setOnClickListener(new bdsv(this, 0, null));
       return true;
     }
     catch (NumberFormatException localNumberFormatException)
@@ -96,9 +97,9 @@ public abstract class TroopCreateBaseActivity
   
   public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_Bfke != null)
+    if (this.jdField_a_of_type_Bdsv != null)
     {
-      this.jdField_a_of_type_Bfke.onClick(this.leftView);
+      this.jdField_a_of_type_Bdsv.onClick(this.leftView);
       return true;
     }
     return false;

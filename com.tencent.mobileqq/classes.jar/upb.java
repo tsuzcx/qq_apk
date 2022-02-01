@@ -1,17 +1,24 @@
-import UserGrowth.eConfigBit;
-import UserGrowth.stUserConfigReq;
-import UserGrowth.stUserConfigRsp;
-import android.support.annotation.NonNull;
+import UserGrowth.stSimpleMetaPerson;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.common.util.NetworkUtil;
 
-public class upb
-  extends ukl<stUserConfigRsp>
+class upb
+  implements bjoe
 {
-  public upb(@NonNull eConfigBit parameConfigBit)
+  upb(uou paramuou, stSimpleMetaPerson paramstSimpleMetaPerson) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    super("UserConfig", 10005);
-    stUserConfigReq localstUserConfigReq = new stUserConfigReq();
-    localstUserConfigReq.config_set = parameConfigBit.value();
-    this.a = localstUserConfigReq;
+    if (!NetworkUtil.isNetworkAvailable(uou.c(this.jdField_a_of_type_Uou)))
+    {
+      bhzt.a().a(2131719692);
+      return;
+    }
+    uou.a(this.jdField_a_of_type_Uou).b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);
+    this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus = 2;
+    uou.a(this.jdField_a_of_type_Uou).setVisibility(0);
+    uou.b(this.jdField_a_of_type_Uou).setVisibility(4);
   }
 }
 

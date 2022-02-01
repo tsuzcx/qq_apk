@@ -1,17 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
+import java.util.List;
 
-class audz
-  extends BroadcastReceiver
+public class audz
+  implements avtb<List<FontBubble>>
 {
-  audz(audx paramaudx) {}
+  public audz(FontBubblePanelView paramFontBubblePanelView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(List<FontBubble> paramList)
   {
-    if (paramIntent.getAction().equals("android.media.AUDIO_BECOMING_NOISY")) {
-      this.a.a();
-    }
+    FontBubblePanelView.a(this.a, paramList);
+    FontBubblePanelView.a(this.a).notifyDataSetChanged();
   }
 }
 

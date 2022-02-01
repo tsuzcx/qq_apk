@@ -1,45 +1,69 @@
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.widget.PinnedFooterExpandableListView;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class amdt
-  implements bfof
+final class amdt
+  extends bgod
 {
-  public amdt(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  amdt(File paramFile, alnr paramalnr, int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2, AtomicInteger paramAtomicInteger3, amdy paramamdy, String paramString, int paramInt3, int[] paramArrayOfInt, int paramInt4) {}
   
-  public ArrayList<ResultRecord> a()
+  public void onDone(bgoe parambgoe)
   {
-    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c();
-  }
-  
-  public void a()
-  {
-    FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
-    if (FriendTeamListInnerFrame.a(this.a).getGroupCount() > 0)
+    boolean bool = true;
+    super.onDone(parambgoe);
+    if (3 == parambgoe.a()) {
+      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
+    }
+    for (;;)
     {
-      Groups localGroups1 = FriendTeamListInnerFrame.a(this.a).a(1007L);
-      Groups localGroups2 = FriendTeamListInnerFrame.a(this.a).a(1008L);
-      if ((localGroups1 != null) || (localGroups2 != null))
+      try
       {
-        FriendTeamListInnerFrame.a(this.a).a(0);
-        FriendTeamListInnerFrame.a(this.a).setIsNeedScrollPositionTop(true);
-        FriendTeamListInnerFrame.a(this.a).smoothScrollToPositionFromTop(1, 0, 0);
-        if (localGroups1 != null) {
-          this.a.jdField_a_of_type_Bfod.a();
+        npo.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
+        amdp.a(this.jdField_a_of_type_Alnr, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) {
+          break label421;
         }
-        if (localGroups2 != null) {
-          this.a.jdField_a_of_type_Bfod.c();
+        if (this.jdField_a_of_type_Amdy != null)
+        {
+          parambgoe = this.jdField_a_of_type_Amdy;
+          if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) {
+            bool = false;
+          }
+          parambgoe.onDownLoadFinish(bool, this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_a_of_type_ArrayOfInt, this.d);
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloResDownloader", 2, "downloadApolloRes download all done uin: " + this.jdField_a_of_type_JavaLangString + "all cnt: " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", err cnt: " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+          }
         }
+        this.jdField_a_of_type_JavaIoFile.delete();
+        return;
+      }
+      catch (Exception parambgoe)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambgoe.getMessage());
+        continue;
+      }
+      catch (OutOfMemoryError parambgoe)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambgoe.getMessage());
+        continue;
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+      QLog.d("ApolloResDownloader", 1, "download file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " task.getStatus()->" + parambgoe.a());
+      continue;
+      label421:
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "downloadApolloRes download uin:" + this.jdField_a_of_type_JavaLangString + ", cb cnt: " + this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", all cnt: " + this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
       }
     }
-  }
-  
-  public ArrayList<String> b()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d();
   }
 }
 

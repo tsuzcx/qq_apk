@@ -1,28 +1,12 @@
-import org.json.JSONObject;
-
-public class uyv
-  extends JSONObject
+public abstract interface uyv
 {
-  public uyv(uyu paramuyu, String paramString)
-  {
-    super(paramString);
-  }
+  public abstract void a(String paramString, int paramInt);
   
-  public int getInt(String paramString)
-  {
-    if (!has(paramString)) {
-      return 0;
-    }
-    return super.getInt(paramString);
-  }
+  public abstract void b(String paramString, int paramInt);
   
-  public String getString(String paramString)
-  {
-    if (!has(paramString)) {
-      return "";
-    }
-    return super.getString(paramString);
-  }
+  public abstract void c(String paramString, int paramInt);
+  
+  public abstract void d(String paramString, int paramInt);
 }
 
 

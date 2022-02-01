@@ -1,10 +1,22 @@
-import java.util.List;
+import java.util.ArrayList;
 
-public abstract interface aouo
+class aouo
+  implements aouu
 {
-  public abstract void a();
+  aouo(aoul paramaoul) {}
   
-  public abstract void a(List<aoui> paramList);
+  public void a(aoux paramaoux, boolean paramBoolean, byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    while (i < paramaoux.b.size())
+    {
+      aout localaout = (aout)paramaoux.b.get(i);
+      if (localaout != null) {
+        localaout.b(paramBoolean, paramaoux.a, paramArrayOfByte);
+      }
+      i += 1;
+    }
+  }
 }
 
 

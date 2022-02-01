@@ -1,28 +1,38 @@
-import android.os.Handler;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.qqcircle.widgets.QCircleFolderTabView.2.1;
-import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.widget.ARMapHongBaoListView;
 
-public class vzz
-  implements zzi
+class vzz
+  extends RecyclerView.OnScrollListener
 {
-  vzz(vzy paramvzy) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void a(boolean paramBoolean, QQAnimationDrawable paramQQAnimationDrawable)
+  vzz(vzt paramvzt) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (vzy.a(this.a))
+    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
+    if (paramInt == 0)
     {
-      QLog.e("QCircleFolderTabView", 1, "fetchAnimDrawable Anim action canceled,direct return!");
+      if ((paramRecyclerView.findLastCompletelyVisibleItemPosition() == paramRecyclerView.getItemCount() - 1) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Vzt.jdField_a_of_type_Vzf.d();
+      }
       return;
     }
-    if ((paramBoolean) && (paramQQAnimationDrawable != null))
+    vzt.a(this.jdField_a_of_type_Vzt);
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 > 0) {}
+    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
     {
-      vzy.a(this.a, paramQQAnimationDrawable);
-      bkdz.a().post(new QCircleFolderTabView.2.1(this));
+      if (this.jdField_a_of_type_Vzt.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.isDirty()) {
+        this.jdField_a_of_type_Vzt.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.invalidate();
+      }
       return;
     }
-    this.a.b();
-    QLog.e("QCircleFolderTabView", 1, "fetchAnimDrawable fail !use default image");
   }
 }
 

@@ -1,87 +1,28 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.ilive.pb.QQALive.GetOpenInfoRsp;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
 public class bmft
-  extends MSFServlet
+  implements Animator.AnimatorListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public bmft(AEEditorAILoadingView paramAEEditorAILoadingView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IliveAuthServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
-    Object localObject;
-    do
-    {
-      return;
-      localObject = paramFromServiceMsg.getServiceCmd();
-    } while (localObject == null);
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      boolean bool = paramFromServiceMsg.isSuccess();
-      localStringBuilder = new StringBuilder().append("resp:").append((String)localObject).append(" is ");
-      if (!bool) {
-        break label265;
-      }
-    }
-    label265:
-    for (paramIntent = "";; paramIntent = "not")
-    {
-      QLog.d("IliveAuthServlet", 2, paramIntent + " success");
-      paramIntent = null;
-      if (paramFromServiceMsg.isSuccess())
-      {
-        int i = paramFromServiceMsg.getWupBuffer().length - 4;
-        paramIntent = new byte[i];
-        bhvd.a(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-      }
-      if (!((String)localObject).equals("qqvalivelogin.GetOpenInfo")) {
-        break;
-      }
-      localObject = new QQALive.GetOpenInfoRsp();
-      if (paramFromServiceMsg.getResultCode() != 1000) {
-        break label283;
-      }
-      try
-      {
-        ((QQALive.GetOpenInfoRsp)localObject).mergeFrom(paramIntent);
-        if ((TextUtils.isEmpty(((QQALive.GetOpenInfoRsp)localObject).sOpenId.get())) || (TextUtils.isEmpty(((QQALive.GetOpenInfoRsp)localObject).sAccessToken.get()))) {
-          break label271;
-        }
-        bmfn.a().a(true, ((QQALive.GetOpenInfoRsp)localObject).sOpenId.get(), ((QQALive.GetOpenInfoRsp)localObject).sAccessToken.get());
-        return;
-      }
-      catch (Exception paramIntent)
-      {
-        bmfn.a().a(false, "", "");
-        return;
-      }
-    }
-    label271:
-    bmfn.a().a(false, "", "");
-    return;
-    label283:
-    bmfn.a().a(false, "", "");
+    AEEditorAILoadingView.a(this.a).setVisibility(8);
+    AEEditorAILoadingView.b(this.a).setVisibility(0);
+    AEEditorAILoadingView.b(this.a).playAnimation();
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    String str = paramIntent.getStringExtra("cmd");
-    long l = paramIntent.getLongExtra("timeout", 10000L);
-    paramPacket.setSSOCommand(str);
-    paramPacket.setTimeout(l);
-    paramPacket.putSendData(arrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("IliveAuthServlet", 2, "onSend exit cmd=" + str);
-    }
+    AEEditorAILoadingView.a(this.a).setAlpha(1.0F);
   }
 }
 

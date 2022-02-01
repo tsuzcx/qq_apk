@@ -1,23 +1,38 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class qwq
-  implements Cloneable
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
+  public qwq(ComponentJump paramComponentJump, ArticleInfo paramArticleInfo) {}
   
-  protected Object clone()
+  public void onClick(View paramView)
   {
+    int i = 0;
+    okj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
+      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
+    }
     try
     {
-      qwq localqwq = (qwq)super.clone();
-      return localqwq;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("feeds_channel_entrance", i);
+      odq.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", localJSONObject.toString(), false);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
+    catch (JSONException localJSONException)
     {
-      QLog.e("NewPolymericInfo", 2, "PackTopicExtraInfo item clone failed. exception = " + localCloneNotSupportedException);
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
     }
-    return null;
   }
 }
 

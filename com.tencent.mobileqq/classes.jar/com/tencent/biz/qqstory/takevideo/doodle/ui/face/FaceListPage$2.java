@@ -2,7 +2,7 @@ package com.tencent.biz.qqstory.takevideo.doodle.ui.face;
 
 import android.view.ViewGroup;
 import android.widget.ListView;
-import zfg;
+import ygh;
 
 class FaceListPage$2
   implements Runnable

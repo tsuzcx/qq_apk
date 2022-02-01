@@ -7,18 +7,18 @@ import kotlin.jvm.internal.Intrinsics;
 import kotlin.jvm.internal.Lambda;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import qsp;
-import qsq;
-import qsw;
-import qsx;
-import qtj;
+import qzn;
+import qzo;
+import qzu;
+import qzv;
+import rah;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "watchWord", "", "jumpUrl", "isOpen", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJWriteWatchWordPresenter$fetchTopicWatchWord$1
   extends Lambda
   implements Function3<String, String, Boolean, Unit>
 {
-  public RIJWriteWatchWordPresenter$fetchTopicWatchWord$1(qtj paramqtj, String paramString1, String paramString2)
+  public RIJWriteWatchWordPresenter$fetchTopicWatchWord$1(rah paramrah, String paramString1, String paramString2)
   {
     super(3);
   }
@@ -35,18 +35,18 @@ public final class RIJWriteWatchWordPresenter$fetchTopicWatchWord$1
         if (i != 1) {
           break label125;
         }
-        localObject = qtj.a(this.this$0);
+        localObject = rah.a(this.this$0);
         if (localObject != null) {
-          ((qsx)localObject).showSuccessToast(qtj.a(this.this$0).a());
+          ((qzv)localObject).showSuccessToast(rah.a(this.this$0).a());
         }
-        qsw localqsw = qtj.a(this.this$0);
+        qzu localqzu = rah.a(this.this$0);
         localObject = this.$title;
         if (localObject == null) {
           break label118;
         }
         label84:
-        localqsw.a(paramString1, paramString2, (String)localObject, paramBoolean, 2);
-        qsp.a.a().a(paramString1, this.$url);
+        localqzu.a(paramString1, paramString2, (String)localObject, paramBoolean, 2);
+        qzn.a.a().a(paramString1, this.$url);
       }
     }
     label118:
@@ -58,9 +58,9 @@ public final class RIJWriteWatchWordPresenter$fetchTopicWatchWord$1
       break;
       localObject = "";
       break label84;
-      paramString1 = qtj.a(this.this$0);
+      paramString1 = rah.a(this.this$0);
     } while (paramString1 == null);
-    paramString1.showFailedToast(qtj.a(this.this$0).b());
+    paramString1.showFailedToast(rah.a(this.this$0).b());
   }
 }
 

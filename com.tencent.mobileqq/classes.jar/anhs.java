@@ -1,18 +1,36 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.face.FaceInfo;
 
-public final class anhs
-  implements Parcelable.Creator<IPCSpriteContext>
+public class anhs
+  implements BusinessObserver
 {
-  public IPCSpriteContext a(Parcel paramParcel)
-  {
-    return new IPCSpriteContext(paramParcel);
-  }
+  public void a(boolean paramBoolean, FaceInfo paramFaceInfo) {}
   
-  public IPCSpriteContext[] a(int paramInt)
+  public void b(boolean paramBoolean, FaceInfo paramFaceInfo) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return new IPCSpriteContext[paramInt];
+    Object localObject = null;
+    if (paramInt == 0) {
+      if (paramObject == null)
+      {
+        paramObject = null;
+        a(paramBoolean, paramObject);
+      }
+    }
+    while (paramInt != 1) {
+      for (;;)
+      {
+        return;
+        paramObject = (FaceInfo)paramObject;
+      }
+    }
+    if (paramObject == null) {}
+    for (paramObject = localObject;; paramObject = (FaceInfo)paramObject)
+    {
+      b(paramBoolean, paramObject);
+      return;
+    }
   }
 }
 

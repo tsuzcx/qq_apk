@@ -1,24 +1,15 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
 
-final class apoe
-  implements FileFilter
+public class apoe
+  implements View.OnTouchListener
 {
-  public boolean accept(File paramFile)
+  public apoe(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramFile = paramFile.getName();
-    if (paramFile.startsWith("cpu"))
-    {
-      int i = 3;
-      while (i < paramFile.length())
-      {
-        if (!Character.isDigit(paramFile.charAt(i))) {
-          return false;
-        }
-        i += 1;
-      }
-      return true;
-    }
     return false;
   }
 }

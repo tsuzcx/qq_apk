@@ -1,28 +1,37 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
-import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
 public class aeeq
-  implements DialogInterface.OnClickListener
+  implements View.OnKeyListener
 {
-  public aeeq(ChatHistoryImageView paramChatHistoryImageView) {}
+  public aeeq(SelectedAndSearchBar paramSelectedAndSearchBar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
+    if (paramInt == 67)
     {
-      this.a.jdField_a_of_type_AndroidAppDialog.cancel();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask.a(false);
+      if (paramKeyEvent.getAction() != 0) {
+        break label36;
+      }
+      SelectedAndSearchBar.a(this.a, TextUtils.isEmpty(SelectedAndSearchBar.a(this.a).getText()));
+    }
+    for (;;)
+    {
+      return false;
+      label36:
+      if ((paramKeyEvent.getAction() == 1) && (SelectedAndSearchBar.a(this.a))) {
+        SelectedAndSearchBar.a(this.a).a();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aeeq
  * JD-Core Version:    0.7.0.1
  */

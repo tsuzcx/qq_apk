@@ -6,7 +6,7 @@ import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnStateChan
 public class TPPlayerState
 {
   public static final int COMPLETE = 7;
-  public static final int ERROR = 9;
+  public static final int ERROR = 10;
   public static final int IDLE = 1;
   public static final int INDEX = 0;
   public static final int INITIALIZED = 2;
@@ -14,10 +14,12 @@ public class TPPlayerState
   public static final int PAUSE = 6;
   public static final int PREPARED = 4;
   public static final int PREPARING = 3;
-  public static final int RELEASED = 10;
+  public static final int RELEASED = 11;
   public static final int START = 5;
-  public static final int STOPPED = 8;
+  public static final int STOPPED = 9;
+  public static final int STOPPING = 8;
   private int mCurState = 1;
+  private int mInnerPlayState = 1;
   private int mLastState = 1;
   private int mPreState = 1;
   private ITPPlayerBaseListener.IOnStateChangeListener mStateChangeListener;
@@ -31,9 +33,10 @@ public class TPPlayerState
     NS_STATES.put(5, "START");
     NS_STATES.put(6, "PAUSE");
     NS_STATES.put(7, "COMPLETE");
-    NS_STATES.put(8, "STOPPED");
-    NS_STATES.put(9, "ERROR");
-    NS_STATES.put(10, "RELEASED");
+    NS_STATES.put(8, "STOPPING");
+    NS_STATES.put(9, "STOPPED");
+    NS_STATES.put(10, "ERROR");
+    NS_STATES.put(11, "RELEASED");
   }
   
   public void changeState(int paramInt)
@@ -57,6 +60,20 @@ public class TPPlayerState
     }
   }
   
+  public int innerPlayState()
+  {
+    try
+    {
+      int i = this.mInnerPlayState;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
   /* Error */
   public boolean is(int paramInt)
   {
@@ -64,7 +81,7 @@ public class TPPlayerState
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 62	com/tencent/thumbplayer/api/TPPlayerState:mCurState	I
+    //   3: getfield 66	com/tencent/thumbplayer/api/TPPlayerState:mCurState	I
     //   6: istore_2
     //   7: iload_2
     //   8: iload_1
@@ -123,6 +140,22 @@ public class TPPlayerState
     }
   }
   
+  public void setInnerPlayStateState(int paramInt)
+  {
+    try
+    {
+      if (this.mInnerPlayState != paramInt) {
+        this.mInnerPlayState = paramInt;
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
   public void setLastState(int paramInt)
   {
     try
@@ -165,7 +198,8 @@ public class TPPlayerState
       String str1 = (String)NS_STATES.get(this.mCurState);
       String str2 = (String)NS_STATES.get(this.mPreState);
       String str3 = (String)NS_STATES.get(this.mLastState);
-      str1 = "state[ cur : " + str1 + " , pre : " + str2 + " , last : " + str3 + " ]";
+      String str4 = (String)NS_STATES.get(this.mInnerPlayState);
+      str1 = "state[ cur : " + str1 + " , pre : " + str2 + " , last : " + str3 + " , inner play : " + str4 + " ]";
       return str1;
     }
     finally

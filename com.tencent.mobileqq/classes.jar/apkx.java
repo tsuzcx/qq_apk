@@ -1,45 +1,54 @@
-import java.util.HashMap;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.view.View;
 
 public class apkx
 {
-  private static int a;
-  public static String a;
-  public static HashMap<String, apkf> a;
-  private static int b;
-  public static String b;
-  public static String c;
-  public static String d;
+  private float jdField_a_of_type_Float;
+  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
+  private View jdField_a_of_type_AndroidViewView;
+  private float b;
   
-  static
+  public apkx(View paramView)
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_Int = 5;
-    jdField_b_of_type_Int = 1;
-    jdField_a_of_type_JavaLangString = "";
-    jdField_b_of_type_JavaLangString = "";
-    c = "";
-    d = "";
-    jdField_a_of_type_JavaUtilHashMap.put("recogQ3", new apkf(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("recogQ4", new apkf(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("recogQ5", new apkf(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("trackQ3", new apkf(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("trackQ4", new apkf(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("trackQ5", new apkf(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("renderQ1", new apkf(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("renderQ0", new apkf(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("glRenderQ1", new apkf(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("glRenderQ0", new apkf(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("camRenderQ0", new apkf(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("modelRenderQ1", new apkf(2147483647));
-    jdField_a_of_type_JavaUtilHashMap.put("modelRenderQ0", new apkf(2147483647));
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
   }
   
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  private void b()
   {
-    jdField_a_of_type_JavaLangString = paramString1;
-    jdField_b_of_type_JavaLangString = paramString2;
-    c = paramString3;
-    d = paramString4;
+    this.jdField_a_of_type_AndroidViewView.setPivotX(this.jdField_a_of_type_Float);
+    this.jdField_a_of_type_AndroidViewView.setPivotY(this.b);
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 1.0F, 0.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 1.0F, 0.0F });
+    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
+    {
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.setDuration(500L);
+    }
+  }
+  
+  public void a()
+  {
+    b();
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+  }
+  
+  public void a(apom paramapom, boolean paramBoolean, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
+    {
+      Animator localAnimator = yut.a(this.jdField_a_of_type_AndroidViewView, (int)this.jdField_a_of_type_Float + paramInt, (int)this.b, this.jdField_a_of_type_AndroidViewView.getHeight() / 2, 1.0F);
+      localAnimator.addListener(new apky(this, paramapom, paramBoolean));
+      localAnimator.setDuration(300L);
+      localAnimator.start();
+    }
   }
 }
 

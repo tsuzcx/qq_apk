@@ -1,51 +1,43 @@
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.activity.PortraitImageview;
 
 public class adwc
-  extends MqqHandler
+  extends adwf
 {
-  public adwc(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  private adwc(PortraitImageview paramPortraitImageview) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
-    {
+    if (this.a.a() > this.a.c()) {
+      this.a.a(this.a.c());
     }
     for (;;)
     {
-      super.handleMessage(paramMessage);
-      return;
-      if (AssociatedAccountManageActivity.a(this.a) == null) {
-        AssociatedAccountManageActivity.a(this.a, new bjbs(this.a, this.a.getTitleBarHeight()));
-      }
-      if ((!this.a.isFinishing()) && (!AssociatedAccountManageActivity.a(this.a).isShowing()))
-      {
-        try
-        {
-          AssociatedAccountManageActivity.a(this.a).show();
-        }
-        catch (Exception localException) {}
-        if (QLog.isColorLevel())
-        {
-          QLog.e("AssociatedAccountManage", 2, "QQProgressDialog show exception.", localException);
-          continue;
-          if ((AssociatedAccountManageActivity.a(this.a) != null) && (AssociatedAccountManageActivity.a(this.a).isShowing()))
-          {
-            AssociatedAccountManageActivity.a(this.a).dismiss();
-            AssociatedAccountManageActivity.a(this.a, null);
-            continue;
-            if (AssociatedAccountManageActivity.a(this.a) != null) {
-              AssociatedAccountManageActivity.a(this.a).cancel();
-            }
-            AssociatedAccountManageActivity.a(this.a, QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
-          }
-        }
-      }
+      return true;
+      this.a.a(this.a.c() * 3.0F, paramMotionEvent.getX(), paramMotionEvent.getY(), 350.0F);
     }
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (((paramMotionEvent1 != null) && (paramMotionEvent1.getPointerCount() > 1)) || ((paramMotionEvent2 != null) && (paramMotionEvent2.getPointerCount() > 1)) || ((this.a.jdField_a_of_type_AndroidViewScaleGestureDetector != null) && (this.a.jdField_a_of_type_AndroidViewScaleGestureDetector.isInProgress()))) {
+      return false;
+    }
+    this.a.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.a.a(-paramFloat1, -paramFloat2);
+    this.a.setImageMatrix(this.a.a());
+    return true;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if (this.a.jdField_a_of_type_Adwd != null)
+    {
+      this.a.jdField_a_of_type_Adwd.a();
+      return false;
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

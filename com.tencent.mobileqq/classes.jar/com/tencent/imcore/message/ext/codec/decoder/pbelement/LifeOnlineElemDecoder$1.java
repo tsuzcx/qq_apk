@@ -1,17 +1,17 @@
 package com.tencent.imcore.message.ext.codec.decoder.pbelement;
 
-import adhn;
+import aceh;
 import com.tencent.mobileqq.app.QQAppInterface;
-import obj;
+import ocw;
 
 public class LifeOnlineElemDecoder$1
   implements Runnable
 {
-  public LifeOnlineElemDecoder$1(adhn paramadhn, QQAppInterface paramQQAppInterface) {}
+  public LifeOnlineElemDecoder$1(aceh paramaceh, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    obj.a().a(this.a);
+    ocw.a().a(this.a);
   }
 }
 

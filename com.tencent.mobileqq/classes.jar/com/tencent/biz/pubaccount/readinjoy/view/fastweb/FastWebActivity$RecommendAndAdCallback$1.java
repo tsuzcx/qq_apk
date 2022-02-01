@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
 import java.util.ArrayList;
 import java.util.List;
-import sok;
+import ssl;
 
 public class FastWebActivity$RecommendAndAdCallback$1
   implements Runnable
 {
-  public FastWebActivity$RecommendAndAdCallback$1(sok paramsok, List paramList1, List paramList2, FastWebActivity paramFastWebActivity, boolean paramBoolean, String paramString) {}
+  public FastWebActivity$RecommendAndAdCallback$1(ssl paramssl, List paramList1, List paramList2, FastWebActivity paramFastWebActivity, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class FastWebActivity$RecommendAndAdCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.RecommendAndAdCallback.1
  * JD-Core Version:    0.7.0.1
  */

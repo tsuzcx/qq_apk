@@ -1,18 +1,14 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
+import java.util.List;
 
-final class rqf
-  extends AnimatorListenerAdapter
+public abstract interface rqf
 {
-  rqf(View paramView) {}
+  public abstract int a();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.setAlpha(1.0F);
-    this.a.setLayerType(0, null);
-    this.a.setVisibility(8);
-  }
+  public abstract rgo a(int paramInt);
+  
+  public abstract void a(List<rgo> paramList, boolean paramBoolean);
+  
+  public abstract void b(int paramInt);
 }
 
 

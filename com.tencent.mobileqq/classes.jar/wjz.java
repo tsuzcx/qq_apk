@@ -1,36 +1,21 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
+import com.tencent.qphone.base.util.QLog;
 
-class wjz
-  implements woy<xdo, xez>
+public class wjz
+  extends vqq<wfl, wfm>
 {
-  wjz(wjt paramwjt, wkc paramwkc, String paramString) {}
+  public wjz(StoryShareEncryptHelper.2 param2, long paramLong, bhht parambhht) {}
   
-  public void a(@NonNull xdo paramxdo, @Nullable xez paramxez, @NonNull ErrorMessage paramErrorMessage)
+  public void a(@NonNull wfl paramwfl, @Nullable wfm paramwfm, @NonNull ErrorMessage paramErrorMessage)
   {
-    yuk.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response " + paramxez);
-    if ((paramErrorMessage.isFail()) || (paramxez == null))
-    {
-      yuk.e("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response error!");
-      this.jdField_a_of_type_Wkc.a(true);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.share.trans.helper", 2, "decrypt done costTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", resp:" + paramwfm);
     }
-    paramxdo = (wte)wth.a(5);
-    if (paramxez.a != null)
-    {
-      paramErrorMessage = paramxez.a.iterator();
-      while (paramErrorMessage.hasNext()) {
-        ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
-      }
-    }
-    paramxez.a = paramxdo.a(paramxez.a);
-    ((wjt)wth.a(28)).a(paramxez.b);
-    this.jdField_a_of_type_Wjt.c(this.jdField_a_of_type_JavaLangString, 0);
-    this.jdField_a_of_type_Wkc.a(true);
+    xwa.a("StoryShareEncryptHelper", "decrypt", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareUtilStoryShareEncryptHelper$2.a.a(paramwfm, this.jdField_a_of_type_Bhht);
   }
 }
 

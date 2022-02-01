@@ -1,36 +1,26 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupInfo;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class xet
-  extends wov
+  implements DialogInterface.OnClickListener
 {
-  public List<ShareGroupItem> a;
+  public xet(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public xet(qqstory_service.RspGetShareGroupInfo paramRspGetShareGroupInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramRspGetShareGroupInfo.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    if (paramRspGetShareGroupInfo.share_group_info_list.has())
+    switch (paramInt)
     {
-      paramRspGetShareGroupInfo = paramRspGetShareGroupInfo.share_group_info_list.get().iterator();
-      while (paramRspGetShareGroupInfo.hasNext())
-      {
-        qqstory_struct.ShareGroupInfo localShareGroupInfo = (qqstory_struct.ShareGroupInfo)paramRspGetShareGroupInfo.next();
-        ShareGroupItem localShareGroupItem = new ShareGroupItem();
-        localShareGroupItem.convertFrom(localShareGroupInfo);
-        this.jdField_a_of_type_JavaUtilList.add(localShareGroupItem);
-      }
+    case 0: 
+    default: 
+      return;
     }
-  }
-  
-  public String toString()
-  {
-    return "GetShareGroupInfoResponse{errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + ", groupItems=" + this.jdField_a_of_type_JavaUtilList + '}';
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("extra_checked_vidset", this.a.a);
+    this.a.getActivity().setResult(-1, paramDialogInterface);
+    this.a.getActivity().finish();
   }
 }
 

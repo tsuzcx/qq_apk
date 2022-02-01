@@ -1,33 +1,12 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.List;
+import java.io.File;
+import java.io.FilenameFilter;
 
-class yls
-  extends SimpleObserver<yff>
+public final class yls
+  implements FilenameFilter
 {
-  yls(ylr paramylr) {}
-  
-  public void a(yff paramyff)
+  public boolean accept(File paramFile, String paramString)
   {
-    super.onNext(paramyff);
-    if (paramyff.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      wse localwse = (wse)wth.a(17);
-      localwse.a(paramyff.jdField_a_of_type_JavaUtilList, paramyff.jdField_a_of_type_JavaLangString, false, false);
-      paramyff.jdField_a_of_type_JavaUtilList.addAll(localwse.b(paramyff.jdField_a_of_type_JavaLangString, false));
-    }
-    wjj.a().dispatch(paramyff);
-    this.a.b();
-    yuk.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull next");
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    this.a.b();
-    yuk.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment pull error", paramError);
+    return paramString.endsWith(".mp4");
   }
 }
 

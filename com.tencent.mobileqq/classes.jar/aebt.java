@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-public final class aebt
-  implements DialogInterface.OnClickListener
+public class aebt
+  implements BusinessObserver
 {
-  public aebt(aebz paramaebz) {}
+  protected void a() {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a != null) {
-      this.a.a();
+    if (paramInt == 10000) {
+      a();
     }
   }
 }

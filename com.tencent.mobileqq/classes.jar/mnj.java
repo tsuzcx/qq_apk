@@ -1,58 +1,22 @@
-import com.tencent.av.chatroom.ChatRoomInfo;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
-
-class mnj
-  implements lkc
+public class mnj
 {
-  private final WeakReference<mng> a;
+  public long a;
+  public byte[] a;
+  public long b;
   
-  mnj(mng parammng)
+  public mnj(byte[] paramArrayOfByte, long paramLong)
   {
-    this.a = new WeakReference(parammng);
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void a(int paramInt, ChatRoomInfo paramChatRoomInfo)
+  public String toString()
   {
-    int i;
-    mng localmng;
-    if ((paramInt & 0x4) == 4)
-    {
-      i = 1;
-      if (QLog.isDevelopLevel()) {
-        QLog.i("VideoChatRoomUIContoller", 4, "onChatRoomMsgUpdate, flag[" + paramInt + "], room[" + paramChatRoomInfo + "]");
-      }
-      localmng = (mng)this.a.get();
-      if (localmng != null) {
-        break label77;
-      }
+    StringBuilder localStringBuilder = new StringBuilder().append("PCMFrame:");
+    if (this.jdField_a_of_type_ArrayOfByte == null) {}
+    for (int i = -1;; i = this.jdField_a_of_type_ArrayOfByte.length) {
+      return i + ", idx=" + this.jdField_a_of_type_Long + ", pts=" + this.b;
     }
-    label77:
-    do
-    {
-      return;
-      i = 0;
-      break;
-      if (localmng.a())
-      {
-        mng.a(localmng, paramChatRoomInfo);
-        return;
-      }
-    } while (i == 0);
-    mng.a(localmng, 0);
-  }
-  
-  public void a(lkb paramlkb)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("VideoChatRoomUIContoller", 4, "onChatRoomSendMsgResult, msg[" + paramlkb + "]");
-    }
-    mng localmng = (mng)this.a.get();
-    if ((paramlkb == null) || (localmng == null)) {}
-    while (!localmng.a()) {
-      return;
-    }
-    mng.a(localmng, paramlkb.a);
   }
 }
 

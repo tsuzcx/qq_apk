@@ -1,92 +1,108 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.earlydownload.handler.PokeResHandler.1;
-import com.tencent.mobileqq.earlydownload.handler.PokeResHandler.2;
-import com.tencent.mobileqq.earlydownload.xmldata.PokeResData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.List;
 
 public class asdv
-  extends asdn
 {
-  private boolean d;
-  
-  public asdv(QQAppInterface paramQQAppInterface)
+  void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    super("qq.android.poke.res_0625", paramQQAppInterface);
-  }
-  
-  public int a()
-  {
-    return 10044;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return PokeResData.class;
-  }
-  
-  public String a()
-  {
-    return "PokeResHandler_0625";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess:" + paramString);
-    }
-    if (!new File(paramString).exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess sorse not exists");
-      }
+    if ((paramObject == null) || ((paramObject instanceof String))) {
       return;
     }
-    String str = bigv.a(ahnt.a());
+    Object localObject = (Object[])paramObject;
     if (QLog.isColorLevel()) {
-      QLog.d("PokeResHandler_0625", 2, "doOnDownloadSuccess imagePath=" + str);
+      QLog.d("FileTransferObserver<FileAssistant>", 2, "onUpdate : type[" + paramInt + "], isSuccess[" + paramBoolean + "]");
     }
-    ThreadManager.post(new PokeResHandler.1(this, str, paramString), 8, null, true);
-    super.a(paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    super.a(paramBoolean);
-    ThreadManager.executeOnSubThread(new PokeResHandler.2(this));
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public void f()
-  {
-    BaseApplication.getContext().getSharedPreferences("vasPokeConfig", 0).edit().putBoolean("ready", true);
-  }
-  
-  public boolean g()
-  {
-    if (!this.d) {
-      this.d = BaseApplication.getContext().getSharedPreferences("vasPokeConfig", 0).getBoolean("ready", false);
+    switch (paramInt)
+    {
+    case 5008: 
+    case 5009: 
+    case 5010: 
+    case 5011: 
+    case 5012: 
+    case 5017: 
+    case 5018: 
+    case 5019: 
+    default: 
+      QLog.e("FileTransferObserver<FileAssistant>", 1, "onUpdate : Can Not process type" + paramInt);
+      return;
+    case 5004: 
+      a(paramBoolean, (asdr)localObject[0], (amwm)localObject[1], (List)localObject[2]);
+      return;
+    case 5005: 
+      a(paramBoolean, (asdr)localObject[0], (amwm)localObject[1]);
+      return;
+    case 5006: 
+      a(paramBoolean, ((Long)localObject[0]).longValue(), (String)localObject[1], (String)localObject[2], (ByteStringMicro)localObject[3], ((Boolean)localObject[4]).booleanValue(), (String)localObject[5], ((Short)localObject[6]).shortValue(), (String)localObject[7], (List)localObject[8], ((Integer)localObject[9]).intValue(), (String)localObject[10], (String)localObject[11], (String)localObject[12], ((Long)localObject[13]).longValue(), (Bundle)localObject[14]);
+      return;
+    case 5007: 
+      b(paramBoolean, (asdr)localObject[0], (amwm)localObject[1]);
+      return;
+    case 5013: 
+      a(paramBoolean, ((Long)localObject[0]).longValue(), (String)localObject[1], (String)localObject[2], (String)localObject[3], ((Integer)localObject[4]).intValue(), (String)localObject[5], (String)localObject[6], ((Integer)localObject[7]).intValue(), ((Long)localObject[8]).longValue(), (Bundle)localObject[9]);
+      return;
+    case 5014: 
+      paramBoolean = ((Boolean)localObject[0]).booleanValue();
+      long l = ((Long)localObject[1]).longValue();
+      paramInt = ((Integer)localObject[2]).intValue();
+      a(paramBoolean, l, ((Long)localObject[3]).longValue(), paramInt, ((Long)localObject[4]).longValue());
+      return;
+    case 5015: 
+      paramObject = (Long)localObject[0];
+      String str1 = (String)localObject[1];
+      String str2 = (String)localObject[2];
+      String str3 = (String)localObject[3];
+      String str4 = (String)localObject[4];
+      Integer localInteger = (Integer)localObject[5];
+      String str5 = (String)localObject[6];
+      String str6 = (String)localObject[7];
+      localObject = (Bundle)localObject[8];
+      a(paramBoolean, paramObject.longValue(), str1, str2, str3, str4, localInteger.intValue(), str5, str6, (Bundle)localObject);
+      return;
+    case 5016: 
+      a(paramBoolean, (Long)localObject[0]);
+      return;
+    case 5020: 
+      b(paramBoolean, (asdr)localObject[0], (amwm)localObject[1], (List)localObject[2]);
+      return;
+    case 5022: 
+      b(paramBoolean, ((Boolean)localObject[0]).booleanValue(), (List)localObject[1]);
+      return;
     }
-    return super.g() & this.d;
+    a(paramBoolean, ((Boolean)localObject[0]).booleanValue(), (List)localObject[1]);
   }
+  
+  public void a(long paramLong1, long paramLong2) {}
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt, long paramLong3) {}
+  
+  protected void a(boolean paramBoolean1, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, boolean paramBoolean2, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle) {}
+  
+  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2, Bundle paramBundle) {}
+  
+  protected void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, Bundle paramBundle) {}
+  
+  protected void a(boolean paramBoolean, asdr paramasdr, amwm paramamwm) {}
+  
+  protected void a(boolean paramBoolean, asdr paramasdr, amwm paramamwm, List<String> paramList) {}
+  
+  protected void a(boolean paramBoolean, Long paramLong) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<OfflineFileInfo> paramList) {}
+  
+  public void au_() {}
+  
+  protected void b(boolean paramBoolean, asdr paramasdr, amwm paramamwm) {}
+  
+  protected void b(boolean paramBoolean, asdr paramasdr, amwm paramamwm, List<String> paramList) {}
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2, List<OfflineFileInfo> paramList) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asdv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.utils;
 
 import android.text.TextUtils;
-import bhkv;
-import bhmi;
-import bhmr;
+import bfuc;
+import bfvp;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
@@ -12,17 +11,17 @@ import java.util.HashMap;
 public class JumpAction$7
   implements Runnable
 {
-  public JumpAction$7(bhmr parambhmr, String paramString1, long paramLong, String paramString2, String paramString3, Runnable paramRunnable) {}
+  public JumpAction$7(bfvp parambfvp, String paramString1, long paramLong, String paramString2, String paramString3, Runnable paramRunnable) {}
   
   public void run()
   {
-    String str = bhmi.a(this.this$0.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, "opensdk_tmp");
+    String str = FileUtils.saveFileUriToFile(this.this$0.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, "opensdk_tmp");
     QLog.d("JumpAction", 1, new Object[] { "-->executeOnSubThread shareFilePath=", str, ", cost=", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
     this.this$0.jdField_a_of_type_JavaUtilHashMap.remove(this.b);
     if (!TextUtils.isEmpty(str)) {}
     try
     {
-      str = new String(bhkv.encode(str.getBytes("UTF-8"), 0));
+      str = new String(bfuc.encode(str.getBytes("UTF-8"), 0));
       this.this$0.jdField_a_of_type_JavaUtilHashMap.put(this.c, str);
       this.jdField_a_of_type_JavaLangRunnable.run();
       if ((!this.this$0.f) && ((this.this$0.jdField_a_of_type_AndroidContentContext instanceof JumpActivity))) {

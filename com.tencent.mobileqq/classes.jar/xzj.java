@@ -1,31 +1,20 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class xzj
-  extends QQUIEventReceiver<xzh, wmd>
+class xzj
+  extends SimpleJob<Object>
 {
-  public xzj(@NonNull xzh paramxzh)
+  xzj(xzd paramxzd, String paramString)
   {
-    super(paramxzh);
+    super(paramString);
   }
   
-  public void a(@NonNull xzh paramxzh, @NonNull wmd paramwmd)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if ((paramxzh.a == null) || (paramwmd.a == null) || (!TextUtils.equals(paramxzh.a.a, paramwmd.a.mVid))) {}
-    do
-    {
-      return;
-      paramxzh.i();
-      paramxzh = (xrb)paramxzh.a(xrb.class);
-    } while (paramxzh == null);
-    paramxzh.d();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wmd.class;
+    xwb.a("0X80076BC");
+    return null;
   }
 }
 

@@ -1,6 +1,8 @@
 public abstract interface ambd
 {
-  public abstract void a(int paramInt);
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
 }
 
 

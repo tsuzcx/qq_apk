@@ -1,12 +1,33 @@
-import android.media.MediaPlayer;
-import android.os.Looper;
-import com.tencent.mobileqq.music.SongInfo;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class axrc
+class axrc
+  extends Handler
 {
-  public MediaPlayer a;
-  public Looper a;
-  public SongInfo a;
+  private WeakReference<axqp> a;
+  
+  public axrc(axqp paramaxqp)
+  {
+    this.a = new WeakReference(paramaxqp);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    axqp localaxqp = (axqp)this.a.get();
+    if (localaxqp == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 100: 
+      axqp.a(localaxqp, (axre)paramMessage.obj);
+      return;
+    }
+    axqp.a(localaxqp);
+  }
 }
 
 

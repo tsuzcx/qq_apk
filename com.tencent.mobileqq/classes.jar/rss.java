@@ -1,13 +1,18 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
 
-class rss
-  implements seg
+public final class rss
+  implements Parcelable.Creator<LikeAnimationInfo>
 {
-  rss(rsr paramrsr) {}
-  
-  public void a(View paramView)
+  public LikeAnimationInfo a(Parcel paramParcel)
   {
-    paramView.setTag(new roo(paramView, 6));
+    return new LikeAnimationInfo(paramParcel);
+  }
+  
+  public LikeAnimationInfo[] a(int paramInt)
+  {
+    return new LikeAnimationInfo[paramInt];
   }
 }
 

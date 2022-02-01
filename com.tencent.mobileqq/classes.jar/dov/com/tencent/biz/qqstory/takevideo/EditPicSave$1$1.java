@@ -1,85 +1,85 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
+import amtj;
 import android.app.Activity;
 import android.content.Intent;
-import anzj;
-import born;
-import bpam;
-import bqcp;
-import bqcq;
-import bqgk;
-import bqhs;
-import bqip;
-import bqvl;
-import bqvm;
+import blvr;
+import bmbx;
+import bnct;
+import bncu;
+import bnee;
+import bnew;
+import bnfm;
+import bnpz;
+import bnqa;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class EditPicSave$1$1
   implements Runnable
 {
-  public EditPicSave$1$1(bqcq parambqcq) {}
+  public EditPicSave$1$1(bncu parambncu) {}
   
   public void run()
   {
     boolean bool = true;
-    if (bqcp.a(this.a.a)) {}
+    if (bnct.a(this.a.a)) {}
     int i;
     Object localObject1;
     Object localObject2;
     do
     {
       return;
-      if (bqcp.a(this.a.a) == 49) {}
+      if (bnct.a(this.a.a) == 20) {}
       for (i = 1;; i = 0)
       {
-        localObject1 = bqcp.a(this.a.a);
-        this.a.a.jdField_a_of_type_Bqgk.a(0);
+        localObject1 = bnct.a(this.a.a);
+        this.a.a.jdField_a_of_type_Bnee.a(0);
         this.a.a.jdField_a_of_type_Boolean = true;
         this.a.a.a(100);
-        this.a.a.d();
-        if (this.a.a.jdField_a_of_type_Bqgk.a.a() != 102) {
+        this.a.a.c();
+        if (this.a.a.jdField_a_of_type_Bnee.a.a() != 102) {
           break;
         }
-        bqcp.a(this.a.a, this.a.a.jdField_a_of_type_Bqgk.a.a());
+        bnct.a(this.a.a, this.a.a.jdField_a_of_type_Bnee.a.a());
         return;
       }
-      if (born.e(this.a.a.jdField_a_of_type_Bqhs.getActivity().getIntent()))
+      if (blvr.e(this.a.a.jdField_a_of_type_Bnew.getActivity().getIntent()))
       {
         localObject1 = new Intent();
         ((Intent)localObject1).setAction("com.tencent.mobileqq.mini.out.nativePlugins.native_back");
-        ((Intent)localObject1).putExtra("file_path", bqcp.a(this.a.a));
+        ((Intent)localObject1).putExtra("file_path", bnct.a(this.a.a));
         ((Intent)localObject1).putExtra("is_video", false);
-        this.a.a.jdField_a_of_type_Bqhs.getActivity().sendBroadcast((Intent)localObject1);
-        this.a.a.jdField_a_of_type_Bqhs.getActivity().setResult(-1, this.a.a.jdField_a_of_type_Bqhs.getActivity().getIntent());
-        this.a.a.jdField_a_of_type_Bqhs.getActivity().finish();
+        this.a.a.jdField_a_of_type_Bnew.getActivity().sendBroadcast((Intent)localObject1);
+        this.a.a.jdField_a_of_type_Bnew.getActivity().setResult(-1, this.a.a.jdField_a_of_type_Bnew.getActivity().getIntent());
+        this.a.a.jdField_a_of_type_Bnew.getActivity().finish();
         return;
       }
-      if (this.a.a.jdField_a_of_type_Bqgk.a.a() != 14) {
+      if (this.a.a.jdField_a_of_type_Bnee.a.a() != 14) {
         break;
       }
-      localObject2 = this.a.a.jdField_a_of_type_Bqhs.getActivity().getIntent();
-    } while (born.a((Intent)localObject2));
-    this.a.a.jdField_a_of_type_Bqgk.b = false;
-    this.a.a.jdField_a_of_type_Bqgk.a(0);
-    if (bqcp.b(this.a.a))
+      localObject2 = this.a.a.jdField_a_of_type_Bnew.getActivity().getIntent();
+    } while (blvr.a((Intent)localObject2));
+    this.a.a.jdField_a_of_type_Bnee.b = false;
+    this.a.a.jdField_a_of_type_Bnee.a(0);
+    if (bnct.b(this.a.a))
     {
       if (((Intent)localObject2).getIntExtra("VIDEO_STORY_JUMP_TO_TYPE", 0) == 2) {}
       while (i == 0)
       {
-        bqip.a(this.a.a.jdField_a_of_type_Bqhs.getActivity(), bqcp.a(this.a.a), bool);
+        bnfm.a(this.a.a.jdField_a_of_type_Bnew.getActivity(), bnct.a(this.a.a), bool);
         return;
         bool = false;
       }
-      bqvm.a().a(((Intent)localObject2).getStringExtra("widgetinfo"));
+      bnqa.a().a(((Intent)localObject2).getStringExtra("widgetinfo"));
       localObject2 = ((Intent)localObject2).getStringExtra("key_camera_material_name");
-      bpam.b("EditPicSave", "onPostRun---takeSameName=" + (String)localObject2);
-      bqvm.a().b((String)localObject2);
-      bqvm.a().a(((bqvl)localObject1).jdField_a_of_type_JavaLangString, ((bqvl)localObject1).jdField_a_of_type_Int, bqcp.a(this.a.a), "", false);
+      bmbx.b("EditPicSave", "onPostRun---takeSameName=" + (String)localObject2);
+      bnqa.a().b((String)localObject2);
+      bnqa.a().a(((bnpz)localObject1).jdField_a_of_type_JavaLangString, ((bnpz)localObject1).jdField_a_of_type_Int, bnct.a(this.a.a), "", false);
       return;
     }
-    QQToast.a(this.a.a.jdField_a_of_type_Bqhs.a(), 1, anzj.a(2131702580), 0).a();
+    QQToast.a(this.a.a.jdField_a_of_type_Bnew.a(), 1, amtj.a(2131702815), 0).a();
     return;
-    QQToast.a(this.a.a.jdField_a_of_type_Bqhs.a(), 2, anzj.a(2131702582), 0).a();
+    QQToast.a(this.a.a.jdField_a_of_type_Bnew.a(), 2, amtj.a(2131702817), 0).a();
   }
 }
 

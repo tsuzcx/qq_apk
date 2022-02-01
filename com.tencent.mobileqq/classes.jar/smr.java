@@ -1,21 +1,17 @@
-import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController.4.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
 
 public class smr
-  implements View.OnClickListener
+  implements oww
 {
-  public smr(SlideActiveAnimController paramSlideActiveAnimController) {}
+  public smr(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, oww paramoww) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    this.a.d = true;
-    SlideActiveAnimController.a(this.a, new SlideActiveAnimController.4.1(this));
-    SlideActiveAnimController.a(this.a).postDelayed(SlideActiveAnimController.a(this.a), 5000L);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew).setVisibility(8);
+    if (this.jdField_a_of_type_Oww != null) {
+      this.jdField_a_of_type_Oww.a(paramInt);
+    }
   }
 }
 

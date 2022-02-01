@@ -1,59 +1,21 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.util.SystemDragUtils.TouchHandler.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.widget.TabDragAnimationView;
 
-public class bhjq
-  extends Handler
+public final class bhjq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  static int a;
-  public agjk a;
-  public WeakReference<Context> a;
+  private final TabDragAnimationView a;
   
-  static
+  public bhjq(TabDragAnimationView paramTabDragAnimationView)
   {
-    jdField_a_of_type_Int = -1;
+    this.a = paramTabDragAnimationView;
   }
   
-  private void a(agjk paramagjk)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    QLog.d("SystemDragUtils", 1, "dismissBubbleMenu Called");
-    if ((paramagjk instanceof aggt))
-    {
-      QLog.d("SystemDragUtils", 1, "dismissBubbleMenu listener is BubbleOnlongClickListener");
-      paramagjk = ((aggt)paramagjk).a;
-      if ((paramagjk != null) && (paramagjk.a()))
-      {
-        QLog.d("SystemDragUtils", 1, "dismissBubbleMenu menuWrapper dismiss");
-        paramagjk.a();
-        return;
-      }
-      QLog.d("SystemDragUtils", 1, "dismissBubbleMenu menuWrapper notshow");
-      return;
-    }
-    QLog.d("SystemDragUtils", 1, "dismissBubbleMenu listener is: " + paramagjk.getClass());
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    if ((paramMessage.what == jdField_a_of_type_Int) && ((paramMessage.obj instanceof View)) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-    {
-      paramMessage = (aggl)agej.a((View)paramMessage.obj);
-      QLog.d("SystemDragUtils", 1, "DRAG TRIGGER: holder is: " + paramMessage.getClass());
-      if (paramMessage.a != null) {
-        ThreadManager.executeOnFileThread(new SystemDragUtils.TouchHandler.1(this, paramMessage));
-      }
-    }
-    else
-    {
-      return;
-    }
-    QLog.e("SystemDragUtils", 1, "DRAG TRIGGER: holder message is null");
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.a(f, 0.0F, true);
   }
 }
 

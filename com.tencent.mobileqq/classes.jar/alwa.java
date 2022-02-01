@@ -1,24 +1,78 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.RunnableUpdateThumb;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.ads.CmGameBannerAds.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 public class alwa
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public alwa(NewFlowCameraActivity.RunnableUpdateThumb paramRunnableUpdateThumb, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
+  private int a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public alwa(int paramInt)
   {
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    paramValueAnimator = (RelativeLayout.LayoutParams)NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$RunnableUpdateThumb.this$0).getLayoutParams();
-    paramValueAnimator.width = ((int)((this.jdField_a_of_type_Int - this.b) * f1 + this.b));
-    paramValueAnimator.height = ((int)((this.c - this.d) * f1 + this.d));
-    paramValueAnimator.leftMargin = ((int)((this.e + 0) * f1 + 0.0F));
-    paramValueAnimator.bottomMargin = ((int)(f1 * (this.f + 0) + 0.0F));
-    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$RunnableUpdateThumb.this$0).setLayoutParams(paramValueAnimator);
+    this.a = paramInt;
+  }
+  
+  private void a(long paramLong, int paramInt1, int paramInt2, int paramInt3)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("bannerId", paramInt1);
+      localJSONObject.put("errCode", paramInt3);
+      alvx.a().callbackFromRequest(paramLong, paramInt2, "sc.game_ad_banner_load.local", localJSONObject.toString());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.CmGameBannerAds", 1, localThrowable, new Object[0]);
+    }
+  }
+  
+  public void a() {}
+  
+  public void a(long paramLong, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameBannerAds", 2, new Object[] { "[loadBannerAd], bannerId:", Integer.valueOf(paramInt2), ",viewId:", Integer.valueOf(paramInt1) });
+    }
+    ThreadManager.getUIHandler().post(new CmGameBannerAds.1(this, paramLong, paramInt2));
+  }
+  
+  public void a(long paramLong, String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {}
+    boolean bool;
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          return;
+          try
+          {
+            paramString2 = new JSONObject(paramString2);
+            int i = paramString2.optInt("bannerId");
+            if (!"cs.game_ad_banner_close.local".equals(paramString1)) {
+              if ("cs.game_ad_banner_load.local".equals(paramString1))
+              {
+                a(paramLong, paramString2.optInt("viewId"), i);
+                return;
+              }
+            }
+          }
+          catch (Throwable paramString1)
+          {
+            QLog.e("cmgame_process.CmGameBannerAds", 1, paramString1, new Object[0]);
+            return;
+          }
+        }
+      } while (("cs.game_ad_banner_show.local".equals(paramString1)) || ("cs.game_ad_banner_hide.local".equals(paramString1)));
+      bool = "cs.game_ad_banner_resize.local".equals(paramString1);
+    } while (!bool);
   }
 }
 

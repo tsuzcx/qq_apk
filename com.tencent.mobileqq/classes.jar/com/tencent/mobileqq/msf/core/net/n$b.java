@@ -2,7 +2,7 @@ package com.tencent.mobileqq.msf.core.net;
 
 import android.os.Handler;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.ap;
+import com.tencent.mobileqq.msf.core.aq;
 import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.core.d;
 import com.tencent.qphone.base.a;
@@ -152,7 +152,7 @@ class n$b
   
   private void b(CopyOnWriteArrayList paramCopyOnWriteArrayList1, CopyOnWriteArrayList paramCopyOnWriteArrayList2, CopyOnWriteArrayList paramCopyOnWriteArrayList3, CopyOnWriteArrayList paramCopyOnWriteArrayList4, ArrayList paramArrayList)
   {
-    ap.a(String.format("开始竞速: delay %d..", new Object[] { Long.valueOf(this.d.f.delayIpRace.get()) }));
+    aq.a(String.format("开始竞速: delay %d..", new Object[] { Long.valueOf(this.d.f.delayIpRace.get()) }));
     com.tencent.mobileqq.msf.core.aj.P = true;
     ArrayList localArrayList = new ArrayList();
     n.b(this.d, paramCopyOnWriteArrayList3, paramCopyOnWriteArrayList4, localArrayList, 1);

@@ -1,19 +1,33 @@
-import java.util.Comparator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
-class bdny
-  implements Comparator
+public class bdny
+  extends BroadcastReceiver
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  public bdny(AbsPublishActivity paramAbsPublishActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramObject1 = (bdnu)paramObject1;
-    paramObject2 = (bdnu)paramObject2;
-    if (paramObject1.a > paramObject2.a) {
-      return -1;
+    paramContext = paramIntent.getAction();
+    if ("key_photo_delete_action".equals(paramContext))
+    {
+      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
+      this.a.a(i, 9);
     }
-    if (paramObject1.a < paramObject2.a) {
-      return 1;
-    }
-    return 0;
+    do
+    {
+      return;
+      if ("key_audio_delete_action".equals(paramContext))
+      {
+        this.a.a(0);
+        this.a.a = null;
+        bfaj.a(this.a.o, this.a.p, "del_record", this.a.q, this.a.b, "", "");
+        return;
+      }
+    } while (!"key_audio_play_action".equals(paramContext));
+    bfaj.a(this.a.o, this.a.p, "preview_record", this.a.q, this.a.b, "", "");
   }
 }
 

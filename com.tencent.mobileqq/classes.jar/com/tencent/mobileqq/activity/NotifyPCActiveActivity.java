@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import afas;
-import afat;
-import afau;
-import afav;
+import adtj;
+import adtk;
+import adtl;
+import adtm;
+import amov;
+import ampt;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import anum;
-import anuw;
-import anvl;
-import bdll;
-import bhlq;
-import bhpc;
+import bcef;
+import bfur;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -25,63 +25,64 @@ public class NotifyPCActiveActivity
 {
   public static NotifyPCActiveActivity a;
   private int jdField_a_of_type_Int;
-  private anuw jdField_a_of_type_Anuw = new afav(this);
-  private bhpc jdField_a_of_type_Bhpc;
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new adtm(this);
+  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   
   private void a()
   {
-    anvl localanvl = (anvl)this.app.a(4);
-    if (localanvl != null) {
-      localanvl.b();
+    ampt localampt = (ampt)this.app.getBusinessHandler(4);
+    if (localampt != null) {
+      localampt.b();
     }
   }
   
   private void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {
-      this.jdField_a_of_type_Bhpc.dismiss();
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
     }
-    this.jdField_a_of_type_Bhpc = null;
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     switch (paramInt)
     {
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bhpc != null)
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
       {
-        this.jdField_a_of_type_Bhpc.setCancelable(false);
-        this.jdField_a_of_type_Bhpc.show();
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       }
       return;
-      this.app.addObserver(this.jdField_a_of_type_Anuw, true);
-      Object localObject1 = (anum)this.app.a(2);
+      this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver, true);
+      Object localObject1 = (amov)this.app.getBusinessHandler(2);
       Object localObject3 = getIntent().getExtras();
       Object localObject2 = ((Bundle)localObject3).getString("Message");
       String str = ((Bundle)localObject3).getString("lButton");
       localObject3 = ((Bundle)localObject3).getString("rButton");
-      this.jdField_a_of_type_Bhpc = bhlq.a(this, 230);
-      this.jdField_a_of_type_Bhpc.setContentView(2131558984);
-      this.jdField_a_of_type_Bhpc.setTitle(null).setMessage((CharSequence)localObject2).setPositiveButton((String)localObject3, new afat(this, (anum)localObject1)).setNegativeButton(str, new afas(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this, 230);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setContentView(2131558992);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(null).setMessage((CharSequence)localObject2).setPositiveButton((String)localObject3, new adtk(this, (amov)localObject1)).setNegativeButton(str, new adtj(this));
       continue;
       localObject2 = getIntent().getExtras();
       localObject1 = ((Bundle)localObject2).getString("Message");
       localObject2 = ((Bundle)localObject2).getString("button");
-      this.jdField_a_of_type_Bhpc = bhlq.a(this, 230).setMessage((CharSequence)localObject1).setPositiveButton((String)localObject2, new afau(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this, 230).setMessage((CharSequence)localObject1).setPositiveButton((String)localObject2, new adtl(this));
     }
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559521);
+    super.setContentView(2131559523);
     jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity = this;
     this.jdField_a_of_type_Int = getIntent().getIntExtra("type", 0);
     paramBundle = getIntent().getAction();
@@ -90,7 +91,7 @@ public class NotifyPCActiveActivity
     }
     if ("mqq.intent.action.PCACTIVE_TIPS".equals(paramBundle))
     {
-      bdll.b(null, "CliOper", "", "", "0X8004975", "0X8004975", 0, 0, "", "", "", "");
+      bcef.b(null, "CliOper", "", "", "0X8004975", "0X8004975", 0, 0, "", "", "", "");
       this.jdField_a_of_type_Int = 1;
       a();
     }
@@ -106,7 +107,7 @@ public class NotifyPCActiveActivity
   
   public void doOnDestroy()
   {
-    this.app.removeObserver(this.jdField_a_of_type_Anuw);
+    this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
     super.doOnDestroy();
     if (jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity != null) {
       jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity = null;
@@ -138,10 +139,10 @@ public class NotifyPCActiveActivity
   
   public void finish()
   {
-    if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {
-      this.jdField_a_of_type_Bhpc.dismiss();
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
     }
-    this.jdField_a_of_type_Bhpc = null;
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     super.finish();
     jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity = null;
   }
@@ -155,7 +156,7 @@ public class NotifyPCActiveActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotifyPCActiveActivity
  * JD-Core Version:    0.7.0.1
  */

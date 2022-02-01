@@ -1,10 +1,13 @@
-public abstract interface bdew
+public class bdew
 {
-  public abstract void a();
+  public bdef a;
+  public String a;
   
-  public abstract void a(Process paramProcess);
-  
-  public abstract void b();
+  public bdew(String paramString, bdef parambdef)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bdef = parambdef;
+  }
 }
 
 

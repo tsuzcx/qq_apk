@@ -1,8 +1,18 @@
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract interface aghb
+class aghb
+  extends aghj
 {
-  public abstract void g(ChatMessage paramChatMessage);
+  aghb(agcw paramagcw)
+  {
+    super(paramagcw, null);
+  }
+  
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agsn(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

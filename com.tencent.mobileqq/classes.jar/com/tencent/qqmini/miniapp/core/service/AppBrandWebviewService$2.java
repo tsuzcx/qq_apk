@@ -11,8 +11,8 @@ class AppBrandWebviewService$2
   
   public void run()
   {
-    if (AppBrandWebviewService.access$000(this.this$0) != null) {
-      AppBrandWebviewService.access$000(this.this$0).evaluateJavascript(this.val$js, AppBrandUtil.convertValueCallback(this.val$valueCallback));
+    if (AppBrandWebviewService.access$100(this.this$0) != null) {
+      AppBrandWebviewService.access$100(this.this$0).evaluateJavascript(this.val$js, AppBrandUtil.convertValueCallback(this.val$valueCallback));
     }
   }
 }

@@ -1,34 +1,38 @@
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
-import java.util.Queue;
+import android.net.Uri;
+import java.util.Map;
 
-class wwy
-  extends SimpleJob<Void>
+public class wwy
+  implements www
 {
-  wwy(wwx paramwwx, String paramString, Context paramContext, List paramList)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Uri jdField_a_of_type_AndroidNetUri;
+  private Map<String, String> jdField_a_of_type_JavaUtilMap;
+  private Uri jdField_b_of_type_AndroidNetUri;
+  private Map<String, String> jdField_b_of_type_JavaUtilMap;
+  
+  public wwy(Context paramContext, Uri paramUri, Map<String, String> paramMap)
   {
-    super(paramString);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidNetUri = paramUri;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public wwr a()
   {
-    if (!wwx.a(this.jdField_a_of_type_Wwx, this.jdField_a_of_type_AndroidContentContext)) {
-      QLog.i("MsgTabStoryVideoPreloader", 2, "当前网络状态, 不启动预下载");
-    }
-    do
+    wwr localwwr = new wwr();
+    localwwr.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaUtilMap);
+    return localwwr;
+  }
+  
+  public wwr b()
+  {
+    if (this.jdField_b_of_type_AndroidNetUri != null)
     {
-      return null;
-      QLog.i("MsgTabStoryVideoPreloader", 2, "启动消息TAB节点预加载器");
-      paramJobContext = wwx.a(this.jdField_a_of_type_Wwx, this.jdField_a_of_type_JavaUtilList);
-    } while ((paramJobContext.isEmpty()) || (!this.jdField_a_of_type_Wwx.a()));
-    wwx.a(this.jdField_a_of_type_Wwx);
-    wwx.a(this.jdField_a_of_type_Wwx, paramJobContext);
-    this.jdField_a_of_type_Wwx.b();
+      wwr localwwr = new wwr();
+      localwwr.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidNetUri, this.jdField_b_of_type_JavaUtilMap);
+      return localwwr;
+    }
     return null;
   }
 }

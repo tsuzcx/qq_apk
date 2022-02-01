@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.video.playfeedback;
 
 import android.graphics.Bitmap;
 import kotlin.Metadata;
-import saw;
+import shu;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "run"}, k=3, mv={1, 1, 16})
 final class ScreenCaptureHelper$captureViewLowApi$1$1
@@ -12,7 +12,7 @@ final class ScreenCaptureHelper$captureViewLowApi$1$1
   
   public final void run()
   {
-    saw.a(this.this$0.this$0, this.a, this.this$0.a);
+    shu.a(this.this$0.this$0, this.a, this.this$0.a);
   }
 }
 

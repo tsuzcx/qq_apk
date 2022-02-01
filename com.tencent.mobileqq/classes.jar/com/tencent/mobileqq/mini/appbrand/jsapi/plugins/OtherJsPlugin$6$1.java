@@ -26,7 +26,7 @@ class OtherJsPlugin$6$1
         ((AppBrandPageContainer)this.this$1.this$0.jsPluginEngine.appBrandRuntime.getContainer()).notifyOnAddColorNote();
       }
       OtherJsPlugin.access$700(this.this$1.this$0, this.this$1.val$finalColorNoteController);
-      QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690746), 5000).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690786), 5000).a();
       if (this.this$1.this$0.isMiniGameRuntime())
       {
         paramDialogInterface = new OtherJsPlugin.6.1.1(this);

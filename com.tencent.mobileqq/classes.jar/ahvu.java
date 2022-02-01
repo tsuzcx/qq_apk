@@ -1,29 +1,23 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.activity.book.BookEditText;
+import com.tencent.mobileqq.text.QQText;
 
 public class ahvu
-  extends ahvl
+  implements InputFilter
 {
-  public ahvu(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner, BaseChatPie paramBaseChatPie)
-  {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner, paramBaseChatPie);
-  }
+  public ahvu(BookEditText paramBookEditText) {}
   
-  public aggl a()
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    return new ahvw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public View a(BaseChatItemLayout paramBaseChatItemLayout)
-  {
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131563029, paramBaseChatItemLayout, false);
+    this.a.a(paramSpanned.toString());
+    if (this.a.a(paramCharSequence.toString()) == 0) {
+      BookEditText.a(this.a);
+    }
+    while (!QQText.containsEmoji(paramCharSequence.toString())) {
+      return paramCharSequence.subSequence(paramInt1, paramInt2 - paramInt1);
+    }
+    return "";
   }
 }
 

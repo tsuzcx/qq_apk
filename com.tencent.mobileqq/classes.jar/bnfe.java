@@ -1,8 +1,4 @@
-public abstract interface bnfe
-{
-  public abstract void a(bndl parambndl);
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bnfe

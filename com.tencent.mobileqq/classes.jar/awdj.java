@@ -1,21 +1,15 @@
-import android.content.Intent;
-import android.os.Bundle;
-import java.util.concurrent.CountDownLatch;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.List;
 
 class awdj
-  implements avzh
+  implements DialogInterface.OnClickListener
 {
-  awdj(awdi paramawdi, avzd paramavzd, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch) {}
+  awdj(awdi paramawdi, List paramList) {}
   
-  public void a(String paramString, boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramString = new Bundle(this.jdField_a_of_type_Avzd.a().a.getExtras());
-    Bundle localBundle = new Bundle();
-    localBundle.putBundle("data", paramString);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putInt("code", paramInt);
-    this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = localBundle;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.jdField_a_of_type_Awdi.a(this.jdField_a_of_type_JavaUtilList, false);
   }
 }
 

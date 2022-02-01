@@ -15,10 +15,10 @@ class QQAppInterface$17
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.this$0.getApp()).edit();
     localEditor.putString("LastScreenShotUri", "");
     localEditor.commit();
-    this.this$0.o();
+    this.this$0.clearLebaResourceInfoList();
     try
     {
-      QQAppInterface.h(this.this$0).unregisterReceiver(QQAppInterface.c(this.this$0));
+      QQAppInterface.access$3300(this.this$0).unregisterReceiver(QQAppInterface.access$3200(this.this$0));
       return;
     }
     catch (Exception localException) {}

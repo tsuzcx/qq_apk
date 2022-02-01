@@ -1,54 +1,12 @@
-import EncounterSvc.UserData;
-import com.qq.jce.wup.UniPacket;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-
 public class bcrd
-  extends abiv
 {
-  static String[] jdField_a_of_type_ArrayOfJavaLangString = { "EncounterSvc", "NeighborSvc", "VisitorSvc" };
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  public UserData[] a;
+  public float a;
+  public float b;
   
-  public bcrd(AppInterface paramAppInterface)
+  public bcrd(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_ArrayOfEncounterSvcUserData = new UserData[2];
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-  }
-  
-  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if ("EncounterSvc.ReqGetEncounter".equals(paramFromServiceMsg.getServiceCmd())) {
-      return aocx.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramFromServiceMsg, paramToServiceMsg, this);
-    }
-    if ("NeighborSvc.ReqGetPoint".equals(paramFromServiceMsg.getServiceCmd())) {
-      return aocx.a(this, paramFromServiceMsg, paramToServiceMsg);
-    }
-    if ("VisitorSvc.ReqFavorite".equals(paramFromServiceMsg.getServiceCmd())) {
-      aocx.a(paramFromServiceMsg, paramToServiceMsg);
-    }
-    return super.a(paramToServiceMsg, paramFromServiceMsg);
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    String str = paramToServiceMsg.getServiceCmd();
-    if ("EncounterSvc.ReqGetEncounter".equals(str)) {
-      return aocx.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramToServiceMsg, paramUniPacket, this);
-    }
-    if ("NeighborSvc.ReqGetPoint".equals(str)) {
-      return aocx.a(this, paramToServiceMsg, paramUniPacket);
-    }
-    if ("VisitorSvc.ReqFavorite".equals(paramToServiceMsg.getServiceCmd())) {
-      return aocx.a(paramToServiceMsg, paramUniPacket);
-    }
-    return false;
-  }
-  
-  public String[] a()
-  {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    this.a = paramFloat1;
+    this.b = paramFloat2;
   }
 }
 

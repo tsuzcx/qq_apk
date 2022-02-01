@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.control;
 
-import bbeh;
+import azzj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 
@@ -9,7 +9,7 @@ public class CaptureAsyncStep$BindRichMediaClient
 {
   public int a()
   {
-    bbeh.a().a(BaseApplicationImpl.sApplication);
+    azzj.a().a(BaseApplicationImpl.sApplication);
     return 7;
   }
 }

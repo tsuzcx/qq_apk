@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.activity.phone.PhoneInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class akpi
-  extends azov
+  implements DialogInterface.OnDismissListener
 {
-  public akpi(PhoneInnerFrame paramPhoneInnerFrame) {}
+  public akpi(LoginView paramLoginView) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.a)
-    {
-      this.a.b().a().unRegistObserver(this);
-      this.a.g();
-    }
+    LoginView.g(this.a, false);
+    LoginView.h(this.a, false);
+    bcef.a(this.a.a, "new_reg_805", "log_page", "can_clk", "", 1, "");
   }
 }
 

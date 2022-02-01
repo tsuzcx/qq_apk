@@ -1,26 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class blrk
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public blrk(XPanelContainer paramXPanelContainer, int paramInt) {}
+  public String a;
+  public String b = "null";
+  public String c = "null";
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public blrk(@NonNull String paramString)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("XPanelContainer", 2, "colseAnim resetPosition");
-      }
-      XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, 0);
-      return;
-    }
-    XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.jdField_a_of_type_Int - i);
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.requestLayout();
+    this.a = paramString;
+  }
+  
+  public blrk(@NonNull String paramString1, @Nullable String paramString2, @Nullable String paramString3)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "cmd=" + this.a + ", state=" + this.b + ", result=" + this.c;
   }
 }
 

@@ -1,16 +1,39 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.view.View;
 
-class aike
-  extends bcvx
+public abstract class aike<T>
+  extends aiin<T>
+  implements bjtu
 {
-  aike(aijm paramaijm) {}
+  protected aijb a;
+  protected int d = -1;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aike(Context paramContext, int paramInt)
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.a();
+    super(paramContext, paramInt);
+    this.a = new aijb(paramContext);
+  }
+  
+  public void a_(View paramView)
+  {
+    if (paramView == null) {
+      return;
+    }
+    if (paramView != null)
+    {
+      paramView = paramView.getTag(-1);
+      if (!(paramView instanceof Integer)) {}
+    }
+    for (int i = ((Integer)paramView).intValue();; i = -1)
+    {
+      this.d = i;
+      return;
     }
   }
+  
+  public void e(boolean paramBoolean) {}
+  
+  public void f() {}
 }
 
 

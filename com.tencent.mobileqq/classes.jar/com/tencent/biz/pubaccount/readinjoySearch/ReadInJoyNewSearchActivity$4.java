@@ -16,7 +16,7 @@ class ReadInJoyNewSearchActivity$4
   
   public void run()
   {
-    EntityManager localEntityManager = this.this$0.app.a().createEntityManager();
+    EntityManager localEntityManager = this.this$0.app.getEntityManagerFactory().createEntityManager();
     List localList = localEntityManager.query(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
     Message localMessage = this.this$0.a.obtainMessage(1);
     localMessage.obj = localList;
@@ -35,7 +35,7 @@ class ReadInJoyNewSearchActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity.4
  * JD-Core Version:    0.7.0.1
  */

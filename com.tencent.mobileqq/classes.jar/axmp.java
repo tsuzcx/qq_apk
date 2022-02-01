@@ -1,67 +1,25 @@
-import com.tencent.mobileqq.data.IntimateInfo;
+import android.content.Context;
+import android.view.OrientationEventListener;
 
-public class axmp
+class axmp
+  extends OrientationEventListener
 {
-  public int a;
-  private long a;
-  public IntimateInfo a;
-  public String a;
-  
-  public axmp(IntimateInfo paramIntimateInfo)
+  axmp(axmo paramaxmo, Context paramContext)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo = paramIntimateInfo;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo != null) {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.isFriend) {
-        break label44;
-      }
+    super(paramContext);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    if (paramInt == -1) {
+      this.a.b = 0;
     }
-    label44:
-    for (this.jdField_a_of_type_Int = 1;; this.jdField_a_of_type_Int = 0)
-    {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      return;
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo == null) {
-      return null;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.friendUin;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo == null) {}
-    int i;
     do
     {
-      return false;
-      i = this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.maskType;
-    } while ((i != 3) && (i != 2) && (i != 1));
-    return true;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+      return;
+      this.a.b = ((paramInt + 45) / 90 * 90);
+    } while (this.a.b >= 0);
+    this.a.b = 0;
   }
 }
 

@@ -1,15 +1,12 @@
-class awdw
-  extends awdy
+import android.os.IInterface;
+import com.tencent.mobileqq.music.SongInfo;
+
+public abstract interface awdw
+  extends IInterface
 {
-  awdw(awdv paramawdv) {}
+  public abstract void onPlaySongChanged(SongInfo paramSongInfo);
   
-  public void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
-  {
-    super.a(paramBoolean, paramInt, paramLong, paramString1, paramString2);
-    if (paramBoolean) {
-      this.a.a(paramInt, paramLong, paramString1);
-    }
-  }
+  public abstract void onPlayStateChanged(int paramInt);
 }
 
 

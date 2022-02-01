@@ -1,15 +1,10 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.Switch;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
 
-public class ampc
+class ampc
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public arsh a;
-  public Switch a;
+  alnr jdField_a_of_type_Alnr = null;
+  ApolloBaseInfo jdField_a_of_type_ComTencentMobileqqDataApolloBaseInfo = null;
+  boolean jdField_a_of_type_Boolean = false;
 }
 
 

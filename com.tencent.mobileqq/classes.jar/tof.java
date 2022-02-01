@@ -1,42 +1,47 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class tof
-  implements pye
+class tof
+  implements ots
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  tof(toc paramtoc) {}
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public void a()
   {
-    return pud.a(paramBaseArticleInfo);
-  }
-  
-  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2)
-  {
-    paramContainer = paramContainer.getVirtualView();
-    if ((paramppu != null) && (paramppu.a() != null) && (AdvertisementInfo.isAdvertisementInfo(paramppu.a())))
-    {
-      ViewBase localViewBase = paramContainer.findViewBaseByName("id_view_AdDownloadView");
-      if ((localViewBase != null) && ((localViewBase instanceof tse))) {
-        ((tse)localViewBase).a(paramppu, true);
-      }
-      paramContainer = paramContainer.findViewBaseByName("id_article_double_image");
-      if ((paramContainer != null) && ((paramContainer instanceof tti))) {
-        ((tti)paramContainer).a(paramppu);
-      }
+    if (toc.a(this.a) != null) {
+      toc.a(this.a).a();
     }
   }
   
-  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
+  public void a(int paramInt) {}
+  
+  public void a(boolean paramBoolean)
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaCommentManager", 2, "setFirstCommentVisible: visible=" + paramBoolean);
+    }
+    if (paramBoolean) {
+      return;
+    }
+    toc.a(this.a, true);
+    toc.a(this.a).c();
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      toc.a(this.a).e();
+      toc.a(this.a, false);
+      toc.a(this.a).c();
+    }
   }
 }
 

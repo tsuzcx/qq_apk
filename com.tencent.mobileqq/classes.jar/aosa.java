@@ -1,24 +1,40 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.manager.TicketManager;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 class aosa
-  implements aczq
+  implements WtTicketPromise
 {
-  aosa(aorz paramaorz, byte[] paramArrayOfByte, int paramInt) {}
+  aosa(aory paramaory, TicketManager paramTicketManager, QQAppInterface paramQQAppInterface, String paramString, aosb paramaosb) {}
   
-  public ToServiceMsg a()
+  public void Done(Ticket paramTicket)
   {
-    ToServiceMsg localToServiceMsg = aorz.a(this.jdField_a_of_type_Aorz).createToServiceMsg("MessageSvc.GetMsgV4");
     if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "--->getC2CMessage cChannel: 4vCookies: " + this.jdField_a_of_type_ArrayOfByte + ",cSyncFlag:" + this.jdField_a_of_type_Int);
+      QLog.i("ArkApp.GetPSKeyAsyncHandler", 2, "--- pskey async done---  ");
     }
-    localToServiceMsg.extraData.putByte("cChannel", (byte)4);
-    localToServiceMsg.extraData.putByteArray("vCookies", this.jdField_a_of_type_ArrayOfByte);
-    localToServiceMsg.extraData.putInt("cSyncFlag", this.jdField_a_of_type_Int);
-    localToServiceMsg.extraData.putByte("onlineSyncFlag", (byte)1);
-    return localToServiceMsg;
+    paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Aosb != null) {
+      this.jdField_a_of_type_Aosb.a(paramTicket);
+    }
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "--- pskey async failed---  " + paramErrMsg.getMessage());
+    if (this.jdField_a_of_type_Aosb != null) {
+      this.jdField_a_of_type_Aosb.a(null);
+    }
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "--- pskey async timeout---  " + paramErrMsg.getMessage());
+    if (this.jdField_a_of_type_Aosb != null) {
+      this.jdField_a_of_type_Aosb.a(null);
+    }
   }
 }
 

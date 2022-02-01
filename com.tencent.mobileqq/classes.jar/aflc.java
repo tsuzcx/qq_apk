@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.RiskHintDlgFragment;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
 
 public class aflc
-  implements DialogInterface.OnDismissListener
 {
-  public aflc(RiskHintDlgFragment paramRiskHintDlgFragment) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public boolean b = false;
+  public boolean c;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public aflc(DoodleMsgLayout paramDoodleMsgLayout)
   {
-    if (this.a.getActivity() != null)
-    {
-      this.a.getActivity().finish();
-      this.a.getActivity().overridePendingTransition(0, 0);
-    }
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

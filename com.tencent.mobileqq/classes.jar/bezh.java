@@ -1,75 +1,256 @@
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.manager.Manager;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bezh
+  implements Manager
 {
-  public static long a = -1L;
-  public static long b = -1L;
+  int jdField_a_of_type_Int;
+  bezi jdField_a_of_type_Bezi;
+  bezj jdField_a_of_type_Bezj;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  public String a;
+  @NonNull
+  List<String> jdField_a_of_type_JavaUtilList = new ArrayList(5);
+  boolean jdField_a_of_type_Boolean = false;
+  int b;
+  public String b;
+  public String c = "banner_show_num";
+  public String d = "dialog_show_num";
+  String e;
+  String f;
+  public String g = amtj.a(2131706518);
+  public String h = amtj.a(2131706512);
+  String i = "";
+  String j;
+  String k;
   
-  public static long a()
+  public bezh(AppInterface paramAppInterface)
   {
-    if (a < 0L)
+    this.jdField_a_of_type_JavaLangString = "banner_config";
+    this.jdField_b_of_type_JavaLangString = "dialog_config";
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    paramAppInterface = paramAppInterface.getCurrentAccountUin();
+    this.jdField_a_of_type_JavaLangString += paramAppInterface;
+    this.c += paramAppInterface;
+    this.jdField_b_of_type_JavaLangString += paramAppInterface;
+    this.d += paramAppInterface;
+    paramAppInterface = BaseApplicationImpl.getContext().getSharedPreferences("nearby_videochat", 0);
+    this.i = paramAppInterface.getString("config", "");
+    if (!TextUtils.isEmpty(this.i)) {
+      a(this.i);
+    }
+    this.jdField_a_of_type_Boolean = paramAppInterface.getBoolean("enter_guide", true);
+    String str = paramAppInterface.getString(this.jdField_a_of_type_JavaLangString, "");
+    if (!TextUtils.isEmpty(str))
     {
-      a = a("SP_KEY_C2C_PIC_SIZE_LIMIT", 16777216L);
-      if (QLog.isColorLevel()) {
-        QLog.d("PicUploadFileSizeLimit", 2, "getLimitC2C:" + a);
+      a(str, true);
+      if ((this.jdField_a_of_type_Bezi != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bezi.jdField_a_of_type_JavaLangString)))
+      {
+        this.jdField_b_of_type_Int = a(paramAppInterface.getString(this.c, ""), this.jdField_a_of_type_Bezi.jdField_a_of_type_JavaLangString);
+        this.k = this.jdField_a_of_type_Bezi.jdField_a_of_type_JavaLangString;
       }
     }
-    return a;
-  }
-  
-  private static long a(String paramString, long paramLong)
-  {
-    long l = -1L;
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_PIC_SIZE_LIMIT", 4);
-    if (localSharedPreferences != null) {
-      l = localSharedPreferences.getLong(paramString, -1L);
-    }
-    if (l < 0L) {
-      return paramLong;
-    }
-    return l;
-  }
-  
-  public static void a(long paramLong)
-  {
-    a("SP_KEY_C2C_PIC_SIZE_LIMIT", paramLong);
-    if (paramLong > 0L) {
-      a = paramLong;
-    }
-  }
-  
-  private static void a(String paramString, long paramLong)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("SP_KEY_PIC_SIZE_LIMIT", 4).edit();
-    localEditor.putLong(paramString, paramLong);
-    localEditor.commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("PicUploadFileSizeLimit", 2, "setLimit:" + paramString + " size:" + paramLong);
-    }
-  }
-  
-  public static long b()
-  {
-    if (b < 0L)
+    str = paramAppInterface.getString(this.jdField_b_of_type_JavaLangString, "");
+    if (!TextUtils.isEmpty(str))
     {
-      b = a("SP_KEY_GROUP_PIC_SIZE_LIMIT", 16777216L);
-      if (QLog.isColorLevel()) {
-        QLog.d("PicUploadFileSizeLimit", 2, "getLimitGroup:" + b);
+      b(str, true);
+      if ((this.jdField_a_of_type_Bezj != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bezj.jdField_a_of_type_JavaLangString)))
+      {
+        this.jdField_a_of_type_Int = a(paramAppInterface.getString(this.d, ""), this.jdField_a_of_type_Bezj.jdField_a_of_type_JavaLangString);
+        this.j = this.jdField_a_of_type_Bezj.jdField_a_of_type_JavaLangString;
       }
     }
-    return b;
   }
   
-  public static void b(long paramLong)
+  private void a(String paramString, boolean paramBoolean)
   {
-    a("SP_KEY_GROUP_PIC_SIZE_LIMIT", paramLong);
-    if (paramLong > 0L) {
-      b = paramLong;
+    try
+    {
+      if (TextUtils.isEmpty(paramString))
+      {
+        QLog.e("Q.nearby.video_chat", 2, "parseBannerJson json is null");
+        return;
+      }
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Bezi = new bezi();
+      this.jdField_a_of_type_Bezi.jdField_a_of_type_JavaLangString = paramString.optString("unique_key");
+      this.jdField_a_of_type_Bezi.jdField_a_of_type_Int = paramString.optInt("display_times");
+      this.jdField_a_of_type_Bezi.jdField_a_of_type_Long = paramString.optLong("start_timestamp", 0L);
+      this.jdField_a_of_type_Bezi.jdField_b_of_type_Long = paramString.optLong("end_timestamp", 0L);
+      this.jdField_a_of_type_Bezi.jdField_b_of_type_Int = paramString.optInt("target_group");
+      Object localObject = paramString.optJSONObject("content");
+      if (localObject != null)
+      {
+        this.jdField_a_of_type_Bezi.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("image_url");
+        this.jdField_a_of_type_Bezi.c = ((JSONObject)localObject).optString("jump_url");
+      }
+      if (!paramBoolean)
+      {
+        localObject = BaseApplicationImpl.getContext().getSharedPreferences("nearby_videochat", 0);
+        ((SharedPreferences)localObject).edit().putString(this.jdField_a_of_type_JavaLangString, paramString.toString()).commit();
+        if ((this.jdField_a_of_type_Bezi.jdField_a_of_type_JavaLangString != null) && (!this.jdField_a_of_type_Bezi.jdField_a_of_type_JavaLangString.equals(this.k)))
+        {
+          this.k = this.jdField_a_of_type_Bezi.jdField_a_of_type_JavaLangString;
+          paramString = new JSONObject();
+          paramString.put(this.k, 0);
+          ((SharedPreferences)localObject).edit().putString(this.c, paramString.toString()).commit();
+          return;
+        }
+      }
+    }
+    catch (JSONException paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.nearby.video_chat", 2, "parseBannerJson JSONException", paramString);
+      }
     }
   }
+  
+  private void b(String paramString, boolean paramBoolean)
+  {
+    try
+    {
+      if (TextUtils.isEmpty(paramString))
+      {
+        QLog.e("Q.nearby.video_chat", 2, "parseDialogJson json is null");
+        return;
+      }
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_Bezj = new bezj();
+      this.jdField_a_of_type_Bezj.jdField_a_of_type_JavaLangString = paramString.optString("unique_key");
+      this.jdField_a_of_type_Bezj.jdField_a_of_type_Int = paramString.optInt("display_times");
+      this.jdField_a_of_type_Bezj.jdField_a_of_type_Long = paramString.optLong("start_timestamp", 0L);
+      this.jdField_a_of_type_Bezj.jdField_b_of_type_Long = paramString.optLong("end_timestamp", 0L);
+      this.jdField_a_of_type_Bezj.jdField_b_of_type_Int = paramString.optInt("target_group");
+      Object localObject = paramString.optJSONObject("content");
+      if (localObject != null)
+      {
+        this.jdField_a_of_type_Bezj.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("header_url");
+        this.jdField_a_of_type_Bezj.c = ((JSONObject)localObject).optString("title");
+        this.jdField_a_of_type_Bezj.d = ((JSONObject)localObject).optString("content");
+        this.jdField_a_of_type_Bezj.e = ((JSONObject)localObject).optString("button_text");
+        this.jdField_a_of_type_Bezj.f = ((JSONObject)localObject).optString("jump_url");
+        this.jdField_a_of_type_Bezj.g = ((JSONObject)localObject).optString("button_text_color");
+        this.jdField_a_of_type_Bezj.h = ((JSONObject)localObject).optString("button_background_color");
+      }
+      if (!paramBoolean)
+      {
+        localObject = BaseApplicationImpl.getContext().getSharedPreferences("nearby_videochat", 0);
+        ((SharedPreferences)localObject).edit().putString(this.jdField_b_of_type_JavaLangString, paramString.toString()).commit();
+        if ((this.jdField_a_of_type_Bezj.jdField_a_of_type_JavaLangString != null) && (!this.jdField_a_of_type_Bezj.jdField_a_of_type_JavaLangString.equals(this.j)))
+        {
+          this.j = this.jdField_a_of_type_Bezj.jdField_a_of_type_JavaLangString;
+          paramString = new JSONObject();
+          paramString.put(this.j, 0);
+          ((SharedPreferences)localObject).edit().putString(this.d, paramString.toString()).commit();
+          return;
+        }
+      }
+    }
+    catch (JSONException paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.nearby.video_chat", 2, "parseDialogJson JSONException", paramString);
+      }
+    }
+  }
+  
+  public int a(String paramString1, String paramString2)
+  {
+    try
+    {
+      if (TextUtils.isEmpty(paramString1)) {
+        return 0;
+      }
+      int m = new JSONObject(paramString1).optInt(paramString2);
+      return m;
+    }
+    catch (JSONException paramString2)
+    {
+      QLog.e("Q.nearby.video_chat", 2, "getNumFromJson json:" + paramString1);
+    }
+    return 0;
+  }
+  
+  public String a()
+  {
+    return this.i;
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      if (TextUtils.isEmpty(paramString))
+      {
+        this.e = null;
+        this.f = null;
+        BaseApplicationImpl.getContext().getSharedPreferences("nearby_videochat", 4).edit().putString("config", paramString).commit();
+        return;
+      }
+      this.i = paramString;
+      Object localObject = new JSONObject(paramString);
+      this.g = ((JSONObject)localObject).optString("detail_default");
+      this.h = ((JSONObject)localObject).optString("detail_num");
+      this.e = ((JSONObject)localObject).optString("guide");
+      this.f = ((JSONObject)localObject).optString("title");
+      SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("nearby_videochat", 4);
+      localSharedPreferences.edit().putString("detail_default", this.g).commit();
+      localSharedPreferences.edit().putString("detail_num", this.h).commit();
+      if (TextUtils.isEmpty(this.f)) {
+        localSharedPreferences.edit().putString("title", amtj.a(2131706517)).commit();
+      }
+      for (;;)
+      {
+        localObject = ((JSONObject)localObject).optJSONArray("tips");
+        int m = 0;
+        while (m < ((JSONArray)localObject).length())
+        {
+          this.jdField_a_of_type_JavaUtilList.add(((JSONArray)localObject).optString(m));
+          m += 1;
+        }
+        break;
+        localSharedPreferences.edit().putString("title", this.f).commit();
+      }
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.nearby.video_chat", 2, "parseJson JSONException", paramString);
+      }
+    }
+  }
+  
+  public String b()
+  {
+    return this.f;
+  }
+  
+  public void b(String paramString)
+  {
+    a(paramString, false);
+  }
+  
+  public void c(String paramString)
+  {
+    b(paramString, false);
+  }
+  
+  public void onDestroy() {}
 }
 
 

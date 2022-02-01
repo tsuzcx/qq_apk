@@ -1,27 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.VideoInfo.RichTitleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
+import org.jetbrains.annotations.Nullable;
 
-final class rqb
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SlidingUpDialog$sliding$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rqb
+  implements Animator.AnimatorListener
 {
-  private long jdField_a_of_type_Long;
+  rqb(Function0 paramFunction0) {}
   
-  rqb(TextView paramTextView, VideoInfo.RichTitleInfo paramRichTitleInfo, VideoInfo paramVideoInfo) {}
+  public void onAnimationCancel(@Nullable Animator paramAnimator) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(@Nullable Animator paramAnimator)
   {
-    if ((this.jdField_a_of_type_Long == 0L) || (System.currentTimeMillis() - this.jdField_a_of_type_Long > 2000L))
-    {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      ozs.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$RichTitleInfo.d);
-      rsq.a.b(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$RichTitleInfo.b);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.invoke();
   }
+  
+  public void onAnimationRepeat(@Nullable Animator paramAnimator) {}
+  
+  public void onAnimationStart(@Nullable Animator paramAnimator) {}
 }
 
 

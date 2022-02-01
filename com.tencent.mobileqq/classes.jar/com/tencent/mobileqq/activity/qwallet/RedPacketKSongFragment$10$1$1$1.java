@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akyj;
-import akyk;
+import ajwa;
+import ajwb;
 
 public class RedPacketKSongFragment$10$1$1$1
   implements Runnable
 {
-  public RedPacketKSongFragment$10$1$1$1(akyk paramakyk) {}
+  public RedPacketKSongFragment$10$1$1$1(ajwb paramajwb) {}
   
   public void run()
   {

@@ -1,48 +1,28 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.TeamWorkFileExportHandler.1;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.manager.TicketManager;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class beaq
-  extends anud
-  implements Handler.Callback
+public abstract class beaq
 {
-  private String[] a = { "docs.qq.com" };
-  
-  public beaq(QQAppInterface paramQQAppInterface)
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    super(paramQQAppInterface);
-  }
-  
-  private void a(Runnable paramRunnable)
-  {
-    if (this.app == null) {}
-    while (((TicketManager)this.app.getManager(2)).getPskey(this.app.getCurrentAccountUin(), 16L, this.a, new bear(this, paramRunnable)) == null) {
-      return;
+    TroopFeedItem localTroopFeedItem = new TroopFeedItem();
+    try
+    {
+      localTroopFeedItem.id = paramJSONObject.getString("feed_id");
+      localTroopFeedItem.feedTime = paramJSONObject.getString("mod_time");
+      localTroopFeedItem.tag = paramJSONObject.getString("tag");
+      if (paramJSONObject.has("pub_uin")) {
+        localTroopFeedItem.publishUin = paramJSONObject.getString("pub_uin");
+      }
+      return localTroopFeedItem;
     }
-    ThreadManager.executeOnNetWorkThread(paramRunnable);
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+    return localTroopFeedItem;
   }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    a(new TeamWorkFileExportHandler.1(this, paramString1, paramString2, paramString3, paramString4));
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
-  }
-  
-  protected Class<? extends anui> observerClass()
-  {
-    return beao.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

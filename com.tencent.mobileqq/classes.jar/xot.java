@@ -1,52 +1,54 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 public class xot
-  extends zsv
+  extends vll<xoi, vvc>
 {
-  public static final String KEY = "EmptyPlaceHolderSegment";
-  private final int jdField_a_of_type_Int;
-  private yqw jdField_a_of_type_Yqw;
-  
-  public xot(Context paramContext, int paramInt)
+  public xot(xoi paramxoi)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramxoi);
   }
   
-  public int a()
+  public void a(@NonNull xoi paramxoi, @NonNull vvc paramvvc)
   {
-    return 1;
-  }
-  
-  public View a(int paramInt, yqw paramyqw, ViewGroup paramViewGroup)
-  {
-    return paramyqw.a();
-  }
-  
-  public String a()
-  {
-    return "EmptyPlaceHolderSegment";
-  }
-  
-  public yqw a(int paramInt, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
-    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.jdField_a_of_type_Int));
-    if (QQStoryContext.a()) {
-      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166476));
+    Object localObject = xoi.a(paramxoi);
+    paramvvc = paramvvc.a;
+    vva localvva = (vva)vux.a(27);
+    localObject = ((ArrayList)localObject).iterator();
+    int i = 0;
+    while (((Iterator)localObject).hasNext())
+    {
+      xpe localxpe = (xpe)((Iterator)localObject).next();
+      if ((localxpe instanceof xpg))
+      {
+        wei localwei = (wei)paramvvc.get(localxpe.a().feedId);
+        if (localwei == null) {
+          break label129;
+        }
+        ((xpg)localxpe).d = localvva.a(((xpg)localxpe).a(), localwei.a);
+        i = 1;
+      }
     }
+    label129:
     for (;;)
     {
-      this.jdField_a_of_type_Yqw = new yqw(paramViewGroup);
-      return this.jdField_a_of_type_Yqw;
-      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165545));
+      break;
+      if (i != 0) {
+        xoi.a(paramxoi).f();
+      }
+      return;
     }
   }
+  
+  public Class acceptEventClass()
+  {
+    return vvc.class;
+  }
+  
+  public void b(@NonNull xoi paramxoi, @NonNull vvc paramvvc) {}
 }
 
 

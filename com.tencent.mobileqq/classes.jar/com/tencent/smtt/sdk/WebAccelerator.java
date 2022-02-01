@@ -11,12 +11,12 @@ public class WebAccelerator
   
   public static void createCacheWebView(Context paramContext, boolean paramBoolean)
   {
-    v localv = v.a();
+    x localx = x.a();
     if (paramBoolean) {
-      localv.a(paramContext, null);
+      localx.a(paramContext, null);
     }
-    if (localv.b()) {
-      localv.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "createCacheWebView", new Class[] { Context.class }, new Object[] { paramContext });
+    if (localx.b()) {
+      localx.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "createCacheWebView", new Class[] { Context.class }, new Object[] { paramContext });
     }
   }
   
@@ -28,49 +28,49 @@ public class WebAccelerator
       if (paramInt != 1) {
         break label31;
       }
-      d.a(true).a(paramContext, false, false, null);
+      f.a(true).a(paramContext, false, false, null);
     }
     for (;;)
     {
-      bool = v.a().b();
+      bool = x.a().b();
       return bool;
       label31:
       if (paramInt == 2) {
-        v.a().a(paramContext, null);
+        x.a().a(paramContext, null);
       }
     }
   }
   
   public static void preConnect(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
   {
-    v localv = v.a();
+    x localx = x.a();
     if (paramBoolean) {
-      localv.a(paramContext, null);
+      localx.a(paramContext, null);
     }
-    if (localv.b()) {
-      localv.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "preConnect", new Class[] { Context.class, String.class, Integer.TYPE }, new Object[] { paramContext, paramString, Integer.valueOf(paramInt) });
+    if (localx.b()) {
+      localx.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "preConnect", new Class[] { Context.class, String.class, Integer.TYPE }, new Object[] { paramContext, paramString, Integer.valueOf(paramInt) });
     }
   }
   
   public static void prefetchResource(Context paramContext, String paramString, Map<String, String> paramMap, boolean paramBoolean)
   {
-    v localv = v.a();
+    x localx = x.a();
     if (paramBoolean) {
-      localv.a(paramContext, null);
+      localx.a(paramContext, null);
     }
-    if (localv.b()) {
-      localv.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "prefetchResource", new Class[] { Context.class, String.class, Map.class }, new Object[] { paramContext, paramString, paramMap });
+    if (localx.b()) {
+      localx.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "prefetchResource", new Class[] { Context.class, String.class, Map.class }, new Object[] { paramContext, paramString, paramMap });
     }
   }
   
   public static void setWebViewPoolSize(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    v localv = v.a();
+    x localx = x.a();
     if (paramBoolean) {
-      localv.a(paramContext, null);
+      localx.a(paramContext, null);
     }
-    if (localv.b()) {
-      localv.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "setWebViewPoolSize", new Class[] { Context.class, Integer.TYPE }, new Object[] { paramContext, Integer.valueOf(paramInt) });
+    if (localx.b()) {
+      localx.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "setWebViewPoolSize", new Class[] { Context.class, Integer.TYPE }, new Object[] { paramContext, Integer.valueOf(paramInt) });
     }
   }
 }

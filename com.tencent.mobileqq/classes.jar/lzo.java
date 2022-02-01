@@ -1,34 +1,93 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
+import com.tencent.av.so.ResInfo;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
 
-public class lzo
-  extends lzj
+class lzo
+  implements INetEngine.INetEngineListener
 {
-  protected static int a;
+  lzo(lzn paramlzn, lzp paramlzp) {}
   
-  static
+  public void onResp(NetResp paramNetResp)
   {
-    jdField_a_of_type_Int = 3;
+    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetResp.mReq;
+    int i;
+    if (paramNetResp.mResult == 0)
+    {
+      paramNetResp = new File(localHttpNetReq.mOutPath);
+      if (paramNetResp.exists())
+      {
+        try
+        {
+          if (!lzq.a(localHttpNetReq.mOutPath, this.jdField_a_of_type_Lzp.jdField_a_of_type_ComTencentAvSoResInfo.resZipMd5)) {
+            break label232;
+          }
+          String str = paramNetResp.getParent();
+          FileUtils.uncompressZip(localHttpNetReq.mOutPath, str, false);
+          boolean bool = lzq.a(str + File.separator + this.jdField_a_of_type_Lzp.jdField_a_of_type_ComTencentAvSoResInfo.resFileName, this.jdField_a_of_type_Lzp.jdField_a_of_type_ComTencentAvSoResInfo.resMd5);
+          if (!bool) {
+            break label232;
+          }
+          i = 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            localException.printStackTrace();
+            i = 0;
+            continue;
+            QLog.e("ResMgr", 1, "download end but failed. uncompressZip failed or md5 not match. " + this.jdField_a_of_type_Lzp.jdField_a_of_type_ComTencentAvSoResInfo);
+            lzn.a(-1, this.jdField_a_of_type_Lzp.b, this.jdField_a_of_type_Lzp.jdField_a_of_type_ComTencentAvSoResInfo);
+          }
+        }
+        paramNetResp.delete();
+      }
+    }
+    for (;;)
+    {
+      if (i != 0)
+      {
+        QLog.i("ResMgr", 1, "download successfully. " + this.jdField_a_of_type_Lzp.jdField_a_of_type_ComTencentAvSoResInfo);
+        lzn.a(1, 100, this.jdField_a_of_type_Lzp.jdField_a_of_type_ComTencentAvSoResInfo);
+        if (this.jdField_a_of_type_Lzp.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq)
+        {
+          this.jdField_a_of_type_Lzp.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
+          this.jdField_a_of_type_Lzp.jdField_a_of_type_Int = 0;
+          lzn.a(this.jdField_a_of_type_Lzn).remove(this.jdField_a_of_type_Lzp);
+        }
+        return;
+      }
+      label232:
+      i = 0;
+    }
   }
   
-  public lzo(Context paramContext)
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_JavaLangString = "SmallScreenShare";
-    this.i = 2131559774;
-    this.j = paramContext.getResources().getDimensionPixelSize(2131297848);
-    this.k = paramContext.getResources().getDimensionPixelSize(2131297847);
-  }
-  
-  public void a()
-  {
-    jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.a();
-    super.a();
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    super.a(paramBoolean, jdField_a_of_type_Int);
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Lzp.b = i;
+      if (QLog.isColorLevel()) {
+        QLog.d("ResMgr", 2, "download... progress = " + i + ", " + this.jdField_a_of_type_Lzp.jdField_a_of_type_ComTencentAvSoResInfo);
+      }
+      lzn.a(2, i, this.jdField_a_of_type_Lzp.jdField_a_of_type_ComTencentAvSoResInfo);
+      return;
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+      }
+    }
   }
 }
 

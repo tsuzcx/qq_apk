@@ -1,60 +1,64 @@
-import android.graphics.Bitmap;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import java.util.HashSet;
+import java.util.Set;
 
 public class bfza
-  extends GestureDetector.SimpleOnGestureListener
 {
-  private bfza(BaseScaleAndMoveBitmapView paramBaseScaleAndMoveBitmapView) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public static SharedPreferences.Editor a(SharedPreferences.Editor paramEditor, String paramString, Set<String> paramSet)
   {
-    float f2 = 0.0F;
-    BaseScaleAndMoveBitmapView.a(this.a, false);
-    float f3 = this.a.jdField_a_of_type_Float - paramFloat1 / this.a.c;
-    float f4 = this.a.b;
-    float f5 = paramFloat2 / this.a.c;
-    float f1;
-    if ((paramFloat1 < 0.0F) && (this.a.a(0.0F) >= 0.0F))
+    return a(paramEditor, paramString, paramSet.toArray());
+  }
+  
+  public static SharedPreferences.Editor a(SharedPreferences.Editor paramEditor, String paramString, Object[] paramArrayOfObject)
+  {
+    String str = "";
+    if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
     {
-      f1 = 0.0F;
-      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c > this.a.getHeight()) {
-        break label247;
+      int j = paramArrayOfObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = paramArrayOfObject[i];
+        str = str + localObject.toString();
+        str = str + " ";
+        i += 1;
       }
-      paramFloat1 = (this.a.getHeight() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c) / 2.0F / this.a.c;
+      paramEditor.putString(paramString, str);
+      return paramEditor;
     }
-    for (;;)
+    paramEditor.putString(paramString, "");
+    return paramEditor;
+  }
+  
+  public static Set<String> a(SharedPreferences paramSharedPreferences, String paramString, Set<String> paramSet)
+  {
+    paramString = paramSharedPreferences.getString(paramString, "");
+    paramSharedPreferences = paramSet;
+    if (paramString != null)
     {
-      this.a.jdField_a_of_type_Float = f1;
-      this.a.b = paramFloat1;
-      this.a.invalidate();
-      return true;
-      f1 = f3;
-      if (paramFloat1 <= 0.0F) {
-        break;
-      }
-      f1 = f3;
-      if (this.a.a(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) > this.a.getWidth()) {
-        break;
-      }
-      f1 = this.a.getWidth() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      break;
-      label247:
-      if (paramFloat2 < 0.0F)
+      paramSharedPreferences = paramSet;
+      if (paramString.length() > 0)
       {
-        paramFloat1 = f2;
-        if (this.a.b(0.0F) >= 0.0F) {}
-      }
-      else if ((paramFloat2 > 0.0F) && (this.a.b(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) <= this.a.getHeight()))
-      {
-        paramFloat1 = this.a.getHeight() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-      }
-      else
-      {
-        paramFloat1 = f4 - f5;
+        paramSet = paramString.split(" ");
+        paramString = new HashSet();
+        int j = paramSet.length;
+        int i = 0;
+        for (;;)
+        {
+          paramSharedPreferences = paramString;
+          if (i >= j) {
+            break;
+          }
+          paramSharedPreferences = paramSet[i];
+          if ((paramSharedPreferences != null) && (paramSharedPreferences.length() > 0)) {
+            paramString.add(paramSharedPreferences);
+          }
+          i += 1;
+        }
       }
     }
+    return paramSharedPreferences;
   }
 }
 

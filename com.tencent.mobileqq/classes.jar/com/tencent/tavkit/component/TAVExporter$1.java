@@ -18,7 +18,7 @@ class TAVExporter$1
     case 1: 
       if (TAVExporter.access$000(this.this$0) != null)
       {
-        Logger.i(TAVExporter.access$100(this.this$0), "export progress: " + paramAssetExportSession.getProgress(), new Object[0]);
+        Logger.i(TAVExporter.access$100(this.this$0), "export progress: " + paramAssetExportSession.getProgress());
         if (!TAVExporter.access$200(this.this$0)) {
           TAVExporter.access$000(this.this$0).onExportStart();
         }
@@ -27,7 +27,7 @@ class TAVExporter$1
       TAVExporter.access$202(this.this$0, true);
       return;
     case 2: 
-      Logger.i(TAVExporter.access$100(this.this$0), "export progress finished", new Object[0]);
+      Logger.i(TAVExporter.access$100(this.this$0), "export progress finished");
       if (TAVExporter.access$000(this.this$0) != null) {
         TAVExporter.access$000(this.this$0).onExportCompleted(this.val$outputPath);
       }
@@ -35,14 +35,14 @@ class TAVExporter$1
       return;
     case 3: 
     case 4: 
-      Logger.i(TAVExporter.access$100(this.this$0), "export error", new Object[0]);
+      Logger.i(TAVExporter.access$100(this.this$0), "export error");
       if (TAVExporter.access$000(this.this$0) != null) {
-        TAVExporter.access$000(this.this$0).onExportError();
+        TAVExporter.access$000(this.this$0).onExportError(paramAssetExportSession.getErrCode(), paramAssetExportSession.getThrowable());
       }
       TAVExporter.access$202(this.this$0, false);
       return;
     }
-    Logger.i(TAVExporter.access$100(this.this$0), "export cancel", new Object[0]);
+    Logger.i(TAVExporter.access$100(this.this$0), "export cancel");
     if ((TAVExporter.access$000(this.this$0) != null) && (TAVExporter.access$300(this.this$0)))
     {
       TAVExporter.access$302(this.this$0, false);

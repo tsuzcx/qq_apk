@@ -1,14 +1,6 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-
-class aqov
+public abstract interface aqov
 {
-  public View a;
-  public TextView a;
-  public URLImageView a;
-  public TextView b;
-  public TextView c;
+  public abstract aqou a(int paramInt);
 }
 
 

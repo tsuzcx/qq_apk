@@ -1,34 +1,58 @@
+import android.content.Intent;
+import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class axqn
-  implements ault
+public class axqn
+  extends MSFServlet
 {
-  axqn(axqb paramaxqb, String paramString, axpw paramaxpw) {}
-  
-  public void a(int paramInt)
+  public String[] getPreferSSOCommands()
   {
-    if ((this.jdField_a_of_type_Axpw != null) && (this.jdField_a_of_type_Axpw.a != null))
+    return null;
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramIntent != null)
     {
-      String str = this.jdField_a_of_type_Axpw.a.a();
-      axpx localaxpx = this.jdField_a_of_type_Axqb.a(str);
-      if ((localaxpx != null) && (!localaxpx.a))
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    }
+    for (;;)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("OlympicToolServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
+      }
+      ((OlympicToolAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent != null)
       {
-        localaxpx.c = paramInt;
-        this.jdField_a_of_type_Axqb.a(str, localaxpx);
-        axqb.a(this.jdField_a_of_type_Axqb, localaxpx, paramInt);
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+        if (QLog.isDevelopLevel()) {
+          QLog.i("OlympicToolServlet", 4, "send: " + paramIntent.getServiceCmd());
+        }
       }
     }
   }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadFile key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramBoolean);
-    }
-    axqb.a(this.jdField_a_of_type_Axqb, this.jdField_a_of_type_Axpw, paramBoolean);
-  }
-  
-  public void b(boolean paramBoolean) {}
 }
 
 

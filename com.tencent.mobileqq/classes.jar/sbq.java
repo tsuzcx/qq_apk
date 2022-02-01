@@ -1,24 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
 
 class sbq
-  extends sbh
+  implements slm
 {
-  sbq(sbi paramsbi) {}
+  sbq(sbp paramsbp, rvv paramrvv) {}
   
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void a(@NonNull View paramView, int paramInt)
   {
-    if ((paramBaseArticleInfo.qzoneShareUrl != null) && (paramBaseArticleInfo.qzoneShareUrl.contains("kandianshare.html5.qq.com")))
-    {
-      sbi.a(this.a).a(paramBaseArticleInfo.qzoneShareUrl);
-      return;
+    if ((paramInt == 0) && (this.jdField_a_of_type_Rvv.x.getVisibility() == 0)) {
+      sbp.a(this.jdField_a_of_type_Sbp).resumeAnimation();
     }
-    sbi.a(this.a).a(paramString + "&sourcefrom=6");
-  }
-  
-  public int c()
-  {
-    return 6;
   }
 }
 

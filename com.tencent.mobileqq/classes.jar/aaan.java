@@ -1,97 +1,179 @@
-import com.tencent.biz.richframework.widget.BaseVideoView;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.util.SparseArray;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.ISPlayerPreDownloader;
-import com.tencent.superplayer.api.ISPlayerPreDownloader.Listener;
-import com.tencent.superplayer.api.SuperPlayerFactory;
-import com.tencent.superplayer.api.SuperPlayerVideoInfo;
-import feedcloud.FeedCloudMeta.StVideo;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aaan
-  implements ISPlayerPreDownloader.Listener
+  extends WebViewPlugin
 {
-  private static boolean jdField_a_of_type_Boolean = true;
-  private final int jdField_a_of_type_Int;
-  private final ISPlayerPreDownloader jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
-  private final ConcurrentHashMap<Integer, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private static int jdField_a_of_type_Int = 1;
+  private SparseArray<WeakReference<aaap>> jdField_a_of_type_AndroidUtilSparseArray;
   
-  public aaan(int paramInt)
+  public aaan()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader = SuperPlayerFactory.createPreDownloader(BaseApplicationImpl.getContext(), 102);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader.setOnPreDownloadListener(this);
+    this.mPluginNameSpace = "redEnvelope";
   }
   
-  private int a(String paramString1, String paramString2, long paramLong1, long paramLong2)
+  private static int a()
   {
-    int i = -2;
-    if (!jdField_a_of_type_Boolean) {}
-    SuperPlayerVideoInfo localSuperPlayerVideoInfo;
-    int j;
-    do
+    int i = jdField_a_of_type_Int;
+    jdField_a_of_type_Int = i + 1;
+    return i;
+  }
+  
+  private void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    paramString1 = new Intent(paramString1);
+    paramString1.putExtra("portal_type_key", paramInt1);
+    paramString1.putExtra("portal_agrs", paramString2);
+    paramString1.putExtra("bc_seq", paramInt2);
+    if (this.mRuntime.a() != null) {
+      this.mRuntime.a().sendBroadcast(paramString1, "com.tencent.msg.permission.pushnotify");
+    }
+  }
+  
+  int a(String paramString)
+  {
+    if ("getRankingList".endsWith(paramString)) {
+      return 1008;
+    }
+    if ("getHead".endsWith(paramString)) {
+      return 1009;
+    }
+    if ("getJumpBtnState".endsWith(paramString)) {
+      return 1010;
+    }
+    if ("getNick".endsWith(paramString)) {
+      return 1011;
+    }
+    if ("takePhoto".endsWith(paramString)) {
+      return 1012;
+    }
+    return -1;
+  }
+  
+  aaap a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
+      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(12);
+    }
+    Object localObject = new aaap(this, null);
+    ((aaap)localObject).jdField_a_of_type_Int = paramInt;
+    localObject = new WeakReference(localObject);
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject);
+    return (aaap)((WeakReference)localObject).get();
+  }
+  
+  void a(BroadcastReceiver paramBroadcastReceiver, String paramString)
+  {
+    paramString = new IntentFilter(paramString);
+    if (this.mRuntime.a() != null) {
+      this.mRuntime.a().registerReceiver(paramBroadcastReceiver, paramString, "com.tencent.msg.permission.pushnotify", null);
+    }
+  }
+  
+  void a(String paramString, String... paramVarArgs)
+  {
+    callJs(paramString, paramVarArgs);
+  }
+  
+  boolean a(int paramInt)
+  {
+    if (paramInt <= 0) {
+      return false;
+    }
+    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
+      return false;
+    }
+    Object localObject = (WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localObject == null) {
+      return false;
+    }
+    localObject = (aaap)((WeakReference)localObject).get();
+    if (localObject == null) {
+      return false;
+    }
+    try
     {
-      return i;
-      localSuperPlayerVideoInfo = BaseVideoView.a(paramString1, paramString2);
-      if ((this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader == null) || (localSuperPlayerVideoInfo == null))
-      {
-        QLog.d("VideoPreloadHelper", 1, "invalid params");
-        return -2;
-      }
-      j = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader.startPreDownload(localSuperPlayerVideoInfo, paramLong1, paramLong2);
-      QLog.d("VideoPreloadHelper", 1, String.format("startPreload:%s, vid:%s, url:%s, videoDuration:%d", new Object[] { Integer.valueOf(j), paramString1, paramString2, Long.valueOf(paramLong1) }));
-      i = j;
-    } while (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(j), localSuperPlayerVideoInfo.getFileId());
-    return j;
-  }
-  
-  public int a(String paramString1, String paramString2, long paramLong)
-  {
-    return a(paramString1, paramString2, paramLong, 5000L);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader == null) {}
-    for (;;)
+      this.mRuntime.a().unregisterReceiver((BroadcastReceiver)localObject);
+      return true;
+    }
+    catch (Exception localException)
     {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
-      while (localIterator.hasNext())
+      for (;;)
       {
-        int i = ((Integer)localIterator.next()).intValue();
-        this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader.stopPreDownload(i);
+        if (QLog.isColorLevel()) {
+          localException.printStackTrace();
+        }
       }
     }
   }
   
-  public void a(FeedCloudMeta.StVideo paramStVideo)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    vqh.a().a(this.jdField_a_of_type_Int, paramStVideo, new aaao(this, paramStVideo));
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader.destory();
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.i("PortalManager.HbEventPlugin", 2, "handleJsRequest: " + paramString3 + "," + paramVarArgs);
+    }
+    boolean bool1 = bool2;
+    int i;
+    if ("redEnvelope".endsWith(paramString2)) {
+      if ((!"getRankingList".endsWith(paramString3)) && (!"getHead".endsWith(paramString3)) && (!"getJumpBtnState".endsWith(paramString3)) && (!"getNick".endsWith(paramString3)))
+      {
+        bool1 = bool2;
+        if (!"takePhoto".endsWith(paramString3)) {}
+      }
+      else
+      {
+        i = a();
+        paramJsBridgeListener = a(i);
+        a(paramJsBridgeListener, "com.tencent.portal.resp.action");
+        if (paramVarArgs == null) {}
+      }
+    }
+    try
+    {
+      if (paramVarArgs.length > 0)
+      {
+        paramString1 = new JSONObject(paramVarArgs[0]);
+        paramJsBridgeListener.jdField_a_of_type_JavaLangString = paramString1.getString("callback");
+        paramJsBridgeListener.b = paramString1.getJSONObject("params").toString();
+      }
+      a("com.tencent.portal.req.action", a(paramString3), i, paramJsBridgeListener.b);
+      bool1 = true;
+      return bool1;
+    }
+    catch (JSONException paramString1)
+    {
+      for (;;)
+      {
+        paramString1.printStackTrace();
+      }
     }
   }
   
-  public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2) {}
-  
-  public void onPrepareError(int paramInt)
+  public void onDestroy()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
-    QLog.d("VideoPreloadHelper", 1, "onPrepareError:" + paramInt);
-  }
-  
-  public void onPrepareSuccess(int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
-    QLog.d("VideoPreloadHelper", 1, "onPrepareSuccess:" + paramInt);
+    super.onDestroy();
+    if ((this.jdField_a_of_type_AndroidUtilSparseArray != null) && (this.jdField_a_of_type_AndroidUtilSparseArray.size() > 0))
+    {
+      int i = 0;
+      while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+      {
+        aaap localaaap = (aaap)((WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(i)).get();
+        if (localaaap != null) {
+          a(localaaap.jdField_a_of_type_Int);
+        }
+        i += 1;
+      }
+    }
   }
 }
 

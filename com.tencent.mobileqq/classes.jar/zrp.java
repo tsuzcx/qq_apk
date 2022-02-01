@@ -1,23 +1,50 @@
-import android.database.DataSetObserver;
-import android.support.v4.view.PagerAdapter;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.cs.group_file_common.group_file_common.FolderInfo;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.CreateFolderRspBody;
+import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RspBody;
 
-public class zrp
-  extends DataSetObserver
+public abstract class zrp
+  extends nmf
 {
-  public zrp(EmptySupportViewPager paramEmptySupportViewPager) {}
-  
-  public void onChanged()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    PagerAdapter localPagerAdapter = this.a.getAdapter();
-    if ((localPagerAdapter != null) && (localPagerAdapter.getCount() > 0))
+    b(paramInt, paramArrayOfByte, paramBundle);
+  }
+  
+  protected abstract void a(boolean paramBoolean, int paramInt, bebc parambebc);
+  
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt != 0)
     {
-      this.a.a(8);
-      EmptySupportViewPager.a(this.a, 0);
+      a(false, paramInt, null);
       return;
     }
-    this.a.a(0);
-    EmptySupportViewPager.b(this.a, 8);
+    paramBundle = new oidb_0x6d7.RspBody();
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d7.CreateFolderRspBody)paramBundle.create_folder_rsp.get();
+      if (!paramArrayOfByte.int32_ret_code.has()) {
+        break label104;
+      }
+      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      {
+        a(true, 0, new bebc((group_file_common.FolderInfo)paramArrayOfByte.folder_info.get()));
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null);
+      return;
+    }
+    a(false, paramArrayOfByte.int32_ret_code.get(), null);
+    return;
+    label104:
+    a(false, -1, null);
   }
 }
 

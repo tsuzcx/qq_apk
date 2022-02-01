@@ -1,64 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import java.util.HashSet;
-import java.util.Set;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.GroupListOpenFrame;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bhsj
+class bhsj
+  implements View.OnClickListener
 {
-  public static SharedPreferences.Editor a(SharedPreferences.Editor paramEditor, String paramString, Set<String> paramSet)
-  {
-    return a(paramEditor, paramString, paramSet.toArray());
-  }
+  bhsj(bhsi parambhsi, int paramInt, String paramString) {}
   
-  public static SharedPreferences.Editor a(SharedPreferences.Editor paramEditor, String paramString, Object[] paramArrayOfObject)
+  public void onClick(View paramView)
   {
-    String str = "";
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
-    {
-      int j = paramArrayOfObject.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = paramArrayOfObject[i];
-        str = str + localObject.toString();
-        str = str + " ";
-        i += 1;
-      }
-      paramEditor.putString(paramString, str);
-      return paramEditor;
-    }
-    paramEditor.putString(paramString, "");
-    return paramEditor;
-  }
-  
-  public static Set<String> a(SharedPreferences paramSharedPreferences, String paramString, Set<String> paramSet)
-  {
-    paramString = paramSharedPreferences.getString(paramString, "");
-    paramSharedPreferences = paramSet;
-    if (paramString != null)
-    {
-      paramSharedPreferences = paramSet;
-      if (paramString.length() > 0)
-      {
-        paramSet = paramString.split(" ");
-        paramString = new HashSet();
-        int j = paramSet.length;
-        int i = 0;
-        for (;;)
-        {
-          paramSharedPreferences = paramString;
-          if (i >= j) {
-            break;
-          }
-          paramSharedPreferences = paramSet[i];
-          if ((paramSharedPreferences != null) && (paramSharedPreferences.length() > 0)) {
-            paramString.add(paramSharedPreferences);
-          }
-          i += 1;
-        }
-      }
-    }
-    return paramSharedPreferences;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("group_index", this.jdField_a_of_type_Int);
+    localBundle.putString("group_name", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Bhsi.a.a.a(1, localBundle);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

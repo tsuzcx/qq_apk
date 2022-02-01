@@ -1,28 +1,67 @@
+import android.app.Dialog;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.gdtad.api.banner.rectangle.GdtBannerViewWithRectangleStyle;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class acpt
   implements View.OnClickListener
 {
-  public acpt(GdtBannerViewWithRectangleStyle paramGdtBannerViewWithRectangleStyle) {}
+  public acpt(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
   public void onClick(View paramView)
   {
-    int i = 8;
-    if (!GdtBannerViewWithRectangleStyle.a(this.a)) {
-      acvc.d("GdtBannerContainerView", "optionsContainerOnClickListener.OnClickListener error");
-    }
+    if (!AddFriendVerifyActivity.a(this.a)) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (GdtBannerViewWithRectangleStyle.a(this.a).getVisibility() == 8) {
-        i = 0;
+      if (this.a.a != null)
+      {
+        this.a.getWindow().setSoftInputMode(2);
+        this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
+        AddFriendVerifyActivity.a(this.a).clearFocus();
       }
-      GdtBannerViewWithRectangleStyle.a(this.a).setVisibility(i);
+      if (AddFriendVerifyActivity.a(this.a).getText().toString().length() > 90)
+      {
+        ReportDialog localReportDialog = new ReportDialog(this.a, 2131755826);
+        localReportDialog.setContentView(2131562728);
+        ((TextView)localReportDialog.findViewById(2131365552)).setText(this.a.getString(2131690992));
+        ((ProgressBar)localReportDialog.findViewById(2131367022)).setVisibility(8);
+        ((ImageView)localReportDialog.findViewById(2131380190)).setImageResource(2130839632);
+        localReportDialog.show();
+      }
+      else
+      {
+        this.a.a(AddFriendVerifyActivity.a(this.a).getText().toString(), true);
+        if (NetworkUtil.isNetSupport(this.a))
+        {
+          if (AddFriendVerifyActivity.a(this.a) != null) {}
+          for (int i = AddFriendVerifyActivity.a(this.a).a();; i = 2000)
+          {
+            QLog.e("AddFriendVerifyActivity", 1, "joinTroop templateId: " + i);
+            AddFriendVerifyActivity.a(this.a, AddFriendVerifyActivity.a(this.a), AddFriendVerifyActivity.a(this.a).getText().toString(), this.a.getIntent().getIntExtra("stat_option", 0), i);
+            bcef.b(null, "dc00898", "", "", "qq_vip", "0X800A62B", agjw.a(i), 0, "", "", "", "");
+            if (!"d2g".equals(this.a.getIntent().getStringExtra("jump_from"))) {
+              break;
+            }
+            bcef.b(this.a.app, "P_CliOper", "Grp_discuss", "", "discuss_set", "send_ask", 0, 0, AddFriendVerifyActivity.a(this.a), "", "", "");
+            break;
+          }
+        }
+        QQToast.a(this.a, 1, 2131694064, 0).b(this.a.getTitleBarHeight());
+      }
     }
   }
 }

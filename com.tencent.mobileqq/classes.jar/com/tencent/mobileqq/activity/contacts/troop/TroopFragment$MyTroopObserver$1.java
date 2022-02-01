@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.troop;
 
-import ajxv;
+import aiss;
 
 public class TroopFragment$MyTroopObserver$1
   implements Runnable
 {
-  public TroopFragment$MyTroopObserver$1(ajxv paramajxv) {}
+  public TroopFragment$MyTroopObserver$1(aiss paramaiss) {}
   
   public void run()
   {

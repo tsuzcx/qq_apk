@@ -1,65 +1,44 @@
-import android.text.TextUtils;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.io.UnsupportedEncodingException;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class pcd
-  extends SimpleConfigHandler
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/config/handlers/BarrageConfigHandler;", "Lcom/tencent/aladdin/config/handlers/AladdinConfigHandler;", "()V", "onReceiveConfig", "", "id", "", "version", "content", "", "onWipeConfig", "", "p0", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pcd
   implements AladdinConfigHandler
 {
-  public static String a = "ViolaPicSerPreloadHandler";
-  public static String b = "viola_service_instance";
+  public static final pce a = new pce(null);
   
-  public static boolean a()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, @Nullable String paramString)
   {
-    return ((Boolean)bnrf.a(b, Boolean.valueOf(false))).booleanValue();
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
-  {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    Map localMap = pan.a(paramString);
-    Object localObject = localMap.keySet();
-    for (;;)
+    try
     {
-      try
+      paramString = pbt.a(paramString);
+      paramString = new GsonBuilder().create().toJson(paramString);
+      if (paramString != null) {}
+      for (;;)
       {
-        localObject = ((Set)localObject).iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          String str2 = (String)((Iterator)localObject).next();
-          String str1 = (String)localMap.get(str2);
-          if (!TextUtils.equals(str2, "viola_service_instance_open")) {
-            continue;
-          }
-          str2 = b;
-          if (Integer.parseInt(str1) == 1)
-          {
-            bool = true;
-            bnrf.a(str2, Boolean.valueOf(bool));
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("BarrageConfigHandler", 2, "onReceiveConfig configJson:" + paramString);
         }
-        else
-        {
-          return true;
-        }
+        bkwm.n(paramString);
+        break;
+        paramString = "";
       }
-      catch (Throwable localThrowable)
-      {
-        QLog.e(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString + " , error= " + localThrowable.getMessage());
-      }
-      boolean bool = false;
+      return true;
+    }
+    catch (UnsupportedEncodingException paramString)
+    {
+      QLog.e("BarrageConfigHandler", 2, "[PersonalHomePageConfigHandler]: onReceiveConfig Error in:" + paramString);
     }
   }
   
   public void onWipeConfig(int paramInt)
   {
-    super.onWipeConfig(paramInt);
-    bnrf.a(b, Boolean.valueOf(false));
+    bkwm.n("");
   }
 }
 

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.filemanager.activity;
 
 import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
-import auoe;
-import auof;
+import atao;
+import atap;
 
 class FilePreviewActivity$12
   implements Runnable
@@ -16,22 +16,22 @@ class FilePreviewActivity$12
       return;
     }
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0 - this.this$0.jdField_a_of_type_AndroidViewViewGroup.getHeight());
-    if (this.this$0.jdField_a_of_type_Auoe == null) {
-      this.this$0.jdField_a_of_type_Auoe = new auoe(this.this$0.jdField_a_of_type_AndroidViewViewGroup);
+    if (this.this$0.jdField_a_of_type_Atao == null) {
+      this.this$0.jdField_a_of_type_Atao = new atao(this.this$0.jdField_a_of_type_AndroidViewViewGroup);
     }
-    auof localauof = new auof();
-    localauof.jdField_a_of_type_JavaLangObject = localTranslateAnimation;
-    localauof.jdField_a_of_type_Boolean = false;
-    localauof.jdField_a_of_type_Int = auoe.b;
-    localauof.b = 250;
-    this.this$0.jdField_a_of_type_Auoe.a(localauof);
-    this.this$0.jdField_a_of_type_Auoe.a();
+    atap localatap = new atap();
+    localatap.jdField_a_of_type_JavaLangObject = localTranslateAnimation;
+    localatap.jdField_a_of_type_Boolean = false;
+    localatap.jdField_a_of_type_Int = atao.b;
+    localatap.b = 250;
+    this.this$0.jdField_a_of_type_Atao.a(localatap);
+    this.this$0.jdField_a_of_type_Atao.a();
     this.this$0.e = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.12
  * JD-Core Version:    0.7.0.1
  */

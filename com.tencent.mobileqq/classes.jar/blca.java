@@ -1,40 +1,32 @@
-import com.tencent.qqprotect.qsec.QSecFramework;
+import android.graphics.drawable.Drawable;
+import cooperation.vip.vipcomponent.ui.QzoneHuangzuanVipIconShow;
+import cooperation.vip.vipcomponent.util.VipResourcesListener;
 
-final class blca
-  implements blcp
+public class blca
 {
-  private long a;
+  public static blca a;
   
-  public blca(long paramLong)
+  public static blca a()
   {
-    this.a = paramLong;
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new blca();
+      }
+      return a;
+    }
+    finally {}
   }
   
-  public void a(int paramInt, blco paramblco, blcq paramblcq)
+  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, VipResourcesListener paramVipResourcesListener)
   {
-    long l1 = 0L;
-    if (this.a != 0L)
-    {
-      if ((paramInt != 1) && (paramInt != 2) && (paramInt != 4)) {
-        break label46;
-      }
-      QSecFramework.a(5L, this.a, paramInt, 0L, null, null, null, null);
-    }
-    label46:
-    while (paramInt != 3) {
-      return;
-    }
-    int i = paramblcq.jdField_a_of_type_Int;
-    int j = paramblcq.b;
-    int k = paramblcq.c;
-    int m = paramblcq.d;
-    paramblco = paramblcq.jdField_a_of_type_ArrayOfByte;
-    long l2 = this.a;
-    long l3 = paramInt;
-    if (paramblcq.jdField_a_of_type_Boolean) {
-      l1 = 1L;
-    }
-    QSecFramework.a(5L, l2, l3, l1, null, null, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), paramblco }, null);
+    return QzoneHuangzuanVipIconShow.getInstance().getLayers(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString1, paramInt3, paramInt4, paramString2, paramVipResourcesListener, 0);
+  }
+  
+  public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt3, VipResourcesListener paramVipResourcesListener)
+  {
+    return a(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramString, paramInt3, 100, null, paramVipResourcesListener);
   }
 }
 

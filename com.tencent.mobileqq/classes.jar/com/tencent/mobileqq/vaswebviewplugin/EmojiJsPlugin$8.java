@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import biod;
-import bioy;
-import bitr;
-import bjbs;
+import bguj;
+import bgve;
+import bgzt;
+import bhht;
 
 class EmojiJsPlugin$8
   implements Runnable
@@ -12,10 +12,10 @@ class EmojiJsPlugin$8
   
   public void run()
   {
-    biod localbiod = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-    if ((localbiod != null) && ((localbiod instanceof bitr)))
+    bguj localbguj = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
+    if ((localbguj != null) && ((localbguj instanceof bgzt)))
     {
-      this.this$0.progressDialog = new bjbs(this.this$0.mRuntime.a(), ((bitr)localbiod).getTitleBarHeight());
+      this.this$0.progressDialog = new bhht(this.this$0.mRuntime.a(), ((bgzt)localbguj).getTitleBarHeight());
       this.this$0.progressDialog.show();
     }
   }

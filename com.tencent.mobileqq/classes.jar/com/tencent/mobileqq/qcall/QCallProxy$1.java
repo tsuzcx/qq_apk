@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.qcall;
 
-import baoy;
+import azjg;
 import com.tencent.qphone.base.util.QLog;
 
 public class QCallProxy$1
   implements Runnable
 {
-  public QCallProxy$1(baoy parambaoy) {}
+  public QCallProxy$1(azjg paramazjg) {}
   
   public void run()
   {

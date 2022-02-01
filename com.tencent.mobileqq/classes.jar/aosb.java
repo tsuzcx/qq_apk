@@ -1,9 +1,6 @@
-public class aosb
+abstract interface aosb
 {
-  public long a;
-  public short a;
-  public long b;
-  public long c;
+  public abstract void a(String paramString);
 }
 
 

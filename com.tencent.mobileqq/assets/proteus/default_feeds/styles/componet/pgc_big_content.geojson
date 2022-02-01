@@ -42,7 +42,6 @@
                             "value":"351"
                             },
                             "attributes":{
-                            "setFrameString:":"-1",
                             "setArticleModel:":"-1"
                             }
                             }
@@ -91,7 +90,6 @@
                                         },
                                         
                                         "attributes":{
-                                        "setFrameString:":"-1",
                                         "setImageWithURLString:lineup:":["-1","-1"]
                                         }
                                         },
@@ -168,8 +166,7 @@
                             "value":"327"
                             },
                             "attributes":{
-                            "setFrameString:":"-1",
-                            "setText:lineSpace:":["","2"],
+                            "setText:lineSpace:":["-1","2"],
                             "setTextColorString:":"#000000",
                             "setFontSizeString:":"16",
                             "setNumberOfLinesString:":"2"

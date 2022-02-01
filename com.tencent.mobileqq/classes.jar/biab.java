@@ -1,46 +1,55 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import android.content.ContentValues;
+import android.os.Parcel;
+import com.tencent.open.base.MD5Utils;
+import com.tencent.open.component.cache.database.DbCacheData;
+import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
 
 public class biab
-  extends QIPCModule
+  extends DbCacheData
 {
-  private static biab a;
+  public static final DbCacheData.DbCreator<biab> a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
   
-  public biab(String paramString)
+  static
   {
-    super(paramString);
+    jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator = new biac();
   }
   
-  public static biab a()
+  protected biab(String paramString1, String paramString2, long paramLong1, long paramLong2, String paramString3)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new biab("VasMonitorIPCModule");
-      }
-      return a;
-    }
-    finally {}
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.c = paramString3;
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  biab(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasMonitorIPCModule", 2, "action = " + paramString);
-    }
-    if (paramBundle == null) {
-      QLog.d("VasMonitorIPCModule", 2, "vasreport Err params=null, action=" + paramString);
-    }
-    while ((!"action_vas_monitor".equals(paramString)) || (BaseApplicationImpl.getApplication() == null) || (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) || ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime() == null)) {
-      return null;
-    }
-    biaa.a(null, paramBundle.getString("key_appid"), paramBundle.getString("key_err_code"), paramBundle.getString("key_log"), paramBundle.getString("key_key4"), paramBundle.getString("key_key5"), paramBundle.getString("key_key6"), paramBundle.getFloat("key_value2"), paramBundle.getFloat("key_value3"));
-    return null;
+    this.jdField_a_of_type_JavaLangString = MD5Utils.encodeHexStr(paramString1);
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    this.c = paramString3;
+    this.d = paramString4;
+  }
+  
+  public void writeTo(ContentValues paramContentValues)
+  {
+    paramContentValues.put("urlKey", this.jdField_a_of_type_JavaLangString);
+    paramContentValues.put("ETag", this.jdField_b_of_type_JavaLangString);
+    paramContentValues.put("lastModify", Long.valueOf(this.jdField_a_of_type_Long));
+    paramContentValues.put("cacheTime", Long.valueOf(this.jdField_b_of_type_Long));
+    Parcel localParcel = Parcel.obtain();
+    localParcel.writeString(this.c);
+    byte[] arrayOfByte = localParcel.marshall();
+    localParcel.recycle();
+    paramContentValues.put("response", arrayOfByte);
   }
 }
 

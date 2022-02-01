@@ -1,17 +1,15 @@
-import android.widget.BaseAdapter;
 import com.tencent.mobileqq.data.ChatMessage;
+import java.util.List;
 
 class ahkf
-  extends ahkx
+  implements ohg
 {
-  ahkf(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahkf(ahiu paramahiu, CharSequence paramCharSequence, int paramInt) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(List<ChatMessage> paramList)
   {
-    return new aham(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    this.jdField_a_of_type_Ahiu.setOverScrollHandleVisable(false);
+    ahiu.a(this.jdField_a_of_type_Ahiu, paramList, this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_Int);
   }
 }
 

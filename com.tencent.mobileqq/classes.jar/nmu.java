@@ -1,20 +1,8 @@
-public class nmu
-  implements nmy
+public abstract interface nmu
 {
-  public void a(Runnable paramRunnable)
-  {
-    new Thread(paramRunnable).start();
-  }
+  public abstract void a();
   
-  public void b(Runnable paramRunnable)
-  {
-    new Thread(paramRunnable).start();
-  }
-  
-  public void c(Runnable paramRunnable)
-  {
-    new Thread(paramRunnable).start();
-  }
+  public abstract void b();
 }
 
 

@@ -1,29 +1,8 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.ArrayList;
-import java.util.List;
-
 public class yff
-  extends wzi
 {
-  public int a;
-  public String a;
-  public List<CommentEntry> a;
-  public int b;
-  public String b;
-  public int c;
-  
-  public yff(ErrorMessage paramErrorMessage, String paramString, int paramInt)
+  public static boolean a(int paramInt)
   {
-    super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(0);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "GetFeedCommentEvent{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mType=" + this.jdField_a_of_type_Int + ", mSource=" + this.c + ", mCommentEntries=" + this.jdField_a_of_type_JavaUtilList.size() + ", mTotalCount=" + this.b + ", isEnd=" + this.jdField_a_of_type_Boolean + '}';
+    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5) || (paramInt == 6);
   }
 }
 

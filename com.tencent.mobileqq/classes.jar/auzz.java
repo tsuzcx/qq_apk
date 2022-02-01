@@ -1,22 +1,32 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-class auzz
-  implements TextWatcher
+public class auzz
+  implements bjoe
 {
-  auzz(auzt paramauzt, int paramInt) {}
+  public auzz(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, boolean paramBoolean, avau paramavau) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((auzt.a(this.jdField_a_of_type_Auzt).getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
+    ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).dismiss();
+    if (this.jdField_a_of_type_Boolean) {
+      switch (paramInt)
+      {
+      }
+    }
+    for (;;)
     {
-      auzt.a(this.jdField_a_of_type_Auzt).setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
-      auzt.a(this.jdField_a_of_type_Auzt).setSelection(this.jdField_a_of_type_Int - 1);
+      this.jdField_a_of_type_Avau.b(false);
+      if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+        ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+      }
+      return;
+      auzn.a(ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment), this.jdField_a_of_type_Avau.a().e, this.jdField_a_of_type_Avau.a().b);
+      continue;
+      this.jdField_a_of_type_Avau.g();
+      continue;
+      this.jdField_a_of_type_Avau.g();
     }
   }
 }

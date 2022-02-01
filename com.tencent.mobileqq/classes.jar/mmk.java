@@ -1,51 +1,23 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.av.ui.VoiceChangeToolbar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class mmk
-  implements mho
+class mmk
+  implements View.OnClickListener
 {
-  public mmk(VoiceChangeToolbar paramVoiceChangeToolbar) {}
+  mmk(mmf parammmf) {}
   
-  public void a(long paramLong)
+  public void onClick(View paramView)
   {
-    EffectSettingUi.a(this.a.mApp, paramLong);
-  }
-  
-  public void a(long paramLong, mii parammii)
-  {
-    lbj.d(VoiceChangeToolbar.TAG, "onEffectClick| voiceType=" + parammii.jdField_a_of_type_JavaLangString);
-    lff locallff = this.a.mApp.a().a();
-    int i = Integer.parseInt(parammii.jdField_a_of_type_JavaLangString);
-    if (i == 0) {
-      ltr.a().b(64);
+    if ((mmf.a(this.a) != null) && (mmf.a(this.a).isShown())) {
+      this.a.b();
     }
-    while (i == 0)
+    for (;;)
     {
-      locallff.v = null;
-      locallff.U = i;
-      locallff.V = 0;
-      parammii = this.a.getAVActivity();
-      if ((parammii != null) && (parammii.a != null)) {
-        parammii.a.i(paramLong, 8);
-      }
-      this.a.mApp.a().A();
-      mmi.a(locallff, i);
-      EffectSettingUi.a(this.a.mApp, paramLong);
-      if (locallff.d == 4) {
-        bdld.e(String.valueOf(i));
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      ltr.a().a(64);
-    }
-    if ((parammii.jdField_a_of_type_JavaLangObject instanceof mmh)) {}
-    for (locallff.v = ((mmh)parammii.jdField_a_of_type_JavaLangObject).b;; locallff.v = parammii.b)
-    {
-      mru.a(parammii.jdField_a_of_type_JavaLangString);
-      break;
+      mmf.c(this.a);
     }
   }
 }

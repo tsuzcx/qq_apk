@@ -3,32 +3,31 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnao;
 
 public class PublishEventTag
   implements Parcelable
 {
-  public static final Parcelable.Creator<PublishEventTag> CREATOR = new bnao();
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  public static final Parcelable.Creator<PublishEventTag> CREATOR = new PublishEventTag.1();
+  public String desc;
+  public String id;
+  public String picUrl;
+  public String protocol;
+  public String time;
+  public String title;
+  public String truncateNum;
+  public String uin;
   
   public PublishEventTag() {}
   
-  public PublishEventTag(Parcel paramParcel)
+  protected PublishEventTag(Parcel paramParcel)
   {
-    this.a = paramParcel.readString();
-    this.b = paramParcel.readString();
-    this.c = paramParcel.readString();
-    this.d = paramParcel.readString();
-    this.e = paramParcel.readString();
-    this.f = paramParcel.readString();
-    this.g = paramParcel.readString();
+    this.title = paramParcel.readString();
+    this.picUrl = paramParcel.readString();
+    this.id = paramParcel.readString();
+    this.protocol = paramParcel.readString();
+    this.desc = paramParcel.readString();
+    this.truncateNum = paramParcel.readString();
+    this.uin = paramParcel.readString();
   }
   
   public int describeContents()
@@ -38,13 +37,13 @@ public class PublishEventTag
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.a);
-    paramParcel.writeString(this.b);
-    paramParcel.writeString(this.c);
-    paramParcel.writeString(this.d);
-    paramParcel.writeString(this.e);
-    paramParcel.writeString(this.f);
-    paramParcel.writeString(this.g);
+    paramParcel.writeString(this.title);
+    paramParcel.writeString(this.picUrl);
+    paramParcel.writeString(this.id);
+    paramParcel.writeString(this.protocol);
+    paramParcel.writeString(this.desc);
+    paramParcel.writeString(this.truncateNum);
+    paramParcel.writeString(this.uin);
   }
 }
 

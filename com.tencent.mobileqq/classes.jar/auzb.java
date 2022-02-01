@@ -1,19 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileOption;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v4.util.LruCache;
+import android.text.TextUtils;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.data.ISong;
 
 public class auzb
-  implements View.OnClickListener
+  implements avbh
 {
-  public auzb(ForwardFileOption paramForwardFileOption) {}
+  public auzb(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void onClick(View paramView)
+  public void a(ISong paramISong)
   {
-    ForwardFileOption.b(this.a);
-    ForwardFileOption.a(this.a, paramView);
-    bdll.b(null, "dc00898", "", "", "0X800AEEA", "0X800AEEA", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramISong != null)
+    {
+      ListenTogetherManager.a(this.a, paramISong);
+      this.a.a(paramISong.a());
+      String str = (String)ListenTogetherManager.a(this.a).get(paramISong.a());
+      if (!TextUtils.isEmpty(str)) {
+        ListenTogetherManager.a(this.a, paramISong.a(), str);
+      }
+    }
+    else
+    {
+      return;
+    }
+    ListenTogetherManager.a(this.a, paramISong.a());
   }
 }
 

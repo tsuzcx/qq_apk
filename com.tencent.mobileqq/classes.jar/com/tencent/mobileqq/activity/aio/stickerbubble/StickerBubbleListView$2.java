@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.stickerbubble;
 
-import aean;
-import airp;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import acvv;
+import ahlx;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 class StickerBubbleListView$2
   implements Runnable
 {
-  StickerBubbleListView$2(StickerBubbleListView paramStickerBubbleListView, airp paramairp, int paramInt) {}
+  StickerBubbleListView$2(StickerBubbleListView paramStickerBubbleListView, ahlx paramahlx, int paramInt) {}
   
   public void run()
   {
-    aean.a(StickerBubbleListView.a(this.this$0).a(), StickerBubbleListView.a(this.this$0).a(), StickerBubbleListView.a(this.this$0).a, this.jdField_a_of_type_Airp.jdField_a_of_type_Int, this.jdField_a_of_type_Int, "test");
+    acvv.a(StickerBubbleListView.a(this.this$0).getApp(), StickerBubbleListView.a(this.this$0).getActivity(), StickerBubbleListView.a(this.this$0).sessionInfo, this.jdField_a_of_type_Ahlx.jdField_a_of_type_Int, this.jdField_a_of_type_Int, "test");
   }
 }
 

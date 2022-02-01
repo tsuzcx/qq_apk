@@ -1,56 +1,84 @@
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.mini.util.ApiUtil;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-class bkyo
-  implements MiniAppCmdInterface
+public class bkyo
+  extends akns
+  implements Cloneable
 {
-  bkyo(bkyl parambkyl, RequestEvent paramRequestEvent, BaseRuntime paramBaseRuntime, String paramString, int paramInt) {}
-  
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public bkyo(Context paramContext)
   {
-    QLog.d("MiniSDKClientQIPCModule", 1, "sendArkMsg receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
-    if (paramJSONObject == null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail();
+    this.jdField_a_of_type_JavaLangString = amtj.a(2131696900);
+  }
+  
+  public Object a(int paramInt, bdyi parambdyi, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramObject instanceof bkyo))
+    {
+      paramObject = (bkyo)paramObject;
+      paramObject.jdField_a_of_type_Bdyj.a(parambdyi.jdField_a_of_type_Bdyj);
+      return paramObject;
     }
+    paramObject = new bkyo(BaseApplication.getContext());
+    paramObject.jdField_a_of_type_Bdyj = new bdyj(parambdyi.jdField_a_of_type_Bdyj);
+    return paramObject;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    QLog.d("TroopSpecialAttentionMsg", 2, "deSerialize");
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
+    {
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
+      this.b = paramArrayOfByte.getInt("color");
+      this.c = paramArrayOfByte.getString("messageNavInfo");
+      if ((!TextUtils.isEmpty(this.c)) && (this.jdField_a_of_type_Bdyj == null))
+      {
+        this.jdField_a_of_type_Bdyj = new bdyj();
+        this.jdField_a_of_type_Bdyj.a(this.c);
+      }
+      return;
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
     JSONObject localJSONObject = new JSONObject();
-    if (paramBoolean)
+    try
     {
-      try
-      {
-        int i = paramJSONObject.getInt("retCode");
-        paramJSONObject = paramJSONObject.getString("errMsg");
-        if (i == 0)
-        {
-          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok();
-          bkyl.a(this.jdField_a_of_type_Bkyl, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime, "share_success");
-          if (!this.jdField_a_of_type_JavaLangString.equals("shareMessageToFriend")) {
-            return;
-          }
-          bkyl.a(this.jdField_a_of_type_Bkyl, localJSONObject, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime, this.jdField_a_of_type_Int, "", true, ApiUtil.wrapCallbackOk(this.jdField_a_of_type_JavaLangString, localJSONObject));
-          return;
-        }
-        localJSONObject.put("errMsg", paramJSONObject);
-        localJSONObject.put("errCode", i);
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(localJSONObject, paramJSONObject);
-        bkyl.a(this.jdField_a_of_type_Bkyl, localJSONObject, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime, this.jdField_a_of_type_Int, paramJSONObject, false, ApiUtil.wrapCallbackFail(this.jdField_a_of_type_JavaLangString, localJSONObject));
-        return;
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("time", this.jdField_a_of_type_Int);
+      localJSONObject.put("color", this.b);
+      if (this.jdField_a_of_type_Bdyj != null) {
+        this.c = this.jdField_a_of_type_Bdyj.a();
       }
-      catch (Throwable paramJSONObject)
+      localJSONObject.put("messageNavInfo", this.c);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail();
-        bkyl.a(this.jdField_a_of_type_Bkyl, localJSONObject, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime, this.jdField_a_of_type_Int, "请求失败", false, ApiUtil.wrapCallbackFail(this.jdField_a_of_type_JavaLangString, localJSONObject));
-        return;
+        localJSONException.printStackTrace();
       }
     }
-    else
-    {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail();
-      bkyl.a(this.jdField_a_of_type_Bkyl, localJSONObject, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreBaseRuntime, this.jdField_a_of_type_Int, "请求失败", false, ApiUtil.wrapCallbackFail(this.jdField_a_of_type_JavaLangString, localJSONObject));
-    }
+    return localJSONObject.toString().getBytes();
   }
 }
 

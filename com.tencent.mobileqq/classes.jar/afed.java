@@ -1,18 +1,24 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
 public class afed
-  implements View.OnClickListener
 {
-  public afed(PublicAccountListActivity paramPublicAccountListActivity) {}
-  
-  public void onClick(View paramView)
+  private static String a(afdr paramafdr)
   {
-    this.a.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramafdr.c < bfwk.a(paramafdr.a)) {
+      return (String)paramafdr.a.get(paramafdr.c);
+    }
+    return "";
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, afdr paramafdr)
+  {
+    bcef.b(paramQQAppInterface, "dc00898", "", paramString2, paramString1, paramString1, 0, 0, "", "", a(paramafdr), String.valueOf(paramafdr.b));
+  }
+  
+  public static boolean a(afdr paramafdr)
+  {
+    return paramafdr.b == 560;
   }
 }
 

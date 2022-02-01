@@ -1,10 +1,19 @@
-import com.tencent.widget.ListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ocr.OCRPerformFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface axlh
+public class axlh
+  implements View.OnClickListener
 {
-  public abstract ListView a();
+  public axlh(OCRPerformFragment paramOCRPerformFragment) {}
   
-  public abstract void a();
+  public void onClick(View paramView)
+  {
+    axlj.a("0X800AADF", 0);
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

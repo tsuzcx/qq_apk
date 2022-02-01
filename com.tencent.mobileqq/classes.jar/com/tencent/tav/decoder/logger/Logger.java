@@ -1,120 +1,67 @@
 package com.tencent.tav.decoder.logger;
 
-import android.util.Log;
-
 public class Logger
 {
-  private static boolean DEBUG = false;
-  public static boolean LOG_VERBOSE = false;
-  public static final int MAX_LOG_LENGTH = 4096;
-  private static ILog logger;
+  public static final int NO_LOG = 2147483647;
+  private static int level = 3;
+  private static ILog logProxy = new Logger.DefaultLogProxy(null);
   
   public static void d(String paramString1, String paramString2)
   {
-    if (logger != null) {
-      logger.d(paramString1, paramString2);
-    }
-    while (!DEBUG) {
+    if ((logProxy == null) || (level > 3)) {
       return;
     }
-    Log.d(paramString1, paramString2);
+    logProxy.d(paramString1, paramString2);
   }
   
   public static void e(String paramString1, String paramString2)
   {
-    if (logger != null) {
-      logger.e(paramString1, paramString2);
-    }
-    while (!DEBUG) {
+    if ((logProxy == null) || (level > 6)) {
       return;
     }
-    Log.e(paramString1, paramString2);
+    logProxy.e(paramString1, paramString2);
   }
   
   public static void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (logger != null) {
-      logger.e(paramString1, paramString2, paramThrowable);
-    }
-    while (!DEBUG) {
+    if ((logProxy == null) || (level > 6)) {
       return;
     }
-    Log.e(paramString1, paramString2, paramThrowable);
+    logProxy.e(paramString1, paramString2, paramThrowable);
   }
   
-  public static void e(String paramString, Throwable paramThrowable)
+  public static void i(String paramString1, String paramString2)
   {
-    if (logger != null) {
-      logger.e(paramString, paramThrowable);
-    }
-    while (!DEBUG) {
+    if ((logProxy == null) || (level > 4)) {
       return;
     }
-    Log.e(paramString, paramThrowable.getMessage() + "", paramThrowable);
+    logProxy.i(paramString1, paramString2);
   }
   
-  public static void i(String paramString1, String paramString2, Object... paramVarArgs)
+  public static void setLevel(int paramInt)
   {
-    if (logger != null) {
-      logger.i(paramString1, paramString2, paramVarArgs);
-    }
-    while (!DEBUG) {
-      return;
-    }
-    Log.i(paramString1, String.format(paramString2, paramVarArgs));
+    level = paramInt;
   }
   
-  public static void longlogd(String paramString1, String paramString2)
+  public static void setLogProxy(ILog paramILog)
   {
-    int j = 0;
-    int m = paramString2.length();
-    int i = 4096;
-    int k = 0;
-    while (j < 100) {
-      if (m > i)
-      {
-        d(paramString1 + j, paramString2.substring(k, i));
-        j += 1;
-        k = i;
-        i += 4096;
-      }
-      else
-      {
-        d(paramString1, paramString2.substring(k, m));
-      }
-    }
-  }
-  
-  public static void setLogAble(boolean paramBoolean)
-  {
-    DEBUG = paramBoolean;
-  }
-  
-  public static void setLogger(ILog paramILog)
-  {
-    logger = paramILog;
+    logProxy = paramILog;
   }
   
   public static void v(String paramString1, String paramString2)
   {
-    if (logger != null) {
-      logger.v(paramString1, paramString2);
-    }
-    while (!DEBUG) {
+    if ((logProxy == null) || (level > 2)) {
       return;
     }
-    Log.v(paramString1, paramString2);
+    logProxy.v(paramString1, paramString2);
   }
   
   public static void w(String paramString1, String paramString2)
   {
-    if (logger != null) {
-      logger.w(paramString1, paramString2);
-    }
-    while (!DEBUG) {
+    if ((logProxy == null) || (level > 5)) {
       return;
     }
-    Log.w(paramString1, paramString2);
+    logProxy.w(paramString1, paramString2);
   }
 }
 

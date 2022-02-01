@@ -1,17 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.AppointmentNotify;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.onlinestatus.auto.OnlineStatusSmartDisplayInfo.1.1;
 
-class axwl
-  extends aybr
+public class axwl
+  implements axwg
 {
-  axwl(axwf paramaxwf, SubMsgType0x27.AppointmentNotify paramAppointmentNotify) {}
+  axwl(axwk paramaxwk) {}
   
-  protected void a()
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      axxb.a("hasOnLinePush", new Object[] { "onNearbyProcStart" });
+    if ((axwk.a(this.a)) && (axwk.a(this.a) != null)) {
+      ThreadManagerV2.getUIHandlerV2().post(new OnlineStatusSmartDisplayInfo.1.1(this, paramInt));
     }
-    axwf.a(this.jdField_a_of_type_Axwf, 4101, new Object[] { this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x27SubMsgType0x27$AppointmentNotify.toByteArray() });
   }
 }
 

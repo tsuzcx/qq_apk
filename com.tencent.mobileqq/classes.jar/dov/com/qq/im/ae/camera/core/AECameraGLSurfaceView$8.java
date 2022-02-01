@@ -1,8 +1,5 @@
 package dov.com.qq.im.ae.camera.core;
 
-import android.app.Activity;
-import boiw;
-
 class AECameraGLSurfaceView$8
   implements Runnable
 {
@@ -10,9 +7,7 @@ class AECameraGLSurfaceView$8
   
   public void run()
   {
-    if (AECameraGLSurfaceView.a(this.this$0).c()) {
-      AECameraGLSurfaceView.a(this.this$0).a((Activity)this.this$0.getContext(), false);
-    }
+    this.this$0.captureListener.onVideoCaptureStart();
   }
 }
 

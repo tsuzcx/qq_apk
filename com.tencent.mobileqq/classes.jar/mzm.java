@@ -1,88 +1,32 @@
-import androidx.annotation.NonNull;
-import java.util.List;
-import javax.annotation.Nullable;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import com.tencent.avgame.gamelogic.GameEngine.2.1;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class mzm
-  implements myp
+public class mzm
+  extends myh
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  String jdField_a_of_type_JavaLangString = "";
-  boolean jdField_a_of_type_Boolean = false;
-  String[] jdField_a_of_type_ArrayOfJavaLangString = new String[3];
-  String b = "";
+  mzm(mzl parammzl) {}
   
-  public int a()
+  public void a()
   {
-    return this.jdField_a_of_type_Int;
+    QLog.i("avgame_logic.GameEngine", 1, "onEnterRoomSucess.");
+    if (Build.VERSION.SDK_INT >= 16) {
+      mxh.a().a(this.a);
+    }
   }
   
-  public long a()
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  @Nullable
-  public String a()
-  {
-    return this.b;
-  }
-  
-  public List<? extends myp> a()
-  {
-    return null;
-  }
-  
-  public abstract myp a();
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a(myp parammyp)
-  {
-    return (parammyp != null) && (parammyp.a() == a()) && (parammyp.b() == b());
-  }
-  
-  public String[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id").append("=").append(this.jdField_a_of_type_Int).append("|");
-    localStringBuilder.append("isTopicBank").append("=").append(this.jdField_a_of_type_Boolean).append("|");
-    localStringBuilder.append("gameType").append("=").append(b()).append("|");
-    localStringBuilder.append("content").append("=").append(this.jdField_a_of_type_JavaLangString).append("|");
-    localStringBuilder.append("answer").append("=").append(this.b).append("|");
-    localStringBuilder.append("buff type").append("=").append(this.jdField_a_of_type_ArrayOfJavaLangString[0]).append("|");
-    localStringBuilder.append("buff point").append("=").append(this.jdField_a_of_type_ArrayOfJavaLangString[1]).append("|");
-    localStringBuilder.append("buff color").append("=").append(this.jdField_a_of_type_ArrayOfJavaLangString[2]).append("|");
-    return localStringBuilder.toString();
+    QLog.i("avgame_logic.GameEngine", 1, "onEnterRoomError errorType = " + paramInt + " engineData = " + mzl.a(this.a));
+    if ((paramInt == 4) || (paramInt == 3)) {
+      nht.a().b().post(new GameEngine.2.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mzm
  * JD-Core Version:    0.7.0.1
  */

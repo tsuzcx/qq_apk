@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import afix;
-import afiy;
-import afiz;
+import aebp;
+import aebq;
+import aebr;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import awen;
+import aurn;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.WebView;
 
@@ -32,7 +32,7 @@ public class QQTranslucentBrowserActivity
     {
       return;
       if (this.jdField_a_of_type_AndroidAppDialog == null) {
-        this.jdField_a_of_type_AndroidAppDialog = new afiz(this);
+        this.jdField_a_of_type_AndroidAppDialog = new aebr(this);
       }
     } while (this.jdField_a_of_type_AndroidAppDialog == null);
     this.jdField_a_of_type_AndroidAppDialog.show();
@@ -56,8 +56,9 @@ public class QQTranslucentBrowserActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -65,10 +66,10 @@ public class QQTranslucentBrowserActivity
   {
     boolean bool = super.doOnCreate(paramBundle);
     paramBundle = super.getIntent();
-    getWindow().setBackgroundDrawableResource(2131167247);
-    View localView = findViewById(2131363678);
+    getWindow().setBackgroundDrawableResource(2131167276);
+    View localView = findViewById(2131363709);
     if (localView != null) {
-      localView.setBackgroundResource(2131167247);
+      localView.setBackgroundResource(2131167276);
     }
     int i;
     if (paramBundle != null)
@@ -85,14 +86,14 @@ public class QQTranslucentBrowserActivity
       return bool;
       if (i == 4)
       {
-        this.jdField_a_of_type_AndroidAppDialog = awen.a(this);
-        this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new afix(this));
+        this.jdField_a_of_type_AndroidAppDialog = aurn.a(this);
+        this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new aebp(this));
         a();
         return bool;
       }
     } while (i != 5);
-    this.jdField_a_of_type_AndroidAppDialog = awen.a(this, paramBundle);
-    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new afiy(this));
+    this.jdField_a_of_type_AndroidAppDialog = aurn.a(this, paramBundle);
+    this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new aebq(this));
     a();
     return bool;
   }
@@ -118,7 +119,7 @@ public class QQTranslucentBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQTranslucentBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

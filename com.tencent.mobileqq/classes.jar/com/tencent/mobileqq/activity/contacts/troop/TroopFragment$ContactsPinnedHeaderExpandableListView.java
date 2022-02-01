@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.troop;
 
-import ajuh;
+import aipe;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -37,8 +37,8 @@ public class TroopFragment$ContactsPinnedHeaderExpandableListView
   public void setChildViewCanAction(boolean paramBoolean)
   {
     ExpandableListAdapter localExpandableListAdapter = a();
-    if ((localExpandableListAdapter instanceof ajuh)) {
-      ((ajuh)localExpandableListAdapter).a(paramBoolean);
+    if ((localExpandableListAdapter instanceof aipe)) {
+      ((aipe)localExpandableListAdapter).a(paramBoolean);
     }
     this.a = paramBoolean;
   }

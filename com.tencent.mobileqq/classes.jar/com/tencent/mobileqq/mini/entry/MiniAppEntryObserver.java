@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.entry;
 
-import anui;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class MiniAppEntryObserver
-  implements anui
+  implements BusinessObserver
 {
   public void onMiniAppEntryChanged() {}
   

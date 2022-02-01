@@ -103,8 +103,8 @@ public class NotificationCompat$Builder
     {
       return paramBitmap;
       Resources localResources = this.mContext.getResources();
-      i = localResources.getDimensionPixelSize(2131296752);
-      j = localResources.getDimensionPixelSize(2131296751);
+      i = localResources.getDimensionPixelSize(2131296807);
+      j = localResources.getDimensionPixelSize(2131296806);
     } while ((paramBitmap.getWidth() <= i) && (paramBitmap.getHeight() <= j));
     double d = Math.min(i / Math.max(1, paramBitmap.getWidth()), j / Math.max(1, paramBitmap.getHeight()));
     return Bitmap.createScaledBitmap(paramBitmap, (int)Math.ceil(paramBitmap.getWidth() * d), (int)Math.ceil(d * paramBitmap.getHeight()), true);

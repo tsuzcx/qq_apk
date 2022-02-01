@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.push;
 
 import android.content.Intent;
-import bkyr;
+import bjeo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -24,14 +24,14 @@ public class SDKDowngradeAction
       {
         paramMiniAppControlInfo = Boolean.valueOf(bool);
         QLog.d("SDKDowngradeAction", 1, "SDKDowngradeAction downgrade:" + i);
-        if (bkyr.a() == paramMiniAppControlInfo.booleanValue()) {
+        if (bjeo.a() == paramMiniAppControlInfo.booleanValue()) {
           break;
         }
         QLog.d("SDKDowngradeAction", 1, "SDKDowngradeAction do downgrade:" + i);
         Intent localIntent = new Intent("com.tencent.mobile.mini.process.exit");
         localIntent.setPackage("com.tencent.mobileqq");
         BaseApplication.getContext().sendBroadcast(localIntent);
-        bkyr.a(paramMiniAppControlInfo.booleanValue());
+        bjeo.a(paramMiniAppControlInfo.booleanValue());
         ThreadManager.getSubThreadHandler().postDelayed(new SDKDowngradeAction.1(this), 3000L);
         return;
       }

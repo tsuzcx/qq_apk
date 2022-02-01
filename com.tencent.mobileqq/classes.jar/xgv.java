@@ -1,15 +1,17 @@
-import java.util.HashMap;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment.Observer.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.parallel.SimpleParallelObserver;
+import mqq.os.MqqHandler;
 
-class xgv
-  extends xgc
+public class xgv
+  extends SimpleParallelObserver
 {
-  xgv(xgp paramxgp, xht paramxht) {}
+  xgv(xgs paramxgs) {}
   
-  public boolean b()
+  public void onAllFunctionComplete(boolean paramBoolean)
   {
-    HashMap localHashMap = (HashMap)a("ShortenUrlJob_shortenedUrls");
-    this.jdField_a_of_type_Xht.a = ((String)localHashMap.get(this.jdField_a_of_type_Xht.a));
-    return true;
+    super.onAllFunctionComplete(paramBoolean);
+    ThreadManager.getUIHandler().post(new DetailFeedAllInfoPullSegment.Observer.1(this, paramBoolean));
   }
 }
 

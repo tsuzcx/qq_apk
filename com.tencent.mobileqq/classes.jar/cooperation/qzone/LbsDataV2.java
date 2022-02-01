@@ -26,18 +26,18 @@ public class LbsDataV2
       return null;
     }
     LbsDataV2.GpsInfo localGpsInfo = new LbsDataV2.GpsInfo();
-    localGpsInfo.accuracy = ((int)paramSosoLocation.jdField_a_of_type_Float);
-    localGpsInfo.alt = ((int)paramSosoLocation.jdField_e_of_type_Double);
-    if ((paramSosoLocation.jdField_d_of_type_Double == 0.0D) && (paramSosoLocation.jdField_c_of_type_Double == 0.0D))
+    localGpsInfo.accuracy = ((int)paramSosoLocation.accuracy);
+    localGpsInfo.alt = ((int)paramSosoLocation.altitude);
+    if ((paramSosoLocation.mLon84 == 0.0D) && (paramSosoLocation.mLat84 == 0.0D))
     {
       localGpsInfo.gpsType = 1;
-      localGpsInfo.lat = ((int)(paramSosoLocation.jdField_a_of_type_Double * 1000000.0D));
-      localGpsInfo.lon = ((int)(paramSosoLocation.b * 1000000.0D));
+      localGpsInfo.lat = ((int)(paramSosoLocation.mLat02 * 1000000.0D));
+      localGpsInfo.lon = ((int)(paramSosoLocation.mLon02 * 1000000.0D));
       return localGpsInfo;
     }
     localGpsInfo.gpsType = 0;
-    localGpsInfo.lat = ((int)(paramSosoLocation.jdField_c_of_type_Double * 1000000.0D));
-    localGpsInfo.lon = ((int)(paramSosoLocation.jdField_d_of_type_Double * 1000000.0D));
+    localGpsInfo.lat = ((int)(paramSosoLocation.mLat84 * 1000000.0D));
+    localGpsInfo.lon = ((int)(paramSosoLocation.mLon84 * 1000000.0D));
     return localGpsInfo;
   }
   
@@ -196,16 +196,16 @@ public class LbsDataV2
   public static ArrayList<LbsDataV2.PoiInfo> fromSosoLocation(SosoInterface.SosoLocation paramSosoLocation)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((paramSosoLocation != null) && (paramSosoLocation.jdField_a_of_type_JavaUtilList != null) && (!paramSosoLocation.jdField_a_of_type_JavaUtilList.isEmpty()))
+    if ((paramSosoLocation != null) && (paramSosoLocation.poi != null) && (!paramSosoLocation.poi.isEmpty()))
     {
       int i = 0;
-      while (i < paramSosoLocation.jdField_a_of_type_JavaUtilList.size())
+      while (i < paramSosoLocation.poi.size())
       {
-        LbsDataV2.PoiInfo localPoiInfo = fromTencentPoi((TencentPoi)paramSosoLocation.jdField_a_of_type_JavaUtilList.get(i));
-        localPoiInfo.country = paramSosoLocation.jdField_c_of_type_JavaLangString;
-        localPoiInfo.province = paramSosoLocation.jdField_d_of_type_JavaLangString;
-        localPoiInfo.city = paramSosoLocation.jdField_e_of_type_JavaLangString;
-        localPoiInfo.district = paramSosoLocation.g;
+        LbsDataV2.PoiInfo localPoiInfo = fromTencentPoi((TencentPoi)paramSosoLocation.poi.get(i));
+        localPoiInfo.country = paramSosoLocation.nation;
+        localPoiInfo.province = paramSosoLocation.province;
+        localPoiInfo.city = paramSosoLocation.city;
+        localPoiInfo.district = paramSosoLocation.district;
         localArrayList.add(localPoiInfo);
         i += 1;
       }
@@ -287,9 +287,9 @@ public class LbsDataV2
       return localObject;
       localLbsInfo = new LbsInfo();
       localObject = localLbsInfo;
-    } while (paramLocalImageShootInfo.a == null);
-    localLbsInfo.lbs_x = String.valueOf(paramLocalImageShootInfo.a.b);
-    localLbsInfo.lbs_y = String.valueOf(paramLocalImageShootInfo.a.jdField_a_of_type_Float);
+    } while (paramLocalImageShootInfo.gpsInfo == null);
+    localLbsInfo.lbs_x = String.valueOf(paramLocalImageShootInfo.gpsInfo.longtitude);
+    localLbsInfo.lbs_y = String.valueOf(paramLocalImageShootInfo.gpsInfo.latitude);
     return localLbsInfo;
   }
 }

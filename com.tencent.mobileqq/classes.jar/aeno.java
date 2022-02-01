@@ -1,20 +1,21 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeno
-  extends MqqHandler
+  implements View.OnClickListener
 {
-  public aeno(FontSettingActivity paramFontSettingActivity) {}
+  public aeno(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (16711697 == paramMessage.what)
-    {
-      anxh.a(this.a, FontSettingActivity.a(this.a), false);
-      this.a.c = true;
-      this.a.a.notifyDataSetChanged();
-    }
+    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

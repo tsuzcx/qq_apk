@@ -1,6 +1,20 @@
-public abstract interface uvx
+public abstract class uvx
 {
-  public abstract void a();
+  private int a;
+  
+  public uvx(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  abstract String a();
+  
+  abstract String b();
+  
+  public String c()
+  {
+    return uyo.a(this.a);
+  }
 }
 
 

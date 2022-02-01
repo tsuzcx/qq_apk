@@ -1,18 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
+import android.view.View.OnTouchListener;
+import kotlin.Metadata;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"}, k=3, mv={1, 1, 16})
 final class rpz
-  implements ValueAnimator.AnimatorUpdateListener
+  implements View.OnTouchListener
 {
-  rpz(int paramInt1, ViewGroup.MarginLayoutParams paramMarginLayoutParams, int paramInt2, View paramView) {}
+  public static final rpz a = new rpz();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = (int)(paramValueAnimator.getAnimatedFraction() * this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.bottomMargin = (i + this.b);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams);
+    return true;
   }
 }
 

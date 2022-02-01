@@ -1,20 +1,34 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.biz.pubaccount.PhotoWallViewForAccountDetail;
-import com.tencent.widget.AdapterView;
-import java.util.List;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class oah
-  implements bljm
+  implements bjoe
 {
-  public oah(PhotoWallViewForAccountDetail paramPhotoWallViewForAccountDetail) {}
+  public oah(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramAdapterView = (oag)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (this.a.jdField_a_of_type_Oak == null) {
+    if (ReadInJoyNativeAdFragment.a(this.a)) {
       return;
     }
-    this.a.jdField_a_of_type_Oak.a(paramAdapterView);
+    ReadInJoyNativeAdFragment.a(this.a, true);
+    paramView = "";
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadInJoyNativeAdFragment.a(this.a).dismiss();
+      QQToast.a(this.a.getActivity(), 2, paramView, 0).b(0);
+      return;
+      obb.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 1, 0);
+      paramView = this.a.getString(2131717423);
+      continue;
+      obb.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 2, 0);
+      paramView = this.a.getString(2131717425);
+    }
   }
 }
 

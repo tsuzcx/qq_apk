@@ -1,33 +1,10 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
-
-public class avbk
-  implements abig
+public abstract interface avbk
 {
-  public avbk(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void a(boolean paramBoolean)
-  {
-    if (ForwardRecentActivity.class.isInstance(this.a.a)) {
-      if (!this.a.a.isFinishing())
-      {
-        if (!paramBoolean) {
-          break label75;
-        }
-        this.a.a(0, "", "");
-      }
-    }
-    for (;;)
-    {
-      if (this.a.k) {
-        ForwardSdkBaseOption.a(this.a.a, true, "shareToQQ", this.a.b);
-      }
-      return;
-      label75:
-      this.a.a(-1, bjvb.d, bjvb.d);
-    }
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

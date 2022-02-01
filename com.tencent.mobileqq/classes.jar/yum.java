@@ -1,15 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
-final class yum
-  implements woy<yun, wov>
+public class yum
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void a(@NonNull yun paramyun, @Nullable wov paramwov, @NonNull ErrorMessage paramErrorMessage)
+  public yum(RotateCircleImageView paramRotateCircleImageView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramErrorMessage.isFail()) {
-      yuk.b("Q.qqstory.MonitorReport", "send monitor fail %s", paramErrorMessage);
-    }
+    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 

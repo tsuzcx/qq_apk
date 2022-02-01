@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.profilecard.bussiness.qzone;
 
 import android.text.TextUtils;
-import azxr;
-import bahm;
+import aymg;
+import ayxd;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 import cooperation.qzone.report.lp.LpReportManager;
@@ -11,7 +11,7 @@ import cooperation.qzone.util.QZLog;
 public class ProfileQZoneComponent$5
   implements Runnable
 {
-  public ProfileQZoneComponent$5(bahm parambahm, azxr paramazxr) {}
+  public ProfileQZoneComponent$5(ayxd paramayxd, aymg paramaymg) {}
   
   public void run()
   {

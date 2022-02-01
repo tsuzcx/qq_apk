@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.TranslateFragment;
 
 public class axnc
-  implements View.OnClickListener
+  implements axpe
 {
-  public axnc(MultiCardFragment paramMultiCardFragment) {}
+  public axnc(TranslateFragment paramTranslateFragment, axll paramaxll) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, axpf paramaxpf)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "onClick() called with: v = [" + paramView + "]");
+    if ((paramaxpf != null) && (!TextUtils.isEmpty(paramaxpf.b)))
+    {
+      if (!this.jdField_a_of_type_Axll.c.equalsIgnoreCase(paramaxpf.b)) {
+        TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, this.jdField_a_of_type_Axll.b, paramaxpf.b);
+      }
+      axlj.a("0X800AD31", axlj.a(paramaxpf.b));
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,58 +1,41 @@
-import android.support.v4.util.SparseArrayCompat;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
 public class akkv
+  extends akld
 {
-  private SparseArrayCompat<SparseArrayCompat<agvc>> a = new SparseArrayCompat(17);
-  private SparseArrayCompat<agvb> b = new SparseArrayCompat();
-  
-  public akkv(aklt paramaklt)
+  public akkv()
   {
-    a(1, new akmh(paramaklt));
-    a(2, new akls(paramaklt));
-    a(3, new akkz(paramaklt));
+    this.jdField_a_of_type_Int = 2131562696;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  private void a(int paramInt, agvc paramagvc)
+  private void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext)
   {
-    this.b.put(paramInt, paramagvc);
-    int[] arrayOfInt = paramagvc.a();
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
-    {
-      int k = arrayOfInt[i];
-      SparseArrayCompat localSparseArrayCompat2 = (SparseArrayCompat)this.a.get(k);
-      SparseArrayCompat localSparseArrayCompat1 = localSparseArrayCompat2;
-      if (localSparseArrayCompat2 == null)
-      {
-        localSparseArrayCompat1 = new SparseArrayCompat();
-        this.a.put(k, localSparseArrayCompat1);
-      }
-      localSparseArrayCompat1.put(paramInt, paramagvc);
-      i += 1;
+    akle localakle = null;
+    if ((paramView.getTag() instanceof akle)) {
+      localakle = (akle)paramView.getTag();
     }
-  }
-  
-  public <T extends agvb> T a(int paramInt)
-  {
-    return (agvb)this.b.get(paramInt);
-  }
-  
-  public void a(int paramInt)
-  {
-    SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.a.get(paramInt);
-    if (localSparseArrayCompat == null) {}
-    for (;;)
-    {
+    if ((localakle == null) || (localakle.a == null) || (paramRecentBaseData == null)) {
       return;
-      int j = localSparseArrayCompat.size();
-      int i = 0;
-      while (i < j)
-      {
-        ((agvc)localSparseArrayCompat.valueAt(i)).a(paramInt);
-        i += 1;
-      }
     }
+    baql.a(paramContext, localakle.a, paramRecentBaseData.getRecentUserUin());
+  }
+  
+  public View a(int paramInt, Object paramObject, aklg paramaklg, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aknm paramaknm)
+  {
+    return super.a(paramInt, paramObject, paramaklg, paramView, paramViewGroup, paramContext, paramOnClickListener, paramOnLongClickListener, paramaknm);
+  }
+  
+  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable paramDrawable)
+  {
+    super.a(paramView, paramRecentBaseData, paramContext, paramDrawable);
+    a(paramView, paramRecentBaseData, paramContext);
   }
 }
 

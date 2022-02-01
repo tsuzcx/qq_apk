@@ -1,13 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqmini.proxyimpl.ShareProxyImpl.2.1;
+import android.support.annotation.NonNull;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
 
 public class bkzv
-  implements DialogInterface.OnClickListener
 {
-  public bkzv(ShareProxyImpl.2.1 param1) {}
+  public int a;
+  public String a;
+  public EGLConfig a;
+  public EGLContext a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public bkzv()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return " width = " + this.jdField_a_of_type_Int + " height = " + this.jdField_b_of_type_Int + " isNeedOffScreen = " + this.jdField_a_of_type_Boolean + " resUrl = " + this.jdField_a_of_type_JavaLangString + " resFilePath = " + this.jdField_b_of_type_JavaLangString + " resMD5 = " + this.c;
+  }
 }
 
 

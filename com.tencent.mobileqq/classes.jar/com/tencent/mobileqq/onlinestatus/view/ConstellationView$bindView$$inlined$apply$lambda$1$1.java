@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.onlinestatus.view;
 
 import android.content.Context;
-import azfn;
-import azlb;
-import azlu;
-import azlz;
+import axsv;
+import axyj;
+import axzc;
+import axzh;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.widget.QQToast;
 import kotlin.Metadata;
@@ -17,7 +17,7 @@ public final class ConstellationView$bindView$$inlined$apply$lambda$1$1
   extends Lambda
   implements Function0<Unit>
 {
-  public ConstellationView$bindView$$inlined$apply$lambda$1$1(azlz paramazlz)
+  public ConstellationView$bindView$$inlined$apply$lambda$1$1(axzh paramaxzh)
   {
     super(0);
   }
@@ -26,10 +26,10 @@ public final class ConstellationView$bindView$$inlined$apply$lambda$1$1
   {
     if (AppNetConnInfo.isNetSupport())
     {
-      azlb.a.a(this.this$0.a.a(), 1040);
+      axyj.a.a(this.this$0.a.a(), 1040);
       return;
     }
-    QQToast.a((Context)this.this$0.a.a(), 1, 2131718340, 0).a();
+    QQToast.a((Context)this.this$0.a.a(), 1, 2131718582, 0).a();
     this.this$0.a.a().a(1040);
   }
 }

@@ -1,53 +1,31 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.os.Handler;
+import android.text.Editable;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.XEditTextEx;
 
-public class aqnc
+class aqnc
   implements View.OnClickListener
 {
-  public aqnc(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  aqnc(aqmz paramaqmz, String paramString) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
-    {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.a.jdField_a_of_type_AndroidAppDialog = null;
-    }
-    if (this.a.jdField_a_of_type_Int == 0)
-    {
-      bdll.b(this.a.app, "CliOper", "", "", "0X80064E3", "0X80064E3", 0, 0, "", "", "", "");
-      if ((!this.a.jdField_a_of_type_Boolean) || (!this.a.b) || (this.a.isFinishing())) {
-        break label176;
-      }
-      this.a.finish();
+    aqmz.a(this.jdField_a_of_type_Aqmz).removeCallbacks(aqmz.a(this.jdField_a_of_type_Aqmz));
+    aqmz.a(this.jdField_a_of_type_Aqmz).run();
+    int i = aqmz.a(this.jdField_a_of_type_Aqmz).input.getSelectionStart();
+    Editable localEditable = aqmz.a(this.jdField_a_of_type_Aqmz).input.getEditableText();
+    if ((i < 0) || (i >= localEditable.length())) {
+      localEditable.append(this.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
+      bcef.b(aqmz.a(this.jdField_a_of_type_Aqmz).getApp(), "dc00898", "", "", "0X800B22C", "0X800B22C", 0, 0, "", "", "", "");
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.a.getIntent().getIntExtra("source_activity", 0) != 1) {
-        break;
-      }
-      bdll.b(this.a.app, "CliOper", "", "", "0X80064EE", "0X80064EE", 0, 0, "", "", "", "");
-      break;
-      label176:
-      if (this.a.c)
-      {
-        aqoj.a(this.a.app.getCurrentAccountUin(), -1);
-        this.a.c = false;
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard == null) || (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardId))) {
-        this.a.finish();
-      } else {
-        BusinessCardEditActivity.a(this.a, false, true, true);
-      }
+      localEditable.insert(i, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

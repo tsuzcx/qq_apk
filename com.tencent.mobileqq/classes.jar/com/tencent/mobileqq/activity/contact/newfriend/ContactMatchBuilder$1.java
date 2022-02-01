@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import ajjl;
-import ajlz;
+import aidu;
+import aigi;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -10,11 +10,11 @@ import mqq.os.MqqHandler;
 public class ContactMatchBuilder$1
   implements Runnable
 {
-  public ContactMatchBuilder$1(ajjl paramajjl) {}
+  public ContactMatchBuilder$1(aidu paramaidu) {}
   
   public void run()
   {
-    ((PhoneContactManagerImp)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).a(((ajlz)this.this$0.jdField_a_of_type_Ajmf).a);
+    ((PhoneContactManagerImp)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).a(((aigi)this.this$0.jdField_a_of_type_Aigo).a);
     ThreadManager.getUIHandler().post(new ContactMatchBuilder.1.1(this));
   }
 }

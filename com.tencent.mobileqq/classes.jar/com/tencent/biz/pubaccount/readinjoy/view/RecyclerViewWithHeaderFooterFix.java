@@ -11,20 +11,20 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import bltc;
-import bltq;
-import bltu;
+import bjxc;
+import bjxq;
+import bjxu;
 import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import smm;
-import smn;
+import sqn;
+import sqo;
 
 public class RecyclerViewWithHeaderFooterFix
   extends RecyclerViewCompat
 {
-  private bltu jdField_a_of_type_Bltu;
+  private bjxu jdField_a_of_type_Bjxu;
   private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
   public boolean a;
   private final List<View> b = new ArrayList();
@@ -88,23 +88,23 @@ public class RecyclerViewWithHeaderFooterFix
     }
     else
     {
-      localObject = new smm(this, paramAdapter);
+      localObject = new sqn(this, paramAdapter);
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((bltq)localObject).a((View)localIterator.next());
+        ((bjxq)localObject).a((View)localIterator.next());
       }
       localIterator = this.b.iterator();
       while (localIterator.hasNext()) {
-        ((bltq)localObject).c((View)localIterator.next());
+        ((bjxq)localObject).c((View)localIterator.next());
       }
-      ((bltq)localObject).setHasStableIds(paramAdapter.hasStableIds());
+      ((bjxq)localObject).setHasStableIds(paramAdapter.hasStableIds());
       if ((getLayoutManager() instanceof GridLayoutManager))
       {
         paramAdapter = (GridLayoutManager)getLayoutManager();
-        paramAdapter.setSpanSizeLookup(new bltc((bltq)localObject, paramAdapter));
+        paramAdapter.setSpanSizeLookup(new bjxc((bjxq)localObject, paramAdapter));
       }
-      if (this.jdField_a_of_type_Bltu != null) {
-        ((bltq)localObject).a(this.jdField_a_of_type_Bltu);
+      if (this.jdField_a_of_type_Bjxu != null) {
+        ((bjxq)localObject).a(this.jdField_a_of_type_Bjxu);
       }
     }
     super.setAdapter((RecyclerView.Adapter)localObject);
@@ -113,14 +113,14 @@ public class RecyclerViewWithHeaderFooterFix
   public void setLayoutManager(RecyclerView.LayoutManager paramLayoutManager)
   {
     super.setLayoutManager(paramLayoutManager);
-    if ((getAdapter() != null) && ((getAdapter() instanceof bltq)))
+    if ((getAdapter() != null) && ((getAdapter() instanceof bjxq)))
     {
-      Object localObject = (bltq)getAdapter();
+      Object localObject = (bjxq)getAdapter();
       if ((getLayoutManager() instanceof GridLayoutManager))
       {
         paramLayoutManager = (GridLayoutManager)getLayoutManager();
-        localObject = new bltc((bltq)localObject, paramLayoutManager);
-        ((bltc)localObject).a(paramLayoutManager.getSpanSizeLookup());
+        localObject = new bjxc((bjxq)localObject, paramLayoutManager);
+        ((bjxc)localObject).a(paramLayoutManager.getSpanSizeLookup());
         paramLayoutManager.setSpanSizeLookup((GridLayoutManager.SpanSizeLookup)localObject);
       }
     }
@@ -128,12 +128,12 @@ public class RecyclerViewWithHeaderFooterFix
   
   public void setRecycledViewPool(RecyclerView.RecycledViewPool paramRecycledViewPool)
   {
-    super.setRecycledViewPool(new smn(this));
+    super.setRecycledViewPool(new sqo(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,40 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import java.util.Comparator;
+import com.tencent.biz.common.util.HttpUtil;
 
-class bfnf
-  implements Comparator<bfnd>
+public final class bfnf
 {
-  public int a(bfnd parambfnd)
+  public static String a()
   {
-    if (parambfnd.jdField_a_of_type_Int != -1) {
-      return parambfnd.jdField_a_of_type_Int;
-    }
-    Friends localFriends = parambfnd.jdField_a_of_type_ComTencentMobileqqDataFriends;
-    int k = bhlg.a(localFriends.detalStatusFlag, localFriends.iTermType);
-    int j;
-    int i;
-    if ((k != 6) && (k != 0))
+    switch ()
     {
-      j = 65536;
-      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-        break label132;
-      }
-      i = 4096;
-      switch (k)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        label64:
-        i = j | i | (int)localFriends.getLastLoginType();
-      }
+    default: 
+      return "X";
+    case 2: 
+      return "2g";
+    case 3: 
+      return "3g";
+    case 4: 
+      return "4g";
+    }
+    return "wifi";
+  }
+  
+  public static String b()
+  {
+    int i = 4;
+    switch (HttpUtil.getNetWorkType())
+    {
     }
     for (;;)
     {
-      parambfnd.jdField_a_of_type_Int = i;
-      return i;
-      j = 131072;
-      break;
-      label132:
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
-      {
-        i = 8192;
-        break label64;
-      }
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
-      {
-        i = 12288;
-        break label64;
-      }
-      i = 16384;
-      break label64;
-      i = j | i | 0x1;
+      return String.valueOf(i);
+      i = 1;
       continue;
-      i = j | i | 0x2;
+      i = 2;
       continue;
-      i = j | i | 0x3;
+      i = 3;
+      continue;
+      i = 0;
     }
-  }
-  
-  public int a(bfnd parambfnd1, bfnd parambfnd2)
-  {
-    return a(parambfnd1) - a(parambfnd2);
   }
 }
 

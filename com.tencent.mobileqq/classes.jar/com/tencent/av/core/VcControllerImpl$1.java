@@ -1,6 +1,6 @@
 package com.tencent.av.core;
 
-import llg;
+import lla;
 
 class VcControllerImpl$1
   implements Runnable

@@ -1,15 +1,21 @@
-import android.view.animation.Animation;
-import cooperation.qzone.contentbox.PlusMenuContainer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.capture.view.AdvancedProviderView;
+import java.util.List;
 
 public class bmya
-  extends blgm
+  implements View.OnClickListener
 {
-  public bmya(PlusMenuContainer paramPlusMenuContainer) {}
+  public bmya(AdvancedProviderView paramAdvancedProviderView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.setVisibility(4);
-    PlusMenuContainer.a(this.a, false);
+    List localList = boaz.a().a();
+    if (localList.size() > 1) {
+      yqu.a(this.a.a, localList.get(1));
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

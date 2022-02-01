@@ -1,56 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import java.util.Comparator;
 
 public class aykq
-  extends Handler
+  implements Comparator<PersonalityLabelInfo>
 {
-  public aykq(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public aykq(PersonalityLabel paramPersonalityLabel) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(PersonalityLabelInfo paramPersonalityLabelInfo1, PersonalityLabelInfo paramPersonalityLabelInfo2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 101: 
-    case 100: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a();
-          blhb localblhb = blhb.a;
-          if ((localblhb != null) && (localblhb.a())) {
-            localblhb.b(5);
-          }
-        } while (paramMessage.obj == null);
-        paramMessage = (NearbyPeopleCard)paramMessage.obj;
-        this.a.b = true;
-        this.a.a(paramMessage, true, false);
-        return;
-      } while (NearbyPeopleProfileActivity.a(this.a) == null);
-      NearbyPeopleProfileActivity.a(this.a).b();
-      return;
-    case 102: 
-      NearbyPeopleProfileActivity.a(this.a).a(paramMessage.arg1, paramMessage.arg2);
-      return;
-    case 202: 
-      NearbyPeopleProfileActivity.a(this.a).a(true);
-      this.a.a.sendEmptyMessageDelayed(203, 1500L);
-      return;
-    case 203: 
-      NearbyPeopleProfileActivity.a(this.a).a(false);
-      return;
-    case 204: 
-      this.a.a(this.a.getString(2131693950));
-      return;
-    case 207: 
-      this.a.a(anzj.a(2131706131));
-      return;
-    }
-    this.a.a();
+    return -(int)(paramPersonalityLabelInfo1.modTime - paramPersonalityLabelInfo2.modTime);
   }
 }
 

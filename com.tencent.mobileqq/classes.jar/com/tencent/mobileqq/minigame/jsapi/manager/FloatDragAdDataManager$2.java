@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.minigame.jsapi.manager;
 
-import bnwp;
+import blbv;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 
 final class FloatDragAdDataManager$2
-  implements bnwp
+  implements blbv
 {
   FloatDragAdDataManager$2(String paramString, int paramInt, FloatDragAdDataManager.DragAdListener paramDragAdListener) {}
   

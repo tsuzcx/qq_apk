@@ -1,96 +1,103 @@
-import android.support.v4.util.ArrayMap;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.realtime.RealTimeTemplateFactoryCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RelatedSearchData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public class svo
-  extends suz
+public final class svo
+  implements Parcelable.Creator<FastWebArticleInfo>
 {
-  private static RealTimeTemplateFactoryCache jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache = new RealTimeTemplateFactoryCache();
-  private Map<String, svp> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  
-  public svo()
+  public FastWebArticleInfo a(Parcel paramParcel)
   {
-    this.nameTemplateMap = new ConcurrentHashMap();
-  }
-  
-  public static svo a(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache.getAutoCreate(BaseApplicationImpl.getContext(), paramString);
-    }
-    return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache.get(paramString);
-  }
-  
-  public static void b()
-  {
-    QLog.d("RealTimeTemplateFactory", 2, "reset: ");
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusRealtimeRealTimeTemplateFactoryCache.clear();
-  }
-  
-  public Map<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext())
+    boolean bool2 = true;
+    int j = 0;
+    FastWebArticleInfo localFastWebArticleInfo = new FastWebArticleInfo();
+    localFastWebArticleInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localFastWebArticleInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localFastWebArticleInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localFastWebArticleInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localFastWebArticleInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localFastWebArticleInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localFastWebArticleInfo.e = paramParcel.readString();
+    localFastWebArticleInfo.f = paramParcel.readString();
+    localFastWebArticleInfo.h = paramParcel.readString();
+    localFastWebArticleInfo.g = paramParcel.readString();
+    localFastWebArticleInfo.j = paramParcel.readString();
+    localFastWebArticleInfo.i = paramParcel.readString();
+    localFastWebArticleInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localFastWebArticleInfo.l = paramParcel.readString();
+    if (paramParcel.readInt() == 1)
     {
-      svp localsvp = (svp)localIterator.next();
-      localHashMap.put(localsvp.a, localsvp.b);
+      bool1 = true;
+      localFastWebArticleInfo.jdField_b_of_type_Boolean = bool1;
+      localFastWebArticleInfo.o = paramParcel.readString();
+      localFastWebArticleInfo.jdField_d_of_type_Long = paramParcel.readLong();
+      if (paramParcel.readInt() != 1) {
+        break label291;
+      }
     }
-    return localHashMap;
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null)) {
-      return;
-    }
-    paramString2 = new svp(paramString1, paramString2, paramString3);
-    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
-  }
-  
-  public boolean a(TemplateBean paramTemplateBean)
-  {
-    if (paramTemplateBean == null) {}
-    while ((paramTemplateBean.getId() != getTemplateId()) || (!a().equals(paramTemplateBean.getStyleSource()))) {
-      return true;
-    }
-    return false;
-  }
-  
-  public void d(String paramString)
-  {
-    paramString = (svp)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-    if (paramString != null)
+    int k;
+    Object localObject;
+    int i;
+    label291:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      paramString = (TemplateBean)this.nameTemplateMap.remove(paramString.c);
-      QLog.d("RealTimeTemplateFactory", 1, "deleteStyle: " + paramString);
+      localFastWebArticleInfo.jdField_c_of_type_Boolean = bool1;
+      localFastWebArticleInfo.q = paramParcel.readString();
+      k = paramParcel.readInt();
+      if (k < 0) {
+        break label413;
+      }
+      localObject = new ArrayList();
+      i = 0;
+      while (i < k)
+      {
+        sst localsst = new sst();
+        localsst.jdField_a_of_type_JavaLangString = paramParcel.readString();
+        localsst.jdField_a_of_type_Long = paramParcel.readLong();
+        localsst.jdField_b_of_type_JavaLangString = paramParcel.readString();
+        ((List)localObject).add(localsst);
+        i += 1;
+      }
+      bool1 = false;
+      break;
+    }
+    label413:
+    for (localFastWebArticleInfo.jdField_a_of_type_JavaUtilList = ((List)localObject);; localFastWebArticleInfo.jdField_a_of_type_JavaUtilList = null)
+    {
+      k = paramParcel.readInt();
+      if (k <= 0) {
+        break label455;
+      }
+      localFastWebArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataRelatedSearchData = new RelatedSearchData(localFastWebArticleInfo);
+      localFastWebArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataRelatedSearchData.jdField_a_of_type_JavaUtilList = new ArrayList();
+      i = j;
+      while (i < k)
+      {
+        localObject = new ssy();
+        ((ssy)localObject).jdField_a_of_type_JavaLangString = paramParcel.readString();
+        ((ssy)localObject).jdField_b_of_type_JavaLangString = paramParcel.readString();
+        ((ssy)localObject).jdField_a_of_type_Float = paramParcel.readFloat();
+        ((ssy)localObject).jdField_c_of_type_JavaLangString = paramParcel.readString();
+        ((ssy)localObject).jdField_a_of_type_Int = paramParcel.readInt();
+        i += 1;
+      }
+    }
+    localFastWebArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataRelatedSearchData.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    for (;;)
+    {
+      localFastWebArticleInfo.jdField_c_of_type_Int = paramParcel.readInt();
+      localFastWebArticleInfo.p = paramParcel.readString();
+      return localFastWebArticleInfo;
+      label455:
+      localFastWebArticleInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataRelatedSearchData = null;
     }
   }
   
-  public Map<String, TemplateBean> getNameTemplateMap()
+  public FastWebArticleInfo[] a(int paramInt)
   {
-    ArrayMap localArrayMap = new ArrayMap();
-    localArrayMap.putAll(this.nameTemplateMap);
-    return localArrayMap;
-  }
-  
-  public TemplateBean getTemplate(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    paramString = (TemplateBean)this.nameTemplateMap.get(paramString);
-    if (paramString == null) {}
-    for (paramString = null;; paramString = paramString.clone()) {
-      return paramString;
-    }
+    return new FastWebArticleInfo[paramInt];
   }
 }
 

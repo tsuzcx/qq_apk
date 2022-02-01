@@ -1,12 +1,14 @@
-class bemf
-  extends bekg
+public abstract interface bemf
 {
-  bemf(beme parambeme) {}
+  public abstract void a(String paramString, double paramDouble);
   
-  protected void a()
-  {
-    this.a.a.notifyDataSetChanged();
-  }
+  public abstract void a(String paramString1, String paramString2, double paramDouble1, double paramDouble2, boolean paramBoolean);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

@@ -1,20 +1,10 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import org.json.JSONObject;
-
-public class tgj
-  extends tgb
+public abstract interface tgj
 {
-  tgj(tfy paramtfy1, Activity paramActivity, tfy paramtfy2, JSONObject paramJSONObject)
-  {
-    super(paramtfy1, paramActivity, paramtfy2, paramJSONObject);
-  }
+  public abstract void a();
   
-  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
-  {
-    tfy.a(this.a).mShareHelper.c();
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

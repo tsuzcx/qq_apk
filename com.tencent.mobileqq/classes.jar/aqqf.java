@@ -1,18 +1,18 @@
-import android.hardware.Camera;
-import android.hardware.Camera.PictureCallback;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.PictureCallbackForward.1;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.DynamicAvatar;
 
-public class aqqf
-  implements Camera.PictureCallback
+public final class aqqf
+  implements Parcelable.Creator<DynamicAvatar>
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final aqpv jdField_a_of_type_Aqpv;
-  private final aqpx jdField_a_of_type_Aqpx;
-  
-  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
+  public DynamicAvatar a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.PictureCallbackForward.1(this, paramArrayOfByte));
+    return new DynamicAvatar(paramParcel);
+  }
+  
+  public DynamicAvatar[] a(int paramInt)
+  {
+    return new DynamicAvatar[paramInt];
   }
 }
 

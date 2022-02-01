@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.identification;
 
-import avxc;
+import aukc;
 import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
 public class IdentificationActivityHelper$1
   implements Runnable
 {
-  public IdentificationActivityHelper$1(avxc paramavxc) {}
+  public IdentificationActivityHelper$1(aukc paramaukc) {}
   
   public void run()
   {
-    avxc.a(this.this$0).a(false, 215);
+    aukc.a(this.this$0).a(false, 215);
   }
 }
 

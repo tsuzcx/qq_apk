@@ -1,162 +1,304 @@
-import android.os.IBinder;
-import android.telephony.TelephonyManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.lang.reflect.Method;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
+import com.tencent.open.model.AppInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bhvh
+  extends BaseAdapter
+  implements View.OnClickListener
 {
-  public static int a;
-  private static bhvh jdField_a_of_type_Bhvh;
-  public static String a;
-  public static String b;
-  public static String c = "1";
-  private Object jdField_a_of_type_JavaLangObject;
-  private TelephonyManager[] jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager;
-  private y[] jdField_a_of_type_ArrayOfY;
-  private Object b;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private final IphoneTitleBarFragment jdField_a_of_type_ComTencentMobileqqFragmentIphoneTitleBarFragment;
+  @NonNull
+  private List<AppInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private List<Integer> b;
   
-  static
+  public bhvh(IphoneTitleBarFragment paramIphoneTitleBarFragment, QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_Int = -1;
-    jdField_b_of_type_JavaLangString = "0";
+    this.jdField_a_of_type_ComTencentMobileqqFragmentIphoneTitleBarFragment = paramIphoneTitleBarFragment;
+    this.jdField_a_of_type_AndroidAppActivity = paramIphoneTitleBarFragment.getActivity();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = new ArrayList();
   }
   
-  private bhvh()
+  private void a(int paramInt, View paramView, bhvj parambhvj)
   {
-    try
-    {
-      a();
-      return;
+    parambhvj.jdField_a_of_type_Int = paramInt;
+    parambhvj.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+    AppInfo localAppInfo = (AppInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    String str = localAppInfo.b();
+    paramView = str;
+    if (str == null) {
+      paramView = "";
     }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    parambhvj.jdField_a_of_type_AndroidWidgetTextView.setText(paramView.trim());
+    parambhvj.jdField_b_of_type_AndroidWidgetTextView.setText(localAppInfo.a());
+    parambhvj.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+    a(parambhvj, localAppInfo);
   }
   
-  public static bhvh a()
+  private void a(View paramView)
   {
-    if (jdField_a_of_type_Bhvh == null) {}
-    try
+    bhvj localbhvj = (bhvj)paramView.getTag();
+    if (this.jdField_a_of_type_Boolean)
     {
-      jdField_a_of_type_Bhvh = new bhvh();
-      return jdField_a_of_type_Bhvh;
-    }
-    finally {}
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_ArrayOfY = new y[2];
-    switch (jdField_a_of_type_Int)
-    {
-    case 0: 
-    case 1: 
-    case 4: 
-    default: 
-    case 2: 
-    case 3: 
+      paramView = (CheckBox)paramView.findViewById(2131371499);
+      boolean bool;
+      if (!paramView.isChecked())
+      {
+        bool = true;
+        paramView.setChecked(bool);
+        if (!paramView.isChecked()) {
+          break label155;
+        }
+        this.b.add(Integer.valueOf(localbhvj.jdField_a_of_type_Int));
+        label65:
+        if (this.b.size() <= 0) {
+          break label178;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqFragmentIphoneTitleBarFragment.rightViewText.setEnabled(true);
+      }
       for (;;)
       {
+        paramView = (AppInfo)this.jdField_a_of_type_JavaUtilList.get(localbhvj.jdField_a_of_type_Int);
+        if (paramView != null) {
+          paramView.a(bool);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("AuthorityControlAdapter", 2, "onLayoutAppItemClick: invoked.  mCheckedPositions: " + this.b);
+        }
         return;
-        try
-        {
-          this.jdField_a_of_type_JavaLangObject = bhvn.a("android.telephony.MSimTelephonyManager", "getDefault", null, null);
-          this.jdField_b_of_type_JavaLangObject = bhvn.a("android.telephony.MSimSmsManager", "getDefault", null, null);
-          return;
-        }
-        catch (Exception localException1)
-        {
-          localException1.printStackTrace();
-          return;
-        }
-        try
-        {
-          this.jdField_a_of_type_ArrayOfY[0] = z.a(bhvo.a("isms"));
-          this.jdField_a_of_type_ArrayOfY[1] = z.a(bhvo.a("isms2"));
-          if (this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager == null)
-          {
-            this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager = new TelephonyManager[2];
-            this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager[0] = ((TelephonyManager)bhvn.a("android.telephony.TelephonyManager", "getDefault"));
-            this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager[1] = ((TelephonyManager)bhvn.a("android.telephony.TelephonyManager", "getSecondary"));
-            return;
-          }
-        }
-        catch (Exception localException2)
-        {
-          localException2.printStackTrace();
-          return;
-        }
-        catch (Error localError)
-        {
-          localError.printStackTrace();
-          return;
-        }
+        bool = false;
+        break;
+        label155:
+        int i = localbhvj.jdField_a_of_type_Int;
+        this.b.remove(Integer.valueOf(i));
+        break label65;
+        label178:
+        this.jdField_a_of_type_ComTencentMobileqqFragmentIphoneTitleBarFragment.rightViewText.setEnabled(false);
       }
     }
-    try
-    {
-      this.jdField_a_of_type_JavaLangObject = BaseApplicationImpl.getContext().getSystemService("phone");
-      y localy = z.a((IBinder)Class.forName("android.os.ServiceManager").getMethod("getService", new Class[] { String.class }).invoke(null, new Object[] { "isms" }));
-      this.jdField_a_of_type_ArrayOfY[0] = localy;
-      return;
+    paramView = (AppInfo)this.jdField_a_of_type_JavaUtilList.get(localbhvj.jdField_a_of_type_Int);
+    AuthorityControlAppDetailsFragment.a(this.jdField_a_of_type_AndroidAppActivity, paramView);
+  }
+  
+  private void a(bhvj parambhvj)
+  {
+    parambhvj.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
+    parambhvj.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+  }
+  
+  private void a(bhvj parambhvj, View paramView)
+  {
+    parambhvj.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369636);
+    parambhvj.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131371499));
+    parambhvj.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368077));
+    parambhvj.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362843));
+    parambhvj.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362853));
+    parambhvj.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362833));
+    parambhvj.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370604);
+  }
+  
+  private void a(bhvj parambhvj, AppInfo paramAppInfo)
+  {
+    Object localObject1 = paramAppInfo.c();
+    Object localObject2 = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838703);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
+      parambhvj.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
-    catch (Throwable localThrowable)
+    for (;;)
     {
-      localThrowable.printStackTrace();
+      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject2);
+      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject2);
+      localObject2 = parambhvj.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
+      localURLDrawableOptions.mRequestHeight = ((ViewGroup.LayoutParams)localObject2).height;
+      localURLDrawableOptions.mRequestWidth = ((ViewGroup.LayoutParams)localObject2).width;
+      try
+      {
+        localObject1 = URLDrawable.getDrawable((String)localObject1, localURLDrawableOptions);
+        ((URLDrawable)localObject1).setTag(bfol.b(((ViewGroup.LayoutParams)localObject2).width, ((ViewGroup.LayoutParams)localObject2).height, UIUtils.dip2px(this.jdField_a_of_type_AndroidAppActivity, 6.0F)));
+        ((URLDrawable)localObject1).setDecodeHandler(bfol.j);
+        parambhvj.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
+        label135:
+        parambhvj.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramAppInfo.a());
+        return;
+        parambhvj.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      }
+      catch (Throwable localThrowable)
+      {
+        break label135;
+      }
     }
   }
   
-  public int a(int paramInt)
+  private void b(bhvj parambhvj)
   {
-    int i = 1;
-    switch (jdField_a_of_type_Int)
+    parambhvj.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+    parambhvj.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+  }
+  
+  @NonNull
+  public List<AppInfo> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext())
+    {
+      int i = ((Integer)localIterator.next()).intValue();
+      if ((i < this.jdField_a_of_type_JavaUtilList.size()) && (i >= 0)) {
+        localArrayList.add((AppInfo)this.jdField_a_of_type_JavaUtilList.get(i));
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    this.b.clear();
+    notifyDataSetChanged();
+  }
+  
+  public void a(@NonNull List<AppInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.b.clear();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((AppInfo)localIterator.next()).a(false);
+    }
+    notifyDataSetChanged();
+  }
+  
+  public void b(List<AppInfo> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    label124:
+    for (;;)
+    {
+      AppInfo localAppInfo1;
+      if (localIterator1.hasNext())
+      {
+        localAppInfo1 = (AppInfo)localIterator1.next();
+        Iterator localIterator2 = paramList.iterator();
+        AppInfo localAppInfo2;
+        do
+        {
+          if (!localIterator2.hasNext()) {
+            break;
+          }
+          localAppInfo2 = (AppInfo)localIterator2.next();
+        } while (localAppInfo1.a() != localAppInfo2.a());
+      }
+      for (int i = 0;; i = 1)
+      {
+        if (i == 0) {
+          break label124;
+        }
+        localArrayList.add(localAppInfo1);
+        break;
+        this.jdField_a_of_type_JavaUtilList.clear();
+        this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
+        return;
+      }
+    }
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
+    {
+      paramView = new bhvj(null);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558707, null);
+      a(paramView, localView);
+      localView.setTag(paramView);
+      a(paramInt, localView, paramView);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label98;
+      }
+      b(paramView);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      bhvj localbhvj = (bhvj)paramView.getTag();
+      localView = paramView;
+      paramView = localbhvj;
+      break;
+      label98:
+      a(paramView);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
     }
     for (;;)
     {
-      return 0;
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        continue;
-      }
-      try
-      {
-        paramInt = ((Integer)bhvn.a(this.jdField_a_of_type_JavaLangObject, "getSimState", new Object[] { Integer.valueOf(paramInt) })).intValue();
-        return paramInt;
-      }
-      catch (Exception localException1)
-      {
-        localException1.printStackTrace();
-      }
-      continue;
-      if (this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager == null) {
-        continue;
-      }
-      return this.jdField_a_of_type_ArrayOfAndroidTelephonyTelephonyManager[paramInt].getSimState();
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        continue;
-      }
-      try
-      {
-        Object localObject = this.jdField_a_of_type_JavaLangObject;
-        if (paramInt == 0) {}
-        for (paramInt = i;; paramInt = 5)
-        {
-          paramInt = ((Integer)bhvn.a(localObject, "getIccState", new Object[] { Integer.valueOf(paramInt) })).intValue();
-          return paramInt;
-        }
-      }
-      catch (Exception localException2)
-      {
-        localException2.printStackTrace();
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      a(paramView);
     }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return a(paramInt) == 5;
   }
 }
 

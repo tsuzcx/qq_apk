@@ -1,18 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.SendMsg;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.view.AECompoundButton;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
 
-public final class bmii
-  implements Parcelable.Creator<SendMsg>
+public class bmii
+  implements View.OnClickListener
 {
-  public SendMsg a(Parcel paramParcel)
-  {
-    return new SendMsg(paramParcel);
-  }
+  public bmii(AEEditorImageEditFragment paramAEEditorImageEditFragment, boolean paramBoolean) {}
   
-  public SendMsg[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new SendMsg[paramInt];
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      bmbk.a().a("ae_editor_tool_bar_red_dot_frame", true, 0);
+      View localView = AEEditorImageEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImageEditFragment).findViewById(2131376509);
+      if (localView != null) {
+        localView.setVisibility(8);
+      }
+    }
+    if (AEEditorImageEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImageEditFragment).getVisibility() == 0) {
+      AEEditorImageEditFragment.a(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImageEditFragment);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      AEEditorImageEditFragment.b(this.jdField_a_of_type_DovComQqImAeeditorModuleEditAEEditorImageEditFragment);
+      bmbc.a().v();
+    }
   }
 }
 

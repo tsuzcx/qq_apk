@@ -1,6 +1,19 @@
-public abstract interface anzz
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARRecognition;
+
+public final class anzz
+  implements Parcelable.Creator<ARRecognition>
 {
-  public abstract void a();
+  public ARRecognition a(Parcel paramParcel)
+  {
+    return new ARRecognition(paramParcel);
+  }
+  
+  public ARRecognition[] a(int paramInt)
+  {
+    return new ARRecognition[paramInt];
+  }
 }
 
 

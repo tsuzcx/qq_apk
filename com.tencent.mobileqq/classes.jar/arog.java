@@ -1,38 +1,32 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
 
-class arog
-  extends ClickableSpan
+public class arog
 {
-  arog(arof paramarof, String paramString1, String paramString2) {}
-  
-  public void onClick(View paramView)
+  public static void a(View paramView, Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Arof.d.c)) {
-      bhrn.a(this.jdField_a_of_type_JavaLangString, BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramView.getContext());
-    }
-    for (;;)
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      arof.a("0X800AE67", this.b, "");
+      aroh.a(paramView, paramDrawable);
       return;
-      bhzu.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString);
     }
+    paramView.setBackgroundDrawable(paramDrawable);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public static void a(View paramView, Runnable paramRunnable)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#4D94FF"));
-    paramTextPaint.setUnderlineText(false);
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      aroh.a(paramView, paramRunnable);
+      return;
+    }
+    paramView.postDelayed(paramRunnable, 16L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arog
  * JD-Core Version:    0.7.0.1
  */

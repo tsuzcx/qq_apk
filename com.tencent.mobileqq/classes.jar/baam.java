@@ -1,17 +1,6 @@
-import android.graphics.drawable.Drawable;
-
-public class baam
+public abstract interface baam
 {
-  public long a;
-  public Drawable a;
-  public boolean a;
-  
-  public baam(long paramLong, boolean paramBoolean, Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

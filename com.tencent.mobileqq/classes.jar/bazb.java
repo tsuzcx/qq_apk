@@ -1,49 +1,68 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bazb
+  extends bazc
 {
-  public float a;
+  public static final String a;
   public int a;
-  public long a;
-  public Bitmap a;
-  public boolean a;
-  public float b;
-  public int b;
-  public long b;
-  public float c;
-  public float d = 1.0F;
+  public CharSequence a;
+  public CharSequence b;
+  public String b;
+  public CharSequence c;
   
-  public bazb()
+  static
   {
-    this.jdField_a_of_type_Int = 255;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    jdField_a_of_type_JavaLangString = "Q.uniteSearch." + bazb.class.getSimpleName();
   }
   
-  public void a(Canvas paramCanvas, Paint paramPaint, Matrix paramMatrix)
+  public bazb(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public bazb(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = paramInt;
+    switch (paramInt)
+    {
+    default: 
+      i = 1;
+    }
+    return i;
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.i = paramString.optString("leftImageURL");
+      this.jdField_a_of_type_Int = paramString.optInt("leftImageType", 1);
+      this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
+      this.jdField_b_of_type_JavaLangString = bbgk.a(paramString.optString("leftImageTagText"));
+      this.jdField_a_of_type_JavaLangCharSequence = bbgk.a(paramString.optString("firstLineText"));
+      this.jdField_b_of_type_JavaLangCharSequence = bbgk.a(paramString.optString("secondLineText"));
+      this.c = bbgk.a(paramString.optJSONArray("thirdLineText"));
       return;
     }
-    int i = (int)(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.d);
-    int j = (int)(this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.d);
-    Matrix localMatrix = paramMatrix;
-    if (paramMatrix == null) {
-      localMatrix = new Matrix();
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
-    paramPaint.setAlpha(this.jdField_a_of_type_Int);
-    localMatrix.reset();
-    localMatrix.setScale(this.d, this.d);
-    localMatrix.postRotate(this.c, i / 2, j / 2);
-    localMatrix.postTranslate(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localMatrix, paramPaint);
   }
   
-  public String toString()
+  public boolean b()
   {
-    return " mDx = " + this.jdField_a_of_type_Float + " mDy = " + this.jdField_b_of_type_Float + " mScale = " + this.d + " mRotation = " + this.c + " mDuration = " + this.jdField_b_of_type_Long + " mAlpha = " + this.jdField_a_of_type_Int;
+    return true;
   }
 }
 

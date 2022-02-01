@@ -1,18 +1,53 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
-public final class yvw
-  implements Parcelable.Creator<EditRecordVideoSource>
+public class yvw
+  implements WXShareHelper.WXShareListener
 {
-  public EditRecordVideoSource a(Parcel paramParcel)
-  {
-    return new EditRecordVideoSource(paramParcel);
-  }
+  public yvw(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public EditRecordVideoSource[] a(int paramInt)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    return new EditRecordVideoSource[paramInt];
+    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    String str1;
+    label53:
+    String str3;
+    int i;
+    if (this.a.jdField_c_of_type_Int == 2)
+    {
+      if (this.a.i != 2) {
+        break label159;
+      }
+      str1 = "qr_wechat";
+      str3 = this.a.jdField_c_of_type_JavaLangString;
+      i = this.a.a;
+      if (paramBaseResp.errCode != 0) {
+        break label165;
+      }
+    }
+    label159:
+    label165:
+    for (String str2 = "0";; str2 = "1")
+    {
+      bftc.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, String.valueOf(i), str2 });
+      switch (paramBaseResp.errCode)
+      {
+      case -1: 
+      default: 
+        yyi.a(1, 2131718380);
+        this.a.a(false);
+        return;
+        str1 = "qr_circle";
+        break label53;
+      }
+    }
+    yyi.a(2, 2131718398);
+    this.a.a(true);
+    return;
+    this.a.a(false);
   }
 }
 

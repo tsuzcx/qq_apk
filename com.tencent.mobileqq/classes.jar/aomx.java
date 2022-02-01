@@ -1,29 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.automator.step.RegisterProxy;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class aomx
-  extends Handler
+  implements axqz
 {
-  public aomx(RegisterProxy paramRegisterProxy, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aomx(ARScanEntryView paramARScanEntryView) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    RegisterProxy.a(this.a, false);
-  }
+  public void a(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aomx
  * JD-Core Version:    0.7.0.1
  */

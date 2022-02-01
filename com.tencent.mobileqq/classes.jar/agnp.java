@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class agnp
-  implements bdxo
+class agnp
+  implements DialogInterface.OnClickListener
 {
-  public agnp(FriendShipWaveView paramFriendShipWaveView) {}
+  agnp(agnj paramagnj, MessageForShortVideo paramMessageForShortVideo, long paramLong, boolean paramBoolean) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_Bdyl.a = 255;
-    this.a.jdField_a_of_type_Bdyl.a(this.a.jdField_a_of_type_Bdym);
+    this.jdField_a_of_type_Agnj.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    bbqf.jdField_a_of_type_Boolean = true;
   }
 }
 

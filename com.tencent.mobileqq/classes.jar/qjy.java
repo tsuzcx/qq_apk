@@ -1,21 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
-class qjy
-  implements View.OnTouchListener
+public class qjy
+  implements vgd
 {
-  qjy(qjt paramqjt, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
+  public void a(URL paramURL, int paramInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(URL paramURL, Throwable paramThrowable) {}
+  
+  public void a(URL paramURL, syk paramsyk)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.b.setDuplicateParentStateEnabled(true);
-    }
-    return false;
+    QLog.d("NativeReadInjoyImageView", 2, "setImageDrawable: url is " + paramURL);
+    paramsyk.a();
   }
 }
 

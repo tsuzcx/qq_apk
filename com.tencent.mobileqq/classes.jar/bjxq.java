@@ -1,184 +1,217 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import com.tencent.open.downloadnew.MyAppApi.YYBDownloadListener.1;
-import com.tencent.open.downloadnew.MyAppApi.YYBDownloadListener.2;
-import com.tencent.tmassistantsdk.internal.openSDK.TMAssistantBaseCallYYB;
-import java.util.Iterator;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 import java.util.List;
-import mqq.os.MqqHandler;
 
-public class bjxq
-  implements DownloadListener
+public class bjxq<T extends RecyclerView.Adapter>
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  protected bjxq(bjxd parambjxd) {}
+  private final T jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
+  private bjxu jdField_a_of_type_Bjxu;
+  private bjxv jdField_a_of_type_Bjxv;
+  private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final List<View> b = new ArrayList();
   
-  public void installSucceed(String paramString1, String paramString2)
+  public bjxq(T paramT)
   {
-    if ((paramString1.equals("1101070898")) && (paramString2.equals("com.tencent.android.qqdownloader")))
-    {
-      if ((this.a.jdField_a_of_type_Bjxr != null) && (this.a.jdField_a_of_type_Bjxr.isShowing())) {
-        this.a.jdField_a_of_type_Bjxr.dismiss();
-      }
-      bjwq.a().b(this.a.jdField_a_of_type_Bjxq);
-      this.a.jdField_a_of_type_Bjxq = null;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramT;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.registerAdapterDataObserver(new bjxr(this));
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public bjxq a(bjxu parambjxu)
+  {
+    this.jdField_a_of_type_Bjxu = parambjxu;
+    return this;
+  }
+  
+  protected void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if (this.jdField_a_of_type_Bjxv != null) {
+      this.jdField_a_of_type_Bjxv.a(paramViewHolder, paramInt);
     }
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  public void a(@NonNull View paramView)
   {
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
-    {
-      bjtx.c("MyAppApi", "onDownloadCancel");
-      if ((this.a.jdField_a_of_type_Bjxr != null) && (this.a.jdField_a_of_type_Bjxr.isShowing()) && (this.a.c)) {
-        this.a.jdField_a_of_type_Bjxr.a(paramDownloadInfo.f, paramDownloadInfo.a());
-      }
-      bjwq.a().b(this.a.jdField_a_of_type_Bjxq);
-      this.a.jdField_a_of_type_Bjxq = null;
-    }
+    this.jdField_a_of_type_JavaUtilList.add(paramView);
   }
   
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  public void a(bjxv parambjxv)
   {
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
-    {
-      bjtx.c("MyAppApi", "onDownloadError");
-      if ((paramDownloadInfo.f != 100) && (paramDownloadInfo.e != 4)) {
-        break label46;
-      }
-      onDownloadFinish(paramDownloadInfo);
-    }
-    label46:
-    while ((this.a.jdField_a_of_type_Bjxr == null) || (!this.a.jdField_a_of_type_Bjxr.isShowing()) || (!this.a.c)) {
-      return;
-    }
-    this.a.jdField_a_of_type_Bjxr.a(paramDownloadInfo.f, paramDownloadInfo.a());
+    this.jdField_a_of_type_Bjxv = parambjxv;
   }
   
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  public boolean a(int paramInt)
   {
-    label213:
-    long l2;
-    long l1;
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    return paramInt < this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public boolean a(View paramView)
+  {
+    return this.jdField_a_of_type_JavaUtilList.contains(paramView);
+  }
+  
+  public void b(@NonNull View paramView)
+  {
+    this.jdField_a_of_type_JavaUtilList.remove(paramView);
+  }
+  
+  public boolean b(int paramInt)
+  {
+    return paramInt >= getItemCount() - this.b.size();
+  }
+  
+  public void c(@NonNull View paramView)
+  {
+    this.b.add(paramView);
+  }
+  
+  public boolean c(int paramInt)
+  {
+    return (paramInt >= -1000) && (paramInt < this.jdField_a_of_type_JavaUtilList.size() - 1000);
+  }
+  
+  public boolean d(int paramInt)
+  {
+    return (paramInt >= -2000) && (paramInt < this.b.size() - 2000);
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount() + this.b.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+      return ((View)this.jdField_a_of_type_JavaUtilList.get(paramInt)).hashCode();
+    }
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount()) {
+      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemId(paramInt - this.jdField_a_of_type_JavaUtilList.size());
+    }
+    return ((View)this.b.get(paramInt - this.jdField_a_of_type_JavaUtilList.size() - this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount())).hashCode();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+      return paramInt - 1000;
+    }
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount()) {
+      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemViewType(paramInt - this.jdField_a_of_type_JavaUtilList.size());
+    }
+    return paramInt - 2000 - this.jdField_a_of_type_JavaUtilList.size() - this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
     {
-      if (!bjxd.a(this.a)) {
-        break label384;
+      if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
+        localObject1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
       }
-      UpgradeDetailWrapper localUpgradeDetailWrapper = bhdu.a().a();
-      if ((localUpgradeDetailWrapper != null) && (localUpgradeDetailWrapper.a != null))
+      localObject2 = localObject1;
+      if (localObject1 == null)
       {
-        bhrv.a(true);
-        bhrv.a(localUpgradeDetailWrapper.a.jdField_a_of_type_Int);
-        bhdm.b();
-        bjtx.c("NewUpgradeDialog", "pre download success state saved!");
+        localObject2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
+        paramViewHolder.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
       }
-      bjtx.c("MyAppApi", "onDownloadFinish");
-      if ((this.a.jdField_a_of_type_Bjxr != null) && (this.a.jdField_a_of_type_Bjxr.isShowing()) && (this.a.c)) {
-        this.a.jdField_a_of_type_Bjxr.a(100, 4);
-      }
-      bjtx.c("MyAppApi", "mInstallParam: " + this.a.jdField_a_of_type_Bjxo);
-      if (this.a.jdField_a_of_type_Bjxo != null)
-      {
-        if (!this.a.jdField_a_of_type_Bjxo.jdField_b_of_type_Boolean) {
-          break label411;
-        }
-        ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.YYBDownloadListener.1(this, paramDownloadInfo), 500L);
-        this.a.jdField_a_of_type_Boolean = true;
-        this.a.jdField_b_of_type_Boolean = false;
-        l2 = 0L;
-        l1 = l2;
-        switch (this.a.jdField_a_of_type_Bjxo.jdField_a_of_type_Int)
-        {
-        case 1: 
-        default: 
-          l1 = this.a.a(this.a.jdField_a_of_type_Bjxo.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_Bjxo.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_Bjxo.jdField_b_of_type_Boolean);
-        }
-      }
+      ((StaggeredGridLayoutManager.LayoutParams)localObject2).setFullSpan(true);
+      a(paramViewHolder, paramInt);
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Long = l1;
-      this.a.jdField_b_of_type_Long = System.currentTimeMillis();
-      bjwq.a().b(this.a.jdField_a_of_type_Bjxq);
-      this.a.jdField_a_of_type_Bjxq = null;
-      if (("ANDROID.QQ.YYBXZGAMECENTER".equals(paramDownloadInfo.h)) || ("ANDROID.QQ.NEWYYBXZGAMECENTER".equals(paramDownloadInfo.h))) {
-        acik.a(null, "765", "205011", paramDownloadInfo.c, "76501", "1", "156");
-      }
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
       return;
-      label384:
-      bdll.b(null, "dc00898", "", "", "0X8008F7E", "0X8008F7E", 0, 0, "", "", "", "");
-      break;
-      label411:
-      if ((bjva.a() != 1) || (!bjwj.c())) {
-        break label213;
-      }
-      ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.YYBDownloadListener.2(this, paramDownloadInfo), 500L);
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_b_of_type_Boolean = false;
-      break label213;
-      this.a.e = true;
-      if (this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null)
+      if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount())
       {
-        l1 = this.a.a().addDownloadTaskFromAuthorize(this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
+        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - this.jdField_a_of_type_JavaUtilList.size());
       }
       else
       {
-        bjtx.e("MyAppApi", "CopyAndInstallTask->onPostExecute mLastAuthorizeParam = null");
-        l1 = l2;
-        continue;
-        l1 = this.a.b(this.a.jdField_a_of_type_Bjxo.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_Bjxo.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_Bjxo.jdField_b_of_type_Boolean);
-        continue;
-        l1 = this.a.b(this.a.jdField_a_of_type_Bjxo.jdField_a_of_type_AndroidOsBundle);
-      }
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
-    {
-      bjtx.c("MyAppApi", "onDownloadPause");
-      if ((this.a.jdField_a_of_type_Bjxr != null) && (this.a.jdField_a_of_type_Bjxr.isShowing()) && (this.a.c)) {
-        this.a.jdField_a_of_type_Bjxr.a(paramDownloadInfo.f, paramDownloadInfo.a());
-      }
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        if (localDownloadInfo.c.equals("1101070898"))
-        {
-          bjtx.c("MyAppApi", "onDownloadUpdate STATE = " + localDownloadInfo.a());
-          if ((this.a.jdField_a_of_type_Bjxr != null) && (this.a.jdField_a_of_type_Bjxr.isShowing()) && (this.a.c)) {
-            this.a.jdField_a_of_type_Bjxr.a(localDownloadInfo.f, localDownloadInfo.a());
-          }
+        localObject1 = localObject2;
+        if (StaggeredGridLayoutManager.LayoutParams.class.isInstance(paramViewHolder.itemView.getLayoutParams())) {
+          localObject1 = (StaggeredGridLayoutManager.LayoutParams)paramViewHolder.itemView.getLayoutParams();
         }
+        localObject2 = localObject1;
+        if (localObject1 == null)
+        {
+          localObject2 = new StaggeredGridLayoutManager.LayoutParams(-1, -2);
+          paramViewHolder.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        }
+        ((StaggeredGridLayoutManager.LayoutParams)localObject2).setFullSpan(true);
       }
     }
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt, List<Object> paramList)
   {
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+      super.onBindViewHolder(paramViewHolder, paramInt, paramList);
+    }
+    for (;;)
     {
-      bjtx.c("MyAppApi", "onDownloadWait");
-      if ((this.a.jdField_a_of_type_Bjxr != null) && (this.a.jdField_a_of_type_Bjxr.isShowing()) && (this.a.c)) {
-        this.a.jdField_a_of_type_Bjxr.a(paramDownloadInfo.f, paramDownloadInfo.a());
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, paramList, getItemId(paramInt));
+      return;
+      if (paramInt < this.jdField_a_of_type_JavaUtilList.size() + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount()) {
+        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt - this.jdField_a_of_type_JavaUtilList.size(), paramList);
+      } else {
+        super.onBindViewHolder(paramViewHolder, paramInt, paramList);
       }
     }
   }
   
-  public void packageReplaced(String paramString1, String paramString2) {}
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (c(paramInt))
+    {
+      paramInt = Math.abs(paramInt + 1000);
+      return new bjxs(this, (View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    }
+    if (d(paramInt))
+    {
+      paramInt = Math.abs(paramInt + 2000);
+      return new bjxt(this, (View)this.b.get(paramInt));
+    }
+    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
+  }
   
-  public void uninstallSucceed(String paramString1, String paramString2) {}
+  public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
+  {
+    super.onViewAttachedToWindow(paramViewHolder);
+    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter != null) && ((paramViewHolder instanceof bjwy))) {
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onViewAttachedToWindow(paramViewHolder);
+    }
+  }
+  
+  public void onViewDetachedFromWindow(RecyclerView.ViewHolder paramViewHolder)
+  {
+    super.onViewDetachedFromWindow(paramViewHolder);
+    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter != null) && ((paramViewHolder instanceof bjwy))) {
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onViewDetachedFromWindow(paramViewHolder);
+    }
+  }
+  
+  public void onViewRecycled(RecyclerView.ViewHolder paramViewHolder)
+  {
+    super.onViewRecycled(paramViewHolder);
+    if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter != null) && ((paramViewHolder instanceof bjwy))) {
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onViewRecycled(paramViewHolder);
+    }
+  }
 }
 
 

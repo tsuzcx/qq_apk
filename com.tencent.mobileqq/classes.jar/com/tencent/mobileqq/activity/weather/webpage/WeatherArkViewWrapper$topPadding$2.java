@@ -18,7 +18,7 @@ final class WeatherArkViewWrapper$topPadding$2
   
   public final int invoke()
   {
-    int j = (int)this.this$0.getResources().getDimension(2131299011);
+    int j = (int)this.this$0.getResources().getDimension(2131299076);
     int i = j;
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       i = j + ImmersiveUtils.getStatusBarHeight(this.this$0.getContext());

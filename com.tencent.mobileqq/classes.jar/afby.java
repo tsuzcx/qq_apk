@@ -1,17 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.qphone.base.util.QLog;
 
 public class afby
-  implements DialogInterface.OnClickListener
+  implements MediaPlayer.OnCompletionListener
 {
-  public afby(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
+  public afby(MediaPlayerManager paramMediaPlayerManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
-    this.a.finish();
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.release();
+    }
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("[SilkPlayer]mFinishListener, onCompletion , mp == null ? ");
+      if (paramMediaPlayer != null) {
+        break label109;
+      }
+    }
+    label109:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.i("MediaPlayerManager", 2, bool);
+      bftt.a = null;
+      if ((MediaPlayerManager.a(this.a) != null) && ((MediaPlayerManager.a(this.a) instanceof MessageForPtt))) {
+        ((MessageForPtt)MediaPlayerManager.a(this.a)).playProgress = 0.0F;
+      }
+      if ((MediaPlayerManager.a(this.a) == null) || (!MediaPlayerManager.a(this.a))) {
+        break;
+      }
+      return;
+    }
+    MediaPlayerManager.a(this.a, null);
+    this.a.e();
   }
 }
 

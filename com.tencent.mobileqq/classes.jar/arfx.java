@@ -1,69 +1,60 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonResp;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class arfx
+  extends amrh
 {
-  private boolean a;
+  public arfx(AIOEmotionFragment paramAIOEmotionFragment) {}
   
-  public static arfx a(araj[] paramArrayOfaraj)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    arfx localarfx = new arfx();
-    StringBuilder localStringBuilder = new StringBuilder();
-    for (;;)
+    switch (paramInt)
     {
-      try
-      {
-        int j = paramArrayOfaraj.length;
-        int i = 0;
-        if (i < j)
-        {
-          String str = paramArrayOfaraj[i].a;
-          QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, new Object[] { "content=", str });
-          JSONObject localJSONObject = new JSONObject(str);
-          if (localJSONObject.has("enable_fake_msg"))
-          {
-            if (localJSONObject.optInt("enable_fake_msg", 0) == 1)
-            {
-              bool = true;
-              localarfx.a = bool;
-            }
-          }
-          else
-          {
-            localStringBuilder.append("config: ").append(str).append(",");
-            i += 1;
-          }
-        }
-        else
-        {
-          QLog.d("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, "parse, content:" + localStringBuilder.toString());
-          return localarfx;
-        }
-      }
-      catch (JSONException paramArrayOfaraj)
-      {
-        QLog.e("SDK_SHARE.OpenSdkFakeMsgProcessor", 1, "JSONException", paramArrayOfaraj);
-        return null;
-      }
-      boolean bool = false;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.a;
-  }
-  
-  public String toString()
-  {
-    new StringBuilder().append("isEnableFakeMsg:").append(this.a);
-    return super.toString();
+    EmoticonResp localEmoticonResp;
+    int i;
+    label134:
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      do
+      {
+        return;
+      } while (paramObject == null);
+      localEmoticonResp = (EmoticonResp)paramObject;
+      if (paramBoolean)
+      {
+        i = localEmoticonResp.delEpId;
+        if ((localEmoticonResp.keySeq == null) || (localEmoticonResp.keySeq.equals(""))) {
+          paramObject = amtj.a(2131699172);
+        }
+      }
+      for (;;)
+      {
+        if (!TextUtils.isEmpty(localEmoticonResp.emoticonId)) {
+          break label134;
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("AIOEmotionFragment", 2, "auth type emoticon id is null");
+        return;
+        paramObject = localEmoticonResp.keySeq;
+        continue;
+        i = -404;
+        paramObject = amtj.a(2131699173);
+      }
+      localQQAppInterface = this.a.a();
+    } while (localQQAppInterface == null);
+    ((avsq)localQQAppInterface.getManager(14)).a(String.valueOf(localEmoticonResp.epId), localEmoticonResp.emoticonId, new arfy(this, paramInt, localQQAppInterface, i, paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arfx
  * JD-Core Version:    0.7.0.1
  */

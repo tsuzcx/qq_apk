@@ -1,52 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class mqs
+final class mqs
+  implements bjoe
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public String g;
-  public String h;
-  public String i = "---";
+  mqs(mup parammup, int[] paramArrayOfInt, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt) {}
   
-  public mqs(String paramString1, String paramString2, VideoAppInterface paramVideoAppInterface)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_e_of_type_JavaLangString = "-9999";
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Boolean = TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramVideoAppInterface.getCurrentAccountUin());
-    this.jdField_a_of_type_Long = AudioHelper.b();
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_f_of_type_Int == 1) || (this.jdField_f_of_type_Int == 2) || ((this.jdField_a_of_type_Int == 0) && (this.jdField_f_of_type_Int == 0));
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Int != 0) && (this.jdField_f_of_type_Int == 0);
-  }
-  
-  public String toString()
-  {
-    return "mSeq(" + this.jdField_a_of_type_Long + "), mStartUin(" + this.jdField_a_of_type_JavaLangString + "), mPlayUin(" + this.jdField_b_of_type_JavaLangString + "), mStarter(" + this.jdField_b_of_type_Boolean + "), mRedbagId(" + this.c + "), SucAboutGame(" + this.jdField_a_of_type_Boolean + "), ExceptionType(" + this.jdField_f_of_type_Int + "), ErrorType(" + this.jdField_e_of_type_Int + "), ResultCode(" + this.jdField_e_of_type_JavaLangString + "), ResultState(" + this.jdField_f_of_type_JavaLangString + ")";
+    this.jdField_a_of_type_Mup.dismiss();
+    switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
+    {
+    default: 
+      paramInt = 0;
+    }
+    for (;;)
+    {
+      if (paramInt > 0) {
+        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A518", "0X800A518", 0, paramInt, "", "", "", "");
+      }
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1)
+      {
+        mqq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true);
+        paramInt = 3;
+      }
+      else
+      {
+        mqq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, this.jdField_a_of_type_Int, null);
+        paramInt = 1;
+        continue;
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1)
+        {
+          mqq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
+          paramInt = 4;
+        }
+        else
+        {
+          mqq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, this.jdField_a_of_type_Int, null);
+          paramInt = 2;
+        }
+      }
+    }
   }
 }
 

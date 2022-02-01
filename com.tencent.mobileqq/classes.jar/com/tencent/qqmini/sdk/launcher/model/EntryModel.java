@@ -19,12 +19,14 @@ public class EntryModel
   public int type;
   public long uin;
   
-  public EntryModel(int paramInt, long paramLong, String paramString, boolean paramBoolean)
+  public EntryModel(int paramInt, long paramLong1, String paramString1, boolean paramBoolean, long paramLong2, String paramString2)
   {
     this.type = paramInt;
-    this.uin = paramLong;
-    this.name = paramString;
+    this.uin = paramLong1;
+    this.name = paramString1;
     this.isAdmin = paramBoolean;
+    this.dwGroupClassExt = paramLong2;
+    this.reportData = paramString2;
     this.entryDataHash = UUID.randomUUID().toString();
   }
   
@@ -72,7 +74,7 @@ public class EntryModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.EntryModel
  * JD-Core Version:    0.7.0.1
  */

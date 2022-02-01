@@ -1,14 +1,8 @@
-import com.tencent.mobileqq.videoplatform.api.IReport;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.view.View;
 
-public class bapo
-  implements IReport
+public abstract interface bapo
 {
-  public void report(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3)
-  {
-    bdmc.a(BaseApplication.getContext()).a(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap, paramString3);
-  }
+  public abstract void a(int paramInt, View paramView);
 }
 
 

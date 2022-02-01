@@ -1,22 +1,16 @@
+import android.graphics.Bitmap;
+
 public class anni
 {
+  public int a;
   public long a;
+  public Bitmap a;
   public String a;
+  public boolean a;
   public long b;
-  
-  public anni(String paramString, long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
-    return localStringBuilder.toString();
-  }
+  public String b;
+  public String c;
+  public String d;
 }
 
 

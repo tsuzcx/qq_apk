@@ -1,62 +1,142 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.biz.qqstory.takevideo.rmw.RMWService;
+import com.tencent.biz.qqstory.takevideo.rmw.RMWServiceProxy.2;
+import java.util.Queue;
 
 public class yke
 {
-  public static int a;
-  public static int b = 2;
-  public Activity a;
-  public String a;
-  private List<zsv> a;
-  public yqx a;
-  public int c;
-  public int d;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Messenger jdField_a_of_type_AndroidOsMessenger;
+  private Queue<Message> jdField_a_of_type_JavaUtilQueue;
+  private ykg jdField_a_of_type_Ykg;
+  private yki jdField_a_of_type_Yki;
+  private int jdField_b_of_type_Int;
+  private final Messenger jdField_b_of_type_AndroidOsMessenger;
   
-  static
+  public static String a(int paramInt)
   {
-    jdField_a_of_type_Int = 1;
+    switch (paramInt)
+    {
+    default: 
+      return "UNKNOWN";
+    case 2: 
+      return "CONNECTED";
+    case 1: 
+      return "CONNECTING";
+    case 0: 
+      return "DISCONNECTED";
+    }
+    return "DISCONNECTING";
   }
   
-  public yke(Activity paramActivity, int paramInt1, String paramString, int paramInt2, yqx paramyqx)
+  private static void b()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.d = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt2;
-    this.jdField_a_of_type_Yqx = paramyqx;
-    if (paramInt2 == jdField_a_of_type_Int)
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      throw new IllegalStateException("should invoke at main thread");
+    }
+  }
+  
+  public void a()
+  {
+    Messenger localMessenger = this.jdField_a_of_type_AndroidOsMessenger;
+    if (localMessenger != null) {
+      for (;;)
+      {
+        Message localMessage = (Message)this.jdField_a_of_type_JavaUtilQueue.poll();
+        if (localMessage == null) {
+          break;
+        }
+        if (localMessage.replyTo == null) {
+          localMessage.replyTo = this.jdField_b_of_type_AndroidOsMessenger;
+        }
+        try
+        {
+          ykb.b("RMWServiceProxy", "client.flush : " + ykc.a(localMessage));
+          localMessenger.send(localMessage);
+        }
+        catch (RemoteException localRemoteException)
+        {
+          ykb.a("RMWServiceProxy", "sendMessageToService error", new Object[] { localRemoteException });
+        }
+      }
+    }
+    ykb.b("RMWServiceProxy", "can not flushMessageQueue, service state invalid : " + a(this.jdField_a_of_type_Int));
+  }
+  
+  protected void a(ComponentName paramComponentName)
+  {
+    this.jdField_a_of_type_AndroidOsMessenger = null;
+    this.jdField_a_of_type_Int = 0;
+    ykb.b("RMWServiceProxy", "onServiceDisconnected " + a(this.jdField_a_of_type_Int));
+    this.jdField_a_of_type_Yki.notifyObservers(new ykh(this.jdField_a_of_type_Int));
+    if (this.jdField_a_of_type_Ykg != null)
     {
+      this.jdField_a_of_type_Ykg.a();
+      this.jdField_a_of_type_Ykg = null;
+    }
+  }
+  
+  protected void a(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    try
+    {
+      paramIBinder.linkToDeath(new ykf(this, paramComponentName), 0);
+      this.jdField_a_of_type_AndroidOsMessenger = new Messenger(paramIBinder);
+      this.jdField_a_of_type_Int = 2;
+      ykb.b("RMWServiceProxy", "onServiceConnected " + a(this.jdField_a_of_type_Int));
       a();
+      this.jdField_a_of_type_Yki.notifyObservers(new ykh(this.jdField_a_of_type_Int));
       return;
     }
-    if (paramInt2 == b)
+    catch (RemoteException paramComponentName)
     {
-      b();
+      ykb.c("RMWServiceProxy", "linkToDeath failed : " + paramComponentName);
+      new Handler(Looper.getMainLooper()).postDelayed(new RMWServiceProxy.2(this), 1000L);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    ykb.a("RMWServiceProxy", "setup, current state = " + a(this.jdField_a_of_type_Int) + ", force = " + paramBoolean);
+    b();
+    if (this.jdField_a_of_type_AndroidContentContext == null)
+    {
+      ykb.c("RMWServiceProxy", "setup but without context, give up");
       return;
     }
-    throw new IllegalStateException("setup profile list error because unknown list type.");
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.add(new yks(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_JavaUtilList.add(new ykq(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_AndroidAppActivity, 12, this.jdField_a_of_type_Yqx, false));
-    this.jdField_a_of_type_JavaUtilList.add(new ykp(this.jdField_a_of_type_AndroidAppActivity, "FeedSegment", this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131698607), 2130846612, 2130846613));
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_JavaUtilList.add(new yks(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_JavaUtilList.add(new yku(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_JavaUtilList.add(new ykt(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public List<zsv> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    switch (this.jdField_a_of_type_Int)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
+    }
+    if (paramBoolean) {
+      this.jdField_b_of_type_Int = 5;
+    }
+    if (this.jdField_b_of_type_Int > 0)
+    {
+      this.jdField_b_of_type_Int -= 1;
+      ykb.c("RMWServiceProxy", "setup again because of remote died, retry count left = " + this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_Int = 1;
+      ykb.a("RMWServiceProxy", "connecting ... " + a(this.jdField_a_of_type_Int));
+      if (this.jdField_a_of_type_Ykg == null) {
+        this.jdField_a_of_type_Ykg = new ykg(this);
+      }
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, RMWService.class);
+      this.jdField_a_of_type_AndroidContentContext.bindService(localIntent, this.jdField_a_of_type_Ykg, 1);
+      return;
+    }
+    ykb.c("RMWServiceProxy", "give up setup again");
   }
 }
 

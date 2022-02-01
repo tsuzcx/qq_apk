@@ -1,63 +1,27 @@
-public final class ajwb
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1.1.1;
+import com.tencent.mobileqq.widget.AnimationView;
+
+public class ajwb
+  extends bhkz
 {
-  private static boolean m(int paramInt)
-  {
-    return paramInt == -3;
-  }
+  public ajwb(RedPacketKSongFragment.10.1 param1) {}
   
-  private static boolean n(int paramInt)
-  {
-    return paramInt == -2;
-  }
+  public void a() {}
   
-  private static boolean o(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    return paramInt == -1;
-  }
-  
-  private static boolean p(int paramInt)
-  {
-    return paramInt < 0;
-  }
-  
-  private static boolean q(int paramInt)
-  {
-    return paramInt == 0;
-  }
-  
-  private static boolean r(int paramInt)
-  {
-    return paramInt == 1;
-  }
-  
-  private static boolean s(int paramInt)
-  {
-    return paramInt == 2;
-  }
-  
-  private static boolean t(int paramInt)
-  {
-    return paramInt == 3;
-  }
-  
-  private static boolean u(int paramInt)
-  {
-    return paramInt == 4;
-  }
-  
-  private static boolean v(int paramInt)
-  {
-    return paramInt == 5;
-  }
-  
-  private static boolean w(int paramInt)
-  {
-    return paramInt > 2;
-  }
-  
-  private static boolean x(int paramInt)
-  {
-    return paramInt >= 1;
+    if (!this.a.a.a.c())
+    {
+      if (paramBoolean) {
+        this.a.a.a.a.post(new RedPacketKSongFragment.10.1.1.1(this));
+      }
+    }
+    else {
+      return;
+    }
+    this.a.a.a.g();
   }
 }
 

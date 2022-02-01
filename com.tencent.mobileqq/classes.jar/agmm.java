@@ -1,64 +1,50 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.Context;
+import android.view.View;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.BubbleImageView;
 import com.tencent.qphone.base.util.QLog;
 
-public class agmm
-  extends arac<agml>
+final class agmm
+  implements agmv
 {
-  @NonNull
-  public agml a(int paramInt)
-  {
-    QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "migrateOldOrDefaultContent, type = " + paramInt);
-    return new agml();
-  }
+  agmm(ETTextView paramETTextView1, ETTextView paramETTextView2, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, BubbleImageView paramBubbleImageView, int paramInt, String paramString, MessageRecord paramMessageRecord, Context paramContext) {}
   
-  @Nullable
-  public agml a(araj[] paramArrayOfaraj)
+  public void a(Context paramContext, QQAppInterface paramQQAppInterface, View paramView, MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopDragonKingAnimEntryConfig.config", 2, "onParsed");
+    if ((paramView instanceof ChatThumbView))
+    {
+      if (paramMessageRecord2 == null) {
+        break label154;
+      }
+      if ((!(paramMessageRecord2 instanceof MessageForText)) || (((MessageForText)paramMessageRecord2).msg == null)) {
+        break label84;
+      }
+      agmk.a(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, this.b, 1, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgText, paramMessageRecord2);
+      QLog.e("ReplyTextItemBuilder", 1, "returned text msg error!" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgText);
     }
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return agml.a(paramArrayOfaraj[0].a);
-    }
-    return null;
-  }
-  
-  public void a(agml paramagml) {}
-  
-  public Class<agml> clazz()
-  {
-    return agml.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TroopDragonKingAnimEntryConfig.config", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 609;
+    label84:
+    do
+    {
+      return;
+      if (((paramMessageRecord1 instanceof MessageForReplyText)) && (((MessageForReplyText)paramMessageRecord1).getSourceMessage() != null)) {
+        ((MessageForReplyText)paramMessageRecord1).setSourceMessageRecord(paramMessageRecord2);
+      }
+      agmk.a(paramMessageRecord2, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_AndroidContentContext, paramQQAppInterface, paramString);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.w("ReplyTextItemBuilder", 2, "processReplyMsg:source msg has been deleted.");
+      }
+    } while (this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView == null);
+    label154:
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setVisibility(0);
+    agmk.a(this.jdField_a_of_type_AndroidContentContext, paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null);
+    agmk.a(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, this.b, 1, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgText, null);
   }
 }
 

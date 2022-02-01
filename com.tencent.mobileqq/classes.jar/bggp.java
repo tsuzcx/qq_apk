@@ -1,19 +1,45 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
 
-class bggp
-  implements Comparator<bggs>
+public class bggp
 {
-  bggp(bggo parambggo) {}
+  private static final Comparator<bggn> jdField_a_of_type_JavaUtilComparator = new bggq();
+  private List<bggn> jdField_a_of_type_JavaUtilList;
   
-  public int a(bggs parambggs1, bggs parambggs2)
+  public List<bggn> a()
   {
-    if (parambggs1.b < parambggs2.b) {
-      return -1;
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return null;
     }
-    if (parambggs1.b > parambggs2.b) {
-      return 1;
+    return Collections.unmodifiableList(this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public void a(int[] paramArrayOfInt, int paramInt)
+  {
+    Object localObject = new bggo();
+    int i = 0;
+    while (i < paramArrayOfInt.length)
+    {
+      ((bggo)localObject).a(paramArrayOfInt[i]);
+      while (((bggo)localObject).jdField_a_of_type_JavaUtilList.size() > paramInt) {
+        ((bggo)localObject).a();
+      }
+      i += 1;
     }
-    return 0;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramArrayOfInt = ((bggo)localObject).jdField_a_of_type_JavaUtilList.iterator();
+    while (paramArrayOfInt.hasNext())
+    {
+      localObject = (bggn)paramArrayOfInt.next();
+      ((bggn)localObject).jdField_a_of_type_Long = ((int)((float)((bggn)localObject).jdField_a_of_type_Long / ((bggn)localObject).jdField_a_of_type_Int));
+      ((bggn)localObject).b = ((int)((float)((bggn)localObject).b / ((bggn)localObject).jdField_a_of_type_Int));
+      ((bggn)localObject).c = ((int)((float)((bggn)localObject).c / ((bggn)localObject).jdField_a_of_type_Int));
+      this.jdField_a_of_type_JavaUtilList.add(localObject);
+    }
+    Collections.sort(this.jdField_a_of_type_JavaUtilList, jdField_a_of_type_JavaUtilComparator);
   }
 }
 

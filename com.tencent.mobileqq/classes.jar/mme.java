@@ -1,99 +1,21 @@
-import android.content.Context;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.av.ui.VoiceChangeItemView1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.text.TextUtils;
 
-public class mme
-  extends BaseAdapter
+class mme
+  extends AccessibilityDelegateCompat
 {
-  public static String a;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private VoiceChangeItemView1 jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1;
-  mmj jdField_a_of_type_Mmj;
-  private mmh[] jdField_a_of_type_ArrayOfMmh;
-  private int jdField_b_of_type_Int;
-  private VoiceChangeItemView1 jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1;
-  private int c;
-  private int d;
+  mme(mmd parammmd, mmn parammmn) {}
   
-  static
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    jdField_a_of_type_JavaLangString = "VoiceChangeAdapter";
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public void a(mmh[] paramArrayOfmmh)
-  {
-    this.jdField_a_of_type_ArrayOfMmh = paramArrayOfmmh;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ArrayOfMmh == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_ArrayOfMmh.length;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (this.jdField_a_of_type_ArrayOfMmh == null) {
-      return null;
-    }
-    return this.jdField_a_of_type_ArrayOfMmh[paramInt];
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    boolean bool = true;
-    lbj.a(jdField_a_of_type_JavaLangString, "getView|position=" + paramInt + ", view=" + paramView);
-    if (paramView == null) {
-      paramView = new VoiceChangeItemView1(this.jdField_a_of_type_AndroidContentContext);
-    }
-    for (;;)
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (this.jdField_a_of_type_Mmn.a() != null)
     {
-      mmh localmmh = (mmh)getItem(paramInt);
-      VoiceChangeItemView1 localVoiceChangeItemView1;
-      if (localmmh != null)
-      {
-        if ((this.d == 0) && (paramInt == 1) && (this.jdField_b_of_type_Int == 0)) {
-          this.jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1 = this.jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1;
-        }
-        localVoiceChangeItemView1 = (VoiceChangeItemView1)paramView;
-        if (this.c != localmmh.jdField_a_of_type_Int) {
-          break label187;
-        }
-      }
-      for (;;)
-      {
-        localVoiceChangeItemView1.a(paramInt, localmmh, bool, this.jdField_a_of_type_Int, this.jdField_a_of_type_Mmj);
-        if (this.c == localmmh.jdField_a_of_type_Int)
-        {
-          if (paramInt != 0) {
-            this.jdField_a_of_type_ComTencentAvUiVoiceChangeItemView1 = localVoiceChangeItemView1;
-          }
-          this.d = paramInt;
-        }
-        this.jdField_b_of_type_ComTencentAvUiVoiceChangeItemView1 = ((VoiceChangeItemView1)paramView);
-        this.jdField_b_of_type_Int = paramInt;
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        label187:
-        bool = false;
-      }
+      paramView = TextUtils.emoticonToTextForTalkBack(this.jdField_a_of_type_Mmn.a().toString());
+      paramAccessibilityNodeInfoCompat.setText(paramView);
+      paramAccessibilityNodeInfoCompat.setContentDescription(paramView);
     }
   }
 }

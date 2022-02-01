@@ -1,56 +1,67 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.util.Log;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.Arrays;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qphone.base.util.QLog;
 
-class auye
-  extends bemu
+public class auye
+  extends RecyclerView.ItemDecoration
 {
-  auye(auxu paramauxu, boolean[] paramArrayOfBoolean, String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt, int paramInt) {}
+  int jdField_a_of_type_Int = ViewUtils.dip2px(1.0F);
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  auxv jdField_a_of_type_Auxv;
   
-  public void a(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
+  public auye(Context paramContext, auxv paramauxv, boolean paramBoolean)
   {
-    super.a(paramInt, paramBoolean, paramArrayOfObject);
-    auxu.e(this.jdField_a_of_type_Auxu);
-    if (!paramBoolean)
+    this.jdField_a_of_type_Auxv = paramauxv;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    if (paramBoolean)
     {
-      Log.d("onSentMessage", "onSentMessage() called with: type = [" + paramInt + "], result = [" + paramArrayOfObject[1] + "], index: " + 0 + " isExpiredMessage: " + Arrays.toString(auxu.a(this.jdField_a_of_type_Auxu)) + " padId: " + Arrays.toString((Object[])paramArrayOfObject[0]));
-      if (((Integer)paramArrayOfObject[1]).intValue() == 505)
-      {
-        paramArrayOfObject = (String[])paramArrayOfObject[0];
-        paramInt = 0;
-        while (paramInt < this.jdField_a_of_type_ArrayOfBoolean.length)
-        {
-          if ((this.jdField_a_of_type_ArrayOfJavaLangString[paramInt].equals(paramArrayOfObject[0])) && (this.b[paramInt].equals(paramArrayOfObject[1])) && (this.jdField_a_of_type_ArrayOfInt[paramInt] == Integer.parseInt(paramArrayOfObject[2]))) {
-            auxu.a(this.jdField_a_of_type_Auxu)[paramInt] = 1;
-          }
-          paramInt += 1;
-        }
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getResources().getColor(2131165762));
+      return;
+    }
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getResources().getColor(2131165761));
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    if (this.jdField_a_of_type_Auxv == null) {
+      QLog.i("leba_sort_LebaTableMgrFragment", 1, "MyItemDecoration getItemOffsets mAdapter == null");
+    }
+    while (paramRecyclerView.getChildAdapterPosition(paramView) < 0) {
+      return;
+    }
+    paramRect.bottom = this.jdField_a_of_type_Int;
+    paramRect.right = this.jdField_a_of_type_Int;
+  }
+  
+  public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    super.onDraw(paramCanvas, paramRecyclerView, paramState);
+    int j = paramRecyclerView.getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      paramState = paramRecyclerView.getChildAt(i);
+      Object localObject = paramState.getTag(2131369811);
+      if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localObject).intValue() == 2)) {
+        paramCanvas.drawRect(paramState.getLeft(), paramState.getTop(), paramState.getRight(), paramState.getBottom(), this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-      QQToast.a(this.jdField_a_of_type_Auxu.jdField_a_of_type_AndroidAppActivity, "发送失败，请稍候重试。", 0).a();
-      this.jdField_a_of_type_Auxu.d = 0;
+      i += 1;
     }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Auxu.jdField_a_of_type_AndroidAppActivity.setResult(15);
-      paramArrayOfObject = this.jdField_a_of_type_Auxu;
-      paramInt = paramArrayOfObject.d + 1;
-      paramArrayOfObject.d = paramInt;
-    } while (paramInt != this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Auxu.jdField_a_of_type_AndroidOsBundle.putBooleanArray("forward_write_together_is_expired", auxu.a(this.jdField_a_of_type_Auxu));
-    if (this.jdField_a_of_type_Auxu.g())
-    {
-      auxu.a(this.jdField_a_of_type_Auxu);
-      return;
-    }
-    this.jdField_a_of_type_Auxu.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auye
  * JD-Core Version:    0.7.0.1
  */

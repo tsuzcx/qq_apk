@@ -1,15 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.widget.DynamicGridView;
+import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-public class blkp
-  implements ValueAnimator.AnimatorUpdateListener
+class blkp
+  implements CosFunHelper.CountDownListener
 {
-  public blkp(DynamicGridView paramDynamicGridView) {}
+  blkp(bljy parambljy) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCountDownEnd()
   {
-    this.a.invalidate();
+    this.a.K();
+  }
+  
+  public void onCountDownStart(VideoMaterial paramVideoMaterial)
+  {
+    bljy.a(this.a, paramVideoMaterial.getTipsDrawable());
   }
 }
 

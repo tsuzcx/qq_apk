@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aduq;
-import adur;
+import acrj;
+import acrk;
+import amtj;
 import android.content.Intent;
-import anzj;
-import auxu;
-import bhlq;
-import bhpc;
+import atky;
+import bfur;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkFullScreenAppActivity$8$1$1
@@ -20,13 +20,13 @@ public class ArkFullScreenAppActivity$8$1$1
     {
       if (this.jdField_a_of_type_AndroidContentIntent != null)
       {
-        auxu.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity$8$1.a.a, this.jdField_a_of_type_AndroidContentIntent, 100);
+        atky.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity$8$1.a.a, this.jdField_a_of_type_AndroidContentIntent, 100);
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.i("ArkFullScreenAppActivity", 2, "showActionSheet share: intent == null");
       }
-      bhlq.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity$8$1.a.a, 230, anzj.a(2131699599), anzj.a(2131699595), new adur(this), null).show();
+      bfur.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity$8$1.a.a, 230, amtj.a(2131699834), amtj.a(2131699830), new acrk(this), null).show();
       return;
     }
     catch (Exception localException)

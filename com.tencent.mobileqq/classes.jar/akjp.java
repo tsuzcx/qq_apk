@@ -1,16 +1,31 @@
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 class akjp
   implements View.OnClickListener
 {
-  akjp(akjn paramakjn) {}
+  private akjo jdField_a_of_type_Akjo;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  
+  akjp(akjo paramakjo, MqqHandler paramMqqHandler)
+  {
+    this.jdField_a_of_type_Akjo = paramakjo;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+  }
   
   public void onClick(View paramView)
   {
-    this.a.a.setText("");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_Akjo.jdField_a_of_type_JavaLangString + " on close");
+    }
+    Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(201);
+    localMessage.obj = this.jdField_a_of_type_Akjo;
+    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+    this.jdField_a_of_type_Akjo.jdField_a_of_type_Akjm.onClose();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

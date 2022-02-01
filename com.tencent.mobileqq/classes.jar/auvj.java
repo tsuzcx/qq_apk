@@ -1,34 +1,34 @@
 import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class auvj
-  implements BusinessObserver
+public final class auvj
+  implements EIPCResultCallback
 {
-  public void a() {}
+  public auvj(JSONObject paramJSONObject, tiu paramtiu, String paramString) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void b() {}
-  
-  public void b(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 967: 
-      b(paramBoolean, paramBundle);
-      return;
-    case 968: 
-      a(paramBoolean, paramBundle);
-      return;
-    case 969: 
-      b();
-      return;
+    if ((paramEIPCResult != null) && (paramEIPCResult.data != null)) {}
+    for (boolean bool = paramEIPCResult.data.getBoolean("action_update_biu_and_comment_switch");; bool = false) {
+      try
+      {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("isGrayscaleUser", bool);
+        QLog.e("UiApiPlugin", 1, "webGetCommentAladdinConfig is " + bool);
+        this.jdField_a_of_type_Tiu.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
+        return;
+      }
+      catch (JSONException paramEIPCResult)
+      {
+        for (;;)
+        {
+          QLog.e("UiApiPlugin", 1, "webGetCommentAladdinConfig error " + paramEIPCResult.getMessage());
+        }
+      }
     }
-    a();
   }
 }
 

@@ -1,13 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
+import com.tencent.mobileqq.troop.widget.TroopMoreDetailView.UpdateTroopMembersFaceTask;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bfhg
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public bfhg(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public bfhg(TroopMoreDetailView.UpdateTroopMembersFaceTask paramUpdateTroopMembersFaceTask, TroopMoreDetailView paramTroopMoreDetailView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView.c();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

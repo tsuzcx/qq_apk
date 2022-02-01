@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ocr;
 
-import ayyf;
-import azbu;
+import axln;
+import axpc;
 
 public class OCRResultActivity$10$1
   implements Runnable
 {
-  public OCRResultActivity$10$1(ayyf paramayyf) {}
+  public OCRResultActivity$10$1(axln paramaxln) {}
   
   public void run()
   {

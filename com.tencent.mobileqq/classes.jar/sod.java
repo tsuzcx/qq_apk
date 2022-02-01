@@ -1,21 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
-import java.util.Map;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class sod
-  implements ppq
+  implements bcrw
 {
-  public sod(FastWebActivity paramFastWebActivity) {}
+  public sod(ReadInJoySkinSlideDownView paramReadInJoySkinSlideDownView) {}
   
-  public void a(int paramInt, Map<Long, qwb> paramMap)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (FastWebActivity.a(this.a) != null)
-    {
-      FastWebActivity.a(this.a).a(paramMap);
-      if (FastWebActivity.a(this.a) != null) {
-        FastWebActivity.a(this.a).notifyDataSetChanged();
-      }
-    }
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+    localLayoutParams.width = paramInt1;
+    localLayoutParams.height = this.a.getHeight();
+    this.a.a.setLayoutParams(localLayoutParams);
   }
 }
 

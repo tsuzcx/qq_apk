@@ -1,9 +1,21 @@
-import android.view.View;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.EmptyPackagePage;
 
-public abstract interface ztd
+public class ztd
 {
-  public abstract boolean a(InnerListView paramInnerListView, View paramView, int paramInt);
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  
+  public ztd(Oidb_0xcd1.EmptyPackagePage paramEmptyPackagePage)
+  {
+    this.jdField_a_of_type_Int = paramEmptyPackagePage.enable.get();
+    this.jdField_a_of_type_JavaLangString = paramEmptyPackagePage.wording.get();
+    this.b = paramEmptyPackagePage.jump_wording.get();
+    this.c = paramEmptyPackagePage.jump_url.get();
+  }
 }
 
 

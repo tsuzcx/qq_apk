@@ -1,51 +1,78 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.manager.TicketManager;
 
 public class apyl
-  implements apyt
+  extends aptq<apyk>
 {
-  private void a(String paramString, apyo paramapyo)
+  @NonNull
+  public apyk a(int paramInt)
   {
-    QQAppInterface localQQAppInterface = apxv.a();
-    TicketManager localTicketManager = (TicketManager)localQQAppInterface.getManager(2);
-    String str = localTicketManager.getPskey(localQQAppInterface.getCurrentAccountUin(), paramString);
-    if (!TextUtils.isEmpty(str))
-    {
-      if (paramapyo != null) {
-        paramapyo.a(str);
-      }
-      return;
-    }
-    str = localQQAppInterface.getCurrentAccountUin();
-    paramapyo = new apyn(this, localTicketManager, localQQAppInterface, paramString, paramapyo);
-    localTicketManager.getPskey(str, 16L, new String[] { paramString }, paramapyo);
+    return new apyk();
   }
   
-  public void a(Bundle paramBundle, apyv paramapyv)
+  @Nullable
+  public apyk a(aptx[] paramArrayOfaptx)
   {
-    if (apxv.a() == null)
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
     {
-      QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "onCall, app interface is null");
-      paramapyv.a(EIPCResult.createResult(-102, new Bundle()));
-      return;
+      apyk localapyk = apyk.a(paramArrayOfaptx[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationEasterEggConfProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
+      }
+      return localapyk;
     }
-    paramBundle = paramBundle.getString("domain", "");
-    if (TextUtils.isEmpty(paramBundle))
-    {
-      QLog.i("ArkApp.GetPSKeyAsyncHandler", 1, "onCall, domain is empty");
-      paramapyv.a(EIPCResult.createResult(0, new Bundle()));
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, "onParsed is null");
     }
-    a(paramBundle, new apym(this, paramapyv));
+    return null;
+  }
+  
+  public void a(apyk paramapyk)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, "onUpdate " + paramapyk.toString());
+    }
+  }
+  
+  public Class<apyk> clazz()
+  {
+    return apyk.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationEasterEggConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public int type()
+  {
+    return 575;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apyl
  * JD-Core Version:    0.7.0.1
  */

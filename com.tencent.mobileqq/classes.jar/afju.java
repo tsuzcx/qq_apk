@@ -1,15 +1,21 @@
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 
 public class afju
   implements DialogInterface.OnClickListener
 {
-  public afju(RegisterActivity paramRegisterActivity) {}
+  public afju(TroopChatPie paramTroopChatPie) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent(this.a.mContext, TroopLowCreditLevelNotifyActivity.class);
+    paramDialogInterface.putExtra("troopUin", this.a.sessionInfo.curFriendUin);
+    this.a.mContext.startActivity(paramDialogInterface);
   }
 }
 

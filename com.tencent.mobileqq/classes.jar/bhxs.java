@@ -1,33 +1,238 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.style.ReplacementSpan;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.open.appcommon.now.download.js.DownloadCallbackWebImpl.1;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhxs
-  extends ReplacementSpan
+  implements bhxr
 {
-  public int a;
-  public int b;
+  protected static bhxs a;
+  protected Handler a;
   
-  public bhxs(int paramInt1, int paramInt2)
+  protected bhxs()
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
-  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  public static bhxs a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorSpan", 2, "onDraw");
+    if (jdField_a_of_type_Bhxs == null) {
+      jdField_a_of_type_Bhxs = new bhxs();
+    }
+    return jdField_a_of_type_Bhxs;
+  }
+  
+  protected String a(int paramInt)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("nettype", paramInt);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        bhzm.c("DownloadCallbackWebImpl", "getCallBackJsonObject >>> ", localJSONException);
+      }
     }
   }
   
-  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
+  protected String a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, String paramString3, int paramInt4, int paramInt5)
   {
-    return 0;
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("packagename", paramString2);
+      localJSONObject.put("appid", paramString1);
+      localJSONObject.put("state", paramInt1);
+      localJSONObject.put("pro", paramInt2);
+      localJSONObject.put("ismyapp", paramInt3);
+      localJSONObject.put("errorMsg", paramString3);
+      localJSONObject.put("errorCode", paramInt4);
+      localJSONObject.put("writecodestate", paramInt5);
+      return localJSONObject.toString();
+    }
+    catch (JSONException paramString1)
+    {
+      for (;;)
+      {
+        bhzm.c("DownloadCallbackWebImpl", "getCallBackJsonObject >>> ", paramString1);
+      }
+    }
+  }
+  
+  protected String a(String paramString1, int paramInt, String paramString2)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("packagename", paramString2);
+      localJSONObject.put("appid", paramString1);
+      localJSONObject.put("state", paramInt);
+      localJSONObject.put("pro", 0);
+      return localJSONObject.toString();
+    }
+    catch (JSONException paramString1)
+    {
+      for (;;)
+      {
+        bhzm.c("DownloadCallbackWebImpl", "getCallBackJsonObject >>> ", paramString1);
+      }
+    }
+  }
+  
+  public JSONObject a(DownloadInfo paramDownloadInfo, int paramInt)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("appid", paramDownloadInfo.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("state", paramDownloadInfo.a());
+      localJSONObject.put("pro", paramDownloadInfo.f);
+      localJSONObject.put("packagename", paramDownloadInfo.e);
+      localJSONObject.put("ismyapp", paramDownloadInfo.jdField_c_of_type_Int);
+      localJSONObject.put("download_from", paramDownloadInfo.jdField_h_of_type_Int);
+      localJSONObject.put("realDownloadType", paramDownloadInfo.jdField_d_of_type_Int);
+      localJSONObject.put("via", paramDownloadInfo.jdField_h_of_type_JavaLangString);
+      localJSONObject.put("writecodestate", paramDownloadInfo.j);
+      localJSONObject.put("extraInfo", paramDownloadInfo.o);
+      localJSONObject.put("isAutoInstallBySDK", paramDownloadInfo.jdField_d_of_type_Boolean);
+      localJSONObject.put("queryResult", paramInt);
+      return localJSONObject;
+    }
+    catch (JSONException paramDownloadInfo)
+    {
+      bhzm.c("DownloadCallbackWebImpl", "onNetworkConnect " + paramDownloadInfo.getMessage(), paramDownloadInfo);
+    }
+    return localJSONObject;
+  }
+  
+  public void a(int paramInt)
+  {
+    a(a(paramInt));
+  }
+  
+  public void a(DownloadInfo paramDownloadInfo, int paramInt)
+  {
+    if (paramDownloadInfo != null) {
+      a(a(paramDownloadInfo, paramInt).toString());
+    }
+  }
+  
+  protected void a(String paramString)
+  {
+    bhxw localbhxw = bhxw.a();
+    for (;;)
+    {
+      int i;
+      try
+      {
+        int j = localbhxw.a().size();
+        i = 0;
+        if (i < j)
+        {
+          Object localObject = (biao)localbhxw.a().get(i);
+          WebView localWebView = ((biao)localObject).getWebview();
+          if (localWebView != null) {
+            if (TextUtils.isEmpty(((biao)localObject).getJsCallbackMethod()))
+            {
+              localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('loadProcess'," + paramString + ");}void(0);";
+              bhzm.a("DownloadCallbackWebImpl", " commonJsCallBack >>> " + (String)localObject);
+              this.jdField_a_of_type_AndroidOsHandler.post(new DownloadCallbackWebImpl.1(this, localWebView, (String)localObject));
+            }
+            else
+            {
+              localObject = "javascript:" + ((biao)localObject).getJsCallbackMethod() + "(" + paramString + ")";
+              continue;
+            }
+          }
+        }
+        else
+        {
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        bhzm.c("DownloadCallbackWebImpl", "doJsCallback >>> ", paramString);
+      }
+      i += 1;
+    }
+  }
+  
+  public void a(List<DownloadInfo> paramList) {}
+  
+  public void installSucceed(String paramString1, String paramString2)
+  {
+    a(a(paramString1, 6, paramString2));
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo != null) {
+      a(a(paramDownloadInfo, -1).toString());
+    }
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    if (paramDownloadInfo != null) {
+      a(a(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramInt2, paramDownloadInfo.f, paramDownloadInfo.e, paramDownloadInfo.jdField_c_of_type_Int, paramString, paramInt1, paramDownloadInfo.j));
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo != null) {
+      a(a(paramDownloadInfo, -1).toString());
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo != null) {
+      a(a(paramDownloadInfo, -1).toString());
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    if (paramList != null)
+    {
+      JSONArray localJSONArray = new JSONArray();
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        localJSONArray.put(a((DownloadInfo)paramList.next(), -1));
+      }
+      a(localJSONArray.toString());
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo != null) {
+      a(a(paramDownloadInfo, -1).toString());
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    a(a(paramString1, 13, paramString2));
+  }
+  
+  public void uninstallSucceed(String paramString1, String paramString2)
+  {
+    a(a(paramString1, 9, paramString2));
   }
 }
 

@@ -1,23 +1,9 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForStructing;
 
-public class ahos
-  extends ahoq
+public abstract interface ahos
 {
-  public ProgressBar a;
-  public RelativeLayout a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public int e;
-  
-  public ahos(ahor paramahor)
-  {
-    super(paramahor);
-  }
+  public abstract void a(MessageForStructing paramMessageForStructing, aezf paramaezf, View paramView, boolean paramBoolean);
 }
 
 

@@ -1,32 +1,35 @@
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.qqconnect.wtlogin.Login;
 
-final class bhta
-  extends ClickableSpan
+public class bhta
+  implements bhtn
 {
-  bhta(Context paramContext, aydg paramaydg) {}
+  public bhta(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_Aydg.b());
-    if (QLog.isColorLevel()) {
-      QLog.i("TopicHelper", 2, "mVideoData.topicInfo.getTopicJumpUrl() :" + this.jdField_a_of_type_Aydg.b());
-    }
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    Intent localIntent = new Intent(this.a.getActivity(), Login.class);
+    localIntent.putExtra("key_req_src", 1);
+    localIntent.putExtra("is_first_login", true);
+    localIntent.putExtra("appid", OpenAuthorityFragment.a(this.a));
+    OpenAuthorityFragment.a(this.a, null);
+    this.a.getActivity().startActivityForResult(localIntent, 1);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void a(String paramString, boolean paramBoolean)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#00aced"));
-    paramTextPaint.setUnderlineText(false);
+    this.a.a(paramString, paramBoolean);
+  }
+  
+  public void b()
+  {
+    this.a.c(OpenAuthorityFragment.b(this.a));
+    if (OpenAuthorityFragment.a(this.a) != null) {
+      OpenAuthorityFragment.a(this.a).b();
+    }
   }
 }
 

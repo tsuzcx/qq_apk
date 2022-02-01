@@ -1,15 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class mkt
-  implements DialogInterface.OnClickListener
+  implements mig
 {
-  mkt(mks parammks) {}
+  mkt(mks parammks, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(this.a.jdField_a_of_type_Long, true);
+    if (paramBoolean)
+    {
+      if (mks.a(this.jdField_a_of_type_Mks)) {
+        return;
+      }
+      if (this.jdField_a_of_type_Mks.a.getIntent().getBooleanExtra("isDoubleVideoMeeting", false)) {
+        this.jdField_a_of_type_Mks.a("0X80051FE");
+      }
+      for (;;)
+      {
+        QLog.w("VideoInviteUILock", 1, "SlideAcceptListener, seq[" + this.jdField_a_of_type_Long + "]");
+        this.jdField_a_of_type_Mks.a.d = true;
+        this.jdField_a_of_type_Mks.a.c(this.jdField_a_of_type_Long);
+        return;
+        if (this.jdField_a_of_type_Mks.a.b) {
+          this.jdField_a_of_type_Mks.a("0X8004201");
+        } else {
+          this.jdField_a_of_type_Mks.a("0X8004205");
+        }
+      }
+    }
+    if (this.jdField_a_of_type_Mks.a.b)
+    {
+      this.jdField_a_of_type_Mks.a("0X800439E");
+      return;
+    }
+    this.jdField_a_of_type_Mks.a("0X80043FD");
   }
 }
 

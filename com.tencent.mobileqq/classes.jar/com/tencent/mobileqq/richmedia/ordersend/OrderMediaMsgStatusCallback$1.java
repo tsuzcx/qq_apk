@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.richmedia.ordersend;
 
-import agif;
+import afbb;
 import android.view.View;
-import bbnz;
-import bete;
+import bahu;
+import com.tencent.mobileqq.transfile.FileMsg;
 
 public class OrderMediaMsgStatusCallback$1
   implements Runnable
 {
-  public OrderMediaMsgStatusCallback$1(bbnz parambbnz, agif paramagif, View paramView, bete parambete) {}
+  public OrderMediaMsgStatusCallback$1(bahu parambahu, afbb paramafbb, View paramView, FileMsg paramFileMsg) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Agif.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Bete, this.jdField_a_of_type_Bete.d, this.jdField_a_of_type_Bete.g);
+    this.jdField_a_of_type_Afbb.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg, this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.status, this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.errorCode);
   }
 }
 

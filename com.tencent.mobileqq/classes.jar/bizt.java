@@ -1,30 +1,54 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.widget.PagingScrollView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bizt
-  implements View.OnTouchListener
+class bizt
+  extends BroadcastReceiver
 {
-  public bizt(PagingScrollView paramPagingScrollView) {}
+  private bizt(bizr parambizr) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.mIsOnSpecialView)
+    if (bizr.a(this.a).getContext() == null) {
+      return;
+    }
+    paramContext = new JSONObject();
+    for (;;)
     {
-      int i = paramMotionEvent.getAction();
-      if ((i == 1) || (i == 3))
+      try
       {
-        this.a.mIsOnSpecialView = false;
-        this.a.getParent().requestDisallowInterceptTouchEvent(false);
-        if (QLog.isDevelopLevel()) {
-          QLog.i("PageScrollView", 4, "C.TE ACT_UP or CANCEL");
+        String str1 = paramIntent.getStringExtra("file_path");
+        String str2 = paramIntent.getStringExtra("video_thumb_path");
+        long l = paramIntent.getLongExtra("video_duration", 0L);
+        boolean bool = paramIntent.getBooleanExtra("is_video", false);
+        paramContext.put("filePath", ((IMiniAppFileManager)bizr.b(this.a).getManager(IMiniAppFileManager.class)).getWxFilePath(str1));
+        if (!bool) {
+          continue;
+        }
+        i = 1;
+        paramContext.put("isVideo", i);
+        if (bool)
+        {
+          paramContext.put("videoDuration", (l + 999L) / 1000L);
+          paramContext.put("cover", ((IMiniAppFileManager)bizr.c(this.a).getManager(IMiniAppFileManager.class)).getWxFilePath(str2));
         }
       }
+      catch (JSONException paramIntent)
+      {
+        int i;
+        paramIntent.printStackTrace();
+        continue;
+      }
+      QLog.e("LaunchCameraPlugin", 1, "data: " + paramContext);
+      bizr.a(this.a, "custom_event_checkin_onCameraInfoEvent", paramContext.toString());
+      return;
+      i = 0;
     }
-    return false;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import agej;
+import amtj;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -8,13 +8,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
-import anzj;
-import bghf;
-import blqm;
+import beqn;
+import bjun;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.GridView;
@@ -23,36 +23,37 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ozs;
-import ppu;
-import qjg;
-import qjp;
-import qno;
-import qnz;
-import qoa;
-import qob;
-import qoc;
-import qod;
-import qoe;
-import qxu;
-import qyg;
-import qyh;
-import qyl;
-import qym;
-import qyp;
-import sel;
-import smv;
+import pay;
+import pgw;
+import pvc;
+import qpj;
+import qps;
+import qtr;
+import quc;
+import qud;
+import que;
+import quf;
+import qug;
+import quh;
+import res;
+import rfe;
+import rff;
+import rfj;
+import rfk;
+import rfn;
+import slt;
+import sqw;
 
 public class ComponentContentGridImage
   extends GridView
-  implements qjg
+  implements qpj
 {
   public int a;
   public Object a;
-  private qno jdField_a_of_type_Qno;
-  private qoa jdField_a_of_type_Qoa;
-  private qod jdField_a_of_type_Qod;
-  private qoe jdField_a_of_type_Qoe;
+  private qtr jdField_a_of_type_Qtr;
+  private qud jdField_a_of_type_Qud;
+  private qug jdField_a_of_type_Qug;
+  private quh jdField_a_of_type_Quh;
   private boolean jdField_a_of_type_Boolean;
   public int b;
   private int c;
@@ -65,8 +66,8 @@ public class ComponentContentGridImage
   public ComponentContentGridImage(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = agej.a(12.0F, getResources());
-    this.jdField_b_of_type_Int = agej.a(12.0F, getResources());
+    this.jdField_a_of_type_Int = AIOUtils.dp2px(12.0F, getResources());
+    this.jdField_b_of_type_Int = AIOUtils.dp2px(12.0F, getResources());
     a(paramContext);
   }
   
@@ -109,14 +110,14 @@ public class ComponentContentGridImage
     return localArrayList;
   }
   
-  public static qob a(ArticleInfo paramArticleInfo)
+  public static que a(ArticleInfo paramArticleInfo)
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    paramArticleInfo = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyl.jdField_a_of_type_JavaUtilArrayList.iterator();
-    qym localqym;
+    paramArticleInfo = paramArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfj.jdField_a_of_type_JavaUtilArrayList.iterator();
+    rfk localrfk;
     if (paramArticleInfo.hasNext()) {
-      localqym = (qym)paramArticleInfo.next();
+      localrfk = (rfk)paramArticleInfo.next();
     }
     for (;;)
     {
@@ -124,17 +125,17 @@ public class ComponentContentGridImage
       {
         int i = localArrayList1.size();
         if (i >= 9) {
-          return new qoc().a(localArrayList1).b(localArrayList2).a();
+          return new quf().a(localArrayList1).b(localArrayList2).a();
         }
-        i = localqym.jdField_a_of_type_Int;
-        int j = localqym.jdField_b_of_type_Int;
-        URL localURL = new URL(localqym.jdField_c_of_type_JavaLangString);
-        if (localqym.jdField_c_of_type_Int != 1) {
+        i = localrfk.jdField_a_of_type_Int;
+        int j = localrfk.jdField_b_of_type_Int;
+        URL localURL = new URL(localrfk.jdField_c_of_type_JavaLangString);
+        if (localrfk.jdField_c_of_type_Int != 1) {
           break label207;
         }
         bool = true;
-        localArrayList1.add(new smv(i, j, localURL, bool));
-        localArrayList2.add(new URL(localqym.jdField_b_of_type_JavaLangString));
+        localArrayList1.add(new sqw(i, j, localURL, bool));
+        localArrayList2.add(new URL(localrfk.jdField_b_of_type_JavaLangString));
       }
       catch (MalformedURLException localMalformedURLException) {}
       if (!QLog.isColorLevel()) {
@@ -147,9 +148,9 @@ public class ComponentContentGridImage
     }
   }
   
-  public static qob a(Object paramObject, int paramInt)
+  public static que a(Object paramObject, int paramInt)
   {
-    qoc localqoc = new qoc();
+    quf localquf = new quf();
     ArticleInfo localArticleInfo;
     ArrayList localArrayList1;
     ArrayList localArrayList2;
@@ -159,14 +160,14 @@ public class ComponentContentGridImage
     boolean bool1;
     long l1;
     int j;
-    if ((paramObject instanceof ppu))
+    if ((paramObject instanceof pvc))
     {
-      localArticleInfo = ((ppu)paramObject).a();
+      localArticleInfo = ((pvc)paramObject).a();
       localArrayList1 = new ArrayList();
       localArrayList2 = new ArrayList();
-      if ((localArticleInfo != null) && (localArticleInfo.mSocialFeedInfo != null) && (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyg != null) && (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyg.jdField_a_of_type_JavaUtilArrayList != null) && (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyg.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      if ((localArticleInfo != null) && (localArticleInfo.mSocialFeedInfo != null) && (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe != null) && (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe.jdField_a_of_type_JavaUtilArrayList != null) && (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe.jdField_a_of_type_JavaUtilArrayList.size() > 0))
       {
-        localArrayList3 = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyg.jdField_a_of_type_JavaUtilArrayList;
+        localArrayList3 = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe.jdField_a_of_type_JavaUtilArrayList;
         i = localArrayList3.size();
         long l2 = 0L;
         bool2 = false;
@@ -180,11 +181,11 @@ public class ComponentContentGridImage
         }
         bool1 = bool2;
         l1 = l2;
-        if (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyg.jdField_a_of_type_Qxu == null) {
+        if (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe.jdField_a_of_type_Res == null) {
           break label739;
         }
         bool1 = true;
-        l2 = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyg.jdField_a_of_type_Qxu.a;
+        l2 = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe.jdField_a_of_type_Res.a;
         l1 = l2;
         if (i <= 0) {
           break label739;
@@ -205,71 +206,71 @@ public class ComponentContentGridImage
           int k = localArrayList2.size();
           if (k >= 9)
           {
-            localqoc.b(localArrayList1);
-            localqoc.a(localArrayList2);
+            localquf.b(localArrayList1);
+            localquf.a(localArrayList2);
             if (localArticleInfo != null)
             {
               if (!TextUtils.isEmpty(localArticleInfo.mArticleContentUrl)) {
-                localqoc.a(localArticleInfo.mArticleContentUrl);
+                localquf.a(localArticleInfo.mArticleContentUrl);
               }
-              if ((localArticleInfo.mSocialFeedInfo == null) || (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyg == null) || (TextUtils.isEmpty(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyg.jdField_a_of_type_JavaLangString))) {
+              if ((localArticleInfo.mSocialFeedInfo == null) || (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe == null) || (TextUtils.isEmpty(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe.jdField_a_of_type_JavaLangString))) {
                 break label714;
               }
-              localqoc.b(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyg.jdField_a_of_type_JavaLangString);
+              localquf.b(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfe.jdField_a_of_type_JavaLangString);
             }
-            localqoc.a(paramInt);
-            return localqoc.a();
+            localquf.a(paramInt);
+            return localquf.a();
           }
-          qyh localqyh = (qyh)localArrayList3.get(j);
-          if ((localqyh.jdField_b_of_type_JavaLangString == null) && (localqyh.jdField_c_of_type_JavaLangString == null)) {
+          rff localrff = (rff)localArrayList3.get(j);
+          if ((localrff.jdField_b_of_type_JavaLangString == null) && (localrff.jdField_c_of_type_JavaLangString == null)) {
             break;
           }
-          blqm.a("ComponentContentGridImage.log");
+          bjun.a("ComponentContentGridImage.log");
           if (QLog.isColorLevel())
           {
-            if (localqyh.jdField_b_of_type_JavaLangString != null) {
-              QLog.d("Q.readinjoy.ui", 2, "Grid Image url [" + j + "]: " + localqyh.jdField_b_of_type_JavaLangString);
+            if (localrff.jdField_b_of_type_JavaLangString != null) {
+              QLog.d("Q.readinjoy.ui", 2, "Grid Image url [" + j + "]: " + localrff.jdField_b_of_type_JavaLangString);
             }
-            if (localqyh.jdField_c_of_type_JavaLangString != null) {
-              QLog.d("Q.readinjoy.ui", 2, "Grid thumbNail Image url [" + j + "]: " + localqyh.jdField_c_of_type_JavaLangString);
+            if (localrff.jdField_c_of_type_JavaLangString != null) {
+              QLog.d("Q.readinjoy.ui", 2, "Grid thumbNail Image url [" + j + "]: " + localrff.jdField_c_of_type_JavaLangString);
             }
           }
-          blqm.a();
-          blqm.a("ComponentContentGridImage.setImageUrl");
-          if (localqyh.jdField_b_of_type_JavaLangString != null)
+          bjun.a();
+          bjun.a("ComponentContentGridImage.setImageUrl");
+          if (localrff.jdField_b_of_type_JavaLangString != null)
           {
-            paramObject = localqyh.jdField_b_of_type_JavaLangString;
+            paramObject = localrff.jdField_b_of_type_JavaLangString;
             URL localURL = new URL(paramObject);
-            if (localqyh.jdField_c_of_type_JavaLangString != null)
+            if (localrff.jdField_c_of_type_JavaLangString != null)
             {
-              paramObject = localqyh.jdField_c_of_type_JavaLangString;
+              paramObject = localrff.jdField_c_of_type_JavaLangString;
               paramObject = new URL(paramObject);
-              blqm.a();
+              bjun.a();
               localArrayList1.add(localURL);
-              blqm.a("ComponentContentGridImage.PicInfo");
-              k = localqyh.jdField_a_of_type_Int;
-              int m = localqyh.jdField_b_of_type_Int;
-              if (localqyh.jdField_c_of_type_Int != 1) {
+              bjun.a("ComponentContentGridImage.PicInfo");
+              k = localrff.jdField_a_of_type_Int;
+              int m = localrff.jdField_b_of_type_Int;
+              if (localrff.jdField_c_of_type_Int != 1) {
                 continue;
               }
               bool2 = true;
-              paramObject = new smv(k, m, paramObject, bool2);
+              paramObject = new sqw(k, m, paramObject, bool2);
               if ((bool1) && (j == i - 1))
               {
                 paramObject.b(bool1);
-                paramObject.a(l1 + anzj.a(2131701229));
+                paramObject.a(l1 + amtj.a(2131701464));
               }
-              blqm.a();
+              bjun.a();
               localArrayList2.add(paramObject);
               break;
             }
           }
           else
           {
-            paramObject = localqyh.jdField_c_of_type_JavaLangString;
+            paramObject = localrff.jdField_c_of_type_JavaLangString;
             continue;
           }
-          paramObject = localqyh.jdField_b_of_type_JavaLangString;
+          paramObject = localrff.jdField_b_of_type_JavaLangString;
           continue;
           bool2 = false;
           continue;
@@ -285,7 +286,7 @@ public class ComponentContentGridImage
         break;
         label714:
         if (!TextUtils.isEmpty(localArticleInfo.mTitle)) {
-          localqoc.b(localArticleInfo.mTitle);
+          localquf.b(localArticleInfo.mTitle);
         }
       }
       label739:
@@ -296,22 +297,22 @@ public class ComponentContentGridImage
   
   private void a(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof ppu))
+    if ((this.jdField_a_of_type_JavaLangObject instanceof pvc))
     {
-      ArticleInfo localArticleInfo = ((ppu)this.jdField_a_of_type_JavaLangObject).a();
+      ArticleInfo localArticleInfo = ((pvc)this.jdField_a_of_type_JavaLangObject).a();
       if (localArticleInfo != null)
       {
-        sel.a(localArticleInfo, paramInt1, paramInt2);
+        pgw.a(localArticleInfo, paramInt1, paramInt2);
         paramInt2 = -1;
         paramInt1 = paramInt2;
-        if (this.jdField_a_of_type_Qno != null)
+        if (this.jdField_a_of_type_Qtr != null)
         {
           paramInt1 = paramInt2;
-          if (this.jdField_a_of_type_Qno.a != null) {
-            paramInt1 = this.jdField_a_of_type_Qno.a.e();
+          if (this.jdField_a_of_type_Qtr.a != null) {
+            paramInt1 = this.jdField_a_of_type_Qtr.a.e();
           }
         }
-        sel.b(localArticleInfo, paramInt1);
+        pgw.a(localArticleInfo, paramInt1);
       }
     }
     else
@@ -323,16 +324,16 @@ public class ComponentContentGridImage
   
   private void a(int paramInt, List<URL> paramList)
   {
-    String str1 = this.jdField_a_of_type_Qoa.a();
-    String str2 = this.jdField_a_of_type_Qoa.b();
+    String str1 = this.jdField_a_of_type_Qud.a();
+    String str2 = this.jdField_a_of_type_Qud.b();
     ArticleInfo localArticleInfo = null;
-    if ((this.jdField_a_of_type_JavaLangObject instanceof ppu)) {
-      localArticleInfo = ((ppu)this.jdField_a_of_type_JavaLangObject).a();
+    if ((this.jdField_a_of_type_JavaLangObject instanceof pvc)) {
+      localArticleInfo = ((pvc)this.jdField_a_of_type_JavaLangObject).a();
     }
-    if (ozs.l(localArticleInfo))
+    if (pay.m(localArticleInfo))
     {
-      str1 = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyp.f;
-      str2 = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qyp.jdField_b_of_type_JavaLangString;
+      str1 = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfn.f;
+      str2 = localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Rfn.jdField_b_of_type_JavaLangString;
     }
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.ui", 2, new Object[] { "ReadInJoy grid image show content url and title, articleUrl: " + str1, " articleTitle: " + str2 });
@@ -340,10 +341,10 @@ public class ComponentContentGridImage
     if ((localArticleInfo != null) && (localArticleInfo.isPGCShortContent())) {}
     try
     {
-      localArticleInfo.clickArea = d();
-      ozs.b(this.jdField_a_of_type_Qno.a.a().a().getContext(), localArticleInfo, (int)localArticleInfo.mChannelID);
-      if ((this.jdField_a_of_type_Qno != null) && (this.jdField_a_of_type_Qno.a != null) && (this.jdField_a_of_type_Qno.a.a() != null) && (this.jdField_a_of_type_Qno.a.a().a() != null)) {
-        bghf.a(this.jdField_a_of_type_Qno.a.a().a(), paramInt, a(paramList), null, null, false, false, "4", 100, null, str1, str2, localArticleInfo, "");
+      localArticleInfo.clickArea = a();
+      pay.b(this.jdField_a_of_type_Qtr.a.a().a().getContext(), localArticleInfo, (int)localArticleInfo.mChannelID);
+      if ((this.jdField_a_of_type_Qtr != null) && (this.jdField_a_of_type_Qtr.a != null) && (this.jdField_a_of_type_Qtr.a.a() != null) && (this.jdField_a_of_type_Qtr.a.a().a() != null)) {
+        beqn.a(this.jdField_a_of_type_Qtr.a.a().a(), paramInt, a(paramList), null, null, false, false, "4", 100, null, str1, str2, localArticleInfo, "");
       }
       if (paramList != null) {
         a(paramInt, paramList.size());
@@ -359,20 +360,25 @@ public class ComponentContentGridImage
     }
   }
   
+  protected int a()
+  {
+    return 9;
+  }
+  
   public void a()
   {
-    setOnItemClickListener(new qnz(this));
+    setOnItemClickListener(new quc(this));
   }
   
   public void a(Context paramContext)
   {
     setLayoutParams(new AbsListView.LayoutParams(-1, -2));
     setNumColumns(3);
-    setVerticalSpacing(agej.a(1.0F, paramContext.getResources()));
-    setHorizontalSpacing(agej.a(1.0F, paramContext.getResources()));
+    setVerticalSpacing(AIOUtils.dp2px(1.0F, paramContext.getResources()));
+    setHorizontalSpacing(AIOUtils.dp2px(1.0F, paramContext.getResources()));
     setSelector(17170445);
     a();
-    this.jdField_a_of_type_Qno = new qno();
+    this.jdField_a_of_type_Qtr = new qtr();
   }
   
   public void a(View paramView)
@@ -382,31 +388,31 @@ public class ComponentContentGridImage
   
   public void a(Object paramObject)
   {
-    if (!(paramObject instanceof qob))
+    if (!(paramObject instanceof que))
     {
       QLog.e("ComponentContentGridImage", 1, "unsupported model type.", new IllegalArgumentException());
       return;
     }
-    this.jdField_c_of_type_Int = ((qob)paramObject).a();
-    if (this.jdField_a_of_type_Qoa == null)
+    this.jdField_c_of_type_Int = ((que)paramObject).a();
+    if (this.jdField_a_of_type_Qud == null)
     {
-      this.jdField_a_of_type_Qoa = new qoa(this, (qob)paramObject);
-      setAdapter(this.jdField_a_of_type_Qoa);
+      this.jdField_a_of_type_Qud = new qud(this, (que)paramObject);
+      setAdapter(this.jdField_a_of_type_Qud);
     }
     for (;;)
     {
       b();
-      if ((this.jdField_a_of_type_Qno == null) || (!(this.jdField_a_of_type_JavaLangObject instanceof ppu))) {
+      if ((this.jdField_a_of_type_Qtr == null) || (!(this.jdField_a_of_type_JavaLangObject instanceof pvc))) {
         break;
       }
-      this.jdField_a_of_type_Qno.a((ppu)this.jdField_a_of_type_JavaLangObject);
+      this.jdField_a_of_type_Qtr.a((pvc)this.jdField_a_of_type_JavaLangObject);
       return;
-      this.jdField_a_of_type_Qoa.a((qob)paramObject);
-      this.jdField_a_of_type_Qoa.notifyDataSetChanged();
+      this.jdField_a_of_type_Qud.a((que)paramObject);
+      this.jdField_a_of_type_Qud.notifyDataSetChanged();
     }
   }
   
-  public void a(qjp paramqjp) {}
+  public void a(qps paramqps) {}
   
   public void b()
   {
@@ -431,11 +437,6 @@ public class ComponentContentGridImage
     }
   }
   
-  protected int d()
-  {
-    return 9;
-  }
-  
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     if (paramMotionEvent.getAction() == 0) {
@@ -447,8 +448,8 @@ public class ComponentContentGridImage
     for (boolean bool = true;; bool = false)
     {
       this.jdField_a_of_type_Boolean = bool;
-      if ((pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()) == -1) && (paramMotionEvent.getAction() == 1) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Qoe != null)) {
-        this.jdField_a_of_type_Qoe.a();
+      if ((pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()) == -1) && (paramMotionEvent.getAction() == 1) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Quh != null)) {
+        this.jdField_a_of_type_Quh.a();
       }
       return super.dispatchTouchEvent(paramMotionEvent);
     }
@@ -462,9 +463,9 @@ public class ComponentContentGridImage
     super.onMeasure(paramInt1, paramInt2);
   }
   
-  public void setGalleryClickListener(qod paramqod)
+  public void setGalleryClickListener(qug paramqug)
   {
-    this.jdField_a_of_type_Qod = paramqod;
+    this.jdField_a_of_type_Qug = paramqug;
   }
   
   public void setMIReadInJoyModel(Object paramObject)
@@ -472,9 +473,9 @@ public class ComponentContentGridImage
     this.jdField_a_of_type_JavaLangObject = paramObject;
   }
   
-  public void setOnNoItemClickListener(qoe paramqoe)
+  public void setOnNoItemClickListener(quh paramquh)
   {
-    this.jdField_a_of_type_Qoe = paramqoe;
+    this.jdField_a_of_type_Quh = paramquh;
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.storyHome.memory.controller;
 
 import java.util.List;
-import yjr;
-import ymt;
+import xlc;
+import xoe;
 
 public class ProfileFeedPresenter$2
   implements Runnable
 {
-  public ProfileFeedPresenter$2(yjr paramyjr, ymt paramymt) {}
+  public ProfileFeedPresenter$2(xlc paramxlc, xoe paramxoe) {}
   
   public void run()
   {
@@ -16,9 +16,9 @@ public class ProfileFeedPresenter$2
       this.this$0.b(this.a);
       return;
     }
-    yjr.a(this.this$0, this.a);
-    yjr.a(this.this$0).remove(yjr.a());
-    yjr.a(this.this$0);
+    xlc.a(this.this$0, this.a);
+    xlc.a(this.this$0).remove(xlc.a());
+    xlc.a(this.this$0);
   }
 }
 

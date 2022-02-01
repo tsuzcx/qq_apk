@@ -1,77 +1,51 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyUtils.1;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
 
-public class axxc
-  implements BusinessObserver
+class axxc
 {
-  public axxc(NearbyUtils.1 param1) {}
+  private int jdField_a_of_type_Int;
+  private axxd jdField_a_of_type_Axxd;
+  private boolean jdField_a_of_type_Boolean = true;
+  private int b;
+  private int c;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  axxc(int paramInt1, int paramInt2, @NonNull axxd paramaxxd)
   {
-    if (paramBoolean) {
-      try
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Axxd = paramaxxd;
+  }
+  
+  void a()
+  {
+    int i;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      i = this.jdField_a_of_type_Int;
+      int j = this.c;
+      this.c = (j + 1);
+      if (j >= i - 1)
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-          localWebSsoResponseBody.mergeFrom(paramBundle);
-          paramInt = localWebSsoResponseBody.ret.get();
-          paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
-          if (paramInt != 0)
-          {
-            paramBundle = paramBundle.optString("msg");
-            if (!TextUtils.isEmpty(paramBundle)) {
-              QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig,targetUin:" + this.a.jdField_a_of_type_JavaLangString + ", errMsg:" + paramBundle);
-            }
-          }
-          else
-          {
-            paramBundle = paramBundle.optString("signature");
-            if (QLog.isColorLevel()) {
-              QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig,targetUin:" + this.a.jdField_a_of_type_JavaLangString + "signature:" + paramBundle);
-            }
-            try
-            {
-              if (TextUtils.isEmpty(paramBundle)) {
-                return;
-              }
-              if (this.a.jdField_a_of_type_Int != 0) {
-                break label283;
-              }
-              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().h(this.a.jdField_a_of_type_JavaLangString, bhkv.decode(paramBundle, 0));
-              return;
-            }
-            catch (Exception paramBundle)
-            {
-              if (!QLog.isColorLevel()) {
-                return;
-              }
-            }
-            QLog.e("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig Exception:" + paramBundle.toString());
-            return;
-          }
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig Exception" + paramBundle.toString());
-          return;
-          label283:
-          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().i(this.a.jdField_a_of_type_JavaLangString, bhkv.decode(paramBundle, 0));
+        this.c = 0;
+        if (this.jdField_a_of_type_Boolean) {
+          break label72;
         }
       }
     }
+    label72:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_Axxd.a(this.jdField_a_of_type_Boolean);
+      return;
+      i = this.b;
+      break;
+    }
+  }
+  
+  void b()
+  {
+    this.c = 0;
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

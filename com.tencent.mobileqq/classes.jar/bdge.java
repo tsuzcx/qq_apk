@@ -1,20 +1,8 @@
-public class bdge
+import com.tencent.mobileqq.together.writetogether.websocket.msg.BaseWriteTogetherMsg.Type;
+
+public abstract interface bdge
 {
-  public int a;
-  public long a;
-  public int b;
-  public int c = 0;
-  
-  bdge()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public String toString()
-  {
-    return "FailInfo{lastFCode=" + this.jdField_a_of_type_Int + ", lastSubFCode=" + this.b + ", netType=" + this.c + ", lastFTime=" + this.jdField_a_of_type_Long + '}';
-  }
+  public abstract void a(BaseWriteTogetherMsg.Type paramType, boolean paramBoolean, Object paramObject);
 }
 
 

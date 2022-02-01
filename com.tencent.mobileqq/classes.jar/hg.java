@@ -1,345 +1,297 @@
-import com.google.zxing.WriterException;
-import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import android.hardware.Camera;
+import android.hardware.Camera.Parameters;
+import android.hardware.Camera.Size;
+import android.os.Build;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.List<Landroid.hardware.Camera.Size;>;
 
-final class hg
+public class hg
 {
-  private static final int[][] a = { { 1, 1, 1, 1, 1, 1, 1 }, { 1, 0, 0, 0, 0, 0, 1 }, { 1, 0, 1, 1, 1, 0, 1 }, { 1, 0, 1, 1, 1, 0, 1 }, { 1, 0, 1, 1, 1, 0, 1 }, { 1, 0, 0, 0, 0, 0, 1 }, { 1, 1, 1, 1, 1, 1, 1 } };
-  private static final int[][] b = { { 1, 1, 1, 1, 1 }, { 1, 0, 0, 0, 1 }, { 1, 0, 1, 0, 1 }, { 1, 0, 0, 0, 1 }, { 1, 1, 1, 1, 1 } };
-  private static final int[][] c;
-  private static final int[][] d;
+  private static Method a;
+  private static Method b;
   
-  static
-  {
-    int[] arrayOfInt1 = { 6, 24, 50, 76, 102, 128, 154 };
-    c = new int[][] { { -1, -1, -1, -1, -1, -1, -1 }, { 6, 18, -1, -1, -1, -1, -1 }, { 6, 22, -1, -1, -1, -1, -1 }, { 6, 26, -1, -1, -1, -1, -1 }, { 6, 30, -1, -1, -1, -1, -1 }, { 6, 34, -1, -1, -1, -1, -1 }, { 6, 22, 38, -1, -1, -1, -1 }, { 6, 24, 42, -1, -1, -1, -1 }, { 6, 26, 46, -1, -1, -1, -1 }, { 6, 28, 50, -1, -1, -1, -1 }, { 6, 30, 54, -1, -1, -1, -1 }, { 6, 32, 58, -1, -1, -1, -1 }, { 6, 34, 62, -1, -1, -1, -1 }, { 6, 26, 46, 66, -1, -1, -1 }, { 6, 26, 48, 70, -1, -1, -1 }, { 6, 26, 50, 74, -1, -1, -1 }, { 6, 30, 54, 78, -1, -1, -1 }, { 6, 30, 56, 82, -1, -1, -1 }, { 6, 30, 58, 86, -1, -1, -1 }, { 6, 34, 62, 90, -1, -1, -1 }, { 6, 28, 50, 72, 94, -1, -1 }, { 6, 26, 50, 74, 98, -1, -1 }, { 6, 30, 54, 78, 102, -1, -1 }, { 6, 28, 54, 80, 106, -1, -1 }, { 6, 32, 58, 84, 110, -1, -1 }, { 6, 30, 58, 86, 114, -1, -1 }, { 6, 34, 62, 90, 118, -1, -1 }, { 6, 26, 50, 74, 98, 122, -1 }, { 6, 30, 54, 78, 102, 126, -1 }, { 6, 26, 52, 78, 104, 130, -1 }, { 6, 30, 56, 82, 108, 134, -1 }, { 6, 34, 60, 86, 112, 138, -1 }, { 6, 30, 58, 86, 114, 142, -1 }, { 6, 34, 62, 90, 118, 146, -1 }, { 6, 30, 54, 78, 102, 126, 150 }, arrayOfInt1, { 6, 28, 54, 80, 106, 132, 158 }, { 6, 32, 58, 84, 110, 136, 162 }, { 6, 26, 54, 82, 110, 138, 166 }, { 6, 30, 58, 86, 114, 142, 170 } };
-    arrayOfInt1 = new int[] { 8, 2 };
-    int[] arrayOfInt2 = { 8, 3 };
-    int[] arrayOfInt3 = { 8, 7 };
-    int[] arrayOfInt4 = { 3, 8 };
-    d = new int[][] { { 8, 0 }, { 8, 1 }, arrayOfInt1, arrayOfInt2, { 8, 4 }, { 8, 5 }, arrayOfInt3, { 8, 8 }, { 7, 8 }, { 5, 8 }, { 4, 8 }, arrayOfInt4, { 2, 8 }, { 1, 8 }, { 0, 8 } };
-  }
+  static {}
   
-  static int a(int paramInt)
+  public static int a(List<Integer> paramList)
   {
-    int j = 0;
-    int i = paramInt;
-    paramInt = j;
-    while (i != 0)
-    {
-      i >>>= 1;
-      paramInt += 1;
-    }
-    return paramInt;
-  }
-  
-  static int a(int paramInt1, int paramInt2)
-  {
-    int i = a(paramInt2);
-    paramInt1 <<= i - 1;
-    while (a(paramInt1) >= i) {
-      paramInt1 ^= paramInt2 << a(paramInt1) - i;
-    }
-    return paramInt1;
-  }
-  
-  private static void a(int paramInt1, int paramInt2, hc paramhc)
-  {
-    int i = 0;
-    while (i < 8)
-    {
-      if (!a(paramhc.a(paramInt1 + i, paramInt2))) {
-        throw new WriterException();
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      if (((Integer)paramList.next()).intValue() == 17) {
+        return 17;
       }
-      paramhc.a(paramInt1 + i, paramInt2, 0);
-      i += 1;
     }
+    return -1;
   }
   
-  static void a(ErrorCorrectionLevel paramErrorCorrectionLevel, int paramInt, gs paramgs)
+  public static Camera.Size a(List<Camera.Size> paramList, int paramInt1, int paramInt2)
   {
-    if (!hh.a(paramInt)) {
-      throw new WriterException("Invalid mask pattern");
+    if (paramList == null) {
+      return null;
     }
-    paramInt = paramErrorCorrectionLevel.getBits() << 3 | paramInt;
-    paramgs.a(paramInt, 5);
-    paramgs.a(a(paramInt, 1335), 10);
-    paramErrorCorrectionLevel = new gs();
-    paramErrorCorrectionLevel.a(21522, 15);
-    paramgs.b(paramErrorCorrectionLevel);
-    if (paramgs.a() != 15) {
-      throw new WriterException("should not happen but we got: " + paramgs.a());
-    }
-  }
-  
-  static void a(ErrorCorrectionLevel paramErrorCorrectionLevel, int paramInt, hc paramhc)
-  {
-    gs localgs = new gs();
-    a(paramErrorCorrectionLevel, paramInt, localgs);
-    paramInt = 0;
-    if (paramInt < localgs.a())
+    Object localObject1 = paramList.iterator();
+    Object localObject2;
+    while (((Iterator)localObject1).hasNext())
     {
-      boolean bool = localgs.a(localgs.a() - 1 - paramInt);
-      paramhc.a(d[paramInt][0], d[paramInt][1], bool);
-      if (paramInt < 8) {
-        paramhc.a(paramhc.b() - paramInt - 1, 8, bool);
+      localObject2 = (Camera.Size)((Iterator)localObject1).next();
+      if ((((Camera.Size)localObject2).width == paramInt1) && (((Camera.Size)localObject2).height == paramInt2)) {
+        return localObject2;
+      }
+    }
+    double d3 = paramInt1 / paramInt2;
+    localObject1 = null;
+    double d1 = 1.7976931348623157E+308D;
+    Iterator localIterator = paramList.iterator();
+    double d2;
+    if (localIterator.hasNext())
+    {
+      localObject2 = (Camera.Size)localIterator.next();
+      if (((paramInt1 > paramInt2) && (((Camera.Size)localObject2).width > ((Camera.Size)localObject2).height)) || ((paramInt1 < paramInt2) && (((Camera.Size)localObject2).width < ((Camera.Size)localObject2).height)))
+      {
+        d2 = ((Camera.Size)localObject2).width / ((Camera.Size)localObject2).height;
+        label152:
+        if (Math.abs(d2 - d3) > 0.05D) {
+          break label218;
+        }
+        if (Math.abs(((Camera.Size)localObject2).height - paramInt2) >= d1) {
+          break label307;
+        }
+        d1 = Math.abs(((Camera.Size)localObject2).height - paramInt2);
+        localObject1 = localObject2;
+      }
+    }
+    label301:
+    label307:
+    for (;;)
+    {
+      break;
+      d2 = ((Camera.Size)localObject2).height / ((Camera.Size)localObject2).width;
+      break label152;
+      label218:
+      break;
+      localObject2 = localObject1;
+      if (localObject1 == null)
+      {
+        d1 = 1.7976931348623157E+308D;
+        localIterator = paramList.iterator();
+        localObject2 = localObject1;
+        if (localIterator.hasNext())
+        {
+          paramList = (Camera.Size)localIterator.next();
+          if (Math.abs(paramList.height - paramInt2) >= d1) {
+            break label301;
+          }
+          d1 = Math.abs(paramList.height - paramInt2);
+        }
       }
       for (;;)
       {
-        paramInt += 1;
+        localObject1 = paramList;
         break;
-        paramhc.a(8, paramhc.a() - 7 + (paramInt - 8), bool);
+        return localObject2;
+        paramList = (List<Camera.Size>)localObject1;
       }
     }
   }
   
-  static void a(gs paramgs, int paramInt, hc paramhc)
+  private static void a()
   {
-    int k = paramhc.b() - 1;
-    int j = paramhc.a() - 1;
-    int m = -1;
-    int i = 0;
-    if (k > 0)
+    try
     {
-      if (k != 6) {
-        break label247;
-      }
-      k -= 1;
-    }
-    label111:
-    label247:
-    for (;;)
-    {
-      if ((j >= 0) && (j < paramhc.a()))
+      b = Camera.Parameters.class.getMethod("getSupportedPreviewSizes", (Class[])null);
+      try
       {
-        int n = 0;
-        while (n < 2)
-        {
-          int i1 = k - n;
-          if (!a(paramhc.a(i1, j)))
-          {
-            n += 1;
-          }
-          else
-          {
-            boolean bool1;
-            if (i < paramgs.a())
-            {
-              bool1 = paramgs.a(i);
-              i += 1;
-              bool2 = bool1;
-              if (paramInt != -1)
-              {
-                bool2 = bool1;
-                if (hf.a(paramInt, i1, j)) {
-                  if (bool1) {
-                    break label162;
-                  }
-                }
-              }
-            }
-            for (boolean bool2 = true;; bool2 = false)
-            {
-              paramhc.a(i1, j, bool2);
-              break;
-              bool1 = false;
-              break label111;
-            }
-          }
-        }
-        j += m;
-      }
-      else
-      {
-        m = -m;
-        k -= 2;
-        j += m;
-        break;
-        if (i != paramgs.a()) {
-          throw new WriterException("Not all bits consumed: " + i + '/' + paramgs.a());
-        }
+        label14:
+        a = Camera.Parameters.class.getMethod("getSupportedPreviewFormats", (Class[])null);
         return;
       }
+      catch (NoSuchMethodException localNoSuchMethodException1) {}
     }
-  }
-  
-  static void a(gs paramgs, ErrorCorrectionLevel paramErrorCorrectionLevel, gy paramgy, int paramInt, hc paramhc)
-  {
-    a(paramhc);
-    a(paramgy, paramhc);
-    a(paramErrorCorrectionLevel, paramInt, paramhc);
-    b(paramgy, paramhc);
-    a(paramgs, paramInt, paramhc);
-  }
-  
-  static void a(gy paramgy, gs paramgs)
-  {
-    paramgs.a(paramgy.a(), 6);
-    paramgs.a(a(paramgy.a(), 7973), 12);
-    if (paramgs.a() != 18) {
-      throw new WriterException("should not happen but we got: " + paramgs.a());
-    }
-  }
-  
-  static void a(gy paramgy, hc paramhc)
-  {
-    d(paramhc);
-    c(paramhc);
-    c(paramgy, paramhc);
-    b(paramhc);
-  }
-  
-  static void a(hc paramhc)
-  {
-    paramhc.a((byte)-1);
-  }
-  
-  private static boolean a(int paramInt)
-  {
-    return paramInt == -1;
-  }
-  
-  private static void b(int paramInt1, int paramInt2, hc paramhc)
-  {
-    int i = 0;
-    while (i < 7)
+    catch (NoSuchMethodException localNoSuchMethodException2)
     {
-      if (!a(paramhc.a(paramInt1, paramInt2 + i))) {
-        throw new WriterException();
+      break label14;
+    }
+  }
+  
+  public static void a(Camera.Parameters paramParameters)
+  {
+    String str = null;
+    try
+    {
+      List localList = paramParameters.getSupportedFocusModes();
+      if ((localList.contains("continuous-video")) && (aoel.a().b)) {
+        str = "continuous-video";
       }
-      paramhc.a(paramInt1, paramInt2 + i, 0);
-      i += 1;
-    }
-  }
-  
-  static void b(gy paramgy, hc paramhc)
-  {
-    if (paramgy.a() < 7) {}
-    for (;;)
-    {
-      return;
-      gs localgs = new gs();
-      a(paramgy, localgs);
-      int i = 17;
-      int j = 0;
-      while (j < 6)
+      for (;;)
       {
-        int k = 0;
-        while (k < 3)
-        {
-          boolean bool = localgs.a(i);
-          i -= 1;
-          paramhc.a(j, paramhc.a() - 11 + k, bool);
-          paramhc.a(paramhc.a() - 11 + k, j, bool);
-          k += 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("CameraParameters", 2, String.format("setDefaultFocusMode focusMode=%s", new Object[] { str }));
         }
-        j += 1;
+        if (TextUtils.isEmpty(str)) {
+          break;
+        }
+        paramParameters.setFocusMode(str);
+        return;
+        if (localList.contains("auto")) {
+          str = "auto";
+        }
       }
-    }
-  }
-  
-  private static void b(hc paramhc)
-  {
-    int i = 8;
-    while (i < paramhc.b() - 8)
-    {
-      int j = (i + 1) % 2;
-      if (a(paramhc.a(i, 6))) {
-        paramhc.a(i, 6, j);
-      }
-      if (a(paramhc.a(6, i))) {
-        paramhc.a(6, i, j);
-      }
-      i += 1;
-    }
-  }
-  
-  private static void c(int paramInt1, int paramInt2, hc paramhc)
-  {
-    int i = 0;
-    while (i < 5)
-    {
-      int j = 0;
-      while (j < 5)
-      {
-        paramhc.a(paramInt1 + j, paramInt2 + i, b[i][j]);
-        j += 1;
-      }
-      i += 1;
-    }
-  }
-  
-  private static void c(gy paramgy, hc paramhc)
-  {
-    if (paramgy.a() < 2) {}
-    for (;;)
-    {
       return;
-      int i = paramgy.a() - 1;
-      paramgy = c[i];
-      int k = c[i].length;
-      i = 0;
-      while (i < k)
+    }
+    catch (RuntimeException paramParameters)
+    {
+      paramParameters.printStackTrace();
+    }
+  }
+  
+  private static void a(Camera.Parameters paramParameters, int paramInt)
+  {
+    try
+    {
+      paramInt = Math.max(paramInt, 0);
+      if (paramParameters.isZoomSupported()) {
+        paramParameters.setZoom(Math.min(paramInt, paramParameters.getMaxZoom()));
+      }
+      return;
+    }
+    catch (Exception paramParameters) {}
+  }
+  
+  public static void a(Camera paramCamera, int paramInt1, int paramInt2)
+  {
+    a(paramCamera, paramInt1, paramInt2, 2);
+  }
+  
+  public static void a(Camera paramCamera, int paramInt1, int paramInt2, int paramInt3)
+  {
+    Camera.Parameters localParameters = paramCamera.getParameters();
+    if (b != null) {}
+    try
+    {
+      Object localObject1 = b.invoke(localParameters, (Object[])null);
+      List localList;
+      Object localObject3;
+      if ((localObject1 instanceof List))
       {
-        int j = 0;
-        if (j < k)
+        localList = (List)localObject1;
+        localObject1 = new ArrayList();
+        localObject3 = localList.iterator();
+        while (((Iterator)localObject3).hasNext())
         {
-          int m = paramgy[i];
-          int n = paramgy[j];
-          if ((n == -1) || (m == -1)) {}
-          for (;;)
+          Camera.Size localSize2 = (Camera.Size)((Iterator)localObject3).next();
+          if (((localSize2.width != 980) || (localSize2.height != 800) || (!"samsung".equalsIgnoreCase(Build.MANUFACTURER)) || ((!"GT-I9220".equalsIgnoreCase(Build.MODEL)) && (!"GT-N7000".equalsIgnoreCase(Build.MODEL)))) && (((localSize2.width == 1184) && (localSize2.height == 666)) || (((localSize2.width != 704) || (localSize2.height != 576) || (!"samsung".equalsIgnoreCase(Build.MANUFACTURER)) || (!"GT-I9300".equalsIgnoreCase(Build.MODEL))) && ((localSize2.width != 800) || (localSize2.height != 450) || (!"samsung".equalsIgnoreCase(Build.MANUFACTURER)) || (!"GT-I9100".equalsIgnoreCase(Build.MODEL)))))) {
+            ((List)localObject1).add(localSize2);
+          }
+        }
+      }
+      Object localObject2;
+      Camera.Size localSize1;
+      label515:
+      for (;;) {}
+    }
+    catch (IllegalArgumentException localIllegalArgumentException1)
+    {
+      localIllegalArgumentException1.printStackTrace();
+      for (;;)
+      {
+        if (a == null) {
+          break label515;
+        }
+        try
+        {
+          localObject2 = (List)a.invoke(localParameters, (Object[])null);
+          if (localObject2 != null)
           {
-            j += 1;
-            break;
-            if (a(paramhc.a(n, m))) {
-              c(n - 2, m - 2, paramhc);
+            paramInt1 = a((List)localObject2);
+            if (paramInt1 != -1) {
+              localParameters.setPreviewFormat(paramInt1);
             }
           }
         }
-        i += 1;
+        catch (IllegalArgumentException localIllegalArgumentException2)
+        {
+          for (;;)
+          {
+            localIllegalArgumentException2.printStackTrace();
+          }
+        }
+        catch (IllegalAccessException localIllegalAccessException2)
+        {
+          for (;;)
+          {
+            localIllegalAccessException2.printStackTrace();
+          }
+        }
+        catch (InvocationTargetException localInvocationTargetException2)
+        {
+          for (;;)
+          {
+            localInvocationTargetException2.printStackTrace();
+          }
+        }
+        try
+        {
+          a(localParameters, paramInt3);
+          a(localParameters);
+          paramCamera.setParameters(localParameters);
+          return;
+        }
+        catch (RuntimeException paramCamera)
+        {
+          paramCamera.printStackTrace();
+          return;
+        }
+        localObject3 = localParameters.getPreviewSize();
+        if ((!"samsung".equalsIgnoreCase(Build.MANUFACTURER)) || (!"GT-I9008L".equalsIgnoreCase(Build.MODEL))) {
+          break;
+        }
+        localObject2 = localObject3;
+        if ((localObject2 != null) && ((((Camera.Size)localObject2).height != ((Camera.Size)localObject3).height) || (((Camera.Size)localObject2).width != ((Camera.Size)localObject3).width))) {
+          localParameters.setPreviewSize(((Camera.Size)localObject2).width, ((Camera.Size)localObject2).height);
+        }
       }
     }
-  }
-  
-  private static void c(hc paramhc)
-  {
-    if (paramhc.a(8, paramhc.a() - 8) == 0) {
-      throw new WriterException();
-    }
-    paramhc.a(8, paramhc.a() - 8, 1);
-  }
-  
-  private static void d(int paramInt1, int paramInt2, hc paramhc)
-  {
-    int i = 0;
-    while (i < 7)
+    catch (IllegalAccessException localIllegalAccessException1)
     {
-      int j = 0;
-      while (j < 7)
+      for (;;)
       {
-        paramhc.a(paramInt1 + j, paramInt2 + i, a[i][j]);
-        j += 1;
+        localIllegalAccessException1.printStackTrace();
+        continue;
+        if ((paramInt1 != 0) && (paramInt2 != 0))
+        {
+          localSize1 = a(localList, paramInt1, paramInt2);
+          if (localSize1 != null) {
+            break;
+          }
+          localSize1 = a(localList, 640, 480);
+        }
+        else
+        {
+          localSize1 = a(localSize1, 1280, 720);
+        }
       }
-      i += 1;
     }
-  }
-  
-  private static void d(hc paramhc)
-  {
-    int i = a[0].length;
-    d(0, 0, paramhc);
-    d(paramhc.b() - i, 0, paramhc);
-    d(0, paramhc.b() - i, paramhc);
-    a(0, 7, paramhc);
-    a(paramhc.b() - 8, 7, paramhc);
-    a(0, paramhc.b() - 8, paramhc);
-    b(7, 0, paramhc);
-    b(paramhc.a() - 7 - 1, 0, paramhc);
-    b(7, paramhc.a() - 7, paramhc);
+    catch (InvocationTargetException localInvocationTargetException1)
+    {
+      for (;;)
+      {
+        localInvocationTargetException1.printStackTrace();
+        continue;
+        if (localParameters.getPreviewFormat() != 17) {
+          localParameters.setPreviewFormat(17);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     hg
  * JD-Core Version:    0.7.0.1
  */

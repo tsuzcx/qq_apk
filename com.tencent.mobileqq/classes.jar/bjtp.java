@@ -1,15 +1,8 @@
-public class bjtp
-  extends bjtr
+import android.view.View;
+
+public abstract interface bjtp
 {
-  public static bjtp a()
-  {
-    return new bjtp();
-  }
-  
-  public String a()
-  {
-    return b() + "|" + c();
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

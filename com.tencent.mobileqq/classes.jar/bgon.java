@@ -1,107 +1,189 @@
+import android.app.Activity;
 import android.content.Context;
-import android.view.View;
+import android.text.TextUtils;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer.AppsListViewAdapter.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vip.KCWraperV2.1;
+import com.tencent.mobileqq.vip.KCWraperV2.2;
+import com.tencent.mobileqq.vip.KingCardActivationFragment;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.report.lp.LpReportInfo_dc04233;
+import dualsim.common.IKcActivationViewer;
+import dualsim.common.IKingCardInterface;
+import dualsim.common.OrderCheckResult;
+import java.io.File;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
+import tmsdk.common.KcSdkShellManager;
 
 public class bgon
-  extends BaseAdapter
+  extends bgom
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LinkedHashMap<Integer, ArrayList<bgny>> jdField_a_of_type_JavaUtilLinkedHashMap = new TroopAppShortcutContainer.AppsListViewAdapter.1(this);
+  public AtomicBoolean a = new AtomicBoolean(false);
   
-  public bgon(Context paramContext)
+  private void a(OrderCheckResult paramOrderCheckResult)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public bgny a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-    int i = 0;
-    while (localIterator.hasNext())
+    int i = 1;
+    String str1;
+    if (paramOrderCheckResult != null)
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      int j = i + ((ArrayList)localEntry.getValue()).size();
-      i = j;
-      if (paramInt < j)
-      {
-        int k = paramInt - (j - ((ArrayList)localEntry.getValue()).size());
-        i = j;
-        if (k >= 0)
-        {
-          i = j;
-          if (k < ((ArrayList)localEntry.getValue()).size()) {
-            return (bgny)((ArrayList)localEntry.getValue()).get(k);
-          }
-        }
+      str1 = paramOrderCheckResult.toString();
+      a(str1);
+      if (paramOrderCheckResult != null) {
+        break label30;
       }
     }
-    return null;
-  }
-  
-  public void a(int paramInt, bgny parambgny)
-  {
-    if (this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(Integer.valueOf(paramInt)))
+    label30:
+    label46:
+    boolean bool2;
+    do
     {
-      ((ArrayList)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt))).clear();
-      ((ArrayList)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt))).add(parambgny);
-      notifyDataSetChanged();
-    }
-  }
-  
-  public void a(int paramInt, List<bgny> paramList)
-  {
-    if (this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(Integer.valueOf(paramInt)))
+      return;
+      str1 = "result == null";
+      break;
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if (localObject != null) {
+        break label186;
+      }
+      str1 = null;
+      if (TextUtils.isEmpty(str1)) {
+        break label206;
+      }
+      bool2 = a(str1, paramOrderCheckResult);
+    } while (!(localObject instanceof QQAppInterface));
+    Object localObject = (QQAppInterface)localObject;
+    String str2 = paramOrderCheckResult.phoneNum;
+    aneg localaneg = (aneg)((QQAppInterface)localObject).getBusinessHandler(27);
+    boolean bool1;
+    label113:
+    long l;
+    if (paramOrderCheckResult.operator == 1)
     {
-      ((ArrayList)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt))).clear();
-      ((ArrayList)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(Integer.valueOf(paramInt))).addAll(paramList);
-      notifyDataSetChanged();
+      if (paramOrderCheckResult.kingcard != 1) {
+        break label196;
+      }
+      bool1 = true;
+      localaneg.a(str1, str2, bool1, paramOrderCheckResult.product, "");
+      l = Long.parseLong(str1);
+      if (paramOrderCheckResult.kingcard != 1) {
+        break label201;
+      }
     }
-  }
-  
-  public int getCount()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-    for (int i = 0; localIterator.hasNext(); i = ((ArrayList)((Map.Entry)localIterator.next()).getValue()).size() + i) {}
-    return i;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    bgny localbgny = a(paramInt);
-    if (localbgny != null) {
-      return localbgny.a();
-    }
-    return -1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject = a(paramInt);
-    if (localObject != null) {}
-    for (localObject = ((bgny)localObject).a(paramInt, paramView, paramViewGroup);; localObject = null)
+    for (;;)
     {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject;
+      new LpReportInfo_dc04233(l, i).report();
+      if (!bool2) {
+        break;
+      }
+      localaneg.a(((TicketManager)((QQAppInterface)localObject).getManager(2)).getSkey(str1), str1);
+      return;
+      label186:
+      str1 = ((AppRuntime)localObject).getAccount();
+      break label46;
+      label196:
+      bool1 = false;
+      break label113;
+      label201:
+      i = 0;
+    }
+    label206:
+    QLog.e("KC.TMSManager", 1, "tmsQuery can't get uin");
+  }
+  
+  public String a()
+  {
+    return "KC.KCWraperV2";
+  }
+  
+  void a(ViewGroup paramViewGroup)
+  {
+    Object localObject = KcSdkShellManager.getInstance().getKingCardInterface();
+    if (localObject != null)
+    {
+      localObject = ((IKingCardInterface)localObject).generateActivationView(paramViewGroup.getContext());
+      if (localObject != null)
+      {
+        paramViewGroup.addView(((IKcActivationViewer)localObject).getWebView());
+        ((IKcActivationViewer)localObject).startLoad();
+        return;
+      }
+      QLog.e("KC.TMSManager", 1, "activationViewer == null");
+    }
+    QLog.e("KC.TMSManager", 1, "kingCardInterface == null");
+  }
+  
+  public void a(bgoy parambgoy, boolean paramBoolean)
+  {
+    ThreadManager.post(new KCWraperV2.2(this, parambgoy, paramBoolean), 5, null, false);
+  }
+  
+  void a(Runnable paramRunnable)
+  {
+    a("load jar");
+    if (this.a.get()) {
+      return;
+    }
+    Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
+    File localFile = new File(bgox.a().a(localContext));
+    if (!localFile.exists())
+    {
+      if (paramRunnable != null) {
+        paramRunnable.run();
+      }
+      a(false);
+      return;
+    }
+    ThreadManager.post(new KCWraperV2.1(this, localFile, localContext), 5, null, false);
+  }
+  
+  boolean a()
+  {
+    if (this.a.get()) {
+      return true;
+    }
+    if (!new File(bgox.a().a(BaseApplicationImpl.getApplication())).exists()) {
+      return false;
+    }
+    synchronized (this.a)
+    {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(a(), 1, "wait load");
+        }
+        this.a.wait(500L);
+        if (QLog.isColorLevel()) {
+          QLog.e(a(), 1, "wait end");
+        }
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          localInterruptedException.printStackTrace();
+          QLog.e(a(), 1, localInterruptedException, new Object[0]);
+        }
+      }
+      return this.a.get();
     }
   }
   
-  public int getViewTypeCount()
+  boolean a(Activity paramActivity)
   {
-    return 4;
+    PublicFragmentActivity.a(paramActivity, KingCardActivationFragment.class);
+    return true;
+  }
+  
+  boolean b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("KC.TMSManager", 1, "supportActivationView == true");
+    }
+    return true;
   }
 }
 

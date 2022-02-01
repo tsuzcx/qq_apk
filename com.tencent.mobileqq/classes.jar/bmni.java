@@ -1,8 +1,20 @@
-import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.aeeditor.module.toolbar.VideoEditToolBar;
 
-public abstract interface bmni
+public class bmni
+  implements Animation.AnimationListener
 {
-  public abstract boolean a(int paramInt, Bundle paramBundle);
+  public bmni(VideoEditToolBar paramVideoEditToolBar) {}
+  
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.setVisibility(0);
+  }
 }
 
 

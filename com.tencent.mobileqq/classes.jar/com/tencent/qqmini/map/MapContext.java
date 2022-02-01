@@ -126,7 +126,7 @@ public class MapContext
     this.markerMaxSize = ((int)(this.density * 50.0F + 0.5D));
     try
     {
-      this.locationBitmap = BitmapFactory.decodeResource(paramCoverMapView.getResources(), 2130841163);
+      this.locationBitmap = BitmapFactory.decodeResource(paramCoverMapView.getResources(), 2130841199);
       this.markerSparseArray = new SparseArray();
       this.circleArrayList = new ArrayList();
       this.polylineArrayList = new ArrayList();
@@ -249,7 +249,7 @@ public class MapContext
         paramJSONObject = Drawable.createFromPath(paramJSONObject);
         Object localObject = paramJSONObject;
         if (paramJSONObject == null) {
-          localObject = this.context.getResources().getDrawable(2130841224);
+          localObject = this.context.getResources().getDrawable(2130841260);
         }
         localImageView.setImageDrawable((Drawable)localObject);
         if (this.mTencentMap == null) {
@@ -269,8 +269,8 @@ public class MapContext
   {
     if (QMLog.isColorLevel())
     {
-      localObject3 = TAG;
-      localObject4 = new StringBuilder().append("addMarker params=");
+      str = TAG;
+      localObject3 = new StringBuilder().append("addMarker params=");
       if (paramJSONObject == null) {
         break label56;
       }
@@ -278,7 +278,7 @@ public class MapContext
     label56:
     for (Object localObject1 = paramJSONObject.toString();; localObject1 = "empty")
     {
-      QMLog.d((String)localObject3, (String)localObject1);
+      QMLog.d(str, (String)localObject1);
       if (paramJSONObject != null) {
         break;
       }
@@ -287,47 +287,55 @@ public class MapContext
     int i = paramJSONObject.optInt("id", 0);
     double d1 = paramJSONObject.optDouble("latitude", 0.0D);
     double d2 = paramJSONObject.optDouble("longitude", 0.0D);
-    Object localObject4 = paramJSONObject.optString("title", "");
+    String str = paramJSONObject.optString("title", "");
     int j = paramJSONObject.optInt("zIndex", 0);
     localObject1 = paramJSONObject.optString("iconPath", "");
     float f1 = (float)paramJSONObject.optDouble("rotate", 0.0D);
     float f2 = (float)paramJSONObject.optDouble("alpha", 1.0D);
     int k = paramJSONObject.optInt("width", -2);
     int m = paramJSONObject.optInt("height", -2);
-    Object localObject3 = paramJSONObject.optJSONObject("anchor");
-    MarkerOptions localMarkerOptions = new MarkerOptions(new LatLng(d1, d2));
+    Object localObject3 = paramJSONObject.optJSONObject("callout");
     if (localObject3 != null) {
-      localMarkerOptions.anchor((float)((JSONObject)localObject3).optDouble("x", 0.5D), (float)((JSONObject)localObject3).optDouble("y", 1.0D));
+      str = ((JSONObject)localObject3).optString("content");
     }
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-    Object localObject2;
-    for (localObject1 = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath((String)localObject1);; localObject2 = null) {
-      try
-      {
-        localObject1 = Drawable.createFromPath((String)localObject1);
-        localObject3 = localObject1;
-        if (localObject1 == null) {
-          localObject3 = this.context.getResources().getDrawable(2130841224);
-        }
-        localObject1 = createMarkerView();
-        ((ImageView)localObject1).setLayoutParams(new ViewGroup.LayoutParams(k, m));
-        ((ImageView)localObject1).setImageDrawable((Drawable)localObject3);
-        localMarkerOptions.icon(BitmapDescriptorFactory.fromView((View)localObject1));
-        localMarkerOptions.title((String)localObject4);
-        localMarkerOptions.rotation(f1);
-        localMarkerOptions.alpha(f2);
-        localMarkerOptions.zIndex(j);
-        if (this.mTencentMap == null) {
-          break;
-        }
-        localObject1 = this.mTencentMap.addMarker(localMarkerOptions);
-        ((Marker)localObject1).setTag(paramJSONObject);
-        this.markerSparseArray.put(i, localObject1);
-        return;
+    for (;;)
+    {
+      localObject3 = paramJSONObject.optJSONObject("anchor");
+      MarkerOptions localMarkerOptions = new MarkerOptions(new LatLng(d1, d2));
+      if (localObject3 != null) {
+        localMarkerOptions.anchor((float)((JSONObject)localObject3).optDouble("x", 0.5D), (float)((JSONObject)localObject3).optDouble("y", 1.0D));
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        QMLog.e(TAG, "markerDrawable error,", localOutOfMemoryError);
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
+      Object localObject2;
+      for (localObject1 = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getAbsolutePath((String)localObject1);; localObject2 = null) {
+        try
+        {
+          localObject1 = Drawable.createFromPath((String)localObject1);
+          localObject3 = localObject1;
+          if (localObject1 == null) {
+            localObject3 = this.context.getResources().getDrawable(2130841260);
+          }
+          localObject1 = createMarkerView();
+          ((ImageView)localObject1).setLayoutParams(new ViewGroup.LayoutParams(k, m));
+          ((ImageView)localObject1).setImageDrawable((Drawable)localObject3);
+          localMarkerOptions.icon(BitmapDescriptorFactory.fromView((View)localObject1));
+          localMarkerOptions.title(str);
+          localMarkerOptions.rotation(f1);
+          localMarkerOptions.alpha(f2);
+          localMarkerOptions.zIndex(j);
+          if (this.mTencentMap == null) {
+            break;
+          }
+          localObject1 = this.mTencentMap.addMarker(localMarkerOptions);
+          ((Marker)localObject1).setTag(paramJSONObject);
+          ((Marker)localObject1).setClickable(true);
+          this.markerSparseArray.put(i, localObject1);
+          return;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          QMLog.e(TAG, "markerDrawable error,", localOutOfMemoryError);
+        }
       }
     }
   }
@@ -437,10 +445,7 @@ public class MapContext
   
   private ImageView createMarkerView()
   {
-    ImageView localImageView = new ImageView(this.context);
-    localImageView.setMinimumWidth(this.markerMinSize);
-    localImageView.setMinimumHeight(this.markerMinSize);
-    return localImageView;
+    return new ImageView(this.context);
   }
   
   private void location()
@@ -989,19 +994,22 @@ public class MapContext
   {
     int j = this.markerSparseArray.size();
     int i = 0;
+    Object localObject;
     while (i < j)
     {
-      paramLatLng = (Marker)this.markerSparseArray.valueAt(i);
-      if ((paramLatLng != null) && (paramLatLng.isInfoWindowShown())) {
-        paramLatLng.hideInfoWindow();
+      localObject = (Marker)this.markerSparseArray.valueAt(i);
+      if ((localObject != null) && (((Marker)localObject).isInfoWindowShown())) {
+        ((Marker)localObject).hideInfoWindow();
       }
       i += 1;
     }
     try
     {
-      paramLatLng = new JSONObject();
-      paramLatLng.put("mapId", this.mMapId);
-      this.mMiniAppContext.performAction(ServiceSubscribeEvent.obtain(MAP_EVENT_CLICK, paramLatLng.toString(), this.mPageWebViewId));
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("mapId", this.mMapId);
+      ((JSONObject)localObject).put("latitude", paramLatLng.latitude);
+      ((JSONObject)localObject).put("longitude", paramLatLng.longitude);
+      this.mMiniAppContext.performAction(ServiceSubscribeEvent.obtain(MAP_EVENT_CLICK, ((JSONObject)localObject).toString(), this.mPageWebViewId));
       return;
     }
     catch (JSONException paramLatLng)
@@ -1019,6 +1027,9 @@ public class MapContext
     }
     try
     {
+      if (!paramMarker.isInfoWindowShown()) {
+        paramMarker.showInfoWindow();
+      }
       paramMarker = (JSONObject)paramMarker.getTag();
       if (paramMarker != null)
       {

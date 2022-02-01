@@ -1,54 +1,100 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import android.media.MediaCodecInfo;
+import android.media.MediaCodecList;
+import android.os.Build.VERSION;
+import java.util.ArrayList;
+import java.util.Arrays;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.StringsKt;
+import org.jetbrains.annotations.NotNull;
 
-public class bgiq
-  extends bghr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/gldrawable/Utils;", "", "()V", "getHardwareDecodec", "Ljava/util/ArrayList;", "Landroid/media/MediaCodecInfo;", "Lkotlin/collections/ArrayList;", "mime", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bgiq
 {
-  public bgiq(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Int = 22;
-  }
+  public static final bgiq a = new bgiq();
   
-  @Nullable
-  public bghs a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  @JvmStatic
+  @NotNull
+  public static final ArrayList<MediaCodecInfo> a(@NotNull String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
-    if ((localObject != null) && (a((MessageRecord)localObject, paramLong2, paramLong3)))
-    {
-      paramList = this.jdField_a_of_type_AndroidContentContext.getString(2131697017);
-      paramObject = bfpe.a(paramInt1, ((MessageRecord)localObject).shmsgseq, paramInt2);
-      localObject = ((MessageRecord)localObject).senderuin;
-      MessageForReplyText.reportReplyMsg(null, "AIOchat", "Appear_topmsgcue_reply", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null);
-      return new bghs(true, paramList, paramObject, (String)localObject);
+    Intrinsics.checkParameterIsNotNull(paramString, "mime");
+    ArrayList localArrayList = new ArrayList();
+    if (Build.VERSION.SDK_INT < 16) {
+      return localArrayList;
     }
-    return null;
-  }
-  
-  public void a(int paramInt, Object paramObject, String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000) {}
-    for (paramObject = "Grp_Dis_replyMsg";; paramObject = "Grp_AIO")
+    label303:
+    for (;;)
     {
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", paramObject, "", "notice_center_new", "exp_reply", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-      return;
-    }
-  }
-  
-  public void b(int paramInt, Object paramObject, String paramString)
-  {
-    MessageForReplyText.reportReplyMsg(null, "AIOchat", "Clk_topmsgcue_reply", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000) {}
-    for (paramObject = "Grp_Dis_replyMsg";; paramObject = "Grp_AIO")
-    {
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", paramObject, "", "notice_center_new", "clk_reply", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-      return;
+      int i;
+      try
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        Object localObject1 = localStringBuilder.append("MediaCodec support list:");
+        Intrinsics.checkExpressionValueIsNotNull(localObject1, "append(value)");
+        StringsKt.appendln((StringBuilder)localObject1);
+        int k = MediaCodecList.getCodecCount();
+        i = 0;
+        if (i < k)
+        {
+          localObject1 = MediaCodecList.getCodecInfoAt(i);
+          Intrinsics.checkExpressionValueIsNotNull(localObject1, "it");
+          if (!((MediaCodecInfo)localObject1).isEncoder()) {
+            break label303;
+          }
+          localObject1 = null;
+          if (localObject1 != null)
+          {
+            Object localObject2 = localStringBuilder.append(((MediaCodecInfo)localObject1).getName());
+            Intrinsics.checkExpressionValueIsNotNull(localObject2, "append(value)");
+            StringsKt.appendln((StringBuilder)localObject2);
+            localObject2 = localStringBuilder.append(Arrays.toString(((MediaCodecInfo)localObject1).getSupportedTypes()));
+            Intrinsics.checkExpressionValueIsNotNull(localObject2, "append(value)");
+            StringsKt.appendln((StringBuilder)localObject2);
+            if (localObject1 != null)
+            {
+              localObject2 = ((MediaCodecInfo)localObject1).getName();
+              Intrinsics.checkExpressionValueIsNotNull(localObject2, "info.name");
+              if (!StringsKt.contains((CharSequence)localObject2, (CharSequence)".sw.", true))
+              {
+                localObject2 = ((MediaCodecInfo)localObject1).getName();
+                Intrinsics.checkExpressionValueIsNotNull(localObject2, "info.name");
+                if (!StringsKt.contains((CharSequence)localObject2, (CharSequence)".google.", true))
+                {
+                  String[] arrayOfString = ((MediaCodecInfo)localObject1).getSupportedTypes();
+                  Intrinsics.checkExpressionValueIsNotNull(arrayOfString, "info.supportedTypes");
+                  int m = arrayOfString.length;
+                  int j = 0;
+                  if (j < m)
+                  {
+                    localObject2 = arrayOfString[j];
+                    if (StringsKt.equals((String)localObject2, paramString, true))
+                    {
+                      if (localObject2 != null) {
+                        localArrayList.add(localObject1);
+                      }
+                    }
+                    else {
+                      j += 1;
+                    }
+                  }
+                  else
+                  {
+                    localObject2 = null;
+                    continue;
+                  }
+                }
+              }
+            }
+          }
+        }
+        else
+        {
+          return localArrayList;
+        }
+      }
+      catch (Throwable paramString) {}
+      i += 1;
     }
   }
 }

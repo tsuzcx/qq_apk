@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.automator;
 
 import android.util.Log;
-import aolf;
+import aneq;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
-import ofe;
+import ogr;
 
 public class InitBeforeSyncMsg
   extends AsyncStep
@@ -16,13 +16,13 @@ public class InitBeforeSyncMsg
     Object localObject;
     if (this.b == 14)
     {
-      this.a.app.a(this.a.app.getCurrentAccountUin());
+      this.a.app.initConfig(this.a.app.getCurrentAccountUin());
       this.a.app.getManager(60);
-      this.a.app.a().start();
-      this.a.app.a().init();
-      localObject = (ofe)this.a.app.a(88);
-      this.a.app.addObserver(((ofe)localObject).a, true);
-      localObject = this.a.app.a();
+      this.a.app.getProxyManager().start();
+      this.a.app.getCacheManager().init();
+      localObject = (ogr)this.a.app.getBusinessHandler(88);
+      this.a.app.addObserver(((ogr)localObject).a, true);
+      localObject = this.a.app.getMsgHandler();
       if (this.b != 15) {
         break label232;
       }
@@ -33,8 +33,8 @@ public class InitBeforeSyncMsg
       ((MessageHandler)localObject).a(i);
       if (this.b != 15)
       {
-        this.a.app.a().a();
-        this.a.app.a().c = false;
+        this.a.app.getMsgHandler().a();
+        this.a.app.getMsgHandler().c = false;
       }
       long l2 = System.currentTimeMillis();
       Log.i("AutoMonitor", "STEP_DOSOMETHING, cost=" + (l2 - l1));
@@ -42,7 +42,7 @@ public class InitBeforeSyncMsg
       if (this.b != 15) {
         break;
       }
-      this.a.app.a().e();
+      this.a.app.getMsgHandler().e();
       break;
     }
   }

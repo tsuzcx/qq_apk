@@ -11,7 +11,7 @@ public class DomainConfig
   public static final String HTTP_PREFIX = "http://";
   public static final String WSS_PREFIX = "wss://";
   public static final String WS_PREFIX = "ws://";
-  private static final int needCheckPost = 0;
+  private static final int needCheckPort = 0;
   public String host;
   public int port;
   
@@ -160,7 +160,7 @@ public class DomainConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.DomainConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import com.tencent.thumbplayer.adapter.ITPPlayerAdapter;
 import com.tencent.thumbplayer.adapter.TPPlaybackInfo;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnAudioPcmOutListener;
+import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnAudioProcessOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnCompletionListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnErrorListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnInfoListener;
@@ -13,8 +14,10 @@ import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnStateChan
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleDataListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleFrameOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoFrameOutListener;
+import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoProcessOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoSizeChangedListener;
 import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
+import com.tencent.thumbplayer.api.TPPostProcessFrameBuffer;
 import com.tencent.thumbplayer.api.TPSubtitleData;
 import com.tencent.thumbplayer.api.TPSubtitleFrameBuffer;
 import com.tencent.thumbplayer.api.TPTrackInfo;
@@ -26,7 +29,7 @@ import com.tencent.thumbplayer.utils.TPLogUtil;
 import java.util.Map;
 
 class TPPlayer$InnerPlayerListener
-  implements ITPPlayerBaseListener.IOnAudioPcmOutListener, ITPPlayerBaseListener.IOnCompletionListener, ITPPlayerBaseListener.IOnErrorListener, ITPPlayerBaseListener.IOnInfoListener, ITPPlayerBaseListener.IOnPreparedListener, ITPPlayerBaseListener.IOnSeekCompleteListener, ITPPlayerBaseListener.IOnStateChangeListener, ITPPlayerBaseListener.IOnSubtitleDataListener, ITPPlayerBaseListener.IOnSubtitleFrameOutListener, ITPPlayerBaseListener.IOnVideoFrameOutListener, ITPPlayerBaseListener.IOnVideoSizeChangedListener, ITPPlayListener
+  implements ITPPlayerBaseListener.IOnAudioPcmOutListener, ITPPlayerBaseListener.IOnAudioProcessOutListener, ITPPlayerBaseListener.IOnCompletionListener, ITPPlayerBaseListener.IOnErrorListener, ITPPlayerBaseListener.IOnInfoListener, ITPPlayerBaseListener.IOnPreparedListener, ITPPlayerBaseListener.IOnSeekCompleteListener, ITPPlayerBaseListener.IOnStateChangeListener, ITPPlayerBaseListener.IOnSubtitleDataListener, ITPPlayerBaseListener.IOnSubtitleFrameOutListener, ITPPlayerBaseListener.IOnVideoFrameOutListener, ITPPlayerBaseListener.IOnVideoProcessOutListener, ITPPlayerBaseListener.IOnVideoSizeChangedListener, ITPPlayListener
 {
   TPPlayer$InnerPlayerListener(TPPlayer paramTPPlayer) {}
   
@@ -66,6 +69,15 @@ class TPPlayer$InnerPlayerListener
     if (localTPPlayerListeners != null) {
       localTPPlayerListeners.onAudioFrameOut(this.this$0, paramTPAudioFrameBuffer);
     }
+  }
+  
+  public TPPostProcessFrameBuffer onAudioProcessFrameOut(TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
+  {
+    TPPlayerListeners localTPPlayerListeners = TPPlayer.access$1000(this.this$0);
+    if (localTPPlayerListeners != null) {
+      return localTPPlayerListeners.onAudioProcessFrameOut(this.this$0, paramTPPostProcessFrameBuffer);
+    }
+    return null;
   }
   
   public void onCompletion()
@@ -243,6 +255,15 @@ class TPPlayer$InnerPlayerListener
     if (localTPPlayerListeners != null) {
       localTPPlayerListeners.onVideoFrameOut(this.this$0, paramTPVideoFrameBuffer);
     }
+  }
+  
+  public TPPostProcessFrameBuffer onVideoProcessFrameOut(TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
+  {
+    TPPlayerListeners localTPPlayerListeners = TPPlayer.access$1000(this.this$0);
+    if (localTPPlayerListeners != null) {
+      return localTPPlayerListeners.onVideoProcessFrameOut(this.this$0, paramTPPostProcessFrameBuffer);
+    }
+    return null;
   }
   
   public void onVideoSizeChanged(long paramLong1, long paramLong2)

@@ -1,237 +1,62 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyFeedbackPopupWindow.3;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
+import java.lang.ref.SoftReference;
+import java.util.ArrayList;
+import java.util.List;
 
-public class syh
-  extends sxk
-  implements View.OnClickListener
+class syh
+  implements sys<Bitmap>
 {
-  private int jdField_a_of_type_Int;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private sel jdField_a_of_type_Sel;
-  private ssi jdField_a_of_type_Ssi;
-  private syn jdField_a_of_type_Syn = new syi(this);
-  private View jdField_b_of_type_AndroidViewView;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private boolean jdField_b_of_type_Boolean = true;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_c_of_type_AndroidWidgetLinearLayout;
-  private ImageView d;
-  private ImageView e;
-  private ImageView f;
+  syh(syg paramsyg) {}
   
-  public syh(Activity paramActivity, sel paramsel)
+  public void a(Bitmap paramBitmap)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_Sel = paramsel;
-    this.jdField_a_of_type_Ssi = new ssi();
-  }
-  
-  private int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return 2;
-    case 1: 
-      return 3;
-    case 2: 
-      return 9;
-    }
-    return 10;
-  }
-  
-  private void a(int paramInt)
-  {
-    if (!a()) {
+    if (paramBitmap == null) {
       return;
     }
-    ((pfg)ozs.a().getManager(163)).a().a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramInt, this.jdField_a_of_type_Syn);
-  }
-  
-  private void a(String paramString, int paramInt)
-  {
-    Object localObject;
-    if (b("reportData")) {
-      localObject = ozs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-    }
-    try
+    syv.a(syg.a, "recycle:" + paramBitmap);
+    if (!syv.a())
     {
-      localObject = ((paa)localObject).o(paramInt).d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessId).a();
-      ocd.a(null, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.publishUin), paramString, paramString, 0, 0, String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), String.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId), (String)localObject, false);
+      paramBitmap.recycle();
       return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.d("ReadInJoyBasePopupWindow", 1, "reportData json exception.");
-      paramString.printStackTrace();
-    }
-  }
-  
-  private boolean a()
-  {
-    if (!bhnv.g(this.jdField_a_of_type_AndroidAppActivity))
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 1, 2131717088, 0).a();
-      return false;
-    }
-    return true;
-  }
-  
-  private boolean a(ArticleInfo paramArticleInfo)
-  {
-    return (paramArticleInfo != null) && (paramArticleInfo.publishUin > 0L) && (ozs.a() == paramArticleInfo.publishUin);
-  }
-  
-  private boolean a(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null)
-    {
-      QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { paramString, ", mArticleInfo is null." });
-      return false;
-    }
-    return true;
-  }
-  
-  private boolean b(String paramString)
-  {
-    if ((a(paramString)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null)) {
-      return true;
-    }
-    QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { paramString, ", mSocialFeedInfo is null" });
-    return false;
-  }
-  
-  private void c()
-  {
-    if (a("reportFeeds")) {
-      ThreadManager.getSubThreadHandler().post(new ReadInJoyFeedbackPopupWindow.3(this));
-    }
-  }
-  
-  private void d()
-  {
-    blir localblir = blir.a(this.jdField_a_of_type_AndroidAppActivity);
-    localblir.a(2131717138);
-    localblir.a(2131717137, 0);
-    localblir.c(2131690580);
-    if (!localblir.isShowing()) {
-      localblir.show();
-    }
-    localblir.a(new sym(this, localblir));
-  }
-  
-  private void e()
-  {
-    if (!a()) {}
-    while (!a("shieldFeeds")) {
-      return;
-    }
-    ssb.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Syn);
-  }
-  
-  public View a(LayoutInflater paramLayoutInflater)
-  {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560069, null);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131377560));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131376534));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131365363));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131377342));
-    this.d = ((ImageView)paramLayoutInflater.findViewById(2131375177));
-    this.e = ((ImageView)paramLayoutInflater.findViewById(2131381337));
-    this.f = ((ImageView)paramLayoutInflater.findViewById(2131371343));
-    return paramLayoutInflater;
-  }
-  
-  public final void a(View paramView1, ArticleInfo paramArticleInfo, int paramInt, View paramView2)
-  {
-    QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { "show, articleInfo = ", paramArticleInfo });
-    if (!this.jdField_a_of_type_Boolean) {
-      a();
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_b_of_type_AndroidViewView = paramView2;
-    this.jdField_a_of_type_Int = paramInt;
-    a(paramArticleInfo);
-    a(paramView1);
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(ArticleInfo paramArticleInfo)
-  {
-    if (a(paramArticleInfo))
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_c_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842837));
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842836));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842837));
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-    this.e.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.d.setOnClickListener(this);
-    this.f.setOnClickListener(this);
-    setOnDismissListener(new syl(this));
-  }
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_b_of_type_Boolean = false;
-    dismiss();
-    switch (paramView.getId())
-    {
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      synchronized (this.a.b)
+      {
+        ArrayList localArrayList = new ArrayList();
+        i = 0;
+        if (i >= this.a.b.size()) {
+          break label226;
+        }
+        Bitmap localBitmap = (Bitmap)((SoftReference)this.a.b.get(i)).get();
+        if (localBitmap != null)
+        {
+          if (localBitmap != paramBitmap) {
+            break label231;
+          }
+          i = 1;
+          if (!localArrayList.isEmpty()) {
+            this.a.b.removeAll(localArrayList);
+          }
+          if (i == 0)
+          {
+            paramBitmap = new SoftReference(paramBitmap);
+            this.a.b.add(paramBitmap);
+          }
+        }
+        else
+        {
+          localArrayList.add(this.a.b.get(i));
+        }
+      }
+      QLog.e(syg.a, 1, "reuse same bitmap " + paramBitmap);
       return;
-      e();
-      a("0X80095D4", 5);
+      label226:
+      int i = 0;
       continue;
-      c();
-      a("0X80095D4", 7);
-      continue;
-      d();
-      a("0X80095D4", 6);
-      continue;
-      a(0);
-      a("0X80095D4", 1);
-      continue;
-      a(1);
-      a("0X80095D4", 2);
-      continue;
-      a(2);
-      a("0X80095D4", 3);
-      continue;
-      a(3);
-      a("0X80095D4", 4);
+      label231:
+      i += 1;
     }
   }
 }

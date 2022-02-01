@@ -1,93 +1,47 @@
-import android.annotation.TargetApi;
-import android.net.SSLCertificateSocketFactory;
-import android.os.Build.VERSION;
-import java.lang.reflect.Method;
-import java.net.InetAddress;
-import java.net.Socket;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLPeerUnverifiedException;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.open.agent.TroopAbilityUtils.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class bhve
-  extends SSLSocketFactory
+  implements DialogInterface.OnClickListener
 {
-  private final String jdField_a_of_type_JavaLangString = "SniSSLSocketFactory";
-  HostnameVerifier jdField_a_of_type_JavaxNetSslHostnameVerifier;
-  private String b;
+  public bhve(TroopAbilityUtils.1 param1) {}
   
-  public bhve(String paramString, HostnameVerifier paramHostnameVerifier)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.b = paramString;
-    this.jdField_a_of_type_JavaxNetSslHostnameVerifier = paramHostnameVerifier;
-  }
-  
-  public Socket createSocket()
-  {
-    return null;
-  }
-  
-  public Socket createSocket(String paramString, int paramInt)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress, int paramInt)
-  {
-    return null;
-  }
-  
-  public Socket createSocket(InetAddress paramInetAddress1, int paramInt1, InetAddress paramInetAddress2, int paramInt2)
-  {
-    return null;
-  }
-  
-  @TargetApi(17)
-  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
-  {
-    paramString = paramSocket.getInetAddress();
-    if (paramBoolean) {
-      paramSocket.close();
+    if (!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
+      paramDialogInterface.dismiss();
     }
-    SSLCertificateSocketFactory localSSLCertificateSocketFactory = (SSLCertificateSocketFactory)SSLCertificateSocketFactory.getDefault(0);
-    paramSocket = (SSLSocket)localSSLCertificateSocketFactory.createSocket(paramString, paramInt);
-    paramSocket.setEnabledProtocols(paramSocket.getSupportedProtocols());
-    if (Build.VERSION.SDK_INT >= 17) {
-      localSSLCertificateSocketFactory.setHostname(paramSocket, this.b);
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
     for (;;)
     {
-      paramString = paramSocket.getSession();
-      if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier == null) {
-        this.jdField_a_of_type_JavaxNetSslHostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
-      }
-      if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier.verify(this.b, paramString)) {
-        break;
-      }
-      throw new SSLPeerUnverifiedException("Cannot verify hostname: " + this.b);
       try
       {
-        paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.b });
+        paramDialogInterface = new Intent();
+        paramDialogInterface.addFlags(335544320);
+        if (this.a.jdField_a_of_type_Boolean)
+        {
+          paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(this.a.jdField_a_of_type_JavaLangString), this.a.b })));
+          paramDialogInterface.setPackage(this.a.c);
+          this.a.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
+          return;
+        }
       }
-      catch (Exception paramString) {}
+      catch (Exception paramDialogInterface)
+      {
+        QLog.e("TroopAbility.Utils", 1, "[startSdkCallback] startActivity failed, exception=", paramDialogInterface);
+        return;
+      }
+      paramDialogInterface.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=error", new Object[] { Long.valueOf(this.a.jdField_a_of_type_JavaLangString), this.a.b })));
     }
-    return paramSocket;
-  }
-  
-  public String[] getDefaultCipherSuites()
-  {
-    return new String[0];
-  }
-  
-  public String[] getSupportedCipherSuites()
-  {
-    return new String[0];
   }
 }
 

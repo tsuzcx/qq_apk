@@ -1,28 +1,20 @@
-import android.graphics.Bitmap;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IEventListener;", "", "onCaptureImageFailed", "", "player", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayer;", "id", "", "errCode", "onCaptureImageSucceed", "width", "height", "bitmap", "Landroid/graphics/Bitmap;", "onCompletion", "onDownloadCallback", "downloadedSizeBytes", "", "totalSizeBytes", "info", "", "onError", "", "module", "errorType", "errorCode", "extraInfo", "onInfo", "what", "extra", "onSeekComplete", "onVideoPrepared", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface rzs
+public class rzs
+  implements View.OnLayoutChangeListener
 {
-  public abstract void a(long paramLong1, long paramLong2);
+  public rzs(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
   
-  public abstract void a(@Nullable String paramString);
-  
-  public abstract void a(@NotNull rzt paramrzt);
-  
-  public abstract void a(@NotNull rzt paramrzt, int paramInt1, int paramInt2);
-  
-  public abstract void a(@NotNull rzt paramrzt, int paramInt1, int paramInt2, int paramInt3, @Nullable Bitmap paramBitmap);
-  
-  public abstract boolean a(@NotNull rzt paramrzt, int paramInt1, int paramInt2, int paramInt3, @Nullable String paramString);
-  
-  public abstract boolean a(@NotNull rzt paramrzt, int paramInt, @Nullable Object paramObject);
-  
-  public abstract void b(@NotNull rzt paramrzt);
-  
-  public abstract void c(@NotNull rzt paramrzt);
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  {
+    this.a.removeOnLayoutChangeListener(this);
+    if (VideoFeedsRecyclerView.a(this.a) != null) {
+      VideoFeedsRecyclerView.a(this.a).a(VideoFeedsRecyclerView.a(this.a).itemView);
+    }
+  }
 }
 
 

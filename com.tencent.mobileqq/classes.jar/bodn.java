@@ -1,21 +1,96 @@
-import com.tencent.mobileqq.activity.qwallet.emoj.QWalletFaceTracker.OnPreviewFrameHandlerListener;
-import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 class bodn
-  implements QWalletFaceTracker.OnPreviewFrameHandlerListener
 {
-  bodn(bodh parambodh) {}
+  private BufferedReader jdField_a_of_type_JavaIoBufferedReader;
+  private InputStream jdField_a_of_type_JavaIoInputStream;
+  private InputStreamReader jdField_a_of_type_JavaIoInputStreamReader;
+  public Process a;
   
-  public void getFaceRecognizeResult(float paramFloat)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onPreviewFrame: getFaceRecognizeResult=" + paramFloat);
-    }
-    if (paramFloat >= this.a.g)
+    if (this.jdField_a_of_type_JavaLangProcess != null)
     {
-      bodh.a(this.a);
-      if (bodh.a(this.a)) {
-        this.a.ad();
+      this.jdField_a_of_type_JavaIoInputStream = this.jdField_a_of_type_JavaLangProcess.getInputStream();
+      this.jdField_a_of_type_JavaIoInputStreamReader = new InputStreamReader(this.jdField_a_of_type_JavaIoInputStream);
+      this.jdField_a_of_type_JavaIoBufferedReader = new BufferedReader(this.jdField_a_of_type_JavaIoInputStreamReader);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaLangProcess != null) {}
+    try
+    {
+      for (;;)
+      {
+        String str = this.jdField_a_of_type_JavaIoBufferedReader.readLine();
+        if (str == null) {
+          break;
+        }
+        bodl.a("[@] compressVideo log:" + str, null);
+      }
+      label177:
+      return;
+    }
+    catch (IOException localIOException1)
+    {
+      for (;;)
+      {
+        try
+        {
+          if (this.jdField_a_of_type_JavaIoInputStream != null) {
+            this.jdField_a_of_type_JavaIoInputStream.close();
+          }
+          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
+            this.jdField_a_of_type_JavaIoInputStreamReader.close();
+          }
+          if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
+            this.jdField_a_of_type_JavaIoBufferedReader.close();
+          }
+          return;
+        }
+        catch (IOException localIOException3) {}
+        try
+        {
+          if (this.jdField_a_of_type_JavaIoInputStream != null) {
+            this.jdField_a_of_type_JavaIoInputStream.close();
+          }
+          if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
+            this.jdField_a_of_type_JavaIoInputStreamReader.close();
+          }
+          if (this.jdField_a_of_type_JavaIoBufferedReader == null) {
+            continue;
+          }
+          this.jdField_a_of_type_JavaIoBufferedReader.close();
+          return;
+        }
+        catch (IOException localIOException2)
+        {
+          return;
+        }
+      }
+    }
+    finally
+    {
+      try
+      {
+        if (this.jdField_a_of_type_JavaIoInputStream != null) {
+          this.jdField_a_of_type_JavaIoInputStream.close();
+        }
+        if (this.jdField_a_of_type_JavaIoInputStreamReader != null) {
+          this.jdField_a_of_type_JavaIoInputStreamReader.close();
+        }
+        if (this.jdField_a_of_type_JavaIoBufferedReader != null) {
+          this.jdField_a_of_type_JavaIoBufferedReader.close();
+        }
+      }
+      catch (IOException localIOException4)
+      {
+        break label177;
       }
     }
   }

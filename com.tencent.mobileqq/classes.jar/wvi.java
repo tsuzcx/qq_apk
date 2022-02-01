@@ -1,16 +1,28 @@
-class wvi
-  implements wjs
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+
+public class wvi
+  implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  wvi(wvh paramwvh, wvj paramwvj) {}
+  public void OnDownloadCallback(String paramString) {}
   
-  public void a(String paramString, int paramInt) {}
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
-  public void a(String paramString, long paramLong1, long paramLong2)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    wvh.a(this.jdField_a_of_type_Wvh, new wvl[] { new wvl(this.jdField_a_of_type_Wvj, paramLong1, paramLong2) });
+    return false;
   }
   
-  public void a(String paramString1, String paramString2) {}
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  {
+    return false;
+  }
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
 }
 
 

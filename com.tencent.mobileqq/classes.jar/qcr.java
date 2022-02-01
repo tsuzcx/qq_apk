@@ -1,235 +1,83 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeVideoView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.biz.pubaccount.readinjoy.notecard.SoundCheckRunnable;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.NoteCardProteusItem.1.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 
 public class qcr
-  extends ViewBase
+  implements slh
 {
-  private int jdField_a_of_type_Int;
-  private NativeVideoView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
-  private String e;
+  qcr(qcq paramqcq, qhw paramqhw, pvc parampvc, Container paramContainer) {}
   
-  public qcr(VafContext paramVafContext)
+  public void a()
   {
-    super(paramVafContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView = new NativeVideoView(paramVafContext.getContext());
-  }
-  
-  public NativeVideoView a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView;
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.getComMeasuredWidth();
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setBackgroundColor(this.mBackground);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setCoverUrl(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setPlayIconUrl(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setVideoVid(this.c);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setPlayIconSize(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    if (!TextUtils.isEmpty(this.d)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setVideoUrl(this.d);
+    int j = 1;
+    QLog.d("NoteCardProteusItem", 1, "onItemResume");
+    qcq.a(this.jdField_a_of_type_Qcq, true);
+    if (qcq.a(this.jdField_a_of_type_Qcq) != null) {
+      qcq.a(this.jdField_a_of_type_Qcq).a();
     }
-    try
+    if (this.jdField_a_of_type_Qhw != null) {
+      this.jdField_a_of_type_Qhw.a();
+    }
+    Object localObject = this.jdField_a_of_type_Pvc.a().scripCmsInfo;
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    if ((qcq.a(this.jdField_a_of_type_Qcq)) && (pxs.a() != 0))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setVideoBusiType(Integer.parseInt(this.e));
-      refresh();
+      i = pxs.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str);
+      int k = pxs.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str);
+      if ((i < pxs.b()) && (k < pxs.c()))
+      {
+        ((rea)localObject).a = 2;
+        pxs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, i + 1);
+        pxs.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, k + 1);
+      }
+    }
+    if ((pxs.a() == 1) && (pxs.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str) > 0))
+    {
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext();
+      i = j;
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        i = j;
+        if (localObject != null) {
+          if (((Context)localObject).checkSelfPermission("android.permission.RECORD_AUDIO") != 0) {
+            break label290;
+          }
+        }
+      }
+    }
+    label290:
+    for (int i = j;; i = 0)
+    {
+      if (i != 0) {
+        ThreadManager.getUIHandler().postDelayed(new NoteCardProteusItem.1.1(this), 1000L);
+      }
+      qcq.b(this.jdField_a_of_type_Qcq, false);
+      localObject = this.jdField_a_of_type_Pvc.a();
+      if (localObject != null)
+      {
+        ((ArticleInfo)localObject).invalidateProteusTemplateBean();
+        pkp.a().b();
+      }
       return;
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        QLog.e("ReadInJoyVideoView", 2, localNumberFormatException.getMessage());
-      }
-    }
   }
   
-  public boolean setAttribute(int paramInt, Object paramObject)
+  public void b()
   {
-    String str;
-    switch (paramInt)
-    {
-    case 1144: 
-    case 1145: 
-    case 1147: 
-    default: 
-      return super.setAttribute(paramInt, paramObject);
-    case 1143: 
-      if (((paramObject instanceof JSONArray)) && (((JSONArray)paramObject).length() == 2))
-      {
-        str = ((JSONArray)paramObject).optString(0);
-        paramObject = ((JSONArray)paramObject).optString(1);
-      }
-      try
-      {
-        paramInt = Integer.parseInt(str);
-        int i = Integer.parseInt(paramObject);
-        this.jdField_a_of_type_Int = paramInt;
-        this.jdField_b_of_type_Int = i;
-        return true;
-      }
-      catch (Exception paramObject)
-      {
-        for (;;)
-        {
-          paramObject.printStackTrace();
-        }
-      }
-    case 1146: 
-      if (((paramObject instanceof JSONArray)) && (((JSONArray)paramObject).length() == 2)) {
-        try
-        {
-          str = ((JSONArray)paramObject).optString(0);
-          paramObject = ((JSONArray)paramObject).optString(1);
-          this.c = str;
-          this.e = paramObject;
-          return true;
-        }
-        catch (NumberFormatException paramObject)
-        {
-          paramObject.printStackTrace();
-          return false;
-        }
-      }
-      break;
+    QLog.d("NoteCardProteusItem", 1, "onItemPause");
+    qcq.a(this.jdField_a_of_type_Qcq, false);
+    if (this.jdField_a_of_type_Qhw != null) {
+      this.jdField_a_of_type_Qhw.b();
     }
-    if ((paramObject instanceof JSONObject)) {
-      try
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setReportR5(paramObject.toString());
-        paramObject = (JSONObject)paramObject;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setRowKey(paramObject.optString("rowkey"));
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setDtPgid(paramObject.optString("dt_pgid"));
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setChannelId(Long.parseLong(paramObject.optString("channel_id")));
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setPuin(paramObject.optString("puin"));
-        return true;
-      }
-      catch (Exception paramObject)
-      {
-        for (;;)
-        {
-          QLog.d("ReadInJoyVideoView", 1, paramObject.getMessage());
-        }
-      }
-    }
-    return false;
-  }
-  
-  public boolean setAttribute(int paramInt, String paramString)
-  {
-    switch (paramInt)
-    {
-    case 1143: 
-    case 1146: 
-    case 1148: 
-    default: 
-      return super.setAttribute(paramInt, paramString);
-    case 1139: 
-      this.c = paramString;
-      return true;
-    case 1137: 
-      this.d = paramString;
-      return true;
-    case 1138: 
-      this.jdField_a_of_type_JavaLangString = paramString;
-      return true;
-    case 1140: 
-      if (!TextUtils.isEmpty(paramString))
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setLoop("yes".equals(paramString.toLowerCase()));
-        return true;
-      }
-      return false;
-    case 1141: 
-      if (!TextUtils.isEmpty(paramString))
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setMute("yes".equals(paramString.toLowerCase()));
-        return true;
-      }
-      return false;
-    case 1142: 
-      if (!TextUtils.isEmpty(paramString)) {
-        try
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setScaleType(Integer.parseInt(paramString));
-          return true;
-        }
-        catch (NumberFormatException paramString)
-        {
-          paramString.printStackTrace();
-          return false;
-        }
-      }
-      return false;
-    case 1144: 
-      this.jdField_b_of_type_JavaLangString = paramString;
-      return true;
-    case 1145: 
-      if (!TextUtils.isEmpty(paramString))
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setPlayIconVisible("yes".equals(paramString.toLowerCase()));
-        return true;
-      }
-      return false;
-    case 1147: 
-      if (!TextUtils.isEmpty(paramString)) {
-        try
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setPlayMode(Integer.parseInt(paramString));
-          return true;
-        }
-        catch (NumberFormatException paramString)
-        {
-          paramString.printStackTrace();
-          return false;
-        }
-      }
-      return false;
-    }
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeVideoView.setAutoPlayMode(Integer.parseInt(paramString));
-        return true;
-      }
-      catch (NumberFormatException paramString)
-      {
-        paramString.printStackTrace();
-        return false;
-      }
-    }
-    return false;
+    qcq.b(this.jdField_a_of_type_Qcq);
   }
 }
 

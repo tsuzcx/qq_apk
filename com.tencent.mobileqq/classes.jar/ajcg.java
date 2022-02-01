@@ -1,73 +1,48 @@
-import android.content.Context;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import java.util.List;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class ajcg
-  implements Handler.Callback
+  extends amqk
 {
-  public ajcg(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  public ajcg(Conversation paramConversation) {}
   
-  public boolean handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
+    super.a(paramBoolean, paramLong, paramString);
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
+    if (i == 0) {
+      this.a.a(8, AppConstants.DATALINE_PC_UIN, 6000);
     }
-    switch (paramMessage.arg2)
-    {
+    while (i != 1) {
+      return;
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      break;
-      switch (paramMessage.arg1)
-      {
-      default: 
-        break;
-      case 20: 
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131714423));
-        paramMessage = TroopMemberHistoryFragment.a(this.a).getContext().getResources();
-        Object localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = agej.a(320.0F, paramMessage);
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = agej.a(177.5F, paramMessage);
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = beyq.a;
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = beyq.a;
-        paramMessage = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20171229/e4f73825907a4cdeb29db9c6688cd82c.png", (URLDrawable.URLDrawableOptions)localObject);
-        localObject = (ImageView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131378826);
-        ((ImageView)localObject).setImageDrawable(paramMessage);
-        ((ImageView)localObject).setVisibility(0);
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        continue;
-        if ((paramMessage.obj instanceof List))
-        {
-          this.a.jdField_a_of_type_Ajck.a((List)paramMessage.obj);
-          this.a.jdField_a_of_type_Ajck.notifyDataSetChanged();
-        }
-        switch (paramMessage.arg1)
-        {
-        default: 
-          break;
-        case 20: 
-          this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-          continue;
-          if (paramMessage.arg1 == 20)
-          {
-            this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131696914);
-            this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-          }
-          break;
-        }
-        break;
-      }
+    this.a.a(8, AppConstants.DATALINE_IPAD_UIN, 6000);
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong, String paramString)
+  {
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong.longValue());
+    if (i == 0) {
+      this.a.a(9, AppConstants.DATALINE_PC_UIN, 6003);
     }
+    while (i != 1) {
+      return;
+    }
+    this.a.a(8, AppConstants.DATALINE_IPAD_UIN, 6003);
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.b(paramBoolean, paramLong, paramString);
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramLong);
+    if (i == 0) {
+      this.a.a(8, AppConstants.DATALINE_PC_UIN, 6000);
+    }
+    while (i != 1) {
+      return;
+    }
+    this.a.a(8, AppConstants.DATALINE_IPAD_UIN, 6003);
   }
 }
 

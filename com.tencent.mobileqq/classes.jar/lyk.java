@@ -1,13 +1,21 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.share.AVSchema;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class lyk
-  implements DialogInterface.OnClickListener
+class lyk
+  implements DialogInterface.OnDismissListener
 {
-  public lyk(AVSchema paramAVSchema) {}
+  lyk(lyh paramlyh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("ShareChat", 1, "ShareActionSheetBuilder.onDismiss, mChoosedChannel[" + this.a.jdField_a_of_type_Int + "], mIHandle[" + this.a.jdField_a_of_type_Lym + "]");
+    }
+    if ((this.a.jdField_a_of_type_Int == -1) && (this.a.jdField_a_of_type_Lym != null)) {
+      this.a.a(this.a.jdField_a_of_type_Int, this.a.b, 1);
+    }
+  }
 }
 
 

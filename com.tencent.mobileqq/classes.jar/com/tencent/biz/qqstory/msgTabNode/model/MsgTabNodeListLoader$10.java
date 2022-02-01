@@ -3,13 +3,13 @@ package com.tencent.biz.qqstory.msgTabNode.model;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import wvs;
-import wvz;
+import vxi;
+import vxp;
 
 public class MsgTabNodeListLoader$10
   implements Runnable
 {
-  public MsgTabNodeListLoader$10(wvs paramwvs, ArrayList paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3) {}
+  public MsgTabNodeListLoader$10(vxi paramvxi, ArrayList paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class MsgTabNodeListLoader$10
     {
       Iterator localIterator = this.this$0.d.iterator();
       if (localIterator.hasNext()) {
-        ((wvz)localIterator.next()).a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Boolean, this.b, this.c);
+        ((vxp)localIterator.next()).a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Boolean, this.b, this.c);
       }
     }
     if ((QLog.isDevelopLevel()) && (this.this$0.d.isEmpty())) {
@@ -27,7 +27,7 @@ public class MsgTabNodeListLoader$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.10
  * JD-Core Version:    0.7.0.1
  */

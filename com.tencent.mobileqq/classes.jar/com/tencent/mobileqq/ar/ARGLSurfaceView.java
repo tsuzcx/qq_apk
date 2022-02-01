@@ -7,29 +7,29 @@ import android.opengl.GLSurfaceView.Renderer;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
-import apeo;
-import apep;
-import apeq;
+import anya;
+import anyb;
+import anyc;
 import com.tencent.qphone.base.util.QLog;
 
 @TargetApi(14)
 public class ARGLSurfaceView
   extends GLSurfaceView
 {
-  private apep jdField_a_of_type_Apep;
-  private apeq jdField_a_of_type_Apeq;
+  private anyb jdField_a_of_type_Anyb;
+  private anyc jdField_a_of_type_Anyc;
   
-  public ARGLSurfaceView(Context paramContext, SurfaceHolder.Callback paramCallback, apep paramapep)
+  public ARGLSurfaceView(Context paramContext, SurfaceHolder.Callback paramCallback, anyb paramanyb)
   {
     super(paramContext);
-    QLog.i("AREngine_ARGLSurfaceView", 1, "create ARGLSurfaceView. context = " + paramContext + ", holderCallback = " + paramCallback + ", surfaceViewCallback = " + paramapep);
-    setEGLContextFactory(new apeo(this));
+    QLog.i("AREngine_ARGLSurfaceView", 1, "create ARGLSurfaceView. context = " + paramContext + ", holderCallback = " + paramCallback + ", surfaceViewCallback = " + paramanyb);
+    setEGLContextFactory(new anya(this));
     setEGLContextClientVersion(2);
     setEGLConfigChooser(8, 8, 8, 8, 16, 0);
     if (paramCallback != null) {
       getHolder().addCallback(paramCallback);
     }
-    this.jdField_a_of_type_Apep = paramapep;
+    this.jdField_a_of_type_Anyb = paramanyb;
   }
   
   public void onPause()
@@ -44,16 +44,16 @@ public class ARGLSurfaceView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Apep != null) {
-      this.jdField_a_of_type_Apep.a(paramMotionEvent, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), getWidth(), getHeight());
+    if (this.jdField_a_of_type_Anyb != null) {
+      this.jdField_a_of_type_Anyb.a(paramMotionEvent, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), getWidth(), getHeight());
     }
     super.onTouchEvent(paramMotionEvent);
     return false;
   }
   
-  public void setOnEglContextDestoryListener(apeq paramapeq)
+  public void setOnEglContextDestoryListener(anyc paramanyc)
   {
-    this.jdField_a_of_type_Apeq = paramapeq;
+    this.jdField_a_of_type_Anyc = paramanyc;
   }
   
   @Deprecated

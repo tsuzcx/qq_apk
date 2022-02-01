@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoy.notecard;
 import android.media.AudioRecord;
 import android.os.Handler;
 import android.os.Looper;
-import psa;
+import pxt;
 
 public class SoundCheckRunnable
   implements Runnable
@@ -13,7 +13,7 @@ public class SoundCheckRunnable
   private int jdField_a_of_type_Int = AudioRecord.getMinBufferSize(8000, 2, 2);
   private AudioRecord jdField_a_of_type_AndroidMediaAudioRecord = new AudioRecord(1, 8000, 2, 2, this.jdField_a_of_type_Int);
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private psa jdField_a_of_type_Psa;
+  private pxt jdField_a_of_type_Pxt;
   private boolean jdField_a_of_type_Boolean = true;
   
   public void a()
@@ -21,9 +21,9 @@ public class SoundCheckRunnable
     this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a(psa parampsa)
+  public void a(pxt parampxt)
   {
-    this.jdField_a_of_type_Psa = parampsa;
+    this.jdField_a_of_type_Pxt = parampxt;
   }
   
   public boolean a()
@@ -164,7 +164,7 @@ public class SoundCheckRunnable
     //   241: fcmpl
     //   242: ifle -215 -> 27
     //   245: aload_0
-    //   246: getfield 62	com/tencent/biz/pubaccount/readinjoy/notecard/SoundCheckRunnable:jdField_a_of_type_Psa	Lpsa;
+    //   246: getfield 62	com/tencent/biz/pubaccount/readinjoy/notecard/SoundCheckRunnable:jdField_a_of_type_Pxt	Lpxt;
     //   249: astore 10
     //   251: aload 10
     //   253: ifnull +21 -> 274
@@ -174,7 +174,7 @@ public class SoundCheckRunnable
     //   263: dup
     //   264: aload_0
     //   265: aload 10
-    //   267: invokespecial 161	com/tencent/biz/pubaccount/readinjoy/notecard/SoundCheckRunnable$1:<init>	(Lcom/tencent/biz/pubaccount/readinjoy/notecard/SoundCheckRunnable;Lpsa;)V
+    //   267: invokespecial 161	com/tencent/biz/pubaccount/readinjoy/notecard/SoundCheckRunnable$1:<init>	(Lcom/tencent/biz/pubaccount/readinjoy/notecard/SoundCheckRunnable;Lpxt;)V
     //   270: invokevirtual 165	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   273: pop
     //   274: aload 9
@@ -206,7 +206,7 @@ public class SoundCheckRunnable
     //   300	1	8	localException2	java.lang.Exception
     //   22	253	9	localLinkedList	java.util.LinkedList
     //   112	3	10	localInterruptedException	java.lang.InterruptedException
-    //   249	17	10	localpsa	psa
+    //   249	17	10	localpxt	pxt
     // Exception table:
     //   from	to	target	type
     //   0	7	91	java/lang/Exception

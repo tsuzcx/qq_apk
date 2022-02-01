@@ -1,20 +1,8 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
 
-class bnmn
-  extends BroadcastReceiver
+public abstract interface bnmn
 {
-  bnmn(bnmm parambnmm) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (paramIntent.getAction().equals("com.tencent.qq.syncSecretShuoshuoMsg"))
-    {
-      int i = paramIntent.getIntExtra("com.tencent.qq.syncSecretShuoshuoMsgType", 0);
-      bnmm.a(this.a, i);
-    }
-  }
+  public abstract void a(DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, int paramInt);
 }
 
 

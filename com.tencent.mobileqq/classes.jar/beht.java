@@ -1,58 +1,30 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+import java.lang.ref.WeakReference;
 
-public abstract class beht
-  extends Binder
-  implements behs
+public class beht
 {
-  private static final String DESCRIPTOR = "com.tencent.mobileqq.theme.IDownloadListener";
-  static final int TRANSACTION_onComplete = 2;
-  static final int TRANSACTION_onProgress = 1;
+  protected ImageView a;
+  protected SessionInfo a;
+  protected QQAppInterface a;
+  protected RedDotAnimateView a;
+  protected WeakReference<BaseActivity> a;
   
-  public beht()
-  {
-    attachInterface(this, "com.tencent.mobileqq.theme.IDownloadListener");
-  }
+  public void a() {}
   
-  public static behs asInterface(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.theme.IDownloadListener");
-    if ((localIInterface != null) && ((localIInterface instanceof behs))) {
-      return (behs)localIInterface;
-    }
-    return new behu(paramIBinder);
-  }
+  public void a(boolean paramBoolean) {}
   
-  public IBinder asBinder()
-  {
-    return this;
-  }
+  public void a(boolean paramBoolean1, TroopChatPie paramTroopChatPie, boolean paramBoolean2) {}
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.theme.IDownloadListener");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.IDownloadListener");
-      onProgress(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
-      paramParcel2.writeNoException();
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.theme.IDownloadListener");
-    onComplete(paramParcel1.readString(), paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
-  }
+  public void b() {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c() {}
 }
 
 

@@ -1,21 +1,29 @@
-import android.support.annotation.Nullable;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.mobileqq.util.DisplayUtil;
 
-class zcc
-  extends zcl
+public class zcc
+  extends RecyclerView.ItemDecoration
 {
-  zcc(zbz paramzbz, zby paramzby)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    super(paramzby);
-  }
-  
-  protected void a(@Nullable zby arg1)
-  {
-    super.onResult(???);
-    yuk.b("DoodleEmojiManager", "startDownload again");
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    int i = paramRecyclerView.getChildAdapterPosition(paramView);
+    if (i == 0)
     {
-      this.a.jdField_a_of_type_Zby = null;
-      this.a.c();
+      paramRect.left = DisplayUtil.dip2px(paramView.getContext(), 3.0F);
+      paramRect.right = 0;
+      return;
+    }
+    paramRecyclerView = paramRecyclerView.getAdapter();
+    if ((paramRecyclerView != null) && (i == paramRecyclerView.getItemCount() - 1)) {}
+    for (paramRect.right = DisplayUtil.dip2px(paramView.getContext(), 3.0F);; paramRect.right = 0)
+    {
+      paramRect.left = (-DisplayUtil.dip2px(paramView.getContext(), 6.0F));
       return;
     }
   }

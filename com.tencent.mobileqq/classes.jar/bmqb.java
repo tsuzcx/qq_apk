@@ -1,11 +1,6 @@
-import cooperation.qqreader.net.BaseCgiTask;
-
-public abstract class bmqb
-  implements bmqa
+public abstract interface bmqb
 {
-  public void a(bmqc parambmqc) {}
-  
-  public void a(BaseCgiTask paramBaseCgiTask, String paramString) {}
+  public abstract void a(int paramInt);
 }
 
 

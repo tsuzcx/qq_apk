@@ -1,85 +1,59 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtHandler;
-import com.tencent.gdtad.aditem.GdtHandler.Options;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialFragment;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
+import tencent.im.oidb.oidb_0x87a.RspBody;
+import tencent.im.oidb.oidb_0x87c.RspBody;
 
-class acum
-  implements acun
+public class acum
+  extends axkv
 {
-  private int a(int paramInt)
+  private WeakReference<axkv> a;
+  
+  public acum(axkv paramaxkv)
   {
-    if (paramInt == 0) {
-      return 1;
-    }
-    if (paramInt == 1) {
-      return 0;
-    }
-    if (paramInt == 2) {
-      return 8;
-    }
-    return -2147483648;
+    this.a = new WeakReference(paramaxkv);
   }
   
-  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
+  public void getTmpKeySuccess(String paramString1, String paramString2)
   {
-    Object localObject = null;
-    if (paramacts != null) {}
-    GdtHandler.Options localOptions;
-    for (Activity localActivity = paramacts.a();; localActivity = null)
+    axkv localaxkv = (axkv)this.a.get();
+    if (localaxkv != null)
     {
-      localOptions = new GdtHandler.Options();
-      boolean bool = GdtHandler.a(localOptions, paramVarArgs[0]);
-      if ((paramacts != null) && (localActivity != null) && (bool)) {
-        break;
-      }
-      acvc.d("GdtInterstitialJsCallHandler", "handleJsCallRequest error");
-      return true;
+      localaxkv.getTmpKeySuccess(paramString1, paramString2);
+      return;
     }
-    for (;;)
+    super.getTmpKeySuccess(paramString1, paramString2);
+  }
+  
+  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
+  {
+    axkv localaxkv = (axkv)this.a.get();
+    if (localaxkv != null)
     {
-      try
-      {
-        paramVarArgs = new JSONObject(paramVarArgs[0]);
-        acvc.b("GdtInterstitialJsCallHandler", paramVarArgs.toString());
-        paramVarArgs = paramVarArgs.getJSONObject("options");
-        int i = paramVarArgs.optInt("style", 0);
-        int j = a(paramVarArgs.optInt("orientation"));
-        paramVarArgs = paramacts.a().getIntent();
-        if (TextUtils.isEmpty(paramVarArgs.getStringExtra("big_brother_ref_source_key")))
-        {
-          paramVarArgs = paramVarArgs.getStringExtra("big_brother_source_key");
-          localOptions.jdField_a_of_type_AndroidOsBundle = new Bundle();
-          localOptions.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramVarArgs);
-          acvc.b("GdtInterstitialJsCallHandler", String.format("handleJsCallRequest Source.KEY_REF_ID:%s", new Object[] { paramVarArgs }));
-          paramVarArgs = new GdtInterstitialParams();
-          paramVarArgs.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = localOptions;
-          paramVarArgs.jdField_a_of_type_Int = i;
-          paramVarArgs.b = j;
-          paramVarArgs.jdField_a_of_type_Boolean = true;
-          i = GdtInterstitialFragment.a(localActivity, paramVarArgs);
-          paramacts.callJs(paramString, null);
-          acvp.a(localActivity, paramVarArgs, i);
-          paramString = localObject;
-          if (paramacts != null) {
-            paramString = paramacts.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, true, "showInterstitial", paramString, localOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
-          return true;
-        }
-      }
-      catch (Throwable paramacts)
-      {
-        acvc.d("GdtInterstitialJsCallHandler", "handleJsCallRequest error", paramacts);
-        return true;
-      }
-      paramVarArgs = paramVarArgs.getStringExtra("big_brother_ref_source_key");
+      localaxkv.onFailedResponse(paramString1, paramInt, paramString2);
+      return;
     }
+    super.onFailedResponse(paramString1, paramInt, paramString2);
+  }
+  
+  public void sendSmsCodeSuccess(oidb_0x87a.RspBody paramRspBody)
+  {
+    axkv localaxkv = (axkv)this.a.get();
+    if (localaxkv != null)
+    {
+      localaxkv.sendSmsCodeSuccess(paramRspBody);
+      return;
+    }
+    super.sendSmsCodeSuccess(paramRspBody);
+  }
+  
+  public void verifySmsCodeSuccess(oidb_0x87c.RspBody paramRspBody)
+  {
+    axkv localaxkv = (axkv)this.a.get();
+    if (localaxkv != null)
+    {
+      localaxkv.verifySmsCodeSuccess(paramRspBody);
+      return;
+    }
+    super.verifySmsCodeSuccess(paramRspBody);
   }
 }
 

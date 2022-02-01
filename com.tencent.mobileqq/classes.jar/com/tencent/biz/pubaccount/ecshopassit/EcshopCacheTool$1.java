@@ -7,12 +7,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import ofa;
+import ogn;
 
 public class EcshopCacheTool$1
   implements Runnable
 {
-  public EcshopCacheTool$1(ofa paramofa) {}
+  public EcshopCacheTool$1(ogn paramogn) {}
   
   public void run()
   {

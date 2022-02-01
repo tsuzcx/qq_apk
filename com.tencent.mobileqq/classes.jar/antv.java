@@ -1,35 +1,21 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BaseActivity.MyShakeListener.1;
-import com.tencent.mobileqq.app.ScreenShot;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class antv
-  extends aohg
+  extends anri
 {
-  public void a()
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    Object localObject = BaseActivity.sTopActivity;
-    if (localObject == null) {
-      ScreenShot.a("MyShakeListener - top activity is null");
-    }
-    do
-    {
-      return;
-      if (!((BaseActivity)localObject).mCurrentActivityShakeFlag)
-      {
-        ScreenShot.a("MyShakeListener - shake flag is false");
-        return;
-      }
-    } while (ThreadManager.getSubThreadHandler().hasMessages(1001));
-    localObject = ThreadManager.getSubThreadHandler().obtainMessage(1001, new BaseActivity.MyShakeListener.1(this, (BaseActivity)localObject));
-    ThreadManager.getSubThreadHandler().sendMessage((Message)localObject);
+    paramQQAppInterface = new antu(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "now";
+    paramQQAppInterface.c = "playmedia";
+    return paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     antv
  * JD-Core Version:    0.7.0.1
  */

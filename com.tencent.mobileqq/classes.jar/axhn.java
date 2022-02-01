@@ -1,22 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class axhn
-  implements DialogInterface.OnClickListener
+class axhn
+  implements View.OnClickListener
 {
-  public axhn(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
+  axhn(axhm paramaxhm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    MsgBackupCompleteFragment.a(this.a);
-    if (MsgBackupCompleteFragment.a(this.a) == 1) {
-      axjk.a("0X800A253", 5);
+    if (((paramView.getTag() instanceof axho)) && (this.a.a != null))
+    {
+      axho localaxho = (axho)paramView.getTag();
+      this.a.a.a(this.a, paramView, localaxho);
     }
-    while ((MsgBackupCompleteFragment.a(this.a) != 4) || (!MsgBackupCompleteFragment.a(this.a))) {
-      return;
-    }
-    axjk.a("0X800A267", 2);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

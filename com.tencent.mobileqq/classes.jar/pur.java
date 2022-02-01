@@ -1,21 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-
-class pur
-  implements ViewBase.OnClickListener
+public class pur<T>
 {
-  pur(puq parampuq, ppu paramppu, Container paramContainer) {}
+  private long jdField_a_of_type_Long;
+  T jdField_a_of_type_JavaLangObject;
+  public boolean a;
+  private long b;
   
-  public void onClick(ViewBase paramViewBase)
+  public pur(T paramT)
   {
-    paramViewBase = this.jdField_a_of_type_Ppu.a();
-    String str = paramViewBase.mSocialFeedInfo.a.f;
-    ozs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
-    sel.a(paramViewBase, (int)paramViewBase.mChannelID);
-    ubg.a(paramViewBase);
+    this(paramT, localObject, 600000L);
+    if (localObject == null) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public pur(T paramT, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramLong;
+    this.b = System.currentTimeMillis();
+    Object localObject;
+    this.jdField_a_of_type_Long = localObject;
+  }
+  
+  public T a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a(T paramT)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    this.b = System.currentTimeMillis();
+  }
+  
+  public boolean a()
+  {
+    return System.currentTimeMillis() - this.b >= this.jdField_a_of_type_Long;
   }
 }
 

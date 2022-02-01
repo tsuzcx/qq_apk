@@ -1,21 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-class pxi
-  implements View.OnClickListener
+public abstract interface pxi<BEAN>
 {
-  pxi(pxe parampxe, ppu paramppu, sel paramsel) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Ppu.a();
-    sgf localsgf = this.jdField_a_of_type_Sel.a();
-    if (localsgf != null) {
-      localsgf.a(paramView, this.jdField_a_of_type_Ppu.a(), 2);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(boolean paramBoolean, List<BEAN> paramList, int paramInt, String paramString);
 }
 
 

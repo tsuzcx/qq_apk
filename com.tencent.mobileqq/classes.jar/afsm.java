@@ -1,8 +1,24 @@
-public class afsm
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class afsm
+  implements View.OnClickListener
 {
-  public long a;
-  public String a;
-  String b;
+  afsm(afsl paramafsl) {}
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      afsl.a(this.a, paramView);
+    }
+  }
 }
 
 

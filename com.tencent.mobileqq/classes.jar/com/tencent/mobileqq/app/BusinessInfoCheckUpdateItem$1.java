@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.app;
 
-import anuh;
-import aoav;
-import aoay;
-import aobi;
-import aocs;
-import aoid;
-import aztd;
+import amuw;
+import amva;
+import amvl;
+import amwu;
+import anbs;
+import ayfs;
 import java.util.ArrayList;
 
-public final class BusinessInfoCheckUpdateItem$1
-  extends ArrayList<anuh>
+final class BusinessInfoCheckUpdateItem$1
+  extends ArrayList<BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface>
 {
-  public BusinessInfoCheckUpdateItem$1()
+  BusinessInfoCheckUpdateItem$1()
   {
-    add(new aoid());
-    add(new aoav());
-    add(new aobi());
-    add(new aocs());
-    add(new aztd());
-    add(new aoay());
+    add(new anbs());
+    add(new amuw());
+    add(new amvl());
+    add(new amwu());
+    add(new ayfs());
+    add(new amva());
   }
 }
 

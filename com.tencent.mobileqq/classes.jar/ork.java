@@ -1,15 +1,29 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public final class ork
-  extends Editable.Factory
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class ork
+  implements ViewBase.OnClickListener
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  ork(ouo paramouo, ouc paramouc) {}
+  
+  public final void onClick(ViewBase paramViewBase)
   {
-    if ((paramCharSequence instanceof omv)) {
-      return (Editable)paramCharSequence;
+    if (this.jdField_a_of_type_Ouo.a != null)
+    {
+      Object localObject = this.jdField_a_of_type_Ouc.a();
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "adapter.vafContext");
+      localObject = ((VafContext)localObject).getContext();
+      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "viewBase");
+      pay.a((Context)localObject, paramViewBase.getEventAttachedData());
+      if (this.jdField_a_of_type_Ouc.a() != null) {
+        this.jdField_a_of_type_Ouc.a().e(this.jdField_a_of_type_Ouo);
+      }
     }
-    return new omv(paramCharSequence, 3, 20);
   }
 }
 

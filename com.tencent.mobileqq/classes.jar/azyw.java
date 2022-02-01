@@ -1,27 +1,13 @@
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.profile.VipProfileCardPhotoHandlerActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import java.util.HashSet;
 
-public class azyw
-  implements QQPermissionCallback
+class azyw
+  implements azyr
 {
-  public azyw(VipProfileCardPhotoHandlerActivity paramVipProfileCardPhotoHandlerActivity) {}
+  azyw(azyv paramazyv) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(HashSet<String> paramHashSet)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("qqBaseActivity", 2, "takePhoto requestPermission user denied");
-    }
-    bhlq.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("qqBaseActivity", 2, "takePhoto requestPermission user grant");
-    }
-    VipProfileCardPhotoHandlerActivity.a(this.a, ProfileActivity.a(this.a, 5));
+    azyv.a(this.a, paramHashSet);
   }
 }
 

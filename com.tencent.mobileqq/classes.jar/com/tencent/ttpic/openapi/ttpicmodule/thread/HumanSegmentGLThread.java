@@ -112,7 +112,7 @@ public class HumanSegmentGLThread
     if (this.mHandler == null) {
       return;
     }
-    this.mHandler.post(new HumanSegmentGLThread.2(this, paramFrame, paramInt1, paramInt2));
+    this.mHandler.post(new HumanSegmentGLThread.2(this, paramInt1, paramFrame, paramInt2));
   }
   
   public void reset()

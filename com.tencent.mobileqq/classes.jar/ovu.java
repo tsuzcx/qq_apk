@@ -1,17 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
-
 class ovu
-  implements ViewFactory.FoundClickableViewListener
+  extends owd
 {
-  ovu(ovs paramovs) {}
-  
-  public void onFound(ViewBase paramViewBase)
+  ovu(ouu paramouu)
   {
-    if ((paramViewBase.getNativeView() == null) || (paramViewBase.getClickEvnet() == null)) {
-      return;
-    }
-    paramViewBase.setOnClickListener(new ovv(this));
+    super(paramouu, null);
+  }
+  
+  void a(owg paramowg)
+  {
+    paramowg.onCommentReply(false, null);
   }
 }
 

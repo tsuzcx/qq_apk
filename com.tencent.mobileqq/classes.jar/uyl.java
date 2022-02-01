@@ -1,25 +1,14 @@
-import android.support.v4.content.FileProvider;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
 
-class uyl
-  implements aaad
+final class uyl
+  implements DialogInterface.OnShowListener
 {
-  uyl(uyk paramuyk) {}
+  uyl(uwy paramuwy) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    QLog.d("QCircleConfig", 1, "tryGetSplashVideoAsync onRspCallback " + paramBoolean + ", " + paramString);
-    if (paramBoolean)
-    {
-      paramString = new File(paramString, uyk.a(this.a));
-      if ((paramString.exists()) && (paramString.length() > 0L))
-      {
-        uyk.a(FileProvider.getUriForFile(MobileQQ.getContext(), "com.tencent.mobileqq.fileprovider", paramString));
-        QLog.d("QCircleConfig", 1, "tryGetSplashVideoAsync splashVideoPath: " + uyk.b());
-      }
-    }
+    uyd.a(this.a);
   }
 }
 

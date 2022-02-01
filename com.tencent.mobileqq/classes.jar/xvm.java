@@ -1,41 +1,18 @@
-public class xvm
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class xvm
+  implements View.OnClickListener
 {
-  private double jdField_a_of_type_Double = 1.0D;
-  private long jdField_a_of_type_Long;
+  xvm(xvj paramxvj) {}
   
-  public xvm()
+  public void onClick(View paramView)
   {
-    a();
-  }
-  
-  private long b()
-  {
-    return (System.nanoTime() / 1000L * this.jdField_a_of_type_Double);
-  }
-  
-  public double a()
-  {
-    return this.jdField_a_of_type_Double;
-  }
-  
-  public long a()
-  {
-    return b() - this.jdField_a_of_type_Long;
-  }
-  
-  public long a(long paramLong)
-  {
-    return paramLong - a();
-  }
-  
-  public void a()
-  {
-    a(0L);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = (b() - paramLong);
+    if (xvj.a(this.a) != null) {
+      xvj.a(this.a).h();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.webviewplugin;
 
-import aber;
+import aabc;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bjbs;
+import bhht;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public final class NewReportPlugin$3
   implements Runnable
 {
-  public NewReportPlugin$3(Bundle paramBundle, String paramString1, int paramInt, BaseActivity paramBaseActivity, String paramString2, String paramString3, String paramString4, bjbs parambjbs) {}
+  public NewReportPlugin$3(Bundle paramBundle, String paramString1, int paramInt, BaseActivity paramBaseActivity, String paramString2, String paramString3, String paramString4, bhht parambhht) {}
   
   public void run()
   {
@@ -36,15 +36,15 @@ public final class NewReportPlugin$3
         }
       }
       label236:
-      for (String str1 = aber.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.b, this.c, this.jdField_a_of_type_Int, (Bundle)localObject1);; str1 = "chatmsg%3A")
+      for (String str1 = aabc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.b, this.c, this.jdField_a_of_type_Int, (Bundle)localObject1);; str1 = "chatmsg%3A")
       {
-        localObject1 = aber.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.d, "", "", this.c, "", "", this.jdField_a_of_type_Int, (String)localObject2, str1, str2, str3, str4, str5, str6, str7, str8, (Bundle)localObject1);
+        localObject1 = aabc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.d, "", "", this.c, "", "", this.jdField_a_of_type_Int, (String)localObject2, str1, str2, str3, str4, str5, str6, str7, str8, (Bundle)localObject1);
         if (QLog.isColorLevel()) {
           QLog.i("NewReportPlugin", 2, String.format("nearbySafetyRealReport post: %s", new Object[] { localObject1 }));
         }
         this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new NewReportPlugin.3.1(this, (String)localObject1));
         return;
-        localObject2 = aber.a(this.jdField_a_of_type_Int);
+        localObject2 = aabc.a(this.jdField_a_of_type_Int);
         break;
       }
       return;

@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.servlet;
 
-import abjl;
+import aafu;
 import android.content.ContentResolver;
 import android.content.ContentValues;
-import bcvn;
-import bmwi;
+import bbox;
 import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.qzone.UndealCount.QZoneCountInfo;
 import mqq.app.MobileQQ;
 
 public class QZoneManagerImp$3
   implements Runnable
 {
-  public QZoneManagerImp$3(bcvn parambcvn, bmwi parambmwi, int paramInt) {}
+  public QZoneManagerImp$3(bbox parambbox, QZoneCountInfo paramQZoneCountInfo, int paramInt) {}
   
   public void run()
   {
-    if (bcvn.a(this.this$0) == null) {
+    if (bbox.a(this.this$0) == null) {
       return;
     }
-    ContentValues localContentValues = this.jdField_a_of_type_Bmwi.a();
-    localContentValues.put("own_uin", bcvn.a(this.this$0).getAccount());
+    ContentValues localContentValues = this.jdField_a_of_type_CooperationQzoneUndealCountQZoneCountInfo.convertToContentValues();
+    localContentValues.put("own_uin", bbox.a(this.this$0).getAccount());
     localContentValues.put("type", Integer.valueOf(this.jdField_a_of_type_Int));
     try
     {
-      bcvn.a(this.this$0).getApplication().getContentResolver().insert(abjl.h, localContentValues);
+      bbox.a(this.this$0).getApplication().getContentResolver().insert(aafu.h, localContentValues);
       return;
     }
     catch (Exception localException)
@@ -34,7 +34,7 @@ public class QZoneManagerImp$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneManagerImp.3
  * JD-Core Version:    0.7.0.1
  */

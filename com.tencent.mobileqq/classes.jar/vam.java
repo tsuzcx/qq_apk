@@ -1,51 +1,35 @@
-import android.support.v4.view.ViewPropertyAnimatorCompat;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import feedcloud.FeedCloudMeta.StFeed;
+import com.tencent.biz.pubaccount.weishi_new.event.WSUserAuthEvent;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager.ResponseThrowable;
+import rx.Subscriber;
 
-class vam
-  extends RecyclerView.ViewHolder
-  implements zzj
+public class vam
+  extends Subscriber<vao>
 {
-  private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = new FeedCloudMeta.StFeed();
-  private vaq jdField_a_of_type_Vaq = new vaq(this);
+  public vam(WSVerticalDataManager paramWSVerticalDataManager, vaa paramvaa) {}
   
-  public vam(BaseWidgetView paramBaseWidgetView)
+  public void a(vao paramvao)
   {
-    super(paramBaseWidgetView);
-  }
-  
-  public ViewPropertyAnimatorCompat a(RecyclerView.ViewHolder paramViewHolder)
-  {
-    return this.jdField_a_of_type_Vaq.a(paramViewHolder);
-  }
-  
-  public ViewPropertyAnimatorCompat a(zzs paramzzs, long paramLong, boolean paramBoolean)
-  {
-    return this.jdField_a_of_type_Vaq.a(paramzzs, paramLong, paramBoolean);
-  }
-  
-  public ViewPropertyAnimatorCompat a(zzt paramzzt, long paramLong)
-  {
-    return this.jdField_a_of_type_Vaq.a(paramzzt, paramLong);
-  }
-  
-  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo, var paramvar)
-  {
-    if ((this.itemView instanceof BaseWidgetView))
+    if (paramvao == null) {}
+    do
     {
-      this.itemView.setTag(this);
-      ((BaseWidgetView)this.itemView).setInteractor(paramvar);
-      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
-      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
-    }
+      return;
+      if ((paramvao.b) && (ukq.a())) {
+        unw.a().a(new WSUserAuthEvent());
+      }
+    } while (this.jdField_a_of_type_Vaa == null);
+    this.jdField_a_of_type_Vaa.a(paramvao.jdField_a_of_type_JavaUtilList, paramvao.jdField_a_of_type_Boolean, paramvao.b, paramvao.jdField_a_of_type_JavaLangObject);
   }
   
-  public boolean a(zzs paramzzs)
+  public void onCompleted() {}
+  
+  public void onError(Throwable paramThrowable)
   {
-    return this.jdField_a_of_type_Vaq.a(paramzzs);
+    if ((this.jdField_a_of_type_Vaa != null) && ((paramThrowable instanceof WSVerticalDataManager.ResponseThrowable)))
+    {
+      paramThrowable = (WSVerticalDataManager.ResponseThrowable)paramThrowable;
+      this.jdField_a_of_type_Vaa.a(paramThrowable.mErrorCode, paramThrowable.mErrorMsg);
+    }
   }
 }
 

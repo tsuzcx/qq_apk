@@ -1,33 +1,28 @@
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.lang.reflect.Method;
 
-class akga
+public class akga
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
-  private TextView c;
-  
-  public akga(View paramView)
+  public static void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369006);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369996));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370002));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379030));
-    this.b = ((TextView)paramView.findViewById(2131365286));
-    this.c = ((TextView)paramView.findViewById(2131371825));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365406));
+    try
+    {
+      ClassLoader localClassLoader = BaseApplicationImpl.sApplication.getClassLoader();
+      if (localClassLoader == null) {
+        return;
+      }
+      localClassLoader.loadClass("cooperation.qwallet.plugin.QWalletPluginProxyActivity").getMethod("handleNoCatchCrash", new Class[] { String.class }).invoke(null, new Object[] { paramString });
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akga
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.device.msg.activities;
 
-import abvz;
-import abyo;
-import abzb;
+import aasi;
+import aaux;
+import aavk;
 import com.tencent.device.msg.data.MessageForDevPtt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPtt;
@@ -11,16 +11,16 @@ import com.tencent.qphone.base.util.QLog;
 public class DevicePttItemBuilder$3
   implements Runnable
 {
-  public DevicePttItemBuilder$3(abyo paramabyo, MessageForPtt paramMessageForPtt) {}
+  public DevicePttItemBuilder$3(aaux paramaaux, MessageForPtt paramMessageForPtt) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("FileTrans", 2, "downloadPtt istroop" + this.a.istroop + " itemType " + this.a.itemType + " uniseq:" + this.a.uniseq);
     }
-    abvz localabvz = ((abzb)this.this$0.a.a(49)).a();
+    aasi localaasi = ((aavk)this.this$0.a.getBusinessHandler(49)).a();
     if ((this.a instanceof MessageForDevPtt)) {
-      localabvz.a((MessageForDevPtt)this.a);
+      localaasi.a((MessageForDevPtt)this.a);
     }
   }
 }

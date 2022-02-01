@@ -1,56 +1,72 @@
-import android.graphics.Bitmap;
+import android.util.Log;
+import com.tencent.aekit.openrender.internal.Frame;
+import java.util.List;
 
-public abstract interface lqt
+public class lqt
 {
-  public abstract float a();
+  private int jdField_a_of_type_Int;
+  public Frame a;
+  private String jdField_a_of_type_JavaLangString = "RefFrame-" + Integer.toHexString(hashCode());
+  public List<lqu> a;
   
-  public abstract int a();
+  private lqt(Frame paramFrame)
+  {
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = paramFrame;
+  }
   
-  public abstract Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2);
+  private lqt(Frame paramFrame, List<lqu> paramList)
+  {
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = paramFrame;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
   
-  public abstract lqw a();
+  public static lqt a(Frame paramFrame)
+  {
+    return new lqt(paramFrame);
+  }
   
-  public abstract void a();
+  public static lqt a(Frame paramFrame, List<lqu> paramList)
+  {
+    return new lqt(paramFrame, paramList);
+  }
   
-  public abstract void a(float paramFloat);
+  private void b()
+  {
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.unlock();
+  }
   
-  public abstract void a(float paramFloat1, float paramFloat2);
+  void a()
+  {
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      b();
+      return;
+    }
+    b(1);
+  }
   
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int += paramInt;
+  }
   
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty());
+  }
   
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt);
-  
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, lqx paramlqx);
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(lrw paramlrw);
-  
-  public abstract void a(lrw paramlrw, int paramInt1, int paramInt2);
-  
-  public abstract void a(lrw paramlrw, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void a(lrw paramlrw, int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3, int paramInt4);
-  
-  public abstract void a(lrw paramlrw, Bitmap paramBitmap);
-  
-  public abstract boolean a(lrw paramlrw);
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract void b(float paramFloat1, float paramFloat2, float paramFloat3);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  void b(int paramInt)
+  {
+    if (paramInt > this.jdField_a_of_type_Int) {
+      Log.e(this.jdField_a_of_type_JavaLangString, "unlock: count=" + paramInt + ", ref=" + this.jdField_a_of_type_Int);
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_Int -= paramInt;
+    } while (this.jdField_a_of_type_Int != 0);
+    b();
+  }
 }
 
 

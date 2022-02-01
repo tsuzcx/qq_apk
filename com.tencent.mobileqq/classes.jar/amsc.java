@@ -1,29 +1,209 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.FrameHelperActivity.1.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.redtouch.RedTouch;
 import com.tencent.qphone.base.util.QLog;
 
-class amsc
-  implements DialogInterface.OnClickListener
+public class amsc
+  implements akjy
 {
-  amsc(amsb paramamsb) {}
+  public amsc(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(amsb.a(this.a), 2, "On Click Left Button! ");
+    int i = 0;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("Q.recent", 4, "onDrawerStartMoving:: side = " + paramInt + " getActivity = " + this.a.getActivity() + " mDrawerBg= " + this.a.jdField_a_of_type_AndroidViewViewGroup);
     }
-    if (this.a.mRuntime.a() != null) {
-      this.a.mRuntime.a().finish();
+    if (this.a.getActivity() == null) {
+      return;
+    }
+    if (this.a.jdField_a_of_type_AndroidViewViewGroup != null) {
+      FrameHelperActivity.a(this.a, false);
+    }
+    akjy[] arrayOfakjy = this.a.jdField_a_of_type_ArrayOfAkjy;
+    int j = arrayOfakjy.length;
+    while (i < j)
+    {
+      akjy localakjy = arrayOfakjy[i];
+      if (localakjy != null) {
+        localakjy.a(paramInt);
+      }
+      i += 1;
+    }
+    this.a.d(true);
+  }
+  
+  @TargetApi(11)
+  public void a(int paramInt, float paramFloat)
+  {
+    int i = 0;
+    if ((QLog.isDevelopLevel()) && (FrameHelperActivity.a(this.a)))
+    {
+      FrameHelperActivity.a(this.a, false);
+      QLog.i("Q.recent", 4, "onDrawerMoving:: side = " + paramInt + " getActivity = " + this.a.getActivity());
+    }
+    if (this.a.getActivity() == null) {
+      return;
+    }
+    if ((!this.a.getActivity().isFinishing()) && (FrameHelperActivity.a(this.a) != null) && (bjmj.a()))
+    {
+      localObject1 = FrameHelperActivity.a(this.a).a(bjmj.a);
+      if (localObject1 != null) {
+        ((bjuq)localObject1).c();
+      }
+    }
+    if (Build.VERSION.SDK_INT >= 11) {}
+    Object localObject1 = this.a.jdField_a_of_type_ArrayOfAkjy;
+    int j = localObject1.length;
+    while (i < j)
+    {
+      Object localObject2 = localObject1[i];
+      if (localObject2 != null) {
+        localObject2.a(paramInt, paramFloat);
+      }
+      i += 1;
+    }
+    this.a.d(true);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    FrameHelperActivity.a(this.a, true);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("Q.recent", 4, "onDrawerOpened:: side = " + paramInt1 + " getActivity = " + this.a.getActivity());
+    }
+    if (this.a.getActivity() == null) {
+      return;
+    }
+    FrameHelperActivity.b(this.a, true);
+    this.a.a(paramInt2, true, FrameHelperActivity.a(this.a));
+    Object localObject1 = this.a.getActivity().app;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.", 2, "[setDrawerBg(app)]from DrawerOpened");
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(14);
+    if ((!this.a.getActivity().isFinishing()) && (FrameHelperActivity.a(this.a) != null))
+    {
+      FrameHelperActivity.a(this.a).a();
+      if (bjmj.a())
+      {
+        localObject1 = FrameHelperActivity.a(this.a).a(bjmj.a);
+        if (localObject1 != null)
+        {
+          if (paramInt2 != 1) {
+            break label260;
+          }
+          ((bjuq)localObject1).d();
+        }
+      }
     }
     for (;;)
     {
-      amsb.a(this.a, 1);
+      if (Build.VERSION.SDK_INT < 11) {}
+      localObject1 = this.a.jdField_a_of_type_ArrayOfAkjy;
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject2 = localObject1[i];
+        if (localObject2 != null) {
+          localObject2.a(paramInt1, paramInt2);
+        }
+        i += 1;
+      }
+      label260:
+      ((bjuq)localObject1).a();
+    }
+    FrameHelperActivity.a(this.a);
+    this.a.d(true);
+    pkp.a().m();
+    this.a.n();
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("Q.recent", 4, "onDrawerStartToggle:: side = " + paramInt + " open:" + paramBoolean + " getActivity = " + this.a.getActivity());
+    }
+    akjy[] arrayOfakjy = this.a.jdField_a_of_type_ArrayOfAkjy;
+    int j = arrayOfakjy.length;
+    int i = 0;
+    while (i < j)
+    {
+      akjy localakjy = arrayOfakjy[i];
+      if (localakjy != null) {
+        localakjy.a(paramInt, paramBoolean);
+      }
+      i += 1;
+    }
+    if (paramBoolean) {
+      ThreadManager.post(new FrameHelperActivity.1.1(this), 5, null, true);
+    }
+    this.a.d(paramBoolean);
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("Q.recent", 4, "onDrawerClosed:: side = " + paramInt1 + " getActivity = " + this.a.getActivity());
+    }
+    if (this.a.getActivity() == null) {
       return;
-      if (QLog.isDevelopLevel()) {
-        QLog.d(amsb.a(this.a), 4, "Call back object is null!");
+    }
+    FrameHelperActivity.b(this.a, false);
+    this.a.a(paramInt2, false, FrameHelperActivity.a(this.a));
+    if ((!this.a.getActivity().isFinishing()) && (FrameHelperActivity.a(this.a) != null))
+    {
+      FrameHelperActivity.a(this.a).b();
+      if (bjmj.a())
+      {
+        localObject1 = FrameHelperActivity.a(this.a).a(bjmj.a);
+        if (localObject1 != null) {
+          ((bjuq)localObject1).b();
+        }
       }
     }
+    if (Build.VERSION.SDK_INT < 11)
+    {
+      if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.setVisibility(0);
+      }
+    }
+    if (this.a.jdField_a_of_type_AndroidViewViewGroup != null) {
+      ((ImageView)this.a.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131380169)).setImageResource(0);
+    }
+    Object localObject1 = this.a.jdField_a_of_type_ArrayOfAkjy;
+    int j = localObject1.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject2 = localObject1[i];
+      if (localObject2 != null) {
+        localObject2.b(paramInt1, paramInt2);
+      }
+      i += 1;
+    }
+    this.a.d(false);
+    localObject1 = (QQAppInterface)pay.a();
+    if (localObject1 != null) {
+      ((KandianMergeManager)((QQAppInterface)localObject1).getManager(162)).o();
+    }
+    if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(17)) {
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(17);
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(17, 100L);
   }
 }
 

@@ -1,33 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.widget.QfavJumpActivity;
-import java.io.InputStream;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.TextView;
+import dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextControlPanel;
 
 public class bmmq
-  implements DialogInterface.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public bmmq(QfavJumpActivity paramQfavJumpActivity, String paramString, InputStream paramInputStream, long paramLong) {}
+  public bmmq(AEEditorTextControlPanel paramAEEditorTextControlPanel, TextView paramTextView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    try
-    {
-      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("qqfav|QfavJumpActivity", 2, "copy file error", paramDialogInterface);
-      }
-      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.a());
-    }
+    AEEditorTextControlPanel.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel).c();
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    AEEditorTextControlPanel.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextControlPanel).c();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmmq
  * JD-Core Version:    0.7.0.1
  */

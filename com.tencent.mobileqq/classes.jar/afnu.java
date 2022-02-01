@@ -1,21 +1,20 @@
-import com.tencent.image.URLDrawable;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer;
 
-public class afnu
+class afnu
+  extends TroopAppShortcutContainer
 {
-  int jdField_a_of_type_Int;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
-  
-  public afnu(afnr paramafnr, String paramString1, String paramString2, int paramInt)
+  afnu(afnt paramafnt, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, SessionInfo paramSessionInfo, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_Boolean = false;
+    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramSessionInfo, paramString, paramInt);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.a(true);
   }
 }
 

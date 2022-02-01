@@ -1,274 +1,43 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.LightingColorFilter;
-import android.graphics.Paint;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.theme.TintManager.2;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.theme.ISkinTint;
-import com.tencent.theme.SkinEngine;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
 
 public class beiw
-  implements ISkinTint
+  extends Handler
 {
-  private bhza jdField_a_of_type_Bhza = new beix(this);
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, Boolean> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private JSONArray jdField_a_of_type_OrgJsonJSONArray;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private JSONObject b;
+  private WeakReference<BeginnerGuideFragment> a;
   
-  private Integer a(String paramString)
+  public beiw(BeginnerGuideFragment paramBeginnerGuideFragment, Looper paramLooper)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      paramString = this.b.optString(paramString);
-    } while (TextUtils.isEmpty(paramString));
-    try
-    {
-      int i = Color.parseColor(paramString);
-      return Integer.valueOf(i);
-    }
-    catch (NumberFormatException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
+    super(paramLooper);
+    this.a = new WeakReference(paramBeginnerGuideFragment);
   }
   
-  private void a(int[] paramArrayOfInt, int paramInt, Integer paramInteger)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramInteger != null) && (paramArrayOfInt != null) && (paramArrayOfInt.length > paramInt)) {
-      paramArrayOfInt[paramInt] = paramInteger.intValue();
-    }
-  }
-  
-  public JSONObject a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
-  {
-    Object localObject;
-    if (paramJSONObject2 == null)
-    {
-      localObject = null;
-      return localObject;
-    }
-    Iterator localIterator = paramJSONObject2.keys();
-    for (;;)
-    {
-      localObject = paramJSONObject1;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      String str2 = (String)localIterator.next();
-      String str1 = paramJSONObject2.optString(str2);
-      if (!TextUtils.isEmpty(str1))
-      {
-        String str3 = paramJSONObject1.optString(str2);
-        localObject = str1;
-        if (!TextUtils.isEmpty(str3)) {
-          localObject = str1 + "," + str3;
-        }
-        try
-        {
-          paramJSONObject1.putOpt(str2, localObject);
-        }
-        catch (JSONException localJSONException)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    try
-    {
-      if (!TextUtils.isEmpty(paramString1))
-      {
-        paramString1 = new JSONObject(paramString1);
-        this.jdField_a_of_type_OrgJsonJSONObject = paramString1.optJSONObject("mapping");
-        this.b = paramString1.optJSONObject("plate");
-      }
-      if (!TextUtils.isEmpty(paramString2))
-      {
-        paramString1 = new JSONObject(paramString2);
-        paramString2 = paramString1.optJSONObject("mapping");
-        JSONObject localJSONObject = paramString1.optJSONObject("plate");
-        this.jdField_a_of_type_OrgJsonJSONArray = paramString1.optJSONArray("forbidden");
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-        if (this.jdField_a_of_type_OrgJsonJSONArray != null)
-        {
-          int i = 0;
-          while (i < this.jdField_a_of_type_OrgJsonJSONArray.length())
-          {
-            this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_OrgJsonJSONArray.optString(i), Boolean.valueOf(true));
-            i += 1;
-          }
-        }
-        if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
-          this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-        }
-        if (this.b == null) {
-          this.b = new JSONObject();
-        }
-        a(this.jdField_a_of_type_OrgJsonJSONObject, paramString2);
-        a(this.b, localJSONObject);
-      }
-      return;
-    }
-    catch (JSONException paramString1)
-    {
-      paramString1.printStackTrace();
-    }
-  }
-  
-  protected boolean a(Paint paramPaint, String paramString)
-  {
-    Object localObject;
-    if (this.b != null)
-    {
-      localObject = a(paramString);
-      if ((localObject != null) && (paramPaint != null)) {
-        paramPaint.setColorFilter(new LightingColorFilter(0, ((Integer)localObject).intValue()));
-      }
-    }
-    int i;
-    do
-    {
-      return true;
-      localObject = BaseApplication.getContext();
-      if ((localObject == null) || (!paramString.contains(".xml"))) {
-        break;
-      }
-      paramString = paramString.replace(".xml", "");
-      i = BaseApplication.getContext().getResources().getIdentifier(paramString, "color", ((Context)localObject).getPackageName());
-      if (i <= 0) {
-        break;
-      }
-      localObject = Integer.valueOf(SkinEngine.getInstances().getColor(i));
-      if ((localObject == null) || (paramPaint == null)) {
-        break;
-      }
-      paramPaint.setColorFilter(new LightingColorFilter(0, ((Integer)localObject).intValue()));
-    } while (!QLog.isColorLevel());
-    QLog.i("TintManager", 1, " skin_bar_textcolorName:" + paramString + " colorId:" + i + " rgbColor:" + Integer.toString(16777215 - ((Integer)localObject).intValue(), 16) + " " + Integer.toHexString(16777215 - ((Integer)localObject).intValue()) + " " + localObject);
-    return true;
-    return false;
-  }
-  
-  public void clear()
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject = null;
-    this.b = null;
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public boolean isTint(String paramString)
-  {
-    if (this.jdField_a_of_type_OrgJsonJSONObject == null) {}
-    while ((this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null) || (this.jdField_a_of_type_OrgJsonJSONObject == null) || (TextUtils.isEmpty(this.jdField_a_of_type_OrgJsonJSONObject.optString(paramString)))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void loadConfig(Resources paramResources, String paramString)
-  {
-    ThreadManagerV2.executeOnFileThread(new TintManager.2(this, paramString));
-  }
-  
-  public void tint(Paint paramPaint, String paramString)
-  {
-    int j = 0;
-    if ((this.jdField_a_of_type_OrgJsonJSONObject == null) || (paramPaint == null) || (TextUtils.isEmpty(paramString))) {}
-    int i;
-    label96:
-    String str2;
+    super.handleMessage(paramMessage);
+    BeginnerGuideFragment localBeginnerGuideFragment = (BeginnerGuideFragment)this.a.get();
+    if (localBeginnerGuideFragment == null) {}
     do
     {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("TintManager", 2, " fileName:" + paramString);
-      }
-      if (this.jdField_a_of_type_OrgJsonJSONArray != null)
+      switch (paramMessage.what)
       {
-        i = 0;
-        for (;;)
-        {
-          if (i >= this.jdField_a_of_type_OrgJsonJSONArray.length()) {
-            break label96;
-          }
-          if (paramString.equals(this.jdField_a_of_type_OrgJsonJSONArray.optString(i))) {
-            break;
-          }
-          i += 1;
-        }
-      }
-      str2 = this.jdField_a_of_type_OrgJsonJSONObject.optString(paramString);
-    } while (TextUtils.isEmpty(str2));
-    if (paramString.contains(".")) {}
-    for (String str1 = paramString.split("\\.")[0];; str1 = paramString)
-    {
-      BaseApplication localBaseApplication = BaseApplication.getContext();
-      if (localBaseApplication != null)
-      {
-        i = BaseApplication.getContext().getResources().getIdentifier(str1, "drawable", localBaseApplication.getPackageName());
-        if ((i > 0) && (SkinEngine.getInstances().checkResExist(i)))
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("TintManager", 2, "checkResExist fileName:" + paramString);
-          return;
-        }
-      }
-      if (str2.contains(","))
-      {
-        paramString = str2.split("\\,");
-        int k = paramString.length;
-        i = j;
-        while ((i < k) && (!a(paramPaint, paramString[i]))) {
-          i += 1;
+      default: 
+        return;
+      case 1110: 
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideFragment", 2, "parse config from network success");
         }
         break;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("TintManager", 2, "plateName:" + str2 + " fileName:" + paramString);
-      }
-      a(paramPaint, str2);
-      return;
-    }
-  }
-  
-  public void tintColorState(int[] paramArrayOfInt, int[][] paramArrayOfInt1, String paramString)
-  {
-    int i = 0;
-    if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0) && (this.jdField_a_of_type_OrgJsonJSONObject != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      paramArrayOfInt1 = this.jdField_a_of_type_OrgJsonJSONObject.optString(paramString);
-      if (paramArrayOfInt1.contains(","))
-      {
-        paramArrayOfInt1 = paramArrayOfInt1.split("\\,");
-        while (i < paramArrayOfInt1.length)
-        {
-          a(paramArrayOfInt, i, a(paramArrayOfInt1[i]));
-          i += 1;
-        }
-      }
-      if (!TextUtils.isEmpty(paramArrayOfInt1)) {
-        a(paramArrayOfInt, 0, a(paramArrayOfInt1));
-      }
-    }
+    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String)));
+    BeginnerGuideFragment.a(localBeginnerGuideFragment, (String)paramMessage.obj, paramMessage.arg1);
+    return;
+    BeginnerGuideFragment.a(localBeginnerGuideFragment, paramMessage.what);
   }
 }
 

@@ -1,140 +1,31 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class wth
-  implements wsp
+  implements View.OnClickListener
 {
-  public final wsp[] a = new wsp[40];
+  public wth(VideoViewVideoHolder paramVideoViewVideoHolder, ErrorMessage paramErrorMessage) {}
   
-  public static wsp a(int paramInt)
+  public void onClick(View paramView)
   {
-    return wtj.a.b(paramInt);
-  }
-  
-  public static wth a()
-  {
-    return wtj.a;
-  }
-  
-  private void a(int paramInt, wsp paramwsp)
-  {
-    this.a[paramInt] = paramwsp;
-  }
-  
-  public void a() {}
-  
-  public wsp b(int paramInt)
-  {
-    wsp localwsp1 = this.a[paramInt];
-    if (localwsp1 == null) {}
+    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_AndroidViewView.getContext())) {
+      QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131694062, 0).a();
+    }
     for (;;)
     {
-      wsp localwsp2;
-      synchronized (this.a)
-      {
-        localwsp2 = this.a[paramInt];
-        if (localwsp2 == null) {
-          break label408;
-        }
-        return localwsp2;
-        if (localwsp1 != null)
-        {
-          localwsp1.a();
-          yuk.b("Q.qqstory.SuperManager", "onInit manager : %s", localwsp1);
-        }
-        a(paramInt, localwsp1);
-        return localwsp1;
-      }
-      Object localObject2 = this;
-      continue;
-      localObject2 = new wtn();
-      continue;
-      localObject2 = new yaz();
-      continue;
-      localObject2 = new wuf();
-      continue;
-      localObject2 = new wta();
-      continue;
-      localObject2 = new wva();
-      continue;
-      localObject2 = new zbz();
-      continue;
-      localObject2 = new bqkv();
-      continue;
-      localObject2 = new wtt();
-      continue;
-      localObject2 = new wlb();
-      continue;
-      localObject2 = new wjn();
-      continue;
-      localObject2 = new wlt();
-      continue;
-      localObject2 = new wte();
-      continue;
-      localObject2 = new wsx();
-      continue;
-      localObject2 = new wms();
-      continue;
-      localObject2 = new wst();
-      continue;
-      localObject2 = new wsv();
-      continue;
-      localObject2 = new wse();
-      continue;
-      localObject2 = new wsu();
-      continue;
-      localObject2 = new wsi();
-      continue;
-      localObject2 = new wts();
-      continue;
-      localObject2 = new wsn();
-      continue;
-      localObject2 = new yme();
-      continue;
-      localObject2 = new ymk();
-      continue;
-      localObject2 = new wtp();
-      continue;
-      localObject2 = new ydc();
-      continue;
-      localObject2 = new wso();
-      continue;
-      localObject2 = new wtk();
-      continue;
-      localObject2 = new wjt();
-      continue;
-      localObject2 = new wtf();
-      continue;
-      localObject2 = new wfv();
-      continue;
-      return localObject2;
-      label408:
-      localObject2 = localwsp2;
-      switch (paramInt)
-      {
-      }
-      localObject2 = localwsp2;
-    }
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    wsp[] arrayOfwsp = this.a;
-    int i = 0;
-    try
-    {
-      while (i < this.a.length)
-      {
-        wsp localwsp = this.a[i];
-        yuk.b("Q.qqstory.SuperManager", "destroy manager : %s", localwsp);
-        if (localwsp != null) {
-          localwsp.b();
-        }
-        this.a[i] = null;
-        i += 1;
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a(10, true, "retry " + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode);
     }
-    finally {}
   }
 }
 

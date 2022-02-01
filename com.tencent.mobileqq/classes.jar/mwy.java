@@ -1,4 +1,17 @@
-class mwy {}
+import android.content.Context;
+
+public abstract interface mwy
+{
+  public abstract Context a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract String b();
+  
+  public abstract String c();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar

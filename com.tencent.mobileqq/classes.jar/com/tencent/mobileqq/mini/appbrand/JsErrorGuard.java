@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand;
 
+import amtj;
 import android.os.Handler;
 import android.os.Looper;
-import anzj;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -53,7 +53,7 @@ public class JsErrorGuard
     if ((this.mLoadingDialog != null) && (this.mLoadingDialog.isShowing())) {
       this.mLoadingDialog.dismiss();
     }
-    QQToast.a(this.mAppBrandRuntime.activity, anzj.a(2131704790), 0).a();
+    QQToast.a(this.mAppBrandRuntime.activity, amtj.a(2131705020), 0).a();
   }
   
   private void onX5Succeed()
@@ -65,11 +65,11 @@ public class JsErrorGuard
       }
       if (this.mRestartDialog == null)
       {
-        this.mRestartDialog = new JsErrorGuard.PermissionDialog(this.mAppBrandRuntime.activity, 2131755824);
-        this.mRestartDialog.setTitle(anzj.a(2131704788));
-        this.mRestartDialog.setMessage(anzj.a(2131704786));
-        this.mRestartDialog.setNegativeButton(anzj.a(2131704784), new JsErrorGuard.7(this));
-        this.mRestartDialog.setPositiveButton(anzj.a(2131704787), new JsErrorGuard.8(this));
+        this.mRestartDialog = new JsErrorGuard.PermissionDialog(this.mAppBrandRuntime.activity, 2131755826);
+        this.mRestartDialog.setTitle(amtj.a(2131705018));
+        this.mRestartDialog.setMessage(amtj.a(2131705016));
+        this.mRestartDialog.setNegativeButton(amtj.a(2131705014), new JsErrorGuard.7(this));
+        this.mRestartDialog.setPositiveButton(amtj.a(2131705017), new JsErrorGuard.8(this));
         this.mRestartDialog.setCanceledOnTouchOutside(false);
       }
       if (!this.mRestartDialog.isShowing()) {
@@ -98,7 +98,7 @@ public class JsErrorGuard
       if (this.mLoadingDialog == null) {
         this.mLoadingDialog = new JsErrorGuard.LoadingDialog(this.mAppBrandRuntime.activity);
       }
-      this.mLoadingDialog.setTitle(anzj.a(2131704789));
+      this.mLoadingDialog.setTitle(amtj.a(2131705019));
     } while (this.mLoadingDialog.isShowing());
     this.mLoadingDialog.show();
   }

@@ -1,12 +1,13 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface akgb
+public class akgb
 {
-  public abstract void a(boolean paramBoolean, @NonNull List<TroopLinkElement> paramList);
-  
-  public abstract void r();
+  public static void a(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QWalletPerTrace", 2, "markTimeStamp " + paramString);
+    }
+  }
 }
 
 

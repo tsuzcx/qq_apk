@@ -1,28 +1,59 @@
-import android.os.Bundle;
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.activity.miniaio.MiniECommerceExposeDataReportHelper.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.ListView;
+import mqq.os.MqqHandler;
 
-class ajiy
-  implements blih
+public class ajiy
+  implements afrc
 {
-  ajiy(ajis paramajis) {}
+  private agwg jdField_a_of_type_Agwg;
+  private ajjs jdField_a_of_type_Ajjs;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new MiniECommerceExposeDataReportHelper.1(this);
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  ajiy(ajjs paramajjs)
   {
-    ajis.a(this.a, paramInt1 + paramInt2 - 1);
+    this.jdField_a_of_type_Ajjs = paramajjs;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  private ListView a()
   {
-    if (paramInt != 0) {
+    return this.jdField_a_of_type_Ajjs.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+    case 3: 
+    case 5: 
+    case 19: 
+      do
+      {
+        do
+        {
+          return;
+          this.jdField_a_of_type_Agwg = new agwg();
+          return;
+        } while (this.b);
+        this.b = true;
+        ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 800L);
+        return;
+      } while (!this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Agwg.b(this.jdField_a_of_type_Ajjs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, a());
       return;
     }
-    if (ajis.b(this.a) >= this.a.getCount() - 2)
-    {
-      paramAbsListView = new Bundle();
-      paramAbsListView.putString("from", "4");
-      ajis.a(this.a).b(4, ajis.a(this.a), paramAbsListView);
-    }
-    this.a.d();
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    this.jdField_a_of_type_Agwg = null;
+    ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 3, 5, 13, 19, 12 };
   }
 }
 

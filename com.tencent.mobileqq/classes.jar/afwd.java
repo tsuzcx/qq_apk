@@ -1,29 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.1.1;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-class afwd
-  implements View.OnClickListener
+public class afwd
+  extends SosoInterface.OnLocationListener
 {
-  afwd(afwc paramafwc) {}
-  
-  public void onClick(View paramView)
+  afwd(afwc paramafwc, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    this.a.a.jdField_d_of_type_Boolean = false;
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131691682);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.a.findViewById(2131369042));
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.b);
-    if (this.a.a.jdField_a_of_type_Afwg != null) {
-      this.a.a.jdField_a_of_type_Afwg.a();
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  protected void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ArkAppCenter.a().post(this.a.a, new ArkAppLocationManager.1.1(this, bool, paramSosoLbsInfo));
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void onConsecutiveFailure(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 < 3) {
+      return;
+    }
+    a(paramInt1, null);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    a(paramInt, paramSosoLbsInfo);
   }
 }
 

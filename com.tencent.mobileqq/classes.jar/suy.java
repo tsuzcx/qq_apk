@@ -1,16 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import android.content.Context;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class suy
-  implements ValueAnimator.AnimatorUpdateListener
+class suy
+  implements svf
 {
-  public suy(ZImageView paramZImageView) {}
+  suy(sup paramsup) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.setAlpha(i);
+    if ((paramProteusItemData instanceof AuthorData))
+    {
+      ((AuthorData)paramProteusItemData).b(false);
+      if (suo.a(this.a.a) != null) {
+        suo.a(this.a.a).notifyDataSetChanged();
+      }
+    }
   }
 }
 

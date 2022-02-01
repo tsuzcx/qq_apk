@@ -1,8 +1,38 @@
-import android.graphics.Bitmap;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.dynamic.host.PluginProcessService;
+import com.tencent.shadow.dynamic.host.PpsController;
+import java.util.concurrent.CountDownLatch;
 
-public abstract interface aunv
+class aunv
+  implements ServiceConnection
 {
-  public abstract void a(Bitmap paramBitmap);
+  aunv(aunt paramaunt, CountDownLatch paramCountDownLatch) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    QLog.i("HuayangPluginNewDownloader", 2, "onServiceConnected ");
+    aunt.a(this.jdField_a_of_type_Aunt).unbindService(this);
+    paramComponentName = PluginProcessService.wrapBinder(paramIBinder);
+    try
+    {
+      paramComponentName.exit();
+      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+      return;
+    }
+    catch (Exception paramComponentName)
+    {
+      for (;;)
+      {
+        QLog.d("HuayangPluginNewDownloader", 2, "exit over", paramComponentName);
+      }
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName) {}
 }
 
 

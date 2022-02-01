@@ -1,16 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.widget.AdapterView;
+import com.tencent.mobileqq.danmaku.core.DanmakuManager;
 
 public class aqnu
-  implements bljn
+  implements aqny
 {
-  public aqnu(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  public aqnu(DanmakuManager paramDanmakuManager) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(aqoa paramaqoa)
   {
-    this.a.a();
-    return true;
+    DanmakuManager.a(this.a).b(paramaqoa);
+    if (DanmakuManager.a(this.a) != null) {
+      DanmakuManager.a(this.a).f();
+    }
   }
 }
 

@@ -1,16 +1,28 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.ArrayList;
 
 public class adgf
-  implements adci
+  implements aren
 {
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public adgf(EmosmActivity paramEmosmActivity) {}
+  
+  public void onPackageAdded(EmoticonPackage paramEmoticonPackage)
   {
-    ((wja)paramadan.a().a(98)).c(paramMsgType0x210.vProtobuf);
-    return null;
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).epId.equals(paramEmoticonPackage.epId)) {
+        return;
+      }
+      i += 1;
+    }
+    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
   }
+  
+  public void onPackageDeleted(EmoticonPackage paramEmoticonPackage) {}
+  
+  public void onPackageMoved(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
 }
 
 

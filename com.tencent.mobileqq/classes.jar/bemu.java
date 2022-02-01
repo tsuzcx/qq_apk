@@ -1,65 +1,67 @@
-import com.tencent.mobileqq.together.writetogether.data.GetChangesetsResp;
-import com.tencent.mobileqq.together.writetogether.data.OpenDocParam;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Collections;
+import java.util.List;
 
 public class bemu
-  implements anui
 {
-  public void a(int paramInt, boolean paramBoolean, bent parambent)
+  public static String a(List<Integer> paramList)
   {
-    QLog.d("WriteTogetherOidbObserver", 4, "type:" + paramInt + ", isSuccess: " + paramBoolean + ", data: " + parambent.a);
-    bemo.a = parambent.a;
+    int j = 0;
+    int k = paramList.size();
+    Collections.sort(paramList);
+    if (k == 1) {
+      return String.format(amtj.a(2131704818), new Object[] { Integer.valueOf(((Integer)paramList.get(0)).intValue() + 1) });
+    }
+    int i = 0;
+    if (i < k - 1) {
+      if (((Integer)paramList.get(i)).intValue() + 1 == ((Integer)paramList.get(i + 1)).intValue()) {}
+    }
+    for (i = 0;; i = 1)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("第");
+      if (i != 0) {
+        localStringBuilder.append(((Integer)paramList.get(0)).intValue() + 1).append("-").append(((Integer)paramList.get(k - 1)).intValue() + 1).append("段");
+      }
+      for (;;)
+      {
+        return localStringBuilder.toString();
+        i += 1;
+        break;
+        while ((j < k) && (j < 3))
+        {
+          localStringBuilder.append(((Integer)paramList.get(j)).intValue() + 1);
+          if ((j + 1 < k) && (j + 1 < 3)) {
+            localStringBuilder.append("、");
+          }
+          j += 1;
+        }
+        if (k > 3) {
+          localStringBuilder.append("等").append(k).append("段");
+        } else {
+          localStringBuilder.append("段");
+        }
+      }
+    }
   }
   
-  public void a(int paramInt, boolean paramBoolean, OpenDocParam paramOpenDocParam)
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if (!paramBoolean) {
-      QLog.d("WriteTogetherOidbObserver", 4, "isSuccess: false");
-    }
-    if (paramOpenDocParam != null)
-    {
-      QLog.d("WriteTogetherOidbObserver", 4, paramOpenDocParam.toString());
+    if (paramQQAppInterface == null) {
       return;
     }
-    QLog.d("WriteTogetherOidbObserver", 4, "param is null");
+    paramQQAppInterface.getApp().getSharedPreferences("homework_troop_config" + paramQQAppInterface.getCurrentUin(), 0).edit().putBoolean("ReciteGuideTipShow", paramBoolean).commit();
   }
   
-  public void a(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  public void a(boolean paramBoolean, GetChangesetsResp paramGetChangesetsResp) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    QLog.d("WriteTogetherOidbObserver", 4, "type: " + paramInt + ", isSuccess: " + paramBoolean + ", data: " + paramObject);
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      if ((paramObject instanceof bent))
-      {
-        QLog.d("WriteTogetherOidbObserver", 4, "receive pad id: " + ((bent)paramObject).a);
-        a(paramInt, paramBoolean, (bent)paramObject);
-        return;
-      }
-      QLog.d("WriteTogetherOidbObserver", 4, "data is not String: " + paramObject);
-      return;
-    case 2: 
-      if ((paramObject instanceof OpenDocParam))
-      {
-        a(paramInt, paramBoolean, (OpenDocParam)paramObject);
-        return;
-      }
-      QLog.d("WriteTogetherOidbObserver", 4, "data is not OpenDocParam: " + paramObject);
-      return;
-    case 3: 
-      a(paramBoolean, (GetChangesetsResp)paramObject);
-      return;
-    case 4: 
-      a(paramInt, paramBoolean, (Object[])paramObject);
-      return;
+    if (paramQQAppInterface == null) {
+      return false;
     }
-    QLog.d("WriteTogetherOidbObserver", 4, "error. isSuccess: " + paramBoolean + ", data: " + paramObject);
+    return paramQQAppInterface.getApp().getSharedPreferences("homework_troop_config" + paramQQAppInterface.getCurrentUin(), 0).getBoolean("ReciteGuideTipShow", false);
   }
 }
 

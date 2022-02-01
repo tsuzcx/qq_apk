@@ -1,19 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-
-public class aupw
-  implements DialogInterface.OnClickListener
+public abstract interface aupw
 {
-  public aupw(SendBottomBar paramSendBottomBar) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramInt == 1) {
-      this.a.c();
-    }
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import asan;
-import bhgr;
-import bhlq;
-import bhpc;
+import aquk;
+import bfur;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public final class DatingUtil$1
   implements Runnable
@@ -16,24 +16,24 @@ public final class DatingUtil$1
   
   public void run()
   {
-    Object localObject = new asan(this);
-    localObject = bhlq.a(this.jdField_a_of_type_AndroidAppActivity, 230, null, this.jdField_a_of_type_JavaLangString, 0, 2131718838, (DialogInterface.OnClickListener)localObject, null);
+    Object localObject = new aquk(this);
+    localObject = bfur.a(this.jdField_a_of_type_AndroidAppActivity, 230, null, this.jdField_a_of_type_JavaLangString, 0, 2131719087, (DialogInterface.OnClickListener)localObject, null);
     if (localObject != null)
     {
-      ((TextView)((bhpc)localObject).findViewById(2131365497)).setVisibility(8);
-      TextView localTextView = (TextView)((bhpc)localObject).findViewById(2131365519);
+      ((TextView)((QQCustomDialog)localObject).findViewById(2131365529)).setVisibility(8);
+      TextView localTextView = (TextView)((QQCustomDialog)localObject).findViewById(2131365552);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 17;
       localTextView.setLayoutParams(localLayoutParams);
-      localTextView.setMinHeight(bhgr.a(this.jdField_a_of_type_AndroidAppActivity, 35.0F));
+      localTextView.setMinHeight(DisplayUtil.dip2px(this.jdField_a_of_type_AndroidAppActivity, 35.0F));
       localTextView.setGravity(17);
-      ((bhpc)localObject).show();
+      ((QQCustomDialog)localObject).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.DatingUtil.1
  * JD-Core Version:    0.7.0.1
  */

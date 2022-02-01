@@ -41,11 +41,11 @@ class ItemTouchUIUtilImpl
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      Object localObject = paramView.getTag(2131368994);
+      Object localObject = paramView.getTag(2131369020);
       if ((localObject instanceof Float)) {
         ViewCompat.setElevation(paramView, ((Float)localObject).floatValue());
       }
-      paramView.setTag(2131368994, null);
+      paramView.setTag(2131369020, null);
     }
     paramView.setTranslationX(0.0F);
     paramView.setTranslationY(0.0F);
@@ -53,11 +53,11 @@ class ItemTouchUIUtilImpl
   
   public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
   {
-    if ((Build.VERSION.SDK_INT >= 21) && (paramBoolean) && (paramView.getTag(2131368994) == null))
+    if ((Build.VERSION.SDK_INT >= 21) && (paramBoolean) && (paramView.getTag(2131369020) == null))
     {
       float f = ViewCompat.getElevation(paramView);
       ViewCompat.setElevation(paramView, 1.0F + findMaxElevation(paramRecyclerView, paramView));
-      paramView.setTag(2131368994, Float.valueOf(f));
+      paramView.setTag(2131369020, Float.valueOf(f));
     }
     paramView.setTranslationX(paramFloat1);
     paramView.setTranslationY(paramFloat2);

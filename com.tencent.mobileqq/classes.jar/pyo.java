@@ -1,45 +1,98 @@
+import com.tencent.biz.pubaccount.readinjoy.preload.util.FeedsPreloadExposeReport.1;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
 
-class pyo
-  implements ViewBase.OnClickListener
+public class pyo
 {
-  pyo(pyn parampyn, ppu paramppu, Container paramContainer) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public static void a(List<ArticleInfo> paramList, String paramString)
   {
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_Ppu.a();
-    Object localObject2 = new ReportModelDC02528().module("all_result").action("clk_Kdfeedsback_list").obj1("2049").ver2("Kdfeedsback").ver3(localArticleInfo.mArticleContentUrl);
-    Object localObject1;
-    String str1;
-    String str2;
-    if ((paramViewBase instanceof qdc))
+    QLog.d("FeedsPreloadExposeReport", 1, "reportFeedsExposeRewrite.");
+    Object localObject = (pks)((QQAppInterface)pay.a()).getManager(163);
+    if (localObject != null)
     {
-      localObject1 = ((qdc)paramViewBase).getText();
-      bcjy.a(null, ((ReportModelDC02528)localObject2).ver4((String)localObject1).ver5(localArticleInfo.mTitle).ver6(ByteStringMicro.copyFromUtf8(localArticleInfo.innerUniqueID).toStringUtf8()).ver7("{jumpurl:" + paramViewBase.getEventAttachedData() + ",clk_index:" + paramViewBase.getClickEvnet().substring("search_word_click_".length()) + "}").session_id(localArticleInfo.mSearchWordSessionId));
-      bcni.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase.getEventAttachedData());
-      localObject1 = (aokg)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(111);
-      localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      str1 = localArticleInfo.mSearchWordSessionId;
-      str2 = localArticleInfo.mArticleContentUrl;
-      if (!(paramViewBase instanceof qdc)) {
-        break label261;
+      localObject = ((pks)localObject).a();
+      pyl.a().a(new FeedsPreloadExposeReport.1((pkm)localObject, paramList, paramString));
+      return;
+    }
+    QLog.d("FeedsPreloadExposeReport", 1, "readInJoyLogicManager is null.");
+  }
+  
+  public static void a(boolean paramBoolean, long paramLong, int paramInt)
+  {
+    String str = pay.a();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("retCode", String.valueOf(paramInt));
+    localHashMap.put("uin", str);
+    AppRuntime localAppRuntime = pay.a();
+    if ((localAppRuntime == null) || (paramLong < 0L) || (paramLong > 30000L))
+    {
+      QLog.d("FeedsPreloadExposeReport", 1, "app is null or cost is not available, reportFeedsPreloadExposeMonitorData");
+      return;
+    }
+    StatisticCollector.getInstance(localAppRuntime.getApplication()).collectPerformance(str, "actFeedsPreloadExposeReport", paramBoolean, paramLong, 0L, localHashMap, null);
+  }
+  
+  private static List<ReportInfo> b(List<ArticleInfo> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      paramList = new ArrayList(paramList).iterator();
+      while (paramList.hasNext())
+      {
+        Object localObject1 = (ArticleInfo)paramList.next();
+        Object localObject2;
+        if ((pay.t((BaseArticleInfo)localObject1)) && (((ArticleInfo)localObject1).mNewPolymericInfo != null) && (((ArticleInfo)localObject1).mNewPolymericInfo.a != null))
+        {
+          localObject1 = ((ArticleInfo)localObject1).mNewPolymericInfo.a.iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (rdn)((Iterator)localObject1).next();
+            ReportInfo localReportInfo = new ReportInfo();
+            localReportInfo.mUin = pay.a();
+            localReportInfo.mOperation = 56;
+            localReportInfo.mSourceArticleId = ((rdn)localObject2).a;
+            localReportInfo.mInnerId = ((rdn)localObject2).g;
+            localReportInfo.mAlgorithmId = ((int)((rdn)localObject2).b);
+            localReportInfo.mGWCommonData = "";
+            localArrayList.add(localReportInfo);
+          }
+        }
+        else
+        {
+          localObject2 = new ReportInfo();
+          ((ReportInfo)localObject2).mUin = pay.a();
+          ((ReportInfo)localObject2).mOperation = 56;
+          ((ReportInfo)localObject2).mSourceArticleId = ((ArticleInfo)localObject1).mArticleID;
+          ((ReportInfo)localObject2).mInnerId = ((ArticleInfo)localObject1).innerUniqueID;
+          ((ReportInfo)localObject2).mAlgorithmId = ((int)((ArticleInfo)localObject1).mAlgorithmID);
+          ((ReportInfo)localObject2).mGWCommonData = ((ArticleInfo)localObject1).mGWCommonData;
+          localArrayList.add(localObject2);
+          if (((ArticleInfo)localObject1).hasOnlyTwoVideoFeeds())
+          {
+            localObject1 = (ArticleInfo)((ArticleInfo)localObject1).mSubArtilceList.get(0);
+            localObject2 = new ReportInfo();
+            ((ReportInfo)localObject2).mUin = pay.a();
+            ((ReportInfo)localObject2).mOperation = 56;
+            ((ReportInfo)localObject2).mSourceArticleId = ((ArticleInfo)localObject1).mArticleID;
+            ((ReportInfo)localObject2).mInnerId = ((ArticleInfo)localObject1).innerUniqueID;
+            ((ReportInfo)localObject2).mAlgorithmId = ((int)((ArticleInfo)localObject1).mAlgorithmID);
+            ((ReportInfo)localObject2).mGWCommonData = ((ArticleInfo)localObject1).mGWCommonData;
+            localArrayList.add(localObject2);
+          }
+        }
       }
     }
-    label261:
-    for (paramViewBase = ((qdc)paramViewBase).getText();; paramViewBase = "")
-    {
-      ((aokg)localObject1).a((QQAppInterface)localObject2, "clk_Kdfeedsback_list", str1, str2, paramViewBase, localArticleInfo.mTitle, ByteStringMicro.copyFromUtf8(localArticleInfo.innerUniqueID).toStringUtf8());
-      return;
-      localObject1 = "";
-      break;
-    }
+    return localArrayList;
   }
 }
 

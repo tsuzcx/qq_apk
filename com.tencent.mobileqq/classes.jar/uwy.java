@@ -1,32 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
+import UserGrowth.stSimpleMetaFeed;
 
-class uwy
-  extends apee
+public class uwy
 {
-  uwy(uwt paramuwt) {}
+  public int a;
+  public stSimpleMetaFeed a;
+  public String a;
+  private uyy a;
+  public int b;
+  public String b;
+  public String c;
   
-  public int a()
+  public uyy a()
   {
-    return 0;
+    return this.a;
   }
   
-  public void a(Object paramObject)
+  public void a(uyy paramuyy)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
-    }
-    this.a.a = true;
-    uwt.a(this.a);
+    this.a = paramuyy;
   }
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
-  {
-    uwt.a(this.a, 2131694659);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

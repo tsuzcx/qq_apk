@@ -1,31 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class bcys
-  implements bdew
+  implements DialogInterface.OnDismissListener
 {
   bcys(bcyq parambcyq) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer onStop!");
-    }
-  }
-  
-  public void a(Process paramProcess)
-  {
-    this.a.a = paramProcess;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer Start!");
-    }
-  }
-  
-  public void b()
-  {
-    this.a.a = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCompressProcessor", 2, "CompressTask, step: ShortVideoTrimmer onDestroy!");
+    if (bcyq.a(this.a) != null) {
+      bcyq.a(this.a).a();
     }
   }
 }

@@ -1,27 +1,18 @@
 import android.view.View;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aily
-  implements blnt
+public class aily
+  implements View.OnClickListener
 {
-  aily(ailn paramailn) {}
+  public aily(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void onClick(View paramView)
   {
-    ailn.a(this.a).setPullType(0);
-    ailn.a(this.a).c(ailn.g);
-    ailn.a(this.a, 0, this.a.a.a());
+    TroopSuspiciousFragment.b(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    return false;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView) {}
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

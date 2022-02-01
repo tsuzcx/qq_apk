@@ -1,72 +1,66 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
+import java.io.Serializable;
+import java.lang.ref.WeakReference;
 
 public class ardt
-  extends arac<ardu>
+  extends Handler
 {
-  public static ardu a()
+  protected Bundle a;
+  private WeakReference<MessengerService> a;
+  
+  public ardt(MessengerService paramMessengerService)
   {
-    return (ardu)aran.a().a(620);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMessengerService);
   }
   
-  @NonNull
-  public ardu a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new ardu();
-  }
-  
-  @Nullable
-  public ardu a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return ardu.a(paramArrayOfaraj);
+    boolean bool = true;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("MessengerService$QWalletOpenMsgHandler", 2, "handleMessage, mServiceWeakRef null");
+      }
     }
-    return null;
-  }
-  
-  public void a(ardu paramardu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonSearchTagsConfProcessor", 2, "EmoticonSearchTagsConfProcessor onUpdate");
+    MessengerService localMessengerService;
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        localMessengerService = (MessengerService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localMessengerService != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("MessengerService$QWalletOpenMsgHandler", 2, "handleMessage, service null");
+      return;
+      i = paramMessage.what;
+    } while (i != 4);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("qwallet.type", i);
+    if (paramMessage.arg1 == 1) {}
+    for (;;)
+    {
+      localBundle.putBoolean("qwallet.isSuccess", bool);
+      localBundle.putSerializable("qwallet.data", (Serializable)paramMessage.obj);
+      if (this.jdField_a_of_type_AndroidOsBundle == null) {
+        break;
+      }
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      localMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      bool = false;
     }
-  }
-  
-  public Class<ardu> clazz()
-  {
-    return ardu.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 620;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardt
  * JD-Core Version:    0.7.0.1
  */

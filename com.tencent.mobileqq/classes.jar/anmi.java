@@ -1,22 +1,21 @@
-import com.tencent.TMG.channel.AVAppChannel.CsCmdCallback;
-import com.tencent.TMG.sdk.AVContext.StartParam;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
+import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 
 class anmi
-  implements bktk
+  implements ProtoReqManager.IProtoRespBack
 {
-  anmi(anmh paramanmh, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback) {}
+  anmi(anmf paramanmf) {}
   
-  public void a(int paramInt, String paramString)
+  public void onProtoResp(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
   {
-    QLog.e(anmh.jdField_a_of_type_JavaLangString, 2, "ACTION_NOTICE_SERVICE_REQUEST_SSOCHANNEL:onError  identifier=" + this.jdField_a_of_type_Anmh.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier + ", nAppid=" + this.jdField_a_of_type_Anmh.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId + ", nGameID=" + ((anlt)this.jdField_a_of_type_Anmh.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int + ", lGameRoomID=" + ((anlt)this.jdField_a_of_type_Anmh.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long + ", UserRequestData.length" + this.jdField_a_of_type_ArrayOfByte.length + ", s info=" + paramString);
-    this.jdField_a_of_type_ComTencentTMGChannelAVAppChannel$CsCmdCallback.onError(paramInt, paramString);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    QLog.e(anmh.jdField_a_of_type_JavaLangString, 2, "ACTION_NOTICE_SERVICE_REQUEST_SSOCHANNEL:onSuccess  startParam_.identifier=" + this.jdField_a_of_type_Anmh.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier + ", nAppid=" + this.jdField_a_of_type_Anmh.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId + ", nGameID=" + ((anlt)this.jdField_a_of_type_Anmh.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int + ", lGameRoomID=" + ((anlt)this.jdField_a_of_type_Anmh.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long + ", UserRequestData.length" + paramArrayOfByte.length + ", bytes.length=" + this.jdField_a_of_type_ArrayOfByte.length);
-    this.jdField_a_of_type_ComTencentTMGChannelAVAppChannel$CsCmdCallback.onSuccess(paramArrayOfByte);
+    if (paramProtoResp.resp.getResultCode() != 1000)
+    {
+      this.a.a(4006, false, null);
+      return;
+    }
+    anmf.a(this.a, paramProtoResp, paramProtoReq);
   }
 }
 

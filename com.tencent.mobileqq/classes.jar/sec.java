@@ -1,73 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianTipFloatingWindow.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyPatchAdView;
 
-public class sec
-  implements View.OnClickListener, Animation.AnimationListener
+class sec
+  implements tww
 {
-  private View jdField_a_of_type_AndroidViewView;
-  protected Animation a;
-  private sed jdField_a_of_type_Sed;
+  sec(sdy paramsdy) {}
   
-  public void a()
+  public void a(sdg paramsdg, AdvertisementInfo paramAdvertisementInfo)
   {
-    a(true);
+    sdy.a(this.a).b(2);
+    sdy.a(this.a).a = paramAdvertisementInfo;
+    twu.a(this.a);
+    sdy.a(this.a).setVisibility(0);
+    sdy.a(this.a).setVisibility(0);
+    sdy.a(this.a).setVisibility(0);
+    sdy.a(this.a).a(paramsdg, paramAdvertisementInfo, 1);
   }
   
-  public void a(int paramInt)
+  public void b(sdg paramsdg, AdvertisementInfo paramAdvertisementInfo)
   {
-    if (this.jdField_a_of_type_Sed == null) {
-      return;
-    }
-    if ((this.jdField_a_of_type_Sed.jdField_a_of_type_Int != 0) || (this.jdField_a_of_type_Sed.jdField_a_of_type_Int == 1)) {}
-    switch (paramInt)
-    {
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((this.jdField_a_of_type_Sed == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("KandianTipFloatingWindow", 2, "close tip window , type : " + this.jdField_a_of_type_Sed.jdField_a_of_type_Int + ", uin : " + this.jdField_a_of_type_Sed.jdField_a_of_type_Long);
-    }
-    this.jdField_a_of_type_Sed = null;
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if ((paramAnimation.equals(this.jdField_a_of_type_AndroidViewAnimationAnimation)) && (this.jdField_a_of_type_AndroidViewView != null)) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
-  
-  public void onClick(View paramView)
-  {
-    a(2);
-    sed localsed = this.jdField_a_of_type_Sed;
-    if ((localsed != null) && (localsed.jdField_a_of_type_AndroidViewView$OnClickListener != null)) {
-      ThreadManager.getUIHandler().postDelayed(new KandianTipFloatingWindow.1(this, localsed, paramView), 250L);
-    }
-    a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    sdy.a(this.a).a = paramAdvertisementInfo;
+    twu.a(this.a);
+    sdy.a(this.a).setVisibility(0);
+    sdy.a(this.a).setVisibility(0);
+    sdy.a(this.a).a(paramsdg, paramAdvertisementInfo, 2);
   }
 }
 

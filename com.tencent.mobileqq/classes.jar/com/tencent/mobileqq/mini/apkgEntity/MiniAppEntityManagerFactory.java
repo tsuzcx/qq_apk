@@ -35,7 +35,7 @@ public class MiniAppEntityManagerFactory
     paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MiniAppByIdEntity()));
     paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MiniAppShowInfoEntity()));
     paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MiniAppInfoByIdEntity()));
-    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MiniAppInfoByIdEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new MiniAppInfoByLinkEntity()));
   }
   
   public String getPackageName()

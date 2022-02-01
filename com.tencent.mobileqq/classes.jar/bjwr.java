@@ -1,18 +1,16 @@
-import com.tencent.open.base.img.ImageCache;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.graphics.Canvas;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
-class bjwr
-  implements bjux
+public abstract interface bjwr
 {
-  bjwr(bjwq parambjwq, DownloadInfo paramDownloadInfo) {}
+  public abstract void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean);
   
-  public void a(String paramString1, String paramString2, String paramString3) {}
+  public abstract void a(View paramView);
   
-  public void b(String paramString1, String paramString2, String paramString3)
-  {
-    bjtx.d("DownloadManager_", ">>download apk icon err,should load another size icon");
-    ImageCache.a("app", bjtv.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c, 75), null);
-  }
+  public abstract void b(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean);
+  
+  public abstract void b(View paramView);
 }
 
 

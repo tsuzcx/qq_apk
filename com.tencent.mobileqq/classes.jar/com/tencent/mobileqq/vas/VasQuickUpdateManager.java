@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.vas;
 
 import android.text.TextUtils;
-import antf;
-import bhmi;
-import bhyv;
-import bhzs;
-import bici;
-import bics;
-import bidr;
-import bigv;
+import bgfg;
+import bggc;
+import bgit;
+import bgjd;
+import bgkc;
 import com.google.gson.stream.JsonReader;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileReader;
@@ -52,7 +52,7 @@ public class VasQuickUpdateManager
   public static final long BID_SONIC_TEMPLATE_UPDATE = 1001L;
   public static final long BID_STICKER_GUIDE_MATERIAL = 1004L;
   public static final long BID_TROOP_ENTER_EFFECT = 25L;
-  public static final String QUICKUPDATE_TEST_DIR = bigv.a(antf.ba + ".vas_quickupdate_test/");
+  public static final String QUICKUPDATE_TEST_DIR = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + ".vas_quickupdate_test/");
   public static final String SCID_APNG_SO = "libAPNG_845";
   public static final String SCID_AVATARIN_PENDANT_JSON = "avatarInPendant_json";
   public static final String SCID_BLESS_VOICECHANGE = "blessVoiceList.json";
@@ -126,10 +126,10 @@ public class VasQuickUpdateManager
   private static final String TAG = "VasQuickUpdateManager";
   public QQAppInterface app;
   ConcurrentHashMap<Integer, VasQuickUpdateManager.CallBacker> callBackers = new ConcurrentHashMap();
-  private bici defaultCallback = new VasQuickUpdateManager.DefaultUpdateCallback(this);
-  bidr mEngineProxy;
+  private bgit defaultCallback = new VasQuickUpdateManager.DefaultUpdateCallback(this);
+  bgkc mEngineProxy;
   AtomicInteger mKey = new AtomicInteger(0);
-  public bhzs mQuickUpdateObserver = new VasQuickUpdateManager.DefaultVasExtensionObserver(this);
+  public bggc mQuickUpdateObserver = new VasQuickUpdateManager.DefaultVasExtensionObserver(this);
   
   public VasQuickUpdateManager(QQAppInterface paramQQAppInterface)
   {
@@ -151,16 +151,16 @@ public class VasQuickUpdateManager
     //   11: ldc 165
     //   13: invokestatic 380	com/tencent/mobileqq/vas/VasQuickUpdateManager:deleteJSON	(Ljava/lang/String;)V
     //   16: aload_0
-    //   17: invokestatic 385	com/tencent/mobileqq/theme/ThemeCleaner:a	(Landroid/content/Context;)V
+    //   17: invokestatic 386	com/tencent/mobileqq/theme/ThemeCleaner:a	(Landroid/content/Context;)V
     //   20: aload_0
-    //   21: invokestatic 388	bics:a	(Landroid/content/Context;)V
+    //   21: invokestatic 389	bgjd:a	(Landroid/content/Context;)V
     //   24: ldc 2
     //   26: monitorexit
     //   27: return
     //   28: ldc_w 288
     //   31: iconst_1
-    //   32: ldc_w 390
-    //   35: invokestatic 396	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   32: ldc_w 391
+    //   35: invokestatic 397	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   38: goto -14 -> 24
     //   41: astore_0
     //   42: ldc 2
@@ -253,7 +253,7 @@ public class VasQuickUpdateManager
     if (((File)localObject).exists()) {
       try
       {
-        JSONObject localJSONObject = new JSONObject(bhmi.a((File)localObject));
+        JSONObject localJSONObject = new JSONObject(FileUtils.readFileContent((File)localObject));
         return localJSONObject;
       }
       catch (Throwable localThrowable)
@@ -325,9 +325,9 @@ public class VasQuickUpdateManager
   private void initEngine()
   {
     QLog.e("VasQuickUpdateManager", 1, "initEngine: " + this);
-    this.mEngineProxy = new bidr(this.app);
-    bics.a(this.defaultCallback);
-    this.mEngineProxy.setWeakHandler(new WeakReference((VasExtensionHandler)this.app.a(71)));
+    this.mEngineProxy = new bgkc(this.app);
+    bgjd.a(this.defaultCallback);
+    this.mEngineProxy.setWeakHandler(new WeakReference((VasExtensionHandler)this.app.getBusinessHandler(71)));
     this.mEngineProxy.startUpdateAllItem();
   }
   
@@ -406,7 +406,7 @@ public class VasQuickUpdateManager
   {
     QLog.e("VasQuickUpdateManager", 1, "onDestroy: " + this);
     this.app.removeObserver(this.mQuickUpdateObserver);
-    bics.b(this.defaultCallback);
+    bgjd.b(this.defaultCallback);
     this.callBackers.clear();
     if (this.mEngineProxy != null) {
       this.mEngineProxy.onDestory();
@@ -428,18 +428,18 @@ public class VasQuickUpdateManager
     }
   }
   
-  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, long paramLong, bhyv parambhyv)
+  public void queryItemVersion(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2, long paramLong, bgfg parambgfg)
   {
     if (this.mEngineProxy != null)
     {
-      parambhyv = new VasQuickUpdateManager.TimeoutWrapper(parambhyv, paramBoolean2, null);
+      parambgfg = new VasQuickUpdateManager.TimeoutWrapper(parambgfg, paramBoolean2, null);
       if (paramLong > 0L) {
-        ThreadManager.getSubThreadHandler().postDelayed(parambhyv, paramLong);
+        ThreadManager.getSubThreadHandler().postDelayed(parambgfg, paramLong);
       }
-      this.mEngineProxy.queryItemVersion(paramInt, paramString, paramBoolean1, parambhyv);
+      this.mEngineProxy.queryItemVersion(paramInt, paramString, paramBoolean1, parambgfg);
       return;
     }
-    parambhyv.a(2, "", "");
+    parambgfg.a(2, "", "");
   }
   
   public void removeCallBacker(VasQuickUpdateManager.CallBacker paramCallBacker)

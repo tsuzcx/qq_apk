@@ -1,20 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class apgx
-  implements QQPermissionCallback
+public class apgx
+  implements View.OnClickListener
 {
-  apgx(apgw paramapgw) {}
+  public apgx(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    bhlq.a(apgw.a(this.a), paramArrayOfString, paramArrayOfInt);
-    QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION deny");
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION allow restart it");
+    apgz localapgz = (apgz)paramView.getTag();
+    this.a.a(localapgz.jdField_a_of_type_JavaLangString, localapgz.b, localapgz.jdField_a_of_type_Boolean);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

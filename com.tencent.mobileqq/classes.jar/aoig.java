@@ -1,25 +1,47 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.PointF;
 
-class aoig
-  implements bhyv
+public class aoig
 {
-  aoig(aoie paramaoie, beio parambeio, Context paramContext, Bundle paramBundle) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public PointF[] a;
+  public int b;
+  public int c;
+  public int d = -1;
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public aoig()
   {
-    QLog.e("Theme.ThemeHandler", 1, "onQueryItemVer: " + paramInt + "," + paramString1 + "," + paramString2);
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_Beio.a(this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2);
-      this.jdField_a_of_type_AndroidOsBundle.putString("themePath", this.jdField_a_of_type_Beio.d());
-      aoie.a(this.jdField_a_of_type_Aoie, this.jdField_a_of_type_AndroidOsBundle);
-      return;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[1000];
+    a();
+  }
+  
+  public aoig(int paramInt)
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[paramInt];
+    a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = 0;
+    this.c = 0;
+    this.d = -1;
+  }
+  
+  public String toString()
+  {
+    if (this.b > 0) {}
+    for (String str = "(" + (int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].x + "," + (int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].y + ")";; str = "(-1,-1)") {
+      return "ARGestureResult{, state = " + this.jdField_a_of_type_Int + ", type = " + this.jdField_a_of_type_JavaLangString + ", pointCnt = " + this.b + ", newPoint(x,y) = " + str + ", mode = " + this.d + '}';
     }
-    this.jdField_a_of_type_AndroidOsBundle.putString("themeId", "1000");
-    this.jdField_a_of_type_AndroidOsBundle.remove("themePath");
-    aoie.a(this.jdField_a_of_type_Aoie, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

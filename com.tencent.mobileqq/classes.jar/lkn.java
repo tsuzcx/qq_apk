@@ -1,19 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class lkn
+class lkn
 {
+  int jdField_a_of_type_Int = 0;
   String jdField_a_of_type_JavaLangString = "";
-  List<lkt> jdField_a_of_type_JavaUtilList = new ArrayList();
-  lko jdField_a_of_type_Lko = new lko(this);
-  lkp jdField_a_of_type_Lkp = new lkp(this);
-  lkq jdField_a_of_type_Lkq = new lkq(this);
-  lkr jdField_a_of_type_Lkr = new lkr(this);
-  lks jdField_a_of_type_Lks = new lks(this);
-  boolean jdField_a_of_type_Boolean = true;
-  String b = "";
   
-  public lkn(lkl paramlkl) {}
+  lkn(lkh paramlkh) {}
 }
 
 

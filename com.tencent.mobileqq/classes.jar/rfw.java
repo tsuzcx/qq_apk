@@ -1,23 +1,31 @@
-import org.jetbrains.annotations.NotNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.MoreChannelItem;
 
-public abstract interface rfw
-  extends pri<rfx>
+public class rfw
 {
-  public abstract int a();
+  public String a;
+  public String b;
   
-  public abstract void a(int paramInt, @NotNull rfl paramrfl);
+  public static rfw a(oidb_cmd0xbc9.MoreChannelItem paramMoreChannelItem)
+  {
+    rfw localrfw = new rfw();
+    localrfw.a = paramMoreChannelItem.bytes_title.get().toStringUtf8();
+    localrfw.b = paramMoreChannelItem.bytes_link_url.get().toStringUtf8();
+    return localrfw;
+  }
   
-  public abstract void a(@NotNull rfl paramrfl);
-  
-  public abstract void a(@NotNull rjy paramrjy, @NotNull String paramString);
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract void b(@NotNull rfl paramrfl);
-  
-  public abstract void c();
+  public oidb_cmd0xbc9.MoreChannelItem a()
+  {
+    oidb_cmd0xbc9.MoreChannelItem localMoreChannelItem = new oidb_cmd0xbc9.MoreChannelItem();
+    if (!TextUtils.isEmpty(this.a))
+    {
+      localMoreChannelItem.bytes_title.set(ByteStringMicro.copyFromUtf8(this.a));
+      localMoreChannelItem.bytes_link_url.set(ByteStringMicro.copyFromUtf8(this.b));
+    }
+    return localMoreChannelItem;
+  }
 }
 
 

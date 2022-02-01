@@ -1,41 +1,47 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.EncryptUinInfo;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import java.io.File;
+import org.json.JSONObject;
 
 class nyh
-  extends nyi
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  nyh(nyg paramnyg) {}
+  private nyh(nyd paramnyd) {}
   
-  protected void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle)
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    if ((paramBoolean) && (paramList != null) && (!paramList.isEmpty()))
+    synchronized (nyd.a(this.a))
     {
-      paramList = (EncryptUinInfo)paramList.get(0);
-      if ((paramList.jdField_a_of_type_Int != 0) || (paramList.jdField_a_of_type_Long != this.a.mApp.getLongAccountUin()) || (TextUtils.isEmpty(paramList.jdField_a_of_type_JavaLangString))) {
-        break label113;
-      }
-      nyg.a(this.a, paramList.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: " + nyg.a(this.a));
-      }
-    }
-    label113:
-    while (!QLog.isColorLevel()) {
+      nyd.c("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
+      nyd.a(this.a, nyd.a(this.a));
       return;
     }
-    QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: failed，code=" + paramList.jdField_a_of_type_Int);
   }
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onPreLoadSucess(String paramString1, String paramString2)
   {
-    if (paramInt == 1)
+    synchronized (nyd.a(this.a))
     {
-      super.onUpdate(paramInt, paramBoolean, paramObject);
-      this.a.mApp.removeObserver(nyg.a(this.a));
+      nyd.c("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
+      try
+      {
+        paramString2 = new JSONObject(paramString2);
+        long l1 = paramString2.optLong("fileSize");
+        long l2 = paramString2.optLong("offset");
+        if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
+        {
+          paramString2 = new File(nyd.b(paramString1));
+          if (paramString2.exists()) {
+            paramString2.renameTo(new File(nyd.a(paramString1)));
+          }
+          nyd.a(this.a, nyd.a(this.a));
+        }
+      }
+      catch (Exception paramString1)
+      {
+        label136:
+        break label136;
+      }
+      return;
     }
   }
 }

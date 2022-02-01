@@ -1,491 +1,569 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
 import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnKeyListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewController.2;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyPatchAdView;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.pubaccount.ecshopassit.utils.EcshopUtils.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.ToolAppRuntime;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.recent.MsgSummary;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.qqshop.qq_ad.QQAdGetRsp.RedPointInfo;
 
 public class ohm
-  extends ohl
-  implements View.OnClickListener, View.OnKeyListener, qts, quj, rvv, rwa, rxa, rxb, rxc
 {
-  private static boolean jdField_a_of_type_Boolean = true;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ReadInJoyBaseListViewGroup jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
-  protected pfh a;
-  private rvy jdField_a_of_type_Rvy;
-  private rwr jdField_a_of_type_Rwr;
-  private rwu jdField_a_of_type_Rwu;
-  sel jdField_a_of_type_Sel;
-  private int jdField_b_of_type_Int = -1;
-  private volatile boolean jdField_b_of_type_Boolean;
-  private int c;
-  private int d = -1;
-  
-  public ohm(Activity paramActivity)
+  public static int a(long paramLong)
   {
-    super(paramActivity);
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_Pfh = new oho(this, null);
-  }
-  
-  private boolean a()
-  {
-    return b() == 40677;
-  }
-  
-  private boolean a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_Rvy != null) && (this.jdField_a_of_type_Rvy.b()) && (this.jdField_a_of_type_Rwu != null) && (!this.jdField_a_of_type_Rwu.a()))
-    {
-      this.jdField_a_of_type_Rwu.c(paramInt);
-      return true;
+    int i = 0;
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null) {
+      i = ohr.a(localAppRuntime, "open_minus_view_cnt_" + paramLong + "_" + a(localAppRuntime));
     }
+    return i;
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    int i = 1;
+    try
+    {
+      paramQQAppInterface = ohl.a(paramQQAppInterface, paramString, "maxShowCount");
+      if (!StringUtil.isEmpty(paramQQAppInterface)) {
+        i = Integer.parseInt(paramQQAppInterface);
+      }
+      return i;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("Ecshop_EcshopUtils", 1, paramQQAppInterface, new Object[0]);
+    }
+    return 1;
+  }
+  
+  public static int a(MessageRecord paramMessageRecord)
+  {
+    paramMessageRecord = b(paramMessageRecord);
+    if (paramMessageRecord == null) {
+      return 0;
+    }
+    return paramMessageRecord.optInt("is_hidden");
+  }
+  
+  public static bcgw a(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForStructing))
+    {
+      paramMessageRecord = ((MessageForStructing)paramMessageRecord).structingMsg;
+      if ((paramMessageRecord instanceof StructMsgForGeneralShare))
+      {
+        paramMessageRecord = (StructMsgForGeneralShare)paramMessageRecord;
+        if ((paramMessageRecord.mStructMsgItemLists != null) && (paramMessageRecord.mStructMsgItemLists.size() > 0)) {
+          return (bcgw)paramMessageRecord.mStructMsgItemLists.get(0);
+        }
+      }
+    }
+    return null;
+  }
+  
+  public static AppInterface a()
+  {
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject != null)
+    {
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+      if ((localObject instanceof ToolAppRuntime))
+      {
+        localObject = ((AppRuntime)localObject).getAppRuntime("modular_web");
+        if (!(localObject instanceof AppInterface)) {
+          break label53;
+        }
+        return (AppInterface)localObject;
+      }
+      if ((localObject instanceof QQAppInterface)) {
+        return (QQAppInterface)localObject;
+      }
+    }
+    return null;
+    label53:
+    return null;
+  }
+  
+  public static ChatMessage a(List<ChatMessage> paramList)
+  {
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      int i = paramList.size() - 1;
+      while (i >= 0)
+      {
+        ChatMessage localChatMessage = (ChatMessage)paramList.get(i);
+        Object localObject = a(localChatMessage);
+        if (localObject != null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("Ecshop_EcshopUtils", 2, "mGdtActionType " + ((bcgw)localObject).c);
+          }
+          if ((((bcgw)localObject).c != 1) || (!(((bcgw)localObject).a instanceof StructMsgForGeneralShare))) {}
+        }
+        else
+        {
+          do
+          {
+            return localChatMessage;
+            localObject = a(localChatMessage);
+          } while ((localObject != null) && (String.valueOf(1).equals(((JSONObject)localObject).optString("action_type"))));
+        }
+        i -= 1;
+      }
+    }
+    return null;
+  }
+  
+  public static String a()
+  {
+    String str = "";
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null) {
+      str = ohr.a(localAppRuntime, "qgg_msg_summary_" + a(localAppRuntime));
+    }
+    return str;
+  }
+  
+  public static String a(long paramLong, String paramString)
+  {
+    try
+    {
+      paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE).format(new Date(paramLong));
+      return paramString;
+    }
+    catch (Exception paramString) {}
+    return "";
+  }
+  
+  public static String a(Context paramContext, Date paramDate)
+  {
+    int i = 0;
+    String str1 = paramContext.getString(2131717829);
+    String str2 = paramContext.getString(2131717827);
+    String str3 = paramContext.getString(2131717831);
+    String str4 = paramContext.getString(2131717832);
+    String str5 = paramContext.getString(2131717830);
+    String str6 = paramContext.getString(2131717824);
+    paramContext = paramContext.getString(2131717828);
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTime(paramDate);
+    int j = localCalendar.get(7) - 1;
+    if (j < 0) {}
+    for (;;)
+    {
+      return new String[] { str1, str2, str3, str4, str5, str6, paramContext }[i];
+      i = j;
+    }
+  }
+  
+  public static String a(MessageRecord paramMessageRecord)
+  {
+    bcgw localbcgw = a(paramMessageRecord);
+    if (localbcgw != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Ecshop_EcshopUtils", 2, "mGdtActionType " + localbcgw.c);
+      }
+      if (localbcgw.c == 0) {
+        return "";
+      }
+      return String.valueOf(localbcgw.c);
+    }
+    paramMessageRecord = a(paramMessageRecord);
+    if (paramMessageRecord == null) {
+      return "";
+    }
+    return paramMessageRecord.optString("action_type");
+  }
+  
+  public static String a(String paramString, Map<String, String> paramMap, boolean paramBoolean)
+  {
+    if (StringUtil.isEmpty(paramString)) {
+      return "";
+    }
+    StringBuffer localStringBuffer = new StringBuffer(paramString);
+    Iterator localIterator = paramMap.keySet().iterator();
+    for (;;)
+    {
+      if (localIterator.hasNext())
+      {
+        String str2 = (String)localIterator.next();
+        String str1 = (String)paramMap.get(str2);
+        if (QLog.isColorLevel()) {
+          QLog.i("Ecshop_EcshopUtils", 2, "appendKV2Schema key: " + str2 + " value: " + str1);
+        }
+        paramString = str1;
+        if (paramBoolean) {}
+        try
+        {
+          paramString = URLEncoder.encode(str1);
+          if (localStringBuffer.toString().lastIndexOf("?") == -1)
+          {
+            localStringBuffer.append("?");
+            localStringBuffer.append(String.format("%s=%s", new Object[] { str2, paramString }));
+          }
+        }
+        catch (Exception paramString)
+        {
+          for (;;)
+          {
+            QLog.i("Ecshop_EcshopUtils", 2, "error encode key: " + str2 + " value: " + str1);
+            paramString = str1;
+            continue;
+            localStringBuffer.append("&");
+          }
+        }
+      }
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public static String a(AppRuntime paramAppRuntime)
+  {
+    String str = "";
+    if ((paramAppRuntime instanceof QQAppInterface)) {
+      str = ((QQAppInterface)paramAppRuntime).getCurrentUin();
+    }
+    while (!(paramAppRuntime instanceof ToolAppRuntime)) {
+      return str;
+    }
+    paramAppRuntime = (ToolAppRuntime)paramAppRuntime;
+    return paramAppRuntime.getLongAccountUin() + "";
+  }
+  
+  public static ArrayList<ogu> a(List<qq_ad.QQAdGetRsp.RedPointInfo> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return localArrayList;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(new ogu().a((qq_ad.QQAdGetRsp.RedPointInfo)paramList.next()));
+    }
+    return localArrayList;
+  }
+  
+  public static Map<String, String> a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return new HashMap();
+    }
+    Object localObject = bkys.a(paramString);
+    if (localObject == null) {
+      return new HashMap();
+    }
+    paramString = new HashMap(((Map)localObject).size());
+    localObject = ((Map)localObject).entrySet().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+      if (localEntry != null) {
+        paramString.put(localEntry.getKey(), (String)localEntry.getValue());
+      }
+    }
+    return paramString;
+  }
+  
+  /* Error */
+  public static JSONObject a(MessageRecord paramMessageRecord)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: instanceof 346
+    //   4: ifeq +90 -> 94
+    //   7: aload_0
+    //   8: checkcast 346	com/tencent/mobileqq/data/MessageForArkApp
+    //   11: astore_1
+    //   12: aload_1
+    //   13: getfield 350	com/tencent/mobileqq/data/MessageForArkApp:ark_app_message	Lcom/tencent/mobileqq/data/ArkAppMessage;
+    //   16: astore_0
+    //   17: aload_0
+    //   18: ifnull +78 -> 96
+    //   21: aload_0
+    //   22: getfield 356	com/tencent/mobileqq/data/ArkAppMessage:mSourceAd	Ljava/lang/String;
+    //   25: astore_0
+    //   26: aload_0
+    //   27: invokestatic 62	com/tencent/mobileqq/utils/StringUtil:isEmpty	(Ljava/lang/String;)Z
+    //   30: ifne +64 -> 94
+    //   33: new 85	org/json/JSONObject
+    //   36: dup
+    //   37: aload_0
+    //   38: invokespecial 357	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   41: astore_0
+    //   42: aload_0
+    //   43: ldc_w 359
+    //   46: aload_1
+    //   47: getfield 362	com/tencent/mobileqq/data/MessageForArkApp:msg	Ljava/lang/String;
+    //   50: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   53: pop
+    //   54: aload_0
+    //   55: areturn
+    //   56: astore_1
+    //   57: aconst_null
+    //   58: astore_0
+    //   59: ldc 70
+    //   61: iconst_1
+    //   62: new 18	java/lang/StringBuilder
+    //   65: dup
+    //   66: invokespecial 22	java/lang/StringBuilder:<init>	()V
+    //   69: ldc_w 367
+    //   72: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: aload_1
+    //   76: invokestatic 371	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   79: invokevirtual 28	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   85: invokestatic 373	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   88: aload_0
+    //   89: areturn
+    //   90: astore_1
+    //   91: goto -32 -> 59
+    //   94: aconst_null
+    //   95: areturn
+    //   96: ldc 176
+    //   98: astore_0
+    //   99: goto -73 -> 26
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	102	0	paramMessageRecord	MessageRecord
+    //   11	36	1	localMessageForArkApp	com.tencent.mobileqq.data.MessageForArkApp
+    //   56	20	1	localException1	Exception
+    //   90	1	1	localException2	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   26	42	56	java/lang/Exception
+    //   42	54	90	java/lang/Exception
+  }
+  
+  public static void a(int paramInt, String paramString, boolean paramBoolean)
+  {
+    if ((paramInt == 1008) && ("3046055438".equals(paramString))) {
+      if (!paramBoolean) {
+        break label73;
+      }
+    }
+    label73:
+    for (paramInt = 1;; paramInt = 0)
+    {
+      ohq.a(null, "gouwu.top.click", paramInt + "", NetConnInfoCenter.getServerTimeMillis() + "", "");
+      return;
+    }
+  }
+  
+  public static void a(int paramInt, boolean paramBoolean) {}
+  
+  public static void a(long paramLong)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null) {
+      ohr.a(localAppRuntime, "open_minus_view_cnt_" + paramLong + "_" + a(localAppRuntime));
+    }
+  }
+  
+  public static void a(long paramLong, int paramInt)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null) {
+      ohr.a(localAppRuntime, "open_minus_view_cnt_" + paramLong + "_" + a(localAppRuntime), paramInt);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MsgSummary paramMsgSummary)
+  {
+    try
+    {
+      if ((a(paramQQAppInterface)) && (!StringUtil.isEmpty(a())))
+      {
+        paramMsgSummary.suffix = "";
+        paramMsgSummary.strContent = a();
+      }
+      return;
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      QLog.e("Ecshop_EcshopUtils", 2, paramQQAppInterface, new Object[0]);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    ThreadManagerV2.excute(new EcshopUtils.1(paramQQAppInterface, paramString), 16, null, true);
+  }
+  
+  private static void a(String paramString)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null) {
+      ohr.a(localAppRuntime, "qgg_msg_summary_" + a(localAppRuntime), paramString);
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Ecshop_EcshopUtils", 2, "qggSummary: " + paramString1);
+    }
+    if (!StringUtil.isEmpty(paramString1))
+    {
+      b(paramString2);
+      a(paramString1);
+    }
+    while (BaseApplicationImpl.getApplication() == null) {
+      return;
+    }
+    a(BaseApplicationImpl.getApplication().getString(2131691726));
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    try
+    {
+      MessageRecord localMessageRecord = paramQQAppInterface.getMessageFacade().getLastMsgForMsgTab("3046055438", 1008);
+      if (localMessageRecord == null) {
+        return false;
+      }
+      int i = a(localMessageRecord.uniseq);
+      int j = a(paramQQAppInterface, ohl.b(paramQQAppInterface, b(localMessageRecord)));
+      if (i >= j) {
+        return true;
+      }
+    }
+    catch (Throwable paramQQAppInterface) {}
     return false;
   }
   
-  private int b()
+  public static boolean a(String paramString)
   {
-    if (this.jdField_b_of_type_Int != -1) {
-      return this.jdField_b_of_type_Int;
+    return String.valueOf(1).equals(paramString);
+  }
+  
+  public static int b(MessageRecord paramMessageRecord)
+  {
+    paramMessageRecord = b(paramMessageRecord);
+    if (paramMessageRecord == null) {}
+    do
+    {
+      return 0;
+      paramMessageRecord = paramMessageRecord.optJSONObject("native_ext");
+    } while (paramMessageRecord == null);
+    return paramMessageRecord.optInt("hide_tabbar", 0);
+  }
+  
+  public static String b()
+  {
+    String str = "";
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null) {
+      str = ohr.a(localAppRuntime, "qgg_msg_id_" + a(localAppRuntime));
     }
-    return this.jdField_a_of_type_AndroidAppActivity.getIntent().getIntExtra("channel_id", 0);
+    return str;
   }
   
-  private boolean b()
+  public static String b(MessageRecord paramMessageRecord)
   {
-    return b() == 56;
-  }
-  
-  private int c()
-  {
-    if (this.jdField_c_of_type_Int != -1) {
-      return this.jdField_c_of_type_Int;
+    paramMessageRecord = b(paramMessageRecord);
+    if (paramMessageRecord == null) {
+      return "";
     }
-    return this.jdField_a_of_type_AndroidAppActivity.getIntent().getIntExtra("channel_type", 0);
+    return paramMessageRecord.optString("page_type");
   }
   
-  public int a()
+  private static JSONObject b(MessageRecord paramMessageRecord)
   {
-    int i = -1;
-    if (this.d != -1) {
-      i = this.d;
-    }
-    while (a().getIntent() == null) {
-      return i;
-    }
-    return a().getIntent().getIntExtra("channel_from", -1);
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
-  }
-  
-  public ViewGroup a()
-  {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
-  public List<BaseArticleInfo> a()
-  {
-    if (this.jdField_a_of_type_Sel == null) {
+    if (paramMessageRecord == null) {}
+    do
+    {
       return null;
-    }
-    return this.jdField_a_of_type_Sel.a();
-  }
-  
-  public rvy a()
-  {
-    return this.jdField_a_of_type_Rvy;
-  }
-  
-  public rwr a()
-  {
-    return this.jdField_a_of_type_Rwr;
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_Rwr = new rwr(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_Rvy = new rvy(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_Rvy.a(this.jdField_a_of_type_Rwr);
-    this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(b()), Boolean.valueOf(true));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup = new ReadInJoyListViewGroup(this, b(), c(), this.d, null);
-    ((ReadInJoyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup).setNotifyEndRefresh(new ohn(this));
-    this.jdField_a_of_type_Sel = ((ReadInJoyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup).a();
-    if (this.jdField_a_of_type_Sel != null) {
-      this.jdField_a_of_type_Sel.e();
-    }
-    Object localObject;
-    if (((this.jdField_a_of_type_AndroidAppActivity instanceof ReadInJoyNewFeedsActivity)) || ((this.jdField_a_of_type_AndroidAppActivity instanceof SplashActivity)))
+      paramMessageRecord = d(paramMessageRecord);
+    } while (StringUtil.isEmpty(paramMessageRecord));
+    try
     {
-      localObject = odr.b();
-      odr.a.put(ReadInJoyVideoChannelFragment.class, localObject);
+      paramMessageRecord = new JSONObject(paramMessageRecord);
+      if (QLog.isColorLevel()) {
+        QLog.i("Ecshop_EcshopUtils", 2, "qggExtJson<<<<<<<" + paramMessageRecord);
+      }
+      return paramMessageRecord;
     }
-    for (;;)
+    catch (JSONException paramMessageRecord)
     {
-      this.jdField_a_of_type_Rvy.a((String)localObject);
-      this.jdField_a_of_type_Rwr.a((String)localObject);
-      this.jdField_a_of_type_Rwu = new rwu((FrameLayout)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.findViewById(2131380948), (ReadInJoyBaseListView)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.findViewById(2131378246), this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_Rwu.a(this);
-      this.jdField_a_of_type_Rvy.a(this.jdField_a_of_type_Rwu);
-      this.jdField_a_of_type_Rwu.a(this);
-      this.jdField_a_of_type_Rwu.a(this);
-      this.jdField_a_of_type_Rwu.b(this);
-      this.jdField_a_of_type_Rvy.a(this);
-      this.jdField_a_of_type_Sel.f();
-      if (b())
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.setFocusableInTouchMode(true);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.requestFocus();
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.setOnKeyListener(this);
-      }
-      pfd.a().a(this.jdField_a_of_type_Pfh);
-      if (jdField_a_of_type_Boolean)
-      {
-        jdField_a_of_type_Boolean = false;
-        pfa.a().c();
-      }
-      b();
-      return;
-      String str = (String)odr.a.get(ReadInJoyChannelActivity.class);
-      localObject = str;
-      if (TextUtils.isEmpty(str)) {
-        localObject = odr.b();
-      }
+      QLog.e("Ecshop_EcshopUtils", 2, paramMessageRecord, new Object[0]);
+    }
+    return null;
+  }
+  
+  private static void b(String paramString)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null) {
+      ohr.a(localAppRuntime, "qgg_msg_id_" + a(localAppRuntime), paramString);
     }
   }
   
-  public void a(int paramInt)
+  public static int c(MessageRecord paramMessageRecord)
   {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramInt1, paramInt2, paramIntent);
-  }
-  
-  public void a(int paramInt, String paramString, long paramLong)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup instanceof ReadInJoyListViewGroup)) {
-      ((ReadInJoyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup).setRefreshHeader(paramInt);
-    }
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    super.a(paramViewGroup);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-  }
-  
-  public void a(rld paramrld1, rld paramrld2, int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ReadInJoyBaseAdapter", 2, "onNextVideoPlay:  enterVideoPlayParam:" + paramrld1 + "  nextVideoPlayParam:" + paramrld2 + "\n nextScrollByDistance:" + paramInt + " isPlayFirstNext:" + paramBoolean);
-    }
-    BaseArticleInfo localBaseArticleInfo;
-    sel localsel;
-    if ((paramrld1 != null) && ((paramrld1 instanceof rwc)) && (paramrld2 != null) && ((paramrld2 instanceof rwc)))
-    {
-      paramrld1 = ((rwc)paramrld1).a;
-      localBaseArticleInfo = ((rwc)paramrld2).a;
-      if ((paramrld1 != null) && (localBaseArticleInfo != null))
-      {
-        localsel = this.jdField_a_of_type_Sel;
-        if (paramBoolean) {
-          break label160;
-        }
-      }
-    }
-    label160:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      localsel.a(paramrld1, localBaseArticleInfo, paramBoolean);
-      if (!this.jdField_a_of_type_Rwu.a()) {
-        this.jdField_a_of_type_Sel.a((rwc)paramrld2, 1);
-      }
-      return;
-    }
-  }
-  
-  public void a(rwc paramrwc)
-  {
-    if (rmn.c) {
-      return;
-    }
-    this.jdField_a_of_type_Sel.a(paramrwc);
-  }
-  
-  public void a(rwc paramrwc, int paramInt1, int paramInt2) {}
-  
-  public void a(rwc paramrwc1, rwc paramrwc2)
-  {
-    this.jdField_a_of_type_Sel.a(paramrwc1, paramrwc2);
-  }
-  
-  public void a(rwc paramrwc, rwf paramrwf, int paramInt1, int paramInt2, Object paramObject) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    super.a(paramBoolean);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramBoolean);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramBoolean);
-    super.a(paramBoolean, paramInt);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup instanceof ReadInJoyListViewGroup))
-    {
-      ReadInJoyListViewGroup localReadInJoyListViewGroup = (ReadInJoyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
-      if (!paramBoolean1) {
-        localReadInJoyListViewGroup.t();
-      }
-      if (!paramBoolean2) {
-        localReadInJoyListViewGroup.u();
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_b_of_type_Boolean) {}
+    paramMessageRecord = b(paramMessageRecord);
+    if (paramMessageRecord == null) {}
     do
     {
-      do
-      {
-        return;
-        this.jdField_b_of_type_Boolean = true;
-        super.b();
-      } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup == null);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(a(Integer.valueOf(b())), b(Integer.valueOf(b())));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.b(this.jdField_b_of_type_JavaUtilMap);
-    } while (this.jdField_a_of_type_AndroidViewViewGroup == null);
-    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup, localLayoutParams);
+      return 1;
+      paramMessageRecord = paramMessageRecord.optJSONObject("native_ext");
+    } while (paramMessageRecord == null);
+    return paramMessageRecord.optInt("tab_id", 1);
   }
   
-  public void b(int paramInt)
+  public static String c(MessageRecord paramMessageRecord)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    paramMessageRecord = b(paramMessageRecord);
+    if (paramMessageRecord == null) {
+      return "";
+    }
+    return paramMessageRecord.optString("web_ext");
   }
   
-  public void c()
+  private static String d(MessageRecord paramMessageRecord)
   {
-    if (!this.jdField_b_of_type_Boolean) {}
-    do
+    if (paramMessageRecord == null) {
+      return "";
+    }
+    bcgw localbcgw = a(paramMessageRecord);
+    if (localbcgw != null)
     {
-      do
-      {
-        return;
-        this.jdField_b_of_type_Boolean = false;
-        super.c();
-      } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup == null);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(b(Integer.valueOf(b())), a(Integer.valueOf(b())));
-    } while (this.jdField_a_of_type_AndroidViewViewGroup == null);
-    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup);
-  }
-  
-  public void c(int paramInt)
-  {
-    this.d = paramInt;
-    if (a().getIntent() != null) {
-      a().getIntent().putExtra("channel_from", paramInt);
-    }
-    if (this.jdField_a_of_type_Sel != null) {
-      this.jdField_a_of_type_Sel.a(paramInt);
-    }
-  }
-  
-  public void d()
-  {
-    pfd.a().b(this.jdField_a_of_type_Pfh);
-    super.d();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(b(Integer.valueOf(b())), a(Integer.valueOf(b())));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(this.jdField_b_of_type_JavaUtilMap);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.g();
-    this.jdField_a_of_type_Sel.d();
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_c_of_type_JavaUtilMap.clear();
-    this.jdField_b_of_type_JavaUtilMap.clear();
-    if (this.jdField_a_of_type_Rvy != null)
-    {
-      this.jdField_a_of_type_Rvy.b(this);
-      this.jdField_a_of_type_Rvy.d();
-    }
-    if (this.jdField_a_of_type_Rwu != null) {
-      this.jdField_a_of_type_Rwu.a(null);
-    }
-  }
-  
-  public void e()
-  {
-    super.e();
-    if (this.jdField_a_of_type_Sel != null) {
-      this.jdField_a_of_type_Sel.notifyDataSetChanged();
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.e();
-  }
-  
-  public void f()
-  {
-    super.f();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.f();
-  }
-  
-  public void g()
-  {
-    super.g();
-    this.jdField_a_of_type_Rvy.e();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.d();
-  }
-  
-  public void h()
-  {
-    super.h();
-    pfd.a().a(this.jdField_a_of_type_Pfh);
-    this.jdField_a_of_type_Rvy.f();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a();
-  }
-  
-  public void i()
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup).a(null, 1);
-    }
-  }
-  
-  public void j()
-  {
-    this.jdField_a_of_type_Rwu.j();
-  }
-  
-  public void k()
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup instanceof ReadInJoyListViewGroup)))
-    {
-      Object localObject = a(Integer.valueOf(b()));
-      Map localMap = ubg.a(b());
-      ThreadManager.executeOnSubThread(new ReadInJoyChannelViewController.2(this, (Map)localObject, a(Integer.valueOf(b())), localMap, ozs.e(b())));
-      b(Integer.valueOf(b())).clear();
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      localObject = (pmm)((ReadInJoyListViewGroup)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup).a(2);
-      if (localObject != null) {
-        ((pmm)localObject).i();
+      if (localbcgw.W == null) {
+        return "";
       }
+      return localbcgw.W;
     }
-  }
-  
-  public void l()
-  {
-    this.jdField_a_of_type_Sel.l();
-  }
-  
-  public void m()
-  {
-    this.jdField_a_of_type_Rvy.e();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.d();
-    if ((this.jdField_a_of_type_Rwu != null) && (this.jdField_a_of_type_Rwu.a() != null)) {
-      this.jdField_a_of_type_Rwu.a().c();
+    paramMessageRecord = a(paramMessageRecord);
+    if (paramMessageRecord == null) {
+      return "";
     }
-  }
-  
-  public void n()
-  {
-    if ((this.jdField_a_of_type_Rwu != null) && (this.jdField_a_of_type_Rwu.a() != null)) {
-      this.jdField_a_of_type_Rwu.a().b();
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (a())
-      {
-        Context localContext = this.jdField_a_of_type_AndroidViewViewGroup.getContext();
-        Intent localIntent = new Intent(localContext, AccountDetailActivity.class);
-        localIntent.putExtra("uin", String.valueOf(2062433139L));
-        localIntent.putExtra("uintype", 1008);
-        localIntent.putExtra("source", 119);
-        localContext.startActivity(localIntent);
-        ocd.a(null, null, "0X800932E", "0X800932E", 0, 0, "", "", "", odr.a(null), false);
-      }
-    }
-  }
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (b())
-    {
-      bool1 = bool2;
-      if (paramKeyEvent.getAction() == 0)
-      {
-        if (paramInt != 25) {
-          break label41;
-        }
-        bool1 = a(-1);
-      }
-    }
-    label41:
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-    } while (paramInt != 24);
-    return a(1);
-  }
-  
-  public void p()
-  {
-    if (zqd.a(a()))
-    {
-      ucd.a(a(), "video_type_videopublic");
-      ocd.a(null, "", "0X8009338", "0X8009338", 0, 0, "", "", "", odr.a("0"), false);
-      return;
-    }
-    QQToast.a(a(), -1, anzj.a(2131711955), 0).b(a().getResources().getDimensionPixelSize(2131299011));
-    ucd.b(a(), "video_type_videopublic");
-    ocd.a(null, "", "0X8009338", "0X8009338", 0, 0, "", "", "", odr.a("1"), false);
+    return paramMessageRecord.optString("qgg_ext");
   }
 }
 

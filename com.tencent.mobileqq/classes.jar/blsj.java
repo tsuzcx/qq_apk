@@ -1,30 +1,36 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ChildDrawingOrderCallback;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
 
-class blsj
-  implements RecyclerView.ChildDrawingOrderCallback
+public class blsj
+  implements Animation.AnimationListener
 {
-  blsj(blsg paramblsg) {}
+  public blsj(AEMaterialPanel paramAEMaterialPanel, Runnable paramRunnable) {}
   
-  public int onGetChildDrawingOrder(int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.mOverdrawChild == null) {}
-    int i;
-    do
+    AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, false);
+    if (AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel) != null) {
+      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).b();
+    }
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel, true);
+    if (AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel) != null)
     {
-      return paramInt2;
-      int j = this.a.mOverdrawChildPosition;
-      i = j;
-      if (j == -1)
-      {
-        i = this.a.mRecyclerView.indexOfChild(this.a.mOverdrawChild);
-        this.a.mOverdrawChildPosition = i;
-      }
-      if (paramInt2 == paramInt1 - 1) {
-        return i;
-      }
-    } while (paramInt2 < i);
-    return paramInt2 + 1;
+      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).setAlpha(1.0F);
+      AEMaterialPanel.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel).setVisibility(0);
+      return;
+    }
+    bmbx.d("AEMaterialPanel", "[openWithAnimation] alpha - onAnimationStart, mContentView == null");
   }
 }
 

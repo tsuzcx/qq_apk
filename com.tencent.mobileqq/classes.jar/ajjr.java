@@ -1,316 +1,46 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
-import com.tencent.widget.ThemeImageView;
-import com.tencent.widget.ThemeLabelTextView;
 
-public abstract class ajjr
+public class ajjr
+  implements afrc
 {
-  public static final int[] a;
-  public static final int[] b;
-  public static final int[] c = { 2131370743 };
-  public ajln a;
-  public ajmf a;
-  protected Context a;
-  protected blpv a;
-  public QQAppInterface a;
-  protected int b;
+  private ajjs jdField_a_of_type_Ajjs;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public boolean a;
   
-  static
+  public ajjr(ajjs paramajjs)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131691323 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130839514 };
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramajjs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramajjs.jdField_a_of_type_AndroidContentContext;
+    this.jdField_a_of_type_Ajjs = paramajjs;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramajjs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   }
   
-  public ajjr(Context paramContext, QQAppInterface paramQQAppInterface, ajln paramajln, ajmf paramajmf)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Ajln = paramajln;
-    this.jdField_a_of_type_Ajmf = paramajmf;
-    this.jdField_b_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297369);
-  }
-  
-  public static void a(View paramView, boolean paramBoolean)
-  {
-    if (paramView == null) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      paramView.setBackgroundResource(2130839404);
-      return;
-    }
-    if (ThemeUtil.isDefaultTheme())
-    {
-      paramView.setBackgroundResource(2130839402);
-      return;
-    }
-    paramView.setBackgroundResource(2130839399);
-  }
-  
-  public static void a(TextView paramTextView, int paramInt1, int paramInt2, StringBuilder paramStringBuilder)
-  {
-    int j;
-    int i;
-    switch (paramInt1)
+    QLog.i("MiniMultiForwardHelper", 2, "RESUME onMoveToState：=" + paramInt);
+    switch (paramInt)
     {
     default: 
-      paramTextView.setBackgroundResource(2130845871);
-      j = 0;
-      i = 0;
-    }
-    for (;;)
-    {
-      if ((paramInt2 > 0) && ((paramInt1 == 0) || (paramInt1 == 1)))
-      {
-        paramTextView.setText(String.valueOf(paramInt2));
-        if ((paramStringBuilder == null) || (!AppSetting.c)) {
-          break label225;
-        }
-        paramStringBuilder.append(",").append(String.valueOf(paramInt2));
-        i = 1;
-      }
-      for (;;)
-      {
-        paramTextView.setCompoundDrawablesWithIntrinsicBounds(j, 0, 0, 0);
-        if (i != 0)
-        {
-          if ((paramTextView instanceof ThemeLabelTextView)) {
-            ((ThemeLabelTextView)paramTextView).setSupportMaskView(true);
-          }
-          paramTextView.setVisibility(0);
-          return;
-          j = 2130845870;
-          paramTextView.setBackgroundResource(2130845871);
-          i = j;
-          if (paramStringBuilder == null) {
-            break label231;
-          }
-          i = j;
-          if (!AppSetting.c) {
-            break label231;
-          }
-          paramStringBuilder.append(",男");
-          j = 2130845870;
-          i = 1;
-          break;
-          j = 2130845868;
-          paramTextView.setBackgroundResource(2130845869);
-          i = j;
-          if (paramStringBuilder == null) {
-            break label231;
-          }
-          i = j;
-          if (!AppSetting.c) {
-            break label231;
-          }
-          paramStringBuilder.append(",女");
-          j = 2130845868;
-          i = 1;
-          break;
-          paramTextView.setText("");
-          continue;
-        }
-        paramTextView.setVisibility(8);
-        return;
-        label225:
-        i = 1;
-      }
-      label231:
-      j = i;
-      i = 1;
-    }
-  }
-  
-  public static void b(View paramView, int paramInt)
-  {
-    if (paramView == null) {
+      return;
+    case 5: 
+      this.jdField_a_of_type_Boolean = BaseChatItemLayout.jdField_a_of_type_Boolean;
+      BaseChatItemLayout.jdField_a_of_type_Boolean = false;
+      QLog.i("MiniMultiForwardHelper", 2, "RESUME mPreCheckBoxVisibleStat：=" + this.jdField_a_of_type_Boolean + "  BaseChatItemLayout.CheckBoxVisible :" + BaseChatItemLayout.jdField_a_of_type_Boolean);
       return;
     }
-    Object localObject = paramView.getLayoutParams();
-    if (localObject == null) {
-      localObject = new AbsListView.LayoutParams(-1, paramInt);
-    }
-    for (;;)
-    {
-      paramView.setMinimumHeight(paramInt);
-      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      return;
-      ((ViewGroup.LayoutParams)localObject).width = -1;
-      ((ViewGroup.LayoutParams)localObject).height = paramInt;
-    }
+    BaseChatItemLayout.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    QLog.i("MiniMultiForwardHelper", 2, "RESUME mPreCheckBoxVisibleStat：=" + this.jdField_a_of_type_Boolean + "  BaseChatItemLayout.CheckBoxVisible :" + BaseChatItemLayout.jdField_a_of_type_Boolean);
   }
   
-  public static void b(View paramView, boolean paramBoolean)
+  public int[] a()
   {
-    if (paramView == null) {
-      return;
-    }
-    int i = paramView.getPaddingBottom();
-    int j = paramView.getPaddingTop();
-    int k = paramView.getPaddingRight();
-    int m = paramView.getPaddingLeft();
-    if (paramBoolean) {
-      paramView.setBackgroundResource(2130839404);
-    }
-    for (;;)
-    {
-      paramView.setPadding(m, j, k, i);
-      return;
-      if (ThemeUtil.isDefaultTheme()) {
-        paramView.setBackgroundResource(2130839402);
-      } else {
-        paramView.setBackgroundResource(2130839399);
-      }
-    }
-  }
-  
-  protected int a()
-  {
-    return 0;
-  }
-  
-  public abstract View a(int paramInt, View paramView);
-  
-  protected View a(Context paramContext, int paramInt, ajjt paramajjt)
-  {
-    View localView = LayoutInflater.from(paramContext).inflate(paramInt, null);
-    if (this.jdField_a_of_type_Ajln != null) {
-      return this.jdField_a_of_type_Blpv.a(paramContext, localView, paramajjt, -1);
-    }
-    paramajjt.g = localView;
-    paramajjt.a = null;
-    return localView;
-  }
-  
-  protected blpv a(Context paramContext)
-  {
-    int i = paramContext.getResources().getDimensionPixelSize(2131298726);
-    int j = paramContext.getResources().getDimensionPixelSize(2131298727);
-    paramContext = c;
-    int[] arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
-    int[] arrayOfInt2 = jdField_b_of_type_ArrayOfInt;
-    return new ajjs(this, 1, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
-  }
-  
-  protected void a() {}
-  
-  public void a(ajmf paramajmf)
-  {
-    this.jdField_a_of_type_Ajmf = paramajmf;
-  }
-  
-  protected void a(Context paramContext, View paramView, int paramInt, Object paramObject, blpw paramblpw, View.OnClickListener paramOnClickListener)
-  {
-    if (this.jdField_a_of_type_Blpv != null) {}
-    for (int i = this.jdField_a_of_type_Blpv.a(paramContext, paramView, paramInt, paramObject, paramblpw, paramOnClickListener);; i = 0)
-    {
-      if ((this.jdField_a_of_type_Ajln != null) && (this.jdField_a_of_type_Ajln.a != -1))
-      {
-        if (paramInt != this.jdField_a_of_type_Ajln.a) {
-          paramView.scrollTo(0, 0);
-        }
-      }
-      else {
-        return;
-      }
-      paramView.scrollTo(i, 0);
-      return;
-    }
-  }
-  
-  protected void a(View paramView)
-  {
-    if (!bhjx.a("tag_swip_icon_menu_item", paramView.getTag())) {}
-    for (;;)
-    {
-      return;
-      if (!bhnv.g(this.jdField_a_of_type_AndroidContentContext))
-      {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131691989), 0).b(c());
-        return;
-      }
-      Object localObject1 = paramView.getTag(-1);
-      Object localObject2 = paramView.getTag(-2);
-      if ((!(localObject1 instanceof Integer)) || (!(localObject2 instanceof Integer)))
-      {
-        if (!QLog.isDevelopLevel()) {
-          continue;
-        }
-        QLog.i("Q.newfriend", 4, "SystemMsgListAdpater onClick tag is not int");
-        return;
-      }
-      int i = ((Integer)localObject1).intValue();
-      int j = ((Integer)localObject2).intValue();
-      localObject1 = null;
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.newfriend", 2, "SystemMsgListAdpater onClick position = " + i + "nMenuStrId = " + j + "v.getId() = " + paramView.getId());
-      }
-      try
-      {
-        paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getString(j);
-        if (!bhjx.a(paramView, this.jdField_a_of_type_AndroidContentContext.getResources().getString(jdField_a_of_type_ArrayOfInt[0]))) {
-          continue;
-        }
-        a();
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          paramView = localObject1;
-          if (QLog.isDevelopLevel())
-          {
-            QLog.i("Q.newfriend", 4, localException.toString());
-            paramView = localObject1;
-          }
-        }
-      }
-    }
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    if (paramView == null) {}
-    View localView;
-    do
-    {
-      return;
-      localView = paramView.findViewById(2131376742);
-      if ((localView == paramView) || (localView == null))
-      {
-        b(paramView, paramInt);
-        return;
-      }
-      paramView = localView.getLayoutParams();
-    } while (paramView == null);
-    paramView.width = -1;
-    paramView.height = paramInt;
-    localView.setLayoutParams(paramView);
-  }
-  
-  public void b(View paramView)
-  {
-    if ((paramView instanceof ThemeImageView)) {
-      ((ThemeImageView)paramView).setSupportMaskView(false);
-    }
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299011);
+    return new int[] { 3, 5, 9, 13 };
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.forward;
 
-import bhmk;
+import bfvj;
 
 class ForwardQFavBatchOption$3
   implements Runnable
@@ -9,7 +9,7 @@ class ForwardQFavBatchOption$3
   
   public void run()
   {
-    bhmk.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.c, false, this.this$0.jdField_a_of_type_AndroidAppActivity, this.jdField_b_of_type_Int);
+    bfvj.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.c, false, this.this$0.jdField_a_of_type_AndroidAppActivity, this.jdField_b_of_type_Int);
   }
 }
 

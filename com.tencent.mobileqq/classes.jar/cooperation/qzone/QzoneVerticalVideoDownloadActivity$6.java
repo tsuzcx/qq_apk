@@ -1,8 +1,8 @@
 package cooperation.qzone;
 
-import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
 
 final class QzoneVerticalVideoDownloadActivity$6
@@ -13,8 +13,8 @@ final class QzoneVerticalVideoDownloadActivity$6
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put(this.jdField_a_of_type_JavaLangString, this.b);
-    bdmc.a(BaseApplicationImpl.getApplication()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.c, true, this.jdField_a_of_type_Int, 0L, localHashMap, null);
+    localHashMap.put(this.val$subKey, this.val$value);
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(this.val$app.getCurrentUin(), this.val$eventKey, true, this.val$time, 0L, localHashMap, null);
   }
 }
 

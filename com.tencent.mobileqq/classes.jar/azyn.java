@@ -1,6 +1,19 @@
-public class azyn
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import rx.functions.Action1;
+
+class azyn
+  implements Action1<azys>
 {
-  public static final int[] a = { -1000, -2000, -20000, -2002, -2022, -1035, -2001, -2007, -1049, -2058 };
+  azyn(azym paramazym, HashSet paramHashSet) {}
+  
+  public void a(azys paramazys)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ResourceGrabModel", 2, "ResourceNameOnClickListener subscribe call :" + paramazys);
+    }
+    azym.a(this.jdField_a_of_type_Azym, paramazys, this.jdField_a_of_type_JavaUtilHashSet);
+  }
 }
 
 

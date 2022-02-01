@@ -1,25 +1,7 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
+import kotlin.Metadata;
 
-class alhg
-  implements bdgt
-{
-  alhg(alhf paramalhf, alhh paramalhh) {}
-  
-  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
-  {
-    if (paramInt == 0)
-    {
-      alhf.a(this.jdField_a_of_type_Alhf, true);
-      if (this.jdField_a_of_type_Alhh != null) {
-        this.jdField_a_of_type_Alhh.a(true);
-      }
-    }
-    while (this.jdField_a_of_type_Alhh == null) {
-      return;
-    }
-    this.jdField_a_of_type_Alhh.a(false);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WebViewFragmentWithArk$Companion;", "", "()V", "ARK_MAX_HEIGHT", "", "KEY_AD_CODE", "", "KEY_APP_META", "KEY_APP_NAME", "KEY_APP_VERSION", "KEY_APP_VIEW", "KEY_IS_FROM_DRAWER", "KEY_IS_FROM_SHARE", "KEY_IS_TO_ARK", "KEY_START_TIME", "KEY_WEB_PROCESS_EXIST", "TAG", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class alhg {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

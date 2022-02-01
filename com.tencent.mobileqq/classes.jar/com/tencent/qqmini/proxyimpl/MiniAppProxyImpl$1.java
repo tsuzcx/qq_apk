@@ -1,12 +1,12 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bkxx;
+import bjdt;
 import java.util.ArrayList;
 
 public class MiniAppProxyImpl$1
   extends ArrayList<Integer>
 {
-  public MiniAppProxyImpl$1(bkxx parambkxx)
+  public MiniAppProxyImpl$1(bjdt parambjdt)
   {
     add(Integer.valueOf(1044));
     add(Integer.valueOf(1007));

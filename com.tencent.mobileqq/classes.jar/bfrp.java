@@ -1,54 +1,72 @@
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.util.QQAvatarFHDDecoder.1.1;
+import com.tencent.mobileqq.util.QQAvatarFHDDecoder.1.2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bfrp
-  extends DefaultHandler
+  extends amsu
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  protected String e;
+  bfrp(bfro parambfro) {}
   
-  public bfrp(bfrm parambfrm) {}
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    if (this.e != null)
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-      if (!this.e.equals("title")) {
-        break label46;
-      }
-      if (bhsr.a(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = paramArrayOfChar;
+      localStringBuilder = new StringBuilder().append("onGetHeadInfo ").append(paramBoolean).append(" ");
+      if (paramSetting == null) {
+        break label99;
       }
     }
-    label46:
-    while (!this.e.equals("summary")) {
+    label99:
+    for (String str = paramSetting.uin;; str = "")
+    {
+      QLog.i("QQAvatarFHDDecoder", 2, str);
+      if ((paramSetting != null) && (paramSetting.uin != null) && (paramSetting.uin.equals(bfro.a(this.a)))) {
+        ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.1(this, paramSetting), 128, null, true);
+      }
       return;
     }
-    this.c = paramArrayOfChar;
   }
   
-  public void endElement(String paramString1, String paramString2, String paramString3)
+  public void onGetHeadInfoEmpty(boolean paramBoolean, int paramInt, List<String> paramList)
   {
-    this.e = null;
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    if (paramString2.equals("picture")) {
-      this.b = paramAttributes.getValue("cover");
-    }
-    for (;;)
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      this.e = paramString2;
-      return;
-      if (paramString2.equals("msg")) {
-        this.d = paramAttributes.getValue("url");
+      localStringBuilder = new StringBuilder().append("onGetHeadInfoEmpty ").append(paramBoolean).append(" ").append(paramInt).append(" ");
+      if (paramList == null) {
+        break label138;
       }
     }
+    label138:
+    for (String str = paramList.toString();; str = "")
+    {
+      QLog.i("QQAvatarFHDDecoder", 2, str);
+      if (paramList != null)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          str = (String)paramList.next();
+          if ((str != null) && (str.equals(bfro.a(this.a))))
+          {
+            if (!paramBoolean) {
+              break label145;
+            }
+            ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.2(this, str), 128, null, true);
+          }
+        }
+      }
+      return;
+    }
+    label145:
+    bfro.a(this.a).obtainMessage(1).sendToTarget();
   }
 }
 

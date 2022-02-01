@@ -1,149 +1,56 @@
-import android.content.Intent;
-import com.tencent.common.config.AppSetting;
-import com.tencent.ims.AccountSecurityInfo.SecCheckBanner;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
-import com.tencent.msfmqpsdkbridge.MSFNetTransportProvider;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
-import com.tencent.qqprotect.sfcfg.QPTxVerifyApkTimerTask;
-import tencent.im.s2c.msgtype0x210.submsgtype0x4a.MsgBody;
 
 public class aogy
-  extends anud
+  extends aoim
 {
-  public static int a;
+  public float a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  aogy(QQAppInterface paramQQAppInterface)
+  public aogy()
   {
-    super(paramQQAppInterface);
+    this.jdField_b_of_type_Long = 64L;
   }
   
-  public static void a()
+  public static boolean a(aogy paramaogy)
   {
-    try
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramaogy != null)
     {
-      a += 1;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void b()
-  {
-    try
-    {
-      a -= 1;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    Object localObject = new MsgBody();
-    do
-    {
-      try
+      bool1 = bool2;
+      if (paramaogy.a())
       {
-        ((MsgBody)localObject).mergeFrom(paramArrayOfByte);
-        if ((!((MsgBody)localObject).has()) || (!((MsgBody)localObject).uint32_sec_cmd.has())) {
-          return;
+        bool1 = bool2;
+        if (paramaogy.b()) {
+          bool1 = true;
         }
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                for (;;)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("SafeCenterPushHandler", 2, "onReceive: onReceive push package: msgbody parse fail");
-                  }
-                  paramArrayOfByte.printStackTrace();
-                }
-                switch (((MsgBody)localObject).uint32_sec_cmd.get())
-                {
-                case 5: 
-                default: 
-                  return;
-                case 1: 
-                  new abkp(this.app).a();
-                  return;
-                case 2: 
-                  paramArrayOfByte = (MSFNetTransportProvider)this.app.a(63);
-                  paramArrayOfByte = new bjja(this.app.getApp().getApplicationContext(), paramArrayOfByte);
-                }
-              } while (paramArrayOfByte == null);
-              paramArrayOfByte = (bjjd)paramArrayOfByte.a("intchk");
-            } while (paramArrayOfByte == null);
-            paramArrayOfByte.a(1, new MSFIntChkStrike(this.app, 1));
-            paramArrayOfByte.a(2, new MSFIntChkStrike(this.app, 2));
-            paramArrayOfByte.a(3, new MSFIntChkStrike(this.app, 3));
-            paramArrayOfByte.b("8.4.5." + AppSetting.g());
-            return;
-            paramArrayOfByte = (MSFNetTransportProvider)this.app.a(63);
-            paramArrayOfByte = new bjja(this.app.getApp().getApplicationContext(), paramArrayOfByte);
-          } while (paramArrayOfByte == null);
-          paramArrayOfByte = (bjjc)paramArrayOfByte.a("app_scan");
-        } while (paramArrayOfByte == null);
-        paramArrayOfByte.a(((MsgBody)localObject).bytes_data.get().toByteArray());
-        return;
-        localObject = ((MsgBody)localObject).bytes_data.get().toByteArray();
-        paramArrayOfByte = new AccountSecurityInfo.SecCheckBanner();
-        try
-        {
-          paramArrayOfByte.mergeFrom((byte[])localObject);
-          localObject = paramArrayOfByte.str_wording.get();
-          int i = paramArrayOfByte.u32_timeToShow.get();
-          paramArrayOfByte = new Intent();
-          paramArrayOfByte.putExtra("wording", (String)localObject);
-          paramArrayOfByte.putExtra("timetowait", i);
-          this.app.a(paramArrayOfByte);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          for (;;)
-          {
-            localInvalidProtocolBufferMicroException.printStackTrace();
-          }
-        }
-        new QPTxVerifyApkTimerTask(this.app, true).a();
-        return;
-      }
-    } while (localInvalidProtocolBufferMicroException.bytes_data.get() == null);
-    QSecFramework.a().a(localInvalidProtocolBufferMicroException.bytes_data.get().toByteArray());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ARCloudPreOcrResult", 2, "isRecogSuccess result = " + bool1);
+    }
+    return bool1;
   }
   
-  protected Class<? extends anui> observerClass()
+  public boolean a()
   {
-    return null;
+    return (this.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0);
   }
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public boolean b()
+  {
+    return this.jdField_c_of_type_Int == 1;
+  }
+  
+  public String toString()
+  {
+    return "ARCloudPreOcrResult{recogType = " + this.jdField_b_of_type_Long + ", recogSvrRetCode = " + this.jdField_a_of_type_Int + ", recogSvrRetMsg = " + this.jdField_a_of_type_JavaLangString + ", sessionId = " + this.jdField_b_of_type_JavaLangString + ", arWordDetectRetCode = " + this.jdField_b_of_type_Int + ", arWordDetectRetMsg = " + this.jdField_c_of_type_JavaLangString + ", wordType = " + this.jdField_c_of_type_Int + ", confidence = " + this.jdField_a_of_type_Float + '}';
+  }
 }
 
 

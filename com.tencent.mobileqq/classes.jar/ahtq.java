@@ -1,45 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.data.MessageForText;
+import android.os.Handler;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahtq
-  implements View.OnClickListener
+  implements INetEngine.INetEngineListener
 {
-  ahtq(ahtp paramahtp) {}
+  private Handler a;
   
-  public void onClick(View paramView)
+  ahtq(Handler paramHandler)
   {
-    Object localObject = agej.a(paramView);
-    if (!(localObject instanceof MessageForText)) {
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localObject = (MessageForText)localObject;
-      if (!this.a.a())
-      {
-        if (((MessageForText)localObject).msgtype == -1003)
-        {
-          agej.n = true;
-          localObject = bhvd.a(((MessageForText)localObject).action);
-          localObject = bhni.a(this.a.a, paramView.getContext(), (String)localObject);
-          if (localObject != null) {
-            ((bhmr)localObject).a();
-          }
-        }
-        if ((paramView instanceof ETTextView)) {
-          ((ETTextView)paramView).startAnimation(true, false);
-        }
-      }
-    }
+    this.a = paramHandler;
   }
+  
+  public void onResp(NetResp paramNetResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ZhituManager", 2, "FontDownloadListener onResp: " + paramNetResp);
+    }
+    if (paramNetResp.mResult == 3) {
+      return;
+    }
+    if (paramNetResp.mResult == 0)
+    {
+      if ("f832939458e5e54f73b1702bc4edb7e8".equalsIgnoreCase(ahtj.a(paramNetResp.mReq.mOutPath)))
+      {
+        this.a.sendEmptyMessage(100);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ZhituManager", 2, "font download but md5 is not matched");
+      }
+      this.a.sendEmptyMessage(101);
+      return;
+    }
+    this.a.sendEmptyMessage(101);
+  }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

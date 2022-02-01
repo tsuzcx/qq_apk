@@ -1,36 +1,19 @@
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingMe.32;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeau
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public MessageForReplyText.SourceMsgInfo a;
-  public EmojiStickerManager.StickerInfo a;
-  public String a;
-  public boolean a = true;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
-  public long d;
-  public String d;
-  public boolean d;
-  public int e;
-  public long e;
-  public boolean e;
-  public int f;
-  public boolean f;
-  public int g = -1;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
+  public aeau(QQSettingMe.32 param32) {}
+  
+  public void onClick(View paramView)
+  {
+    bgff.a();
+    bgff.a("0X800B232", bgff.a(), bgff.b());
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -9,7 +9,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bhtq;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class QIMCameraCountTimeLayout
   extends LinearLayout
@@ -40,17 +40,17 @@ public class QIMCameraCountTimeLayout
   {
     setOrientation(0);
     this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844462);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(bhtq.a(6.0F), bhtq.a(6.0F));
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844342);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(ViewUtils.dip2px(6.0F), ViewUtils.dip2px(6.0F));
     localLayoutParams.gravity = 16;
     addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
     this.jdField_a_of_type_AndroidWidgetTextView.setText("0秒");
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(14.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(2.0F, 0.0F, 0.0F, 2131165356);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167302));
+    this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(2.0F, 0.0F, 0.0F, 2131165364);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167337));
     localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.leftMargin = bhtq.a(4.0F);
+    localLayoutParams.leftMargin = ViewUtils.dip2px(4.0F);
     addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
   }
   
@@ -81,7 +81,7 @@ public class QIMCameraCountTimeLayout
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(2.0F, 0.0F, 0.0F, 2131165356);
+      this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(2.0F, 0.0F, 0.0F, 2131165364);
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
@@ -96,7 +96,7 @@ public class QIMCameraCountTimeLayout
       }
     }
     label35:
-    for (Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772228);; localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772007))
+    for (Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772226);; localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772007))
     {
       this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimation);
       return;

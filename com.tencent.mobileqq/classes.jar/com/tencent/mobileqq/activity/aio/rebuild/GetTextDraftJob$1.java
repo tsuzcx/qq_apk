@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.data.DraftTextInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XEditTextEx;
@@ -28,7 +28,7 @@ class GetTextDraftJob$1
     }
     for (;;)
     {
-      localBaseChatPie.a.post(new GetTextDraftJob.1.1(this, localBaseChatPie));
+      localBaseChatPie.input.post(new GetTextDraftJob.1.1(this, localBaseChatPie));
       return;
       label89:
       QLog.i("GetTextDraftJob", 2, "draft text info is null");

@@ -1,46 +1,32 @@
-import com.tencent.avgame.gameroom.stage.guesspicture.GuessPictureStageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.RectF;
+import android.view.View;
 
-public class ndo
-  implements URLDrawable.URLDrawableListener
+public abstract interface ndo
 {
-  public ndo(GuessPictureStageView paramGuessPictureStageView, mzp parammzp) {}
+  public abstract int a();
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  public abstract View a();
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("GuessPictureStageView", 2, "urlDrawable load failed and throwable" + paramThrowable);
-    }
-    bdll.b(null, "dc00898", "", "", "0X800B0FA", "0X800B0FA", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.b();
-  }
+  public abstract void a();
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  public abstract void a(RectF paramRectF);
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("GuessPictureStageView", 2, "urlDrawable load success");
-    }
-    bdll.b(null, "dc00898", "", "", "0X800B0F5", "0X800B0F5", 0, 0, "", "", "", "");
-    paramURLDrawable = nic.a(paramURLDrawable.getCurrDrawable());
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView.a = paramURLDrawable;
-    GuessPictureStageView localGuessPictureStageView = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureGuessPictureStageView;
-    if (this.jdField_a_of_type_Mzp.c == 0) {}
-    for (int i = 10;; i = this.jdField_a_of_type_Mzp.c)
-    {
-      GuessPictureStageView.a(localGuessPictureStageView, paramURLDrawable, i);
-      return;
-    }
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString1, Bitmap paramBitmap1, String paramString2, long paramLong1, long paramLong2, long paramLong3, Bitmap paramBitmap2, long paramLong4, boolean paramBoolean);
+  
+  public abstract void a(String paramString, RectF paramRectF, int paramInt);
+  
+  public abstract void b(RectF paramRectF);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void b(String paramString, RectF paramRectF, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ndo
  * JD-Core Version:    0.7.0.1
  */

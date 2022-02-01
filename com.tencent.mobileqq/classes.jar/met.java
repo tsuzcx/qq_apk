@@ -1,14 +1,44 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.MultiMembersAudioUI;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+
 public class met
+  implements View.OnClickListener
 {
-  public int a;
-  public int b;
-  public int c;
+  public met(MultiMembersAudioUI paramMultiMembersAudioUI) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    if (this.a.jdField_a_of_type_Msb == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      mey localmey = (mey)paramView.getTag();
+      if (localmey == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MultiMembersAudioUI", 2, "onItemClick-->holder is null");
+        }
+      }
+      else
+      {
+        if (localmey.c) {}
+        for (int i = 7;; i = this.a.a(localmey.jdField_a_of_type_Long))
+        {
+          if ((this.a.jdField_a_of_type_JavaUtilArrayList.size() <= 8) || ((this.a.jdField_a_of_type_Int != 1) && (this.a.jdField_a_of_type_Int != 2))) {
+            break label134;
+          }
+          this.a.jdField_a_of_type_Msb.a(localmey.jdField_a_of_type_Long, localmey.jdField_a_of_type_Int, i, true);
+          break;
+        }
+        label134:
+        this.a.jdField_a_of_type_Msb.a(localmey.jdField_a_of_type_Long, localmey.jdField_a_of_type_Int, i, false);
+      }
+    }
   }
 }
 

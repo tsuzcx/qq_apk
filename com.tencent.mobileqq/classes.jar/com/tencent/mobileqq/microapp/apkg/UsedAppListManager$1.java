@@ -19,7 +19,7 @@ class UsedAppListManager$1
       do
       {
         return;
-        ??? = UsedAppListManager.access$000(this.this$0).a().createEntityManager();
+        ??? = UsedAppListManager.access$000(this.this$0).getEntityManagerFactory().createEntityManager();
       } while (??? == null);
       localList = ((EntityManager)???).query(AppInfo.class, AppInfo.class.getSimpleName(), false, null, null, null, null, "timestamp desc", null);
     } while (localList == null);

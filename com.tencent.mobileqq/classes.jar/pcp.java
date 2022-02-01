@@ -1,87 +1,55 @@
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class pcp
-  implements ITMAssistantDownloadClientListener
+  implements AladdinConfigHandler
 {
-  private List<pco> a = new LinkedList();
-  
-  private static String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "UNKNOWN";
-    case 1: 
-      return "DownloadSDKTaskState_WAITING";
-    case 2: 
-      return "DownloadSDKTaskState_DOWNLOADING";
-    case 4: 
-      return "DownloadSDKTaskState_SUCCEED";
-    case 3: 
-      return "DownloadSDKTaskState_PAUSED";
-    case 6: 
-      return "DownloadSDKTaskState_DELETE";
-    }
-    return "DownloadSDKTaskState_FAILED";
-  }
-  
-  public void a(pco parampco)
-  {
-    if (!this.a.contains(parampco)) {
-      this.a.add(parampco);
-    }
-  }
-  
-  public void b(pco parampco)
-  {
-    this.a.remove(parampco);
-  }
-  
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  private static long a(String paramString, long paramLong)
   {
     try
     {
-      QLog.d("DownloadListenerDelegate", 2, "[onDownloadSDKTaskProgressChanged] url=" + paramString + " receiveLen=" + paramLong1 + " totalLen=" + paramLong2 + " progress=" + paramLong1 * 1.0D / paramLong2 * 100.0D);
-      return;
+      long l = Long.valueOf(paramString).longValue();
+      return l;
     }
-    catch (Throwable paramTMAssistantDownloadClient)
+    catch (NumberFormatException paramString)
     {
-      QLog.e("DownloadListenerDelegate", 1, "[onDownloadSDKTaskProgressChanged] ", paramTMAssistantDownloadClient);
+      QLog.d("FeedsPreloadConfigHandler", 2, "parseStringToLong, e ", paramString);
     }
+    return paramLong;
   }
   
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (paramTMAssistantDownloadClient != null) {
-      try
-      {
-        paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
-        if (paramTMAssistantDownloadClient != null)
-        {
-          QLog.d("DownloadListenerDelegate", 2, "[onDownloadSDKTaskProgressChanged] url=" + paramString1 + " savedPath= " + paramTMAssistantDownloadClient.mSavePath + " state=" + a(paramInt1) + " errorCode=" + paramInt2 + " errorMsg=" + paramString2);
-          Iterator localIterator = this.a.iterator();
-          while (localIterator.hasNext()) {
-            ((pco)localIterator.next()).a(paramString1, paramTMAssistantDownloadClient.mSavePath, paramInt1, paramInt2, paramString2);
-          }
-        }
-        return;
-      }
-      catch (Throwable paramTMAssistantDownloadClient)
-      {
-        QLog.e("DownloadListenerDelegate", 1, "[onDownloadSDKTaskStateChanged] ", paramTMAssistantDownloadClient);
+    paramString = pbt.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("FeedsPreloadConfigHandler", 1, new Object[] { "key = ", str1, ", value = ", str2 });
+      if (TextUtils.equals("switch", str1)) {
+        bkwm.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
+      } else if (TextUtils.equals("preload_interval", str1)) {
+        bkwm.a("sp_key_readinjoy_feeds_preload_interval", Long.valueOf(a(str2, 30L)));
+      } else if (TextUtils.equals("last_enter_kandian", str1)) {
+        bkwm.a("sp_key_readinjoy_feeds_preload_last_enter_kd_day", Long.valueOf(a(str2, 90L)));
+      } else if (TextUtils.equals("preload_time_limit", str1)) {
+        bkwm.a("sp_key_readinjoy_feeds_preload_time_limit", Long.valueOf(a(str2, 10L)));
+      } else if (TextUtils.equals("loading_time", str1)) {
+        bkwm.a("sp_key_readinjoy_feeds_preload_loading_time", Long.valueOf(a(str2, 50L)));
       }
     }
+    return true;
   }
   
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient)
+  public void onWipeConfig(int paramInt)
   {
-    QLog.d("DownloadListenerDelegate", 2, "[onDwonloadSDKServiceInvalid] ");
+    QLog.d("FeedsPreloadConfigHandler", 1, new Object[] { "onWipeConfig, id = ", Integer.valueOf(paramInt) });
+    bkwm.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(false));
   }
 }
 

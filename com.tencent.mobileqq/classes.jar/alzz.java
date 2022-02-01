@@ -1,22 +1,25 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.view.ISPlayerVideoView.IVideoViewCallBack;
 
-public class alzz
-  implements MediaPlayer.OnCompletionListener
+class alzz
+  implements ISPlayerVideoView.IVideoViewCallBack
 {
-  public alzz(FixedSizeVideoView paramFixedSizeVideoView) {}
+  alzz(alzy paramalzy) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void onSurfaceChanged(Object paramObject)
   {
-    if (this.a.a != null)
-    {
-      if (FixedSizeVideoView.a(this.a) != null) {
-        FixedSizeVideoView.a(this.a).removeMessages(0);
-      }
-      this.a.a.a(paramMediaPlayer);
-    }
+    QLog.i("CmGameGdtVideoPlayer", 1, "[onSurfaceChanged]");
+  }
+  
+  public void onSurfaceCreated(Object paramObject)
+  {
+    QLog.i("CmGameGdtVideoPlayer", 1, "[onSurfaceCreated]");
+  }
+  
+  public void onSurfaceDestroy(Object paramObject)
+  {
+    QLog.i("CmGameGdtVideoPlayer", 1, "[onSurfaceDestroy]");
+    alzy.a(this.a, true);
   }
 }
 

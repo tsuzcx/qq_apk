@@ -1,6 +1,19 @@
-public abstract interface xvp
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class xvp
+  implements View.OnClickListener
 {
-  public abstract void a(xvo paramxvo, int paramInt);
+  xvp(xvo paramxvo, xvn paramxvn, yml paramyml) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Xvn != null) {
+      this.jdField_a_of_type_Xvn.a(this.jdField_a_of_type_Yml);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

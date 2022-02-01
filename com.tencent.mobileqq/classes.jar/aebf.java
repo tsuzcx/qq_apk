@@ -1,25 +1,31 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.QQSettingMe.WebPreloadTask;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aebf
-  implements aeby
+public class aebf
+  implements bgso
 {
-  public aebf(Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString) {}
+  public aebf(QQSettingMe.WebPreloadTask paramWebPreloadTask, QQSettingMe paramQQSettingMe) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onResult(boolean paramBoolean)
   {
-    AudioHelper.b("发起音视频_获取会议id_rsp");
-    Bundle localBundle2 = this.jdField_a_of_type_AndroidOsBundle;
-    Bundle localBundle1 = localBundle2;
-    if (localBundle2 == null) {
-      localBundle1 = new Bundle();
+    if ((paramBoolean) && (QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe) != null)) {
+      QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).a();
     }
-    localBundle1.putInt("ConfAppID", paramInt1);
-    localBundle1.putInt("MeetingConfID", paramInt2);
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, localBundle1);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("WebPreloadTask preloadWebProcess isProcessExist: ");
+      if (paramBoolean) {
+        break label64;
+      }
+    }
+    label64:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      QLog.d("QQSettingRedesign", 2, paramBoolean);
+      return;
+    }
   }
 }
 

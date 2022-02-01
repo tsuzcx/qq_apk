@@ -1,18 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public final class ryy
-  implements Parcelable.Creator<DiscoveryInfo>
+public class ryy
+  implements puy
 {
-  public DiscoveryInfo a(Parcel paramParcel)
+  private List<VideoInfo> a;
+  
+  public ryy(List<VideoInfo> paramList)
   {
-    return new DiscoveryInfo(paramParcel);
+    this.a = paramList;
   }
   
-  public DiscoveryInfo[] a(int paramInt)
+  public void a(int paramInt, Map<Long, rcz> paramMap)
   {
-    return new DiscoveryInfo[paramInt];
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      VideoInfo localVideoInfo = (VideoInfo)localIterator.next();
+      if (!TextUtils.isEmpty(localVideoInfo.j))
+      {
+        rcz localrcz = (rcz)paramMap.get(Long.valueOf(Long.parseLong(localVideoInfo.j)));
+        if (localrcz != null) {
+          localVideoInfo.q = localrcz.a();
+        }
+      }
+    }
   }
 }
 

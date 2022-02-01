@@ -1,19 +1,12 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionBaseFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class astp
+class astp
   implements View.OnClickListener
 {
-  public astp(AIOEmotionBaseFragment paramAIOEmotionBaseFragment) {}
+  astp(astk paramastk) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.a("0X8009980");
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onClick(View paramView) {}
 }
 
 

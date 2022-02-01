@@ -1,26 +1,16 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardTextOption;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.map.geolocation.TencentDirectionListener;
 
-public class avda
-  implements View.OnClickListener
+class avda
+  implements TencentDirectionListener
 {
-  public avda(ForwardTextOption paramForwardTextOption) {}
+  avda(avcw paramavcw) {}
   
-  public void onClick(View paramView)
+  public void onDirectionChanged(double paramDouble, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Bhpc == null) {}
-    for (;;)
+    if (avcw.a(this.a) != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.jdField_a_of_type_Bhpc.hideSoftInputFromWindow();
-      avap localavap = new avap(this.a.jdField_a_of_type_Bhpc);
-      localavap.a(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131692404), this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_Bhpc.addPreviewView(localavap.b());
-      this.a.F();
+      avcw.a(this.a, 180.0D + paramDouble);
+      avcw.a(this.a, false);
     }
   }
 }

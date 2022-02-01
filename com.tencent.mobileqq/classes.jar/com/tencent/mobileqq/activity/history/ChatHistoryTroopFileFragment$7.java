@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import aauw;
+import zrj;
 
 class ChatHistoryTroopFileFragment$7
   implements Runnable
@@ -9,8 +9,8 @@ class ChatHistoryTroopFileFragment$7
   
   public void run()
   {
-    aauw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.this$0), this.this$0.jdField_a_of_type_Aavf);
-    aauw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.this$0), this.this$0.jdField_a_of_type_Aavi);
+    zrj.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.this$0), this.this$0.jdField_a_of_type_Zrs);
+    zrj.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.this$0), this.this$0.jdField_a_of_type_Zrv);
   }
 }
 

@@ -1,22 +1,13 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.database.DataSetObserver;
 
-public class yse
-  extends QQUIEventReceiver<yrh, ysd>
+class yse
+  extends DataSetObserver
 {
-  public yse(@NonNull yrh paramyrh)
-  {
-    super(paramyrh);
-  }
+  yse(ysd paramysd) {}
   
-  public void a(@NonNull yrh paramyrh, @NonNull ysd paramysd)
+  public void onChanged()
   {
-    paramyrh.a(paramysd);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return ysd.class;
+    ysd.a(this.a, true);
   }
 }
 

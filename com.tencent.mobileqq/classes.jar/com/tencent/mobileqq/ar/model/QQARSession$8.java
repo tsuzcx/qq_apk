@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.model;
 
-import apnt;
-import apse;
+import aohg;
+import aolr;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQARSession$8
   implements Runnable
 {
-  public QQARSession$8(apse paramapse, apnt paramapnt) {}
+  public QQARSession$8(aolr paramaolr, aohg paramaohg) {}
   
   public void run()
   {

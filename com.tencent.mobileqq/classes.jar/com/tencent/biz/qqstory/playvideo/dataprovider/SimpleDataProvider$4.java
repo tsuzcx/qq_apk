@@ -1,27 +1,27 @@
 package com.tencent.biz.qqstory.playvideo.dataprovider;
 
 import java.util.concurrent.atomic.AtomicInteger;
-import xno;
-import yuk;
+import woz;
+import xvv;
 
 public class SimpleDataProvider$4
   implements Runnable
 {
-  public SimpleDataProvider$4(xno paramxno) {}
+  public SimpleDataProvider$4(woz paramwoz) {}
   
   public void run()
   {
-    int i = xno.a(this.this$0).getAndSet(1);
+    int i = woz.a(this.this$0).getAndSet(1);
     if (i > 1)
     {
-      yuk.a("Q.qqstory.player.data.SimpleDataProvider", "post result combine count:%d", Integer.valueOf(i));
-      xno.a(this.this$0);
+      xvv.a("Q.qqstory.player.data.SimpleDataProvider", "post result combine count:%d", Integer.valueOf(i));
+      woz.a(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.SimpleDataProvider.4
  * JD-Core Version:    0.7.0.1
  */

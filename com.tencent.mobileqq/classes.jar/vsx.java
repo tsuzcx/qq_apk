@@ -1,18 +1,38 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetMainPageRsp;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.AppInterface;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
-class vsx
-  implements aaav<FeedCloudRead.StGetMainPageRsp>
+public class vsx
 {
-  vsx(vsw paramvsw, QCircleGetMainPageRequest paramQCircleGetMainPageRequest, aadl paramaadl) {}
+  public static vsx a;
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
+  public static vsx a()
   {
-    QLog.d("QCirclePersonalDetailPreLoaderTask", 1, "QCirclePersonalDetailPreLoaderTask->onReceive: dispatch Success:" + paramBoolean + " |CmdName:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getCmdName() + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString);
-    if (this.jdField_a_of_type_Aadl != null) {
-      this.jdField_a_of_type_Aadl.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetMainPageRsp });
+    if (a == null) {
+      a = new vsx();
     }
+    return a;
+  }
+  
+  private void a(String paramString, byte[] paramArrayOfByte, BusinessObserver paramBusinessObserver)
+  {
+    QQStoryContext.a();
+    AppInterface localAppInterface = QQStoryContext.a();
+    NewIntent localNewIntent = new NewIntent(localAppInterface.getApp(), nma.class);
+    localNewIntent.putExtra("cmd", paramString);
+    localNewIntent.putExtra("data", paramArrayOfByte);
+    localNewIntent.putExtra("isResend", false);
+    localNewIntent.setObserver(paramBusinessObserver);
+    localAppInterface.startServlet(localNewIntent);
+  }
+  
+  public void a(vsz paramvsz, vta paramvta)
+  {
+    byte[] arrayOfByte = paramvsz.a();
+    String str = paramvsz.a();
+    long l = System.currentTimeMillis();
+    a(paramvsz.a(), arrayOfByte, new vsy(this, l, paramvsz, str, paramvta));
   }
 }
 

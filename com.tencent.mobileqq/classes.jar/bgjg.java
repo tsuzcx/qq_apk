@@ -1,67 +1,40 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troop.quickat.ui.AIOAtSearchManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import org.json.JSONObject;
 
-class bgjg
-  extends aojs
+public class bgjg
 {
-  bgjg(bgjf parambgjf) {}
-  
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public static String a(MessageRecord paramMessageRecord)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AtPanel", 2, "onUpdateTroopGetMemberList troopUin=" + paramString + " isSuccess=" + paramBoolean + " reqType=" + paramInt1 + " type" + paramInt2 + " reqTimestamp=" + paramLong);
-    }
-    if (paramInt1 != 2) {}
-    do
+    String str2 = "";
+    String str1 = str2;
+    try
     {
-      return;
-      if ((paramString != null) && (paramString.equals(bgjf.a(this.a).a))) {
-        break;
+      Object localObject = paramMessageRecord.extStr;
+      paramMessageRecord = str2;
+      str1 = str2;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        str1 = str2;
+        localObject = new JSONObject((String)localObject);
+        str1 = str2;
+        str2 = ((JSONObject)localObject).optString("public_account_msg_id", "");
+        paramMessageRecord = str2;
+        str1 = str2;
+        if (TextUtils.isEmpty(str2))
+        {
+          str1 = str2;
+          paramMessageRecord = ((JSONObject)localObject).optString("pa_msgId", "");
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("AtPanel", 2, " onUpdateTroopGetMemberList troopUin =" + paramString + " mSession.troopUin=" + bgjf.a(this.a).a);
-    return;
-    if ((paramList == null) || (paramList.isEmpty()))
+      return paramMessageRecord;
+    }
+    catch (Throwable paramMessageRecord)
     {
-      if (QLog.isColorLevel())
-      {
-        paramString = new StringBuilder().append(" onUpdateTroopGetMemberList troopMemberInfoList =");
-        if (paramList != null) {
-          break label224;
-        }
-      }
-      label224:
-      for (paramInt1 = 0;; paramInt1 = paramList.size())
-      {
-        QLog.d("AtPanel", 2, paramInt1);
-        if (bgjf.a(this.a) != null) {
-          break label235;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("AtPanel", 2, " onUpdateTroopGetMemberList mPopupWindow = null");
-        return;
-      }
-      label235:
-      bgjf.a(this.a).a(0, 2131689833);
-      return;
+      QLog.e("QQVipConstant", 1, "getPAMsgId error =" + paramMessageRecord.toString());
     }
-    bgjf.a(this.a).a(paramList);
-    bgjf.a(this.a).a(bgjf.a(this.a), bgjf.a(this.a), bgjf.a(this.a).G());
-  }
-  
-  protected void b()
-  {
-    super.b();
-    if (QLog.isColorLevel()) {
-      QLog.d("AtPanel", 2, "onTroopMemberUpdate: invoked. ");
-    }
-    bgjf.a(this.a, true);
+    return str1;
   }
 }
 

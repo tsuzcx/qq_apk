@@ -1,16 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class yxo
-  implements DialogInterface.OnDismissListener
+class yxo
+  extends BroadcastReceiver
 {
-  public yxo(EditVideoMusic paramEditVideoMusic) {}
+  yxo(yxn paramyxn) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.a(0);
-    yuq.a("0X80076DD");
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("PreCallUpToolProc", 2, String.format("onReceive action=%s", new Object[] { paramContext }));
+    }
+    if (("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED".equals(paramContext)) && (TextUtils.equals(paramIntent.getStringExtra("from"), yxn.a(this.a))))
+    {
+      if (yxn.a(this.a) != null) {
+        yxn.a(this.a).removeMessages(108);
+      }
+      if (yxn.a(this.a) != null) {
+        yxn.a(this.a).a();
+      }
+    }
   }
 }
 

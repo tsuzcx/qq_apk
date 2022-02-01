@@ -1,118 +1,21 @@
-public final class nyo
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
+class nyo
+  extends Handler
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString = "";
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString = "";
-  private long jdField_c_of_type_Long;
-  private String jdField_c_of_type_JavaLangString = "";
-  private long jdField_d_of_type_Long;
-  private String jdField_d_of_type_JavaLangString = "";
-  private String e = "";
-  private String f = "";
-  private String g = "";
-  private String h = "";
-  private String i = "";
-  
-  public nym a()
+  nyo(nyn paramnyn, Looper paramLooper)
   {
-    return new nym(this, null);
+    super(paramLooper);
   }
   
-  public nyo a(long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public nyo a(String paramString)
-  {
-    if (paramString != null) {
-      this.jdField_a_of_type_JavaLangString = paramString;
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
     }
-    return this;
-  }
-  
-  public nyo b(long paramLong)
-  {
-    this.jdField_b_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public nyo b(String paramString)
-  {
-    if (paramString != null) {
-      this.jdField_b_of_type_JavaLangString = paramString;
-    }
-    return this;
-  }
-  
-  public nyo c(long paramLong)
-  {
-    this.jdField_c_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public nyo c(String paramString)
-  {
-    if (paramString != null) {
-      this.jdField_c_of_type_JavaLangString = paramString;
-    }
-    return this;
-  }
-  
-  public nyo d(long paramLong)
-  {
-    this.jdField_d_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public nyo d(String paramString)
-  {
-    if (paramString != null) {
-      this.jdField_d_of_type_JavaLangString = paramString;
-    }
-    return this;
-  }
-  
-  public nyo e(String paramString)
-  {
-    if (paramString != null) {
-      this.e = paramString;
-    }
-    return this;
-  }
-  
-  public nyo f(String paramString)
-  {
-    if (paramString != null) {
-      this.f = paramString;
-    }
-    return this;
-  }
-  
-  public nyo g(String paramString)
-  {
-    if (paramString != null) {
-      this.g = paramString;
-    }
-    return this;
-  }
-  
-  public nyo h(String paramString)
-  {
-    if (paramString != null) {
-      this.h = paramString;
-    }
-    return this;
-  }
-  
-  public nyo i(String paramString)
-  {
-    if (paramString != null) {
-      this.i = paramString;
-    }
-    return this;
+    this.a.a(this.a.jdField_a_of_type_Int, this.a.c);
   }
 }
 

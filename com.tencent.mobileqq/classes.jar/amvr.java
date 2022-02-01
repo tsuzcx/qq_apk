@@ -1,29 +1,25 @@
-import android.util.Log;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import com.tencent.mobileqq.app.MayknowRecommendManager.3.1;
+import com.tencent.mobileqq.app.MayknowRecommendManager.3.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class amvr
-  implements amvu
+  extends amsu
 {
-  public EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
+  amvr(amvo paramamvo) {}
+  
+  protected void onAddFriend(String paramString)
   {
-    try
-    {
-      paramEGL10 = paramEGL10.eglCreateWindowSurface(paramEGLDisplay, paramEGLConfig, paramObject, null);
-      return paramEGL10;
+    if (QLog.isColorLevel()) {
+      QLog.d("MayknowRecommendManager", 2, "onAddFriend " + paramString);
     }
-    catch (Throwable paramEGL10)
-    {
-      Log.e("GLTextureView", "eglCreateWindowSurface", paramEGL10);
-    }
-    return null;
+    ThreadManager.getSubThreadHandler().post(new MayknowRecommendManager.3.1(this, paramString));
   }
   
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
+  protected void onAddReqStatesChanged(boolean paramBoolean, String paramString)
   {
-    paramEGL10.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
+    ThreadManager.getSubThreadHandler().post(new MayknowRecommendManager.3.2(this, paramBoolean, paramString));
   }
 }
 

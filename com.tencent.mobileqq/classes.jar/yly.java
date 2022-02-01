@@ -1,72 +1,335 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.1;
-import com.tencent.map.geolocation.TencentLocation;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import com.tribe.async.async.JobSegment;
-import com.tribe.async.reactive.Stream;
+import android.app.Activity;
+import android.content.Intent;
+import android.media.MediaFormat;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Parcelable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.takevideo.slideshow.Image2Video;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import com.tencent.biz.qqstory.takevideo.slideshow.core.VideoMerger.1;
+import com.tencent.biz.qqstory.takevideo.slideshow.core.VideoMerger.2;
+import com.tencent.biz.qqstory.utils.ffmpeg.QimSegmentMergeUtil;
+import com.tencent.biz.qqstory.utils.ffmpeg.SegmentClipUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import dov.com.qq.im.capture.view.MusicProviderView;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public abstract class yly<T extends ylz>
-  extends wzm
+public class yly
+  extends ylx
 {
-  private Stream<T> a;
-  public wuz a;
-  public yma a;
-  protected ymc<T> a;
+  long jdField_a_of_type_Long;
+  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
+  private boolean jdField_a_of_type_Boolean;
   
-  public yly(@NonNull ymc<T> paramymc)
+  private bnbl a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Yma = new yma();
-    this.jdField_a_of_type_Ymc = paramymc;
-    znw.a(this.jdField_a_of_type_Ymc);
+    switch (paramInt1)
+    {
+    default: 
+      if ((paramInt2 == 102) || (paramInt2 != 102)) {}
+      return new bnbn().a(false).c(true).b(false).d(true).c(2).a();
+    }
+    return new bnbn().a(true).c(true).b(true).d(false).c(2).a();
   }
   
-  private void d()
+  public void a(ylz paramylz)
   {
-    a();
-    Bosses.get().postLightWeightJob(new FeedListPageLoaderBase.1(this), 0);
-  }
-  
-  public abstract JobSegment<ymb, T> a();
-  
-  public abstract JobSegment<Integer, ymb> a(yma paramyma);
-  
-  protected abstract T a();
-  
-  protected abstract T a(ErrorMessage paramErrorMessage);
-  
-  public yma a()
-  {
-    return this.jdField_a_of_type_Yma;
-  }
-  
-  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
-  {
-    super.a(paramTencentLocation, paramInt);
-    this.jdField_a_of_type_Yma.a();
-    d();
-  }
-  
-  protected abstract void a(List<String> paramList, boolean paramBoolean);
-  
-  public void a(yma paramyma)
-  {
-    this.jdField_a_of_type_Yma = paramyma;
-    yuk.a("Q.qqstory.home.position", "restore last time cache:%s", paramyma);
-  }
-  
-  public T b()
-  {
-    return a();
-  }
-  
-  public void c()
-  {
-    super.c();
-    d();
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoMerger", 2, "start combine");
+    }
+    if (paramylz.jdField_a_of_type_JavaUtilList == null) {}
+    for (;;)
+    {
+      return;
+      Object localObject2 = new QimSegmentMergeUtil();
+      Object localObject1 = new ArrayList(paramylz.jdField_a_of_type_JavaUtilList.size());
+      Object localObject5 = new ArrayList(paramylz.jdField_a_of_type_JavaUtilList.size());
+      Object localObject3 = (yln)QQStoryContext.a().getBusinessHandler(1);
+      Object localObject6 = new ArrayList();
+      Object localObject4 = paramylz.jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject7;
+      Object localObject8;
+      for (boolean bool1 = false; ((Iterator)localObject4).hasNext(); bool1 = bool2)
+      {
+        localObject7 = (SlideItemInfo)((Iterator)localObject4).next();
+        localObject8 = ((yln)localObject3).a(((SlideItemInfo)localObject7).jdField_b_of_type_JavaLangString);
+        bool2 = bool1;
+        if (localObject8 != null)
+        {
+          ((List)localObject1).add(((LocalMediaInfo)localObject8).path);
+          ((List)localObject6).add(((LocalMediaInfo)localObject8).mAudioPath);
+          ((SlideItemInfo)localObject7).jdField_c_of_type_JavaLangString = ((LocalMediaInfo)localObject8).path;
+          ((SlideItemInfo)localObject7).d = ((LocalMediaInfo)localObject8).mAudioPath;
+          ((SlideItemInfo)localObject7).jdField_a_of_type_Boolean = ((LocalMediaInfo)localObject8).mHasAudioTrack;
+          ((SlideItemInfo)localObject7).jdField_c_of_type_Int = ((LocalMediaInfo)localObject8).mSampleRate;
+          ((List)localObject5).add(localObject7);
+          bool2 = bool1;
+          if (((SlideItemInfo)localObject7).jdField_b_of_type_Int == 1)
+          {
+            if (((SlideItemInfo)localObject7).jdField_a_of_type_Boolean) {
+              bool1 = true;
+            }
+            QLog.i("VideoMerger", 1, "mergeRunnable hasAudioTrack=" + ((SlideItemInfo)localObject7).jdField_a_of_type_Boolean + " mSampleRate:" + ((SlideItemInfo)localObject7).jdField_c_of_type_Int);
+            bool2 = bool1;
+          }
+        }
+      }
+      if (a(paramylz))
+      {
+        a(9, "", null, null, null, paramylz);
+        return;
+      }
+      if (this.jdField_a_of_type_AndroidMediaMediaFormat == null) {
+        if (((yln)localObject3).a() != null)
+        {
+          this.jdField_a_of_type_AndroidMediaMediaFormat = ((yln)localObject3).a();
+          if (QLog.isColorLevel()) {
+            QLog.d("VideoMerger", 2, "transHandler.getMediaFormat");
+          }
+        }
+      }
+      boolean bool3;
+      for (;;)
+      {
+        if (paramylz.jdField_a_of_type_Yma != null) {
+          paramylz.jdField_a_of_type_Yma.a(bool1);
+        }
+        localObject4 = ylj.a();
+        localObject3 = (String)localObject4 + ".dat";
+        if (!bool1) {
+          break label770;
+        }
+        bool3 = SegmentClipUtils.clipAudio((List)localObject5);
+        QLog.i("VideoMerger", 1, "clip audio success=" + bool3);
+        bool2 = bool3;
+        if (!bool3) {
+          break label627;
+        }
+        ((List)localObject6).clear();
+        localObject7 = ((List)localObject5).iterator();
+        while (((Iterator)localObject7).hasNext()) {
+          ((List)localObject6).add(((SlideItemInfo)((Iterator)localObject7).next()).d);
+        }
+        if (((List)localObject1).size() > 0)
+        {
+          this.jdField_a_of_type_AndroidMediaMediaFormat = ylq.a((String)((List)localObject1).get(0));
+          if (QLog.isColorLevel()) {
+            QLog.d("VideoMerger", 2, "ImageToVideo.getVideoFormatFromVideo, videoPath : " + (String)((List)localObject1).get(0));
+          }
+        }
+        if (this.jdField_a_of_type_AndroidMediaMediaFormat == null)
+        {
+          this.jdField_a_of_type_AndroidMediaMediaFormat = ylq.a();
+          if (QLog.isColorLevel())
+          {
+            QLog.d("VideoMerger", 2, "ImageToVideo.getVideoFormatDefault");
+            continue;
+            if (QLog.isColorLevel()) {
+              QLog.d("VideoMerger", 2, "mVideoFormat not null");
+            }
+          }
+        }
+      }
+      label770:
+      for (boolean bool2 = ((QimSegmentMergeUtil)localObject2).mergeAudioCache((List)localObject6, (String)localObject3);; bool2 = true)
+      {
+        label627:
+        QLog.i("VideoMerger", 1, "merge audio success " + bool2);
+        if (!bool2) {
+          break;
+        }
+        bool3 = SegmentClipUtils.clipVideo((List)localObject5);
+        QLog.i("VideoMerger", 1, "clip video success=" + bool3);
+        ((List)localObject1).clear();
+        localObject5 = ((List)localObject5).iterator();
+        for (;;)
+        {
+          bool2 = bool3;
+          if (!((Iterator)localObject5).hasNext()) {
+            break;
+          }
+          localObject6 = (SlideItemInfo)((Iterator)localObject5).next();
+          if (((SlideItemInfo)localObject6).jdField_b_of_type_Int == 0) {
+            ((List)localObject1).add(((SlideItemInfo)localObject6).jdField_c_of_type_JavaLangString);
+          }
+          ((List)localObject1).add(((SlideItemInfo)localObject6).jdField_c_of_type_JavaLangString);
+        }
+      }
+      localObject5 = ((List)localObject1).iterator();
+      while (((Iterator)localObject5).hasNext())
+      {
+        localObject6 = (String)((Iterator)localObject5).next();
+        QLog.i("VideoMerger", 1, "merge print video begin:  path: " + (String)localObject6);
+      }
+      long l1;
+      long l2;
+      if (bool2)
+      {
+        l1 = System.currentTimeMillis();
+        bool2 = ((QimSegmentMergeUtil)localObject2).startMergeVideoWithoutAudioSync((List)localObject1, (String)localObject4, 720, 1280, this.jdField_a_of_type_AndroidMediaMediaFormat);
+        l2 = System.currentTimeMillis();
+        QLog.i("VideoMerger", 1, "merge video result " + bool2 + " cost: " + (l2 - l1) + " ms");
+        label916:
+        QLog.i("VideoMerger", 1, "merge video result " + bool2);
+        localObject5 = new LocalMediaInfo();
+        ((LocalMediaInfo)localObject5).path = ((String)localObject4);
+        ((LocalMediaInfo)localObject5).mMimeType = "video";
+        if (!AudioHelper.g()) {
+          break label1926;
+        }
+        ((LocalMediaInfo)localObject5).mTransferPosList = ((QimSegmentMergeUtil)localObject2).getMergeVideoPositionsForFFmpegNewClip((List)localObject1, (String)localObject4);
+        localObject2 = MediaScanner.getInstance(BaseApplicationImpl.getContext());
+      }
+      try
+      {
+        ((MediaScanner)localObject2).buildAndUpdateVideo((LocalMediaInfo)localObject5);
+        if (bool2)
+        {
+          l1 = System.currentTimeMillis();
+          l2 = this.jdField_a_of_type_Long;
+          xwa.a("actAlbumTime", new String[] { l1 - l2 + "", paramylz.jdField_a_of_type_JavaUtilList.size() + "" });
+          localObject6 = new CameraCaptureView.VideoCaptureResult();
+          ((CameraCaptureView.VideoCaptureResult)localObject6).videoFrameCount = ((List)localObject1).size();
+          if (bool1)
+          {
+            ((CameraCaptureView.VideoCaptureResult)localObject6).audioDataFilePath = ((String)localObject3);
+            ((CameraCaptureView.VideoCaptureResult)localObject6).videoMp4FilePath = ((String)localObject4);
+            localObject1 = null;
+            localObject2 = paramylz.jdField_a_of_type_AndroidAppActivity.getIntent();
+            if (localObject2 != null) {
+              localObject1 = bmqi.a((Intent)localObject2);
+            }
+            localObject2 = localObject1;
+            if (localObject1 == null) {
+              localObject2 = new Bundle();
+            }
+            localObject3 = paramylz.jdField_a_of_type_AndroidAppActivity.getIntent().getExtras();
+            localObject1 = localObject3;
+            if (localObject3 == null) {
+              localObject1 = new Bundle();
+            }
+            localObject3 = paramylz.jdField_a_of_type_AndroidAppActivity.getIntent();
+            i = ((Intent)localObject3).getIntExtra("entrance_type", 99);
+            j = ((Intent)localObject3).getIntExtra("shareGroupType", 0);
+            localObject7 = ((Intent)localObject3).getStringExtra("shareGroupId");
+            localObject8 = ((Intent)localObject3).getStringExtra("shareGroupName");
+            bool1 = ((Intent)localObject3).getBooleanExtra("ignorePersonalPublish", false);
+            bool3 = ((Intent)localObject3).getBooleanExtra("PhotoConst.IS_FROM_EDIT", false);
+            ((Bundle)localObject1).putBoolean("ignorePersonalPublish", bool1);
+            ((Bundle)localObject1).putInt("shareGroupType", j);
+            ((Bundle)localObject1).putString("shareGroupId", (String)localObject7);
+            ((Bundle)localObject1).putString("shareGroupName", (String)localObject8);
+            localObject7 = a(ylg.a().a(), i);
+            j = ((Bundle)localObject1).getInt("qq_sub_business_id", 2);
+            localObject3 = new bnbh(((Bundle)localObject1).getInt("edit_video_type", 10002), i, j);
+            ((bnbh)localObject3).a((bnbl)localObject7);
+            ((Bundle)localObject1).putBoolean("PhotoConst.IS_FROM_QQSTORY_SLIDESHOW", true);
+            ((Bundle)localObject1).putString("PhotoConst.FROM_QQSTORY_SLIDESHOW_DATA", (String)localObject4);
+            ((Bundle)localObject1).putInt("extra_transiton_src_from", 1);
+            ((Bundle)localObject1).putInt("extra_slide_entrance", paramylz.jdField_a_of_type_Int);
+            ((Bundle)localObject1).putInt("extra_slide_sticker_id", paramylz.jdField_b_of_type_Int);
+            ((Bundle)localObject1).putString("extra_slide_sticker_str", paramylz.jdField_a_of_type_JavaLangString);
+            if (paramylz.jdField_a_of_type_JavaUtilList.size() > 0)
+            {
+              ((Bundle)localObject1).putString("extra_transiton_default", ((SlideItemInfo)paramylz.jdField_a_of_type_JavaUtilList.get(0)).e);
+              if (QLog.isColorLevel()) {
+                QLog.d("VideoMerger", 2, "doMerge mTransId=" + ((SlideItemInfo)paramylz.jdField_a_of_type_JavaUtilList.get(0)).e);
+              }
+              if (((SlideItemInfo)paramylz.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_Vil != null)
+              {
+                ((Bundle)localObject1).putInt("extra_ablum_type", ((SlideItemInfo)paramylz.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_Vil.jdField_a_of_type_Int);
+                if (QLog.isColorLevel()) {
+                  QLog.d("VideoMerger", 2, "doMerge mAlbumType=" + ((SlideItemInfo)paramylz.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_Vil.jdField_a_of_type_Int);
+                }
+              }
+              localObject4 = yld.a(paramylz.jdField_a_of_type_AndroidAppActivity).a(((SlideItemInfo)paramylz.jdField_a_of_type_JavaUtilList.get(0)).e);
+              if ((localObject4 != null) && (((List)localObject4).size() > 0))
+              {
+                localObject4 = ((QIMMusicConfigManager)bmql.a(2)).a(((yle)((List)localObject4).get(0)).jdField_a_of_type_Int, ((yle)((List)localObject4).get(0)).jdField_b_of_type_Int);
+                if (localObject4 != null)
+                {
+                  localObject7 = new Bundle();
+                  localObject8 = new Bundle();
+                  ((Bundle)localObject8).putParcelable("select_music", (Parcelable)localObject4);
+                  ((Bundle)localObject8).putString("select_music_local_path", ((MusicItemInfo)localObject4).getLocalPath());
+                  ((Bundle)localObject8).putInt("capture_mode", 2);
+                  ((Bundle)localObject7).putBundle(MusicProviderView.class.getSimpleName(), (Bundle)localObject8);
+                  ((Bundle)localObject2).putBundle("container", (Bundle)localObject7);
+                  if (QLog.isColorLevel()) {
+                    QLog.d("VideoMerger", 2, "doMerge musicItemInfo=" + ((MusicItemInfo)localObject4).mTagName + " " + ((MusicItemInfo)localObject4).mItemId);
+                  }
+                }
+              }
+            }
+            ((Bundle)localObject1).putBoolean("PhotoConst.IS_FROM_EDIT", bool3);
+            if (ylg.a().a() == 13) {
+              ((bmtm)bmql.a().c(8)).c();
+            }
+            paramylz.jdField_a_of_type_AndroidOsHandler.post(new VideoMerger.1(this, paramylz, (CameraCaptureView.VideoCaptureResult)localObject6, (LocalMediaInfo)localObject5, (bnbh)localObject3, (Bundle)localObject2, (Bundle)localObject1));
+            localObject1 = paramylz.jdField_a_of_type_JavaUtilList.iterator();
+            i = 0;
+            while (((Iterator)localObject1).hasNext())
+            {
+              if (((SlideItemInfo)((Iterator)localObject1).next()).jdField_b_of_type_Int != 1) {
+                break label2181;
+              }
+              i += 1;
+            }
+            bool2 = false;
+            break label916;
+            label1926:
+            ((LocalMediaInfo)localObject5).mTransferPosList = ((QimSegmentMergeUtil)localObject2).getMergeVideoPositionsNewClip((List)localObject1);
+          }
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        label2181:
+        for (;;)
+        {
+          int i;
+          int j;
+          localThrowable.printStackTrace();
+          QLog.e("VideoMerger", 1, "pic2video err", localThrowable);
+          continue;
+          ((CameraCaptureView.VideoCaptureResult)localObject6).audioDataFilePath = Image2Video.a();
+          continue;
+          int k = paramylz.jdField_a_of_type_JavaUtilList.size();
+          if (this.jdField_a_of_type_Boolean)
+          {
+            j = 0;
+            label1993:
+            xwa.a("video_edit_slides", "suc_compose", j, 0, new String[] { "", paramylz.jdField_a_of_type_JavaUtilList.size() + "", k - i + "", i + "" });
+            xwa.a("actAlbumResult", new String[] { "0" });
+          }
+          for (;;)
+          {
+            if (paramylz.jdField_a_of_type_Yma != null) {
+              paramylz.jdField_a_of_type_Yma.j();
+            }
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.i("VideoMerger", 2, "combine video result =" + bool2);
+            return;
+            j = 1;
+            break label1993;
+            paramylz.jdField_a_of_type_AndroidOsHandler.post(new VideoMerger.2(this, paramylz));
+          }
+        }
+      }
+    }
   }
 }
 

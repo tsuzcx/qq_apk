@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import aqre;
+import apkn;
 
 class OtherJsPlugin$8
   implements Runnable
 {
-  OtherJsPlugin$8(OtherJsPlugin paramOtherJsPlugin, aqre paramaqre) {}
+  OtherJsPlugin$8(OtherJsPlugin paramOtherJsPlugin, apkn paramapkn) {}
   
   public void run()
   {

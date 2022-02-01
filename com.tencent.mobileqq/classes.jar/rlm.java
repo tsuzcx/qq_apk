@@ -1,14 +1,4 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
-
-public abstract interface rlm
-{
-  public abstract long a();
-  
-  public abstract View a();
-  
-  public abstract void a(VideoInfo paramVideoInfo, boolean paramBoolean);
-}
+public abstract interface rlm {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

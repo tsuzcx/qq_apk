@@ -1,8 +1,30 @@
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
-public abstract interface vsq
+public class vsq
+  implements View.OnFocusChangeListener
 {
-  public abstract void a(Set<Integer> paramSet);
+  public vsq(StoryInputBarView paramStoryInputBarView) {}
+  
+  public void onFocusChange(View paramView, boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      this.a.a();
+    }
+    while (this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Xgj.jdField_a_of_type_Boolean);
+    this.a.jdField_a_of_type_Xgj.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
+    paramView = this.a;
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramView.jdField_a_of_type_Boolean = paramBoolean;
+      return;
+    }
+  }
 }
 
 

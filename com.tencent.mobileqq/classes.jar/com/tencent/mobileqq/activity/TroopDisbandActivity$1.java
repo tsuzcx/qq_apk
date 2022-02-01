@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aoip;
+import anca;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -14,14 +14,14 @@ class TroopDisbandActivity$1
   {
     try
     {
-      aoip localaoip = (aoip)this.this$0.app.a(20);
-      if (localaoip != null)
+      anca localanca = (anca)this.this$0.app.getBusinessHandler(20);
+      if (localanca != null)
       {
         long l = Long.parseLong(this.this$0.a);
-        localaoip.a(l, 0L, 5, 6, 1);
+        localanca.a(l, 0L, 5, 6, 1);
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(Long.valueOf(l));
-        localaoip.a(localArrayList);
+        localanca.a(localArrayList);
       }
       return;
     }
@@ -34,7 +34,7 @@ class TroopDisbandActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopDisbandActivity.1
  * JD-Core Version:    0.7.0.1
  */

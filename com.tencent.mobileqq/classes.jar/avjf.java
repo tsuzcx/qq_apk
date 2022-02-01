@@ -1,15 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.image.URLDrawable;
 
-class avjf
-  implements DialogInterface.OnDismissListener
+public class avjf
 {
-  avjf(avje paramavje) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    avjd.a(this.a.a).dismiss();
-  }
+  public URLDrawable a;
+  public boolean a;
 }
 
 

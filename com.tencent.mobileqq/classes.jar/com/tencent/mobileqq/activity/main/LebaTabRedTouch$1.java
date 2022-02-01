@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.main;
 
-import akgw;
-import akgz;
+import ajeu;
+import ajex;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -10,14 +10,14 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
-import nlb;
-import nql;
+import nmq;
+import nru;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 public class LebaTabRedTouch$1
   implements Runnable
 {
-  public LebaTabRedTouch$1(akgw paramakgw, akgz paramakgz) {}
+  public LebaTabRedTouch$1(ajeu paramajeu, ajex paramajex) {}
   
   public void run()
   {
@@ -49,13 +49,13 @@ public class LebaTabRedTouch$1
       }
       this.a.a();
     }
-    localObject1 = (nlb)this.this$0.a.app.getManager(70);
-    localRedDotInfo = ((nlb)localObject1).a();
+    localObject1 = (nmq)this.this$0.a.app.getManager(70);
+    localRedDotInfo = ((nmq)localObject1).a();
     i = -1;
     if (localRedDotInfo != null) {
       i = localRedDotInfo.uint32_appid.get();
     }
-    if ((!this.this$0.a.app.a().a) && (i == 11))
+    if ((!this.this$0.a.app.getNowLiveManager().a) && (i == 11))
     {
       localObject1 = new BusinessInfoCheckUpdate.RedTypeInfo();
       ((BusinessInfoCheckUpdate.RedTypeInfo)localObject1).red_type.set(4);
@@ -71,7 +71,7 @@ public class LebaTabRedTouch$1
       }
       this.a.a();
       return;
-      localObject1 = akgw.a(this.this$0, (nlb)localObject1, null, localRedDotInfo);
+      localObject1 = ajeu.a(this.this$0, (nmq)localObject1, null, localRedDotInfo);
     }
   }
 }

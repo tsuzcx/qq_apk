@@ -1,13 +1,15 @@
-import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class blcz
 {
-  int jdField_a_of_type_Int;
-  Bundle jdField_a_of_type_AndroidOsBundle;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int c;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public blcy a;
+  
+  public blcz(blcs paramblcs) {}
 }
 
 

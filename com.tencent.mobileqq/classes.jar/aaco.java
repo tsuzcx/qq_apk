@@ -1,13 +1,9 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-
 public class aaco
-  extends RecyclerView.ViewHolder
 {
-  public aaco(View paramView)
-  {
-    super(paramView);
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
 }
 
 

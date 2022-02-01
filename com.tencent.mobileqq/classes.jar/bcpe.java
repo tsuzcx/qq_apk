@@ -1,12 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bcpe
-  implements View.OnClickListener
+public abstract interface bcpe
 {
-  bcpe(bcpc parambcpc) {}
-  
-  public void onClick(View paramView) {}
+  public abstract void a(String paramString, int paramInt);
 }
 
 

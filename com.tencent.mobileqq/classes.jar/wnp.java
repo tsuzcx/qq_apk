@@ -1,65 +1,43 @@
-import android.media.MediaMetadataRetriever;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import java.util.List;
 
-public class wnp
-  implements wng
+class wnp
+  implements wof
 {
-  public wnp(StoryVideoUploadTask paramStoryVideoUploadTask) {}
+  wnp(wnn paramwnn) {}
   
-  public void a(wnf paramwnf)
+  public void a()
   {
-    wnd localwnd = (wnd)paramwnf;
-    ((wnm)this.a.a).g = localwnd.a.a;
-    ((wnm)this.a.a).h = localwnd.a.c;
-    ((wnm)this.a.a).a = localwnd.b;
-    localMediaMetadataRetriever = new MediaMetadataRetriever();
+    wnn.a(this.a, this.a.a.a(wnn.a(this.a), 5));
+    List localList = wnn.a(this.a).a;
+    if ((wnn.a(this.a) == null) && (localList.size() > 0)) {
+      wnn.a(this.a, ((woe)localList.get(0)).a);
+    }
+    label199:
     for (;;)
     {
-      try
-      {
-        localMediaMetadataRetriever.setDataSource(localwnd.b);
-        String str = localMediaMetadataRetriever.extractMetadata(24);
-        paramwnf = str;
-        if (str == null) {
-          paramwnf = "0";
-        }
-        int i = Integer.valueOf(paramwnf).intValue();
-        j = Integer.valueOf(localMediaMetadataRetriever.extractMetadata(18)).intValue();
-        k = Integer.valueOf(localMediaMetadataRetriever.extractMetadata(19)).intValue();
-        if (i % 180 <= 0) {
-          continue;
-        }
-        ((wnm)this.a.a).d = k;
-        ((wnm)this.a.a).e = j;
-      }
-      catch (Exception paramwnf)
-      {
-        int j;
-        int k;
-        long l;
-        yuk.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "format fail", paramwnf);
-        localMediaMetadataRetriever.release();
-        continue;
-      }
-      finally
-      {
-        localMediaMetadataRetriever.release();
-      }
-      l = StoryVideoUploadTask.a(localwnd.b);
-      if (l > 0L)
-      {
-        yuk.a("Q.qqstory.publish.upload:StoryVideoUploadTask", "video old duration=%d, new duration=%d", Long.valueOf(((wnm)this.a.a).b), Long.valueOf(l));
-        ((wnm)this.a.a).b = l;
-        yuk.a("Q.qqstory.publish.upload:StoryVideoUploadTask", "generate vid=%s, duration=%d mp4=%s", ((wnm)this.a.a).a(), Long.valueOf(((wnm)this.a.a).b), ((wnm)this.a.a).a);
-      }
-      ((wnm)this.a.a).c = zom.a(localwnd.b);
-      this.a.a(1, new ErrorMessage());
+      xvv.d("Q.qqstory.player.data.SimpleDataProvider", "current group:%s", new Object[] { wnn.a(this.a) });
+      wnn.a(this.a).a(wnn.a(this.a), "");
       return;
-      ((wnm)this.a.a).d = j;
-      ((wnm)this.a.a).e = k;
+      int i = 0;
+      for (;;)
+      {
+        if (i >= localList.size()) {
+          break label199;
+        }
+        if (((woe)localList.get(i)).a.equals(wnn.a(this.a)))
+        {
+          if (localList.size() <= i + 1) {
+            break;
+          }
+          wnn.a(this.a, ((woe)localList.get(i + 1)).a);
+          break;
+        }
+        i += 1;
+      }
     }
   }
+  
+  public void a(wod paramwod, String paramString, boolean paramBoolean) {}
 }
 
 

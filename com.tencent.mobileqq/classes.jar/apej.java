@@ -1,18 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.applets.data.AppletItem;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public final class apej
-  implements Parcelable.Creator<AppletItem>
+class apej
+  extends AnimatorListenerAdapter
 {
-  public AppletItem a(Parcel paramParcel)
-  {
-    return new AppletItem(paramParcel);
-  }
+  apej(apeg paramapeg, ObjectAnimator paramObjectAnimator, apen paramapen) {}
   
-  public AppletItem[] a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return new AppletItem[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "animHolder.animView.startAnimation!");
+    }
+    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    }
+    if ((this.jdField_a_of_type_Apen != null) && (this.jdField_a_of_type_Apen.a != null))
+    {
+      paramAnimator = "";
+      if (this.jdField_a_of_type_Apen.a.istroop != 0) {
+        break label98;
+      }
+      paramAnimator = "1";
+    }
+    for (;;)
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "Bubble", "Active_dync", paramAnimator, 1, 0, 0, "", String.valueOf(anaj.a(this.jdField_a_of_type_Apen.a.vipBubbleID)), "");
+      return;
+      label98:
+      if (this.jdField_a_of_type_Apen.a.istroop == 1) {
+        paramAnimator = "2";
+      } else if (this.jdField_a_of_type_Apen.a.istroop == 3000) {
+        paramAnimator = "3";
+      }
+    }
   }
 }
 

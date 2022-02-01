@@ -1,6 +1,22 @@
-public abstract interface awyz
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class awyz
+  implements View.OnClickListener
 {
-  public abstract void a();
+  awyz(awyf paramawyf) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!this.a.a.onBackEvent())
+    {
+      this.a.a.finish();
+      this.a.a.c(false);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

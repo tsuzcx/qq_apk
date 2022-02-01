@@ -1,87 +1,76 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.ApngImage;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import dov.com.qq.im.capture.view.MusicFragmentProviderView;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bmyk
-  extends beqz
+  implements bmth
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public bmyk(MusicFragmentProviderView paramMusicFragmentProviderView) {}
+  
+  public void a()
   {
-    if (paramDownloadParams == null) {
-      return null;
+    this.a.i();
+  }
+  
+  public void a(int paramInt, MusicItemInfo paramMusicItemInfo)
+  {
+    if (paramInt != -1)
+    {
+      this.a.a(paramInt);
+      MusicFragmentProviderView.a(this.a).set(-1);
+      this.a.j();
+      return;
     }
-    String str = paramDownloadParams.url.getHost();
-    paramOutputStream = new File(str);
-    if (paramOutputStream.exists()) {}
+    this.a.i();
+  }
+  
+  public void a(MusicItemInfo paramMusicItemInfo)
+  {
+    if (this.a.a != null)
+    {
+      if (paramMusicItemInfo.mType == 2) {
+        this.a.a.a(true);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.a.a(false);
+  }
+  
+  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
+  {
+    this.a.a(paramInt);
+    if (paramInt != -1)
+    {
+      MusicFragmentProviderView.a(this.a).set(-1);
+      this.a.j();
+    }
     for (;;)
     {
-      return paramOutputStream;
-      paramURLDrawableHandler = paramDownloadParams.url.getFile();
-      if (TextUtils.isEmpty(paramURLDrawableHandler))
-      {
-        QLog.e("qzonecontentboxdownloader", 2, "downloadImage url err, url=" + paramURLDrawableHandler + ", path=" + str);
-        return null;
+      if (MusicFragmentProviderView.a(this.a) != null) {
+        MusicFragmentProviderView.a(this.a).d();
       }
-      paramDownloadParams = paramURLDrawableHandler;
-      if (paramURLDrawableHandler.startsWith(File.separator)) {
-        paramDownloadParams = paramURLDrawableHandler.substring(1);
-      }
-      if (!paramDownloadParams.startsWith("http"))
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("qzonecontentboxdownloader", 2, "downloadImage url has no http err, url=" + paramDownloadParams + ", path=" + str);
-        return null;
-      }
-      int i = bihw.a(new bihu(paramDownloadParams, paramOutputStream), BaseApplicationImpl.sApplication.getRuntime());
-      if (i == 0)
-      {
-        if (!paramOutputStream.exists())
-        {
-          QLog.e("qzonecontentboxdownloader", 1, "downloadImage file not exists, url=" + paramDownloadParams + ", path=" + str + ", ret:" + i);
-          paramOutputStream = null;
-        }
-      }
-      else
-      {
-        QLog.e("qzonecontentboxdownloader", 1, "downloadImage Error url=" + paramDownloadParams + ", path=" + str + ", ret:" + i);
-        paramOutputStream = null;
-      }
+      return;
+      this.a.i();
     }
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void b(MusicItemInfo paramMusicItemInfo) {}
+  
+  public void c(int paramInt, MusicItemInfo paramMusicItemInfo)
   {
-    Object localObject = null;
-    paramURLDrawableHandler = null;
-    if ((paramFile != null) && (paramFile.exists()) && (paramDownloadParams != null) && (paramDownloadParams.useApngImage) && (ApngDrawable.isApngFile(paramFile)))
+    if (paramInt != -1)
     {
-      if ((paramDownloadParams.mExtraInfo instanceof Bundle)) {
-        paramURLDrawableHandler = (Bundle)paramDownloadParams.mExtraInfo;
-      }
-      paramDownloadParams = new ApngImage(paramFile, true, paramURLDrawableHandler);
-      if (paramDownloadParams.firstFrame == null) {
-        ChatBackgroundManager.a(paramFile.getAbsolutePath());
-      }
-      paramFile = paramDownloadParams;
+      this.a.j();
+      return;
     }
-    do
-    {
-      return paramFile;
-      paramFile = localObject;
-    } while (paramDownloadParams == null);
-    paramDownloadParams.useApngImage = false;
-    return null;
+    this.a.i();
+  }
+  
+  public void d(int paramInt, MusicItemInfo paramMusicItemInfo)
+  {
+    this.a.i();
   }
 }
 

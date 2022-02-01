@@ -1,126 +1,142 @@
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.qqcircle.bizparts.danmaku.text.TextCell;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.Iterator;
-import java.util.regex.Pattern;
+import java.util.List;
+import java.util.List<Lvim;>;
 
 public class vje
+  extends vja<vji>
 {
-  public static final int a = bhtq.a(17.0F);
+  static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+  private int jdField_a_of_type_Int = 1;
+  private viz jdField_a_of_type_Viz;
   
-  public static String a(String paramString)
+  private int a(List<vim> paramList)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    Object localObject = a(null, paramString, a, false);
-    paramString = new StringBuilder();
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    int i = 1;
+    new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    long l2 = -1L;
+    int m = 0;
+    for (;;)
     {
-      String str = ((TextCell)((Iterator)localObject).next()).getText();
-      if (str != null) {
-        paramString.append(str);
-      }
-    }
-    return paramString.toString();
-  }
-  
-  public static ArrayList<TextCell> a(vjg paramvjg, CharSequence paramCharSequence, int paramInt, boolean paramBoolean)
-  {
-    return a(paramvjg, paramCharSequence, paramInt, paramBoolean, true, -1);
-  }
-  
-  public static ArrayList<TextCell> a(vjg paramvjg, CharSequence paramCharSequence, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    return a(paramvjg, paramCharSequence, paramInt, paramBoolean1, paramBoolean2, -1);
-  }
-  
-  public static ArrayList<TextCell> a(vjg paramvjg, CharSequence paramCharSequence, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
-  {
-    Object localObject;
-    if (TextUtils.isEmpty(paramCharSequence)) {
-      localObject = new ArrayList();
-    }
-    int j;
-    do
-    {
-      ArrayList localArrayList;
-      do
+      int j;
+      long l1;
+      int k;
+      if (m < paramList.size())
       {
-        return localObject;
-        j = paramCharSequence.hashCode();
-        if (!paramBoolean2) {
-          break;
+        if (l2 < 0L) {
+          j = i;
         }
-        localArrayList = vjh.a().a(j);
-        if (localArrayList == null) {
-          break;
-        }
-        localObject = localArrayList;
-      } while (!localArrayList.isEmpty());
-      new ArrayList();
-      int i = paramInt2;
-      if (paramInt2 == -1) {
-        i = paramInt1 - bhtq.b(1.5F);
-      }
-      paramvjg = b(paramvjg, paramCharSequence, i, paramBoolean1);
-      localObject = paramvjg;
-    } while (!paramBoolean2);
-    vjh.a().a(j, paramvjg);
-    return paramvjg;
-  }
-  
-  private static ArrayList<TextCell> b(vjg paramvjg, CharSequence paramCharSequence, int paramInt, boolean paramBoolean)
-  {
-    ArrayList localArrayList2 = new ArrayList();
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList3 = new ArrayList(5);
-    localArrayList3.add(new vhl(paramvjg, Pattern.compile("\\[em\\]e\\d{1,}\\[/em\\]", 2)));
-    localArrayList3.add(new vhk(vif.i));
-    localArrayList3.add(new vhl(paramvjg, vif.l));
-    localArrayList3.add(new vhm(paramvjg, vif.k));
-    Object localObject = localArrayList3.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((vhn)((Iterator)localObject).next()).a(paramCharSequence.toString());
-    }
-    int k = paramCharSequence.length();
-    localObject = new StringBuilder(k);
-    int i = 0;
-    if (i < k)
-    {
-      Iterator localIterator = localArrayList3.iterator();
-      while (localIterator.hasNext())
-      {
-        vhn localvhn = (vhn)localIterator.next();
-        if (localvhn.a(i))
+        try
         {
-          if (((StringBuilder)localObject).length() > 0)
-          {
-            localArrayList2.add(new TextCell(0, ((StringBuilder)localObject).toString()));
-            ((StringBuilder)localObject).delete(0, ((StringBuilder)localObject).length());
-          }
-          localArrayList1.clear();
-          localArrayList1 = localvhn.a(paramInt, paramBoolean, paramvjg, paramCharSequence, localArrayList1);
-          if (localArrayList1 != null) {
-            localArrayList2.addAll(localArrayList1);
-          }
-          i = localvhn.a() - 1;
+          l1 = a(((vim)paramList.get(m)).b);
+          k = i;
+        }
+        catch (ParseException localParseException)
+        {
+          localParseException.printStackTrace();
+          yos.a("we found the error time pic:" + paramList.get(m), new Object[0]);
+          k = j;
+          l1 = l2;
+        }
+        j = i;
+        k = i;
+        l1 = l2;
+        if (((vim)paramList.get(m)).b - l2 > 86400L)
+        {
+          k = i + 1;
+          j = k;
+          l1 = a(((vim)paramList.get(m)).b);
         }
       }
-    }
-    for (int j = 1;; j = 0)
-    {
-      if (j == 0) {
-        ((StringBuilder)localObject).append(paramCharSequence.charAt(i));
+      else
+      {
+        xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.KMeansSplitStrategy", "caculatePictureDistribution=" + i);
+        return i;
       }
+      m += 1;
+      i = k;
+      l2 = l1;
+    }
+  }
+  
+  private long a(long paramLong)
+  {
+    return jdField_a_of_type_JavaTextSimpleDateFormat.parse(jdField_a_of_type_JavaTextSimpleDateFormat.format(Long.valueOf(paramLong * 1000L))).getTime() / 1000L;
+  }
+  
+  protected List<vil> a(@NonNull List<vim> paramList)
+  {
+    Object localObject1 = new vjv();
+    paramList = new ArrayList(paramList);
+    via.b(paramList);
+    int i = a(paramList) / this.jdField_a_of_type_Int;
+    String[] arrayOfString = new String[1];
+    ((vjv)localObject1).a(i + 1);
+    paramList = ((vjv)localObject1).a(paramList, arrayOfString);
+    ArrayList localArrayList = new ArrayList();
+    i = 0;
+    while (i < paramList.size())
+    {
+      localObject1 = (List)paramList.get(i);
+      Collections.sort((List)localObject1, new vjf(this));
+      localObject2 = new vil(this.jdField_a_of_type_Vil.jdField_a_of_type_Int, (List)localObject1);
+      ((vil)localObject2).a(((vim)((List)localObject1).get(0)).b, ((vim)((List)localObject1).get(((List)localObject1).size() - 1)).b);
+      localArrayList.add(localObject2);
+      i += 1;
+    }
+    paramList = "k means split : k=" + localArrayList.size();
+    Collections.sort(localArrayList, new vjg(this));
+    localObject1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    Object localObject2 = localArrayList.iterator();
+    Object localObject3;
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject3 = (vil)((Iterator)localObject2).next();
+      paramList = paramList + "[ s=" + ((SimpleDateFormat)localObject1).format(Long.valueOf(((vil)localObject3).f() * 1000L)) + " e=" + ((SimpleDateFormat)localObject1).format(Long.valueOf(((vil)localObject3).g() * 1000L)) + " c=" + ((vil)localObject3).b() + "]";
+    }
+    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.KMeansSplitStrategy", paramList);
+    localObject2 = "(k=" + localArrayList.size() + " " + paramList + ");";
+    paramList = (String)((vuq)vux.a(10)).b("key_album_debug_k", "");
+    if (!TextUtils.isEmpty(paramList))
+    {
+      localObject3 = paramList.split(";");
+      paramList = "";
+      i = 0;
+      localObject1 = paramList;
+      if (i < localObject3.length)
+      {
+        paramList = localObject3[i] + paramList;
+        if (i != 8) {
+          break label500;
+        }
+        localObject1 = paramList;
+      }
+    }
+    for (paramList = (String)localObject2 + (String)localObject1;; paramList = (List<vim>)localObject2)
+    {
+      this.jdField_a_of_type_Viz.a = paramList;
+      this.jdField_a_of_type_Viz.b = arrayOfString[0];
+      return localArrayList;
+      label500:
       i += 1;
       break;
-      if (((StringBuilder)localObject).length() > 0) {
-        localArrayList2.add(new TextCell(0, ((StringBuilder)localObject).toString()));
-      }
-      return localArrayList2;
     }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(viz paramviz)
+  {
+    this.jdField_a_of_type_Viz = paramviz;
   }
 }
 

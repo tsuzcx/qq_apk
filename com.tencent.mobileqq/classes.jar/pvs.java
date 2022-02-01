@@ -1,54 +1,66 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ColumnTwoVideoProteusItem.ColumnSubscriptionCallback.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import android.os.Handler;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.RspBody;
-import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.SubscribeVideoColumnRsp;
+import java.util.concurrent.ExecutorService;
+import tencent.im.oidb.cmd0xe71.oidb_cmd0xe71.ReqBody;
+import tencent.im.oidb.cmd0xe71.oidb_cmd0xe71.RspBody;
 
 public class pvs
-  extends nkq
+  extends pwd
 {
-  private int jdField_a_of_type_Int;
-  private qwn jdField_a_of_type_Qwn;
+  private pvt a;
   
-  pvs(qwn paramqwn, int paramInt)
+  public pvs(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, qli paramqli, Handler paramHandler)
   {
-    this.jdField_a_of_type_Qwn = paramqwn;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqli, paramHandler);
   }
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private ToServiceMsg a(long paramLong)
   {
-    if (paramInt == 0)
+    oidb_cmd0xe71.ReqBody localReqBody = new oidb_cmd0xe71.ReqBody();
+    localReqBody.uint64_uin.set(paramLong);
+    localReqBody.uint32_client_type.set(1);
+    return qlk.a("OidbSvc.0xe71", 3697, 1, localReqBody.toByteArray());
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    paramToServiceMsg = new oidb_cmd0xe71.RspBody();
+    if ((qlk.a(paramFromServiceMsg, paramObject, paramToServiceMsg) == 0) && (paramToServiceMsg.uint32_result.has()))
     {
-      paramInt = this.jdField_a_of_type_Qwn.d;
-      if (this.jdField_a_of_type_Int == 1) {
-        paramInt += 1;
-      }
-      for (;;)
-      {
-        pfd.a().a(this.jdField_a_of_type_Qwn.jdField_a_of_type_Int, this.jdField_a_of_type_Int, paramInt);
-        oidb_0xd4b.RspBody localRspBody = new oidb_0xd4b.RspBody();
-        try
-        {
-          localRspBody.mergeFrom(paramArrayOfByte);
-          paramInt = ((oidb_0xd4b.SubscribeVideoColumnRsp)((oidb_0xd4b.RspBody)localRspBody.get()).msg_subscribe_video_column_rsp.get()).uint32_guide_type.get();
-          QLog.i("ColumnTwoVideoProteusItem", 1, "ColumnSubscriptionCallback " + paramInt);
-          ThreadManager.getUIHandler().post(new ColumnTwoVideoProteusItem.ColumnSubscriptionCallback.1(this, paramBundle, paramInt));
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          QLog.e("ColumnTwoVideoProteusItem", 1, paramArrayOfByte.toString());
-          return;
-        }
-        paramInt -= 1;
+      QLog.d("RIJUGCAccountCreateModule", 1, "handleUGCAccountCreateResponsePkg result = " + paramToServiceMsg.uint32_result.get());
+      if (this.a != null) {
+        this.a.a(paramToServiceMsg.uint32_result.get());
       }
     }
-    QLog.e("ColumnTwoVideoProteusItem", 1, "ColumnTwoVideoProteusItem subscribe column fail. columnId:" + this.jdField_a_of_type_Qwn.jdField_a_of_type_Int + " subscribeAction:" + this.jdField_a_of_type_Int);
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void a(long paramLong, pvt parampvt)
+  {
+    QLog.d("RIJUGCAccountCreateModule", 1, "requestUserApproveInfo uin: " + paramLong);
+    if (parampvt != null) {
+      this.a = parampvt;
+    }
+    parampvt = a(paramLong);
+    parampvt.addAttribute("KEY_UGC_USER_ACCOUNT_UIN", Long.valueOf(paramLong));
+    a(parampvt);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xe71")) {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 

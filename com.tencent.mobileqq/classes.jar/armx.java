@@ -1,16 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
+
 public class armx
+  implements DialogInterface.OnDismissListener
 {
-  public boolean a;
-  public boolean b;
+  public armx(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
   
-  public String toString()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return "QVipDiyTemplateConfig{enable=" + this.a + '}';
+    ExtendFriendLimitChatMatchFragment.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     armx
  * JD-Core Version:    0.7.0.1
  */

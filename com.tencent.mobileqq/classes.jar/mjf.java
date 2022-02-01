@@ -1,52 +1,38 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.view.View;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-class mjf
-  implements Animator.AnimatorListener
+public class mjf
+  implements QQPermissionCallback
 {
-  mjf(mjd parammjd) {}
+  public mjf(VideoControlUI paramVideoControlUI, String paramString, long paramLong, View paramView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationCancel");
-    }
-    this.a.b(3, false);
-    if (mjd.a(this.a) != null) {
-      mjd.a(this.a).requestLayout();
-    }
-    mjd.a(this.a, false);
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "onClick_Camera, deny, i[" + paramInt + "], mRequestPermissionIng[" + this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p = false;
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.e(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationEnd");
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "onClick_Camera, grant, i[" + paramInt + "], mRequestPermissionIng[" + this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p = false;
+    if ("android.permission.CAMERA".equals(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView);
     }
-    this.a.c(3);
-    if (mjd.a(this.a) != null) {
-      mjd.a(this.a).requestLayout();
-    }
-    mjd.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationStart");
-    }
-    mjd.a(this.a).setVisibility(0);
-    mjd.a(this.a).setAlpha(0.0F);
-    mjd.a(this.a).setVisibility(0);
-    mjd.a(this.a).setAlpha(0.0F);
-    mjd.a(this.a).height = -2;
-    mjd.a(this.a).width = -2;
+    do
+    {
+      return;
+      if ("android.permission.RECORD_AUDIO".equals(this.jdField_a_of_type_JavaLangString))
+      {
+        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView);
+        return;
+      }
+    } while (!"android.permission.WRITE_EXTERNAL_STORAGE".equals(this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.f(this.jdField_a_of_type_Long);
   }
 }
 

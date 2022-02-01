@@ -1,41 +1,55 @@
-import android.app.Activity;
 import android.content.Context;
-import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
-import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasDataBuilderV2;
-import com.tencent.ad.tangram.halfScreen.AdHalfScreenAdapter;
-import com.tencent.ad.tangram.halfScreen.AdHalfScreenAdapter.Params;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.jsbridge.GdtBaseHalfScreenFragmentForJs;
-import com.tencent.gdtad.views.halfScreen.GdtBaseHalfScreenFragment;
-import java.lang.ref.WeakReference;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acni
-  implements AdHalfScreenAdapter
+  implements View.OnClickListener
 {
-  public AdError show(AdHalfScreenAdapter.Params paramParams)
+  public acni(AccountManageActivity paramAccountManageActivity) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
+    switch (paramView.getId())
     {
-      acvc.d("GdtHalfScreenAdapter", "show error");
-      return new AdError(4);
     }
-    Object localObject = null;
-    if (paramParams.style == 2)
+    for (;;)
     {
-      AdCanvasData localAdCanvasData = AdCanvasDataBuilderV2.build((Context)paramParams.activity.get(), paramParams.ad, paramParams.autodownload);
-      if (localAdCanvasData != null)
-      {
-        localObject = localAdCanvasData;
-        if (localAdCanvasData.isValid()) {}
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Object localObject = null;
+      if ((paramView.getTag() instanceof String)) {
+        localObject = String.valueOf(paramView.getTag());
       }
-      else
+      if ("0X8004001".equals(localObject))
       {
-        return new AdError(4);
+        bcef.b(this.a.app, "CliOper", "", "", "0X8004002", "0X8004002", 0, 0, "", "", "", "");
+        localObject = new Intent(this.a, SubAccountUgActivity.class);
+        ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+        this.a.startActivity((Intent)localObject);
+      }
+      else if ("0X8004456".equals(localObject))
+      {
+        bcef.b(this.a.app, "CliOper", "", "", "0X8004457", "0X8004457", 0, 0, "", "", "", "");
+        localObject = new Intent(this.a, SubAccountBindActivity.class);
+        ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+        this.a.startActivity((Intent)localObject);
+        bfun.a().a(this.a.app.getCurrentAccountUin(), true);
+        continue;
+        localObject = new Intent();
+        ((Intent)localObject).setClass(paramView.getContext(), AssociatedAccountActivity.class);
+        ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+        paramView.getContext().startActivity((Intent)localObject);
+        bcef.b(this.a.app, "CliOper", "", "", "0X8004039", "0X8004039", 0, 0, "", "", "", "");
+        bcef.b(this.a.app, "dc00898", "", "", "0X800AC39", "0X800AC39", 0, 0, "", "", "", "");
       }
     }
-    GdtBaseHalfScreenFragment.a((Activity)paramParams.activity.get(), GdtBaseHalfScreenFragmentForJs.class, paramParams.ad, localObject, paramParams.webUrl, paramParams.style, paramParams.extrasForIntent);
-    return new AdError(0);
   }
 }
 

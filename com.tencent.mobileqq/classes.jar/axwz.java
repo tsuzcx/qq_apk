@@ -1,48 +1,57 @@
-import android.text.TextUtils;
+import android.content.Intent;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import mqq.util.WeakReference;
 
 public class axwz
+  extends SosoInterface.OnLocationListener
 {
-  public static String a(String paramString)
+  private static axxv jdField_a_of_type_Axxv = new axxv("weather", 1000, 3, 1);
+  private int jdField_a_of_type_Int;
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  private WeakReference<axxb> jdField_a_of_type_MqqUtilWeakReference;
+  
+  public axwz(int paramInt, Intent paramIntent, axxb paramaxxb)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    String str = "*S1*" + bhgi.a(paramString.getBytes(), 11);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("NearbyURLSafeUtil", 4, "encode:" + paramString + " to:" + str);
-    }
-    return str;
+    super(0, true, true, 60000L, false, false, "official_location");
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramaxxb);
   }
   
-  public static boolean a(String paramString)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (paramString == null) {
-      throw new NullPointerException("isBase64 src should not be null");
-    }
-    return paramString.startsWith("*S1*");
-  }
-  
-  public static String b(String paramString)
-  {
-    if (paramString == null) {
-      throw new NullPointerException("decode src should not be null");
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("NearbyURLSafeUtil", 4, "decode src:" + paramString);
-    }
-    String str = paramString;
-    if (a(paramString))
+    if (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)
     {
-      paramString = new String(bhgi.a(paramString.substring("*S1*".length()), 11));
-      str = paramString;
-      if (QLog.isDevelopLevel())
-      {
-        QLog.i("NearbyURLSafeUtil", 4, "decode result:" + paramString);
-        str = paramString;
+      if (QLog.isColorLevel()) {
+        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] onLocationFinish error. mCallback is null ");
       }
+      return;
     }
-    return str;
+    if ((paramSosoLbsInfo == null) || (paramInt != 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] onLocationFinish error. errCode : " + paramInt);
+      }
+      ((axxb)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramInt, 0.0D, 0.0D, "", "", this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentIntent);
+      return;
+    }
+    paramSosoLbsInfo = new LatLng(paramSosoLbsInfo.mLocation.mLat02, paramSosoLbsInfo.mLocation.mLon02);
+    if (QLog.isColorLevel()) {
+      QLog.e("OnlineStatusWeatherLocationListener", 2, "[MovementDetector] onLocationFinish invoked. latLng : " + paramSosoLbsInfo + " errCode : " + paramInt);
+    }
+    try
+    {
+      jdField_a_of_type_Axxv.a(paramSosoLbsInfo, new axxa(this, paramSosoLbsInfo, paramInt));
+      return;
+    }
+    catch (Throwable paramSosoLbsInfo)
+    {
+      QLog.e("OnlineStatusWeatherLocationListener", 1, "getPoiWithLatLngError", paramSosoLbsInfo);
+    }
   }
 }
 

@@ -1,32 +1,18 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ARRelationShip;
 
-public class aole
-  implements BusinessObserver
+public final class aole
+  implements Parcelable.Creator<ARRelationShip>
 {
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void b() {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ARRelationShip a(Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    case 111: 
-    case 112: 
-    case 114: 
-    default: 
-      return;
-    case 113: 
-      a(paramBundle.getInt("key_rt_type"));
-      return;
-    case 115: 
-      a();
-      return;
-    }
-    b();
+    return new ARRelationShip(paramParcel);
+  }
+  
+  public ARRelationShip[] a(int paramInt)
+  {
+    return new ARRelationShip[paramInt];
   }
 }
 

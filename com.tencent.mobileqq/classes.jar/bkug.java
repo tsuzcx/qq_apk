@@ -1,61 +1,136 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.JsEvent;
-import com.tencent.qqmini.sdk.annotation.JsPlugin;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
-@JsPlugin(secondary=true)
 public class bkug
-  extends BaseJsPlugin
 {
-  @JsEvent({"checkGameBuddyType"})
-  public void checkGameBuddyType(RequestEvent paramRequestEvent)
+  public int a;
+  public String a;
+  public ArrayList<String> a;
+  public int b;
+  public String b;
+  public String c;
+  
+  public bkug()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameBuddyPlugin", 2, new Object[] { "[checkGameBuddyType 2.0], req:", paramRequestEvent });
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public bkug(int paramInt1, String paramString1, String paramString2, String paramString3, ArrayList<String> paramArrayList, int paramInt2)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = true;
+    boolean bool3 = false;
+    boolean bool1;
+    if (this == paramObject) {
+      bool1 = true;
     }
-    try
+    label116:
+    do
     {
-      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
-      if ("checkGameBuddyType".equals(((JSONObject)localObject).optString("api_name")))
+      do
       {
-        localObject = ((JSONObject)localObject).optJSONObject("data").optString("uid");
-        Bundle localBundle = new Bundle();
-        localBundle.putString("uin_value", (String)localObject);
-        QIPCClientHelper.getInstance().callServer("module_game_buddy", "action_check_aio_type", localBundle, new bkuh(this, paramRequestEvent));
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  return bool1;
+                  bool1 = bool3;
+                } while (paramObject == null);
+                bool1 = bool3;
+              } while (getClass() != paramObject.getClass());
+              paramObject = (bkug)paramObject;
+              bool1 = bool3;
+            } while (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int);
+            bool1 = bool3;
+          } while (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int);
+          if (this.jdField_a_of_type_JavaLangString == null) {
+            break;
+          }
+          bool1 = bool3;
+        } while (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
+        if (this.jdField_b_of_type_JavaLangString == null) {
+          break label170;
+        }
+        bool1 = bool3;
+      } while (!this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString));
+      if (this.c == null) {
+        break label179;
       }
-      return;
+      bool1 = bool3;
+    } while (!this.c.equals(paramObject.c));
+    label140:
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      bool1 = this.jdField_a_of_type_JavaUtilArrayList.equals(paramObject.jdField_a_of_type_JavaUtilArrayList);
     }
-    catch (Throwable paramRequestEvent)
+    for (;;)
     {
-      QLog.e("GameBuddyPlugin", 1, paramRequestEvent, new Object[0]);
+      return bool1;
+      if (paramObject.jdField_a_of_type_JavaLangString == null) {
+        break;
+      }
+      return false;
+      label170:
+      if (paramObject.jdField_b_of_type_JavaLangString == null) {
+        break label116;
+      }
+      return false;
+      label179:
+      if (paramObject.c == null) {
+        break label140;
+      }
+      return false;
+      bool1 = bool2;
+      if (paramObject.jdField_a_of_type_JavaUtilArrayList != null) {
+        bool1 = false;
+      }
     }
   }
   
-  @JsEvent({"invokeGameBuddyAio"})
-  public void invokeGameBuddyAio(RequestEvent paramRequestEvent)
+  public int hashCode()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GameBuddyPlugin", 2, new Object[] { "[invokeGameBuddyAio 2.0], req:", paramRequestEvent });
-    }
-    try
+    int m = 0;
+    int n = this.jdField_a_of_type_Int;
+    int i;
+    int j;
+    if (this.jdField_a_of_type_JavaLangString != null)
     {
-      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
-      if ("invokeGameBuddyAio".equals(((JSONObject)localObject).optString("api_name")))
-      {
-        localObject = ((JSONObject)localObject).optJSONObject("data").optString("uid");
-        Bundle localBundle = new Bundle();
-        localBundle.putString("uin_value", (String)localObject);
-        QIPCClientHelper.getInstance().callServer("module_game_buddy", "action_check_aio_type", localBundle, new bkui(this, paramRequestEvent, (String)localObject));
+      i = this.jdField_a_of_type_JavaLangString.hashCode();
+      if (this.jdField_b_of_type_JavaLangString == null) {
+        break label107;
       }
-      return;
+      j = this.jdField_b_of_type_JavaLangString.hashCode();
+      label39:
+      if (this.c == null) {
+        break label112;
+      }
     }
-    catch (Throwable paramRequestEvent)
+    label107:
+    label112:
+    for (int k = this.c.hashCode();; k = 0)
     {
-      QLog.e("GameBuddyPlugin", 1, paramRequestEvent, new Object[0]);
+      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+        m = this.jdField_a_of_type_JavaUtilArrayList.hashCode();
+      }
+      return ((k + (j + (i + n * 31) * 31) * 31) * 31 + m) * 31 + this.jdField_b_of_type_Int;
+      i = 0;
+      break;
+      j = 0;
+      break label39;
     }
   }
 }

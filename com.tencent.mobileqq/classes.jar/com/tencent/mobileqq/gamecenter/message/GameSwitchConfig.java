@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.gamecenter.message;
 
-import avln;
+import atyn;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
@@ -8,7 +8,7 @@ import com.tencent.qphone.base.util.QLog;
 public class GameSwitchConfig
   extends Entity
 {
-  public static final String TAG = avln.a + "GameSwitchConfig";
+  public static final String TAG = atyn.a + "GameSwitchConfig";
   @unique
   public String mAppId;
   public int mBlockSwitch;

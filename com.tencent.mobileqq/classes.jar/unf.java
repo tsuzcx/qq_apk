@@ -1,15 +1,10 @@
-import UserGrowth.stNotificationRsp;
-import UserGrowth.stSimpleMetaFeed;
 import java.util.List;
 
-public abstract interface unf
-  extends uml<List<stSimpleMetaFeed>>
+public abstract interface unf<T>
 {
-  public abstract void a(stNotificationRsp paramstNotificationRsp, uke paramuke);
+  public abstract void a(boolean paramBoolean1, List<T> paramList, boolean paramBoolean2);
   
-  public abstract blsv b();
-  
-  public abstract void b(int paramInt, String paramString);
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, Object paramObject);
 }
 
 

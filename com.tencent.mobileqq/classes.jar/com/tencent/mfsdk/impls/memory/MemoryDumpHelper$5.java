@@ -1,17 +1,17 @@
 package com.tencent.mfsdk.impls.memory;
 
-import adkw;
-import adkx;
-import adlu;
-import adlx;
-import adly;
-import adma;
+import achq;
+import achr;
+import acin;
+import aciq;
+import acir;
+import acit;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Handler;
-import bdmc;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qapmsdk.base.meta.DumpResult;
 import com.tencent.qapmsdk.common.util.InspectUUID;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -23,7 +23,7 @@ import mqq.os.MqqHandler;
 public class MemoryDumpHelper$5
   implements Runnable
 {
-  public MemoryDumpHelper$5(adlu paramadlu, boolean paramBoolean1, InspectUUID paramInspectUUID, String paramString, boolean paramBoolean2) {}
+  public MemoryDumpHelper$5(acin paramacin, boolean paramBoolean1, InspectUUID paramInspectUUID, String paramString, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -36,9 +36,9 @@ public class MemoryDumpHelper$5
       if (!this.jdField_a_of_type_Boolean) {
         break label371;
       }
-      localDumpResult = MagnifierSDK.a().a().a((String)localObject1, new adlx(this));
+      localDumpResult = MagnifierSDK.a().a().a((String)localObject1, new aciq(this));
       localObject2 = new MemoryDumpHelper.5.2(this, localDumpResult);
-      adlu.a().postDelayed((Runnable)localObject2, 0L);
+      acin.a().postDelayed((Runnable)localObject2, 0L);
     }
     for (;;)
     {
@@ -59,14 +59,14 @@ public class MemoryDumpHelper$5
         ((HashMap)localObject1).put("threhold", String.valueOf(l));
         ((HashMap)localObject1).put("dumpFileSize", String.valueOf(localDumpResult.hprofFileSize));
         ((HashMap)localObject1).put("zipFileSize", String.valueOf(((File)localObject2).length()));
-        bdmc.a(BaseApplication.getContext()).a("", "MemoryPeakDump", true, 0L, 0L, (HashMap)localObject1, "");
-        adma.a().b();
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "MemoryPeakDump", true, 0L, 0L, (HashMap)localObject1, "");
+        acit.a().b();
       }
       return;
       localObject1 = this.jdField_a_of_type_JavaLangString;
       break;
       label371:
-      localDumpResult = MagnifierSDK.a().a().a((String)localObject1, new adly(this));
+      localDumpResult = MagnifierSDK.a().a().a((String)localObject1, new acir(this));
       MagnifierSDK.a().a().a(localDumpResult);
     }
   }

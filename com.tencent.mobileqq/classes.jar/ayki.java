@@ -1,302 +1,173 @@
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.os.Handler;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.data.ShowExternalTroop;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
 import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x5ea.UpdatePhotoList.HeadInfo;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ayki
-  extends axxn
+  extends VasWebviewJsPlugin
 {
-  public ayki(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  protected String a;
+  private boolean a;
+  protected String b;
   
-  protected void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, String paramString)
+  public ayki()
   {
-    if ((NearbyPeopleProfileActivity.a(this.a) == null) || (NearbyPeopleProfileActivity.a(this.a) == null)) {}
-    String str;
-    do
+    this.mPluginNameSpace = "historyhead";
+  }
+  
+  public static void a(Activity paramActivity, int paramInt1, int paramInt2, ArrayList<PicInfo> paramArrayList, ArrayList<String> paramArrayList1, boolean paramBoolean, String paramString, int paramInt3)
+  {
+    Intent localIntent = new Intent(paramActivity, FriendProfilePicBrowserActivity.class);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("index", paramInt1);
+    localBundle.putInt("fromType", paramInt2);
+    if (paramArrayList != null) {
+      localBundle.putParcelableArrayList("picInfos", paramArrayList);
+    }
+    if (paramArrayList1 != null) {
+      localBundle.putStringArrayList("fileIdList", paramArrayList1);
+    }
+    localBundle.putBoolean("IS_EDIT", false);
+    localBundle.putBoolean("is_use_path", true);
+    localBundle.putBoolean("is_show_action", true);
+    localBundle.putBoolean("is_not_show_index", paramBoolean);
+    if (!TextUtils.isEmpty(paramString)) {
+      localBundle.putString("src_id", paramString);
+    }
+    localIntent.putExtras(localBundle);
+    paramActivity.startActivityForResult(localIntent, paramInt3);
+  }
+  
+  protected void a(String paramString)
+  {
+    int k = 0;
+    int j = 100;
+    try
     {
-      return;
-      NearbyPeopleProfileActivity.a(this.a).charm = paramInt3;
-      NearbyPeopleProfileActivity.a(this.a).charmLevel = paramInt4;
-      NearbyPeopleProfileActivity.a(this.a).curThreshold = paramInt5;
-      NearbyPeopleProfileActivity.a(this.a).nextThreshold = paramInt6;
-      NearbyPeopleProfileActivity.a(this.a).a(NearbyPeopleProfileActivity.a(this.a));
-      if (QLog.isColorLevel()) {
-        QLog.d("Charm", 2, "onGetCharmNotify() uin=" + this.a.app.getCurrentAccountUin());
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_JavaLangString = paramString.optString("setName");
+      this.b = paramString.optString("delName");
+      Object localObject3 = paramString.optJSONArray("imageIDs");
+      Object localObject2 = paramString.optJSONArray("str_fileids");
+      int m = paramString.optInt("index");
+      String str = paramString.optString("srcID");
+      int n = paramString.optInt("fromType");
+      boolean bool = paramString.optBoolean("isNotShowIndex", true);
+      if (this.mRuntime.a() == null) {
+        return;
       }
-      str = bhsr.a(paramString, "<head>", "</head>");
-      paramString = bhsr.a(paramString, "<body>", "</body>");
-    } while (!this.a.isResume());
-    bhrl.a(this.a, str, paramString, paramInt3 - paramInt1).show();
-  }
-  
-  protected void a(String paramString, int paramInt)
-  {
-    if (NearbyPeopleProfileActivity.a(this.a) != null) {
-      NearbyPeopleProfileActivity.a(this.a).a(paramString, paramInt);
-    }
-    this.a.jdField_o_of_type_Int = paramInt;
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt, List<ShowExternalTroop> paramList, List<String> paramList1)
-  {
-    if (NearbyPeopleProfileActivity.a(this.a) != null) {
-      NearbyPeopleProfileActivity.a(this.a).a(paramBoolean, paramInt, paramList);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3, byte[] paramArrayOfByte, String paramString)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("ongetShowLove ").append("issuccess = ").append(paramBoolean1).append(" uin = ").append(paramLong).append(" canChat = ").append(paramBoolean2).append(" can ShowLove = ").append(paramBoolean3).append("sig:").append(paramArrayOfByte).append(paramString);
-    asam.c("profileCard", new Object[] { ((StringBuilder)localObject).toString() });
-    localObject = this.a;
-    if (this.a.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(204);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(205);
-    }
-    if (paramBoolean1) {
-      if (paramBoolean2)
+      if (this.mRuntime.a() != null)
       {
-        asam.c(NearbyPeopleProfileActivity.class.getSimpleName(), new Object[] { "onGetShowLoveLimit , can chat, someting is wrong" });
-        NearbyPeopleProfileActivity.a(this.a).l();
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_o_of_type_Boolean = false;
-      return;
-      if (paramBoolean3)
-      {
-        if (NearbyPeopleProfileActivity.a(this.a) != null)
+        Object localObject1 = this.mRuntime.a();
+        if (localObject1 != null)
         {
-          paramArrayOfByte = NearbyPeopleProfileActivity.a(this.a).uin;
-          paramArrayOfByte = NearbyPeopleProfileActivity.a(this.a).nickname;
-          int i = NearbyPeopleProfileActivity.a(this.a).gender;
-          bhhz.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-          QLog.d("Q.nearby_people_card.", 1, "ShowLoveEditorActivity 已在725下架");
+          paramString = (String)localObject1;
+          if ((localObject1 instanceof BasePluginActivity)) {
+            paramString = ((BasePluginActivity)localObject1).getOutActivity();
+          }
+          localObject1 = new ArrayList();
+          int i1;
+          int i;
+          if (localObject3 != null)
+          {
+            i1 = ((JSONArray)localObject3).length();
+            i = 0;
+            while (i < i1)
+            {
+              PicInfo localPicInfo = new PicInfo();
+              localPicInfo.jdField_a_of_type_JavaLangString = ((JSONArray)localObject3).get(i).toString();
+              localPicInfo.g = "type_history_head_pic";
+              ((ArrayList)localObject1).add(localPicInfo);
+              i += 1;
+            }
+          }
+          localObject3 = new ArrayList();
+          if (localObject2 != null)
+          {
+            i1 = ((JSONArray)localObject2).length();
+            i = k;
+            while (i < i1)
+            {
+              ((ArrayList)localObject3).add(((JSONArray)localObject2).get(i).toString());
+              i += 1;
+            }
+          }
+          localObject2 = this.mRuntime.a();
+          if ((paramString instanceof bgvf)) {
+            i = ((bgvf)paramString).switchRequestCode(this, (byte)100);
+          }
+          for (;;)
+          {
+            a(paramString, m, n, (ArrayList)localObject1, (ArrayList)localObject3, bool, str, i);
+            return;
+            i = j;
+            if (localObject2 != null) {
+              i = ((WebViewFragment)localObject2).switchRequestCode(this, (byte)100);
+            }
+          }
         }
       }
-      else
-      {
-        asam.c(NearbyPeopleProfileActivity.class.getSimpleName(), new Object[] { "cant show love, wording is " + paramString });
-        paramArrayOfByte = paramString;
-        if (TextUtils.isEmpty(paramString)) {
-          paramArrayOfByte = ((Activity)localObject).getResources().getString(2131698307);
-        }
-        asam.a(this.a, paramArrayOfByte);
-        continue;
-        asam.a((Activity)localObject, ((Activity)localObject).getString(2131698306));
-      }
+      return;
     }
+    catch (JSONException paramString) {}
   }
   
-  protected void a(boolean paramBoolean1, NearbyPeopleCard paramNearbyPeopleCard, boolean paramBoolean2)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((paramNearbyPeopleCard != null) && ((paramNearbyPeopleCard.tinyId == 0L) || (paramNearbyPeopleCard.tinyId != this.a.jdField_a_of_type_Long)) && ((TextUtils.isEmpty(paramNearbyPeopleCard.uin)) || ("0".equals(paramNearbyPeopleCard.uin)) || (!paramNearbyPeopleCard.uin.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))) && ((paramNearbyPeopleCard.nowId == 0L) || (paramNearbyPeopleCard.nowId != NearbyPeopleProfileActivity.a(this.a)))) {}
-    label429:
-    label469:
-    label1118:
-    label1136:
+    if (("historyhead".equals(paramString2)) && ("showPicture".equals(paramString3)) && (paramVarArgs.length == 1)) {
+      a(paramVarArgs[0]);
+    }
+    return false;
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    if ((paramByte != 100) || (paramInt != -1) || (this.mRuntime.a() == null)) {}
+    label21:
     do
     {
-      Object localObject;
       do
       {
-        return;
-        this.a.a();
-        localObject = blhb.a;
-        if ((localObject != null) && (((blhb)localObject).a())) {
-          ((blhb)localObject).b(6);
-        }
-        if ((paramNearbyPeopleCard != null) && (QLog.isColorLevel()))
+        do
         {
-          StringBuilder localStringBuilder1 = new StringBuilder();
-          StringBuilder localStringBuilder2 = localStringBuilder1.append("tinyid=").append(paramNearbyPeopleCard.tinyId).append(", uin=").append(paramNearbyPeopleCard.uin).append(", nickname=").append(paramNearbyPeopleCard.nickname).append(", gender=").append(paramNearbyPeopleCard.gender).append(", age=").append(paramNearbyPeopleCard.age).append(", birthday=").append(paramNearbyPeopleCard.birthday).append(", constellation=").append(paramNearbyPeopleCard.constellation).append(", distance=").append(paramNearbyPeopleCard.distance).append(", timeDiff=").append(paramNearbyPeopleCard.timeDiff).append(", photoInfoes=").append(paramNearbyPeopleCard.picInfo).append(", videoDetails=").append(paramNearbyPeopleCard.videoDetails).append(", commonLabelString=").append(paramNearbyPeopleCard.commonLabelString).append(", hiWanInfo=").append(paramNearbyPeopleCard.hiWanInfo).append(", videoInfo=").append(paramNearbyPeopleCard.videoInfo).append(", photoInfo_length=");
-          if (paramNearbyPeopleCard.picList != null) {
+          break label21;
+          do
+          {
+            return;
+          } while (paramIntent == null);
+          if ((!paramIntent.hasExtra("setHead_fileid")) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
             break;
           }
-          localObject = "null";
-          localStringBuilder2 = localStringBuilder2.append(localObject).append(", likeCount=").append(paramNearbyPeopleCard.likeCount).append(",likeCountInc=").append(paramNearbyPeopleCard.likeCountInc).append(", oldPhotoCount=").append(paramNearbyPeopleCard.oldPhotoCount).append(", dateInfo=").append(paramNearbyPeopleCard.dateInfo).append(", dateInfo_length=");
-          if (paramNearbyPeopleCard.dateInfo != null) {
-            break label1105;
-          }
-          localObject = "null";
-          localStringBuilder2 = localStringBuilder2.append(localObject).append(", xuanYan=").append(paramNearbyPeopleCard.xuanYan).append(", xuanYan_length=");
-          if (paramNearbyPeopleCard.xuanYan != null) {
-            break label1118;
-          }
-          localObject = "null";
-          localStringBuilder2.append(localObject).append(", maritalStatus=").append(paramNearbyPeopleCard.maritalStatus).append(", job=").append(paramNearbyPeopleCard.job).append(", charm=").append(paramNearbyPeopleCard.charm).append(",level=").append(paramNearbyPeopleCard.charmLevel).append(",next=").append(paramNearbyPeopleCard.nextThreshold).append(", company=").append(paramNearbyPeopleCard.company).append(", college=").append(paramNearbyPeopleCard.college).append(", hometownCountry=").append(paramNearbyPeopleCard.hometownCountry).append(", hometownProvice=").append(paramNearbyPeopleCard.hometownProvice).append(", hometownCity=").append(paramNearbyPeopleCard.hometownCity).append(", hometownDistrict=").append(paramNearbyPeopleCard.hometownDistrict).append(", bVoted=").append(paramNearbyPeopleCard.bVoted).append(", feedPreviewTime=").append(paramNearbyPeopleCard.feedPreviewTime).append(", qzoneFeed=").append(paramNearbyPeopleCard.qzoneFeed).append(", qzoneName=").append(paramNearbyPeopleCard.qzoneName).append(", qzonePicUrl_1=").append(paramNearbyPeopleCard.qzonePicUrl_1).append(", qzonePicUrl_2=").append(paramNearbyPeopleCard.qzonePicUrl_2).append(", qzonePicUrl_3=").append(paramNearbyPeopleCard.qzonePicUrl_3).append(", isPhotoUseCache=").append(paramNearbyPeopleCard.isPhotoUseCache).append(", switchQzone=").append(paramNearbyPeopleCard.switchQzone).append(", switchHobby=").append(paramNearbyPeopleCard.switchHobby).append(", uiShowControl=").append(paramNearbyPeopleCard.uiShowControl).append(", userFlag=").append(paramNearbyPeopleCard.userFlag).append(", strProfileUrl=").append(paramNearbyPeopleCard.strProfileUrl).append(", strVoteLimitedNotice=").append(paramNearbyPeopleCard.strVoteLimitedNotice).append(", bHaveVotedCnt=").append(paramNearbyPeopleCard.bHaveVotedCnt).append(", bAvailVoteCnt=").append(paramNearbyPeopleCard.bAvailVoteCnt).append(", hasStory=").append(paramNearbyPeopleCard.mHasStory);
-          QLog.d("Q.nearby_people_card.", 2, "Q.nearby_people_card..onNearbyCardDownload(), isSuccess: " + paramBoolean1 + ", card = " + localStringBuilder1.toString());
-        }
-        if ((!paramBoolean1) || (paramNearbyPeopleCard == null)) {
-          break label1136;
-        }
-        this.a.jdField_d_of_type_JavaLangString = paramNearbyPeopleCard.uin;
-        this.a.b = true;
-        this.a.a(paramNearbyPeopleCard, false, paramBoolean2);
-        this.a.i();
-        if (QLog.isColorLevel()) {
-          QLog.d("NearbyLikeLimitManager", 2, "onNearbyCardDownload: likeCount=" + paramNearbyPeopleCard.likeCount + ", bHaveVotedCnt=" + paramNearbyPeopleCard.bHaveVotedCnt + ", bAvailVoteCnt=" + paramNearbyPeopleCard.bAvailVoteCnt + ", bVoted=" + paramNearbyPeopleCard.bVoted);
-        }
-        ((axvr)this.a.app.getManager(207)).a(paramNearbyPeopleCard.uin, false);
-      } while (!paramNearbyPeopleCard.uin.equals(this.a.app.getCurrentAccountUin()));
-      if ((paramNearbyPeopleCard.videoInfo != null) && (!TextUtils.isEmpty(paramNearbyPeopleCard.videoInfo.jdField_d_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramNearbyPeopleCard.videoInfo.jdField_a_of_type_JavaLangString))) {}
-      for (paramBoolean1 = true;; paramBoolean1 = false)
-      {
-        bhsi.a(this.a, paramBoolean1);
+          paramIntent = paramIntent.getStringExtra("setHead_fileid");
+        } while (TextUtils.isEmpty(paramIntent));
+        callJs(this.jdField_a_of_type_JavaLangString, new String[] { npn.a(paramIntent) });
         return;
-        localObject = Integer.valueOf(paramNearbyPeopleCard.picList.size());
-        break;
-        localObject = Integer.valueOf(paramNearbyPeopleCard.dateInfo.length);
-        break label429;
-        localObject = Integer.valueOf(paramNearbyPeopleCard.xuanYan.length);
-        break label469;
-      }
-    } while (paramBoolean2);
-    label1105:
-    this.a.b(anzj.a(2131706127));
+      } while ((!paramIntent.hasExtra("delHead_fileid")) || (TextUtils.isEmpty(this.b)));
+      paramIntent = paramIntent.getStringExtra("delHead_fileid");
+    } while (TextUtils.isEmpty(paramIntent));
+    callJs(this.b, new String[] { npn.a(paramIntent) });
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public void a(boolean paramBoolean1, NearbyPeopleCard paramNearbyPeopleCard, boolean paramBoolean2, String paramString)
+  public void onDestroy()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby_people_card.update_profile", 2, "onEditNearbyProfileCard");
-    }
-    if ((paramNearbyPeopleCard != null) && (paramNearbyPeopleCard.tinyId != this.a.jdField_a_of_type_Long) && ((paramNearbyPeopleCard.uin == null) || (!paramNearbyPeopleCard.uin.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)))) {}
-    while ((this.a.e != 1) && (this.a.e != 2)) {
-      return;
-    }
-    if (paramBoolean1)
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
-        this.a.h = true;
-      }
-      NearbyPeopleProfileActivity.b(this.a);
-      if (this.a.t)
-      {
-        this.a.jdField_a_of_type_Axxj.a(true);
-        this.a.t = false;
-      }
-      this.a.getSharedPreferences("nearby_callback", 4).edit().putInt("nearby_now_edit_profile_code_int", 0);
+      Bundle localBundle = new Bundle();
+      localBundle.putBoolean("hasHistoryHeadDel", this.jdField_a_of_type_Boolean);
+      super.sendRemoteReq(aqyt.a("ipc_cmd_historyhead_refresh_numflag", "", 0, localBundle), false, true);
     }
-    this.a.a(paramBoolean1, paramNearbyPeopleCard, paramBoolean2, paramString);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      paramString = (axvr)this.a.app.getManager(207);
-      if (NearbyPeopleProfileActivity.a(this.a) != null) {
-        NearbyPeopleProfileActivity.a(this.a).h();
-      }
-      if ((this.a.e != 1) && (paramString.b()) && (!this.a.r) && (NearbyPeopleProfileActivity.a(this.a.j)))
-      {
-        this.a.r = true;
-        paramString = new ImageView(this.a);
-        paramString.setScaleType(ImageView.ScaleType.FIT_XY);
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        this.a.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/groupgift/zan.png", localURLDrawableOptions);
-        if (this.a.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1) {
-          break label157;
-        }
-        this.a.a(paramString, this.a.jdField_a_of_type_ComTencentImageURLDrawable);
-      }
-    }
-    return;
-    label157:
-    this.a.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new aykj(this, paramString));
-    this.a.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
-  }
-  
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    if ((NearbyPeopleProfileActivity.a(this.a) == null) || (TextUtils.isEmpty(NearbyPeopleProfileActivity.a(this.a).uin)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString1)) || (bhjx.a(paramString2, paramString1))) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((!bhjx.a(paramString2, NearbyPeopleProfileActivity.a(this.a).uin)) || (!bhjx.a(paramString1, this.a.app.getCurrentAccountUin())));
-      if (!paramBoolean)
-      {
-        this.a.b(this.a.getResources().getString(2131693043));
-        paramString1 = NearbyPeopleProfileActivity.a(this.a);
-        paramString1.likeCount -= 1;
-        NearbyPeopleProfileActivity.a(this.a).bVoted = 0;
-        paramString1 = NearbyPeopleProfileActivity.a(this.a);
-        paramString1.bAvailVoteCnt = ((short)(paramString1.bAvailVoteCnt + paramInt1));
-        NearbyPeopleProfileActivity.a(this.a).h();
-        return;
-      }
-    } while (paramInt2 != 1);
-    paramString1 = NearbyPeopleProfileActivity.a(this.a);
-    paramString1.likeCount += paramInt1;
-    NearbyPeopleProfileActivity.a(this.a).bVoted = 1;
-    paramString1 = NearbyPeopleProfileActivity.a(this.a);
-    paramString1.bAvailVoteCnt = ((short)(paramString1.bAvailVoteCnt - paramInt1));
-    if (NearbyPeopleProfileActivity.a(this.a).bAvailVoteCnt < 0) {
-      NearbyPeopleProfileActivity.a(this.a).bAvailVoteCnt = 0;
-    }
-    NearbyPeopleProfileActivity.a(this.a).h();
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, List<ayaw> paramList, String paramString2, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby_people_card.update_profile", 2, "onSetPersonalInterestTags");
-    }
-    if (paramBoolean)
-    {
-      this.a.a();
-      this.a.a(2, anzj.a(2131706132));
-      return;
-    }
-    this.a.a();
-    this.a.a(1, anzj.a(2131706123) + paramString2);
-  }
-  
-  protected void a(boolean paramBoolean, UpdatePhotoList.HeadInfo paramHeadInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby_people_card.", 2, "onUpdateNearbyPeopleAuthVideo , uint32_headid = " + paramHeadInfo.uint32_headid.get() + ", str_headurl = " + paramHeadInfo.str_headurl.get() + ", str_video_url = " + paramHeadInfo.str_video_url.get());
-    }
-    byte[] arrayOfByte = NearbyPeopleProfileActivity.a(this.a).vSeed;
-    long l = NearbyPeopleProfileActivity.a(this.a).feedPreviewTime;
-    if (this.a.jdField_a_of_type_Long > 0L) {
-      bhhu.a(this.a.jdField_a_of_type_Axxj, this.a.app, this.a.jdField_a_of_type_Long, null, this.a.jdField_d_of_type_Int, arrayOfByte, l, true, this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long, NearbyPeopleProfileActivity.a(this.a.j), NearbyPeopleProfileActivity.a(this.a), NearbyPeopleProfileActivity.a(this.a));
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby_people_card.update_profile", 2, "onUpdateNearbyPeopleAuthVideo + HeadInfo = " + paramHeadInfo.toString());
-      }
-      return;
-      if (!bhsr.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString)) {
-        bhhu.a(this.a.jdField_a_of_type_Axxj, this.a.app, 0L, this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.a.jdField_d_of_type_Int, arrayOfByte, l, true, this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long, NearbyPeopleProfileActivity.a(this.a.j), NearbyPeopleProfileActivity.a(this.a), NearbyPeopleProfileActivity.a(this.a));
-      }
-    }
+    super.onDestroy();
   }
 }
 

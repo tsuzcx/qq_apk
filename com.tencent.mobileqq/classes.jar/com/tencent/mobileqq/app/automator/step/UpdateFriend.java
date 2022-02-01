@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import amsu;
+import amsw;
 import android.content.SharedPreferences;
-import anyu;
-import anyw;
-import aond;
+import angp;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -14,26 +14,26 @@ import com.tencent.qphone.base.util.QLog;
 public class UpdateFriend
   extends AsyncStep
 {
-  private anyu a;
+  private amsu a;
   
   private void a()
   {
-    if (this.jdField_a_of_type_Anyu == null)
+    if (this.jdField_a_of_type_Amsu == null)
     {
-      this.jdField_a_of_type_Anyu = new aond(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Anyu);
+      this.jdField_a_of_type_Amsu = new angp(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Amsu);
     }
-    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(1)).a(0);
+    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(1)).getGatheredContactsList(0);
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_Anyu == null)
+    if (this.jdField_a_of_type_Amsu == null)
     {
-      this.jdField_a_of_type_Anyu = new aond(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Anyu);
+      this.jdField_a_of_type_Amsu = new angp(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Amsu);
     }
-    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(1)).a(true);
+    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(1)).getFriendGroupList(true);
   }
   
   public int a()
@@ -44,18 +44,18 @@ public class UpdateFriend
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "doStep PREF_ISFRIENDLIST_OK=" + bool);
       }
-      anyw localanyw = (anyw)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(51);
+      amsw localamsw = (amsw)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(51);
       if (bool)
       {
-        FriendListHandler localFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(1);
-        bool = localanyw.a();
-        localanyw.e();
+        FriendListHandler localFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getBusinessHandler(1);
+        bool = localamsw.a();
+        localamsw.e();
         localFriendListHandler.notifyUI(1, bool, Boolean.valueOf(bool));
         this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.notifyUI(3, true, Integer.valueOf(1));
         return 7;
       }
-      localanyw.a();
-      localanyw.e();
+      localamsw.a();
+      localamsw.e();
       d();
       return 2;
     }
@@ -83,10 +83,10 @@ public class UpdateFriend
   
   public void c()
   {
-    if (this.jdField_a_of_type_Anyu != null)
+    if (this.jdField_a_of_type_Amsu != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Anyu);
-      this.jdField_a_of_type_Anyu = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Amsu);
+      this.jdField_a_of_type_Amsu = null;
     }
   }
 }

@@ -1,124 +1,422 @@
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import org.xml.sax.SAXException;
 
 public class aqxb
-  extends bjai
 {
-  private aqxb(CountrySelectActivity paramCountrySelectActivity) {}
-  
-  public int a()
+  public static XmlData a(Class<? extends XmlData> paramClass)
   {
-    return 2131559556;
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    paramView = (TextView)paramView;
-    Object localObject = getItem(paramInt);
-    if ((localObject instanceof aqxc)) {
-      paramView.setText(((aqxc)localObject).jdField_a_of_type_JavaLangString);
+    if (paramClass == null) {
+      paramClass = null;
     }
-    while (!(localObject instanceof BaseAddress)) {
-      return;
-    }
-    paramView.setText(((BaseAddress)localObject).pinyinFirst);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return getItemViewType(paramInt) == 0;
-  }
-  
-  public int getCount()
-  {
-    return this.a.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((this.a.jdField_a_of_type_JavaUtilList.get(paramInt) instanceof aqxc)) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (getItemViewType(paramInt) == 0)
-    {
-      if (paramView != null) {
-        break label308;
-      }
-      paramView = this.a.getLayoutInflater().inflate(a(), null);
-    }
-    label292:
-    label302:
-    label308:
     for (;;)
     {
-      ((TextView)paramView).setText(((aqxc)getItem(paramInt)).jdField_a_of_type_JavaLangString);
+      return paramClass;
       for (;;)
       {
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        View localView = paramView;
-        if (paramView == null)
+        try
         {
-          localView = this.a.getLayoutInflater().inflate(2131559557, null);
-          paramView = new aqxd(null);
-          paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365158));
-          paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364505));
-          localView.findViewById(2131365157).setVisibility(8);
-          localView.setTag(paramView);
-          localView.setOnClickListener(this.a);
+          localXmlData = (XmlData)paramClass.newInstance();
         }
-        paramView = (aqxd)localView.getTag();
-        BaseAddress localBaseAddress = (BaseAddress)getItem(paramInt);
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localBaseAddress.name);
-        if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_JavaLangString.equals(localBaseAddress.code))) {
-          paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        catch (IllegalAccessException paramClass)
+        {
+          Object localObject;
+          Field[] arrayOfField;
+          int j;
+          String str;
+          Class localClass;
+          localXmlData = null;
+          continue;
         }
+        catch (InstantiationException paramClass)
+        {
+          int i;
+          XmlData localXmlData = null;
+          continue;
+          i += 1;
+          continue;
+        }
+        try
+        {
+          localObject = localXmlData.getSharedPreferencesName();
+          localObject = BaseApplication.getContext().getSharedPreferences((String)localObject, 4);
+          arrayOfField = a(paramClass);
+          paramClass = localXmlData;
+          if (arrayOfField == null) {
+            break;
+          }
+          j = arrayOfField.length;
+          i = 0;
+          paramClass = localXmlData;
+          if (i >= j) {
+            break;
+          }
+          paramClass = arrayOfField[i];
+          if (!paramClass.isAnnotationPresent(aqyh.class)) {
+            continue;
+          }
+          if (!paramClass.isAccessible()) {
+            paramClass.setAccessible(true);
+          }
+          str = paramClass.getName();
+          localClass = paramClass.getType();
+          if (localClass == String.class) {
+            paramClass.set(localXmlData, ((SharedPreferences)localObject).getString(str, ""));
+          } else if (localClass == Long.TYPE) {
+            paramClass.setLong(localXmlData, ((SharedPreferences)localObject).getLong(str, 0L));
+          }
+        }
+        catch (InstantiationException paramClass)
+        {
+          paramClass.printStackTrace();
+          return localXmlData;
+          if (localClass == Integer.TYPE) {
+            paramClass.setInt(localXmlData, ((SharedPreferences)localObject).getInt(str, 0));
+          }
+        }
+        catch (IllegalAccessException paramClass)
+        {
+          paramClass.printStackTrace();
+          return localXmlData;
+        }
+      }
+    }
+    if (localClass == Float.TYPE) {
+      paramClass.setFloat(localXmlData, ((SharedPreferences)localObject).getFloat(str, 0.0F));
+    } else if (localClass == Boolean.TYPE) {
+      paramClass.setBoolean(localXmlData, ((SharedPreferences)localObject).getBoolean(str, false));
+    } else {
+      throw new RuntimeException("Member name:" + str + "->Type:" + localClass.toString() + " is NOT SUPPORT!");
+    }
+  }
+  
+  public static XmlData a(Class<? extends XmlData> paramClass, String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, String paramString5)
+  {
+    if ((paramClass == null) || (paramString1 == null) || (paramString1.length() == 0) || (paramString2 == null) || (paramString2.length() == 0) || (paramString3 == null) || (paramString3.length() == 0) || (paramString4 == null) || (paramString4.length() == 0)) {
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuffer();
+        StringBuilder localStringBuilder = new StringBuilder().append("class=");
+        if (paramClass == null)
+        {
+          paramClass = "null";
+          paramString2.append(paramClass);
+          paramString2.append(" resName=" + paramString1);
+          paramString2.append(" resConf=" + paramString3);
+          paramString2.append(" uiNewVer=" + paramLong);
+          paramString2.append(" urlBig=" + paramString4);
+          paramString2.append(" urlSmall=" + paramString5);
+          QLog.d("EarlyDown", 2, "parse() return." + paramString2.toString());
+        }
+      }
+      else
+      {
+        paramString3 = null;
+      }
+    }
+    for (;;)
+    {
+      return paramString3;
+      paramClass = paramClass.getCanonicalName();
+      break;
+      try
+      {
+        paramClass = new aqxg(paramClass);
+        SAXParserFactory.newInstance().newSAXParser().parse(new ByteArrayInputStream(paramString3.getBytes()), paramClass);
+        paramClass = paramClass.a();
+        paramString3 = paramClass;
+        if (paramClass == null) {
+          continue;
+        }
+        paramClass.strResName = paramString1;
+        paramClass.strPkgName = paramString2;
+        paramClass.strResURL_big = paramString4;
+        paramClass.strResURL_small = paramString5;
+        paramClass.Version = ((int)paramLong);
+        return paramClass;
+      }
+      catch (ParserConfigurationException paramClass)
+      {
         for (;;)
         {
-          paramView.jdField_a_of_type_JavaLangString = localBaseAddress.code;
-          if (!CountrySelectActivity.jdField_a_of_type_Boolean) {
-            break label302;
+          if (QLog.isColorLevel()) {
+            QLog.e("EarlyDown", 2, "parse() throw Exception:" + paramClass.getMessage());
           }
-          if (paramView.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0) {
-            break label292;
-          }
-          localView.setContentDescription(localBaseAddress.name + anzj.a(2131701514));
-          paramView = localView;
-          break;
-          paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          paramClass = null;
         }
-        localView.setContentDescription(localBaseAddress.name);
-        paramView = localView;
+      }
+      catch (SAXException paramClass)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("EarlyDown", 2, "parse() throw Exception:" + paramClass.getMessage());
+          }
+          paramClass = null;
+        }
+      }
+      catch (IOException paramClass)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("EarlyDown", 2, "parse() throw Exception:" + paramClass.getMessage());
+          }
+          paramClass = null;
+        }
       }
     }
   }
   
-  public int getViewTypeCount()
+  /* Error */
+  public static Field a(Class<? extends XmlData> paramClass, String paramString)
   {
-    return 2;
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: aconst_null
+    //   3: astore 4
+    //   5: aload 4
+    //   7: astore_2
+    //   8: aload_0
+    //   9: ifnull +20 -> 29
+    //   12: aload 4
+    //   14: astore_2
+    //   15: aload_1
+    //   16: ifnull +13 -> 29
+    //   19: aload_1
+    //   20: invokevirtual 162	java/lang/String:length	()I
+    //   23: ifne +20 -> 43
+    //   26: aload 4
+    //   28: astore_2
+    //   29: aload_2
+    //   30: areturn
+    //   31: astore_2
+    //   32: aload_3
+    //   33: astore_2
+    //   34: aload_3
+    //   35: ifnonnull -6 -> 29
+    //   38: aload_0
+    //   39: invokevirtual 268	java/lang/Class:getSuperclass	()Ljava/lang/Class;
+    //   42: astore_0
+    //   43: aload_3
+    //   44: astore_2
+    //   45: aload_0
+    //   46: ldc_w 270
+    //   49: if_acmpeq -20 -> 29
+    //   52: aload_0
+    //   53: aload_1
+    //   54: invokevirtual 274	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   57: astore_2
+    //   58: aload_2
+    //   59: astore_3
+    //   60: goto -28 -> 32
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	63	0	paramClass	Class<? extends XmlData>
+    //   0	63	1	paramString	String
+    //   7	23	2	localObject1	Object
+    //   31	1	2	localNoSuchFieldException	java.lang.NoSuchFieldException
+    //   33	26	2	localObject2	Object
+    //   1	59	3	localObject3	Object
+    //   3	24	4	localObject4	Object
+    // Exception table:
+    //   from	to	target	type
+    //   52	58	31	java/lang/NoSuchFieldException
+  }
+  
+  public static void a(XmlData paramXmlData)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("freeSP() data=");
+      if (paramXmlData != null) {
+        break label46;
+      }
+    }
+    label46:
+    for (String str = "null";; str = paramXmlData.getSharedPreferencesName())
+    {
+      QLog.d("EarlyDown", 2, str);
+      if (paramXmlData != null) {
+        break;
+      }
+      return;
+    }
+    paramXmlData = paramXmlData.getSharedPreferencesName();
+    paramXmlData = BaseApplication.getContext().getSharedPreferences(paramXmlData, 0).edit();
+    paramXmlData.clear();
+    paramXmlData.commit();
+  }
+  
+  public static void a(XmlData paramXmlData, String... paramVarArgs)
+  {
+    if (paramXmlData == null) {
+      return;
+    }
+    Object localObject1;
+    SharedPreferences.Editor localEditor;
+    Object localObject2;
+    label54:
+    int i;
+    Object localObject3;
+    for (;;)
+    {
+      label153:
+      try
+      {
+        localObject1 = paramXmlData.getSharedPreferencesName();
+        localEditor = BaseApplication.getContext().getSharedPreferences((String)localObject1, 0).edit();
+        localObject2 = paramXmlData.getClass();
+        if ((paramVarArgs == null) || (paramVarArgs.length == 0))
+        {
+          paramVarArgs = a((Class)localObject2);
+          if (paramVarArgs == null) {
+            break label448;
+          }
+          int j = paramVarArgs.length;
+          i = 0;
+          if (i >= j) {
+            break label448;
+          }
+          localObject2 = paramVarArgs[i];
+        }
+      }
+      finally {}
+      try
+      {
+        if ((((Field)localObject2).isAnnotationPresent(aqyh.class)) && (((aqyh)((Field)localObject2).getAnnotation(aqyh.class)).b()))
+        {
+          if (!((Field)localObject2).isAccessible()) {
+            ((Field)localObject2).setAccessible(true);
+          }
+          localObject1 = ((Field)localObject2).getName();
+          localObject3 = ((Field)localObject2).get(paramXmlData);
+          if (!(localObject3 instanceof String)) {
+            break;
+          }
+          localEditor.putString((String)localObject1, String.valueOf(localObject3));
+        }
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        localIllegalArgumentException.printStackTrace();
+        continue;
+        if (!(localObject3 instanceof Integer)) {
+          break label294;
+        }
+        localEditor.putInt(localIllegalArgumentException, ((Integer)localObject3).intValue());
+        continue;
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        localIllegalAccessException.printStackTrace();
+        continue;
+        if (!(localObject3 instanceof Float)) {
+          break label346;
+        }
+        localEditor.putFloat(localIllegalAccessException, ((Float)localObject3).floatValue());
+        continue;
+      }
+      catch (IncompatibleClassChangeError localIncompatibleClassChangeError)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("earlyDown", 2, "EarlyDataFactory.saveToSP, IncompatibleClassChangeError", localIncompatibleClassChangeError);
+        continue;
+        if (!(localObject3 instanceof Boolean)) {
+          break label375;
+        }
+        localEditor.putBoolean(localIncompatibleClassChangeError, ((Boolean)localObject3).booleanValue());
+        continue;
+        localObject2 = new StringBuilder().append("Member name:").append(localIncompatibleClassChangeError).append("->Type:");
+        if (localObject3 != null) {
+          break label432;
+        }
+      }
+      i += 1;
+      continue;
+      localObject1 = new Field[paramVarArgs.length];
+      i = 0;
+    }
+    for (;;)
+    {
+      label294:
+      label346:
+      label375:
+      String str;
+      if (i < paramVarArgs.length)
+      {
+        localObject3 = paramVarArgs[i];
+        if ((localObject3 == null) || (((String)localObject3).length() == 0)) {
+          break label465;
+        }
+        localObject1[i] = a((Class)localObject2, (String)localObject3);
+        break label465;
+        if ((localObject3 instanceof Long))
+        {
+          localEditor.putLong((String)localObject1, ((Long)localObject3).longValue());
+          break label153;
+        }
+        label432:
+        for (str = "NULL";; str = localObject3.getClass().getSimpleName().toString()) {
+          throw new RuntimeException(str + " is NOT SUPPORT!");
+        }
+        label448:
+        localEditor.commit();
+        break;
+      }
+      paramVarArgs = str;
+      break label54;
+      label465:
+      i += 1;
+    }
+  }
+  
+  public static Field[] a(Class<? extends XmlData> paramClass)
+  {
+    ArrayList localArrayList = new ArrayList();
+    while (paramClass != Entity.class)
+    {
+      Field[] arrayOfField = paramClass.getDeclaredFields();
+      if (arrayOfField != null)
+      {
+        j = arrayOfField.length;
+        i = 0;
+        while (i < j)
+        {
+          Field localField = arrayOfField[i];
+          if ((localField != null) && (!Modifier.isStatic(localField.getModifiers()))) {
+            localArrayList.add(localField);
+          }
+          i += 1;
+        }
+      }
+      paramClass = paramClass.getSuperclass();
+    }
+    int j = localArrayList.size();
+    paramClass = new Field[j];
+    int i = 0;
+    while (i < j)
+    {
+      paramClass[i] = ((Field)localArrayList.get(i));
+      i += 1;
+    }
+    return paramClass;
   }
 }
 

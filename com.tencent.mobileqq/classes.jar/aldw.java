@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import android.media.AudioManager;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.VersionUtils;
 
 public class aldw
-  implements nmg
+  implements bgnl
 {
-  public aldw(PreloadModule paramPreloadModule) {}
+  public aldw(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void a(bgnk parambgnk)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadModule", 2, "checkUpByBusinessId loaded, code:" + paramInt);
-    }
-  }
-  
-  public void progress(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadModule", 2, "checkUpByBusinessId progress:" + paramInt);
+    QLog.i("ShortVideoPreviewActivity", 1, "[onCompletion] ");
+    if (VersionUtils.isrFroyo()) {
+      ((AudioManager)this.a.getSystemService("audio")).abandonAudioFocus(null);
     }
   }
 }

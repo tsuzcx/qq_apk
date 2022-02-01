@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import adab;
+import abwp;
 import android.content.Context;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -34,7 +34,7 @@ public class RecentInteractAndFollowItem
     if ((paramQQAppInterface == null) || (paramContext == null)) {
       return;
     }
-    Object localObject1 = paramQQAppInterface.a().b(this.mData.senderuin, this.mData.istroop);
+    Object localObject1 = paramQQAppInterface.getMessageFacade().getLastMsgForMsgTab(this.mData.senderuin, this.mData.istroop);
     if ((localObject1 instanceof MessageForInteractAndFollow)) {}
     for (localObject1 = (MessageForInteractAndFollow)localObject1;; localObject1 = null)
     {
@@ -50,15 +50,15 @@ public class RecentInteractAndFollowItem
       this.messageType = ((MessageForInteractAndFollow)localObject1).type;
       if (((MessageForInteractAndFollow)localObject1).type == 1)
       {
-        this.mTitleName = paramContext.getString(2131693842);
+        this.mTitleName = paramContext.getString(2131693941);
         label92:
         this.mUnreadFlag = 3;
         this.mDisplayTime = ((MessageForInteractAndFollow)localObject1).timeStamp;
-        Object localObject2 = paramQQAppInterface.a();
+        Object localObject2 = paramQQAppInterface.getConversationFacade();
         if (localObject2 == null) {
           break label329;
         }
-        this.mUnreadNum = ((adab)localObject2).a(((MessageForInteractAndFollow)localObject1).frienduin, ((MessageForInteractAndFollow)localObject1).istroop);
+        this.mUnreadNum = ((abwp)localObject2).a(((MessageForInteractAndFollow)localObject1).frienduin, ((MessageForInteractAndFollow)localObject1).istroop);
         label133:
         localObject2 = getMsgSummaryTemp();
         ((MsgSummary)localObject2).strContent = ((MessageForInteractAndFollow)localObject1).context;
@@ -82,12 +82,12 @@ public class RecentInteractAndFollowItem
         return;
         if (((MessageForInteractAndFollow)localObject1).type == 2)
         {
-          this.mTitleName = paramContext.getString(2131693841);
+          this.mTitleName = paramContext.getString(2131693940);
           break label92;
         }
         if (((MessageForInteractAndFollow)localObject1).type == 3)
         {
-          this.mTitleName = paramContext.getString(2131693843);
+          this.mTitleName = paramContext.getString(2131693942);
           break label92;
         }
         if (!QLog.isColorLevel()) {

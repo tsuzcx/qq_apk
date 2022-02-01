@@ -1,12 +1,21 @@
-import android.view.View;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$PrivacySelectActionSheetClickListener;", "", "onPrivacySelectActionSheetClick", "", "view", "Landroid/view/View;", "item", "Lcom/tencent/mobileqq/profilesetting/ActionSheetPrivacySelectAdapter$ActionSheetPrivacySelectBean;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface bajv
+public class bajv
 {
-  public abstract void a(@NotNull View paramView, @Nullable bajt parambajt);
+  public static void a(String paramString1, String paramString2)
+  {
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramString2.startsWith(AppConstants.SDCARD_IMG_SAVE)))
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("src_file_path", paramString1);
+      localHashMap.put("des_file_path", paramString2);
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "qq_images_file_delete", true, 0L, 0L, localHashMap, "");
+    }
+  }
 }
 
 

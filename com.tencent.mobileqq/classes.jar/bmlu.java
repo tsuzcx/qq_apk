@@ -1,56 +1,42 @@
-import android.os.Binder;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 
-public abstract class bmlu
-  extends Binder
-  implements bmlt
+public final class bmlu
+  implements INetEngine.INetEngineListener
 {
-  public bmlu()
-  {
-    attachInterface(this, "cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
-  }
+  public bmlu(bmlv parambmlv, bmlo parambmlo, String paramString) {}
   
-  public static bmlt a(IBinder paramIBinder)
+  public void onResp(NetResp paramNetResp)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
-    if ((localIInterface != null) && ((localIInterface instanceof bmlt))) {
-      return (bmlt)localIInterface;
-    }
-    return new bmlv(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    boolean bool2 = true;
+    bmbc localbmbc;
+    if ((paramNetResp != null) && (paramNetResp.mResult == 0))
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
-      return true;
+      bool1 = true;
+      bmbx.b("AEEditorMusicHelper", "[downloadMusic], onResp, succeeded=" + bool1);
+      if (this.jdField_a_of_type_Bmlv != null) {
+        this.jdField_a_of_type_Bmlv.a(this.jdField_a_of_type_Bmlo, bool1, this.jdField_a_of_type_JavaLangString);
+      }
+      if (paramNetResp != null)
+      {
+        localbmbc = bmbc.a();
+        if (paramNetResp.mResult != 0) {
+          break label113;
+        }
+      }
     }
-    paramParcel1.enforceInterface("cooperation.qqfav.ipc.IQfavRemoteProxyInterface");
-    paramInt1 = paramParcel1.readInt();
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    label113:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      a(paramInt1, paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
+      localbmbc.a(bool1, 5, "AEEditorMusicDownload", this.jdField_a_of_type_Bmlo.a(), paramNetResp.mErrCode, paramNetResp.reqCost);
+      return;
+      bool1 = false;
+      break;
     }
   }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

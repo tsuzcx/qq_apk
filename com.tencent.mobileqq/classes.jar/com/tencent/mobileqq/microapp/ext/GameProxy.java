@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.microapp.ext;
 
-import agej;
-import alib;
-import amsx;
+import akfu;
+import alnr;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -24,7 +24,7 @@ public class GameProxy
   {
     try
     {
-      paramQQAppInterface = (amsx)paramQQAppInterface.getManager(153);
+      paramQQAppInterface = (alnr)paramQQAppInterface.getManager(153);
       if (paramQQAppInterface != null)
       {
         if (!paramQQAppInterface.j()) {
@@ -125,7 +125,7 @@ public class GameProxy
         paramString.putString("gameName", str6);
         paramString.putInt("src", k);
         paramString.putInt("enter", 3);
-        paramJSONObject = agej.a(new Intent(paramActivity, SplashActivity.class), new int[] { 2 });
+        paramJSONObject = AIOUtils.setOpenAIOIntent(new Intent(paramActivity, SplashActivity.class), new int[] { 2 });
         paramJSONObject.putExtras(paramString);
         paramActivity.startActivity(paramJSONObject);
         if (QLog.isColorLevel()) {
@@ -146,7 +146,7 @@ public class GameProxy
         if (paramActivity.src == 318) {
           paramActivity.disableMinGame = true;
         }
-        alib.a(paramActivity);
+        akfu.a(paramActivity);
         return true;
       }
       return false;

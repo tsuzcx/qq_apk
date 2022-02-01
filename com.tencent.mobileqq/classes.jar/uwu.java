@@ -1,33 +1,13 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import UserGrowth.stRedDotReq;
+import UserGrowth.stRedDotRsp;
 
-class uwu
-  implements uxj
+public class uwu
+  extends urg<stRedDotRsp>
 {
-  uwu(uwt paramuwt) {}
-  
-  public void a(Object paramObject)
+  public uwu()
   {
-    if ((paramObject instanceof uxa))
-    {
-      if (!this.a.b) {
-        ((PublicAccountImageCollectionMainActivity)uwt.a(this.a)).h();
-      }
-      this.a.b = true;
-    }
-    while ((paramObject instanceof uxb)) {
-      if (uwt.a(this.a))
-      {
-        this.a.d(true);
-        return;
-        ((PublicAccountImageCollectionMainActivity)uwt.a(this.a)).g();
-      }
-      else
-      {
-        this.a.d(false);
-        return;
-      }
-    }
-    this.a.d(true);
+    super("RedDot", 10001);
+    this.a = new stRedDotReq(111, 1, null);
   }
 }
 

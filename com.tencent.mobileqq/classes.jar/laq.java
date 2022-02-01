@@ -1,32 +1,35 @@
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+
 public class laq
+  implements BusinessObserver
 {
-  private Boolean jdField_a_of_type_JavaLangBoolean;
-  private final String jdField_a_of_type_JavaLangString;
+  public lar a;
   
-  public laq(String paramString, boolean paramBoolean)
+  public laq(lar paramlar)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramBoolean);
+    this.a = paramlar;
   }
   
-  public Boolean a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return this.jdField_a_of_type_JavaLangBoolean;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
-    for (boolean bool = true;; bool = false)
+    abrl.b("GdtSSOLoadAD", "onReceive i " + paramInt + " success " + paramBoolean + " bundle " + paramBundle);
+    switch (paramInt)
     {
-      this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool);
-      return;
     }
+    do
+    {
+      do
+      {
+        return;
+        if (!paramBoolean) {
+          break;
+        }
+      } while (this.a == null);
+      this.a.a(paramBundle);
+      return;
+    } while (this.a == null);
+    this.a.a();
   }
 }
 

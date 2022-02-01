@@ -1,6 +1,14 @@
+import android.app.Activity;
+
 public abstract interface alrk
 {
+  public abstract int a();
+  
+  public abstract alrq a(long paramLong, String paramString1, String paramString2);
+  
   public abstract void a();
+  
+  public abstract boolean a(Activity paramActivity);
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import mct;
+import mcc;
 
 public class ControlUIObserver$1
   implements Runnable
 {
-  public ControlUIObserver$1(mct parammct, Object paramObject) {}
+  public ControlUIObserver$1(mcc parammcc, Object paramObject) {}
   
   public void run()
   {

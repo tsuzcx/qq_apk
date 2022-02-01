@@ -14,10 +14,10 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.animation.DecelerateInterpolator;
-import zrr;
-import zrs;
-import zrt;
-import zrw;
+import yrc;
+import yrd;
+import yre;
+import yrh;
 
 @TargetApi(11)
 public class NeoVideoRecordButton
@@ -27,13 +27,13 @@ public class NeoVideoRecordButton
   final int a;
   public AnimatorSet a;
   public ValueAnimator a;
-  public zrw a;
+  public yrh a;
   final int b;
   public ValueAnimator b;
-  public zrw b;
+  public yrh b;
   final int c;
   public ValueAnimator c;
-  public zrw c;
+  public yrh c;
   final int d;
   final int e;
   final int f;
@@ -53,34 +53,34 @@ public class NeoVideoRecordButton
     this.f = a(paramContext, 45.5F);
     this.e = a(paramContext, 6.0F);
     this.d = a(paramContext, 31.799999F);
-    paramContext = new zrw(-90, 270, this.jdField_a_of_type_Int, 0.0F, this.jdField_b_of_type_Int, 0.0F, -15550475, -1, Paint.Style.STROKE);
-    this.jdField_a_of_type_Zrw = paramContext;
+    paramContext = new yrh(-90, 270, this.jdField_a_of_type_Int, 0.0F, this.jdField_b_of_type_Int, 0.0F, -15550475, -1, Paint.Style.STROKE);
+    this.jdField_a_of_type_Yrh = paramContext;
     super.a(paramContext);
-    paramContext = new zrw(-90, 270, 1, 0.0F, 1, 0.0F, 1090519039, 0, Paint.Style.FILL);
-    this.jdField_c_of_type_Zrw = paramContext;
+    paramContext = new yrh(-90, 270, 1, 0.0F, 1, 0.0F, 1090519039, 0, Paint.Style.FILL);
+    this.jdField_c_of_type_Yrh = paramContext;
     super.a(paramContext);
-    paramContext = new zrw(-90, 270, this.jdField_c_of_type_Int, 0.0F, 1, 0.0F, -1, 0, Paint.Style.FILL);
-    this.jdField_b_of_type_Zrw = paramContext;
+    paramContext = new yrh(-90, 270, this.jdField_c_of_type_Int, 0.0F, 1, 0.0F, -1, 0, Paint.Style.FILL);
+    this.jdField_b_of_type_Yrh = paramContext;
     super.a(paramContext);
     this.jdField_a_of_type_AndroidAnimationValueAnimator = new ValueAnimator();
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofObject("border", new IntEvaluator(), new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.f) }), PropertyValuesHolder.ofObject("ring", new IntEvaluator(), new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.e) }), PropertyValuesHolder.ofObject("center", new IntEvaluator(), new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.d) }), PropertyValuesHolder.ofObject("color", new ArgbEvaluator(), new Object[] { Integer.valueOf(-1), Integer.valueOf(-15550475) }) });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new zrr(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new yrc(this));
     this.jdField_b_of_type_AndroidAnimationValueAnimator = new ValueAnimator();
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofObject("radius", new IntEvaluator(), new Object[] { Integer.valueOf(1), Integer.valueOf(this.f - this.jdField_b_of_type_Int) }), PropertyValuesHolder.ofObject("color", new ArgbEvaluator(), new Object[] { Integer.valueOf(16777215), Integer.valueOf(16777215), Integer.valueOf(16777215), Integer.valueOf(2147483647), Integer.valueOf(16777215) }) });
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(1500L);
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new zrs(this));
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new yrd(this));
     this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(this.jdField_a_of_type_AndroidAnimationValueAnimator).before(this.jdField_b_of_type_AndroidAnimationValueAnimator);
     this.jdField_c_of_type_AndroidAnimationValueAnimator = new ValueAnimator();
     this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new zrt(this));
+    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new yre(this));
     setProgress(this.jdField_a_of_type_Float);
-    this.jdField_b_of_type_Zrw.a();
-    this.jdField_c_of_type_Zrw.a();
+    this.jdField_b_of_type_Yrh.a();
+    this.jdField_c_of_type_Yrh.a();
   }
   
   public static float a(Context paramContext)
@@ -118,7 +118,7 @@ public class NeoVideoRecordButton
   public void setProgress(float paramFloat)
   {
     this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Zrw.d = a(this.jdField_a_of_type_Float);
+    this.jdField_a_of_type_Yrh.d = a(this.jdField_a_of_type_Float);
     b();
   }
 }

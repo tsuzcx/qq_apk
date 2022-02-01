@@ -1,18 +1,15 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 class sue
-  extends BroadcastReceiver
+  implements ViewFactory.FoundClickableViewListener
 {
-  sue(sua paramsua) {}
+  sue(sud paramsud, Context paramContext) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onFound(ViewBase paramViewBase)
   {
-    ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).addObserver(this.a.a);
-    this.a.b(false, -1, -1);
+    paramViewBase.setOnClickListener(new suf(this));
   }
 }
 

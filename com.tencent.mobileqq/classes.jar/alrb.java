@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import android.os.Message;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
 
 public class alrb
+  extends TransProcessorHandler
 {
-  public static alqz a(Object paramObject)
+  public alrb(HotChatCenterFragment paramHotChatCenterFragment) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramObject instanceof RecentBaseData)) {
-      return new alrc();
+    int i = paramMessage.what;
+    if ((i == 1003) || (i == 2003)) {
+      this.a.b();
     }
-    return new alra();
   }
 }
 

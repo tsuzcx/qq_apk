@@ -2,16 +2,16 @@ package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
-import omg;
+import onr;
 
 class ReadinjoySubscriptManagerActivity$4
   implements Runnable
 {
-  ReadinjoySubscriptManagerActivity$4(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity, omg paramomg, Bitmap paramBitmap) {}
+  ReadinjoySubscriptManagerActivity$4(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity, onr paramonr, Bitmap paramBitmap) {}
   
   public void run()
   {
-    omg.a(this.jdField_a_of_type_Omg).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    onr.a(this.jdField_a_of_type_Onr).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

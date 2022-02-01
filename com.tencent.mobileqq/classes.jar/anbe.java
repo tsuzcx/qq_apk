@@ -1,23 +1,60 @@
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SignatureHandler;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-final class anbe
-  implements BusinessObserver
+public class anbe
+  extends MSFServlet
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("SignatureServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd"));
+    }
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
     {
-      paramInt = paramBundle.getInt("extra_result_code");
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    for (;;)
+    {
+      new Bundle().putByteArray("data", arrayOfByte);
+      SignatureHandler localSignatureHandler = (SignatureHandler)((QQAppInterface)super.getAppRuntime()).getBusinessHandler(41);
+      if (localSignatureHandler != null) {
+        localSignatureHandler.a(paramIntent, paramFromServiceMsg, arrayOfByte);
+      }
       if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameUtil", 1, new Object[] { "[reportGameEvent] retCode=", Integer.valueOf(paramInt) });
+        QLog.d("SignatureServlet", 2, "onReceive exit");
       }
       return;
+      arrayOfByte = null;
     }
-    catch (Exception paramBundle)
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getLongExtra("timeout", 30000L);
+    if ((!TextUtils.isEmpty(str)) && (arrayOfByte != null))
     {
-      QLog.e("cmgame_process.CmGameUtil", 1, "[reportGameEvent] onReceive, exception=", paramBundle);
+      paramPacket.setSSOCommand(str);
+      paramPacket.setTimeout(l);
+      paramIntent = new byte[arrayOfByte.length + 4];
+      PkgTools.DWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
+      PkgTools.copyData(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SignatureServlet", 2, "onSend exit cmd=" + str);
     }
   }
 }

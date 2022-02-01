@@ -1,23 +1,16 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import org.json.JSONObject;
 
-final class beal
-  implements DialogInterface.OnClickListener
+class beal
+  implements bezd
 {
-  beal(Context paramContext, String paramString) {}
+  beal(beak parambeak, bfas parambfas, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    try
-    {
-      aunj.c(this.jdField_a_of_type_AndroidContentContext, arpx.a().a());
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      QLog.i(this.jdField_a_of_type_JavaLangString, 1, paramDialogInterface.toString());
+    if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode", -1) == 0)) {
+      this.jdField_a_of_type_Bfas.a(this.jdField_a_of_type_Beak.a.a.curFriendUin, 0, this.jdField_a_of_type_Int);
     }
   }
 }

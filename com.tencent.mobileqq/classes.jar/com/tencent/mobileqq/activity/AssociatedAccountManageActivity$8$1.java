@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import adwi;
+import acti;
 import android.view.View;
 import android.widget.ImageView;
-import aoot;
+import com.tencent.mobileqq.app.face.FaceDrawable;
 
 public class AssociatedAccountManageActivity$8$1
   implements Runnable
 {
-  public AssociatedAccountManageActivity$8$1(adwi paramadwi, String paramString, View paramView) {}
+  public AssociatedAccountManageActivity$8$1(acti paramacti, String paramString, View paramView) {}
   
   public void run()
   {
     try
     {
-      aoot localaoot = aoot.a(this.jdField_a_of_type_Adwi.a.app, this.jdField_a_of_type_JavaLangString, (byte)3);
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368212);
+      FaceDrawable localFaceDrawable = FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_Acti.a.app, this.jdField_a_of_type_JavaLangString, (byte)3);
+      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368236);
       if (localImageView != null) {
-        localImageView.setImageDrawable(localaoot);
+        localImageView.setImageDrawable(localFaceDrawable);
       }
       return;
     }

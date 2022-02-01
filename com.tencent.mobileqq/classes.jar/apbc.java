@@ -1,220 +1,180 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Process;
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadRegulator;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class apbc
-  extends Handler
 {
-  public static int a;
-  public static long a;
-  private apau a;
-  private long b;
-  private long c;
-  private long d;
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public boolean j;
   
-  static
+  public apbc()
   {
-    jdField_a_of_type_Int = -1000;
-  }
-  
-  public apbc(Looper paramLooper, QQAppInterface paramQQAppInterface, apau paramapau)
-  {
-    super(paramLooper);
-    this.jdField_a_of_type_Apau = paramapau;
-    this.b = System.currentTimeMillis();
-  }
-  
-  private boolean a()
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    int i = localCalendar.get(11);
-    i = localCalendar.get(12) + i * 60;
-    if ((i >= 180) && (i <= 300)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.fts.sync_worker", 2, new Object[] { "canRunMergeCommand ", Boolean.valueOf(bool) });
-      }
-      return bool;
-    }
+    a();
   }
   
   public void a()
   {
-    removeCallbacksAndMessages(null);
-  }
-  
-  public void dispatchMessage(Message paramMessage)
-  {
-    ThreadRegulator.a().b();
-    super.dispatchMessage(paramMessage);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    jdField_a_of_type_Int = Process.myTid();
-    jdField_a_of_type_Long = SystemClock.currentThreadTimeMillis();
-    long l2 = System.currentTimeMillis();
-    long l3 = SystemClock.currentThreadTimeMillis();
-    Object localObject1 = (apay)paramMessage.obj;
-    label270:
-    boolean bool;
+    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.dynamic_avatar.name());
+    this.jdField_a_of_type_JavaLangString = ((String)localObject);
+    this.jdField_a_of_type_Boolean = true;
     for (;;)
     {
       try
       {
-        int i = paramMessage.what;
-        switch (i)
-        {
-        default: 
-          this.d += SystemClock.currentThreadTimeMillis() - l3;
-          this.c += System.currentTimeMillis() - l2;
-          if (System.currentTimeMillis() - this.b > 300000L)
-          {
-            paramMessage = new StringBuilder(100);
-            paramMessage.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
-            paramMessage.append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
-            localObject1 = (apaz)this.jdField_a_of_type_Apau.a(1);
-            if (localObject1 != null) {
-              paramMessage.append(((apaz)localObject1).a());
-            }
-            localObject1 = (apbd)this.jdField_a_of_type_Apau.a(2);
-            if (localObject1 != null) {
-              paramMessage.append(((apbd)localObject1).a()).append("\n");
-            }
-            QLog.d("Q.fts.BgCpu.Total", 1, paramMessage.toString());
-            this.d = 0L;
-            this.c = 0L;
-            this.b = System.currentTimeMillis();
-          }
-          return;
-        }
-      }
-      finally
-      {
-        l1 = this.d;
-        this.d = (SystemClock.currentThreadTimeMillis() - l3 + l1);
-        l1 = this.c;
-        this.c = (System.currentTimeMillis() - l2 + l1);
-        if (System.currentTimeMillis() - this.b <= 300000L) {
+        localObject = ((String)localObject).split("\\|");
+        if (localObject.length < 11) {
           continue;
         }
-        localObject1 = new StringBuilder(100);
-        ((StringBuilder)localObject1).append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
-        ((StringBuilder)localObject1).append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
-        Object localObject2 = (apaz)this.jdField_a_of_type_Apau.a(1);
-        if (localObject2 == null) {
+        this.jdField_a_of_type_Boolean = false;
+        if (Integer.valueOf(localObject[0]).intValue() != 1) {
           continue;
         }
-        ((StringBuilder)localObject1).append(((apaz)localObject2).a());
-        localObject2 = (apbd)this.jdField_a_of_type_Apau.a(2);
-        if (localObject2 == null) {
+        this.jdField_b_of_type_Boolean = true;
+        if (!this.jdField_b_of_type_Boolean) {
           continue;
         }
-        ((StringBuilder)localObject1).append(((apbd)localObject2).a()).append("\n");
-        QLog.d("Q.fts.BgCpu.Total", 1, ((StringBuilder)localObject1).toString());
-        this.d = 0L;
-        this.c = 0L;
-        this.b = System.currentTimeMillis();
+        if (Integer.valueOf(localObject[1]).intValue() != 1) {
+          continue;
+        }
+        this.jdField_c_of_type_Boolean = true;
       }
-      if (((apay)localObject1).c())
+      catch (Exception localException)
       {
-        sendMessageDelayed(obtainMessage(2, localObject1), 30000L);
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.w("Q.fts.sync_worker", 2, "readSyncedCursor is false!!");
+        this.jdField_a_of_type_Boolean = true;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("DynamicAvatarConfig", 2, "parse config exception:" + localException.getMessage());
         continue;
-        removeMessages(2, localObject1);
-        if (((apay)localObject1).d()) {
-          ((apay)localObject1).e();
+        this.jdField_c_of_type_Boolean = false;
+        continue;
+        this.jdField_d_of_type_Boolean = false;
+        continue;
+        this.e = false;
+        continue;
+        this.f = false;
+        continue;
+        this.g = false;
+        continue;
+        this.h = false;
+        continue;
+        this.i = false;
+        continue;
+        this.j = false;
+        continue;
+        this.jdField_c_of_type_Boolean = false;
+        this.jdField_d_of_type_Boolean = false;
+        this.e = false;
+        this.f = false;
+        this.g = false;
+        this.h = false;
+        this.i = false;
+        this.j = false;
+        continue;
+        if ((this.jdField_a_of_type_Int > 0) && (this.jdField_b_of_type_Int > 0)) {
+          continue;
         }
-        bool = this.jdField_a_of_type_Apau.b;
-        if (bool)
-        {
-          this.d += SystemClock.currentThreadTimeMillis() - l3;
-          this.c += System.currentTimeMillis() - l2;
-          if (System.currentTimeMillis() - this.b > 300000L)
-          {
-            paramMessage = new StringBuilder(100);
-            paramMessage.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
-            paramMessage.append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
-            localObject1 = (apaz)this.jdField_a_of_type_Apau.a(1);
-            if (localObject1 != null) {
-              paramMessage.append(((apaz)localObject1).a());
-            }
-            localObject1 = (apbd)this.jdField_a_of_type_Apau.a(2);
-            if (localObject1 != null) {
-              paramMessage.append(((apbd)localObject1).a()).append("\n");
-            }
-            QLog.d("Q.fts.BgCpu.Total", 1, paramMessage.toString());
-            this.d = 0L;
-            this.c = 0L;
-            this.b = System.currentTimeMillis();
-          }
+        this.jdField_b_of_type_Boolean = false;
+        this.jdField_c_of_type_Boolean = false;
+        this.jdField_d_of_type_Boolean = false;
+        this.e = false;
+        this.f = false;
+        this.g = false;
+        this.h = false;
+        this.i = false;
+        this.j = false;
+        if (!QLog.isColorLevel()) {
+          continue;
         }
-        else if ((a()) && (((apay)localObject1).g()))
-        {
-          sendMessageDelayed(obtainMessage(4, localObject1), 15000L);
+        QLog.d("DynamicAvatarConfig", 2, "maxPlayingCount or maxPlayCountOneDay <= 0");
+        if (this.jdField_c_of_type_Int > 0) {
+          continue;
         }
-        else
-        {
-          paramMessage = obtainMessage(2, localObject1);
-          if (!((apay)localObject1).f()) {
-            break;
-          }
-          l1 = 15000L;
-          label819:
-          sendMessageDelayed(paramMessage, l1);
+        if (!QLog.isColorLevel()) {
+          continue;
         }
+        QLog.d("DynamicAvatarConfig", 2, "adjust samllSizeFPS:" + this.jdField_c_of_type_Int);
+        this.jdField_c_of_type_Int = 18;
+        if (this.jdField_d_of_type_Int > 0) {
+          continue;
+        }
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("DynamicAvatarConfig", 2, "adjust bigSizeFPS:" + this.jdField_d_of_type_Int);
+        this.jdField_d_of_type_Int = 18;
       }
-    }
-    removeMessages(4, localObject1);
-    ((apay)localObject1).f();
-    paramMessage = obtainMessage(2, localObject1);
-    if (((apay)localObject1).f()) {}
-    for (long l1 = 15000L;; l1 = 30000L)
-    {
-      sendMessageDelayed(paramMessage, l1);
-      break;
-      removeMessages(3, localObject1);
-      ((apay)localObject1).e();
-      bool = this.jdField_a_of_type_Apau.b;
-      if (!bool) {
-        break;
+      if (Integer.valueOf(localObject[2]).intValue() != 1) {
+        continue;
       }
-      this.d += SystemClock.currentThreadTimeMillis() - l3;
-      this.c += System.currentTimeMillis() - l2;
-      if (System.currentTimeMillis() - this.b <= 300000L) {
-        break label270;
+      this.jdField_d_of_type_Boolean = true;
+      if (Integer.valueOf(localObject[3]).intValue() != 1) {
+        continue;
       }
-      paramMessage = new StringBuilder(100);
-      paramMessage.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(System.currentTimeMillis()))).append(" ");
-      paramMessage.append("cpu:").append(this.d).append(" - wall:").append(this.c).append(" ");
-      localObject1 = (apaz)this.jdField_a_of_type_Apau.a(1);
-      if (localObject1 != null) {
-        paramMessage.append(((apaz)localObject1).a());
+      this.e = true;
+      if (Integer.valueOf(localObject[4]).intValue() != 1) {
+        continue;
       }
-      localObject1 = (apbd)this.jdField_a_of_type_Apau.a(2);
-      if (localObject1 != null) {
-        paramMessage.append(((apbd)localObject1).a()).append("\n");
+      this.f = true;
+      if (Integer.valueOf(localObject[5]).intValue() != 1) {
+        continue;
       }
-      QLog.d("Q.fts.BgCpu.Total", 1, paramMessage.toString());
-      this.d = 0L;
-      this.c = 0L;
-      this.b = System.currentTimeMillis();
+      this.g = true;
+      if (Integer.valueOf(localObject[6]).intValue() != 1) {
+        continue;
+      }
+      this.h = true;
+      if (Integer.valueOf(localObject[11]).intValue() != 1) {
+        continue;
+      }
+      this.i = true;
+      if (Integer.valueOf(localObject[12]).intValue() != 1) {
+        continue;
+      }
+      this.j = true;
+      this.jdField_a_of_type_Int = Integer.valueOf(localObject[7]).intValue();
+      this.jdField_b_of_type_Int = Integer.valueOf(localObject[8]).intValue();
+      this.jdField_c_of_type_Int = Integer.valueOf(localObject[9]).intValue();
+      this.jdField_d_of_type_Int = Integer.valueOf(localObject[10]).intValue();
+      if (!this.jdField_a_of_type_Boolean) {
+        continue;
+      }
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_c_of_type_Boolean = true;
+      this.jdField_d_of_type_Boolean = true;
+      this.e = true;
+      this.f = true;
+      this.g = true;
+      this.h = true;
+      this.jdField_a_of_type_Int = 8;
+      this.jdField_b_of_type_Int = 200;
+      this.jdField_c_of_type_Int = 18;
+      this.jdField_d_of_type_Int = 18;
+      this.i = true;
+      this.j = true;
       return;
-      l1 = 30000L;
-      break label819;
+      this.jdField_b_of_type_Boolean = false;
     }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("");
+    localStringBuilder.append("dpcString:").append(this.jdField_a_of_type_JavaLangString).append(",isPlayInAll:").append(this.jdField_b_of_type_Boolean).append(",isPlayInMsgTab:").append(this.jdField_c_of_type_Boolean).append(",isPlayInContacts:").append(this.jdField_d_of_type_Boolean).append(",isPlayInNearList:").append(this.e).append(",isPlayInFriendProfile:").append(this.f).append(",isPlayInNearProfile:").append(this.g).append(",isPlayInTroopProfile:").append(this.h).append(",maxPlayingCount:").append(this.jdField_a_of_type_Int).append(",maxPlayCountOneDay:").append(this.jdField_b_of_type_Int).append(",bigSizeFPS:").append(this.jdField_d_of_type_Int).append(",smallSizeFPS:").append(this.jdField_c_of_type_Int).append(",isConvsPlayAfterKill:").append(this.i).append(",isContactPlayAfterKill:").append(this.j).append(",isUseDefault:").append(this.jdField_a_of_type_Boolean);
+    return localStringBuilder.toString();
   }
 }
 

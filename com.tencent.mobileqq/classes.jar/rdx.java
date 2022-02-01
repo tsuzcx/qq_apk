@@ -1,9 +1,6 @@
-public abstract interface rdx
-{
-  public abstract void a(rdu paramrdu);
-  
-  public abstract void b(rdu paramrdu);
-}
+public class rdx
+  extends rcn
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

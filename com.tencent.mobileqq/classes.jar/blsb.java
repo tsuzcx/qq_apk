@@ -1,31 +1,25 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.animation.Transformation;
+import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
-public final class blsb
+public class blsb
+  implements bfzz<Float>
 {
-  private final blsc a;
+  public blsb(AEBeautyProviderView paramAEBeautyProviderView, AEProviderContainerView paramAEProviderContainerView, View paramView) {}
   
-  public blsb(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
+  @TargetApi(11)
+  public void a(bfzt<Float> parambfzt, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    this(paramContext, paramOnGestureListener, null);
-  }
-  
-  public blsb(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
-  {
-    if (Build.VERSION.SDK_INT > 17)
-    {
-      this.a = new blsf(paramContext, paramOnGestureListener, paramHandler);
-      return;
+    paramFloat = paramFloat1.floatValue();
+    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView != null) {
+      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.setBackGroundAlpha(paramFloat);
     }
-    this.a = new blsd(paramContext, paramOnGestureListener, paramHandler);
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return this.a.a(paramMotionEvent);
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat);
+    }
+    AEBeautyProviderView.a(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEBeautyProviderView, paramFloat);
   }
 }
 

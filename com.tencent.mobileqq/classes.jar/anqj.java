@@ -1,47 +1,16 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class anqj
-  implements View.OnClickListener
+public class anqj
+  extends anri
 {
-  anqj(anqh paramanqh) {}
-  
-  public void onClick(View paramView)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    Object localObject;
-    if ((!TextUtils.isEmpty(anqh.a(this.a))) && (!anqh.a(this.a).equals("0")))
-    {
-      QQAppInterface localQQAppInterface = this.a.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
-      int i = this.a.a.jdField_a_of_type_Int;
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData != null)
-      {
-        localObject = Integer.toString(this.a.a.jdField_a_of_type_ComTencentMobileqqDataApolloGameData.gameId);
-        VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "clk_fuwuhao", i, 0, new String[] { localObject });
-        localObject = new Intent(this.a.a.getActivity(), AccountDetailActivity.class);
-        ((Intent)localObject).putExtra("uin", anqh.a(this.a));
-        ((Intent)localObject).putExtra("uintype", 1008);
-        this.a.a.getActivity().startActivity((Intent)localObject);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localObject = "";
-      break;
-      QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setPubAccountInfo] uin is null or = 0");
-    }
+    paramQQAppInterface = new anqi(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "cmshow";
+    paramQQAppInterface.c = "game_invite";
+    return paramQQAppInterface;
   }
 }
 

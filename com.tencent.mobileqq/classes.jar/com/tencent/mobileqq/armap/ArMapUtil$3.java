@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.armap;
 
-import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
 
 public final class ArMapUtil$3
@@ -14,7 +14,7 @@ public final class ArMapUtil$3
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("preloadFileCount", String.valueOf(i));
-      bdmc.a(BaseApplicationImpl.getContext()).a("", "ARMAP_OFFLINE_ENTER", true, 0L, 0L, localHashMap, "", false);
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "ARMAP_OFFLINE_ENTER", true, 0L, 0L, localHashMap, "", false);
       return;
     }
   }

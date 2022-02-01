@@ -1,27 +1,81 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment.MyTroopObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class adij
-  extends adic
+  extends andd
 {
-  public int a()
+  public adij(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  
+  protected void onGenNewTroopName(String paramString1, String paramString2)
   {
-    return 1000;
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  protected void onGetMutilTroopInfoResult(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
   {
-    new bcrt().e(paramList, paramList1, paramStringBuilder);
-    return true;
+    if (paramBoolean) {
+      this.a.a();
+    }
   }
   
-  public boolean a(im_msg_body.Elem paramElem)
+  protected void onGetTroopInfoResult(boolean paramBoolean, String paramString)
   {
-    return (paramElem.common_elem.has()) && (16 == paramElem.common_elem.uint32_service_type.get());
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
+  
+  protected void onModifyTroopInfo(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
+  }
+  
+  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0) {
+        this.a.a();
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt1 != 2) {
+          break;
+        }
+      } while (paramInt2 != 0);
+      this.a.a();
+      return;
+    } while ((paramInt1 != 9) || (paramInt2 != 0));
+    this.a.a();
+  }
+  
+  protected void onUpdateTroopList(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("contacts.fragment.TroopFragment", 2, "onUpdateTroopList " + paramBoolean);
+    }
+    if (paramBoolean) {
+      ThreadManager.getUIHandler().postDelayed(new ForwardTroopListFragment.MyTroopObserver.1(this), 500L);
+    }
+  }
+  
+  protected void onUpdateTroopNickname(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.a();
+    }
   }
 }
 

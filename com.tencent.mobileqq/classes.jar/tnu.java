@@ -1,44 +1,18 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import java.util.ArrayList;
-import java.util.HashSet;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageInfo.Sender;
 
-public class tnu
+public final class tnu
+  implements Parcelable.Creator<BarrageInfo.Sender>
 {
-  public static HashSet<String> a = new HashSet();
-  
-  public static void a()
+  public BarrageInfo.Sender a(Parcel paramParcel)
   {
-    a.clear();
+    return new BarrageInfo.Sender(paramParcel);
   }
   
-  public static void a(int paramInt, rvy paramrvy)
+  public BarrageInfo.Sender[] a(int paramInt)
   {
-    if (paramrvy == null) {}
-    rwc localrwc;
-    AdvertisementInfo localAdvertisementInfo;
-    do
-    {
-      do
-      {
-        return;
-        localrwc = paramrvy.a();
-        paramrvy = paramrvy.a();
-      } while ((paramrvy == null) || (localrwc == null) || (!(localrwc.a instanceof AdvertisementInfo)));
-      localAdvertisementInfo = (AdvertisementInfo)localrwc.a;
-    } while (paramInt < localAdvertisementInfo.mC2SReportTriggerTime / 1000);
-    a(paramrvy, localAdvertisementInfo, localrwc);
-  }
-  
-  public static boolean a(Activity paramActivity, AdvertisementInfo paramAdvertisementInfo, rwc paramrwc)
-  {
-    if ((paramrwc == null) || (paramActivity == null) || (paramAdvertisementInfo == null)) {}
-    while ((!(paramrwc.a instanceof AdvertisementInfo)) || (!paramrwc.b) || (a.contains(paramAdvertisementInfo.mAdTraceId)) || (paramAdvertisementInfo.mC2SVideoPlayUrl == null) || (paramAdvertisementInfo.mC2SVideoPlayUrl.size() <= 0)) {
-      return false;
-    }
-    nzq.a(new tlx().a(paramActivity).a(nzq.F).b(nzq.N).a(paramAdvertisementInfo).a());
-    a.add(paramAdvertisementInfo.mAdTraceId);
-    return true;
+    return new BarrageInfo.Sender[paramInt];
   }
 }
 

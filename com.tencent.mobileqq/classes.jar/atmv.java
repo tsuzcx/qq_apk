@@ -1,29 +1,54 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class atmv
-  implements View.OnLongClickListener
+class atmv
+  extends nmf
 {
-  public atmv(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  atmv(atms paramatms) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramView == null) || (QfileBaseLocalFileTabView.a(this.a))) {
-      return false;
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      atqa.a("KEY_STAGE_2_IMAGE_DC2", bool);
+      if (paramBundle == null) {
+        break;
+      }
+      long l = paramBundle.getLong("0xdc2_9_sendTime", -1L);
+      if (QLog.isColorLevel()) {
+        QLog.d(atms.a(), 2, new Object[] { "notifyImageSendMessage onResult currentRequestTime =", Long.valueOf(atms.a(this.a)), ", sendStamp = ", Long.valueOf(l) });
+      }
+      if ((l != -1L) && (l == atms.a(this.a))) {
+        break;
+      }
+      atms.a(this.a);
+      return;
     }
-    paramView.setSelected(true);
-    bhuk localbhuk = new bhuk();
-    localbhuk.a(2131367081, paramView.getContext().getString(2131692400));
-    localbhuk.a(2131365346, paramView.getContext().getString(2131691323));
-    this.a.a = bhkx.a(paramView, localbhuk, new atmw(this, paramView), new atmy(this, paramView));
-    return true;
+    paramArrayOfByte = ForwardUtils.parseOIDBdc2RspBody(paramArrayOfByte);
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      QLog.e(atms.a(), 1, new Object[] { "notifyImageSendMessage onResult error errorCode != 0 || result == null, errorCode=", Integer.valueOf(paramInt) });
+      atms.a(this.a);
+      return;
+    }
+    atms.a(this.a, paramArrayOfByte);
+    ForwardUtils.sendCommentMsg(atms.a(this.a), paramArrayOfByte, atms.a(this.a), atms.a(this.a).getString("share_comment_message_for_server"));
+  }
+  
+  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      QLog.e(atms.a(), 1, "notifyImageSendMessage onError msg =" + paramString);
+    }
+    return super.a(paramInt, paramString, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atmv
  * JD-Core Version:    0.7.0.1
  */

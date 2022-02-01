@@ -527,7 +527,7 @@ public abstract class BaseJsPluginEngine
         i = 0;
         while (i < paramStGetUserSettingRsp.size())
         {
-          ((INTERFACE.StSubscribeMessage)paramStGetUserSettingRsp.get(i)).authState.set(4);
+          ((INTERFACE.StSubscribeMessage)paramStGetUserSettingRsp.get(i)).authState.set(2);
           i += 1;
         }
         ((AuthState)localObject2).updateOnceSubMsgSetting(paramString, false, paramStGetUserSettingRsp, (AsyncResult)localObject1);
@@ -668,16 +668,19 @@ public abstract class BaseJsPluginEngine
     localObject = (RequestEvent)this.scopePermissionQueue.peek();
     if (localObject != null)
     {
-      if (paramMessage.arg1 == 1) {
+      if (("authorize".equals(((RequestEvent)localObject).event)) && (paramMessage.arg1 == 1))
+      {
+        this.scopePermissionQueue.remove(localObject);
         ((RequestEvent)localObject).ok();
       }
-      this.scopePermissionQueue.remove(localObject);
-      if ("subscribeAppMsg".equals(((RequestEvent)localObject).event)) {
-        reqGrantSubscribeApiPermission((RequestEvent)localObject);
-      }
     }
-    else
+    else {
+      return;
+    }
+    this.scopePermissionQueue.remove(localObject);
+    if ("subscribeAppMsg".equals(((RequestEvent)localObject).event))
     {
+      reqGrantSubscribeApiPermission((RequestEvent)localObject);
       return;
     }
     dispatchRequestEvent((RequestEvent)localObject);

@@ -1,14 +1,37 @@
-class qmr
-  implements qoe
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.HashMap;
+
+public class qmr
 {
-  qmr(qmq paramqmq) {}
+  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
+  private slt jdField_a_of_type_Slt;
+  private HashMap<String, ArticleInfo> b;
   
-  public void a()
+  public qmp a()
   {
-    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
-    if (localsgf != null) {
-      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
-    }
+    qmp localqmp = new qmp(null);
+    qmp.a(localqmp, this.jdField_a_of_type_Slt);
+    qmp.a(localqmp, this.jdField_a_of_type_JavaUtilHashMap);
+    qmp.b(localqmp, this.b);
+    return localqmp;
+  }
+  
+  public qmr a(HashMap<String, Integer> paramHashMap)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    return this;
+  }
+  
+  public qmr a(slt paramslt)
+  {
+    this.jdField_a_of_type_Slt = paramslt;
+    return this;
+  }
+  
+  public qmr b(HashMap<String, ArticleInfo> paramHashMap)
+  {
+    this.b = paramHashMap;
+    return this;
   }
 }
 

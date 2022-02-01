@@ -1,28 +1,30 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class alkl
-  implements View.OnClickListener
+  extends bjub
 {
-  alkl(aljw paramaljw) {}
-  
-  public void onClick(View paramView)
+  alkl(alkj paramalkj, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    switch (paramView.getId())
-    {
-    }
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public void a(int paramInt, Object paramObject, bjua[] paramArrayOfbjua)
+  {
+    paramInt = 0;
+    if ((paramArrayOfbjua == null) || (paramArrayOfbjua.length <= 0)) {}
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      Bundle localBundle = new Bundle();
-      localBundle.putBoolean("string_from", false);
-      localBundle.putBoolean("string_uin", true);
-      localBundle.putLong("device_din", 0L);
-      localBundle.putInt("sTitleID", 0);
-      bmkb.a(aljw.a(this.a), localBundle, "com.qqdataline.activity.LiteWifiphotoActivity");
+      if (paramArrayOfbjua.length < 0)
+      {
+        paramArrayOfbjua[0].b = 0;
+        paramArrayOfbjua[0].a = 0;
+        paramInt = 1;
+      }
+      while (paramInt < paramArrayOfbjua.length)
+      {
+        paramArrayOfbjua[paramInt].b = -1;
+        paramArrayOfbjua[paramInt].a = -1;
+        paramInt += 1;
+      }
     }
   }
 }

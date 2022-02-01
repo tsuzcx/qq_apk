@@ -1,102 +1,69 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.AppRuntime;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x971.oidb_0x971.NoticeInfo;
+import tencent.im.oidb.cmd0x971.oidb_0x971.RspBody;
 
-public class anck
-  implements ancj
+public abstract class anck
+  extends nmf
 {
-  private int jdField_a_of_type_Int;
-  private andl jdField_a_of_type_Andl;
-  public WeakReference<Context> a;
-  
-  public anck(Activity paramActivity, andl paramandl, int paramInt)
+  public anck()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_Andl = paramandl;
-    this.jdField_a_of_type_Int = paramInt;
+    super(false);
   }
   
-  public int a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return 200;
-  }
-  
-  public amww a(String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    andl localandl = this.jdField_a_of_type_Andl;
-    if ((!(localAppRuntime instanceof QQAppInterface)) || (localandl == null)) {}
-    do
+    if (paramInt == 0)
     {
-      do
+      paramBundle = new oidb_0x971.RspBody();
+      try
       {
-        return null;
-        if (this.jdField_a_of_type_Int == paramInt2) {
-          break;
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (paramBundle.notices.has())
+        {
+          paramArrayOfByte = new ArrayList();
+          paramBundle = paramBundle.notices.get().iterator();
+          while (paramBundle.hasNext())
+          {
+            oidb_0x971.NoticeInfo localNoticeInfo = (oidb_0x971.NoticeInfo)paramBundle.next();
+            TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = new TroopAioKeywordTipInfo();
+            localTroopAioKeywordTipInfo.ruleId = localNoticeInfo.rule_id.get();
+            localTroopAioKeywordTipInfo.title = localNoticeInfo.title.get();
+            localTroopAioKeywordTipInfo.summary = localNoticeInfo.summary.get();
+            localTroopAioKeywordTipInfo.url = localNoticeInfo.url.get();
+            localTroopAioKeywordTipInfo.icon = localNoticeInfo.icon.get();
+            localTroopAioKeywordTipInfo.version = localNoticeInfo.version.get();
+            paramArrayOfByte.add(localTroopAioKeywordTipInfo);
+          }
+          a(true, paramArrayOfByte);
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("CmGameHandler", 2, new Object[] { "not the same gameId, self:", Integer.valueOf(this.jdField_a_of_type_Int), "cmd gameId:", Integer.valueOf(paramInt2), ",cmd:", paramString1 });
-      return null;
-      if ("cs.first_frame_drawn.local".equals(paramString1))
-      {
-        localandl.e(paramString2);
-        return null;
       }
-      if ("cs.create_room.local".equals(paramString1))
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        localandl.f(paramString2);
-        return null;
+        QLog.i("TroopHandler", 1, "KeywordTipInfoObserver, e=" + paramArrayOfByte.toString());
+        a(false, null);
+        return;
       }
-      if ("cs.join_room.local".equals(paramString1))
-      {
-        localandl.g(paramString2);
-        return null;
-      }
-      if ("cs.game_start.local".equals(paramString1))
-      {
-        localandl.h(paramString2);
-        return null;
-      }
-      if ("cs.make_room_min.local".equals(paramString1))
-      {
-        localandl.b();
-        return null;
-      }
-      if ("cs.close_room.local".equals(paramString1))
-      {
-        localandl.c();
-        return null;
-      }
-      if ("cs.game_tips.local".equals(paramString1))
-      {
-        localandl.i(ApolloUtil.a(paramString2, "tips"));
-        return null;
-      }
-      if ("cs.check_pubAccount_state.local".equals(paramString1))
-      {
-        localandl.a(paramString2, paramInt1);
-        return null;
-      }
-    } while (!"cs.on_get_open_key.local".equals(paramString1));
-    localandl.b(paramString2, paramInt1);
-    return null;
+    }
+    for (;;)
+    {
+      return;
+      QLog.i("TroopHandler", 1, "KeywordTipInfoObserver, errorCode=" + paramInt);
+      a(false, null);
+      return;
+      paramArrayOfByte = null;
+    }
   }
   
-  public andl a()
-  {
-    return this.jdField_a_of_type_Andl;
-  }
-  
-  public void a()
-  {
-    QLog.i("CmGameHandler", 1, "[destroyHandler]");
-    this.jdField_a_of_type_Andl = null;
-  }
+  protected abstract void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList);
 }
 
 

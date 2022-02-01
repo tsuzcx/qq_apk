@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.redtouch;
 
-import bbav;
+import azvi;
 
 public class RedTouchManager$2
   implements Runnable
 {
-  public RedTouchManager$2(bbav parambbav) {}
+  public RedTouchManager$2(azvi paramazvi) {}
   
   public void run()
   {
-    bbav.a(this.this$0);
+    azvi.a(this.this$0);
   }
 }
 

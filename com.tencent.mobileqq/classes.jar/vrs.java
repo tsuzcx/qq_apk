@@ -1,13 +1,17 @@
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+
 class vrs
-  implements vrx
+  extends vrq
 {
   vrs(vrr paramvrr) {}
   
-  public void a() {}
-  
-  public void b()
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    this.a.a.dismiss();
+    this.a.e();
+    if (paramBoolean) {
+      this.a.a(true, paramCommentEntry);
+    }
   }
 }
 

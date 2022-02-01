@@ -1,5 +1,6 @@
 package com.tencent.av.ui;
 
+import amtj;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -7,7 +8,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import anzj;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.EffectOperateManager;
@@ -25,57 +25,57 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
-import lbj;
-import lff;
-import lgq;
-import lgv;
-import lgx;
-import lhn;
+import lba;
+import lez;
+import lgk;
+import lgp;
+import lgr;
+import lhh;
+import lhl;
 import lhr;
-import lhx;
-import lpj;
-import lpm;
-import mbb;
-import mch;
-import mdx;
-import mdy;
-import mhi;
-import mho;
-import mhp;
-import mih;
-import mii;
-import mij;
+import lor;
+import lou;
+import mak;
+import mbq;
+import mdg;
+import mdh;
+import mgr;
+import mgx;
+import mgy;
+import mhq;
+import mhr;
+import mhs;
 
 public class EffectToolbar
   extends BaseToolbar
-  implements View.OnClickListener, lgq<PendantItem>, mhp
+  implements View.OnClickListener, lgk<PendantItem>, mgy
 {
   private static final String TAG = "EffectToolbar";
-  mhi mAdapter;
+  mgr mAdapter;
   public Button mEarbackBtn = null;
-  mho mEffectClickCallback = new mdx(this);
+  mgx mEffectClickCallback = new mdg(this);
   HorizontalListView mListView;
-  protected mdy mObserver;
-  private lhx mPendantManager;
+  protected mdh mObserver;
+  private lhr mPendantManager;
   public Map<String, PendantItem> mPtvTemplateInfoMap = new HashMap();
-  ArrayList<mii> mTemplateList = null;
-  mch mUIInfo = null;
+  ArrayList<mhr> mTemplateList = null;
+  mbq mUIInfo = null;
   
   public EffectToolbar(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
   {
     super(paramVideoAppInterface, paramAVActivity);
   }
   
-  private ArrayList<mii> addItem_with_Double_Video_type()
+  private ArrayList<mhr> addItem_with_Double_Video_type()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject = new mii();
-    ((mii)localObject).a = "-1";
+    Object localObject = new mhr();
+    ((mhr)localObject).a = "-1";
     localArrayList.add(localObject);
-    localObject = new mii();
-    ((mii)localObject).a = "0";
-    ((mii)localObject).b = String.valueOf(2130842169);
-    ((mii)localObject).d = anzj.a(2131702888);
+    localObject = new mhr();
+    ((mhr)localObject).a = "0";
+    ((mhr)localObject).b = String.valueOf(2130842211);
+    ((mhr)localObject).d = amtj.a(2131703118);
     localArrayList.add(localObject);
     this.mPtvTemplateInfoMap.clear();
     localObject = this.mPendantManager.a(null);
@@ -88,9 +88,9 @@ public class EffectToolbar
       while (((Iterator)localObject).hasNext())
       {
         PendantItem localPendantItem = (PendantItem)((Iterator)localObject).next();
-        if ((localPendantItem.isShow()) && (lgv.a(localPendantItem)) && ((!PendantItem.isPanorama(localPendantItem.getKind())) || ((EffectSettingUi.a(this.mApp, false)) && (lhn.a()))))
+        if ((localPendantItem.isShow()) && (lgp.a(localPendantItem)) && ((!PendantItem.isPanorama(localPendantItem.getKind())) || ((EffectSettingUi.a(this.mApp, false)) && (lhh.a()))))
         {
-          localArrayList.add(mij.a(0, localPendantItem));
+          localArrayList.add(mhs.a(0, localPendantItem));
           this.mPtvTemplateInfoMap.put(localPendantItem.getId(), localPendantItem);
         }
       }
@@ -137,7 +137,7 @@ public class EffectToolbar
       if (paramObject == null) {}
       for (paramObservable = "null";; paramObservable = paramObject.getId())
       {
-        lbj.d("EffectToolbar", paramObservable);
+        lba.g("EffectToolbar", paramObservable);
         if (paramObject == null) {
           break;
         }
@@ -155,7 +155,7 @@ public class EffectToolbar
     boolean bool;
     if (this.mApp.a(3))
     {
-      paramString = (FaceItem)((lgx)this.mApp.a(3)).a();
+      paramString = (FaceItem)((lgr)this.mApp.a(3)).a();
       if ((paramString != null) && (TextUtils.isEmpty(paramString.getId()))) {
         bool = true;
       }
@@ -180,7 +180,7 @@ public class EffectToolbar
     Object localObject1;
     if (this.mApp.a(3))
     {
-      localObject1 = (FaceItem)((lgx)this.mApp.a(3)).a();
+      localObject1 = (FaceItem)((lgr)this.mApp.a(3)).a();
       if (localObject1 != null) {
         if ((((FaceItem)localObject1).isSameType("pendant")) || (((FaceItem)localObject1).isSameType("creativecop"))) {
           localObject1 = null;
@@ -206,18 +206,18 @@ public class EffectToolbar
     }
   }
   
-  static int setLastSelectedIndex(String paramString, ArrayList<mii> paramArrayList, mhi parammhi, HorizontalListView paramHorizontalListView)
+  static int setLastSelectedIndex(String paramString, ArrayList<mhr> paramArrayList, mgr parammgr, HorizontalListView paramHorizontalListView)
   {
-    if ((paramArrayList == null) || (parammhi == null) || (paramHorizontalListView == null)) {
+    if ((paramArrayList == null) || (parammgr == null) || (paramHorizontalListView == null)) {
       return -1;
     }
     int i = 1;
     if (i < paramArrayList.size()) {
-      if (!((mii)paramArrayList.get(i)).a.equals(paramString)) {}
+      if (!((mhr)paramArrayList.get(i)).a.equals(paramString)) {}
     }
     for (;;)
     {
-      setSelectedListViewItemAndShow(paramHorizontalListView, parammhi, i);
+      setSelectedListViewItemAndShow(paramHorizontalListView, parammgr, i);
       return i;
       i += 1;
       break;
@@ -227,22 +227,22 @@ public class EffectToolbar
   
   private void updateEarbackBtn()
   {
-    int i = 2130842283;
+    int i = 2130842325;
     if (this.mApp.a().a().aA) {
-      i = 2130842284;
+      i = 2130842326;
     }
     this.mEarbackBtn.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
   }
   
-  protected mch getUIInfo()
+  protected mbq getUIInfo()
   {
     if (this.mUIInfo == null)
     {
-      this.mUIInfo = new mch();
+      this.mUIInfo = new mbq();
       this.mUIInfo.d = 1;
-      this.mUIInfo.f = 2131559783;
-      this.mUIInfo.e = 2130842262;
-      this.mUIInfo.a = this.mApp.getApp().getString(2131695312);
+      this.mUIInfo.f = 2131559785;
+      this.mUIInfo.e = 2130842304;
+      this.mUIInfo.a = this.mApp.getApp().getString(2131695451);
     }
     return this.mUIInfo;
   }
@@ -250,17 +250,17 @@ public class EffectToolbar
   public String getUnableInfo()
   {
     if (this.mActivity.get() != null) {
-      return ((AVActivity)this.mActivity.get()).getResources().getString(2131694855);
+      return ((AVActivity)this.mActivity.get()).getResources().getString(2131694993);
     }
     return "";
   }
   
   public boolean isEffectBtnEnable()
   {
-    if (!lpm.b()) {
+    if (!lou.b()) {
       return false;
     }
-    boolean bool = lpm.d();
+    boolean bool = lou.d();
     if (QLog.isDevelopLevel()) {
       QLog.d("EffectEnable", 4, String.format("特效按钮可用, bSuc[%s]", new Object[] { Boolean.valueOf(bool) }));
     }
@@ -269,7 +269,7 @@ public class EffectToolbar
   
   protected void notifyEvent(Integer paramInteger, Object paramObject1, Object paramObject2)
   {
-    lbj.c("EffectToolbar", "notifyEvent :" + paramInteger + "|" + paramObject1);
+    lba.f("EffectToolbar", "notifyEvent :" + paramInteger + "|" + paramObject1);
     this.mApp.a(new Object[] { paramInteger, paramObject1, paramObject2 });
   }
   
@@ -281,17 +281,17 @@ public class EffectToolbar
       EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    lff locallff = this.mApp.a().a();
+    lez locallez = this.mApp.a().a();
     if (!this.mApp.a().a().aA) {}
     for (boolean bool = true;; bool = false)
     {
-      locallff.aA = bool;
+      locallez.aA = bool;
       if (this.mApp.a().a().U != 0) {
         this.mApp.a().c(this.mApp.a().a().aA);
       }
       updateEarbackBtn();
       if (!this.mApp.a().a().aA) {
-        mbb.a(this.mApp, 1017);
+        mak.a(this.mApp, 1017);
       }
       EffectSettingUi.a(this.mApp, -1009L);
       break;
@@ -300,20 +300,20 @@ public class EffectToolbar
   
   protected void onCreate(long paramLong, AVActivity paramAVActivity)
   {
-    this.mPendantManager = ((lhx)this.mApp.a(2));
-    this.mObserver = new mdy(this);
-    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131368193));
+    this.mPendantManager = ((lhr)this.mApp.a(2));
+    this.mObserver = new mdh(this);
+    this.mListView = ((HorizontalListView)this.toolbarView.findViewById(2131368218));
     this.mListView.setStayDisplayOffsetZero(true);
     this.mTemplateList = addItem_with_Double_Video_type();
-    this.mAdapter = new mhi(this.mApp, paramAVActivity, this.mTemplateList, this.mListView);
+    this.mAdapter = new mgr(this.mApp, paramAVActivity, this.mTemplateList, this.mListView);
     this.mAdapter.b(true);
     this.mAdapter.a(this.mEffectClickCallback);
     this.mAdapter.a(this);
     this.mListView.setAdapter(this.mAdapter);
     setLastItem();
-    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131364355));
+    this.mEarbackBtn = ((Button)this.toolbarView.findViewById(2131364373));
     this.mEarbackBtn.setOnClickListener(this);
-    lhr.c();
+    lhl.c();
   }
   
   protected void onDestroy(long paramLong, VideoAppInterface paramVideoAppInterface)
@@ -361,9 +361,9 @@ public class EffectToolbar
       return;
     }
     if (i < this.mTemplateList.size()) {
-      if (!((mii)this.mTemplateList.get(i)).a.equals(str)) {}
+      if (!((mhr)this.mTemplateList.get(i)).a.equals(str)) {}
     }
-    for (paramPendantItem = (mii)this.mTemplateList.get(i);; paramPendantItem = null)
+    for (paramPendantItem = (mhr)this.mTemplateList.get(i);; paramPendantItem = null)
     {
       if ((!str.isEmpty()) && (paramPendantItem != null) && (paramPendantItem.c > 0))
       {
@@ -374,7 +374,7 @@ public class EffectToolbar
       }
       for (;;)
       {
-        this.mApp.a().A();
+        this.mApp.a().z();
         return;
         i += 1;
         break;
@@ -402,19 +402,19 @@ public class EffectToolbar
     if (QLog.isColorLevel()) {
       QLog.i("EffectToolbar", 2, String.format("onShow", new Object[0]));
     }
-    lhr.c();
+    lhl.c();
   }
   
-  public void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, mii parammii, mih parammih)
+  public void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, mhr parammhr, mhq parammhq)
   {
-    paramAppInterface = (PendantItem)this.mPendantManager.a(parammii.a);
+    paramAppInterface = (PendantItem)this.mPendantManager.a(parammhr.a);
     if (paramAppInterface != null)
     {
       this.mPendantManager.a(paramLong, paramAppInterface);
       return;
     }
     QLog.w("EffectToolbar", 1, "startDownloadTemplate, item为空, seq[" + paramLong + "]");
-    parammih.a(paramLong, parammii.a, false);
+    parammhq.a(paramLong, parammhr.a, false);
   }
 }
 

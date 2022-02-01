@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.listentogether.ipc;
 
 import android.text.TextUtils;
-import awnf;
-import baad;
+import avaj;
+import ayos;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.listentogether.ListenTogetherManager;
@@ -11,19 +11,19 @@ import com.tencent.mobileqq.music.SongInfo;
 public class ListenTogetherIPCModuleMainServer$1
   implements Runnable
 {
-  public ListenTogetherIPCModuleMainServer$1(awnf paramawnf, String paramString1, String paramString2) {}
+  public ListenTogetherIPCModuleMainServer$1(avaj paramavaj, String paramString1, String paramString2) {}
   
   public void run()
   {
-    baad localbaad = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
-    if (localbaad != null)
+    ayos localayos = ListenTogetherManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
+    if (localayos != null)
     {
-      localbaad.a(this.a);
-      if ((!localbaad.b()) && (!TextUtils.isEmpty(this.b)))
+      localayos.a(this.a);
+      if ((!localayos.b()) && (!TextUtils.isEmpty(this.b)))
       {
         SongInfo localSongInfo = new SongInfo();
         localSongInfo.e = this.b;
-        localbaad.a(localSongInfo);
+        localayos.a(localSongInfo);
       }
     }
   }

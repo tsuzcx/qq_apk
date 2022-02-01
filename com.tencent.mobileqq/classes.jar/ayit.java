@@ -1,63 +1,35 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
-import com.tencent.mobileqq.nearby.now.view.widget.TopicViewItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class ayit
-  extends BaseAdapter
+public final class ayit
+  implements INetEngine.IBreakDownFix
 {
-  public ayit(StartLiveTopicLabelListView paramStartLiveTopicLabelListView) {}
-  
-  public int getCount()
+  public void fixReq(NetReq paramNetReq, NetResp paramNetResp)
   {
-    if ((StartLiveTopicLabelListView.a(this.a) == null) || (StartLiveTopicLabelListView.a(this.a).size() == 0)) {
-      return 0;
-    }
-    return StartLiveTopicLabelListView.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    do
     {
-      paramView = new ayiw(this.a, null);
-      localObject = new TopicViewItem(StartLiveTopicLabelListView.a(this.a));
-      ((View)localObject).setTag(paramView);
-      paramView.a = ((String)StartLiveTopicLabelListView.a(this.a).get(paramInt));
-      if (!anzj.a(2131713151).equals(paramView.a)) {
-        break label162;
+      do
+      {
+        return;
+      } while (!(paramNetReq instanceof HttpNetReq));
+      paramNetReq = (HttpNetReq)paramNetReq;
+      paramNetReq.mStartDownOffset += paramNetResp.mWrittenBlockLen;
+      paramNetResp.mWrittenBlockLen = 0L;
+      paramNetResp = "bytes=" + paramNetReq.mStartDownOffset + "-";
+      paramNetReq.mReqProperties.put("Range", paramNetResp);
+      paramNetResp = paramNetReq.mReqUrl;
+      if (paramNetResp.contains("range="))
+      {
+        String str = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+        paramNetReq.mReqUrl = (str + "range=" + paramNetReq.mStartDownOffset);
       }
-      ((View)localObject).setBackgroundResource(StartLiveTopicLabelListView.a(this.a));
-      ((TopicViewItem)localObject).setTextColor(StartLiveTopicLabelListView.b(this.a));
-    }
-    for (;;)
-    {
-      ((View)localObject).setOnClickListener(new ayiu(this));
-      ((TopicViewItem)localObject).setText(paramView.a);
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
-      return localObject;
-      ayiw localayiw = (ayiw)paramView.getTag();
-      localObject = paramView;
-      paramView = localayiw;
-      break;
-      label162:
-      ((View)localObject).setBackgroundResource(StartLiveTopicLabelListView.c(this.a));
-      ((TopicViewItem)localObject).setTextColor(StartLiveTopicLabelListView.d(this.a));
-    }
+    } while (!QLog.isColorLevel());
+    QLog.i("PortalManager", 2, "IBreakDownFix, " + paramNetResp);
   }
 }
 

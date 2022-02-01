@@ -1,26 +1,93 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.av.ReqGroupVideo.ReqShareBackflowVerify;
-import com.tencent.av.ReqGroupVideo.RspShareBackflowVerify;
-import com.tencent.av.share.AVSchema;
-import com.tencent.av.share.AVSchema.MyMsgListener.1;
+import android.content.Context;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class lyn
-  extends lgh<ReqGroupVideo.ReqShareBackflowVerify, ReqGroupVideo.RspShareBackflowVerify>
+class lyn
+  implements ShareActionSheet.OnItemClickListener
 {
-  public lym a;
+  long jdField_a_of_type_Long = 0L;
+  Context jdField_a_of_type_AndroidContentContext;
   
-  public lyn(AVSchema paramAVSchema, lym paramlym)
+  public lyn(lyh paramlyh, Context paramContext)
   {
-    this.jdField_a_of_type_Lym = paramlym;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqShareBackflowVerify paramReqShareBackflowVerify, ReqGroupVideo.RspShareBackflowVerify paramRspShareBackflowVerify, Object paramObject)
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    if (this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached()) {
+    paramShareActionSheet = this.jdField_a_of_type_AndroidContentContext;
+    if (this.jdField_a_of_type_AndroidContentContext == null) {}
+    do
+    {
       return;
+      if (this.jdField_a_of_type_Lyh.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet != null) {
+        this.jdField_a_of_type_Lyh.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
+      }
+    } while (this.jdField_a_of_type_Lyh.jdField_a_of_type_Lym == null);
+    int i;
+    int j;
+    switch (paramActionSheetItem.action)
+    {
+    default: 
+      return;
+    case 1: 
+      i = 4;
+      this.jdField_a_of_type_Lyh.jdField_a_of_type_Int = i;
+      if ((i == 2) || (i == 3)) {
+        if (!WXShareHelper.getInstance().isWXinstalled()) {
+          j = 2131719722;
+        }
+      }
+      break;
     }
-    new Handler(Looper.getMainLooper()).post(new AVSchema.MyMsgListener.1(this, paramRspShareBackflowVerify, paramLong));
+    for (;;)
+    {
+      if (j != -1)
+      {
+        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(j), 0).a();
+        this.jdField_a_of_type_Lyh.a(this.jdField_a_of_type_Lyh.jdField_a_of_type_Int, this.jdField_a_of_type_Lyh.b, 3);
+        return;
+        i = 0;
+        break;
+        i = 72;
+        break;
+        i = 73;
+        break;
+        i = 1;
+        break;
+        i = 3;
+        break;
+        i = 2;
+        break;
+        i = 5;
+        break;
+        i = 7;
+        break;
+        i = 26;
+        break;
+        i = 6;
+        break;
+        if (WXShareHelper.getInstance().isWXsupportApi()) {
+          break label414;
+        }
+        j = 2131719723;
+        continue;
+      }
+      QLog.w("ShareChat", 1, "onItemClick, mChoosedChannel[" + this.jdField_a_of_type_Lyh.jdField_a_of_type_Int + "], position[], id[" + i + "], seq[" + this.jdField_a_of_type_Long + "], mChoosedLinkType[" + this.jdField_a_of_type_Lyh.b + "]");
+      if (this.jdField_a_of_type_Lyh.b == -1)
+      {
+        this.jdField_a_of_type_Lyh.c(this.jdField_a_of_type_Long, paramShareActionSheet, paramActionSheetItem);
+        return;
+      }
+      this.jdField_a_of_type_Lyh.a(this.jdField_a_of_type_Long, paramShareActionSheet, paramActionSheetItem);
+      return;
+      label414:
+      j = -1;
+    }
   }
 }
 

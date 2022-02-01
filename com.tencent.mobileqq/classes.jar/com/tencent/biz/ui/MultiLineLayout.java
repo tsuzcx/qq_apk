@@ -115,11 +115,6 @@ public class MultiLineLayout
       paramInt2 = i;
     }
     label289:
-    if (this.c == 0)
-    {
-      this.c = (paramInt1 + paramInt2);
-      return;
-    }
     this.c = (paramInt1 + paramInt2);
   }
   

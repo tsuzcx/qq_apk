@@ -6,43 +6,43 @@ import android.view.LayoutInflater;
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ArrayBlockingQueue;
-import sef;
-import seg;
+import sln;
+import slo;
 
 class LayoutInflateProcessor$InflateTask
   implements Runnable
 {
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private sef[] jdField_a_of_type_ArrayOfSef;
+  private sln[] jdField_a_of_type_ArrayOfSln;
   
-  public LayoutInflateProcessor$InflateTask(sef[] paramArrayOfsef, LayoutInflater paramLayoutInflater)
+  public LayoutInflateProcessor$InflateTask(sln[] paramArrayOfsln, LayoutInflater paramLayoutInflater)
   {
-    this.jdField_a_of_type_ArrayOfSef = paramArrayOfsef;
+    this.jdField_a_of_type_ArrayOfSln = paramArrayOfsln;
     this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
   }
   
-  private boolean a(sef paramsef)
+  private boolean a(sln paramsln)
   {
-    if ((paramsef.a == null) || (paramsef.a.size() >= 9)) {}
+    if ((paramsln.a == null) || (paramsln.a.size() >= 9)) {}
     for (;;)
     {
       return false;
       if (QLog.isColorLevel()) {
-        QLog.d("LayoutPreloadInflater", 2, "preload start: resid=" + this.jdField_a_of_type_AndroidViewLayoutInflater.getContext().getResources().getResourceEntryName(sef.a(paramsef)));
+        QLog.d("LayoutPreloadInflater", 2, "preload start: resid=" + this.jdField_a_of_type_AndroidViewLayoutInflater.getContext().getResources().getResourceEntryName(sln.a(paramsln)));
       }
       try
       {
-        View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(sef.a(paramsef), sef.a(paramsef), false);
+        View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(sln.a(paramsln), sln.a(paramsln), false);
         if (localView == null) {
           continue;
         }
-        if (sef.a(paramsef) != null) {
-          sef.a(paramsef).a(localView);
+        if (sln.a(paramsln) != null) {
+          sln.a(paramsln).a(localView);
         }
-        if ((paramsef.a == null) || (paramsef.a.size() >= 9)) {
+        if ((paramsln.a == null) || (paramsln.a.size() >= 9)) {
           continue;
         }
-        paramsef.a.add(localView);
+        paramsln.a.add(localView);
         return true;
       }
       catch (RuntimeException localRuntimeException)
@@ -60,19 +60,19 @@ class LayoutInflateProcessor$InflateTask
   
   public void run()
   {
-    sef[] arrayOfsef = this.jdField_a_of_type_ArrayOfSef;
-    int k = arrayOfsef.length;
+    sln[] arrayOfsln = this.jdField_a_of_type_ArrayOfSln;
+    int k = arrayOfsln.length;
     int i = 0;
     if (i < k)
     {
-      sef localsef = arrayOfsef[i];
-      if (localsef == null) {}
+      sln localsln = arrayOfsln[i];
+      if (localsln == null) {}
       for (;;)
       {
         i += 1;
         break;
         int j = 0;
-        while ((j < sef.b(localsef)) && (a(localsef))) {
+        while ((j < sln.b(localsln)) && (a(localsln))) {
           j += 1;
         }
       }

@@ -1,31 +1,20 @@
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+
 class zqg
+  extends zql
 {
-  final String jdField_a_of_type_JavaLangString;
-  final boolean jdField_a_of_type_Boolean;
-  boolean b;
-  
-  zqg(boolean paramBoolean, String paramString)
+  zqg(zqb paramzqb, long paramLong, zpy paramzpy, File paramFile)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramzqb.a);
   }
   
-  static zqg a()
+  public void a(boolean paramBoolean)
   {
-    return new zqg(false, "");
-  }
-  
-  static zqg a(Process paramProcess)
-  {
-    if (a(Integer.valueOf(paramProcess.exitValue()))) {}
-    for (String str = zrh.a(paramProcess.getInputStream());; str = zrh.a(paramProcess.getErrorStream())) {
-      return new zqg(a(Integer.valueOf(paramProcess.exitValue())), str);
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.trace_video_combine", 2, "combineVideos total = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-  }
-  
-  static boolean a(Integer paramInteger)
-  {
-    return (paramInteger != null) && (paramInteger.intValue() == 0);
+    this.jdField_a_of_type_Zpy.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramBoolean, null);
   }
 }
 

@@ -1,71 +1,81 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class zkf
-  extends blsk
 {
-  private zjs a;
+  private static boolean a;
   
-  public zkf(zjs paramzjs)
+  public static void a(Context paramContext, String paramString1, String paramString2, zkl paramzkl)
   {
-    this.a = paramzjs;
+    a(paramContext, paramString1, true, paramString2, 2131695924, paramzkl);
   }
   
-  public void clearView(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  public static void a(Context paramContext, String paramString, zkl paramzkl)
   {
-    super.clearView(paramRecyclerView, paramViewHolder);
-    if ((paramViewHolder instanceof zkb))
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("SubscribeFollowUserUtil", 2, "follow user failed! user is null");
+    }
+    do
     {
-      ((zkb)paramViewHolder).a = false;
-      if ((paramRecyclerView.getScrollState() == 0) && (!paramRecyclerView.isComputingLayout())) {
-        paramRecyclerView.getAdapter().notifyItemChanged(paramViewHolder.getAdapterPosition(), Integer.valueOf(0));
+      return;
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface))
+      {
+        ugf.a((QQAppInterface)localAppRuntime, paramContext, paramString, new zkj(paramzkl), false, 0, true);
+        return;
       }
-    }
+    } while (paramzkl == null);
+    paramzkl.a(false, paramString, false);
   }
   
-  public float getMoveThreshold(RecyclerView.ViewHolder paramViewHolder)
+  public static void a(Context paramContext, String paramString1, boolean paramBoolean, String paramString2, int paramInt, zkl paramzkl)
   {
-    return 0.25F;
-  }
-  
-  public int getMovementFlags(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
-  {
-    paramRecyclerView = paramRecyclerView.getLayoutManager();
-    if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).getOrientation() == 0)) {}
-    for (int i = 15;; i = 0) {
-      return makeMovementFlags(i, 0);
-    }
-  }
-  
-  public boolean isItemViewSwipeEnabled()
-  {
-    return false;
-  }
-  
-  public boolean onMove(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
-  {
-    if (this.a != null) {
-      this.a.a(paramViewHolder1.getAdapterPosition(), paramViewHolder2.getAdapterPosition());
-    }
-    return false;
-  }
-  
-  public void onSelectedChanged(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    super.onSelectedChanged(paramViewHolder, paramInt);
-    if ((paramInt == 2) && ((paramViewHolder instanceof zkb)))
+    if (paramContext == null) {}
+    bjnw localbjnw;
+    do
     {
-      paramViewHolder = (zkb)paramViewHolder;
-      paramViewHolder.a = true;
-      if ((this.a instanceof zjy)) {
-        ((zjy)this.a).notifyItemChanged(paramViewHolder.getAdapterPosition(), Integer.valueOf(0));
+      return;
+      localbjnw = bjnw.a(paramContext);
+      if (paramBoolean) {
+        localbjnw.a(String.format(paramContext.getResources().getString(2131694820), new Object[] { paramString2 }));
       }
-    }
+      localbjnw.a(paramInt, 3);
+      localbjnw.c(2131690620);
+      localbjnw.setOnDismissListener(new zkg());
+      localbjnw.a(new zkh(paramzkl, paramString1, localbjnw));
+      localbjnw.a(new zki(paramContext, paramString1, paramzkl, localbjnw));
+    } while (localbjnw.isShowing());
+    a = false;
+    localbjnw.show();
   }
   
-  public void onSwiped(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
+  public static void b(Context paramContext, String paramString, zkl paramzkl)
+  {
+    a(paramContext, paramString, false, "", 2131694818, paramzkl);
+  }
+  
+  public static void c(Context paramContext, String paramString, zkl paramzkl)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("SubscribeFollowUserUtil", 2, "unfollow user failed! user is null");
+    }
+    do
+    {
+      return;
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface))
+      {
+        ugf.a((QQAppInterface)localAppRuntime, paramContext, paramString, false, new zkk(paramzkl), true);
+        return;
+      }
+    } while (paramzkl == null);
+    paramzkl.a(false, paramString, false);
+  }
 }
 
 

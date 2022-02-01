@@ -10,7 +10,7 @@
         "type": "wrap_content"
     },
     "below_of_view": "id_artilce_title",
-    "margin_left":"8",
+    "margin_left":"12",
     "subviews": [
         {
             "view_type":"UILabel",
@@ -28,7 +28,6 @@
             },
             "event_type": "cmd_ad_tags_click",
             "attributes":{
-                "setFrameString:":"-1",
                 "setText:":"$ad_tag_text1",
                 "setTextColorString:":"#8F8F8F",
                 "setFontSizeString:":"11",
@@ -54,7 +53,6 @@
             },
             "event_type": "cmd_ad_tags_click",
             "attributes":{
-                "setFrameString:":"-1",
                 "setText:":"$ad_tag_text2",
                 "setTextColorString:":"#8F8F8F",
                 "setFontSizeString:":"11",
@@ -79,7 +77,6 @@
             },
             "event_type": "cmd_ad_tags_click",
             "attributes":{
-                "setFrameString:":"-1",
                 "setText:":"$ad_tag_text3",
                 "setTextColorString:":"#8F8F8F",
                 "setFontSizeString:":"11",

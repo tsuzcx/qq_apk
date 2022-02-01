@@ -1,33 +1,34 @@
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.4.1;
+import java.util.List;
 
 public class bdzd
-  extends bdxf
+  extends anck
 {
-  protected bdxm a;
-  protected SpriteNativeView a;
+  bdzd(bdzb parambdzb, MessageRecord paramMessageRecord, bdze parambdze) {}
   
-  public bdzd()
+  protected void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList)
   {
-    this.jdField_a_of_type_Bdxm = new bdxm(0.0F, 0.0F);
+    if (paramBoolean)
+    {
+      if ((paramList != null) && (paramList.size() > 0))
+      {
+        bdzb.a(this.jdField_a_of_type_Bdzb, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (TroopAioKeywordTipInfo)paramList.get(0), this.jdField_a_of_type_Bdze);
+        synchronized (this.jdField_a_of_type_Bdzb.b)
+        {
+          this.jdField_a_of_type_Bdzb.b.put(((TroopAioKeywordTipInfo)paramList.get(0)).ruleId, paramList.get(0));
+          ThreadManager.post(new TroopAioKeywordTipManager.4.1(this, paramList), 2, null, true);
+          return;
+        }
+      }
+      bdzb.a(this.jdField_a_of_type_Bdzb, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Bdze);
+      return;
+    }
+    bdzb.a(this.jdField_a_of_type_Bdzb, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Bdze);
   }
-  
-  public bdxl<bdzd> a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public boolean c()
-  {
-    this.e = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getWidth();
-    this.f = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getHeight();
-    return b();
-  }
-  
-  public void d() {}
 }
 
 

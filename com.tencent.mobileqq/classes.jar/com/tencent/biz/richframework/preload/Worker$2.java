@@ -1,19 +1,19 @@
 package com.tencent.biz.richframework.preload;
 
-import aadf;
-import aadg;
-import aadm;
+import zal;
+import zam;
+import zas;
 
 class Worker$2
   implements Runnable
 {
-  Worker$2(Worker paramWorker, aadm paramaadm, Object[] paramArrayOfObject) {}
+  Worker$2(Worker paramWorker, zas paramzas, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aadm.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
+    this.jdField_a_of_type_Zas.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
     if (this.this$0.a.a) {
-      aadg.a(Worker.a(this.this$0));
+      zam.a(Worker.a(this.this$0));
     }
   }
 }

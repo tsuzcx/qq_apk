@@ -1,27 +1,50 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Handler;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.qphone.base.util.QLog;
 
-class akri
-  extends nkq
+public class akri
+  implements View.OnTouchListener
 {
-  akri(akrf paramakrf) {}
+  public akri(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((akrf.a(this.a).isFinishing()) || (this.a.a)) {
-      return;
+    if (!this.a.l) {}
+    while (((!this.a.f) && (!this.a.c)) || (paramView.getId() != 2131366845)) {
+      return false;
     }
-    this.a.d();
-    if (akrf.a(this.a) != null) {
-      akrf.a(this.a).removeCallbacks(akrf.b(this.a));
-    }
-    if (paramInt == 16)
+    switch (paramMotionEvent.getAction())
     {
-      this.a.e();
-      return;
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      if (QLog.isColorLevel()) {
+        QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_DOWN, event = " + paramMotionEvent);
+      }
+      if (!this.a.b.isLongClickable()) {
+        this.a.a.e();
+      }
+      this.a.b.setText(null);
+      return false;
     }
-    akrf.a(this.a, akrf.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_UP, event = " + paramMotionEvent);
+    }
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+    if (this.a.b != null) {
+      this.a.b.setText(2131692338);
+    }
+    FlowCameraActivity2.a(this.a, SystemClock.uptimeMillis());
+    FlowCameraActivity2.a(this.a);
+    return false;
   }
 }
 

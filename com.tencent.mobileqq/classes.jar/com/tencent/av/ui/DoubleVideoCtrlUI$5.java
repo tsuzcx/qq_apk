@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.Timer;
 import java.util.TimerTask;
-import lff;
+import lez;
 
 class DoubleVideoCtrlUI$5
   extends TimerTask
@@ -18,13 +18,13 @@ class DoubleVideoCtrlUI$5
   public void run()
   {
     if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController == null) || (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null)) {}
-    lff locallff;
+    lez locallez;
     do
     {
       return;
-      locallff = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
-    } while (locallff == null);
-    if (locallff.S <= 0)
+      locallez = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
+    } while (locallez == null);
+    if (locallez.S <= 0)
     {
       if (this.this$0.jdField_a_of_type_JavaUtilTimer != null)
       {

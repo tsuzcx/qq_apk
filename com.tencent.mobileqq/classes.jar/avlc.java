@@ -1,85 +1,261 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.gamecenter.message.GameBasicInfo;
-import com.tencent.mobileqq.gamecenter.message.GameUserInfo;
+import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Random;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class avlc
 {
-  public static final String a;
-  public int a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  
-  static
+  public static int a(int paramInt)
   {
-    jdField_a_of_type_JavaLangString = avln.jdField_a_of_type_JavaLangString + "GameDetailInfo";
+    if (paramInt <= 0) {
+      return 0;
+    }
+    return Math.abs(new Random().nextInt(paramInt));
   }
   
-  public static avlc a(GameBasicInfo paramGameBasicInfo, GameUserInfo paramGameUserInfo)
+  public static int a(String paramString)
   {
-    avlc localavlc = new avlc();
-    if ((paramGameBasicInfo == null) || (paramGameUserInfo == null)) {
-      return localavlc;
-    }
-    if ((TextUtils.isEmpty(paramGameBasicInfo.mAppId)) || (TextUtils.isEmpty(paramGameUserInfo.mAppId)))
+    if (TextUtils.isEmpty(paramString)) {}
+    int i;
+    do
     {
-      com.tencent.qphone.base.util.QLog.w(jdField_a_of_type_JavaLangString, 1, "appId is empty.");
-      return localavlc;
-    }
-    if (!paramGameBasicInfo.mAppId.equals(paramGameUserInfo.mAppId))
-    {
-      com.tencent.qphone.base.util.QLog.w(jdField_a_of_type_JavaLangString, 1, "warning! appId should be the same!");
-      return localavlc;
-    }
-    localavlc.jdField_b_of_type_JavaLangString = paramGameUserInfo.mRoleId;
-    localavlc.jdField_c_of_type_JavaLangString = paramGameUserInfo.mAppId;
-    localavlc.jdField_d_of_type_JavaLangString = paramGameUserInfo.mFaceUrl;
-    localavlc.jdField_a_of_type_Int = paramGameUserInfo.mSex;
-    localavlc.g = paramGameUserInfo.mLevelPic;
-    localavlc.h = paramGameUserInfo.mLevelText;
-    localavlc.e = paramGameUserInfo.mNickInGame;
-    localavlc.f = paramGameUserInfo.mPartitioName;
-    localavlc.jdField_b_of_type_Int = paramGameUserInfo.mOnlineType;
-    localavlc.jdField_c_of_type_Int = paramGameUserInfo.mSwitchInGame;
-    localavlc.k = paramGameUserInfo.mOnLineDesc;
-    localavlc.i = paramGameBasicInfo.mName;
-    localavlc.j = paramGameBasicInfo.mIconUrl;
-    localavlc.l = paramGameBasicInfo.mStartGameUrl;
-    localavlc.jdField_d_of_type_Int = paramGameBasicInfo.mMsgMaxLen;
-    return localavlc;
-  }
-  
-  public void a()
-  {
+      do
+      {
+        return -1;
+      } while (!paramString.contains("rscType"));
+      i = paramString.indexOf("rscType") + "rscType".length() + 1;
+    } while (i + 1 >= paramString.length());
+    paramString = paramString.substring(i, i + 1);
     try
     {
-      StringBuilder localStringBuilder = new StringBuilder(600);
-      localStringBuilder.append(" roleId:").append(this.jdField_b_of_type_JavaLangString).append(",appid:").append(this.jdField_c_of_type_JavaLangString).append(",mSwitchInGame:").append(this.jdField_c_of_type_Int).append(",onlineType:").append(this.jdField_b_of_type_Int).append(",mOnLineDesc:").append(this.k).append(",partName:").append(this.f).append(",mMsgMaxLen:").append(this.jdField_d_of_type_Int).append(",levelText:").append(this.h).append(",gameName:").append(this.i).append(",sex:").append(this.jdField_a_of_type_Int).append(",nick:").append(this.e).append(",levelPic:").append(this.g).append(",iconUrl:").append(this.j).append(",faceUrl:").append(this.jdField_d_of_type_JavaLangString).append(",startGameUrl:").append(this.l);
-      if (com.tencent.TMG.utils.QLog.isColorLevel()) {
-        com.tencent.TMG.utils.QLog.d(jdField_a_of_type_JavaLangString, 0, localStringBuilder.toString());
-      }
-      return;
+      i = Integer.parseInt(paramString);
+      return i;
     }
-    catch (Throwable localThrowable)
+    catch (NumberFormatException paramString)
     {
-      com.tencent.qphone.base.util.QLog.w(jdField_a_of_type_JavaLangString, 1, localThrowable.getMessage());
+      paramString.printStackTrace();
+    }
+    return -1;
+  }
+  
+  private avlf a(String paramString1, String paramString2)
+  {
+    int j = 0;
+    if (TextUtils.isEmpty(paramString1)) {
+      paramString1 = null;
+    }
+    for (;;)
+    {
+      return paramString1;
+      localavlf = new avlf();
+      try
+      {
+        paramString1 = new JSONObject(paramString1);
+        if (paramString1.has("num")) {
+          localavlf.jdField_a_of_type_Int = paramString1.getInt("num");
+        }
+        if (paramString1.has("process_frame"))
+        {
+          localObject = paramString1.getJSONObject("process_frame");
+          if (((JSONObject)localObject).has("repeat")) {
+            localavlf.jdField_b_of_type_Int = ((JSONObject)localObject).getInt("repeat");
+          }
+          if (((JSONObject)localObject).has("frame_delay")) {
+            localavlf.c = ((JSONObject)localObject).getInt("frame_delay");
+          }
+          localObject = ((JSONObject)localObject).getJSONArray("seq_array");
+          if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+          {
+            localavlf.jdField_a_of_type_ArrayOfJavaLangString = new String[((JSONArray)localObject).length()];
+            i = 0;
+            while (i < ((JSONArray)localObject).length())
+            {
+              localavlf.jdField_a_of_type_ArrayOfJavaLangString[i] = (EmoticonUtils.pngFramePath.replace("[epId]", paramString2) + ((JSONArray)localObject).getString(i));
+              i += 1;
+            }
+          }
+        }
+        Object localObject = paramString1.getJSONArray("result_frame");
+        paramString1 = localavlf;
+        if (localObject == null) {
+          continue;
+        }
+        paramString1 = localavlf;
+        if (((JSONArray)localObject).length() <= 0) {
+          continue;
+        }
+        localavlf.jdField_b_of_type_ArrayOfJavaLangString = new String[((JSONArray)localObject).length()];
+        int i = j;
+        for (;;)
+        {
+          paramString1 = localavlf;
+          if (i >= ((JSONArray)localObject).length()) {
+            break;
+          }
+          localavlf.jdField_b_of_type_ArrayOfJavaLangString[i] = (EmoticonUtils.pngFramePath.replace("[epId]", paramString2) + ((JSONArray)localObject).getString(i));
+          i += 1;
+        }
+        return localavlf;
+      }
+      catch (JSONException paramString1)
+      {
+        paramString1.printStackTrace();
+      }
     }
   }
   
-  public String toString()
+  private String a(String paramString)
   {
-    return "GameDetailInfo{mRoleId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mAppId='" + this.jdField_c_of_type_JavaLangString + '\'' + ", mFaceUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + ", mNickInGame='" + this.e + '\'' + ", mPartitioName='" + this.f + '\'' + ", mLevelPic='" + this.g + '\'' + ", mLevelText='" + this.h + '\'' + ", mSex=" + this.jdField_a_of_type_Int + ", mOnlineType=" + this.jdField_b_of_type_Int + ", mName='" + this.i + '\'' + ", mIconUrl='" + this.j + '\'' + ", mSwitchInGame=" + this.jdField_c_of_type_Int + ", mOnLineDesc='" + this.k + '\'' + ", mStartGameUrl='" + this.l + '\'' + ", mMsgMaxLen=" + this.jdField_d_of_type_Int + '}';
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(EmoticonUtils.pngFramePath.replace("[epId]", paramString));
+    localStringBuffer.append("config.json");
+    paramString = new File(localStringBuffer.toString());
+    if (!paramString.exists()) {
+      return null;
+    }
+    return FileUtils.readFileContent(paramString);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    paramString = new File(paramString);
+    if (!paramString.exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PngFrameUtil", 2, "func checkRandomPngExist, file NOT exist.[" + paramString.getAbsolutePath() + "].");
+      }
+      return false;
+    }
+    Object localObject1 = new File(paramString, "config.json");
+    if (!((File)localObject1).exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PngFrameUtil", 2, "func checkRandomPngExist, file NOT exist.[" + ((File)localObject1).getAbsolutePath() + "].");
+      }
+      return false;
+    }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        localObject1 = new JSONObject(FileUtils.readFileContent((File)localObject1));
+        Object localObject2 = ((JSONObject)localObject1).getJSONObject("process_frame");
+        if (((JSONObject)localObject2).has("seq_array"))
+        {
+          localObject2 = ((JSONObject)localObject2).getJSONArray("seq_array");
+          if (((JSONArray)localObject2).length() > 0)
+          {
+            i = 0;
+            if (i < ((JSONArray)localObject2).length())
+            {
+              File localFile = new File(paramString, (String)((JSONArray)localObject2).get(i));
+              if (localFile.exists()) {
+                break label383;
+              }
+              if (!QLog.isColorLevel()) {
+                break label381;
+              }
+              QLog.d("PngFrameUtil", 2, "func checkRandomPngExist, file NOT exist.[" + localFile.getAbsolutePath() + "].");
+              break label381;
+            }
+          }
+        }
+        localObject1 = ((JSONObject)localObject1).getJSONArray("result_frame");
+        if (((JSONArray)localObject1).length() > 0)
+        {
+          i = 0;
+          if (i < ((JSONArray)localObject1).length())
+          {
+            localObject2 = new File(paramString, (String)((JSONArray)localObject1).get(i));
+            if (!((File)localObject2).exists())
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("PngFrameUtil", 2, "func checkRandomPngExist, file NOT exist.[" + ((File)localObject2).getAbsolutePath() + "].");
+              }
+              return false;
+            }
+            i += 1;
+            continue;
+          }
+        }
+        return true;
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("PngFrameUtil", 2, "func checkRandomPngExist, exception:" + paramString.getMessage());
+        }
+        return false;
+      }
+      label381:
+      return false;
+      label383:
+      i += 1;
+    }
+  }
+  
+  public static int b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    int i;
+    do
+    {
+      do
+      {
+        return 0;
+      } while (!paramString.contains("value"));
+      i = paramString.indexOf("value") + "value".length() + 1;
+    } while (i >= paramString.length());
+    paramString = paramString.substring(i);
+    try
+    {
+      i = Integer.parseInt(paramString);
+      return i;
+    }
+    catch (NumberFormatException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return 0;
+  }
+  
+  public int a(File paramFile)
+  {
+    paramFile = FileUtils.readFileContent(paramFile);
+    if (!TextUtils.isEmpty(paramFile)) {
+      try
+      {
+        paramFile = new JSONObject(paramFile);
+        if (paramFile.has("rscType"))
+        {
+          int i = paramFile.getInt("rscType");
+          if (QLog.isColorLevel()) {
+            QLog.d("PngFrameUtil", 2, "func getRscType(from local json file),type:" + i);
+          }
+          return i;
+        }
+        return 0;
+      }
+      catch (JSONException paramFile)
+      {
+        paramFile.printStackTrace();
+      }
+    }
+    return 0;
+  }
+  
+  public avlf a(String paramString)
+  {
+    return a(a(paramString), paramString);
   }
 }
 

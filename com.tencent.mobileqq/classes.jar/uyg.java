@@ -1,12 +1,18 @@
-import java.net.URL;
+import android.content.Context;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
-public abstract interface uyg
+final class uyg
+  implements ShareActionSheet.OnItemClickListener
 {
-  public abstract void a(URL paramURL, int paramInt);
+  uyg(Context paramContext, uwy paramuwy) {}
   
-  public abstract void a(URL paramURL, Throwable paramThrowable);
-  
-  public abstract void a(URL paramURL, suk paramsuk);
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  {
+    uyd.a(this.jdField_a_of_type_AndroidContentContext, paramActionSheetItem, this.jdField_a_of_type_Uwy);
+    paramShareActionSheet.dismiss();
+  }
 }
 
 

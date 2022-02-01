@@ -1,27 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
-
-public class rrh
-  implements TopGestureLayout.OnGestureListener
+public abstract interface rrh
 {
-  public rrh(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public abstract void a(float paramFloat);
   
-  public void flingLToR()
-  {
-    if ((VideoFeedsPlayActivity.a(this.a) != null) && (VideoFeedsPlayActivity.a(this.a).a())) {
-      return;
-    }
-    VideoFeedsPlayActivity.a(this.a, true);
-    this.a.d();
-  }
-  
-  public void flingRToL()
-  {
-    if (VideoFeedsPlayActivity.a(this.a) != null) {
-      VideoFeedsPlayActivity.a(this.a).b();
-    }
-  }
+  public abstract void a(int paramInt, long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3);
 }
 
 

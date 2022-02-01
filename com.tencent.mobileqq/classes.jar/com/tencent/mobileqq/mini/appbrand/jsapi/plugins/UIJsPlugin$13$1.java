@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bljb;
+import bjog;
 
 class UIJsPlugin$13$1
-  implements bljb
+  implements bjog
 {
   UIJsPlugin$13$1(UIJsPlugin.13 param13) {}
   

@@ -1,37 +1,88 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.download.AEResInfo;
+import java.lang.ref.WeakReference;
 
-public abstract class lws
-  extends Binder
-  implements lwr
+public class lws
+  implements blvp
 {
-  public static lwr a(IBinder paramIBinder)
+  final WeakReference<QQAppInterface> a;
+  
+  public lws(QQAppInterface paramQQAppInterface)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IAVServiceCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof lwr))) {
-      return (lwr)localIInterface;
-    }
-    return new lwt(paramIBinder);
+    this.a = new WeakReference(paramQQAppInterface);
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void onAEDownloadFinish(AEResInfo paramAEResInfo, String paramString, boolean paramBoolean, int paramInt)
   {
-    switch (paramInt1)
+    int i = 0;
+    boolean bool;
+    if ((paramAEResInfo != null) && (AEResInfo.AE_RES_BASE_PACKAGE.index == paramAEResInfo.index))
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.av.service.IAVServiceCallback");
-      return true;
+      bool = true;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder().append("onAEResDownloadResult, package[");
+        if (paramAEResInfo != null) {
+          break label195;
+        }
+        paramString = "null";
+        label50:
+        QLog.i("PtuResCheck", 2, paramString + ", isDownloaded[" + paramBoolean + "], errorType[" + paramInt + "], isBaseRes[" + bool + "]");
+      }
+      paramString = (QQAppInterface)this.a.get();
+      if ((paramString == null) || (!paramString.isVideoChatting())) {
+        break label215;
+      }
+      Object localObject = new Intent("tencent.video.q2v.ptusoDownloadRet");
+      if (paramAEResInfo != null) {
+        break label206;
+      }
+      label136:
+      ((Intent)localObject).putExtra("packageIdx", i);
+      ((Intent)localObject).putExtra("isDownloaded", paramBoolean);
+      ((Intent)localObject).putExtra("errorType", paramInt);
+      paramString.getApp().sendBroadcast((Intent)localObject);
     }
-    paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceCallback");
-    a(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
-    return true;
+    for (;;)
+    {
+      if ((bool) && (paramBoolean)) {
+        bbxj.a(this);
+      }
+      return;
+      bool = false;
+      break;
+      label195:
+      paramString = Integer.valueOf(paramAEResInfo.index);
+      break label50;
+      label206:
+      i = paramAEResInfo.index;
+      break label136;
+      label215:
+      if (QLog.isColorLevel()) {
+        QLog.i("PtuResCheck", 2, "onAEDownloadFinish, no need notify video, app[" + paramString + "]");
+      }
+    }
+  }
+  
+  public void onAEProgressUpdate(AEResInfo paramAEResInfo, long paramLong1, long paramLong2)
+  {
+    StringBuilder localStringBuilder;
+    if ((QLog.isDevelopLevel()) && ((paramLong1 == 0L) || (paramLong2 == paramLong1)))
+    {
+      localStringBuilder = new StringBuilder().append("onAEProgressUpdate, package[");
+      if (paramAEResInfo != null) {
+        break label61;
+      }
+    }
+    label61:
+    for (paramAEResInfo = "null";; paramAEResInfo = Integer.valueOf(paramAEResInfo.index))
+    {
+      QLog.i("PtuResCheck", 4, paramAEResInfo + "]");
+      return;
+    }
   }
 }
 

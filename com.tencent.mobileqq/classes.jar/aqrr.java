@@ -1,39 +1,19 @@
-import android.content.Context;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.PrecoverResource;
 
-public class aqrr
-  extends LottieDrawable
-  implements aqrq
+public final class aqrr
+  implements Parcelable.Creator<PrecoverResource>
 {
-  private LottieDrawable a;
-  
-  public void a(int paramInt) {}
-  
-  public void a(Context paramContext, int paramInt1, int paramInt2) {}
-  
-  public void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public int getIntrinsicHeight()
+  public PrecoverResource a(Parcel paramParcel)
   {
-    return this.a.getIntrinsicHeight();
+    return new PrecoverResource(paramParcel);
   }
   
-  public int getIntrinsicWidth()
+  public PrecoverResource[] a(int paramInt)
   {
-    return this.a.getIntrinsicWidth();
+    return new PrecoverResource[paramInt];
   }
-  
-  public void playAnimation()
-  {
-    this.a.playAnimation();
-  }
-  
-  public void setRepeatCount(int paramInt)
-  {
-    this.a.setRepeatCount(paramInt);
-  }
-  
-  public void stop() {}
 }
 
 

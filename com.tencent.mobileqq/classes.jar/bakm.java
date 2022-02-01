@@ -1,22 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import com.tencent.mobileqq.richmediabrowser.ImmersionHelper;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
+import com.tencent.richmediabrowser.core.RichMediaBrowserManager;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
+import com.tencent.richmediabrowser.presenter.IProvider;
+import com.tencent.richmediabrowser.view.recyclerview.BrowserScaleView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$onBindViewHolder$1$1"}, k=3, mv={1, 1, 16})
-final class bakm
-  implements View.OnClickListener
+class bakm
+  implements aszj
 {
-  bakm(bakg parambakg, bakf parambakf, bakh parambakh, int paramInt) {}
+  bakm(bakl parambakl, AIOFilePictureData paramAIOFilePictureData) {}
   
-  public final void onClick(View paramView)
+  public void onNo()
   {
-    bakg localbakg = this.jdField_a_of_type_Bakg;
-    Intrinsics.checkExpressionValueIsNotNull(paramView, "view");
-    localbakg.a(paramView, (bakz)bakf.a(this.jdField_a_of_type_Bakf).get(this.jdField_a_of_type_Int));
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Bakl.updateUI();
+    this.jdField_a_of_type_Bakl.f(true);
+  }
+  
+  public void onYes()
+  {
+    try
+    {
+      this.jdField_a_of_type_Bakl.updateUI();
+      RichMediaBrowserManager.getInstance().getProvider().downloadMedia(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData.jdField_a_of_type_Int, 20);
+      if (this.jdField_a_of_type_Bakl.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView != null)
+      {
+        this.jdField_a_of_type_Bakl.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setDoubleTapEnable(true);
+        this.jdField_a_of_type_Bakl.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setScaleEnable(true);
+      }
+      this.jdField_a_of_type_Bakl.e();
+      this.jdField_a_of_type_Bakl.jdField_a_of_type_Bajm.a().b();
+      return;
+    }
+    catch (Exception localException)
+    {
+      BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "showFlowDialog exception = " + localException.getMessage());
+    }
   }
 }
 

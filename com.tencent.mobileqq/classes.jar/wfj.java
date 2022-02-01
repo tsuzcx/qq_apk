@@ -1,26 +1,32 @@
-import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
-class wfj
-  implements TopGestureLayout.InterceptTouchEventListener
+public class wfj
+  extends vqr<wgu>
 {
-  wfj(wfi paramwfi) {}
-  
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  public String a()
   {
-    if (wfi.a(this.a) == null) {}
-    float f;
-    do
+    return vpl.a("StorySvc.video_apply_authkey");
+  }
+  
+  public wgu a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspAuthKey localRspAuthKey = new qqstory_service.RspAuthKey();
+    try
     {
-      return true;
-      f = paramMotionEvent.getY();
-      paramMotionEvent = new int[2];
-      wfi.a(this.a).getLocationOnScreen(paramMotionEvent);
-    } while ((f <= paramMotionEvent[1]) || (f >= paramMotionEvent[1] + wfi.a(this.a).getHeight()));
-    return false;
+      localRspAuthKey.mergeFrom(paramArrayOfByte);
+      return new wgu(localRspAuthKey);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      xvv.d("Q.qqstory:RefreshVideoFileKeyRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return new byte[0];
   }
 }
 

@@ -1,22 +1,23 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.qphone.base.util.QLog;
 
-class akrl
-  implements DialogInterface.OnClickListener
+public class akrl
+  implements bbuj
 {
-  akrl(akrf paramakrf) {}
+  public akrl(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCameraException(Exception paramException)
   {
-    if (paramInt == 1) {
-      akrf.a(this.a, akrf.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.i("FlowCameraActivity", 2, "[onCameraException]", paramException);
     }
-    while (paramInt != 0) {
-      return;
+  }
+  
+  public void onDispatchThreadException(RuntimeException paramRuntimeException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
     }
-    this.a.b();
-    akrf.a(this.a).moveTaskToBack(true);
   }
 }
 

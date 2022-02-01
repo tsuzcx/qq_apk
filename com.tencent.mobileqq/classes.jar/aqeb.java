@@ -1,22 +1,61 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class aqeb
-  implements View.OnClickListener
+  extends aptq<aqee>
 {
-  public aqeb(ArkIDESettingFragment paramArkIDESettingFragment) {}
-  
-  public void onClick(View paramView)
+  public static aqee a()
   {
-    ArkIDESettingFragment.a(this.a, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return (aqee)apub.a().a(497);
+  }
+  
+  @NonNull
+  public aqee a(int paramInt)
+  {
+    return new aqee();
+  }
+  
+  @Nullable
+  public aqee a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return aqee.a(paramArrayOfaptx);
+    }
+    return null;
+  }
+  
+  public void a(aqee paramaqee) {}
+  
+  public Class<aqee> clazz()
+  {
+    return aqee.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 497;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqeb
  * JD-Core Version:    0.7.0.1
  */

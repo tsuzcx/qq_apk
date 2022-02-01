@@ -1,58 +1,34 @@
-import android.os.AsyncTask;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.mobileqq.vas.PendantInfo;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.appstore.dl.DownloadManagerV2.19;
+import com.tencent.open.downloadnew.DownloadInfo;
 
 public class bhyr
-  extends AsyncTask<Long, Void, Void>
+  implements DialogInterface.OnClickListener
 {
-  long jdField_a_of_type_Long;
-  Object jdField_a_of_type_JavaLangObject;
+  public bhyr(DownloadManagerV2.19 param19) {}
   
-  public bhyr(PendantInfo paramPendantInfo, Object paramObject, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  protected Void a(Long... paramVarArgs)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     try
     {
-      long l1 = paramVarArgs[0].longValue();
-      long l2 = paramVarArgs[1].longValue();
-      long l3 = paramVarArgs[2].longValue();
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.a((int)l3, this.jdField_a_of_type_JavaLangObject, (int)l2);
-      if ((paramVarArgs != null) && (!isCancelled()))
-      {
-        l2 = SystemClock.uptimeMillis();
-        Message localMessage = this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(17);
-        if (PendantInfo.a(localMessage, this.jdField_a_of_type_Long))
-        {
-          localMessage.obj = paramVarArgs;
-          if (l2 < l1) {
-            this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(localMessage, l1 - l2);
-          } else {
-            this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
-          }
-        }
-      }
+      paramDialogInterface.dismiss();
+      label6:
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bibw.b);
+      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bibw.j);
+      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bibw.f);
+      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bibw.i);
+      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bibw.l);
+      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bibw.y, true);
+      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
+      this.a.this$0.a(10, paramDialogInterface);
+      return;
     }
-    catch (Throwable paramVarArgs)
+    catch (Exception paramDialogInterface)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.e("PendantInfo", 4, "", paramVarArgs);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.b = true;
+      break label6;
     }
-    return null;
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqVasPendantInfo.jdField_a_of_type_Bhyr = null;
   }
 }
 

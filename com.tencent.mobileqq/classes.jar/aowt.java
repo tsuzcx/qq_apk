@@ -1,42 +1,18 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.ark.browser.ArkBrowserFragment;
 
 public class aowt
-  extends aoxh
+  implements bgxc
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  public aowt(ArkBrowserFragment paramArkBrowserFragment) {}
+  
+  public void a(String paramString)
   {
-    paramQQAppInterface = new aows(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "groupvideo";
-    if (paramString.contains("openroom")) {
-      paramQQAppInterface.c = "openroom";
+    this.a.a = paramString;
+    paramString = this.a.getWebView();
+    if (paramString != null) {
+      paramString.callJs("NativeApi.lightappGetShareData();");
     }
-    for (;;)
-    {
-      paramContext = paramString.split("\\?");
-      if (paramContext.length == 2) {
-        break;
-      }
-      return paramQQAppInterface;
-      if (paramString.contains("preload")) {
-        paramQQAppInterface.c = "preload";
-      }
-    }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
-    {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
-      }
-    }
-    return paramQQAppInterface;
   }
 }
 

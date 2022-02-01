@@ -1,36 +1,29 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class qqn
+class qqn
   implements View.OnClickListener
 {
-  public qqn(ComponentJump paramComponentJump, ArticleInfo paramArticleInfo) {}
+  qqn(qqm paramqqm) {}
   
   public void onClick(View paramView)
   {
-    int i = 0;
-    oix.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
-      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
-    }
-    try
+    if (this.a.jdField_a_of_type_Slt == null) {}
+    for (;;)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("feeds_channel_entrance", i);
-      ocd.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", localJSONObject.toString(), false);
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      ArticleInfo localArticleInfo = ((pvc)this.a.jdField_a_of_type_JavaLangObject).a();
+      if (localArticleInfo != null)
       {
-        localJSONException.printStackTrace();
+        int i = ComponentContentGalleryBiu.a(localArticleInfo, this.a.jdField_a_of_type_Slt);
+        peq localpeq = this.a.jdField_a_of_type_Slt.a().a();
+        if (localpeq != null) {
+          localpeq.a(this.a.jdField_a_of_type_AndroidContentContext, localArticleInfo, 0, localArticleInfo.innerUniqueID, i, this.a.jdField_a_of_type_Int, 0);
+        }
       }
     }
   }

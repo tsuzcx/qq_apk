@@ -1,14 +1,14 @@
 class ouv
-  extends ovd
+  extends owd
 {
-  ouv(otv paramotv)
+  ouv(ouu paramouu)
   {
-    super(paramotv, null);
+    super(paramouu, null);
   }
   
-  void a(ovg paramovg)
+  void a(owg paramowg)
   {
-    paramovg.onCommentReply(false, null);
+    paramowg.onCommentListLoad(1, true, this.a.a(), ouu.a(this.a), 3, 3);
   }
 }
 

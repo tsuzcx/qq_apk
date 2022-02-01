@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahmm;
-import beqz;
+import agiy;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.transfile.AbsDownloader;
 
 public class MixedMsgItemBuilder$2
   implements Runnable
 {
-  public MixedMsgItemBuilder$2(ahmm paramahmm, String paramString, URLDrawable paramURLDrawable) {}
+  public MixedMsgItemBuilder$2(agiy paramagiy, String paramString, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
-    if (beqz.b(this.jdField_a_of_type_JavaLangString)) {}
+    if (AbsDownloader.hasFile(this.jdField_a_of_type_JavaLangString)) {}
     try
     {
       this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();

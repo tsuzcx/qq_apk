@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
-import bhlg;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.utils.ContactUtils;
 
 public class RecentItemQCallData
   extends AbsRecentUserBusinessBaseData
@@ -16,7 +16,7 @@ public class RecentItemQCallData
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.mTitleName = bhlg.b(paramQQAppInterface, this.mUser.uin, true);
+    this.mTitleName = ContactUtils.getBuddyName(paramQQAppInterface, this.mUser.uin, true);
     this.mDisplayTime = this.mUser.lastmsgtime;
     a(paramQQAppInterface, paramContext, this.msgSummary);
     super.a(paramQQAppInterface, paramContext);

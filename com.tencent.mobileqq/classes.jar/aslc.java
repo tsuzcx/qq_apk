@@ -1,6 +1,82 @@
-public abstract interface aslc
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import com.tencent.mobileqq.widget.MotionViewSetter;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class aslc
+  extends BaseAdapter
 {
-  public abstract void a(int paramInt);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private MotionViewSetter jdField_a_of_type_ComTencentMobileqqWidgetMotionViewSetter;
+  private Object jdField_a_of_type_JavaLangObject;
+  
+  public aslc(Context paramContext, View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+  }
+  
+  public void a(MotionViewSetter paramMotionViewSetter)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMotionViewSetter = paramMotionViewSetter;
+  }
+  
+  public void a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public boolean a(int paramInt, View paramView, ShaderAnimLayout paramShaderAnimLayout, Button paramButton, Object paramObject)
+  {
+    boolean bool = false;
+    if (paramShaderAnimLayout != null)
+    {
+      if ((this.jdField_a_of_type_JavaLangObject != null) && (this.jdField_a_of_type_JavaLangObject.equals(paramObject)))
+      {
+        bool = true;
+        paramShaderAnimLayout.show();
+        if (this.jdField_a_of_type_ComTencentMobileqqWidgetMotionViewSetter != null) {
+          this.jdField_a_of_type_ComTencentMobileqqWidgetMotionViewSetter.setMotionView(paramView, paramInt);
+        }
+        paramButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        paramButton.setTag(Integer.valueOf(paramInt));
+      }
+    }
+    else {
+      return bool;
+    }
+    paramShaderAnimLayout.hideDirectly();
+    paramButton.setOnClickListener(null);
+    paramButton.setTag(null);
+    return false;
+  }
+  
+  public int getCount()
+  {
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return null;
+  }
 }
 
 

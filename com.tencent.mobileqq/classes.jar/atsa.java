@@ -1,22 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class atsa
-  implements DialogInterface.OnClickListener
+public class atsa
+  implements zvk
 {
-  atsa(atrz paramatrz, atsf paramatsf) {}
+  public atsa(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    bdll.b(null, "dc00898", "", "", "0X800AE40", "0X800AE40", 0, 0, "", "", "", "");
-    if (this.jdField_a_of_type_Atsf != null) {
-      this.jdField_a_of_type_Atsf.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.NearbyHybridFragment", 2, "onRefresh");
+    }
+    this.a.g();
+    SosoInterface.SosoLbsInfo localSosoLbsInfo = NearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo;
+    if (localSosoLbsInfo == null) {
+      localSosoLbsInfo = SosoInterface.getSosoInfo();
+    }
+    for (;;)
+    {
+      if (localSosoLbsInfo != null) {
+        ((amxd)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(3)).a((float)localSosoLbsInfo.mLocation.mLon02, (float)localSosoLbsInfo.mLocation.mLat02, 5);
+      }
+      this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,31 @@
-import android.view.MotionEvent;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.widget.IphoneTreeView;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class bizb
-  implements View.OnTouchListener
+  implements TextWatcher
 {
-  public bizb(IphoneTreeView paramIphoneTreeView) {}
+  public bizb(Login paramLogin) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    boolean bool = true;
-    switch (paramMotionEvent.getAction())
+    if (paramInt3 < 2)
     {
-    case 2: 
-    default: 
-      bool = false;
+      this.a.jdField_b_of_type_Boolean = false;
+      if (paramCharSequence.length() == 0) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
+      }
     }
-    do
+    else
     {
-      return bool;
-      paramView.setPressed(true);
-      this.a.invalidate();
-      return true;
-      paramView.setPressed(false);
-      this.a.invalidate();
-      break;
-    } while (!paramView.isPressed());
-    paramView.setPressed(false);
-    this.a.collapseGroup(this.a.jdField_a_of_type_Int);
-    this.a.setSelectedGroup(this.a.jdField_a_of_type_Int);
-    this.a.jdField_a_of_type_AndroidViewView = null;
-    return true;
+      return;
+    }
+    this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

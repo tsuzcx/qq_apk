@@ -1,31 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
 class axbw
-  implements EIPCOnGetConnectionListener
+  implements bjoe
 {
-  axbw(axbu paramaxbu) {}
+  axbw(axbv paramaxbv, View paramView, PicInfo paramPicInfo, bjnw parambjnw) {}
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramEIPCConnection != null) {
-      axbu.a(this.a, paramEIPCConnection.procName);
+    int i = paramInt;
+    if (this.jdField_a_of_type_Axbv.jdField_a_of_type_Int == 0) {
+      i = paramInt + 1;
     }
-    axbu.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "onConnectBind");
+    switch (i)
+    {
     }
-  }
-  
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      axbu.a(this.a, paramEIPCConnection.procName);
-    }
-    axbu.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "onConnectUnbind");
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.e();
+      return;
+      this.jdField_a_of_type_Axbv.jdField_a_of_type_Axax.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Axbv.jdField_a_of_type_Axax.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView, 0);
+      axax.a(this.jdField_a_of_type_Axbv.jdField_a_of_type_Axax);
+      axax.b(this.jdField_a_of_type_Axbv.jdField_a_of_type_Axax);
+      continue;
+      paramView = aagn.a(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Axbv.jdField_a_of_type_Axax.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(this.jdField_a_of_type_Axbv.jdField_a_of_type_Int, paramView, this.jdField_a_of_type_Axbv.jdField_a_of_type_Axax.jdField_a_of_type_JavaUtilArrayList);
+      continue;
+      axax.a(this.jdField_a_of_type_Axbv.jdField_a_of_type_Axax, this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo, this.jdField_a_of_type_AndroidViewView);
     }
   }
 }

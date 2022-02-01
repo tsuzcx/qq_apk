@@ -1,18 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.remote.RecvMsg;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public final class bngc
-  implements Parcelable.Creator<RecvMsg>
+class bngc
+  implements Animator.AnimatorListener
 {
-  public RecvMsg a(Parcel paramParcel)
+  bngc(bnga parambnga) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return new RecvMsg(paramParcel);
+    this.a.a = false;
   }
   
-  public RecvMsg[] a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new RecvMsg[paramInt];
+    this.a.a = false;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    this.a.a = true;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a = true;
   }
 }
 

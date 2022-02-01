@@ -1,37 +1,74 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
 
-class ptc
-  implements View.OnClickListener
+public class ptc
 {
-  ptc(psx parampsx, ArticleInfo paramArticleInfo) {}
+  public static ptc a;
+  private long jdField_a_of_type_Long;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public ptd a;
+  public pte a;
+  public boolean a;
   
-  public void onClick(View paramView)
+  private ptc()
   {
-    int i = 0;
-    oix.a(psx.a(this.jdField_a_of_type_Psx), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
-      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
+    this.jdField_a_of_type_Ptd = new ptd();
+    this.jdField_a_of_type_Pte = new pte();
+    if (a(BaseApplicationImpl.getApplication().getRuntime()))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      a(BaseApplicationImpl.getApplication().getRuntime(), false);
     }
+  }
+  
+  public static ptc a()
+  {
+    if (jdField_a_of_type_Ptc == null) {}
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("feeds_channel_entrance", i);
-      ocd.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", localJSONObject.toString(), false);
-      EventCollector.getInstance().onViewClicked(paramView);
+      if (jdField_a_of_type_Ptc == null) {
+        jdField_a_of_type_Ptc = new ptc();
+      }
+      return jdField_a_of_type_Ptc;
+    }
+    finally {}
+  }
+  
+  private void a(long paramLong)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = bkwm.a((AppRuntime)localObject, true, true);
+    } while (localObject == null);
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putLong("readinjoy_ex_last_update_time", paramLong);
+    bkwm.a((SharedPreferences.Editor)localObject, true);
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, boolean paramBoolean)
+  {
+    paramAppRuntime = bkwm.a(paramAppRuntime, true, true);
+    if (paramAppRuntime == null) {
       return;
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+    paramAppRuntime = paramAppRuntime.edit();
+    paramAppRuntime.putBoolean("simple_force_report_once", paramBoolean);
+    bkwm.a(paramAppRuntime, true);
+  }
+  
+  public static boolean a(AppRuntime paramAppRuntime)
+  {
+    paramAppRuntime = bkwm.a(paramAppRuntime, true, true);
+    if (paramAppRuntime == null) {
+      return false;
     }
+    return paramAppRuntime.getBoolean("simple_force_report_once", false);
   }
 }
 

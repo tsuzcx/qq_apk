@@ -1,18 +1,25 @@
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class qlw
+public class qlw
   implements View.OnClickListener
 {
-  qlw(qlv paramqlv) {}
+  public qlw(PTSFragment paramPTSFragment) {}
   
   public void onClick(View paramView)
   {
-    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
-    if (localsgf != null) {
-      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
+    Context localContext = paramView.getContext();
+    Intent localIntent = new Intent(localContext, AccountDetailActivity.class);
+    localIntent.putExtra("uin", String.valueOf(3434959637L));
+    localIntent.putExtra("uintype", 1008);
+    localIntent.putExtra("source", 121);
+    localContext.startActivity(localIntent);
+    odq.a(null, "", "0X8009941", "0X8009941", 0, 0, "", "", "", "", false);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

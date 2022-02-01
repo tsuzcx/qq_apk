@@ -2,8 +2,8 @@ package com.tencent.open.agent;
 
 import android.graphics.drawable.Drawable;
 import android.os.Message;
-import beuv;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.transfile.LastModifySupportDownloader;
 
 class OpenCardContainer$5
   implements Runnable
@@ -13,7 +13,7 @@ class OpenCardContainer$5
   public void run()
   {
     Object localObject = this.this$0.a();
-    this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = Drawable.createFromPath(beuv.a((String)localObject));
+    this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = Drawable.createFromPath(LastModifySupportDownloader.getCacheFilePath((String)localObject));
     if (this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
       Message.obtain(this.this$0.jdField_a_of_type_AndroidOsHandler, 10001).sendToTarget();
     }

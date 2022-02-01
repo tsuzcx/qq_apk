@@ -1,21 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
 public class ajxm
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public ajxm(ContactsTroopAdapter paramContactsTroopAdapter, int paramInt) {}
+  public ajxm(TransactionActivity paramTransactionActivity) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int] = 2;
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.notifyDataSetChanged();
-    int i = ContactsTroopAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter, this.jdField_a_of_type_Int);
-    new bdlq(this.jdField_a_of_type_ComTencentMobileqqActivityContactsTroopContactsTroopAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("Grp_contactlist").d("clk_inactive").a(new String[] { "", String.valueOf(i) }).a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (TransactionActivity.b(this.a).getText().length() > 4) {
+      if (!TransactionActivity.b(this.a).isEnabled())
+      {
+        TransactionActivity.b(this.a).setEnabled(true);
+        TransactionActivity.b(this.a).setClickable(true);
+        this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.enable", "", "", TransactionActivity.b(this.a), "");
+      }
+    }
+    while (!TransactionActivity.b(this.a).isEnabled()) {
+      return;
+    }
+    TransactionActivity.b(this.a).setClickable(false);
+    TransactionActivity.b(this.a).setEnabled(false);
+    this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.disable", "", "", TransactionActivity.b(this.a), "");
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

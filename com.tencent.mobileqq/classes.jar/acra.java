@@ -1,17 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.gdtad.api.motivebrowsing.GdtMotiveBrowsingFragment;
-import kotlin.Metadata;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
-public final class acra
+public class acra
   implements DialogInterface.OnClickListener
 {
-  public acra(GdtMotiveBrowsingFragment paramGdtMotiveBrowsingFragment) {}
+  public acra(AddRequestActivity paramAddRequestActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GdtMotiveBrowsingFragment.b(this.a);
+    this.a.a.cancel();
   }
 }
 

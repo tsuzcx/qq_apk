@@ -1,90 +1,65 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import android.content.Context;
+import android.graphics.Rect;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView.2;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class akpc
-  extends bjai
+  implements OnCompositionLoadedListener
 {
-  private akpc(NewStyleCountryActivity paramNewStyleCountryActivity) {}
+  public akpc(LoginAnimBtnView.2 param2) {}
   
-  public int a()
+  public void onCompositionLoaded(LottieComposition arg1)
   {
-    return 2131562844;
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(((bhof)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString)).intValue();
-    ((TextView)paramView).setText(((bhof)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return ((bhof)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean;
-  }
-  
-  public int getCount()
-  {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (((bhof)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    bhof localbhof = (bhof)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (getItemViewType(paramInt) == 0)
+    if ((??? == null) || (LoginAnimBtnView.a(this.a.this$0)))
     {
-      if (paramView != null) {
-        break label129;
-      }
-      paramView = this.a.getLayoutInflater().inflate(a(), paramViewGroup, false);
+      QLog.e("LoginAnimBtnView", 1, "onCompositionLoaded lottieComposition is null or mIsDestroyed:" + LoginAnimBtnView.a(this.a.this$0));
+      return;
     }
-    label129:
+    int i = AIOUtils.dp2px(70.0F, this.a.this$0.getResources());
+    int j = AIOUtils.dp2px(70.0F, this.a.this$0.getResources());
+    Object localObject1 = ???.getBounds();
+    float f1 = i / ((Rect)localObject1).width();
+    float f2 = j / ((Rect)localObject1).height();
+    if (QLog.isColorLevel()) {
+      QLog.i("LoginAnimBtnView", 2, "onCompositionLoaded iw:" + i + ", ih:" + j + ": : rw:" + ((Rect)localObject1).width() + ", rh:" + ((Rect)localObject1).height());
+    }
+    localObject1 = new LottieDrawable();
+    ((LottieDrawable)localObject1).setImageAssetDelegate(new akpd(this.a.this$0.getContext().getApplicationContext()));
+    ((LottieDrawable)localObject1).setComposition(???);
+    ((LottieDrawable)localObject1).setScale(f1, f2);
+    ((LottieDrawable)localObject1).loop(true);
+    ??? = ((LottieDrawable)localObject1).getBounds();
+    if (QLog.isColorLevel()) {
+      QLog.i("LoginAnimBtnView", 2, "onCompositionLoaded rw:" + ???.width() + ", rh:" + ???.height() + " mIsDestroyed:" + LoginAnimBtnView.a(this.a.this$0));
+    }
+    LoginAnimBtnView.a(this.a.this$0, (LottieDrawable)localObject1);
+    if (LoginAnimBtnView.a(this.a.this$0))
+    {
+      ((LottieDrawable)localObject1).cancelAnimation();
+      ((LottieDrawable)localObject1).recycleBitmaps();
+      ((LottieDrawable)localObject1).clearComposition();
+      ((LottieDrawable)localObject1).setImageAssetDelegate(null);
+      LoginAnimBtnView.a(this.a.this$0, null);
+    }
     for (;;)
     {
-      ((TextView)paramView).setText(localbhof.jdField_a_of_type_JavaLangString);
-      for (;;)
+      synchronized (LoginAnimBtnView.a(this.a.this$0))
       {
-        paramView.setVisibility(0);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        View localView = paramView;
-        if (paramView == null)
-        {
-          localView = NewStyleCountryActivity.a(this.a, paramViewGroup, this.a.getLayoutInflater(), false);
-          localView.setOnClickListener(this.a);
-        }
-        this.a.a(localView, localbhof);
-        paramView = localView;
+        LoginAnimBtnView.a(this.a.this$0, null);
+        LoginAnimBtnView.a(this.a.this$0, null);
+        return;
+      }
+      if (this.a.this$0.isEnabled())
+      {
+        this.a.this$0.removeCallbacks(LoginAnimBtnView.a(this.a.this$0));
+        this.a.this$0.post(LoginAnimBtnView.a(this.a.this$0));
       }
     }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 2;
   }
 }
 

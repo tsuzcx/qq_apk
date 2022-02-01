@@ -1,15 +1,17 @@
-import com.tencent.ad.tangram.image.AdImageViewAdapter.Callback;
-import com.tencent.ad.tangram.image.AdImageViewAdapter.Params;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
-class acns
-  implements acxq
+public class acns
+  extends AccountObserver
 {
-  acns(acnq paramacnq, AdImageViewAdapter.Params paramParams) {}
+  public acns(AccountManageActivity paramAccountManageActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onDeleteAccount(boolean paramBoolean)
   {
-    ((AdImageViewAdapter.Callback)this.jdField_a_of_type_ComTencentAdTangramImageAdImageViewAdapter$Params.callback.get()).onStopLoad(paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("Switch_Account", 2, "onDeleteAccount isSuccess " + paramBoolean);
+    }
   }
 }
 

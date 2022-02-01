@@ -10,8 +10,8 @@ class AuthDetailDialog$DetailAdapter$DetailViewHolder
   
   public AuthDetailDialog$DetailAdapter$DetailViewHolder(AuthDetailDialog.DetailAdapter paramDetailAdapter, View paramView)
   {
-    this.tvTitle = ((TextView)paramView.findViewById(2131365436));
-    this.tvDesc = ((TextView)paramView.findViewById(2131365435));
+    this.tvTitle = ((TextView)paramView.findViewById(2131365468));
+    this.tvDesc = ((TextView)paramView.findViewById(2131365467));
   }
 }
 

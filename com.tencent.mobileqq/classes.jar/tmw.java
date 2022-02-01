@@ -1,44 +1,49 @@
-import android.content.Context;
-import android.content.IntentFilter;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
 public class tmw
+  extends Handler
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private tmx jdField_a_of_type_Tmx;
-  private tmy jdField_a_of_type_Tmy;
+  private WeakReference<VideoPlayManager> a;
   
-  public tmw(Context paramContext)
+  public tmw(VideoPlayManager paramVideoPlayManager)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentIntentFilter = new IntentFilter("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+    this.a = new WeakReference(paramVideoPlayManager);
   }
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.jdField_a_of_type_Tmx != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))) {
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Tmx, this.jdField_a_of_type_AndroidContentIntentFilter);
+    VideoPlayManager localVideoPlayManager;
+    if (this.a != null)
+    {
+      localVideoPlayManager = (VideoPlayManager)this.a.get();
+      if (localVideoPlayManager != null) {
+        switch (paramMessage.what)
+        {
+        }
+      }
     }
-  }
-  
-  public void a(tmy paramtmy)
-  {
-    this.jdField_a_of_type_Tmy = paramtmy;
-    this.jdField_a_of_type_Tmx = new tmx(this);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Tmx != null) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))) {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Tmx);
+    do
+    {
+      return;
+      localVideoPlayManager = null;
+      break;
+    } while ((VideoPlayManager.a(localVideoPlayManager) == null) || (tmx.a(VideoPlayManager.a(localVideoPlayManager)) == null));
+    Object localObject = tmx.a(VideoPlayManager.a(localVideoPlayManager));
+    paramMessage = VideoPlayManager.a(localVideoPlayManager);
+    if ((localObject != null) && (((sdj)localObject).f()))
+    {
+      long l = ((sdj)localObject).a();
+      localObject = VideoPlayManager.a(localVideoPlayManager).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((tmy)((Iterator)localObject).next()).a(paramMessage, tmz.a(l) * 1000);
+      }
     }
+    VideoPlayManager.a(localVideoPlayManager).sendEmptyMessageDelayed(0, VideoPlayManager.a(localVideoPlayManager));
   }
 }
 

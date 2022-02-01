@@ -1,102 +1,31 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class pls
-  implements rzs
 {
-  public pls(VideoView paramVideoView) {}
+  public int a;
+  public long a;
+  float[] a;
+  public int b;
+  long jdField_b_of_type_Long;
+  float[] jdField_b_of_type_ArrayOfFloat;
+  public int c;
+  public int d;
+  int e;
+  int f;
+  int g;
+  int h;
+  int i;
   
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(@Nullable String paramString)
+  public String a()
   {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      paramString.getInt("callBackType");
-      int i = paramString.getInt("fileSize");
-      this.a.setFileSize(i);
-      return;
-    }
-    catch (JSONException paramString) {}
-  }
-  
-  public void a(@NotNull rzt arg1)
-  {
-    for (;;)
-    {
-      synchronized (this.a)
-      {
-        if (VideoView.access$1300(this.a))
-        {
-          VideoView.access$000(this.a, 6);
-          VideoView.access$1402(this.a, VideoView.access$1500(this.a));
-          VideoView.access$1602(this.a, "");
-          VideoView.access$1700(this.a);
-          if (VideoView.access$1800(this.a) != null) {
-            this.a.mProgressHandler.postDelayed(this.a, 500L);
-          }
-          return;
-        }
-        QLog.d("gifvideo.VideoView", 1, "invalid state");
-        VideoView.access$1602(this.a, "");
-        if (VideoView.access$500(this.a).get() == 5) {
-          VideoView.access$1900(this.a);
-        }
-      }
-      if (VideoView.access$500(this.a).get() == 4) {
-        VideoView.access$2000(this.a);
-      }
-    }
-  }
-  
-  public void a(@NotNull rzt paramrzt, int paramInt1, int paramInt2) {}
-  
-  public void a(@NotNull rzt paramrzt, int paramInt1, int paramInt2, int paramInt3, @Nullable Bitmap paramBitmap) {}
-  
-  public boolean a(@NotNull rzt paramrzt, int paramInt1, int paramInt2, int paramInt3, @Nullable String paramString)
-  {
-    QLog.e("gifvideo.VideoView", 1, "TVK_IMediaPlayer.OnErrorListener model = " + paramInt1 + " errorType = " + paramInt2 + " errorCode = " + paramInt3 + " extra = " + paramString);
-    return false;
-  }
-  
-  public boolean a(@NotNull rzt paramrzt, int paramInt, @Nullable Object paramObject)
-  {
-    return false;
-  }
-  
-  public void b(@NotNull rzt arg1)
-  {
-    synchronized (this.a)
-    {
-      VideoView.access$000(this.a, 10);
-      this.a.displayCover();
-      if (VideoView.access$2100(this.a) != null) {
-        VideoView.access$2100(this.a).c();
-      }
-      VideoView.access$2200(this.a);
-      return;
-    }
-  }
-  
-  public void c(@NotNull rzt arg1)
-  {
-    synchronized (this.a)
-    {
-      if (VideoView.access$900(this.a) != null) {
-        VideoView.access$900(this.a).a();
-      }
-      if (VideoView.access$1800(this.a) != null) {
-        this.a.mProgressHandler.postDelayed(this.a, 500L);
-      }
-      return;
+    double d1 = this.g * 1.0D / this.h;
+    double d2 = 1000.0D * d1 / this.jdField_a_of_type_Long;
+    double d3 = this.jdField_a_of_type_ArrayOfFloat[0] / this.i;
+    double d4 = this.jdField_a_of_type_ArrayOfFloat[1] / this.h;
+    double d5 = this.b[0] / this.i;
+    double d6 = this.b[1] / this.h;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (int j = 0;; j = 1) {
+      return j + "_" + String.format("%.2f", new Object[] { Double.valueOf(d1) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d2) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d4) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d3) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d6) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d5) });
     }
   }
 }

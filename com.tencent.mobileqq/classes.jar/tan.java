@@ -1,29 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.BannerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelTopBanner;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager;
-
 public class tan
-  extends Handler
 {
-  public tan(ChannelTopBanner paramChannelTopBanner, Looper paramLooper)
+  private final int jdField_a_of_type_Int;
+  private final Object jdField_a_of_type_JavaLangObject;
+  private final int b;
+  
+  public tan(int paramInt1, int paramInt2, Object paramObject)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
   
-  public void handleMessage(Message paramMessage)
+  public int a()
   {
-    if ((ChannelTopBanner.a(this.a)) || (!ChannelTopBanner.b(this.a))) {}
-    while (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.getCount() <= 1) {
-      return;
-    }
-    paramMessage = this.a;
-    paramMessage.jdField_a_of_type_Int += 1;
-    this.a.jdField_a_of_type_Int %= this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.getCount();
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerRollViewPager.setCurrentItem(this.a.jdField_a_of_type_Int, true);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 4000L);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public int b()
+  {
+    return this.b;
   }
 }
 

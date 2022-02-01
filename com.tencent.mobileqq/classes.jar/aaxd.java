@@ -1,43 +1,186 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.widget.Toast;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.pm.PackageManager;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aaxd
-  extends bgst
 {
-  public aaxd(TroopGiftPanel paramTroopGiftPanel, int paramInt, aawl paramaawl) {}
-  
-  public void a(int paramInt)
+  /* Error */
+  public static aaxc a(java.lang.String paramString)
   {
-    bdll.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_suc", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Aawl.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mvb.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+    // Byte code:
+    //   0: aload_0
+    //   1: invokestatic 14	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: ifne +243 -> 247
+    //   7: new 16	aaxc
+    //   10: dup
+    //   11: invokespecial 20	aaxc:<init>	()V
+    //   14: astore_2
+    //   15: new 22	org/json/JSONObject
+    //   18: dup
+    //   19: aload_0
+    //   20: invokespecial 25	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   23: astore_0
+    //   24: aload_0
+    //   25: ldc 27
+    //   27: invokevirtual 31	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   30: ifeq +170 -> 200
+    //   33: aload_0
+    //   34: ldc 27
+    //   36: invokevirtual 35	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   39: istore_1
+    //   40: aload_2
+    //   41: iload_1
+    //   42: putfield 38	aaxc:a	I
+    //   45: aload_0
+    //   46: ldc 40
+    //   48: invokevirtual 31	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   51: ifeq +154 -> 205
+    //   54: aload_0
+    //   55: ldc 40
+    //   57: invokevirtual 35	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   60: istore_1
+    //   61: aload_2
+    //   62: iload_1
+    //   63: putfield 43	aaxc:b	I
+    //   66: aload_0
+    //   67: ldc 45
+    //   69: invokevirtual 31	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   72: ifeq +60 -> 132
+    //   75: aload_0
+    //   76: ldc 45
+    //   78: invokevirtual 49	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   81: astore_3
+    //   82: aload_3
+    //   83: ldc 51
+    //   85: invokevirtual 31	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   88: ifeq +122 -> 210
+    //   91: aload_3
+    //   92: ldc 51
+    //   94: invokevirtual 35	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   97: sipush 1000
+    //   100: imul
+    //   101: istore_1
+    //   102: aload_2
+    //   103: iload_1
+    //   104: putfield 54	aaxc:d	I
+    //   107: aload_3
+    //   108: ldc 56
+    //   110: invokevirtual 31	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   113: ifeq +102 -> 215
+    //   116: aload_3
+    //   117: ldc 56
+    //   119: invokevirtual 35	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   122: sipush 1000
+    //   125: imul
+    //   126: istore_1
+    //   127: aload_2
+    //   128: iload_1
+    //   129: putfield 59	aaxc:c	I
+    //   132: aload_0
+    //   133: ldc 61
+    //   135: invokevirtual 31	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   138: ifeq +60 -> 198
+    //   141: aload_0
+    //   142: ldc 61
+    //   144: invokevirtual 49	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   147: astore_0
+    //   148: aload_0
+    //   149: ldc 51
+    //   151: invokevirtual 31	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   154: ifeq +66 -> 220
+    //   157: aload_0
+    //   158: ldc 51
+    //   160: invokevirtual 35	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   163: sipush 1000
+    //   166: imul
+    //   167: istore_1
+    //   168: aload_2
+    //   169: iload_1
+    //   170: putfield 64	aaxc:f	I
+    //   173: aload_0
+    //   174: ldc 56
+    //   176: invokevirtual 31	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   179: ifeq +46 -> 225
+    //   182: aload_0
+    //   183: ldc 56
+    //   185: invokevirtual 35	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   188: sipush 1000
+    //   191: imul
+    //   192: istore_1
+    //   193: aload_2
+    //   194: iload_1
+    //   195: putfield 67	aaxc:e	I
+    //   198: aload_2
+    //   199: areturn
+    //   200: iconst_0
+    //   201: istore_1
+    //   202: goto -162 -> 40
+    //   205: iconst_0
+    //   206: istore_1
+    //   207: goto -146 -> 61
+    //   210: iconst_0
+    //   211: istore_1
+    //   212: goto -110 -> 102
+    //   215: iconst_0
+    //   216: istore_1
+    //   217: goto -90 -> 127
+    //   220: iconst_0
+    //   221: istore_1
+    //   222: goto -54 -> 168
+    //   225: iconst_0
+    //   226: istore_1
+    //   227: goto -34 -> 193
+    //   230: astore_2
+    //   231: aconst_null
+    //   232: astore_0
+    //   233: aload_2
+    //   234: invokevirtual 70	java/lang/Throwable:printStackTrace	()V
+    //   237: aload_0
+    //   238: areturn
+    //   239: astore_3
+    //   240: aload_2
+    //   241: astore_0
+    //   242: aload_3
+    //   243: astore_2
+    //   244: goto -11 -> 233
+    //   247: aconst_null
+    //   248: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	249	0	paramString	java.lang.String
+    //   39	188	1	i	int
+    //   14	185	2	localaaxc	aaxc
+    //   230	11	2	localThrowable1	Throwable
+    //   243	1	2	localObject	Object
+    //   81	36	3	localJSONObject	org.json.JSONObject
+    //   239	4	3	localThrowable2	Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   7	15	230	java/lang/Throwable
+    //   15	40	239	java/lang/Throwable
+    //   40	61	239	java/lang/Throwable
+    //   61	102	239	java/lang/Throwable
+    //   102	127	239	java/lang/Throwable
+    //   127	132	239	java/lang/Throwable
+    //   132	168	239	java/lang/Throwable
+    //   168	193	239	java/lang/Throwable
+    //   193	198	239	java/lang/Throwable
   }
   
-  public void a(int paramInt, String paramString)
+  public static boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
+    boolean bool = false;
+    if (Build.VERSION.SDK_INT >= 18) {}
+    try
+    {
+      bool = BaseApplication.getContext().getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
+      return bool;
     }
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = anzj.a(2131714189);
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext, str, 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131299011)).show();
-    bdll.b(null, "dc00899", "Grp_flower", "", "aio_mall", "send_forone_fail", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "" + this.jdField_a_of_type_Aawl.e, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mvb.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    super.b(paramInt, paramString);
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = anzj.a(2131714201);
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_AndroidContentContext, str, 0).b(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getResources().getDimensionPixelSize(2131299011)).show();
+    return false;
   }
 }
 

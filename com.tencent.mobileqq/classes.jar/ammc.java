@@ -1,33 +1,42 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import mqq.app.QQPermissionCallback;
-import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/activity/weather/webpage/WeatherWebArkViewModel$requestAdCode$1", "Lmqq/app/QQPermissionCallback;", "deny", "", "i", "", "strings", "", "", "ints", "", "(I[Ljava/lang/String;[I)V", "grant", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ammc
-  implements QQPermissionCallback
+public class ammc
+  implements DialogInterface.OnClickListener
 {
-  ammc(String paramString) {}
+  public ammc(ApolloPanel paramApolloPanel, String paramString1, String paramString2, String paramString3) {}
   
-  public void deny(int paramInt, @NotNull String[] paramArrayOfString, @NotNull int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfString, "strings");
-    Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "ints");
-    QLog.i("WeatherWebArkViewModel", 1, "requestAdCode deny");
-    if (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Amma.a().postValue(new ammk(3, null, null, null, 0, 0, 62, null));
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.n();
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app != null))
+    {
+      paramDialogInterface = (VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getBusinessHandler(71);
+      if (!this.jdField_a_of_type_JavaLangString.equals(String.valueOf(2))) {}
     }
-  }
-  
-  public void grant(int paramInt, @NotNull String[] paramArrayOfString, @NotNull int[] paramArrayOfInt)
-  {
-    Intrinsics.checkParameterIsNotNull(paramArrayOfString, "strings");
-    Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "ints");
-    QLog.i("WeatherWebArkViewModel", 1, "requestAdCode grant");
-    this.jdField_a_of_type_Amma.a(this.jdField_a_of_type_JavaLangString);
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
+        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app, "cmshow", "Apollo", "icon_alert_clickbuy", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType), 0, new String[] { "" + this.b });
+      }
+      String str = new JSONObject(this.c).getString("packageId");
+      paramDialogInterface.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app.getCurrentAccountUin(), Integer.parseInt(this.b), Integer.parseInt(str));
+      return;
+    }
+    catch (JSONException paramDialogInterface)
+    {
+      QLog.e("ApolloPanel", 1, "[showAioDialog] Exception:", paramDialogInterface);
+    }
   }
 }
 

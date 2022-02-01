@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.chat.autoreply;
 
-import azir;
+import axvz;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForAutoReply;
@@ -15,7 +15,7 @@ public final class AutoReplyUtil$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, 0);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getMsgList(this.jdField_a_of_type_JavaLangString, 0);
     if (localObject == null) {}
     do
     {
@@ -24,7 +24,7 @@ public final class AutoReplyUtil$1
         localObject = ((List)localObject).iterator();
       }
     } while (!((MessageRecord)((Iterator)localObject).next() instanceof MessageForAutoReply));
-    azir.a("0X800B0AD");
+    axvz.a("0X800B0AD");
   }
 }
 

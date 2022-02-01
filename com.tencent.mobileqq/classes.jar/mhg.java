@@ -1,54 +1,33 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
 
 class mhg
-  implements Animator.AnimatorListener
+  implements DialogInterface.OnClickListener
 {
-  mhg(mhe parammhe, int paramInt, long paramLong) {}
+  mhg(mha parammha) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 4;
-    if (this.jdField_a_of_type_Mhe.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-    {
-      i = this.jdField_a_of_type_Mhe.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility();
-      if (this.jdField_a_of_type_Mhe.jdField_a_of_type_Boolean) {
-        break label173;
-      }
-      this.jdField_a_of_type_Mhe.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    for (;;)
+    mha.a(this.a, false);
+    if (paramInt == 1)
     {
-      this.jdField_a_of_type_Mhe.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-      this.jdField_a_of_type_Mhe.jdField_a_of_type_AndroidWidgetRelativeLayout.setTranslationY(0.0F);
-      QLog.w(this.jdField_a_of_type_Mhe.jdField_a_of_type_JavaLangString, 1, "ShowMenuView, onAnimationEnd, isShow[" + this.jdField_a_of_type_Mhe.jdField_a_of_type_Boolean + "], visibility[" + i + "], seq[" + this.jdField_a_of_type_Long + "], \nlastObjectAnimator[" + this.jdField_a_of_type_Mhe.jdField_a_of_type_AndroidAnimationObjectAnimator + "], \nanimation[" + paramAnimator + "]");
-      if (this.jdField_a_of_type_Mhe.jdField_a_of_type_AndroidAnimationObjectAnimator == paramAnimator) {
-        this.jdField_a_of_type_Mhe.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
+      bcef.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
+      this.a.c();
+      if (!mum.a(mha.a(this.a))) {
+        mha.a(this.a).a(mha.a(this.a));
       }
+    }
+    while (paramInt != 0)
+    {
       return;
-      label173:
-      this.jdField_a_of_type_Mhe.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      if (this.jdField_a_of_type_Mhe.jdField_a_of_type_Mhh != null) {
-        this.jdField_a_of_type_Mhe.jdField_a_of_type_Mhh.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Mhe.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
-      }
+      mha.a(this.a).b(mha.a(this.a));
+      return;
     }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    int i = 4;
-    if (this.jdField_a_of_type_Mhe.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-    {
-      i = this.jdField_a_of_type_Mhe.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility();
-      this.jdField_a_of_type_Mhe.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    }
-    QLog.w(this.jdField_a_of_type_Mhe.jdField_a_of_type_JavaLangString, 1, "ShowMenuView, onAnimationStart, height[" + this.jdField_a_of_type_Int + "], isShow[" + this.jdField_a_of_type_Mhe.jdField_a_of_type_Boolean + "], visibility[" + i + "], seq[" + this.jdField_a_of_type_Long + "]");
+    mha.a(this.a, mha.a(this.a).a().w);
   }
 }
 

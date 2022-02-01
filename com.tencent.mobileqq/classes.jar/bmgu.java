@@ -1,16 +1,49 @@
-import android.content.Context;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.YoutuResultItem;
+import com.microrapid.opencv.ImageStatisticsData;
+import java.util.HashMap;
+import java.util.List;
 
-final class bmgu
+public class bmgu
+  extends bmgl
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  bmgr jdField_a_of_type_Bmgr;
-  bmgt jdField_a_of_type_Bmgt;
+  public float a;
+  public ImageStatisticsData a;
+  public String a;
+  public HashMap<String, String> a;
+  public List<YoutuResultItem> a;
+  public float[] a;
+  public float b;
+  public String b;
+  public float c;
   
-  bmgu(Context paramContext, bmgt parambmgt, bmgr parambmgr)
+  public float a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bmgt = parambmgt;
-    this.jdField_a_of_type_Bmgr = parambmgr;
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public HashMap<String, String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  public float b()
+  {
+    return this.c;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public float c()
+  {
+    return this.jdField_b_of_type_Float;
   }
 }
 

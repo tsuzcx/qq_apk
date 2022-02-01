@@ -1,15 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import java.util.Comparator;
 
-public abstract interface alml
+public class alml
+  implements Comparator<TroopInfo>
 {
-  public abstract void a(View paramView, RecentBaseData paramRecentBaseData, String paramString, boolean paramBoolean);
-  
-  public abstract void a(View paramView, Object paramObject);
-  
-  public abstract void a(RecentBaseData paramRecentBaseData, String paramString);
-  
-  public abstract void a(String paramString1, RecentBaseData paramRecentBaseData, String paramString2);
+  public int a(TroopInfo paramTroopInfo1, TroopInfo paramTroopInfo2)
+  {
+    if (paramTroopInfo1.lastMsgTime > paramTroopInfo2.lastMsgTime) {
+      return -1;
+    }
+    if (paramTroopInfo1.lastMsgTime < paramTroopInfo2.lastMsgTime) {
+      return 1;
+    }
+    return ampx.a(paramTroopInfo1.mComparePartInt, paramTroopInfo1.mCompareSpell, paramTroopInfo2.mComparePartInt, paramTroopInfo2.mCompareSpell);
+  }
 }
 
 

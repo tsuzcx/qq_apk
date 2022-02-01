@@ -1,116 +1,174 @@
 import android.content.Context;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import dov.com.qq.im.ae.view.AEDownLoadingView;
 
-public abstract class blsv<M, VH extends blsy<M>>
-  extends blsz<M, VH>
+public class blsv
+  extends RecyclerView.ViewHolder
 {
-  private List<M> a;
+  private int jdField_a_of_type_Int = 0;
+  private Context jdField_a_of_type_AndroidContentContext;
+  public ImageView a;
+  public RelativeLayout a;
+  public URLImageView a;
+  public AEDownLoadingView a;
+  public ImageView b;
+  public ImageView c;
   
-  public blsv(Context paramContext)
+  public blsv(View paramView)
   {
-    super(paramContext);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    super(paramView);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131378584));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377026));
+    this.b = ((ImageView)paramView.findViewById(2131365761));
+    this.c = ((ImageView)paramView.findViewById(2131379002));
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView = ((AEDownLoadingView)paramView.findViewById(2131373044));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131380990));
   }
   
-  public blsv(Context paramContext, List<M> paramList)
+  private static int a(boolean paramBoolean)
   {
-    super(paramContext);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public abstract int a(int paramInt);
-  
-  public M a(int paramInt)
-  {
-    if (((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size() + d())) {
-      return null;
+    if (paramBoolean) {
+      return 0;
     }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
+    return 8;
   }
   
-  public List<M> a()
+  private void a(blvb paramblvb)
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.b.setVisibility(8);
+    this.c.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
   }
   
-  public void a(M paramM)
+  private void b(blvb paramblvb)
   {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramM);
-    if (i < 0) {
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    c(paramblvb);
+    e(paramblvb);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(a(paramblvb.a));
+  }
+  
+  private void c(blvb paramblvb)
+  {
+    if (paramblvb.a())
+    {
+      this.b.setVisibility(8);
+      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.remove(i);
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (paramblvb.jdField_e_of_type_Boolean)
     {
-      notifyItemRemoved(i);
+      this.b.setVisibility(8);
+      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
       return;
     }
-    notifyItemRemoved(i + 1);
-  }
-  
-  public boolean a(List<M> paramList)
-  {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {}
-    for (int i = 1;; i = 0)
+    if (paramblvb.f)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      boolean bool = i | this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      if (bool) {
-        notifyDataSetChanged();
-      }
-      return bool;
+      this.b.setVisibility(8);
+      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(0);
+      this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgress(paramblvb.jdField_e_of_type_Int);
+      return;
     }
+    this.b.setVisibility(0);
+    this.b.setImageResource(2130844474);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(8);
   }
   
-  public int b()
+  private void d(blvb paramblvb)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844537);
+    c(paramblvb);
+    e(paramblvb);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(a(paramblvb.a));
   }
   
-  public void b()
+  private void e(blvb paramblvb)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    notifyDataSetChanged();
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty());
-  }
-  
-  public boolean b(List<M> paramList)
-  {
-    boolean bool = this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    if (bool) {
-      notifyItemRangeInserted(this.jdField_a_of_type_JavaUtilList.size() - paramList.size(), paramList.size());
+    if (paramblvb.a())
+    {
+      this.c.setVisibility(0);
+      this.c.setImageResource(2130845854);
+      return;
     }
-    return bool;
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size() + c();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final int getItemViewType(int paramInt)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) {
-      return 1024;
+    if (paramblvb.b())
+    {
+      this.c.setVisibility(0);
+      this.c.setImageResource(paramblvb.a());
+      return;
     }
-    if ((this.b != null) && (paramInt == this.jdField_a_of_type_JavaUtilList.size() + d())) {
-      return 1025;
+    this.c.setVisibility(8);
+  }
+  
+  private void f(blvb paramblvb)
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      a(paramblvb);
+      return;
+    case 0: 
+      a(paramblvb);
+      return;
+    case 1: 
+      b(paramblvb);
+      g(paramblvb);
+      return;
     }
-    return a(paramInt);
+    d(paramblvb);
+    g(paramblvb);
+  }
+  
+  private void g(blvb paramblvb)
+  {
+    if (TextUtils.isEmpty(paramblvb.c)) {
+      return;
+    }
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    int i = AIOUtils.dp2px(60.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844473);
+    localURLDrawableOptions.mRequestWidth = i;
+    localURLDrawableOptions.mRequestHeight = i;
+    localURLDrawableOptions.mFailedDrawable = localDrawable;
+    localURLDrawableOptions.mLoadingDrawable = localDrawable;
+    localURLDrawableOptions.mRetryCount = 3;
+    paramblvb = URLDrawable.getDrawable(paramblvb.c, localURLDrawableOptions);
+    if (paramblvb.getStatus() == 2) {
+      paramblvb.restartDownload();
+    }
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramblvb);
+  }
+  
+  public void a(int paramInt, blvb paramblvb)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    f(paramblvb);
+  }
+  
+  public void a(Context paramContext)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    int i = AIOUtils.dp2px(6.0F, paramContext.getResources());
+    int j = AIOUtils.dp2px(2.0F, paramContext.getResources());
+    int k = AIOUtils.dp2px(16.0F, paramContext.getResources());
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setBgCorner(k / 2);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setMinimumHeight(k);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setMinimumWidth(k);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgressSizeAndMode(i, j, false);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setBgColor(-1);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgressColor(-16725252);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.a(false);
   }
 }
 

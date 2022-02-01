@@ -1,16 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import mqq.observer.BusinessObserver;
 
 public class akdb
-  extends auoz
+  implements BusinessObserver
 {
-  public akdb(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  public akdb(RedPacketManager paramRedPacketManager) {}
   
-  public void a(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    bdll.b(this.a.a, "dc00898", "", "", "0X800A0BF", "0X800A0BF", 2, 0, "", "", "", "");
-    FileSearchActivity.a(this.a.getActivity(), 13, this.a.a());
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.a.a(paramBoolean, paramBundle);
   }
 }
 

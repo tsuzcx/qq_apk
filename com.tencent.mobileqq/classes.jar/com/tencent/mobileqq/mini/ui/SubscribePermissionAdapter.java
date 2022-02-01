@@ -79,10 +79,10 @@ public class SubscribePermissionAdapter
   {
     LayoutInflater localLayoutInflater = LayoutInflater.from(paramViewGroup.getContext());
     if (paramInt == SubscribeItemModel.SubscribeViewType.TITLE.ordinal()) {
-      return new SubscribePermissionAdapter.TitleViewHolder(localLayoutInflater.inflate(2131559403, paramViewGroup, false));
+      return new SubscribePermissionAdapter.TitleViewHolder(localLayoutInflater.inflate(2131559405, paramViewGroup, false));
     }
     if ((paramInt == SubscribeItemModel.SubscribeViewType.LONG_TERM_SUBSCRIBE.ordinal()) || (paramInt == SubscribeItemModel.SubscribeViewType.ONE_TIME_SUBSCRIBE.ordinal()) || (paramInt == SubscribeItemModel.SubscribeViewType.INTERACTIVE_SUBSCRIBE.ordinal())) {
-      return new SubscribePermissionAdapter.SubscribeViewHolder(localLayoutInflater.inflate(2131559402, paramViewGroup, false));
+      return new SubscribePermissionAdapter.SubscribeViewHolder(localLayoutInflater.inflate(2131559404, paramViewGroup, false));
     }
     return null;
   }

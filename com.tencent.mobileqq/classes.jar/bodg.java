@@ -1,44 +1,35 @@
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+
 public class bodg
 {
-  public static bqaj a(int paramInt, bqai parambqai, bqah parambqah)
+  public static void a(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return new bodv(parambqai, parambqah);
-    case 10026: 
-      return new boeg(parambqai, parambqah);
-    case 10023: 
-    case 10024: 
-      return new bofh(parambqai, parambqah);
-    case -1000: 
-      return new bofh();
-    case 10000: 
-      return new bocm(parambqai, parambqah);
-    case 10001: 
-      return new bodr(parambqai, parambqah);
-    case 10002: 
-      return new bodv(parambqai, parambqah);
-    case 10014: 
-      return new bodw(parambqai, parambqah);
-    case 10004: 
-      return new bodp(parambqai, parambqah);
-    case 10007: 
-      return new boea(parambqai, parambqah);
-    case 10012: 
-      return new body(parambqai, parambqah);
-    case 10013: 
-      return new bods(parambqai, parambqah);
-    case 10017: 
-      return new rbj(parambqai, parambqah);
-    case 10019: 
-      return new bfyl(parambqai, parambqah);
-    case 10021: 
-      return new bocn(parambqai, parambqah);
-    case 10022: 
-      return new bodh(parambqai, parambqah);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("crashKind", "" + paramInt);
+    StatisticCollector.getInstance(VideoEnvironment.getContext()).collectPerformance(null, "sv_filter_egl_crash_exp", true, 0L, 0L, localHashMap, "");
+  }
+  
+  public static void a(String paramString, long paramLong)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("time", "" + paramLong);
+    localHashMap.put("filter_id", bodh.jdField_a_of_type_JavaLangString);
+    localHashMap.put("front_camera", String.valueOf(bodh.jdField_a_of_type_Boolean));
+    StatisticCollector.getInstance(VideoEnvironment.getContext()).collectPerformance(null, paramString, true, paramLong, bobu.c, localHashMap, "");
+    if (QLog.isColorLevel()) {
+      QLog.d("PerformenceDataTag", 2, "reportPerformance : tag = " + paramString + " ; duration = " + paramLong + " ; filter_id = " + bodh.jdField_a_of_type_JavaLangString + " ; front_camera = " + bodh.jdField_a_of_type_Boolean);
     }
-    return new ajzw(parambqai, parambqah);
   }
 }
 

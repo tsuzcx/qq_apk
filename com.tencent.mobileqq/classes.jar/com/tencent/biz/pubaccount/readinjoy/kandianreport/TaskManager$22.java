@@ -2,6 +2,9 @@ package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import org.json.JSONObject;
 
 class TaskManager$22
   implements JSContext.Callback
@@ -10,12 +13,13 @@ class TaskManager$22
   
   public Object invoke(JSContext paramJSContext, int paramInt, Object[] paramArrayOfObject)
   {
-    if (paramInt == 1)
-    {
-      paramJSContext = (String)paramArrayOfObject[0];
-      this.this$0.accept(paramJSContext);
-    }
-    return Integer.valueOf(0);
+    paramJSContext = new JSONObject();
+    paramJSContext.put("platform", "Android");
+    paramJSContext.put("sys_version", DeviceInfoUtil.getDeviceOSVersion());
+    paramJSContext.put("qq_version", DeviceInfoUtil.getQQVersion());
+    paramJSContext.put("framework_version", String.valueOf(TaskManager.scriptVersion));
+    paramJSContext.putOpt("app_id", Integer.valueOf(AppSetting.a()));
+    return paramJSContext.toString();
   }
 }
 

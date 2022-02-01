@@ -1,6 +1,6 @@
 package com.tencent.device.datadef;
 
-import abuk;
+import aaqt;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ProductInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ProductInfo> CREATOR = new abuk();
+  public static final Parcelable.Creator<ProductInfo> CREATOR = new aaqt();
   public static final int DeviceOSType_Android = 2;
   public static final int DeviceOSType_Linux = 1;
   public static final int DeviceOSType_RTOS = 3;

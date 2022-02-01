@@ -1,10 +1,10 @@
 package com.tencent.hippy.qq.module.tkd;
 
-import aoki;
+import andt;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 
 class TKDWupModule$1
-  extends aoki
+  extends andt
 {
   TKDWupModule$1(TKDWupModule paramTKDWupModule) {}
   

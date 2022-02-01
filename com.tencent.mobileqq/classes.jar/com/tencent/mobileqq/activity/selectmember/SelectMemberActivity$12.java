@@ -1,49 +1,49 @@
 package com.tencent.mobileqq.activity.selectmember;
 
 import QQService.AddDiscussMemberInfo;
+import amqx;
+import amrb;
+import amsw;
 import android.text.TextUtils;
-import anwo;
-import anws;
-import anyw;
-import bhlg;
-import bhlk;
+import bfun;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DiscussionMemberInfo;
 import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 class SelectMemberActivity$12
   extends Thread
 {
-  SelectMemberActivity$12(SelectMemberActivity paramSelectMemberActivity, anyw paramanyw) {}
+  SelectMemberActivity$12(SelectMemberActivity paramSelectMemberActivity, amsw paramamsw) {}
   
   public void run()
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    Object localObject1 = bhlg.h(this.this$0.app, this.this$0.app.getCurrentAccountUin());
-    int i = this.this$0.e.size() - 1;
+    Object localObject1 = ContactUtils.getAccountNickName(this.this$0.app, this.this$0.app.getCurrentAccountUin());
+    int i = this.this$0.mResultList.size() - 1;
     ResultRecord localResultRecord;
     Object localObject2;
     String str;
     if (i >= 0)
     {
-      localResultRecord = (ResultRecord)this.this$0.e.get(i);
+      localResultRecord = (ResultRecord)this.this$0.mResultList.get(i);
       localObject2 = new AddDiscussMemberInfo();
-      if (localResultRecord.jdField_a_of_type_Int == 4)
+      if (localResultRecord.type == 4)
       {
-        ((AddDiscussMemberInfo)localObject2).RefStr = localResultRecord.jdField_a_of_type_JavaLangString;
-        ((AddDiscussMemberInfo)localObject2).Type = localResultRecord.jdField_a_of_type_Int;
+        ((AddDiscussMemberInfo)localObject2).RefStr = localResultRecord.uin;
+        ((AddDiscussMemberInfo)localObject2).Type = localResultRecord.type;
         localArrayList1.add(localObject2);
         localArrayList2.add(String.valueOf(((AddDiscussMemberInfo)localObject2).Uin));
         str = (String)localObject1 + "、";
         localObject2 = null;
-        if (localResultRecord.jdField_a_of_type_Int != 0) {
+        if (localResultRecord.type != 0) {
           break label330;
         }
-        localObject2 = this.a.e(localResultRecord.jdField_a_of_type_JavaLangString);
+        localObject2 = this.val$fm.e(localResultRecord.uin);
         if (localObject2 == null) {
           break label825;
         }
@@ -58,7 +58,7 @@ class SelectMemberActivity$12
     {
       label207:
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject1 = str + localResultRecord.jdField_a_of_type_JavaLangString;
+        localObject1 = str + localResultRecord.uin;
       }
       for (;;)
       {
@@ -68,13 +68,13 @@ class SelectMemberActivity$12
           break;
           try
           {
-            ((AddDiscussMemberInfo)localObject2).Uin = Long.valueOf(localResultRecord.jdField_a_of_type_JavaLangString).longValue();
-            ((AddDiscussMemberInfo)localObject2).RefUin = Long.valueOf(localResultRecord.jdField_c_of_type_JavaLangString).longValue();
+            ((AddDiscussMemberInfo)localObject2).Uin = Long.valueOf(localResultRecord.uin).longValue();
+            ((AddDiscussMemberInfo)localObject2).RefUin = Long.valueOf(localResultRecord.groupUin).longValue();
           }
           catch (NumberFormatException localNumberFormatException)
           {
             if (QLog.isColorLevel()) {
-              QLog.d("SelectMemberActivity", 2, "NumberFormatException!!! uin=" + localResultRecord.jdField_a_of_type_JavaLangString);
+              QLog.d("SelectMemberActivity", 2, "NumberFormatException!!! uin=" + localResultRecord.uin);
             }
           }
         }
@@ -84,9 +84,9 @@ class SelectMemberActivity$12
         break label207;
         label330:
         Object localObject5;
-        if (localResultRecord.jdField_a_of_type_Int == 1)
+        if (localResultRecord.type == 1)
         {
-          localObject5 = bhlk.a().a(this.this$0.app, localResultRecord.jdField_c_of_type_JavaLangString, localResultRecord.jdField_a_of_type_JavaLangString);
+          localObject5 = bfun.a().a(this.this$0.app, localResultRecord.groupUin, localResultRecord.uin);
           localObject1 = localObject3;
           if (localObject5 == null) {
             break label207;
@@ -104,9 +104,9 @@ class SelectMemberActivity$12
           localObject3 = ((TroopMemberInfo)localObject5).autoremark;
           break label207;
         }
-        if (localResultRecord.jdField_a_of_type_Int == 2)
+        if (localResultRecord.type == 2)
         {
-          localObject5 = ((anws)this.this$0.app.getManager(53)).a(localResultRecord.jdField_c_of_type_JavaLangString, localResultRecord.jdField_a_of_type_JavaLangString);
+          localObject5 = ((amrb)this.this$0.app.getManager(53)).a(localResultRecord.groupUin, localResultRecord.uin);
           localObject1 = localObject3;
           if (localObject5 == null) {
             break label207;
@@ -123,18 +123,18 @@ class SelectMemberActivity$12
           localObject3 = ((DiscussionMemberInfo)localObject5).inteRemark;
           break label207;
         }
-        if (localResultRecord.jdField_a_of_type_Int == 3)
+        if (localResultRecord.type == 3)
         {
-          localObject1 = localResultRecord.b;
-          localObject3 = localResultRecord.b;
+          localObject1 = localResultRecord.name;
+          localObject3 = localResultRecord.name;
           break label207;
         }
         localObject1 = localObject3;
-        if (localResultRecord.jdField_a_of_type_Int != 4) {
+        if (localResultRecord.type != 4) {
           break label207;
         }
-        localObject1 = localResultRecord.b;
-        localObject3 = localResultRecord.b;
+        localObject1 = localResultRecord.name;
+        localObject3 = localResultRecord.name;
         break label207;
         localObject1 = str + (String)localObject1;
       }
@@ -165,19 +165,19 @@ class SelectMemberActivity$12
           if (!QLog.isColorLevel()) {
             continue;
           }
-          QLog.d("SelectMemberActivity", 2, "add discussion member: groupCode: " + this.this$0.jdField_c_of_type_JavaLangString + " member count: " + localArrayList1.size());
-          ((anwo)localObject1).b(Long.valueOf(this.this$0.jdField_c_of_type_JavaLangString).longValue(), localArrayList1);
+          QLog.d("SelectMemberActivity", 2, "add discussion member: groupCode: " + this.this$0.mGroupCode + " member count: " + localArrayList1.size());
+          ((amqx)localObject1).b(Long.valueOf(this.this$0.mGroupCode).longValue(), localArrayList1);
           return;
         }
-        localObject1 = (anwo)this.this$0.app.a(6);
-        if (this.this$0.jdField_c_of_type_JavaLangString != null) {
+        localObject1 = (amqx)this.this$0.app.getBusinessHandler(6);
+        if (this.this$0.mGroupCode != null) {
           continue;
         }
         if (QLog.isColorLevel()) {
           QLog.d("SelectMemberActivity", 2, "create discussion: " + (String)localObject3 + " member count: " + localArrayList1.size());
         }
-        SelectMemberActivity.b = false;
-        ((anwo)localObject1).a((String)localObject3, localArrayList1, this.this$0.jdField_c_of_type_Int);
+        SelectMemberActivity.sNeedBlockDiscussSelfInviteMsg = false;
+        ((amqx)localObject1).a((String)localObject3, localArrayList1, this.this$0.mFrom);
         return;
         i += 1;
       }

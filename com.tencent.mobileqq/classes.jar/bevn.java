@@ -1,45 +1,28 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-public class bevn
+class bevn
+  extends andd
 {
-  public static bevn a;
+  bevn(bevl parambevl) {}
   
-  public static bevn a()
+  protected void onTroopAppHasNew(boolean paramBoolean, String paramString)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new bevn();
-      }
-      return a;
+    if ((!paramBoolean) || (!paramString.equals(bevl.a(this.a))) || (bevl.a(this.a) == null) || (bevl.a(this.a).hasDestory)) {
+      return;
     }
-    finally {}
-  }
-  
-  public int a()
-  {
-    return bhnv.a(BaseApplication.getContext());
-  }
-  
-  public String a()
-  {
-    try
+    if (this.a.a != null)
     {
-      String str = AppNetConnInfo.getCurrentAPN();
-      return str;
+      this.a.a.a(4);
+      this.a.a.c(75);
+      this.a.a.a();
+      return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bevn
  * JD-Core Version:    0.7.0.1
  */

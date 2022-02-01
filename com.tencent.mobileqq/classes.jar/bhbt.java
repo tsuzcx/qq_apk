@@ -1,27 +1,39 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView;
-import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView.1;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class bhbt
-  implements Animator.AnimatorListener
+  implements TextWatcher
 {
-  public bhbt(PhantomPicView.1 param1) {}
+  public bhbt(ClearableEditText paramClearableEditText) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.this$0.c();
+    paramCharSequence = this.a.getText().toString();
+    if (this.a.isFocused())
+    {
+      if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {
+        this.a.setClearButtonVisible(false);
+      }
+    }
+    else {
+      return;
+    }
+    if ((ClearableEditText.a(this.a)) || (ClearableEditText.b(this.a)))
+    {
+      this.a.setClearButtonVisible(true);
+      return;
+    }
+    this.a.setClearButtonVisible(false);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhbt
  * JD-Core Version:    0.7.0.1
  */

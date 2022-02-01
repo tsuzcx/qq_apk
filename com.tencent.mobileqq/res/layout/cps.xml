@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/b8q" android:background="@drawable/dr2" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center_vertical" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="6.0dip" android:src="@drawable/glv" />
-        <TextView android:textSize="12.0sp" android:textColor="@color/bp" android:gravity="center" android:id="@id/mdl" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="5.0dip" android:text="深圳大学" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/mvv" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="4.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/gna" android:scaleType="centerInside" />
-    </LinearLayout>
-</FrameLayout>
+<RelativeLayout android:orientation="vertical" android:layout_width="105.0dip" android:layout_height="176.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.widget.AlphaClickableRelativeLayout android:id="@id/mts" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.profile.lifeachivement.LayerImageView android:id="@id/jnr" android:paddingLeft="0.0dip" android:paddingTop="3.5dip" android:paddingRight="0.0dip" android:paddingBottom="3.5dip" android:layout_width="105.0dip" android:layout_height="120.0dip" android:src="@drawable/com" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="24.0dip" android:textColor="@color/skin_aio_listen_together_grey" android:gravity="center_horizontal" android:id="@id/joj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="47.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/aez" android:gravity="center_horizontal" android:id="@id/jil" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxWidth="100.0dip" android:maxLines="2" android:layout_below="@id/jnr" android:layout_centerHorizontal="true" />
+    </com.tencent.widget.AlphaClickableRelativeLayout>
+    <com.tencent.widget.AlphaClickableTextView android:textSize="12.0dip" android:textColor="@color/aez" android:id="@id/jom" android:paddingLeft="5.0dip" android:paddingTop="5.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

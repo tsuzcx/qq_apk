@@ -1,45 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.NearByAssistantTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.os.AsyncTask;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class adji
-  implements adbw
+  implements Animation.AnimationListener
 {
-  public int a()
-  {
-    return 0;
-  }
+  public adji(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public boolean a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.NearByAssistantTmp localNearByAssistantTmp = new msg_svc.NearByAssistantTmp();
-    localNearByAssistantTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramMessageRecord = paramQQAppInterface.a().p(paramMessageRecord.frienduin);
-    if (paramMessageRecord != null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("nearby_assistant", 4, "发送附近人助手临时会话消息 有NearbyAssistantKey------>" + bhml.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
-      }
-      localNearByAssistantTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    this.a.a.execute(new Void[0]);
+    this.a.f = false;
+    if (this.a.d) {
+      this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    paramRoutingHead.nearby_assistant_tmp.set(localNearByAssistantTmp);
-    return true;
+    while (this.a.jdField_c_of_type_Boolean) {
+      return;
+    }
+    this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
   }
   
-  public int b()
-  {
-    return 8014;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

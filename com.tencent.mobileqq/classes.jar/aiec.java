@@ -1,20 +1,22 @@
-import android.os.Bundle;
-import android.os.IInterface;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
 
-public abstract interface aiec
-  extends IInterface
+public class aiec
+  extends bjtz
 {
-  public abstract void a();
-  
-  public abstract void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3, Bundle paramBundle);
-  
-  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
+  public Button a;
+  public TroopLabelLayout a;
+  public ImageView f;
+  public String f;
+  public TextView h;
+  public TextView i;
+  public TextView j;
+  public TextView k;
+  public TextView l;
+  public TextView m;
+  public TextView n;
 }
 
 

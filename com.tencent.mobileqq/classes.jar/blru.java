@@ -1,30 +1,47 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.DashboardAdapter.1;
+import java.util.LinkedList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class blru
-  extends Handler
+public class blru
+  extends RecyclerView.Adapter<blrv>
 {
-  public blru()
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<blrw> jdField_a_of_type_JavaUtilList;
+  
+  public blru(@NonNull Context paramContext)
   {
-    super(Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new LinkedList();
   }
   
-  public void handleMessage(Message paramMessage)
+  public blrv a(ViewGroup paramViewGroup, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (paramMessage.obj == null);
-      paramMessage = ((WeakReference)paramMessage.obj).get();
-    } while ((paramMessage == null) || (!(paramMessage instanceof blrr)));
-    ((blrr)paramMessage).dismiss();
+    return new blrv(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558489, paramViewGroup, false));
+  }
+  
+  public void a(blrv paramblrv, int paramInt)
+  {
+    paramblrv.a((blrw)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramblrv, paramInt, getItemId(paramInt));
+  }
+  
+  public void a(@NonNull List<blrw> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.DashboardAdapter.1(this));
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

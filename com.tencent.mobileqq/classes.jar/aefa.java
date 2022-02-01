@@ -1,53 +1,75 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-public class aefa
-  extends anuw
+class aefa
+  extends asbj
 {
-  public aefa(ChatSettingActivity paramChatSettingActivity) {}
+  aefa(aeey paramaeey) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  protected void onFileTransferEnd(boolean paramBoolean, long paramLong1, long paramLong2, String arg6, int paramInt1, int paramInt2, String paramString2)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
-    {
-      if ((paramBoolean) && (paramObject != null))
+    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferEnd");
+    if (!this.a.jdField_b_of_type_Boolean) {
+      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
       {
-        if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.a(this.a).equals(paramObject.uin)))
+        this.a.a();
+        return;
+      }
+    }
+  }
+  
+  protected void onFileTransferProgress(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferProgress");
+    if (this.a.jdField_a_of_type_JavaUtilList != null)
+    {
+      paramInt = 0;
+      if (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
+        break label232;
+      }
+      if (((aeff)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a != paramLong1) {}
+    }
+    for (;;)
+    {
+      if (paramInt != -1) {
+        paramInt = 0;
+      }
+      for (;;)
+      {
+        if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
         {
-          String str = bhlg.a(this.a.app, ChatSettingActivity.a(this.a));
-          if ((!TextUtils.isEmpty(str)) && (!str.equals(ChatSettingActivity.f(this.a)))) {
-            ChatSettingActivity.c(this.a, str);
+          paramString = (FileManagerEntity)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+          if (paramString.uniseq != paramLong1) {
+            break label202;
+          }
+          if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
+            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf((int)(paramString.fProgress * 100.0F)) }));
           }
         }
-        if ((this.a.g != null) && (!TextUtils.isEmpty(ChatSettingActivity.a(this.a))) && (ChatSettingActivity.a(this.a).equals(paramObject.uin))) {
-          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a)), this.a.g);
-        }
+        return;
+        paramInt += 1;
+        break;
+        label202:
+        paramInt += 1;
       }
+      this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().c();
       return;
+      label232:
+      paramInt = -1;
     }
   }
   
-  protected void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onFileTransferStart(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    if ((paramBoolean1) && (this.a.d != null) && (paramBoolean2 != this.a.d.a()))
-    {
-      this.a.d.setOnCheckedChangeListener(null);
-      this.a.d.setChecked(paramBoolean2);
-      this.a.d.setOnCheckedChangeListener(this.a);
+    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferStart");
+    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(0) }));
     }
-  }
-  
-  protected void onSetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.d != null) && (paramBoolean2 != this.a.d.a()))
-    {
-      this.a.d.setOnCheckedChangeListener(null);
-      this.a.d.setChecked(paramBoolean2);
-      this.a.d.setOnCheckedChangeListener(this.a);
-    }
+    this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().c();
   }
 }
 

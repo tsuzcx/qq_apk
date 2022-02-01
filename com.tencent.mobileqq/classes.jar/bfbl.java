@@ -1,35 +1,18 @@
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.1;
+import java.io.File;
+import java.io.FilenameFilter;
+
 public class bfbl
-  extends bfbw
+  implements FilenameFilter
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b = false;
-  public String c;
-  public String d;
+  public bfbl(TroopFileTransferManager.1 param1) {}
   
-  public bfbl()
+  public boolean accept(File paramFile, String paramString)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append(" mResid:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" isExist:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" blockSize:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" netChg:");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(" startOffset:").append(this.jdField_a_of_type_Long);
-    return localStringBuilder.toString();
+    if (paramString == null) {
+      return false;
+    }
+    return paramString.startsWith("[Thumb]");
   }
 }
 

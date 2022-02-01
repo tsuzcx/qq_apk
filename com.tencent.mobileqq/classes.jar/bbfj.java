@@ -1,49 +1,24 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
 
-class bbfj
-  implements beuq
+public class bbfj
+  extends SosoInterface.OnLocationListener
 {
-  bbfj(bbfg parambbfg) {}
-  
-  public void onResp(bevm parambevm)
+  public bbfj(NetSearchEngine paramNetSearchEngine, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    Object localObject = (FilterDesc)parambevm.jdField_a_of_type_Bevl.a();
-    if (parambevm.jdField_a_of_type_Int != 0) {
-      lbj.c("CaptureVideoFilterManager", "download file failed. errorCode: " + parambevm.b + ", errorMsg: " + parambevm.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
-    }
-    for (;;)
-    {
-      return;
-      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(parambevm.jdField_a_of_type_Bevl.c)))
-      {
-        lbj.c("CaptureVideoFilterManager", "download file failed: md5 is not match.");
-        bhmi.d(parambevm.jdField_a_of_type_Bevl.c);
-        return;
-      }
-      lbj.c("CaptureVideoFilterManager", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
-      try
-      {
-        localObject = bbfg.b;
-        bhmi.a(parambevm.jdField_a_of_type_Bevl.c, (String)localObject, false);
-        bhmi.d(parambevm.jdField_a_of_type_Bevl.c);
-        if ((bbfg.a(this.a).decrementAndGet() == 0) && (bbfg.a(this.a) != null))
-        {
-          bbfg.a(this.a).a(true);
-          return;
-        }
-      }
-      catch (IOException parambevm)
-      {
-        parambevm.printStackTrace();
-        lbj.c("CaptureVideoFilterManager", "unzip file failed.");
-      }
-    }
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramInt == 0)
+    {
+      NetSearchEngine.a = paramSosoLbsInfo.mLocation.mLat02;
+      NetSearchEngine.b = paramSosoLbsInfo.mLocation.mLon02;
+    }
+  }
 }
 
 

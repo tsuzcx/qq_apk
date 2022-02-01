@@ -1,48 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StReply;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
+import com.tribe.async.reactive.SimpleObserver;
 
-class voz
-  implements vwd
+public class voz
+  extends SimpleObserver<ErrorMessage>
 {
-  voz(vow paramvow) {}
+  private voz(BasePublishTask paramBasePublishTask) {}
   
-  public void a(FeedCloudMeta.StComment paramStComment)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    QLog.d("QCircleReplyMessagePresenter", 1, "addFakeComment stComment" + paramStComment.id.get());
+    if (paramErrorMessage.isSuccess())
+    {
+      this.a.a(new ErrorMessage());
+      return;
+    }
+    this.a.a(paramErrorMessage);
   }
   
-  public void a(FeedCloudMeta.StReply paramStReply)
+  public void onCancel() {}
+  
+  public void onComplete() {}
+  
+  public void onError(@NonNull Error paramError)
   {
-    QLog.d("QCircleReplyMessagePresenter", 1, "addFakeReply stReply" + paramStReply.id.get());
-    vba localvba = vow.a(this.a);
-    if (localvba != null)
+    if ((paramError instanceof ErrorMessage))
     {
-      if (this.a.a != 1) {
-        break label140;
-      }
-      vow.a(this.a, localvba, 7);
-    }
-    for (;;)
-    {
-      localvba.a = paramStReply;
-      paramStReply = vow.a(this.a);
-      if (TextUtils.isEmpty(paramStReply)) {
-        break;
-      }
-      QLog.d("QCircleReplyMessagePresenter", 1, "getFakeReplysKey" + paramStReply);
-      paramStReply = vvz.a().a(paramStReply, localvba);
-      vow.a(this.a).a(paramStReply);
-      vow.a(this.a).notifyDataSetChanged();
+      this.a.a((ErrorMessage)paramError);
       return;
-      label140:
-      if (this.a.a == 2) {
-        vow.a(this.a, localvba, 11);
-      }
     }
-    QLog.d("QCircleReplyMessagePresenter", 1, "getFakeReplysKey error");
+    this.a.a(new ErrorMessage(940005, "upload file fail:" + paramError));
   }
 }
 

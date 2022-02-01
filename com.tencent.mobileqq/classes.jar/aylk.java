@@ -1,18 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-class aylk
-  implements DialogInterface.OnClickListener
+public class aylk
+  extends RecyclerView.ViewHolder
 {
-  aylk(aykx paramaykx) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public RelativeLayout a;
+  public MessageProgressView a;
+  public ImageView b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aylk(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, View paramView)
   {
-    axxb.a(this.a.a, 1032);
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.bindphone", 2, "openBindPhonePage");
-    }
+    super(paramView);
+    float f = 2.0F * PersonalityLabelGalleryActivity.a(paramPersonalityLabelGalleryActivity);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131372508));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372449));
+    ((CornerImageView)this.jdField_a_of_type_AndroidWidgetImageView).setRadius(f);
+    ((CornerImageView)this.jdField_a_of_type_AndroidWidgetImageView).setPressMask(true);
+    this.b = ((ImageView)paramView.findViewById(2131366305));
+    ((CornerImageView)this.b).setRadius(f);
   }
 }
 

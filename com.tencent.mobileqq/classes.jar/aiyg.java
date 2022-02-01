@@ -1,45 +1,21 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.9.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class aiyg
+  extends zrv
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  public aiyg(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void a()
+  public void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceTextBottomViewHelper", 2, "hideBottom");
+    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
+    while (!paramBoolean) {
+      return;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.bottomMargin = 0;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-  }
-  
-  public void a(VoiceTextPanel paramVoiceTextPanel)
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramVoiceTextPanel.findViewById(2131363632));
-    this.jdField_a_of_type_AndroidViewView = paramVoiceTextPanel.findViewById(2131369944);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceTextBottomViewHelper", 2, "showBottom");
-    }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.bottomMargin = bdep.a(75.0F);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-  }
-  
-  public void c()
-  {
-    b();
+    ThreadManagerV2.getUIHandlerV2().post(new ChatHistoryTroopFileFragment.9.1(this, paramLong1, paramLong2));
   }
 }
 

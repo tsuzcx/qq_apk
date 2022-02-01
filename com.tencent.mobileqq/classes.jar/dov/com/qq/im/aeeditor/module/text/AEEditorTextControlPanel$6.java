@@ -5,7 +5,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
-import bpjt;
+import bmmp;
 
 public class AEEditorTextControlPanel$6
   implements Runnable
@@ -15,7 +15,7 @@ public class AEEditorTextControlPanel$6
   public void run()
   {
     Object localObject = ObjectAnimator.ofFloat(AEEditorTextControlPanel.a(this.this$0), "translationY", new float[] { 150.0F, 0.0F });
-    ((ObjectAnimator)localObject).addListener(new bpjt(this));
+    ((ObjectAnimator)localObject).addListener(new bmmp(this));
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.play((Animator)localObject);
     localAnimatorSet.setInterpolator(new DecelerateInterpolator());

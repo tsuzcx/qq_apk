@@ -1,16 +1,16 @@
 package com.tencent.qidian;
 
-import bkgt;
+import bily;
 import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
 
 public class QidianManager$2
   implements Runnable
 {
-  public QidianManager$2(bkgt parambkgt, BmqqUserSimpleInfo paramBmqqUserSimpleInfo) {}
+  public QidianManager$2(bily parambily, BmqqUserSimpleInfo paramBmqqUserSimpleInfo) {}
   
   public void run()
   {
-    bkgt.a(this.this$0, this.a);
+    bily.a(this.this$0, this.a);
   }
 }
 

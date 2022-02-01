@@ -1,20 +1,17 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aggd
-  implements aojk
+class aggd
+  extends aghj
 {
-  public aggd(BaseBubbleBuilder paramBaseBubbleBuilder, Intent paramIntent) {}
-  
-  public void a(Object paramObject)
+  aggd(agcw paramagcw)
   {
-    if ((paramObject instanceof String))
-    {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a.startActivity(this.jdField_a_of_type_AndroidContentIntent);
-    }
+    super(paramagcw, null);
+  }
+  
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new aaur(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 

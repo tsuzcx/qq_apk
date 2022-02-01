@@ -1,14 +1,12 @@
-public abstract interface rek<T extends rej>
+import tencent.im.oidb.articlesummary.feeds_info.VisibleShowInfo;
+
+public final class rek
+  implements psw<feeds_info.VisibleShowInfo, rfh>
 {
-  public abstract void a(T paramT);
-  
-  public abstract void a(T paramT, int paramInt1, int paramInt2);
-  
-  public abstract void a(T paramT, int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void b(T paramT, int paramInt1, int paramInt2);
-  
-  public abstract void c(T paramT, int paramInt1, int paramInt2);
+  public rfh a(feeds_info.VisibleShowInfo paramVisibleShowInfo)
+  {
+    return rfh.a(paramVisibleShowInfo);
+  }
 }
 
 

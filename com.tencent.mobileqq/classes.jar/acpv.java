@@ -1,14 +1,24 @@
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class acpv
+public class acpv
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
+  public acpv(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public boolean a()
+  public void onClick(View paramView)
   {
-    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c));
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      AddFriendVerifyActivity.c(this.a);
+    }
   }
 }
 

@@ -1,25 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import org.jetbrains.annotations.NotNull;
 
 class rnt
-  extends Handler
+  implements ooc
 {
-  public rnt(rnl paramrnl, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  rnt(rno paramrno) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(@NotNull Runnable paramRunnable)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (rnl.a(this.a) == null);
-    rnl.a(this.a).a(4, null, null, 0L);
+    ThreadManagerV2.excute(paramRunnable, 16, null, false);
   }
 }
 

@@ -1,18 +1,32 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import android.util.Log;
+import java.util.ArrayList;
 
-public abstract class avkb
-  extends RecyclerView.ViewHolder
+public class avkb
 {
-  public avkb(Context paramContext, View paramView, ViewGroup paramViewGroup)
+  public static avjt a(String paramString, boolean paramBoolean)
   {
-    super(paramView);
+    if ((paramString != null) && (paramString.length() >= 0))
+    {
+      if (paramBoolean) {}
+      for (;;)
+      {
+        try
+        {
+          paramString = new avkf(paramString).a();
+          if ((paramString == null) || (paramString.a.size() <= 0)) {
+            break;
+          }
+          return paramString;
+        }
+        catch (Exception paramString)
+        {
+          Log.e("LyricParseHelper", "parse exception:", paramString);
+        }
+        paramString = new avkc(paramString).a();
+      }
+    }
+    return null;
   }
-  
-  public abstract void a(FeedsItemData paramFeedsItemData);
 }
 
 

@@ -1,40 +1,35 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
-public class lot
+class lot
+  extends ljf
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  lot(los paramlos) {}
   
-  public static lot a()
+  private void b(long paramLong)
   {
-    lkk locallkk = lfo.a(BaseApplicationImpl.getContext());
-    if (!locallkk.a())
-    {
-      lot locallot = new lot();
-      if (locallot.a(locallkk)) {}
-      return locallot;
-    }
-    return null;
+    Message localMessage = this.a.a.obtainMessage(4);
+    localMessage.obj = Long.valueOf(paramLong);
+    localMessage.sendToTarget();
   }
   
-  public boolean a(lkk paramlkk)
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    try
-    {
-      this.jdField_a_of_type_Int = paramlkk.a("OpenGLBlowUp/IsOpen", 0);
-      this.b = paramlkk.a("OpenGLBlowUp/width", 0);
-      this.c = paramlkk.a("OpenGLBlowUp/level", 0);
-      this.jdField_a_of_type_JavaLangString = paramlkk.a("OpenGLBlowUp/versionname", "");
-      if (QLog.isColorLevel()) {
-        QLog.i("RendererConfig", 2, "OpenGLSharpenConfig isOpen: " + this.jdField_a_of_type_Int + " width: " + this.b + " level: " + this.c + " versionName: " + this.jdField_a_of_type_JavaLangString);
-      }
-      return true;
+    QLog.w("EffectCtrlBase", 1, "onAfterOpenCamera, success[" + paramBoolean + "], preSessionType[" + paramInt + "], seq[" + paramLong + "]");
+    if (paramBoolean) {
+      b(paramLong);
     }
-    catch (Exception paramlkk) {}
-    return false;
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    long l = AudioHelper.b();
+    QLog.w("EffectCtrlBase", 1, "onAfterReopenCamera, success[" + paramBoolean + "], seq[" + l + "]");
+    if (paramBoolean) {
+      b(l);
+    }
   }
 }
 

@@ -1,14 +1,27 @@
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class xai
-  extends wip
+class xai
+  implements vng
 {
-  public List<ydb> a;
+  xai(xah paramxah) {}
   
-  public xai(ErrorMessage paramErrorMessage)
+  public void a(String paramString, int paramInt)
   {
-    this.a = paramErrorMessage;
+    xvv.d(this.a.a.b, "save -info download suc , start watermark ,vid:%s", new Object[] { xah.a(this.a).mVid });
+    wkp.a(xah.a(this.a), xah.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
+  }
+  
+  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
+  {
+    xvv.d(this.a.a.b, "save video -info download error , vid:%s , error :%s", new Object[] { xah.a(this.a).mVid, paramErrorMessage.toString() });
+    wkp.a(xah.a(this.a), xah.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    xvv.d(this.a.a.b, "save video -info download cancel , vid:%s ", new Object[] { xah.a(this.a).mVid });
+    wkp.a(xah.a(this.a), xah.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
   }
 }
 

@@ -1,239 +1,324 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import android.os.ResultReceiver;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QWalletPayBridge;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.widget.CircleFileStateView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class alig
+  extends BaseAdapter
 {
-  public static String a(String paramString)
+  private aczw jdField_a_of_type_Aczw;
+  private alii jdField_a_of_type_Alii;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private final String jdField_a_of_type_JavaLangString = "ChatHistoryFileAdapter";
+  private List<Object> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private View.OnClickListener b;
+  
+  public alig(Context paramContext, List<Object> paramList, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2, aczw paramaczw)
   {
-    String str = "";
-    if (paramString.contains("pre_code="))
-    {
-      str = paramString.substring(paramString.indexOf("pre_code="));
-      paramString = str;
-      if (str.contains("&")) {
-        paramString = str.substring(0, str.indexOf("&"));
-      }
-      str = paramString;
-      if (paramString.contains("=")) {
-        str = paramString.split("=")[1];
-      }
-    }
-    return str;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener1;
+    this.b = paramOnClickListener2;
+    this.jdField_a_of_type_Aczw = paramaczw;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
   }
   
-  public static JSONObject a(int paramInt, Bundle paramBundle, Activity paramActivity)
+  public void a(alii paramalii)
   {
-    if (paramInt == 0)
+    this.jdField_a_of_type_Alii = paramalii;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject2 = getItem(paramInt);
+    Object localObject1;
+    if ((localObject2 instanceof FileManagerEntity))
     {
+      localObject1 = paramView;
       try
       {
-        Object localObject = paramBundle.getString("grapH5CommonHbResult");
-        if (!TextUtils.isEmpty((CharSequence)localObject))
+        localFileManagerEntity = (FileManagerEntity)localObject2;
+        if (paramView == null) {
+          break label465;
+        }
+        localObject1 = paramView;
+        if (!(paramView.getTag() instanceof alih)) {
+          break label465;
+        }
+        localObject1 = paramView;
+        localObject2 = (alih)paramView.getTag();
+        localObject1 = paramView;
+        aszt.a(((alih)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity);
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_JavaLangObject = localFileManagerEntity;
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setOnClickListener(this.b);
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setTag(localObject2);
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setProgress((int)(localFileManagerEntity.fProgress * 100.0F));
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setProgressRingWidth(3.0F);
+        localObject1 = paramView;
+        if (aszt.a(localFileManagerEntity.fileName) != 0) {
+          break label763;
+        }
+        localObject1 = paramView;
+        if (!FileUtils.fileExistsAndNotEmpty(localFileManagerEntity.getFilePath())) {
+          break label693;
+        }
+        localObject1 = paramView;
+        aszt.a(((alih)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity.getFilePath(), localFileManagerEntity.nFileType);
+      }
+      catch (Exception paramView)
+      {
+        for (;;)
         {
-          paramBundle = new JSONObject((String)localObject);
-          if (QLog.isColorLevel()) {
-            QLog.i("H5HbUtil", 2, "grapH5Json: " + paramBundle);
-          }
-          if (paramBundle.optJSONObject("hb_data") != null)
+          FileManagerEntity localFileManagerEntity;
+          paramView.printStackTrace();
+          paramView = (View)localObject1;
+          continue;
+          localObject1 = paramView;
+          if (FileUtils.fileExistsAndNotEmpty(localFileManagerEntity.strThumbPath))
           {
-            localObject = new JSONObject();
-            ((JSONObject)localObject).put("viewTag", "showHbDetail");
-            ((JSONObject)localObject).put("extra_data", paramBundle.optJSONObject("hb_data"));
-            paramBundle = new Bundle();
-            paramBundle.putString("json", ((JSONObject)localObject).toString());
-            paramBundle.putString("callbackSn", "0");
-            PayBridgeActivity.a(paramActivity, 5, paramBundle, null);
-            return null;
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setDefaultImage(2130844201);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncImage(localFileManagerEntity.strThumbPath);
           }
-          paramActivity = a(paramBundle.optJSONObject("detail"));
-          paramBundle.remove("detail");
-          paramBundle.put("detail_data", paramActivity);
-        }
-        else
-        {
-          paramActivity = new JSONObject();
-          paramBundle = paramBundle.getString("detail");
-          if (!TextUtils.isEmpty(paramBundle))
+          else
           {
-            paramBundle = a(new JSONObject(paramBundle));
-            paramBundle.remove("retcode");
-            paramBundle.remove("retmsg");
-            paramActivity.put("detail_data", paramBundle);
+            localObject1 = paramView;
+            aszt.a(((alih)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity.fileName, localFileManagerEntity.nFileType);
+            continue;
+            localObject1 = paramView;
+            aszt.a(((alih)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileManagerEntity);
+            continue;
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(1);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_Int = 2;
+            continue;
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_Int = 3;
+            continue;
+            localObject1 = paramView;
+            bool = FileUtil.isFileExists(localFileManagerEntity.getFilePath());
+            localObject1 = paramView;
+            if (localFileManagerEntity.getCloudType() != 3)
+            {
+              localObject1 = paramView;
+              if ((localFileManagerEntity.getCloudType() != 5) && (!bool)) {}
+            }
+            else
+            {
+              localObject1 = paramView;
+              ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
+              localObject1 = paramView;
+              ((alih)localObject2).jdField_a_of_type_Int = 0;
+              continue;
+            }
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_Int = 1;
+            continue;
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_Int = 3;
+            continue;
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_Int = 0;
+            continue;
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_Int = 1;
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+            continue;
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_Int = 0;
+            continue;
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_Int = 0;
+            continue;
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_Int = 1;
+            continue;
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_Int = 2;
+            continue;
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_Int = 1;
+            continue;
+            localObject1 = paramView;
+            ((alih)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
           }
-          paramActivity.put("retcode", 0);
-          paramActivity.put("retmsg", "ok");
-          paramBundle = paramActivity;
         }
       }
-      catch (Exception paramBundle)
+      localObject1 = paramView;
+      ((alih)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText(localFileManagerEntity.fileName);
+      localObject1 = paramView;
+      if (5 != localFileManagerEntity.cloudType)
       {
-        paramBundle.printStackTrace();
-        paramBundle = null;
+        localObject1 = paramView;
+        aszt.b(localFileManagerEntity);
+      }
+      localObject1 = paramView;
+      switch (localFileManagerEntity.status)
+      {
       }
     }
-    else
+    for (;;)
     {
-      paramActivity = new JSONObject();
-      for (;;)
+      localObject1 = paramView;
+      ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
+      localObject1 = paramView;
+      if (this.jdField_a_of_type_Boolean)
       {
-        try
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+        localObject1 = paramView;
+        if (this.jdField_a_of_type_Alii == null) {
+          break label1312;
+        }
+        localObject1 = paramView;
+      }
+      label1312:
+      for (boolean bool = this.jdField_a_of_type_Alii.a(localFileManagerEntity);; bool = false)
+      {
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+        localObject1 = paramView;
+        aszt.a(((alih)localObject2).b, localFileManagerEntity);
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        label465:
+        localObject1 = paramView;
+        localObject2 = new alih(this);
+        localObject1 = paramView;
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560753, paramViewGroup, false);
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376021));
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localObject2);
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView = ((CircleFileStateView)paramView.findViewById(2131361941));
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131366644));
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366631));
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366642));
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
+        localObject1 = paramView;
+        ((alih)localObject2).b = ((TextView)paramView.findViewById(2131366629));
+        localObject1 = paramView;
+        ((alih)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncClipSize(AIOUtils.dp2px(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+        localObject1 = paramView;
+        paramView.setTag(localObject2);
+        break;
+        label693:
+        label763:
+        localObject1 = paramView;
+        if ((localObject2 instanceof String))
         {
-          paramBundle = paramBundle.getString("retmsg");
-          if (!TextUtils.isEmpty(paramBundle))
-          {
-            paramActivity.put("retmsg", new JSONObject(paramBundle).optString("err_msg"));
-            paramActivity.put("retcode", paramInt);
-            paramBundle = paramActivity;
+          if ((paramView == null) || (!(paramView.getTag() instanceof TextView))) {
+            break label1279;
           }
+          localObject1 = (TextView)paramView.getTag();
         }
-        catch (JSONException paramBundle)
+        for (;;)
         {
-          paramBundle.printStackTrace();
-          paramBundle = paramActivity;
+          ((TextView)localObject1).setText((String)localObject2);
+          localObject1 = paramView;
+          paramView = (View)localObject1;
+          break;
+          label1279:
+          paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560777, null);
+          localObject1 = (TextView)paramView.findViewById(2131378381);
+          paramView.setTag(localObject1);
         }
-        paramActivity.put("retmsg", "error when grap hb");
       }
-    }
-    return paramBundle;
-  }
-  
-  public static JSONObject a(AppInterface paramAppInterface, JSONObject paramJSONObject)
-  {
-    String str4 = paramJSONObject.optString("listid");
-    String str1 = paramJSONObject.optString("uin");
-    if ((!bhsr.a(str1)) && (str1.equals(paramAppInterface.getCurrentAccountUin())) && (!bhsr.a(str4)))
-    {
-      String str2 = paramJSONObject.optString("feedsid");
-      String str3 = paramJSONObject.optString("token");
-      str4 = str4 + "_" + a(str3);
-      if (QLog.isColorLevel()) {
-        QLog.i("H5HbUtil", 2, "cache key: " + str4);
-      }
-      bmrz localbmrz = bmrz.a();
-      paramJSONObject = localbmrz.b(str4);
-      paramAppInterface = paramJSONObject;
-      if (bhsr.a(paramJSONObject))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("H5HbUtil", 2, "get cache from disk");
-        }
-        paramAppInterface = localbmrz.a(str1, str4, SharedPreferencesProxyManager.getInstance().getProxy("qb_tenpay_h5_common_hb_" + str1, 4));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("H5HbUtil", 2, "paramForGarpH5CommonHb:" + paramAppInterface);
-      }
-      if (!TextUtils.isEmpty(paramAppInterface))
-      {
-        paramAppInterface = new JSONObject(paramAppInterface);
-        paramAppInterface.put("feedsid", str2);
-        paramAppInterface.put("uin", str1);
-        paramAppInterface.put("token", str3);
-        paramAppInterface.put("viewTag", "grapH5CommonHb");
-        return paramAppInterface;
-      }
-    }
-    return null;
-  }
-  
-  private static JSONObject a(JSONObject paramJSONObject)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramJSONObject != null)
-    {
-      localJSONObject = paramJSONObject.optJSONObject("send_object");
-      String str = localJSONObject.optString("lucky_uin");
-      localJSONObject.remove("lucky_uin");
-      if (!bhsr.a(str)) {
-        localJSONObject.put("lucky_name", alib.a(str));
-      }
-      paramJSONObject.remove("send_object");
-      paramJSONObject.put("send_object", localJSONObject);
-      return paramJSONObject;
-    }
-    return localJSONObject;
-  }
-  
-  public static void a(AppInterface paramAppInterface, String paramString, ResultReceiver paramResultReceiver)
-  {
-    if (paramAppInterface == null) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("extra_data", paramString);
-    localBundle.putString("callbackSn", "0");
-    paramString = new Bundle();
-    paramString.putInt("PayInvokerId", 22);
-    Parcel localParcel = Parcel.obtain();
-    paramResultReceiver.writeToParcel(localParcel, 0);
-    localParcel.setDataPosition(0);
-    paramResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(localParcel);
-    localParcel.recycle();
-    paramString.putParcelable("_qwallet_payresult_receiver", paramResultReceiver);
-    paramString.putBundle("_qwallet_payparams_data", localBundle);
-    paramString.putString("_qwallet_payparams_tag", "grapH5CommonHb");
-    QWalletPayBridge.launchBackground(BaseApplicationImpl.sApplication, paramAppInterface, paramString);
-  }
-  
-  public static void a(AppInterface paramAppInterface, JSONObject paramJSONObject, String paramString, ResultReceiver paramResultReceiver)
-  {
-    String str1 = paramJSONObject.optString("listid");
-    String str2 = paramJSONObject.optString("uin");
-    String str3 = paramJSONObject.optString("offset");
-    String str4 = paramJSONObject.optString("limit");
-    if ((!TextUtils.isEmpty(str2)) && (str2.equals(paramAppInterface.getCurrentAccountUin())) && (!TextUtils.isEmpty(str1)))
-    {
-      paramJSONObject = new JSONObject();
-      paramJSONObject.put("listid", str1);
-      paramJSONObject.put("uin", str2);
-      paramJSONObject.put("offset", str3);
-      paramJSONObject.put("limit", str4);
-      paramJSONObject.put("viewTag", paramString);
-      b(paramAppInterface, paramJSONObject.toString(), paramResultReceiver);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("H5HbUtil", 2, "notifyViewUpdate extstr = " + paramJSONObject);
-  }
-  
-  private static void b(AppInterface paramAppInterface, String paramString, ResultReceiver paramResultReceiver)
-  {
-    if (paramAppInterface == null) {
-      return;
-    }
-    try
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("extra_data", paramString);
-      localBundle.putString("callbackSn", "0");
-      paramString = new Bundle();
-      paramString.putInt("PayInvokerId", 22);
-      Parcel localParcel = Parcel.obtain();
-      paramResultReceiver.writeToParcel(localParcel, 0);
-      localParcel.setDataPosition(0);
-      paramResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(localParcel);
-      localParcel.recycle();
-      paramString.putParcelable("_qwallet_payresult_receiver", paramResultReceiver);
-      paramString.putBundle("_qwallet_payparams_data", localBundle);
-      paramString.putString("_qwallet_payparams_tag", "redgiftH5CommonDetail");
-      QWalletPayBridge.launchBackground(BaseApplicationImpl.sApplication, paramAppInterface, paramString);
-      return;
-    }
-    catch (Throwable paramAppInterface)
-    {
-      paramAppInterface.printStackTrace();
     }
   }
 }

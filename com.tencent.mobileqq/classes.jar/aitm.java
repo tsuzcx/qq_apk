@@ -1,41 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 
-public class aitm
-  extends aitn
+class aitm
+  implements ViewPager.OnPageChangeListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  aitm(aitl paramaitl) {}
   
-  public JSONObject a()
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
+    EmoticonFromGroupEntity localEmoticonFromGroupEntity = aitl.a(this.a).a(paramInt);
+    if (localEmoticonFromGroupEntity != null)
     {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("user_id", this.a);
-      localJSONObject2.put("keyword", this.b);
-      localJSONObject2.put("appid", this.e);
-      localJSONObject2.put("expose_md5s", this.f);
-      localJSONObject2.put("expose_urls", this.g);
-      localJSONObject2.put("click_md5", this.h);
-      localJSONObject2.put("click_url", this.i);
-      localJSONObject2.put("aio_type", this.c);
-      localJSONObject2.put("mobile_type", this.j);
-      localJSONObject2.put("to_user_id", this.d);
-      localJSONObject2.put("passthough", this.k);
-      localJSONObject1.put("dcId", this.l);
-      localJSONObject1.put("data", localJSONObject2);
-      return localJSONObject1;
+      aitl.a(this.a, localEmoticonFromGroupEntity);
+      aitl.b(this.a, localEmoticonFromGroupEntity);
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("StickerRecReportData", 2, "convert error:" + localException);
-    }
-    return localJSONObject1;
   }
 }
 

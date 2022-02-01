@@ -1,17 +1,22 @@
-import java.io.File;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface atcu
-  extends bhue
+public class atcu
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void a(File paramFile);
+  public atcu(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
   
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void f(int paramInt);
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    QFileDebugSettingFragment.a(this.a).a().a = paramBoolean;
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atcu
  * JD-Core Version:    0.7.0.1
  */

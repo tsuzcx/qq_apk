@@ -1,61 +1,108 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
-class behu
-  implements behs
+public class behu
+  implements Manager
 {
-  private IBinder a;
+  private long a;
+  public beht a;
   
-  behu(IBinder paramIBinder)
+  public behu(QQAppInterface paramQQAppInterface) {}
+  
+  public long a()
   {
-    this.a = paramIBinder;
+    return this.jdField_a_of_type_Long;
   }
   
-  public IBinder asBinder()
+  public beht a(long paramLong, boolean paramBoolean, TroopChatPie paramTroopChatPie, String paramString)
   {
-    return this.a;
-  }
-  
-  public void onComplete(String paramString, int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.theme.IDownloadListener");
-      localParcel1.writeString(paramString);
-      localParcel1.writeInt(paramInt);
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopClassControllerMan", 2, "updateTroopAioClassUI troopClassType" + paramLong + ", currentTroopClassType" + this.jdField_a_of_type_Long);
     }
-    finally
+    if ((paramLong != this.jdField_a_of_type_Long) && (this.jdField_a_of_type_Beht != null)) {
+      this.jdField_a_of_type_Beht.a(false, paramTroopChatPie, paramBoolean);
+    }
+    this.jdField_a_of_type_Beht = a(paramTroopChatPie, paramString);
+    if (this.jdField_a_of_type_Beht != null) {
+      this.jdField_a_of_type_Beht.a(true, paramTroopChatPie, paramBoolean);
+    }
+    for (;;)
     {
-      localParcel2.recycle();
-      localParcel1.recycle();
+      this.jdField_a_of_type_Long = paramLong;
+      return this.jdField_a_of_type_Beht;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopClassControllerMan", 2, "currenTroopClassController is null!!!");
+      }
     }
   }
   
-  public void onProgress(String paramString, long paramLong1, long paramLong2)
+  public beht a(TroopChatPie paramTroopChatPie, String paramString)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
+    if (TroopInfo.isHomeworkTroop(paramTroopChatPie.app, paramString))
     {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.theme.IDownloadListener");
-      localParcel1.writeString(paramString);
-      localParcel1.writeLong(paramLong1);
-      localParcel1.writeLong(paramLong2);
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
+      if (!(this.jdField_a_of_type_Beht instanceof beqp)) {
+        this.jdField_a_of_type_Beht = new beqp(paramTroopChatPie.app, paramTroopChatPie.getActivity(), paramTroopChatPie);
+      }
+      this.jdField_a_of_type_Long = 32L;
     }
-    finally
+    for (;;)
     {
-      localParcel2.recycle();
-      localParcel1.recycle();
+      return this.jdField_a_of_type_Beht;
+      if (TroopInfo.isFansTroop(paramTroopChatPie.app, paramString))
+      {
+        this.jdField_a_of_type_Long = 27L;
+      }
+      else
+      {
+        this.jdField_a_of_type_Beht = null;
+        this.jdField_a_of_type_Long = 0L;
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopClassControllerMan", 2, "getControllerByTroopUin null " + paramString);
+        }
+      }
     }
   }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Beht != null) {
+      this.jdField_a_of_type_Beht.c();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_Beht instanceof beqp)) {
+      this.jdField_a_of_type_Beht.a(beyy.b(paramInt));
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Beht != null) {
+      this.jdField_a_of_type_Beht.b(paramBoolean);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Beht != null) {
+      this.jdField_a_of_type_Beht.b();
+    }
+    this.jdField_a_of_type_Beht = null;
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Beht != null) {
+      this.jdField_a_of_type_Beht.a();
+    }
+  }
+  
+  public void onDestroy() {}
 }
 
 

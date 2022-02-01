@@ -1,35 +1,37 @@
-import android.app.Activity;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebAnimationUtils.3;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
 public class srp
-  implements Animation.AnimationListener
+  implements std
 {
-  public srp(FastWebAnimationUtils.3 param3) {}
+  public srp(FastWebActivity paramFastWebActivity, BaseData paramBaseData) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a()
   {
-    QLog.d("FastWebAnimationUtils", 1, "setAnimation onAnimationEnd");
-    paramAnimation = (AlphaAnimation)AnimationUtils.loadAnimation(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2130772186);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
+    return nwz.a().a();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation)
+  public BaseData a()
   {
-    QLog.d("FastWebAnimationUtils", 1, "setAnimation onAnimationRepeat");
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void a()
   {
-    QLog.d("FastWebAnimationUtils", 1, "setAnimation onAnimationStart");
+    FastWebActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+  }
+  
+  public void b()
+  {
+    if (AdData.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData))
+    {
+      AdData localAdData = (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+      if (localAdData.a != null) {
+        nwz.a().a(Long.valueOf(localAdData.a.mAdAid));
+      }
+    }
   }
 }
 

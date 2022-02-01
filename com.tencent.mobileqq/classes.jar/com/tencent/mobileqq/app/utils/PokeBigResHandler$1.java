@@ -3,10 +3,10 @@ package com.tencent.mobileqq.app.utils;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import beum;
-import bevo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.OldHttpEngine;
 
 class PokeBigResHandler$1
   implements Runnable
@@ -16,7 +16,7 @@ class PokeBigResHandler$1
   public void run()
   {
     PokeBigResHandler.a(true);
-    beum localbeum = new beum();
+    HttpNetReq localHttpNetReq = new HttpNetReq();
     SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.this$0.app.getApp());
     String str = this.this$0.app.getAccount();
     PokeBigResHandler.a(localSharedPreferences.getString(str + "_" + "aio_poke_res_url", ""));
@@ -26,11 +26,11 @@ class PokeBigResHandler$1
       PokeBigResHandler.a(false);
       return;
     }
-    localbeum.jdField_a_of_type_Beuq = PokeBigResHandler.a(this.this$0);
-    localbeum.jdField_a_of_type_JavaLangString = PokeBigResHandler.a();
-    localbeum.jdField_a_of_type_Int = 0;
-    localbeum.c = (PokeBigResHandler.b() + "poke.zip");
-    ((bevo)this.this$0.mApp.getNetEngine(0)).a(localbeum);
+    localHttpNetReq.mCallback = PokeBigResHandler.a(this.this$0);
+    localHttpNetReq.mReqUrl = PokeBigResHandler.a();
+    localHttpNetReq.mHttpMethod = 0;
+    localHttpNetReq.mOutPath = (PokeBigResHandler.b() + "poke.zip");
+    ((OldHttpEngine)this.this$0.mApp.getNetEngine(0)).sendReq(localHttpNetReq);
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bgpm;
+import beza;
 
 public final class HWTroopUtils$2
   implements Runnable
 {
-  public HWTroopUtils$2(bgpm parambgpm, int paramInt) {}
+  public HWTroopUtils$2(beza parambeza, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bgpm.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Beza.a(this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,29 +1,30 @@
-import android.content.Context;
-import java.util.ArrayList;
+import org.json.JSONObject;
 
 public class akct
 {
-  public ArrayList<akcu> a;
-  public int[] a;
-  public String[] a;
+  public int a;
+  public String a;
+  public JSONObject a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public akct()
+  public akct() {}
+  
+  public akct(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
   }
   
-  public void a(Context paramContext, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
+  public String toString()
   {
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt1;
-    String[] arrayOfString = new String[paramArrayOfInt2.length];
-    int i = 0;
-    while (i < paramArrayOfInt2.length)
-    {
-      arrayOfString[i] = paramContext.getString(paramArrayOfInt2[i]);
-      this.jdField_a_of_type_JavaUtilArrayList.add(new akcu(paramArrayOfInt1[i], arrayOfString[i]));
-      i += 1;
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = arrayOfString;
+    return "id: " + this.jdField_a_of_type_JavaLangString + " type: " + this.jdField_a_of_type_Int + " name: " + this.b + " params: " + this.jdField_a_of_type_OrgJsonJSONObject;
   }
 }
 

@@ -1,43 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class adjn
-  implements adbw
+  implements AdapterView.OnItemSelectedListener
 {
-  public int a()
-  {
-    return 10008;
-  }
+  public adjn(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public boolean a()
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(165);
-    paramQQAppInterface = paramQQAppInterface.a().f(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
-    if (paramQQAppInterface != null) {
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramQQAppInterface));
+    if (paramView == null) {
+      return;
     }
-    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    return true;
+    this.a.jdField_a_of_type_AndroidViewView = paramView;
+    this.a.jdField_a_of_type_Adjv.a(paramInt);
+    this.a.a(paramAdapterView, paramInt);
   }
   
-  public int b()
-  {
-    return 8043;
-  }
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

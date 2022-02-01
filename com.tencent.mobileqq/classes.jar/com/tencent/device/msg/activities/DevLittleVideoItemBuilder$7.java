@@ -1,8 +1,8 @@
 package com.tencent.device.msg.activities;
 
-import abur;
-import abye;
-import abzb;
+import aara;
+import aaun;
+import aavk;
 import android.text.TextUtils;
 import com.tencent.device.msg.data.MessageForDevLittleVideo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,17 +15,17 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DevLittleVideoItemBuilder$7
   implements Runnable
 {
-  public DevLittleVideoItemBuilder$7(abye paramabye, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
+  public DevLittleVideoItemBuilder$7(aaun paramaaun, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
   
   public void run()
   {
-    abur localabur = (abur)this.this$0.a.a(51);
-    abzb localabzb = (abzb)this.this$0.a.a(49);
+    aara localaara = (aara)this.this$0.a.getBusinessHandler(51);
+    aavk localaavk = (aavk)this.this$0.a.getBusinessHandler(49);
     for (;;)
     {
-      synchronized (localabzb.a)
+      synchronized (localaavk.a)
       {
-        Iterator localIterator = localabzb.a.entrySet().iterator();
+        Iterator localIterator = localaavk.a.entrySet().iterator();
         if (localIterator.hasNext())
         {
           if (((MessageRecord)((Map.Entry)localIterator.next()).getValue()).uniseq != this.a.uniseq) {
@@ -34,8 +34,8 @@ public class DevLittleVideoItemBuilder$7
           i = 1;
           if ((i == 0) && (!TextUtils.isEmpty(this.a.thumbFileKey)))
           {
-            long l = localabur.a(this.a.thumbFileKey, this.a.coverkey2, 2154);
-            localabzb.a.put(Long.valueOf(l), this.a);
+            long l = localaara.a(this.a.thumbFileKey, this.a.coverkey2, 2154);
+            localaavk.a.put(Long.valueOf(l), this.a);
           }
           return;
         }

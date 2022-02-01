@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-class aikt
-  implements DialogInterface.OnClickListener
+public class aikt
+  implements BusinessObserver
 {
-  aikt(aikq paramaikq, boolean paramBoolean) {}
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Aikq.Z = true;
-    aikq.c(this.jdField_a_of_type_Aikq, this.jdField_a_of_type_Boolean);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBoolean, paramObject);
   }
 }
 

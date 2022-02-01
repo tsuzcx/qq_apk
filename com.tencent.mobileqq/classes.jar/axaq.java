@@ -1,24 +1,42 @@
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.Window;
-import android.widget.ProgressBar;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportProgressDialog;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
 
-public class axaq
+class axaq
+  implements Animation.AnimationListener
 {
-  public static ProgressDialog a(Context paramContext, String paramString)
+  axaq(awzr paramawzr) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Drawable localDrawable = paramContext.getResources().getDrawable(2130849606);
-    paramContext = new ReportProgressDialog(paramContext, 2131755824);
-    paramContext.show();
-    paramContext.getWindow().setContentView(2131558434);
-    paramContext.setContentView(2131558434);
-    ((TextView)paramContext.findViewById(2131365519)).setText(paramString);
-    ((ProgressBar)paramContext.findViewById(2131367008)).setIndeterminateDrawable(localDrawable);
-    return paramContext;
+    if (paramAnimation == awzr.b(this.a))
+    {
+      awzr.a(this.a).setVisibility(8);
+      awzr.a(this.a).setVisibility(4);
+      awzr.a(this.a).clearAnimation();
+      awzr.a(this.a).clearAnimation();
+      awzr.a(this.a).setBackgroundResource(2130849066);
+      awzr.a(this.a).setTextColor(this.a.a.getResources().getColor(2131166709));
+      awzr.b(this.a).setTextColor(this.a.a.getResources().getColor(2131166709));
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (paramAnimation == awzr.a(this.a))
+    {
+      awzr.a(this.a).setVisibility(0);
+      awzr.a(this.a).setVisibility(0);
+      awzr.a(this.a).setBackgroundResource(2130850593);
+      awzr.a(this.a).setTextColor(this.a.a.getResources().getColor(2131167006));
+      awzr.b(this.a).setTextColor(this.a.a.getResources().getColor(2131167006));
+    }
   }
 }
 

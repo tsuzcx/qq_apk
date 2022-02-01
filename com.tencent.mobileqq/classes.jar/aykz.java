@@ -1,54 +1,36 @@
-import android.content.Intent;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import java.util.HashSet;
 
-class aykz
-  implements View.OnClickListener
+public class aykz
+  implements Animator.AnimatorListener
 {
-  aykz(aykx paramaykx, String paramString) {}
+  public aykz(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, aylc paramaylc, View paramView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    bdlq localbdlq = new bdlq(this.jdField_a_of_type_Aykx.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).b("grp_lbs").c("data_card").d("nonlive_clk").e(aykx.a(this.jdField_a_of_type_Aykx).uin);
-    Object localObject;
-    if (aykx.a(this.jdField_a_of_type_Aykx).gender == 0)
-    {
-      localObject = "1";
-      localbdlq.a(new String[] { localObject }).a();
-      if (!this.jdField_a_of_type_JavaLangString.startsWith("mqqapi:")) {
-        break label188;
-      }
-      localObject = bhni.a(this.jdField_a_of_type_Aykx.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, this.jdField_a_of_type_Aykx.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-      if (localObject == null) {
-        break label157;
-      }
-      ((bhmr)localObject).a();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (aykx.a(this.jdField_a_of_type_Aykx).gender == 1)
-      {
-        localObject = "2";
-        break;
-      }
-      localObject = "0";
-      break;
-      label157:
-      QLog.i("NearbyProfileDisplayPanel", 1, "ja==null, jumpUrl=" + this.jdField_a_of_type_JavaLangString);
-      continue;
-      label188:
-      localObject = new Intent(this.jdField_a_of_type_Aykx.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aykx.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.startActivity((Intent)localObject);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Aylc.a));
+    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimator.height = -2;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a.remove(Long.valueOf(this.jdField_a_of_type_Aylc.a));
+    paramAnimator = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramAnimator.height = -2;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimator);
+    this.jdField_a_of_type_AndroidViewView.setTag(Boolean.valueOf(false));
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

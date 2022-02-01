@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.impl;
 
-import aayd;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -15,32 +14,33 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import bcsa;
-import begp;
-import bnrf;
+import bblk;
+import bkwm;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.text.QQText;
 import com.tencent.qphone.base.util.QLog;
-import qdo;
-import qdp;
-import qdq;
-import qdr;
-import qvm;
+import qjm;
+import qjn;
+import qjo;
+import qjp;
+import rck;
+import zuq;
 
 public class NativeAwesomeCommentView
   extends FrameLayout
   implements IView
 {
   public static int a;
-  ClickableSpan jdField_a_of_type_AndroidTextStyleClickableSpan = new qdo(this);
+  ClickableSpan jdField_a_of_type_AndroidTextStyleClickableSpan = new qjm(this);
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private qvm jdField_a_of_type_Qvm;
+  private rck jdField_a_of_type_Rck;
   private boolean jdField_a_of_type_Boolean;
   
   static
   {
-    jdField_a_of_type_Int = ((Integer)bnrf.a(qvm.i, Integer.valueOf(1))).intValue();
+    jdField_a_of_type_Int = ((Integer)bkwm.a(rck.i, Integer.valueOf(1))).intValue();
   }
   
   public NativeAwesomeCommentView(@NonNull Context paramContext)
@@ -63,7 +63,7 @@ public class NativeAwesomeCommentView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)inflate(getContext(), 2131560080, this).findViewById(2131379701));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)inflate(getContext(), 2131560086, this).findViewById(2131379484));
   }
   
   public static void setMaxLines(int paramInt)
@@ -107,45 +107,45 @@ public class NativeAwesomeCommentView
     measure(paramInt1, paramInt2);
   }
   
-  public void setAwesomeCommentInfo(qvm paramqvm)
+  public void setAwesomeCommentInfo(rck paramrck)
   {
     int i = 1;
-    if ((paramqvm == null) || (qvm.c == 1))
+    if ((paramrck == null) || (rck.c == 1))
     {
       setVisibility(8);
       QLog.d("ReadInJoyAwesomeCommentView", 2, "awesomeComment is null");
       return;
     }
     setVisibility(0);
-    QLog.d("ReadInJoyAwesomeCommentView", 2, "setAwesomeCommentInfo: " + paramqvm);
-    this.jdField_a_of_type_Qvm = paramqvm;
-    Object localObject1 = paramqvm.jdField_b_of_type_JavaLangString;
-    String str = bcsa.b(paramqvm.d);
-    Object localObject2 = bcsa.b(paramqvm.g);
+    QLog.d("ReadInJoyAwesomeCommentView", 2, "setAwesomeCommentInfo: " + paramrck);
+    this.jdField_a_of_type_Rck = paramrck;
+    Object localObject1 = paramrck.jdField_b_of_type_JavaLangString;
+    String str = bblk.b(paramrck.d);
+    Object localObject2 = bblk.b(paramrck.g);
     localObject2 = new SpannableString("  " + str + ": " + (String)localObject2);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
-    localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130842704);
+    localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130842750);
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
       localObject1 = URLDrawable.getDrawable((String)localObject1, localURLDrawableOptions);
-      ((URLDrawable)localObject1).setBounds(0, 0, paramqvm.jdField_a_of_type_Int * 2, paramqvm.jdField_b_of_type_Int * 2);
-      ((URLDrawable)localObject1).setCallback(new qdp(this, (SpannableString)localObject2));
-      ((URLDrawable)localObject1).setDownloadListener(new qdq(this, (SpannableString)localObject2));
-      ((SpannableString)localObject2).setSpan(new aayd((Drawable)localObject1), 0, 1, 17);
+      ((URLDrawable)localObject1).setBounds(0, 0, paramrck.jdField_a_of_type_Int * 2, paramrck.jdField_b_of_type_Int * 2);
+      ((URLDrawable)localObject1).setCallback(new qjn(this, (SpannableString)localObject2));
+      ((URLDrawable)localObject1).setDownloadListener(new qjo(this, (SpannableString)localObject2));
+      ((SpannableString)localObject2).setSpan(new zuq((Drawable)localObject1), 0, 1, 17);
     }
     if (!TextUtils.isEmpty(str)) {
       i = str.length() + 1;
     }
     ((SpannableString)localObject2).setSpan(this.jdField_a_of_type_AndroidTextStyleClickableSpan, 2, i + 1, 17);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(new begp((CharSequence)localObject2, 7, 16));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(new QQText((CharSequence)localObject2, 7, 16));
     if (jdField_a_of_type_Int != 0) {
       this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(jdField_a_of_type_Int);
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new qdr(this, paramqvm));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new qjp(this, paramrck));
       return;
       this.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2147483647);
     }

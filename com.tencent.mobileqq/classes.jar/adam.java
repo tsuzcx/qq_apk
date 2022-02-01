@@ -1,12 +1,15 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
-final class adam
-  implements Comparator<MessageRecord>
+public class adam
+  implements DialogInterface.OnClickListener
 {
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public adam(ChatSettingActivity paramChatSettingActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (int)(paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq);
+    ChatSettingActivity.c(this.a);
   }
 }
 

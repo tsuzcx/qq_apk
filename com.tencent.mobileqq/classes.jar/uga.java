@@ -1,28 +1,28 @@
-import UserGrowth.stSimpleMetaComment;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.weishi_new.comment.WsCommentView;
-import com.tencent.biz.pubaccount.weishi_new.comment.WsReplyContainer;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class uga
-  implements View.OnClickListener
+class uga
+  implements sew
 {
-  public uga(WsCommentView paramWsCommentView) {}
+  uga(ufd paramufd) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    if ((WsCommentView.a(this.a) != null) && (WsCommentView.a(this.a).replyList.size() > 0))
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      WsCommentView.a(this.a).a(paramView, 10, WsCommentView.a(this.a), WsCommentView.a(this.a));
-      this.a.jdField_a_of_type_Ugb.b.setVisibility(8);
-      this.a.jdField_a_of_type_Ugb.a.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsReplyContainer.setVisibility(0);
+      localJSONObject.put("video_vid", paramString1);
+      localJSONObject.put("retCode", paramInt);
+      this.a.callJs(paramString2, new String[] { localJSONObject.toString() });
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (JSONException paramString1)
+    {
+      for (;;)
+      {
+        paramString1.printStackTrace();
+      }
+    }
   }
 }
 

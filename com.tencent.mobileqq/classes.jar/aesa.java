@@ -1,23 +1,44 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.Friends;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aesa
-  implements View.OnClickListener
+  extends CardObserver
 {
-  public aesa(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public aesa(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
   
-  public void onClick(View paramView)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("set_display_type", 1);
-    PublicFragmentActivity.a(this.a.getActivity(), localIntent, QQSettingChatOperationFragment.class);
-    bdll.b(null, "CliOper", "", "", "0X800A22C", "0X800A22C", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!paramBoolean) {
+      return;
+    }
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
+    {
+      if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.uin)))
+      {
+        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+        aesg localaesg;
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localaesg = (aesg)localIterator.next();
+        } while ((localaesg.a == null) || (!(localaesg.a instanceof Friends)) || (!paramObject.uin.equals(((Friends)localaesg.a).uin)));
+      }
+      for (int i = 1; i != 0; i = 0)
+      {
+        UncommonlyUsedContactsActivity.a(this.a);
+        this.a.jdField_a_of_type_Aese.notifyDataSetChanged();
+        return;
+      }
+      break;
+    }
   }
 }
 

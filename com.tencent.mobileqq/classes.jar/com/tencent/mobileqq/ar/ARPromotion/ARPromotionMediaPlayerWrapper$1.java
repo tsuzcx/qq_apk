@@ -2,8 +2,8 @@ package com.tencent.mobileqq.ar.ARPromotion;
 
 import android.graphics.SurfaceTexture;
 import android.opengl.Matrix;
-import apfk;
-import apfl;
+import anyw;
+import anyx;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.filter.RenderBuffer;
 import com.tencent.ttpic.openapi.filter.TextureRender;
@@ -11,28 +11,28 @@ import com.tencent.ttpic.openapi.filter.TextureRender;
 public class ARPromotionMediaPlayerWrapper$1
   implements Runnable
 {
-  public ARPromotionMediaPlayerWrapper$1(apfk paramapfk) {}
+  public ARPromotionMediaPlayerWrapper$1(anyw paramanyw) {}
   
   public void run()
   {
     try
     {
-      if (apfk.a(this.this$0)) {
+      if (anyw.a(this.this$0)) {
         return;
       }
-      if (apfk.a(this.this$0) != null)
+      if (anyw.a(this.this$0) != null)
       {
-        apfk.a(this.this$0).updateTexImage();
-        apfk.a(this.this$0).getTransformMatrix(apfk.a(this.this$0));
-        apfk.a(this.this$0);
-        apfk.a(this.this$0);
-        Matrix.setIdentityM(apfk.b(this.this$0), 0);
-        apfk.a(this.this$0).bind();
-        apfk.a(this.this$0).drawTexture(36197, apfk.a(this.this$0), apfk.a(this.this$0), apfk.b(this.this$0));
-        apfk.a(this.this$0).unbind();
-        if ((apfk.b(this.this$0) == 2L) && (apfk.a(this.this$0) != null))
+        anyw.a(this.this$0).updateTexImage();
+        anyw.a(this.this$0).getTransformMatrix(anyw.a(this.this$0));
+        anyw.a(this.this$0);
+        anyw.a(this.this$0);
+        Matrix.setIdentityM(anyw.b(this.this$0), 0);
+        anyw.a(this.this$0).bind();
+        anyw.a(this.this$0).drawTexture(36197, anyw.a(this.this$0), anyw.a(this.this$0), anyw.b(this.this$0));
+        anyw.a(this.this$0).unbind();
+        if ((anyw.b(this.this$0) == 2L) && (anyw.a(this.this$0) != null))
         {
-          apfk.a(this.this$0).a(apfk.b(this.this$0), 0, apfk.a(this.this$0).getTexId());
+          anyw.a(this.this$0).a(anyw.b(this.this$0), 0, anyw.a(this.this$0).getTexId());
           QLog.d("ARWorldCupMediaPlayerWrapper", 2, "ARWorldCupMediaPlayerWrapper.drawFrame hardWare");
           return;
         }

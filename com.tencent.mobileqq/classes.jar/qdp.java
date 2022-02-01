@@ -1,25 +1,27 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import android.support.annotation.NonNull;
-import android.text.SpannableString;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qdp
-  implements Drawable.Callback
+class qdp
+  implements View.OnClickListener
 {
-  public qdp(NativeAwesomeCommentView paramNativeAwesomeCommentView, SpannableString paramSpannableString) {}
+  qdp(qdf paramqdf, pvc parampvc, Container paramContainer, slt paramslt) {}
   
-  public void invalidateDrawable(@NonNull Drawable paramDrawable)
+  public void onClick(View paramView)
   {
-    paramDrawable = new aayd(paramDrawable);
-    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(paramDrawable, 0, 1, 17);
-    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
+    Object localObject = this.jdField_a_of_type_Pvc.a();
+    ((ArticleInfo)localObject).clickArea = 8;
+    pay.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), (ArticleInfo)localObject, (int)((ArticleInfo)localObject).mChannelID);
+    QLog.d("PgcShortContentProteusItem", 1, "click single image blank area");
+    localObject = this.jdField_a_of_type_Slt.a().a();
+    if (localObject != null) {
+      ((pet)localObject).a(paramView, this.jdField_a_of_type_Pvc.a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
-  
-  public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable) {}
 }
 
 

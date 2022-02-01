@@ -1,12 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+
 public class adko
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
+  public adko(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  adko(long paramLong, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

@@ -1,20 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AppRuntime;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-class aujh
-  implements View.OnClickListener
+public abstract interface aujh
 {
-  aujh(aujd paramaujd, String paramString) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onClick(View paramView)
-  {
-    bhrn.a(this.jdField_a_of_type_JavaLangString, BaseApplicationImpl.getApplication().getRuntime().getAccount(), this.jdField_a_of_type_Aujd.a);
-    arml.c().c.a();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt1, TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt2, int paramInt3, int paramInt4, String paramString, Object paramObject);
+  
+  public abstract void d(boolean paramBoolean);
+  
+  public abstract void j();
 }
 
 

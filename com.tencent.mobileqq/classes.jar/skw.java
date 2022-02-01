@@ -1,22 +1,17 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class skw
-  extends Handler
+class skw
+  implements View.OnClickListener
 {
-  public skw(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  skw(skv paramskv, ojm paramojm) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == ReadInjoyXRecyclerView.b) {
-      this.a.b();
-    }
+    this.jdField_a_of_type_Ojm.j();
+    this.jdField_a_of_type_Skv.b();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

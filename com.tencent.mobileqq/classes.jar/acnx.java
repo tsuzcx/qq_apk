@@ -1,27 +1,42 @@
-import android.content.Context;
-import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter;
-import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
 
 public class acnx
-  implements AdQQMINIProgramAdapter
+  extends amwl
 {
-  public AdError show(AdQQMINIProgramAdapter.Params paramParams)
+  public acnx(AccountManageActivity paramAccountManageActivity) {}
+  
+  public void onPushSubAccountMsg(boolean paramBoolean, String paramString, bcqu parambcqu)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
+    if (this.a.isFinishing()) {}
+    bcqk localbcqk;
+    do
     {
-      acvc.d("GdtQQMINIProgramAdapter", "show error");
-      return new AdError(4);
-    }
-    GdtAd localGdtAd = (GdtAd)GdtAd.class.cast(paramParams.ad);
-    acvc.b("GdtQQMINIProgramAdapter", String.format("show %s", new Object[] { localGdtAd.getUrlForLandingPage() }));
-    AdReporterForAnalysis.reportForLaunchQQMINIProgramStart((Context)paramParams.context.get(), localGdtAd);
-    MiniAppLauncher.startMiniApp((Context)paramParams.context.get(), localGdtAd.getUrlForLandingPage(), 2054, new acny(this, paramParams, localGdtAd));
-    return new AdError(0);
+      for (;;)
+      {
+        return;
+        AccountManageActivity.a(this.a, false);
+        localbcqk = (bcqk)this.a.app.getManager(62);
+        if (parambcqu.a != 1) {
+          break;
+        }
+        if ((this.a.isResume()) && (bcqk.a(this.a.app, "sub.uin.all")))
+        {
+          paramString = localbcqk.a("sub.uin.all");
+          int j = paramString.size();
+          int i = 0;
+          while (i < j)
+          {
+            parambcqu = (Pair)paramString.get(i);
+            localbcqk.a(this.a.app, this.a, parambcqu, new acny(this, localbcqk, parambcqu));
+            i += 1;
+          }
+        }
+      }
+    } while (!this.a.isResume());
+    localbcqk.a(paramString, 1, true);
   }
 }
 

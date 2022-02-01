@@ -319,6 +319,9 @@ public class GameRuntime
   
   private void reportOnDestroy()
   {
+    if (this.mMiniAppInfo == null) {
+      return;
+    }
     MiniReportManager.reportEventType(this.mMiniAppInfo, 22, "1");
     SDKMiniProgramLpReportDC04239.reportPageView(this.mMiniAppInfo, "1", null, "unload", null);
     MiniAppReportManager2.reportPageView("2unload", null, null, this.mMiniAppInfo);
@@ -541,6 +544,11 @@ public class GameRuntime
     this.mTritonPlatform = paramTritonPlatform;
     initJsPluginEngine();
     initGamePage();
+  }
+  
+  public boolean isForground()
+  {
+    return this.mIsForground;
   }
   
   public boolean isMiniGame()

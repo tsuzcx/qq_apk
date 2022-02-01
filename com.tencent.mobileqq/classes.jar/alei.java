@@ -1,23 +1,36 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class alei
-  implements anvi
+public class alei
+  implements alep
 {
-  alei(alee paramalee, Bundle paramBundle, int paramInt, ResultReceiver paramResultReceiver, anve paramanve) {}
+  public alei(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("updateResult", this.jdField_a_of_type_Int);
-    if (paramBoolean) {
-      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialFriendSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
     }
+    if (paramBoolean) {}
     for (;;)
     {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_Anve.d(this);
-      return;
-      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", -1);
+      try
+      {
+        QQSpecialFriendSettingActivity.a(this.a);
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+      finally
+      {
+        this.a.stopTitleProgress();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QQSpecialFriendSettingActivity", 2, "loadSpecialSoundConfig fail.");
+      }
     }
   }
 }

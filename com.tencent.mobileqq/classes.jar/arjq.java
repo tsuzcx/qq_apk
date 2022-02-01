@@ -1,68 +1,145 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.component.media.image.ImageLoader;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.lang.reflect.Method;
 
 public class arjq
 {
-  public int a;
-  public boolean a;
-  public int b = 15;
+  private static Method jdField_a_of_type_JavaLangReflectMethod;
+  private int jdField_a_of_type_Int = 0;
+  private final View jdField_a_of_type_AndroidViewView;
+  private final ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private final TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString = "";
+  private final View jdField_b_of_type_AndroidViewView;
+  private final TextView jdField_b_of_type_AndroidWidgetTextView;
+  private final TextView c;
   
-  public arjq()
+  public arjq(View paramView)
   {
-    this.jdField_a_of_type_Int = 5;
-  }
-  
-  public static arjq a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    for (;;)
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131375231);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375233));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131375669);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375668));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375671));
+    this.c = ((TextView)paramView.findViewById(2131375670));
+    try
     {
-      try
-      {
-        arjq localarjq = new arjq();
-        paramString = new JSONObject(paramString);
-        if (paramString.optInt("openSwitch", 0) == 1)
-        {
-          bool = true;
-          localarjq.jdField_a_of_type_Boolean = bool;
-          localarjq.jdField_a_of_type_Int = paramString.optInt("sameMsgCount", 5);
-          localarjq.b = paramString.optInt("loadMoreCount", 15);
-          if (localarjq.jdField_a_of_type_Int < 2) {
-            localarjq.jdField_a_of_type_Boolean = false;
-          }
-          if (localarjq.b < 15) {
-            localarjq.b = 15;
-          }
-          if (localarjq.b > 40) {
-            localarjq.b = 40;
-          }
-          QLog.d("TogetherEntryConfProcessor", 2, "confBean = " + localarjq.toString());
-          return localarjq;
-        }
-      }
-      catch (Exception paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TogetherEntryConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-        }
-        return null;
-      }
-      boolean bool = false;
+      ImageLoader.getInstance().downloadImageOnly("https://sola.gtimg.cn/aoi/sola/20200526111437_Jxz3xRir1X.png", null);
+      return;
+    }
+    catch (Throwable paramView)
+    {
+      QLog.w("ExtendEmptyViewDirector", 1, "init: failed to download image", paramView);
     }
   }
   
-  public String toString()
+  @Nullable
+  private static Method a(ImageView paramImageView)
   {
-    StringBuilder localStringBuilder = new StringBuilder(50);
-    localStringBuilder.append("openSwitch = ").append(this.jdField_a_of_type_Boolean).append(",sameMsgCount = ").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    if (jdField_a_of_type_JavaLangReflectMethod != null) {
+      return jdField_a_of_type_JavaLangReflectMethod;
+    }
+    try
+    {
+      jdField_a_of_type_JavaLangReflectMethod = paramImageView.getClass().getMethod("setAsyncImage", new Class[] { String.class });
+      return jdField_a_of_type_JavaLangReflectMethod;
+    }
+    catch (Throwable paramImageView)
+    {
+      for (;;)
+      {
+        QLog.w("ExtendEmptyViewDirector", 1, "getSetAsyncImageMethod: failed", paramImageView);
+      }
+    }
+  }
+  
+  private void a(ImageView paramImageView, @NonNull String paramString)
+  {
+    if (this.jdField_a_of_type_JavaLangString.equals(paramString)) {}
+    Method localMethod;
+    do
+    {
+      return;
+      localMethod = a(paramImageView);
+    } while (localMethod == null);
+    try
+    {
+      localMethod.invoke(paramImageView, new Object[] { paramString });
+      this.jdField_a_of_type_JavaLangString = paramString;
+      return;
+    }
+    catch (Throwable paramImageView)
+    {
+      QLog.w("ExtendEmptyViewDirector", 1, "setAsyncImage: failed", paramImageView);
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Int == 0) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Int == 1) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717067);
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Int == 2) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("刷新失败，请下拉重试");
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Int == 3) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText("什么都没找到哦");
+    this.c.setText("没有搜索到相关内容");
+    a(this.jdField_a_of_type_AndroidWidgetImageView, "https://sola.gtimg.cn/aoi/sola/20200508145045_234LrOf7V4.png");
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_Int == 4) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText("无法连接到互联网");
+    this.c.setText("请关闭飞行模式或检查设备的网络设置");
+    a(this.jdField_a_of_type_AndroidWidgetImageView, "https://sola.gtimg.cn/aoi/sola/20200526111437_Jxz3xRir1X.png");
+    this.jdField_a_of_type_Int = 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arjq
  * JD-Core Version:    0.7.0.1
  */

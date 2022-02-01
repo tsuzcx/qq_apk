@@ -1,13 +1,13 @@
 package com.tencent.mqp.app.sec;
 
-import auog;
-import bhkf;
-import bjil;
-import bjir;
-import bjis;
-import bjiu;
+import bftm;
+import bhnz;
+import bhof;
+import bhog;
+import bhoi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
 import java.util.HashMap;
@@ -15,8 +15,8 @@ import java.util.HashMap;
 public class ScConfigManager
 {
   private static final ScConfigManager jdField_a_of_type_ComTencentMqpAppSecScConfigManager = new ScConfigManager();
-  private static final bjir[] jdField_a_of_type_ArrayOfBjir = { new bjir("SecCenterConfig", new bjiu()) };
-  private HashMap<String, bjis> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static final bhof[] jdField_a_of_type_ArrayOfBhof = { new bhof("SecCenterConfig", new bhoi()) };
+  private HashMap<String, bhog> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private HashMap<String, String> b = new HashMap();
   
   private ScConfigManager()
@@ -24,29 +24,29 @@ public class ScConfigManager
     this.b.put("SecCenterConfig", "qq_security_sccfg");
   }
   
-  public static bjil a(String paramString)
+  public static bhnz a(String paramString)
   {
-    bjir[] arrayOfbjir = jdField_a_of_type_ArrayOfBjir;
-    int j = arrayOfbjir.length;
+    bhof[] arrayOfbhof = jdField_a_of_type_ArrayOfBhof;
+    int j = arrayOfbhof.length;
     int i = 0;
     while (i < j)
     {
-      bjir localbjir = arrayOfbjir[i];
-      if (localbjir.jdField_a_of_type_JavaLangString.equals(paramString)) {
-        return localbjir.jdField_a_of_type_Bjil;
+      bhof localbhof = arrayOfbhof[i];
+      if (localbhof.jdField_a_of_type_JavaLangString.equals(paramString)) {
+        return localbhof.jdField_a_of_type_Bhnz;
       }
       i += 1;
     }
     return null;
   }
   
-  private bjis a(String paramString)
+  private bhog a(String paramString)
   {
     synchronized (this.jdField_a_of_type_JavaUtilHashMap)
     {
       if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
       {
-        paramString = (bjis)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        paramString = (bhog)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
         return paramString;
       }
       return null;
@@ -241,7 +241,7 @@ public class ScConfigManager
   
   private boolean b(String paramString)
   {
-    return !auog.a(paramString);
+    return !FileUtil.isFileExists(paramString);
   }
   
   private String c(String paramString)
@@ -256,7 +256,7 @@ public class ScConfigManager
     Object localObject2 = a(str);
     if (localObject2 != null)
     {
-      localObject2 = ((bjil)localObject2).a(???);
+      localObject2 = ((bhnz)localObject2).a(???);
       if (localObject2 != null) {
         synchronized (this.jdField_a_of_type_JavaUtilHashMap)
         {
@@ -271,25 +271,25 @@ public class ScConfigManager
     return true;
   }
   
-  public bjis a(String paramString, boolean paramBoolean)
+  public bhog a(String paramString, boolean paramBoolean)
   {
-    bjis localbjis2 = a(paramString);
-    bjis localbjis1 = localbjis2;
-    if (localbjis2 == null)
+    bhog localbhog2 = a(paramString);
+    bhog localbhog1 = localbhog2;
+    if (localbhog2 == null)
     {
-      localbjis1 = localbjis2;
+      localbhog1 = localbhog2;
       if (paramBoolean)
       {
         a(paramString);
-        localbjis1 = a(paramString);
+        localbhog1 = a(paramString);
       }
     }
-    return localbjis1;
+    return localbhog1;
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    bhkf.a().a(paramQQAppInterface, paramString);
+    bftm.a().a(paramQQAppInterface, paramString);
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)

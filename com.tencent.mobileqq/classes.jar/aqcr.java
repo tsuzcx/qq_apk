@@ -1,118 +1,95 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.ark.ArkEnvironmentManager;
-import com.tencent.ark.ArkPlayer;
-import com.tencent.ark.ark.PlayerStubFactory;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkMediaPlayer.2;
-import com.tencent.mobileqq.ark.ArkMediaPlayer.3;
-import java.lang.ref.WeakReference;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend.ScenesRecommendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqcr
-  extends ArkPlayer
+  extends aptq<aqcs>
 {
-  public static final ark.PlayerStubFactory a;
-  private static final Set<WeakReference<aqcr>> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int b = 1;
-  private int c = 2;
-  private int d = 3;
-  private int e = 4;
-  private int f = this.jdField_a_of_type_Int;
-  
-  static
+  @NonNull
+  public aqcs a(int paramInt)
   {
-    jdField_a_of_type_ComTencentArkArk$PlayerStubFactory = new aqcs();
+    return new aqcs();
   }
   
-  protected aqcr()
+  @Nullable
+  public aqcs a(aptx[] paramArrayOfaptx)
   {
-    jdField_a_of_type_JavaUtilSet.add(new WeakReference(this));
-    ENV.logI("Ark.ArkMediaPlayer", String.format("ArkMediaPlayer.create.%h", new Object[] { this }));
-  }
-  
-  public static void a()
-  {
-    synchronized (jdField_a_of_type_JavaUtilSet)
+    aqcs localaqcs = new aqcs();
+    if (QLog.isColorLevel()) {
+      QLog.d("ScencesEmotionConfigProcessor", 2, "onParsed confFiles.length = " + paramArrayOfaptx.length);
+    }
+    if (paramArrayOfaptx.length > 0)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
+      paramArrayOfaptx = paramArrayOfaptx[0];
+      localaqcs.jdField_a_of_type_Int = paramArrayOfaptx.jdField_a_of_type_Int;
+      localaqcs.jdField_a_of_type_JavaLangString = paramArrayOfaptx.jdField_a_of_type_JavaLangString;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ScencesEmotionConfigProcessor", 2, "onParsed taskId = " + localaqcs.jdField_a_of_type_Int + " | content = " + localaqcs.jdField_a_of_type_JavaLangString);
+    }
+    return localaqcs;
+  }
+  
+  public void a(aqcs paramaqcs)
+  {
+    if ((paramaqcs != null) && (paramaqcs.jdField_a_of_type_JavaLangString != null)) {
+      try
       {
-        Object localObject2 = (WeakReference)localIterator.next();
-        if (localObject2 != null)
-        {
-          localObject2 = (aqcr)((WeakReference)localObject2).get();
-          if (localObject2 != null) {
-            ((aqcr)localObject2).c();
-          }
+        String str = paramaqcs.jdField_a_of_type_JavaLangString;
+        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        if (QLog.isColorLevel()) {
+          QLog.d("ScencesEmotionConfigProcessor", 2, "onUpdate content = " + paramaqcs.jdField_a_of_type_JavaLangString);
         }
+        ahop.a(localQQAppInterface, str);
+        ScenesRecommendManager.a(localQQAppInterface).a();
+        return;
+      }
+      catch (Exception paramaqcs)
+      {
+        paramaqcs.printStackTrace();
+        QLog.e("ScencesEmotionConfigProcessor", 2, "onUpdate has exception", paramaqcs);
+        return;
       }
     }
+    QLog.e("ScencesEmotionConfigProcessor", 2, "onUpdate has empty content newConf is null = " + null);
   }
   
-  public static void b()
+  public Class<aqcs> clazz()
   {
-    synchronized (jdField_a_of_type_JavaUtilSet)
-    {
-      Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject2 = (WeakReference)localIterator.next();
-        if (localObject2 != null)
-        {
-          localObject2 = (aqcr)((WeakReference)localObject2).get();
-          if (localObject2 != null) {
-            ((aqcr)localObject2).d();
-          }
-        }
-      }
+    return aqcs.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScencesEmotionConfigProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScencesEmotionConfigProcessor", 2, "onReqFailed, code = " + paramInt);
     }
   }
   
-  public boolean Pause()
+  public int type()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.f = this.d;
-    }
-    return super.Pause();
-  }
-  
-  public boolean Play()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.f = this.b;
-    }
-    return super.Play();
-  }
-  
-  public boolean Resume()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.f = this.e;
-    }
-    return super.Resume();
-  }
-  
-  public boolean Stop()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.f = this.c;
-    }
-    return super.Stop();
-  }
-  
-  public void c()
-  {
-    ArkAppCenter.a().post(this.mQueueKey, new ArkMediaPlayer.2(this));
-  }
-  
-  public void d()
-  {
-    ArkAppCenter.a().post(this.mQueueKey, new ArkMediaPlayer.3(this));
+    return 621;
   }
 }
 

@@ -7,7 +7,7 @@ class TroopBarPublishActivity$3
   
   public void run()
   {
-    this.this$0.k();
+    this.this$0.h();
   }
 }
 

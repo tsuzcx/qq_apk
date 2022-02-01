@@ -1,39 +1,18 @@
-import android.content.Context;
-import android.text.TextUtils;
-import cooperation.qqpim.QQPimTipsInfo;
+import android.view.View;
 
-public class bmof
+public abstract interface bmof
 {
-  public static void a(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
-  {
-    if (paramQQPimTipsInfo == null)
-    {
-      bmod.a(paramContext, "QQPIM_TIPS_CLICK", System.currentTimeMillis());
-      return;
-    }
-    bmod.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int, paramQQPimTipsInfo.jdField_a_of_type_JavaLangString + ";" + paramQQPimTipsInfo.b + ";" + System.currentTimeMillis());
-  }
+  public abstract long a(View paramView, long paramLong);
   
-  public static void b(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
-  {
-    if (paramQQPimTipsInfo == null) {}
-    while (TextUtils.isEmpty(bmod.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int))) {
-      return;
-    }
-    switch (paramQQPimTipsInfo.jdField_a_of_type_Int)
-    {
-    case 3: 
-    default: 
-      return;
-    case 1: 
-      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
-      return;
-    case 2: 
-      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
-      return;
-    }
-    paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
-  }
+  public abstract void a();
+  
+  public abstract void a(bmod parambmod);
+  
+  public abstract boolean a();
+  
+  public abstract long b(View paramView, long paramLong);
+  
+  public abstract boolean b();
 }
 
 

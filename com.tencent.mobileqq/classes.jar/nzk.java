@@ -1,28 +1,18 @@
-import com.tencent.biz.pubaccount.NativeAd.util.ADBaseAppDownloadManager.3;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class nzk
-  implements tkl
+class nzk
+  implements DialogInterface.OnClickListener
 {
-  public nzk(ADBaseAppDownloadManager.3 param3) {}
+  nzk(nyz paramnyz, JsResult paramJsResult, Context paramContext) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      this.a.this$0.a(this.a.a, 5, 100);
-      this.a.this$0.d(this.a.a);
-    }
-    do
-    {
-      return;
-      if (this.a.a.a)
-      {
-        nzj.a(this.a.this$0, this.a.a);
-        return;
-      }
-    } while (!bhnv.g(BaseApplicationImpl.getContext()));
-    this.a.this$0.a(this.a.a, 0);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
   }
 }
 

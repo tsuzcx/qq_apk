@@ -2,7 +2,7 @@ package com.tencent.widget;
 
 import android.view.View;
 
-public class AbsListView$1
+class AbsListView$1
   implements Runnable
 {
   AbsListView$1(AbsListView paramAbsListView, View paramView, AbsListView.PerformClick paramPerformClick) {}
@@ -10,10 +10,10 @@ public class AbsListView$1
   public void run()
   {
     this.this$0.mTouchMode = -1;
-    this.jdField_a_of_type_AndroidViewView.setPressed(false);
+    this.val$child.setPressed(false);
     this.this$0.setPressed(false);
     if (!this.this$0.mDataChanged) {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView$PerformClick.run();
+      this.val$performClick.run();
     }
     AbsListView.access$1002(this.this$0, null);
   }

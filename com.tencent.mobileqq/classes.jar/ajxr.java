@@ -1,40 +1,20 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contacts.troop.TroopFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 
 public class ajxr
-  extends anua
+  extends RecyclerView.OnScrollListener
 {
-  public ajxr(TroopFragment paramTroopFragment) {}
+  public ajxr(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (paramInt2 == 0)
+    if (paramInt != 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.a.h();
-      if (this.a.isResumed()) {
-        if (paramInt1 != 0) {
-          break label47;
-        }
-      }
-    }
-    label47:
-    while (!this.a.isResumed())
-    {
-      QQToast.a(this.a.getActivity(), 2, anzj.a(2131714167), 0).a();
-      do
-      {
-        return;
-      } while (paramInt1 != 1);
-      QQToast.a(this.a.getActivity(), 2, anzj.a(2131714166), 0).a();
+      ahda.a(bool);
       return;
     }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131694174);
-    }
-    QQToast.a(this.a.getActivity(), 1, paramString1, 0).a();
   }
 }
 

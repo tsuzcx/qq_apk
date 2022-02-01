@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.flutter.launch;
 
-import auxi;
-import auxn;
+import atkd;
+import atkq;
 
 public class LaunchTrace$1
   implements Runnable
 {
-  public LaunchTrace$1(auxi paramauxi) {}
+  public LaunchTrace$1(atkd paramatkd) {}
   
   public void run()
   {
-    auxn.a(auxi.a(this.this$0), this.this$0.d, this.this$0.a, this.this$0.b, this.this$0.c, auxi.a(this.this$0), auxi.b(this.this$0), auxi.c(this.this$0));
+    atkq.a(atkd.a(this.this$0), this.this$0.d, this.this$0.a, this.this$0.b, this.this$0.c, atkd.a(this.this$0), atkd.b(this.this$0), atkd.c(this.this$0));
   }
 }
 

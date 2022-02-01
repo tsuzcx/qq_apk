@@ -1,23 +1,34 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import java.nio.ByteBuffer;
 
-class akxi
-  implements aldq
+public class akxi
 {
-  akxi(akxg paramakxg, AppInterface paramAppInterface) {}
-  
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public static ByteBuffer a(int paramInt1, int paramInt2)
   {
-    List localList = (List)akxg.a(this.jdField_a_of_type_Akxg).get(paramPathResult.url);
-    if (paramPathResult.url.endsWith(".zip")) {
-      akxg.a(this.jdField_a_of_type_Akxg, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, paramPathResult.folderPath, localList);
+    try
+    {
+      if (akxh.c)
+      {
+        ByteBuffer localByteBuffer1 = CameraGLSurfaceView.allocate(paramInt1, paramInt2);
+        akxh.b = true;
+        ByteBuffer localByteBuffer2 = localByteBuffer1;
+        if (localByteBuffer1 == null)
+        {
+          localByteBuffer2 = ByteBuffer.allocateDirect(paramInt2);
+          akxh.b = false;
+        }
+        return localByteBuffer2;
+      }
     }
-    while (!paramPathResult.url.endsWith(".png")) {
-      return;
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        Object localObject = null;
+        continue;
+        localObject = null;
+      }
     }
-    akxg.a(this.jdField_a_of_type_Akxg, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, localList);
   }
 }
 

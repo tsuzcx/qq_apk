@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.ar.view;
 
-import anzj;
-import com.tencent.mobileqq.widget.QQToast;
-
 class ARScanEntryView$25
   implements Runnable
 {
@@ -10,7 +7,9 @@ class ARScanEntryView$25
   
   public void run()
   {
-    QQToast.a(this.this$0.a, anzj.a(2131699660), 1).b(this.this$0.a());
+    ARScanEntryView.b(this.this$0, true);
+    ARScanEntryView.g(this.this$0);
+    ARScanEntryView.e(this.this$0);
   }
 }
 

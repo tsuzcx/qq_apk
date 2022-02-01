@@ -1,23 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
-public class akmm
-  implements DialogInterface.OnClickListener
+class akmm
+  extends akle
 {
-  public akmm(AvatarPendantActivity paramAvatarPendantActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (!this.a.a()) {
-      ((VasExtensionHandler)this.a.app.a(71)).a(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Bhwj.a, -1);
-    }
-    VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "faceAddon", "0X80088EE", "", 1, 0, 0, null, "", "");
-    bdll.b(this.a.app, "CliOper", "", "", "0X8005FDB", "0X8005FDB", 0, 0, String.valueOf(this.a.jdField_a_of_type_Long), "", "", "");
-  }
+  public RelativeLayout a;
+  public ImageView c;
 }
 
 

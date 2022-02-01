@@ -1,39 +1,17 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.view.DragFrameLayout;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class nvq
-  implements nxb
+class nvq
+  implements View.OnClickListener
 {
-  public nvq(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  nvq(num paramnum, String paramString, obr paramobr) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public void onClick(View paramView)
   {
-    if (paramInt1 - paramInt3 > bhgr.a(this.a, 60.0F))
-    {
-      PublicAccountAdvertisementActivity.a(this.a);
-      PublicAccountAdvertisementActivity.b(this.a);
-      this.a.finish();
-      return;
-    }
-    PublicAccountAdvertisementActivity.a(this.a).a();
-  }
-  
-  public boolean a()
-  {
-    return (!PublicAccountAdvertisementActivity.a(this.a)) && (!PublicAccountAdvertisementActivity.b(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    num.c(this.jdField_a_of_type_Num, this.jdField_a_of_type_JavaLangString);
+    num.a(this.jdField_a_of_type_Num, this.jdField_a_of_type_Obr.jdField_a_of_type_JavaLangString);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

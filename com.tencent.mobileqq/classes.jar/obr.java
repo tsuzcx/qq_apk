@@ -1,72 +1,123 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
+import android.text.TextUtils;
+import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
-class obr
-  implements BusinessObserver
+public class obr
 {
-  obr(obj paramobj, NewIntent paramNewIntent, Context paramContext, String paramString, BusinessObserver paramBusinessObserver, QQAppInterface paramQQAppInterface) {}
+  public static final Map<Class<?>, Integer> a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public String i;
+  public String j;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  static
   {
-    Object localObject1 = null;
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (!paramBoolean) {
-      return;
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_JavaUtilMap.put(Boolean.TYPE, Integer.valueOf(1));
+    jdField_a_of_type_JavaUtilMap.put(Integer.TYPE, Integer.valueOf(2));
+    jdField_a_of_type_JavaUtilMap.put(Long.TYPE, Integer.valueOf(3));
+    jdField_a_of_type_JavaUtilMap.put(String.class, Integer.valueOf(4));
+    jdField_a_of_type_JavaUtilMap.put(Double.TYPE, Integer.valueOf(5));
+  }
+  
+  public obr() {}
+  
+  public obr(mobileqq_mp.ConfigInfo paramConfigInfo)
+  {
+    this.jdField_a_of_type_Int = paramConfigInfo.type.get();
+    this.jdField_a_of_type_JavaLangString = paramConfigInfo.title.get();
+    this.jdField_b_of_type_JavaLangString = paramConfigInfo.content.get();
+    this.jdField_c_of_type_Int = paramConfigInfo.event_id.get();
+    this.jdField_c_of_type_JavaLangString = paramConfigInfo.url.get();
+    this.jdField_d_of_type_Int = paramConfigInfo.state.get();
+    this.jdField_e_of_type_Int = paramConfigInfo.state_id.get();
+    this.jdField_f_of_type_Int = paramConfigInfo.confirm_flag.get();
+    this.jdField_d_of_type_JavaLangString = paramConfigInfo.confirm_tips.get();
+  }
+  
+  public static obr a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      paramJSONObject = null;
     }
+    obr localobr;
     for (;;)
     {
+      return paramJSONObject;
+      localobr = new obr();
       try
       {
-        localObject2 = paramBundle.getByteArray("data");
-        paramBundle = new mobileqq_mp.SendMenuEventResponse();
-      }
-      catch (Exception paramBundle)
-      {
-        try
+        localobr.jdField_a_of_type_Int = paramJSONObject.optInt("type");
+        localobr.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
+        localobr.jdField_b_of_type_JavaLangString = paramJSONObject.optString("content");
+        localobr.jdField_b_of_type_Int = paramJSONObject.optInt("follow_handle");
+        localobr.jdField_c_of_type_Int = paramJSONObject.optInt("event_id");
+        localobr.jdField_d_of_type_Int = paramJSONObject.optInt("state");
+        localobr.jdField_e_of_type_Int = paramJSONObject.optInt("state_id");
+        localobr.jdField_c_of_type_JavaLangString = paramJSONObject.optString("url");
+        localobr.jdField_f_of_type_Int = paramJSONObject.optInt("confirm_flag");
+        localobr.jdField_d_of_type_JavaLangString = paramJSONObject.optString("confirm_tips");
+        localobr.jdField_e_of_type_JavaLangString = paramJSONObject.optString("pic_url");
+        localobr.jdField_f_of_type_JavaLangString = paramJSONObject.optString("lng");
+        localobr.jdField_g_of_type_JavaLangString = paramJSONObject.optString("lat");
+        localobr.jdField_h_of_type_JavaLangString = paramJSONObject.optString("phone_number");
+        localobr.jdField_g_of_type_Int = paramJSONObject.optInt("width");
+        localobr.jdField_h_of_type_Int = paramJSONObject.optInt("height");
+        localobr.i = paramJSONObject.optString("icon");
+        localobr.j = paramJSONObject.optString("vid");
+        paramJSONObject = localobr;
+        if (localobr.jdField_a_of_type_Int == 3)
         {
-          paramBundle.mergeFrom((byte[])localObject2);
-          Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("menuEventSharePre", 0);
-          localObject1 = paramBundle;
-          if (((SharedPreferences)localObject2).contains(this.jdField_a_of_type_JavaLangString))
+          paramJSONObject = localobr;
+          if (localobr.jdField_c_of_type_Int == 23)
           {
-            localObject1 = paramBundle;
-            if (paramBundle.seqno.has())
+            paramJSONObject = localobr;
+            if (!TextUtils.isEmpty(localobr.jdField_b_of_type_JavaLangString))
             {
-              localObject1 = paramBundle;
-              if (paramBundle.seqno.get() != ((SharedPreferences)localObject2).getInt(this.jdField_a_of_type_JavaLangString, 0))
+              nto localnto = new nto();
+              localnto.a(localobr.jdField_b_of_type_JavaLangString);
+              if ((TextUtils.isEmpty(localobr.jdField_e_of_type_JavaLangString)) && (!TextUtils.isEmpty(localnto.jdField_a_of_type_Ntr.jdField_a_of_type_JavaLangString))) {
+                localobr.jdField_e_of_type_JavaLangString = localnto.jdField_a_of_type_Ntr.jdField_a_of_type_JavaLangString;
+              }
+              paramJSONObject = localobr;
+              if (TextUtils.isEmpty(localobr.jdField_a_of_type_JavaLangString))
               {
-                if (this.jdField_a_of_type_MqqObserverBusinessObserver != null) {
-                  this.jdField_a_of_type_Obj.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverBusinessObserver, true);
+                paramJSONObject = localobr;
+                if (!TextUtils.isEmpty(localnto.jdField_a_of_type_JavaLangString))
+                {
+                  localobr.jdField_a_of_type_JavaLangString = localnto.jdField_a_of_type_JavaLangString;
+                  return localobr;
                 }
-                localObject1 = ((SharedPreferences)localObject2).edit();
-                ((SharedPreferences.Editor)localObject1).putInt(this.jdField_a_of_type_JavaLangString, paramBundle.seqno.get());
-                ((SharedPreferences.Editor)localObject1).commit();
-                localObject1 = paramBundle;
               }
             }
           }
-          if (localObject1 != null) {
-            break;
-          }
-          return;
         }
-        catch (Exception localException)
-        {
-          break label187;
-        }
-        paramBundle = paramBundle;
-        paramBundle = (Bundle)localObject1;
       }
-      label187:
-      localObject1 = paramBundle;
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
     }
+    return localobr;
   }
 }
 

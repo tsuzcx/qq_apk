@@ -13,7 +13,7 @@ class BaseApplicationImpl$1
   {
     try
     {
-      BaseApplicationImpl.access$001(this.this$0, this.a);
+      BaseApplicationImpl.access$001(this.this$0, this.val$intent);
       return;
     }
     catch (Throwable localThrowable)

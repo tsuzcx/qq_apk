@@ -1,19 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel;
 
 public class awmz
-  implements DialogInterface.OnDismissListener
+  extends DataSetObserver
 {
-  public awmz(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
+  public awmz(PlayerInvitePanel paramPlayerInvitePanel) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onChanged()
   {
-    if ((!ListenTogetherOverlayFragment.a(this.a)) && (!ListenTogetherOverlayFragment.a(this.a).isFinishing())) {
-      ListenTogetherOverlayFragment.a(this.a).finish();
-    }
-    ListenTogetherOverlayFragment.a(this.a, null);
+    super.onChanged();
+    this.a.a();
   }
 }
 

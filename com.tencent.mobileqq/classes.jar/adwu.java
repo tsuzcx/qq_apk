@@ -1,15 +1,22 @@
-import android.text.TextPaint;
-import android.text.style.CharacterStyle;
-import com.tencent.mobileqq.activity.AuthDevActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class adwu
-  extends CharacterStyle
+  implements Handler.Callback
 {
-  public adwu(AuthDevActivity paramAuthDevActivity) {}
+  public adwu(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramTextPaint.setColor(-5855578);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.c();
+    }
   }
 }
 

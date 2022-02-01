@@ -1,16 +1,21 @@
-import com.tencent.mobileqq.utils.RandomAccessFileManager;
-import java.io.RandomAccessFile;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.open.agent.CreateVirtualAccountFragment;
+import mqq.app.QQPermissionCallback;
 
-public class bhro
+class bhro
+  implements QQPermissionCallback
 {
-  public volatile int a;
-  public long a;
-  public bhro a;
-  public RandomAccessFile a;
-  public long b;
-  public bhro b;
+  bhro(bhrn parambhrn) {}
   
-  public bhro(RandomAccessFileManager paramRandomAccessFileManager) {}
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bfur.a(this.a.a.getActivity(), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a.a = ProfileActivity.a(this.a.a.getActivity(), 257);
+  }
 }
 
 

@@ -1,776 +1,150 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.biz.officialaccount.OfficialAccountReporter.Reporter.doReport.1;
-import com.tencent.imcore.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemEcShopAssitant;
-import com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountChatMsgData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemServiceAccountFolderData;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.util.HashMap;
-import java.util.HashSet;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import mqq.os.MqqHandler;
-import org.jetbrains.annotations.Nullable;
-import org.json.JSONObject;
+import mqq.app.NewIntent;
+import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.GroupInfo;
+import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.ReqBody;
+import tencent.im.oidb.cmd0x79a.oidb_0x79a.ReqBody;
+import tencent.im.oidb.cmd0x79a.oidb_0x79a.RspBody;
+import tencent.im.oidb.cmd0x79b.oidb_0x79b.ReqBody;
+import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupGeoInfo;
+import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
+import tencent.im.oidb.cmd0x88d.oidb_0x88d.TagRecord;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/officialaccount/OfficialAccountReporter$Reporter;", "", "()V", "ACTION_AIO", "", "ACTION_ARTICLE", "ACTION_LOCK_SCREEN_PUSH", "ACTION_MENU", "ACTION_MSG", "ACTION_MSG_LIST", "ACTION_PROFILE", "ACTION_PROFILE_DOTS", "ACTION_PROFILE_ENTER_AIO", "ACTION_PROFILE_FOLLOW", "ACTION_PROFILE_MENU", "ACTION_PROFILE_UNFOLLOW", "ACTION_SETTING_CLOSE", "ACTION_SETTING_OPEN", "ACTION_SHOP_LIST", "ACTION_SUBSCRIBE_LIST", "ACTION_SUB_PROFILE", "ACTION_TO_UIN", "ACTION_UIN", "DATONG_KEY", "DEBUG_KEY", "EVENT_ID", "IS_DEBUG", "", "KEY", "KEY_ACTION_TYPE", "KEY_DURATION", "KEY_LOCATION_ID", "KEY_MENU_CONTENT", "KEY_MENU_ID", "KEY_MSG_CONTENT", "KEY_MSG_ID", "KEY_MSG_TYPE", "KEY_OAC_TRIGGLE", "KEY_RED_NUM", "KEY_SUBACTION_TYPE", "SUB_ACTION_ACCEPT", "SUB_ACTION_CLICK", "SUB_ACTION_EXPO", "SUB_ACTION_STAY", "TAG", "mAioExpoRecordSet", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "mAioListExpoInitTimeLimit", "mAioResidentStartTime", "", "mArticleResidentStartTime", "mExpoTimeLimit", "mLastPushClickReportTime", "mLastRefreshAioExpoRecordTime", "mProfileMenuExpoRecordMap", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "mReporterInitTime", "doReport", "", "toUin", "paramsMap", "getAioListExpoInitTimeLimit", "getExpoTimeLimit", "getExtInfoFromExtStr", "extStr", "key", "getOacTriggle", "oacMessageExtend", "isAioListExpoEnabled", "onAioMsgClick", "location", "url", "oacMessage", "onAioMsgExpo", "msgId", "msgType", "onAioResidentEnd", "onAioResidentStart", "onArticleResidentEnd", "onArticleResidentStart", "onLockScreenPushClick", "onLockScreenPushExpo", "onMenuClick", "menuId", "menuContent", "onMenuExpo", "onMsgListClick", "messageContent", "", "redNum", "onMsgListExpo", "onProfileEnterAio", "onProfileExpo", "onProfileFollow", "onProfileMenuClick", "onProfileMenuExpo", "onProfileSetting", "onProfileSettingAccept", "onProfileSettingReject", "onProfileUnfollow", "onShopListClick", "onShopListExpo", "onSubProfileClick", "onSubscribeListClick", "onSubscribeListExpo", "refreshAioExpoRecord", "report", "action", "subActionType", "extra", "", "reportAioClickIfNeed", "data", "reportAioExpoIfNeed", "Lcom/tencent/mobileqq/activity/recent/RecentBaseData;", "reportAioMsgClickIfNeed", "element", "Lcom/tencent/mobileqq/structmsg/AbsStructMsgElement;", "reportAioMsgExpoIfNeed", "mr", "Lcom/tencent/mobileqq/data/MessageRecord;", "reportLockScreenPushClickIfNeed", "activity", "Landroid/app/Activity;", "reportLockScreenPushExpoIfNeed", "showMsgContent", "intent", "Landroid/content/Intent;", "reportMsgReceiveIfNeed", "list", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class nqx
+public class nqx
 {
-  private final int a()
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, int paramInt1, long paramLong2, long paramLong3, long paramLong4, String paramString2, long paramLong5, List<String> paramList, String paramString3, long paramLong6, int paramInt2, String paramString4, nrb paramnrb)
   {
-    if (nqw.a() > 0) {
-      return nqw.a();
-    }
-    nqw.a(QzoneConfig.getInstance().getConfig("OfficialAccount", "OfficialAccountReportTimeLimit", 3000));
-    return nqw.a();
-  }
-  
-  private final String a(String paramString)
-  {
-    try
+    oidb_0x88d.GroupInfo localGroupInfo = new oidb_0x88d.GroupInfo();
+    localGroupInfo.string_group_name.set(ByteStringMicro.copyFromUtf8(paramString1));
+    if ((paramLong2 != 0L) && (paramLong3 != 0L))
     {
-      if (!TextUtils.isEmpty((CharSequence)paramString))
-      {
-        String str = new JSONObject(paramString).optString("oac_triggle");
-        Intrinsics.checkExpressionValueIsNotNull(str, "json.optString(\"oac_triggle\")");
-        return str;
-      }
+      localGroupInfo.uint32_group_type_flag.set(4);
+      paramString1 = new oidb_0x88d.GroupGeoInfo();
+      paramString1.uint32_cityid.set(paramInt1);
+      paramString1.int64_latitude.set(paramLong2);
+      paramString1.int64_longitude.set(paramLong3);
+      paramString1.bytes_geocontent.set(ByteStringMicro.copyFromUtf8(paramString2));
+      paramString1.uint64_poi_id.set(paramLong4);
+      localGroupInfo.group_geo_info.set(paramString1);
     }
-    catch (Exception localException)
-    {
-      QLog.e("OfficialAccountReporter", 2, "getOacTriggle error: " + paramString);
-    }
-    return "";
-  }
-  
-  private final void a(String paramString1, String paramString2, CharSequence paramCharSequence, long paramLong, int paramInt1, int paramInt2)
-  {
-    HashMap localHashMap = new HashMap();
-    if (paramString2 != null) {
-      ((Map)localHashMap).put("tianshu_transfer", ((nqx)this).a(paramString2));
-    }
-    if (paramCharSequence != null) {
-      ((Map)localHashMap).put("msg_content", paramCharSequence.toString());
-    }
-    if (paramLong > 0L) {
-      ((Map)localHashMap).put("msg_id", String.valueOf(paramLong));
-    }
-    if (paramInt1 != 0) {
-      ((Map)localHashMap).put("msg_type", String.valueOf(paramInt1));
-    }
-    ((Map)localHashMap).put("reddot_num", String.valueOf(paramInt2));
-    ((nqx)this).a("gouwu_list", "expo", paramString1, (Map)localHashMap);
-  }
-  
-  private final void a(String paramString1, String paramString2, CharSequence paramCharSequence, String paramString3, int paramInt1, int paramInt2)
-  {
-    HashMap localHashMap = new HashMap();
-    if (paramString2 != null) {
-      ((Map)localHashMap).put("tianshu_transfer", ((nqx)this).a(paramString2));
-    }
-    if (paramCharSequence != null) {
-      ((Map)localHashMap).put("msg_content", paramCharSequence.toString());
-    }
-    if (paramString3 != null) {
-      ((Map)localHashMap).put("msg_id", paramString3);
-    }
-    if (paramInt1 != 0) {
-      ((Map)localHashMap).put("msg_type", String.valueOf(paramInt1));
-    }
-    ((Map)localHashMap).put("reddot_num", String.valueOf(paramInt2));
-    ((nqx)this).a("msg_list", "expo", paramString1, (Map)localHashMap);
-  }
-  
-  private final void a(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    if (paramString2 != null) {
-      ((Map)localHashMap).put("tianshu_transfer", ((nqx)this).a(paramString2));
-    }
-    if (paramString3 != null) {
-      ((Map)localHashMap).put("msg_id", paramString3);
-    }
-    if (paramInt != 0) {
-      ((Map)localHashMap).put("msg_type", String.valueOf(paramInt));
-    }
-    ((nqx)this).a("gzh_aio", "expo", paramString1, (Map)localHashMap);
-  }
-  
-  private final void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    HashMap localHashMap = new HashMap();
+    localGroupInfo.uint32_group_class_ext.set((int)paramLong5);
+    paramString1 = bfkc.a(BaseApplicationImpl.getApplication()).a(BaseApplicationImpl.getApplication(), String.valueOf(localGroupInfo.uint32_group_class_ext.get()));
     if (paramString1 != null) {
-      ((Map)localHashMap).put("location_id", paramString1);
+      localGroupInfo.string_group_class_text.set(ByteStringMicro.copyFromUtf8(paramString1.a));
     }
-    if (paramString2 != null) {
-      ((Map)localHashMap).put("msg_content", paramString2);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      paramString1 = new ArrayList();
+      paramString2 = paramList.iterator();
+      while (paramString2.hasNext())
+      {
+        paramList = (String)paramString2.next();
+        oidb_0x88d.TagRecord localTagRecord = new oidb_0x88d.TagRecord();
+        localTagRecord.bytes_tag_value.set(ByteStringMicro.copyFromUtf8(paramList));
+        paramString1.add(localTagRecord);
+      }
+      localGroupInfo.rpt_tag_record.set(paramString1);
     }
-    if (paramString4 != null) {
-      ((Map)localHashMap).put("tianshu_transfer", ((nqx)this).a(paramString4));
+    localGroupInfo.string_group_rich_finger_memo.set(ByteStringMicro.copyFromUtf8(paramString3));
+    localGroupInfo.string_group_finger_memo.set(ByteStringMicro.copyFromUtf8(paramString3));
+    paramString1 = new oidb_0x79b.ReqBody();
+    paramString1.uint64_group_code.set(paramLong1);
+    paramString1.uint32_source.set(1);
+    paramString1.info.set(localGroupInfo);
+    if ((paramLong6 != 0L) || (paramInt2 == 4))
+    {
+      paramString1.uint64_tribe_id.set(paramLong6);
+      paramString1.uint32_tribe_type.set(paramInt2);
+      paramString1.str_tribe_name.set(paramString4);
     }
-    ((nqx)this).a("gzh_aio", "click", paramString3, (Map)localHashMap);
+    paramString2 = new oidb_sso.OIDBSSOPkg();
+    paramString2.uint32_command.set(1947);
+    paramString2.uint32_service_type.set(1);
+    paramString2.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramString1.toByteArray()));
+    paramString1 = new NewIntent(paramQQAppInterface.getApplication(), nma.class);
+    paramString1.putExtra("cmd", "OidbSvc.0x79b_1");
+    paramString1.putExtra("data", paramString2.toByteArray());
+    paramString1.setObserver(new nqz(paramQQAppInterface, paramnrb));
+    paramQQAppInterface.startServlet(paramString1);
   }
   
-  private final void a(String paramString1, String paramString2, String paramString3, Map<String, String> paramMap)
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, nmf paramnmf)
+  {
+    oidb_cmd0x6f6.ReqBody localReqBody = new oidb_cmd0x6f6.ReqBody();
+    oidb_cmd0x6f6.GroupInfo localGroupInfo = new oidb_cmd0x6f6.GroupInfo();
+    localGroupInfo.uint64_group_code.set(paramLong);
+    localReqBody.rpt_msg_group_info.add(localGroupInfo);
+    nmb.b(paramQQAppInterface, paramnmf, localReqBody.toByteArray(), "OidbSvc.0x6f6_0", 1782, 0);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, nra paramnra)
+  {
+    Object localObject = new oidb_0x79a.ReqBody();
+    ((oidb_0x79a.ReqBody)localObject).uint64_group_code.set(paramLong);
+    ((oidb_0x79a.ReqBody)localObject).uint32_source.set(1);
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(1946);
+    localOIDBSSOPkg.uint32_service_type.set(1);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x79a.ReqBody)localObject).toByteArray()));
+    localObject = new NewIntent(paramQQAppInterface.getApplication(), nma.class);
+    ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0x79a_1");
+    ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
+    ((NewIntent)localObject).setObserver(new nqy(paramQQAppInterface, paramnra));
+    paramQQAppInterface.startServlet((NewIntent)localObject);
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, nra paramnra)
   {
     try
     {
-      HashMap localHashMap = new HashMap();
-      if (paramString1 != null) {
-        ((Map)localHashMap).put("object_id", paramString1);
-      }
-      if (paramString2 != null) {
-        ((Map)localHashMap).put("code", paramString2);
-      }
-      paramString1 = paramMap.entrySet().iterator();
-      while (paramString1.hasNext())
+      paramQQAppInterface = new oidb_sso.OIDBSSOPkg();
+      paramQQAppInterface.mergeFrom(paramArrayOfByte);
+      if ((paramQQAppInterface == null) || (!paramQQAppInterface.uint32_result.has()) || (paramQQAppInterface.uint32_result.get() != 0) || (!paramQQAppInterface.bytes_bodybuffer.has()) || (paramQQAppInterface.bytes_bodybuffer.get() == null))
       {
-        paramMap = (Map.Entry)paramString1.next();
-        paramString2 = (String)paramMap.getKey();
-        paramMap = (String)paramMap.getValue();
-        ((Map)localHashMap).put(paramString2, paramMap);
-      }
-      ((nqx)this).a(paramString3, localHashMap);
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramString1, new Object[0]);
-      return;
-    }
-  }
-  
-  private final void a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    ThreadManager.getSubThreadHandler().post((Runnable)new OfficialAccountReporter.Reporter.doReport.1(paramHashMap, paramString));
-  }
-  
-  private final boolean a()
-  {
-    return QzoneConfig.getInstance().getConfig("OfficialAccount", "OfficialAccountReportAioListExpoEnable", true);
-  }
-  
-  private final int b()
-  {
-    if (nqw.b() > 0) {
-      return nqw.b();
-    }
-    nqw.b(QzoneConfig.getInstance().getConfig("OfficialAccount", "OfficialAccountReportAioListExpoInitTimeLimit", 12000));
-    return nqw.b();
-  }
-  
-  private final void b(String paramString1, String paramString2, CharSequence paramCharSequence, long paramLong, int paramInt1, int paramInt2)
-  {
-    HashMap localHashMap = new HashMap();
-    if (paramString2 != null) {
-      ((Map)localHashMap).put("tianshu_transfer", ((nqx)this).a(paramString2));
-    }
-    if (paramCharSequence != null) {
-      ((Map)localHashMap).put("msg_content", paramCharSequence.toString());
-    }
-    if (paramLong > 0L) {
-      ((Map)localHashMap).put("msg_id", String.valueOf(paramLong));
-    }
-    if (paramInt1 != 0) {
-      ((Map)localHashMap).put("msg_type", String.valueOf(paramInt1));
-    }
-    ((Map)localHashMap).put("reddot_num", String.valueOf(paramInt2));
-    a((nqx)this, "gouwu_list", "click", paramString1, null, 8, null);
-  }
-  
-  private final void b(String paramString1, String paramString2, CharSequence paramCharSequence, String paramString3, int paramInt1, int paramInt2)
-  {
-    HashMap localHashMap = new HashMap();
-    if (paramString2 != null) {
-      ((Map)localHashMap).put("tianshu_transfer", ((nqx)this).a(paramString2));
-    }
-    if (paramCharSequence != null) {
-      ((Map)localHashMap).put("msg_content", paramCharSequence.toString());
-    }
-    if (paramString3 != null) {
-      ((Map)localHashMap).put("msg_id", paramString3);
-    }
-    if (paramInt1 != 0) {
-      ((Map)localHashMap).put("msg_type", String.valueOf(paramInt1));
-    }
-    ((Map)localHashMap).put("reddot_num", String.valueOf(paramInt2));
-    ((nqx)this).a("msg_list", "click", paramString1, (Map)localHashMap);
-  }
-  
-  private final void c(String paramString1, String paramString2, CharSequence paramCharSequence, long paramLong, int paramInt1, int paramInt2)
-  {
-    HashMap localHashMap = new HashMap();
-    if (paramString2 != null) {
-      ((Map)localHashMap).put("tianshu_transfer", ((nqx)this).a(paramString2));
-    }
-    if (paramCharSequence != null) {
-      ((Map)localHashMap).put("msg_content", paramCharSequence.toString());
-    }
-    if (paramLong > 0L) {
-      ((Map)localHashMap).put("msg_id", String.valueOf(paramLong));
-    }
-    if (paramInt1 != 0) {
-      ((Map)localHashMap).put("msg_type", String.valueOf(paramInt1));
-    }
-    ((Map)localHashMap).put("reddot_num", String.valueOf(paramInt2));
-    ((nqx)this).a("dingyue_list", "expo", paramString1, (Map)localHashMap);
-  }
-  
-  private final void d(String paramString1, String paramString2, CharSequence paramCharSequence, long paramLong, int paramInt1, int paramInt2)
-  {
-    HashMap localHashMap = new HashMap();
-    if (paramString2 != null) {
-      ((Map)localHashMap).put("tianshu_transfer", ((nqx)this).a(paramString2));
-    }
-    if (paramCharSequence != null) {
-      ((Map)localHashMap).put("msg_content", paramCharSequence.toString());
-    }
-    if (paramLong > 0L) {
-      ((Map)localHashMap).put("msg_id", String.valueOf(paramLong));
-    }
-    if (paramInt1 != 0) {
-      ((Map)localHashMap).put("msg_type", String.valueOf(paramInt1));
-    }
-    ((Map)localHashMap).put("reddot_num", String.valueOf(paramInt2));
-    a((nqx)this, "dingyue_list", "click", paramString1, null, 8, null);
-  }
-  
-  private final void k(String paramString)
-  {
-    a((nqx)this, "lockscreen_push", "expo", paramString, null, 8, null);
-  }
-  
-  private final void l(String paramString)
-  {
-    long l1 = SystemClock.elapsedRealtime();
-    long l2 = nqw.c();
-    if (l1 > ((nqx)this).a() + l2)
-    {
-      a((nqx)this, "lockscreen_push", "click", paramString, null, 8, null);
-      nqw.c(SystemClock.elapsedRealtime());
-    }
-  }
-  
-  @Nullable
-  public final String a(@Nullable String paramString1, @Nullable String paramString2)
-  {
-    if (TextUtils.isEmpty((CharSequence)paramString1)) {
-      return "";
-    }
-    try
-    {
-      paramString1 = new JSONObject(paramString1);
-      if (paramString1.has(paramString2)) {
-        return paramString1.getString(paramString2);
-      }
-      return "";
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramString1, new Object[0]);
-    }
-    return "";
-  }
-  
-  public final void a()
-  {
-    nqw.a(SystemClock.elapsedRealtime());
-  }
-  
-  public final void a(@Nullable Activity paramActivity)
-  {
-    try
-    {
-      if ((paramActivity instanceof SplashActivity))
-      {
-        paramActivity = ((SplashActivity)paramActivity).getIntent();
-        if (paramActivity.getBooleanExtra("key_notification_click_action", false))
-        {
-          int i = paramActivity.getIntExtra("uintype", 0);
-          paramActivity = paramActivity.getStringExtra("uin");
-          if ((i == 1008) || (i == 7230) || (i == 7120)) {
-            ((nqx)this).l(paramActivity);
-          }
-        }
-      }
-      return;
-    }
-    catch (Exception paramActivity)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramActivity, new Object[0]);
-    }
-  }
-  
-  public final void a(@Nullable bdol parambdol, @Nullable String paramString)
-  {
-    if (parambdol != null) {}
-    try
-    {
-      ((nqx)this).a(parambdol.aa, parambdol.b, parambdol.ab, paramString);
-      return;
-    }
-    catch (Exception parambdol)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)parambdol, new Object[0]);
-    }
-  }
-  
-  public final void a(@Nullable RecentBaseData paramRecentBaseData)
-  {
-    if (paramRecentBaseData != null)
-    {
-      int i;
-      Object localObject1;
-      Object localObject2;
-      try
-      {
-        i = paramRecentBaseData.hashCode();
-        if (nqw.a().contains(Integer.valueOf(i))) {
-          return;
-        }
-        if (!((nqx)this).a()) {
-          return;
-        }
-        nqw.a().add(Integer.valueOf(i));
-        if ((paramRecentBaseData instanceof RecentItemPublicAccountChatMsgData))
-        {
-          localObject1 = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).a();
-          if (localObject1 == null) {
-            return;
-          }
-          localObject2 = ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).getRecentUserUin();
-          CharSequence localCharSequence = paramRecentBaseData.mLastMsg;
-          String str = ((nqx)this).a(((QQMessageFacade.Message)localObject1).extStr, "public_account_msg_id");
-          i = ((QQMessageFacade.Message)localObject1).msgtype;
-          int j = paramRecentBaseData.mUnreadNum;
-          ((nqx)this).a((String)localObject2, ((RecentItemPublicAccountChatMsgData)paramRecentBaseData).mReportKeyBytesOacMsgxtend, localCharSequence, str, i, j);
-          return;
-        }
-      }
-      catch (Exception paramRecentBaseData)
-      {
-        QLog.e("OfficialAccountReporter", 2, (Throwable)paramRecentBaseData, new Object[0]);
+        paramnra.a();
         return;
       }
-      if ((paramRecentBaseData instanceof RecentItemServiceAccountFolderData))
+      paramArrayOfByte = new oidb_0x79a.RspBody();
+      paramArrayOfByte.mergeFrom(paramQQAppInterface.bytes_bodybuffer.get().toByteArray());
+      paramnra.a(paramArrayOfByte);
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      paramQQAppInterface.printStackTrace();
+      paramnra.a();
+    }
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, nrb paramnrb)
+  {
+    try
+    {
+      paramQQAppInterface = new oidb_sso.OIDBSSOPkg();
+      paramQQAppInterface.mergeFrom(paramArrayOfByte);
+      if ((paramQQAppInterface == null) || (!paramQQAppInterface.uint32_result.has()) || (paramQQAppInterface.uint32_result.get() != 0) || (!paramQQAppInterface.bytes_bodybuffer.has()) || (paramQQAppInterface.bytes_bodybuffer.get() == null))
       {
-        localObject1 = ((RecentItemServiceAccountFolderData)paramRecentBaseData).getRecentUserUin();
-        localObject2 = paramRecentBaseData.mLastMsg;
-        i = paramRecentBaseData.mUnreadNum;
-        ((nqx)this).c((String)localObject1, ((RecentItemServiceAccountFolderData)paramRecentBaseData).mReportKeyBytesOacMsgxtend, (CharSequence)localObject2, 0L, 0, i);
+        paramnrb.a(paramQQAppInterface.str_error_msg.get());
         return;
       }
-      if ((paramRecentBaseData instanceof RecentItemEcShopAssitant))
-      {
-        localObject1 = ((RecentItemEcShopAssitant)paramRecentBaseData).getRecentUserUin();
-        localObject2 = paramRecentBaseData.mLastMsg;
-        i = paramRecentBaseData.mUnreadNum;
-        ((nqx)this).a((String)localObject1, null, (CharSequence)localObject2, 0L, 0, i);
-      }
-    }
-  }
-  
-  public final void a(@Nullable MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        int i = paramMessageRecord.istroop;
-        String str1 = paramMessageRecord.frienduin;
-        String str2 = new JSONObject(paramMessageRecord.extStr).optString("report_key_bytes_oac_msg_extend");
-        String str3 = ((nqx)this).a(paramMessageRecord.extStr, "public_account_msg_id");
-        int j = paramMessageRecord.msgtype;
-        if ((i == 1008) || (i == 7230) || (i == 7120))
-        {
-          ((nqx)this).a(str1, str2, str3, j);
-          return;
-        }
-      }
-      catch (Exception paramMessageRecord)
-      {
-        QLog.e("OfficialAccountReporter", 2, (Throwable)paramMessageRecord, new Object[0]);
-      }
-    }
-  }
-  
-  public final void a(@Nullable Object paramObject)
-  {
-    Object localObject1;
-    Object localObject2;
-    int i;
-    try
-    {
-      Object localObject3;
-      if ((paramObject instanceof RecentItemPublicAccountChatMsgData))
-      {
-        localObject1 = ((RecentItemPublicAccountChatMsgData)paramObject).a();
-        if (localObject1 == null) {
-          return;
-        }
-        localObject2 = ((RecentItemPublicAccountChatMsgData)paramObject).getRecentUserUin();
-        localObject3 = ((RecentItemPublicAccountChatMsgData)paramObject).mReportKeyBytesOacMsgxtend;
-        CharSequence localCharSequence = ((RecentItemPublicAccountChatMsgData)paramObject).mLastMsg;
-        String str = ((nqx)this).a(((QQMessageFacade.Message)localObject1).extStr, "public_account_msg_id");
-        i = ((QQMessageFacade.Message)localObject1).msgtype;
-        int j = ((RecentItemPublicAccountChatMsgData)paramObject).mUnreadNum;
-        ((nqx)this).b((String)localObject2, (String)localObject3, localCharSequence, str, i, j);
-        return;
-      }
-      if ((paramObject instanceof RecentItemServiceAccountFolderData))
-      {
-        localObject1 = ((RecentItemServiceAccountFolderData)paramObject).getRecentUserUin();
-        localObject2 = ((RecentItemServiceAccountFolderData)paramObject).mReportKeyBytesOacMsgxtend;
-        localObject3 = ((RecentItemServiceAccountFolderData)paramObject).mLastMsg;
-        i = ((RecentItemServiceAccountFolderData)paramObject).mUnreadNum;
-        ((nqx)this).d((String)localObject1, (String)localObject2, (CharSequence)localObject3, 0L, 0, i);
-        return;
-      }
-    }
-    catch (Exception paramObject)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramObject, new Object[0]);
+      paramnrb.a();
       return;
     }
-    if ((paramObject instanceof RecentItemEcShopAssitant))
+    catch (Exception paramQQAppInterface)
     {
-      localObject1 = ((RecentItemEcShopAssitant)paramObject).getRecentUserUin();
-      localObject2 = ((RecentItemEcShopAssitant)paramObject).mLastMsg;
-      i = ((RecentItemEcShopAssitant)paramObject).mUnreadNum;
-      ((nqx)this).b((String)localObject1, null, (CharSequence)localObject2, 0L, 0, i);
-    }
-  }
-  
-  public final void a(@Nullable String paramString)
-  {
-    try
-    {
-      if (nqw.a() > 0L)
-      {
-        HashMap localHashMap = new HashMap();
-        ((Map)localHashMap).put("duration_ms", String.valueOf(SystemClock.elapsedRealtime() - nqw.a()));
-        ((nqx)this).a("gzh_aio", "stay", paramString, (Map)localHashMap);
-      }
-      nqw.a(0L);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramString, new Object[0]);
-    }
-  }
-  
-  public final void a(@Nullable String paramString1, int paramInt, @Nullable String paramString2)
-  {
-    try
-    {
-      HashMap localHashMap = new HashMap();
-      ((Map)localHashMap).put("menu_id", String.valueOf(paramInt));
-      if (paramString2 != null) {
-        ((Map)localHashMap).put("menu_content", paramString2);
-      }
-      ((nqx)this).a("gzh_menu", "expo", paramString1, (Map)localHashMap);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramString1, new Object[0]);
-    }
-  }
-  
-  public final void a(@Nullable List<? extends MessageRecord> paramList)
-  {
-    if (paramList != null) {
-      try
-      {
-        if (paramList.isEmpty()) {
-          return;
-        }
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-          if ((localMessageRecord.istroop == 1008) || (localMessageRecord.istroop == 7230) || (localMessageRecord.istroop == 7120))
-          {
-            String str1 = localMessageRecord.frienduin;
-            String str2 = localMessageRecord.getExtInfoFromExtStr("public_account_msg_id");
-            String str3 = new JSONObject(localMessageRecord.extStr).optString("report_key_bytes_oac_msg_extend");
-            HashMap localHashMap = new HashMap();
-            Map localMap = (Map)localHashMap;
-            Intrinsics.checkExpressionValueIsNotNull(str2, "msgId");
-            localMap.put("msg_id", str2);
-            ((Map)localHashMap).put("msg_type", String.valueOf(localMessageRecord.msgtype));
-            ((Map)localHashMap).put("tianshu_transfer", ((nqx)this).a(str3));
-            ((nqx)this).a("gzh_msg", "accept", str1, (Map)localHashMap);
-          }
-        }
-        return;
-      }
-      catch (Exception paramList)
-      {
-        QLog.e("OfficialAccountReporter", 2, (Throwable)paramList, new Object[0]);
-      }
-    }
-  }
-  
-  public final void a(boolean paramBoolean, @Nullable Intent paramIntent)
-  {
-    if ((!paramBoolean) || (paramIntent == null)) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        int i = paramIntent.getIntExtra("uintype", -1);
-        paramIntent = paramIntent.getStringExtra("uin");
-        Intrinsics.checkExpressionValueIsNotNull(paramIntent, "intent.getStringExtra(\"uin\")");
-        if ((i == 1008) || (i == 7230) || (i == 7120))
-        {
-          ((nqx)this).k(paramIntent);
-          return;
-        }
-      }
-      catch (Exception paramIntent)
-      {
-        QLog.e("OfficialAccountReporter", 2, (Throwable)paramIntent, new Object[0]);
-      }
-    }
-  }
-  
-  public final void b()
-  {
-    nqw.b(SystemClock.elapsedRealtime());
-  }
-  
-  public final void b(@Nullable String paramString)
-  {
-    try
-    {
-      if (nqw.b() > 0L)
-      {
-        HashMap localHashMap = new HashMap();
-        ((Map)localHashMap).put("duration_ms", String.valueOf(SystemClock.elapsedRealtime() - nqw.b()));
-        ((nqx)this).a("gzh_article", "stay", paramString, (Map)localHashMap);
-      }
-      nqw.b(0L);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramString, new Object[0]);
-    }
-  }
-  
-  public final void b(@Nullable String paramString1, int paramInt, @Nullable String paramString2)
-  {
-    try
-    {
-      HashMap localHashMap = new HashMap();
-      ((Map)localHashMap).put("menu_id", String.valueOf(paramInt));
-      if (paramString2 != null) {
-        ((Map)localHashMap).put("menu_content", paramString2);
-      }
-      ((nqx)this).a("gzh_menu", "click", paramString1, (Map)localHashMap);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramString1, new Object[0]);
-    }
-  }
-  
-  public final void c()
-  {
-    try
-    {
-      long l1 = SystemClock.elapsedRealtime();
-      int i = ((nqx)this).b();
-      long l2 = nqw.d();
-      if (l1 <= i + l2) {
-        return;
-      }
-      i = ((nqx)this).a();
-      if (nqw.e() > 0L)
-      {
-        l2 = nqw.e();
-        if (l1 <= i + l2) {}
-      }
-      else
-      {
-        nqw.a().clear();
-        nqw.d(SystemClock.elapsedRealtime());
-        QLog.d("OfficialAccountReporter", 2, "refreshAioExpoRecord " + (nqw.e() - l1));
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)localException, new Object[0]);
-    }
-  }
-  
-  public final void c(@Nullable String paramString)
-  {
-    try
-    {
-      a((nqx)this, "gzh_profile", "expo", paramString, null, 8, null);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramString, new Object[0]);
-    }
-  }
-  
-  public final void c(@Nullable String paramString1, int paramInt, @Nullable String paramString2)
-  {
-    try
-    {
-      int i = ("" + paramString1 + paramInt + paramString2).hashCode();
-      long l1 = SystemClock.elapsedRealtime();
-      Object localObject = (Long)nqw.a().get(Integer.valueOf(i));
-      if (localObject != null)
-      {
-        long l2 = ((Long)localObject).longValue();
-        if (l1 <= ((nqx)this).a() + l2) {
-          return;
-        }
-      }
-      localObject = new HashMap();
-      ((Map)localObject).put("menu_id", String.valueOf(paramInt));
-      if (paramString2 != null) {
-        ((Map)localObject).put("menu_content", paramString2);
-      }
-      ((nqx)this).a("gzh_profile_menu", "expo", paramString1, (Map)localObject);
-      ((Map)nqw.a()).put(Integer.valueOf(i), Long.valueOf(SystemClock.elapsedRealtime()));
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramString1, new Object[0]);
-    }
-  }
-  
-  public final void d(@Nullable String paramString)
-  {
-    try
-    {
-      a((nqx)this, "gzh_profile_follow", "click", paramString, null, 8, null);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramString, new Object[0]);
-    }
-  }
-  
-  public final void d(@Nullable String paramString1, int paramInt, @Nullable String paramString2)
-  {
-    try
-    {
-      HashMap localHashMap = new HashMap();
-      ((Map)localHashMap).put("menu_id", String.valueOf(paramInt));
-      if (paramString2 != null) {
-        ((Map)localHashMap).put("menu_content", paramString2);
-      }
-      ((nqx)this).a("gzh_profile_menu", "click", paramString1, (Map)localHashMap);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramString1, new Object[0]);
-    }
-  }
-  
-  public final void e(@Nullable String paramString)
-  {
-    try
-    {
-      a((nqx)this, "gzh_profile_unfollow", "click", paramString, null, 8, null);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramString, new Object[0]);
-    }
-  }
-  
-  public final void f(@Nullable String paramString)
-  {
-    try
-    {
-      a((nqx)this, "gzh_sub_profile", "click", paramString, null, 8, null);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramString, new Object[0]);
-    }
-  }
-  
-  public final void g(@Nullable String paramString)
-  {
-    try
-    {
-      a((nqx)this, "gzh_profile_dots", "click", paramString, null, 8, null);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramString, new Object[0]);
-    }
-  }
-  
-  public final void h(@Nullable String paramString)
-  {
-    try
-    {
-      a((nqx)this, "gzh_profile_aio_entrance", "click", paramString, null, 8, null);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramString, new Object[0]);
-    }
-  }
-  
-  public final void i(@Nullable String paramString)
-  {
-    try
-    {
-      a((nqx)this, "gzh_msg_setting_open", "click", paramString, null, 8, null);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramString, new Object[0]);
-    }
-  }
-  
-  public final void j(@Nullable String paramString)
-  {
-    try
-    {
-      a((nqx)this, "gzh_msg_setting_close", "click", paramString, null, 8, null);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("OfficialAccountReporter", 2, (Throwable)paramString, new Object[0]);
+      paramQQAppInterface.printStackTrace();
+      paramnrb.a("");
     }
   }
 }

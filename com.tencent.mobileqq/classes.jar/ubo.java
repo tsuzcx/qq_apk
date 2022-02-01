@@ -1,31 +1,45 @@
-import android.os.FileObserver;
-import android.text.TextUtils;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-class ubo
-  extends FileObserver
+public class ubo
+  extends ucc
 {
-  ubo(ubn paramubn, String paramString1, int paramInt, String paramString2)
-  {
-    super(paramString1, paramInt);
-  }
+  public ubo(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void onEvent(int paramInt, String paramString)
+  protected void a(boolean paramBoolean, ArrayList<ReadInJoyArticle> paramArrayList)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ScreenshotContentObserver", 2, "onEvent->time:" + System.currentTimeMillis() + ", path:" + paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList isSuccess: " + paramBoolean + " | data: " + paramArrayList);
     }
-    if ((TextUtils.isEmpty(paramString)) || (paramInt != 256)) {}
-    while ((paramString.equalsIgnoreCase(ubn.a(this.jdField_a_of_type_Ubn))) || (paramString.contains("temp")) || (ubn.a(this.jdField_a_of_type_Ubn) == null)) {
+    if (!paramBoolean) {}
+    do
+    {
+      do
+      {
+        return;
+        if ((paramArrayList != null) && (paramArrayList.size() == 4)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList data is null or small than 4");
       return;
-    }
-    ubn.a(this.jdField_a_of_type_Ubn).a(null, this.jdField_a_of_type_JavaLangString + paramString, 1);
-    ubn.a(this.jdField_a_of_type_Ubn, paramString);
+    } while (this.a.a == null);
+    Message localMessage = new Message();
+    localMessage.what = 1003;
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("ReadInJoyArticleList", paramArrayList);
+    localMessage.setData(localBundle);
+    this.a.a.removeMessages(1003);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ubo
  * JD-Core Version:    0.7.0.1
  */

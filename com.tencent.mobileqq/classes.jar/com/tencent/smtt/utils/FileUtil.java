@@ -689,7 +689,7 @@ public class FileUtil
   
   public static boolean b(Context paramContext)
   {
-    long l = o.a();
+    long l = p.a();
     if (l >= TbsDownloadConfig.getInstance(paramContext).getDownloadMinFreeSpace()) {}
     for (boolean bool = true;; bool = false)
     {
@@ -730,8 +730,8 @@ public class FileUtil
     //   33: ifeq +14 -> 47
     //   36: aload_0
     //   37: invokevirtual 221	java/io/File:isFile	()Z
-    //   40: istore 4
-    //   42: iload 4
+    //   40: istore 6
+    //   42: iload 6
     //   44: ifne +29 -> 73
     //   47: iconst_0
     //   48: ifeq +11 -> 59
@@ -756,8 +756,8 @@ public class FileUtil
     //   85: aload_0
     //   86: aload_1
     //   87: invokeinterface 456 3 0
-    //   92: istore 4
-    //   94: iload 4
+    //   92: istore 6
+    //   94: iload 6
     //   96: ifeq +29 -> 125
     //   99: iconst_0
     //   100: ifeq +11 -> 111
@@ -788,8 +788,8 @@ public class FileUtil
     //   149: ifne +40 -> 189
     //   152: aload_2
     //   153: invokevirtual 78	java/io/File:mkdirs	()Z
-    //   156: istore 4
-    //   158: iload 4
+    //   156: istore 6
+    //   158: iload 6
     //   160: ifne +29 -> 189
     //   163: iconst_0
     //   164: ifeq +11 -> 175
@@ -816,16 +816,16 @@ public class FileUtil
     //   205: aload_1
     //   206: invokespecial 412	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   209: invokevirtual 174	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   212: astore_3
+    //   212: astore_0
     //   213: aload_2
     //   214: invokevirtual 463	java/nio/channels/FileChannel:size	()J
-    //   217: lstore 5
-    //   219: aload_3
+    //   217: lstore 4
+    //   219: aload_0
     //   220: aload_2
     //   221: lconst_0
-    //   222: lload 5
+    //   222: lload 4
     //   224: invokevirtual 467	java/nio/channels/FileChannel:transferFrom	(Ljava/nio/channels/ReadableByteChannel;JJ)J
-    //   227: lload 5
+    //   227: lload 4
     //   229: lcmp
     //   230: ifeq +25 -> 255
     //   233: aload_1
@@ -834,9 +834,9 @@ public class FileUtil
     //   238: ifnull +7 -> 245
     //   241: aload_2
     //   242: invokevirtual 468	java/nio/channels/FileChannel:close	()V
-    //   245: aload_3
+    //   245: aload_0
     //   246: ifnull +7 -> 253
-    //   249: aload_3
+    //   249: aload_0
     //   250: invokevirtual 468	java/nio/channels/FileChannel:close	()V
     //   253: iconst_0
     //   254: ireturn
@@ -844,9 +844,9 @@ public class FileUtil
     //   256: ifnull +7 -> 263
     //   259: aload_2
     //   260: invokevirtual 468	java/nio/channels/FileChannel:close	()V
-    //   263: aload_3
+    //   263: aload_0
     //   264: ifnull +7 -> 271
-    //   267: aload_3
+    //   267: aload_0
     //   268: invokevirtual 468	java/nio/channels/FileChannel:close	()V
     //   271: iconst_1
     //   272: ireturn
@@ -869,18 +869,20 @@ public class FileUtil
     //   298: aconst_null
     //   299: astore_1
     //   300: goto -21 -> 279
-    //   303: astore_0
-    //   304: aload_3
+    //   303: astore_3
+    //   304: aload_0
     //   305: astore_1
-    //   306: goto -27 -> 279
+    //   306: aload_3
+    //   307: astore_0
+    //   308: goto -29 -> 279
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	309	0	paramFile1	File
-    //   0	309	1	paramFile2	File
-    //   0	309	2	paramFileFilter	FileFilter
-    //   0	309	3	parama	FileUtil.a
-    //   40	119	4	bool	boolean
-    //   217	11	5	l	long
+    //   0	311	0	paramFile1	File
+    //   0	311	1	paramFile2	File
+    //   0	311	2	paramFileFilter	FileFilter
+    //   0	311	3	parama	FileUtil.a
+    //   217	11	4	l	long
+    //   40	119	6	bool	boolean
     //   1	276	7	localObject	Object
     // Exception table:
     //   from	to	target	type

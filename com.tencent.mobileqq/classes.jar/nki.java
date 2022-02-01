@@ -1,35 +1,17 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.widget.XListView;
-import java.util.List;
+import android.os.Handler;
 
-public class nki
-  implements TextWatcher
+class nki
+  extends nkn
 {
-  public nki(PoiMapActivity paramPoiMapActivity) {}
+  nki(nkh paramnkh) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public boolean a(int paramInt, String paramString, naf paramnaf)
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if (TextUtils.isEmpty(paramEditable))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-      this.a.jdField_a_of_type_Nkh.notifyDataSetChanged();
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-    this.a.a(paramEditable);
+    bija.c(this.a.a, "onRoomSelfExit " + paramInt + " " + paramString);
+    nkh.a(this.a).removeCallbacksAndMessages(null);
+    nkh.a(this.a).sendEmptyMessage(2);
+    return true;
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

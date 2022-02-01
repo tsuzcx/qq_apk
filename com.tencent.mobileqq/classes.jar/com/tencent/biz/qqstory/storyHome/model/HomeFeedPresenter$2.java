@@ -3,31 +3,31 @@ package com.tencent.biz.qqstory.storyHome.model;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import java.util.ArrayList;
 import java.util.Collections;
-import ymm;
-import ymt;
-import ymx;
-import yng;
-import yuk;
+import xnx;
+import xoe;
+import xoi;
+import xor;
+import xvv;
 
 public class HomeFeedPresenter$2
   implements Runnable
 {
-  public HomeFeedPresenter$2(ymx paramymx, ymt paramymt) {}
+  public HomeFeedPresenter$2(xoi paramxoi, xoe paramxoe) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
     if ((this.a.c) && (this.a.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())) {
-      ymx.a(this.this$0).clear();
+      xoi.a(this.this$0).clear();
     }
-    ymx.a(this.this$0).addAll(this.a.b);
-    this.this$0.a(ymx.a(this.this$0));
-    Collections.sort(ymx.a(this.this$0), ymm.a);
-    ymx.a(this.this$0, this.a.jdField_a_of_type_Boolean);
-    this.a.b = ymx.a(this.this$0);
-    yuk.a("Q.qqstory.home.data.HomeFeedPresenter", "had load feed size:%d, take time:%d", Integer.valueOf(ymx.a(this.this$0).size()), Long.valueOf(System.currentTimeMillis() - l));
-    if (ymx.a(this.this$0) != null) {
-      ymx.a(this.this$0).a(this.a);
+    xoi.a(this.this$0).addAll(this.a.b);
+    this.this$0.a(xoi.a(this.this$0));
+    Collections.sort(xoi.a(this.this$0), xnx.a);
+    xoi.a(this.this$0, this.a.jdField_a_of_type_Boolean);
+    this.a.b = xoi.a(this.this$0);
+    xvv.a("Q.qqstory.home.data.HomeFeedPresenter", "had load feed size:%d, take time:%d", Integer.valueOf(xoi.a(this.this$0).size()), Long.valueOf(System.currentTimeMillis() - l));
+    if (xoi.a(this.this$0) != null) {
+      xoi.a(this.this$0).a(this.a);
     }
   }
 }

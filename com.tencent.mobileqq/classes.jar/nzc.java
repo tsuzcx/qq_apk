@@ -1,18 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
 class nzc
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  nzc(nyy paramnyy) {}
+  nzc(nyz paramnyz, JsResult paramJsResult, Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a.dismiss();
-    nyy.c(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    if (this.jdField_a_of_type_Nyz.a > 2) {
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    }
   }
 }
 

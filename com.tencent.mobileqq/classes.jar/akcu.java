@@ -1,13 +1,12 @@
+import org.json.JSONObject;
+
 public class akcu
 {
   public int a;
   public String a;
-  
-  public akcu(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public JSONObject a;
+  public String b;
+  public String c;
 }
 
 

@@ -1,26 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.emoticonview.EmotionSearchPanel;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class asqj
-  implements ValueAnimator.AnimatorUpdateListener
+class asqj
+  extends BroadcastReceiver
 {
-  public asqj(EmotionSearchPanel paramEmotionSearchPanel) {}
+  asqj(asqh paramasqh) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (EmotionSearchPanel.a(this.a))
-    {
-      EmotionSearchPanel localEmotionSearchPanel = this.a;
-      int i = EmotionSearchPanel.jdField_a_of_type_Int;
-      EmotionSearchPanel.c(localEmotionSearchPanel, ((Integer)paramValueAnimator.getAnimatedValue()).intValue() + i);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setAlpha((1.0F - paramValueAnimator.getAnimatedFraction()) * 0.71F);
-      return;
-      EmotionSearchPanel.c(this.a, EmotionSearchPanel.jdField_a_of_type_Int - ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    if (paramIntent.getAction().equals("android.media.AUDIO_BECOMING_NOISY")) {
+      this.a.a();
     }
   }
 }

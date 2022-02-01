@@ -8,7 +8,9 @@ public class TPNativePlayerOptionID
   public static final int LONG1_CONTINUE_BUFFERING_ON_PAUSE = 100;
   public static final int LONG1_DOLBY_OUTPUT_REFERENCE_LEVEL = 200;
   public static final int LONG1_ENABLE_ADAPTIVE_SWITCH = 2;
+  public static final int LONG1_ENABLE_AUDIO_PROCESS_CALLBACK = 301;
   public static final int LONG1_ENABLE_BUFFERING = 101;
+  public static final int LONG1_ENABLE_VIDEO_PROCESS_CALLBACK = 400;
   public static final int LONG1_SKIP_END_TIME_MS = 500;
   public static final int LONG2_ADAPTIVE_LIMIT_BITRATE_RANGE = 1;
   public static final int OBJECT_DUMMY = 1000;

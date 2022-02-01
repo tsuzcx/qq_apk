@@ -1,36 +1,17 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class xse
-  extends JobSegment<String, String>
+class xse
+  implements View.OnClickListener
 {
-  private xse(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  xse(xru paramxru, xvb paramxvb) {}
   
-  protected void a(JobContext paramJobContext, String paramString)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Xtg.a(null);
-    this.a.jdField_a_of_type_Xtg.a(null);
-    this.a.jdField_a_of_type_Xtg.a(null);
-    this.a.jdField_a_of_type_Xtg.a(null);
-    this.a.jdField_a_of_type_Xtg.a(null);
-    if (VideoViewVideoHolder.f(this.a) == 0)
-    {
-      yuk.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. already idle state");
-      notifyResult(paramString);
-      return;
-    }
-    if (VideoViewVideoHolder.f(this.a) < 7)
-    {
-      yuk.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. change to idle directly");
-      VideoViewVideoHolder.a(this.a, 0);
-      notifyResult(paramString);
-      return;
-    }
-    yuk.b(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. stop video view");
-    this.a.jdField_a_of_type_Xtg.a();
-    VideoViewVideoHolder.a(this.a, 0);
-    notifyResult(paramString);
+    xwa.a("home_page", "guide_close", 0, 0, new String[0]);
+    this.jdField_a_of_type_Xvb.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

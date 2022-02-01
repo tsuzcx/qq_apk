@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
 import android.os.Process;
-import bbie;
-import bbif;
+import baco;
 import com.tencent.qphone.base.util.QLog;
 
 class EffectsCameraCaptureView$1
@@ -14,11 +13,8 @@ class EffectsCameraCaptureView$1
   {
     Process.setThreadPriority(Process.getThreadPriority(Process.myTid()) + 1);
     long l1 = System.currentTimeMillis();
-    this.this$0.y();
+    this.this$0.t();
     long l2 = System.currentTimeMillis();
-    if (EffectsCameraCaptureView.a(this.this$0) != null) {
-      EffectsCameraCaptureView.a(this.this$0).a_(EffectsCameraCaptureView.a(this.this$0));
-    }
     if (EffectsCameraCaptureView.a(this.this$0) != null) {
       EffectsCameraCaptureView.a(this.this$0).a(EffectsCameraCaptureView.a(this.this$0));
     }

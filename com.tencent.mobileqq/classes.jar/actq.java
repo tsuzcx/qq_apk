@@ -1,52 +1,17 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtBaseAdItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AuthDevActivity;
 
 public class actq
-  extends QIPCModule
+  implements DialogInterface.OnDismissListener
 {
-  private static volatile actq a;
+  public actq(AuthDevActivity paramAuthDevActivity) {}
   
-  private actq(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramString);
-  }
-  
-  public static actq a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new actq("gdt_ipc");
-      }
-      return a;
+    if (paramDialogInterface == AuthDevActivity.a(this.a)) {
+      AuthDevActivity.a(this.a, null);
     }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    acvc.b("gdt_ipc", "Action  " + paramString);
-    if ("do_app_jump".equals(paramString))
-    {
-      if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
-      {
-        paramString = (acvd)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(110);
-        paramBundle.setClassLoader(getClass().getClassLoader());
-        paramBundle = (GdtBaseAdItem)paramBundle.getParcelable("gdtBaseAdItem");
-        paramString.a(BaseApplicationImpl.getContext(), paramBundle);
-        callbackResult(paramInt, EIPCResult.createSuccessResult(null));
-      }
-    }
-    else {
-      return null;
-    }
-    callbackResult(paramInt, EIPCResult.createResult(-1, null));
-    return null;
   }
 }
 

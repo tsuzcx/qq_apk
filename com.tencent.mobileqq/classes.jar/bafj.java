@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.Mp4FlowReEncoder;
+import java.util.Comparator;
 
 public class bafj
-  implements View.OnClickListener
+  implements Comparator<baep>
 {
-  public bafj(AbsProfileHeaderView paramAbsProfileHeaderView, azxr paramazxr) {}
+  public bafj(Mp4FlowReEncoder paramMp4FlowReEncoder) {}
   
-  public void onClick(View paramView)
+  public int a(baep parambaep1, baep parambaep2)
   {
-    AbsProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView, this.jdField_a_of_type_Azxr);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (parambaep2.a() > parambaep1.a()) {
+      return -1;
+    }
+    if (parambaep2.a() == parambaep1.a()) {
+      return 0;
+    }
+    return 1;
   }
 }
 

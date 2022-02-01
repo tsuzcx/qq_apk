@@ -1,17 +1,32 @@
-import android.support.v7.widget.RecyclerView;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoFragment;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class rji
-  extends rdl
+  implements AdapterView.OnItemClickListener
 {
-  public rji(SelectVideoFragment paramSelectVideoFragment) {}
+  public rji(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  @Nullable
-  public rdm a(int paramInt, @NotNull RecyclerView paramRecyclerView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return a(paramInt, SelectVideoFragment.a(this.a).getItemCount(), 3, bhgr.a(SelectVideoFragment.a(this.a), 8.0F));
+    paramAdapterView = paramAdapterView.getItemAtPosition(paramInt);
+    if ((paramAdapterView != null) && ((paramAdapterView instanceof TagInfo)))
+    {
+      if (ReadInJoyVideoTagSelectionFragment.a(this.a).a()) {
+        break label72;
+      }
+      if ((!ReadInJoyVideoTagSelectionFragment.a(this.a).a((TagInfo)paramAdapterView)) && (!ReadInJoyVideoTagSelectionFragment.a(this.a).c())) {
+        ReadInJoyVideoTagSelectionFragment.a(this.a).a();
+      }
+    }
+    label72:
+    while (ReadInJoyVideoTagSelectionFragment.b(this.a).c()) {
+      return;
+    }
+    ReadInJoyVideoTagSelectionFragment.b(this.a).a();
   }
 }
 

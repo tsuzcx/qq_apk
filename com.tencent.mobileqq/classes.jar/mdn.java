@@ -1,22 +1,21 @@
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI.4;
+import android.graphics.Bitmap;
+import com.tencent.av.gaudio.AVPhoneUserInfo;
 
-public class mdn
-  implements mif
+final class mdn
 {
-  public mdn(DoubleVideoMeetingCtrlUI.4 param4) {}
+  public int a;
+  public long a;
+  public Bitmap a;
+  public AVPhoneUserInfo a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e = true;
   
-  public void a()
-  {
-    this.a.this$0.j = true;
-    this.a.this$0.M();
-  }
-  
-  public void b()
-  {
-    this.a.this$0.d(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Int);
-    this.a.this$0.j = false;
-  }
+  private mdn(mdk parammdk) {}
 }
 
 

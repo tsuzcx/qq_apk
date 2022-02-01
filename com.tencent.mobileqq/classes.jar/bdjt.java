@@ -1,22 +1,19 @@
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class bdjt
-  implements bdhm
+class bdjt
+  implements DialogInterface.OnClickListener
 {
-  public bdjt(ImageView paramImageView1, ImageView paramImageView2) {}
+  bdjt(bdjr parambdjr) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a != null) && (this.b != null))
-    {
-      this.a.setVisibility(8);
-      this.b.setVisibility(8);
-    }
+    bcef.b(null, "dc00898", "", "", "0X800B359", "0X800B359", 2, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdjt
  * JD-Core Version:    0.7.0.1
  */

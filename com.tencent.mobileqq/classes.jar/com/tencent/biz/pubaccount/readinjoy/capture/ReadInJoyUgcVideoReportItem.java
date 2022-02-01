@@ -3,14 +3,14 @@ package com.tencent.biz.pubaccount.readinjoy.capture;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import onz;
+import opk;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ReadInJoyUgcVideoReportItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<ReadInJoyUgcVideoReportItem> CREATOR = new onz();
+  public static final Parcelable.Creator<ReadInJoyUgcVideoReportItem> CREATOR = new opk();
   public double a;
   public int a;
   public long a;

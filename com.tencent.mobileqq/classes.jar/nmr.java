@@ -1,52 +1,30 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 
-final class nmr
-  implements nmg
+class nmr
+  extends BroadcastReceiver
 {
-  nmr(WeakReference paramWeakReference, String paramString1, int paramInt, String paramString2) {}
+  nmr(nmq paramnmq) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject;
-    if (paramString != null)
+    int i = paramIntent.getIntExtra("request_type", 0);
+    QLog.i(this.a.c, 2, "receive request" + paramIntent.getExtras());
+    switch (i)
     {
-      paramString = (bezv)paramString.getManager(193);
-      localObject = this.jdField_a_of_type_JavaLangString;
-      if (!BidDownloader.a(paramInt)) {
-        break label172;
-      }
-    }
-    label172:
-    for (long l = this.jdField_a_of_type_Int;; l = -1L)
-    {
-      paramString.a((String)localObject, l);
-      QLog.i(nmq.jdField_a_of_type_JavaLangString, 1, "finish predown bid=" + this.b + ", code=" + paramInt);
-      nmq.a();
-      if (nmq.b() == 0)
-      {
-        paramString = new Intent("com.tencent.process.tmdownloader.exit");
-        localObject = new ArrayList();
-        ((ArrayList)localObject).add("com.tencent.mobileqq:TMAssistantDownloadSDKService");
-        paramString.putStringArrayListExtra("procNameList", (ArrayList)localObject);
-        paramString.putExtra("verify", nmq.a((ArrayList)localObject, false));
-        if (QLog.isColorLevel()) {
-          QLog.d(nmq.jdField_a_of_type_JavaLangString, 2, "sendBroadcast to close TMAssistant sdk process");
-        }
-        BaseApplicationImpl.getContext().sendBroadcast(paramString);
-      }
+    default: 
       return;
     }
+    paramContext = new Intent();
+    paramContext.setAction("com.tencent.mobileqq.NearbyJsInterface");
+    paramContext.putExtra("command_type", 1);
+    paramContext.putExtra("data", nmq.a(this.a));
+    this.a.a.getApp().sendBroadcast(paramContext);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

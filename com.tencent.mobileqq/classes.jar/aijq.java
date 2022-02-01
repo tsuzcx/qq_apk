@@ -1,26 +1,44 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class aijq
-  implements Animation.AnimationListener
+public class aijq
+  extends bfaq
 {
-  aijq(aijp paramaijp) {}
+  public aijq(NotificationView paramNotificationView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.a.p != null)
-    {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.a.a, 2130772234);
-      paramAnimation.setAnimationListener(this);
-      this.a.a.p.startAnimation(paramAnimation);
+    if ((paramBoolean) && (paramBundle != null)) {}
+    while (this.a.jdField_a_of_type_Bhht == null) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("structMsg");
+        structmsg.StructMsg localStructMsg = new structmsg.StructMsg();
+        localStructMsg.mergeFrom(paramBundle);
+        NotificationView.a(this.a, 1, localStructMsg);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        do
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("NotificationView", 2, "structMsg merge error");
+          }
+        } while (this.a.jdField_a_of_type_Bhht == null);
+        this.a.jdField_a_of_type_Bhht.dismiss();
+        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131696843), 0).b(this.a.a());
+        return;
+      }
     }
+    this.a.jdField_a_of_type_Bhht.dismiss();
+    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131696843), 0).b(this.a.a());
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -11,17 +11,17 @@ final class QbSdk$2
   
   public void run()
   {
-    int i = n.a().a(true, this.a);
+    int i = p.a().a(true, this.a);
     TbsDownloader.setAppContext(this.a);
     TbsLog.i("QbSdk", "QbSdk preinit ver is " + i);
     if (i == 0) {
-      n.a().b(this.a, true);
+      p.a().b(this.a, true);
     }
     TbsLog.i("QbSdk", "preInit -- prepare initAndLoadSo");
-    d.a(true).a(this.a, false, false, null);
-    v localv = v.a();
-    localv.a(this.a, null);
-    boolean bool = localv.b();
+    f.a(true).a(this.a, false, false, null);
+    x localx = x.a();
+    localx.a(this.a, null);
+    boolean bool = localx.b();
     this.b.sendEmptyMessage(3);
     if (!bool)
     {

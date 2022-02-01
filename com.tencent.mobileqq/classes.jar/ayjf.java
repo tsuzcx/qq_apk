@@ -1,12 +1,21 @@
-import android.content.Context;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.text.TextUtils;
 
 public class ayjf
-  extends ayjq
 {
-  public ayjf(Context paramContext, PicInfo paramPicInfo)
+  public String a;
+  public String b;
+  
+  public boolean a()
   {
-    super(paramContext, paramPicInfo);
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("PrecoverBusinessInfo:");
+    localStringBuilder.append("businessId=").append(this.a);
+    localStringBuilder.append(", name=").append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

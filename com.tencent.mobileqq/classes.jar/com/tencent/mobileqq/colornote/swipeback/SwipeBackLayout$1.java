@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.colornote.swipeback;
 
-import aqvf;
+import apoo;
 import com.tencent.qphone.base.util.QLog;
 
 class SwipeBackLayout$1

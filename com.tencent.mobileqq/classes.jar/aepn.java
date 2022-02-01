@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity.15.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-public final class aepn
-  implements DialogInterface.OnClickListener
+public class aepn
+  extends amsu
 {
-  public aepn(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, azxr paramazxr) {}
+  public aepn(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    FriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Azxr);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if ((!paramBoolean) || (paramString == null)) {
+      return;
     }
+    ThreadManager.post(new TroopRequestActivity.15.1(this, paramString), 5, null, true);
   }
 }
 

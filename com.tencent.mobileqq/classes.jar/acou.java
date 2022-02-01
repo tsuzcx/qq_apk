@@ -1,15 +1,15 @@
-import android.content.Context;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface acou
+class acou
+  implements DialogInterface.OnClickListener
 {
-  public abstract View a();
+  acou(acot paramacot) {}
   
-  public abstract void a(Context paramContext);
-  
-  public abstract void b(Context paramContext);
-  
-  public abstract void c(Context paramContext);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

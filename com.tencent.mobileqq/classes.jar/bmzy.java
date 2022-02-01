@@ -1,34 +1,24 @@
-import NS_USER_ACTION_REPORT.UserActionReport;
-import NS_USER_ACTION_REPORT.UserActionReportReq;
-import NS_USER_ACTION_REPORT.UserCommReport;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.capture.view.VideoCoverPickerProviderView;
+import java.lang.ref.WeakReference;
 
 public class bmzy
-  extends QzoneExternalRequest
+  implements View.OnClickListener
 {
-  private final JceStruct a;
+  public bmzy(VideoCoverPickerProviderView paramVideoCoverPickerProviderView) {}
   
-  public bmzy(int paramInt, UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
+  public void onClick(View paramView)
   {
-    this.a = new UserActionReportReq(paramInt, paramUserCommReport, paramArrayList);
-    this.needCompress = false;
-  }
-  
-  public String getCmdString()
-  {
-    return "MobileReport.UserActionReport";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "UserActionReport";
+    if (VideoCoverPickerProviderView.a(this.a) != null)
+    {
+      bmzz localbmzz = (bmzz)VideoCoverPickerProviderView.a(this.a).get();
+      if (localbmzz != null) {
+        localbmzz.a(VideoCoverPickerProviderView.b(this.a), false);
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

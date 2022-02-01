@@ -2,17 +2,17 @@ package com.tencent.mobileqq.activity.qwallet.report;
 
 import VACDReport.ReportHeader;
 import VACDReport.ReportItem;
-import alhs;
+import akfl;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bhlo;
-import bhnv;
-import bjve;
+import biaq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.SecUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -51,7 +51,7 @@ public class VACDReportUtil
       paramString4 = BaseApplicationImpl.getApplication().peekAppRuntime();
       if ((paramString4 instanceof QQAppInterface))
       {
-        paramString4 = (alhs)((QQAppInterface)paramString4).getManager(148);
+        paramString4 = (akfl)((QQAppInterface)paramString4).getManager(148);
         if (paramString4 == null)
         {
           if (QLog.isColorLevel()) {
@@ -87,8 +87,8 @@ public class VACDReportUtil
     localReportHeader.platform = localStringBuilder.toString();
     localReportHeader.sModule = paramString1;
     localReportHeader.sAction = paramString2;
-    localReportHeader.version = bhlo.a(BaseApplicationImpl.getContext());
-    localReportHeader.imei = bjve.c();
+    localReportHeader.version = DeviceInfoUtil.getQQVersionWithCode(BaseApplicationImpl.getContext());
+    localReportHeader.imei = biaq.c();
     localReportHeader.guid = SecUtil.toHexString(NetConnInfoCenter.GUID);
     long l = NetConnInfoCenter.getServerTimeMillis();
     localReportHeader.seqno = l;
@@ -107,7 +107,7 @@ public class VACDReportUtil
         localReportHeader.uin = 10000L;
         continue;
       }
-      localReportHeader.iNetType = bhnv.a(BaseApplicationImpl.getApplication());
+      localReportHeader.iNetType = NetworkUtil.getSystemNetwork(BaseApplicationImpl.getApplication());
       localReportHeader.result = 0;
       localReportHeader.createTime = NetConnInfoCenter.getServerTimeMillis();
       localReportHeader.startTime = l;
@@ -137,7 +137,7 @@ public class VACDReportUtil
     paramString2 = BaseApplicationImpl.getApplication().peekAppRuntime();
     if ((paramString2 instanceof QQAppInterface))
     {
-      paramString2 = (alhs)((QQAppInterface)paramString2).getManager(148);
+      paramString2 = (akfl)((QQAppInterface)paramString2).getManager(148);
       if (paramString2 == null)
       {
         if (QLog.isColorLevel()) {
@@ -178,7 +178,7 @@ public class VACDReportUtil
     paramString4 = BaseApplicationImpl.getApplication().peekAppRuntime();
     if ((paramString4 instanceof QQAppInterface))
     {
-      paramString4 = (alhs)((QQAppInterface)paramString4).getManager(148);
+      paramString4 = (akfl)((QQAppInterface)paramString4).getManager(148);
       if (paramString4 == null)
       {
         if (QLog.isColorLevel()) {
@@ -225,7 +225,7 @@ public class VACDReportUtil
       paramString2 = BaseApplicationImpl.getApplication().peekAppRuntime();
       if ((paramString2 instanceof QQAppInterface))
       {
-        paramString2 = (alhs)((QQAppInterface)paramString2).getManager(148);
+        paramString2 = (akfl)((QQAppInterface)paramString2).getManager(148);
         if (paramString2 == null)
         {
           if (QLog.isColorLevel()) {

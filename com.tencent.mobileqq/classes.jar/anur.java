@@ -1,15 +1,14 @@
-import java.nio.ByteBuffer;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class anur
+  extends anri
 {
-  public int a;
-  public long a;
-  public ByteBuffer a;
-  public int b;
-  
-  private anur(anum paramanum)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(1000);
+    paramQQAppInterface = new anuq(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    return paramQQAppInterface;
   }
 }
 

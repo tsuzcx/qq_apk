@@ -1,22 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.Calendar;
+import android.os.SystemClock;
 
-class bgxx
-  implements View.OnClickListener
+public class bgxx
 {
-  bgxx(bgxv parambgxv, bgxz parambgxz) {}
+  final long a;
+  public final String a;
+  public final String b;
+  public final String c;
   
-  public void onClick(View paramView)
+  bgxx(String paramString1, String paramString2, String paramString3)
   {
-    if ((bgxv.a(this.jdField_a_of_type_Bgxv) != null) && (bgxv.a(this.jdField_a_of_type_Bgxv).isShowing())) {
-      bgxv.a(this.jdField_a_of_type_Bgxv).dismiss();
-    }
-    if ((this.jdField_a_of_type_Bgxz != null) && (bgxv.a(this.jdField_a_of_type_Bgxv) != null)) {
-      this.jdField_a_of_type_Bgxz.a(bgxv.a(this.jdField_a_of_type_Bgxv).getTimeInMillis());
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+  }
+  
+  boolean a()
+  {
+    return SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long > 300000L;
   }
 }
 

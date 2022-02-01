@@ -1,16 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.widget.HorizontalListView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class pkk
-  extends AnimatorListenerAdapter
+  implements RejectedExecutionHandler
 {
-  public pkk(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
   {
-    ReadInJoySelfFragment.a(this.a).setVisibility(8);
+    QLog.e("MonitorTimeExecutor", 1, "[rejectedExecution] r: " + paramRunnable + " executor: " + paramThreadPoolExecutor);
   }
 }
 

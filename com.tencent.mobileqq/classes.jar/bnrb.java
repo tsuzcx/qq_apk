@@ -1,8 +1,15 @@
-import android.graphics.drawable.Drawable;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public abstract interface bnrb
+class bnrb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(int paramInt, Drawable paramDrawable);
+  bnrb(bnqy parambnqy) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.invalidateSelf();
+  }
 }
 
 

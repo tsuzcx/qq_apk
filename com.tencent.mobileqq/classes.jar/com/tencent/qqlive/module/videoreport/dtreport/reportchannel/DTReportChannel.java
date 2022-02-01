@@ -26,6 +26,7 @@ public class DTReportChannel
   
   static
   {
+    EVENT_KEY_DICT.put("origin_vst", "dt_origin_vst");
     EVENT_KEY_DICT.put("vst", "dt_vst");
     EVENT_KEY_DICT.put("act", "dt_act");
     EVENT_KEY_DICT.put("appin", "dt_appin");
@@ -95,7 +96,7 @@ public class DTReportChannel
   
   private boolean shouldReportImmediately(String paramString)
   {
-    return ("dt_act".equals(paramString)) || ("dt_vst".equals(paramString));
+    return ("dt_act".equals(paramString)) || ("dt_origin_vst".equals(paramString)) || ("dt_vst".equals(paramString));
   }
   
   private String transformEvent(String paramString)

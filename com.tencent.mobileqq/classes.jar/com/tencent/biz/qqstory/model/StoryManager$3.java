@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.model;
 
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import wte;
+import vuu;
 
 public class StoryManager$3
   implements Runnable
 {
-  public StoryManager$3(wte paramwte, String paramString) {}
+  public StoryManager$3(vuu paramvuu, String paramString) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class StoryManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.StoryManager.3
  * JD-Core Version:    0.7.0.1
  */

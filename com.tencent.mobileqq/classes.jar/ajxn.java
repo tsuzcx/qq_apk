@@ -1,28 +1,29 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.Context;
+import android.view.KeyEvent;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
 public class ajxn
-  implements View.OnTouchListener
+  implements TextView.OnEditorActionListener
 {
-  public ajxn(ContactsTroopAdapter paramContactsTroopAdapter, TextView paramTextView) {}
+  public ajxn(TransactionActivity paramTransactionActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    switch (paramMotionEvent.getAction())
+    if ((paramInt == 6) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
     {
+      if (TransactionActivity.a(this.a).isEnabled()) {
+        TransactionActivity.a(this.a).performClick();
+      }
+      if (TransactionActivity.a(this.a) != null) {
+        ((InputMethodManager)TransactionActivity.a(this.a).getSystemService("input_method")).hideSoftInputFromWindow(TransactionActivity.c(this.a).getWindowToken(), 0);
+      }
     }
-    for (;;)
-    {
-      return false;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-    }
+    return false;
   }
 }
 

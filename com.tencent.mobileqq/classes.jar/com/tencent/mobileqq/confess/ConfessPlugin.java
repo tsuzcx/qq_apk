@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.confess;
 
-import abgu;
-import agej;
+import aadf;
+import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -14,28 +14,24 @@ import android.os.Parcelable.Creator;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
 import android.widget.TextView;
-import anzj;
-import aqgi;
-import aqqm;
-import aqyt;
-import aqyv;
-import aqyw;
-import aqyz;
-import axws;
-import axwz;
-import bdll;
-import bdow;
-import binq;
-import biod;
-import bioy;
-import bioz;
-import bipn;
-import biqq;
-import bito;
-import bjbs;
-import bjig;
-import bmtd;
-import bmtk;
+import aozt;
+import apjv;
+import apse;
+import apsg;
+import apsh;
+import apsk;
+import awka;
+import awkh;
+import bcef;
+import bchh;
+import bgtw;
+import bguj;
+import bgve;
+import bgvf;
+import bgvt;
+import bgww;
+import bgzq;
+import bhht;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivity;
@@ -43,6 +39,7 @@ import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Friends;
@@ -52,8 +49,11 @@ import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -68,10 +68,10 @@ public class ConfessPlugin
   extends WebViewPlugin
 {
   private int jdField_a_of_type_Int = -2147483648;
-  aqgi jdField_a_of_type_Aqgi;
-  bjbs jdField_a_of_type_Bjbs;
-  bjig jdField_a_of_type_Bjig;
+  aozt jdField_a_of_type_Aozt;
+  bhht jdField_a_of_type_Bhht;
   protected ConfessPlugin.ChooseFriendReceiver a;
+  WXShareHelper.WXShareListener jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener;
   Runnable jdField_a_of_type_JavaLangRunnable = new ConfessPlugin.6(this);
   String jdField_a_of_type_JavaLangString;
   public JSONObject a;
@@ -95,8 +95,8 @@ public class ConfessPlugin
   
   private void a()
   {
-    if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing())) {
-      this.jdField_a_of_type_Bjbs.dismiss();
+    if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing())) {
+      this.jdField_a_of_type_Bhht.dismiss();
     }
   }
   
@@ -114,20 +114,20 @@ public class ConfessPlugin
         if (QLog.isColorLevel()) {
           QLog.i("ConfessPlugin", 2, String.format("setRightBtnMaxLen %d", new Object[] { Integer.valueOf(paramInt) }));
         }
-        localTextView = (TextView)localActivity.findViewById(2131369073);
+        localTextView = (TextView)localActivity.findViewById(2131369099);
       } while (localTextView == null);
       if (this.jdField_a_of_type_Int == -2147483648) {
         if (Build.VERSION.SDK_INT < 16) {
           break label93;
         }
       }
-      for (this.jdField_a_of_type_Int = localTextView.getMaxWidth(); paramInt == 0; this.jdField_a_of_type_Int = agej.a(100.0F, localActivity.getResources()))
+      for (this.jdField_a_of_type_Int = localTextView.getMaxWidth(); paramInt == 0; this.jdField_a_of_type_Int = AIOUtils.dp2px(100.0F, localActivity.getResources()))
       {
         localTextView.setMaxWidth(this.jdField_a_of_type_Int);
         return;
       }
     } while (paramInt <= 0);
-    localTextView.setMaxWidth(agej.a(paramInt, localActivity.getResources()));
+    localTextView.setMaxWidth(AIOUtils.dp2px(paramInt, localActivity.getResources()));
   }
   
   private void a(int paramInt1, int paramInt2)
@@ -137,31 +137,31 @@ public class ConfessPlugin
   
   private void a(Activity paramActivity)
   {
-    if (this.jdField_a_of_type_Bjbs == null)
+    if (this.jdField_a_of_type_Bhht == null)
     {
-      biod localbiod = this.mRuntime.a(this.mRuntime.a());
-      if ((localbiod instanceof bito)) {
-        this.jdField_a_of_type_Bjbs = ((bito)localbiod).getShare().a();
+      bguj localbguj = this.mRuntime.a(this.mRuntime.a());
+      if ((localbguj instanceof bgzq)) {
+        this.jdField_a_of_type_Bhht = ((bgzq)localbguj).getShare().a();
       }
     }
     else
     {
       return;
     }
-    this.jdField_a_of_type_Bjbs = new bjbs(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299011));
+    this.jdField_a_of_type_Bhht = new bhht(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299076));
   }
   
   private void a(AppInterface paramAppInterface, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     int i = 11;
-    paramString2 = bmtk.a();
-    paramString2.jdField_a_of_type_JavaLangString = paramAppInterface.getCurrentAccountUin();
-    paramString2.jdField_b_of_type_JavaLangString = aqyz.a(paramAppInterface);
+    paramString2 = QZoneHelper.UserInfo.getInstance();
+    paramString2.qzone_uin = paramAppInterface.getCurrentAccountUin();
+    paramString2.nickname = apsk.a(paramAppInterface);
     paramAppInterface = this.mRuntime.a(paramActivity);
-    if ((paramAppInterface instanceof bioz)) {
-      i = ((bioz)paramAppInterface).switchRequestCode(this, (byte)11);
+    if ((paramAppInterface instanceof bgvf)) {
+      i = ((bgvf)paramAppInterface).switchRequestCode(this, (byte)11);
     }
-    bmtd.a(paramActivity, paramString2, paramString1, paramActivity.getString(2131691912), "", i);
+    QZoneHelper.forwardToPublishMood(paramActivity, paramString2, paramString1, paramActivity.getString(2131691958), "", i);
   }
   
   private void a(String paramString1, String paramString2)
@@ -178,7 +178,7 @@ public class ConfessPlugin
     {
       str = paramString2;
       if (paramString2.length() > 30) {
-        str = aqyz.a(paramString2, 30);
+        str = apsk.a(paramString2, 30);
       }
     }
     paramString2 = new Intent();
@@ -194,9 +194,9 @@ public class ConfessPlugin
     paramString2.putExtra("req_share_id", -1L);
     paramString2.putExtra("pkg_name", "com.tencent.mobileqq");
     paramString2.putExtra("image_url_remote", paramString1);
-    paramString2.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131695740, new Object[] { str }));
+    paramString2.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131695880, new Object[] { str }));
     paramString2.putExtra("flag", 0);
-    paramString2.putExtra("compatible_text", aqyt.jdField_a_of_type_JavaLangString);
+    paramString2.putExtra("compatible_text", apse.jdField_a_of_type_JavaLangString);
     paramString2.putExtra("req_type", 1);
     paramString2.putExtra("openerProc", MobileQQ.getMobileQQ().getQQProcessName());
     paramString2.putExtra("k_back", paramBoolean);
@@ -205,7 +205,7 @@ public class ConfessPlugin
     paramString2.putExtra("struct_share_key_source_url", paramString6);
     paramString2.putExtra("struct_share_key_source_action", "web");
     paramString2.putExtra("struct_share_key_source_icon", paramString7);
-    paramString2.putExtra("stuctmsg_bytes", bdow.a(paramString2.getExtras()).getBytes());
+    paramString2.putExtra("stuctmsg_bytes", bchh.a(paramString2.getExtras()).getBytes());
     paramString2.putExtra("title_max_line", 2);
     startActivityForResult(paramString2, (byte)10);
   }
@@ -229,8 +229,8 @@ public class ConfessPlugin
       String str3 = paramJSONObject.optString("nick_name");
       int m = paramJSONObject.optInt("confessorSex");
       String str4 = paramJSONObject.optString("callback");
-      String str5 = axwz.b(paramJSONObject.optString("confessorUin"));
-      String str6 = axwz.b(paramJSONObject.optString("toUin"));
+      String str5 = awkh.b(paramJSONObject.optString("confessorUin"));
+      String str6 = awkh.b(paramJSONObject.optString("toUin"));
       int n = paramJSONObject.optInt("bg_type");
       long l = paramJSONObject.optLong("confessTime");
       paramJSONObject = localAppInterface.getCurrentAccountUin();
@@ -274,7 +274,7 @@ public class ConfessPlugin
           paramJSONObject.putString("key_confessor_nick", str2);
           paramJSONObject.putInt("key_confessor_sex", m);
           paramJSONObject.putLong("key_confess_time", l);
-          aqyt.a(localActivity, str6, i, k, str2, paramJSONObject);
+          apse.a(localActivity, str6, i, k, str2, paramJSONObject);
         }
         else if (!TextUtils.isEmpty(str4))
         {
@@ -307,17 +307,17 @@ public class ConfessPlugin
   
   private boolean a(String paramString)
   {
-    if (this.jdField_a_of_type_Aqgi == null)
+    if (this.jdField_a_of_type_Aozt == null)
     {
-      this.jdField_a_of_type_Aqgi = new aqgi(this.mRuntime.a(), 1);
-      this.jdField_a_of_type_Aqgi.a();
-      this.jdField_a_of_type_Aqgi.a(new aqyw(this));
+      this.jdField_a_of_type_Aozt = new aozt(this.mRuntime.a(), 1);
+      this.jdField_a_of_type_Aozt.a();
+      this.jdField_a_of_type_Aozt.a(new apsh(this));
     }
-    paramString = this.jdField_a_of_type_Aqgi.a(paramString, true);
+    paramString = this.jdField_a_of_type_Aozt.a(paramString, true);
     if (QLog.isColorLevel()) {
-      QLog.i("ConfessPlugin", 4, "preLoadQQSelfHeaderBitmap " + paramString + this.jdField_a_of_type_Aqgi.a);
+      QLog.i("ConfessPlugin", 4, "preLoadQQSelfHeaderBitmap " + paramString + this.jdField_a_of_type_Aozt.a);
     }
-    return paramString != this.jdField_a_of_type_Aqgi.a;
+    return paramString != this.jdField_a_of_type_Aozt.a;
   }
   
   private boolean a(String paramString, boolean paramBoolean, ArrayList<String> paramArrayList)
@@ -331,10 +331,10 @@ public class ConfessPlugin
     localIntent.putExtra("param_type", 1);
     localIntent.putExtra("param_subtype", 1);
     localIntent.putExtra("param_is_troop_admin", paramBoolean);
-    localIntent.putExtra("param_done_button_wording", localContext.getString(2131692262));
+    localIntent.putExtra("param_done_button_wording", localContext.getString(2131692310));
     localIntent.putExtra("param_uins_selected_default", paramArrayList);
     localIntent.putExtra("param_donot_need_contacts", true);
-    localIntent.putExtra("param_title", localContext.getString(2131695407));
+    localIntent.putExtra("param_title", localContext.getString(2131695546));
     localIntent.putExtra("param_max", 100);
     localContext.startActivity(localIntent);
     return true;
@@ -348,15 +348,15 @@ public class ConfessPlugin
       if (localObject == null) {
         return;
       }
-      TextView localTextView = ((WebViewFragment)localObject).mSwiftTitleUI.a;
-      localObject = ((WebViewFragment)localObject).mSwiftTitleUI.c;
-      aqyv localaqyv = new aqyv(this);
+      TextView localTextView = ((WebViewFragment)localObject).mSwiftTitleUI.leftView;
+      localObject = ((WebViewFragment)localObject).mSwiftTitleUI.rightViewText;
+      apsg localapsg = new apsg(this);
       if (localTextView != null) {
-        localTextView.setOnTouchListener(localaqyv);
+        localTextView.setOnTouchListener(localapsg);
       }
       if (localObject != null)
       {
-        ((TextView)localObject).setOnTouchListener(localaqyv);
+        ((TextView)localObject).setOnTouchListener(localapsg);
         return;
       }
     }
@@ -388,11 +388,11 @@ public class ConfessPlugin
     do
     {
       return;
-      str2 = axwz.b(paramJSONObject.optString("groupUin", ""));
+      str2 = awkh.b(paramJSONObject.optString("groupUin", ""));
       i = paramJSONObject.optInt("chatType");
       j = paramJSONObject.optInt("topicId");
-      str5 = axwz.b(paramJSONObject.optString("confessorUin", ""));
-      str3 = axwz.b(paramJSONObject.optString("toUin", ""));
+      str5 = awkh.b(paramJSONObject.optString("confessorUin", ""));
+      str3 = awkh.b(paramJSONObject.optString("toUin", ""));
       str6 = paramJSONObject.optString("topic");
       k = paramJSONObject.optInt("confessorSex");
       str4 = paramJSONObject.optString("confessToNick");
@@ -407,7 +407,7 @@ public class ConfessPlugin
         callJs(paramJSONObject, new String[] { "invalidate params" });
       }
     } while (i != 0);
-    paramJSONObject = agej.a(new Intent(localActivity, SplashActivity.class), null);
+    paramJSONObject = AIOUtils.setOpenAIOIntent(new Intent(localActivity, SplashActivity.class), null);
     paramJSONObject.putExtra("open_chat_from_group_rec_confess", true);
     paramJSONObject.putExtra("key_confess_topicid", j);
     paramJSONObject.putExtra("key_confess_desc", str6);
@@ -427,9 +427,9 @@ public class ConfessPlugin
       localActivity.startActivity(paramJSONObject);
       return;
       if (k == 1) {
-        str1 = anzj.a(2131701326);
+        str1 = amtj.a(2131701561);
       } else {
-        str1 = anzj.a(2131701329);
+        str1 = amtj.a(2131701564);
       }
     }
   }
@@ -493,7 +493,7 @@ public class ConfessPlugin
         str3 = paramJSONObject.optString("toUin");
       }
       if (paramJSONObject.has("fromEncodeUin")) {
-        str4 = axwz.b(paramJSONObject.optString("fromEncodeUin"));
+        str4 = awkh.b(paramJSONObject.optString("fromEncodeUin"));
       }
       if (paramJSONObject.has("bg_type")) {
         n = paramJSONObject.optInt("bg_type");
@@ -590,26 +590,26 @@ public class ConfessPlugin
     int i = paramJSONObject.optInt("share_type");
     int k = paramJSONObject.optInt("type");
     this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("callback");
-    if (this.jdField_a_of_type_Bjbs == null) {
+    if (this.jdField_a_of_type_Bhht == null) {
       a(this.mRuntime.a());
     }
-    if (this.jdField_a_of_type_Bjbs != null)
+    if (this.jdField_a_of_type_Bhht != null)
     {
-      this.jdField_a_of_type_Bjbs.c(2131693490);
-      if (!this.jdField_a_of_type_Bjbs.isShowing()) {
-        this.jdField_a_of_type_Bjbs.show();
+      this.jdField_a_of_type_Bhht.c(2131693585);
+      if (!this.jdField_a_of_type_Bhht.isShowing()) {
+        this.jdField_a_of_type_Bhht.show();
       }
     }
     if ((i != 0) && (i != 1) && (i != 2) && (i != 3))
     {
       a();
       a(false);
-      a(0, 2131718139);
+      a(0, 2131718380);
       return;
     }
     if ((i == 2) || (i == 3)) {
-      if (!WXShareHelper.a().a()) {
-        i = 2131719399;
+      if (!WXShareHelper.getInstance().isWXinstalled()) {
+        i = 2131719722;
       }
     }
     for (;;)
@@ -620,8 +620,8 @@ public class ConfessPlugin
         a(false);
         a(1, i);
         return;
-        if (!WXShareHelper.a().b()) {
-          i = 2131719400;
+        if (!WXShareHelper.getInstance().isWXsupportApi()) {
+          i = 2131719723;
         }
       }
       else
@@ -656,7 +656,7 @@ public class ConfessPlugin
   private void f(JSONObject paramJSONObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ConfessPlugin", 4, "processShare data:" + paramJSONObject + " mHeaderLoader:" + this.jdField_a_of_type_Aqgi);
+      QLog.i("ConfessPlugin", 4, "processShare data:" + paramJSONObject + " mHeaderLoader:" + this.jdField_a_of_type_Aozt);
     }
     String str1 = paramJSONObject.optString("title");
     String str2 = paramJSONObject.optString("desc");
@@ -679,7 +679,7 @@ public class ConfessPlugin
       a(null, null);
       return;
     }
-    String str2 = paramJSONObject.optString("title", anzj.a(2131701328));
+    String str2 = paramJSONObject.optString("title", amtj.a(2131701563));
     paramJSONObject = paramJSONObject.optJSONObject("confirm");
     String str1;
     boolean bool;
@@ -757,7 +757,7 @@ public class ConfessPlugin
               paramList1 = this.mRuntime.a().getCurrentAccountUin();
             }
           }
-          bdll.b(null, "dc00898", "", "", "0X80092F7", "0X80092F7", 0, 0, "", "", paramList1, str2);
+          bcef.b(null, "dc00898", "", "", "0X80092F7", "0X80092F7", 0, 0, "", "", paramList1, str2);
           paramList1 = paramList2;
           if (paramList1 != null)
           {
@@ -869,7 +869,7 @@ public class ConfessPlugin
           if ("setFirstOpen".equals(paramString3)) {
             try
             {
-              axws.a(this.mRuntime.a().getAccount(), "confess_first_open", Integer.valueOf(new JSONObject(paramVarArgs[0]).optInt("value")));
+              awka.a(this.mRuntime.a().getAccount(), "confess_first_open", Integer.valueOf(new JSONObject(paramVarArgs[0]).optInt("value")));
               return false;
             }
             catch (Exception paramJsBridgeListener)
@@ -883,7 +883,7 @@ public class ConfessPlugin
             {
               paramJsBridgeListener = this.mRuntime.a().getAccount();
               paramString1 = new JSONObject(paramVarArgs[0]).optString("callback");
-              i = ((Integer)axws.a(paramJsBridgeListener, "confess_first_open", Integer.valueOf(0))).intValue();
+              i = ((Integer)awka.a(paramJsBridgeListener, "confess_first_open", Integer.valueOf(0))).intValue();
               paramJsBridgeListener = new JSONObject();
               paramJsBridgeListener.put("value", i);
               callJs(paramString1, new String[] { paramJsBridgeListener.toString() });
@@ -898,7 +898,7 @@ public class ConfessPlugin
           if ("clearRedPoint".equals(paramString3)) {
             try
             {
-              aqqm.a().a("frd_rec_confess");
+              apjv.a().a("frd_rec_confess");
               callJs(new JSONObject(paramVarArgs[0]).optString("callback"), new String[] { "" });
               return false;
             }
@@ -929,7 +929,7 @@ public class ConfessPlugin
               if (paramJsBridgeListener == null) {
                 continue;
               }
-              paramJsBridgeListener = (biqq)paramJsBridgeListener.mComponentsProvider.a(4);
+              paramJsBridgeListener = (bgww)paramJsBridgeListener.mComponentsProvider.a(4);
               bool1 = bool2;
               if (paramJsBridgeListener == null) {
                 continue;
@@ -999,16 +999,16 @@ public class ConfessPlugin
               if (TextUtils.isEmpty(paramJsBridgeListener)) {
                 continue;
               }
-              this.c = axwz.b(paramJsBridgeListener);
+              this.c = awkh.b(paramJsBridgeListener);
               this.d = paramString1;
-              if (this.jdField_a_of_type_Bjbs == null) {
+              if (this.jdField_a_of_type_Bhht == null) {
                 a(this.mRuntime.a());
               }
-              if (this.jdField_a_of_type_Bjbs != null)
+              if (this.jdField_a_of_type_Bhht != null)
               {
-                this.jdField_a_of_type_Bjbs.c(2131693490);
-                if (!this.jdField_a_of_type_Bjbs.isShowing()) {
-                  this.jdField_a_of_type_Bjbs.show();
+                this.jdField_a_of_type_Bhht.c(2131693585);
+                if (!this.jdField_a_of_type_Bhht.isShowing()) {
+                  this.jdField_a_of_type_Bhht.show();
                 }
               }
               ThreadManager.postImmediately(this.jdField_a_of_type_JavaLangRunnable, null, true);
@@ -1052,7 +1052,7 @@ public class ConfessPlugin
       try
       {
         i = new JSONObject(paramVarArgs[0]).optInt("switchValue");
-        aqqm.a().a(i);
+        apjv.a().a(i);
         return false;
       }
       catch (Exception paramJsBridgeListener)
@@ -1099,15 +1099,15 @@ public class ConfessPlugin
   public void onDestroy()
   {
     a();
-    if (this.jdField_a_of_type_Bjig != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener != null)
     {
-      WXShareHelper.a().b(this.jdField_a_of_type_Bjig);
-      this.jdField_a_of_type_Bjig = null;
+      WXShareHelper.getInstance().removeObserver(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
+      this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = null;
     }
-    if (this.jdField_a_of_type_Aqgi != null)
+    if (this.jdField_a_of_type_Aozt != null)
     {
-      this.jdField_a_of_type_Aqgi.b();
-      this.jdField_a_of_type_Aqgi = null;
+      this.jdField_a_of_type_Aozt.b();
+      this.jdField_a_of_type_Aozt = null;
     }
     a();
     this.jdField_a_of_type_JavaLangString = null;

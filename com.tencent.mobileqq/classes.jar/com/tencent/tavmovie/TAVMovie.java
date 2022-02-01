@@ -31,150 +31,22 @@ public class TAVMovie
   implements TAVDecodeAndEncodeBase, Cloneable
 {
   private static final String TAG = "TAVMovie";
-  private int backgroundColor = -1;
-  private TAVMovieClip backgroundMusic;
-  private List<TAVMovieClip> backgroundMusics;
-  private TAVStickerRenderContext bigStickerRenderContext;
-  private List<TAVMovieClip> clips = new ArrayList();
-  private List<TAVVideoEffect> filters;
-  private TAVTemplate movieTemplate;
-  private List<TAVClip> overlays;
-  private boolean realTimeReleaseEachSticker;
-  private boolean realTimeReleaseStickerContext;
-  private CGSize renderSize;
-  private TAVStickerRenderContext stickerRenderContext;
-  private List<TAVMovieSticker> stickers;
-  private List<TAVClip> tavClips = new ArrayList();
-  private TAVMovieSticker templateSticker;
-  private List<TAVMovieTimeEffect> timeEffects = new ArrayList();
-  
-  private List<TAVClip> convertToTAVClips(List<TAVMovieClip> paramList)
-  {
-    if (paramList == null) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      TAVMovieClip localTAVMovieClip = (TAVMovieClip)paramList.next();
-      if (localTAVMovieClip != null) {
-        localArrayList.add(localTAVMovieClip.convertToClip());
-      }
-    }
-    return localArrayList;
-  }
-  
-  private void fillCompositionBySegment(TAVComposition paramTAVComposition, List<TAVMovieSegment> paramList)
-  {
-    if ((paramTAVComposition == null) || (paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    Object localObject1 = new ArrayList();
-    paramList = paramList.iterator();
-    label34:
-    label509:
-    for (;;)
-    {
-      Object localObject2;
-      Object localObject3;
-      Object localObject4;
-      if (paramList.hasNext())
-      {
-        localObject2 = (TAVMovieSegment)paramList.next();
-        if (((List)localObject1).isEmpty())
-        {
-          localObject3 = new ArrayList();
-          ((List)localObject3).add(localObject2);
-          ((List)localObject1).add(localObject3);
-        }
-        else
-        {
-          localObject3 = ((List)localObject1).iterator();
-          while (((Iterator)localObject3).hasNext())
-          {
-            localObject4 = (List)((Iterator)localObject3).next();
-            if (!((TAVMovieSegment)((List)localObject4).get(((List)localObject4).size() - 1)).getTimeRange().containsTime(((TAVMovieSegment)localObject2).getTimeRange().getStart())) {
-              ((List)localObject4).add(localObject2);
-            }
-          }
-        }
-      }
-      else
-      {
-        for (int i = 1;; i = 0)
-        {
-          if (i != 0) {
-            break label509;
-          }
-          localObject3 = new ArrayList();
-          ((List)localObject3).add(localObject2);
-          ((List)localObject1).add(localObject3);
-          break label34;
-          paramList = new ArrayList();
-          localObject1 = ((List)localObject1).iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (List)((Iterator)localObject1).next();
-            localObject3 = new ArrayList();
-            i = 0;
-            if (i < ((List)localObject2).size())
-            {
-              localObject4 = (TAVMovieSegment)((List)localObject2).get(i);
-              if (i == 0)
-              {
-                if (((TAVMovieSegment)localObject4).getTimeRange().getStart().bigThan(CMTime.CMTimeZero)) {
-                  ((List)localObject3).add(new TAVClip(new TAVEmptyResource(((TAVMovieSegment)((List)localObject2).get(0)).getTimeRange().getStart())));
-                }
-                ((List)localObject3).addAll(((TAVMovieSegment)localObject4).getFullTavClips());
-              }
-              for (;;)
-              {
-                i += 1;
-                break;
-                Object localObject5 = (TAVMovieSegment)((List)localObject2).get(i - 1);
-                localObject5 = ((TAVMovieSegment)localObject4).getTimeRange().getStart().sub(((TAVMovieSegment)localObject5).getTimeRange().getEnd());
-                if (((CMTime)localObject5).bigThan(CMTime.CMTimeZero)) {
-                  ((List)localObject3).add(new TAVClip(new TAVEmptyResource((CMTime)localObject5)));
-                }
-                ((List)localObject3).addAll(((TAVMovieSegment)localObject4).getFullTavClips());
-              }
-            }
-            paramList.add(localObject3);
-          }
-          paramList = paramList.iterator();
-          while (paramList.hasNext())
-          {
-            localObject1 = (List)paramList.next();
-            paramTAVComposition.addVideoChannel((List)localObject1);
-            paramTAVComposition.addAudioChannel((List)localObject1);
-          }
-          break;
-        }
-      }
-    }
-  }
-  
-  private void initStickers(TAVMovieFilterChainContext paramTAVMovieFilterChainContext)
-  {
-    if ((this.stickers == null) || (this.stickers.size() <= 0) || (this.stickerRenderContext == null)) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = this.stickers.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      localArrayList.add(((TAVMovieSticker)((Iterator)localObject).next()).getSticker());
-    }
-    this.stickerRenderContext.setRenderSize(this.renderSize);
-    localObject = new TAVStickerOverlayEffect(this.stickerRenderContext);
-    paramTAVMovieFilterChainContext.addFilter((TAVVideoEffect)localObject);
-    if (this.realTimeReleaseStickerContext)
-    {
-      ((TAVStickerOverlayEffect)localObject).setStickers(localArrayList, this.realTimeReleaseStickerContext, this.realTimeReleaseEachSticker);
-      return;
-    }
-    this.stickerRenderContext.reloadStickers(localArrayList);
-  }
+  protected int backgroundColor = -1;
+  protected TAVMovieClip backgroundMusic;
+  protected List<TAVMovieClip> backgroundMusics;
+  protected TAVStickerRenderContext bigStickerRenderContext;
+  protected List<TAVMovieClip> clips = new ArrayList();
+  protected List<TAVVideoEffect> filters;
+  protected TAVTemplate movieTemplate;
+  protected List<TAVClip> overlays;
+  protected boolean realTimeReleaseEachSticker;
+  protected boolean realTimeReleaseStickerContext;
+  protected CGSize renderSize;
+  protected TAVStickerRenderContext stickerRenderContext;
+  protected List<TAVMovieSticker> stickers;
+  protected List<TAVClip> tavClips = new ArrayList();
+  protected TAVMovieSticker templateSticker;
+  protected List<TAVMovieTimeEffect> timeEffects = new ArrayList();
   
   public void addBackgroundMusic(TAVMovieClip paramTAVMovieClip)
   {
@@ -330,6 +202,23 @@ public class TAVMovie
     return localTAVComposition;
   }
   
+  protected List<TAVClip> convertToTAVClips(List<TAVMovieClip> paramList)
+  {
+    if (paramList == null) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      TAVMovieClip localTAVMovieClip = (TAVMovieClip)paramList.next();
+      if (localTAVMovieClip != null) {
+        localArrayList.add(localTAVMovieClip.convertToClip());
+      }
+    }
+    return localArrayList;
+  }
+  
   public TAVDecodeAndEncodeBase decodeFromJsonString(String paramString)
   {
     return (TAVDecodeAndEncodeBase)new GsonBuilder().create().fromJson(paramString, getClass());
@@ -354,6 +243,96 @@ public class TAVMovie
       }
     }
     return null;
+  }
+  
+  protected void fillCompositionBySegment(TAVComposition paramTAVComposition, List<TAVMovieSegment> paramList)
+  {
+    if ((paramTAVComposition == null) || (paramList == null) || (paramList.size() == 0)) {
+      return;
+    }
+    Object localObject1 = new ArrayList();
+    paramList = paramList.iterator();
+    label34:
+    label509:
+    for (;;)
+    {
+      Object localObject2;
+      Object localObject3;
+      Object localObject4;
+      if (paramList.hasNext())
+      {
+        localObject2 = (TAVMovieSegment)paramList.next();
+        if (((List)localObject1).isEmpty())
+        {
+          localObject3 = new ArrayList();
+          ((List)localObject3).add(localObject2);
+          ((List)localObject1).add(localObject3);
+        }
+        else
+        {
+          localObject3 = ((List)localObject1).iterator();
+          while (((Iterator)localObject3).hasNext())
+          {
+            localObject4 = (List)((Iterator)localObject3).next();
+            if (!((TAVMovieSegment)((List)localObject4).get(((List)localObject4).size() - 1)).getTimeRange().containsTime(((TAVMovieSegment)localObject2).getTimeRange().getStart())) {
+              ((List)localObject4).add(localObject2);
+            }
+          }
+        }
+      }
+      else
+      {
+        for (int i = 1;; i = 0)
+        {
+          if (i != 0) {
+            break label509;
+          }
+          localObject3 = new ArrayList();
+          ((List)localObject3).add(localObject2);
+          ((List)localObject1).add(localObject3);
+          break label34;
+          paramList = new ArrayList();
+          localObject1 = ((List)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (List)((Iterator)localObject1).next();
+            localObject3 = new ArrayList();
+            i = 0;
+            if (i < ((List)localObject2).size())
+            {
+              localObject4 = (TAVMovieSegment)((List)localObject2).get(i);
+              if (i == 0)
+              {
+                if (((TAVMovieSegment)localObject4).getTimeRange().getStart().bigThan(CMTime.CMTimeZero)) {
+                  ((List)localObject3).add(new TAVClip(new TAVEmptyResource(((TAVMovieSegment)((List)localObject2).get(0)).getTimeRange().getStart())));
+                }
+                ((List)localObject3).addAll(((TAVMovieSegment)localObject4).getFullTavClips());
+              }
+              for (;;)
+              {
+                i += 1;
+                break;
+                Object localObject5 = (TAVMovieSegment)((List)localObject2).get(i - 1);
+                localObject5 = ((TAVMovieSegment)localObject4).getTimeRange().getStart().sub(((TAVMovieSegment)localObject5).getTimeRange().getEnd());
+                if (((CMTime)localObject5).bigThan(CMTime.CMTimeZero)) {
+                  ((List)localObject3).add(new TAVClip(new TAVEmptyResource((CMTime)localObject5)));
+                }
+                ((List)localObject3).addAll(((TAVMovieSegment)localObject4).getFullTavClips());
+              }
+            }
+            paramList.add(localObject3);
+          }
+          paramList = paramList.iterator();
+          while (paramList.hasNext())
+          {
+            localObject1 = (List)paramList.next();
+            paramTAVComposition.addVideoChannel((List)localObject1);
+            paramTAVComposition.addAudioChannel((List)localObject1);
+          }
+          break;
+        }
+      }
+    }
   }
   
   public int getBackgroundColor()
@@ -424,6 +403,27 @@ public class TAVMovie
   public List<TAVMovieTimeEffect> getTimeEffects()
   {
     return this.timeEffects;
+  }
+  
+  protected void initStickers(TAVMovieFilterChainContext paramTAVMovieFilterChainContext)
+  {
+    if ((this.stickers == null) || (this.stickers.size() <= 0) || (this.stickerRenderContext == null)) {
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = this.stickers.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.add(((TAVMovieSticker)((Iterator)localObject).next()).getSticker());
+    }
+    this.stickerRenderContext.setRenderSize(this.renderSize);
+    localObject = new TAVStickerOverlayEffect(this.stickerRenderContext);
+    paramTAVMovieFilterChainContext.addFilter((TAVVideoEffect)localObject);
+    if (this.realTimeReleaseStickerContext)
+    {
+      ((TAVStickerOverlayEffect)localObject).setStickers(localArrayList, this.realTimeReleaseStickerContext, this.realTimeReleaseEachSticker);
+      return;
+    }
+    this.stickerRenderContext.reloadStickers(localArrayList);
   }
   
   public boolean isHardMode()

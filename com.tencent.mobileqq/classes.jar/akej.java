@@ -1,17 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable;
+import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 public class akej
-  implements DialogInterface.OnDismissListener
+  implements OnCompositionLoadedListener
 {
-  public akej(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public akej(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    this.a.b.postDelayed(new ChatHistoryTroopMemberFragment.SearchDialogDismissRunnable(this.a), 150L);
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    if (DrawRedpacketPannelPreviewFragment.e(this.a) != null)
+    {
+      DrawRedpacketPannelPreviewFragment.e(this.a).setImageDrawable(localLottieDrawable);
+      ajvu.a(this.a.getActivity().app.getCurrentAccountUin(), "", true);
+    }
   }
 }
 

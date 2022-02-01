@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import bedb;
+import bcws;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import java.util.TimerTask;
 public class AIOMessageSpreadManager$3
   extends TimerTask
 {
-  public AIOMessageSpreadManager$3(bedb parambedb) {}
+  public AIOMessageSpreadManager$3(bcws parambcws) {}
   
   public void run()
   {
@@ -23,15 +23,15 @@ public class AIOMessageSpreadManager$3
         if (QLog.isColorLevel()) {
           QLog.i("AIOMessageSpreadManager", 1, "lastInsertTime[" + this.this$0.a + "],now[" + l1 + "], dur[" + l2 + "],timeOut start check!");
         }
-        i = bedb.a(this.this$0).size() - 1;
+        i = bcws.a(this.this$0).size() - 1;
         while (i >= 0)
         {
-          localMessageRecord = (MessageRecord)bedb.a(this.this$0).get(i);
+          localMessageRecord = (MessageRecord)bcws.a(this.this$0).get(i);
           this.this$0.a((ChatMessage)localMessageRecord);
           i -= 1;
         }
         this.this$0.a = 0L;
-        bedb.a(this.this$0).clear();
+        bcws.a(this.this$0).clear();
       }
       while (!QLog.isColorLevel())
       {
@@ -45,7 +45,7 @@ public class AIOMessageSpreadManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager.3
  * JD-Core Version:    0.7.0.1
  */

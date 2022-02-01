@@ -1,17 +1,27 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import android.app.Activity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class qfe
-  extends RecyclerView.ViewHolder
+class qfe
+  implements tcn
 {
-  public TemplateBean a;
+  qfe(qfd paramqfd) {}
   
-  public qfe(qeu paramqeu, Container paramContainer, TemplateBean paramTemplateBean)
+  public void a(boolean paramBoolean, String paramString) {}
+  
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    super(paramContainer);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = paramTemplateBean;
+    if ((paramBoolean) && ((qfb.a(this.a.a) instanceof Activity)))
+    {
+      if (qfb.a(this.a.a) == null) {
+        qfb.a(this.a.a, new swi());
+      }
+      qfb.a(this.a.a).a(qfd.a(this.a), qfd.a(this.a, paramInt), (Activity)qfb.a(this.a.a), "", "", paramString2, "", 0, "");
+      return;
+    }
+    QQToast.a(qfb.a(this.a.a), 1, 2131717380, 0).a();
   }
+  
+  public void b(boolean paramBoolean, String paramString) {}
 }
 
 

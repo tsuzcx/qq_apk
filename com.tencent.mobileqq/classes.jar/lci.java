@@ -1,6 +1,15 @@
-public abstract interface lci
+import com.tencent.av.VideoController;
+import java.util.Comparator;
+
+public class lci
+  implements Comparator<lcp>
 {
-  public abstract void a();
+  public lci(VideoController paramVideoController) {}
+  
+  public int a(lcp paramlcp1, lcp paramlcp2)
+  {
+    return (int)(paramlcp1.d - paramlcp2.d);
+  }
 }
 
 

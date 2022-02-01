@@ -1,25 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
 
-class ajyx
-  implements DialogInterface.OnClickListener
+public class ajyx
+  implements akdo
 {
-  ajyx(ajyt paramajyt) {}
+  public ajyx(LingHbFragment paramLingHbFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    try
+    if (paramInt == 0)
     {
-      paramDialogInterface.dismiss();
-      ajyt.a(this.a, ajyt.a(this.a), Long.valueOf(ajyt.a(this.a)).longValue());
-      ajyt.a(this.a);
+      this.a.a.findViewById(2131368638).setVisibility(8);
       return;
     }
-    catch (Exception paramDialogInterface)
-    {
-      QLog.e("SDKEmotionSettingManager", 1, "setNegativeButton cancel error");
-    }
+    this.a.a.findViewById(2131368638).setVisibility(0);
   }
 }
 

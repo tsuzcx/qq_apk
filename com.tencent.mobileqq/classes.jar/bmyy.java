@@ -1,48 +1,105 @@
-public abstract class bmyy
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.ProviderView;
+import dov.com.qq.im.capture.view.QIMFilterProviderView;
+import dov.com.qq.im.capture.view.StaticStickerProviderView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class bmyy
 {
-  public static bmzh a(long paramLong)
+  public static final int[] a;
+  public static final int[] b = { 101, 2130849578, 2131373919 };
+  public static final int[] c = { 102, 2130849577, 2131373918 };
+  private int jdField_a_of_type_Int;
+  private ArrayList<int[]> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  
+  static
   {
-    return bmzc.a().a(paramLong);
+    jdField_a_of_type_ArrayOfInt = new int[] { 100, 2130849576, 2131373917 };
   }
   
-  public static bmzi a(long paramLong)
+  public bmyy(int paramInt, List<Integer> paramList)
   {
-    return bmzc.a().a(paramLong);
+    this.jdField_a_of_type_Int = paramInt;
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        paramInt = ((Integer)paramList.next()).intValue();
+        if (paramInt == 100) {
+          this.jdField_a_of_type_JavaUtilArrayList.add(jdField_a_of_type_ArrayOfInt);
+        } else if (paramInt == 101) {
+          this.jdField_a_of_type_JavaUtilArrayList.add(b);
+        } else if (paramInt == 102) {
+          this.jdField_a_of_type_JavaUtilArrayList.add(c);
+        }
+      }
+    }
   }
   
-  public static bmzj a(long paramLong)
+  public int a()
   {
-    return bmzc.a().a(paramLong);
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public static String a(int paramInt, String paramString1, String paramString2, bmza parambmza)
+  public int a(int paramInt)
   {
-    return bmzc.a().a(paramInt, paramString1, paramString2, parambmza);
+    if ((paramInt < 0) || (paramInt > this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return 0;
+    }
+    return ((int[])this.jdField_a_of_type_JavaUtilArrayList.get(paramInt))[1];
   }
   
-  public static String a(int paramInt, String paramString1, String paramString2, bmzb parambmzb)
+  public ProviderView a(Context paramContext, int paramInt)
   {
-    return a(paramInt, paramString1, paramString2, true, parambmzb);
+    Object localObject = null;
+    switch (paramInt)
+    {
+    default: 
+      paramContext = localObject;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ProviderViewBuilder", 2, "bad id=" + paramInt);
+        paramContext = localObject;
+      }
+      break;
+    }
+    for (;;)
+    {
+      if (paramContext != null)
+      {
+        paramContext.setCaptureScene(this.jdField_a_of_type_Int);
+        paramContext.setTabBarPosition(2);
+        paramContext.d(231);
+      }
+      return paramContext;
+      paramContext = new QIMFilterProviderView(paramContext);
+      paramContext.setId(2131364208);
+      continue;
+      paramContext = new StaticStickerProviderView(paramContext);
+      paramContext.setId(2131364217);
+    }
   }
   
-  public static String a(int paramInt, String paramString1, String paramString2, boolean paramBoolean, bmzb parambmzb)
+  public int b(int paramInt)
   {
-    return bmzc.a().a(paramInt, paramString1, paramString2, paramBoolean, parambmzb);
+    if ((paramInt < 0) || (paramInt > this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return 0;
+    }
+    return ((int[])this.jdField_a_of_type_JavaUtilArrayList.get(paramInt))[2];
   }
   
-  public static void a(long paramLong, bmzh parambmzh)
+  public int c(int paramInt)
   {
-    bmzc.a().a(paramLong, parambmzh);
-  }
-  
-  public static void a(long paramLong, bmzi parambmzi)
-  {
-    bmzc.a().a(paramLong, parambmzi);
-  }
-  
-  public static void a(long paramLong, bmzj parambmzj)
-  {
-    bmzc.a().a(paramLong, parambmzj);
+    if ((paramInt < 0) || (paramInt > this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return -1;
+    }
+    return ((int[])this.jdField_a_of_type_JavaUtilArrayList.get(paramInt))[0];
   }
 }
 

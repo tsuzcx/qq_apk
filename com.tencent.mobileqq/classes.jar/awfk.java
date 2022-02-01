@@ -1,64 +1,67 @@
-import android.view.WindowManager.BadTokenException;
-import android.view.accessibility.AccessibilityManager;
-import android.view.accessibility.AccessibilityManager.AccessibilityStateChangeListener;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-import java.lang.reflect.Field;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 
-final class awfk
-  implements HookMethodCallback
+public class awfk
 {
-  awfk(Class paramClass) {}
-  
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
+  public static void a(Context paramContext, String paramString)
   {
-    if (paramMethodHookParam.throwable == null) {
-      return;
-    }
-    Object localObject;
-    if (paramMethodHookParam.throwable.getCause() != null) {
-      localObject = paramMethodHookParam.throwable.getCause();
-    }
-    while ((localObject instanceof WindowManager.BadTokenException)) {
+    long l = 0L;
+    for (;;)
+    {
       try
       {
-        localObject = this.a.getDeclaredField("mAccessibilityInteractionConnectionManager");
-        ((Field)localObject).setAccessible(true);
-        localObject = ((Field)localObject).get(paramMethodHookParam.thisObject);
-        Field localField = this.a.getDeclaredField("mAccessibilityManager");
-        localField.setAccessible(true);
-        ((AccessibilityManager)localField.get(paramMethodHookParam.thisObject)).removeAccessibilityStateChangeListener((AccessibilityManager.AccessibilityStateChangeListener)localObject);
-        return;
+        localObject = new URL(paramString);
       }
-      catch (NoSuchFieldException paramMethodHookParam)
+      catch (MalformedURLException localMalformedURLException)
       {
-        paramMethodHookParam.printStackTrace();
-        return;
-        localObject = paramMethodHookParam.throwable;
+        Object localObject;
+        int i;
+        QLog.e("QQMusicConst", 1, "music player activity url io MalformedURLException ", localMalformedURLException);
+        continue;
       }
-      catch (IllegalArgumentException paramMethodHookParam)
+      try
       {
-        paramMethodHookParam.printStackTrace();
-        return;
+        i = ((URL)localObject).openConnection().getContentLength();
+        l = i;
       }
-      catch (IllegalAccessException paramMethodHookParam)
+      catch (IOException localIOException)
       {
-        paramMethodHookParam.printStackTrace();
-        return;
-      }
-      catch (Exception paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-        return;
-      }
-      catch (Error paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
+        QLog.e("QQMusicConst", 1, "music player activity url IOException ", localIOException);
       }
     }
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("big_brother_source_key", "biz_src_qqmusic");
+    ((Bundle)localObject).putLong("_filesize_from_dlg", l);
+    ((Bundle)localObject).putString("_filename_from_dlg", paramContext.getResources().getString(2131694195));
+    ((Bundle)localObject).putString("FILE_MIME_TYPE", "application/vnd.android.package-archive");
+    ((Bundle)localObject).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_qqmusic");
+    atdm.a().b(paramString, (Bundle)localObject);
   }
   
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
+  public static boolean a(Context paramContext)
+  {
+    return a(paramContext, "com.tencent.qqmusic");
+  }
+  
+  public static boolean a(Context paramContext, String paramString)
+  {
+    paramContext = paramContext.getPackageManager();
+    try
+    {
+      paramContext.getPackageInfo(paramString, 1);
+      return true;
+    }
+    catch (PackageManager.NameNotFoundException paramContext) {}
+    return false;
+  }
 }
 
 

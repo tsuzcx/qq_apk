@@ -1,24 +1,19 @@
-public abstract interface aksm
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+
+class aksm
+  implements View.OnLayoutChangeListener
 {
-  public abstract void a(akss paramakss);
+  aksm(aksl paramaksl) {}
   
-  public abstract void a(akss paramakss, int paramInt);
-  
-  public abstract void a(akss paramakss, int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(akss paramakss, long paramLong);
-  
-  public abstract void a(akss paramakss, boolean paramBoolean);
-  
-  public abstract void b(akss paramakss);
-  
-  public abstract void b(akss paramakss, int paramInt);
-  
-  public abstract void c(akss paramakss);
-  
-  public abstract void d(akss paramakss);
-  
-  public abstract void v();
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.removeOnLayoutChangeListener(this);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.setText(amtj.a(2131706568) + this.a.jdField_a_of_type_Int + "%");
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.setVisibility(0);
+  }
 }
 
 

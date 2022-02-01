@@ -2,10 +2,10 @@ package com.tencent.mobileqq.microapp.widget.media;
 
 import android.content.Context;
 import android.content.Intent;
-import bhsr;
 import com.tencent.mobileqq.microapp.a.a.a;
 import com.tencent.mobileqq.microapp.appbrand.a;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
+import com.tencent.mobileqq.utils.StringUtil;
 
 final class i
   implements a.a
@@ -15,7 +15,7 @@ final class i
   public void a(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (bhsr.a(paramContext)) {}
+    if (StringUtil.isEmpty(paramContext)) {}
     do
     {
       do

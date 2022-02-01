@@ -1,12 +1,36 @@
-import android.os.Bundle;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
+import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/gldrawable/GLDrawableOptions;", "", "name", "", "translate", "Landroid/os/Bundle;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface bibv
+final class bibv
+  implements ITMAssistantExchangeURLListenner
 {
-  @NotNull
-  public abstract Bundle a();
+  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
+  {
+    bhzm.b(bibs.jdField_a_of_type_JavaLangString, "onExchangedURLSucceed --- ");
+    if ((paramBoolean) && (??? != null) && (???.size() > 0))
+    {
+      ??? = ???.iterator();
+      while (???.hasNext())
+      {
+        Object localObject1 = ???.next();
+        if ((localObject1 instanceof AppSimpleDetail))
+        {
+          int i = ((AppSimpleDetail)localObject1).versionCode;
+          if (i > 0) {
+            bibs.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
+          }
+        }
+      }
+    }
+    synchronized (bibs.jdField_a_of_type_JavaLangObject)
+    {
+      bibs.jdField_a_of_type_JavaLangObject.notify();
+      return;
+    }
+  }
 }
 
 

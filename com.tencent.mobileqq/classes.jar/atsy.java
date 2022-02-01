@@ -1,75 +1,42 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
 
-class atsy
-  implements atqw
+public class atsy
+  extends Handler
 {
-  atsy(atsx paramatsx, String paramString, atte paramatte) {}
+  public atsy(QQSettingMsgClearFragment paramQQSettingMsgClearFragment) {}
   
-  public void a(int paramInt, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    boolean bool2 = false;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2TroopTaskExcuter onFaild：");
-    boolean bool1;
-    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
-      bool1 = true;
-    }
-    for (;;)
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atsx.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send faild:" + paramInt);
-      }
-      this.jdField_a_of_type_Atte.a(atsi.a(this.jdField_a_of_type_Atsx.jdField_a_of_type_Long, bool2), bool1);
+    }
+    do
+    {
       return;
-      if ((paramInt == -6101) || (paramInt == -7003))
+      paramMessage = this.a.getActivity();
+      if ((paramMessage != null) && (!paramMessage.isFinishing()))
       {
-        bool1 = false;
-        bool2 = true;
+        this.a.jdField_a_of_type_Bhht.a(this.a.getString(2131690749));
+        this.a.jdField_a_of_type_Bhht.d(2130849594);
+        this.a.jdField_a_of_type_Bhht.b(false);
       }
-      else
-      {
-        bool1 = false;
-      }
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    paramString2 = new Bundle();
-    paramString2.putString("_m_ForwardFileType", "3");
-    paramString2.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    paramString2.putString("_m_ForwardFileName", this.jdField_a_of_type_Atsx.jdField_a_of_type_JavaLangString);
-    paramString2.putString("_m_ForwardSize", this.jdField_a_of_type_Atsx.jdField_a_of_type_Long + "");
-    paramString2.putString("_m_ForwardMd5", this.jdField_a_of_type_Atsx.c);
-    paramString2.putString("_m_ForwardDeadTime", "0");
-    paramString2.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Atsx.e);
-    paramString2.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Atsx.f);
-    paramString2.putString("_m_ForwardUuid", paramString1);
-    int i;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_Atsx.e))
-    {
-      i = 0;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Atsx.f)) {
-        break label248;
-      }
-    }
-    label248:
-    for (int j = 0;; j = Integer.parseInt(this.jdField_a_of_type_Atsx.f))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atsx.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send success send feeds");
-      }
-      atsi.a(atsi.a(this.jdField_a_of_type_Atsx.jdField_a_of_type_Atsi), Long.parseLong(this.jdField_a_of_type_JavaLangString), 102, paramString1, this.jdField_a_of_type_Atsx.jdField_a_of_type_Long, 0, i, j, 0, false, paramString2, this.jdField_a_of_type_Atte);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
       return;
-      i = Integer.parseInt(this.jdField_a_of_type_Atsx.e);
-      break;
-    }
+    } while ((this.a.jdField_a_of_type_Bhht == null) || (!this.a.jdField_a_of_type_Bhht.isShowing()));
+    this.a.jdField_a_of_type_Bhht.cancel();
+    this.a.jdField_a_of_type_Bhht.a(this.a.getString(2131690751));
+    this.a.jdField_a_of_type_Bhht.c(true);
+    this.a.jdField_a_of_type_Bhht.a(false);
+    this.a.jdField_a_of_type_Bhht.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsy
  * JD-Core Version:    0.7.0.1
  */

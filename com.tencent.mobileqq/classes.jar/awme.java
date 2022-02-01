@@ -1,26 +1,31 @@
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public class awme
-  implements awoc
+  implements bhai<oidb_0x8e4.RspBody>
 {
-  public Object a;
+  public awme(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  private awme(ListenTogetherManager paramListenTogetherManager)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaLangObject == null) {}
-    while (paramInt == 0) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (paramInt == 0)
     {
-      this.jdField_a_of_type_JavaLangObject.notifyAll();
-      return;
+      paramRspBody = paramRspBody.poi_info;
+      String str = paramRspBody.bytes_uid.get().toStringUtf8();
+      this.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
     }
+    do
+    {
+      return;
+      this.a.a(paramInt, paramRspBody, amtj.a(2131704255));
+    } while (!QLog.isColorLevel());
+    QLog.d("GameRoomInviteActivity", 2, "start game failed! code = " + paramInt);
   }
 }
 

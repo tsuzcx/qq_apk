@@ -1,42 +1,28 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-class aiwt
-  implements View.OnClickListener
+public class aiwt
 {
-  private long jdField_a_of_type_Long;
+  private View jdField_a_of_type_AndroidViewView;
+  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
+  private TextView c;
   
-  aiwt(aiws paramaiws) {}
-  
-  public void onClick(View paramView)
+  aiwt(aiwo paramaiwo, View paramView)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 200L) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Aiws.jdField_a_of_type_Aiwh.a();
-      Object localObject = new Intent(aiws.a(this.jdField_a_of_type_Aiws), QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("hide_left_button", false);
-      ((Intent)localObject).putExtra("show_right_close_button", false);
-      ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-      String str = bhyk.a(aiws.a(this.jdField_a_of_type_Aiws), "call", "mvip.gongneng.anroid.individuation.web");
-      VasWebviewUtil.openQQBrowserWithoutAD(aiws.a(this.jdField_a_of_type_Aiws), str, 524288L, (Intent)localObject, false, -1);
-      VipUtils.a(this.jdField_a_of_type_Aiws.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "QQVIPFUNCALL", "0X8004D8C", "0X8004D8C", 4, 0, new String[0]);
-      localObject = this.jdField_a_of_type_Aiws.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
-      ((SharedPreferences.Editor)localObject).putInt("funcall_tip_" + this.jdField_a_of_type_Aiws.jdField_a_of_type_JavaLangString, 4);
-      ((SharedPreferences.Editor)localObject).commit();
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369032);
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369992));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369999));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378800));
+    this.b = ((TextView)paramView.findViewById(2131365315));
+    this.c = ((TextView)paramView.findViewById(2131371789));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365438));
   }
 }
 

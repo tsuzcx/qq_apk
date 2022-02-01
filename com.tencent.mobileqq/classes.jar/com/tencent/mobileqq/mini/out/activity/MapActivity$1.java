@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.out.activity;
 
 import android.view.View;
-import bljm;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 class MapActivity$1
-  implements bljm
+  implements AdapterView.OnItemClickListener
 {
   MapActivity$1(MapActivity paramMapActivity) {}
   

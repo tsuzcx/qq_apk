@@ -1,21 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import android.support.annotation.NonNull;
 
-public class bmvu
-  implements View.OnClickListener
+class bmvu
+  implements bmvq
 {
-  public bmvu(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  bmvu(bmvt parambmvt) {}
   
-  public void onClick(View paramView)
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    if (!QzoneVerticalVideoDownloadActivity.access$200(this.a))
-    {
-      QzoneVerticalVideoDownloadActivity.access$300(this.a, false, false);
-      QzoneVerticalVideoDownloadActivity.access$400(this.a);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return bfby.b(paramString);
   }
 }
 

@@ -3,84 +3,40 @@ package cooperation.qzone.feed;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bmyv;
 
 public class CertifiedFakeFeed
   implements Parcelable
 {
-  public static final Parcelable.Creator<CertifiedFakeFeed> CREATOR = new bmyv();
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private int jdField_d_of_type_Int;
-  private String jdField_d_of_type_JavaLangString;
-  private String e;
-  private String f;
+  public static final String BUNDLE_KEY = "KEY_CERTIFIED_FAKE_FEED";
+  public static final String BUNDLE_KEY_LIST = "KEY_CERTIFIED_FAKE_FEED_LIST";
+  public static final Parcelable.Creator<CertifiedFakeFeed> CREATOR = new CertifiedFakeFeed.1();
+  private String clientKey;
+  private String content;
+  private String coverPath;
+  private long createTime;
+  private int duration;
+  private String feedId;
+  private int feedType;
+  private int height;
+  private String puin;
+  private String title;
+  private int width;
   
   private CertifiedFakeFeed() {}
   
   public CertifiedFakeFeed(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.e = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.f = paramParcel.readString();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public int c()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public int d()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public String d()
-  {
-    return this.jdField_d_of_type_JavaLangString;
+    this.feedId = paramParcel.readString();
+    this.clientKey = paramParcel.readString();
+    this.feedType = paramParcel.readInt();
+    this.title = paramParcel.readString();
+    this.content = paramParcel.readString();
+    this.coverPath = paramParcel.readString();
+    this.width = paramParcel.readInt();
+    this.height = paramParcel.readInt();
+    this.duration = paramParcel.readInt();
+    this.createTime = paramParcel.readLong();
+    this.puin = paramParcel.readString();
   }
   
   public int describeContents()
@@ -88,29 +44,74 @@ public class CertifiedFakeFeed
     return 0;
   }
   
-  public String e()
+  public String getClientKey()
   {
-    return this.e;
+    return this.clientKey;
   }
   
-  public String f()
+  public String getContent()
   {
-    return this.f;
+    return this.content;
+  }
+  
+  public String getCoverPath()
+  {
+    return this.coverPath;
+  }
+  
+  public long getCreateTime()
+  {
+    return this.createTime;
+  }
+  
+  public int getDuration()
+  {
+    return this.duration;
+  }
+  
+  public String getFeedId()
+  {
+    return this.feedId;
+  }
+  
+  public int getFeedType()
+  {
+    return this.feedType;
+  }
+  
+  public int getHeight()
+  {
+    return this.height;
+  }
+  
+  public String getPuin()
+  {
+    return this.puin;
+  }
+  
+  public String getTitle()
+  {
+    return this.title;
+  }
+  
+  public int getWidth()
+  {
+    return this.width;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeString(this.e);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.f);
+    paramParcel.writeString(this.feedId);
+    paramParcel.writeString(this.clientKey);
+    paramParcel.writeInt(this.feedType);
+    paramParcel.writeString(this.title);
+    paramParcel.writeString(this.content);
+    paramParcel.writeString(this.coverPath);
+    paramParcel.writeInt(this.width);
+    paramParcel.writeInt(this.height);
+    paramParcel.writeInt(this.duration);
+    paramParcel.writeLong(this.createTime);
+    paramParcel.writeString(this.puin);
   }
 }
 

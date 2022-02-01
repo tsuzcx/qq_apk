@@ -1,12 +1,6 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class ahvw
-  extends ahvs
+public abstract interface ahvw
 {
-  public ahvw(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.data.EmoticonResp;
-import java.lang.ref.WeakReference;
-
-public class askk
+class askk
+  extends asjv
 {
-  WeakReference<anwx> a;
-  
-  public askk(askd paramaskd, anwx paramanwx)
+  public askk(asji paramasji)
   {
-    this.a = new WeakReference(paramanwx);
+    super(paramasji);
   }
   
-  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp) {}
+  protected String a()
+  {
+    return "StateSenderCancelSend";
+  }
 }
 
 

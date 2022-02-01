@@ -5,18 +5,26 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.util.SparseArray;
+import com.tencent.thumbplayer.core.config.TPPlayerCoreConfig;
 import com.tencent.thumbplayer.utils.TPLogUtil;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class TPPlayerConfig
 {
   private static String DOT = "\\.";
+  private static final String HOST_CONFIG_KEY = "host_config";
   public static final boolean ISOTT = false;
   private static final String TAG = "TPPlayerConfig";
-  public static final String VERSION = "2.5.0.1084";
+  public static final String VERSION = "2.8.0.1104";
   private static String appVersion = "";
   private static String appVersionName;
+  public static String beacon_log_host;
+  public static String beacon_policy_host;
   private static long buildNum = -1L;
+  private static String host_config;
   private static String mGuid = "";
+  private static String mOutNetIp;
   private static int mPlatform;
   private static SparseArray<String> mProxyCacheDirs = new SparseArray(1);
   private static SparseArray<String> mProxyConfigStrs;
@@ -34,8 +42,12 @@ public class TPPlayerConfig
     mProxyServiceType = -1;
     mUserUpc = "";
     mUserUpcState = 0;
+    mOutNetIp = "";
     mUseP2P = true;
     mPlatform = -1;
+    beacon_policy_host = "";
+    beacon_log_host = "";
+    host_config = "";
   }
   
   public static void addProxyCacheDir(int paramInt, String paramString)
@@ -125,6 +137,11 @@ public class TPPlayerConfig
     return mGuid;
   }
   
+  public static String getOutNetIp()
+  {
+    return mOutNetIp;
+  }
+  
   public static int getPlatform()
   {
     return mPlatform;
@@ -133,6 +150,24 @@ public class TPPlayerConfig
   public static String getProxyCacheDir(int paramInt)
   {
     return (String)mProxyCacheDirs.get(paramInt);
+  }
+  
+  public static String getProxyConfigDir()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    if (!TextUtils.isEmpty(host_config)) {}
+    try
+    {
+      localJSONObject.put("host_config", new JSONObject(host_config));
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        TPLogUtil.e("TPPlayerConfig", localJSONException);
+      }
+    }
   }
   
   public static String getProxyConfigStr(int paramInt)
@@ -168,6 +203,11 @@ public class TPPlayerConfig
     return mUserUpcState;
   }
   
+  public static int getVideoMediaCodecCoexistMaxCnt()
+  {
+    return TPPlayerCoreConfig.getVideoMediaCodecCoexistMaxCnt();
+  }
+  
   public static boolean isUseP2P()
   {
     return mUseP2P;
@@ -178,6 +218,39 @@ public class TPPlayerConfig
     return mUserIsVip;
   }
   
+  public static void parseHostConfig(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      TPLogUtil.w("TPPlayerConfig", "parseHostConfig, config is null.");
+    }
+    for (;;)
+    {
+      return;
+      host_config = paramString;
+      TPLogUtil.i("TPPlayerConfig", "parseHostConfig:" + paramString);
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if (paramString.has("player_host_config"))
+        {
+          paramString = paramString.getJSONObject("player_host_config");
+          if (paramString.has("beacon_policy_host")) {
+            beacon_policy_host = paramString.getString("beacon_policy_host");
+          }
+          if (paramString.has("beacon_log_host"))
+          {
+            beacon_log_host = paramString.getString("beacon_log_host");
+            return;
+          }
+        }
+      }
+      catch (Throwable paramString)
+      {
+        TPLogUtil.w("TPPlayerConfig", "parseHostConfig exception: " + paramString.toString());
+      }
+    }
+  }
+  
   public static void setDebugEnable(boolean paramBoolean)
   {
     TPLogUtil.setDebugEnable(paramBoolean);
@@ -186,6 +259,11 @@ public class TPPlayerConfig
   public static void setGuid(String paramString)
   {
     mGuid = paramString;
+  }
+  
+  public static void setOutNetIp(String paramString)
+  {
+    mOutNetIp = paramString;
   }
   
   public static void setP2PEnable(boolean paramBoolean)
@@ -221,6 +299,11 @@ public class TPPlayerConfig
   public static void setUserUpcState(int paramInt)
   {
     mUserUpcState = paramInt;
+  }
+  
+  public static void setVideoMediaCodecCoexistMaxCnt(int paramInt)
+  {
+    TPPlayerCoreConfig.setVideoMediaCodecCoexistMaxCnt(paramInt);
   }
 }
 

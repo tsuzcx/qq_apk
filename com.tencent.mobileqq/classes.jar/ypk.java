@@ -1,40 +1,20 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPhotographyGuide;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.qqstory.utils.FileUtils.1;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
 
 public class ypk
-  extends wpa
+  implements DialogInterface.OnClickListener
 {
-  public static final String a = wnu.a("StorySvc.get_photography_guide");
+  public ypk(FileUtils.1 param1) {}
   
-  public String a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return a;
-  }
-  
-  public wov a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetPhotographyGuide localRspGetPhotographyGuide = new qqstory_service.RspGetPhotographyGuide();
-    try
-    {
-      localRspGetPhotographyGuide.mergeFrom(paramArrayOfByte);
-      return new ypl(localRspGetPhotographyGuide);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      yuk.d("Q.qqstory:GetPhotographyGuideRequest", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return new qqstory_service.ReqGetPhotographyGuide().toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetPhotographyGuideRequest{}";
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent(this.a.a, QQSettingMsgHistoryActivity.class);
+    this.a.a.startActivity(paramDialogInterface);
   }
 }
 

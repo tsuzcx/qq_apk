@@ -1,6 +1,268 @@
-public abstract interface bbqf
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForBlessPTV;
+import com.tencent.mobileqq.data.MessageForLightVideo;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+
+public class bbqf
 {
-  public abstract void a(boolean paramBoolean);
+  public static long a;
+  public static boolean a;
+  public static long b;
+  
+  static bbps a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 0: 
+    case 2: 
+    case 3: 
+    case 5: 
+    case 6: 
+      return new bbpo();
+    case 1: 
+      return new aasg();
+    }
+    return new aasf();
+  }
+  
+  public static bbqj a(int paramInt, Object paramObject, bbqx parambbqx)
+  {
+    bbps localbbps = a(paramInt);
+    if (localbbps == null) {
+      return null;
+    }
+    return localbbps.a(paramObject, parambbqx);
+  }
+  
+  public static bbqx a(int paramInt1, int paramInt2)
+  {
+    bbqx localbbqx = new bbqx();
+    localbbqx.jdField_a_of_type_Int = paramInt1;
+    localbbqx.jdField_b_of_type_Int = paramInt2;
+    return localbbqx;
+  }
+  
+  public static bbqx a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo, int paramInt)
+  {
+    if (paramMessageForShortVideo.videoFileStatus == 5002)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoBusiManager", 2, "createShortVideoReqByMsg expired");
+      }
+      return null;
+    }
+    bbqx localbbqx = a(2, paramMessageForShortVideo.busiType);
+    bbqh localbbqh = paramMessageForShortVideo.getDownloadInfo(localbbqx.jdField_b_of_type_Int);
+    localbbqh.h = ShortVideoUtils.getShortVideoSavePath(paramMessageForShortVideo, "mp4");
+    localbbqh.f = paramInt;
+    if ((paramMessageForShortVideo instanceof MessageForLightVideo))
+    {
+      localbbqh.a = false;
+      paramQQAppInterface = paramQQAppInterface.getMessageFacade();
+      if ((!paramQQAppInterface.isChatting()) || (!paramQQAppInterface.getCurrChatUin().equals(paramMessageForShortVideo.frienduin))) {
+        break label161;
+      }
+      localbbqh.g = 2;
+      label107:
+      if ((paramMessageForShortVideo.istroop != 0) && (paramMessageForShortVideo.istroop != 1008)) {
+        break label170;
+      }
+      localbbqh.e = 1001;
+    }
+    for (;;)
+    {
+      localbbqx.a(localbbqh);
+      localbbqx.a(paramMessageForShortVideo);
+      return localbbqx;
+      if (paramMessageForShortVideo.busiType != 0) {
+        break;
+      }
+      localbbqh.a = true;
+      break;
+      label161:
+      localbbqh.g = 1;
+      break label107;
+      label170:
+      if (paramMessageForShortVideo.istroop == 3000) {
+        localbbqh.e = 1005;
+      } else if (paramMessageForShortVideo.istroop == 1) {
+        localbbqh.e = 1003;
+      }
+    }
+  }
+  
+  public static bbrp a(int paramInt, Object paramObject, bbqx parambbqx)
+  {
+    bbps localbbps = a(paramInt);
+    if (localbbps == null) {
+      return null;
+    }
+    return localbbps.a(paramObject, parambbqx);
+  }
+  
+  public static bbrp a(Object paramObject, bbqx parambbqx)
+  {
+    bbps localbbps = a(parambbqx.jdField_b_of_type_Int);
+    if (localbbps == null) {
+      return null;
+    }
+    return localbbps.a(paramObject, parambbqx);
+  }
+  
+  static BaseShortVideoOprerator a(int paramInt, QQAppInterface paramQQAppInterface)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 0: 
+    case 2: 
+    case 3: 
+    case 5: 
+    case 6: 
+      return new bbpo(paramQQAppInterface);
+    case 1: 
+      return new aasg(paramQQAppInterface);
+    }
+    return new aasf(paramQQAppInterface);
+  }
+  
+  public static void a(bbqx parambbqx, QQAppInterface paramQQAppInterface)
+  {
+    if (parambbqx == null)
+    {
+      ayde.b("ShortVideoBusiManager", "launch", "error,req == null");
+      return;
+    }
+    BaseShortVideoOprerator localBaseShortVideoOprerator = a(parambbqx.jdField_b_of_type_Int, paramQQAppInterface);
+    if (localBaseShortVideoOprerator == null)
+    {
+      ayde.b("ShortVideoBusiManager", "launch", "error,busiInterface == null,req.busiType:" + parambbqx.jdField_b_of_type_Int);
+      return;
+    }
+    localBaseShortVideoOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    localBaseShortVideoOprerator.jdField_a_of_type_Bbqx = parambbqx;
+    localBaseShortVideoOprerator.f = parambbqx.jdField_a_of_type_JavaLangString;
+    localBaseShortVideoOprerator.g = parambbqx.jdField_b_of_type_JavaLangString;
+    localBaseShortVideoOprerator.a(parambbqx.jdField_a_of_type_Bbrr);
+    ayde.a("ShortVideoBusiManager", "launch", "cmd:" + ShortVideoUtils.getReqCmdStr(parambbqx.jdField_a_of_type_Int) + ", reqBusiType" + parambbqx.jdField_b_of_type_Int + ", uuid:" + parambbqx.jdField_a_of_type_JavaLangString);
+    switch (parambbqx.jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    case 0: 
+      localBaseShortVideoOprerator.a(parambbqx.jdField_a_of_type_Bbrp);
+      return;
+    case 2: 
+      localBaseShortVideoOprerator.a(parambbqx.jdField_a_of_type_Bbqh);
+      return;
+    case 1: 
+      localBaseShortVideoOprerator.a(parambbqx.jdField_a_of_type_Bbrp);
+      return;
+    case 3: 
+      localBaseShortVideoOprerator.a(parambbqx.jdField_a_of_type_Bbqj);
+      return;
+    case 4: 
+      localBaseShortVideoOprerator.a(parambbqx.jdField_a_of_type_Bbqj);
+      return;
+    }
+    localBaseShortVideoOprerator.a(parambbqx.jdField_a_of_type_JavaUtilArrayList);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, FileMsg paramFileMsg, TransferRequest paramTransferRequest)
+  {
+    if ((paramFileMsg == null) || (paramTransferRequest == null)) {
+      ayde.b("ShortVideoBusiManager", "updataMessageDataBaseContent", "fileMsg or req is null");
+    }
+    label497:
+    do
+    {
+      MessageRecord localMessageRecord;
+      MessageForShortVideo localMessageForShortVideo;
+      do
+      {
+        do
+        {
+          return;
+          if (paramTransferRequest.mRec != null) {
+            localMessageRecord = paramTransferRequest.mRec;
+          }
+          while (localMessageRecord == null)
+          {
+            ayde.b("ShortVideoBusiManager", "updataMessageDataBaseContent", "msg null");
+            return;
+            localMessageRecord = paramQQAppInterface.getMessageFacade().getMsgItemByUniseq(paramTransferRequest.mPeerUin, paramTransferRequest.mUinType, paramTransferRequest.mUniseq);
+            ayde.a("ShortVideoBusiManager", "updataMessageDataBaseContent", "findmsgbyMsgId,need fix");
+          }
+        } while (!(localMessageRecord instanceof MessageForShortVideo));
+        localMessageForShortVideo = (MessageForShortVideo)localMessageRecord;
+        if (paramFileMsg.fileSize == 0L) {}
+        for (int i = 0;; i = (int)(100L * paramFileMsg.transferedSize / paramFileMsg.fileSize))
+        {
+          if (localMessageForShortVideo.videoFileProgress < 0) {
+            localMessageForShortVideo.videoFileProgress = 0;
+          }
+          int j = localMessageForShortVideo.videoFileProgress;
+          if (((localMessageForShortVideo.videoFileStatus == 1002) || (localMessageForShortVideo.videoFileStatus == 2002)) && (localMessageForShortVideo.videoFileStatus == paramFileMsg.status) && (i - j < 10)) {
+            break;
+          }
+          if (localMessageForShortVideo.videoFileStatus == 1003) {
+            localMessageForShortVideo.videoFileProgress = 100;
+          }
+          if ((paramFileMsg.fileType == 6) || (paramFileMsg.fileType == 17) || (paramFileMsg.fileType == 9) || (paramFileMsg.fileType == 20))
+          {
+            if (paramFileMsg.status == 2002) {
+              localMessageForShortVideo.transferedSize = ((int)paramFileMsg.transferedSize);
+            }
+            if (paramFileMsg.status == 2003) {
+              localMessageForShortVideo.transferedSize = 0;
+            }
+          }
+          if (((localMessageForShortVideo.videoFileStatus == 2004) || (localMessageForShortVideo.videoFileStatus == 1004)) && ((paramFileMsg.status == 1002) || (paramFileMsg.status == 2002))) {
+            break;
+          }
+          localMessageForShortVideo.videoFileStatus = paramFileMsg.status;
+          localMessageForShortVideo.fileType = paramFileMsg.fileType;
+          if ((paramFileMsg.fileType != 7) && (paramFileMsg.fileType != 16) && (paramFileMsg.fileType != 18)) {
+            localMessageForShortVideo.videoFileProgress = i;
+          }
+          if ((localMessageForShortVideo.mPreUpload) && (paramFileMsg.status == 1003) && (paramTransferRequest.mMd5 != null)) {
+            localMessageForShortVideo.md5 = paramTransferRequest.mMd5;
+          }
+          if (paramFileMsg.status == 2003) {
+            localMessageForShortVideo.lastModified = new File(paramTransferRequest.mOutFilePath).lastModified();
+          }
+          localMessageForShortVideo.serial();
+          if ((localMessageForShortVideo.isMultiMsg != true) && (paramTransferRequest.mBusiType != 1010)) {
+            break label497;
+          }
+          if ((localMessageForShortVideo.videoFileStatus == 1002) || (localMessageForShortVideo.videoFileStatus == 2002)) {
+            break;
+          }
+          paramQQAppInterface = paramQQAppInterface.getMultiMessageProxy();
+          if (paramQQAppInterface == null) {
+            break;
+          }
+          paramQQAppInterface.a(localMessageForShortVideo, null);
+          return;
+        }
+      } while ((localMessageForShortVideo instanceof MessageForBlessPTV));
+      paramQQAppInterface.getMessageFacade().updateMsgContentByUniseq(paramTransferRequest.mPeerUin, paramTransferRequest.mUinType, localMessageRecord.uniseq, localMessageForShortVideo.msgData);
+    } while ((paramFileMsg.status != 1003) && (paramFileMsg.status != 2003));
+    paramQQAppInterface.getMsgHandler().notifyUI(999, true, paramTransferRequest.mPeerUin);
+    ayde.a("ShortVideoBusiManager", "updataMessageDataBaseContent", "app.getMsgHandler().notifyUI");
+  }
 }
 
 

@@ -1,76 +1,43 @@
-import android.app.Activity;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.util.ArrayMap;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.capture.mode.CaptureModeController;
 
 public class bmst
+  implements View.OnClickListener
 {
-  public static void a(Activity paramActivity)
+  protected int a;
+  protected View a;
+  protected blhu a;
+  protected CaptureModeController a;
+  
+  public bmst(CaptureModeController paramCaptureModeController)
   {
-    if (Build.MANUFACTURER.contains("samsung")) {
-      if (QLog.isColorLevel()) {
-        QLog.i("LeakUtil", 2, "removeLeakOn_SpenGestureManager samsung device");
-      }
-    }
-    try
-    {
-      paramActivity = Class.forName("com.samsung.android.smartclip.SpenGestureManager").getDeclaredField("mContext");
-      paramActivity.setAccessible(true);
-      paramActivity.set(null, null);
-      return;
-    }
-    catch (ClassNotFoundException paramActivity)
-    {
-      paramActivity.printStackTrace();
-      return;
-    }
-    catch (IllegalAccessException paramActivity)
-    {
-      paramActivity.printStackTrace();
-      return;
-    }
-    catch (NoSuchFieldException paramActivity)
-    {
-      paramActivity.printStackTrace();
-      return;
-    }
-    catch (Throwable paramActivity)
-    {
-      paramActivity.printStackTrace();
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController = paramCaptureModeController;
+    this.jdField_a_of_type_Blhu = this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.jdField_a_of_type_Blhu;
   }
   
-  public static void b(Activity paramActivity)
+  public void a() {}
+  
+  public void a(View paramView)
   {
-    if ((Build.VERSION.SDK_INT < 19) || (Build.VERSION.SDK_INT >= 28) || (paramActivity == null)) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Object localObject2 = Class.forName("android.app.ActivityThread");
-        Object localObject1 = ((Class)localObject2).getMethod("currentActivityThread", new Class[0]).invoke(localObject2, new Object[0]);
-        if (localObject1 != null)
-        {
-          localObject2 = ((Class)localObject2).getDeclaredField("mOnPauseListeners");
-          ((Field)localObject2).setAccessible(true);
-          localObject1 = ((Field)localObject2).get(localObject1);
-          if ((localObject1 instanceof ArrayMap))
-          {
-            ((ArrayMap)localObject1).remove(paramActivity);
-            return;
-          }
-        }
-      }
-      catch (Exception paramActivity)
-      {
-        QLog.d("LeakUtil", 4, "fixOnPauseListenersLeak", paramActivity);
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void onClick(View paramView) {}
 }
 
 

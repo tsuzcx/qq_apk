@@ -1,58 +1,82 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.TMG.channel.AVAppChannel.CsCmdCallback;
+import com.tencent.TMG.channel.KSAppChannel;
+import com.tencent.TMG.sdk.AVContext.StartParam;
 
 public class amhb
-  extends zqh
+  extends KSAppChannel
 {
-  long jdField_a_of_type_Long;
-  amha jdField_a_of_type_Amha;
-  PublishVideoEntry jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  public static String a;
+  public AVContext.StartParam a;
   
-  public amhb(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2)
+  static
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = paramPublishVideoEntry;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    jdField_a_of_type_JavaLangString = "SSOChannel";
   }
   
-  public void a(amha paramamha)
+  public long getTinyId()
   {
-    this.jdField_a_of_type_Amha = paramamha;
-  }
-  
-  public void onFailure(String paramString)
-  {
-    this.jdField_a_of_type_Amha.a(-11);
-    if (QLog.isColorLevel()) {
-      QLog.d("EncodeVideoTask", 2, "generate files|second step fail:" + paramString);
+    try
+    {
+      long l = Long.valueOf(this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier).longValue();
+      return l;
     }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return 0L;
   }
   
-  public void onFinish(boolean paramBoolean)
+  public boolean loginWithParam(AVContext.StartParam paramStartParam)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EncodeVideoTask", 2, "generate files|second step cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0D + ", isSuccess:" + paramBoolean);
-    }
-    if (paramBoolean) {
-      this.jdField_a_of_type_Amha.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.b);
-    }
+    this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam = paramStartParam;
+    return true;
   }
   
-  public void onStart()
+  public boolean requestAppCmd(byte[] paramArrayOfByte, int paramInt, AVAppChannel.CsCmdCallback paramCsCmdCallback)
   {
-    super.onStart();
+    try
+    {
+      com.tencent.qphone.base.util.QLog.e(jdField_a_of_type_JavaLangString, 1, "requestAppCmd enter");
+      if ((this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam instanceof amgn))
+      {
+        biyo.a().a(paramArrayOfByte, "", this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier, this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId, ((amgn)this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int, ((amgn)this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long, new amhc(this, paramArrayOfByte, paramCsCmdCallback));
+        return true;
+      }
+      return false;
+    }
+    catch (NumberFormatException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return false;
   }
   
-  public void onSuccess(String paramString)
+  public boolean requestAppCmd(byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
   {
-    bhmi.d(this.jdField_a_of_type_JavaLangString);
-    amgx.a(System.currentTimeMillis() - this.jdField_a_of_type_Long, 2);
-    if (QLog.isColorLevel()) {
-      QLog.d("EncodeVideoTask", 2, "generate files|second step success!");
+    return requestCmd("0", paramArrayOfByte, paramCsCmdCallback);
+  }
+  
+  public boolean requestCmd(String paramString, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
+  {
+    if (paramString.equals("VideoCCSvc.opensdk")) {
+      return super.requestCmd(paramString, paramArrayOfByte, paramCsCmdCallback);
     }
+    return super.requestCmd(paramString, paramArrayOfByte, paramCsCmdCallback);
+  }
+  
+  public boolean requestInfoCmd(byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
+  {
+    return requestCmd("1", paramArrayOfByte, paramCsCmdCallback);
+  }
+  
+  public boolean requestReportCmd(int paramInt, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
+  {
+    if (paramArrayOfByte.length >= 0) {
+      return requestCmd("3", nativeConvertToIMReportData(paramArrayOfByte, paramInt, this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId, getTinyId(), (int)System.currentTimeMillis() / 1000), paramCsCmdCallback);
+    }
+    com.tencent.TMG.utils.QLog.e(jdField_a_of_type_JavaLangString, 0, "requestReportCmd reportData == NULL");
+    return false;
   }
 }
 

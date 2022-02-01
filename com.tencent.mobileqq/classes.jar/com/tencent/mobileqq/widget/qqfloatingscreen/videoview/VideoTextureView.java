@@ -6,11 +6,11 @@ import android.media.MediaPlayer;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
-import bjgj;
-import bjgk;
-import bjgl;
-import bjgm;
-import bjgn;
+import bhmp;
+import bhmq;
+import bhmr;
+import bhms;
+import bhmt;
 import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 import java.lang.ref.WeakReference;
 
@@ -22,7 +22,7 @@ public class VideoTextureView
   private int jdField_a_of_type_Int;
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
   private Surface jdField_a_of_type_AndroidViewSurface;
-  private bjgn jdField_a_of_type_Bjgn;
+  private bhmt jdField_a_of_type_Bhmt;
   public final Runnable a;
   private String jdField_a_of_type_JavaLangString = "https://www.w3schools.com/html/movie.mp4";
   private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
@@ -33,7 +33,7 @@ public class VideoTextureView
     this.jdField_a_of_type_JavaLangRunnable = new VideoTextureView.6(this);
     setSurfaceTextureListener(this);
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Bjgn = new bjgn(paramContext);
+    this.jdField_a_of_type_Bhmt = new bhmt(paramContext);
   }
   
   public void a(String paramString)
@@ -45,11 +45,11 @@ public class VideoTextureView
     {
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
       this.jdField_a_of_type_AndroidMediaMediaPlayer.setAudioStreamType(3);
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new bjgj(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new bhmp(this));
       this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new bjgk(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnSeekCompleteListener(new bjgl(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new bjgm(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new bhmq(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnSeekCompleteListener(new bhmr(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new bhms(this));
       return;
     }
     catch (Exception paramString)

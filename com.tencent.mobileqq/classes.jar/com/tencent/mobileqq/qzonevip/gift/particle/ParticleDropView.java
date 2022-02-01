@@ -3,7 +3,7 @@ package com.tencent.mobileqq.qzonevip.gift.particle;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
-import bazb;
+import aztn;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -38,47 +38,47 @@ public class ParticleDropView
   {
     for (;;)
     {
-      bazb localbazb;
+      aztn localaztn;
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
         Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         if (!localIterator.hasNext()) {
           break;
         }
-        localbazb = (bazb)localIterator.next();
-        if (localbazb == null) {
+        localaztn = (aztn)localIterator.next();
+        if (localaztn == null) {
           continue;
         }
-        if (localbazb.d > 0.75F)
+        if (localaztn.d > 0.75F)
         {
-          localbazb.jdField_b_of_type_Float += 13.0F;
-          if (!localbazb.jdField_a_of_type_Boolean)
+          localaztn.jdField_b_of_type_Float += 13.0F;
+          if (!localaztn.jdField_a_of_type_Boolean)
           {
-            localbazb.jdField_b_of_type_Int = a(-1, 1);
-            localbazb.jdField_a_of_type_Boolean = true;
+            localaztn.jdField_b_of_type_Int = a(-1, 1);
+            localaztn.jdField_a_of_type_Boolean = true;
           }
-          if (localbazb.jdField_b_of_type_Int == 0) {
-            localbazb.jdField_b_of_type_Int = 1;
+          if (localaztn.jdField_b_of_type_Int == 0) {
+            localaztn.jdField_b_of_type_Int = 1;
           }
-          localbazb.jdField_a_of_type_Float += localbazb.jdField_b_of_type_Int;
-          a(localbazb);
-          if ((localbazb.jdField_a_of_type_Int != 0) && (localbazb.jdField_b_of_type_Float < this.jdField_b_of_type_Int)) {
+          localaztn.jdField_a_of_type_Float += localaztn.jdField_b_of_type_Int;
+          a(localaztn);
+          if ((localaztn.jdField_a_of_type_Int != 0) && (localaztn.jdField_b_of_type_Float < this.jdField_b_of_type_Int)) {
             continue;
           }
           localIterator.remove();
         }
       }
-      localbazb.jdField_b_of_type_Float += 8.0F;
+      localaztn.jdField_b_of_type_Float += 8.0F;
     }
   }
   
-  public void a(bazb parambazb)
+  public void a(aztn paramaztn)
   {
     int j = 255;
-    long l1 = System.currentTimeMillis() - parambazb.jdField_a_of_type_Long;
-    long l2 = parambazb.jdField_b_of_type_Long;
+    long l1 = System.currentTimeMillis() - paramaztn.jdField_a_of_type_Long;
+    long l2 = paramaztn.jdField_b_of_type_Long;
     int i;
-    if (l1 <= parambazb.jdField_b_of_type_Long / 4L)
+    if (l1 <= paramaztn.jdField_b_of_type_Long / 4L)
     {
       i = (int)((float)(l1 - l2 / 4L) * 255.0F / (float)(l2 / 4L) + 255.0F);
       if (i <= 255) {
@@ -93,9 +93,9 @@ public class ParticleDropView
       if (i < 0) {
         j = 0;
       }
-      parambazb.jdField_a_of_type_Int = j;
+      paramaztn.jdField_a_of_type_Int = j;
       return;
-      if ((l1 >= parambazb.jdField_b_of_type_Long / 4L) && (l1 < parambazb.jdField_b_of_type_Long * 3L / 4L))
+      if ((l1 >= paramaztn.jdField_b_of_type_Long / 4L) && (l1 < paramaztn.jdField_b_of_type_Long * 3L / 4L))
       {
         i = 255;
         break;
@@ -123,33 +123,33 @@ public class ParticleDropView
     for (;;)
     {
       if (j < i) {}
-      bazb localbazb;
+      aztn localaztn;
       try
       {
-        localbazb = new bazb();
-        localbazb.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
-        localbazb.jdField_b_of_type_Long = a(2000, 3500);
-        localbazb.jdField_a_of_type_Float = (a(0, this.jdField_a_of_type_Int + 100) - 100);
-        localbazb.jdField_b_of_type_Float = (a(0, this.jdField_b_of_type_Int * 4 / 5) - 200);
-        localbazb.jdField_a_of_type_Int = 0;
-        localbazb.d = a(0.15F, 0.75F);
-        localbazb.jdField_b_of_type_Float -= 300.0F;
-        localbazb.c = a(0, 360);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localbazb);
+        localaztn = new aztn();
+        localaztn.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
+        localaztn.jdField_b_of_type_Long = a(2000, 3500);
+        localaztn.jdField_a_of_type_Float = (a(0, this.jdField_a_of_type_Int + 100) - 100);
+        localaztn.jdField_b_of_type_Float = (a(0, this.jdField_b_of_type_Int * 4 / 5) - 200);
+        localaztn.jdField_a_of_type_Int = 0;
+        localaztn.d = a(0.15F, 0.75F);
+        localaztn.jdField_b_of_type_Float -= 300.0F;
+        localaztn.c = a(0, 360);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localaztn);
         j += 1;
       }
       finally {}
     }
     if (this.d % 2 == 0)
     {
-      localbazb = new bazb();
-      localbazb.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
-      localbazb.jdField_b_of_type_Long = a(2000, 3500);
-      localbazb.jdField_a_of_type_Float = (a(0, this.jdField_a_of_type_Int + 100) - 100);
-      localbazb.jdField_b_of_type_Float = (a(0, 100) - 300);
-      localbazb.jdField_a_of_type_Int = 0;
-      localbazb.c = a(0, 360);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localbazb);
+      localaztn = new aztn();
+      localaztn.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
+      localaztn.jdField_b_of_type_Long = a(2000, 3500);
+      localaztn.jdField_a_of_type_Float = (a(0, this.jdField_a_of_type_Int + 100) - 100);
+      localaztn.jdField_b_of_type_Float = (a(0, 100) - 300);
+      localaztn.jdField_a_of_type_Int = 0;
+      localaztn.c = a(0, 360);
+      this.jdField_a_of_type_JavaUtilArrayList.add(localaztn);
     }
   }
   

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.vip.lianghao;
 
-import bijm;
-import bijo;
-import bijq;
+import bgpv;
+import bgpx;
+import bgpz;
 
 public class RegisterLHAssistant$2
   implements Runnable
 {
-  public RegisterLHAssistant$2(bijm parambijm) {}
+  public RegisterLHAssistant$2(bgpv parambgpv) {}
   
   public void run()
   {
-    bijm.a(this.this$0).a(bijm.a(this.this$0), new bijo(this));
+    bgpv.a(this.this$0).a(bgpv.a(this.this$0), new bgpx(this));
   }
 }
 

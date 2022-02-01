@@ -1,45 +1,103 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import msf.msgcomm.msg_comm.MsgType0x210;
-import tencent.im.s2c.msgtype0x210.submsgtype0x128.submsgtype0x128.MsgBody;
+import android.os.Bundle;
+import com.tencent.TMG.utils.QLog;
+import java.text.NumberFormat;
+import mqq.observer.BusinessObserver;
 
 public class bctf
-  implements bctr
+  implements BusinessObserver
 {
-  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre, MessageHandler paramMessageHandler)
+  bctc a;
+  
+  private boolean a(bctb parambctb)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendDecoder", 2, "extendfriend limitchat offLinePush receive submsgtype0x128 decodeC2CMsgPkg_MsgType0x210 receive 0x128 push message");
+    if ((parambctb == null) || (parambctb.b == null) || (parambctb.a == null)) {}
+    while ((parambctb.a.equals("")) && (parambctb.b.equals(""))) {
+      return false;
     }
-    int i = paramMsgType0x210.sub_msg_type.get();
+    return true;
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    long l1 = 0L;
     try
     {
-      paramList = new submsgtype0x128.MsgBody();
-      paramList.mergeFrom(paramMsgType0x210.msg_content.get().toByteArray());
-      paramMsgType0x210 = (asvg)paramMessageHandler.app.a(127);
-      if (i == 296) {}
-      for (boolean bool = true;; bool = false)
+      l2 = paramBundle.getLong("ret");
+      l1 = l2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        paramMsgType0x210.a(paramList, bool);
-        QLog.d("ExtendFriendDecoderExtendFriendLimitChat", 2, "SubMsgType0x27.ChatMatchInfo subType " + i);
-        bcrw.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
-        return;
+        long l2;
+        String str1;
+        String str2;
+        String str3;
+        String str4;
+        long l3;
+        String str5;
+        String str6;
+        String str7;
+        String str8;
+        QLog.d("TableQueryObserver", 1, "cast:" + 0L, localException);
+      }
+    }
+    paramBundle.getByteArray("msg");
+    str1 = paramBundle.getString("reqReportId");
+    str2 = paramBundle.getString("reportId");
+    l2 = paramBundle.getLong("pv");
+    str3 = paramBundle.getString("pv_day_earlier");
+    str4 = paramBundle.getString("pv_month_earlier");
+    l3 = paramBundle.getLong("uv");
+    str5 = paramBundle.getString("uv_day_earlier");
+    str6 = paramBundle.getString("uv_month_earlier");
+    str7 = paramBundle.getString("time");
+    str8 = paramBundle.getString("param");
+    try
+    {
+      paramBundle = paramBundle.getString("description");
+      if (paramBundle == null) {
+        break label566;
+      }
+      paramBundle = new String(paramBundle.getBytes(), "UTF-8");
+    }
+    catch (Exception paramBundle)
+    {
+      bctb localbctb;
+      do
+      {
+        for (;;)
+        {
+          QLog.e("TableQueryObserver", 1, "description decode failed" + paramBundle);
+          paramBundle = "";
+        }
+      } while (!a(localbctb));
+      this.a.a(localbctb);
+    }
+    if (this.a == null) {
+      this.a = bctc.a();
+    }
+    localbctb = new bctb();
+    localbctb.b = (str2 + "\n" + str1 + "\n");
+    localbctb.a = str1;
+    localbctb.k = paramBundle;
+    localbctb.j = str8;
+    localbctb.c = (NumberFormat.getNumberInstance().format(l2) + "\n同比:" + str3 + "\n环比:" + str4 + "\n");
+    localbctb.d = str3;
+    localbctb.e = str4;
+    localbctb.f = (NumberFormat.getNumberInstance().format(l3) + "\n同比:" + str5 + "\n环比:" + str6 + "\n");
+    localbctb.g = str5;
+    localbctb.h = str6;
+    localbctb.i = str7;
+    QLog.d("TableQueryObserver", 1, "编码All data: \n ret: " + l1 + "\n msg: \n reqReportId" + str1 + "\n reportId: " + str2 + "\n pv: " + l2 + "\n pv_day: " + str3 + "\n pv_month: " + str4 + "\n uv: " + l3 + "\n uv_day" + str5 + "\n uv_month: " + str6 + "\n time: " + str7 + "\n param: " + str8 + "\n description: " + paramBundle + "\n");
+    if (!bctc.b)
+    {
+      if (a(localbctb)) {
+        this.a.a(localbctb);
       }
       return;
     }
-    catch (Exception paramMsgType0x210)
-    {
-      QLog.e("ExtendFriendDecoder", 1, "troopFormLog offLinePush receive submsgtype match chat0x128 decodeC2CMsgPkg_MsgType0x210 receive 0x128 push message, errInfo->" + paramMsgType0x210.getMessage() + " msgType" + i);
-    }
+    label566:
   }
 }
 

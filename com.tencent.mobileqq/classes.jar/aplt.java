@@ -1,10 +1,42 @@
-import android.os.IInterface;
-import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.music.QQPlayerService;
 
-public abstract interface aplt
-  extends IInterface
+public class aplt
+  implements aplr
 {
-  public abstract ARScanStarFaceConfigInfo a();
+  private void a(Intent paramIntent, ColorNote paramColorNote)
+  {
+    String str = paramIntent.getStringExtra("url");
+    if ((!TextUtils.isEmpty(str)) && (str.matches("^https?://fm\\.qzone\\.qq\\.com/.*")))
+    {
+      paramColorNote = paramColorNote.getReserve();
+      if ((paramColorNote != null) && (paramColorNote.length > 0)) {
+        paramIntent.putExtra("url", new String(paramColorNote));
+      }
+    }
+  }
+  
+  public void launch(Context paramContext, ColorNote paramColorNote)
+  {
+    if (paramColorNote == null) {}
+    Intent localIntent;
+    do
+    {
+      do
+      {
+        return;
+      } while (paramColorNote.getServiceType() != 16973824);
+      localIntent = QQPlayerService.a();
+    } while (localIntent == null);
+    a(localIntent, paramColorNote);
+    localIntent.addFlags(268435456);
+    localIntent.addFlags(536870912);
+    localIntent.addFlags(67108864);
+    paramContext.startActivity(localIntent);
+  }
 }
 
 

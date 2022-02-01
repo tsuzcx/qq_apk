@@ -1,14 +1,14 @@
-public abstract interface asqv
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+
+class asqv
 {
-  public abstract int a();
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar = null;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public abstract String a();
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract String b();
+  private asqv(asqt paramasqt) {}
 }
 
 

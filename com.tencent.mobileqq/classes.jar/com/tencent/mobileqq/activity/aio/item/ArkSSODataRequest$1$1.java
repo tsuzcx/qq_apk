@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahav;
-import ahaw;
+import afxh;
+import afxi;
 import java.lang.ref.WeakReference;
 
 public class ArkSSODataRequest$1$1
   implements Runnable
 {
-  public ArkSSODataRequest$1$1(ahaw paramahaw, int paramInt1, int paramInt2, String paramString) {}
+  public ArkSSODataRequest$1$1(afxi paramafxi, int paramInt1, int paramInt2, String paramString) {}
   
   public void run()
   {
-    ahav localahav = (ahav)this.jdField_a_of_type_Ahaw.a.get();
-    if (localahav == null) {
+    afxh localafxh = (afxh)this.jdField_a_of_type_Afxi.a.get();
+    if (localafxh == null) {
       return;
     }
-    localahav.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    localafxh.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 

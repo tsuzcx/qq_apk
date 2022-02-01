@@ -1,39 +1,80 @@
-import android.support.v4.app.FragmentActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.articlesummary.articlesummary.GameLiveInfo;
 
 public class ret
-  implements TextWatcher
 {
-  public ret(EditVideoFragment paramEditVideoFragment) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  private static ret b(articlesummary.GameLiveInfo paramGameLiveInfo)
   {
-    int j = 1;
-    EditVideoFragment.a(this.a);
-    int i;
-    if ((this.a.getActivity() != null) && (this.a.getActivity().isResume()))
-    {
-      i = 1;
-      if ((paramInt3 != 1) || (paramInt2 != 0)) {
-        break label99;
-      }
+    ret localret = new ret();
+    if (paramGameLiveInfo.bytes_play_bill_id.has()) {
+      localret.jdField_a_of_type_JavaLangString = paramGameLiveInfo.bytes_play_bill_id.get().toStringUtf8();
     }
-    label99:
-    for (paramInt2 = j;; paramInt2 = 0)
-    {
-      if ((rct.b()) && (i != 0) && (paramInt2 != 0) && (paramCharSequence.toString().substring(paramInt1, paramInt1 + 1).equals("#"))) {
-        EditVideoFragment.b(this.a);
-      }
-      return;
-      i = 0;
-      break;
+    if (paramGameLiveInfo.uint32_status.has()) {
+      localret.jdField_a_of_type_Int = paramGameLiveInfo.uint32_status.get();
     }
+    if (paramGameLiveInfo.uint32_audience_count.has()) {
+      localret.jdField_b_of_type_Int = paramGameLiveInfo.uint32_audience_count.get();
+    }
+    if (paramGameLiveInfo.bytes_game_name.has()) {
+      localret.d = paramGameLiveInfo.bytes_game_name.get().toStringUtf8();
+    }
+    if (paramGameLiveInfo.bytes_play_url.has()) {
+      localret.c = paramGameLiveInfo.bytes_play_url.get().toStringUtf8();
+    }
+    if (paramGameLiveInfo.bytes_tips_wording.has()) {
+      localret.e = paramGameLiveInfo.bytes_tips_wording.get().toStringUtf8();
+    }
+    if (paramGameLiveInfo.bytes_status.has()) {
+      localret.f = paramGameLiveInfo.bytes_status.get().toStringUtf8();
+    }
+    if (paramGameLiveInfo.bytes_status_icon_url.has()) {
+      localret.g = paramGameLiveInfo.bytes_status_icon_url.get().toStringUtf8();
+    }
+    return localret;
+  }
+  
+  private static articlesummary.GameLiveInfo b(ret paramret)
+  {
+    articlesummary.GameLiveInfo localGameLiveInfo = new articlesummary.GameLiveInfo();
+    if (!TextUtils.isEmpty(paramret.jdField_a_of_type_JavaLangString)) {
+      localGameLiveInfo.bytes_play_bill_id.set(ByteStringMicro.copyFromUtf8(paramret.jdField_a_of_type_JavaLangString));
+    }
+    localGameLiveInfo.uint32_status.set(paramret.jdField_a_of_type_Int);
+    localGameLiveInfo.uint32_audience_count.set(paramret.jdField_b_of_type_Int);
+    if (!TextUtils.isEmpty(paramret.d)) {
+      localGameLiveInfo.bytes_game_name.set(ByteStringMicro.copyFromUtf8(paramret.d));
+    }
+    if (!TextUtils.isEmpty(paramret.c)) {
+      localGameLiveInfo.bytes_play_url.set(ByteStringMicro.copyFromUtf8(paramret.c));
+    }
+    if (!TextUtils.isEmpty(paramret.e)) {
+      localGameLiveInfo.bytes_tips_wording.set(ByteStringMicro.copyFromUtf8(paramret.e));
+    }
+    if (!TextUtils.isEmpty(paramret.f)) {
+      localGameLiveInfo.bytes_status.set(ByteStringMicro.copyFromUtf8(paramret.f));
+    }
+    if (!TextUtils.isEmpty(paramret.g)) {
+      localGameLiveInfo.bytes_status_icon_url.set(ByteStringMicro.copyFromUtf8(paramret.g));
+    }
+    return localGameLiveInfo;
+  }
+  
+  public String toString()
+  {
+    return "GameLiveInfo{playBillId=" + this.jdField_a_of_type_JavaLangString + ", status=" + this.jdField_a_of_type_Int + ", audienceCount=" + this.jdField_b_of_type_Int + ", audiences=" + this.jdField_b_of_type_JavaLangString + ", playUrl=" + this.c + ", gameName=" + this.d + ", tipsWording=" + this.e + ", liveStatus=" + this.f + ", statusIconUrl=" + this.g + '}';
   }
 }
 

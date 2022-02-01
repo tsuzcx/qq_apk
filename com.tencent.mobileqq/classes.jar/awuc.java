@@ -1,39 +1,22 @@
-import com.tencent.mobileqq.location.data.LocationRoom;
-import com.tencent.mobileqq.location.window.FloatMapWidget;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl.2.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
-import java.util.List;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import mqq.os.MqqHandler;
 
 public class awuc
-  implements TencentMap.OnMapLoadedCallback
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public awuc(FloatMapWidget paramFloatMapWidget) {}
+  awuc(awua paramawua) {}
   
-  public void onMapLoaded()
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    Object localObject = FloatMapWidget.a(this.a).a();
     if (QLog.isColorLevel()) {
-      QLog.d("FloatMapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. selfItem: ", ((awpi)localObject).a() });
+      QLog.i("VideoViewTVKImpl", 2, "onError called with: tvk_iMediaPlayer = [" + paramTVK_IMediaPlayer + "], model = [" + paramInt1 + "], what = [" + paramInt2 + "], position = [" + paramInt3 + "], extra = [" + paramString + "], Info = [" + paramObject + "]");
     }
-    if (((awpi)localObject).a() != null)
-    {
-      localObject = FloatMapWidget.b(this.a).a();
-      if (QLog.isColorLevel()) {
-        QLog.d("FloatMapWidget", 2, new Object[] { "onMapLoaded: invoked. ", " venue: ", localObject });
-      }
-      if ((FloatMapWidget.c(this.a).d().size() != 1) || (localObject != null)) {
-        break label136;
-      }
-      this.a.a(false, null);
-    }
-    for (;;)
-    {
-      FloatMapWidget.a(this.a, true);
-      FloatMapWidget.a(this.a);
-      return;
-      label136:
-      this.a.b();
-    }
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.2.1(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
+    return false;
   }
 }
 

@@ -1,23 +1,22 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.widget.TextView;
 
-public class bktm
-  implements Handler.Callback
+class bktm
+  implements bkkw
 {
-  public bktm(Login paramLogin) {}
+  bktm(bkti parambkti) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean)
   {
-    switch (paramMessage.what)
+    if (!paramBoolean)
     {
+      bkvd.a("ReaderSplashImpl", "jumpToPlugin: openPlugin: failed");
+      if (bkti.a(this.a) != null) {
+        bkti.a(this.a).setText("跳转失败，请返回重试");
+      }
+      return;
     }
-    for (;;)
-    {
-      return true;
-      this.a.setResult(0);
-      this.a.finish();
-    }
+    bkvd.d("ReaderSplashImpl", "jumpToPlugin: openPlugin: succeed");
+    bkti.b(this.a);
   }
 }
 

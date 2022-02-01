@@ -1,56 +1,80 @@
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
 
 class aoix
+  implements aojt
 {
-  private int jdField_a_of_type_Int;
-  private oidb_sso.OIDBSSOPkg jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  aoix(aoiw paramaoiw, aoja paramaoja, ArCloudConfigInfo paramArCloudConfigInfo, aogr paramaogr) {}
   
-  public aoix(aoip paramaoip, byte[] paramArrayOfByte, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public aoix a()
-  {
-    this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg = null;
-    try
-    {
-      this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-      this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg = ((oidb_sso.OIDBSSOPkg)this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.mergeFrom(this.jdField_a_of_type_ArrayOfByte));
-      if (this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg != null)
-      {
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.uint32_result.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopHandler", 2, "handle_oidb_0x88d_10|oidb_sso.OIDBSSOPkg.result " + this.jdField_a_of_type_Int);
-        }
-      }
-      return this;
+    if (this.jdField_a_of_type_Aoja != null) {
+      this.jdField_a_of_type_Aoja.d();
     }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Aoja != null) {
+      this.jdField_a_of_type_Aoja.a(paramInt);
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    int j = 0;
+    int i = 0;
+    if (this.jdField_a_of_type_Aoja != null) {
+      this.jdField_a_of_type_Aoja.a(paramBoolean, paramInt, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    }
+    if (paramInt == 2)
     {
+      this.jdField_a_of_type_Aoiw.jdField_d_of_type_Long = (System.currentTimeMillis() - this.jdField_a_of_type_Aoiw.jdField_a_of_type_Long);
+      localaoiw = this.jdField_a_of_type_Aoiw;
+      if (paramBoolean)
+      {
+        paramInt = i;
+        localaoiw.jdField_a_of_type_Int = paramInt;
+      }
+    }
+    while (paramInt != 3) {
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.troopdisband.", 2, "handle_oidb_0x88d_10|oidb_sso parseFrom byte " + localInvalidProtocolBufferMicroException.toString());
-        }
-        localInvalidProtocolBufferMicroException.printStackTrace();
+        return;
+        paramInt = 1;
       }
+    }
+    this.jdField_a_of_type_Aoiw.g = (System.currentTimeMillis() - this.jdField_a_of_type_Aoiw.jdField_a_of_type_Long);
+    aoiw localaoiw = this.jdField_a_of_type_Aoiw;
+    if (paramBoolean) {}
+    for (paramInt = j;; paramInt = 1)
+    {
+      localaoiw.jdField_b_of_type_Int = paramInt;
+      return;
     }
   }
   
-  public oidb_sso.OIDBSSOPkg a()
+  public void a(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg;
+    if (this.jdField_a_of_type_Aoja != null) {
+      this.jdField_a_of_type_Aoja.a(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    }
+    this.jdField_a_of_type_Aoiw.jdField_b_of_type_Long = System.currentTimeMillis();
+    aoiw localaoiw = this.jdField_a_of_type_Aoiw;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
+    {
+      localaoiw.jdField_d_of_type_Int = i;
+      this.jdField_a_of_type_Aoiw.e();
+      if (paramBoolean)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.jdField_b_of_type_Int != 1) {
+          aoiw.a(this.jdField_a_of_type_Aoiw, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.a.a, this.jdField_a_of_type_Aogr);
+        }
+        aoiw.a(this.jdField_a_of_type_Aoiw, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+      }
+      return;
+    }
   }
 }
 

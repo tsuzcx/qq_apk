@@ -1,103 +1,114 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo.CompressVideoSegment.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class bges
-  extends JobSegment<bgel, bgel>
 {
-  private WeakReference<XMediaEditor> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  public static HashMap<String, bgeu> a;
+  private static HashMap<Integer, String> b;
+  public bget a;
+  public String a;
+  public ArrayList<Object> a;
+  public String b;
+  public ArrayList<Object> b;
+  public ArrayList<Object> c;
   
-  public bges(XMediaEditor paramXMediaEditor)
+  static
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramXMediaEditor);
+    jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100001), "emoji");
+    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100003), "bubble");
+    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100002), "theme");
+    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100011), "font");
+    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100006), "pendant");
+    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100012), "card");
+    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100019), "call");
+    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100020), "suit");
+    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100021), "background");
+    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100018), "ring");
+    jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(100028), "hongbao");
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilHashMap.put("1", new bgeu(2, true, 1, 1));
+    jdField_a_of_type_JavaUtilHashMap.put("2", new bgeu(2, false, 1, 2));
+    jdField_a_of_type_JavaUtilHashMap.put("3", new bgeu(3, true, 2, 3));
+    jdField_a_of_type_JavaUtilHashMap.put("4", new bgeu(3, true, 1, 4));
+    jdField_a_of_type_JavaUtilHashMap.put("5", new bgeu(3, true, 1, 5));
   }
   
-  protected void a(JobContext paramJobContext, bgel parambgel)
+  public static boolean a(String paramString1, String paramString2)
   {
-    bger localbger = (bger)parambgel;
-    if (QLog.isColorLevel()) {
-      QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideoSegment start. info status=", Integer.valueOf(localbger.jdField_g_of_type_Int) });
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
+    do
+    {
+      return false;
+      paramString1 = paramString1.split("\\.");
+      paramString2 = paramString2.split("\\.");
+    } while ((paramString1 == null) || (paramString2 == null));
+    int m = Math.max(paramString1.length, paramString2.length);
+    int k = 0;
+    label50:
+    if (k < m) {
+      if (k >= paramString1.length) {
+        break label150;
+      }
     }
-    String str = bgel.b();
-    XMediaEditor localXMediaEditor;
-    int i;
     for (;;)
     {
       try
       {
-        localXMediaEditor = (XMediaEditor)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localXMediaEditor == null) {
-          continue;
+        i = Integer.parseInt(paramString1[k]);
+        if (k >= paramString2.length) {
+          break label145;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideoSegment sourceVideoPath=", localbger.f });
-        }
-        str = bigv.a(str + localbger.f.substring(localbger.f.lastIndexOf("/") + 1, localbger.f.lastIndexOf(".")) + System.currentTimeMillis() + auog.a(localbger.f));
-        i = bnsn.a(localXMediaEditor.getContext(), localbger.f, str);
-        if (QLog.isColorLevel()) {
-          QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideo ret:", Integer.valueOf(i) });
-        }
-        if (i != 1) {
-          break label414;
-        }
-        str = localbger.f;
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
+      catch (Exception localException1)
       {
-        label217:
-        QLog.e("CompressVideoSegment", 1, "CompressVideoSegment error. OutOfMemoryError");
-        URLDrawable.clearMemoryCache();
-        System.gc();
-        if (this.jdField_a_of_type_Boolean) {
-          continue;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        a(paramJobContext, parambgel);
-        return;
-        notifyError(new Error("-200"));
-        return;
-        notifyError(new Error("0"));
-        return;
-        notifyError(new Error("-1"));
-        return;
-      }
-      if (auog.b(str))
-      {
-        if (auog.a(str) > 104857600L)
+        try
         {
-          notifyError(new Error("200"));
-          return;
+          j = Integer.parseInt(paramString2[k]);
+          if (k == m - 1) {
+            break label131;
+          }
+          if (j > i)
+          {
+            return true;
+            localException1 = localException1;
+            i = 0;
+          }
         }
-        localbger.jdField_g_of_type_JavaLangString = str;
-        ThreadManager.getUIHandler().post(new VideoInfo.CompressVideoSegment.1(this, localbger, localXMediaEditor));
-        if (isCanceled()) {
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("CompressVideoSegment", 2, new Object[] { "CompressVideoSegment notifyResult. mVideoCompressedPath=", localbger.jdField_g_of_type_JavaLangString, ", info status=", Integer.valueOf(localbger.jdField_g_of_type_Int) });
-        }
-        notifyResult(localbger);
-        return;
-      }
-      label414:
-      if (i != 0) {
-        if (i != 1) {
-          break label217;
+        catch (Exception localException2)
+        {
+          j = 0;
+          continue;
         }
       }
+      if (j < i) {
+        break;
+      }
+      label131:
+      do
+      {
+        k += 1;
+        break label50;
+        break;
+        if (j >= i) {
+          return true;
+        }
+      } while (j >= i);
+      return false;
+      label145:
+      int j = 0;
+      continue;
+      label150:
+      int i = 0;
     }
   }
   
-  public void onCancel()
+  public String toString()
   {
-    notifyError(new Error("c_2001"));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("IndividuationConfigInfo: ").append("backgroudImgUrl=").append(this.jdField_a_of_type_JavaLangString).append("\r\n").append("pullBgColor=").append(this.jdField_b_of_type_JavaLangString).append("\r\n").append("bannerConfig=").append(this.jdField_a_of_type_Bget).append("\r\n").append("activityConfigs=").append(this.jdField_a_of_type_JavaUtilArrayList).append("\r\n").append("recommendConfigs=").append(this.jdField_b_of_type_JavaUtilArrayList).append("\r\n").append("shapedImgConfigs=").append(this.c);
+    return localStringBuilder.toString();
   }
 }
 

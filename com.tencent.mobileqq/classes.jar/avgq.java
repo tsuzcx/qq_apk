@@ -1,10 +1,23 @@
-import android.graphics.Bitmap;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
 
-public abstract interface avgq
+public class avgq
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void a(String paramString);
+  public avgq(MapWidget paramMapWidget, LocationRoom.Venue paramVenue) {}
   
-  public abstract void a(String paramString, Bitmap paramBitmap);
+  public void onGlobalLayout()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(true, Float.valueOf(15.0F));
+      return;
+    }
+    MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
+  }
 }
 
 

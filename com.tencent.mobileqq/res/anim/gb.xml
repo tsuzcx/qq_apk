@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set android:ordering="sequentially"
+<set android:duration="600" android:shareInterpolator="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <set android:ordering="together">
-        <scale android:duration="80" android:pivotX="50.0%" android:pivotY="50.0%" android:fromXScale="1.0" android:toXScale="1.3" android:fromYScale="1.0" android:toYScale="1.3" />
-    </set>
-    <set android:ordering="together">
-        <scale android:duration="80" android:pivotX="50.0%" android:pivotY="50.0%" android:fromXScale="1.3" android:toXScale="0.8" android:fromYScale="1.3" android:toYScale="0.8" />
-    </set>
-    <set android:ordering="together">
-        <scale android:duration="80" android:pivotX="50.0%" android:pivotY="50.0%" android:fromXScale="0.8" android:toXScale="1.1" android:fromYScale="0.8" android:toYScale="1.1" />
-    </set>
-    <set android:ordering="together">
-        <scale android:duration="80" android:pivotX="50.0%" android:pivotY="50.0%" android:fromXScale="1.1" android:toXScale="1.0" android:fromYScale="1.1" android:toYScale="1.0" />
-    </set>
+    <scale android:interpolator="@android:anim/overshoot_interpolator" android:pivotX="100.0%" android:pivotY="50.0%" android:fromXScale="0.0%" android:toXScale="100.0%" android:fromYScale="0.0%" android:toYScale="100.0%" />
+    <alpha android:interpolator="@android:anim/decelerate_interpolator" android:fromAlpha="0.0" android:toAlpha="1.0" />
 </set>

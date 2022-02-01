@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.identification;
 
-import avxq;
+import aukq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class UnusableStrategy$1
   implements Runnable
 {
-  public UnusableStrategy$1(avxq paramavxq) {}
+  public UnusableStrategy$1(aukq paramaukq) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.context, avxq.a(this.this$0), 0).a();
+    QQToast.a(BaseApplicationImpl.context, aukq.a(this.this$0), 0).a();
   }
 }
 

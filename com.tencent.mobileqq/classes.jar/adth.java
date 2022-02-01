@@ -1,35 +1,29 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adth
-  implements axfu<bhyt>
+  implements View.OnClickListener
 {
-  public adth(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public adth(NotificationActivity paramNotificationActivity) {}
   
-  public void a(bhyt parambhyt)
+  public void onClick(View paramView)
   {
-    if (parambhyt.jdField_a_of_type_Int == AddFriendVerifyActivity.a(this.a).a())
+    switch (paramView.getId())
     {
-      Object localObject = (Bitmap)parambhyt.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2131380664));
-      AddFriendVerifyActivity.b(this.a).setVisibility(0);
-      AddFriendVerifyActivity.b(this.a).setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), (Bitmap)localObject));
-      localObject = (Bitmap)parambhyt.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(2131380659));
-      localObject = bicn.a(this.a.getResources(), (Bitmap)localObject);
-      AddFriendVerifyActivity.a(this.a).setBackgroundDrawable((Drawable)localObject);
-      AddFriendVerifyActivity.b(this.a).setTextColor(parambhyt.b);
-      AddFriendVerifyActivity.a(this.a).setTextColor(parambhyt.b);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adth
  * JD-Core Version:    0.7.0.1
  */

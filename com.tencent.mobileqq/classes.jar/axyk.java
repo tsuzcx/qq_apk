@@ -1,17 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import android.os.Bundle;
+import kotlin.Metadata;
+import mqq.observer.BusinessObserver;
+import org.jetbrains.annotations.Nullable;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/onlinestatus/constellation/StatusExtInfoObserver;", "Lmqq/observer/BusinessObserver;", "()V", "onGetConstellationTrend", "", "success", "", "bundle", "Landroid/os/Bundle;", "onReceive", "type", "", "isSuccess", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public class axyk
-  implements DialogInterface.OnClickListener
+  implements BusinessObserver
 {
-  public axyk(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean) {}
+  public void a(boolean paramBoolean, @Nullable Bundle paramBundle) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, @Nullable Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      GameRoomInviteActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity);
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
+    a(paramBoolean, paramBundle);
   }
 }
 

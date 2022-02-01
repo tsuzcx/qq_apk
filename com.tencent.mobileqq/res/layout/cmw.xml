@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.SquareImageView android:id="@id/du3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/mw_" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView android:id="@id/mtr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.pubaccount.readinjoy.view.ucrop.OverlayView android:id="@id/nvi" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </merge>

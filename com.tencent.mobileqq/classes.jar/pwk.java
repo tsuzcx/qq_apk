@@ -1,71 +1,35 @@
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import org.json.JSONObject;
-import tencent.im.oidb.articlesummary.articlesummary.UrlJumpInfo;
-import tencent.im.oidb.articlesummary.articlesummary.WeishiUGInfo;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
 
-class pwk
-  implements ViewBase.OnClickListener
+public class pwk
+  extends SosoInterface.OnLocationListener
 {
-  pwk(pwj parampwj, ppu paramppu, Container paramContainer) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public pwk(SelectPositionModule paramSelectPositionModule, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    for (;;)
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SelectPositionModule", 2, "onLocationFinish() errCode=" + paramInt);
+    }
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null) && (!TextUtils.isEmpty(paramSosoLbsInfo.mLocation.city)))
     {
-      try
-      {
-        ArticleInfo localArticleInfo = this.jdField_a_of_type_Ppu.a();
-        oyj.a(localArticleInfo, localArticleInfo.mProteusTemplateBean, paramViewBase);
-        int j = 0;
-        if (bhny.a(BaseApplicationImpl.getContext(), "com.tencent.reading"))
-        {
-          i = j;
-          if (this.jdField_a_of_type_Ppu.a().weishiUGInfo.msg_url_jump_info.uint32_jump_type.get() == 2)
-          {
-            paramViewBase = pwj.a(this.jdField_a_of_type_Pwj, this.jdField_a_of_type_Ppu.a().weishiUGInfo.msg_url_jump_info.bytes_jump_schema);
-            i = j;
-            if (!TextUtils.isEmpty(paramViewBase))
-            {
-              pwj.a(this.jdField_a_of_type_Pwj, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
-              break label315;
-            }
-          }
-          if (i == 0)
-          {
-            paramViewBase = new JSONObject(localArticleInfo.proteusItemsData).getString("kandian_jump_url");
-            if (!TextUtils.isEmpty(paramViewBase)) {
-              bcni.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
-            }
-          }
-          ohk.a(pwj.a(this.jdField_a_of_type_Pwj, this.jdField_a_of_type_Ppu.a().weishiUGInfo.bytes_report_base_url) + pwj.a(this.jdField_a_of_type_Pwj, this.jdField_a_of_type_Ppu.a().weishiUGInfo.bytes_click_report_tail));
-        }
-        else
-        {
-          i = j;
-          if (this.jdField_a_of_type_Ppu.a().weishiUGInfo.msg_url_jump_info.uint32_jump_type.get() != 1) {
-            continue;
-          }
-          paramViewBase = pwj.a(this.jdField_a_of_type_Pwj, this.jdField_a_of_type_Ppu.a().weishiUGInfo.msg_url_jump_info.bytes_jump_url);
-          i = j;
-          if (TextUtils.isEmpty(paramViewBase)) {
-            continue;
-          }
-          bcni.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("SelectPositionModule", 2, "onLocationFinish() info.mLocation =" + paramSosoLbsInfo.mLocation);
       }
-      catch (Exception paramViewBase)
-      {
-        return;
+      SelectPositionModule.a(this.a, new SelectPositionModule.PositionData(paramSosoLbsInfo.mLocation));
+      SelectPositionModule.a(this.a, SelectPositionModule.a(this.a));
+      SelectPositionModule.b(this.a, SelectPositionModule.a(this.a));
+      if (SelectPositionModule.a(this.a) != null) {
+        SelectPositionModule.a(this.a).a(SelectPositionModule.a(this.a));
       }
-      label315:
-      int i = 1;
     }
   }
 }

@@ -1,51 +1,111 @@
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.camera.QavCameraUsage.1;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
 public class ljo
-  extends Handler
 {
-  WeakReference<CameraUtils> a;
+  public static String a;
   
-  public ljo(CameraUtils paramCameraUtils, Looper paramLooper)
+  public static void a(Context paramContext, String paramString)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramCameraUtils);
-  }
-  
-  public void a(long paramLong)
-  {
-    removeMessages(1);
-  }
-  
-  public void a(String paramString, long paramLong, int paramInt1, int paramInt2)
-  {
-    QLog.w("CameraUtils", 1, "sendReopenCameraMsg[" + paramString + "], size[" + paramInt1 + ", " + paramInt2 + "], subthread[" + getLooper().getThread().getId() + "], seq[" + paramLong + "]");
-    a(paramLong);
-    paramString = obtainMessage(1);
-    paramString.arg1 = paramInt1;
-    paramString.arg2 = paramInt2;
-    paramString.obj = Long.valueOf(paramLong);
-    sendMessageDelayed(paramString, 1000L);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if ((this.a != null) && (this.a.get() != null) && (paramMessage != null) && (paramMessage.what == 1)) {
-      if (!(paramMessage.obj instanceof Long)) {
-        break label75;
-      }
-    }
-    label75:
-    for (long l = Long.valueOf(0L).longValue();; l = 0L)
-    {
-      CameraUtils.a((CameraUtils)this.a.get(), l, paramMessage.arg1, paramMessage.arg2);
-      super.handleMessage(paramMessage);
+    if (paramContext == null) {
       return;
     }
+    String str = a;
+    paramString = paramString + "_" + System.currentTimeMillis();
+    QLog.w("QavCameraUsage", 1, "setCameraUsageState, last[" + str + "], cur[" + paramString + "]");
+    a = paramString;
+    paramContext = paramContext.getSharedPreferences("qav_camera_usage_sp", 4).edit();
+    paramContext.putString("camera_used_desc", paramString);
+    paramContext.putBoolean("camera_used", true);
+    paramContext.commit();
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    boolean bool = true;
+    if (paramContext == null) {
+      return false;
+    }
+    paramContext = paramContext.getSharedPreferences("qav_camera_usage_sp", 4).getString("camera_used_desc", null);
+    QLog.w("QavCameraUsage", 1, "getCameraUsageState, cameraIsUsing[" + paramContext + "]");
+    if (paramContext != null) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public static boolean a(Context paramContext, boolean paramBoolean)
+  {
+    boolean bool1 = false;
+    boolean bool2 = false;
+    if (paramContext == null) {
+      return bool2;
+    }
+    Object localObject = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
+    label43:
+    int j;
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      int i = 0;
+      j = i;
+      if (!((Iterator)localObject).hasNext()) {
+        break label83;
+      }
+      if (!((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName.equals("com.tencent.mobileqq:video")) {
+        break label135;
+      }
+      i = 1;
+    }
+    label135:
+    for (;;)
+    {
+      break label43;
+      j = 0;
+      label83:
+      if (j != 0) {
+        bool1 = a(paramContext);
+      }
+      bool2 = bool1;
+      if (!bool1) {
+        break;
+      }
+      bool2 = bool1;
+      if (!paramBoolean) {
+        break;
+      }
+      new Handler(Looper.getMainLooper()).post(new QavCameraUsage.1(paramContext));
+      return bool1;
+    }
+  }
+  
+  public static void b(Context paramContext, String paramString)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    QLog.w("QavCameraUsage", 1, "clearCameraUsageState, cameraIsUsing[" + a + "], type[" + paramString + "]");
+    a = null;
+    paramContext = paramContext.getSharedPreferences("qav_camera_usage_sp", 4).edit();
+    paramContext.remove("camera_used_desc");
+    paramContext.putBoolean("camera_used", false);
+    paramContext.commit();
+  }
+  
+  public static boolean b(Context paramContext)
+  {
+    return a(paramContext, true);
   }
 }
 

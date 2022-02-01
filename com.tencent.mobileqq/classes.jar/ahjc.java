@@ -1,17 +1,20 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahjc
-  extends ahkx
+  implements View.OnClickListener
 {
-  ahjc(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahjc(ahiu paramahiu) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new ahwr(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    if (this.a.a != null) {
+      bcef.b(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X8004EFC", "0X8004EFC", 0, 0, "", "", "" + this.a.a.msgId, "");
+    }
+    this.a.openOptionActivity();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

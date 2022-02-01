@@ -1,70 +1,83 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
-import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
-import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
+import android.content.Context;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-public class ajgv
-  extends aojs
+class ajgv
+  implements AbsListView.OnScrollListener
 {
-  public ajgv(TroopView paramTroopView) {}
+  int jdField_a_of_type_Int = 0;
+  int b;
+  int c = 0;
   
-  protected void d(boolean paramBoolean, ArrayList<ajgb> paramArrayList)
+  ajgv(ajgq paramajgq)
+  {
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.c = paramInt1;
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+    this.jdField_b_of_type_Int = paramInt3;
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("addContacts.TroopView", 2, "onGetAddContactFindTroopClassify isSuccess = " + paramBoolean + ",dataList = " + paramArrayList);
+      QLog.i("C2CMessageSearchDialog", 2, "onScrollStateChanged, reach bottom, scrollState " + paramInt + " firstVisibleItem: " + this.c + ", lastItem:" + this.jdField_a_of_type_Int + ", totalItemCount = " + this.jdField_b_of_type_Int + ", mIsComplete: " + this.jdField_a_of_type_Ajgq.d + ", requesting:" + this.jdField_a_of_type_Ajgq.jdField_c_of_type_Boolean + ", mSearchMode: " + this.jdField_a_of_type_Ajgq.jdField_b_of_type_Int + ", mCurrentKeyword: " + this.jdField_a_of_type_Ajgq.jdField_a_of_type_JavaLangString);
     }
-    Object localObject;
-    int i;
-    if ((TroopView.a(this.a) != null) && (TroopView.a(this.a).b()))
+    if (this.jdField_b_of_type_Int == 0) {}
+    do
     {
-      localObject = TroopView.a(this.a);
-      if (paramBoolean)
+      do
       {
-        i = 1;
-        localObject = ((ajhe)localObject).obtainMessage(14, 0, i);
-        TroopView.a(this.a).sendMessage((Message)localObject);
-      }
-    }
-    else
-    {
-      if (!paramBoolean) {
-        break label223;
-      }
-      TroopView.a(this.a).sendEmptyMessage(4);
-    }
-    label223:
-    for (;;)
-    {
-      label118:
-      if ((paramArrayList != null) && (paramArrayList.size() > 0))
+        return;
+      } while ((this.jdField_a_of_type_Int != this.jdField_b_of_type_Int) || (paramInt != 0));
+      if ((this.c != 0) && (!this.jdField_a_of_type_Ajgq.jdField_c_of_type_Boolean))
       {
-        this.a.a.clear();
-        this.a.a.addAll(paramArrayList);
-        TroopView.a(this.a).notifyDataSetChanged();
-        localObject = new ArrayList();
-        i = 0;
-        for (;;)
+        this.jdField_a_of_type_Ajgq.jdField_c_of_type_Boolean = true;
+        if (this.jdField_a_of_type_Ajgq.jdField_b_of_type_Int == 0)
         {
-          if (i < paramArrayList.size())
-          {
-            ajgb localajgb = (ajgb)paramArrayList.get(i);
-            localajgb.c = (i + 100);
-            ((ArrayList)localObject).add(localajgb);
-            i += 1;
-            continue;
-            i = 0;
-            break;
-            TroopView.a(this.a).sendEmptyMessage(5);
-            break label118;
+          if (QLog.isColorLevel()) {
+            QLog.i("C2CMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageLocal >>>>> isComplete: " + this.jdField_a_of_type_Ajgq.d);
           }
+          this.jdField_a_of_type_Ajgq.jdField_a_of_type_Ajgo.a(this.jdField_a_of_type_Ajgq.jdField_a_of_type_Long, this.jdField_a_of_type_Ajgq.jdField_a_of_type_JavaLangString, 2);
+          this.jdField_a_of_type_Ajgq.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Ajgq.jdField_a_of_type_AndroidContentContext.getString(2131717994));
+          this.jdField_a_of_type_Ajgq.jdField_b_of_type_AndroidViewView.setVisibility(0);
+          this.jdField_a_of_type_Ajgq.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373010).setVisibility(0);
+          this.jdField_a_of_type_Ajgq.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+          return;
         }
-        TroopView.a(this.a).a((ArrayList)localObject);
-        TroopView.a(this.a, 0);
+        if (QLog.isColorLevel()) {
+          QLog.i("C2CMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageInCloud >>>>> isComplete: " + this.jdField_a_of_type_Ajgq.d);
+        }
+        if (this.jdField_a_of_type_Ajgq.d)
+        {
+          this.jdField_a_of_type_Ajgq.jdField_c_of_type_AndroidWidgetTextView.setText(amtj.a(2131700432));
+          this.jdField_a_of_type_Ajgq.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373010).setVisibility(8);
+          this.jdField_a_of_type_Ajgq.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+          this.jdField_a_of_type_Ajgq.jdField_b_of_type_AndroidViewView.setVisibility(0);
+          return;
+        }
+        this.jdField_a_of_type_Ajgq.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Ajgq.jdField_a_of_type_AndroidContentContext.getString(2131717993));
+        this.jdField_a_of_type_Ajgq.jdField_b_of_type_AndroidViewView.setVisibility(0);
+        this.jdField_a_of_type_Ajgq.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373010).setVisibility(0);
+        this.jdField_a_of_type_Ajgq.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        this.jdField_a_of_type_Ajgq.jdField_a_of_type_Long = System.currentTimeMillis();
+        this.jdField_a_of_type_Ajgq.b(2);
+        VipUtils.a(this.jdField_a_of_type_Ajgq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history", "ChatSearch", "Slip_resultup", 0, 0, new String[0]);
+        return;
       }
-    }
+    } while ((this.c != 0) || (this.jdField_a_of_type_Ajgq.jdField_c_of_type_Boolean) || (!this.jdField_a_of_type_Ajgq.d) || (this.jdField_a_of_type_Ajgq.jdField_b_of_type_Int != 1));
+    this.jdField_a_of_type_Ajgq.jdField_c_of_type_AndroidWidgetTextView.setText(amtj.a(2131700437));
+    this.jdField_a_of_type_Ajgq.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131373010).setVisibility(8);
+    this.jdField_a_of_type_Ajgq.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_Ajgq.jdField_b_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

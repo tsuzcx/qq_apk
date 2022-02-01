@@ -1,27 +1,43 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.QuickLoginActivity;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class afjc
-  implements AdapterView.OnItemClickListener
+class afjc
+  extends atuh
 {
-  public afjc(QuickLoginActivity paramQuickLoginActivity) {}
+  afjc(afiw paramafiw) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    String str = (String)((HashMap)this.a.a.get(paramInt)).get("qq");
-    libsafeedit.getLoginLegal((String)((HashMap)this.a.a.get(paramInt)).get("password"));
-    byte[] arrayOfByte = libsafeedit.byteSafeEditTextToMD5(Boolean.valueOf(true));
-    this.a.getAppRuntime().login(str, arrayOfByte, QuickLoginActivity.a(this.a));
-    Toast.makeText(this.a.getApplicationContext(), "logining...", 0).show();
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.sessionInfo.curFriendUin)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag, 2, "onBandIntimateRelationship");
+      }
+      this.a.a();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.sessionInfo.curFriendUin)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag, 2, "onUpdateIntimateRelationship");
+      }
+      this.a.a();
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (TextUtils.equals(paramString, this.a.sessionInfo.curFriendUin)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag, 2, "onDisbandIntimateRelationship");
+      }
+      this.a.a();
+    }
   }
 }
 

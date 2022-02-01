@@ -1,23 +1,60 @@
 import android.support.annotation.NonNull;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
 public class xqu
-  implements xsy
+  extends xrj
+  implements vqp<xqv, xqw>
 {
-  public xqu(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
+  private boolean a;
   
-  public void a(@NonNull View paramView, int paramInt)
+  public String a()
   {
-    if (LiuHaiUtils.a)
+    return "GetPhotographyGuideInfoStep";
+  }
+  
+  public void a()
+  {
+    xvv.d("Q.qqstory.home.GetPhotographyGuideInfoStep", "run");
+    xqv localxqv = new xqv();
+    vqn.a().a(localxqv, this);
+  }
+  
+  public void a(@NonNull xqv paramxqv, @Nullable xqw paramxqw, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if ((paramErrorMessage.isSuccess()) && (paramxqw != null))
     {
-      paramInt = StoryPlayerGroupHolder.a(this.a);
-      paramView = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
-      paramView.bottomMargin = paramInt;
-      this.a.a.setLayoutParams(paramView);
+      xvv.b("Q.qqstory.home.GetPhotographyGuideInfoStep", "onCmdRespond success.");
+      paramxqv = (vuq)vux.a(10);
+      paramxqw = paramxqw.a;
+      if ((paramxqw != null) && (paramxqw.size() > 0)) {
+        paramxqv.b("StorySvc.get_photography_guide.word", paramxqw.get(0));
+      }
+      for (;;)
+      {
+        d();
+        return;
+        paramxqv.b("StorySvc.get_photography_guide.word", amtj.a(2131704386));
+      }
+    }
+    xvv.d("Q.qqstory.home.GetPhotographyGuideInfoStep", "onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramxqv });
+    b(paramErrorMessage);
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    try
+    {
+      this.a = true;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
 }

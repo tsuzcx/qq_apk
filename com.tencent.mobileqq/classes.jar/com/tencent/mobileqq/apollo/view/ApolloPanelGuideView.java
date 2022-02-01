@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.apollo.view;
 
-import agej;
+import amlu;
+import amlw;
+import amnc;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -14,11 +16,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anra;
-import anrc;
-import ansl;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.apollo.store.openbox.RoundRectLinearLayout;
 import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -30,14 +30,14 @@ public class ApolloPanelGuideView
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int = 0;
+  private amnc jdField_a_of_type_Amnc;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ansl jdField_a_of_type_Ansl;
   private RoundRectLinearLayout jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout;
   private ApolloLinearLayoutNoPreview jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayoutNoPreview;
-  private List<anra> jdField_a_of_type_JavaUtilList;
+  private List<amlu> jdField_a_of_type_JavaUtilList;
   
   public ApolloPanelGuideView(Context paramContext)
   {
@@ -59,7 +59,7 @@ public class ApolloPanelGuideView
     int i;
     label27:
     ViewGroup localViewGroup;
-    anrc localanrc;
+    amlw localamlw;
     if (this.jdField_a_of_type_Int == 0)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText("试试有趣的3D形象");
@@ -69,24 +69,24 @@ public class ApolloPanelGuideView
         return;
       }
       localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      localanrc = (anrc)localViewGroup.getTag();
+      localamlw = (amlw)localViewGroup.getTag();
       if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
         break label236;
       }
       localViewGroup.setVisibility(0);
-      localanrc.jdField_a_of_type_Anra = ((anra)this.jdField_a_of_type_JavaUtilList.get(i));
-      ApolloActionData localApolloActionData = localanrc.jdField_a_of_type_Anra.a;
-      localanrc.jdField_a_of_type_Anra.c = 0;
-      localanrc.jdField_a_of_type_AndroidWidgetTextView.setText(localApolloActionData.actionName);
-      localanrc.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localanrc.jdField_a_of_type_Anra.a(getContext(), getContext().getResources().getDisplayMetrics().density));
-      localanrc.e.setBackgroundDrawable(null);
-      localanrc.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      localanrc.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      localanrc.e.setVisibility(8);
-      if (localanrc.jdField_a_of_type_AndroidViewView != null)
+      localamlw.jdField_a_of_type_Amlu = ((amlu)this.jdField_a_of_type_JavaUtilList.get(i));
+      ApolloActionData localApolloActionData = localamlw.jdField_a_of_type_Amlu.a;
+      localamlw.jdField_a_of_type_Amlu.c = 0;
+      localamlw.jdField_a_of_type_AndroidWidgetTextView.setText(localApolloActionData.actionName);
+      localamlw.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localamlw.jdField_a_of_type_Amlu.a(getContext(), getContext().getResources().getDisplayMetrics().density));
+      localamlw.e.setBackgroundDrawable(null);
+      localamlw.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      localamlw.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      localamlw.e.setVisibility(8);
+      if (localamlw.jdField_a_of_type_AndroidViewView != null)
       {
-        localViewGroup.removeView(localanrc.jdField_a_of_type_AndroidViewView);
-        localanrc.jdField_a_of_type_AndroidViewView = null;
+        localViewGroup.removeView(localamlw.jdField_a_of_type_AndroidViewView);
+        localamlw.jdField_a_of_type_AndroidViewView = null;
       }
     }
     for (;;)
@@ -98,8 +98,8 @@ public class ApolloPanelGuideView
       break;
       label236:
       localViewGroup.setVisibility(4);
-      localanrc.jdField_a_of_type_Anra = null;
-      localanrc.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+      localamlw.jdField_a_of_type_Amlu = null;
+      localamlw.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
     }
   }
   
@@ -116,7 +116,7 @@ public class ApolloPanelGuideView
       return;
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        if (((anra)localIterator.next()).a.actionId == paramApolloActionData.actionId) {
+        if (((amlu)localIterator.next()).a.actionId == paramApolloActionData.actionId) {
           post(new ApolloPanelGuideView.1(this));
         }
       }
@@ -131,7 +131,7 @@ public class ApolloPanelGuideView
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Ansl == null) {}
+    if (this.jdField_a_of_type_Amnc == null) {}
     for (;;)
     {
       EventCollector.getInstance().onViewClicked(paramView);
@@ -140,11 +140,11 @@ public class ApolloPanelGuideView
       {
       default: 
         break;
-      case 2131368483: 
-        this.jdField_a_of_type_Ansl.a(this);
+      case 2131368508: 
+        this.jdField_a_of_type_Amnc.a(this);
         break;
-      case 2131378285: 
-        this.jdField_a_of_type_Ansl.b(this);
+      case 2131378054: 
+        this.jdField_a_of_type_Amnc.b(this);
       }
     }
   }
@@ -152,20 +152,20 @@ public class ApolloPanelGuideView
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    findViewById(2131368483).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131378285));
+    findViewById(2131368508).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131378054));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131361986);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367796));
+    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131361985);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367828));
     this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayoutNoPreview = new ApolloLinearLayoutNoPreview(getContext(), null, 0, 4, 1);
     localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayoutNoPreview, -1, -2);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayoutNoPreview.getChildAt(0));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131379171));
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout = ((RoundRectLinearLayout)findViewById(2131363625));
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout.setRoundRect(agej.a(6.0F, getResources()), -10205955, false);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131378941));
+    this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout = ((RoundRectLinearLayout)findViewById(2131363657));
+    this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxRoundRectLinearLayout.setRoundRect(AIOUtils.dp2px(6.0F, getResources()), -10205955, false);
   }
   
-  public void setActions(List<anra> paramList)
+  public void setActions(List<amlu> paramList)
   {
     if (paramList == null) {
       return;
@@ -179,9 +179,9 @@ public class ApolloPanelGuideView
     this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayoutNoPreview.setCallback(paramBaseChatPie);
   }
   
-  public void setClickCallback(ansl paramansl)
+  public void setClickCallback(amnc paramamnc)
   {
-    this.jdField_a_of_type_Ansl = paramansl;
+    this.jdField_a_of_type_Amnc = paramamnc;
   }
   
   public void setGuideType(int paramInt)

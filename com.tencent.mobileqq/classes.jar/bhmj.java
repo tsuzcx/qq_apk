@@ -1,22 +1,30 @@
-public class bhmj
+import android.view.View;
+
+class bhmj
+  implements bhma
 {
-  public String a;
-  public boolean a;
-  public String b;
+  bhmj(bhmi parambhmi) {}
   
-  public bhmj(String paramString)
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    this.a = paramString;
+    this.a.a(true, new View[] { this.a.a });
   }
   
-  public boolean a()
+  public void b()
   {
-    return "mounted".equals(this.b);
+    this.a.a(false, new View[] { this.a.a });
+  }
+  
+  public void c()
+  {
+    aurt.a().a(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhmj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,7 @@
-class aiko
+public class aiko
 {
   public int a;
-  public String a;
-  public String b;
-  
-  aiko(aikg paramaikg) {}
+  public long a;
 }
 
 

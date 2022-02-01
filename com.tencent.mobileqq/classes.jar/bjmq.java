@@ -1,50 +1,52 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.widget.PinnedDividerListView;
-import com.tencent.open.agent.FriendListOpenFrame;
-
 public class bjmq
-  extends Handler
 {
-  public bjmq(FriendListOpenFrame paramFriendListOpenFrame) {}
-  
-  public void handleMessage(Message paramMessage)
+  public static long a(String paramString)
   {
-    switch (paramMessage.what)
+    return a(paramString, 0L);
+  }
+  
+  public static long a(String paramString, long paramLong)
+  {
+    try
     {
+      long l = Long.valueOf(paramString).longValue();
+      return l;
     }
-    for (;;)
+    catch (NumberFormatException paramString)
     {
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
-      return;
-      String str = paramMessage.getData().getString("url");
-      paramMessage = (Bitmap)paramMessage.obj;
-      int j = this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildCount();
+      paramString.printStackTrace();
+    }
+    return paramLong;
+  }
+  
+  public static String a(int[][] paramArrayOfInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("[");
+    if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0) && (paramArrayOfInt[0].length > 0))
+    {
+      int k = paramArrayOfInt.length;
       int i = 0;
-      while (i < j)
+      while (i < k)
       {
-        bjms localbjms = (bjms)this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildAt(i).getTag();
-        if ((localbjms != null) && (str.equals(localbjms.b)))
+        int[] arrayOfInt = paramArrayOfInt[i];
+        localStringBuilder.append("[");
+        int j = 0;
+        while (j < arrayOfInt.length - 1)
         {
-          localbjms.a.setImageBitmap(paramMessage);
-          return;
+          localStringBuilder.append(arrayOfInt[j]).append(", ");
+          j += 1;
         }
+        localStringBuilder.append(arrayOfInt[j]).append("] ");
         i += 1;
       }
     }
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjmq
  * JD-Core Version:    0.7.0.1
  */

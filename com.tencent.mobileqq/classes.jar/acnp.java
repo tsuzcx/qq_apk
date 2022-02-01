@@ -1,98 +1,72 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.ipc.AdIPCManager;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Handler;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
-import com.tencent.ad.tangram.process.AdProcessManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class acnp
-  extends QIPCModule
+public class acnp
+  implements View.OnClickListener
 {
-  private static volatile acnp a;
+  public acnp(AccountManageActivity paramAccountManageActivity) {}
   
-  private acnp(String paramString)
+  public void onClick(View paramView)
   {
-    super(paramString);
-  }
-  
-  public static acnp a()
-  {
-    if (a == null) {}
-    try
+    if (!(paramView instanceof RotateSwitchImageView)) {}
+    for (;;)
     {
-      if (a == null) {
-        a = new acnp("gdt_ipc_module_server_to_client");
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public void callbackResult(int paramInt, EIPCResult paramEIPCResult)
-  {
-    if (paramEIPCResult != null) {}
-    for (boolean bool = paramEIPCResult.isSuccess();; bool = false)
-    {
-      acvc.b("GdtIPCAdapter", String.format("ServerToClientIPCModule.callbackResult success:%b", new Object[] { Boolean.valueOf(bool) }));
-      super.callbackResult(paramInt, paramEIPCResult);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    AdIPCManager.Params localParams = new AdIPCManager.Params(paramBundle);
-    String str;
-    if (localParams != null)
-    {
-      paramBundle = localParams.getAction();
-      if (localParams == null) {
-        break label70;
-      }
-      str = localParams.getToProcessName();
-      label33:
-      acvc.b("GdtIPCAdapter", String.format("ServerToClientIPCModule.onCall action:%s to:%s", new Object[] { paramBundle, str }));
-      if (!TextUtils.isEmpty(paramString)) {
-        break label76;
-      }
-    }
-    label70:
-    label76:
-    do
-    {
-      do
+      View localView1 = AccountManageActivity.a(this.a, paramView);
+      View localView2 = AccountManageActivity.b(this.a, paramView);
+      ViewGroup.LayoutParams localLayoutParams;
+      if (AccountManageActivity.a(this.a) == null)
       {
-        return null;
-        paramBundle = null;
-        break;
-        str = null;
-        break label33;
-      } while ((!localParams.isValid()) || (!TextUtils.equals(localParams.getAction(), paramString)) || (!TextUtils.equals(AdProcessManager.INSTANCE.getCurrentProcessName(BaseApplicationImpl.getContext()), localParams.getToProcessName())));
-      paramString = AdIPCManager.INSTANCE.getHandler(paramString);
-    } while (paramString == null);
-    paramString = paramString.handle(localParams);
-    paramBundle = new EIPCResult();
-    int i;
-    if ((paramString != null) && (paramString.success))
-    {
-      i = 0;
-      paramBundle.code = i;
-      if (paramString == null) {
-        break label194;
+        AccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
+        ((RotateSwitchImageView)paramView).b();
+        localLayoutParams = localView2.getLayoutParams();
+        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.g(this.a) * 75.0F));
+        localView2.setLayoutParams(localLayoutParams);
+        if ((localView1 instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localView1).showIgnoreVisible();
+        }
+        if (AppSetting.c) {
+          paramView.setContentDescription(this.a.getString(2131691003));
+        }
       }
-    }
-    label194:
-    for (paramString = paramString.bundle;; paramString = null)
-    {
-      paramBundle.data = paramString;
-      callbackResult(paramInt, paramBundle);
-      return null;
-      i = -102;
-      break;
+      else if (AccountManageActivity.a(this.a) == paramView)
+      {
+        AccountManageActivity.a(this.a).a();
+        localLayoutParams = localView2.getLayoutParams();
+        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.h(this.a) * 40.0F));
+        localView2.setLayoutParams(localLayoutParams);
+        if ((localView1 instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localView1).hideIgnoreVisible();
+        }
+        AccountManageActivity.a(this.a, null);
+        if (AppSetting.c) {
+          paramView.setContentDescription(this.a.getString(2131691015));
+        }
+      }
+      else
+      {
+        AccountManageActivity.a(this.a).a();
+        ((RotateSwitchImageView)paramView).b();
+        AccountManageActivity.b(this.a, AccountManageActivity.a(this.a)).getLayoutParams().width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.i(this.a) * 40.0F));
+        localLayoutParams = localView2.getLayoutParams();
+        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) - AccountManageActivity.j(this.a) * 75.0F));
+        localView2.setLayoutParams(localLayoutParams);
+        if ((localView1 instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localView1).showIgnoreVisible();
+        }
+        localView1 = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+        if ((localView1 instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)localView1).hideIgnoreVisible();
+        }
+        AccountManageActivity.a(this.a, (RotateSwitchImageView)paramView);
+      }
     }
   }
 }

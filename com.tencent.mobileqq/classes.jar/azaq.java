@@ -1,24 +1,22 @@
-import android.text.Editable;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
 public class azaq
-  implements TextView.OnEditorActionListener
+  implements QQPermissionCallback
 {
-  public azaq(OCRTextSearchActivity paramOCRTextSearchActivity) {}
+  public azaq(ProfileCardMoreActivity paramProfileCardMoreActivity1, ProfileCardMoreActivity paramProfileCardMoreActivity2) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
-    {
-      OCRTextSearchActivity.a(this.a);
-      this.a.a.setSelection(this.a.a.getText().length());
-      return true;
-    }
-    return false;
+    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions denied...");
+    bfur.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.d("IphoneTitleBarActivity", 1, "User requestPermissions grant...");
+    this.b.g();
   }
 }
 

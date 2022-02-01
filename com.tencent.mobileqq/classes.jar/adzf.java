@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import mqq.app.QQPermissionCallback;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
 
 public class adzf
-  implements QQPermissionCallback
+  extends aezf
 {
-  public adzf(BaseChatPie paramBaseChatPie) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bhlq.b(this.a.a());
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    BaseChatPie.e(this.a);
-  }
+  public ImageView a;
+  public BreathAnimationLayout a;
+  public StringBuilder a;
+  public TextView c;
 }
 
 

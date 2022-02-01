@@ -1,17 +1,66 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.together.writetogether.view.WriteTogetherEditorFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class beqc
-  implements View.OnClickListener
+  extends aptq<beqb>
 {
-  public beqc(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
-  
-  public void onClick(View paramView)
+  @NonNull
+  public beqb a(int paramInt)
   {
-    WriteTogetherEditorFragment.f(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.d("TroopHonor.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    return new beqb();
+  }
+  
+  @Nullable
+  public beqb a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return beqb.a(paramArrayOfaptx[0].a);
+    }
+    return null;
+  }
+  
+  public void a(beqb parambeqb)
+  {
+    QLog.d("TroopHonor.config", 1, "onUpdate, newConf = " + parambeqb);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      ((bepr)((QQAppInterface)localAppRuntime).getManager(346)).a(parambeqb, false);
+    }
+  }
+  
+  public Class<beqb> clazz()
+  {
+    return beqb.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TroopHonor.config", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 544;
   }
 }
 

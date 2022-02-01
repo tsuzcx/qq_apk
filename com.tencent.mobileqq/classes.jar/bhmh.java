@@ -1,127 +1,54 @@
-public class bhmh
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.widget.RelativeLayout;
+
+class bhmh
+  implements Animator.AnimatorListener
 {
-  private static char[] a = new char[32];
-  private static final char[] b = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57 };
+  bhmh(bhme parambhme, int paramInt) {}
   
-  public static String a(long paramLong)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return a(paramLong, 160);
-  }
-  
-  public static String a(long paramLong, int paramInt)
-  {
-    long l = paramLong;
-    if (paramLong < 0L) {
-      l = 0L;
-    }
-    double d = l;
-    int i;
-    int m;
-    int j;
-    label64:
-    int k;
-    label96:
-    char[] arrayOfChar;
-    if (l < 1048576L) {
-      if (l < 1024L)
-      {
-        i = 66;
-        m = (int)(0.005D + d);
-        if (m >= 100) {
-          break label259;
-        }
-        if (m >= 10) {
-          break label253;
-        }
-        j = 1;
-        if (i == 66) {
-          break label319;
-        }
-        if ((anxh.a() <= 18.0F) || (paramInt >= 160)) {
-          break label293;
-        }
-        k = j + 2;
-        j = m;
-        if (k <= a.length) {
-          break label332;
-        }
-        arrayOfChar = new char[k];
-        label111:
-        m = k - 1;
-        arrayOfChar[m] = 'B';
-        if (i == 66) {
-          break label411;
-        }
-        if ((anxh.a() <= 18.0F) || (paramInt >= 160)) {
-          break label340;
-        }
-        paramInt = m - 1;
-        arrayOfChar[paramInt] = i;
+    if (this.jdField_a_of_type_Bhme.a != null)
+    {
+      if (this.jdField_a_of_type_Int != 0) {
+        break label41;
       }
+      this.jdField_a_of_type_Bhme.a.setAlpha(1.0F);
     }
     for (;;)
     {
-      paramInt -= 1;
-      arrayOfChar[paramInt] = b[(j % 10)];
-      m = j / 10;
-      j = m;
-      if (m <= 0)
-      {
-        return new String(arrayOfChar, 0, k);
-        d /= 1024.0D;
-        i = 75;
-        break;
-        if (l < 1073741824L)
-        {
-          d /= 1048576.0D;
-          i = 77;
-          break;
-        }
-        d /= 1073741824.0D;
-        i = 71;
-        break;
-        label253:
-        j = 2;
-        break label64;
-        label259:
-        if (m < 1000)
-        {
-          j = 3;
-          break label64;
-        }
-        if (m < 10000)
-        {
-          j = 4;
-          break label64;
-        }
-        j = 5;
-        break label64;
-        label293:
-        m = (int)(d * 100.0D + 0.5D);
-        k = j + 5;
-        j = m;
-        break label96;
-        label319:
-        k = j + 1;
-        j = m;
-        break label96;
-        label332:
-        arrayOfChar = a;
-        break label111;
-        label340:
-        paramInt = m - 1;
-        arrayOfChar[paramInt] = i;
-        paramInt -= 1;
-        arrayOfChar[paramInt] = b[(j % 10)];
-        j /= 10;
-        paramInt -= 1;
-        arrayOfChar[paramInt] = b[(j % 10)];
-        j /= 10;
-        paramInt -= 1;
-        arrayOfChar[paramInt] = '.';
-        continue;
-        label411:
-        paramInt = m;
+      bhme.b(this.jdField_a_of_type_Bhme, this.jdField_a_of_type_Int);
+      return;
+      label41:
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_Bhme.a.setAlpha(0.0F);
+      }
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    bhme.b(this.jdField_a_of_type_Bhme, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      bhme.a(this.jdField_a_of_type_Bhme, false);
+      this.jdField_a_of_type_Bhme.a(false, new View[] { bhme.a(this.jdField_a_of_type_Bhme) });
+    }
+    bhme.a(this.jdField_a_of_type_Bhme);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    bhme.b(this.jdField_a_of_type_Bhme, 2);
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      bhme.a(this.jdField_a_of_type_Bhme, true);
+      if (bhme.a(this.jdField_a_of_type_Bhme) == 1) {
+        this.jdField_a_of_type_Bhme.a(true, new View[] { bhme.a(this.jdField_a_of_type_Bhme) });
       }
     }
   }

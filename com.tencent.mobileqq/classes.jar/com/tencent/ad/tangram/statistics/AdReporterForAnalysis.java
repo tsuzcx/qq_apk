@@ -11,8 +11,8 @@ import com.tencent.ad.tangram.analysis.AdAnalysisEvent;
 import com.tencent.ad.tangram.analysis.AdAnalysisUtil;
 import com.tencent.ad.tangram.device.AdCarrier;
 import com.tencent.ad.tangram.device.c;
-import com.tencent.ad.tangram.device.r;
-import com.tencent.ad.tangram.device.r.a;
+import com.tencent.ad.tangram.device.q;
+import com.tencent.ad.tangram.device.q.a;
 import com.tencent.ad.tangram.loader.AdLoaderWithJSON;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.net.AdHttp.Params;
@@ -195,17 +195,17 @@ public final class AdReporterForAnalysis
     return new AdAnalysisEvent(localgdt_analysis_event, 102);
   }
   
-  private static AdAnalysisEvent createEventForUUID(Context paramContext, int paramInt, r paramr, r.a parama)
+  private static AdAnalysisEvent createEventForUUID(Context paramContext, int paramInt, q paramq, q.a parama)
   {
     gdt_analysis_event localgdt_analysis_event = new gdt_analysis_event();
     AdAnalysisUtil.initEvent(paramContext, paramInt, localgdt_analysis_event);
-    if (paramr == null) {
+    if (paramq == null) {
       localgdt_analysis_event.internalErrorCode = 16;
     }
     for (;;)
     {
       return new AdAnalysisEvent(localgdt_analysis_event, 102);
-      if (!paramr.isValid(parama)) {
+      if (!paramq.isValid(parama)) {
         localgdt_analysis_event.internalErrorCode = 4;
       } else {
         localgdt_analysis_event.internalErrorCode = 0;
@@ -897,14 +897,14 @@ public final class AdReporterForAnalysis
     AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), new AdAnalysisEvent(paramAd, 103));
   }
   
-  public static void reportForUUID(Context paramContext, r paramr1, r paramr2, r.a parama)
+  public static void reportForUUID(Context paramContext, q paramq1, q paramq2, q.a parama)
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(createEventForUUID(paramContext, 1126, paramr1, parama));
-    localArrayList.add(createEventForUUID(paramContext, 1127, paramr2, parama));
+    localArrayList.add(createEventForUUID(paramContext, 1126, paramq1, parama));
+    localArrayList.add(createEventForUUID(paramContext, 1127, paramq2, parama));
     parama = new gdt_analysis_event();
     AdAnalysisUtil.initEvent(paramContext, 1128, parama);
-    if ((paramr1 == null) && (paramr2 == null)) {
+    if ((paramq1 == null) && (paramq2 == null)) {
       parama.internalErrorCode = 0;
     }
     for (;;)
@@ -912,9 +912,9 @@ public final class AdReporterForAnalysis
       localArrayList.add(new AdAnalysisEvent(parama, 102));
       AdAnalysis.INSTANCE.handleAsync(new WeakReference(paramContext), localArrayList);
       return;
-      if ((paramr1 == null) || (paramr2 == null)) {
+      if ((paramq1 == null) || (paramq2 == null)) {
         parama.internalErrorCode = 1;
-      } else if (paramr1.equals(paramr2)) {
+      } else if (paramq1.equals(paramq2)) {
         parama.internalErrorCode = 0;
       } else {
         parama.internalErrorCode = 1;

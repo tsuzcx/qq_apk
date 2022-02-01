@@ -1,12 +1,8 @@
+import com.tencent.mobileqq.soload.SoLoadInfo;
+
 public abstract interface bbzg
 {
-  public abstract void a(long paramLong);
-  
-  public abstract void a(String paramString);
-  
-  public abstract long b();
-  
-  public abstract long c();
+  public abstract void a(SoLoadInfo paramSoLoadInfo);
 }
 
 

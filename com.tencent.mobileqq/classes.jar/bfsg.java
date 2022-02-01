@@ -1,19 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import android.app.Dialog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class bfsg
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  bfsg(bfsf parambfsf, TroopFileTransferManager paramTroopFileTransferManager, UUID paramUUID) {}
+  bfsg(bfse parambfse, Dialog paramDialog) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.b(this.jdField_a_of_type_JavaUtilUUID);
-    }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

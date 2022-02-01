@@ -1,8 +1,10 @@
-public class awpb
+public abstract interface awpb
 {
-  public int a;
-  public String a;
-  public String b;
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

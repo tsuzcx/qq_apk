@@ -1,31 +1,12 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.widget.RoundImageView;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-
 class aqwl
-  implements aqgm
 {
-  aqwl(aqwk paramaqwk) {}
+  long jdField_a_of_type_Long;
+  long b;
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public aqwl(aqwg paramaqwg, long paramLong1, long paramLong2)
   {
-    paramString2 = (List)aqwk.a(this.a).get(paramString1);
-    if ((paramString2 != null) && (paramString2.size() > 0))
-    {
-      paramString2 = paramString2.iterator();
-      while (paramString2.hasNext())
-      {
-        aqwo localaqwo = (aqwo)paramString2.next();
-        if ((localaqwo != null) && (localaqwo.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView != null) && (localaqwo.jdField_a_of_type_Aruk != null))
-        {
-          localaqwo.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageBitmap(paramBitmap);
-          localaqwo.jdField_a_of_type_Aruk.c(true);
-        }
-      }
-    }
-    aqwk.a(this.a).remove(paramString1);
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 

@@ -1,6 +1,15 @@
-public abstract interface bljb
+import android.view.View;
+
+final class bljb
 {
-  public abstract void onDismiss();
+  private View jdField_a_of_type_AndroidViewView;
+  private blic jdField_a_of_type_Blic;
+  
+  public bljb(blic paramblic, View paramView)
+  {
+    this.jdField_a_of_type_Blic = paramblic;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
 }
 
 

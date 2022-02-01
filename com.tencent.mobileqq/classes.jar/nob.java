@@ -1,21 +1,37 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.biz.common.offline.HtmlOffline.6;
+import com.tencent.biz.common.util.NetworkUtil;
 
 public class nob
-  implements nmy
+  implements nnv
 {
-  public void a(Runnable paramRunnable)
+  public nob(HtmlOffline.6 param6) {}
+  
+  public void loaded(String paramString, int paramInt)
   {
-    ThreadManager.executeOnNetWorkThread(paramRunnable);
+    long l = System.currentTimeMillis() - this.a.jdField_a_of_type_Long;
+    if (nny.a.a()) {
+      nny.a.a("HtmlCheckUpdate", 2, "js call downloadUpdate callback:" + paramInt + ", time:" + l);
+    }
+    if (paramInt == 0) {
+      if (nny.b(this.a.b)) {
+        this.a.jdField_a_of_type_Nnv.loaded(null, 0);
+      }
+    }
+    for (;;)
+    {
+      BidDownloader.b(this.a.b);
+      nny.a(this.a.b, paramInt, l, NetworkUtil.getNetworkType(this.a.jdField_a_of_type_AndroidContentContext));
+      return;
+      this.a.jdField_a_of_type_Nnv.loaded(null, 6);
+      continue;
+      this.a.jdField_a_of_type_Nnv.loaded(null, 2);
+    }
   }
   
-  public void b(Runnable paramRunnable)
+  public void progress(int paramInt)
   {
-    ThreadManager.executeOnFileThread(paramRunnable);
-  }
-  
-  public void c(Runnable paramRunnable)
-  {
-    ThreadManager.post(paramRunnable, 5, null, false);
+    this.a.jdField_a_of_type_Nnv.progress(paramInt);
   }
 }
 

@@ -1,109 +1,74 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.InOutQQ;
-import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.ReqBody;
-import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.RspBody;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.widget.CircleProgress;
+import com.tencent.qphone.base.util.QLog;
 
 public class apbv
-  extends anud
+  implements View.OnTouchListener
 {
-  private List<apbw> a = new ArrayList();
+  public apbv(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public apbv(QQAppInterface paramQQAppInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    super(paramQQAppInterface);
-  }
-  
-  /* Error */
-  public void a(apbw paramapbw)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +18 -> 21
-    //   6: aload_0
-    //   7: getfield 18	apbv:a	Ljava/util/List;
-    //   10: aload_1
-    //   11: invokeinterface 26 2 0
-    //   16: istore_2
-    //   17: iload_2
-    //   18: ifeq +6 -> 24
-    //   21: aload_0
-    //   22: monitorexit
-    //   23: return
-    //   24: aload_0
-    //   25: getfield 18	apbv:a	Ljava/util/List;
-    //   28: aload_1
-    //   29: invokeinterface 29 2 0
-    //   34: pop
-    //   35: goto -14 -> 21
-    //   38: astore_1
-    //   39: aload_0
-    //   40: monitorexit
-    //   41: aload_1
-    //   42: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	43	0	this	apbv
-    //   0	43	1	paramapbw	apbw
-    //   16	2	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   6	17	38	finally
-    //   24	35	38	finally
-  }
-  
-  public void a(List<oidb_cmd0xe27.InOutQQ> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
+    boolean bool = true;
+    if (!this.a.jdField_c_of_type_Boolean) {
+      bool = false;
     }
-    int i = paramList.size();
-    if (i > 20) {
-      paramList.subList(i - 20, i);
-    }
-    oidb_cmd0xe27.ReqBody localReqBody = new oidb_cmd0xe27.ReqBody();
-    localReqBody.rpt_msg_in_out_qq.set(paramList);
-    sendPbReq(makeOIDBPkg("OidbSvc.0xe27", 3623, 1, localReqBody.toByteArray()));
-  }
-  
-  public void b(apbw paramapbw)
-  {
-    if ((paramapbw == null) || (!this.a.contains(paramapbw))) {
-      return;
-    }
-    this.a.remove(paramapbw);
-  }
-  
-  protected Class<? extends anui> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQDailyHandler", 0, "receive from front back report: " + paramFromServiceMsg.isSuccess());
-    }
-    oidb_cmd0xe27.RspBody localRspBody = new oidb_cmd0xe27.RspBody();
-    if (parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody) == 0)
+    do
     {
-      paramObject = this.a.iterator();
-      while (paramObject.hasNext())
+      return bool;
+      if ((paramView == this.a.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress)) {}
+      switch (paramMotionEvent.getAction())
       {
-        apbw localapbw = (apbw)paramObject.next();
-        if (localapbw != null) {
-          localapbw.a(paramToServiceMsg, paramFromServiceMsg, localRspBody);
+      case 2: 
+      default: 
+        return false;
+      case 0: 
+        this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+        this.a.jdField_b_of_type_AndroidWidgetButton.setVisibility(4);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("0\"");
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
+        this.a.d.setVisibility(4);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(0);
+        this.a.e.setVisibility(4);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a = System.currentTimeMillis();
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
+        if (this.a.jdField_b_of_type_Int == 1) {}
+        for (int i = 0;; i = 1)
+        {
+          bcef.b(null, "dc00898", "", "", "0X8007106", "0X8007106", i, 0, "", "", "", "");
+          return true;
         }
       }
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a()) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("DynamicAvatarRecordActivity", 2, "ACTION_UP, current state is already preview!");
+    return true;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.e();
     }
+    if (System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a < 500L)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.b(false);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.d();
+      DynamicAvatarRecordActivity.a(this.a);
+      return true;
+    }
+    DynamicAvatarRecordActivity.b(this.a);
+    return true;
   }
 }
 

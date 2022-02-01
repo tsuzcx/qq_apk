@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.redtouch;
 
-import bbav;
+import azvi;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import java.util.List;
 
 public class RedTouchManager$5
   implements Runnable
 {
-  public RedTouchManager$5(bbav parambbav, BusinessInfoCheckUpdate.AppInfo paramAppInfo, int paramInt, String paramString1, boolean paramBoolean, List paramList1, List paramList2, String paramString2) {}
+  public RedTouchManager$5(azvi paramazvi, BusinessInfoCheckUpdate.AppInfo paramAppInfo, int paramInt, String paramString1, boolean paramBoolean, List paramList1, List paramList2, String paramString2) {}
   
   public void run()
   {
-    bbav.a(this.this$0, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString);
+    azvi.a(this.this$0, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_b_of_type_JavaLangString);
   }
 }
 

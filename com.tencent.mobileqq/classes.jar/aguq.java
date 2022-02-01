@@ -1,15 +1,13 @@
-import android.view.DragEvent;
-import android.view.View;
-import android.view.View.OnDragListener;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class aguq
-  implements View.OnDragListener
+public class aguq
+  implements agut
 {
-  aguq(aguk paramaguk) {}
-  
-  public boolean onDrag(View paramView, DragEvent paramDragEvent)
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    return true;
+    paramagap.b(paramMessageRecord, paramagcc, paramString);
   }
 }
 

@@ -1,58 +1,24 @@
-import android.view.View;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.media.MediaCodec;
+import android.media.MediaExtractor;
+import java.util.ArrayList;
 
 public class yhy
-  extends yop
 {
-  public yhy(yhv paramyhv) {}
-  
-  public void a(int paramInt, View paramView, Object paramObject, yqw paramyqw)
-  {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(yhv.a(this.a)).size())) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramObject = (CommentEntry)this.a.a.a(yhv.a(this.a)).get(paramInt);
-          switch (paramView.getId())
-          {
-          default: 
-            return;
-          }
-        } while ((paramObject.authorRole == 1002) || (paramObject.authorRole == 1003));
-        wnu.a(paramView.getContext(), 12, paramObject.authorUnionId);
-        return;
-      } while (yhv.a(this.a) == null);
-      yhv.a(this.a).a(paramObject, paramInt);
-      return;
-    } while (yhv.a(this.a) == null);
-    yhv.a(this.a).N_();
-  }
-  
-  public void b(int paramInt, View paramView, Object paramObject, yqw paramyqw)
-  {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(yhv.a(this.a)).size())) {}
-    do
-    {
-      do
-      {
-        return;
-        paramObject = (CommentEntry)this.a.a.a(yhv.a(this.a)).get(paramInt);
-        switch (paramView.getId())
-        {
-        default: 
-          return;
-        }
-      } while (yhv.a(this.a) == null);
-      yhv.a(this.a).b(paramObject, paramInt);
-      return;
-    } while (yhv.a(this.a) == null);
-    yhv.a(this.a).N_();
-  }
+  public int a;
+  public long a;
+  public MediaCodec a;
+  public MediaExtractor a;
+  public ArrayList<String> a = new ArrayList();
+  public yhv a;
+  public yhz a;
+  public long[] a;
+  public int b;
+  public long b;
+  public ArrayList<Bitmap> b = new ArrayList();
+  public long[] b;
+  public int c;
+  public int d;
 }
 
 

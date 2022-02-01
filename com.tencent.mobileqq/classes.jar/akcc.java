@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper.OnConvertListener;
+import eipc.EIPCResult;
 
 class akcc
-  implements axpu
+  implements EmojiGifHelper.OnConvertListener
 {
-  akcc(akcb paramakcb) {}
+  akcc(akbx paramakbx, int paramInt) {}
   
-  public void a()
+  public void onConvertResult(boolean paramBoolean, String paramString)
   {
-    this.a.jdField_a_of_type_Axqb.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
-    this.a.jdField_a_of_type_Axqb.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.v();
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("res", paramBoolean);
+    localBundle.putString("path", paramString);
+    this.jdField_a_of_type_Akbx.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 

@@ -1,15 +1,31 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-
 public class bgmv
-  implements bgvn
 {
-  public bgmv(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  private String jdField_a_of_type_JavaLangString = "main_page_jump_url";
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
+  public String a()
   {
-    paramView.setVisibility(8);
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String toString()
+  {
+    return "VSHealthConfigBean{mIsRedirectAIOToMainPage=" + this.jdField_a_of_type_Boolean + ", mMainPageJumpUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 

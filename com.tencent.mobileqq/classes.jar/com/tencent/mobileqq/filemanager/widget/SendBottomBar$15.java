@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.widget;
 
 import android.annotation.SuppressLint;
-import auqb;
+import atcj;
 
 public class SendBottomBar$15
   implements Runnable
@@ -11,7 +11,7 @@ public class SendBottomBar$15
   @SuppressLint({"StaticFieldLeak"})
   public void run()
   {
-    new auqb(this).execute(new Void[0]);
+    new atcj(this).execute(new Void[0]);
   }
 }
 

@@ -1,29 +1,52 @@
-import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.MessageQueue.IdleHandler;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
+import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.qphone.base.util.QLog;
 
-class aksw
-  extends ayxo
+public class aksw
+  implements MessageQueue.IdleHandler
 {
-  aksw(aksu paramaksu) {}
+  public aksw(NewFlowCameraActivity paramNewFlowCameraActivity, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
   
-  protected void c(boolean paramBoolean, Bundle paramBundle)
+  public boolean queueIdle()
   {
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp)))
+    if (bbub.d(bbub.b))
     {
-      long l = ((get_albumlist_num_rsp)paramBundle).album_num;
-      ((aktm)this.a.mOtherCommonData).jdField_a_of_type_Long = l;
-      paramBundle = this.a.a();
-      if (paramBundle != null)
-      {
-        paramBundle.a(((aktm)this.a.mOtherCommonData).jdField_a_of_type_Long);
-        paramBundle.postData();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.jdField_a_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.i("PEAK_CAMERA", 2, "hit in black list! needChangeNewSurfaceView ");
       }
     }
-    ((aktm)this.a.mOtherCommonData).jdField_a_of_type_Boolean = false;
-    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.a.a.a);
+    View localView = BaseActivity2.findViewById(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366841);
+    if (localView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(localView);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.A();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.c();
+    if ((!NewFlowCameraActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) && (!NewFlowCameraActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity))) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
+      }
+      NewFlowCameraActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, false);
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("sp_is_cancel_from_music_key", true).commit();
+      NewFlowCameraActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, false);
+      return false;
+      if ((NewFlowCameraActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) && (!NewFlowCameraActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
+      } else {
+        QLog.d("PTV.NewFlowCameraActivity", 2, "onResume from select music and do nothing in 1");
+      }
+    }
   }
 }
 

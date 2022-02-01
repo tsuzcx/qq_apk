@@ -1,5 +1,6 @@
 package com.tencent.qqmini.sdk.runtime;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -13,6 +14,7 @@ import com.tencent.qqmini.sdk.ipc.AppBrandCmdProxy;
 import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -21,6 +23,7 @@ import com.tencent.qqmini.sdk.report.MiniAppStartState;
 import com.tencent.qqmini.sdk.report.MiniReportManager;
 import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239;
 import com.tencent.qqmini.sdk.widget.MiniToast;
+import java.util.HashMap;
 
 public class AppStateManager
   extends AppRuntimeEventCenter.RuntimeStateObserver
@@ -29,8 +32,13 @@ public class AppStateManager
   private static final int LAUNCH_STATUS_FIRST_FRAME = 2;
   private static final int LAUNCH_STATUS_LOAD = 1;
   private static final String TAG = "minisdk-start_RuntimeState";
+  private static final int WHITE_SCREEN_ERROR_TYPE_DETECT_WHITESCREEN = 2;
+  private static final int WHITE_SCREEN_ERROR_TYPE_NO_DOMREADY = 1;
+  private static volatile boolean mX5GuideShowed = false;
+  private static HashMap<String, Integer> restartCount = new HashMap();
   public boolean hasFirstDomReadied;
   public boolean hasPreloadCompleted;
+  private boolean hasShowCleanInfo = false;
   public boolean isFlutter;
   public boolean isFromPrelaunch;
   public boolean isFromPreload;
@@ -45,6 +53,20 @@ public class AppStateManager
     this.mRuntimeLoader = paramBaseRuntimeLoader;
   }
   
+  private boolean checkRestartCountValid(String paramString)
+  {
+    int i = WnsConfig.getConfig("qqminiapp", "mini_app_enable_show_clean_max_count", 3);
+    int j = getRestartCount(paramString);
+    if (j >= i)
+    {
+      QMLog.i("minisdk-start_RuntimeState", "Appid:" + paramString + "  has restart count:" + j + "  reach the max count");
+      return false;
+    }
+    QMLog.i("minisdk-start_RuntimeState", "Appid:" + paramString + "  has restart count:" + j);
+    setRestartCount(paramString, j + 1);
+    return true;
+  }
+  
   private void detectWhiteScreen(MiniAppInfo paramMiniAppInfo)
   {
     if (paramMiniAppInfo.isEngineTypeMiniGame()) {
@@ -54,6 +76,14 @@ public class AppStateManager
       return;
     }
     ThreadManager.getSubThreadHandler().postDelayed(new AppStateManager.1(this, paramMiniAppInfo), 5000L);
+  }
+  
+  private int getRestartCount(String paramString)
+  {
+    if (restartCount.containsKey(paramString)) {
+      return ((Integer)restartCount.get(paramString)).intValue();
+    }
+    return 0;
   }
   
   private void notifyEvent(MiniAppInfo paramMiniAppInfo, String paramString, long paramLong)
@@ -72,6 +102,38 @@ public class AppStateManager
     AppBrandCmdProxy.g().sendCmd("cmd_notify_event_info", localBundle, null);
   }
   
+  private void onJsError(AppRuntimeEventCenter.MiniAppStateMessage paramMiniAppStateMessage)
+  {
+    for (int i = 1;; i = 0) {
+      try
+      {
+        if (mX5GuideShowed) {
+          break;
+        }
+        if (this.hasFirstDomReadied) {
+          return;
+        }
+        paramMiniAppStateMessage = this.mRuntimeLoader.getRuntime();
+        if ((paramMiniAppStateMessage == null) || (paramMiniAppStateMessage.getAttachedActivity() == null)) {
+          break;
+        }
+        if (WnsConfig.getConfig("qqminiapp", "mini_app_jserror_tip_enable", 1) == 1)
+        {
+          if (i == 0) {
+            break;
+          }
+          AppBrandTask.runTaskOnUiThreadDelay(new AppStateManager.4(this), 2000L);
+          return;
+        }
+      }
+      catch (Throwable paramMiniAppStateMessage)
+      {
+        QMLog.e("minisdk-start_RuntimeState", "onJsError exception.", paramMiniAppStateMessage);
+        return;
+      }
+    }
+  }
+  
   private void onMsgBackKey()
   {
     MiniAppInfo localMiniAppInfo = this.mRuntimeLoader.getMiniAppInfo();
@@ -81,43 +143,43 @@ public class AppStateManager
     {
       localObject = PageAction.obtain((IMiniAppContext)localObject).getPageUrl();
       if (localMiniAppInfo == null) {
-        break label93;
+        break label98;
       }
       i = localMiniAppInfo.getReportType();
       label44:
       if (i == 1)
       {
         if (localMiniAppInfo == null) {
-          break label120;
+          break label128;
         }
         if (this.launchStatus != 0) {
-          break label98;
+          break label103;
         }
         SDKMiniProgramLpReportDC04239.reportPageView(localMiniAppInfo, "1", null, "load_fail", "loading_page_back_press");
       }
     }
+    label128:
     for (;;)
     {
       if (!this.hasFirstDomReadied) {
-        break label130;
+        break label139;
       }
       MiniAppReportManager2.reportPageView("2back_key", "inner_page", (String)localObject, localMiniAppInfo);
       return;
       localObject = null;
       break;
-      label93:
+      label98:
       i = 0;
       break label44;
-      label98:
+      label103:
       if (this.launchStatus == 1)
       {
         SDKMiniProgramLpReportDC04239.reportPageView(localMiniAppInfo, "1", null, "show_fail", "loading_page_back_press");
         continue;
-        label120:
         QMLog.e("minisdk-start_RuntimeState", "doOnBackPressed gameConfig=null");
       }
     }
-    label130:
+    label139:
     MiniAppReportManager2.reportPageView("2back_key", "loading_page", (String)localObject, localMiniAppInfo);
   }
   
@@ -146,8 +208,8 @@ public class AppStateManager
     int i;
     label52:
     String str2;
-    label131:
-    label142:
+    label134:
+    label146:
     long l1;
     long l2;
     int j;
@@ -155,7 +217,7 @@ public class AppStateManager
     {
       str1 = PageAction.obtain((IMiniAppContext)localObject).getPageUrl();
       if (localMiniAppInfo == null) {
-        break label348;
+        break label353;
       }
       i = localMiniAppInfo.getReportType();
       if (!this.hasFirstDomReadied)
@@ -166,11 +228,11 @@ public class AppStateManager
           QMLog.i("minisdk-start_RuntimeState", "--- report show firstframe appid:" + localMiniAppInfo.appId);
           MiniAppReportManager2.reportPageView("2launch", "first_frame", str1, localMiniAppInfo);
           if (!TextUtils.isEmpty(str1)) {
-            break label353;
+            break label358;
           }
           localObject = localMiniAppInfo.launchParam.entryPath;
           if (!this.isFromPrelaunch) {
-            break label360;
+            break label365;
           }
           str2 = "preLaunch";
           MiniReportManager.reportEventType(localMiniAppInfo, 21, (String)localObject, str2, null, 0);
@@ -178,15 +240,15 @@ public class AppStateManager
           l2 = this.mBeginOnCreate;
           j = this.mLaunchResult;
           if (i != 0) {
-            break label366;
+            break label371;
           }
         }
       }
     }
-    label348:
     label353:
-    label360:
-    label366:
+    label358:
+    label365:
+    label371:
     for (localObject = "0";; localObject = "1")
     {
       MiniReportManager.reportEventType(localMiniAppInfo, 1043, null, null, null, j, (String)localObject, l1 - l2, null);
@@ -207,9 +269,9 @@ public class AppStateManager
       i = 0;
       break label52;
       localObject = str1;
-      break label131;
+      break label134;
       str2 = null;
-      break label142;
+      break label146;
     }
   }
   
@@ -301,6 +363,11 @@ public class AppStateManager
     for (localObject = PageAction.obtain((IMiniAppContext)localObject).getPageUrl();; localObject = null)
     {
       MiniReportManager.reportEventType(localMiniAppInfo, 121, (String)localObject, null, null, 0);
+      int i = WnsConfig.getConfig("qqminiapp", "mini_app_enable_show_clean_routedone", 1);
+      int j = WnsConfig.getConfig("qqminiapp", "mini_app_enable_show_clean_time_limit", 5000);
+      if (i > 0) {
+        ThreadManager.getSubThreadHandler().postDelayed(new AppStateManager.2(this), j);
+      }
       return;
     }
   }
@@ -316,22 +383,22 @@ public class AppStateManager
       i = localMiniAppInfo.getReportType();
       this.mBeginOnCreate = System.currentTimeMillis();
       if (localMiniAppInfo == null) {
-        break label140;
+        break label141;
       }
       str1 = localMiniAppInfo.appId;
       if (localMiniAppInfo == null) {
-        break label147;
+        break label148;
       }
       str2 = localMiniAppInfo.name;
       label49:
       QMLog.i("minisdk-start_RuntimeState", "[" + str1 + "][" + str2 + "] 启动(MiniActivity onCreate)");
       if (!this.isFromPrelaunch) {
-        break label154;
+        break label155;
       }
     }
-    label140:
-    label147:
-    label154:
+    label141:
+    label148:
+    label155:
     for (String str1 = "preLaunch";; str1 = null)
     {
       MiniReportManager.reportEventType(localMiniAppInfo, 24, null, str1, null, 0, String.valueOf(i), 0L, null, "", "", "", "");
@@ -344,6 +411,48 @@ public class AppStateManager
       str2 = "";
       break label49;
     }
+  }
+  
+  private void setRestartCount(String paramString, int paramInt)
+  {
+    restartCount.put(paramString, Integer.valueOf(paramInt));
+  }
+  
+  private void showCleanInfo(int paramInt)
+  {
+    if (this.hasShowCleanInfo) {
+      QMLog.i("minisdk-start_RuntimeState", "has shown cleanInfo, not showCleanInfo 1");
+    }
+    BaseRuntime localBaseRuntime;
+    MiniAppInfo localMiniAppInfo;
+    do
+    {
+      return;
+      if (mX5GuideShowed)
+      {
+        QMLog.i("minisdk-start_RuntimeState", "has mX5GuideShowed not showCleanInfo 1");
+        return;
+      }
+      if ((paramInt == 1) && (this.hasFirstDomReadied))
+      {
+        QMLog.i("minisdk-start_RuntimeState", "hasFirstDomReadied not showCleanInfo 1");
+        return;
+      }
+      localBaseRuntime = this.mRuntimeLoader.getRuntime();
+      localMiniAppInfo = this.mRuntimeLoader.getMiniAppInfo();
+      if ((localBaseRuntime == null) || (localBaseRuntime.getAttachedActivity() == null))
+      {
+        QMLog.e("minisdk-start_RuntimeState", "showCleanInfo failed," + localBaseRuntime);
+        return;
+      }
+      if (!localBaseRuntime.isForground())
+      {
+        QMLog.e("minisdk-start_RuntimeState", "showCleanInfo failed, not is forground");
+        return;
+      }
+    } while ((!checkRestartCountValid(localMiniAppInfo.appId)) || (!localMiniAppInfo.isEngineTypeMiniApp()));
+    Activity localActivity = localBaseRuntime.getAttachedActivity();
+    localActivity.runOnUiThread(new AppStateManager.3(this, paramInt, localBaseRuntime, localActivity, localMiniAppInfo));
   }
   
   public void onStateChange(AppRuntimeEventCenter.MiniAppStateMessage paramMiniAppStateMessage)
@@ -422,6 +531,8 @@ public class AppStateManager
       return;
     }
     onMsgGameDestroy();
+    return;
+    onJsError(paramMiniAppStateMessage);
   }
 }
 

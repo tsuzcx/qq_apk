@@ -1,28 +1,33 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import java.util.concurrent.atomic.AtomicInteger;
-
-class wji
-  implements ThreadExcutor.IThreadListener
+public class wji
+  implements wjh
 {
-  wji(wjh paramwjh, Runnable paramRunnable) {}
+  private wif jdField_a_of_type_Wif;
+  private wjk jdField_a_of_type_Wjk;
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public wji(wif paramwif, wjk paramwjk)
   {
-    wjh.a(this.jdField_a_of_type_Wjh).decrementAndGet();
-    yuk.b(wjh.a(this.jdField_a_of_type_Wjh), "threshold after running current task is " + wjh.a(this.jdField_a_of_type_Wjh).get());
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      yuk.b(wjh.a(this.jdField_a_of_type_Wjh), "threshold after running current task is:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
+    this.jdField_a_of_type_Wif = paramwif;
+    this.jdField_a_of_type_Wjk = paramwjk;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Wif != null) {
+      this.jdField_a_of_type_Wif.c(this.jdField_a_of_type_Wjk);
     }
   }
   
-  public void onPreRun()
+  public void b()
   {
-    wjh.a(this.jdField_a_of_type_Wjh).incrementAndGet();
-    yuk.a(wjh.a(this.jdField_a_of_type_Wjh), "execute %s", this.jdField_a_of_type_JavaLangRunnable);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      yuk.b(wjh.a(this.jdField_a_of_type_Wjh), "execute hashcode:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
+    if (this.jdField_a_of_type_Wif != null) {
+      this.jdField_a_of_type_Wif.d(this.jdField_a_of_type_Wjk);
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Wif != null) {
+      this.jdField_a_of_type_Wif.e(this.jdField_a_of_type_Wjk);
     }
   }
 }

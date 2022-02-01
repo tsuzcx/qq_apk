@@ -1,89 +1,91 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.ark.open.ArkAppCacheMgr;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.transfile.chatpic.PicUploadExifInfoSwitch;
+import com.tencent.mobileqq.transfile.chatpic.PicUploadFileSizeLimit;
+import com.tencent.qphone.base.util.QLog;
 
-class aqab
-  extends BaseAdapter
+public class aqab
+  extends aptq<aqaa>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<aqax> jdField_a_of_type_JavaUtilList;
-  
-  public aqab(apzw paramapzw, Context paramContext)
+  @NonNull
+  public aqaa a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    return new aqaa();
   }
   
-  public aqax a(int paramInt)
+  @Nullable
+  public aqaa a(aptx[] paramArrayOfaptx)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("PicCommonConfProcessor", 2, "onParsed " + paramArrayOfaptx.length);
     }
-    return (aqax)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a(List<aqax> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1;
-    if (paramView == null)
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaptx != null)
     {
-      paramView = new aqad(this);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130844904);
-      localObject1 = new ViewGroup.LayoutParams(MessageForArkApp.dp2px(50.0F), -1);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      localObject1 = new RelativeLayout.LayoutParams(MessageForArkApp.dp2px(28.0F), MessageForArkApp.dp2px(25.0F));
-      ((RelativeLayout.LayoutParams)localObject1).addRule(13);
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramView.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject1);
-      localObject1 = paramView.jdField_a_of_type_AndroidWidgetRelativeLayout;
-      ((View)localObject1).setTag(paramView);
-    }
-    for (;;)
-    {
-      Object localObject2 = a(paramInt);
-      if ((localObject2 != null) && (!TextUtils.isEmpty(((aqax)localObject2).d))) {
-        ArkAppCacheMgr.getAppIcon(((aqax)localObject2).a, new aqac(this, paramView));
+      localObject1 = localObject2;
+      if (paramArrayOfaptx.length > 0) {
+        localObject1 = aqaa.a(paramArrayOfaptx);
       }
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject2 = (aqad)paramView.getTag();
-      localObject1 = paramView;
-      paramView = (View)localObject2;
     }
+    return localObject1;
+  }
+  
+  public void a(aqaa paramaqaa)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicCommonConfProcessor", 2, "onUpdate " + paramaqaa.toString());
+    }
+    SafeBitmapFactory.setNeedRegionDecode(paramaqaa.jdField_a_of_type_Boolean);
+    SafeBitmapFactory.setPxThreshoidToSp(paramaqaa.jdField_a_of_type_Long);
+    SafeBitmapFactory.setRamThreshoidToSp(paramaqaa.jdField_a_of_type_Int);
+    SafeBitmapFactory.setThreadCountToSp(paramaqaa.jdField_b_of_type_Int);
+    PicUploadFileSizeLimit.setLimitC2C(paramaqaa.jdField_b_of_type_Long);
+    PicUploadFileSizeLimit.setLimitGroup(paramaqaa.jdField_c_of_type_Long);
+    PicUploadExifInfoSwitch.setSwitch(paramaqaa.jdField_c_of_type_Int);
+  }
+  
+  public Class<aqaa> clazz()
+  {
+    return aqaa.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public boolean isNeedUpgradeReset()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicCommonConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 251;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqab
  * JD-Core Version:    0.7.0.1
  */

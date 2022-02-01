@@ -1,18 +1,18 @@
-public class wum
+import android.os.Parcel;
+import android.support.v4.os.ParcelableCompatCreatorCallbacks;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.SavedState;
+
+public final class wum
+  implements ParcelableCompatCreatorCallbacks<XViewPager.SavedState>
 {
-  public final String a;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
-  
-  public wum(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public XViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
+    return new XViewPager.SavedState(paramParcel, paramClassLoader);
+  }
+  
+  public XViewPager.SavedState[] a(int paramInt)
+  {
+    return new XViewPager.SavedState[paramInt];
   }
 }
 

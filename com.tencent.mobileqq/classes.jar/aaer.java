@@ -1,22 +1,10 @@
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
-import java.util.List;
-
-public class aaer
-  implements aaex
+public abstract interface aaer
 {
-  public aaer(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if ((paramBoolean) && ((FollowedRecommendBannerView.a(this.a) == null) || (FollowedRecommendBannerView.a(this.a).a() == null) || (paramInt >= FollowedRecommendBannerView.a(this.a).a().size()))) {
-      return;
-    }
-    abbe.a(FollowedRecommendBannerView.a(this.a), "auth_person", "reco_follow", 0, 0, new String[0]);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aaer
  * JD-Core Version:    0.7.0.1
  */

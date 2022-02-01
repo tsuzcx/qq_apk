@@ -1,6 +1,7 @@
 package com.tencent.superplayer.api;
 
 import com.tencent.qqlive.tvkplayer.vinfo.TVKVideoInfo.Section;
+import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -26,6 +27,7 @@ public class SuperPlayerVideoInfo
   private String mPid;
   private String[] mPlayUrls;
   private String mRequestDefinition;
+  private TPDownloadParamData mTPDownloadParamData = null;
   private TVideoNetInfo mTVideoNetInfo;
   private ArrayList<TVKVideoInfo.Section> mTVideoSectionList;
   private ArrayList<String> mUrlHostList = null;
@@ -235,6 +237,11 @@ public class SuperPlayerVideoInfo
     return this.mRequestDefinition;
   }
   
+  public TPDownloadParamData getTPDownloadParamData()
+  {
+    return this.mTPDownloadParamData;
+  }
+  
   public TVideoNetInfo getTVideoNetInfo()
   {
     return this.mTVideoNetInfo;
@@ -361,6 +368,11 @@ public class SuperPlayerVideoInfo
   public void setRequestDefinition(String paramString)
   {
     this.mRequestDefinition = paramString;
+  }
+  
+  public void setTPDownloadParamData(TPDownloadParamData paramTPDownloadParamData)
+  {
+    this.mTPDownloadParamData = paramTPDownloadParamData;
   }
   
   public void setTVideoNetInfo(TVideoNetInfo paramTVideoNetInfo)

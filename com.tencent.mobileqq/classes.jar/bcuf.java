@@ -1,19 +1,57 @@
+import com.tencent.mobileqq.app.BusinessObserver;
+
 public class bcuf
+  implements BusinessObserver
 {
-  public static int a(int paramInt)
-  {
-    if (paramInt == 0) {
-      return 0;
-    }
-    return (0xFF00 & paramInt) >> 8;
-  }
+  public void a(int paramInt) {}
   
-  public static int b(int paramInt)
+  public void a(String paramString1, String paramString2) {}
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4) {}
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt == 0) {
-      return 0;
+    switch (paramInt)
+    {
     }
-    return paramInt & 0xFF;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    return;
+                  } while (paramObject == null);
+                  paramObject = (Object[])paramObject;
+                } while (paramObject.length != 2);
+                a((String)paramObject[0], (String)paramObject[1]);
+                return;
+              } while (paramObject == null);
+              paramObject = (Object[])paramObject;
+            } while (paramObject.length != 4);
+            a((String)paramObject[0], (String)paramObject[1], (String)paramObject[2], (String)paramObject[3]);
+            return;
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 2);
+        a(paramBoolean, (String)paramObject[0], (String)paramObject[1]);
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 1);
+    a(((Integer)paramObject[0]).intValue());
   }
 }
 

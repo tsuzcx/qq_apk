@@ -1,8 +1,9 @@
+import android.view.View;
+
 public class bgtn
 {
-  public int a;
-  public long a;
-  public boolean a;
+  public View a;
+  public View b;
 }
 
 

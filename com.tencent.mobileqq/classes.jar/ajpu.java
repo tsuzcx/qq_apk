@@ -1,72 +1,65 @@
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.widget.RedDotTextView;
-import com.tencent.mobileqq.widget.TabBarView;
+import android.os.Message;
+import com.tencent.mobileqq.activity.photo.SendWebPicActivity;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajpu
-  implements bjdq
+  extends TransProcessorHandler
 {
-  public ajpu(TroopActivity paramTroopActivity) {}
+  public ajpu(SendWebPicActivity paramSendWebPicActivity) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.b();
-    }
-    if (this.a.b != 2)
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((localFileMsg == null) || (localFileMsg.fileType != 24) || (localFileMsg.commandId != 51)) {}
+    do
     {
-      switch (paramInt2)
+      do
       {
+        return;
+      } while (localFileMsg.fileMd5.equals(SendWebPicActivity.a(this.a)));
+      switch (paramMessage.what)
+      {
+      case 1004: 
       default: 
-        bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
-        bdll.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 0;
+        return;
+      case 1003: 
+        if (QLog.isColorLevel()) {
+          QLog.d("SendWebPicActivity", 2, "mPicTransProcessorHandler send finished!" + SendWebPicActivity.a(this.a));
+        }
+        break;
       }
+    } while (SendWebPicActivity.a(this.a));
+    paramMessage = new Bdh_extinfo.UploadPicExtInfo();
+    try
+    {
+      paramMessage.mergeFrom(localFileMsg.bdhExtendInfo, 0, localFileMsg.bdhExtendInfo.length);
+      SendWebPicActivity.a(this.a, true);
+      SendWebPicActivity.a(this.a, localFileMsg.fileMd5);
+      SendWebPicActivity.b(this.a, paramMessage.bytes_file_resid.get().toStringUtf8());
+      SendWebPicActivity.c(this.a, paramMessage.bytes_download_url.get().toStringUtf8());
+      if (QLog.isColorLevel()) {
+        QLog.d("SendWebPicActivity", 2, "mPicTransProcessorHandler mUuid=" + SendWebPicActivity.b(this.a) + ", mImageMd5=" + SendWebPicActivity.a(this.a) + ", mImageUrl=" + SendWebPicActivity.c(this.a));
+      }
+      SendWebPicActivity.a(this.a).sendEmptyMessage(1001);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
       for (;;)
       {
-        this.a.a(this.a.jdField_a_of_type_Int);
-        this.a.jdField_a_of_type_Blha.sendEmptyMessage(1234);
-        TroopActivity.a(this.a, paramInt2);
-        return;
-        bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
-        bdll.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 0;
-        continue;
-        bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "discuss", "contact_discuss_tab", 0, 0, "", "", "", "");
-        bdll.b(this.a.app, "CliOper", "", "", "0X8006621", "0X8006621", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 1;
+        localInvalidProtocolBufferMicroException.printStackTrace();
       }
     }
-    switch (paramInt2)
-    {
-    default: 
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {
-        break;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("SendWebPicActivity", 2, "mPicTransProcessorHandler send error:" + localFileMsg.errorCode);
     }
-    for (String str = "0";; str = "1")
-    {
-      bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
-      bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
-      this.a.jdField_a_of_type_Int = 1;
-      break;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {}
-      for (str = "0";; str = "1")
-      {
-        bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
-        bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 1;
-        break;
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).a()) {}
-      for (str = "0";; str = "1")
-      {
-        bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grprecom", 0, 0, "", str, "", "");
-        bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_recom", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 0;
-        break;
-      }
-    }
+    SendWebPicActivity.a(this.a).sendEmptyMessage(1003);
   }
 }
 

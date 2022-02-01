@@ -1,34 +1,77 @@
+import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyUtils.1;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-class awkk
-  extends awkl
+public class awkk
+  implements BusinessObserver
 {
-  public BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (String.valueOf(1130).equals(paramString))) {
-      paramQQAppInterface = null;
-    }
-    do
-    {
-      do
-      {
-        return paramQQAppInterface;
-        paramString = ((bbav)paramQQAppInterface.getManager(36)).a(0, paramString);
-        paramQQAppInterface = paramString;
-      } while (!RedTouch.a(paramString));
-      paramQQAppInterface = paramString;
-    } while (paramString.type.get() == 5);
-    RedTouch.d(paramString);
-    return paramString;
-  }
+  public awkk(NearbyUtils.1 param1) {}
   
-  public void a(RedTouch paramRedTouch, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramRedTouch.b(paramAppInfo);
+    if (paramBoolean) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+          localWebSsoResponseBody.mergeFrom(paramBundle);
+          paramInt = localWebSsoResponseBody.ret.get();
+          paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
+          if (paramInt != 0)
+          {
+            paramBundle = paramBundle.optString("msg");
+            if (!TextUtils.isEmpty(paramBundle)) {
+              QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig,targetUin:" + this.a.jdField_a_of_type_JavaLangString + ", errMsg:" + paramBundle);
+            }
+          }
+          else
+          {
+            paramBundle = paramBundle.optString("signature");
+            if (QLog.isColorLevel()) {
+              QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig,targetUin:" + this.a.jdField_a_of_type_JavaLangString + "signature:" + paramBundle);
+            }
+            try
+            {
+              if (TextUtils.isEmpty(paramBundle)) {
+                return;
+              }
+              if (this.a.jdField_a_of_type_Int != 0) {
+                break label283;
+              }
+              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().h(this.a.jdField_a_of_type_JavaLangString, bfuc.decode(paramBundle, 0));
+              return;
+            }
+            catch (Exception paramBundle)
+            {
+              if (!QLog.isColorLevel()) {
+                return;
+              }
+            }
+            QLog.e("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig Exception:" + paramBundle.toString());
+            return;
+          }
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d("NearbyUtilsQ.nearby.nearby_sig", 2, "get nearby_sig Exception" + paramBundle.toString());
+          return;
+          label283:
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().i(this.a.jdField_a_of_type_JavaLangString, bfuc.decode(paramBundle, 0));
+        }
+      }
+    }
   }
 }
 

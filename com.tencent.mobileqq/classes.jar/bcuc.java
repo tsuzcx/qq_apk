@@ -1,13 +1,25 @@
-import KQQ.ReqItem;
-import KQQ.RespItem;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bcuc
+final class bcuc
+  implements DialogInterface.OnClickListener
 {
-  public abstract int a();
+  bcuc(Context paramContext, String paramString) {}
   
-  public abstract ReqItem a(int paramInt);
-  
-  public abstract void a(RespItem paramRespItem);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    try
+    {
+      aszt.c(this.jdField_a_of_type_AndroidContentContext, aqjv.a().a());
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      QLog.i(this.jdField_a_of_type_JavaLangString, 1, paramDialogInterface.toString());
+    }
+  }
 }
 
 

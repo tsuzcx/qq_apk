@@ -1,72 +1,159 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
+import android.os.Message;
+import com.tencent.av.AVFunChat.AVFunChatMessage;
+import com.tencent.av.core.VcControllerImpl;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
 
-class llc
-  extends BroadcastReceiver
+@SuppressLint({"HandlerLeak"})
+public class llc
+  implements mwx
 {
-  llc(llb paramllb) {}
+  private final String jdField_a_of_type_JavaLangString = "VcControllerImpl_NativeEventHandler";
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public llc(VcControllerImpl paramVcControllerImpl) {}
+  
+  public boolean a(int paramInt)
   {
-    if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_ReceiveSharpMsg"))
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(llb.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp msg");
-      }
-      paramContext = paramIntent.getBundleExtra("msgData");
-      if (paramContext != null)
+    default: 
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    Object localObject;
+    long l1;
+    String str;
+    boolean bool;
+    for (;;)
+    {
+      try
       {
-        paramContext = paramContext.getByteArray("value");
-        if (paramContext != null) {
-          this.a.jdField_a_of_type_Lla.a(0L, paramContext, null);
+        i = paramMessage.what;
+        localObject = (mwi)paramMessage.obj;
+        if (localObject == null)
+        {
+          lba.h("VcControllerImpl_NativeEventHandler", "p is null");
+          return true;
+        }
+        paramMessage = ((mwi)localObject).jdField_a_of_type_ArrayOfByte;
+        l1 = ((mwi)localObject).jdField_a_of_type_Long;
+        str = mrb.a(((mwi)localObject).b);
+        switch (i)
+        {
+        case 4: 
+          lhu.a((int)l1, ((mwi)localObject).c, ((mwi)localObject).d, ((mwi)localObject).jdField_a_of_type_JavaLangString);
+          break;
+        case 6: 
+          if (!mqw.a()) {
+            continue;
+          }
         }
       }
-    }
-    label154:
-    int i;
-    do
-    {
-      do
+      finally {}
+      mqw.a().a(this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl, null);
+      continue;
+      long l2 = ((mwi)localObject).c;
+      long l3 = ((mwi)localObject).d;
+      this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(l2, l3, l1);
+      continue;
+      if (((mwi)localObject).c != 1L) {
+        break;
+      }
+      bool = true;
+      label246:
+      int i = (int)((mwi)localObject).d;
+      try
       {
-        do
+        paramMessage = new String(((mwi)localObject).jdField_a_of_type_ArrayOfByte, "utf-8");
+        int j = ((mwi)localObject).jdField_a_of_type_Int;
+        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(bool, i, paramMessage, j);
+      }
+      catch (UnsupportedEncodingException paramMessage)
+      {
+        for (;;)
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                if (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_ReceiveSharpAckMsg")) {
-                  break label154;
-                }
-                if (QLog.isColorLevel()) {
-                  QLog.d(llb.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp ack msg");
-                }
-                if (!paramIntent.getBooleanExtra("timeout", false)) {
-                  break;
-                }
-              } while (!QLog.isColorLevel());
-              QLog.d(llb.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp timeout msg");
-              return;
-              paramContext = paramIntent.getBundleExtra("msgData");
-            } while (paramContext == null);
-            paramContext = paramContext.getByteArray("value");
-          } while (paramContext == null);
-          this.a.jdField_a_of_type_Lla.b(0L, paramContext, null);
-          return;
-        } while (!paramIntent.getAction().equals("SmartDevice_DeviceUnBindRst"));
-        paramContext = paramIntent.getExtras();
-      } while (paramContext == null);
-      i = paramContext.getInt("deviceoprstcode");
-      paramContext = Long.valueOf(paramContext.getLong("deviceopdin", 0L));
-    } while ((i != 0) || (paramContext.longValue() == 0L) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a() == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d == null) || (!this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d.equals(String.valueOf(paramContext))));
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1000);
+          paramMessage.printStackTrace();
+          paramMessage = "";
+        }
+      }
+      if (lvl.a().a)
+      {
+        lvl.a().k = ((mwi)localObject).f;
+      }
+      else
+      {
+        lvl.a().z = ((mwi)localObject).f;
+        continue;
+        i = (int)((mwi)localObject).jdField_a_of_type_Long;
+        if (QLog.isColorLevel()) {
+          QLog.d("NativeEventHandler", 2, "SharpConfigPayload. version = " + i);
+        }
+        BaseApplicationImpl.getContext().sendBroadcast(new Intent("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD").putExtra("version", i));
+        lvm.a().a("load", i);
+        continue;
+        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.onAudioData(paramMessage);
+      }
+    }
+    for (;;)
+    {
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, (int)l1, paramMessage);
+        break;
+        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.c((int)l1, new String(paramMessage));
+        break;
+        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.d((int)l1, new String(paramMessage));
+        break;
+        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(paramMessage);
+        break;
+        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.q(new String(paramMessage));
+        break;
+        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.s(new String(paramMessage));
+        break;
+        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.r(new String(paramMessage));
+        break;
+        this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, new String(paramMessage));
+        break;
+        try
+        {
+          localObject = new AVFunChat.AVFunChatMessage();
+          ((AVFunChat.AVFunChatMessage)localObject).mergeFrom(paramMessage);
+          this.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.mEventListener.a(str, (AVFunChat.AVFunChatMessage)localObject);
+        }
+        catch (InvalidProtocolBufferMicroException paramMessage)
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.i("VcControllerImpl", 2, "EM_AVFUNCHATTYPE_CreativeCop InvalidProtocolBufferMicroException fail", paramMessage);
+        }
+        catch (Throwable paramMessage) {}
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("VcControllerImpl", 2, "EM_AVFUNCHATTYPE_CreativeCop parse fail", paramMessage);
+      break;
+      bcef.b(null, "CliOper", "", "", "0X800A7A4", "0X800A7A4", 0, (int)((mwi)localObject).c, "", "", "", "");
+      break;
+      bcef.b(null, "CliOper", "", "", "0X800A7A5", "0X800A7A5", 0, (int)((mwi)localObject).c, "", "", "", "");
+      break;
+      break;
+      bool = false;
+      break label246;
+      switch ((int)l1)
+      {
+      }
+    }
   }
 }
 

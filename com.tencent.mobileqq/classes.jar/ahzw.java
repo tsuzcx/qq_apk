@@ -1,48 +1,18 @@
-import android.content.Context;
+import android.app.Dialog;
 import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class ahzw
+public class ahzw
+  implements View.OnClickListener
 {
-  public int a;
-  public Context a;
-  protected BaseChatPie a;
-  protected SessionInfo a;
-  public QQAppInterface a;
-  public int b;
+  public ahzw(Face2FaceAddContactFragment paramFace2FaceAddContactFragment, Dialog paramDialog) {}
   
-  public ahzw(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public long a()
-  {
-    return 0L;
-  }
-  
-  public abstract View a();
-  
-  public abstract void a();
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public String toString()
-  {
-    return "NavigateBar{id=" + this.jdField_a_of_type_Int + ", priority=" + this.b + '}';
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

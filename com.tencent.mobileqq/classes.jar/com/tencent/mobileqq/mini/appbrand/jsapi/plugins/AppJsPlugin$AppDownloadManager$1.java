@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bkad;
-import bkai;
-import bkan;
-import bnym;
+import bifn;
+import bifs;
+import bifx;
+import bldr;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.wadl.ipc.WadlParams;
 import cooperation.wadl.ipc.WadlResult;
@@ -14,7 +14,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 class AppJsPlugin$AppDownloadManager$1
-  implements bnym
+  implements bldr
 {
   AppJsPlugin$AppDownloadManager$1(AppJsPlugin.AppDownloadManager paramAppDownloadManager) {}
   
@@ -48,15 +48,18 @@ class AppJsPlugin$AppDownloadManager$1
       {
         localObject1 = (WadlResult)paramArrayList.next();
         Object localObject2 = ((WadlResult)localObject1).jdField_a_of_type_CooperationWadlIpcWadlParams;
-        String str = ((WadlParams)localObject2).a;
-        if ((str != null) && (localObject2 != null)) {
-          AppJsPlugin.AppDownloadManager.access$600(this.this$1).put(str, localObject2);
-        }
-        if ((str != null) && (AppJsPlugin.AppDownloadManager.access$500(this.this$1).containsKey(str)))
+        if (localObject2 != null)
         {
-          localObject2 = (AppJsPlugin.IWaldlCallback)AppJsPlugin.AppDownloadManager.access$500(this.this$1).remove(str);
-          if (localObject2 != null) {
-            ((AppJsPlugin.IWaldlCallback)localObject2).onResult(true, localObject1);
+          String str = ((WadlParams)localObject2).a;
+          if (str != null) {
+            AppJsPlugin.AppDownloadManager.access$600(this.this$1).put(str, localObject2);
+          }
+          if ((str != null) && (AppJsPlugin.AppDownloadManager.access$500(this.this$1).containsKey(str)))
+          {
+            localObject2 = (AppJsPlugin.IWaldlCallback)AppJsPlugin.AppDownloadManager.access$500(this.this$1).remove(str);
+            if (localObject2 != null) {
+              ((AppJsPlugin.IWaldlCallback)localObject2).onResult(true, localObject1);
+            }
           }
         }
       }
@@ -70,7 +73,7 @@ class AppJsPlugin$AppDownloadManager$1
   public void onWadlTaskStatusChanged(WadlResult paramWadlResult)
   {
     if ((paramWadlResult == null) || (paramWadlResult.jdField_a_of_type_CooperationWadlIpcWadlParams == null)) {
-      bkad.a("AppJsPlugin_AppDownloadManager", "onWadlTaskStatusChanged error wadlResult is null");
+      bifn.a("AppJsPlugin_AppDownloadManager", "onWadlTaskStatusChanged error wadlResult is null");
     }
     String str;
     int i;
@@ -87,8 +90,8 @@ class AppJsPlugin$AppDownloadManager$1
             return;
             localObject = paramWadlResult.jdField_a_of_type_CooperationWadlIpcWadlParams;
             str = ((WadlParams)localObject).a;
-            i = bkan.a(paramWadlResult.jdField_b_of_type_Int);
-            bkai.b(((WadlParams)localObject).a);
+            i = bifx.a(paramWadlResult.jdField_b_of_type_Int);
+            bifs.b(((WadlParams)localObject).a);
             QLog.i("AppJsPlugin_AppDownloadManager", 1, "onWadlTaskStatusChanged:" + paramWadlResult + ",localStatus:" + i);
             switch (i)
             {
@@ -112,8 +115,8 @@ class AppJsPlugin$AppDownloadManager$1
         } while (localObject == null);
         ((AppJsPlugin.IWaldlCallback)localObject).onResult(true, paramWadlResult);
         return;
-        i = bkan.b(paramWadlResult.c);
-        bkan.a(i);
+        i = bifx.b(paramWadlResult.c);
+        bifx.a(i);
         AppJsPlugin.AppDownloadManager.access$200(this.this$1).remove(str);
         if ((AppJsPlugin.AppDownloadManager.access$300(this.this$1) != null) && (AppJsPlugin.AppDownloadManager.access$300(this.this$1).containsKey(str)) && (AppJsPlugin.AppDownloadManager.access$300(this.this$1).get(str) != null)) {
           ((AppJsPlugin.IDownloadListener)AppJsPlugin.AppDownloadManager.access$300(this.this$1).get(str)).onDownloadFailed(i, i, "failed");

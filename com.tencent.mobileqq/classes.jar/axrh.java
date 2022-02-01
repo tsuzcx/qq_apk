@@ -1,6 +1,23 @@
-public abstract interface axrh
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
+
+public class axrh
+  implements Handler.Callback
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2, Object paramObject);
+  public axrh(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.f();
+    }
+  }
 }
 
 

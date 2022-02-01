@@ -1,21 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class nbu
-  implements View.OnClickListener
+public class nbu
 {
-  nbu(nbt paramnbt) {}
+  String jdField_a_of_type_JavaLangString;
+  nbt jdField_a_of_type_Nbt;
+  public boolean a;
+  public String b;
+  public boolean b = false;
+  boolean c = false;
   
-  public void onClick(View paramView)
+  private nbu(nbr paramnbr)
   {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nbu
  * JD-Core Version:    0.7.0.1
  */

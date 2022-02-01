@@ -1,26 +1,18 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 
-public class awxc
+public final class awxc
+  implements Parcelable.Creator<PicInfo>
 {
-  private List<awxd> a = Collections.synchronizedList(new ArrayList());
-  
-  void a(long paramLong)
+  public PicInfo a(Parcel paramParcel)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((awxd)localIterator.next()).a(paramLong);
-    }
+    return new PicInfo(paramParcel);
   }
   
-  void b(long paramLong)
+  public PicInfo[] a(int paramInt)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((awxd)localIterator.next()).b(paramLong);
-    }
+    return new PicInfo[paramInt];
   }
 }
 

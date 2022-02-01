@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.activity.weather;
 
-import affa;
-import aidz;
-import aiea;
-import amkx;
-import amky;
-import amkz;
-import amla;
-import amlb;
-import amlc;
-import amlf;
-import amlg;
-import amli;
+import adxs;
+import ahap;
+import ahaq;
+import alfu;
+import alfv;
+import alfw;
+import alfx;
+import alfy;
+import alfz;
+import algc;
+import algd;
+import algf;
+import amtj;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -34,19 +35,18 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anzj;
-import aoui;
-import aouq;
-import aqgi;
-import ascz;
-import bhmi;
-import bhmq;
-import bjbs;
-import bplg;
+import anni;
+import annq;
+import aozt;
+import aqww;
+import bfvo;
+import bhht;
+import bmqh;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -58,11 +58,11 @@ import java.util.List;
 
 public class SessionClearFragment
   extends PublicBaseFragment
-  implements affa
+  implements adxs
 {
   private int jdField_a_of_type_Int = 0;
-  private aidz jdField_a_of_type_Aidz;
-  private amli jdField_a_of_type_Amli;
+  private ahap jdField_a_of_type_Ahap;
+  private algf jdField_a_of_type_Algf;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
@@ -73,24 +73,24 @@ public class SessionClearFragment
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aouq jdField_a_of_type_Aouq;
-  private aqgi jdField_a_of_type_Aqgi;
-  private bjbs jdField_a_of_type_Bjbs;
+  private annq jdField_a_of_type_Annq;
+  private aozt jdField_a_of_type_Aozt;
+  private bhht jdField_a_of_type_Bhht;
   private PeakAppInterface jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface;
-  List<aoui> jdField_a_of_type_JavaUtilList;
+  List<anni> jdField_a_of_type_JavaUtilList;
   private int jdField_b_of_type_Int;
   private Button jdField_b_of_type_AndroidWidgetButton;
-  private aqgi jdField_b_of_type_Aqgi;
+  private aozt jdField_b_of_type_Aozt;
   private int jdField_c_of_type_Int;
-  private aqgi jdField_c_of_type_Aqgi;
+  private aozt jdField_c_of_type_Aozt;
   
   public static Drawable a(String paramString, int paramInt1, int paramInt2)
   {
-    ascz localascz = new ascz(Color.rgb(214, 214, 214), paramInt1, paramInt2);
+    aqww localaqww = new aqww(Color.rgb(214, 214, 214), paramInt1, paramInt2);
     if (!TextUtils.isEmpty(paramString)) {
       try
       {
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, localascz, localascz);
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, localaqww, localaqww);
         if (localURLDrawable.getStatus() != 1) {
           localURLDrawable.downloadImediatly();
         }
@@ -103,19 +103,19 @@ public class SessionClearFragment
         }
       }
     }
-    return localascz;
+    return localaqww;
   }
   
   private void a(int paramInt)
   {
     if (paramInt == 1) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(anzj.a(2131712725));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(amtj.a(2131712957));
     }
     for (;;)
     {
       this.jdField_a_of_type_Int = paramInt;
       return;
-      this.jdField_a_of_type_AndroidWidgetButton.setText(anzj.a(2131712713));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(amtj.a(2131712945));
     }
   }
   
@@ -136,27 +136,27 @@ public class SessionClearFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131377402));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131377263));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131377165));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131377013));
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377863));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131365363));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363632));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377633));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131365396));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363664));
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getActivity());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366011));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366041));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_Amli = new amli(this, new ArrayList());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Amli);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new amlb(this));
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new amlc(this));
-    paramView.findViewById(2131364593).setOnClickListener(new amlf(this));
+    this.jdField_a_of_type_Algf = new algf(this, new ArrayList());
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Algf);
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new alfy(this));
+    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new alfz(this));
+    paramView.findViewById(2131364624).setOnClickListener(new algc(this));
   }
   
   private void a(String paramString, int paramInt1, int paramInt2, ImageView paramImageView, int paramInt3)
   {
-    if (bhmi.b(paramString))
+    if (FileUtils.fileExistsAndNotEmpty(paramString))
     {
-      paramString = ShortVideoUtils.a(paramString);
+      paramString = ShortVideoUtils.getThumbUrl(paramString);
       if (paramString != null)
       {
         paramString = a(paramString.toString(), paramInt1, paramInt2);
@@ -178,21 +178,21 @@ public class SessionClearFragment
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     int i = 0;
-    if (i < this.jdField_a_of_type_Amli.getItemCount())
+    if (i < this.jdField_a_of_type_Algf.getItemCount())
     {
-      if (this.jdField_a_of_type_Amli.a(i).a) {
-        localArrayList1.add(this.jdField_a_of_type_Amli.a(i));
+      if (this.jdField_a_of_type_Algf.a(i).a) {
+        localArrayList1.add(this.jdField_a_of_type_Algf.a(i));
       }
       for (;;)
       {
         i += 1;
         break;
-        localArrayList2.add(this.jdField_a_of_type_Amli.a(i));
+        localArrayList2.add(this.jdField_a_of_type_Algf.a(i));
       }
     }
     if (localArrayList1.size() > 0)
     {
-      this.jdField_a_of_type_Aouq.a(localArrayList1);
+      this.jdField_a_of_type_Annq.a(localArrayList1);
       if ((localArrayList2 != null) && (localArrayList2.size() != 0)) {
         break label149;
       }
@@ -200,10 +200,10 @@ public class SessionClearFragment
     }
     for (;;)
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, 2131691331, 0).b(getResources().getDimensionPixelSize(2131299011));
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, 2131691371, 0).b(getResources().getDimensionPixelSize(2131299076));
       return;
       label149:
-      this.jdField_a_of_type_Amli.a(localArrayList2);
+      this.jdField_a_of_type_Algf.a(localArrayList2);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       a(0);
     }
@@ -211,25 +211,25 @@ public class SessionClearFragment
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bjbs == null) {
-      this.jdField_a_of_type_Bjbs = new bjbs(this.jdField_a_of_type_AndroidAppActivity, getResources().getDimensionPixelSize(2131299011));
+    if (this.jdField_a_of_type_Bhht == null) {
+      this.jdField_a_of_type_Bhht = new bhht(this.jdField_a_of_type_AndroidAppActivity, getResources().getDimensionPixelSize(2131299076));
     }
-    this.jdField_a_of_type_Bjbs.setCancelable(false);
-    this.jdField_a_of_type_Bjbs.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_Bjbs.a(anzj.a(2131712720));
-    this.jdField_a_of_type_Bjbs.show();
-    this.jdField_a_of_type_Bjbs.a(new amlg(this));
+    this.jdField_a_of_type_Bhht.setCancelable(false);
+    this.jdField_a_of_type_Bhht.setCanceledOnTouchOutside(false);
+    this.jdField_a_of_type_Bhht.a(amtj.a(2131712952));
+    this.jdField_a_of_type_Bhht.show();
+    this.jdField_a_of_type_Bhht.a(new algd(this));
   }
   
-  public void a(List<aoui> paramList)
+  public void a(List<anni> paramList)
   {
-    this.jdField_a_of_type_Amli.a(paramList);
+    this.jdField_a_of_type_Algf.a(paramList);
   }
   
   protected void b()
   {
-    if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing())) {
-      this.jdField_a_of_type_Bjbs.dismiss();
+    if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing())) {
+      this.jdField_a_of_type_Bhht.dismiss();
     }
   }
   
@@ -260,33 +260,33 @@ public class SessionClearFragment
       }
       this.jdField_a_of_type_AndroidViewView.setSystemUiVisibility(0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)bplg.a());
-    if (this.jdField_a_of_type_Aidz == null)
+    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)bmqh.a());
+    if (this.jdField_a_of_type_Ahap == null)
     {
       paramBundle = (BinderWarpper)this.jdField_a_of_type_AndroidAppActivity.getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
       if (paramBundle == null) {
         break label336;
       }
-      this.jdField_a_of_type_Aidz = aiea.a(paramBundle.a);
+      this.jdField_a_of_type_Ahap = ahaq.a(paramBundle.a);
       if (QLog.isColorLevel()) {
-        QLog.d("SessionClearFragment", 2, "IAIOImageProvider is " + this.jdField_a_of_type_Aidz);
+        QLog.d("SessionClearFragment", 2, "IAIOImageProvider is " + this.jdField_a_of_type_Ahap);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)bplg.a());
-    this.jdField_a_of_type_Aouq = ((aouq)this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface.getManager(4));
-    this.jdField_a_of_type_Aouq.a(new amkx(this));
-    this.jdField_a_of_type_Aouq.a(this.jdField_a_of_type_Aidz);
-    this.jdField_a_of_type_Aqgi = new aqgi(this.jdField_a_of_type_AndroidAppActivity, 1);
-    this.jdField_a_of_type_Aqgi.a();
-    this.jdField_a_of_type_Aqgi.a(new amky(this));
-    this.jdField_b_of_type_Aqgi = new aqgi(this.jdField_a_of_type_AndroidAppActivity, 4);
-    this.jdField_b_of_type_Aqgi.a();
-    this.jdField_b_of_type_Aqgi.a(new amkz(this));
-    this.jdField_c_of_type_Aqgi = new aqgi(this.jdField_a_of_type_AndroidAppActivity, 101);
-    this.jdField_c_of_type_Aqgi.a();
-    this.jdField_c_of_type_Aqgi.a(new amla(this));
-    this.jdField_a_of_type_Aouq.b();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = bhmq.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface = ((PeakAppInterface)bmqh.a());
+    this.jdField_a_of_type_Annq = ((annq)this.jdField_a_of_type_ComTencentMobileqqAppPeakAppInterface.getManager(4));
+    this.jdField_a_of_type_Annq.a(new alfu(this));
+    this.jdField_a_of_type_Annq.a(this.jdField_a_of_type_Ahap);
+    this.jdField_a_of_type_Aozt = new aozt(this.jdField_a_of_type_AndroidAppActivity, 1);
+    this.jdField_a_of_type_Aozt.a();
+    this.jdField_a_of_type_Aozt.a(new alfv(this));
+    this.jdField_b_of_type_Aozt = new aozt(this.jdField_a_of_type_AndroidAppActivity, 4);
+    this.jdField_b_of_type_Aozt.a();
+    this.jdField_b_of_type_Aozt.a(new alfw(this));
+    this.jdField_c_of_type_Aozt = new aozt(this.jdField_a_of_type_AndroidAppActivity, 101);
+    this.jdField_c_of_type_Aozt.a();
+    this.jdField_c_of_type_Aozt.a(new alfx(this));
+    this.jdField_a_of_type_Annq.b();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = bfvo.a();
     return;
     label336:
     throw new IllegalArgumentException("can't find Binder in Intent..");
@@ -294,7 +294,7 @@ public class SessionClearFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131562915, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131562794, paramViewGroup, false);
     a(paramLayoutInflater);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
@@ -303,12 +303,12 @@ public class SessionClearFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Aouq.onDestroy();
-    this.jdField_a_of_type_Aqgi.b();
-    this.jdField_b_of_type_Aqgi.b();
-    this.jdField_c_of_type_Aqgi.b();
-    if (this.jdField_a_of_type_Bjbs != null) {
-      this.jdField_a_of_type_Bjbs.dismiss();
+    this.jdField_a_of_type_Annq.onDestroy();
+    this.jdField_a_of_type_Aozt.b();
+    this.jdField_b_of_type_Aozt.b();
+    this.jdField_c_of_type_Aozt.b();
+    if (this.jdField_a_of_type_Bhht != null) {
+      this.jdField_a_of_type_Bhht.dismiss();
     }
     this.jdField_a_of_type_AndroidAppActivity = null;
   }

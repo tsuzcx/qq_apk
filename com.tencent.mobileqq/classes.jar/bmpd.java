@@ -1,17 +1,17 @@
-import cooperation.qqreader.host.webview.ReaderBaseWebViewPlugin;
-import cooperation.qqreader.proxy.ReaderJsCallback;
-
-class bmpd
-  implements ReaderJsCallback
+public abstract class bmpd
 {
-  bmpd(bmpb parambmpb) {}
+  protected float a;
   
-  public void onCallback(String paramString1, String paramString2) {}
-  
-  public void onInitPluginCallBack(ReaderBaseWebViewPlugin paramReaderBaseWebViewPlugin)
+  public bmpd(float paramFloat)
   {
-    paramReaderBaseWebViewPlugin.init(bmpb.a(this.a), null);
+    this.a = paramFloat;
   }
+  
+  public abstract float a(long paramLong);
+  
+  public abstract long a(float paramFloat);
+  
+  public abstract String a(long paramLong);
 }
 
 

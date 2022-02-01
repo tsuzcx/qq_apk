@@ -1,14 +1,56 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tav.coremedia.CMTimeRange;
+import com.tencent.tavcut.player.MoviePlayer;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
 
-class bmhf
-  implements FilenameFilter
+public class bmhf
+  implements bmhb
 {
-  bmhf(bmhe parambmhe, String paramString) {}
+  public bmhf(AEEditorVideoClipFragment paramAEEditorVideoClipFragment) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void a()
   {
-    return paramString.endsWith(this.jdField_a_of_type_JavaLangString);
+    AEEditorVideoClipFragment.a(this.a);
+  }
+  
+  public void a(CMTime paramCMTime)
+  {
+    if (AEEditorVideoClipFragment.a(this.a) != null) {
+      AEEditorVideoClipFragment.a(this.a).seekToTime(paramCMTime);
+    }
+  }
+  
+  public void a(CMTimeRange paramCMTimeRange)
+  {
+    AEEditorVideoClipFragment.a(this.a, paramCMTimeRange);
+    Object localObject = Long.valueOf(paramCMTimeRange.getStartUs());
+    paramCMTimeRange = Long.valueOf(paramCMTimeRange.getEndUs());
+    if ((localObject != null) && (paramCMTimeRange != null))
+    {
+      localObject = CMTime.convertTimeScale(CMTime.fromMs(((Long)localObject).longValue() / 1000L), 1000);
+      paramCMTimeRange = CMTime.convertTimeScale(CMTime.fromMs(paramCMTimeRange.longValue() / 1000L), 1000).sub((CMTime)localObject);
+      AEEditorVideoClipFragment.a(this.a).setPlayRange(new CMTimeRange((CMTime)localObject, paramCMTimeRange));
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (AEEditorVideoClipFragment.a(this.a) != null)
+    {
+      if ((!AEEditorVideoClipFragment.a(this.a).isPlaying()) || (paramBoolean)) {
+        break label58;
+      }
+      AEEditorVideoClipFragment.a(this.a).pause();
+      AEEditorVideoClipFragment.a(this.a, false);
+      AEEditorVideoClipFragment.a(this.a).setAutoPlay(false);
+    }
+    label58:
+    while ((AEEditorVideoClipFragment.a(this.a).isPlaying()) || (!paramBoolean)) {
+      return;
+    }
+    AEEditorVideoClipFragment.a(this.a).play();
+    AEEditorVideoClipFragment.a(this.a, true);
+    AEEditorVideoClipFragment.a(this.a).setAutoPlay(true);
   }
 }
 

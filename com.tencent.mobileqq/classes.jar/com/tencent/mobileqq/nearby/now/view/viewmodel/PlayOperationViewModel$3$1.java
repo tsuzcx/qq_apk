@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.nearby.now.view.viewmodel;
 
 import android.text.TextUtils;
-import axup;
-import ayek;
-import ayhj;
-import ayif;
-import bdlq;
+import awhw;
+import awrs;
+import awur;
+import awvn;
+import bcek;
 
 public class PlayOperationViewModel$3$1
   implements Runnable
 {
-  public PlayOperationViewModel$3$1(ayif paramayif, axup paramaxup) {}
+  public PlayOperationViewModel$3$1(awvn paramawvn, awhw paramawhw) {}
   
   public void run()
   {
-    bdlq localbdlq = new bdlq(this.jdField_a_of_type_Ayif.a.a).a("dc00899").b("grp_lbs").c("video").d("playpage_double_click").e(ayek.d);
-    int i = this.jdField_a_of_type_Axup.b();
-    String str2 = ayek.a;
-    if (TextUtils.equals(ayek.a, "2")) {}
-    for (String str1 = ayek.c;; str1 = "")
+    bcek localbcek = new bcek(this.jdField_a_of_type_Awvn.a.a).a("dc00899").b("grp_lbs").c("video").d("playpage_double_click").e(awrs.d);
+    int i = this.jdField_a_of_type_Awhw.b();
+    String str2 = awrs.a;
+    if (TextUtils.equals(awrs.a, "2")) {}
+    for (String str1 = awrs.c;; str1 = "")
     {
-      localbdlq.a(new String[] { "", String.valueOf(i), str2, str1 }).a();
+      localbcek.a(new String[] { "", String.valueOf(i), str2, str1 }).a();
       return;
     }
   }

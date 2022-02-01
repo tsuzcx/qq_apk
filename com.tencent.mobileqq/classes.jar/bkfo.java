@@ -1,91 +1,33 @@
-import com.tencent.qg.sdk.log.IQLog;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
 public class bkfo
-  implements IQLog
+  implements Comparable<bkfo>
 {
-  private static String a(String paramString, Object... paramVarArgs)
-  {
-    return String.format(null, paramString, paramVarArgs);
-  }
+  int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void a(String paramString1, String paramString2)
+  public int a(@NonNull bkfo parambkfo)
   {
-    yuk.c(paramString1, paramString2);
-  }
-  
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    yuk.b(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void d(String paramString1, String paramString2)
-  {
-    yuk.b(paramString1, paramString2);
-  }
-  
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    yuk.a(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void d(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    yuk.b(paramString1, a(paramString2, paramVarArgs));
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    yuk.e(paramString1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    yuk.c(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    yuk.c(paramString1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    yuk.b(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    yuk.c(paramString1, a(paramString2, paramVarArgs));
-  }
-  
-  public void v(String paramString1, String paramString2)
-  {
-    yuk.a(paramString1, paramString2);
-  }
-  
-  public void v(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    yuk.a(paramString1, paramString2, new Object[] { paramThrowable });
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    yuk.c(paramString1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    yuk.b(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void w(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    yuk.d(paramString1, a(paramString2, paramVarArgs));
-  }
-  
-  public void w(String paramString, Throwable paramThrowable)
-  {
-    yuk.b(paramString, "", paramThrowable);
+    if (this.jdField_a_of_type_Int < parambkfo.jdField_a_of_type_Int) {}
+    int i;
+    int j;
+    do
+    {
+      return -1;
+      if (this.jdField_a_of_type_Int > parambkfo.jdField_a_of_type_Int) {
+        return 1;
+      }
+      i = bkfn.a().indexOf(this.jdField_a_of_type_JavaLangString);
+      j = bkfn.a().indexOf(parambkfo.jdField_a_of_type_JavaLangString);
+    } while (i < j);
+    if (i > j) {
+      return 1;
+    }
+    return 0;
   }
 }
 

@@ -1,85 +1,313 @@
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.activity.ShowReactiveActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Looper;
+import android.os.MessageQueue;
+import android.os.MessageQueue.IdleHandler;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.DrawerFrame;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
+import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.widget.immersive.SystemBarCompact;
 
-public class afnn
-  extends anuw
+public abstract class afnn
+  implements bhdo
 {
-  public afnn(ShowReactiveActivity paramShowReactiveActivity) {}
+  private int jdField_a_of_type_Int;
+  public Context a;
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private MessageQueue.IdleHandler jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new afno(this);
+  public FragmentActivity a;
+  private View jdField_a_of_type_AndroidViewView;
+  public ViewGroup a;
+  private bhdo jdField_a_of_type_Bhdo = new afnq(this);
+  public SessionInfo a;
+  public BaseChatPie a;
+  public QQAppInterface a;
+  private DrawerFrame jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame;
+  private ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
+  private boolean jdField_a_of_type_Boolean;
+  public ViewGroup b;
   
-  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  public afnn(BaseChatPie paramBaseChatPie)
   {
-    Object localObject;
-    Switch localSwitch;
-    if ((paramBoolean1) && (!this.a.isFinishing()))
+    if (paramBaseChatPie == null) {}
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.app;
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mActivity;
+    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo;
+    this.jdField_a_of_type_AndroidViewViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mAIORootView;
+    this.b = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.afRoot;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mDrawerFrame;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.setDrawerEnabled(true);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.setDrawerCallbacks(this.jdField_a_of_type_Bhdo);
+    m();
+    Looper.myQueue().addIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
+  }
+  
+  private SystemBarCompact a()
+  {
+    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null)
     {
-      localObject = this.a;
-      localSwitch = this.a.a.a();
-      if (paramBoolean2) {
-        break label117;
+      Fragment localFragment = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      if (localFragment != null) {
+        return ((ChatFragment)localFragment).a;
       }
     }
-    label117:
-    for (paramBoolean1 = true;; paramBoolean1 = false)
+    return null;
+  }
+  
+  private boolean c()
+  {
+    return (this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 != null) && (this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.getParent() != null);
+  }
+  
+  private boolean d()
+  {
+    boolean bool = true;
+    if ((ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, null)) || (bbyp.b())) {
+      bool = false;
+    }
+    return bool;
+  }
+  
+  private void m()
+  {
+    NavBarAIO localNavBarAIO = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mCustomTitleView;
+    if (localNavBarAIO != null) {
+      localNavBarAIO.addOnLayoutChangeListener(new afnp(this, localNavBarAIO));
+    }
+  }
+  
+  private void n()
+  {
+    boolean bool = c();
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseChatDrawer", 2, "addImmersiveTitleBar, isVisible: " + bool);
+    }
+    if (!bool)
     {
-      ShowReactiveActivity.a((ShowReactiveActivity)localObject, localSwitch, paramBoolean1);
-      if (QLog.isColorLevel())
+      if (this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 == null) {
+        this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = new ImmersiveTitleBar2(this.jdField_a_of_type_AndroidContentContext);
+      }
+      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(this.jdField_a_of_type_AndroidViewViewGroup.getPaddingLeft(), this.jdField_a_of_type_AndroidViewViewGroup.getPaddingTop(), this.jdField_a_of_type_AndroidViewViewGroup.getPaddingRight(), this.jdField_a_of_type_AndroidViewViewGroup.getPaddingBottom());
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, localLayoutParams);
+      ((TopGestureLayout)this.jdField_a_of_type_AndroidViewViewGroup).setPadding2(0, 0, 0, 0);
+      this.jdField_a_of_type_AndroidViewViewGroup.setFitsSystemWindows(false);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+      localLayoutParams.leftMargin += this.jdField_a_of_type_AndroidGraphicsRect.left;
+      localLayoutParams.rightMargin += this.jdField_a_of_type_AndroidGraphicsRect.right;
+      localLayoutParams.topMargin += this.jdField_a_of_type_AndroidGraphicsRect.top;
+      localLayoutParams.bottomMargin += this.jdField_a_of_type_AndroidGraphicsRect.bottom;
+      this.b.setFitsSystemWindows(true);
+      p();
+    }
+  }
+  
+  private void o()
+  {
+    boolean bool = c();
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseChatDrawer", 2, "removeImmersiveTitleBar, isVisible: " + bool);
+    }
+    if (bool)
+    {
+      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2);
+      this.jdField_a_of_type_AndroidViewViewGroup.setFitsSystemWindows(true);
+      if (this.jdField_a_of_type_AndroidGraphicsRect != null) {
+        this.jdField_a_of_type_AndroidViewViewGroup.setPadding(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
+      }
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+      if (this.jdField_a_of_type_AndroidGraphicsRect != null)
       {
-        localObject = ((anyw)this.a.app.getManager(51)).c(this.a.app.getCurrentAccountUin());
-        QLog.d("interactive", 2, " ShowReactiveActivity onGetCalReactiveDays isAllow= " + paramBoolean2 + "card.allowCalInteractive=" + ((Card)localObject).allowCalInteractive);
+        localLayoutParams.leftMargin -= this.jdField_a_of_type_AndroidGraphicsRect.left;
+        localLayoutParams.rightMargin -= this.jdField_a_of_type_AndroidGraphicsRect.right;
+        localLayoutParams.topMargin -= this.jdField_a_of_type_AndroidGraphicsRect.top;
+        localLayoutParams.bottomMargin -= this.jdField_a_of_type_AndroidGraphicsRect.bottom;
+      }
+      this.b.setFitsSystemWindows(false);
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+        break label230;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.setSystemBarDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    }
+    for (;;)
+    {
+      if (d()) {
+        ImmersiveUtils.a(false, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getWindow());
       }
       return;
+      label230:
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.setSystemBarColor(this.jdField_a_of_type_Int, false);
     }
   }
   
-  protected void onSetCalReactiveDays(boolean paramBoolean)
+  private void p()
   {
-    boolean bool2 = true;
-    Object localObject1;
-    Object localObject2;
-    boolean bool1;
-    if (!paramBoolean)
-    {
-      QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131717966), 3000).b(this.a.getTitleBarHeight());
-      localObject1 = this.a;
-      localObject2 = this.a.a.a();
-      if (this.a.a.a().isChecked()) {
-        break label217;
-      }
-      bool1 = true;
-      ShowReactiveActivity.a((ShowReactiveActivity)localObject1, (CompoundButton)localObject2, bool1);
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, "ShowReactiveActivity onSetCalReactiveDays isSuccess false= ");
-      }
+    boolean bool = c();
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseChatDrawer", 2, "updateImmersiveTitleBar, isVisible: " + bool);
     }
-    Switch localSwitch;
-    if ((paramBoolean) && (!this.a.isFinishing()))
+    if (bool)
     {
-      localObject1 = ((anyw)this.a.app.getManager(51)).c(this.a.app.getCurrentAccountUin());
-      localObject2 = this.a;
-      localSwitch = this.a.a.a();
-      if (((Card)localObject1).allowCalInteractive) {
-        break label222;
+      SystemBarCompact localSystemBarCompact = a();
+      if (localSystemBarCompact != null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localSystemBarCompact.mStatusBarDarwable;
+        this.jdField_a_of_type_Int = localSystemBarCompact.mStatusBarColor;
       }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.setSystemBarColor(0, false);
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+        break label113;
+      }
+      this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
-    label217:
-    label222:
-    for (paramBoolean = bool2;; paramBoolean = false)
+    for (;;)
     {
-      ShowReactiveActivity.a((ShowReactiveActivity)localObject2, localSwitch, paramBoolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, "ShowReactiveActivity onSetCalReactiveDays allowCalInteractive= " + ((Card)localObject1).allowCalInteractive);
+      if (d()) {
+        ImmersiveUtils.a(true, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getWindow());
       }
       return;
-      bool1 = false;
-      break;
+      label113:
+      this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(this.jdField_a_of_type_Int);
     }
   }
+  
+  protected abstract View a();
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidViewView = a();
+      if (this.jdField_a_of_type_AndroidViewView == null) {}
+      this.jdField_a_of_type_Boolean = true;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      for (;;)
+      {
+        localOutOfMemoryError.printStackTrace();
+        QLog.d("BaseChatDrawer", 1, "BaseChatDrawer createDrawerView oom", localOutOfMemoryError);
+      }
+    }
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a(this.jdField_a_of_type_AndroidViewView, 1);
+      b();
+    }
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, float paramFloat) {}
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a(paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a();
+    }
+    return false;
+  }
+  
+  protected abstract void b();
+  
+  public void b(int paramInt) {}
+  
+  public void b(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a(1, paramBoolean);
+    }
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a())) {
+      p();
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      j();
+    }
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.setDrawerEnabled(paramBoolean);
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      l();
+    }
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.a();
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame.setDrawerCallbacks(null);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDrawerFrame = null;
+    }
+    Looper.myQueue().removeIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
+    o();
+    if (this.jdField_a_of_type_Boolean) {
+      k();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseChatDrawer", 2, String.format("onDestroy, mHadInflated: %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
+    }
+  }
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void h() {}
+  
+  public void i() {}
+  
+  public void j() {}
+  
+  public void k() {}
+  
+  public void l() {}
 }
 
 

@@ -1,8 +1,10 @@
-import android.os.Bundle;
+import java.util.ArrayList;
 
 public abstract interface aksh
 {
-  public abstract void a(Bundle paramBundle);
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList);
 }
 
 

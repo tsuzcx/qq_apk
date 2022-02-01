@@ -7,12 +7,15 @@ public class TPPlayerMsg
   public static final int TP_PLAYER_INFO_AUDIO_TRACK_PROXY = 1012;
   public static final int TP_PLAYER_INFO_LONG0_ALL_DOWNLOAD_FINISH = 1001;
   public static final int TP_PLAYER_INFO_LONG0_AUDIO_HW_DECODING_SLOW = 206;
+  public static final int TP_PLAYER_INFO_LONG0_AUDIO_PASS_THROUGH_START = 210;
+  public static final int TP_PLAYER_INFO_LONG0_AUDIO_PASS_THROUGH_STOP = 211;
   public static final int TP_PLAYER_INFO_LONG0_AUDIO_SW_DECODING_SLOW = 205;
   public static final int TP_PLAYER_INFO_LONG0_BUFFERING_END = 201;
   public static final int TP_PLAYER_INFO_LONG0_BUFFERING_START = 200;
   public static final int TP_PLAYER_INFO_LONG0_BUFFER_TIMEOUT = 5002;
   public static final int TP_PLAYER_INFO_LONG0_CURRENT_LOOP_END = 151;
   public static final int TP_PLAYER_INFO_LONG0_CURRENT_LOOP_START = 150;
+  public static final int TP_PLAYER_INFO_LONG0_DROP_FRAME = 209;
   public static final int TP_PLAYER_INFO_LONG0_EOS = 154;
   public static final int TP_PLAYER_INFO_LONG0_FIRST_AUDIO_DECODER_START = 103;
   public static final int TP_PLAYER_INFO_LONG0_FIRST_AUDIO_FRAME_RENDERED = 105;
@@ -20,10 +23,10 @@ public class TPPlayerMsg
   public static final int TP_PLAYER_INFO_LONG0_FIRST_PACKET_READ = 107;
   public static final int TP_PLAYER_INFO_LONG0_FIRST_VIDEO_DECODER_START = 104;
   public static final int TP_PLAYER_INFO_LONG0_FIRST_VIDEO_FRAME_RENDERED = 106;
-  public static final int TP_PLAYER_INFO_LONG0_PACKET_READ = 102;
   public static final int TP_PLAYER_INFO_LONG0_PREPARE_TIMEOUT = 5001;
   public static final int TP_PLAYER_INFO_LONG0_UNKNOW = -1;
   public static final int TP_PLAYER_INFO_LONG0_VIDEO_HW_DECODING_SLOW = 208;
+  public static final int TP_PLAYER_INFO_LONG0_VIDEO_KEY_PACKET_READ = 102;
   public static final int TP_PLAYER_INFO_LONG0_VIDEO_SW_DECODING_SLOW = 207;
   public static final int TP_PLAYER_INFO_LONG1_ADAPTIVE_SWITCH_DEF_END = 252;
   public static final int TP_PLAYER_INFO_LONG1_ADAPTIVE_SWITCH_DEF_START = 251;
@@ -43,6 +46,8 @@ public class TPPlayerMsg
   public static final int TP_PLAYER_INFO_OBJECT_PROTOCOL_UPDATE = 1005;
   public static final int TP_PLAYER_INFO_OBJECT_URL_EXPIRED = 1007;
   public static final int TP_PLAYER_INFO_OBJECT_VIDEO_CROP = 500;
+  public static final int TP_PLAYER_INFO_RETRY_PLAYER_START = 1013;
+  public static final int TP_PLAYER_INFO_RETRY_PLAYER_STOP = 1014;
   public static final int TP_PLAYER_INFO_SELECT_AUDIO_TRACK = 1011;
 }
 

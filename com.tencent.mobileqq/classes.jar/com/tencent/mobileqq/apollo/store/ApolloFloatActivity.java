@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.store;
 
 import Override;
-import amzf;
-import anbd;
-import ande;
+import altz;
+import alvx;
+import alxy;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +19,7 @@ import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import asjw;
+import ardu;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.emosm.Client;
@@ -60,8 +60,9 @@ public class ApolloFloatActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -87,17 +88,17 @@ public class ApolloFloatActivity
     if (localIntent != null)
     {
       this.e = localIntent.getIntExtra("extra_key_gameid", -1);
-      ande localande = anbd.a(this.e);
+      alxy localalxy = alvx.a(this.e);
       i = localIntent.getIntExtra("extra_key_taskid", 0);
-      if (localande != null)
+      if (localalxy != null)
       {
-        localande.a(this, i);
+        localalxy.a(this, i);
         this.c = localIntent.getIntExtra("extra_key_from", -1);
         if (this.c != 1) {
           break label478;
         }
         getWindow().getDecorView().setSystemUiVisibility(5894);
-        i = anbd.a(localIntent.getIntExtra("extra_key_entratation", 1));
+        i = alvx.a(localIntent.getIntExtra("extra_key_entratation", 1));
         setRequestedOrientation(i);
         localIntent.getIntExtra("extra_key_transparent", 1);
         this.d = 0;
@@ -130,7 +131,7 @@ public class ApolloFloatActivity
       localObject = super.getResources();
       if (this.mSystemBarComp != null)
       {
-        i = ((Resources)localObject).getColor(2131167247);
+        i = ((Resources)localObject).getColor(2131167276);
         this.mSystemBarComp.setStatusColor(i);
         this.mSystemBarComp.setStatusBarColor(i);
       }
@@ -141,8 +142,8 @@ public class ApolloFloatActivity
       if (!this.jdField_a_of_type_Boolean) {
         super.hideTitleBar();
       }
-      if (!asjw.a().a()) {
-        asjw.a().a().doBindService(paramBundle.getContext().getApplicationContext());
+      if (!ardu.a().a()) {
+        ardu.a().a().doBindService(paramBundle.getContext().getApplicationContext());
       }
       this.h = (System.currentTimeMillis() - this.jdField_a_of_type_Long);
       return false;
@@ -174,7 +175,7 @@ public class ApolloFloatActivity
   public void doOnWindowFocusChanged(boolean paramBoolean)
   {
     if (this.c == 1) {
-      amzf.a(this);
+      altz.a(this);
     }
     super.doOnWindowFocusChanged(paramBoolean);
   }

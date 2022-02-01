@@ -1,27 +1,16 @@
-public class appb
-  extends apoz
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+class appb
+  implements EIPCResultCallback
 {
-  public static final appb a;
-  public appd a;
-  public appf a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  appb(appa paramappa) {}
   
-  static
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    jdField_a_of_type_Appb = new appb(false);
-  }
-  
-  public appb()
-  {
-    this.b = 128L;
-  }
-  
-  public appb(boolean paramBoolean)
-  {
-    this.b = 128L;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    QLog.d("DanmuDataIPCClient", 1, new Object[] { "get barrage list, IPC success, msgSeq:", Long.valueOf(paramEIPCResult.data.getLong("key_barrage_msg_seq")) });
   }
 }
 

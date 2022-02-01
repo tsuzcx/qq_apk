@@ -1,21 +1,27 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
 public class wpd
-  extends Job<Object, Object, Object>
+  extends Subscriber.SingleEventSubscriberNoRefect<wcy>
 {
-  public wpd(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, wpa paramwpa)
+  woz a;
+  
+  public wpd(@NonNull woz paramwoz)
   {
-    super(paramString);
+    this.a = paramwoz;
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  protected void a(@NonNull wcy paramwcy)
   {
-    this.jdField_a_of_type_Wpa.a().a(880001, "no network", null);
-    return null;
+    if (paramwcy.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      this.a.a(paramwcy.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wcy.class;
   }
 }
 

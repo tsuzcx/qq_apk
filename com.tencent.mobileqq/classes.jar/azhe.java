@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity.8;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.QQPermissionCallback;
 
-public class azhe
-  implements View.OnClickListener
+class azhe
+  implements QQPermissionCallback
 {
-  public azhe(AutoReplyEditActivity.8 param8) {}
+  azhe(azhd paramazhd) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AutoReplyEditActivity.a(this.a.this$0, true);
-    EventCollector.getInstance().onViewClicked(paramView);
+    azhh.a().a("QQAssistantGuider");
   }
 }
 

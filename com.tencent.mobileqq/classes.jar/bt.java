@@ -3,25 +3,25 @@ import com.dataline.activities.LiteActivity;
 import com.tencent.widget.ListView;
 
 public class bt
-  implements blnt
+  implements bjsd
 {
   public bt(LiteActivity paramLiteActivity) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView) {}
+  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView) {}
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView) {}
+  
+  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
     this.a.c();
     return true;
   }
   
-  public void b(int paramInt, View paramView, ListView paramListView) {}
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
+  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bt
  * JD-Core Version:    0.7.0.1
  */

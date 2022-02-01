@@ -1,17 +1,8 @@
-import com.tencent.qphone.base.util.QLog;
-
-final class ayrq
-  implements aydl
+public abstract interface ayrq
 {
-  ayrq(ayru paramayru, String paramString) {}
+  public abstract void a(Object paramObject);
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
-  {
-    QLog.i("NearbyMomentProtocol", 1, "deleteMomentFeed error, errorCode =" + paramInt);
-    if (this.jdField_a_of_type_Ayru != null) {
-      this.jdField_a_of_type_Ayru.a(false, this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public abstract void b(Object paramObject);
 }
 
 

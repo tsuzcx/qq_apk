@@ -1,14 +1,17 @@
+import android.support.v7.widget.RecyclerView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.GalleryFragment;
+import com.tencent.mobileqq.util.DisplayUtil;
 import org.jetbrains.annotations.NotNull;
 
-public abstract interface rjz<R>
+public class rjz
+  extends rkl
 {
-  public abstract void a(float paramFloat);
+  public rjz(GalleryFragment paramGalleryFragment) {}
   
-  public abstract void a(int paramInt, @NotNull String paramString);
-  
-  public abstract void a(R paramR);
-  
-  public abstract void a(@NotNull String paramString);
+  public rkm a(int paramInt, @NotNull RecyclerView paramRecyclerView)
+  {
+    return a(paramInt, GalleryFragment.a(this.a).getItemCount(), 4, DisplayUtil.dip2px(this.a.a, 8.0F));
+  }
 }
 
 

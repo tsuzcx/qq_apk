@@ -1,19 +1,21 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-public class afyu
-  implements View.OnClickListener
+class afyu
+  extends aezf
 {
-  public afyu(TroopTransferActivity paramTroopTransferActivity) {}
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public TextView b;
+  public TextView c;
   
-  public void onClick(View paramView)
-  {
-    this.a.a.cancel();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  afyu(afyr paramafyr) {}
 }
 
 

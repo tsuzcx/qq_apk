@@ -1,92 +1,24 @@
-import android.app.Activity;
-import android.content.ContentResolver;
-import android.database.ContentObserver;
-import android.os.Handler;
-import android.provider.Settings.SettingNotFoundException;
-import android.provider.Settings.System;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.EditColumnFragment;
+import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class rmr
+  implements DialogInterface.OnClickListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ContentObserver jdField_a_of_type_AndroidDatabaseContentObserver = new rms(this, new Handler());
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public rmr(EditColumnFragment paramEditColumnFragment) {}
   
-  public rmr(Activity paramActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  private void c()
-  {
-    if (!this.b)
+    this.a.a(true);
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyWidgetsLimitWordCountEditText.b() > 0)
     {
-      this.b = true;
-      this.jdField_a_of_type_AndroidAppActivity.getContentResolver().registerContentObserver(Settings.System.getUriFor("screen_brightness"), true, this.jdField_a_of_type_AndroidDatabaseContentObserver);
+      this.a.jdField_a_of_type_Rmw.a(EditColumnFragment.a(this.a).columnID, this.a.a());
+      return;
     }
-  }
-  
-  private void d()
-  {
-    if (this.b)
-    {
-      this.b = false;
-      this.jdField_a_of_type_AndroidAppActivity.getContentResolver().unregisterContentObserver(this.jdField_a_of_type_AndroidDatabaseContentObserver);
-    }
-  }
-  
-  public int a()
-  {
-    ContentResolver localContentResolver = this.jdField_a_of_type_AndroidAppActivity.getContentResolver();
-    try
-    {
-      int i = Settings.System.getInt(localContentResolver, "screen_brightness");
-      return i;
-    }
-    catch (Settings.SettingNotFoundException localSettingNotFoundException) {}
-    return 0;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppActivity.getWindow().getAttributes();
-      localLayoutParams.screenBrightness = -1.0F;
-      this.jdField_a_of_type_AndroidAppActivity.getWindow().setAttributes(localLayoutParams);
-    }
-  }
-  
-  public void a(float paramFloat)
-  {
-    c();
-    this.jdField_a_of_type_Boolean = true;
-    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppActivity.getWindow().getAttributes();
-    localLayoutParams.screenBrightness = paramFloat;
-    this.jdField_a_of_type_AndroidAppActivity.getWindow().setAttributes(localLayoutParams);
-  }
-  
-  public boolean a()
-  {
-    ContentResolver localContentResolver = this.jdField_a_of_type_AndroidAppActivity.getContentResolver();
-    try
-    {
-      int i = Settings.System.getInt(localContentResolver, "screen_brightness_mode");
-      return i == 1;
-    }
-    catch (Settings.SettingNotFoundException localSettingNotFoundException)
-    {
-      localSettingNotFoundException.printStackTrace();
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    d();
+    QQToast.a(this.a.getActivity(), 0, 2131717266, 0).a();
   }
 }
 

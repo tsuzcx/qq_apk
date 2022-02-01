@@ -1,8 +1,6 @@
-import com.tencent.widget.VerticalGallery;
-
-public abstract interface blqs
+public abstract class blqs
 {
-  public abstract void a(VerticalGallery paramVerticalGallery);
+  abstract blqt a();
 }
 
 

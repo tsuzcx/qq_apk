@@ -1,21 +1,18 @@
 package dov.com.qq.im.ae.play;
 
-import boys;
-import boyu;
-
-public class EditTextViewer$4$1
+class EditTextViewer$4$1
   implements Runnable
 {
-  public EditTextViewer$4$1(boys paramboys, boolean paramBoolean) {}
+  EditTextViewer$4$1(EditTextViewer.4 param4, boolean paramBoolean) {}
   
   public void run()
   {
-    EditTextViewer.b(this.jdField_a_of_type_Boys.a);
-    if (this.jdField_a_of_type_Boolean)
+    EditTextViewer.access$500(this.this$1.this$0);
+    if (this.val$finalRealSucc)
     {
-      EditTextViewer.c(this.jdField_a_of_type_Boys.a);
-      if (EditTextViewer.a(this.jdField_a_of_type_Boys.a) != null) {
-        EditTextViewer.a(this.jdField_a_of_type_Boys.a).c(EditTextViewer.a(this.jdField_a_of_type_Boys.a));
+      EditTextViewer.access$600(this.this$1.this$0);
+      if (EditTextViewer.access$700(this.this$1.this$0) != null) {
+        EditTextViewer.access$700(this.this$1.this$0).onCompleteTextEdit(EditTextViewer.access$800(this.this$1.this$0));
       }
     }
   }

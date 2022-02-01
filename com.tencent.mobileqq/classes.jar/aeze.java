@@ -1,21 +1,11 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.NearbyActivity;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class aeze
-  extends aybk
+public abstract interface aeze
 {
-  public aeze(NearbyActivity paramNearbyActivity) {}
+  public abstract void a(View paramView, MotionEvent paramMotionEvent);
   
-  protected void a()
-  {
-    this.a.a.sendEmptyMessageDelayed(2, 0L);
-  }
-  
-  protected void b()
-  {
-    super.b();
-    NearbyActivity.a(this.a);
-  }
+  public abstract void a(View paramView, boolean paramBoolean);
 }
 
 

@@ -2,10 +2,10 @@ package cooperation.wadl.ipc;
 
 import android.content.Intent;
 import android.content.ServiceConnection;
-import bkad;
-import bmgk;
-import bmgt;
-import bnyp;
+import bifn;
+import bkkq;
+import bkkz;
+import bldt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import mqq.app.AppRuntime;
@@ -17,27 +17,27 @@ public class WadlProxyService
   
   static
   {
-    jdField_a_of_type_JavaLangString = bnyp.b + "WadlProxyService";
+    jdField_a_of_type_JavaLangString = bldt.b + "WadlProxyService";
   }
   
   public static void a(ServiceConnection paramServiceConnection)
   {
-    bkad.c(jdField_a_of_type_JavaLangString, "bindWadlService proxy WadlRemoteService");
+    bifn.c(jdField_a_of_type_JavaLangString, "bindWadlService proxy WadlRemoteService");
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
     Object localObject = localBaseApplicationImpl.getRuntime();
     Intent localIntent = new Intent(localBaseApplicationImpl, WadlProxyService.class);
     localIntent.putExtra("useSkinEngine", 1);
-    bmgt localbmgt = new bmgt(0);
-    localbmgt.b = "qqwadl.apk";
-    localbmgt.d = "qqwadl";
+    bkkz localbkkz = new bkkz(0);
+    localbkkz.b = "qqwadl.apk";
+    localbkkz.d = "qqwadl";
     if (localObject != null) {}
     for (localObject = ((AppRuntime)localObject).getAccount();; localObject = "")
     {
-      localbmgt.jdField_a_of_type_JavaLangString = ((String)localObject);
-      localbmgt.e = "com.tencent.gamecenter.wadl.ipc.WadlRemoteService";
-      localbmgt.jdField_a_of_type_AndroidContentIntent = localIntent;
-      localbmgt.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-      bmgk.c(localBaseApplicationImpl, localbmgt);
+      localbkkz.jdField_a_of_type_JavaLangString = ((String)localObject);
+      localbkkz.e = "com.tencent.gamecenter.wadl.ipc.WadlRemoteService";
+      localbkkz.jdField_a_of_type_AndroidContentIntent = localIntent;
+      localbkkz.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+      bkkq.c(localBaseApplicationImpl, localbkkz);
       return;
     }
   }

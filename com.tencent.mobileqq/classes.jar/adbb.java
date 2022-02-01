@@ -1,10 +1,49 @@
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface adbb<T>
+public class adbb
+  implements bjoe
 {
-  public abstract List<T> a();
+  public adbb(ChatSettingForTroop paramChatSettingForTroop, int paramInt, bjnw parambjnw) {}
   
-  public abstract void a(Class<? extends T> paramClass);
+  public void OnClick(View paramView, int paramInt)
+  {
+    int i = 3;
+    switch (paramInt)
+    {
+    default: 
+      i = 0;
+      paramInt = -1;
+    }
+    for (;;)
+    {
+      if (paramInt != this.jdField_a_of_type_Int) {
+        ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, paramInt);
+      }
+      try
+      {
+        this.jdField_a_of_type_Bjnw.dismiss();
+        bftc.a("Grp_msg", "grpData_admin", "Close_setmsg", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin, bftc.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a), String.valueOf(i) });
+        return;
+        i = 3;
+        paramInt = 4;
+        continue;
+        i = 1;
+        paramInt = 2;
+        continue;
+        int j = 2;
+        paramInt = i;
+        i = j;
+      }
+      catch (Exception paramView)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.i("Q.chatopttroop", 2, paramView.toString());
+      }
+    }
+  }
 }
 
 

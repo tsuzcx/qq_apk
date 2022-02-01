@@ -1,6 +1,9 @@
+import android.view.View;
+import android.view.ViewGroup;
+
 public abstract interface sgg
 {
-  public abstract void a();
+  public abstract View a(ViewGroup paramViewGroup);
 }
 
 

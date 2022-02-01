@@ -1,44 +1,21 @@
-import android.app.Dialog;
-import android.os.Handler;
-import java.util.HashMap;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 class aiov
-  extends bkia
+  implements Animation.AnimationListener
 {
-  aiov(ainh paramainh) {}
+  aiov(aiou paramaiou, aara paramaara, View paramView) {}
   
-  protected void f(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((!paramBoolean) || (paramHashMap == null))
-    {
-      this.a.D(2);
-      this.a.a.sendEmptyMessageDelayed(10, 3000L);
-      return;
-    }
-    if (((Integer)paramHashMap.get("result")).intValue() == 0)
-    {
-      this.a.D(1);
-      this.a.a.sendEmptyMessageDelayed(10, 3000L);
-      return;
-    }
-    this.a.an = true;
-    this.a.bE();
-    if ((ainh.a(this.a) != null) && (ainh.a(this.a).isShowing())) {
-      ainh.a(this.a).dismiss();
-    }
-    this.a.bF();
+    this.jdField_a_of_type_Aara.a("");
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839437);
   }
   
-  protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap)
-  {
-    if ((!paramBoolean) || (paramHashMap == null)) {
-      return;
-    }
-    this.a.aq = true;
-    this.a.ap = ((Boolean)paramHashMap.get("result")).booleanValue();
-    this.a.bE();
-    this.a.bF();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

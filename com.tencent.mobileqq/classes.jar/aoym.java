@@ -1,47 +1,16 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLDecoder;
+import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-public class aoym
-  extends aoxh
+class aoym
+  implements BusinessObserver
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  aoym(aoyk paramaoyk, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramQQAppInterface = new aoyl(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "qboss";
-    paramQQAppInterface.c = "qboss_load";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
+      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onUpdate(paramInt, paramBoolean, paramObject);
     }
-    paramContext = paramContext[1].split("&");
-    int i = 0;
-    for (;;)
-    {
-      if (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if (paramString.length == 2) {}
-        try
-        {
-          paramString[1] = URLDecoder.decode(paramString[1], "UTF-8");
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-          i += 1;
-        }
-        catch (Exception paramaoxk)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("QbossLoaderParser", 2, "failed to decode param value,tmps[1] is:" + paramString[0] + ",tmps[1] is:" + paramString[1], paramaoxk);
-            }
-          }
-        }
-      }
-    }
-    return paramQQAppInterface;
   }
 }
 

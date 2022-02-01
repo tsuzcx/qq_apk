@@ -1,33 +1,16 @@
-import com.tencent.mobileqq.together.writetogether.client.RoomController;
-import com.tencent.mobileqq.together.writetogether.websocket.HeartBeat;
-import com.tencent.mobileqq.together.writetogether.websocket.WriteTogetherWebSocketSender;
-import java.util.concurrent.LinkedBlockingDeque;
-import okhttp3.Response;
-import okhttp3.WebSocket;
-import okhttp3.WebSocketListener;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
 
-public class beqt
-  extends WebSocketListener
+class beqt
+  implements beza
 {
-  public beqt(WriteTogetherWebSocketSender paramWriteTogetherWebSocketSender) {}
+  beqt(beqp parambeqp, TroopChatPie paramTroopChatPie) {}
   
-  public void onClosed(WebSocket arg1, int paramInt, String paramString)
+  public void a(int paramInt)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    synchronized (WriteTogetherWebSocketSender.a(this.a))
-    {
-      WriteTogetherWebSocketSender.a(this.a).notify();
-      WriteTogetherWebSocketSender.a(this.a).a(true);
-      if (WriteTogetherWebSocketSender.a(this.a).size() == 0) {
-        this.a.a(WriteTogetherWebSocketSender.a(this.a).a());
-      }
-      return;
+    if (!beyy.a(paramInt)) {
+      this.jdField_a_of_type_Beqp.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie);
     }
-  }
-  
-  public void onOpen(WebSocket paramWebSocket, Response paramResponse)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherClientRoomController.a();
+    this.jdField_a_of_type_Beqp.e(beyy.b(paramInt));
   }
 }
 

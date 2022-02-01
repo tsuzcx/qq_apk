@@ -1,36 +1,18 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
+import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
 
 public class bhgr
+  implements bghm
 {
-  public static int a(Context paramContext, float paramFloat)
-  {
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
-  }
+  public bhgr(ProfileCardExtendFriendView paramProfileCardExtendFriendView) {}
   
-  public static alxc a(Context paramContext)
+  public void load(bgfo parambgfo)
   {
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
-    return new alxc(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-  }
-  
-  public static int b(Context paramContext, float paramFloat)
-  {
-    return (int)(paramFloat / paramContext.getResources().getDisplayMetrics().density + 0.5F);
-  }
-  
-  public static int c(Context paramContext, float paramFloat)
-  {
-    return (int)(paramContext.getResources().getDisplayMetrics().scaledDensity * paramFloat + 0.5F);
+    this.a.setETTextColorFromClothes(parambgfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhgr
  * JD-Core Version:    0.7.0.1
  */

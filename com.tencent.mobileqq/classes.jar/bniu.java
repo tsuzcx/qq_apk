@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.statistic.serverip.WebAppIpRecord;
-
-public final class bniu
-  implements Parcelable.Creator<WebAppIpRecord>
+public abstract interface bniu
 {
-  public WebAppIpRecord a(Parcel paramParcel)
-  {
-    return new WebAppIpRecord(paramParcel);
-  }
+  public abstract void a(int paramInt);
   
-  public WebAppIpRecord[] a(int paramInt)
-  {
-    return new WebAppIpRecord[paramInt];
-  }
+  public abstract void b();
 }
 
 

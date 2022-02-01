@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import auog;
-import bfvr;
-import bfwo;
-import bhml;
+import befc;
+import befz;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.qphone.base.util.MD5;
 
 public class TroopFileDownloadWorker$1
   implements Runnable
 {
-  public TroopFileDownloadWorker$1(bfwo parambfwo) {}
+  public TroopFileDownloadWorker$1(befz parambefz) {}
   
   public void run()
   {
     if (this.this$0.b)
     {
-      bfvr.b("TroopFileDownloadWorker", bfvr.a, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] start. had stoped");
+      befc.b("TroopFileDownloadWorker", befc.a, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] start. had stoped");
       return;
     }
     this.this$0.c();
     String str = MD5.toMD5(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath);
     this.this$0.d = (this.this$0.c + str);
-    str = this.this$0.c + bhml.a(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath.getBytes()) + ".tmp";
-    if (auog.a(str) > 0L)
+    str = this.this$0.c + HexUtil.bytes2HexStr(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath.getBytes()) + ".tmp";
+    if (FileUtil.getFileSize(str) > 0L)
     {
-      bfvr.b("TroopFileDownloadWorker", bfvr.a, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] start. use oldVerTmpPath to resume.");
+      befc.b("TroopFileDownloadWorker", befc.a, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] start. use oldVerTmpPath to resume.");
       this.this$0.d = str;
     }
     this.this$0.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.TmpFile = this.this$0.d;

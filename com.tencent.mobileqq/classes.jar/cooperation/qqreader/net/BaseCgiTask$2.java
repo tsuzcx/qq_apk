@@ -1,15 +1,15 @@
 package cooperation.qqreader.net;
 
-import bmqa;
+import bkuh;
 
 class BaseCgiTask$2
   implements Runnable
 {
-  BaseCgiTask$2(BaseCgiTask paramBaseCgiTask1, bmqa parambmqa, BaseCgiTask paramBaseCgiTask2, Exception paramException) {}
+  BaseCgiTask$2(BaseCgiTask paramBaseCgiTask1, bkuh parambkuh, BaseCgiTask paramBaseCgiTask2, Exception paramException) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bmqa.a(this.jdField_a_of_type_CooperationQqreaderNetBaseCgiTask, this.jdField_a_of_type_JavaLangException.getMessage());
+    this.jdField_a_of_type_Bkuh.a(this.jdField_a_of_type_CooperationQqreaderNetBaseCgiTask, this.jdField_a_of_type_JavaLangException.getMessage());
   }
 }
 

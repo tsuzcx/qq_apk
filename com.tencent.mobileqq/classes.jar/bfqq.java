@@ -1,98 +1,106 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic.4.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class bfqq
-  extends anua
+  implements Handler.Callback
 {
-  bfqq(bfqm parambfqm) {}
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  protected void h(boolean paramBoolean, Object paramObject)
+  public bfqq(QQAppInterface paramQQAppInterface)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Anua);
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    for (Activity localActivity = null;; localActivity = (Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get())
-    {
-      this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
-      if (this.a.jdField_a_of_type_Bfqv != null) {
-        break;
-      }
-      bfqm.a(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_MqqOsMqqHandler = new bjmp(ThreadManager.getFileThreadLooper(), this);
+  }
+  
+  public Setting a(String paramString)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFaceSetting(paramString);
+  }
+  
+  public String a()
+  {
+    return ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(1)).getChoosedIP();
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage();
+    localMessage.what = 1;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("headType", paramInt1);
+    localBundle.putString("id", paramString);
+    localBundle.putInt("idType", paramInt2);
+    localMessage.setData(localBundle);
+    localMessage.sendToTarget();
+  }
+  
+  public void a(Setting paramSetting)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.updateSettingTableCache(paramSetting);
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    localEntityManager.persistOrReplace(paramSetting);
+    localEntityManager.close();
+  }
+  
+  public void a(ArrayList<String> paramArrayList, long paramLong)
+  {
+    if (paramLong <= 0L) {
       return;
     }
-    int i = -1;
-    if (paramObject == null)
-    {
-      QLog.i("TroopCreateLogic", 1, "onGetTroopCreate data null");
-      bfqm.a(this.a);
-      this.a.jdField_a_of_type_Bfqv.a(-1, "");
-      this.a.jdField_a_of_type_Bfqv = null;
-      return;
-    }
-    if (!paramBoolean) {}
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    EntityTransaction localEntityTransaction = localEntityManager.getTransaction();
+    localEntityTransaction.begin();
+    int i = 0;
     try
     {
-      int j = ((bfqx)paramObject).jdField_a_of_type_Int;
-      i = j;
-    }
-    catch (Exception paramObject)
-    {
-      label135:
-      String str;
-      break label135;
-    }
-    QLog.i("TroopCreateLogic", 1, "onGetTroopCreate retCode:" + i + "  currentUin:" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-    bfqm.a(this.a);
-    this.a.jdField_a_of_type_Bfqv.a(i, "");
-    return;
-    paramObject = (TroopInfo)paramObject;
-    str = paramObject.troopuin;
-    if (TextUtils.isEmpty(str))
-    {
-      QLog.i("TroopCreateLogic", 1, "onGetTroopCreate troopUin:" + str);
-      bfqm.a(this.a);
-      this.a.jdField_a_of_type_Bfqv.a(-1, "");
-      this.a.jdField_a_of_type_Bfqv = null;
+      while (i < paramArrayList.size())
+      {
+        Setting localSetting = (Setting)localEntityManager.find(Setting.class, (String)paramArrayList.get(i));
+        if (localSetting != null)
+        {
+          localSetting.updateTimestamp = paramLong;
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.updateSettingTableCache(localSetting);
+          localEntityManager.update(localSetting);
+        }
+        i += 1;
+      }
       return;
     }
-    this.a.jdField_a_of_type_Bfqw.f = str;
-    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_create", "", "new_create", "number", 0, 0, str, Integer.toString(this.a.jdField_a_of_type_Bfqw.jdField_a_of_type_Int), "", "");
-    if (this.a.jdField_a_of_type_Bfqw.jdField_a_of_type_JavaUtilList == null)
+    catch (Exception paramArrayList)
     {
-      i = 1;
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_create_new", "", "suc_create", "person_create", 0, 0, str, "" + this.a.jdField_a_of_type_Bfqw.d, "" + i, "");
-      QLog.i("TroopCreateLogic", 1, "onGetTroopCreate success troopUin:" + str + " number:" + i + "  createFrom:" + this.a.jdField_a_of_type_Bfqw.d);
-      ThreadManager.post(new TroopCreateLogic.4.1(this, str, paramObject, i), 8, null, true);
-      if (this.a.jdField_a_of_type_Bfqw.b)
-      {
-        paramObject = localActivity;
-        if (localActivity == null) {
-          paramObject = BaseApplicationImpl.getContext();
-        }
-        this.a.a(paramObject, str);
-      }
-      this.a.jdField_a_of_type_Bfqv.a(0, str);
-      if (this.a.jdField_a_of_type_Bfqw.jdField_a_of_type_JavaUtilList.size() <= 0) {
-        break label634;
-      }
-      ((aoip)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(str, this.a.jdField_a_of_type_Bfqw.jdField_a_of_type_JavaUtilList, "");
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a.jdField_a_of_type_Aojs);
+      paramArrayList.printStackTrace();
+      localEntityTransaction.commit();
+      localEntityTransaction.end();
+    }
+  }
+  
+  public String b()
+  {
+    return ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(1)).getChoosedStrangerGroupIP();
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
     for (;;)
     {
-      bfqm.a(this.a);
-      return;
-      i = this.a.jdField_a_of_type_Bfqw.jdField_a_of_type_JavaUtilList.size();
-      break;
-      label634:
-      this.a.jdField_a_of_type_Bfqv = null;
+      return false;
+      paramMessage.what = 4139;
+      ConnectNearbyProcService.a(paramMessage);
     }
   }
 }

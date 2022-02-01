@@ -1,27 +1,122 @@
-import android.view.View;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
 
-public abstract interface bcfr
-  extends bcfo
+public class bcfr
 {
-  public abstract int a();
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
+  private TreeMap<bcfs, String> jdField_a_of_type_JavaUtilTreeMap;
   
-  public abstract CharSequence a();
+  private String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nBusiness\n");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeMap.entrySet().iterator();
+    int i = 0;
+    if (localIterator.hasNext())
+    {
+      localObject = (Map.Entry)localIterator.next();
+      if (i < 20) {}
+    }
+    else
+    {
+      return localStringBuilder.toString();
+    }
+    localStringBuilder.append("fd: ").append((String)((Map.Entry)localObject).getValue()).append(" ").append("(").append("count: ").append(((bcfs)((Map.Entry)localObject).getKey()).jdField_a_of_type_Int).append(")").append("\n");
+    Object localObject = new ArrayList(((bcfs)((Map.Entry)localObject).getKey()).jdField_a_of_type_JavaUtilHashMap.values());
+    Collections.sort((List)localObject);
+    localObject = ((List)localObject).iterator();
+    int j = 0;
+    for (;;)
+    {
+      bcfs localbcfs;
+      if (((Iterator)localObject).hasNext())
+      {
+        localbcfs = (bcfs)((Iterator)localObject).next();
+        if (j >= 5) {
+          localStringBuilder.append("\t\t").append("…").append("\n");
+        }
+      }
+      else
+      {
+        i += 1;
+        break;
+      }
+      j += 1;
+      localStringBuilder.append("\t\t").append(localbcfs.jdField_a_of_type_JavaLangString).append("(").append("count: ").append(localbcfs.jdField_a_of_type_Int).append(")").append("\n");
+    }
+  }
   
-  public abstract String a();
+  private void a(bcft parambcft)
+  {
+    parambcft.a();
+    c(parambcft);
+    b(parambcft);
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
+  private String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\nSystem\n");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      localStringBuilder.append("fd: ").append((String)localEntry.getKey()).append(" ").append("(").append("count: ").append(localEntry.getValue()).append(")").append("\n");
+    }
+    return localStringBuilder.toString();
+  }
   
-  public abstract void a(View paramView);
+  private void b(bcft parambcft)
+  {
+    Object localObject = parambcft.a();
+    parambcft = new HashMap(20);
+    localObject = ((HashMap)localObject).entrySet().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+      String str = (String)localEntry.getValue();
+      if (bcft.a(str) == null) {
+        parambcft.put(localEntry.getKey(), str);
+      }
+    }
+    this.jdField_a_of_type_JavaUtilTreeMap = new TreeMap(parambcft);
+  }
   
-  public abstract boolean a();
+  private void c(bcft parambcft)
+  {
+    this.jdField_a_of_type_JavaUtilMap = new HashMap(10);
+    parambcft = parambcft.b().entrySet().iterator();
+    while (parambcft.hasNext())
+    {
+      Object localObject = (Map.Entry)parambcft.next();
+      bcfs localbcfs = (bcfs)((Map.Entry)localObject).getKey();
+      localObject = (String)((Map.Entry)localObject).getValue();
+      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(localObject))
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(localObject, Integer.valueOf(localbcfs.jdField_a_of_type_Int));
+      }
+      else
+      {
+        Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+        Map localMap = this.jdField_a_of_type_JavaUtilMap;
+        int i = localInteger.intValue();
+        localMap.put(localObject, Integer.valueOf(localbcfs.jdField_a_of_type_Int + i));
+      }
+    }
+  }
   
-  public abstract int b();
-  
-  public abstract CharSequence b();
-  
-  public abstract CharSequence c();
-  
-  public abstract CharSequence d();
+  public String a(bcft parambcft)
+  {
+    a(parambcft);
+    return a() + b();
+  }
 }
 
 

@@ -1,55 +1,127 @@
-import android.content.Context;
-import android.content.Intent;
+import Wallet.DownloadReportReq;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.webkit.URLUtil;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.Map;
 
-class akbq
-  implements View.OnClickListener
+public class akbq
+  extends bgod
 {
-  akbq(akbo paramakbo, String paramString, akbt paramakbt, MessageRecord paramMessageRecord) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public akbq(PreloadResource paramPreloadResource, int paramInt, WeakReference paramWeakReference, bgod parambgod, long paramLong) {}
+  
+  public void onDoneFile(bgoe parambgoe)
   {
-    Object localObject2;
-    if (!this.jdField_a_of_type_Akbo.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.c) {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        localObject1 = null;
-        int i = this.jdField_a_of_type_JavaLangString.lastIndexOf("#");
-        if (i > 0) {
-          localObject1 = this.jdField_a_of_type_JavaLangString.substring(i);
-        }
-        localObject2 = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
-        if (localObject1 == null) {
-          break label188;
-        }
-      }
+    Object localObject = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (PreloadManager.a((PreloadManager)localObject)) {
+      ((PreloadManager)localObject).c();
     }
-    label188:
-    for (Object localObject1 = (String)localObject2 + (String)localObject1;; localObject1 = localObject2)
+    if (this.jdField_a_of_type_Bgod != null) {
+      this.jdField_a_of_type_Bgod.onDoneFile(parambgoe);
+    }
+    localObject = new DownloadReportReq();
+    int i;
+    File localFile;
+    long l;
+    if (parambgoe.jdField_a_of_type_Int == 0)
     {
-      localObject2 = new Intent(this.jdField_a_of_type_Akbo.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      ((Intent)localObject2).putExtra("url", (String)localObject1);
-      this.jdField_a_of_type_Akbo.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject2);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      boolean bool = akbt.a(this.jdField_a_of_type_Akbt).isChecked();
-      akbo.a(this.jdField_a_of_type_Akbo).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      localObject1 = akbt.a(this.jdField_a_of_type_Akbt);
-      if (!bool) {}
-      for (bool = true;; bool = false)
+      ((DownloadReportReq)localObject).iType = 1;
+      int j = -1;
+      i = j;
+      if (parambgoe.jdField_a_of_type_JavaUtilMap != null)
       {
-        ((CheckBox)localObject1).setChecked(bool);
-        break;
+        i = j;
+        if (!TextUtils.isEmpty(parambgoe.jdField_a_of_type_JavaLangString))
+        {
+          localFile = (File)parambgoe.jdField_a_of_type_JavaUtilMap.get(parambgoe.jdField_a_of_type_JavaLangString);
+          if (localFile != null) {
+            break label242;
+          }
+          l = -2L;
+          label113:
+          i = (int)l;
+        }
       }
     }
+    for (;;)
+    {
+      for (;;)
+      {
+        ((DownloadReportReq)localObject).vecResInfo = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.getMyResInfos(i);
+        ((DownloadReportReq)localObject).iUin = this.jdField_a_of_type_Long;
+        ((DownloadReportReq)localObject).sPhoneType = DeviceInfoUtil.getModel();
+        ((DownloadReportReq)localObject).sOsVersion = DeviceInfoUtil.getDeviceOSVersion();
+        ((DownloadReportReq)localObject).sQQVersion = DeviceInfoUtil.getQQVersion();
+        ((DownloadReportReq)localObject).iScene = parambgoe.a().getInt("scene");
+        ajvh.a((JceStruct)localObject, null);
+        if (QLog.isColorLevel()) {
+          QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + " flow down result:" + parambgoe.jdField_a_of_type_Int + localObject);
+        }
+        return;
+        ((DownloadReportReq)localObject).iType = 2;
+        break;
+        try
+        {
+          label242:
+          if (localFile.exists())
+          {
+            l = localFile.length();
+            break label113;
+          }
+          l = -3L;
+        }
+        catch (Throwable localThrowable)
+        {
+          i = -4;
+          localThrowable.printStackTrace();
+        }
+      }
+    }
+  }
+  
+  public void onProgress(bgoe parambgoe)
+  {
+    double d;
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      long l1 = System.currentTimeMillis();
+      long l2 = parambgoe.g;
+      d = parambgoe.f / (l1 - l2);
+      if (d >= 1.0D) {
+        break label43;
+      }
+    }
+    label43:
+    do
+    {
+      return;
+      parambgoe = new DownloadReportReq();
+      parambgoe.sSpeed = (d + "");
+      parambgoe.vecResInfo = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.getMyResInfos();
+      parambgoe.iType = 0;
+      parambgoe.iUin = this.jdField_a_of_type_Long;
+      ajvh.a(parambgoe, null);
+    } while (!QLog.isColorLevel());
+    QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + " flow down speed:" + d);
+  }
+  
+  public boolean onStart(bgoe parambgoe)
+  {
+    int i = 3;
+    parambgoe.f = 1048576L;
+    if (this.jdField_a_of_type_Int > 3) {
+      i = this.jdField_a_of_type_Int;
+    }
+    parambgoe.b = i;
+    return super.onStart(parambgoe);
   }
 }
 

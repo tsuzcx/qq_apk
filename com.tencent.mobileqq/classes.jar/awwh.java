@@ -1,26 +1,19 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import com.tencent.mobileqq.loverzone.LoveZoneTabRedDotView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class awwh
-  implements Drawable.Callback
+class awwh
+  implements Animation.AnimationListener
 {
-  public awwh(LoveZoneTabRedDotView paramLoveZoneTabRedDotView) {}
+  awwh(awwf paramawwf) {}
   
-  public void invalidateDrawable(Drawable paramDrawable)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.invalidate();
+    this.a.dismiss();
   }
   
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
-  {
-    this.a.scheduleDrawable(paramDrawable, paramRunnable, paramLong);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
-  {
-    this.a.unscheduleDrawable(paramDrawable, paramRunnable);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

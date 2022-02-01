@@ -1,32 +1,33 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-public class bjju
-  implements View.OnLayoutChangeListener
+class bjju
+  implements bjjo
 {
-  public bjju(AuthorityAccountView paramAuthorityAccountView, RelativeLayout paramRelativeLayout) {}
+  bjju(bjjt parambjjt) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void a(int paramInt1, int paramInt2)
   {
-    paramInt1 = paramView.getHeight();
-    paramInt2 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("AuthorityAccountView", 2, paramInt1 + " /  / " + paramInt2);
-    }
-    paramView = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    if (paramView == null) {
-      paramView = new RelativeLayout.LayoutParams(-1, -2);
-    }
-    for (;;)
-    {
-      paramView.addRule(12);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
-      return;
-      paramView.height = -2;
+    if (paramInt1 == 1) {
+      synchronized (bjjt.a(this.a))
+      {
+        Object localObject2 = (List)bjjt.a(this.a).get(Integer.valueOf(paramInt2));
+        if (localObject2 != null)
+        {
+          bjjt.a(this.a).remove(Integer.valueOf(paramInt2));
+          bjjt.a(this.a);
+        }
+        if (localObject2 != null)
+        {
+          ??? = ((List)localObject2).iterator();
+          if (((Iterator)???).hasNext())
+          {
+            localObject2 = (bjjv)((Iterator)???).next();
+            bjjt.a(this.a).a(((bjjv)localObject2).jdField_a_of_type_Int, ((bjjv)localObject2).b, ((bjjv)localObject2).c, new Object[] { ((bjjv)localObject2).jdField_a_of_type_ArrayOfByte }, null);
+          }
+        }
+      }
     }
   }
 }

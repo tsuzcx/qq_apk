@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qlink.SendMsg;
+import android.arch.lifecycle.MutableLiveData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.tavcut.session.TAVCutVideoSession;
+import com.tencent.weseevideo.camera.mvauto.redo.CutModelKt;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
+import java.util.List;
 
-public final class bmjx
-  implements Parcelable.Creator<SendMsg>
+class bmjx
+  implements DialogInterface.OnClickListener
 {
-  public SendMsg a(Parcel paramParcel)
-  {
-    return new SendMsg(paramParcel);
-  }
+  bmjx(bmjw parambmjw, CutModelKt paramCutModelKt) {}
   
-  public SendMsg[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new SendMsg[paramInt];
+    if (AEEditorMultiCutEditFragment.a(this.jdField_a_of_type_Bmjw.a).size() <= 2) {
+      AEEditorMultiCutEditFragment.b(this.jdField_a_of_type_Bmjw.a).setImageResource(2130837904);
+    }
+    AEEditorMultiCutEditFragment.a(this.jdField_a_of_type_Bmjw.a, 0L);
+    AEEditorMultiCutEditFragment.a(this.jdField_a_of_type_Bmjw.a).a.postValue(bmkc.a(this.jdField_a_of_type_ComTencentWeseevideoCameraMvautoRedoCutModelKt.getUuid(), AEEditorMultiCutEditFragment.a(this.jdField_a_of_type_Bmjw.a), AEEditorMultiCutEditFragment.a(this.jdField_a_of_type_Bmjw.a).getMediaModel()));
   }
 }
 

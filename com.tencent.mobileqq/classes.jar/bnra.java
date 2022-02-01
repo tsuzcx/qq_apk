@@ -1,8 +1,27 @@
-import android.graphics.drawable.Drawable;
+import android.util.Property;
 
-public abstract interface bnra
+class bnra
+  extends Property<bnqy, Integer>
 {
-  public abstract void a(Drawable paramDrawable);
+  bnra(bnqy parambnqy, Class paramClass, String paramString)
+  {
+    super(paramClass, paramString);
+  }
+  
+  public Integer a(bnqy parambnqy)
+  {
+    if (parambnqy != null) {
+      return Integer.valueOf(bnqy.a(parambnqy));
+    }
+    return Integer.valueOf(0);
+  }
+  
+  public void a(bnqy parambnqy, Integer paramInteger)
+  {
+    if (parambnqy != null) {
+      bnqy.a(parambnqy, paramInteger.intValue());
+    }
+  }
 }
 
 

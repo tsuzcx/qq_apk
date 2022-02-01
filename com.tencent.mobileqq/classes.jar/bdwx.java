@@ -1,12 +1,26 @@
-class bdwx
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class bdwx
+  implements AdapterView.OnItemClickListener
 {
-  Object jdField_a_of_type_JavaLangObject;
-  String jdField_a_of_type_JavaLangString;
+  public bdwx(NewTroopContactView paramNewTroopContactView) {}
   
-  public bdwx(String paramString, Object paramObject)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    String str = ((ResultRecord)paramView.getTag()).uin;
+    if (this.a.a(str))
+    {
+      NewTroopContactView.a(this.a, str);
+      this.a.a.notifyDataSetChanged();
+      this.a.b(false);
+      NewTroopContactView.a(this.a);
+    }
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

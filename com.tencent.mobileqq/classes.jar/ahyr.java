@@ -1,13 +1,18 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ahyr
-  implements ahyf
+  implements View.OnClickListener
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public ahyr(SearchBaseActivity paramSearchBaseActivity) {}
+  
+  public void onClick(View paramView)
   {
-    paramahed.a(paramahfq, paramString);
+    this.a.setResult(1);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

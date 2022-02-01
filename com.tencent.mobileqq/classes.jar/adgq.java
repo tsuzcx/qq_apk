@@ -1,21 +1,22 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
 public class adgq
-  implements adci
 {
-  public static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, long paramLong)
-  {
-    ((KandianMergeManager)paramQQAppInterface.getManager(162)).a(paramArrayOfByte, paramLong);
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public adgq(FontSettingActivity paramFontSettingActivity, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
   {
-    a(paramadan.a(), paramMsgType0x210.vProtobuf, paramMsgInfo.uRealMsgTime);
-    return null;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 

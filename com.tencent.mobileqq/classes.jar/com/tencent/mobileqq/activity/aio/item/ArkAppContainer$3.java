@@ -1,17 +1,21 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agyw;
-import com.tencent.ark.open.ArkAppInfo.TimeRecord;
+import afvi;
+import com.tencent.qphone.base.util.QLog;
 
 public class ArkAppContainer$3
   implements Runnable
 {
-  public ArkAppContainer$3(agyw paramagyw) {}
+  public ArkAppContainer$3(afvi paramafvi, String paramString) {}
   
   public void run()
   {
-    this.this$0.a.doReport();
-    this.this$0.a.doExtraTimeReport();
+    this.this$0.a.getAppFromLocal = true;
+    this.this$0.a.endOfGetApp = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkApp.ArkAppContainer", 2, String.format("getAppPathByNameFromLocal.in.wrapper: %h", new Object[] { this }));
+    }
+    this.this$0.a(this.a, 0, null);
   }
 }
 

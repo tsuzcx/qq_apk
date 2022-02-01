@@ -1,230 +1,44 @@
-import android.app.Dialog;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.TroopMemberListSlideItem;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class afvo
-  implements View.OnClickListener
+class afvo
+  extends Handler
 {
-  public afvo(TroopMemberListActivity paramTroopMemberListActivity) {}
-  
-  public void onClick(View paramView)
+  afvo(afvn paramafvn, Looper paramLooper)
   {
-    boolean bool3 = false;
-    boolean bool2 = false;
-    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof String))) {}
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.obj == null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 4: 
+        afvn.a(this.a);
+        return;
+      }
+      afvn.a(this.a, true);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberListActivityget_troop_member", 2, "mOnKickOutBtnClickListener onclick");
-      }
-      int j = paramView.getId();
-      Object localObject1 = (String)paramView.getTag();
-      boolean bool1 = ((String)localObject1).equals(this.a.e);
-      int i;
-      if ((this.a.f != null) && (this.a.f.contains((CharSequence)localObject1)))
-      {
-        i = 1;
-        label100:
-        boolean bool4 = this.a.app.getCurrentAccountUin().equals(this.a.e);
-        if (((!bool4) || (((String)localObject1).equals(this.a.app.getCurrentAccountUin()))) && ((bool4) || (bool1) || (i != 0))) {
-          break label314;
-        }
-        i = 1;
-      }
-      Object localObject2;
-      for (;;)
-      {
-        if (j == 2131365350)
-        {
-          localObject2 = paramView.findViewById(2131365351);
-          bool1 = bool2;
-          if (((View)localObject2).getTag() != null)
-          {
-            bool1 = bool2;
-            if ((((View)localObject2).getTag() instanceof Boolean)) {
-              bool1 = ((Boolean)((View)localObject2).getTag()).booleanValue();
-            }
-          }
-          localObject2 = this.a.a((String)localObject1, bool1);
-          if (this.a.jdField_d_of_type_Int == 20)
-          {
-            if (localObject2 == null) {
-              break;
-            }
-            localObject1 = ((afwl)localObject2).a.getTag();
-            if ((localObject1 == null) || (!(localObject1 instanceof Integer))) {
-              break;
-            }
-            i = ((Integer)localObject1).intValue();
-            if (i < 0) {
-              break;
-            }
-            localObject1 = (afwe)this.a.jdField_a_of_type_Afwg.getItem(i);
-            this.a.a((afwe)localObject1);
-            break;
-            i = 0;
-            break label100;
-            label314:
-            i = 0;
-            continue;
-          }
-          if (this.a.jdField_d_of_type_Boolean)
-          {
-            if (this.a.jdField_a_of_type_Afwg.jdField_b_of_type_JavaUtilList.contains(localObject1)) {
-              this.a.jdField_a_of_type_Afwg.jdField_b_of_type_JavaUtilList.remove(localObject1);
-            }
-            for (;;)
-            {
-              TroopMemberListActivity.a(this.a);
-              this.a.jdField_a_of_type_Afwg.notifyDataSetChanged();
-              break;
-              if (i != 0) {
-                this.a.jdField_a_of_type_Afwg.jdField_b_of_type_JavaUtilList.add(localObject1);
-              }
-            }
-          }
-          if (bool1)
-          {
-            if (this.a.u.equals(localObject1)) {
-              break;
-            }
-            if (localObject2 != null) {
-              ((afwl)localObject2).a.a(true);
-            }
-            if (!TextUtils.isEmpty(this.a.u))
-            {
-              localObject2 = this.a.a(this.a.u, bool1);
-              if (localObject2 != null) {
-                ((afwl)localObject2).a.b(true);
-              }
-            }
-            this.a.u = ((String)localObject1);
-            break;
-          }
-          if (this.a.t.equals(localObject1)) {
-            break;
-          }
-          if (localObject2 != null) {
-            ((afwl)localObject2).a.a(true);
-          }
-          if (!TextUtils.isEmpty(this.a.t))
-          {
-            localObject2 = this.a.a(this.a.t, bool1);
-            if (localObject2 != null) {
-              ((afwl)localObject2).a.b(true);
-            }
-          }
-          this.a.t = ((String)localObject1);
-          break;
-        }
-      }
-      if (j == 2131377787)
-      {
-        localObject2 = paramView.findViewById(2131379943);
-        bool1 = bool3;
-        if (((View)localObject2).getTag() != null)
-        {
-          bool1 = bool3;
-          if ((((View)localObject2).getTag() instanceof Boolean)) {
-            bool1 = ((Boolean)((View)localObject2).getTag()).booleanValue();
-          }
-        }
-        if (this.a.jdField_d_of_type_Boolean)
-        {
-          if (!this.a.jdField_a_of_type_Afwg.jdField_b_of_type_JavaUtilList.contains(localObject1)) {
-            break label767;
-          }
-          this.a.jdField_a_of_type_Afwg.jdField_b_of_type_JavaUtilList.remove(localObject1);
-        }
-        for (;;)
-        {
-          TroopMemberListActivity.a(this.a);
-          this.a.jdField_a_of_type_Afwg.notifyDataSetChanged();
-          if (!bool1) {
-            break label792;
-          }
-          localObject1 = this.a.a(this.a.u, bool1);
-          if (localObject1 != null)
-          {
-            ((afwl)localObject1).a.b(true);
-            this.a.u = "";
-          }
-          this.a.jdField_a_of_type_Afwi.notifyDataSetChanged();
-          break;
-          label767:
-          if (i != 0) {
-            this.a.jdField_a_of_type_Afwg.jdField_b_of_type_JavaUtilList.add(localObject1);
-          }
-        }
-        label792:
-        localObject1 = this.a.a(this.a.t, bool1);
-        if (localObject1 != null)
-        {
-          ((afwl)localObject1).a.b(true);
-          this.a.t = "";
-        }
-      }
-      else if ((j == 2131363842) && (this.a.c))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopMemberListActivityget_troop_member", 2, "delBtn onClick, uin=" + (String)localObject1);
-        }
-        if (!bhnv.d(BaseApplication.getContext()))
-        {
-          if (this.a.isResume()) {
-            QQToast.a(this.a, this.a.getString(2131693965), 0).b(this.a.getTitleBarHeight());
-          }
-        }
-        else if (this.a.jdField_d_of_type_Int == 1)
-        {
-          this.a.d((String)localObject1);
-        }
-        else if (this.a.jdField_d_of_type_Int == 13)
-        {
-          localObject2 = this.a.a((String)localObject1);
-          this.a.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
-          this.a.jdField_a_of_type_Afwg.a();
-          if (this.a.jdField_b_of_type_AndroidAppDialog.isShowing())
-          {
-            if (localObject2 != null) {
-              this.a.jdField_b_of_type_JavaUtilList.remove(localObject2);
-            }
-            this.a.jdField_a_of_type_Afwi.notifyDataSetChanged();
-          }
-        }
-        else if (this.a.jdField_d_of_type_Int == 21)
-        {
-          localObject2 = this.a.a((String)localObject1);
-          this.a.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
-          this.a.jdField_a_of_type_Afwg.a();
-          if (this.a.jdField_b_of_type_AndroidAppDialog.isShowing())
-          {
-            if (localObject2 != null) {
-              this.a.jdField_b_of_type_JavaUtilList.remove(localObject2);
-            }
-            this.a.jdField_a_of_type_Afwi.notifyDataSetChanged();
-          }
-        }
-        else
-        {
-          localObject2 = new ArrayList();
-          ((List)localObject2).add(Long.valueOf(Long.parseLong((String)localObject1)));
-          TroopMemberListActivity.a(this.a, (List)localObject2);
-        }
-      }
     }
+    WeakReference localWeakReference = (WeakReference)paramMessage.obj;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      afvn.a(this.a, localWeakReference);
+      return;
+    case 2: 
+      afvn.b(this.a, localWeakReference);
+      return;
+    }
+    afvn.c(this.a, localWeakReference);
   }
 }
 

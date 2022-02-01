@@ -1,96 +1,76 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.util.SystemUtil;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
+import java.io.File;
 
 public class lbe
-  extends QIPCModule
 {
-  private lbg a;
-  
-  private lbe()
+  public static String a()
   {
-    super("AioShareMusicIPCWebClient");
+    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "qav" + File.separator);
   }
   
-  public static lbe a()
+  public static String b()
   {
-    return lbh.a();
+    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "ptv_template" + File.separator);
   }
   
-  public static void a(JSONObject paramJSONObject, String paramString, EIPCResultCallback paramEIPCResultCallback)
+  public static String c()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("data", paramJSONObject.toString());
-    QIPCClientHelper.getInstance().getClient().callServer("AioShareMusicIPCMainClient", paramString, localBundle, paramEIPCResultCallback);
+    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "new_ptv_template" + File.separator);
   }
   
-  public void a()
+  public static String d()
   {
-    try
+    return c() + "new_ptv_template_usable" + File.separator;
+  }
+  
+  public static String e()
+  {
+    return a() + "effect";
+  }
+  
+  public static String f()
+  {
+    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "funcall" + File.separator);
+  }
+  
+  public static String g()
+  {
+    if (SystemUtil.isExistSDCard()) {}
+    for (String str1 = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH);; str1 = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath())
     {
-      this.a = null;
-      if (QIPCClientHelper.getInstance().getClient() != null)
+      String str2 = str1;
+      if (str1 != null)
       {
-        QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
-        if (QLog.isColorLevel()) {
-          QLog.d("AioShareMusic.AioShareMusicIPCWebClient", 2, "unregister real");
+        str2 = str1;
+        if (!str1.endsWith(File.separator)) {
+          str2 = str1 + File.separator;
         }
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("AioShareMusic.AioShareMusicIPCWebClient", 1, "unregister ipc module error.", localException);
+      return str2 + "pddata/prd/" + "av_redpacket" + File.separator;
     }
   }
   
-  public void a(lbg paramlbg)
+  public static String h()
   {
-    if (this.a != null) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        lbe locallbe = a();
-        this.a = paramlbg;
-        QIPCClientHelper.getInstance().register(locallbe);
-        if (QLog.isColorLevel())
-        {
-          QLog.d("AioShareMusic.AioShareMusicIPCWebClient", 2, "register real");
-          return;
-        }
-      }
-      catch (Exception paramlbg)
-      {
-        QLog.e("AioShareMusic.AioShareMusicIPCWebClient", 1, "register ipc module error.", paramlbg);
-      }
-    }
+    return a() + "beauty" + File.separator;
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public static String i()
   {
-    try
-    {
-      paramBundle = new JSONObject(paramBundle.getString("data"));
-      if (this.a != null) {
-        this.a.a(paramString, paramBundle);
-      }
-      return null;
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
+    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "av_image_data" + File.separator);
+  }
+  
+  public static String j()
+  {
+    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "av_report_record_dir");
+  }
+  
+  public static String k()
+  {
+    return BaseApplicationImpl.getLogExternalPath(BaseApplicationImpl.getContext()) + "/tencent/msflogs/com/tencent/mobileqq/";
   }
 }
 

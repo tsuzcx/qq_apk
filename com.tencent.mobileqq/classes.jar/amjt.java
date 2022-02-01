@@ -1,35 +1,54 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.2;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.4;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.6;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class amjt
-  extends Handler
+public final class amjt
+  implements acjr
 {
-  public amjt(SpecailCareListActivity paramSpecailCareListActivity) {}
+  final String jdField_a_of_type_JavaLangString = "https://open.hudong.qq.com/devtool/authorize";
   
-  public void handleMessage(Message paramMessage)
+  public amjt(int paramInt1, int paramInt2, String paramString1, String paramString2) {}
+  
+  private String[] a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
-      return;
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
-      QQToast.a(BaseApplication.getContext(), 1, 2131693965, 0).b(this.a.getTitleBarHeight());
-      return;
-      if (this.a.jdField_a_of_type_Bjbs == null) {
-        this.a.jdField_a_of_type_Bjbs = new bjbs(this.a, this.a.getTitleBarHeight());
-      }
-      this.a.jdField_a_of_type_Bjbs.c(2131698420);
-    } while ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Bjbs.isShowing()));
-    this.a.jdField_a_of_type_Bjbs.show();
+    return new String[] { "Content-Type", "application/x-www-form-urlencoded", "Content-Length", "" + paramInt, "Cookie", "uin=" + this.jdField_b_of_type_JavaLangString + ";skey=" + this.c };
   }
+  
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
+  {
+    paramString = "openID=&&accesstoken=&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=2";
+    ThreadManager.post(new ApolloGameUtil.6.6(this, paramString, a(paramString.length()), new amjw(this)), 8, null, false);
+  }
+  
+  public void onPermission(int paramInt)
+  {
+    String str = "openID=&&accesstoken=&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=0";
+    ThreadManager.post(new ApolloGameUtil.6.2(this, str, a(str.length()), new amju(this)), 8, null, false);
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    QLog.d("ApolloGameUtil", 2, new Object[] { "get openid and accessToken on Success result = ", paramJSONObject.toString() });
+    try
+    {
+      String str = paramJSONObject.optString("openid");
+      paramJSONObject = paramJSONObject.optString("access_token");
+      paramJSONObject = "openID=" + str + "&&accesstoken=" + paramJSONObject + "&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=1";
+      ThreadManager.post(new ApolloGameUtil.6.4(this, paramJSONObject, a(paramJSONObject.length()), new amjv(this)), 8, null, false);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      QLog.e("ApolloGameUtil", 2, "getOpenIdAndAccessToken failed ", paramJSONObject);
+    }
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

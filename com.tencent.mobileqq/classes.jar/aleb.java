@@ -1,61 +1,35 @@
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
 
 public class aleb
+  implements alep
 {
-  private static volatile aleb jdField_a_of_type_Aleb;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  public aleb(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
   
-  public static aleb a()
+  public void a(boolean paramBoolean)
   {
-    if (jdField_a_of_type_Aleb == null) {}
-    try
-    {
-      if (jdField_a_of_type_Aleb == null) {
-        jdField_a_of_type_Aleb = new aleb();
-      }
-      return jdField_a_of_type_Aleb;
-    }
-    finally {}
-  }
-  
-  private void b()
-  {
-    this.b = true;
     if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "begin connect:");
+      QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
     }
-    QIPCClientHelper.getInstance().getClient().addListener(new alec(this));
-    long l = System.currentTimeMillis();
-    QIPCClientHelper.getInstance().getClient().connect(new aled(this, l));
-  }
-  
-  public void a()
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
-      b();
-    }
-    if (!this.jdField_a_of_type_Boolean) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
       {
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (!bool) {}
-        try
-        {
-          this.jdField_a_of_type_JavaLangObject.wait(500L);
-          return;
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            localInterruptedException.printStackTrace();
-          }
-        }
+        QQSpecialCareSettingActivity.a(this.a);
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+      finally
+      {
+        this.a.stopTitleProgress();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig fail.");
       }
     }
   }

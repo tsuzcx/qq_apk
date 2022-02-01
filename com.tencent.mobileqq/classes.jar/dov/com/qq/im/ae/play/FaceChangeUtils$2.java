@@ -1,26 +1,24 @@
 package dov.com.qq.im.ae.play;
 
 import android.graphics.Bitmap;
-import boyv;
-import boyw;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class FaceChangeUtils$2
+final class FaceChangeUtils$2
   implements Runnable
 {
-  public FaceChangeUtils$2(List paramList, Bitmap paramBitmap, boyw paramboyw) {}
+  FaceChangeUtils$2(List paramList, Bitmap paramBitmap, FaceChangeUtils.ChangeFaceBatchCallback paramChangeFaceBatchCallback) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.val$materialDir.size())
     {
-      localArrayList.add(boyv.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (String)this.jdField_a_of_type_JavaUtilList.get(i)));
+      localArrayList.add(FaceChangeUtils.access$100(this.val$userFace, (String)this.val$materialDir.get(i)));
       i += 1;
     }
-    this.jdField_a_of_type_Boyw.a(localArrayList);
+    this.val$callback.onResult(localArrayList);
   }
 }
 

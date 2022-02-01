@@ -1,32 +1,13 @@
-import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakShow;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class agve
-  implements bbcc
+public class agve
+  implements agut
 {
-  agve(agvd paramagvd) {}
-  
-  public void a(boolean paramBoolean, List<aism> paramList)
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetIceBreakHotPic, success: ").append(paramBoolean).append(" hotPiceList size: ");
-    int i;
-    if (paramList == null)
-    {
-      i = 0;
-      QLog.i("IceBreak.HotPic", 1, i);
-      if (paramBoolean) {
-        break label59;
-      }
-    }
-    label59:
-    while (this.a.a == null)
-    {
-      return;
-      i = paramList.size();
-      break;
-    }
-    this.a.a.a(paramList);
+    paramagap.e(paramafce, paramagcc, paramString);
   }
 }
 

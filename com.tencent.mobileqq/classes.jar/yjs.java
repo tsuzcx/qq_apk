@@ -1,36 +1,72 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.graphics.Bitmap;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tribe.async.async.JobContext;
+import java.lang.ref.WeakReference;
 
-class yjs
-  implements woy<xda, xdb>
+public class yjs
+  extends yju<yjh, yjh>
 {
-  yjs(yjr paramyjr, boolean paramBoolean) {}
+  private final int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private final WeakReference<xzp> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(@NonNull xda paramxda, @Nullable xdb arg2, @NonNull ErrorMessage paramErrorMessage)
+  public yjs(String paramString, xzp paramxzp, int paramInt)
   {
-    if (yjr.a(this.jdField_a_of_type_Yjr).get())
-    {
-      yuk.e("Q.qqstory.memories.ProfileFeedPresenter", "year node data back when activity has been destroyed.");
-      return;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramxzp);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected void a(JobContext paramJobContext, yjh paramyjh)
+  {
+    xvv.a("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "start generate thumb ... mVideoIndex = %d", Integer.valueOf(this.jdField_a_of_type_Int));
+    yjn localyjn = paramyjh.jdField_a_of_type_Yjn;
+    int i = localyjn.c;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      paramJobContext = (xzp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    yuk.a("Q.qqstory.memories.ProfileFeedPresenter", "on year node data back. is successful : %s.", Boolean.valueOf(paramErrorMessage.isSuccess()));
-    paramxda = new yju(this.jdField_a_of_type_Yjr, paramErrorMessage);
-    paramxda.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    if ((??? == null) || (paramErrorMessage.isFail()))
+    while (paramJobContext != null)
     {
-      wjj.a().dispatch(paramxda);
-      return;
+      Bitmap localBitmap = paramJobContext.a(this.jdField_a_of_type_Int);
+      if (localBitmap != null)
+      {
+        try
+        {
+          String str2 = this.jdField_a_of_type_JavaLangString;
+          String str1 = str2;
+          if (str2 == null) {
+            str1 = yjx.a(paramyjh.jdField_a_of_type_Int, paramyjh.b, ".jpg");
+          }
+          i = new yjp(localBitmap, str1, localyjn.jdField_a_of_type_Int, localyjn.jdField_b_of_type_Int, i, localyjn.jdField_a_of_type_Float, localyjn.jdField_a_of_type_Double, localyjn.jdField_b_of_type_Double, paramyjh.jdField_a_of_type_Int).a(new Void[0]).intValue();
+          paramJobContext.a(localBitmap);
+          if (i != 0) {
+            break label217;
+          }
+          paramyjh.jdField_a_of_type_JavaLangString = str1;
+          paramyjh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = str1;
+          xvv.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb success ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+          super.notifyResult(paramyjh);
+          return;
+        }
+        finally
+        {
+          paramJobContext.a(localBitmap);
+        }
+        paramJobContext = null;
+        continue;
+        label217:
+        xvv.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+        super.notifyError(new ErrorMessage(-1, amtj.a(2131704809) + this.jdField_a_of_type_Int));
+      }
+      else
+      {
+        xvv.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... EditVideoPlayerExport generateVideoFrameBitmap return null", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+        super.notifyError(new ErrorMessage(-1, amtj.a(2131704814) + this.jdField_a_of_type_Int));
+        return;
+      }
     }
-    paramxda.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
-    ((wsu)wth.a(19)).a(???.jdField_a_of_type_JavaUtilList, true);
-    synchronized (this.jdField_a_of_type_Yjr)
-    {
-      wjj.a().dispatch(paramxda);
-      return;
-    }
+    xvv.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... can not find EditVideoPlayerExport", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    super.notifyError(new ErrorMessage(-1, amtj.a(2131704810) + this.jdField_a_of_type_Int));
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.minigame.publicaccount;
 
-import agej;
 import android.content.Context;
 import android.util.AttributeSet;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.gamecenter.web.view.BaseNestScrollWebView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
@@ -24,7 +24,7 @@ public class MiniGamePublicAccountWebView
   
   public void onPageFinish(String paramString)
   {
-    setPaddingTop(agej.a(agej.a(ImmersiveUtils.getStatusBarHeight(getContext()), getContext().getResources()) + 463.0F, getResources()));
+    setPaddingTop(AIOUtils.dp2px(AIOUtils.px2dp(ImmersiveUtils.getStatusBarHeight(getContext()), getContext().getResources()) + 463.0F, getResources()));
   }
   
   public void setPaddingTop(int paramInt)

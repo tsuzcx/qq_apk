@@ -1,41 +1,29 @@
-import QC.UniSetRsp;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.os.Handler;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.together.ui.TogetherPopupDialog.1.1;
 
-class bdfw
-  implements anui
+public class bdfw
+  extends bddc
 {
   bdfw(bdfv parambdfv) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  protected void a()
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramBoolean) && ((paramObject instanceof UniSetRsp)) && (((UniSetRsp)paramObject).ret == 0))
+    if (this.a.jdField_a_of_type_Bddq == null) {}
+    do
     {
-      paramBoolean = true;
-      paramObject = this.a;
-      if (bdfv.a(this.a).get() != 1) {
-        break label91;
-      }
-      bool1 = true;
-      label48:
-      paramInt = bdfv.b(this.a).get();
-      if (bdfv.c(this.a).get() != 1) {
-        break label97;
-      }
-    }
-    for (;;)
-    {
-      paramObject.a(paramBoolean, bool1, paramInt, bool2, false, false);
+      do
+      {
+        return;
+        if (!this.a.jdField_a_of_type_Bddq.a()) {
+          break;
+        }
+      } while (bdfv.a(this.a) == null);
+      bdfv.a(this.a).postDelayed(new TogetherPopupDialog.1.1(this), 5000L);
       return;
-      paramBoolean = false;
-      break;
-      label91:
-      bool1 = false;
-      break label48;
-      label97:
-      bool2 = false;
-    }
+    } while ((this.a.jdField_a_of_type_Bdfy == null) || (this.a.jdField_a_of_type_AndroidWidgetFrameLayout == null));
+    this.a.jdField_a_of_type_Bdfy.a();
+    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.bringToFront();
   }
 }
 

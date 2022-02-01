@@ -1,42 +1,153 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.annotation.JsEvent;
+import com.tencent.qqmini.sdk.annotation.JsPlugin;
+import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+@JsPlugin(secondary=true)
 public class bizo
-  extends ImageSpan
+  extends BaseJsPlugin
+  implements EIPCResultCallback
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
+  private RequestEvent a;
   
-  public bizo(Drawable paramDrawable, int paramInt)
+  @JsEvent({"checkin_uploadRes"})
+  public void checkinUploadRes(RequestEvent paramRequestEvent)
   {
-    super(paramDrawable, paramInt);
+    for (;;)
+    {
+      int i;
+      try
+      {
+        this.a = paramRequestEvent;
+        JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams).optJSONObject("data");
+        QLog.d("GroupCheckInUploadPlugin", 1, "data: " + localJSONObject);
+        str1 = ((IMiniAppFileManager)this.mMiniAppContext.getManager(IMiniAppFileManager.class)).getAbsolutePath(localJSONObject.optString("filePath"));
+        if (localJSONObject.optInt("isVideo") != 1) {
+          break label274;
+        }
+        i = 1;
+        localBundle = new Bundle();
+        if (i == 0) {
+          continue;
+        }
+        String str2 = ((IMiniAppFileManager)this.mMiniAppContext.getManager(IMiniAppFileManager.class)).getAbsolutePath(localJSONObject.optString("cover"));
+        if (!FileUtils.fileExists(str1)) {
+          break label273;
+        }
+        if (!FileUtils.fileExists(str2)) {
+          return;
+        }
+        localBundle.putString("BUNDLE_NAME_FILEPATH", str1);
+        localBundle.putString("BUNDLE_NAME_COVER", str2);
+        localBundle.putLong("BUNDLE_NAME_VIDEOTIME", localJSONObject.optLong("videoDuration"));
+        if (i == 0) {
+          continue;
+        }
+        QIPCClientHelper.getInstance().callServer("Module_CheckInServer", "ACTION_UPLOAD_VIDEO", localBundle, this);
+      }
+      catch (JSONException localJSONException)
+      {
+        String str1;
+        Bundle localBundle;
+        QLog.e("GroupCheckInUploadPlugin", 1, "checkinUploadRes(). Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
+        continue;
+        QIPCClientHelper.getInstance().callServer("Module_CheckInServer", "ACTION_UPLOAD_PIC", localBundle, this);
+        continue;
+      }
+      QLog.d("GroupCheckInUploadPlugin", 1, "checkin_uploadRes succeed");
+      paramRequestEvent.ok();
+      return;
+      if (FileUtils.fileExists(str1))
+      {
+        localBundle.putString("BUNDLE_NAME_FILEPATH", str1);
+      }
+      else
+      {
+        label273:
+        return;
+        label274:
+        i = 0;
+      }
+    }
   }
   
-  public bizo a(float paramFloat)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    return this;
+    int i = paramEIPCResult.code;
+    Bundle localBundle = paramEIPCResult.data;
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupCheckInUploadPlugin", 2, "result = " + i + ", data = " + localBundle.toString());
+    }
+    paramEIPCResult = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        int j = localBundle.getInt("isVideo");
+        int k = localBundle.getInt("result");
+        if (k != 1) {
+          break label275;
+        }
+        i = 1;
+        paramEIPCResult.put("isVideo", j);
+        paramEIPCResult.put("result", k);
+        if (j != 1) {
+          continue;
+        }
+        if (i == 0) {
+          continue;
+        }
+        paramEIPCResult.put("url", localBundle.getString("url"));
+        paramEIPCResult.put("vid", localBundle.getString("vid"));
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        if (this.a == null) {
+          break label274;
+        }
+        this.a.fail(paramEIPCResult, "");
+        return;
+        if (i == 0) {
+          continue;
+        }
+        paramEIPCResult.put("url", localException.getString("url"));
+        continue;
+        paramEIPCResult.put("error", localException.getString("error"));
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupCheckInUploadPlugin", 2, "onCallback json = " + paramEIPCResult.toString());
+      }
+      if (this.a != null)
+      {
+        this.a.ok(paramEIPCResult);
+        return;
+        paramEIPCResult.put("error", localBundle.getString("error"));
+      }
+      else
+      {
+        label274:
+        return;
+        label275:
+        i = 0;
+      }
+    }
   }
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public void onDestroy()
   {
-    paramCharSequence = getDrawable();
-    paramCanvas.save();
-    paramInt2 = paramInt5 - paramCharSequence.getBounds().bottom;
-    paramInt1 = paramInt2;
-    if (this.mVerticalAlignment == 1) {
-      paramInt1 = paramInt2 - paramPaint.getFontMetricsInt().descent;
-    }
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Float != 0.0F)) {
-      this.jdField_a_of_type_Int = ((int)((paramInt5 - paramInt3) * this.jdField_a_of_type_Float));
-    }
-    paramCanvas.translate(paramFloat, paramInt1 + this.jdField_a_of_type_Int);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
+    QIPCClientHelper.getInstance().callServer("Module_CheckInServer", "ACTION_CANCEL", null, null);
   }
 }
 

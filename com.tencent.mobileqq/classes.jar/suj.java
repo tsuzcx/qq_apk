@@ -1,11 +1,14 @@
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-final class suj
-  implements Comparator<byte[]>
+class suj
+  implements ViewFactory.FoundClickableViewListener
 {
-  public int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  suj(sui paramsui) {}
+  
+  public void onFound(ViewBase paramViewBase)
   {
-    return paramArrayOfByte1.length - paramArrayOfByte2.length;
+    paramViewBase.setOnClickListener(new suk(this));
   }
 }
 

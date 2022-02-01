@@ -1,17 +1,25 @@
-import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
-import com.tribe.async.reactive.Stream;
-import java.util.List;
+import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class ybb
-  implements yaw<Bitmap>
+public class ybb
+  extends QQUIEventReceiver<QQStoryTakeVideoCloseAnimationActivity, xtj>
 {
-  ybb(yaz paramyaz, List paramList, String paramString) {}
-  
-  @NonNull
-  public Stream<Bitmap> a(yas paramyas)
+  public ybb(@NonNull QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity)
   {
-    return yaz.a(this.jdField_a_of_type_Yaz, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
+    super(paramQQStoryTakeVideoCloseAnimationActivity);
+  }
+  
+  public void a(@NonNull QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity, @NonNull xtj paramxtj)
+  {
+    if (paramxtj != null) {
+      paramQQStoryTakeVideoCloseAnimationActivity.a(paramxtj.a, paramxtj.b, paramxtj.c, paramxtj.d);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xtj.class;
   }
 }
 

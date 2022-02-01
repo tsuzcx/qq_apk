@@ -1,36 +1,36 @@
 package com.tencent.mobileqq.app;
 
-import agej;
+import amso;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.widget.TextView;
-import anyg;
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.home.Conversation;
 import java.lang.ref.WeakReference;
 
 public class FrameHelperActivity$9$1
   implements Runnable
 {
-  public FrameHelperActivity$9$1(anyg paramanyg, Conversation paramConversation, Drawable paramDrawable, String paramString) {}
+  public FrameHelperActivity$9$1(amso paramamso, Conversation paramConversation, Drawable paramDrawable, String paramString) {}
   
   public void run()
   {
     Drawable localDrawable;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityConversation != null) && (this.jdField_a_of_type_Anyg.a.isAdded()))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation != null) && (this.jdField_a_of_type_Amso.a.isAdded()))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a;
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
       {
-        i = agej.a(12.0F, this.jdField_a_of_type_Anyg.a.getResources());
+        i = AIOUtils.dp2px(12.0F, this.jdField_a_of_type_Amso.a.getResources());
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, i, i);
       }
-      localDrawable = this.jdField_a_of_type_Anyg.a.getResources().getDrawable(2130838676);
-      int i = agej.a(9.0F, this.jdField_a_of_type_Anyg.a.getResources());
+      localDrawable = this.jdField_a_of_type_Amso.a.getResources().getDrawable(2130838701);
+      int i = AIOUtils.dp2px(9.0F, this.jdField_a_of_type_Amso.a.getResources());
       localDrawable.setBounds(0, 0, i, i);
       ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangString);
-      ((TextView)localObject).setCompoundDrawablePadding(agej.a(2.0F, this.jdField_a_of_type_Anyg.a.getResources()));
+      ((TextView)localObject).setCompoundDrawablePadding(AIOUtils.dp2px(2.0F, this.jdField_a_of_type_Amso.a.getResources()));
       ((TextView)localObject).setCompoundDrawables(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, localDrawable, null);
-      localObject = ((TextView)localObject).getTag(2131366101);
+      localObject = ((TextView)localObject).getTag(2131366130);
       if ((!(localObject instanceof WeakReference)) || (!(((WeakReference)localObject).get() instanceof TextView))) {
         break label219;
       }
@@ -41,7 +41,7 @@ public class FrameHelperActivity$9$1
       if (localObject != null)
       {
         ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangString);
-        ((TextView)localObject).setCompoundDrawablePadding(agej.a(2.0F, this.jdField_a_of_type_Anyg.a.getResources()));
+        ((TextView)localObject).setCompoundDrawablePadding(AIOUtils.dp2px(2.0F, this.jdField_a_of_type_Amso.a.getResources()));
         ((TextView)localObject).setCompoundDrawables(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null, localDrawable, null);
       }
       return;

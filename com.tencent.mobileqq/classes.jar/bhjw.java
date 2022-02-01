@@ -1,32 +1,33 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.turingfd.sdk.xq.TuringFdConfig;
-import com.tencent.turingfd.sdk.xq.TuringFdConfig.Builder;
-import com.tencent.turingfd.sdk.xq.TuringFdService;
+import android.view.View;
+import android.widget.FrameLayout;
 
 public class bhjw
 {
-  private static boolean a;
+  private static long jdField_a_of_type_Long = 400L;
+  private static boolean jdField_a_of_type_Boolean;
   
   public static void a()
   {
-    Context localContext = BaseApplicationImpl.getContext().getApplicationContext();
-    if (!a) {
-      QLog.d("TuringSdkInitHelper", 1, "init TuringSDK");
-    }
-    try
-    {
-      TuringFdService.init(TuringFdConfig.newBuilder(localContext, "").appid("1109803375").build());
-      a = true;
+    jdField_a_of_type_Boolean = false;
+  }
+  
+  public static void a(FrameLayout paramFrameLayout)
+  {
+    if (jdField_a_of_type_Boolean) {
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("TuringSdkInitHelper", 1, localThrowable, new Object[] { "Turing init crash fail" });
-      throw localThrowable;
-    }
+    jdField_a_of_type_Boolean = true;
+    paramFrameLayout.invalidate();
+    View localView = paramFrameLayout.getChildAt(1);
+    paramFrameLayout = paramFrameLayout.getChildAt(0);
+    bhcr localbhcr = new bhcr(localView);
+    localbhcr.setDuration(jdField_a_of_type_Long);
+    localbhcr.setFillAfter(true);
+    bhcs localbhcs = new bhcs(paramFrameLayout);
+    localbhcs.setDuration(jdField_a_of_type_Long);
+    localbhcs.setFillAfter(true);
+    localView.startAnimation(localbhcr);
+    paramFrameLayout.startAnimation(localbhcs);
   }
 }
 

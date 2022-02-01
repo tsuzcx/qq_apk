@@ -1,9 +1,9 @@
 package cooperation.qzone.contentbox;
 
 import android.app.Activity;
-import bmww;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.api.QZoneApiProxy;
 
 class QZoneMsgFragment$1
   implements Runnable
@@ -15,9 +15,9 @@ class QZoneMsgFragment$1
     QLog.i("QZoneMsgManager.QZoneMsgFragment", 1, "onAttach: start to load qzone plugin");
     try
     {
-      QzonePluginProxyActivity.a(this.a);
-      bmww.b(this.a, this.this$0.a);
-      bmww.a(this.a, this.this$0.a);
+      QzonePluginProxyActivity.getQZonePluginClassLoader(this.val$activity);
+      QZoneApiProxy.initServlet(this.val$activity, this.this$0.app);
+      QZoneApiProxy.initEnv(this.val$activity, this.this$0.app);
       return;
     }
     catch (Throwable localThrowable)

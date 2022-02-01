@@ -1,19 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class uxh
-  implements View.OnClickListener
 {
-  public uxh(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  public String a;
+  public String b;
   
-  public void onClick(View paramView)
+  public uxh() {}
+  
+  public uxh(String paramString1, String paramString2)
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a);
-    PublicAccountImageCollectionCommentActivity.a(this.a, -1);
-    PublicAccountImageCollectionCommentActivity.b(this.a, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

@@ -1,19 +1,24 @@
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class mgu
-  implements View.OnClickListener
+class mgu
+  extends AccessibilityDelegateCompat
 {
-  public mgu(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  mgu(mgr parammgr, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    bhoo.c();
-    bdll.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_call", 0, 0, this.a.b, "", "", "");
-    this.a.d(10);
-    EventCollector.getInstance().onViewClicked(paramView);
+    boolean bool = true;
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramAccessibilityNodeInfoCompat.setCheckable(true);
+    if (this.jdField_a_of_type_Int == this.jdField_a_of_type_Mgr.d) {}
+    for (;;)
+    {
+      paramAccessibilityNodeInfoCompat.setChecked(bool);
+      return;
+      bool = false;
+    }
   }
 }
 

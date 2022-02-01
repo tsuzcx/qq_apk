@@ -1,18 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
-class awlr
-  implements anwh
+public class awlr
+  implements bhai<oidb_0x8e4.RspBody>
 {
-  awlr(awlq paramawlq) {}
+  public awlr(GameRoomInviteActivity paramGameRoomInviteActivity, awmf paramawmf) {}
   
-  public void a(boolean paramBoolean)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    if (paramBoolean) {
-      awlq.a(this.a);
+    if ((paramInt == 0) && (paramRspBody != null))
+    {
+      paramRspBody = this.jdField_a_of_type_Awmf;
+      if (!this.jdField_a_of_type_Awmf.a)
+      {
+        bool = true;
+        paramRspBody.a = bool;
+        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
+        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a.notifyDataSetChanged();
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogether.dpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
+    while (paramRspBody == null) {
+      for (;;)
+      {
+        return;
+        boolean bool = false;
+      }
     }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(paramInt, paramRspBody, amtj.a(2131704260));
   }
 }
 

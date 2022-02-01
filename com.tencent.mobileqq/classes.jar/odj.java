@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.DownloadBarInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class odj
-  implements Parcelable.Creator<VideoInfo.DownloadBarInfo>
+class odj
+  implements DialogInterface.OnClickListener
 {
-  public VideoInfo.DownloadBarInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.DownloadBarInfo(paramParcel);
-  }
+  odj(ocw paramocw) {}
   
-  public VideoInfo.DownloadBarInfo[] a(int paramInt)
-  {
-    return new VideoInfo.DownloadBarInfo[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

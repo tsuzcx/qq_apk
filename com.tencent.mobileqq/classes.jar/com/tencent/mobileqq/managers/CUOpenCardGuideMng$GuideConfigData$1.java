@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.managers;
 
-import awzs;
+import avmz;
 
 public class CUOpenCardGuideMng$GuideConfigData$1
   implements Runnable
 {
-  public CUOpenCardGuideMng$GuideConfigData$1(awzs paramawzs) {}
+  public CUOpenCardGuideMng$GuideConfigData$1(avmz paramavmz) {}
   
   public void run()
   {

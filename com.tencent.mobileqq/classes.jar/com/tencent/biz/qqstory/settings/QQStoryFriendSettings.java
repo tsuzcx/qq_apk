@@ -6,22 +6,23 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import wnu;
-import wod;
-import woi;
-import yab;
-import yup;
+import vpl;
+import vpu;
+import vpz;
+import xbm;
+import xwa;
 
 public class QQStoryFriendSettings
   extends IphoneTitleBarActivity
 {
-  protected wod<QQStoryFriendSettings> a = wnu.a(yab.class, woi.a(wod.class), new Object[0]);
+  protected vpu<QQStoryFriendSettings> a = vpl.a(xbm.class, vpz.a(vpu.class), new Object[0]);
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -41,7 +42,7 @@ public class QQStoryFriendSettings
   public void doOnPause()
   {
     super.doOnPause();
-    yup.a(7, this.currentActivityStayTime);
+    xwa.a(7, this.currentActivityStayTime);
   }
   
   @Override

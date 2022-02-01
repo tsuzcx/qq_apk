@@ -1,21 +1,19 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
+import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.7;
+import com.tencent.open.downloadnew.DownloadInfo;
 
-class aord
+public class aord
   implements DialogInterface.OnClickListener
 {
-  aord(aorc paramaorc, Activity paramActivity) {}
+  public aord(ArkAppYYBDownloadModule.7 param7) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("back_for_hidden_chat", true);
-    paramDialogInterface.setFlags(603979776);
-    HiddenChatFragment.a(this.jdField_a_of_type_AndroidAppActivity, 3, 0, paramDialogInterface);
-    bdll.b(this.jdField_a_of_type_Aorc.a, "dc00898", "", "", "0X800A34A", "0X800A34A", 0, 0, "0", "0", "", "");
+    if (this.a.a != null) {
+      aoqz.a(this.a.this$0, this.a.a, this.a.a.g);
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

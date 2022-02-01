@@ -1,22 +1,13 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import mqq.os.MqqHandler;
-
 public class amdx
-  extends MqqHandler
 {
-  public amdx(PhoneContactTabView paramPhoneContactTabView) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void handleMessage(Message paramMessage)
+  public amdx(int paramInt1, int paramInt2)
   {
-    switch (paramMessage.what)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return;
-    }
-    this.a.d();
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

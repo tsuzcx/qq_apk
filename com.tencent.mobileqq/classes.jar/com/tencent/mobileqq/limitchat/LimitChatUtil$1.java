@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.limitchat;
 
-import avpd;
-import awlm;
+import aucf;
+import auyo;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -18,17 +18,17 @@ public final class LimitChatUtil$1
     if (QLog.isColorLevel()) {
       QLog.d("LimitChatUtil", 2, "clearAioCacheAndDBMsg start");
     }
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long).iterator();
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getAIOList(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long).iterator();
     while (localIterator.hasNext())
     {
       ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-      if (awlm.b(localChatMessage)) {
+      if (auyo.b(localChatMessage)) {
         if (-4023 == localChatMessage.msgtype) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localChatMessage.msgtype, localChatMessage.uniseq);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgFromCacheByUniseq(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localChatMessage.msgtype, localChatMessage.uniseq);
         } else if ((localChatMessage.isSend()) && (localChatMessage.extraflag == 32768)) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localChatMessage.uniseq);
-        } else if (((localChatMessage instanceof MessageForUniteGrayTip)) && (awlm.a(((MessageForUniteGrayTip)localChatMessage).tipParam.b))) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localChatMessage.uniseq);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgByUniseq(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localChatMessage.uniseq);
+        } else if (((localChatMessage instanceof MessageForUniteGrayTip)) && (auyo.a(((MessageForUniteGrayTip)localChatMessage).tipParam.b))) {
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().removeMsgByUniseq(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localChatMessage.uniseq);
         }
       }
     }

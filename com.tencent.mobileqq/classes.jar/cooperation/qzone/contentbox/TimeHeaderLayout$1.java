@@ -2,7 +2,7 @@ package cooperation.qzone.contentbox;
 
 import android.content.SharedPreferences;
 import android.os.Handler;
-import bmaa;
+import common.config.service.QZoneConfigHelper;
 
 class TimeHeaderLayout$1
   implements Runnable
@@ -12,14 +12,14 @@ class TimeHeaderLayout$1
   public void run()
   {
     boolean[] arrayOfBoolean = new boolean[1];
-    if (!this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.contains(TimeHeaderLayout.jdField_a_of_type_JavaLangString)) {
-      arrayOfBoolean[0] = bmaa.g();
+    if (!this.this$0.preferences.contains(TimeHeaderLayout.KEY_TIME_CAPSULE_EXPAND)) {
+      arrayOfBoolean[0] = QZoneConfigHelper.capsuleTimeDefaultExpand();
     }
     for (;;)
     {
-      this.this$0.jdField_a_of_type_AndroidOsHandler.post(new TimeHeaderLayout.1.1(this));
+      this.this$0.handler.post(new TimeHeaderLayout.1.1(this));
       return;
-      arrayOfBoolean[0] = this.this$0.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(TimeHeaderLayout.jdField_a_of_type_JavaLangString, true);
+      arrayOfBoolean[0] = this.this$0.preferences.getBoolean(TimeHeaderLayout.KEY_TIME_CAPSULE_EXPAND, true);
     }
   }
 }

@@ -9,54 +9,100 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
-import bizj;
-import bjdd;
-import bjde;
-import bjdf;
-import blih;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
 
 public class SlideDetectListView
   extends XListView
-  implements bizj
+  implements MotionViewSetter
 {
-  float jdField_a_of_type_Float = 0.0F;
-  public int a;
-  protected GestureDetector.SimpleOnGestureListener a;
-  protected GestureDetector a;
-  public View a;
-  private bjdf jdField_a_of_type_Bjdf;
-  private blih jdField_a_of_type_Blih;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public boolean a;
-  public int b;
-  private blih b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  protected int d;
-  public boolean d;
-  protected int e;
-  protected boolean e;
-  public int f;
+  public static final float HORIZONTAL_SLIDE_RATIO = 1.73F;
+  float fy = 0.0F;
+  protected boolean mCanSlide = true;
+  protected int mDeleteAreaHeight = -1;
+  protected int mDeleteAreaWidth;
+  int mDownY = 0;
+  protected GestureDetector mGestureDetector;
+  protected GestureDetector.SimpleOnGestureListener mGestureListener = new SlideDetectListView.1(this);
+  protected boolean mHasDeleteDown;
+  boolean mHasSlide = false;
+  boolean mHasSlideBanner = false;
+  private ArrayList<Integer> mHeaderFooterHashList = new ArrayList();
+  View mMotionView;
+  int mMotionViewPosition;
+  protected boolean mNotCheckStateWhenSlide;
+  private AbsListView.OnScrollListener mScrollGFListener;
+  int mScrollState = 0;
+  private AbsListView.OnScrollListener mScrollToTopListener;
+  private SlideDetectListView.OnSlideListener mSlideListener;
+  int mSlideSlop;
   
   public SlideDetectListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_e_of_type_Int = -1;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new bjdd(this);
-    super.setOnScrollListener(new bjde(this));
-    this.f = (ViewConfiguration.getTouchSlop() + 2);
+    super.setOnScrollListener(new SlideDetectListView.2(this));
+    this.mSlideSlop = (ViewConfiguration.getTouchSlop() + 2);
   }
   
-  public int a(int paramInt)
+  public void addFooterView(View paramView, Object paramObject, boolean paramBoolean)
+  {
+    this.mHeaderFooterHashList.add(Integer.valueOf(paramView.hashCode()));
+    super.addFooterView(paramView, paramObject, paramBoolean);
+  }
+  
+  public void addHeaderView(View paramView, Object paramObject, boolean paramBoolean)
+  {
+    this.mHeaderFooterHashList.add(Integer.valueOf(paramView.hashCode()));
+    super.addHeaderView(paramView, paramObject, paramBoolean);
+  }
+  
+  public void cancelSlide()
+  {
+    if (this.mHasSlide == true)
+    {
+      if (this.mMotionView != null)
+      {
+        this.mMotionView.setPressed(false);
+        if (this.mSlideListener != null) {
+          this.mSlideListener.onSlideCancelled(this, this.mMotionView, this.mMotionViewPosition - getHeaderViewsCount());
+        }
+      }
+      this.mHasSlide = false;
+      this.mMotionView = null;
+    }
+  }
+  
+  public void cancelSlideNoShowAni()
+  {
+    if (this.mMotionView != null)
+    {
+      View localView = this.mMotionView.findViewById(2131377244);
+      if (localView != null) {
+        localView.setVisibility(8);
+      }
+    }
+    cancelSlide();
+  }
+  
+  protected View findMotionView(int paramInt)
+  {
+    if (paramInt != -1) {
+      try
+      {
+        View localView = getChildAt(paramInt - getFirstVisiblePosition());
+        return localView;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+    }
+    return null;
+  }
+  
+  protected int findMotionViewPosition(int paramInt)
   {
     int k = -1;
     int m = getChildCount();
@@ -78,7 +124,7 @@ public class SlideDetectListView
           if (paramInt > localView.getBottom()) {
             break label94;
           }
-          if (!this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(localView.hashCode()))) {
+          if (!this.mHeaderFooterHashList.contains(Integer.valueOf(localView.hashCode()))) {
             break label74;
           }
           i = k;
@@ -106,7 +152,7 @@ public class SlideDetectListView
       if (paramInt >= localView.getTop())
       {
         i = k;
-        if (this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(localView.hashCode()))) {
+        if (this.mHeaderFooterHashList.contains(Integer.valueOf(localView.hashCode()))) {
           break;
         }
         paramInt = getFirstVisiblePosition() + j;
@@ -120,78 +166,19 @@ public class SlideDetectListView
     }
   }
   
-  public View a(int paramInt)
+  public int getScrollState()
   {
-    if (paramInt != -1) {
-      try
-      {
-        View localView = getChildAt(paramInt - getFirstVisiblePosition());
-        return localView;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_e_of_type_Boolean = false;
-  }
-  
-  public void addFooterView(View paramView, Object paramObject, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramView.hashCode()));
-    super.addFooterView(paramView, paramObject, paramBoolean);
-  }
-  
-  public void addHeaderView(View paramView, Object paramObject, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramView.hashCode()));
-    super.addHeaderView(paramView, paramObject, paramBoolean);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean == true)
-    {
-      if (this.jdField_a_of_type_AndroidViewView != null)
-      {
-        this.jdField_a_of_type_AndroidViewView.setPressed(false);
-        if (this.jdField_a_of_type_Bjdf != null) {
-          this.jdField_a_of_type_Bjdf.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
-        }
-      }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidViewView = null;
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377481);
-      if (localView != null) {
-        localView.setVisibility(8);
-      }
-    }
-    b();
+    return this.mScrollState;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewGestureDetector == null)
+    if (this.mGestureDetector == null)
     {
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener, new Handler(Looper.getMainLooper()));
-      this.jdField_a_of_type_AndroidViewGestureDetector.setIsLongpressEnabled(false);
+      this.mGestureDetector = new GestureDetector(getContext(), this.mGestureListener, new Handler(Looper.getMainLooper()));
+      this.mGestureDetector.setIsLongpressEnabled(false);
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    this.mGestureDetector.onTouchEvent(paramMotionEvent);
     switch (paramMotionEvent.getAction())
     {
     case 2: 
@@ -199,49 +186,49 @@ public class SlideDetectListView
     case 0: 
       for (;;)
       {
-        if (this.jdField_e_of_type_Boolean == true)
+        if (this.mHasDeleteDown == true)
         {
           label96:
           return false;
-          this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
-          this.jdField_e_of_type_Boolean = false;
-          i = a(this.jdField_a_of_type_Int);
-          if ((this.jdField_a_of_type_AndroidViewView != null) && (a(i) == this.jdField_a_of_type_AndroidViewView))
+          this.mDownY = ((int)paramMotionEvent.getY());
+          this.mHasDeleteDown = false;
+          i = findMotionViewPosition(this.mDownY);
+          if ((this.mMotionView != null) && (findMotionView(i) == this.mMotionView))
           {
-            if (paramMotionEvent.getX() < this.jdField_a_of_type_AndroidViewView.getWidth() - this.jdField_d_of_type_Int) {
+            if (paramMotionEvent.getX() < this.mMotionView.getWidth() - this.mDeleteAreaWidth) {
               continue;
             }
-            if ((this.jdField_e_of_type_Int <= 0) || (this.jdField_a_of_type_AndroidViewView.getHeight() <= 0)) {
-              break label351;
+            if ((this.mDeleteAreaHeight <= 0) || (this.mMotionView.getHeight() <= 0)) {
+              break label353;
             }
-            i = this.jdField_a_of_type_AndroidViewView.getTop() + this.jdField_a_of_type_AndroidViewView.getHeight() / 2;
-            int j = this.jdField_e_of_type_Int / 2;
-            int k = this.jdField_e_of_type_Int / 2;
-            if ((this.jdField_a_of_type_Int <= j + i) && (this.jdField_a_of_type_Int >= i - k)) {
-              break label351;
+            i = this.mMotionView.getTop() + this.mMotionView.getHeight() / 2;
+            int j = this.mDeleteAreaHeight / 2;
+            int k = this.mDeleteAreaHeight / 2;
+            if ((this.mDownY <= j + i) && (this.mDownY >= i - k)) {
+              break label353;
             }
             if (QLog.isColorLevel()) {
-              QLog.d("SlideDetectListView", 2, "accurate in delete:ycenter:" + i + ",motionheight:" + this.jdField_a_of_type_AndroidViewView.getHeight() + "deleareaHeight:" + this.jdField_e_of_type_Int);
+              QLog.d("SlideDetectListView", 2, "accurate in delete:ycenter:" + i + ",motionheight:" + this.mMotionView.getHeight() + "deleareaHeight:" + this.mDeleteAreaHeight);
             }
           }
         }
       }
     }
-    label351:
+    label353:
     for (int i = 0; i != 0; i = 1)
     {
-      this.jdField_e_of_type_Boolean = true;
+      this.mHasDeleteDown = true;
       return false;
-      if (this.jdField_a_of_type_Boolean != true) {
+      if (this.mHasSlide != true) {
         break;
       }
       return true;
-      this.jdField_b_of_type_Boolean = false;
+      this.mHasSlideBanner = false;
       break;
-      if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Boolean == true)) {
+      if ((this.mDownY == 0) || (this.mHasSlide == true)) {
         return true;
       }
-      if (this.jdField_b_of_type_Boolean) {
+      if (this.mHasSlideBanner) {
         break label96;
       }
       return super.onInterceptTouchEvent(paramMotionEvent);
@@ -253,25 +240,25 @@ public class SlideDetectListView
     switch (paramMotionEvent.getAction())
     {
     }
-    while ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Boolean == true))
+    while ((this.mDownY == 0) || (this.mHasSlide == true))
     {
       setPressed(false);
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setPressed(false);
+      if (this.mMotionView != null) {
+        this.mMotionView.setPressed(false);
       }
       return true;
-      this.jdField_a_of_type_Float = paramMotionEvent.getY();
-      if (this.jdField_a_of_type_Boolean == true)
+      this.fy = paramMotionEvent.getY();
+      if (this.mHasSlide == true)
       {
-        if (this.jdField_a_of_type_AndroidViewView != null)
+        if (this.mMotionView != null)
         {
-          this.jdField_a_of_type_AndroidViewView.setPressed(false);
-          if (this.jdField_a_of_type_Bjdf != null) {
-            this.jdField_a_of_type_Bjdf.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
+          this.mMotionView.setPressed(false);
+          if (this.mSlideListener != null) {
+            this.mSlideListener.onSlideCancelled(this, this.mMotionView, this.mMotionViewPosition - getHeaderViewsCount());
           }
         }
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidViewView = null;
+        this.mHasSlide = false;
+        this.mMotionView = null;
         return false;
       }
     }
@@ -280,19 +267,27 @@ public class SlideDetectListView
   
   public boolean removeFooterView(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.remove(Integer.valueOf(paramView.hashCode()));
+    this.mHeaderFooterHashList.remove(Integer.valueOf(paramView.hashCode()));
     return super.removeFooterView(paramView);
   }
   
   public boolean removeHeaderView(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.remove(Integer.valueOf(paramView.hashCode()));
+    this.mHeaderFooterHashList.remove(Integer.valueOf(paramView.hashCode()));
     return super.removeHeaderView(paramView);
+  }
+  
+  public void resetSlideStatus()
+  {
+    this.mDownY = 0;
+    this.mHasSlide = false;
+    this.mMotionView = null;
+    this.mHasDeleteDown = false;
   }
   
   public void setCanSlide(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.mCanSlide = paramBoolean;
   }
   
   public void setCheckStateWhenSlide(boolean paramBoolean)
@@ -300,46 +295,46 @@ public class SlideDetectListView
     if (!paramBoolean) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
-      this.jdField_d_of_type_Boolean = paramBoolean;
+      this.mNotCheckStateWhenSlide = paramBoolean;
       return;
     }
   }
   
   public void setDeleteAreaDim(int paramInt1, int paramInt2)
   {
-    this.jdField_d_of_type_Int = paramInt1;
-    this.jdField_e_of_type_Int = paramInt2;
+    this.mDeleteAreaWidth = paramInt1;
+    this.mDeleteAreaHeight = paramInt2;
   }
   
   public void setDeleteAreaWidth(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.mDeleteAreaWidth = paramInt;
   }
   
   public void setMotionView(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_b_of_type_Int = (getHeaderViewsCount() + paramInt);
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_Boolean = true;
+    this.mMotionView = paramView;
+    this.mMotionViewPosition = (getHeaderViewsCount() + paramInt);
+    if (this.mMotionView != null) {
+      this.mHasSlide = true;
     }
   }
   
-  public void setOnScrollGroupFloatingListener(blih paramblih)
+  public void setOnScrollGroupFloatingListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    this.jdField_b_of_type_Blih = paramblih;
+    this.mScrollGFListener = paramOnScrollListener;
   }
   
-  public void setOnScrollListener(blih paramblih) {}
+  public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener) {}
   
-  public void setOnScrollToTopListener(blih paramblih)
+  public void setOnScrollToTopListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    this.jdField_a_of_type_Blih = paramblih;
+    this.mScrollToTopListener = paramOnScrollListener;
   }
   
-  public void setOnSlideListener(bjdf parambjdf)
+  public void setOnSlideListener(SlideDetectListView.OnSlideListener paramOnSlideListener)
   {
-    this.jdField_a_of_type_Bjdf = parambjdf;
+    this.mSlideListener = paramOnSlideListener;
   }
 }
 

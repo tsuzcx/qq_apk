@@ -1,24 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.widget.RatingBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Matrix;
 
 public class mvz
-  implements View.OnClickListener
 {
-  public mvz(RatingBar paramRatingBar) {}
+  public float a;
+  public int a;
+  public final Matrix a;
+  public mvw a;
+  public mvy a;
+  public mvz a;
+  public float b;
+  public float c;
+  public float d;
+  public float e;
+  public float f;
   
-  public void onClick(View paramView)
+  private mvz()
   {
-    if (RatingBar.a(this.a))
-    {
-      RatingBar.a(this.a, this.a.indexOfChild(paramView) + 1);
-      this.a.setStar(RatingBar.a(this.a), true);
-      if (RatingBar.a(this.a) != null) {
-        RatingBar.a(this.a).a(RatingBar.a(this.a), RatingBar.a(this.a));
-      }
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  }
+  
+  public void a(mvz parammvz)
+  {
+    this.jdField_a_of_type_Int = parammvz.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Float = parammvz.jdField_a_of_type_Float;
+    this.b = parammvz.b;
+    this.c = parammvz.c;
+    this.d = parammvz.d;
+    this.e = parammvz.e;
+    this.f = parammvz.d;
+    this.jdField_a_of_type_AndroidGraphicsMatrix.set(parammvz.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.jdField_a_of_type_Mvw = parammvz.jdField_a_of_type_Mvw;
   }
 }
 

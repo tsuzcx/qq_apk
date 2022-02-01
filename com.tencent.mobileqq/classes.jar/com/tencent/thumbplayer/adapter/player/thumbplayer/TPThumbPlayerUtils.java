@@ -4,10 +4,12 @@ import android.util.SparseArray;
 import com.tencent.thumbplayer.api.TPAudioFrameBuffer;
 import com.tencent.thumbplayer.api.TPPlayerMsg.TPMediaCodecInfo;
 import com.tencent.thumbplayer.api.TPPlayerMsg.TPVideoCropInfo;
+import com.tencent.thumbplayer.api.TPPostProcessFrameBuffer;
 import com.tencent.thumbplayer.api.TPPropertyID;
 import com.tencent.thumbplayer.api.TPSubtitleFrameBuffer;
 import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
 import com.tencent.thumbplayer.core.common.TPAudioFrame;
+import com.tencent.thumbplayer.core.common.TPPostProcessFrame;
 import com.tencent.thumbplayer.core.common.TPSubtitleFrame;
 import com.tencent.thumbplayer.core.common.TPVideoFrame;
 import com.tencent.thumbplayer.core.connection.TPNativePlayerConnectionAction;
@@ -22,6 +24,7 @@ import java.util.HashMap;
 public class TPThumbPlayerUtils
 {
   public static final int OPTIONAL_ID_TYPE_BOOL = 3;
+  public static final int OPTIONAL_ID_TYPE_FLOAT = 7;
   public static final int OPTIONAL_ID_TYPE_INT = 4;
   public static final int OPTIONAL_ID_TYPE_LONG = 1;
   public static final int OPTIONAL_ID_TYPE_QUEUE_INT = 5;
@@ -51,6 +54,7 @@ public class TPThumbPlayerUtils
     sOptionIdMappingArray.append(105, new TPThumbPlayerUtils.OptionIdMapping(1, 105));
     sOptionIdMappingArray.append(106, new TPThumbPlayerUtils.OptionIdMapping(1, 106));
     sOptionIdMappingArray.append(107, new TPThumbPlayerUtils.OptionIdMapping(1, 107));
+    sOptionIdMappingArray.append(128, new TPThumbPlayerUtils.OptionIdMapping(1, 118));
     sOptionIdMappingArray.append(108, new TPThumbPlayerUtils.OptionIdMapping(1, 108));
     sOptionIdMappingArray.append(109, new TPThumbPlayerUtils.OptionIdMapping(4, 109));
     sOptionIdMappingArray.append(110, new TPThumbPlayerUtils.OptionIdMapping(3, 110));
@@ -59,6 +63,7 @@ public class TPThumbPlayerUtils
     sOptionIdMappingArray.append(115, new TPThumbPlayerUtils.OptionIdMapping(3, 115));
     sOptionIdMappingArray.append(200, new TPThumbPlayerUtils.OptionIdMapping(4, 200));
     sOptionIdMappingArray.append(117, new TPThumbPlayerUtils.OptionIdMapping(1, 117));
+    sOptionIdMappingArray.append(409, new TPThumbPlayerUtils.OptionIdMapping(1, 409));
     sOptionIdMappingArray.append(118, new TPThumbPlayerUtils.OptionIdMapping(6, 113));
     sOptionIdMappingArray.append(119, new TPThumbPlayerUtils.OptionIdMapping(3, 403));
     sOptionIdMappingArray.append(120, new TPThumbPlayerUtils.OptionIdMapping(3, 402));
@@ -73,13 +78,20 @@ public class TPThumbPlayerUtils
     sOptionIdMappingArray.append(301, new TPThumbPlayerUtils.OptionIdMapping(4, 405));
     sOptionIdMappingArray.append(401, new TPThumbPlayerUtils.OptionIdMapping(3, 401));
     sOptionIdMappingArray.append(204, new TPThumbPlayerUtils.OptionIdMapping(5, 203));
+    sOptionIdMappingArray.append(124, new TPThumbPlayerUtils.OptionIdMapping(1, 207));
+    sOptionIdMappingArray.append(125, new TPThumbPlayerUtils.OptionIdMapping(7, 208));
+    sOptionIdMappingArray.append(126, new TPThumbPlayerUtils.OptionIdMapping(3, 209));
+    sOptionIdMappingArray.append(127, new TPThumbPlayerUtils.OptionIdMapping(3, 210));
     sOptionIdMappingArray.append(500, new TPThumbPlayerUtils.OptionIdMapping(1, 500));
+    sOptionIdMappingArray.append(505, new TPThumbPlayerUtils.OptionIdMapping(1, 301));
+    sOptionIdMappingArray.append(506, new TPThumbPlayerUtils.OptionIdMapping(1, 400));
     sOptionIdMappingArray.append(502, new TPThumbPlayerUtils.OptionIdMapping(4, 100));
     sOptionIdMappingArray.append(208, new TPThumbPlayerUtils.OptionIdMapping(3, 212));
-    sOptionIdMappingArray.append(206, new TPThumbPlayerUtils.OptionIdMapping(1, 107));
+    sOptionIdMappingArray.append(209, new TPThumbPlayerUtils.OptionIdMapping(3, 215));
     sOptionIdMappingArray.append(501, new TPThumbPlayerUtils.OptionIdMapping(1, 0));
     sOptionIdMappingArray.append(122, new TPThumbPlayerUtils.OptionIdMapping(3, 406));
     sOptionIdMappingArray.append(123, new TPThumbPlayerUtils.OptionIdMapping(3, 213));
+    sOptionIdMappingArray.append(129, new TPThumbPlayerUtils.OptionIdMapping(1, 121));
     sOptionIdMappingArray.append(8000, new TPThumbPlayerUtils.OptionIdMapping(1, 3));
     sOptionIdMappingArray.append(503, new TPThumbPlayerUtils.OptionIdMapping(1, 1));
     sOptionIdMappingArray.append(504, new TPThumbPlayerUtils.OptionIdMapping(1, 2));
@@ -106,6 +118,9 @@ public class TPThumbPlayerUtils
     sNativePlayerMsgInfoMap.put(Integer.valueOf(206), Integer.valueOf(206));
     sNativePlayerMsgInfoMap.put(Integer.valueOf(207), Integer.valueOf(207));
     sNativePlayerMsgInfoMap.put(Integer.valueOf(208), Integer.valueOf(208));
+    sNativePlayerMsgInfoMap.put(Integer.valueOf(209), Integer.valueOf(209));
+    sNativePlayerMsgInfoMap.put(Integer.valueOf(210), Integer.valueOf(210));
+    sNativePlayerMsgInfoMap.put(Integer.valueOf(211), Integer.valueOf(211));
     sNativePlayerMsgInfoMap.put(Integer.valueOf(500), Integer.valueOf(500));
     sNativePlayerMsgInfoMap.put(Integer.valueOf(501), Integer.valueOf(501));
     sNativePlayerMsgInfoMap.put(Integer.valueOf(504), Integer.valueOf(502));
@@ -196,12 +211,18 @@ public class TPThumbPlayerUtils
   
   public static TPAudioFrameBuffer convert2TPAudioFrameBuffer(TPAudioFrame paramTPAudioFrame)
   {
+    if (paramTPAudioFrame == null) {
+      return null;
+    }
     TPAudioFrameBuffer localTPAudioFrameBuffer = new TPAudioFrameBuffer();
+    localTPAudioFrameBuffer.format = TPEnumUtils.convertAudioFrameFormat2Outter(paramTPAudioFrame.format);
     localTPAudioFrameBuffer.data = paramTPAudioFrame.data;
     localTPAudioFrameBuffer.size = paramTPAudioFrame.linesize;
     localTPAudioFrameBuffer.sampleRate = paramTPAudioFrame.sampleRate;
     localTPAudioFrameBuffer.channelLayout = paramTPAudioFrame.channelLayout;
     localTPAudioFrameBuffer.ptsMs = (paramTPAudioFrame.ptsUs / 1000L);
+    localTPAudioFrameBuffer.nbSamples = paramTPAudioFrame.nbSamples;
+    localTPAudioFrameBuffer.channels = paramTPAudioFrame.channels;
     return localTPAudioFrameBuffer;
   }
   
@@ -263,6 +284,70 @@ public class TPThumbPlayerUtils
     }
   }
   
+  public static TPPostProcessFrame convert2TPPostProcessFrame(TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
+  {
+    if (paramTPPostProcessFrameBuffer == null) {
+      return null;
+    }
+    TPPostProcessFrame localTPPostProcessFrame = new TPPostProcessFrame();
+    localTPPostProcessFrame.mediaType = TPEnumUtils.convertMediaType2Inner(paramTPPostProcessFrameBuffer.mediaType);
+    if (localTPPostProcessFrame.mediaType == 0) {
+      localTPPostProcessFrame.format = TPEnumUtils.convertVideoFrameFormat2Inner(paramTPPostProcessFrameBuffer.format);
+    }
+    for (;;)
+    {
+      localTPPostProcessFrame.data = paramTPPostProcessFrameBuffer.data;
+      localTPPostProcessFrame.linesize = paramTPPostProcessFrameBuffer.size;
+      localTPPostProcessFrame.sampleRate = paramTPPostProcessFrameBuffer.sampleRate;
+      localTPPostProcessFrame.channelLayout = paramTPPostProcessFrameBuffer.channelLayout;
+      localTPPostProcessFrame.ptsUs = (paramTPPostProcessFrameBuffer.ptsMs * 1000L);
+      localTPPostProcessFrame.nbSamples = paramTPPostProcessFrameBuffer.nbSamples;
+      localTPPostProcessFrame.channels = paramTPPostProcessFrameBuffer.channels;
+      localTPPostProcessFrame.width = paramTPPostProcessFrameBuffer.width;
+      localTPPostProcessFrame.height = paramTPPostProcessFrameBuffer.height;
+      localTPPostProcessFrame.sampleAspectRatioNum = paramTPPostProcessFrameBuffer.sampleAspectRatioNum;
+      localTPPostProcessFrame.sampleAspectRatioDen = paramTPPostProcessFrameBuffer.sampleAspectRatioDen;
+      localTPPostProcessFrame.rotation = paramTPPostProcessFrameBuffer.rotation;
+      localTPPostProcessFrame.perfData = paramTPPostProcessFrameBuffer.perfData;
+      return localTPPostProcessFrame;
+      if (localTPPostProcessFrame.mediaType == 1) {
+        localTPPostProcessFrame.format = TPEnumUtils.convertAudioFrameFormat2Inner(paramTPPostProcessFrameBuffer.format);
+      }
+    }
+  }
+  
+  public static TPPostProcessFrameBuffer convert2TPPostProcessFrameBuffer(TPPostProcessFrame paramTPPostProcessFrame)
+  {
+    if (paramTPPostProcessFrame == null) {
+      return null;
+    }
+    TPPostProcessFrameBuffer localTPPostProcessFrameBuffer = new TPPostProcessFrameBuffer();
+    localTPPostProcessFrameBuffer.mediaType = TPEnumUtils.convertMediaType2Outer(paramTPPostProcessFrame.mediaType);
+    if (localTPPostProcessFrameBuffer.mediaType == 0) {
+      localTPPostProcessFrameBuffer.format = TPEnumUtils.convertVideoFrameFormat2Outter(paramTPPostProcessFrame.format);
+    }
+    for (;;)
+    {
+      localTPPostProcessFrameBuffer.data = paramTPPostProcessFrame.data;
+      localTPPostProcessFrameBuffer.size = paramTPPostProcessFrame.linesize;
+      localTPPostProcessFrameBuffer.sampleRate = paramTPPostProcessFrame.sampleRate;
+      localTPPostProcessFrameBuffer.channelLayout = paramTPPostProcessFrame.channelLayout;
+      localTPPostProcessFrameBuffer.ptsMs = (paramTPPostProcessFrame.ptsUs / 1000L);
+      localTPPostProcessFrameBuffer.nbSamples = paramTPPostProcessFrame.nbSamples;
+      localTPPostProcessFrameBuffer.channels = paramTPPostProcessFrame.channels;
+      localTPPostProcessFrameBuffer.width = paramTPPostProcessFrame.width;
+      localTPPostProcessFrameBuffer.height = paramTPPostProcessFrame.height;
+      localTPPostProcessFrameBuffer.sampleAspectRatioNum = paramTPPostProcessFrame.sampleAspectRatioNum;
+      localTPPostProcessFrameBuffer.sampleAspectRatioDen = paramTPPostProcessFrame.sampleAspectRatioDen;
+      localTPPostProcessFrameBuffer.rotation = paramTPPostProcessFrame.rotation;
+      localTPPostProcessFrameBuffer.perfData = paramTPPostProcessFrame.perfData;
+      return localTPPostProcessFrameBuffer;
+      if (localTPPostProcessFrameBuffer.mediaType == 1) {
+        localTPPostProcessFrameBuffer.format = TPEnumUtils.convertAudioFrameFormat2Outter(paramTPPostProcessFrame.format);
+      }
+    }
+  }
+  
   public static TPSubtitleFrameBuffer convert2TPSubtitleFrameBuffer(TPSubtitleFrame paramTPSubtitleFrame)
   {
     if (paramTPSubtitleFrame == null) {
@@ -276,7 +361,7 @@ public class TPThumbPlayerUtils
     localTPSubtitleFrameBuffer.srcWidth = paramTPSubtitleFrame.width;
     localTPSubtitleFrameBuffer.dstHeight = paramTPSubtitleFrame.height;
     localTPSubtitleFrameBuffer.dstWidth = paramTPSubtitleFrame.width;
-    paramTPSubtitleFrame.rotation = paramTPSubtitleFrame.rotation;
+    localTPSubtitleFrameBuffer.rotation = paramTPSubtitleFrame.rotation;
     localTPSubtitleFrameBuffer.ptsMs = (paramTPSubtitleFrame.ptsUs / 1000L);
     return localTPSubtitleFrameBuffer;
   }

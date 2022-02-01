@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
-import bexk;
-
-public class ShortVideoUploadProcessor$1
+class ShortVideoUploadProcessor$1
   implements Runnable
 {
-  public ShortVideoUploadProcessor$1(bexk parambexk) {}
+  ShortVideoUploadProcessor$1(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
   
   public void run()
   {
-    this.this$0.s();
+    this.this$0.inter_retry();
   }
 }
 

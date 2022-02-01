@@ -1,20 +1,20 @@
 package com.tencent.imcore.message;
 
-import adai;
-import azor;
+import abwx;
+import aybz;
 import com.tencent.qphone.base.util.QLog;
 
 public class MsgProxy$1
   implements Runnable
 {
-  public MsgProxy$1(adai paramadai, azor paramazor, String paramString, int paramInt) {}
+  public MsgProxy$1(abwx paramabwx, aybz paramaybz, String paramString, int paramInt) {}
   
   public void run()
   {
     try
     {
-      if (this.jdField_a_of_type_Azor != null) {
-        this.jdField_a_of_type_Azor.a(this.this$0.c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int), null, null);
+      if (this.jdField_a_of_type_Aybz != null) {
+        this.jdField_a_of_type_Aybz.a(this.this$0.c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int), null, null);
       }
       return;
     }

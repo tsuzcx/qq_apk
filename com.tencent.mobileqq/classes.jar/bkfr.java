@@ -1,10 +1,10 @@
-public abstract class bkfr
+final class bkfr
+  extends ThreadLocal<char[]>
 {
-  long a;
-  
-  public abstract void a();
-  
-  public abstract void b();
+  protected char[] a()
+  {
+    return new char[1024];
+  }
 }
 
 

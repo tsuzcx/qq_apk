@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import pfd;
+import pkp;
 
 class PublicAccountHandler$1
   implements Runnable
@@ -9,7 +9,7 @@ class PublicAccountHandler$1
   
   public void run()
   {
-    pfd.a().b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
+    pkp.a().b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
   }
 }
 

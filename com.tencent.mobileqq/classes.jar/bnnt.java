@@ -1,22 +1,40 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-class bnnt
-  implements bmzb
+public class bnnt
+  extends bnnr<bnns>
 {
-  bnnt(bnns parambnns) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370327);
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  bnnt(bnns parambnns, @NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzonePersonalizeJsPlugin", 4, "FontInterface.TrueTypeResult font:" + paramInt + ", fontPath:" + paramString1);
-    }
-    if (TextUtils.isEmpty(paramString1))
+    super(paramContext, paramViewGroup);
+  }
+  
+  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return LayoutInflater.from(paramContext).inflate(2131561697, paramViewGroup, false);
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+  }
+  
+  public void a(bnns parambnns, int paramInt)
+  {
+    super.a(parambnns, paramInt);
+    if (parambnns != null)
     {
-      bnns.a(this.a, paramString2, -2, "font download failed.");
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(parambnns.a());
       return;
     }
-    bnns.a(this.a, paramString2, 0, "success");
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
   }
 }
 

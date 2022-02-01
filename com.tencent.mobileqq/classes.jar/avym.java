@@ -1,32 +1,34 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.qphone.base.util.QLog;
 
-class avym
-  implements TextWatcher
+public class avym
 {
-  avym(avyl paramavyl) {}
+  public static int a = 12;
+  public static boolean a;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public static int a(Context paramContext)
   {
-    if (avyl.a(this.a) != null)
-    {
-      if (TextUtils.isEmpty(paramCharSequence)) {
-        break label45;
-      }
-      if (!avyl.b(this.a))
-      {
-        avyl.b(this.a, true);
-        avyl.a(this.a, 1);
-      }
+    paramContext = paramContext.getResources();
+    return paramContext.getDisplayMetrics().widthPixels - AIOUtils.dp2px(42.0F, paramContext) * 2;
+  }
+  
+  public static int a(Context paramContext, int paramInt)
+  {
+    paramInt /= 5;
+    int i = a(paramContext);
+    paramContext = paramContext.getResources().getDisplayMetrics();
+    float f = paramContext.heightPixels * 1.0F / paramContext.widthPixels;
+    if (QLog.isColorLevel()) {
+      QLog.d("VelocityUtil", 2, "getInitVelocity() displayMetrics.widthPixels = " + paramContext.widthPixels + ", displayMetrics.heightPixels = " + paramContext.heightPixels + ", ratio = " + f + ", 16.F/9.F = " + 1.777778F + ",viewPagerClientWidth = " + i);
     }
-    return;
-    label45:
-    this.a.c();
+    if ((f > 1.777778F) && (QLog.isColorLevel())) {
+      QLog.d("VelocityUtil", 2, "getInitVelocity() ratio > 16.F/9.F");
+    }
+    QLog.d("VelocityUtil", 1, "getInitVelocity: pendingVelocity = " + paramInt + ", viewPagerClientWidth = " + i);
+    return paramInt;
   }
 }
 

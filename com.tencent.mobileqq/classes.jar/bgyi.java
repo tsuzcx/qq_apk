@@ -1,34 +1,58 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.widget.AdapterView;
+import android.text.TextUtils;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import org.json.JSONObject;
 
 public class bgyi
-  implements bljo
 {
-  public bgyi(WheelPickerLayout paramWheelPickerLayout) {}
+  private final SwiftBrowserUIStyleHandler a;
+  public String a;
   
-  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public bgyi(SwiftBrowserUIStyleHandler paramSwiftBrowserUIStyleHandler)
   {
-    WheelPickerLayout.a(this.a, paramView, 1);
-    WheelPickerLayout.a(this.a, paramView, true);
-    if ((paramView != null) && (paramView.getTag() != null))
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler = paramSwiftBrowserUIStyleHandler;
+  }
+  
+  public void a(int paramInt)
+  {
+    TouchWebView localTouchWebView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.getWebView();
+    JSONObject localJSONObject1;
+    JSONObject localJSONObject2;
+    if ((localTouchWebView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
     {
-      int i = Integer.parseInt(paramView.getTag().toString());
-      int j = paramAdapterView.getChildCount();
-      paramInt = 0;
-      while (paramInt < j)
+      localJSONObject1 = new JSONObject();
+      localJSONObject2 = new JSONObject();
+    }
+    try
+    {
+      localJSONObject1.put("code", 0);
+      localJSONObject1.put("message", "ok");
+      localJSONObject2.put("subIndex", paramInt);
+      localJSONObject1.put("data", localJSONObject2);
+      localTouchWebView.callJs(WebViewPlugin.toJsScript(this.jdField_a_of_type_JavaLangString, localJSONObject1, null));
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        if (i != paramInt)
-        {
-          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), 0);
-          WheelPickerLayout.a(this.a, paramAdapterView.getChildAt(paramInt), false);
-        }
-        paramInt += 1;
+        localException.printStackTrace();
       }
     }
   }
   
-  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        this.jdField_a_of_type_JavaLangString = paramString;
+      }
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
 }
 
 

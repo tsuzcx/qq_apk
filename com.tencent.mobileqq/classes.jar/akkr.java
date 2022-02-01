@@ -1,4 +1,9 @@
-public abstract interface akkr {}
+public abstract interface akkr
+{
+  public abstract void l();
+  
+  public abstract void m();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

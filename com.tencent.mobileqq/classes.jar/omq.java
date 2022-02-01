@@ -1,8 +1,20 @@
-import org.jetbrains.annotations.NotNull;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
-public abstract interface omq
+public class omq
+  implements bjoe
 {
-  public abstract void a(@NotNull String paramString1, @NotNull String paramString2);
+  public omq(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    ReadInJoySettingActivity.c(this.a).d(paramInt);
+    ((TextView)this.a.findViewById(2131372638)).setText(ReadInJoySettingActivity.a(this.a)[paramInt]);
+    pay.a(Integer.toString(paramInt));
+    odq.a(null, "", "0X8007416", "0X8007416", 0, 0, Integer.toString(paramInt), "", "", "", false);
+    ReadInJoySettingActivity.c(this.a).cancel();
+  }
 }
 
 

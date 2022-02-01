@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.activity;
 
+import amtj;
 import android.graphics.Color;
 import android.os.Build.VERSION;
 import android.widget.TextView;
-import anzj;
-import bdll;
-import bhgr;
-import bhsi;
+import bcef;
+import bfyz;
 import com.tencent.biz.qqstory.view.widget.TipsView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.tribe.view.TEditText;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 class TroopBarPublishActivity$11
   implements Runnable
@@ -20,13 +20,13 @@ class TroopBarPublishActivity$11
   {
     TroopBarPublishActivity localTroopBarPublishActivity = this.this$0;
     TEditText localTEditText = this.this$0.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText;
-    String str = anzj.a(2131714000);
-    int j = bhgr.a(this.this$0, 71.0F);
+    String str = amtj.a(2131714232);
+    int j = DisplayUtil.dip2px(this.this$0, 71.0F);
     if (Build.VERSION.SDK_INT < 19)
     {
-      i = bhgr.a(this.this$0, 20.0F);
-      TipsView.a(localTroopBarPublishActivity, localTEditText, str, 1, 1, j, i, bhgr.a(this.this$0, 20.0F), 5000, Color.argb(204, 0, 0, 0));
-      bhsi.b(this.this$0, this.this$0.app.getCurrentAccountUin(), "tribe_video_post_has_show_tips", true);
+      i = DisplayUtil.dip2px(this.this$0, 20.0F);
+      TipsView.a(localTroopBarPublishActivity, localTEditText, str, 1, 1, j, i, DisplayUtil.dip2px(this.this$0, 20.0F), 5000, Color.argb(204, 0, 0, 0));
+      bfyz.b(this.this$0, this.this$0.app.getCurrentAccountUin(), "tribe_video_post_has_show_tips", true);
       if ((this.this$0.jdField_b_of_type_AndroidWidgetTextView == null) || (this.this$0.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0)) {
         break label157;
       }
@@ -34,7 +34,7 @@ class TroopBarPublishActivity$11
     label157:
     for (int i = 2;; i = 1)
     {
-      bdll.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_guide", i, 0, "", "", "", "");
+      bcef.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_guide", i, 0, "", "", "", "");
       return;
       i = 0;
       break;

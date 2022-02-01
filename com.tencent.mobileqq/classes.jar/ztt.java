@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.SlideTabViewPager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
 public class ztt
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public ztt(SlideTabViewPager paramSlideTabViewPager) {}
+  public ztt(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void onClick(View paramView)
-  {
-    Integer localInteger = (Integer)paramView.getTag();
-    this.a.setTab(localInteger.intValue());
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,21 +1,6 @@
 package com.tencent.biz.subscribe.account_folder.recommend_banner;
 
 import NS_COMM.COMM.StCommonExt;
-import aaed;
-import aaej;
-import aaeo;
-import aaeq;
-import aaer;
-import aaes;
-import aaet;
-import aaeu;
-import aaev;
-import aaew;
-import aaey;
-import aafe;
-import aafm;
-import aagb;
-import abbe;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -34,17 +19,32 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
 import mqq.app.AppRuntime;
+import zbb;
+import zbh;
+import zbm;
+import zbo;
+import zbp;
+import zbq;
+import zbr;
+import zbs;
+import zbt;
+import zbu;
+import zbw;
+import zcc;
+import zck;
+import zcz;
+import zxp;
 
 public class FollowedRecommendBannerView
   extends LinearLayout
-  implements aaeq
+  implements zbo
 {
-  private aaeo jdField_a_of_type_Aaeo;
-  private aaey jdField_a_of_type_Aaey;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private String jdField_a_of_type_JavaLangString;
+  private zbm jdField_a_of_type_Zbm;
+  private zbw jdField_a_of_type_Zbw;
   
   public FollowedRecommendBannerView(Context paramContext)
   {
@@ -60,23 +60,23 @@ public class FollowedRecommendBannerView
   
   private COMM.StCommonExt a()
   {
-    if (this.jdField_a_of_type_Aaeo != null) {
-      return this.jdField_a_of_type_Aaeo.a();
+    if (this.jdField_a_of_type_Zbm != null) {
+      return this.jdField_a_of_type_Zbm.a();
     }
     return null;
   }
   
   private void b()
   {
-    StringBuilder localStringBuilder = new StringBuilder(aaed.b(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
+    StringBuilder localStringBuilder = new StringBuilder(zbb.b(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
     if (a() != null) {}
     for (;;)
     {
       try
       {
         localStringBuilder.append(URLEncoder.encode(a().attachInfo.get(), "UTF-8"));
-        abbe.b(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_more", 0, 0, new String[0]);
-        aaej.a(localStringBuilder.toString());
+        zxp.b(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_more", 0, 0, new String[0]);
+        zbh.a(localStringBuilder.toString());
         return;
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
@@ -96,10 +96,10 @@ public class FollowedRecommendBannerView
       measure(View.MeasureSpec.makeMeasureSpec(((View)localObject).getMeasuredWidth(), -2147483648), View.MeasureSpec.makeMeasureSpec(0, 0));
     }
     localObject = ValueAnimator.ofInt(new int[] { 0, getMeasuredHeight() });
-    ((ValueAnimator)localObject).addUpdateListener(new aaew(this, this, null));
-    ((ValueAnimator)localObject).addListener(new aaeu(this));
+    ((ValueAnimator)localObject).addUpdateListener(new zbu(this, this, null));
+    ((ValueAnimator)localObject).addListener(new zbs(this));
     ((ValueAnimator)localObject).start();
-    abbe.a(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_exp", 0, 0, new String[0]);
+    zxp.a(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_exp", 0, 0, new String[0]);
   }
   
   public void a()
@@ -114,49 +114,49 @@ public class FollowedRecommendBannerView
       measure(View.MeasureSpec.makeMeasureSpec(((View)localObject).getMeasuredWidth(), -2147483648), View.MeasureSpec.makeMeasureSpec(0, 0));
     }
     localObject = ValueAnimator.ofInt(new int[] { getMeasuredHeight(), 0 });
-    ((ValueAnimator)localObject).addUpdateListener(new aaew(this, this, null));
-    ((ValueAnimator)localObject).addListener(new aaev(this));
+    ((ValueAnimator)localObject).addUpdateListener(new zbu(this, this, null));
+    ((ValueAnimator)localObject).addListener(new zbt(this));
     ((ValueAnimator)localObject).start();
-    abbe.a(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_pack_up", 0, 0, new String[0]);
+    zxp.a(this.jdField_a_of_type_JavaLangString, "auth_person", "reco_pack_up", 0, 0, new String[0]);
   }
   
   protected void a(Context paramContext)
   {
     setOrientation(1);
-    inflate(paramContext, 2131558774, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131363284));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371423));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369407));
+    inflate(paramContext, 2131558782, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131363314));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371391));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369401));
     paramContext = new LinearLayoutManager(paramContext);
     paramContext.setOrientation(0);
-    this.jdField_a_of_type_Aaeo = new aaeo();
-    this.jdField_a_of_type_Aaeo.a(this);
+    this.jdField_a_of_type_Zbm = new zbm();
+    this.jdField_a_of_type_Zbm.a(this);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramContext);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new aafe());
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new zcc());
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemAnimator(new DefaultItemAnimator());
-    this.jdField_a_of_type_Aaey = new aafm(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-    this.jdField_a_of_type_Aaey.a(true);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aaey);
-    this.jdField_a_of_type_Aaey.a(new aaer(this));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aaes(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aaet(this));
+    this.jdField_a_of_type_Zbw = new zck(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
+    this.jdField_a_of_type_Zbw.a(true);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Zbw);
+    this.jdField_a_of_type_Zbw.a(new zbp(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new zbq(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new zbr(this));
   }
   
   public void a(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    if (this.jdField_a_of_type_Aaeo != null) {
-      this.jdField_a_of_type_Aaeo.a(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Zbm != null) {
+      this.jdField_a_of_type_Zbm.a(this.jdField_a_of_type_JavaLangString);
     }
   }
   
-  public void a(List<aagb> paramList, boolean paramBoolean)
+  public void a(List<zcz> paramList, boolean paramBoolean)
   {
     if ((paramList == null) || (paramList.size() == 0)) {
       return;
     }
-    if (this.jdField_a_of_type_Aaey != null) {
-      this.jdField_a_of_type_Aaey.a(null, paramList);
+    if (this.jdField_a_of_type_Zbw != null) {
+      this.jdField_a_of_type_Zbw.a(null, paramList);
     }
     c();
   }

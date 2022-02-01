@@ -1,66 +1,25 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.MaterialData;
+import com.tencent.mobileqq.app.BusinessObserver;
+import java.util.List;
 
 public class ttu
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  public ttu(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
+  public void a(boolean paramBoolean, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, List<MaterialData> paramList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (aazb.a("service_account_folder_publish_feed_button", 2000L))
+    switch (paramInt)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, (String)paramObject);
       return;
     }
-    if (Build.VERSION.SDK_INT >= 23) {}
-    for (boolean bool = apdr.a(this.a);; bool = true)
-    {
-      if (!bool)
-      {
-        bhlq.b(this.a);
-        break;
-      }
-      Object localObject = new Intent();
-      ((Intent)localObject).putExtra("postUin", ServiceAccountFolderActivityNew.a(this.a));
-      ((Intent)localObject).putExtra("sourceFrom", 2);
-      label141:
-      String str;
-      if ((ServiceAccountFolderActivityNew.a(this.a) != null) && (ServiceAccountFolderActivityNew.a(this.a).user.youZhan.size() > 0))
-      {
-        if (((CertifiedAccountMeta.StYouZanShop)ServiceAccountFolderActivityNew.a(this.a).user.youZhan.get(0)).type.get() > 1)
-        {
-          bool = true;
-          ((Intent)localObject).putExtra("has_shop", bool);
-        }
-      }
-      else
-      {
-        bmtd.a(this.a.getActivity(), (Intent)localObject, 0);
-        str = ((CertifiedAccountMeta.StUser)ServiceAccountFolderActivityNew.a(this.a).user.get()).id.get();
-        if (ServiceAccountFolderActivityNew.a(this.a) != 0) {
-          break label230;
-        }
-      }
-      label230:
-      for (localObject = "auth_follow";; localObject = "auth_discover")
-      {
-        abbe.a(str, (String)localObject, "post_clk", 0, 0, new String[] { "", "" });
-        break;
-        bool = false;
-        break label141;
-      }
-    }
+    a(paramBoolean, (List)paramObject);
   }
 }
 

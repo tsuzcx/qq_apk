@@ -3,8 +3,8 @@ package com.tencent.av;
 import android.content.Context;
 import com.tencent.av.utils.PopupDialog;
 import com.tencent.qphone.base.util.QLog;
-import lck;
-import lff;
+import lce;
+import lez;
 
 public class VideoController$1
   implements Runnable
@@ -19,7 +19,7 @@ public class VideoController$1
     if (this.this$0.l())
     {
       Context localContext = this.this$0.a();
-      PopupDialog.b(localContext, 230, null, localContext.getString(2131719189), 0, 2131719223, new lck(this), null);
+      PopupDialog.b(localContext, 230, null, localContext.getString(2131719475), 0, 2131719509, new lce(this), null);
     }
     for (;;)
     {
@@ -33,7 +33,7 @@ public class VideoController$1
       }
       else
       {
-        this.this$0.a(this.this$0.c, this.this$0.jdField_a_of_type_Long, 15, 0);
+        this.this$0.a(this.this$0.b, this.this$0.jdField_a_of_type_Long, 15, 0);
       }
     }
   }

@@ -1,12 +1,29 @@
-public abstract interface angj
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.automator.step.RegisterProxy;
+
+public class angj
+  extends Handler
 {
-  public abstract void a(String paramString, int paramInt);
+  public angj(RegisterProxy paramRegisterProxy, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    RegisterProxy.a(this.a, false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     angj
  * JD-Core Version:    0.7.0.1
  */

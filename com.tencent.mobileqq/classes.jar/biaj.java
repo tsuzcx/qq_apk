@@ -1,12 +1,8 @@
-import android.os.Bundle;
-
 public abstract interface biaj
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  public abstract void a(String paramString1, String paramString2, String paramString3);
   
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract void b(String paramString1, String paramString2, String paramString3);
 }
 
 

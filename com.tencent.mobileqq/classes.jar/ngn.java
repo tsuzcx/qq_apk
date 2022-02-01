@@ -1,100 +1,177 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import androidx.annotation.NonNull;
-import com.tencent.avgame.ui.AVGameJoinRoomFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.avgame.ipc.AVGameBroadcastReceiver;
+import com.tencent.avgame.ipc.AccountReceiver;
+import com.tencent.avgame.ipc.ExitReceiver;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.util.WeakReference;
 
 public class ngn
-  implements View.OnClickListener
 {
-  private blir jdField_a_of_type_Blir;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  List<Integer> jdField_a_of_type_JavaUtilList = null;
-  boolean jdField_a_of_type_Boolean = false;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private AccountReceiver jdField_a_of_type_ComTencentAvgameIpcAccountReceiver;
+  private ExitReceiver jdField_a_of_type_ComTencentAvgameIpcExitReceiver;
+  private final WeakReference<AppRuntime> jdField_a_of_type_MqqUtilWeakReference;
   
-  public ngn(@NonNull BaseActivity paramBaseActivity)
+  public ngn(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAppRuntime);
+  }
+  
+  private void a(ngm paramngm, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver = new AccountReceiver(paramngm, paramString);
+    paramngm = new IntentFilter();
+    String[] arrayOfString = this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver.a();
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = arrayOfString[i];
+      if (!TextUtils.isEmpty(str)) {
+        paramngm.addAction(str);
+      }
+      i += 1;
+    }
+    try
+    {
+      paramngm = BaseApplicationImpl.getApplication().registerReceiver(this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver, paramngm, "com.tencent.msg.permission.pushnotify", null);
+      if (paramngm == null) {
+        this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver = null;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("BroadcastCenter", 2, "registerAccountReceiver, packageName[" + paramString + "], intent[" + paramngm + "]");
+      }
+      return;
+    }
+    catch (Throwable paramngm)
+    {
+      QLog.i("BroadcastCenter", 1, "register2", paramngm);
+    }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Blir = null;
-    if (this.jdField_a_of_type_Blir == null) {
-      this.jdField_a_of_type_Blir = ((blir)blji.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null));
-    }
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    for (;;)
+    AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    CharSequence localCharSequence = null;
+    AVGameBroadcastReceiver localAVGameBroadcastReceiver = new AVGameBroadcastReceiver(localAppRuntime);
+    String[] arrayOfString = localAVGameBroadcastReceiver.a();
+    Object localObject1 = localCharSequence;
+    int j;
+    int i;
+    if (arrayOfString != null)
     {
-      mxc localmxc = (mxc)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(373);
-      if ((localmxc != null) && (localmxc.a()))
+      localObject1 = localCharSequence;
+      if (arrayOfString.length > 0)
       {
-        this.jdField_a_of_type_Blir.a(2131690226, 0);
-        this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(1));
+        localObject1 = new IntentFilter();
+        j = arrayOfString.length;
+        i = 0;
+        while (i < j)
+        {
+          localCharSequence = arrayOfString[i];
+          if (!TextUtils.isEmpty(localCharSequence)) {
+            ((IntentFilter)localObject1).addAction(localCharSequence);
+          }
+          i += 1;
+        }
+        this.jdField_a_of_type_AndroidContentBroadcastReceiver = localAVGameBroadcastReceiver;
       }
-      this.jdField_a_of_type_Blir.a(2131690317, 0);
-      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(2));
-      this.jdField_a_of_type_Blir.a(2131690318, 0);
-      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(3));
-      this.jdField_a_of_type_Blir.c(2131690580);
-      this.jdField_a_of_type_Blir.a(new ngo(this));
-      return;
-      this.jdField_a_of_type_JavaUtilList.clear();
     }
-  }
-  
-  protected void b()
-  {
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, "dc00898", "", "", "0X800B013", "0X800B013", 0, 0, "", "", "", "");
-    mxc localmxc = (mxc)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(373);
-    if ((localmxc != null) && (!TextUtils.isEmpty(localmxc.a())))
+    if ((this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) && (localObject1 != null)) {
+      try
+      {
+        BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject1);
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder(100);
+          ((StringBuilder)localObject1).append("register, actions[");
+          j = arrayOfString.length;
+          i = 0;
+          while (i < j)
+          {
+            ((StringBuilder)localObject1).append(arrayOfString[i]).append(",");
+            i += 1;
+          }
+        }
+      }
+      catch (Throwable localThrowable1)
+      {
+        for (;;)
+        {
+          QLog.i("BroadcastCenter", 1, "register", localThrowable1);
+        }
+        localThrowable1.append("]");
+        QLog.i("BroadcastCenter", 2, localThrowable1.toString());
+      }
+    }
+    Object localObject2;
+    if ((localAppRuntime instanceof AVGameAppInterface))
     {
-      localmxc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 4, localmxc.a(), null);
-      return;
+      localObject2 = (AVGameAppInterface)localAppRuntime;
+      a((ngm)localObject2, ((AVGameAppInterface)localObject2).getApp().getPackageName());
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, 2131690356, 0).a();
-  }
-  
-  protected void c()
-  {
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, "dc00898", "", "", "0X800B011", "0X800B011", 0, 0, "", "", "", "");
-    mxc localmxc = (mxc)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(373);
-    if (localmxc != null)
+    if ((this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver == null) && ((localAppRuntime instanceof AppInterface)))
     {
-      localmxc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+      this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver = new ExitReceiver((AppInterface)localAppRuntime);
+      localObject2 = new IntentFilter();
+      ((IntentFilter)localObject2).addAction("com.tencent.process.exit");
+    }
+    try
+    {
+      BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver, (IntentFilter)localObject2);
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, 2131690355, 0).a();
+    catch (Throwable localThrowable2)
+    {
+      QLog.i("BroadcastCenter", 1, "register", localThrowable2);
+    }
   }
   
-  protected void d()
+  public void b()
   {
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, "dc00898", "", "", "0X800B012", "0X800B012", 0, 0, "", "", "", "");
-    mxc localmxc = (mxc)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(373);
-    if ((localmxc != null) && (localmxc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity))) {
-      return;
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {}
+    try
+    {
+      BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+      if (this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver == null) {}
     }
-    AVGameJoinRoomFragment.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null);
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_Blir != null) && (!this.jdField_a_of_type_Blir.isShowing())) {
-      this.jdField_a_of_type_Boolean = false;
+    catch (Throwable localThrowable1)
+    {
+      try
+      {
+        BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver);
+        this.jdField_a_of_type_ComTencentAvgameIpcAccountReceiver = null;
+        if (this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver != null) {}
+        try
+        {
+          BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver);
+          this.jdField_a_of_type_ComTencentAvgameIpcExitReceiver = null;
+          return;
+        }
+        catch (Throwable localThrowable3)
+        {
+          QLog.i("BroadcastCenter", 1, "unregister2", localThrowable3);
+        }
+        localThrowable1 = localThrowable1;
+        QLog.i("BroadcastCenter", 1, "unregister", localThrowable1);
+      }
+      catch (Throwable localThrowable2)
+      {
+        for (;;)
+        {
+          QLog.i("BroadcastCenter", 1, "unregister2", localThrowable2);
+        }
+      }
     }
-    a();
-    this.jdField_a_of_type_Blir.show();
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

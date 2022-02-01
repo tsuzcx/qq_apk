@@ -1,31 +1,76 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.CommentData;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v4.app.FragmentActivity;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.BiuEditText;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
-public abstract interface osl
+public class osl
+  implements EmoticonCallback
 {
-  public abstract void a(int paramInt);
+  public osl(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public abstract void a(int paramInt, String paramString, ovk paramovk, ovl paramovl);
+  public void delete()
+  {
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart() == 0) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        Editable localEditable = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText();
+        int i = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getSelectionStart();
+        int j = TextUtils.getOffsetBefore(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText.getText(), i);
+        if (i != j)
+        {
+          localEditable.delete(Math.min(i, j), Math.max(i, j));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
   
-  public abstract void a(int paramInt, ovk paramovk1, ovk paramovk2, ovl paramovl);
+  public void emoticonMall() {}
   
-  public abstract void a(int paramInt, ovk paramovk, ovl paramovl, CommentData paramCommentData);
+  public void onHidePopup(EmoticonInfo paramEmoticonInfo) {}
   
-  public abstract void a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2);
+  public boolean onLongClick(EmoticonInfo paramEmoticonInfo)
+  {
+    return true;
+  }
   
-  public abstract void a(String paramString, boolean paramBoolean1, boolean paramBoolean2);
+  public void onShowPopup(EmoticonInfo paramEmoticonInfo1, EmoticonInfo paramEmoticonInfo2, Drawable paramDrawable) {}
   
-  public abstract void a(boolean paramBoolean, BaseCommentData paramBaseCommentData, String paramString);
+  public void send() {}
   
-  public abstract void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2);
+  public void send(EmoticonInfo paramEmoticonInfo)
+  {
+    if ((paramEmoticonInfo instanceof PicEmoticonInfo))
+    {
+      paramEmoticonInfo = (PicEmoticonInfo)paramEmoticonInfo;
+      Context localContext = ReadInJoyCommentComponentFragment.a(this.a).getApplicationContext();
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramEmoticonInfo.getBigDrawable(localContext, localContext.getResources().getDisplayMetrics().density));
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      ReadInJoyCommentComponentFragment.a(this.a);
+      return;
+    }
+    ReadInJoyBaseDeliverActivity.a(ReadInJoyCommentComponentFragment.a(this.a).app, paramEmoticonInfo, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuBiuEditText);
+  }
   
-  public abstract void a(boolean paramBoolean1, otp paramotp, int paramInt, String paramString, boolean paramBoolean2);
-  
-  public abstract void b(int paramInt, ovk paramovk, ovl paramovl, CommentData paramCommentData);
-  
-  public abstract void b(boolean paramBoolean, BaseCommentData paramBaseCommentData, String paramString);
-  
-  public abstract void c(int paramInt, ovk paramovk, ovl paramovl, CommentData paramCommentData);
+  public void setting() {}
 }
 
 

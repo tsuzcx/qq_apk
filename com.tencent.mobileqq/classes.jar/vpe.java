@@ -1,31 +1,15 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StNotice;
-import qqcircle.QQCircleFeedBase.StNoticeBusiData;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
-class vpe
-  implements View.OnClickListener
+public class vpe
+  implements vox
 {
-  vpe(vpd paramvpd, Context paramContext) {}
+  public vpe(StoryVideoUploadTask paramStoryVideoUploadTask, vpd paramvpd) {}
   
-  public void onClick(View paramView)
+  public void a(vow paramvow)
   {
-    QLog.i("QCircleSystemMessagePresenter", 1, "clickSystemMessage messageId" + this.jdField_a_of_type_Vpd.jdField_a_of_type_FeedcloudFeedCloudMeta$StNotice.feedId.get());
-    if ((this.jdField_a_of_type_Vpd.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData != null) && (this.jdField_a_of_type_Vpd.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData.busiInfo.get() != null))
-    {
-      String str = uyw.a(this.jdField_a_of_type_Vpd.jdField_a_of_type_QqcircleQQCircleFeedBase$StNoticeBusiData.busiInfo.get(), "noticeFeedJumpUrl");
-      QLog.i("QCircleSystemMessagePresenter", 1, "clickSystemMessage get jumpUrl" + str);
-      if (!TextUtils.isEmpty(str)) {
-        uyx.a(this.jdField_a_of_type_AndroidContentContext, str);
-      }
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Vpd.k = ((vor)paramvow).b;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
   }
 }
 

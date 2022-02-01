@@ -1,52 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
 
 class xob
-  implements View.OnClickListener
+  implements vqp<wdo, wdp>
 {
-  xob(xoa paramxoa) {}
+  xob(xnz paramxnz, JobContext paramJobContext, xnm paramxnm) {}
   
-  public void onClick(View paramView)
+  public void a(@NonNull wdo paramwdo, @Nullable wdp arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    String str1;
-    if ((xoa.a(this.a) != null) && (xoa.a(this.a).a()))
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      xoa.a(this.a).c();
-      int i;
-      if (xoa.a(this.a) != null)
+      xvv.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
+      return;
+    }
+    if (??? == null)
+    {
+      paramErrorMessage = new wdp(paramErrorMessage);
+      synchronized (this.jdField_a_of_type_Xnz)
       {
-        i = yup.a(xoa.a(this.a).a);
-        if (!this.a.a()) {
-          break label128;
-        }
-      }
-      label128:
-      for (str1 = "1";; str1 = "2")
-      {
-        yup.a("home_page", "cancel_reply", i, 0, new String[] { str1, yup.a(xoa.a(this.a)), "5", xoa.a(this.a) });
-        EventCollector.getInstance().onViewClicked(paramView);
+        xnz.a(this.jdField_a_of_type_Xnz, paramErrorMessage);
+        xnz.a(this.jdField_a_of_type_Xnz).remove(paramwdo);
+        xnz.a(this.jdField_a_of_type_Xnz, this.jdField_a_of_type_Xnm);
         return;
-        i = 0;
+      }
+    }
+    if (paramErrorMessage.isFail()) {
+      xvv.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for comment request");
+    }
+    vtu localvtu = (vtu)vux.a(17);
+    Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
+    for (;;)
+    {
+      paramErrorMessage = ???;
+      if (!localIterator.hasNext()) {
         break;
       }
-    }
-    this.a.a();
-    if (this.a.a())
-    {
-      str1 = "2";
-      label154:
-      if (!this.a.b()) {
-        break label199;
+      paramErrorMessage = (wdq)localIterator.next();
+      localvtu.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
+      if (paramErrorMessage.b == 1) {
+        paramErrorMessage.jdField_a_of_type_JavaUtilList.addAll(localvtu.b(paramErrorMessage.jdField_a_of_type_JavaLangString, false));
       }
-    }
-    label199:
-    for (String str2 = "2";; str2 = "1")
-    {
-      yup.a("play_video", "close_reply", 0, 3, new String[] { str1, str2 });
-      break;
-      str1 = "1";
-      break label154;
     }
   }
 }

@@ -1,15 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import tencent.im.oidb.articlesummary.articlesummary.BiuMultiLevel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemSingle;
 
-public final class qxe
-  implements pno<articlesummary.BiuMultiLevel, qxr>
+public class qxe
+  implements View.OnClickListener
 {
-  public qxe(SocializeFeedsInfo paramSocializeFeedsInfo) {}
+  public qxe(ComponentTopicItemSingle paramComponentTopicItemSingle) {}
   
-  public qxr a(articlesummary.BiuMultiLevel paramBiuMultiLevel)
-  {
-    return this.a.a(paramBiuMultiLevel);
-  }
+  public void onClick(View paramView) {}
 }
 
 

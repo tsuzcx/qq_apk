@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.TroopAdmin;
-
-public final class afwm
-  implements Parcelable.Creator<TroopMemberListActivity.TroopAdmin>
+public abstract interface afwm
 {
-  public TroopMemberListActivity.TroopAdmin a(Parcel paramParcel)
-  {
-    return new TroopMemberListActivity.TroopAdmin(paramParcel, null);
-  }
-  
-  public TroopMemberListActivity.TroopAdmin[] a(int paramInt)
-  {
-    return new TroopMemberListActivity.TroopAdmin[paramInt];
-  }
+  public abstract void a();
 }
 
 

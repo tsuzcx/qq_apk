@@ -4,7 +4,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import org.json.JSONObject;
-import suz;
+import syz;
 
 public class TitleData
   extends ProteusItemData
@@ -37,7 +37,7 @@ public class TitleData
             String str = (String)localIterator.next();
             localJSONObject.put(str, ((JSONObject)localObject1).opt(str));
           }
-          localObject2 = suz.a("native_article", true);
+          localObject2 = syz.a("native_article", true);
         }
         catch (Exception localException1)
         {
@@ -50,7 +50,7 @@ public class TitleData
       }
       label131:
       label162:
-      for (Object localObject2 = ((suz)localObject2).getTemplateBean(localJSONObject);; localObject2 = null)
+      for (Object localObject2 = ((syz)localObject2).getTemplateBean(localJSONObject);; localObject2 = null)
       {
         if (localObject2 != null)
         {
@@ -71,7 +71,7 @@ public class TitleData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.TitleData
  * JD-Core Version:    0.7.0.1
  */

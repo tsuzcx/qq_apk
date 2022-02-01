@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar.ARRecord;
 
-import anzj;
-import apgt;
-import apgw;
-import bhlq;
-import bhpc;
+import amtj;
+import aoaf;
+import aoai;
+import bfur;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public final class ARRecordUtils$1
   implements Runnable
@@ -15,7 +15,7 @@ public final class ARRecordUtils$1
   {
     try
     {
-      bhlq.a(apgw.a().a(), 230, this.a, this.b, "", anzj.a(2131699651), new apgt(this), null).show();
+      bfur.a(aoai.a().a(), 230, this.a, this.b, "", amtj.a(2131699886), new aoaf(this), null).show();
       return;
     }
     catch (Exception localException)

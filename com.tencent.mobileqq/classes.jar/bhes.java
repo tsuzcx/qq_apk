@@ -1,17 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
-
-public class bhes
-  implements DialogInterface.OnClickListener
+public abstract interface bhes
 {
-  public bhes(UpgradeActivity paramUpgradeActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    UpgradeActivity.a(this.a, false);
-    bdll.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, bhdt.b(), String.valueOf(0), bhdu.a(), "");
-  }
+  public abstract void a(int paramInt);
 }
 
 

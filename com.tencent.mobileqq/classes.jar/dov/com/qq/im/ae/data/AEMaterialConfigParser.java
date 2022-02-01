@@ -1,9 +1,9 @@
 package dov.com.qq.im.ae.data;
 
 import android.text.TextUtils;
-import boqq;
-import boqr;
-import boqu;
+import blux;
+import bluy;
+import blvb;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaAdditionalPackage;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaCategory;
@@ -38,7 +38,7 @@ public class AEMaterialConfigParser
     return VideoSDKMaterialParser.parseVideoMaterial(paramString, "params");
   }
   
-  public static ArrayList<boqq> a(String paramString)
+  public static ArrayList<blux> a(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     if (TextUtils.isEmpty(paramString)) {
@@ -61,32 +61,32 @@ public class AEMaterialConfigParser
     localObject1 = ((GetCategoryMaterialRsp)localObject1).Categories.iterator();
     for (;;)
     {
-      boqq localboqq;
+      blux localblux;
       Object localObject3;
-      boqu localboqu;
+      blvb localblvb;
       Map localMap;
       if (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (MetaCategory)((Iterator)localObject1).next();
-        localboqq = new boqq();
-        localboqq.b = ((MetaCategory)localObject2).name;
-        localboqq.a = new ArrayList();
+        localblux = new blux();
+        localblux.b = ((MetaCategory)localObject2).name;
+        localblux.a = new ArrayList();
         localObject2 = ((MetaCategory)localObject2).materials.iterator();
         for (;;)
         {
           if (((Iterator)localObject2).hasNext())
           {
             localObject3 = (MetaMaterial)((Iterator)localObject2).next();
-            if (((!((MetaMaterial)localObject3).id.contains("_3DFaceFila")) || (boqr.b())) && ((!((MetaMaterial)localObject3).id.contains("_haircolor")) || ((DeviceUtils.hasDeviceNormal(BaseApplicationImpl.getContext())) && ((GpuScopeAttrs.getInstance().getDeviceModel() == null) || (GpuScopeAttrs.getInstance().getDeviceModel().hairColor))))) {
+            if (((!((MetaMaterial)localObject3).id.contains("_3DFaceFila")) || (bluy.b())) && ((!((MetaMaterial)localObject3).id.contains("_haircolor")) || ((DeviceUtils.hasDeviceNormal(BaseApplicationImpl.getContext())) && ((GpuScopeAttrs.getInstance().getDeviceModel() == null) || (GpuScopeAttrs.getInstance().getDeviceModel().hairColor))))) {
               if ((paramString.containsKey(((MetaMaterial)localObject3).id)) && (paramString.get(((MetaMaterial)localObject3).id) != null))
               {
-                localObject3 = (boqu)paramString.get(((MetaMaterial)localObject3).id);
-                localboqq.a.add(localObject3);
+                localObject3 = (blvb)paramString.get(((MetaMaterial)localObject3).id);
+                localblux.a.add(localObject3);
               }
               else
               {
-                localboqu = new boqu();
-                localboqu.jdField_c_of_type_JavaLangString = ((MetaMaterial)localObject3).thumbUrl;
+                localblvb = new blvb();
+                localblvb.jdField_c_of_type_JavaLangString = ((MetaMaterial)localObject3).thumbUrl;
                 localMap = ((MetaMaterial)localObject3).additionalFields;
                 if (localMap == null) {
                   break;
@@ -98,31 +98,31 @@ public class AEMaterialConfigParser
       }
       try
       {
-        localboqu.jdField_c_of_type_Int = Integer.parseInt((String)localMap.get("kind"));
+        localblvb.jdField_c_of_type_Int = Integer.parseInt((String)localMap.get("kind"));
         try
         {
           for (;;)
           {
             label357:
-            localboqu.jdField_d_of_type_Int = Integer.parseInt((String)localMap.get("displayType"));
+            localblvb.jdField_d_of_type_Int = Integer.parseInt((String)localMap.get("displayType"));
             label377:
-            localboqu.g = ((String)localMap.get("qq_camera_top_title"));
-            localboqu.h = ((String)localMap.get("qq_camera_scheme"));
-            localboqu.l = ((String)localMap.get("playshow_cover_img"));
-            localboqu.m = ((String)localMap.get("playshow_display_text"));
-            localboqu.i = ((String)localMap.get("takeSameName"));
+            localblvb.g = ((String)localMap.get("qq_camera_top_title"));
+            localblvb.h = ((String)localMap.get("qq_camera_scheme"));
+            localblvb.l = ((String)localMap.get("playshow_cover_img"));
+            localblvb.m = ((String)localMap.get("playshow_display_text"));
+            localblvb.i = ((String)localMap.get("takeSameName"));
             try
             {
               if (!TextUtils.isEmpty((String)localMap.get("showCircleTakeSame"))) {}
-              for (localboqu.jdField_f_of_type_Int = Integer.valueOf((String)localMap.get("showCircleTakeSame")).intValue();; localboqu.jdField_f_of_type_Int = 0)
+              for (localblvb.jdField_f_of_type_Int = Integer.valueOf((String)localMap.get("showCircleTakeSame")).intValue();; localblvb.jdField_f_of_type_Int = 0)
               {
                 label503:
-                localboqu.j = ((String)localMap.get("showEntry"));
-                localboqu.jdField_a_of_type_JavaLangString = ((MetaMaterial)localObject3).id;
-                a(localboqu, (MetaMaterial)localObject3);
-                localboqu.jdField_f_of_type_JavaLangString = ((MetaMaterial)localObject3).id;
-                localboqq.a.add(localboqu);
-                paramString.put(((MetaMaterial)localObject3).id, localboqu);
+                localblvb.j = ((String)localMap.get("showEntry"));
+                localblvb.jdField_a_of_type_JavaLangString = ((MetaMaterial)localObject3).id;
+                a(localblvb, (MetaMaterial)localObject3);
+                localblvb.jdField_f_of_type_JavaLangString = ((MetaMaterial)localObject3).id;
+                localblux.a.add(localblvb);
+                paramString.put(((MetaMaterial)localObject3).id, localblvb);
                 break;
               }
             }
@@ -131,7 +131,7 @@ public class AEMaterialConfigParser
               break label503;
             }
           }
-          localArrayList.add(localboqq);
+          localArrayList.add(localblux);
           continue;
           return localArrayList;
         }
@@ -147,23 +147,23 @@ public class AEMaterialConfigParser
     }
   }
   
-  private static void a(boqu paramboqu, MetaMaterial paramMetaMaterial)
+  private static void a(blvb paramblvb, MetaMaterial paramMetaMaterial)
   {
     if (paramMetaMaterial.additionalPackage == null)
     {
-      paramboqu.jdField_d_of_type_JavaLangString = paramMetaMaterial.packageUrl;
-      paramboqu.e = paramMetaMaterial.packageMd5;
+      paramblvb.jdField_d_of_type_JavaLangString = paramMetaMaterial.packageUrl;
+      paramblvb.e = paramMetaMaterial.packageMd5;
     }
     for (;;)
     {
-      if ((paramMetaMaterial.packageUrl != null) && (!paramMetaMaterial.packageUrl.equals(paramboqu.jdField_d_of_type_JavaLangString))) {
-        paramboqu.jdField_d_of_type_Boolean = true;
+      if ((paramMetaMaterial.packageUrl != null) && (!paramMetaMaterial.packageUrl.equals(paramblvb.jdField_d_of_type_JavaLangString))) {
+        paramblvb.jdField_d_of_type_Boolean = true;
       }
       return;
       if ((TextUtils.isEmpty(paramMetaMaterial.additionalPackage.superLowPackageUrl)) && (TextUtils.isEmpty(paramMetaMaterial.additionalPackage.lowPackageUrl)) && (TextUtils.isEmpty(paramMetaMaterial.additionalPackage.midPackageUrl)) && (TextUtils.isEmpty(paramMetaMaterial.additionalPackage.highPackageUrl)))
       {
-        paramboqu.jdField_d_of_type_JavaLangString = paramMetaMaterial.packageUrl;
-        paramboqu.e = paramMetaMaterial.packageMd5;
+        paramblvb.jdField_d_of_type_JavaLangString = paramMetaMaterial.packageUrl;
+        paramblvb.e = paramMetaMaterial.packageMd5;
       }
       else
       {
@@ -183,8 +183,8 @@ public class AEMaterialConfigParser
         int i = j;
         if (!TextUtils.isEmpty(arrayOfString1[j]))
         {
-          paramboqu.jdField_d_of_type_JavaLangString = arrayOfString1[j];
-          paramboqu.e = arrayOfString2[j];
+          paramblvb.jdField_d_of_type_JavaLangString = arrayOfString1[j];
+          paramblvb.e = arrayOfString2[j];
         }
         else
         {
@@ -195,8 +195,8 @@ public class AEMaterialConfigParser
               break;
             }
           } while (TextUtils.isEmpty(arrayOfString1[i]));
-          paramboqu.jdField_d_of_type_JavaLangString = arrayOfString1[i];
-          paramboqu.e = arrayOfString2[i];
+          paramblvb.jdField_d_of_type_JavaLangString = arrayOfString1[i];
+          paramblvb.e = arrayOfString2[i];
         }
       }
     }

@@ -1,13 +1,12 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
-
 public class ahzo
-  implements ahyf
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public int a;
+  public int b;
+  
+  public ahzo(int paramInt1, int paramInt2)
   {
-    paramahed.b(paramahfq, paramContext.getString(2131719085));
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 

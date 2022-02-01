@@ -1,9 +1,4 @@
-import android.graphics.Bitmap;
-
-public abstract interface bjqf
-{
-  public abstract void a(String paramString1, Bitmap paramBitmap, String paramString2);
-}
+public class bjqf {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

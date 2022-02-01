@@ -1,24 +1,31 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-class rgg
-  extends nkq
+public class rgg
 {
-  rgg(rgf paramrgf, prv paramprv) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  private static rdd a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    rgf.a(this.jdField_a_of_type_Rgf, false);
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("RIJUGC.MyColumnModel", 2, "loadDataFromNetwork failed.");
-      }
-      this.jdField_a_of_type_Prv.a(false, true, 0, new ArrayList(), null, paramInt, "");
-      return;
+    default: 
+      return null;
+    case 0: 
+      return new rcr(paramBaseArticleInfo);
     }
-    rgf.a(this.jdField_a_of_type_Rgf, this.jdField_a_of_type_Prv, paramArrayOfByte, paramInt);
+    return new rgd(paramBaseArticleInfo);
+  }
+  
+  public static rdd a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (a(paramBaseArticleInfo)) {
+      return a(1, paramBaseArticleInfo);
+    }
+    return a(0, paramBaseArticleInfo);
+  }
+  
+  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    return ((paramBaseArticleInfo instanceof ArticleInfo)) && (!pgb.q((ArticleInfo)paramBaseArticleInfo));
   }
 }
 

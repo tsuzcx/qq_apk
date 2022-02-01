@@ -1,34 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:id="@id/na9" android:background="@color/ag4" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/na7" android:layout_width="fill_parent" android:layout_height="52.0dip">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/n_w" android:background="@drawable/gnv" android:padding="14.0dip" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="8.0dip" android:src="@drawable/gmt" android:scaleType="fitCenter" />
-        <FrameLayout android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="-3.5dip">
-            <include android:id="@id/nf1" android:visibility="invisible" android:layout_width="52.0dip" android:layout_height="52.0dip" layout="@layout/cpo" />
-        </FrameLayout>
-        <FrameLayout android:layout_gravity="center" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <FrameLayout android:background="@drawable/gnx" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="166.0dip">
-                <com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat android:layout_gravity="center" android:id="@id/nap" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="52.0dip" app:tabCompatMinWidth="75.0dip" />
-            </FrameLayout>
-        </FrameLayout>
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/n_z" android:background="@drawable/gnv" android:padding="14.0dip" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginRight="-4.0dip" android:src="@drawable/gno" android:scaleType="fitCenter" />
-        <FrameLayout android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/n_v" android:background="@drawable/get" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginRight="4.0dip">
-            <com.tencent.mobileqq.widget.SquareImageView android:layout_gravity="center" android:id="@id/n_y" android:layout_width="32.0dip" android:layout_height="32.0dip" android:scaleType="fitXY" app:round_radius="35.0dip" />
-        </FrameLayout>
-    </LinearLayout>
-    <com.tencent.biz.qqcircle.widgets.QCircleFolderTabViewPager android:id="@id/nat" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="60.0dip" />
-    <com.tencent.biz.qqcircle.widgets.QCirclePushToastView android:id="@id/na0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.biz.qqcircle.widgets.QCircleGuideBubbleView android:layout_gravity="bottom|center|right" android:id="@id/nex" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:layout_marginBottom="96.0dip" />
-    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/n_x" android:visibility="visible" android:layout_width="74.0dip" android:layout_height="74.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="26.0dip" android:src="@drawable/gez" android:scaleType="fitCenter" />
-    <ViewStub android:id="@id/ncw" android:layout="@layout/co3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cn_" />
-    <include android:id="@id/ndk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/coh" />
-    <com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView android:id="@id/neb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.biz.qqcircle.widgets.QCircleStatusView android:id="@id/ng7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="52.0dip" />
-    <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="130.0dip" android:layout_height="150.0dip">
-        <com.tencent.image.URLImageView android:layout_gravity="center_horizontal" android:id="@id/nd_" android:visibility="gone" android:layout_width="130.0dip" android:layout_height="150.0dip" />
-        <TextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="#ff000000" android:id="@id/ndc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="完成互动任务 燃料" android:layout_centerInParent="true" />
-        <ImageView android:id="@id/ndb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/ndc" android:layout_centerVertical="true" />
-        <ImageView android:id="@id/nda" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ggh" android:layout_toRightOf="@id/ndc" android:layout_centerInParent="true" />
-    </RelativeLayout>
-</FrameLayout>
+<RelativeLayout android:id="@id/ic3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/d_b" android:background="@color/fw" android:paddingLeft="64.0dip" android:paddingRight="64.0dip" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_alignParentTop="true" />
+    <View android:id="@id/kmu" android:background="@color/al7" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_below="@id/d_b" />
+    <FrameLayout android:id="@id/g32" android:background="@color/fw" android:layout_width="fill_parent" android:layout_height="231.0dip" android:layout_below="@id/kmu" />
+</RelativeLayout>

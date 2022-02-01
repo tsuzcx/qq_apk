@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import apra;
-import bdmc;
+import aokn;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -13,7 +13,7 @@ public final class MiniScanReport$1
   
   public void run()
   {
-    bdmc localbdmc = bdmc.a(BaseApplication.getContext());
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
     HashMap localHashMap;
     if ((this.jdField_a_of_type_Int > 0) && (this.jdField_a_of_type_Int < 180000))
     {
@@ -22,8 +22,8 @@ public final class MiniScanReport$1
       localHashMap.put("report_key_scan_cnt", String.valueOf(this.b));
       localHashMap.put("report_key_scan_avg", String.valueOf(this.jdField_a_of_type_Int));
       localHashMap.put("report_key_scan_suc", String.valueOf(this.c));
-      apra.a(localHashMap);
-      localbdmc.a("", "report_tag_scan_avg_qr", true, 0L, 0L, localHashMap, "");
+      aokn.a(localHashMap);
+      localStatisticCollector.collectPerformance("", "report_tag_scan_avg_qr", true, 0L, 0L, localHashMap, "");
     }
     if ((this.d > 0) && (this.e > 0) && (this.e < 180000))
     {
@@ -32,8 +32,8 @@ public final class MiniScanReport$1
       localHashMap.put("report_key_scan_cnt", String.valueOf(this.d));
       localHashMap.put("report_key_scan_avg", String.valueOf(this.e));
       localHashMap.put("report_key_scan_suc", String.valueOf(this.c));
-      apra.a(localHashMap);
-      localbdmc.a("", "report_tag_scan_avg_minidecode", true, 0L, 0L, localHashMap, "");
+      aokn.a(localHashMap);
+      localStatisticCollector.collectPerformance("", "report_tag_scan_avg_minidecode", true, 0L, 0L, localHashMap, "");
     }
     if ((this.f > 0) && (this.g > 0) && (this.g < 180000))
     {
@@ -42,10 +42,10 @@ public final class MiniScanReport$1
       localHashMap.put("report_key_scan_cnt", String.valueOf(this.f));
       localHashMap.put("report_key_scan_avg", String.valueOf(this.g));
       localHashMap.put("report_key_scan_suc", String.valueOf(this.c));
-      apra.a(localHashMap);
-      localbdmc.a("", "report_tag_scan_avg_minidetect", true, 0L, 0L, localHashMap, "");
+      aokn.a(localHashMap);
+      localStatisticCollector.collectPerformance("", "report_tag_scan_avg_minidetect", true, 0L, 0L, localHashMap, "");
     }
-    if ((QLog.isColorLevel()) || (apra.a())) {
+    if ((QLog.isColorLevel()) || (aokn.a())) {
       QLog.i("MiniRecog.MiniScanReport", 1, String.format("base_test_scan markScanEnd [sucType,totalConsume,qrAvg,decodeAvg,detectAvg]=[%d,%d,%d,%d,%d]", new Object[] { Integer.valueOf(this.c), Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.e), Integer.valueOf(this.g) }));
     }
   }

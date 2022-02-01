@@ -1,22 +1,60 @@
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import android.app.Activity;
+import android.view.View;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogViewForAd;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.util.VersionUtils;
+import java.util.ArrayList;
 
 public class oaw
 {
-  public oaw(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString, long paramLong) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private bjnw jdField_a_of_type_Bjnw;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   
-  @QQPermissionDenied(1)
-  public void denied()
+  public oaw(Activity paramActivity, AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
   }
   
-  @QQPermissionGrant(1)
-  public void grant()
+  public void a(AdvertisementInfo paramAdvertisementInfo, ArrayList<DislikeInfo> paramArrayList)
   {
-    SosoInterface.a(new obi(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, 0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long));
+    if ((paramAdvertisementInfo == null) || (paramArrayList == null) || (paramArrayList.size() == 0)) {}
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_Bjnw = ((bjnw)bjon.a(this.jdField_a_of_type_AndroidAppActivity, null));
+      Object localObject = new oax(this);
+      this.jdField_a_of_type_Bjnw.a((bjoi)localObject);
+      localObject = new ReadInJoyDisLikeDialogViewForAd(this.jdField_a_of_type_AndroidAppActivity);
+      ((ReadInJoyDisLikeDialogView)localObject).setOnUninterestConfirmListener(new oay(this, paramAdvertisementInfo));
+      ((ReadInJoyDisLikeDialogView)localObject).setOnComplainListener(new oaz(this, paramAdvertisementInfo));
+      ((ReadInJoyDisLikeDialogView)localObject).setUninterestData(paramArrayList);
+      this.jdField_a_of_type_Bjnw.a((View)localObject, null);
+      try
+      {
+        if (!this.jdField_a_of_type_Bjnw.isShowing())
+        {
+          if ((VersionUtils.isJellyBean()) && (!ShortVideoUtils.isInFullScreenBlackList()) && ((this.jdField_a_of_type_AndroidAppActivity instanceof Activity)))
+          {
+            this.jdField_a_of_type_Bjnw.getWindow().setFlags(8, 8);
+            this.jdField_a_of_type_Bjnw.getWindow().getDecorView().setSystemUiVisibility(this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getSystemUiVisibility());
+            this.jdField_a_of_type_Bjnw.setOnShowListener(new oba(this));
+          }
+          this.jdField_a_of_type_Bjnw.show();
+          return;
+        }
+      }
+      catch (Exception paramAdvertisementInfo)
+      {
+        paramAdvertisementInfo.printStackTrace();
+      }
+    }
   }
 }
 

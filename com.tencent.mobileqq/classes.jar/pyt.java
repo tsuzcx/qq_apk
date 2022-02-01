@@ -1,37 +1,19 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class pyt
-  implements ViewBase.OnClickListener
+class pyt
+  implements View.OnClickListener
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+  pyt(pyr parampyr, long paramLong, ArticleInfo paramArticleInfo) {}
   
-  public pyt(BaseArticleInfo paramBaseArticleInfo, Context paramContext)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo instanceof AdvertisementInfo))
-    {
-      paramViewBase = (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-      if (paramViewBase.mLocalInfo != null)
-      {
-        String str = paramViewBase.mLocalInfo.b;
-        if (!TextUtils.isEmpty(str))
-        {
-          ozs.d(this.jdField_a_of_type_AndroidContentContext, str);
-          nzq.a(new tlx().a(this.jdField_a_of_type_AndroidContentContext).a(nzq.a).b(nzq.ab).a(paramViewBase).d(nzq.aX).a());
-        }
-      }
-    }
+    String str = paa.g + bfuc.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
+    pay.a(pyr.a(this.jdField_a_of_type_Pyr), str);
+    pyr.a(1, pay.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

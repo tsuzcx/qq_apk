@@ -1,34 +1,20 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahpi
-  extends xjm
+class ahpi
+  implements View.OnClickListener
 {
-  public ahpi(QQStoryItemBuilder paramQQStoryItemBuilder, ahpk paramahpk, long paramLong, boolean paramBoolean) {}
+  ahpi(ahph paramahph) {}
   
-  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.share", 2, "QQStoryItemBuilder requestVideoInfo: errorCode = " + paramInt + ", storyVideoItem = " + paramStoryVideoItem);
-    }
-    if ((paramInt == 0) && (paramStoryVideoItem != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Ahpk, this.jdField_b_of_type_Long, paramStoryVideoItem, this.jdField_b_of_type_Boolean);
-      return;
-    }
-    if (paramInt == 10100)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("QQStoryItemBuilder", 2, "onGetVideo video has deleted");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Ahpk, this.jdField_b_of_type_Long);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.w("QQStoryItemBuilder", 2, "onGetVideo video error");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Ahpk, this.jdField_b_of_type_Long);
+    ahph.a(this.a).a();
+    ChatActivityUtils.a(ahph.a(this.a), ahph.a(this.a), ahph.a(this.a).curType, ahph.a(this.a).curFriendUin, true, true, null, null);
+    bcef.b(ahph.a(this.a), "CliOper", "", "", "0X8003F00", "0X8003F00", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

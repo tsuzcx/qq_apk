@@ -1,6 +1,15 @@
-public abstract interface scu
+import android.view.View;
+import android.view.animation.Animation;
+
+class scu
+  extends bjmc
 {
-  public abstract void a(String paramString1, String paramString2);
+  scu(scs paramscs) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.q.setVisibility(8);
+  }
 }
 
 

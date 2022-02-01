@@ -1,14 +1,56 @@
-import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface zeh
+public class zeh
+  extends zaj
 {
-  public abstract void a();
+  private RelativePersonalBottomView jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
+  private yzn jdField_a_of_type_Yzn;
   
-  public abstract void a(Bitmap paramBitmap);
+  public zeh(Bundle paramBundle)
+  {
+    super(paramBundle);
+  }
   
-  public abstract void a(Runnable paramRunnable);
+  protected BaseWidgetView a(ViewGroup paramViewGroup, yzp paramyzp)
+  {
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView = new RelativePersonalBottomView(paramViewGroup.getContext(), paramyzp);
+    return this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
+  }
   
-  public abstract void a(zei paramzei);
+  public void a(Bundle paramBundle) {}
+  
+  public void a(yzu paramyzu) {}
+  
+  public void b(String paramString, yzn paramyzn)
+  {
+    super.b(paramString, paramyzn);
+    this.jdField_a_of_type_Yzn = paramyzn;
+    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView != null) {
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView.a(paramyzn);
+    }
+  }
+  
+  public int c()
+  {
+    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView != null) {
+      return this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView.b();
+    }
+    return 0;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView != null) {
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView.a(this.jdField_a_of_type_Yzn);
+    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
+  }
 }
 
 

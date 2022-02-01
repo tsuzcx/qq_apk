@@ -1,37 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
+import com.tencent.viola.core.ViolaInstance;
 
 public class toj
-  implements pye
+  extends tmz
+  implements tms
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  public toj(Activity paramActivity, tmm paramtmm, VVideoView paramVVideoView, ViolaInstance paramViolaInstance)
   {
-    return null;
+    super(paramActivity, paramtmm, paramVVideoView, paramViolaInstance);
   }
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    return puc.a(paramBaseArticleInfo);
-  }
+  public void D_() {}
   
-  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2)
-  {
-    if (paramppu.a() == null) {}
-    do
-    {
-      return;
-      paramContainer = (qek)paramContainer.getVirtualView().findViewBaseByName("id_small_game_proteus_collection_view");
-    } while (paramContainer == null);
-    paramContainer.a(paramppu);
-  }
+  public void E_() {}
   
-  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
-  {
-    return false;
-  }
+  public void F_() {}
 }
 
 

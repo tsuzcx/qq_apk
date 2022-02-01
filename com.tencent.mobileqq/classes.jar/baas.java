@@ -1,26 +1,76 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ScrollView;
-import com.tencent.widget.XEditTextEx;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import dov.com.qq.im.ae.camera.ui.panel.AbsBottomPanal;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class baas
-  implements View.OnClickListener
+  implements GLGestureListener
 {
-  public baas(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  protected View a;
+  private baat a;
+  protected List<AbsBottomPanal> a;
   
-  public void onClick(View paramView)
+  public void a(View paramView)
   {
-    StickyNotePublishFragment.a(this.a).setVisibility(8);
-    StickyNotePublishFragment.a(this.a).setVisibility(8);
-    StickyNotePublishFragment.a(this.a).setVisibility(8);
-    StickyNotePublishFragment.a(this.a).setVisibility(0);
-    StickyNotePublishFragment.a(this.a).requestFocus();
-    blgx.a(StickyNotePublishFragment.a(this.a));
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(baat parambaat)
+  {
+    this.jdField_a_of_type_Baat = parambaat;
+  }
+  
+  public void a(AbsBottomPanal paramAbsBottomPanal)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null)
+    {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      this.jdField_a_of_type_JavaUtilList.add(paramAbsBottomPanal);
+    }
+    while (this.jdField_a_of_type_JavaUtilList.contains(paramAbsBottomPanal)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.add(paramAbsBottomPanal);
+  }
+  
+  public int onGetPriority()
+  {
+    return 1060;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  {
+    int i = paramMotionEvent.getPointerCount();
+    int j = paramMotionEvent.getAction();
+    if ((i == 1) && (!paramBoolean)) {}
+    switch (j & 0xFF)
+    {
+    default: 
+      return false;
+    }
+    if (this.jdField_a_of_type_AndroidViewView != null) {}
+    for (Object localObject = this.jdField_a_of_type_AndroidViewView;; localObject = GLGestureProxy.getInstance().getGLSurfaceView())
+    {
+      if (this.jdField_a_of_type_Baat != null) {
+        this.jdField_a_of_type_Baat.a();
+      }
+      if (this.jdField_a_of_type_JavaUtilList == null) {
+        break;
+      }
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        AbsBottomPanal localAbsBottomPanal = (AbsBottomPanal)localIterator.next();
+        if ((localObject != null) && (localAbsBottomPanal != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - localAbsBottomPanal.getHeight()) && (!localAbsBottomPanal.b())) {
+          localAbsBottomPanal.d();
+        }
+      }
+      break;
+    }
   }
 }
 

@@ -1,19 +1,28 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import Wallet.SkinInfo;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.fragment.UsualHbFragment;
 
-class ajzo
-  implements View.OnClickListener
+public class ajzo
+  implements akak
 {
-  ajzo(ajzm paramajzm, DialogInterface.OnClickListener paramOnClickListener) {}
+  public ajzo(UsualHbFragment paramUsualHbFragment) {}
   
-  public void onClick(View paramView)
+  public void a(akaa paramakaa)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ajzm, 1);
+    if ((paramakaa.a.skin_id == 0) || (paramakaa.a.skin_id == -2))
+    {
+      paramakaa = ajzz.a(this.a.channel, this.a.a, this.a.mActivity.a(), paramakaa.a.blessing);
+      this.a.c.setHint(paramakaa);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (TextUtils.isEmpty(paramakaa.a.blessing))
+    {
+      this.a.c.setHint(amtj.a(2131696287));
+      return;
+    }
+    this.a.c.setHint(paramakaa.a.blessing);
   }
 }
 

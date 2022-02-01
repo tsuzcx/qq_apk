@@ -1,10 +1,31 @@
-import com.tencent.mobileqq.hotpic.HotVideoData;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface avuz
+public class avuz
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public abstract void a(HotVideoData paramHotVideoData);
+  public avuz(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public abstract void b(HotVideoData paramHotVideoData);
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, "checkedId = " + paramInt);
+    }
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+      MsgBackupDateFragment.a(this.a, 1);
+      continue;
+      MsgBackupDateFragment.a(this.a, 2);
+    }
+  }
 }
 
 

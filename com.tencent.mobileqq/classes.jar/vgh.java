@@ -1,16 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qcircleshadow.lib.delegate.IDaTongReportDelegate;
+import com.tencent.qqlive.module.videoreport.PageParams;
+import com.tencent.qqlive.module.videoreport.VideoReport;
+import java.util.Map;
 
-class vgh
-  implements View.OnClickListener
+public class vgh
+  implements IDaTongReportDelegate
 {
-  vgh(vgg paramvgg) {}
-  
-  public void onClick(View paramView)
+  public void setPageId(Object paramObject, String paramString)
   {
-    this.a.b();
-    EventCollector.getInstance().onViewClicked(paramView);
+    VideoReport.setPageId(paramObject, paramString);
+  }
+  
+  public void setPageParams(Object paramObject, Map<String, Object> paramMap)
+  {
+    VideoReport.setPageParams(paramObject, new PageParams(paramMap));
   }
 }
 

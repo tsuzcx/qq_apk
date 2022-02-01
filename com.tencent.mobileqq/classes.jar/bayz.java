@@ -1,10 +1,13 @@
-public abstract interface bayz
+public class bayz
 {
-  public abstract void a();
+  public String a;
+  public String b;
   
-  public abstract void b();
-  
-  public abstract void c();
+  public bayz(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
 }
 
 

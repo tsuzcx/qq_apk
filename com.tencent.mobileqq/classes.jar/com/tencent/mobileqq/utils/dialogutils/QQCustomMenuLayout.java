@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.utils.dialogutils;
 
+import amtj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.Layout;
@@ -13,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import anzj;
 import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -51,8 +51,8 @@ public class QQCustomMenuLayout
     this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(TypedValue.applyDimension(2, 15.0F, ((Resources)localObject).getDisplayMetrics()));
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838941);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(anzj.a(2131709080));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838973);
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(amtj.a(2131709312));
     this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setPadding((int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F));
@@ -60,7 +60,7 @@ public class QQCustomMenuLayout
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     addView(this.jdField_a_of_type_AndroidWidgetImageView, 0);
     this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130838926);
+    this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130838958);
     if (!AppSetting.c) {
       this.jdField_c_of_type_AndroidWidgetImageView.setContentDescription("leftIcon");
     }
@@ -69,7 +69,7 @@ public class QQCustomMenuLayout
     this.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     addView(this.jdField_c_of_type_AndroidWidgetImageView, 1);
     this.jdField_d_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130838926);
+    this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130838958);
     if (!AppSetting.c) {
       this.jdField_d_of_type_AndroidWidgetImageView.setContentDescription("rightIcon");
     }
@@ -79,8 +79,8 @@ public class QQCustomMenuLayout
     addView(this.jdField_d_of_type_AndroidWidgetImageView, 2);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838946);
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(anzj.a(2131709066));
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838980);
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(amtj.a(2131709298));
     this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetImageView.setPadding((int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F));
@@ -133,52 +133,6 @@ public class QQCustomMenuLayout
   }
   
   public void a()
-  {
-    if (getChildCount() > 3)
-    {
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_b_of_type_Int = (getChildCount() - 3);
-      b();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    int i = 2;
-    if (i < getChildCount() - 2)
-    {
-      if ((i < paramInt1) || (i > paramInt2)) {
-        getChildAt(i).setVisibility(8);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        getChildAt(i).setVisibility(0);
-      }
-    }
-  }
-  
-  public void addView(View paramView)
-  {
-    super.addView(paramView, getChildCount() - 2);
-  }
-  
-  public void addView(View paramView, int paramInt1, int paramInt2)
-  {
-    LinearLayout.LayoutParams localLayoutParams = generateDefaultLayoutParams();
-    localLayoutParams.width = paramInt1;
-    localLayoutParams.height = paramInt2;
-    addView(paramView, localLayoutParams);
-  }
-  
-  public void addView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
-  {
-    paramView.setLayoutParams(paramLayoutParams);
-    addView(paramView);
-  }
-  
-  public void b()
   {
     int i = -1;
     for (;;)
@@ -287,6 +241,42 @@ public class QQCustomMenuLayout
     }
   }
   
+  public void a(int paramInt1, int paramInt2)
+  {
+    int i = 2;
+    if (i < getChildCount() - 2)
+    {
+      if ((i < paramInt1) || (i > paramInt2)) {
+        getChildAt(i).setVisibility(8);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        getChildAt(i).setVisibility(0);
+      }
+    }
+  }
+  
+  public void addView(View paramView)
+  {
+    super.addView(paramView, getChildCount() - 2);
+  }
+  
+  public void addView(View paramView, int paramInt1, int paramInt2)
+  {
+    LinearLayout.LayoutParams localLayoutParams = generateDefaultLayoutParams();
+    localLayoutParams.width = paramInt1;
+    localLayoutParams.height = paramInt2;
+    addView(paramView, localLayoutParams);
+  }
+  
+  public void addView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    paramView.setLayoutParams(paramLayoutParams);
+    addView(paramView);
+  }
+  
   public void onClick(View paramView)
   {
     if (paramView == this.jdField_a_of_type_AndroidWidgetImageView) {
@@ -304,7 +294,7 @@ public class QQCustomMenuLayout
         this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
         this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-        b();
+        a();
         this.jdField_b_of_type_Boolean = false;
       }
     }
@@ -326,7 +316,7 @@ public class QQCustomMenuLayout
         this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
         this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
-        b();
+        a();
         this.jdField_a_of_type_Boolean = false;
       }
     }

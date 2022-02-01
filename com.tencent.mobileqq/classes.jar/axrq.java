@@ -1,27 +1,8 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.QLog;
-
-public class axrq
+public abstract interface axrq
 {
-  public static String a = "";
+  public abstract anzl a();
   
-  public static String a()
-  {
-    if (TextUtils.isEmpty(a)) {}
-    try
-    {
-      a = QQPlayerService.a(6, "MusicPendantUtil");
-      return a;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("MusicPendantUtil", 1, "MusicPendantManager() exception", localException);
-      }
-    }
-  }
+  public abstract boolean a();
 }
 
 

@@ -1,29 +1,6 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-
-public class aulu
-  extends aulp
+public abstract interface aulu
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  
-  public aulu(bftf parambftf)
-  {
-    this.jdField_a_of_type_JavaLangString = parambftf.e;
-    this.jdField_a_of_type_Int = 1;
-    this.b = String.valueOf(parambftf.b);
-  }
-  
-  public String a()
-  {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b)))
-    {
-      QLog.e("TroopFileControlReq<QFile>", 1, "key params is null");
-      return "";
-    }
-    return a(this.jdField_a_of_type_Int + "", this.b, this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a();
 }
 
 

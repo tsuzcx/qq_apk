@@ -1,6 +1,25 @@
-public abstract interface ahxd
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+
+public class ahxd
+  extends Handler
 {
-  public abstract void a();
+  public ahxd(AddContactsActivity paramAddContactsActivity) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.jdField_a_of_type_Ahyg.b();
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    ued.a().a(300);
+  }
 }
 
 

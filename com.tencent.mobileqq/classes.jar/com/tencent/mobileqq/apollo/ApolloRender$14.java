@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.apollo;
 
-import anpi;
-import anpj;
-import anpk;
+import amkc;
+import amkd;
+import amke;
 
 final class ApolloRender$14
   implements Runnable
 {
-  ApolloRender$14(String paramString1, String paramString2, String[] paramArrayOfString, byte[] paramArrayOfByte, anpj paramanpj, anpi paramanpi1, anpi paramanpi2) {}
+  ApolloRender$14(String paramString1, String paramString2, String[] paramArrayOfString, byte[] paramArrayOfByte, amkd paramamkd, amkc paramamkc1, amkc paramamkc2) {}
   
   public void run()
   {
     if ((this.jdField_a_of_type_JavaLangString.startsWith("http://stubcmshow.qq.com/cm3d/")) || (this.jdField_a_of_type_JavaLangString.startsWith("https://stubcmshow.qq.com/cm3d/")))
     {
-      anpk.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Anpj, this.jdField_a_of_type_Anpi, this.jdField_b_of_type_Anpi);
+      amke.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Amkd, this.jdField_a_of_type_Amkc, this.jdField_b_of_type_Amkc);
       return;
     }
-    anpk.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Anpj, this.jdField_a_of_type_Anpi, this.jdField_b_of_type_Anpi);
+    amke.b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Amkd, this.jdField_a_of_type_Amkc, this.jdField_b_of_type_Amkc);
   }
 }
 

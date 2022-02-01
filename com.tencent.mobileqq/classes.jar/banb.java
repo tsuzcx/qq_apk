@@ -1,33 +1,17 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 
-class banb
-  extends ClickableSpan
+public class banb
+  implements View.OnTouchListener
 {
-  banb(bamz parambamz, String paramString1, String paramString2, String paramString3) {}
+  public banb(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    new bane(bamz.a(this.jdField_a_of_type_Bamz).a).a(this.jdField_a_of_type_JavaLangString).a();
-    bdll.b(bamz.a(this.jdField_a_of_type_Bamz).a(), "dc00898", "", "", "0X800A4BB", "0X800A4BB", 0, 0, "", "", "", "");
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setTextSize(bhgr.a(bamz.a(this.jdField_a_of_type_Bamz).a, 14.0F));
-    paramTextPaint.setColor(Color.parseColor("#4D94FF"));
-    if (!TextUtils.isEmpty(this.b)) {
-      paramTextPaint.setColor(Color.parseColor(this.b));
-    }
-    if (!TextUtils.isEmpty(this.c)) {
-      paramTextPaint.setTextSize(Float.valueOf(this.c).floatValue());
-    }
+    bjmm.b(paramView);
+    return false;
   }
 }
 

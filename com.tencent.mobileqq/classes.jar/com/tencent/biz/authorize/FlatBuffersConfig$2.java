@@ -2,12 +2,12 @@ package com.tencent.biz.authorize;
 
 import java.io.File;
 import java.nio.ByteBuffer;
-import nlx;
+import nnm;
 
 public class FlatBuffersConfig$2
   implements Runnable
 {
-  public FlatBuffersConfig$2(nlx paramnlx, ByteBuffer paramByteBuffer, File paramFile, boolean paramBoolean) {}
+  public FlatBuffersConfig$2(nnm paramnnm, ByteBuffer paramByteBuffer, File paramFile, boolean paramBoolean) {}
   
   public void run()
   {

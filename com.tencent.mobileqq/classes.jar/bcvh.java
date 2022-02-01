@@ -1,22 +1,54 @@
-import com.tencent.mobileqq.servlet.LoginVerifyServlet.4;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bcvh
-  implements HostnameVerifier
+  extends MiniMsgUser
 {
-  public bcvh(LoginVerifyServlet.4 param4, URL paramURL) {}
+  int jdField_a_of_type_Int = -1;
+  MiniMsgUserParam jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam;
+  BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  String jdField_a_of_type_JavaLangString = "";
+  String b = "";
   
-  public boolean verify(String paramString, SSLSession paramSSLSession)
+  public bcvh(BaseActivity paramBaseActivity, MiniMsgUserParam paramMiniMsgUserParam, String paramString1, int paramInt, String paramString2)
   {
-    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaNetURL.getHost(), paramSSLSession);
-    if (!bool) {
-      QLog.d("LoginVerifyServlet", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.jdField_a_of_type_JavaNetURL.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
+    super(paramBaseActivity, paramMiniMsgUserParam);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam = paramMiniMsgUserParam;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.b = paramString2;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.actionCallback != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.actionCallback.onOpenMiniAIOCallback();
+      }
+      String str = this.jdField_a_of_type_JavaLangString;
+      int i = this.jdField_a_of_type_Int;
+      if ((i != -1) && (!TextUtils.isEmpty(str)))
+      {
+        MiniChatActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, i, str, this.b);
+        hideUnread();
+      }
     }
-    return bool;
+  }
+  
+  public void updateUnreadCountSync(int paramInt)
+  {
+    super.updateUnreadCountSync(0);
   }
 }
 

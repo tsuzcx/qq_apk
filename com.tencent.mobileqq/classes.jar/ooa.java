@@ -1,39 +1,83 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.util.Log;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class ooa
+public abstract class ooa
 {
-  private ooc jdField_a_of_type_Ooc;
-  private wmk jdField_a_of_type_Wmk = new wmk();
+  private long jdField_a_of_type_Long;
+  @Nullable
+  private String jdField_a_of_type_JavaLangString;
+  @NotNull
+  private final onz jdField_a_of_type_Onz;
+  @Nullable
+  private ood jdField_a_of_type_Ood;
+  private final boolean jdField_a_of_type_Boolean;
   
-  private void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString)
+  public ooa(@NotNull onz paramonz, boolean paramBoolean, @Nullable String paramString)
   {
-    if (this.jdField_a_of_type_Ooc != null) {
-      this.jdField_a_of_type_Ooc.a(paramPublishVideoEntry, paramInt, paramString);
+    this.jdField_a_of_type_Onz = paramonz;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
     }
   }
   
-  private void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  @NotNull
+  public final onz a()
   {
-    if (this.jdField_a_of_type_Ooc != null) {
-      this.jdField_a_of_type_Ooc.a(paramPublishVideoEntry, paramString);
+    return this.jdField_a_of_type_Onz;
+  }
+  
+  @Nullable
+  public final ood a()
+  {
+    return this.jdField_a_of_type_Ood;
+  }
+  
+  public void a()
+  {
+    a("onStop");
+  }
+  
+  protected final void a(@NotNull String paramString)
+  {
+    oob localoob = this.jdField_a_of_type_Onz.a();
+    if (localoob != null)
+    {
+      localoob.a("Step(" + this.jdField_a_of_type_JavaLangString + ')', paramString);
+      return;
     }
+    Log.d("Step(" + this.jdField_a_of_type_JavaLangString + ')', paramString);
   }
   
-  public void a(String paramString)
+  public final void a(@Nullable ood paramood)
   {
-    wmk.a(wmk.a(paramString));
+    this.jdField_a_of_type_Ood = paramood;
   }
   
-  public void a(String paramString1, String paramString2)
+  public boolean a()
   {
-    paramString1 = wmk.a(paramString1);
-    long l = System.currentTimeMillis();
-    this.jdField_a_of_type_Wmk.a(paramString1, paramString2 + ".tmp.mp4", false, true, new oob(this, l, paramString1));
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    a("onStart");
+    return true;
   }
   
-  public void a(ooc paramooc)
+  public abstract boolean b();
+  
+  public void c()
   {
-    this.jdField_a_of_type_Ooc = paramooc;
+    a("onEnd, time = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+  }
+  
+  public final boolean c()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Onz.a(this);
   }
 }
 

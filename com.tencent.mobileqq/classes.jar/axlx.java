@@ -1,11 +1,19 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+
 public class axlx
-  implements axlt
+  implements axpe
 {
-  public void a(int paramInt) {}
+  public axlx(OCRResultActivity paramOCRResultActivity) {}
   
-  public void a(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void b(int paramInt) {}
+  public void a(int paramInt, axpf paramaxpf)
+  {
+    if ((paramaxpf != null) && (!TextUtils.isEmpty(OCRResultActivity.c(this.a))) && (!OCRResultActivity.c(this.a).equals(paramaxpf.b)))
+    {
+      OCRResultActivity.c(this.a, paramaxpf.b);
+      OCRResultActivity.a(this.a, false);
+    }
+  }
 }
 
 

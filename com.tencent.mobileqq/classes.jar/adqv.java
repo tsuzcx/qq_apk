@@ -1,44 +1,20 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.os.Message;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import mqq.os.MqqHandler;
 
 public class adqv
-  implements View.OnClickListener
+  extends MqqHandler
 {
-  public adqv(AccountManageActivity paramAccountManageActivity) {}
+  public adqv(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Switch_Account", 2, "add account");
-    }
-    if (!azoz.a().a(this.a.app, this.a)) {}
-    for (;;)
+    switch (paramMessage.what)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+    default: 
       return;
-      if ((this.a.a != null) && (this.a.a.size() - 1 >= 8))
-      {
-        QQToast.a(this.a, 2131693446, 0).a();
-      }
-      else
-      {
-        AccountManageActivity.a(this.a, bdwt.a(this.a.app));
-        Intent localIntent = new Intent();
-        localIntent.setPackage(this.a.getPackageName());
-        localIntent.setClass(this.a, AddAccountActivity.class);
-        this.a.startActivityForResult(localIntent, 1000);
-        this.a.overridePendingTransition(2130771997, 2130771990);
-        bdws.c(this.a.app, this.a);
-        bdll.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_add", 0, 0, "", "", "", "");
-      }
     }
+    this.a.finish();
   }
 }
 

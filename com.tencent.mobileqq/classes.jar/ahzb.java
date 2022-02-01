@@ -1,13 +1,18 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ahzb
-  implements ahyf
+  implements View.OnClickListener
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public ahzb(SearchContactsActivity paramSearchContactsActivity) {}
+  
+  public void onClick(View paramView)
   {
-    paramahed.h(paramahfq.b);
+    this.a.setResult(0);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

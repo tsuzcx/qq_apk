@@ -6,7 +6,7 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
-import bhgr;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class MutliSeletedBottomLine
   extends View
@@ -25,7 +25,7 @@ public class MutliSeletedBottomLine
   {
     super(paramContext);
     this.e = paramInt;
-    this.f = bhgr.a(paramContext, 29.0F);
+    this.f = DisplayUtil.dip2px(paramContext, 29.0F);
     this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_Int = ((int)(paramInt / 8.0F));
   }
@@ -34,7 +34,7 @@ public class MutliSeletedBottomLine
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165283));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165289));
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     float f1;
     int i;

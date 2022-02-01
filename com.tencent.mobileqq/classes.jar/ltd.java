@@ -1,27 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.random.RandomController;
+import com.tencent.ttpic.openapi.model.ExpressionItem;
 
 public class ltd
-  implements DialogInterface.OnClickListener
+  extends ExpressionItem
 {
-  public ltd(RandomController paramRandomController) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (RandomController.a(this.a) == 1) {
-      bdll.b(null, "CliOper", "", "", "0X80053B5", "0X80053B5", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      this.a.b();
-      RandomController.d(this.a, false);
-      return;
-      if (RandomController.a(this.a) == 2) {
-        bdll.b(null, "CliOper", "", "", "0X80053C1", "0X80053C1", 0, 0, "", "", "", "");
-      }
-    }
-  }
+  public int[] a;
 }
 
 

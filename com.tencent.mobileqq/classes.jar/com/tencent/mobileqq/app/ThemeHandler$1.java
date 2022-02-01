@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import anzj;
-import aoie;
+import amtj;
+import anbt;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -9,11 +9,11 @@ import com.tencent.qphone.base.util.QLog;
 public class ThemeHandler$1
   implements Runnable
 {
-  public ThemeHandler$1(aoie paramaoie) {}
+  public ThemeHandler$1(anbt paramanbt) {}
   
   public void run()
   {
-    QQToast.a(this.this$0.mApp.getApplication(), anzj.a(2131713716), 4000).a();
+    QQToast.a(this.this$0.mApp.getApplication(), amtj.a(2131713948), 4000).a();
     QLog.e("Theme.ThemeHandler", 1, "handleThemeAuth Error, QQToast.makeText: set default theme");
   }
 }

@@ -35,7 +35,7 @@ public class SubscribeFeedsEvent
     this.mState = paramInt;
     if (paramCertifiedFakeFeed != null)
     {
-      this.mTargetId = ("fakeid_" + paramCertifiedFakeFeed.b());
+      this.mTargetId = ("fakeid_" + paramCertifiedFakeFeed.getClientKey());
       this.mSingleFakeFeed = a(paramCertifiedFakeFeed, paramInt);
     }
   }
@@ -71,40 +71,40 @@ public class SubscribeFeedsEvent
     PBStringField localPBStringField = localStFeed.id;
     if (paramInt == 2)
     {
-      str = paramCertifiedFakeFeed.a();
+      str = paramCertifiedFakeFeed.getFeedId();
       label26:
       localPBStringField.set(str);
-      localStFeed.title.set(paramCertifiedFakeFeed.c());
-      localStFeed.content.set(paramCertifiedFakeFeed.d());
-      localStFeed.poster.id.set(paramCertifiedFakeFeed.f());
+      localStFeed.title.set(paramCertifiedFakeFeed.getTitle());
+      localStFeed.content.set(paramCertifiedFakeFeed.getContent());
+      localStFeed.poster.id.set(paramCertifiedFakeFeed.getPuin());
       localStFeed.poster.setHasFlag(true);
-      localStFeed.type.set(paramCertifiedFakeFeed.a());
-      localStFeed.createTime.set(paramCertifiedFakeFeed.a());
+      localStFeed.type.set(paramCertifiedFakeFeed.getFeedType());
+      localStFeed.createTime.set(paramCertifiedFakeFeed.getCreateTime());
       localPBStringField = localStFeed.cover.url;
-      if (paramCertifiedFakeFeed.e() != null) {
+      if (paramCertifiedFakeFeed.getCoverPath() != null) {
         break label231;
       }
     }
     label231:
-    for (String str = "";; str = paramCertifiedFakeFeed.e())
+    for (String str = "";; str = paramCertifiedFakeFeed.getCoverPath())
     {
       localPBStringField.set(str);
       localStFeed.cover.setHasFlag(true);
-      switch (paramCertifiedFakeFeed.a())
+      switch (paramCertifiedFakeFeed.getFeedType())
       {
       case 1: 
       case 2: 
       default: 
-        localStFeed.cover.width.set(paramCertifiedFakeFeed.b());
-        localStFeed.cover.height.set(paramCertifiedFakeFeed.c());
+        localStFeed.cover.width.set(paramCertifiedFakeFeed.getWidth());
+        localStFeed.cover.height.set(paramCertifiedFakeFeed.getHeight());
         return localStFeed;
-        str = "fakeid_" + paramCertifiedFakeFeed.b();
+        str = "fakeid_" + paramCertifiedFakeFeed.getClientKey();
         break label26;
       }
     }
-    localStFeed.video.width.set(paramCertifiedFakeFeed.b());
-    localStFeed.video.height.set(paramCertifiedFakeFeed.c());
-    localStFeed.video.duration.set(paramCertifiedFakeFeed.d());
+    localStFeed.video.width.set(paramCertifiedFakeFeed.getWidth());
+    localStFeed.video.height.set(paramCertifiedFakeFeed.getHeight());
+    localStFeed.video.duration.set(paramCertifiedFakeFeed.getDuration());
     localStFeed.video.setHasFlag(true);
     return localStFeed;
   }

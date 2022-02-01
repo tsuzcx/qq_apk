@@ -1,19 +1,6 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-
-public final class apcu
-  implements Parcelable.Creator<SosoInterface.SosoLocation>
+public abstract interface apcu
 {
-  public SosoInterface.SosoLocation a(Parcel paramParcel)
-  {
-    return new SosoInterface.SosoLocation(paramParcel);
-  }
-  
-  public SosoInterface.SosoLocation[] a(int paramInt)
-  {
-    return new SosoInterface.SosoLocation[paramInt];
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

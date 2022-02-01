@@ -3,8 +3,8 @@ package com.tencent.mobileqq.filemanager.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import atzc;
-import aunj;
+import aslm;
+import aszt;
 import com.tencent.mm.vfs.VFSFile;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 public class FileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FileInfo> CREATOR = new atzc();
+  public static final Parcelable.Creator<FileInfo> CREATOR = new aslm();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
@@ -64,7 +64,7 @@ public class FileInfo
     d(paramString.getName());
     a(paramString.length());
     b(paramString.lastModified());
-    b(aunj.a(this.jdField_b_of_type_JavaLangString));
+    b(aszt.a(this.jdField_b_of_type_JavaLangString));
     c("");
     a("");
   }
@@ -242,7 +242,7 @@ public class FileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileInfo
  * JD-Core Version:    0.7.0.1
  */

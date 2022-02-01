@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
-import zyx;
+import yyi;
 
 class QRDisplayActivity$12$1
   implements Runnable
@@ -18,10 +18,10 @@ class QRDisplayActivity$12$1
       Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
       localIntent.setData(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString));
       this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$12.this$0.sendBroadcast(localIntent);
-      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$12.this$0.getString(2131694371), 1).b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$12.this$0.getTitleBarHeight());
+      QQToast.a(BaseApplicationImpl.getContext(), 2, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$12.this$0.getString(2131694485), 1).b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$12.this$0.getTitleBarHeight());
       return;
     }
-    zyx.a(1, 2131715965);
+    yyi.a(1, 2131716199);
   }
 }
 

@@ -14,8 +14,6 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import bhnv;
-import bhsr;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.microapp.R.id;
 import com.tencent.mobileqq.microapp.R.layout;
@@ -25,6 +23,8 @@ import com.tencent.mobileqq.microapp.appbrand.page.AppBrandPageContainer;
 import com.tencent.mobileqq.microapp.appbrand.page.ServiceWebview;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.microapp.appbrand.ui.AppBrandUI;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
@@ -151,7 +151,7 @@ public class MiniAppVideoPlayer
     this.s.setXYaxis(2);
     if (!this.i)
     {
-      if (bhsr.a(this.e)) {
+      if (StringUtil.isEmpty(this.e)) {
         break label468;
       }
       paramContext = URLDrawable.getDrawable(this.e, null);
@@ -193,7 +193,7 @@ public class MiniAppVideoPlayer
       this.t.removeAllViews();
       this.t.addView(this.ab);
       this.t.setBackgroundColor(-16777216);
-      if ((this.ac <= 0L) || (!bhnv.h(this.z))) {
+      if ((this.ac <= 0L) || (!NetworkUtil.isWifiConnected(this.z))) {
         break;
       }
       if (QLog.isColorLevel()) {
@@ -201,7 +201,7 @@ public class MiniAppVideoPlayer
       }
       a(this.ac);
       return;
-      if (!bhsr.a(this.l)) {
+      if (!StringUtil.isEmpty(this.l)) {
         c.a(this.l, new j(this));
       }
     }
@@ -238,7 +238,7 @@ public class MiniAppVideoPlayer
   
   public void a(long paramLong)
   {
-    if (bhsr.a(this.l)) {
+    if (StringUtil.isEmpty(this.l)) {
       return;
     }
     this.f = true;
@@ -302,7 +302,7 @@ public class MiniAppVideoPlayer
     paramJSONObject.optBoolean("showCenterPlayBtn");
     paramJSONObject.optBoolean("showFullScreenBtn");
     paramJSONObject.optBoolean("enableProgressGesture");
-    if (bhsr.a(this.e)) {
+    if (StringUtil.isEmpty(this.e)) {
       this.e = paramJSONObject.optString("poster");
     }
     paramJSONObject.optInt("initialTime");

@@ -1,38 +1,27 @@
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerTriplePicItemData;
+
 public class tth
+  extends tsx
 {
-  public float a;
-  public float b;
-  public float c;
-  public float d;
-  
-  public tth(float paramFloat1, float paramFloat2)
+  public int a(BaseData paramBaseData)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
+    int i = -1;
+    if ((paramBaseData instanceof ProteusBannerTriplePicItemData)) {
+      i = twh.a((ProteusBannerTriplePicItemData)paramBaseData);
+    }
+    return i;
   }
   
-  public tth(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  protected stg a(View paramView, BaseData paramBaseData)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
+    return new tti(this, paramView, paramBaseData, this.a);
   }
   
-  public tth(tth paramtth)
+  public boolean a(BaseData paramBaseData)
   {
-    this.a = paramtth.a;
-    this.b = paramtth.b;
-  }
-  
-  public void a(tth paramtth)
-  {
-    float f = this.a;
-    this.a = paramtth.a;
-    paramtth.a = f;
-    f = this.b;
-    this.b = paramtth.b;
-    paramtth.b = f;
+    return (paramBaseData != null) && (paramBaseData.r == 24);
   }
 }
 

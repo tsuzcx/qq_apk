@@ -7,15 +7,15 @@
             <TextView android:textSize="13.0dip" android:textColor="@color/xi" android:gravity="center_horizontal" android:id="@id/gfj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="19.0dip" android:layout_marginBottom="10.0dip" android:text="@string/g2c" />
             <RelativeLayout android:id="@id/h12" android:background="@drawable/a30" android:padding="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:layout_marginBottom="18.0dip">
                 <com.tencent.mobileqq.widget.ThemeImageViewOtherCatchRecycle android:id="@id/h13" android:layout_width="270.0dip" android:layout_height="370.0dip" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
-                <include android:id="@id/nhv" android:visibility="gone" android:layout_width="275.0dip" android:layout_height="422.0dip" android:layout_centerHorizontal="true" layout="@layout/cms" />
-                <include android:id="@id/nhw" android:visibility="gone" android:layout_width="275.0dip" android:layout_height="422.0dip" android:layout_centerHorizontal="true" layout="@layout/cmt" />
-                <include android:id="@id/nho" android:visibility="gone" android:layout_width="275.0dip" android:layout_height="422.0dip" layout="@layout/cms" />
+                <include android:id="@id/nd1" android:visibility="gone" android:layout_width="275.0dip" android:layout_height="422.0dip" android:layout_centerHorizontal="true" layout="@layout/cn_" />
+                <include android:id="@id/nd2" android:visibility="gone" android:layout_width="275.0dip" android:layout_height="422.0dip" android:layout_centerHorizontal="true" layout="@layout/cna" />
+                <include android:id="@id/ncu" android:visibility="gone" android:layout_width="275.0dip" android:layout_height="422.0dip" layout="@layout/cn_" />
                 <View android:id="@id/h1j" android:background="@drawable/a32" android:layout_width="270.0dip" android:layout_height="370.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@string/dzr" />
-                <LinearLayout android:orientation="horizontal" android:id="@id/cyi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:layout_below="@id/nhv">
+                <LinearLayout android:orientation="horizontal" android:id="@id/cyi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:layout_below="@id/nd1">
                     <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
-                    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/nhq" android:clickable="true" android:layout_width="79.0dip" android:layout_height="79.0dip" android:contentDescription="@string/wpy">
-                        <com.tencent.mobileqq.widget.ThemeImageViewOtherCatchRecycle android:layout_gravity="center_horizontal" android:id="@id/nhp" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/hus" />
-                        <TextView android:textSize="14.0dip" android:textColor="@color/ahl" android:layout_gravity="center_horizontal" android:id="@id/nhr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/wpy" android:singleLine="true" />
+                    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ncw" android:clickable="true" android:layout_width="79.0dip" android:layout_height="79.0dip" android:contentDescription="@string/wtu">
+                        <com.tencent.mobileqq.widget.ThemeImageViewOtherCatchRecycle android:layout_gravity="center_horizontal" android:id="@id/ncv" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/hus" />
+                        <TextView android:textSize="14.0dip" android:textColor="@color/ahl" android:layout_gravity="center_horizontal" android:id="@id/ncx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/wtu" android:singleLine="true" />
                     </LinearLayout>
                     <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
                     <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/h1p" android:clickable="true" android:layout_width="79.0dip" android:layout_height="79.0dip" android:contentDescription="@string/dzw">
@@ -25,16 +25,16 @@
                     <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
                 </LinearLayout>
             </RelativeLayout>
-            <LinearLayout android:orientation="horizontal" android:id="@id/mqy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:layout_below="@id/nhw">
+            <LinearLayout android:orientation="horizontal" android:id="@id/mso" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:layout_below="@id/nd2">
                 <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
-                <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/nhy" android:clickable="true" android:layout_width="79.0dip" android:layout_height="79.0dip" android:contentDescription="@string/wpx">
-                    <com.tencent.mobileqq.widget.ThemeImageViewOtherCatchRecycle android:layout_gravity="center_horizontal" android:id="@id/nhx" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/gco" />
-                    <TextView android:textSize="14.0dip" android:textColor="@color/ahl" android:layout_gravity="center_horizontal" android:id="@id/nhz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/wpx" android:singleLine="true" />
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/nd4" android:clickable="true" android:layout_width="79.0dip" android:layout_height="79.0dip" android:contentDescription="@string/wtt">
+                    <com.tencent.mobileqq.widget.ThemeImageViewOtherCatchRecycle android:layout_gravity="center_horizontal" android:id="@id/nd3" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/ggm" />
+                    <TextView android:textSize="14.0dip" android:textColor="@color/ahl" android:layout_gravity="center_horizontal" android:id="@id/nd5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/wtt" android:singleLine="true" />
                 </LinearLayout>
                 <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
-                <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/nht" android:clickable="true" android:layout_width="79.0dip" android:layout_height="79.0dip" android:contentDescription="@string/wpy">
-                    <com.tencent.mobileqq.widget.ThemeImageViewOtherCatchRecycle android:layout_gravity="center_horizontal" android:id="@id/nhs" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/hus" />
-                    <TextView android:textSize="14.0dip" android:textColor="@color/ahl" android:layout_gravity="center_horizontal" android:id="@id/nhu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/wpy" android:singleLine="true" />
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ncz" android:clickable="true" android:layout_width="79.0dip" android:layout_height="79.0dip" android:contentDescription="@string/wtu">
+                    <com.tencent.mobileqq.widget.ThemeImageViewOtherCatchRecycle android:layout_gravity="center_horizontal" android:id="@id/ncy" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/hus" />
+                    <TextView android:textSize="14.0dip" android:textColor="@color/ahl" android:layout_gravity="center_horizontal" android:id="@id/nd0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/wtu" android:singleLine="true" />
                 </LinearLayout>
                 <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
             </LinearLayout>

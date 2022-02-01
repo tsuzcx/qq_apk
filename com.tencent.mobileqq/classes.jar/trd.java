@@ -1,75 +1,87 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
 
-public class trd
+public abstract class trd
+  implements View.OnClickListener
 {
-  public static int a;
-  public static AtomicBoolean a;
-  public static boolean a;
-  public static int b;
-  public static boolean b;
-  public static int c = 25;
-  public static int d = 2;
-  public static int e = 2;
-  public static int f;
-  public static int g;
-  public static int h;
+  public int a;
+  protected Context a;
+  protected ViewGroup a;
+  public AdvertisementInfo a;
+  public AdData a;
+  public tql a;
+  protected tqu a;
+  public boolean a;
+  public boolean b;
   
-  static
+  public trd(Context paramContext, int paramInt)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_Int = 2;
-    jdField_b_of_type_Int = 10;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(paramContext);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(a(), this.jdField_a_of_type_AndroidViewViewGroup);
+    a();
+    b();
   }
   
-  public static void a()
+  public abstract int a();
+  
+  public View a()
   {
-    if (jdField_a_of_type_Int != 0) {
+    return this.jdField_a_of_type_AndroidViewViewGroup;
+  }
+  
+  public abstract void a();
+  
+  public void a(AdData paramAdData)
+  {
+    if (paramAdData == null) {
       return;
     }
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(319);
-    jdField_a_of_type_Int = localAladdinConfig.getIntegerFromString("strategy", 1);
-    jdField_b_of_type_Int = localAladdinConfig.getIntegerFromString("ad_first_time", 10);
-    c = localAladdinConfig.getIntegerFromString("ad_interval_time", 25);
-    d = localAladdinConfig.getIntegerFromString("ad_pre_req", 2);
-    e = localAladdinConfig.getIntegerFromString("ad_protect_gap", 2);
-    f = localAladdinConfig.getIntegerFromString("ad_first_pos", 4);
-    g = localAladdinConfig.getIntegerFromString("ad_interval_pos", 3);
-    h = localAladdinConfig.getIntegerFromString("ad_protect_interval", 3);
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
-    tpx.a("VideoAdStrategy", "setAdStrategyFromAladin: strategy = " + jdField_a_of_type_Int + " adFirstTime = " + jdField_b_of_type_Int + " adIntervalTime = " + c + " adPreReq = " + d + " adProtectGap = " + e + " adFirstPos = " + f + " adIntervalPos = " + g + " adProtectInterval = " + h);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData = paramAdData;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = tws.a(paramAdData);
   }
   
-  public static boolean a()
+  public void a(tql paramtql)
   {
-    if (QLog.isColorLevel()) {
-      tpx.a("VideoAdStrategyManager", "judge isNotVVStrategy : adStrategy = " + jdField_a_of_type_Int);
+    this.jdField_a_of_type_Tql = paramtql;
+  }
+  
+  public void a(tqu paramtqu)
+  {
+    this.jdField_a_of_type_Tqu = paramtqu;
+  }
+  
+  public void a(View... paramVarArgs)
+  {
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
+    {
+      View localView = paramVarArgs[i];
+      if (localView != null) {
+        localView.setOnClickListener(this);
+      }
+      i += 1;
     }
-    return (jdField_a_of_type_Int == 0) || (jdField_a_of_type_Int == 1);
   }
   
-  public static void b()
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public void d()
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false);
-    jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_Boolean = false;
+    this.b = true;
   }
   
-  public static boolean b()
-  {
-    if (QLog.isColorLevel()) {
-      tpx.a("VideoAdStrategyManager", "judge isNotTimeStrategy : adStrategy = " + jdField_a_of_type_Int);
-    }
-    return jdField_a_of_type_Int != 1;
-  }
-  
-  public static boolean c()
-  {
-    return (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (jdField_a_of_type_Int == 1);
-  }
+  public void e() {}
 }
 
 

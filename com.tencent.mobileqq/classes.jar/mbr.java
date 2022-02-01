@@ -1,35 +1,62 @@
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.guide.GuideHelper;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class mbr
-  extends lef
 {
-  public mbr(AVActivity paramAVActivity) {}
+  private static String a = "QAVPreSetting";
+  private static String b = "BeautyFeature";
+  private static String c = "BeautyValue";
+  private static String d = "BeautyConfig";
+  private static String e = "BeautyResetGuide";
   
-  protected void a(long paramLong1, long paramLong2)
+  public static int a(String paramString)
   {
-    if (this.a.isDestroyed()) {
-      return;
-    }
-    this.a.a.a(paramLong1, this.a, 4, 0);
+    return BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0).getInt(c + paramString, -1);
   }
   
-  protected void b(long paramLong, int paramInt1, int paramInt2)
+  public static String a(String paramString)
   {
-    if (this.a.isDestroyed()) {
-      return;
-    }
-    paramLong = AudioHelper.b();
-    this.a.a.a(paramLong, this.a, 3, 2);
+    return BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0).getString(d + paramString, "");
   }
   
-  protected void b(long paramLong1, long paramLong2)
+  public static void a(String paramString, int paramInt)
   {
-    if (this.a.isDestroyed()) {
-      return;
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0);
+    paramString = e + paramString;
+    localSharedPreferences.edit().putInt(paramString, paramInt).apply();
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0);
+    paramString1 = d + paramString1;
+    localSharedPreferences.edit().putString(paramString1, paramString2).apply();
+  }
+  
+  public static boolean a(String paramString)
+  {
+    paramString = BaseApplicationImpl.getApplication().getSharedPreferences(a, 0);
+    String str = b;
+    int j = paramString.getInt(str, -1);
+    int i = j;
+    if (j == -1) {
+      if (!lld.d()) {
+        break label67;
+      }
     }
-    this.a.a.a(paramLong1, this.a, 4, 0);
+    label67:
+    for (i = 1;; i = 0)
+    {
+      paramString.edit().putInt(str, i).commit();
+      return i >= 1;
+    }
+  }
+  
+  public static int b(String paramString)
+  {
+    return BaseApplicationImpl.getApplication().getApplicationContext().getSharedPreferences(a, 0).getInt(e + paramString, 0);
   }
 }
 

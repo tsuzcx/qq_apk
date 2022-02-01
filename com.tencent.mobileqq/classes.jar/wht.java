@@ -1,24 +1,47 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import java.util.Map;
 
-class wht
-  implements Animation.AnimationListener
+public class wht
+  extends wje
 {
-  wht(whs paramwhs) {}
+  private String a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public wht()
   {
-    this.a.b.setVisibility(8);
-    this.a.d.setVisibility(8);
-    this.a.g.setVisibility(8);
+    a(false, true);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a()
+  {
+    QQStoryContext.a();
+    QQAppInterface localQQAppInterface = QQStoryContext.a();
+    TransFileController localTransFileController = localQQAppInterface.getTransFileController();
+    TransferRequest localTransferRequest = new TransferRequest();
+    localTransferRequest.mUpCallBack = new whu(this);
+    localTransferRequest.mLocalPath = this.a;
+    localTransferRequest.mIsUp = true;
+    localTransferRequest.mFileType = 196610;
+    localTransferRequest.mSelfUin = localQQAppInterface.getCurrentUin();
+    localTransferRequest.mPeerUin = "";
+    localTransferRequest.mUniseq = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+    localTransFileController.transferAsync(localTransferRequest);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("UploadImageJob_in_image_file_path"))) {
+      this.a = ((String)a("UploadImageJob_in_image_file_path"));
+    }
+  }
+  
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.a);
+  }
 }
 
 

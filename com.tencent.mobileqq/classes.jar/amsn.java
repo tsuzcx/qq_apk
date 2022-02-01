@@ -1,50 +1,18 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.TMG.opengl.GraphicRendererMgr;
-import com.tencent.TMG.sdk.AVContext;
-import com.tencent.TMG.sdk.AVVideoCtrl;
-import com.tencent.TMG.utils.QLog;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class amsn
-  implements SurfaceHolder.Callback
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  amsn(amsm paramamsm) {}
+  public amsn(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  public void onGlobalLayout()
   {
-    if (paramSurfaceHolder.getSurface() == null) {
-      return;
+    if ((this.a.c.getVisibility() == 0) && ((this.a.c() instanceof ReadinjoyTabFrame))) {
+      this.a.c.setVisibility(8);
     }
-    paramSurfaceHolder.setFixedSize(paramInt2, paramInt3);
-    QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceChanged");
-  }
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    if (GraphicRendererMgr.getInstance() != null)
-    {
-      anmc.a(amsm.a(this.a)).a().setRenderMgrAndHolder(GraphicRendererMgr.getInstance(), paramSurfaceHolder);
-      anmc.a(amsm.a(this.a)).a().getVideoCtrl().setLocalVideoPreviewCallback(new amso(this));
-      anmc.a(amsm.a(this.a)).a().getVideoCtrl().setRemoteVideoPreviewCallback(new amsp(this));
-    }
-    for (;;)
-    {
-      QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceCreated");
-      return;
-      QLog.e("AVCameraCaptureModel", 0, "GraphicRendererMgr is null, so can't load");
-    }
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    paramSurfaceHolder = this.a.a();
-    if (paramSurfaceHolder == null)
-    {
-      QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceDestroyed avCtrl == null");
-      return;
-    }
-    paramSurfaceHolder.enableCamera(0, false, new amsq(this));
-    QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceDestroyed");
   }
 }
 

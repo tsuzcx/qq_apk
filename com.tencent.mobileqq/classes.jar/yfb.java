@@ -1,75 +1,24 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
-public class yfb
-  extends yii
-  implements yoo
+class yfb
+  implements Animation.AnimationListener
 {
-  public yfb(Context paramContext, Activity paramActivity, int paramInt1, int paramInt2)
-  {
-    super(paramContext, paramActivity, paramInt1, paramInt2);
-    super.a(this);
-  }
+  yfb(yfa paramyfa) {}
   
-  public static void a(Activity paramActivity, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    StringBuilder localStringBuilder1 = null;
-    StringBuilder localStringBuilder2;
-    if ((paramVideoListFeedItem != null) && (paramStoryVideoItem != null))
-    {
-      localStringBuilder2 = new StringBuilder();
-      if (paramStoryVideoItem.mTimeZoneOffsetMillis != 2147483647L)
-      {
-        localStringBuilder2.append(zps.a(paramStoryVideoItem.mCreateTime, paramStoryVideoItem.mTimeZoneOffsetMillis));
-        paramStoryVideoItem = localStringBuilder2;
-        paramVideoListFeedItem = localStringBuilder1;
-        if (localStringBuilder2.length() > 0)
-        {
-          paramVideoListFeedItem = new Intent();
-          paramVideoListFeedItem.putExtra("at_video_text", localStringBuilder2.toString());
-          paramStoryVideoItem = localStringBuilder2;
-        }
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder1 = new StringBuilder().append("set result ok. At video text is:");
-        if (paramStoryVideoItem != null) {
-          break label146;
-        }
-      }
-      label146:
-      for (paramStoryVideoItem = "";; paramStoryVideoItem = paramStoryVideoItem.toString())
-      {
-        QLog.d("Q.qqstory.detail.FeedItemThumbAdapter", 2, paramStoryVideoItem);
-        paramActivity.setResult(-1, paramVideoListFeedItem);
-        return;
-        localStringBuilder2.append(zps.b(paramStoryVideoItem.mCreateTime));
-        break;
-      }
-      paramStoryVideoItem = null;
-      paramVideoListFeedItem = localStringBuilder1;
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
+    if (this.a.a.jdField_a_of_type_Yev != null) {
+      this.a.a.jdField_a_of_type_Yev.a(null);
     }
   }
   
-  public void a(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt)
-  {
-    if (zps.b()) {
-      return;
-    }
-    a(this.a, paramVideoListFeedItem, paramStoryVideoItem);
-    yup.a("home_page", "choose_video", 0, 0, new String[0]);
-    this.a.finish();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void b(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

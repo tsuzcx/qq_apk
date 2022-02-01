@@ -1,24 +1,21 @@
-import android.content.Context;
-import android.util.Size;
-import java.nio.FloatBuffer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface apmn
+class apmn
+  implements View.OnClickListener
 {
-  public abstract Size a();
+  apmn(apml paramapml) {}
   
-  public abstract FloatBuffer a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(Context paramContext);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void onClick(View paramView)
+  {
+    apmh.a(this.a.a).setVisibility(8);
+    apmh.a(this.a.a, null);
+    if (apmh.a(this.a.a).getItemCount() == 0) {
+      apmh.a(this.a.a);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

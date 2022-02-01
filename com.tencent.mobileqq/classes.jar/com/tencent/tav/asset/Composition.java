@@ -91,7 +91,6 @@ public class Composition<CTrack extends CompositionTrack>
   
   public List<CTrack> getTracks()
   {
-    Log.e("Asset", "getTracks finish, has track count: " + this.tracks);
     return this.tracks;
   }
   
@@ -129,7 +128,7 @@ public class Composition<CTrack extends CompositionTrack>
   
   public String toString()
   {
-    return "Composition{tracks=" + this.tracks + ", trackCount=" + this.trackCount + '}';
+    return "Composition{\ntracks=" + this.tracks + "\ntrackCount=" + this.trackCount + '}';
   }
 }
 

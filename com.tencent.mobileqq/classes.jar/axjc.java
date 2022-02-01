@@ -1,56 +1,37 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadPoolParams;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.text.TextUtils;
+import com.tencent.mobileqq.now.nowqqlivefocus.NowQQLiveFocusProto.GetAnchorOnline1Req;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class axjc
 {
-  private static axjc jdField_a_of_type_Axjc;
-  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
+  private volatile boolean b;
   
-  private axjc()
+  public void a(axjb paramaxjb)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null)
-    {
-      int i = Runtime.getRuntime().availableProcessors();
-      ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
-      localThreadPoolParams.corePoolsize = i;
-      localThreadPoolParams.maxPooolSize = i;
-      localThreadPoolParams.priority = 5;
-      localThreadPoolParams.poolThreadName = "msgbackup_Tranport_Executor";
-      this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.newFreeThreadPool(localThreadPoolParams);
-    }
-  }
-  
-  public static axjc a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Axjc == null) {
-        jdField_a_of_type_Axjc = new axjc();
-      }
-      axjc localaxjc = jdField_a_of_type_Axjc;
-      return localaxjc;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    axjn.a("MsgBackupMsgBackupTransportExecutor", "msgbackup destroy-------------> destroyed = " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get(), new Object[0]);
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+    NowQQLiveFocusProto.GetAnchorOnline1Req localGetAnchorOnline1Req = new NowQQLiveFocusProto.GetAnchorOnline1Req();
+    String str = axjz.a();
+    if (TextUtils.isEmpty(str)) {}
+    while (this.b) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null) {
-      axjn.a("MsgBackupMsgBackupTransportExecutor", "thread pool is destroyed!", new Object[0]);
+    this.b = true;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Int += 1;
+      if (this.jdField_a_of_type_Int >= 3)
+      {
+        paramaxjb.a(-1, "retry fail");
+        return;
+      }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(paramRunnable);
+    localGetAnchorOnline1Req.uin.set(Long.parseLong(str));
+    localGetAnchorOnline1Req.is_uid.set(1);
+    localGetAnchorOnline1Req.source.set(1);
+    localGetAnchorOnline1Req.need_kroom.set(0);
+    axjq.a().a(28679, 2, localGetAnchorOnline1Req.toByteArray(), new axjd(this, paramaxjb));
   }
 }
 

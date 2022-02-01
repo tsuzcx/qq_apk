@@ -1,5 +1,6 @@
 package com.tencent.biz.ui;
 
+import amtj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -13,7 +14,6 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import anzj;
 
 public class CustomGuideView
   extends View
@@ -35,21 +35,21 @@ public class CustomGuideView
   public CustomGuideView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaLangString = anzj.a(2131701606);
+    this.jdField_a_of_type_JavaLangString = amtj.a(2131701841);
     a();
   }
   
   public CustomGuideView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_JavaLangString = anzj.a(2131701606);
+    this.jdField_a_of_type_JavaLangString = amtj.a(2131701841);
     a();
   }
   
   public CustomGuideView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaLangString = anzj.a(2131701606);
+    this.jdField_a_of_type_JavaLangString = amtj.a(2131701841);
     a();
   }
   

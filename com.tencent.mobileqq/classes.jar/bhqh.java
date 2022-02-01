@@ -1,100 +1,90 @@
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.open.agent.AuthorityControlFragment;
+import com.tencent.open.model.AppInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class bhqh
-  implements asmr
+public class bhqh
+  extends biei
 {
-  bhqh(bhpy parambhpy) {}
+  public bhqh(AuthorityControlFragment paramAuthorityControlFragment) {}
   
-  public void a(asmu paramasmu)
+  protected void a(boolean paramBoolean, List<AppInfo> paramList)
   {
-    int i;
-    int j;
-    if ((paramasmu instanceof assp))
-    {
-      i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-      j = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
-      if ((i < 0) || (j < 0) || (j < i)) {}
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorityControlActivity", 2, "onDelApp: invoked.  isSuccess: " + paramBoolean + " infos: " + paramList);
     }
-    assj localassj;
-    int k;
-    int m;
-    do
+    QQAppInterface localQQAppInterface;
+    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
     {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, behh.b(((assp)paramasmu).a));
-      do
-      {
-        return;
-      } while (!(paramasmu instanceof assj));
-      localassj = (assj)paramasmu;
-      i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-      j = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
-      k = localassj.a;
-      m = localassj.b;
-      if ((i < 0) || (j < 0) || (j < i)) {
-        break;
+      AuthorityControlFragment.a(this.a).b(paramList);
+      AuthorityControlFragment.a(this.a).a();
+      if (AuthorityControlFragment.a(this.a).getCount() == 0) {
+        AuthorityControlFragment.a(this.a);
       }
-    } while ((k == 2) && (m == -1));
-    if (k == 1) {}
-    for (paramasmu = behh.b(m);; paramasmu = behh.a(m))
+      int i = paramList.size();
+      paramList = String.format(amtj.a(2131699948), new Object[] { Integer.valueOf(i) });
+      QQToast.a(AuthorityControlFragment.a(this.a), 2, paramList, 0).a();
+      localQQAppInterface = AuthorityControlFragment.a(this.a);
+      if (!paramBoolean) {
+        break label207;
+      }
+    }
+    label207:
+    for (paramList = "0";; paramList = "1")
     {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, paramasmu);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-      if (this.a.jdField_a_of_type_Boolean) {
-        localassj.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
-      }
-      asky.a().a(k).a(m, 5);
+      bcef.b(localQQAppInterface, "dc00898", "", "", "0X8009E1D", "0X8009E1D", 0, 0, paramList, "", "", "");
       return;
+      QQToast.a(AuthorityControlFragment.a(this.a), 1, amtj.a(2131699952), 0).a();
+      break;
     }
   }
   
-  public void a(asmu paramasmu1, asmu paramasmu2, Drawable paramDrawable) {}
-  
-  public boolean a(asmu paramasmu)
+  protected void a(boolean paramBoolean, List<AppInfo> paramList, String paramString)
   {
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart() == 0) {}
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorityControlActivity", 2, "onGetAuthorizeAppList: invoked.  isSuccess: " + paramBoolean + " infos: " + paramList);
+    }
+    if (paramBoolean)
+    {
+      paramString = paramList;
+      if (paramList == null) {
+        paramString = new ArrayList();
+      }
+      AuthorityControlFragment.a(this.a).a(paramString);
+      AuthorityControlFragment.a(this.a, new ArrayList(paramString));
+      if (AuthorityControlFragment.a(this.a).getCount() == 0) {
+        AuthorityControlFragment.a(this.a);
+      }
+    }
     for (;;)
     {
-      return;
+      AuthorityControlFragment.a(this.a).notifyDataSetChanged();
+      if ((AuthorityControlFragment.a(this.a).isShowing()) && (!this.a.isRemoving())) {}
       try
       {
-        Editable localEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText();
-        int i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-        int j = TextUtils.getOffsetBefore(this.a.jdField_a_of_type_AndroidWidgetEditText.getText(), i);
-        if (i != j)
-        {
-          localEditable.delete(Math.min(i, j), Math.max(i, j));
-          return;
-        }
+        AuthorityControlFragment.a(this.a).dismiss();
+        label148:
+        AuthorityControlFragment.a(this.a, paramBoolean);
+        return;
+        AuthorityControlFragment.a(this.a).setVisibility(0);
+        this.a.setRightButton(2131690202, this.a);
+        continue;
+        AuthorityControlFragment.a(this.a);
       }
-      catch (Exception localException)
+      catch (Throwable paramList)
       {
-        localException.printStackTrace();
+        break label148;
       }
     }
   }
-  
-  public void b(asmu paramasmu) {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhqh
  * JD-Core Version:    0.7.0.1
  */

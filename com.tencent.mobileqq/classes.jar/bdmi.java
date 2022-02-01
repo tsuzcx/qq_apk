@@ -1,17 +1,16 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class bdmi
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
+  bdmi(bdmh parambdmh) {}
   
-  bdmi(String paramString1, String paramString2)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdmi
  * JD-Core Version:    0.7.0.1
  */

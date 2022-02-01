@@ -64,6 +64,7 @@ public class PayJsPlugin
   private static final String TAG = "PayJsPlugin";
   public static final String URL_PAY_BY_H5 = WnsConfig.getConfig("qqminiapp", "mini_game_pay_by_h5_url", "https://h5.qzone.qq.com/miniapp/act/midasPay?offerId={offerId}&prepayId={prepayId}&starCurrency={starCurrency}&setEnv={setEnv}&appid={appid}&zoneId={zoneId}&buyQuantity={buyQuantity}&isCanChange={isCanChange}&currencyType={currencyType}&platform={platform}&remark={remark}&numberVisible={numberVisible}&other={other}&acctType={acctType}&aid={aid}&firstRefer={firstRefer}&firstVia={firstVia}&refer={refer}&via={via}&_proxy=1&_wv=17301504&_wwv=1");
   public static final String URL_PAY_BY_H5_LANDSCAPE = WnsConfig.getConfig("qqminiapp", "mini_game_pay_by_h5_url_landscape", "https://h5.qzone.qq.com/miniapp/act/midasPay?offerId={offerId}&prepayId={prepayId}&starCurrency={starCurrency}&setEnv={setEnv}&appid={appid}&zoneId={zoneId}&buyQuantity={buyQuantity}&isCanChange={isCanChange}&currencyType={currencyType}&platform={platform}&remark={remark}&numberVisible={numberVisible}&other={other}&acctType={acctType}&aid={aid}&firstRefer={firstRefer}&firstVia={firstVia}&refer={refer}&via={via}&_proxy=1&_wv=17303552&_wwv=1");
+  private final int TMP_MODE_FOR_H5 = 0;
   protected String mRealOfferId = "";
   
   private String appendPayComeFrom(String paramString)
@@ -201,7 +202,7 @@ public class PayJsPlugin
         return;
       }
     }
-    for (paramActivity = ((PayProxy)localObject2).midasPay(paramActivity, paramJSONObject.toString(), new PayJsPlugin.11(this, paramRequestEvent), (Bundle)localObject1);; paramActivity = null)
+    for (paramActivity = ((PayProxy)localObject2).midasPay(paramActivity, paramJSONObject.toString(), new PayJsPlugin.12(this, paramRequestEvent), (Bundle)localObject1);; paramActivity = null)
     {
       if (paramActivity != null) {}
       for (i = paramActivity.getInt("retCode", 0); (paramActivity != null) && (i != 0); i = 0)
@@ -233,7 +234,7 @@ public class PayJsPlugin
         return;
       }
     }
-    for (paramActivity = localPayProxy.midasPay(paramActivity, paramString, new PayJsPlugin.10(this, paramRequestEvent), localBundle);; paramActivity = null)
+    for (paramActivity = localPayProxy.midasPay(paramActivity, paramString, new PayJsPlugin.11(this, paramRequestEvent), localBundle);; paramActivity = null)
     {
       if (paramActivity != null) {}
       for (i = paramActivity.getInt("retCode", 0); (paramActivity != null) && (i != 0); i = 0)
@@ -304,7 +305,7 @@ public class PayJsPlugin
       return;
     }
     label363:
-    for (localObject1 = ((PayProxy)localObject4).midasPay((Activity)localObject1, ((JSONObject)localObject2).toString(), new PayJsPlugin.12(this, paramRequestEvent), (Bundle)localObject3);; localObject1 = null)
+    for (localObject1 = ((PayProxy)localObject4).midasPay((Activity)localObject1, ((JSONObject)localObject2).toString(), new PayJsPlugin.13(this, paramRequestEvent), (Bundle)localObject3);; localObject1 = null)
     {
       if (localObject1 != null) {}
       for (i = ((Bundle)localObject1).getInt("retCode", 0); (localObject1 != null) && (i != 0); i = 0)
@@ -531,16 +532,16 @@ public class PayJsPlugin
       i = this.mMiniAppInfo.launchParam.entryModel.type;
       l = this.mMiniAppInfo.launchParam.entryModel.uin;
       if (i != 1) {
-        break label365;
+        break label369;
       }
     }
-    label365:
+    label369:
     for (str1 = String.valueOf(l);; str1 = "")
     {
       QMLog.i("PayJsPlugin", "report 4329 type=" + i + ", uin=" + l);
       for (;;)
       {
-        SDKMiniProgramLpReportDC04239.reportWithGroupId("wechat_pay", "launch_wechatpay", "", str2, str1);
+        SDKMiniProgramLpReportDC04239.reportWithGroupId(this.mMiniAppInfo, "wechat_pay", "launch_wechatpay", "", str2, str1);
         return;
         QMLog.i("PayJsPlugin", "no groupId");
       }
@@ -587,6 +588,10 @@ public class PayJsPlugin
     paramString = getSDKH5Url(paramString);
     localChannelProxy.startTransparentBrowserActivityForResult(paramActivity, paramString, paramRequestEvent, 3003);
     QMLog.i("PayJsPlugin", "startPayBrowserActivity, url=" + paramString);
+    paramRequestEvent = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+    if ((paramRequestEvent != null) && (paramRequestEvent.isDebugVersion())) {
+      AppBrandTask.runTaskOnUiThread(new PayJsPlugin.7(this, paramActivity));
+    }
   }
   
   private void startWxPayBrowser(Activity paramActivity, String paramString1, String paramString2, RequestEvent paramRequestEvent)
@@ -615,7 +620,7 @@ public class PayJsPlugin
         int i = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPayMode();
         switch (i)
         {
-        case 2: 
+        case 0: 
           handleNativeResponseFail(paramRequestEvent, localJSONObject, "not support pay mode:" + i);
           return;
         }
@@ -673,7 +678,7 @@ public class PayJsPlugin
       handleNativeResponseFail(paramRequestEvent, null, "activity is null");
       return;
     }
-    AppBrandTask.runTaskOnUiThread(new PayJsPlugin.13(this, paramString2, paramString1, paramRequestEvent, paramActivity, paramBoolean));
+    AppBrandTask.runTaskOnUiThread(new PayJsPlugin.14(this, paramString2, paramString1, paramRequestEvent, paramActivity, paramBoolean));
   }
   
   public void invokeMidasConsume(RequestEvent paramRequestEvent, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
@@ -707,7 +712,7 @@ public class PayJsPlugin
     if ((this.mMiniAppInfo != null) && (this.mMiniAppInfo.via != null)) {}
     for (str2 = this.mMiniAppInfo.via;; str2 = "")
     {
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getMidasConsumeResult(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, str1, str2, new PayJsPlugin.8(this, paramRequestEvent));
+      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getMidasConsumeResult(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, str1, str2, new PayJsPlugin.9(this, paramRequestEvent));
       return;
     }
   }
@@ -733,7 +738,7 @@ public class PayJsPlugin
         return;
       }
     }
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).queryCurrency(paramString1, paramString2, paramInt1, paramInt2, new PayJsPlugin.9(this, paramIStarQueryListener));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).queryCurrency(paramString1, paramString2, paramInt1, paramInt2, new PayJsPlugin.10(this, paramIStarQueryListener));
   }
   
   public void onCreate(IMiniAppContext paramIMiniAppContext)
@@ -785,7 +790,7 @@ public class PayJsPlugin
       String str = localJSONObject1.optString("prepayId");
       int i = localJSONObject1.optInt("starCurrency");
       int j = localJSONObject1.optInt("setEnv", 0);
-      invokeMidasQuery(str, this.mApkgInfo.appId, i, j, new PayJsPlugin.7(this, paramRequestEvent));
+      invokeMidasQuery(str, this.mApkgInfo.appId, i, j, new PayJsPlugin.8(this, paramRequestEvent));
       return;
     }
     catch (JSONException localJSONException)

@@ -1,15 +1,40 @@
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import java.lang.ref.WeakReference;
 
 public class ajmx
-  implements Comparator<PhoneContact>
+  extends Handler
 {
-  public ajmx(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  private WeakReference<DialogBaseActivity> a;
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public ajmx(DialogBaseActivity paramDialogBaseActivity)
   {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+    this.a = new WeakReference(paramDialogBaseActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    DialogBaseActivity localDialogBaseActivity = (DialogBaseActivity)this.a.get();
+    if (localDialogBaseActivity == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (;;)
+      {
+        localDialogBaseActivity.a(i, bool);
+        return;
+        bool = false;
+      }
+    }
+    localDialogBaseActivity.finish();
   }
 }
 

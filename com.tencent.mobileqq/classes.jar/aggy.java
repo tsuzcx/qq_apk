@@ -1,8 +1,16 @@
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract interface aggy
+final class aggy
+  implements aghk
 {
-  public abstract void a(MessageRecord paramMessageRecord);
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  {
+    if (paramChatMessage.msgtype != -1036) {
+      return 17;
+    }
+    return 18;
+  }
 }
 
 

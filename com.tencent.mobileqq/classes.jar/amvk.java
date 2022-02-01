@@ -1,21 +1,62 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloTicker;
-import com.tencent.mobileqq.apollo.EnginePreLoader.2;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.os.HandlerThread;
+import android.os.Looper;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.MsfCore;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqMessageQueue;
+import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
 
-public class amvk
+final class amvk
+  implements AbstractUnifiedMonitor.ThreadMonitorCallback
 {
-  private ApolloEngine jdField_a_of_type_ComTencentMobileqqApolloApolloEngine;
-  private ApolloTicker jdField_a_of_type_ComTencentMobileqqApolloApolloTicker;
-  
-  private void a()
+  public void onThreadMonitorEnd(int paramInt)
   {
-    ThreadManagerV2.executeOnSubThread(new EnginePreLoader.2(this));
+    if (paramInt == 0)
+    {
+      Looper.getMainLooper().setMessageLogging(null);
+      MqqMessageQueue.getSubMainThreadQueue().setMessageLogging(null);
+    }
+    do
+    {
+      Object localObject;
+      do
+      {
+        return;
+        if (paramInt == 4)
+        {
+          ThreadManager.getSubThreadLooper().setMessageLogging(null);
+          return;
+        }
+        if (paramInt == 5)
+        {
+          ThreadManager.getFileThreadLooper().setMessageLogging(null);
+          return;
+        }
+        if (paramInt == 14)
+        {
+          Looper.getMainLooper().setMessageLogging(null);
+          return;
+        }
+        if (paramInt != 18) {
+          break;
+        }
+        localObject = MsfCore.sCore;
+        if (localObject == null)
+        {
+          QLog.e("MagnifierSDK.QAPM", 1, "msf core hasnot init");
+          return;
+        }
+        localObject = ((MsfCore)localObject).getNetworkHandlerThread();
+      } while ((localObject == null) || (((HandlerThread)localObject).getLooper() == null));
+      ((HandlerThread)localObject).getLooper().setMessageLogging(null);
+      return;
+    } while (paramInt != 19);
+    Looper.getMainLooper().setMessageLogging(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amvk
  * JD-Core Version:    0.7.0.1
  */

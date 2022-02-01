@@ -3,7 +3,7 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import arya;
+import aqrx;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.unique;
 
@@ -11,7 +11,7 @@ public class Setting
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator<Setting> CREATOR = new arya();
+  public static final Parcelable.Creator<Setting> CREATOR = new aqrx();
   public byte bFaceFlags;
   public byte bHeadType;
   public byte bSourceType;
@@ -86,7 +86,7 @@ public class Setting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.Setting
  * JD-Core Version:    0.7.0.1
  */

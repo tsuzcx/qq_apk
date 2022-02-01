@@ -1,39 +1,25 @@
-import org.apache.http.Header;
-import org.apache.http.HeaderElement;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpResponseInterceptor;
-import org.apache.http.protocol.HttpContext;
+import android.content.Context;
+import com.rookery.translate.AITranslator;
+import com.rookery.translate.AITranslator.TranslatorType;
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateError;
+import java.util.List;
 
-class kzl
-  implements HttpResponseInterceptor
+public class kzl
+  implements lal
 {
-  kzl(kzi paramkzi) {}
+  public kzl(AITranslator paramAITranslator, String paramString1, long paramLong, Context paramContext, agqr paramagqr, String paramString2, Language paramLanguage, lak paramlak, List paramList1, List paramList2, int paramInt, AITranslator.TranslatorType paramTranslatorType) {}
   
-  public void process(HttpResponse paramHttpResponse, HttpContext paramHttpContext)
+  public void a(TranslateError paramTranslateError, Long paramLong)
   {
-    paramHttpContext = paramHttpResponse.getEntity();
-    if (paramHttpContext == null) {}
-    for (;;)
-    {
-      return;
-      paramHttpContext = paramHttpContext.getContentEncoding();
-      if (paramHttpContext != null)
-      {
-        paramHttpContext = paramHttpContext.getElements();
-        int j = paramHttpContext.length;
-        int i = 0;
-        while (i < j)
-        {
-          if (paramHttpContext[i].getName().equalsIgnoreCase("gzip"))
-          {
-            paramHttpResponse.setEntity(new kzn(paramHttpResponse.getEntity()));
-            return;
-          }
-          i += 1;
-        }
-      }
-    }
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agqr, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Lak, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComRookeryTranslateAITranslator$TranslatorType, paramTranslateError, paramLong);
+  }
+  
+  public void a(List<Language> paramList, List<String> paramList1, Long paramLong)
+  {
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Agqr, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Lak, 0, AITranslator.TranslatorType.MS, paramList, paramList1, this.jdField_a_of_type_JavaUtilList, paramLong);
   }
 }
 

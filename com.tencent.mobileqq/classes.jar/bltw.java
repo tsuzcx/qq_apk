@@ -1,35 +1,33 @@
-import android.support.v7.widget.RecyclerView.RecycledViewPool;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.ttpic.openapi.model.WMElement;
+import com.tencent.ttpic.openapi.watermark.LogicDataManager;
 import java.util.List;
 
-public class bltw
-  extends RecyclerView.RecycledViewPool
+class bltw
+  implements View.OnClickListener
 {
-  public bltw(RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter) {}
+  bltw(bltv parambltv, int paramInt, blud paramblud) {}
   
-  public RecyclerView.ViewHolder getRecycledView(int paramInt)
+  public void onClick(View paramView)
   {
-    Object localObject = this.a.getAdapter();
-    RecyclerView.ViewHolder localViewHolder = super.getRecycledView(paramInt);
-    if ((localViewHolder != null) && ((localObject instanceof bltq)))
+    WMElement localWMElement = (WMElement)LogicDataManager.getInstance().getEditableWMElement().get(this.jdField_a_of_type_Int);
+    if (localWMElement != null)
     {
-      localObject = (bltq)localObject;
-      if (((bltq)localObject).d(paramInt))
-      {
-        if (!RecyclerViewWithHeaderFooter.a(this.a).contains(localViewHolder.itemView))
-        {
-          putRecycledView(localViewHolder);
-          return null;
-        }
+      if (!localWMElement.ischeckin) {
+        break label50;
       }
-      else if ((((bltq)localObject).c(paramInt)) && (!RecyclerViewWithHeaderFooter.b(this.a).contains(localViewHolder.itemView)))
-      {
-        putRecycledView(localViewHolder);
-        return null;
-      }
+      bltv.a(this.jdField_a_of_type_Bltv, localWMElement, this.jdField_a_of_type_Blud);
     }
-    return localViewHolder;
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      label50:
+      this.jdField_a_of_type_Blud.a.setText("");
+    }
   }
 }
 

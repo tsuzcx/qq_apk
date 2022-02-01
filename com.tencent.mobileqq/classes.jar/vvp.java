@@ -1,26 +1,25 @@
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Interpolator;
-import com.tencent.biz.qqcircle.transition.QCircleTransitionImageView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 public class vvp
-  implements Interpolator
+  extends vko
 {
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new DecelerateInterpolator();
+  public long a;
+  public String a;
+  public String b;
   
-  private vvp(QCircleTransitionImageView paramQCircleTransitionImageView) {}
-  
-  public void a(Interpolator paramInterpolator)
+  public vvp(String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramStoryVideoItem.mVideoIndex;
+    this.b = paramStoryVideoItem.mVid;
+    if (this.jdField_a_of_type_Long == 0L) {
+      this.jdField_a_of_type_Long = paramStoryVideoItem.mCreateTime;
+    }
   }
   
-  public float getInterpolation(float paramFloat)
+  public String toString()
   {
-    float f = paramFloat;
-    if (this.jdField_a_of_type_AndroidViewAnimationInterpolator != null) {
-      f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(paramFloat);
-    }
-    return f;
+    return "ReadStoryVideoEvent{unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", videoIndex=" + this.jdField_a_of_type_Long + ", vid='" + this.b + '\'' + '}';
   }
 }
 

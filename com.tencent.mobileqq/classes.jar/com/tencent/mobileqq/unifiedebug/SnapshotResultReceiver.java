@@ -3,7 +3,7 @@ package com.tencent.mobileqq.unifiedebug;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import bcpr;
+import bbit;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -26,7 +26,7 @@ public class SnapshotResultReceiver
     Object localObject1;
     if (this.a != null)
     {
-      localObject1 = (bcpr)this.a.getManager(94);
+      localObject1 = (bbit)this.a.getManager(94);
       switch (paramInt)
       {
       }
@@ -54,13 +54,13 @@ public class SnapshotResultReceiver
               l = paramBundle.getLong("seq");
               paramBundle = paramBundle.getString("seqKey");
             } while (localObject1 == null);
-            ((bcpr)localObject1).a((List)localObject2, l, paramBundle);
+            ((bbit)localObject1).a((List)localObject2, l, paramBundle);
             return;
             localObject2 = paramBundle.getStringArrayList("snapshotPaths");
             l = paramBundle.getLong("seq");
             paramBundle = paramBundle.getString("seqKey");
             if (localObject1 != null) {
-              ((bcpr)localObject1).b((List)localObject2, l, paramBundle);
+              ((bbit)localObject1).b((List)localObject2, l, paramBundle);
             }
           } while (!QLog.isColorLevel());
           QLog.d("SnapshotResultReceiver", 2, "RESULT_FINISH_ALIVE_SNAPSHOT, seq=" + l);
@@ -71,7 +71,7 @@ public class SnapshotResultReceiver
           localObject2 = paramBundle.getString("debugUrl");
           paramInt = paramBundle.getInt("maxCount");
           l = paramBundle.getLong("seq");
-          ((bcpr)localObject1).a((String)localObject2, paramInt, paramBundle.getLong("delay"), l, paramBundle.getString("seqKey"));
+          ((bbit)localObject1).a((String)localObject2, paramInt, paramBundle.getLong("delay"), l, paramBundle.getString("seqKey"));
         } while (!QLog.isColorLevel());
         QLog.d("SnapshotResultReceiver", 2, "RESULT_WEBVIEW_INVALID, restart alive snapshot. seq=" + l);
         return;
@@ -80,8 +80,8 @@ public class SnapshotResultReceiver
       return;
     } while (localObject1 == null);
     long l = paramBundle.getLong("seq");
-    ((bcpr)localObject1).a(l);
-    ((bcpr)localObject1).a(l, -1, new Object[] { "can't find x5's method: snapshotVisibleWithBitmap" });
+    ((bbit)localObject1).a(l);
+    ((bbit)localObject1).a(l, -1, new Object[] { "can't find x5's method: snapshotVisibleWithBitmap" });
   }
 }
 

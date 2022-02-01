@@ -1,292 +1,301 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.search.rich.ArkAppModule.1;
-import com.tencent.mobileqq.search.rich.ArkAppModule.2;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextPaint;
+import android.text.TextUtils.TruncateAt;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import com.tencent.mobileqq.widget.PAImageView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bcka
-  extends apvx
+  extends bcgx
 {
-  private WeakReference<bckb> a;
+  private TextView a;
   
-  public bcka(ark.Application paramApplication, long paramLong)
+  private void a(Context paramContext, Resources paramResources, RelativeLayout paramRelativeLayout, View paramView, LinearLayout paramLinearLayout, TextView paramTextView1, TextView paramTextView2)
   {
-    super(paramApplication, paramLong);
+    float f = paramResources.getDisplayMetrics().density;
+    paramRelativeLayout.addView(paramView, new RelativeLayout.LayoutParams(-1, -1));
+    paramResources = new FrameLayout(paramContext);
+    paramResources.setId(2131377593);
+    paramView = new ImageView(paramContext);
+    paramView.setImageResource(2130850390);
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
+    localLayoutParams.gravity = 80;
+    paramResources.addView(paramView, localLayoutParams);
+    paramView = new FrameLayout.LayoutParams(-2, -2);
+    paramView.gravity = 17;
+    paramResources.addView(paramLinearLayout, paramView);
+    paramView = new RelativeLayout.LayoutParams(-2, -2);
+    paramView.addRule(14);
+    paramView.addRule(10);
+    paramView.topMargin = ((int)(32.0F * f));
+    paramRelativeLayout.addView(paramResources, paramView);
+    paramTextView2.setId(2131377594);
+    paramTextView2.setIncludeFontPadding(false);
+    paramTextView2.setSingleLine(false);
+    paramTextView2.setMaxLines(2);
+    paramTextView2.setTextSize(1, 40.0F);
+    paramTextView2.setTextColor(-1);
+    paramTextView2.setGravity(17);
+    paramTextView2.getPaint().setFakeBoldText(true);
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView2;
+    paramResources = new RelativeLayout.LayoutParams((int)(240.0F * f), -2);
+    paramResources.addRule(14);
+    paramResources.addRule(3, 2131377593);
+    paramResources.topMargin = ((int)(5.0F * f));
+    paramResources.bottomMargin = ((int)(5.0F * f));
+    paramRelativeLayout.addView(paramTextView2, paramResources);
+    paramResources = new ImageView(paramContext);
+    paramResources.setId(2131377595);
+    paramResources.setImageResource(2130850392);
+    paramView = new RelativeLayout.LayoutParams(-2, -2);
+    paramView.addRule(14);
+    paramView.addRule(3, 2131377594);
+    paramRelativeLayout.addView(paramResources, paramView);
+    paramResources = new RelativeLayout(paramContext);
+    paramView = new ImageView(paramContext);
+    paramView.setId(2131377597);
+    paramView.setImageResource(2130850393);
+    paramLinearLayout = new RelativeLayout.LayoutParams(-2, -2);
+    paramLinearLayout.addRule(13);
+    paramResources.addView(paramView, paramLinearLayout);
+    paramContext = new ImageView(paramContext);
+    paramContext.setImageResource(2130850389);
+    paramView = new RelativeLayout.LayoutParams(-2, -2);
+    paramView.addRule(15);
+    paramView.addRule(0, 2131377597);
+    paramView.rightMargin = ((int)(6.0F * f));
+    paramResources.addView(paramContext, paramView);
+    paramTextView1.setIncludeFontPadding(false);
+    paramTextView1.setTextSize(1, 22.0F);
+    paramTextView1.setTextColor(-1);
+    paramTextView1.getPaint().setFakeBoldText(true);
+    paramContext = new RelativeLayout.LayoutParams(-2, -2);
+    paramContext.addRule(15);
+    paramContext.addRule(1, 2131377597);
+    paramContext.leftMargin = ((int)(6.0F * f));
+    paramResources.addView(paramTextView1, paramContext);
+    paramContext = new RelativeLayout.LayoutParams((int)(240.0F * f), -2);
+    paramContext.addRule(14);
+    paramContext.addRule(3, 2131377595);
+    paramContext.topMargin = ((int)(f * 10.0F));
+    paramRelativeLayout.addView(paramResources, paramContext);
   }
   
-  private int a(ark.VariantWrapper paramVariantWrapper, int paramInt)
+  protected int b()
   {
-    if (paramVariantWrapper == null) {}
+    return 25;
+  }
+  
+  public View b(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    Resources localResources = paramContext.getResources();
+    LinearLayout localLinearLayout;
+    RelativeLayout localRelativeLayout;
     int i;
-    do
-    {
-      return paramInt;
-      i = paramVariantWrapper.GetType();
-      if (i == 4) {
-        return (int)paramVariantWrapper.GetDouble();
-      }
-    } while (i != 3);
-    return paramVariantWrapper.GetInt();
-  }
-  
-  private long a(ark.VariantWrapper paramVariantWrapper, long paramLong)
-  {
-    if (paramVariantWrapper == null) {}
-    int i;
-    do
-    {
-      return paramLong;
-      i = paramVariantWrapper.GetType();
-      if (i == 4) {
-        return paramVariantWrapper.GetDouble();
-      }
-    } while (i != 3);
-    return paramVariantWrapper.GetInt();
-  }
-  
-  private String a(ark.VariantWrapper paramVariantWrapper, String paramString)
-  {
-    if (paramVariantWrapper == null) {}
-    int i;
-    do
-    {
-      return paramString;
-      i = paramVariantWrapper.GetType();
-      if (i == 5) {
-        return paramVariantWrapper.GetString();
-      }
-    } while (i != 6);
-    return paramVariantWrapper.GetTableAsJsonString();
-  }
-  
-  public void Destruct()
-  {
-    super.Destruct();
-  }
-  
-  public String GetTypeName()
-  {
-    return "QQSearch";
-  }
-  
-  public boolean HasMenthod(String paramString)
-  {
-    if (paramString.equals("Report")) {}
-    do
-    {
-      return true;
-      if (paramString.equals("GetContainerInfo")) {
-        return false;
-      }
-    } while ((paramString.equals("SetTalkBackText")) || (paramString.equals("Notify")));
-    return false;
-  }
-  
-  public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    if (!a(paramString)) {}
-    do
-    {
-      return false;
-      if (paramString.equals("Report")) {
-        return a(paramArrayOfVariantWrapper, paramVariantWrapper);
-      }
-      if (paramString.equals("SetTalkBackText")) {
-        return b(paramArrayOfVariantWrapper, paramVariantWrapper);
-      }
-    } while (!paramString.equals("Notify"));
-    return c(paramArrayOfVariantWrapper, paramVariantWrapper);
-  }
-  
-  public void a(bckb parambckb)
-  {
-    this.a = new WeakReference(parambckb);
-  }
-  
-  protected boolean a(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (localQQAppInterface == null) {
-      return false;
-    }
-    String str = localQQAppInterface.getCurrentAccountUin();
-    paramVariantWrapper = paramArrayOfVariantWrapper[0].GetString();
-    Object localObject1 = paramArrayOfVariantWrapper[1].GetString();
-    int i = 0;
-    int j = 0;
-    long l1 = 0L;
-    long l2 = 0L;
-    Object localObject3 = "";
-    Object localObject2 = "";
-    int k = 0;
+    Object localObject3;
+    Object localObject1;
     Object localObject4;
-    int m;
-    long l3;
-    if (k < paramArrayOfVariantWrapper.length) {
-      if (k == 0)
+    Object localObject2;
+    label89:
+    Object localObject5;
+    int j;
+    Object localObject6;
+    Object localObject7;
+    if ((paramView != null) && ((paramView instanceof LinearLayout)))
+    {
+      localLinearLayout = (LinearLayout)paramView;
+      localLinearLayout.removeAllViews();
+      localRelativeLayout = new RelativeLayout(paramContext);
+      localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, AIOUtils.dp2px(290.0F, localResources)));
+      localLinearLayout.addView(localRelativeLayout);
+      i = 0;
+      localObject3 = null;
+      localObject1 = null;
+      localObject4 = null;
+      localObject2 = null;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      if (!localIterator.hasNext()) {
+        break label532;
+      }
+      paramView = (bcgw)localIterator.next();
+      localObject5 = paramView.a;
+      if ((!"type".equals(localObject5)) || (!(paramView instanceof bcmd))) {
+        break label264;
+      }
+      j = ((bcmd)paramView).o;
+      i = j;
+      paramView = (View)localObject4;
+      localObject5 = localObject2;
+      localObject6 = localObject3;
+      localObject7 = localObject1;
+      if (QLog.isColorLevel())
       {
-        localObject4 = paramArrayOfVariantWrapper[0].GetString();
-        m = j;
-        paramVariantWrapper = (ark.VariantWrapper)localObject1;
-        localObject1 = localObject4;
-        l3 = l2;
-        l2 = l1;
-        l1 = l3;
-        j = i;
-        i = m;
+        QLog.d("StructMsgItemLayout25", 2, "getView socialType=" + j);
+        localObject7 = localObject1;
+        localObject6 = localObject3;
+        localObject5 = localObject2;
+        paramView = (View)localObject4;
+        i = j;
       }
     }
     for (;;)
     {
-      m = k + 1;
-      l3 = l2;
-      k = i;
-      i = j;
-      localObject4 = paramVariantWrapper;
-      paramVariantWrapper = (ark.VariantWrapper)localObject1;
-      localObject1 = localObject4;
-      j = k;
-      l2 = l1;
-      l1 = l3;
-      k = m;
+      localObject4 = paramView;
+      localObject2 = localObject5;
+      localObject3 = localObject6;
+      localObject1 = localObject7;
+      break label89;
+      localLinearLayout = new LinearLayout(paramContext);
+      localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+      localLinearLayout.setOrientation(1);
       break;
-      if (k == 1)
+      label264:
+      if (("title".equals(localObject5)) && (localObject3 == null))
       {
-        localObject1 = paramArrayOfVariantWrapper[1].GetString();
-        m = i;
-        localObject4 = paramVariantWrapper;
-        l3 = l1;
-        i = j;
-        j = m;
-        l1 = l2;
-        l2 = l3;
-        paramVariantWrapper = (ark.VariantWrapper)localObject1;
-        localObject1 = localObject4;
+        if ((paramView instanceof StructMsgItemTitle)) {
+          ((StructMsgItemTitle)paramView).a(a(), this.p);
+        }
+        localObject6 = (TextView)paramView.a(paramContext, null, paramBundle);
+        ((TextView)localObject6).setSingleLine();
+        ((TextView)localObject6).setEllipsize(TextUtils.TruncateAt.END);
+        ((TextView)localObject6).getPaint().setFakeBoldText(true);
+        paramView = (View)localObject4;
+        localObject5 = localObject2;
+        localObject7 = localObject1;
       }
-      else if (k == 2)
+      else if (("summary".equals(localObject5)) && (localObject1 == null))
       {
-        m = a(paramArrayOfVariantWrapper[2], 0);
-        i = j;
-        j = m;
-        localObject4 = paramVariantWrapper;
-        l3 = l1;
-        l1 = l2;
-        l2 = l3;
-        paramVariantWrapper = (ark.VariantWrapper)localObject1;
-        localObject1 = localObject4;
-      }
-      else if (k == 3)
-      {
-        m = a(paramArrayOfVariantWrapper[3], 0);
-        j = i;
-        localObject4 = paramVariantWrapper;
-        l3 = l1;
-        i = m;
-        l1 = l2;
-        l2 = l3;
-        paramVariantWrapper = (ark.VariantWrapper)localObject1;
-        localObject1 = localObject4;
-      }
-      else if (k == 4)
-      {
-        l3 = a(paramArrayOfVariantWrapper[4], 0L);
-        m = i;
-        localObject4 = paramVariantWrapper;
-        l1 = l2;
-        i = j;
-        j = m;
-        l2 = l3;
-        paramVariantWrapper = (ark.VariantWrapper)localObject1;
-        localObject1 = localObject4;
-      }
-      else if (k == 5)
-      {
-        l3 = a(paramArrayOfVariantWrapper[5], 0L);
-        m = i;
-        l2 = l1;
-        localObject4 = paramVariantWrapper;
-        l1 = l3;
-        i = j;
-        j = m;
-        paramVariantWrapper = (ark.VariantWrapper)localObject1;
-        localObject1 = localObject4;
-      }
-      else if (k == 6)
-      {
-        localObject4 = paramArrayOfVariantWrapper[6].GetString();
-        m = i;
-        localObject3 = paramVariantWrapper;
-        l3 = l1;
-        i = j;
-        j = m;
-        l1 = l2;
-        l2 = l3;
-        paramVariantWrapper = (ark.VariantWrapper)localObject1;
-        localObject1 = localObject3;
-        localObject3 = localObject4;
-      }
-      else if (k == 7)
-      {
-        localObject4 = paramArrayOfVariantWrapper[7].GetString();
-        m = i;
-        localObject2 = paramVariantWrapper;
-        l3 = l1;
-        i = j;
-        j = m;
-        l1 = l2;
-        l2 = l3;
-        paramVariantWrapper = (ark.VariantWrapper)localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject4;
-        continue;
-        bdll.b(localQQAppInterface, "CliOper", "", str, paramVariantWrapper, (String)localObject1, i, j, String.valueOf(l1), String.valueOf(l2), (String)localObject3, (String)localObject2);
-        return true;
+        localObject7 = (TextView)paramView.a(paramContext, null, paramBundle);
+        ((TextView)localObject7).setSingleLine();
+        ((TextView)localObject7).setEllipsize(TextUtils.TruncateAt.END);
+        paramView = (View)localObject4;
+        localObject5 = localObject2;
+        localObject6 = localObject3;
       }
       else
       {
-        m = i;
-        localObject4 = paramVariantWrapper;
-        l3 = l1;
-        i = j;
-        j = m;
-        l1 = l2;
-        l2 = l3;
-        paramVariantWrapper = (ark.VariantWrapper)localObject1;
-        localObject1 = localObject4;
+        if (("picture".equals(localObject5)) && (localObject4 == null))
+        {
+          paramView = paramView.a(paramContext, null, paramBundle);
+          if ((paramView != null) && ((paramView instanceof PAImageView)))
+          {
+            float f = localResources.getDimensionPixelSize(2131296448);
+            ((PAImageView)paramView).setUseRadiusRound(true, f);
+            localObject5 = localObject2;
+            localObject6 = localObject3;
+            localObject7 = localObject1;
+          }
+        }
+        else
+        {
+          if (("head".equals(localObject5)) && ((paramView instanceof bcis)) && (localObject2 == null))
+          {
+            ((bcis)paramView).o = i;
+            localObject5 = (LinearLayout)paramView.a(paramContext, null, paramBundle);
+            paramView = (View)localObject4;
+            localObject6 = localObject3;
+            localObject7 = localObject1;
+            continue;
+            label532:
+            paramView = new bclj(paramContext.getString(2131718541)).a(paramContext, null, null);
+            paramBundle = new LinearLayout.LayoutParams(-1, -2);
+            j = AIOUtils.dp2px(15.0F, localResources);
+            paramView.setLayoutParams(paramBundle);
+            paramView.setPadding(j, j, j, j);
+            paramBundle = (TextView)paramView.findViewById(2131377866);
+            paramBundle.setSingleLine();
+            paramBundle.setEllipsize(TextUtils.TruncateAt.END);
+            paramBundle.setTextSize(1, 18.0F);
+            localLinearLayout.addView(paramView);
+            if ((localObject3 == null) || (localObject1 == null) || (localObject4 == null) || (localObject2 == null)) {
+              return localLinearLayout;
+            }
+            if (i == 4)
+            {
+              a(paramContext, localResources, localRelativeLayout, (View)localObject4, localObject2, localObject3, localObject1);
+              paramBundle.setText(amtj.a(2131713649));
+              return localLinearLayout;
+            }
+            localRelativeLayout.addView((View)localObject4, new RelativeLayout.LayoutParams(-1, -1));
+            paramView = new RelativeLayout.LayoutParams(-2, -2);
+            paramView.addRule(14);
+            paramView.topMargin = AIOUtils.dp2px(25.0F, localResources);
+            localObject3.setLayoutParams(paramView);
+            localObject3.setId(2131377596);
+            localRelativeLayout.addView(localObject3);
+            paramView = new RelativeLayout(paramContext);
+            paramBundle = new RelativeLayout.LayoutParams(-2, -2);
+            paramBundle.addRule(13);
+            localObject1.setLayoutParams(paramBundle);
+            paramView.addView(localObject1);
+            paramBundle = new ImageView(paramContext);
+            paramBundle.setImageResource(2130850383);
+            localObject4 = new RelativeLayout.LayoutParams(-2, -2);
+            ((RelativeLayout.LayoutParams)localObject4).addRule(0, localObject1.getId());
+            ((RelativeLayout.LayoutParams)localObject4).addRule(15);
+            ((RelativeLayout.LayoutParams)localObject4).rightMargin = AIOUtils.dp2px(7.0F, localResources);
+            paramView.addView(paramBundle, (ViewGroup.LayoutParams)localObject4);
+            paramContext = new ImageView(paramContext);
+            paramContext.setImageResource(2130850384);
+            paramBundle = new RelativeLayout.LayoutParams(-2, -2);
+            paramBundle.addRule(1, localObject1.getId());
+            paramBundle.addRule(15);
+            paramBundle.leftMargin = AIOUtils.dp2px(7.0F, localResources);
+            paramView.addView(paramContext, paramBundle);
+            paramContext = new RelativeLayout.LayoutParams(-1, -2);
+            paramContext.topMargin = AIOUtils.dp2px(5.0F, localResources);
+            paramContext.addRule(3, 2131377596);
+            paramView.setLayoutParams(paramContext);
+            paramView.setId(2131377594);
+            localRelativeLayout.addView(paramView);
+            paramContext = new RelativeLayout.LayoutParams(-2, -2);
+            paramContext.addRule(14);
+            paramContext.addRule(3, 2131377594);
+            paramContext.topMargin = AIOUtils.dp2px(10.0F, localResources);
+            if (localObject2 != null)
+            {
+              localObject2.setId(2131377593);
+              localObject2.setLayoutParams(paramContext);
+              localRelativeLayout.addView(localObject2);
+            }
+            localObject3.setTextSize(2, 14.0F);
+            localObject3.setTextColor(-1);
+            localObject1.setTextSize(2, 30.0F);
+            localObject1.setTextColor(-1);
+            return localLinearLayout;
+          }
+          paramView = (View)localObject4;
+          localObject5 = localObject2;
+          localObject6 = localObject3;
+          localObject7 = localObject1;
+          continue;
+        }
+        localObject5 = localObject2;
+        localObject6 = localObject3;
+        localObject7 = localObject1;
       }
     }
   }
   
-  protected apwd[] a()
+  public String b()
   {
-    return null;
-  }
-  
-  protected boolean b(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (paramArrayOfVariantWrapper[0].IsString()) && (paramArrayOfVariantWrapper[1].IsView()))
-    {
-      paramVariantWrapper = paramArrayOfVariantWrapper[0].GetString();
-      long l = paramArrayOfVariantWrapper[1].GetView();
-      ArkAppCenter.a().postToMainThread(new ArkAppModule.1(this, l, paramVariantWrapper));
-    }
-    return true;
-  }
-  
-  protected boolean c(ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
-  {
-    if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length > 3) && (paramArrayOfVariantWrapper[1].IsString()) && (paramArrayOfVariantWrapper[3].IsView()))
-    {
-      paramVariantWrapper = paramArrayOfVariantWrapper[1].GetString();
-      String str = a(paramArrayOfVariantWrapper[2], null);
-      long l = paramArrayOfVariantWrapper[3].GetView();
-      ArkAppCenter.a().postToMainThread(new ArkAppModule.2(this, l, paramVariantWrapper, str));
-    }
-    return true;
+    return "layout25";
   }
 }
 

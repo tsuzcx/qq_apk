@@ -1,118 +1,28 @@
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.concurrent.atomic.AtomicBoolean;
 
-public class pgq
+class pgq
+  implements bjrk
 {
-  private int jdField_a_of_type_Int;
-  private ArrayList<pgp> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private boolean jdField_a_of_type_Boolean;
-  
-  private void i()
-  {
-    if (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      pgp localpgp = (pgp)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        localpgp.h();
-        return;
-      }
-      localpgp.g();
-      return;
-    }
-    QLog.d("RIJPopupAutomator", 2, "startNext currentIndex out of bound");
-  }
+  pgq(pgn parampgn, ped paramped, BaseArticleInfo paramBaseArticleInfo) {}
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((pgp)localIterator.next()).a();
-    }
-  }
-  
-  void a(pgp parampgp, boolean paramBoolean)
-  {
     if (QLog.isColorLevel()) {
-      QLog.d("RIJPopupAutomator", 2, "finishStep(" + parampgp.toString() + "): isShown = " + paramBoolean);
+      QLog.d("RIJDislikeManager", 2, "onAdComplain");
     }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
-    if (!paramBoolean)
+    if ((this.jdField_a_of_type_Ped.a().a() instanceof Activity))
     {
-      this.jdField_a_of_type_Int += 1;
-      i();
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_from_type", 1);
+      localIntent.putExtra("key_ad_info", (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+      PublicFragmentActivity.a((Activity)this.jdField_a_of_type_Ped.a().a(), localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
     }
-  }
-  
-  public void a(pgp... paramVarArgs)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false);
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(Arrays.asList(paramVarArgs));
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((pgp)localIterator.next()).b();
-    }
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((pgp)localIterator.next()).c();
-    }
-  }
-  
-  public void d()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((pgp)localIterator.next()).d();
-    }
-  }
-  
-  public void e()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((pgp)localIterator.next()).e();
-    }
-  }
-  
-  public void f()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((pgp)localIterator.next()).f();
-    }
-  }
-  
-  public void g()
-  {
-    QLog.d("RIJPopupAutomator", 1, "startStepFromOnResume");
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    i();
-  }
-  
-  public void h()
-  {
-    QLog.d("RIJPopupAutomator", 1, "startStepFromOnShowSelf");
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = true;
-    i();
   }
 }
 

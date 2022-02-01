@@ -1,319 +1,233 @@
-import android.annotation.TargetApi;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Align;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.media.MediaMetadataRetriever;
-import android.os.Build;
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandAlreadyRunningException;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandUnit;
+import com.tencent.biz.troop.VideoCombineHelper.CombineTask.3;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class zqb
+  extends zqo
 {
-  @TargetApi(17)
-  public static int a(String paramString)
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString;
+  List<String> jdField_a_of_type_JavaUtilList;
+  String b;
+  
+  public zqb(zqp paramzqp, String paramString1, List<String> paramList, String paramString2, String paramString3)
   {
-    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    String str2;
-    String str3;
+    super(paramzqp, paramString1, paramList);
+    this.jdField_a_of_type_JavaLangString = paramString3;
+    Object localObject;
+    this.b = localObject;
+    this.jdField_a_of_type_JavaUtilList = paramString2;
+    this.jdField_a_of_type_Zqo = new zqm(paramzqp, paramString1, paramList);
+  }
+  
+  public File a(File paramFile, String paramString, zpy paramzpy)
+  {
+    Object localObject = new MediaMetadataRetriever();
+    ((MediaMetadataRetriever)localObject).setDataSource(paramFile.getAbsolutePath());
+    String str1 = ((MediaMetadataRetriever)localObject).extractMetadata(18);
+    String str2 = ((MediaMetadataRetriever)localObject).extractMetadata(19);
+    ((MediaMetadataRetriever)localObject).release();
+    localObject = paramFile.getParent() + File.separator + "wording.png";
+    String str3 = paramFile.getParent() + File.separator + "vmw.mp4";
     try
     {
-      localMediaMetadataRetriever.setDataSource(paramString);
-      String str1 = localMediaMetadataRetriever.extractMetadata(24);
-      str2 = localMediaMetadataRetriever.extractMetadata(18);
-      str3 = localMediaMetadataRetriever.extractMetadata(19);
-      localMediaMetadataRetriever.release();
-      paramString = str1;
-      if (str1 == null) {
-        paramString = "0";
+      int i = Integer.parseInt(str1);
+      int j = Integer.parseInt(str2);
+      long l = System.currentTimeMillis();
+      a(i, j, paramString, (String)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d(".troop.trace_video_combine", 2, "createWatermarkPng time = " + (System.currentTimeMillis() - l));
       }
-      if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)))
-      {
-        yuk.d("Q.qqstory.publish.VideoUtils", "cannot get metadata from video. rotation = " + paramString + " width = " + str2 + " height = " + str3);
-        return -1;
-      }
+      a().c.add(new File((String)localObject));
+      this.jdField_a_of_type_Zpq.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.watermark((String)localObject, paramFile.getAbsolutePath(), str3, i, j, new zqi(this, paramzpy, str3));
     }
-    catch (IllegalArgumentException paramString)
+    catch (Exception paramFile)
     {
-      yuk.b("Q.qqstory.publish.VideoUtils", "media exception", paramString);
-      return -1;
-    }
-    int i = Integer.valueOf(paramString).intValue();
-    int j = Integer.valueOf(str2).intValue();
-    int k = Integer.valueOf(str3).intValue();
-    boolean bool2 = false;
-    boolean bool1;
-    if ((i == 90) || (i == 270))
-    {
-      bool1 = bool2;
-      if (j < k) {
-        bool1 = true;
-      }
-    }
-    for (;;)
-    {
-      yuk.d("Q.qqstory.publish.VideoUtils", "getVideoToPortraitRotation. neeRotate = " + bool1 + " orgRotation = " + i + " return = " + (i + 90) % 360);
-      if (!bool1) {
-        break;
-      }
-      return (i + 90) % 360;
-      if (i != 0)
+      for (;;)
       {
-        bool1 = bool2;
-        if (i != 180) {}
-      }
-      else
-      {
-        bool1 = bool2;
-        if (j > k) {
-          bool1 = true;
-        }
+        QLog.e(".troop.VideoCombineHelper", 2, "combineWording failed!", paramFile);
       }
     }
-    return -1;
+    return null;
   }
   
-  public static Pair<Integer, Integer> a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a()
   {
-    paramInt2 = (int)(paramInt1 * paramInt4 / paramInt3);
-    return new Pair(Integer.valueOf(bbgg.a(paramInt1)), Integer.valueOf(bbgg.a(paramInt2)));
+    String str;
+    zqa localzqa;
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      str = a() + File.separator + "v.ts";
+      localzqa = a();
+      if (localzqa.b) {
+        this.jdField_a_of_type_Zqp.b(this);
+      }
+    }
+    else
+    {
+      return;
+    }
+    a(this.jdField_a_of_type_JavaUtilList, str, new zqc(this, localzqa));
   }
   
-  @TargetApi(16)
-  public static ArrayList<zqc> a(String paramString, long paramLong)
+  public void a(List<String> paramList, String paramString, zpy paramzpy)
   {
-    MediaExtractor localMediaExtractor = new MediaExtractor();
-    for (;;)
+    if ((paramList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
     {
-      try
-      {
-        localMediaExtractor.setDataSource(paramString);
-        i = 0;
-        if (i >= localMediaExtractor.getTrackCount()) {
-          break label348;
-        }
-        paramString = localMediaExtractor.getTrackFormat(i);
-        if (!paramString.getString("mime").startsWith("video/")) {
-          break label165;
-        }
-        if (paramString.containsKey("durationUs"))
-        {
-          l1 = paramString.getLong("durationUs") / 1000L;
-          localMediaExtractor.selectTrack(i);
-          yuk.b("Q.qqstory.publish.VideoUtils", "getClosetKeyFramePosArray() find it video index = " + i);
-          if (i >= 0) {
-            break label172;
-          }
-          yuk.e("Q.qqstory.publish.VideoUtils", "getClosetKeyFramePosArray() Can not find video track index.");
-          localMediaExtractor.release();
-          return null;
-        }
+      paramzpy.a("", false, "videoFiles empty!");
+      return;
+    }
+    if (paramList.size() == 1)
+    {
+      paramzpy.a((String)this.jdField_a_of_type_JavaUtilList.get(0), true, "combineVideos Success size = 1");
+      return;
+    }
+    try
+    {
+      long l = System.currentTimeMillis();
+      paramList = new File(paramString);
+      a(this.jdField_a_of_type_JavaUtilList, paramList.getAbsolutePath(), new zqg(this, l, paramzpy, paramList));
+      return;
+    }
+    catch (Exception paramList)
+    {
+      QLog.e(".troop.VideoCombineHelper", 2, "combineVideos failed", paramList);
+    }
+  }
+  
+  public void a(List<String> paramList, String paramString, zql paramzql)
+  {
+    Object localObject1 = new File(paramString);
+    if ((((File)localObject1).exists()) && (((File)localObject1).length() > 0L))
+    {
+      paramzql.a(true);
+      return;
+    }
+    localObject1 = new ArrayList();
+    this.jdField_a_of_type_Zpq.jdField_a_of_type_Long = System.currentTimeMillis();
+    StringBuffer localStringBuffer = new StringBuffer("concat:");
+    int i = 0;
+    if (i < paramList.size())
+    {
+      localObject2 = (String)paramList.get(i);
+      Object localObject3 = new File((String)localObject2);
+      Object localObject4 = ((File)localObject3).getName().split("\\.");
+      localObject3 = ((File)localObject3).getAbsoluteFile().getParent() + File.separator + localObject4[0] + ".ts";
+      localStringBuffer.append((String)localObject3);
+      if (i != paramList.size() - 1) {
+        localStringBuffer.append("|");
       }
-      catch (IOException localIOException)
-      {
-        yuk.c("Q.qqstory.publish.VideoUtils", "Open file error in getClosetKeyFramePosArray() file = " + paramString, localIOException);
-        localMediaExtractor.release();
-        return null;
-      }
-      yuk.e("Q.qqstory.publish.VideoUtils", "getClosetKeyFramePosArray() Can not find duration.");
-      localMediaExtractor.release();
-      return null;
-      label165:
-      i += 1;
-      continue;
-      label172:
-      long l2 = 0L;
-      paramString = new ArrayList();
-      localMediaExtractor.seekTo(l2 * 1000L, 2);
-      l2 = localMediaExtractor.getSampleTime() / 1000L;
-      if (l1 - l2 < paramLong)
-      {
-        paramString.add(new zqc(l2, l1 - l2));
-        i = 0;
-        label237:
-        if (i >= paramString.size()) {
-          break label341;
-        }
-        if (i != paramString.size() - 1) {
-          break label302;
-        }
-      }
-      label302:
-      for (((zqc)paramString.get(i)).b = (l1 - l2);; ((zqc)paramString.get(i)).b = (((zqc)paramString.get(i + 1)).a - ((zqc)paramString.get(i)).a))
+      localObject4 = new File((String)localObject3);
+      if ((((File)localObject4).exists()) && (((File)localObject4).length() > 0L)) {}
+      for (;;)
       {
         i += 1;
-        break label237;
-        paramString.add(new zqc(l2, paramLong));
-        l2 += paramLong;
         break;
+        if (!((File)localObject4).getParentFile().exists()) {
+          ((File)localObject4).getParentFile().mkdirs();
+        }
+        localObject4 = new FFmpegCommandUnit();
+        ((FFmpegCommandUnit)localObject4).cmdType = 5;
+        ((FFmpegCommandUnit)localObject4).arguments = new VideoCombineHelper.CombineTask.3(this, (String)localObject2, (String)localObject3);
+        ((FFmpegCommandUnit)localObject4).callback = new zqh(this, paramzql);
+        ((ArrayList)localObject1).add(localObject4);
       }
-      label341:
-      localMediaExtractor.release();
-      return paramString;
-      label348:
-      long l1 = 0L;
-      int i = -1;
+    }
+    paramList = new File(paramString);
+    paramString = paramList.getName().split("\\.");
+    paramList = paramList.getParent() + File.separator + paramString[0] + ".ts";
+    paramString = new FFmpegCommandUnit();
+    Object localObject2 = new ArrayList();
+    ((ArrayList)localObject2).add("-y");
+    ((ArrayList)localObject2).add("-i");
+    ((ArrayList)localObject2).add(localStringBuffer.toString());
+    ((ArrayList)localObject2).add("-c");
+    ((ArrayList)localObject2).add("copy");
+    ((ArrayList)localObject2).add(paramList);
+    paramString.cmd = ((String[])((ArrayList)localObject2).toArray(new String[0]));
+    paramString.callback = paramzql;
+    ((ArrayList)localObject1).add(paramString);
+    if (this.jdField_a_of_type_Zpq.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.isFFmpegCommandRunning()) {
+      try
+      {
+        this.jdField_a_of_type_Zpq.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.insertFFmpegQueue((ArrayList)localObject1);
+        return;
+      }
+      catch (FFmpegCommandAlreadyRunningException paramList)
+      {
+        paramList.printStackTrace();
+        return;
+      }
+      catch (IOException paramList)
+      {
+        paramList.printStackTrace();
+        return;
+      }
+    }
+    try
+    {
+      this.jdField_a_of_type_Zpq.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg.cmdFFmpegQueue((ArrayList)localObject1);
+      return;
+    }
+    catch (FFmpegCommandAlreadyRunningException paramList)
+    {
+      paramList.printStackTrace();
+      return;
+    }
+    catch (IOException paramList)
+    {
+      paramList.printStackTrace();
     }
   }
   
-  public static void a(StoryVideoItem paramStoryVideoItem)
-  {
-    int i = paramStoryVideoItem.mVideoWidth;
-    int j = paramStoryVideoItem.mVideoHeight;
-    paramStoryVideoItem.mVideoWidth = Math.min(j, i);
-    paramStoryVideoItem.mVideoHeight = Math.max(j, i);
-  }
-  
-  public static boolean a()
+  public boolean a(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
     boolean bool = false;
-    if ((Build.MODEL.equals("MI 4LTE")) || (Build.MODEL.equals("GT-I9502")) || (Build.MODEL.equals("NX513J")) || (Build.MODEL.equals("MI 4W")) || (Build.MODEL.toUpperCase().contains("M612")) || (Build.MODEL.toUpperCase().contains("M5S"))) {
+    try
+    {
+      Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap);
+      Paint localPaint1 = new Paint();
+      localPaint1.setColor(-1);
+      localPaint1.setTextSize(30.0F);
+      localPaint1.setTextAlign(Paint.Align.CENTER);
+      Rect localRect = new Rect();
+      localPaint1.getTextBounds(paramString1, 0, paramString1.length(), localRect);
+      Paint localPaint2 = new Paint();
+      localPaint2.setColor(-16777216);
+      RectF localRectF = new RectF();
+      localRectF.top = (paramInt2 - localRect.height() - 15 - 15);
+      localRectF.left = ((paramInt1 - localRect.width()) / 2 - 15);
+      localRectF.bottom = (localRectF.top + localRect.height() + 15);
+      localRectF.right = (localRectF.left + localRect.width() + 30);
+      localCanvas.drawRoundRect(localRectF, 8.0F, 8.0F, localPaint2);
+      localCanvas.drawText(paramString1, paramInt1 / 2, paramInt2 - 15 - localRect.height() / 2, localPaint1);
+      yoy.a(localBitmap, Bitmap.CompressFormat.PNG, 100, paramString2);
+      yoy.a(localBitmap);
       bool = true;
     }
-    return bool;
-  }
-  
-  public static boolean a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt1 > paramInt2)
+    catch (Throwable paramString1)
     {
-      if (paramInt3 % 180 != 0) {}
-    }
-    else {
-      while ((paramInt3 == 90) || (paramInt3 == 270)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public static boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    float f = Math.min(paramInt3 / paramInt1, paramInt4 / paramInt2);
-    paramInt1 = (int)(paramInt1 * f);
-    paramInt2 = (int)(f * paramInt2);
-    return (paramInt1 < paramInt3) || (paramInt2 < paramInt4);
-  }
-  
-  public static boolean a(LocalMediaInfo paramLocalMediaInfo)
-  {
-    if (paramLocalMediaInfo.mediaWidth >= paramLocalMediaInfo.mediaHeight)
-    {
-      if (paramLocalMediaInfo.rotation % 180 != 0) {}
-    }
-    else {
-      while ((paramLocalMediaInfo.rotation == 90) || (paramLocalMediaInfo.rotation == 270)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  @TargetApi(10)
-  public static int[] a(String paramString)
-  {
-    localMediaMetadataRetriever = new MediaMetadataRetriever();
-    try
-    {
-      localMediaMetadataRetriever.setDataSource(paramString);
-      String str1 = localMediaMetadataRetriever.extractMetadata(24);
-      String str2 = localMediaMetadataRetriever.extractMetadata(18);
-      String str3 = localMediaMetadataRetriever.extractMetadata(19);
-      int[] arrayOfInt = new int[3];
-      paramString = str1;
-      if (str1 == null) {
-        paramString = "0";
-      }
-      arrayOfInt[0] = Integer.valueOf(paramString).intValue();
-      arrayOfInt[1] = Integer.valueOf(str2).intValue();
-      arrayOfInt[2] = Integer.valueOf(str3).intValue();
-      try
-      {
-        localMediaMetadataRetriever.release();
-        return arrayOfInt;
-      }
-      catch (RuntimeException paramString)
-      {
-        yuk.d("Q.qqstory.publish.VideoUtils", "retriever.release error" + paramString);
-        return arrayOfInt;
-      }
-      try
-      {
-        localMediaMetadataRetriever.release();
-        throw paramString;
-      }
-      catch (RuntimeException localRuntimeException)
-      {
-        for (;;)
-        {
-          yuk.d("Q.qqstory.publish.VideoUtils", "retriever.release error" + localRuntimeException);
-        }
-      }
-    }
-    catch (Exception paramString)
-    {
-      paramString = paramString;
-      yuk.b("Q.qqstory.publish.VideoUtils", "exception", paramString);
-      try
-      {
-        localMediaMetadataRetriever.release();
-        return null;
-      }
-      catch (RuntimeException paramString)
-      {
-        yuk.d("Q.qqstory.publish.VideoUtils", "retriever.release error" + paramString);
-        return null;
-      }
-    }
-    finally {}
-  }
-  
-  @TargetApi(17)
-  public static int b(String paramString)
-  {
-    try
-    {
-      MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-      localMediaMetadataRetriever.setDataSource(paramString);
-      paramString = localMediaMetadataRetriever.extractMetadata(24);
-      localMediaMetadataRetriever.release();
-      int i = Integer.valueOf(paramString).intValue();
-      return i;
-    }
-    catch (Exception paramString)
-    {
-      yuk.b("Q.qqstory.publish.VideoUtils", "exception", paramString);
-    }
-    return -1;
-  }
-  
-  public static boolean b()
-  {
-    boolean bool = true;
-    if ((Build.MODEL.equals("MI 9 SE")) || (Build.MODEL.equals("MI 9")) || (Build.MODEL.equals("MI 8 UD")) || (Build.MODEL.equals("MI 8")) || (Build.MODEL.equals("NEX")) || (Build.MODEL.equals("NEXS"))) {
-      bool = false;
+      while (!QLog.isColorLevel()) {}
+      QLog.e(".troop.VideoCombineHelper", 2, "createWatermarkByWording", paramString1);
     }
     return bool;
-  }
-  
-  public static int c(String paramString)
-  {
-    try
-    {
-      MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-      localMediaMetadataRetriever.setDataSource(paramString);
-      paramString = localMediaMetadataRetriever.extractMetadata(20);
-      localMediaMetadataRetriever.release();
-      int i = Integer.valueOf(paramString).intValue();
-      return i;
-    }
-    catch (Exception paramString)
-    {
-      yuk.b("Q.qqstory.publish.VideoUtils", "exception", paramString);
-    }
-    return -1;
+    return false;
   }
 }
 

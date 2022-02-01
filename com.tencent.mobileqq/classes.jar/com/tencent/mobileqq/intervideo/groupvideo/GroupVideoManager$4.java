@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
-import awaa;
+import auna;
 
 public class GroupVideoManager$4
   implements Runnable
 {
-  public GroupVideoManager$4(awaa paramawaa, boolean paramBoolean) {}
+  public GroupVideoManager$4(auna paramauna, boolean paramBoolean) {}
   
   public void run()
   {

@@ -1,57 +1,326 @@
-import android.support.v7.widget.RecyclerView.Adapter;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppExposureData;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.widgets.TriangleView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
 import java.util.List;
 
 public class asxe
-  extends RecyclerView.Adapter<asxd>
+  extends aswo
 {
-  private List<MiniAppRecommInfo.MiniApp> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private int jdField_a_of_type_Int;
+  private TriangleView jdField_a_of_type_ComTencentBizWidgetsTriangleView;
+  private XListView jdField_a_of_type_ComTencentWidgetXListView;
+  private zrm jdField_a_of_type_Zrm;
+  private ProgressBar jdField_b_of_type_AndroidWidgetProgressBar;
+  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
+  private View c;
+  private View jdField_d_of_type_AndroidViewView;
+  private TextView jdField_d_of_type_AndroidWidgetTextView;
+  private View jdField_e_of_type_AndroidViewView;
+  private TextView jdField_e_of_type_AndroidWidgetTextView;
+  private View jdField_f_of_type_AndroidViewView;
+  private TextView jdField_f_of_type_AndroidWidgetTextView;
+  private View jdField_g_of_type_AndroidViewView;
+  private TextView jdField_g_of_type_AndroidWidgetTextView;
+  private View jdField_h_of_type_AndroidViewView;
+  private TextView jdField_h_of_type_AndroidWidgetTextView;
+  private TextView i;
+  private TextView j;
+  private TextView k;
+  private TextView l;
   
-  public asxe(asxc paramasxc) {}
-  
-  public asxd a(ViewGroup paramViewGroup, int paramInt)
+  public asxe(Activity paramActivity)
   {
-    paramViewGroup = LayoutInflater.from(asxc.a(this.jdField_a_of_type_Asxc)).inflate(2131559484, null, false);
-    return new asxd(asxc.a(this.jdField_a_of_type_Asxc), paramViewGroup);
+    super(paramActivity);
   }
   
-  public void a(asxd paramasxd, int paramInt)
+  public View a()
   {
-    MiniAppRecommInfo.MiniApp localMiniApp = (MiniAppRecommInfo.MiniApp)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramasxd.a(localMiniApp);
-    paramasxd.a(paramInt);
-    if ((localMiniApp != null) && (localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo != null))
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a()
+  {
+    QLog.i("ZipFileViewer<QFile>", 4, "FileBrowserViewBase: ZipFileViewer initFileView");
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      MiniAppConfig localMiniAppConfig = new MiniAppConfig(localMiniApp.jdField_a_of_type_ComTencentMobileqqMiniApkgMiniAppInfo);
-      localMiniAppConfig.launchParam.scene = 2065;
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(new MiniAppExposureManager.MiniAppExposureData(localMiniAppConfig, paramInt));
-      MiniProgramLpReportDC04239.reportPageView(localArrayList, "expo");
-      asxc.a(101, paramInt, localMiniApp.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131560817, this.jdField_a_of_type_AndroidViewViewGroup, false);
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366669));
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371964));
+      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380204));
+      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380218));
+      this.jdField_f_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131381316);
+      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131381321);
+      this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131372928);
+      this.jdField_e_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366764);
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379579));
+      this.j = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379933));
+      this.j.setVisibility(8);
+      this.jdField_a_of_type_ComTencentBizWidgetsTriangleView = ((TriangleView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379075));
+      this.jdField_a_of_type_Zrm = new zrm(null, this.jdField_a_of_type_AndroidAppActivity);
+      this.jdField_g_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131372925);
+      this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)this.jdField_g_of_type_AndroidViewView.findViewById(2131381319));
+      this.i = ((TextView)this.jdField_g_of_type_AndroidViewView.findViewById(2131381317));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372045));
+      this.k = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131361938));
     }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramasxd, paramInt, getItemId(paramInt));
   }
   
-  public void a(List<MiniAppRecommInfo.MiniApp> paramList)
+  public void a(int paramInt)
   {
-    if (paramList != null)
+    if (this.jdField_b_of_type_AndroidWidgetProgressBar != null) {
+      this.jdField_b_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
+    }
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    super.a(paramOnClickListener);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131379058));
+    this.jdField_b_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131379024));
+    this.l = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379034));
+    this.jdField_h_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379022);
+    this.jdField_h_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_b_of_type_AndroidWidgetRelativeLayout != null) {
+      this.l.setText(paramString);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    }
+  }
+  
+  public void a(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    super.a(paramString, paramOnClickListener);
+    this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.jdField_f_of_type_AndroidWidgetTextView.setText(paramString1);
+    this.jdField_g_of_type_AndroidWidgetTextView.setText(paramString2);
+  }
+  
+  public void a(List<aswh> paramList, String paramString1, long paramLong1, long paramLong2, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, String paramString6, short paramShort)
+  {
+    this.jdField_a_of_type_Zrm.a(paramList);
+    this.jdField_a_of_type_Zrm.e = "/";
+    this.jdField_a_of_type_Zrm.jdField_b_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Zrm.jdField_a_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Zrm.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Zrm.c = paramString3;
+    this.jdField_a_of_type_Zrm.d = paramString4;
+    this.jdField_a_of_type_Zrm.jdField_a_of_type_JavaLangString = paramString5;
+    this.jdField_a_of_type_Zrm.a(paramBoolean, paramString6, paramShort);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Zrm);
+    this.jdField_c_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_g_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void a(boolean paramBoolean, String paramString, View.OnClickListener paramOnClickListener)
+  {
+    View localView = this.jdField_e_of_type_AndroidViewView;
+    if (paramBoolean) {}
+    for (int m = 0;; m = 8)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      notifyDataSetChanged();
+      localView.setVisibility(m);
+      this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString);
+      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
+      if (this.jdField_a_of_type_Int != 2) {
+        this.jdField_e_of_type_AndroidViewView.setVisibility(8);
+      }
+      return;
     }
   }
   
-  public int getItemCount()
+  public void b(String paramString, View.OnClickListener paramOnClickListener)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    if (this.k != null)
+    {
+      this.k.setText(paramString);
+      this.k.setOnClickListener(paramOnClickListener);
+      e(true);
+    }
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_Zrm != null) {
+      this.jdField_a_of_type_Zrm.notifyDataSetChanged();
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    RelativeLayout localRelativeLayout = this.jdField_b_of_type_AndroidWidgetRelativeLayout;
+    if (this.jdField_a_of_type_Int == 2) {
+      localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    }
+    for (;;)
+    {
+      if (localRelativeLayout != null) {
+        if (!paramBoolean) {
+          break label43;
+        }
+      }
+      label43:
+      for (int m = 0;; m = 8)
+      {
+        localRelativeLayout.setVisibility(m);
+        if (paramBoolean) {
+          e(false);
+        }
+        return;
+      }
+    }
+  }
+  
+  public void c()
+  {
+    this.jdField_c_of_type_AndroidViewView.setPadding(0, this.jdField_c_of_type_AndroidViewView.getPaddingTop(), 0, 0);
+    this.jdField_e_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_h_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    View localView = this.jdField_e_of_type_AndroidViewView;
+    if (paramBoolean) {}
+    for (int m = 0;; m = 8)
+    {
+      localView.setVisibility(m);
+      return;
+    }
+  }
+  
+  public void d(String paramString)
+  {
+    this.i.setText(paramString);
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      this.jdField_g_of_type_AndroidViewView.setVisibility(8);
+      return;
+    }
+    this.jdField_g_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_h_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.i.setVisibility(0);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void e(String paramString)
+  {
+    this.jdField_e_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void e(boolean paramBoolean)
+  {
+    int m = 0;
+    if (this.k != null)
+    {
+      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+        break label49;
+      }
+      if ((paramBoolean) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0)) {
+        this.k.setVisibility(0);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.k.setVisibility(8);
+    return;
+    label49:
+    TextView localTextView = this.k;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      localTextView.setVisibility(m);
+      return;
+      m = 8;
+    }
+  }
+  
+  public void f(String paramString)
+  {
+    this.j.setText(paramString);
+    g(true);
+  }
+  
+  public void f(boolean paramBoolean)
+  {
+    View localView;
+    if (this.jdField_d_of_type_AndroidViewView != null)
+    {
+      localView = this.jdField_d_of_type_AndroidViewView;
+      if (!paramBoolean) {
+        break label33;
+      }
+    }
+    label33:
+    for (int m = 0;; m = 8)
+    {
+      localView.setVisibility(m);
+      if (paramBoolean) {
+        this.jdField_a_of_type_Int = 1;
+      }
+      return;
+    }
+  }
+  
+  public void g(boolean paramBoolean)
+  {
+    TextView localTextView = this.j;
+    if (paramBoolean) {}
+    for (int m = 0;; m = 8)
+    {
+      localTextView.setVisibility(m);
+      return;
+    }
+  }
+  
+  public void h(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130838891);
+      this.jdField_a_of_type_ComTencentBizWidgetsTriangleView.setColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131167276));
+      this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131166367));
+      this.jdField_h_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131167098));
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#ffffffff"));
+    this.jdField_a_of_type_ComTencentBizWidgetsTriangleView.setColor(Color.parseColor("#ffffffff"));
+    this.jdField_f_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#fff7f7f8"));
+    this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131166366));
+    this.jdField_h_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131165351));
   }
 }
 

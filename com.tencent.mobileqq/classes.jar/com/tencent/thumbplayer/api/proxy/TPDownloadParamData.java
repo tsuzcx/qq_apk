@@ -17,6 +17,7 @@ public class TPDownloadParamData
   private int dlType;
   private String downloadFileID;
   private int endTimeMS;
+  private int expectDelay;
   private Map<String, String> extInfoMap;
   private boolean extraParam;
   private long fileDuration;
@@ -30,6 +31,8 @@ public class TPDownloadParamData
   private String linkVid;
   private String m3u8;
   private boolean needEncryptCache;
+  private ArrayList<String> pcdnUrlList;
+  private ArrayList<Integer> pcdnVtList;
   private String playDefinition;
   private long preloadDuration;
   private long preloadSize;
@@ -118,6 +121,11 @@ public class TPDownloadParamData
     return this.endTimeMS;
   }
   
+  public int getExceptDelay()
+  {
+    return this.expectDelay;
+  }
+  
   public Map<String, String> getExtInfoMap()
   {
     return this.extInfoMap;
@@ -161,6 +169,16 @@ public class TPDownloadParamData
   public String getM3u8()
   {
     return this.m3u8;
+  }
+  
+  public ArrayList<String> getPcdnUrlList()
+  {
+    return this.pcdnUrlList;
+  }
+  
+  public ArrayList<Integer> getPcdnVtList()
+  {
+    return this.pcdnVtList;
   }
   
   public String getPlayDefinition()
@@ -313,6 +331,11 @@ public class TPDownloadParamData
     this.endTimeMS = paramInt;
   }
   
+  public void setExpectDelay(int paramInt)
+  {
+    this.expectDelay = paramInt;
+  }
+  
   public void setExtInfoMap(Map<String, String> paramMap)
   {
     this.extInfoMap = paramMap;
@@ -371,6 +394,16 @@ public class TPDownloadParamData
   public void setOffline(boolean paramBoolean)
   {
     this.isOffline = paramBoolean;
+  }
+  
+  public void setPcdnUrlList(ArrayList<String> paramArrayList)
+  {
+    this.pcdnUrlList = paramArrayList;
+  }
+  
+  public void setPcdnVtList(ArrayList<Integer> paramArrayList)
+  {
+    this.pcdnVtList = paramArrayList;
   }
   
   public void setPlayDefinition(String paramString)

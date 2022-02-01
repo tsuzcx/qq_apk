@@ -1,48 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public final class autf
-  extends WebViewClient
+class autf
+  implements zop
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final IHostInterface.IWebClient jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient;
+  autf(aute paramaute, String paramString) {}
   
-  private autf(Context paramContext, IHostInterface.IWebClient paramIWebClient)
+  public void callback(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient = paramIWebClient;
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient == null) || (!this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient.onPageFinished(paramWebView, paramString))) {
-      super.onPageFinished(paramWebView, paramString);
-    }
-  }
-  
-  @Override
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if ((this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient == null) || (!this.jdField_a_of_type_ComTencentKwstudioOfficePreviewIHostInterface$IWebClient.shouldOverrideUrlLoading(paramWebView, paramString)))
+    if (this.jdField_a_of_type_Aute.isDestroy) {}
+    do
     {
-      paramWebView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserDelegationActivity.class);
-      paramWebView.putExtra("param_force_internal_browser", true);
-      paramWebView.putExtra("url", paramString);
-      agbh.a(this.jdField_a_of_type_AndroidContentContext, paramWebView, paramString);
-    }
-    return true;
+      return;
+      paramBundle = String.format("{\"result\":%d, \"errMsg\":\"%s\", \"uin\":\"%s\"}", new Object[] { Integer.valueOf(paramBundle.getInt("result", -1)), paramBundle.getString("errMsg"), paramBundle.getString("retUin") });
+      this.jdField_a_of_type_Aute.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+    } while (!QLog.isColorLevel());
+    QLog.e("ConnectApiPlugin", 2, new Object[] { "handleJsRequest callback:", paramBundle });
   }
 }
 

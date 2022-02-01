@@ -1,133 +1,157 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
+import QQWalletPay.ReqCheckChangePwdAuth;
+import Wallet.AuthCodeReq;
+import Wallet.GetPasswordReq;
+import Wallet.GetPasswordRsp;
+import Wallet.PfaFriendRqt;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
-import com.tencent.mobileqq.apollo.game.ApolloJSContext.1;
-import com.tencent.mobileqq.apollo.game.ApolloJSContext.2;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.ValueCallback;
+import cooperation.qwallet.plugin.PatternLockUtils;
+import cooperation.qwallet.plugin.QWalletHelper;
 
 public class amzg
+  extends BusinessHandler
 {
-  private amzm jdField_a_of_type_Amzm;
-  private CustomWebView jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
-  public String a;
+  private boolean a;
   
-  public amzg(String paramString)
+  protected amzg(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Amzm = new ApolloGameInterfaceProxy(this, paramString);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramQQAppInterface);
   }
   
-  private void c()
+  public void a(ReqCheckChangePwdAuth paramReqCheckChangePwdAuth)
   {
-    a("var newFun=Function;Function=function(){console.error(\"Function is disabled.\")};Function.prototype=newFun.prototype;newFun=undefined;", null);
-    a("if(document&&document.createElement&&document.createElementNS){const _bk_createElement=document.createElement;const _bk_createElementNS=document.createElementNS;var bk_custom_proxy={};const bk_document_proxy=Object.freeze({createElement:function(){var result=null;if(bk_document_proxy.preCall(\"createElement\",arguments)){result=_bk_createElement.apply(document,arguments)}else{console.error(\"iframe is disabled\")}bk_document_proxy.postCall(\"createElement\",arguments);return result},createElementNS:function(){var result=null;if(bk_document_proxy.preCall(\"createElementNS\",arguments)){result=_bk_createElementNS.apply(document,arguments)}else{console.error(\"iframe is disabled\")}bk_document_proxy.postCall(\"createElementNS\",arguments);return result},preCall:function(fName,args){if(bk_custom_proxy&&bk_custom_proxy.preCall&&((typeof bk_custom_proxy.preCall)===\"function\")){bk_custom_proxy.preCall(fName,args)}if(fName){if(args&&args[0]){var itemName=args[0];if(typeof itemName===\"string\"){return itemName.indexOf(\"iframe\")===-1}}}return true},postCall:function(fName,args){if(bk_custom_proxy&&bk_custom_proxy.postCall&&((typeof bk_custom_proxy.postCall)===\"function\")){bk_custom_proxy.postCall(fName,args)}}});document.createElement=bk_document_proxy.createElement;document.createElementNS=bk_document_proxy.createElementNS};", null);
-  }
-  
-  private void d()
-  {
-    a("(function(){var iframes=document.querySelectorAll(\"iframe\");for(var i=0;i<iframes.length;i++){var item=iframes[i];if(item.parentNode){item.parentNode.removeChild(item)}}})();", null);
-  }
-  
-  public void a()
-  {
-    ThreadManagerV2.getUIHandlerV2().post(new ApolloJSContext.1(this));
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    if (amzf.a(this.jdField_a_of_type_JavaLangString))
+    if (paramReqCheckChangePwdAuth == null) {}
+    do
     {
-      paramString2 = amzf.b(paramString2);
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloJSContext", 1, "[notifyJSEVent] " + paramString1 + " " + paramString2);
-      }
-      a(String.format("if(window.__dispatchEvent){window.__dispatchEvent(%s,'%s','%s')}", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2 }), new amzh(this));
+      return;
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "QQWalletPayAuthServer.checkChangePwdAuth");
+      localToServiceMsg.extraData.putSerializable("ReqCheckChangePwdAuth", paramReqCheckChangePwdAuth);
+      super.send(localToServiceMsg);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qwallet.auth.AuthHandler", 2, "sendCheckModifyPassReq: on send--cmd=QQWalletPayAuthServer.checkChangePwdAuth");
+  }
+  
+  public void a(AuthCodeReq paramAuthCodeReq)
+  {
+    if (paramAuthCodeReq == null) {}
+    do
+    {
+      return;
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "VacThirdCodeSvc.fetchCodes");
+      localToServiceMsg.extraData.putSerializable("AuthCodeReq", paramAuthCodeReq);
+      super.send(localToServiceMsg);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qwallet.auth.AuthHandler", 2, "sendGetAuthCode: on send--cmd=VacThirdCodeSvc.fetchCodes");
+  }
+  
+  public void a(GetPasswordReq paramGetPasswordReq)
+  {
+    if (paramGetPasswordReq == null) {}
+    do
+    {
+      return;
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "WalletGestureSvc.GetPassword");
+      localToServiceMsg.extraData.putSerializable("GetPasswordReq", paramGetPasswordReq);
+      super.send(localToServiceMsg);
+      this.a = true;
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qwallet.auth.AuthHandler", 2, "sendGetPasswordReq: on send--cmd=WalletGestureSvc.GetPassword");
+  }
+  
+  public void a(PfaFriendRqt paramPfaFriendRqt)
+  {
+    if (paramPfaFriendRqt == null) {}
+    do
+    {
+      return;
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "QWalletPfa.RecFriend");
+      localToServiceMsg.extraData.putSerializable("PfaFriendRqt", paramPfaFriendRqt);
+      super.send(localToServiceMsg);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qwallet.auth.AuthHandler", 2, "sendGetRecentList: on send--cmd=QWalletPfa.RecFriend");
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return amzh.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
+    boolean bool;
+    do
+    {
+      return;
+      bool = paramFromServiceMsg.isSuccess();
+      paramToServiceMsg = paramToServiceMsg.getServiceCmd();
+    } while (TextUtils.isEmpty(paramToServiceMsg));
+    if (paramToServiceMsg.compareTo("QQWalletPayAuthServer.checkChangePwdAuth") == 0)
+    {
+      super.notifyUI(1, bool, paramObject);
       return;
     }
-    QLog.e("ApolloJSContext", 1, "[notifyJSEVent] game not running " + paramString1 + " " + paramString2);
-  }
-  
-  public void a(CustomWebView paramCustomWebView)
-  {
-    if ((paramCustomWebView != null) && (this.jdField_a_of_type_Amzm != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloJSContext", 2, "register success");
+    if (paramToServiceMsg.compareTo("WalletGestureSvc.GetPassword") == 0) {
+      if ((paramObject == null) || (!(paramObject instanceof GetPasswordRsp))) {
+        break label402;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = paramCustomWebView;
-      if (Build.VERSION.SDK_INT > 17)
+    }
+    label402:
+    for (paramToServiceMsg = (GetPasswordRsp)paramObject;; paramToServiceMsg = null)
+    {
+      if ((bool) && (paramToServiceMsg != null) && (paramToServiceMsg.ret == 0))
       {
-        paramCustomWebView.addJavascriptInterface(this.jdField_a_of_type_Amzm, "__browserMsg");
-        return;
-      }
-      paramCustomWebView.evaluateJavascript("window.__browserMsg =new function(){};window.__browserMsg.send=function(data,cmd){window.location='jsbridge://apolloGame/send?p='+JSON.stringify({dataStr:data,cmd:cmd});}\n", null);
-      return;
-    }
-    QLog.e("ApolloJSContext", 1, "[registeJSContext] failed");
-  }
-  
-  public void a(String paramString, ValueCallback<String> paramValueCallback)
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      ThreadManagerV2.getUIHandlerV2().post(new ApolloJSContext.2(this, paramString, paramValueCallback));
-      return;
-    }
-    QLog.e("ApolloJSContext", 1, "[execScript] context is null");
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if ((this.jdField_a_of_type_Amzm != null) && ((this.jdField_a_of_type_Amzm instanceof ApolloGameInterfaceProxy))) {
-      ((ApolloGameInterfaceProxy)this.jdField_a_of_type_Amzm).send(paramString2, paramString1);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((!paramBoolean) && (a())) {
-      c();
-    }
-  }
-  
-  public boolean a()
-  {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!"Android.H5".equals(this.jdField_a_of_type_JavaLangString));
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = null;
-    if ((this.jdField_a_of_type_Amzm != null) && ((this.jdField_a_of_type_Amzm instanceof ApolloGameInterfaceProxy))) {
-      ((ApolloGameInterfaceProxy)this.jdField_a_of_type_Amzm).h();
-    }
-    this.jdField_a_of_type_Amzm = null;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Amzm != null)
-    {
-      if (a())
-      {
-        if (!paramBoolean) {
-          break label36;
+        PatternLockUtils.setSyncPatternLockState(this.app.getApp(), this.app.getCurrentAccountUin(), false);
+        paramFromServiceMsg = "";
+        if (!TextUtils.isEmpty(paramToServiceMsg.password))
+        {
+          paramFromServiceMsg = QWalletHelper.getQWDevId();
+          paramFromServiceMsg = MD5.toMD5(paramFromServiceMsg + paramToServiceMsg.password);
         }
-        a("if(window&&window.mqq&&window.mqq.ui&&!window.BK_SHARE){window.mqq.ui.shareArkMessageQzone=window.mqq.ui.shareArkMessage;window.mqq.ui.shareMessageQzone=window.mqq.ui.shareMessage;window.mqq.ui.shareArkMessage=shareToBK;window.mqq.ui.shareMessage=shareToBK}function shareToBK(shareObj,callback){window.__dispatchEvent=function(code,cmd,data){if(cmd===\"sc.share_game_to_friend_result.local\"){var tmpObj=JSON.parse(data);var result={retCode:(tmpObj.ret===0)?0:4};if(callback&&(typeof callback===\"function\")){callback(result);console.log(\"share success in bk\")}}};if(shareObj){var title=shareObj.title;var share_type=shareObj.share_type;var image_url=shareObj.image_url;var desc=shareObj.desc;var bg_url=shareObj.bg_url;var bk_url=shareObj.bk_url;var share_url=shareObj.share_url;if(share_url){share_url=share_url.substring(share_url.indexOf(\"?\")+1)}if(image_url&&!image_url.startsWith(\"http://\")&&!image_url.startsWith(\"https://\")){image_url=\"https://\"+image_url}if(bg_url&&!bg_url.startsWith(\"http://\")&&!bg_url.startsWith(\"https://\")){bg_url=\"https://\"+bg_url}if(!share_type){share_type=0}var share_ul=bk_url;if(!share_ul){share_url=bg_url}if(!share_ul){share_ul=image_url}var bkShare={inner:1,roomId:0,summary:desc,picUrl:share_ul,isSelectFriend:share_type===0?1:0,extendInfo:{bk_share_url:share_url},title:title};var command=\"cs.share_game_in_ark.local\";switch(share_type){case 0:break;default:command=\"cs.game_shell_share_callback.local\";break}window.__browserMsg.send(JSON.stringify(bkShare),command);return}};", null);
+        PatternLockUtils.setPWD(this.app.getApp(), this.app.getCurrentAccountUin(), paramFromServiceMsg);
+        PatternLockUtils.setPWDType(this.app.getApp(), this.app.getCurrentAccountUin(), paramToServiceMsg.passwordType);
+        PatternLockUtils.setCheckIntervalTime(this.app.getApp(), this.app.getCurrentAccountUin(), paramToServiceMsg.checkInterval);
+        PatternLockUtils.setForgroundIntervalTime(this.app.getApp(), this.app.getCurrentAccountUin(), paramToServiceMsg.passInterval);
       }
-      for (;;)
+      while (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_Amzm.a(this);
+        QLog.d("Q.qwallet.auth.AuthHandler", 2, "sendGetPasswordReq: onReceive isSuccess:" + bool);
         return;
-        label36:
-        d();
+        if ((this.a) && (NetworkUtil.isNetSupport(this.app.getApp())))
+        {
+          this.a = false;
+          paramToServiceMsg = new GetPasswordReq();
+          paramToServiceMsg.MQOS = "Android";
+          paramToServiceMsg.MQVersion = DeviceInfoUtil.getQQVersionWithCode(this.app.getApp());
+          paramFromServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "WalletGestureSvc.GetPassword");
+          paramFromServiceMsg.extraData.putSerializable("GetPasswordReq", paramToServiceMsg);
+          super.send(paramFromServiceMsg);
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.qwallet.auth.AuthHandler", 2, "RetrySendGetPasswordReq: on send--cmd=WalletGestureSvc.GetPassword");
+          }
+        }
       }
+      break;
+      if (paramToServiceMsg.compareTo("VacThirdCodeSvc.fetchCodes") == 0)
+      {
+        super.notifyUI(4, bool, paramObject);
+        return;
+      }
+      if (paramToServiceMsg.compareTo("QWalletPfa.RecFriend") != 0) {
+        break;
+      }
+      super.notifyUI(5, bool, paramObject);
+      return;
     }
-    QLog.e("ApolloJSContext", 1, "[onLoadFinish] interface null ");
   }
 }
 

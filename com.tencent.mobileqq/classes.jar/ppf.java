@@ -1,18 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.commonsdk.cache.QQLruCache;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
-class ppf
-  extends QQLruCache<String, List<BaseData>>
+public class ppf
+  implements pqe
 {
-  ppf(ppe paramppe, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  public ppf(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  protected void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2)
+  public void a()
   {
-    super.entryRemoved(paramBoolean, paramString, paramList1, paramList2);
+    ReadInJoySelfFragment.a(this.a);
+    odq.a(null, "", "0X8009925", "0X8009925", 0, 0, "", "", "", "", false);
   }
 }
 

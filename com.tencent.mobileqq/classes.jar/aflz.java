@@ -1,26 +1,21 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import java.util.Comparator;
 
 public class aflz
-  implements TextWatcher
+  implements Comparator
 {
-  public aflz(SelectedAndSearchBar paramSelectedAndSearchBar) {}
+  public aflz(LoadDataJob paramLoadDataJob) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    if (SelectedAndSearchBar.a(this.a) != null) {
-      SelectedAndSearchBar.a(this.a).a(paramEditable);
-    }
+    paramObject1 = (afml)paramObject1;
+    paramObject2 = (afml)paramObject2;
+    return paramObject1.a - paramObject2.a;
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aflz
  * JD-Core Version:    0.7.0.1
  */

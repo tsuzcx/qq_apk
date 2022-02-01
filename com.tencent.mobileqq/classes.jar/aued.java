@@ -1,62 +1,23 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
+import com.tencent.mobileqq.widget.SquareImageView;
 
-class aued
-  implements aucq
+public class aued
+  extends RecyclerView.ViewHolder
 {
-  aued(auec paramauec, BaseActivity paramBaseActivity) {}
+  public ImageView a;
+  public TextView a;
+  public SquareImageView a;
   
-  public augj a()
+  public aued(FontBubblePanelView paramFontBubblePanelView, View paramView)
   {
-    Object localObject3 = null;
-    int i = 0;
-    Object localObject1;
-    switch (this.jdField_a_of_type_Auec.a())
-    {
-    default: 
-      localObject1 = null;
-    }
-    int j;
-    int k;
-    for (;;)
-    {
-      Object localObject2 = localObject3;
-      if (localObject1 != null)
-      {
-        localObject2 = localObject3;
-        if (((List)localObject1).size() > 0)
-        {
-          localObject2 = (auei)((List)localObject1).get(i);
-          j = ((auei)localObject2).c();
-          k = ((auei)localObject2).b();
-          if (j != 7) {
-            break;
-          }
-          localObject2 = new augr(auec.a(this.jdField_a_of_type_Auec), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-        }
-      }
-      return localObject2;
-      localObject1 = this.jdField_a_of_type_Auec.a();
-      i = this.jdField_a_of_type_Auec.b();
-      continue;
-      localObject1 = this.jdField_a_of_type_Auec.a();
-      i = this.jdField_a_of_type_Auec.b();
-      continue;
-      localObject1 = new ArrayList(1);
-      ((List)localObject1).add(this.jdField_a_of_type_Auec.a());
-    }
-    if (j == 9) {
-      return new autl(auec.a(this.jdField_a_of_type_Auec), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-    }
-    switch (k)
-    {
-    default: 
-      return new aufn(auec.a(this.jdField_a_of_type_Auec), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-    case 6000: 
-      return new auft(auec.a(this.jdField_a_of_type_Auec), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-    }
-    return new autg(auec.a(this.jdField_a_of_type_Auec), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131367019));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371615));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380062));
   }
 }
 

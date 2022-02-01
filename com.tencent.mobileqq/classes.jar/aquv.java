@@ -1,16 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class aquv
-  implements View.OnTouchListener
+final class aquv
+  extends nme
 {
-  public aquv(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return false;
+    QLog.i("reportMsgBoxMomentRead", 1, " reportMsgBoxMomentRead code:" + paramInt);
   }
 }
 

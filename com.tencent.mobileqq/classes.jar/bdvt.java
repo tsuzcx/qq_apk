@@ -1,10 +1,24 @@
-public abstract interface bdvt
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+final class bdvt
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  bdvt(bdvu parambdvu, boolean paramBoolean) {}
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(long paramLong1, long paramLong2, int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Bdvu != null) {
+      this.jdField_a_of_type_Bdvu.a();
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      bcef.b(null, "dc00898", "", "", "0X800B224", "0X800B224", 0, 0, "", "", "", "");
+      return;
+    }
+    bcef.b(null, "dc00898", "", "", "0X800B226", "0X800B226", 0, 0, "", "", "", "");
+  }
 }
 
 

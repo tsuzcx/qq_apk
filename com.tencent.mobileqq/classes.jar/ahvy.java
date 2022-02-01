@@ -1,14 +1,4 @@
-import android.widget.TextView;
-
-class ahvy
-  extends agen
-{
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  
-  ahvy(ahvx paramahvx) {}
-}
+class ahvy {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

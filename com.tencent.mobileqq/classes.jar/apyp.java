@@ -1,39 +1,97 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.manager.TicketManager;
+import mqq.app.AppRuntime;
+import mqq.app.BuiltInServlet;
+import mqq.app.NewIntent;
 
 public class apyp
-  implements apyw
+  extends aptq<apyo>
 {
-  public EIPCResult a(Bundle paramBundle)
+  @NonNull
+  public apyo a(int paramInt)
   {
-    Object localObject = apxv.a();
-    if (localObject == null)
+    return new apyo();
+  }
+  
+  @Nullable
+  public apyo a(aptx[] paramArrayOfaptx)
+  {
+    QLog.i("MSFConfigProcessor", 1, "[onParsed] config");
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
     {
-      QLog.e("ArkApp.GetPSKeyHandler", 1, "GetPSKeyHandler.onCall, qq app is null");
-      return EIPCResult.createResult(-102, new Bundle());
+      apyo localapyo = apyo.a(paramArrayOfaptx[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("MSFConfigProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
+      }
+      return localapyo;
     }
-    paramBundle = paramBundle.getString("Domain", "");
-    localObject = ((TicketManager)((QQAppInterface)localObject).getManager(2)).getPskey(((QQAppInterface)localObject).getCurrentAccountUin(), paramBundle);
-    Bundle localBundle = new Bundle();
-    if (TextUtils.isEmpty((CharSequence)localObject))
+    if (QLog.isColorLevel()) {
+      QLog.d("MSFConfigProcessor", 2, "onParsed is null");
+    }
+    return new apyo();
+  }
+  
+  public void a(apyo paramapyo)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null) {}
+    try
     {
-      QLog.e("ArkApp.GetPSKeyHandler", 1, "GetPSKeyHandler.onCall, pskey is empty, domain=" + paramBundle);
-      localBundle.putString("PSKey", "");
+      paramapyo = apyo.a(paramapyo);
+      QLog.i("MSFConfigProcessor", 1, "[onUpdate], strConfig = " + paramapyo);
+      NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), BuiltInServlet.class);
+      localNewIntent.putExtra("action", 2214);
+      localNewIntent.putExtra("manager_config", paramapyo);
+      localAppRuntime.startServlet(localNewIntent);
+      return;
     }
-    for (;;)
+    catch (Throwable paramapyo)
     {
-      return EIPCResult.createResult(0, localBundle);
-      localBundle.putString("PSKey", (String)localObject);
+      while (!QLog.isColorLevel()) {}
+      QLog.d("MSFConfigProcessor", 2, "update msf config, but throw t", paramapyo);
     }
+  }
+  
+  public Class<apyo> clazz()
+  {
+    return apyo.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.i("MSFConfigProcessor", 1, "[onReqFailed] failCode=" + paramInt);
+  }
+  
+  public int type()
+  {
+    return 661;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apyp
  * JD-Core Version:    0.7.0.1
  */

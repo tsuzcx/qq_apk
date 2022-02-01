@@ -24,13 +24,14 @@ import com.tencent.qqlive.module.videoreport.collect.notifier.ActivityConfigurat
 import com.tencent.qqlive.module.videoreport.collect.notifier.DispatchTouchEventNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.ListScrollNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.RecyclerViewScrollPositionNotifier;
-import com.tencent.qqlive.module.videoreport.collect.notifier.RecyclerViewSetAdapterNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.ViewClickNotifier;
-import com.tencent.qqlive.module.videoreport.collect.notifier.ViewPagerSetAdapterNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.ViewReuseNotifier;
+import com.tencent.qqlive.module.videoreport.dtreport.lazy.LazyInitObserver;
 import com.tencent.qqlive.module.videoreport.inject.fragment.FragmentCompat;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 import com.tencent.qqlive.module.videoreport.page.DialogListUtil;
+import com.tencent.qqlive.module.videoreport.task.ThreadUtils;
+import com.tencent.qqlive.module.videoreport.utils.BaseUtils;
 import com.tencent.qqlive.module.videoreport.utils.ReusablePool;
 import com.tencent.qqlive.module.videoreport.utils.UIUtils;
 import java.lang.reflect.Field;
@@ -127,17 +128,18 @@ public class EventCollector
     }
   }
   
-  private void notifyDispatchTouchEvent(Object paramObject, Window paramWindow, MotionEvent paramMotionEvent, boolean paramBoolean)
+  private void notifyDispatchTouchEvent(Object paramObject, Window paramWindow, MotionEvent paramMotionEvent, boolean paramBoolean1, boolean paramBoolean2)
   {
     DispatchTouchEventNotifier localDispatchTouchEventNotifier = (DispatchTouchEventNotifier)ReusablePool.obtain(10);
-    localDispatchTouchEventNotifier.init(paramObject, paramWindow, paramMotionEvent, paramBoolean);
-    paramObject = paramObject.hashCode() + "_" + paramMotionEvent.getAction();
+    localDispatchTouchEventNotifier.init(paramObject, paramWindow, paramMotionEvent, paramBoolean1, paramBoolean2);
+    paramObject = paramObject.hashCode() + "_" + paramMotionEvent.getAction() + "_" + paramBoolean2;
     this.mNotifyManager.addEventNotifierImmediately(paramObject, localDispatchTouchEventNotifier);
   }
   
   private void onRecyclerViewItemReuse(RecyclerView.ViewHolder paramViewHolder, long paramLong)
   {
-    if (!VideoReportInner.getInstance().isDataCollectEnable()) {
+    if (!VideoReportInner.getInstance().isDataCollectEnable()) {}
+    while (!LazyInitObserver.getInstance().mayProceedOnMain(null)) {
       return;
     }
     ViewReuseNotifier localViewReuseNotifier = (ViewReuseNotifier)ReusablePool.obtain(5);
@@ -176,6 +178,7 @@ public class EventCollector
     if (VideoReportInner.getInstance().isDebugMode()) {
       Log.d("EventCollector", "onActivityCreated: activity=" + paramActivity.getClass().getName());
     }
+    Log.d("LazyInitSequence", "act created");
     this.mNotifyManager.onActivityCreate(paramActivity);
   }
   
@@ -187,9 +190,9 @@ public class EventCollector
     this.mNotifyManager.onActivityDestroyed(paramActivity);
   }
   
-  public void onActivityDispatchTouchEvent(Activity paramActivity, MotionEvent paramMotionEvent, boolean paramBoolean)
+  public void onActivityDispatchTouchEvent(Activity paramActivity, MotionEvent paramMotionEvent, boolean paramBoolean1, boolean paramBoolean2)
   {
-    notifyDispatchTouchEvent(paramActivity, paramActivity.getWindow(), paramMotionEvent, paramBoolean);
+    notifyDispatchTouchEvent(paramActivity, paramActivity.getWindow(), paramMotionEvent, paramBoolean1, paramBoolean2);
   }
   
   public void onActivityPaused(Activity paramActivity)
@@ -208,6 +211,8 @@ public class EventCollector
     if (VideoReportInner.getInstance().isDebugMode()) {
       Log.i("EventCollector", "onActivityResumed: activity = " + paramActivity.getClass().getName());
     }
+    Log.d("LazyInitSequence", "act resumed");
+    LazyInitObserver.getInstance().onActivityResumed(paramActivity);
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
     }
@@ -221,6 +226,7 @@ public class EventCollector
     if (VideoReportInner.getInstance().isDebugMode()) {
       Log.i("EventCollector", "onActivityStarted: activity = " + paramActivity.getClass().getName());
     }
+    Log.d("LazyInitSequence", "act started");
     this.mNotifyManager.onActivityStarted(paramActivity);
   }
   
@@ -261,14 +267,14 @@ public class EventCollector
   public void onDialogClicked(DialogInterface paramDialogInterface, int paramInt)
   {
     if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onDialogClicked, dialog = " + paramDialogInterface.getClass().getSimpleName() + ", which = " + paramInt);
+      Log.i("EventCollector", "onDialogClicked, dialog = " + BaseUtils.getClassSimpleName(paramDialogInterface) + ", which = " + paramInt);
     }
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {}
   }
   
-  public void onDialogDispatchTouchEvent(Dialog paramDialog, MotionEvent paramMotionEvent, boolean paramBoolean)
+  public void onDialogDispatchTouchEvent(Dialog paramDialog, MotionEvent paramMotionEvent, boolean paramBoolean1, boolean paramBoolean2)
   {
-    notifyDispatchTouchEvent(paramDialog, paramDialog.getWindow(), paramMotionEvent, paramBoolean);
+    notifyDispatchTouchEvent(paramDialog, paramDialog.getWindow(), paramMotionEvent, paramBoolean1, paramBoolean2);
   }
   
   public void onDialogFocusChanged(Dialog paramDialog, boolean paramBoolean)
@@ -339,7 +345,7 @@ public class EventCollector
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onItemClick, parent = " + paramAdapterView.getClass().getSimpleName() + ", view = " + UIUtils.getViewInfo(paramView) + ", position = " + paramInt);
+      Log.i("EventCollector", "onItemClick, parent = " + BaseUtils.getClassSimpleName(paramAdapterView) + ", view = " + UIUtils.getViewInfo(paramView) + ", position = " + paramInt);
     }
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
@@ -355,7 +361,7 @@ public class EventCollector
       Log.i("EventCollector", "onListGetView, parent = " + UIUtils.getViewInfo(paramViewGroup) + ", convertView = " + UIUtils.getViewInfo(paramView) + ", position = " + paramInt);
     }
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {}
-    while (paramView == null) {
+    while ((paramView == null) || (!LazyInitObserver.getInstance().mayProceedOnMain(null))) {
       return;
     }
     ViewReuseNotifier localViewReuseNotifier = (ViewReuseNotifier)ReusablePool.obtain(5);
@@ -379,7 +385,7 @@ public class EventCollector
   public void onRecyclerBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt, long paramLong)
   {
     if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onRecyclerBindViewHolder, holder = " + paramViewHolder.getClass().getSimpleName() + ", position = " + paramInt);
+      Log.i("EventCollector", "onRecyclerBindViewHolder, holder = " + BaseUtils.getClassSimpleName(paramViewHolder) + ", position = " + paramInt);
     }
     onRecyclerViewItemReuse(paramViewHolder, paramLong);
   }
@@ -387,7 +393,7 @@ public class EventCollector
   public void onRecyclerBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt, List<Object> paramList, long paramLong)
   {
     if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onRecyclerBindViewHolder2, holder = " + paramViewHolder.getClass().getSimpleName() + ", position = " + paramInt);
+      Log.i("EventCollector", "onRecyclerBindViewHolder2, holder = " + BaseUtils.getClassSimpleName(paramViewHolder) + ", position = " + paramInt);
     }
     onRecyclerViewItemReuse(paramViewHolder, paramLong);
   }
@@ -416,9 +422,7 @@ public class EventCollector
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
     }
-    RecyclerViewSetAdapterNotifier localRecyclerViewSetAdapterNotifier = (RecyclerViewSetAdapterNotifier)ReusablePool.obtain(2);
-    localRecyclerViewSetAdapterNotifier.init(paramRecyclerView);
-    this.mNotifyManager.addEventNotifier(paramRecyclerView, localRecyclerViewSetAdapterNotifier);
+    ThreadUtils.runOnUiThread(new EventCollector.1(this, paramRecyclerView));
   }
   
   public void onSetViewPagerAdapter(ViewPager paramViewPager)
@@ -429,9 +433,7 @@ public class EventCollector
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
     }
-    ViewPagerSetAdapterNotifier localViewPagerSetAdapterNotifier = (ViewPagerSetAdapterNotifier)ReusablePool.obtain(4);
-    localViewPagerSetAdapterNotifier.init(paramViewPager);
-    this.mNotifyManager.addEventNotifier(paramViewPager, localViewPagerSetAdapterNotifier);
+    ThreadUtils.runOnUiThread(new EventCollector.2(this, paramViewPager));
   }
   
   public void onStopTrackingTouch(SeekBar paramSeekBar)

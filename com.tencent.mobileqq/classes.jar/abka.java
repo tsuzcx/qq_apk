@@ -1,39 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ad.tangram.image.AdImageViewAdapter.Callback;
+import com.tencent.ad.tangram.image.AdImageViewAdapter.Params;
+import java.lang.ref.WeakReference;
 
 class abka
-  implements abkc
+  implements abtz
 {
-  abka(abju paramabju) {}
+  abka(abjy paramabjy, AdImageViewAdapter.Params paramParams) {}
   
-  public void f()
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryComponent", 2, "image list onEnterAnimationEnd");
-    }
-    this.a.f();
-  }
-  
-  public void g()
-  {
-    this.a.g();
-  }
-  
-  public void h()
-  {
-    this.a.h();
-  }
-  
-  public void i()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryComponent", 2, "image list onExitAnimationEnd");
-    }
-    this.a.i();
+    ((AdImageViewAdapter.Callback)this.jdField_a_of_type_ComTencentAdTangramImageAdImageViewAdapter$Params.callback.get()).onStopLoad(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abka
  * JD-Core Version:    0.7.0.1
  */

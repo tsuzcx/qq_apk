@@ -1,94 +1,59 @@
-import android.view.View;
-import com.tencent.biz.qqcircle.events.QCircleContentImmersiveEvent;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.utils.HexUtil;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class vlq
 {
-  private final HashMap<View, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
+  public long a;
+  public String a;
+  public byte[] a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  private void b()
+  public vlq()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      d();
-      return;
-    }
-    c();
-  }
-  
-  private void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      View localView = (View)localIterator.next();
-      if (localView != null)
-      {
-        this.jdField_a_of_type_JavaUtilHashMap.put(localView, Integer.valueOf(localView.getVisibility()));
-        localView.setVisibility(8);
-      }
-    }
-  }
-  
-  private void d()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      View localView = (View)localIterator.next();
-      if ((localView != null) && (this.jdField_a_of_type_JavaUtilHashMap.get(localView) != null)) {
-        localView.setVisibility(((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localView)).intValue());
-      }
-    }
+    this.jdField_a_of_type_ArrayOfByte = new byte[1];
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public void a(int paramInt)
-  {
-    boolean bool = true;
-    switch (paramInt)
+    try
     {
-    }
-    do
-    {
-      do
-      {
-        return;
-        b();
-        if (!this.jdField_a_of_type_Boolean) {}
-        for (;;)
-        {
-          this.jdField_a_of_type_Boolean = bool;
-          return;
-          bool = false;
-        }
-      } while (this.jdField_a_of_type_Boolean);
-      c();
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    } while (!this.jdField_a_of_type_Boolean);
-    d();
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(View paramView)
-  {
-    if (paramView == null) {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("t", this.jdField_a_of_type_Long);
+      localJSONObject.put("ak", HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
+      ((vuq)vux.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", localJSONObject.toString());
+      xvv.a("Q.qqstory.publish:VideoServerInfoManager", "save -> %s", localJSONObject);
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramView, Integer.valueOf(paramView.getVisibility()));
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
   }
   
-  public void a(QCircleContentImmersiveEvent paramQCircleContentImmersiveEvent)
+  public boolean a()
   {
-    a(paramQCircleContentImmersiveEvent.getState());
+    if (this.jdField_a_of_type_Long > NetConnInfoCenter.getServerTimeMillis())
+    {
+      xvv.b("Q.qqstory.publish:VideoServerInfoManager", "server inf validate %s", this);
+      return true;
+    }
+    xvv.d("Q.qqstory.publish:VideoServerInfoManager", "server inf invalidate %s", new Object[] { this });
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Long <= NetConnInfoCenter.getServerTimeMillis() + 600000L;
+  }
+  
+  public String toString()
+  {
+    return "ServerInfo{, userIp='" + this.jdField_a_of_type_JavaLangString + '\'' + ", serverIp1='" + this.b + '\'' + ", serverIp2='" + this.c + '\'' + ", backupServerIp1='" + this.d + '\'' + ", backupServerIp2='" + this.e + '\'' + ", expireTime=" + this.jdField_a_of_type_Long + "" + '\'' + '}';
   }
 }
 

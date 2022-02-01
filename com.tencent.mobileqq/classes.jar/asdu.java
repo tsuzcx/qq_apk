@@ -1,187 +1,108 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.MiniScanDecodeSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.MiniScanDetectSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
 public class asdu
-  extends asdn
 {
-  private int a;
-  private boolean d;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private asdv jdField_a_of_type_Asdv;
+  private Object jdField_a_of_type_JavaLangObject;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private int jdField_b_of_type_Int;
+  private byte[] jdField_b_of_type_ArrayOfByte;
+  private byte[] c;
   
-  public asdu(QQAppInterface paramQQAppInterface)
+  asdu(asdm paramasdm)
   {
-    super("qq.android.minidetect.so_v8.2.0", paramQQAppInterface);
+    a(false, 0L, null, null, 0);
   }
   
-  public int a()
+  asdu(asdm paramasdm, long paramLong, asdv paramasdv)
   {
-    return 10083;
+    a(false, paramLong, null, paramasdv, 0);
   }
   
-  public Class<? extends XmlData> a()
+  asdu(asdm paramasdm, asdv paramasdv)
   {
-    return MiniScanDetectSoData.class;
+    a(false, 0L, null, paramasdv, 0);
   }
   
-  public String a()
+  asdu(asdm paramasdm, String paramString)
   {
-    return "MiniScanDetectSoData";
+    a(false, 0L, paramString, null, 0);
   }
   
-  public void a(long paramLong1, long paramLong2)
+  asdu(asdm paramasdm, boolean paramBoolean, long paramLong)
   {
-    super.a(paramLong1, paramLong2);
-    this.a = ((int)(100L * paramLong1 / paramLong2));
-    apqv.a(1, this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "download progress: " + this.a);
-    }
+    a(paramBoolean, paramLong, null, null, 0);
   }
   
-  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
+  asdu(asdm paramasdm, boolean paramBoolean, long paramLong, asdv paramasdv, int paramInt)
   {
-    if (!paramBoolean)
-    {
-      g();
-      f();
-      apqv.a(1, false);
-    }
-    super.a(paramXmlData, paramBoolean, paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "download finish: " + paramBoolean);
-    }
+    a(paramBoolean, paramLong, null, paramasdv, paramInt);
   }
   
-  public void a(String paramString)
+  asdu(asdm paramasdm, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, asdv paramasdv)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "download success: " + paramString);
-    }
-    int i = apqz.a(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "download success: " + paramString + ",ret = " + i);
-    }
-    if (i != 0)
-    {
-      g();
-      f();
-      apqv.a(1, false);
-    }
-    for (;;)
-    {
-      super.a(paramString);
-      return;
-      apqv.a(1, true);
-    }
+    a(false, 0L, null, paramasdv, 0);
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
+    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
+    this.c = paramArrayOfByte3;
   }
   
-  public void a(boolean paramBoolean)
+  private void a(boolean paramBoolean, long paramLong, String paramString, asdv paramasdv, int paramInt)
   {
-    Object localObject = a();
-    if ((paramBoolean) && ((localObject instanceof MiniScanDecodeSoData)))
-    {
-      localObject = (MiniScanDecodeSoData)localObject;
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.MiniScanDetectSoDownloadHandler", 2, String.format("restartDownload block_user_download=%b", new Object[] { Boolean.valueOf(((MiniScanDecodeSoData)localObject).block_user_download) }));
-      }
-      if (!((MiniScanDecodeSoData)localObject).block_user_download) {}
-    }
-    do
-    {
-      return;
-      if (!this.d) {
-        this.d = paramBoolean;
-      }
-      super.a(paramBoolean);
-    } while (!QLog.isColorLevel());
-    QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "restartDownload userClick=" + paramBoolean);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Asdv = paramasdv;
+    this.jdField_a_of_type_JavaLangObject = null;
   }
   
-  public boolean a()
+  int a()
   {
-    return true;
+    return this.jdField_b_of_type_Int;
   }
   
-  public String b()
+  long a()
   {
-    return "prd";
+    return this.jdField_a_of_type_Long;
   }
   
-  public void b()
+  asdv a()
   {
-    boolean bool = auog.a(new File(apqz.a()));
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "deleteUnZipFile ret: " + bool);
-    }
+    return this.jdField_a_of_type_Asdv;
   }
   
-  public void b(XmlData paramXmlData)
+  Object a()
   {
-    super.b(paramXmlData);
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "download begin");
-    }
+    return this.jdField_a_of_type_JavaLangObject;
   }
   
-  public boolean b()
+  String a()
   {
-    if (this.d)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "isNetValid2Download by user ");
-      }
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "isNetValid2Download by startup ");
-    }
-    return super.b();
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public boolean e()
+  void a()
   {
-    if (!this.d)
-    {
-      if (BaseActivity.mAppForground) {}
-      for (boolean bool = false;; bool = true)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "downloadResource later " + bool);
-        }
-        if (!bool) {
-          break;
-        }
-        return false;
-      }
-    }
-    return super.e();
+    this.jdField_a_of_type_Int += 1;
   }
   
-  public void f()
+  boolean a()
   {
-    BaseApplicationImpl.sApplication.getSharedPreferences("mini_scan_sp", 4).edit().putInt("minidetect_so_version", b()).apply();
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public void g()
+  int b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniRecog.MiniScanDetectSoDownloadHandler", 2, "restoreState");
-    }
-    a().loadState = 0;
-    a().Version = 0;
-    asdd.a(a(), new String[0]);
+    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asdu
  * JD-Core Version:    0.7.0.1
  */

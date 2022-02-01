@@ -1,6 +1,41 @@
-public abstract interface tsr
+import android.net.Uri;
+import android.support.v4.app.Fragment;
+import android.text.TextUtils;
+import com.tencent.hippy.qq.app.HippyQQEngine;
+import com.tencent.qphone.base.util.QLog;
+
+public class tsr
+  extends HippyQQEngine
 {
-  public abstract void a();
+  public tsr(Fragment paramFragment, String paramString1, String paramString2)
+  {
+    super(paramFragment, paramString1, paramString2);
+    a(paramString1);
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString.equals("TKDMiniGame")) {
+      this.viewCreator = new tss();
+    }
+  }
+  
+  public void initJsBundleTypeFromUrl()
+  {
+    super.initJsBundleTypeFromUrl();
+    try
+    {
+      String str = Uri.parse(this.mUrl).getQueryParameter("component");
+      if (!TextUtils.isEmpty(str)) {
+        this.componentName = str;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("HippyQQEngine", 2, "error : " + localException.getMessage());
+    }
+  }
 }
 
 

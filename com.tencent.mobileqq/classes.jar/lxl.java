@@ -1,13 +1,6 @@
-class lxl
-  implements lya
+public abstract interface lxl
 {
-  lxl(lxk paramlxk, String paramString) {}
-  
-  public void a(lxz paramlxz)
-  {
-    paramlxz.a(this.jdField_a_of_type_JavaLangString);
-    paramlxz.a();
-  }
+  public abstract void a(lxk paramlxk);
 }
 
 

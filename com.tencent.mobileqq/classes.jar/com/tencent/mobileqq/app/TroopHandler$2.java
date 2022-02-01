@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import aoip;
-import com.tencent.mobileqq.data.TroopInfo;
+import anca;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 
 public class TroopHandler$2
   implements Runnable
 {
-  public TroopHandler$2(aoip paramaoip, String paramString, long paramLong, TroopInfo paramTroopInfo) {}
+  public TroopHandler$2(anca paramanca, String paramString, long paramLong, TroopInfo paramTroopInfo) {}
   
   public void run()
   {
-    aoip.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
+    anca.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo);
   }
 }
 

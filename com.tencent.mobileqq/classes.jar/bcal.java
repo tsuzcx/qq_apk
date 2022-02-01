@@ -1,42 +1,27 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.startup.step.CheckPermission;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
-public class bcal
-  implements View.OnClickListener
+public final class bcal
+  implements QQPermissionCallback
 {
-  public bcal(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
+  public bcal(bcan parambcan, AppActivity paramAppActivity) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.c();
-    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setCursorVisible(false);
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.removeTextChangedListener(this.a);
-    if ((ActiveEntitySearchActivity.a(this.a) == 1) && (!TextUtils.isEmpty(this.a.b)))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setText(this.a.b);
-      ActiveEntitySearchActivity.a(this.a, ActiveEntitySearchActivity.a(this.a));
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.addTextChangedListener(this.a);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setText("");
-      ActiveEntitySearchActivity.a(this.a, 2);
+    CheckPermission.showSDCardExplainDialog(this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_Bcan);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (this.jdField_a_of_type_Bcan != null) {
+      this.jdField_a_of_type_Bcan.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcal
  * JD-Core Version:    0.7.0.1
  */

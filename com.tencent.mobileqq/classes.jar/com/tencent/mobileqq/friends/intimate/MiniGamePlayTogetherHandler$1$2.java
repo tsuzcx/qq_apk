@@ -2,17 +2,17 @@ package com.tencent.mobileqq.friends.intimate;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import avhk;
+import atuq;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class MiniGamePlayTogetherHandler$1$2
   implements Runnable
 {
-  public MiniGamePlayTogetherHandler$1$2(avhk paramavhk, Activity paramActivity) {}
+  public MiniGamePlayTogetherHandler$1$2(atuq paramatuq, Activity paramActivity) {}
   
   public void run()
   {
-    QQToast.a(this.a, this.a.getResources().getString(2131693101), 0).a();
+    QQToast.a(this.a, this.a.getResources().getString(2131693163), 0).a();
   }
 }
 

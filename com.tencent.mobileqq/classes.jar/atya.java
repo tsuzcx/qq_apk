@@ -1,15 +1,10 @@
-class atya
-  extends atxl
+public abstract interface atya
 {
-  public atya(atwy paramatwy)
-  {
-    super(paramatwy);
-  }
+  public abstract void onAudioMute(boolean paramBoolean, int paramInt);
   
-  protected String a()
-  {
-    return "StateSenderCancelSend";
-  }
+  public abstract void onSrceenModeChanged(boolean paramBoolean, int paramInt);
+  
+  public abstract void onVideoStatusChanged(int paramInt1, int paramInt2);
 }
 
 

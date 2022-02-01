@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import aczo;
-import bcrg;
+import abvx;
+import bbko;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -27,13 +27,13 @@ class KandianDailyManager$3
     ((msg_svc.PbC2CReadedReportReq.UinPairReadInfo)localObject).last_read_time.set((int)NetConnInfoCenter.getServerTime());
     msg_svc.PbC2CReadedReportReq localPbC2CReadedReportReq = new msg_svc.PbC2CReadedReportReq();
     localPbC2CReadedReportReq.pair_info.add((MessageMicro)localObject);
-    localObject = this.this$0.a.a().a().a();
+    localObject = this.this$0.a.getMsgHandler().a().a();
     if (localObject != null) {
       localPbC2CReadedReportReq.sync_cookie.set(ByteStringMicro.copyFrom((byte[])localObject));
     }
     localObject = new msg_svc.PbMsgReadedReportReq();
     ((msg_svc.PbMsgReadedReportReq)localObject).c2c_read_report.set(localPbC2CReadedReportReq);
-    this.this$0.a.a().a("c2c_processor").a((msg_svc.PbMsgReadedReportReq)localObject);
+    this.this$0.a.getMsgHandler().a("c2c_processor").a((msg_svc.PbMsgReadedReportReq)localObject);
   }
 }
 

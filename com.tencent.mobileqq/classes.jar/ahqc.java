@@ -1,39 +1,69 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.util.Base64;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ahqc
-  implements View.OnClickListener
+public class ahqc
+  implements ahqq
 {
-  ahqc(ahpx paramahpx) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public ahqc(Context paramContext)
   {
-    switch (paramView.getId())
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public int a()
+  {
+    return 66;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558655, null);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362525));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362524));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847260);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new ahqd(this));
     }
-    for (;;)
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof String))) {
+      paramVarArgs = new String(Base64.decode((String)paramVarArgs[0], 0));
+    }
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      String str = (String)paramView.getTag();
-      if (!TextUtils.isEmpty(str))
-      {
-        Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        localIntent.putExtra("hide_more_button", true);
-        localIntent.putExtra("hide_operation_bar", true);
-        localIntent.putExtra("url", str);
-        this.a.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-        ((Activity)this.a.jdField_a_of_type_AndroidContentContext).overridePendingTransition(2130771997, 0);
-      }
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_talk", "", "obj", "link_msg", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+      paramVarArgs = new JSONObject(paramVarArgs);
+      String str = paramVarArgs.getString("content");
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      this.jdField_a_of_type_JavaLangString = paramVarArgs.getString("url");
+      label150:
+      return this.jdField_a_of_type_AndroidViewView;
     }
+    catch (JSONException paramVarArgs)
+    {
+      break label150;
+    }
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 17;
   }
 }
 

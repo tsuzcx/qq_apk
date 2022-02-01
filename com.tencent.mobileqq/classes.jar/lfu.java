@@ -1,8 +1,28 @@
-public abstract interface lfu
+import com.tencent.avcore.jni.data.NetAddr;
+import java.util.List;
+
+public class lfu
 {
-  public abstract loo a();
+  private static lfu a;
+  public int a;
+  public long a;
+  public List<NetAddr> a;
+  public int b;
   
-  public abstract void a(String paramString, loo paramloo);
+  static
+  {
+    jdField_a_of_type_Lfu = new lfu();
+  }
+  
+  public static lfu a()
+  {
+    return jdField_a_of_type_Lfu;
+  }
+  
+  public String toString()
+  {
+    return "mChannelType[" + this.jdField_a_of_type_Int + "], mSessionId[" + this.jdField_a_of_type_Long + "], mTransType[" + this.b + "]";
+  }
 }
 
 

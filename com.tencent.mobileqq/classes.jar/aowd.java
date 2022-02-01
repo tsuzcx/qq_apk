@@ -1,21 +1,17 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.ark.ark.PlayerStub;
+import com.tencent.ark.ark.PlayerStubFactory;
 
-public class aowd
-  extends aoxh
+final class aowd
+  implements ark.PlayerStubFactory
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  public ark.PlayerStub CreateStub()
   {
-    paramQQAppInterface = new aowc(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "assistant_setting";
-    paramQQAppInterface.c = "ASSISTANT_SETTING";
-    return paramQQAppInterface;
+    return new aowc();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aowd
  * JD-Core Version:    0.7.0.1
  */

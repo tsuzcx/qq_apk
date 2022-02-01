@@ -1,19 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QavSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 
 public class aqya
-  implements View.OnClickListener
+  extends aqyb
 {
-  public aqya(TimeSelectView paramTimeSelectView) {}
-  
-  public void onClick(View paramView)
+  public aqya(QQAppInterface paramQQAppInterface)
   {
-    if (TimeSelectView.a(this.a) != null) {
-      TimeSelectView.a(this.a).a();
+    super(e(), paramQQAppInterface);
+  }
+  
+  public static String e()
+  {
+    if (lld.f() <= 2) {
+      return "qq.android.qav.so_665";
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return "";
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return QavSoData.class;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 

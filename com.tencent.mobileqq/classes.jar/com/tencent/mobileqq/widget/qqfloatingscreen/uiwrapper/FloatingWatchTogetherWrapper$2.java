@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper;
 
 import android.view.View;
-import bjgc;
+import bhmi;
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams;
 
 public class FloatingWatchTogetherWrapper$2
   implements Runnable
 {
-  public FloatingWatchTogetherWrapper$2(bjgc parambjgc, View paramView, FloatingScreenParams paramFloatingScreenParams) {}
+  public FloatingWatchTogetherWrapper$2(bhmi parambhmi, View paramView, FloatingScreenParams paramFloatingScreenParams) {}
   
   public void run()
   {

@@ -1,23 +1,8 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v7.widget.RecyclerView.Adapter;
 
-class bjxu
-  implements View.OnClickListener
+public abstract interface bjxu
 {
-  bjxu(bjxr parambjxr, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bjxr, this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bjxr.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(RecyclerView.Adapter paramAdapter);
 }
 
 

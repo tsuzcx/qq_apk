@@ -1,110 +1,64 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.qqcircle.adapter.QCircleRecommendBaseAdapter.1;
-import com.tencent.biz.qqcircle.widgets.QCircleBaseWidgetView;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import feedcloud.FeedCloudMeta.StDittoFeed;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.ArrayList;
+import UserGrowth.stGetCollectionRsp;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager;
 import java.util.List;
-import qqcircle.QQCircleDitto.StItemContainer;
-import qqcircle.QQCircleDitto.StItemInfo;
 
-public abstract class vae
-  extends RecyclerView.Adapter
+public class vae
 {
-  protected int a;
-  protected RecyclerView a;
-  protected QCircleBaseWidgetView a;
-  protected FeedCloudMeta.StFeed a;
-  protected List<QQCircleDitto.StItemInfo> a;
-  protected QQCircleDitto.StItemContainer a;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public vae()
+  public static vae a()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    return vag.a();
   }
   
-  protected void a()
+  private void a(urj paramurj, vaa paramvaa)
   {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
+    if (!paramurj.a())
     {
-      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.isComputingLayout()) {
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.postDelayed(new QCircleRecommendBaseAdapter.1(this), 500L);
+      uya.d("WSCollectionDataManager", "[WSCollectionDataManager.java][onTaskResponse] failed code:" + paramurj.jdField_a_of_type_Int + ", msg:" + paramurj.jdField_a_of_type_JavaLangString);
+      if (paramvaa != null) {
+        paramvaa.a(paramurj.jdField_a_of_type_Int, paramurj.jdField_a_of_type_JavaLangString);
       }
     }
-    else {
-      return;
-    }
-    notifyDataSetChanged();
-  }
-  
-  protected void a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null) && (this.jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer != null))
+    do
     {
-      FeedCloudMeta.StDittoFeed localStDittoFeed = new FeedCloudMeta.StDittoFeed();
-      localStDittoFeed.dittoId.set(paramInt);
-      this.jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer.items.set(this.jdField_a_of_type_JavaUtilList);
-      localStDittoFeed.dittoData.set(ByteStringMicro.copyFrom(uzg.a(this.jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer).toByteArray()));
-      this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.dittoFeed.set(localStDittoFeed);
-    }
-  }
-  
-  public void a(RecyclerView paramRecyclerView)
-  {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-  }
-  
-  public void a(QCircleBaseWidgetView paramQCircleBaseWidgetView)
-  {
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseWidgetView = paramQCircleBaseWidgetView;
-  }
-  
-  public void a(Object paramObject, int paramInt)
-  {
-    int i;
-    if ((paramObject instanceof QQCircleDitto.StItemInfo))
-    {
-      paramObject = ((QQCircleDitto.StItemInfo)paramObject).id.get();
-      i = 0;
-      if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
-        break label150;
-      }
-      Object localObject = this.jdField_a_of_type_JavaUtilList.get(i);
-      if ((!(localObject instanceof QQCircleDitto.StItemInfo)) || (!((QQCircleDitto.StItemInfo)localObject).id.get().equals(paramObject))) {
-        break label143;
-      }
-    }
-    for (;;)
-    {
-      if (i >= 0)
+      do
       {
-        this.jdField_a_of_type_JavaUtilList.remove(i);
-        QLog.d("QCircleTagPageRecommendWidget", 1, "remove data is " + i);
-        notifyItemRemoved(i);
-        a(paramInt);
-        if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
-          this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleBaseWidgetView.setVisibility(8);
+        return;
+        if (!(paramurj.jdField_a_of_type_JavaLangObject instanceof stGetCollectionRsp)) {
+          break;
         }
-      }
+        paramurj = (stGetCollectionRsp)paramurj.jdField_a_of_type_JavaLangObject;
+        this.jdField_a_of_type_JavaLangString = paramurj.attachInfo;
+        this.jdField_a_of_type_Boolean = paramurj.isFinished;
+        paramurj = paramurj.feedList;
+        paramurj = WSVerticalDataManager.a().a(paramurj, "", this.jdField_a_of_type_Boolean);
+        uya.e("WSCollectionDataManager", "[WSCollectionDataManager.java][onTaskResponse] itemDataList size:" + paramurj.size() + ", mIsFinished:" + this.jdField_a_of_type_Boolean);
+      } while (paramvaa == null);
+      paramvaa.a(paramurj, false, false, null);
       return;
-      label143:
-      i += 1;
-      break;
-      label150:
-      i = -1;
-    }
+      uya.d("WSCollectionDataManager", "[WSCollectionDataManager.java][onTaskResponse] task.mResultBean instanceof stSimpleGetFeedListRsp: false!");
+    } while (paramvaa == null);
+    paramvaa.a(paramurj.b, paramurj.jdField_a_of_type_JavaLangString);
   }
   
-  public void a(QQCircleDitto.StItemContainer paramStItemContainer)
+  public void a()
   {
-    this.jdField_a_of_type_QqcircleQQCircleDitto$StItemContainer = paramStItemContainer;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(String paramString, int paramInt, vaa paramvaa)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      uya.e("WSCollectionDataManager", "[WSCollectionDataManager.java][onTaskResponse] finished!");
+      return;
+    }
+    paramvaa = new vaf(this, paramvaa);
+    paramString = new urj(new uwx(paramString, this.jdField_a_of_type_JavaLangString, paramInt), null, paramvaa, 4011);
+    urc.a().a(paramString);
   }
 }
 

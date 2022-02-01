@@ -1,35 +1,34 @@
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class bguw
-  extends Observable
+public class bguw
+  implements View.OnLongClickListener
 {
-  protected TroopUploadingThread a;
+  public bguw(WebViewFragment paramWebViewFragment) {}
   
-  public ArrayList<bguu> a()
+  public boolean onLongClick(View paramView)
   {
-    if (this.a != null) {
-      return this.a.a();
+    if (!this.a.mSetting.a("web_view_long_click", true))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
+      }
+      return true;
     }
-    return null;
-  }
-  
-  public abstract void a(Class<? extends Thread> paramClass, ArrayList<TroopClipPic> paramArrayList, HashMap<String, String> paramHashMap, List<String> paramList);
-  
-  public void a(Observer paramObserver)
-  {
-    super.deleteObserver(paramObserver);
-  }
-  
-  public void notifyObservers(Object paramObject)
-  {
-    super.setChanged();
-    super.notifyObservers(paramObject);
+    if (!this.a.mSetting.a("image_long_click", false))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
+      }
+      return false;
+    }
+    bgwg localbgwg = (bgwg)this.a.mComponentsProvider.a(8);
+    if ((localbgwg != null) && (localbgwg.a(paramView))) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
   }
 }
 

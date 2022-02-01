@@ -10,8 +10,10 @@ public abstract class RichMediaBaseData
   implements Parcelable
 {
   public static final Parcelable.Creator<RichMediaBaseData> CREATOR = new RichMediaBaseData.1();
+  public String filePath;
   public int fileType;
   public String id;
+  public boolean isLocal;
   public int progress;
   public int status;
   public String url;

@@ -1,14 +1,8 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 
-public class akbg
-  implements blln
+public abstract class akbg
 {
-  public akbg(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
-  
-  public void a(int paramInt)
-  {
-    bdll.b(this.a.a, "dc00898", "", "", "0X800AC87", "0X800AC87", 3, 0, "1", "1", "", "");
-  }
+  public abstract void a(PreloadManager paramPreloadManager);
 }
 
 

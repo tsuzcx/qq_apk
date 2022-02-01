@@ -1,39 +1,22 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.activity.selectable.TextPreviewMenu;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class amco
-  implements bizx
+final class amco
+  implements EIPCResultCallback
 {
-  public amco(TextPreviewMenu paramTextPreviewMenu, TextPreviewActivity paramTextPreviewActivity) {}
-  
-  public void a()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu);
-  }
-  
-  public void a(String paramString)
-  {
-    behj.a(paramString, "OCR_Participle_copy");
-  }
-  
-  public void b(String paramString)
-  {
-    behj.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, paramString);
-  }
-  
-  public void c(String paramString)
-  {
-    behj.a(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity.app, paramString);
-  }
-  
-  public void d(String paramString)
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTextPreviewActivity, TextPreviewTranslateActivity.class);
-    localIntent.putExtra("TranslateText", paramString);
-    localIntent.putExtra("WhereAreYouFrom", "AIO_TEXTPREVIEW");
-    TextPreviewMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu, localIntent);
+    if (paramEIPCResult.code == 0) {
+      ApolloUtil.b("测试版本tips:预下载动作成功");
+    }
+    for (;;)
+    {
+      QLog.i("CmShow_RenderViewController", 1, "CmShow_ preLoadRes result.code:" + paramEIPCResult.code);
+      return;
+      ApolloUtil.b("测试版本tips:预下载动作失败 ret:" + paramEIPCResult.code);
+    }
   }
 }
 

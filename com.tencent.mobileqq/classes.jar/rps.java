@@ -1,26 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.SelectTopicFragment;
+import kotlin.Metadata;
 
-public class rps
-  implements ValueAnimator.AnimatorUpdateListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss", "com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment$onCreate$1$2"}, k=3, mv={1, 1, 16})
+public final class rps
+  implements DialogInterface.OnDismissListener
 {
-  private rps(VideoFeedsGuideView paramVideoFeedsGuideView) {}
+  public rps(SelectTopicFragment paramSelectTopicFragment, int paramInt, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (VideoFeedsGuideView.a(this.a) == 1)
-    {
-      VideoFeedsGuideView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-      VideoFeedsGuideView.b(this.a, VideoFeedsGuideView.b(this.a) + VideoFeedsGuideView.c(this.a));
-    }
-    for (;;)
-    {
-      this.a.invalidate();
-      return;
-      VideoFeedsGuideView.c(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-      VideoFeedsGuideView.d(this.a, VideoFeedsGuideView.b(this.a) + VideoFeedsGuideView.d(this.a));
-    }
+    SelectTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment);
   }
 }
 

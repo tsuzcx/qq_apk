@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import alwd;
-import alyi;
-import amap;
+import aktu;
+import akwr;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -31,44 +30,42 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
-import aqql;
-import bbet;
-import bbeu;
-import bbgb;
-import bbgf;
-import bbgg;
-import bbgj;
-import bbgk;
-import bbgr;
-import bbhf;
-import bbhg;
-import bbhh;
-import bbhi;
-import bbhk;
-import bbhl;
-import bbhm;
-import bbhn;
-import bbho;
-import bbhp;
-import bbhq;
-import bbmc;
-import bbmo;
-import bbmq;
-import bczn;
-import bczs;
-import bdax;
-import bday;
-import bdbb;
-import bdbe;
-import bdbf;
-import bdbg;
-import bdbn;
-import bdbt;
-import bdcx;
-import bdea;
-import bhlq;
-import bhmi;
-import bowp;
+import apju;
+import azzu;
+import azzv;
+import babb;
+import babc;
+import babd;
+import babf;
+import babg;
+import babk;
+import babr;
+import babs;
+import babt;
+import babu;
+import babw;
+import babx;
+import baby;
+import babz;
+import baca;
+import bacb;
+import bacc;
+import bafx;
+import bagj;
+import bagl;
+import bbss;
+import bbsx;
+import bbub;
+import bbuc;
+import bbuf;
+import bbui;
+import bbuj;
+import bbuk;
+import bbur;
+import bbvz;
+import bbwz;
+import bfur;
+import bmau;
 import com.tencent.aekit.openrender.internal.FrameBufferCache;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -78,6 +75,8 @@ import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
 import com.tencent.mobileqq.richmedia.mediacodec.encoder.EglHandlerThread;
 import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 import com.tencent.mobileqq.shortvideo.filter.QQLowLightFilter;
+import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
 import com.tencent.ttpic.openapi.filter.RenderBuffer;
@@ -96,9 +95,9 @@ import mqq.os.MqqHandler;
 @TargetApi(18)
 public class CameraCaptureView
   extends GLSurfaceView
-  implements amap, SurfaceTexture.OnFrameAvailableListener, GLSurfaceView.Renderer, bbet, bbmo, bczs, bdbf, bdbn
+  implements akwr, SurfaceTexture.OnFrameAvailableListener, GLSurfaceView.Renderer, azzu, bagj, bbsx, bbuj, bbur
 {
-  public static final bdbg a;
+  public static final bbuk a;
   private int A;
   private int B;
   private int C;
@@ -106,24 +105,24 @@ public class CameraCaptureView
   private int E;
   protected int a;
   protected long a;
-  protected alwd a;
+  protected aktu a;
   protected SurfaceTexture a;
-  private GLSurfaceView.EGLContextFactory jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory = new bbhf(this);
+  private GLSurfaceView.EGLContextFactory jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory = new babr(this);
   private Handler jdField_a_of_type_AndroidOsHandler;
   protected OrientationEventListener a;
   private View jdField_a_of_type_AndroidViewView;
-  protected bbeu a;
-  private bbgj jdField_a_of_type_Bbgj;
-  private bbgk jdField_a_of_type_Bbgk;
-  private bbhk jdField_a_of_type_Bbhk;
-  protected bbhl a;
-  protected bbhm a;
-  public bbhn a;
-  private bbho jdField_a_of_type_Bbho;
-  public bbhp a;
-  protected bbmc a;
-  protected bbmq a;
-  private bdbe jdField_a_of_type_Bdbe;
+  protected azzv a;
+  private babf jdField_a_of_type_Babf;
+  private babg jdField_a_of_type_Babg;
+  private babw jdField_a_of_type_Babw;
+  protected babx a;
+  protected baby a;
+  public babz a;
+  private baca jdField_a_of_type_Baca;
+  public bacb a;
+  protected bafx a;
+  protected bagl a;
+  private bbui jdField_a_of_type_Bbui;
   protected AudioCapture a;
   protected CameraCaptureView.VideoCaptureResult a;
   protected EglHandlerThread a;
@@ -190,7 +189,7 @@ public class CameraCaptureView
   
   static
   {
-    jdField_a_of_type_Bdbg = new bdbg(null, null);
+    jdField_a_of_type_Bbuk = new bbuk(null, null);
   }
   
   public CameraCaptureView(@NonNull Context paramContext)
@@ -227,24 +226,17 @@ public class CameraCaptureView
     setEGLContextFactory(this.jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory);
   }
   
-  private void f()
-  {
-    if (!this.jdField_k_of_type_Boolean) {
-      throw new RuntimeException("Not inited. Must be called after setCaptureParam");
-    }
-  }
-  
-  private void f(boolean paramBoolean)
+  private void d(boolean paramBoolean)
   {
     if (this.jdField_a_of_type_Int == 1)
     {
-      g(paramBoolean);
+      e(paramBoolean);
       return;
     }
-    jdField_a_of_type_Bdbg.c(paramBoolean);
+    jdField_a_of_type_Bbuk.c(paramBoolean);
   }
   
-  private void g(boolean paramBoolean)
+  private void e(boolean paramBoolean)
   {
     Activity localActivity = (Activity)getContext();
     if (paramBoolean)
@@ -291,7 +283,14 @@ public class CameraCaptureView
     ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
   }
   
-  private void h() {}
+  private void q()
+  {
+    if (!this.jdField_k_of_type_Boolean) {
+      throw new RuntimeException("Not inited. Must be called after setCaptureParam");
+    }
+  }
+  
+  private void r() {}
   
   public int a()
   {
@@ -307,7 +306,7 @@ public class CameraCaptureView
   {
     int i1 = this.jdField_s_of_type_Int;
     if (paramBoolean) {
-      paramBoolean = d();
+      paramBoolean = b();
     }
     int i3;
     int i2;
@@ -318,7 +317,7 @@ public class CameraCaptureView
       }
       if (paramBoolean)
       {
-        Object localObject1 = (RenderBuffer)this.jdField_a_of_type_JavaUtilMap.get(bbhn.f);
+        Object localObject1 = (RenderBuffer)this.jdField_a_of_type_JavaUtilMap.get(babz.f);
         if (localObject1 != null) {
           ((RenderBuffer)localObject1).bind();
         }
@@ -328,10 +327,10 @@ public class CameraCaptureView
           this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.jdField_s_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, null);
           QmcfManager.getInstance().setSTMatrix(this.jdField_a_of_type_ArrayOfFloat);
           QmcfManager.getInstance().setIsQQRun(false);
-          h();
+          r();
           i1 = ((RenderBuffer)localObject1).getTexId();
           ((RenderBuffer)localObject1).unbind();
-          ??? = (RenderBuffer)this.jdField_a_of_type_JavaUtilMap.get(bbhn.g);
+          ??? = (RenderBuffer)this.jdField_a_of_type_JavaUtilMap.get(babz.g);
           i3 = i1;
           if (??? != null)
           {
@@ -358,21 +357,21 @@ public class CameraCaptureView
               }
               else
               {
-                a(true);
+                b(true);
                 i3 = i2;
               }
             }
           }
           return i3;
           if (this.jdField_f_of_type_Boolean) {
-            paramBoolean = e();
+            paramBoolean = c();
           } else {
             paramBoolean = false;
           }
         }
       }
     }
-    Object localObject3 = (RenderBuffer)this.jdField_a_of_type_JavaUtilMap.get(bbhn.jdField_d_of_type_JavaLangString);
+    Object localObject3 = (RenderBuffer)this.jdField_a_of_type_JavaUtilMap.get(babz.jdField_d_of_type_JavaLangString);
     if (localObject3 != null) {
       ((RenderBuffer)localObject3).bind();
     }
@@ -382,10 +381,10 @@ public class CameraCaptureView
       this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.jdField_s_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, null);
       QmcfManager.getInstance().setSTMatrix(this.jdField_a_of_type_ArrayOfFloat);
       QmcfManager.getInstance().setIsQQRun(false);
-      h();
+      r();
       i1 = ((RenderBuffer)localObject3).getTexId();
       ((RenderBuffer)localObject3).unbind();
-      ??? = (RenderBuffer)this.jdField_a_of_type_JavaUtilMap.get(bbhn.e);
+      ??? = (RenderBuffer)this.jdField_a_of_type_JavaUtilMap.get(babz.e);
       i3 = i1;
       if (??? != null)
       {
@@ -412,7 +411,7 @@ public class CameraCaptureView
           }
           else
           {
-            a(false);
+            b(false);
             i3 = i2;
           }
         }
@@ -420,7 +419,7 @@ public class CameraCaptureView
       return i3;
     }
     label571:
-    ??? = (RenderBuffer)this.jdField_a_of_type_JavaUtilMap.get(bbhn.jdField_c_of_type_JavaLangString);
+    ??? = (RenderBuffer)this.jdField_a_of_type_JavaUtilMap.get(babz.jdField_c_of_type_JavaLangString);
     if (??? != null)
     {
       ((RenderBuffer)???).bind();
@@ -430,7 +429,7 @@ public class CameraCaptureView
         float[] arrayOfFloat = GPUBaseFilter.caculateCenterCropMvpMatrix(this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, ((RenderBuffer)???).getWidth(), ((RenderBuffer)???).getHeight());
         this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.jdField_s_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, arrayOfFloat);
         QmcfManager.getInstance().setSTMatrix(this.jdField_a_of_type_ArrayOfFloat);
-        h();
+        r();
         ((RenderBuffer)???).unbind();
         return ((RenderBuffer)???).getTexId();
       }
@@ -440,68 +439,63 @@ public class CameraCaptureView
   
   public MediaFormat a()
   {
-    if (this.jdField_a_of_type_Bbmq != null) {
-      return this.jdField_a_of_type_Bbmq.a();
+    if (this.jdField_a_of_type_Bagl != null) {
+      return this.jdField_a_of_type_Bagl.a();
     }
     return null;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_Bbhn.jdField_b_of_type_JavaLangString;
+    return this.jdField_a_of_type_Babz.jdField_b_of_type_JavaLangString;
   }
   
-  public void a()
+  protected void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoFrameCount = 0;
-    if ((this.jdField_a_of_type_Bbhn.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture != null))
-    {
-      if (!this.jdField_a_of_type_Bbeu.a()) {
-        break label66;
-      }
-      this.jdField_a_of_type_Bbeu.a();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a();
+    this.jdField_a_of_type_Int = babz.a(this.jdField_a_of_type_Babz);
+    if ((this.jdField_a_of_type_Int == 1) && (!apju.d())) {
+      this.jdField_a_of_type_Int = 2;
     }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Bbhm != null) {
-        this.jdField_a_of_type_Bbhm.c();
-      }
-      return;
-      label66:
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a();
+    if (this.jdField_i_of_type_Boolean) {
+      setEGLContextClientVersion(2);
     }
+    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    this.jdField_a_of_type_Bbui = new bbui(this.jdField_a_of_type_AndroidOsHandler, this);
+    jdField_a_of_type_Bbuk.a(this.jdField_a_of_type_Bbui);
+    setRenderer(this);
+    setRenderMode(0);
+    this.jdField_a_of_type_Bagl = new bagl();
+    if (this.jdField_a_of_type_Babz.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture = new AudioCapture(this.jdField_a_of_type_Babz.jdField_b_of_type_JavaLangString, 1, CodecParam.mAudioSampleRate, CodecParam.mAudioChannel, CodecParam.mAudioFormat, this, jdField_a_of_type_Bbuk.a());
+      this.jdField_a_of_type_Azzv = new azzv(this.jdField_a_of_type_Babz.jdField_b_of_type_JavaLangString, CodecParam.mAudioSampleRate, this);
+    }
+    this.jdField_a_of_type_Aktu = new aktu();
+    this.jdField_a_of_type_Babf = new babf();
+    QmcfManager.getInstance().setCameraMode(this.jdField_a_of_type_Int);
+    this.jdField_k_of_type_Boolean = true;
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_Alwd == null) {
+    if (this.jdField_a_of_type_Aktu == null) {
       return;
     }
-    f();
+    q();
     if (QLog.isColorLevel()) {
       QLog.i("CameraCaptureView", 2, "requestCameraFocus x:" + paramFloat1 + "y: " + paramFloat2 + ", Orientation:" + ((Activity)getContext()).getWindowManager().getDefaultDisplay().getRotation());
     }
-    bczn localbczn = new bczn();
-    localbczn.jdField_a_of_type_Float = paramFloat1;
-    localbczn.jdField_b_of_type_Float = paramFloat2;
-    localbczn.jdField_a_of_type_Int = b();
-    localbczn.jdField_b_of_type_Int = c();
-    localbczn.jdField_a_of_type_Alwd = this.jdField_a_of_type_Alwd;
-    localbczn.jdField_c_of_type_Int = bbgg.c(this.jdField_v_of_type_Int);
-    jdField_a_of_type_Bdbg.a(localbczn, new bbhh(this));
+    bbss localbbss = new bbss();
+    localbbss.jdField_a_of_type_Float = paramFloat1;
+    localbbss.jdField_b_of_type_Float = paramFloat2;
+    localbbss.jdField_a_of_type_Int = b();
+    localbbss.jdField_b_of_type_Int = c();
+    localbbss.jdField_a_of_type_Aktu = this.jdField_a_of_type_Aktu;
+    localbbss.jdField_c_of_type_Int = babd.c(this.jdField_v_of_type_Int);
+    jdField_a_of_type_Bbuk.a(localbbss, new babt(this));
   }
   
-  public void a(int paramInt)
-  {
-    QLog.e("CameraCaptureView", 2, "onAudioError. errorCode = " + paramInt);
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    ThreadManager.getUIHandler().post(new CameraCaptureView.12(this));
-  }
+  protected void a(int paramInt) {}
   
   protected void a(int paramInt1, int paramInt2, int paramInt3)
   {
@@ -522,26 +516,26 @@ public class CameraCaptureView
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      while (this.jdField_a_of_type_Bbhm == null) {}
-      this.jdField_a_of_type_Bbhm.a(103);
+      while (this.jdField_a_of_type_Baby == null) {}
+      this.jdField_a_of_type_Baby.a(103);
     }
   }
   
   protected void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bbmc != null))
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bafx != null))
     {
       switch (this.jdField_r_of_type_Int)
       {
       default: 
         throw new RuntimeException("unknown status " + this.jdField_r_of_type_Int);
       case 0: 
-        this.jdField_a_of_type_Bbmc.a(EGL14.eglGetCurrentContext());
-        this.jdField_a_of_type_Bbmq.a();
-        this.jdField_a_of_type_Bbmq.a(this.jdField_a_of_type_Bbmc, this);
+        this.jdField_a_of_type_Bafx.a(EGL14.eglGetCurrentContext());
+        this.jdField_a_of_type_Bagl.a();
+        this.jdField_a_of_type_Bagl.a(this.jdField_a_of_type_Bafx, this);
         this.jdField_r_of_type_Int = 1;
       }
-      this.jdField_a_of_type_Bbmq.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2, paramLong);
+      this.jdField_a_of_type_Bagl.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2, paramLong);
       return;
     }
     switch (this.jdField_r_of_type_Int)
@@ -550,8 +544,8 @@ public class CameraCaptureView
     default: 
       throw new RuntimeException("unknown status " + this.jdField_r_of_type_Int);
     }
-    this.jdField_a_of_type_Bbmq.b();
-    w();
+    this.jdField_a_of_type_Bagl.b();
+    o();
     this.jdField_r_of_type_Int = 0;
   }
   
@@ -560,39 +554,39 @@ public class CameraCaptureView
     a(3553, paramInt, paramArrayOfFloat1, paramArrayOfFloat2, SystemClock.elapsedRealtimeNanos());
   }
   
-  protected void a(bbhq parambbhq)
+  protected void a(bacc parambacc)
   {
     int i1 = 1;
-    if (this.jdField_a_of_type_Bbhm != null) {
-      this.jdField_a_of_type_Bbhm.a(parambbhq);
+    if (this.jdField_a_of_type_Baby != null) {
+      this.jdField_a_of_type_Baby.a(parambacc);
     }
     ThreadManager.getUIHandler().post(new CameraCaptureView.10(this));
-    bbgr.b();
-    if (bday.a().jdField_a_of_type_Int == 1) {}
+    babk.b();
+    if (bbuc.a().jdField_a_of_type_Int == 1) {}
     for (;;)
     {
-      bbgf.g(i1);
+      babc.e(i1);
       return;
       i1 = 2;
     }
   }
   
-  protected void a(bdbb parambdbb)
+  protected void a(bbuf parambbuf)
   {
-    this.jdField_e_of_type_Int = parambdbb.jdField_a_of_type_Int;
-    this.jdField_d_of_type_Int = parambdbb.jdField_b_of_type_Int;
+    this.jdField_e_of_type_Int = parambbuf.jdField_a_of_type_Int;
+    this.jdField_d_of_type_Int = parambbuf.jdField_b_of_type_Int;
     if (!this.jdField_f_of_type_Boolean)
     {
-      parambdbb = bbgg.a(this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, this.jdField_a_of_type_Bbhn.jdField_a_of_type_Int, this.jdField_a_of_type_Bbhn.jdField_b_of_type_Int, 1.0F);
-      this.jdField_n_of_type_Int = parambdbb[0];
-      this.jdField_o_of_type_Int = parambdbb[1];
-      parambdbb = bbgg.a(this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Bbhn.jdField_a_of_type_Float);
-      this.jdField_p_of_type_Int = parambdbb[0];
-      this.jdField_q_of_type_Int = parambdbb[1];
-      parambdbb = bbgg.a(bbhn.b(this.jdField_a_of_type_Bbhn), this.jdField_p_of_type_Int, this.jdField_q_of_type_Int);
-      this.jdField_p_of_type_Int = parambdbb[0];
-      this.jdField_q_of_type_Int = parambdbb[1];
-      bbhn.jdField_c_of_type_JavaLangString = "key_aio_fbo" + this.jdField_n_of_type_Int + this.jdField_o_of_type_Int;
+      parambbuf = babd.a(this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, this.jdField_a_of_type_Babz.jdField_a_of_type_Int, this.jdField_a_of_type_Babz.jdField_b_of_type_Int, 1.0F);
+      this.jdField_n_of_type_Int = parambbuf[0];
+      this.jdField_o_of_type_Int = parambbuf[1];
+      parambbuf = babd.a(this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Babz.jdField_a_of_type_Float);
+      this.jdField_p_of_type_Int = parambbuf[0];
+      this.jdField_q_of_type_Int = parambbuf[1];
+      parambbuf = babd.a(babz.b(this.jdField_a_of_type_Babz), this.jdField_p_of_type_Int, this.jdField_q_of_type_Int);
+      this.jdField_p_of_type_Int = parambbuf[0];
+      this.jdField_q_of_type_Int = parambbuf[1];
+      babz.jdField_c_of_type_JavaLangString = "key_aio_fbo" + this.jdField_n_of_type_Int + this.jdField_o_of_type_Int;
       queueEvent(new CameraCaptureView.7(this));
       if (QLog.isColorLevel()) {
         QLog.i("CameraCaptureView", 2, "onCameraSizeSelected(): cameraPreviewWidth=" + this.jdField_d_of_type_Int + ",cameraPreviewHeight=" + this.jdField_e_of_type_Int);
@@ -605,25 +599,25 @@ public class CameraCaptureView
     do
     {
       return;
-      parambdbb = bbgg.a(bbhn.b(this.jdField_a_of_type_Bbhn), this.jdField_d_of_type_Int, this.jdField_e_of_type_Int);
-      i1 = parambdbb[0];
-      i2 = parambdbb[1];
-      bbhn.jdField_d_of_type_JavaLangString = "key_riji_h_compress_fbo" + i1 + i2;
-      parambdbb = bbgg.a(i1, i2, this.jdField_a_of_type_Bbhn.jdField_a_of_type_Int, this.jdField_a_of_type_Bbhn.jdField_b_of_type_Int, 1.0F);
-      this.jdField_f_of_type_Int = parambdbb[0];
-      this.jdField_g_of_type_Int = parambdbb[1];
-      bbhn.e = "key_riji_h_clip_fbo" + this.jdField_f_of_type_Int + this.jdField_g_of_type_Int;
+      parambbuf = babd.a(babz.b(this.jdField_a_of_type_Babz), this.jdField_d_of_type_Int, this.jdField_e_of_type_Int);
+      i1 = parambbuf[0];
+      i2 = parambbuf[1];
+      babz.jdField_d_of_type_JavaLangString = "key_riji_h_compress_fbo" + i1 + i2;
+      parambbuf = babd.a(i1, i2, this.jdField_a_of_type_Babz.jdField_a_of_type_Int, this.jdField_a_of_type_Babz.jdField_b_of_type_Int, 1.0F);
+      this.jdField_f_of_type_Int = parambbuf[0];
+      this.jdField_g_of_type_Int = parambbuf[1];
+      babz.e = "key_riji_h_clip_fbo" + this.jdField_f_of_type_Int + this.jdField_g_of_type_Int;
       this.jdField_j_of_type_Int = this.jdField_f_of_type_Int;
       this.jdField_k_of_type_Int = this.jdField_g_of_type_Int;
-      bbhn.f(this.jdField_a_of_type_Bbhn);
-      parambdbb = bbgg.a(bbhn.g(this.jdField_a_of_type_Bbhn), this.jdField_d_of_type_Int, this.jdField_e_of_type_Int);
-      i3 = parambdbb[0];
-      i4 = parambdbb[1];
-      bbhn.f = "key_riji_l_compress_fbo" + i3 + i4;
-      parambdbb = bbgg.a(i3, i4, this.jdField_a_of_type_Bbhn.jdField_a_of_type_Int, this.jdField_a_of_type_Bbhn.jdField_b_of_type_Int, 1.0F);
-      this.jdField_h_of_type_Int = parambdbb[0];
-      this.jdField_i_of_type_Int = parambdbb[1];
-      bbhn.g = "key_riji_l_clip_fbo" + this.jdField_h_of_type_Int + this.jdField_i_of_type_Int;
+      babz.f(this.jdField_a_of_type_Babz);
+      parambbuf = babd.a(babz.g(this.jdField_a_of_type_Babz), this.jdField_d_of_type_Int, this.jdField_e_of_type_Int);
+      i3 = parambbuf[0];
+      i4 = parambbuf[1];
+      babz.f = "key_riji_l_compress_fbo" + i3 + i4;
+      parambbuf = babd.a(i3, i4, this.jdField_a_of_type_Babz.jdField_a_of_type_Int, this.jdField_a_of_type_Babz.jdField_b_of_type_Int, 1.0F);
+      this.jdField_h_of_type_Int = parambbuf[0];
+      this.jdField_i_of_type_Int = parambbuf[1];
+      babz.g = "key_riji_l_clip_fbo" + this.jdField_h_of_type_Int + this.jdField_i_of_type_Int;
       this.jdField_l_of_type_Int = this.jdField_h_of_type_Int;
       this.jdField_m_of_type_Int = this.jdField_i_of_type_Int;
       queueEvent(new CameraCaptureView.8(this, i1, i2, i3, i4));
@@ -634,23 +628,473 @@ public class CameraCaptureView
   protected void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult)
   {
     int i1 = 1;
-    if (this.jdField_a_of_type_Bbhm != null) {
-      this.jdField_a_of_type_Bbhm.a(paramVideoCaptureResult);
+    if (this.jdField_a_of_type_Baby != null) {
+      this.jdField_a_of_type_Baby.a(paramVideoCaptureResult);
     }
     ThreadManager.getUIHandler().post(new CameraCaptureView.11(this));
-    bbgr.c();
-    if (bday.a().jdField_a_of_type_Int == 1) {}
+    babk.c();
+    if (bbuc.a().jdField_a_of_type_Int == 1) {}
     for (;;)
     {
-      bbgf.i(i1);
+      babc.g(i1);
       return;
       i1 = 2;
     }
   }
   
-  public void a(Exception paramException) {}
+  public void a(String paramString)
+  {
+    a(new bacc(1, 0, paramString, null, this.jdField_u_of_type_Int));
+  }
   
-  public void a(Object paramObject, int paramInt, Object... paramVarArgs)
+  public void a(boolean paramBoolean)
+  {
+    q();
+    try
+    {
+      QQLowLightFilter.enableNightMode(paramBoolean);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  protected boolean a()
+  {
+    return apju.a();
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    q();
+    if ((paramBoolean) && (Build.VERSION.SDK_INT >= 23))
+    {
+      Activity localActivity = (Activity)getContext();
+      if (!Settings.System.canWrite(localActivity)) {
+        bfur.a(localActivity, null, null);
+      }
+    }
+    for (boolean bool = false;; bool = true)
+    {
+      if (bool) {
+        this.jdField_p_of_type_Boolean = paramBoolean;
+      }
+      return bool;
+    }
+  }
+  
+  protected int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  protected int b(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public void b()
+  {
+    int i1;
+    if ((Build.VERSION.SDK_INT >= 23) && (this.jdField_a_of_type_Babx != null))
+    {
+      Activity localActivity = (Activity)getContext();
+      i1 = localActivity.checkSelfPermission("android.permission.CAMERA");
+      int i2 = localActivity.checkSelfPermission("android.permission.RECORD_AUDIO");
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraCaptureView", 2, new Object[] { "startCameraWithPermission, camera: ", Integer.valueOf(i1), " audio: ", Integer.valueOf(i2) });
+      }
+      if ((i1 != 0) || (i2 != 0)) {
+        if (!this.jdField_v_of_type_Boolean)
+        {
+          this.jdField_v_of_type_Boolean = true;
+          this.jdField_a_of_type_Babx.l();
+        }
+      }
+    }
+    for (;;)
+    {
+      return;
+      for (i1 = 0; (i1 != 0) || (this.jdField_w_of_type_Boolean); i1 = 1)
+      {
+        c();
+        e();
+        return;
+      }
+    }
+  }
+  
+  protected void b(int paramInt)
+  {
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glViewport(0, 0, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramInt, null, null);
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    int[] arrayOfInt;
+    if (this.jdField_f_of_type_Boolean)
+    {
+      if (!paramBoolean) {
+        break label234;
+      }
+      this.jdField_o_of_type_Int = this.jdField_i_of_type_Int;
+      this.jdField_n_of_type_Int = this.jdField_h_of_type_Int;
+      if (!this.jdField_e_of_type_Boolean) {
+        break label190;
+      }
+      arrayOfInt = babd.a(this.jdField_j_of_type_Int, this.jdField_k_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Babz.jdField_a_of_type_Float);
+      this.jdField_p_of_type_Int = arrayOfInt[0];
+      this.jdField_q_of_type_Int = arrayOfInt[1];
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Aktu != null) {
+        this.jdField_a_of_type_Aktu.a(this.jdField_o_of_type_Int, this.jdField_n_of_type_Int, b(), c());
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraCaptureView", 2, "compress=" + paramBoolean + " onCameraSizeUpdate cameraClipHeight = " + this.jdField_o_of_type_Int + " cameraClipWidth=" + this.jdField_n_of_type_Int + " videoWidth=" + this.jdField_p_of_type_Int + " videoHeight=" + this.jdField_q_of_type_Int);
+      }
+      return;
+      label190:
+      arrayOfInt = babd.a(this.jdField_l_of_type_Int, this.jdField_m_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Babz.jdField_a_of_type_Float);
+      this.jdField_p_of_type_Int = arrayOfInt[0];
+      this.jdField_q_of_type_Int = arrayOfInt[1];
+      continue;
+      label234:
+      this.jdField_o_of_type_Int = this.jdField_g_of_type_Int;
+      this.jdField_n_of_type_Int = this.jdField_f_of_type_Int;
+      arrayOfInt = babd.a(this.jdField_j_of_type_Int, this.jdField_k_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Babz.jdField_a_of_type_Float);
+      this.jdField_p_of_type_Int = arrayOfInt[0];
+      this.jdField_q_of_type_Int = arrayOfInt[1];
+    }
+  }
+  
+  protected boolean b()
+  {
+    return false;
+  }
+  
+  protected int c()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  protected void c()
+  {
+    boolean bool = true;
+    if (!this.jdField_k_of_type_Boolean) {}
+    while (this.jdField_l_of_type_Boolean) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 2, "openCamera");
+    }
+    this.jdField_m_of_type_Boolean = false;
+    this.jdField_z_of_type_Int = 0;
+    this.A = 0;
+    jdField_a_of_type_Bbuk.a(this);
+    jdField_a_of_type_Bbuk.b(this.jdField_a_of_type_Int);
+    this.jdField_l_of_type_Boolean = true;
+    if ((this.jdField_a_of_type_Babz.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.f();
+    }
+    aktu localaktu;
+    if (this.jdField_a_of_type_Aktu != null)
+    {
+      localaktu = this.jdField_a_of_type_Aktu;
+      if (this.jdField_a_of_type_Int != 1) {
+        break label126;
+      }
+    }
+    for (;;)
+    {
+      localaktu.a(bool);
+      akrw.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      return;
+      label126:
+      bool = false;
+    }
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    jdField_a_of_type_Bbuk.e(paramBoolean);
+  }
+  
+  protected boolean c()
+  {
+    return false;
+  }
+  
+  public void d()
+  {
+    if (!this.jdField_k_of_type_Boolean) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!this.jdField_l_of_type_Boolean);
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraCaptureView", 2, "stopCamera");
+      }
+      jdField_a_of_type_Bbuk.a(false);
+      this.jdField_m_of_type_Boolean = false;
+      jdField_a_of_type_Bbuk.b(this.jdField_s_of_type_Boolean);
+      this.jdField_l_of_type_Boolean = false;
+      if ((this.jdField_a_of_type_Babz.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture != null)) {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.g();
+      }
+      jdField_a_of_type_Bbuk.b(this);
+      jdField_a_of_type_Bbuk.b(PeakAppInterface.a);
+      babb.a(this.jdField_a_of_type_Int);
+    } while ((!this.jdField_x_of_type_Boolean) || (this.jdField_e_of_type_Long <= 0L));
+    this.jdField_c_of_type_Long = (System.currentTimeMillis() - this.jdField_e_of_type_Long);
+    this.jdField_y_of_type_Int = (this.jdField_x_of_type_Int - 15);
+    this.jdField_e_of_type_Long = 0L;
+  }
+  
+  public void e()
+  {
+    if (!this.jdField_k_of_type_Boolean) {}
+    while ((!this.jdField_n_of_type_Boolean) || (!this.jdField_l_of_type_Boolean) || ((this.jdField_m_of_type_Boolean) && (this.jdField_z_of_type_Int == this.jdField_b_of_type_Int) && (this.A == this.jdField_c_of_type_Int))) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Babz.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Babz.jdField_b_of_type_Int == 0) || (this.jdField_y_of_type_Boolean))
+    {
+      this.jdField_a_of_type_Babz.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+      this.jdField_a_of_type_Babz.jdField_b_of_type_Int = this.jdField_c_of_type_Int;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 2, "startCameraPreview, clipWidth:" + this.jdField_a_of_type_Babz.jdField_a_of_type_Int + ", clipHeight:" + this.jdField_a_of_type_Babz.jdField_b_of_type_Int + ", surfaceWidth:" + this.jdField_b_of_type_Int + ", surfaceHeight:" + this.jdField_c_of_type_Int);
+    }
+    if (this.jdField_f_of_type_Boolean) {
+      jdField_a_of_type_Bbuk.a(new bbuf(this.jdField_c_of_type_Int, this.jdField_b_of_type_Int), new bbuf(this.jdField_a_of_type_Babz.jdField_a_of_type_Int, this.jdField_a_of_type_Babz.jdField_b_of_type_Int), 0, 30, this.jdField_f_of_type_Boolean);
+    }
+    for (;;)
+    {
+      jdField_a_of_type_Bbuk.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture, null, this, true);
+      f();
+      this.jdField_m_of_type_Boolean = true;
+      this.jdField_z_of_type_Int = this.jdField_b_of_type_Int;
+      this.A = this.jdField_c_of_type_Int;
+      return;
+      jdField_a_of_type_Bbuk.a(new bbuf(babz.b(this.jdField_a_of_type_Babz), babz.c(this.jdField_a_of_type_Babz)), new bbuf(this.jdField_a_of_type_Babz.jdField_a_of_type_Int, this.jdField_a_of_type_Babz.jdField_b_of_type_Int), 0, 30, this.jdField_f_of_type_Boolean);
+    }
+  }
+  
+  protected void f() {}
+  
+  public void g()
+  {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 2, "changeCamera");
+    }
+    q();
+    if (!apju.d()) {
+      return;
+    }
+    aktu localaktu;
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      this.jdField_a_of_type_Int = 2;
+      if (this.jdField_a_of_type_Aktu != null)
+      {
+        localaktu = this.jdField_a_of_type_Aktu;
+        if (this.jdField_a_of_type_Int != 1) {
+          break label126;
+        }
+      }
+    }
+    for (;;)
+    {
+      localaktu.a(bool);
+      this.jdField_o_of_type_Boolean = false;
+      QmcfManager.getInstance().setCameraMode(this.jdField_a_of_type_Int);
+      d();
+      c();
+      e();
+      if (this.jdField_a_of_type_Babw != null) {
+        this.jdField_a_of_type_Babw.a();
+      }
+      a(this.jdField_a_of_type_Int);
+      return;
+      this.jdField_a_of_type_Int = 1;
+      break;
+      label126:
+      bool = false;
+    }
+  }
+  
+  public void h()
+  {
+    int i1 = 0;
+    q();
+    if (this.jdField_a_of_type_Baby != null) {
+      this.jdField_a_of_type_Baby.b();
+    }
+    Object localObject;
+    boolean bool;
+    if (a())
+    {
+      if (this.jdField_p_of_type_Boolean) {
+        d(true);
+      }
+      localObject = this.jdField_a_of_type_Babz.jdField_b_of_type_JavaLangString + "/" + System.currentTimeMillis() + ".jpg";
+      FileUtils.createFileIfNotExits((String)localObject);
+      localObject = new File((String)localObject);
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        bool = true;
+        if (!this.jdField_a_of_type_Babz.jdField_b_of_type_Boolean) {
+          break label217;
+        }
+        i1 = babd.c(this.jdField_v_of_type_Int);
+        label121:
+        if (QLog.isColorLevel()) {
+          QLog.i("CameraCaptureView", 2, "photoOrientation:" + i1);
+        }
+        if ((!this.jdField_p_of_type_Boolean) || (this.jdField_o_of_type_Boolean)) {
+          break label222;
+        }
+        jdField_a_of_type_Bbuk.a(new bbss(true), new babu(this, (File)localObject, i1, bool));
+        label192:
+        if (QLog.isColorLevel()) {
+          QLog.d("CameraCaptureView", 2, "capturePhoto, use sysCamera");
+        }
+      }
+    }
+    for (;;)
+    {
+      i();
+      return;
+      bool = false;
+      break;
+      label217:
+      i1 = 0;
+      break label121;
+      label222:
+      jdField_a_of_type_Bbuk.a((File)localObject, new Rect(0, 0, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int), this, i1, bool, 1, this.jdField_v_of_type_Int);
+      break label192;
+      if (this.jdField_p_of_type_Boolean)
+      {
+        i1 = 1500;
+        d(true);
+      }
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new CameraCaptureView.6(this), i1);
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraCaptureView", 2, "capturePhoto, use captureFrame");
+      }
+    }
+  }
+  
+  protected void i() {}
+  
+  public void j()
+  {
+    q();
+    if (this.jdField_p_of_type_Boolean) {
+      d(true);
+    }
+    String str = this.jdField_a_of_type_Babz.jdField_b_of_type_JavaLangString + "/" + System.currentTimeMillis() + ".mp4";
+    if (this.jdField_d_of_type_Boolean) {}
+    for (int i1 = babd.b(this.jdField_u_of_type_Int);; i1 = 0)
+    {
+      this.jdField_a_of_type_Bafx = new bafx(str, this.jdField_p_of_type_Int, this.jdField_q_of_type_Int, babz.d(this.jdField_a_of_type_Babz), babz.e(this.jdField_a_of_type_Babz), false, i1);
+      this.jdField_a_of_type_Bafx.jdField_j_of_type_Int = this.jdField_a_of_type_Babz.jdField_c_of_type_Int;
+      this.jdField_a_of_type_Bafx.jdField_k_of_type_Int = this.jdField_a_of_type_Babz.jdField_d_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult = new CameraCaptureView.VideoCaptureResult();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.orientation = this.jdField_u_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.type = 0;
+      if (this.jdField_a_of_type_Int == 2) {
+        jdField_a_of_type_Bbuk.f();
+      }
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_Boolean = true;
+      babd.a(false, false);
+      return;
+    }
+  }
+  
+  public void k()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      if (this.jdField_r_of_type_Int != 0) {
+        break label81;
+      }
+      if (this.jdField_a_of_type_Baby != null) {
+        this.jdField_a_of_type_Baby.a(102);
+      }
+    }
+    for (;;)
+    {
+      jdField_a_of_type_Bbuk.g();
+      jdField_a_of_type_Bbuk.h();
+      this.jdField_b_of_type_Long = System.currentTimeMillis();
+      babk.jdField_a_of_type_Long = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
+      babc.jdField_a_of_type_Long = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
+      return;
+      label81:
+      if (this.jdField_u_of_type_Boolean) {
+        a(0, null, null);
+      }
+    }
+  }
+  
+  protected void l()
+  {
+    babk.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoFrameCount, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoMp4FilePath);
+  }
+  
+  protected void m()
+  {
+    this.jdField_a_of_type_AndroidViewOrientationEventListener = new babs(this, getContext());
+    if (this.jdField_a_of_type_AndroidViewOrientationEventListener.canDetectOrientation()) {
+      this.jdField_a_of_type_AndroidViewOrientationEventListener.enable();
+    }
+    if (this.jdField_a_of_type_Baby != null) {
+      this.jdField_a_of_type_Baby.a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 2, "Create to FirstFrameShown cost : " + (System.currentTimeMillis() - this.jdField_d_of_type_Long) + "ms");
+    }
+  }
+  
+  public void n()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 2, "onSurfaceDestroy");
+    }
+    this.jdField_n_of_type_Boolean = false;
+    if (!bbwz.a())
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+      while (localIterator.hasNext()) {
+        ((RenderBuffer)localIterator.next()).destroy();
+      }
+      this.jdField_a_of_type_JavaUtilMap.clear();
+      GlUtil.deleteTexture(this.jdField_s_of_type_Int);
+      if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {
+        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
+      }
+      if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null) {
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
+      }
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(null);
+    }
+    d();
+  }
+  
+  public void notify(Object paramObject, int paramInt, Object... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
       QLog.d("CameraCaptureView", 2, " notify : eventId = " + paramInt + " ; sender = " + paramObject + " ; args = " + Arrays.toString(paramVarArgs));
@@ -671,198 +1115,43 @@ public class CameraCaptureView
               do
               {
                 return;
-                if (!(paramVarArgs[0] instanceof bdbb)) {
+                if (!(paramVarArgs[0] instanceof bbuf)) {
                   break;
                 }
-                a((bdbb)paramVarArgs[0]);
-              } while (this.jdField_a_of_type_Bbhm == null);
-              this.jdField_a_of_type_Bbhm.a(true, "");
+                a((bbuf)paramVarArgs[0]);
+              } while (this.jdField_a_of_type_Baby == null);
+              this.jdField_a_of_type_Baby.a(true, "");
               return;
-            } while ((!(paramVarArgs[0] instanceof String)) || (this.jdField_a_of_type_Bbhm == null));
-            this.jdField_a_of_type_Bbhm.a(false, (String)paramVarArgs[0]);
+            } while ((!(paramVarArgs[0] instanceof String)) || (this.jdField_a_of_type_Baby == null));
+            this.jdField_a_of_type_Baby.a(false, (String)paramVarArgs[0]);
             return;
-          } while ((!(paramVarArgs[0] instanceof String)) || (this.jdField_a_of_type_Bbhm == null));
-          this.jdField_a_of_type_Bbhm.a(false, (String)paramVarArgs[0]);
+          } while ((!(paramVarArgs[0] instanceof String)) || (this.jdField_a_of_type_Baby == null));
+          this.jdField_a_of_type_Baby.a(false, (String)paramVarArgs[0]);
           return;
-        } while ((!(paramVarArgs[0] instanceof Integer)) || (this.jdField_a_of_type_Bbhm == null));
-        this.jdField_a_of_type_Bbhm.a(false, "[Camera2]openCamera2 error:" + paramVarArgs[0]);
+        } while ((!(paramVarArgs[0] instanceof Integer)) || (this.jdField_a_of_type_Baby == null));
+        this.jdField_a_of_type_Baby.a(false, "[Camera2]openCamera2 error:" + paramVarArgs[0]);
         return;
-        if (!(paramVarArgs[0] instanceof bdbb)) {
+        if (!(paramVarArgs[0] instanceof bbuf)) {
           break;
         }
-        a((bdbb)paramVarArgs[0]);
-        if (this.jdField_a_of_type_Bbhm != null) {
-          this.jdField_a_of_type_Bbhm.a(true, "");
+        a((bbuf)paramVarArgs[0]);
+        if (this.jdField_a_of_type_Baby != null) {
+          this.jdField_a_of_type_Baby.a(true, "");
         }
-      } while ((paramVarArgs.length < 2) || (!(paramVarArgs[1] instanceof bdbb)));
-      paramObject = (bdbb)paramVarArgs[1];
+      } while ((paramVarArgs.length < 2) || (!(paramVarArgs[1] instanceof bbuf)));
+      paramObject = (bbuf)paramVarArgs[1];
       this.D = paramObject.jdField_a_of_type_Int;
       this.E = paramObject.jdField_b_of_type_Int;
       return;
-    } while ((!(paramVarArgs[0] instanceof String)) || (this.jdField_a_of_type_Bbhm == null));
-    this.jdField_a_of_type_Bbhm.a(false, "[Camera2]setCamera2 Params error:" + paramVarArgs[0]);
+    } while ((!(paramVarArgs[0] instanceof String)) || (this.jdField_a_of_type_Baby == null));
+    this.jdField_a_of_type_Baby.a(false, "[Camera2]setCamera2 Params error:" + paramVarArgs[0]);
   }
   
-  public void a(RuntimeException paramRuntimeException) {}
+  protected void o() {}
   
-  public void a(String paramString)
+  public void onAudioCaptured(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "onEncodeFinish filePath = " + paramString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoMp4FilePath = paramString;
-    if ((this.jdField_a_of_type_Bbhn.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture != null)) {
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.audioDataFilePath != null) {
-        a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult);
-      }
-    }
-    for (;;)
-    {
-      ThreadManager.postImmediately(new CameraCaptureView.9(this), null, false);
-      return;
-      if (this.jdField_a_of_type_Bbeu.a())
-      {
-        this.jdField_a_of_type_Bbeu.b();
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.e();
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.e();
-        continue;
-        paramString = this.jdField_a_of_type_Bbhn.jdField_b_of_type_JavaLangString + "/noaudio";
-        bhmi.c(paramString);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.audioDataFilePath = paramString;
-        a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult);
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    int[] arrayOfInt;
-    if (this.jdField_f_of_type_Boolean)
-    {
-      if (!paramBoolean) {
-        break label234;
-      }
-      this.jdField_o_of_type_Int = this.jdField_i_of_type_Int;
-      this.jdField_n_of_type_Int = this.jdField_h_of_type_Int;
-      if (!this.jdField_e_of_type_Boolean) {
-        break label190;
-      }
-      arrayOfInt = bbgg.a(this.jdField_j_of_type_Int, this.jdField_k_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Bbhn.jdField_a_of_type_Float);
-      this.jdField_p_of_type_Int = arrayOfInt[0];
-      this.jdField_q_of_type_Int = arrayOfInt[1];
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Alwd != null) {
-        this.jdField_a_of_type_Alwd.a(this.jdField_o_of_type_Int, this.jdField_n_of_type_Int, b(), c());
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraCaptureView", 2, "compress=" + paramBoolean + " onCameraSizeUpdate cameraClipHeight = " + this.jdField_o_of_type_Int + " cameraClipWidth=" + this.jdField_n_of_type_Int + " videoWidth=" + this.jdField_p_of_type_Int + " videoHeight=" + this.jdField_q_of_type_Int);
-      }
-      return;
-      label190:
-      arrayOfInt = bbgg.a(this.jdField_l_of_type_Int, this.jdField_m_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Bbhn.jdField_a_of_type_Float);
-      this.jdField_p_of_type_Int = arrayOfInt[0];
-      this.jdField_q_of_type_Int = arrayOfInt[1];
-      continue;
-      label234:
-      this.jdField_o_of_type_Int = this.jdField_g_of_type_Int;
-      this.jdField_n_of_type_Int = this.jdField_f_of_type_Int;
-      arrayOfInt = bbgg.a(this.jdField_j_of_type_Int, this.jdField_k_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Bbhn.jdField_a_of_type_Float);
-      this.jdField_p_of_type_Int = arrayOfInt[0];
-      this.jdField_q_of_type_Int = arrayOfInt[1];
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2) {}
-  
-  public void a(byte[] paramArrayOfByte, Camera paramCamera)
-  {
-    if (this.jdField_r_of_type_Boolean)
-    {
-      int i3 = this.jdField_d_of_type_Int;
-      int i4 = this.jdField_e_of_type_Int;
-      int i2 = i4;
-      int i1 = i3;
-      if (this.D > 0)
-      {
-        i2 = i4;
-        i1 = i3;
-        if (this.E > 0)
-        {
-          i1 = this.E;
-          i2 = this.D;
-        }
-      }
-      this.jdField_a_of_type_Bbgj.a(paramArrayOfByte, i1, i2, this.jdField_a_of_type_Bbgk);
-    }
-    if (this.jdField_a_of_type_Bbhp != null) {
-      this.jdField_a_of_type_Bbhp.a(paramArrayOfByte, paramCamera);
-    }
-    bday.a().a(true, paramArrayOfByte);
-  }
-  
-  protected boolean a()
-  {
-    return aqql.a();
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    f();
-    if ((paramBoolean) && (Build.VERSION.SDK_INT >= 23))
-    {
-      Activity localActivity = (Activity)getContext();
-      if (!Settings.System.canWrite(localActivity)) {
-        bhlq.a(localActivity, null, null);
-      }
-    }
-    for (boolean bool = false;; bool = true)
-    {
-      if (bool) {
-        this.jdField_p_of_type_Boolean = paramBoolean;
-      }
-      return bool;
-    }
-  }
-  
-  public void a_(int paramInt, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.errorCode = paramInt;
-    if (this.jdField_a_of_type_Bbhm != null) {
-      this.jdField_a_of_type_Bbhm.a(104);
-    }
-  }
-  
-  public void a_(String paramString)
-  {
-    a(new bbhq(1, 0, paramString, null, this.jdField_u_of_type_Int));
-  }
-  
-  protected int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  protected int b(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public void b()
-  {
-    CameraCaptureView.VideoCaptureResult localVideoCaptureResult = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult;
-    localVideoCaptureResult.videoFrameCount += 1;
-  }
-  
-  protected void b(int paramInt) {}
-  
-  public void b(String paramString)
-  {
-    if (!this.jdField_a_of_type_Bbeu.a())
+    if (!this.jdField_a_of_type_Azzv.a())
     {
       if (QLog.isColorLevel()) {
         QLog.d("CameraCaptureView", 2, "onAudioCaptured filePath = " + paramString);
@@ -874,42 +1163,9 @@ public class CameraCaptureView
     }
   }
   
-  public void b(boolean paramBoolean)
+  public void onAudioChangeCaptured(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture != null)
-    {
-      if (paramBoolean) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.d();
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.b();
-  }
-  
-  protected boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected int c()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public void c() {}
-  
-  protected void c(int paramInt)
-  {
-    GLES20.glBindFramebuffer(36160, 0);
-    GLES20.glViewport(0, 0, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(3553, paramInt, null, null);
-  }
-  
-  public void c(String paramString)
-  {
-    if (this.jdField_a_of_type_Bbeu.a())
+    if (this.jdField_a_of_type_Azzv.a())
     {
       if (QLog.isColorLevel()) {
         QLog.d("CameraCaptureView", 2, "onAudioCaptured filePath = " + paramString);
@@ -921,284 +1177,26 @@ public class CameraCaptureView
     }
   }
   
-  public void c(boolean paramBoolean)
+  public void onAudioError(int paramInt)
   {
-    f();
-    try
+    QLog.e("CameraCaptureView", 2, "onAudioError. errorCode = " + paramInt);
+    switch (paramInt)
     {
-      QQLowLightFilter.enableNightMode(paramBoolean);
+    default: 
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    ThreadManager.getUIHandler().post(new CameraCaptureView.12(this));
   }
   
-  public boolean c()
-  {
-    return (this.jdField_p_of_type_Int != 0) && (this.jdField_q_of_type_Int != 0);
-  }
+  public void onAudioFrames(byte[] paramArrayOfByte, int paramInt1, int paramInt2) {}
   
-  public void d() {}
+  public void onAudioInit() {}
   
-  public void d(String paramString) {}
+  public void onAudioUnInit() {}
   
-  public void d(boolean paramBoolean)
-  {
-    jdField_a_of_type_Bdbg.e(paramBoolean);
-  }
+  public void onCameraException(Exception paramException) {}
   
-  protected boolean d()
-  {
-    return false;
-  }
-  
-  protected void e()
-  {
-    this.jdField_a_of_type_Int = bbhn.a(this.jdField_a_of_type_Bbhn);
-    if ((this.jdField_a_of_type_Int == 1) && (!aqql.d())) {
-      this.jdField_a_of_type_Int = 2;
-    }
-    if (this.jdField_i_of_type_Boolean) {
-      setEGLContextClientVersion(2);
-    }
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_Bdbe = new bdbe(this.jdField_a_of_type_AndroidOsHandler, this);
-    jdField_a_of_type_Bdbg.a(this.jdField_a_of_type_Bdbe);
-    setRenderer(this);
-    setRenderMode(0);
-    this.jdField_a_of_type_Bbmq = new bbmq();
-    if (this.jdField_a_of_type_Bbhn.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture = new AudioCapture(this.jdField_a_of_type_Bbhn.jdField_b_of_type_JavaLangString, 1, bdbt.jdField_q_of_type_Int, bdbt.jdField_o_of_type_Int, bdbt.jdField_p_of_type_Int, this, jdField_a_of_type_Bdbg.a());
-      this.jdField_a_of_type_Bbeu = new bbeu(this.jdField_a_of_type_Bbhn.jdField_b_of_type_JavaLangString, bdbt.jdField_q_of_type_Int, this);
-    }
-    this.jdField_a_of_type_Alwd = new alwd();
-    this.jdField_a_of_type_Bbgj = new bbgj();
-    QmcfManager.getInstance().setCameraMode(this.jdField_a_of_type_Int);
-    this.jdField_k_of_type_Boolean = true;
-  }
-  
-  public void e(boolean paramBoolean)
-  {
-    this.jdField_y_of_type_Boolean = paramBoolean;
-  }
-  
-  protected boolean e()
-  {
-    return false;
-  }
-  
-  public boolean f()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "onSurfaceDestroy");
-    }
-    this.jdField_n_of_type_Boolean = false;
-    if (!bdea.b())
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((RenderBuffer)localIterator.next()).destroy();
-      }
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      GlUtil.deleteTexture(this.jdField_s_of_type_Int);
-      if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {
-        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
-      }
-      if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null) {
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
-      }
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(null);
-    }
-    n();
-  }
-  
-  public void i()
-  {
-    f();
-    if (this.jdField_p_of_type_Boolean) {
-      f(true);
-    }
-    String str = this.jdField_a_of_type_Bbhn.jdField_b_of_type_JavaLangString + "/" + System.currentTimeMillis() + ".mp4";
-    if (this.jdField_d_of_type_Boolean) {}
-    for (int i1 = bbgg.b(this.jdField_u_of_type_Int);; i1 = 0)
-    {
-      this.jdField_a_of_type_Bbmc = new bbmc(str, this.jdField_p_of_type_Int, this.jdField_q_of_type_Int, bbhn.d(this.jdField_a_of_type_Bbhn), bbhn.e(this.jdField_a_of_type_Bbhn), false, i1);
-      this.jdField_a_of_type_Bbmc.jdField_j_of_type_Int = this.jdField_a_of_type_Bbhn.jdField_c_of_type_Int;
-      this.jdField_a_of_type_Bbmc.jdField_k_of_type_Int = this.jdField_a_of_type_Bbhn.jdField_d_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult = new CameraCaptureView.VideoCaptureResult();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.orientation = this.jdField_u_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.type = 0;
-      if (this.jdField_a_of_type_Int == 2) {
-        jdField_a_of_type_Bdbg.f();
-      }
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Boolean = true;
-      bbgg.a(false, false);
-      return;
-    }
-  }
-  
-  public void j()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_r_of_type_Int != 0) {
-        break label81;
-      }
-      if (this.jdField_a_of_type_Bbhm != null) {
-        this.jdField_a_of_type_Bbhm.a(102);
-      }
-    }
-    for (;;)
-    {
-      jdField_a_of_type_Bdbg.g();
-      jdField_a_of_type_Bdbg.h();
-      this.jdField_b_of_type_Long = System.currentTimeMillis();
-      bbgr.jdField_a_of_type_Long = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
-      bbgf.jdField_a_of_type_Long = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
-      return;
-      label81:
-      if (this.jdField_u_of_type_Boolean) {
-        a(0, null, null);
-      }
-    }
-  }
-  
-  public void l()
-  {
-    int i1;
-    if ((Build.VERSION.SDK_INT >= 23) && (this.jdField_a_of_type_Bbhl != null))
-    {
-      Activity localActivity = (Activity)getContext();
-      i1 = localActivity.checkSelfPermission("android.permission.CAMERA");
-      int i2 = localActivity.checkSelfPermission("android.permission.RECORD_AUDIO");
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraCaptureView", 2, new Object[] { "startCameraWithPermission, camera: ", Integer.valueOf(i1), " audio: ", Integer.valueOf(i2) });
-      }
-      if ((i1 != 0) || (i2 != 0)) {
-        if (!this.jdField_v_of_type_Boolean)
-        {
-          this.jdField_v_of_type_Boolean = true;
-          this.jdField_a_of_type_Bbhl.C_();
-        }
-      }
-    }
-    for (;;)
-    {
-      return;
-      for (i1 = 0; (i1 != 0) || (this.jdField_w_of_type_Boolean); i1 = 1)
-      {
-        m();
-        o();
-        return;
-      }
-    }
-  }
-  
-  protected void m()
-  {
-    boolean bool = true;
-    if (!this.jdField_k_of_type_Boolean) {}
-    while (this.jdField_l_of_type_Boolean) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "openCamera");
-    }
-    this.jdField_m_of_type_Boolean = false;
-    this.jdField_z_of_type_Int = 0;
-    this.A = 0;
-    jdField_a_of_type_Bdbg.a(this);
-    jdField_a_of_type_Bdbg.b(this.jdField_a_of_type_Int);
-    this.jdField_l_of_type_Boolean = true;
-    if ((this.jdField_a_of_type_Bbhn.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.f();
-    }
-    alwd localalwd;
-    if (this.jdField_a_of_type_Alwd != null)
-    {
-      localalwd = this.jdField_a_of_type_Alwd;
-      if (this.jdField_a_of_type_Int != 1) {
-        break label126;
-      }
-    }
-    for (;;)
-    {
-      localalwd.a(bool);
-      aluf.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      return;
-      label126:
-      bool = false;
-    }
-  }
-  
-  public void n()
-  {
-    if (!this.jdField_k_of_type_Boolean) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!this.jdField_l_of_type_Boolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraCaptureView", 2, "stopCamera");
-      }
-      jdField_a_of_type_Bdbg.a(false);
-      this.jdField_m_of_type_Boolean = false;
-      jdField_a_of_type_Bdbg.b(this.jdField_s_of_type_Boolean);
-      this.jdField_l_of_type_Boolean = false;
-      if ((this.jdField_a_of_type_Bbhn.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.g();
-      }
-      jdField_a_of_type_Bdbg.b(this);
-      jdField_a_of_type_Bdbg.b(PeakAppInterface.a);
-      bbgb.a(this.jdField_a_of_type_Int);
-    } while ((!this.jdField_x_of_type_Boolean) || (this.jdField_e_of_type_Long <= 0L));
-    this.jdField_c_of_type_Long = (System.currentTimeMillis() - this.jdField_e_of_type_Long);
-    this.jdField_y_of_type_Int = (this.jdField_x_of_type_Int - 15);
-    this.jdField_e_of_type_Long = 0L;
-  }
-  
-  public void o()
-  {
-    if (!this.jdField_k_of_type_Boolean) {}
-    while ((!this.jdField_n_of_type_Boolean) || (!this.jdField_l_of_type_Boolean) || ((this.jdField_m_of_type_Boolean) && (this.jdField_z_of_type_Int == this.jdField_b_of_type_Int) && (this.A == this.jdField_c_of_type_Int))) {
-      return;
-    }
-    if ((this.jdField_a_of_type_Bbhn.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Bbhn.jdField_b_of_type_Int == 0) || (this.jdField_y_of_type_Boolean))
-    {
-      this.jdField_a_of_type_Bbhn.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-      this.jdField_a_of_type_Bbhn.jdField_b_of_type_Int = this.jdField_c_of_type_Int;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "startCameraPreview, clipWidth:" + this.jdField_a_of_type_Bbhn.jdField_a_of_type_Int + ", clipHeight:" + this.jdField_a_of_type_Bbhn.jdField_b_of_type_Int + ", surfaceWidth:" + this.jdField_b_of_type_Int + ", surfaceHeight:" + this.jdField_c_of_type_Int);
-    }
-    if (this.jdField_f_of_type_Boolean) {
-      jdField_a_of_type_Bdbg.a(new bdbb(this.jdField_c_of_type_Int, this.jdField_b_of_type_Int), new bdbb(this.jdField_a_of_type_Bbhn.jdField_a_of_type_Int, this.jdField_a_of_type_Bbhn.jdField_b_of_type_Int), 0, 30, this.jdField_f_of_type_Boolean);
-    }
-    for (;;)
-    {
-      jdField_a_of_type_Bdbg.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture, null, this, true);
-      p();
-      this.jdField_m_of_type_Boolean = true;
-      this.jdField_z_of_type_Int = this.jdField_b_of_type_Int;
-      this.A = this.jdField_c_of_type_Int;
-      return;
-      jdField_a_of_type_Bdbg.a(new bdbb(bbhn.b(this.jdField_a_of_type_Bbhn), bbhn.c(this.jdField_a_of_type_Bbhn)), new bdbb(this.jdField_a_of_type_Bbhn.jdField_a_of_type_Int, this.jdField_a_of_type_Bbhn.jdField_b_of_type_Int), 0, 30, this.jdField_f_of_type_Boolean);
-    }
-  }
+  public void onDispatchThreadException(RuntimeException paramRuntimeException) {}
   
   public void onDrawFrame(GL10 paramGL10)
   {
@@ -1229,13 +1227,13 @@ public class CameraCaptureView
       }
       boolean bool = this.jdField_c_of_type_Boolean;
       this.jdField_t_of_type_Int = a(bool);
-      int i1 = b(this.jdField_t_of_type_Int);
-      c(a(i1));
+      int i1 = a(this.jdField_t_of_type_Int);
+      b(b(i1));
       a(i1, null, null);
       if (!this.jdField_b_of_type_Boolean)
       {
         this.jdField_b_of_type_Boolean = true;
-        u();
+        m();
       }
       if (bool)
       {
@@ -1246,8 +1244,78 @@ public class CameraCaptureView
       if (this.jdField_x_of_type_Int == 10) {}
       FrameBufferCache.getInstance().forceRecycle();
     } while (this.jdField_j_of_type_Boolean);
-    bowp.a().a();
+    bmau.a().a();
     this.jdField_j_of_type_Boolean = true;
+  }
+  
+  public void onEncodeAudioCaptured(String paramString) {}
+  
+  public void onEncodeError(int paramInt, Throwable paramThrowable)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.errorCode = paramInt;
+    if (this.jdField_a_of_type_Baby != null) {
+      this.jdField_a_of_type_Baby.a(104);
+    }
+  }
+  
+  public void onEncodeFinish(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 2, "onEncodeFinish filePath = " + paramString);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoMp4FilePath = paramString;
+    if ((this.jdField_a_of_type_Babz.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture != null)) {
+      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.audioDataFilePath != null) {
+        a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult);
+      }
+    }
+    for (;;)
+    {
+      ThreadManager.postImmediately(new CameraCaptureView.9(this), null, false);
+      return;
+      if (this.jdField_a_of_type_Azzv.a())
+      {
+        this.jdField_a_of_type_Azzv.b();
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.e();
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.e();
+        continue;
+        paramString = this.jdField_a_of_type_Babz.jdField_b_of_type_JavaLangString + "/noaudio";
+        FileUtils.createFileIfNotExits(paramString);
+        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.audioDataFilePath = paramString;
+        a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult);
+      }
+    }
+  }
+  
+  public void onEncodeFrame()
+  {
+    CameraCaptureView.VideoCaptureResult localVideoCaptureResult = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult;
+    localVideoCaptureResult.videoFrameCount += 1;
+  }
+  
+  public void onEncodeStart()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoFrameCount = 0;
+    if ((this.jdField_a_of_type_Babz.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture != null))
+    {
+      if (!this.jdField_a_of_type_Azzv.a()) {
+        break label66;
+      }
+      this.jdField_a_of_type_Azzv.a();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a();
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Baby != null) {
+        this.jdField_a_of_type_Baby.c();
+      }
+      return;
+      label66:
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a();
+    }
   }
   
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
@@ -1267,16 +1335,42 @@ public class CameraCaptureView
     }
     this.jdField_t_of_type_Boolean = false;
     this.jdField_u_of_type_Boolean = true;
-    n();
+    d();
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     if (this.jdField_p_of_type_Boolean) {
-      f(false);
+      d(false);
     }
-    jdField_a_of_type_Bdbg.a(null);
+    jdField_a_of_type_Bbuk.a(null);
     if (this.jdField_a_of_type_AndroidViewOrientationEventListener != null) {
       this.jdField_a_of_type_AndroidViewOrientationEventListener.disable();
     }
     ThreadManagerV2.excute(new CameraCaptureView.3(this), 16, null, false);
+  }
+  
+  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
+  {
+    if (this.jdField_r_of_type_Boolean)
+    {
+      int i3 = this.jdField_d_of_type_Int;
+      int i4 = this.jdField_e_of_type_Int;
+      int i2 = i4;
+      int i1 = i3;
+      if (this.D > 0)
+      {
+        i2 = i4;
+        i1 = i3;
+        if (this.E > 0)
+        {
+          i1 = this.E;
+          i2 = this.D;
+        }
+      }
+      this.jdField_a_of_type_Babf.a(paramArrayOfByte, i1, i2, this.jdField_a_of_type_Babg);
+    }
+    if (this.jdField_a_of_type_Bacb != null) {
+      this.jdField_a_of_type_Bacb.a(paramArrayOfByte, paramCamera);
+    }
+    bbuc.a().a(true, paramArrayOfByte);
   }
   
   public void onResume()
@@ -1290,9 +1384,9 @@ public class CameraCaptureView
       QLog.d("CameraCaptureView", 1, "onResume, blockCameraFlag return");
       return;
     }
-    l();
-    if (this.jdField_a_of_type_Bbgj != null) {
-      this.jdField_a_of_type_Bbgj.a();
+    b();
+    if (this.jdField_a_of_type_Babf != null) {
+      this.jdField_a_of_type_Babf.a();
     }
     if ((this.jdField_a_of_type_AndroidViewOrientationEventListener != null) && (this.jdField_a_of_type_AndroidViewOrientationEventListener.canDetectOrientation())) {
       this.jdField_a_of_type_AndroidViewOrientationEventListener.enable();
@@ -1314,7 +1408,7 @@ public class CameraCaptureView
     while (this.jdField_z_of_type_Boolean) {
       return;
     }
-    l();
+    b();
     this.jdField_z_of_type_Boolean = true;
   }
   
@@ -1335,128 +1429,26 @@ public class CameraCaptureView
     this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
     this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
     this.jdField_r_of_type_Int = 0;
-    this.jdField_h_of_type_Boolean = bdax.c();
-    if (this.jdField_a_of_type_Bbho != null) {
-      this.jdField_a_of_type_Bbho.a();
+    this.jdField_h_of_type_Boolean = bbub.c();
+    if (this.jdField_a_of_type_Baca != null) {
+      this.jdField_a_of_type_Baca.a();
     }
-    bdcx.a(paramGL10.glGetString(7937));
+    bbvz.a(paramGL10.glGetString(7937));
   }
   
-  protected void p() {}
-  
-  public void q()
+  public void p()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "changeCamera");
-    }
-    f();
-    if (!aqql.d()) {
-      return;
-    }
-    alwd localalwd;
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      this.jdField_a_of_type_Int = 2;
-      if (this.jdField_a_of_type_Alwd != null)
-      {
-        localalwd = this.jdField_a_of_type_Alwd;
-        if (this.jdField_a_of_type_Int != 1) {
-          break label133;
-        }
-      }
-    }
-    label133:
-    for (boolean bool = true;; bool = false)
-    {
-      localalwd.a(bool);
-      this.jdField_o_of_type_Boolean = false;
-      QmcfManager.getInstance().setCameraMode(this.jdField_a_of_type_Int);
-      alyi.a().a(true);
-      n();
-      m();
-      o();
-      if (this.jdField_a_of_type_Bbhk != null) {
-        this.jdField_a_of_type_Bbhk.l();
-      }
-      b(this.jdField_a_of_type_Int);
-      return;
-      this.jdField_a_of_type_Int = 1;
-      break;
-    }
+    queueEvent(new CameraCaptureView.17(this));
   }
-  
-  public void r()
-  {
-    int i1 = 0;
-    f();
-    if (this.jdField_a_of_type_Bbhm != null) {
-      this.jdField_a_of_type_Bbhm.b();
-    }
-    Object localObject;
-    boolean bool;
-    if (a())
-    {
-      if (this.jdField_p_of_type_Boolean) {
-        f(true);
-      }
-      localObject = this.jdField_a_of_type_Bbhn.jdField_b_of_type_JavaLangString + "/" + System.currentTimeMillis() + ".jpg";
-      bhmi.c((String)localObject);
-      localObject = new File((String)localObject);
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        bool = true;
-        if (!this.jdField_a_of_type_Bbhn.jdField_b_of_type_Boolean) {
-          break label217;
-        }
-        i1 = bbgg.c(this.jdField_v_of_type_Int);
-        label121:
-        if (QLog.isColorLevel()) {
-          QLog.i("CameraCaptureView", 2, "photoOrientation:" + i1);
-        }
-        if ((!this.jdField_p_of_type_Boolean) || (this.jdField_o_of_type_Boolean)) {
-          break label222;
-        }
-        jdField_a_of_type_Bdbg.a(new bczn(true), new bbhi(this, (File)localObject, i1, bool));
-        label192:
-        if (QLog.isColorLevel()) {
-          QLog.d("CameraCaptureView", 2, "capturePhoto, use sysCamera");
-        }
-      }
-    }
-    for (;;)
-    {
-      s();
-      return;
-      bool = false;
-      break;
-      label217:
-      i1 = 0;
-      break label121;
-      label222:
-      jdField_a_of_type_Bdbg.a((File)localObject, new Rect(0, 0, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int), this, i1, bool, 1, this.jdField_v_of_type_Int);
-      break label192;
-      if (this.jdField_p_of_type_Boolean)
-      {
-        i1 = 1500;
-        f(true);
-      }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new CameraCaptureView.6(this), i1);
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraCaptureView", 2, "capturePhoto, use captureFrame");
-      }
-    }
-  }
-  
-  protected void s() {}
   
   public void setBlockCameraFlag(boolean paramBoolean)
   {
     this.jdField_t_of_type_Boolean = paramBoolean;
   }
   
-  public void setCameraChangeListener(bbhk parambbhk)
+  public void setCameraChangeListener(babw parambabw)
   {
-    this.jdField_a_of_type_Bbhk = parambbhk;
+    this.jdField_a_of_type_Babw = parambabw;
   }
   
   public void setCameraPermissionFinish(boolean paramBoolean)
@@ -1464,9 +1456,9 @@ public class CameraCaptureView
     this.jdField_w_of_type_Boolean = paramBoolean;
   }
   
-  public void setCameraPermissionListener(bbhl parambbhl)
+  public void setCameraPermissionListener(babx parambabx)
   {
-    this.jdField_a_of_type_Bbhl = parambbhl;
+    this.jdField_a_of_type_Babx = parambabx;
   }
   
   public void setCameraPermissionResult(boolean paramBoolean)
@@ -1475,25 +1467,25 @@ public class CameraCaptureView
       QLog.d("CameraCaptureView", 2, new Object[] { "setCameraPermissionResult, ", Boolean.valueOf(paramBoolean) });
     }
     this.jdField_w_of_type_Boolean = true;
-    m();
-    o();
+    c();
+    e();
   }
   
-  public void setCaptureListener(bbhm parambbhm)
+  public void setCaptureListener(baby parambaby)
   {
-    this.jdField_a_of_type_Bbhm = parambbhm;
+    this.jdField_a_of_type_Baby = parambaby;
   }
   
-  public void setCaptureParam(bbhn parambbhn)
+  public void setCaptureParam(babz parambabz)
   {
-    if (this.jdField_a_of_type_Bbhn != null) {
+    if (this.jdField_a_of_type_Babz != null) {
       throw new RuntimeException("setCaptureParam is already called");
     }
-    this.jdField_a_of_type_Bbhn = parambbhn;
+    this.jdField_a_of_type_Babz = parambabz;
     if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "setCaptureParam : " + parambbhn);
+      QLog.d("CameraCaptureView", 2, "setCaptureParam : " + parambabz);
     }
-    e();
+    a();
   }
   
   public void setDarkModeEnable(boolean paramBoolean)
@@ -1501,9 +1493,9 @@ public class CameraCaptureView
     this.jdField_r_of_type_Boolean = paramBoolean;
   }
   
-  public void setDarkModeListener(bbgk parambbgk)
+  public void setDarkModeListener(babg parambabg)
   {
-    this.jdField_a_of_type_Bbgk = parambbgk;
+    this.jdField_a_of_type_Babg = parambabg;
   }
   
   public void setDynamicResolutionMode(boolean paramBoolean)
@@ -1511,20 +1503,20 @@ public class CameraCaptureView
     this.jdField_f_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnSurfaceCreatedListener(bbho parambbho)
+  public void setOnSurfaceCreatedListener(baca parambaca)
   {
-    this.jdField_a_of_type_Bbho = parambbho;
+    this.jdField_a_of_type_Baca = parambaca;
   }
   
-  public void setPreviewCallback(bbhp parambbhp)
+  public void setPreviewCallback(bacb parambacb)
   {
-    this.jdField_a_of_type_Bbhp = parambbhp;
+    this.jdField_a_of_type_Bacb = parambacb;
   }
   
   public void setSceneMode(String paramString)
   {
-    f();
-    jdField_a_of_type_Bdbg.a(paramString);
+    q();
+    jdField_a_of_type_Bbuk.a(paramString);
   }
   
   public void setSegmentMode(boolean paramBoolean)
@@ -1544,8 +1536,8 @@ public class CameraCaptureView
   
   public void setZoom(int paramInt)
   {
-    f();
-    jdField_a_of_type_Bdbg.c(paramInt);
+    q();
+    jdField_a_of_type_Bbuk.c(paramInt);
   }
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
@@ -1562,34 +1554,6 @@ public class CameraCaptureView
       QLog.d("CameraCaptureView", 2, "surfaceDestroyed");
     }
     super.surfaceDestroyed(paramSurfaceHolder);
-  }
-  
-  protected void t()
-  {
-    bbgr.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoFrameCount, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoMp4FilePath);
-  }
-  
-  protected void u()
-  {
-    this.jdField_a_of_type_AndroidViewOrientationEventListener = new bbhg(this, getContext());
-    if (this.jdField_a_of_type_AndroidViewOrientationEventListener.canDetectOrientation()) {
-      this.jdField_a_of_type_AndroidViewOrientationEventListener.enable();
-    }
-    if (this.jdField_a_of_type_Bbhm != null) {
-      this.jdField_a_of_type_Bbhm.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureView", 2, "Create to FirstFrameShown cost : " + (System.currentTimeMillis() - this.jdField_d_of_type_Long) + "ms");
-    }
-  }
-  
-  public void v() {}
-  
-  protected void w() {}
-  
-  public void x()
-  {
-    queueEvent(new CameraCaptureView.17(this));
   }
 }
 

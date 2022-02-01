@@ -1,48 +1,22 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.TenDocOCRExportHandler.1;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.manager.TicketManager;
+import java.util.List;
 
-public class bece
-  extends anud
-  implements Handler.Callback
+public abstract interface bece
 {
-  private String[] a = { "docs.qq.com" };
+  public abstract void a(int paramInt);
   
-  public bece(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public abstract void a(bebc parambebc);
   
-  private void a(Runnable paramRunnable)
-  {
-    if (this.app == null) {}
-    while (((TicketManager)this.app.getManager(2)).getPskey(this.app.getCurrentAccountUin(), 16L, this.a, new becf(this, paramRunnable)) == null) {
-      return;
-    }
-    ThreadManager.executeOnNetWorkThread(paramRunnable);
-  }
+  public abstract void a(bebc parambebc, String paramString);
   
-  public void a(String paramString)
-  {
-    a(new TenDocOCRExportHandler.1(this, paramString));
-  }
+  public abstract void a(List<bebc> paramList, boolean paramBoolean, String paramString, long paramLong);
   
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
-  }
+  public abstract void b(bebc parambebc);
   
-  protected Class<? extends anui> observerClass()
-  {
-    return becg.class;
-  }
+  public abstract void c(bebc parambebc);
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public abstract void d(bebc parambebc);
+  
+  public abstract void e(bebc parambebc);
 }
 
 

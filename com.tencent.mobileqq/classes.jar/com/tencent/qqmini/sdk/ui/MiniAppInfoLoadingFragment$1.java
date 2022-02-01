@@ -1,84 +1,17 @@
 package com.tencent.qqmini.sdk.ui;
 
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.ResultReceiver;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppCacheProxy;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.report.MiniReportManager;
 import org.json.JSONObject;
 
 class MiniAppInfoLoadingFragment$1
-  implements AsyncResult
+  implements MiniAppInfoLoadingFragment.onGetMiniAppInfoListener
 {
-  MiniAppInfoLoadingFragment$1(MiniAppInfoLoadingFragment paramMiniAppInfoLoadingFragment, LaunchParam paramLaunchParam, String paramString) {}
+  MiniAppInfoLoadingFragment$1(MiniAppInfoLoadingFragment paramMiniAppInfoLoadingFragment, String paramString1, MiniAppCacheProxy paramMiniAppCacheProxy, String paramString2, String paramString3) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onGetMiniAppInfo(JSONObject paramJSONObject, byte[] paramArrayOfByte, MiniAppInfo paramMiniAppInfo, String paramString1, long paramLong, String paramString2)
   {
-    long l;
-    Object localObject;
-    if (paramBoolean)
-    {
-      l = paramJSONObject.optLong("retCode");
-      localObject = paramJSONObject.optString("errMsg");
-      QMLog.i("MiniAppInfoLoadingFragment", "getAppInfoById, retCode = " + l + ",errMsg = " + (String)localObject);
-      paramJSONObject = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
-      if (paramJSONObject != null)
-      {
-        if (this.val$param != null)
-        {
-          paramJSONObject.launchParam.miniAppId = paramJSONObject.appId;
-          if (!TextUtils.isEmpty(this.val$param.extendData)) {
-            paramJSONObject.extendData = this.val$param.extendData;
-          }
-          paramJSONObject.launchParam.scene = this.val$param.scene;
-        }
-        if (paramJSONObject.verType != 3) {
-          paramJSONObject.forceReroad = 3;
-        }
-        if (this.val$customInfo != null) {
-          paramJSONObject.customInfo = this.val$customInfo;
-        }
-        MiniAppInfoLoadingFragment.access$000(this.this$0, paramJSONObject);
-        if (MiniAppInfoLoadingFragment.access$100(this.this$0) != null)
-        {
-          Bundle localBundle = new Bundle();
-          localBundle.putLong("retCode", l);
-          localBundle.putString("errMsg", (String)localObject);
-          MiniAppInfoLoadingFragment.access$100(this.this$0).send(0, localBundle);
-        }
-        MiniReportManager.reportEventType(paramJSONObject, 1028, "main_loading", MiniReportManager.getAppType(paramJSONObject));
-      }
-    }
-    for (;;)
-    {
-      MiniAppInfoLoadingFragment.access$300(this.this$0);
-      return;
-      ThreadManager.getUIHandler().post(new MiniAppInfoLoadingFragment.1.1(this, (String)localObject, l));
-      if (MiniAppInfoLoadingFragment.access$100(this.this$0) != null)
-      {
-        paramJSONObject = new Bundle();
-        paramJSONObject.putLong("retCode", l);
-        paramJSONObject.putString("errMsg", (String)localObject);
-        MiniAppInfoLoadingFragment.access$100(this.this$0).send(1, paramJSONObject);
-        continue;
-        ThreadManager.getUIHandler().post(new MiniAppInfoLoadingFragment.1.2(this, paramJSONObject));
-        if (MiniAppInfoLoadingFragment.access$100(this.this$0) != null)
-        {
-          localObject = new Bundle();
-          if (paramJSONObject != null)
-          {
-            ((Bundle)localObject).putLong("retCode", paramJSONObject.optLong("retCode"));
-            ((Bundle)localObject).putString("errMsg", paramJSONObject.optString("errMsg"));
-          }
-          MiniAppInfoLoadingFragment.access$100(this.this$0).send(1, (Bundle)localObject);
-        }
-      }
-    }
+    MiniAppInfoLoadingFragment.access$000(this.this$0, paramJSONObject, paramArrayOfByte, this.val$finalEnvVersion, this.val$cacheProxy, this.val$appid, this.val$finalEntryPath);
   }
 }
 

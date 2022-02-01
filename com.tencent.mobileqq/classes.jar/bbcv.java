@@ -1,69 +1,47 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.remind.widget.WheelTextView;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.VerticalGallery.LayoutParams;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bbcv
-  extends BaseAdapter
+class bbcv
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = 25;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private int b;
-  private int c;
+  bbcv(bbcm parambbcm, Context paramContext, bazs parambazs) {}
   
-  public bbcv(Context paramContext, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.b = paramContext.getColor(2131167080);
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt, paramContext.getDisplayMetrics()));
-    this.c = paramContext.getColor(2131167050);
-  }
-  
-  public View a(int paramInt)
-  {
-    return getView(paramInt, null, null);
-  }
-  
-  public int getCount()
-  {
-    return bbdc.jdField_a_of_type_Int;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject2 = null;
-    Object localObject1;
-    if (paramView == null)
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    bbgk.a(localQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bazs.a.jdField_a_of_type_JavaLangString);
+    batc localbatc;
+    JSONObject localJSONObject;
+    if (batb.b.containsKey(this.jdField_a_of_type_Bazs))
     {
-      localObject1 = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
-      ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+      localbatc = (batc)batb.b.get(this.jdField_a_of_type_Bazs);
+      localJSONObject = new JSONObject();
     }
-    for (paramView = (WheelTextView)localObject1;; paramView = (View)localObject2)
+    try
     {
-      localObject2 = paramView;
-      if (paramView == null) {
-        localObject2 = (WheelTextView)localObject1;
+      localJSONObject.put("project", bbda.a());
+      localJSONObject.put("event_src", "client");
+      localJSONObject.put("obj_lct", localbatc.jdField_a_of_type_Int);
+      localJSONObject.put("get_src", "web");
+      bbda.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localbatc.jdField_a_of_type_Long + "").obj2(localbatc.b).ver1(localbatc.jdField_a_of_type_JavaLangString).ver2(bbda.a(this.jdField_a_of_type_Bazs.c)).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + batb.jdField_a_of_type_Long));
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("Q.uniteSearch.SearchTemplatePresenter", 2, "e = " + localJSONException);
       }
-      paramView = bbdc.a(paramInt);
-      ((WheelTextView)localObject2).setTextSize(20.0F);
-      ((WheelTextView)localObject2).setTextColor(this.b);
-      ((WheelTextView)localObject2).setGravity(17);
-      ((WheelTextView)localObject2).setText(paramView);
-      ((WheelTextView)localObject2).setBackgroundColor(this.c);
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject1 = paramView;
     }
   }
 }

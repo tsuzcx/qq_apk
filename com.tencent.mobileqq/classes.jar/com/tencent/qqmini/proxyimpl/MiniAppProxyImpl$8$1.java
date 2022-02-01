@@ -1,12 +1,12 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bkxx;
-import bkyj;
+import bjdt;
+import bjeg;
 
 public class MiniAppProxyImpl$8$1
   implements Runnable
 {
-  public MiniAppProxyImpl$8$1(bkyj parambkyj) {}
+  public MiniAppProxyImpl$8$1(bjeg parambjeg) {}
   
   public void run()
   {

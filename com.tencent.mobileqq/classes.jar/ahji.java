@@ -1,17 +1,33 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
 
 class ahji
-  extends ahkx
+  implements bjoe
 {
-  ahji(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahji(ahiu paramahiu) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new ahri(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (this.a.p) {
+      return;
+    }
+    this.a.p = true;
+    if ((this.a.jdField_a_of_type_ArrayOfInt != null) && (this.a.jdField_a_of_type_ArrayOfInt.length > 0))
+    {
+      this.a.a(2131694821);
+      paramInt = this.a.jdField_a_of_type_ArrayOfInt[0];
+      if (paramInt == 0) {
+        this.a.a(true, 0);
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      this.a.a(false, paramInt);
+      continue;
+      this.a.a(2131694821);
+      this.a.a(true, 0);
+    }
   }
 }
 

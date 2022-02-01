@@ -775,11 +775,11 @@ public class Utils
     //   0: iconst_0
     //   1: istore_2
     //   2: aconst_null
-    //   3: astore 6
+    //   3: astore 5
     //   5: aconst_null
-    //   6: astore 5
+    //   6: astore 8
     //   8: aconst_null
-    //   9: astore 8
+    //   9: astore 6
     //   11: aconst_null
     //   12: astore 4
     //   14: aconst_null
@@ -858,7 +858,7 @@ public class Utils
     //   146: astore_0
     //   147: aconst_null
     //   148: astore_3
-    //   149: aload 6
+    //   149: aload 5
     //   151: astore_0
     //   152: aload_3
     //   153: ifnull +7 -> 160
@@ -876,7 +876,7 @@ public class Utils
     //   173: astore_0
     //   174: aconst_null
     //   175: astore_3
-    //   176: aload 5
+    //   176: aload 8
     //   178: astore_0
     //   179: aload_3
     //   180: ifnull +7 -> 187
@@ -894,7 +894,7 @@ public class Utils
     //   200: astore_0
     //   201: aconst_null
     //   202: astore_3
-    //   203: aload 8
+    //   203: aload 6
     //   205: astore_0
     //   206: aload_3
     //   207: ifnull +7 -> 214
@@ -949,19 +949,19 @@ public class Utils
     //   292: astore_0
     //   293: goto -60 -> 233
     //   296: astore_0
-    //   297: aload 8
+    //   297: aload 6
     //   299: astore_0
     //   300: goto -94 -> 206
     //   303: astore_1
     //   304: goto -98 -> 206
     //   307: astore_0
-    //   308: aload 5
+    //   308: aload 8
     //   310: astore_0
     //   311: goto -132 -> 179
     //   314: astore_1
     //   315: goto -136 -> 179
     //   318: astore_0
-    //   319: aload 6
+    //   319: aload 5
     //   321: astore_0
     //   322: goto -170 -> 152
     //   325: astore_1
@@ -981,10 +981,10 @@ public class Utils
     //   271	1	3	localIOException	IOException
     //   12	269	4	localObject1	Object
     //   286	5	4	localObject2	Object
-    //   6	303	5	localObject3	Object
-    //   3	317	6	localObject4	Object
+    //   3	317	5	localObject3	Object
+    //   9	289	6	localObject4	Object
     //   15	316	7	localObject5	Object
-    //   9	289	8	localObject6	Object
+    //   6	303	8	localObject6	Object
     //   20	58	9	localByteArrayOutputStream	ByteArrayOutputStream
     // Exception table:
     //   from	to	target	type

@@ -1,34 +1,56 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Map;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Process;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.QQMapActivity.MapRuntime;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-final class aeac
-  implements DialogInterface.OnClickListener
+public class aeac
+  extends BroadcastReceiver
 {
-  aeac(aeca paramaeca, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, aebz paramaebz) {}
+  public aeac(QQMapActivity.MapRuntime paramMapRuntime) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = mvd.b(this.jdField_a_of_type_Aeca.jdField_a_of_type_Int);
-    String str;
-    if ((this.jdField_a_of_type_Aeca.jdField_a_of_type_JavaUtilMap != null) && (i == 1))
+    int j = 1;
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    for (;;)
     {
-      str = (String)this.jdField_a_of_type_Aeca.jdField_a_of_type_JavaUtilMap.get("MultiAVType");
-      if (str == null) {}
-    }
-    for (paramInt = Integer.valueOf(str).intValue();; paramInt = 0)
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, i, paramInt);
-      this.jdField_a_of_type_Aeca.d = false;
-      this.jdField_a_of_type_Aeca.e = false;
-      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aebz, this.jdField_a_of_type_Aeca);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.dismiss();
-      }
       return;
+      int i;
+      if (paramContext.equals("com.tencent.process.exit"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("mqq", 2, "receive kill map process broadcast");
+        }
+        paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
+        if ((!QQMapActivity.a(paramIntent.getExtras().getString("verify"), paramContext)) || (!bfqa.a(paramContext, MobileQQ.getContext()))) {
+          break label144;
+        }
+        i = j;
+      }
+      while (i != 0)
+      {
+        Process.killProcess(Process.myPid());
+        return;
+        i = j;
+        if (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))
+        {
+          i = j;
+          if (!paramContext.equals("mqq.intent.action.LOGOUT"))
+          {
+            i = j;
+            if (!paramContext.equals("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName())) {
+              label144:
+              i = 0;
+            }
+          }
+        }
+      }
     }
   }
 }

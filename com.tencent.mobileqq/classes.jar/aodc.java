@@ -1,268 +1,762 @@
-import com.tencent.av.service.LBSInfo;
-import com.tencent.mobileqq.data.StrangerInfo;
-import com.tencent.mobileqq.nearpeople.mytab.NearbyMyTabCard;
-import com.tencent.pb.now.ilive_feeds_near_anchor.NearAnchorInfo;
-import com.tencent.protobuf.nearbyPeopleRecommend.nearbyPeopleRecommend.QueryRspItem;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
+import com.tencent.mobileqq.ar.model.ArModelResource;
+import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.RspBody;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 public class aodc
-  implements anui
+  implements INetEngine.INetEngineListener
 {
-  private void a(int paramInt, boolean paramBoolean, Object paramObject)
+  protected static INetEngine.IBreakDownFix a;
+  private long jdField_a_of_type_Long;
+  public aodg a;
+  public AppInterface a;
+  private INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+  ArrayList<aode> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  Set<String> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
+  private boolean jdField_a_of_type_Boolean;
+  private final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
+  
+  static
   {
-    if (paramObject == null) {}
-    Object localObject;
-    do
-    {
+    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aodd();
+  }
+  
+  public aodc(AppInterface paramAppInterface, aodg paramaodg)
+  {
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Aodg = paramaodg;
+  }
+  
+  private void a(aode paramaode)
+  {
+    if ((TextUtils.isEmpty(paramaode.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramaode.jdField_b_of_type_JavaLangString))) {
       return;
-      localObject = (Object[])paramObject;
-    } while (localObject.length < 4);
-    int i = ((Integer)localObject[0]).intValue();
-    if ((localObject[1] instanceof oidb_0x8dd.RspBody)) {}
-    for (paramObject = (oidb_0x8dd.RspBody)localObject[1];; paramObject = null)
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ArConfig_ArResourceDownload", 2, "downLoad:url=" + paramaode.jdField_a_of_type_JavaLangString + ",md5= " + paramaode.jdField_b_of_type_JavaLangString);
+    }
+    paramaode.jdField_b_of_type_Int += 1;
+    if (this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine == null) {
+      this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0);
+    }
+    HttpNetReq localHttpNetReq = new HttpNetReq();
+    localHttpNetReq.mCallback = this;
+    localHttpNetReq.mReqUrl = paramaode.jdField_a_of_type_JavaLangString;
+    localHttpNetReq.mHttpMethod = 0;
+    localHttpNetReq.mOutPath = paramaode.c;
+    localHttpNetReq.mPrioty = 1;
+    localHttpNetReq.setUserData(paramaode);
+    localHttpNetReq.mBreakDownFix = jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.sendReq(localHttpNetReq);
+    paramaode.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = localHttpNetReq;
+  }
+  
+  private void a(ArCloudConfigInfo paramArCloudConfigInfo)
+  {
+    Object localObject1;
+    File localFile;
+    if (paramArCloudConfigInfo.jdField_d_of_type_Int == 100)
     {
-      if ((localObject[2] instanceof ToServiceMsg)) {}
-      for (ToServiceMsg localToServiceMsg = (ToServiceMsg)localObject[2];; localToServiceMsg = null)
+      localObject1 = "";
+      if (paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
+        break label449;
+      }
+      localFile = new File(paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f);
+      localObject1 = aocu.a() + "ar_model/" + paramArCloudConfigInfo.jdField_d_of_type_Int + File.separator + paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString + "_model.zip";
+    }
+    for (;;)
+    {
+      if (localFile == null)
       {
-        if ((localObject[3] instanceof List)) {}
-        for (localObject = (List)localObject[3];; localObject = null)
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_ArResourceDownload", 2, "copyAndCheckBinHai3dRes return for null zipfile");
+        }
+        return;
+      }
+      Object localObject2 = new File((String)localObject1);
+      if (QLog.isColorLevel()) {
+        QLog.d("ArConfig_ArResourceDownload", 2, "downloadArResource:binhai:oldFilePath=" + (String)localObject1 + ", exist=" + ((File)localObject2).exists());
+      }
+      if ((((File)localObject2).exists()) && (!localFile.exists()))
+      {
+        bool1 = localFile.mkdirs();
+        boolean bool2 = FileUtils.copyFile((File)localObject2, localFile);
+        QLog.d("ArConfig_ArResourceDownload", 1, "downloadArResource:binhai:copy old to new dir, ret=" + bool2 + ", mkRet=" + bool1);
+      }
+      localObject2 = "";
+      localObject1 = localObject2;
+      if (localFile.exists()) {}
+      try
+      {
+        String str = ayja.a(localFile.getAbsolutePath());
+        localObject2 = str;
+        if (QLog.isColorLevel())
         {
-          if (paramInt == 1)
+          localObject2 = str;
+          QLog.d("ArConfig_ArResourceDownload", 2, "download binhai calc md5=" + str + ", modelMd5=" + paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString);
+        }
+        localObject1 = str;
+        localObject2 = str;
+        if (!paramArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString.equalsIgnoreCase(str))
+        {
+          localObject2 = str;
+          localFile.delete();
+          localObject1 = str;
+        }
+      }
+      catch (Throwable paramArCloudConfigInfo)
+      {
+        for (;;)
+        {
+          QLog.e("ArConfig_ArResourceDownload", 1, "download binhai check md5 error", paramArCloudConfigInfo);
+          localObject1 = localObject2;
+          continue;
+          paramArCloudConfigInfo = "0";
+        }
+      }
+      boolean bool1 = localFile.exists();
+      localObject2 = new HashMap();
+      ((HashMap)localObject2).put("md5", localObject1);
+      ((HashMap)localObject2).put("uin", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+      if (bool1)
+      {
+        paramArCloudConfigInfo = "1";
+        ((HashMap)localObject2).put("exist", paramArCloudConfigInfo);
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "binhai_predownload", bool1, 0L, 0L, (HashMap)localObject2, "", true);
+        return;
+      }
+      label449:
+      localFile = null;
+    }
+  }
+  
+  private boolean a(ArConfigInfo paramArConfigInfo)
+  {
+    if (paramArConfigInfo == null) {
+      return true;
+    }
+    try
+    {
+      if (!paramArConfigInfo.mArCloudConfigInfos.isEmpty())
+      {
+        paramArConfigInfo = paramArConfigInfo.mArCloudConfigInfos.iterator();
+        while (paramArConfigInfo.hasNext())
+        {
+          ArCloudConfigInfo localArCloudConfigInfo = (ArCloudConfigInfo)paramArConfigInfo.next();
+          if (!FileUtils.fileExists(localArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.c)) {
+            return false;
+          }
+          if (((localArCloudConfigInfo.jdField_d_of_type_Int == 0) || (localArCloudConfigInfo.jdField_d_of_type_Int == 100)) && (localArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null))
           {
-            b(paramBoolean, i, paramObject, localToServiceMsg, (List)localObject);
+            boolean bool = new File(localArCloudConfigInfo.jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f).exists();
+            if (!bool) {
+              return false;
+            }
+          }
+        }
+      }
+    }
+    catch (Exception paramArConfigInfo)
+    {
+      QLog.i("ArConfig_ArResourceDownload", 1, "isResourceReady e=" + paramArConfigInfo.getMessage());
+      return true;
+    }
+    return true;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      synchronized (this.jdField_a_of_type_ArrayOfByte)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (localIterator.hasNext())
+        {
+          aode localaode = (aode)localIterator.next();
+          if (localaode.jdField_b_of_type_Long < localaode.jdField_a_of_type_Long) {
+            this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.cancelReq(localaode.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+          }
+        }
+      }
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaUtilSet.clear();
+    }
+  }
+  
+  public void a(ArConfigInfo paramArConfigInfo, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    for (;;)
+    {
+      for (;;)
+      {
+        label98:
+        Object localObject4;
+        int j;
+        int k;
+        try
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("ArConfig_ArResourceDownload", 2, "downloadArResource|isDownloading=" + this.jdField_a_of_type_Boolean);
+          }
+          paramBoolean2 = this.jdField_a_of_type_Boolean;
+          if (paramBoolean2) {
             return;
           }
-          a(paramBoolean, i, paramObject, localToServiceMsg, (List)localObject);
-          return;
+          synchronized (this.jdField_a_of_type_ArrayOfByte)
+          {
+            this.jdField_a_of_type_JavaUtilArrayList.clear();
+            if (paramArConfigInfo != null)
+            {
+              try
+              {
+                if ((paramArConfigInfo.mArCloudConfigInfos != null) && (paramArConfigInfo.mArCloudConfigInfos.size() > 0))
+                {
+                  i = 0;
+                  Iterator localIterator = paramArConfigInfo.mArCloudConfigInfos.iterator();
+                  if (!localIterator.hasNext()) {
+                    break label1262;
+                  }
+                  localObject4 = (ArCloudConfigInfo)localIterator.next();
+                  if ((localObject4 != null) && (((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo != null) && (!TextUtils.isEmpty(((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_b_of_type_JavaLangString))) {
+                    break label370;
+                  }
+                  QLog.i("ArConfig_ArResourceDownload", 1, "resource null continue ");
+                  continue;
+                }
+                if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+                  break label1539;
+                }
+              }
+              catch (Exception paramArConfigInfo)
+              {
+                QLog.d("ArConfig_ArResourceDownload", 2, "e" + paramArConfigInfo.getMessage());
+              }
+            }
+            else
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("ArConfig_ArResourceDownload", 2, "downloadArResource|download num= " + this.jdField_a_of_type_JavaUtilArrayList.size());
+              }
+              this.jdField_a_of_type_Long = 0L;
+              this.jdField_b_of_type_Long = 0L;
+              this.jdField_a_of_type_Boolean = true;
+              this.jdField_b_of_type_Boolean = false;
+              j = 0;
+            }
+          }
+        }
+        finally {}
+        label370:
+        Object localObject1;
+        label562:
+        ArVideoResourceInfo localArVideoResourceInfo;
+        Object localObject3;
+        label730:
+        Object localObject2;
+        label1092:
+        label1262:
+        label1279:
+        aodf localaodf;
+        label1346:
+        try
+        {
+          i = this.jdField_a_of_type_JavaUtilArrayList.size();
+          k = i - 1;
+          i = 0;
+          if (k < 0) {}
+        }
+        catch (Exception paramArConfigInfo) {}
+        try
+        {
+          paramArConfigInfo = (aode)this.jdField_a_of_type_JavaUtilArrayList.get(k);
+          if (!paramBoolean1) {
+            break label1279;
+          }
+          paramArConfigInfo.jdField_b_of_type_Boolean = true;
+          if (this.jdField_a_of_type_Aodg.a(paramArConfigInfo.jdField_b_of_type_JavaLangString)) {
+            break label1279;
+          }
+          this.jdField_a_of_type_JavaUtilArrayList.remove(k);
+          this.jdField_a_of_type_JavaUtilSet.remove(paramArConfigInfo.jdField_b_of_type_JavaLangString);
+          if (i == 0) {
+            this.jdField_a_of_type_Boolean = false;
+          }
+        }
+        catch (Exception paramArConfigInfo)
+        {
+          label1539:
+          for (;;)
+          {
+            label1416:
+            j = i;
+          }
+          break label1416;
+          localaodf = null;
+          break label562;
+          i = j;
+          break label730;
+          break label730;
+          localaodf = null;
+          break label1092;
+          switch (j)
+          {
+          }
+          j = 4;
+          break label1346;
+        }
+      }
+      paramArConfigInfo = finally;
+      throw paramArConfigInfo;
+      if ((!TextUtils.isEmpty(((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.c)) && (!FileUtils.fileExists(((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.c)))
+      {
+        localObject1 = new aode();
+        ((aode)localObject1).jdField_a_of_type_Int = 2;
+        ((aode)localObject1).jdField_a_of_type_JavaLangString = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_b_of_type_JavaLangString;
+        ((aode)localObject1).jdField_b_of_type_JavaLangString = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_JavaLangString;
+        ((aode)localObject1).c = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.c;
+        ((aode)localObject1).jdField_a_of_type_Long = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo.jdField_a_of_type_Long;
+        ((aode)localObject1).jdField_a_of_type_Boolean = true;
+        if (!this.jdField_a_of_type_JavaUtilSet.contains(((aode)localObject1).jdField_b_of_type_JavaLangString))
+        {
+          this.jdField_a_of_type_JavaUtilSet.add(((aode)localObject1).jdField_b_of_type_JavaLangString);
+          this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+        }
+      }
+      a((ArCloudConfigInfo)localObject4);
+      if ((((ArCloudConfigInfo)localObject4).jdField_d_of_type_Int == 0) || (((ArCloudConfigInfo)localObject4).jdField_d_of_type_Int == 100))
+      {
+        if (((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource == null) {
+          break label1560;
+        }
+        localObject1 = new File(((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f);
+        localArVideoResourceInfo = null;
+        localObject3 = localArVideoResourceInfo;
+        if (localObject1 != null)
+        {
+          localObject3 = localArVideoResourceInfo;
+          if (((File)localObject1).exists()) {
+            localObject3 = ayja.a(((File)localObject1).getAbsolutePath());
+          }
+        }
+        if ((localObject1 != null) && (((File)localObject1).exists()) && (!TextUtils.isEmpty((CharSequence)localObject3)))
+        {
+          paramBoolean2 = ((String)localObject3).equals(((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString);
+          if (paramBoolean2)
+          {
+            j = i;
+            try
+            {
+              localObject1 = new File(((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f);
+              j = i;
+              aoju.a(((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f, ((File)localObject1).getParentFile().getAbsolutePath() + File.separator + ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString + File.separator);
+              j = 1;
+              QLog.i("ArConfig_ArResourceDownload", 1, "onARMarkerModelDownloadComplete  ");
+              i = 1;
+            }
+            catch (Exception localException)
+            {
+              new File(((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f).delete();
+              localObject2 = new aode();
+              ((aode)localObject2).jdField_a_of_type_Int = 3;
+              ((aode)localObject2).jdField_a_of_type_JavaLangString = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString;
+              ((aode)localObject2).jdField_b_of_type_JavaLangString = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString;
+              ((aode)localObject2).c = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f;
+              ((aode)localObject2).jdField_a_of_type_Long = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_Long;
+              ((aode)localObject2).jdField_a_of_type_Boolean = true;
+              if (this.jdField_a_of_type_JavaUtilSet.contains(((aode)localObject2).jdField_b_of_type_JavaLangString)) {
+                break label1566;
+              }
+            }
+            this.jdField_a_of_type_JavaUtilSet.add(((aode)localObject2).jdField_b_of_type_JavaLangString);
+            this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+            break label1566;
+          }
+        }
+        localObject2 = new aode();
+        ((aode)localObject2).jdField_a_of_type_Int = 3;
+        if (((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource != null)
+        {
+          ((aode)localObject2).jdField_a_of_type_JavaLangString = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_b_of_type_JavaLangString;
+          ((aode)localObject2).jdField_b_of_type_JavaLangString = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_JavaLangString;
+          ((aode)localObject2).c = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.f;
+          ((aode)localObject2).jdField_a_of_type_Long = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_ComTencentMobileqqArModelArModelResource.jdField_a_of_type_Long;
+        }
+        ((aode)localObject2).jdField_a_of_type_Boolean = true;
+        if (this.jdField_a_of_type_JavaUtilSet.contains(((aode)localObject2).jdField_b_of_type_JavaLangString)) {
+          break label1573;
+        }
+        this.jdField_a_of_type_JavaUtilSet.add(((aode)localObject2).jdField_b_of_type_JavaLangString);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+        break label1573;
+      }
+      else if ((((ArCloudConfigInfo)localObject4).jdField_a_of_type_JavaUtilArrayList != null) && (((ArCloudConfigInfo)localObject4).jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      {
+        localObject3 = ((ArCloudConfigInfo)localObject4).jdField_a_of_type_JavaUtilArrayList.iterator();
+        for (;;)
+        {
+          if (!((Iterator)localObject3).hasNext()) {
+            break label98;
+          }
+          localArVideoResourceInfo = (ArVideoResourceInfo)((Iterator)localObject3).next();
+          if (localArVideoResourceInfo.jdField_d_of_type_Int == 4) {
+            break;
+          }
+          localObject4 = new File(localArVideoResourceInfo.e);
+          paramBoolean2 = ((File)localObject4).exists();
+          if (!paramBoolean2) {
+            break label1576;
+          }
+          try
+          {
+            localObject2 = ayja.a(((File)localObject4).getAbsolutePath());
+            if (((!((File)localObject4).exists()) || (TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals(localArVideoResourceInfo.c))) && (!this.jdField_a_of_type_JavaUtilSet.contains(localArVideoResourceInfo.jdField_d_of_type_JavaLangString)))
+            {
+              localObject2 = new aode();
+              ((aode)localObject2).jdField_a_of_type_Int = 3;
+              ((aode)localObject2).jdField_a_of_type_JavaLangString = localArVideoResourceInfo.jdField_d_of_type_JavaLangString;
+              ((aode)localObject2).jdField_b_of_type_JavaLangString = localArVideoResourceInfo.c;
+              ((aode)localObject2).jdField_a_of_type_Long = localArVideoResourceInfo.jdField_a_of_type_Long;
+              ((aode)localObject2).c = localArVideoResourceInfo.e;
+              ((aode)localObject2).jdField_a_of_type_Boolean = true;
+              this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+              this.jdField_a_of_type_JavaUtilSet.add(localArVideoResourceInfo.c);
+            }
+          }
+          catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+          {
+            QLog.e("ArConfig_ArResourceDownload", 1, "e" + localUnsatisfiedLinkError.getMessage());
+            break label1576;
+          }
+        }
+        if (i != 0)
+        {
+          this.jdField_a_of_type_Aodg.a(paramArConfigInfo);
+          continue;
+          this.jdField_a_of_type_Long += paramArConfigInfo.jdField_a_of_type_Long;
+          j = ((aodg)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(168)).d();
+          if (!QLog.isColorLevel()) {
+            break label1582;
+          }
+          QLog.d("ArConfig_ArResourceDownload", 2, "dpcNet=" + j);
+          break label1582;
+          for (;;)
+          {
+            localaodf = new aodf((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramArConfigInfo, this);
+            paramBoolean2 = ((PreDownloadController)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(193)).requestPreDownload(10067, "prd", paramArConfigInfo.jdField_b_of_type_JavaLangString, 0, paramArConfigInfo.jdField_a_of_type_JavaLangString, paramArConfigInfo.c, j, 0, true, localaodf);
+            if (!paramBoolean2) {
+              break label1557;
+            }
+            i += 1;
+            j = i;
+            if (QLog.isColorLevel())
+            {
+              j = i;
+              QLog.d("ArConfig_ArResourceDownload", 2, " downloadArResource.ret=" + paramBoolean2);
+            }
+            k -= 1;
+            break;
+            j = 2;
+            continue;
+            j = 3;
+            continue;
+            j = 1;
+          }
+          this.jdField_a_of_type_JavaUtilSet.clear();
+          i = j;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("ArConfig_ArResourceDownload", 2, "e= " + paramArConfigInfo.getMessage());
+            i = j;
+            continue;
+            this.jdField_a_of_type_Aodg.d();
+          }
         }
       }
     }
   }
   
-  private void a(Object paramObject)
+  public void onResp(NetResp paramNetResp)
   {
-    if ((paramObject instanceof Object[])) {
-      a((List)((Object[])(Object[])paramObject)[0]);
-    }
-  }
-  
-  private void a(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject instanceof Object[]))
+    if (paramNetResp.mResult == 3)
     {
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
+      QLog.d("ArConfig_ArResourceDownload", 1, "doOnResp is downloading...");
+      return;
     }
-  }
-  
-  private void a(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    if ((paramBoolean) && (paramArrayOfObject != null))
+    boolean bool1;
+    label28:
+    int i;
+    HttpNetReq localHttpNetReq;
+    boolean bool2;
+    Object localObject3;
+    aode localaode;
+    if (paramNetResp.mResult == 0)
     {
-      b(true, (NearbyMyTabCard)paramArrayOfObject[0]);
-      return;
+      bool1 = true;
+      i = paramNetResp.mErrCode;
+      localHttpNetReq = (HttpNetReq)paramNetResp.mReq;
+      ??? = localHttpNetReq.getUserData();
+      bool2 = bool1;
+      if (??? != null)
+      {
+        bool2 = bool1;
+        if ((??? instanceof aode))
+        {
+          localObject3 = this.jdField_a_of_type_Aodg.a();
+          localaode = (aode)???;
+          if (!TextUtils.isEmpty(localHttpNetReq.mOutPath)) {
+            break label1267;
+          }
+          QLog.d("ArConfig_ArResourceDownload", 1, "req.mOutPath is null, md5=" + localaode.jdField_b_of_type_JavaLangString);
+          if (!bool1) {
+            break label766;
+          }
+          i = 98765;
+          label136:
+          bool1 = false;
+        }
+      }
     }
-    b(false, null);
+    label264:
+    label291:
+    label1104:
+    label1115:
+    label1253:
+    label1259:
+    label1267:
+    for (;;)
+    {
+      int j;
+      if (bool1)
+      {
+        ??? = new File(localHttpNetReq.mOutPath);
+        ??? = ayja.a(((File)???).getAbsolutePath());
+        if ((!TextUtils.isEmpty((CharSequence)???)) && (!((String)???).equalsIgnoreCase(localaode.jdField_b_of_type_JavaLangString)))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ArConfig_ArResourceDownload", 2, "Md5 error|fileMD5=" + (String)??? + ", type=" + localaode.jdField_a_of_type_Int);
+          }
+          j = i;
+          bool2 = bool1;
+          if (localaode.jdField_a_of_type_Int != 1)
+          {
+            ((File)???).delete();
+            bool2 = false;
+            j = -100001;
+          }
+          if (localaode.jdField_b_of_type_Boolean) {
+            this.jdField_a_of_type_Aodg.a(localaode.jdField_b_of_type_JavaLangString, true);
+          }
+          bool1 = bool2;
+          i = j;
+          if (this.jdField_a_of_type_JavaUtilSet.contains(localaode.jdField_b_of_type_JavaLangString)) {
+            this.jdField_a_of_type_JavaUtilSet.remove(localaode.jdField_b_of_type_JavaLangString);
+          }
+          if (this.jdField_a_of_type_JavaUtilSet.isEmpty()) {
+            this.jdField_a_of_type_Boolean = false;
+          }
+          if ((localaode.jdField_a_of_type_Int != 1) && (localaode.jdField_a_of_type_Int != 2) && (localaode.jdField_a_of_type_Int != 3) && (localaode.jdField_a_of_type_Int != 4)) {
+            break label1104;
+          }
+          j = 1;
+          ??? = "0";
+          if (!TextUtils.isEmpty(paramNetResp.mErrDesc))
+          {
+            ??? = paramNetResp.mErrDesc;
+            ??? = ???;
+            if (QLog.isColorLevel())
+            {
+              QLog.d("ArConfig_ArResourceDownload", 2, "errDesc: " + (String)???);
+              ??? = ???;
+            }
+          }
+          ??? = new HashMap();
+          ((HashMap)???).put("url", axsb.a(localHttpNetReq.mReqUrl));
+          ((HashMap)???).put("resultCode", String.valueOf(paramNetResp.mResult));
+          ((HashMap)???).put("fileSize", String.valueOf(localaode.jdField_a_of_type_Long));
+          ((HashMap)???).put("param_errorDesc", ???);
+          if (!bool1) {
+            break label1115;
+          }
+          ((HashMap)???).put("param_FailCode", "0");
+          if ((j == 0) || (this.jdField_a_of_type_Boolean) || (!a((ArConfigInfo)localObject3))) {}
+        }
+      }
+      for (;;)
+      {
+        synchronized (this.jdField_a_of_type_ArrayOfByte)
+        {
+          for (;;)
+          {
+            if (!this.jdField_b_of_type_Boolean)
+            {
+              this.jdField_a_of_type_Aodg.d();
+              this.jdField_b_of_type_Boolean = true;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.i("ArConfig_ArResourceDownload", 2, "onResp:downloadSuccess!");
+            }
+            ??? = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+            StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance((String)???, "olympic_ar_download", bool1, 0L, 0L, (HashMap)???, null);
+            bool2 = bool1;
+            ??? = new File(localHttpNetReq.mOutPath);
+            if ((!bool2) || (!((File)???).exists())) {
+              break label1253;
+            }
+            l = ((File)???).length();
+            ??? = (PreDownloadController)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(193);
+            ??? = localHttpNetReq.mReqUrl;
+            if (!bool2) {
+              break label1259;
+            }
+            ((PreDownloadController)???).preDownloadSuccess((String)???, l);
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.i("ArConfig_ArResourceDownload", 2, "onResp:" + localHttpNetReq.mReqUrl + ", " + paramNetResp.mResult + ", " + paramNetResp.mErrCode);
+            return;
+            bool1 = false;
+            break label28;
+            label766:
+            break label136;
+            j = i;
+            bool2 = bool1;
+            if (localaode.jdField_a_of_type_Int != 3) {
+              break label264;
+            }
+            try
+            {
+              synchronized (this.jdField_a_of_type_ArrayOfByte)
+              {
+                Object localObject4 = ((ArConfigInfo)localObject3).getModelResByMd5(localaode.jdField_b_of_type_JavaLangString);
+                if ((!TextUtils.isEmpty(localaode.c)) && (localObject4 != null) && ((((ArCloudConfigInfo)localObject4).jdField_d_of_type_Int == 0) || (((ArCloudConfigInfo)localObject4).jdField_d_of_type_Int == 100)))
+                {
+                  localObject4 = new File(localaode.c);
+                  aoju.a(localaode.c, ((File)localObject4).getParentFile().getAbsolutePath() + File.separator + localaode.jdField_b_of_type_JavaLangString + File.separator);
+                  this.jdField_a_of_type_Aodg.a((ArConfigInfo)localObject3);
+                }
+                j = i;
+                bool2 = bool1;
+              }
+              if (!QLog.isColorLevel()) {
+                break label264;
+              }
+            }
+            catch (Exception localException)
+            {
+              ((File)???).delete();
+              if (localaode.jdField_a_of_type_Boolean)
+              {
+                bool1 = false;
+                i = -100002;
+              }
+              j = i;
+              bool2 = bool1;
+            }
+          }
+          QLog.d("ArConfig_ArResourceDownload", 2, "e= " + localException.getMessage());
+          j = i;
+          bool2 = bool1;
+          break label264;
+          if ((localaode.jdField_b_of_type_Int <= 3) && (!localaode.jdField_b_of_type_Boolean))
+          {
+            a(localaode);
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.i("ArConfig_ArResourceDownload", 2, "retry downLoad:retryUrl=" + localaode.jdField_a_of_type_JavaLangString + ",retryMd5= " + localaode.jdField_b_of_type_JavaLangString);
+            return;
+          }
+          if (localaode.jdField_b_of_type_Boolean) {
+            this.jdField_a_of_type_Aodg.a(localaode.jdField_b_of_type_JavaLangString, false);
+          }
+          break label291;
+          j = 0;
+        }
+        localException.put("param_FailCode", String.valueOf(i));
+        this.jdField_a_of_type_JavaUtilSet.clear();
+        synchronized (this.jdField_a_of_type_ArrayOfByte)
+        {
+          this.jdField_a_of_type_Boolean = false;
+          localObject3 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (((Iterator)localObject3).hasNext())
+          {
+            localaode = (aode)((Iterator)localObject3).next();
+            if (localaode.jdField_b_of_type_Long < localaode.jdField_a_of_type_Long) {
+              this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.cancelReq(localaode.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+            }
+          }
+        }
+        if ((j != 0) && (!this.jdField_b_of_type_Boolean))
+        {
+          this.jdField_a_of_type_Aodg.a(i, paramNetResp.mResult);
+          this.jdField_b_of_type_Boolean = true;
+        }
+        continue;
+        long l = 0L;
+        continue;
+        l = -1L;
+      }
+    }
   }
   
-  private void b(Object paramObject)
+  public void onUpdateProgeress(NetReq arg1, long paramLong1, long paramLong2)
   {
-    if (paramObject == null) {}
-    do
+    ??? = ???.getUserData();
+    if ((??? != null) && ((??? instanceof aode)))
+    {
+      ??? = (aode)???;
+      if (???.jdField_a_of_type_Int != 1) {}
+    }
+    else
     {
       return;
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length != 3);
-    a((FromServiceMsg)paramObject[0], (ToServiceMsg)paramObject[1], (Object[])paramObject[2]);
-  }
-  
-  private void b(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject instanceof Object[]))
+    }
+    String str = ???.jdField_b_of_type_JavaLangString;
+    synchronized (this.jdField_a_of_type_ArrayOfByte)
     {
-      paramObject = (Object[])paramObject;
-      b(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-    }
-  }
-  
-  private void c(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject instanceof Object[])) {
-      a(paramBoolean, (List)((Object[])(Object[])paramObject)[0]);
-    }
-  }
-  
-  private void d(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject instanceof Object[]))
-    {
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-    }
-  }
-  
-  private void e(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && ((paramObject instanceof Object[])))
-    {
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), ((Integer)paramObject[7]).intValue(), ((Integer)paramObject[8]).intValue(), (String)paramObject[9], (String)paramObject[10], (String)paramObject[11]);
-    }
-  }
-  
-  private void f(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && ((paramObject instanceof Object[])))
-    {
-      paramObject = (Object[])paramObject;
-      a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), ((Integer)paramObject[7]).intValue(), (String)paramObject[8]);
-    }
-  }
-  
-  private void g(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && ((paramObject instanceof Object[])))
-    {
-      paramObject = (Object[])paramObject;
-      a(((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Integer)paramObject[6]).intValue(), (String)paramObject[7]);
-    }
-  }
-  
-  private void h(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean == true) && (paramObject != null))
-    {
-      paramObject = (Object[])paramObject;
-      a(true, new LBSInfo(String.valueOf(paramObject[0]), String.valueOf(paramObject[1]), String.valueOf(paramObject[2]), String.valueOf(paramObject[3]), String.valueOf(paramObject[4]), String.valueOf(paramObject[5]), String.valueOf(paramObject[6]), String.valueOf(paramObject[7]), ((Integer)paramObject[8]).doubleValue(), ((Integer)paramObject[9]).doubleValue(), ((Integer)paramObject[10]).doubleValue(), (String[])paramObject[11]));
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        aode localaode = (aode)localIterator.next();
+        if (str.equals(localaode.jdField_b_of_type_JavaLangString))
+        {
+          paramLong2 = localaode.jdField_b_of_type_Long;
+          localaode.jdField_b_of_type_Long = paramLong1;
+          this.jdField_b_of_type_Long += paramLong1 - paramLong2;
+        }
+      }
+      if (!this.jdField_b_of_type_Boolean) {
+        this.jdField_a_of_type_Aodg.a(this.jdField_b_of_type_Long, this.jdField_a_of_type_Long);
+      }
       return;
     }
-    a(false, null);
-  }
-  
-  private void i(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (paramObject != null)) {
-      a(true, (byte[])paramObject);
-    }
-  }
-  
-  private void j(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && ((paramObject instanceof Object[])))
-    {
-      a(paramBoolean, (NearbyMyTabCard)((Object[])(Object[])paramObject)[0]);
-      return;
-    }
-    a(false, null);
-  }
-  
-  protected void a() {}
-  
-  protected void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, String paramString) {}
-  
-  protected void a(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg, Object paramObject) {}
-  
-  public void a(List<nearbyPeopleRecommend.QueryRspItem> paramList) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, String paramString1, String paramString2, String paramString3) {}
-  
-  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, oidb_0x8dd.RspBody paramRspBody, ToServiceMsg paramToServiceMsg, List<Object> paramList) {}
-  
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo) {}
-  
-  protected void a(boolean paramBoolean, NearbyMyTabCard paramNearbyMyTabCard) {}
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong) {}
-  
-  public void a(boolean paramBoolean, String paramString1, List<ayaw> paramList, String paramString2, int paramInt1, int paramInt2) {}
-  
-  protected void a(boolean paramBoolean1, ArrayList<StrangerInfo> paramArrayList, byte[] paramArrayOfByte, int paramInt, long paramLong1, String paramString, boolean paramBoolean2, long paramLong2, long paramLong3) {}
-  
-  protected void a(boolean paramBoolean, List<ilive_feeds_near_anchor.NearAnchorInfo> paramList) {}
-  
-  protected void a(boolean paramBoolean, byte[] paramArrayOfByte) {}
-  
-  public void b() {}
-  
-  protected void b(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  protected void b(boolean paramBoolean, int paramInt, oidb_0x8dd.RspBody paramRspBody, ToServiceMsg paramToServiceMsg, List<Object> paramList) {}
-  
-  public void b(boolean paramBoolean, NearbyMyTabCard paramNearbyMyTabCard) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    case 2: 
-    case 7: 
-    case 14: 
-    default: 
-      return;
-    case 15: 
-      b(paramObject);
-      return;
-    case 1: 
-    case 13: 
-      a(paramInt, paramBoolean, paramObject);
-      return;
-    case 12: 
-      a();
-      return;
-    case 3: 
-      j(paramBoolean, paramObject);
-      return;
-    case 4: 
-      a(paramBoolean, (Object[])paramObject);
-      return;
-    case 5: 
-      i(paramBoolean, paramObject);
-      return;
-    case 6: 
-      h(paramBoolean, paramObject);
-      return;
-    case 8: 
-      g(paramBoolean, paramObject);
-      return;
-    case 9: 
-      f(paramBoolean, paramObject);
-      return;
-    case 10: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (String)paramObject[0], (List)paramObject[1], (String)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
-      return;
-    case 11: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (ArrayList)paramObject[0], (byte[])paramObject[1], ((Integer)paramObject[2]).intValue(), ((Long)paramObject[3]).longValue(), (String)paramObject[4], ((Boolean)paramObject[5]).booleanValue(), ((Long)paramObject[6]).longValue(), ((Long)paramObject[7]).longValue());
-      return;
-    case 16: 
-      e(paramBoolean, paramObject);
-      return;
-    case 17: 
-      a(paramBoolean, paramObject);
-      return;
-    case 18: 
-      b(paramBoolean, paramObject);
-      return;
-    case 19: 
-      c(paramBoolean, paramObject);
-      return;
-    case 20: 
-      b();
-      return;
-    case 21: 
-      d(paramBoolean, paramObject);
-      return;
-    }
-    a(paramObject);
   }
 }
 

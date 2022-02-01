@@ -1,78 +1,35 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
-public class ardq
-  extends arac<ardp>
+class ardq
+  implements bggg<atie>
 {
-  @NonNull
-  public ardp a(int paramInt)
-  {
-    return new ardp();
-  }
+  ardq(arcu paramarcu, int paramInt, anaj paramanaj, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  @Nullable
-  public ardp a(araj[] paramArrayOfaraj)
+  public void a(atie paramatie, Object paramObject)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
+    paramObject = new Bundle();
+    paramObject.putInt("id", this.jdField_a_of_type_Int);
+    if ((paramatie != null) || (this.jdField_a_of_type_Int == 0))
     {
-      ardp localardp = ardp.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceManageConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
-      }
-      return localardp;
+      paramObject.putInt("result", 0);
+      this.jdField_a_of_type_Anaj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "onParsed is null");
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramObject);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      bggk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_colorscreen_set_fail", "0", "", Integer.toString(this.jdField_a_of_type_Int), null, null, 0.0F, 0.0F);
+      bggj.a("individual_v2_colorscreen_set_fail", "id:" + this.jdField_a_of_type_Int);
+      paramObject.putInt("result", 1);
     }
-    return null;
-  }
-  
-  public void a(ardp paramardp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "onUpdate " + paramardp.toString());
-    }
-  }
-  
-  public Class<ardp> clazz()
-  {
-    return ardp.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DeviceManageConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 528;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardq
  * JD-Core Version:    0.7.0.1
  */

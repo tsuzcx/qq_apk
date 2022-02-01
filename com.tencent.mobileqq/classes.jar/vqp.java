@@ -1,22 +1,10 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.graphics.PointF;
-import android.widget.ImageView;
-import com.tencent.biz.qqcircle.manager.QCircleFuelAnimationManager.1;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class vqp
-  extends AnimatorListenerAdapter
+public abstract interface vqp<Request extends vqr, Respond extends vqm>
 {
-  public vqp(QCircleFuelAnimationManager.1 param1, PointF paramPointF) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    this.jdField_a_of_type_ComTencentBizQqcircleManagerQCircleFuelAnimationManager$1.b.setVisibility(4);
-    this.jdField_a_of_type_ComTencentBizQqcircleManagerQCircleFuelAnimationManager$1.b.setX(this.jdField_a_of_type_AndroidGraphicsPointF.x);
-    this.jdField_a_of_type_ComTencentBizQqcircleManagerQCircleFuelAnimationManager$1.b.setY(this.jdField_a_of_type_AndroidGraphicsPointF.y + bhtq.a(5.0F));
-    this.jdField_a_of_type_ComTencentBizQqcircleManagerQCircleFuelAnimationManager$1.b.clearAnimation();
-  }
+  public abstract void a(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage);
 }
 
 

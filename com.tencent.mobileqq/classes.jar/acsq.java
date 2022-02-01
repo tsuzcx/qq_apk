@@ -1,93 +1,90 @@
-import com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acsq
-  implements DownloadListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private WeakReference<GdtMvDownloadBtnManager> a;
+  public acsq(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public acsq(GdtMvDownloadBtnManager paramGdtMvDownloadBtnManager)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a = new WeakReference(paramGdtMvDownloadBtnManager);
-  }
-  
-  public void installSucceed(String paramString1, String paramString2)
-  {
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.a(paramString1, paramString2);
+    if (AssistantSettingActivity.a(this.a))
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
     }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    acvc.a("GdtMvDownloadBtnManager", "onDownloadCancel: ");
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.d(paramDownloadInfo);
+    if (!NetworkUtil.isNetworkAvailable(this.a))
+    {
+      QQToast.a(BaseApplication.getContext(), 1, 2131694109, 0).b(this.a.getTitleBarHeight());
+      localObject = this.a.e;
+      if (!paramBoolean) {}
+      for (boolean bool = true;; bool = false)
+      {
+        ((FormMultiLineSwitchItem)localObject).setChecked(bool);
+        break;
+      }
     }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.a(paramDownloadInfo, paramInt1, paramString, paramInt2);
+    Object localObject = aqgp.c();
+    label131:
+    label212:
+    label233:
+    QQAppInterface localQQAppInterface;
+    if ((paramBoolean) && (((aqgo)localObject).a <= 1))
+    {
+      if (!bgov.a(this.a.app, "have_show_ptt_tip", false))
+      {
+        QLog.e("vip_ptt.AssistantSettingActivity", 1, "open the ptt check box and tip to user");
+        AssistantSettingActivity.b(this.a);
+      }
+      if ((!paramBoolean) && (((aqgo)localObject).a <= 1)) {
+        bgov.b(this.a.app, "have_add_ptt_gray_msg", false);
+      }
+      AssistantSettingActivity.a(this.a, paramBoolean);
+      ((amov)this.a.app.getBusinessHandler(2)).p(paramBoolean);
+      if (!paramBoolean) {
+        break label322;
+      }
+      bcef.b(null, "dc00898", "", "", "0X8009DF4", "0X8009DF4", 1, 0, "", "", "", "");
+      localObject = "normal";
+      if (!VipUtils.c(this.a.app)) {
+        break label349;
+      }
+      localObject = "vip";
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label369;
+      }
     }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    acvc.a("GdtMvDownloadBtnManager", "onDownloadFinish: ");
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.c(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    acvc.a("GdtMvDownloadBtnManager", "onDownloadPause: ");
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.a(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    acvc.a("GdtMvDownloadBtnManager", "onDownloadUpdate: ");
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.a(paramList);
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    acvc.a("GdtMvDownloadBtnManager", "onDownloadWait: ");
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.b(paramDownloadInfo);
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.c(paramString1, paramString2);
-    }
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
-    if (localGdtMvDownloadBtnManager != null) {
-      localGdtMvDownloadBtnManager.b(paramString1, paramString2);
+    label322:
+    label349:
+    label369:
+    for (int i = 1;; i = 2)
+    {
+      bcef.b(localQQAppInterface, "dc00898", "", "", "", "0X800A415", i, 0, "", "", "", (String)localObject);
+      break;
+      if ((!paramBoolean) || (VipUtils.b(this.a.app))) {
+        break label131;
+      }
+      QLog.e("vip_ptt.AssistantSettingActivity", 1, "open the ptt check box but u r not svip");
+      AssistantSettingActivity.c(this.a);
+      this.a.e.setChecked(false);
+      break;
+      bcef.b(null, "dc00898", "", "", "0X8009DF4", "0X8009DF4", 2, 0, "", "", "", "");
+      break label212;
+      if (!VipUtils.b(this.a.app)) {
+        break label233;
+      }
+      localObject = "svip";
+      break label233;
     }
   }
 }

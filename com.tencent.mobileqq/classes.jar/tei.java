@@ -1,42 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.viola.core.ViolaInstance;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.WordNavView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class tei
-  implements tiy
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private tei(WordNavView paramWordNavView) {}
   
-  public tei(BridgeModule paramBridgeModule) {}
-  
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    ViolaFragment localViolaFragment;
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance() != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getFragment() instanceof ViolaFragment)))
+    float f = paramMotionEvent.getY();
+    Iterator localIterator = WordNavView.a(this.a).entrySet().iterator();
+    while (localIterator.hasNext())
     {
-      localViolaFragment = (ViolaFragment)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getFragment();
-      if (!paramBoolean) {
-        break label85;
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if ((f >= ((Float)localEntry.getKey()).floatValue() - this.a.getHeight() / WordNavView.a(this.a).size() / 2) && (f <= ((Float)localEntry.getKey()).floatValue() + this.a.getHeight() / WordNavView.a(this.a).size() / 2)) {
+        if (WordNavView.a(this.a) != null) {
+          WordNavView.a(this.a).a((String)localEntry.getValue());
+        }
       }
-      this.jdField_a_of_type_JavaLangString = localViolaFragment.getStatusBarColor();
-      this.jdField_a_of_type_Boolean = localViolaFragment.getStatusBarFontColorWhite().booleanValue();
-      localViolaFragment.setStatusBarColor("#FF000000");
-      localViolaFragment.initStatusBarColor("#FF000000");
-      localViolaFragment.setStatusBarFontColor(Boolean.valueOf(true), true);
     }
-    label85:
-    do
-    {
-      return;
-      localViolaFragment.setStatusBarColor(this.jdField_a_of_type_JavaLangString);
-      localViolaFragment.initStatusBarColor(this.jdField_a_of_type_JavaLangString);
-      localViolaFragment.setStatusBarFontColor(Boolean.valueOf(this.jdField_a_of_type_Boolean), true);
-    } while ((!localViolaFragment.isSuspension()) || (localViolaFragment.getCommonSuspensionGestureLayout() == null));
-    localViolaFragment.getCommonSuspensionGestureLayout().g();
+    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 

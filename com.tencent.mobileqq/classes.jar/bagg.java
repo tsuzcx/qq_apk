@@ -1,16 +1,8 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-
-class bagg
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bagg
 {
-  bagg(bagf parambagf, View paramView) {}
+  public abstract void h();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.jdField_a_of_type_AndroidViewView.setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-  }
+  public abstract void i();
 }
 
 

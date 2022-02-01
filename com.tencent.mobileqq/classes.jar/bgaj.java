@@ -1,33 +1,50 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.vas.VasApngUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class bgaj
-  implements bgpp
+public final class bgaj
+  implements URLDrawable.URLDrawableListener
 {
-  public bgaj(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public bgaj(Resources paramResources, String paramString, ImageView paramImageView, Drawable paramDrawable) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.o();
-    if ((paramJSONObject != null) && (paramJSONObject.has("retcode")))
+    int i;
+    if (paramURLDrawable != null)
     {
-      paramInt = paramJSONObject.optInt("retcode");
-      if (paramInt == 0) {
-        this.a.j();
+      i = AIOUtils.dp2px(15.0F, this.jdField_a_of_type_AndroidContentResResources);
+      j = paramURLDrawable.getIntrinsicHeight();
+      if (j == 0)
+      {
+        boolean bool = new File(VasApngUtil.getCacheFilePath(this.jdField_a_of_type_JavaLangString)).delete();
+        QLog.e("VipUtils", 1, "onLoadSuccessed drawableHeight=0, deleteSucc=" + bool + " url=" + this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       }
     }
     else
     {
       return;
     }
-    if (paramInt == 111000)
-    {
-      QQToast.a(this.a.getActivity(), 2131696766, 0).a();
-      return;
-    }
-    QQToast.a(this.a.getActivity(), 2131696826, 0).a();
+    int j = paramURLDrawable.getIntrinsicWidth() * i / j;
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    localLayoutParams.height = i;
+    localLayoutParams.width = j;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
   }
 }
 

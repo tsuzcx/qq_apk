@@ -1,32 +1,34 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import android.view.View;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class adhf
-  extends adic
+  implements aljf
 {
-  public int a()
+  public adhf(ForwardRecentActivity paramForwardRecentActivity) {}
+  
+  public void a(View paramView)
   {
-    return 1000;
+    boolean bool = ForwardRecentActivity.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardEntranceActivity", 2, "onItemViewClicked" + bool);
+    }
+    if (bool)
+    {
+      ForwardRecentActivity.a(this.a, paramView);
+      return;
+    }
+    this.a.a(paramView);
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  public boolean a(String paramString, int paramInt)
   {
-    new bcrt().f(paramList, paramList1, paramStringBuilder);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (23 == paramElem.common_elem.uint32_service_type.get());
+    return ForwardRecentActivity.a(this.a, paramString, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adhf
  * JD-Core Version:    0.7.0.1
  */

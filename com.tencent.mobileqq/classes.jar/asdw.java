@@ -1,60 +1,56 @@
+import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.PrecoverData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class asdw
-  extends asdn
+  extends MSFServlet
 {
-  public asdw(QQAppInterface paramQQAppInterface)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super("qq.android.early.precover", paramQQAppInterface);
-  }
-  
-  public int a()
-  {
-    return 10045;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return PrecoverData.class;
-  }
-  
-  public String a()
-  {
-    return "actEarlyPrecover";
-  }
-  
-  public void a(XmlData paramXmlData)
-  {
-    super.a(paramXmlData);
-    if ((QLog.isColorLevel()) && (paramXmlData != null) && ((paramXmlData instanceof PrecoverData))) {
-      QLog.d("PrecoverHandler", 2, new Object[] { "doOnServerResp, xmlData=", paramXmlData });
+    if (QLog.isColorLevel()) {
+      QLog.d("FileTransferServlet<FileAssistant>", 2, "onReceive called");
     }
+    if (paramIntent == null)
+    {
+      QLog.e("FileTransferServlet<FileAssistant>", 1, "onReceive : req is null");
+      return;
+    }
+    paramIntent.getExtras().putParcelable("response", paramFromServiceMsg);
+    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
+    paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+    paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    localQQAppInterface.getFileTransferHandler().a(paramIntent, paramFromServiceMsg);
   }
   
-  public boolean a()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return false;
-  }
-  
-  public String b()
-  {
-    return "prd";
-  }
-  
-  public boolean i()
-  {
-    File localFile = new File(c());
-    return (localFile != null) && (localFile.exists());
-  }
-  
-  public boolean j()
-  {
-    File localFile = new File(d());
-    return (localFile != null) && (localFile.exists());
+    if (QLog.isColorLevel()) {
+      QLog.d("FileTransferServlet<FileAssistant>", 2, "onSend called");
+    }
+    if (paramIntent == null) {
+      QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : req is null");
+    }
+    do
+    {
+      return;
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent == null) {
+        break;
+      }
+      paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+      paramPacket.putSendData(paramIntent.getWupBuffer());
+      paramPacket.setTimeout(paramIntent.getTimeout());
+      paramPacket.addAttribute("fastresend", Boolean.valueOf(true));
+    } while (paramIntent.isNeedCallback());
+    paramPacket.setNoResponse();
+    return;
+    QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : toMsg is null");
   }
 }
 

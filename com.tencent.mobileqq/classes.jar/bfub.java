@@ -1,18 +1,13 @@
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.ScrollView;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
-
-public class bfub
-  implements bdyf
+final class bfub
+  implements bgso
 {
-  public bfub(TroopEnterEffectController.3 param3) {}
+  bfub(aufo paramaufo) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onResult(boolean paramBoolean)
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.this$0.a.getLayoutParams();
-    localLayoutParams.width = paramInt1;
-    localLayoutParams.height = paramInt2;
-    this.a.this$0.a.setLayoutParams(localLayoutParams);
+    if ((paramBoolean) && (this.a != null)) {
+      this.a.a();
+    }
   }
 }
 

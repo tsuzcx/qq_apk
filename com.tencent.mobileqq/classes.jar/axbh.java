@@ -1,32 +1,35 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class axbh
-  implements ValueAnimator.AnimatorUpdateListener
+class axbh
+  implements View.OnClickListener
 {
-  public axbh(MedalGuideView paramMedalGuideView) {}
+  axbh(axax paramaxax) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("scale")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setScaleX(f);
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setScaleY(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("translationX")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationX(f);
-    f = ((Float)paramValueAnimator.getAnimatedValue("translationY")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationY(f);
-    f = paramValueAnimator.getAnimatedFraction();
-    if ((!this.a.jdField_a_of_type_Boolean) && (f >= 1.0F))
-    {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_a_of_type_Blhq.sendEmptyMessage(3);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.getIntExtra("param_mode", 0) == 1) {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131698350);
+      }
     }
-    if (f >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
+      continue;
+      this.a.b();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.i == 0) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131698350);
+      } else if (this.a.a()) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131698346);
+      } else {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.d();
+      }
     }
   }
 }

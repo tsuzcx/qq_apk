@@ -1,13 +1,14 @@
 package com.tencent.gdtad.statistics;
 
-import acvc;
+import abrl;
 import com.tencent.ad.tangram.net.AdHttp;
 import com.tencent.ad.tangram.net.AdHttp.Params;
+import org.json.JSONObject;
 
 public final class GdtReportForAntiSpam$1
   implements Runnable
 {
-  public GdtReportForAntiSpam$1(byte[] paramArrayOfByte) {}
+  public GdtReportForAntiSpam$1(byte[] paramArrayOfByte, JSONObject paramJSONObject) {}
   
   public void run()
   {
@@ -15,14 +16,14 @@ public final class GdtReportForAntiSpam$1
     localParams.setUrl("https://rpt.gdt.qq.com/mqq_log");
     localParams.method = "POST";
     localParams.contentType = "application/json";
-    localParams.requestData = this.a;
+    localParams.requestData = this.jdField_a_of_type_ArrayOfByte;
     if (!localParams.canSend())
     {
-      acvc.d("GdtReportForAntiSpam", "reportAntiSpamForClick error");
+      abrl.d("GdtReportForAntiSpam", "reportAntiSpam error");
       return;
     }
     AdHttp.send(localParams);
-    acvc.b("GdtReportForAntiSpam", String.format("reportAntiSpamForClick responseCode:%d durationMillis:%d", new Object[] { Integer.valueOf(localParams.responseCode), Long.valueOf(localParams.durationMillis) }));
+    abrl.b("GdtReportForAntiSpam", String.format("reportAntiSpam responseCode:%d durationMillis:%d %s", new Object[] { Integer.valueOf(localParams.responseCode), Long.valueOf(localParams.durationMillis), this.jdField_a_of_type_OrgJsonJSONObject.toString() }));
   }
 }
 

@@ -1,37 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.olympic.ShuayishuaConfig;
+import java.util.Comparator;
 
-class axqd
-  implements aulr
+public final class axqd
+  implements Comparator<ShuayishuaConfig>
 {
-  axqd(axqb paramaxqb, aulq paramaulq) {}
-  
-  public void a()
+  public int a(ShuayishuaConfig paramShuayishuaConfig1, ShuayishuaConfig paramShuayishuaConfig2)
   {
-    Message localMessage = axqb.a(this.jdField_a_of_type_Axqb).obtainMessage(1);
-    axpx localaxpx = this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_Aulq.a());
-    if (localaxpx != null)
-    {
-      localaxpx.jdField_a_of_type_Int = 0;
-      localMessage.obj = localaxpx;
-      axqb.a(this.jdField_a_of_type_Axqb).sendMessage(localMessage);
+    long l = paramShuayishuaConfig1.realBegin - paramShuayishuaConfig2.realBegin;
+    if (l > 0L) {
+      return 1;
     }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("MultiRichMediaSaveManager", 2, "saveVideoFile fail, errorCode = " + paramInt + " ,errorMsg = " + paramString);
+    if (l < 0L) {
+      return -1;
     }
-    axpx localaxpx = this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_Aulq.a());
-    if (localaxpx != null)
-    {
-      localaxpx.jdField_a_of_type_Int = -1;
-      localaxpx.b = paramInt;
-      localaxpx.jdField_a_of_type_JavaLangString = paramString;
-      axqb.a(this.jdField_a_of_type_Axqb, localaxpx);
-    }
+    return 0;
   }
 }
 

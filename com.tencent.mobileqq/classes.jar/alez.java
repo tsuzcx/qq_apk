@@ -1,22 +1,29 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+
 public class alez
+  implements Animation.AnimationListener
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
+  public alez(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public alez(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.a.leftView.clearAnimation();
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.clearAnimation();
+    this.a.leftView.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.a.rightViewText.setClickable(true);
+    this.a.rightViewText.setText(SpecailCareListActivity.jdField_a_of_type_JavaLangString);
+    this.a.rightViewText.setContentDescription(amtj.a(2131713336));
+    this.a.c = false;
   }
   
-  public String toString()
-  {
-    return "ShowInfo{Red=" + this.jdField_a_of_type_Boolean + ",Corner=" + this.jdField_b_of_type_Boolean + ",con='" + this.jdField_a_of_type_JavaLangString + '\'' + ",buf='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

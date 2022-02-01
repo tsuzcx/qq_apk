@@ -1,43 +1,16 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall.SDKInstallListener.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-
-public class rwk
-  implements rzz
+class rwk
+  extends pkt
 {
-  private Handler a;
+  private rwk(rwh paramrwh) {}
   
-  public rwk(Handler paramHandler)
+  public void f(int paramInt)
   {
-    this.a = paramHandler;
+    this.a.a(2);
   }
   
-  private void a(boolean paramBoolean, int paramInt)
+  public void i()
   {
-    ThreadManager.excute(new VideoPluginInstall.SDKInstallListener.1(this, paramBoolean, paramInt), 16, null, true);
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "onInstalledSuccessed: ");
-    }
-    a(true, 0);
-    if (this.a != null) {
-      this.a.sendEmptyMessage(0);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video", 2, "onInstalledFailed: code=" + paramInt);
-    }
-    a(false, paramInt);
-    if (this.a != null) {
-      this.a.sendEmptyMessage(1);
-    }
+    rwh.a(this.a, true);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import acqa;
+import abmj;
 import android.content.Intent;
 import com.tencent.mobileqq.mini.appbrand.jsapi.AdFrequencyLimit;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
@@ -20,10 +20,10 @@ class InterstitialAdPlugin$MiniInterstitialAd$1$1
     Object localObject;
     if (paramInt1 == 10001)
     {
-      if (InterstitialAdPlugin.MiniInterstitialAd.access$300(this.this$1.this$0) != null)
+      if (InterstitialAdPlugin.MiniInterstitialAd.access$500(this.this$1.this$0) != null)
       {
-        localObject = InterstitialAdPlugin.MiniInterstitialAd.access$400(this.this$1.this$0, this.this$1.val$compId, -1);
-        InterstitialAdPlugin.MiniInterstitialAd.access$300(this.this$1.this$0).evaluateSubcribeJS("onInterstitialAdClose", ((JSONObject)localObject).toString(), 0);
+        localObject = InterstitialAdPlugin.MiniInterstitialAd.access$600(this.this$1.this$0, this.this$1.val$compId, -1);
+        InterstitialAdPlugin.MiniInterstitialAd.access$500(this.this$1.this$0).evaluateSubcribeJS("onInterstitialAdClose", ((JSONObject)localObject).toString(), 0);
       }
       AdFrequencyLimit.setInterstitialAdShowing(false);
       if (paramInt2 != -1) {
@@ -36,8 +36,8 @@ class InterstitialAdPlugin$MiniInterstitialAd$1$1
       QLog.i("[minigame] MiniInterstitialAd", 1, (String)localObject);
       try
       {
-        if (InterstitialAdPlugin.MiniInterstitialAd.access$100(this.this$1.this$0) != null) {
-          InterstitialAdPlugin.MiniInterstitialAd.access$100(this.this$1.this$0).a(InterstitialAdPlugin.MiniInterstitialAd.access$000(this.this$1.this$0).activityContext, paramInt2, paramIntent);
+        if (InterstitialAdPlugin.MiniInterstitialAd.access$300(this.this$1.this$0) != null) {
+          InterstitialAdPlugin.MiniInterstitialAd.access$300(this.this$1.this$0).a(InterstitialAdPlugin.MiniInterstitialAd.access$000(this.this$1.this$0).activityContext, paramInt2, paramIntent);
         }
         MiniAppController.getInstance().removeActivityResultListener(this);
         bool = true;

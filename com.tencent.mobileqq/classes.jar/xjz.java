@@ -1,38 +1,27 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GatherCardInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
-class xjz
-  extends PagerAdapter
+public class xjz
 {
-  private List<View> jdField_a_of_type_JavaUtilList;
+  private qqstory_struct.GatherCardInfo a;
   
-  public xjz(List<View> paramList)
+  public xjz(qqstory_struct.GatherCardInfo paramGatherCardInfo)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    this.a = paramGatherCardInfo;
   }
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public xjz(byte[] paramArrayOfByte)
   {
-    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup.addView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    this.a = new qqstory_struct.GatherCardInfo();
+    try
+    {
+      this.a.mergeFrom(paramArrayOfByte);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      xvv.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
+    }
   }
 }
 

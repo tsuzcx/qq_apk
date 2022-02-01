@@ -1,6 +1,11 @@
-public abstract interface pyg
+import android.widget.TextView;
+
+class pyg
 {
-  public abstract void a();
+  int jdField_a_of_type_Int = 2;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  private pyg(pyd parampyd) {}
 }
 
 

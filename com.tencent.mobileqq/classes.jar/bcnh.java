@@ -1,57 +1,79 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class bcnh
+  extends bcnu
 {
-  private static int jdField_a_of_type_Int;
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static Map<Integer, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public bcnh(KidModeAdvanceSettingFragment paramKidModeAdvanceSettingFragment) {}
   
-  public static int a(int paramInt)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    Integer localInteger = (Integer)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-    if (localInteger == null) {
-      return 0;
-    }
-    return localInteger.intValue();
-  }
-  
-  public static String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public static void a()
-  {
-    try
-    {
-      jdField_a_of_type_JavaLangString = "";
-      jdField_a_of_type_Int = 0;
-      jdField_a_of_type_JavaUtilMap.clear();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void a(int paramInt)
-  {
+    boolean bool = false;
+    int i = 0;
+    KidModeAdvanceSettingFragment localKidModeAdvanceSettingFragment;
     switch (paramInt)
     {
+    default: 
+    case 8: 
+    case 16: 
+    case 32: 
+      do
+      {
+        return;
+        bool = bcoo.b(paramInt);
+        KidModeAdvanceSettingFragment.a(this.a, paramInt, bool);
+      } while (paramBoolean);
+      localKidModeAdvanceSettingFragment = this.a;
+      if (!bool) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        KidModeAdvanceSettingFragment.a(localKidModeAdvanceSettingFragment, paramInt, paramBoolean);
+        QQToast.a(this.a.getActivity(), 1, 2131718765, 0).a();
+        return;
+      }
+    }
+    if (paramBoolean)
+    {
+      paramInt = i;
+      if (KidModeAdvanceSettingFragment.a(this.a).a()) {
+        paramInt = 1;
+      }
+      bcoo.a(paramInt);
     }
     for (;;)
     {
+      KidModeAdvanceSettingFragment.a(this.a).setEnabled(true);
       return;
-      try
-      {
-        jdField_a_of_type_Int += 1;
-        jdField_a_of_type_JavaLangString = jdField_a_of_type_JavaLangString + paramInt + "|";
-        jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), Integer.valueOf(jdField_a_of_type_Int));
+      localKidModeAdvanceSettingFragment = this.a;
+      FormMultiLineSwitchItem localFormMultiLineSwitchItem = KidModeAdvanceSettingFragment.a(this.a);
+      paramBoolean = bool;
+      if (!KidModeAdvanceSettingFragment.a(this.a).a()) {
+        paramBoolean = true;
       }
-      finally {}
+      KidModeAdvanceSettingFragment.a(localKidModeAdvanceSettingFragment, localFormMultiLineSwitchItem, paramBoolean, KidModeAdvanceSettingFragment.a(this.a));
+      bcnw.a(this.a.getActivity(), amtj.a(2131718765), 1);
+    }
+  }
+  
+  public void b(boolean paramBoolean, Bundle paramBundle)
+  {
+    KidModeAdvanceSettingFragment.a(this.a);
+  }
+  
+  public void c(boolean paramBoolean, Bundle paramBundle)
+  {
+    String str = paramBundle.getString("phone");
+    paramBundle = paramBundle.getString("mibao_set_url");
+    if (StringUtil.isEmpty(str)) {}
+    for (int i = 1;; i = 0)
+    {
+      bcoo.a(i, str, paramBundle);
+      KidModeAdvanceSettingFragment.a(this.a, StringUtil.isEmpty(str));
+      KidModeAdvanceSettingFragment.a(this.a, 4);
+      return;
     }
   }
 }

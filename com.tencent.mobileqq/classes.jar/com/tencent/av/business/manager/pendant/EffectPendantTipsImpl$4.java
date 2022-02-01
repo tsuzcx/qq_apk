@@ -1,18 +1,18 @@
 package com.tencent.av.business.manager.pendant;
 
-import lhw;
-import mbb;
+import lhq;
+import mak;
 
 public class EffectPendantTipsImpl$4
   implements Runnable
 {
-  public EffectPendantTipsImpl$4(lhw paramlhw) {}
+  public EffectPendantTipsImpl$4(lhq paramlhq) {}
   
   public void run()
   {
     try
     {
-      mbb.a(lhw.a(this.this$0), 1016);
+      mak.a(lhq.a(this.this$0), 1016);
       return;
     }
     catch (Exception localException)

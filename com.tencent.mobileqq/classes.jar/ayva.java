@@ -1,99 +1,232 @@
-import android.app.PendingIntent;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyLockScreenJumpDelegate;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import android.content.res.Resources;
+import android.os.Parcelable;
+import android.text.TextUtils;
+import android.util.Log;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.ark.ArkAppCenterUtil;
+import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneShareData;
+import cooperation.qzone.QZoneShareManager;
+import cooperation.qzone.share.QzoneShareServlet;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import kotlin.Metadata;
-import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;
-import kotlin.text.Charsets;
-import org.jetbrains.annotations.NotNull;
+import kotlin.jvm.internal.StringCompanionObject;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/KanDianJumpScheme;", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "generatePendingIntent", "Landroid/content/Intent;", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "messageRecord", "Lcom/tencent/mobileqq/data/MessageRecord;", "context", "Landroid/content/Context;", "nativeJumpIntent", "needCustomJump", "", "processMsg0x210Sub0x135ExtData", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/bussiness/anonymous/utils/AskAnonymouslyUtil$Companion;", "", "()V", "ARK_APP_COMPACT", "", "ARK_APP_NAME", "ARK_APP_PROMPT", "ARK_APP_VER", "ARK_APP_VIEW", "JUMP_URL", "META_BUTTON_KEY", "META_JUMP_URL_KEY", "META_META_DATA_TYPE", "META_SUMMARY_KEY", "META_TITLE_KEY", "SHARE_INVITE_TO_QZONE_BG_URL", "SHARE_TO_QZONE_ACTION_TYPE", "", "SHARE_TO_QZONE_ICON_URL", "SHARE_TO_QZONE_RECOM_BOTTOM_ID", "SHARE_TO_QZONE_SUMMARY", "SHARE_TO_QZONE_TITLE", "SHARE_TYPE_DETAIL", "SHARE_TYPE_INVITE", "TAG", "constructShareData", "Lcooperation/qzone/QZoneShareData;", "imageUrl", "jumpUrl", "getAskAnonymouslyArkMeta", "getInviteAskAnonymouslyIntent", "Landroid/content/Intent;", "activity", "Landroid/app/Activity;", "showQzone", "", "getMetaString", "inviteAskAnonymously", "", "shareDetailToQZone", "shareInviteToQZone", "syncDetailToQZone", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class ayva
-  extends ayup
 {
-  public static final ayvb a = new ayvb(null);
-  
-  private final Intent a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, Context paramContext, ayut paramayut)
+  private final Intent a(Activity paramActivity, boolean paramBoolean)
   {
-    if (ozs.c(paramMessageRecord))
+    paramActivity = new Intent((Context)paramActivity, ForwardRecentActivity.class);
+    try
     {
-      paramQQAppInterface = paramQQAppInterface.getManager(296);
-      if (paramQQAppInterface == null) {
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager");
+      paramActivity.putExtra("forward_type", 46);
+      paramActivity.putExtra("is_ark_display_share", true);
+      paramActivity.putExtra("forward_ark_app_name", "com.tencent.askanonymously");
+      paramActivity.putExtra("forward_ark_app_view", "invite");
+      paramActivity.putExtra("forward_ark_app_ver", "1.0.0.1");
+      paramActivity.putExtra("forward_ark_app_prompt", "[匿问我答] 绝对坦白，等你来提问～");
+      paramActivity.putExtra("forward_ark_app_compat", "[匿问我答，等你来提问～] 请使用最新版手机QQ查看");
+      paramActivity.putExtra("k_qzone", paramBoolean);
+      paramActivity.putExtra("selection_mode", 2);
+      String str = ((ayva)this).a();
+      paramActivity.putExtra("forward_ark_app_meta", str);
+      if (QLog.isColorLevel()) {
+        QLog.d("AskAnonymouslyUtil", 2, "getInviteAskAnonymouslyIntent metaDataString: " + str);
       }
-      paramQQAppInterface = ReadInJoyLockScreenJumpDelegate.a(paramContext, 6, ((KandianDailyManager)paramQQAppInterface).b());
-      Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "ReadInJoyLockScreenJumpD…moveLockScreenRedDodInfo)");
+      paramActivity.putExtras(QQCustomArkDialog.AppInfo.zipArgs("com.tencent.askanonymously", "invite", "1.0.0.1", str, ArkAppCenterUtil.getDensity(), null, null));
+      return paramActivity;
     }
-    for (;;)
+    catch (JSONException localJSONException)
     {
-      paramQQAppInterface.putExtra("is_from_push_component", true);
-      paramQQAppInterface.putExtra("push_main_business_id", paramayut.jdField_a_of_type_Int);
-      paramQQAppInterface.putExtra("push_sub_business_id", paramayut.b);
-      paramQQAppInterface.putExtra("push_id", paramayut.c);
-      paramQQAppInterface.addFlags(268435456);
-      return paramQQAppInterface;
-      paramQQAppInterface = oix.a(paramContext, 6);
-      Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "ReadInJoyActivityHelper.…tent(context, launchFrom)");
+      QLog.e("AskAnonymouslyUtil", 1, "getInviteAskAnonymouslyIntent exception message: " + localJSONException.getMessage());
     }
+    return paramActivity;
   }
   
-  private final MessageRecord a(QQAppInterface paramQQAppInterface, ayut paramayut)
+  private final QZoneShareData a(String paramString1, String paramString2)
   {
-    paramQQAppInterface = paramQQAppInterface.getManager(162);
-    if (paramQQAppInterface == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager");
-    }
-    paramQQAppInterface = ((KandianMergeManager)paramQQAppInterface).a(paramayut.jdField_a_of_type_ArrayOfByte, paramayut.jdField_a_of_type_JavaLangString);
-    Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "km.createFakeMsgFrom0x13…ata, pushComponent.title)");
-    return paramQQAppInterface;
-  }
-  
-  private final PendingIntent e(ayut paramayut)
-  {
-    Object localObject = (Intent)null;
-    BaseApplication localBaseApplication = BaseApplication.context;
-    if (paramayut.b == 1)
+    QZoneShareData localQZoneShareData = new QZoneShareData();
+    localQZoneShareData.mSummary = "匿名提问，有问必答";
+    localQZoneShareData.mTitle = "匿问我答";
+    localQZoneShareData.mImageUrls = new ArrayList();
+    localQZoneShareData.mImageUrls.add(paramString1);
+    localQZoneShareData.targetUrl = paramString2;
+    localQZoneShareData.from = 0;
+    localQZoneShareData.qzoneShareInfo = ((Map)new HashMap());
+    paramString1 = localQZoneShareData.qzoneShareInfo;
+    Intrinsics.checkExpressionValueIsNotNull(paramString1, "shareData.qzoneShareInfo");
+    paramString1.put("change_big_pic", "1");
+    paramString1 = localQZoneShareData.qzoneShareInfo;
+    Intrinsics.checkExpressionValueIsNotNull(paramString1, "shareData.qzoneShareInfo");
+    paramString1.put("need_circular_bead", "1");
+    paramString1 = new JSONObject();
+    try
     {
-      QLog.d("KanDianJumpScheme", 1, "nativeJumpIntent bytesExtData: " + new String(paramayut.jdField_a_of_type_ArrayOfByte, Charsets.UTF_8));
-      localObject = BaseApplicationImpl.getApplication();
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-      if (localObject == null) {
-        throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
-      }
-      QQAppInterface localQQAppInterface = (QQAppInterface)localObject;
-      MessageRecord localMessageRecord = a(localQQAppInterface, paramayut);
-      Intrinsics.checkExpressionValueIsNotNull(localBaseApplication, "context");
-      localObject = a(localQQAppInterface, localMessageRecord, (Context)localBaseApplication, paramayut);
-      ozs.a(localQQAppInterface.a(), localMessageRecord, (Intent)localObject);
+      paramString1.put("icon_url", "https://downv6.qq.com/qq_relation/ask_anonymously/ask_anonymously_invite_icon_to_qzone_v2.png");
+      paramString1.put("title", "匿问我答");
+      paramString1.put("summary", "匿名提问，有问必答");
+      paramString1.put("jump_url", paramString2);
+      paramString2 = BaseApplicationImpl.getApplication();
+      Intrinsics.checkExpressionValueIsNotNull(paramString2, "BaseApplicationImpl.getApplication()");
+      paramString1.put("button_txt", paramString2.getResources().getString(2131693811));
+      paramString1.put("recom_bottom_id", 5);
+      paramString2 = paramString1.toString();
+      Intrinsics.checkExpressionValueIsNotNull(paramString2, "json.toString()");
+      paramString1.put("action_type", 2);
+      paramString1 = localQZoneShareData.qzoneShareInfo;
+      Intrinsics.checkExpressionValueIsNotNull(paramString1, "shareData.qzoneShareInfo");
+      paramString1.put("comm_recom_bottom", paramString2);
+      QLog.d("AskAnonymouslyUtil", 1, "shareInviteToQZone， comm_recom_bottom： " + paramString2);
+      return localQZoneShareData;
     }
-    for (;;)
+    catch (Exception paramString1)
     {
-      paramayut = PendingIntent.getActivity((Context)localBaseApplication, paramayut.d, (Intent)localObject, 134217728);
-      Intrinsics.checkExpressionValueIsNotNull(paramayut, "PendingIntent.getActivit…tent.FLAG_UPDATE_CURRENT)");
-      return paramayut;
-      QLog.d("KanDianJumpScheme", 1, new Object[] { "nativeJumpIntent: called. ", "invalid subBusinessId. pushComponent: " + paramayut });
+      QLog.e("AskAnonymouslyUtil", 1, "shareInviteToQZone exception: " + Log.getStackTraceString((Throwable)paramString1));
     }
+    return localQZoneShareData;
   }
   
-  @NotNull
-  protected PendingIntent a(@NotNull ayut paramayut)
+  @Nullable
+  public final String a()
   {
-    Intrinsics.checkParameterIsNotNull(paramayut, "pushComponent");
-    return e(paramayut);
+    return ((ayva)this).b();
   }
   
-  protected boolean a()
+  public final void a(@Nullable Activity paramActivity)
   {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.i("AskAnonymouslyUtil", 2, "shareInviteToQZone");
+    }
+    if (paramActivity == null)
+    {
+      QLog.e("AskAnonymouslyUtil", 2, "shareInviteToQZone error: activity is null");
+      return;
+    }
+    Object localObject1 = StringCompanionObject.INSTANCE;
+    localObject1 = new Object[2];
+    Object localObject2 = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseApplicationImpl.getApplication()");
+    localObject2 = ((BaseApplicationImpl)localObject2).getRuntime();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseApplicationImpl.getApplication().runtime");
+    localObject1[0] = ((AppRuntime)localObject2).getAccount();
+    localObject1[1] = Integer.valueOf(5);
+    localObject1 = String.format("https://ti.qq.com/v2/anonymous/question?_wv=16777218&_wwv=129&uin=%s&from=%d", Arrays.copyOf((Object[])localObject1, localObject1.length));
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "java.lang.String.format(format, *args)");
+    localObject2 = (ayva)this;
+    if (localObject1 == null) {
+      Intrinsics.throwNpe();
+    }
+    localObject1 = ((ayva)localObject2).a("https://downv6.qq.com/qq_relation/ask_anonymously/ask_anonymously_invite_bg_to_qzone_v2.png", (String)localObject1);
+    paramActivity = (Context)paramActivity;
+    localObject2 = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseApplicationImpl.getApplication()");
+    localObject2 = ((BaseApplicationImpl)localObject2).getRuntime();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseApplicationImpl.getApplication().runtime");
+    QZoneShareManager.shareToQzoneFromAskAnonymously(paramActivity, ((AppRuntime)localObject2).getAccount(), (QZoneShareData)localObject1, 1);
+  }
+  
+  public final void a(@Nullable Activity paramActivity, @Nullable String paramString1, @Nullable String paramString2)
+  {
+    if ((paramActivity == null) || (TextUtils.isEmpty((CharSequence)paramString1)) || (TextUtils.isEmpty((CharSequence)paramString2)))
+    {
+      QLog.e("AskAnonymouslyUtil", 2, "shareDetailToQZone error: param is invalid");
+      return;
+    }
+    ayva localayva = (ayva)this;
+    if (paramString1 == null) {
+      Intrinsics.throwNpe();
+    }
+    if (paramString2 == null) {
+      Intrinsics.throwNpe();
+    }
+    paramString1 = localayva.a(paramString1, paramString2);
+    paramActivity = (Context)paramActivity;
+    paramString2 = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(paramString2, "BaseApplicationImpl.getApplication()");
+    paramString2 = paramString2.getRuntime();
+    Intrinsics.checkExpressionValueIsNotNull(paramString2, "BaseApplicationImpl.getApplication().runtime");
+    QZoneShareManager.shareToQzoneFromAskAnonymously(paramActivity, paramString2.getAccount(), paramString1, 2);
+  }
+  
+  public final void a(@Nullable Activity paramActivity, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AskAnonymouslyUtil", 2, "inviteAskAnonymously");
+    }
+    if (paramActivity == null)
+    {
+      QLog.e("AskAnonymouslyUtil", 2, "inviteAskAnonymously error: activity is null");
+      return;
+    }
+    Intent localIntent = ((ayva)this).a(paramActivity, paramBoolean);
+    if (localIntent == null)
+    {
+      QLog.e("AskAnonymouslyUtil", 1, "inviteAskAnonymously error: params wrong");
+      return;
+    }
+    paramActivity.startActivity(localIntent);
+  }
+  
+  @Nullable
+  public final String b()
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    Object localObject1 = StringCompanionObject.INSTANCE;
+    localObject1 = new Object[2];
+    Object localObject2 = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseApplicationImpl.getApplication()");
+    localObject2 = ((BaseApplicationImpl)localObject2).getRuntime();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "BaseApplicationImpl.getApplication().runtime");
+    localObject1[0] = ((AppRuntime)localObject2).getAccount();
+    localObject1[1] = Integer.valueOf(4);
+    localObject1 = String.format("https://ti.qq.com/v2/anonymous/question?_wv=16777218&_wwv=129&uin=%s&from=%d", Arrays.copyOf((Object[])localObject1, localObject1.length));
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "java.lang.String.format(format, *args)");
+    localJSONObject2.put("jump_url", localObject1);
+    localJSONObject1.put("invite", localJSONObject2);
+    return localJSONObject1.toString();
+  }
+  
+  public final void b(@Nullable Activity paramActivity, @Nullable String paramString1, @Nullable String paramString2)
+  {
+    if ((paramActivity == null) || (TextUtils.isEmpty((CharSequence)paramString1)) || (TextUtils.isEmpty((CharSequence)paramString2)))
+    {
+      QLog.e("AskAnonymouslyUtil", 2, "syncDetailToQZone error: param is invalid");
+      return;
+    }
+    ayva localayva = (ayva)this;
+    if (paramString1 == null) {
+      Intrinsics.throwNpe();
+    }
+    if (paramString2 == null) {
+      Intrinsics.throwNpe();
+    }
+    paramString1 = localayva.a(paramString1, paramString2);
+    paramActivity = new NewIntent((Context)paramActivity, QzoneShareServlet.class);
+    paramString2 = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(paramString2, "BaseApplicationImpl.getApplication()");
+    paramString2 = paramString2.getRuntime();
+    Intrinsics.checkExpressionValueIsNotNull(paramString2, "BaseApplicationImpl.getApplication().runtime");
+    paramActivity.putExtra("uin", paramString2.getAccount());
+    paramActivity.putExtra("sharedata", (Parcelable)paramString1);
+    paramString1 = BaseApplicationImpl.getApplication();
+    Intrinsics.checkExpressionValueIsNotNull(paramString1, "BaseApplicationImpl.getApplication()");
+    paramString1.getRuntime().startServlet(paramActivity);
   }
 }
 

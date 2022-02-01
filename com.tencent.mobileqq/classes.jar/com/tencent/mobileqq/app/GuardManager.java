@@ -1,5 +1,17 @@
 package com.tencent.mobileqq.app;
 
+import amog;
+import amoh;
+import amrq;
+import amrw;
+import amrx;
+import amtg;
+import amth;
+import amti;
+import amvg;
+import amvh;
+import amxj;
+import amxy;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Application;
@@ -14,30 +26,20 @@ import android.os.Message;
 import android.os.Process;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import antq;
-import antr;
-import anxi;
-import anxo;
-import anxp;
-import anzg;
-import anzh;
-import anzi;
-import aobd;
-import aobe;
-import aodi;
-import apbp;
-import arta;
-import avsj;
-import bdll;
-import bdmc;
-import bdml;
-import bdna;
-import behm;
-import bhsi;
-import bhsw;
+import anvs;
+import aqmy;
+import aufl;
+import bcef;
+import bcew;
+import bcfl;
+import bdai;
+import bfyz;
+import bfzl;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.startup.step.StartService;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Array;
@@ -69,14 +71,14 @@ public class GuardManager
   public static int e = 15;
   public int a;
   public long a;
+  private amti jdField_a_of_type_Amti;
   private Application jdField_a_of_type_AndroidAppApplication;
   private volatile BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private anzi jdField_a_of_type_Anzi;
   public volatile String a;
   private final Map<String, String> jdField_a_of_type_JavaUtilMap;
   Random jdField_a_of_type_JavaUtilRandom;
-  anzi[] jdField_a_of_type_ArrayOfAnzi = new anzi[9];
+  amti[] jdField_a_of_type_ArrayOfAmti = new amti[9];
   public long[][] a;
   public int b;
   long b;
@@ -156,11 +158,11 @@ public class GuardManager
     for (;;)
     {
       return;
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(bhsi.a(paramContext)));
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(bfyz.a(paramContext)));
       break;
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(bhsi.m(paramContext, paramString)));
+      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(bfyz.m(paramContext, paramString)));
       break;
-      long l2 = bhsw.a(l1);
+      long l2 = bfzl.a(l1);
       jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(l2));
       switch (paramInt)
       {
@@ -169,14 +171,14 @@ public class GuardManager
       {
         QLog.d("GuardManager", 2, "Daily Report info key=" + paramString + " timeMillisInTodayZero=" + l2 + " nowTime=" + l1);
         return;
-        bhsi.a(paramContext, l2);
-        bdll.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "start_up", "front", "device_cnt", "", 1, "");
+        bfyz.a(paramContext, l2);
+        bcef.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "start_up", "front", "device_cnt", "", 1, "");
         continue;
-        bhsi.k(paramContext, paramString, l2);
-        bdll.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "login", "front", "login", "", 1, "");
+        bfyz.k(paramContext, paramString, l2);
+        bcef.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "login", "front", "login", "", 1, "");
         continue;
-        bhsi.k(paramContext, paramString, l2);
-        bdll.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "login", "msf", "login", "", 1, "");
+        bfyz.k(paramContext, paramString, l2);
+        bcef.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "login", "msf", "login", "", 1, "");
       }
     }
   }
@@ -211,7 +213,50 @@ public class GuardManager
     if (paramMessage.arg1 < 3) {
       a(i);
     }
-    this.jdField_a_of_type_Anzi.a(i, paramMessage.obj);
+    this.jdField_a_of_type_Amti.a(i, paramMessage.obj);
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    for (;;)
+    {
+      long l2;
+      try
+      {
+        if (BaseApplicationImpl.sProcessId != 1) {
+          return;
+        }
+        long l1 = SystemClock.uptimeMillis();
+        if ((!paramBoolean) && (l1 - JobReporter.sThreadJobReportLastReportTs.get() < 600000L)) {
+          break;
+        }
+        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+        l2 = JobReporter.sThreadJobReportTotalCount.getAndSet(0L);
+        if ((l2 == 0L) || (localQQAppInterface == null) || (!d())) {
+          break;
+        }
+        String str1 = Long.toString(JobReporter.sThreadJobReportCountLevelOne.getAndSet(0L));
+        String str2 = Long.toString(JobReporter.sThreadJobReportCountLevelTwo.getAndSet(0L));
+        String str3 = Long.toString(JobReporter.sThreadJobReportCountLevelThree.getAndSet(0L));
+        if (l2 > 2147483647L)
+        {
+          i = 2147483647;
+          JobReporter.sThreadJobReportLastReportTs.set(l1);
+          HashMap localHashMap = new HashMap();
+          localHashMap.put("countLevel_1", str1);
+          localHashMap.put("countLevel_2", str2);
+          localHashMap.put("countLevel_3", str3);
+          StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(localQQAppInterface.getCurrentUin(), "maxThreadManagerJobWait", true, i, 1L, localHashMap, "", false);
+          return;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("GuardManager", 1, "reportThreadJobWaitTime", localThrowable);
+        return;
+      }
+      int i = (int)l2;
+    }
   }
   
   private boolean a(Message paramMessage)
@@ -223,8 +268,8 @@ public class GuardManager
       }
       if (((paramMessage.arg1 == 2) || (paramMessage.arg1 == 3) || (paramMessage.arg1 == 0)) && ((paramMessage.arg2 == 4) || (paramMessage.arg2 == 6)))
       {
-        QQAppInterface.a().b();
-        anxi.a().a();
+        QQAppInterface.getBatteryStats().b();
+        amrq.a().a();
       }
       if (this.jdField_a_of_type_JavaUtilRandom == null) {
         this.jdField_a_of_type_JavaUtilRandom = new Random();
@@ -233,8 +278,8 @@ public class GuardManager
         return true;
       }
       HashMap localHashMap = new HashMap();
-      localHashMap.put("before", anzi.jdField_a_of_type_ArrayOfJavaLangString[paramMessage.arg1]);
-      localHashMap.put("after", anzi.jdField_a_of_type_ArrayOfJavaLangString[paramMessage.arg2]);
+      localHashMap.put("before", amti.jdField_a_of_type_ArrayOfJavaLangString[paramMessage.arg1]);
+      localHashMap.put("after", amti.jdField_a_of_type_ArrayOfJavaLangString[paramMessage.arg2]);
       a("GM_guardChangeS", localHashMap);
     }
     catch (Throwable paramMessage)
@@ -256,7 +301,7 @@ public class GuardManager
       a((QQAppInterface)localObject1);
       if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
       {
-        this.jdField_a_of_type_AndroidContentBroadcastReceiver = new anzh(this);
+        this.jdField_a_of_type_AndroidContentBroadcastReceiver = new amth(this);
         localObject2 = new IntentFilter();
         ((IntentFilter)localObject2).addAction("android.intent.action.SCREEN_OFF");
         ((IntentFilter)localObject2).addAction("android.intent.action.SCREEN_ON");
@@ -269,8 +314,9 @@ public class GuardManager
       localObject2 = new Intent("com.tencent.plugin.state.change");
       ((Intent)localObject2).putExtra("key_plugin_state", 1);
       BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject2);
+      a(this.jdField_a_of_type_JavaLangString);
       if (StartService.jdField_a_of_type_Boolean) {
-        MemoryManager.a().a(BaseApplicationImpl.sApplication, (QQAppInterface)localObject1);
+        MemoryManager.getInstance().clearTopAppMemory(BaseApplicationImpl.sApplication, (QQAppInterface)localObject1);
       }
       b(3, paramMessage.obj);
       return;
@@ -278,49 +324,6 @@ public class GuardManager
     catch (Throwable localThrowable)
     {
       break label89;
-    }
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    for (;;)
-    {
-      long l2;
-      try
-      {
-        if (BaseApplicationImpl.sProcessId != 1) {
-          return;
-        }
-        long l1 = SystemClock.uptimeMillis();
-        if ((!paramBoolean) && (l1 - JobReporter.sThreadJobReportLastReportTs.get() < 600000L)) {
-          break;
-        }
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-        l2 = JobReporter.sThreadJobReportTotalCount.getAndSet(0L);
-        if ((l2 == 0L) || (localQQAppInterface == null) || (!c())) {
-          break;
-        }
-        String str1 = Long.toString(JobReporter.sThreadJobReportCountLevelOne.getAndSet(0L));
-        String str2 = Long.toString(JobReporter.sThreadJobReportCountLevelTwo.getAndSet(0L));
-        String str3 = Long.toString(JobReporter.sThreadJobReportCountLevelThree.getAndSet(0L));
-        if (l2 > 2147483647L)
-        {
-          i = 2147483647;
-          JobReporter.sThreadJobReportLastReportTs.set(l1);
-          HashMap localHashMap = new HashMap();
-          localHashMap.put("countLevel_1", str1);
-          localHashMap.put("countLevel_2", str2);
-          localHashMap.put("countLevel_3", str3);
-          bdmc.a(BaseApplicationImpl.getApplication()).a(localQQAppInterface.c(), "maxThreadManagerJobWait", true, i, 1L, localHashMap, "", false);
-          return;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("GuardManager", 1, "reportThreadJobWaitTime", localThrowable);
-        return;
-      }
-      int i = (int)l2;
     }
   }
   
@@ -349,14 +352,14 @@ public class GuardManager
       this.jdField_a_of_type_AndroidAppApplication.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
       label68:
       this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-      a(false);
+      a(false, str);
       b(4, paramMessage.obj);
       paramMessage = new Intent("com.tencent.plugin.state.change");
       paramMessage.putExtra("key_plugin_state", 0);
       BaseApplicationImpl.getApplication().sendBroadcast(paramMessage);
       paramMessage = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
       if (paramMessage.isRunning()) {
-        paramMessage.a(BaseApplicationImpl.sApplication);
+        paramMessage.showIdleNotification(BaseApplicationImpl.sApplication, null);
       }
       return false;
     }
@@ -366,7 +369,25 @@ public class GuardManager
     }
   }
   
-  private static boolean c()
+  private boolean c()
+  {
+    boolean bool = true;
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null)
+    {
+      QLog.d("GuardManager", 1, "[isLogin] app is null");
+      return false;
+    }
+    localObject = ((BaseApplicationImpl)localObject).getRuntime();
+    if ((localObject != null) && (((AppRuntime)localObject).isLogin())) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
+  }
+  
+  private static boolean d()
   {
     if (!ThreadSetting.isPublicVersion) {}
     while (ThreadSetting.isGrayVersion) {
@@ -375,38 +396,38 @@ public class GuardManager
     return JobReporter.ramdomReport(10000);
   }
   
-  anzi a(int paramInt)
+  amti a(int paramInt)
   {
-    anzi localanzi = this.jdField_a_of_type_ArrayOfAnzi[paramInt];
-    Object localObject = localanzi;
-    if (localanzi == null) {
+    amti localamti = this.jdField_a_of_type_ArrayOfAmti[paramInt];
+    Object localObject = localamti;
+    if (localamti == null) {
       switch (paramInt)
       {
       default: 
         throw new RuntimeException("WTF");
       case 2: 
-        localObject = new anxo();
+        localObject = new amrw();
       }
     }
     for (;;)
     {
-      ((anzi)localObject).jdField_a_of_type_ComTencentMobileqqAppGuardManager = this;
-      ((anzi)localObject).jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_ArrayOfAnzi[paramInt] = localObject;
+      ((amti)localObject).jdField_a_of_type_ComTencentMobileqqAppGuardManager = this;
+      ((amti)localObject).jdField_a_of_type_Int = paramInt;
+      this.jdField_a_of_type_ArrayOfAmti[paramInt] = localObject;
       return localObject;
-      localObject = new anxp();
+      localObject = new amrx();
       continue;
-      localObject = new antq();
+      localObject = new amog();
       continue;
-      localObject = new antr();
+      localObject = new amoh();
       continue;
-      localObject = new aobe();
+      localObject = new amvh();
       continue;
-      localObject = new anzi();
+      localObject = new amti();
       continue;
-      localObject = new aobd();
+      localObject = new amvg();
       continue;
-      localObject = new aodi();
+      localObject = new amxj();
     }
   }
   
@@ -509,7 +530,7 @@ public class GuardManager
     if (Looper.myLooper() == ThreadManager.getFileThreadLooper())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("GuardManager", 2, "nextState: " + anzi.jdField_a_of_type_ArrayOfJavaLangString[this.f] + ", " + anzi.jdField_a_of_type_ArrayOfJavaLangString[paramInt] + ", " + paramObject);
+        QLog.d("GuardManager", 2, "nextState: " + amti.jdField_a_of_type_ArrayOfJavaLangString[this.f] + ", " + amti.jdField_a_of_type_ArrayOfJavaLangString[paramInt] + ", " + paramObject);
       }
       if (this.f == 8) {
         return;
@@ -518,15 +539,15 @@ public class GuardManager
       {
         Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3, this.f, paramInt);
         this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1000L);
-        this.jdField_a_of_type_Anzi = a(paramInt);
+        this.jdField_a_of_type_Amti = a(paramInt);
         this.f = paramInt;
       }
       for (;;)
       {
-        this.jdField_a_of_type_Anzi.a(5, paramObject);
+        this.jdField_a_of_type_Amti.a(5, paramObject);
         return;
         if (paramInt == 0) {
-          this.jdField_a_of_type_Anzi = a(paramInt);
+          this.jdField_a_of_type_Amti = a(paramInt);
         }
       }
     }
@@ -538,78 +559,98 @@ public class GuardManager
     if ((this.jdField_a_of_type_Long == 0L) && (this.jdField_a_of_type_JavaLangString != null))
     {
       if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.getAccount()))) {
-        break label61;
+        break label92;
       }
-      if (this.jdField_b_of_type_Long > 0L)
-      {
-        this.jdField_a_of_type_Long = this.jdField_b_of_type_Long;
-        this.jdField_b_of_type_Long = 0L;
+      if (this.jdField_b_of_type_Long <= 0L) {
+        break label82;
       }
+      this.jdField_a_of_type_Long = this.jdField_b_of_type_Long;
+      this.jdField_b_of_type_Long = 0L;
     }
-    else
+    for (;;)
     {
+      QLog.d("GuardManager", 1, "848QQDT [updateStartTime] resetTime: " + this.jdField_a_of_type_Long);
+      return;
+      label82:
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    }
+    label92:
+    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+  }
+  
+  public void a(String paramString)
+  {
+    int i = 0;
+    try
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      int j = AppSetting.a();
+      String str = amxy.a();
+      boolean bool = c();
+      QLog.d("GuardManager", 1, "848QQDT [reportForegroundEvent] isLogin: " + bool);
+      if (bool) {
+        i = 1;
+      }
+      bcef.b(localQQAppInterface, "dc00898", "", "", "qq_login", "front_open", 0, 1, i, "", String.valueOf(j), str, paramString);
       return;
     }
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    return;
-    label61:
-    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    catch (Throwable paramString)
+    {
+      QLog.e("GuardManager", 1, "848QQDT [reportForegroundEvent]", paramString);
+    }
   }
   
   public void a(String paramString, HashMap<String, String> paramHashMap)
   {
-    bdmc localbdmc = bdmc.a(BaseApplication.getContext());
-    paramHashMap.put("config", anzg.a().jdField_a_of_type_JavaLangString);
-    localbdmc.a("", paramString, true, 0L, 0L, paramHashMap, "");
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Long == 0L) {}
-    long l1;
-    int i;
-    do
-    {
-      return;
-      l1 = SystemClock.uptimeMillis();
-      long l2 = l1 - this.jdField_a_of_type_Long;
-      int j = (int)(l2 / 1000L);
-      i = j;
-      if (l2 % 1000L >= 500L) {
-        i = j + 1;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("GuardManager", 2, "reportForeground(" + paramBoolean + "):[" + this.jdField_a_of_type_Long + " - " + l1 + " = " + i + "]");
-      }
-      if (i > 0)
-      {
-        Object localObject = new Date(NetConnInfoCenter.getServerTimeMillis());
-        localObject = new SimpleDateFormat("yyyyMMdd", Locale.US).format((Date)localObject);
-        bdll.b((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), "CliOper", "", "", "Online_time", "Fe_time", 0, i, 0, (String)localObject, "", "", "");
-      }
-      if (!paramBoolean) {
-        break;
-      }
-    } while (i <= 0);
-    this.jdField_a_of_type_Long = l1;
-    return;
-    this.jdField_a_of_type_Long = 0L;
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
+    paramHashMap.put("config", amtg.a().jdField_a_of_type_JavaLangString);
+    localStatisticCollector.collectPerformance("", paramString, true, 0L, 0L, paramHashMap, "");
   }
   
   public void a(boolean paramBoolean, String paramString)
   {
-    avsj.b(paramString);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString);
-    Intent localIntent = new Intent("com.tencent.process.exit");
-    localIntent.putExtra("exit_type", 101);
-    localIntent.putExtra("qq_mode_foreground", paramBoolean);
-    localIntent.putStringArrayListExtra("procNameList", localArrayList);
-    localIntent.putExtra("verify", BaseApplicationImpl.getLocalVerify(localArrayList, false));
-    this.jdField_a_of_type_AndroidAppApplication.sendBroadcast(localIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("GuardManager", 2, "GmVersion= 20140619, app versioncode = " + arta.a(BaseApplicationImpl.getContext()) + ", toExitTargetProcess=" + paramString + " isForeground=" + paramBoolean);
+    if (this.jdField_a_of_type_Long == 0L) {
+      return;
     }
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = l1 - this.jdField_a_of_type_Long;
+    int j = (int)(l2 / 1000L);
+    int i = j;
+    if (l2 % 1000L >= 500L) {
+      i = j + 1;
+    }
+    String str1 = amxy.a();
+    String str2 = String.valueOf(AppSetting.a());
+    boolean bool = c();
+    QLog.d("GuardManager", 1, "848QQDT _reportForeground(" + paramBoolean + "):[" + this.jdField_a_of_type_Long + " - " + l1 + " = " + i + "]，process:" + BaseApplication.processName + "isLogin: " + bool + ", appid=" + str2 + ", activity =" + str1);
+    Object localObject;
+    QQAppInterface localQQAppInterface;
+    if (i > 0)
+    {
+      localObject = new Date(NetConnInfoCenter.getServerTimeMillis());
+      localObject = new SimpleDateFormat("yyyyMMdd", Locale.US).format((Date)localObject);
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      if (!bool) {
+        break label306;
+      }
+    }
+    label306:
+    for (j = 1;; j = 0)
+    {
+      bcef.b(localQQAppInterface, "CliOper", "", "", "Online_time", "Fe_time", 0, i, j, (String)localObject, str2, str1, paramString);
+      if (!paramBoolean) {
+        break label312;
+      }
+      if (i <= 0) {
+        break;
+      }
+      this.jdField_a_of_type_Long = l1;
+      QLog.d("GuardManager", 1, "848QQDT [reportForegroundRunningTime] resetTime: " + this.jdField_a_of_type_Long);
+      return;
+    }
+    label312:
+    this.jdField_a_of_type_Long = 0L;
+    QLog.d("GuardManager", 1, "848QQDT [reportForegroundRunningTime] resetTime: " + this.jdField_a_of_type_Long);
   }
   
   public void a(boolean paramBoolean, String... paramVarArgs)
@@ -658,9 +699,9 @@ public class GuardManager
                 break label307;
               }
               localArrayList1.add(str1);
-              avsj.b(str1);
+              aufl.b(str1);
               if (str1.endsWith(":qzone")) {
-                bdml.a().d(bdml.a());
+                bcew.a().d(bcew.a());
               }
             }
           }
@@ -688,7 +729,7 @@ public class GuardManager
       }
       label318:
       if (QLog.isColorLevel()) {
-        QLog.d("GuardManager", 2, "GmVersion= 20140619, app versioncode = " + arta.a(BaseApplicationImpl.getContext()) + ", toExitProcess=" + localArrayList1 + ", forgroundProcess=" + localArrayList2 + ", exceptions:" + localArrayList3);
+        QLog.d("GuardManager", 2, "GmVersion= 20140619, app versioncode = " + aqmy.a(BaseApplicationImpl.getContext()) + ", toExitProcess=" + localArrayList1 + ", forgroundProcess=" + localArrayList2 + ", exceptions:" + localArrayList3);
       }
       if (localArrayList1.size() > 0)
       {
@@ -732,13 +773,55 @@ public class GuardManager
       jdField_a_of_type_Boolean = true;
       a(this.jdField_a_of_type_AndroidAppApplication, "daily_boot_report", 0);
       a(this.jdField_a_of_type_AndroidAppApplication, jdField_a_of_type_Boolean);
-      behm.a(null);
-      apbp.a(1);
+      bdai.a(null);
+      anvs.a(1);
       continue;
       jdField_a_of_type_Boolean = false;
       a(this.jdField_a_of_type_AndroidAppApplication, "daily_boot_report", 0);
       a(this.jdField_a_of_type_AndroidAppApplication, jdField_a_of_type_Boolean);
-      apbp.a(2);
+      anvs.a(2);
+    }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    long l = MemoryManager.getMemory(Process.myPid());
+    a(0);
+    int i = 0;
+    int j = 0;
+    int k = 0;
+    while (i < 15)
+    {
+      k = (int)(k + this.jdField_a_of_type_Array2dOfLong[1][i]);
+      j = (int)(j + this.jdField_a_of_type_Array2dOfLong[0][i]);
+      i += 1;
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("qqUsedMemory", String.valueOf(l / 1024L));
+    localHashMap.put("resumeCount", String.valueOf(k * 1.0D / 15.0D));
+    localHashMap.put("msgCount", String.valueOf(j * 1.0D / 15.0D));
+    localHashMap.put("activeLevel", String.valueOf(amtg.a().a(this.jdField_a_of_type_Array2dOfLong, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int)));
+    if (paramBoolean) {}
+    for (String str = "actLiteActive";; str = "actFullActive")
+    {
+      a(str, localHashMap);
+      return;
+    }
+  }
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    aufl.b(paramString);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramString);
+    Intent localIntent = new Intent("com.tencent.process.exit");
+    localIntent.putExtra("exit_type", 101);
+    localIntent.putExtra("qq_mode_foreground", paramBoolean);
+    localIntent.putStringArrayListExtra("procNameList", localArrayList);
+    localIntent.putExtra("verify", BaseApplicationImpl.getLocalVerify(localArrayList, false));
+    this.jdField_a_of_type_AndroidAppApplication.sendBroadcast(localIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("GuardManager", 2, "GmVersion= 20140619, app versioncode = " + aqmy.a(BaseApplicationImpl.getContext()) + ", toExitTargetProcess=" + paramString + " isForeground=" + paramBoolean);
     }
   }
   
@@ -758,37 +841,11 @@ public class GuardManager
   
   public void c(boolean paramBoolean)
   {
-    long l = MemoryManager.a(Process.myPid());
-    a(0);
-    int i = 0;
-    int j = 0;
-    int k = 0;
-    while (i < 15)
-    {
-      k = (int)(k + this.jdField_a_of_type_Array2dOfLong[1][i]);
-      j = (int)(j + this.jdField_a_of_type_Array2dOfLong[0][i]);
-      i += 1;
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("qqUsedMemory", String.valueOf(l / 1024L));
-    localHashMap.put("resumeCount", String.valueOf(k * 1.0D / 15.0D));
-    localHashMap.put("msgCount", String.valueOf(j * 1.0D / 15.0D));
-    localHashMap.put("activeLevel", String.valueOf(anzg.a().a(this.jdField_a_of_type_Array2dOfLong, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int)));
-    if (paramBoolean) {}
-    for (String str = "actLiteActive";; str = "actFullActive")
-    {
-      a(str, localHashMap);
-      return;
-    }
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    anzg localanzg = anzg.a();
+    amtg localamtg = amtg.a();
     AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    int i = localanzg.jdField_a_of_type_Int;
-    long l = localanzg.jdField_b_of_type_Int | i << 8;
-    int j = anzg.a().jdField_c_of_type_Int;
+    int i = localamtg.jdField_a_of_type_Int;
+    long l = localamtg.jdField_b_of_type_Int | i << 8;
+    int j = amtg.a().jdField_c_of_type_Int;
     if (paramBoolean) {}
     for (i = 1;; i = 0)
     {
@@ -824,7 +881,7 @@ public class GuardManager
         a(paramMessage);
         return true;
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(5, 12000L);
-        this.jdField_a_of_type_Anzi.a();
+        this.jdField_a_of_type_Amti.a();
         return true;
       } while (!b());
       a(this.f + 1, "trick_p_msg");

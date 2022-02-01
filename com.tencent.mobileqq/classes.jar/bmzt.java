@@ -1,37 +1,29 @@
-import NS_USER_ACTION_REPORT.ItemInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import mqq.app.AppRuntime;
+import android.app.Activity;
+import dov.com.qq.im.capture.view.StaticStickerProviderView;
 
-class bmzt
-  extends bmzu
+public class bmzt
+  implements bnld
 {
-  private bmzt()
+  public bmzt(StaticStickerProviderView paramStaticStickerProviderView, Activity paramActivity) {}
+  
+  public void a()
   {
-    super(null);
+    xvv.b("StaticStickerProviderView", "用户点击重新拉取地理贴纸");
+    ((bmua)bmql.a(4)).a(true, this.jdField_a_of_type_AndroidAppActivity);
   }
   
-  protected void a(HashMap<bmzs, ArrayList<ItemInfo>> paramHashMap)
+  public void a(String paramString)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    ArrayList localArrayList = new ArrayList();
-    paramHashMap = paramHashMap.entrySet().iterator();
-    while (paramHashMap.hasNext())
-    {
-      Object localObject = (Map.Entry)paramHashMap.next();
-      bmzw localbmzw = new bmzw(null);
-      localbmzw.a((bmzs)((Map.Entry)localObject).getKey());
-      localObject = ((ArrayList)((Map.Entry)localObject).getValue()).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        localbmzw.a((ItemInfo)((Iterator)localObject).next());
-      }
-      localArrayList.add(localbmzw.a());
+    xvv.b("StaticStickerProviderView", "用户点击下载：" + paramString);
+    xwb.b("0X80075DD");
+    if (!((bnhh)vux.a(39)).a(paramString, true)) {
+      xvv.d("StaticStickerProviderView", "用户点击下载启动失败");
     }
-    bcvj.a(8, localAppRuntime, new bmzx(null).a(localAppRuntime.getLongAccountUin()).a(bnwt.c()).a(), localArrayList);
+  }
+  
+  public void b(String paramString)
+  {
+    xvv.b("StaticStickerProviderView", "用户点击下载取消：" + paramString);
   }
 }
 

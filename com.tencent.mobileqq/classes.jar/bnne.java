@@ -1,72 +1,131 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendShareFragment;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.Typeface;
+import android.os.Build.VERSION;
+import android.text.TextPaint;
+import android.view.animation.LinearInterpolator;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class bnne
-  extends bnnn
 {
-  private String a;
+  public int a;
+  public TextPaint a;
+  public ArrayList<bnmx> a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public bnne()
+  public bnne(int paramInt1, int paramInt2, Typeface paramTypeface, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    this.jdField_a_of_type_JavaLangString = bnne.class.getSimpleName();
+    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
+    if (Build.VERSION.SDK_INT >= 21) {
+      this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
+    }
+    this.jdField_a_of_type_AndroidTextTextPaint.setDither(true);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramInt1);
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(paramInt2);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+    this.jdField_a_of_type_Int = paramInt3;
+    this.b = paramInt4;
+    this.c = paramInt5;
+    this.d = paramInt6;
   }
   
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public static int a()
   {
-    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {}
-    for (;;)
+    Random localRandom = new Random();
+    int i = localRandom.nextInt(5);
+    int j = localRandom.nextInt(9);
+    return localRandom.nextInt(9) + (i * 100 + j * 10);
+  }
+  
+  public static bnne a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, Typeface paramTypeface, bnmo parambnmo)
+  {
+    paramTypeface = new bnne(paramInt1, paramInt2, paramTypeface, paramInt3, paramInt4, paramInt5, paramInt6);
+    paramTypeface.f = 1;
+    paramTypeface.a(paramCharSequence, parambnmo);
+    return paramTypeface;
+  }
+  
+  public static void a(int paramInt, Paint paramPaint)
+  {
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      return false;
-      if (("openUrl".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
-        if (QLog.isColorLevel()) {
-          QLog.i(this.jdField_a_of_type_JavaLangString, 2, "openUrl=" + paramVarArgs[0]);
-        }
+      if (paramInt == 255) {
+        paramPaint.setShadowLayer(1.0F, 1.0F, 1.0F, -1728053248);
       }
-      try
+    }
+    else {
+      return;
+    }
+    paramPaint.setShadowLayer(0.0F, 0.0F, 0.0F, -1);
+  }
+  
+  public void a(CharSequence paramCharSequence, bnmo parambnmo)
+  {
+    a(paramCharSequence, parambnmo, 0);
+  }
+  
+  public void a(CharSequence paramCharSequence, bnmo parambnmo, int paramInt)
+  {
+    this.e = ((int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(paramCharSequence, 0, paramCharSequence.length()));
+    if ((paramInt != 0) && (paramInt > this.e)) {}
+    for (int j = (paramInt - this.e) / (paramCharSequence.length() - 1);; j = 0)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      int k = 0;
+      paramInt = 0;
+      while (k < paramCharSequence.length())
       {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]).getString("url");
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().loadUrl(paramJsBridgeListener);
-        if ((!"shareFriendMsg".equals(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length < 1)) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i(this.jdField_a_of_type_JavaLangString, 2, "shareFriendMsg: arg=" + paramVarArgs[0]);
-        }
-        try
+        int i = paramCharSequence.charAt(k);
+        if (i == 32)
         {
-          paramString3 = new JSONObject(paramVarArgs[0]);
-          paramJsBridgeListener = paramString3.getString("content");
-          paramString1 = paramString3.getString("jumpurl");
-          paramString2 = paramString3.getString("uin");
-          long l = paramString3.getLong("timestamp");
-          paramString3 = new Intent();
-          paramString3.putExtra("friend_uin", paramString2);
-          paramString3.putExtra("content", paramJsBridgeListener);
-          paramString3.putExtra("jumpUrl", paramString1);
-          paramString3.putExtra("timestamp", l);
-          afez.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), paramString3, PublicTransFragmentActivity.class, ActivateFriendShareFragment.class);
-          return false;
+          paramInt = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText("0", 0, 1) + paramInt;
+          k += 1;
         }
-        catch (Throwable paramJsBridgeListener)
+        else
         {
-          QLog.e(this.jdField_a_of_type_JavaLangString, 1, "handle shareFriendMsg", paramJsBridgeListener);
-          return false;
+          bnmx localbnmx = new bnmx();
+          String str = new String(new char[] { i });
+          int m = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str, 0, str.length());
+          Object localObject = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
+          float f1 = ((Paint.FontMetrics)localObject).bottom;
+          float f2 = ((Paint.FontMetrics)localObject).top;
+          float f3 = Math.abs(((Paint.FontMetrics)localObject).ascent);
+          localObject = Bitmap.createBitmap(m, (int)(f1 - f2), Bitmap.Config.ARGB_8888);
+          Canvas localCanvas = new Canvas((Bitmap)localObject);
+          BaseApplicationImpl.getContext();
+          localCanvas.drawText(str, 0.0F, f3, this.jdField_a_of_type_AndroidTextTextPaint);
+          if (this.f == 0)
+          {
+            localbnmx.b = parambnmo.a("", this.c + a(), this.d, 0, 255, new LinearInterpolator());
+            label282:
+            localbnmx.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
+            if (k != 0) {
+              break label374;
+            }
+            localbnmx.jdField_a_of_type_Int = paramInt;
+          }
+          for (paramInt = localbnmx.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + paramInt;; paramInt = localbnmx.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + j + paramInt)
+          {
+            this.jdField_a_of_type_JavaUtilArrayList.add(localbnmx);
+            break;
+            localbnmx.b = parambnmo.a("", this.c + this.d * k / paramCharSequence.length(), this.d, 0, 255, new LinearInterpolator());
+            break label282;
+            label374:
+            localbnmx.jdField_a_of_type_Int = (paramInt + j);
+          }
         }
       }
-      catch (JSONException paramJsBridgeListener)
-      {
-        for (;;)
-        {
-          QLog.e(this.jdField_a_of_type_JavaLangString, 1, "handle openUrl", paramJsBridgeListener);
-        }
-      }
+      return;
     }
   }
 }

@@ -1,43 +1,28 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class ajnt
-  extends ajno
+  implements View.OnClickListener
 {
-  public ajnt(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    super(paramContext, paramQQAppInterface, paramBoolean);
-  }
+  public ajnt(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  protected int a()
+  public void onClick(View paramView)
   {
-    return 10021;
-  }
-  
-  protected void a(RecommendTroopItem paramRecommendTroopItem)
-  {
-    bdll.b(null, "dc00899", "Grp_recom", "", "no_search_result", "clk_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
-  }
-  
-  protected int b()
-  {
-    return 109;
-  }
-  
-  protected void b(RecommendTroopItem paramRecommendTroopItem)
-  {
-    bdll.b(null, "dc00899", "Grp_recom", "", "no_search_result", "clk_add", 0, 0, String.valueOf(paramRecommendTroopItem.uin), paramRecommendTroopItem.recomAlgol, "", "");
-  }
-  
-  protected int c()
-  {
-    return 10022;
-  }
-  
-  protected void c(RecommendTroopItem paramRecommendTroopItem)
-  {
-    bdll.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+    if (CameraPreviewActivity.a(this.a, (String)CameraPreviewActivity.a(this.a).get(0))) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.a.b) {
+        bcef.b(this.a.app, "CliOper", "", "", "0X8004D96", "0X8004D96", 0, 0, "", "", "", "");
+      }
+      PhotoUtils.sendPhoto(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 2, true);
+      paramView.setClickable(false);
+    }
   }
 }
 

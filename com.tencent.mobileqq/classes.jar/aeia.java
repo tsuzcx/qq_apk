@@ -1,31 +1,59 @@
-import android.opengl.GLSurfaceView.Renderer;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.Conversation.21.1;
-import com.tencent.mobileqq.activity.Conversation.21.2;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
 
 public class aeia
-  implements GLSurfaceView.Renderer
+  extends anbq
 {
-  public aeia(Conversation paramConversation) {}
+  public aeia(SubAccountUgActivity paramSubAccountUgActivity) {}
   
-  public void onDrawFrame(GL10 paramGL10) {}
-  
-  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2) {}
-  
-  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
+  protected void a(boolean paramBoolean, bcqu parambcqu)
   {
-    Conversation.a(this.a, paramGL10.glGetString(7937));
-    if (Conversation.a(this.a) != null) {
-      ThreadManager.post(new Conversation.21.1(this), 5, null, true);
+    if ((paramBoolean) && (parambcqu != null) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.length() >= 5))
+    {
+      parambcqu = parambcqu.c();
+      if ((parambcqu != null) && (!parambcqu.contains(this.a.jdField_a_of_type_JavaLangString))) {}
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_GPU", 2, "onSurfaceCreated|GL_RENDERER= " + Conversation.a(this.a));
+    else
+    {
+      return;
     }
-    this.a.a(new Conversation.21.2(this));
+    parambcqu = (bcqk)this.a.app.getManager(62);
+    SubAccountUgActivity.a(this.a, parambcqu, this.a.jdField_a_of_type_JavaLangString);
+  }
+  
+  protected void c(boolean paramBoolean, bcqu parambcqu)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() isSucc=" + paramBoolean + " currentActivity subUin=" + this.a.jdField_a_of_type_JavaLangString);
+      if (parambcqu != null) {
+        QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() mainAccount=" + parambcqu.b + " subAccount=" + parambcqu.c + " errType=" + parambcqu.jdField_a_of_type_Int + " errMsg=" + parambcqu.jdField_a_of_type_JavaLangString);
+      }
+    }
+    if ((parambcqu == null) || (this.a.jdField_a_of_type_JavaLangString == null) || ((this.a.jdField_a_of_type_JavaLangString != null) && (!this.a.jdField_a_of_type_JavaLangString.equals(parambcqu.c)))) {}
+    do
+    {
+      return;
+      this.a.e();
+      if (this.a.b)
+      {
+        this.a.b = false;
+        if (paramBoolean)
+        {
+          this.a.a();
+          this.a.c(this.a.getString(2131718702));
+          return;
+        }
+        this.a.b(this.a.getString(2131718701));
+        return;
+      }
+    } while (!paramBoolean);
+    parambcqu = (bcqk)this.a.app.getManager(62);
+    Pair localPair = parambcqu.a(this.a.jdField_a_of_type_JavaLangString, 1);
+    parambcqu.a(this.a.app, this.a, localPair, new aeib(this, parambcqu, localPair));
   }
 }
 

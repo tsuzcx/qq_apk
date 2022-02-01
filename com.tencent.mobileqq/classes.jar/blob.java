@@ -1,11 +1,15 @@
-import android.view.View;
-import com.tencent.widget.PinnedFooterExpandableListView;
-
-public abstract interface blob
+public class blob
+  extends blnz
 {
-  public abstract void a();
+  public int a(int paramInt)
+  {
+    return paramInt * -1;
+  }
   
-  public abstract void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt);
+  public boolean a(int paramInt)
+  {
+    return paramInt < 0;
+  }
 }
 
 

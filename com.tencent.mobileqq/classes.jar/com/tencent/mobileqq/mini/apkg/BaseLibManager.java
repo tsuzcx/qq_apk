@@ -3,11 +3,10 @@ package com.tencent.mobileqq.mini.apkg;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import auog;
-import bjtz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.mini.app.AppLoaderFactory;
 import com.tencent.mobileqq.mini.report.MiniProgramReportHelper;
 import com.tencent.mobileqq.mini.report.MiniReportManager;
@@ -16,6 +15,7 @@ import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.mini.utils.FileUtils;
 import com.tencent.mobileqq.minigame.utils.AssetsUtil;
+import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.io.File;
@@ -100,7 +100,7 @@ public class BaseLibManager
     if (paramBaseLibInfo == null) {
       return Boolean.valueOf(false);
     }
-    String str = StorageUtil.getPreference().getString("version", "1.18.0.00132");
+    String str = StorageUtil.getPreference().getString("version", "1.19.0.00043");
     return Boolean.valueOf(BaseLibInfo.needUpdateVersion(paramBaseLibInfo.baseLibVersion, str));
   }
   
@@ -208,7 +208,7 @@ public class BaseLibManager
     }
     try
     {
-      paramString1 = AppLoaderFactory.BASE_LIB_PATH_DIR + File.separator + bjtz.d(paramString1) + "_" + paramString2 + File.separator;
+      paramString1 = AppLoaderFactory.BASE_LIB_PATH_DIR + File.separator + MD5Utils.toMD5(paramString1) + "_" + paramString2 + File.separator;
       return paramString1;
     }
     catch (Throwable paramString1)
@@ -222,7 +222,7 @@ public class BaseLibManager
   {
     BaseLibInfo localBaseLibInfo = new BaseLibInfo();
     String str = StorageUtil.getPreference().getString("downloadUrl", null);
-    localBaseLibInfo.baseLibVersion = StorageUtil.getPreference().getString("version", "1.18.0.00132");
+    localBaseLibInfo.baseLibVersion = StorageUtil.getPreference().getString("version", "1.19.0.00043");
     localBaseLibInfo.baseLibUrl = str;
     return localBaseLibInfo;
   }
@@ -232,7 +232,7 @@ public class BaseLibManager
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
       return null;
     }
-    return AppLoaderFactory.BASE_LIB_PATH_DIR + File.separator + bjtz.d(paramString1) + "_" + paramString2 + ".zip";
+    return AppLoaderFactory.BASE_LIB_PATH_DIR + File.separator + MD5Utils.toMD5(paramString1) + "_" + paramString2 + ".zip";
   }
   
   public String installMiniGameInnerJsLib()
@@ -241,14 +241,14 @@ public class BaseLibManager
     {
       try
       {
-        String str = g().getBaseLibDir("mini", "1.18.0.00132");
+        String str = g().getBaseLibDir("mini", "1.19.0.00043");
         if (g().isBaseLibDirValid4MiniGame(str))
         {
-          QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "installMiniGameInnerJsLib, inner baseLib already installed, version:1.18.0.00132");
+          QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "installMiniGameInnerJsLib, inner baseLib already installed, version:1.19.0.00043");
           return str;
         }
         int j = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_inner_baselib_retry_count", MINI_APP_INNER_BASELIB_RETRY_COUNT_DEFAULT);
-        QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "installMiniGameInnerJsLib, version:1.18.0.00132, totalCount:" + j);
+        QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "installMiniGameInnerJsLib, version:1.19.0.00043, totalCount:" + j);
         int i = 0;
         boolean bool;
         if (i < j)
@@ -266,7 +266,7 @@ public class BaseLibManager
           {
             File localFile = new File(str);
             if (localFile.exists()) {
-              auog.a(localFile);
+              FileUtil.deleteFile(localFile);
             }
           }
         }

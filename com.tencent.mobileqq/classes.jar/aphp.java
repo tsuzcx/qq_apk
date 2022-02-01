@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
 
-public abstract interface aphp
+public final class aphp
+  implements Parcelable.Creator<CardOCRInfo>
 {
-  public abstract void a();
+  public CardOCRInfo a(Parcel paramParcel)
+  {
+    return new CardOCRInfo(paramParcel);
+  }
   
-  public abstract void a(ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject);
-  
-  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, aphq paramaphq);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void b(String paramString, int paramInt);
-  
-  public abstract void c(String paramString, int paramInt);
-  
-  public abstract void d(String paramString, int paramInt);
+  public CardOCRInfo[] a(int paramInt)
+  {
+    return new CardOCRInfo[paramInt];
+  }
 }
 
 

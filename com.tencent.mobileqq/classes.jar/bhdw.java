@@ -1,8 +1,6 @@
-import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
-
 public abstract interface bhdw
 {
-  public abstract void a(int paramInt, UpgradeDetailWrapper paramUpgradeDetailWrapper, bhdu parambhdu);
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

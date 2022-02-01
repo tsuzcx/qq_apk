@@ -1,8 +1,26 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface asmy
+class asmy
+  implements View.OnClickListener
 {
-  public abstract List<aspt> a(boolean paramBoolean1, boolean paramBoolean2);
+  asmy(asmw paramasmw, bayt parambayt) {}
+  
+  public void onClick(View paramView)
+  {
+    asmv localasmv = (asmv)this.jdField_a_of_type_Bayt;
+    localasmv.a(paramView);
+    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131366644);
+    if (localCheckBox.getVisibility() == 0) {
+      localCheckBox.setChecked(localasmv.b());
+    }
+    if (asmw.a(this.jdField_a_of_type_Asmw) != null) {
+      asmw.a(this.jdField_a_of_type_Asmw).a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

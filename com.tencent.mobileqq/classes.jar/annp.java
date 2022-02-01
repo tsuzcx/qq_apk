@@ -1,8 +1,10 @@
-import android.os.Bundle;
-
 public abstract interface annp
 {
-  public abstract int a(Bundle paramBundle);
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4);
+  
+  public abstract void b();
 }
 
 

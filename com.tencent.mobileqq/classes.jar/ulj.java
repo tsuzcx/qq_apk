@@ -1,29 +1,21 @@
-import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager;
-import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager.PreDownloadNotAlreadyVideoTask;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.text.TextUtils;
 
-public class ulj
-  implements TVK_ICacheMgr.IPreloadCallback
+class ulj
+  extends ulp
 {
-  public ulj(WSVideoPreDownloadManager paramWSVideoPreDownloadManager) {}
+  ulj(ulh paramulh) {}
   
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public void delete()
   {
-    uqf.d("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][onPreLoadFailed] ERROR!! videoUrl:" + paramString1 + " ERROR code: " + paramInt);
-    if (WSVideoPreDownloadManager.a(this.a) != null) {
-      WSVideoPreDownloadManager.a(this.a).onPreLoadFailed(paramString1, paramInt, paramString2);
+    if (ulh.a(this.a) != null) {
+      TextUtils.backspace(ulh.a(this.a));
     }
-    ThreadManager.post(new WSVideoPreDownloadManager.PreDownloadNotAlreadyVideoTask(this.a, false), 5, null, true);
   }
   
-  public void onPreLoadSucess(String paramString1, String paramString2)
+  public void send(EmoticonInfo paramEmoticonInfo)
   {
-    uqf.g("WS_VIDEO_PRE_DL", "<<<<<<[WSVideoPreDownloadManager.java][onPreLoadSuccess] SUCCESS!! videoUrl:" + paramString1 + " SUCCESS");
-    if (WSVideoPreDownloadManager.a(this.a) != null) {
-      WSVideoPreDownloadManager.a(this.a).onPreLoadSucess(paramString1, paramString2);
-    }
-    ThreadManager.post(new WSVideoPreDownloadManager.PreDownloadNotAlreadyVideoTask(this.a, true), 5, null, true);
+    ulh.a(this.a, paramEmoticonInfo);
   }
 }
 

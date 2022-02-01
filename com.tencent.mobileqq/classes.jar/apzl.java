@@ -1,44 +1,69 @@
-import com.tencent.ark.ark.Application;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallbackTimeOut;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class apzl
-  implements ArkAppMgr.IGetAppPathByNameCallbackTimeOut
+public class apzl
 {
-  apzl(String paramString1, String paramString2, apwf paramapwf) {}
+  private boolean a;
   
-  public void onGetAppPathByNameTimeout(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public static apzl a(aptx[] paramArrayOfaptx)
   {
-    if ((paramInt == 0) && (paramAppPathInfo != null) && (paramAppPathInfo.path != null))
+    apzl localapzl = new apzl();
+    StringBuilder localStringBuilder = new StringBuilder();
+    for (;;)
     {
-      paramString = ark.Application.Create(this.jdField_a_of_type_JavaLangString, paramAppPathInfo.path);
-      if (paramString != null)
+      try
       {
-        boolean bool = paramString.CheckShareUrlLegality(this.b);
-        paramString.Release();
-        if (bool)
+        int j = paramArrayOfaptx.length;
+        int i = 0;
+        if (i < j)
         {
-          this.jdField_a_of_type_Apwf.a(true);
-          ArkAppCenter.c("ArkApp.ArkSecureUtil", String.format("CheckShareUrlLegality, url is in whileList, appName=%s and url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+          String str = paramArrayOfaptx[i].a;
+          QLog.d("OpenSdkD55Processor", 1, new Object[] { "content=", str });
+          JSONObject localJSONObject = new JSONObject(str);
+          if (localJSONObject.has("enable_d55"))
+          {
+            if (localJSONObject.optInt("enable_d55", 0) == 1)
+            {
+              bool = true;
+              localapzl.a = bool;
+            }
+          }
+          else
+          {
+            localStringBuilder.append("config: ").append(str).append(",");
+            i += 1;
+          }
+        }
+        else
+        {
+          QLog.d("OpenSdkD55Processor", 1, "parse, content:" + localStringBuilder.toString());
+          return localapzl;
         }
       }
-      else
+      catch (JSONException paramArrayOfaptx)
       {
-        return;
+        QLog.e("OpenSdkD55Processor", 1, "JSONException", paramArrayOfaptx);
+        return null;
       }
-      this.jdField_a_of_type_Apwf.a(false);
-      ArkAppCenter.c("ArkApp.ArkSecureUtil", String.format("CheckShareUrlLegality, url is not in whileList, appName=%s and url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
-      return;
+      boolean bool = false;
     }
-    this.jdField_a_of_type_Apwf.a(false);
-    aqca.a(apxt.a(), this.jdField_a_of_type_JavaLangString, "ArkCheckShareUrlLegality", paramInt, 0, 0L, 0L, 0L, "", "");
-    ArkAppCenter.c("ArkApp.ArkSecureUtil", String.format("CheckShareUrlLegality,getAppInfo is failed and msg=%s", new Object[] { paramString }));
+  }
+  
+  public boolean a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    new StringBuilder().append("isSwitchOpen:").append(this.a);
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apzl
  * JD-Core Version:    0.7.0.1
  */

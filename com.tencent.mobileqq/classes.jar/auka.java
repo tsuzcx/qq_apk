@@ -1,21 +1,10 @@
-import android.content.Intent;
-import java.util.ArrayList;
+import android.view.View;
 
-class auka
-  implements aumz
+public abstract interface auka
 {
-  auka(aujz paramaujz) {}
+  public abstract void a(aukb paramaukb);
   
-  public void a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(atyw.a());
-    Intent localIntent = new Intent();
-    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
-    aujy.a(this.a.a, localIntent);
-  }
-  
-  public void b() {}
+  public abstract void a(View... paramVarArgs);
 }
 
 

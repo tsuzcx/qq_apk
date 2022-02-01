@@ -1,21 +1,29 @@
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.ThreadTraceHelper.Proxy;
+import android.content.Context;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
-public final class bdjb
-  implements IMCoreProxyRoute.ThreadTraceHelper.Proxy
+class bdjb
+  extends bdji<UserState>
 {
-  public void addWaitingTransThread(long paramLong, String paramString)
+  bdjb(bdiu parambdiu, UserState paramUserState, List paramList)
   {
-    bdmp.b(paramLong, paramString);
+    super(paramUserState, paramList);
   }
   
-  public void removeWaitingTransThread(long paramLong)
+  public void a(int paramInt)
   {
-    bdmp.a(paramLong);
+    super.a(paramInt);
+    a((UserState)bdiu.a(this.a).b());
   }
   
-  public void setCurrentTransThread(long paramLong, String paramString)
+  public void a(UserState paramUserState)
   {
-    bdmp.a(paramLong, paramString);
+    bdiu.a(this.a).b();
+    if (bdiu.a(this.a).a()) {
+      bdiu.a(this.a).d();
+    }
+    bdiu.a(this.a).a(bdgn.c(bdiu.a(this.a).getString(2131719439), bdiu.a(this.a).a()), 0);
+    bdiu.a(this.a).j();
   }
 }
 

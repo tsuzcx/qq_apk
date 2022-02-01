@@ -1,25 +1,64 @@
-import com.tencent.biz.qqcircle.comment.QCircleCommentBottomBar;
-import java.util.ArrayList;
 import java.util.List;
 
 public class vjv
-  implements wbw
+  extends vjw<vim>
 {
-  public vjv(QCircleCommentBottomBar paramQCircleCommentBottomBar) {}
+  private int a = 200;
+  
+  protected double a()
+  {
+    return 0.3D;
+  }
+  
+  protected int a()
+  {
+    return this.a;
+  }
+  
+  protected long a(vim paramvim1, vim paramvim2)
+  {
+    if ((paramvim1 != paramvim2) && (paramvim1.b == paramvim2.b)) {
+      return 1L;
+    }
+    return Math.abs(paramvim1.b - paramvim2.b);
+  }
+  
+  protected vim a(List<vim> paramList)
+  {
+    long l = 0L;
+    int i = 0;
+    while (i < paramList.size())
+    {
+      l += ((vim)paramList.get(i)).b;
+      i += 1;
+    }
+    vim localvim = new vim();
+    localvim.b = (l / paramList.size());
+    return localvim;
+  }
   
   public void a(int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(vtt.a("ext2", String.valueOf(paramInt)));
-    if (QCircleCommentBottomBar.a(this.a)) {
-      vtr.a(34, 2, QCircleCommentBottomBar.a(this.a), localArrayList, QCircleCommentBottomBar.a(this.a));
+    this.a = paramInt;
+  }
+  
+  protected boolean a(long paramLong)
+  {
+    int i = b();
+    if (i > 0) {
+      if (paramLong / i >= 1500L) {}
     }
-    for (;;)
+    while (paramLong < 200L)
     {
-      vud.a().a(new vuf().a("pushbutton").b("push").a(this.a.a()).a(QCircleCommentBottomBar.a(this.a)));
-      return;
-      vtn.a(34, 2, QCircleCommentBottomBar.a(this.a), localArrayList, QCircleCommentBottomBar.b(this.a));
+      return true;
+      return false;
     }
+    return false;
+  }
+  
+  protected boolean a(vim paramvim1, vim paramvim2)
+  {
+    return paramvim1.b == paramvim2.b;
   }
 }
 

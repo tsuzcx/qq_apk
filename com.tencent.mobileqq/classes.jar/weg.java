@@ -1,27 +1,57 @@
-import com.tencent.biz.qqcircle.widgets.feed.QCircleInsFeedItemView;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StUser;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBatchFeedFeature;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.Iterator;
+import java.util.List;
 
 public class weg
-  extends anuw
+  extends vqr<wgd>
 {
-  public weg(QCircleInsFeedItemView paramQCircleInsFeedItemView) {}
+  public static final String a;
+  public List<String> a;
   
-  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
+  static
   {
-    if (paramBoolean)
+    jdField_a_of_type_JavaLangString = vpl.a("StorySvc.feed_feature_775");
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public vqm a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetBatchFeedFeature localRspGetBatchFeedFeature = new qqstory_service.RspGetBatchFeedFeature();
+    try
     {
-      String str = paramCard.strNick;
-      if (QCircleInsFeedItemView.a(this.a) != null) {
-        QCircleInsFeedItemView.a(this.a).a(paramCard.strNick, paramCard.uin);
-      }
-      if (uzg.a(paramCard.uin))
+      localRspGetBatchFeedFeature.mergeFrom(paramArrayOfByte);
+      return new wgd(localRspGetBatchFeedFeature);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
       {
-        uyn.a().nick.set(str);
-        uyn.a(str);
+        paramArrayOfByte.printStackTrace();
       }
     }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetBatchFeedFeature localReqGetBatchFeedFeature = new qqstory_service.ReqGetBatchFeedFeature();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (!TextUtils.isEmpty(str)) {
+        localReqGetBatchFeedFeature.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
+      }
+    }
+    return localReqGetBatchFeedFeature.toByteArray();
   }
 }
 

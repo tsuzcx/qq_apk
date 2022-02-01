@@ -1,24 +1,19 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix;
 
 public class sqn
-  implements spj
+  extends bjxq<RecyclerView.Adapter>
 {
-  public int a(BaseData paramBaseData)
+  public sqn(RecyclerViewWithHeaderFooterFix paramRecyclerViewWithHeaderFooterFix, RecyclerView.Adapter paramAdapter)
   {
-    return 5;
+    super(paramAdapter);
   }
   
-  public spi a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  protected void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    return new sqo(LayoutInflater.from(paramContext).inflate(2131560185, null), paramBaseData);
-  }
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.r == 5;
+    super.a(paramViewHolder, paramInt);
+    this.a.a(paramViewHolder, paramInt);
   }
 }
 

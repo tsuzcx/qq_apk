@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import anfx;
-import angf;
+import amar;
+import amaz;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -23,7 +23,7 @@ final class ApolloUtil$4
     {
       localObject2 = (QQMessageFacade)((AppRuntime)localObject1).getManager(20);
       if (localObject2 != null) {
-        ((QQMessageFacade)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.extStr);
+        ((QQMessageFacade)localObject2).updateMsgFieldByUniseq(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.extStr);
       }
     }
     if (this.jdField_a_of_type_Int != this.b - 1) {}
@@ -41,14 +41,14 @@ final class ApolloUtil$4
           }
         } while (i <= 0);
         this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.saveExtInfoToExtStr("is_share_ark_message_action_played", "2");
-        localObject2 = ((angf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(249)).a();
+        localObject2 = ((amaz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(249)).a();
         if (localObject2 != null) {
-          ((anfx)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, i);
+          ((amar)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, i);
         }
       } while (localObject1 == null);
       localObject1 = (QQMessageFacade)((AppRuntime)localObject1).getManager(20);
     } while (localObject1 == null);
-    ((QQMessageFacade)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.extStr);
+    ((QQMessageFacade)localObject1).updateMsgFieldByUniseq(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.extStr);
   }
 }
 

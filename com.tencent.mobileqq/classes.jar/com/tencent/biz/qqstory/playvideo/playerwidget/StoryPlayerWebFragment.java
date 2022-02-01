@@ -11,26 +11,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
-import biqp;
-import birg;
-import birj;
+import bgwv;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
-import noe;
-import xzf;
-import xzg;
-import yuk;
+import npn;
+import xaq;
+import xar;
+import xvv;
 
 public class StoryPlayerWebFragment
   extends WebViewFragment
 {
   public BroadcastReceiver a;
-  public xzg a;
+  public xar a;
   
   public StoryPlayerWebFragment()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new xzf(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new xaq(this);
   }
   
   public static Intent a(Activity paramActivity, String paramString)
@@ -50,9 +50,9 @@ public class StoryPlayerWebFragment
     return localStoryPlayerWebFragment;
   }
   
-  public void a(xzg paramxzg)
+  public void a(xar paramxar)
   {
-    this.jdField_a_of_type_Xzg = paramxzg;
+    this.jdField_a_of_type_Xar = paramxar;
   }
   
   public void initWebView()
@@ -74,20 +74,20 @@ public class StoryPlayerWebFragment
   public void onDestroy()
   {
     super.onDestroy();
-    yuk.b("StoryPlayerWebFragment", "onDestroy()");
+    xvv.b("StoryPlayerWebFragment", "onDestroy()");
     getActivity().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
   }
   
   public void onPause()
   {
     super.onPause();
-    yuk.b("StoryPlayerWebFragment", "onPause()");
+    xvv.b("StoryPlayerWebFragment", "onPause()");
   }
   
   public void onResume()
   {
     super.onResume();
-    yuk.b("StoryPlayerWebFragment", "onResume()");
+    xvv.b("StoryPlayerWebFragment", "onResume()");
     FragmentActivity localFragmentActivity = super.getActivity();
     if (localFragmentActivity != null)
     {
@@ -98,22 +98,22 @@ public class StoryPlayerWebFragment
   
   public boolean showPreview()
   {
-    yuk.b("StoryPlayerWebFragment", "showPreview()");
-    noe.a("Web_qqbrowser_ShowPreview");
+    xvv.b("StoryPlayerWebFragment", "showPreview()");
+    npn.a("Web_qqbrowser_ShowPreview");
     long l = System.nanoTime();
-    this.mUIStyleHandler.a(this.intent);
-    this.mUIStyle.c = 0L;
-    this.contentView.a(this.mUIStyleHandler.jdField_a_of_type_Birj.D);
+    this.mUIStyleHandler.initUIStyle(this.intent);
+    this.mUIStyle.mFloatBarRulesFromUrl = 0L;
+    this.contentView.a(this.mUIStyleHandler.mUIStyle.mIsDisableRefreshView);
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
     setImmersiveStatus();
-    yuk.b("StoryPlayerWebFragment", "init view 1, cost = " + (System.nanoTime() - l) / 1000000L);
-    this.mUIStyleHandler.c = true;
-    this.mUIStyleHandler.jdField_a_of_type_AndroidWidgetProgressBar = this.contentView.jdField_a_of_type_AndroidWidgetProgressBar;
+    xvv.b("StoryPlayerWebFragment", "init view 1, cost = " + (System.nanoTime() - l) / 1000000L);
+    this.mUIStyleHandler.mIsShownPreview = true;
+    this.mUIStyleHandler.waitting = this.contentView.jdField_a_of_type_AndroidWidgetProgressBar;
     this.contentView.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    this.mUIStyleHandler.a(this.mUrl);
-    this.mUIStyleHandler.b = false;
-    noe.b("Web_qqbrowser_ShowPreview");
+    this.mUIStyleHandler.needTitlebarTransparent(this.mUrl);
+    this.mUIStyleHandler.canWebViewOverScroll = false;
+    npn.b("Web_qqbrowser_ShowPreview");
     return true;
   }
 }

@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.music.QQPlayerService;
 
 public final class awee
-  implements Parcelable.Creator<NewTogetherRoomMessageData>
+  implements avpj
 {
-  public NewTogetherRoomMessageData a(Parcel paramParcel)
+  public void a(int paramInt)
   {
-    return new NewTogetherRoomMessageData(paramParcel);
-  }
-  
-  public NewTogetherRoomMessageData[] a(int paramInt)
-  {
-    return new NewTogetherRoomMessageData[paramInt];
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      QQPlayerService.a(BaseApplicationImpl.getContext(), QQPlayerService.b());
+      return;
+    }
+    QQPlayerService.c(BaseApplicationImpl.getContext());
   }
 }
 

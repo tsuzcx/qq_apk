@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.vpng.view;
 
-import android.view.TextureView;
-import android.widget.ImageView;
+import bgrw;
 
 class VPNGImageView$1
   implements Runnable
@@ -10,8 +9,9 @@ class VPNGImageView$1
   
   public void run()
   {
-    this.this$0.mTextureView.setAlpha(1.0F);
-    this.this$0.mPreImageView.setVisibility(8);
+    if (this.this$0.mVPNGRenderer != null) {
+      this.this$0.mVPNGRenderer.h();
+    }
   }
 }
 

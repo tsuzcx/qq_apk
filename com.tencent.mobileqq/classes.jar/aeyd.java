@@ -1,167 +1,46 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothClass;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothHeadset;
+import android.bluetooth.BluetoothProfile;
+import android.bluetooth.BluetoothProfile.ServiceListener;
+import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
+import java.util.List;
 
-public class aeyd
-  extends WtloginObserver
+class aeyd
+  implements BluetoothProfile.ServiceListener
 {
-  public aeyd(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
+  aeyd(aeyc paramaeyc, AudioPlayerBase paramAudioPlayerBase, String paramString, int paramInt, BluetoothAdapter paramBluetoothAdapter) {}
   
-  public void onGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
+  public void onServiceConnected(int paramInt, BluetoothProfile paramBluetoothProfile)
   {
-    if (QLog.isColorLevel())
+    Object localObject;
+    if (paramInt == 1)
     {
-      QLog.d("LoginVerifyCodeActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("LoginVerifyCodeActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      paramBluetoothProfile = (BluetoothHeadset)paramBluetoothProfile;
+      localObject = paramBluetoothProfile.getConnectedDevices();
+      if ((localObject == null) || (((List)localObject).size() <= 0)) {
+        break label93;
       }
+      localObject = (BluetoothDevice)((List)localObject).get(0);
+      if ((localObject != null) && (((BluetoothDevice)localObject).getBluetoothClass() != null)) {
+        break label82;
+      }
+      paramInt = 0;
     }
-    if (paramInt2 == 0)
+    label82:
+    label93:
+    for (AudioPlayerBase.b = paramInt;; AudioPlayerBase.b = 0)
     {
-      QLog.d("LoginVerifyCodeActivity", 2, "OnGetStViaSMSVerifyLogin  login success ret =  " + paramInt2);
-      if ((LoginVerifyCodeActivity2.c(this.a) == 2) || (LoginVerifyCodeActivity2.c(this.a) == 3))
-      {
-        this.a.c();
-        paramArrayOfByte = new Intent();
-        paramArrayOfByte.putExtra("last_account", paramString);
-        this.a.setResult(-1, paramArrayOfByte);
-        this.a.finish();
-      }
-    }
-    for (;;)
-    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayerBase.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.closeProfileProxy(1, paramBluetoothProfile);
       return;
-      LoginVerifyCodeActivity2.a(this.a).ssoGetTicketNoPasswd(paramString, 4096, this.a.a);
-      return;
-      this.a.c();
-      if (paramInt2 == -20160326)
-      {
-        this.a.finish();
-        return;
-      }
-      if (paramInt2 == 2008)
-      {
-        this.a.a(2131692737, 0);
-        this.a.finish();
-        return;
-      }
-      Object localObject2 = null;
-      Object localObject3 = null;
-      Object localObject1 = localObject3;
-      if (paramErrMsg != null)
-      {
-        String str = paramErrMsg.getMessage();
-        localObject1 = localObject3;
-        localObject2 = str;
-        if (paramErrMsg.getType() == 1)
-        {
-          localObject1 = paramErrMsg.getOtherinfo();
-          localObject2 = str;
-        }
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        paramErrMsg = new Intent(this.a, NotificationActivity.class);
-        paramErrMsg.putExtra("type", 8);
-        if (paramInt2 == 40) {
-          paramErrMsg.putExtra("msg", localObject2);
-        }
-        for (;;)
-        {
-          paramErrMsg.putExtra("loginalias", paramString);
-          paramErrMsg.putExtra("loginret", paramInt2);
-          paramErrMsg.putExtra("expiredSig", paramArrayOfByte);
-          if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-            break;
-          }
-          if (QLog.isDevelopLevel()) {
-            QLog.i("LoginVerifyCodeActivity", 4, "OnGetStViaSMSVerifyLogin, goto Notification");
-          }
-          paramErrMsg.putExtra("lh_is_from_login_verify_code", true);
-          this.a.startActivityForResult(paramErrMsg, 1);
-          return;
-          paramErrMsg.putExtra("msg", localObject2 + " " + (String)localObject1);
-        }
-        this.a.startActivity(paramErrMsg);
-        return;
-      }
-      if (TextUtils.isEmpty(localObject2)) {
-        this.a.a();
-      }
-      while (paramInt2 == 155)
-      {
-        this.a.finish();
-        return;
-        this.a.a(localObject2, 0);
-      }
+      paramInt = ((BluetoothDevice)localObject).getBluetoothClass().getDeviceClass();
+      break;
     }
   }
   
-  public void onRefreshSMSVerifyLoginAccount(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("LoginVerifyCodeActivity", 2, "OnRefreshSMSVerifyLoginAccount.mobile=" + paramString1 + " msg=" + paramString2 + " timeLimit=" + paramInt2);
-      QLog.d("LoginVerifyCodeActivity", 2, "OnRefreshSMSVerifyLoginAccount.ret=" + paramInt3);
-      if (paramErrMsg != null) {
-        QLog.d("LoginVerifyCodeActivity", 2, "OnRefreshSMSVerifyLoginAccount.errMsg=" + paramErrMsg);
-      }
-    }
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.c();
-    if (paramInt3 != 0)
-    {
-      paramString1 = null;
-      if (paramErrMsg != null) {
-        paramString1 = paramErrMsg.getMessage();
-      }
-      if (TextUtils.isEmpty(paramString1))
-      {
-        this.a.a();
-        return;
-      }
-      this.a.a(paramString1, 0);
-      return;
-    }
-    LoginVerifyCodeActivity2.a(this.a, 60);
-  }
-  
-  public void onVerifySMSVerifyLoginAccount(String paramString1, String paramString2, int paramInt, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("LoginVerifyCodeActivity", 2, "OnVerifySMSVerifyLoginAccount mobile=" + paramString1 + " msgCode=" + paramString2 + " ret=" + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("LoginVerifyCodeActivity", 2, "OnVerifySMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
-      }
-    }
-    if (this.a.isFinishing()) {
-      return;
-    }
-    if (paramInt != 0)
-    {
-      this.a.c();
-      paramString1 = null;
-      if (paramErrMsg != null) {
-        paramString1 = paramErrMsg.getMessage();
-      }
-      if (TextUtils.isEmpty(paramString1))
-      {
-        this.a.a();
-        return;
-      }
-      this.a.a(paramString1, 0);
-      return;
-    }
-    LoginVerifyCodeActivity2.a(this.a);
-  }
+  public void onServiceDisconnected(int paramInt) {}
 }
 
 

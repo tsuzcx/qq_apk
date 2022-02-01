@@ -1,105 +1,53 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageReportData;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
-@Deprecated
 public class bdmb
+  implements bdmx
 {
-  private static List<MessageReportData> a;
+  public bdmb(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, bdmu parambdmu) {}
   
-  public static int a(Context paramContext, String paramString1, String paramString2)
+  public void a(int paramInt, String paramString, ArrayList<bdmu> paramArrayList)
   {
-    paramString2 = paramString1 + paramString2;
-    return paramContext.getSharedPreferences(paramString1 + "statistic", 0).getInt(paramString2, 0);
-  }
-  
-  public static List<MessageReportData> a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
-    List localList = paramQQAppInterface.query(MessageReportData.class, false, null, null, null, null, null, null);
-    paramQQAppInterface.close();
-    return localList;
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    paramString2 = paramString1 + paramString2;
-    paramContext = paramContext.getSharedPreferences(paramString1 + "statistic", 0);
-    int i = paramContext.getInt(paramString2, 0);
     if (QLog.isColorLevel()) {
-      QLog.d("StatisticAssist", 2, paramString2 + ": " + i);
+      QLog.d("TribeVideoListPlayerFragment", 2, "getVideoListReq->onLoaded: retCode = " + paramInt);
     }
-    paramContext.edit().putInt(paramString2, i + 1).commit();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
-  {
-    paramContext.getSharedPreferences(paramString + "statistic", 0).edit().clear().commit();
-    paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
-    paramQQAppInterface.drop(MessageReportData.class);
-    paramQQAppInterface.close();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
-  {
-    paramString4 = new MessageReportData(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10);
-    paramString1 = null;
-    if (a == null)
-    {
-      paramString5 = paramQQAppInterface.a().createEntityManager();
-      paramString1 = paramString5.query(MessageReportData.class, false, "senderUin=? and recieverUin=?", new String[] { paramString2, paramString3 }, null, null, null, null);
-      paramString5.close();
-    }
-    for (;;)
-    {
-      try
+    if (paramInt == 0) {
+      if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
       {
-        if (a != null) {
-          break label231;
-        }
-        if (paramString1 != null)
+        paramString = paramArrayList.iterator();
+        paramInt = 0;
+        if (paramString.hasNext())
         {
-          a = paramString1;
-          break label231;
-          if (i >= a.size()) {
-            break label225;
+          paramArrayList = (bdmu)paramString.next();
+          if (this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_JavaUtilArrayList.contains(paramArrayList)) {
+            break label358;
           }
-          paramString1 = (MessageReportData)a.get(i);
-          if (paramString1.equals(paramString4))
-          {
-            paramString1.msgCount += 1;
-            paramString4.msgCount = paramString1.msgCount;
-            i = 0;
-            if (i != 0)
-            {
-              a.add(paramString4);
-              paramString4.msgCount = 1;
-            }
-            paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
-            paramQQAppInterface.persistOrReplace(paramString4);
-            paramQQAppInterface.close();
-          }
-        }
-        else
-        {
-          a = new ArrayList();
+          this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_JavaUtilArrayList.add(paramArrayList);
+          paramInt = 1;
         }
       }
-      finally {}
-      i += 1;
-      continue;
-      label225:
-      int i = 1;
-      continue;
-      label231:
-      i = 0;
+    }
+    label358:
+    for (;;)
+    {
+      break;
+      if (paramInt != 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Bdmh.notifyDataSetChanged();
+        this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.d(2);
+        return;
+      }
+      QLog.d("TribeVideoListPlayerFragment", 2, String.format("onLoadMore isEmpty, start:%d, bid:%d, pid%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Bdmh.getItemCount() + this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Bdmu.b), this.jdField_a_of_type_Bdmu.d }));
+      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.d(3);
+      bcef.b(null, "dc00899", "Grp_tribe", "", "video_player", "page_repeat", this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.e, 0, this.jdField_a_of_type_Bdmu.b + "", this.jdField_a_of_type_Bdmu.d, this.jdField_a_of_type_Bdmu.h + "", "");
+      return;
+      QLog.d("TribeVideoListPlayerFragment", 2, String.format("onLoadMore isEmpty, start:%d, bid:%d, pid%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Bdmh.getItemCount() + this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Bdmu.b), this.jdField_a_of_type_Bdmu.d }));
+      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.d(3);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.d(4);
+      return;
     }
   }
 }

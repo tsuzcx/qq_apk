@@ -1,23 +1,16 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class okg
-  extends GestureDetector.SimpleOnGestureListener
+class okg
+  implements qkh
 {
-  private WeakReference<ohl> a;
+  okg(okf paramokf, ViewBase paramViewBase) {}
   
-  public okg(ohl paramohl)
+  public void a()
   {
-    this.a = new WeakReference(paramohl);
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((ohl)this.a.get()).a(true);
-    }
-    return false;
+    String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData();
+    pay.a(oke.a(this.jdField_a_of_type_Okf.jdField_a_of_type_Oke).getContext(), str);
+    ozp.a(this.jdField_a_of_type_Okf.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
   }
 }
 

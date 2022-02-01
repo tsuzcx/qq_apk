@@ -1,30 +1,23 @@
-import com.tencent.mobileqq.minigame.manager.FileDownloadManager;
-import com.tencent.qqmini.sdk.annotation.ProxyService;
-import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy;
-import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.DownloadListener;
-import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.WebAudioDownloadListener;
-import java.util.Map;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-@ProxyService(proxy=DownloaderProxy.class)
-public class bkxh
-  extends DownloaderProxy
+class bkxh
+  extends Handler
 {
-  public void abort(String paramString)
+  bkxh(bkxg parambkxg, Looper paramLooper)
   {
-    FileDownloadManager.abort(paramString);
+    super(paramLooper);
   }
   
-  public boolean download(String paramString1, Map<String, String> paramMap, String paramString2, int paramInt, DownloaderProxy.DownloadListener paramDownloadListener)
+  public void handleMessage(Message paramMessage)
   {
-    return FileDownloadManager.download(paramString1, paramMap, paramString2, paramInt, paramDownloadListener);
+    if (paramMessage.what == 1)
+    {
+      this.a.jdField_a_of_type_Bkxd = null;
+      this.a.jdField_a_of_type_Boolean = false;
+    }
   }
-  
-  public void getWebAudioDownloadPath(DownloaderProxy.WebAudioDownloadListener paramWebAudioDownloadListener)
-  {
-    FileDownloadManager.getWebAudioDownloadPath(paramWebAudioDownloadListener);
-  }
-  
-  public void preConnectDownloadHost() {}
 }
 
 

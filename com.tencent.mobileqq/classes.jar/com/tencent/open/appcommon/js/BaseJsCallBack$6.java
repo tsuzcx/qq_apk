@@ -1,7 +1,7 @@
 package com.tencent.open.appcommon.js;
 
 import android.os.Bundle;
-import bmig;
+import bkmn;
 import cooperation.qappcenter.remote.SendMsg;
 
 class BaseJsCallBack$6

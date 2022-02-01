@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.qwallet.voice;
 
-import aljb;
+import akgt;
 import android.content.Context;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class VoiceRedPacketHelper$1
   implements Runnable
 {
-  public VoiceRedPacketHelper$1(aljb paramaljb, Context paramContext, int paramInt1, int paramInt2) {}
+  public VoiceRedPacketHelper$1(akgt paramakgt, Context paramContext, int paramInt1, int paramInt2) {}
   
   public void run()
   {

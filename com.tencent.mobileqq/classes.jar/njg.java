@@ -1,23 +1,18 @@
-import com.tencent.biz.JoinGroupTransitActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.avgame.util.AVGameStep;
 
-public class njg
-  implements njf
+public final class njg
+  implements Parcelable.Creator<AVGameStep>
 {
-  public njg(JoinGroupTransitActivity paramJoinGroupTransitActivity) {}
-  
-  public void a()
+  public AVGameStep a(Parcel paramParcel)
   {
-    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(1);
+    return new AVGameStep(paramParcel);
   }
   
-  public void b()
+  public AVGameStep[] a(int paramInt)
   {
-    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(2);
-  }
-  
-  public void c()
-  {
-    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(3);
+    return new AVGameStep[paramInt];
   }
 }
 

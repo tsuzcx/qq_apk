@@ -1,45 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CardProfile;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class agai
-  implements View.OnClickListener
+final class agai
 {
-  public agai(VisitorsActivity paramVisitorsActivity, CardProfile paramCardProfile, azzy paramazzy, int paramInt) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  agai(String paramString, int paramInt)
   {
-    int i = 1;
-    int j;
-    int k;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type == 3)
-    {
-      j = 1;
-      k = this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bIsLastVoteCharged;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.type != 3) {
-        break label143;
-      }
-      if (!((axvr)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getManager(207)).c(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID)) {
-        break label138;
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a(this.jdField_a_of_type_Azzy, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.bVoteCnt, i);
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app, "CliOper", "", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataCardProfile.lEctID), "like_mall", "like_list_view", j, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      j = 0;
-      break;
-      label138:
-      i = 0;
-      continue;
-      label143:
-      i = k;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

@@ -1,18 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-
-public class azfe
-  implements DialogInterface.OnClickListener
+public abstract interface azfe
 {
-  public azfe(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    azir.a("0X800AF9C", 2);
-    paramDialogInterface.dismiss();
-    AccountOnlineStateActivity.b(this.a);
-  }
+  public abstract void a();
 }
 
 

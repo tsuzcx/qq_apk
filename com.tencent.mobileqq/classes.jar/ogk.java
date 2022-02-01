@@ -1,107 +1,79 @@
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.webviewplugin.PayJsPlugin;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ogk
-  extends bimg
-  implements bine
+class ogk
+  implements View.OnClickListener
 {
-  private String a;
+  ogk(ogi paramogi, Context paramContext, TextView paramTextView, MessageRecord paramMessageRecord) {}
   
-  public ogk(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView, String paramString)
+  public void onClick(View paramView)
   {
-    super(paramContext, paramActivity, paramAppInterface);
-    this.mWebview = paramTouchWebView;
-    this.a = paramString;
-  }
-  
-  public void a()
-  {
-    super.doOnResume();
-    QLog.i("EcshopNewPageWebViewBuilder", 2, "[EcshopNewPageWebViewBuilder] onResume");
-  }
-  
-  public void b()
-  {
-    super.doOnPause();
-    QLog.i("EcshopNewPageWebViewBuilder", 2, "[EcshopNewPageWebViewBuilder] onPause");
-  }
-  
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
-  {
-    super.bindJavaScript(paramArrayList);
-    if (QLog.isColorLevel()) {
-      QLog.i("EcshopNewPageWebViewBuilder", 2, "[bindJavaScript]");
+    Object localObject;
+    int k;
+    int m;
+    try
+    {
+      ViewGroup localViewGroup = (ViewGroup)((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().mAIORootView.findViewById(2131362701);
+      if (localViewGroup == null)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+      }
     }
-    paramArrayList.add(new QWalletPayJsPlugin());
-    paramArrayList.add(new PayJsPlugin());
-    paramArrayList.add(new QWalletCommonJsPlugin());
-    paramArrayList.add(new QWalletBluetoothJsPlugin());
-    paramArrayList.add(new tyo());
-    paramArrayList.add(new awhh());
-    paramArrayList.add(new UiApiPlugin());
-    paramArrayList.add(new SensorAPIJavaScript());
-    paramArrayList.add(new awgf());
-    paramArrayList.add(new MediaApiPlugin());
-    paramArrayList.add(new VasCommonJsPlugin());
-    paramArrayList.add(new bigs());
-    paramArrayList.add(new QWalletMixJsPlugin());
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localObject = null;
+      }
+      int[] arrayOfInt = new int[2];
+      ((ViewGroup)localObject).getLocationOnScreen(arrayOfInt);
+      int i = arrayOfInt[1];
+      int j = ((ViewGroup)localObject).getHeight();
+      localObject = new int[2];
+      this.jdField_a_of_type_AndroidWidgetTextView.getLocationOnScreen((int[])localObject);
+      ogi.a(this.jdField_a_of_type_Ogi, localObject[0]);
+      ogi.b(this.jdField_a_of_type_Ogi, localObject[1]);
+      k = ogi.a(this.jdField_a_of_type_Ogi).getContentView().getMeasuredHeight();
+      if (QLog.isColorLevel()) {
+        QLog.i("Ecshop_EcshopAdHelper", 2, "popheight: " + k);
+      }
+      m = this.jdField_a_of_type_AndroidWidgetTextView.getHeight();
+      if (ogi.a(this.jdField_a_of_type_Ogi) - i + m + k <= j) {
+        break label322;
+      }
+    }
+    ogi.a(this.jdField_a_of_type_Ogi).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847014));
+    ogi.a(this.jdField_a_of_type_Ogi).showAtLocation(this.jdField_a_of_type_AndroidWidgetTextView, 0, ogi.b(this.jdField_a_of_type_Ogi), ogi.a(this.jdField_a_of_type_Ogi) - k);
+    for (;;)
+    {
+      ((oge)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(139)).a(9, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      localObject = ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getAttributes();
+      ((WindowManager.LayoutParams)localObject).alpha = 0.5F;
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().setAttributes((WindowManager.LayoutParams)localObject);
+      ogi.a(this.jdField_a_of_type_Ogi).setOnDismissListener(new ogl(this));
+      break;
+      label322:
+      ogi.a(this.jdField_a_of_type_Ogi).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847013));
+      ogi.a(this.jdField_a_of_type_Ogi).showAtLocation(this.jdField_a_of_type_AndroidWidgetTextView, 0, ogi.b(this.jdField_a_of_type_Ogi), m + ogi.a(this.jdField_a_of_type_Ogi));
+    }
   }
-  
-  public void buildBottomBar() {}
-  
-  public void buildContentView(Bundle paramBundle) {}
-  
-  public void buildData() {}
-  
-  public void buildLayout() {}
-  
-  public void buildTitleBar() {}
-  
-  public void buildWebView(AppInterface paramAppInterface)
-  {
-    super.buildBaseWebView(paramAppInterface);
-  }
-  
-  public void c()
-  {
-    QLog.i("EcshopNewPageWebViewBuilder", 2, "[EcshopNewPageWebViewBuilder] onDestroy");
-    ogm.a().a(this.mWebview, this.a);
-    super.doOnDestroy();
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onWebViewReady()
-  {
-    super.onWebViewReady();
-  }
-  
-  public void preInitWebviewPlugin() {}
 }
 
 

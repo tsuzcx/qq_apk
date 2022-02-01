@@ -1,15 +1,6 @@
-import android.database.DataSetObserver;
-
-class som
-  extends DataSetObserver
+public abstract interface som
 {
-  som(sol paramsol) {}
-  
-  public void onChanged()
-  {
-    super.onChanged();
-    this.a.notifyDataSetChanged();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

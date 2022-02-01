@@ -4,7 +4,7 @@ import android.content.Context;
 
 public class TbsVideoUtils
 {
-  private static r a = null;
+  private static t a = null;
   
   private static void a(Context paramContext)
   {
@@ -13,14 +13,14 @@ public class TbsVideoUtils
     {
       if (a == null)
       {
-        d.a(true).a(paramContext, false, false, null);
-        t localt = d.a(true).a();
+        f.a(true).a(paramContext, false, false, null);
+        v localv = f.a(true).a();
         paramContext = localObject;
-        if (localt != null) {
-          paramContext = localt.b();
+        if (localv != null) {
+          paramContext = localv.b();
         }
         if (paramContext != null) {
-          a = new r(paramContext);
+          a = new t(paramContext);
         }
       }
       return;

@@ -1,21 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class bjhb
-  implements View.OnClickListener
+class bjhb
+  implements DialogInterface.OnClickListener
 {
-  public bjhb(ShareActionSheetV2 paramShareActionSheetV2) {}
+  bjhb(bjha parambjha) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.e("minisdk_X5UpdateGuard", 2, "cancel");
+    bjha.a(this.a, null);
   }
 }
 

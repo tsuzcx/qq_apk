@@ -4,14 +4,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
-import bjdy;
+import bhju;
 
 public class UpScrollHideView
   extends FrameLayout
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = -1;
-  private bjdy jdField_a_of_type_Bjdy;
+  private bhju jdField_a_of_type_Bhju;
   private int b;
   
   public UpScrollHideView(Context paramContext)
@@ -56,8 +56,8 @@ public class UpScrollHideView
     if (this.b > getHeight())
     {
       setVisibility(8);
-      if (this.jdField_a_of_type_Bjdy != null) {
-        this.jdField_a_of_type_Bjdy.a();
+      if (this.jdField_a_of_type_Bhju != null) {
+        this.jdField_a_of_type_Bhju.a();
       }
     }
     for (;;)
@@ -68,9 +68,9 @@ public class UpScrollHideView
     }
   }
   
-  public void setOnViewHideListener(bjdy parambjdy)
+  public void setOnViewHideListener(bhju parambhju)
   {
-    this.jdField_a_of_type_Bjdy = parambjdy;
+    this.jdField_a_of_type_Bhju = parambhju;
   }
 }
 

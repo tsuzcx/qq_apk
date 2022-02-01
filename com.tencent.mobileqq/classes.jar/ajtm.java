@@ -1,16 +1,32 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleCheckableSlidingIndicator;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import java.util.ArrayList;
 
-public class ajtm
-  implements ValueAnimator.AnimatorUpdateListener
+class ajtm
+  extends ajrg
 {
-  public ajtm(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected ajtm(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.invalidate();
+    super(paramNewPhotoPreviewActivity);
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
+    this.a.customSendBtnText = ((NewPhotoPreviewActivity)this.mActivity).getString(2131694460);
+  }
+  
+  public void initUI()
+  {
+    super.initUI();
+    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new ajtn(this));
+  }
+  
+  public boolean needShowMultiPhoto()
+  {
+    return (this.mPhotoCommonData.selectedPhotoList != null) && (!this.mPhotoCommonData.selectedPhotoList.isEmpty());
   }
 }
 

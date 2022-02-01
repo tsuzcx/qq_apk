@@ -1,34 +1,19 @@
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-
-public abstract class aoqf
+class aoqf
+  implements zkl
 {
-  public FriendListHandler a;
-  protected QQAppInterface a;
+  aoqf(aoqa paramaoqa, long paramLong) {}
   
-  public aoqf(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = paramFriendListHandler;
-  }
-  
-  protected final void a(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(paramInt, paramBoolean, paramObject);
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (a(paramFromServiceMsg.getServiceCmd())) {
-      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    aoqa localaoqa = this.jdField_a_of_type_Aoqa;
+    long l = this.jdField_a_of_type_Long;
+    if (paramBoolean1) {}
+    for (int i = 0;; i = 1)
+    {
+      localaoqa.a(l, paramBoolean1, paramString, i);
+      return;
     }
   }
-  
-  public abstract boolean a(String paramString);
-  
-  protected abstract void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
 }
 
 

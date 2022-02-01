@@ -1,28 +1,12 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqcircle.widgets.QCirclePushToastView;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import java.util.List;
 
 public class wbs
-  extends Handler
+  extends vko
 {
-  private wbs(QCirclePushToastView paramQCirclePushToastView, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.a();
-      return;
-    }
-    this.a.c();
-  }
+  public ShareGroupItem a;
+  public String a;
+  public List<ShareGroupItem> a;
 }
 
 

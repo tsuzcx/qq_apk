@@ -1,28 +1,16 @@
-import UserGrowth.stFollowFeedsRsp;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class uct
-  implements uel
+class uct
+  implements View.OnClickListener
 {
-  public uct(WSFollowFragment paramWSFollowFragment) {}
+  uct(ucp paramucp) {}
   
-  public void a(JceStruct paramJceStruct)
-  {
-    if (!(paramJceStruct instanceof stFollowFeedsRsp)) {}
-    do
-    {
-      return;
-      paramJceStruct = (stFollowFeedsRsp)paramJceStruct;
-    } while (upw.a(paramJceStruct.feeds));
-    uqf.b("WSFollowFragment", "load cache data for follow page, size: " + paramJceStruct.feeds.size());
-    this.a.a(paramJceStruct.feeds);
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uct
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.aeeditor.module.music.AEEditorLyricPanelDialog.3.1;
 
 public class bmli
-  implements anui
+  implements Animation.AnimationListener
 {
-  private Handler a;
+  bmli(bmlf parambmlf) {}
   
-  public bmli(Handler paramHandler)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = paramHandler;
+    bmlf.a(this.a, false);
+    bmlf.a(this.a).post(new AEEditorLyricPanelDialog.3.1(this));
   }
   
-  public void a()
-  {
-    this.a = null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (this.a == null) {
-      return;
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    Handler localHandler = this.a;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
-      return;
-    }
+    bmlf.a(this.a, true);
   }
 }
 

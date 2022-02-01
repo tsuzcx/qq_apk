@@ -1,29 +1,23 @@
-import android.app.Activity;
-import mqq.app.QQPermissionCallback;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.together.writetogether.data.OpenDocParam;
 
 public final class bdhx
-  implements QQPermissionCallback
+  implements Parcelable.Creator<OpenDocParam>
 {
-  public bdhx(bdhy parambdhy, Activity paramActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public OpenDocParam a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_Bdhy != null) {
-      this.jdField_a_of_type_Bdhy.b();
-    }
-    bhlq.b(this.jdField_a_of_type_AndroidAppActivity);
+    return new OpenDocParam(paramParcel);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public OpenDocParam[] a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bdhy != null) {
-      this.jdField_a_of_type_Bdhy.a();
-    }
+    return new OpenDocParam[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdhx
  * JD-Core Version:    0.7.0.1
  */

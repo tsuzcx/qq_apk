@@ -1,24 +1,59 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.pts.nativemodule.IPTSNavigateTo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.regex.Pattern;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
 public class qhi
-  implements IPTSNavigateTo
+  extends ViewBase
 {
-  public void navigateTo(String paramString)
+  private NativeAwesomeCommentView a;
+  
+  public qhi(VafContext paramVafContext)
   {
-    QLog.i("PTSNavigateToModule", 1, "[navigateTo], url = " + paramString);
-    paramString = Pattern.compile("\\/").split(paramString);
-    if ((paramString != null) && (paramString.length > 0))
+    super(paramVafContext);
+    this.a = new NativeAwesomeCommentView(paramVafContext.getContext());
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (this.a != null) {
+      this.a.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+    }
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    if (this.a != null) {
+      this.a.measure(paramInt1, paramInt2);
+    }
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
-      paramString = paramString[(paramString.length - 1)];
-      Intent localIntent = new Intent();
-      localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.PageName", paramString);
-      PublicFragmentActivity.a(BaseActivity.sTopActivity, localIntent, PTSFragment.class);
+    }
+    for (;;)
+    {
+      return super.setAttribute(paramInt, paramObject);
+      if (((paramObject instanceof rck)) && (this.a != null)) {
+        this.a.setAwesomeCommentInfo((rck)paramObject);
+      }
     }
   }
 }

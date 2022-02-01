@@ -1,0 +1,38 @@
+package com.tencent.qqmini.miniapp.core.page;
+
+import android.widget.FrameLayout;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+
+class BrandPageWebview$3$1
+  implements Runnable
+{
+  BrandPageWebview$3$1(BrandPageWebview.3 param3) {}
+  
+  public void run()
+  {
+    QMLog.d("miniapp-embedded", "onHideCustomView begin");
+    this.this$1.this$0.customContainer.setVisibility(8);
+    this.this$1.this$0.customViewCallback.onCustomViewHidden();
+    try
+    {
+      this.this$1.this$0.customContainer.removeAllViews();
+      label50:
+      this.this$1.this$0.customContainer = null;
+      this.this$1.this$0.mFullscreenView = null;
+      this.this$1.this$0.customViewCallback = null;
+      QMLog.d("miniapp-embedded", "onHideCustomView end");
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label50;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.qqmini.miniapp.core.page.BrandPageWebview.3.1
+ * JD-Core Version:    0.7.0.1
+ */

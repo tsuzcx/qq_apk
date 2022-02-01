@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.adapter;
 
-import amqb;
+import alkv;
 
 public class RecommendFriendAdapter$2
   implements Runnable
 {
-  public RecommendFriendAdapter$2(amqb paramamqb) {}
+  public RecommendFriendAdapter$2(alkv paramalkv) {}
   
   public void run()
   {
-    amqb.a(this.this$0);
+    alkv.a(this.this$0);
   }
 }
 

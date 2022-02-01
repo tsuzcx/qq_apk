@@ -1,9 +1,9 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
-import bmsw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.module.common.NetworkState;
+import cooperation.qzone.QUA;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -120,7 +120,7 @@ public class LpReportInfo_dc00518
         {
           i = Integer.parseInt((String)localHashMap.get("network_type"));
           localHashMap.put("network_type", String.valueOf(convertNetworkTypeToFitInDc00518(i)));
-          localHashMap.put("qua", bmsw.a());
+          localHashMap.put("qua", QUA.getQUA3());
           localHashMap.put("device", "2");
           return localHashMap;
           localJSONObject = new JSONObject();

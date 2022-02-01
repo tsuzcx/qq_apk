@@ -1,18 +1,17 @@
-import android.view.MotionEvent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.view.View.OnTouchListener;
 
 class bntr
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  bntr(bntq parambntq) {}
+  bntr(bntl parambntl) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      bntq.a(this.a);
-    }
-    return true;
+    paramDialogInterface.dismiss();
+    bntl.a(this.a).p = false;
+    bntl.b(this.a).setSelected(false);
   }
 }
 

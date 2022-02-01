@@ -1,399 +1,447 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.mobileqq.magicface.DecoderUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QWalletPicHelper;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.util.WeakReference;
-import org.json.JSONObject;
 
 public class avlv
+  extends avls
 {
-  private static long jdField_a_of_type_Long;
-  private static View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new avlw();
-  private static Map<Object, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public DecoderUtil a;
+  public byte[] a;
+  public int[] a;
+  public byte[] b;
+  public int c;
+  public byte[] c;
+  public int d;
+  public byte[] d;
+  public int e;
+  public byte[] e;
+  public int f;
+  public byte[] f;
+  public int g;
+  public int h;
+  public int i = -1;
+  public int j = -1;
   
-  private static int a(String paramString, int paramInt, MessageRecord paramMessageRecord)
+  public avlv()
   {
-    paramString = a(paramString, "", paramMessageRecord);
-    if (TextUtils.isEmpty(paramString)) {
-      return paramInt;
+    this.jdField_b_of_type_ArrayOfByte = new byte[51200];
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_f_of_type_Int = -1;
+    this.jdField_e_of_type_ArrayOfByte = new byte[51200];
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicfaceFFMepgDecoder", 2, "func MagicfaceFFMepgDecoder begins");
     }
-    try
-    {
-      int i = Integer.parseInt(paramString);
-      return i;
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicfaceFFMepgDecoder", 2, "func MagicfaceFFMepgDecoder ends");
     }
-    catch (Throwable paramString) {}
-    return paramInt;
   }
   
-  public static TextView a(Context paramContext, RelativeLayout paramRelativeLayout)
+  public int a(byte[] paramArrayOfByte, int paramInt)
   {
-    Resources localResources = paramContext.getResources();
-    LinearLayout localLinearLayout = new LinearLayout(paramContext);
-    paramRelativeLayout.addView(localLinearLayout);
-    paramRelativeLayout = (RelativeLayout.LayoutParams)localLinearLayout.getLayoutParams();
-    paramRelativeLayout.width = -1;
-    paramRelativeLayout.height = -2;
-    paramRelativeLayout.addRule(12, -1);
-    paramRelativeLayout.addRule(0, 2131374356);
-    paramRelativeLayout.rightMargin = agej.a(20.0F, localResources);
-    paramContext = new TextView(paramContext);
-    localLinearLayout.addView(paramContext);
-    paramRelativeLayout = (LinearLayout.LayoutParams)paramContext.getLayoutParams();
-    int i = agej.a(16.0F, localResources);
-    paramRelativeLayout.bottomMargin = i;
-    paramRelativeLayout.leftMargin = i;
-    paramRelativeLayout.height = agej.a(28.0F, localResources);
-    paramContext.setBackgroundResource(2130844416);
-    paramContext.setTextColor(-1);
-    paramContext.setTextSize(1, 12.0F);
-    paramContext.setGravity(16);
-    paramContext.setSingleLine(true);
-    paramContext.setEllipsize(TextUtils.TruncateAt.END);
-    return paramContext;
-  }
-  
-  public static avlz a(StructMsgForImageShare paramStructMsgForImageShare)
-  {
-    if ((paramStructMsgForImageShare == null) || (TextUtils.isEmpty(paramStructMsgForImageShare.mMsgActionData))) {
-      return null;
+    int k;
+    if (paramInt == paramArrayOfByte.length) {
+      k = -1;
     }
-    try
+    do
     {
-      paramStructMsgForImageShare = new JSONObject(paramStructMsgForImageShare.mMsgActionData);
-      avlz localavlz = new avlz();
-      localavlz.jdField_a_of_type_JavaLangString = paramStructMsgForImageShare.optString("game_source_pic_txt");
-      localavlz.jdField_b_of_type_JavaLangString = paramStructMsgForImageShare.optString("game_source_pic_url");
-      localavlz.jdField_a_of_type_Int = paramStructMsgForImageShare.optInt("game_source_type_pic", 0);
-      localavlz.jdField_b_of_type_Int = paramStructMsgForImageShare.optInt("game_source_subtype_pic", 0);
-      localavlz.jdField_a_of_type_Boolean = paramStructMsgForImageShare.optBoolean("game_source_pic_has_data");
-      return localavlz;
-    }
-    catch (Throwable paramStructMsgForImageShare)
-    {
-      QLog.e("GameShare.Util", 1, paramStructMsgForImageShare, new Object[0]);
-    }
-    return null;
-  }
-  
-  private static String a(String paramString1, String paramString2, MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord != null)
-    {
-      paramString1 = paramMessageRecord.getExtInfoFromExtStr(paramString1);
-      if (!TextUtils.isEmpty(paramString1)) {}
-    }
-    else
-    {
-      return paramString2;
-    }
-    return paramString1;
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_JavaUtilMap.clear();
-  }
-  
-  public static void a(View paramView, RelativeLayout paramRelativeLayout, boolean paramBoolean, Resources paramResources, Context paramContext, AbsStructMsg paramAbsStructMsg)
-  {
-    try
-    {
-      if (!a(paramAbsStructMsg)) {
-        return;
-      }
-      localAbsShareMsg = (AbsShareMsg)paramAbsStructMsg;
-      if ((paramView == null) || (paramRelativeLayout == null) || (paramResources == null) || (paramContext == null) || (paramAbsStructMsg == null) || (paramAbsStructMsg.message == null)) {
-        return;
-      }
-      if (!(paramView instanceof TextView)) {
-        break label739;
-      }
-      paramView = (TextView)paramView;
-      paramView.setBackgroundDrawable(null);
-      localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
-      localLayoutParams.addRule(15, -1);
-      paramView.setLayoutParams(localLayoutParams);
-    }
-    catch (Throwable paramView)
-    {
-      AbsShareMsg localAbsShareMsg;
-      RelativeLayout.LayoutParams localLayoutParams;
-      int i;
-      int j;
-      while (QLog.isColorLevel())
+      return k;
+      int m = paramInt + 1;
+      int n = 0;
+      int i1 = (byte)(paramArrayOfByte[(paramInt + 4)] & 0xF);
+      k = n;
+      paramInt = m;
+      if (i1 != 7)
       {
-        QLog.e("GameShare.Util", 1, paramView, new Object[0]);
-        return;
-        localLayoutParams.rightMargin = agej.a(10.0F, paramResources);
-        continue;
-        label736:
-        continue;
-        label739:
-        paramView = null;
+        k = n;
+        paramInt = m;
+        if (i1 != 8)
+        {
+          k = 1;
+          paramInt = m;
+        }
       }
-    }
-    paramRelativeLayout.setBackgroundResource(2130842582);
-    localLayoutParams = (RelativeLayout.LayoutParams)paramRelativeLayout.getLayoutParams();
-    if (paramBoolean)
-    {
-      localLayoutParams.addRule(7, 2131364423);
-      localLayoutParams.rightMargin = agej.a(10.0F, paramResources);
-      paramRelativeLayout.setLayoutParams(localLayoutParams);
-      paramContext = new TextView(paramContext);
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams.addRule(6, 2131378082);
-      localLayoutParams.addRule(1, 2131378082);
-      localLayoutParams.addRule(11, -1);
-      localLayoutParams.addRule(8, 2131378082);
-      localLayoutParams.addRule(15, -1);
-      localLayoutParams.rightMargin = agej.a(8.0F, paramResources);
-      paramRelativeLayout.addView(paramContext, localLayoutParams);
-      paramContext.setGravity(21);
-      paramContext.setEllipsize(TextUtils.TruncateAt.END);
-      paramContext.setSingleLine(true);
-      paramContext.setTextColor(-1);
-      paramContext.setTextSize(2, 12.0F);
-      paramContext.setCompoundDrawablePadding(agej.a(5.0F, paramResources));
-      paramRelativeLayout = paramResources.getDrawable(2130848541);
-      paramRelativeLayout.setBounds(0, 0, agej.a(6.0F, paramResources), agej.a(10.0F, paramResources));
-      paramContext.setCompoundDrawables(null, null, paramRelativeLayout, null);
-      paramRelativeLayout = "https://speed.gamecenter.qq.com/pushgame/v1/detail?_wv=2164260896&_wwv=448&autodownload=1&autolaunch=1&autosubscribe=1&ADTAG=87006&appid=" + localAbsShareMsg.mSourceAppid;
-      if (paramView != null)
-      {
-        paramView.setTag(-1, paramRelativeLayout);
-        paramView.setTag(-5, Integer.valueOf(0));
-        paramView.setOnClickListener(jdField_a_of_type_AndroidViewView$OnClickListener);
-        alil.a(paramView, 0.5F);
+      while (paramInt < paramArrayOfByte.length - 4) {
+        if ((paramArrayOfByte[paramInt] == 0) && (paramArrayOfByte[(paramInt + 1)] == 0) && (paramArrayOfByte[(paramInt + 2)] == 0) && (paramArrayOfByte[(paramInt + 3)] == 1))
+        {
+          m = (byte)(paramArrayOfByte[(paramInt + 4)] & 0xF);
+          if ((m != 7) && (m != 8))
+          {
+            if (k != 0) {
+              break;
+            }
+            paramInt += 1;
+            k = 1;
+          }
+          else
+          {
+            paramInt += 1;
+          }
+        }
+        else
+        {
+          paramInt += 1;
+        }
       }
-      paramView = a("game_source_aio_txt", "", paramAbsStructMsg.message);
-      if (!TextUtils.isEmpty(paramView)) {
-        break label736;
-      }
-      avls.a().a(localAbsShareMsg.mSourceAppid, localAbsShareMsg.message);
-      paramView = "有新动态";
-      paramResources = a("game_source_aio_url", "", paramAbsStructMsg.message);
-      paramRelativeLayout = paramResources;
-      if (TextUtils.isEmpty(paramResources)) {
-        paramRelativeLayout = "https://speed.gamecenter.qq.com/pushgame/v1/detail?_wv=2164260896&_wwv=448&ADTAG=87006&appid=" + localAbsShareMsg.mSourceAppid;
-      }
-      i = a("game_source_type_aio", 0, paramAbsStructMsg.message);
-      j = a("game_source_subtype_aio", 0, paramAbsStructMsg.message);
-      paramResources = localAbsShareMsg.mSourceAppid + "";
-      paramContext.setText(paramView);
-      paramContext.setTag(-1, paramRelativeLayout);
-      paramContext.setTag(-2, Integer.valueOf(i));
-      paramContext.setTag(-3, Integer.valueOf(j));
-      paramContext.setTag(-4, paramResources);
-      paramContext.setTag(-5, Integer.valueOf(1));
-      paramContext.setOnClickListener(jdField_a_of_type_AndroidViewView$OnClickListener);
-      alil.a(paramContext, 0.5F);
-      paramView = (Integer)jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramAbsStructMsg.message.uniseq));
-      if ((paramView != null) && (paramView.intValue() == j)) {
-        return;
-      }
-      paramView = new HashMap();
-      paramView.put(Integer.valueOf(2), j + "");
-      paramView.put(Integer.valueOf(4), "8");
-      acik.a(null, "870", "206672", paramResources, "87006", "1", "145", paramView);
-      jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramAbsStructMsg.message.uniseq), Integer.valueOf(j));
-    }
+      k = paramInt;
+    } while (paramInt != paramArrayOfByte.length - 4);
+    return paramArrayOfByte.length;
   }
   
-  public static void a(TextView paramTextView, Context paramContext, AIOImageData paramAIOImageData, aics paramaics)
+  public void a()
   {
-    if ((paramTextView == null) || (paramContext == null) || (paramAIOImageData == null)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicfaceFFMepgDecoder", 2, "func maigcfaceDecoder begins:,isStartDecodr:" + this.jdField_a_of_type_Boolean);
     }
-    StructMsgForImageShare localStructMsgForImageShare = (StructMsgForImageShare)bdow.a((byte[])paramAIOImageData.a);
-    avlz localavlz = a(localStructMsgForImageShare);
-    if ((localavlz != null) && (!TextUtils.isEmpty(localavlz.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(localavlz.jdField_b_of_type_JavaLangString)))
+    for (;;)
     {
-      Object localObject1 = localStructMsgForImageShare.mSourceAppid + "";
-      paramTextView.setVisibility(0);
-      paramTextView.setText(localavlz.jdField_a_of_type_JavaLangString);
-      paramTextView.setTag(-1, localavlz.jdField_b_of_type_JavaLangString);
-      paramTextView.setTag(-4, localObject1);
-      paramTextView.setTag(-2, Integer.valueOf(localavlz.jdField_a_of_type_Int));
-      paramTextView.setTag(-3, Integer.valueOf(localavlz.jdField_b_of_type_Int));
-      paramTextView.setTag(-5, Integer.valueOf(2));
-      a((String)localObject1, localavlz.jdField_b_of_type_Int, paramAIOImageData);
-      paramTextView.setOnClickListener(jdField_a_of_type_AndroidViewView$OnClickListener);
-      alil.a(paramTextView, 0.5F);
-      localObject1 = localStructMsgForImageShare.mSourceIcon;
-      Object localObject2 = paramContext.getResources();
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      try
       {
-        Object localObject3 = ((Resources)localObject2).getDrawable(2130850462);
-        ((Drawable)localObject3).setBounds(0, 0, agej.a(20.0F, (Resources)localObject2), agej.a(20.0F, (Resources)localObject2));
-        Object localObject4 = new BitmapDrawable(bdqo.a((Drawable)localObject3));
-        paramTextView.setCompoundDrawablePadding(agej.a(3.0F, (Resources)localObject2));
-        ((Drawable)localObject4).setBounds(0, 0, agej.a(20.0F, (Resources)localObject2), agej.a(20.0F, (Resources)localObject2));
-        paramTextView.setCompoundDrawables((Drawable)localObject4, null, null, null);
-        localObject4 = ((Resources)localObject2).getDrawable(2130850463);
-        ((Drawable)localObject4).setBounds(0, 0, agej.a(20.0F, (Resources)localObject2), agej.a(20.0F, (Resources)localObject2));
-        localObject1 = URLDrawable.getDrawable((String)localObject1, (Drawable)localObject3, (Drawable)localObject4);
-        localObject2 = new WeakReference(paramContext);
-        localObject3 = new WeakReference(paramTextView);
-        paramaics = new WeakReference(paramaics);
-        long l1 = paramAIOImageData.jdField_f_of_type_Long;
-        long l2 = paramAIOImageData.jdField_f_of_type_Int;
-        QWalletPicHelper.decodeDrawable((Drawable)localObject1, new avlx((WeakReference)localObject2, (WeakReference)localObject3, paramaics, l1, l2));
-        if (!localavlz.jdField_a_of_type_Boolean) {
-          avls.a().a(localStructMsgForImageShare.mSourceAppid, new avly((WeakReference)localObject2, (WeakReference)localObject3, paramaics, l1, l2, paramAIOImageData));
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = new DecoderUtil();
+        if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createVideoDecoder() == 0) || (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createAlphaDecoder() != 0)) {}
+        this.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_Avlr.jdField_b_of_type_ArrayOfByte;
+        byte[] arrayOfByte1 = this.jdField_a_of_type_ArrayOfByte;
+        if (arrayOfByte1 != null) {
+          continue;
+        }
+      }
+      catch (Exception localException)
+      {
+        byte[] arrayOfByte2;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("MagicfaceFFMepgDecoder", 2, "===MagicfaceDecoder=Exception==" + localException.getMessage());
+        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil == null) {
+          continue;
+        }
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+          return;
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError4) {}
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("MagicfaceFFMepgDecoder", 2, localUnsatisfiedLinkError4.getMessage());
+        return;
+        k = 1;
+        l2 = 0L;
+        if (!this.jdField_a_of_type_Boolean) {
+          continue;
+        }
+        l1 = System.currentTimeMillis();
+        m = a(this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_Int);
+        this.jdField_c_of_type_Int = (m - this.jdField_d_of_type_Int);
+        n = this.jdField_c_of_type_Int;
+        if (n > 0) {
+          continue;
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil == null) {
+          continue;
+        }
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+          return;
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError5) {}
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("MagicfaceFFMepgDecoder", 2, localUnsatisfiedLinkError5.getMessage());
+        return;
+        a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
+        this.jdField_d_of_type_Int = m;
+        l3 = System.currentTimeMillis();
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.decodeVideoDecoder(this.jdField_b_of_type_ArrayOfByte, this.jdField_c_of_type_Int, this.jdField_c_of_type_ArrayOfByte);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("MagicfaceFFMepgDecoder", 2, "decodeVideoDecoder==usetime=" + (System.currentTimeMillis() - l3) + "==videoFrameLength==" + this.jdField_c_of_type_Int);
+        try
+        {
+          if (this.jdField_e_of_type_Int == -1)
+          {
+            this.jdField_e_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.getWidthVideoDecoder();
+            this.jdField_f_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.getHeightVideoDecoder();
+            if ((this.jdField_e_of_type_Int > 500) || (this.jdField_f_of_type_Int > 500))
+            {
+              this.jdField_e_of_type_Int = -1;
+              if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil == null) {
+                continue;
+              }
+              try
+              {
+                this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+                this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+                return;
+              }
+              catch (UnsatisfiedLinkError localUnsatisfiedLinkError6) {}
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              QLog.e("MagicfaceFFMepgDecoder", 2, localUnsatisfiedLinkError6.getMessage());
+              return;
+            }
+            this.jdField_a_of_type_ArrayOfInt = new int[this.jdField_f_of_type_Int * this.jdField_e_of_type_Int];
+          }
+          m = a(this.jdField_d_of_type_ArrayOfByte, this.h);
+          this.g = (m - this.h);
+          b(this.g, this.h, this.jdField_d_of_type_ArrayOfByte);
+          this.h = m;
+          l3 = System.currentTimeMillis();
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.decodeAlphaDecoder(this.jdField_e_of_type_ArrayOfByte, this.g, this.jdField_f_of_type_ArrayOfByte);
+          if (QLog.isColorLevel()) {
+            QLog.d("MagicfaceFFMepgDecoder", 2, "decodeAlphaDecoder==usetime=" + (System.currentTimeMillis() - l3) + "==alphaFrameLength==" + this.g);
+          }
+          l3 = System.currentTimeMillis();
+          arrayOfInt = a(this.jdField_c_of_type_ArrayOfByte, this.jdField_f_of_type_ArrayOfByte);
+          if (QLog.isColorLevel()) {
+            QLog.d("MagicfaceFFMepgDecoder", 2, "convertByteToColor==usetime=" + (System.currentTimeMillis() - l3));
+          }
+          if (this.jdField_a_of_type_Avlu != null) {
+            this.jdField_a_of_type_Avlu.a(arrayOfInt, this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
+          }
+          l3 = System.currentTimeMillis() - l1;
+          if (QLog.isColorLevel()) {
+            QLog.d("MagicfaceFFMepgDecoder", 2, "==============frameTime=============" + l3);
+          }
+          if (l3 >= this.jdField_b_of_type_Int) {
+            continue;
+          }
+          if (l2 <= 0L) {
+            continue;
+          }
+          l1 = this.jdField_b_of_type_Int - l3;
+          if (l1 <= l2) {
+            continue;
+          }
+          Thread.sleep(l1 - l2);
+          l1 = l2;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError2)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("MagicfaceFFMepgDecoder", 2, "magicfaceffMepgDecoder outofMemoryError");
+          }
+          this.jdField_e_of_type_Int = -1;
+          System.gc();
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil == null) {
+          continue;
+        }
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+          return;
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError7) {}
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("MagicfaceFFMepgDecoder", 2, localUnsatisfiedLinkError7.getMessage());
+        return;
+        l1 = l2 - l1;
+        break label1186;
+        Thread.sleep(this.jdField_b_of_type_Int - l3);
+        l1 = l2;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError3)
+      {
+        localOutOfMemoryError3.printStackTrace();
+        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil == null) {
+          continue;
+        }
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+          this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+          return;
+        }
+        catch (UnsatisfiedLinkError localUnsatisfiedLinkError8) {}
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("MagicfaceFFMepgDecoder", 2, localUnsatisfiedLinkError8.getMessage());
+        return;
+        l1 = l2;
+        if (k != 0) {
+          break label1186;
+        }
+        k = this.jdField_b_of_type_Int;
+        l1 = l2 + (l3 - k);
+      }
+      finally
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil == null) {
+          break label1161;
+        }
+      }
+      try
+      {
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+        return;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("MagicfaceFFMepgDecoder", 2, localUnsatisfiedLinkError1.getMessage());
+        return;
+      }
+      this.jdField_d_of_type_ArrayOfByte = this.jdField_a_of_type_Avlr.jdField_a_of_type_ArrayOfByte;
+      arrayOfByte2 = this.jdField_d_of_type_ArrayOfByte;
+      if (arrayOfByte2 == null)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil != null)
+        {
+          try
+          {
+            this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+            this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+            return;
+          }
+          catch (UnsatisfiedLinkError localUnsatisfiedLinkError2) {}
+          if (QLog.isColorLevel()) {
+            QLog.e("MagicfaceFFMepgDecoder", 2, localUnsatisfiedLinkError2.getMessage());
+          }
+        }
+      }
+      else {
+        try
+        {
+          this.jdField_c_of_type_ArrayOfByte = new byte[480000];
+          this.jdField_f_of_type_ArrayOfByte = new byte[480000];
+          byte[] arrayOfByte3 = this.jdField_c_of_type_ArrayOfByte;
+          if (arrayOfByte3 == null)
+          {
+            if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil == null) {
+              continue;
+            }
+            try
+            {
+              this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+              this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+              return;
+            }
+            catch (UnsatisfiedLinkError localUnsatisfiedLinkError3) {}
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e("MagicfaceFFMepgDecoder", 2, localUnsatisfiedLinkError3.getMessage());
+          }
+        }
+        catch (OutOfMemoryError localOutOfMemoryError1)
+        {
+          localOutOfMemoryError1.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.e("MagicfaceFFMepgDecoder", 2, "func MagicfaceFFMepgDecoder ends, OOM.");
+          }
         }
       }
     }
     for (;;)
     {
-      paramContext = paramContext.getResources();
-      paramTextView.setPadding(agej.a(5.0F, paramContext), 0, agej.a(14.0F, paramContext), 0);
-      return;
-      paramTextView.setCompoundDrawables(null, null, null, null);
-    }
-  }
-  
-  public static void a(AIOImageData paramAIOImageData, StructMsgForImageShare paramStructMsgForImageShare)
-  {
-    if ((paramAIOImageData == null) || (paramStructMsgForImageShare == null)) {
-      return;
-    }
-    String str1 = a("game_source_pic_txt", "", paramStructMsgForImageShare.message);
-    String str2 = a("game_source_pic_url", "", paramStructMsgForImageShare.message);
-    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (!bool)
+      long l1;
+      try
       {
-        str1 = "有新动态";
-        str2 = "https://speed.gamecenter.qq.com/pushgame/v1/detail?_wv=2164260896&_wwv=448&ADTAG=87007&appid=" + paramStructMsgForImageShare.mSourceAppid;
+        int m;
+        int n;
+        long l3;
+        int[] arrayOfInt;
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
+        label1161:
+        throw localObject;
       }
-      a(paramAIOImageData, paramStructMsgForImageShare, str1, str2, a("game_source_type_pic", 0, paramStructMsgForImageShare.message), a("game_source_subtype_pic", 0, paramStructMsgForImageShare.message), bool);
-      return;
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError9)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("MagicfaceFFMepgDecoder", 2, localUnsatisfiedLinkError9.getMessage());
+        continue;
+      }
+      label1186:
+      int k = 0;
+      long l2 = l1;
     }
   }
   
-  public static void a(AIOImageData paramAIOImageData, StructMsgForImageShare paramStructMsgForImageShare, String paramString1, String paramString2, int paramInt1, int paramInt2, boolean paramBoolean)
+  public void a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    if (this.jdField_b_of_type_ArrayOfByte.length < paramInt1)
     {
-      localJSONObject.put("game_source_pic_txt", paramString1);
-      localJSONObject.put("game_source_pic_url", paramString2);
-      localJSONObject.put("game_source_type_pic", paramInt1);
-      localJSONObject.put("game_source_subtype_pic", paramInt2);
-      localJSONObject.put("game_source_pic_has_data", paramBoolean);
-      paramStructMsgForImageShare.mMsgActionData = localJSONObject.toString();
-      paramAIOImageData.a = paramStructMsgForImageShare.getBytes();
-      return;
+      this.jdField_b_of_type_ArrayOfByte = new byte[paramInt1];
+      if (QLog.isColorLevel()) {
+        QLog.d("MagicfaceFFMepgDecoder", 2, "videoFrame.length = " + this.jdField_b_of_type_ArrayOfByte.length + "new framelength = " + paramInt1);
+      }
     }
-    catch (Throwable paramString1)
+    System.arraycopy(paramArrayOfByte, paramInt2, this.jdField_b_of_type_ArrayOfByte, 0, paramInt1);
+  }
+  
+  public int[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    int m = 0;
+    if (m < this.jdField_a_of_type_ArrayOfInt.length)
     {
+      int i1 = m * 3;
+      int n = paramArrayOfByte2[i1] & 0xFF;
+      int k;
+      if (n <= 50) {
+        k = 0;
+      }
       for (;;)
       {
-        QLog.e("GameShare.Util", 1, paramString1, new Object[0]);
-      }
-    }
-  }
-  
-  public static void a(StructMsgForImageShare paramStructMsgForImageShare, View paramView)
-  {
-    if ((paramStructMsgForImageShare == null) || (!a(paramStructMsgForImageShare.mSourceAppid)) || (paramView == null) || (paramView.getResources() == null)) {
-      return;
-    }
-    try
-    {
-      int j = paramStructMsgForImageShare.width;
-      int k = paramStructMsgForImageShare.height;
-      int i = agej.a(251.0F, paramView.getResources());
-      j = i * (k / j);
-      ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-      paramStructMsgForImageShare = localLayoutParams;
-      if (localLayoutParams == null) {
-        paramStructMsgForImageShare = new ViewGroup.LayoutParams(i, j);
-      }
-      paramStructMsgForImageShare.width = i;
-      paramStructMsgForImageShare.height = j;
-      paramView.setLayoutParams(paramStructMsgForImageShare);
-      return;
-    }
-    catch (Throwable paramStructMsgForImageShare) {}
-  }
-  
-  public static void a(String paramString, int paramInt, Object paramObject)
-  {
-    Object localObject = (Integer)jdField_a_of_type_JavaUtilMap.get(paramObject);
-    if ((localObject == null) || (((Integer)localObject).intValue() != paramInt))
-    {
-      localObject = new HashMap();
-      ((Map)localObject).put(Integer.valueOf(2), paramInt + "");
-      ((Map)localObject).put(Integer.valueOf(4), "8");
-      acik.a(null, "870", "206673", paramString, "87007", "1", "145", (Map)localObject);
-      jdField_a_of_type_JavaUtilMap.put(paramObject, Integer.valueOf(paramInt));
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord != null) && (!TextUtils.isEmpty(paramString2))) {
-      paramMessageRecord.saveExtInfoToExtStr(paramString1, paramString2);
-    }
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    try
-    {
-      avlq localavlq = avlr.a();
-      if (localavlq != null)
-      {
-        boolean bool = localavlq.a(paramLong + "");
-        if (bool) {
-          return true;
+        this.jdField_a_of_type_ArrayOfInt[m] = (k << 24 & 0xFF000000 | paramArrayOfByte1[(i1 + 2)] << 16 & 0xFF0000 | paramArrayOfByte1[(i1 + 1)] << 8 & 0xFF00 | paramArrayOfByte1[i1] & 0xFF);
+        m += 1;
+        break;
+        k = n;
+        if (n >= 235) {
+          k = 255;
         }
       }
-      return false;
     }
-    catch (Throwable localThrowable)
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
+  
+  public void b(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  {
+    if (this.jdField_e_of_type_ArrayOfByte.length < paramInt1)
     {
+      this.jdField_e_of_type_ArrayOfByte = new byte[paramInt1];
       if (QLog.isColorLevel()) {
-        QLog.e("GameShare.Util", 1, localThrowable, new Object[0]);
+        QLog.d("MagicfaceFFMepgDecoder", 2, "alphaFrame.length = " + this.jdField_e_of_type_ArrayOfByte.length + " new fillFrameAlpha = " + paramInt1);
       }
     }
-    return false;
+    System.arraycopy(paramArrayOfByte, paramInt2, this.jdField_e_of_type_ArrayOfByte, 0, paramInt1);
   }
   
-  public static boolean a(AbsShareMsg paramAbsShareMsg)
+  public void c()
   {
-    return (paramAbsShareMsg != null) && (a(paramAbsShareMsg.mSourceAppid));
+    super.c();
+    this.jdField_b_of_type_ArrayOfByte = null;
+    this.jdField_e_of_type_ArrayOfByte = null;
+    this.jdField_f_of_type_ArrayOfByte = null;
+    this.jdField_c_of_type_ArrayOfByte = null;
+    this.jdField_a_of_type_ArrayOfInt = null;
   }
   
-  private static boolean a(AbsStructMsg paramAbsStructMsg)
+  protected void f()
   {
-    if ((paramAbsStructMsg instanceof AbsShareMsg)) {
-      return a((AbsShareMsg)paramAbsStructMsg);
-    }
-    return false;
+    super.f();
+    this.jdField_d_of_type_Int = 0;
+    this.h = 0;
+  }
+  
+  protected void g()
+  {
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

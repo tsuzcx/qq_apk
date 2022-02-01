@@ -72,6 +72,7 @@ public class SDKMiniProgramLpReportDC04239
   public static final String MORE_BUTTON_RESERVERS_CANCEL_SYSTEM = "cancel_system";
   public static final String MORE_BUTTON_RESERVERS_MESSAGE = "message";
   public static final String MORE_BUTTON_RESERVERS_OPEN = "open";
+  public static final String MORE_BUTTON_RESERVERS_QQ_FAVORITES = "qq_favorites";
   public static final String MORE_BUTTON_RESERVERS_SETTOP_OFF = "settop_off";
   public static final String MORE_BUTTON_RESERVERS_SETTOP_ON = "settop_on";
   public static final String MORE_BUTTON_RESERVERS_SHARE_Moments = "share_Moments";
@@ -496,9 +497,9 @@ public class SDKMiniProgramLpReportDC04239
     MiniProgramReporter.getInstance().getReportHandler().post(new SDKMiniProgramLpReportDC04239.2(paramString3, paramString4, paramString5, paramString1, paramMiniAppInfo, paramString2));
   }
   
-  public static void reportWithGroupId(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public static void reportWithGroupId(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    MiniProgramReporter.getInstance().getReportHandler().post(new SDKMiniProgramLpReportDC04239.15(paramString1, paramString2, paramString3, paramString4, paramString5));
+    MiniProgramReporter.getInstance().getReportHandler().post(new SDKMiniProgramLpReportDC04239.15(paramString1, paramString2, paramString3, paramString4, paramString5, paramMiniAppInfo));
   }
   
   private static void sendRecordDurationMsg()

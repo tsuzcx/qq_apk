@@ -1,29 +1,19 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
+import WEISHI_USER_GROWTH.WEISHI.stMetaFeed;
 
 public class zvs
-  extends Handler
 {
-  public zvs(QRCardActivity paramQRCardActivity) {}
+  int jdField_a_of_type_Int;
+  WEISHI.stMetaFeed jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed = null;
   
-  public void handleMessage(Message paramMessage)
+  zvs(WEISHI.stMetaFeed paramstMetaFeed, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.a.jdField_a_of_type_Boolean) || (!(paramMessage.obj instanceof Bitmap)));
-      paramMessage = (Bitmap)paramMessage.obj;
-    } while (paramMessage == null);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(0);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramMessage);
+    this.jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed = paramstMetaFeed;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 

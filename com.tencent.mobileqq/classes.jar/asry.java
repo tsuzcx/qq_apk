@@ -1,55 +1,27 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class asry
-  implements View.OnClickListener
+  implements asri
 {
-  asry(asrx paramasrx, asoo paramasoo) {}
+  asry(asrx paramasrx) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    Intent localIntent = new Intent();
-    String str1;
-    label41:
-    String str3;
-    if (this.jdField_a_of_type_Asoo.jdField_a_of_type_Boolean)
+    this.a.a(false, asyq.a(this.a.a.a()), this.a.c(), new asrz(this));
+  }
+  
+  public void b()
+  {
+    this.a.d();
+    int i = this.a.d();
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    if (i == 0)
     {
-      localIntent.putExtra("emoji_to_dressup", true);
-      if (this.jdField_a_of_type_Asrx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        break label221;
-      }
-      str1 = "";
-      str3 = this.jdField_a_of_type_Asrx.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
-      if (!this.jdField_a_of_type_Asoo.jdField_a_of_type_Boolean) {
-        break label235;
-      }
-    }
-    label221:
-    label235:
-    for (String str2 = "1";; str2 = "2")
-    {
-      VasWebviewUtil.reportCommercialDrainage(str1, "ep_mall", "0X8007192", null, 1, 0, 0, null, str3, str2);
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_Asrx.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Asrx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, String.valueOf(this.jdField_a_of_type_Asrx.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId), false, localIntent, true);
-      bdll.b(this.jdField_a_of_type_Asrx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8007192", 0, 0, "", this.jdField_a_of_type_Asrx.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, "2", "");
-      EventCollector.getInstance().onViewClicked(paramView);
+      localQQAppInterface.getOnlineFileSessionCenter().a(this.a.d());
       return;
-      if ((this.jdField_a_of_type_Asrx.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.extraFlags & 0x1) != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localIntent.putExtra("emoji_is_original", bool);
-        localIntent.putExtra("emoji_author_id", this.jdField_a_of_type_Asoo.jdField_a_of_type_Int);
-        break;
-      }
-      str1 = this.jdField_a_of_type_Asrx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      break label41;
     }
+    localQQAppInterface.getFileManagerEngine().a(this.a.a.a());
   }
 }
 

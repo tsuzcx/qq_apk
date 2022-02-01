@@ -1,16 +1,16 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.richmediabrowser.view.IBrowserViewHolder;
-import com.tencent.richmediabrowser.view.recyclerview.BrowserScaleView;
+import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
 
 class bbqv
-  extends IBrowserViewHolder
+  implements SDKInitListener
 {
-  public ImageView a;
-  public TextView a;
-  public BrowserScaleView a;
+  bbqv(bbqu parambbqu) {}
   
-  bbqv(bbqq parambbqq) {}
+  public void onSDKInited(boolean paramBoolean)
+  {
+    bbqu.a(this.a);
+    BaseShortVideoOprerator.a(this.a.a.a, bbqu.a(this.a));
+  }
 }
 
 

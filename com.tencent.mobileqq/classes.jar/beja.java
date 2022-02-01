@@ -1,15 +1,20 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface beja
+class beja
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void callJs(String paramString, String... paramVarArgs);
+  beja(beiz parambeiz, bejd parambejd) {}
   
-  public abstract void diyThemeSetup(JSONObject paramJSONObject, String paramString);
-  
-  public abstract void downloadBgPic(String paramString, Bundle paramBundle);
-  
-  public abstract void startDownload(JSONObject paramJSONObject, String paramString);
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    if ((paramCompoundButton.isEnabled()) && (!((TroopInfo)this.jdField_a_of_type_Bejd.a).troopuin.equals(beiz.a(this.jdField_a_of_type_Beiz)))) {
+      this.jdField_a_of_type_Bejd.b = Boolean.valueOf(paramBoolean);
+    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+  }
 }
 
 

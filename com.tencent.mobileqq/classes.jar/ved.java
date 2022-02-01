@@ -1,20 +1,8 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.qqcircle.widgets.QCircleTitleFollowView;
-
-class ved
-  extends AnimatorListenerAdapter
+public abstract interface ved
 {
-  ved(vdr paramvdr) {}
+  public abstract void a(Object paramObject);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    vdr.a(this.a, false);
-    vdr.a(this.a).setVisibility(8);
-    vdr.a(this.a).getLayoutParams().width = bhtq.a(80.0F);
-    vdr.a(this.a).setAlpha(1.0F);
-  }
+  public abstract void b(Object paramObject);
 }
 
 

@@ -1,15 +1,19 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.InviteToGroupInfo;
 
-public abstract interface bdye
+public final class bdye
+  implements Parcelable.Creator<InviteToGroupInfo>
 {
-  public abstract int a(int paramInt1, int paramInt2, int paramInt3, String paramString, Paint paramPaint);
+  public InviteToGroupInfo a(Parcel paramParcel)
+  {
+    return new InviteToGroupInfo(paramParcel);
+  }
   
-  public abstract String a(bdxk parambdxk, String paramString);
-  
-  public abstract void a(int paramInt, String paramString, Paint paramPaint);
-  
-  public abstract boolean a(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt1, int paramInt2, Paint paramPaint);
+  public InviteToGroupInfo[] a(int paramInt)
+  {
+    return new InviteToGroupInfo[paramInt];
+  }
 }
 
 

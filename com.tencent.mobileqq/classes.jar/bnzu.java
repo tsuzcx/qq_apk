@@ -1,24 +1,15 @@
-import android.app.Activity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.WeiyunSaveTipsFactory.1;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import dov.com.tencent.mobileqq.richmedia.mediacodec.AudioDecoder.BgmAudioPlayRunnable;
 
 public class bnzu
-  implements View.OnTouchListener
+  implements MediaPlayer.OnPreparedListener
 {
-  public bnzu(WeiyunSaveTipsFactory.1 param1) {}
+  public bnzu(AudioDecoder.BgmAudioPlayRunnable paramBgmAudioPlayRunnable) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      QLog.d("hehe", 2, new Object[] { "", "toast touch event" });
-      bnzt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext());
-      return true;
-    }
-    return false;
+    this.a.e();
   }
 }
 

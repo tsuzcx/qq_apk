@@ -1,112 +1,82 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class bgiv
+public class bgiv<E>
 {
-  private static int a(int paramInt, MessageRecord paramMessageRecord)
+  private HashMap<String, CopyOnWriteArrayList<E>> a = new HashMap();
+  
+  public List<E> a(String paramString)
   {
-    int j = -1;
-    boolean bool = axuz.a(paramMessageRecord);
-    int i;
-    if (paramInt != 27) {
-      i = 0;
-    }
-    for (;;)
+    try
     {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder().append("getFlowersCounts, bizType = ").append(paramInt).append(", isNearbyFlowerMsg = ").append(bool).append(", msgType = ");
-        paramInt = j;
-        if (paramMessageRecord != null) {
-          paramInt = paramMessageRecord.msgtype;
-        }
-        QLog.d("Navigate.UpdateMsgInfoUtil", 2, paramInt + ", flowersCount = " + i);
+      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.get(paramString);
+      paramString = localCopyOnWriteArrayList;
+      if (localCopyOnWriteArrayList == null) {
+        paramString = Collections.emptyList();
       }
-      return i;
-      if ((paramMessageRecord.msgtype != -2035) && (paramMessageRecord.msgtype != -2038) && (!bool))
-      {
-        i = -1;
-      }
-      else
-      {
-        if (bool)
-        {
-          if ((paramMessageRecord instanceof MessageForStructing)) {
-            i = axuz.a((MessageForStructing)paramMessageRecord);
-          }
-        }
-        else
-        {
-          if ((paramMessageRecord instanceof MessageForDeliverGiftTips))
-          {
-            i = ((MessageForDeliverGiftTips)paramMessageRecord).giftCount;
-            continue;
-          }
-          i = -1;
-          continue;
-        }
-        i = -1;
-      }
+      return paramString;
     }
+    finally {}
   }
   
-  @Nullable
-  public static Object a(QQAppInterface paramQQAppInterface, String paramString, bfoy parambfoy, Object paramObject, MessageRecord paramMessageRecord, boolean paramBoolean)
+  public void a(String paramString, E paramE)
   {
-    a(paramQQAppInterface, paramString, parambfoy, paramMessageRecord, paramBoolean);
-    return b(paramQQAppInterface, paramString, parambfoy, paramObject, paramMessageRecord, paramBoolean);
-  }
-  
-  private static String a(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 3000) {
-      return bgiw.a(paramString, i);
-    }
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, String paramString, bfoy parambfoy, MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    int j = parambfoy.a(paramQQAppInterface, paramBoolean, paramString);
-    int i = a(j, paramMessageRecord);
-    if (((!paramBoolean) && (!a(j))) || (i == -1))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Navigate.UpdateMsgInfoUtil", 2, "isTroop = " + paramBoolean + ", bizType = " + j + ", flowers = " + i + ", troopCode = " + paramString + ", isTroop = " + paramBoolean);
+      CopyOnWriteArrayList localCopyOnWriteArrayList2 = (CopyOnWriteArrayList)this.a.get(paramString);
+      CopyOnWriteArrayList localCopyOnWriteArrayList1 = localCopyOnWriteArrayList2;
+      if (localCopyOnWriteArrayList2 == null)
+      {
+        localCopyOnWriteArrayList1 = new CopyOnWriteArrayList();
+        this.a.put(paramString, localCopyOnWriteArrayList1);
       }
+      localCopyOnWriteArrayList1.add(paramE);
       return;
     }
-    String str = a(paramString, paramBoolean);
-    j = bghv.b(j);
-    paramString = null;
-    if (j == 102) {
-      paramString = paramMessageRecord;
-    }
-    long l = bfpe.a(j, parambfoy.a.a, parambfoy.a.b);
-    ((bgiw)paramQQAppInterface.getManager(363)).a(str, j, parambfoy.a.a, l, "", i, paramString);
+    finally {}
   }
   
-  public static boolean a(int paramInt)
+  public void a(String paramString, Object paramObject, boolean paramBoolean)
   {
-    return (paramInt == 13) || (paramInt == 24) || (paramInt == 12) || (paramInt == 20) || (paramInt == 22);
+    try
+    {
+      paramString = (CopyOnWriteArrayList)this.a.get(paramString);
+      if (paramString != null)
+      {
+        if (paramBoolean)
+        {
+          Iterator localIterator = paramString.iterator();
+          while (localIterator.hasNext())
+          {
+            Object localObject1 = localIterator.next();
+            Object localObject2 = ((WeakReference)localObject1).get();
+            if ((localObject2 == null) || (localObject2 == paramObject)) {
+              paramString.remove(localObject1);
+            }
+          }
+        }
+        paramString.remove(paramObject);
+      }
+    }
+    finally {}
   }
   
-  @Nullable
-  private static Object b(QQAppInterface paramQQAppInterface, String paramString, bfoy parambfoy, Object paramObject, MessageRecord paramMessageRecord, boolean paramBoolean)
+  public List<E> b(String paramString)
   {
-    int i = parambfoy.a(paramQQAppInterface, paramBoolean, paramString);
-    if ((!paramBoolean) && (!a(i))) {
-      return null;
+    try
+    {
+      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.remove(paramString);
+      paramString = localCopyOnWriteArrayList;
+      if (localCopyOnWriteArrayList == null) {
+        paramString = Collections.emptyList();
+      }
+      return paramString;
     }
-    paramString = ((alqe)paramQQAppInterface.getManager(366)).a(i);
-    if (paramString != null) {
-      return paramString.a(i, parambfoy, paramObject, paramMessageRecord, paramQQAppInterface);
-    }
-    return null;
+    finally {}
   }
 }
 

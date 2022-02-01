@@ -1,16 +1,17 @@
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.gdtad.api.interstitial.GdtArkPreDownloadTask.6.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class acpx
-  implements ArkAppMgr.IGetAppPathByNameCallback
+  implements DialogInterface.OnClickListener
 {
-  acpx(acpw paramacpw) {}
+  public acpx(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString, int paramInt) {}
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AdThreadManager.INSTANCE.post(new GdtArkPreDownloadTask.6.1(this, paramAppPathInfo, paramInt, paramString), 5);
+    bgge.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, "mvip.n.a.gnew_apply", this.jdField_a_of_type_JavaLangString, 3, false, false, "", "", true, true);
+    bcef.b(null, "dc00898", "", "", "qq_vip", "0X800A4FB", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aimx;
-import aoip;
+import ahik;
+import anca;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class NearbyChatPie$14
   implements Runnable
 {
-  public NearbyChatPie$14(aimx paramaimx) {}
+  public NearbyChatPie$14(ahik paramahik) {}
   
   public void run()
   {
-    if (!aimx.a(this.this$0)) {
-      ((aoip)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).s(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    if (!ahik.a(this.this$0)) {
+      ((anca)this.this$0.app.getBusinessHandler(20)).s(this.this$0.sessionInfo.curFriendUin);
     }
   }
 }

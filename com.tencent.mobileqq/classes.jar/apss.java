@@ -1,14 +1,25 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import android.graphics.Rect;
+import java.util.Comparator;
 
-public class apss
-  extends apsq
+class apss
+  implements Comparator<Rect>
 {
-  public String a;
+  apss(apsq paramapsq) {}
   
-  public void a(AppInterface paramAppInterface, Bundle paramBundle)
+  public int a(Rect paramRect1, Rect paramRect2)
   {
-    this.a = paramBundle.getString("PromotionDescription", "");
+    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
+    do
+    {
+      return 1;
+      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
+        return -1;
+      }
+    } while (paramRect1.width() > paramRect2.width());
+    if (paramRect1.width() < paramRect2.width()) {
+      return -1;
+    }
+    return 0;
   }
 }
 

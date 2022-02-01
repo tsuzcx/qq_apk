@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import oco;
-import pfa;
-import pra;
+import oeb;
+import pkm;
+import pwu;
 
 public class PublicAccountUnfollowTask$1
   implements Runnable
 {
-  public PublicAccountUnfollowTask$1(oco paramoco) {}
+  public PublicAccountUnfollowTask$1(oeb paramoeb) {}
   
   public void run()
   {
-    pfa.a().a().a(oco.a(this.this$0).getAccount(), oco.a(this.this$0), false, "", this.this$0, 1);
+    pkm.a().a().a(oeb.a(this.this$0).getAccount(), oeb.a(this.this$0), false, "", this.this$0, 1);
   }
 }
 

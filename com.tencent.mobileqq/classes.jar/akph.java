@@ -1,53 +1,30 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
 public class akph
-  implements aknm
+  implements Animator.AnimatorListener
 {
-  public akph(PhoneFrameActivity paramPhoneFrameActivity) {}
+  public akph(LoginView paramLoginView) {}
   
-  public View a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return this.a.jdField_a_of_type_AndroidViewView;
+    LoginView.c(this.a, false);
   }
   
-  public ImageView a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return this.a.jdField_a_of_type_AndroidWidgetImageView;
+    LoginView.a(this.a, LoginView.b(this.a), LoginView.d(this.a), LoginView.f(this.a), LoginView.h(this.a), 1.0F);
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+    LoginView.c(this.a, false);
   }
   
-  public TextView a()
-  {
-    return this.a.leftView;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public QQAppInterface a()
-  {
-    return this.a.app;
-  }
-  
-  public View b()
-  {
-    return this.a.b;
-  }
-  
-  public TextView b()
-  {
-    return this.a.rightViewText;
-  }
-  
-  public TextView c()
-  {
-    return this.a.centerView;
-  }
-  
-  public TextView d()
-  {
-    return this.a.jdField_a_of_type_AndroidWidgetTextView;
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

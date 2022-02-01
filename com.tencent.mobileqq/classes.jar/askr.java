@@ -1,9 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-
-public abstract class askr
+class askr
+  extends asjv
 {
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle) {}
+  public askr(asji paramasji)
+  {
+    super(paramasji);
+  }
+  
+  protected String a()
+  {
+    return "StateUploadoneWhenPause";
+  }
 }
 
 

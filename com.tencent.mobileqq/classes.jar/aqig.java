@@ -1,21 +1,65 @@
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.11;
+import cooperation.qzone.mobilereport.MobileReportManager;
 
-public class aqig
+class aqig
   implements DialogInterface.OnClickListener
 {
-  public aqig(DynamicAvatarRecordActivity.11 param11) {}
+  aqig(aqid paramaqid, Context paramContext, boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.this$0.finish();
+    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      str = this.jdField_a_of_type_Aqid.h.a(this.jdField_a_of_type_JavaLangString);
+      bgge.a((Context)localObject, str);
+      paramDialogInterface.dismiss();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label136;
+      }
+      paramDialogInterface = "0X800AE6A";
+      label50:
+      localObject = this.jdField_a_of_type_JavaLangString;
+      if (!this.b) {
+        break label142;
+      }
+      str = "size";
+      label66:
+      aqid.a(paramDialogInterface, (String)localObject, str);
+      localObject = MobileReportManager.getInstance();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label148;
+      }
+      paramDialogInterface = "2";
+      label88:
+      if (!this.jdField_a_of_type_Boolean) {
+        break label154;
+      }
+    }
+    label136:
+    label142:
+    label148:
+    label154:
+    for (String str = "2";; str = "1")
+    {
+      ((MobileReportManager)localObject).reportAction("Open", "4", "platform898", paramDialogInterface, str, 102, 1, System.currentTimeMillis());
+      return;
+      str = this.jdField_a_of_type_Aqid.i.a(this.jdField_a_of_type_JavaLangString);
+      break;
+      paramDialogInterface = "0X800AE64";
+      break label50;
+      str = "full";
+      break label66;
+      paramDialogInterface = "3";
+      break label88;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqig
  * JD-Core Version:    0.7.0.1
  */

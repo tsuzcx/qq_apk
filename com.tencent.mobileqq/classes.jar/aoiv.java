@@ -1,82 +1,48 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.List;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspBody;
-import tencent.im.oidb.cmd0x88d.oidb_0x88d.RspGroupInfo;
-
-class aoiv
+public class aoiv
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private oidb_0x88d.GroupInfo jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  public double a;
+  public int a;
+  public aoir a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g = "";
   
-  public aoiv(aoip paramaoip, String paramString, long paramLong, int paramInt, byte... paramVarArgs)
+  public String toString()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfByte = paramVarArgs;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public aoiv a()
-  {
-    Object localObject = new oidb_0x88d.RspBody();
-    ((oidb_0x88d.RspBody)localObject).mergeFrom(this.jdField_a_of_type_ArrayOfByte);
-    if ((this.jdField_a_of_type_Int != 0) && (((oidb_0x88d.RspBody)localObject).str_errorinfo.has())) {
-      this.jdField_a_of_type_JavaLangString = String.valueOf(((oidb_0x88d.RspBody)localObject).str_errorinfo.get().toByteArray());
-    }
-    this.jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo = null;
-    localObject = ((oidb_0x88d.RspBody)localObject).stzrspgroupinfo.get();
-    int i;
-    int j;
-    label72:
-    oidb_0x88d.RspGroupInfo localRspGroupInfo;
-    if (localObject == null)
+    StringBuilder localStringBuilder = new StringBuilder().append("result:{sclass:");
+    if (this.jdField_a_of_type_JavaLangString != null)
     {
-      i = 0;
-      j = 0;
-      if ((this.jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo != null) || (j >= i)) {
-        return this;
+      str = this.jdField_a_of_type_JavaLangString;
+      localStringBuilder = localStringBuilder.append(str).append(",").append("sItemId:");
+      if (this.jdField_a_of_type_Aoir == null) {
+        break label230;
       }
-      localRspGroupInfo = (oidb_0x88d.RspGroupInfo)((List)localObject).get(j);
-      if ((localRspGroupInfo != null) && (localRspGroupInfo.uint64_group_code.get() == this.jdField_a_of_type_Long)) {
-        break label134;
+      str = this.jdField_a_of_type_Aoir.jdField_a_of_type_JavaLangString;
+      label56:
+      localStringBuilder = localStringBuilder.append(str).append(",").append("dProb:").append(this.jdField_a_of_type_Double).append(",").append("sTitle:").append(this.d).append(",").append("sWiki:").append(this.e).append(",").append("sJumpUrl:").append(this.f).append(",").append("sCdbRes:");
+      if (this.jdField_a_of_type_ArrayOfByte == null) {
+        break label236;
       }
     }
-    for (;;)
+    label230:
+    label236:
+    for (String str = new String(this.jdField_a_of_type_ArrayOfByte);; str = "")
     {
-      j += 1;
-      break label72;
-      i = ((List)localObject).size();
+      return str + "," + "isAutoJump:" + this.jdField_a_of_type_Boolean + "," + "iNeedCheckLBS:" + this.c + "," + "imageId:" + this.g + "}";
+      str = "";
       break;
-      label134:
-      this.jdField_a_of_type_Int = localRspGroupInfo.uint32_result.get();
-      if ((this.jdField_a_of_type_Int == 0) && (localRspGroupInfo.stgroupinfo.has())) {
-        this.jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo = ((oidb_0x88d.GroupInfo)localRspGroupInfo.stgroupinfo.get());
-      }
+      str = "";
+      break label56;
     }
-    return this;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public oidb_0x88d.GroupInfo a()
-  {
-    return this.jdField_a_of_type_TencentImOidbCmd0x88dOidb_0x88d$GroupInfo;
   }
 }
 

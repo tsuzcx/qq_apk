@@ -1,6 +1,14 @@
-public abstract interface aiwg
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+
+public class aiwg
+  implements bjqj
 {
-  public static final int[] a = { 4, 5, 6 };
+  public aiwg(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
+  
+  public void a(int paramInt)
+  {
+    bcef.b(this.a.a, "dc00898", "", "", "0X800AC87", "0X800AC87", 3, 0, "1", "1", "", "");
+  }
 }
 
 

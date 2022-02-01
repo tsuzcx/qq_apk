@@ -1,23 +1,36 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.IPSiteModel.Goods;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class asqx
-  implements View.OnClickListener
+public class asqx
+  extends asbj
 {
-  asqx(asqw paramasqw, IPSiteModel.Goods paramGoods) {}
+  public asqx(TroopFileDetailBrowserActivity paramTroopFileDetailBrowserActivity) {}
   
-  public void onClick(View paramView)
+  protected void onTroopFileCopyToC2cDisc(long paramLong, boolean paramBoolean, int paramInt, String paramString)
   {
-    Intent localIntent = new Intent(asqw.a(this.jdField_a_of_type_Asqw), QQBrowserActivity.class);
-    localIntent.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(asqw.a(this.jdField_a_of_type_Asqw), this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Goods.url, -1L, localIntent, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(asqw.a(this.jdField_a_of_type_Asqw), "IP", "aio_productclk", "", 0, 0, 0, asqw.b(this.jdField_a_of_type_Asqw), asqw.c(this.jdField_a_of_type_Asqw), "", "", "", "", "", 0, 0, 0, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (!paramBoolean) {
+      if ((paramString != null) && (paramString.length() > 0)) {
+        aszt.c(paramString);
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while ((this.a.b == null) || (this.a.app == null));
+        if (this.a.b.b() == paramLong) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.d("FileBrowserActivity<FileAssistant>", 4, "difference nSessionId");
+      return;
+    } while (this.a.app.getFileManagerDataCenter().b(paramLong) != null);
+    QLog.e("FileBrowserActivity<FileAssistant>", 1, "OnTroopFileCopyToC2cDisc->,but entity is null SessionId[" + paramLong + "]");
   }
 }
 

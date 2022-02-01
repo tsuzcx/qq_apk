@@ -1,17 +1,16 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
 public class xfb
-  extends wov
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public final String a;
-  public final int b;
+  public xfb(StoryPickerHorizontalListView paramStoryPickerHorizontalListView) {}
   
-  public xfb(qqstory_service.RspGetWeather paramRspGetWeather)
+  public void onScrollStateChanged(int paramInt)
   {
-    this.b = paramRspGetWeather.temperature.get();
-    this.a = paramRspGetWeather.wea_desc.get();
+    if ((paramInt == 4097) && (this.a.jdField_a_of_type_Xfe != null)) {
+      this.a.jdField_a_of_type_Xfe.a(this.a.jdField_a_of_type_Xey.a);
+    }
   }
 }
 

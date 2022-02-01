@@ -1,12 +1,12 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
-
-public class asue
+class asue
+  implements atar
 {
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  asue(asud paramasud) {}
   
-  public asue(asua paramasua) {}
+  public void a()
+  {
+    asud.a(this.a);
+  }
 }
 
 

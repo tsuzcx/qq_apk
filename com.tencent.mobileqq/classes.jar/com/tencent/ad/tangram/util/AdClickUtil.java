@@ -150,26 +150,32 @@ public final class AdClickUtil
   
   private static AdClickUtil.a getURLObject(AdClickUtil.Params paramParams)
   {
-    if ((paramParams == null) || (!paramParams.isValid())) {
-      return null;
+    Object localObject;
+    if ((paramParams == null) || (!paramParams.isValid()))
+    {
+      localObject = null;
+      return localObject;
     }
     AdClickUtil.a locala = new AdClickUtil.a();
-    if (!AdOffline.INSTANCE.isEnable((Context)paramParams.activity.get())) {}
-    while (TextUtils.isEmpty(locala.url))
+    if ((!paramParams.ad.isAppXiJingOffline()) && (!paramParams.ad.isWebXiJingOffline())) {}
+    for (;;)
     {
+      localObject = locala;
+      if (!TextUtils.isEmpty(locala.url)) {
+        break;
+      }
       return getBaseURLObject(paramParams);
-      if (((paramParams.ad.isAppXiJingOffline()) || (paramParams.ad.isWebXiJingOffline())) && (!TextUtils.isEmpty(AdOffline.INSTANCE.getVersionIfExistsFromMemory(paramParams.ad.getBusinessIdForXiJingOffline()))))
+      if (!TextUtils.isEmpty(AdOffline.INSTANCE.getVersionIfExistsFromMemory(paramParams.ad.getBusinessIdForXiJingOffline())))
       {
-        String str = AdCanvasJsonManager.getInstance().getCachedCanvasJson(paramParams.ad, paramParams.ad.getJSONKeyForXiJingOffline(), true);
-        if (!TextUtils.isEmpty(str))
+        localObject = AdCanvasJsonManager.getInstance().getCachedCanvasJson(paramParams.ad, paramParams.ad.getJSONKeyForXiJingOffline(), true);
+        if (!TextUtils.isEmpty((CharSequence)localObject))
         {
-          paramParams.ad.setCanvasForXiJingOffline(str);
+          paramParams.ad.setCanvasForXiJingOffline((String)localObject);
           locala.url = appendUrlWithAutoDownload(replaceUrlWithClickLpp(paramParams.ad.getUrlForXiJingOffline()), "autodownload", paramParams);
           locala.type = 3;
         }
       }
     }
-    return locala;
   }
   
   public static String getUrlForClick(AdClickUtil.Params paramParams)

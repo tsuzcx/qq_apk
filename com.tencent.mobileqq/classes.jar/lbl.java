@@ -1,7 +1,14 @@
-final class lbl
-  implements bhvb
+import java.util.List;
+
+public class lbl
 {
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  @ausx(a="testInfos")
+  public List<lbm> a;
+  
+  public static lbl a(String paramString)
+  {
+    return (lbl)ausy.a(paramString, lbl.class);
+  }
 }
 
 

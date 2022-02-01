@@ -1,63 +1,39 @@
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aehy
-  implements anyl
+  implements View.OnClickListener
 {
-  public aehy(Conversation paramConversation) {}
+  public aehy(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public ViewGroup a()
+  public void onClick(View paramView)
   {
-    return this.a.a.a;
-  }
-  
-  public blqp a(String paramString)
-  {
-    return this.a.a.a(paramString);
-  }
-  
-  public void a()
-  {
-    this.a.a.a();
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    this.a.a.a(paramInt1, paramInt2, paramIntent);
-  }
-  
-  public void a(Configuration paramConfiguration)
-  {
-    this.a.a.a(paramConfiguration);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.a.a.a(paramQQAppInterface);
-  }
-  
-  public void a(String paramString, blqp paramblqp)
-  {
-    this.a.a.a(paramString, paramblqp);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.a.a(paramBoolean);
-  }
-  
-  public void b()
-  {
-    this.a.a.c();
-  }
-  
-  public void c()
-  {
-    this.a.a.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onAddAccountClick.onClick:add account");
+    }
+    Object localObject = (bcqt)this.a.app.getManager(61);
+    if (localObject != null) {}
+    for (int i = ((bcqt)localObject).a();; i = 0)
+    {
+      if (i < 2)
+      {
+        localObject = new Intent(this.a, SubLoginActivity.class);
+        ((Intent)localObject).putExtra("fromWhere", this.a.b);
+        this.a.startActivity((Intent)localObject);
+      }
+      for (;;)
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        bcqk.a(this.a.app, this.a);
+      }
+    }
   }
 }
 

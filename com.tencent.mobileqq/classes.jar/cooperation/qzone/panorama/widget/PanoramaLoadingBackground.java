@@ -15,123 +15,118 @@ import android.view.View.MeasureSpec;
 public class PanoramaLoadingBackground
   extends View
 {
-  public static int a;
-  private Paint a;
-  private int b = PanoramaLoadingLayout.jdField_a_of_type_Int;
-  private int c = PanoramaLoadingLayout.b;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
-  private int h = 255;
-  
-  static
-  {
-    jdField_a_of_type_Int = 180;
-  }
+  public static int MIN_ALPHA = 180;
+  private int colorBackground;
+  private int contentAlpha = 255;
+  private int inCircleRadius;
+  private Paint mPaint;
+  private int mViewHeight = PanoramaLoadingLayout.HEIGHT;
+  private int mViewWidth = PanoramaLoadingLayout.WIDTH;
+  private int midCircleRadius;
+  private int outCircleRadius;
   
   public PanoramaLoadingBackground(Context paramContext)
   {
     super(paramContext);
-    a(paramContext);
+    init(paramContext);
   }
   
   public PanoramaLoadingBackground(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a(paramContext);
+    init(paramContext);
   }
   
-  private int a(int paramInt)
+  private void drawContentText(Canvas paramCanvas)
   {
-    int i = View.MeasureSpec.getMode(paramInt);
-    paramInt = View.MeasureSpec.getSize(paramInt);
-    if (i == 1073741824) {}
-    for (;;)
-    {
-      this.b = paramInt;
-      return paramInt;
-      if (i == -2147483648) {
-        paramInt = Math.min(paramInt, this.b);
-      } else {
-        paramInt = this.b;
-      }
-    }
-  }
-  
-  private void a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.d = paramContext.getResources().getColor(2131165356);
-  }
-  
-  private void a(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16777216);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(this.h);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.b / 5);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(0.0F);
-    Paint.FontMetricsInt localFontMetricsInt = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt();
-    int i = this.c / 2;
+    this.mPaint.setColor(-16777216);
+    this.mPaint.setAlpha(this.contentAlpha);
+    this.mPaint.setTextSize(this.mViewWidth / 5);
+    this.mPaint.setTextAlign(Paint.Align.CENTER);
+    this.mPaint.setStrokeWidth(0.0F);
+    Paint.FontMetricsInt localFontMetricsInt = this.mPaint.getFontMetricsInt();
+    int i = this.mViewHeight / 2;
     int j = localFontMetricsInt.descent;
     int k = (localFontMetricsInt.descent - localFontMetricsInt.ascent) / 2;
-    paramCanvas.drawText("360", getWidth() / 2, k + (i - j), this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawText("360", getWidth() / 2, k + (i - j), this.mPaint);
   }
   
-  private int b(int paramInt)
+  private void drawInCircle(Canvas paramCanvas)
+  {
+    this.mPaint.setColor(-1);
+    this.mPaint.setAlpha(this.contentAlpha);
+    this.mPaint.setStyle(Paint.Style.FILL);
+    paramCanvas.drawCircle(this.mViewWidth / 2, this.mViewWidth / 2, this.inCircleRadius, this.mPaint);
+  }
+  
+  private void drawOutCircle(Canvas paramCanvas)
+  {
+    this.mPaint.setAlpha(255);
+    this.mPaint.setColor(this.colorBackground);
+    this.mPaint.setStyle(Paint.Style.FILL);
+    paramCanvas.drawCircle(this.mViewWidth / 2, this.mViewWidth / 2, this.outCircleRadius, this.mPaint);
+  }
+  
+  private void init(Context paramContext)
+  {
+    this.mPaint = new Paint();
+    this.mPaint.setAntiAlias(true);
+    this.colorBackground = paramContext.getResources().getColor(2131165364);
+  }
+  
+  private int measureHeight(int paramInt)
   {
     int i = View.MeasureSpec.getMode(paramInt);
     paramInt = View.MeasureSpec.getSize(paramInt);
     if (i == 1073741824) {}
     for (;;)
     {
-      this.c = paramInt;
+      this.mViewHeight = paramInt;
       return paramInt;
       if (i == -2147483648) {
-        paramInt = Math.min(paramInt, this.c);
+        paramInt = Math.min(paramInt, this.mViewHeight);
       } else {
-        paramInt = this.c;
+        paramInt = this.mViewHeight;
       }
     }
   }
   
-  private void b(Canvas paramCanvas)
+  private int measureWidth(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(this.h);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    paramCanvas.drawCircle(this.b / 2, this.b / 2, this.g, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  private void c(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    paramCanvas.drawCircle(this.b / 2, this.b / 2, this.e, this.jdField_a_of_type_AndroidGraphicsPaint);
+    int i = View.MeasureSpec.getMode(paramInt);
+    paramInt = View.MeasureSpec.getSize(paramInt);
+    if (i == 1073741824) {}
+    for (;;)
+    {
+      this.mViewWidth = paramInt;
+      return paramInt;
+      if (i == -2147483648) {
+        paramInt = Math.min(paramInt, this.mViewWidth);
+      } else {
+        paramInt = this.mViewWidth;
+      }
+    }
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    this.e = (this.b / 2);
-    this.f = (this.e - this.e / 5);
-    this.g = (this.e - this.e * 2 / 5);
-    c(paramCanvas);
-    b(paramCanvas);
-    a(paramCanvas);
+    this.outCircleRadius = (this.mViewWidth / 2);
+    this.midCircleRadius = (this.outCircleRadius - this.outCircleRadius / 5);
+    this.inCircleRadius = (this.outCircleRadius - this.outCircleRadius * 2 / 5);
+    drawOutCircle(paramCanvas);
+    drawInCircle(paramCanvas);
+    drawContentText(paramCanvas);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    setMeasuredDimension(a(paramInt1), b(paramInt2));
+    setMeasuredDimension(measureWidth(paramInt1), measureHeight(paramInt2));
   }
   
   public void setContentAlpha(int paramInt)
   {
-    this.h = paramInt;
+    this.contentAlpha = paramInt;
     postInvalidate();
   }
 }

@@ -1,9 +1,9 @@
 package com.tencent.avgame.ui;
 
-import bhlq;
-import bhpc;
+import bfur;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import ngh;
+import nhq;
 
 public class AVGameActivity$5
   implements Runnable
@@ -15,9 +15,9 @@ public class AVGameActivity$5
     if (this.this$0.isFinishing()) {
       return;
     }
-    String str = this.this$0.getString(2131690227);
+    String str = this.this$0.getString(2131690252);
     QLog.d("AVGameActivity", 2, "showDialogTip content:" + this.a);
-    bhlq.a(this.this$0, 230, null, this.a, str, str, new ngh(this), null).show();
+    bfur.a(this.this$0, 230, null, this.a, str, str, new nhq(this), null).show();
   }
 }
 

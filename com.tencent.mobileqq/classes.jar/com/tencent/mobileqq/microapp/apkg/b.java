@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import alil;
+import akgd;
 
 final class b
   implements Runnable
@@ -11,7 +11,7 @@ final class b
   {
     synchronized (a.a(this.a))
     {
-      alil.a(this.a, a.b(this.a));
+      akgd.a(this.a, a.b(this.a));
       return;
     }
   }

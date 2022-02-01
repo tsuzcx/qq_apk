@@ -1,60 +1,56 @@
-import com.tencent.common.app.AppInterface;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class wkm
-  implements wkp
+public class wkm
 {
-  protected beup a;
+  public long a;
+  public StoryVideoItem a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
   
-  private wkm(wkh paramwkh)
+  public JSONObject a()
   {
-    this.jdField_a_of_type_Beup = new wko(this);
-  }
-  
-  protected beuo a()
-  {
-    AppInterface localAppInterface = bplq.a();
-    if (localAppInterface != null) {
-      return localAppInterface.getNetEngine(0);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("feedId", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("didRead", this.jdField_a_of_type_Boolean);
+      localJSONObject.put("vid", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("videoIndex", this.jdField_a_of_type_Long);
+      localJSONObject.put("isLocal", this.jdField_b_of_type_Boolean);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
     }
     return null;
   }
   
-  public void a(wkq paramwkq)
+  public void a(@NonNull JSONObject paramJSONObject)
   {
-    paramwkq.jdField_d_of_type_Int = 0;
-    beum localbeum = new beum();
-    localbeum.jdField_a_of_type_JavaLangString = paramwkq.jdField_d_of_type_JavaLangString;
-    localbeum.jdField_a_of_type_Int = 0;
-    localbeum.c = paramwkq.e;
-    localbeum.jdField_d_of_type_JavaLangString = paramwkq.f;
-    localbeum.jdField_d_of_type_Int = paramwkq.g;
-    localbeum.b = 3;
-    localbeum.a(paramwkq);
-    localbeum.jdField_a_of_type_Beup = this.jdField_a_of_type_Beup;
-    paramwkq.a = localbeum;
-    localbeum.jdField_a_of_type_Beuq = new wkn(this);
-    beuo localbeuo = a();
-    if (localbeuo != null) {
-      localbeuo.a(localbeum);
-    }
-    yuk.a("AsyncFileDownloader", "start download with base downloader, task = %s", paramwkq);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public void b(wkq paramwkq)
-  {
-    beum localbeum = paramwkq.a;
-    if (localbeum != null)
+    try
     {
-      if (a() != null) {
-        a().b(localbeum);
-      }
-      yuk.b("AsyncFileDownloader", String.format("cancel task with base downloader, task = %s", new Object[] { paramwkq }));
+      this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("didRead");
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("feedId");
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("vid");
+      this.jdField_a_of_type_Long = paramJSONObject.optLong("videoIndex");
+      this.jdField_b_of_type_Boolean = paramJSONObject.getBoolean("isLocal");
+      return;
     }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+  }
+  
+  public String toString()
+  {
+    return "MsgTabVideoData{didRead=" + this.jdField_a_of_type_Boolean + ", feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", vid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", videoIndex='" + this.jdField_a_of_type_Long + '\'' + ", storyVideoItem=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", isLocal=" + this.jdField_b_of_type_Boolean + '}';
   }
 }
 

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ayn" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/nxv" android:paddingTop="4.0dip" android:paddingBottom="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-</LinearLayout>
+    <ImageView android:id="@id/mxj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:maxWidth="17.0dip" android:maxHeight="19.5dip" android:layout_centerVertical="true" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/bp" android:id="@id/npo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:text="1111" android:includeFontPadding="false" android:layout_toRightOf="@id/mxj" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/nx2" android:background="@drawable/dkz" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginTop="11.599976dip" android:layout_toRightOf="@id/npo" />
+</RelativeLayout>

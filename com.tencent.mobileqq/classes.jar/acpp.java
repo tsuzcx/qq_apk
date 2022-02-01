@@ -1,28 +1,60 @@
-import com.tencent.image.URLDrawable;
-import java.net.URL;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.ContactCard;
 
-class acpp
-  implements acxo
+public class acpp
+  extends CardObserver
 {
-  acpp(acpo paramacpo) {}
+  public acpp(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void a(URLDrawable paramURLDrawable)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
-    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
+    Object localObject;
+    if ((paramBoolean) && (paramObject != null))
     {
-      acvc.b("GdtBannerImageView", String.format("onLoadSuccessful %s", new Object[] { paramURLDrawable }));
-      return;
+      if (!(paramObject instanceof Card)) {
+        break label163;
+      }
+      localObject = (Card)paramObject;
+      if ((((Card)localObject).uin != null) && (((Card)localObject).uin.equals(AddFriendVerifyActivity.a(this.a))))
+      {
+        paramObject = bfrj.a(this.a, ((Card)localObject).shGender, ((Card)localObject).age, ((Card)localObject).strCountry, ((Card)localObject).strProvince, ((Card)localObject).strCity);
+        if (this.a.a != null) {
+          paramObject = bfrj.a(this.a, ((Card)localObject).shGender, 0, "", "", "");
+        }
+        if (!TextUtils.isEmpty(paramObject))
+        {
+          this.a.c.setVisibility(0);
+          this.a.c.setText(paramObject);
+        }
+      }
     }
-  }
-  
-  public void b(URLDrawable paramURLDrawable)
-  {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
-    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
+    for (;;)
     {
-      acvc.b("GdtBannerImageView", String.format("onLoadFailed %s", new Object[] { paramURLDrawable }));
+      if (bily.b(this.a.app, AddFriendVerifyActivity.a(this.a))) {
+        this.a.c.setVisibility(8);
+      }
       return;
+      label163:
+      if ((paramObject instanceof ContactCard))
+      {
+        localObject = (ContactCard)paramObject;
+        if ((((ContactCard)localObject).mobileNo != null) && (((ContactCard)localObject).mobileNo.equals(AddFriendVerifyActivity.a(this.a))))
+        {
+          paramObject = bfrj.a(this.a, ((ContactCard)localObject).bSex, ((ContactCard)localObject).bAge, ((ContactCard)localObject).strCountry, ((ContactCard)localObject).strProvince, ((ContactCard)localObject).strCity);
+          if (this.a.a != null) {
+            paramObject = bfrj.a(this.a, ((ContactCard)localObject).bSex, 0, "", "", "");
+          }
+          if (!TextUtils.isEmpty(paramObject))
+          {
+            this.a.c.setVisibility(0);
+            this.a.c.setText(paramObject);
+          }
+        }
+      }
     }
   }
 }

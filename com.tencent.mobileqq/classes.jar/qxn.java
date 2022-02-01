@@ -1,12 +1,13 @@
-import tencent.im.oidb.articlesummary.articlesummary.BuluoInfo;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-public final class qxn
-  implements pno<articlesummary.BuluoInfo, qxs>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask$ITransaction;", "", "commit", "", "key", "", "updateRecordTimeInMs", "timeInMs", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface qxn
 {
-  public qxs a(articlesummary.BuluoInfo paramBuluoInfo)
-  {
-    return qxs.a(paramBuluoInfo);
-  }
+  @NotNull
+  public abstract qxn a(int paramInt);
+  
+  public abstract void a(@NotNull String paramString);
 }
 
 

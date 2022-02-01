@@ -1,96 +1,72 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.support.annotation.NonNull;
+import com.tencent.commonsdk.util.HexUtil;
+import com.tencent.qphone.base.util.QLog;
 
-class asom
-  extends asmx
+public class asom
+  extends ason
 {
-  private int e;
-  private int f;
+  final boolean jdField_a_of_type_Boolean;
+  final byte[] jdField_a_of_type_ArrayOfByte;
+  final byte[] b;
   
-  public asom(asol paramasol, int paramInt)
+  public asom(String paramString1, String paramString2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, boolean paramBoolean)
   {
-    this.e = ((int)(paramasol.a.getResources().getDisplayMetrics().density * 30.0F));
-    this.f = paramInt;
+    super(paramString1, paramString2, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4);
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte5;
+    this.b = paramArrayOfByte6;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(int paramInt, RelativeLayout paramRelativeLayout, ViewGroup paramViewGroup)
+  public boolean a()
   {
-    ImageView localImageView = (ImageView)paramRelativeLayout.findViewById(2131365947);
-    localImageView.setVisibility(0);
-    localImageView.setTag(Boolean.valueOf(false));
-    asmu localasmu = a(paramInt);
-    paramRelativeLayout.setTag(localasmu);
-    if ((localasmu != null) && ((localasmu instanceof assj)))
-    {
-      paramViewGroup = (assj)localasmu;
-      paramInt = paramViewGroup.b;
-      if (paramViewGroup.a != 1) {
-        break label256;
-      }
-      if ((paramInt >= 0) && (paramInt < begd.a.length))
-      {
-        String str = begd.a[paramInt];
-        paramViewGroup = str;
-        if (str != null)
-        {
-          paramViewGroup = str;
-          if (str.startsWith("/"))
-          {
-            paramViewGroup = str;
-            if (str.length() > 1) {
-              paramViewGroup = str.substring(1);
-            }
-          }
-        }
-        if (paramViewGroup != null) {
-          paramRelativeLayout.setContentDescription(paramViewGroup);
-        }
-      }
-    }
-    label255:
+    if (!super.a()) {}
     do
     {
-      break label255;
-      paramViewGroup = (RelativeLayout.LayoutParams)localImageView.getLayoutParams();
-      float f1 = this.a.a.getResources().getDisplayMetrics().density;
-      if (localasmu == null) {
-        break;
-      }
-      if ((localasmu.c == 1) || (localasmu.c == 2) || (localasmu.c == 7))
+      do
       {
-        paramViewGroup.width = this.e;
-        paramViewGroup.height = this.e;
-      }
-      if (localasmu.c != -1)
-      {
-        paramRelativeLayout = localasmu.a(this.a.a, f1);
-        if (paramRelativeLayout != null) {
-          localImageView.setImageDrawable(paramRelativeLayout);
-        }
-        for (;;)
+        do
         {
-          localImageView.setBackgroundDrawable(null);
-          return;
-          if (paramViewGroup.a != 2) {
+          return false;
+          if ((b() != null) && (b().length != 0)) {
             break;
           }
-          paramRelativeLayout.setContentDescription(begd.a(paramInt));
+        } while (!QLog.isColorLevel());
+        QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBuf10MMdd5 is err");
+        return false;
+        if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length != 0)) {
           break;
-          localImageView.setVisibility(4);
         }
+      } while (!QLog.isColorLevel());
+      QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBufUuid is err");
+      return false;
+      if ((this.b != null) && (this.b.length != 0)) {
+        break;
       }
-    } while (!"delete".equals(localasmu.i));
-    label256:
-    localImageView.setImageResource(2130839565);
-    paramRelativeLayout.setContentDescription(anzj.a(2131702963));
-    return;
-    localImageView.setImageDrawable(null);
-    localImageView.setVisibility(4);
+    } while (!QLog.isColorLevel());
+    QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mBufUploadKey is err");
+    return false;
+    return true;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append(super.toString()).append(" uuid:");
+    if (this.jdField_a_of_type_ArrayOfByte != null)
+    {
+      str = HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);
+      localStringBuilder = localStringBuilder.append(str).append(" mBufUploadKey:");
+      if (this.b == null) {
+        break label76;
+      }
+    }
+    label76:
+    for (String str = HexUtil.bytes2HexStr(this.b);; str = "")
+    {
+      return str;
+      str = "";
+      break;
+    }
   }
 }
 

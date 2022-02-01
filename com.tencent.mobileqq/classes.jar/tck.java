@@ -1,13 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.List;
 
-public class tck
-  implements aqvd
+class tck
+  extends bjmc
 {
-  public tck(ViolaFragment paramViolaFragment) {}
+  tck(tci paramtci) {}
   
-  public void onColorNoteAnimFinish()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ViolaFragment.access$500(this.a);
+    super.onAnimationEnd(paramAnimation);
+    if (tch.a(this.a.a) != null)
+    {
+      paramAnimation = new ArrayList();
+      paramAnimation.add(tch.a(this.a.a));
+      tch.a(this.a.a).a(paramAnimation, tch.a(this.a.a));
+      QQToast.a(this.a.a.a, 2, 2131717383, 0).a();
+    }
   }
 }
 

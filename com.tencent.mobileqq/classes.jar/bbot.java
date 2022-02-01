@@ -1,41 +1,53 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.1;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.2;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.3;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.4;
-import com.tencent.mobileqq.richmediabrowser.AIOGalleryActivity.2.5;
+import NS_USER_ACTION_REPORT.UserActionReport;
+import NS_USER_ACTION_REPORT.UserCommReport;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.mobilereport.MobileReportRequest;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
 
 public class bbot
-  extends aied
+  extends MSFServlet
 {
-  public bbot(AIOGalleryActivity paramAIOGalleryActivity) {}
-  
-  public void a()
+  public static void a(int paramInt, AppRuntime paramAppRuntime, UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
   {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.4(this));
+    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), bbot.class);
+    localNewIntent.putExtra("userCommReport", paramUserCommReport);
+    localNewIntent.putExtra("reportInfos", paramArrayList);
+    localNewIntent.putExtra("type", paramInt);
+    paramAppRuntime.startServlet(localNewIntent);
   }
   
-  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
+  public static void a(AppRuntime paramAppRuntime, UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
   {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.2(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2, paramBoolean));
+    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), bbot.class);
+    localNewIntent.putExtra("userCommReport", paramUserCommReport);
+    localNewIntent.putExtra("reportInfos", paramArrayList);
+    paramAppRuntime.startServlet(localNewIntent);
   }
   
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.1(this, paramBoolean, paramLong, paramInt1, paramInt2, paramInt3, paramString));
+    if (paramFromServiceMsg != null) {}
+    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MobileReport.Servlet", 2, "servlet result code is " + i);
+      }
+      return;
+    }
   }
   
-  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3, Bundle paramBundle)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.5(this, paramLong, paramInt1, paramInt2, paramString1, paramArrayOfString, paramString2, paramMessageForShortVideo, paramInt3, paramBundle));
-  }
-  
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
-  {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.3(this, paramArrayOfAIORichMediaData, paramInt));
+    paramIntent = new MobileReportRequest(paramIntent.getIntExtra("type", 1), (UserCommReport)paramIntent.getSerializableExtra("userCommReport"), (ArrayList)paramIntent.getSerializableExtra("reportInfos"));
+    paramPacket.setTimeout(10000L);
+    paramPacket.setSSOCommand(paramIntent.getCmdString());
+    paramPacket.putSendData(paramIntent.encode());
   }
 }
 

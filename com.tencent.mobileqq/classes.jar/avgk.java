@@ -1,40 +1,25 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.fragment.TroopRobotFragment;
-import com.tencent.mobileqq.fragment.TroopRobotFragment.1.1;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
+import mqq.app.QQPermissionCallback;
 
 public class avgk
-  extends aojs
+  implements QQPermissionCallback
 {
-  public avgk(TroopRobotFragment paramTroopRobotFragment) {}
+  public avgk(LocationShareFragment paramLocationShareFragment, BaseActivity paramBaseActivity, int paramInt1, String paramString, int paramInt2) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    String str = String.valueOf(paramLong1);
-    if ((str != null) && (str.equals(TroopRobotFragment.a(this.a))))
-    {
-      TroopRobotFragment.a(this.a, paramLong1);
-      return;
+    paramArrayOfString = bfur.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    if (paramArrayOfString != null) {
+      paramArrayOfString.setOnDismissListener(new avgl(this));
     }
-    QLog.i("TroopRobotFragment", 2, "onAddRobot  net troopuin" + paramLong1 + " cur " + TroopRobotFragment.a(this.a));
+    avcw.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, 1);
   }
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, bgtw parambgtw)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    String str = String.valueOf(paramLong);
-    if ((str != null) && (str.equals(TroopRobotFragment.a(this.a))))
-    {
-      if ((paramBoolean) && (parambgtw != null) && (this.a.getActivity() != null))
-      {
-        QLog.d("TroopRobotFragment", 2, "onGetAllRobots");
-        this.a.getActivity().runOnUiThread(new TroopRobotFragment.1.1(this, parambgtw));
-        return;
-      }
-      QLog.e("TroopRobotFragment", 2, "onGetAllRobots err " + paramInt + " :" + paramLong);
-      TroopRobotFragment.a(this.a, paramLong);
-      return;
-    }
-    QLog.i("TroopRobotFragment", 2, "onGetAllRobots  net troopuin" + paramLong + " cur " + TroopRobotFragment.a(this.a));
+    LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment);
   }
 }
 

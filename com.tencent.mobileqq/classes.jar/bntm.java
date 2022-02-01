@@ -1,31 +1,38 @@
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.report.lp.LpReportManager;
-import cooperation.qzone.util.QZLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bntm
+class bntm
+  implements View.OnClickListener
 {
-  public static void a(int paramInt)
-  {
-    a("WidgetReport", 302, 7, paramInt, false, false);
-  }
+  bntm(bntl parambntl) {}
   
-  public static void a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    a("MsgActiveFeed", 133, paramInt1, paramInt2, false, false);
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QZLog.isColorLevel()) {
-      QZLog.i(paramString, 2, "reportToPf00064 actiontype = " + paramInt1 + " subactionType = " + paramInt2 + " reserves = " + paramInt3 + " isNeedSample = " + paramBoolean1 + " isReportNow = " + paramBoolean2);
+    if (!bntl.a(this.a).e) {
+      bntl.a(this.a);
     }
-    paramString = new LpReportInfo_pf00064(paramInt1, paramInt2, paramInt3);
-    LpReportManager.getInstance().reportToPF00064(paramString, paramBoolean1, paramBoolean2);
-  }
-  
-  public static void b(int paramInt1, int paramInt2)
-  {
-    a("VipSignature", paramInt1, paramInt2, 0, false, false);
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (bntl.a(this.a).o)
+      {
+        bhzt.a().a(2131717161);
+        bntl.a(this.a).o = false;
+        bntl.a(this.a).setSelected(false);
+        bntl.a(this.a).l = false;
+        bntl.a(this.a).c(3008);
+      }
+      else
+      {
+        bhzt.a().a(2131717163);
+        bntl.a(this.a).o = true;
+        bntl.a(this.a).setSelected(true);
+        bntl.a(this.a).l = true;
+        bntl.a(this.a).c(3007);
+      }
+    }
   }
 }
 

@@ -1,6 +1,16 @@
-public abstract interface apmj
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+
+class apmj
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abstract void a(apnb paramapnb);
+  apmj(apmh paramapmh) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    apmh.a(this.a);
+    return true;
+  }
 }
 
 

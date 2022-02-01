@@ -1,9 +1,4 @@
-public abstract interface nzy
-{
-  public abstract void a();
-  
-  public abstract void b();
-}
+class nzy {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

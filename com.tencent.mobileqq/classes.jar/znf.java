@@ -1,61 +1,30 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
+import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.QZoneHelper;
 
 public class znf
+  implements View.OnClickListener
 {
-  public View a;
-  public View b;
+  public znf(SubScribeDraftItemView paramSubScribeDraftItemView, SubscribeDraftBean paramSubscribeDraftBean) {}
   
-  public znf(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.b = paramView.findViewById(2131369944);
-  }
-  
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
-  {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_JavaUtilArrayList.iterator();
-    float f = 0.0F;
-    if (localIterator.hasNext())
+    if (!zvo.a("subscribe_draft_click"))
     {
-      switch (((TroopStoryItemInfo)localIterator.next()).itemType)
-      {
-      }
-      for (;;)
-      {
-        break;
-        if ((zof.b(paramTroopStoryItemInfo.publishTime)) || (zof.d(paramTroopStoryItemInfo.publishTime)))
-        {
-          f = zps.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 44.0F) + f;
-        }
-        else
-        {
-          f = zps.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 71.0F) + f;
-          continue;
-          f = zps.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
-          continue;
-          f = zps.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 70.0F) + f;
-          continue;
-          f = zps.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_AndroidContentContext, 95.0F) + f;
-        }
-      }
+      boolean bool = SubScribeDraftItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView);
+      Intent localIntent = new Intent();
+      localIntent.putExtra("postUin", SubScribeDraftItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView));
+      localIntent.putExtra("has_shop", bool);
+      localIntent.putExtra("subscribeDraftID", String.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()));
+      QZoneHelper.forwardToQQPublicAccountPublishPage((Activity)this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), localIntent, 0);
+      zxp.b(SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "clk_draftclk", 0, 0, new String[0]);
     }
-    int i = (int)(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.jdField_a_of_type_Float - f);
-    paramTroopStoryItemInfo = (LinearLayout.LayoutParams)this.b.getLayoutParams();
-    if (i <= 0)
-    {
-      paramTroopStoryItemInfo.height = 0;
-      this.b.setLayoutParams(paramTroopStoryItemInfo);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return;
-    }
-    paramTroopStoryItemInfo.height = i;
-    this.b.setLayoutParams(paramTroopStoryItemInfo);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

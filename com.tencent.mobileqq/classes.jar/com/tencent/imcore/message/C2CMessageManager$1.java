@@ -1,6 +1,6 @@
 package com.tencent.imcore.message;
 
-import aczu;
+import abwe;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -9,14 +9,14 @@ import com.tencent.qphone.base.util.QLog;
 public class C2CMessageManager$1
   implements Runnable
 {
-  public C2CMessageManager$1(aczu paramaczu, MessageRecord paramMessageRecord) {}
+  public C2CMessageManager$1(abwe paramabwe, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.msg.BaseMessageManager", 2, "doMsgRevokeRequest " + this.a.getLogColorContent());
     }
-    this.this$0.a.a().a(this.a, 15000L);
+    this.this$0.a.getMsgHandler().a(this.a, 15000L);
   }
 }
 

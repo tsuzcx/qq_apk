@@ -1,40 +1,42 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import java.lang.ref.WeakReference;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
+import org.jetbrains.annotations.NotNull;
 
-public class bghy
-  extends bghr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/vas/gldrawable/DynamicDrawable$MyLoaderCallback;", "Lcom/tencent/mobileqq/vas/gldrawable/GLDrawableProxy$LoaderCallback;", "drawableRef", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mobileqq/vas/gldrawable/DynamicDrawable;", "(Ljava/lang/ref/WeakReference;)V", "getDrawableRef", "()Ljava/lang/ref/WeakReference;", "onLoadFailed", "", "onLoadSucceed", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bghy
+  implements bgim
 {
-  public bghy(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  @NotNull
+  private final WeakReference<bghx> a;
+  
+  public bghy(@NotNull WeakReference<bghx> paramWeakReference)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Int = 14;
+    this.a = paramWeakReference;
   }
   
-  @Nullable
-  public bghs a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  public void a()
   {
-    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
-    if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
-      return new bghs(true, this.jdField_a_of_type_AndroidContentContext.getString(2131696566), bfpe.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
+    bghx localbghx = (bghx)this.a.get();
+    if (localbghx != null)
+    {
+      Drawable localDrawable = (Drawable)bghx.a(localbghx).invoke();
+      if (localDrawable != null) {
+        bghx.a(localbghx, localDrawable);
+      }
+      if (localbghx.a() == null) {
+        bghx.a(localbghx, (Drawable)bghx.b(localbghx).invoke());
+      }
     }
-    return null;
   }
   
-  public void a(int paramInt, Object paramObject, String paramString)
+  public void b()
   {
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Appear_topmsgcue_atall", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_at_all", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-  }
-  
-  public void b(int paramInt, Object paramObject, String paramString)
-  {
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_topmsgcue_atall", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_at_all", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+    bghx localbghx = (bghx)this.a.get();
+    if ((localbghx != null) && (localbghx.a() == null)) {
+      bghx.a(localbghx, (Drawable)bghx.b(localbghx).invoke());
+    }
   }
 }
 

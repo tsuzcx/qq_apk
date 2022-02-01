@@ -1,20 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
 
-public class afvp
-  implements View.OnClickListener
+class afvp
+  implements acho
 {
-  public afvp(TroopMemberListActivity paramTroopMemberListActivity, Dialog paramDialog) {}
+  afvp(afvn paramafvn) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, aafm paramaafm) {}
+  
+  public void a(long paramLong)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    afvn.a("onLowMemory");
+    afvn.a().sendMessage(afvn.a().obtainMessage(5));
   }
 }
 

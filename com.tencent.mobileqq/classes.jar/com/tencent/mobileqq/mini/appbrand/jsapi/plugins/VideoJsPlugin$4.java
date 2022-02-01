@@ -11,7 +11,7 @@ class VideoJsPlugin$4
   
   public void run()
   {
-    VideoJsPlugin.access$900(this.this$0, AppBrandRuntimeContainer.g().getCurrentAppBrandRuntime(), "正在获取视频封面，请稍后");
+    VideoJsPlugin.access$900(this.this$0, AppBrandRuntimeContainer.g().getCurrentAppBrandRuntime(), "正在获取视频封面，请稍候");
     boolean bool = VideoJsPlugin.access$1100(this.this$0, VideoJsPlugin.access$1000(this.this$0, this.val$path), this.val$info);
     QLog.d("VideoJsPlugin", 2, "saveThumbnail : " + bool);
     VideoJsPlugin.access$1200(this.this$0, AppBrandRuntimeContainer.g().getCurrentAppBrandRuntime());

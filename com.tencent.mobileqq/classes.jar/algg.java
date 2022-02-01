@@ -1,61 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 class algg
-  implements aldq
+  implements View.OnClickListener
 {
-  algg(algd paramalgd, algh paramalgh) {}
+  algg(algf paramalgf, alge paramalge, int paramInt) {}
   
-  private void a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Algh != null) {
-      this.jdField_a_of_type_Algh.a(false);
-    }
-  }
-  
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
-  {
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
+    if (this.jdField_a_of_type_Alge.a.isChecked()) {}
+    for (((anni)this.jdField_a_of_type_Algf.a.get(this.jdField_a_of_type_Int)).a = false;; ((anni)this.jdField_a_of_type_Algf.a.get(this.jdField_a_of_type_Int)).a = true)
     {
-      try
-      {
-        String str = new File(paramPathResult.folderPath, "quickDraw.tflite").toString();
-        paramPathResult = new File(paramPathResult.folderPath, "classes.txt").toString();
-        if ((!new File(str).exists()) || (!new File(paramPathResult).exists()))
-        {
-          QLog.e("DrawClassifier", 1, "init fail file not exist");
-          a();
-          return;
-        }
-        algd.a(this.jdField_a_of_type_Algd, new alfw(str, paramPathResult));
-        if (this.jdField_a_of_type_Algh != null) {
-          this.jdField_a_of_type_Algh.a(true);
-        }
-        algd.a(this.jdField_a_of_type_Algd, true);
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("DrawClassifier", 2, "init success");
-        return;
-      }
-      catch (Throwable paramPathResult)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("DrawClassifier", 2, "init recog fail:" + paramPathResult);
-        }
-        paramPathResult.printStackTrace();
-        a();
-        return;
-      }
-    }
-    else
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DrawClassifier", 2, "init download fail");
-      }
-      a();
+      this.jdField_a_of_type_Algf.notifyItemChanged(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Algf.a();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
   }
 }

@@ -25,7 +25,7 @@ public class MiniGamePublicAccountHeadLayout
   
   public int getLayoutId()
   {
-    return 2131559425;
+    return 2131559427;
   }
   
   public boolean isPined()

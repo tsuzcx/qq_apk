@@ -1,43 +1,30 @@
-import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardFragment.ReportRunnable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.view.MaskView;
 
 public class axni
-  implements axmk
+  implements SurfaceHolder.Callback
 {
-  public axni(MultiCardFragment paramMultiCardFragment) {}
+  public axni(ScanOcrActivity paramScanOcrActivity) {}
   
-  public void a(int paramInt)
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "Indicator onPageScrollStateChanged() called with: state = [" + paramInt + "]");
-    }
-    switch (paramInt)
+    ScanOcrActivity.a(this.a, paramSurfaceHolder);
+    if (ScanOcrActivity.a(this.a) == null)
     {
-    default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return;
-          MultiCardFragment.a(this.a);
-          MultiCardFragment.a(this.a, true);
-        } while ((MultiCardFragment.a(this.a) == null) || (MultiCardFragment.a(this.a).a() <= MultiCardFragment.a(this.a).a()));
-        MultiCardFragment.a(this.a).b(MultiCardFragment.a(this.a).a());
-        MultiCardFragment.a(this.a).a();
-        return;
-        MultiCardFragment.b(this.a, true);
-        MultiCardFragment.a(this.a, false);
-      } while (MultiCardFragment.a(this.a) == null);
-      MultiCardFragment.a(this.a, MultiCardFragment.a(this.a).a());
-      return;
+      ScanOcrActivity.a(this.a, new axmo(this.a, this.a.jdField_a_of_type_Axmt, ScanOcrActivity.a(this.a)));
+      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_Int);
+      ScanOcrActivity.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.a());
+      if (ScanOcrActivity.a(this.a)) {
+        ScanOcrActivity.a(this.a).a();
+      }
     }
-    MultiCardFragment.b(this.a, true);
-    MultiCardFragment.a(this.a, false);
   }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder) {}
 }
 
 

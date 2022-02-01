@@ -1,13 +1,8 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import android.os.Build;
-import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bdmc;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,7 +35,6 @@ public class PtvTemplateManager$PtvTemplateInfo
   public static final int QQ_BIG_HEAD = 20;
   public static final int RANDOM_FORTUNE = 9;
   public static final int SHOOK_HEAD = 8;
-  static final String SV_FILTER_DOWNLOAD_TIME = "sv_filter_download_time";
   public static final int WS_FILTER = 12;
   public static final int YSLD_FILTER = 2;
   public int activityType = 0;
@@ -155,7 +149,7 @@ public class PtvTemplateManager$PtvTemplateInfo
             break label161;
           }
         }
-        if (PtvTemplateManager.b()) {
+        if (PtvTemplateManager.c()) {
           break label161;
         }
         localArrayList.add(localPtvTemplateInfo);
@@ -308,20 +302,6 @@ public class PtvTemplateManager$PtvTemplateInfo
     return localPtvTemplateInfo;
   }
   
-  public void doDownloadDataReport()
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.startDownloadTime;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-    localHashMap.put("MODEL", Build.MODEL);
-    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
-    localHashMap.put("timems", "" + (l1 - l2));
-    localHashMap.put("totalsize", "" + this.totalLen);
-    localHashMap.put("success", "" + this.usable);
-    bdmc.a(VideoEnvironment.a()).a(null, "sv_filter_download_time", true, 0L, 0L, localHashMap, "");
-  }
-  
   public int getDisplayIconByType()
   {
     switch (this.displayType)
@@ -329,13 +309,13 @@ public class PtvTemplateManager$PtvTemplateInfo
     default: 
       return -1;
     case 1: 
-      return 2130844592;
+      return 2130844468;
     case 2: 
-      return 2130844593;
+      return 2130844469;
     case 3: 
-      return 2130844595;
+      return 2130844471;
     }
-    return 2130844594;
+    return 2130844470;
   }
   
   public String getLbsActivityType(int paramInt)
@@ -384,7 +364,7 @@ public class PtvTemplateManager$PtvTemplateInfo
   
   public String toString()
   {
-    return "PtvTemplateInfo{id='" + this.id + '\'' + ", name='" + this.name + '\'' + ", dooleInfos=" + this.doodleInfos + '\'' + ",usable=" + this.usable + '}';
+    return "PtvTemplateInfo{id='" + this.id + '\'' + ", name='" + this.name + '\'' + ", doodleInfo=" + this.doodleInfos + '\'' + ",usable=" + this.usable + '}';
   }
 }
 

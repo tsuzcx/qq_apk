@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import mrl;
+import mqu;
 
 class QavOperationMenuView$2
   implements Runnable
@@ -9,9 +9,9 @@ class QavOperationMenuView$2
   
   public void run()
   {
-    if ((!QavOperationMenuView.a(this.this$0)) && (QavOperationMenuView.a(this.this$0, 2131694740)))
+    if ((!QavOperationMenuView.a(this.this$0)) && (QavOperationMenuView.a(this.this$0, 2131694878)))
     {
-      mrl.a("0X800AF84", mrl.a(), 0, "", "", "", "");
+      mqu.a("0X800AF84", mqu.a(), 0, "", "", "", "");
       QavOperationMenuView.a(this.this$0, true);
     }
   }

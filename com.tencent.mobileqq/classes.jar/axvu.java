@@ -1,24 +1,29 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.util.SparseArray;
+import android.view.View;
 
-class axvu
-  implements DialogInterface.OnClickListener
+public class axvu
 {
-  axvu(axvr paramaxvr, Activity paramActivity) {}
+  private SparseArray<View> a = new SparseArray();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public View a(int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_Axvr.a;
-    if ((paramDialogInterface != null) && (!TextUtils.isEmpty(paramDialogInterface.a)))
+    if (this.a.size() > 0)
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramDialogInterface.a);
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 1028);
+      View localView = (View)this.a.get(paramInt);
+      if (localView != null) {
+        this.a.remove(paramInt);
+      }
+      return localView;
     }
+    return null;
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    if (this.a.size() >= 3) {
+      return;
+    }
+    this.a.put(paramInt, paramView);
   }
 }
 

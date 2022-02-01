@@ -1,14 +1,14 @@
 package cooperation.qzone.music;
 
+import amtj;
 import android.text.TextUtils;
-import anzj;
 import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class QzoneMusicHelper
 {
-  public static final String NO_NETWORK_MSG = anzj.a(2131710911);
+  public static final String NO_NETWORK_MSG = amtj.a(2131711143);
   
   public static SongInfo convertAudioSongInfo(JSONObject paramJSONObject)
   {

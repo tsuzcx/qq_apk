@@ -1,26 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.List;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.home.Conversation;
 
 public class ajdj
-  extends Handler
 {
-  public ajdj(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  private final String jdField_a_of_type_JavaLangString;
+  private final String b;
+  private final String c;
   
-  public void handleMessage(Message paramMessage)
+  public ajdj(Conversation paramConversation, String paramString1, String paramString2, String paramString3)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (List)paramMessage.obj;
-      this.a.a(paramMessage, true);
-      return;
-    }
-    paramMessage = (List)paramMessage.obj;
-    this.a.a(paramMessage, false);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  public void a()
+  {
+    ajdk localajdk = new ajdk(this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a = bfur.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a(), 230, this.jdField_a_of_type_JavaLangString, this.b, amtj.a(2131701734), amtj.a(2131701738), localajdk, localajdk);
+    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a.setCancelable(false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a.show();
   }
 }
 

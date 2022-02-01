@@ -1,22 +1,18 @@
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class roo
-  extends roj
+  implements View.OnClickListener
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup = (ViewGroup)this.itemView.findViewById(2131370318);
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar = (ProgressBar)this.itemView.findViewById(2131370324);
-  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.itemView.findViewById(2131370328);
+  public roo(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
   
-  public roo(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    super(paramView, paramInt);
+    this.a.e();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a(rnu paramrnu, LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean) {}
 }
 
 

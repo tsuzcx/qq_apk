@@ -1,165 +1,134 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.widget.EditText;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.UUID;
 
 public class asrv
-  extends asmu
+  implements asrm
 {
-  public int a;
-  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable();
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  public Emoticon a;
-  private String jdField_a_of_type_JavaLangString = "SmallEmoticonInfo";
-  private int jdField_b_of_type_Int;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private String jdField_b_of_type_JavaLangString;
-  public boolean b;
-  private int h;
+  private becp jdField_a_of_type_Becp;
+  protected QQAppInterface a;
+  private UUID jdField_a_of_type_JavaUtilUUID;
   
-  public asrv(String paramString)
+  public asrv(QQAppInterface paramQQAppInterface, becp parambecp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "currentAccountUin:" + paramString);
+    this.jdField_a_of_type_Becp = parambecp;
+    this.jdField_a_of_type_JavaUtilUUID = this.jdField_a_of_type_Becp.jdField_a_of_type_JavaUtilUUID;
+    if (this.jdField_a_of_type_JavaUtilUUID == null) {
+      throw new NullPointerException("TroopFileStatusInfo Id null");
     }
-    this.jdField_b_of_type_JavaLangString = paramString;
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null)) {}
-    try
-    {
-      paramString = BaseApplication.getContext().getResources();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130838010);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130843719);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(this.jdField_a_of_type_JavaLangString, 2, paramString.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(this.jdField_a_of_type_JavaLangString, 2, paramString.getMessage());
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public Drawable a(Context paramContext, float paramFloat)
+  public long a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null) {
-      try
-      {
-        paramContext = new URL("emotion_pic", "fromPanel", a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon));
-        paramContext = URLDrawable.getDrawable(paramContext, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, false);
-        paramContext.setTag(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-        paramContext.addHeader("my_uin", this.jdField_b_of_type_JavaLangString);
-        return paramContext;
-      }
-      catch (MalformedURLException paramContext)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getDrawable ,", paramContext);
-        }
-        return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      }
-    }
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    return this.jdField_a_of_type_Becp.c;
   }
   
-  public String a(Emoticon paramEmoticon)
+  public String a()
   {
-    if (paramEmoticon == null) {
-      return null;
-    }
-    return paramEmoticon.epId + "_" + paramEmoticon.eId;
+    return this.jdField_a_of_type_Becp.e;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon == null)
-    {
-      biah.a("emotionType", "emotionActionSend", "1", "", "", "", "", "", "", "");
-      QLog.e(this.jdField_a_of_type_JavaLangString, 1, "fail to send small_emotion.");
-      return;
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Becp.jdField_b_of_type_Long);
+    if (localTroopFileTransferManager == null) {
+      QLog.e("VideoForTroop<QFile>", 1, "notifyProgress: get troopFileTransferManager failed.");
     }
-    try
-    {
-      int i = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
-      int j = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
-      ((axfj)paramQQAppInterface.getManager(14)).a(String.valueOf(j), new asrw(this, j, i, paramEditText, paramQQAppInterface));
-      return;
-    }
-    catch (NumberFormatException paramQQAppInterface)
-    {
-      biah.a("emotionType", "emotionActionSend", "4", "", "", "", "", "", "", "");
-      QLog.e(this.jdField_a_of_type_JavaLangString, 1, "fail to send small_emotion. id is not Int.");
-    }
-  }
-  
-  public Drawable b(Context paramContext, float paramFloat)
-  {
-    paramContext = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon == null) {}
+    TroopFileTransferManager.Item localItem;
     do
     {
-      for (;;)
-      {
-        return paramContext;
-        try
-        {
-          Object localObject = new URL("emotion_pic", "fromAIO", a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon));
-          paramContext = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-          paramContext = BaseApplicationImpl.getApplication().waitAppRuntime(null);
-          if ((paramContext instanceof QQAppInterface)) {
-            paramContext = (QQAppInterface)paramContext;
-          }
-          paramContext = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-          URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-          localURLDrawableOptions.mFailedDrawable = paramContext;
-          localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-          localURLDrawableOptions.mPlayGifImage = true;
-          if (this.jdField_b_of_type_Boolean)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getBigDrawable: APNG so loaded use apng image");
-            }
-            localURLDrawableOptions.mUseApngImage = true;
-            localURLDrawableOptions.mPlayGifImage = false;
-            localURLDrawableOptions.mMemoryCacheKeySuffix = "useAPNG";
-          }
-          localURLDrawableOptions.mRequestWidth = this.jdField_b_of_type_Int;
-          localURLDrawableOptions.mRequestHeight = this.h;
-          localObject = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
-          paramContext = (Context)localObject;
-          if (((URLDrawable)localObject).getStatus() != 1)
-          {
-            ((URLDrawable)localObject).setTag(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-            ((URLDrawable)localObject).addHeader("my_uin", this.jdField_b_of_type_JavaLangString);
-            ((URLDrawable)localObject).addHeader("emo_big", "true");
-            paramContext = (Context)localObject;
-            if (QLog.isColorLevel())
-            {
-              QLog.d(this.jdField_a_of_type_JavaLangString, 2, "b.getStatus=" + ((URLDrawable)localObject).getStatus() + " e.epId=" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId + " e.eId=" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
-              return localObject;
-            }
-          }
-        }
-        catch (MalformedURLException localMalformedURLException) {}
+      return;
+      localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_Becp.jdField_a_of_type_JavaUtilUUID);
+    } while (localItem == null);
+    localItem.ProgressValue = paramLong;
+    localTroopFileTransferManager.a(localItem, 8);
+  }
+  
+  public void a(ashw paramashw)
+  {
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Becp.jdField_b_of_type_Long);
+    if (localTroopFileTransferManager == null)
+    {
+      QLog.e("VideoForTroop<QFile>", 1, "getUrl: get troopFileTransferManager failed.");
+      return;
+    }
+    localTroopFileTransferManager.a(this.jdField_a_of_type_Becp.e, this.jdField_a_of_type_Becp.g, this.jdField_a_of_type_Becp.c, this.jdField_a_of_type_Becp.h, new asrw(this, paramashw));
+  }
+  
+  public void a(String paramString)
+  {
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Becp.jdField_b_of_type_Long);
+    if (localTroopFileTransferManager == null)
+    {
+      QLog.e("VideoForTroop<QFile>", 1, "notifySuccessed: get troopFileTransferManager failed.");
+      return;
+    }
+    TroopFileTransferManager.Item localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_Becp.jdField_a_of_type_JavaUtilUUID);
+    if (localItem != null)
+    {
+      boolean bool = bebd.b(localItem.Status);
+      if (QLog.isColorLevel()) {
+        QLog.e("VideoForTroop<QFile>", 1, "notifySuccessed  itemStatus[" + localItem.Status + "]");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getDrawable ,", localMalformedURLException);
-    return null;
+      if ((!bool) && (this.jdField_a_of_type_Becp.jdField_b_of_type_Int != 7)) {
+        break label126;
+      }
+      localItem.LocalFile = paramString;
+      localTroopFileTransferManager.a(localItem, 11);
+    }
+    for (;;)
+    {
+      ashu.a(this);
+      return;
+      label126:
+      localTroopFileTransferManager.a(localItem, 6);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Becp.jdField_b_of_type_Long);
+    if (localTroopFileTransferManager == null)
+    {
+      QLog.e("VideoForTroop<QFile>", 1, "notifyFileFailed: get troopFileTransferManager failed.");
+      return;
+    }
+    TroopFileTransferManager.Item localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_Becp.jdField_a_of_type_JavaUtilUUID);
+    if (localItem != null)
+    {
+      if (paramBoolean)
+      {
+        localTroopFileTransferManager.a(localItem, 12);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("VideoForTroop<QFile>", 1, "notifyFileFaild isInvalid[" + paramBoolean + "], itemStatus[" + localItem.Status + "]");
+      }
+      if ((!bebd.b(localItem.Status)) && (this.jdField_a_of_type_Becp.jdField_b_of_type_Int != 7)) {
+        break label134;
+      }
+      localTroopFileTransferManager.a(localItem, 10);
+    }
+    for (;;)
+    {
+      ashu.a(this);
+      return;
+      label134:
+      localTroopFileTransferManager.a(localItem, 3);
+    }
+  }
+  
+  public String b()
+  {
+    return asyy.a().c() + bjkz.a(this.jdField_a_of_type_Becp.e);
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_Becp.g;
   }
 }
 

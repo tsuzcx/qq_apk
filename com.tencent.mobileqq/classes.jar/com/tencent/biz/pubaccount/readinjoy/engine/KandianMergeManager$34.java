@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import java.util.Iterator;
 import java.util.List;
-import pet;
+import pkf;
 
 class KandianMergeManager$34
   implements Runnable
@@ -15,7 +15,7 @@ class KandianMergeManager$34
     {
       Iterator localIterator = KandianMergeManager.a(this.this$0).iterator();
       while (localIterator.hasNext()) {
-        ((pet)localIterator.next()).a();
+        ((pkf)localIterator.next()).a();
       }
     }
   }

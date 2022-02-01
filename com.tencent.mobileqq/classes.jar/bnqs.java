@@ -1,8 +1,22 @@
-public abstract interface bnqs
+import android.util.Property;
+
+class bnqs
+  extends Property<bnqm, Float>
 {
-  public abstract void onAnimationFinished();
+  bnqs(bnqm parambnqm, Class paramClass, String paramString)
+  {
+    super(paramClass, paramString);
+  }
   
-  public abstract void onDrawableLoaded();
+  public Float a(bnqm parambnqm)
+  {
+    return Float.valueOf(bnqm.b(parambnqm));
+  }
+  
+  public void a(bnqm parambnqm, Float paramFloat)
+  {
+    bnqm.a(parambnqm, paramFloat);
+  }
 }
 
 

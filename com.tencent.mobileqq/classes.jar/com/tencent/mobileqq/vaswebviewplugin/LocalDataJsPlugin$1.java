@@ -2,28 +2,28 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bhzb;
-import biht;
-import bihu;
-import bihw;
+import bgfm;
+import bgod;
+import bgoe;
+import bgog;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import org.json.JSONObject;
 
 class LocalDataJsPlugin$1
-  extends biht
+  extends bgod
 {
   LocalDataJsPlugin$1(LocalDataJsPlugin paramLocalDataJsPlugin) {}
   
-  public void onDone(bihu parambihu)
+  public void onDone(bgoe parambgoe)
   {
-    super.onDone(parambihu);
+    super.onDone(parambgoe);
     if (QLog.isColorLevel()) {
-      QLog.d("LocalDataJsPlugin", 2, "sigTplResDownloadListener.onDone| task:" + parambihu);
+      QLog.d("LocalDataJsPlugin", 2, "sigTplResDownloadListener.onDone| task:" + parambgoe);
     }
-    Object localObject1 = parambihu.a();
+    Object localObject1 = parambgoe.a();
     if (localObject1 == null) {
-      QLog.e("LocalDataJsPlugin", 1, "sigTplResDownloadListener.onDone error no params: " + parambihu);
+      QLog.e("LocalDataJsPlugin", 1, "sigTplResDownloadListener.onDone error no params: " + parambgoe);
     }
     String str1;
     String str2;
@@ -39,17 +39,17 @@ class LocalDataJsPlugin$1
         QLog.e("LocalDataJsPlugin", 1, "sigTplResDownloadListener.onDone error : callbackId = " + str1 + " itemId = " + str2);
         return;
       }
-      if ((3 != parambihu.a()) && (parambihu.a() != 0)) {
+      if ((3 != parambgoe.a()) && (parambgoe.a() != 0)) {
         break;
       }
-      localFile = new File(bhzb.a(str2, "dynamic_aio"));
-    } while (!bihw.a(new File(bhzb.a(str2, "temp.zip")), localFile, true));
+      localFile = new File(bgfm.a(str2, "dynamic_aio"));
+    } while (!bgog.a(new File(bgfm.a(str2, "temp.zip")), localFile, true));
     try
     {
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
         localObject1 = new JSONObject((String)localObject1);
-        LocalDataJsPlugin.access$000(this.this$0, str1, Integer.parseInt(str2), parambihu.c, (JSONObject)localObject1);
+        LocalDataJsPlugin.access$000(this.this$0, str1, Integer.parseInt(str2), parambgoe.c, (JSONObject)localObject1);
         return;
       }
     }
@@ -61,7 +61,7 @@ class LocalDataJsPlugin$1
         Object localObject2 = null;
       }
     }
-    QLog.e("LocalDataJsPlugin", 1, "sigTpl download fail status = " + parambihu.a() + " itemId = " + str2);
+    QLog.e("LocalDataJsPlugin", 1, "sigTpl download fail status = " + parambgoe.a() + " itemId = " + str2);
   }
 }
 

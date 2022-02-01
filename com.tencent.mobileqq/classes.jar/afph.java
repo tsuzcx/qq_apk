@@ -1,74 +1,27 @@
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubAccountBindActivity.5.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afph
-  extends anyu
+class afph
+  implements bjoe
 {
-  public afph(SubAccountBindActivity paramSubAccountBindActivity) {}
+  afph(afpd paramafpd, ChatMessage paramChatMessage, bjnw parambjnw) {}
   
-  void a(String paramString, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    ThreadManager.getFileThreadHandler().post(new SubAccountBindActivity.5.1(this, paramString, paramInt));
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    int j = 0;
-    if ((!paramBoolean) || (paramString == null)) {}
-    for (;;)
+    if (paramInt == 0)
     {
-      return;
-      int i;
-      if (SubAccountBindActivity.a(this.a) != null) {
-        i = SubAccountBindActivity.a(this.a).getChildCount();
+      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop != 3000) {
+        break label41;
       }
-      while (j < SubAccountBindActivity.a(this.a).size())
-      {
-        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
-        {
-          a(paramString, j);
-          return;
-        }
-        j += 1;
-        continue;
-        i = 0;
-      }
+      aszr.a("0X8005E4F");
     }
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    int j = 0;
-    if ((!paramBoolean) || (paramString == null)) {}
     for (;;)
     {
+      this.jdField_a_of_type_Afpd.e(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      this.jdField_a_of_type_Bjnw.dismiss();
       return;
-      int i;
-      if (SubAccountBindActivity.a(this.a) != null) {
-        i = SubAccountBindActivity.a(this.a).getChildCount();
-      }
-      while (j < SubAccountBindActivity.a(this.a).size())
-      {
-        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
-        {
-          TextView localTextView1 = (TextView)SubAccountBindActivity.a(this.a).getChildAt(j).findViewById(2131371647);
-          TextView localTextView2 = (TextView)SubAccountBindActivity.a(this.a).getChildAt(j).findViewById(2131361856);
-          localTextView1.setText(bhlg.h(this.a.app, paramString));
-          localTextView2.setText(paramString);
-          a(paramString, j);
-          return;
-        }
-        j += 1;
-        continue;
-        i = 0;
-      }
+      label41:
+      aszr.a("0X8005E4D");
     }
   }
 }

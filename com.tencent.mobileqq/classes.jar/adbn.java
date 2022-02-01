@@ -1,18 +1,30 @@
-import java.util.List;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.text.style.ImageSpan;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class adbn
-  implements adbm
+  extends ImageSpan
 {
-  private adbb<adbl> a = new adbc();
-  
-  public List<adbl> a()
+  public adbn(ChatSettingForTroop paramChatSettingForTroop, Drawable paramDrawable, int paramInt)
   {
-    return this.a.a();
+    super(paramDrawable, paramInt);
   }
   
-  public void a(Class<? extends adbl> paramClass)
+  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
   {
-    this.a.a(paramClass);
+    paramCanvas.save();
+    paramCanvas.translate(ScreenUtil.dip2px(5.0F), -ScreenUtil.dip2px(2.0F));
+    super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
+    paramCanvas.restore();
+  }
+  
+  public Drawable getDrawable()
+  {
+    return super.getDrawable();
   }
 }
 

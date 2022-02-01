@@ -1,33 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.XRecyclerView;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
 
-public class pdq
-  implements bltz
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/config/handlers/ViolaVideoFeedsConfigHandler$Companion;", "", "()V", "KEY_FROM_SOURCE", "", "TAG", "detectConfigInDebug", "", "isViolaVideoFeeds", "videoFromType", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pdq
 {
-  public pdq(ReadInJoyCGIDynamicChannelFragment paramReadInJoyCGIDynamicChannelFragment) {}
-  
-  public void a()
+  @JvmStatic
+  public final boolean a(int paramInt)
   {
-    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "endOfRefresh.");
-  }
-  
-  public void a(XRecyclerView paramXRecyclerView, int paramInt)
-  {
-    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "startLoadMore.");
-    paramXRecyclerView = pea.a();
-    if (paramXRecyclerView != null) {
-      paramXRecyclerView.a(ReadInJoyCGIDynamicChannelFragment.f(this.a), ReadInJoyCGIDynamicChannelFragment.a(this.a).a(), 10);
+    if ("all".equals((String)bkwm.a("viola_video_feeds_config", ""))) {
+      return true;
     }
-  }
-  
-  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
-  {
-    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "startTopRefresh.");
-    paramXRecyclerView = pea.a();
-    if (paramXRecyclerView != null) {
-      paramXRecyclerView.a(ReadInJoyCGIDynamicChannelFragment.e(this.a));
-    }
+    return bkwm.b(paramInt, "\\|", "viola_video_feeds_config");
   }
 }
 

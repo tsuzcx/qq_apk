@@ -1,26 +1,16 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import java.util.Date;
+import java.util.List;
 
 public class ahon
-  extends ahoq
 {
-  public FrameLayout a;
-  public RelativeLayout a;
-  public PicProgressView a;
-  public BubbleImageView a;
-  public boolean a;
-  public View c;
-  public int e;
-  public int f;
-  
-  public ahon(ahom paramahom)
-  {
-    super(paramahom);
-    this.jdField_a_of_type_Boolean = true;
-  }
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  Date jdField_a_of_type_JavaUtilDate;
+  List<String> jdField_a_of_type_JavaUtilList;
+  String jdField_b_of_type_JavaLangString;
+  Date jdField_b_of_type_JavaUtilDate;
+  String c;
+  String d;
 }
 
 

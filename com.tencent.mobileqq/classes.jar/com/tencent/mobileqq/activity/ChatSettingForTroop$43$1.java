@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
+import amtj;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-import anzj;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ class ChatSettingForTroop$43$1
     if (localArrayList != null)
     {
       if (this.a.this$0.c != null) {
-        this.a.this$0.c.setText(this.a.this$0.a.wMemberNum + anzj.a(2131700634));
+        this.a.this$0.c.setText(this.a.this$0.a.wMemberNum + amtj.a(2131700869));
       }
       int i = localArrayList.size() - 1;
       while (i >= 0)
@@ -46,7 +46,7 @@ class ChatSettingForTroop$43$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.43.1
  * JD-Core Version:    0.7.0.1
  */

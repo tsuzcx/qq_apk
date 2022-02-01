@@ -1,63 +1,162 @@
+import ProfileLogic.QC.readUserInfoRsp;
+import ProfileLogic.QC.setUserFlagRsp;
+import ProfileLogic.QC.setUserProfileRsp;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.nearby.profilecard.LabelContainer;
+import com.tencent.mobileqq.profile.CustomCoverFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Vector;
 
 public class ayjx
-  extends ayjw
+  extends anam
 {
-  protected View a;
+  public ayjx(CustomCoverFragment paramCustomCoverFragment) {}
   
-  protected int a()
+  public void e(boolean paramBoolean, Object paramObject)
   {
-    return 2131561299;
-  }
-  
-  protected LabelContainer a(View paramView, int paramInt1, ayaw paramayaw, int paramInt2)
-  {
-    paramayaw = (ImageView)paramView.findViewById(2131380336);
-    if (paramInt1 == 7) {
-      paramayaw.setVisibility(8);
-    }
-    for (;;)
+    boolean bool = true;
+    int i = 0;
+    CustomCoverFragment.a(this.a).b();
+    Object localObject = this.a.getActivity();
+    if (localObject == null) {}
+    label194:
+    label334:
+    label353:
+    label364:
+    do
     {
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() != 0)
+      do
       {
-        paramayaw = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-        paramayaw.topMargin = zft.b(this.jdField_a_of_type_AndroidContentContext, 16.0F);
-        paramView.setLayoutParams(paramayaw);
-      }
-      paramInt1 = zft.b(this.jdField_a_of_type_AndroidContentContext, 7.0F);
-      paramInt2 = zft.b(this.jdField_a_of_type_AndroidContentContext, 7.0F);
-      paramView = (LabelContainer)paramView.findViewById(2131369601);
-      paramView.setSpace(paramInt1, paramInt2);
-      return paramView;
-      paramayaw.setImageResource(b[paramInt1]);
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              if (!paramBoolean) {
+                break label733;
+              }
+              if (!(paramObject instanceof readUserInfoRsp)) {
+                break label364;
+              }
+              this.a.stopTitleProgress();
+              paramObject = (readUserInfoRsp)paramObject;
+              if (CustomCoverFragment.a(this.a))
+              {
+                localObject = this.a;
+                if (paramObject.flag != 1) {
+                  break;
+                }
+                paramBoolean = true;
+                CustomCoverFragment.a((CustomCoverFragment)localObject, paramBoolean);
+              }
+              CustomCoverFragment.a(this.a, paramObject.itemid);
+              CustomCoverFragment.b(this.a, paramObject.index);
+              CustomCoverFragment.c(this.a, paramObject.listend);
+              if (!TextUtils.isEmpty(paramObject.urlprefix)) {
+                aymh.a = paramObject.urlprefix;
+              }
+              CustomCoverFragment.a(this.a, paramObject.itemlist);
+              if (CustomCoverFragment.a(this.a) != null)
+              {
+                if (CustomCoverFragment.a(this.a).size() != 0) {
+                  break label334;
+                }
+                CustomCoverFragment.a(this.a).setVisibility(8);
+                CustomCoverFragment.c(this.a, 2);
+              }
+              if (CustomCoverFragment.a(this.a) != null) {
+                CustomCoverFragment.a(this.a).sendEmptyMessage(101);
+              }
+            } while (!QLog.isColorLevel());
+            localObject = new StringBuilder().append("onDefaultCardRsp: [readUserInfoRsp] selId=").append(CustomCoverFragment.a(this.a)).append(" reqIndex=").append(CustomCoverFragment.b(this.a)).append(" footerState=").append(CustomCoverFragment.c(this.a)).append(" flag=");
+            if (paramObject.flag == 1)
+            {
+              paramBoolean = bool;
+              localObject = ((StringBuilder)localObject).append(paramBoolean).append(" itemList=");
+              if (paramObject.itemlist != null) {
+                break label353;
+              }
+            }
+            for (;;)
+            {
+              QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, i);
+              return;
+              paramBoolean = false;
+              break;
+              CustomCoverFragment.a(this.a).setVisibility(0);
+              break label194;
+              paramBoolean = false;
+              break label293;
+              i = paramObject.itemlist.size();
+            }
+            if (!(paramObject instanceof setUserProfileRsp)) {
+              break;
+            }
+            i = ((setUserProfileRsp)paramObject).ret;
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserProfileRsp] ret=" + i);
+            }
+            if (i == 0)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserProfileRsp] selId=" + CustomCoverFragment.a(this.a));
+              }
+              paramObject = new Intent();
+              paramObject.putExtra("req_code_key", 2002);
+              paramObject.putExtra("card_url_key", this.a.a(CustomCoverFragment.d(this.a)));
+              ((FragmentActivity)localObject).setResult(-1, paramObject);
+              ((FragmentActivity)localObject).finish();
+              return;
+            }
+          } while (this.a.getActivity() == null);
+          QQToast.a(this.a.getActivity(), 1, 2131719238, 0).a();
+          return;
+        } while (!(paramObject instanceof setUserFlagRsp));
+        i = ((setUserFlagRsp)paramObject).ret;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserFlagRsp] ret=" + i);
+        }
+        if (i != 0) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: [setUserFlagRsp] setFlag=" + CustomCoverFragment.b(this.a));
+        }
+        CustomCoverFragment.a(this.a, true);
+        QQToast.a((Context)localObject, 0, 2131719241, 0).a();
+        if (CustomCoverFragment.b(this.a))
+        {
+          CustomCoverFragment.a(this.a, CustomCoverFragment.b(this.a));
+          return;
+        }
+        CustomCoverFragment.a(this.a, CustomCoverFragment.b(this.a));
+      } while (CustomCoverFragment.a(this.a) == null);
+      CustomCoverFragment.a(this.a).sendEmptyMessage(101);
+      return;
+    } while (this.a.getActivity() == null);
+    label293:
+    QQToast.a(this.a.getActivity(), 1, 2131719238, 0).a();
+    return;
+    label733:
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.FrdProfileCard.CustomCoverFragment", 2, "onDefaultCardRsp: isSuccess=false, cmd=" + paramObject);
     }
-  }
-  
-  public void a(Context paramContext, LinearLayout paramLinearLayout, View paramView)
-  {
-    super.a(paramContext, paramLinearLayout);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
-  
-  public boolean a(ayaw[] paramArrayOfayaw)
-  {
-    if (super.a(paramArrayOfayaw))
+    if ("profilelogic.readUserInfo".equals(paramObject))
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      CustomCoverFragment.c(this.a, 1);
+      this.a.stopTitleProgress();
+      QQToast.a((Context)localObject, 1, 2131718943, 0).a();
+      return;
     }
-    for (;;)
-    {
-      return true;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
+    QQToast.a((Context)localObject, 1, 2131719238, 0).a();
   }
 }
 

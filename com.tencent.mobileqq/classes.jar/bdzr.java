@@ -1,52 +1,34 @@
-import android.view.Display;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.tablequery.TableQueryViewer;
+import java.nio.ByteBuffer;
 
-public class bdzr
-  implements View.OnTouchListener
+class bdzr
 {
-  public bdzr(TableQueryViewer paramTableQueryViewer) {}
+  public final long a;
+  public final long b;
+  public final long c;
+  public final long d;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bdzr(long paramLong)
   {
-    paramView = this.a.getContext();
-    int i = paramMotionEvent.getAction();
-    int j = (int)paramMotionEvent.getRawY();
-    if (i == 0) {
-      TableQueryViewer.a(this.a, (int)paramMotionEvent.getY());
-    }
-    label171:
-    do
-    {
-      return false;
-      if (i == 2)
-      {
-        if ((TableQueryViewer.a(this.a)) || (Math.abs(paramMotionEvent.getY() - TableQueryViewer.a(this.a)) > bhgr.a(paramView, 10.0F)))
-        {
-          TableQueryViewer.a(this.a, true);
-          paramMotionEvent = (WindowManager.LayoutParams)this.a.getLayoutParams();
-          paramMotionEvent.y = (j - TableQueryViewer.a(this.a) - zft.b(paramView, 0.0F));
-          i = TableQueryViewer.a(this.a).getDefaultDisplay().getHeight();
-          if (paramMotionEvent.y >= 0) {
-            break label171;
-          }
-          paramMotionEvent.y = 0;
-        }
-        for (;;)
-        {
-          TableQueryViewer.a(this.a).updateViewLayout(TableQueryViewer.a(this.a), paramMotionEvent);
-          return true;
-          if (paramMotionEvent.y > i - this.a.getHeight()) {
-            paramMotionEvent.y = (i - this.a.getHeight());
-          }
-        }
-      }
-    } while ((i != 1) && (i != 3));
-    return false;
+    this.a = 2882377846L;
+    this.b = 1007L;
+    this.c = 0L;
+    this.d = paramLong;
+  }
+  
+  public bdzr(ByteBuffer paramByteBuffer)
+  {
+    this.a = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.b = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.c = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+    this.d = (paramByteBuffer.getInt() & 0xFFFFFFFF);
+  }
+  
+  public void a(ByteBuffer paramByteBuffer)
+  {
+    paramByteBuffer.putInt((int)(this.a & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.b & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.c & 0xFFFFFFFF));
+    paramByteBuffer.putInt((int)(this.d & 0xFFFFFFFF));
   }
 }
 

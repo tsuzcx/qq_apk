@@ -2,7 +2,6 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bjtz;
 import com.tencent.mobileqq.mini.MiniAppInterface;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -13,6 +12,7 @@ import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
+import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -66,7 +66,7 @@ class PayJsPlugin$4
           if (localMiniAppInfo != null)
           {
             paramJSONObject = this.this$0.jsPluginEngine.appBrandRuntime.appId + "_" + localMiniAppInfo.verType;
-            str1 = bjtz.b(paramJSONObject);
+            str1 = MD5Utils.encodeHexStr(paramJSONObject);
             AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().getApp().getSharedPreferences("keyMiniGamePayEnv", 4).edit().putString("keyMiniGamePayEnvAppidVertype", str1).commit();
             this.val$jsonObject.put("miniAppVertypeStr", paramJSONObject);
           }

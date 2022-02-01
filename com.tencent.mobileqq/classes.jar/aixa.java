@@ -1,66 +1,21 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.upcoming.UpComingMsgModel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.widget.QQViewPager;
 
-public abstract class aixa
+class aixa
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  protected QQAppInterface a;
+  aixa(aiwz paramaiwz) {}
   
-  protected String a(SessionInfo paramSessionInfo, String paramString)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if ((paramSessionInfo != null) && (paramSessionInfo.a != 0) && (1 != paramSessionInfo.a) && (3000 != paramSessionInfo.a)) {
-      return paramString;
-    }
-    return "";
-  }
-  
-  protected boolean a(List<MessageRecord> paramList)
-  {
-    boolean bool2;
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      boolean bool1 = true;
-      bool2 = bool1;
-      if (!paramList.hasNext()) {
-        break label46;
-      }
-      if (((MessageRecord)paramList.next()).isSend()) {
-        break label48;
-      }
-      bool1 = false;
-    }
-    label46:
-    label48:
-    for (;;)
-    {
-      break;
-      bool2 = true;
-      return bool2;
+    if (paramInt == 1) {
+      this.a.b = this.a.a.getCurrentItem();
     }
   }
   
-  protected byte[] a(List<MessageRecord> paramList, int paramInt, String paramString1, String paramString2)
+  public void onPageSelected(int paramInt)
   {
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(Long.valueOf(((MessageRecord)localIterator.next()).uniseq));
-    }
-    int j = 8;
-    int i = j;
-    if (paramList.size() == 1)
-    {
-      i = j;
-      if (paramInt == 1) {
-        i = aixg.a((MessageRecord)paramList.get(0));
-      }
-    }
-    return new UpComingMsgModel(((MessageRecord)paramList.get(0)).frienduin, paramString2, localArrayList, ((MessageRecord)paramList.get(0)).istroop, paramInt, i, paramString1).toJson().getBytes();
+    aiwz.a(this.a, paramInt);
   }
 }
 

@@ -1,12 +1,27 @@
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+
 public class rvu
+  extends rvs
 {
-  int jdField_a_of_type_Int;
-  rld jdField_a_of_type_Rld;
+  private ViewGroup B;
+  public VideoFeedsStressFollowLayout a;
+  private ReadInJoyHeadImageView a;
+  public scd a;
+  public View f;
   
-  public rvu(rld paramrld, int paramInt)
+  public rvu(View paramView)
   {
-    this.jdField_a_of_type_Rld = paramrld;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramView);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setPrefix("@");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131380557));
+    this.B = ((ViewGroup)paramView.findViewById(2131380558));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout = ((VideoFeedsStressFollowLayout)paramView.findViewById(2131377831));
+    this.f = paramView.findViewById(2131380563);
+    this.jdField_a_of_type_Scd = new scd(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout, this.m);
   }
 }
 

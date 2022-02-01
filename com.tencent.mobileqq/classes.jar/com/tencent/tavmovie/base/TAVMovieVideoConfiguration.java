@@ -13,17 +13,16 @@ public class TAVMovieVideoConfiguration
 {
   private TAVVideoConfiguration.TAVVideoConfigurationContentMode contentMode = TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFit;
   private List<? extends TAVVideoEffect> effects = new ArrayList();
-  private CGRect frame;
+  private CGRect frame = TAVVideoConfiguration.DEFAULT_VIDEO_FRAME;
   private int preferRotation = 0;
   private Matrix transform;
   
   public TAVMovieVideoConfiguration clone()
   {
     TAVMovieVideoConfiguration localTAVMovieVideoConfiguration = new TAVMovieVideoConfiguration();
-    if (this.frame != null) {}
-    for (CGRect localCGRect = this.frame.clone();; localCGRect = null)
+    if ((this.frame == null) || (this.frame == TAVVideoConfiguration.FIX_RENDER_SIZE) || (this.frame == TAVVideoConfiguration.SOURCE_SIZE)) {}
+    for (localTAVMovieVideoConfiguration.frame = this.frame;; localTAVMovieVideoConfiguration.frame = this.frame.clone())
     {
-      localTAVMovieVideoConfiguration.frame = localCGRect;
       localTAVMovieVideoConfiguration.contentMode = this.contentMode;
       localTAVMovieVideoConfiguration.transform = new Matrix(this.transform);
       localTAVMovieVideoConfiguration.effects = new ArrayList(this.effects);

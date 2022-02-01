@@ -1,14 +1,32 @@
-import android.view.animation.Animation;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class oik
-  extends blgm
+  implements View.OnClickListener
 {
-  oik(oij paramoij) {}
+  oik(oif paramoif) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    oii.a(this.a.a.this$0, true);
+    QLog.i("DailyHeaderViewController", 1, "[onClick] clickToGrantPermission");
+    BaseActivity localBaseActivity = (BaseActivity)paramView.getContext();
+    if (Build.VERSION.SDK_INT >= 23) {
+      if (localBaseActivity.shouldShowRequestPermissionRationale("android.permission.ACCESS_FINE_LOCATION")) {
+        oif.a(this.a, true);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localBaseActivity.requestPermissions(new oil(this, localBaseActivity), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      continue;
+      oif.a(this.a, 5);
+    }
   }
 }
 

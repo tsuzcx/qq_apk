@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.8;
-
-public class aujp
-  implements DialogInterface.OnClickListener
+public abstract interface aujp
 {
-  public aujp(VideoFilePresenter.8 param8) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.this$0.n();
-  }
+  public abstract void a();
 }
 
 

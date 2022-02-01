@@ -1,18 +1,42 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class ahkn
-  extends ahkx
+  implements BusinessObserver
 {
-  ahkn(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahkn(ahkm paramahkm) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return new QQStoryItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a.tag, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
+        localSendMenuEventResponse.mergeFrom(paramBundle);
+        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.a.tag, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
+        }
+        if (paramInt == 0)
+        {
+          this.a.a.x = true;
+          this.a.a.q();
+          this.a.a.b();
+          return;
+        }
+      }
+      catch (Exception paramBundle) {}
+    }
+    this.a.a.b(2131694775);
+    this.a.a.b();
   }
 }
 

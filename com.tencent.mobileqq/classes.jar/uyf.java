@@ -1,9 +1,20 @@
-public class uyf
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+
+final class uyf
+  implements WXShareHelper.WXShareListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public void onWXShareResp(BaseResp paramBaseResp)
+  {
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      bhzt.a().a(2131718380);
+    }
+    WXShareHelper.getInstance().removeObserver(this);
+  }
 }
 
 

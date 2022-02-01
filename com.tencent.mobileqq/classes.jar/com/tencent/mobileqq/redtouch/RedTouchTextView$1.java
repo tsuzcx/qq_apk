@@ -3,7 +3,7 @@ package com.tencent.mobileqq.redtouch;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import bhmq;
+import bfvo;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -24,7 +24,7 @@ class RedTouchTextView$1
         localBitmap = this.this$0.a((File)localObject);
         localObject = localBitmap;
         if (this.jdField_a_of_type_Int == 1) {
-          localObject = bhmq.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
+          localObject = bfvo.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
         }
         this.this$0.b = new BitmapDrawable((Bitmap)localObject);
         this.this$0.a();
@@ -33,12 +33,12 @@ class RedTouchTextView$1
       if (!RedTouchTextView.a(this.this$0))
       {
         RedTouchTextView.a(this.this$0, true);
-        if (HttpDownloadUtil.a(null, this.jdField_a_of_type_JavaLangString, (File)localObject))
+        if (HttpDownloadUtil.download(null, this.jdField_a_of_type_JavaLangString, (File)localObject))
         {
           localBitmap = this.this$0.a((File)localObject);
           localObject = localBitmap;
           if (this.jdField_a_of_type_Int == 1) {
-            localObject = bhmq.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
+            localObject = bfvo.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
           }
           this.this$0.b = new BitmapDrawable((Bitmap)localObject);
           this.this$0.a();

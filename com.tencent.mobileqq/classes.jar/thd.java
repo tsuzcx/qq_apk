@@ -1,31 +1,47 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.MediaBridgeInvokeHandler.register.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.MediaBridgeInvokeHandler.register.2;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function2;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.viola.adapter.IBridgeAdapter;
+import com.tencent.viola.adapter.IBridgeAdapter.OnInovkeCallback;
+import com.tencent.viola.core.ViolaInstance;
+import java.util.ArrayList;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/MediaBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class thd
-  extends tgo
+public class thd
+  implements IBridgeAdapter
 {
-  public static final the a = new the(null);
-  
-  public thd(@NotNull BridgeModule paramBridgeModule)
+  public thd()
   {
-    super(paramBridgeModule);
+    registerModuleFunction();
   }
   
-  @NotNull
-  public String a()
+  public ArrayList<String> getAdapterUnRegisterFunction()
   {
-    return "media";
+    return null;
   }
   
-  public void a()
+  public void registerModuleFunction() {}
+  
+  public void titleUiInvoke(String paramString, Object paramObject, IBridgeAdapter.OnInovkeCallback paramOnInovkeCallback, ViolaInstance paramViolaInstance)
   {
-    a("showPicture", (Function2)new MediaBridgeInvokeHandler.register.1(this));
-    a("saveImage", (Function2)new MediaBridgeInvokeHandler.register.2(this));
+    if (paramViolaInstance == null) {
+      break label5;
+    }
+    for (;;)
+    {
+      label5:
+      return;
+      if (("change_title_transparent".equals(paramString)) && ((paramObject instanceof Boolean)))
+      {
+        paramString = paramViolaInstance.getFragment();
+        if (paramString == null) {
+          break;
+        }
+        if ((paramString instanceof ViolaFragment)) {}
+        for (paramString = ((ViolaFragment)paramString).getTtileChangelistener(); paramString != null; paramString = null)
+        {
+          paramString.a(((Boolean)paramObject).booleanValue());
+          return;
+        }
+      }
+    }
   }
 }
 

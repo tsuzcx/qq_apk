@@ -1,24 +1,12 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
+import com.tencent.widget.GridView;
 
-class vfw
-  implements Animator.AnimatorListener
+public class vfw
 {
-  vfw(vfu paramvfu) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (vfu.a(this.a) != null) {
-      vfu.a(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public VideoFeedsAlphaMaskView a;
+  GridView jdField_a_of_type_ComTencentWidgetGridView;
 }
 
 

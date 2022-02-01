@@ -1,26 +1,32 @@
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.widget.AbsListView;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aecv
-  implements blih
+  extends MqqHandler
 {
-  public aecv(ChatHistory paramChatHistory) {}
+  public aecv(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.m = paramInt;
-    if (paramInt == 0)
+    switch (paramMessage.what)
     {
-      AbstractGifImage.resumeAll();
+    }
+    do
+    {
       return;
-    }
-    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Int == 1) && (!this.a.a.jdField_a_of_type_Boolean)) {
-      this.a.a.d();
-    }
-    AbstractGifImage.pauseAll();
+      this.a.finish();
+      return;
+      paramMessage = (String)paramMessage.obj;
+      if (!TextUtils.isEmpty(paramMessage))
+      {
+        RegisterPhoneNumActivity.a(this.a).a(paramMessage);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("RegisterPhoneNumActivity", 2, "captcha sig is empty");
   }
 }
 

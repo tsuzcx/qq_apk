@@ -9,8 +9,13 @@ import com.tencent.qqlive.module.videoreport.Log;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
+import java.util.Set;
+import java.util.WeakHashMap;
 
 public class BaseUtils
 {
@@ -37,6 +42,26 @@ public class BaseUtils
     return paramMap2;
   }
   
+  public static String getClassSimpleName(Object paramObject)
+  {
+    if (paramObject == null) {
+      return "null";
+    }
+    return paramObject.getClass().getSimpleName();
+  }
+  
+  public static String getErrorStack(Throwable paramThrowable)
+  {
+    if (paramThrowable == null) {
+      return "";
+    }
+    StringWriter localStringWriter = new StringWriter();
+    PrintWriter localPrintWriter = new PrintWriter(localStringWriter);
+    paramThrowable.printStackTrace(localPrintWriter);
+    localPrintWriter.close();
+    return localStringWriter.toString();
+  }
+  
   public static boolean isEmpty(Collection paramCollection)
   {
     return (paramCollection == null) || (paramCollection.isEmpty());
@@ -45,6 +70,11 @@ public class BaseUtils
   public static boolean isEmpty(Map<?, ?> paramMap)
   {
     return (paramMap == null) || (paramMap.isEmpty());
+  }
+  
+  public static <T> Set<T> newWeakHashSet()
+  {
+    return Collections.newSetFromMap(new WeakHashMap());
   }
   
   public static <T> T nullAs(T paramT1, T paramT2)

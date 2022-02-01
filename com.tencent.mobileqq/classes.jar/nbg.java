@@ -1,39 +1,20 @@
-import android.graphics.RectF;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.avgame.gameroom.GameRoomFragment;
-import com.tencent.avgame.gameroom.seat.SeatView;
-
-public class nbg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface nbg
 {
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
   
-  public nbg(GameRoomFragment paramGameRoomFragment) {}
+  public abstract void a(String paramString, int paramInt, naf paramnaf);
   
-  public void onGlobalLayout()
-  {
-    RectF localRectF = this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.a();
-    if (localRectF == null) {
-      return;
-    }
-    if (!this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.b)
-    {
-      this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.jdField_a_of_type_Nbp.a().a(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.getString(2131690282), localRectF, 146);
-      this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.b = true;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidGraphicsRectF = localRectF;
-      return;
-      if ((this.jdField_a_of_type_AndroidGraphicsRectF != null) && ((this.jdField_a_of_type_AndroidGraphicsRectF.left != localRectF.left) || (this.jdField_a_of_type_AndroidGraphicsRectF.top != localRectF.top))) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.jdField_a_of_type_Nbp.a().b(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.getString(2131690282), localRectF, 146);
-      }
-    }
-  }
+  public abstract void a(String paramString1, String paramString2, String paramString3);
+  
+  public abstract void a(naf paramnaf, int paramInt);
+  
+  public abstract void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2);
+  
+  public abstract void i(naf paramnaf);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nbg
  * JD-Core Version:    0.7.0.1
  */

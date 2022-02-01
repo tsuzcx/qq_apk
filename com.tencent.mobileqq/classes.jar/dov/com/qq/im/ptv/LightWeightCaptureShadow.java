@@ -7,7 +7,7 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
-import brkm;
+import bodx;
 
 public class LightWeightCaptureShadow
   extends View
@@ -17,10 +17,10 @@ public class LightWeightCaptureShadow
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private int b;
   private int c;
-  private int d = brkm.a(14.0F);
+  private int d = bodx.a(14.0F);
   private int e = 0;
-  private int f = brkm.a(160.0F);
-  private int g = brkm.a(160.0F);
+  private int f = bodx.a(160.0F);
+  private int g = bodx.a(160.0F);
   private int h = -1929379840;
   
   public LightWeightCaptureShadow(Context paramContext)

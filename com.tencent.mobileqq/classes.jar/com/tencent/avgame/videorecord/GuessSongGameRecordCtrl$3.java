@@ -1,20 +1,20 @@
 package com.tencent.avgame.videorecord;
 
-import bkdp;
-import niq;
+import bija;
+import nkf;
 
 public class GuessSongGameRecordCtrl$3
   implements Runnable
 {
-  public GuessSongGameRecordCtrl$3(niq paramniq) {}
+  public GuessSongGameRecordCtrl$3(nkf paramnkf) {}
   
   public void run()
   {
-    bkdp.a(this.this$0.a, "onEncodeError man call check ");
-    if (niq.a(this.this$0))
+    bija.a(this.this$0.a, "onEncodeError man call check ");
+    if (nkf.a(this.this$0))
     {
-      bkdp.a(this.this$0.a, "onEncodeError man call onEncodeFinish");
-      this.this$0.a(niq.b(this.this$0));
+      bija.a(this.this$0.a, "onEncodeError man call onEncodeFinish");
+      this.this$0.a(nkf.b(this.this$0));
     }
   }
 }

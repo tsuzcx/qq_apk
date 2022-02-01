@@ -1,24 +1,26 @@
-import android.os.Bundle;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
 
 class tzf
-  implements EIPCResultCallback
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  tzf(tyo paramtyo, String paramString) {}
+  tzf(tze paramtze) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (paramEIPCResult.data != null)
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 4866;; paramInt = 771)
     {
-      paramEIPCResult = paramEIPCResult.data.getString("action_update_biu_and_comment_request_string");
-      this.jdField_a_of_type_Tyo.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramEIPCResult });
+      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tzf
  * JD-Core Version:    0.7.0.1
  */

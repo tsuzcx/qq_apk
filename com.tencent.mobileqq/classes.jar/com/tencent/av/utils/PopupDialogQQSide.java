@@ -6,18 +6,18 @@ import android.os.ResultReceiver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bhlq;
-import bhpc;
+import bfur;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
-import mth;
-import mti;
-import mtj;
+import msq;
+import msr;
+import mss;
 
 public class PopupDialogQQSide
   extends PublicBaseFragment
 {
-  public bhpc a = null;
+  public QQCustomDialog a = null;
   
   void a()
   {
@@ -40,31 +40,31 @@ public class PopupDialogQQSide
     boolean bool1 = ((Bundle)localObject1).getBoolean("leftBtnVisiable", true);
     boolean bool2 = ((Bundle)localObject1).getBoolean("rightBtnVisiable", true);
     a();
-    localObject1 = new mth(this, (ResultReceiver)localObject2);
-    localObject2 = new mti(this, (ResultReceiver)localObject2);
+    localObject1 = new msq(this, (ResultReceiver)localObject2);
+    localObject2 = new msr(this, (ResultReceiver)localObject2);
     if (i == 0) {
-      i = 2131719223;
+      i = 2131719509;
     }
     for (;;)
     {
       if (j == 0) {
-        j = 2131719223;
+        j = 2131719509;
       }
       for (;;)
       {
-        bhpc localbhpc = bhlq.a(getActivity(), k);
-        localbhpc.setMessage(str2);
-        localbhpc.setTitle(str1);
+        QQCustomDialog localQQCustomDialog = bfur.a(getActivity(), k);
+        localQQCustomDialog.setMessage(str2);
+        localQQCustomDialog.setTitle(str1);
         if (bool1) {
-          localbhpc.setNegativeButton(i, (DialogInterface.OnClickListener)localObject1);
+          localQQCustomDialog.setNegativeButton(i, (DialogInterface.OnClickListener)localObject1);
         }
         if (bool2) {
-          localbhpc.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
+          localQQCustomDialog.setPositiveButton(j, (DialogInterface.OnClickListener)localObject2);
         }
-        localbhpc.setOnDismissListener(new mtj(this));
-        localbhpc.setCancelable(true);
-        localbhpc.show();
-        this.a = localbhpc;
+        localQQCustomDialog.setOnDismissListener(new mss(this));
+        localQQCustomDialog.setCancelable(true);
+        localQQCustomDialog.show();
+        this.a = localQQCustomDialog;
         return;
       }
     }

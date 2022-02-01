@@ -1,28 +1,22 @@
-import com.google.gson.Gson;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.tfm.metrics.api.MetricsLogBean;
-import com.tencent.tfm.metrics.api.Reporter;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
-public class bdjg
-  implements Reporter
+class bdjg
+  extends bdji<UserState>
 {
-  private bdmc jdField_a_of_type_Bdmc;
-  private Gson jdField_a_of_type_ComGoogleGsonGson = new Gson();
-  private String jdField_a_of_type_JavaLangString;
-  
-  public bdjg(BaseApplicationImpl paramBaseApplicationImpl)
+  bdjg(bdiu parambdiu, UserState paramUserState, List paramList)
   {
-    this.jdField_a_of_type_Bdmc = bdmc.a(paramBaseApplicationImpl);
-    this.jdField_a_of_type_JavaLangString = paramBaseApplicationImpl.getRuntime().getAccount();
+    super(paramUserState, paramList);
   }
   
-  public void report(MetricsLogBean paramMetricsLogBean)
+  public void a(UserState paramUserState)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("monitor", this.jdField_a_of_type_ComGoogleGsonGson.toJson(paramMetricsLogBean) + ";");
-    this.jdField_a_of_type_Bdmc.a(this.jdField_a_of_type_JavaLangString, "rqd_tfm_metrics", true, 0L, 0L, localHashMap, null);
+    bdiu.a(this.a).a();
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 

@@ -2,11 +2,12 @@ package dov.com.qq.im.aeeditor.arch;
 
 import android.app.Dialog;
 import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
-import bpbk;
+import bmcu;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import dov.com.qq.im.aeeditor.AEEditorActivity;
 import dov.com.qq.im.aeeditor.view.ProgressView;
@@ -14,10 +15,9 @@ import dov.com.qq.im.aeeditor.view.ProgressView;
 public abstract class AEEditorBaseFragment
   extends PublicBaseFragment
 {
-  private static final String b = AEEditorBaseFragment.class.getSimpleName();
   protected Dialog a;
   protected Handler a;
-  private bpbk a;
+  private bmcu a;
   protected ProgressView a;
   public String a;
   
@@ -27,21 +27,23 @@ public abstract class AEEditorBaseFragment
   }
   
   @NonNull
-  public bpbk a()
+  public bmcu a()
   {
-    if (this.jdField_a_of_type_Bpbk == null) {
+    if (this.jdField_a_of_type_Bmcu == null) {
       throw new RuntimeException("moduleManager not set");
     }
-    return this.jdField_a_of_type_Bpbk;
+    return this.jdField_a_of_type_Bmcu;
   }
   
   public abstract String a();
   
   public void a() {}
   
-  public void a(bpbk parambpbk)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(bmcu parambmcu)
   {
-    this.jdField_a_of_type_Bpbk = parambpbk;
+    this.jdField_a_of_type_Bmcu = parambmcu;
   }
   
   public void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong, DialogInterface.OnDismissListener paramOnDismissListener)
@@ -68,8 +70,8 @@ public abstract class AEEditorBaseFragment
   public void onResume()
   {
     super.onResume();
-    if ((this.jdField_a_of_type_Bpbk == null) && (getActivity() != null) && ((getActivity() instanceof AEEditorActivity))) {
-      this.jdField_a_of_type_Bpbk = ((AEEditorActivity)getActivity()).a();
+    if ((this.jdField_a_of_type_Bmcu == null) && (getActivity() != null) && ((getActivity() instanceof AEEditorActivity))) {
+      this.jdField_a_of_type_Bmcu = ((AEEditorActivity)getActivity()).a();
     }
   }
 }

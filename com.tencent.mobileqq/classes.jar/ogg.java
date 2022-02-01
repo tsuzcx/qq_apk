@@ -1,16 +1,26 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopAdHandler.3.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 
-public class ogg
-  implements MiniAppLauncher.MiniAppLaunchListener
+public final class ogg
+  implements abrw
 {
-  public ogg(CustomTabView paramCustomTabView) {}
+  ogg(AppInterface paramAppInterface) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public void reportImpression(View paramView)
   {
-    QLog.i("EcshopCustomTabView", 2, "onLaunchResult" + paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("Ecshop_EcshopAdHandler", 1, "--> reportImpression");
+    }
+    if (paramView == null) {}
+    do
+    {
+      return;
+      paramView = paramView.getTag(2131364454);
+    } while (paramView == null);
+    ThreadManagerV2.executeOnSubThread(new EcshopAdHandler.3.1(this, paramView));
   }
 }
 

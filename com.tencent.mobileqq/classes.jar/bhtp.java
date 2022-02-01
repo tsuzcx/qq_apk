@@ -1,13 +1,10 @@
-public abstract class bhtp
+public class bhtp
 {
   public int a;
-  
-  public bhtp(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public abstract void a();
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
 }
 
 

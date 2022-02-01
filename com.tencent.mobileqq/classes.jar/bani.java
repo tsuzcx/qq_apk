@@ -1,38 +1,27 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
 public class bani
+  implements QQPermissionCallback
 {
-  private static String a(int paramInt1, int paramInt2)
+  public bani(SignTextEditFragment paramSignTextEditFragment, AppActivity paramAppActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    switch (paramInt1)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("SignTextEditFragment", 2, "requestPermission user denied");
     }
-    for (;;)
-    {
-      return null;
-      switch (paramInt2)
-      {
-      default: 
-        switch (paramInt2)
-        {
-        }
-        break;
-      }
-    }
-    return "0X8009E09";
-    return "0X8009E06";
-    return "0X8009E07";
-    return "0X8009E08";
-    return "0X8009E0A";
-    return "0X8009E0B";
+    bfur.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public static void a(int paramInt1, int paramInt2)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    String str = a(paramInt1, paramInt2);
-    if (!TextUtils.isEmpty(str)) {
-      bdll.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("SignTextEditFragment", 2, "requestPermission user grant");
     }
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignTextEditFragment.c();
   }
 }
 

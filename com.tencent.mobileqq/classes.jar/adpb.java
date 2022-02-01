@@ -1,33 +1,19 @@
-import android.app.Activity;
-import java.util.Map;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.qphone.base.util.QLog;
 
 public class adpb
-  extends adni
+  extends arht
 {
-  public boolean b;
-  protected String c;
-  public String d;
-  public String e;
+  public adpb(Leba paramLeba) {}
   
-  public adpb(Activity paramActivity, int paramInt, String paramString1, String paramString2)
+  protected void l_(int paramInt)
   {
-    super(paramActivity, paramInt, paramString1);
-    this.c = paramString2;
-  }
-  
-  protected Map<String, admz> a()
-  {
-    return adpl.a();
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Int == 2;
-  }
-  
-  protected void c()
-  {
-    adnn.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, new adpc(this));
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.lebatab.leba", 2, "onUpdateRedPoint " + paramInt);
+    }
+    if (Leba.a(this.a) != null) {
+      Leba.a(this.a).b();
+    }
   }
 }
 

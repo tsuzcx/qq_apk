@@ -1,11 +1,7 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-
-public abstract class bfpu
+abstract class bfpu
 {
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo) {}
-  
-  public void a(String paramString, Integer paramInteger) {}
+  public int a;
+  public byte[] a;
 }
 
 

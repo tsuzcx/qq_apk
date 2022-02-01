@@ -1,13 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
+import java.util.Comparator;
 
-public class akab
-  implements DialogInterface.OnClickListener
+final class akab
+  implements Comparator<akaa>
 {
-  public akab(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a(akaa paramakaa1, akaa paramakaa2)
+  {
+    return paramakaa1.a - paramakaa2.a;
+  }
 }
 
 

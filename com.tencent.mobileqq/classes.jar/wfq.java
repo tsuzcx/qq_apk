@@ -1,40 +1,32 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPromoteTaskList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class wfq
+  extends wdw<qqstory_service.ReqGetPromoteTaskList>
 {
-  public List<String> a;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public int g;
+  public static final String b = vpl.a("StorySvc.get_promote_tasklist");
   
-  public wfq(int paramInt)
+  public wfq(String paramString)
   {
-    this.jdField_e_of_type_Int = paramInt;
+    super(b, new qqstory_service.ReqGetPromoteTaskList(), null);
+    ((qqstory_service.ReqGetPromoteTaskList)this.a).bytes_cookie.set(ByteStringMicro.copyFromUtf8(paramString));
   }
   
-  public wfq a(JSONObject paramJSONObject, int paramInt)
+  public vqm a(byte[] paramArrayOfByte)
   {
-    this.d = paramJSONObject.optString("transId", "");
-    this.g = paramJSONObject.optInt("min_limit", paramInt);
-    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("wording");
-    this.f = paramJSONObject.optInt("text_id", -1);
-    paramJSONObject = paramJSONObject.optJSONArray("transList");
-    if ((paramJSONObject != null) && (paramJSONObject.length() > 0))
-    {
-      this.a = new ArrayList();
-      paramInt = 0;
-      while (paramInt < paramJSONObject.length())
-      {
-        this.a.add(paramJSONObject.getString(paramInt));
-        paramInt += 1;
-      }
-    }
-    return this;
+    return new wfr(paramArrayOfByte);
+  }
+  
+  protected byte[] a()
+  {
+    xvv.a("GetPromoteTaskRequest", "encode: %s", this);
+    return super.a();
+  }
+  
+  public String toString()
+  {
+    return yps.a(this.a);
   }
 }
 

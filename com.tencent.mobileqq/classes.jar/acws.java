@@ -1,8 +1,20 @@
-public abstract interface acws
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+public final class acws
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public acws(acxa paramacxa) {}
   
-  public abstract void b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.a != null) {
+      this.a.onCancel();
+    }
+    mrd.e(true, false);
+    paramDialogInterface.dismiss();
+    mrd.b();
+  }
 }
 
 

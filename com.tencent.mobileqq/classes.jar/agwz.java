@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.activity.aio.helper.TroopRobotHelper.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
 
 public class agwz
-  implements bgwl
+  implements View.OnLongClickListener
 {
-  agwz(agwy paramagwy) {}
+  public agwz(PanelIconLinearLayout paramPanelIconLinearLayout) {}
   
-  public void a(String paramString)
+  public boolean onLongClick(View paramView)
   {
-    ThreadManager.getUIHandler().post(new TroopRobotHelper.1.1(this));
+    paramView = ((afop)this.a.a.a(62)).a;
+    if (paramView != null) {
+      paramView.a(1);
+    }
+    return true;
   }
 }
 

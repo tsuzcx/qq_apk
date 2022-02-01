@@ -1,19 +1,22 @@
-import android.app.Activity;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.PopupWindow.OnDismissListener;
-
-class oey
-  implements PopupWindow.OnDismissListener
+public class oey
 {
-  oey(oex paramoex) {}
-  
-  public void onDismiss()
-  {
-    WindowManager.LayoutParams localLayoutParams = ((Activity)this.a.a).getWindow().getAttributes();
-    localLayoutParams.alpha = 1.0F;
-    ((Activity)this.a.a).getWindow().setAttributes(localLayoutParams);
-  }
+  public int a = 5;
+  public String a;
+  public int b = 10;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n;
 }
 
 

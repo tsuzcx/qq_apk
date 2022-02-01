@@ -1,10 +1,13 @@
-public class bldr
+import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
+
+public abstract interface bldr
 {
-  public int a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public int c;
+  public abstract void onQueryCallback(ArrayList<WadlResult> paramArrayList);
+  
+  public abstract void onQueryCallbackVia(ArrayList<WadlResult> paramArrayList);
+  
+  public abstract void onWadlTaskStatusChanged(WadlResult paramWadlResult);
 }
 
 

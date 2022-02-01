@@ -1,6 +1,15 @@
-public abstract interface azji
+import com.tencent.mobileqq.data.QCallRecord;
+import java.util.Comparator;
+
+class azji
+  implements Comparator<QCallRecord>
 {
-  public abstract void a(azld paramazld);
+  azji(azjg paramazjg) {}
+  
+  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
+  {
+    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
+  }
 }
 
 

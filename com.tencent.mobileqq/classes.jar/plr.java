@@ -1,30 +1,49 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 public class plr
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public plr(VideoView paramVideoView) {}
+  public static long a;
+  public static List<pls> a;
+  public static long b;
+  public static long c;
   
-  public void onGlobalLayout()
+  static
   {
-    if ((VideoView.access$400(this.a) == VideoView.PLAYMODE_AUTO) && (!this.a.needInterceptGlobalLayoutChanged))
+    jdField_a_of_type_Long = -1L;
+    b = -1L;
+    jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public static void a()
+  {
+    jdField_a_of_type_JavaUtilList.clear();
+    c = 0L;
+  }
+  
+  public static void a(pls parampls)
+  {
+    if (!jdField_a_of_type_JavaUtilList.isEmpty())
     {
-      if ((this.a.isShown()) && (VideoView.access$500(this.a).get() != 3))
-      {
-        VideoView.access$500(this.a).set(3);
-        QLog.d("gifvideo.VideoView", 1, "show to play");
-        this.a.startPlay();
-      }
-      if ((!this.a.isShown()) && (VideoView.access$500(this.a).get() != 5))
-      {
-        VideoView.access$500(this.a).set(5);
-        QLog.d("gifvideo.VideoView", 1, "unshow to stop");
-        this.a.stop();
+      pls localpls = (pls)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1);
+      if (parampls.b - localpls.b > jdField_a_of_type_Long) {
+        a();
       }
     }
+    jdField_a_of_type_JavaUtilList.add(parampls);
+    c += parampls.jdField_a_of_type_Long;
+    if (a())
+    {
+      parampls = new ArrayList();
+      parampls.addAll(jdField_a_of_type_JavaUtilList);
+      jdField_a_of_type_JavaUtilList.clear();
+      ple.a(parampls);
+    }
+  }
+  
+  public static boolean a()
+  {
+    return c > b;
   }
 }
 

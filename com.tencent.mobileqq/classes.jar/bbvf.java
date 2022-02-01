@@ -1,43 +1,21 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
-
-class bbvf
-  extends anvn
+final class bbvf
+  extends bbvi
 {
-  bbvf(bbvd parambbvd) {}
-  
-  protected void a(boolean paramBoolean, int paramInt)
+  public double a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "onUpdateStatusActions " + paramBoolean + ", " + paramInt);
-    }
-    bbvd.a(this.a, 0L);
-    if (paramBoolean)
+    double d2 = paramInt1 / (paramInt1 + paramInt2);
+    double d3 = paramInt2 / (paramInt1 + paramInt2);
+    double d1 = 0.0D;
+    if (paramInt1 > 0)
     {
-      if (paramInt == 100)
-      {
-        bbvd.b(this.a, System.currentTimeMillis());
-        bbvd.a(this.a).edit().putLong("k_update_time", bbvd.a(this.a)).commit();
-      }
-      this.a.a(true);
+      d1 = -d2;
+      d1 = 0.0D + Math.log(d2) * d1;
     }
-    if (bbvd.a(this.a) != null)
-    {
-      Iterator localIterator = bbvd.a(this.a).iterator();
-      if (localIterator.hasNext())
-      {
-        bbsr localbbsr = (bbsr)localIterator.next();
-        if (paramBoolean) {}
-        for (int i = 300;; i = 301)
-        {
-          localbbsr.a(paramInt, i);
-          break;
-        }
-      }
+    d2 = d1;
+    if (paramInt2 > 0) {
+      d2 = d1 + -d3 * Math.log(d3);
     }
+    return d2 / Math.log(2.0D);
   }
 }
 

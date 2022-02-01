@@ -1,30 +1,26 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout.6;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout.6.1.1;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import java.util.Iterator;
+import java.util.List;
+import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
 
 public class aquq
-  implements OnCompositionLoadedListener
+  extends aquy
 {
-  public aquq(ColorNoteSmallScreenRelativeLayout.6 param6) {}
+  public aquq(MsgBoxListActivity paramMsgBoxListActivity, List paramList) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle)
   {
-    if (paramLottieComposition == null)
+    if (paramBoolean)
     {
-      QLog.e("ColorNoteSmallScreenRelativeLayout", 1, "getLottieDrawable onCompositionLoaded failed");
-      return;
+      paramBundle = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramBundle.hasNext())
+      {
+        RecentItemNearbyLiveTipData localRecentItemNearbyLiveTipData = (RecentItemNearbyLiveTipData)paramBundle.next();
+        this.jdField_a_of_type_ComTencentMobileqqDatingMsgBoxListActivity.a(localRecentItemNearbyLiveTipData, paramList);
+      }
     }
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.setImagesAssetsFolder(this.a.b);
-    ColorNoteSmallScreenRelativeLayout.a(this.a.this$0, localLottieDrawable);
-    ThreadManagerV2.getUIHandlerV2().post(new ColorNoteSmallScreenRelativeLayout.6.1.1(this));
   }
 }
 

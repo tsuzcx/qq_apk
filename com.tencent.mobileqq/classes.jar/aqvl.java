@@ -1,60 +1,29 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.Display;
-import android.view.MotionEvent;
-import android.view.WindowManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
 
-public class aqvl
+public final class aqvl
 {
-  private static double jdField_a_of_type_Double = 0.25D;
-  private static float jdField_a_of_type_Float;
-  private static double jdField_b_of_type_Double = 0.5D;
-  private static float jdField_b_of_type_Float;
-  private static float c;
-  private int jdField_a_of_type_Int;
-  private int jdField_b_of_type_Int;
-  
-  public aqvl(Context paramContext)
+  public static aqvm a(QQAppInterface paramQQAppInterface)
   {
-    a(paramContext);
-    paramContext = paramContext.getResources();
-    jdField_a_of_type_Float = paramContext.getDimensionPixelSize(2131297466);
-    jdField_b_of_type_Float = paramContext.getDimensionPixelSize(2131297467);
-    c = paramContext.getDimensionPixelSize(2131297465);
+    paramQQAppInterface = new aqvm();
+    aqkg localaqkg = aqkh.a();
+    paramQQAppInterface.jdField_a_of_type_Boolean = localaqkg.a();
+    paramQQAppInterface.jdField_a_of_type_JavaLangString = localaqkg.a();
+    paramQQAppInterface.b = localaqkg.b();
+    paramQQAppInterface.jdField_a_of_type_Int = localaqkg.a();
+    paramQQAppInterface.c = localaqkg.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocEntryUtils", 2, "getGrayTipsInfo " + paramQQAppInterface.toString());
+    }
+    return paramQQAppInterface;
   }
   
-  private void a(Context paramContext)
+  public static Pair<Boolean, Integer> a(AppInterface paramAppInterface)
   {
-    try
-    {
-      paramContext = (WindowManager)paramContext.getSystemService("window");
-      this.jdField_a_of_type_Int = paramContext.getDefaultDisplay().getWidth();
-      this.jdField_b_of_type_Int = paramContext.getDefaultDisplay().getHeight();
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QLog.e("TouchStateDetector", 1, paramContext, new Object[0]);
-    }
-  }
-  
-  public double a(MotionEvent paramMotionEvent)
-  {
-    float f = paramMotionEvent.getRawX();
-    paramMotionEvent.getRawY();
-    if (f <= jdField_a_of_type_Double * this.jdField_a_of_type_Int) {
-      return 0.0D;
-    }
-    if (f >= jdField_b_of_type_Double * this.jdField_a_of_type_Int) {
-      return 1.0D;
-    }
-    return (f - jdField_a_of_type_Double * this.jdField_a_of_type_Int) / ((jdField_b_of_type_Double - jdField_a_of_type_Double) * this.jdField_a_of_type_Int);
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent, Context paramContext)
-  {
-    return (a(paramMotionEvent) + 1.0E-008D > 1.0D) && (paramMotionEvent.getRawX() > this.jdField_a_of_type_Int - jdField_b_of_type_Float) && (paramMotionEvent.getRawY() > this.jdField_b_of_type_Int - jdField_a_of_type_Float - c);
+    paramAppInterface = aqjr.a();
+    return new Pair(Boolean.valueOf(paramAppInterface.a()), Integer.valueOf(paramAppInterface.a()));
   }
 }
 

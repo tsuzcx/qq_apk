@@ -1,36 +1,36 @@
-import android.text.TextUtils;
-import android.view.ViewGroup;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public class uuv
-  extends utt
+  extends uuq<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  public uuv(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
+  private int jdField_a_of_type_Int;
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  
+  public uuv(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
   {
-    super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+    super(paramWSRedDotPushMsg);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
   }
   
-  public utq a(int paramInt)
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
   {
-    return new uvc(a(), this);
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-  }
-  
-  protected boolean a()
-  {
-    return true;
-  }
-  
-  protected boolean b()
-  {
-    if ((this.a != null) && (TextUtils.equals(this.a.a(), "aio_home_page"))) {
-      return false;
+    boolean bool = false;
+    if (this.jdField_a_of_type_Int == 2)
+    {
+      WSVerticalPageFragment.a(paramContext, "aio_new_msg", "direct", null, 0);
+      bool = true;
     }
-    return super.b();
+    while (this.jdField_a_of_type_Int != 6) {
+      return bool;
+    }
+    ukw.a((Activity)paramContext, this.jdField_a_of_type_AndroidContentIntent, (WSRedDotPushMsg)this.jdField_a_of_type_Uuh);
+    return true;
   }
 }
 

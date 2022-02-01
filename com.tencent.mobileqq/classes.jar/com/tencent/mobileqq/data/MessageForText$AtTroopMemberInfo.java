@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import bhvd;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -64,11 +64,11 @@ public class MessageForText$AtTroopMemberInfo
     if ((paramArrayOfByte == null) || (paramInt < 0) || (paramArrayOfByte.length < paramInt + 11)) {
       return false;
     }
-    this.startPos = bhvd.a(paramArrayOfByte, paramInt + 0);
-    this.textLen = bhvd.a(paramArrayOfByte, paramInt + 2);
+    this.startPos = PkgTools.getShortData(paramArrayOfByte, paramInt + 0);
+    this.textLen = PkgTools.getShortData(paramArrayOfByte, paramInt + 2);
     this.flag = paramArrayOfByte[(paramInt + 4)];
-    this.uin = bhvd.a(paramArrayOfByte, paramInt + 5);
-    this.wExtBufLen = bhvd.a(paramArrayOfByte, paramInt + 9);
+    this.uin = PkgTools.getLongData(paramArrayOfByte, paramInt + 5);
+    this.wExtBufLen = PkgTools.getShortData(paramArrayOfByte, paramInt + 9);
     return true;
   }
   
@@ -92,11 +92,11 @@ public class MessageForText$AtTroopMemberInfo
     if ((paramArrayOfByte == null) || (paramInt < 0) || (paramArrayOfByte.length < paramInt + 11)) {
       return false;
     }
-    bhvd.a(paramArrayOfByte, paramInt + 0, this.startPos);
-    bhvd.a(paramArrayOfByte, paramInt + 2, this.textLen);
+    PkgTools.Word2Byte(paramArrayOfByte, paramInt + 0, this.startPos);
+    PkgTools.Word2Byte(paramArrayOfByte, paramInt + 2, this.textLen);
     paramArrayOfByte[(paramInt + 4)] = this.flag;
-    bhvd.a(paramArrayOfByte, paramInt + 5, this.uin);
-    bhvd.a(paramArrayOfByte, paramInt + 9, (short)0);
+    PkgTools.DWord2Byte(paramArrayOfByte, paramInt + 5, this.uin);
+    PkgTools.Word2Byte(paramArrayOfByte, paramInt + 9, (short)0);
     return true;
   }
 }

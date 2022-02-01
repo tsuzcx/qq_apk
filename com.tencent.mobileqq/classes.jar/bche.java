@@ -1,17 +1,28 @@
-import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
-import java.util.Comparator;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.ClipboardManager;
+import android.view.View;
 
 final class bche
-  implements Comparator<bchg>
+  implements bjoe
 {
-  public int a(bchg parambchg1, bchg parambchg2)
+  bche(String paramString, Context paramContext) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    int j = Long.signum(parambchg2.jdField_a_of_type_Int - parambchg1.jdField_a_of_type_Int);
-    int i = j;
-    if (j == 0) {
-      i = Long.signum(parambchg2.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.timeStamp - parambchg1.jdField_a_of_type_ComTencentMobileqqSearchMostusedMostUsedSearchItem.timeStamp);
+    switch (paramInt)
+    {
     }
-    return i;
+    for (;;)
+    {
+      bchd.a().dismiss();
+      return;
+      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      continue;
+      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

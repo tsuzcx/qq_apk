@@ -1,35 +1,14 @@
-import android.view.View;
-import java.lang.ref.SoftReference;
-import java.util.concurrent.Future;
+import android.content.Intent;
+import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
 
-public final class ayti<Params, Result>
+public class ayti
+  implements aytk
 {
-  public final int a;
-  public final Integer a;
-  public Long a;
-  public final Params a;
-  public final String a;
-  public SoftReference<View> a;
-  public Future<?> a;
-  public SoftReference<View> b;
-  public SoftReference<Result> c;
+  public ayti(ComponentCenter paramComponentCenter, int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public ayti(String paramString, View paramView1, View paramView2, Params paramParams, int paramInt1, int paramInt2, long paramLong)
+  public void a(aysw paramaysw)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView1);
-    if (paramView2 != null) {}
-    for (paramString = new SoftReference(paramView2);; paramString = null)
-    {
-      this.b = paramString;
-      this.jdField_a_of_type_JavaLangObject = paramParams;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt2);
-      this.c = null;
-      this.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
-      this.jdField_a_of_type_JavaUtilConcurrentFuture = null;
-      return;
-    }
+    paramaysw.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
   }
 }
 

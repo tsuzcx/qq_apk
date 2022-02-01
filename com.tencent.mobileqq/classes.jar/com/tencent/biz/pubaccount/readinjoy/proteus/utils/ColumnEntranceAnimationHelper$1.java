@@ -5,21 +5,21 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
-import qah;
+import qgb;
 
 public class ColumnEntranceAnimationHelper$1
   implements Runnable
 {
-  public ColumnEntranceAnimationHelper$1(qah paramqah, AbsListView paramAbsListView) {}
+  public ColumnEntranceAnimationHelper$1(qgb paramqgb, AbsListView paramAbsListView) {}
   
   public void run()
   {
-    if ((!qah.a(this.this$0)) && (qah.a(this.this$0, (ReadInJoyXListView)this.a)))
+    if ((!qgb.a(this.this$0)) && (qgb.a(this.this$0, (ReadInJoyXListView)this.a)))
     {
-      qah.a(this.this$0).start();
-      qah.a(this.this$0).setVisibility(0);
-      if (qah.a(this.this$0) != null) {
-        qah.a(this.this$0).isColumnAnimationPlay = true;
+      qgb.a(this.this$0).start();
+      qgb.a(this.this$0).setVisibility(0);
+      if (qgb.a(this.this$0) != null) {
+        qgb.a(this.this$0).isColumnAnimationPlay = true;
       }
       this.this$0.a((ReadInJoyXListView)this.a);
       QLog.i("ColumnEntranceAnimationHelper", 1, "AnimationSet.start");

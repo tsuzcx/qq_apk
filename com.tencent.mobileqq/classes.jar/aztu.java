@@ -1,34 +1,37 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.portal.FormalView;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aztu
-  implements Animator.AnimatorListener
+  extends amwl
 {
-  public aztu(FormalView paramFormalView) {}
+  public aztu(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onReceiptMessageReadReportResult(long paramLong, int paramInt)
   {
-    this.a.d();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.d();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    FormalView.a(this.a).setVisibility(0);
-    if (this.a.a == 1)
+    if (ReceiptMessageDetailFragment.b(this.a) == paramLong)
     {
-      FormalView.b(this.a).setVisibility(0);
-      return;
+      if (paramInt != 0) {
+        break label78;
+      }
+      QLog.d("ReceiptMessageDetailFragment", 4, "send read report in c2c succ");
+      ReceiptMessageDetailFragment.a(this.a, 0, 0, false);
+      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+      if (this.a.isAdded())
+      {
+        ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(4);
+        ReceiptMessageDetailFragment.a(this.a, 1, true);
+      }
     }
-    FormalView.b(this.a).setVisibility(8);
+    label78:
+    do
+    {
+      return;
+      QLog.d("ReceiptMessageDetailFragment", 4, "send read report in c2c fail with reply codes: " + paramInt);
+      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+    } while (!this.a.isAdded());
+    ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(5);
   }
 }
 

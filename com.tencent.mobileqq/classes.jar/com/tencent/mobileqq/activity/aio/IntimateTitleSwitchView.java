@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio;
 
-import agje;
+import afbx;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.Nullable;
@@ -20,7 +20,7 @@ public class IntimateTitleSwitchView
   extends FrameLayout
 {
   int jdField_a_of_type_Int;
-  agje jdField_a_of_type_Agje;
+  afbx jdField_a_of_type_Afbx;
   Context jdField_a_of_type_AndroidContentContext;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -48,11 +48,11 @@ public class IntimateTitleSwitchView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559280, this, true);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramContext.findViewById(2131368794));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTickerTickerView = ((TickerView)paramContext.findViewById(2131368782));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131368781));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131368779));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559286, this, true);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramContext.findViewById(2131368819));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTickerTickerView = ((TickerView)paramContext.findViewById(2131368807));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131368806));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131368804));
     this.c = ((TextView)paramContext.findViewById(2131362174));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTickerTickerView.setCharacterLists(new String[] { "9876543210" });
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTickerTickerView.setAnimationDuration(2000L);
@@ -113,8 +113,8 @@ public class IntimateTitleSwitchView
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTickerTickerView.setIgnoreWidthAnim(true);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTickerTickerView.setText(String.valueOf(j));
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (this.jdField_a_of_type_Agje != null) {
-        this.jdField_a_of_type_Agje.m();
+      if (this.jdField_a_of_type_Afbx != null) {
+        this.jdField_a_of_type_Afbx.m();
       }
       return;
     }
@@ -149,19 +149,19 @@ public class IntimateTitleSwitchView
     if (i >= -1) {
       if (i == 0)
       {
-        str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693069);
+        str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693127);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTickerTickerView.setText(str, false);
         if (paramInt == 3)
         {
-          this.jdField_b_of_type_AndroidWidgetTextView.setText(2131693071);
-          this.c.setBackgroundResource(2130840436);
-          j = 2131165719;
-          i = 2131165718;
-          paramInt = 2130840436;
+          this.jdField_b_of_type_AndroidWidgetTextView.setText(2131693129);
+          this.c.setBackgroundResource(2130840474);
+          j = 2131165727;
+          i = 2131165726;
+          paramInt = 2130840474;
           label160:
           if (TextUtils.isEmpty(paramIntimateInfo.addFriendWording)) {
-            break label416;
+            break label458;
           }
           this.c.setText(paramIntimateInfo.addFriendWording);
           this.c.setVisibility(0);
@@ -178,39 +178,48 @@ public class IntimateTitleSwitchView
       else
       {
         if (i != -1) {
-          break label466;
+          break label508;
         }
       }
     }
-    label416:
-    label466:
+    label458:
+    label508:
     for (String str = "999+";; str = String.valueOf(i))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       break;
       if (paramInt == 2)
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131693070);
-        this.c.setBackgroundResource(2130840434);
-        j = 2131165717;
-        i = 2131165716;
-        paramInt = 2130840434;
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131693128);
+        this.c.setBackgroundResource(2130840472);
+        j = 2131165725;
+        i = 2131165724;
+        paramInt = 2130840472;
+        break label160;
+      }
+      if (paramInt == 26)
+      {
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131693131);
+        this.c.setBackgroundResource(2130840489);
+        j = 2131165731;
+        i = 2131165730;
+        paramInt = 2130840489;
         break label160;
       }
       if (paramInt == 1)
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131693072);
-        this.c.setBackgroundResource(2130840438);
-        j = 2131165721;
-        i = 2131165720;
-        paramInt = 2130840438;
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131693130);
+        this.c.setBackgroundResource(2130840476);
+        j = 2131165729;
+        i = 2131165728;
+        paramInt = 2130840476;
         break label160;
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131693067);
-      this.c.setBackgroundResource(2130840432);
-      j = 2131165722;
-      i = 2131165723;
-      paramInt = 2130840432;
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131693125);
+      this.c.setBackgroundResource(2130840470);
+      j = 2131165732;
+      i = 2131165733;
+      paramInt = 2130840470;
       break label160;
       this.c.setVisibility(8);
       break label189;
@@ -263,7 +272,7 @@ public class IntimateTitleSwitchView
   {
     this.jdField_a_of_type_Boolean = false;
     removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_Agje = null;
+    this.jdField_a_of_type_Afbx = null;
   }
   
   public void setApp(QQAppInterface paramQQAppInterface)
@@ -271,9 +280,9 @@ public class IntimateTitleSwitchView
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void setCallBack(agje paramagje)
+  public void setCallBack(afbx paramafbx)
   {
-    this.jdField_a_of_type_Agje = paramagje;
+    this.jdField_a_of_type_Afbx = paramafbx;
   }
   
   public void setCurrentShowType(int paramInt)
@@ -286,7 +295,7 @@ public class IntimateTitleSwitchView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView
  * JD-Core Version:    0.7.0.1
  */

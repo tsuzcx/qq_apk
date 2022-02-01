@@ -1,29 +1,28 @@
-import com.tencent.qphone.base.util.QLog;
+import androidx.annotation.NonNull;
 
 public class bdfb
 {
-  private static boolean a;
+  private StringBuilder a = new StringBuilder();
   
-  public static boolean a()
+  public void a(bdfd parambdfd)
   {
-    boolean bool = false;
-    if (a) {
-      return true;
+    this.a.append(parambdfd.jdField_a_of_type_JavaLangString);
+    if (parambdfd.b > 0) {
+      this.a.append('|').append(bdej.a(parambdfd.b));
     }
-    String str = bdek.c();
-    if (str == null) {
-      return false;
-    }
-    if (!bhmi.a(str + "libObjectTracker.so")) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TrackerSoLoader", 2, " isTrackingSoExist =" + bool);
-      }
-      a = bool;
-      return a;
-      bool = true;
-    }
+    this.a.append(parambdfd.jdField_a_of_type_Char);
+    this.a.append(bdej.a(parambdfd.jdField_a_of_type_Int));
+  }
+  
+  public void c()
+  {
+    this.a.delete(0, this.a.length());
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return this.a.toString();
   }
 }
 

@@ -1,35 +1,77 @@
+import android.os.Handler;
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserMiniAIOHelper.1;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
 
-class aspb
-  implements URLDrawableDownListener
+public class aspb
+  implements Observer
 {
-  aspb(aspa paramaspa, asmu paramasmu) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public aspb(QQAppInterface paramQQAppInterface, String paramString)
   {
-    QLog.e("EmotionHotPicSearchAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Asmu.toString());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a()
   {
-    QLog.e("EmotionHotPicSearchAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Asmu.toString());
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    QLog.e("EmotionHotPicSearchAdapter", 1, "onLoadInterrupted: " + this.jdField_a_of_type_Asmu.toString());
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("EmotionHotPicSearchAdapter", 2, "onLoadSuccessed: " + this.jdField_a_of_type_Asmu.toString());
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade() != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addObserver(this);
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade() != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().deleteObserver(this);
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade() != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().deleteObserver(this);
+    }
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    if (paramObject == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while ((!(paramObject instanceof MessageRecord)) || (!(paramObject instanceof ChatMessage)));
+        paramObservable = (MessageRecord)paramObject;
+      } while (!QLog.isColorLevel());
+      QLog.d("FileBrowserMiniAIOHelper<QFile>", 2, "recv: msgseq[" + paramObservable.msgseq + "] uin[" + paramObservable.frienduin + "]");
+    } while (!paramObservable.frienduin.equals(this.jdField_a_of_type_JavaLangString));
+    ThreadManagerV2.getUIHandlerV2().post(new FileBrowserMiniAIOHelper.1(this));
   }
 }
 

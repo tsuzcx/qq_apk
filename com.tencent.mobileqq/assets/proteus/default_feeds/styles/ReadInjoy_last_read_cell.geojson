@@ -1,0 +1,40 @@
+{
+    "ReadInjoy_last_read_cell": {
+        "view_type": "UIView",
+        "view_id":"id_background",
+        "layout_type": "layout_linear",
+        "direction": "vertical",
+        "default_visible": "YES",
+        "height": {
+          "type": "wrap_content"
+        },
+        "width": {
+          "type": "relative",
+          "value": "375"
+        },
+        "attributes": {
+          "setBackgroundColorString:": "#F5F6FA"
+        },
+        "subviews": [
+            {
+                "view_type":"UILabel",
+                "view_id":"id_title",
+                "default_visible": "YES",
+                "height":{
+                    "type": "absolutely",
+                    "value": "44"
+                },
+                "width":{
+                    "type":"match_parent"
+                },
+                "attributes":{
+                    "setText:":"上次看到这里，点击刷新",
+                    "setTextColorString:":"#136CE9",
+                    "setFontSizeString:":"15",
+                    "setTextAlignmentString:":"1"
+                }
+            },
+            {"$includeComponet": "componet/separator_special_bottom.geojson"}
+        ]
+    }
+}

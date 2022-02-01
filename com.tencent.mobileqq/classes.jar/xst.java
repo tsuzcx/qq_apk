@@ -1,10 +1,13 @@
-public class xst
+class xst
+  extends ysw
 {
-  public float a;
-  public int a;
-  public Object a;
-  public boolean a;
-  public float b;
+  xst(xss paramxss) {}
+  
+  public boolean a(boolean paramBoolean)
+  {
+    xss.a(this.a);
+    return true;
+  }
 }
 
 

@@ -1,21 +1,12 @@
-import org.apache.http.Header;
-import org.json.JSONObject;
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateError;
+import java.util.List;
 
-class lal
-  extends kzr
+public abstract interface lal
 {
-  lal(lai paramlai, kzr paramkzr) {}
+  public abstract void a(TranslateError paramTranslateError, Long paramLong);
   
-  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_Kzr.a(paramInt, paramArrayOfHeader, paramJSONObject);
-  }
-  
-  public void a(Throwable paramThrowable, String paramString)
-  {
-    this.jdField_a_of_type_Kzr.a(paramThrowable, paramString);
-    super.a(paramThrowable, paramString);
-  }
+  public abstract void a(List<Language> paramList, List<String> paramList1, Long paramLong);
 }
 
 

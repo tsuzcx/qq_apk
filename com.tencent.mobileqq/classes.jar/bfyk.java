@@ -1,22 +1,36 @@
-import java.util.List;
+import java.util.Random;
 
 public class bfyk
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<Long> a;
-  public boolean a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
+  private static final Random a = new Random();
   
-  public String toString()
+  public static double a(double paramDouble1, double paramDouble2)
   {
-    return "HomeworkInfo{content='" + this.jdField_b_of_type_JavaLangString + '\'' + ", group_id=" + this.jdField_a_of_type_Long + ", uin=" + this.jdField_b_of_type_Long + ", title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", date='" + this.c + '\'' + ", need_feedback=" + this.jdField_a_of_type_Boolean + ", course_name=" + this.jdField_d_of_type_JavaLangString + ", syncgids=" + this.jdField_a_of_type_JavaUtilList + ", hw_id=" + this.jdField_d_of_type_Long + '}';
+    if (paramDouble1 == paramDouble2) {
+      return paramDouble1;
+    }
+    return paramDouble1 + (paramDouble2 - paramDouble1) * a.nextDouble();
+  }
+  
+  public static float a(float paramFloat1, float paramFloat2)
+  {
+    if (paramFloat1 == paramFloat2) {
+      return paramFloat1;
+    }
+    return paramFloat1 + (paramFloat2 - paramFloat1) * a.nextFloat();
+  }
+  
+  public static long a()
+  {
+    return a(0L, 9223372036854775807L);
+  }
+  
+  public static long a(long paramLong1, long paramLong2)
+  {
+    if (paramLong1 == paramLong2) {
+      return paramLong1;
+    }
+    return a(paramLong1, paramLong2);
   }
 }
 

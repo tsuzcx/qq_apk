@@ -1,27 +1,25 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.3.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class nsu
-  implements TVK_IMediaPlayer.OnErrorListener
+class nsu
+  implements View.OnClickListener
 {
-  nsu(nsr paramnsr) {}
+  nsu(nst paramnst) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel())
+    ((AccountDetailActivity)this.a.jdField_a_of_type_AndroidAppActivity).E();
+    String str2 = this.a.jdField_a_of_type_JavaLangString;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) {}
+    for (String str1 = "02";; str1 = "01")
     {
-      paramTVK_IMediaPlayer = new StringBuilder();
-      paramTVK_IMediaPlayer.append("video player error model=" + paramInt1);
-      paramTVK_IMediaPlayer.append(",what=" + paramInt2);
-      paramTVK_IMediaPlayer.append(",extra=" + paramInt3);
-      paramTVK_IMediaPlayer.append(",detailInfo=" + paramString);
-      QLog.e("AccountDetailVideoManager", 2, paramTVK_IMediaPlayer.toString());
+      odq.a(null, str2, "0X8007CA4", "0X8007CA4", 0, 0, str1, String.valueOf(nst.a(this.a)), "", "", false);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-    this.a.a.runOnUiThread(new AccountDetailVideoManager.3.1(this));
-    return false;
   }
 }
 

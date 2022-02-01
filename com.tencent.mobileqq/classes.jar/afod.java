@@ -1,17 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class afod
-  implements View.OnClickListener
+class afod
+  implements DialogInterface.OnClickListener
 {
-  public afod(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  afod(afoc paramafoc, BaseActivity paramBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SoundAndVibrateActivity.a(this.a, "CHANNEL_ID_SHOW_BADGE");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    afoc.a(null);
+    if (afoc.a(this.jdField_a_of_type_Afoc) != null) {
+      afoc.a(this.jdField_a_of_type_Afoc).b();
+    }
   }
 }
 

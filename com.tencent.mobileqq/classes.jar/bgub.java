@@ -1,39 +1,47 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 class bgub
-  extends anyu
+  implements TouchWebView.OnScrollChangedListener
 {
-  bgub(bgty parambgty) {}
+  int jdField_a_of_type_Int = 0;
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  bgub(bgtw parambgtw) {}
+  
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    if (!this.a.b(paramString)) {}
-    while (!paramBoolean1) {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_SwiftIphoneTitleBarUI", 2, "-->onScrollChanged:" + paramInt1 + "," + paramInt2 + "," + paramInt3 + "," + paramInt4);
+    }
+    if (ImmersiveUtils.isSupporImmersive() == 1) {}
+    for (paramInt1 = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());; paramInt1 = 0)
+    {
+      paramInt1 = paramInt1 + DisplayUtil.dip2px(BaseApplicationImpl.getApplication(), 50.0F) + 180;
+      if (Math.abs(paramInt2 - this.jdField_a_of_type_Int) > 20) {
+        if (paramInt2 < paramInt1 / 3) {
+          this.jdField_a_of_type_Bgtw.mUIStyle.needTitlebarTranslucent = true;
+        }
+      }
+      while (paramInt2 >= paramInt1 / 3) {
+        for (;;)
+        {
+          this.jdField_a_of_type_Int = paramInt2;
+          this.jdField_a_of_type_Bgtw.updateTitleBarUI();
+          return;
+          if (paramInt2 >= paramInt1) {
+            this.jdField_a_of_type_Bgtw.mUIStyle.needTitlebarTranslucent = false;
+          }
+        }
+      }
+      this.jdField_a_of_type_Bgtw.mUIStyle.needTitlebarTranslucent = true;
+      this.jdField_a_of_type_Int = paramInt2;
+      this.jdField_a_of_type_Bgtw.updateTitleBarUI();
       return;
     }
-    bgty.a(this.a, paramString);
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    paramObject = "" + paramObject;
-    if (!this.a.b(paramObject)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramBoolean);
-      bgty.a(this.a, paramObject);
-    } while (!(this.a.a instanceof QQAppInterface));
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a;
-    ((anyw)this.a.a.getManager(51)).d(paramObject);
-    bbcg.a(localQQAppInterface, paramObject);
-    bejn.a(localQQAppInterface, paramObject);
-    localQQAppInterface.a().a().a(paramObject, true);
   }
 }
 

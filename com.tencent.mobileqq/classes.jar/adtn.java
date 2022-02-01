@@ -1,62 +1,74 @@
-import android.app.Dialog;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.content.res.Resources;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.widget.MultiImageTextView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class adtn
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adtn(AddFriendVerifyActivity paramAddFriendVerifyActivity, int paramInt) {}
+  public adtn(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidViewInputmethodInputMethodManager != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getWindow().setSoftInputMode(2);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
+    boolean bool2 = true;
+    boolean bool1 = true;
+    int j = HttpUtil.getNetWorkType();
+    int i = j;
+    if (j == -1) {
+      i = 2;
     }
     Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().length() > 30)
+    if (i == 0)
     {
-      localObject = new ReportDialog(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 2131755824);
-      ((Dialog)localObject).setContentView(2131562849);
-      ((TextView)((Dialog)localObject).findViewById(2131365519)).setText(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131690952));
-      ((ProgressBar)((Dialog)localObject).findViewById(2131367008)).setVisibility(8);
-      ((ImageView)((Dialog)localObject).findViewById(2131380466)).setImageResource(2130839595);
-      ((Dialog)localObject).show();
+      QQToast.a(this.a.getActivity(), 1, 2131695597, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299076));
+      localObject = this.a;
+      if (!paramBoolean) {
+        NotifyPushSettingActivity.a((NotifyPushSettingActivity)localObject, bool1);
+      }
     }
-    label351:
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a((String)localObject, false);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131691773).equals(localObject)) && (!AddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))) {
-        AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
-      if (this.jdField_a_of_type_Int == 0) {
-        bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X800796F", "0X800796F", 0, 0, "", "", "", "");
-      }
-      for (;;)
+      bool1 = false;
+      break;
+      if (NotifyPushSettingActivity.a(this.a).compareAndSet(true, true))
       {
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c)) {
-          break label351;
+        QQToast.a(this.a.getActivity(), 1, 2131697752, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299076));
+        localObject = this.a;
+        if (!paramBoolean) {}
+        for (bool1 = bool2;; bool1 = false)
+        {
+          NotifyPushSettingActivity.a((NotifyPushSettingActivity)localObject, bool1);
+          break;
         }
-        bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
-        break;
-        bdll.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X8007976", "0X8007976", 0, 0, "", "", "", "");
+      }
+      NotifyPushSettingActivity.a(this.a, paramBoolean);
+      if (paramBoolean)
+      {
+        localObject = amtj.a(2131706751) + adul.a(3600000L);
+        NotifyPushSettingActivity.a(this.a).setRightText((CharSequence)localObject);
+        NotifyPushSettingActivity.a(this.a).set(true);
+        long l = NetConnInfoCenter.getServerTime();
+        ((amov)this.a.app.getBusinessHandler(2)).a((int)(3600L + l), "", "not_disturb_from_notify_push_setting_activity");
+        bcef.b(this.a.app, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 1, 60L + "", "0", "", "");
+      }
+      else
+      {
+        localObject = NotifyPushSettingActivity.a(this.a).a().getText().toString();
+        NotifyPushSettingActivity.a(this.a).a().setText("");
+        NotifyPushSettingActivity.a(this.a).set(true);
+        ((amov)this.a.app.getBusinessHandler(2)).a(0, (String)localObject, "not_disturb_from_notify_push_setting_activity");
+        bcef.b(this.a.app, "CliOper", "", "", "0X8009DD2", "0X8009DD2", 0, 2, "0", "0", "", "");
       }
     }
   }

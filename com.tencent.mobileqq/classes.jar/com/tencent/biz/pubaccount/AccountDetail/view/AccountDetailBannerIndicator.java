@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.AccountDetail.view;
 
-import agej;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -10,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.widget.BubbleViewLayout;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -34,8 +34,8 @@ public class AccountDetailBannerIndicator
   
   private void a()
   {
-    int j = agej.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int k = agej.a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int j = AIOUtils.dp2px(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int k = AIOUtils.dp2px(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     int i = 0;
     if (i < this.jdField_a_of_type_Int)
     {
@@ -45,7 +45,7 @@ public class AccountDetailBannerIndicator
         ((LinearLayout.LayoutParams)localObject).setMargins(k, 0, 0, 0);
       }
       localBubbleViewLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localBubbleViewLayout.a(false);
+      localBubbleViewLayout.showSharpCorner(false);
       localBubbleViewLayout.setRadius(3.0F);
       addView(localBubbleViewLayout);
       localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);

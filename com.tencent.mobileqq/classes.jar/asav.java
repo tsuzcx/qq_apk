@@ -1,75 +1,39 @@
-import android.os.Bundle;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTDocFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
 public class asav
-  extends asaz
+  extends ataq
 {
-  public asav(MsgBoxListActivity paramMsgBoxListActivity) {}
+  public asav(QfileRecentTDocFileTabView paramQfileRecentTDocFileTabView) {}
   
-  protected void a(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
+  public void a() {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
   {
-    if (!paramBoolean1) {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgBoxListActivity", 2, "onGetInteractLastFeed = false");
-      }
-    }
-    for (;;)
+    Object localObject = aslg.b();
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      return;
-      if (paramBoolean2) {
-        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 1);
-      }
-      while (!this.a.isFinishing())
-      {
-        this.a.a();
-        return;
-        if (this.a.app.a().isInMsgBoxRecentList(antf.al, this.a.jdField_a_of_type_Int))
-        {
-          paramInt = this.a.app.a().a(antf.al, this.a.jdField_a_of_type_Int);
-          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, antf.al, this.a.app.getCurrentAccountUin());
-          if (paramInt > 0)
-          {
-            alpb.b(this.a.app, antf.al, this.a.jdField_a_of_type_Int);
-            this.a.app.a().a(antf.al, this.a.jdField_a_of_type_Int, true, true);
-          }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (asle.a(((FileManagerEntity)((Iterator)localObject).next()).Uuid)) {
+          bcef.b(QfileRecentTDocFileTabView.b(this.a), "dc00898", "", "", "0X800A08C", "0X800A08C", 0, 0, "", "", "", "");
         }
       }
     }
   }
   
-  protected void b(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
+  public void e() {}
+  
+  public void f()
   {
-    if (!paramBoolean1) {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgBoxListActivity", 2, "onGetInteractLastFeed = false");
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (paramBoolean2) {
-        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 2);
-      }
-      while (!this.a.isFinishing())
-      {
-        this.a.a();
-        return;
-        if (this.a.app.a().isInMsgBoxRecentList(antf.am, this.a.jdField_a_of_type_Int))
-        {
-          paramInt = this.a.app.a().a(antf.am, this.a.jdField_a_of_type_Int);
-          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, antf.am, this.a.app.getCurrentAccountUin());
-          if (paramInt > 0)
-          {
-            alpb.b(this.a.app, antf.am, this.a.jdField_a_of_type_Int);
-            this.a.app.a().a(antf.am, this.a.jdField_a_of_type_Int, true, true);
-          }
-        }
-      }
-    }
+    this.a.a.a().E();
   }
 }
 

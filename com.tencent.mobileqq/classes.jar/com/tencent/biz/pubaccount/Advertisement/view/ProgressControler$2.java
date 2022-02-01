@@ -2,29 +2,29 @@ package com.tencent.biz.pubaccount.Advertisement.view;
 
 import android.os.Handler;
 import java.lang.ref.WeakReference;
-import nxc;
-import xtg;
+import nyn;
+import wur;
 
 public class ProgressControler$2
   implements Runnable
 {
-  public ProgressControler$2(nxc paramnxc) {}
+  public ProgressControler$2(nyn paramnyn) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean) {}
-    xtg localxtg;
+    wur localwur;
     do
     {
       do
       {
         return;
       } while (this.this$0.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localxtg = (xtg)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localxtg == null);
-    if (localxtg.b() > 0L)
+      localwur = (wur)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localwur == null);
+    if (localwur.b() > 0L)
     {
-      this.this$0.a(this.this$0.jdField_a_of_type_Int, localxtg.a(), localxtg.b(), localxtg);
+      this.this$0.a(this.this$0.jdField_a_of_type_Int, localwur.a(), localwur.b(), localwur);
       return;
     }
     this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);

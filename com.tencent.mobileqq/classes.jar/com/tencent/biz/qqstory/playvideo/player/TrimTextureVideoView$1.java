@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
 import android.annotation.TargetApi;
-import yuk;
+import xvv;
 
 class TrimTextureVideoView$1
   implements Runnable
@@ -13,11 +13,11 @@ class TrimTextureVideoView$1
   {
     if (!this.this$0.jdField_i_of_type_Boolean)
     {
-      yuk.a(this.this$0.jdField_a_of_type_JavaLangString, "[%d]not attach! not schedule!", Integer.valueOf(this.this$0.jdField_i_of_type_Int));
+      xvv.a(this.this$0.jdField_a_of_type_JavaLangString, "[%d]not attach! not schedule!", Integer.valueOf(this.this$0.jdField_i_of_type_Int));
       return;
     }
     int i = this.this$0.getCurrentPosition();
-    yuk.a(this.this$0.jdField_a_of_type_JavaLangString, "[%d]mRestartRunnable check enter! isPlaying = %b, mEndTime = %d, pos = %d", Integer.valueOf(this.this$0.jdField_i_of_type_Int), Boolean.valueOf(this.this$0.isPlaying()), Integer.valueOf(this.this$0.l), Integer.valueOf(i));
+    xvv.a(this.this$0.jdField_a_of_type_JavaLangString, "[%d]mRestartRunnable check enter! isPlaying = %b, mEndTime = %d, pos = %d", Integer.valueOf(this.this$0.jdField_i_of_type_Int), Boolean.valueOf(this.this$0.isPlaying()), Integer.valueOf(this.this$0.l), Integer.valueOf(i));
     TrimTextureVideoView localTrimTextureVideoView;
     if (this.this$0.l != 0)
     {
@@ -40,7 +40,7 @@ class TrimTextureVideoView$1
     }
     for (;;)
     {
-      yuk.b(this.this$0.jdField_a_of_type_JavaLangString, "schedule next!");
+      xvv.b(this.this$0.jdField_a_of_type_JavaLangString, "schedule next!");
       this.this$0.postDelayed(this, 200L);
       return;
       this.this$0.q = 0;

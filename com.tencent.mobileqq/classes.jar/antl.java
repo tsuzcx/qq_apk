@@ -1,26 +1,50 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QZoneConfigHelper;
+import cooperation.qzone.contentbox.QZoneMsgActivity;
 
-final class antl
-  implements Animation.AnimationListener
+public class antl
+  extends anrh
 {
-  antl(View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public antl(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((this.a != null) && (this.a.getVisibility() == 0))
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private boolean C()
+  {
+    if (this.a == null) {
+      return false;
+    }
+    long l = QZoneConfigHelper.enableQZoneContentBoxMiniProgram();
+    if (l != 0L) {
+      QZoneMsgActivity.launchContentBoxMiniProgram(l, this.a);
+    }
+    for (;;)
     {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.getContext(), 2130772234);
-      paramAnimation.setAnimationListener(this);
-      this.a.startAnimation(paramAnimation);
+      return true;
+      Intent localIntent = new Intent(this.a, QZoneMsgActivity.class);
+      localIntent.addFlags(67108864);
+      this.a.startActivity(localIntent);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = C();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QzonePublicAccountAction", 1, "doAction error: " + localException.getMessage());
+      a("QzonePublicAccountAction");
+    }
+    return false;
+  }
 }
 
 

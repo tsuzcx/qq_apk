@@ -1,106 +1,52 @@
-import com.qq.jce.wup.BasicClassTypeUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.PluginStatic;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.module.text.AEEditorTextBean;
 
-public class bmnc
+class bmnc
+  implements View.OnClickListener
 {
-  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  bmnc(bmnb parambmnb, int paramInt, AEEditorTextBean paramAEEditorTextBean, bmnf parambmnf) {}
+  
+  public void onClick(View paramView)
   {
-    if ((paramBaseApplicationImpl == null) || (paramString == null))
+    if (this.jdField_a_of_type_Int == bmnb.a(this.jdField_a_of_type_Bmnb)) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQIndividuality", 2, "QQIndividualityRuntime() application == null || processName == null");
-      }
-      return null;
-    }
-    try
-    {
-      Class localClass1 = Class.forName("com.qqindividuality.application.QQIndividualityRuntime");
-      if (localClass1 != null) {}
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean.pagFilePath != null)
       {
-        try
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("QQIndividuality", 2, "QQIndividualityRuntime() cls == null");
+        if ((bmnb.a(this.jdField_a_of_type_Bmnb) != -1) || (bmnb.b(this.jdField_a_of_type_Bmnb) < 10)) {
+          break;
         }
-        catch (ClassNotFoundException paramBaseApplicationImpl)
-        {
-          ClassLoader localClassLoader;
-          paramBaseApplicationImpl.printStackTrace();
+        Context localContext = this.jdField_a_of_type_Bmnf.a.getContext();
+        if (localContext != null) {
+          QQToast.a(localContext, localContext.getString(2131689724), 0).a();
         }
-        localClassNotFoundException = localClassNotFoundException;
-        localClassLoader = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "qqindividuality_plugin.apk");
-        Class localClass2 = localClassLoader.loadClass("com.qqindividuality.application.QQIndividualityRuntime");
-        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
-        continue;
-        do
-        {
-          return null;
-          if (QLog.isColorLevel()) {
-            QLog.d("QQIndividuality", 2, "QQIndividualityRuntime() 1 ");
-          }
-          paramBaseApplicationImpl = localClass2.getDeclaredConstructor(new Class[] { BaseApplicationImpl.class, String.class }).newInstance(new Object[] { paramBaseApplicationImpl, paramString });
-        } while (!(paramBaseApplicationImpl instanceof AppRuntime));
-        if (QLog.isColorLevel()) {
-          QLog.d("QQIndividuality", 2, "QQIndividualityRuntime() succ");
-        }
-        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-        return paramBaseApplicationImpl;
       }
     }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
+    bmbg.a().a().g = this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean.id;
+    bmbc.a().u();
+    if (!this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean.usable)
     {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
+      bmnb.a(this.jdField_a_of_type_Bmnb, this.jdField_a_of_type_Bmnf, true);
+      this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean.isDownloading = true;
+      bmnn.a(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean, this.jdField_a_of_type_Bmnb);
     }
-    catch (IllegalAccessException paramBaseApplicationImpl)
+    for (;;)
     {
-      for (;;)
+      bmnb.a(this.jdField_a_of_type_Bmnb, this.jdField_a_of_type_Int);
+      break;
+      if (bmnb.a(this.jdField_a_of_type_Bmnb) != null)
       {
-        paramBaseApplicationImpl.printStackTrace();
+        bmnb.a(this.jdField_a_of_type_Bmnb).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean);
+        this.jdField_a_of_type_Bmnb.notifyDataSetChanged();
       }
     }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    return null;
   }
 }
 

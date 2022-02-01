@@ -1,10 +1,9 @@
-public abstract interface aqbw
-{
-  public abstract void a(int paramInt, String paramString, Object paramObject);
-}
+final class aqbw
+  extends aqbx
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqbw
  * JD-Core Version:    0.7.0.1
  */

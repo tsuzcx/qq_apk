@@ -1,15 +1,27 @@
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.5.1;
+import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.5.2;
 
-class affd
-  implements View.OnLongClickListener
+public class affd
+  extends View
 {
-  affd(affc paramaffc, long paramLong) {}
-  
-  public boolean onLongClick(View paramView)
+  affd(affb paramaffb, Context paramContext)
   {
-    bhlq.a(this.jdField_a_of_type_Affc.a, 230).setTitle(this.jdField_a_of_type_Affc.a.getString(2131718502)).setItems(2130968613, new affe(this)).show();
+    super(paramContext);
+  }
+  
+  protected boolean verifyDrawable(Drawable paramDrawable)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.5.1(this));
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.5.2(this));
+    }
     return true;
   }
 }

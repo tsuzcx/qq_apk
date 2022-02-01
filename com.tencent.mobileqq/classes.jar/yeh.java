@@ -1,14 +1,33 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
 
-public class yeh
-  implements yzu
+final class yeh
+  implements Animator.AnimatorListener
 {
-  public yeh(QQStoryMainController paramQQStoryMainController) {}
+  yeh(yei paramyei, ValueAnimator paramValueAnimator) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    yup.a("video_shoot", "clk_shoot", 0, 0, new String[0]);
-    this.a.a(false, true, 1, null);
+    if (this.jdField_a_of_type_Yei != null) {
+      this.jdField_a_of_type_Yei.d(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Yei != null) {
+      this.jdField_a_of_type_Yei.c(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Yei != null) {
+      this.jdField_a_of_type_Yei.b(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    }
   }
 }
 

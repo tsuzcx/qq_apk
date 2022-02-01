@@ -1,78 +1,39 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import cooperation.qqreader.QRBridgeActivity;
 
-class aply
-  implements aplw
+public class aply
+  implements aplr
 {
-  private IBinder a;
+  private Bundle a;
   
-  aply(IBinder paramIBinder)
+  public aply() {}
+  
+  public aply(Bundle paramBundle)
   {
-    this.a = paramIBinder;
+    this.a = paramBundle;
   }
   
-  public void a(int paramInt)
+  public void launch(Context paramContext, ColorNote paramColorNote)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-      localParcel1.writeInt(paramInt);
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
+    Intent localIntent = new Intent(paramContext, QRBridgeActivity.class);
+    localIntent.putExtra("readtype", "16");
+    localIntent.putExtra("stay", "1");
+    if (this.a != null) {
+      localIntent.putExtras(this.a);
     }
-    finally
+    paramColorNote = paramColorNote.getSubType().split("_");
+    if (paramColorNote.length > 1)
     {
-      localParcel2.recycle();
-      localParcel1.recycle();
+      localIntent.putExtra("nbid", paramColorNote[0]);
+      if (paramColorNote[0].startsWith("-")) {
+        localIntent.putExtra("isLocal", true);
+      }
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    localIntent.addFlags(268435456);
+    paramContext.startActivity(localIntent);
   }
 }
 

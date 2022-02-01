@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo;
 
-import amsx;
-import amtc;
+import alnr;
+import alnw;
 import com.tencent.mobileqq.apollo.data.ApolloPreDownloadData;
 
 public class ApolloManager$20$1
   implements Runnable
 {
-  public ApolloManager$20$1(amtc paramamtc, ApolloPreDownloadData paramApolloPreDownloadData, String paramString1, String paramString2) {}
+  public ApolloManager$20$1(alnw paramalnw, ApolloPreDownloadData paramApolloPreDownloadData, String paramString1, String paramString2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Amtc.a.a(this.jdField_a_of_type_ComTencentMobileqqApolloDataApolloPreDownloadData, this.jdField_a_of_type_JavaLangString, this.b);
+    this.jdField_a_of_type_Alnw.a.a(this.jdField_a_of_type_ComTencentMobileqqApolloDataApolloPreDownloadData, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

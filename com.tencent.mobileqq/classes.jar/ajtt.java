@@ -1,41 +1,21 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
-public class ajtt
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class ajtt
+  implements DialogInterface.OnClickListener
 {
-  public ajtt(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
+  ajtt(ajts paramajts) {}
   
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
-    {
-      this.a.b(this.a.e);
-      this.a.c(this.a.e);
-      View localView = this.a.a.getChildAt(this.a.e);
-      if (localView != null)
-      {
-        this.a.h = localView.getLeft();
-        if (localView.getMeasuredWidth() == 0)
-        {
-          this.a.h = (SimpleSlidingIndicator.a(this.a) + (SimpleSlidingIndicator.b(this.a) + SimpleSlidingIndicator.c(this.a)) * this.a.e);
-          if (QLog.isColorLevel()) {
-            QLog.i("SimpleSlidingIndicator", 2, "onGlobalLayout, x[" + this.a.h + "], size[" + this.a.a.getChildCount() + "], left[" + localView.getLeft() + "], width[" + localView.getMeasuredWidth() + "], pos[" + this.a.e + "], CPlr" + SimpleSlidingIndicator.a(this.a) + "]");
-          }
-        }
-        this.a.invalidate();
-      }
-      return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("PhotoConst.readinjoy_delete_pic_position", ((NewPhotoPreviewActivity)this.a.a.mActivity).getCurrentSelectedPostion());
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).setResult(-1, paramDialogInterface);
+    ((NewPhotoPreviewActivity)this.a.a.mActivity).finish();
+    ajtr.a(this.a.a).dismiss();
   }
 }
 

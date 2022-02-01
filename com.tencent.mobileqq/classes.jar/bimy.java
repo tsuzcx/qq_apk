@@ -1,34 +1,49 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem;
 
-class bimy
-  implements nks
+public final class bimy
+  implements Parcelable.Creator<QidianProfileCardActivity.QidianSimpleProfileItem>
 {
-  bimy(bimw parambimw) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public QidianProfileCardActivity.QidianSimpleProfileItem a(Parcel paramParcel)
   {
-    Object localObject = this.a.mRuntime.a(this.a.mRuntime.a());
-    if (paramBoolean) {
-      if (this.a.a)
-      {
-        if ((localObject != null) && ((localObject instanceof bitr))) {
-          ((bitr)localObject).setWarnToastVisible(true, 1, 2131691304);
-        }
+    boolean bool2 = true;
+    QidianProfileCardActivity.QidianSimpleProfileItem localQidianSimpleProfileItem = new QidianProfileCardActivity.QidianSimpleProfileItem();
+    localQidianSimpleProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localQidianSimpleProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readByte() != 0)
+    {
+      bool1 = true;
+      localQidianSimpleProfileItem.jdField_a_of_type_Boolean = bool1;
+      localQidianSimpleProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
+      localQidianSimpleProfileItem.jdField_b_of_type_Int = paramParcel.readInt();
+      localQidianSimpleProfileItem.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      if (paramParcel.readByte() == 0) {
+        break label109;
       }
-      else {
-        bimw.a(this.a);
+      bool1 = true;
+      label80:
+      localQidianSimpleProfileItem.jdField_b_of_type_Boolean = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label114;
       }
     }
-    while ((localObject == null) || (!(localObject instanceof bitr))) {
-      for (;;)
-      {
-        return;
-        localObject = QQToast.a(BaseApplicationImpl.getContext(), 1, 2131691304, 1);
-        ((QQToast)localObject).b(((QQToast)localObject).c());
-      }
+    label109:
+    label114:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localQidianSimpleProfileItem.jdField_c_of_type_Boolean = bool1;
+      return localQidianSimpleProfileItem;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label80;
     }
-    ((bitr)localObject).setWarnToastVisible(false, 0, 0);
+  }
+  
+  public QidianProfileCardActivity.QidianSimpleProfileItem[] a(int paramInt)
+  {
+    return new QidianProfileCardActivity.QidianSimpleProfileItem[paramInt];
   }
 }
 

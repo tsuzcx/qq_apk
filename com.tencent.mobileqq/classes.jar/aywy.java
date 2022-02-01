@@ -1,39 +1,33 @@
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
 class aywy
-  implements aywl
+  implements bamo
 {
-  aywy(aywx paramaywx, int paramInt, aywz paramaywz) {}
+  private WeakReference<ayws> a;
   
-  public void a(int paramInt, String paramString)
+  public aywy(ayws paramayws)
   {
-    aywx.a(this.jdField_a_of_type_Aywx, false);
-    if (aywx.a(this.jdField_a_of_type_Aywx).size() == 0) {
-      this.jdField_a_of_type_Aywx.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Aywz, true);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(aywx.a(this.jdField_a_of_type_Aywx), 2, "Focus cmd:1718 sub cmd:100 errCode:" + paramInt + " msg:" + paramString);
-    }
+    this.a = new WeakReference(paramayws);
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    aywx.a(this.jdField_a_of_type_Aywx, false);
-    try
-    {
-      aywx.a(this.jdField_a_of_type_Aywx, 0);
-      if ((this.jdField_a_of_type_Aywx.a(this.jdField_a_of_type_Int, paramArrayOfByte) == -1) && (aywx.a(this.jdField_a_of_type_Aywx).size() == 0)) {
-        this.jdField_a_of_type_Aywx.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Aywz, true);
-      }
-      this.jdField_a_of_type_Aywz.a(aywx.a(this.jdField_a_of_type_Aywx));
-      aywx.a(this.jdField_a_of_type_Aywx, System.currentTimeMillis());
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileContentSignComponent", 2, String.format("onGetIcon actionId=%s size=%s icon=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramBitmap }));
     }
-    catch (Exception paramArrayOfByte)
+    if (paramBitmap != null)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(aywx.a(this.jdField_a_of_type_Aywx), 2, "Focus cmd:1718 sub cmd:100 Exception:" + paramArrayOfByte.getMessage());
+      paramBitmap = (ayws)this.a.get();
+      if ((paramBitmap != null) && (ayws.f(paramBitmap) != null))
+      {
+        RichStatus localRichStatus = ((aymg)ayws.g(paramBitmap)).jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
+        if ((localRichStatus != null) && (localRichStatus.actionId == paramInt1)) {
+          ayws.a(paramBitmap, ((aymg)ayws.h(paramBitmap)).jdField_a_of_type_ComTencentMobileqqDataCard, false);
+        }
+      }
     }
   }
 }

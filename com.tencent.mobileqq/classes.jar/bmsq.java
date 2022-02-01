@@ -1,27 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.LbsDataV2.GpsInfo;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class bmsq
-  implements Parcelable.Creator<LbsDataV2.GpsInfo>
+public class bmsq
+  implements Cloneable
 {
-  public LbsDataV2.GpsInfo a(Parcel paramParcel)
+  public int a;
+  public String a;
+  public List<PtvTemplateManager.PtvTemplateInfo> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  
+  public bmsq() {}
+  
+  public bmsq(String paramString)
   {
-    LbsDataV2.GpsInfo localGpsInfo = new LbsDataV2.GpsInfo();
-    if (paramParcel != null)
-    {
-      localGpsInfo.lat = paramParcel.readInt();
-      localGpsInfo.lon = paramParcel.readInt();
-      localGpsInfo.alt = paramParcel.readInt();
-      localGpsInfo.gpsType = paramParcel.readInt();
-      localGpsInfo.accuracy = paramParcel.readInt();
-    }
-    return localGpsInfo;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public LbsDataV2.GpsInfo[] a(int paramInt)
+  public bmsq a()
   {
-    return null;
+    bmsq localbmsq = new bmsq();
+    localbmsq.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localbmsq.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localbmsq.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    localbmsq.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localbmsq.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+    localbmsq.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
+    localbmsq.jdField_a_of_type_JavaUtilList = new ArrayList();
+    localbmsq.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
+    return localbmsq;
   }
 }
 

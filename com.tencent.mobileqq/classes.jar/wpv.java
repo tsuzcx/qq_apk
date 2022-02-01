@@ -1,14 +1,29 @@
-import android.view.View;
-import android.view.ViewGroup;
-
-public class wpv
-  extends wip
+class wpv
+  implements xit
 {
-  public int a;
-  public View a;
-  public ViewGroup a;
+  wpv(wpu paramwpu) {}
   
-  public wpv(wpu paramwpu) {}
+  public void a(int paramInt)
+  {
+    if ((paramInt == 1) && (wpu.a(this.a) != null) && (wpu.a(this.a).a != null))
+    {
+      if (wpu.a(this.a).a()) {
+        break label66;
+      }
+      if (wpu.a(this.a).a(true)) {
+        wpu.a(this.a).c();
+      }
+    }
+    label66:
+    do
+    {
+      return;
+      if (wpu.a(this.a).a(false)) {
+        wpu.b(this.a).c();
+      }
+    } while (!wpu.a(this.a).a(true));
+    wpu.a(this.a).c();
+  }
 }
 
 

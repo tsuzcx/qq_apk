@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
 
 public class ajvr
-  extends anyu
+  implements DialogInterface.OnClickListener
 {
-  public ajvr(PublicAccountFragment paramPublicAccountFragment) {}
+  public ajvr(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      this.a.i();
-    }
+    this.a.getActivity().finish();
   }
 }
 

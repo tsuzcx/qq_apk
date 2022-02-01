@@ -1,47 +1,24 @@
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingDialog$initWeb$1", "Lcom/tencent/gdtad/views/videoceiling/GdtWebViewBuilder;", "onReceivedError", "", "view", "Lcom/tencent/smtt/sdk/WebView;", "errorCode", "", "description", "", "failingUrl", "shouldOverrideUrlLoading", "", "webview", "url", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class acqt
-  extends acyg
+public class acqt
+  implements View.OnClickListener
 {
-  acqt(AppInterface paramAppInterface1, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface2)
-  {
-    super(paramActivity, paramIntent, paramAppInterface2, localAppInterface);
-  }
+  public acqt(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onReceivedError(@NotNull WebView paramWebView, int paramInt, @NotNull String paramString1, @NotNull String paramString2)
+  public void onClick(View paramView)
   {
-    Intrinsics.checkParameterIsNotNull(paramWebView, "view");
-    Intrinsics.checkParameterIsNotNull(paramString1, "description");
-    Intrinsics.checkParameterIsNotNull(paramString2, "failingUrl");
-    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-    QLog.i("AbsWebView", 1, "onReceivedError url = " + paramInt + ",description = " + paramString1 + ",failingUrl = " + paramString2);
-  }
-  
-  public boolean shouldOverrideUrlLoading(@NotNull WebView paramWebView, @Nullable String paramString)
-  {
-    boolean bool = true;
-    Intrinsics.checkParameterIsNotNull(paramWebView, "webview");
-    QLog.i("AbsWebView", 1, "shouldOverrideUrlLoading " + paramString);
-    if (paramString != null)
-    {
-      if (!acqn.a(this.jdField_a_of_type_Acqn).a(paramString, acqn.a(this.jdField_a_of_type_Acqn))) {
-        bool = a(paramWebView, paramString);
-      }
+    Intent localIntent = this.a.getIntent();
+    localIntent.putExtra("param_wzry_data", AddRequestActivity.a(this.a));
+    aift.a(this.a.app, this.a, this.a.jdField_a_of_type_JavaLangString, AddRequestActivity.a(this.a), this.a.jdField_a_of_type_Int, AddRequestActivity.a(this.a), localIntent);
+    if (AddRequestActivity.a(this.a) != null) {
+      bcef.b(this.a.app, "CliOper", "", "", "0X800843E", "0X800843E", 0, 0, "", "", "", "");
     }
-    else {
-      return bool;
-    }
-    return true;
+    bcef.b(this.a.app, "CliOper", "", "", "0X800AA42", "0X800AA42", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,16 +1,34 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.portal.FormalView;
 
-class ayij
-  implements View.OnClickListener
+public class ayij
+  implements Animator.AnimatorListener
 {
-  ayij(ayhj paramayhj) {}
+  public ayij(FormalView paramFormalView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.g(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.d();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.d();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    FormalView.a(this.a).setVisibility(0);
+    if (this.a.a == 1)
+    {
+      FormalView.b(this.a).setVisibility(0);
+      return;
+    }
+    FormalView.b(this.a).setVisibility(8);
   }
 }
 

@@ -1,41 +1,18 @@
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-public class bmah
+public final class bmah
 {
-  public static <T extends JceStruct> T a(Class<T> paramClass, byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {}
-    try
-    {
-      paramClass = (JceStruct)paramClass.newInstance();
-      paramClass.readFrom(new JceInputStream(paramArrayOfByte));
-      return paramClass;
-    }
-    catch (IllegalAccessException paramClass)
-    {
-      paramClass.printStackTrace();
-      return null;
-    }
-    catch (InstantiationException paramClass)
-    {
-      for (;;)
-      {
-        paramClass.printStackTrace();
-      }
-    }
-  }
+  public final int a;
+  public final AECaptureMode a;
+  public final AECaptureMode b;
   
-  public static byte[] a(JceStruct paramJceStruct)
+  public bmah(@Nullable AECaptureMode paramAECaptureMode1, @NonNull AECaptureMode paramAECaptureMode2, int paramInt)
   {
-    if (paramJceStruct == null) {
-      return null;
-    }
-    JceOutputStream localJceOutputStream = new JceOutputStream();
-    localJceOutputStream.setServerEncoding("utf-8");
-    paramJceStruct.writeTo(localJceOutputStream);
-    return localJceOutputStream.toByteArray();
+    this.jdField_a_of_type_DovComQqImAeModeAECaptureMode = paramAECaptureMode1;
+    this.b = paramAECaptureMode2;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

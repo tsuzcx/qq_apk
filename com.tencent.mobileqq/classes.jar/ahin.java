@@ -1,17 +1,21 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.12.1;
+import mqq.os.MqqHandler;
 
-class ahin
-  extends ahkx
+public class ahin
+  extends andd
 {
-  ahin(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahin(ahik paramahik) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  protected void onGetFollowStatus(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    return new ahmr(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    paramString = this.a;
+    if ((paramBoolean1) && (paramBoolean2)) {}
+    for (paramBoolean1 = true;; paramBoolean1 = false)
+    {
+      paramString.h = paramBoolean1;
+      ahik.a(this.a).post(new NearbyChatPie.12.1(this));
+      return;
+    }
   }
 }
 

@@ -1,13 +1,17 @@
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.view.View;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.3;
+import com.tencent.shadow.dynamic.host.EnterCallback;
 
-final class aund
-  implements Comparator<Map.Entry<String, Integer>>
+public class aund
+  implements EnterCallback
 {
-  public int a(Map.Entry<String, Integer> paramEntry1, Map.Entry<String, Integer> paramEntry2)
-  {
-    return ((Integer)paramEntry2.getValue()).intValue() - ((Integer)paramEntry1.getValue()).intValue();
-  }
+  public aund(GroupVideoManager.3 param3) {}
+  
+  public void onCloseLoadingView() {}
+  
+  public void onEnterComplete() {}
+  
+  public void onShowLoadingView(View paramView) {}
 }
 
 

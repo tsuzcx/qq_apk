@@ -1,213 +1,39 @@
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView.3.1;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Timer;
 
 public class arvb
+  implements View.OnClickListener
 {
-  private static boolean jdField_c_of_type_Boolean = true;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = true;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private float jdField_e_of_type_Float;
-  private int jdField_e_of_type_Int;
-  private float jdField_f_of_type_Float;
-  private int jdField_f_of_type_Int;
-  private int g;
+  public arvb(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
   
-  public arvb()
+  public void onClick(View paramView)
   {
-    DisplayMetrics localDisplayMetrics = artl.a().a().a().getDisplayMetrics();
-    int i = localDisplayMetrics.widthPixels;
-    int j = localDisplayMetrics.heightPixels;
-    if (this.jdField_d_of_type_Boolean) {
-      this.g = Math.max(i, j);
+    if (!NetworkUtil.isNetSupport(BaseApplicationImpl.getContext())) {
+      aszk.a(BaseApplicationImpl.getContext().getString(2131694062));
     }
-    for (this.jdField_f_of_type_Int = Math.min(i, j);; this.jdField_f_of_type_Int = Math.max(i, j))
+    for (;;)
     {
-      c(8000);
-      b(12);
-      a(3);
-      a(1.5F);
-      d(1);
-      c(5.0F);
-      b(5.0F);
-      b(true);
-      c(true);
-      d(16.0F);
-      e(0.0F);
-      f(5.0F);
-      g(4.0F);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.g = Math.min(i, j);
+      aszk.a(BaseApplicationImpl.getContext().getString(2131693874));
+      amqd localamqd = (amqd)MPFileVerifyPwdView.a(this.a).getBusinessHandler(8);
+      MPFileVerifyPwdView.a(this.a, localamqd.a().a(3));
+      MPFileVerifyPwdView.b(this.a).setEnabled(false);
+      MPFileVerifyPwdView.b(this.a).setTextColor(-7829368);
+      MPFileVerifyPwdView.a(this.a).schedule(new MPFileVerifyPwdView.3.1(this), 15000L);
+      if (MPFileVerifyPwdView.a(this.a) != null) {
+        MPFileVerifyPwdView.a(this.a).a(MPFileVerifyPwdView.a(this.a));
+      }
     }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean a()
-  {
-    return jdField_c_of_type_Boolean;
-  }
-  
-  public float a()
-  {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.jdField_d_of_type_Int = arwc.a(paramFloat);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public float b()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public void b(float paramFloat)
-  {
-    this.jdField_b_of_type_Float = arwc.a(paramFloat);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = arwc.a(paramInt);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public float c()
-  {
-    return this.jdField_c_of_type_Float;
-  }
-  
-  public int c()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public void c(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = arwc.a(paramFloat);
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public float d()
-  {
-    return this.jdField_d_of_type_Float;
-  }
-  
-  public int d()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void d(float paramFloat)
-  {
-    this.jdField_c_of_type_Float = arwc.a(paramFloat);
-  }
-  
-  public void d(int paramInt)
-  {
-    this.jdField_e_of_type_Int = arwc.a(paramInt);
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    if (this.jdField_d_of_type_Boolean != paramBoolean)
-    {
-      int i = this.jdField_f_of_type_Int;
-      this.jdField_f_of_type_Int = this.g;
-      this.g = i;
-    }
-    this.jdField_d_of_type_Boolean = paramBoolean;
-  }
-  
-  public float e()
-  {
-    return this.jdField_e_of_type_Float;
-  }
-  
-  public int e()
-  {
-    return this.jdField_f_of_type_Int;
-  }
-  
-  public void e(float paramFloat)
-  {
-    this.jdField_d_of_type_Float = paramFloat;
-  }
-  
-  public float f()
-  {
-    return this.jdField_f_of_type_Float;
-  }
-  
-  public int f()
-  {
-    return this.g;
-  }
-  
-  public void f(float paramFloat)
-  {
-    this.jdField_e_of_type_Float = arwc.a(paramFloat);
-  }
-  
-  public int g()
-  {
-    return this.jdField_e_of_type_Int;
-  }
-  
-  public void g(float paramFloat)
-  {
-    this.jdField_f_of_type_Float = arwc.a(paramFloat);
   }
 }
 

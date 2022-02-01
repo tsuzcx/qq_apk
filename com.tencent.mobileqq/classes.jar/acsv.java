@@ -1,155 +1,151 @@
 import android.text.TextUtils;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class acsv
-  implements View.OnTouchListener
+  extends amsu
 {
-  private long a;
-  public String a;
-  private long b;
-  public String b;
+  public acsv(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  protected long a(long paramLong)
+  private void a(String paramString, ArrayList<bcqi> paramArrayList, alhp paramalhp)
   {
-    return NetConnInfoCenter.servetTimeSecondInterv * 1000L + paramLong;
-  }
-  
-  protected JSONObject a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      QLog.i("GdtMvMiniAppReportHelper", 1, "buildComonSpamParams miniAppAntiSpamParams is empty");
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountActivity", 2, "updateAssociatedAccountInfo  uin = " + paramString);
     }
-    Object localObject1 = blhn.a(this.jdField_b_of_type_JavaLangString);
-    if (localObject1 != null) {}
-    Object localObject2;
-    for (localObject1 = (String)((Map)localObject1).get("viewid");; localObject2 = null)
+    Iterator localIterator = paramArrayList.iterator();
+    boolean bool1 = false;
+    bcqi localbcqi;
+    if (localIterator.hasNext())
     {
-      if (TextUtils.isEmpty((CharSequence)localObject1))
+      localbcqi = (bcqi)localIterator.next();
+      if ((localbcqi.jdField_a_of_type_Int == 2) && (localbcqi.jdField_a_of_type_JavaLangObject != null) && ((localbcqi.jdField_a_of_type_JavaLangObject instanceof ArrayList)))
       {
-        QLog.i("GdtMvMiniAppReportHelper", 1, "buildComonSpamParams viewid is empty");
-        return null;
-      }
-      JSONObject localJSONObject2;
-      try
-      {
-        JSONObject localJSONObject1 = new JSONObject(this.jdField_a_of_type_JavaLangString);
-        if (localJSONObject1 == null)
+        paramArrayList = ((ArrayList)localbcqi.jdField_a_of_type_JavaLangObject).iterator();
+        do
         {
-          QLog.i("GdtMvMiniAppReportHelper", 1, "buildComonSpamParams antiSpamParams == null");
-          return null;
+          bool2 = bool1;
+          if (!paramArrayList.hasNext()) {
+            break;
+          }
+        } while (!paramString.equals(((SubAccountInfo)((bcqi)paramArrayList.next()).jdField_a_of_type_JavaLangObject).subuin));
+        String str = ContactUtils.getBuddyNickName(this.a.app, paramString, true);
+        paramArrayList = str;
+        if (TextUtils.isEmpty(str)) {
+          paramArrayList = paramString;
         }
-      }
-      catch (Throwable localThrowable2)
-      {
-        for (;;)
+        boolean bool2 = bool1;
+        if (!paramArrayList.equals(localbcqi.jdField_a_of_type_JavaLangString))
         {
-          QLog.e("GdtMvMiniAppReportHelper", 1, "buildComonSpamParams", localThrowable2);
-          localJSONObject2 = null;
+          localbcqi.jdField_a_of_type_JavaLangString = paramArrayList;
+          bool2 = true;
         }
+        bool1 = bool2;
       }
-      try
-      {
-        localJSONObject2.put("viewid", localObject1);
-        return localJSONObject2;
-      }
-      catch (Throwable localThrowable1)
-      {
-        for (;;)
-        {
-          QLog.e("GdtMvMiniAppReportHelper", 1, "buildComonSpamParams", localThrowable1);
-        }
-      }
-    }
-  }
-  
-  public void a()
-  {
-    JSONObject localJSONObject = a();
-    if (localJSONObject == null) {
-      return;
-    }
-    QLog.i("GdtMvMiniAppReportHelper", 1, "reportVideoStart " + localJSONObject.toString());
-    acvo.b(localJSONObject);
-  }
-  
-  public void a(int paramInt, long paramLong)
-  {
-    a(paramInt, paramLong, this.jdField_b_of_type_Long - this.jdField_a_of_type_Long, this.jdField_a_of_type_Long);
-  }
-  
-  protected void a(int paramInt, long paramLong1, long paramLong2, long paramLong3)
-  {
-    JSONObject localJSONObject = a();
-    if (localJSONObject == null) {
-      return;
-    }
-    try
-    {
-      localJSONObject.put("cb", paramInt);
-      localJSONObject.put("pi", Math.abs(paramLong2));
-      localJSONObject.put("pd", paramLong1);
-      localJSONObject.put("cct", a(paramLong3));
-      QLog.i("GdtMvMiniAppReportHelper", 1, "reportClickButton " + localJSONObject.toString());
-      acvo.b(localJSONObject);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.e("GdtMvMiniAppReportHelper", 1, "buildComonSpamParams", localThrowable);
-      }
-    }
-  }
-  
-  public void a(long paramLong, acrv paramacrv)
-  {
-    paramacrv = paramacrv.a();
-    long l1 = paramacrv[0];
-    long l2 = paramacrv[1];
-    a(5, paramLong, l1 - l2, l2);
-  }
-  
-  public void a(acsg paramacsg)
-  {
-    if ((paramacsg == null) || (paramacsg.a() == null) || (paramacsg.a() == null))
-    {
-      QLog.i("GdtMvMiniAppReportHelper", 1, "init error");
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = paramacsg.a().antiSpamParams;
-    this.jdField_b_of_type_JavaLangString = paramacsg.a().getUrlForClick();
-  }
-  
-  public void a(View paramView)
-  {
-    if (paramView != null) {
-      paramView.setOnTouchListener(this);
-    }
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
     }
     for (;;)
     {
-      return false;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      continue;
-      this.jdField_b_of_type_Long = System.currentTimeMillis();
+      break;
+      if ((localbcqi.jdField_a_of_type_Int == 6) && (localbcqi.jdField_a_of_type_JavaLangObject != null) && ((localbcqi.jdField_a_of_type_JavaLangObject instanceof SimpleAccount)))
+      {
+        paramArrayList = (SimpleAccount)localbcqi.jdField_a_of_type_JavaLangObject;
+        if (paramString.equals(paramArrayList.getUin()))
+        {
+          paramArrayList = bcqk.a(this.a.app, paramArrayList);
+          if (!paramArrayList.equals(localbcqi.jdField_a_of_type_JavaLangString))
+          {
+            localbcqi.jdField_a_of_type_JavaLangString = paramArrayList;
+            bool1 = true;
+            continue;
+            if (QLog.isColorLevel()) {
+              QLog.d("AssociatedAccountActivity", 2, "updateAssociatedAccountInfo needUpdate = " + bool1);
+            }
+            if (bool1) {
+              paramalhp.notifyDataSetInvalidated();
+            }
+            return;
+          }
+        }
+      }
     }
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    int k = 0;
+    int i = 0;
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    Iterator localIterator;
+    label54:
+    boolean bool;
+    if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    {
+      localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+      paramBoolean = false;
+      bool = paramBoolean;
+      if (!localIterator.hasNext()) {
+        break label95;
+      }
+      if (!TextUtils.equals(paramString, ((SubAccountInfo)localIterator.next()).subuin)) {
+        break label248;
+      }
+      paramBoolean = true;
+    }
+    label95:
+    label248:
+    for (;;)
+    {
+      break label54;
+      bool = false;
+      int j = k;
+      if (this.a.jdField_b_of_type_JavaUtilArrayList != null)
+      {
+        j = k;
+        if (this.a.jdField_b_of_type_JavaUtilArrayList.size() > 0)
+        {
+          localIterator = this.a.jdField_b_of_type_JavaUtilArrayList.iterator();
+          for (;;)
+          {
+            j = i;
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            if (TextUtils.equals(paramString, ((SimpleAccount)localIterator.next()).getUin())) {
+              i = 1;
+            }
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountActivity", 2, "onUpdateCustomHead uin = " + paramString + " needUpdate=" + bool);
+      }
+      if (bool) {
+        this.a.jdField_b_of_type_Alhp.notifyDataSetInvalidated();
+      }
+      if (j == 0) {
+        break;
+      }
+      this.a.jdField_a_of_type_Alhp.notifyDataSetInvalidated();
+      return;
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AssociatedAccountActivity", 2, "onUpdateFriendInfo  uin = " + paramString + " isSuccess = " + paramBoolean);
+    }
+    a(paramString, this.a.d, this.a.jdField_b_of_type_Alhp);
+    a(paramString, this.a.c, this.a.jdField_a_of_type_Alhp);
   }
 }
 

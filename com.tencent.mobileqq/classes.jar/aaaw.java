@@ -1,61 +1,40 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListReq;
-import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListRsp;
-import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.mini.servlet.ProtoBufRequest;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class aaaw
-  extends ProtoBufRequest
+class aaaw
+  implements bjsz
 {
-  private final CLIENT.StGetStoryFeedListReq a = new CLIENT.StGetStoryFeedListReq();
+  aaaw(aaaq paramaaaq, String paramString) {}
   
-  public aaaw(int paramInt, CLIENT.StUinTime paramStUinTime)
+  public void a(bjsy parambjsy)
   {
-    this.a.listType.set(paramInt);
-    this.a.uinTime.set(paramStUinTime);
-    this.a.listNum.set(10);
-  }
-  
-  @Nullable
-  public static CLIENT.StGetStoryFeedListRsp a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null)
+    JSONObject localJSONObject = new JSONObject();
+    switch (parambjsy.a)
     {
-      a("data is null");
-      return null;
+    default: 
+      return;
+    case 0: 
+      try
+      {
+        localJSONObject.put("index", 0);
+        this.jdField_a_of_type_Aaaq.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Exception parambjsy)
+      {
+        parambjsy.printStackTrace();
+        return;
+      }
     }
-    paramArrayOfByte = decode(paramArrayOfByte);
-    if (paramArrayOfByte == null)
-    {
-      a("storyData is null");
-      return null;
-    }
-    CLIENT.StGetStoryFeedListRsp localStGetStoryFeedListRsp = new CLIENT.StGetStoryFeedListRsp();
     try
     {
-      localStGetStoryFeedListRsp.mergeFrom(paramArrayOfByte);
-      return localStGetStoryFeedListRsp;
+      localJSONObject.put("index", 1);
+      this.jdField_a_of_type_Aaaq.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      return;
     }
-    catch (Exception paramArrayOfByte)
+    catch (Exception parambjsy)
     {
-      a("onResponse fail." + paramArrayOfByte);
+      parambjsy.printStackTrace();
     }
-    return null;
-  }
-  
-  private static void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("GetMineStoryFeedListRequest", 2, paramString);
-    }
-  }
-  
-  public byte[] getBusiBuf()
-  {
-    return this.a.toByteArray();
   }
 }
 

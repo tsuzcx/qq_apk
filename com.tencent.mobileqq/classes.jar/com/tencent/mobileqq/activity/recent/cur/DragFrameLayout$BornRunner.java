@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.cur;
 
-import alpt;
+import aknk;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PointF;
@@ -59,7 +59,7 @@ class DragFrameLayout$BornRunner
       }
     }
     label221:
-    for (List localList = DragFrameLayout.a(this.this$0).onGetVisiableDragView();; localList = null)
+    for (List localList = DragFrameLayout.a(this.this$0).a();; localList = null)
     {
       if ((DragFrameLayout.a(this.this$0) != null) && (localList != null) && (localList.size() > 0))
       {

@@ -1,25 +1,63 @@
-import com.tencent.av.ui.VideoNetStateBar;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.av.ui.beauty.BeautyBaseView;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class mmc
-  extends lef
+  extends PagerAdapter
 {
-  public mmc(VideoNetStateBar paramVideoNetStateBar) {}
+  final List<BeautyBaseView> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  protected void a(long paramLong1, long paramLong2)
+  public mmc(List<BeautyBaseView> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoNetStateBar", 2, "onCreateRoomSuc-->GroupID=" + paramLong2);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    Collection localCollection;
+    if (localCollection != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(localCollection);
     }
-    this.a.i();
   }
   
-  protected void b(long paramLong1, long paramLong2)
+  public BeautyBaseView a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoNetStateBar", 2, "onEnterRoomSuc-->GroupID=" + paramLong2);
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramInt >= 0)
+    {
+      localObject1 = localObject2;
+      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+        localObject1 = (BeautyBaseView)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      }
     }
-    this.a.i();
+    return localObject1;
+  }
+  
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    if ((paramViewGroup != null) && ((paramObject instanceof BeautyBaseView))) {
+      paramViewGroup.removeView((BeautyBaseView)paramObject);
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    BeautyBaseView localBeautyBaseView = a(paramInt);
+    if ((paramViewGroup != null) && (localBeautyBaseView != null)) {
+      paramViewGroup.addView(localBeautyBaseView);
+    }
+    return localBeautyBaseView;
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

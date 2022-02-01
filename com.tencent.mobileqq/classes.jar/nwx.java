@@ -1,37 +1,17 @@
-import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
-import java.io.File;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class nwx
-  implements TVK_ICacheMgr.IPreloadCompleteCallback
+public class nwx
+  implements View.OnClickListener
 {
-  private nwx(nws paramnws) {}
+  public nwx(AccountSettingFragment paramAccountSettingFragment) {}
   
-  public void onComplete(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    for (;;)
-    {
-      synchronized (nws.a(this.a))
-      {
-        nws.c("onPreloadComplete vid:" + paramString1 + ", detail:" + paramString2);
-        paramString2 = new File(nws.b(paramString1));
-        if (paramString2.exists()) {
-          paramString2.renameTo(new File(nws.a(paramString1)));
-        }
-        bdll.a(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", nws.a(this.a).mVideoVid, String.valueOf(nws.a(this.a).mSource));
-        paramString2 = (QQAppInterface)nws.a(this.a).get();
-        if (paramString2 != null)
-        {
-          paramString2 = paramString2.getCurrentAccountUin();
-          nwp.b(paramString2, paramString1);
-          nws.a(this.a, nws.a(this.a));
-          return;
-        }
-      }
-      paramString2 = "";
-    }
+    AccountSettingFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

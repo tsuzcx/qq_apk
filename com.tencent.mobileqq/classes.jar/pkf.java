@@ -1,14 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-
-public class pkf
-  implements pks
+public abstract interface pkf
 {
-  public pkf(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
-  {
-    ReadInJoySelfFragment.n(this.a);
-  }
+  public abstract void a();
 }
 
 

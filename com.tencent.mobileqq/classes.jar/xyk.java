@@ -1,20 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo.1.1;
 
-class xyk
-  implements DialogInterface.OnDismissListener
+public class xyk
+  implements vtx<vvo>
 {
-  xyk(xyd paramxyd, Boolean[] paramArrayOfBoolean, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  xyk(xyj paramxyj) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(boolean paramBoolean, vvo paramvvo)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(this.jdField_a_of_type_Xyd.b, 2, "[az]isResumeVideoPlaySelf === >" + this.jdField_a_of_type_ArrayOfJavaLangBoolean);
-    }
-    if ((!this.jdField_a_of_type_ArrayOfJavaLangBoolean[0].booleanValue()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    xvv.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramvvo != null))
+    {
+      xvv.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, temperature=%s", Integer.valueOf(paramvvo.a));
+      int i = paramvvo.a;
+      xyj.a(this.a).post(new EditVideoFilterNeo.1.1(this, i));
     }
   }
 }

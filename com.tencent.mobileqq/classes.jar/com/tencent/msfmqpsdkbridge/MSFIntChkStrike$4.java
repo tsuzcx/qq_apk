@@ -2,9 +2,9 @@ package com.tencent.msfmqpsdkbridge;
 
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
-import bhlq;
-import bhpc;
+import bfur;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class MSFIntChkStrike$4
   implements Runnable
@@ -15,15 +15,15 @@ class MSFIntChkStrike$4
   {
     try
     {
-      bhpc localbhpc = bhlq.a(BaseActivity.sTopActivity, 230, this.val$fstrTitle, this.val$fstrWording, this.val$fonConfirm, this.val$fonCancel);
-      if (localbhpc == null) {
+      QQCustomDialog localQQCustomDialog = bfur.a(BaseActivity.sTopActivity, 230, this.val$fstrTitle, this.val$fstrWording, this.val$fonConfirm, this.val$fonCancel);
+      if (localQQCustomDialog == null) {
         return;
       }
-      localbhpc.setNegativeButton(this.val$fstrCancelText, this.val$fonCancel);
-      localbhpc.setPositiveButton(this.val$fstrConfirmText, this.val$fonConfirm);
-      localbhpc.setOnDismissListener(this.val$fonDismissListener);
-      localbhpc.setCancelable(false);
-      localbhpc.show();
+      localQQCustomDialog.setNegativeButton(this.val$fstrCancelText, this.val$fonCancel);
+      localQQCustomDialog.setPositiveButton(this.val$fstrConfirmText, this.val$fonConfirm);
+      localQQCustomDialog.setOnDismissListener(this.val$fonDismissListener);
+      localQQCustomDialog.setCancelable(false);
+      localQQCustomDialog.show();
     }
     catch (Exception localException)
     {

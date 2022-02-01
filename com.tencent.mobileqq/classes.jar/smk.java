@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.ExtraInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
 
-public final class smk
-  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.ExtraInfo>
+public class smk
+  implements oww
 {
-  public RecommendFeedsDiandianEntranceManager.ExtraInfo a(Parcel paramParcel)
-  {
-    return new RecommendFeedsDiandianEntranceManager.ExtraInfo(paramParcel);
-  }
+  public smk(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
   
-  public RecommendFeedsDiandianEntranceManager.ExtraInfo[] a(int paramInt)
+  public void a(int paramInt)
   {
-    return new RecommendFeedsDiandianEntranceManager.ExtraInfo[paramInt];
+    if (paramInt != 2) {
+      ReadInJoyFastWebBottomSocialView.a(this.a, true);
+    }
   }
 }
 

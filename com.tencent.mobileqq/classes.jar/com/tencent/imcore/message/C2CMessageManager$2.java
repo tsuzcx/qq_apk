@@ -1,10 +1,9 @@
 package com.tencent.imcore.message;
 
-import aczu;
-import aczv;
-import adai;
-import adak;
-import aday;
+import abwe;
+import abwf;
+import abwx;
+import abwz;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,19 +15,19 @@ import java.util.List;
 public class C2CMessageManager$2
   implements Runnable
 {
-  public C2CMessageManager$2(aczu paramaczu, aday paramaday, int paramInt, String paramString, aczv paramaczv, FragmentActivity paramFragmentActivity) {}
+  public C2CMessageManager$2(abwe paramabwe, QQMessageFacade.RefreshMessageContext paramRefreshMessageContext, int paramInt, String paramString, abwf paramabwf, FragmentActivity paramFragmentActivity) {}
   
   public void run()
   {
-    this.this$0.b(this.jdField_a_of_type_Aday);
-    Object localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Int).f(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    this.this$0.b(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext);
+    Object localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(this.jdField_a_of_type_Int).f(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
     Object localObject1;
     int i;
     if (localObject2 != null)
     {
       long l = ((MessageRecord)((List)localObject2).get(0)).uniseq;
       localObject1 = new ArrayList();
-      this.this$0.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, l, 200 - ((List)localObject2).size(), this.jdField_a_of_type_Aday, (ArrayList)localObject1);
+      this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, l, 200 - ((List)localObject2).size(), this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext, (ArrayList)localObject1);
       if (((ArrayList)localObject1).size() <= 200 - ((List)localObject2).size()) {
         break label397;
       }
@@ -39,7 +38,7 @@ public class C2CMessageManager$2
       if (i < ((ArrayList)localObject1).size())
       {
         localObject2 = (ChatMessage)((ArrayList)localObject1).get(i);
-        if ((adak.b((MessageRecord)localObject2)) || (((ChatMessage)localObject2).msgUid != this.jdField_a_of_type_Aczv.a) || (((ChatMessage)localObject2).time != this.jdField_a_of_type_Aczv.b)) {}
+        if ((abwz.b((MessageRecord)localObject2)) || (((ChatMessage)localObject2).msgUid != this.jdField_a_of_type_Abwf.a) || (((ChatMessage)localObject2).time != this.jdField_a_of_type_Abwf.b)) {}
       }
       for (i = 1;; i = 0)
       {
@@ -49,22 +48,22 @@ public class C2CMessageManager$2
           {
             do
             {
-              this.jdField_a_of_type_Aday.e = 15;
-              this.jdField_a_of_type_Aday.jdField_a_of_type_Int = 0;
-              localObject1 = aczu.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 15, this.jdField_a_of_type_Aday, this.jdField_a_of_type_Aczv);
+              this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.count = 15;
+              this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.retryIndex = 0;
+              localObject1 = abwe.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 15, this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext, this.jdField_a_of_type_Abwf);
             } while ((localObject1 == null) || (((List)localObject1).size() <= 0));
             localObject1 = (ChatMessage)((List)localObject1).get(0);
-          } while ((adak.b((MessageRecord)localObject1)) || (((ChatMessage)localObject1).msgUid != this.jdField_a_of_type_Aczv.a) || (((ChatMessage)localObject1).time != this.jdField_a_of_type_Aczv.b));
-          this.jdField_a_of_type_Aday.g = true;
-          this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_Aday);
+          } while ((abwz.b((MessageRecord)localObject1)) || (((ChatMessage)localObject1).msgUid != this.jdField_a_of_type_Abwf.a) || (((ChatMessage)localObject1).time != this.jdField_a_of_type_Abwf.b));
+          this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext.isSuccess = true;
+          this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.setChangeAndNotify(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade$RefreshMessageContext);
         }
         for (;;)
         {
-          this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.post(new C2CMessageManager.2.2(this));
+          this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.mUIHandler.post(new C2CMessageManager.2.2(this));
           return;
           i += 1;
           break;
-          this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.post(new C2CMessageManager.2.1(this));
+          this.this$0.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.mUIHandler.post(new C2CMessageManager.2.1(this));
         }
       }
       label397:

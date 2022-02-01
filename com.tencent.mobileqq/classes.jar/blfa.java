@@ -1,81 +1,80 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.mini.sdk.MiniAppException;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.AudioDeviceInterface;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
+import cooperation.weiyun.WeiyunSaveTipsFactory.1;
+import mqq.os.MqqHandler;
 
 public class blfa
-  implements blfk
 {
-  public blfa(AudioDeviceInterface paramAudioDeviceInterface) {}
-  
-  public void a(int paramInt)
+  private static void a(Activity paramActivity, String paramString, int paramInt)
   {
-    try
+    MiniAppLauncher.startMiniApp(paramActivity, "mqqapi://miniapp/open?_ext=&_mappid=1107999468&_mvid=&_nq=&_path=&_q=&referer=2011&via=2011&_sig=31ba7125a22d3462e9dc4f8abff74d9e9c445cdd46e8ea446f39a839ebb110b4", 2011, null);
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, Activity paramActivity)
+  {
+    if (paramQQAppInterface.getFileManagerEngine().a() == true)
     {
-      AudioDeviceInterface.access$000(this.a).lock();
-      AudioDeviceInterface.access$102(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
-      }
-      AudioDeviceInterface.access$200(this.a).signalAll();
-      AudioDeviceInterface.access$000(this.a).unlock();
+      paramQQAppInterface.getFileManagerEngine().c();
       return;
     }
-    catch (Exception localException) {}
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt == 0) {
-      AudioDeviceInterface.access$400(this.a, paramString);
-    }
-  }
-  
-  public void a(int paramInt, String paramString, boolean paramBoolean) {}
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3) {}
-  
-  public void a(long paramLong, int paramInt) {}
-  
-  public void a(long paramLong, int paramInt, String paramString) {}
-  
-  public void a(long paramLong, boolean paramBoolean)
-  {
-    if (!paramBoolean) {}
-    try
+    if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      AudioDeviceInterface.access$000(this.a).lock();
-      AudioDeviceInterface.access$102(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
-      }
-      AudioDeviceInterface.access$200(this.a).signalAll();
-      AudioDeviceInterface.access$000(this.a).unlock();
+      paramQQAppInterface = new Intent(paramActivity, FMActivity.class);
+      paramQQAppInterface.putExtra("tab_tab_type", 3);
+      paramQQAppInterface.putExtra("from", "FileAssistant");
+      paramActivity.startActivityForResult(paramQQAppInterface, 101);
       return;
     }
-    catch (Exception localException) {}
+    aszk.a(BaseApplication.getContext().getString(2131694062));
   }
   
-  public void a(long paramLong, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt)
   {
-    if (AudioDeviceInterface.access$300(this.a)) {
-      AudioDeviceInterface.access$400(this.a, paramString1);
+    if ((paramQQAppInterface == null) || (paramActivity == null)) {
+      return;
     }
+    ThreadManager.getUIHandler().postDelayed(new WeiyunSaveTipsFactory.1(paramActivity, paramInt, paramQQAppInterface), 1000L);
   }
   
-  public void a(String paramString) {}
-  
-  public void a(String paramString, long paramLong) {}
-  
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b(int paramInt, String paramString) {}
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Context paramContext)
+  {
+    int i = bfyz.aS(paramContext, paramQQAppInterface.getCurrentAccountUin());
+    if (i == 1)
+    {
+      String str = bfyz.t(paramContext, paramQQAppInterface.getCurrentAccountUin());
+      i = bfyz.aT(paramContext, paramQQAppInterface.getCurrentAccountUin());
+      if (!TextUtils.isEmpty(str)) {
+        try
+        {
+          a(paramActivity, str, i);
+          return;
+        }
+        catch (MiniAppException paramContext)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("WeiyunSaveTipsFactory", 2, "fail to open weiyun mini app!");
+          }
+          a(paramQQAppInterface, paramActivity);
+          return;
+        }
+      }
+      QLog.w("WeiyunSaveTipsFactory", 2, "can not to start WeiYun Mini app, apkgUrl = " + str + ", version = " + i);
+      a(paramQQAppInterface, paramActivity);
+      return;
+    }
+    QLog.w("WeiyunSaveTipsFactory", 2, "can not to start WeiYun Mini app, weiYunGrayConfig = " + i);
+    a(paramQQAppInterface, paramActivity);
+  }
 }
 
 

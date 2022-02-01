@@ -2,11 +2,11 @@ package com.tencent.mobileqq.utils;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import beum;
-import beun;
-import bhvd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.HttpNetReq.IFlowDecoder;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.Cryptor;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
@@ -14,11 +14,11 @@ import java.security.MessageDigest;
 import java.util.HashMap;
 
 public class PicCryptor
-  implements beun
+  implements HttpNetReq.IFlowDecoder
 {
   private int jdField_a_of_type_Int;
   public long a;
-  public beum a;
+  public HttpNetReq a;
   private boolean jdField_a_of_type_Boolean = true;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private int jdField_b_of_type_Int;
@@ -44,7 +44,7 @@ public class PicCryptor
   
   private int a()
   {
-    String str = (String)this.jdField_a_of_type_Beum.a.get("Range");
+    String str = (String)this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.mReqProperties.get("Range");
     if (!TextUtils.isEmpty(str))
     {
       str = str.replace("bytes=", "");
@@ -58,7 +58,7 @@ public class PicCryptor
   
   public static String a(byte[] paramArrayOfByte)
   {
-    paramArrayOfByte = bhvd.a(paramArrayOfByte);
+    paramArrayOfByte = PkgTools.toHexStr(paramArrayOfByte);
     if (paramArrayOfByte == null) {
       throw new IllegalArgumentException("byte2Hex error, byte not null");
     }
@@ -74,7 +74,7 @@ public class PicCryptor
   
   public static byte[] a(String paramString)
   {
-    paramString = bhvd.a(paramString);
+    paramString = PkgTools.hexToBytes(paramString);
     if (paramString == null) {
       throw new IllegalArgumentException("hex2byte error, hexStr length must even");
     }
@@ -90,7 +90,7 @@ public class PicCryptor
     return paramArrayOfByte1;
   }
   
-  private byte[] c(byte[] paramArrayOfByte)
+  private byte[] b(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null)
     {
@@ -142,63 +142,7 @@ public class PicCryptor
     }
   }
   
-  public void a()
-  {
-    this.f = 0;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_e_of_type_ArrayOfByte = null;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
   public byte[] a(byte[] paramArrayOfByte)
-  {
-    Object localObject2 = null;
-    long l1 = SystemClock.uptimeMillis();
-    Object localObject1;
-    if (this.f == 0) {
-      if (this.jdField_e_of_type_ArrayOfByte != null)
-      {
-        localObject1 = new byte[this.jdField_e_of_type_ArrayOfByte.length + paramArrayOfByte.length];
-        System.arraycopy(this.jdField_e_of_type_ArrayOfByte, 0, localObject1, 0, this.jdField_e_of_type_ArrayOfByte.length);
-        System.arraycopy(paramArrayOfByte, 0, localObject1, 0, paramArrayOfByte.length);
-        this.jdField_e_of_type_ArrayOfByte = ((byte[])localObject1);
-        paramArrayOfByte = b(this.jdField_e_of_type_ArrayOfByte);
-        localObject1 = localObject2;
-        if (this.f == 1)
-        {
-          localObject1 = localObject2;
-          if (paramArrayOfByte != null) {
-            localObject1 = c(paramArrayOfByte);
-          }
-        }
-      }
-    }
-    label148:
-    do
-    {
-      for (;;)
-      {
-        long l2 = this.jdField_a_of_type_Long;
-        this.jdField_a_of_type_Long = (SystemClock.uptimeMillis() - l1 + l2);
-        return localObject1;
-        this.jdField_e_of_type_ArrayOfByte = paramArrayOfByte;
-        break;
-        if (this.f != 1) {
-          break label148;
-        }
-        localObject1 = c(paramArrayOfByte);
-      }
-      if (paramArrayOfByte.length != 1) {
-        break label166;
-      }
-      localObject1 = localObject2;
-    } while (paramArrayOfByte[0] == 41);
-    label166:
-    throw new Exception("pic data len is error!");
-  }
-  
-  public byte[] b(byte[] paramArrayOfByte)
   {
     boolean bool2 = true;
     ByteBuffer localByteBuffer1 = ByteBuffer.allocate(paramArrayOfByte.length);
@@ -240,10 +184,10 @@ public class PicCryptor
       localByteBuffer2.rewind();
       this.jdField_d_of_type_Int = localByteBuffer2.getShort();
       if (this.jdField_d_of_type_Int <= 0) {
-        break label450;
+        break label448;
       }
     }
-    label450:
+    label448:
     for (bool1 = bool2;; bool1 = false)
     {
       a(bool1, "seed len is no allow negative");
@@ -297,7 +241,68 @@ public class PicCryptor
     }
   }
   
+  public byte[] decode(byte[] paramArrayOfByte)
+  {
+    Object localObject2 = null;
+    long l1 = SystemClock.uptimeMillis();
+    Object localObject1;
+    if (this.f == 0) {
+      if (this.jdField_e_of_type_ArrayOfByte != null)
+      {
+        localObject1 = new byte[this.jdField_e_of_type_ArrayOfByte.length + paramArrayOfByte.length];
+        System.arraycopy(this.jdField_e_of_type_ArrayOfByte, 0, localObject1, 0, this.jdField_e_of_type_ArrayOfByte.length);
+        System.arraycopy(paramArrayOfByte, 0, localObject1, 0, paramArrayOfByte.length);
+        this.jdField_e_of_type_ArrayOfByte = ((byte[])localObject1);
+        paramArrayOfByte = a(this.jdField_e_of_type_ArrayOfByte);
+        localObject1 = localObject2;
+        if (this.f == 1)
+        {
+          localObject1 = localObject2;
+          if (paramArrayOfByte != null) {
+            localObject1 = b(paramArrayOfByte);
+          }
+        }
+      }
+    }
+    label148:
+    do
+    {
+      for (;;)
+      {
+        long l2 = this.jdField_a_of_type_Long;
+        this.jdField_a_of_type_Long = (SystemClock.uptimeMillis() - l1 + l2);
+        return localObject1;
+        this.jdField_e_of_type_ArrayOfByte = paramArrayOfByte;
+        break;
+        if (this.f != 1) {
+          break label148;
+        }
+        localObject1 = b(paramArrayOfByte);
+      }
+      if (paramArrayOfByte.length != 1) {
+        break label166;
+      }
+      localObject1 = localObject2;
+    } while (paramArrayOfByte[0] == 41);
+    label166:
+    throw new Exception("pic data len is error!");
+  }
+  
   public native String getISSACSequence(String paramString, int paramInt);
+  
+  public boolean isFinish()
+  {
+    return this.f == 2;
+  }
+  
+  public void reset()
+  {
+    this.f = 0;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_e_of_type_ArrayOfByte = null;
+    this.jdField_e_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+  }
 }
 
 

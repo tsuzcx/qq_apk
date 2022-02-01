@@ -1,55 +1,55 @@
 package dov.com.tencent.mobileqq.richmedia.mediacodec.renderer;
 
-import brgb;
-import brgd;
-import brgm;
+import boab;
+import boad;
+import boag;
 
 public class GpuImagePartsFilterGroup$2
   implements Runnable
 {
-  public GpuImagePartsFilterGroup$2(brgm parambrgm, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat) {}
+  public GpuImagePartsFilterGroup$2(boag paramboag, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat) {}
   
   public void run()
   {
-    brgd localbrgd2 = null;
-    brgd localbrgd1;
-    if ((brgm.a(this.this$0) == null) || (brgm.a(this.this$0).getFilterType() != this.jdField_a_of_type_Int))
+    boad localboad2 = null;
+    boad localboad1;
+    if ((boag.a(this.this$0) == null) || (boag.a(this.this$0).getFilterType() != this.jdField_a_of_type_Int))
     {
-      localbrgd1 = brgm.a(this.this$0);
-      brgm.a(this.this$0, (brgd)brgb.a(this.jdField_a_of_type_Int));
-      brgm.a(this.this$0).init();
-      brgm.a(this.this$0).onOutputSizeChanged(this.b, this.c);
+      localboad1 = boag.a(this.this$0);
+      boag.a(this.this$0, (boad)boab.a(this.jdField_a_of_type_Int));
+      boag.a(this.this$0).init();
+      boag.a(this.this$0).onOutputSizeChanged(this.b, this.c);
     }
     for (;;)
     {
-      if ((brgm.b(this.this$0) == null) || (brgm.b(this.this$0).getFilterType() != this.d))
+      if ((boag.b(this.this$0) == null) || (boag.b(this.this$0).getFilterType() != this.d))
       {
-        localbrgd2 = brgm.b(this.this$0);
-        brgm.b(this.this$0, (brgd)brgb.a(this.d));
-        brgm.b(this.this$0).init();
-        brgm.b(this.this$0).onOutputSizeChanged(this.b, this.c);
+        localboad2 = boag.b(this.this$0);
+        boag.b(this.this$0, (boad)boab.a(this.d));
+        boag.b(this.this$0).init();
+        boag.b(this.this$0).onOutputSizeChanged(this.b, this.c);
       }
       if ((this.e == 90) || (this.e == 270))
       {
-        brgm.a(this.this$0).a(false);
-        brgm.b(this.this$0).a(false);
+        boag.a(this.this$0).a(false);
+        boag.b(this.this$0).a(false);
       }
       for (;;)
       {
-        brgm.a(this.this$0, this.jdField_a_of_type_Float);
-        brgm.a(this.this$0).a(true, this.jdField_a_of_type_Float + 0.1F);
-        brgm.b(this.this$0).a(false, this.jdField_a_of_type_Float - 0.1F);
-        if (localbrgd1 != null) {
-          localbrgd1.destroy();
+        boag.a(this.this$0, this.jdField_a_of_type_Float);
+        boag.a(this.this$0).a(true, this.jdField_a_of_type_Float + 0.1F);
+        boag.b(this.this$0).a(false, this.jdField_a_of_type_Float - 0.1F);
+        if (localboad1 != null) {
+          localboad1.destroy();
         }
-        if (localbrgd2 != null) {
-          localbrgd2.destroy();
+        if (localboad2 != null) {
+          localboad2.destroy();
         }
         return;
-        brgm.a(this.this$0).a(true);
-        brgm.b(this.this$0).a(true);
+        boag.a(this.this$0).a(true);
+        boag.b(this.this$0).a(true);
       }
-      localbrgd1 = null;
+      localboad1 = null;
     }
   }
 }

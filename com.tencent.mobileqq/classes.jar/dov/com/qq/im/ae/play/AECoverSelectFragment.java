@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,11 +20,11 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import auog;
-import bpam;
-import bpbq;
-import bqrh;
+import bmbx;
+import bmda;
+import bnnl;
 import com.tencent.biz.pubaccount.weishi_new.view.RoundCornerImageView;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.tav.coremedia.CMTime;
@@ -39,14 +40,43 @@ public class AECoverSelectFragment
   extends AbsAEPublishVideoProcessFragment
   implements View.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  CoverSelectView jdField_a_of_type_ComTencentTavcutTimelineCoverSelectView;
-  TextView b;
+  public static final float DEFAULT_COVER_PROGRESS = 0.0F;
+  private static final String TAG = "AECoverSelectFragment";
+  CoverSelectView coverSelectView;
+  private float defaultCoverProgress;
+  FrameLayout flCoverSelectContainer;
+  LinearLayout llBottomContainer;
+  TextView tvCancel;
+  TextView tvConfirm;
   
-  private float a()
+  private void addCoverSelectView()
+  {
+    Object localObject = new CoverSelectView.UIConfigWrapper(getActivity(), 2130837929, 2130837707, 2130837706, 2130837748, 2130837749, 2130837750, 2130837751, 2130837924, 11);
+    ((CoverSelectView.UIConfigWrapper)localObject).setPrevibarHeight(bnnl.b(getActivity(), 59.0F)).setPreviewBarWidth(bnnl.b(getActivity(), 34.0F)).setCoverDefaultProgress(this.defaultCoverProgress);
+    this.coverSelectView = new CoverSelectView(getActivity(), (CoverSelectView.UIConfigWrapper)localObject);
+    int i = bnnl.b(getActivity(), 4.0F);
+    int j = bnnl.b(getActivity(), 2.0F);
+    Log.d("AECoverSelectFragment", "addCoverSelectView: pixValue2Dip = " + j);
+    int k = bnnl.b(getActivity(), 16.0F);
+    int m = bnnl.b(getActivity(), 13.0F);
+    localObject = new RoundCornerImageView(getActivity());
+    ((RoundCornerImageView)localObject).setCorner(j);
+    ((RoundCornerImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_CROP);
+    ShapeDrawable localShapeDrawable = new ShapeDrawable();
+    localShapeDrawable.setShape(new RoundRectShape(new float[] { i, i, i, i, i, i, i, i }, null, null));
+    localShapeDrawable.getPaint().setColor(-1);
+    ((RoundCornerImageView)localObject).setBackgroundDrawable(localShapeDrawable);
+    ((RoundCornerImageView)localObject).setPadding(j, j, j, j);
+    this.coverSelectView.setCoverPreviewBarBg(localShapeDrawable);
+    this.coverSelectView.setPreviewBar((ImageView)localObject);
+    this.coverSelectView.setPreviewBarElevation(15.0F);
+    localObject = new FrameLayout.LayoutParams(-1, -1);
+    ((FrameLayout.LayoutParams)localObject).gravity = 16;
+    this.coverSelectView.setTimelineViewPadding(k, m, k, m);
+    this.flCoverSelectContainer.addView(this.coverSelectView, (ViewGroup.LayoutParams)localObject);
+  }
+  
+  private float getDefaultCoverProgress()
   {
     Bundle localBundle = getArguments();
     if (getActivity().getIntent().getExtras() != null) {}
@@ -68,42 +98,23 @@ public class AECoverSelectFragment
     }
   }
   
-  private void a()
+  private long getTotalDuration(@NonNull VideoResourceModel paramVideoResourceModel)
   {
-    Object localObject = new CoverSelectView.UIConfigWrapper(getActivity(), 2130837907, 2130837699, 2130837698, 2130837737, 2130837738, 2130837923, 2130837924, 2130837905, 11);
-    ((CoverSelectView.UIConfigWrapper)localObject).setPrevibarHeight(bqrh.b(getActivity(), 59.0F)).setPreviewBarWidth(bqrh.b(getActivity(), 34.0F)).setCoverDefaultProgress(this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_ComTencentTavcutTimelineCoverSelectView = new CoverSelectView(getActivity(), (CoverSelectView.UIConfigWrapper)localObject);
-    int i = bqrh.b(getActivity(), 4.0F);
-    int j = bqrh.b(getActivity(), 2.0F);
-    Log.d("AECoverSelectFragment", "addCoverSelectView: pixValue2Dip = " + j);
-    int k = bqrh.b(getActivity(), 16.0F);
-    int m = bqrh.b(getActivity(), 13.0F);
-    localObject = new RoundCornerImageView(getActivity());
-    ((RoundCornerImageView)localObject).setCorner(j);
-    ((RoundCornerImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_CROP);
-    ShapeDrawable localShapeDrawable = new ShapeDrawable();
-    localShapeDrawable.setShape(new RoundRectShape(new float[] { i, i, i, i, i, i, i, i }, null, null));
-    localShapeDrawable.getPaint().setColor(-1);
-    ((RoundCornerImageView)localObject).setBackgroundDrawable(localShapeDrawable);
-    ((RoundCornerImageView)localObject).setPadding(j, j, j, j);
-    this.jdField_a_of_type_ComTencentTavcutTimelineCoverSelectView.setCoverPreviewBarBg(localShapeDrawable);
-    this.jdField_a_of_type_ComTencentTavcutTimelineCoverSelectView.setPreviewBar((ImageView)localObject);
-    this.jdField_a_of_type_ComTencentTavcutTimelineCoverSelectView.setPreviewBarElevation(15.0F);
-    localObject = new FrameLayout.LayoutParams(-1, -1);
-    ((FrameLayout.LayoutParams)localObject).gravity = 16;
-    this.jdField_a_of_type_ComTencentTavcutTimelineCoverSelectView.setTimelineViewPadding(k, m, k, m);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentTavcutTimelineCoverSelectView, (ViewGroup.LayoutParams)localObject);
+    if ((this.missionId != null) && (this.missionId.startsWith("multi_video_"))) {
+      return this.tavCutVideoSession.getDuration().getTimeUs() / 1000L;
+    }
+    return paramVideoResourceModel.getSelectTimeDuration();
   }
   
-  private void b()
+  private void saveDataAndQuit()
   {
-    a(true);
-    float f = this.jdField_a_of_type_ComTencentTavcutTimelineCoverSelectView.getCurrCoverProgress();
-    Object localObject2 = this.jdField_a_of_type_ComTencentTavcutTimelineCoverSelectView.getCurrCoverBitmap();
+    showLoading(true);
+    float f = this.coverSelectView.getCurrCoverProgress();
+    Object localObject2 = this.coverSelectView.getCurrCoverBitmap();
     if (localObject2 == null)
     {
-      bpam.d("AECoverSelectFragment", "获取封面图失败");
-      a(false);
+      bmbx.d("AECoverSelectFragment", "获取封面图失败");
+      showLoading(false);
       return;
     }
     for (;;)
@@ -111,76 +122,76 @@ public class AECoverSelectFragment
       try
       {
         Log.d("AECoverSelectFragment", "saveDataAndQuit: w=" + ((Bitmap)localObject2).getWidth() + " h=" + ((Bitmap)localObject2).getHeight());
-        String str = bpbq.e + File.separator + this.jdField_a_of_type_JavaLangString + "_" + System.currentTimeMillis() + ".JPG";
+        String str = bmda.e + File.separator + this.missionId + "_" + System.currentTimeMillis() + ".JPG";
         localFile = new File(str);
         if (localFile.getParentFile().exists()) {
           continue;
         }
         if (!localFile.getParentFile().mkdirs()) {
-          bpam.d("AECoverSelectFragment", "保存封面，创建父路径失败");
+          bmbx.d("AECoverSelectFragment", "保存封面，创建父路径失败");
         }
         if (!localFile.createNewFile()) {
-          bpam.d("AECoverSelectFragment", "保存封面，创建封面文件失败");
+          bmbx.d("AECoverSelectFragment", "保存封面，创建封面文件失败");
         }
-        if (!auog.a((Bitmap)localObject2, str)) {
+        if (!FileUtil.writeBitmapToFile((Bitmap)localObject2, str)) {
           continue;
         }
-        bpam.a("AECoverSelectFragment", "封面保存成功,path=" + str);
+        bmbx.a("AECoverSelectFragment", "封面保存成功,path=" + str);
         localObject2 = new Intent();
         ((Intent)localObject2).putExtra("key_video_cover_position", f);
         ((Intent)localObject2).putExtra("key_video_cover_path", str);
-        ((Intent)localObject2).putExtra("key_video_media_path", a());
+        ((Intent)localObject2).putExtra("key_video_media_path", getMediaPath());
         getActivity().setResult(-1, (Intent)localObject2);
       }
       catch (Exception localException)
       {
         File localFile;
         localException.printStackTrace();
-        bpam.d("AECoverSelectFragment", "封面保存出错:" + localException.toString());
+        bmbx.d("AECoverSelectFragment", "封面保存出错:" + localException.toString());
         getActivity().setResult(0);
         return;
-        bpam.d("AECoverSelectFragment", "封面保存出错");
+        bmbx.d("AECoverSelectFragment", "封面保存出错");
         getActivity().setResult(0);
         continue;
       }
       finally
       {
-        a(false);
+        showLoading(false);
         getActivity().finish();
       }
-      a(false);
+      showLoading(false);
       getActivity().finish();
       return;
-      auog.a(localFile.getParentFile());
+      FileUtil.deleteSubFile(localFile.getParentFile());
     }
   }
   
-  protected int a()
+  void bindViews(View paramView)
   {
-    return 2131558543;
+    this.tavCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378228));
+    this.llBottomContainer = ((LinearLayout)paramView.findViewById(2131370136));
+    this.flCoverSelectContainer = ((FrameLayout)paramView.findViewById(2131366760));
+    this.tvCancel = ((TextView)paramView.findViewById(2131379504));
+    this.tvConfirm = ((TextView)paramView.findViewById(2131379543));
+    this.tvCancel.setOnClickListener(this);
+    this.tvConfirm.setOnClickListener(this);
   }
   
-  void a(View paramView)
+  void customizeBindingData(VideoResourceModel paramVideoResourceModel)
   {
-    this.jdField_a_of_type_ComTencentTavcutViewTAVCutVideoView = ((TAVCutVideoView)paramView.findViewById(2131378461));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370141));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131366732));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379720));
-    this.b = ((TextView)paramView.findViewById(2131379760));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.b.setOnClickListener(this);
-  }
-  
-  void a(VideoResourceModel paramVideoResourceModel)
-  {
-    a();
-    this.jdField_a_of_type_ComTencentTavcutTimelineCoverSelectView.bindPlayer(this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer);
+    addCoverSelectView();
+    this.coverSelectView.bindPlayer(this.mMoviePlayer);
     Log.d("AECoverSelectFragment", "initTavCutAndPlayer: \nresource.selectDuration = " + paramVideoResourceModel.getSelectTimeDuration() + "\nresource.start = " + paramVideoResourceModel.getSelectTimeStart() + "\n resource.end = " + (paramVideoResourceModel.getSelectTimeStart() + paramVideoResourceModel.getSelectTimeDuration()));
-    this.jdField_a_of_type_ComTencentTavcutTimelineCoverSelectView.updateTavVideoSession(this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession);
-    this.jdField_a_of_type_ComTencentTavcutTimelineCoverSelectView.setClipAndSpeed(paramVideoResourceModel.getSpeed(), paramVideoResourceModel.getSelectTimeDuration(), paramVideoResourceModel.getSelectTimeStart(), paramVideoResourceModel.getSelectTimeStart() + paramVideoResourceModel.getSelectTimeDuration());
-    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.pause();
-    paramVideoResourceModel = CMTime.fromUs(((float)this.jdField_a_of_type_ComTencentTavcutSessionTAVCutVideoSession.getDuration().getTimeUs() * this.jdField_a_of_type_Float / 100.0F));
-    this.jdField_a_of_type_ComTencentTavcutPlayerMoviePlayer.seekToTime(paramVideoResourceModel);
+    this.coverSelectView.updateTavVideoSession(this.tavCutVideoSession);
+    this.coverSelectView.setClipAndSpeed(paramVideoResourceModel.getSpeed(), getTotalDuration(paramVideoResourceModel), paramVideoResourceModel.getSelectTimeStart(), paramVideoResourceModel.getSelectTimeStart() + getTotalDuration(paramVideoResourceModel));
+    this.mMoviePlayer.pause();
+    paramVideoResourceModel = CMTime.fromUs(((float)this.tavCutVideoSession.getDuration().getTimeUs() * this.defaultCoverProgress / 100.0F));
+    this.mMoviePlayer.seekToTime(paramVideoResourceModel);
+  }
+  
+  protected int getLayoutId()
+  {
+    return 2131558542;
   }
   
   public void onClick(View paramView)
@@ -195,19 +206,19 @@ public class AECoverSelectFragment
       getActivity().setResult(0);
       getActivity().finish();
       continue;
-      b();
+      saveDataAndQuit();
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Float = a();
+    this.defaultCoverProgress = getDefaultCoverProgress();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558543, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558542, paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }

@@ -1,32 +1,48 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.widget.PAHighLightImageView;
 import com.tencent.qphone.base.util.QLog;
 
-final class bhfs
-  implements DownloadParams.DecodeHandler
+public class bhfs
+  implements View.OnTouchListener
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  Context jdField_a_of_type_AndroidContentContext;
+  PAHighLightImageView jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView;
+  
+  public bhfs(PAHighLightImageView paramPAHighLightImageView, Context paramContext)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView = paramPAHighLightImageView;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("URLDrawableDecodeHandler", 2, "AVATAR_WALL_RECT__DECODER");
+      QLog.d("PAHighLightImageView", 2, "onTouch is called,action is:" + paramMotionEvent.getAction());
     }
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    Object localObject;
+    paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.getTag(2131373119);
+    if (paramView == null) {}
+    label100:
     do
     {
-      do
+      return false;
+      if (paramView.equals(Integer.valueOf(1))) {}
+      for (boolean bool = true;; bool = false)
       {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return bhmq.b(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+        if (paramMotionEvent.getAction() != 0) {
+          break label100;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.a(this.jdField_a_of_type_AndroidContentContext, bool);
+        return false;
+        if (!paramView.equals(Integer.valueOf(2))) {
+          break;
+        }
+      }
+    } while ((paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPAHighLightImageView.a();
+    return false;
   }
 }
 

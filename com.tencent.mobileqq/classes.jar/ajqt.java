@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.7.1;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 
 public class ajqt
-  implements ThreadExcutor.IThreadListener
 {
-  public ajqt(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  public ImageView a;
+  public URLDrawable a;
+  public URLImageView a;
+  public ImageView b;
   
-  public void onAdded() {}
-  
-  public void onPostRun()
-  {
-    ThreadManager.getUIHandler().post(new TroopNotifyAndRecommendView.7.1(this));
-  }
-  
-  public void onPreRun() {}
+  public ajqt(ajqs paramajqs) {}
 }
 
 

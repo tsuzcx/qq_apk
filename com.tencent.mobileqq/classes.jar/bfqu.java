@@ -1,9 +1,8 @@
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.ArrayList;
+import android.graphics.drawable.Drawable;
 
 public abstract interface bfqu
 {
-  public abstract void a(ArrayList<Entity> paramArrayList);
+  public abstract Drawable a();
 }
 
 

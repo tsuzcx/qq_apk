@@ -1,45 +1,31 @@
-import android.app.Activity;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
 
 class acut
-  extends acuv
+  implements bgql
 {
-  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
+  private final WeakReference<acup> a;
+  
+  acut(acup paramacup)
   {
-    if (paramacts != null) {}
-    for (Activity localActivity = paramacts.a(); (paramacts == null) || (localActivity == null); localActivity = null)
-    {
-      QLog.i("EndCardWebGdtMvWebEndcardClickHandler", 1, "webPlugin == null || activity == null");
-      return true;
-    }
-    String str = "";
-    try
-    {
-      QLog.i("EndCardWebGdtMvWebEndcardClickHandler", 1, "args = " + paramVarArgs[0]);
-      paramVarArgs = new JSONObject(paramVarArgs[0]).optString("antiSpam");
-      a(paramVarArgs);
-    }
-    catch (Throwable paramVarArgs)
-    {
-      try
-      {
-        paramacts.callJs(paramString, new String[] { "" });
-        AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "handleRewardVideoClick", paramacts.a());
-        return true;
-        paramVarArgs = paramVarArgs;
-        QLog.i("EndCardWebGdtMvWebEndcardClickHandler", 1, "json", paramVarArgs);
-        paramVarArgs = str;
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          QLog.i("EndCardWebGdtMvWebEndcardClickHandler", 1, "callJs", paramString);
-        }
+    this.a = new WeakReference(paramacup);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+      if (QLog.isColorLevel()) {
+        QLog.i("AutoLoginHelper", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
       }
     }
+    acup localacup;
+    do
+    {
+      return;
+      localacup = (acup)this.a.get();
+    } while (localacup == null);
+    localacup.a(paramString, paramBoolean);
   }
 }
 

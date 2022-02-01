@@ -1,36 +1,106 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ayon
-  implements View.OnClickListener
+public class ayon
 {
-  ayon(aynp paramaynp, int paramInt) {}
+  public int a;
+  public Bitmap a;
+  public String a;
+  public int b;
+  public Bitmap b;
+  public String b;
+  public Bitmap c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public void onClick(View paramView)
+  public ayon(int paramInt)
   {
-    PicInfo localPicInfo = (PicInfo)paramView.getTag();
-    if (localPicInfo == null) {}
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public static ayon a(int paramInt, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      blir localblir = blir.a(this.jdField_a_of_type_Aynp.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-      if (this.jdField_a_of_type_Int != 0) {
-        localblir.c(this.jdField_a_of_type_Aynp.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131693954));
+      return null;
+      try
+      {
+        paramString = a(paramString);
+        if (TextUtils.isEmpty(paramString)) {
+          continue;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("PraiseInfo", 2, "content:" + paramString);
+        }
+        paramString = new JSONObject(paramString);
+        ayon localayon = new ayon(paramInt);
+        localayon.jdField_a_of_type_JavaLangString = paramString.optString("name");
+        localayon.jdField_b_of_type_JavaLangString = paramString.optString("text");
+        if (paramString.has("color"))
+        {
+          String str = paramString.optString("color").trim();
+          paramString = str;
+          if (str.startsWith("0x")) {
+            paramString = str.substring(2);
+          }
+        }
+        try
+        {
+          localayon.jdField_b_of_type_Int = Color.parseColor("#" + paramString);
+          return localayon;
+        }
+        catch (Exception paramString)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("PraiseInfo", 2, "color invalid");
+            }
+          }
+        }
+        return null;
       }
-      localblir.c(anzj.a(2131706153));
-      if (this.jdField_a_of_type_Aynp.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
-        localblir.a(anzj.a(2131706236), 3);
+      catch (JSONException paramString)
+      {
+        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with JsonException.", paramString);
+        return null;
       }
-      localblir.c(2131690580);
-      localblir.a(new ayoo(this, paramView, localPicInfo, localblir));
-      localblir.show();
+      catch (IOException paramString)
+      {
+        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with IOException.", paramString);
+      }
     }
+  }
+  
+  private static String a(String paramString)
+  {
+    File localFile = new File(paramString);
+    if (!localFile.exists()) {
+      QLog.e("PraiseInfo", 1, paramString + " not exist!");
+    }
+    do
+    {
+      return null;
+      try
+      {
+        paramString = FileUtils.readFileToString(localFile);
+        return paramString;
+      }
+      catch (OutOfMemoryError paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("PraiseInfo", 2, paramString.getMessage());
+    return null;
   }
 }
 

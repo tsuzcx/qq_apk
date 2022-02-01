@@ -2,23 +2,23 @@ package com.tencent.biz.pubaccount.readinjoy.comment.helper;
 
 import kotlin.Metadata;
 import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
+import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Lambda;
-import ows;
+import oxs;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "isSuccess", "", "invoke"}, k=3, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "isSuccess", "", "errorCode", "", "invoke"}, k=3, mv={1, 1, 16})
 final class RIJCommentNetworkHelper$createFirstComment$1$1
   extends Lambda
-  implements Function1<Boolean, Unit>
+  implements Function2<Boolean, Integer, Unit>
 {
   RIJCommentNetworkHelper$createFirstComment$1$1(RIJCommentNetworkHelper.createFirstComment.1 param1, String paramString)
   {
-    super(1);
+    super(2);
   }
   
-  public final void invoke(boolean paramBoolean)
+  public final void invoke(boolean paramBoolean, int paramInt)
   {
-    this.this$0.$callback.a(this.this$0.$commentSeq, paramBoolean, 1, this.$commentId, this.this$0.$commentJsonStr, this.this$0.$feedsType, this.this$0.$isFeeds);
+    this.this$0.$callback.a(this.this$0.$commentSeq, paramBoolean, paramInt, 1, this.$commentId, this.this$0.$commentJsonStr, this.this$0.$feedsType, this.this$0.$isFeeds);
   }
 }
 

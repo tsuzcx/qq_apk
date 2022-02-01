@@ -1,32 +1,88 @@
-import android.text.TextUtils;
-import com.tencent.avgame.gameresult.GameResultFragment;
-import com.tencent.avgame.gameresult.GameResultFragment.3.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import androidx.annotation.NonNull;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class nan
-  implements aonu
+public abstract class nan
+  implements mzq
 {
-  public nan(GameResultFragment paramGameResultFragment) {}
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  String jdField_a_of_type_JavaLangString = "";
+  boolean jdField_a_of_type_Boolean = false;
+  String[] jdField_a_of_type_ArrayOfJavaLangString = new String[3];
+  String b = "";
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public int a()
   {
-    QLog.d("GameResultFragment", 1, "getShareLinkCallback isSuccess: " + paramBoolean + " shareUrl: " + paramString);
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
-    {
-      ThreadManager.getUIHandler().post(new GameResultFragment.3.1(this, paramString));
-      return;
-    }
-    QQToast.a(this.a.a(), 1, 2131690382, 0).a();
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  @Nullable
+  public String a()
+  {
+    return this.b;
+  }
+  
+  public List<? extends mzq> a()
+  {
+    return null;
+  }
+  
+  public abstract mzq a();
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a(mzq parammzq)
+  {
+    return (parammzq != null) && (parammzq.a() == a()) && (parammzq.b() == b());
+  }
+  
+  public String[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id").append("=").append(this.jdField_a_of_type_Int).append("|");
+    localStringBuilder.append("isTopicBank").append("=").append(this.jdField_a_of_type_Boolean).append("|");
+    localStringBuilder.append("gameType").append("=").append(b()).append("|");
+    localStringBuilder.append("content").append("=").append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuilder.append("answer").append("=").append(this.b).append("|");
+    localStringBuilder.append("buff type").append("=").append(this.jdField_a_of_type_ArrayOfJavaLangString[0]).append("|");
+    localStringBuilder.append("buff point").append("=").append(this.jdField_a_of_type_ArrayOfJavaLangString[1]).append("|");
+    localStringBuilder.append("buff color").append("=").append(this.jdField_a_of_type_ArrayOfJavaLangString[2]).append("|");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nan
  * JD-Core Version:    0.7.0.1
  */

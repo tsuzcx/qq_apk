@@ -1,24 +1,13 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.DrawerFrame;
 
-class bhdn
-  implements DialogInterface.OnKeyListener
+public class bhdn
+  implements View.OnClickListener
 {
-  bhdn(bhdm parambhdm) {}
+  public bhdn(DrawerFrame paramDrawerFrame) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4)
-    {
-      this.a.dismiss();
-      ((Activity)this.a.a.get()).finish();
-      return true;
-    }
-    return false;
-  }
+  public void onClick(View paramView) {}
 }
 
 

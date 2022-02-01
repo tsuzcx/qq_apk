@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
 import NS_MINI_AD.MiniAppAd.StGetAdRsp;
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import acov;
-import acow;
+import abld;
+import able;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.gdtad.api.adbox.GdtAdBoxData;
@@ -55,11 +55,11 @@ class AppBoxPlugin$MiniAppBox$2
             paramJSONObject = str1.substring(0, 1024);
             QLog.i("[minigame] MiniAppBox", 1, paramJSONObject);
             if (i != 0) {
-              break label524;
+              break label519;
             }
             paramBoolean = TextUtils.isEmpty(str1);
             if (paramBoolean) {
-              break label524;
+              break label519;
             }
             try
             {
@@ -86,31 +86,29 @@ class AppBoxPlugin$MiniAppBox$2
         }
       }
       this.this$0.destroy();
-      AppBoxPlugin.MiniAppBox.access$002(this.this$0, acov.a(this.val$activity).a(new GdtAdBoxData(str1)).a(new AppBoxPlugin.MiniAppBox.2.1(this)).a());
+      AppBoxPlugin.MiniAppBox.access$002(this.this$0, abld.a(this.val$activity).a(new GdtAdBoxData(str1)).a(new AppBoxPlugin.MiniAppBox.2.1(this)).a());
       AppBoxPlugin.MiniAppBox.access$100(this.this$0, true, "operateAppBox", this.val$compId, i, this.val$callbackId);
       AppBoxPlugin.MiniAppBox.access$500(this.this$0, localStGetAdRsp.strAdsJson.get(), this.val$adReq.ad_type.get());
-      if (localStGetAdRsp != null) {
-        try
+      try
+      {
+        if ((localStGetAdRsp.vecAppInfo != null) && (localStGetAdRsp.vecAppInfo.size() > 0) && (localStGetAdRsp.iPreLoadLevel.get() == 2L))
         {
-          if ((localStGetAdRsp.vecAppInfo != null) && (localStGetAdRsp.vecAppInfo.size() > 0) && (localStGetAdRsp.iPreLoadLevel.get() == 2L))
+          i = 0;
+          while (i < localStGetAdRsp.vecAppInfo.size())
           {
-            i = 0;
-            while (i < localStGetAdRsp.vecAppInfo.size())
-            {
-              GpkgManager.preloadGpkgByConfig(new MiniAppConfig(MiniAppInfo.from((INTERFACE.StApiAppInfo)localStGetAdRsp.vecAppInfo.get(i))));
-              i += 1;
-            }
-            j = PluginConst.AdConst.getRetCodeByServerResult(i);
+            GpkgManager.preloadGpkgByConfig(new MiniAppConfig(MiniAppInfo.from((INTERFACE.StApiAppInfo)localStGetAdRsp.vecAppInfo.get(i))));
+            i += 1;
           }
-        }
-        catch (Throwable paramJSONObject)
-        {
-          QLog.e("[minigame] MiniAppBox", 1, "preloadGpkgByConfig failed:" + paramJSONObject.getMessage());
-          return;
+          j = PluginConst.AdConst.getRetCodeByServerResult(i);
         }
       }
+      catch (Throwable paramJSONObject)
+      {
+        QLog.e("[minigame] MiniAppBox", 1, "preloadGpkgByConfig failed:" + paramJSONObject.getMessage());
+        return;
+      }
     }
-    label524:
+    label519:
     int j;
     if (j != -1)
     {

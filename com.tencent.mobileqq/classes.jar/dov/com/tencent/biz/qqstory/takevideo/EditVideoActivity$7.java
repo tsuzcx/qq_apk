@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bqcu;
-import bqgk;
+import bncy;
+import bnee;
 
 class EditVideoActivity$7
   implements Runnable
@@ -10,7 +10,7 @@ class EditVideoActivity$7
   
   public void run()
   {
-    this.this$0.a.a.j();
+    this.this$0.a.a.k();
   }
 }
 

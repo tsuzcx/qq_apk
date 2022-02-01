@@ -1,24 +1,25 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class nsa
+class nsa
+  extends Handler
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View jdField_b_of_type_AndroidViewView;
-  public ImageView b;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  public ImageView c;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  View jdField_d_of_type_AndroidViewView;
-  public ImageView d;
-  TextView jdField_d_of_type_AndroidWidgetTextView;
-  ImageView e;
+  nsa(nrz paramnrz, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  nsa(nrk paramnrk) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a = true;
+    nrz.a(this.a);
+  }
 }
 
 

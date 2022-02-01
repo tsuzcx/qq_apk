@@ -1,31 +1,26 @@
-import android.os.Bundle;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import java.util.ArrayList;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/handler/AuthorDeleteCommentHandler$send0xd1eRequest$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ovz
-  extends nkq
+class ovz
+  extends owd
 {
-  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
+  ovz(ouu paramouu, int paramInt)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
-      this.a.a(paramArrayOfByte);
-      return;
-    }
-    this.a.a(paramInt, "Empty error message.");
+    super(paramouu, null);
   }
   
-  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
+  void a(owg paramowg)
   {
-    paramBundle = this.a;
-    if (paramString != null) {}
-    for (;;)
+    if (paramowg == null) {}
+    do
     {
-      paramBundle.a(paramInt, paramString);
-      return true;
-      paramString = "Empty error message.";
-    }
+      return;
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        paramowg.onCommentListLoad(1, false, new ArrayList(), false, 3, 3);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 2);
+    paramowg.onCommentLoadMore(1, false, new ArrayList(), false, 3);
   }
 }
 

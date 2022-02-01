@@ -1,29 +1,21 @@
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class awob
+  implements AbsListView.OnScrollListener
 {
-  public static String a(int paramInt)
+  public awob(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return " Unknow playState ";
-    case 0: 
-      return " IDLE ";
-    case 1: 
-      return " BUFFERING ";
-    case 2: 
-      return " PLAYING ";
-    case 3: 
-      return " PAUSE ";
-    case 4: 
-      return " STOP ";
-    case 5: 
-      return " ERROR_INTERNAL ";
-    case 7: 
-      return " ERROR_FOCUS ";
-    case 6: 
-      return " NETWORK_INTERRUPT ";
+    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
+    if (paramInt == 1) {
+      bjmm.b(ChooseInterestTagActivity.a(this.a));
     }
-    return " COMPLETION ";
   }
 }
 

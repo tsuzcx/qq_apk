@@ -1,37 +1,38 @@
-import android.support.v4.util.ArraySet;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-public class ardh
+class ardh
+  implements URLDrawable.URLDrawableListener
 {
-  public ArraySet<String> a = new ArraySet();
+  ardh(arcu paramarcu, String paramString) {}
   
-  public static ardh a(String paramString)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    localardh = new ardh();
-    try
-    {
-      paramString = new JSONObject(paramString).getJSONArray("white_list");
-      int i = 0;
-      while (i < paramString.length())
-      {
-        localardh.a.add(paramString.optString(i, ""));
-        i += 1;
-      }
-      return localardh;
+    if (QLog.isColorLevel()) {
+      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url onLoadCanceled:" + this.jdField_a_of_type_JavaLangString);
     }
-    catch (Throwable paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("BroadcastConfProcessor", 2, paramString, new Object[0]);
-      }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url failed:" + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("IPC_CMD_PRELOAD_IMAGE", 2, "handle url down:" + this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.log;
 
-import awuz;
+import avif;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import mqq.app.MobileQQ;
 public class ReportLog$3
   implements Runnable
 {
-  public ReportLog$3(awuz paramawuz, MobileQQ paramMobileQQ) {}
+  public ReportLog$3(avif paramavif, MobileQQ paramMobileQQ) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class ReportLog$3
       {
         localObject = (QQAppInterface)localObject;
         QLog.d("ReportLog", 1, "uncaughtException QQAppInterface exit.");
-        ((QQAppInterface)localObject).b(false);
+        ((QQAppInterface)localObject).exit(false);
       }
     }
   }

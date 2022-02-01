@@ -4,7 +4,7 @@ import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
 import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByLinkRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bhuf;
+import bgau;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -38,7 +38,7 @@ public class MiniAppGetAppInfoByLinkForSDKServlet
       }
       paramArrayOfByte = MiniAppInfo.from(((INTERFACE.StGetAppInfoByLinkRsp)localObject).appInfo);
       localObject = ((INTERFACE.StGetAppInfoByLinkRsp)localObject).shareTicket.get();
-      paramBundle.putParcelable("appInfo", paramArrayOfByte);
+      paramBundle.putParcelable("mini_app_info_data", paramArrayOfByte);
       paramBundle.putString("shareTicket", (String)localObject);
       QLog.i("[mini] MiniAppGetAppInfoByLinkForSDKServlet", 1, "[MiniEng]" + paramArrayOfByte.downloadUrl + "," + paramArrayOfByte.fileSize);
       notifyObserver(paramIntent, this.observerId, true, paramBundle, MiniAppObserver.class);
@@ -60,7 +60,7 @@ public class MiniAppGetAppInfoByLinkForSDKServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_info.GetAppInfoByLink");
-    paramPacket.putSendData(bhuf.a((byte[])localObject));
+    paramPacket.putSendData(bgau.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }

@@ -1,188 +1,86 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class vrd
+  extends vsv
 {
-  public static int a;
-  public static int b;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130846618);
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public Long a;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130844021);
-  public Long b;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
-  public int c;
-  public Long c;
-  private String c;
-  public int d = 2;
-  public int e;
-  private int f;
-  private int g;
-  private int h = jdField_a_of_type_Int;
+  public static final String a;
+  public static final String b = vpl.a("StorySvc.del_feed_comment");
+  public static final String c = vpl.a("StorySvc.get_comment_list");
+  protected int a;
+  protected vrr a;
+  protected boolean a;
+  private String d;
   
   static
   {
-    jdField_b_of_type_Int = 1;
+    jdField_a_of_type_JavaLangString = vpl.a("StorySvc.add_feed_comment");
   }
   
-  public int a()
+  public vrd(vrr paramvrr)
   {
-    return this.e;
+    this.jdField_a_of_type_Vrr = paramvrr;
   }
   
-  public Drawable a()
+  public static void a(CommentEntry paramCommentEntry, vtb paramvtb)
   {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    paramCommentEntry = new vrh(paramCommentEntry, paramvtb);
+    paramvtb = new vri(paramvtb);
+    vsx.a().a(paramCommentEntry, paramvtb);
   }
   
-  public ImageView a()
+  public static void a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public vrd a(int paramInt)
-  {
-    this.e = paramInt;
-    return this;
-  }
-  
-  public vrd a(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    return this;
-  }
-  
-  public vrd a(ImageView paramImageView)
-  {
-    if (paramImageView != null)
+    long l = System.currentTimeMillis();
+    Object localObject1 = null;
+    try
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        paramImageView.setTag(2131373996, this.jdField_a_of_type_JavaLangString);
-      }
+      Object localObject2 = new JSONObject();
+      ((JSONObject)localObject2).putOpt("vid", paramString3);
+      ((JSONObject)localObject2).putOpt("feedid", paramString4);
+      ((JSONObject)localObject2).putOpt("pvid", paramString5);
+      ((JSONObject)localObject2).putOpt("styles", new JSONArray(paramString6));
+      localObject2 = ((JSONObject)localObject2).toString();
+      localObject1 = localObject2;
     }
-    return this;
-  }
-  
-  public vrd a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setTag(2131373996, this.jdField_a_of_type_JavaLangString);
-    }
-    return this;
-  }
-  
-  public vrd a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.f;
-  }
-  
-  public Drawable b()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public vrd b(int paramInt)
-  {
-    this.f = paramInt;
-    return this;
-  }
-  
-  public vrd b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public vrd b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    return this.g;
-  }
-  
-  public String c()
-  {
-    return this.c;
-  }
-  
-  public vrd c(int paramInt)
-  {
-    this.g = paramInt;
-    return this;
-  }
-  
-  public vrd c(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
-  
-  public boolean c()
-  {
-    if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && ((this.jdField_a_of_type_AndroidWidgetImageView.getTag(2131373996) instanceof String)))
+    catch (JSONException localJSONException)
     {
-      String str = (String)this.jdField_a_of_type_AndroidWidgetImageView.getTag(2131373996);
-      if (QCircleFeedPicLoader.a(str).equals(QCircleFeedPicLoader.a(this.jdField_a_of_type_JavaLangString)))
+      for (;;)
       {
-        QLog.i(QCircleFeedPicLoader.jdField_a_of_type_JavaLangString, 1, "seq = " + this.e + " is valid, url" + this.jdField_a_of_type_JavaLangString);
-        return true;
+        QLog.e("Q.qqstory:FeedCommentDataProvider", 2, "addGamePKComment jsonException " + localJSONException);
       }
-      QLog.i(QCircleFeedPicLoader.jdField_a_of_type_JavaLangString, 1, "seq = " + this.e + " is unValid, tagUrl:" + str + "-----original url:" + this.jdField_a_of_type_JavaLangString);
-      return false;
     }
-    QLog.i(QCircleFeedPicLoader.jdField_a_of_type_JavaLangString, 1, "seq = " + this.e + " unValid mTargetView is empty,isFromPreload:" + this.jdField_a_of_type_Boolean);
-    return false;
+    a(paramString1, null, paramString2, l, paramInt, localObject1, 4, new vre(paramString1, paramInt, l, paramString2, paramString3, paramString4, paramString5, paramString6));
   }
   
-  public int d()
+  public static void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, String paramString4, int paramInt2, vtb paramvtb)
   {
-    return this.h;
+    paramString1 = new vrf(paramString1, paramString2, paramString3, paramLong, paramInt1, paramString4, paramInt2, paramvtb);
+    paramString2 = new vrg(paramvtb);
+    vsx.a().a(paramString1, paramString2);
   }
   
-  public vrd d(int paramInt)
+  public static void b(CommentEntry paramCommentEntry, vtb paramvtb)
   {
-    this.h = paramInt;
-    return this;
+    paramCommentEntry = new vrf(paramCommentEntry, paramvtb);
+    paramvtb = new vrg(paramvtb);
+    vsx.a().a(paramCommentEntry, paramvtb);
+  }
+  
+  public void a()
+  {
+    a(this.jdField_a_of_type_Vrr.a.feedId, 0);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    paramString = new vrj(this, paramString, paramInt);
+    vrk localvrk = new vrk(this);
+    vsx.a().a(paramString, localvrk);
   }
 }
 

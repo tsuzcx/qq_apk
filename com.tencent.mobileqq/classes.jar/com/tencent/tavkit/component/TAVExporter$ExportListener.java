@@ -6,7 +6,7 @@ public abstract interface TAVExporter$ExportListener
   
   public abstract void onExportCompleted(String paramString);
   
-  public abstract void onExportError();
+  public abstract void onExportError(int paramInt, Throwable paramThrowable);
   
   public abstract void onExportStart();
   

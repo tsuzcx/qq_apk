@@ -1,18 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileOption;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
 public class auzg
-  implements View.OnClickListener
+  implements avbg
 {
-  public auzg(ForwardFileOption paramForwardFileOption) {}
+  public Object a;
   
-  public void onClick(View paramView)
+  private auzg(ListenTogetherManager paramListenTogetherManager)
   {
-    this.a.F();
-    ForwardFileOption.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangObject = new Object();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaLangObject == null) {}
+    while (paramInt == 0) {
+      return;
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaLangObject.notifyAll();
+      return;
+    }
   }
 }
 

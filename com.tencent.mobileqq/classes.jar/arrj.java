@@ -1,64 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Rect;
+import android.view.View;
 
-public class arrj
+public abstract interface arrj
 {
-  private String a = "";
-  private String b = "";
+  public abstract int a();
   
-  public static arrj a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0)) {
-      paramArrayOfaraj = null;
-    }
-    arrj localarrj;
-    for (;;)
-    {
-      return paramArrayOfaraj;
-      localarrj = new arrj();
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaraj[0].a);
-        if (localJSONObject.has("AndroidDrawerJumpURL"))
-        {
-          localarrj.a = localJSONObject.getString("AndroidDrawerJumpURL");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTencentDocUserConfigCmd AndroidDrawerJumpURL = " + localarrj.a);
-          }
-        }
-        paramArrayOfaraj = localarrj;
-        if (localJSONObject.has("AndroidAioJumpURL"))
-        {
-          localarrj.b = localJSONObject.getString("AndroidAioJumpURL");
-          paramArrayOfaraj = localarrj;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTencentDocUserConfigCmd AndroidAioJumpURL = " + localarrj.b);
-            return localarrj;
-          }
-        }
-      }
-      catch (JSONException paramArrayOfaraj)
-      {
-        paramArrayOfaraj.printStackTrace();
-      }
-    }
-    return localarrj;
-  }
+  public abstract Rect a(int paramInt);
   
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.a)) {
-      return null;
-    }
-    return this.a;
-  }
+  public abstract View a(int paramInt);
+  
+  public abstract int b();
+  
+  public abstract int c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arrj
  * JD-Core Version:    0.7.0.1
  */

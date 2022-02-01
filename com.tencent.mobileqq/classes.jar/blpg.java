@@ -1,8 +1,33 @@
-import com.tencent.widget.ScrollView;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public abstract interface blpg
+class blpg
+  extends Handler
 {
-  public abstract void a(ScrollView paramScrollView, int paramInt, boolean paramBoolean);
+  blpg(blpb paramblpb, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      zxp.a("mystatus_shoot", "comp_recomm", 0, 0, new String[0]);
+      paramMessage = paramMessage.getData();
+      int i = paramMessage.getInt("sceneLvOne");
+      paramMessage = paramMessage.getString("sceneName");
+      this.a.a(i, paramMessage, true);
+      return;
+    }
+    zxp.a("mystatus_shoot", "exp_recomm", 0, 0, new String[0]);
+    this.a.a();
+  }
 }
 
 

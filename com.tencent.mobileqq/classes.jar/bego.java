@@ -1,28 +1,7 @@
-import android.graphics.Paint;
-import android.support.annotation.NonNull;
-
-public abstract class bego
+public abstract interface bego
+  extends befv
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public bego(int paramInt, @NonNull String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  abstract float a(@NonNull Paint paramPaint);
-  
-  int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public abstract void a(int paramInt);
 }
 
 

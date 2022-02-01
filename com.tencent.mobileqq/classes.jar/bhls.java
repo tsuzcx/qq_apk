@@ -1,27 +1,22 @@
-import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
-final class bhls
+public final class bhls
   implements DialogInterface.OnClickListener
 {
-  bhls(Activity paramActivity) {}
+  public bhls(Context paramContext) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 1)
-    {
-      paramDialogInterface = new Intent("android.settings.action.MANAGE_WRITE_SETTINGS");
-      paramDialogInterface.setData(Uri.fromParts("package", this.a.getPackageName(), null));
-      this.a.startActivity(paramDialogInterface);
-    }
+    bhlw.c();
+    FloatingScreenPermission.requestPermission(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhls
  * JD-Core Version:    0.7.0.1
  */

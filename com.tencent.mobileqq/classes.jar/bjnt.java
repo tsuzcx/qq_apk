@@ -1,32 +1,66 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.OpenCardContainer;
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseArray;
+import android.view.View;
+import com.tencent.widget.AbsSpinner;
 
 public class bjnt
-  extends Handler
 {
-  public bjnt(OpenCardContainer paramOpenCardContainer, Looper paramLooper)
+  private final SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  
+  public bjnt(AbsSpinner paramAbsSpinner) {}
+  
+  public View a(int paramInt)
   {
-    super(paramLooper);
+    View localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localView != null) {
+      this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt);
+    }
+    return localView;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
+    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
+    int j = localSparseArray.size();
+    int i = 0;
+    while (i < j)
     {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("SDK_LOGIN.OpenCardContainer", 2, "-->handleMessage MSG_UPDATE");
+      View localView = (View)localSparseArray.valueAt(i);
+      if (localView != null) {
+        AbsSpinner.a(this.jdField_a_of_type_ComTencentWidgetAbsSpinner, localView, true);
       }
-      OpenCardContainer.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      i += 1;
+    }
+    localSparseArray.clear();
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramView);
+  }
+  
+  public void b()
+  {
+    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
+    int j = localSparseArray.size();
+    int i = 0;
+    View localView;
+    if (i < j)
+    {
+      localView = (View)localSparseArray.valueAt(i);
+      if ((localView == null) || (!(localView.getTag(2131367367) instanceof Boolean))) {
+        break label94;
+      }
+    }
+    label94:
+    for (boolean bool = ((Boolean)localView.getTag(2131367367)).booleanValue();; bool = true)
+    {
+      if ((localView != null) && (bool)) {
+        AbsSpinner.b(this.jdField_a_of_type_ComTencentWidgetAbsSpinner, localView, true);
+      }
+      i += 1;
+      break;
+      localSparseArray.clear();
+      return;
     }
   }
 }

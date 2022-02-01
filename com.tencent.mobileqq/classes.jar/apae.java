@@ -1,32 +1,37 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 public class apae
-  extends aoxh
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  public int a;
+  public apaf a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
+  
+  public apae()
   {
-    paramQQAppInterface = new apad(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "commonBuddyGroup";
-    paramQQAppInterface.c = "open";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {}
-    for (;;)
-    {
-      return paramQQAppInterface;
-      paramContext = paramContext[1].split("&");
-      int j = paramContext.length;
-      int i = 0;
-      while (i < j)
-      {
-        paramString = paramContext[i].split("=");
-        if (paramString.length == 2) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
-      }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("|_DownloadParam_start");
+    localStringBuilder.append("|").append(" type:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|").append(" md5:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("|").append(" endFix:").append(this.c);
+    localStringBuilder.append("|").append(" retryCount:").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("|").append(" needUnzip:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("|").append(" needVerify:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("|").append(" url:").append(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_JavaLangObject != null) {
+      localStringBuilder.append("|").append(" userData:").append(this.jdField_a_of_type_JavaLangObject);
     }
+    localStringBuilder.append("|end");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,24 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.launchbean.QCircleFolderBean;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.media.MediaCodec.BufferInfo;
+import java.nio.ByteBuffer;
 
-class baga
-  implements View.OnClickListener
+public class baga
 {
-  baga(bafx parambafx) {}
+  public int a;
+  public MediaCodec.BufferInfo a;
+  public ByteBuffer a;
   
-  public void onClick(View paramView)
-  {
-    QLog.d("ProfileCircleComponent", 4, "qqCircleWriteEntrance onClick");
-    QCircleFolderBean localQCircleFolderBean = new QCircleFolderBean();
-    localQCircleFolderBean.setPublish(true);
-    localQCircleFolderBean.setLaunchFrom("5");
-    uyx.a(bafx.a(this.a), localQCircleFolderBean);
-    vtq.a("", 3, 2, 2);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public baga(bafz parambafz) {}
 }
 
 

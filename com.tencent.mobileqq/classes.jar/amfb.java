@@ -1,19 +1,29 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONArray;
 
 class amfb
-  implements View.OnClickListener
+  implements ameb
 {
-  amfb(amez paramamez) {}
+  amfb(amfa paramamfa) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    GroupManagerActivity.a((Activity)amez.a(this.a));
-    bdll.b(amez.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.d("ApolloPluginRscLoader", 1, "getApolloRsc checkDownloadFaceData onDownLoadFinish: sucess:" + paramBoolean);
+    Object localObject = this.a.jdField_a_of_type_Amez;
+    String str = this.a.jdField_a_of_type_JavaLangString;
+    if (this.a.jdField_a_of_type_JavaIoFile.exists()) {}
+    for (paramInt = 0;; paramInt = 2)
+    {
+      localObject = amez.a((amez)localObject, 6, str, paramInt);
+      this.a.jdField_a_of_type_OrgJsonJSONArray.put(localObject);
+      if ((this.a.jdField_a_of_type_ArrayOfInt != null) && (this.a.jdField_a_of_type_ArrayOfInt.length > 0)) {
+        break;
+      }
+      this.a.jdField_a_of_type_Amez.a(this.a.b, amtj.a(2131699638), this.a.jdField_a_of_type_OrgJsonJSONArray);
+      return;
+    }
+    amez.a(this.a.jdField_a_of_type_Amez, this.a.jdField_a_of_type_ArrayOfInt, this.a.b, this.a.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 

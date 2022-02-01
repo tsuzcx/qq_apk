@@ -3,8 +3,8 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.tencent.mobileqq.activity.contacts.base.HeaderScrollView android:orientation="vertical" android:id="@id/d50" android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <LinearLayout android:orientation="vertical" android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ViewStub android:id="@id/mmn" android:layout="@layout/cqx" android:layout_width="fill_parent" android:layout_height="44.0dip" />
-            <ViewStub android:id="@id/me5" android:layout="@layout/cqw" android:layout_width="fill_parent" android:layout_height="30.0dip" />
+            <ViewStub android:id="@id/mo4" android:layout="@layout/cnv" android:layout_width="fill_parent" android:layout_height="44.0dip" />
+            <ViewStub android:id="@id/mgv" android:layout="@layout/cnu" android:layout_width="fill_parent" android:layout_height="30.0dip" />
             <LinearLayout android:orientation="vertical" android:background="@drawable/skin_searchbar_bg_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <RelativeLayout android:id="@id/jb3" android:background="@drawable/skin_searchbar_input_theme_version2" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip">
                     <TextView android:textSize="17.0sp" android:textColor="@color/skin_hint_input_theme_version2" android:gravity="center" android:id="@id/ijx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/foh" android:drawableLeft="@drawable/skin_searchbar_icon_theme_version2" android:drawablePadding="3.0dip" android:layout_centerInParent="true" />

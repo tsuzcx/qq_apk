@@ -1,22 +1,19 @@
-import android.widget.LinearLayout;
+import android.view.View;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
 public class afxe
-  extends bgrd
+  extends aezf
 {
-  public afxe(TroopRequestActivity paramTroopRequestActivity) {}
-  
-  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
-  {
-    if ((paramBoolean) && (paramAccountDetail != null))
-    {
-      this.a.j.setText(paramAccountDetail.name);
-      this.a.b.setVisibility(0);
-      this.a.e();
-    }
-  }
+  public TextView a;
+  public AutoStartProgressBar a;
+  public ArkAppLoadLayout a;
+  public ArkAppView a;
+  public String b;
+  public View c;
+  public View d;
 }
 
 

@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pfd;
-import ppe;
+import pkp;
+import pum;
 
 public class FastWebModule$6
   implements Runnable
 {
-  public FastWebModule$6(ppe paramppe) {}
+  public FastWebModule$6(pum parampum) {}
   
   public void run()
   {
-    pfd.a().d();
+    pkp.a().d();
   }
 }
 

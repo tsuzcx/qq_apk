@@ -1,13 +1,37 @@
-import android.graphics.Bitmap;
-import android.view.animation.Animation;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public abstract interface zdu
+class zdu
+  implements zkl
 {
-  public abstract void a(Animation paramAnimation);
+  zdu(zds paramzds, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public abstract Bitmap b();
-  
-  public abstract void b(Animation paramAnimation);
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      zxp.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "clk_unfollow", 0, 0, new String[0]);
+      paramString = this.jdField_a_of_type_Zds.a().iterator();
+      while (paramString.hasNext()) {
+        if (TextUtils.equals(((CertifiedAccountMeta.StFeed)paramString.next()).poster.id.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get())) {
+          paramString.remove();
+        }
+      }
+      this.jdField_a_of_type_Zds.notifyDataSetChanged();
+      QQToast.a(zds.a(this.jdField_a_of_type_Zds), 2, amtj.a(2131690670), 0).a();
+      if (this.jdField_a_of_type_Zds.a().size() < 5) {
+        this.jdField_a_of_type_Zds.a();
+      }
+    }
+    if (paramBoolean2) {
+      zxp.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "clk_cancel", 0, 0, new String[0]);
+    }
+  }
 }
 
 

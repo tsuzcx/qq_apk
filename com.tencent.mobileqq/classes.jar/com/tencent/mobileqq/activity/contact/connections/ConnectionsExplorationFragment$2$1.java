@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contact.connections;
 
+import amvo;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import aobl;
 import java.util.ArrayList;
 
 class ConnectionsExplorationFragment$2$1

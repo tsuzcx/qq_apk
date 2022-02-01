@@ -1,9 +1,16 @@
-import com.tencent.pb.now.ilive_feeds_read.FeedsInfo;
-import java.util.List;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public abstract interface ayrv
+class ayrv
+  implements Handler.Callback
 {
-  public abstract void a(boolean paramBoolean1, List<ilive_feeds_read.FeedsInfo> paramList, boolean paramBoolean2, int paramInt);
+  ayrv(ayrt paramayrt) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    this.a.b(paramMessage);
+    return true;
+  }
 }
 
 

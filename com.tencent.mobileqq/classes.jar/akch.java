@@ -1,24 +1,18 @@
-import android.support.v4.app.FragmentActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import eipc.EIPCResult;
 
-public class akch
-  extends akbz
+class akch
+  implements akbj
 {
-  public static final int[] a = { 2131690662 };
-  public static final int[] b = { 2131364408 };
+  akch(akbx paramakbx, int paramInt) {}
   
-  public akch(FragmentActivity paramFragmentActivity)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    super(paramFragmentActivity);
-  }
-  
-  protected int[] a()
-  {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return a;
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result_code", paramInt);
+    localBundle.putSerializable("path_result", paramPathResult);
+    this.jdField_a_of_type_Akbx.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 

@@ -1,30 +1,43 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.util.VersionUtils;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import java.io.File;
+import java.util.Map;
 
-public class akax
-  implements View.OnClickListener
+class akax
+  extends akbt
 {
-  public akax(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
-  
-  public void onClick(View paramView)
+  akax(akaw paramakaw, bgod parambgod)
   {
-    if (!this.a.d)
+    super(parambgod);
+  }
+  
+  public void onDoneFile(bgoe parambgoe)
+  {
+    long l2 = -1L;
+    super.onDoneFile(parambgoe);
+    if ((parambgoe != null) && (parambgoe.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(parambgoe.jdField_a_of_type_JavaLangString)))
     {
-      if (!VersionUtils.isHoneycomb()) {
-        break label40;
+      File localFile = (File)parambgoe.jdField_a_of_type_JavaUtilMap.get(parambgoe.jdField_a_of_type_JavaLangString);
+      if (localFile != null)
+      {
+        Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        if (localObject != null)
+        {
+          localObject = (PreDownloadController)((QQAppInterface)localObject).getManager(193);
+          String str = parambgoe.jdField_a_of_type_JavaLangString;
+          long l1 = l2;
+          if (parambgoe.jdField_a_of_type_Int == 0)
+          {
+            l1 = l2;
+            if (localFile.exists()) {
+              l1 = localFile.length();
+            }
+          }
+          ((PreDownloadController)localObject).preDownloadSuccess(str, l1);
+        }
       }
-      this.a.startActivity(new Intent("android.settings.SETTINGS"));
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label40:
-      this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
     }
   }
 }

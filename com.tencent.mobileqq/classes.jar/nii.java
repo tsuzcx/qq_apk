@@ -1,50 +1,75 @@
-import android.opengl.GLES20;
-import com.tencent.avgame.videorecord.GameVideoDarkCoverFilter.1;
-import java.nio.FloatBuffer;
+import com.tencent.avgame.ui.AVGameRoomCenterFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class nii
-  extends nig
+  extends mya
 {
-  private int g;
+  public nii(AVGameRoomCenterFragment paramAVGameRoomCenterFragment) {}
   
-  public nii()
+  public void a(boolean paramBoolean, long paramLong, List<nil> paramList, int paramInt1, List<Long> paramList1, int paramInt2, String paramString)
   {
-    super("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\n \nvarying vec2 textureCoordinate;\n \nvoid main()\n{\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate.xy;\n}", "precision mediump float;\nuniform vec4 coverColor;\nvoid main()\n{\n\tgl_FragColor = coverColor;\n}");
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    a(new GameVideoDarkCoverFilter.1(this, paramFloat1, paramFloat2, paramFloat3, paramFloat4));
-  }
-  
-  public void a(int paramInt, FloatBuffer paramFloatBuffer1, FloatBuffer paramFloatBuffer2)
-  {
-    if (!a()) {
-      a();
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = AVGameRoomCenterFragment.a;
+      StringBuilder localStringBuilder = new StringBuilder().append("mObserver get isSuc : ").append(paramBoolean).append(" uin : ").append(paramLong).append(" playersNum:").append(paramInt1).append(" bannerlist size:");
+      if (paramList != null)
+      {
+        paramString = Integer.valueOf(paramList.size());
+        QLog.d((String)localObject, 2, paramString);
+      }
     }
-    GLES20.glEnable(3042);
-    GLES20.glBlendFunc(770, 771);
-    GLES20.glUseProgram(this.jdField_a_of_type_Int);
-    g();
-    paramFloatBuffer1.position(0);
-    GLES20.glVertexAttribPointer(this.jdField_b_of_type_Int, 2, 5126, false, 0, paramFloatBuffer1);
-    GLES20.glEnableVertexAttribArray(this.jdField_b_of_type_Int);
-    GLES20.glDrawArrays(5, 0, 4);
-    GLES20.glDisableVertexAttribArray(this.jdField_b_of_type_Int);
-    c();
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.g = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "coverColor");
-  }
-  
-  public void h()
-  {
-    GLES20.glEnable(3042);
-    GLES20.glBlendFunc(770, 771);
-    a(-1, this.jdField_b_of_type_JavaNioFloatBuffer, this.jdField_a_of_type_JavaNioFloatBuffer);
+    else
+    {
+      if (!paramBoolean) {
+        return;
+      }
+      paramInt2 = 0;
+      label93:
+      if (paramInt2 >= AVGameRoomCenterFragment.a(this.a).a()) {
+        break label311;
+      }
+      if (AVGameRoomCenterFragment.a(this.a).a(paramInt2) != null) {
+        break label139;
+      }
+    }
+    for (;;)
+    {
+      paramInt2 += 1;
+      break label93;
+      paramString = "";
+      break;
+      label139:
+      switch (AVGameRoomCenterFragment.a(this.a).a(paramInt2).a())
+      {
+      default: 
+        break;
+      case 0: 
+        paramString = (myv)AVGameRoomCenterFragment.a(this.a).a(paramInt2);
+        if (paramString != null) {
+          paramString.a(paramList);
+        }
+        break;
+      case 1: 
+        paramString = (myx)AVGameRoomCenterFragment.a(this.a).a(paramInt2);
+        if ((paramString != null) && (paramList1 != null))
+        {
+          paramString.a(paramInt1);
+          localObject = new String[paramList1.size()];
+          int i = 0;
+          while (i < paramList1.size())
+          {
+            localObject[i] = ((Long)paramList1.get(i)).toString();
+            i += 1;
+          }
+          paramString.a((String[])localObject);
+        }
+        break;
+      }
+    }
+    label311:
+    AVGameRoomCenterFragment.a(this.a).notifyDataSetChanged();
   }
 }
 

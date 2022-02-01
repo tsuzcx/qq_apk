@@ -1,51 +1,43 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.AnimationPoint;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.RspBody;
+import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.TransFileRspBody;
 
-public class zsd
-  extends ReportDialog
+public abstract class zsd
+  extends nmf
 {
-  protected TextView a;
-  protected AnimationPoint a;
-  
-  public zsd(Context paramContext)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    super(paramContext, 2131755016);
-    View localView = LayoutInflater.from(paramContext).inflate(2131561792, null);
-    localView.setOnTouchListener(new zse(this));
-    super.setContentView(localView);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131362692));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367800));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setRadius(zps.a(paramContext, 25.0F));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setLoopTime(2000L);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setDuration(4000L);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setOnAnimationListener(new zsf(this, paramContext));
+    b(paramInt, paramArrayOfByte, paramBundle);
   }
   
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-  }
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d9.TransFileRspBody paramTransFileRspBody, Bundle paramBundle);
   
-  public void a(boolean paramBoolean)
+  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setIsVertical(paramBoolean);
-  }
-  
-  public void dismiss()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.b();
-    super.dismiss();
-  }
-  
-  public void show()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.a();
-    super.show();
+    if (paramInt != 0)
+    {
+      a(false, paramInt, null, paramBundle);
+      return;
+    }
+    oidb_0x6d9.RspBody localRspBody = new oidb_0x6d9.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d9.TransFileRspBody)localRspBody.trans_file_rsp.get();
+      if (paramArrayOfByte.int32_ret_code.has())
+      {
+        a(true, 0, paramArrayOfByte, paramBundle);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null, paramBundle);
+      return;
+    }
+    a(false, -1, null, paramBundle);
   }
 }
 

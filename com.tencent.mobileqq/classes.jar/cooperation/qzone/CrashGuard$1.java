@@ -12,7 +12,7 @@ class CrashGuard$1
   {
     this.this$0.isTimeOvered.set(true);
     QLog.i("QZLog", 1, "clear crash count with no crash");
-    LocalMultiProcConfig.putInt4Uin("key_crash_count", 0, this.a);
+    LocalMultiProcConfig.putInt4Uin("key_crash_count", 0, this.val$uin);
   }
 }
 

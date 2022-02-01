@@ -1,33 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.util.List;
 
-public class swd
-  extends Handler
+final class swd
+  implements swg
 {
-  private WeakReference<ReadInJoySkinAnimManager> a;
+  swd(swe paramswe) {}
   
-  public swd(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager)
+  public void a(boolean paramBoolean, List<BaseData> paramList)
   {
-    this.a = new WeakReference(paramReadInJoySkinAnimManager);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ReadInJoySkinAnimManager localReadInJoySkinAnimManager = (ReadInJoySkinAnimManager)this.a.get();
-    if (localReadInJoySkinAnimManager == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      ReadInJoySkinAnimManager.b(localReadInJoySkinAnimManager);
-      return;
-    }
-    ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager);
+    this.a.a(paramList);
   }
 }
 

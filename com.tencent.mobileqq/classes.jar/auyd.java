@@ -1,71 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.utils.MiniAppReportShareUtil;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
 
-class auyd
-  implements DialogInterface.OnClickListener
+public class auyd
+  extends RecyclerView.ViewHolder
 {
-  auyd(auxu paramauxu) {}
+  private TextView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public auyd(Context paramContext, View paramView, boolean paramBoolean)
   {
-    boolean bool1 = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean("needShareCallBack");
-    paramInt = this.a.jdField_a_of_type_AndroidOsBundle.getInt("miniAppShareFrom");
-    boolean bool2 = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean("miniAppNeedOnlyPreview", false);
-    if (bool2) {
-      QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_direct_share_suc", null, null);
-    }
-    do
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131378707));
+    if (paramBoolean)
     {
-      for (;;)
-      {
-        auxu.a(this.a, paramInt);
-        paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString("miniAppShareAppid");
-        paramInt = this.a.jdField_a_of_type_AndroidOsBundle.getInt("miniAppShareAppType");
-        int i = this.a.jdField_a_of_type_AndroidOsBundle.getInt("miniAppShareScene");
-        int j = this.a.jdField_a_of_type_AndroidOsBundle.getInt("miniAppShareType");
-        int k = this.a.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
-        String str = this.a.jdField_a_of_type_AndroidOsBundle.getString("uin");
-        MiniAppReportShareUtil.getInstance().reportShare(paramDialogInterface, paramInt, i, j, k, str);
-        if (!bool2) {
-          break;
-        }
-        return;
-        if (bool1) {
-          QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
-        }
-      }
-      if (this.a.jdField_a_of_type_AndroidOsBundle.getBoolean("avgame_share_callback_key", false)) {
-        aono.a().a(this.a.jdField_a_of_type_AndroidAppActivity, true);
-      }
-      if (this.a.g()) {
-        if (!this.a.h()) {
-          auxu.a(this.a);
-        }
-      }
-      while (auxu.a(this.a, paramDialogInterface))
-      {
-        if ((this.a.jdField_a_of_type_AndroidOsBundle != null) && (this.a.jdField_a_of_type_AndroidOsBundle.getBoolean("k_forward_show_direct_share_tips", false))) {
-          bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A4A2", "0X800A4A2", 0, 0, "0", "", "", "");
-        }
-        auxu.b(this.a);
-        if (!"caller_aecamera".equals(this.a.f)) {
-          break;
-        }
-        auxu.c(this.a);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ForwardOption.ForwardBaseOption", 2, "sendToSingleTarget return false");
+      this.a.setTextColor(paramContext.getResources().getColor(2131165766));
+      return;
+    }
+    this.a.setTextColor(paramContext.getResources().getColor(2131165765));
+  }
+  
+  public void a(auxu paramauxu)
+  {
+    if (TextUtils.isEmpty(paramauxu.a))
+    {
+      this.a.setVisibility(8);
+      return;
+    }
+    this.a.setVisibility(0);
+    this.a.setText(paramauxu.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auyd
  * JD-Core Version:    0.7.0.1
  */

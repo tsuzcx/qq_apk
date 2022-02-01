@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.utils;
 
-import axby;
-import bhkm;
+import avpf;
+import bftt;
 
 public final class AudioUtil$1
   implements Runnable
 {
   public void run()
   {
-    axby.a().a(bhkm.a());
+    avpf.a().a(bftt.a());
   }
 }
 

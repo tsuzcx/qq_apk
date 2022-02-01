@@ -5,9 +5,6 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.text.TextUtils;
-import bhnv;
-import bhtq;
-import bmsw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -17,8 +14,11 @@ import com.tencent.mobileqq.mini.app.BaseAppLoaderManager;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime.OnLoadServiceWebvieJsListener;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
 import com.tencent.mobileqq.mini.util.StorageUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.ValueCallback;
+import cooperation.qzone.QUA;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -119,7 +119,7 @@ public class MiniAppWebSocket
           str1 = this.mApkgInfo.appConfig.config.getVerTypeStr();
         }
       }
-      str2 = String.format("function extend(obj, src) {\n    for (var key in src) {\n        if (src.hasOwnProperty(key)) obj[key] = src[key];\n    }\n    return obj;\n}\nif (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = JSON.parse('%1$s'); __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.envVersion='" + str1 + "';__qqConfig.QUA='" + bmsw.a() + "';var __wxIndexPage = 'page/index/index.html';", new Object[] { localJSONObject2.toString(), localJSONObject1.toString() });
+      str2 = String.format("function extend(obj, src) {\n    for (var key in src) {\n        if (src.hasOwnProperty(key)) obj[key] = src[key];\n    }\n    return obj;\n}\nif (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = JSON.parse('%1$s'); __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.envVersion='" + str1 + "';__qqConfig.QUA='" + QUA.getQUA3() + "';var __wxIndexPage = 'page/index/index.html';", new Object[] { localJSONObject2.toString(), localJSONObject1.toString() });
       str1 = str2;
       if (Boolean.valueOf(StorageUtil.getPreference().getBoolean(this.mApkgInfo.appId + "_debug", false)).booleanValue()) {
         str1 = str2 + "__qqConfig.debug =true;";
@@ -142,9 +142,9 @@ public class MiniAppWebSocket
       localJSONObject.put("device_name", Build.DEVICE);
       localJSONObject.put("device_model", Build.MODEL);
       localJSONObject.put("os", Build.VERSION.SDK_INT);
-      localJSONObject.put("qq_version", "8.4.5");
+      localJSONObject.put("qq_version", "8.4.8");
       localJSONObject.put("pixel_ratio", "3");
-      localJSONObject.put("screen_width", bhtq.a());
+      localJSONObject.put("screen_width", ViewUtils.getScreenWidth());
       localJSONObject.put("publib", AppLoaderFactory.getAppLoaderManager().getBaseLibInfo().baseLibVersion);
       return localJSONObject;
     }
@@ -209,7 +209,7 @@ public class MiniAppWebSocket
   
   int getNetworkType()
   {
-    int i = bhnv.b(BaseApplicationImpl.getContext());
+    int i = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
     if (i == 5) {
       return 1;
     }

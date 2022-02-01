@@ -1,19 +1,7 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDraftboxFragment.1;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDraftboxFragment.1.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
-import mqq.os.MqqHandler;
-
-public class rbc
-  implements rbd
+class rbc
+  extends rai
 {
-  public rbc(ReadInJoyDraftboxFragment.1 param1) {}
-  
-  public void a(List<ReadInJoyDraftboxItem> paramList)
-  {
-    ThreadManager.getUIHandler().post(new ReadInJoyDraftboxFragment.1.1.1(this, paramList));
-  }
+  rbc(rau paramrau) {}
 }
 
 

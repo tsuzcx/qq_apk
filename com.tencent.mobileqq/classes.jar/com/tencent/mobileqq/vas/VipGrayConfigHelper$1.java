@@ -3,7 +3,7 @@ package com.tencent.mobileqq.vas;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bias;
+import bghc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -16,29 +16,29 @@ public final class VipGrayConfigHelper$1
 {
   public void run()
   {
-    int i = bias.a().get();
-    if ((i < 0) || (i >= bias.a().size())) {}
+    int i = bghc.a().get();
+    if ((i < 0) || (i >= bghc.a().size())) {}
     for (;;)
     {
       return;
-      String str = (String)bias.a().get(i);
-      AtomicInteger localAtomicInteger = (AtomicInteger)bias.a().get(str);
-      Object localObject = (AtomicInteger)bias.b().get(str);
-      for (AtomicReference localAtomicReference = (AtomicReference)bias.c().get(str); localAtomicInteger.get() >= ((AtomicInteger)localObject).get(); localAtomicReference = (AtomicReference)bias.c().get(str))
+      String str = (String)bghc.a().get(i);
+      AtomicInteger localAtomicInteger = (AtomicInteger)bghc.a().get(str);
+      Object localObject = (AtomicInteger)bghc.b().get(str);
+      for (AtomicReference localAtomicReference = (AtomicReference)bghc.c().get(str); localAtomicInteger.get() >= ((AtomicInteger)localObject).get(); localAtomicReference = (AtomicReference)bghc.c().get(str))
       {
         i += 1;
         j = i;
-        if (i >= bias.a().size()) {
+        if (i >= bghc.a().size()) {
           break label175;
         }
-        str = (String)bias.a().get(i);
-        localAtomicInteger = (AtomicInteger)bias.a().get(str);
-        localObject = (AtomicInteger)bias.b().get(str);
+        str = (String)bghc.a().get(i);
+        localAtomicInteger = (AtomicInteger)bghc.a().get(str);
+        localObject = (AtomicInteger)bghc.b().get(str);
       }
       int j = i;
       label175:
-      bias.a().set(j);
-      if (j >= bias.a().size()) {
+      bghc.a().set(j);
+      if (j >= bghc.a().size()) {
         continue;
       }
       if (QLog.isColorLevel()) {

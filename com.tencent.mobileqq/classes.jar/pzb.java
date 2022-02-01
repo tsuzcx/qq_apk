@@ -1,50 +1,15 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
-public class pzb
-  implements ViewBase.OnClickListener
+class pzb
+  implements bjrf
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  pzb(pza parampza) {}
   
-  public pzb(ArticleInfo paramArticleInfo, Context paramContext, int paramInt)
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private void a()
-  {
-    ocd.a(null, null, "0X80097D7", "0X80097D7", 0, 0, "", "", "", "", false);
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    String str = "";
-    paramViewBase = str;
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      paramViewBase = str;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
-      {
-        paramViewBase = str;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo != null)
-        {
-          paramViewBase = str;
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.f != null)
-          {
-            paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.f;
-            ozs.d(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
-          }
-        }
-      }
-    }
-    QLog.d("OnFriendsBiuClickListener", 1, "jump channel,  context:" + this.jdField_a_of_type_AndroidContentContext + "  url:" + paramViewBase);
-    a();
+    pyz.a(this.a.jdField_a_of_type_Pyz, this.a.jdField_a_of_type_Soh, this.a.jdField_a_of_type_Pvc, paramInt, paramArrayList, paramObject);
   }
 }
 

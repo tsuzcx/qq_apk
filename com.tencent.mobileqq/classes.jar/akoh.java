@@ -1,103 +1,36 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class akoh
-  extends bjai
+  extends aknz
 {
-  private akoh(ContactListView paramContactListView) {}
+  public int c;
   
-  public int a()
+  public akoh(Context paramContext, int paramInt)
   {
-    return 2131559556;
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    if ((this.a.a == null) || (this.a.a.isEmpty()) || (paramInt < 0) || (paramInt >= this.a.a.size())) {}
-    PhoneContact localPhoneContact1;
-    do
-    {
+    this.c = paramInt;
+    if (paramInt == 0) {
+      this.jdField_a_of_type_JavaLangString = "";
+    }
+    while (paramInt != 1) {
       return;
-      PhoneContact localPhoneContact2 = (PhoneContact)this.a.a.get(paramInt);
-      localPhoneContact1 = localPhoneContact2;
-      if (localPhoneContact2 == null)
-      {
-        localPhoneContact1 = localPhoneContact2;
-        if (paramInt + 1 < this.a.a.size()) {
-          localPhoneContact1 = (PhoneContact)this.a.a.get(paramInt + 1);
-        }
-      }
-    } while (localPhoneContact1 == null);
-    ((TextView)paramView).setText(localPhoneContact1.pinyinFirst);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return getItemViewType(paramInt) == 1;
-  }
-  
-  public int getCount()
-  {
-    if (this.a.a != null) {
-      return this.a.a.size();
     }
-    return 0;
+    this.jdField_a_of_type_JavaLangString = amtj.a(2131714698);
   }
   
-  public Object getItem(int paramInt)
+  public Object a(int paramInt, bdyi parambdyi, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
   {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if ((this.a.a == null) || (this.a.a.isEmpty())) {}
-    while (this.a.a.get(paramInt) == null) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (getItemViewType(paramInt) == 1)
+    if (((paramObject instanceof akoh)) && (((akoh)paramObject).c == 0))
     {
-      localView = paramView;
-      if (paramView == null) {
-        localView = LayoutInflater.from(this.a.getContext()).inflate(a(), paramViewGroup, false);
-      }
-      a(localView, paramInt);
+      paramObject = (akoh)paramObject;
+      paramObject.jdField_a_of_type_Bdyj.a(parambdyi.jdField_a_of_type_Bdyj);
+      return paramObject;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localView = paramView;
-      if (paramView == null)
-      {
-        localView = this.a.a();
-        localView.setOnClickListener(this.a);
-      }
-      paramView = (PhoneContact)this.a.a.get(paramInt);
-      this.a.a(localView, paramView, false);
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 2;
+    paramObject = new akoh(BaseApplication.getContext(), 0);
+    paramObject.jdField_a_of_type_Bdyj = new bdyj(parambdyi.jdField_a_of_type_Bdyj);
+    return paramObject;
   }
 }
 

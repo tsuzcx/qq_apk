@@ -1,21 +1,18 @@
-import android.support.annotation.NonNull;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class adnc
+public class adnc
+  implements View.OnClickListener
 {
-  protected adnb a;
+  public adnc(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  protected void a() {}
-  
-  public final void a(adnb paramadnb)
+  public void onClick(View paramView)
   {
-    this.a = paramadnb;
-    a();
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public abstract boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull admy paramadmy);
-  
-  public void b() {}
 }
 
 

@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.JumpInfo;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public final class qxx
-  implements Parcelable.Creator<SocializeFeedsInfo.JumpInfo>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTaskRemoteRepo$IReportTaskProgressCallback;", "", "onReportFailed", "", "errorCode", "", "errorMsg", "", "onReportSucceed", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface qxx
 {
-  public SocializeFeedsInfo.JumpInfo a(Parcel paramParcel)
-  {
-    return new SocializeFeedsInfo.JumpInfo(paramParcel);
-  }
+  public abstract void a();
   
-  public SocializeFeedsInfo.JumpInfo[] a(int paramInt)
-  {
-    return new SocializeFeedsInfo.JumpInfo[paramInt];
-  }
+  public abstract void a(int paramInt, @Nullable String paramString);
 }
 
 

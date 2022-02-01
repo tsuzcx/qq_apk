@@ -1,78 +1,119 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
+import cooperation.qzone.widget.QzoneGuideBubbleHelper;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 
 public class bntl
+  extends bnec
 {
-  public static ArrayList<Object> a(JSONArray paramJSONArray)
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private View jdField_a_of_type_AndroidViewView;
+  private bnss jdField_a_of_type_Bnss;
+  private boolean jdField_a_of_type_Boolean;
+  private View b;
+  private View c;
+  
+  public bntl(@NonNull bnss parambnss, Activity paramActivity)
   {
-    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < paramJSONArray.length())
+    super(parambnss);
+    this.jdField_a_of_type_Bnss = parambnss;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    if (ylg.a().b() == 22) {}
+    for (boolean bool = true;; bool = false)
     {
-      Object localObject = paramJSONArray.opt(i);
-      if (localObject == null) {}
-      for (;;)
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
+  private void a(String paramString)
+  {
+    String str = a().getString(2131717009);
+    QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
+    QZoneHelper.forwardOpenQzoneVip2(this.jdField_a_of_type_AndroidAppActivity, localUserInfo, paramString, QQStoryContext.a().a(), "", 1010, str, false);
+  }
+  
+  private void b()
+  {
+    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131365917);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(a()).inflate(2131562209, localRelativeLayout, false);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.setMargins(0, LiuHaiUtils.a, 0, 0);
+    localLayoutParams.addRule(11);
+    localLayoutParams.addRule(10);
+    this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131375226);
+    this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131375225);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.b.setVisibility(8);
+      this.c.setVisibility(8);
+    }
+    for (;;)
+    {
+      localRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
+      return;
+      this.b.setOnClickListener(new bntm(this));
+      this.c.setOnClickListener(new bntn(this));
+    }
+  }
+  
+  private void c()
+  {
+    bfur.a(this.jdField_a_of_type_AndroidAppActivity, 230).setMessage(2131717143).setPositiveButton(2131716657, new bntp(this)).setNegativeButton(2131718433, new bnto(this)).show();
+  }
+  
+  private void d()
+  {
+    bfur.a(this.jdField_a_of_type_AndroidAppActivity, 230).setMessage(2131717144).setPositiveButton(2131716657, new bntr(this)).setNegativeButton(2131690952, new bntq(this)).show();
+  }
+  
+  public void a()
+  {
+    super.a();
+    b();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.a(paramInt1, paramInt2, paramIntent);
+    if ((paramInt1 == 1010) && (paramInt2 == -1))
+    {
+      bhzt.a().a(2131716879);
+      this.jdField_a_of_type_Bnss.e = true;
+    }
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
       {
-        i += 1;
-        break;
-        if (localObject.getClass() == JSONObject.class) {
-          localArrayList.add(a((JSONObject)localObject));
-        } else if (localObject.getClass() == JSONArray.class) {
-          localArrayList.add(a((JSONArray)localObject));
-        }
-      }
-    }
-    return localArrayList;
+        return;
+      } while (this.jdField_a_of_type_AndroidViewView == null);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      return;
+    } while (this.jdField_a_of_type_AndroidViewView == null);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
   
-  public static Map<String, Object> a(String paramString)
+  public void g()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    try
-    {
-      paramString = a(new JSONObject(paramString));
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return localLinkedHashMap;
-  }
-  
-  public static Map<String, Object> a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return null;
-    }
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    Iterator localIterator = paramJSONObject.keys();
-    while (localIterator.hasNext())
-    {
-      String str = localIterator.next() + "";
-      Object localObject = paramJSONObject.get(str);
-      if (localObject != null) {
-        if (localObject.getClass() == JSONObject.class) {
-          localLinkedHashMap.put(str, a((JSONObject)localObject));
-        } else if (localObject.getClass() == JSONArray.class) {
-          localLinkedHashMap.put(str, a((JSONArray)localObject));
-        } else {
-          localLinkedHashMap.put(str, localObject);
-        }
-      }
-    }
-    return localLinkedHashMap;
+    super.g();
+    QzoneGuideBubbleHelper.getInstance().dismissGuideBubble();
   }
 }
 

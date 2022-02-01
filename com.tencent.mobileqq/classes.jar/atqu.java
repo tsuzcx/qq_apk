@@ -1,21 +1,34 @@
-class atqu
-  extends atrt
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.fragment.CommonTabFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+
+public class atqu
+  extends SosoInterface.OnLocationListener
 {
-  atqu(atqr paramatqr, atqw paramatqw) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2)
+  public atqu(CommonTabFragment paramCommonTabFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (paramBoolean)
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CommonTabFragment", 2, "startLocation finish" + System.currentTimeMillis());
+    }
+    if (paramInt != 0)
     {
-      this.jdField_a_of_type_Atqw.a(paramString2, paramString3);
+      QQToast.a(this.a.a, 1, amtj.a(2131701396), 1).a();
+      this.a.e();
       return;
     }
-    this.jdField_a_of_type_Atqw.a(paramInt, paramString1);
+    this.a.a(paramSosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqu
  * JD-Core Version:    0.7.0.1
  */

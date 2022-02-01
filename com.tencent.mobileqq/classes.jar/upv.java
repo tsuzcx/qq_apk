@@ -1,43 +1,36 @@
-import UserGrowth.stJumpInfo;
-import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-
 class upv
-  implements ura
+  implements uxm
 {
-  upv(upu paramupu, WSVerticalPageFragment paramWSVerticalPageFragment, String paramString1, String paramString2, stJumpInfo paramstJumpInfo, int paramInt) {}
+  upv(upu paramupu, ups paramups, uxm paramuxm) {}
   
-  public void a(String paramString, int paramInt)
+  public void a()
   {
-    uqh.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getActivity(), "biz_src_jc_gzh_weishi", paramString, 1, ugd.a().a(), 0);
-    upu.a(this.jdField_a_of_type_Upu, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_UserGrowthStJumpInfo, 1000003, 1);
+    upu.a(this.jdField_a_of_type_Upu, this.jdField_a_of_type_Ups);
+    if (this.jdField_a_of_type_Uxm != null) {
+      this.jdField_a_of_type_Uxm.a();
+    }
   }
   
-  public void b(String paramString, int paramInt)
+  public void b()
   {
-    upu.a(this.jdField_a_of_type_Upu, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_UserGrowthStJumpInfo, 1000004, 2);
-    ueg.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getActivity(), paramString);
+    if (this.jdField_a_of_type_Uxm != null) {
+      this.jdField_a_of_type_Uxm.b();
+    }
   }
   
-  public void c(String paramString, int paramInt)
+  public void c()
   {
-    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
-    localWSDownloadParams.mScene = 1;
-    localWSDownloadParams.mLinkStrategyType = ugd.a().a();
-    localWSDownloadParams.mEventId = 12;
-    localWSDownloadParams.mTestId = unx.b();
-    localWSDownloadParams.mScheme = paramString;
-    paramString = uno.a();
-    paramString.pagetype = 5;
-    paramString.optype = 115;
-    paramString.upos = (this.jdField_a_of_type_Int + 1);
-    localWSDownloadParams.mStReportItem = paramString;
-    ugz.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.getActivity(), localWSDownloadParams, false);
-    uno.a(6, this.jdField_a_of_type_UserGrowthStJumpInfo.id, 5);
-    upu.a(this.jdField_a_of_type_Upu, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_UserGrowthStJumpInfo, 1000002, 0);
+    if (this.jdField_a_of_type_Uxm != null) {
+      this.jdField_a_of_type_Uxm.c();
+    }
   }
   
-  public void d(String paramString, int paramInt) {}
+  public void d()
+  {
+    if (this.jdField_a_of_type_Uxm != null) {
+      this.jdField_a_of_type_Uxm.d();
+    }
+  }
 }
 
 

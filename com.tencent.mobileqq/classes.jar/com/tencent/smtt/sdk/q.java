@@ -1,89 +1,83 @@
 package com.tencent.smtt.sdk;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.SurfaceTexture;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.tbs.video.interfaces.IUserStateChangedListener;
-import com.tencent.tbs.video.interfaces.a;
+import com.tencent.smtt.export.external.DexLoader;
 
 class q
 {
-  private static q e = null;
-  s a = null;
-  Context b;
-  a c;
-  IUserStateChangedListener d;
+  private DexLoader a = null;
+  private Object b = null;
   
-  private q(Context paramContext)
+  public q(DexLoader paramDexLoader, Context paramContext)
   {
-    this.b = paramContext.getApplicationContext();
-    this.a = new s(this.b);
+    this.a = paramDexLoader;
+    this.b = this.a.newInstance("com.tencent.tbs.player.TbsMediaPlayerProxy", new Class[] { Context.class }, new Object[] { paramContext });
   }
   
-  public static q a(Context paramContext)
+  public void a(float paramFloat)
   {
-    try
-    {
-      if (e == null) {
-        e = new q(paramContext);
-      }
-      paramContext = e;
-      return paramContext;
-    }
-    finally {}
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "setVolume", new Class[] { Float.TYPE }, new Object[] { Float.valueOf(paramFloat) });
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void a(int paramInt)
   {
-    if (this.c != null) {
-      this.c.a(paramInt1, paramInt2, paramIntent);
-    }
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "subtitle", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(paramInt) });
   }
   
-  void a(Activity paramActivity, int paramInt)
+  public void a(long paramLong)
   {
-    this.a.a(paramActivity, paramInt);
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "seek", new Class[] { Long.TYPE }, new Object[] { Long.valueOf(paramLong) });
+  }
+  
+  public void a(SurfaceTexture paramSurfaceTexture)
+  {
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "setSurfaceTexture", new Class[] { SurfaceTexture.class }, new Object[] { paramSurfaceTexture });
+  }
+  
+  public void a(TbsMediaPlayer.TbsMediaPlayerListener paramTbsMediaPlayerListener)
+  {
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "setPlayerListener", new Class[] { Object.class }, new Object[] { paramTbsMediaPlayerListener });
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "startPlay", new Class[] { String.class, Bundle.class }, new Object[] { paramString, paramBundle });
   }
   
   public boolean a()
   {
-    this.a.a();
-    return this.a.b();
+    return this.b != null;
   }
   
-  public boolean a(String paramString, Bundle paramBundle, a parama)
+  public float b()
   {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
+    Float localFloat = (Float)this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "getVolume", new Class[0], new Object[0]);
+    if (localFloat != null) {
+      return localFloat.floatValue();
     }
-    if (!TextUtils.isEmpty(paramString)) {
-      localBundle.putString("videoUrl", paramString);
-    }
-    if (parama != null)
-    {
-      this.a.a();
-      if (!this.a.b()) {
-        return false;
-      }
-      this.c = parama;
-      this.d = new q.1(this);
-      this.c.a(this.d);
-      localBundle.putInt("callMode", 3);
-    }
-    for (;;)
-    {
-      paramBundle = this.a;
-      paramString = this;
-      if (parama == null) {
-        paramString = null;
-      }
-      paramBundle.a(localBundle, paramString);
-      return true;
-      localBundle.putInt("callMode", 1);
-    }
+    return 0.0F;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "audio", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(paramInt) });
+  }
+  
+  public void c()
+  {
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "pause", new Class[0], new Object[0]);
+  }
+  
+  public void d()
+  {
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "play", new Class[0], new Object[0]);
+  }
+  
+  public void e()
+  {
+    this.a.invokeMethod(this.b, "com.tencent.tbs.player.TbsMediaPlayerProxy", "close", new Class[0], new Object[0]);
   }
 }
 

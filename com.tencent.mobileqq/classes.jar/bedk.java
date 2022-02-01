@@ -1,50 +1,29 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.spread.ConfigSetting.LocalWtTicketPromise.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.Context;
+import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class bedk
-  implements WtTicketPromise
+class bedk
+  implements View.OnTouchListener
 {
-  private arrd jdField_a_of_type_Arrd;
-  private WeakReference<bedj> jdField_a_of_type_JavaLangRefWeakReference;
+  bedk(bedi parambedi, String paramString, bedr parambedr) {}
   
-  public bedk(bedj parambedj, arrd paramarrd)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambedj);
-    this.jdField_a_of_type_Arrd = paramarrd;
-  }
-  
-  public void Done(Ticket paramTicket)
-  {
-    if ((paramTicket != null) && (paramTicket._pskey_map != null))
+    if (paramMotionEvent.getAction() == 1)
     {
-      ThreadManager.excute(new ConfigSetting.LocalWtTicketPromise.1(this), 128, null, false);
-      return;
+      paramView = new Intent(this.jdField_a_of_type_Bedi.a.getContext(), QQBrowserActivity.class);
+      paramMotionEvent = bgev.a("troopEnterEffect");
+      paramView.putExtra("url", paramMotionEvent + "&gc=" + this.jdField_a_of_type_Bedi.b);
+      this.jdField_a_of_type_Bedi.a.getContext().startActivity(paramView);
+      bedt.a("Grp_AIO", "action_clk", new String[] { this.jdField_a_of_type_Bedi.b });
+      VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_JavaLangString, "style", "0X8008E63", "", 1, 0, 0, "", Integer.toString(this.jdField_a_of_type_Bedr.a), "");
     }
-    if (this.jdField_a_of_type_Arrd != null) {
-      this.jdField_a_of_type_Arrd.a(false);
-    }
-    QLog.e("ConfigSetting", 2, "get pskey failed ticket is null");
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    QLog.e("ConfigSetting", 2, "get pskey failed ticket failed");
-    if (this.jdField_a_of_type_Arrd != null) {
-      this.jdField_a_of_type_Arrd.a(false);
-    }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (this.jdField_a_of_type_Arrd != null) {
-      this.jdField_a_of_type_Arrd.a(false);
-    }
-    QLog.e("ConfigSetting", 2, "get pskey failed ticket time oiut");
+    return true;
   }
 }
 

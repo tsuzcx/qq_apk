@@ -1,14 +1,45 @@
-import android.view.View;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-
 public class bbdf
-  implements blqt
 {
-  public bbdf(IosTimepicker paramIosTimepicker) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void a(View paramView, int paramInt)
+  public bbdf(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    IosTimepicker.a(this.a, paramView, 1);
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString3;
+    this.c = paramString2;
+    this.d = paramString4;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.e = paramString5;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.e;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.b;
   }
 }
 

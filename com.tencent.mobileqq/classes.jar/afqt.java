@@ -1,18 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 public class afqt
-  implements azbw
+  implements afrb, afrc, afrq
 {
-  public afqt(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  private final BaseChatPie a;
   
-  public void a(int paramInt, azbx paramazbx)
+  public afqt(afqw paramafqw, BaseChatPie paramBaseChatPie)
   {
-    if ((!TextUtils.isEmpty(TextPreviewTranslateActivity.a(this.a))) && (!TextPreviewTranslateActivity.a(this.a).equals(paramazbx.b)))
-    {
-      TextPreviewTranslateActivity.a(this.a, paramazbx.b);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
+    this.a = paramBaseChatPie;
+    paramafqw.a(this);
+  }
+  
+  public void a(int paramInt) {}
+  
+  public int[] a()
+  {
+    return new int[0];
+  }
+  
+  public void b(int paramInt)
+  {
+    if (paramInt == 2) {
+      atyf.a("0", "1", "176", "969", "96902", "207497", "", "0", "20", "0");
     }
+    while (paramInt != 3) {
+      return;
+    }
+    atyf.a("0", "1", "176", "969", "96902", "207496", "", "0", "20", "0");
   }
 }
 

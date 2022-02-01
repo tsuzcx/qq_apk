@@ -1,65 +1,74 @@
-import android.os.Handler;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
+import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ExecutorService;
-import tencent.im.oidb.cmd0xe71.oidb_cmd0xe71.ReqBody;
-import tencent.im.oidb.cmd0xe71.oidb_cmd0xe71.RspBody;
 
 public class ppy
-  extends pqj
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private ppz a;
+  public ppy(ReadInJoySelfFragment paramReadInJoySelfFragment, ImageView paramImageView, oju paramoju) {}
   
-  public ppy(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, qfo paramqfo, Handler paramHandler)
+  public void onGlobalLayout()
   {
-    super(paramAppInterface, paramEntityManager, paramExecutorService, paramqfo, paramHandler);
-  }
-  
-  private ToServiceMsg a(long paramLong)
-  {
-    oidb_cmd0xe71.ReqBody localReqBody = new oidb_cmd0xe71.ReqBody();
-    localReqBody.uint64_uin.set(paramLong);
-    localReqBody.uint32_client_type.set(1);
-    return qfq.a("OidbSvc.0xe71", 3697, 1, localReqBody.toByteArray());
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    paramToServiceMsg = new oidb_cmd0xe71.RspBody();
-    if ((qfq.a(paramFromServiceMsg, paramObject, paramToServiceMsg) == 0) && (paramToServiceMsg.uint32_result.has()))
+    for (;;)
     {
-      QLog.d("RIJUGCAccountCreateModule", 1, "handleUGCAccountCreateResponsePkg result = " + paramToServiceMsg.uint32_result.get());
-      if (this.a != null) {
-        this.a.a(paramToServiceMsg.uint32_result.get());
+      try
+      {
+        if (Build.VERSION.SDK_INT >= 16)
+        {
+          ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+          int j = ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment).getWidth();
+          if (ReadInJoySelfFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment))
+          {
+            i = (int)(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_a_of_type_Float + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.c + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_b_of_type_Float);
+            if (i <= 0) {
+              break;
+            }
+            double d1 = this.jdField_a_of_type_Oju.c / this.jdField_a_of_type_Oju.d;
+            double d2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.d;
+            i = (int)(j - i - d1 * d2);
+            if (i <= 0) {
+              break;
+            }
+            Drawable localDrawable = DrawableUtil.getDrawable(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.getActivity(), this.jdField_a_of_type_Oju.b, null, null);
+            if (localDrawable == null) {
+              break;
+            }
+            ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment).setMaxWidth(i);
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_a_of_type_ComTencentImageURLImageView.setTag(this.jdField_a_of_type_Oju);
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment);
+            if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_b_of_type_Boolean) {
+              break;
+            }
+            pay.a(this.jdField_a_of_type_Oju);
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_b_of_type_Boolean = true;
+          }
+        }
+        else
+        {
+          ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+          continue;
+        }
+        f1 = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
       }
-    }
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void a(long paramLong, ppz paramppz)
-  {
-    QLog.d("RIJUGCAccountCreateModule", 1, "requestUserApproveInfo uin: " + paramLong);
-    if (paramppz != null) {
-      this.a = paramppz;
-    }
-    paramppz = a(paramLong);
-    paramppz.addAttribute("KEY_UGC_USER_ACCOUNT_UIN", Long.valueOf(paramLong));
-    a(paramppz);
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xe71")) {
-      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      catch (Exception localException)
+      {
+        QLog.d("Q.readinjoy.self.SelfFragment", 1, "showMedal! error, msg=" + localException);
+        return;
+      }
+      float f1;
+      float f2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_a_of_type_Float;
+      float f3 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.jdField_b_of_type_Float;
+      float f4 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.c;
+      int i = (int)(f1 + f2 + f3 + f4);
     }
   }
 }

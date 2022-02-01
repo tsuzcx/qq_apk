@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.download;
 
-import borg;
+import blvn;
 
 public class AEResManager$9
   implements Runnable
 {
-  public AEResManager$9(borg paramborg) {}
+  public AEResManager$9(blvn paramblvn) {}
   
   public void run()
   {
-    borg.a(this.this$0, false);
+    blvn.a(this.this$0, false);
   }
 }
 

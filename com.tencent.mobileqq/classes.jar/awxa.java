@@ -1,15 +1,12 @@
-import java.util.Comparator;
-
-class awxa
-  implements Comparator<awwo>
+public abstract interface awxa
 {
-  public int a(awwo paramawwo1, awwo paramawwo2)
-  {
-    if (paramawwo1.a >= paramawwo2.a) {
-      return 1;
-    }
-    return -1;
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

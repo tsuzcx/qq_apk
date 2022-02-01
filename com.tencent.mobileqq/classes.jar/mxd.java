@@ -1,35 +1,19 @@
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class mxd
-  extends mxp
+public class mxd
+  extends RecyclerView.ViewHolder
 {
-  mxd(mxc parammxc) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public mxd(View paramView)
   {
-    if (paramString1 == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt != 1) {
-          break;
-        }
-      } while (this.a.b(paramString1));
-      mxc.a(this.a, paramString1, true);
-      return;
-    } while ((paramInt != 5) || (!this.a.b(paramString1)));
-    mxc.a(this.a, paramString1, false);
-  }
-  
-  public void a(int paramInt, String paramString, mxq parammxq)
-  {
-    if ((paramInt != 0) || (parammxq == null) || (parammxq.jdField_a_of_type_JavaUtilList == null) || (parammxq.jdField_a_of_type_JavaLangString == null)) {}
-    while (parammxq.jdField_a_of_type_JavaUtilList.size() != 0) {
-      return;
-    }
-    mxc.a(this.a, parammxq.jdField_a_of_type_JavaLangString, false);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369216));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379568));
   }
 }
 

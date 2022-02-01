@@ -1,53 +1,60 @@
-import com.tencent.qqprotect.qsec.QSecFramework;
-import java.io.File;
+import android.text.TextUtils;
+import android.util.Base64;
+import com.tencent.qphone.base.util.QLog;
 
-final class bldi
-  implements blcd
+public class bldi
 {
-  public bldl a;
-  
-  bldi(bldg parambldg) {}
-  
-  public void a()
+  public static String a(String paramString1, String paramString2, int paramInt)
   {
-    if ((this.jdField_a_of_type_Bldl.jdField_b_of_type_JavaLangString == null) || (this.jdField_a_of_type_Bldl.jdField_b_of_type_JavaLangString.contains("..")))
+    localObject2 = null;
+    Object localObject3 = null;
+    Object localObject1 = localObject3;
+    if (!TextUtils.isEmpty(paramString1))
     {
-      this.jdField_a_of_type_Bldl.d = 15;
-      return;
+      if (!TextUtils.isEmpty(paramString2)) {
+        break label28;
+      }
+      localObject1 = localObject3;
     }
-    Object localObject = new File(this.jdField_a_of_type_Bldl.jdField_b_of_type_JavaLangString);
-    if (!((File)localObject).exists())
+    label28:
+    do
     {
-      this.jdField_a_of_type_Bldl.d = 12;
-      return;
-    }
-    this.jdField_a_of_type_Bldl.jdField_a_of_type_Bldw = new bldw();
-    if ((this.jdField_a_of_type_Bldl.jdField_b_of_type_Int == 2) || (this.jdField_a_of_type_Bldl.jdField_b_of_type_Int == 1)) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 1) && (!blej.a((File)localObject, null)))
+      return localObject1;
+      try
       {
-        this.jdField_a_of_type_Bldl.d = 10;
-        return;
+        paramString1 = Base64.decode(paramString1, paramInt);
+        if ((paramString1 == null) || (paramString1.length <= 0)) {
+          break;
+        }
+        paramString1 = new bldh().a(paramString1, paramString2.getBytes());
+        if (paramString1 == null) {
+          break;
+        }
+        paramString1 = new String(paramString1);
       }
-      localObject = new Object[1];
-      this.jdField_a_of_type_Bldl.d = QSecFramework.a(2L, this.jdField_a_of_type_Bldl.jdField_b_of_type_Int, this.jdField_a_of_type_Bldl.jdField_a_of_type_Int, 0L, this.jdField_a_of_type_Bldl.jdField_b_of_type_JavaLangString, null, null, (Object[])localObject);
-      if ((localObject[0] == null) || (!(localObject[0] instanceof Integer))) {
-        break;
+      catch (Exception paramString2)
+      {
+        for (;;)
+        {
+          paramString1 = localObject2;
+          if (QLog.isColorLevel())
+          {
+            QLog.e("WadlProviderUtil", 4, "decodeStr exception:", paramString2);
+            paramString1 = localObject2;
+            continue;
+            paramString1 = null;
+          }
+        }
       }
-      this.jdField_a_of_type_Bldl.f = ((Integer)localObject[0]).intValue();
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bldl.d = 26;
+      localObject1 = paramString1;
+    } while (!QLog.isColorLevel());
+    QLog.d("WadlProviderUtil", 4, "decodeStr decodeStr=" + paramString1);
+    return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bldi
  * JD-Core Version:    0.7.0.1
  */

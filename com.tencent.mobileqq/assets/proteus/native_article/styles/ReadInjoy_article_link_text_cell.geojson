@@ -26,7 +26,6 @@
 			},
 			"attributes": {
 				"setRichText:": "$id_attribute_text",
-				"setFrameString:": "-1",
 				"setTextColorString:": "#3a7ed4",
 				"setFontSizeString:ratio:":["16","$attribute_text_size_ratio"],
 				"setLineSpace:": "13",

@@ -1,29 +1,27 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.profile.VipProfileCardPhotoHandlerActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-class aynl
-  implements View.OnClickListener
+public class aynl
+  implements QQPermissionCallback
 {
-  aynl(aymj paramaymj, String paramString) {}
+  public aynl(VipProfileCardPhotoHandlerActivity paramVipProfileCardPhotoHandlerActivity) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Aymj.a, QQBrowserActivity.class);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
-    Object localObject = this.jdField_a_of_type_Aymj.a;
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Aymj.a.j)) {}
-    for (localObject = "1";; localObject = "2")
-    {
-      localIntent.putExtra("url", (String)localObject);
-      bdll.b(this.jdField_a_of_type_Aymj.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_focus", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Aymj.a.startActivity(localIntent);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("qqBaseActivity", 2, "takePhoto requestPermission user denied");
     }
+    bfur.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("qqBaseActivity", 2, "takePhoto requestPermission user grant");
+    }
+    VipProfileCardPhotoHandlerActivity.a(this.a, ProfileActivity.a(this.a, 5));
   }
 }
 

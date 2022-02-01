@@ -1,16 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.intimate.IntimateScoreCardView;
 
-class aftt
-  implements DialogInterface.OnClickListener
+public class aftt
+  implements Animator.AnimatorListener
 {
-  aftt(afts paramafts) {}
+  public aftt(IntimateScoreCardView paramIntimateScoreCardView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.a.finish();
+    onAnimationEnd(paramAnimator);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    IntimateScoreCardView.a(this.a).setAlpha(1.0F);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

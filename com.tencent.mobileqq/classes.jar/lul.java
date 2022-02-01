@@ -1,26 +1,121 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import android.graphics.Rect;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
-class lul
-  implements SoundPool.OnLoadCompleteListener
+public class lul
+  extends lun
 {
-  lul(luk paramluk, lum paramlum) {}
+  public luh a;
+  public boolean a;
+  public luz[] a;
+  public int b;
+  public luz[] b;
+  public int c;
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public lul(luh paramluh)
   {
-    paramSoundPool = this.jdField_a_of_type_Luk;
-    paramSoundPool.c += 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("SoundPoolHelper", 2, "loadMusic onLoadComplete,sampleId = " + paramInt1 + ",status = " + paramInt2 + ",loadedCount = " + this.jdField_a_of_type_Luk.c + ",musicCount = " + this.jdField_a_of_type_Luk.b);
+    this.jdField_a_of_type_ArrayOfLuz = new luz[6];
+    this.jdField_b_of_type_ArrayOfLuz = new luz[10];
+    this.jdField_a_of_type_Luh = paramluh;
+    this.jdField_c_of_type_ArrayOfLuz = this.jdField_a_of_type_ArrayOfLuz;
+    this.jdField_b_of_type_Long = 900L;
+  }
+  
+  public void a(long paramLong)
+  {
+    super.a(paramLong);
+    long l = this.jdField_a_of_type_Long;
+    int i = 0;
+    if (paramLong - l <= this.jdField_b_of_type_Long) {
+      i = 255;
     }
-    if (paramInt2 == 0) {
-      this.jdField_a_of_type_Luk.a.add(Integer.valueOf(paramInt1));
+    a(i);
+  }
+  
+  public void a(AVRedPacketManager paramAVRedPacketManager)
+  {
+    int k = 0;
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= this.jdField_a_of_type_ArrayOfLuz.length) {
+        break;
+      }
+      this.jdField_a_of_type_ArrayOfLuz[i] = new luz(paramAVRedPacketManager.a("qav_redpacket_focus_detected_" + (i * 3 + 3) + ".png"));
+      i += 1;
     }
-    if (this.jdField_a_of_type_Luk.c == this.jdField_a_of_type_Luk.b) {
-      this.jdField_a_of_type_Lum.a();
+    while (j < this.jdField_b_of_type_ArrayOfLuz.length)
+    {
+      this.jdField_b_of_type_ArrayOfLuz[j] = new luz(paramAVRedPacketManager.a("qav_redpacket_focus_detected_big_" + j * 3 + ".png"));
+      j += 1;
     }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    {
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label45;
+      }
+    }
+    label45:
+    for (luz[] arrayOfluz = this.jdField_b_of_type_ArrayOfLuz;; arrayOfluz = this.jdField_a_of_type_ArrayOfLuz)
+    {
+      this.jdField_c_of_type_ArrayOfLuz = arrayOfluz;
+      this.jdField_b_of_type_Long = (this.jdField_c_of_type_ArrayOfLuz.length * 150);
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    int j = 0;
+    super.b();
+    luz[] arrayOfluz = this.jdField_a_of_type_ArrayOfLuz;
+    int k = arrayOfluz.length;
+    int i = 0;
+    luz localluz;
+    while (i < k)
+    {
+      localluz = arrayOfluz[i];
+      if (localluz != null) {
+        localluz.a();
+      }
+      i += 1;
+    }
+    arrayOfluz = this.jdField_b_of_type_ArrayOfLuz;
+    k = arrayOfluz.length;
+    i = j;
+    while (i < k)
+    {
+      localluz = arrayOfluz[i];
+      if (localluz != null) {
+        localluz.a();
+      }
+      i += 1;
+    }
+    this.jdField_a_of_type_Luh = null;
+    this.jdField_a_of_type_ArrayOfLuz = null;
+    this.jdField_b_of_type_ArrayOfLuz = null;
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_b_of_type_Int = (paramInt1 * 500 / 750);
+    this.jdField_c_of_type_Int = (paramInt1 * 500 / 750);
+  }
+  
+  public void c()
+  {
+    Rect localRect = this.jdField_a_of_type_Luh.a();
+    int i = (localRect.left + localRect.right - this.jdField_b_of_type_Int) / 2;
+    int j = (localRect.top + localRect.bottom - this.jdField_c_of_type_Int) / 2;
+    int k = (localRect.left + localRect.right + this.jdField_b_of_type_Int) / 2;
+    int m = localRect.top;
+    a(i, j, k, (localRect.bottom + m + this.jdField_c_of_type_Int) / 2);
   }
 }
 

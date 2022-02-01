@@ -1,14 +1,8 @@
-import android.view.View;
+import com.tencent.mobileqq.remind.widget.WheelView;
 
-class azyc
-  implements bliz
+public abstract interface azyc
 {
-  azyc(azya paramazya) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    azya.a(this.a, paramInt);
-  }
+  public abstract long a(WheelView[] paramArrayOfWheelView, int[] paramArrayOfInt);
 }
 
 

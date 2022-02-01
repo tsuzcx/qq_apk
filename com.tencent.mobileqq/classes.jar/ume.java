@@ -1,40 +1,33 @@
-import UserGrowth.stNotificationRsp;
+import android.content.SharedPreferences.Editor;
 
 class ume
-  implements ukd
+  implements zhe
 {
-  ume(umd paramumd) {}
+  ume(umb paramumb) {}
   
-  public void a(uko paramuko)
+  public void a()
   {
-    uqf.b("WSRecommendFragmentPresenter", "NotificationRequest-onTaskResponse-resultCode:" + paramuko.b + " | resultBean:" + paramuko.jdField_a_of_type_JavaLangObject + " | thread:" + Thread.currentThread().getName());
-    if (this.a.a() == null)
-    {
-      uqf.d("WSRecommendFragmentPresenter", "getNotification onTaskResponse getView(): null");
-      return;
+    if (umb.a(this.a).a()) {
+      umb.a(this.a).b();
     }
-    if (paramuko.a())
+    for (;;)
     {
-      if ((paramuko.jdField_a_of_type_JavaLangObject instanceof stNotificationRsp))
-      {
-        stNotificationRsp localstNotificationRsp = (stNotificationRsp)paramuko.jdField_a_of_type_JavaLangObject;
-        uke localuke = paramuko.jdField_a_of_type_Uke;
-        if (localuke != null) {
-          unu.a().a(localstNotificationRsp.trace_id, localuke.a);
-        }
-        if (localstNotificationRsp.type > 0)
-        {
-          ((unf)this.a.a()).a(localstNotificationRsp, localuke);
-          return;
-        }
-        ((unf)this.a.a()).b(paramuko.b, paramuko.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      ((unf)this.a.a()).b(paramuko.b, paramuko.jdField_a_of_type_JavaLangString);
-      uqf.d("WSRecommendFragmentPresenter", "NotificationRequest-onTaskResponse error:" + paramuko.b + " | " + paramuko.jdField_a_of_type_JavaLangString);
+      umb.a(this.a, false);
       return;
+      this.a.dismiss();
     }
-    ((unf)this.a.a()).b(paramuko.jdField_a_of_type_Int, paramuko.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (umb.a(this.a) != paramInt)
+    {
+      umb.a(this.a, paramInt);
+      umb.a(this.a);
+      umb.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
+      umb.a(this.a).commit();
+    }
+    umb.a(this.a, true);
   }
 }
 

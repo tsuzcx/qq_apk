@@ -1,25 +1,76 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import java.util.ArrayList;
+import java.util.List;
 
-public class yzs
-  extends QQUIEventReceiver<QQStoryTakeVideoCloseAnimationActivity, yry>
+public abstract class yzs<E>
+  extends RecyclerView.Adapter
 {
-  public yzs(@NonNull QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity)
+  private Handler a;
+  protected ArrayList<E> a;
+  
+  public yzs()
   {
-    super(paramQQStoryTakeVideoCloseAnimationActivity);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void a(@NonNull QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity, @NonNull yry paramyry)
+  public Handler a()
   {
-    if (paramyry != null) {
-      paramQQStoryTakeVideoCloseAnimationActivity.a(paramyry.a, paramyry.b, paramyry.c, paramyry.d);
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     }
+    return this.jdField_a_of_type_AndroidOsHandler;
   }
   
-  public Class acceptEventClass()
+  public ArrayList<E> a()
   {
-    return yry.class;
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(E paramE, int paramInt)
+  {
+    if ((paramE == null) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.set(paramInt, paramE);
+  }
+  
+  public void a(ArrayList<E> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    notifyDataSetChanged();
+    if (paramArrayList == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    notifyDataSetChanged();
+  }
+  
+  public void b(List<E> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    notifyItemRangeInserted(this.jdField_a_of_type_JavaUtilArrayList.size(), paramList.size());
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onDetachedFromRecyclerView(paramRecyclerView);
+    a().removeCallbacksAndMessages(null);
   }
 }
 

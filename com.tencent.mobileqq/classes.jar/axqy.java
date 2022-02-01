@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.music.QQPlayerService;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import android.widget.RelativeLayout;
 
-public class axqy
-  implements aqva
+class axqy
+  extends AnimatorListenerAdapter
 {
-  public axqy(QQPlayerService paramQQPlayerService) {}
+  axqy(axqp paramaxqp, View paramView) {}
   
-  public void onServiceSyncSucc(boolean paramBoolean)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((QQPlayerService.b()) && (QQPlayerService.a(this.a) != null) && (!QQPlayerService.a(this.a).c())) {
-      QQPlayerService.a(this.a).e();
-    }
+    axqp.a(this.jdField_a_of_type_Axqp).removeView(this.jdField_a_of_type_AndroidViewView);
   }
 }
 

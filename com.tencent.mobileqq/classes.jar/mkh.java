@@ -1,80 +1,50 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.VideoInviteActivity;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import mqq.app.BaseActivity;
 
 public class mkh
+  implements DialogInterface.OnClickListener
 {
-  View a;
-  View b;
+  int jdField_a_of_type_Int;
   
-  public mkh(View paramView)
+  public mkh(VideoInviteActivity paramVideoInviteActivity, int paramInt)
   {
-    this.a = paramView.findViewById(2131373616);
-    this.b = paramView.getRootView().findViewById(2131373617);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  static void a(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramView == null) {
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
       return;
     }
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
-    localLayoutParams.height = paramInt;
-    paramView.setLayoutParams(localLayoutParams);
-  }
-  
-  public void a(BaseActivity paramBaseActivity)
-  {
-    if ((paramBaseActivity == null) || (this.a == null)) {}
-    do
+    long l = AudioHelper.b();
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_JavaLangString, 1, "onClick, seq[" + l + "]");
+    switch (this.jdField_a_of_type_Int)
     {
-      do
+    default: 
+      return;
+    case 0: 
+      paramDialogInterface.dismiss();
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().l();
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().l()) {
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().g(false);
+      }
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d = true;
+      paramDialogInterface = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a();
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.b) {}
+      for (paramInt = 1;; paramInt = 2)
       {
-        do
-        {
-          return;
-          if (ImmersiveUtils.isSupporImmersive() == 1) {
-            break;
-          }
-          this.a.setVisibility(8);
-        } while (this.b == null);
-        this.b.setVisibility(8);
+        paramDialogInterface.a(l, paramInt, false, true);
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.e();
         return;
-        int i = ImmersiveUtils.getStatusBarHeight(paramBaseActivity);
-        QLog.w("QavStatusBar", 1, "adjust, height[" + i + "]");
-        if (i > 0)
-        {
-          a(this.a, i);
-          a(this.b, i);
-        }
-      } while (AudioHelper.a(0) != 1);
-      this.a.setBackgroundColor(2140405971);
-    } while (this.b == null);
-    this.b.setBackgroundColor(2140405971);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.a != null)
-    {
-      QLog.w("QavStatusBar", 1, "setBackgroundColor, bDoubleScreen[" + paramBoolean + "]");
-      if (paramBoolean) {
-        this.a.setBackgroundColor(-16777216);
       }
     }
-    else
-    {
-      return;
-    }
-    this.a.setBackgroundColor(0);
-  }
-  
-  public boolean a()
-  {
-    return (this.a != null) && (this.a.getVisibility() == 0);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(l, true);
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
   }
 }
 

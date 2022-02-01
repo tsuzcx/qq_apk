@@ -1,193 +1,249 @@
-import android.content.res.Resources;
-import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Locale;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class azwi
-  extends azwy
 {
-  public azwi(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  public static final long[] a;
+  public double a;
+  public float a;
+  public int a;
+  public long a;
+  public float b;
+  public int b;
+  public long[] b;
+  public int c = 15;
+  public int d = 2;
+  public int e = 3;
+  public int f = 3;
+  public int g = 10;
+  public int h = 1;
+  public int i = 21;
+  public int j = 3;
+  public int k = 5;
+  public int l = 1;
+  public int m = 1;
+  public int n = 5;
+  public int o = 1;
+  public int p = 10;
+  public int q = 1;
+  public int r;
+  public int s = 200;
+  public int t = 24;
+  public int u = 48;
   
-  public void a(boolean paramBoolean, String paramString, long paramLong1, long paramLong2)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelGalleryActivity", 2, "onDelPersonalityLabelPhoto suc:" + paramBoolean + "," + paramString + "," + paramLong1 + "," + paramLong2);
-    }
-    if ((PersonalityLabelGalleryActivity.a(this.a)) && (paramString.equals(this.a.app.getCurrentAccountUin())))
+    jdField_a_of_type_ArrayOfLong = new long[] { 10009L, 10010L, 10011L, 32L };
+  }
+  
+  public azwi(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_Double = 3.0D;
+    this.jdField_b_of_type_ArrayOfLong = new long[] { 10009L, 10010L, 10011L, 32L };
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 100;
+    this.jdField_a_of_type_Long = 1514736000L;
+    this.jdField_a_of_type_Float = 0.01F;
+    this.jdField_b_of_type_Float = 0.5F;
+    a(bfyz.a(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), "batch_add_friend_for_troop_config"));
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
     {
-      paramString = (PersonalityLabelInfo)PersonalityLabelGalleryActivity.a(this.a).get(Long.valueOf(paramLong1));
-      if (paramString != null) {
-        break label109;
+    default: 
+      return 10;
+    case 2: 
+      return this.g;
+    case 3: 
+      return this.k;
+    case 4: 
+      return this.n;
+    }
+    return this.r;
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("troopBatchAddFrd.BatchAddFriendForTroopConfig", 4, "update content is null!");
       }
     }
     for (;;)
     {
       return;
-      label109:
-      int i = 0;
-      while (i < paramString.personalityLabelPhotos.size())
+      try
       {
-        if (((PersonalityLabelPhoto)paramString.personalityLabelPhotos.get(i)).fileId == paramLong2)
+        paramString = new JSONObject(paramString);
+        if (paramString.has("switchOn")) {
+          this.jdField_a_of_type_Int = paramString.getInt("switchOn");
+        }
+        if (paramString.has("troopMemberNumLimit")) {
+          this.jdField_b_of_type_Int = paramString.getInt("troopMemberNumLimit");
+        }
+        if (paramString.has("troopJoinDayLimit")) {
+          this.c = paramString.getInt("troopJoinDayLimit");
+        }
+        if (paramString.has("commonFriendProportionLimit")) {
+          this.jdField_a_of_type_Float = ((float)paramString.getDouble("commonFriendProportionLimit"));
+        }
+        Object localObject;
+        if (paramString.has("troopJoinLine")) {
+          localObject = paramString.getString("troopJoinLine");
+        }
+        try
         {
-          if (paramString.personalityLabelPhotos.remove(i) != null)
-          {
-            PersonalityLabelGalleryActivity.b(this.a, true);
-            paramString.photoCount -= 1;
-            this.a.a(paramLong1, false);
+          this.jdField_a_of_type_Long = (new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse((String)localObject).getTime() / 1000L);
+          if (paramString.has("nonFriendProportionLimit")) {
+            this.jdField_b_of_type_Float = ((float)paramString.getDouble("nonFriendProportionLimit"));
           }
-          PersonalityLabelGalleryActivity.a(this.a).notifyDataSetChanged();
-          return;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString, long paramLong, PersonalityLabelInfo paramPersonalityLabelInfo, int paramInt, byte[] paramArrayOfByte)
-  {
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("onGetPersonalityLabelPhotos : isSuccess = ").append(paramBoolean).append(", uin = ").append(paramString).append(", labelId = ").append(paramLong).append(", completeFlag = ").append(paramInt).append(", cookie = ");
-      if (paramArrayOfByte == null)
-      {
-        localObject = "null";
-        localStringBuilder = localStringBuilder.append(localObject).append(", labelInfo = ");
-        if (paramPersonalityLabelInfo != null) {
-          break label313;
-        }
-        localObject = "null";
-        label89:
-        QLog.i("PersonalityLabelGalleryActivity", 2, (String)localObject);
-      }
-    }
-    else
-    {
-      if (!TextUtils.isEmpty(PersonalityLabelGalleryActivity.a(this.a))) {
-        break label323;
-      }
-    }
-    label313:
-    label323:
-    for (boolean bool = this.a.app.getCurrentAccountUin().equals(paramString);; bool = PersonalityLabelGalleryActivity.a(this.a).equals(paramString))
-    {
-      if (bool) {
-        PersonalityLabelGalleryActivity.a(this.a, false);
-      }
-      if ((paramBoolean) && (paramPersonalityLabelInfo != null))
-      {
-        paramString = (PersonalityLabelInfo)PersonalityLabelGalleryActivity.a(this.a).get(Long.valueOf(paramLong));
-        if (paramString != null)
-        {
-          if (PersonalityLabelGalleryActivity.b(this.a).get(Long.valueOf(paramLong)) == null)
+          if (paramString.has("tipsTotalCountForTroopEveryday")) {
+            this.e = paramString.getInt("tipsTotalCountForTroopEveryday");
+          }
+          if (paramString.has("tipsTotalCountForUin")) {
+            this.f = paramString.getInt("tipsTotalCountForUin");
+          }
+          if (paramString.has("activeUser"))
           {
-            paramString.personalityLabelPhotos.clear();
-            if (PersonalityLabelGalleryActivity.a(this.a)) {
-              paramPersonalityLabelInfo.photoCount = (this.a.jdField_a_of_type_Azvx.a(paramLong, paramPersonalityLabelInfo, true) + paramPersonalityLabelInfo.photoCount);
+            localObject = paramString.getJSONObject("activeUser");
+            if (localObject != null)
+            {
+              if (((JSONObject)localObject).has("totalCommonFriends")) {
+                this.g = ((JSONObject)localObject).getInt("totalCommonFriends");
+              }
+              if (((JSONObject)localObject).has("switchOn")) {
+                this.h = ((JSONObject)localObject).getInt("switchOn");
+              }
             }
           }
-          paramString.personalityLabelPhotos.addAll(paramPersonalityLabelInfo.personalityLabelPhotos);
-          PersonalityLabelGalleryActivity.c(this.a).put(Long.valueOf(paramLong), Integer.valueOf(paramInt));
-          if (paramArrayOfByte != null) {
-            PersonalityLabelGalleryActivity.b(this.a).put(Long.valueOf(paramLong), paramArrayOfByte);
+          if (paramString.has("highFreqInteract"))
+          {
+            localObject = paramString.getJSONObject("highFreqInteract");
+            if (localObject != null)
+            {
+              if (((JSONObject)localObject).has("interactDuration")) {
+                this.i = ((JSONObject)localObject).getInt("interactDuration");
+              }
+              if (((JSONObject)localObject).has("interactRounds")) {
+                this.j = ((JSONObject)localObject).getInt("interactRounds");
+              }
+              if (((JSONObject)localObject).has("commonFriends")) {
+                this.k = ((JSONObject)localObject).getInt("commonFriends");
+              }
+              if (((JSONObject)localObject).has("switchOn")) {
+                this.l = ((JSONObject)localObject).getInt("switchOn");
+              }
+            }
           }
-          PersonalityLabelGalleryActivity.a(this.a, paramLong);
+          if (paramString.has("newMember"))
+          {
+            localObject = paramString.getJSONObject("newMember");
+            if (localObject != null)
+            {
+              if (((JSONObject)localObject).has("newMemberIndex")) {
+                this.m = ((JSONObject)localObject).getInt("newMemberIndex");
+              }
+              if (((JSONObject)localObject).has("commonFriends")) {
+                this.n = ((JSONObject)localObject).getInt("commonFriends");
+              }
+              if (((JSONObject)localObject).has("switchOn")) {
+                this.o = ((JSONObject)localObject).getInt("switchOn");
+              }
+            }
+          }
+          if (paramString.has("atMeOrReplyMe"))
+          {
+            localObject = paramString.getJSONObject("atMeOrReplyMe");
+            if (localObject != null)
+            {
+              if (((JSONObject)localObject).has("maxDateLenth")) {
+                this.jdField_a_of_type_Double = ((JSONObject)localObject).getDouble("maxDateLenth");
+              }
+              if (((JSONObject)localObject).has("maxMsgCount")) {
+                this.p = ((JSONObject)localObject).getInt("maxMsgCount");
+              }
+              if (((JSONObject)localObject).has("switchOn")) {
+                this.q = ((JSONObject)localObject).getInt("switchOn");
+              }
+              if (((JSONObject)localObject).has("commonFriends")) {
+                this.r = ((JSONObject)localObject).getInt("commonFriends");
+              }
+            }
+          }
+          if (paramString.has("troopMemberCount_ahn")) {
+            this.s = paramString.getInt("troopMemberCount_ahn");
+          }
+          if (!paramString.has("troopType_ahn")) {
+            break label991;
+          }
+          localObject = paramString.getJSONArray("troopType_ahn");
+          this.jdField_b_of_type_ArrayOfLong = new long[((JSONArray)localObject).length()];
+          int i1 = 0;
+          while (i1 < this.jdField_b_of_type_ArrayOfLong.length)
+          {
+            this.jdField_b_of_type_ArrayOfLong[i1] = ((JSONArray)localObject).optInt(i1);
+            i1 += 1;
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            localThrowable.printStackTrace();
+          }
+        }
+        if (!QLog.isColorLevel()) {}
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramString.printStackTrace();
+          QLog.i("troopBatchAddFrd.BatchAddFriendForTroopConfig", 2, "update exception ", paramString);
         }
       }
+    }
+    for (;;)
+    {
+      QLog.i("troopBatchAddFrd.BatchAddFriendForTroopConfig", 2, String.format(Locale.getDefault(), "update {switchOn: %s, troopMemberNumLimit: %s, troopJoinDayLimit: %s, commonFriendProportionLimit:%s, troopJoinLine: %s, insertGrayTipLimit: %s, nonFriendProportionLimit: %s}", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.c), Float.valueOf(this.jdField_a_of_type_Float), Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.d), Float.valueOf(this.jdField_b_of_type_Float) }));
+      QLog.d("troopBatchAddFrd.BatchAddFriendForTroopConfig", 2, "update tipsTotalCountForTroopEveryday = " + this.e + ",tipsTotalCountForUin = " + this.f + ",au_totalCommonFriends = " + this.g + ",au_switchOn = " + this.h + ",hfi_interactDuration = " + this.i + ",hfi_interactRounds = " + this.j + ",hfi_commonFriends = " + this.k + ",nm_newMemberIndex = " + this.m + ",nm_commonFriends = " + this.n + ",nm_switchOn = " + this.o + ",aor_maxDateLength = " + this.jdField_a_of_type_Double + ",aor_maxMsgCount = " + this.p + ",aor_switchOn = " + this.q + ",aor_commonFriends = " + this.r + ",troopMemberCount_ahn = " + this.s + ",troopType_ahn = " + Arrays.toString(this.jdField_b_of_type_ArrayOfLong) + ",cacheTimeCmnFrdCntData = " + this.t + ",cacheTimeRemarkData = " + this.u);
       return;
-      localObject = paramArrayOfByte;
-      break;
-      localObject = paramPersonalityLabelInfo.toString();
-      break label89;
+      label991:
+      if (paramString.has("cacheTimeCmnFrdCntData")) {
+        this.t = paramString.getInt("cacheTimeCmnFrdCntData");
+      }
+      if (paramString.has("cacheTimeRemarkData")) {
+        this.u = paramString.getInt("cacheTimeRemarkData");
+      }
     }
   }
   
-  public void a(boolean paramBoolean, String paramString, PersonalityLabel paramPersonalityLabel, byte[] paramArrayOfByte, int paramInt)
+  public boolean a(TroopInfo paramTroopInfo, long[] paramArrayOfLong)
   {
-    if (paramInt != 1) {}
-    label36:
-    label167:
-    label169:
-    label192:
-    do
+    if (paramTroopInfo == null) {}
+    for (;;)
     {
-      return;
-      boolean bool;
-      if (TextUtils.isEmpty(PersonalityLabelGalleryActivity.a(this.a)))
+      return false;
+      int i2 = paramArrayOfLong.length;
+      int i1 = 0;
+      while (i1 < i2)
       {
-        bool = this.a.app.getCurrentAccountUin().equals(paramString);
-        if (!bool) {
-          break label167;
+        long l1 = paramArrayOfLong[i1];
+        if (paramTroopInfo.dwGroupClassExt == l1) {
+          return true;
         }
-        if ((!paramBoolean) || (paramPersonalityLabel == null)) {
-          continue;
-        }
-        if (!this.a.jdField_a_of_type_Boolean) {
-          break label192;
-        }
-        this.a.jdField_a_of_type_JavaUtilHashSet.clear();
-        if (PersonalityLabelGalleryActivity.a(this.a) != null) {
-          break label169;
-        }
+        i1 += 1;
       }
-      for (paramInt = 0;; paramInt = PersonalityLabelGalleryActivity.a(this.a).getSize())
-      {
-        int i = paramPersonalityLabel.getSize();
-        int j = 0;
-        i -= paramInt;
-        paramInt = j;
-        while (i > 0)
-        {
-          this.a.jdField_a_of_type_JavaUtilHashSet.add(Long.valueOf(((PersonalityLabelInfo)paramPersonalityLabel.personalityLabelInfos.get(paramInt)).id));
-          i -= 1;
-          paramInt += 1;
-        }
-        bool = PersonalityLabelGalleryActivity.a(this.a).equals(paramString);
-        break label36;
-        break;
-      }
-      this.a.jdField_a_of_type_Boolean = false;
-      if ((paramPersonalityLabel.getSize() > 0) && (PersonalityLabelGalleryActivity.a(this.a)))
-      {
-        paramInt = 0;
-        while (paramInt < paramPersonalityLabel.personalityLabelInfos.size())
-        {
-          paramString = (PersonalityLabelInfo)paramPersonalityLabel.personalityLabelInfos.get(paramInt);
-          this.a.jdField_a_of_type_Azvx.a(paramString.id, paramString, true);
-          paramInt += 1;
-        }
-      }
-      this.a.a(paramPersonalityLabel, true);
-      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-      }
-      paramString = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, paramPersonalityLabel);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramString, 500L);
-      return;
-    } while (paramBoolean);
-    if (!bhnv.d(this.a))
-    {
-      PersonalityLabelGalleryActivity.a(this.a, this.a.getResources().getString(2131693963));
-      paramString = this.a;
-      if ((PersonalityLabelGalleryActivity.a(this.a) == null) || (PersonalityLabelGalleryActivity.a(this.a).getSize() <= 0)) {
-        break label429;
-      }
-    }
-    label429:
-    for (paramInt = 8;; paramInt = 0)
-    {
-      paramString.a(paramInt, "加载失败", false);
-      return;
-      PersonalityLabelGalleryActivity.a(this.a, this.a.getResources().getString(2131693401));
-      break;
     }
   }
 }

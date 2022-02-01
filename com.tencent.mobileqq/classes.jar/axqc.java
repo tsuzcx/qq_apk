@@ -1,16 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.util.List;
+import com.tencent.mobileqq.olympic.TorchInfo;
 
-class axqc
-  implements DialogInterface.OnClickListener
+public abstract interface axqc
 {
-  axqc(axqb paramaxqb, List paramList) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_JavaUtilList, false);
-  }
+  public abstract void a(TorchInfo paramTorchInfo);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
 }
 
 

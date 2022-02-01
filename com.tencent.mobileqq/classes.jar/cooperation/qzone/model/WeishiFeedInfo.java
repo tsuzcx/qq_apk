@@ -3,12 +3,11 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnaw;
 
 public class WeishiFeedInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiFeedInfo> CREATOR = new bnaw();
+  public static final Parcelable.Creator<WeishiFeedInfo> CREATOR = new WeishiFeedInfo.1();
   public static final int FROM_TYPE_ALBUM_VIDEO = 1;
   public static final int FROM_TYPE_DEFAULT = 0;
   public static final int FROM_TYPE_WEISHI_VIDEO = 2;
@@ -26,7 +25,7 @@ public class WeishiFeedInfo
   
   public WeishiFeedInfo() {}
   
-  public WeishiFeedInfo(Parcel paramParcel)
+  protected WeishiFeedInfo(Parcel paramParcel)
   {
     this.userInfo = ((WeishiUserInfo)paramParcel.readParcelable(WeishiUserInfo.class.getClassLoader()));
     this.videoInfo = ((VideoInfo)paramParcel.readParcelable(VideoInfo.class.getClassLoader()));

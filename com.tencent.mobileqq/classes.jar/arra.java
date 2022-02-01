@@ -1,65 +1,35 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView.1;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView.1.1.1;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class arra
-  extends arac<arqz>
+  implements OnCompositionLoadedListener
 {
-  public static arqz a()
-  {
-    return (arqz)aran.a().a(335);
-  }
+  public arra(MatchingView.1 param1) {}
   
-  @NonNull
-  public arqz a(int paramInt)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    return new arqz();
-  }
-  
-  @Nullable
-  public arqz a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arqz.a(paramArrayOfaraj);
+    if (paramLottieComposition == null)
+    {
+      QLog.e("MatchingView", 1, "onCompositionLoaded lottieComposition is null");
+      return;
     }
-    return null;
-  }
-  
-  public void a(arqz paramarqz) {}
-  
-  public Class<arqz> clazz()
-  {
-    return arqz.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return false;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TencentDocSelectAddDocsProcessor", 1, "handleTencentDocUniversalEntry FILE_SELECT_ADD_DOCS failed, resultCode:" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 335;
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    MatchingView.a(this.a.this$0, localLottieDrawable);
+    ThreadManager.getUIHandler().post(new MatchingView.1.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arra
  * JD-Core Version:    0.7.0.1
  */

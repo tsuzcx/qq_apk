@@ -1,25 +1,75 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.HashMap;
-import java.util.Map;
+import android.app.Activity;
+import android.view.View;
+import android.view.Window;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogView;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.util.VersionUtils;
+import java.util.ArrayList;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public abstract class sav
+class sav
+  extends sif
 {
-  public int a;
-  public BaseArticleInfo a;
-  public HashMap<String, String> a;
-  public int b;
+  sav(sab paramsab) {}
   
-  public sav(BaseArticleInfo paramBaseArticleInfo, int paramInt1, int paramInt2, Map<String, String> paramMap)
+  public int a()
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaUtilHashMap.putAll(paramMap);
+    return 7;
   }
   
-  public abstract void a(JSONObject paramJSONObject);
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    sab.b(this.a, true);
+    paramVideoInfo = new JSONObject();
+    try
+    {
+      paramVideoInfo.put("channel_id", 409409);
+      paramVideoInfo.put("source", 2);
+      paramString = sab.a(this.a);
+      if ((paramString.a != null) && (paramString.a.size() > 0))
+      {
+        sab.a(this.a, (bjnw)bjon.a(sab.a(this.a), null));
+        paramActionSheetItem = new saw(this);
+        sab.a(this.a).a(paramActionSheetItem);
+        paramActionSheetItem = new ReadInJoyDisLikeDialogView(sab.a(this.a));
+        paramActionSheetItem.setOnUninterestConfirmListener(new sax(this, paramString, paramVideoInfo));
+        paramActionSheetItem.setUninterestData(paramString.a);
+        sab.a(this.a).a(paramActionSheetItem, null);
+      }
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        try
+        {
+          if (!sab.a(this.a).isShowing())
+          {
+            if ((VersionUtils.isJellyBean()) && (!ShortVideoUtils.isInFullScreenBlackList()))
+            {
+              sab.a(this.a).getWindow().setFlags(8, 8);
+              sab.a(this.a).getWindow().getDecorView().setSystemUiVisibility(sab.a(this.a).getWindow().getDecorView().getSystemUiVisibility());
+              sab.a(this.a).setOnShowListener(new say(this));
+            }
+            sab.a(this.a).show();
+            odq.b(null, null, "0X800913B", "0X800913B", 0, 0, null, null, null, new sie(ofe.a(null, null, null, null, paramVideoInfo)).i(paramString.g).a().a(), false);
+          }
+          return;
+        }
+        catch (Exception paramVideoInfo)
+        {
+          sab.a(this.a, "dislikeSheet.show exception=" + paramVideoInfo);
+          return;
+        }
+        paramString = paramString;
+        paramString.printStackTrace();
+      }
+    }
+    sab.a(this.a, "文章ID为：" + paramString.g + amtj.a(2131715256));
+  }
 }
 
 

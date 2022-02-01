@@ -1,45 +1,66 @@
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.IJsService;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.data.AudioInfo;
+import cooperation.troop_homework.outer.TroopHWRecordArrangeActivity;
+import java.io.File;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-class bkyp
-  implements MiniAppCmdInterface
+public class bkyp
+  extends Handler
 {
-  bkyp(bkyl parambkyl, String paramString, IJsService paramIJsService, int paramInt) {}
+  public bkyp(TroopHWRecordArrangeActivity paramTroopHWRecordArrangeActivity) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public void handleMessage(Message paramMessage)
   {
-    QLog.i("MiniSDKClientQIPCModule", 2, "createUpdatableMsg receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
-    if (paramJSONObject != null)
+    switch (paramMessage.what)
     {
-      int i = paramJSONObject.optInt("retCode");
-      String str = paramJSONObject.optString("errMsg");
-      paramJSONObject = new JSONObject();
-      if (i == 0) {}
+    default: 
+      return;
+    case 3: 
+      this.a.jdField_a_of_type_Boolean = true;
+      return;
+    case 101: 
+      this.a.setResult(0);
+      this.a.finish();
+      return;
+    }
+    paramMessage = paramMessage.obj.toString();
+    Object localObject = new File(paramMessage);
+    long l;
+    if (((File)localObject).exists()) {
+      l = ((File)localObject).length();
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
+      paramMessage = new JSONObject();
       try
       {
-        paramJSONObject.put("retCode", i);
-        paramJSONObject.put("errMsg", str);
-        while (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIJsService != null)
-        {
-          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIJsService.evaluateCallbackJs(this.jdField_a_of_type_Int, paramJSONObject.toString());
-          return;
-          paramJSONObject.put("retCode", 2);
-          paramJSONObject.put("errMsg", this.jdField_a_of_type_JavaLangString + ":fail " + str + "(" + i + ")");
-        }
+        paramMessage.put("webid", TroopHWRecordArrangeActivity.a(this.a));
+        paramMessage.put("type", "record");
+        paramMessage.put("state", "stop");
+        paramMessage.put("time", Math.round(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.duration / 1000.0F));
+        paramMessage.put("size", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.size);
+        localObject = new Intent();
+        ((Intent)localObject).putExtra("jscallback", paramMessage.toString());
+        ((Intent)localObject).putExtra("localPath", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path);
+        this.a.setResult(-1, (Intent)localObject);
+        this.a.finish();
+        return;
+        l = 0L;
       }
-      catch (Throwable localThrowable)
+      catch (JSONException localJSONException)
       {
         for (;;)
         {
-          localThrowable.printStackTrace();
+          localJSONException.printStackTrace();
         }
-        QLog.d("MiniSDKClientQIPCModule", 1, "createUpdatableMsg error, null jsService");
-        return;
       }
     }
-    QLog.d("MiniSDKClientQIPCModule", 1, "createUpdatableMsg error, null ret");
   }
 }
 

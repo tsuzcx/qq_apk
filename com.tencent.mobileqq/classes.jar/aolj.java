@@ -1,27 +1,18 @@
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArLBSActivity;
 
-class aolj
-  implements Comparator<Map.Entry<String, Entity>>
+public final class aolj
+  implements Parcelable.Creator<ArLBSActivity>
 {
-  aolj(aoli paramaoli) {}
-  
-  public int a(Map.Entry<String, Entity> paramEntry1, Map.Entry<String, Entity> paramEntry2)
+  public ArLBSActivity a(Parcel paramParcel)
   {
-    paramEntry1 = ((String)paramEntry1.getKey()).split("&")[1];
-    int i = Integer.parseInt(paramEntry1.split("-")[0]);
-    int j = Integer.parseInt(paramEntry1.split("-")[1]);
-    paramEntry1 = ((String)paramEntry2.getKey()).split("&")[1];
-    int k = Integer.parseInt(paramEntry1.split("-")[0]);
-    int m = Integer.parseInt(paramEntry1.split("-")[1]);
-    if (i > k) {
-      return 1;
-    }
-    if (i == k) {
-      return j - m;
-    }
-    return -1;
+    return new ArLBSActivity(paramParcel);
+  }
+  
+  public ArLBSActivity[] a(int paramInt)
+  {
+    return new ArLBSActivity[paramInt];
   }
 }
 

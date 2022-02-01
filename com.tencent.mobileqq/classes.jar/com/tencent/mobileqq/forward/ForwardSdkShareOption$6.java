@@ -2,7 +2,7 @@ package com.tencent.mobileqq.forward;
 
 import android.app.Activity;
 import android.os.Bundle;
-import auxr;
+import atku;
 import com.tencent.qphone.base.util.QLog;
 
 class ForwardSdkShareOption$6
@@ -24,7 +24,7 @@ class ForwardSdkShareOption$6
     } while (!ForwardSdkShareOption.a(this.this$0));
     this.this$0.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
     this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-    this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", auxr.e.intValue());
+    this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", atku.e.intValue());
     this.this$0.m();
   }
 }

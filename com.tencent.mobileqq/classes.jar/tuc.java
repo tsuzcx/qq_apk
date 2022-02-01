@@ -1,30 +1,42 @@
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-class tuc
-  implements bliz
+public class tuc
+  implements qdy
 {
-  tuc(tub paramtub, tua paramtua, int paramInt, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    switch (paramInt)
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return pzx.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView();
+    if ((parampvc != null) && (parampvc.a() != null) && (AdvertisementInfo.isAdvertisementInfo(parampvc.a())))
     {
-    default: 
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
+      ViewBase localViewBase = paramContainer.findViewBaseByName("id_view_AdDownloadView");
+      if ((localViewBase != null) && ((localViewBase instanceof tyx))) {
+        ((tyx)localViewBase).a(parampvc, true);
+      }
+      paramContainer = paramContainer.findViewBaseByName("id_article_double_image");
+      if ((paramContainer != null) && ((paramContainer instanceof tzy))) {
+        ((tzy)paramContainer).a(parampvc);
+      }
     }
-    tub.a(this.jdField_a_of_type_Tub, this.jdField_a_of_type_Tua);
-    paramInt = this.jdField_a_of_type_Tua.b;
-    int i = this.jdField_a_of_type_Tua.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Tua.jdField_a_of_type_Int != 1) {
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      long l = tug.a().a(this.jdField_a_of_type_Tua);
-      bdll.b(tub.a(this.jdField_a_of_type_Tub), "dc01160", "Pb_account_lifeservice", "" + this.jdField_a_of_type_Tua.jdField_a_of_type_JavaLangString, "0X80067F2", "0X80067F2", 0, 0, "" + (this.jdField_a_of_type_Int + 1), "" + l, "" + i, "" + paramInt);
-      break;
-    }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

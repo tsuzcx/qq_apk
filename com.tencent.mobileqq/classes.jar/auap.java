@@ -1,72 +1,56 @@
-import android.text.TextUtils.TruncateAt;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.view.QQGameIndicator2;
+import com.tencent.mobileqq.gamecenter.web.view.UnreadTipLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class auap
-  implements bcnz
+  implements View.OnClickListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+  public auap(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public auap(ViewGroup paramViewGroup)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560915, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366604));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366615));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365388));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setMaxLines(1);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.a();
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)this.jdField_a_of_type_AndroidViewView.findViewById(2131366617));
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public View a(String paramString)
-  {
-    return null;
-  }
-  
-  public ImageView a()
-  {
-    return null;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
-  }
-  
-  public ImageView b()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView b()
-  {
-    return null;
-  }
-  
-  public TextView c()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public TextView d()
-  {
-    return null;
+    int i;
+    int j;
+    if (QQGameFeedWebFragment.a(this.a) != null)
+    {
+      if (QQGameFeedWebFragment.a(this.a) == null) {}
+      for (i = 0; this.a.a >= 3; i = QQGameFeedWebFragment.a(this.a).size())
+      {
+        QQGameFeedWebFragment.a(this.a).setCurrentItem(QQGameFeedWebFragment.a(this.a).getCount());
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+      }
+      j = QQGameFeedWebFragment.a(this.a).getCurrentItem();
+      if (j + 1 >= i) {
+        break label211;
+      }
+      QQGameFeedWebFragment.a(this.a).setCurrentItem(j + 1);
+    }
+    for (;;)
+    {
+      if (this.a.a == 0)
+      {
+        QQGameFeedWebFragment.a(this.a).setVisibility(0);
+        QQGameFeedWebFragment.a(this.a).setVisibility(4);
+        QQGameFeedWebFragment.a(this.a).b();
+      }
+      HashMap localHashMap = new HashMap();
+      localHashMap.put(Integer.valueOf(4), "20");
+      localHashMap.put(Integer.valueOf(24), "1");
+      abet.a(alvx.a(), "769", "207553", "", "76925", "1", "160", localHashMap);
+      break;
+      label211:
+      if (j == i - 1) {
+        QQGameFeedWebFragment.a(this.a).setCurrentItem(i);
+      }
+    }
   }
 }
 

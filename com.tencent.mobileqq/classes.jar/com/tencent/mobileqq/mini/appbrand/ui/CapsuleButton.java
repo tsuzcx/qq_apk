@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
+import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -24,10 +25,8 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anzj;
-import aqre;
-import bihq;
-import biiy;
+import apkn;
+import bgoa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
@@ -82,8 +81,10 @@ import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.vip.diy.common.DIYLottieLoader;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import common.config.service.QzoneConfig;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -98,6 +99,7 @@ public class CapsuleButton
   extends RelativeLayout
   implements Handler.Callback, View.OnClickListener
 {
+  public static final String KEY_TAP_INDEX_FAVORITE = "tapIndexFavorite";
   public static final String KEY_TAP_INDEX_QQ = "tapIndexQQ";
   public static final String KEY_TAP_INDEX_QZONE = "tapIndexQZONE";
   public static final String KEY_TAP_INDEX_WX = "tapIndexWX";
@@ -108,6 +110,7 @@ public class CapsuleButton
   public static final int MORE_STATUS_LOADING = 1;
   public static final int MORE_STATUS_REGULAR = 0;
   public static final int MSG_ADD_CURRENT_TROOP = 17;
+  public static final int MSG_ADD_FAVORITE = 18;
   public static final int MSG_ADD_SHORTCUT = 11;
   public static final int MSG_BACK_HOME = 10;
   public static final int MSG_COLOR_NOTE_CLICK = 14;
@@ -135,7 +138,7 @@ public class CapsuleButton
   private boolean isMiniMsgTabShow;
   private boolean isOpenMonitorPanel;
   private int launchFrom = -1;
-  private biiy lottieLoader;
+  private DIYLottieLoader lottieLoader;
   private AppBrandRuntime mAppBrandRuntime;
   private Drawable mCloseBtnBgDrawable;
   private Drawable mCloseBtnWhiteBgDrawable;
@@ -210,28 +213,28 @@ public class CapsuleButton
   private View getContainerView()
   {
     this.mMoreView = new DiniFlyAnimationView(getContext());
-    this.mMoreView.setId(2131363856);
-    this.mMoreView.setContentDescription(anzj.a(2131700265));
+    this.mMoreView.setId(2131363882);
+    this.mMoreView.setContentDescription(amtj.a(2131700500));
     Object localObject = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 40.0F), -1);
     ((RelativeLayout.LayoutParams)localObject).addRule(9, -1);
     this.mMoreView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     addView(this.mMoreView, (ViewGroup.LayoutParams)localObject);
     localObject = new ImageView(getContext());
-    ((ImageView)localObject).setId(2131363765);
-    ((ImageView)localObject).setContentDescription(anzj.a(2131700261));
+    ((ImageView)localObject).setId(2131363794);
+    ((ImageView)localObject).setContentDescription(amtj.a(2131700496));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 40.0F), -1);
     localLayoutParams.addRule(11, -1);
-    localLayoutParams.addRule(1, 2131363856);
+    localLayoutParams.addRule(1, 2131363882);
     ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     addView((View)localObject, localLayoutParams);
     localObject = new View(getContext());
-    ((View)localObject).setId(2131369970);
+    ((View)localObject).setId(2131369964);
     localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 0.5F), DisplayUtil.dip2px(getContext(), 18.0F));
     localLayoutParams.addRule(13, -1);
     ((View)localObject).setBackgroundColor(436207616);
     addView((View)localObject, localLayoutParams);
     localObject = new TextView(getContext());
-    ((TextView)localObject).setId(2131375545);
+    ((TextView)localObject).setId(2131375313);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, DisplayUtil.dip2px(getContext(), 19.0F));
     localLayoutParams.leftMargin = DisplayUtil.dip2px(getContext(), 21.5F);
     localLayoutParams.topMargin = DisplayUtil.dip2px(getContext(), -9.5F);
@@ -272,6 +275,34 @@ public class CapsuleButton
       localObject1 = localObject2;
     } while (this.mAppBrandRuntime.apkgInfo.appConfig == null);
     return this.mAppBrandRuntime.apkgInfo.appConfig.config;
+  }
+  
+  private void handleAddFavorites()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        if (this.launchFrom != 1) {
+          continue;
+        }
+        localJSONObject.put("fromFavoritesButton", 1);
+        if ((!isMiniGameRuntime()) && (this.mAppBrandRuntime.pageContainer.getCurrentPage() != null)) {
+          localJSONObject.put("webviewUrl", this.mAppBrandRuntime.pageContainer.getCurrentPage().getUrl());
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        QMLog.e("CapsuleButton", "on add favorite click exception ", localJSONException);
+        continue;
+      }
+      if (this.mAppBrandRuntime != null) {
+        this.mAppBrandRuntime.jsPluginEngine.callbackJsEventOK(this.mAppBrandRuntime.serviceRuntime, "onAddToFavorites", localJSONObject, this.actionSheetCallbackId);
+      }
+      return;
+      localJSONObject.put("fromFavoritesButton", 0);
+    }
   }
   
   private void handleForwardClick()
@@ -821,11 +852,11 @@ public class CapsuleButton
                 n = i1;
                 if (localObject4 != null)
                 {
-                  bool11 = ((aqre)localObject4).a();
+                  bool11 = ((apkn)localObject4).a();
                   if (!bool11) {
                     break label2065;
                   }
-                  if (!((aqre)localObject4).c()) {
+                  if (!((apkn)localObject4).c()) {
                     break label1368;
                   }
                   k = 2;
@@ -979,10 +1010,10 @@ public class CapsuleButton
                   i = i4;
                   if (localObject4 != null)
                   {
-                    bool9 = ((aqre)localObject4).a();
+                    bool9 = ((apkn)localObject4).a();
                     i = i3;
                     if (bool9) {
-                      if (!((aqre)localObject4).c()) {
+                      if (!((apkn)localObject4).c()) {
                         break label1896;
                       }
                     }
@@ -1188,31 +1219,31 @@ public class CapsuleButton
   {
     setClipChildren(false);
     getContainerView();
-    this.mCloseView = ((ImageView)findViewById(2131363765));
-    this.mRedDot = ((TextView)findViewById(2131375545));
-    this.mSplider = findViewById(2131369970);
+    this.mCloseView = ((ImageView)findViewById(2131363794));
+    this.mRedDot = ((TextView)findViewById(2131375313));
+    this.mSplider = findViewById(2131369964);
     this.mRedDot.setTextSize(12.0F);
     this.mRedDot.setTextColor(-1);
     this.mRedDot.setGravity(17);
     this.mRedDot.setIncludeFontPadding(false);
     this.mMoreView.setOnClickListener(this);
     this.mCloseView.setOnClickListener(this);
-    this.mMoreBtnWhiteBgDrawable = getResources().getDrawable(2130841248);
-    this.mCloseBtnWhiteBgDrawable = getResources().getDrawable(2130841242);
-    this.mMoreBtnBgDrawable = getResources().getDrawable(2130841245);
-    this.mCloseBtnBgDrawable = getResources().getDrawable(2130841239);
+    this.mMoreBtnWhiteBgDrawable = getResources().getDrawable(2130841284);
+    this.mCloseBtnWhiteBgDrawable = getResources().getDrawable(2130841278);
+    this.mMoreBtnBgDrawable = getResources().getDrawable(2130841281);
+    this.mCloseBtnBgDrawable = getResources().getDrawable(2130841275);
     if ((!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_URL)) && (!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_DARK_URL)))
     {
-      this.mCloseBtnWhiteBgDrawable = MiniAppUtils.getIcon(getContext(), MiniAppGlobal.CAPSULE_CLOSE_DARK_URL, true, 2130841242, 40, 30);
-      this.mCloseBtnBgDrawable = MiniAppUtils.getIcon(getContext(), MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130841239, 40, 30);
+      this.mCloseBtnWhiteBgDrawable = MiniAppUtils.getIcon(getContext(), MiniAppGlobal.CAPSULE_CLOSE_DARK_URL, true, 2130841278, 40, 30);
+      this.mCloseBtnBgDrawable = MiniAppUtils.getIcon(getContext(), MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130841275, 40, 30);
     }
     if (!TextUtils.isEmpty(MiniAppGlobal.KINGCARD_GUIDE_TEXT)) {}
-    for (String str = MiniAppGlobal.KINGCARD_GUIDE_TEXT;; str = getResources().getString(2131693693))
+    for (String str = MiniAppGlobal.KINGCARD_GUIDE_TEXT;; str = getResources().getString(2131693788))
     {
       this.mKingCardText = str;
-      this.lottieLoader = new biiy(null, super.getContext());
-      int i = (int)(MemoryManager.a() / 2L);
-      this.lottieLoader.a(i);
+      this.lottieLoader = new DIYLottieLoader(null, super.getContext());
+      int i = (int)(MemoryManager.getAvailClassSize() / 2L);
+      this.lottieLoader.setMemoryCacheSize(i);
       return;
     }
   }
@@ -1391,7 +1422,12 @@ public class CapsuleButton
     localIntent.putExtra("key_tab_mode", 0);
     localIntent.putExtra("is_select_troop", true);
     localIntent.putExtra("key_from", 3);
-    getActivity().startActivityForResult(localIntent, 1002);
+    if (getActivity() != null)
+    {
+      getActivity().startActivityForResult(localIntent, 1002);
+      return;
+    }
+    QLog.e("CapsuleButton", 1, "getActivity() is null!!! setMiniAppToTroopApplicationList failed!");
   }
   
   private void setMiniAppTop(MiniAppInfo paramMiniAppInfo)
@@ -1419,7 +1455,7 @@ public class CapsuleButton
       QLog.i("CapsuleButton", 1, "shouldShowKingCardTip， not wangka app");
       return false;
     }
-    i = bihq.a();
+    i = bgoa.a();
     QLog.i("CapsuleButton", 1, "shouldShowKingCardTip， king card status = " + i);
     if (i == 1) {}
     for (;;)
@@ -1470,7 +1506,7 @@ public class CapsuleButton
           localObject2 = null;
           localMiniAppConfig = null;
         }
-        localObject3 = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + ((MiniAppInfo)localObject2).appId + "&openid=" + MainPageFragment.getUin() + "&avatar=" + (String)localObject3 + anzj.a(2131700264);
+        localObject3 = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + ((MiniAppInfo)localObject2).appId + "&openid=" + MainPageFragment.getUin() + "&avatar=" + (String)localObject3 + amtj.a(2131700499);
         localObject2 = new Intent((Context)localObject1, QQBrowserActivity.class);
         ((Intent)localObject2).putExtra("url", (String)localObject3);
         localObject3 = new Bundle();
@@ -1546,7 +1582,7 @@ public class CapsuleButton
         }
         localObject = paramIntent.getStringExtra("miniAppID");
         if (((!isMiniGameRuntime()) || (!this.mGameBrandRuntime.appId.equals(localObject))) && ((this.mAppBrandRuntime == null) || (this.mAppBrandRuntime.apkgInfo == null) || (this.mAppBrandRuntime.apkgInfo.appId == null) || (!this.mAppBrandRuntime.apkgInfo.appId.equals(localObject)))) {
-          break label544;
+          break label564;
         }
         paramInt1 = paramIntent.getIntExtra("clickID", -1);
         localObject = "";
@@ -1559,7 +1595,7 @@ public class CapsuleButton
         }
       }
     }
-    label544:
+    label564:
     while ((paramInt1 != 1002) || (paramInt2 != -1))
     {
       do
@@ -1621,6 +1657,9 @@ public class CapsuleButton
           continue;
           this.mHandler.sendEmptyMessage(17);
           paramIntent = (Intent)localObject;
+          continue;
+          this.mHandler.sendEmptyMessage(18);
+          paramIntent = (Intent)localObject;
         }
       } while (!QLog.isColorLevel());
       localObject = new StringBuilder().append("intent appID : ").append((String)localObject).append("; current appid : ");
@@ -1672,10 +1711,10 @@ public class CapsuleButton
         QLog.e("CapsuleButton", 2, "handleMessage error, msg is null.");
       }
     }
-    label346:
-    label351:
+    label354:
+    label359:
     int i;
-    label477:
+    label485:
     do
     {
       do
@@ -1721,7 +1760,7 @@ public class CapsuleButton
             }
           case 5: 
             if (!isMiniGameRuntime()) {
-              break label351;
+              break label359;
             }
           }
         } while ((this.mGameBrandRuntime == null) || (this.mGameBrandRuntime.activity == null));
@@ -1730,7 +1769,7 @@ public class CapsuleButton
         {
           ((GameActivity)paramMessage).clickMonitorPanel();
           if (this.isOpenMonitorPanel) {
-            break label346;
+            break label354;
           }
         }
         for (boolean bool = true;; bool = false)
@@ -1751,7 +1790,7 @@ public class CapsuleButton
           paramMessage.topType = i;
           sendSetUserAppTopRequest(this.mGameBrandRuntime.getApkgInfo().appConfig.config);
           if (this.mGameBrandRuntime.getApkgInfo().appConfig.config.topType != 1) {
-            break label477;
+            break label485;
           }
         }
         for (paramMessage = "settop_on";; paramMessage = "settop_off")
@@ -1770,10 +1809,10 @@ public class CapsuleButton
       paramMessage.topType = i;
       sendSetUserAppTopRequest(this.mAppBrandRuntime.apkgInfo.appConfig.config);
       if (this.mAppBrandRuntime.apkgInfo.appConfig.config.topType != 1) {
-        break label584;
+        break label592;
       }
     }
-    label584:
+    label592:
     for (paramMessage = "settop_on";; paramMessage = "settop_off")
     {
       reportClick(paramMessage);
@@ -1811,7 +1850,7 @@ public class CapsuleButton
     if (isMiniGameRuntime())
     {
       if ((this.mGameBrandRuntime.activity == null) || (!(this.mGameBrandRuntime.activity instanceof GameActivity))) {
-        break label903;
+        break label917;
       }
       paramMessage = ((GameActivity)this.mGameBrandRuntime.activity).getColorNoteController();
     }
@@ -1849,8 +1888,10 @@ public class CapsuleButton
         return false;
         addToCurrentTroop();
         return false;
+        handleAddFavorites();
+        return false;
       }
-      label903:
+      label917:
       paramMessage = null;
     }
   }
@@ -1862,7 +1903,7 @@ public class CapsuleButton
     switch (paramView.getId())
     {
     default: 
-    case 2131363856: 
+    case 2131363882: 
       for (;;)
       {
         EventCollector.getInstance().onViewClicked(paramView);
@@ -2231,16 +2272,16 @@ public class CapsuleButton
     {
       if (paramInt == -1)
       {
-        this.mMoreView.setImageResource(2130841248);
-        this.mCloseView.setImageResource(2130841242);
+        this.mMoreView.setImageResource(2130841284);
+        this.mCloseView.setImageResource(2130841278);
         this.mSplider.setBackgroundColor(Color.parseColor("#4DFFFFFF"));
       }
     }
     else {
       return;
     }
-    this.mMoreView.setImageResource(2130841245);
-    this.mCloseView.setImageResource(2130841239);
+    this.mMoreView.setImageResource(2130841281);
+    this.mCloseView.setImageResource(2130841275);
     this.mSplider.setBackgroundColor(Color.parseColor("#1A000000"));
   }
   

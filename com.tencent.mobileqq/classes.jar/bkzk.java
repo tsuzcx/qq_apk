@@ -1,317 +1,294 @@
-import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
-import android.os.Vibrator;
-import android.view.MotionEvent;
-import android.view.View;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.opengl.GLES20;
+import android.opengl.GLSurfaceView;
+import android.opengl.Matrix;
+import android.os.Handler;
+import android.support.annotation.RequiresApi;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import android.view.SurfaceHolder;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.view.Window;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.swipeback.PostTable;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.annotation.ProxyService;
-import com.tencent.qqmini.sdk.launcher.core.proxy.PageGestureProxy;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import mqq.util.WeakReference;
+import cooperation.vip.ar.controller.VipARCameraController.3;
+import cooperation.vip.ar.controller.VipARCameraController.6;
+import cooperation.vip.ar.controller.VipARCameraController.7;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.opengles.GL10;
+import mqq.os.MqqHandler;
 
-@ProxyService(proxy=PageGestureProxy.class)
 public class bkzk
-  implements aqrn, PageGestureProxy
+  extends bkzq
 {
-  private Vibrator jdField_a_of_type_AndroidOsVibrator;
-  protected aqre a;
-  private aqrf jdField_a_of_type_Aqrf;
-  private aqrn jdField_a_of_type_Aqrn;
-  private aquf jdField_a_of_type_Aquf;
-  private aqvl jdField_a_of_type_Aqvl;
-  private bhpc jdField_a_of_type_Bhpc;
-  public PostTable a;
-  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  private WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference;
+  private int jdField_a_of_type_Int;
+  private GLSurfaceView jdField_a_of_type_AndroidOpenglGLSurfaceView;
+  private ScaleGestureDetector.OnScaleGestureListener jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener = new bkzo(this);
+  private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
+  private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new bkzn(this);
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bkzr jdField_a_of_type_Bkzr;
+  private bkzu jdField_a_of_type_Bkzu;
+  private bkzv jdField_a_of_type_Bkzv;
+  private blac jdField_a_of_type_Blac = new bkzl(this);
+  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   private boolean jdField_a_of_type_Boolean;
-  private boolean b = true;
-  private boolean c;
+  private float[] jdField_a_of_type_ArrayOfFloat;
+  private int jdField_b_of_type_Int;
+  private blac jdField_b_of_type_Blac = new bkzm(this);
+  private boolean jdField_b_of_type_Boolean;
+  private float[] jdField_b_of_type_ArrayOfFloat;
+  private int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean;
+  private float[] jdField_c_of_type_ArrayOfFloat;
+  private int jdField_d_of_type_Int;
+  private boolean jdField_d_of_type_Boolean;
+  private int jdField_e_of_type_Int;
+  private boolean jdField_e_of_type_Boolean;
+  private boolean f;
+  private boolean g = true;
+  private boolean h = true;
+  private boolean i;
+  private boolean j;
   
-  private ColorNote a()
+  static
   {
-    if (this.jdField_a_of_type_Aqrn != null) {
-      return this.jdField_a_of_type_Aqrn.getColorNote();
-    }
-    return null;
+    System.loadLibrary("c++_shared");
   }
   
-  private void a()
+  @RequiresApi(8)
+  public bkzk(Context paramContext, ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_Aquf == null)
+    super(paramContext, paramViewGroup);
+    if (paramContext.getResources().getConfiguration().orientation == 2) {}
+    for (this.jdField_a_of_type_Int = 0;; this.jdField_a_of_type_Int = 1)
     {
-      this.jdField_a_of_type_Aqrf = new aqrf();
-      this.jdField_a_of_type_Aqrf.a(new bkzn(this));
-      this.jdField_a_of_type_Aquf = new aquf();
-      this.jdField_a_of_type_Aquf.a(this.jdField_a_of_type_Aqrf);
+      bkzx.a().b(this.jdField_b_of_type_Blac);
+      this.jdField_a_of_type_Bkzr = new bkzr(paramContext, paramViewGroup);
+      return;
     }
   }
   
-  private void a(Activity paramActivity)
+  private float[] a(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Aqre = new aqre(paramActivity, false, true);
-    this.jdField_a_of_type_Aqre.a(paramActivity);
-    this.jdField_a_of_type_Aqre.a(this);
-    this.jdField_a_of_type_Aqre.a(new bkzl(this, paramActivity));
-    this.jdField_a_of_type_Aqre.a(new bkzm(this, paramActivity));
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable = new PostTable(paramActivity);
-    ((ViewGroup)paramActivity.getWindow().getDecorView()).addView(this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.a(0.0D);
-    this.jdField_a_of_type_AndroidOsVibrator = ((Vibrator)paramActivity.getSystemService("vibrator"));
+    float f1;
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      paramFloat1 /= this.jdField_b_of_type_Int;
+      paramFloat1 = this.jdField_d_of_type_Int * paramFloat1;
+      f1 = paramFloat2 / this.jdField_c_of_type_Int * this.jdField_e_of_type_Int;
+      paramFloat2 = paramFloat1;
+    }
+    for (paramFloat1 = f1;; paramFloat1 = this.jdField_e_of_type_Int - paramFloat1 * f1)
+    {
+      return new float[] { paramFloat2, paramFloat1 };
+      paramFloat1 /= this.jdField_b_of_type_Int;
+      f1 = this.jdField_e_of_type_Int;
+      paramFloat2 = paramFloat2 / this.jdField_c_of_type_Int * this.jdField_d_of_type_Int;
+    }
   }
   
-  private void b()
+  private void g()
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference == null) {}
-    Object localObject;
+    this.jdField_a_of_type_Bkzu = new bkzu();
+    this.jdField_a_of_type_Bkzu.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
+    this.jdField_d_of_type_Int = this.jdField_a_of_type_Bkzu.a();
+    this.jdField_e_of_type_Int = this.jdField_a_of_type_Bkzu.b();
+    this.jdField_c_of_type_Boolean = true;
+    ThreadManager.getUIHandler().post(new VipARCameraController.3(this));
+  }
+  
+  private void h()
+  {
+    if (!this.i)
+    {
+      this.i = true;
+      ThreadManagerV2.getUIHandlerV2().post(new VipARCameraController.6(this));
+    }
+  }
+  
+  private void i()
+  {
+    if (!this.j)
+    {
+      this.j = true;
+      ThreadManagerV2.getUIHandlerV2().post(new VipARCameraController.7(this));
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = ((GLSurfaceView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364169));
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setEGLContextClientVersion(2);
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setEGLContextFactory(new bkzp(this, null));
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setRenderer(this);
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setRenderMode(1);
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setPreserveEGLContextOnPause(true);
+    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener);
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378520));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_Bkzv == null) {
+      this.jdField_a_of_type_Bkzv = new bkzv();
+    }
+    this.jdField_a_of_type_Bkzv.jdField_a_of_type_Int = ViewUtils.getScreenWidth();
+    this.jdField_a_of_type_Bkzv.jdField_b_of_type_Int = ViewUtils.getScreenHeight();
+    this.jdField_a_of_type_Bkzv.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Bkzv.c = paramString2;
+    if (this.jdField_a_of_type_Bkzr != null) {
+      this.jdField_a_of_type_Bkzr.a(this.jdField_a_of_type_Bkzv);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_Bkzu.a();
+    }
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.jdField_a_of_type_Bkzr != null) {
+      this.jdField_a_of_type_Bkzr.c();
+    }
+  }
+  
+  public void d()
+  {
+    super.d();
+    QLog.d("VipARCameraController", 2, "onActivityResume " + this.jdField_c_of_type_Boolean);
+    this.f = true;
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_Bkzu.a();
+    }
+    if (this.jdField_a_of_type_Bkzr != null) {
+      this.jdField_a_of_type_Bkzr.d();
+    }
+  }
+  
+  public void e()
+  {
+    super.e();
+    QLog.d("VipARCameraController", 2, "onActivityStop " + this.jdField_c_of_type_Boolean);
+    this.f = false;
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_Bkzu.b();
+    }
+  }
+  
+  public void f()
+  {
+    super.f();
+    QLog.d("VipARCameraController", 2, "onActivityDestroy " + this.jdField_c_of_type_Boolean);
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_Bkzu.c();
+    }
+    if (this.jdField_a_of_type_Bkzr != null) {
+      this.jdField_a_of_type_Bkzr.f();
+    }
+  }
+  
+  public void onDrawFrame(GL10 paramGL10)
+  {
+    GLES20.glClear(16640);
+    if (!this.jdField_c_of_type_Boolean) {}
+    float[] arrayOfFloat4;
     do
     {
-      return;
-      if (this.jdField_a_of_type_Bhpc != null) {
-        break;
-      }
-      localObject = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    } while (localObject == null);
-    this.jdField_a_of_type_Bhpc = new bhpc((Context)localObject, 2131755824);
-    this.jdField_a_of_type_Bhpc.setContentView(2131559008);
-    this.jdField_a_of_type_Bhpc.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_Bhpc.setTitle(((Activity)localObject).getString(2131690759));
-    this.jdField_a_of_type_Bhpc.setNegativeButton(((Activity)localObject).getString(2131690758), new bkzo(this, (Activity)localObject));
-    for (;;)
-    {
-      this.jdField_a_of_type_Bhpc.show();
-      localObject = this.jdField_a_of_type_Bhpc.getTitleTextView();
-      ((View)localObject).setClickable(true);
-      ((View)localObject).setFocusable(true);
-      ((View)localObject).setFocusableInTouchMode(true);
-      bhga.a((View)localObject, true);
-      return;
-      if (this.jdField_a_of_type_Bhpc.isShowing()) {
-        this.jdField_a_of_type_Bhpc.dismiss();
-      }
-    }
-  }
-  
-  public aqre a()
-  {
-    return this.jdField_a_of_type_Aqre;
-  }
-  
-  public void a(aqrn paramaqrn)
-  {
-    this.jdField_a_of_type_Aqrn = paramaqrn;
-    a();
-    this.jdField_a_of_type_Aquf.a(paramaqrn);
-  }
-  
-  public ColorNote getColorNote()
-  {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null)
-    {
-      MiniAppInfo localMiniAppInfo = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-      if (QLog.isColorLevel()) {
-        QLog.d("PageGuestureProxyImpl", 2, "getColorNote, appId: " + localMiniAppInfo.appId + ", name: " + localMiniAppInfo.name);
-      }
-      return new aqrv().a(16842752).a(localMiniAppInfo.appId).b(localMiniAppInfo.name).c(localMiniAppInfo.desc).d(localMiniAppInfo.iconUrl).a();
-    }
-    return null;
-  }
-  
-  public void onActivityCreate(Activity paramActivity)
-  {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramActivity);
-    a(paramActivity);
-  }
-  
-  public void onActivityDestroy(Activity paramActivity)
-  {
-    this.jdField_a_of_type_Aqre.c();
-  }
-  
-  public void onActivityFinish(Activity paramActivity) {}
-  
-  public void onActivityPause(Activity paramActivity)
-  {
-    this.jdField_a_of_type_Aqre.b();
-  }
-  
-  public void onActivityResume(Activity paramActivity)
-  {
-    this.jdField_a_of_type_Aqre.a();
-  }
-  
-  public void onActivityStop(Activity paramActivity)
-  {
-    QLog.d("PageGuestureProxyImpl", 1, "onActivityStop");
-    this.jdField_a_of_type_Aqre.b();
-  }
-  
-  public void onCreateMiniAppInfo(MiniAppInfo paramMiniAppInfo)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
-  }
-  
-  public void onLoadUrl(MiniAppInfo paramMiniAppInfo)
-  {
-    if (paramMiniAppInfo != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
-    }
-    a(this);
-  }
-  
-  public void onMoveTaskToBack(Activity paramActivity)
-  {
-    if ((this.jdField_a_of_type_Aqre != null) && (this.jdField_a_of_type_Aqre.c())) {
-      this.jdField_a_of_type_Aqre.d();
-    }
-  }
-  
-  public void onPageWebViewInit()
-  {
-    if (this.jdField_a_of_type_MqqUtilWeakReference != null)
-    {
-      Activity localActivity = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      if (localActivity != null) {
-        this.jdField_a_of_type_Aqvl = new aqvl(localActivity);
-      }
-    }
-    a();
-  }
-  
-  public void onProcessTouchEvent(MotionEvent paramMotionEvent)
-  {
-    QLog.d("PageGuestureProxyImpl", 1, "onProcessTouchEvent");
-    double d;
-    Object localObject;
-    boolean bool1;
-    if ((this.jdField_a_of_type_Aqrf != null) && (this.jdField_a_of_type_Aqrf.b()) && (this.jdField_a_of_type_Aqvl != null) && (this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable != null))
-    {
-      d = this.jdField_a_of_type_Aqvl.a(paramMotionEvent);
-      this.jdField_a_of_type_Aqrf.a();
-      localObject = this.jdField_a_of_type_Aqrn.getColorNote();
-      if (localObject == null) {
-        break label323;
-      }
-      bool1 = this.jdField_a_of_type_Aqrf.a(((ColorNote)localObject).getServiceType(), ((ColorNote)localObject).getSubType());
-      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo == null) {
-        break label383;
-      }
-    }
-    label227:
-    label383:
-    for (boolean bool2 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.isLimitedAccessApp();; bool2 = false)
-    {
-      if ((d > 0.0D) && (!bool1) && (!bool2) && (this.jdField_a_of_type_MqqUtilWeakReference != null))
+      float[] arrayOfFloat1;
+      float[] arrayOfFloat2;
+      float[] arrayOfFloat3;
+      do
       {
-        if (!this.jdField_a_of_type_Boolean)
+        do
         {
-          this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.setVisibility(0);
-          this.jdField_a_of_type_Boolean = true;
-        }
-        localObject = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-        if ((this.jdField_a_of_type_Aqrf.a()) && (localObject != null)) {
-          if (this.jdField_a_of_type_Aqvl.a(paramMotionEvent, (Context)localObject))
+          do
           {
-            this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.b();
-            if ((!this.c) && (this.jdField_a_of_type_AndroidOsVibrator != null))
-            {
-              this.jdField_a_of_type_AndroidOsVibrator.vibrate(20L);
-              this.c = true;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.a(d);
-            if (this.b)
-            {
-              bdll.b(null, "dc00898", "", "", "0X800A741", "0X800A741", aqrd.a(this.jdField_a_of_type_Aqrn.getColorNote().mServiceType), 0, "", "", "", "");
-              this.b = false;
-            }
+            return;
+            h();
+          } while (this.jdField_a_of_type_Bkzu == null);
+          if (this.jdField_a_of_type_Bkzu.a(this.jdField_a_of_type_AndroidViewSurfaceHolder, false) == 0) {
+            break;
           }
-        }
-      }
-      for (;;)
-      {
-        if ((paramMotionEvent.getActionMasked() == 1) && (this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable != null))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.setVisibility(4);
-          this.jdField_a_of_type_Boolean = false;
-        }
+        } while (this.jdField_a_of_type_Bkzr == null);
+        this.jdField_a_of_type_Bkzr.onDrawFrame(null);
         return;
-        bool1 = false;
-        break;
-        this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.a();
-        this.c = false;
-        break label227;
-        this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.c();
-        break label227;
-        if ((d < 1.0E-008D) || (bool1))
+        if (this.h)
         {
-          this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.setVisibility(4);
-          this.jdField_a_of_type_Boolean = false;
+          bkzx.a("ar_tar_show", "1");
+          this.h = false;
         }
-      }
-    }
+        i();
+        if (this.jdField_a_of_type_ArrayOfFloat == null) {
+          this.jdField_a_of_type_ArrayOfFloat = new float[16];
+        }
+        if (this.jdField_b_of_type_ArrayOfFloat == null) {
+          this.jdField_b_of_type_ArrayOfFloat = new float[16];
+        }
+        if (this.jdField_c_of_type_ArrayOfFloat == null) {
+          this.jdField_c_of_type_ArrayOfFloat = new float[16];
+        }
+        Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
+        Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
+        Matrix.setIdentityM(this.jdField_c_of_type_ArrayOfFloat, 0);
+        arrayOfFloat1 = this.jdField_a_of_type_Bkzu.d();
+        arrayOfFloat2 = this.jdField_a_of_type_Bkzu.a();
+        arrayOfFloat3 = this.jdField_a_of_type_Bkzu.b();
+        arrayOfFloat4 = this.jdField_a_of_type_Bkzu.c();
+      } while ((arrayOfFloat1 == null) || (arrayOfFloat2 == null) || (arrayOfFloat3 == null) || (arrayOfFloat4 == null));
+      this.jdField_b_of_type_ArrayOfFloat[0] = arrayOfFloat1[0];
+      this.jdField_b_of_type_ArrayOfFloat[5] = arrayOfFloat1[1];
+      this.jdField_b_of_type_ArrayOfFloat[10] = arrayOfFloat1[2];
+      Matrix.scaleM(this.jdField_c_of_type_ArrayOfFloat, 0, arrayOfFloat2, 0, 1.0F / arrayOfFloat1[0], 1.0F / arrayOfFloat1[1], 1.0F / arrayOfFloat1[2]);
+      Matrix.multiplyMM(this.jdField_a_of_type_ArrayOfFloat, 0, arrayOfFloat3, 0, this.jdField_c_of_type_ArrayOfFloat, 0);
+    } while (this.jdField_a_of_type_Bkzr == null);
+    this.jdField_a_of_type_Bkzr.a(this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfFloat, arrayOfFloat4);
+    this.jdField_a_of_type_Bkzr.onDrawFrame(paramGL10);
   }
   
-  public boolean onViewReleasedAndNeedScrollOriginPosition(MotionEvent paramMotionEvent)
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    boolean bool2 = true;
-    QLog.d("PageGuestureProxyImpl", 1, "onViewReleased");
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo != null) {}
-    for (boolean bool1 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.isLimitedAccessApp();; bool1 = false)
-    {
-      if (bool1) {
-        return false;
-      }
-      ColorNote localColorNote = a();
-      Activity localActivity;
-      if (localColorNote != null)
-      {
-        bool1 = this.jdField_a_of_type_Aqrf.a(localColorNote.getServiceType(), localColorNote.getSubType());
-        this.b = true;
-        if (this.jdField_a_of_type_MqqUtilWeakReference == null) {
-          break label222;
-        }
-        localActivity = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-        label85:
-        if ((this.jdField_a_of_type_Aqvl == null) || (!this.jdField_a_of_type_Aqvl.a(paramMotionEvent, localActivity)) || (bool1) || (localColorNote == null)) {
-          break label278;
-        }
-        if (!this.jdField_a_of_type_Aqrf.a()) {
-          break label228;
-        }
-        paramMotionEvent = localColorNote.parseBundle();
-        paramMotionEvent.putInt("color_note_curd_from_type", 1);
-        this.jdField_a_of_type_Aqrf.a(paramMotionEvent);
-        bdll.b(null, "dc00898", "", "", "0X800A742", "0X800A742", aqrd.a(this.jdField_a_of_type_Aqrn.getColorNote().mServiceType), 0, "", "", "", "");
-        bool1 = false;
-      }
-      for (;;)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.setVisibility(4);
-          this.jdField_a_of_type_Boolean = false;
-        }
-        return bool1;
-        bool1 = false;
-        break;
-        label222:
-        localActivity = null;
-        break label85;
-        label228:
-        this.jdField_a_of_type_ComTencentMobileqqColornoteSwipebackPostTable.a(0.0D);
-        b();
-        bdll.b(null, "dc00898", "", "", "0X800A6CF", "0X800A6CF", 1, 0, "", "", "", "");
-        bool1 = bool2;
-        continue;
-        label278:
-        bool1 = false;
-      }
+    QLog.d("VipARCameraController", 2, "onSurfaceChanged");
+    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+    GLES20.glClearDepthf(1.0F);
+    GLES20.glEnable(2929);
+    GLES20.glDepthFunc(515);
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    GLES20.glViewport(0, 0, paramInt1, paramInt2);
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_Bkzu.a(0, 0, paramInt1, paramInt2);
     }
+    if (this.jdField_a_of_type_Bkzr != null) {
+      this.jdField_a_of_type_Bkzr.onSurfaceChanged(paramGL10, paramInt1, paramInt2);
+    }
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
+  {
+    QLog.d("VipARCameraController", 2, "onSurfaceCreated" + this.jdField_c_of_type_Boolean);
+    this.jdField_a_of_type_Bkzv.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_Bkzu.d();
+    }
+    if (this.jdField_a_of_type_Bkzr != null) {
+      this.jdField_a_of_type_Bkzr.onSurfaceCreated(paramGL10, paramEGLConfig);
+    }
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

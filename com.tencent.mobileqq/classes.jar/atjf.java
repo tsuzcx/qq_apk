@@ -1,33 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-
-public class atjf
-  implements DialogInterface.OnKeyListener
+class atjf
+  implements amqq
 {
-  public atjf(UniformDownloadActivity paramUniformDownloadActivity) {}
+  atjf(atje paramatje) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onDpcPullFinished(boolean paramBoolean)
   {
-    boolean bool = false;
-    if (paramInt == 4)
-    {
-      if (this.a.a != null)
-      {
-        this.a.a.dismiss();
-        this.a.a = null;
-      }
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-      bool = true;
+    if (paramBoolean) {
+      this.a.a();
     }
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atjf
  * JD-Core Version:    0.7.0.1
  */

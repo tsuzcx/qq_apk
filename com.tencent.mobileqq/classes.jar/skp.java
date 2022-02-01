@@ -1,13 +1,20 @@
-import android.widget.ImageView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.CaptureOperateTouchLayout;
 
 class skp
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView b;
+  skp(sko paramsko, View paramView) {}
   
-  private skp(skn paramskn) {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setX(f);
+    CaptureOperateTouchLayout.a(this.jdField_a_of_type_Sko.a).setX(f + this.jdField_a_of_type_AndroidViewView.getWidth() * 0.32F);
+  }
 }
 
 

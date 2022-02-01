@@ -1,39 +1,101 @@
-import com.tencent.mobileqq.abtest.ABTestController;
-import com.tencent.mtt.abtestsdk.entity.RomaExpEntity;
-import com.tencent.mtt.abtestsdk.listener.GetExperimentListener;
-import java.util.Iterator;
+import QQService.DeviceItemDes;
+import QQService.SvcDevLoginInfo;
+import android.os.Bundle;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
 import java.util.List;
+import mqq.os.MqqHandler;
 
-class adqh
-  implements GetExperimentListener
+public class adqh
+  extends MqqHandler
 {
-  adqh(adqg paramadqg, long paramLong, String paramString) {}
+  public adqh(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void getExperimentFailed(int paramInt, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    ABTestController.a("ExperimentInfo", "abtest api load exp failed, i:" + paramInt + ", s:" + paramString);
-  }
-  
-  public void getExperimentSucceed(List<RomaExpEntity> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      ABTestController.a("ExperimentInfo", "abtest api load exp failed, list empty");
-    }
-    for (;;)
+    switch (paramMessage.what)
     {
-      return;
-      long l1 = System.currentTimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
-      ABTestController.a("ExperimentInfo", "abtest api load exp success, size:" + paramList.size() + ", cost:" + (l1 - l2));
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        RomaExpEntity localRomaExpEntity = (RomaExpEntity)paramList.next();
-        if ((localRomaExpEntity != null) && (localRomaExpEntity.getLayerCode().equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {
-          adqg.a(this.jdField_a_of_type_Adqg, localRomaExpEntity);
-        }
-      }
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.d("LoginInfoActivity.AccDevSec", 2, "handleMessage.msg.arg1=" + paramMessage.arg1);
+              }
+            } while (LoginInfoActivity.a(this.a) == null);
+            LoginInfoActivity.a(this.a).DevSetup = paramMessage.arg1;
+            LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+            return;
+            LoginInfoActivity.a(this.a, this.a.findViewById(1));
+            return;
+            LoginInfoActivity.b(this.a, this.a.findViewById(2));
+            return;
+          } while (LoginInfoActivity.a(this.a) == null);
+          localObject = paramMessage.getData();
+        } while (localObject == null);
+        paramMessage = ((Bundle)localObject).getString(AuthDevRenameActivity.f);
+        Object localObject = ((Bundle)localObject).getByteArray(AuthDevRenameActivity.h);
+        int i = 0;
+        for (;;)
+        {
+          if (i < LoginInfoActivity.a(this.a).size())
+          {
+            SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)LoginInfoActivity.a(this.a).get(i);
+            if ((localSvcDevLoginInfo != null) && (Arrays.equals(localSvcDevLoginInfo.stDeviceItemDes.vecItemDes, (byte[])localObject))) {
+              localSvcDevLoginInfo.strDeviceName = paramMessage;
+            }
+          }
+          else
+          {
+            LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+            return;
+          }
+          i += 1;
+        }
+      } while ((LoginInfoActivity.a(this.a) == null) || ((!LoginInfoActivity.a(this.a)) && (!LoginInfoActivity.b(this.a))));
+      paramMessage = this.a.getString(2131716208);
+      if (LoginInfoActivity.a(this.a) >= 4)
+      {
+        LoginInfoActivity.a(this.a).setText(paramMessage);
+        return;
+      }
+      LoginInfoActivity.a(this.a).setVisibility(0);
+      LoginInfoActivity.a(this.a, (LoginInfoActivity.a(this.a) + 1) % 4);
+      switch (LoginInfoActivity.a(this.a))
+      {
+      }
+      for (;;)
+      {
+        sendEmptyMessageDelayed(20170210, 300L);
+        return;
+        paramMessage = paramMessage + this.a.getString(2131718050);
+        LoginInfoActivity.a(this.a).setText(paramMessage);
+        continue;
+        paramMessage = paramMessage + this.a.getString(2131718051);
+        LoginInfoActivity.a(this.a).setText(paramMessage);
+        continue;
+        paramMessage = paramMessage + this.a.getString(2131718052);
+        LoginInfoActivity.a(this.a).setText(paramMessage);
+        continue;
+        LoginInfoActivity.a(this.a).setText(paramMessage);
+      }
+      paramMessage = paramMessage.getData();
+    } while (paramMessage == null);
+    boolean bool = paramMessage.getBoolean("bSafe");
+    paramMessage = paramMessage.getString("TipText");
+    LoginInfoActivity.a(this.a, bool, paramMessage);
   }
 }
 

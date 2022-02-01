@@ -1,32 +1,94 @@
-import com.tencent.biz.subscribe.SubscribeUtils.1;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import android.graphics.PorterDuff.Mode;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class aael
-  implements beuq
+  extends ReportDialog
 {
-  public aael(SubscribeUtils.1 param1) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
+  private TextView c;
   
-  public void onResp(bevm parambevm)
+  public aael(Context paramContext)
   {
-    QLog.i("DownLoadZipFile", 1, "download  onResp url:  resultcode: " + parambevm.c);
-    try
+    super(paramContext, 2131755826);
+    super.setContentView(2131560435);
+    super.getWindow().setWindowAnimations(2131755130);
+    a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365541));
+    this.b = ((TextView)super.findViewById(2131365547));
+    this.c = ((TextView)super.findViewById(2131378716));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131378717));
+    this.jdField_a_of_type_AndroidWidgetImageView.setColorFilter(-7745469, PorterDuff.Mode.MULTIPLY);
+  }
+  
+  public void a(DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (acvu.a)
     {
-      QLog.d("DownLoadZipFile", 4, "start unzip file to folderPath:" + this.a.jdField_a_of_type_JavaLangString);
-      nof.a(this.a.jdField_a_of_type_JavaIoFile, this.a.jdField_a_of_type_JavaLangString);
-      bhmi.a(this.a.jdField_a_of_type_JavaIoFile);
-      return;
+      Resources localResources = getContext().getResources();
+      this.b.setContentDescription(localResources.getString(2131690598, new Object[] { localResources.getString(2131718239) }));
     }
-    catch (Exception parambevm)
-    {
-      QLog.i("DownLoadZipFile", 1, "unzip file failed" + parambevm);
+    this.b.setOnClickListener(new aaen(this, paramOnClickListener));
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.c != null) {
+      this.c.setText(paramString);
     }
   }
   
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
+  public void a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    if (acvu.a)
+    {
+      Resources localResources = getContext().getResources();
+      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      String str = paramString;
+      if (paramString == null) {
+        str = "";
+      }
+      localTextView.setContentDescription(localResources.getString(2131690598, new Object[] { str }));
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aaem(this, paramOnClickListener));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+  }
+  
+  public void dismiss()
+  {
+    try
+    {
+      super.dismiss();
+      return;
+    }
+    catch (Exception localException) {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aael
  * JD-Core Version:    0.7.0.1
  */

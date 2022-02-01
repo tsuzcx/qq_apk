@@ -8,18 +8,18 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import rgo;
+import rno;
 
 public class RIJUgcVideoPublishManager$8
   implements Runnable
 {
-  public RIJUgcVideoPublishManager$8(rgo paramrgo) {}
+  public RIJUgcVideoPublishManager$8(rno paramrno) {}
   
   public void run()
   {
     try
     {
-      Object localObject1 = rgo.a(this.this$0).query(UgcVideo.class, UgcVideo.class.getSimpleName(), true, "", null, null, null, "insertTime desc", null);
+      Object localObject1 = rno.a(this.this$0).query(UgcVideo.class, UgcVideo.class.getSimpleName(), true, "", null, null, null, "insertTime desc", null);
       localArrayList = new ArrayList();
       if (localObject1 != null)
       {

@@ -1,33 +1,47 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.content.Context;
+import java.lang.reflect.Method;
+import mqq.app.IActivityDispatchCallback;
 
-public class aaff
-  implements View.OnLongClickListener
+public abstract class aaff
+  implements IActivityDispatchCallback
 {
-  public aaff(RecommendBannerItemView paramRecommendBannerItemView) {}
+  public static aaff a;
   
-  public boolean onLongClick(View paramView)
+  public static void a()
   {
-    if (RecommendBannerItemView.a(this.a) == null) {
-      return false;
-    }
-    aamr.a(this.a.getContext(), RecommendBannerItemView.a(this.a), new aafg(this), new aafh(this));
-    if (RecommendBannerItemView.a(this.a)) {
-      abbe.a(RecommendBannerItemView.a(this.a).id.get(), "auth_discover", "reco_press", 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get(), RecommendBannerItemView.a(this.a).desc.get() });
-    }
-    for (;;)
+    try
     {
-      return true;
-      abbe.a(RecommendBannerItemView.a(this.a).id.get(), "auth_page", "recom_remove", 0, 0, new String[] { "", RecommendBannerItemView.a(this.a) + "", RecommendBannerItemView.a(this.a).nick.get() });
+      Method localMethod = Class.forName("com.tencent.mobileqq.screendetect.ScreenShotDetector").getMethod("getInstance", new Class[0]);
+      localMethod.setAccessible(true);
+      a = (aaff)localMethod.invoke(null, new Object[0]);
+      return;
+    }
+    catch (Throwable localThrowable) {}
+  }
+  
+  public static void a(Context paramContext)
+  {
+    aaff localaaff = a;
+    if (localaaff != null) {
+      localaaff.c(paramContext);
     }
   }
+  
+  public static void b(Context paramContext)
+  {
+    aaff localaaff = a;
+    if (localaaff != null) {
+      localaaff.d(paramContext);
+    }
+  }
+  
+  public abstract void c(Context paramContext);
+  
+  public abstract void d(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aaff
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.qwallet.config;
 
-import alao;
+import ajyg;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class QWalletConfigManager$1
   implements Runnable
 {
-  public QWalletConfigManager$1(alao paramalao, WeakReference paramWeakReference) {}
+  public QWalletConfigManager$1(ajyg paramajyg, WeakReference paramWeakReference) {}
   
   public void run()
   {
-    alao localalao = (alao)this.a.get();
-    if (localalao != null)
+    ajyg localajyg = (ajyg)this.a.get();
+    if (localajyg != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QWalletConfigManager", 2, "getAllConfigAgain");
       }
-      localalao.a(alao.a(this.this$0));
+      localajyg.a(ajyg.a(this.this$0));
     }
   }
 }

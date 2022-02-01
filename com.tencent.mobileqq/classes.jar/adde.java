@@ -1,20 +1,17 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
 
-public class adde
-  implements adci
+class adde
+  implements DialogInterface.OnClickListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
-  {
-    awpn.a(paramQQAppInterface, paramMsgType0x210.vProtobuf, paramMsgInfo.shMsgSeq, paramMsgInfo.uRealMsgTime, false);
-  }
+  adde(addc paramaddc) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a(paramadan.a(), paramMsgInfo, paramMsgType0x210);
-    return null;
+    this.a.a.a();
+    DevlockQuickLoginActivity.c(this.a.a);
+    DevlockQuickLoginActivity.c(this.a.a, 0, 2130772001);
   }
 }
 

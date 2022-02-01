@@ -1,55 +1,45 @@
+import com.tencent.mobileqq.data.TroopFeedItem;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class beao
-  implements anui
+  extends beaq
 {
-  public void a(int paramInt) {}
-  
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    switch (paramInt)
-    {
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {
+      return null;
     }
-    do
+    localTroopFeedItem.type = 18;
+    try
     {
-      do
+      localTroopFeedItem.title = (paramJSONObject.getString("album_name") + amtj.a(2131714323) + paramJSONObject.getString("photo_num") + amtj.a(2131714325));
+      localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
+      paramJSONObject = paramJSONObject.getJSONArray("content");
+      int i = 0;
+      for (;;)
       {
-        do
+        if (i < paramJSONObject.length())
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                  } while (paramObject == null);
-                  paramObject = (Object[])paramObject;
-                } while (paramObject.length != 2);
-                a((String)paramObject[0], (String)paramObject[1]);
-                return;
-              } while (paramObject == null);
-              paramObject = (Object[])paramObject;
-            } while (paramObject.length != 4);
-            a((String)paramObject[0], (String)paramObject[1], (String)paramObject[2], (String)paramObject[3]);
-            return;
-          } while (paramObject == null);
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length != 2);
-        a(paramBoolean, (String)paramObject[0], (String)paramObject[1]);
-        return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length != 1);
-    a(((Integer)paramObject[0]).intValue());
+          JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
+          if (localJSONObject.getInt("type") == 3) {
+            localTroopFeedItem.picPath = (localJSONObject.getString("pic_url") + "200");
+          }
+        }
+        else
+        {
+          return localTroopFeedItem;
+        }
+        i += 1;
+      }
+      return null;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
   }
 }
 

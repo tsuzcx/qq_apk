@@ -1,101 +1,53 @@
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bbiq
-  implements View.OnClickListener
+  implements bbha
 {
-  public bbiq(ProviderContainerView paramProviderContainerView) {}
+  private TextView a;
+  protected List<bbhb> a;
+  protected View b;
+  protected TextView c;
   
-  public void onClick(View paramView)
+  public bbiq() {}
+  
+  public bbiq(ViewGroup paramViewGroup, int paramInt)
   {
-    int i = ProviderContainerView.a(this.a).a(((Integer)paramView.getTag()).intValue());
-    if (i == 102)
+    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.c = ((TextView)this.b.findViewById(2131371352));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.add(new bbir(this.b.findViewById(2131368850)));
+    this.jdField_a_of_type_JavaUtilList.add(new bbir(this.b.findViewById(2131368856)));
+    this.jdField_a_of_type_JavaUtilList.add(new bbir(this.b.findViewById(2131368862)));
+    if ((paramInt == 2131559640) || (paramInt == 2131562743))
     {
-      bbgf.b();
-      if (!bork.b(borf.b)) {
-        QQToast.a(this.a.getContext(), anzj.a(2131707401), 0).a();
-      }
+      this.jdField_a_of_type_JavaUtilList.add(new bbir(this.b.findViewById(2131368868)));
+      this.jdField_a_of_type_JavaUtilList.add(new bbir(this.b.findViewById(2131368869)));
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (bbgg.a == 0)
-      {
-        QQToast.a(this.a.getContext(), anzj.a(2131707407), 0).a();
-      }
-      else if (bbgg.a == -1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ProviderContainerView", 2, "ptv template so library hasn't loaded");
-        }
-      }
-      else
-      {
-        boolean bool;
-        if (bbgg.a == 2)
-        {
-          bool = bbgg.a(true);
-          if (QLog.isColorLevel()) {
-            QLog.d("ProviderContainerView", 2, "ProviderContainerView oncilck soLoaded=" + bool);
-          }
-          if (ProviderContainerView.a(this.a) != null) {
-            ProviderContainerView.a(this.a).y();
-          }
-        }
-        if (i == 103)
-        {
-          bbgf.e();
-          bbgf.b();
-          if (!bork.b(borf.b))
-          {
-            QQToast.a(this.a.getContext(), anzj.a(2131707406), 0).a();
-            continue;
-          }
-          if (bbgg.a == 0)
-          {
-            QQToast.a(this.a.getContext(), anzj.a(2131707405), 0).a();
-            continue;
-          }
-          if (bbgg.a == -1)
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("ProviderContainerView", 2, "ptv template so library hasn't loaded for beauty");
-            continue;
-          }
-          if (bbgg.a == 2)
-          {
-            bool = bbgg.a(true);
-            if (QLog.isColorLevel()) {
-              QLog.d("ProviderContainerView", 2, "ProviderContainerView oncilck beauty soLoaded=" + bool);
-            }
-            if (ProviderContainerView.a(this.a) != null) {
-              ProviderContainerView.a(this.a).y();
-            }
-          }
-        }
-        if (i == 101) {
-          bbgf.d();
-        }
-        if (i == 104)
-        {
-          bdll.b(null, "dc00898", "", "", "0X8008756", "0X8008756", 0, 0, "", "", "", "");
-          bbgf.c();
-        }
-        if (ProviderContainerView.a(this.a) != null) {
-          ProviderContainerView.a(this.a).a();
-        }
-        ProviderContainerView.a(this.a, paramView, i);
-      }
-    }
+  }
+  
+  public View a()
+  {
+    return this.b;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public List<bbhb> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return this.c;
   }
 }
 

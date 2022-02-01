@@ -1,18 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Message;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import mqq.os.MqqHandler;
 
-class aedg
-  implements View.OnClickListener
+public class aedg
+  extends MqqHandler
 {
-  aedg(aede paramaede, String paramString) {}
+  public aedg(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Aede.a.app.a(this.jdField_a_of_type_JavaLangString, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMessage.what)
+    {
+    case 107: 
+    default: 
+      return;
+    case 106: 
+      this.a.finish();
+      return;
+    }
+    int i = 0;
+    while (i < 6)
+    {
+      RegisterVerifyCodeActivity.a(this.a)[i].setText("");
+      i += 1;
+    }
+    RegisterVerifyCodeActivity.a(this.a)[0].requestFocus();
   }
 }
 

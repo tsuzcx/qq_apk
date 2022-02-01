@@ -1,49 +1,28 @@
+import com.tencent.av.redpacket.AVRedPacketManager;
+
 public class lut
-  extends lur
+  extends lun
 {
-  public void a(long paramLong)
+  public lut()
   {
-    paramLong -= this.a;
-    int j = 0;
-    float f2 = 1.0F;
-    int i;
-    float f1;
-    if ((paramLong > 3099L) && (paramLong < 3432L))
+    this.c = new luz[6];
+    this.b = 1000L;
+    a(255);
+  }
+  
+  public void a(AVRedPacketManager paramAVRedPacketManager)
+  {
+    int i = 0;
+    while (i < this.c.length)
     {
-      i = (int)(255L * (paramLong - 3099L) / 333L);
-      f1 = (0.5F * (float)(paramLong + 3432L) - 3099.0F) / 333.0F;
-    }
-    for (;;)
-    {
-      a(i);
-      b(f1);
-      return;
-      if ((paramLong >= 3432L) && (paramLong <= 3865L))
-      {
-        i = 255;
-        f1 = f2;
-      }
-      else
-      {
-        f1 = f2;
-        i = j;
-        if (paramLong > 3865L)
-        {
-          f1 = f2;
-          i = j;
-          if (paramLong < 4032L)
-          {
-            i = (int)(255L * (4032L - paramLong) / 167L);
-            f1 = (167.0F - (float)(3865L - paramLong) * 0.5F) / 167.0F;
-          }
-        }
-      }
+      this.c[i] = new luz(paramAVRedPacketManager.a("qav_redpacket_lightning_" + (i + 1) + ".png"));
+      i += 1;
     }
   }
   
   public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    a(paramInt1 * 548 / 1500, paramInt2 - paramInt1 * 1032 / 1500, paramInt1 * 952 / 1500, paramInt2 - paramInt1 * 472 / 1500);
+    a(0, paramInt2 - paramInt1 * 120 / 750, paramInt1, paramInt2);
   }
 }
 

@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import adab;
+import abwp;
+import amtj;
 import android.content.Context;
 import android.text.TextUtils;
-import anzj;
-import aqyl;
-import aqyp;
-import aqyt;
-import aqzb;
-import bhlg;
-import bhnt;
+import aprw;
+import apsa;
+import apse;
+import apsm;
+import bfwr;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.confess.ConfessInfo;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.utils.ContactUtils;
 
 public class RecentItemConfessMsgBox
   extends AbsRecentUserBusinessBaseData
@@ -25,14 +25,14 @@ public class RecentItemConfessMsgBox
     super(paramRecentUser);
   }
   
-  private boolean a(QQMessageFacade.Message paramMessage, aqzb paramaqzb)
+  private boolean a(QQMessageFacade.Message paramMessage, apsm paramapsm)
   {
-    return (this.mUnreadNum > 0) || (paramMessage == null) || (paramMessage.msg == null) || (paramMessage.time < paramaqzb.jdField_a_of_type_Long);
+    return (this.mUnreadNum > 0) || (paramMessage == null) || (paramMessage.msg == null) || (paramMessage.time < paramapsm.jdField_a_of_type_Long);
   }
   
   private void b(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = ((aqyp)paramQQAppInterface.getManager(269)).b();
+    paramQQAppInterface = ((apsa)paramQQAppInterface.getManager(269)).b();
     int i;
     if (paramQQAppInterface == null) {
       i = 0;
@@ -60,13 +60,13 @@ public class RecentItemConfessMsgBox
     }
     super.a(paramQQAppInterface, paramContext);
     MsgSummary localMsgSummary = getMsgSummaryTemp();
-    Object localObject1 = paramQQAppInterface.a();
-    Object localObject3 = paramQQAppInterface.a();
+    Object localObject1 = paramQQAppInterface.getMessageFacade();
+    Object localObject3 = paramQQAppInterface.getConversationFacade();
     paramQQAppInterface.getAccount();
-    long l2 = aqyl.a(paramQQAppInterface, "redpoint_box_show");
-    this.mTitleName = paramContext.getString(2131697920);
+    long l2 = aprw.a(paramQQAppInterface, "redpoint_box_show");
+    this.mTitleName = paramContext.getString(2131698077);
     if (localObject1 != null) {}
-    for (localObject1 = ((QQMessageFacade)localObject1).a(this.mUser.uin, this.mUser.getType());; localObject1 = null)
+    for (localObject1 = ((QQMessageFacade)localObject1).getLastMessage(this.mUser.uin, this.mUser.getType());; localObject1 = null)
     {
       int i;
       if (localObject1 != null)
@@ -86,7 +86,7 @@ public class RecentItemConfessMsgBox
         boolean bool;
         if ((localObject3 != null) && (localObject1 != null))
         {
-          this.mUnreadNum = ((adab)localObject3).a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
+          this.mUnreadNum = ((abwp)localObject3).a(((QQMessageFacade.Message)localObject1).frienduin, ((QQMessageFacade.Message)localObject1).istroop);
           if (i == 0) {
             break label251;
           }
@@ -104,11 +104,11 @@ public class RecentItemConfessMsgBox
           if (j == 0) {
             break label352;
           }
-          localObject1 = ((aqyp)paramQQAppInterface.getManager(269)).b();
+          localObject1 = ((apsa)paramQQAppInterface.getManager(269)).b();
           if (localObject1 != null) {
             break label342;
           }
-          localObject1 = aqyl.c;
+          localObject1 = aprw.c;
           label201:
           localMsgSummary.strContent = ((CharSequence)localObject1);
           this.mDisplayTime = l2;
@@ -131,15 +131,15 @@ public class RecentItemConfessMsgBox
           j = 0;
           break label156;
           label263:
-          localObject2 = ((aqyp)paramQQAppInterface.getManager(269)).a();
-          if ((localObject2 != null) && (((aqzb)localObject2).a()))
+          localObject2 = ((apsa)paramQQAppInterface.getManager(269)).a();
+          if ((localObject2 != null) && (((apsm)localObject2).a()))
           {
-            if (!aqyt.a(paramQQAppInterface, false))
+            if (!apse.a(paramQQAppInterface, false))
             {
-              this.mUnreadNum = ((aqzb)localObject2).jdField_a_of_type_Int;
+              this.mUnreadNum = ((apsm)localObject2).jdField_a_of_type_Int;
               this.mUnreadFlag = 3;
             }
-            bool = a((QQMessageFacade.Message)localObject1, (aqzb)localObject2);
+            bool = a((QQMessageFacade.Message)localObject1, (apsm)localObject2);
             break label171;
           }
           this.mUnreadNum = 0;
@@ -147,7 +147,7 @@ public class RecentItemConfessMsgBox
           bool = false;
           break label171;
           label342:
-          localObject1 = ((aqyl)localObject1).r;
+          localObject1 = ((aprw)localObject1).r;
           break label201;
           label352:
           if ((localObject1 != null) && (i != 0) && (!bool))
@@ -156,26 +156,26 @@ public class RecentItemConfessMsgBox
             localObject3 = new ConfessInfo();
             ((ConfessInfo)localObject3).parseFromJsonStr((String)localObject2);
             if (((QQMessageFacade.Message)localObject1).isSend()) {}
-            for (localObject2 = "";; localObject2 = aqyt.a(paramQQAppInterface, (ConfessInfo)localObject3, ((QQMessageFacade.Message)localObject1).senderuin))
+            for (localObject2 = "";; localObject2 = apse.a(paramQQAppInterface, (ConfessInfo)localObject3, ((QQMessageFacade.Message)localObject1).senderuin))
             {
-              bhnt.a(paramContext, paramQQAppInterface, (QQMessageFacade.Message)localObject1, this.mUser.getType(), localMsgSummary, (String)localObject2, false, false);
+              bfwr.a(paramContext, paramQQAppInterface, (QQMessageFacade.Message)localObject1, this.mUser.getType(), localMsgSummary, (String)localObject2, false, false);
               this.mDisplayTime = ((QQMessageFacade.Message)localObject1).time;
               break;
             }
           }
           if (bool)
           {
-            localObject3 = bhlg.b(paramQQAppInterface, ((aqzb)localObject2).jdField_a_of_type_JavaLangString, true);
+            localObject3 = ContactUtils.getBuddyName(paramQQAppInterface, ((apsm)localObject2).jdField_a_of_type_JavaLangString, true);
             localObject1 = localObject3;
-            if (TextUtils.equals((CharSequence)localObject3, ((aqzb)localObject2).jdField_a_of_type_JavaLangString))
+            if (TextUtils.equals((CharSequence)localObject3, ((apsm)localObject2).jdField_a_of_type_JavaLangString))
             {
               localObject1 = localObject3;
-              if (!TextUtils.isEmpty(((aqzb)localObject2).b)) {
-                localObject1 = ((aqzb)localObject2).b;
+              if (!TextUtils.isEmpty(((apsm)localObject2).b)) {
+                localObject1 = ((apsm)localObject2).b;
               }
             }
-            localMsgSummary.strContent = String.format(anzj.a(2131712059), new Object[] { localObject1, ((aqzb)localObject2).c });
-            this.mDisplayTime = ((aqzb)localObject2).jdField_a_of_type_Long;
+            localMsgSummary.strContent = String.format(amtj.a(2131712291), new Object[] { localObject1, ((apsm)localObject2).c });
+            this.mDisplayTime = ((apsm)localObject2).jdField_a_of_type_Long;
           }
           else
           {

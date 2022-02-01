@@ -1,24 +1,8 @@
-import android.content.Context;
+import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailGenTask;
 
-final class begu
-  implements blhm<Integer>
+public abstract interface begu
 {
-  begu(Context paramContext, String paramString, blir paramblir) {}
-  
-  public void a(Integer paramInteger)
-  {
-    switch (paramInteger.intValue())
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      begp.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-      continue;
-      begp.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public abstract void a(String paramString, boolean paramBoolean, int paramInt, TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask);
 }
 
 

@@ -1,52 +1,63 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import android.content.Context;
+import android.net.Uri;
+import android.view.Surface;
+import java.util.Map;
 
-class wwz
-  extends SimpleJob<Void>
+public abstract interface wwz
 {
-  wwz(wwx paramwwx, String paramString, List paramList)
-  {
-    super(paramString);
-  }
+  public abstract int a();
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    paramJobContext = new ArrayList();
-    paramVarArgs = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramVarArgs.hasNext())
-    {
-      Object localObject = (StoryVideoItem)paramVarArgs.next();
-      wkq localwkq = wkq.a(((StoryVideoItem)localObject).mVid, 2);
-      if (!TextUtils.isEmpty(localwkq.c))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("MsgTabStoryVideoPreloader", 2, "download thumb url=" + localwkq.c);
-        }
-        this.jdField_a_of_type_Wwx.b.add(localwkq.c);
-        paramJobContext.add(localwkq);
-      }
-      localObject = wkq.a(((StoryVideoItem)localObject).mVid, 1);
-      if (!TextUtils.isEmpty(((wkq)localObject).c))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("MsgTabStoryVideoPreloader", 2, "download mask url=" + ((wkq)localObject).c);
-        }
-        this.jdField_a_of_type_Wwx.b.add(((wkq)localObject).c);
-        paramJobContext.add(localObject);
-      }
-      this.jdField_a_of_type_Wwx.a.a(paramJobContext, false);
-    }
-    return null;
-  }
+  public abstract void a(float paramFloat1, float paramFloat2);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(Context paramContext, Uri paramUri, Map<String, String> paramMap);
+  
+  public abstract void a(Surface paramSurface);
+  
+  public abstract void a(wxa paramwxa);
+  
+  public abstract void a(wxb paramwxb);
+  
+  public abstract void a(wxc paramwxc);
+  
+  public abstract void a(wxd paramwxd);
+  
+  public abstract void a(wxe paramwxe);
+  
+  public abstract void a(wxf paramwxf);
+  
+  public abstract void a(wxh paramwxh);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract int d();
+  
+  public abstract void d();
+  
+  public abstract int e();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

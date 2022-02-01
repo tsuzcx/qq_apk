@@ -1,49 +1,69 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.data.ApolloBaseInfo;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import com.tencent.mobileqq.app.BusinessObserver;
+import java.util.ArrayList;
 import java.util.List;
 
-class anax
-  implements bhzp
+public class anax
+  implements BusinessObserver
 {
-  anax(anav paramanav, List paramList, String paramString1, String paramString2, int paramInt) {}
+  protected void a() {}
   
-  public boolean a(String paramString, ApolloBaseInfo paramApolloBaseInfo)
-  {
-    this.jdField_a_of_type_JavaUtilList.remove(paramString);
-    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow ACTION_RENDER_VIEW_INIT_CMSHOW_DATA onGetBaseInfo uin:" + ApolloUtil.d(paramString));
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
-    {
-      int i = amsx.a(ApolloUtil.a(), this.jdField_a_of_type_JavaLangString, true);
-      int j = amsx.a(ApolloUtil.a(), this.b, true);
-      paramString = new Bundle();
-      paramString.putInt("selfUinStatus", i);
-      paramString.putInt("friendUinStatus", j);
-      paramString = EIPCResult.createSuccessResult(paramString);
-      this.jdField_a_of_type_Anav.callbackResult(this.jdField_a_of_type_Int, paramString);
-      return true;
-    }
-    return false;
-  }
+  protected void a(boolean paramBoolean) {}
   
-  public boolean b(String paramString, ApolloBaseInfo paramApolloBaseInfo)
+  protected void a(boolean paramBoolean, List<Long> paramList) {}
+  
+  protected void a(boolean paramBoolean, List<Long> paramList, int paramInt) {}
+  
+  protected void b(boolean paramBoolean, List<Long> paramList) {}
+  
+  protected void b(boolean paramBoolean, List<Long> paramList, int paramInt) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramString);
-    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow ACTION_RENDER_VIEW_INIT_CMSHOW_DATA onDressUpdated uin:" + ApolloUtil.d(paramString));
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty())
+    int j = 0;
+    int i;
+    if (paramObject != null)
     {
-      int i = amsx.a(ApolloUtil.a(), this.jdField_a_of_type_JavaLangString, true);
-      int j = amsx.a(ApolloUtil.a(), this.b, true);
-      paramString = new Bundle();
-      paramString.putInt("selfUinStatus", i);
-      paramString.putInt("friendUinStatus", j);
-      paramString = EIPCResult.createSuccessResult(paramString);
-      this.jdField_a_of_type_Anav.callbackResult(this.jdField_a_of_type_Int, paramString);
-      return true;
+      ArrayList localArrayList = new ArrayList();
+      if ((paramObject instanceof long[])) {
+        paramObject = (long[])paramObject;
+      }
+      Object[] arrayOfObject;
+      for (i = 0;; i = ((Integer)arrayOfObject[1]).intValue())
+      {
+        int k = paramObject.length;
+        while (j < k)
+        {
+          localArrayList.add(Long.valueOf(paramObject[j]));
+          j += 1;
+        }
+        arrayOfObject = (Object[])paramObject;
+        paramObject = (long[])arrayOfObject[0];
+      }
+      paramObject = localArrayList;
     }
-    return false;
+    for (;;)
+    {
+      switch (paramInt)
+      {
+      default: 
+        return;
+      case 1: 
+        a(paramBoolean);
+        return;
+      case 2: 
+        a(paramBoolean, paramObject);
+        a(paramBoolean, paramObject, i);
+        return;
+      case 3: 
+        b(paramBoolean, paramObject);
+        b(paramBoolean, paramObject, i);
+        return;
+      }
+      a();
+      return;
+      paramObject = null;
+      i = 0;
+    }
   }
 }
 

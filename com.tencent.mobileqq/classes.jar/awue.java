@@ -1,16 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl.4.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import mqq.os.MqqHandler;
 
-class awue
-  implements View.OnClickListener
+public class awue
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  awue(awud paramawud) {}
+  awue(awua paramawua) {}
   
-  public void onClick(View paramView)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.a.b();
-    EventCollector.getInstance().onViewClicked(paramView);
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.4.1(this));
   }
 }
 

@@ -1,48 +1,47 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.os.Build.VERSION;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
+import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import org.json.JSONObject;
 
 public class alux
-  extends OrientationEventListener
 {
-  public alux(NewFlowCameraActivity paramNewFlowCameraActivity, Context paramContext)
+  public static void a(AppInterface paramAppInterface, int paramInt, String paramString, aluy paramaluy)
   {
-    super(paramContext);
-  }
-  
-  public void onOrientationChanged(int paramInt)
-  {
-    NewFlowCameraActivity.a(this.a).a(paramInt);
-    if (this.a.i) {}
-    do
-    {
+    if (paramAppInterface == null) {
       return;
-      if (paramInt == -1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PTV.NewFlowCameraActivity", 2, "OrientationEventListener unknown");
-        }
-        this.a.o = 90;
-        return;
-      }
-      if ((paramInt > 315) || (paramInt < 45))
-      {
-        this.a.o = 90;
-        return;
-      }
-      if ((paramInt > 45) && (paramInt < 135))
-      {
-        this.a.o = 180;
-        return;
-      }
-      if ((paramInt > 135) && (paramInt < 225))
-      {
-        this.a.o = 270;
-        return;
-      }
-    } while ((paramInt <= 225) || (paramInt >= 315));
-    this.a.o = 0;
+    }
+    try
+    {
+      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.8");
+      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
+      localUniSsoServerReq.comm.set((MessageMicro)localObject);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("cmd", "apollo_aio_game.get_playing_usernum");
+      ((JSONObject)localObject).put("from", paramString);
+      ((JSONObject)localObject).put("gameId", paramInt);
+      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
+      paramString = new NewIntent(BaseApplicationImpl.getContext(), alsb.class);
+      paramString.putExtra("timeout", 10000L);
+      paramString.putExtra("cmd", "apollo_aio_game.get_playing_usernum");
+      paramString.putExtra("data", localUniSsoServerReq.toByteArray());
+      paramString.setObserver(paramaluy);
+      paramAppInterface.startServlet(paramString);
+      return;
+    }
+    catch (Exception paramAppInterface)
+    {
+      QLog.e("cmgame_process._CmGameSSOReq", 1, "[queryUserAudioStatus] failed ", paramAppInterface);
+    }
   }
 }
 

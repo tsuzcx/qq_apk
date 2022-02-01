@@ -27,7 +27,7 @@ public class ProgressInfo
   
   public void GetFilePath(QQAppInterface paramQQAppInterface, long paramLong)
   {
-    paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
+    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
     List localList = paramQQAppInterface.rawQuery(RouterMsgRecord.class, "select * from " + RouterMsgRecord.sBasicTableName + paramLong + " where uSessionID = ?", new String[] { String.valueOf(this.uint64_sessionid) });
     paramQQAppInterface.close();
     if ((localList != null) && (localList.size() > 0)) {

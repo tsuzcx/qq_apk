@@ -3,18 +3,16 @@ package com.tencent.qqmini.flutter;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.qqmini.miniapp.util.V8Utils;
 import com.tencent.qqmini.sdk.core.tissue.TissueEnv;
 import com.tencent.qqmini.sdk.core.tissue.TissueGlobal;
 import com.tencent.qqmini.sdk.core.utils.WnsConfig;
-import com.tencent.qqmini.sdk.ipc.AppBrandCmdProxy;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.MiniSDKConst;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.shell.ICommonManager;
 import com.tencent.qqmini.sdk.launcher.utils.CPUUtil;
 import com.tencent.qqmini.sdk.runtime.BaseRuntimeLoader.Creator;
 import com.tencent.qqmini.sdk.utils.DeviceInfoUtil;
-import java.io.File;
 
 final class FlutterRuntimeLoader$1
   implements BaseRuntimeLoader.Creator<FlutterRuntimeLoader>
@@ -45,20 +43,6 @@ final class FlutterRuntimeLoader$1
     }
   }
   
-  private boolean checkV8()
-  {
-    if (v8rtExist()) {
-      return true;
-    }
-    AppBrandCmdProxy.g().sendCmd("cmd_update_v8rt", new Bundle(), new FlutterRuntimeLoader.1.2(this));
-    return false;
-  }
-  
-  private boolean v8rtExist()
-  {
-    return new File(MiniSDKConst.getMiniAppV8rtPath()).exists();
-  }
-  
   public FlutterRuntimeLoader create(Context paramContext, Bundle paramBundle)
   {
     return new FlutterRuntimeLoader(paramContext);
@@ -69,7 +53,7 @@ final class FlutterRuntimeLoader$1
   public boolean isEnginePrepared(Bundle paramBundle)
   {
     boolean bool1 = checkTissueSo(paramBundle);
-    boolean bool2 = checkV8();
+    boolean bool2 = V8Utils.checkEnableV8();
     return (bool1) && (bool2);
   }
   

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.report;
 
 import android.os.Debug.MemoryInfo;
 import android.os.Process;
-import bhlo;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import mqq.os.MqqHandler;
 
 final class MiniProgramLpReportDC04902$1
@@ -11,7 +11,7 @@ final class MiniProgramLpReportDC04902$1
 {
   public void run()
   {
-    Debug.MemoryInfo localMemoryInfo = bhlo.a(Process.myPid());
+    Debug.MemoryInfo localMemoryInfo = DeviceInfoUtil.getProcessMemory(Process.myPid());
     long l2;
     if (localMemoryInfo != null)
     {

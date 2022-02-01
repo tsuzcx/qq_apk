@@ -1,20 +1,24 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout.OnVisibilityListener;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class afsv
-  implements View.OnClickListener
+class afsv
+  implements EmotionKeywordLayout.OnVisibilityListener
 {
-  public afsv(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog) {}
+  afsv(afsu paramafsu) {}
   
-  public void onClick(View paramView)
+  public void onVisibilityChanged(int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (paramInt == 8) {
+      afsu.a(this.a).b();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    while ((paramInt != 0) || (afsu.a(this.a) == 0L)) {
+      return;
+    }
+    long l1 = System.currentTimeMillis();
+    long l2 = afsu.a(this.a);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "StickerRecShowCost", true, l1 - l2, 0L, null, "");
+    afsu.a(this.a, 0L);
   }
 }
 

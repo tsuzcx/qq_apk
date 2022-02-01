@@ -1,92 +1,47 @@
 import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.LayoutInflater;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.av.smallscreen.BaseSmallScreenService;
-import com.tencent.av.smallscreen.SmallScreenRelativeLayout;
+import android.view.Display;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.smallscreen.SmallScreenVideoControlUI;
 import com.tencent.qphone.base.util.QLog;
 
-public class lzj
+class lzj
+  extends mbm
 {
-  public SmallScreenRelativeLayout a;
-  protected String a;
-  public lzp a;
-  protected int i;
-  protected int j;
-  protected int k;
-  
-  public void a()
+  public lzj(lzf paramlzf, Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_Lzp.b();
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.c();
-    this.jdField_a_of_type_Lzp = null;
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout = null;
+    super(paramContext, paramInt);
   }
   
-  public void a(Context paramContext, LayoutInflater paramLayoutInflater, lzk paramlzk)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout = ((SmallScreenRelativeLayout)paramLayoutInflater.inflate(this.i, null));
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.b();
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setFloatListener(paramlzk);
-    this.jdField_a_of_type_Lzp = new lzp(paramContext, this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout);
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setIsRotateSize(true);
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setSize(this.j, this.k);
-    a(this.jdField_a_of_type_Lzp.a());
-  }
-  
-  public void a(WindowManager.LayoutParams paramLayoutParams)
-  {
-    paramLayoutParams.flags = 136;
-    if (Build.VERSION.SDK_INT >= 26)
+    int j = 0;
+    try
     {
-      paramLayoutParams.type = 2038;
-      return;
-    }
-    if (lzq.a()) {}
-    for (int m = 2005;; m = 2002)
-    {
-      paramLayoutParams.type = m;
-      return;
-    }
-  }
-  
-  public void a(BaseSmallScreenService paramBaseSmallScreenService)
-  {
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setSize(this.j, this.k);
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.f();
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    boolean bool = a();
-    if (paramBoolean)
-    {
-      if (!this.jdField_a_of_type_Lzp.b()) {
-        this.jdField_a_of_type_Lzp.a();
+      i = (this.a.jdField_a_of_type_AndroidViewDisplay.getRotation() * 90 + paramInt) % 360;
+      if (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI != null) {
+        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI.b(i);
       }
-      if (!bool)
+      if (this.a.jdField_a_of_type_Lzk != null) {
+        this.a.jdField_a_of_type_Lzk.a(paramInt, paramBoolean);
+      }
+      if (this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils != null) {
+        this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils.a(paramInt);
+      }
+      this.a.g = paramInt;
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setCurPosition(paramInt);
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.d();
-        if (QLog.isDevelopLevel()) {
-          QLog.w(this.jdField_a_of_type_JavaLangString, 4, "showOrHide, show toast view , tag[" + this.jdField_a_of_type_JavaLangString + "]");
+        int i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("SmallScreenVideoController", 2, "onVideoOrientationChanged e = " + localException);
+          i = j;
         }
       }
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (!bool);
-      this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.e();
-    } while (!QLog.isDevelopLevel());
-    QLog.w(this.jdField_a_of_type_JavaLangString, 4, "showOrHide, hide toast view , tag[" + this.jdField_a_of_type_JavaLangString + "]");
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.getVisibility() == 0) && (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.a());
   }
 }
 

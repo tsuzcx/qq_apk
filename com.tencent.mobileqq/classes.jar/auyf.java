@@ -1,19 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
+import com.tencent.qphone.base.util.QLog;
 
-class auyf
-  implements DialogInterface.OnClickListener
+public class auyf
+  extends GridLayoutManager.SpanSizeLookup
 {
-  auyf(auxu paramauxu) {}
+  auxv a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public auyf(auxv paramauxv)
   {
-    this.a.s();
+    this.a = paramauxv;
+  }
+  
+  public int getSpanSize(int paramInt)
+  {
+    if (this.a == null) {
+      QLog.i("leba_sort_LebaTableMgrFragment", 1, "MyLoopUp getSpanSize mAdapter == null");
+    }
+    while ((this.a.getItemViewType(paramInt) != 1) && (this.a.getItemViewType(paramInt) != 3)) {
+      return 1;
+    }
+    return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     auyf
  * JD-Core Version:    0.7.0.1
  */

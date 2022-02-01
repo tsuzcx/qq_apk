@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.webview.swift.component;
 
 import android.os.Environment;
-import auog;
-import bigv;
-import biqd;
+import bgwj;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import java.io.File;
 
 public class SwiftBrowserMiscHandler$2
   implements Runnable
 {
-  public SwiftBrowserMiscHandler$2(biqd parambiqd) {}
+  public SwiftBrowserMiscHandler$2(bgwj parambgwj) {}
   
   public void run()
   {
-    auog.a(new File(bigv.a(Environment.getExternalStorageDirectory() + "/tencent/MobileQQ/ShareScreenShots")));
+    FileUtil.deleteSubFile(new File(VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory() + "/tencent/MobileQQ/ShareScreenShots")));
   }
 }
 

@@ -1,54 +1,33 @@
-import android.os.Build.VERSION;
-import com.tencent.qphone.base.util.QLog;
+import android.os.SystemClock;
 
 public class mvw
 {
-  public static String a;
-  public static String b = jdField_a_of_type_JavaLangString + "test/";
-  public static String c = "min_sdk";
-  public static String d = "disable_sdk";
-  public static String e = "flag";
-  public static String f = b + c;
-  public static String g = b + d;
-  public static String h = b + e;
-  @Deprecated
-  lkk a;
+  public final int a;
+  public final long a;
+  public final boolean a;
+  public int[] a;
+  public final int b;
+  public final int c;
+  public int d;
+  public int e;
   
-  static
+  private mvw(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    jdField_a_of_type_JavaLangString = "sharp/video_effect/";
-  }
-  
-  public mvw()
-  {
-    this.jdField_a_of_type_Lkk = null;
-  }
-  
-  public int a(lkk paramlkk)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoEffectConfigParser", 2, "getVideoEffectTestFlag sdk: " + Build.VERSION.SDK_INT);
+    this.b = mvo.a(paramInt1, 20000);
+    this.c = paramInt2;
+    this.jdField_a_of_type_Long = (SystemClock.uptimeMillis() + paramInt4);
+    this.e = paramInt1;
+    paramInt1 = mvo.a(paramInt1, this.c, 20000, true);
+    if (paramInt1 > 10000) {
+      this.d = (20000 - paramInt1);
     }
-    try
+    for (this.jdField_a_of_type_Boolean = false; paramInt3 == -1; this.jdField_a_of_type_Boolean = true)
     {
-      int[] arrayOfInt = paramlkk.a(h);
-      if (arrayOfInt != null)
-      {
-        if ((arrayOfInt[0] & 0x1) != 1) {
-          return 0;
-        }
-        arrayOfInt = paramlkk.a(f);
-        if ((arrayOfInt != null) && (Build.VERSION.SDK_INT >= arrayOfInt[0]))
-        {
-          boolean bool = mrm.a(paramlkk.a(g), Build.VERSION.SDK_INT);
-          if (!bool) {
-            return 1;
-          }
-        }
-      }
+      this.jdField_a_of_type_Int = ((int)(0.1F * this.d));
+      return;
+      this.d = paramInt1;
     }
-    catch (Exception paramlkk) {}
-    return 0;
+    this.jdField_a_of_type_Int = paramInt3;
   }
 }
 

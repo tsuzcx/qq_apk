@@ -1,16 +1,25 @@
-import UserGrowth.stPostCommentReplyV2Req;
-import UserGrowth.stPostCommentReplyV2Rsp;
-import UserGrowth.stSimpleMetaComment;
-import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stSimpleMetaReply;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public class uov
-  extends ukl<stPostCommentReplyV2Rsp>
+class uov
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public uov(stSimpleMetaFeed paramstSimpleMetaFeed, stSimpleMetaComment paramstSimpleMetaComment, stSimpleMetaReply paramstSimpleMetaReply)
+  uov(uou paramuou) {}
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    super("PostCommentReplyV2", 10003);
-    this.a = new stPostCommentReplyV2Req(paramstSimpleMetaFeed.id, paramstSimpleMetaComment.id, paramstSimpleMetaReply);
+    uya.b("WSFollowFeedHolder", "VideoLayout onDoubleTap");
+    uou.a(this.a, paramMotionEvent);
+    uou.a(this.a, true);
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    uya.b("WSFollowFeedHolder", "VideoLayout onSingleTapConfirmed");
+    uou.a(this.a);
+    uou.a(this.a, false);
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

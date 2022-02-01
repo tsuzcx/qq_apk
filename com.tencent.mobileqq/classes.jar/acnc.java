@@ -1,24 +1,19 @@
 import android.view.View;
-import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
-import com.tencent.ark.ArkViewImplement.InputCallback;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.grayversion.ShareAppLogActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class acnc
-  implements ArkViewImplement.InputCallback
+public class acnc
+  implements View.OnClickListener
 {
-  acnc(acmz paramacmz, AdArkAdapter.Callback paramCallback) {}
+  public acnc(AboutActivity paramAboutActivity) {}
   
-  public void onFocusChanged(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback != null) {
-      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback.onFocusChanged(paramView, paramBoolean);
-    }
+    this.a.startActivity(ShareAppLogActivity.buildIntent(this.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onHideMenu(View paramView) {}
-  
-  public void onSelectChanged(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
-  
-  public void onShowMenu(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
 }
 
 

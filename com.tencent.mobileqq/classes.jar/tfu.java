@@ -1,12 +1,18 @@
-class tfu
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class tfu
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
+  public tfu(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
   
-  tfu(tfs paramtfs, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    CommonSuspensionGestureLayout.a(this.a).a(true, 0, 5);
+    CommonSuspensionGestureLayout.a(this.a, 5);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

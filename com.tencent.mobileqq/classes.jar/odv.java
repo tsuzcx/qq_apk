@@ -1,53 +1,19 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-
 public class odv
 {
-  private static odv a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  private odv()
+  public odv(odr paramodr, String paramString1, String paramString2, boolean paramBoolean)
   {
-    a = this;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static odv a()
+  public String toString()
   {
-    if (a == null) {
-      a = new odv();
-    }
-    return a;
-  }
-  
-  public Drawable a(Resources paramResources, int paramInt)
-  {
-    Object localObject = BaseApplicationImpl.sImageCache.get(String.valueOf(paramInt));
-    if ((localObject != null) && ((localObject instanceof Drawable))) {
-      localObject = (Drawable)localObject;
-    }
-    for (;;)
-    {
-      return localObject;
-      localObject = null;
-      try
-      {
-        paramResources = paramResources.getDrawable(paramInt);
-        localObject = paramResources;
-        if (paramResources == null) {
-          continue;
-        }
-        BaseApplicationImpl.sImageCache.put(String.valueOf(paramInt), paramResources);
-        return paramResources;
-      }
-      catch (OutOfMemoryError paramResources)
-      {
-        for (;;)
-        {
-          paramResources = (Resources)localObject;
-        }
-      }
-    }
+    return "PublicAccountSearchRecommendItem->uin:" + this.jdField_a_of_type_JavaLangString + ", name:" + this.b + ", isPublicAccount:" + this.jdField_a_of_type_Boolean;
   }
 }
 

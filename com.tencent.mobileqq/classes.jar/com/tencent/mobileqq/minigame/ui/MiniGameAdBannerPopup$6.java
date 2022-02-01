@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import bnwq;
+import blbw;
 import cooperation.vip.pb.TianShuAccess.AdItem;
 
 final class MiniGameAdBannerPopup$6
@@ -10,7 +10,7 @@ final class MiniGameAdBannerPopup$6
   
   public void run()
   {
-    bnwq.a().a(MiniGameAdBannerPopup.access$400(this.val$adItem, this.val$type, this.val$reportActionId));
+    blbw.a().a(MiniGameAdBannerPopup.access$400(this.val$adItem, this.val$type, this.val$reportActionId));
   }
 }
 

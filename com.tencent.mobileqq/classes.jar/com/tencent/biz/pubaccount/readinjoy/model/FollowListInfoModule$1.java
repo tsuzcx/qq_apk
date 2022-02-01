@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.ArrayList;
-import pfd;
-import ppo;
+import pkp;
+import puw;
 
 public class FollowListInfoModule$1
   implements Runnable
 {
-  public FollowListInfoModule$1(ppo paramppo) {}
+  public FollowListInfoModule$1(puw parampuw) {}
   
   public void run()
   {
-    pfd.a().c(false, new ArrayList(), 0L, false);
+    pkp.a().c(false, new ArrayList(), 0L, false);
   }
 }
 

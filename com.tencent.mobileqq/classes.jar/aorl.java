@@ -1,34 +1,17 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import java.util.ArrayList;
 
-class aorl
-  implements View.OnClickListener
+final class aorl
+  extends aoso
 {
-  aorl(aori paramaori, Activity paramActivity, String paramString, boolean paramBoolean, QQAppInterface paramQQAppInterface) {}
+  aorl(ArrayList paramArrayList) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    Object localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
-    if (aori.a(this.jdField_a_of_type_Aori) == null)
+    if (paramBoolean)
     {
-      aori.a(this.jdField_a_of_type_Aori, new aoro(null));
-      localObject = new IntentFilter("com.tencent.mobileqq.InvitationWebViewPlugin.accountIdentityNotify");
-      this.jdField_a_of_type_AndroidAppActivity.registerReceiver(aori.a(this.jdField_a_of_type_Aori), (IntentFilter)localObject);
-    }
-    if (this.jdField_a_of_type_Boolean) {}
-    for (localObject = "0X800B277";; localObject = "0X800B274")
-    {
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", (String)localObject, (String)localObject, 0, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      int i = paramBundle.getInt("mode", -1);
+      this.a.add(Integer.valueOf(i));
     }
   }
 }

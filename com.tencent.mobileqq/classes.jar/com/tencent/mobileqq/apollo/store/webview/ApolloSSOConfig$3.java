@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import bihu;
-import bihw;
+import bgoe;
+import bgog;
 
 public final class ApolloSSOConfig$3
   implements Runnable
 {
-  public ApolloSSOConfig$3(bihu parambihu) {}
+  public ApolloSSOConfig$3(bgoe parambgoe) {}
   
   public void run()
   {
-    bihw.a(this.a, null);
+    bgog.a(this.a, null);
   }
 }
 

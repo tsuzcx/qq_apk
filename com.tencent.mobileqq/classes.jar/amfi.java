@@ -1,13 +1,27 @@
-import android.widget.CheckBox;
-import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.List;
 
-public class amfi
-  extends amof
+class amfi
+  implements alpy
 {
-  public CheckBox a;
-  public Object a;
-  public TextView d;
-  public TextView e;
+  amfi(amfh paramamfh, String paramString) {}
+  
+  public void a(boolean paramBoolean, String paramString1, List<alpv> paramList, String paramString2)
+  {
+    QLog.i("ApolloPluginRscLoader", 1, "downloadApolloRes onDownLoadFinish success:" + paramBoolean);
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_Amfh.jdField_a_of_type_JavaIoFile.exists())
+      {
+        this.jdField_a_of_type_Amfh.jdField_a_of_type_Amez.a(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_Amfh.jdField_a_of_type_Int + amtj.a(2131699648));
+        return;
+      }
+      this.jdField_a_of_type_Amfh.jdField_a_of_type_Amez.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Amfh.jdField_a_of_type_Int + amtj.a(2131699659));
+      return;
+    }
+    this.jdField_a_of_type_Amfh.jdField_a_of_type_Amez.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Amfh.jdField_a_of_type_Int + amtj.a(2131699656));
+  }
 }
 
 

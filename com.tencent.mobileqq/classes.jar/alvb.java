@@ -1,25 +1,97 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.apollo.lightGame.CmGameSocketConnection;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class alvb
-  implements alwc
+  extends Handler
 {
-  public alvb(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  private WeakReference<CmGameSocketConnection> a;
   
-  public void a(boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2)
+  public alvb(Looper paramLooper, CmGameSocketConnection paramCmGameSocketConnection)
   {
-    if (this.a.r == 10011)
-    {
-      NewFlowCameraActivity.a(this.a, paramString1);
-      return;
+    super(paramLooper);
+    this.a = new WeakReference(paramCmGameSocketConnection);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmGameConnection.ConnectionHandler", 2, "[handleMessage] msg=" + paramMessage.what);
     }
-    if (paramBoolean)
+    if (this.a != null) {}
+    for (CmGameSocketConnection localCmGameSocketConnection = (CmGameSocketConnection)this.a.get();; localCmGameSocketConnection = null)
     {
-      NewFlowCameraActivity.b(this.a, paramString1);
-      return;
+      if (localCmGameSocketConnection == null) {
+        QLog.e("CmGameConnection.ConnectionHandler", 1, "[handleMessage] no connection");
+      }
+      boolean bool;
+      label165:
+      do
+      {
+        do
+        {
+          return;
+          switch (paramMessage.what)
+          {
+          default: 
+            return;
+          case 1: 
+            bool = CmGameSocketConnection.a(localCmGameSocketConnection);
+            if (QLog.isColorLevel()) {
+              QLog.d("CmGameConnection.ConnectionHandler", 2, new Object[] { "[handleMessage] conn result=", Boolean.valueOf(bool), ", connected=", Boolean.valueOf(localCmGameSocketConnection.a()) });
+            }
+            if (bool) {
+              break label165;
+            }
+          }
+        } while (localCmGameSocketConnection.a());
+        localCmGameSocketConnection.d();
+        return;
+        super.removeMessages(2);
+        paramMessage = super.obtainMessage(2);
+        paramMessage.obj = Boolean.valueOf(true);
+        super.sendMessage(paramMessage);
+        return;
+        bool = CmGameSocketConnection.b(localCmGameSocketConnection);
+        super.removeMessages(2);
+        if (QLog.isColorLevel()) {
+          QLog.d("CmGameConnection.ConnectionHandler", 1, new Object[] { "[handleMessage] heartbeat, result=", Boolean.valueOf(bool), ", flag=", paramMessage.obj });
+        }
+        if (bool)
+        {
+          if ((paramMessage.obj != null) && (((Boolean)paramMessage.obj).booleanValue())) {
+            localCmGameSocketConnection.c();
+          }
+          if (amio.a > 0L) {}
+          for (l = amio.a;; l = 120000L)
+          {
+            super.sendEmptyMessageDelayed(2, l);
+            return;
+          }
+        }
+        localCmGameSocketConnection.a(true);
+        return;
+        bool = CmGameSocketConnection.c(localCmGameSocketConnection);
+        if (QLog.isColorLevel()) {
+          QLog.d("CmGameConnection.ConnectionHandler", 1, new Object[] { "[handleMessage] send, result=", Boolean.valueOf(bool) });
+        }
+      } while (!bool);
+      super.removeMessages(2);
+      if (amio.a > 0L) {}
+      for (long l = amio.a;; l = 120000L)
+      {
+        super.sendEmptyMessageDelayed(2, l);
+        if (!CmGameSocketConnection.d(localCmGameSocketConnection)) {
+          break;
+        }
+        super.removeMessages(3);
+        super.sendEmptyMessage(3);
+        return;
+      }
     }
-    this.a.i(true);
-    QQToast.a(this.a, anzj.a(2131706370), 0).a();
   }
 }
 

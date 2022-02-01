@@ -4,7 +4,7 @@ import com.tencent.tav.decoder.logger.Logger;
 
 class AudioDecoderTrack$DecoderWrapper
 {
-  IDecoder decoder;
+  IAudioDecoder decoder;
   DecoderAssetTrack extractor;
   int segmentIndex = -1;
   

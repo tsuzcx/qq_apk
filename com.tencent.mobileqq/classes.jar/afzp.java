@@ -1,38 +1,28 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import com.tencent.mobileqq.data.MessageForPic;
 
 public class afzp
-  implements View.OnClickListener
+  implements bjoe
 {
-  public afzp(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public afzp(FlashPicItemBuilder paramFlashPicItemBuilder, MessageForPic paramMessageForPic, bjnw parambjnw) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
-    if ((str == null) || (str.length() == 0)) {
-      Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131691777), 0).show();
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.jdField_a_of_type_Bjnw.dismiss();
       return;
-      if (str != null)
-      {
-        this.a.a(str);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-        VerifyCodeActivity.b(this.a, false);
-      }
+      FlashPicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afzp
  * JD-Core Version:    0.7.0.1
  */

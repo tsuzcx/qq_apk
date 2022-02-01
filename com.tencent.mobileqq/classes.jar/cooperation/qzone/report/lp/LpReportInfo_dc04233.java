@@ -3,9 +3,9 @@ package cooperation.qzone.report.lp;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bmsw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QUA;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -82,7 +82,7 @@ public class LpReportInfo_dc04233
     HashMap localHashMap = new HashMap();
     localHashMap.put("uin", String.valueOf(this.uin));
     localHashMap.put("is_kingcard", String.valueOf(this.isKingCard));
-    LpReportUtils.safePut(localHashMap, "qua", bmsw.a());
+    LpReportUtils.safePut(localHashMap, "qua", QUA.getQUA3());
     return localHashMap;
   }
 }

@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.ui.GAudioMembersCtrlActivity.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-class mdr
-  implements View.OnClickListener
+public class mdr
+  extends len
 {
-  mdr(mdp parammdp) {}
+  public mdr(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(long paramLong1, long paramLong2, ArrayList<lcp> paramArrayList)
   {
-    this.a.a.a().a().av = true;
-    mvd.a(this.a.a);
-    mdp.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ThreadManager.getUIHandler().post(new GAudioMembersCtrlActivity.2.1(this));
   }
 }
 

@@ -1,82 +1,56 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadPoolParams;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class avwj
 {
-  private static volatile avwj jdField_a_of_type_Avwj;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new avwl(this);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new avwk(this);
-  private ArrayList<avwm> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private static avwj jdField_a_of_type_Avwj;
+  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   
-  private avwj(Context paramContext)
+  private avwj()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    a(true);
+    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null)
+    {
+      int i = Runtime.getRuntime().availableProcessors();
+      ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
+      localThreadPoolParams.corePoolsize = i;
+      localThreadPoolParams.maxPooolSize = i;
+      localThreadPoolParams.priority = 5;
+      localThreadPoolParams.poolThreadName = "msgbackup_Tranport_Executor";
+      this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.newFreeThreadPool(localThreadPoolParams);
+    }
   }
   
-  public static avwj a(Context paramContext)
+  public static avwj a()
   {
-    if (jdField_a_of_type_Avwj == null) {}
     try
     {
       if (jdField_a_of_type_Avwj == null) {
-        jdField_a_of_type_Avwj = new avwj(paramContext);
+        jdField_a_of_type_Avwj = new avwj();
       }
-      return jdField_a_of_type_Avwj;
+      avwj localavwj = jdField_a_of_type_Avwj;
+      return localavwj;
     }
     finally {}
   }
   
-  public void a(avwm paramavwm)
+  public void a()
   {
-    if ((!this.jdField_a_of_type_JavaUtilArrayList.contains(paramavwm)) && (paramavwm != null)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramavwm);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean == paramBoolean) {
+    avwu.a("MsgBackupMsgBackupTransportExecutor", "msgbackup destroy-------------> destroyed = " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get(), new Object[0]);
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
       return;
     }
-    if (paramBoolean)
-    {
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-      localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
-      localIntentFilter.addAction("tencent.av.v2q.StopVideoChat");
-      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      localIntentFilter.addAction("VolumeBtnDown");
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-      AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
-      return;
-    }
-    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
   
-  public boolean a()
+  public void a(Runnable paramRunnable)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
-    while (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
-      return false;
+    if (this.jdField_a_of_type_JavaUtilConcurrentExecutor == null) {
+      avwu.a("MsgBackupMsgBackupTransportExecutor", "thread pool is destroyed!", new Object[0]);
     }
-    return true;
-  }
-  
-  public void b(avwm paramavwm)
-  {
-    if ((paramavwm != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(paramavwm))) {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramavwm);
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(paramRunnable);
   }
 }
 

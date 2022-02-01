@@ -1,84 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 
-public class arhv
-  extends arac<arhu>
+class arhv
+  implements INetEngine.INetEngineListener
 {
-  public static arhu a()
-  {
-    return (arhu)aran.a().a(441);
-  }
+  arhv(arhu paramarhu) {}
   
-  @NonNull
-  public arhu a(int paramInt)
-  {
-    return new arhu();
-  }
+  public void onResp(NetResp paramNetResp) {}
   
-  @Nullable
-  public arhu a(araj[] paramArrayOfaraj)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfProcessor", 2, "onParsed ");
-    }
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
-    {
-      new arhu();
-      return arhu.a(paramArrayOfaraj);
-    }
-    return null;
-  }
-  
-  public void a(arhu paramarhu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfProcessor", 2, "onUpdate " + paramarhu.toString());
-    }
-  }
-  
-  public Class<arhu> clazz()
-  {
-    return arhu.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void onReqNoReceive() {}
-  
-  public int type()
-  {
-    return 441;
-  }
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arhv
  * JD-Core Version:    0.7.0.1
  */

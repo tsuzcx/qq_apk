@@ -1,15 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
 public class akzs
-  implements DialogInterface.OnClickListener
+  implements bjsl
 {
-  public akzs(TransactionActivity paramTransactionActivity) {}
+  public akzs(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    this.a.a = true;
+    FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
+  }
+  
+  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
+  {
+    if (!this.a.a)
+    {
+      if (paramInt - 1 >= 0) {
+        paramPinnedFooterExpandableListView.b(paramInt - 1);
+      }
+      for (;;)
+      {
+        this.a.a = true;
+        FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendTeamListInnerFrameNew", 2, "header group unusal: " + paramInt);
+        }
+      }
+    }
+    if (paramPinnedFooterExpandableListView.c(paramInt))
+    {
+      paramPinnedFooterExpandableListView.b(paramInt);
+      return;
+    }
+    paramPinnedFooterExpandableListView.a(paramInt);
   }
 }
 

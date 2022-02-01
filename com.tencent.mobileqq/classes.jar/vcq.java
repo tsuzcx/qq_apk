@@ -1,33 +1,36 @@
-import android.os.Bundle;
-import com.tencent.biz.qqcircle.requests.QCircleJoinGroupReportRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StUser;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
-class vcq
-  implements wcr
+public class vcq
+  extends vbo
 {
-  vcq(vcn paramvcn) {}
-  
-  public void a(long paramLong)
+  public vcq(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    if (vcn.a(this.a) != null)
-    {
-      vcn.a(this.a).remove(Long.valueOf(paramLong));
-      vcn.a(this.a);
-      vtq.a(vcn.a(this.a).id.get(), 11, 25, 7, "", String.valueOf(paramLong), "", "", "", this.a.b());
-    }
+    super(paramViewGroup, paramInt, paramWSVerticalPageFragment);
   }
   
-  public void b(long paramLong)
+  public vbl a(int paramInt)
   {
-    Bundle localBundle = TroopInfoActivity.a(String.valueOf(paramLong), 0);
-    localBundle.putBoolean("troop_info_from_troopsetting", true);
-    localBundle.putInt("exposureSource", 3);
-    bguq.a(this.a.a(), localBundle, 2);
-    VSNetworkHelper.a().a(this.a.a(), new QCircleJoinGroupReportRequest(paramLong), new vcr(this));
+    return new vcx(a(), this);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+  }
+  
+  protected boolean a()
+  {
+    return true;
+  }
+  
+  protected boolean b()
+  {
+    if ((this.a != null) && (TextUtils.equals(this.a.a(), "aio_home_page"))) {
+      return false;
+    }
+    return super.b();
   }
 }
 

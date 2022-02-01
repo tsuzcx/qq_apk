@@ -1,19 +1,17 @@
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class agax
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class agax
+  extends ClickableSpan
 {
-  public agax(VisitorsActivity paramVisitorsActivity) {}
+  agax(agap paramagap) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView) {}
+  
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    this.a.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    int[] arrayOfInt = new int[2];
-    this.a.b.getLocationInWindow(arrayOfInt);
-    this.a.i = arrayOfInt[1];
+    paramTextPaint.setColor(-12541697);
   }
 }
 

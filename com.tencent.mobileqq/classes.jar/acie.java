@@ -1,19 +1,36 @@
-import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qapmsdk.battery.BatteryMonitor;
+import com.tencent.qapmsdk.battery.IBatteryListener;
+import com.tencent.qphone.base.util.QLog.ILogCallback;
+import mqq.util.IServiceCmdCallback;
+import org.jetbrains.annotations.NotNull;
 
-public class acie
-  implements acja
+class acie
+  implements IBatteryListener, QLog.ILogCallback, IServiceCmdCallback
 {
-  public acie(GameCenterActivity.GameCenterFragment paramGameCenterFragment, WebView paramWebView) {}
-  
-  public void a(int paramInt, String paramString)
+  @NotNull
+  public String getSosoClassName()
   {
-    QLog.i("GameCenterFragment", 1, "addShot res code=" + paramInt);
-    if (paramInt == 304) {
-      aciy.a().a(this.jdField_a_of_type_ComTencentSmttSdkWebView);
-    }
+    return SosoInterface.class.getPackage().getName();
   }
+  
+  public void onCmdRequest(String paramString)
+  {
+    BatteryMonitor.getInstance().onCmdRequest(paramString);
+  }
+  
+  public void onCmdResponse(String paramString) {}
+  
+  public void onPrintLog(@NotNull String paramString) {}
+  
+  public void onUsageAlarm(int paramInt1, int paramInt2, int paramInt3, @NotNull String paramString1, @NotNull String paramString2) {}
+  
+  public void onWriteLog(String paramString1, String paramString2)
+  {
+    BatteryMonitor.getInstance().onWriteLog(paramString1, paramString2);
+  }
+  
+  public void onWriteLog(String paramString, byte[] paramArrayOfByte) {}
 }
 
 

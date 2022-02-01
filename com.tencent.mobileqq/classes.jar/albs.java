@@ -1,25 +1,38 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.3.1;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
 
 public class albs
-  implements akxk
+  implements DialogInterface.OnClickListener
 {
-  public albs(ThemeHbFragment paramThemeHbFragment) {}
+  public albs(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThemeHbFragment.a(this.a, null);
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ThemeHbFragment", 2, "setAnimFrameBgProcess download back obj = " + paramObject);
+    switch (paramInt)
+    {
     }
-    if (((paramObject instanceof String)) && (ThemeHbFragment.a(this.a) != null)) {
-      ThemeHbFragment.a(this.a).post(new ThemeHbFragment.3.1(this, paramObject));
+    boolean bool;
+    do
+    {
+      return;
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
+      if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break;
+      }
+      bool = true;
+      paramDialogInterface.setChecked(bool);
+      this.a.onCheckedChanged(this.a.jdField_a_of_type_AndroidWidgetCheckBox, this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.mEntrance != 32);
+    if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
+    for (paramDialogInterface = "friendsfinder.all.confirm";; paramDialogInterface = "friendsfinder.all.cancel")
+    {
+      akgd.a(0, paramDialogInterface);
+      return;
+      bool = false;
+      break;
     }
   }
 }

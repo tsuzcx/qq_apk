@@ -1,8 +1,20 @@
-public abstract interface bnst
+import android.os.Handler;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity;
+import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity.1;
+import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity.1.1.1;
+
+public class bnst
+  implements bnue
 {
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3);
+  public bnst(QzoneEditPictureActivity.1 param1) {}
   
-  public abstract void a(String paramString, long paramLong1, long paramLong2);
+  public void g(boolean paramBoolean)
+  {
+    if (QzoneEditPictureActivity.a(this.a.this$0).a != null) {
+      QzoneHandlerThreadFactory.getMainHandler().post(new QzoneEditPictureActivity.1.1.1(this));
+    }
+  }
 }
 
 

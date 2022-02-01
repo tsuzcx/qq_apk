@@ -1,46 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class bfmx
-  implements View.OnClickListener
+public class bfmx
 {
-  bfmx(bfmw parambfmw) {}
-  
-  public void onClick(View paramView)
-  {
-    Object localObject = (bfoo)paramView.getTag();
-    String str;
-    if (((bfoo)localObject).b == 1)
-    {
-      this.a.a.a.a(((bfoo)localObject).a, null);
-      if (((bfoo)localObject).a == null) {}
-      for (str = "";; str = ((bfoo)localObject).a)
-      {
-        bdll.b(null, "dc00899", "grp_create", "", "grp_create_bytype", "clk_grptype", 0, 0, str, "", "", "");
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-      }
-    }
-    this.a.a.a.a(((bfoo)localObject).d, ((bfoo)localObject).a);
-    if (((bfoo)localObject).d == null)
-    {
-      str = "";
-      label114:
-      if (((bfoo)localObject).a != null) {
-        break label157;
-      }
-    }
-    label157:
-    for (localObject = "";; localObject = ((bfoo)localObject).a)
-    {
-      bdll.b(null, "dc00899", "grp_create", "", "grp_create_bytype", "clk_grptype", 0, 0, str, (String)localObject, "", "");
-      break;
-      str = ((bfoo)localObject).d;
-      break label114;
-    }
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
 }
 
 

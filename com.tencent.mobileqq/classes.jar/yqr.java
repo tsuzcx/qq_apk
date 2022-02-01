@@ -1,18 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class yqr
-  implements View.OnClickListener
 {
-  yqr(yqj paramyqj, ytq paramytq) {}
+  public final int a;
+  public final String a;
+  public final String b;
   
-  public void onClick(View paramView)
+  public yqr(int paramInt, String paramString1, String paramString2)
   {
-    yup.a("home_page", "guide_shoot", 0, 0, new String[0]);
-    this.jdField_a_of_type_Yqj.a.a(false, true, 13, null);
-    this.jdField_a_of_type_Ytq.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 

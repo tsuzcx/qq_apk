@@ -22,6 +22,14 @@ public class PageContextManager
     return (PageContext)this.mContextMap.get(paramObject);
   }
   
+  public void remove(Object paramObject)
+  {
+    if (paramObject == null) {
+      return;
+    }
+    this.mContextMap.remove(paramObject);
+  }
+  
   public void set(Object paramObject, PageContext paramPageContext)
   {
     this.mContextMap.put(paramObject, paramPageContext);

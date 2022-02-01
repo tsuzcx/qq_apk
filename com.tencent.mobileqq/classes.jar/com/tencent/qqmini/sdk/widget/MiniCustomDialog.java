@@ -57,6 +57,7 @@ public class MiniCustomDialog
   TextView checkTxt;
   protected TextView countText;
   protected EditText dialogEdit;
+  protected ImageView dialogImage;
   TextView dummyFirstPreviewImage;
   TextView editPicTag;
   View framePreview;
@@ -246,7 +247,7 @@ public class MiniCustomDialog
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 274	android/app/Dialog:dismiss	()V
+    //   1: invokespecial 275	android/app/Dialog:dismiss	()V
     //   4: return
     //   5: astore_1
     //   6: aload_1
@@ -290,6 +291,11 @@ public class MiniCustomDialog
       return this.checkBox.isChecked();
     }
     return false;
+  }
+  
+  public ImageView getDialogImage()
+  {
+    return this.dialogImage;
   }
   
   protected int getDialogListItemLayout()
@@ -432,6 +438,7 @@ public class MiniCustomDialog
     super.setContentView(paramInt);
     this.title = ((TextView)findViewById(R.id.dialogTitle));
     this.text = ((TextView)findViewById(R.id.dialogText));
+    this.dialogImage = ((ImageView)findViewById(R.id.dialogImage));
     this.dialogEdit = ((EditText)findViewById(R.id.dialogEdit));
     this.countText = ((TextView)findViewById(R.id.dialogCountText));
     this.dummyFirstPreviewImage = ((TextView)findViewById(R.id.dummyfirstpreviewImage));

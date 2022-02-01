@@ -1,10 +1,39 @@
-public abstract interface aqpo
+import android.os.SystemClock;
+
+public class aqpo
 {
-  public abstract void a(int paramInt, aqon paramaqon);
+  private long a;
+  private long b;
+  private long c;
   
-  public abstract void a(boolean paramBoolean, String paramString);
+  public long a()
+  {
+    return this.a;
+  }
   
-  public abstract void c();
+  public void a()
+  {
+    this.a = 0L;
+    this.b = 0L;
+  }
+  
+  public long b()
+  {
+    this.b = (SystemClock.uptimeMillis() - this.c);
+    this.a += this.b;
+    b();
+    return this.b;
+  }
+  
+  public void b()
+  {
+    this.c = SystemClock.uptimeMillis();
+  }
+  
+  public long c()
+  {
+    return this.b;
+  }
 }
 
 

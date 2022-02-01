@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.receipt;
 
+import anca;
 import android.content.SharedPreferences;
-import aoip;
-import bazz;
+import azul;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 
 class ReceiptMessageReadMemberListContainerFragment$2
@@ -23,7 +23,7 @@ class ReceiptMessageReadMemberListContainerFragment$2
       ReceiptMessageReadMemberListContainerFragment.a(this.this$0).sendEmptyMessage(4);
       return;
     }
-    aoip localaoip = (aoip)ReceiptMessageReadMemberListContainerFragment.a(this.this$0).a(20);
+    anca localanca = (anca)ReceiptMessageReadMemberListContainerFragment.a(this.this$0).getBusinessHandler(20);
     TroopInfo localTroopInfo = ((TroopManager)ReceiptMessageReadMemberListContainerFragment.a(this.this$0).getManager(52)).b(Long.toString(ReceiptMessageReadMemberListContainerFragment.a(this.this$0)));
     if (localTroopInfo == null)
     {
@@ -31,7 +31,7 @@ class ReceiptMessageReadMemberListContainerFragment$2
       return;
     }
     ReceiptMessageReadMemberListContainerFragment.a(this.this$0).addObserver(ReceiptMessageReadMemberListContainerFragment.a(this.this$0), true);
-    localaoip.a(true, localTroopInfo.troopuin, localTroopInfo.troopcode, 10);
+    localanca.a(true, localTroopInfo.troopuin, localTroopInfo.troopcode, 10);
   }
 }
 

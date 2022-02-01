@@ -1,19 +1,26 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
 
 class bkzo
-  implements DialogInterface.OnClickListener
+  implements ScaleGestureDetector.OnScaleGestureListener
 {
-  bkzo(bkzk parambkzk, Activity paramActivity) {}
+  bkzo(bkzk parambkzk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (bkzk.a(this.jdField_a_of_type_Bkzk).isShowing()) {
-      bkzk.a(this.jdField_a_of_type_Bkzk).dismiss();
+    float f = paramScaleGestureDetector.getScaleFactor();
+    if (bkzk.a(this.a) != null) {
+      bkzk.a(this.a).a("onActionScale", new float[] { f });
     }
-    aquy.a(this.jdField_a_of_type_AndroidAppActivity, true);
+    return true;
   }
+  
+  public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
+  {
+    return true;
+  }
+  
+  public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector) {}
 }
 
 

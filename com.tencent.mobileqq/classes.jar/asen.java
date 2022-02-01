@@ -1,16 +1,14 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class asen
-  implements aset
+  implements DialogInterface.OnClickListener
 {
-  asen(asel paramasel, aset paramaset) {}
+  asen(asej paramasej) {}
   
-  public void a(List<asmu> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Asel.a(paramList);
-    if (this.jdField_a_of_type_Aset != null) {
-      this.jdField_a_of_type_Aset.a(paramList);
-    }
+    bcef.b(null, "dc00898", "", "", "0X800AE3E", "0X800AE3E", 0, 0, "", "", "", "");
   }
 }
 

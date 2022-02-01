@@ -1,19 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.music.SongInfo;
-
-public final class axre
-  implements Parcelable.Creator<SongInfo>
+class axre
 {
-  public SongInfo a(Parcel paramParcel)
-  {
-    return new SongInfo(paramParcel, null);
-  }
+  public int a;
+  public axra a;
+  public axrb a;
+  public axrd a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b = true;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
   
-  public SongInfo[] a(int paramInt)
-  {
-    return new SongInfo[paramInt];
-  }
+  private axre(axqp paramaxqp) {}
 }
 
 

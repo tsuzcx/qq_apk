@@ -1,32 +1,31 @@
 package dov.com.qq.im.ae.play;
 
-import bowy;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class AEPlayShowMaterialManager$1
+class AEPlayShowMaterialManager$1
   implements Runnable
 {
-  public AEPlayShowMaterialManager$1(bowy parambowy) {}
+  AEPlayShowMaterialManager$1(AEPlayShowMaterialManager paramAEPlayShowMaterialManager) {}
   
   public void run()
   {
-    synchronized (bowy.a(this.this$0))
+    synchronized (AEPlayShowMaterialManager.access$000(this.this$0))
     {
-      List localList = bowy.a(this.this$0);
+      List localList = AEPlayShowMaterialManager.access$100(this.this$0);
       if (QLog.isDevelopLevel())
       {
         QLog.d("AEPlayShowMaterialManager", 4, "newPsCategoryList, hashCode=" + localList.hashCode());
-        QLog.d("AEPlayShowMaterialManager", 4, "mPsCategoryList, hashCode=" + bowy.b(this.this$0).hashCode());
+        QLog.d("AEPlayShowMaterialManager", 4, "mPsCategoryList, hashCode=" + AEPlayShowMaterialManager.access$200(this.this$0).hashCode());
       }
-      if ((bowy.b(this.this$0) == null) || (bowy.b(this.this$0).size() < 1) || (localList.hashCode() != bowy.b(this.this$0).hashCode()))
+      if ((AEPlayShowMaterialManager.access$200(this.this$0) == null) || (AEPlayShowMaterialManager.access$200(this.this$0).size() < 1) || (localList.hashCode() != AEPlayShowMaterialManager.access$200(this.this$0).hashCode()))
       {
-        if (bowy.b(this.this$0) != null)
+        if (AEPlayShowMaterialManager.access$200(this.this$0) != null)
         {
-          bowy.b(this.this$0).clear();
-          bowy.b(this.this$0).addAll(localList);
+          AEPlayShowMaterialManager.access$200(this.this$0).clear();
+          AEPlayShowMaterialManager.access$200(this.this$0).addAll(localList);
         }
-        bowy.a(this.this$0);
+        AEPlayShowMaterialManager.access$300(this.this$0);
       }
       return;
     }

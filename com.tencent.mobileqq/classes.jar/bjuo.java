@@ -1,26 +1,13 @@
-import java.io.InputStream;
+import android.text.method.TransformationMethod;
 
-public class bjuo
+public abstract interface bjuo
+  extends TransformationMethod
 {
-  public int a;
-  public long a;
-  public InputStream a;
-  public String a;
-  public long b;
-  
-  public bjuo(String paramString, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      this.b = this.jdField_a_of_type_JavaLangString.length();
-    }
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjuo
  * JD-Core Version:    0.7.0.1
  */

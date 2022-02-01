@@ -1,53 +1,18 @@
-import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
+import cooperation.qwallet.plugin.QWalletPrivacyUtils;
 
 public class ajvq
-  implements Comparator<ajvt>
+  implements DialogInterface.OnClickListener
 {
-  public ajvq(PublicAccountFragment paramPublicAccountFragment) {}
+  public ajvq(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
   
-  public int a(ajvt paramajvt1, ajvt paramajvt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramajvt1 = paramajvt1.a.name;
-    paramajvt2 = paramajvt2.a.name;
-    if ((paramajvt1 == null) && (paramajvt2 == null)) {}
-    int j;
-    int k;
-    do
-    {
-      return 0;
-      if ((paramajvt1 == null) && (paramajvt2 != null)) {
-        return -1;
-      }
-      if ((paramajvt1 != null) && (paramajvt2 == null)) {
-        return 1;
-      }
-      j = paramajvt1.length();
-      k = paramajvt2.length();
-      int m = Math.min(j, k);
-      int i = 0;
-      while (i < m)
-      {
-        char c1 = paramajvt1.charAt(i);
-        char c2 = paramajvt2.charAt(i);
-        if (c1 != c2)
-        {
-          paramajvt1 = ChnToSpell.a(c1, i);
-          paramajvt2 = ChnToSpell.a(c2, i);
-          if (paramajvt1.jdField_a_of_type_Int == paramajvt2.jdField_a_of_type_Int) {
-            return paramajvt1.jdField_a_of_type_JavaLangString.compareTo(paramajvt2.jdField_a_of_type_JavaLangString);
-          }
-          return paramajvt1.jdField_a_of_type_Int - paramajvt2.jdField_a_of_type_Int;
-        }
-        i += 1;
-      }
-      if (j < k) {
-        return -1;
-      }
-    } while (j <= k);
-    return 1;
+    QWalletPrivacyUtils.setHasClickAgree(this.a.getActivity().app);
+    this.a.a();
   }
 }
 

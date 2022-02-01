@@ -1,52 +1,47 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 import java.util.Iterator;
 import java.util.List;
 
 public class xdf
-  extends wpa<xev>
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wby>
 {
-  private final String a;
-  public List<String> a;
-  
-  public xdf()
+  public xdf(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    this.jdField_a_of_type_JavaLangString = wnu.a("StoryGroupSvc.datacard_batch_get_video_info");
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public String a()
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wby paramwby)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if ((TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.b)) && (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.c)) && (paramwby.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (!paramwby.jdField_a_of_type_JavaUtilList.isEmpty()))
+    {
+      paramwby = paramwby.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramwby.hasNext())
+      {
+        xem localxem = (xem)paramwby.next();
+        if (paramQQStoryShareGroupProfileActivity.c.equals(localxem.a))
+        {
+          paramQQStoryShareGroupProfileActivity.b = localxem.b;
+          if (QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity)) {
+            break label111;
+          }
+        }
+      }
+    }
+    label111:
+    for (boolean bool = true;; bool = false)
+    {
+      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, bool);
+      return;
+    }
   }
   
-  public wov a(byte[] paramArrayOfByte)
+  public Class acceptEventClass()
   {
-    qqstory_service.RspBatchGetVideoInfo localRspBatchGetVideoInfo = new qqstory_service.RspBatchGetVideoInfo();
-    try
-    {
-      localRspBatchGetVideoInfo.mergeFrom(paramArrayOfByte);
-      return new xev(localRspBatchGetVideoInfo);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      yuk.b("Q.qqstory.shareGroup:GetShareGroupVideoInfoRequest", a(), paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqBatchGetVideoInfo localReqBatchGetVideoInfo = new qqstory_service.ReqBatchGetVideoInfo();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localReqBatchGetVideoInfo.story_id_list.add(ByteStringMicro.copyFromUtf8(str));
-    }
-    return localReqBatchGetVideoInfo.toByteArray();
+    return wby.class;
   }
 }
 

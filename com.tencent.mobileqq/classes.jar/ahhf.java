@@ -1,29 +1,12 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForLightVideo;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class ahhf
-  implements ahky
+class ahhf
+  implements DialogInterface.OnClickListener
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    if ((paramChatMessage instanceof MessageForLightVideo)) {
-      return 103;
-    }
-    switch (((MessageForShortVideo)paramChatMessage).busiType)
-    {
-    default: 
-      return 29;
-    case 1: 
-      return 38;
-    case 2: 
-      return 46;
-    case 1007: 
-      return 40;
-    }
-    return 41;
-  }
+  ahhf(ahhd paramahhd) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

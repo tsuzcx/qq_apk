@@ -1,44 +1,25 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aeoa
-  implements bcie
+  implements View.OnClickListener
 {
-  public aeoa(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  public aeoa(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    int i = 1;
-    bcfn localbcfn = (bcfn)paramView.getTag(2131381109);
-    if (localbcfn == null) {}
-    for (;;)
-    {
-      return;
-      String str1 = localbcfn.b();
-      String str2 = localbcfn.a().toString();
-      paramView = "-1";
-      if ((localbcfn instanceof bceb))
-      {
-        paramView = ((bceb)localbcfn).e();
-        i = 3000;
-      }
-      while ((i != -1) && (ForwardFriendListActivity.a(this.a, new ResultRecord(str1, str2, i, paramView, ""))))
-      {
-        ForwardFriendListActivity.a(this.a).notifyDataSetChanged();
-        return;
-        if ((localbcfn instanceof bceh)) {
-          paramView = ((bceh)localbcfn).a;
-        } else if ((localbcfn instanceof bcem)) {
-          paramView = ((bcem)localbcfn).a().troopuin;
-        } else if ((localbcfn instanceof bcec)) {
-          i = 0;
-        } else {
-          i = -1;
-        }
-      }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.a.a.b.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
     }
+    TroopMemberListActivity.a(this.a, localArrayList);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

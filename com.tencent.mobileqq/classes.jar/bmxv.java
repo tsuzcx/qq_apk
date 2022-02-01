@@ -1,36 +1,137 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.contentbox.FootNavigationLayout;
-import cooperation.qzone.report.lp.LpReportInfo_dc02880;
-import cooperation.qzone.report.lp.LpReportManager;
+import android.content.res.AssetManager;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.util.QIMFileUtils.1;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import mqq.os.MqqHandler;
 
 public class bmxv
-  implements View.OnClickListener
 {
-  public bmxv(FootNavigationLayout paramFootNavigationLayout, bmyn parambmyn, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public static File a()
   {
-    Object localObject = bhni.a(((BaseActivity)this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext()).app, this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext(), this.jdField_a_of_type_Bmyn.b);
-    if (localObject != null) {
-      ((bhmr)localObject).a();
+    return BaseApplicationImpl.getApplication().getCacheDir();
+  }
+  
+  public static String a(File paramFile, String paramString)
+  {
+    paramFile = new File(paramFile + File.separator + paramString);
+    if (paramFile.exists())
+    {
+      paramFile = FileUtils.fileToBytes(paramFile);
+      if ((paramFile == null) || (paramFile.length <= 0)) {
+        return null;
+      }
+      if (Build.VERSION.SDK_INT <= 8) {
+        return new String(paramFile);
+      }
+      try
+      {
+        paramFile = new String(paramFile, "UTF-8");
+        return paramFile;
+      }
+      catch (UnsupportedEncodingException paramFile)
+      {
+        if (QLog.isDevelopLevel()) {
+          paramFile.printStackTrace();
+        }
+        return null;
+      }
     }
+    return "";
+  }
+  
+  public static String a(String paramString)
+  {
+    String str1 = "";
+    Object localObject2 = null;
+    Object localObject1 = null;
     for (;;)
     {
-      localObject = new LpReportInfo_dc02880(7, FootNavigationLayout.a()[this.jdField_a_of_type_Int]);
-      LpReportManager.getInstance().reportToDC02880((LpReportInfo_dc02880)localObject, false, true);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localObject = new Intent(this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext(), QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", this.jdField_a_of_type_Bmyn.b);
-      bmtd.c((Intent)localObject);
-      this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext().startActivity((Intent)localObject);
+      try
+      {
+        paramString = BaseApplication.getContext().getAssets().open(paramString);
+        localObject1 = paramString;
+        localObject2 = paramString;
+        String str2 = npn.a(paramString);
+        localObject1 = str2;
+        localObject2 = localObject1;
+      }
+      catch (IOException paramString)
+      {
+        localObject2 = localObject1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        localObject2 = localObject1;
+        paramString.printStackTrace();
+        localObject2 = str1;
+        if (localObject1 == null) {
+          continue;
+        }
+        try
+        {
+          ((InputStream)localObject1).close();
+          return "";
+        }
+        catch (Exception paramString)
+        {
+          localObject2 = str1;
+        }
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        paramString.printStackTrace();
+        return "";
+      }
+      finally
+      {
+        if (localObject2 == null) {
+          break label113;
+        }
+      }
+      try
+      {
+        paramString.close();
+        localObject2 = localObject1;
+      }
+      catch (Exception paramString)
+      {
+        localObject2 = localObject1;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        paramString.printStackTrace();
+        return localObject1;
+      }
     }
+    return localObject2;
+    try
+    {
+      ((InputStream)localObject2).close();
+      label113:
+      throw paramString;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          localException.printStackTrace();
+        }
+      }
+    }
+  }
+  
+  public static void a(File paramFile, String paramString1, String paramString2)
+  {
+    ThreadManager.getFileThreadHandler().post(new QIMFileUtils.1(paramFile, paramString1, paramString2));
   }
 }
 

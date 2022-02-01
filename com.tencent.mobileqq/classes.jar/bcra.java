@@ -1,15 +1,12 @@
-import com.tencent.pb.profilecard.SummaryCardBusiEntry.comm;
+import java.util.List;
 
-public class bcra
+public abstract interface bcra<T extends bcqw>
 {
-  public SummaryCardBusiEntry.comm a;
-  public byte[] a;
+  public abstract <N extends bcqw> N a(String paramString);
   
-  public bcra(SummaryCardBusiEntry.comm paramcomm, byte[] paramArrayOfByte)
-  {
-    this.jdField_a_of_type_ComTencentPbProfilecardSummaryCardBusiEntry$comm = paramcomm;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
+  public abstract List<bcqw> a();
+  
+  public abstract void a(T paramT);
 }
 
 

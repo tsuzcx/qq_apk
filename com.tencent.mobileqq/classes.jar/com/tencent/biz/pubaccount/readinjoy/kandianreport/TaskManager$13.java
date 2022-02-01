@@ -2,7 +2,8 @@ package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 class TaskManager$13
   implements JSContext.Callback
@@ -11,10 +12,18 @@ class TaskManager$13
   
   public Object invoke(JSContext paramJSContext, int paramInt, Object[] paramArrayOfObject)
   {
-    String str = (String)paramArrayOfObject[0];
-    QLog.d("kandianreport.taskmanager", 1, "call reportToServer: " + str + " " + paramArrayOfObject[1]);
-    TaskManager.access$800(this.this$0, paramJSContext, (String)paramArrayOfObject[0], (String)paramArrayOfObject[1]);
-    return Integer.valueOf(0);
+    double d = ((Double)paramArrayOfObject[0]).doubleValue();
+    paramJSContext = (String)paramArrayOfObject[1];
+    String str = (String)paramArrayOfObject[2];
+    paramArrayOfObject = (String)paramArrayOfObject[3];
+    if (d != 0.0D) {
+      if (d != 1.0D) {}
+    }
+    for (;;)
+    {
+      return Integer.valueOf(0);
+      ThreadManager.getUIHandler().post(new TaskManager.13.1(this, paramJSContext, str, paramArrayOfObject));
+    }
   }
 }
 

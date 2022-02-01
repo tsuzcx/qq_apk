@@ -1,22 +1,19 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akdk
-  extends bgrm
+  implements View.OnClickListener
 {
-  public akdk(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, Context paramContext, bgrl parambgrl, QQAppInterface paramQQAppInterface)
-  {
-    super(paramContext, parambgrl, paramQQAppInterface);
-  }
+  public akdk(ChooseItemView paramChooseItemView, View.OnClickListener paramOnClickListener) {}
   
-  protected void b(Object paramObject)
+  public void onClick(View paramView)
   {
-    super.b(paramObject);
-    if (this.a.a != null) {
-      this.a.a.sendEmptyMessage(102);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a.a(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a();
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,28 +1,8 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
 
 public class akdd
-  implements bliz
 {
-  public akdd(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    paramView = ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a();
-    if ((paramView == null) || (paramView.isEmpty())) {}
-    do
-    {
-      return;
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(paramView);
-      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(localArrayList, 3, new akde(this));
-      ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment.h();
-    } while (!this.jdField_a_of_type_Blir.isShowing());
-    this.jdField_a_of_type_Blir.dismiss();
-  }
+  public static final IRedPacket a = new akde();
 }
 
 

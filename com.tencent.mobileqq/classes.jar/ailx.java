@@ -1,19 +1,24 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.XListView;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import mqq.os.MqqHandler;
 
-class ailx
-  implements blih
+public class ailx
+  implements bjoe
 {
-  ailx(ailn paramailn) {}
+  public ailx(TroopSuspiciousFragment paramTroopSuspiciousFragment, bjnw parambjnw) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition() == this.a.jdField_a_of_type_ComTencentWidgetXListView.getCount() - 1) && (this.a.jdField_a_of_type_Amot != null) && (this.a.jdField_a_of_type_Amot.a() != 0) && (this.a.jdField_a_of_type_Amot.a()))
+    switch (paramInt)
     {
-      this.a.jdField_a_of_type_Amot.b();
-      ailn.a(this.a, this.a.jdField_a_of_type_Amot.a(), 10);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a.sendEmptyMessage(1014);
+      }
     }
   }
 }

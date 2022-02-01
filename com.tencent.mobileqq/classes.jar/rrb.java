@@ -1,59 +1,58 @@
 import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.ugc.upload.RIJUgcImageUploader.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
 
 public class rrb
-  extends OrientationEventListener
+  implements rqy
 {
-  public rrb(VideoFeedsListView paramVideoFeedsListView, Context paramContext, int paramInt)
+  public static String a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private rqx jdField_a_of_type_Rqx;
+  private rrn jdField_a_of_type_Rrn;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private String jdField_b_of_type_JavaLangString;
+  private volatile boolean jdField_b_of_type_Boolean;
+  
+  static
   {
-    super(paramContext, paramInt);
+    jdField_a_of_type_JavaLangString = "RIJUGC.RIJUgcImageUploader";
   }
   
-  public void onOrientationChanged(int paramInt)
+  public rrb(Context paramContext, QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (VideoFeedsListView.a(this.a)) {}
-    label10:
-    do
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void a()
+  {
+    QLog.i(jdField_a_of_type_JavaLangString, 1, "upload, path=" + this.jdField_b_of_type_JavaLangString);
+    this.jdField_b_of_type_Boolean = true;
+    ThreadManagerV2.getUIHandlerV2().post(new RIJUgcImageUploader.1(this));
+  }
+  
+  public void a(rqx paramrqx)
+  {
+    this.jdField_a_of_type_Rqx = paramrqx;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_b_of_type_Boolean)
     {
-      do
+      this.jdField_a_of_type_Boolean = true;
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "cancel, path=" + this.jdField_b_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Rrn != null)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                break label10;
-                break label10;
-                break label10;
-                break label10;
-                do
-                {
-                  return;
-                } while ((!VideoFeedsListView.b(this.a)) || (!VideoFeedsListView.c(this.a)) || (VideoFeedsListView.a(this.a) == 1) || (VideoFeedsListView.d(this.a)) || (!VideoFeedsListView.a(this.a, paramInt)) || ((!VideoFeedsListView.e(this.a)) && (VideoFeedsListView.f(this.a))));
-                if ((paramInt < 0) || ((paramInt > 30) && (paramInt < 330))) {
-                  break;
-                }
-              } while ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 0));
-              VideoFeedsListView.a(this.a, -1);
-            } while (VideoFeedsListView.c(this.a) == 0);
-            this.a.a(true);
-            return;
-            if ((paramInt < 70) || (paramInt > 110)) {
-              break;
-            }
-          } while ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 2));
-          VideoFeedsListView.a(this.a, -1);
-        } while (VideoFeedsListView.c(this.a) == 2);
-        VideoFeedsListView.a(this.a, 2, true);
-        return;
-      } while ((paramInt < 250) || (paramInt > 290) || ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 1)));
-      VideoFeedsListView.a(this.a, -1);
-    } while (VideoFeedsListView.c(this.a) == 1);
-    VideoFeedsListView.a(this.a, 1, true);
+        this.jdField_a_of_type_Rrn.a();
+        this.jdField_a_of_type_Rrn.b();
+      }
+    }
   }
 }
 

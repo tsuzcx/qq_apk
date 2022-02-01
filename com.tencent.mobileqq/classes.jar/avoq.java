@@ -1,29 +1,35 @@
-import java.util.Observable;
-import java.util.Observer;
+import android.view.View;
+import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
 
 public class avoq
-  implements Observer
+  extends PopupWindow
 {
-  protected void a() {}
+  private PopupWindow.OnDismissListener a;
   
-  protected void b() {}
-  
-  protected void c() {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public avoq(View paramView, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    switch (((Integer)paramObject).intValue())
+    super(paramView, paramInt1, paramInt2, paramBoolean);
+  }
+  
+  public void a()
+  {
+    super.dismiss();
+  }
+  
+  public void a(PopupWindow.OnDismissListener paramOnDismissListener)
+  {
+    this.a = paramOnDismissListener;
+  }
+  
+  public void dismiss()
+  {
+    if (this.a != null)
     {
-    default: 
-      return;
-    case 1: 
-      a();
-      return;
-    case 2: 
-      b();
+      this.a.onDismiss();
       return;
     }
-    c();
+    super.dismiss();
   }
 }
 

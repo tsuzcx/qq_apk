@@ -1,54 +1,41 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.handlers.DailyHandler.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
+import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.ListView;
-import java.util.Map;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
-public class pml
-  extends pmk
+class pml
+  implements View.OnClickListener
 {
-  public int a()
-  {
-    return 3;
-  }
+  pml(pmj parampmj, QQAppInterface paramQQAppInterface, FrameLayout paramFrameLayout, GuideData paramGuideData) {}
   
-  public void a(View paramView, ListView paramListView) {}
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    paramAdapterView = (ArticleInfo)a((int)paramLong);
-    if (pbd.c(b())) {
-      if (!ozs.a(paramAdapterView)) {
-        break label35;
+    Object localObject = (rao)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(270);
+    if (((rao)localObject).a() == 1)
+    {
+      ((rao)localObject).a(false);
+      localObject = ((rao)localObject).a(pmj.a(this.jdField_a_of_type_Pmj), 0);
+      if (localObject != null)
+      {
+        ((RefreshData)localObject).isShown = false;
+        bfyz.f(pmj.a(this.jdField_a_of_type_Pmj), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ((RefreshData)localObject).toJson().toString(), 0);
       }
     }
-    label35:
-    for (paramInt = 4;; paramInt = 2)
-    {
-      oyc.a(paramInt);
-      return;
+    pmj.a(this.jdField_a_of_type_Pmj).a();
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(pmj.a(this.jdField_a_of_type_Pmj));
+    pmj.a(this.jdField_a_of_type_Pmj, null);
+    bfyz.s(pmj.a(this.jdField_a_of_type_Pmj), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.skinData.toJson().toString());
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJSkinOperationPopupStep", 2, "set skin: id = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.skinData.id);
     }
-  }
-  
-  public void a(Map<Long, qvp> paramMap, boolean paramBoolean)
-  {
-    super.a(paramMap, paramBoolean);
-    if (pbd.c(b()))
-    {
-      paramMap = a();
-      if (bnrf.w()) {
-        break label36;
-      }
-      QLog.d("DailyHandler", 1, "detachFromViewGroup,now cmd is 0x68b");
-    }
-    label36:
-    while (paramMap == null) {
-      return;
-    }
-    ThreadManager.executeOnSubThread(new DailyHandler.1(this, paramMap.a));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

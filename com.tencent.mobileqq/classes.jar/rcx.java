@@ -1,18 +1,59 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.CoverSelectTabFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.articlesummary.articlesummary.FamilyCommentInfo;
 
 public class rcx
-  implements rdi
+  implements Cloneable
 {
-  public rcx(CoverSelectTabFragment paramCoverSelectTabFragment) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void a(String paramString)
+  public static rcx a(articlesummary.FamilyCommentInfo paramFamilyCommentInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RIJUGC.CoverSelectTabFragment", 2, "OutputPicListener outPath:" + paramString);
+    rcx localrcx = new rcx();
+    localrcx.jdField_a_of_type_JavaLangString = paramFamilyCommentInfo.icon_url.get().toStringUtf8();
+    localrcx.jdField_b_of_type_JavaLangString = paramFamilyCommentInfo.jump_url.get().toStringUtf8();
+    localrcx.jdField_a_of_type_Int = paramFamilyCommentInfo.medal_urls_width.get();
+    localrcx.jdField_b_of_type_Int = paramFamilyCommentInfo.medal_urls_height.get();
+    return localrcx;
+  }
+  
+  public rcx a()
+  {
+    try
+    {
+      super.clone();
+      rcx localrcx = new rcx();
+      localrcx.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      localrcx.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      localrcx.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      localrcx.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      return localrcx;
     }
-    CoverSelectTabFragment.a(this.a, paramString, CoverSelectTabFragment.a(this.a).getCurrentItem());
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FamilyCommentInfo", 2, new Object[] { "Clone not support: ", localCloneNotSupportedException.toString() });
+        }
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+  }
+  
+  public String toString()
+  {
+    return "FamilyCommentInfo\n familyIconUrl " + this.jdField_a_of_type_JavaLangString + "\n familyJumpUrl " + this.jdField_b_of_type_JavaLangString + "\n width " + this.jdField_a_of_type_Int + "\n height " + this.jdField_b_of_type_Int;
   }
 }
 

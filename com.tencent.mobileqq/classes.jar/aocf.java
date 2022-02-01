@@ -1,29 +1,20 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-
-public class aocf
+class aocf
+  extends apak
 {
-  public int a;
-  public FromServiceMsg a;
-  public ToServiceMsg a;
-  public Object a;
-  public boolean a;
+  aocf(aoce paramaoce) {}
   
-  public aocf(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    if (aoce.a(this.a) != null) {
+      aoce.a(this.a).a(paramArrayOfFloat);
+    }
   }
   
-  public aocf(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject, boolean paramBoolean)
+  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (aoce.a(this.a) != null) {
+      aoce.a(this.a).a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    }
   }
 }
 

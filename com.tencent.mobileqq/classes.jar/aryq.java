@@ -1,17 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.ViewStub;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
-class aryq
-  implements DialogInterface.OnClickListener
+public class aryq
+  extends AnimatorListenerAdapter
 {
-  aryq(aryn paramaryn) {}
+  public aryq(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramDialogInterface.cancel();
-    QLog.d(aryn.a(), 1, "showConfirmDialog, cancel click");
-    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, aryn.d, aryn.d, 0, 0, "", "", "", "");
+    super.onAnimationEnd(paramAnimator);
+    FileAssistantActivity.a(this.a).setVisibility(8);
   }
 }
 

@@ -1,12 +1,9 @@
-public class peq
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+
+public abstract interface peq
 {
-  public int a;
-  public long a;
-  
-  public String toString()
-  {
-    return "articleId : " + this.jdField_a_of_type_Long + "  launchFrom: " + this.jdField_a_of_type_Int;
-  }
+  public abstract void a(Context paramContext, ArticleInfo paramArticleInfo, int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

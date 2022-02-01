@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
 
-final class behq
-  implements DialogInterface.OnClickListener
+public class behq
+  implements bfey
 {
-  behq(behr parambehr) {}
+  public behq(TroopMoreDetailFragment paramTroopMoreDetailFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
   {
-    behm.a("0X800A5CA");
-    if (this.a != null) {
-      this.a.onCancel();
-    }
+    paramView.setVisibility(8);
   }
 }
 

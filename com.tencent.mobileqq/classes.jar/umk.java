@@ -1,14 +1,16 @@
-import UserGrowth.stPublisherRsp;
-import UserGrowth.stRedDotRsp;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.biz.pubaccount.weishi_new.event.WSCommentShowEvent;
 
-public abstract interface umk
-  extends ucj
+class umk
+  implements PopupWindow.OnDismissListener
 {
-  public abstract void a();
+  umk(umj paramumj) {}
   
-  public abstract void a(stPublisherRsp paramstPublisherRsp);
-  
-  public abstract void a(stRedDotRsp paramstRedDotRsp);
+  public void onDismiss()
+  {
+    umj.a(this.a);
+    unw.a().a(new WSCommentShowEvent(false));
+  }
 }
 
 

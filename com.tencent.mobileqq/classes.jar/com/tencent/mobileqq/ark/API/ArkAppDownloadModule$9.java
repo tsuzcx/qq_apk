@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.ark.API;
 
 import android.content.Context;
-import apuy;
-import apvj;
-import bdll;
-import bhlq;
-import bhpc;
+import aool;
+import aoow;
+import bcef;
+import bfur;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import cooperation.wadl.ipc.WadlParams;
 
 public class ArkAppDownloadModule$9
   implements Runnable
 {
-  public ArkAppDownloadModule$9(apuy paramapuy, Context paramContext, WadlParams paramWadlParams) {}
+  public ArkAppDownloadModule$9(aool paramaool, Context paramContext, WadlParams paramWadlParams) {}
   
   public void run()
   {
-    bhlq.a(BaseActivity.sTopActivity, 230, null, this.jdField_a_of_type_AndroidContentContext.getString(2131690118), null, this.jdField_a_of_type_AndroidContentContext.getString(2131690122), new apvj(this), null).show();
-    bdll.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "5", "", this.jdField_a_of_type_CooperationWadlIpcWadlParams.a, "");
+    bfur.a(BaseActivity.sTopActivity, 230, null, this.jdField_a_of_type_AndroidContentContext.getString(2131690137), null, this.jdField_a_of_type_AndroidContentContext.getString(2131690141), new aoow(this), null).show();
+    bcef.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "5", "", this.jdField_a_of_type_CooperationWadlIpcWadlParams.a, "");
   }
 }
 

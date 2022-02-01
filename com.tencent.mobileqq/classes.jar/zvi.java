@@ -1,20 +1,45 @@
-import android.animation.Animator;
 import android.view.View;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.widget.ListView;
 
-public final class zvi
+public class zvi
+  implements bjsd
 {
-  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  public zvi(RefreshView paramRefreshView) {}
+  
+  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    return a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2, 2);
+    if (this.a.jdField_a_of_type_Int == 2)
+    {
+      this.a.jdField_a_of_type_Zvb.ag_();
+      return;
+    }
+    this.a.jdField_a_of_type_Zvb.c(0L);
   }
   
-  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3)
+  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    zvd localzvd = zvd.a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2);
-    if (paramInt3 != paramView.getLayerType()) {
-      localzvd.addListener(new zvf(paramView, paramInt3));
+    if (this.a.jdField_a_of_type_Int != 2) {
+      this.a.jdField_a_of_type_Zvb.b(0L);
     }
-    return localzvd;
+  }
+  
+  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
+  {
+    if (this.a.jdField_a_of_type_Int != 2)
+    {
+      RefreshView.a(this.a, false);
+      this.a.a(RefreshView.a(this.a));
+      this.a.jdField_a_of_type_Zvb.a(0L);
+      this.a.jdField_a_of_type_Int = 2;
+      RefreshView.a(this.a);
+    }
+    return false;
+  }
+  
+  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.a();
   }
 }
 

@@ -1,38 +1,14 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.widget.ARMapHongBaoListView;
+import android.app.Activity;
+import com.tencent.biz.qqstory.playvideo.playerwidget.BottomVideoInfoWidget.8.1;
 
-class wyj
-  extends RecyclerView.OnScrollListener
+public class wyj
+  implements wyr
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public wyj(BottomVideoInfoWidget.8.1 param1, Activity paramActivity) {}
   
-  wyj(wyd paramwyd) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a()
   {
-    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
-    if (paramInt == 0)
-    {
-      if ((paramRecyclerView.findLastCompletelyVisibleItemPosition() == paramRecyclerView.getItemCount() - 1) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_Wyd.jdField_a_of_type_Wxp.d();
-      }
-      return;
-    }
-    wyd.a(this.jdField_a_of_type_Wyd);
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if (paramInt1 > 0) {}
-    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
-    {
-      if (this.jdField_a_of_type_Wyd.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.isDirty()) {
-        this.jdField_a_of_type_Wyd.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.invalidate();
-      }
-      return;
-    }
+    wyc.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_Wyc, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.b, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.c, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.d, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.e, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.f, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBottomVideoInfoWidget$8$1.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
   }
 }
 

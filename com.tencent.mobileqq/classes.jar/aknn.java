@@ -1,43 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
-import java.lang.ref.WeakReference;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import android.view.TouchDelegate;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class aknn
-  extends Handler
+  extends TouchDelegate
 {
-  private WeakReference<BaseActivityView> a;
-  
-  public aknn(BaseActivityView paramBaseActivityView)
+  public aknn(DragTextView paramDragTextView, Rect paramRect, View paramView)
   {
-    this.a = new WeakReference(paramBaseActivityView);
+    super(paramRect, paramView);
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
-    BaseActivityView localBaseActivityView = (BaseActivityView)this.a.get();
-    if (localBaseActivityView == null) {
-      return;
+    if (this.a.getVisibility() != 0) {
+      return false;
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (;;)
-      {
-        localBaseActivityView.b(i, bool);
-        return;
-        bool = false;
-      }
-    case 2: 
-      localBaseActivityView.f();
-      return;
-    }
-    localBaseActivityView.i();
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    boolean bool = super.onTouchEvent(paramMotionEvent);
+    paramMotionEvent.setLocation(f1, f2);
+    return bool;
   }
 }
 

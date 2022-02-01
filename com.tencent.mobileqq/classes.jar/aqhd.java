@@ -1,83 +1,61 @@
-import android.hardware.GeomagneticField;
-import android.hardware.Sensor;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.business.qvip.QVipGiftConfig;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aqhd
-  implements SensorEventListener
+public class aqhd
+  extends aqgc<QVipGiftConfig>
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  protected SensorManager a;
-  protected aqgw a;
-  protected List<Sensor> a;
-  private boolean jdField_a_of_type_Boolean;
-  protected float[] a;
-  private float b = -1.0F;
-  private float c = -1.0F;
-  
-  public aqhd(SensorManager paramSensorManager, aqgw paramaqgw)
+  public static QVipGiftConfig a()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ArrayOfFloat = new float[3];
-    this.jdField_a_of_type_AndroidHardwareSensorManager = paramSensorManager;
-    this.jdField_a_of_type_Aqgw = paramaqgw;
-  }
-  
-  private GeomagneticField a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return new GeomagneticField(this.jdField_a_of_type_Float, this.b, this.c, System.currentTimeMillis());
+    QVipGiftConfig localQVipGiftConfig2 = (QVipGiftConfig)apub.a().a(667);
+    QVipGiftConfig localQVipGiftConfig1 = localQVipGiftConfig2;
+    if (localQVipGiftConfig2 == null) {
+      localQVipGiftConfig1 = new QVipGiftConfig();
     }
-    return null;
+    return localQVipGiftConfig1;
   }
   
-  protected float a()
+  @NonNull
+  public QVipGiftConfig a(@NonNull aptx[] paramArrayOfaptx)
   {
-    GeomagneticField localGeomagneticField = a();
-    if (localGeomagneticField != null) {
-      return localGeomagneticField.getDeclination();
+    if (QLog.isColorLevel()) {
+      QLog.d("QVIP.SDK.QVipGfitProcessor", 1, paramArrayOfaptx[0].a);
     }
-    return 0.0F;
+    Object localObject = null;
+    String str = paramArrayOfaptx[0].a;
+    paramArrayOfaptx = localObject;
+    if (!TextUtils.isEmpty(str)) {
+      paramArrayOfaptx = (QVipGiftConfig)ausy.a(str, QVipGiftConfig.class);
+    }
+    return paramArrayOfaptx;
   }
   
-  public void a(int paramInt)
+  @NonNull
+  public QVipGiftConfig b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      Sensor localSensor = (Sensor)localIterator.next();
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, paramInt);
-    }
+    return new QVipGiftConfig();
   }
   
-  public void b()
+  @NonNull
+  public QVipGiftConfig c()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      Sensor localSensor = (Sensor)localIterator.next();
-      this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this, localSensor, 1);
-    }
+    return new QVipGiftConfig();
   }
   
-  public void c()
+  public Class<QVipGiftConfig> clazz()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      Sensor localSensor = (Sensor)localIterator.next();
-      this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this, localSensor);
-    }
+    return QVipGiftConfig.class;
   }
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  public int type()
+  {
+    return 667;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqhd
  * JD-Core Version:    0.7.0.1
  */

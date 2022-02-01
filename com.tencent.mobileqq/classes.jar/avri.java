@@ -1,9 +1,16 @@
-public class avri
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+
+class avri
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public int[] a;
-  public int[] b;
+  avri(avre paramavre, BaseActivity paramBaseActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    avre.a(this.jdField_a_of_type_Avre, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+  }
 }
 
 

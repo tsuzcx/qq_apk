@@ -5,11 +5,11 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
 import com.tencent.qphone.base.util.QLog;
-import ocd;
-import ozs;
-import paa;
-import pck;
-import pcl;
+import odq;
+import pay;
+import pbg;
+import pdu;
+import pdv;
 
 public final class DailyTipsFoldUtils$1
   implements Runnable
@@ -23,10 +23,10 @@ public final class DailyTipsFoldUtils$1
     localValueAnimator.setDuration(1000L);
     localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
     View localView = this.a.getChildAt(this.a.getHeaderViewsCount());
-    localValueAnimator.addUpdateListener(new pck(this, localView, localView.getHeight()));
-    localValueAnimator.addListener(new pcl(this, localView));
+    localValueAnimator.addUpdateListener(new pdu(this, localView, localView.getHeight()));
+    localValueAnimator.addListener(new pdv(this, localView));
     localValueAnimator.start();
-    ocd.a(null, "", "0X800A577", "0X800A577", 0, 0, ozs.a(), "", "", ozs.a().a(), false);
+    odq.a(null, "", "0X800A577", "0X800A577", 0, 0, pay.a(), "", "", pay.a().a(), false);
   }
 }
 

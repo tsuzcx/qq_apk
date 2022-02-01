@@ -5,11 +5,11 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.text.Layout;
 import android.util.AttributeSet;
-import begp;
-import bnqj;
 import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
-import fo;
+import cooperation.qzone.widget.QzoneEmotionUtils;
+import fn;
 
 public class ExtendFriendGradientTextView
   extends ETTextView
@@ -40,7 +40,7 @@ public class ExtendFriendGradientTextView
   public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((getETLayout() != null) && (getETLayout().a() > this.jdField_a_of_type_Int))
+    if ((getETLayout() != null) && (getETLayout().a() > this.jdField_a_of_type_Int) && (getETLayout().a(0) != null))
     {
       this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int * getETLayout().a(0).length);
       setShowMoreButton(true);
@@ -78,7 +78,7 @@ public class ExtendFriendGradientTextView
   
   public void setETContent(String paramString)
   {
-    super.setTextMsg(new begp(bnqj.c(paramString), 3, 24));
+    super.setTextMsg(new QQText(QzoneEmotionUtils.emCodesToQQcodes(paramString), 3, 24));
   }
   
   public void setFold(boolean paramBoolean)
@@ -109,7 +109,7 @@ public class ExtendFriendGradientTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.ExtendFriendGradientTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,20 @@
-public abstract interface yqd
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class yqd
+  implements View.OnClickListener
 {
-  public abstract void a();
+  yqd(yqc paramyqc) {}
+  
+  public void onClick(View paramView)
+  {
+    ypy localypy = this.a.jdField_a_of_type_Ypy;
+    if (localypy != null) {
+      localypy.a(this.a.jdField_a_of_type_Yqe, this.a);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

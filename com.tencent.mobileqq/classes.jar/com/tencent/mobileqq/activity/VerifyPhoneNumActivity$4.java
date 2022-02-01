@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import axfr;
+import avsy;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class VerifyPhoneNumActivity$4
@@ -10,12 +10,12 @@ class VerifyPhoneNumActivity$4
   
   public void run()
   {
-    ((axfr)this.this$0.app.getManager(11)).c();
+    ((avsy)this.this$0.app.getManager(11)).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VerifyPhoneNumActivity.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,81 +1,37 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.cache.Sizeable;
+import android.view.View;
+import com.tencent.mobileqq.widget.ksong.KSongTextView;
+import com.tencent.mobileqq.widget.ksong.KSongView;
+import cooperation.qwallet.plugin.QwAdapter.IViewHolder;
 
 public class bhld
+  implements QwAdapter.IViewHolder<avjv>
 {
-  public static Bitmap a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (BaseApplicationImpl.sImageCache != null)
-    {
-      paramString = BaseApplicationImpl.sImageCache.get(paramString);
-      if ((paramString != null) && ((paramString instanceof Bitmap))) {
-        return (Bitmap)paramString;
-      }
-    }
-    return null;
-  }
+  public KSongTextView a;
   
-  public static Sizeable a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (BaseApplicationImpl.sImageCache != null)
-    {
-      paramString = BaseApplicationImpl.sImageCache.get(paramString);
-      if ((paramString != null) && ((paramString instanceof Sizeable))) {
-        return (Sizeable)paramString;
-      }
-    }
-    return null;
-  }
+  public bhld(KSongView paramKSongView) {}
   
-  public static suk a(String paramString)
+  public void a(int paramInt, View paramView, avjv paramavjv)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    if (BaseApplicationImpl.sImageCache != null)
+    this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView.a();
+    KSongTextView localKSongTextView = this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView;
+    if (TextUtils.isEmpty(paramavjv.a)) {}
+    for (paramView = "";; paramView = paramavjv.a)
     {
-      paramString = BaseApplicationImpl.sImageCache.get(paramString);
-      if ((paramString instanceof suk)) {
-        return (suk)paramString;
-      }
-    }
-    return null;
-  }
-  
-  public static void a(String paramString, Bitmap paramBitmap)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    while (BaseApplicationImpl.sImageCache == null) {
+      localKSongTextView.setText(paramView);
       return;
     }
-    BaseApplicationImpl.sImageCache.put(paramString, paramBitmap);
   }
   
-  public static void a(String paramString, Sizeable paramSizeable)
+  public QwAdapter.IViewHolder clone()
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramSizeable == null)) {}
-    while (BaseApplicationImpl.sImageCache == null) {
-      return;
-    }
-    BaseApplicationImpl.sImageCache.put(paramString, paramSizeable);
+    return (QwAdapter.IViewHolder)super.clone();
   }
   
-  public static void a(String paramString, suk paramsuk)
+  public View initView(int paramInt, View paramView)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramsuk == null)) {}
-    while (BaseApplicationImpl.sImageCache == null) {
-      return;
-    }
-    BaseApplicationImpl.sImageCache.put(paramString, paramsuk);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView = ((KSongTextView)paramView.findViewById(2131374549));
+    return paramView;
   }
 }
 

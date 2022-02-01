@@ -1,38 +1,42 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Parcelable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.MessageForPLNews;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class ahne
-  implements View.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  ahne(ahnd paramahnd, MessageForPLNews paramMessageForPLNews, String paramString) {}
+  ahne(ahnc paramahnc) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    Object localObject = (ahnf)paramView.getTag();
-    if (localObject == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localObject = new ProfileActivity.AllInOne(((ahnf)localObject).jdField_a_of_type_JavaLangString, 1);
-      Intent localIntent = new Intent(this.jdField_a_of_type_Ahnd.jdField_a_of_type_AndroidContentContext, PersonalityLabelGalleryActivity.class);
-      localIntent.putExtra("personality_label_allinone", (Parcelable)localObject);
-      localIntent.putExtra("fromType", 2);
-      localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPLNews.frienduin);
-      localIntent.putExtra("nickname", this.jdField_a_of_type_JavaLangString);
-      if (!(this.jdField_a_of_type_Ahnd.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-        localIntent.addFlags(268435456);
-      }
-      this.jdField_a_of_type_Ahnd.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      bdll.b(this.jdField_a_of_type_Ahnd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "3", "", "");
+    ahnc.a(this.a).remove(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener onLoadCanceled");
+    }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    ahnc.a(this.a, paramURLDrawable);
+    ahnc.a(this.a).remove(paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener onLoadFialed");
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = ahnc.a(this.a);
+    ahnc.a(this.a, paramURLDrawable, l1 - l2);
+    ahnc.a(this.a, true);
+    ahnc.a(this.a).remove(paramURLDrawable);
+    this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerRecBarAdapter", 2, "firstDrawableListener downloadSuccess");
     }
   }
 }

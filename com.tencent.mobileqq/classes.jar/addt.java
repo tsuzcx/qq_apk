@@ -1,98 +1,25 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x3b.Submsgtype0x3b.MsgBody;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
 
-public class addt
-  implements adci
+class addt
+  implements DialogInterface.OnClickListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    boolean bool = false;
-    for (;;)
-    {
-      try
-      {
-        Submsgtype0x3b.MsgBody localMsgBody = new Submsgtype0x3b.MsgBody();
-        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-        Object localObject1;
-        if (QLog.isColorLevel())
-        {
-          localObject1 = new StringBuilder().append("0x210Push_0x3b, group code: ");
-          if (!localMsgBody.uint64_group_code.has()) {
-            break label391;
-          }
-          paramMsgType0x210 = String.valueOf(localMsgBody.uint64_group_code.get());
-          localObject1 = ((StringBuilder)localObject1).append(paramMsgType0x210).append(", user switch: ");
-          if (localMsgBody.uint32_user_show_flag.has())
-          {
-            paramMsgType0x210 = String.valueOf(localMsgBody.uint32_user_show_flag.get());
-            QLog.d("Q.getTroopMemberLevelInfo", 2, paramMsgType0x210 + ", level map changed: " + localMsgBody.uint32_member_level_changed.has() + ",uint32_member_level_new_changed" + localMsgBody.uint32_member_level_new_changed.has());
-          }
-        }
-        else
-        {
-          if (!localMsgBody.uint64_group_code.has()) {
-            break label390;
-          }
-          if (localMsgBody.uint32_user_show_flag.has())
-          {
-            int i = localMsgBody.uint32_user_show_flag.get();
-            paramMsgType0x210 = String.valueOf(localMsgBody.uint64_group_code.get());
-            Object localObject2 = (TroopManager)paramQQAppInterface.getManager(52);
-            localObject1 = ((TroopManager)localObject2).b(paramMsgType0x210);
-            ((TroopInfo)localObject1).cGroupRankUserFlag = ((byte)i);
-            ((TroopManager)localObject2).b((TroopInfo)localObject1);
-            localObject2 = (aoip)paramQQAppInterface.a(20);
-            if (localObject2 != null)
-            {
-              if (i == 1) {
-                bool = true;
-              }
-              ((aoip)localObject2).notifyUI(152, true, new Object[] { paramMsgType0x210, Boolean.valueOf(bool) });
-            }
-            if (1 == ((TroopInfo)localObject1).cGroupRankUserFlag) {
-              ((aoip)paramQQAppInterface.a(20)).f(paramMsgType0x210);
-            }
-          }
-          if (localMsgBody.uint32_member_level_changed.has())
-          {
-            l = localMsgBody.uint64_group_code.get();
-            ((aoip)paramQQAppInterface.a(20)).f(String.valueOf(l));
-          }
-          if (!localMsgBody.uint32_member_level_new_changed.has()) {
-            break label390;
-          }
-          long l = localMsgBody.uint64_group_code.get();
-          ((aoip)paramQQAppInterface.a(20)).f(String.valueOf(l));
-          return;
-        }
-        paramMsgType0x210 = "";
-        continue;
-        return;
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.getTroopMemberLevelInfo", 2, "0x210Push_0x3b, failed to parse Submsgtype0x3b.MsgBody");
-        }
-      }
-      label390:
-      label391:
-      paramMsgType0x210 = "";
-    }
-  }
+  addt(addr paramaddr, String paramString) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    DiscussionInfoCardActivity.a(this.jdField_a_of_type_Addr.a).c(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Addr.a.app.getProxyManager().a();
+    paramDialogInterface.delRecentUser((RecentUser)paramDialogInterface.findRecentUserByUin(this.jdField_a_of_type_JavaLangString, 3000));
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("isNeedFinish", true);
+    this.jdField_a_of_type_Addr.a.setResult(-1, paramDialogInterface);
+    this.jdField_a_of_type_Addr.a.finish();
   }
 }
 

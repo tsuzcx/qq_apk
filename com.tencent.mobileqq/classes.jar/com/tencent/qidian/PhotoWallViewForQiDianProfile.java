@@ -11,14 +11,14 @@ import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bkgp;
-import bkgq;
-import bkgs;
-import bkie;
-import bljm;
+import bilu;
+import bilv;
+import bilx;
+import binj;
 import com.tencent.biz.pubaccount.PhotoHorizontalScrollView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 import com.tencent.widget.GridView;
 import java.util.List;
 
@@ -30,11 +30,11 @@ public class PhotoWallViewForQiDianProfile
   private Context jdField_a_of_type_AndroidContentContext;
   View jdField_a_of_type_AndroidViewView;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public bkgs a;
-  private bljm jdField_a_of_type_Bljm = new bkgp(this);
+  public bilx a;
   public PhotoHorizontalScrollView a;
+  private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new bilu(this);
   public GridView a;
-  public List<bkie> a;
+  public List<binj> a;
   public int b;
   private View b;
   public int c = -1;
@@ -74,14 +74,14 @@ public class PhotoWallViewForQiDianProfile
         this.jdField_a_of_type_ComTencentWidgetGridView.setColumnWidth(this.jdField_a_of_type_Int);
         this.jdField_a_of_type_ComTencentWidgetGridView.setStretchMode(0);
         this.jdField_a_of_type_ComTencentWidgetGridView.setHorizontalSpacing(this.c);
-        bkgq localbkgq = new bkgq(this, this.jdField_a_of_type_AndroidContentContext);
-        localbkgq.a(this.jdField_a_of_type_JavaUtilList);
+        bilv localbilv = new bilv(this, this.jdField_a_of_type_AndroidContentContext);
+        localbilv.a(this.jdField_a_of_type_JavaUtilList);
         i = this.jdField_a_of_type_JavaUtilList.size();
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams((this.jdField_a_of_type_Int + this.c) * i, this.jdField_b_of_type_Int);
         this.jdField_a_of_type_ComTencentWidgetGridView.setLayoutParams(localLayoutParams);
         this.jdField_a_of_type_ComTencentWidgetGridView.setNumColumns(i);
-        this.jdField_a_of_type_ComTencentWidgetGridView.setAdapter(localbkgq);
-        this.jdField_a_of_type_ComTencentWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_Bljm);
+        this.jdField_a_of_type_ComTencentWidgetGridView.setAdapter(localbilv);
+        this.jdField_a_of_type_ComTencentWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
         this.jdField_b_of_type_AndroidViewView.setVisibility(8);
         this.jdField_a_of_type_ComTencentWidgetGridView.setVisibility(0);
@@ -91,22 +91,22 @@ public class PhotoWallViewForQiDianProfile
     }
   }
   
-  public void a(Context paramContext, List<bkie> paramList)
+  public void a(Context paramContext, List<binj> paramList)
   {
     if (QLog.isColorLevel()) {
       QLog.i("PhotoWallViewForQiDianProfile", 2, "initView");
     }
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559576, this, true);
-    this.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372592));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559578, this, true);
+    this.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372560));
     this.jdField_a_of_type_ComTencentWidgetGridView.setClickable(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountPhotoHorizontalScrollView = ((PhotoHorizontalScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372593));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373035));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131375030);
-    this.c = getResources().getDimensionPixelSize(2131298011);
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131298013);
-    this.jdField_b_of_type_Int = getResources().getDimensionPixelSize(2131298012);
+    this.jdField_a_of_type_ComTencentBizPubaccountPhotoHorizontalScrollView = ((PhotoHorizontalScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372561));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373005));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131374795);
+    this.c = getResources().getDimensionPixelSize(2131298066);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131298068);
+    this.jdField_b_of_type_Int = getResources().getDimensionPixelSize(2131298067);
     if (VersionUtils.isGingerBread()) {
       this.jdField_a_of_type_ComTencentBizPubaccountPhotoHorizontalScrollView.setOverScrollMode(2);
     }
@@ -125,9 +125,9 @@ public class PhotoWallViewForQiDianProfile
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setPhotoWallCallback(bkgs parambkgs)
+  public void setPhotoWallCallback(bilx parambilx)
   {
-    this.jdField_a_of_type_Bkgs = parambkgs;
+    this.jdField_a_of_type_Bilx = parambilx;
   }
 }
 

@@ -1,17 +1,33 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class anqw
+public class anqw
+  extends anri
 {
-  View jdField_a_of_type_AndroidViewView;
-  ViewGroup[] jdField_a_of_type_ArrayOfAndroidViewViewGroup = new ViewGroup[3];
-  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[3];
-  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[3];
-  URLImageView[] jdField_a_of_type_ArrayOfComTencentImageURLImageView = new URLImageView[3];
-  ImageView[] b = new ImageView[3];
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  {
+    paramQQAppInterface = new anqv(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "troop_homework";
+    paramQQAppInterface.c = "publish";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {}
+    for (;;)
+    {
+      return paramQQAppInterface;
+      paramContext = paramContext[1].split("&");
+      int j = paramContext.length;
+      int i = 0;
+      while (i < j)
+      {
+        paramString = paramContext[i].split("=");
+        if (paramString.length == 2) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+  }
 }
 
 

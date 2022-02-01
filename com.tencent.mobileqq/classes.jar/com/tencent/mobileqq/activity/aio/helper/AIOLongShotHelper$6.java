@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agej;
 import android.content.Context;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 class AIOLongShotHelper$6
   implements Runnable
@@ -15,7 +15,7 @@ class AIOLongShotHelper$6
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mPlayGifImage = true;
-    int i = agej.a(248.0F, AIOLongShotHelper.a(this.this$0).a.getResources());
+    int i = AIOUtils.dp2px(248.0F, AIOLongShotHelper.a(this.this$0).mContext.getResources());
     int j = (int)(i * 420.0F / 472.0F);
     localURLDrawableOptions.mRequestWidth = i;
     localURLDrawableOptions.mRequestHeight = j;

@@ -1,18 +1,42 @@
-import android.content.Context;
-import android.widget.ScrollView;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.contacts.phone.PhoneContactFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiqj
-  extends ScrollView
+  extends aycd
 {
-  public aiqj(TroopChatPie paramTroopChatPie, Context paramContext)
+  private aiqj(PhoneContactFragment paramPhoneContactFragment) {}
+  
+  private void g(boolean paramBoolean)
   {
-    super(paramContext);
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactFragment", 2, String.format("refreshResult [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (this.a.c)
+    {
+      if (PhoneContactFragment.a(this.a) != null) {
+        PhoneContactFragment.b(this.a).a(this.a.b(), paramBoolean, null);
+      }
+      if (paramBoolean) {
+        this.a.c();
+      }
+      this.a.c = false;
+    }
   }
   
-  public void setOverScrollMode(int paramInt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    super.setOverScrollMode(2);
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactFragment", 2, String.format("onQueryBindState [%s, %s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) }));
+    }
+    g(paramBoolean1);
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactFragment", 2, String.format("onHideContact [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    this.a.c();
   }
 }
 

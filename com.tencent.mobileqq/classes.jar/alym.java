@@ -1,478 +1,486 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Typeface;
-import android.os.Parcel;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.activity.richmedia.subtitles.BarrageParcelItem;
-import com.tencent.mobileqq.activity.richmedia.subtitles.WordingItem;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class alym
-  extends alyp
 {
-  private final int jdField_a_of_type_Int = 4;
-  private alzf jdField_a_of_type_Alzf;
-  private Typeface jdField_a_of_type_AndroidGraphicsTypeface;
-  private ArrayList<Float> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private LinkedList<Integer> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private Map<Long, ArrayList<alyo>> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Random jdField_a_of_type_JavaUtilRandom = new Random();
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  private int jdField_b_of_type_Int = 150;
-  private alzf jdField_b_of_type_Alzf;
-  private ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private Map<Integer, LinkedList<alyo>> jdField_b_of_type_JavaUtilMap = new HashMap();
-  private int jdField_c_of_type_Int = 92;
-  private alzf jdField_c_of_type_Alzf;
-  private int jdField_d_of_type_Int = 136;
-  private alzf jdField_d_of_type_Alzf;
-  private int e = 5;
-  private int f = 15;
-  private int g = 25;
-  private int h = 6;
+  private int jdField_a_of_type_Int;
+  public SparseArray<WeakReference<alyo>> a;
+  private ConcurrentHashMap<String, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<Long, String> b = new ConcurrentHashMap();
   
-  private float a(int paramInt)
+  public alym(int paramInt)
   {
-    return this.jdField_c_of_type_Int * paramInt + this.jdField_d_of_type_Int;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  private int a(int paramInt)
+  public static String a(long paramLong, String paramString1, String paramString2)
   {
-    if ((paramInt >= 0) && (paramInt < 4) && (this.jdField_b_of_type_JavaUtilMap.size() < 4)) {
-      while (paramInt < 4)
-      {
-        List localList = (List)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-        if ((localList != null) && (localList.size() > 0)) {
-          paramInt += 1;
-        } else {
-          return paramInt;
-        }
-      }
-    }
-    return -1;
-  }
-  
-  private ArrayList<BarrageParcelItem> a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte != null)
-    {
-      Parcel localParcel = Parcel.obtain();
-      localParcel.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
-      localParcel.setDataPosition(0);
-      paramArrayOfByte = new ArrayList();
-      localParcel.readTypedList(paramArrayOfByte, BarrageParcelItem.CREATOR);
-      if (localParcel != null) {
-        localParcel.recycle();
-      }
-      return paramArrayOfByte;
-    }
-    return new ArrayList();
-  }
-  
-  private void a(long paramLong1, long paramLong2, long paramLong3, String paramString, ArrayList<alyo> paramArrayList, int paramInt1, float paramFloat1, int paramInt2, float paramFloat2)
-  {
-    LinkedList localLinkedList2 = (LinkedList)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramInt2));
-    LinkedList localLinkedList1 = localLinkedList2;
-    if (localLinkedList2 == null)
-    {
-      localLinkedList1 = new LinkedList();
-      this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(paramInt2), localLinkedList1);
-    }
-    float f1 = a(paramInt2);
-    float f2 = (int)a(true);
-    paramString = new alyo(paramLong1, a(paramLong2), a(), b(), paramFloat2, d(), paramString, paramFloat1, paramInt1, f2, f1, -1.0F, this.jdField_c_of_type_Int, this.e, this.jdField_a_of_type_AndroidGraphicsTypeface);
-    paramArrayList.add(paramString);
-    localLinkedList1.add(paramString);
-  }
-  
-  private byte[] a(ArrayList<BarrageParcelItem> paramArrayList)
-  {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      Parcel localParcel = Parcel.obtain();
-      localParcel.writeTypedList(paramArrayList);
-      paramArrayList = localParcel.marshall();
-      localParcel.recycle();
-      return paramArrayList;
-    }
-    return null;
-  }
-  
-  private float c()
-  {
-    if (this.jdField_d_of_type_Alzf == null) {
-      this.jdField_d_of_type_Alzf = new alzf(this.h, 2);
-    }
-    int i = this.jdField_d_of_type_Alzf.a();
-    if ((this.jdField_a_of_type_ArrayOfFloat != null) && (i >= 0) && (i < this.jdField_a_of_type_ArrayOfFloat.length)) {
-      return this.jdField_a_of_type_ArrayOfFloat[i] * c() / 1000.0F;
-    }
-    return (i + this.g) * this.f * c() / 1000.0F;
-  }
-  
-  private int e()
-  {
-    if (this.jdField_a_of_type_Alzf == null) {
-      this.jdField_a_of_type_Alzf = new alzf(4, 2);
-    }
-    return this.jdField_a_of_type_Alzf.a();
-  }
-  
-  private int f()
-  {
-    if ((this.jdField_b_of_type_JavaUtilArrayList == null) || (this.jdField_b_of_type_JavaUtilArrayList.size() == 0)) {
-      return 0;
-    }
-    if (this.jdField_c_of_type_Alzf == null) {
-      this.jdField_c_of_type_Alzf = new alzf(this.jdField_b_of_type_JavaUtilArrayList.size(), 1);
-    }
-    int i = this.jdField_c_of_type_Alzf.a();
-    return ((Integer)this.jdField_b_of_type_JavaUtilArrayList.get(i)).intValue() | 0xFF000000;
-  }
-  
-  private int g()
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      return 0;
-    }
-    if (this.jdField_b_of_type_Alzf == null) {
-      this.jdField_b_of_type_Alzf = new alzf(this.jdField_a_of_type_JavaUtilArrayList.size(), 2);
-    }
-    return this.jdField_b_of_type_Alzf.a();
-  }
-  
-  public int a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    int i = 0;
-    if (localIterator.hasNext())
-    {
-      List localList = (List)localIterator.next();
-      if (localList == null) {
-        break label54;
-      }
-      i = localList.size() + i;
-    }
-    label54:
+    if (!a(paramString1)) {}
     for (;;)
     {
-      break;
-      return i;
-    }
-  }
-  
-  public void a()
-  {
-    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator1.hasNext())
-    {
-      Iterator localIterator2 = ((ArrayList)localIterator1.next()).iterator();
-      while (localIterator2.hasNext()) {
-        ((alyo)localIterator2.next()).g();
-      }
-    }
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_b_of_type_JavaUtilMap.clear();
-  }
-  
-  public void a(Context paramContext, String paramString)
-  {
-    if (paramContext != null) {}
-    for (float f1 = paramContext.getResources().getDisplayMetrics().density;; f1 = 1.0F)
-    {
-      f1 = f1 / 2.0F * a();
-      this.jdField_a_of_type_JavaUtilArrayList.add(Float.valueOf(32.0F * f1));
-      this.jdField_a_of_type_JavaUtilArrayList.add(Float.valueOf(44.0F * f1));
-      this.jdField_a_of_type_JavaUtilArrayList.add(Float.valueOf(56.0F * f1));
-      this.jdField_a_of_type_JavaUtilArrayList.add(Float.valueOf(60.0F * f1));
-      this.jdField_a_of_type_JavaUtilArrayList.add(Float.valueOf(86.0F * f1));
-      this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(13405665));
-      this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(5756121));
-      this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(16763139));
-      this.jdField_c_of_type_Int = ((int)(this.jdField_c_of_type_Int * f1));
-      this.jdField_d_of_type_Int = ((int)(this.jdField_d_of_type_Int * f1));
-      this.e = ((int)(this.e * f1));
-      this.jdField_b_of_type_Int = ((int)(this.jdField_b_of_type_Int * f1));
-      this.f = ((int)(this.f * f1));
-      f1 = f1 * (paramContext.getResources().getDisplayMetrics().widthPixels * 60) / 375.0F;
-      this.jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F * f1, 1.2F * f1, 1.4F * f1, 1.6F * f1, 1.8F * f1, f1 * 2.0F };
-      this.jdField_a_of_type_AndroidGraphicsTypeface = a(paramString);
-      return;
-    }
-  }
-  
-  public void a(WordingItem paramWordingItem)
-  {
-    if (paramWordingItem == null) {}
-    ArrayList localArrayList;
-    int j;
-    int m;
-    float f1;
-    int i1;
-    int i3;
-    int i2;
-    float f2;
-    int i4;
-    int i;
-    int k;
-    float f3;
-    int n;
-    label417:
-    label462:
-    label613:
-    label630:
-    label639:
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseAnimDrawer", 2, "barrage setText id：" + paramWordingItem.jdField_a_of_type_Long + "  text: " + paramWordingItem.jdField_a_of_type_JavaLangString + " time:" + paramWordingItem.b + "-" + paramWordingItem.c);
-      }
-      localArrayList = a(paramWordingItem.jdField_a_of_type_ArrayOfByte);
-      localObject = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramWordingItem.jdField_a_of_type_Long));
-      if (localObject == null)
+      return paramString2;
+      try
       {
-        localObject = new ArrayList();
-        this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramWordingItem.jdField_a_of_type_Long), localObject);
-      }
-      int i5;
-      for (;;)
-      {
-        if ((localArrayList == null) || (localArrayList.size() < 3)) {
-          break label417;
-        }
-        i5 = ((BarrageParcelItem)localArrayList.get(0)).jdField_a_of_type_Int;
-        j = ((BarrageParcelItem)localArrayList.get(0)).jdField_b_of_type_Int;
-        m = ((BarrageParcelItem)localArrayList.get(0)).jdField_c_of_type_Int;
-        f1 = ((BarrageParcelItem)localArrayList.get(0)).jdField_a_of_type_Float;
-        i1 = ((BarrageParcelItem)localArrayList.get(1)).jdField_a_of_type_Int;
-        i3 = ((BarrageParcelItem)localArrayList.get(1)).jdField_b_of_type_Int;
-        i2 = ((BarrageParcelItem)localArrayList.get(1)).jdField_c_of_type_Int;
-        f2 = ((BarrageParcelItem)localArrayList.get(1)).jdField_a_of_type_Float;
-        i4 = ((BarrageParcelItem)localArrayList.get(2)).jdField_a_of_type_Int;
-        i = ((BarrageParcelItem)localArrayList.get(2)).jdField_b_of_type_Int;
-        k = ((BarrageParcelItem)localArrayList.get(2)).jdField_c_of_type_Int;
-        f3 = ((BarrageParcelItem)localArrayList.get(2)).jdField_a_of_type_Float;
-        n = i;
-        i = i5;
-        if (((ArrayList)localObject).size() <= 0) {
-          break label639;
-        }
-        localObject = ((ArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          ((alyo)((Iterator)localObject).next()).a(paramWordingItem.jdField_a_of_type_JavaLangString);
-        }
-        break;
-        if (QLog.isColorLevel()) {
-          QLog.d("BaseAnimDrawer", 2, "item exsit, update ,size：" + ((ArrayList)localObject).size());
-        }
-      }
-      if (this.jdField_a_of_type_Alzf == null) {
-        this.jdField_a_of_type_Alzf = new alzf(4, 2);
-      }
-      j = a(0);
-      int i6;
-      if (j >= 0)
-      {
-        this.jdField_a_of_type_Alzf.a(j);
-        i = j;
-        i1 = f();
-        i6 = g();
-        f1 = c();
-        k = a(j + 1);
-        if (k < 0) {
-          break label613;
-        }
-        this.jdField_a_of_type_Alzf.a(k);
-        m = k;
-        j = k;
-        k = m;
-        i4 = f();
-        i3 = g();
-        f2 = c();
-        k = a(k + 1);
-        if (k < 0) {
-          break label630;
-        }
-        this.jdField_a_of_type_Alzf.a(k);
-      }
-      for (;;)
-      {
-        i5 = f();
-        n = g();
-        f3 = c();
-        i2 = j;
-        j = i6;
-        m = i;
-        i = i1;
-        i1 = i4;
-        i4 = i5;
-        break;
-        i = e();
-        j = 0;
-        break label462;
-        m = e();
-        k = j;
-        j = m;
-        break label515;
-        k = e();
-      }
-      a(paramWordingItem.jdField_a_of_type_Long, 300L + paramWordingItem.b, paramWordingItem.c, paramWordingItem.jdField_a_of_type_JavaLangString, (ArrayList)localObject, i, ((Float)this.jdField_a_of_type_JavaUtilArrayList.get(j)).floatValue(), m, f1);
-      a(paramWordingItem.jdField_a_of_type_Long, paramWordingItem.b + 200L, paramWordingItem.c, paramWordingItem.jdField_a_of_type_JavaLangString, (ArrayList)localObject, i1, ((Float)this.jdField_a_of_type_JavaUtilArrayList.get(i3)).floatValue(), i2, f2);
-      a(paramWordingItem.jdField_a_of_type_Long, paramWordingItem.b, paramWordingItem.c, paramWordingItem.jdField_a_of_type_JavaLangString, (ArrayList)localObject, i4, ((Float)this.jdField_a_of_type_JavaUtilArrayList.get(n)).floatValue(), k, f3);
-    } while ((localArrayList == null) || (localArrayList.size() != 0));
-    label515:
-    Object localObject = new BarrageParcelItem();
-    ((BarrageParcelItem)localObject).jdField_a_of_type_Int = i;
-    ((BarrageParcelItem)localObject).jdField_c_of_type_Int = m;
-    ((BarrageParcelItem)localObject).jdField_b_of_type_Int = j;
-    ((BarrageParcelItem)localObject).jdField_a_of_type_Float = f1;
-    localArrayList.add(localObject);
-    localObject = new BarrageParcelItem();
-    ((BarrageParcelItem)localObject).jdField_a_of_type_Int = i1;
-    ((BarrageParcelItem)localObject).jdField_c_of_type_Int = i2;
-    ((BarrageParcelItem)localObject).jdField_b_of_type_Int = i3;
-    ((BarrageParcelItem)localObject).jdField_a_of_type_Float = f2;
-    localArrayList.add(localObject);
-    localObject = new BarrageParcelItem();
-    ((BarrageParcelItem)localObject).jdField_a_of_type_Int = i4;
-    ((BarrageParcelItem)localObject).jdField_c_of_type_Int = k;
-    ((BarrageParcelItem)localObject).jdField_b_of_type_Int = n;
-    ((BarrageParcelItem)localObject).jdField_a_of_type_Float = f3;
-    localArrayList.add(localObject);
-    paramWordingItem.jdField_a_of_type_ArrayOfByte = a(localArrayList);
-  }
-  
-  public boolean a()
-  {
-    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator1.hasNext())
-    {
-      Iterator localIterator2 = ((ArrayList)localIterator1.next()).iterator();
-      while (localIterator2.hasNext()) {
-        ((alyo)localIterator2.next()).d();
-      }
-    }
-    return true;
-  }
-  
-  public boolean a(Canvas paramCanvas, RenderBuffer paramRenderBuffer, long paramLong1, long paramLong2)
-  {
-    boolean bool2;
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseAnimDrawer", 2, "mID2ItemsMap size is 0.");
-      }
-      bool2 = false;
-      return bool2;
-    }
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilMap.values().iterator();
-    boolean bool1 = false;
-    Object localObject1;
-    do
-    {
-      bool2 = bool1;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localObject1 = (LinkedList)localIterator.next();
-    } while ((localObject1 == null) || (((LinkedList)localObject1).size() == 0));
-    Object localObject2 = ((LinkedList)localObject1).iterator();
-    int i = 0;
-    label102:
-    if (((Iterator)localObject2).hasNext())
-    {
-      if (((alyo)((Iterator)localObject2).next()).a(2) > paramLong1) {
-        break label500;
-      }
-      i += 1;
-    }
-    label500:
-    for (;;)
-    {
-      break label102;
-      localObject1 = ((LinkedList)localObject1).iterator();
-      bool2 = bool1;
-      for (;;)
-      {
-        bool1 = bool2;
-        if (!((Iterator)localObject1).hasNext()) {
-          break;
-        }
-        localObject2 = (alyo)((Iterator)localObject1).next();
-        if (((alyo)localObject2).a(2) == paramLong1) {
-          ((alyo)localObject2).a(6, a(true));
-        }
-        int j = 1;
-        if ((((alyo)localObject2).a(6) > a(true)) || (((alyo)localObject2).a(6) + ((alyo)localObject2).a(3) < 0.0F) || (((alyo)localObject2).a(2) > paramLong1))
+        if (alvx.a() != null)
         {
-          int k = 0;
-          j = k;
-          if (QLog.isColorLevel())
+          paramString1 = new JSONObject(paramString2);
+          String str = paramString1.optString("openId");
+          paramString1.optInt("gameId");
+          alym localalym = alvx.a(paramLong);
+          if (localalym != null)
           {
-            QLog.d("BaseAnimDrawer", 2, "barrage invisible: posx:" + ((alyo)localObject2).a(6) + "  width:" + ((alyo)localObject2).a(3) + "  index:" + ((alyo)localObject2).a(2) + " curindex:" + paramLong1);
-            j = k;
+            str = localalym.c(str);
+            if (!TextUtils.isEmpty(str))
+            {
+              paramString1.put("uin", str);
+              return paramString1.toString();
+            }
+            QLog.w("cmgame_process.CmGameOpenIdFinder", 1, "logic error happens.");
+            return paramString2;
           }
         }
-        if ((j == 0) && (((alyo)localObject2).a(6) < 0.0F))
+      }
+      catch (Throwable paramString1)
+      {
+        QLog.e("cmgame_process.CmGameOpenIdFinder", 1, paramString1, new Object[0]);
+      }
+    }
+    return paramString2;
+  }
+  
+  public static void a(long paramLong, int paramInt, String paramString)
+  {
+    Object localObject;
+    try
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      alym localalym = alvx.a(paramLong);
+      if (localalym == null) {
+        return;
+      }
+      localObject = localalym.c(paramString);
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("type", paramInt);
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(paramString);
+        localalym.a(2, localArrayList, null, 3, paramLong, true, ((JSONObject)localObject).toString(), "");
+        return;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmgame_process.CmGameOpenIdFinder", 1, paramString, new Object[0]);
+      return;
+    }
+    a(paramLong, paramInt, (String)localObject, paramString);
+  }
+  
+  public static void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", paramInt);
+    localBundle.putString("uin", paramString1);
+    paramString1 = new alyn(paramString2, paramLong);
+    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_get_accountInfo", localBundle, paramString1);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return ("cs.join_room.local".equals(paramString)) || ("cs.get_dress_path.local".equals(paramString));
+  }
+  
+  public String a(long paramLong)
+  {
+    if (this.b == null) {
+      return null;
+    }
+    return (String)this.b.get(Long.valueOf(paramLong));
+  }
+  
+  public String a(String paramString)
+  {
+    if (this.b == null) {
+      return "";
+    }
+    Iterator localIterator = this.b.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      String str = ((String)localEntry.getValue()).trim();
+      if ((!TextUtils.isEmpty(paramString)) && (str.equals(paramString))) {
+        return "" + localEntry.getKey();
+      }
+    }
+    return "";
+  }
+  
+  public void a(int paramInt1, ArrayList<String> paramArrayList, ArrayList<Long> paramArrayList1, int paramInt2, long paramLong, boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameOpenIdFinder", 2, new Object[] { "[getOpenIdOrUinInfo], type:", Integer.valueOf(paramInt1), ",from:", Integer.valueOf(paramInt2), ",param:", paramString1 });
+    }
+    alzh localalzh = alvx.a();
+    if (localalzh == null) {
+      QLog.e("cmgame_process.CmGameOpenIdFinder", 1, "sSoHandler is null.");
+    }
+    JSONObject localJSONObject;
+    for (;;)
+    {
+      return;
+      localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("from", "cmGame_" + paramInt2);
+        localJSONObject.put("gameId", this.jdField_a_of_type_Int);
+        localJSONObject.put("opType", paramInt1);
+        if (2 != paramInt1) {
+          break label312;
+        }
+        if ((paramArrayList != null) && (paramArrayList.size() != 0))
         {
-          if (i > 1)
+          paramArrayList1 = new JSONArray();
+          paramArrayList = paramArrayList.iterator();
+          while (paramArrayList.hasNext()) {
+            paramArrayList1.put((String)paramArrayList.next());
+          }
+          localalzh.a("apollo_aio_game.get_user_uin_or_openid", localJSONObject.toString(), -1L, paramInt2, false, null);
+        }
+      }
+      catch (Exception paramArrayList)
+      {
+        paramArrayList.printStackTrace();
+        QLog.w("cmgame_process.CmGameOpenIdFinder", 1, "[getOpenIdOrUinInfo], errInfo->" + paramArrayList.getMessage());
+      }
+    }
+    label218:
+    return;
+    localJSONObject.put("openIdList", paramArrayList1);
+    for (;;)
+    {
+      localJSONObject.put("async", paramBoolean);
+      localJSONObject.put("jsState", paramLong);
+      if (!TextUtils.isEmpty(paramString1)) {
+        localJSONObject.put("extraParam", paramString1);
+      }
+      if (TextUtils.isEmpty(paramString2)) {
+        break label218;
+      }
+      localJSONObject.put("bidCmd", paramString2);
+      break label218;
+      label312:
+      if (1 == paramInt1)
+      {
+        if ((paramArrayList1 == null) || (paramArrayList1.size() == 0)) {
+          break;
+        }
+        paramArrayList = new JSONArray();
+        paramArrayList1 = paramArrayList1.iterator();
+        while (paramArrayList1.hasNext()) {
+          paramArrayList.put((Long)paramArrayList1.next());
+        }
+        localJSONObject.put("uinList", paramArrayList);
+      }
+    }
+  }
+  
+  public void a(int paramInt1, ArrayList<String> paramArrayList, ArrayList<Long> paramArrayList1, int paramInt2, long paramLong, boolean paramBoolean, String paramString1, String paramString2, alyo paramalyo)
+  {
+    a(paramInt1, paramArrayList, paramArrayList1, paramInt2, paramLong, paramBoolean, paramString1, paramString2);
+    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
+      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    }
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt2, new WeakReference(paramalyo));
+  }
+  
+  public void a(String arg1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(???)) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)) {
+      return;
+    }
+    String str = ??? + "_" + this.jdField_a_of_type_Int;
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramString2);
+      return;
+    }
+  }
+  
+  public void a(ArrayList<Long> paramArrayList, ArrayList<String> paramArrayList1, int paramInt, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameOpenIdFinder", 2, new Object[] { "[onIdentifierResp], tinyids=" + paramArrayList.toString() + ",identifiers:", paramArrayList1.toString() });
+    }
+    if ((paramArrayList == null) || (paramArrayList1 == null) || (paramArrayList.size() <= 0) || (paramArrayList1.size() <= 0) || (this.b == null)) {
+      return;
+    }
+    if (paramArrayList.size() != paramArrayList1.size()) {
+      QLog.e("cmgame_process.CmGameOpenIdFinder", 2, "onIdentifierResp size is error");
+    }
+    JSONArray localJSONArray = new JSONArray();
+    JSONObject localJSONObject1 = new JSONObject();
+    int i = 0;
+    for (;;)
+    {
+      if (i < paramArrayList.size())
+      {
+        this.b.put(paramArrayList.get(i), paramArrayList1.get(i));
+        try
+        {
+          JSONObject localJSONObject2 = new JSONObject();
+          localJSONObject2.put("identifier", paramArrayList1.get(i));
+          localJSONArray.put(localJSONObject2);
+          i += 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
           {
-            ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(((alyo)localObject2).a(1)));
-            if (localArrayList != null)
-            {
-              localArrayList.remove(localObject2);
-              if (localArrayList.size() == 0) {
-                this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(((alyo)localObject2).a(1)));
-              }
-            }
-            ((Iterator)localObject1).remove();
-            ((alyo)localObject2).g();
-            i -= 1;
+            QLog.e("cmgame_process.CmGameOpenIdFinder", 2, "tinyId json error" + localException.toString());
+          }
+        }
+      }
+    }
+    try
+    {
+      localJSONObject1.put("eventId", paramInt);
+      localJSONObject1.put("userInfo", localJSONArray);
+      label252:
+      alvx.a().callbackFromRequest(paramLong, 0, "cs.audioRoom_update_userinfo.local", localJSONObject1.toString());
+      return;
+    }
+    catch (Exception paramArrayList)
+    {
+      break label252;
+    }
+  }
+  
+  public void a(JSONObject paramJSONObject, int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameOpenIdFinder", 2, new Object[] { "[onOpenIdResp], callFrom:", Integer.valueOf(paramInt), ",reqData:", paramString });
+    }
+    if (paramJSONObject == null) {}
+    for (;;)
+    {
+      return;
+      int i;
+      Object localObject2;
+      Object localObject1;
+      Object localObject3;
+      long l;
+      try
+      {
+        paramJSONObject = paramJSONObject.getJSONObject("data").getJSONArray("list");
+        int j = paramJSONObject.length();
+        i = 0;
+        if (i < j)
+        {
+          localObject2 = paramJSONObject.getJSONObject(i);
+          if ((!((JSONObject)localObject2).has("uin")) || (!((JSONObject)localObject2).has("openId"))) {
+            break label741;
+          }
+          localObject1 = ((JSONObject)localObject2).getString("uin");
+          localObject2 = ((JSONObject)localObject2).getString("openId");
+          if ((TextUtils.isEmpty((CharSequence)localObject2)) || (TextUtils.isEmpty((CharSequence)localObject1)))
+          {
+            QLog.w("cmgame_process.CmGameOpenIdFinder", 1, "[onOpenIdResp], openId or uin is empty");
           }
           else
           {
-            ((alyo)localObject2).c();
+            a((String)localObject2, (String)localObject1);
+            localObject3 = new JSONObject(paramString);
+            if (paramInt == 9)
+            {
+              localObject2 = new JSONObject(((JSONObject)localObject3).optString("extraParam"));
+              boolean bool = ((JSONObject)localObject3).optBoolean("async");
+              l = ((JSONObject)localObject3).optLong("jsState");
+              localObject3 = ((JSONObject)localObject3).optString("bidCmd");
+              ((JSONObject)localObject2).put("uin", localObject1);
+              localObject1 = alvx.a();
+              ((JSONObject)localObject2).put("gameId", this.jdField_a_of_type_Int);
+              if (localObject1 == null) {
+                break label741;
+              }
+              ((ApolloCmdChannel)localObject1).requestData(l, (String)localObject3, ((JSONObject)localObject2).toString(), bool, true);
+            }
           }
         }
-        else if (((alyo)localObject2).a(2) <= paramLong1)
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        QLog.w("cmgame_process.CmGameOpenIdFinder", 1, "errInfo->" + paramJSONObject.getMessage());
+      }
+      if (paramInt == 8) {
+        try
         {
-          if (!c()) {
-            ((alyo)localObject2).a();
+          if (!TextUtils.isEmpty(paramString))
+          {
+            paramString = new JSONObject(new JSONObject(paramString).optString("extraParam"));
+            paramInt = 0;
+            if (paramString.has("eventId")) {
+              paramInt = paramString.optInt("eventId");
+            }
+            paramJSONObject = "";
+            if (paramString.has("identifierList")) {
+              paramJSONObject = paramString.optString("identifierList");
+            }
+            localObject1 = new JSONArray(paramJSONObject);
+            if (((JSONArray)localObject1).length() > 0)
+            {
+              localObject2 = new JSONObject();
+              ((JSONObject)localObject2).put("eventId", paramInt);
+              new JSONObject();
+              localObject3 = new JSONArray();
+              paramJSONObject = new ArrayList();
+              i = 0;
+              if (i < ((JSONArray)localObject1).length())
+              {
+                JSONObject localJSONObject = new JSONObject();
+                String str1 = ((JSONArray)localObject1).get(i).toString();
+                String str2 = b(str1);
+                if (TextUtils.isEmpty(str2)) {
+                  paramJSONObject.add(Long.valueOf(Long.parseLong(str1)));
+                }
+                for (;;)
+                {
+                  i += 1;
+                  break;
+                  if (paramInt == 3)
+                  {
+                    int k = new JSONObject(((JSONObject)localObject3).optString("extraParam")).optInt("type");
+                    a(((JSONObject)localObject3).optLong("jsState"), k, (String)localObject1, (String)localObject2);
+                    break label741;
+                  }
+                  if ((paramInt != 10) || (this.jdField_a_of_type_AndroidUtilSparseArray == null)) {
+                    break label741;
+                  }
+                  localObject2 = (WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+                  if (localObject2 == null) {
+                    break label741;
+                  }
+                  localObject2 = (alyo)((WeakReference)localObject2).get();
+                  if (localObject2 == null) {
+                    break label741;
+                  }
+                  ((alyo)localObject2).a(0, "", (String)localObject1);
+                  this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+                  break label741;
+                  localJSONObject.put("openId", str2);
+                  ((JSONArray)localObject3).put(localJSONObject);
+                }
+              }
+              ((JSONObject)localObject2).put("userInfo", localObject3);
+              if (paramString.has("lState"))
+              {
+                l = paramString.getLong("lState");
+                if (((JSONArray)localObject3).length() > 0) {
+                  alvx.a().callbackFromRequest(l, 0, "cs.audioRoom_update_userinfo.local", ((JSONObject)localObject2).toString());
+                }
+                if ((paramJSONObject.size() > 0) && (paramInt == 3))
+                {
+                  paramString = alvx.a();
+                  if (paramString != null)
+                  {
+                    paramString.a(paramJSONObject, paramInt, l, this.jdField_a_of_type_Int);
+                    return;
+                    label741:
+                    i += 1;
+                  }
+                }
+              }
+            }
           }
-          if (paramCanvas != null) {
-            ((alyo)localObject2).a(paramCanvas);
-          }
-          if (paramRenderBuffer != null) {
-            ((alyo)localObject2).a(paramRenderBuffer);
-          }
-          bool2 = true;
         }
+        catch (Exception paramJSONObject) {}
       }
     }
   }
   
-  public void b()
+  public boolean a(long paramLong, boolean paramBoolean, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_b_of_type_JavaUtilMap.clear();
+    if (!a(paramString1)) {
+      return false;
+    }
+    try
+    {
+      Object localObject = new JSONObject(paramString2);
+      String str1 = ((JSONObject)localObject).optString("openId");
+      if (TextUtils.isEmpty(str1)) {
+        return false;
+      }
+      String str2 = c(str1);
+      if (TextUtils.isEmpty(str2))
+      {
+        localObject = new ArrayList();
+        ((ArrayList)localObject).add(str1);
+        a(2, (ArrayList)localObject, null, 9, paramLong, paramBoolean, paramString2, paramString1);
+        return true;
+      }
+      ((JSONObject)localObject).put("uin", str2);
+      return false;
+    }
+    catch (Throwable paramString1)
+    {
+      QLog.e("cmgame_process.CmGameOpenIdFinder", 1, paramString1, new Object[0]);
+    }
+    return false;
   }
   
-  public boolean b()
+  public String b(String paramString)
   {
-    b();
-    return true;
+    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)) {
+      return "";
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (Map.Entry)localIterator.next();
+        String str = ((String)((Map.Entry)localObject).getValue()).trim();
+        if ((!TextUtils.isEmpty(str)) && (str.equals(paramString)))
+        {
+          localObject = (String)((Map.Entry)localObject).getKey();
+          int i = ((String)localObject).indexOf("_");
+          if ((i != -1) && (i + 1 < ((String)localObject).length()))
+          {
+            str = ((String)localObject).substring(i + 1);
+            if (String.valueOf(this.jdField_a_of_type_Int).equals(str))
+            {
+              paramString = ((String)localObject).substring(0, i);
+              return paramString;
+            }
+          }
+        }
+      }
+    }
+    return "";
+  }
+  
+  public String c(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)) {
+      return "";
+    }
+    paramString = paramString + "_" + this.jdField_a_of_type_Int;
+    return (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
   }
 }
 

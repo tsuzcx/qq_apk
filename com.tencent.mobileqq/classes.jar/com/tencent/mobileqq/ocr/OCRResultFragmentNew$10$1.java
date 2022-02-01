@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ocr;
 
-import avin;
-import avir;
-import ayyb;
-import ayyu;
+import atvt;
+import atvx;
+import axlj;
+import axmc;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.tfm.metrics.api.Metrics;
 import com.tencent.tfm.metrics.api.MetricsApi;
@@ -13,21 +13,21 @@ import java.util.ArrayList;
 public class OCRResultFragmentNew$10$1
   implements Runnable
 {
-  public OCRResultFragmentNew$10$1(ayyu paramayyu, boolean paramBoolean, avir paramavir) {}
+  public OCRResultFragmentNew$10$1(axmc paramaxmc, boolean paramBoolean, atvx paramatvx) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Avir.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_Avir.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Atvx.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_Atvx.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
     {
       ((SuccessRateMeasure)MetricsApi.getDefault().get(OCRPerformFragment.a, SuccessRateMeasure.class)).recordSuccess(new String[] { OCRPerformFragment.b, "success" });
-      ayyb.b(ayyb.a(this.jdField_a_of_type_Avir.jdField_a_of_type_JavaUtilArrayList));
-      ayyb.a(ayyb.a.a, this.jdField_a_of_type_Avir.b, this.jdField_a_of_type_Avir.jdField_a_of_type_JavaUtilHashMap);
-      OCRResultFragmentNew.a(this.jdField_a_of_type_Ayyu.a, 0);
+      axlj.b(axlj.a(this.jdField_a_of_type_Atvx.jdField_a_of_type_JavaUtilArrayList));
+      axlj.a(axlj.a.a, this.jdField_a_of_type_Atvx.b, this.jdField_a_of_type_Atvx.jdField_a_of_type_JavaUtilHashMap);
+      OCRResultFragmentNew.a(this.jdField_a_of_type_Axmc.a, 0);
       return;
     }
     ((SuccessRateMeasure)MetricsApi.getDefault().get(OCRPerformFragment.a, SuccessRateMeasure.class)).recordFail(new String[] { OCRPerformFragment.b, "failure" });
-    QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_Ayyu.a), 1, 2131698233, 0).a();
-    ayyb.a("0X800AD1B", 0);
+    QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_Axmc.a), 1, 2131698398, 0).a();
+    axlj.a("0X800AD1B", 0);
   }
 }
 

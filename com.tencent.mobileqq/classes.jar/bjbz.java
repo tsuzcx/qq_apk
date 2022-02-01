@@ -1,27 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.IBoxADLisener;
 
-public class bjbz
-  implements View.OnClickListener
+class bjbz
+  implements abln
 {
-  public bjbz(QQToast paramQQToast, bjcc parambjcc, Toast paramToast) {}
+  bjbz(bjby parambjby) {}
   
-  public void onClick(View paramView)
+  public void onDismiss()
   {
-    if (this.jdField_a_of_type_Bjcc.a != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetToast.cancel();
-      this.jdField_a_of_type_Bjcc.a.onClick(paramView);
+    if (this.a.a.a != null) {
+      this.a.a.a.onDismiss();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjbz
  * JD-Core Version:    0.7.0.1
  */

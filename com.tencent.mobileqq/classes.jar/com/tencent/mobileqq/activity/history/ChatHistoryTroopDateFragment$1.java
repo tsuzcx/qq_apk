@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.history;
 
 import android.os.SystemClock;
-import bguj;
+import bfdx;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.widget.datepicker.CalendarDay;
@@ -45,7 +45,7 @@ class ChatHistoryTroopDateFragment$1
         ThreadManager.getUIHandler().post(new ChatHistoryTroopDateFragment.1.1(this, localArrayList));
       }
       l = SystemClock.elapsedRealtime() - l;
-      bguj.a("chat_history", "query_month_cost", String.valueOf(l), String.valueOf(j), String.valueOf(i), "");
+      bfdx.a("chat_history", "query_month_cost", String.valueOf(l), String.valueOf(j), String.valueOf(i), "");
       if (QLog.isColorLevel()) {
         QLog.i(ChatHistoryTroopDateFragment.b(), 2, String.format("queryDB count: %d | message count: %d | cost time %d ", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Long.valueOf(l) }));
       }

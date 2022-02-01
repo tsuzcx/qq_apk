@@ -1,67 +1,72 @@
-import android.text.TextUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
 public class nwm
+  extends anxq
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static nwm jdField_a_of_type_Nwm;
-  private URLDrawable.DownloadListener jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener = new nwn(this);
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ArrayList<String> b = new ArrayList();
+  public nwm(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public static nwm a()
+  public int a()
   {
-    if (jdField_a_of_type_Nwm == null) {
-      jdField_a_of_type_Nwm = new nwm();
-    }
-    return jdField_a_of_type_Nwm;
+    return 5;
   }
   
-  private void a()
+  public void a(Object paramObject)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    if ((paramObject instanceof oidb_cmd0xc96.RspBody))
     {
-      if ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-      {
-        String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-        this.jdField_a_of_type_ComTencentImageURLDrawable = beyq.a(str);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setDownloadListener(this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
-        if (QLog.isColorLevel()) {
-          QLog.d("AdvertisementCoverPreloadManager", 2, "startImageDownload url:" + str);
-        }
+      paramObject = (oidb_cmd0xc96.RspBody)paramObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
       }
+      paramObject = new JSONObject();
+      if (this.a.e == null) {}
+    }
+    try
+    {
+      paramObject.put("uin", this.a.e);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add("find.mp.qq.com");
+      localArrayList.add("post.mp.qq.com");
+      localArrayList.add("article.mp.qq.com");
+      autn.a("unFollow", paramObject, localArrayList, null);
+      this.a.h();
+      odq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.e, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
+      StructLongMessageDownloadProcessor.deleteTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e);
+      ((bfas)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
       return;
     }
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    catch (JSONException paramObject)
     {
-      if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramArrayList == null) || (paramArrayList.size() <= 0)) {
-        break label118;
-      }
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
+      for (;;)
       {
-        String str = (String)paramArrayList.next();
-        if ((!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(str)))
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          if (QLog.isColorLevel()) {
-            QLog.d("AdvertisementCoverPreloadManager", 2, "addImagesToPreload url:" + str);
-          }
-        }
+        paramObject.printStackTrace();
       }
     }
-    a();
-    label118:
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    this.a.d(2131694775);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = this.a;
+    paramObject.c -= 1;
+    if (this.a.c == 0) {
+      this.a.M();
+    }
   }
 }
 

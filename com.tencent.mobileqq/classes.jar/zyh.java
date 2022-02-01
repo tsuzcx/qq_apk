@@ -1,73 +1,81 @@
-import android.content.Context;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.manager.Manager;
+import android.os.Looper;
+import android.os.Message;
 
 public class zyh
-  implements Manager
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private zyj jdField_a_of_type_Zyj;
-  
-  public zyh(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Zyj != null) {
-      this.jdField_a_of_type_Zyj.a();
-    }
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_Zyj != null) {
-      this.jdField_a_of_type_Zyj.b();
-    }
-  }
+  private int jdField_a_of_type_Int = -1;
+  protected zyg a;
+  private zyj jdField_a_of_type_Zyj = new zyj(this, Looper.getMainLooper());
   
   public void a()
   {
-    if (this.jdField_a_of_type_Zyj != null)
-    {
-      this.jdField_a_of_type_Zyj.c();
-      this.jdField_a_of_type_Zyj = null;
+    this.jdField_a_of_type_Zyj.removeCallbacks(null);
+    this.jdField_a_of_type_Zyg = null;
+  }
+  
+  protected void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    Message localMessage = Message.obtain(this.jdField_a_of_type_Zyj);
+    localMessage.what = 7;
+    localMessage.obj = new zyi(paramLong);
+    localMessage.sendToTarget();
+  }
+  
+  public void a(zyg paramzyg)
+  {
+    this.jdField_a_of_type_Zyg = paramzyg;
+  }
+  
+  public void b()
+  {
+    Message localMessage = Message.obtain(this.jdField_a_of_type_Zyj);
+    localMessage.what = 4;
+    localMessage.sendToTarget();
+  }
+  
+  protected void b(long paramLong)
+  {
+    if (this.jdField_a_of_type_Zyg != null) {
+      this.jdField_a_of_type_Zyg.a(paramLong);
     }
   }
   
-  public void a(int paramInt)
+  public void c()
   {
-    switch (paramInt)
-    {
-    case 1: 
-    default: 
-      return;
-    case 2: 
-      b();
-      return;
-    case 3: 
-      c();
-      return;
-    }
-    a();
+    Message localMessage = Message.obtain(this.jdField_a_of_type_Zyj);
+    localMessage.what = 2;
+    localMessage.sendToTarget();
   }
   
-  public void a(Context paramContext, ScannerParams paramScannerParams)
+  protected void c(long paramLong)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if ((paramScannerParams.f) && (!paramScannerParams.d) && (this.jdField_a_of_type_Zyj == null)) {
-      this.jdField_a_of_type_Zyj = new zyj(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    a(3);
+    if (this.jdField_a_of_type_Zyg != null) {
+      this.jdField_a_of_type_Zyg.a(paramLong);
     }
   }
   
-  public void onDestroy()
+  protected void d()
   {
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
+    a(3);
+    if (this.jdField_a_of_type_Zyg != null) {}
+  }
+  
+  protected void e()
+  {
+    a(4);
+    if (this.jdField_a_of_type_Zyg != null) {}
+  }
+  
+  protected void f()
+  {
+    a(5);
+    if (this.jdField_a_of_type_Zyg != null) {}
   }
 }
 

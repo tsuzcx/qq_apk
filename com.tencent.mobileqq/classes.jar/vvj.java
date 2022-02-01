@@ -1,17 +1,299 @@
-import android.widget.FrameLayout;
+import android.os.Looper;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.UnionIdMapEntity;
+import com.tencent.biz.qqstory.database.UserEntry;
+import com.tencent.biz.qqstory.model.UserManager.1;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.List;
 
-class vvj
-  implements vvs
+public class vvj
+  implements vuf
 {
-  vvj(vvh paramvvh) {}
+  protected vkq<String, QQUserUIItem> a;
+  private wcg a;
   
-  public void a()
+  public vvj()
   {
-    if (vvh.a(this.a) != null) {
-      vvh.a(this.a).a(3);
+    this.jdField_a_of_type_Vkq = new vkq(300);
+    this.jdField_a_of_type_Wcg = new wcg();
+  }
+  
+  private QQStoryContext a()
+  {
+    return QQStoryContext.a();
+  }
+  
+  protected static String a(String paramString)
+  {
+    return "k_" + paramString;
+  }
+  
+  public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
+  {
+    return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
+  }
+  
+  public QQUserUIItem a()
+  {
+    return b(QQStoryContext.a().b());
+  }
+  
+  public QQUserUIItem a(QQUserUIItem paramQQUserUIItem)
+  {
+    String str = paramQQUserUIItem.uid;
+    b(str);
+    paramQQUserUIItem = (QQUserUIItem)this.jdField_a_of_type_Vkq.a(a(str), paramQQUserUIItem);
+    a().a().createEntityManager().persistOrReplace(paramQQUserUIItem.convert2UserEntry());
+    return paramQQUserUIItem;
+  }
+  
+  public QQUserUIItem a(@NonNull String paramString)
+  {
+    yos.a(paramString);
+    QQUserUIItem localQQUserUIItem = b(paramString);
+    paramString = localQQUserUIItem;
+    if (localQQUserUIItem == null)
+    {
+      paramString = new QQUserUIItem();
+      paramString.uid = QQStoryContext.a().b();
+      paramString.qq = wkp.a().getCurrentAccountUin();
+      paramString.nickName = wkp.a().getCurrentNickname();
+      paramString.headUrl = "";
+      xvv.d("Q.qqstory.user.UserManager", "create fake feed item while QQUserUIItem is null! use fake QQUserUIItem to instead.", new Object[] { paramString.toString() });
     }
-    vvh.a(this.a).setAlpha(0.0F);
-    vvh.a(null);
+    return paramString;
+  }
+  
+  @Nullable
+  public QQUserUIItem a(@NonNull String paramString, boolean paramBoolean)
+  {
+    String str = paramString;
+    if ("0_1000".equals(paramString)) {
+      str = (String)((vuq)vux.a(10)).b("qqstory_my_union_id", paramString);
+    }
+    QQUserUIItem localQQUserUIItem = (QQUserUIItem)this.jdField_a_of_type_Vkq.a(a(str));
+    paramString = localQQUserUIItem;
+    if (localQQUserUIItem == null)
+    {
+      if (paramBoolean) {
+        break label62;
+      }
+      paramString = localQQUserUIItem;
+    }
+    label62:
+    do
+    {
+      return paramString;
+      localQQUserUIItem = d(str);
+      paramString = localQQUserUIItem;
+    } while (localQQUserUIItem != null);
+    xvv.d("Q.qqstory.user.UserManager", "%s get userItem is null", new Object[] { str });
+    return localQQUserUIItem;
+  }
+  
+  public String a(String paramString, boolean paramBoolean)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "-9";
+    }
+    if (QQStoryContext.a().a(paramString)) {
+      return QQStoryContext.a().a();
+    }
+    Object localObject = b(paramString);
+    if ((localObject != null) && (!TextUtils.isEmpty(((QQUserUIItem)localObject).qq))) {
+      return ((QQUserUIItem)localObject).qq;
+    }
+    localObject = a(a().a().createEntityManager(), UnionIdMapEntity.class, UnionIdMapEntity.class.getSimpleName(), UnionIdMapEntity.selectionUnionId(), new String[] { paramString });
+    if ((localObject != null) && (((List)localObject).size() > 0)) {
+      return ((UnionIdMapEntity)((List)localObject).get(0)).qq;
+    }
+    if (paramBoolean) {}
+    for (localObject = "wait and ask from net";; localObject = "ret")
+    {
+      xvv.d("Q.qqstory.user.UserManager", "unionId %s cannot find uin ,%s", new Object[] { paramString, localObject });
+      localObject = new vwe("-9", paramString);
+      a(1, (vwe)localObject);
+      if (paramBoolean) {
+        break;
+      }
+      return "-9";
+    }
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      xvv.e("Q.qqstory.user.UserManager", "Cannot req on UI thread");
+      return "-9";
+    }
+    try
+    {
+      localObject.wait(10000L);
+      xvv.d("Q.qqstory.user.UserManager", "%s wait end", new Object[] { paramString });
+      return ((vwe)localObject).a;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        xvv.d("Q.qqstory.user.UserManager", "%s wait exception", new Object[] { paramString, localInterruptedException });
+      }
+    }
+    finally {}
+  }
+  
+  public void a() {}
+  
+  protected void a(int paramInt, vwe paramvwe)
+  {
+    if (paramInt == 1) {}
+    for (Object localObject = "unionId";; localObject = "uin")
+    {
+      xvv.d("Q.qqstory.user.UserManager", "start get user id: %s , convert from %s", new Object[] { paramvwe, localObject });
+      long l = System.currentTimeMillis();
+      localObject = new wdx();
+      ((wdx)localObject).c = paramInt;
+      ((wdx)localObject).a.add(paramvwe);
+      boolean bool = paramvwe.a();
+      vqn.a().a((vqr)localObject, new vvk(this, paramvwe, bool, l));
+      return;
+    }
+  }
+  
+  public void a(@NonNull String paramString1, @NonNull String paramString2)
+  {
+    yos.a(paramString1);
+    yos.a(paramString2);
+    EntityManager localEntityManager = a().a().createEntityManager();
+    UnionIdMapEntity localUnionIdMapEntity = new UnionIdMapEntity();
+    localUnionIdMapEntity.unionId = paramString1;
+    localUnionIdMapEntity.qq = paramString2;
+    localEntityManager.persistOrReplace(localUnionIdMapEntity);
+  }
+  
+  public void a(@NonNull String paramString, wch paramwch)
+  {
+    QQUserUIItem localQQUserUIItem = a(paramString, false);
+    wci localwci = new wci();
+    if (localQQUserUIItem != null)
+    {
+      localwci.a = localQQUserUIItem;
+      paramwch.a(localwci);
+      return;
+    }
+    ThreadManager.excute(new UserManager.1(this, paramString, localwci, paramwch), 32, null, true);
+  }
+  
+  public boolean a(String paramString)
+  {
+    return alem.a(QQStoryContext.a().getCurrentAccountUin() + paramString);
+  }
+  
+  @Nullable
+  public QQUserUIItem b(@NonNull String paramString)
+  {
+    return a(paramString, true);
+  }
+  
+  public String b(String paramString, boolean paramBoolean)
+  {
+    Object localObject = e(paramString);
+    if ((localObject != null) && (!TextUtils.isEmpty(((QQUserUIItem)localObject).uid))) {
+      return ((QQUserUIItem)localObject).uid;
+    }
+    localObject = a(a().a().createEntityManager(), UnionIdMapEntity.class, UnionIdMapEntity.class.getSimpleName(), UnionIdMapEntity.selectionQQ(), new String[] { paramString });
+    if ((localObject != null) && (((List)localObject).size() > 0)) {
+      return ((UnionIdMapEntity)((List)localObject).get(0)).unionId;
+    }
+    if (paramBoolean) {}
+    for (localObject = "wait and ask from net";; localObject = "ret")
+    {
+      xvv.d("Q.qqstory.user.UserManager", "qq %s cannot find unionid ,%s", new Object[] { paramString, localObject });
+      localObject = new vwe(paramString, "");
+      a(0, (vwe)localObject);
+      if (paramBoolean) {
+        break;
+      }
+      return "";
+    }
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      xvv.e("Q.qqstory.user.UserManager", "Cannot req on UI thread");
+      return "";
+    }
+    try
+    {
+      localObject.wait(10000L);
+      xvv.d("Q.qqstory.user.UserManager", "%s wait end", new Object[] { paramString });
+      return ((vwe)localObject).b;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        xvv.d("Q.qqstory.user.UserManager", "%s wait exception", new Object[] { paramString, localInterruptedException });
+      }
+    }
+    finally {}
+  }
+  
+  public void b() {}
+  
+  public QQUserUIItem c(@NonNull String paramString)
+  {
+    QQUserUIItem localQQUserUIItem = b(paramString);
+    if ((localQQUserUIItem == null) || (!localQQUserUIItem.isAvailable())) {
+      this.jdField_a_of_type_Wcg.a(paramString);
+    }
+    return localQQUserUIItem;
+  }
+  
+  public void c()
+  {
+    String str = QQStoryContext.a().b();
+    if ((str.equals("0_1000")) || (a() == null))
+    {
+      xvv.d("Q.qqstory.user.UserManager", "current union %s is default or userItem is null", new Object[] { str });
+      a(1, new vwe(QQStoryContext.a().a(), str));
+    }
+  }
+  
+  @Nullable
+  protected QQUserUIItem d(String paramString)
+  {
+    Object localObject = a(a().a().createEntityManager(), UserEntry.class, UserEntry.class.getSimpleName(), UserEntry.getUserSelectionNoArg(), new String[] { paramString });
+    if ((localObject == null) || (((List)localObject).size() == 0))
+    {
+      xvv.a("Q.qqstory.user.UserManager", "%s cannot get userItem from db", paramString);
+      return null;
+    }
+    paramString = (UserEntry)((List)localObject).get(0);
+    localObject = new QQUserUIItem(paramString);
+    return (QQUserUIItem)this.jdField_a_of_type_Vkq.a(a(paramString.unionId), (vkp)localObject);
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Vkq.a(0);
+  }
+  
+  protected QQUserUIItem e(String paramString)
+  {
+    Object localObject = a(a().a().createEntityManager(), UserEntry.class, UserEntry.class.getSimpleName(), UserEntry.getUserSelectionByQQ(), new String[] { paramString });
+    if ((localObject == null) || (((List)localObject).size() == 0))
+    {
+      xvv.a("Q.qqstory.user.UserManager", "qq %s cannot get userItem from db", paramString);
+      return null;
+    }
+    paramString = (UserEntry)((List)localObject).get(0);
+    localObject = new QQUserUIItem(paramString);
+    return (QQUserUIItem)this.jdField_a_of_type_Vkq.a(a(paramString.qq), (vkp)localObject);
   }
 }
 

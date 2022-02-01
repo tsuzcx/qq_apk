@@ -1,26 +1,26 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import com.tencent.biz.qrcode.ipc.ScannerParams;
+import mqq.app.AppActivity;
 
 class yxl
-  implements View.OnTouchListener
+  extends yxh
 {
   yxl(yxk paramyxk) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    switch (paramMotionEvent.getAction())
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.i)
     {
+      this.a.jdField_a_of_type_Yxq.a();
+      return;
     }
-    for (;;)
+    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e)
     {
-      return false;
-      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
-      continue;
-      this.a.a.setTextColor(Color.parseColor("#ffffff"));
+      this.a.jdField_a_of_type_MqqAppAppActivity.finish();
+      return;
     }
+    this.a.jdField_a_of_type_Yxq.b();
   }
 }
 

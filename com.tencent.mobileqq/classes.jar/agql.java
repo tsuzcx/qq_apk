@@ -1,6 +1,17 @@
-public abstract interface agql<T>
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class agql
+  extends aezf
 {
-  public abstract T a(agqi paramagqi);
+  long jdField_a_of_type_Long;
+  afce jdField_a_of_type_Afce;
+  public akxy a;
+  public ImageView b;
+  public View c;
+  public ImageView c;
+  public TextView d;
 }
 
 

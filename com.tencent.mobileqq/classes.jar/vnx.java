@@ -1,42 +1,33 @@
-import android.arch.lifecycle.MutableLiveData;
-import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudCommon.StCommonExt;
-import feedcloud.FeedCloudRead.StGetFeedListRsp;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.dispatch.Dispatcher;
 
 class vnx
-  implements aaav<FeedCloudRead.StGetFeedListRsp>
+  extends Job<Object, Object, Object>
 {
-  vnx(vnv paramvnv, QCircleGetFeedListRequest paramQCircleGetFeedListRequest, boolean paramBoolean, aabu paramaabu) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
+  vnx(vns paramvns, String paramString1, String paramString2, StoryVideoItem paramStoryVideoItem)
   {
-    boolean bool = true;
-    QLog.d(this.jdField_a_of_type_Vnv.a(), 1, "requestRecommendFeedList onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean);
-    aabu localaabu;
-    if (paramStGetFeedListRsp != null)
+    super(paramString1);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  {
+    paramJobContext = new vuc(new ErrorMessage(), this.jdField_a_of_type_JavaLangString, true);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)
     {
-      this.jdField_a_of_type_Aabu.a(paramStGetFeedListRsp.feedAttchInfo.get());
-      this.jdField_a_of_type_Aabu.c(paramStGetFeedListRsp.adAttchInfo.get());
-      localaabu = this.jdField_a_of_type_Aabu;
-      if (paramStGetFeedListRsp.isFinish.get() != 1) {
-        break label230;
+      paramJobContext.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
+      paramJobContext.c = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.shareGroupId;
+      paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
+      if (paramJobContext.a == 0L) {
+        paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
       }
     }
-    label230:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      localaabu.a(paramBoolean);
-      if (paramStGetFeedListRsp.extInfo.has()) {
-        this.jdField_a_of_type_Vnv.a((FeedCloudCommon.StCommonExt)paramStGetFeedListRsp.extInfo.get());
-      }
-      uzg.a(vnv.a(this.jdField_a_of_type_Vnv), paramStGetFeedListRsp.vecFeed.get());
-      vnv.a(this.jdField_a_of_type_Vnv).postValue(new vbf(paramLong, paramString, paramStGetFeedListRsp, this.jdField_a_of_type_Boolean));
-      return;
-    }
+    vli.a().dispatch(paramJobContext);
+    return null;
   }
 }
 

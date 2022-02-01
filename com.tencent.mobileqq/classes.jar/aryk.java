@@ -1,28 +1,16 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
 
-public class aryk
-  implements CompoundButton.OnCheckedChangeListener
+public abstract interface aryk
 {
-  public aryk(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
+  public abstract View.OnClickListener a(TextView paramTextView);
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(aove.a, 0).edit().putBoolean(aove.b, paramBoolean).commit();
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getApplicationContext(), anzj.a(2131701768), 1).a();
-    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).b(false);
-    }
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-  }
+  public abstract boolean a();
+  
+  public abstract boolean a(FavFileInfo paramFavFileInfo);
+  
+  public abstract boolean b();
 }
 
 

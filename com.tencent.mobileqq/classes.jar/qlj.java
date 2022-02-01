@@ -1,13 +1,49 @@
-class qlj
-  implements qoe
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+
+public class qlj
+  extends MSFServlet
 {
-  qlj(qli paramqli) {}
-  
-  public void a()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
-    if (localsgf != null) {
-      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    }
+    for (;;)
+    {
+      udz.a(paramFromServiceMsg);
+      if (getAppRuntime() != null) {
+        qli.a().a(paramFromServiceMsg.isSuccess(), paramIntent, paramFromServiceMsg, null);
+      }
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent != null)
+    {
+      ToServiceMsg localToServiceMsg = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      udz.a(localToServiceMsg);
+      if (localToServiceMsg != null)
+      {
+        paramPacket.setSSOCommand(localToServiceMsg.getServiceCmd());
+        paramPacket.putSendData(localToServiceMsg.getWupBuffer());
+        paramPacket.setTimeout(localToServiceMsg.getTimeout());
+        paramPacket.setAttributes(localToServiceMsg.getAttributes());
+        paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
+        paramPacket.autoResend = localToServiceMsg.isFastResendEnabled();
+        if (!localToServiceMsg.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+      }
     }
   }
 }

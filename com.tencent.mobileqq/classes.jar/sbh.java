@@ -1,26 +1,24 @@
 import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-public class sbh
+class sbh
+  extends sif
 {
-  public int a()
+  sbh(sab paramsab) {}
+  
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    return -1;
+    sab.a(this.a, paramInt, paramVideoInfo, paramString, c(), a());
   }
-  
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem) {}
-  
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem) {}
   
   public int b()
   {
-    return 3;
+    return 2;
   }
   
   public int c()
   {
-    return -1;
+    return 3;
   }
 }
 

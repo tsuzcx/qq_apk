@@ -1,25 +1,12 @@
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-
-public class afdu
-  extends anuw
+public abstract interface afdu
 {
-  public afdu(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  public static final afdv a = new afdv();
   
-  protected void onCardLabelUpdate(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      this.a.setResult(-1);
-      this.a.b(2131718533);
-    }
-    for (;;)
-    {
-      this.a.a = false;
-      this.a.finish();
-      return;
-      this.a.b(2131718531);
-    }
-  }
+  public abstract int a(long paramLong, afdv paramafdv);
+  
+  public abstract int a(afdv paramafdv, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract afdu a();
 }
 
 

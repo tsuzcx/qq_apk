@@ -1,266 +1,109 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.cmgame.CmGamePushManager.1;
-import com.tencent.mobileqq.apollo.cmgame.CmGamePushManager.3;
-import com.tencent.mobileqq.apollo.data.CmGamePushItem;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgReqBody;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgRspBody;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 
 public class amxf
+  extends BusinessHandler
 {
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private Comparator<CmGamePushItem> jdField_a_of_type_JavaUtilComparator = new amxg(this);
-  private List<CmGamePushItem> jdField_a_of_type_JavaUtilList = new ArrayList();
+  protected QQAppInterface a;
   
-  private void a(CmGamePushItem paramCmGamePushItem1, CmGamePushItem paramCmGamePushItem2)
+  protected amxf(QQAppInterface paramQQAppInterface)
   {
-    if (paramCmGamePushItem1 == null) {}
-    EntityManager localEntityManager;
-    do
-    {
-      do
-      {
-        return;
-        localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while (localObject == null);
-      localEntityManager = ((QQAppInterface)localObject).a().createEntityManager();
-    } while (localEntityManager == null);
-    localObject = localEntityManager.getTransaction();
-    ((EntityTransaction)localObject).begin();
-    if (paramCmGamePushItem2 != null) {}
+    super(paramQQAppInterface);
+    this.a = paramQQAppInterface;
+  }
+  
+  protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
+      i = 1;
+    }
     for (;;)
     {
-      try
+      paramFromServiceMsg = (azvd)this.a.getManager(65);
+      if (i != 0)
       {
-        localEntityManager.remove(paramCmGamePushItem2);
-        localEntityManager.persist(paramCmGamePushItem1);
-        ((EntityTransaction)localObject).commit();
-        return;
-      }
-      catch (Exception paramCmGamePushItem1)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("CmGamePushManager", 2, "updatePushItem exception: ", paramCmGamePushItem1);
-        return;
-      }
-      finally
-      {
-        ((EntityTransaction)localObject).end();
-      }
-      localEntityManager.update(paramCmGamePushItem1);
-    }
-  }
-  
-  /* Error */
-  private void a(List<CmGamePushItem> paramList)
-  {
-    // Byte code:
-    //   0: aload_1
-    //   1: ifnull +12 -> 13
-    //   4: aload_1
-    //   5: invokeinterface 108 1 0
-    //   10: ifne +4 -> 14
-    //   13: return
-    //   14: aload_0
-    //   15: getfield 18	amxf:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   18: astore_2
-    //   19: aload_2
-    //   20: monitorenter
-    //   21: aload_0
-    //   22: getfield 23	amxf:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   25: aload_1
-    //   26: invokeinterface 112 2 0
-    //   31: pop
-    //   32: aload_2
-    //   33: monitorexit
-    //   34: aload_0
-    //   35: getfield 43	amxf:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   38: invokevirtual 49	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   41: checkcast 51	com/tencent/mobileqq/app/QQAppInterface
-    //   44: astore_2
-    //   45: aload_2
-    //   46: ifnull -33 -> 13
-    //   49: aload_2
-    //   50: invokevirtual 54	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/data/QQEntityManagerFactory;
-    //   53: invokevirtual 60	com/tencent/mobileqq/data/QQEntityManagerFactory:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   56: astore_3
-    //   57: aload_3
-    //   58: ifnull -45 -> 13
-    //   61: aload_3
-    //   62: invokevirtual 66	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   65: astore_2
-    //   66: aload_2
-    //   67: invokevirtual 71	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   70: aload_1
-    //   71: invokeinterface 116 1 0
-    //   76: astore_1
-    //   77: aload_1
-    //   78: invokeinterface 121 1 0
-    //   83: ifeq +46 -> 129
-    //   86: aload_3
-    //   87: aload_1
-    //   88: invokeinterface 124 1 0
-    //   93: checkcast 126	com/tencent/mobileqq/apollo/data/CmGamePushItem
-    //   96: invokevirtual 75	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   99: pop
-    //   100: goto -23 -> 77
-    //   103: astore_1
-    //   104: invokestatic 94	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   107: ifeq +12 -> 119
-    //   110: ldc 96
-    //   112: iconst_2
-    //   113: ldc 128
-    //   115: aload_1
-    //   116: invokestatic 102	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   119: aload_2
-    //   120: invokevirtual 85	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   123: return
-    //   124: astore_1
-    //   125: aload_2
-    //   126: monitorexit
-    //   127: aload_1
-    //   128: athrow
-    //   129: aload_2
-    //   130: invokevirtual 82	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   133: aload_2
-    //   134: invokevirtual 85	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   137: return
-    //   138: astore_1
-    //   139: aload_2
-    //   140: invokevirtual 85	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   143: aload_1
-    //   144: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	145	0	this	amxf
-    //   0	145	1	paramList	List<CmGamePushItem>
-    //   18	122	2	localObject	Object
-    //   56	31	3	localEntityManager	EntityManager
-    // Exception table:
-    //   from	to	target	type
-    //   70	77	103	java/lang/Exception
-    //   77	100	103	java/lang/Exception
-    //   129	133	103	java/lang/Exception
-    //   21	34	124	finally
-    //   125	127	124	finally
-    //   70	77	138	finally
-    //   77	100	138	finally
-    //   104	119	138	finally
-    //   129	133	138	finally
-  }
-  
-  private CmGamePushItem b()
-  {
-    Object localObject1 = null;
-    ArrayList localArrayList = new ArrayList();
-    int j = 0;
-    int i = 0;
-    StringBuilder localStringBuilder = new StringBuilder();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-        return null;
-      }
-      long l = NetConnInfoCenter.getServerTime();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext())
-      {
-        CmGamePushItem localCmGamePushItem2 = (CmGamePushItem)localIterator.next();
-        if ((localCmGamePushItem2.msg_type != 1) || (localCmGamePushItem2.start_ts >= l) || (localCmGamePushItem2.end_ts <= l)) {
-          break label283;
-        }
-        if (j == 0)
+        NumRedMsg.NumMsgRspBody localNumMsgRspBody = new NumRedMsg.NumMsgRspBody();
+        try
         {
-          if (!localCmGamePushItem2.isShow) {
-            i = 1;
-          }
-          localCmGamePushItem2.isShow = true;
-          localStringBuilder.append(",current show item:").append(localCmGamePushItem2.toString());
-          j = 1;
-          localObject1 = localCmGamePushItem2;
-          break label280;
-        }
-        if (!localCmGamePushItem2.isShow) {
-          break label283;
-        }
-        localArrayList.add(localCmGamePushItem2);
-        localStringBuilder.append("\n,remove item:").append(localCmGamePushItem2.toString());
-        break label283;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("CmGamePushManager", 2, new Object[] { "getCmGamePromotionPush:", localStringBuilder.toString() });
-      }
-      if ((localArrayList.size() > 0) || (i != 0))
-      {
-        ThreadManager.excute(new CmGamePushManager.1(this, localObject1, localArrayList), 32, null, true);
-        return localObject1;
-      }
-    }
-    return localCmGamePushItem1;
-    label280:
-    label283:
-    for (;;)
-    {
-      break;
-    }
-  }
-  
-  public CmGamePushItem a()
-  {
-    return b();
-  }
-  
-  public void a(CmGamePushItem paramCmGamePushItem)
-  {
-    if (paramCmGamePushItem == null) {
-      return;
-    }
-    Object localObject1 = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localObject1 != null) && (paramCmGamePushItem.msg_type == 1)) {
-      ((bbav)((QQAppInterface)localObject1).getManager(36)).c(String.valueOf("103100.103200.103240.103248"));
-    }
-    Object localObject2 = this.jdField_a_of_type_JavaLangObject;
-    int i = 0;
-    localObject1 = null;
-    for (;;)
-    {
-      try
-      {
-        if (i < this.jdField_a_of_type_JavaUtilList.size())
-        {
-          if ((!TextUtils.isEmpty(((CmGamePushItem)this.jdField_a_of_type_JavaUtilList.get(i)).msg_id)) && (!TextUtils.isEmpty(paramCmGamePushItem.msg_id)) && (((CmGamePushItem)this.jdField_a_of_type_JavaUtilList.get(i)).msg_id.equals(paramCmGamePushItem.msg_id)))
+          localNumMsgRspBody.mergeFrom((byte[])paramObject);
+          if (localNumMsgRspBody.i_retcode.get() == 0)
           {
-            CmGamePushItem localCmGamePushItem = (CmGamePushItem)this.jdField_a_of_type_JavaUtilList.get(i);
-            this.jdField_a_of_type_JavaUtilList.remove(i);
-            this.jdField_a_of_type_JavaUtilList.add(i, paramCmGamePushItem);
-            localObject1 = localCmGamePushItem;
-            if (QLog.isColorLevel())
-            {
-              QLog.d("CmGamePushManager", 2, new Object[] { "clearPushRedDots update after new item is:", paramCmGamePushItem.toString() });
-              localObject1 = localCmGamePushItem;
+            paramFromServiceMsg.a(localNumMsgRspBody, paramToServiceMsg, true);
+            return;
+            i = 0;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramObject)
+        {
+          for (;;)
+          {
+            paramObject.printStackTrace();
+            if (QLog.isColorLevel()) {
+              QLog.i("NumRedMsgHandler", 2, "mergeFrom failed");
             }
           }
-        }
-        else
-        {
-          ThreadManager.excute(new CmGamePushManager.3(this, paramCmGamePushItem, (CmGamePushItem)localObject1), 32, null, true);
+          if (QLog.isColorLevel()) {
+            QLog.i("NumRedMsgHandler", 2, "rsp code != 0 , error msg == " + localNumMsgRspBody.str_errmsg.get());
+          }
+          paramFromServiceMsg.a(localNumMsgRspBody, paramToServiceMsg, false);
           return;
         }
       }
-      finally {}
-      i += 1;
+    }
+    paramFromServiceMsg.a(null, paramToServiceMsg, false);
+  }
+  
+  public void a(List<NumRedMsg.NumMsgBusi> paramList, int paramInt, String paramString, long[] paramArrayOfLong)
+  {
+    NumRedMsg.NumMsgReqBody localNumMsgReqBody = new NumRedMsg.NumMsgReqBody();
+    localNumMsgReqBody.i_proto_ver.set(1);
+    localNumMsgReqBody.ui_plat_id.set(109);
+    localNumMsgReqBody.str_client_ver.set("8.4.8.4810");
+    localNumMsgReqBody.ui64_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(paramList);
+    localNumMsgReqBody.rpt_num_msg.set(localArrayList);
+    paramList = new ToServiceMsg("mobileqq.service", this.a.getCurrentAccountUin(), "red_touch_num_svr.get_num_msg");
+    paramList.putWupBuffer(localNumMsgReqBody.toByteArray());
+    paramList.extraData.putInt("NumMsgListenerKey", paramInt);
+    paramList.extraData.putLongArray("NumMsgIDList", paramArrayOfLong);
+    paramList.extraData.putString("NumMsgListenerCmd", paramString);
+    sendPbReq(paramList);
+    if (QLog.isColorLevel()) {
+      QLog.i("NumRedMsgHandler", 2, "sendPbReq called.");
+    }
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("red_touch_num_svr.get_num_msg".equals(paramFromServiceMsg.getServiceCmd()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("NumRedMsgHandler", 2, "onReceive called.");
+      }
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
   }
 }

@@ -1,112 +1,90 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.qphone.base.util.QLog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.LinkedHashMap;
 
 public class ajnb
-  extends AsyncTask<RespondQueryQQBindingStat, Void, List<PhoneContact>>
+  extends bhgj
 {
-  private List<String> jdField_a_of_type_JavaUtilList;
+  private ajnb(NewStyleCountryActivity paramNewStyleCountryActivity) {}
   
-  private ajnb(PhoneContactManagerImp paramPhoneContactManagerImp) {}
-  
-  protected List<PhoneContact> a(RespondQueryQQBindingStat... paramVarArgs)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager.ContactFriendTask", 2, "doInBackground");
+    return 2131562723;
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(((bfxc)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString)).intValue();
+    ((TextView)paramView).setText(((bfxc)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return ((bfxc)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean;
+  }
+  
+  public int getCount()
+  {
+    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (((bfxc)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean) {
+      return 0;
     }
-    Object localObject = paramVarArgs[0];
-    paramVarArgs = new ArrayList();
-    paramVarArgs.addAll(PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp).values());
-    Collections.sort(paramVarArgs, new ajnc(this));
-    ArrayList localArrayList = new ArrayList();
-    anyw localanyw = (anyw)PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp).getManager(51);
-    Iterator localIterator;
-    if (paramVarArgs.size() > 0)
+    return 1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    bfxc localbfxc = (bfxc)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if (getItemViewType(paramInt) == 0)
     {
-      localObject = ((RespondQueryQQBindingStat)localObject).mobileNo;
-      localIterator = paramVarArgs.iterator();
-    }
-    PhoneContact localPhoneContact;
-    do
-    {
-      do
-      {
-        if (localIterator.hasNext())
-        {
-          paramVarArgs = (PhoneContact)localIterator.next();
-          if (!isCancelled()) {}
-        }
-        else
-        {
-          Collections.sort(localArrayList, new ajnd(this));
-          return localArrayList;
-        }
-      } while ((localObject != null) && (((String)localObject).endsWith(paramVarArgs.mobileNo.trim())));
-      localPhoneContact = (PhoneContact)paramVarArgs.clone();
-    } while (TextUtils.isEmpty(localPhoneContact.uin));
-    if (localPhoneContact.uin.equals("0"))
-    {
-      paramVarArgs = null;
-      label201:
-      if ((paramVarArgs == null) || (paramVarArgs.groupid < 0)) {
-        break label260;
+      if (paramView != null) {
+        break label129;
       }
-      localPhoneContact.nickName = paramVarArgs.getFriendNick();
-      localPhoneContact.remark = paramVarArgs.remark;
-      localPhoneContact.sortWeight = 262144;
+      paramView = this.a.getLayoutInflater().inflate(a(), paramViewGroup, false);
     }
+    label129:
     for (;;)
     {
-      localArrayList.add(localPhoneContact);
-      break;
-      paramVarArgs = localanyw.e(localPhoneContact.uin);
-      break label201;
-      label260:
-      localPhoneContact.uin = "0";
-      if (localanyw.d(localPhoneContact.nationCode + localPhoneContact.mobileCode))
+      ((TextView)paramView).setText(localbfxc.jdField_a_of_type_JavaLangString);
+      for (;;)
       {
-        localPhoneContact.sortWeight = 131072;
-        localPhoneContact.hasSendAddReq = true;
-      }
-      else if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.contains(localPhoneContact.mobileNo)))
-      {
-        localPhoneContact.sortWeight = this.jdField_a_of_type_JavaUtilList.indexOf(localPhoneContact.mobileNo);
-      }
-      else
-      {
-        localPhoneContact.sortWeight = 65536;
+        paramView.setVisibility(0);
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        View localView = paramView;
+        if (paramView == null)
+        {
+          localView = NewStyleCountryActivity.a(this.a, paramViewGroup, this.a.getLayoutInflater(), false);
+          localView.setOnClickListener(this.a);
+        }
+        this.a.a(localView, localbfxc);
+        paramView = localView;
       }
     }
   }
   
-  public void a(List<String> paramList)
+  public int getViewTypeCount()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  protected void b(List<PhoneContact> paramList)
-  {
-    if (!isCancelled()) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.a(paramList);
-    }
-  }
-  
-  protected void onCancelled()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager.ContactFriendTask", 2, "on cancelled");
-    }
-    PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp, null);
+    return 2;
   }
 }
 

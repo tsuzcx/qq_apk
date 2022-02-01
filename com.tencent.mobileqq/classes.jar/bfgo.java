@@ -1,10 +1,19 @@
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class bfgo
-  extends amof
+class bfgo
+  extends bfgp
 {
-  public TextView a;
-  public TextView b;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  
+  bfgo(bfgn parambfgn)
+  {
+    super(parambfgn.a);
+  }
 }
 
 

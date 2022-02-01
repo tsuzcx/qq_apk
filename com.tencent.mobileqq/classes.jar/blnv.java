@@ -1,420 +1,343 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.ViewConfiguration;
-import android.view.animation.AnimationUtils;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModelProvider;
+import android.content.Intent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.image.ApngImage;
+import com.tencent.image.NativeGifImage;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import dov.com.qq.im.ae.camera.ui.AECaptureController.1;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import dov.com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
+import mqq.os.MqqHandler;
 
-class blnv
+@TargetApi(17)
+public class blnv
+  implements blod
 {
-  private static final float[] jdField_a_of_type_ArrayOfFloat;
-  private static final float[] jdField_b_of_type_ArrayOfFloat;
-  private static float jdField_d_of_type_Float;
-  private static float jdField_e_of_type_Float;
-  private double jdField_a_of_type_Double;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean = true;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private float jdField_c_of_type_Float = ViewConfiguration.getScrollFriction();
-  private int jdField_c_of_type_Int;
-  private int jdField_d_of_type_Int;
-  private int jdField_e_of_type_Int;
-  private float jdField_f_of_type_Float;
-  private int jdField_f_of_type_Int;
-  private int g;
-  private int h;
-  private int i = 0;
-  private int j = 0;
+  public View a;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private blio jdField_a_of_type_Blio;
+  private blst jdField_a_of_type_Blst;
+  private bmrx jdField_a_of_type_Bmrx = new blnx(this);
+  private final AECameraGLSurfaceView jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView;
+  public AEMaterialPanel a;
+  private VideoFilterViewPager jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager;
+  public volatile boolean a;
+  private View jdField_b_of_type_AndroidViewView;
+  private boolean jdField_b_of_type_Boolean = true;
+  private View c;
+  private View d;
+  private View e;
+  private View f;
   
-  static
+  public blnv(View paramView, blio paramblio)
   {
-    float f2 = 0.0F;
-    jdField_e_of_type_Float = (float)(Math.log(0.78D) / Math.log(0.9D));
-    jdField_a_of_type_ArrayOfFloat = new float[101];
-    jdField_b_of_type_ArrayOfFloat = new float[101];
-    int k = 0;
-    float f1 = 0.0F;
-    if (k < 100)
-    {
-      float f5 = k / 100.0F;
-      float f3 = 1.0F;
-      label55:
-      float f4 = (f3 - f1) / 2.0F + f1;
-      float f6 = 3.0F * f4 * (1.0F - f4);
-      float f7 = ((1.0F - f4) * 0.175F + 0.35F * f4) * f6 + f4 * f4 * f4;
-      if (Math.abs(f7 - f5) < 1.E-005D)
-      {
-        jdField_a_of_type_ArrayOfFloat[k] = (f4 * (f4 * f4) + f6 * ((1.0F - f4) * 0.5F + f4));
-        f3 = 1.0F;
-      }
-      for (;;)
-      {
-        f4 = (f3 - f2) / 2.0F + f2;
-        f6 = 3.0F * f4 * (1.0F - f4);
-        f7 = ((1.0F - f4) * 0.5F + f4) * f6 + f4 * f4 * f4;
-        if (Math.abs(f7 - f5) < 1.E-005D)
-        {
-          jdField_b_of_type_ArrayOfFloat[k] = (f4 * (f4 * f4) + ((1.0F - f4) * 0.175F + 0.35F * f4) * f6);
-          k += 1;
-          break;
-          if (f7 > f5)
-          {
-            f3 = f4;
-            break label55;
-          }
-          f1 = f4;
-          break label55;
-        }
-        if (f7 > f5) {
-          f3 = f4;
-        } else {
-          f2 = f4;
-        }
-      }
-    }
-    float[] arrayOfFloat = jdField_a_of_type_ArrayOfFloat;
-    jdField_b_of_type_ArrayOfFloat[100] = 1.0F;
-    arrayOfFloat[100] = 1.0F;
-  }
-  
-  private double a(int paramInt)
-  {
-    return Math.log(0.35F * Math.abs(paramInt) / (this.jdField_c_of_type_Float * jdField_d_of_type_Float));
-  }
-  
-  private int a(int paramInt)
-  {
-    return (int)(Math.exp(a(paramInt) / (jdField_e_of_type_Float - 1.0D)) * 1000.0D);
-  }
-  
-  static void a(Context paramContext)
-  {
-    jdField_d_of_type_Float = paramContext.getResources().getDisplayMetrics().density * 160.0F * 386.0878F * 0.84F;
-  }
-  
-  private double b(int paramInt)
-  {
-    double d1 = a(paramInt);
-    double d2 = jdField_e_of_type_Float;
-    double d3 = this.jdField_c_of_type_Float * jdField_d_of_type_Float;
-    return Math.exp(d1 * (jdField_e_of_type_Float / (d2 - 1.0D))) * d3;
-  }
-  
-  private void b()
-  {
-    long l = this.jdField_a_of_type_Long;
-    l = this.jdField_e_of_type_Int + l;
-    int k = (int)(this.jdField_e_of_type_Int / this.jdField_f_of_type_Int * 100.0F);
-    float f1 = 0.0F;
-    if (k < 100)
-    {
-      f1 = k / 100.0F;
-      float f2 = (k + 1) / 100.0F;
-      float f3 = jdField_a_of_type_ArrayOfFloat[k];
-      f1 = (jdField_a_of_type_ArrayOfFloat[(k + 1)] - f3) / (f2 - f1);
-    }
-    this.jdField_a_of_type_Float = (f1 * this.g / this.jdField_f_of_type_Int * 1000.0F);
-    this.jdField_b_of_type_Float = ((float)((this.jdField_a_of_type_Float - this.jdField_a_of_type_Double) / (l - this.jdField_b_of_type_Long) * 1000.0D));
-    a(this.jdField_c_of_type_Int, this.h, (int)this.jdField_a_of_type_Float, blnu.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Long = l;
-    c();
-  }
-  
-  private void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.i = 1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.h = (paramInt2 - paramInt1);
-    this.jdField_e_of_type_Int = paramInt4;
-  }
-  
-  private void c(int paramInt1, int paramInt2, int paramInt3)
-  {
-    float f1 = Math.abs((paramInt3 - paramInt1) / (paramInt2 - paramInt1));
-    paramInt1 = (int)(100.0F * f1);
-    if (paramInt1 < 100)
-    {
-      float f2 = paramInt1 / 100.0F;
-      float f3 = (paramInt1 + 1) / 100.0F;
-      float f4 = jdField_b_of_type_ArrayOfFloat[paramInt1];
-      float f5 = jdField_b_of_type_ArrayOfFloat[(paramInt1 + 1)];
-      this.jdField_e_of_type_Int = ((int)(((f1 - f2) / (f3 - f2) * (f5 - f4) + f4) * this.jdField_e_of_type_Int));
-    }
-  }
-  
-  private void d(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.i = 1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.h = (paramInt2 - paramInt1);
-    this.jdField_e_of_type_Int = blnu.jdField_a_of_type_Int;
-  }
-  
-  void a()
-  {
-    this.jdField_b_of_type_Int = this.jdField_c_of_type_Int;
     this.jdField_a_of_type_Boolean = true;
-  }
-  
-  void a(float paramFloat)
-  {
-    this.jdField_c_of_type_Float = paramFloat;
-  }
-  
-  void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (paramView == null) {
+      throw new IllegalStateException("rootView is null");
     }
-    this.j = paramInt;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Blio = paramblio;
+    this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView = ((AECameraGLSurfaceView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364156));
+    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel = ((AEMaterialPanel)this.jdField_a_of_type_AndroidViewView.findViewById(2131373087));
+    this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131362272);
+    this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131362273);
+    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager = ((VideoFilterViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131366870));
+    j();
   }
   
-  void a(int paramInt1, int paramInt2, int paramInt3)
+  private void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = (paramInt1 + paramInt2);
-    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-    this.jdField_e_of_type_Int = paramInt3;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_d_of_type_Int = 0;
-    this.i = 4;
+    ThreadManager.getUIHandler().post(new AECaptureController.1(this, paramBoolean));
   }
   
-  void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private void b(blvb paramblvb)
   {
-    float f2 = 0.09606F * paramInt2 / (1.E-005F * paramInt4);
-    if (paramInt3 > 0) {}
-    for (float f1 = 10.0F;; f1 = -10.0F)
+    int i = 1;
+    if (paramblvb != null)
     {
-      if (Math.abs(paramInt3) < f2) {
-        f1 = paramInt3 * 10.0F / f2;
+      String str = bmbg.a().a();
+      if ((str == null) || (!str.equalsIgnoreCase(paramblvb.a))) {
+        break label120;
       }
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_c_of_type_Int = paramInt1;
-      this.jdField_d_of_type_Int = paramInt3;
-      this.h = paramInt2;
-      this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-      this.jdField_e_of_type_Int = paramInt4;
-      this.jdField_f_of_type_Float = f1;
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-      this.i = 3;
-      return;
     }
-  }
-  
-  void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.h = paramInt5;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_d_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Float = paramInt2;
-    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt1;
-    if ((paramInt1 > paramInt4) || (paramInt1 < paramInt3))
+    label120:
+    for (i = 0;; i = 1)
     {
-      if (paramInt1 > paramInt4) {}
+      bmbg.a().c(paramblvb.a);
+      bmbg.a().b(paramblvb.f);
+      if (paramblvb.f != 0) {
+        a(true);
+      }
       for (;;)
       {
-        d(paramInt1, paramInt4, paramInt2);
+        if (i != 0) {
+          bmbc.a().T();
+        }
         return;
-        paramInt4 = paramInt3;
+        a(false);
+        continue;
+        if ("none".equalsIgnoreCase(bmbg.a().a())) {
+          i = 0;
+        }
+        bmbg.a().c("none");
+        bmbg.a().b(0);
+        a(false);
       }
-    }
-    this.i = 0;
-    double d1 = 0.0D;
-    if (paramInt2 != 0)
-    {
-      if (this.j != 1) {
-        break label239;
-      }
-      paramInt5 = a(paramInt2) * 3 / 2;
-      this.jdField_f_of_type_Int = paramInt5;
-    }
-    for (this.jdField_e_of_type_Int = paramInt5;; this.jdField_e_of_type_Int = paramInt5)
-    {
-      this.jdField_b_of_type_Float = ((float)(a(paramInt2) * 1000.0D));
-      d1 = b(paramInt2);
-      this.g = ((int)(d1 * Math.signum(paramInt2)));
-      this.jdField_c_of_type_Int = (this.g + paramInt1);
-      if (this.jdField_c_of_type_Int < paramInt3)
-      {
-        c(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, paramInt3);
-        this.jdField_c_of_type_Int = paramInt3;
-      }
-      if (this.jdField_c_of_type_Int > paramInt4)
-      {
-        c(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, paramInt4);
-        this.jdField_c_of_type_Int = paramInt4;
-      }
-      this.jdField_a_of_type_Double = paramInt2;
-      this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
-      return;
-      label239:
-      paramInt5 = a(paramInt2);
-      this.jdField_f_of_type_Int = paramInt5;
     }
   }
   
-  boolean a()
+  private void j()
   {
+    ((blkr)blks.a(this.jdField_a_of_type_Blio).get(blkr.class)).a.observe(this.jdField_a_of_type_Blio, new blnw(this));
+  }
+  
+  public void a()
+  {
+    a(bluy.a());
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.getSmoothLevel() == paramInt) {
+      return;
+    }
+    if (GLVideoClipUtil.b())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CaptureController", 2, "onDrawBeautyFeature is in (back_camera && no template is selected) || NightMode is on");
+      }
+      paramInt = 0;
+    }
+    this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.setBeautyLevel(paramInt);
+  }
+  
+  public void a(blvb paramblvb)
+  {
+    if (VideoPrefsUtil.getDefaultPrefs() != null) {
+      VideoPrefsUtil.setMaterialMute(false);
+    }
+    Object localObject;
+    if (this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView != null)
+    {
+      localObject = this.jdField_a_of_type_Blio.a();
+      if ((b()) || (paramblvb == null)) {
+        break label146;
+      }
+      localObject = ((Activity)localObject).getIntent();
+      ((Intent)localObject).putExtra("widgetinfo", "camera^" + paramblvb.a);
+      ((Intent)localObject).putExtra("material_id", paramblvb.a);
+      bmbx.b("CaptureController", "selectSpecificMaterial---塞拍同款名 takeSameName=" + paramblvb.i);
+      ((Intent)localObject).putExtra("key_camera_material_name", paramblvb.i);
+      ((Intent)localObject).putExtra("ae_editor_is_show_take_same", paramblvb.f);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.setMaterialMetaData(paramblvb);
+      b(paramblvb);
+      return;
+      label146:
+      if (!b())
+      {
+        localObject = ((Activity)localObject).getIntent();
+        if (localObject != null)
+        {
+          ((Intent)localObject).removeExtra("widgetinfo");
+          ((Intent)localObject).removeExtra("material_id");
+          ((Intent)localObject).removeExtra("key_camera_material_name");
+          ((Intent)localObject).removeExtra("ae_editor_is_show_take_same");
+        }
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if ((this.jdField_a_of_type_AndroidViewViewGroup == null) || (this.jdField_b_of_type_AndroidViewView == null) || (this.d == null)) {
+      return;
+    }
+    float f1 = this.jdField_a_of_type_AndroidViewViewGroup.getHeight() + this.d.getHeight();
+    Object localObject = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    if ((localObject instanceof ViewGroup.MarginLayoutParams)) {
+      f1 = ((ViewGroup.MarginLayoutParams)localObject).bottomMargin + f1;
+    }
+    for (;;)
+    {
+      int i;
+      int j;
+      int k;
+      if (paramBoolean)
+      {
+        zwd.a(new View[] { this.jdField_a_of_type_AndroidViewViewGroup, this.d }).a(new float[] { 0.0F, f1 }).a(paramInt).b();
+        if ((this.e != null) && (this.e.getVisibility() == 0) && (this.f != null) && (this.f.getVisibility() == 0))
+        {
+          localObject = new int[2];
+          this.e.getLocationOnScreen((int[])localObject);
+          i = this.jdField_a_of_type_AndroidViewView.getHeight();
+          j = localObject[1];
+          k = UIUtils.dip2px(this.jdField_a_of_type_AndroidViewView.getContext(), 100.0F);
+          zwd.a(new View[] { this.e, this.f }).a(new float[] { 0.0F, i - j + k }).a(paramInt).b();
+        }
+      }
+      for (localObject = new ScaleAnimation(1.0F, 0.7F, 1.0F, 0.7F, 1, 0.5F, 1, 0.5F);; localObject = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, 1, 0.5F, 1, 0.5F))
+      {
+        ((ScaleAnimation)localObject).setDuration(paramInt);
+        ((ScaleAnimation)localObject).setFillAfter(true);
+        this.jdField_b_of_type_AndroidViewView.startAnimation((Animation)localObject);
+        return;
+        zwd.a(new View[] { this.jdField_a_of_type_AndroidViewViewGroup, this.d }).a(new float[] { f1, 0.0F }).a(paramInt).b();
+        if ((this.e != null) && (this.e.getVisibility() == 0) && (this.f != null) && (this.f.getVisibility() == 0))
+        {
+          localObject = new int[2];
+          this.e.getLocationOnScreen((int[])localObject);
+          i = this.jdField_a_of_type_AndroidViewView.getHeight();
+          j = localObject[1];
+          k = UIUtils.dip2px(this.jdField_a_of_type_AndroidViewView.getContext(), 100.0F);
+          zwd.a(new View[] { this.e, this.f }).a(new float[] { i - j + k, 0.0F }).a(paramInt).b();
+        }
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    if (b()) {
+      return true;
+    }
+    if (c())
+    {
+      e();
+      return true;
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131367152));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365212);
+    this.d = this.jdField_a_of_type_AndroidViewView.findViewById(2131376539);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.setSharpFaceLevel(paramInt);
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView != null) && (this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.isRecording());
+  }
+  
+  public void c()
+  {
+    bnub.a().a(0);
+    bmrr localbmrr = (bmrr)bmql.a(5);
+    if (this.jdField_b_of_type_Boolean) {
+      localbmrr.a[0].a((Activity)this.jdField_a_of_type_AndroidViewView.getContext());
+    }
+  }
+  
+  public boolean c()
+  {
+    boolean bool1 = false;
     boolean bool2 = false;
-    boolean bool1 = bool2;
-    switch (this.i)
+    if ((this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel != null) || (this.jdField_a_of_type_Blst != null))
     {
+      if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel != null) {
+        bool2 = false | this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.a();
+      }
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Blst != null) {
+        bool1 = bool2 | this.jdField_a_of_type_Blst.b();
+      }
     }
-    for (;;)
+    return bool1;
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel != null) {
+      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.b();
+    }
+    if (this.jdField_a_of_type_Blst != null) {
+      this.jdField_a_of_type_Blst.c();
+    }
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel != null) {
+      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.a(true);
+    }
+    if (this.jdField_a_of_type_Blst != null) {
+      this.jdField_a_of_type_Blst.d();
+    }
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+    }
+  }
+  
+  public void f()
+  {
+    Object localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131370299);
+    if ((localObject != null) && ((localObject instanceof RelativeLayout)))
     {
-      c();
-      bool1 = true;
-      do
+      localObject = (RelativeLayout)localObject;
+      if ((localObject != null) && (((RelativeLayout)localObject).isShown()))
       {
-        return bool1;
-        bool1 = bool2;
-      } while (this.jdField_e_of_type_Int >= this.jdField_f_of_type_Int);
-      b();
-    }
-  }
-  
-  boolean a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_c_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-    this.jdField_e_of_type_Int = 0;
-    if (paramInt1 < paramInt2) {
-      d(paramInt1, paramInt2, 0);
-    }
-    while (!this.jdField_a_of_type_Boolean)
-    {
-      return true;
-      if (paramInt1 > paramInt3) {
-        d(paramInt1, paramInt3, 0);
+        ((RelativeLayout)localObject).setVisibility(8);
+        if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager != null) {
+          this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterViewPager.c();
+        }
       }
     }
-    return false;
   }
   
-  boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void g()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_c_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-    this.jdField_e_of_type_Int = 0;
-    if (paramInt1 < paramInt2) {
-      b(paramInt1, paramInt2, 0, paramInt4);
+    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel != null) {
+      this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.c();
     }
-    while (!this.jdField_a_of_type_Boolean)
-    {
-      return true;
-      if (paramInt1 > paramInt3) {
-        b(paramInt1, paramInt3, 0, paramInt4);
-      }
+    if (this.jdField_a_of_type_Blst != null) {
+      this.jdField_a_of_type_Blst.e();
     }
-    return false;
+    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Boolean;
   }
   
-  void b(float paramFloat)
+  public void h()
   {
-    this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int + Math.round((this.jdField_c_of_type_Int - this.jdField_a_of_type_Int) * paramFloat));
+    if (this.jdField_a_of_type_Blst != null) {
+      this.jdField_a_of_type_Blst.f();
+    }
+    bnub.a().a(0);
+    NativeGifImage.resumeAll();
+    ApngImage.playByTag(13);
   }
   
-  void b(int paramInt1, int paramInt2, int paramInt3)
+  public void i()
   {
-    if (this.i == 0) {
-      if (paramInt1 == paramInt2) {
-        a(paramInt2, paramInt3, this.jdField_d_of_type_Int, blnu.jdField_a_of_type_Int);
-      }
-    }
-    while (this.i != 4)
-    {
-      return;
-      c(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int - (paramInt1 - paramInt2));
-      this.h = paramInt3;
-      this.jdField_c_of_type_Int = paramInt2;
-      b();
-      return;
-    }
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  boolean b()
-  {
-    boolean bool = false;
-    switch (this.i)
-    {
-    case 2: 
-    default: 
-      c();
-      bool = true;
-    }
-    return bool;
-  }
-  
-  boolean c()
-  {
-    float f2 = 1.0F;
-    long l1 = AnimationUtils.currentAnimationTimeMillis();
-    long l2 = l1 - this.jdField_a_of_type_Long;
-    if (l2 > this.jdField_e_of_type_Int) {
-      return false;
-    }
-    double d1;
-    switch (this.i)
-    {
-    case 2: 
-    default: 
-      d1 = 0.0D;
-    }
-    for (;;)
-    {
-      int k = this.jdField_a_of_type_Int;
-      this.jdField_b_of_type_Int = ((int)Math.round(d1) + k);
-      return true;
-      float f3 = (float)l2 / this.jdField_f_of_type_Int;
-      k = (int)(100.0F * f3);
-      float f1 = 0.0F;
-      if (k < 100)
-      {
-        f2 = k / 100.0F;
-        f1 = (k + 1) / 100.0F;
-        float f4 = jdField_a_of_type_ArrayOfFloat[k];
-        f1 = (jdField_a_of_type_ArrayOfFloat[(k + 1)] - f4) / (f1 - f2);
-        f2 = (f3 - f2) * f1 + f4;
-      }
-      d1 = f2 * this.g;
-      this.jdField_a_of_type_Float = (f1 * this.g / this.jdField_f_of_type_Int * 1000.0F);
-      this.jdField_b_of_type_Float = ((float)((this.jdField_a_of_type_Float - this.jdField_a_of_type_Double) / (l1 - this.jdField_b_of_type_Long) * 1000.0D));
-      continue;
-      d1 = blgl.a((float)l2 / this.jdField_e_of_type_Int) * this.h;
-      continue;
-      f1 = (float)l2 / this.jdField_e_of_type_Int - 1.0F;
-      f2 = this.h;
-      d1 = (f1 * this.jdField_f_of_type_Float + this.jdField_f_of_type_Float) * (f2 * f1 * f1 * f1 * f1);
+    e();
+    if (this.jdField_a_of_type_Blst != null) {
+      this.jdField_a_of_type_Blst.g();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blnv
  * JD-Core Version:    0.7.0.1
  */

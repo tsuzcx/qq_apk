@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar.model;
 
-import apse;
+import aolr;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQARSession$3
   implements Runnable
 {
-  public QQARSession$3(apse paramapse) {}
+  public QQARSession$3(aolr paramaolr) {}
   
   public void run()
   {
-    this.this$0.e();
+    this.this$0.f();
     QLog.i("AREngine_QQARSession", 1, "stop end. mCurEngineState = " + this.this$0.a);
   }
 }

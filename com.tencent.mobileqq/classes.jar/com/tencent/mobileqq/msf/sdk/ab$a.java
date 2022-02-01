@@ -12,18 +12,18 @@ public class ab$a
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MSF.D.RemoteServiceProxy", 2, "delay send queueSize: " + ab.g.size());
+      QLog.d("MSF.D.RemoteServiceProxy", 2, "delay send queueSize: " + ab.f.size());
     }
-    this.a.q = false;
-    if (ab.g.size() > 0) {
-      while (!ab.g.isEmpty())
+    this.a.p = false;
+    if (ab.f.size() > 0) {
+      while (!ab.f.isEmpty())
       {
-        ToServiceMsg localToServiceMsg = (ToServiceMsg)ab.g.poll();
+        ToServiceMsg localToServiceMsg = (ToServiceMsg)ab.f.poll();
         this.a.sendMsg(localToServiceMsg);
       }
     }
     if (QLog.isColorLevel()) {
-      QLog.d("MSF.D.RemoteServiceProxy", 2, "delay send finished queueSize: " + ab.g.size());
+      QLog.d("MSF.D.RemoteServiceProxy", 2, "delay send finished queueSize: " + ab.f.size());
     }
   }
 }

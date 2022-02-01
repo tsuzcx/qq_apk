@@ -1,19 +1,24 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.settings.QGSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class xbi
-  extends wip
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public final String a;
+  public xbi(QGSettingFragment paramQGSettingFragment) {}
   
-  public xbi(ErrorMessage paramErrorMessage, String paramString)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String toString()
-  {
-    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + "} ";
+    if (paramBoolean) {
+      QGSettingFragment.b(true);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      QGSettingFragment.b(false);
+    }
   }
 }
 

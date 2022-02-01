@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
-import bjbs;
+import bhht;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class LoginView$13
   implements Runnable
 {
-  LoginView$13(LoginView paramLoginView, String paramString, bjbs parambjbs) {}
+  LoginView$13(LoginView paramLoginView, String paramString, bhht parambhht) {}
   
   public void run()
   {

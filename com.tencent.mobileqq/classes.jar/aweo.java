@@ -1,19 +1,6 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
-
-final class aweo
-  implements DialogInterface.OnClickListener
+public abstract interface aweo
 {
-  aweo(Context paramContext) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bjfq.c();
-    FloatingScreenPermission.requestPermission(this.a);
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2, Object paramObject);
 }
 
 

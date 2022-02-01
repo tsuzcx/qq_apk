@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
-import aoti;
+import anmf;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -12,7 +12,7 @@ class TroopSuspiciousFragment$11
   public void run()
   {
     if (TroopSuspiciousFragment.a(this.this$0) != null) {
-      TroopSuspiciousFragment.a(this.this$0).a().a().a(true);
+      TroopSuspiciousFragment.a(this.this$0).getMsgHandler().a().a(true);
     }
   }
 }

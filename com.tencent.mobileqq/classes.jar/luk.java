@@ -1,149 +1,139 @@
-import android.media.SoundPool;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Rect;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
 public class luk
+  extends lun
 {
-  int jdField_a_of_type_Int;
-  SoundPool jdField_a_of_type_AndroidMediaSoundPool;
-  HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  HashSet<Integer> jdField_a_of_type_JavaUtilHashSet;
-  List<String> jdField_a_of_type_JavaUtilList;
-  int jdField_b_of_type_Int;
-  HashMap<String, Integer> jdField_b_of_type_JavaUtilHashMap;
-  int c;
+  public luf a;
+  public boolean a;
+  public luz[] a;
+  public int b;
+  public luz[] b;
+  public int c;
+  public int d;
+  public int e;
   
-  public luk(List<String> paramList, int paramInt)
+  public luk(luf paramluf)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_b_of_type_Int = paramList.size();
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfLuz = new luz[6];
+    this.jdField_b_of_type_ArrayOfLuz = new luz[6];
+    this.jdField_a_of_type_Luf = paramluf;
+    this.jdField_c_of_type_ArrayOfLuz = this.jdField_a_of_type_ArrayOfLuz;
+    this.jdField_b_of_type_Long = 1800L;
   }
   
-  public void a()
+  public void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoundPoolHelper", 2, "releaseMusic");
-    }
-    if (this.jdField_a_of_type_AndroidMediaSoundPool != null)
+    super.a(paramLong);
+    Rect localRect = this.jdField_a_of_type_Luf.a();
+    int i;
+    int j;
+    int k;
+    int m;
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidMediaSoundPool.release();
-      this.jdField_a_of_type_AndroidMediaSoundPool = null;
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      this.jdField_a_of_type_JavaUtilHashSet.clear();
-      this.jdField_b_of_type_JavaUtilHashMap.clear();
-      this.c = 0;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (localInteger == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SoundPoolHelper", 2, "stopMusic fail soundID is null, path = " + paramString);
+      i = (localRect.left + localRect.right - this.d) / 2;
+      j = (localRect.top + localRect.bottom - this.e) / 2;
+      k = (localRect.left + localRect.right + this.d) / 2;
+      m = localRect.top;
+      a(i, j, k, (localRect.bottom + m + this.e) / 2);
+      if (this.jdField_a_of_type_Luf.a == null) {
+        break label237;
       }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (this.jdField_a_of_type_JavaUtilHashSet.contains(localInteger)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("SoundPoolHelper", 2, "stopMusic fail soundID is not ready, path = " + paramString);
-        return;
-        localInteger = (Integer)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
-        if (localInteger != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SoundPoolHelper", 2, "stopMusic fail steamID is null, path = " + paramString);
-      return;
-    } while (this.jdField_a_of_type_AndroidMediaSoundPool == null);
-    this.jdField_a_of_type_AndroidMediaSoundPool.stop(localInteger.intValue());
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoundPoolHelper", 2, "playMusic, path = " + paramString + ",loop = " + paramBoolean);
-    }
-    if (TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SoundPoolHelper", 2, "playMusic fail path is empty ");
-      }
-    }
-    Integer localInteger;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localInteger = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-          if (localInteger != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("SoundPoolHelper", 2, "playMusic fail soundID is null, path = " + paramString + ",loop = " + paramBoolean);
-        return;
-        if (this.jdField_a_of_type_JavaUtilHashSet.contains(localInteger)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SoundPoolHelper", 2, "playMusic fail soundID is not ready, path = " + paramString + ",loop = " + paramBoolean);
-      return;
-    } while (this.jdField_a_of_type_AndroidMediaSoundPool == null);
-    SoundPool localSoundPool = this.jdField_a_of_type_AndroidMediaSoundPool;
-    int j = localInteger.intValue();
-    if (paramBoolean) {}
-    for (int i = -1;; i = 0)
-    {
-      i = localSoundPool.play(j, 1.0F, 1.0F, 1, i, 1.0F);
-      this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(i));
-      return;
-    }
-  }
-  
-  public void a(lum paramlum)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoundPoolHelper", 2, "loadMusic ,soundPool = " + this.jdField_a_of_type_AndroidMediaSoundPool);
-    }
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SoundPoolHelper", 2, "loadMusic fail filPathList is empty");
-      }
+      a(this.jdField_a_of_type_Luf.a());
     }
     for (;;)
     {
+      b(this.jdField_a_of_type_Luf.a());
       return;
-      if (this.jdField_a_of_type_AndroidMediaSoundPool == null)
-      {
-        this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(this.jdField_a_of_type_JavaUtilList.size(), this.jdField_a_of_type_Int, 0);
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new lul(this, paramlum));
+      i = (localRect.left + localRect.right - this.jdField_b_of_type_Int) / 2;
+      j = (localRect.top + localRect.bottom - this.jdField_c_of_type_Int) / 2;
+      k = (localRect.left + localRect.right + this.jdField_b_of_type_Int) / 2;
+      m = localRect.top;
+      a(i, j, k, (localRect.bottom + m + this.jdField_c_of_type_Int) / 2);
+      break;
+      label237:
+      a(0);
+    }
+  }
+  
+  public void a(AVRedPacketManager paramAVRedPacketManager)
+  {
+    int k = 0;
+    int i = 0;
+    int j;
+    for (;;)
+    {
+      j = k;
+      if (i >= this.jdField_a_of_type_ArrayOfLuz.length) {
+        break;
       }
-      paramlum = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramlum.hasNext())
-      {
-        String str = (String)paramlum.next();
-        int i = this.jdField_a_of_type_AndroidMediaSoundPool.load(str, 1);
-        this.jdField_a_of_type_JavaUtilHashMap.put(str, Integer.valueOf(i));
+      this.jdField_a_of_type_ArrayOfLuz[i] = new luz(paramAVRedPacketManager.a("qav_redpacket_focus_" + i * 6 + ".png"));
+      i += 1;
+    }
+    while (j < this.jdField_b_of_type_ArrayOfLuz.length)
+    {
+      this.jdField_b_of_type_ArrayOfLuz[j] = new luz(paramAVRedPacketManager.a("qav_redpacket_focus_big_" + j * 6 + ".png"));
+      j += 1;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    {
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label45;
       }
     }
+    label45:
+    for (luz[] arrayOfluz = this.jdField_b_of_type_ArrayOfLuz;; arrayOfluz = this.jdField_a_of_type_ArrayOfLuz)
+    {
+      this.jdField_c_of_type_ArrayOfLuz = arrayOfluz;
+      this.jdField_b_of_type_Long = (this.jdField_c_of_type_ArrayOfLuz.length * 300);
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    int j = 0;
+    super.b();
+    luz[] arrayOfluz = this.jdField_a_of_type_ArrayOfLuz;
+    int k = arrayOfluz.length;
+    int i = 0;
+    luz localluz;
+    while (i < k)
+    {
+      localluz = arrayOfluz[i];
+      if (localluz != null) {
+        localluz.a();
+      }
+      i += 1;
+    }
+    arrayOfluz = this.jdField_b_of_type_ArrayOfLuz;
+    k = arrayOfluz.length;
+    i = j;
+    while (i < k)
+    {
+      localluz = arrayOfluz[i];
+      if (localluz != null) {
+        localluz.a();
+      }
+      i += 1;
+    }
+    this.jdField_a_of_type_Luf = null;
+    this.jdField_a_of_type_ArrayOfLuz = null;
+    this.jdField_b_of_type_ArrayOfLuz = null;
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_b_of_type_Int = (paramInt1 * 380 / 750);
+    this.jdField_c_of_type_Int = (paramInt1 * 380 / 750);
+    this.d = (paramInt1 * 500 / 750);
+    this.e = (paramInt1 * 500 / 750);
   }
 }
 

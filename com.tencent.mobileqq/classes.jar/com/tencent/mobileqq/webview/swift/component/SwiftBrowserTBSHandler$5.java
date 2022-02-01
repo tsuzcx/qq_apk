@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import birb;
+import bgxh;
 import com.tencent.common.app.BaseApplicationImpl;
-import nmj;
+import nny;
 
 public class SwiftBrowserTBSHandler$5
   implements Runnable
 {
-  public SwiftBrowserTBSHandler$5(birb parambirb, String paramString) {}
+  public SwiftBrowserTBSHandler$5(bgxh parambgxh, String paramString) {}
   
   public void run()
   {
-    nmj.a(this.a, BaseApplicationImpl.getApplication().getRuntime(), null);
+    nny.a(this.a, BaseApplicationImpl.getApplication().getRuntime(), null);
   }
 }
 

@@ -1,22 +1,28 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class ahwf
-  extends aggl
+public class ahwf
+  implements ahwm
 {
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
-  public TextView e;
+  public ahwf(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment) {}
+  
+  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
+  {
+    if ((paramArrayOfAIORichMediaData != null) && (paramArrayOfAIORichMediaData.length > 0))
+    {
+      this.a.a = paramArrayOfAIORichMediaData[(paramArrayOfAIORichMediaData.length - 1)];
+      if (QLog.isColorLevel()) {
+        QLog.i("chatHistory.troop.portal", 2, "get the first media data");
+      }
+    }
+    do
+    {
+      return;
+      this.a.a = null;
+    } while (!QLog.isColorLevel());
+    QLog.i("chatHistory.troop.portal", 2, "no media data found");
+  }
 }
 
 

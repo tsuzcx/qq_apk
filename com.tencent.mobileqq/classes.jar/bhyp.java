@@ -1,23 +1,20 @@
-import com.tencent.image.NativeGifImage;
-import java.io.File;
+import android.os.Bundle;
 
-public class bhyp
-  extends NativeGifImage
+class bhyp
+  implements bibp
 {
-  private int a = 1;
+  bhyp(bhyo parambhyo) {}
   
-  public bhyp(File paramFile, boolean paramBoolean, float paramFloat, int paramInt)
+  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
-    this.a = paramInt;
-  }
-  
-  public void executeNewTask()
-  {
-    if (this.mCurrentLoop == this.a) {
-      return;
-    }
-    super.executeNewTask();
+    bhzm.b("DownloadManagerV2", "receive get code finished pkgName|" + paramString1 + " versionCode|" + paramInt + " code|" + paramString2 + " extraData|" + paramBundle);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("PackageName", paramString1);
+    localBundle.putString("Code", paramString2);
+    localBundle.putInt("VersionCode", paramInt);
+    localBundle.putBoolean("IsSuccess", paramBoolean);
+    localBundle.putAll(paramBundle);
+    bhyo.a(this.a, localBundle);
   }
 }
 

@@ -1,108 +1,83 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class argx
-  extends arac<argw>
+class argx
+  extends SosoInterface.OnLocationListener
 {
-  public static int a(Context paramContext, String paramString)
+  argx(argw paramargw, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "poke_msg_btn_is_show", 0);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public static void a(Context paramContext, String paramString, int paramInt)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo arg2)
   {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt(paramString + "_" + "poke_msg_btn_is_show", paramInt);
-    paramContext.apply();
-  }
-  
-  @NonNull
-  public argw a(int paramInt)
-  {
-    return new argw(0);
-  }
-  
-  @Nullable
-  public argw a(araj[] paramArrayOfaraj)
-  {
-    j = 0;
-    i = j;
-    if (paramArrayOfaraj != null)
-    {
-      i = j;
-      if (paramArrayOfaraj.length > 0) {
-        paramArrayOfaraj = paramArrayOfaraj[0].a;
-      }
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("EnterpriseQQManager", 2, "onLocationFinish() errCode=" + paramInt);
     }
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. strContent = " + paramArrayOfaraj);
-      }
-      i = new JSONObject(paramArrayOfaraj).getInt("isPushSwitchShow");
+    if (paramInt == 0) {
+      paramInt = i;
     }
-    catch (Exception paramArrayOfaraj)
+    argy localargy;
+    label219:
+    while (paramInt != 0)
     {
-      for (;;)
+      ??? = ???.mLocation;
+      double d1 = ???.mLat02;
+      double d2 = ???.mLon02;
+      argw.a(this.a, d1);
+      argw.b(this.a, d2);
+      argw.a(this.a, System.currentTimeMillis());
+      synchronized (argw.a())
       {
-        i = j;
-        if (QLog.isColorLevel())
+        if ((argw.a(this.a) == null) || (argw.a(this.a).size() <= 0)) {
+          break label219;
+        }
+        Iterator localIterator1 = argw.a(this.a).iterator();
+        do
         {
-          QLog.e("handlePushMsgBtnConfig", 2, "PushMsgBtnConfig parse error", paramArrayOfaraj);
-          i = j;
+          if (!localIterator1.hasNext()) {
+            break;
+          }
+          localargy = (argy)localIterator1.next();
+        } while (localargy == null);
+        this.a.a(argw.a(this.a), argw.a(this.a), localargy.a, localargy.b, true, d1, d2);
+      }
+      paramInt = 0;
+      continue;
+      argw.a(this.a).clear();
+    }
+    label362:
+    for (;;)
+    {
+      argw.a(this.a, null);
+      argw.a(this.a, null);
+      return;
+      synchronized (argw.a())
+      {
+        if ((argw.a(this.a) == null) || (argw.a(this.a).size() <= 0)) {
+          break label362;
+        }
+        Iterator localIterator2 = argw.a(this.a).iterator();
+        while (localIterator2.hasNext())
+        {
+          localargy = (argy)localIterator2.next();
+          if (localargy != null) {
+            this.a.a(argw.a(this.a), argw.a(this.a), localargy.a, localargy.b, false, 0.0D, 0.0D);
+          }
         }
       }
+      argw.a(this.a).clear();
     }
-    return new argw(i);
-  }
-  
-  public void a(argw paramargw)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("handlePushMsgBtnConfig", 2, "handlePushMsgBtnConfig. onUpdate = " + paramargw.a);
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    a(localQQAppInterface.getApp(), localQQAppInterface.getAccount(), paramargw.a);
-  }
-  
-  public Class clazz()
-  {
-    return argw.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 439;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     argx
  * JD-Core Version:    0.7.0.1
  */

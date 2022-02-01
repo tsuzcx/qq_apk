@@ -9,23 +9,23 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import zew;
-import zex;
-import zez;
-import zfh;
-import zfi;
-import zfs;
+import yfx;
+import yfy;
+import yga;
+import ygi;
+import ygj;
+import ygt;
 
 public class FacePagerAdapter
   extends PagerAdapter
-  implements zfs
+  implements ygt
 {
   private Context jdField_a_of_type_AndroidContentContext;
   private List<FaceListPage> jdField_a_of_type_JavaUtilList = new LinkedList();
   private Queue<FaceListPage> jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  private zew jdField_a_of_type_Zew;
-  private zez jdField_a_of_type_Zez;
-  private zfh jdField_a_of_type_Zfh;
+  private yfx jdField_a_of_type_Yfx;
+  private yga jdField_a_of_type_Yga;
+  private ygi jdField_a_of_type_Ygi;
   
   public FacePagerAdapter(Context paramContext)
   {
@@ -39,33 +39,33 @@ public class FacePagerAdapter
   
   public void a(int paramInt)
   {
-    zex localzex = this.jdField_a_of_type_Zfh.a(paramInt);
-    if (localzex != null)
+    yfy localyfy = this.jdField_a_of_type_Ygi.a(paramInt);
+    if (localyfy != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
         FaceListPage localFaceListPage = (FaceListPage)localIterator.next();
         if (localFaceListPage.a == paramInt) {
-          localFaceListPage.a(localzex);
+          localFaceListPage.a(localyfy);
         }
       }
     }
   }
   
-  public void a(zew paramzew)
+  public void a(yfx paramyfx)
   {
-    this.jdField_a_of_type_Zew = paramzew;
+    this.jdField_a_of_type_Yfx = paramyfx;
   }
   
-  public void a(zez paramzez)
+  public void a(yga paramyga)
   {
-    this.jdField_a_of_type_Zez = paramzez;
+    this.jdField_a_of_type_Yga = paramyga;
   }
   
-  public void a(zfi paramzfi)
+  public void a(ygj paramygj)
   {
-    this.jdField_a_of_type_Zfh = paramzfi;
+    this.jdField_a_of_type_Ygi = paramygj;
     notifyDataSetChanged();
   }
   
@@ -93,10 +93,10 @@ public class FacePagerAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_Zfh == null) {
+    if (this.jdField_a_of_type_Ygi == null) {
       return 0;
     }
-    return this.jdField_a_of_type_Zfh.a();
+    return this.jdField_a_of_type_Ygi.a();
   }
   
   public int getItemPosition(Object paramObject)
@@ -106,18 +106,18 @@ public class FacePagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_Zfh == null) {
+    if (this.jdField_a_of_type_Ygi == null) {
       return null;
     }
-    zex localzex = this.jdField_a_of_type_Zfh.a(paramInt);
+    yfy localyfy = this.jdField_a_of_type_Ygi.a(paramInt);
     FaceListPage localFaceListPage2 = (FaceListPage)this.jdField_a_of_type_JavaUtilQueue.poll();
     FaceListPage localFaceListPage1 = localFaceListPage2;
     if (localFaceListPage2 == null) {
-      localFaceListPage1 = new FaceListPage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Zez, this.jdField_a_of_type_Zew);
+      localFaceListPage1 = new FaceListPage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Yga, this.jdField_a_of_type_Yfx);
     }
     paramViewGroup.addView(localFaceListPage1);
     localFaceListPage1.a = paramInt;
-    localFaceListPage1.a(localzex);
+    localFaceListPage1.a(localyfy);
     this.jdField_a_of_type_JavaUtilList.add(localFaceListPage1);
     return localFaceListPage1;
   }

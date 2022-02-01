@@ -1,7 +1,19 @@
-class bhhp
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.mobileqq.widget.QQBlurView;
+
+public class bhhp
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  bhhl jdField_a_of_type_Bhhl;
-  bhhn jdField_a_of_type_Bhhn;
+  public bhhp(QQBlurView paramQQBlurView) {}
+  
+  public boolean onPreDraw()
+  {
+    if (!QQBlurView.a(this.a)) {}
+    while (!QQBlurView.a(this.a).a()) {
+      return true;
+    }
+    return QQBlurView.a(this.a).b();
+  }
 }
 
 

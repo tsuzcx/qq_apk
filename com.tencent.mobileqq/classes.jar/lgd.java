@@ -1,66 +1,60 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public class lgd
+public abstract class lgd
 {
-  private anud[] a = new anud[4];
+  protected static final String[] a;
+  public VideoAppInterface a;
+  public final String a;
   
-  private anud b(VideoAppInterface paramVideoAppInterface, int paramInt)
+  static
   {
-    Object localObject = null;
-    long l1 = System.currentTimeMillis();
-    switch (paramInt)
-    {
-    }
-    for (paramVideoAppInterface = localObject;; paramVideoAppInterface = new lfr(paramVideoAppInterface))
-    {
-      lbj.c("BusinessHandlerFactory", "createHandler unknown name");
-      for (;;)
-      {
-        long l2 = System.currentTimeMillis();
-        lbj.c("BusinessHandlerFactory", "createHandler,cost time = [" + (l2 - l1) + "]");
-        return paramVideoAppInterface;
-        paramVideoAppInterface = new lgc(paramVideoAppInterface);
-        continue;
-        paramVideoAppInterface = new lfz(paramVideoAppInterface);
-        continue;
-        paramVideoAppInterface = new ltz(paramVideoAppInterface);
-      }
-    }
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "MANAGER_ZIMU", "MANAGER_FILTER", "MANAGER_PENDANT", "MANAGER_FACE", "MANAGER_NODE_REPORTER", "MANAGER_SUPPORT", "MANAGER_REDPACKET", "MANAGER_REDPACKET_Entry", "MANAGER_EFFECT_OPERATE", "MANAGER_ZIMU_LIVE", "MANAGER_Voice_Recog", "MANAGER_Tips", "MANAGER_mutex", "MANAGER_MAKEUP", "MANAGER_VIRTUAL_BG" };
   }
   
-  public anud a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  protected lgd(VideoAppInterface paramVideoAppInterface)
   {
-    Object localObject = this.a[paramInt];
-    if (localObject != null) {
-      return localObject;
-    }
-    synchronized (this.a)
-    {
-      anud localanud = this.a[paramInt];
-      localObject = localanud;
-      if (localanud == null)
-      {
-        paramVideoAppInterface = b(paramVideoAppInterface, paramInt);
-        localObject = paramVideoAppInterface;
-        if (paramVideoAppInterface != null)
-        {
-          this.a[paramInt] = paramVideoAppInterface;
-          localObject = paramVideoAppInterface;
-        }
-      }
-      return localObject;
-    }
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "_" + AudioHelper.b());
   }
   
-  public void a(lfn paramlfn)
+  public static void a(String paramString, Context paramContext, int paramInt, boolean paramBoolean)
   {
-    paramlfn.a("TransInfoCreate.CreateSession", new int[] { 1 });
-    paramlfn.a("TransInfo.JoinSession", new int[] { 0 });
-    paramlfn.a("TransInfo.ExitSession", new int[] { 0 });
-    paramlfn.a("TransInfo.ChangeSession", new int[] { 0 });
-    paramlfn.a("TransInfo.RawData", new int[] { 0 });
-    paramlfn.a("OidbSvc.0xa75", new int[] { 2 });
+    if ((paramInt >= 0) && (paramInt < 15) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
+    {
+      String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+      paramContext = bfyz.b(paramContext).edit();
+      paramContext.putBoolean(str, paramBoolean);
+      paramContext.commit();
+      lba.h(paramString, "setPreload zzzzz  bid=" + paramInt);
+      return;
+    }
+    lba.h(paramString, "setPreload ERROR : bid=" + paramInt);
   }
+  
+  static boolean a(String paramString, VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < 15) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
+    {
+      String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+      boolean bool = bfyz.b(paramVideoAppInterface.getApplication()).getBoolean(str, false);
+      lba.f(paramString, "isPreloaded:" + str + "|" + bool);
+      return bool;
+    }
+    lba.h(paramString, "isPreloaded ERROR : bid=" + paramInt);
+    return false;
+  }
+  
+  protected abstract void a();
+  
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2) {}
+  
+  protected void a(String paramString, boolean paramBoolean) {}
+  
+  protected abstract boolean a(String paramString);
 }
 
 

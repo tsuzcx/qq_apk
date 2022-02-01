@@ -1,16 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.graphics.Bitmap;
+import com.tencent.image.URLDrawable.DownloadListener;
+import kotlin.Metadata;
 
-public class shz
-  extends pmr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$saveBitmapAndUpload$1", "Lcom/tencent/image/URLDrawable$DownloadListener;", "onFileDownloadFailed", "", "p0", "", "onFileDownloadStarted", "onFileDownloadSucceed", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class shz
+  implements URLDrawable.DownloadListener
 {
-  public shz(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
+  shz(String paramString, rqx paramrqx, Bitmap paramBitmap) {}
+  
+  public void onFileDownloadFailed(int paramInt)
   {
-    super(paramString);
+    rqx localrqx = this.jdField_a_of_type_Rqx;
+    if (localrqx != null) {
+      localrqx.a(2, "");
+    }
   }
   
-  public void a(pmk parampmk)
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
   {
-    parampmk.d();
+    shu.a(this.jdField_a_of_type_Shu, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rqx);
+    if (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    }
   }
 }
 

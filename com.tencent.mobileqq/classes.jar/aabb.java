@@ -1,42 +1,13 @@
-import android.arch.lifecycle.ViewModel;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.qphone.base.util.QLog;
-
-public abstract class aabb
-  extends ViewModel
+class aabb
+  implements beyw
 {
-  protected int a = -1;
-  protected vua a;
+  aabb(aaba paramaaba, String paramString) {}
   
-  public abstract String a();
-  
-  public void a() {}
-  
-  public void a(int paramInt)
+  public void a(String paramString1, String paramString2)
   {
-    this.a = paramInt;
-  }
-  
-  public void a(int paramInt, VSBaseRequest paramVSBaseRequest, aaav paramaaav)
-  {
-    VSNetworkHelper.a().a(paramInt, paramVSBaseRequest, paramaaav);
-    if (paramVSBaseRequest != null) {
-      QLog.d(a(), 1, a() + "->sendQCircleRequest: CmdName:" + paramVSBaseRequest.getCmdName() + "| TraceId:" + paramVSBaseRequest.getTraceId() + " | SeqId:" + paramVSBaseRequest.getCurrentSeq());
+    if (beyh.jdField_a_of_type_JavaLangString.equals(paramString2)) {
+      this.jdField_a_of_type_Aaba.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"id\":" + paramString2 + "}" });
     }
-  }
-  
-  public void a(VSBaseRequest paramVSBaseRequest, aaav paramaaav)
-  {
-    a(this.a, paramVSBaseRequest, paramaaav);
-  }
-  
-  protected void a(Object[] paramArrayOfObject) {}
-  
-  public void d(String paramString)
-  {
-    QLog.d(a(), 1, "loadPreloadResult:" + paramString);
-    aadg.a(paramString, new aabc(this));
   }
 }
 

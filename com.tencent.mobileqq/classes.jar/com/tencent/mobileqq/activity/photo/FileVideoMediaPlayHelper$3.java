@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.photo;
 
-import akqc;
+import ajob;
 import android.graphics.Bitmap;
 import android.os.Handler;
-import auoo;
-import bhmi;
+import ataw;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class FileVideoMediaPlayHelper$3
   implements Runnable
 {
-  public FileVideoMediaPlayHelper$3(akqc paramakqc, Bitmap paramBitmap) {}
+  public FileVideoMediaPlayHelper$3(ajob paramajob, Bitmap paramBitmap) {}
   
   public void run()
   {
-    String str = auoo.a(this.a);
-    if (bhmi.b(str)) {
+    String str = ataw.a(this.a);
+    if (FileUtils.fileExistsAndNotEmpty(str)) {
       ThreadManagerV2.getUIHandlerV2().post(new FileVideoMediaPlayHelper.3.1(this, str));
     }
   }

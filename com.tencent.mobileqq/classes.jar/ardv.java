@@ -1,72 +1,30 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator.5.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class ardv
-  extends arac<ardw>
+  implements arch
 {
-  public static ardw a()
-  {
-    return (ardw)aran.a().a(622);
-  }
+  ardv(ardu paramardu) {}
   
-  @NonNull
-  public ardw a(int paramInt)
+  public void a(int paramInt)
   {
-    return new ardw();
-  }
-  
-  @Nullable
-  public ardw a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return ardw.a(paramArrayOfaraj);
+    ardw localardw = this.a.a(paramInt);
+    if (localardw != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "on req timeout seq: " + paramInt);
+      }
+      Bundle localBundle = new Bundle();
+      this.a.a(localBundle, 1001);
+      localardw.a.putBundle("response", localBundle);
+      this.a.a(new WebIPCOperator.5.1(this, localardw));
     }
-    return null;
-  }
-  
-  public void a(ardw paramardw)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonTabSortConfProcessor", 2, "EmoticonTabSortConfProcessor onUpdate");
-    }
-  }
-  
-  public Class<ardw> clazz()
-  {
-    return ardw.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return false;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 622;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardv
  * JD-Core Version:    0.7.0.1
  */

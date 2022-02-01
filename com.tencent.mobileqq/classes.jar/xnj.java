@@ -1,57 +1,72 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.ProfileFeedPlayInfo;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.1;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.async.JobSegment;
+import com.tribe.async.reactive.Stream;
 import java.util.List;
 
-public class xnj
-  extends xmg<ProfileFeedPlayInfo>
+public abstract class xnj<T extends xnk>
+  extends wbc
 {
-  public xnj(ProfileFeedPlayInfo paramProfileFeedPlayInfo)
+  private Stream<T> a;
+  public vwp a;
+  public xnl a;
+  protected xnn<T> a;
+  
+  public xnj(@NonNull xnn<T> paramxnn)
   {
-    super(paramProfileFeedPlayInfo);
-    paramProfileFeedPlayInfo = (yme)wth.a(11);
-    if (paramProfileFeedPlayInfo.b != null) {
-      this.a = paramProfileFeedPlayInfo.b;
-    }
+    this.jdField_a_of_type_Xnl = new xnl();
+    this.jdField_a_of_type_Xnn = paramxnn;
+    yos.a(this.jdField_a_of_type_Xnn);
   }
   
-  public ylw a(String paramString)
+  private void d()
   {
-    if (this.a == null) {
-      return null;
-    }
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      ylw localylw = (ylw)localIterator.next();
-      if (localylw.a.equals(paramString)) {
-        return localylw;
-      }
-    }
-    return null;
+    a();
+    Bosses.get().postLightWeightJob(new FeedListPageLoaderBase.1(this), 0);
   }
   
-  public void a(boolean paramBoolean, int paramInt, xmy paramxmy)
+  public abstract JobSegment<xnm, T> a();
+  
+  public abstract JobSegment<Integer, xnm> a(xnl paramxnl);
+  
+  protected abstract T a();
+  
+  protected abstract T a(ErrorMessage paramErrorMessage);
+  
+  public xnl a()
   {
-    if (this.a == null)
-    {
-      paramxmy.a(new ErrorMessage(940001, "null point"), null, true);
-      return;
-    }
-    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
-    if ((paramBoolean) && (((List)localObject).size() > 0))
-    {
-      List localList = b((List)localObject);
-      paramxmy.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
-      yuk.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
-      return;
-    }
-    localObject = new xcy();
-    ((xcy)localObject).a = this.a.a();
-    ((xcy)localObject).b = QQStoryContext.a().b();
-    yuk.c("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request with cookie " + ((xcy)localObject).a);
-    wow.a().a((wpa)localObject, new xnk(this, paramxmy));
+    return this.jdField_a_of_type_Xnl;
+  }
+  
+  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
+  {
+    super.a(paramTencentLocation, paramInt);
+    this.jdField_a_of_type_Xnl.a();
+    d();
+  }
+  
+  protected abstract void a(List<String> paramList, boolean paramBoolean);
+  
+  public void a(xnl paramxnl)
+  {
+    this.jdField_a_of_type_Xnl = paramxnl;
+    xvv.a("Q.qqstory.home.position", "restore last time cache:%s", paramxnl);
+  }
+  
+  public T b()
+  {
+    return a();
+  }
+  
+  public void c()
+  {
+    super.c();
+    d();
   }
 }
 

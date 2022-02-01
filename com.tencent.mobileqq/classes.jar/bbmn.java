@@ -1,13 +1,42 @@
-import android.media.MediaFormat;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.DataLineDecoder.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgType0x210;
 
 public class bbmn
+  implements bbnb
 {
-  public int a = -1;
-  public MediaFormat a;
-  public String a;
-  public int b = -1;
-  public MediaFormat b;
-  public String b;
+  private void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DataLineDecoder", 2, "<---decodeC2CMsgPkg_Dataline");
+    }
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("DataLineDecoder", 2, "<---decodeC2CMsgPkg_Dataline: return isReaded4DataLine:" + paramBoolean);
+      }
+      return;
+    }
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread())
+    {
+      new Handler(localLooper).post(new DataLineDecoder.1(this, paramMessageHandler, paramMsg));
+      return;
+    }
+    ((amqd)paramMessageHandler.app.getBusinessHandler(8)).a(paramMsg);
+  }
+  
+  public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbkm parambbkm, MessageHandler paramMessageHandler)
+  {
+    a(paramMessageHandler, paramMsg, parambbkm.h);
+  }
 }
 
 

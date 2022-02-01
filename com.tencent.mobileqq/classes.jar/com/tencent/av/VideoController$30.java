@@ -6,7 +6,7 @@ import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import lcv;
+import lcp;
 
 class VideoController$30
   implements Runnable
@@ -20,9 +20,9 @@ class VideoController$30
     Iterator localIterator = VideoController.a(this.this$0).iterator();
     while (localIterator.hasNext())
     {
-      lcv locallcv = (lcv)localIterator.next();
-      if ((locallcv.h) || (locallcv.d + 60L > l)) {
-        localArrayList.add(locallcv);
+      lcp locallcp = (lcp)localIterator.next();
+      if ((locallcp.h) || (locallcp.d + 60L > l)) {
+        localArrayList.add(locallcp);
       }
     }
     if (localArrayList.size() != VideoController.a(this.this$0).size())

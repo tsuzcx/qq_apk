@@ -1,28 +1,26 @@
 package cooperation.qzone.share;
 
-import bhlq;
-import bhpc;
-import bnhe;
-import bnhf;
+import bfur;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class QZoneShareActivity$4$2
+class QZoneShareActivity$4$2
   implements Runnable
 {
-  public QZoneShareActivity$4$2(bnhe parambnhe, long paramLong, String paramString) {}
+  QZoneShareActivity$4$2(QZoneShareActivity.4 param4, long paramLong, String paramString) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Long == -100070004L) || (this.jdField_a_of_type_Long == -1000710003L))
+    if ((this.val$finalErrCode == -100070004L) || (this.val$finalErrCode == -1000710003L))
     {
-      this.jdField_a_of_type_Bnhe.a.k();
-      bhlq.a(this.jdField_a_of_type_Bnhe.a, 233, this.jdField_a_of_type_Bnhe.a.getString(2131718142), this.jdField_a_of_type_JavaLangString, new bnhf(this), null).show();
+      this.this$1.this$0.hideProgressDialog();
+      bfur.a(this.this$1.this$0, 233, this.this$1.this$0.getString(2131718383), this.val$finalErrMsg, new QZoneShareActivity.4.2.1(this), null).show();
       return;
     }
-    this.jdField_a_of_type_Bnhe.a.k();
-    QZoneShareActivity.e(this.jdField_a_of_type_Bnhe.a);
-    QQToast.a(this.jdField_a_of_type_Bnhe.a, 1, 2131693721, 1).a();
-    this.jdField_a_of_type_Bnhe.a.finish();
+    this.this$1.this$0.hideProgressDialog();
+    QZoneShareActivity.access$600(this.this$1.this$0);
+    QQToast.a(this.this$1.this$0, 1, 2131693817, 1).a();
+    this.this$1.this$0.finish();
   }
 }
 

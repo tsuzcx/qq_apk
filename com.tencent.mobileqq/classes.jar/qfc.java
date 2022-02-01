@@ -1,6 +1,31 @@
-public abstract interface qfc
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+
+class qfc
+  implements View.OnAttachStateChangeListener
 {
-  public abstract void a();
+  qfc(qfb paramqfb) {}
+  
+  public void onViewAttachedToWindow(View paramView) {}
+  
+  public void onViewDetachedFromWindow(View paramView)
+  {
+    if (qfb.a(this.a) != null)
+    {
+      qfb.a(this.a).b();
+      qfb.a(this.a, null);
+    }
+    if (qfb.a(this.a) != null)
+    {
+      qfb.a(this.a).a();
+      qfb.a(this.a, null);
+    }
+    if (qfb.a(this.a) != null)
+    {
+      qfb.a(this.a).a();
+      qfb.a(this.a, null);
+    }
+  }
 }
 
 

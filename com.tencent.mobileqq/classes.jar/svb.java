@@ -1,38 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.InputStream;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class svb
-  implements ComplementFileStringLoader
+class svb
+  implements svf
 {
-  private svi a;
+  svb(sup paramsup) {}
   
-  public svb(svi paramsvi)
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    this.a = paramsvi;
-  }
-  
-  public String loadFileAsString(String paramString)
-  {
-    try
-    {
-      InputStream localInputStream = this.a.a(paramString);
-      if (localInputStream == null) {
-        throw new IllegalStateException(paramString + " not found");
-      }
-    }
-    catch (IOException localIOException)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("OfflineComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
-        localIOException.printStackTrace();
-      }
-      return null;
-    }
-    String str = svr.a(localIOException);
-    return str;
+    svr.a(paramContext, paramProteusItemData.b, paramProteusItemData.a);
   }
 }
 

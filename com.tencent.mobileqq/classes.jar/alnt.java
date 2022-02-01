@@ -1,114 +1,70 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.ArrayList;
 
-public abstract class alnt
+class alnt
+  implements amdy
 {
-  public static final int[] a;
-  public static final int[] b = { 2130839514, 2130839513, 2130839513, 2130839513, 2130839515, 2130839515, 2130839515, 2130839513, 2130839513, 2130839515 };
-  public static final int[] c = { 2131370743, 2131370763, 2131370737, 2131370756, 2131370753, 2131370754, 2131370766, 2131370762, 2131370761, 2131370736 };
-  protected alms a;
-  protected blpv a;
+  alnt(alnr paramalnr) {}
   
-  static
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131691323, 2131691124, 2131691106, 2131691109, 2131691107, 2131691108, 2131693878, 2131692807, 2131692805, 2131691105 };
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public abstract View a(int paramInt, Object paramObject, alno paramalno, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, alpv paramalpv);
-  
-  public final View a(Context paramContext, int paramInt, alnv paramalnv)
-  {
-    View localView = LayoutInflater.from(paramContext).inflate(paramInt, null);
-    if ((this.jdField_a_of_type_Alms != null) && (this.jdField_a_of_type_Alms.a()))
-    {
-      if (this.jdField_a_of_type_Blpv == null) {
-        this.jdField_a_of_type_Blpv = a(paramContext);
+    if (paramBoolean) {
+      if ((paramInt1 > 0) && (!ApolloUtil.d(paramInt1))) {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloManager", 2, "role rsc NOT complete.");
+        }
       }
-      return this.jdField_a_of_type_Blpv.a(paramContext, localView, paramalnv, -1);
     }
-    paramalnv.g = localView;
-    paramalnv.a = null;
-    return localView;
-  }
-  
-  public blpv a(Context paramContext)
-  {
-    int i = paramContext.getResources().getDimensionPixelSize(2131298726);
-    int j = paramContext.getResources().getDimensionPixelSize(2131298727);
-    int k = a();
-    paramContext = c;
-    int[] arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
-    int[] arrayOfInt2 = b;
-    return new alnu(this, k, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
-  }
-  
-  public List<String> a(RecentBaseData paramRecentBaseData, Context paramContext)
-  {
-    return null;
-  }
-  
-  public void a(alms paramalms)
-  {
-    this.jdField_a_of_type_Alms = paramalms;
-  }
-  
-  public void a(Context paramContext, View paramView, int paramInt, Object paramObject, alnv paramalnv, View.OnClickListener paramOnClickListener)
-  {
-    if (this.jdField_a_of_type_Blpv != null) {}
-    for (int i = this.jdField_a_of_type_Blpv.a(paramContext, paramView, paramInt, paramObject, paramalnv, paramOnClickListener);; i = 0)
+    label96:
+    do
     {
-      int j = paramView.getScrollX();
-      if ((paramInt >= 0) && (this.jdField_a_of_type_Alms != null) && (this.jdField_a_of_type_Alms.a == paramInt))
+      VasExtensionHandler localVasExtensionHandler;
+      do
       {
-        paramView.scrollTo(i, 0);
-        if ((j != 0) && (QLog.isDevelopLevel())) {
-          if (this.jdField_a_of_type_Alms != null) {
-            break label123;
+        return;
+        if (paramArrayOfInt != null)
+        {
+          paramInt1 = 0;
+          for (;;)
+          {
+            if (paramInt1 >= paramArrayOfInt.length) {
+              break label96;
+            }
+            if (!ApolloUtil.c(paramArrayOfInt[paramInt1]))
+            {
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("ApolloManager", 2, "dress rsc NOT complete, id:" + paramArrayOfInt[paramInt1]);
+              return;
+            }
+            paramInt1 += 1;
           }
         }
-      }
-      label123:
-      for (paramContext = null;; paramContext = Integer.valueOf(this.jdField_a_of_type_Alms.a))
+        paramArrayOfInt = new ArrayList(1);
+        paramArrayOfInt.add(paramString);
+        localVasExtensionHandler = (VasExtensionHandler)this.a.a.getBusinessHandler(71);
+        localVasExtensionHandler.notifyUI(2, true, paramArrayOfInt);
+        alvp.a().a(paramArrayOfInt);
+        localVasExtensionHandler.a(paramString, null);
+      } while (!QLog.isColorLevel());
+      QLog.d("ApolloManager", 2, "apollo dress download ok notifyUI uin: " + ApolloUtil.d(paramString));
+      return;
+      if (!TextUtils.isEmpty(paramString))
       {
-        axxb.a("updateItemMenuView", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j), paramContext });
-        return;
-        if (j == 0) {
-          break;
-        }
-        paramView.scrollTo(0, 0);
-        break;
+        paramArrayOfInt = new ArrayList(1);
+        paramArrayOfInt.add(paramString);
+        localVasExtensionHandler = (VasExtensionHandler)this.a.a.getBusinessHandler(71);
+        localVasExtensionHandler.notifyUI(2, false, paramArrayOfInt);
+        localVasExtensionHandler.a(paramString, null);
       }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloManager", 2, "apollo dress download failed " + ApolloUtil.d(paramString));
   }
-  
-  protected void a(View paramView)
-  {
-    if ((paramView instanceof DynamicAvatarView))
-    {
-      paramView = (DynamicAvatarView)paramView;
-      if (paramView.a == null) {
-        paramView.a = new blqj();
-      }
-      paramView.a.a(true);
-    }
-  }
-  
-  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, Drawable paramDrawable) {}
 }
 
 

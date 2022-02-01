@@ -1,28 +1,28 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rln;
-import rnu;
-import rol;
-import rpt;
-import rsk;
+import rsn;
+import ruw;
+import rvn;
+import rwv;
+import rzo;
 
 public class VideoFeedsAdapter$15
   implements Runnable
 {
-  public VideoFeedsAdapter$15(rnu paramrnu, boolean paramBoolean) {}
+  public VideoFeedsAdapter$15(ruw paramruw, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((rnu.a(this.this$0) != null) && (rnu.a(this.this$0).a != null)) {
-      rnu.a(this.this$0).a.h(this.a);
+    if ((ruw.a(this.this$0) != null) && (ruw.a(this.this$0).a != null)) {
+      ruw.a(this.this$0).a.h(this.a);
     }
-    if ((this.a) && (!rnu.a(this.this$0).d()) && (rnu.a(this.this$0) != null)) {
-      rnu.a(this.this$0).b();
+    if ((this.a) && (!ruw.a(this.this$0).d()) && (ruw.a(this.this$0) != null)) {
+      ruw.a(this.this$0).b();
     }
-    while ((this.a) || (!rpt.b())) {
+    while ((this.a) || (!rwv.b())) {
       return;
     }
-    rnu.a(this.this$0).b();
+    ruw.a(this.this$0).b();
   }
 }
 

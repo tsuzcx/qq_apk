@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.ui.dashboard;
 
-import bonq;
+import blrx;
 import java.util.List;
 
 public final class AEDashboardUtil$3
   implements Runnable
 {
-  public AEDashboardUtil$3(bonq parambonq, List paramList1, List paramList2) {}
+  public AEDashboardUtil$3(blrx paramblrx, List paramList1, List paramList2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bonq.a(this.jdField_a_of_type_JavaUtilList, this.b);
+    this.jdField_a_of_type_Blrx.a(this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

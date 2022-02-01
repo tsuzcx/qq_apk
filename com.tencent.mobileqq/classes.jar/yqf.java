@@ -1,22 +1,35 @@
-public abstract interface yqf
+class yqf
+  implements ypx
 {
-  public abstract Object a();
+  yqf(yqe paramyqe) {}
   
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract void a(Object paramObject);
-  
-  public abstract void a(yqg paramyqg);
-  
-  public abstract void a(yqh paramyqh);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void a(yqc paramyqc, boolean paramBoolean)
+  {
+    int i = 0;
+    if (paramBoolean)
+    {
+      yqc[] arrayOfyqc = this.a.a();
+      j = arrayOfyqc.length;
+      i = 0;
+      while (i < j)
+      {
+        yqc localyqc = arrayOfyqc[i];
+        if (localyqc != paramyqc) {
+          localyqc.a(false);
+        }
+        i += 1;
+      }
+    }
+    paramyqc = this.a.a();
+    int j = paramyqc.length;
+    for (;;)
+    {
+      if ((i >= j) || (paramyqc[i].a())) {
+        return;
+      }
+      i += 1;
+    }
+  }
 }
 
 

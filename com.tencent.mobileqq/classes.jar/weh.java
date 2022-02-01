@@ -1,20 +1,49 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
-import com.tencent.biz.qqcircle.widgets.feed.QCircleTimeLineFeedItemView;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import feedcloud.FeedCloudMeta.StFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class weh
-  extends GridLayoutManager.SpanSizeLookup
+  extends vqr<wej>
 {
-  public weh(QCircleTimeLineFeedItemView paramQCircleTimeLineFeedItemView) {}
+  public List<String> a = new ArrayList();
   
-  public int getSpanSize(int paramInt)
+  public String a()
   {
-    if (((this.a.a() instanceof FeedCloudMeta.StFeed)) && (((FeedCloudMeta.StFeed)this.a.a()).type.get() == 2) && (((FeedCloudMeta.StFeed)this.a.a()).images.size() > 1)) {
-      return 1;
+    return "StorySvc.homepage_batch_feeds_label";
+  }
+  
+  public vqm a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspStoryFeedTagInfo localRspStoryFeedTagInfo = new qqstory_service.RspStoryFeedTagInfo();
+    try
+    {
+      localRspStoryFeedTagInfo.mergeFrom(paramArrayOfByte);
+      return new wej(localRspStoryFeedTagInfo);
     }
-    return 2;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqStoryFeedTagInfo localReqStoryFeedTagInfo = new qqstory_service.ReqStoryFeedTagInfo();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localReqStoryFeedTagInfo.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
+    }
+    return localReqStoryFeedTagInfo.toByteArray();
   }
 }
 

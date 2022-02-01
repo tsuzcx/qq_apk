@@ -1,63 +1,73 @@
-import android.os.Process;
-import android.support.annotation.NonNull;
-import java.io.File;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_COMM.COMM.StCommonExt;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.Packet;
 
 public class zix
+  extends ziv
 {
-  private static int a;
-  
-  public static String a(int paramInt)
+  public void a(Intent paramIntent, Bundle paramBundle, byte[] paramArrayOfByte)
   {
-    String str;
-    if (paramInt == 1)
-    {
-      bhmi.c(win.e + ".nomedia");
-      str = win.e + b(paramInt) + "/";
-    }
-    for (;;)
-    {
-      a(str);
-      return str;
-      str = antf.br + "edit_video/business_" + paramInt + "/" + b(paramInt) + "/";
-      bhmi.c(str + ".nomedia");
-    }
+    paramBundle.putByteArray("key_data", paramArrayOfByte);
+    notifyObserver(paramIntent, this.a, true, paramBundle, null);
   }
   
-  @NonNull
-  public static String a(int paramInt, String paramString1, String paramString2)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (paramString1 == null) {
-      throw new IllegalArgumentException("folderPath should not be null");
+    Object localObject3 = null;
+    Object localObject1 = null;
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
+    if (arrayOfByte != null) {}
+    for (Object localObject2 = new COMM.StCommonExt();; localObject2 = null) {
+      for (;;)
+      {
+        try
+        {
+          ((COMM.StCommonExt)localObject2).mergeFrom(arrayOfByte);
+          i = paramIntent.getIntExtra("key_index", -1);
+          arrayOfByte = paramIntent.getByteArrayExtra("key_request_feed_bytes");
+          if (arrayOfByte == null) {}
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
+        {
+          try
+          {
+            localObject1 = new CertifiedAccountMeta.StFeed();
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
+          {
+            int i;
+            localObject1 = localObject3;
+          }
+          try
+          {
+            ((CertifiedAccountMeta.StFeed)localObject1).mergeFrom(arrayOfByte);
+            localObject2 = new ziw((COMM.StCommonExt)localObject2, (CertifiedAccountMeta.StFeed)localObject1).a(paramIntent, i, a());
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = new byte[4];
+            }
+            paramPacket.setSSOCommand("CertifiedAccountSvc.certified_account_write.ModifyFeed");
+            paramPacket.putSendData(bgau.a((byte[])localObject1));
+            paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 30000L));
+            super.onSend(paramIntent, paramPacket);
+            return;
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException3)
+          {
+            break label166;
+          }
+          localInvalidProtocolBufferMicroException1 = localInvalidProtocolBufferMicroException1;
+          QLog.e("CertifiedAccountModifyFeedServlet", 2, QLog.getStackTraceString(localInvalidProtocolBufferMicroException1));
+          continue;
+        }
+        label166:
+        QLog.e("CertifiedAccountModifyFeedServlet", 2, QLog.getStackTraceString(localInvalidProtocolBufferMicroException2));
+      }
     }
-    String str = paramString1;
-    if (!paramString1.endsWith("/")) {
-      str = paramString1 + "/";
-    }
-    return str + System.currentTimeMillis() + "_" + b(paramInt) + paramString2;
-  }
-  
-  private static void a(String paramString)
-  {
-    paramString = new File(paramString);
-    boolean bool;
-    if (paramString.isFile())
-    {
-      bool = paramString.delete();
-      yuk.d("Q.qqstory.publish.edit.PublishFileManager", "delete file : " + bool);
-    }
-    if (!paramString.exists())
-    {
-      bool = paramString.mkdirs();
-      yuk.d("Q.qqstory.publish.edit.PublishFileManager", "create folder : " + bool);
-    }
-  }
-  
-  private static String b(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("T").append(System.currentTimeMillis()).append("B").append(paramInt).append("P").append(Process.myPid()).append("T").append(Process.myTid()).append("I");
-    paramInt = a;
-    a = paramInt + 1;
-    return paramInt;
   }
 }
 

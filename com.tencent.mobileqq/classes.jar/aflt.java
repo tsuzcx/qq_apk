@@ -1,19 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.Bitmap;
+import java.lang.ref.WeakReference;
 
-public class aflt
-  implements View.OnClickListener
+class aflt
 {
-  public aflt(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  int jdField_a_of_type_Int;
+  WeakReference<Bitmap> jdField_a_of_type_JavaLangRefWeakReference;
+  boolean jdField_a_of_type_Boolean;
+  int b;
   
-  public void onClick(View paramView)
-  {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  aflt(afls paramafls) {}
 }
 
 

@@ -5,28 +5,28 @@ import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import nws;
-import ogo;
+import nyd;
+import oib;
 
 public class AdvertisementVideoPreloadManager$7
   implements Runnable
 {
-  public AdvertisementVideoPreloadManager$7(nws paramnws, String paramString) {}
+  public AdvertisementVideoPreloadManager$7(nyd paramnyd, String paramString) {}
   
   public void run()
   {
-    synchronized (nws.a(this.this$0))
+    synchronized (nyd.a(this.this$0))
     {
-      nws.c("loadLocalConfigTask uin:" + this.a);
-      Object localObject2 = nws.a(this.this$0);
+      nyd.c("loadLocalConfigTask uin:" + this.a);
+      Object localObject2 = nyd.a(this.this$0);
       if (localObject2 != null)
       {
-        localObject2 = ((ogo)localObject2).a(PAAdPreloadTask.class, true, "mUserUin = ?", new String[] { this.a }, null, null, "mExpireTime asc", null);
+        localObject2 = ((oib)localObject2).a(PAAdPreloadTask.class, true, "mUserUin = ?", new String[] { this.a }, null, null, "mExpireTime asc", null);
         if (localObject2 != null)
         {
-          nws.a(this.this$0).clear();
-          nws.a(this.this$0).addAll((Collection)localObject2);
-          nws.c("loadLocalConfigTask taskSize:" + ((List)localObject2).size());
+          nyd.a(this.this$0).clear();
+          nyd.a(this.this$0).addAll((Collection)localObject2);
+          nyd.c("loadLocalConfigTask taskSize:" + ((List)localObject2).size());
           ThreadManager.executeOnNetWorkThread(new AdvertisementVideoPreloadManager.7.1(this));
         }
       }
@@ -34,7 +34,7 @@ public class AdvertisementVideoPreloadManager$7
       {
         return;
       }
-      nws.c("loadLocalConfigTask tasklist null");
+      nyd.c("loadLocalConfigTask tasklist null");
     }
   }
 }

@@ -1,18 +1,21 @@
-import org.jetbrains.annotations.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
+import java.util.List;
 
-class oub
-  implements ows
+public class oub
+  implements owf
 {
-  oub(otv paramotv) {}
+  public oub(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
   
-  public void a(long paramLong, boolean paramBoolean1, int paramInt1, @Nullable String paramString1, @Nullable String paramString2, int paramInt2, boolean paramBoolean2)
+  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<ouo> paramList, boolean paramBoolean2, int paramInt2, int paramInt3) {}
+  
+  public void onCommentStateError(int paramInt)
   {
-    if (paramBoolean2)
-    {
-      this.a.a(paramLong, paramBoolean1, paramInt1, paramString1, paramString2, paramInt2);
-      return;
+    if (paramInt == 1002) {
+      ReadInJoySecondCommentListFragment.a(this.a, true);
     }
-    this.a.a(paramLong, paramBoolean1, paramInt1, paramString1, paramInt2);
+    if (paramInt == 1003) {
+      yyi.a(1, 2131717283);
+    }
   }
 }
 

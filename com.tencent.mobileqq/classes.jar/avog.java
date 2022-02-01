@@ -1,13 +1,12 @@
-public abstract interface avog
-  extends avof
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.widget.ThemeImageView;
+
+class avog
 {
-  public abstract int getViewHeight();
-  
-  public abstract boolean isPined();
-  
-  public abstract boolean isShow(String paramString);
-  
-  public abstract void onScrollTo(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
 }
 
 

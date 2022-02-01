@@ -1,12 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
 
-class axea
-  implements DialogInterface.OnClickListener
+public abstract interface axea
 {
-  axea(axdx paramaxdx) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(View paramView);
 }
 
 

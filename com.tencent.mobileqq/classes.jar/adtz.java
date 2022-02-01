@@ -1,16 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adtz
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public adtz(AddRequestActivity paramAddRequestActivity) {}
+  public adtz(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    AddRequestActivity.a(this.a).dismiss();
-    AddRequestActivity.b(this.a, false);
+    Intent localIntent = new Intent(this.a, TroopAssisSettingActivity.class);
+    this.a.startActivity(localIntent);
+    bcef.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_msginfor_grp", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

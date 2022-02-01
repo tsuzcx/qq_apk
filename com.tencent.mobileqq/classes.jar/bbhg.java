@@ -1,44 +1,40 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.SquareImageView;
 
 public class bbhg
-  extends OrientationEventListener
+  extends bbhi
 {
-  public bbhg(CameraCaptureView paramCameraCaptureView, Context paramContext)
+  public int a;
+  public LinearLayout a;
+  public TextView a;
+  public URLImageView a;
+  public SquareImageView a;
+  public int b;
+  public LinearLayout b;
+  public LinearLayout c;
+  public LinearLayout d;
+  
+  public bbhg(ViewGroup paramViewGroup, int paramInt)
   {
-    super(paramContext);
+    super(paramViewGroup, paramInt);
   }
   
-  public void onOrientationChanged(int paramInt)
+  protected void a()
   {
-    this.a.v = paramInt;
-    if (paramInt == -1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraCaptureView", 2, "OrientationEventListener unknown");
-      }
-      this.a.w = 90;
-    }
-    if ((paramInt > 315) || (paramInt < 45)) {
-      this.a.w = 90;
-    }
-    for (;;)
-    {
-      if (this.a.g) {
-        this.a.u = this.a.w;
-      }
-      bbgr.a = this.a.u;
-      return;
-      if ((paramInt > 45) && (paramInt < 135)) {
-        this.a.w = 180;
-      } else if ((paramInt > 135) && (paramInt < 225)) {
-        this.a.w = 270;
-      } else if ((paramInt > 225) && (paramInt < 315)) {
-        this.a.w = 0;
-      }
-    }
+    View localView = a(this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378707));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)localView.findViewById(2131377526));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131368435));
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369846));
+    this.jdField_b_of_type_Int = this.jdField_b_of_type_AndroidWidgetLinearLayout.getChildCount();
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131368438));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131372632));
+    this.d = ((LinearLayout)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131372633));
   }
 }
 

@@ -1,12 +1,18 @@
-public class bdij
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import java.util.List;
+
+class bdij
+  extends bdiq
 {
-  public long a;
-  public boolean a;
-  
-  public bdij()
+  bdij(bdid parambdid, EditorState paramEditorState, List paramList)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = -1L;
+    super(parambdid, paramEditorState, paramList);
+  }
+  
+  public void a(EditorState paramEditorState)
+  {
+    super.a(paramEditorState);
+    bdid.a(this.a).a(true, true);
   }
 }
 

@@ -1,34 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
-class azeh
-  implements ImageAssetDelegate
+public class azeh
+  implements azeb
 {
-  azeh(azeg paramazeg) {}
+  private azfa a;
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public azeh(azfa paramazfa)
   {
-    Object localObject = null;
-    paramLottieImageAsset = paramLottieImageAsset.getFileName();
-    String str = this.a.jdField_a_of_type_JavaLangString + "guide_images" + File.separator + paramLottieImageAsset;
-    try
-    {
-      paramLottieImageAsset = mqr.a(str, this.a.jdField_a_of_type_Int, this.a.b);
-      return paramLottieImageAsset;
+    this.a = paramazfa;
+  }
+  
+  public void a(azfk paramazfk)
+  {
+    if (this.a != null) {
+      this.a.h(paramazfk);
     }
-    catch (Exception localException)
-    {
-      do
-      {
-        paramLottieImageAsset = localObject;
-      } while (!AudioHelper.f());
-      QLog.w(azef.jdField_a_of_type_JavaLangString, 1, "PromotionGuide Exception, imagePath[" + str + "]", localException);
-    }
-    return null;
   }
 }
 

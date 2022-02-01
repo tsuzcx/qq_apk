@@ -1,21 +1,22 @@
-import android.graphics.Canvas;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
-public abstract interface arvi
+class arvi
+  implements aszj
 {
-  public abstract float a();
+  arvi(arvh paramarvh) {}
   
-  public abstract Canvas a();
+  public void onNo()
+  {
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 0);
+  }
   
-  public abstract void a();
-  
-  public abstract void a(Canvas paramCanvas);
-  
-  public abstract void a(View.OnTouchListener paramOnTouchListener);
-  
-  public abstract void a(arvj paramarvj);
-  
-  public abstract void b();
+  public void onYes()
+  {
+    UniformDownloadActivity.a(this.a.a);
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 0);
+  }
 }
 
 

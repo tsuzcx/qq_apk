@@ -1,24 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
 
-class scg
-  extends sbh
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "value", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"}, k=3, mv={1, 1, 16})
+final class scg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  scg(sbi paramsbi) {}
+  scg(scd paramscd) {}
   
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    sbi.a(this.a, paramInt, paramBaseArticleInfo, paramString);
-  }
-  
-  public int b()
-  {
-    return 4;
-  }
-  
-  public int c()
-  {
-    return 4;
+    VideoFeedsStressFollowLayout localVideoFeedsStressFollowLayout = this.a.a();
+    Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "value");
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if (paramValueAnimator == null) {
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
+    }
+    localVideoFeedsStressFollowLayout.a(((Float)paramValueAnimator).floatValue());
   }
 }
 

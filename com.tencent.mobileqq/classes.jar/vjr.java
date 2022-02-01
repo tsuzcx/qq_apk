@@ -1,16 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class vjr
-  implements View.OnClickListener
+public class vjr
 {
-  vjr(vjp paramvjp) {}
-  
-  public void onClick(View paramView)
+  public static double a(int[] paramArrayOfInt)
   {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    int j = 0;
+    double d2 = 0.0D;
+    int k = paramArrayOfInt.length;
+    double d1 = 0.0D;
+    int i = 0;
+    while (i < k)
+    {
+      d1 += paramArrayOfInt[i];
+      i += 1;
+    }
+    double d3 = d1 / k;
+    i = j;
+    d1 = d2;
+    while (i < k)
+    {
+      d1 += (paramArrayOfInt[i] - d3) * (paramArrayOfInt[i] - d3);
+      i += 1;
+    }
+    return d1 / k;
   }
 }
 

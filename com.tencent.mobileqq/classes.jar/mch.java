@@ -1,12 +1,29 @@
 public class mch
+  extends mcg
 {
-  public int a = 2131166001;
-  public String a;
-  public int b = 2131165964;
-  public int c;
-  public int d = -1;
-  public int e;
-  public int f;
+  public static int b;
+  public static boolean c;
+  public static String d;
+  public final int a;
+  public final boolean a;
+  public final String c;
+  
+  public mch(long paramLong, String paramString, boolean paramBoolean, int paramInt)
+  {
+    super(6100, null);
+    a(paramLong, null);
+    this.jdField_c_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+    d = paramString;
+    jdField_c_of_type_Boolean = paramBoolean;
+    b = paramInt;
+  }
+  
+  public String toString()
+  {
+    return "mId[" + this.jdField_c_of_type_JavaLangString + "], mFrom[" + this.jdField_a_of_type_Int + "], mSender[" + this.jdField_a_of_type_Boolean + "], seq[" + a() + "]";
+  }
 }
 
 

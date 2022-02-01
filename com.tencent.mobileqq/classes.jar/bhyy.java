@@ -1,22 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.open.appstore.js.DINewForCommonWebView.2;
+import com.tencent.smtt.sdk.ValueCallback;
 
-public final class bhyy
-  implements EIPCResultCallback
+public class bhyy
+  implements ValueCallback<String>
 {
-  public bhyy(bhyv parambhyv) {}
+  public bhyy(DINewForCommonWebView.2 param2) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a(String paramString)
   {
-    if (paramEIPCResult.code != 0)
-    {
-      this.a.a(2, "", "");
-      return;
-    }
-    paramEIPCResult = (QuickUpdateIPCModule.Params)paramEIPCResult.data.getSerializable("params");
-    this.a.a(paramEIPCResult.intVal, paramEIPCResult.strVal1, paramEIPCResult.strVal2);
+    bhzm.b("DINewForCommonWebView", "[jsCallBack]:" + paramString);
   }
 }
 

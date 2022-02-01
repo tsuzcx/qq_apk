@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.view;
 
+import amlu;
 import android.content.Context;
 import android.util.AttributeSet;
-import anra;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 public class ApolloLinearLayoutNoPreview
   extends ApolloLinearLayout
@@ -18,7 +18,7 @@ public class ApolloLinearLayoutNoPreview
     super(paramContext, paramAttributeSet, paramInt1, paramInt2, paramInt3);
   }
   
-  public void a(BaseChatPie paramBaseChatPie, anra paramanra) {}
+  public void a(BaseChatPie paramBaseChatPie, amlu paramamlu) {}
 }
 
 

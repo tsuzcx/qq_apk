@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.essencemsg;
 
-import bfuo;
+import bedz;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopEssenceMsgManager$10
   implements Runnable
 {
-  public TroopEssenceMsgManager$10(bfuo parambfuo, Entity paramEntity) {}
+  public TroopEssenceMsgManager$10(bedz parambedz, Entity paramEntity) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
-    bfuo.a(this.this$0, this.a);
+    bedz.a(this.this$0, this.a);
     if (QLog.isColorLevel()) {
       QLog.i("TroopEssenceMsgManager", 2, "updateEntity costTime" + (System.currentTimeMillis() - l));
     }

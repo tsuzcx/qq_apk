@@ -44,28 +44,30 @@ public class HappyEyeballsRace
       doOnConnSuc(paramIConnection, paramHwEngine);
       return;
     }
-    doOnConnFail(paramIConnection, paramHwEngine);
+    doOnConnFail(paramIConnection);
   }
   
-  public void doOnConnFail(IConnection paramIConnection, HwEngine paramHwEngine)
+  public void doOnConnFail(IConnection paramIConnection)
   {
+    boolean bool = false;
     try
     {
       BdhLogUtil.LogEvent("C", "HappyEyeballsRace.doOnConnFail. mIsRacing = " + this.mIsRacing);
       if (this.mIsRacing)
       {
         this.mConnList.remove(paramIConnection);
+        paramIConnection = new StringBuilder().append("HappyEyeballsRace.doOnConnFail, mRacingRunnable == null : ");
+        if (this.mRacingRunnable == null) {
+          bool = true;
+        }
+        BdhLogUtil.LogEvent("C", bool + " , mConnList.size() = " + this.mConnList.size());
         if ((this.mRacingRunnable == null) && (this.mConnList.size() == 0)) {
           this.mIsRacing = false;
         }
       }
       return;
     }
-    finally
-    {
-      paramIConnection = finally;
-      throw paramIConnection;
-    }
+    finally {}
   }
   
   public void doOnConnSuc(IConnection paramIConnection, HwEngine paramHwEngine)
@@ -79,6 +81,7 @@ public class HappyEyeballsRace
       }
       breakOtherConns(paramIConnection);
       this.mIsIpv6Fast = paramIConnection.isIpv6();
+      BdhLogUtil.LogEvent("C", "HappyEyeballsRace.doOnConnSuc, mIsIpv6Fast = " + this.mIsIpv6Fast);
     }
   }
 }

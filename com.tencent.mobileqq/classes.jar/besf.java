@@ -1,23 +1,28 @@
+import com.tencent.mobileqq.data.TroopMessageNavigateInfo;
+import java.util.Comparator;
+
 class besf
-  extends aocj
+  implements Comparator<TroopMessageNavigateInfo>
 {
-  besf(bese parambese) {}
-  
-  public void a(boolean paramBoolean, long paramLong, aock paramaock)
+  public int a(TroopMessageNavigateInfo paramTroopMessageNavigateInfo1, TroopMessageNavigateInfo paramTroopMessageNavigateInfo2)
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramaock);
-    if (paramBoolean)
+    if (paramTroopMessageNavigateInfo1.type == paramTroopMessageNavigateInfo2.type)
     {
-      this.a.e();
-      return;
+      int i = 0;
+      if (paramTroopMessageNavigateInfo1.msgseq > paramTroopMessageNavigateInfo2.msgseq) {
+        i = -1;
+      }
+      while (paramTroopMessageNavigateInfo1.msgseq >= paramTroopMessageNavigateInfo2.msgseq) {
+        return i;
+      }
+      return 1;
     }
-    this.a.d();
+    return -(berd.a(paramTroopMessageNavigateInfo1.type) - berd.a(paramTroopMessageNavigateInfo2.type));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     besf
  * JD-Core Version:    0.7.0.1
  */

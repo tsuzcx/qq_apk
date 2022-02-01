@@ -1,83 +1,27 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class adzo
-  extends GestureDetector.SimpleOnGestureListener
+  extends BroadcastReceiver
 {
-  public adzo(BaseChatPie paramBaseChatPie) {}
+  public adzo(QQMapActivity paramQQMapActivity) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a(paramMotionEvent);
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return super.onDown(paramMotionEvent);
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    super.onLongPress(paramMotionEvent);
-    ((agvn)this.a.a(26)).a();
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((BaseChatPie.i() == 1) && (!BaseChatPie.a(this.a).booleanValue())) {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() != 0) {}
-    }
-    do
+    if ((paramIntent.getAction().equals("android.intent.action.SCREEN_OFF")) && (!this.a.p) && (!this.a.q) && (GesturePWDUtils.getGesturePWDState(this.a, this.a.k) == 2) && (GesturePWDUtils.getGesturePWDMode(this.a, this.a.k) == 21))
     {
-      return false;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() >= this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() - 1))
-      {
-        paramMotionEvent1 = new int[2];
-        this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() - 1).getLocationOnScreen(paramMotionEvent1);
-        int i = paramMotionEvent1[1];
-        if (BaseChatPie.g(this.a) == i)
-        {
-          this.a.w(1);
-          BaseChatPie.a(this.a, Boolean.valueOf(true));
-          BaseChatPie.e(this.a, -1);
-        }
-        BaseChatPie.e(this.a, i);
+      if (QLog.isColorLevel()) {
+        QLog.d("qqbaseactivity", 2, "qqmapactivity.start lock. receive lock.");
       }
-      if (BaseChatPie.a(this.a)) {
-        this.a.i(true);
-      }
-    } while (paramFloat2 >= 0.0F);
-    this.a.G = false;
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onShowPress");
+      paramContext = new Intent(this.a, GesturePWDUnlockActivity.class);
+      QQMapActivity.a(this.a, paramContext);
+      this.a.q = true;
     }
-    this.a.j(false);
-    this.a.i(true);
-    super.onShowPress(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    paramMotionEvent = (aqmb)this.a.a(50);
-    if (paramMotionEvent != null) {
-      paramMotionEvent.a(true);
-    }
-    this.a.j(false);
-    this.a.i(true);
-    if (paramMotionEvent != null) {
-      paramMotionEvent.a(false);
-    }
-    return false;
   }
 }
 

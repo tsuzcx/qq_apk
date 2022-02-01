@@ -1,37 +1,18 @@
-import android.database.Cursor;
 import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.ExpandableListConnector.GroupMetadata;
 
-final class bjqb
-  implements bjvx<bjqa>
+public final class bjqb
+  implements Parcelable.Creator<ExpandableListConnector.GroupMetadata>
 {
-  public int a()
+  public ExpandableListConnector.GroupMetadata a(Parcel paramParcel)
   {
-    return 0;
+    return ExpandableListConnector.GroupMetadata.a(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readLong());
   }
   
-  public bjqa a(Cursor paramCursor)
+  public ExpandableListConnector.GroupMetadata[] a(int paramInt)
   {
-    Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("data"));
-    if (localObject == null) {
-      return null;
-    }
-    paramCursor = Parcel.obtain();
-    paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
-    paramCursor.setDataPosition(0);
-    localObject = new bjqa();
-    ((bjqa)localObject).a(paramCursor);
-    paramCursor.recycle();
-    return localObject;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public bjvy[] a()
-  {
-    return new bjvy[] { new bjvy("groupId", "INTEGER UNIQUE"), new bjvy("data", "BLOB") };
+    return new ExpandableListConnector.GroupMetadata[paramInt];
   }
 }
 

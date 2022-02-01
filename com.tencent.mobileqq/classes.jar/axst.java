@@ -1,10 +1,18 @@
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import com.tencent.qphone.base.util.QLog;
+
 public class axst
+  extends axus
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  public axst(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountOnlineStateActivity", 2, "onBatteryChanged updateOnlineStatusItem");
+    }
+    AccountOnlineStateActivity.a(this.a).b();
+  }
 }
 
 

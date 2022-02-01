@@ -1,12 +1,28 @@
-import android.graphics.PointF;
+import org.json.JSONObject;
 
-public abstract interface zbg
+public class zbg
+  extends JSONObject
 {
-  public abstract void a(zfw paramzfw);
+  public zbg(zbe paramzbe, String paramString)
+  {
+    super(paramString);
+  }
   
-  public abstract void a(zfw paramzfw, int paramInt1, int paramInt2);
+  public int getInt(String paramString)
+  {
+    if (!has(paramString)) {
+      return 0;
+    }
+    return super.getInt(paramString);
+  }
   
-  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
+  public String getString(String paramString)
+  {
+    if (!has(paramString)) {
+      return "";
+    }
+    return super.getString(paramString);
+  }
 }
 
 

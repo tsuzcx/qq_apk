@@ -1,15 +1,9 @@
-import android.text.Editable;
-import java.util.Comparator;
+import android.app.Activity;
+import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
 
-final class bgjm
-  implements Comparator
+public abstract interface bgjm
 {
-  bgjm(Editable paramEditable) {}
-  
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
-  }
+  public abstract void a(QQVipMsgInfo paramQQVipMsgInfo, Activity paramActivity, int paramInt);
 }
 
 

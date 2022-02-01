@@ -1,160 +1,80 @@
-import android.animation.ValueAnimator;
-import android.view.View;
-import android.view.animation.BounceInterpolator;
-import android.view.animation.LinearInterpolator;
-import android.widget.ListAdapter;
-import android.widget.ListView;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.data.TroopGiftBagInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.concurrent.ConcurrentHashMap;
+import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.GiftBagInfo;
+import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.Player;
+import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.RspBody;
 
-public class bfcn
+class bfcn
+  extends nme
 {
-  private int jdField_a_of_type_Int;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private ListView jdField_a_of_type_AndroidWidgetListView;
-  private bfes jdField_a_of_type_Bfes;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
-  private boolean jdField_b_of_type_Boolean;
+  bfcn(bfci parambfci, bfch parambfch, String paramString1, String paramString2) {}
   
-  public bfcn(ListView paramListView, bfes parambfes, List<bfex> paramList)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidWidgetListView = paramListView;
-    this.jdField_a_of_type_Bfes = parambfes;
-    this.jdField_a_of_type_Bfes.a(paramList);
-    a(this.jdField_a_of_type_AndroidWidgetListView);
-    parambfes = this.jdField_a_of_type_AndroidWidgetListView.getLayoutParams();
-    parambfes.height = this.jdField_a_of_type_Int;
-    parambfes.width = this.jdField_b_of_type_Int;
-    paramListView.setLayoutParams(parambfes);
-    this.jdField_a_of_type_AndroidWidgetListView.setPadding(bhgr.a(this.jdField_a_of_type_AndroidWidgetListView.getContext(), 8.0F), -this.jdField_a_of_type_Int, 0, 0);
-  }
-  
-  public static List<bfex> a(JSONArray paramJSONArray)
-  {
-    if (paramJSONArray == null)
+    if ((paramInt != 0) || (paramArrayOfByte == null) || (this.jdField_a_of_type_Bfch == null))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("TribePostTitlePrefixPanelController", 2, "prefixJArray is null");
+        QLog.i(".troop.send_gift", 2, "send_oidb_0x6c2. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Bfch);
       }
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    for (;;)
-    {
-      if (i < paramJSONArray.length())
-      {
-        JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-        bfex localbfex = new bfex();
-        try
-        {
-          localbfex.a(localJSONObject);
-          if (localbfex.a()) {
-            localArrayList.add(localbfex);
-          }
-          i += 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            QLog.e("TribePostTitlePrefixPanelController", 2, "analyze error , " + localException);
-          }
-        }
+      if (this.jdField_a_of_type_Bfch != null) {
+        this.jdField_a_of_type_Bfch.a(paramInt, "sso request error or callback is null.");
       }
-    }
-    return localArrayList;
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { -this.jdField_a_of_type_Int, 0 });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(100L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bfco(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new bfcp(this));
-  }
-  
-  private void e()
-  {
-    this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, -this.jdField_a_of_type_Int });
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(100L);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new bfcq(this));
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new bfcr(this));
-  }
-  
-  public void a()
-  {
-    if ((!a()) && (!this.jdField_a_of_type_Boolean))
-    {
-      this.jdField_a_of_type_AndroidWidgetListView.setVisibility(0);
-      if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null) {
-        d();
-      }
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new BounceInterpolator());
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-    }
-  }
-  
-  public void a(ListView paramListView)
-  {
-    ListAdapter localListAdapter = paramListView.getAdapter();
-    if (localListAdapter == null) {
       return;
     }
-    int k = localListAdapter.getCount();
-    int i = 0;
-    int j = 0;
-    while (i < k)
+    oidb_0x6c2.RspBody localRspBody;
+    try
     {
-      View localView = localListAdapter.getView(i, null, paramListView);
-      localView.measure(0, 0);
-      j += localView.getMeasuredHeight();
-      int m = localView.getMeasuredWidth();
-      if (m > this.jdField_b_of_type_Int) {
-        this.jdField_b_of_type_Int = m;
+      localRspBody = new oidb_0x6c2.RspBody();
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramInt = localRspBody.uint32_result.get();
+      if ((paramInt != 0) || (paramBundle == null)) {
+        break label357;
       }
-      i += 1;
+      paramInt = paramBundle.getInt("subCmd");
+      if ((paramInt == 0) && (localRspBody.msg_gift_bag_info.has()))
+      {
+        paramBundle = (oidb_0x6c2.GiftBagInfo)localRspBody.msg_gift_bag_info.get();
+        paramArrayOfByte = null;
+        if (localRspBody.msg_winner.has()) {
+          paramArrayOfByte = (oidb_0x6c2.Player)localRspBody.msg_winner.get();
+        }
+        paramBundle = new TroopGiftBagInfo(paramBundle, paramArrayOfByte);
+        if (paramArrayOfByte != null)
+        {
+          paramArrayOfByte = this.jdField_a_of_type_JavaLangString + "_" + this.b;
+          this.jdField_a_of_type_Bfci.a.put(paramArrayOfByte, paramBundle);
+          this.jdField_a_of_type_Bfci.a(paramBundle);
+        }
+        this.jdField_a_of_type_Bfch.a(paramBundle);
+        return;
+      }
     }
-    this.jdField_a_of_type_Int = (paramListView.getDividerHeight() * (localListAdapter.getCount() - 1) + j);
-    this.jdField_b_of_type_Int += bhgr.a(this.jdField_a_of_type_AndroidWidgetListView.getContext(), 8.0F);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetListView.getVisibility() == 0;
-  }
-  
-  public void b()
-  {
-    if ((a()) && (!this.jdField_a_of_type_Boolean))
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      if (this.jdField_b_of_type_AndroidAnimationValueAnimator == null) {
-        e();
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "send_oidb_0x6c2. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
       }
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
-      this.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_Bfch.a(-1, "InvalidProtocolBufferMicroException");
+      return;
     }
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_AndroidWidgetListView.getVisibility() != 0) || (this.jdField_b_of_type_Boolean);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    if ((paramInt == 1) && (localRspBody.int32_player.has()))
+    {
+      paramInt = localRspBody.int32_player.get();
+      this.jdField_a_of_type_Bfch.c(paramInt);
+      return;
     }
-    if (this.jdField_b_of_type_AndroidAnimationValueAnimator != null) {
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.cancel();
-    }
+    this.jdField_a_of_type_Bfch.a(-1, "Invalid RspData. subCmd:" + paramInt);
+    return;
+    label357:
+    paramArrayOfByte = localRspBody.bytes_errmsg.get().toStringUtf8();
+    this.jdField_a_of_type_Bfch.a(paramInt, paramArrayOfByte);
   }
 }
 

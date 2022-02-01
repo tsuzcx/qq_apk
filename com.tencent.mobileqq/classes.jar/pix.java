@@ -1,16 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
-
 public class pix
-  implements blop
 {
-  public pix(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment) {}
-  
-  public void a(bloo parambloo)
-  {
-    switch (parambloo.a)
-    {
-    }
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

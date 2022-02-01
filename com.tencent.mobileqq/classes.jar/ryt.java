@@ -1,26 +1,21 @@
 import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.column.VideoColumnGuideManager.startGuideAnimate.1;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$startGuideAnimate$1$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ryt
-  extends AnimatorListenerAdapter
+public class ryt
+  implements Animator.AnimatorListener
 {
-  public void onAnimationEnd(@Nullable Animator paramAnimator)
+  public ryt(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment, rvu paramrvu) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (rym.a(this.a.this$0)) {
-      return;
-    }
-    if (rym.a(this.a.this$0) >= 1)
-    {
-      rym.a(this.a.this$0);
-      return;
-    }
-    paramAnimator = this.a.this$0;
-    rym.a(paramAnimator, rym.a(paramAnimator) + 1);
-    rym.c(this.a.this$0);
+    VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(this.jdField_a_of_type_Rvu);
   }
 }
 

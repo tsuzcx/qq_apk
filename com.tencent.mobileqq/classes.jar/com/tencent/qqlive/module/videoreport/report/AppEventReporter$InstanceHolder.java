@@ -6,7 +6,7 @@ class AppEventReporter$InstanceHolder
   
   static
   {
-    AppEventReporter.access$200(INSTANCE);
+    AppEventReporter.access$300(INSTANCE);
   }
 }
 

@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter;
 
-import bhmi;
-import bqpp;
+import bnlw;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.io.File;
 
 public class InformationFaceAdapter$2
   implements Runnable
 {
-  public InformationFaceAdapter$2(bqpp parambqpp, String paramString) {}
+  public InformationFaceAdapter$2(bnlw parambnlw, String paramString) {}
   
   public void run()
   {
-    bhmi.a(new File(this.a).getParentFile().getParentFile().getPath(), false);
+    FileUtils.delete(new File(this.a).getParentFile().getParentFile().getPath(), false);
   }
 }
 

@@ -1,45 +1,43 @@
 package cooperation.qzone.font;
 
-import bmxj;
-import bmyz;
-import bmzc;
+import cooperation.qzone.cache.FileCacheService;
 import java.io.File;
 
-public class FontManager$3
+class FontManager$3
   implements Runnable
 {
-  public FontManager$3(bmzc parambmzc, int paramInt1, int paramInt2, bmyz parambmyz, String paramString1, String paramString2) {}
+  FontManager$3(FontManager paramFontManager, int paramInt1, int paramInt2, FontInterface.FontResult paramFontResult, String paramString1, String paramString2) {}
   
   public void run()
   {
-    File localFile = new File(bmzc.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int));
+    File localFile = new File(FontManager.access$000(this.this$0, this.val$fontID, this.val$fontType));
     if (localFile.exists())
     {
-      if (this.jdField_a_of_type_Bmyz == null) {
+      if (this.val$result == null) {
         break label152;
       }
-      bmzc.a().a(localFile.getAbsolutePath(), true);
-      this.jdField_a_of_type_Bmyz.a(this.jdField_a_of_type_Int, localFile.getAbsolutePath(), this.jdField_a_of_type_JavaLangString);
+      FontManager.access$100().updateLruFile(localFile.getAbsolutePath(), true);
+      this.val$result.result(this.val$fontID, localFile.getAbsolutePath(), this.val$extend);
     }
     label152:
-    while ((bmzc.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bmyz)) || (this.jdField_a_of_type_Bmyz == null))
+    while ((FontManager.access$300(this.this$0, this.val$fontID, this.val$fontUrl, this.val$fontType, this.val$extend, this.val$result)) || (this.val$result == null))
     {
       return;
-      if (this.jdField_b_of_type_Int == 1)
+      if (this.val$fontType == 1)
       {
-        localFile = new File(bmzc.a(this.this$0, this.jdField_a_of_type_Int, 0));
+        localFile = new File(FontManager.access$000(this.this$0, this.val$fontID, 0));
         if (localFile.exists())
         {
-          String str = bmzc.a(this.this$0, this.jdField_a_of_type_Int, 1);
-          if (bmzc.a(this.this$0, localFile.getAbsolutePath(), str))
+          String str = FontManager.access$000(this.this$0, this.val$fontID, 1);
+          if (FontManager.access$200(this.this$0, localFile.getAbsolutePath(), str))
           {
-            this.jdField_a_of_type_Bmyz.a(this.jdField_a_of_type_Int, str, this.jdField_a_of_type_JavaLangString);
+            this.val$result.result(this.val$fontID, str, this.val$extend);
             return;
           }
         }
       }
     }
-    this.jdField_a_of_type_Bmyz.a(this.jdField_a_of_type_Int, null, this.jdField_a_of_type_JavaLangString);
+    this.val$result.result(this.val$fontID, null, this.val$extend);
   }
 }
 

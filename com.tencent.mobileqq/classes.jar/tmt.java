@@ -1,182 +1,60 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.NetworkState;
-import java.util.List;
+import org.json.JSONObject;
 
-class tmt
-  extends pfh
+public class tmt
 {
-  tmt(tmr paramtmr) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
   
-  public void a(Object paramObject, int paramInt, boolean paramBoolean, String... paramVarArgs)
+  public tmt() {}
+  
+  public tmt(JSONObject paramJSONObject)
   {
-    if (paramInt == 101) {
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
-    }
-    Object localObject1;
-    int j;
-    int i;
-    int k;
-    label80:
-    Object localObject3;
-    Object localObject2;
-    int m;
-    while (paramInt != 110) {
-      for (;;)
-      {
-        return;
-        paramObject = (ReadInJoyXListView)this.a.a().a();
-        localObject1 = this.a.a().a();
-        if ((paramObject != null) && (localObject1 != null))
-        {
-          paramVarArgs = paramVarArgs[0];
-          try
-          {
-            j = paramObject.getHeaderViewsCount();
-            i = paramObject.getFirstVisiblePosition();
-            k = paramObject.getLastVisiblePosition();
-            paramInt = i;
-            if (paramInt <= k)
-            {
-              if ((paramInt < j) || (paramInt - j >= ((List)localObject1).size())) {
-                break label717;
-              }
-              localObject3 = (BaseArticleInfo)((List)localObject1).get(paramInt - j);
-              localObject2 = paramObject.getChildAt(paramInt - i);
-              if (!AdvertisementInfo.isAdvertisementInfo((BaseArticleInfo)localObject3)) {
-                break label717;
-              }
-              localObject3 = (AdvertisementInfo)localObject3;
-              m = tqa.a((AdvertisementInfo)localObject3);
-              String str = tqa.a((AdvertisementInfo)localObject3);
-              if ((m != 1) || (!paramVarArgs.equals(str)) || (!(localObject2 instanceof ProteusItemView))) {
-                break label717;
-              }
-              localObject2 = ((ProteusItemView)localObject2).a().getVirtualView().findViewBaseByName("id_view_AdDownloadView");
-              if ((localObject2 == null) || (!(localObject2 instanceof tse))) {
-                break label717;
-              }
-              ((tse)localObject2).a(true, (AdvertisementInfo)localObject3, paramVarArgs);
-            }
-          }
-          catch (Exception paramObject)
-          {
-            return;
-          }
-        }
-      }
-    }
-    for (;;)
+    if (paramJSONObject == null) {}
+    do
     {
-      try
-      {
-        paramObject = (ReadInJoyXListView)this.a.a().a();
-        paramVarArgs = this.a.a().a();
-        k = paramObject.getHeaderViewsCount();
-        j = paramObject.getFirstVisiblePosition();
-        m = paramObject.getLastVisiblePosition();
-        paramInt = j;
-        if (paramInt > m) {
-          break;
-        }
-        if ((paramInt < k) || (paramInt - k >= paramVarArgs.size())) {
-          break label724;
-        }
-        localObject1 = (BaseArticleInfo)paramVarArgs.get(paramInt - k);
-        localObject2 = paramObject.getChildAt(paramInt - j);
-        if (!AdvertisementInfo.isAdvertisementInfo((BaseArticleInfo)localObject1)) {
-          break label724;
-        }
-        localObject3 = (AdvertisementInfo)localObject1;
-        if (!((AdvertisementInfo)localObject3).isHideForAnimate) {
-          break label724;
-        }
-        if (paramBoolean) {
-          break label640;
-        }
-        i = 4;
-        localObject2 = ((ProteusItemView)localObject2).a().getVirtualView();
-        if (((AdvertisementInfo)localObject3).mImaxShowAdType != 1001) {
-          break label679;
-        }
-        localObject3 = ((ViewBase)localObject2).findViewBaseByName("id_article_large_imge");
-        if (localObject3 != null) {
-          ((ViewBase)localObject3).getNativeView().setVisibility(i);
-        }
-        localObject3 = ((ViewBase)localObject2).findViewBaseByName("id_large_video_icon");
-        if (localObject3 != null) {
-          ((ViewBase)localObject3).getNativeView().setVisibility(4);
-        }
-        if ((!NetworkState.isWifiConn()) || (i != 0)) {
-          break label652;
-        }
-        if (localObject3 != null) {
-          ((ViewBase)localObject3).getNativeView().setVisibility(i);
-        }
-        localObject3 = ((ViewBase)localObject2).findViewBaseByName("id_view_Ad_CompleteGudie");
-        if (localObject3 != null) {
-          ((ViewBase)localObject3).getNativeView().setVisibility(4);
-        }
-        localObject3 = ((ViewBase)localObject2).findViewBaseByName("id_large_video_activity_img");
-        if (localObject3 != null) {
-          ((ViewBase)localObject3).getNativeView().setVisibility(4);
-        }
-        localObject3 = ((ViewBase)localObject2).findViewBaseByName("id_large_video_cover");
-        if (localObject3 != null) {
-          ((ViewBase)localObject3).getNativeView().setVisibility(i);
-        }
-        localObject3 = ((ViewBase)localObject2).findViewBaseByName("id_large_video_duration");
-        if (localObject3 != null) {
-          ((ViewBase)localObject3).getNativeView().setVisibility(i);
-        }
-        if (!((AdvertisementInfo)localObject1).isIMaxAndNewStyle) {
-          break label724;
-        }
-        localObject1 = ((ViewBase)localObject2).findViewBaseByName("id_artilce_title");
-        if (localObject1 == null) {
-          break label724;
-        }
-        ((ViewBase)localObject1).getNativeView().setVisibility(i);
-      }
-      catch (Exception paramObject) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ReadInjoyIMAXAdFragment", 2, "error  =>" + paramObject.getMessage());
       return;
-      label640:
-      ((AdvertisementInfo)localObject3).isHideForAnimate = false;
-      i = 0;
-      continue;
-      label652:
-      localObject3 = ((ViewBase)localObject2).findViewBaseByName("id_video_bg");
-      if (localObject3 != null)
-      {
-        ((ViewBase)localObject3).getNativeView().setVisibility(i);
-        continue;
-        label679:
-        if (((AdvertisementInfo)localObject3).mImaxShowAdType == 1002)
-        {
-          localObject1 = ((ViewBase)localObject2).findViewBaseByName("id_article_double_image");
-          if (localObject1 != null)
-          {
-            ((ViewBase)localObject1).getNativeView().setVisibility(i);
-            break label724;
-            label717:
-            paramInt += 1;
-            break label80;
-          }
-        }
-        label724:
-        paramInt += 1;
+      if (paramJSONObject.has("busiType")) {
+        this.jdField_a_of_type_Int = paramJSONObject.getInt("busiType");
       }
-    }
+      if (paramJSONObject.has("vid")) {
+        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("vid");
+      }
+      if (paramJSONObject.has("width")) {
+        this.jdField_b_of_type_Int = paramJSONObject.getInt("width");
+      }
+      if (paramJSONObject.has("height")) {
+        this.jdField_c_of_type_Int = paramJSONObject.getInt("height");
+      }
+      if (paramJSONObject.has("duration")) {
+        this.jdField_d_of_type_Int = paramJSONObject.getInt("duration");
+      }
+      if (paramJSONObject.has("poster")) {
+        this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("poster");
+      }
+      if (paramJSONObject.has("title")) {
+        this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("title");
+      }
+      if (paramJSONObject.has("xgFileSize")) {
+        this.jdField_a_of_type_Long = paramJSONObject.getLong("xgFileSize");
+      }
+      if (paramJSONObject.has("videoUrl")) {
+        this.jdField_d_of_type_JavaLangString = paramJSONObject.getString("videoUrl");
+      }
+    } while (!paramJSONObject.has("fromType"));
+    this.e = paramJSONObject.getInt("fromType");
+  }
+  
+  public String toString()
+  {
+    return "VideoInfo{busiType=" + this.jdField_a_of_type_Int + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", width=" + this.jdField_b_of_type_Int + ", height=" + this.jdField_c_of_type_Int + ", duration=" + this.jdField_d_of_type_Int + ", coverUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", title='" + this.jdField_c_of_type_JavaLangString + '\'' + ", xgFileSize=" + this.jdField_a_of_type_Long + ", videoUrl='" + this.jdField_d_of_type_JavaLangString + '\'' + '}';
   }
 }
 

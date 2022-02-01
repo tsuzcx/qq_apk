@@ -1,22 +1,66 @@
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCircleBannerView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-
 public class vyb
-  implements URLDrawableDownListener
 {
-  public vyb(QCircleBannerView paramQCircleBannerView) {}
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  public void a(vyb paramvyb)
+  {
+    if (paramvyb == null) {
+      return;
+    }
+    this.jdField_a_of_type_Long = paramvyb.jdField_a_of_type_Long;
+    this.jdField_b_of_type_Long = paramvyb.jdField_b_of_type_Long;
+    this.jdField_a_of_type_JavaLangString = paramvyb.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramvyb.jdField_b_of_type_JavaLangString;
+    this.c = paramvyb.c;
+    this.d = paramvyb.d;
+    this.jdField_a_of_type_Boolean = paramvyb.jdField_a_of_type_Boolean;
+    this.jdField_b_of_type_Boolean = paramvyb.jdField_b_of_type_Boolean;
+  }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  public boolean a()
+  {
+    boolean bool2 = false;
+    long l = System.currentTimeMillis();
+    boolean bool1;
+    if ((l >= this.jdField_a_of_type_Long) && (l < this.jdField_b_of_type_Long))
+    {
+      bool1 = true;
+      if ((!bool1) || (!this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean)) {
+        break label68;
+      }
+      bool1 = bool2;
+    }
+    label68:
+    for (;;)
+    {
+      xvv.a("Q.qqstory.config.takevideo", "isVariable=%b content=%s", Boolean.valueOf(bool1), toString());
+      return bool1;
+      bool1 = false;
+      break;
+    }
+  }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable) {}
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("MsgTabTakeVideoNodeConfig=[");
+    localStringBuilder.append(" startTime:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" endTime:").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(" imageUrl:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" desc:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" jumpUrl:").append(this.c);
+    localStringBuilder.append(" contentId:").append(this.d);
+    localStringBuilder.append(" isOneTimeUse:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" hasClicked:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
+  }
 }
 
 

@@ -1,18 +1,9 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryBannerInfo;
 
-class sfy
-  implements View.OnClickListener
+public abstract interface sfy
 {
-  sfy(sel paramsel, String paramString, pmv parampmv) {}
-  
-  public void onClick(View paramView)
-  {
-    ocd.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
-    pms.b(this.jdField_a_of_type_Pmv.f);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(View paramView, DiscoveryBannerInfo paramDiscoveryBannerInfo);
 }
 
 

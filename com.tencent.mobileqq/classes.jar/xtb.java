@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.support.v4.os.ParcelableCompatCreatorCallbacks;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.SavedState;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public final class xtb
-  implements ParcelableCompatCreatorCallbacks<XViewPager.SavedState>
+class xtb
+  extends SimpleJob<Object>
 {
-  public XViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
+  xtb(xss paramxss, String paramString1, String paramString2)
   {
-    return new XViewPager.SavedState(paramParcel, paramClassLoader);
+    super(paramString1);
   }
   
-  public XViewPager.SavedState[] a(int paramInt)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    return new XViewPager.SavedState[paramInt];
+    xss.a(this.jdField_a_of_type_Xss).a(this.jdField_a_of_type_JavaLangString);
+    return null;
   }
 }
 

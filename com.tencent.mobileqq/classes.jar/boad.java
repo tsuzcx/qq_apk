@@ -1,92 +1,109 @@
-import cooperation.weiyun.channel.pb.WeiyunPB.MsgBody;
-import cooperation.weiyun.channel.pb.WeiyunPB.RspMsgBody;
+import android.opengl.GLES20;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
 
-class boad<T>
-  implements boab
+public class boad
+  extends GPUBaseFilter
 {
-  private static final String jdField_a_of_type_JavaLangString = anzj.a(2131699865);
-  private final int jdField_a_of_type_Int;
-  private final boae<T> jdField_a_of_type_Boae;
+  private static String jdField_a_of_type_JavaLangString = GlUtil.readTextFromRawResource(BaseApplicationImpl.getContext(), 2131230755);
+  private float jdField_a_of_type_Float = 0.0F;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean = false;
+  private int c;
   
-  boad(int paramInt, boae<T> paramboae)
+  public boad()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boae = paramboae;
+    this("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", jdField_a_of_type_JavaLangString);
   }
   
-  public void a(int paramInt, String paramString, byte[] paramArrayOfByte)
+  public boad(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Boae == null) {
-      return;
+    super(paramString1, paramString2);
+    this.mFilterType = 0;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(boolean paramBoolean, float paramFloat)
+  {
+    float f2 = 1.0F;
+    float f1 = 0.0F;
+    if (paramFloat > 1.0F) {
+      paramFloat = f2;
     }
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    for (;;)
     {
-      this.jdField_a_of_type_Boae.a(paramInt, paramString, null);
-      return;
-    }
-    try
-    {
-      paramString = (WeiyunPB.MsgBody)new WeiyunPB.MsgBody().mergeFrom(paramArrayOfByte);
-      paramString = (WeiyunPB.RspMsgBody)paramString.RspMsg_body.get();
-      if (paramString == null)
+      if (paramFloat < 0.0F) {
+        paramFloat = f1;
+      }
+      for (;;)
       {
-        boce.a().w("BaseCallback", "rspMsgBody is null.");
-        paramString = jdField_a_of_type_JavaLangString;
-        this.jdField_a_of_type_Boae.a(1828003, paramString, null);
+        this.jdField_b_of_type_Boolean = paramBoolean;
+        this.jdField_a_of_type_Float = paramFloat;
         return;
       }
     }
-    catch (Throwable paramString)
+  }
+  
+  public void onDrawTexture()
+  {
+    float f2 = 1.0F;
+    int i = this.jdField_b_of_type_Int;
+    if (this.jdField_b_of_type_Boolean)
     {
-      boce.a().w("BaseCallback", "decode Rsp Body failed.", paramString);
-      paramString = jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Boae.a(1828003, paramString, null);
-      return;
+      f1 = 1.0F;
+      GLES20.glUniform1f(i, f1);
+      GLES20.glUniform1f(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float);
+      i = this.c;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label57;
+      }
     }
-    switch (this.jdField_a_of_type_Int)
+    label57:
+    for (float f1 = f2;; f1 = 2.0F)
     {
-    default: 
-      paramString = jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Boae.a(1828001, paramString, null);
+      GLES20.glUniform1f(i, f1);
       return;
-    case 26113: 
-      this.jdField_a_of_type_Boae.a(paramString.LibInfoListGetMsgRsp_body);
-      return;
-    case 2402: 
-      this.jdField_a_of_type_Boae.a(paramString.DiskFileBatchDownloadMsgRsp_body);
-      return;
-    case 2414: 
-      this.jdField_a_of_type_Boae.a(paramString.DiskFileDocDownloadAbsMsgRsp_body);
-      return;
-    case 2509: 
-      this.jdField_a_of_type_Boae.a(paramString.DiskDirFileBatchDeleteExMsgRsp_body);
-      return;
-    case 2803: 
-      this.jdField_a_of_type_Boae.a(paramString.DiskPicBackupRsp_body);
-      return;
-    case 2804: 
-      this.jdField_a_of_type_Boae.a(paramString.DiskAlbumStatusReportRsp_body);
-      return;
-    case 11001: 
-      this.jdField_a_of_type_Boae.a(paramString.PwdQueryMsgRsp_body);
-      return;
-    case 11005: 
-      this.jdField_a_of_type_Boae.a(paramString.PwdVerifyMsgRsp_body);
-      return;
-    case 245700: 
-      this.jdField_a_of_type_Boae.a(paramString.CrossBidProxyCopyFileToOtherBidMsgRsp_body);
-      return;
-    case 245706: 
-      this.jdField_a_of_type_Boae.a(paramString.CrossBidProxyOfflineFileGetListMsgRsp_body);
-      return;
-    case 246000: 
-      this.jdField_a_of_type_Boae.a(paramString.QqSdkFileUploadMsgRsp_body);
-      return;
-    case 246001: 
-      this.jdField_a_of_type_Boae.a(paramString.AioPicAndVideoCopyToWeiyunMsgRsp_body);
-      return;
+      f1 = 2.0F;
+      break;
     }
-    this.jdField_a_of_type_Boae.a(paramString.WeiyunShareAddFromMobileQQMsgRsp_body);
+  }
+  
+  public void onInitialized()
+  {
+    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "percent");
+    this.jdField_b_of_type_Int = GLES20.glGetUniformLocation(getProgram(), "drawPart");
+    this.c = GLES20.glGetUniformLocation(getProgram(), "cutX");
+  }
+  
+  public String toString()
+  {
+    double d2 = 1.0D;
+    int i = this.mFilterType;
+    double d1;
+    float f;
+    if (this.jdField_b_of_type_Boolean)
+    {
+      d1 = 1.0D;
+      f = this.jdField_a_of_type_Float;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label77;
+      }
+    }
+    for (;;)
+    {
+      return String.format("filter type=%s, draw left=%s, draw percent=%s, directionx=%s", new Object[] { Integer.valueOf(i), Double.valueOf(d1), Float.valueOf(f), Double.valueOf(d2) });
+      d1 = 2.0D;
+      break;
+      label77:
+      d2 = 2.0D;
+    }
   }
 }
 

@@ -1,19 +1,29 @@
-import com.tencent.ad.tangram.ipc.AdIPCManager.Callback;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
-import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class acqb
-  implements AdIPCManager.Callback
+public class acqb
+  implements View.OnClickListener
 {
-  acqb(acqa paramacqa) {}
+  public acqb(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
   
-  public void onCallback(AdIPCManager.Params paramParams, AdIPCManager.Result paramResult)
+  public void onClick(View paramView)
   {
-    if (paramResult != null) {}
-    for (boolean bool = paramResult.success;; bool = false)
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.isShowing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.getWindow() != null)) {}
+    try
     {
-      acvc.b("GdtInterstitialAd", String.format("close.onCallback %b", new Object[] { Boolean.valueOf(bool) }));
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.dismiss();
+      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, -1, this.jdField_a_of_type_JavaLangString);
+      label58:
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a = null;
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label58;
     }
   }
 }

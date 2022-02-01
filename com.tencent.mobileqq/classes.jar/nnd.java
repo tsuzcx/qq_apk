@@ -1,82 +1,100 @@
-import KQQ.ReqItem;
-import KQQ.RespItem;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.anonymous.QQAnonymousDialog.2;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bnr.BnrReport.BNRConfigMsg;
-import com.tencent.mobileqq.bnr.BnrReport.BNReportConfigRsp;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class nnd
-  implements bcuc
+  extends ReportDialog
 {
-  private QQAppInterface a;
+  public int a;
+  public Context a;
+  public Handler a;
+  public LayoutInflater a;
+  public View a;
+  public ImageView a;
+  public TextView a;
   
-  public nnd(QQAppInterface paramQQAppInterface)
+  public nnd(Context paramContext)
   {
-    this.a = paramQQAppInterface;
-    nnc.a();
+    super(paramContext, 2131755826);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(new nne(this));
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560584, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370280));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370291));
   }
   
-  public int a()
+  public void a()
   {
-    return 1;
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    localLayoutParams.width = ((int)bfvh.a(this.jdField_a_of_type_AndroidContentContext, 44.0F));
+    localLayoutParams.height = ((int)bfvh.a(this.jdField_a_of_type_AndroidContentContext, 44.0F));
+    super.show();
+    this.jdField_a_of_type_AndroidViewView.postDelayed(new QQAnonymousDialog.2(this), 1000L);
   }
   
-  public ReqItem a(int paramInt)
+  public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BnrReport", 2, "getCheckUpdateItemData");
-    }
-    ReqItem localReqItem = new ReqItem();
-    localReqItem.cOperType = 1;
-    localReqItem.eServiceID = 118;
-    BnrReport.BNRConfigMsg localBNRConfigMsg = nnc.a(this.a.getCurrentAccountUin());
-    if (localBNRConfigMsg != null) {
-      localReqItem.vecParam = bhuf.a(localBNRConfigMsg.toByteArray());
-    }
-    nnc.a = true;
-    return localReqItem;
-  }
-  
-  public void a(RespItem paramRespItem)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BnrReport", 2, "handleCheckUpdateItemData");
-    }
-    BnrReport.BNRConfigMsg localBNRConfigMsg;
-    if (paramRespItem.cResult == 2) {
-      if (paramRespItem.eServiceID == 118)
-      {
-        paramRespItem = bhuf.b(paramRespItem.vecUpdate);
-        if (paramRespItem != null) {
-          localBNRConfigMsg = new BnrReport.BNRConfigMsg();
-        }
-      }
-    }
-    for (;;)
+    switch (paramInt)
     {
-      try
+    default: 
+    case 1: 
+    case 3: 
+      do
       {
-        localBNRConfigMsg.mergeFrom(paramRespItem);
-        nnc.a((BnrReport.BNReportConfigRsp)localBNRConfigMsg.msg_rsp_body.get());
-        nnc.a(this.a, 74);
-        nnc.a = false;
+        do
+        {
+          return;
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843690);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+        } while (!AppSetting.c);
+        QQAppInterface.speak(paramString);
         return;
-      }
-      catch (InvalidProtocolBufferMicroException paramRespItem)
-      {
-        paramRespItem.printStackTrace();
-        continue;
-      }
-      catch (Exception paramRespItem)
-      {
-        paramRespItem.printStackTrace();
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("BnrReport", 2, "***handleCheckUpdateItemData fail respitem.cResult:" + paramRespItem.cResult);
-      }
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843684);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+      } while (!AppSetting.c);
+      QQAppInterface.speak(paramString);
+      return;
     }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843689);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131695541));
+  }
+  
+  public void dismiss()
+  {
+    try
+    {
+      super.dismiss();
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    paramBundle = getWindow();
+    paramBundle.setContentView(this.jdField_a_of_type_AndroidViewView);
+    WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
+    localLayoutParams.width = -2;
+    localLayoutParams.height = -2;
+    localLayoutParams.gravity = 17;
+    paramBundle.setAttributes(localLayoutParams);
+    setCanceledOnTouchOutside(false);
   }
 }
 

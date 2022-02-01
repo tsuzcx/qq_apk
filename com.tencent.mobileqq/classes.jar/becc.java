@@ -1,103 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils.ProcessTDFileScheduler.1;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.Map;
 
-public class becc
+class becc
+  implements DialogInterface.OnClickListener
 {
-  public static becc a;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private ConcurrentLinkedQueue<MessageRecord> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  becc(bebp parambebp, bebc parambebc) {}
   
-  private becc(QQAppInterface paramQQAppInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-  }
-  
-  public static becc a(QQAppInterface paramQQAppInterface)
-  {
-    if (jdField_a_of_type_Becc == null) {}
-    try
+    switch (paramInt)
     {
-      if (jdField_a_of_type_Becc == null) {
-        jdField_a_of_type_Becc = new becc(paramQQAppInterface);
-      }
-      return jdField_a_of_type_Becc;
+    case 0: 
+    default: 
+      return;
     }
-    finally {}
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() <= 0) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localQQAppInterface == null) || (localQQAppInterface.a.a() != 1));
-    ThreadManager.postImmediately(new TeamWorkUtils.ProcessTDFileScheduler.1(this, localQQAppInterface), null, true);
-  }
-  
-  public void a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {}
-    label190:
-    do
-    {
-      do
-      {
-        for (;;)
-        {
-          return;
-          Object localObject1;
-          if ((paramMessageRecord instanceof MessageForStructing))
-          {
-            localObject1 = (MessageForStructing)paramMessageRecord;
-            if ((((MessageForStructing)localObject1).structingMsg != null) && (!TextUtils.isEmpty(((MessageForStructing)localObject1).structingMsg.mMsgUrl)) && (atyu.a(((MessageForStructing)localObject1).structingMsg.mMsgUrl))) {
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramMessageRecord);
-            }
-          }
-          else
-          {
-            if (!(paramMessageRecord instanceof MessageForArkApp)) {
-              break label190;
-            }
-            localObject1 = (MessageForArkApp)paramMessageRecord;
-            Object localObject2 = ((MessageForArkApp)localObject1).ark_app_message.metaList;
-            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-              try
-              {
-                localObject2 = new JSONObject(new JSONObject((String)localObject2).getString(((MessageForArkApp)localObject1).ark_app_message.appView));
-                localObject1 = ((JSONObject)localObject2).optString("appid");
-                localObject2 = ((JSONObject)localObject2).optString("qqdocurl");
-                if (((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).equals(String.valueOf(becb.a)))) || ((!TextUtils.isEmpty((CharSequence)localObject2)) && (atyu.a((String)localObject2))))
-                {
-                  this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramMessageRecord);
-                  return;
-                }
-              }
-              catch (JSONException paramMessageRecord) {}
-            }
-          }
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e(beai.i, 2, paramMessageRecord.getMessage());
-      return;
-    } while ((!(paramMessageRecord instanceof MessageForText)) || (!atyu.a(((MessageForText)paramMessageRecord).msg)));
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramMessageRecord);
+    TroopFileTransferManager.a(this.jdField_a_of_type_Bebp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bebp.jdField_a_of_type_Long).a(this.jdField_a_of_type_Bebc.jdField_a_of_type_JavaUtilUUID);
+    paramDialogInterface = (bebc)bfbb.a(this.jdField_a_of_type_Bebp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bebp.jdField_a_of_type_Long).c.get(this.jdField_a_of_type_Bebc.f);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_Bebc.b);
+    }
+    bcef.b(this.jdField_a_of_type_Bebp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Cancel_pause_download", 0, 0, "", this.jdField_a_of_type_Bebp.jdField_a_of_type_Long + "", "", "");
   }
 }
 

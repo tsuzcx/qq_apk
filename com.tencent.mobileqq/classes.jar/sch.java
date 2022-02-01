@@ -1,25 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout.StressState;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-class sch
-  extends sbh
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowHelper$startShrinkAnim$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sch
+  implements Animator.AnimatorListener
 {
-  sch(sbi paramsbi) {}
+  public void onAnimationCancel(@Nullable Animator paramAnimator) {}
   
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void onAnimationEnd(@Nullable Animator paramAnimator)
   {
-    sbi.a(this.a, paramInt, paramBaseArticleInfo, paramString);
+    scd.a(this.a, false);
+    this.a.a().setStressState(VideoFeedsStressFollowLayout.StressState.Shrink);
   }
   
-  public int b()
-  {
-    return 2;
-  }
+  public void onAnimationRepeat(@Nullable Animator paramAnimator) {}
   
-  public int c()
-  {
-    return 3;
-  }
+  public void onAnimationStart(@Nullable Animator paramAnimator) {}
 }
 
 

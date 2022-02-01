@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rrm;
+import ryo;
 
 class VideoFeedsPlayManager$2
   implements Runnable
 {
-  VideoFeedsPlayManager$2(VideoFeedsPlayManager paramVideoFeedsPlayManager, rrm paramrrm, boolean paramBoolean) {}
+  VideoFeedsPlayManager$2(VideoFeedsPlayManager paramVideoFeedsPlayManager, ryo paramryo, boolean paramBoolean) {}
   
   public void run()
   {
-    VideoFeedsPlayManager.b(this.this$0, this.jdField_a_of_type_Rrm, this.jdField_a_of_type_Boolean);
+    VideoFeedsPlayManager.b(this.this$0, this.jdField_a_of_type_Ryo, this.jdField_a_of_type_Boolean);
   }
 }
 

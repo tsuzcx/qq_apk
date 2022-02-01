@@ -1,423 +1,185 @@
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.opengl.GLES20;
-import android.opengl.Matrix;
-import android.view.Surface;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.ARPromotion.ARPromotionMediaPlayerWrapper.1;
-import com.tencent.mobileqq.ar.ARPromotion.ARPromotionMediaPlayerWrapper.3;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.ISuperPlayer;
-import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
-import com.tencent.superplayer.api.ISuperPlayer.OnDefinitionInfoListener;
-import com.tencent.superplayer.api.ISuperPlayer.OnErrorListener;
-import com.tencent.superplayer.api.ISuperPlayer.OnInfoListener;
-import com.tencent.superplayer.api.ISuperPlayer.OnSeekCompleteListener;
-import com.tencent.superplayer.api.ISuperPlayer.OnVideoPreparedListener;
-import com.tencent.superplayer.api.SuperPlayerFactory;
-import com.tencent.superplayer.api.SuperPlayerOption;
-import com.tencent.ttpic.openapi.filter.RenderBuffer;
-import com.tencent.ttpic.openapi.filter.TextureRender;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class apfk
-  implements SurfaceTexture.OnFrameAvailableListener, ISuperPlayer.OnCompletionListener, ISuperPlayer.OnDefinitionInfoListener, ISuperPlayer.OnErrorListener, ISuperPlayer.OnInfoListener, ISuperPlayer.OnSeekCompleteListener, ISuperPlayer.OnVideoPreparedListener
+public final class apfk
+  extends apfj
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private Surface jdField_a_of_type_AndroidViewSurface;
-  private apfl jdField_a_of_type_Apfl;
-  private apig jdField_a_of_type_Apig = new apig(0);
-  private ISuperPlayer jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ARPromotionMediaPlayerWrapper.1(this);
-  private String jdField_a_of_type_JavaLangString;
-  volatile boolean jdField_a_of_type_Boolean = false;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
-  private int[] jdField_a_of_type_ArrayOfInt = new int[3];
-  private ByteBuffer[] jdField_a_of_type_ArrayOfJavaNioByteBuffer = new ByteBuffer[3];
-  private int jdField_b_of_type_Int = -1;
-  private final boolean jdField_b_of_type_Boolean = false;
-  private float[] jdField_b_of_type_ArrayOfFloat = new float[16];
-  private int jdField_c_of_type_Int;
-  private volatile boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int = 1;
-  private boolean jdField_d_of_type_Boolean;
-  private boolean e;
-  private boolean f = true;
-  private boolean g;
+  public boolean a;
+  public int c;
+  public String c = "";
   
-  public apfk(apfl paramapfl, int paramInt)
+  public apfk()
   {
-    this.jdField_a_of_type_Apfl = paramapfl;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  private void a(String paramString)
+  public static apfj a(JSONObject paramJSONObject)
   {
-    paramString = SuperPlayerFactory.createVideoInfoForUrl(paramString, 101, bjtz.d(paramString));
-    SuperPlayerOption localSuperPlayerOption = SuperPlayerOption.obtain();
-    localSuperPlayerOption.enableCodecReuse = false;
-    localSuperPlayerOption.isPrePlay = false;
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.openMediaPlayer(BaseApplicationImpl.getContext(), paramString, 0L, localSuperPlayerOption);
-  }
-  
-  private void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
-  {
-    if ((this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[0] == null) || (this.jdField_a_of_type_ArrayOfInt[0] != paramArrayOfByte1.length)) {}
-    try
+    Object localObject = paramJSONObject.optString("type");
+    if (("diy_chartlet".equalsIgnoreCase((String)localObject)) || ("static".equalsIgnoreCase((String)localObject)))
     {
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[0] = ByteBuffer.allocateDirect(paramArrayOfByte1.length);
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[0].order(ByteOrder.nativeOrder());
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[0].clear();
-      this.jdField_a_of_type_ArrayOfInt[0] = paramArrayOfByte1.length;
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[0].put(paramArrayOfByte1);
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[0].position(0);
-      if (this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[1] != null) {
-        if (this.jdField_a_of_type_ArrayOfInt[1] == paramArrayOfByte2.length) {
-          break label128;
-        }
-      }
-    }
-    catch (Throwable localThrowable2)
-    {
-      try
+      apfk localapfk = new apfk();
+      localapfk.jdField_b_of_type_JavaLangString = ((String)localObject);
+      localObject = BaseApplicationImpl.getApplication().getApplicationContext();
+      localapfk.jdField_a_of_type_JavaLangString = paramJSONObject.optString("align").toUpperCase();
+      if (paramJSONObject.has("rect"))
       {
-        this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[1] = ByteBuffer.allocateDirect(paramArrayOfByte1.length);
-        this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[1].order(ByteOrder.nativeOrder());
-        label128:
-        this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[1].clear();
-        this.jdField_a_of_type_ArrayOfInt[1] = paramArrayOfByte2.length;
-        this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[1].put(paramArrayOfByte2);
-        this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[1].position(0);
-        if (this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[2] != null) {
-          if (this.jdField_a_of_type_ArrayOfInt[2] == paramArrayOfByte3.length) {
-            break label212;
-          }
+        JSONArray localJSONArray = paramJSONObject.optJSONArray("rect");
+        localapfk.jdField_a_of_type_ArrayOfInt = new int[4];
+        int i = 0;
+        while (i < localJSONArray.length())
+        {
+          localapfk.jdField_a_of_type_ArrayOfInt[i] = DisplayUtil.dip2px((Context)localObject, localJSONArray.optInt(i) / 2);
+          i += 1;
         }
       }
-      catch (Throwable localThrowable2)
-      {
-        try
-        {
-          for (;;)
-          {
-            this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[2] = ByteBuffer.allocateDirect(paramArrayOfByte1.length);
-            this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[2].order(ByteOrder.nativeOrder());
-            label212:
-            this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[2].clear();
-            this.jdField_a_of_type_ArrayOfInt[2] = paramArrayOfByte3.length;
-            this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[2].put(paramArrayOfByte3);
-            this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[2].position(0);
-            return;
-            localThrowable1 = localThrowable1;
-            QLog.e("ARWorldCupMediaPlayerWrapper", 1, "textureYUV fail.", localThrowable1);
-          }
-          localThrowable2 = localThrowable2;
-          QLog.e("ARWorldCupMediaPlayerWrapper", 1, "textureYUV fail.", localThrowable2);
-        }
-        catch (Throwable paramArrayOfByte1)
-        {
-          for (;;)
-          {
-            QLog.e("ARWorldCupMediaPlayerWrapper", 1, "textureYUV fail.", paramArrayOfByte1);
-          }
-        }
+      localapfk.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("mirror", true);
+      if (QLog.isColorLevel()) {
+        QLog.d("DiyBubbleConfig", 2, "Resolve DiyBubblePasterConfig json->" + paramJSONObject);
       }
+      return localapfk;
     }
+    QLog.e("DiyBubbleConfig", 1, "error! paster type: " + (String)localObject);
+    return null;
   }
   
-  private void d()
+  @TargetApi(11)
+  public Rect a(apfx paramapfx, Canvas paramCanvas)
   {
-    QLog.d("ARWorldCupMediaPlayerWrapper", 2, String.format("initVideoPlayer mVideoPlayer=%s", new Object[] { this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer }));
-    if ((this.jdField_a_of_type_AndroidGraphicsSurfaceTexture == null) || (this.jdField_a_of_type_AndroidViewSurface == null))
-    {
-      int[] arrayOfInt = new int[1];
-      GLES20.glGenTextures(1, arrayOfInt, 0);
-      Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
-      this.jdField_b_of_type_Int = arrayOfInt[0];
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-      this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    int i1 = 0;
+    paramCanvas = paramapfx.getBounds();
+    Resources localResources = BaseApplicationImpl.getContext().getResources();
+    if (jdField_b_of_type_Int == -1) {
+      jdField_b_of_type_Int = AIOUtils.dp2px(48.0F, localResources);
     }
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer == null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = SuperPlayerFactory.createMediaPlayer(BaseApplicationImpl.getContext(), 108, null);
+    int j = this.jdField_a_of_type_ArrayOfInt[3];
+    int i = this.jdField_a_of_type_ArrayOfInt[2];
+    int m;
+    int n;
+    int k;
+    if (paramCanvas.height() >= jdField_b_of_type_Int)
+    {
+      AIOUtils.dp2px(10.0F, localResources);
+      AIOUtils.dp2px(9.0F, localResources);
+      m = 0;
+      n = 0;
+      k = j;
+      j = n;
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setSurface(this.jdField_a_of_type_AndroidViewSurface);
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnVideoPreparedListener(this);
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnInfoListener(this);
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnErrorListener(this);
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnDefinitionInfoListener(this);
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnCompletionListener(this);
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnSeekCompleteListener(this);
-      return;
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.stop();
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.reset();
-    }
-  }
-  
-  private void e()
-  {
-    if ((this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) && (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null))
-    {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getVideoWidth(), this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getVideoHeight(), 33984);
-      QLog.d("ARWorldCupMediaPlayerWrapper", 2, "ARWorldCupMediaPlayerWrapper.checkIfNeedUpdateRenderBuffer line1");
-    }
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender == null)
-    {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-      QLog.d("ARWorldCupMediaPlayerWrapper", 2, "ARWorldCupMediaPlayerWrapper.checkIfNeedUpdateRenderBuffer line2");
-    }
-    if ((this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) && (!GLES20.glIsTexture(this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId()))) {
-      QLog.d("ARWorldCupMediaPlayerWrapper", 2, "ARWorldCupMediaPlayerWrapper.checkIfNeedUpdateRenderBuffer error happen,FBO texture ID is released");
-    }
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getCurrentPositionMs();
-    }
-    return -1L;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && (!this.jdField_a_of_type_Boolean))
-      {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.seekTo(0);
-        QLog.d("ARWorldCupMediaPlayerWrapper", 1, "mVideoPlayer restart seekTo(0)");
+      if (this.jdField_a_of_type_JavaLangString.startsWith("T")) {
+        n = m + this.jdField_a_of_type_ArrayOfInt[1];
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ARWorldCupMediaPlayerWrapper", 1, "restart mVideoPlayer error happen", localException);
-    }
-  }
-  
-  public void a(String paramString, long paramLong, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
-  {
-    QLog.d("ARWorldCupMediaPlayerWrapper", 2, String.format("playVideo videoUrl=%s videoSize=%s", new Object[] { paramString, Long.valueOf(paramLong) }));
-    d();
-    if ((this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && (!this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying()))
-    {
-      this.f = true;
-      this.jdField_d_of_type_Boolean = paramBoolean2;
-      this.jdField_c_of_type_Int = 0;
-      int i = paramInt;
-      if (paramInt <= 0) {
-        i = 10000;
-      }
-      this.jdField_d_of_type_Int = i;
-      this.jdField_a_of_type_JavaLangString = paramString;
-      a(paramString);
-      this.e = false;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    QLog.d("ARWorldCupMediaPlayerWrapper", 2, "call setMu result:" + paramBoolean);
-    this.g = paramBoolean;
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOutputMute(paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer == null) {
-      return false;
-    }
-    return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying();
-  }
-  
-  public void b()
-  {
-    QLog.d("ARWorldCupMediaPlayerWrapper", 1, "stopVideo");
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {}
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_Long = 0L;
-        if ((this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying()) || (this.e))
-        {
-          QLog.d("ARWorldCupMediaPlayerWrapper", 1, "run inner stopVideo");
-          this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.stop();
-          this.e = false;
-        }
-      }
-      catch (Exception localException2)
-      {
-        localException2 = localException2;
-        QLog.e("ARWorldCupMediaPlayerWrapper", 1, "playVideo fail.", localException2);
-        try
-        {
-          if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) {
-            continue;
-          }
-          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
-          return;
-        }
-        catch (Exception localException3)
-        {
-          QLog.e("ARWorldCupMediaPlayerWrapper", 1, "stopVideo finllay fail." + localException3);
-          return;
-        }
-      }
-      finally {}
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
-          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
-        }
-        return;
-      }
-      catch (Exception localException1)
-      {
-        QLog.e("ARWorldCupMediaPlayerWrapper", 1, "stopVideo finllay fail." + localException1);
-        return;
-      }
-    }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
-      }
-      throw localObject;
-    }
-    catch (Exception localException4)
-    {
       for (;;)
       {
-        QLog.e("ARWorldCupMediaPlayerWrapper", 1, "stopVideo finllay fail." + localException4);
+        label111:
+        if (this.jdField_a_of_type_JavaLangString.endsWith("L")) {
+          m = this.jdField_a_of_type_ArrayOfInt[0] + j;
+        }
+        for (;;)
+        {
+          j = m;
+          if (paramapfx.b)
+          {
+            j = m;
+            if (!this.jdField_a_of_type_Boolean) {
+              j = paramCanvas.width() - m - i;
+            }
+          }
+          return new Rect(j, n, i + j, k + n);
+          n = AIOUtils.dp2px(10.0F, localResources);
+          m = AIOUtils.dp2px(7.0F, localResources);
+          if ("static".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString))
+          {
+            m = -AIOUtils.dp2px(2.0F, localResources);
+            k = j;
+            j = 0;
+            break;
+          }
+          k = j;
+          if (j <= m * 2) {
+            break label407;
+          }
+          m *= 2;
+          j = this.jdField_a_of_type_ArrayOfInt[2] * m / this.jdField_a_of_type_ArrayOfInt[3];
+          i = j;
+          k = m;
+          if (j >= n * 2) {
+            break label407;
+          }
+          int i2 = j / 2;
+          k = m;
+          i = j;
+          j = n - i2;
+          m = 0;
+          break;
+          if (!this.jdField_a_of_type_JavaLangString.startsWith("B")) {
+            break label401;
+          }
+          n = this.jdField_a_of_type_ArrayOfInt[1] + this.jdField_a_of_type_ArrayOfInt[3] + paramCanvas.height() - k - m;
+          break label111;
+          m = i1;
+          if (this.jdField_a_of_type_JavaLangString.endsWith("R")) {
+            m = this.jdField_a_of_type_ArrayOfInt[0] + this.jdField_a_of_type_ArrayOfInt[2] + paramCanvas.width() - i - j;
+          }
+        }
+        label401:
+        n = 0;
       }
+      label407:
+      m = 0;
+      j = 0;
     }
   }
   
-  public void b(boolean paramBoolean)
+  public void a(apfx paramapfx, Canvas paramCanvas)
   {
-    this.f = paramBoolean;
-  }
-  
-  public void c()
-  {
-    QLog.d("ARWorldCupMediaPlayerWrapper", 1, String.format("releaseVideoPlayer mVideoPlayer=%s", new Object[] { this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer }));
-    try
+    if ((paramCanvas == null) || (paramapfx == null)) {}
+    for (;;)
     {
-      this.f = true;
-      this.jdField_a_of_type_Apfl = null;
-      if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null)
+      return;
+      Bitmap localBitmap;
+      if ("diy_chartlet".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString)) {
+        localBitmap = apec.a().b(paramapfx, this);
+      }
+      while (localBitmap != null)
       {
-        this.jdField_c_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.stop();
-        this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.release();
-        this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = null;
-        this.jdField_a_of_type_Apig.c();
-        if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null)
+        int i = paramCanvas.save();
+        if ((paramapfx.b) && (this.jdField_a_of_type_Boolean)) {
+          paramCanvas.scale(-1.0F, 1.0F, paramapfx.getBounds().centerX(), paramapfx.getBounds().centerY());
+        }
+        Paint localPaint = new Paint();
+        paramapfx = a(paramapfx, paramCanvas);
+        if (paramCanvas.getHeight() < jdField_b_of_type_Int) {
+          paramCanvas.drawBitmap(localBitmap, null, paramapfx, localPaint);
+        }
+        for (;;)
         {
-          this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(null);
-          this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
-          this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
+          paramCanvas.restoreToCount(i);
+          return;
+          if (!"static".equalsIgnoreCase(this.jdField_b_of_type_JavaLangString)) {
+            break label166;
+          }
+          localBitmap = apec.a().a(paramapfx, this);
+          break;
+          paramCanvas.drawBitmap(localBitmap, paramapfx.left, paramapfx.top, localPaint);
         }
-        if (this.jdField_a_of_type_AndroidViewSurface != null)
-        {
-          this.jdField_a_of_type_AndroidViewSurface.release();
-          this.jdField_a_of_type_AndroidViewSurface = null;
-        }
-        if (this.jdField_b_of_type_Int != -1)
-        {
-          GLES20.glDeleteTextures(1, new int[] { this.jdField_b_of_type_Int }, 0);
-          this.jdField_b_of_type_Int = -1;
-        }
-        if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null)
-        {
-          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
-          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
-        }
-        if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null) {
-          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
-        }
+        label166:
+        localBitmap = null;
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ARWorldCupMediaPlayerWrapper", 1, "release finllay fail.");
-    }
-  }
-  
-  public void onCompletion(ISuperPlayer paramISuperPlayer)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    paramISuperPlayer = new ARPromotionMediaPlayerWrapper.3(this);
-    if (this.jdField_a_of_type_Apfl != null) {
-      this.jdField_a_of_type_Apfl.a(paramISuperPlayer);
-    }
-  }
-  
-  public void onDefinitionInfoUpdate(ISuperPlayer paramISuperPlayer, String paramString, ArrayList<String> paramArrayList) {}
-  
-  public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
-  {
-    QLog.d("ARWorldCupMediaPlayerWrapper", 1, "onError");
-    this.jdField_a_of_type_Boolean = false;
-    return false;
-  }
-  
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
-  {
-    if (this.jdField_a_of_type_Apfl != null) {
-      this.jdField_a_of_type_Apfl.a(this.jdField_a_of_type_JavaLangRunnable);
-    }
-  }
-  
-  public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
-  {
-    return false;
-  }
-  
-  public void onSeekComplete(ISuperPlayer paramISuperPlayer)
-  {
-    QLog.d("ARWorldCupMediaPlayerWrapper", 1, "TVK_IMediaPlayer.onSeekComplete");
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
-      this.jdField_a_of_type_Boolean = false;
-    }
-    try
-    {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.start();
-      return;
-    }
-    catch (Exception paramISuperPlayer)
-    {
-      QLog.d("ARWorldCupMediaPlayerWrapper", 1, "TVK_IMediaPlayer.onSeekComplete fail.", paramISuperPlayer);
-    }
-  }
-  
-  public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
-  {
-    QLog.d("ARWorldCupMediaPlayerWrapper", 1, "TVK_IMediaPlayer.onVideoPrepared");
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.start();
-      return;
-    }
-    catch (Exception paramISuperPlayer)
-    {
-      QLog.d("ARWorldCupMediaPlayerWrapper", 1, "TVK_IMediaPlayer.onVideoPrepared fail.", paramISuperPlayer);
     }
   }
 }

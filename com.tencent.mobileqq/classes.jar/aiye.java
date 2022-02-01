@@ -1,64 +1,14 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
 
-public class aiye
-  implements aixv
+class aiye
+  implements asxo
 {
-  public aiye(VoiceTextPanel paramVoiceTextPanel) {}
+  aiye(aiyd paramaiyd) {}
   
-  public void a()
+  public void a(int paramInt1, int paramInt2)
   {
-    VoiceTextPanel.a(this.a).a.setVisibility(0);
-    VoiceTextPanel.a(this.a).j();
-    if (!VoiceTextPanel.a(this.a).a().a())
-    {
-      VoiceTextPanel.a(this.a).h(false);
-      VoiceTextPanel.a(this.a).a();
-    }
-    for (;;)
-    {
-      VoiceTextPanel.a(this.a);
-      return;
-      VoiceTextPanel.a(this.a).a(1);
-      VoiceTextPanel.a(this.a).aJ();
-    }
-  }
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    if ((paramMotionEvent.getAction() == 2) || (!VoiceTextPanel.a(this.a).a().a())) {
-      return;
-    }
-    VoiceTextPanel.a(this.a).a(paramMotionEvent);
-  }
-  
-  public void a(String paramString)
-  {
-    VoiceTextPanel.a(this.a).b(paramString);
-    VoiceTextPanel.a(this.a).a().b(true);
-    VoiceTextPanel.a(this.a).a();
-    this.a.c();
-  }
-  
-  public void b()
-  {
-    VoiceTextPanel.a(this.a).a.setVisibility(0);
-    if (!VoiceTextPanel.a(this.a).a().a())
-    {
-      VoiceTextPanel.a(this.a).h(false);
-      VoiceTextPanel.a(this.a).a();
-      VoiceTextPanel.a(this.a).g();
-      aiyu.a("0X800A1DB", 1, 0);
-    }
-    for (;;)
-    {
-      VoiceTextPanel.a(this.a);
-      return;
-      VoiceTextPanel.a(this.a).a(1);
-      VoiceTextPanel.a(this.a).aJ();
-      aiyu.a("0X800A1DB", 2, 0);
+    if ((paramInt1 == 3) && (paramInt2 == 0)) {
+      bcef.b(this.a.a.a, "dc00898", "", "", "0X800A0BE", "0X800A0BE", 3, 0, "", "", "", "");
     }
   }
 }

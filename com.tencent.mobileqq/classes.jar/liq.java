@@ -1,135 +1,88 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Typeface;
-import android.text.TextUtils;
+import android.graphics.PointF;
+import android.text.TextPaint;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Random;
 
-public abstract class liq
-  implements mor
+public class liq
 {
-  protected int a;
-  protected Bitmap a;
-  protected Canvas a;
-  protected Paint a;
-  protected lgi a;
-  protected mos a;
-  protected boolean a;
-  protected int b;
-  protected boolean b;
+  private static int jdField_a_of_type_Int = Color.parseColor("#FFFFFF");
+  private static volatile boolean jdField_a_of_type_Boolean = true;
+  private static final char[] jdField_a_of_type_ArrayOfChar = { 36, 64, 38, 35, 37, 165 };
+  private static int[] jdField_a_of_type_ArrayOfInt = { Color.parseColor("#FFCC00"), Color.parseColor("#FB4D97"), Color.parseColor("#0096FF"), Color.parseColor("#1ACEA6"), Color.parseColor("#4752E7"), Color.parseColor("#22CE53"), Color.parseColor("#B53BF5"), Color.parseColor("#1ACEA6") };
+  private static int[] b = { Color.parseColor("#80690B"), Color.parseColor("#6E3F78"), Color.parseColor("#096AAD"), Color.parseColor("#13A685"), Color.parseColor("#343FD8"), Color.parseColor("#1F9944"), Color.parseColor("#6E3F78"), Color.parseColor("#2E5556") };
   
-  public liq(lgi paramlgi, boolean paramBoolean)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_Int = 32;
-    this.jdField_b_of_type_Int = 255;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Lgi = paramlgi;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public abstract int a();
-  
-  public int a(long paramLong)
-  {
-    return 0;
-  }
-  
-  Bitmap a()
-  {
-    Object localObject3 = null;
-    Object localObject4 = null;
-    Object localObject1 = null;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_Lgi.a))
+    String str = "";
+    if (paramString.length() > 10)
     {
-      lbj.c("ARZimuItemTask", "TextUtils.isEmpty(mSentenceInfo.src_text) == null");
-      localObject3 = localObject1;
+      str = "";
+      return str;
     }
-    do
+    int k = paramString.length();
+    int j = k / 2;
+    int i = j;
+    if (k + j > 13) {
+      i = 13 - k;
+    }
+    Random localRandom = new Random();
+    char c;
+    for (paramString = str;; paramString = paramString + c)
     {
-      for (;;)
-      {
-        return localObject3;
-        lbj.c("ARZimuItemTask", "build:" + toString());
-        localObject1 = localObject3;
-        Object localObject2 = localObject4;
-        try
-        {
-          int i = a();
-          localObject1 = localObject3;
-          localObject2 = localObject4;
-          int j = b();
-          localObject1 = localObject3;
-          localObject2 = localObject4;
-          localObject3 = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-          localObject1 = localObject3;
-          localObject2 = localObject3;
-          this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap((Bitmap)localObject3);
-          localObject1 = localObject3;
-          localObject2 = localObject3;
-          a(this.jdField_a_of_type_AndroidGraphicsCanvas, i, j);
-          return localObject3;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          localObject3 = localObject1;
-          if (QLog.isColorLevel())
-          {
-            QLog.e("ARZimuItemTask", 2, localOutOfMemoryError.getMessage());
-            return localObject1;
-          }
-        }
-        catch (Exception localException)
-        {
-          localObject3 = localOutOfMemoryError;
-        }
+      str = paramString;
+      if (paramString.length() >= i) {
+        break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("ARZimuItemTask", 2, localException.getMessage());
-    return localOutOfMemoryError;
-  }
-  
-  protected abstract void a(Canvas paramCanvas, int paramInt1, int paramInt2);
-  
-  public void a(Typeface paramTypeface, int paramInt, mos parammos)
-  {
-    if (paramTypeface != null) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
+      j = localRandom.nextInt(jdField_a_of_type_ArrayOfChar.length);
+      c = jdField_a_of_type_ArrayOfChar[j];
     }
-    this.jdField_a_of_type_Mos = parammos;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramInt);
   }
   
-  public void a(lgi paramlgi)
+  public static void a(Paint paramPaint, TextPaint paramTextPaint)
   {
-    this.jdField_a_of_type_Lgi = paramlgi;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public abstract int b();
-  
-  public Bitmap b()
-  {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = a();
+    int i = new Random().nextInt(jdField_a_of_type_ArrayOfInt.length);
+    if (paramPaint != null) {
+      paramPaint.setColor(jdField_a_of_type_ArrayOfInt[i]);
     }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (paramTextPaint != null)
+    {
+      paramTextPaint.setColor(jdField_a_of_type_Int);
+      paramTextPaint.setShadowLayer(0.1F, 1.3F, 2.0F, b[i]);
+    }
   }
   
-  public boolean b()
+  public static void a(boolean paramBoolean)
   {
-    return this.jdField_b_of_type_Boolean;
+    jdField_a_of_type_Boolean = paramBoolean;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("ARZimuUtil", 4, "setIsEnableARZimu, isEnable[" + paramBoolean + "]");
+    }
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = lma.a();
+    if (QLog.isDevelopLevel()) {
+      QLog.i("ARZimuUtil", 4, "getIsEnableARZimu, isSoEnable[" + bool + "], isEnableARZimu[" + jdField_a_of_type_Boolean + "]");
+    }
+    return (jdField_a_of_type_Boolean) && (bool);
+  }
+  
+  public static boolean a(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3, PointF paramPointF4)
+  {
+    float f = (float)Math.sqrt(Math.pow(paramPointF2.x - paramPointF1.x, 2.0D) + Math.pow(paramPointF2.y - paramPointF1.y, 2.0D));
+    return (float)Math.sqrt(Math.pow(paramPointF4.x - paramPointF3.x, 2.0D) + Math.pow(paramPointF4.y - paramPointF3.y, 2.0D)) >= f * 0.112F;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if ((paramString == null) || (paramString.isEmpty())) {}
+    while (!paramString.equals("spit")) {
+      return false;
+    }
+    return true;
   }
 }
 

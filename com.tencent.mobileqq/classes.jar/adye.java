@@ -1,70 +1,37 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.telephony.TelephonyManager;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class adye
-  extends BroadcastReceiver
+  implements baby
 {
-  public adye(BaseChatPie paramBaseChatPie) {}
+  public adye(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(bacc parambacc) {}
+  
+  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult) {}
+  
+  public void a(boolean paramBoolean, String paramString)
   {
-    paramContext = paramIntent.getAction();
-    if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
+    if (!paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "receive action_recv_video_request");
-      }
-      this.a.k(2);
-    }
-    do
-    {
-      return;
-      if ("android.intent.action.PHONE_STATE".equals(paramContext))
-      {
-        paramContext = (TelephonyManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("phone");
-        if (paramContext.getCallState() == 1)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "receive action_phone_state_changed|call_state_ringing");
-          }
-          this.a.k(2);
-        }
-        if (paramContext.getCallState() == 1)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "receive action_phone_state_changed|call_state_ringing");
-          }
-          paramIntent = MediaPlayerManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          if (paramIntent.a()) {
-            paramIntent.a(false);
-          }
-        }
-        this.a.e(paramContext.getCallState());
-        return;
-      }
-      if ((BaseChatPie.i() == 1) && ("vivo_smart_shot_enter".equals(paramContext)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("vivo", 2, "receive action_vivo_smart_shot_enter");
-        }
-        BaseChatPie.a(this.a, Boolean.valueOf(false));
-        return;
-      }
-    } while (!"com.huawei.hwmultidisplay.action.WINDOW_CAST_MODE".equals(paramContext));
-    boolean bool = paramIntent.getBooleanExtra("mode", false);
-    QLog.d("WindowsCastReceiver", 1, "onReceive mode = " + bool);
-    if (bool) {}
-    for (int i = 1;; i = 0)
-    {
-      bhjl.a = i;
+      paramString = bfur.a(this.a, 230, this.a.getString(2131697886), amtj.a(2131709463), new adyf(this), null);
+      paramString.setOnDismissListener(new adyg(this));
+      paramString.show();
       return;
     }
+    QQIdentiferActivity.a(this.a).set(false);
+    QQIdentiferActivity.a(this.a).a();
   }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

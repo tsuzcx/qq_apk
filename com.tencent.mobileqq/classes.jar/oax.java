@@ -1,27 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.qphone.base.util.QLog;
 
-public class oax
-  implements DialogInterface.OnClickListener
+class oax
+  implements bjoi
 {
-  public oax(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2) {}
+  oax(oaw paramoaw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void ab_()
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.mRuntime.a();
-    if (paramDialogInterface == null) {}
-    do
-    {
-      return;
-      if (paramInt == 0)
-      {
-        paramDialogInterface.loadUrl("javascript:" + this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    } while (paramInt != 1);
-    paramDialogInterface.loadUrl("javascript:" + this.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeAdDislikeHelper", 2, "onDismissOperations");
+    }
   }
 }
 

@@ -1,56 +1,18 @@
-import android.app.WallpaperColors;
-import android.service.wallpaper.WallpaperService.Engine;
-import android.view.SurfaceHolder;
-import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
-import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.filedownload.ui.ApkFileDownloadButton;
 
 public class bief
-  extends WallpaperService.Engine
+  implements DialogInterface.OnClickListener
 {
-  private final WallpaperHelper jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper = new WallpaperHelper();
+  public bief(ApkFileDownloadButton paramApkFileDownloadButton, DownloadInfo paramDownloadInfo) {}
   
-  private bief(VipWallpaperService paramVipWallpaperService)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramVipWallpaperService);
-  }
-  
-  public WallpaperColors onComputeColors()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a();
-  }
-  
-  public void onOffsetsChanged(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, int paramInt2)
-  {
-    super.onOffsetsChanged(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramInt2);
-  }
-  
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super.onSurfaceChanged(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a(paramSurfaceHolder, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    super.onSurfaceCreated(paramSurfaceHolder);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a(this.jdField_a_of_type_ComTencentMobileqqVasWallpaperVipWallpaperService, paramSurfaceHolder);
-  }
-  
-  public void onSurfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    super.onSurfaceDestroyed(paramSurfaceHolder);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a();
-  }
-  
-  public void onSurfaceRedrawNeeded(SurfaceHolder paramSurfaceHolder)
-  {
-    super.onSurfaceRedrawNeeded(paramSurfaceHolder);
-  }
-  
-  public void onVisibilityChanged(boolean paramBoolean)
-  {
-    super.onVisibilityChanged(paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperWallpaperHelper.a(paramBoolean);
+    this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.h();
+    ApkFileDownloadButton.a(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
+    bhzd.b(bhzf.a().a("400").k(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.a).j("5").l(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.c).m(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.d).a(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.h).b(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.f).g(this.jdField_a_of_type_ComTencentOpenFiledownloadUiApkFileDownloadButton.a.e));
   }
 }
 

@@ -1,46 +1,13 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class agvs
-  implements agvc
+  implements agut
 {
-  private aiap jdField_a_of_type_Aiap;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
-  
-  public agvs(BaseChatPie paramBaseChatPie)
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
-  
-  private PlusPanel a()
-  {
-    if (this.jdField_a_of_type_Aiap == null) {
-      this.jdField_a_of_type_Aiap = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
-    }
-    return (PlusPanel)this.jdField_a_of_type_Aiap.b(8);
-  }
-  
-  public void a(int paramInt)
-  {
-    PlusPanel localPlusPanel = a();
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (localPlusPanel == null);
-      localPlusPanel.e();
-      return;
-    } while (localPlusPanel == null);
-    localPlusPanel.f();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 5, 13 };
+    paramagap.a(paramagcc.b);
   }
 }
 

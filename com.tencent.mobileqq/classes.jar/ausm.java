@@ -1,162 +1,98 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.os.Looper;
+import android.support.v4.util.MQLruCache;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
+import mqq.os.MqqHandler;
 
 public class ausm
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public long f;
-  public String f;
-  public long g;
-  public String g;
-  public long h;
-  public String h;
-  public long i;
-  public String i;
-  public long j;
-  public String j;
-  public String k;
+  private static aafh a = new aafh(BaseApplicationImpl.sApplication);
   
-  public ausm(String paramString1, String paramString2)
+  public static void a()
   {
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_i_of_type_Long == 0L) {
-      return "0 KB/s";
-    }
-    long l = this.f - this.d;
-    if (l == 0L) {
-      return "0 KB/s";
-    }
-    float f1 = (float)(this.jdField_i_of_type_Long / 1024L) / (float)(l / 1000L);
-    return f1 + " KB/s";
-  }
-  
-  public HashMap<String, String> a()
-  {
-    HashMap localHashMap = null;
-    Object localObject = localHashMap;
     try
     {
-      if (this.jdField_g_of_type_JavaLangString != null)
+      JavaHookBridge.findAndHookMethod(Bitmap.class, "createBitmap", new Object[] { DisplayMetrics.class, Integer.TYPE, Integer.TYPE, Bitmap.Config.class, Boolean.TYPE, new ausn(90001) });
+    }
+    catch (NoSuchMethodException localNoSuchMethodException2)
+    {
+      try
       {
-        localObject = localHashMap;
-        if (this.jdField_g_of_type_JavaLangString.length() > 0) {
-          localObject = this.jdField_g_of_type_JavaLangString.substring(this.jdField_g_of_type_JavaLangString.indexOf("://") + 3, this.jdField_g_of_type_JavaLangString.lastIndexOf(":"));
+        JavaHookBridge.findAndHookMethod(Bitmap.class, "createBitmap", new Object[] { DisplayMetrics.class, [I.class, Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE, Bitmap.Config.class, new ausn(90002) });
+      }
+      catch (NoSuchMethodException localNoSuchMethodException2)
+      {
+        try
+        {
+          for (;;)
+          {
+            JavaHookBridge.findAndHookMethod(BitmapFactory.class, "decodeResource", new Object[] { Resources.class, Integer.TYPE, BitmapFactory.Options.class, new ausn(90003) });
+            try
+            {
+              JavaHookBridge.findAndHookMethod(BitmapFactory.class, "decodeFile", new Object[] { String.class, BitmapFactory.Options.class, new ausn(90004) });
+              return;
+            }
+            catch (NoSuchMethodException localNoSuchMethodException4)
+            {
+              bftf.a(localNoSuchMethodException4);
+            }
+            localNoSuchMethodException1 = localNoSuchMethodException1;
+            bftf.a(localNoSuchMethodException1);
+            continue;
+            localNoSuchMethodException2 = localNoSuchMethodException2;
+            bftf.a(localNoSuchMethodException2);
+          }
+        }
+        catch (NoSuchMethodException localNoSuchMethodException3)
+        {
+          for (;;)
+          {
+            bftf.a(localNoSuchMethodException3);
+          }
         }
       }
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        String str = this.jdField_g_of_type_JavaLangString;
-      }
-    }
-    localHashMap = new HashMap();
-    localHashMap.put("param_serverip", String.valueOf(localObject));
-    localHashMap.put("param_Server", String.valueOf(localObject));
-    localHashMap.put("param_PeerUin", String.valueOf(this.jdField_h_of_type_JavaLangString));
-    localHashMap.put("param_PeerType", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("param_uuid", String.valueOf(this.jdField_i_of_type_JavaLangString));
-    localHashMap.put("param_FailCode", Long.toString(this.jdField_a_of_type_Long));
-    localHashMap.put("param_fsized", String.valueOf(this.jdField_h_of_type_Long));
-    localHashMap.put("param_fsizeo", String.valueOf(this.jdField_j_of_type_Long));
-    localHashMap.put("param_url", String.valueOf(this.jdField_g_of_type_JavaLangString));
-    localHashMap.put("param_rspHeader", String.valueOf(this.jdField_j_of_type_JavaLangString));
-    localHashMap.put("param_retry", String.valueOf(this.jdField_b_of_type_Int));
-    localHashMap.put("param_errMsg", String.valueOf(this.jdField_c_of_type_JavaLangString));
-    localHashMap.put("param_nSessionId", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("param_CSDuration", String.valueOf(this.d - this.jdField_c_of_type_Long));
-    localHashMap.put("param_HttpDuration", String.valueOf(this.f - this.e));
-    localHashMap.put("param_AllDuration", String.valueOf(this.jdField_g_of_type_Long - this.jdField_c_of_type_Long));
-    return localHashMap;
   }
   
-  public void a()
+  private static void b(boolean paramBoolean, int paramInt)
   {
-    long l2 = System.currentTimeMillis() - this.f;
-    long l1 = l2;
-    if (l2 < 0L) {
-      l1 = 0L;
+    String str = null;
+    Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    if (localObject != null) {
+      str = ((QQAppInterface)localObject).getCurrentAccountUin();
     }
-    this.jdField_g_of_type_Long = System.currentTimeMillis();
-    HashMap localHashMap = a();
-    bdmc localbdmc = bdmc.a(BaseApplication.getContext());
-    String str1 = this.jdField_b_of_type_JavaLangString;
-    String str2 = this.jdField_a_of_type_JavaLangString + "Detail";
-    if (this.jdField_a_of_type_Long == 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localbdmc.a(str1, str2, bool, l1, this.jdField_i_of_type_Long, localHashMap, this.k);
-      return;
-    }
+    localObject = new HashMap();
+    ((HashMap)localObject).put("param_FailCode", Integer.toString(paramInt));
+    StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(str, "BitmapOOMHooker", paramBoolean, 0L, 0L, (HashMap)localObject, "", true);
   }
   
-  public void b()
+  private static void c()
   {
-    long l2 = System.currentTimeMillis() - this.f;
-    long l1 = l2;
-    if (l2 < 0L) {
-      l1 = 0L;
+    if (BaseApplicationImpl.sImageCache != null) {
+      BaseApplicationImpl.sImageCache.evictAll();
     }
-    this.jdField_g_of_type_Long = System.currentTimeMillis();
-    HashMap localHashMap = a();
-    bdmc localbdmc = bdmc.a(BaseApplication.getContext());
-    String str1 = this.jdField_b_of_type_JavaLangString;
-    String str2 = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Long == 0L) {}
-    for (boolean bool = true;; bool = false)
+    System.gc();
+    Thread.yield();
+    System.gc();
+    if (ThreadManager.getUIHandler().getLooper() != Looper.myLooper()) {}
+    try
     {
-      localbdmc.a(str1, str2, bool, l1, this.jdField_i_of_type_Long, localHashMap, this.k);
+      Thread.sleep(1000L);
       return;
     }
-  }
-  
-  public void c()
-  {
-    long l2 = System.currentTimeMillis() - this.f;
-    long l1 = l2;
-    if (l2 < 0L) {
-      l1 = 0L;
-    }
-    this.jdField_g_of_type_Long = System.currentTimeMillis();
-    HashMap localHashMap = a();
-    bdmc localbdmc = bdmc.a(BaseApplication.getContext());
-    String str1 = this.jdField_b_of_type_JavaLangString;
-    String str2 = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Long == 0L)
+    catch (InterruptedException localInterruptedException)
     {
-      bool = true;
-      localbdmc.a(str1, str2, bool, l1, this.jdField_i_of_type_Long, localHashMap, this.k);
-      localbdmc = bdmc.a(BaseApplication.getContext());
-      str1 = this.jdField_b_of_type_JavaLangString;
-      str2 = this.jdField_a_of_type_JavaLangString + "Detail";
-      if (this.jdField_a_of_type_Long != 0L) {
-        break label165;
-      }
-    }
-    label165:
-    for (boolean bool = true;; bool = false)
-    {
-      localbdmc.a(str1, str2, bool, l1, this.jdField_i_of_type_Long, localHashMap, this.k);
-      return;
-      bool = false;
-      break;
+      localInterruptedException.printStackTrace();
     }
   }
 }

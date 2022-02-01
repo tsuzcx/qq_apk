@@ -1,16 +1,23 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 class akij
   implements View.OnClickListener
 {
-  akij(akih paramakih) {}
+  akij(akho paramakho) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.setText("");
+    Intent localIntent = new Intent(akho.a(this.a), TroopAssisSettingActivity.class);
+    akho.a(this.a).startActivityForResult(localIntent, 9001);
+    akho.a(this.a).sendEmptyMessageDelayed(1, 1000L);
+    bcef.b(akho.a(this.a).app, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_setmsg", 0, 0, "", "", "", "");
+    bcef.a(akho.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 17, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

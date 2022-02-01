@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import androidx.annotation.Nullable;
-import bhtq;
+import com.tencent.mobileqq.utils.ViewUtils;
 import java.lang.reflect.Array;
 
 class MiniGamePublicAccountViewPagerIndicator$IndicatorView
@@ -15,15 +15,15 @@ class MiniGamePublicAccountViewPagerIndicator$IndicatorView
 {
   private static final int HEIGHT;
   private static final int NORMAL_COLOR = Color.parseColor("#D0D8F2");
-  private static final int NORMAL_WIDTH = bhtq.b(14.0F);
+  private static final int NORMAL_WIDTH = ViewUtils.dpToPx(14.0F);
   private static final int SELECTED_COLOR = Color.parseColor("#3857FF");
-  private static final int SELECTED_WIDTH = bhtq.b(32.0F);
+  private static final int SELECTED_WIDTH = ViewUtils.dpToPx(32.0F);
   private static final int SPACE;
   
   static
   {
-    HEIGHT = bhtq.b(2.0F);
-    SPACE = bhtq.b(2.5F);
+    HEIGHT = ViewUtils.dpToPx(2.0F);
+    SPACE = ViewUtils.dpToPx(2.5F);
   }
   
   public MiniGamePublicAccountViewPagerIndicator$IndicatorView(Context paramContext)

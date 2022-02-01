@@ -1,6 +1,13 @@
-public abstract interface bepn
+import android.view.View;
+
+public abstract class bepn
 {
-  public abstract void b();
+  public final View a;
+  
+  protected bepn(View paramView)
+  {
+    this.a = paramView;
+  }
 }
 
 

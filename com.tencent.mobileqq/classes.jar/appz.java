@@ -1,61 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class appz
-  implements beuq
+public class appz
+  extends MSFServlet
 {
-  appz(appy paramappy, apqc paramapqc, apqb paramapqb) {}
-  
-  public void onResp(bevm parambevm)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (parambevm.jdField_a_of_type_Int == 3)
+    if (paramFromServiceMsg.isSuccess()) {}
+    for (byte[] arrayOfByte = bgau.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
     {
-      QLog.i("AREngine_ARResourceDownload", 1, "Download init. url = " + ((beum)parambevm.jdField_a_of_type_Bevl).jdField_a_of_type_JavaLangString);
-      return;
-    }
-    synchronized (appy.a(this.jdField_a_of_type_Appy))
-    {
-      int i;
-      if (appy.a(this.jdField_a_of_type_Appy) != null)
-      {
-        i = 0;
-        if (i < appy.a(this.jdField_a_of_type_Appy).size())
-        {
-          if (!((apqc)appy.a(this.jdField_a_of_type_Appy).get(i)).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Apqc.jdField_a_of_type_JavaLangString)) {
-            break label268;
-          }
-          appy.a(this.jdField_a_of_type_Appy).remove(i);
-        }
+      new Bundle().putByteArray("data", arrayOfByte);
+      anca localanca = (anca)((QQAppInterface)getAppRuntime()).getBusinessHandler(20);
+      if (localanca != null) {
+        localanca.a(paramIntent, paramFromServiceMsg, arrayOfByte);
       }
-      if (parambevm.jdField_a_of_type_Int == 0)
-      {
-        ??? = new File(((beum)parambevm.jdField_a_of_type_Bevl).c);
-        String str = azul.a(((File)???).getAbsolutePath());
-        if (((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_Apqc.b))) && (this.jdField_a_of_type_Apqc.jdField_a_of_type_Int != 1))
-        {
-          QLog.i("AREngine_ARResourceDownload", 1, "Download end. MD5 check error. url = " + ((beum)parambevm.jdField_a_of_type_Bevl).jdField_a_of_type_JavaLangString + ", fileName = " + ((File)???).getAbsolutePath() + ", fileMD5 = " + str);
-          this.jdField_a_of_type_Apqb.a(false, this.jdField_a_of_type_Apqc);
-          return;
-          label268:
-          i += 1;
-        }
-      }
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Apqb.a(bool, this.jdField_a_of_type_Apqc);
       return;
     }
   }
   
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_ARResourceDownload", 2, "onUpdateProgeress. url = " + ((beum)parambevl).jdField_a_of_type_JavaLangString + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
-    }
-    this.jdField_a_of_type_Apqb.a(paramLong1, paramLong2);
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bgau.a(arrayOfByte));
   }
 }
 

@@ -1,19 +1,22 @@
-import android.graphics.Bitmap;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
-public class yzy
+class yzy
+  extends RecyclerView.OnScrollListener
 {
-  public final int c;
-  public final Bitmap c;
+  yzy(yzx paramyzx) {}
   
-  public yzy(int paramInt, Bitmap paramBitmap)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
   }
   
-  public String toString()
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    return "VideoFragmentInfo{blockIndex=" + this.jdField_c_of_type_Int + '}';
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (paramInt2 > 0) {
+      this.a.g();
+    }
   }
 }
 

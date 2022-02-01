@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import anhd;
-import anhj;
+import ambx;
+import amcd;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class CmShowSpriteDrawerInfoBridge$4$1
   implements Runnable
 {
-  public CmShowSpriteDrawerInfoBridge$4$1(anhj paramanhj, String paramString, anhd paramanhd) {}
+  public CmShowSpriteDrawerInfoBridge$4$1(amcd paramamcd, String paramString, ambx paramambx) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class CmShowSpriteDrawerInfoBridge$4$1
       localJSONObject.put("dressInfos", localObject);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("changeDress('").append(localJSONObject.toString()).append("');");
-      this.jdField_a_of_type_Anhd.a(((StringBuilder)localObject).toString());
+      this.jdField_a_of_type_Ambx.a(((StringBuilder)localObject).toString());
       return;
     }
     catch (Throwable localThrowable)

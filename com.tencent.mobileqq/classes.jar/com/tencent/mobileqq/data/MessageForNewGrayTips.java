@@ -8,12 +8,12 @@ import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.webkit.URLUtil;
 import android.widget.TextView;
-import apdm;
-import arxm;
-import asbl;
-import bdll;
-import bhmr;
-import bhni;
+import anwz;
+import aqrj;
+import aqvi;
+import bcef;
+import bfvp;
+import bfwg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -40,7 +40,7 @@ public class MessageForNewGrayTips
         GrayTipsSpan localGrayTipsSpan = (GrayTipsSpan)localIterator.next();
         try
         {
-          paramQQAppInterface.setSpan(new asbl(new arxm(this, localGrayTipsSpan), -12541697), localGrayTipsSpan.begin, localGrayTipsSpan.end, 33);
+          paramQQAppInterface.setSpan(new aqvi(new aqrj(this, localGrayTipsSpan), -12541697), localGrayTipsSpan.begin, localGrayTipsSpan.end, 33);
         }
         catch (Exception localException)
         {
@@ -58,13 +58,13 @@ public class MessageForNewGrayTips
     for (;;)
     {
       return;
-      Object localObject = bhni.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), paramString);
+      Object localObject = bfwg.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), paramString);
       if (localObject != null) {
-        ((bhmr)localObject).a();
+        ((bfvp)localObject).a();
       }
       while ((this.msgtype == -2037) && ((paramView.getContext() instanceof BaseActivity)))
       {
-        bdll.b(((BaseActivity)paramView.getContext()).app, "CliOper", "", "", "0X80060B7", "0X80060B7", 0, 0, "", "", "", "");
+        bcef.b(((BaseActivity)paramView.getContext()).app, "CliOper", "", "", "0X80060B7", "0X80060B7", 0, 0, "", "", "", "");
         return;
         localObject = new Intent(paramView.getContext(), QQBrowserActivity.class);
         ((Intent)localObject).putExtra("url", URLUtil.guessUrl(paramString));
@@ -77,7 +77,7 @@ public class MessageForNewGrayTips
   {
     try
     {
-      GrayTipsInfo localGrayTipsInfo = (GrayTipsInfo)apdm.a(this.msgData);
+      GrayTipsInfo localGrayTipsInfo = (GrayTipsInfo)anwz.a(this.msgData);
       if (localGrayTipsInfo != null)
       {
         this.msg = localGrayTipsInfo.text;
@@ -106,7 +106,7 @@ public class MessageForNewGrayTips
     }
     try
     {
-      this.msgData = apdm.a(localGrayTipsInfo);
+      this.msgData = anwz.a(localGrayTipsInfo);
       return;
     }
     catch (Exception localException)
@@ -122,7 +122,7 @@ public class MessageForNewGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForNewGrayTips
  * JD-Core Version:    0.7.0.1
  */

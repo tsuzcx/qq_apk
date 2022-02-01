@@ -1,90 +1,28 @@
-import android.content.Context;
-import java.io.File;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract class adkf
+public class adkf
+  implements ampq
 {
-  public static String a;
-  public adkg a;
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
+  public adkf(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  static
+  public void a(int paramInt, boolean paramBoolean)
   {
-    jdField_a_of_type_JavaLangString = File.separator;
-  }
-  
-  public static ArrayList<String> a(String paramString1, String paramString2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramString2.equals("Native"))
+    if ((this.a.a == 1) || (this.a.a == 2))
     {
-      localArrayList.add(paramString1 + ".cfg");
-      localArrayList.add("lib" + paramString1 + ".so");
-      localArrayList.add(paramString1 + ".subpatch");
-      return localArrayList;
-    }
-    if (paramString2.equals("DVM"))
-    {
-      localArrayList.add(paramString1 + ".cfg");
-      localArrayList.add(paramString1 + ".jar");
-      return localArrayList;
-    }
-    return null;
-  }
-  
-  public static adkf b(String paramString, adkg paramadkg)
-  {
-    String str = paramadkg.f;
-    if (str.equals("Native"))
-    {
-      paramString = adka.a(paramString, paramadkg);
-      if (paramString == null) {
-        return null;
+      if (paramBoolean) {
+        break label55;
       }
+      FriendProfileMoreInfoActivity.a(this.a);
+      QQToast.a(this.a, 2131690945, 0).b(this.a.getTitleBarHeight());
     }
-    else
-    {
-      adjv.a("KingKongPatchInfo", "Unsupported patch type : " + str);
-      return null;
+    label55:
+    while (paramInt != 2) {
+      return;
     }
-    if ((!paramString.c.equals(paramadkg.jdField_a_of_type_JavaLangString)) || (!paramString.d.equals(paramadkg.b)) || (!paramString.e.equals(paramadkg.f)) || (!paramString.e.equals("Native")))
-    {
-      adjv.a("KingKongPatchInfo", "Patch name, version or type mismatch : " + paramString.c + ", " + paramString.d + ", " + paramString.e);
-      return null;
-    }
-    paramString.jdField_a_of_type_Adkg = paramadkg;
-    return paramString;
+    FriendProfileMoreInfoActivity.a(this.a);
+    FriendProfileMoreInfoActivity.a(this.a, this.a.a);
   }
-  
-  public static ArrayList<String> b(String paramString1, String paramString2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramString2.equals("Native"))
-    {
-      localArrayList.add(paramString1 + ".cfg");
-      localArrayList.add("lib" + paramString1 + ".so");
-      localArrayList.add(paramString1 + ".subpatch");
-    }
-    while (!paramString2.equals("DVM")) {
-      return localArrayList;
-    }
-    localArrayList.add(paramString1 + ".cfg");
-    localArrayList.add(paramString1 + ".jar");
-    localArrayList.add(paramString1 + ".dex");
-    return localArrayList;
-  }
-  
-  public abstract int a(Context paramContext);
-  
-  public String a()
-  {
-    return this.b + jdField_a_of_type_JavaLangString + this.c + ".cfg";
-  }
-  
-  public abstract boolean a();
 }
 
 

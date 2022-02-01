@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.utils;
 
 import android.app.Activity;
-import bhot;
-import bhov;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
-public class QQCustomArkDialog$2$2
+class QQCustomArkDialog$2$2
   implements Runnable
 {
-  public QQCustomArkDialog$2$2(bhov parambhov) {}
+  QQCustomArkDialog$2$2(QQCustomArkDialog.2 param2) {}
   
   public void run()
   {
-    if (bhot.a(this.a.a) != null) {}
-    for (Activity localActivity = (Activity)bhot.a(this.a.a).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
+    if (QQCustomArkDialog.access$400(this.this$1.this$0) != null) {}
+    for (Activity localActivity = (Activity)QQCustomArkDialog.access$400(this.this$1.this$0).get(); (localActivity != null) && (!localActivity.isFinishing()); localActivity = null)
     {
-      this.a.a.show();
+      this.this$1.this$0.show();
       return;
     }
     QLog.d("QQCustomArkDialog", 1, "overtime,show dialog onloadcallback activity is null or finished");

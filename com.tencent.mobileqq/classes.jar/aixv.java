@@ -1,14 +1,15 @@
 import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
 
-public abstract interface aixv
+public class aixv
+  implements ajbk
 {
-  public abstract void a();
+  public aixv(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
   
-  public abstract void a(MotionEvent paramMotionEvent);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b();
+  public void a(MotionEvent paramMotionEvent)
+  {
+    this.a.a.a(paramMotionEvent);
+  }
 }
 
 

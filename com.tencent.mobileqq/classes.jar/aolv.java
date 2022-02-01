@@ -1,7 +1,14 @@
-public class aolv {}
+public abstract interface aolv
+{
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aolv
  * JD-Core Version:    0.7.0.1
  */

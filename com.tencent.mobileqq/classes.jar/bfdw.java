@@ -1,12 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class bfdw
-  implements View.OnClickListener
+public class bfdw
 {
-  bfdw(bfdt parambfdt) {}
+  public long a;
+  public long b;
   
-  public void onClick(View paramView) {}
+  public String toString()
+  {
+    return " s:" + this.a + " e:" + this.b;
+  }
 }
 
 

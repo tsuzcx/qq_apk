@@ -1,6 +1,15 @@
-public abstract interface ovw
+class ovw
+  extends owd
 {
-  public abstract void a(int paramInt);
+  ovw(ouu paramouu, int paramInt)
+  {
+    super(paramouu, null);
+  }
+  
+  void a(owg paramowg)
+  {
+    paramowg.onCommentStateError(this.jdField_a_of_type_Int);
+  }
 }
 
 

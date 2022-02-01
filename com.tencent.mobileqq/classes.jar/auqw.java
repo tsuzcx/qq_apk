@@ -1,17 +1,14 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class auqw
-  implements CompoundButton.OnCheckedChangeListener
+class auqw
+  extends auqy
 {
-  public auqw(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
+  auqw(auqv paramauqv) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    atul.a().f(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    super.a(paramBoolean, paramInt, paramLong, paramString1, paramString2);
+    if (paramBoolean) {
+      this.a.a(paramInt, paramLong, paramString1);
+    }
   }
 }
 

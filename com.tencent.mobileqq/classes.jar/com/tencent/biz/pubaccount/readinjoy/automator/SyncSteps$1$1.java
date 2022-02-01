@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.automator;
 
-import omp;
-import omt;
+import ooa;
+import ooe;
 
 class SyncSteps$1$1
   implements Runnable

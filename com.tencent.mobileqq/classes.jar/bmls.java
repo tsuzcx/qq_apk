@@ -1,81 +1,25 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import mqq.app.MobileQQ;
+import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
 
-public class bmls
-  implements bmlr
+public final class bmls
+  implements VSDispatchObserver.onVSRspCallBack<CLIENT.StSmartMatchMusicRsp>
 {
-  public boolean a(int paramInt, Bundle paramBundle)
+  public bmls(VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack, long paramLong) {}
+  
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CLIENT.StSmartMatchMusicRsp paramStSmartMatchMusicRsp)
   {
-    Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    long l;
-    String str;
-    switch (paramInt)
-    {
-    case 3: 
-    default: 
-      return true;
-    case 1: 
-      localObject1 = paramBundle.getString("installAppName");
-      paramBundle = paramBundle.getString("installAppUrl");
-      l = 0L;
-      for (;;)
-      {
-        try
-        {
-          localObject2 = new URL(paramBundle);
-        }
-        catch (MalformedURLException localMalformedURLException)
-        {
-          Object localObject2;
-          localMalformedURLException.printStackTrace();
-          continue;
-        }
-        try
-        {
-          paramInt = ((URL)localObject2).openConnection().getContentLength();
-          l = paramInt;
-        }
-        catch (IOException localIOException)
-        {
-          localIOException.printStackTrace();
-        }
-      }
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putLong("_filesize_from_dlg", l);
-      ((Bundle)localObject2).putString("_filename_from_dlg", (String)localObject1);
-      ((Bundle)localObject2).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_qfav");
-      aure.a().b(paramBundle, (Bundle)localObject2);
-      return true;
-    case 2: 
-      l = paramBundle.getLong("previewSize", -1L);
-      str = paramBundle.getString("previewName");
-      Intent localIntent = new Intent(((QQAppInterface)localObject1).getApplication().getBaseContext(), FilePreviewActivity.class);
-      localIntent.addFlags(268435456);
-      localIntent.putExtra("offline_file_type", 0);
-      localIntent.putExtra("offline_file_name", str);
-      localIntent.putExtra("offline_file_size", l);
-      ((QQAppInterface)localObject1).a().a(new atyk(paramBundle));
-      QLog.i("FavoritesRemoteCommandHandler", 1, "open zip favorite,open new activity");
-      ((QQAppInterface)localObject1).getApplication().getBaseContext().startActivity(localIntent);
-      return true;
-    case 4: 
-      str = paramBundle.getString("configKey");
-      paramBundle.putString("configInfo", atyt.a(((QQAppInterface)localObject1).getApp().getBaseContext(), str));
-      return true;
+    bmbx.b("AEEditorMusicHelper", "[requestRecommendedMusicList], onReceive(), isSuccess=" + paramBoolean + ", retCode=" + paramLong + ", errMsg=" + paramString);
+    if (this.jdField_a_of_type_ComTencentBizRichframeworkNetworkObserverVSDispatchObserver$onVSRspCallBack != null) {
+      this.jdField_a_of_type_ComTencentBizRichframeworkNetworkObserverVSDispatchObserver$onVSRspCallBack.onReceive(paramVSBaseRequest, paramBoolean, paramLong, paramString, paramStSmartMatchMusicRsp);
     }
-    paramBundle.putBoolean("isVideoChatting", ((QQAppInterface)localObject1).d());
-    return true;
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    int i = (int)paramLong;
+    if (paramBoolean) {
+      i = 1000;
+    }
+    bmbc.a().a(i, l1 - l2 + "", "AEEditorMusicList", 0);
   }
 }
 

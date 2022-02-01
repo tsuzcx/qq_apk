@@ -1,37 +1,6 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-
-public class bfja
-  extends ClickableSpan
+public abstract interface bfja
 {
-  public bfja(TroopBarPublishActivity paramTroopBarPublishActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.a != null)
-    {
-      if (!this.a.a.a()) {
-        break label42;
-      }
-      this.a.a.b();
-    }
-    for (;;)
-    {
-      this.a.e(true);
-      return;
-      label42:
-      this.a.a.a();
-      bdll.b(null, "dc00899", "Grp_tribe", "", "pub_page", "clk_prefixchoose", 0, 0, this.a.q, "", "", "");
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-16777216);
-    paramTextPaint.setUnderlineText(false);
-  }
+  public abstract void a();
 }
 
 

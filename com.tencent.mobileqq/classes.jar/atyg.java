@@ -1,14 +1,26 @@
-class atyg
-  extends atxl
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.message.TinyInfo;
+
+public class atyg
 {
-  public atyg(atwy paramatwy)
+  public static String a(MessageRecord paramMessageRecord)
   {
-    super(paramatwy);
+    TinyInfo localTinyInfo = new TinyInfo();
+    localTinyInfo.parseFromMessageRecord(paramMessageRecord);
+    if (paramMessageRecord.isSend()) {
+      return localTinyInfo.fromRoleId;
+    }
+    return localTinyInfo.toRoleId;
   }
   
-  protected String a()
+  public static String b(MessageRecord paramMessageRecord)
   {
-    return "StateUploadoneWhenChangeToOff";
+    TinyInfo localTinyInfo = new TinyInfo();
+    localTinyInfo.parseFromMessageRecord(paramMessageRecord);
+    if (paramMessageRecord.isSend()) {
+      return localTinyInfo.toRoleId;
+    }
+    return localTinyInfo.fromRoleId;
   }
 }
 

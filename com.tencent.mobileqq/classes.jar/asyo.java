@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
-
 public class asyo
-  implements DialogInterface.OnDismissListener
 {
-  public asyo(ExtendFriendFragment paramExtendFriendFragment) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    ExtendFriendFragment.a(this.a, false);
-  }
+  public int a;
+  public long a;
+  public String a = "";
+  public boolean a;
+  public byte[] a;
+  public byte[] b;
+  public byte[] c;
+  public byte[] d;
+  public byte[] e;
+  public byte[] f;
 }
 
 

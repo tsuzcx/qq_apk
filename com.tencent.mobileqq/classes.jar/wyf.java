@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 class wyf
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  wyf(wyd paramwyd) {}
+  wyf(wyc paramwyc, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.dismiss();
-    yup.a("msg_tab", "clk_tips", 0, 0, new String[] { "1", "", "", "" });
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
   }
 }
 

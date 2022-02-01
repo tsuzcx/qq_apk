@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import anzj;
-import bjuh;
-import boll;
+import amtj;
+import bhzt;
+import blpr;
 
 public class AEBottomListPart$8
   implements Runnable
 {
-  public AEBottomListPart$8(boll paramboll) {}
+  public AEBottomListPart$8(blpr paramblpr) {}
   
   public void run()
   {
-    bjuh.a().a(anzj.a(2131715179));
+    bhzt.a().a(amtj.a(2131715413));
   }
 }
 

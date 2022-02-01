@@ -1,41 +1,38 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.util.BinderWarpper;
-
-class bbei
-  implements ServiceConnection
+public class bbei
 {
-  bbei(bbeh parambbeh) {}
+  boolean jdField_a_of_type_Boolean;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public bbei(bbee parambbee, boolean paramBoolean)
   {
-    bbeg.a("PTV.RichmediaClient", "onServiceConnected");
-    this.a.b = new Messenger(paramIBinder);
-    paramComponentName = Message.obtain(null, 1);
-    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
-    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_Bbed.asBinder());
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
-    paramComponentName.setData(localBundle);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
     try
     {
-      this.a.b.send(paramComponentName);
+      this.jdField_a_of_type_Boolean = paramBoolean;
       return;
     }
-    catch (RemoteException paramComponentName)
+    finally
     {
-      bbeg.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public boolean a()
   {
-    this.a.b = null;
+    try
+    {
+      boolean bool = this.jdField_a_of_type_Boolean;
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

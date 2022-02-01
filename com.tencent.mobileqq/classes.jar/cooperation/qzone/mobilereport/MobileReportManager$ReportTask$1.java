@@ -1,11 +1,9 @@
 package cooperation.qzone.mobilereport;
 
-import bmzu;
-
-public class MobileReportManager$ReportTask$1
+class MobileReportManager$ReportTask$1
   implements Runnable
 {
-  public MobileReportManager$ReportTask$1(bmzu parambmzu) {}
+  MobileReportManager$ReportTask$1(MobileReportManager.ReportTask paramReportTask) {}
   
   /* Error */
   public void run()
@@ -18,41 +16,41 @@ public class MobileReportManager$ReportTask$1
     //   10: invokespecial 30	java/util/HashMap:<init>	()V
     //   13: astore_2
     //   14: aload_0
-    //   15: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lbmzu;
-    //   18: invokestatic 36	bmzu:a	(Lbmzu;)Ljava/util/HashMap;
+    //   15: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lcooperation/qzone/mobilereport/MobileReportManager$ReportTask;
+    //   18: invokestatic 36	cooperation/qzone/mobilereport/MobileReportManager$ReportTask:access$500	(Lcooperation/qzone/mobilereport/MobileReportManager$ReportTask;)Ljava/util/HashMap;
     //   21: astore_1
     //   22: aload_1
     //   23: monitorenter
     //   24: aload_2
     //   25: aload_0
-    //   26: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lbmzu;
-    //   29: invokestatic 36	bmzu:a	(Lbmzu;)Ljava/util/HashMap;
+    //   26: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lcooperation/qzone/mobilereport/MobileReportManager$ReportTask;
+    //   29: invokestatic 36	cooperation/qzone/mobilereport/MobileReportManager$ReportTask:access$500	(Lcooperation/qzone/mobilereport/MobileReportManager$ReportTask;)Ljava/util/HashMap;
     //   32: invokevirtual 40	java/util/HashMap:putAll	(Ljava/util/Map;)V
     //   35: aload_0
-    //   36: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lbmzu;
-    //   39: invokestatic 36	bmzu:a	(Lbmzu;)Ljava/util/HashMap;
+    //   36: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lcooperation/qzone/mobilereport/MobileReportManager$ReportTask;
+    //   39: invokestatic 36	cooperation/qzone/mobilereport/MobileReportManager$ReportTask:access$500	(Lcooperation/qzone/mobilereport/MobileReportManager$ReportTask;)Ljava/util/HashMap;
     //   42: invokevirtual 43	java/util/HashMap:clear	()V
     //   45: aload_0
-    //   46: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lbmzu;
-    //   49: invokestatic 46	bmzu:a	(Lbmzu;)Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   46: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lcooperation/qzone/mobilereport/MobileReportManager$ReportTask;
+    //   49: invokestatic 47	cooperation/qzone/mobilereport/MobileReportManager$ReportTask:access$600	(Lcooperation/qzone/mobilereport/MobileReportManager$ReportTask;)Ljava/util/concurrent/atomic/AtomicBoolean;
     //   52: iconst_0
-    //   53: invokevirtual 52	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   53: invokevirtual 53	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
     //   56: aload_1
     //   57: monitorexit
     //   58: aload_0
-    //   59: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lbmzu;
+    //   59: getfield 12	cooperation/qzone/mobilereport/MobileReportManager$ReportTask$1:this$0	Lcooperation/qzone/mobilereport/MobileReportManager$ReportTask;
     //   62: aload_2
-    //   63: invokevirtual 55	bmzu:a	(Ljava/util/HashMap;)V
-    //   66: invokestatic 61	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   63: invokevirtual 57	cooperation/qzone/mobilereport/MobileReportManager$ReportTask:doMobileReport	(Ljava/util/HashMap;)V
+    //   66: invokestatic 63	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   69: ifeq +11 -> 80
-    //   72: ldc 63
+    //   72: ldc 65
     //   74: iconst_4
-    //   75: ldc 65
-    //   77: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   75: ldc 67
+    //   77: invokestatic 71	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   80: return
     //   81: astore_1
     //   82: aload_1
-    //   83: invokevirtual 72	java/lang/InterruptedException:printStackTrace	()V
+    //   83: invokevirtual 74	java/lang/InterruptedException:printStackTrace	()V
     //   86: goto -80 -> 6
     //   89: astore_2
     //   90: aload_1

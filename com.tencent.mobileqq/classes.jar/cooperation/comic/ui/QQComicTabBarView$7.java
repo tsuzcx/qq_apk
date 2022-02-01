@@ -1,7 +1,7 @@
 package cooperation.comic.ui;
 
-import bmdb;
-import bmdf;
+import bkgy;
+import bkhc;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -23,9 +23,9 @@ class QQComicTabBarView$7
     if (QLog.isColorLevel()) {
       QLog.d("WebViewTabBarView", 2, "start getRedAppInfo");
     }
-    Object localObject = (bmdb)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web")).getManager(213);
+    Object localObject = (bkgy)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web")).getManager(213);
     ArrayList localArrayList = new ArrayList();
-    if (((bmdb)localObject).a(1113)) {
+    if (((bkgy)localObject).a(1113)) {
       localArrayList.addAll(this.this$0.a.keySet());
     }
     for (boolean bool = true;; bool = false)
@@ -33,7 +33,7 @@ class QQComicTabBarView$7
       if (QLog.isColorLevel()) {
         QLog.d("WebViewTabBarView", 2, "isLebaItemOpen=" + bool + ", resId=" + 1113);
       }
-      localObject = ((bmdb)localObject).a(localArrayList);
+      localObject = ((bkgy)localObject).a(localArrayList);
       if (QLog.isColorLevel()) {
         QLog.d("WebViewTabBarView", 2, "end getRedAppInfo map is " + localObject);
       }

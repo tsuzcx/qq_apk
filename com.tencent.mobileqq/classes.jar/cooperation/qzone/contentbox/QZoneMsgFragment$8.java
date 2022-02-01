@@ -1,6 +1,5 @@
 package cooperation.qzone.contentbox;
 
-import bmyc;
 import cooperation.qzone.contentbox.model.MQMsg;
 
 class QZoneMsgFragment$8
@@ -10,7 +9,7 @@ class QZoneMsgFragment$8
   
   public void run()
   {
-    this.this$0.a.a(this.a);
+    this.this$0.adapter.updateMQMsgs(this.val$mqMsg);
   }
 }
 

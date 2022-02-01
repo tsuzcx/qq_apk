@@ -1,150 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody;
-import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody.Item;
-import tencent.im.cs.cmd0x383.cmd0x383.RspBody;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import java.util.Map;
 
-class auau
-  extends anua
+public class auau
+  implements View.OnClickListener
 {
-  auau(auat paramauat) {}
+  public auau(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  protected void j(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    ArrayList localArrayList = new ArrayList();
-    auat.a(this.a, true);
-    if ((paramObject == null) || (!paramBoolean)) {}
-    Object localObject;
-    int i;
-    for (;;)
-    {
-      try
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("TroopFileSearchEngine<QFile>", 4, "data = " + paramObject + ", isSuccess = " + paramBoolean);
-        }
-        QLog.i("TroopFileSearchEngine<QFile>", 1, "error, can not handle search response, return a empty list.");
-        auat.a(this.a, false, localArrayList);
-        return;
-        paramObject = (byte[])paramObject;
-        localObject = new cmd0x383.RspBody();
-        try
-        {
-          paramObject = (cmd0x383.RspBody)((cmd0x383.RspBody)localObject).mergeFrom(paramObject);
-          if (paramObject != null) {
-            continue;
-          }
-          if (!QLog.isDevelopLevel()) {
-            continue;
-          }
-          QLog.d("TroopFileSearchEngine<QFile>", 4, "bigRsp is null !!!");
-        }
-        catch (InvalidProtocolBufferMicroException paramObject) {}
-        if (!QLog.isDevelopLevel()) {
-          continue;
-        }
-        QLog.d("TroopFileSearchEngine<QFile>", 4, QLog.getStackTraceString(paramObject));
-        continue;
-      }
-      catch (Exception paramObject)
-      {
-        if (!QLog.isDevelopLevel()) {
-          continue;
-        }
-        QLog.d("TroopFileSearchEngine<QFile>", 4, QLog.getStackTraceString(paramObject));
-        continue;
-        i = paramObject.int32_ret_code.get();
-        if (i < 0)
-        {
-          if (!QLog.isDevelopLevel()) {
-            continue;
-          }
-          QLog.d("TroopFileSearchEngine<QFile>", 4, String.format("onRspTroopFileSearch - retCode: %d", new Object[] { Integer.valueOf(i) }));
-          continue;
-        }
-        paramObject = (cmd0x383.ApplyFileSearchRspBody)paramObject.msg_file_search_rsp_body.get();
-        if (paramObject == null)
-        {
-          if (!QLog.isDevelopLevel()) {
-            continue;
-          }
-          QLog.d("TroopFileSearchEngine<QFile>", 4, "rsp = " + paramObject);
-          continue;
-        }
-        localObject = paramObject.bytes_key_word.get().toStringUtf8();
-        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals(auat.a(this.a))))
-        {
-          QLog.i("TroopFileSearchEngine<QFile>", 1, "keyword is update, current result is old");
-          return;
-        }
-        auat.b(this.a, paramObject.bytes_sync_cookie.get().toStringUtf8());
-        localObject = this.a;
-        if (paramObject.uint32_is_end.get() != 1) {
-          break;
-        }
-      }
-      paramBoolean = true;
-      auat.b((auat)localObject, paramBoolean);
-      if (QLog.isDevelopLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("onRspTroopFileSearch cookie = " + auat.b(this.a));
-        ((StringBuilder)localObject).append(", isEnd = " + auat.c(this.a));
-        ((StringBuilder)localObject).append(", keyWord = " + paramObject.bytes_key_word.get().toStringUtf8());
-        ((StringBuilder)localObject).append(", totalCount = " + paramObject.uint32_total_match_count.get());
-        QLog.d("TroopFileSearchEngine<QFile>", 4, ((StringBuilder)localObject).toString());
-      }
-      paramObject = paramObject.item_list.get();
-      if ((paramObject != null) && (paramObject.size() != 0)) {
-        break label747;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("TroopFileSearchEngine<QFile>", 4, "filelist is empty--------");
-      }
+    QQGameFeedWebFragment.a(this.a).setVisibility(8);
+    if (QQGameFeedWebFragment.a(this.a) != null) {
+      QQGameFeedWebFragment.a(this.a).setCurrentItem(0);
     }
-    for (;;)
-    {
-      if (i < paramObject.size())
-      {
-        localObject = new bfwa(auat.a(this.a), (cmd0x383.ApplyFileSearchRspBody.Item)paramObject.get(i));
-        bgrn localbgrn;
-        bfrs localbfrs;
-        if (((bfwa)localObject).jdField_a_of_type_Bfrs != null)
-        {
-          localbgrn = bgrn.a(auat.a(this.a), ((bfwa)localObject).jdField_a_of_type_Long);
-          localbfrs = localbgrn.a(((bfwa)localObject).jdField_a_of_type_Bfrs.b);
-          if (localbfrs == null) {
-            break label717;
-          }
-        }
-        label717:
-        for (((bfwa)localObject).jdField_a_of_type_Bfrs.a = localbfrs.a;; ((bfwa)localObject).jdField_a_of_type_Bfrs.a = UUID.randomUUID())
-        {
-          localbgrn.a(((bfwa)localObject).jdField_a_of_type_Bfrs.b, ((bfwa)localObject).jdField_a_of_type_Bfrs);
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopFileSearchEngine<QFile>", 4, "fileList[" + i + "]: " + ((bfwa)localObject).toString());
-          }
-          localArrayList.add(localObject);
-          i += 1;
-          break;
-        }
-      }
-      auat.a(this.a, true, localArrayList);
-      return;
-      paramBoolean = false;
-      break;
-      label747:
-      i = 0;
-    }
+    String str = (String)QQGameFeedWebFragment.a(this.a).getTag();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(Integer.valueOf(2), str);
+    localHashMap.put(Integer.valueOf(4), "20");
+    localHashMap.put(Integer.valueOf(24), "1");
+    abet.a(alvx.a(), "769", "205031", "", "76901", "1", "160", localHashMap);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

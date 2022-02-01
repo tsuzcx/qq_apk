@@ -1,13 +1,25 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.15.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class ahxs
-  implements ahyf
+  implements DialogInterface.OnClickListener
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public ahxs(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramahed.b(paramahfq, paramString);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      ThreadManager.post(new ClassificationSearchActivity.15.1(this), 10, null, true);
+      return;
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

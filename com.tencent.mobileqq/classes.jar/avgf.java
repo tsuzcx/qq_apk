@@ -1,19 +1,27 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class avgf
-  implements CompoundButton.OnCheckedChangeListener
+class avgf
+  implements View.OnClickListener
 {
-  public avgf(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  avgf(avga paramavga, avfq paramavfq) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    ((axae)this.a.a.getManager(303)).a((short)-23309, paramBoolean, true);
-    bdll.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 5, 5, "", "", "", "");
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    if (this.jdField_a_of_type_Avga.jdField_a_of_type_Avfq.a()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (!paramView.isSelected())
+      {
+        this.jdField_a_of_type_Avga.a(paramView);
+        this.jdField_a_of_type_Avga.jdField_a_of_type_Int = 3;
+        avfq.a(this.jdField_a_of_type_Avga.jdField_a_of_type_Avfq, Integer.valueOf(3));
+        bcef.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 1, 0, "0", "0", "0", "");
+      }
+    }
   }
 }
 

@@ -1,24 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class azwe
-  extends anyu
+class azwe
+  implements Comparator<Map.Entry<String, Long>>
 {
-  public azwe(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  azwe(azwd paramazwd) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public int a(Map.Entry<String, Long> paramEntry1, Map.Entry<String, Long> paramEntry2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PersonalityLabelGalleryActivity", 2, "onUpdateFriendInfo refresh UI uin:" + paramString + " suc:" + paramBoolean);
-    }
-    if ((paramBoolean) && (TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), paramString)) && (!PersonalityLabelGalleryActivity.a(this.a)))
-    {
-      PersonalityLabelGalleryActivity.a(this.a, bhlg.a(this.a.app, PersonalityLabelGalleryActivity.a(this.a)));
-      if (!TextUtils.equals(PersonalityLabelGalleryActivity.a(this.a), PersonalityLabelGalleryActivity.b(this.a))) {
-        PersonalityLabelGalleryActivity.d(this.a);
-      }
-    }
+    return ((Long)paramEntry2.getValue()).compareTo((Long)paramEntry1.getValue());
   }
 }
 

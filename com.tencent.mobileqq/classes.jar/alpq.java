@@ -1,45 +1,31 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.config.statusIcon.AbsRecentStatus;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class alpq
-  extends AbsRecentStatus
+  implements alqm
 {
-  public static int a = 16;
+  private int a;
   
-  public int[] declareStatus()
+  public alpq(int paramInt)
   {
-    return new int[] { 11 };
+    QLog.i("ApolloTextureView", 1, "[ApolloConfigChooser], multiValue:" + paramInt);
+    this.a = paramInt;
   }
   
-  public boolean focusUINType(RecentBaseData paramRecentBaseData, IMCoreAppRuntime paramIMCoreAppRuntime)
+  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
   {
-    return true;
-  }
-  
-  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
-  {
-    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {}
-    do
+    int i = this.a;
+    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    paramEGL10.eglChooseConfig(paramEGLDisplay, new int[] { 12329, 0, 12352, 4, 12351, 12430, 12324, 8, 12323, 8, 12322, 8, 12325, 16, 12321, 8, 12326, 0, 12338, 1, 12337, i, 12344 }, arrayOfEGLConfig, 1, arrayOfInt);
+    if (arrayOfInt[0] == 0)
     {
-      do
-      {
-        return false;
-      } while ((paramRecentBaseData.getRecentUserType() != 3000) && (paramRecentBaseData.getRecentUserType() != 1));
-      paramIMCoreAppRuntime = (QQAppInterface)paramIMCoreAppRuntime;
-      String str = paramRecentBaseData.getRecentUserUin();
-      paramIMCoreAppRuntime = ((TroopManager)paramIMCoreAppRuntime.getManager(52)).a(str);
-    } while ((paramIMCoreAppRuntime == null) || (!paramIMCoreAppRuntime.getStudyRoomOpen()));
-    paramRecentBaseData.mStatus = 11;
-    return false;
-  }
-  
-  public int priority()
-  {
-    return a;
+      QLog.e("ApolloTextureView", 1, "[ApolloConfigChooser], fail to set config");
+      return null;
+    }
+    return arrayOfEGLConfig[0];
   }
 }
 

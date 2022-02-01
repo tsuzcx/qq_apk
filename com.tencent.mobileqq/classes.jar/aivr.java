@@ -1,69 +1,79 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.util.Base64;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aivr
-  implements aiwf
+  extends BroadcastReceiver
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
+  public aivr(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public aivr(Context paramContext)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public int a()
-  {
-    return 66;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    int j = 1;
+    paramContext = paramIntent.getAction();
+    if ((TextUtils.isEmpty(paramContext)) || (!TextUtils.equals(paramContext, "mqq.intent.action.DEVLOCK_ROAM"))) {}
+    do
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558651, null);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362521));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362520));
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847351);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aivs(this));
-    }
-    if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof String))) {
-      paramVarArgs = new String(Base64.decode((String)paramVarArgs[0], 0));
-    }
-    try
+      do
+      {
+        return;
+        if (this.a.getActivity() != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.history.C2CAllFragment", 2, "OpenDevLockReceiver get activity is null");
+      return;
+    } while (this.a.jdField_a_of_type_AndroidContentBroadcastReceiver == null);
+    this.a.getActivity().getApplicationContext().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    this.a.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+    boolean bool = paramIntent.getBooleanExtra("auth_dev_open", false);
+    int k = paramIntent.getIntExtra("auth_dev_open_cb_reason", 0);
+    paramIntent = paramIntent.getByteArrayExtra("devlock_roam_sig");
+    if (QLog.isColorLevel())
     {
-      paramVarArgs = new JSONObject(paramVarArgs);
-      String str = paramVarArgs.getString("content");
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      this.jdField_a_of_type_JavaLangString = paramVarArgs.getString("url");
-      label150:
-      return this.jdField_a_of_type_AndroidViewView;
+      paramContext = new StringBuilder().append("openDevLock callback isOpen: ").append(bool).append(", reason: ").append(k).append(", da2 length: ");
+      if (paramIntent == null)
+      {
+        i = 0;
+        QLog.d("Q.history.C2CAllFragment", 2, i);
+      }
     }
-    catch (JSONException paramVarArgs)
+    else
     {
-      break label150;
+      QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      String str = k + "";
+      if (!bool) {
+        break label301;
+      }
+      paramContext = "true";
+      label211:
+      VipUtils.a(localQQAppInterface, "chat_history", "LockSet", "opendev_amount", 1, 0, new String[] { str, "0", paramContext });
+      paramContext = this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(29);
+      if (!bool) {
+        break label307;
+      }
     }
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 17;
+    label301:
+    label307:
+    for (int i = j;; i = 0)
+    {
+      paramContext.arg1 = i;
+      paramContext.arg2 = k;
+      paramContext.obj = paramIntent;
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(paramContext, 500L);
+      return;
+      i = paramIntent.length;
+      break;
+      paramContext = "false";
+      break label211;
+    }
   }
 }
 

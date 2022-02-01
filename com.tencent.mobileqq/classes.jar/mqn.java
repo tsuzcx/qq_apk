@@ -1,56 +1,46 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
 
-class mqn
-  implements lfs
+public final class mqn
 {
-  mqn(mqm parammqm) {}
-  
-  public boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  public static mqo a(Resources paramResources, int paramInt)
   {
-    boolean bool2 = true;
-    if (11 != paramInt1) {}
-    do
+    Object localObject1 = (int[][])null;
+    switch (paramInt)
     {
-      return false;
-      QLog.w(this.a.i, 1, "onC2CDataCome, subType[" + paramInt2 + "], mPeerSupportRedBag[" + this.a.jdField_a_of_type_Int + "], mPeerSendMode[" + this.a.jdField_a_of_type_Boolean + "]");
-      paramArrayOfByte = this.a.a();
-    } while (paramArrayOfByte == null);
-    boolean bool1;
-    switch (paramInt2)
-    {
+    case 2131559752: 
+    case 2131559753: 
+    case 2131559755: 
     default: 
-      bool1 = false;
+      return null;
+    case 2131559751: 
+      localObject1 = new int[][] { { 2131694866, 2130842212 }, { 2131694879, 2130842227 }, { 2131694869, 2130842214 }, { 2131694878, 2130842226 }, { 2131694874, 2130842037 }, { 2131694872, 2130842035 }, { 2131694871, 2130842216 }, { 2131694867, 2130842298 }, { 2131694870, 2130842215 }, { 2131694876, 2130842223 } };
     }
-    for (;;)
+    int[] arrayOfInt1;
+    while (localObject1 == null)
     {
-      return bool1;
-      this.a.jdField_a_of_type_Int = 2;
-      paramArrayOfByte.b("AbilityResDownloading");
-      bool1 = bool2;
+      return null;
+      localObject1 = new int[][] { { 2131694877, 2130842225 }, { 2131694866, 2130842212 }, { 2131694879, 2130842227 }, { 2131694869, 2130842214 }, { 2131694874, 2130842037 }, { 2131694870, 2130842215 }, { 2131694868, 2130842213 } };
       continue;
-      this.a.jdField_a_of_type_Int = 1;
-      paramArrayOfByte.b("AbilityEnable");
-      bool1 = bool2;
+      localObject1 = new int[] { 2131694866, 2130842212 };
+      localObject2 = new int[] { 2131694878, 2130842226 };
+      arrayOfInt1 = new int[] { 2131694874, 2130842037 };
+      int[] arrayOfInt2 = { 2131694872, 2130842035 };
+      int[] arrayOfInt3 = { 2131694868, 2130842213 };
+      localObject1 = new int[][] { { 2131694877, 2130842225 }, localObject1, { 2131694879, 2130842227 }, { 2131694869, 2130842214 }, localObject2, arrayOfInt1, arrayOfInt2, { 2131694867, 2130842298 }, { 2131694870, 2130842215 }, arrayOfInt3 };
       continue;
-      this.a.jdField_a_of_type_Int = 0;
-      paramArrayOfByte.b("AbilityDisable");
-      bool1 = bool2;
-      continue;
-      this.a.jdField_a_of_type_Boolean = true;
-      bool1 = bool2;
-      if (this.a.jdField_a_of_type_Int != 1)
-      {
-        this.a.jdField_a_of_type_Int = 1;
-        paramArrayOfByte.b("Enter_SendMode");
-        bool1 = bool2;
-        continue;
-        this.a.jdField_a_of_type_Boolean = false;
-        bool1 = bool2;
-        continue;
-        paramArrayOfByte.a(this.a.b);
-        bool1 = bool2;
-      }
+      localObject1 = new int[][] { { 2131694866, 2130842212 }, { 2131694874, 2130842037 }, { 2131694872, 2130842035 } };
     }
+    Object localObject2 = new mqo();
+    int j = localObject1.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfInt1 = localObject1[i];
+      ((mqo)localObject2).a(new mqm(arrayOfInt1[0], paramResources.getString(arrayOfInt1[0]), arrayOfInt1[1]));
+      i += 1;
+    }
+    ((mqo)localObject2).a = paramInt;
+    return localObject2;
   }
 }
 

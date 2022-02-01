@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.5.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForLongTextMsg;
+import com.tencent.mobileqq.data.MessageForWantGiftMsg;
 
-public class agcx
-  implements agdp
+final class agcx
+  implements aghk
 {
-  public agcx(ReminderListFragment.5.1 param1) {}
-  
-  public void a()
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    ReminderListFragment.a(this.a.a.a, anzj.a(2131712265));
+    if ((paramChatMessage instanceof MessageForLongTextMsg)) {
+      return 63;
+    }
+    if ((paramChatMessage instanceof MessageForWantGiftMsg)) {
+      return 72;
+    }
+    if ((paramChatMessage.vipBubbleID == 100000L) && (!paramChatMessage.isSend())) {
+      return 9;
+    }
+    return 0;
   }
 }
 

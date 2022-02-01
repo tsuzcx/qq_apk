@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atup;
-import atuv;
+import asgz;
+import ashf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -9,7 +9,7 @@ import java.io.FileOutputStream;
 public class FileManagerRSWorker$4
   implements Runnable
 {
-  public FileManagerRSWorker$4(atuv paramatuv, String paramString) {}
+  public FileManagerRSWorker$4(ashf paramashf, String paramString) {}
   
   public void run()
   {
@@ -18,12 +18,12 @@ public class FileManagerRSWorker$4
       if (this.this$0.jdField_a_of_type_JavaIoOutputStream == null) {
         this.this$0.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(this.this$0.d, true);
       }
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.c, 2002);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(this.this$0.c, 2002);
       this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
       this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
       this.this$0.i = this.a;
-      atuv.a(this.this$0, this.this$0.jdField_a_of_type_Long, this.this$0.i);
+      ashf.a(this.this$0, this.this$0.jdField_a_of_type_Long, this.this$0.i);
       return;
     }
     catch (FileNotFoundException localFileNotFoundException)
@@ -34,7 +34,7 @@ public class FileManagerRSWorker$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.4
  * JD-Core Version:    0.7.0.1
  */

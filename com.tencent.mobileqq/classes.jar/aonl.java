@@ -1,60 +1,17 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import org.json.JSONObject;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aonl
-  extends aoni
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private String b;
+  public aonl(QRScanEntryView paramQRScanEntryView) {}
   
-  public aonl(Activity paramActivity, String paramString1, String paramString2, long paramLong, int paramInt, String paramString3, String paramString4)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super(paramActivity, paramString1, paramString2, paramLong, paramString3, paramInt);
-    this.b = paramString4;
-  }
-  
-  private boolean a(String paramString)
-  {
-    return (TextUtils.isEmpty(paramString)) || (a() == 1);
-  }
-  
-  protected String f()
-  {
-    String str2 = aono.a().a(this.b);
-    String str1 = str2;
-    if (a(str2)) {
-      str1 = super.f();
-    }
-    return str1;
-  }
-  
-  protected String g()
-  {
-    String str2 = aono.a().a(this.b);
-    String str1 = str2;
-    if (a(str2)) {
-      str1 = super.g();
-    }
-    return str1;
-  }
-  
-  protected String h()
-  {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    localJSONObject2.put("type", "result");
-    localJSONObject2.put("gameType", a());
-    JSONObject localJSONObject3 = new JSONObject();
-    localJSONObject3.put("jump_url", a());
-    String str2 = aono.a().a(this.b);
-    String str1 = str2;
-    if (a(str2)) {
-      str1 = "https://qqvgame.qq.com/d55d788cc3c423807d830230aad935b2.png";
-    }
-    localJSONObject3.put("icon_url", str1);
-    localJSONObject2.put("extra", localJSONObject3);
-    localJSONObject1.put("invite", localJSONObject2);
-    return localJSONObject1.toString();
+    com.tencent.mobileqq.minicode.RecogUtil.SAVE_DETECT_IMAGE = paramBoolean;
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

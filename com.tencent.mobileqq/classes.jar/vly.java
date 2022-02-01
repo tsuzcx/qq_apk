@@ -1,17 +1,36 @@
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Iterator;
+import java.util.List;
 
-public class vly
-  extends vrh
+class vly
+  implements vqp<wfe, wgp>
 {
-  public vly(QCircleContentImage paramQCircleContentImage, FeedCloudMeta.StFeed paramStFeed, String paramString) {}
+  vly(vls paramvls, vmb paramvmb, String paramString) {}
   
-  public void a(int paramInt, vrd paramvrd)
+  public void a(@NonNull wfe paramwfe, @Nullable wgp paramwgp, @NonNull ErrorMessage paramErrorMessage)
   {
-    super.a(paramInt, paramvrd);
-    QLog.d("QCircleContentImage", 1, "feedId:" + this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get() + " url:" + this.jdField_a_of_type_JavaLangString + "state callback:" + paramInt);
+    xvv.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response " + paramwgp);
+    if ((paramErrorMessage.isFail()) || (paramwgp == null))
+    {
+      xvv.e("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response error!");
+      this.jdField_a_of_type_Vmb.a(true);
+      return;
+    }
+    paramwfe = (vuu)vux.a(5);
+    if (paramwgp.a != null)
+    {
+      paramErrorMessage = paramwgp.a.iterator();
+      while (paramErrorMessage.hasNext()) {
+        ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
+      }
+    }
+    paramwgp.a = paramwfe.a(paramwgp.a);
+    ((vls)vux.a(28)).a(paramwgp.b);
+    this.jdField_a_of_type_Vls.c(this.jdField_a_of_type_JavaLangString, 0);
+    this.jdField_a_of_type_Vmb.a(true);
   }
 }
 

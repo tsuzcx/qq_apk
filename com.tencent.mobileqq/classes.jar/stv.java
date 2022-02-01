@@ -1,153 +1,67 @@
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
+import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyCapsuleView;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable;
+import android.widget.FrameLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AttachedAdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class stv
-  implements URLDrawable.URLDrawableListener, stz
+  extends stg
+  implements View.OnClickListener
 {
-  private static stx jdField_a_of_type_Stx = new stx(null);
-  private ChannelCoverInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
-  private ReadInJoyCapsuleView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private boolean jdField_a_of_type_Boolean;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private TextView b;
   
-  stv(ReadInJoyCapsuleView paramReadInJoyCapsuleView)
+  public stv(View paramView, BaseData paramBaseData)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView = paramReadInJoyCapsuleView;
+    super(paramView, paramBaseData);
+    paramView.setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131369042));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379877));
+    this.b = ((TextView)paramView.findViewById(2131379560));
+    ugs.a((FrameLayout)paramView.findViewById(2131366950), 0.0F, Color.parseColor("#dedfe0"), 1);
+    ugs.a((TextView)paramView.findViewById(2131379634), AIOUtils.dp2px(2.0F, paramView.getResources()), Color.parseColor("#fa8726"), 1);
+    ugs.a((TextView)paramView.findViewById(2131379755), AIOUtils.dp2px(2.0F, paramView.getResources()), Color.parseColor("#12b7f5"), 1);
   }
   
-  private void a(boolean paramBoolean)
+  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = stp.a();
-    localURLDrawableOptions.mFailedDrawable = stp.a();
-    localURLDrawableOptions.mPlayGifImage = paramBoolean;
-    try
+    switch (paramBaseData2.r)
     {
-      this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(new URL(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.externalExposureBackgroundUrl), localURLDrawableOptions);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setBackgroundSrc(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      return;
+    default: 
+      throw new IllegalArgumentException();
     }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      QLog.e("ReadInJoyFeedsHeaderVie", 2, "fail to set background", localMalformedURLException);
+    paramBaseData1 = (AttachedAdData)paramBaseData2;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1.b);
+    this.b.setText(paramBaseData1.c);
+    paramBaseData2 = URLDrawable.URLDrawableOptions.obtain();
+    paramBaseData2.mRequestWidth = AIOUtils.dp2px(85.0F, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
+    paramBaseData2.mRequestHeight = AIOUtils.dp2px(72.0F, this.jdField_a_of_type_AndroidViewView.getContext().getResources());
+    paramBaseData2.mLoadingDrawable = new ColorDrawable(-2565414);
+    paramBaseData2.mPlayGifImage = true;
+    paramBaseData2.mMemoryCacheKeySuffix = "fast_web";
+    paramBaseData1 = URLDrawable.getDrawable(uet.a(paramBaseData1.d, 4), paramBaseData2);
+    if ((paramBaseData1 != null) && (paramBaseData1.getStatus() == 2)) {
+      paramBaseData1.restartDownload();
     }
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramBaseData1);
   }
   
-  private void c()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setTextColor(Color.parseColor("#777777"));
-    int i = stp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId, false);
-    if (i != 0) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setDrawableLeft(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.getContext().getResources().getDrawable(i));
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setBackgroundSrc(new ColorDrawable(Color.parseColor("#F1F3F6")));
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    a(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setColorFilter(stp.a());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setTextColor(-1);
-    int i = stp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId, true);
-    if (i != 0) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setDrawableLeft(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.getContext().getResources().getDrawable(i));
-    }
-  }
-  
-  private void e()
-  {
-    a(true);
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
-    {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(this);
-      if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) {
-        onLoadSuccessed(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      }
-    }
-  }
-  
-  public ChannelCoverInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
-  }
-  
-  public void a()
-  {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onPlayOnce: pause the animation - " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverName);
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null)
-    {
-      Drawable localDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();
-      if ((localDrawable instanceof GifDrawable))
-      {
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setIndividualPause(true);
-        ((GifDrawable)localDrawable).getImage().reset();
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setGIFPlayOnceListener(null);
-        a(false);
-        QLog.d("ReadInJoyFeedsHeaderVie", 2, "reset gif");
-      }
-    }
-  }
-  
-  void a(ChannelCoverInfo paramChannelCoverInfo, View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo = paramChannelCoverInfo;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyCapsuleView.setOnClickListener(new stw(this, paramOnClickListener));
-    if ((TextUtils.isEmpty(paramChannelCoverInfo.externalExposureBackgroundUrl)) || (bnrf.c(paramChannelCoverInfo.mChannelCoverId)))
-    {
-      c();
-      return;
-    }
-    e();
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    jdField_a_of_type_Stx.a();
-  }
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
-  {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onLoadCanceled: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.externalExposureBackgroundUrl);
-    c();
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onLoadFialed: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.externalExposureBackgroundUrl);
-    c();
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onLoadSuccessed: " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverName);
-    d();
-    AbstractGifImage.resumeAll();
-    jdField_a_of_type_Stx.a(this, paramURLDrawable);
+    swu.a((Activity)paramView.getContext(), (AdData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

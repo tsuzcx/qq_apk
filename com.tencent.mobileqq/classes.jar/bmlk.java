@@ -1,111 +1,44 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ListView;
-import cooperation.qqfav.globalsearch.FavoriteSearchEngine;
-import cooperation.qqfav.globalsearch.FavoriteSearchFragment;
-
 public class bmlk
-  extends bcbj<bcfr, bcnz>
-  implements View.OnClickListener
 {
-  public bmlk(FavoriteSearchFragment paramFavoriteSearchFragment, ListView paramListView, aoof paramaoof)
+  private long a;
+  private long b;
+  private long c;
+  private long d;
+  private long e;
+  
+  public static bmlk a()
   {
-    super(paramListView, paramaoof);
+    return bmlm.a;
   }
   
-  protected bcil<bcfr, bcnz> a(int paramInt)
+  public long a(long paramLong, boolean paramBoolean)
   {
-    return new bmlo(FavoriteSearchFragment.a(this.a));
-  }
-  
-  protected bcoa a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new bcpp(paramViewGroup, 2131562877);
-  }
-  
-  public int getCount()
-  {
-    int i = super.getCount();
-    if ((i > 0) && (((bmln)super.a(i - 1)).a == -2L)) {
-      return i - 1;
+    this.a = paramLong;
+    if (this.e >= this.b) {
+      return this.c + this.a;
     }
-    return i;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt == super.getCount() - 1) {
-      return 1;
+    if (paramBoolean) {
+      return this.c + this.a % this.e;
     }
-    return 0;
+    return this.c + this.a;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public long a(boolean paramBoolean)
   {
-    Object localObject1;
-    if (getItemViewType(paramInt) == 1) {
-      if (paramView == null)
-      {
-        paramView = new TextView(paramViewGroup.getContext());
-        paramView.setTextSize(18.0F);
-        paramView.setTextColor(paramViewGroup.getResources().getColor(2131167001));
-        paramView.setGravity(1);
-        paramView.setClickable(true);
-        paramView.setOnClickListener(this);
-        paramView.setPadding(0, 16, 0, 16);
-        localObject1 = paramView;
-        if (((bmln)super.a(paramInt)).a != -1L) {
-          break label125;
-        }
-        ((TextView)localObject1).performClick();
-        label96:
-        localObject1 = paramView;
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localObject1 = (TextView)paramView;
-      break;
-      label125:
-      ((TextView)localObject1).setText(2131697411);
-      Object localObject2 = (Animatable)localObject1.getCompoundDrawables()[1];
-      ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-      if (localObject2 == null) {
-        break label96;
-      }
-      ((Animatable)localObject2).stop();
-      break label96;
-      localObject2 = super.getView(paramInt, paramView, paramViewGroup);
-      localObject1 = paramView;
-      paramView = (View)localObject2;
-    }
+    return a(this.a, paramBoolean);
   }
   
-  public int getViewTypeCount()
+  public void a(long paramLong1, long paramLong2)
   {
-    return 2;
+    this.a = paramLong1;
+    this.b = paramLong2;
   }
   
-  public void onClick(View paramView)
+  public void b(long paramLong1, long paramLong2)
   {
-    Object localObject = (TextView)paramView;
-    ((TextView)localObject).setText(null);
-    Animatable localAnimatable = (Animatable)BaseApplicationImpl.sApplication.getResources().getDrawable(2130839410);
-    ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(null, (Drawable)localAnimatable, null, null);
-    localAnimatable.start();
-    localObject = (FavoriteSearchEngine)this.a.a;
-    FavoriteSearchFragment.a(this.a).a = this.a.c;
-    ((FavoriteSearchEngine)localObject).a(FavoriteSearchFragment.a(this.a), this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.c = paramLong1;
+    this.d = paramLong2;
+    this.e = (paramLong2 - paramLong1);
   }
 }
 

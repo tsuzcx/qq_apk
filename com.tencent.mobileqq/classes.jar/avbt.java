@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.qphone.base.util.QLog;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.listentogether.data.ISong;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
 
 public class avbt
-  implements auyo
 {
-  public avbt(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
+  ISong jdField_a_of_type_ComTencentMobileqqListentogetherDataISong;
   
-  public void a()
+  public avbt(QQMusicPlayService paramQQMusicPlayService, MediaPlayer paramMediaPlayer, ISong paramISong)
   {
-    QLog.d("ForwardOption.ForwardSdkShareOption", 1, "--> mD55ResultListener onResult");
-    ((avcd)this.a.a.getManager(350)).a().a(null);
-    this.a.z();
-    this.a.a();
+    this.jdField_a_of_type_AndroidMediaMediaPlayer = paramMediaPlayer;
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong = paramISong;
   }
 }
 

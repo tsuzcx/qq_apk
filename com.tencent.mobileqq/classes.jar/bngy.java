@@ -1,26 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.share.QZoneShareActivity;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
 
-public class bngy
-  implements View.OnClickListener
+public abstract interface bngy
 {
-  public bngy(QZoneShareActivity paramQZoneShareActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    if (!this.a.d) {
-      this.a.f();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.h();
-      this.a.a();
-    }
-  }
+  public abstract void a(List<bngv> paramList, DoodleView paramDoodleView);
 }
 
 

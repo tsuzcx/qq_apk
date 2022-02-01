@@ -1,18 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import kotlin.Metadata;
 
-public class shc
-  implements ViewFactory.FoundClickableViewListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerPreloader$Listener;", "", "onPreloadFailed", "", "onPreloadSuccess", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface shc
 {
-  public shc(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, ProteusItemData paramProteusItemData, FastWebActivity paramFastWebActivity) {}
+  public abstract void a();
   
-  public void onFound(ViewBase paramViewBase)
-  {
-    paramViewBase.setOnClickListener(new shd(this));
-  }
+  public abstract void b();
 }
 
 

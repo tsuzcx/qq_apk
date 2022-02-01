@@ -1,164 +1,193 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import android.opengl.GLES20;
+import android.util.Log;
+import android.view.Surface;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.util.concurrent.TimeoutException;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
 
+@TargetApi(14)
 public class yhz
-  extends zsv
-  implements View.OnClickListener
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  public static final String KEY = "DetailDoubleTabSegment";
-  private int jdField_a_of_type_Int = 1;
-  private yfg jdField_a_of_type_Yfg;
-  private yfw jdField_a_of_type_Yfw;
-  private yqw jdField_a_of_type_Yqw;
+  int jdField_a_of_type_Int;
+  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+  private Surface jdField_a_of_type_AndroidViewSurface;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
+  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
+  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = EGL10.EGL_NO_CONTEXT;
+  private EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = EGL10.EGL_NO_DISPLAY;
+  private EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = EGL10.EGL_NO_SURFACE;
+  private yia jdField_a_of_type_Yia;
+  private boolean jdField_a_of_type_Boolean;
+  int b;
   
-  public yhz(Context paramContext)
+  public yhz(int paramInt1, int paramInt2)
   {
-    super(paramContext);
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      throw new IllegalArgumentException();
+    }
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = ((EGL10)EGLContext.getEGL());
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    f();
+    b();
+    e();
   }
   
-  private void a(TextView paramTextView, boolean paramBoolean)
+  private void a(String paramString)
   {
-    if (paramBoolean)
+    int i = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError();
+    if (i != 12288) {
+      throw new RuntimeException(paramString + ": EGL error: 0x" + Integer.toHexString(i));
+    }
+  }
+  
+  private void e()
+  {
+    this.jdField_a_of_type_Yia = new yia();
+    this.jdField_a_of_type_Yia.a();
+    Log.d("CodecOutputSurface", "textureID=" + this.jdField_a_of_type_Yia.a());
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Yia.a());
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
+    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(this.jdField_a_of_type_Int * this.b * 4);
+    this.jdField_a_of_type_JavaNioByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+  }
+  
+  private void f()
+  {
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay == EGL10.EGL_NO_DISPLAY) {
+      throw new RuntimeException("unable to get EGL14 display");
+    }
+    Object localObject = new int[2];
+    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglInitialize(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (int[])localObject))
     {
-      if (QQStoryContext.a()) {
-        paramTextView.setBackgroundResource(2130846476);
-      }
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
+      throw new RuntimeException("unable to initialize EGL14");
+    }
+    localObject = new EGLConfig[1];
+    int[] arrayOfInt = new int[1];
+    EGL10 localEGL10 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
+    EGLDisplay localEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
+    int i = localObject.length;
+    if (!localEGL10.eglChooseConfig(localEGLDisplay, new int[] { 12324, 8, 12323, 8, 12322, 8, 12321, 8, 12352, 4, 12339, 1, 12344 }, (EGLConfig[])localObject, i, arrayOfInt)) {
+      throw new RuntimeException("unable to find RGB888+recordable ES2 EGL config");
+    }
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreateContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, localObject[0], EGL10.EGL_NO_CONTEXT, new int[] { 12440, 2, 12344 });
+    a("eglCreateContext");
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext == null) {
+      throw new RuntimeException("null context");
+    }
+    i = this.jdField_a_of_type_Int;
+    int j = this.b;
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglCreatePbufferSurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, localObject[0], new int[] { 12375, i, 12374, j, 12344 });
+    a("eglCreatePbufferSurface");
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface == null) {
+      throw new RuntimeException("surface was null");
+    }
+  }
+  
+  public Bitmap a()
+  {
+    this.jdField_a_of_type_JavaNioByteBuffer.rewind();
+    GLES20.glReadPixels(0, 0, this.jdField_a_of_type_Int, this.b, 6408, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
+    Bitmap localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.b, Bitmap.Config.ARGB_8888);
+    this.jdField_a_of_type_JavaNioByteBuffer.rewind();
+    localBitmap.copyPixelsFromBuffer(this.jdField_a_of_type_JavaNioByteBuffer);
+    Log.d("CodecOutputSurface", "getFrameBitmap() finish...");
+    return localBitmap;
+  }
+  
+  public Surface a()
+  {
+    return this.jdField_a_of_type_AndroidViewSurface;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay != EGL10.EGL_NO_DISPLAY)
+    {
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglTerminate(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay);
+    }
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = EGL10.EGL_NO_DISPLAY;
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = EGL10.EGL_NO_CONTEXT;
+    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = EGL10.EGL_NO_SURFACE;
+    this.jdField_a_of_type_AndroidViewSurface.release();
+    this.jdField_a_of_type_Yia = null;
+    this.jdField_a_of_type_AndroidViewSurface = null;
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Yia.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture, paramBoolean);
+  }
+  
+  public void b()
+  {
+    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
+      throw new RuntimeException("eglMakeCurrent failed");
+    }
+  }
+  
+  public void c()
+  {
+    Log.e("CodecOutputSurface", "awaitNewImage");
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
       for (;;)
       {
-        paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166465));
-        return;
-        paramTextView.setBackgroundResource(2130846475);
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (!bool) {
+          try
+          {
+            this.jdField_a_of_type_JavaLangObject.wait(1L);
+            if (!this.jdField_a_of_type_Boolean) {
+              throw new TimeoutException("frame wait timed out");
+            }
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            throw new RuntimeException(localInterruptedException);
+          }
+        }
       }
-    }
-    paramTextView.setBackgroundResource(0);
-    if (QQStoryContext.a())
-    {
-      paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166478));
-      return;
-    }
-    paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166466));
-  }
-  
-  public void T_()
-  {
-    if (((StoryDetailListView)a()).a())
-    {
-      this.jdField_a_of_type_Boolean = true;
-      return;
     }
     this.jdField_a_of_type_Boolean = false;
   }
   
-  public int a()
+  public void d()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Yfw != null) && (this.jdField_a_of_type_Yfw.b())) {
-      return 1;
-    }
-    return 0;
+    this.jdField_a_of_type_Yia.a("before updateTexImage");
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
   }
   
-  public View a(int paramInt, yqw paramyqw, ViewGroup paramViewGroup)
+  public void onFrameAvailable(SurfaceTexture arg1)
   {
-    paramViewGroup = (TextView)paramyqw.a(2131378036);
-    TextView localTextView = (TextView)paramyqw.a(2131378035);
-    if (this.jdField_a_of_type_Int == 1)
+    Log.e("CodecOutputSurface", "onFrameAvailable new frame available");
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      a(paramViewGroup, true);
-      a(localTextView, false);
-    }
-    for (;;)
-    {
-      return paramyqw.a();
-      a(paramViewGroup, false);
-      a(localTextView, true);
-    }
-  }
-  
-  public String a()
-  {
-    return "DetailDoubleTabSegment";
-  }
-  
-  public yqw a(int paramInt, ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_Yqw = new yqw(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561698, paramViewGroup, false));
-    paramViewGroup = (TextView)this.jdField_a_of_type_Yqw.a(2131378036);
-    TextView localTextView = (TextView)this.jdField_a_of_type_Yqw.a(2131378035);
-    if (QQStoryContext.a())
-    {
-      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166476));
-      localTextView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166476));
-      this.jdField_a_of_type_Yqw.a(2131374576).setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166478));
-    }
-    paramViewGroup.setOnClickListener(this);
-    localTextView.setOnClickListener(this);
-    return this.jdField_a_of_type_Yqw;
-  }
-  
-  public void a(yfg paramyfg)
-  {
-    this.jdField_a_of_type_Yfg = paramyfg;
-  }
-  
-  public void a(yfw paramyfw, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Yfw = paramyfw;
-    if (this.jdField_a_of_type_Yfw.a())
-    {
-      if (paramBoolean) {
-        this.jdField_a_of_type_Int = 2;
+      if (this.jdField_a_of_type_Boolean) {
+        throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
       }
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int c()
-  {
-    if (this.jdField_a_of_type_Yqw == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_Yqw.a().getMeasuredHeight();
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Yfg == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      switch (paramView.getId())
-      {
-      default: 
-        break;
-      case 2131378035: 
-        if (this.jdField_a_of_type_Int != 2) {
-          this.jdField_a_of_type_Yfg.a(2);
-        }
-        break;
-      case 2131378036: 
-        if (this.jdField_a_of_type_Int != 1) {
-          this.jdField_a_of_type_Yfg.a(1);
-        }
-        break;
-      }
-    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangObject.notifyAll();
   }
 }
 

@@ -1,22 +1,21 @@
 public class rfl
 {
   public int a;
+  public long a;
   public String a;
+  public int b;
   public String b;
+  public int c;
   public String c;
-  
-  public rfl(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "ColumnPublishInfo{coverUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", title='" + this.b + '\'' + ", intro='" + this.c + '\'' + ", submitPermission='" + this.jdField_a_of_type_Int + '\'' + '}';
-  }
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
 }
 
 

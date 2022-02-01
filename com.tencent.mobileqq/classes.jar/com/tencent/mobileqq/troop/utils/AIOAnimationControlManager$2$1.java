@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bgot;
-import bgoy;
+import beyh;
+import beym;
 
 public class AIOAnimationControlManager$2$1
   implements Runnable
 {
-  public AIOAnimationControlManager$2$1(bgoy parambgoy) {}
+  public AIOAnimationControlManager$2$1(beym parambeym) {}
   
   public void run()
   {

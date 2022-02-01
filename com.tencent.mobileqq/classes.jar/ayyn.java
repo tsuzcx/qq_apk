@@ -1,17 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileWZRYView;
 
 public class ayyn
-  implements azbw
+  extends ayyb
 {
-  public ayyn(OCRResultActivity paramOCRResultActivity) {}
-  
-  public void a(int paramInt, azbx paramazbx)
+  public ayyn(aysx paramaysx, aymg paramaymg)
   {
-    if ((!TextUtils.isEmpty(OCRResultActivity.b(this.a))) && (!OCRResultActivity.b(this.a).equals(paramazbx.b)))
+    super(paramaysx, paramaymg);
+  }
+  
+  public String a()
+  {
+    return "VasProfileHeaderWZRYComponent";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
     {
-      OCRResultActivity.b(this.a, paramazbx.b);
-      OCRResultActivity.a(this.a, false);
+      VasProfileWZRYView localVasProfileWZRYView = new VasProfileWZRYView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (aymg)this.b);
+      localVasProfileWZRYView.setClickListener(this);
+      localVasProfileWZRYView.a();
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileWZRYView;
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
     }
   }
 }

@@ -1,14 +1,11 @@
 package cooperation.qzone.video;
 
-import aluh;
+import akry;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bmtd;
-import bmtk;
-import bngf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.widget.QQToast;
@@ -16,19 +13,85 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
-import zjt;
-import zkg;
+import ykt;
+import ylg;
 
 public class VideoComponentCallback
-  implements aluh
+  implements akry
 {
-  public static final String a = VideoComponentCallback.class.getName();
-  private String b;
+  public static final int BUSINESS_TYPE = 1;
+  public static final String KEY_QZONE_NICKNAME = "nickname";
+  public static final String KEY_QZONE_UIN = "qzone_uin";
+  public static final int REQUEST_VIDEO_TRIM = 1000;
+  public static final String RESULT_FINISH_VIDEO_COMPONENT = "finish_video_component";
+  public static final String SP_KEY_SUPPORT_TRIM = "support_trim";
+  public static final String TAG = VideoComponentCallback.class.getName();
+  private String mRefer;
   
-  private void a(int paramInt1, boolean paramBoolean1, String paramString1, String paramString2, int paramInt2, int paramInt3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, int paramInt4, Bundle paramBundle, String paramString3, String paramString4, String paramString5, int paramInt5, String paramString6, ArrayList<String> paramArrayList, String paramString7, boolean paramBoolean2, int paramInt6, int paramInt7, String paramString8, String paramString9, String paramString10, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt8, String paramString11, QzoneVerticalVideoTopicInfo paramQzoneVerticalVideoTopicInfo, boolean paramBoolean6, boolean paramBoolean7)
+  public static void launchPublishMoodActivity(Activity paramActivity, int paramInt1, boolean paramBoolean, String paramString1, String paramString2, int paramInt2, int paramInt3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, int paramInt4, Bundle paramBundle, String paramString3, String paramString4, String paramString5)
+  {
+    Intent localIntent = new Intent("com.tencent.mobileqq.action.publishmood");
+    localIntent.putExtra("qzone_plugin_activity_name", "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
+    localIntent.putExtra("PhotoConst.IS_VIDEO_SELECTED", true);
+    localIntent.putExtra("PhotoConst.VIDEO_TYPE", paramInt1);
+    localIntent.putExtra("file_send_path", paramString1);
+    localIntent.putExtra("thumbnail_path", paramString2);
+    localIntent.putExtra("thumbnail_height", paramInt3);
+    localIntent.putExtra("thumbnail_width", paramInt2);
+    localIntent.putExtra("need_process", paramBoolean);
+    localIntent.putExtra("start_time", paramLong2);
+    localIntent.putExtra("total_duration", paramLong1);
+    localIntent.putExtra("file_send_duration", paramLong3 - paramLong2);
+    localIntent.putExtra("sv_total_frame_count", paramInt4);
+    localIntent.putExtra("PhotoConst.VIDEO_SIZE", paramLong4);
+    localIntent.putExtra("encode_video_params", paramBundle);
+    localIntent.putExtra("defaultText", paramString3);
+    if (!TextUtils.isEmpty(paramString4)) {
+      localIntent.putExtra("refer", paramString4);
+    }
+    if (!TextUtils.isEmpty(paramString5)) {
+      localIntent.putExtra("video_refer", paramString5);
+    }
+    localIntent.addFlags(603979776);
+    paramString1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
+    QzonePluginProxyActivity.launchPluingActivityForResult(paramActivity, paramString1, localIntent, -1);
+  }
+  
+  private void sendToH5(int paramInt1, boolean paramBoolean1, String paramString1, String paramString2, int paramInt2, int paramInt3, long paramLong1, long paramLong2, Bundle paramBundle, String paramString3, String paramString4, boolean paramBoolean2, int paramInt4, int paramInt5, String paramString5, String paramString6, String paramString7)
+  {
+    Intent localIntent = new Intent("com.qzone.h5.video.recordCallback");
+    localIntent.putExtra("param.content", paramString3);
+    localIntent.putExtra("param.videoPath", paramString1);
+    localIntent.putExtra("param.videoSize", paramLong2);
+    localIntent.putExtra("param.videoType", paramInt1);
+    localIntent.putExtra("param.thumbnailPath", paramString2);
+    localIntent.putExtra("param.thumbnailHeight", paramInt3);
+    localIntent.putExtra("param.thumbnailWidth", paramInt2);
+    localIntent.putExtra("param.duration", paramLong1);
+    localIntent.putExtra("param.totalDuration", paramLong1);
+    localIntent.putExtra("param.needProcess", paramBoolean1);
+    localIntent.putExtra("param.extras", paramBundle);
+    localIntent.putExtra("param.topicId", paramString4);
+    localIntent.putExtra("param.topicSyncQzone", paramBoolean2);
+    localIntent.putExtra("param.newFakeVid", paramString6);
+    localIntent.putExtra("param.source", paramString7);
+    if (paramInt4 >= 0)
+    {
+      localIntent.putExtra("extra_key_font_id", paramInt4);
+      localIntent.putExtra("extra_key_font_format_type", paramInt5);
+      localIntent.putExtra("extra_key_font_url", paramString5);
+    }
+    BaseApplication.getContext().sendBroadcast(localIntent);
+  }
+  
+  private void sendVideoMood(int paramInt1, boolean paramBoolean1, String paramString1, String paramString2, int paramInt2, int paramInt3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, int paramInt4, Bundle paramBundle, String paramString3, String paramString4, String paramString5, int paramInt5, String paramString6, ArrayList<String> paramArrayList, String paramString7, boolean paramBoolean2, int paramInt6, int paramInt7, String paramString8, String paramString9, String paramString10, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt8, String paramString11, QzoneVerticalVideoTopicInfo paramQzoneVerticalVideoTopicInfo, boolean paramBoolean6, boolean paramBoolean7)
   {
     paramString3 = new Bundle();
     paramString3.putString("param.content", paramString6);
@@ -57,15 +120,15 @@ public class VideoComponentCallback
     paramString3.putBoolean("param.fromAIO", paramBoolean7);
     paramInt1 = 200;
     if (paramQzoneVerticalVideoTopicInfo != null) {
-      if (!paramQzoneVerticalVideoTopicInfo.a()) {
-        break label332;
+      if (!paramQzoneVerticalVideoTopicInfo.hasMusic()) {
+        break label335;
       }
     }
-    label332:
+    label335:
     for (paramInt1 = 213;; paramInt1 = 214)
     {
       paramString3.putInt("param.uploadEntrance", paramInt1);
-      paramString3.putInt("param.entranceSource", zjt.a().a());
+      paramString3.putInt("param.entranceSource", ykt.a().a());
       if (paramInt6 >= 0)
       {
         paramString3.putInt("extra_key_font_id", paramInt6);
@@ -77,77 +140,20 @@ public class VideoComponentCallback
         paramString3.putInt("extra_key_super_font_id", paramInt8);
         paramString3.putString("extra_key_super_font_info", paramString11);
       }
-      bngf.a().a("cmd.publishVideoMood", paramString3, false);
+      RemoteHandleManager.getInstance().sendData("cmd.publishVideoMood", paramString3, false);
       return;
     }
   }
   
-  private void a(int paramInt1, boolean paramBoolean1, String paramString1, String paramString2, int paramInt2, int paramInt3, long paramLong1, long paramLong2, Bundle paramBundle, String paramString3, String paramString4, boolean paramBoolean2, int paramInt4, int paramInt5, String paramString5, String paramString6, String paramString7)
+  public String getRefer()
   {
-    Intent localIntent = new Intent("com.qzone.h5.video.recordCallback");
-    localIntent.putExtra("param.content", paramString3);
-    localIntent.putExtra("param.videoPath", paramString1);
-    localIntent.putExtra("param.videoSize", paramLong2);
-    localIntent.putExtra("param.videoType", paramInt1);
-    localIntent.putExtra("param.thumbnailPath", paramString2);
-    localIntent.putExtra("param.thumbnailHeight", paramInt3);
-    localIntent.putExtra("param.thumbnailWidth", paramInt2);
-    localIntent.putExtra("param.duration", paramLong1);
-    localIntent.putExtra("param.totalDuration", paramLong1);
-    localIntent.putExtra("param.needProcess", paramBoolean1);
-    localIntent.putExtra("param.extras", paramBundle);
-    localIntent.putExtra("param.topicId", paramString4);
-    localIntent.putExtra("param.topicSyncQzone", paramBoolean2);
-    localIntent.putExtra("param.newFakeVid", paramString6);
-    localIntent.putExtra("param.source", paramString7);
-    if (paramInt4 >= 0)
-    {
-      localIntent.putExtra("extra_key_font_id", paramInt4);
-      localIntent.putExtra("extra_key_font_format_type", paramInt5);
-      localIntent.putExtra("extra_key_font_url", paramString5);
-    }
-    BaseApplication.getContext().sendBroadcast(localIntent);
+    return this.mRefer;
   }
   
-  public static void a(Activity paramActivity, int paramInt1, boolean paramBoolean, String paramString1, String paramString2, int paramInt2, int paramInt3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, int paramInt4, Bundle paramBundle, String paramString3, String paramString4, String paramString5)
-  {
-    Intent localIntent = new Intent("com.tencent.mobileqq.action.publishmood");
-    localIntent.putExtra("qzone_plugin_activity_name", "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
-    localIntent.putExtra("PhotoConst.IS_VIDEO_SELECTED", true);
-    localIntent.putExtra("PhotoConst.VIDEO_TYPE", paramInt1);
-    localIntent.putExtra("file_send_path", paramString1);
-    localIntent.putExtra("thumbnail_path", paramString2);
-    localIntent.putExtra("thumbnail_height", paramInt3);
-    localIntent.putExtra("thumbnail_width", paramInt2);
-    localIntent.putExtra("need_process", paramBoolean);
-    localIntent.putExtra("start_time", paramLong2);
-    localIntent.putExtra("total_duration", paramLong1);
-    localIntent.putExtra("file_send_duration", paramLong3 - paramLong2);
-    localIntent.putExtra("sv_total_frame_count", paramInt4);
-    localIntent.putExtra("PhotoConst.VIDEO_SIZE", paramLong4);
-    localIntent.putExtra("encode_video_params", paramBundle);
-    localIntent.putExtra("defaultText", paramString3);
-    if (!TextUtils.isEmpty(paramString4)) {
-      localIntent.putExtra("refer", paramString4);
-    }
-    if (!TextUtils.isEmpty(paramString5)) {
-      localIntent.putExtra("video_refer", paramString5);
-    }
-    localIntent.addFlags(603979776);
-    paramString1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    QzonePluginProxyActivity.a(localIntent, "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
-    QzonePluginProxyActivity.a(paramActivity, paramString1, localIntent, -1);
-  }
-  
-  public String a()
-  {
-    return this.b;
-  }
-  
-  public void a(Activity paramActivity)
+  public void localVideoClick(Activity paramActivity)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "localVideoClick");
+      QLog.d(TAG, 2, "localVideoClick");
     }
     if (paramActivity == null) {
       return;
@@ -155,47 +161,47 @@ public class VideoComponentCallback
     try
     {
       boolean bool = LocalMultiProcConfig.getBool("support_trim", false);
-      localObject = bmtk.a();
-      ((bmtk)localObject).a = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      localObject = QZoneHelper.UserInfo.getInstance();
+      ((QZoneHelper.UserInfo)localObject).qzone_uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
       if (!bool) {
-        break label296;
+        break label293;
       }
-      if ("cover_mall_record_video".equals(a()))
+      if ("cover_mall_record_video".equals(getRefer()))
       {
-        bmtd.a(paramActivity, (bmtk)localObject, "", 0L, 1000, 2, "", a());
+        QZoneHelper.forwardToQzoneVideoTrim(paramActivity, (QZoneHelper.UserInfo)localObject, "", 0L, 1000, 2, "", getRefer());
         return;
       }
     }
     catch (Exception paramActivity)
     {
-      QLog.w(a, 4, "", paramActivity);
+      QLog.w(TAG, 4, "", paramActivity);
       return;
     }
     Intent localIntent = new Intent(paramActivity, NewPhotoListActivity.class);
     localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 2);
-    localIntent.putExtra("qzone_uin", ((bmtk)localObject).a);
-    localIntent.putExtra("nickname", ((bmtk)localObject).b);
+    localIntent.putExtra("qzone_uin", ((QZoneHelper.UserInfo)localObject).qzone_uin);
+    localIntent.putExtra("nickname", ((QZoneHelper.UserInfo)localObject).nickname);
     Object localObject = QzoneConfig.getInstance().getConfig("MiniVideo", "FileSizeLimit");
     if (TextUtils.isEmpty((CharSequence)localObject)) {}
     for (long l = 1048576000L;; l = Long.valueOf((String)localObject).longValue())
     {
       localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_VIDEO_SIZE", l);
       localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_VIDEO_DURATION", QzoneConfig.getInstance().getConfig("MiniVideo", "VideoDurationThreshold", 90000));
-      localIntent.putExtra("video_refer", a());
+      localIntent.putExtra("video_refer", getRefer());
       localIntent.putExtra("PhotoConst.IS_PREVIEW_VIDEO", false);
       localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", paramActivity.getClass().getName());
       localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
-      localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_VIDEO_CAN_UPLOAD_DURATION", bmtd.a());
+      localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_VIDEO_CAN_UPLOAD_DURATION", QZoneHelper.getVideoCanUploadLimitMs());
       paramActivity.startActivity(localIntent);
       return;
     }
-    label296:
-    if ("cover_mall_record_video".equals(a()))
+    label293:
+    if ("cover_mall_record_video".equals(getRefer()))
     {
-      int i = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299011);
-      localObject = paramActivity.getString(2131716923);
+      int i = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299076);
+      localObject = paramActivity.getString(2131717157);
       QQToast.a(paramActivity, (CharSequence)localObject, 0).b(i);
-      QLog.i(a, 2, "video cover,not support trim," + (String)localObject);
+      QLog.i(TAG, 2, "video cover,not support trim," + (String)localObject);
       return;
     }
     localIntent = new Intent("com.tencent.mobileqq.action.publishmood");
@@ -203,14 +209,14 @@ public class VideoComponentCallback
     localIntent.putExtra("key_is_upload_video", true);
     localIntent.putExtra("key_need_load_photo_from_intent", false);
     localIntent.putExtra("key_trim_video_black_list", true);
-    localIntent.putExtra("uin", ((bmtk)localObject).a);
-    bmtd.b(paramActivity, (bmtk)localObject, localIntent, 1000);
+    localIntent.putExtra("uin", ((QZoneHelper.UserInfo)localObject).qzone_uin);
+    QZoneHelper.forwardToPublishMood(paramActivity, (QZoneHelper.UserInfo)localObject, localIntent, 1000);
   }
   
-  public void a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "onActivityResult");
+      QLog.d(TAG, 2, "onActivityResult");
     }
     if (paramActivity == null) {}
     boolean bool;
@@ -222,16 +228,16 @@ public class VideoComponentCallback
       } while (paramIntent == null);
       bool = paramIntent.getBooleanExtra("finish_video_component", false);
       if (QLog.isColorLevel()) {
-        QLog.d(a, 1, "doFinish=" + bool);
+        QLog.d(TAG, 1, "doFinish=" + bool);
       }
     } while ((-1 != paramInt2) || (!bool));
     paramActivity.finish();
   }
   
-  public void a(Activity paramActivity, Intent paramIntent)
+  public void sendClick(Activity paramActivity, Intent paramIntent)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "sendClick");
+      QLog.d(TAG, 2, "sendClick");
     }
     if (paramIntent == null) {
       return;
@@ -289,21 +295,21 @@ public class VideoComponentCallback
     localBundle.putInt("sv_encode_bless_audio_time_low", i12);
     localBundle.putInt("sv_encode_bless_audio_time_high", i13);
     localBundle.putInt("sv_encode_bless_audio_time_ratio", i14);
-    if ("cover_mall_record_video".equals(a()))
+    if ("cover_mall_record_video".equals(getRefer()))
     {
       i = j;
       if (j < 0) {
         i = paramIntent.getIntExtra("file_send_duration", -1);
       }
-      QLog.i(a, 2, "videoCover,record video open video preview activity.totalDuration=" + i);
+      QLog.i(TAG, 2, "videoCover,record video open video preview activity.totalDuration=" + i);
       localBundle.putInt("sv_encode_ref_frame", i1);
       localBundle.putInt("sv_encode_smooth", i2);
-      bmtd.a(paramActivity, 0, null, true, str1, str2, k, m, i * 1000, 0L, i * 1000, 0L, n, localBundle, "", "", a(), "CustomVideoCover");
+      QZoneHelper.launchVideoCoverPreviewActivity(paramActivity, 0, null, true, str1, str2, k, m, i * 1000, 0L, i * 1000, 0L, n, localBundle, "", "", getRefer(), "CustomVideoCover");
       return;
     }
-    if ("ref_h5_record_video".equals(a()))
+    if ("ref_h5_record_video".equals(getRefer()))
     {
-      a(0, true, str1, str2, k, m, j, 0L, localBundle, (String)localObject1, str3, bool1, i7, i8, str4, str6, null);
+      sendToH5(0, true, str1, str2, k, m, j, 0L, localBundle, (String)localObject1, str3, bool1, i7, i8, str4, str6, null);
       return;
     }
     if (bool7)
@@ -313,15 +319,15 @@ public class VideoComponentCallback
       if ("source_from_quick_shoot".equals(paramIntent)) {
         paramActivity = "value.sourceFromQqQuickShoot";
       }
-      a(0, true, str1, str2, k, m, j * 1000, 0L, j * 1000, 0L, n, localBundle, "", "", "", i15, (String)localObject1, (ArrayList)localObject2, str3, bool1, i7, i8, str4, str6, paramActivity, bool2, bool3, bool4, i9, str5, localQzoneVerticalVideoTopicInfo, bool5, bool6);
+      sendVideoMood(0, true, str1, str2, k, m, j * 1000, 0L, j * 1000, 0L, n, localBundle, "", "", "", i15, (String)localObject1, (ArrayList)localObject2, str3, bool1, i7, i8, str4, str6, paramActivity, bool2, bool3, bool4, i9, str5, localQzoneVerticalVideoTopicInfo, bool5, bool6);
       return;
     }
-    a(paramActivity, 0, true, str1, str2, k, m, j, 0L, j, 0L, n, localBundle, "", "", "");
+    launchPublishMoodActivity(paramActivity, 0, true, str1, str2, k, m, j, 0L, j, 0L, n, localBundle, "", "", "");
   }
   
-  public void c_(String paramString)
+  public void setRefer(String paramString)
   {
-    this.b = paramString;
+    this.mRefer = paramString;
   }
 }
 

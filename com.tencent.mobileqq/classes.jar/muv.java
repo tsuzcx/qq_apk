@@ -1,105 +1,39 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
-class muv
-  extends BaseAdapter
+public class muv
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  mux jdField_a_of_type_Mux;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  public int a;
+  public String a;
+  public HashMap<String, String> a;
+  public muw a;
+  public int b;
+  public int c = 60000;
   
-  muv(Context paramContext, @NonNull mux parammux)
+  public muv()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Mux = parammux;
-    this.jdField_a_of_type_ArrayOfJavaLangString = parammux.a();
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_b_of_type_Int = 5000;
   }
   
-  public void a(int paramInt)
+  public String toString()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public void a(Context paramContext, @NonNull mux parammux)
-  {
-    if (paramContext != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mUrl = ").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",mConnectionTimeout = ").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(",mSocketTimeout = ").append(this.c);
+    if (this.jdField_a_of_type_Muw != null)
+    {
+      localStringBuilder.append(",mResult.mIsSucc = ").append(this.jdField_a_of_type_Muw.jdField_a_of_type_Boolean);
+      localStringBuilder.append(",mResult.mFileLength = ").append(this.jdField_a_of_type_Muw.jdField_a_of_type_Long);
+      localStringBuilder.append(",mResult.mErrCode = ").append(this.jdField_a_of_type_Muw.jdField_a_of_type_Int);
+      localStringBuilder.append(",mResult.mErrStr = ").append(this.jdField_a_of_type_Muw.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(",mResult.mTryCount = ").append(this.jdField_a_of_type_Muw.jdField_b_of_type_Int);
+      localStringBuilder.append(",mResult.mCostTime = ").append(this.jdField_a_of_type_Muw.jdField_b_of_type_Long).append("ms");
     }
-    this.jdField_a_of_type_ArrayOfJavaLangString = parammux.a();
-    this.jdField_a_of_type_Mux = parammux;
-    notifyDataSetInvalidated();
-  }
-  
-  public void a(String paramString)
-  {
-    int j = getCount();
-    int i = 0;
     for (;;)
     {
-      if (i < j)
-      {
-        muy localmuy = (muy)getItem(i);
-        if ((localmuy != null) && (localmuy.jdField_a_of_type_JavaLangString != null) && (localmuy.jdField_a_of_type_JavaLangString.equals(paramString))) {
-          a(i);
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_Mux != null) {
-      return this.jdField_a_of_type_Mux.a();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_Mux.a(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject = (muy)getItem(paramInt);
-    if (localObject != null) {
-      if (paramView == null)
-      {
-        paramView = new muw((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), ((muy)localObject).jdField_a_of_type_Int, ((muy)localObject).b);
-        localObject = (muw)paramView;
-        if (paramInt != this.jdField_a_of_type_Int) {
-          break label123;
-        }
-      }
-    }
-    label123:
-    for (boolean bool = true;; bool = false)
-    {
-      ((muw)localObject).a(bool);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      ((muw)paramView).a(((muy)localObject).b);
-      paramView.setContentDescription(((muy)localObject).b);
-      ((muw)paramView).a(((muy)localObject).jdField_a_of_type_Int);
-      break;
+      return localStringBuilder.toString();
+      localStringBuilder.append(",mResult = null");
     }
   }
 }

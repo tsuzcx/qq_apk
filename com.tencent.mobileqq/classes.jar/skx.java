@@ -1,13 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class skx
-  extends ThreadLocal<Boolean>
+class skx
+  implements View.OnClickListener
 {
-  public skx(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView) {}
+  skx(skv paramskv, Activity paramActivity) {}
   
-  protected Boolean a()
+  public void onClick(View paramView)
   {
-    return Boolean.valueOf(false);
+    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    {
+      QLog.d("DailyFeedsDiandianEntranceManager", 2, "jump to recommend feeds");
+      smd.a(this.jdField_a_of_type_AndroidAppActivity);
+      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 2130772313);
+      this.jdField_a_of_type_Skv.b();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

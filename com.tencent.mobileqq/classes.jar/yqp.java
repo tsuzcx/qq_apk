@@ -1,19 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class yqp
-  implements View.OnClickListener
 {
-  public yqp(StoryListPresenter.4.1 param1) {}
-  
-  public void onClick(View paramView)
+  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, boolean paramBoolean)
   {
-    yup.a("home_page", "clk_up_close", 0, 0, new String[0]);
-    this.a.a.this$0.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    boolean bool1 = false;
+    paramQQAppInterface = bfwg.a(paramQQAppInterface, paramContext, paramString);
+    if (paramQQAppInterface != null) {
+      bool1 = paramQQAppInterface.a();
+    }
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      if ((!bool2) && (paramBoolean))
+      {
+        Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", paramString);
+        localIntent.putExtra("selfSet_leftViewText", amtj.a(2131714945));
+        paramContext.startActivity(localIntent);
+      }
+      xvv.b("UrlJumpUtils", "jump %s, actionResult = %b, handled = %b", paramQQAppInterface, Boolean.valueOf(bool1), Boolean.valueOf(bool2));
+      return bool2;
+    }
   }
 }
 

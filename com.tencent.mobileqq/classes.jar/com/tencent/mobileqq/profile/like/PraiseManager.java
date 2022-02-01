@@ -8,9 +8,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import azzy;
-import azzz;
-import baab;
+import ayon;
+import ayoo;
+import ayoq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.commonsdk.cache.QQLruCache;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -33,9 +33,9 @@ public class PraiseManager
   implements Manager
 {
   public Context a;
-  public QQLruCache<Integer, azzy> a;
+  public QQLruCache<Integer, ayon> a;
   public QQAppInterface a;
-  public final List<WeakReference<azzz>> a;
+  public final List<WeakReference<ayoo>> a;
   public final Vector<Integer> a;
   public final List<String> b;
   
@@ -89,24 +89,24 @@ public class PraiseManager
     return 0;
   }
   
-  public azzy a(int paramInt, boolean paramBoolean, String paramString)
+  public ayon a(int paramInt, boolean paramBoolean, String paramString)
   {
     Object localObject;
     if (paramInt <= 0) {
       localObject = null;
     }
-    azzy localazzy;
+    ayon localayon;
     do
     {
       return localObject;
-      localazzy = (azzy)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(paramInt));
-      if (localazzy == null) {
+      localayon = (ayon)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(paramInt));
+      if (localayon == null) {
         break;
       }
-      localObject = localazzy;
+      localObject = localayon;
     } while (!QLog.isColorLevel());
     QLog.d("PraiseManager", 2, "get praise info from cache, id=" + paramInt + " from:" + paramString);
-    return localazzy;
+    return localayon;
     if (!this.jdField_a_of_type_JavaUtilVector.contains(Integer.valueOf(paramInt)))
     {
       if (QLog.isColorLevel()) {
@@ -158,17 +158,17 @@ public class PraiseManager
   void a(int paramInt, boolean paramBoolean, String paramString)
   {
     String str = a(paramInt).getAbsolutePath();
-    azzy localazzy = azzy.a(paramInt, str + File.separator + "config.json");
+    ayon localayon = ayon.a(paramInt, str + File.separator + "config.json");
     Boolean localBoolean = null;
-    if (localazzy != null)
+    if (localayon != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("PraiseManager", 2, "createPraiseInfo from local, id=" + paramInt + " from:" + paramString);
       }
-      localazzy.jdField_c_of_type_JavaLangString = (str + File.separator + "whiteBlackImg.png");
-      localazzy.d = (str + File.separator + "colorImg.png");
-      localazzy.e = (str + File.separator + "goldImg.png");
-      if (!b(localazzy)) {
+      localayon.jdField_c_of_type_JavaLangString = (str + File.separator + "whiteBlackImg.png");
+      localayon.d = (str + File.separator + "colorImg.png");
+      localayon.e = (str + File.separator + "goldImg.png");
+      if (!b(localayon)) {
         if (paramBoolean) {
           a(paramInt, paramString);
         }
@@ -184,9 +184,9 @@ public class PraiseManager
       return;
       localBoolean = Boolean.valueOf(false);
       continue;
-      if (a(localazzy))
+      if (a(localayon))
       {
-        this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(Integer.valueOf(paramInt), localazzy);
+        this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(Integer.valueOf(paramInt), localayon);
         localBoolean = Boolean.valueOf(true);
       }
       else
@@ -202,7 +202,7 @@ public class PraiseManager
     }
   }
   
-  public void a(azzz paramazzz)
+  public void a(ayoo paramayoo)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
@@ -210,11 +210,11 @@ public class PraiseManager
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if ((localWeakReference != null) && (localWeakReference.get() == paramazzz)) {
+        if ((localWeakReference != null) && (localWeakReference.get() == paramayoo)) {
           return;
         }
       }
-      this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramazzz));
+      this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramayoo));
       return;
     }
   }
@@ -227,7 +227,7 @@ public class PraiseManager
     //   3: ifeq +31 -> 34
     //   6: ldc 145
     //   8: iconst_2
-    //   9: ldc_w 331
+    //   9: ldc_w 332
     //   12: iconst_2
     //   13: anewarray 4	java/lang/Object
     //   16: dup
@@ -239,19 +239,19 @@ public class PraiseManager
     //   22: iload 4
     //   24: invokestatic 156	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   27: aastore
-    //   28: invokestatic 335	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   31: invokestatic 338	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   28: invokestatic 336	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   31: invokestatic 339	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   34: aload_1
     //   35: invokestatic 125	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   38: ifne +323 -> 361
     //   41: aload_1
     //   42: ldc 219
-    //   44: invokevirtual 342	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   44: invokevirtual 343	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   47: ifne +4 -> 51
     //   50: return
     //   51: aload_0
     //   52: aload_1
-    //   53: invokevirtual 344	com/tencent/mobileqq/profile/like/PraiseManager:a	(Ljava/lang/String;)I
+    //   53: invokevirtual 345	com/tencent/mobileqq/profile/like/PraiseManager:a	(Ljava/lang/String;)I
     //   56: istore 5
     //   58: aload_0
     //   59: getfield 61	com/tencent/mobileqq/profile/like/PraiseManager:b	Ljava/util/List;
@@ -272,14 +272,14 @@ public class PraiseManager
     //   91: invokespecial 80	java/lang/StringBuilder:<init>	()V
     //   94: aload_1
     //   95: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: ldc_w 346
+    //   98: ldc_w 347
     //   101: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   104: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   107: invokestatic 173	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   110: aload_0
     //   111: getfield 61	com/tencent/mobileqq/profile/like/PraiseManager:b	Ljava/util/List;
     //   114: aload_1
-    //   115: invokeinterface 349 2 0
+    //   115: invokeinterface 350 2 0
     //   120: pop
     //   121: aload_2
     //   122: monitorexit
@@ -291,15 +291,15 @@ public class PraiseManager
     //   134: invokevirtual 249	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   137: astore_1
     //   138: iload 5
-    //   140: invokestatic 254	agej:a	()Ljava/lang/StringBuilder;
+    //   140: invokestatic 255	com/tencent/mobileqq/activity/aio/AIOUtils:obtainStringBuilder	()Ljava/lang/StringBuilder;
     //   143: aload_1
     //   144: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   147: getstatic 258	java/io/File:separator	Ljava/lang/String;
+    //   147: getstatic 259	java/io/File:separator	Ljava/lang/String;
     //   150: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   153: ldc_w 260
+    //   153: ldc_w 261
     //   156: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   159: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   162: invokestatic 263	azzy:a	(ILjava/lang/String;)Lazzy;
+    //   162: invokestatic 264	ayon:a	(ILjava/lang/String;)Layon;
     //   165: astore_2
     //   166: aload_2
     //   167: ifnull +144 -> 311
@@ -310,78 +310,78 @@ public class PraiseManager
     //   179: new 79	java/lang/StringBuilder
     //   182: dup
     //   183: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   186: ldc_w 351
+    //   186: ldc_w 352
     //   189: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   192: iload 5
     //   194: invokevirtual 167	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   197: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   200: invokestatic 173	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   203: aload_2
-    //   204: invokestatic 254	agej:a	()Ljava/lang/StringBuilder;
+    //   204: invokestatic 255	com/tencent/mobileqq/activity/aio/AIOUtils:obtainStringBuilder	()Ljava/lang/StringBuilder;
     //   207: aload_1
     //   208: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   211: getstatic 258	java/io/File:separator	Ljava/lang/String;
+    //   211: getstatic 259	java/io/File:separator	Ljava/lang/String;
     //   214: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   217: ldc_w 267
+    //   217: ldc_w 268
     //   220: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   223: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   226: putfield 270	azzy:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   226: putfield 271	ayon:jdField_c_of_type_JavaLangString	Ljava/lang/String;
     //   229: aload_2
-    //   230: invokestatic 254	agej:a	()Ljava/lang/StringBuilder;
+    //   230: invokestatic 255	com/tencent/mobileqq/activity/aio/AIOUtils:obtainStringBuilder	()Ljava/lang/StringBuilder;
     //   233: aload_1
     //   234: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   237: getstatic 258	java/io/File:separator	Ljava/lang/String;
+    //   237: getstatic 259	java/io/File:separator	Ljava/lang/String;
     //   240: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   243: ldc_w 272
+    //   243: ldc_w 273
     //   246: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   249: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   252: putfield 274	azzy:d	Ljava/lang/String;
+    //   252: putfield 275	ayon:d	Ljava/lang/String;
     //   255: aload_2
-    //   256: invokestatic 254	agej:a	()Ljava/lang/StringBuilder;
+    //   256: invokestatic 255	com/tencent/mobileqq/activity/aio/AIOUtils:obtainStringBuilder	()Ljava/lang/StringBuilder;
     //   259: aload_1
     //   260: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   263: getstatic 258	java/io/File:separator	Ljava/lang/String;
+    //   263: getstatic 259	java/io/File:separator	Ljava/lang/String;
     //   266: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   269: ldc_w 276
+    //   269: ldc_w 277
     //   272: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   275: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   278: putfield 278	azzy:e	Ljava/lang/String;
+    //   278: putfield 279	ayon:e	Ljava/lang/String;
     //   281: aload_0
     //   282: aload_2
-    //   283: invokevirtual 281	com/tencent/mobileqq/profile/like/PraiseManager:b	(Lazzy;)Z
+    //   283: invokevirtual 282	com/tencent/mobileqq/profile/like/PraiseManager:b	(Layon;)Z
     //   286: ifeq +25 -> 311
     //   289: aload_0
     //   290: aload_2
-    //   291: invokevirtual 301	com/tencent/mobileqq/profile/like/PraiseManager:a	(Lazzy;)Z
+    //   291: invokevirtual 302	com/tencent/mobileqq/profile/like/PraiseManager:a	(Layon;)Z
     //   294: ifeq +17 -> 311
     //   297: aload_0
     //   298: getfield 46	com/tencent/mobileqq/profile/like/PraiseManager:jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache	Lcom/tencent/commonsdk/cache/QQLruCache;
     //   301: iload 5
     //   303: invokestatic 156	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   306: aload_2
-    //   307: invokevirtual 305	com/tencent/commonsdk/cache/QQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   307: invokevirtual 306	com/tencent/commonsdk/cache/QQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   310: pop
     //   311: aload_0
     //   312: getfield 24	com/tencent/mobileqq/profile/like/PraiseManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   315: new 285	com/tencent/mobileqq/profile/like/PraiseManager$LoadCallback
+    //   315: new 286	com/tencent/mobileqq/profile/like/PraiseManager$LoadCallback
     //   318: dup
     //   319: aload_0
     //   320: iload 5
     //   322: iconst_1
     //   323: aload_3
-    //   324: invokespecial 288	com/tencent/mobileqq/profile/like/PraiseManager$LoadCallback:<init>	(Lcom/tencent/mobileqq/profile/like/PraiseManager;IILjava/lang/String;)V
-    //   327: invokevirtual 291	com/tencent/mobileqq/app/QQAppInterface:runOnUiThread	(Ljava/lang/Runnable;)V
+    //   324: invokespecial 289	com/tencent/mobileqq/profile/like/PraiseManager$LoadCallback:<init>	(Lcom/tencent/mobileqq/profile/like/PraiseManager;IILjava/lang/String;)V
+    //   327: invokevirtual 292	com/tencent/mobileqq/app/QQAppInterface:runOnUiThread	(Ljava/lang/Runnable;)V
     //   330: aload_0
     //   331: getfield 51	com/tencent/mobileqq/profile/like/PraiseManager:jdField_a_of_type_JavaUtilVector	Ljava/util/Vector;
     //   334: iload 5
     //   336: invokestatic 156	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   339: invokevirtual 294	java/util/Vector:removeElement	(Ljava/lang/Object;)Z
+    //   339: invokevirtual 295	java/util/Vector:removeElement	(Ljava/lang/Object;)Z
     //   342: pop
     //   343: return
     //   344: astore_1
     //   345: ldc 145
     //   347: iconst_1
-    //   348: ldc_w 353
+    //   348: ldc_w 354
     //   351: aload_1
     //   352: invokestatic 151	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   355: return
@@ -414,29 +414,29 @@ public class PraiseManager
     //   357	359	356	finally
   }
   
-  boolean a(azzy paramazzy)
+  boolean a(ayon paramayon)
   {
     Object localObject1 = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject1).inDensity = 320;
     ((BitmapFactory.Options)localObject1).inTargetDensity = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().densityDpi;
-    Object localObject2 = BubbleManager.a(paramazzy.jdField_c_of_type_JavaLangString, (BitmapFactory.Options)localObject1);
+    Object localObject2 = BubbleManager.a(paramayon.jdField_c_of_type_JavaLangString, (BitmapFactory.Options)localObject1);
     if (localObject2 == null) {}
     do
     {
       return false;
-      paramazzy.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject2);
-      localObject2 = BubbleManager.a(paramazzy.d, (BitmapFactory.Options)localObject1);
+      paramayon.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject2);
+      localObject2 = BubbleManager.a(paramayon.d, (BitmapFactory.Options)localObject1);
     } while (localObject2 == null);
-    paramazzy.b = ((Bitmap)localObject2);
-    paramazzy.jdField_c_of_type_AndroidGraphicsBitmap = BubbleManager.a(paramazzy.e, (BitmapFactory.Options)localObject1);
-    localObject1 = a(paramazzy.jdField_a_of_type_Int).getAbsolutePath();
+    paramayon.b = ((Bitmap)localObject2);
+    paramayon.jdField_c_of_type_AndroidGraphicsBitmap = BubbleManager.a(paramayon.e, (BitmapFactory.Options)localObject1);
+    localObject1 = a(paramayon.jdField_a_of_type_Int).getAbsolutePath();
     localObject2 = (String)localObject1 + File.separator + "dynamicImg.png";
     if (new File((String)localObject2).exists()) {
-      paramazzy.f = ((String)localObject2);
+      paramayon.f = ((String)localObject2);
     }
     localObject1 = (String)localObject1 + File.separator + "goldDynamicImg.png";
     if (new File((String)localObject1).exists()) {
-      paramazzy.g = ((String)localObject1);
+      paramayon.g = ((String)localObject1);
     }
     return true;
   }
@@ -460,32 +460,32 @@ public class PraiseManager
     return true;
   }
   
-  public boolean a(Set<Integer> paramSet, azzz paramazzz)
+  public boolean a(Set<Integer> paramSet, ayoo paramayoo)
   {
     if ((paramSet == null) || (paramSet.isEmpty())) {
       return true;
     }
-    baab localbaab = new baab(this);
-    localbaab.b = paramSet.size();
-    localbaab.jdField_a_of_type_Azzz = paramazzz;
-    paramazzz = paramSet.iterator();
-    while (paramazzz.hasNext())
+    ayoq localayoq = new ayoq(this);
+    localayoq.b = paramSet.size();
+    localayoq.jdField_a_of_type_Ayoo = paramayoo;
+    paramayoo = paramSet.iterator();
+    while (paramayoo.hasNext())
     {
-      int i = ((Integer)paramazzz.next()).intValue();
+      int i = ((Integer)paramayoo.next()).intValue();
       if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(i)) == null)
       {
-        a(localbaab);
+        a(localayoq);
         a(i, true, "from_load_all");
       }
       else
       {
-        localbaab.jdField_a_of_type_Int += 1;
+        localayoq.jdField_a_of_type_Int += 1;
       }
     }
-    return localbaab.jdField_a_of_type_Int == paramSet.size();
+    return localayoq.jdField_a_of_type_Int == paramSet.size();
   }
   
-  public void b(azzz paramazzz)
+  public void b(ayoo paramayoo)
   {
     List localList = this.jdField_a_of_type_JavaUtilList;
     Object localObject = null;
@@ -497,7 +497,7 @@ public class PraiseManager
         if (localIterator.hasNext())
         {
           WeakReference localWeakReference = (WeakReference)localIterator.next();
-          if ((localWeakReference != null) && (localWeakReference.get() == paramazzz)) {
+          if ((localWeakReference != null) && (localWeakReference.get() == paramayoo)) {
             localObject = localWeakReference;
           }
         }
@@ -511,9 +511,9 @@ public class PraiseManager
     }
   }
   
-  boolean b(azzy paramazzy)
+  boolean b(ayon paramayon)
   {
-    return (new File(paramazzy.jdField_c_of_type_JavaLangString).exists()) && (new File(paramazzy.d).exists());
+    return (new File(paramayon.jdField_c_of_type_JavaLangString).exists()) && (new File(paramayon.d).exists());
   }
   
   public void onDestroy()

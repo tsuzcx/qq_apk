@@ -1,41 +1,14 @@
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.ApolloKapuEntranceTips;
+import java.util.Comparator;
 
-public class amiy
-  implements bihd
+class amiy
+  implements Comparator<ApolloKapuEntranceTips>
 {
-  public amiy(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  amiy(amir paramamir) {}
   
-  public void a(biha parambiha)
+  public int a(ApolloKapuEntranceTips paramApolloKapuEntranceTips1, ApolloKapuEntranceTips paramApolloKapuEntranceTips2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "mMediaPlayer onPrepared: mDuration=" + this.a.b);
-    }
-    SurfaceHolder localSurfaceHolder = this.a.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
-    if ((localSurfaceHolder == null) || (!localSurfaceHolder.getSurface().isValid())) {
-      auna.a(2131691151);
-    }
-    do
-    {
-      do
-      {
-        return;
-        bhjk.a(this.a.jdField_a_of_type_AndroidViewSurfaceView, this.a.e, this.a.f, this.a.jdField_a_of_type_Biha.d(), this.a.jdField_a_of_type_Biha.e());
-      } while (this.a.j != 10);
-      parambiha.a(localSurfaceHolder);
-      this.a.jdField_a_of_type_Int = parambiha.c();
-    } while (this.a.jdField_a_of_type_Int <= 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "此时的时长为" + ShortVideoUtils.a(this.a.jdField_a_of_type_Int));
-    }
-    this.a.d.setText(ShortVideoUtils.a(this.a.jdField_a_of_type_Int));
-    this.a.jdField_a_of_type_AndroidWidgetSeekBar.setMax(this.a.jdField_a_of_type_Int);
+    return paramApolloKapuEntranceTips1.priority - paramApolloKapuEntranceTips2.priority;
   }
 }
 

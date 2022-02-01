@@ -1,18 +1,17 @@
 package cooperation.qzone.webviewplugin;
 
-import bngf;
-import bngi;
-import bnos;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 import java.util.ArrayList;
 
-public class QzoneVideoTabJsPlugin$3
+class QzoneVideoTabJsPlugin$3
   implements Runnable
 {
-  public QzoneVideoTabJsPlugin$3(bnos parambnos, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  QzoneVideoTabJsPlugin$3(QzoneVideoTabJsPlugin paramQzoneVideoTabJsPlugin, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
   public void run()
   {
-    bngf.a().a().b(this.a, this.b);
+    RemoteHandleManager.getInstance().getSender().setVideoState(this.val$urls, this.val$states);
   }
 }
 

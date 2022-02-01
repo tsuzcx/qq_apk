@@ -1,47 +1,10 @@
-import android.text.TextUtils;
-import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivityForMini;
-import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
 
-final class acug
-  implements acun
+public class acug
+  extends Handler
 {
-  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
-  {
-    if (paramacts != null) {}
-    for (paramString = paramacts.a(); (paramacts == null) || (paramString == null); paramString = null)
-    {
-      acvc.d("GdtBannerJsCallHandler", "handleJsCallRequest error");
-      return true;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramVarArgs = new JSONObject(paramVarArgs[0]);
-        paramacts = paramVarArgs.optString("process", "com.tencent.mobileqq:mini");
-        if (TextUtils.equals(paramacts, "com.tencent.mobileqq"))
-        {
-          paramacts = PublicFragmentActivity.class;
-          GdtInterstitialFragmentForJS.a(paramString, paramacts, paramVarArgs);
-          return true;
-        }
-      }
-      catch (JSONException paramacts)
-      {
-        acvc.d("GdtBannerJsCallHandler", "handleJsCallRequest error", paramacts);
-        return true;
-      }
-      if (TextUtils.equals(paramacts, "com.tencent.mobileqq:tool")) {
-        paramacts = PublicFragmentActivityForTool.class;
-      } else {
-        paramacts = PublicFragmentActivityForMini.class;
-      }
-    }
-  }
+  public acug(AuthDevRenameActivity paramAuthDevRenameActivity) {}
 }
 
 

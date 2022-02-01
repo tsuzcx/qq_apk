@@ -1,21 +1,30 @@
-import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 class ruq
-  implements ruv
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  ruq(rup paramrup, rot paramrot) {}
+  ruq(run paramrun) {}
   
-  public void a()
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if ((rup.a(this.jdField_a_of_type_Rup) instanceof tow)) {
-      ((tow)rup.a(this.jdField_a_of_type_Rup)).a = true;
+    if (QLog.isColorLevel()) {
+      QLog.d(run.a(), 2, "播放器状态回调 onVideoPrepared");
     }
-    if (this.jdField_a_of_type_Rup.a() != 3)
-    {
-      this.jdField_a_of_type_Rot.e.setVisibility(8);
-      return;
+    run.a(this.a, System.currentTimeMillis());
+    paramTVK_IMediaPlayer = new HashSet();
+    Iterator localIterator = run.a(this.a).entrySet().iterator();
+    while (localIterator.hasNext()) {
+      paramTVK_IMediaPlayer.add(((Map.Entry)localIterator.next()).getKey());
     }
-    rup.a(this.jdField_a_of_type_Rup, true, false);
+    run.a(this.a).setExtractFrameModeInfo(true, paramTVK_IMediaPlayer);
+    run.a(this.a).start();
   }
 }
 

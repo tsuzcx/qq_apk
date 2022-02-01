@@ -1,128 +1,81 @@
-import android.support.annotation.Nullable;
-import java.util.List;
+import android.content.Context;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URLDecoder;
 
-public class prw<BEAN, VIEW extends pro<BEAN>>
-  implements prm<BEAN, VIEW>
+public class prw
 {
-  private prl<BEAN> jdField_a_of_type_Prl;
-  private pro<BEAN> jdField_a_of_type_Pro;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public prw(prl<BEAN> paramprl)
+  public static boolean a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_Prl = paramprl;
-  }
-  
-  private void a(List<BEAN> paramList)
-  {
-    if ((paramList != null) && (!paramList.isEmpty()))
+    pru.a(paramString);
+    QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "jumpToKDTab, scheme = " + paramString);
+    if (TextUtils.isEmpty(paramString))
     {
-      if (this.jdField_a_of_type_Pro != null)
+      QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], scheme is empty.");
+      return false;
+    }
+    String str2;
+    String str4;
+    boolean bool;
+    do
+    {
+      String str3;
+      String str5;
+      do
       {
-        this.jdField_a_of_type_Pro.setCenterHide();
-        this.jdField_a_of_type_Pro.setListData(paramList, false);
-        this.jdField_a_of_type_Pro.setFooterNoMore();
-        this.jdField_a_of_type_Pro.setHeaderLoading();
+        try
+        {
+          paramString = Uri.parse(paramString);
+          str1 = paramString.getQueryParameter("target");
+          if (!"2".equals(str1))
+          {
+            QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], target = " + str1 + ", do not jump to channel.");
+            return false;
+          }
+        }
+        catch (Exception paramContext)
+        {
+          QLog.e("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], e = " + paramContext);
+          QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], do not handle.");
+          return false;
+        }
+        String str1 = paramString.getQueryParameter("channelid");
+        int i = -1;
+        try
+        {
+          int j = Integer.parseInt(str1);
+          i = j;
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          for (;;)
+          {
+            QLog.e("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], e = " + localNumberFormatException);
+          }
+          str2 = paramString.getQueryParameter("rowkey");
+          str3 = paramString.getQueryParameter("algorithmid");
+          str4 = paramString.getQueryParameter("article_url");
+          str5 = URLDecoder.decode(str4, "utf-8");
+          bool = TextUtils.equals("1", paramString.getQueryParameter("show_floating_window"));
+          QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], articleURLDecoded = " + str5);
+        }
+        if (i != 0)
+        {
+          QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], not recommend tab.");
+          return false;
+        }
+      } while ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (TextUtils.isEmpty(str4)) || (TextUtils.isEmpty(str5)));
+      if (!bkwm.i())
+      {
+        pay.a(paramContext, str5);
+        QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], open article directly.");
+        return true;
       }
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  private void a(boolean paramBoolean, int paramInt, List<BEAN> paramList)
-  {
-    if (paramBoolean)
-    {
-      a(paramList);
-      return;
-    }
-    b(paramInt, paramList);
-  }
-  
-  private void a(boolean paramBoolean, List<BEAN> paramList, int paramInt, @Nullable String paramString)
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Pro != null)) {
-      this.jdField_a_of_type_Pro.setHeaderError(paramInt, paramString);
-    }
-    if ((paramList != null) && (!paramList.isEmpty()) && (paramBoolean) && (this.jdField_a_of_type_Pro != null))
-    {
-      this.jdField_a_of_type_Pro.setCenterHide();
-      this.jdField_a_of_type_Pro.setListData(paramList, false);
-      this.jdField_a_of_type_Pro.setFooterNoMore();
-    }
-    while ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Pro == null)) {
-      return;
-    }
-    this.jdField_a_of_type_Pro.setCenterError(paramInt, paramString);
-    this.jdField_a_of_type_Pro.setTotal(0);
-  }
-  
-  private void b(int paramInt, List<BEAN> paramList)
-  {
-    if (this.jdField_a_of_type_Pro != null)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Pro.setHeaderSuccess();
-      }
-      a(paramInt, paramList);
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Pro = null;
-  }
-  
-  public void a(int paramInt, List<BEAN> paramList)
-  {
-    if (this.jdField_a_of_type_Pro != null)
-    {
-      this.jdField_a_of_type_Pro.setTotal(paramInt);
-      this.jdField_a_of_type_Pro.setListData(paramList, false);
-      if ((paramList == null) || (paramList.isEmpty())) {
-        break label82;
-      }
-      this.jdField_a_of_type_Pro.setCenterHide();
-      if (this.jdField_a_of_type_Prl.a()) {
-        this.jdField_a_of_type_Pro.setFooterHasMore();
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_Pro.setFooterNoMore();
-    return;
-    label82:
-    this.jdField_a_of_type_Pro.setCenterEmpty();
-    this.jdField_a_of_type_Pro.setFooterHide();
-  }
-  
-  public void a(VIEW paramVIEW)
-  {
-    this.jdField_a_of_type_Pro = paramVIEW;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Pro != null) {
-      this.jdField_a_of_type_Pro.setCenterLoading();
-    }
-    this.jdField_a_of_type_Prl.a(true, new prx(this));
-  }
-  
-  public void c()
-  {
-    if (!this.jdField_a_of_type_Prl.a())
-    {
-      if (this.jdField_a_of_type_Pro != null) {
-        this.jdField_a_of_type_Pro.setFooterNoMore();
-      }
-      return;
-    }
-    if (this.jdField_a_of_type_Pro != null) {
-      this.jdField_a_of_type_Pro.setFooterLoading();
-    }
-    this.jdField_a_of_type_Prl.a(new pry(this));
+    } while (!bool);
+    paramContext.startActivity(okj.a(paramContext, 12, str2, str4));
+    QLog.i("ReadInJoyDailyJumpToKDTabUtils", 1, "[jumpToKDTab], open floating window.");
+    return true;
   }
 }
 

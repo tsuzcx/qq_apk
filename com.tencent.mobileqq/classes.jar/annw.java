@@ -1,32 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.reflect.Method;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.List;
 
 public class annw
+  implements anny
 {
-  public static void a(boolean paramBoolean, String paramString1, String paramString2)
+  public void a(amwl paramamwl, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, amwm paramamwm)
   {
-    try
+    switch (paramInt)
     {
-      if (1 != BaseApplicationImpl.sProcessId) {
-        return;
-      }
-      ClassLoader localClassLoader = BaseApplicationImpl.sApplication.getClassLoader();
-      if ((localClassLoader != null) && (!TextUtils.isEmpty(paramString2)) && (paramString2.contains("Apollo")))
-      {
-        localClassLoader.loadClass("com.tencent.mobileqq.apollo.utils.ApolloUtil").getMethod("handleApolloNoCatchCrash", new Class[] { Boolean.TYPE, String.class, String.class }).invoke(null, new Object[] { Boolean.valueOf(paramBoolean), paramString1, paramString2 });
-        return;
-      }
+    default: 
+      return;
+    case 4003: 
+      paramamwl.getTroopMsgFin(paramBoolean, paramArrayOfObject);
+      return;
+    case 4005: 
+      paramamwl.getSystemMsgFin(paramBoolean, false, (List)paramObject);
+      return;
+    case 4006: 
+      paramamwl.getSystemMsgFin(false, true, null);
+      return;
+    case 4011: 
+      paramamwl.sendSystemMsgActionFin(paramBoolean, (ToServiceMsg)paramObject);
+      return;
+    case 4012: 
+      paramamwl.sendSystemMsgActionError((ToServiceMsg)paramObject);
+      return;
+    case 4001: 
+      paramamwl.getMsgFin(paramBoolean);
+      return;
+    case 4004: 
+      paramamwl.registerProxyFin(paramBoolean, paramObject);
+      return;
+    case 4002: 
+      paramamwl.getDiscussionMsgFin(paramBoolean);
+      return;
+    case 4013: 
+      paramamwl.getAllProxyTroopMsg(paramBoolean, paramArrayOfObject);
+      return;
     }
-    catch (Throwable paramString1)
-    {
-      paramString1.printStackTrace();
-    }
+    paramamwl.receiptErrorRsp((Long[])paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     annw
  * JD-Core Version:    0.7.0.1
  */

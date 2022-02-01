@@ -1,12 +1,6 @@
-class ajyo
-  implements ajyr
+public abstract interface ajyo
 {
-  ajyo(ajyl paramajyl) {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    ajyl.a(this.a, paramInt1, paramInt2);
-  }
+  public abstract void a();
 }
 
 

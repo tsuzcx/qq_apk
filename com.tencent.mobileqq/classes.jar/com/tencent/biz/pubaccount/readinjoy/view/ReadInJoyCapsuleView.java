@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import agej;
 import android.content.Context;
 import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
@@ -22,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class ReadInJoyCapsuleView
   extends FrameLayout
@@ -83,8 +83,8 @@ public class ReadInJoyCapsuleView
     this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2, 17);
-    localLayoutParams.leftMargin = agej.a(12.0F, paramContext.getResources());
-    localLayoutParams.rightMargin = agej.a(12.0F, paramContext.getResources());
+    localLayoutParams.leftMargin = AIOUtils.dp2px(12.0F, paramContext.getResources());
+    localLayoutParams.rightMargin = AIOUtils.dp2px(12.0F, paramContext.getResources());
     addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
   }
   
@@ -167,7 +167,7 @@ public class ReadInJoyCapsuleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyCapsuleView
  * JD-Core Version:    0.7.0.1
  */

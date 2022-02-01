@@ -1,57 +1,69 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBatchFeedFeature;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class xcq
-  extends wpa<xen>
+class xcq
+  implements URLDrawable.URLDrawableListener
 {
-  public static final String a;
-  public List<String> a;
+  private final int jdField_a_of_type_Int;
+  private final URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private final String jdField_a_of_type_JavaLangString;
+  private final int b;
   
-  static
+  public xcq(xcp paramxcp, @NonNull String paramString, int paramInt1, int paramInt2, URLDrawable paramURLDrawable)
   {
-    jdField_a_of_type_JavaLangString = wnu.a("StorySvc.feed_feature_775");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
   }
   
-  public String a()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    return jdField_a_of_type_JavaLangString;
+    xcp.a(this.jdField_a_of_type_Xcp).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
   
-  public wov a(byte[] paramArrayOfByte)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    qqstory_service.RspGetBatchFeedFeature localRspGetBatchFeedFeature = new qqstory_service.RspGetBatchFeedFeature();
-    try
+    xcp.a(this.jdField_a_of_type_Xcp).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    xvv.d("story.icon.ShareGroupIconManager", "download url failed. %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+    paramURLDrawable = (HashSet)xcp.a(this.jdField_a_of_type_Xcp).remove(this.jdField_a_of_type_JavaLangString);
+    if (paramURLDrawable != null)
     {
-      localRspGetBatchFeedFeature.mergeFrom(paramArrayOfByte);
-      return new xen(localRspGetBatchFeedFeature);
+      paramURLDrawable = paramURLDrawable.iterator();
+      while (paramURLDrawable.hasNext()) {
+        ((xct)paramURLDrawable.next()).a(this.jdField_a_of_type_JavaLangString, paramThrowable);
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    xcp.a(this.jdField_a_of_type_Xcp).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    xvv.a("story.icon.ShareGroupIconManager", "download url success. %s", this.jdField_a_of_type_JavaLangString);
+    Bitmap localBitmap = xcp.a(this.jdField_a_of_type_Xcp, paramURLDrawable, this.jdField_a_of_type_Int, this.b);
+    if (localBitmap != null)
     {
-      for (;;)
+      paramURLDrawable = (HashSet)xcp.a(this.jdField_a_of_type_Xcp).remove(this.jdField_a_of_type_JavaLangString);
+      if (paramURLDrawable != null)
       {
-        paramArrayOfByte.printStackTrace();
+        paramURLDrawable = paramURLDrawable.iterator();
+        while (paramURLDrawable.hasNext()) {
+          ((xct)paramURLDrawable.next()).a(this.jdField_a_of_type_JavaLangString, localBitmap);
+        }
       }
     }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetBatchFeedFeature localReqGetBatchFeedFeature = new qqstory_service.ReqGetBatchFeedFeature();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    else
     {
-      String str = (String)localIterator.next();
-      if (!TextUtils.isEmpty(str)) {
-        localReqGetBatchFeedFeature.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
-      }
+      xvv.e("story.icon.ShareGroupIconManager", "download url success directly. but OOM occur !");
+      onLoadFialed(paramURLDrawable, new Throwable("getBitmapFromDrawable failed"));
     }
-    return localReqGetBatchFeedFeature.toByteArray();
   }
 }
 

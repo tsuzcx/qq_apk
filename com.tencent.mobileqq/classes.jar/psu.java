@@ -1,97 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.preload.util.FeedsPreloadExposeReport.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
+import android.os.Bundle;
+import android.text.TextUtils;
+import eipc.EIPCResult;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class psu
+class psu
+  implements tiu
 {
-  public static void a(List<ArticleInfo> paramList, String paramString)
+  psu(pst parampst, int paramInt, ooz paramooz) {}
+  
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    QLog.d("FeedsPreloadExposeReport", 1, "reportFeedsExposeRewrite.");
-    Object localObject = (pfg)((QQAppInterface)ozs.a()).getManager(163);
-    if (localObject != null)
+    if ((!TextUtils.isEmpty(paramString)) && (paramJSONObject != null)) {}
+    try
     {
-      localObject = ((pfg)localObject).a();
-      psr.a().a(new FeedsPreloadExposeReport.1((pfa)localObject, paramList, paramString));
+      paramJSONObject.put("arg_callback", paramString);
+      paramString = new Bundle();
+      paramString.putString("action_update_biu_and_comment_request_string", paramJSONObject.toString());
+      paramString = EIPCResult.createResult(0, paramString);
+      this.jdField_a_of_type_Pst.callbackResult(this.jdField_a_of_type_Int, paramString);
+      this.jdField_a_of_type_Ooz.a();
       return;
     }
-    QLog.d("FeedsPreloadExposeReport", 1, "readInJoyLogicManager is null.");
-  }
-  
-  public static void a(boolean paramBoolean, long paramLong, int paramInt)
-  {
-    String str = ozs.a();
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("retCode", String.valueOf(paramInt));
-    localHashMap.put("uin", str);
-    AppRuntime localAppRuntime = ozs.a();
-    if ((localAppRuntime == null) || (paramLong < 0L) || (paramLong > 30000L))
+    catch (JSONException paramString)
     {
-      QLog.d("FeedsPreloadExposeReport", 1, "app is null or cost is not available, reportFeedsPreloadExposeMonitorData");
-      return;
-    }
-    bdmc.a(localAppRuntime.getApplication()).a(str, "actFeedsPreloadExposeReport", paramBoolean, paramLong, 0L, localHashMap, null);
-  }
-  
-  private static List<ReportInfo> b(List<ArticleInfo> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      paramList = new ArrayList(paramList).iterator();
-      while (paramList.hasNext())
+      for (;;)
       {
-        Object localObject1 = (ArticleInfo)paramList.next();
-        Object localObject2;
-        if ((ozs.t((BaseArticleInfo)localObject1)) && (((ArticleInfo)localObject1).mNewPolymericInfo != null) && (((ArticleInfo)localObject1).mNewPolymericInfo.a != null))
-        {
-          localObject1 = ((ArticleInfo)localObject1).mNewPolymericInfo.a.iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (qwp)((Iterator)localObject1).next();
-            ReportInfo localReportInfo = new ReportInfo();
-            localReportInfo.mUin = ozs.a();
-            localReportInfo.mOperation = 56;
-            localReportInfo.mSourceArticleId = ((qwp)localObject2).a;
-            localReportInfo.mInnerId = ((qwp)localObject2).g;
-            localReportInfo.mAlgorithmId = ((int)((qwp)localObject2).b);
-            localReportInfo.mGWCommonData = "";
-            localArrayList.add(localReportInfo);
-          }
-        }
-        else
-        {
-          localObject2 = new ReportInfo();
-          ((ReportInfo)localObject2).mUin = ozs.a();
-          ((ReportInfo)localObject2).mOperation = 56;
-          ((ReportInfo)localObject2).mSourceArticleId = ((ArticleInfo)localObject1).mArticleID;
-          ((ReportInfo)localObject2).mInnerId = ((ArticleInfo)localObject1).innerUniqueID;
-          ((ReportInfo)localObject2).mAlgorithmId = ((int)((ArticleInfo)localObject1).mAlgorithmID);
-          ((ReportInfo)localObject2).mGWCommonData = ((ArticleInfo)localObject1).mGWCommonData;
-          localArrayList.add(localObject2);
-          if (((ArticleInfo)localObject1).hasOnlyTwoVideoFeeds())
-          {
-            localObject1 = (ArticleInfo)((ArticleInfo)localObject1).mSubArtilceList.get(0);
-            localObject2 = new ReportInfo();
-            ((ReportInfo)localObject2).mUin = ozs.a();
-            ((ReportInfo)localObject2).mOperation = 56;
-            ((ReportInfo)localObject2).mSourceArticleId = ((ArticleInfo)localObject1).mArticleID;
-            ((ReportInfo)localObject2).mInnerId = ((ArticleInfo)localObject1).innerUniqueID;
-            ((ReportInfo)localObject2).mAlgorithmId = ((int)((ArticleInfo)localObject1).mAlgorithmID);
-            ((ReportInfo)localObject2).mGWCommonData = ((ArticleInfo)localObject1).mGWCommonData;
-            localArrayList.add(localObject2);
-          }
-        }
+        paramString.printStackTrace();
       }
     }
-    return localArrayList;
   }
 }
 

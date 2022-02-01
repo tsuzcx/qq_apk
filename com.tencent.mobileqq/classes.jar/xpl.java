@@ -1,26 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Build.VERSION;
-import android.widget.ImageView;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 
-class xpl
-  extends AnimatorListenerAdapter
+public abstract interface xpl
 {
-  xpl(xpj paramxpj) {}
+  public abstract void a();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.a.a.setImageAlpha(255);
-    }
-    for (;;)
-    {
-      this.a.a.setVisibility(8);
-      return;
-      this.a.a.setImageResource(2130850680);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(@NonNull Activity paramActivity);
+  
+  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

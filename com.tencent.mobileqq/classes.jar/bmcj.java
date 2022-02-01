@@ -1,15 +1,21 @@
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import dov.com.qq.im.ae.view.AEPituCameraCaptureButtonLayout;
 
-public abstract interface bmcj
+public class bmcj
+  extends Handler
 {
-  public abstract HashMap<String, String> a();
+  public bmcj(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void a();
-  
-  public abstract boolean a(String paramString, JSONObject paramJSONObject);
-  
-  public abstract void b();
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    this.a.a(paramMessage);
+  }
 }
 
 

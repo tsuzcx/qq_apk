@@ -1,37 +1,27 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
 
 public class albr
-  implements akxk
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public albr(ThemeHbFragment paramThemeHbFragment) {}
+  public albr(TroopMemberListInnerFrame paramTroopMemberListInnerFrame, ViewGroup paramViewGroup) {}
   
-  public void a()
+  public void onGlobalLayout()
   {
-    ThemeHbFragment.a(this.a, null);
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (ThemeHbFragment.a(this.a) == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back context is null");
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c);
+    Bitmap localBitmap = TroopMemberListInnerFrame.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c);
+    if (localBitmap == null) {}
     do
     {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back drawable = " + paramObject);
-      }
-    } while (!(paramObject instanceof Drawable));
-    if (QLog.isColorLevel()) {
-      QLog.i("ThemeHbFragment", 2, "setImageBgProcess image set...");
-    }
-    ThemeHbFragment.a(this.a).post(new ThemeHbFragment.2.1(this, paramObject));
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.c.setTag(localBitmap);
+    } while (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.a == null);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberTroopMemberListInnerFrame.a.notifyDataSetChanged();
   }
 }
 

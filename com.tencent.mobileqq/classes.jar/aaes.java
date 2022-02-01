@@ -1,17 +1,28 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.widgets.TabLayout;
+import java.io.PrintStream;
 
 public class aaes
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aaes(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
+  public aaes(TabLayout paramTabLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView, int paramInt5) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    FollowedRecommendBannerView.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    System.out.println("value = " + f);
+    int i = 0;
+    while (i < this.jdField_a_of_type_Int - this.b)
+    {
+      paramValueAnimator = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.getChildAt(this.c + i);
+      if (paramValueAnimator != null) {
+        paramValueAnimator.setTranslationX(this.d * f);
+      }
+      i += 1;
+    }
+    this.jdField_a_of_type_AndroidViewView.setTranslationX(f * -this.e);
   }
 }
 

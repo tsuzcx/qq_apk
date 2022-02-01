@@ -1,6 +1,21 @@
-public abstract interface bbfm
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
+import java.util.Set;
+
+public class bbfm
+  extends bbee
 {
-  public abstract void a(boolean paramBoolean);
+  private Comparator<bayp> a = new bbfn(this);
+  
+  public bbfm(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
+  {
+    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
+  }
+  
+  public Comparator<bayp> a()
+  {
+    return this.a;
+  }
 }
 
 

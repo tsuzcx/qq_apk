@@ -1,26 +1,6 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-
-public abstract class bgqq
-  extends nkq
+public class bgqq
 {
-  public bgqq()
-  {
-    super(false);
-  }
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    QLog.i(".troop.troop_app", 2, "clickReport errorCode = " + paramInt);
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(bool);
-      return;
-    }
-  }
-  
-  protected abstract void a(boolean paramBoolean);
+  public static final String a = lbe.f() + "config.json";
 }
 
 

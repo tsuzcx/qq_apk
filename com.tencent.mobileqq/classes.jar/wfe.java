@@ -1,34 +1,76 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
-import com.tencent.biz.qqcircle.widgets.multiTouchImage.PhotoViewAttacher;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetVideoFullInfoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoFullInfoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wfe
-  implements GestureDetector.OnDoubleTapListener
+  extends vqr<wgp>
 {
-  public wfe(PhotoViewAttacher paramPhotoViewAttacher) {}
+  public static final String a;
+  public List<String> a;
+  public int c;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  static
   {
-    if (PhotoViewAttacher.a(this.a) != null) {
-      PhotoViewAttacher.a(this.a).a();
-    }
-    return false;
+    jdField_a_of_type_JavaLangString = vpl.a("StorySvc.union_batch_vid_basic_info");
   }
   
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  public wfe()
   {
-    return false;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public String a()
   {
-    this.a.a();
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    if (PhotoViewAttacher.a(this.a) != null) {
-      PhotoViewAttacher.a(this.a).a(PhotoViewAttacher.a(this.a), f1, f2);
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public vqm a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBatchGetVideoFullInfoList localRspBatchGetVideoFullInfoList = new qqstory_service.RspBatchGetVideoFullInfoList();
+    try
+    {
+      localRspBatchGetVideoFullInfoList.mergeFrom(paramArrayOfByte);
+      xvv.a("Q.qqstory.net:GetVideoFullInfoListRequest", "%s", yps.a(localRspBatchGetVideoFullInfoList));
+      return new wgp(localRspBatchGetVideoFullInfoList);
     }
-    return false;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      xvv.b("Q.qqstory.net:GetVideoFullInfoListRequest", a(), paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqBatchGetVideoFullInfoList localReqBatchGetVideoFullInfoList = new qqstory_service.ReqBatchGetVideoFullInfoList();
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      if (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if (!str.startsWith("Loading")) {}
+        for (boolean bool = true;; bool = false)
+        {
+          yos.a(bool);
+          localReqBatchGetVideoFullInfoList.vid_list.add(ByteStringMicro.copyFromUtf8(str));
+          break;
+        }
+      }
+    }
+    localReqBatchGetVideoFullInfoList.source.set(this.c);
+    return localReqBatchGetVideoFullInfoList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetVideoFullInfoListRequest{vidList='" + this.jdField_a_of_type_JavaUtilList + '\'' + '}';
   }
 }
 

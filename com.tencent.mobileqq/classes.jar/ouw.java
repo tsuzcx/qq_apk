@@ -1,14 +1,22 @@
+import java.util.ArrayList;
+
 class ouw
-  extends ovd
+  extends owd
 {
-  ouw(otv paramotv, int paramInt)
+  ouw(ouu paramouu, int paramInt)
   {
-    super(paramotv, null);
+    super(paramouu, null);
   }
   
-  void a(ovg paramovg)
+  void a(owg paramowg)
   {
-    paramovg.onCommentStateError(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Int == 1) {
+      paramowg.onCommentListLoad(1, false, new ArrayList(), false, 3, 3);
+    }
+    while (this.jdField_a_of_type_Int != 2) {
+      return;
+    }
+    paramowg.onCommentLoadMore(1, false, new ArrayList(), false, 3);
   }
 }
 

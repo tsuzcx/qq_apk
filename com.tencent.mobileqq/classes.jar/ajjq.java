@@ -1,34 +1,8 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
-public class ajjq
-  extends Handler
+public abstract interface ajjq
 {
-  private WeakReference<NewFriendActivity> a;
-  
-  public ajjq(NewFriendActivity paramNewFriendActivity)
-  {
-    this.a = new WeakReference(paramNewFriendActivity);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    NewFriendActivity localNewFriendActivity = (NewFriendActivity)this.a.get();
-    if (localNewFriendActivity == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      throw new RuntimeException("Unknown message: " + paramMessage.what);
-    case 1: 
-      localNewFriendActivity.a(paramMessage.arg1);
-      return;
-    }
-    localNewFriendActivity.finish();
-  }
+  public abstract void a(RecentBaseData paramRecentBaseData);
 }
 
 

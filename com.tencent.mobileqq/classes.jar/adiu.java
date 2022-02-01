@@ -1,42 +1,39 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class adiu
-  implements adbw
+  implements aysa
 {
-  public int a()
+  public adiu(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  
+  public void a()
   {
-    return 1034;
+    this.a.a(0L, null, null, false);
   }
   
-  public boolean a()
+  public void a(int paramInt)
   {
-    return false;
+    this.a.b(paramInt);
   }
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public void a(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(156);
-    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramMessageRecord = paramQQAppInterface.a().a(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
-    if (paramMessageRecord != null) {
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
-    }
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    return true;
+    this.a.a(paramOnScrollListener);
   }
   
-  public int b()
+  public void b()
   {
-    return 8035;
+    this.a.a(this.a.a.a, false, 8);
+  }
+  
+  public void b(AbsListView.OnScrollListener paramOnScrollListener)
+  {
+    this.a.b(paramOnScrollListener);
+  }
+  
+  public void c()
+  {
+    FriendProfileCardActivity.a(this.a);
   }
 }
 

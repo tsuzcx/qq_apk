@@ -1,9 +1,12 @@
-class lam
+import android.content.Context;
+import com.rookery.translate.type.Language;
+
+public class lam
 {
-  public long a;
-  public String a;
-  
-  private lam(lai paramlai) {}
+  public static final String a(Context paramContext)
+  {
+    return Language.CHINESE_SIMPLIFIED.toString();
+  }
 }
 
 

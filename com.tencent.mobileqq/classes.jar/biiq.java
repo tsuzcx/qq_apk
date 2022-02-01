@@ -1,6 +1,85 @@
-class biiq
+import com.tencent.common.app.AppInterface;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+
+public class biiq
+  extends biio
 {
-  private static final biim a = new biim();
+  private static biiq jdField_a_of_type_Biiq;
+  private int jdField_a_of_type_Int;
+  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  
+  public static biiq a()
+  {
+    if (jdField_a_of_type_Biiq == null) {}
+    try
+    {
+      if (jdField_a_of_type_Biiq == null) {
+        jdField_a_of_type_Biiq = new biiq();
+      }
+      return jdField_a_of_type_Biiq;
+    }
+    finally {}
+  }
+  
+  protected long a()
+  {
+    long l = 0L;
+    if (this.jdField_a_of_type_MqqAppAppRuntime != null) {
+      l = this.jdField_a_of_type_MqqAppAppRuntime.getLongAccountUin();
+    }
+    return l;
+  }
+  
+  protected void a()
+  {
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), biit.class);
+    localNewIntent.putExtra("req_type", 5);
+    localNewIntent.putExtra("app_id", this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+  }
+  
+  public void a(AppRuntime paramAppRuntime)
+  {
+    int i = 0;
+    if ((paramAppRuntime instanceof AppInterface)) {
+      i = ((AppInterface)paramAppRuntime).getAppid();
+    }
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_Int = i;
+  }
+  
+  protected void g(byte[] paramArrayOfByte)
+  {
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), biit.class);
+    localNewIntent.putExtra("req_type", 6);
+    localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
+    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+  }
+  
+  protected void h(byte[] paramArrayOfByte)
+  {
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), biit.class);
+    localNewIntent.putExtra("req_type", 2);
+    localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
+    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+  }
+  
+  protected void i(byte[] paramArrayOfByte)
+  {
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), biit.class);
+    localNewIntent.putExtra("req_type", 3);
+    localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
+    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+  }
+  
+  protected void j(byte[] paramArrayOfByte)
+  {
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), biit.class);
+    localNewIntent.putExtra("req_type", 4);
+    localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
+    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+  }
 }
 
 

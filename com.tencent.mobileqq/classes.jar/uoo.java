@@ -1,20 +1,21 @@
-import NS_KING_INTERFACE.stGetFeedCommentListReq;
-import UserGrowth.stQQGetFeedCommentListReq;
-import UserGrowth.stQQGetFeedCommentListRsp;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
 
 public class uoo
-  extends ukl<stQQGetFeedCommentListRsp>
+  extends RecyclerView.ViewHolder
 {
-  public uoo()
-  {
-    super("QQGetFeedCommentList");
-    this.a = new stGetFeedCommentListReq("", "76C9BjPDT1HaN4nHs", "", 0, "", 0);
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RoundImageView jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView;
+  TextView b;
   
-  public uoo(String paramString1, String paramString2, int paramInt)
+  uoo(View paramView)
   {
-    super("QQGetFeedCommentList", 10003);
-    this.a = new stQQGetFeedCommentListReq(new stGetFeedCommentListReq(paramString1, paramString2, "", 0, "", paramInt));
+    super(paramView);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRoundImageView = ((RoundImageView)paramView.findViewById(2131363126));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371615));
+    this.b = ((TextView)paramView.findViewById(2131369449));
   }
 }
 

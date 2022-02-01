@@ -1,23 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-
-class bnue
-  implements bnuv
+public abstract interface bnue
 {
-  bnue(bnud parambnud) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    bnud.a(this.a, paramBoolean);
-    if ((bnud.a(this.a)) && (bnud.b(this.a)))
-    {
-      bnud.a(this.a);
-      if (bnud.c(this.a))
-      {
-        QLog.d("VipARCameraController", 2, " init onresume");
-        bnud.a(this.a).a();
-      }
-    }
-  }
+  public abstract void g(boolean paramBoolean);
 }
 
 

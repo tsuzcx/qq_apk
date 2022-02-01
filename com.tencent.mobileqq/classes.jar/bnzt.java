@@ -1,78 +1,41 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.mini.sdk.MiniAppException;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.WeiyunSaveTipsFactory.1;
-import mqq.os.MqqHandler;
-
 public class bnzt
 {
-  private static void a(Activity paramActivity, String paramString, int paramInt)
+  public int a;
+  public long a;
+  public bbwq a;
+  public String a;
+  public boolean a;
+  public long b;
+  public bbwq b;
+  public String b;
+  public boolean b;
+  public long c;
+  
+  public bnzt()
   {
-    MiniAppLauncher.startMiniApp(paramActivity, "mqqapi://miniapp/open?_ext=&_mappid=1107999468&_mvid=&_nq=&_path=&_q=&referer=2011&via=2011&_sig=31ba7125a22d3462e9dc4f8abff74d9e9c445cdd46e8ea446f39a839ebb110b4", 2011, null);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  private static void a(QQAppInterface paramQQAppInterface, Activity paramActivity)
+  public void a(bnzt parambnzt)
   {
-    if (paramQQAppInterface.a().a() == true)
-    {
-      paramQQAppInterface.a().c();
-      return;
+    if (parambnzt == null) {
+      throw new NullPointerException();
     }
-    if (bhnv.d(BaseApplication.getContext()))
-    {
-      paramQQAppInterface = new Intent(paramActivity, FMActivity.class);
-      paramQQAppInterface.putExtra("tab_tab_type", 3);
-      paramQQAppInterface.putExtra("from", "FileAssistant");
-      paramActivity.startActivityForResult(paramQQAppInterface, 101);
-      return;
-    }
-    auna.a(BaseApplication.getContext().getString(2131693963));
+    this.jdField_a_of_type_JavaLangString = parambnzt.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = parambnzt.jdField_b_of_type_JavaLangString;
+    this.jdField_a_of_type_Bbwq = parambnzt.jdField_a_of_type_Bbwq;
+    this.jdField_a_of_type_Boolean = parambnzt.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Int = parambnzt.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Boolean = parambnzt.jdField_b_of_type_Boolean;
+    this.jdField_a_of_type_Long = parambnzt.jdField_a_of_type_Long;
+    this.jdField_b_of_type_Long = parambnzt.jdField_b_of_type_Long;
+    this.c = parambnzt.c;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, int paramInt)
+  public String toString()
   {
-    if ((paramQQAppInterface == null) || (paramActivity == null)) {
-      return;
-    }
-    ThreadManager.getUIHandler().postDelayed(new WeiyunSaveTipsFactory.1(paramActivity, paramInt, paramQQAppInterface), 1000L);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Context paramContext)
-  {
-    int i = bhsi.aS(paramContext, paramQQAppInterface.getCurrentAccountUin());
-    if (i == 1)
-    {
-      String str = bhsi.u(paramContext, paramQQAppInterface.getCurrentAccountUin());
-      i = bhsi.aT(paramContext, paramQQAppInterface.getCurrentAccountUin());
-      if (!TextUtils.isEmpty(str)) {
-        try
-        {
-          a(paramActivity, str, i);
-          return;
-        }
-        catch (MiniAppException paramContext)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("WeiyunSaveTipsFactory", 2, "fail to open weiyun mini app!");
-          }
-          a(paramQQAppInterface, paramActivity);
-          return;
-        }
-      }
-      QLog.w("WeiyunSaveTipsFactory", 2, "can not to start WeiYun Mini app, apkgUrl = " + str + ", version = " + i);
-      a(paramQQAppInterface, paramActivity);
-      return;
-    }
-    QLog.w("WeiyunSaveTipsFactory", 2, "can not to start WeiYun Mini app, weiYunGrayConfig = " + i);
-    a(paramQQAppInterface, paramActivity);
+    return "AudioDecodeConfig=[audioFilePath:" + this.jdField_a_of_type_JavaLangString + " repeat:" + this.jdField_a_of_type_Boolean + " speedType:" + this.jdField_a_of_type_Int + " mMuteAudio:" + this.jdField_b_of_type_Boolean + " startTimeMs:" + this.jdField_a_of_type_Long + " endTimeMs:" + this.jdField_b_of_type_Long + " videoDuration:" + this.c + "]";
   }
 }
 

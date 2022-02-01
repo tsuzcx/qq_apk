@@ -17,7 +17,7 @@ class qfileJumpActivity$2
     Intent localIntent = new Intent(this.this$0, LiteActivity.class);
     localIntent.addFlags(67108864);
     localIntent.putExtra("targetUin", this.this$0.a);
-    localIntent.putExtra("leftViewText", this.this$0.app.getApp().getString(2131690559));
+    localIntent.putExtra("leftViewText", this.this$0.app.getApp().getString(2131690599));
     this.this$0.startActivity(localIntent);
     this.this$0.finish();
   }

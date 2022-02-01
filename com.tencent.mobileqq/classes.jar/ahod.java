@@ -1,23 +1,29 @@
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
 public class ahod
 {
-  public static float a;
-  public static long a;
-  public static String a;
-  public static boolean a;
-  public static float[] a;
-  public static boolean b;
-  public static boolean c;
-  public static boolean d;
-  public static boolean e;
-  public static boolean f;
-  public static boolean g;
-  public static boolean h;
+  public JSONObject a = new JSONObject();
   
-  static
+  public static ahod a(String paramString)
   {
-    jdField_a_of_type_Float = 1.0F;
-    jdField_a_of_type_ArrayOfFloat = new float[] { 0.5F, 1.0F, 1.5F, 2.0F, 2.5F, 3.0F };
-    jdField_a_of_type_JavaLangString = "ptt_uin";
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        ahod localahod = new ahod();
+        localahod.a = paramString;
+        return localahod;
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AdEmoConfigBean", 2, paramString.getMessage());
+        }
+      }
+    }
+    return null;
   }
 }
 

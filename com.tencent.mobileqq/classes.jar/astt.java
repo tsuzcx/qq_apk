@@ -1,38 +1,59 @@
-import android.app.Activity;
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.qphone.base.util.QLog;
 
-public class astt
-  implements View.OnTouchListener
+class astt
+  extends zru
 {
-  public astt(AIOEmotionFragment paramAIOEmotionFragment, asur paramasur) {}
+  astt(astk paramastk) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle)
   {
-    if (paramMotionEvent.getAction() == 1)
+    paramByteStringMicro2 = this.a.a.a();
+    paramByteStringMicro1 = aszt.a(paramByteStringMicro1);
+    paramString2 = null;
+    paramString1 = paramString2;
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
-      paramView = this.jdField_a_of_type_Asur.a();
+      paramString1 = paramString2;
+      if (!TextUtils.isEmpty(paramByteStringMicro1))
+      {
+        paramInt1 = paramByteStringMicro2.zipType;
+        paramString1 = "http://" + paramString3 + ":" + paramInt3 + "/ftn_compress_getfile/rkey=" + paramByteStringMicro1 + "&filetype=" + paramInt1 + "&path=" + bjnd.a(paramByteStringMicro2.zipInnerPath) + "&";
+      }
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
       if (QLog.isColorLevel()) {
-        QLog.i("AIOEmotionFragment", 2, "updateSelfEmotionDetail id:" + paramView);
+        QLog.e("TroopFileModel<FileAssistant>", 1, "url = " + paramString1 + ", cookies = " + paramString4);
       }
-      brdx.b((Activity)this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a, paramView);
-      paramView = (Activity)this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a;
-      if ((paramView != null) && (!paramView.isFinishing())) {
-        paramView.finish();
+      if (astk.a(this.a) != null) {
+        astk.a(this.a).a(paramString1, paramString4);
+      }
+      if (this.a.a.a() != null)
+      {
+        paramString1 = String.valueOf(this.a.a.a().TroopUin);
+        if (this.a.a.a() == null) {
+          break label291;
+        }
+        paramString2 = aszt.b(this.a.a.a().nFileType);
+        label261:
+        bcef.b(null, "dc00899", "Grp_files", "", "oper", "Clk_pre_video", 0, 0, paramString1, "", paramString2, "1");
       }
     }
-    for (;;)
+    label291:
+    do
     {
-      return false;
-      if (paramMotionEvent.getAction() == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
-      }
-    }
+      return;
+      paramString1 = "";
+      break;
+      paramString2 = "unknow";
+      break label261;
+      QLog.i("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl_onGetFilePreviewResult error, url is null.");
+    } while (astk.a(this.a) == null);
+    astk.a(this.a).c();
   }
 }
 

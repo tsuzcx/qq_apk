@@ -1,27 +1,13 @@
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
-
-public abstract interface amwa
-  extends amwx
+public class amwa
 {
-  public abstract void bulkApolloBarrages(String paramString1, String paramString2, boolean paramBoolean);
-  
-  public abstract int getHeight();
-  
-  public abstract int getInitHeight();
-  
-  public abstract long getLuaState();
-  
-  public abstract amul getRenderImpl();
-  
-  public abstract int getWidth();
-  
-  public abstract ApolloRenderDriver getWorker();
-  
-  public abstract void removeAllApolloBarrages(boolean paramBoolean);
-  
-  public abstract void setBubbleType(int paramInt);
-  
-  public abstract void setVisibility(int paramInt);
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
 }
 
 

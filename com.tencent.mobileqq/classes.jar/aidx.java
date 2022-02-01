@@ -1,17 +1,9 @@
+import android.widget.TextView;
+
 public class aidx
+  extends aiec
 {
-  public int a;
-  boolean a = false;
-  boolean b = false;
-  boolean c = false;
-  public boolean d = false;
-  boolean e = false;
-  boolean f = false;
-  boolean g = false;
-  boolean h = false;
-  boolean i = false;
-  boolean j = false;
-  boolean k = false;
+  public TextView a;
 }
 
 

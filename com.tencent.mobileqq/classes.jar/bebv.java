@@ -1,31 +1,15 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bebv
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  bebv(bebt parambebt, DialogInterface.OnClickListener paramOnClickListener) {}
+  bebv(bebp parambebp, bebc parambebc) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bebt, 0);
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Bebt.isShowing()) {
-        this.jdField_a_of_type_Bebt.dismiss();
-      }
-      label38:
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label38;
-    }
+    bfbb.a(this.jdField_a_of_type_Bebp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bebp.jdField_a_of_type_Long).b(this.jdField_a_of_type_Bebc);
+    paramDialogInterface.dismiss();
   }
 }
 

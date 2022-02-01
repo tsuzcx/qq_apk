@@ -1,32 +1,25 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.net.ConnectivityManager.NetworkCallback;
+import android.net.Network;
+import android.os.Handler;
+import android.support.annotation.RequiresApi;
+import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkCallbackImpl.1;
+import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkCallbackImpl.2;
+import org.jetbrains.annotations.Nullable;
 
-class sfe
-  implements sga
+@RequiresApi(21)
+public final class sfe
+  extends ConnectivityManager.NetworkCallback
 {
-  sfe(sel paramsel) {}
+  private sfe(sfc paramsfc) {}
   
-  public void onClick(View paramView)
+  public void onAvailable(@Nullable Network paramNetwork)
   {
-    pmz localpmz = (pmz)paramView.getTag();
-    BaseArticleInfo localBaseArticleInfo = this.a.b(localpmz.jdField_a_of_type_Int);
-    if (localBaseArticleInfo == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseAdapter", 2, "articleInfo == null, ERROR");
-      }
-      return;
-    }
-    if ((this.a.a != null) && (this.a.a.b()))
-    {
-      this.a.a.a();
-      this.a.b = true;
-    }
-    sel.a(this.a).a(localpmz.f, localpmz.jdField_a_of_type_Int);
-    sel.a(this.a).a(this.a);
-    sel.a(this.a).a(localBaseArticleInfo, sel.a(this.a, localpmz.jdField_a_of_type_Rwc, localBaseArticleInfo), this.a.a, new sff(this, localBaseArticleInfo), this.a.c);
-    pms.a(paramView);
+    sfc.a(this.a).post(new BandwidthPredictor.NetworkCallbackImpl.1(this));
+  }
+  
+  public void onLost(@Nullable Network paramNetwork)
+  {
+    sfc.a(this.a).post(new BandwidthPredictor.NetworkCallbackImpl.2(this));
   }
 }
 

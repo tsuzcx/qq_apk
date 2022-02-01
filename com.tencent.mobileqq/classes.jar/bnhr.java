@@ -1,282 +1,108 @@
-import android.content.Context;
-import android.os.IBinder;
-import android.telephony.TelephonyManager;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import cooperation.qzone.util.QZLog;
-import java.lang.reflect.Method;
-import java.util.HashMap;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
+import java.io.File;
 
-public abstract class bnhr
+class bnhr
+  extends SimpleJob<DoodleEmojiItem>
+  implements vlr
 {
-  bnhs jdField_a_of_type_Bnhs = new bnhs(this);
-  HashMap<Integer, bnhq> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  protected long a;
+  private final DoodleEmojiItem jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
+  private final vmd jdField_a_of_type_Vmd;
+  private long b;
   
-  private ab a()
+  public bnhr(DoodleEmojiItem paramDoodleEmojiItem)
   {
-    try
-    {
-      ab localab = ac.a((IBinder)Class.forName("android.os.ServiceManager").getMethod("getService", new Class[] { String.class }).invoke(null, new Object[] { "isub" }));
-      return localab;
+    super("DownloadAndUnZipJob");
+    if (paramDoodleEmojiItem == null) {
+      throw new IllegalArgumentException("doodleEmojiItem should not be null");
     }
-    catch (Throwable localThrowable)
-    {
-      QZLog.e("UniKingCardHelper/SimManager", "getIsub error:" + localThrowable.getMessage());
-    }
-    return null;
+    this.jdField_a_of_type_Vmd = new vme();
+    this.jdField_a_of_type_Vmd.a(this);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = paramDoodleEmojiItem;
   }
   
-  private void a()
+  protected DoodleEmojiItem a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-    }
+    this.jdField_a_of_type_Vmd.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.download_url, bnhh.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.pack_id), 0L);
+    return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
   }
   
-  private void a(int paramInt, bnhq parambnhq)
+  public void a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), parambnhq);
-    }
-  }
-  
-  private int b(Context paramContext)
-  {
-    try
+    DoodleEmojiItem localDoodleEmojiItem1 = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
+    if (paramInt == 0)
     {
-      String str = bnho.a(paramContext);
-      paramContext = str;
-      if (TextUtils.isEmpty(str)) {
-        paramContext = bmsv.a().b();
-      }
-      a(10, paramContext);
-      a(10, Boolean.valueOf(true));
-      return 0;
-    }
-    catch (Throwable paramContext)
-    {
-      QZLog.e("UniKingCardHelper/SimManager", "initMainIMSI error:" + paramContext.getMessage());
-    }
-    return -3;
-  }
-  
-  private int c(Context paramContext)
-  {
-    try
-    {
-      b(10, bnho.b(paramContext));
-      return 0;
-    }
-    catch (Throwable paramContext)
-    {
-      QZLog.e("UniKingCardHelper/SimManager", "initMainPhoneNum error:" + paramContext.getMessage());
-    }
-    return -3;
-  }
-  
-  abstract int a(ab paramab);
-  
-  int a(Context paramContext)
-  {
-    try
-    {
-      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-      Method localMethod = TelephonyManager.class.getMethod("isMultiSimEnabled", new Class[0]);
-      if (localMethod != null)
-      {
-        boolean bool = ((Boolean)localMethod.invoke(paramContext, new Object[0])).booleanValue();
-        if (bool) {
-          return 10;
-        }
-        return 11;
-      }
-    }
-    catch (Throwable paramContext)
-    {
-      QZLog.e("UniKingCardHelper/SimManager", "isMultiSimEnabled error:" + paramContext.getMessage());
-    }
-    return -3;
-  }
-  
-  abstract int a(Context paramContext, int[] paramArrayOfInt);
-  
-  public bnhq a()
-  {
-    int j = 0;
-    int i;
-    Object localObject;
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      i = 0;
-      if (i <= 10)
-      {
-        localObject = a(i);
-        if ((localObject == null) || (!((bnhq)localObject).a()) || (TextUtils.isEmpty(((bnhq)localObject).b()))) {}
-      }
-    }
-    bnhq localbnhq;
-    label98:
-    do
-    {
-      return localObject;
-      i += 1;
-      break;
-      if (this.jdField_a_of_type_JavaUtilHashMap != null)
-      {
-        i = 0;
-        for (;;)
-        {
-          if (i > 10) {
-            break label98;
-          }
-          localbnhq = a(i);
-          if (localbnhq != null)
-          {
-            localObject = localbnhq;
-            if (localbnhq.a()) {
-              break;
-            }
-          }
-          i += 1;
-        }
-      }
-      if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-        break label132;
-      }
-      localbnhq = a(10);
-      if (localbnhq == null) {
-        break label132;
-      }
-      localObject = localbnhq;
-    } while (!TextUtils.isEmpty(localbnhq.b()));
-    label132:
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      i = j;
+      paramString = bnhh.a(localDoodleEmojiItem1.pack_id);
+      String str = bnhh.b(localDoodleEmojiItem1.pack_id);
+      xvv.b("DoodleEmojiManager", "DownloadListener onDownloadFinish zip = " + paramString);
+      xvv.b("DoodleEmojiManager", "DownloadListener onDownloadFinish folder = " + str);
       for (;;)
       {
-        if (i > 10) {
-          break label169;
-        }
-        localbnhq = a(i);
-        localObject = localbnhq;
-        if (localbnhq != null) {
-          break;
-        }
-        i += 1;
-      }
-    }
-    label169:
-    return null;
-  }
-  
-  bnhq a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt)))) {
-      return (bnhq)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    }
-    return null;
-  }
-  
-  void a(int paramInt, Boolean paramBoolean)
-  {
-    bnhq localbnhq2 = a(paramInt);
-    bnhq localbnhq1 = localbnhq2;
-    if (localbnhq2 == null) {
-      localbnhq1 = new bnhq();
-    }
-    localbnhq1.a(paramBoolean.booleanValue());
-    a(paramInt, localbnhq1);
-  }
-  
-  void a(int paramInt, String paramString)
-  {
-    bnhq localbnhq2 = a(paramInt);
-    bnhq localbnhq1 = localbnhq2;
-    if (localbnhq2 == null) {
-      localbnhq1 = new bnhq();
-    }
-    localbnhq1.a(paramString);
-    a(paramInt, localbnhq1);
-  }
-  
-  public void a(Context paramContext)
-  {
-    if (paramContext == null) {
-      return;
-    }
-    long l = System.currentTimeMillis();
-    try
-    {
-      a();
-      b(paramContext);
-      c(paramContext);
-      ab localab = a();
-      j = 2;
-      int[] arrayOfInt2 = null;
-      int[] arrayOfInt1 = null;
-      i = j;
-      if (localab != null) {
-        arrayOfInt1 = arrayOfInt2;
-      }
-      try
-      {
-        arrayOfInt2 = localab.a();
-        i = j;
-        arrayOfInt1 = arrayOfInt2;
-        if (arrayOfInt2 != null)
+        int i;
+        try
         {
-          arrayOfInt1 = arrayOfInt2;
-          i = arrayOfInt2.length;
-          arrayOfInt1 = arrayOfInt2;
+          ypi.d(str);
+          i = npo.a(paramString, str);
+          if (i == 0)
+          {
+            long l1 = SystemClock.uptimeMillis();
+            long l2 = this.jdField_a_of_type_Long;
+            xwa.b("edit_video", "face_download_timecost", 0, 0, new String[] { localDoodleEmojiItem1.pack_id, l1 - l2 + "" });
+            xwa.b("edit_video", "face_download_success", 0, 0, new String[] { localDoodleEmojiItem1.pack_id });
+            xvv.c("DoodleEmojiManager", "DownloadListener onDownloadFinish success, unZip success");
+            localDoodleEmojiItem1.setLocalEmojiFolderPath(str);
+            new File(str).setLastModified(System.currentTimeMillis());
+            vli.a().dispatch(new bnho(localDoodleEmojiItem1, paramInt, true, 0L, 0L));
+            return;
+          }
         }
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
+        catch (Exception localException)
         {
-          QZLog.e("UniKingCardHelper/SimManager", "getActiveSubIdList error:" + localThrowable.getMessage());
-          i = j;
+          xvv.d("DoodleEmojiManager", "DownloadListener remove folderPath : %s ,error : %s ", new Object[] { str, localException });
+          continue;
         }
-      }
-      this.jdField_a_of_type_Bnhs.jdField_a_of_type_Int = i;
-      if ((i > 1) && (a(paramContext) != 11))
-      {
-        this.jdField_a_of_type_Bnhs.jdField_a_of_type_Boolean = true;
-        a(paramContext, arrayOfInt1);
-        b(paramContext, arrayOfInt1);
-        if (a(localab) != 0) {
-          c(paramContext, arrayOfInt1);
+        finally
+        {
+          new File(paramString).delete();
         }
+        xvv.d("DoodleEmojiManager", "DownloadListener onDownloadFinish unZip failed, treat it as download failed");
+        vli.a().dispatch(new bnho(localDoodleEmojiItem2, i, false, 0L, 0L));
+        xwa.b("edit_video", "face_download_success", 0, i, new String[] { localDoodleEmojiItem2.pack_id });
       }
-      return;
     }
-    catch (Throwable paramContext)
-    {
-      int j;
-      int i;
-      QZLog.e("UniKingCardHelper/SimManager", "initAllInfo error:" + paramContext.getMessage());
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_Bnhs.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
-    }
+    xvv.e("DoodleEmojiManager", "DownloadListener onDownloadFinish error = " + paramInt + ", url = " + paramString);
+    vli.a().dispatch(new bnho(localDoodleEmojiItem2, paramInt, true, 0L, 0L));
+    xwa.b("edit_video", "face_download_success", 0, paramInt, new String[] { localDoodleEmojiItem2.pack_id });
   }
   
-  abstract int b(Context paramContext, int[] paramArrayOfInt);
-  
-  void b(int paramInt, String paramString)
+  public void a(String paramString, long paramLong1, long paramLong2)
   {
-    bnhq localbnhq2 = a(paramInt);
-    bnhq localbnhq1 = localbnhq2;
-    if (localbnhq2 == null) {
-      localbnhq1 = new bnhq();
+    DoodleEmojiItem localDoodleEmojiItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
+    if (!TextUtils.equals(localDoodleEmojiItem.download_url, paramString))
+    {
+      xvv.d("DoodleEmojiManager", "DownloadListener onProgress error : " + localDoodleEmojiItem);
+      xvv.d("DoodleEmojiManager", "DownloadListener onProgress error : call back url = " + paramString);
     }
-    localbnhq1.b(paramString);
-    a(paramInt, localbnhq1);
+    while (paramLong1 <= paramLong2 / 10L + this.b) {
+      return;
+    }
+    xvv.a("DoodleEmojiManager", "DownloadListener onProgress " + paramLong1 + " / " + paramLong2);
+    vli.a().dispatch(new bnho(localDoodleEmojiItem, 0, false, paramLong2, paramLong1));
+    this.b = paramLong1;
   }
   
-  abstract int c(Context paramContext, int[] paramArrayOfInt);
+  public void a(String paramString1, String paramString2)
+  {
+    xvv.b("DoodleEmojiManager", "onDownloadStart : url = " + paramString1 + ", path = " + paramString2);
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+  }
 }
 
 

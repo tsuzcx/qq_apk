@@ -1,96 +1,74 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import android.graphics.Rect;
+import android.view.View;
+import java.util.ArrayList;
 
-public class ario
-  extends arac<arip>
+class ario
+  implements arrj
 {
-  @NonNull
-  public arip a(int paramInt)
+  ario(arin paramarin, ArrayList paramArrayList, int paramInt1, int paramInt2) {}
+  
+  public int a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    String str = bhsi.n(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin());
-    return new arip(bhsi.o(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin()), str);
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  @Nullable
-  public arip a(araj[] paramArrayOfaraj)
+  public Rect a(int paramInt)
   {
-    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length == 0)) {
-      return null;
-    }
-    paramArrayOfaraj = paramArrayOfaraj[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onParsed, content:" + paramArrayOfaraj);
-    }
-    try
-    {
-      paramArrayOfaraj = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramArrayOfaraj.getBytes("utf-8")));
-      NodeList localNodeList = paramArrayOfaraj.getElementsByTagName("video_redbag_config");
-      if ((localNodeList != null) && (localNodeList.getLength() > 0))
+    Rect localRect = new Rect(0, 0, 0, 0);
+    int i = a();
+    if (i > 1) {
+      if (paramInt == 0)
       {
-        paramArrayOfaraj = new arip(paramArrayOfaraj.getElementsByTagName("resUrl").item(0).getFirstChild().getNodeValue(), paramArrayOfaraj.getElementsByTagName("resMd5").item(0).getFirstChild().getNodeValue());
-        return paramArrayOfaraj;
+        localRect.right = this.b;
+        localRect.left = (this.b * 2);
       }
     }
-    catch (Exception paramArrayOfaraj)
+    while (i != 1)
     {
-      QLog.e("RedBagVideoResProcessor", 1, "handleVideoRedbagConfig failed" + paramArrayOfaraj);
+      return localRect;
+      if (paramInt == i - 1)
+      {
+        localRect.left = this.b;
+        localRect.right = (this.b * 2);
+        return localRect;
+      }
+      paramInt = this.b;
+      localRect.right = paramInt;
+      localRect.left = paramInt;
+      return localRect;
     }
-    return null;
+    paramInt = this.b * 2;
+    localRect.right = paramInt;
+    localRect.left = paramInt;
+    return localRect;
   }
   
-  public void a(arip paramarip)
+  public View a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onUpdate");
-    }
-  }
-  
-  public Class<arip> clazz()
-  {
-    return arip.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    return bhsi.an(localQQAppInterface.getApp(), localQQAppInterface.c());
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onReqFailed");
+    int j = a();
+    if (j <= b()) {}
+    for (int i = 2131561061;; i = 2131561062)
+    {
+      View localView = View.inflate(this.jdField_a_of_type_Arin.itemView.getContext(), i, null);
+      arin.a(this.jdField_a_of_type_Arin, localView, (arim)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt, j);
+      arin.a(this.jdField_a_of_type_Arin, (arim)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt, "0X800A9B0");
+      return localView;
     }
   }
   
-  public int type()
+  public int b()
   {
-    return 252;
+    return 2;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ario
  * JD-Core Version:    0.7.0.1
  */

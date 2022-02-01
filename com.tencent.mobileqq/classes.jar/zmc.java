@@ -1,4 +1,7 @@
-public abstract class zmc {}
+public abstract interface zmc
+{
+  public abstract void a(boolean paramBoolean);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar

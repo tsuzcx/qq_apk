@@ -1,37 +1,16 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.support.annotation.IntRange;
 
-public class affm
-  implements bbhm
+public abstract interface affm
 {
-  public affm(QQIdentiferActivity paramQQIdentiferActivity) {}
+  public abstract void a();
   
-  public void a() {}
+  public abstract boolean a(@IntRange(from=0L, to=3L) int paramInt);
   
-  public void a(int paramInt) {}
+  public abstract boolean a(@IntRange(from=0L, to=3L) int paramInt, String paramString1, String paramString2);
   
-  public void a(bbhq parambbhq) {}
+  public abstract void b();
   
-  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult) {}
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (!paramBoolean)
-    {
-      paramString = bhlq.a(this.a, 230, this.a.getString(2131697740), anzj.a(2131709231), new affn(this), null);
-      paramString.setOnDismissListener(new affo(this));
-      paramString.show();
-      return;
-    }
-    QQIdentiferActivity.a(this.a).set(false);
-    QQIdentiferActivity.a(this.a).a();
-  }
-  
-  public void b() {}
-  
-  public void c() {}
+  public abstract void c();
 }
 
 

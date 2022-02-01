@@ -1,15 +1,10 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import java.util.Comparator;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
-public class amwn
-  implements Comparator<amwq>
+public abstract interface amwn
 {
-  public amwn(ApolloCmdChannel paramApolloCmdChannel) {}
-  
-  public int a(amwq paramamwq1, amwq paramamwq2)
-  {
-    return paramamwq1.a() - paramamwq2.a();
-  }
+  public static final String a = aqyy.a("VIP_roam_msg_search_cfg", "https://i.gtimg.cn/qqshow/admindata/comdata/searchStrategy/xydata.json");
+  public static final String b = BaseApplication.getContext().getFilesDir() + File.separator + "searchInCloudConfig.json";
 }
 
 

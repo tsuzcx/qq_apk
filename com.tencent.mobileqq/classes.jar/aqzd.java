@@ -1,44 +1,17 @@
-import android.graphics.Rect;
-import java.util.ArrayList;
+import android.view.View;
 
-public class aqzd
+class aqzd
+  implements bjoe
 {
-  public int a;
-  public Rect a;
-  public aqzk a;
-  public ArrayList<aqze> a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c = 0;
-  public int d = 0;
-  public int e = 1;
+  aqzd(aqzb paramaqzb, bjnw parambjnw) {}
   
-  public aqzd(aqzk paramaqzk, int paramInt1, Rect paramRect, int paramInt2, boolean paramBoolean, int paramInt3)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = 24;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Aqzk = paramaqzk;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-    this.e = paramInt3;
-    if (paramaqzk.jdField_a_of_type_Int > 0) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      paramaqzk.jdField_a_of_type_Int += 1;
-      return;
+    this.jdField_a_of_type_Aqzb.f();
+    if (this.jdField_a_of_type_Bjnw.isShowing()) {
+      this.jdField_a_of_type_Bjnw.dismiss();
     }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("text: ").append(this.jdField_a_of_type_Aqzk.jdField_a_of_type_JavaLangString).append("; size: ").append(this.jdField_b_of_type_Int).append("; line_count: ").append(this.e).append("; container: ").append(this.jdField_a_of_type_AndroidGraphicsRect).append("; algin: ").append(this.c).append("; v_algin: ").append(this.d);
-    return localStringBuilder.toString();
+    bcef.b(aqzb.a(this.jdField_a_of_type_Aqzb), "CliOper", "", "", "ep_mall", "0X80057D7", 0, 0, "", "", "", "");
   }
 }
 

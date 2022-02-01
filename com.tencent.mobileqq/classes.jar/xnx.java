@@ -1,56 +1,50 @@
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class xnx
-  implements xmp
+  extends xpg<GeneralFeedItem>
 {
-  public final String a;
-  public final List<String> a;
-  private xmq jdField_a_of_type_Xmq;
-  private xmt jdField_a_of_type_Xmt;
-  private xmv jdField_a_of_type_Xmv;
+  public boolean a;
   
-  public xnx(String paramString)
+  public xnx(@NonNull GeneralFeedItem paramGeneralFeedItem)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(paramString);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Xmq = new xmq();
-    this.jdField_a_of_type_Xmq.b = true;
-    this.jdField_a_of_type_Xmq.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Xmq.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Xmt = new xmt(new xms("TROOP_GROUD_ID"));
-    this.jdField_a_of_type_Xmt.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Xmt.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
-    this.jdField_a_of_type_Xmt.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_JavaLangString, "TROOP_FEED_ID");
-    this.jdField_a_of_type_Xmq.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Xmt);
-    this.jdField_a_of_type_Xmv = new xmv(new xms("TROOP_GROUD_ID"), this.jdField_a_of_type_JavaLangString, "TROOP_FEED_ID");
-    this.jdField_a_of_type_Xmv.jdField_a_of_type_Xmt = this.jdField_a_of_type_Xmt;
+    super(paramGeneralFeedItem);
   }
   
-  public xmq a(@Nullable xms paramxms, int paramInt)
+  public GeneralFeedItem a()
   {
-    return this.jdField_a_of_type_Xmq;
+    return (GeneralFeedItem)super.a();
   }
   
-  public xmv a()
+  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
   {
-    return this.jdField_a_of_type_Xmv;
+    Object localObject = (qqstory_struct.GeneralFeed)paramStoryFeed.general_feed.get();
+    ((GeneralFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.GeneralFeed)localObject);
+    ((GeneralFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    xvv.a("Q.qqstory.home.data.GeneralHomeFeed", "GeneralHomeFeed convertFrom, feedSourceType:%s, feedId:%s", Integer.valueOf(((GeneralFeedItem)this.a).feedSourceTagType), ((GeneralFeedItem)this.a).feedId);
+    paramStoryFeed = new ArrayList();
+    localObject = ((qqstory_struct.GeneralFeed)localObject).feed_video_info_list.get().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      qqstory_struct.FeedVideoInfo localFeedVideoInfo = (qqstory_struct.FeedVideoInfo)((Iterator)localObject).next();
+      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+      localStoryVideoItem.convertFrom("Q.qqstory.home.data.GeneralHomeFeed", localFeedVideoInfo);
+      paramStoryFeed.add(localStoryVideoItem);
+    }
+    c(paramStoryFeed, true);
+    return true;
   }
-  
-  public void a() {}
-  
-  public void a(@Nullable xms paramxms, int paramInt1, int paramInt2, String paramString) {}
-  
-  public void a(@Nullable xms paramxms, String paramString) {}
-  
-  public void a(xmu paramxmu) {}
-  
-  public void b() {}
-  
-  public void b(xmu paramxmu) {}
 }
 
 

@@ -1,47 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.ksong.KSongView;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-public class bjew
-  extends Handler
+class bjew
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  WeakReference<KSongView> a;
+  bjew(bjet parambjet, Activity paramActivity) {}
   
-  public bjew(KSongView paramKSongView)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a = new WeakReference(paramKSongView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 0)
+    if (paramBoolean)
     {
-      paramMessage = (KSongView)this.a.get();
-      if ((paramMessage != null) && (1 == paramMessage.a())) {
-        break label31;
-      }
-    }
-    label31:
-    do
-    {
-      return;
-      long l = System.currentTimeMillis() - KSongView.a(paramMessage) - paramMessage.a;
-      bjes localbjes = paramMessage.a();
-      paramMessage.a(l);
-      if (l >= localbjes.d) {
-        KSongView.a(paramMessage, l);
-      }
-      QLog.i("KSongView", 2, "real_duration = " + l);
-      if (l < localbjes.e)
+      if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
       {
-        sendEmptyMessageDelayed(0, 50L);
-        return;
+        QLog.d("NavigationJsPlugin", 1, "navigateBackMiniApp ok, finish current.");
+        this.jdField_a_of_type_AndroidAppActivity.finish();
       }
-      KSongView.a(paramMessage, 3);
-    } while (KSongView.a(paramMessage) == null);
-    KSongView.a(paramMessage).a();
+      return;
+    }
+    QLog.e("NavigationJsPlugin", 1, "navigateBackMiniApp failed");
   }
 }
 

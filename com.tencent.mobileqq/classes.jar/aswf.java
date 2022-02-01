@@ -1,37 +1,18 @@
-import androidx.annotation.NonNull;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aswf
+class aswf
+  implements View.OnClickListener
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  aswf(aswb paramaswb) {}
   
-  public static aswf a(SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(View paramView)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramSosoLbsInfo != null)
-    {
-      localObject1 = localObject2;
-      if (paramSosoLbsInfo.a != null)
-      {
-        localObject1 = new aswf();
-        ((aswf)localObject1).a = ((int)(paramSosoLbsInfo.a.a * 1000000.0D));
-        ((aswf)localObject1).b = ((int)(paramSosoLbsInfo.a.b * 1000000.0D));
-        ((aswf)localObject1).d = 1;
-        ((aswf)localObject1).c = ((int)paramSosoLbsInfo.a.e);
-      }
+    if (this.a.a.a() != null) {
+      this.a.a.a().a();
     }
-    return localObject1;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "lat:" + this.a + " lon:" + this.b + " alt:" + this.c + " type:" + this.d;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

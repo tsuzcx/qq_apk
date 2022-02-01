@@ -1,337 +1,167 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.Style;
+import android.graphics.RectF;
+import android.graphics.Typeface;
+import android.text.TextPaint;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qzone.util.QZLog;
-import eipc.EIPCClient;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import dov.com.qq.im.capture.text.DynamicTextItem;
+import java.util.List;
 
 public class bmwb
-  implements bila, bilj
+  extends DynamicTextItem
 {
-  private static bmwb jdField_a_of_type_Bmwb;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  public bilb a;
-  private bnmm jdField_a_of_type_Bnmm;
-  private String jdField_a_of_type_JavaLangString = mur.a(BaseApplicationImpl.getContext());
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
+  public static final float a;
+  public static final int b;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+  bmxb jdField_a_of_type_Bmxb;
+  private float jdField_b_of_type_Float;
+  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
+  private float jdField_c_of_type_Float;
+  private int jdField_c_of_type_Int;
+  private RectF jdField_c_of_type_AndroidGraphicsRectF = new RectF();
+  private int d;
   
-  private bmwb()
+  static
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      QIPCClientHelper.getInstance().getClient().callServer("QzoneIPCModule", "startDownloadVoicechangeSo", null);
-    }
+    jdField_a_of_type_Float = ScreenUtil.dip2px(45.0F);
+    jdField_b_of_type_Int = AIOUtils.dp2px(24.0F, BaseApplicationImpl.getContext().getResources());
   }
   
-  public static bmwb a()
+  public bmwb(int paramInt, List<String> paramList, Bitmap paramBitmap1, Bitmap paramBitmap2, Typeface paramTypeface)
   {
-    if (jdField_a_of_type_Bmwb == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bmwb == null) {
-        jdField_a_of_type_Bmwb = new bmwb();
-      }
-      return jdField_a_of_type_Bmwb;
-    }
-    finally {}
-  }
-  
-  public static void a(Context paramContext, int paramInt)
-  {
-    Intent localIntent = new Intent("com.tencent.qq.syncSecretShuoshuoMsg");
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("com.tencent.qq.syncSecretShuoshuoMsgType", paramInt);
-    localIntent.putExtras(localBundle);
-    paramContext.sendBroadcast(localIntent);
-  }
-  
-  /* Error */
-  public String a(String paramString)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore_2
-    //   5: new 101	java/io/File
-    //   8: dup
-    //   9: aload_1
-    //   10: invokespecial 102	java/io/File:<init>	(Ljava/lang/String;)V
-    //   13: astore 5
-    //   15: new 104	java/io/FileInputStream
-    //   18: dup
-    //   19: aload 5
-    //   21: invokespecial 107	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   24: astore_3
-    //   25: aload_3
-    //   26: astore_1
-    //   27: aload 4
-    //   29: astore_2
-    //   30: aload 5
-    //   32: invokevirtual 111	java/io/File:length	()J
-    //   35: l2i
-    //   36: newarray byte
-    //   38: astore 4
-    //   40: aload_3
-    //   41: astore_1
-    //   42: aload 4
-    //   44: astore_2
-    //   45: aload_3
-    //   46: aload 4
-    //   48: invokevirtual 115	java/io/FileInputStream:read	([B)I
-    //   51: pop
-    //   52: aload 4
-    //   54: astore_1
-    //   55: aload_3
-    //   56: ifnull +10 -> 66
-    //   59: aload_3
-    //   60: invokevirtual 118	java/io/FileInputStream:close	()V
-    //   63: aload 4
-    //   65: astore_1
-    //   66: aload_1
-    //   67: ifnull +105 -> 172
-    //   70: aload_1
-    //   71: iconst_0
-    //   72: invokestatic 124	com/tencent/smtt/utils/Base64:encodeToString	([BI)Ljava/lang/String;
-    //   75: areturn
-    //   76: astore_1
-    //   77: ldc 66
-    //   79: iconst_1
-    //   80: aload_1
-    //   81: iconst_0
-    //   82: anewarray 4	java/lang/Object
-    //   85: invokestatic 130	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   88: aload 4
-    //   90: astore_1
-    //   91: goto -25 -> 66
-    //   94: astore 4
-    //   96: aconst_null
-    //   97: astore_3
-    //   98: aload_3
-    //   99: astore_1
-    //   100: ldc 66
-    //   102: iconst_1
-    //   103: aload 4
-    //   105: iconst_0
-    //   106: anewarray 4	java/lang/Object
-    //   109: invokestatic 130	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   112: aload_2
-    //   113: astore_1
-    //   114: aload_3
-    //   115: ifnull -49 -> 66
-    //   118: aload_3
-    //   119: invokevirtual 118	java/io/FileInputStream:close	()V
-    //   122: aload_2
-    //   123: astore_1
-    //   124: goto -58 -> 66
-    //   127: astore_1
-    //   128: ldc 66
-    //   130: iconst_1
-    //   131: aload_1
-    //   132: iconst_0
-    //   133: anewarray 4	java/lang/Object
-    //   136: invokestatic 130	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   139: aload_2
-    //   140: astore_1
-    //   141: goto -75 -> 66
-    //   144: astore_2
-    //   145: aconst_null
-    //   146: astore_1
-    //   147: aload_1
-    //   148: ifnull +7 -> 155
-    //   151: aload_1
-    //   152: invokevirtual 118	java/io/FileInputStream:close	()V
-    //   155: aload_2
-    //   156: athrow
-    //   157: astore_1
-    //   158: ldc 66
-    //   160: iconst_1
-    //   161: aload_1
-    //   162: iconst_0
-    //   163: anewarray 4	java/lang/Object
-    //   166: invokestatic 130	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   169: goto -14 -> 155
-    //   172: ldc 132
-    //   174: areturn
-    //   175: astore_2
-    //   176: goto -29 -> 147
-    //   179: astore 4
-    //   181: goto -83 -> 98
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	184	0	this	bmwb
-    //   0	184	1	paramString	String
-    //   4	136	2	arrayOfByte1	byte[]
-    //   144	12	2	localObject1	Object
-    //   175	1	2	localObject2	Object
-    //   24	95	3	localFileInputStream	java.io.FileInputStream
-    //   1	88	4	arrayOfByte2	byte[]
-    //   94	10	4	localThrowable1	java.lang.Throwable
-    //   179	1	4	localThrowable2	java.lang.Throwable
-    //   13	18	5	localFile	java.io.File
-    // Exception table:
-    //   from	to	target	type
-    //   59	63	76	java/lang/Exception
-    //   15	25	94	java/lang/Throwable
-    //   118	122	127	java/lang/Exception
-    //   15	25	144	finally
-    //   151	155	157	java/lang/Exception
-    //   30	40	175	finally
-    //   45	52	175	finally
-    //   100	112	175	finally
-    //   30	40	179	java/lang/Throwable
-    //   45	52	179	java/lang/Throwable
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt)
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_JavaLangString = mur.a(BaseApplicationImpl.getContext());
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        QIPCClientHelper.getInstance().getClient().callServer("QzoneIPCModule", "startDownloadVoicechangeSo", null);
-        QQToast.a(BaseApplicationImpl.getContext(), anzj.a(2131712160), 1);
-      }
-    }
-    while (this.jdField_a_of_type_Bilb == null) {
-      return;
-    }
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Bilb.f = paramInt;
-    bile.b(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Bilb, this.jdField_a_of_type_JavaLangString, this);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void a(Intent paramIntent, int paramInt)
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("key_record_path");
-    this.jdField_a_of_type_Long = paramIntent.getLongExtra("key_record_time", 0L);
-    int i = paramIntent.getIntExtra("key_record_param_sample_rate", 0);
-    int j = paramIntent.getIntExtra("key_record_param_bit_rate", 0);
-    int k = paramIntent.getIntExtra("key_record_param_audio_type", 0);
-    if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (this.jdField_a_of_type_Long > 0L))
-    {
-      this.jdField_a_of_type_Bilb = new bilb(this.jdField_b_of_type_JavaLangString, i, j, k, 0);
-      switch (paramInt)
-      {
-      default: 
-        return;
-      case 0: 
-        a(BaseApplicationImpl.getContext(), 1);
-        return;
-      }
-      bnmo.c();
-      return;
-    }
-    a(BaseApplicationImpl.getContext(), 6);
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    try
-    {
-      StringBuilder localStringBuilder = new StringBuilder("data:audio/amr;base64,");
-      localStringBuilder.append(a(paramString));
-      QZLog.d("RecordAndChangeVoiceService", 2, "base64=" + localStringBuilder.toString());
-      this.jdField_a_of_type_Bnmm.a(this.c, localStringBuilder.toString());
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void a(String paramString, int paramInt, bnmm parambnmm)
-  {
-    QZLog.d("RecordAndChangeVoiceService", 2, "playMoodVoice voiceID: " + paramInt);
-    if (paramInt == 3) {
-      this.jdField_b_of_type_Long = (((float)this.jdField_a_of_type_Long / 0.6F));
+    super(paramInt, paramList);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
+    if (paramTypeface == null) {
+      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.defaultFromStyle(1));
     }
     for (;;)
     {
-      long l = (this.jdField_b_of_type_Long + 500L) / 1000L;
-      parambnmm.b(paramString, l);
-      QZLog.d("RecordAndChangeVoiceService", 2, "onReplyPlayMoodVoice changeVoiceTime=" + this.jdField_b_of_type_Long + ", time = " + l);
-      a(paramInt);
-      return;
-      if (paramInt == 4) {
-        this.jdField_b_of_type_Long = (((float)this.jdField_a_of_type_Long * 0.5833333F));
-      } else {
-        this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
+      this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
+      this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+      this.jdField_a_of_type_AndroidTextTextPaint.setColor(-16777216);
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
+      this.d = (jdField_b_of_type_Int * 9);
+      new bmvb().a(0.0F, 0.0F).a(this.d, jdField_b_of_type_Int, 5, 9).a();
+      this.jdField_c_of_type_Int = jdField_b_of_type_Int;
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_c_of_type_Int);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap1;
+      this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap2;
+      if (!paramList.isEmpty()) {
+        a(0, (String)paramList.get(0));
       }
+      return;
+      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
     }
   }
   
-  public void a(String paramString, bnmm parambnmm)
+  private void a(int paramInt, RectF paramRectF, Canvas paramCanvas, Paint paramPaint)
   {
-    QZLog.d("RecordAndChangeVoiceService", 2, "getMoodVoiceRecordTime");
-    if (this.jdField_a_of_type_Bilb == null) {
+    if ((paramInt < 0) || (paramRectF == null) || (paramCanvas == null) || (paramPaint == null)) {
       return;
     }
-    if ((this.jdField_a_of_type_Int == 0) || ((this.jdField_a_of_type_Int != 0) && (this.jdField_b_of_type_Long == 0L)))
+    if (paramInt < 4)
     {
-      l = (this.jdField_a_of_type_Long + 500L) / 1000L;
-      parambnmm.a(paramString, l);
-      QZLog.d("RecordAndChangeVoiceService", 2, "onReplyGetMoodVoiceRecordTime: " + l);
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramRectF.left + (paramRectF.width() - this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) / 2.0F, paramRectF.top + (paramRectF.height() - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) / 2.0F, paramPaint);
       return;
     }
-    long l = (this.jdField_b_of_type_Long + 500L) / 1000L;
-    parambnmm.a(paramString, l);
-    QZLog.d("RecordAndChangeVoiceService", 2, "onReplyGetMoodVoiceRecordTime: " + l);
+    paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, paramRectF.left + (paramRectF.width() - this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth()) / 2.0F, paramRectF.top + (paramRectF.height() - this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight()) / 2.0F, paramPaint);
   }
   
-  public void ai_() {}
-  
-  public void aj_() {}
-  
-  public void b(String paramString, int paramInt, bnmm parambnmm)
+  public float a()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    return this.jdField_b_of_type_Float;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    int i = 0;
+    super.a(paramInt, paramString);
+    String str = super.b(paramInt);
+    paramString = str;
+    if (TextUtils.isEmpty(str)) {
+      paramString = "　　";
+    }
+    this.jdField_a_of_type_Bmxb = new bmxb(0);
+    this.jdField_a_of_type_Bmxb.a(paramString, this.d, jdField_b_of_type_Int, this.jdField_a_of_type_AndroidTextTextPaint);
+    this.jdField_a_of_type_Bmxb.a(new bmwj((int)jdField_a_of_type_Float));
+    this.jdField_b_of_type_Float = this.jdField_a_of_type_Bmxb.a(1, this.jdField_a_of_type_Bmxb.a()).width();
+    this.jdField_c_of_type_Float = this.jdField_a_of_type_Bmxb.a(1, this.jdField_a_of_type_Bmxb.a()).height();
+    paramInt = 0;
+    if (paramInt < this.jdField_a_of_type_Bmxb.a())
     {
-      this.jdField_a_of_type_JavaLangString = mur.a(BaseApplicationImpl.getContext());
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      int j = this.jdField_a_of_type_Bmxb.a(paramInt);
+      if (i > j) {}
+      for (;;)
       {
-        QIPCClientHelper.getInstance().getClient().callServer("QzoneIPCModule", "startDownloadVoicechangeSo", null);
-        QQToast.a(BaseApplicationImpl.getContext(), anzj.a(2131712161), 1);
+        paramInt += 1;
+        break;
+        i = j;
       }
+    }
+    if (i <= 4) {}
+    for (this.jdField_b_of_type_Float = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();; this.jdField_b_of_type_Float = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth())
+    {
+      this.jdField_a_of_type_Bmxb.a(new bmvj(this.jdField_b_of_type_Float, this.jdField_c_of_type_Float));
       return;
     }
-    QZLog.d("RecordAndChangeVoiceService", 2, "getMoodVoiceData callback" + paramString + " voiceID " + paramInt);
-    this.c = paramString;
-    this.jdField_a_of_type_Bnmm = parambnmm;
-    bile.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Bilb, this.jdField_a_of_type_JavaLangString, this);
-    bile.a(this.jdField_b_of_type_JavaLangString, this);
   }
   
-  public void d()
+  public void a(Canvas paramCanvas)
   {
-    QZLog.d("RecordAndChangeVoiceService", 2, "stopPlayingMoodVoice");
-    if (this.jdField_a_of_type_Bilb != null) {
-      bile.b(this.jdField_a_of_type_Bilb);
+    if (this.jdField_a_of_type_Bmxb == null) {
+      return;
     }
+    paramCanvas.save();
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
+    paramCanvas.save();
+    int i = 0;
+    while (i < this.jdField_a_of_type_Bmxb.a())
+    {
+      this.jdField_c_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_Bmxb.a(i));
+      this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_AndroidGraphicsRectF);
+      a(this.jdField_a_of_type_Bmxb.a(i), this.jdField_b_of_type_AndroidGraphicsRectF, paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint);
+      RectF localRectF = this.jdField_c_of_type_AndroidGraphicsRectF;
+      localRectF.bottom -= jdField_a_of_type_Float;
+      this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_c_of_type_AndroidGraphicsRectF);
+      i += 1;
+    }
+    paramCanvas.restore();
+    paramCanvas.rotate(-10.0F, this.jdField_b_of_type_Float / 2.0F, this.jdField_c_of_type_Float / 2.0F);
+    paramCanvas.translate(0.0F, -ScreenUtil.dip2px(5.0F));
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-16777216);
+    this.jdField_a_of_type_Bmxb.a(paramCanvas, 0, 0);
+    if (super.b(0))
+    {
+      this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_Bmxb.a(1, this.jdField_a_of_type_Bmxb.a()));
+      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+    }
+    paramCanvas.restore();
   }
   
-  public void e()
+  public boolean a()
   {
-    this.jdField_b_of_type_JavaLangString = null;
-    this.c = null;
-    this.jdField_a_of_type_Bilb = null;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Bnmm = null;
+    return true;
+  }
+  
+  public float b()
+  {
+    return this.jdField_c_of_type_Float;
   }
 }
 

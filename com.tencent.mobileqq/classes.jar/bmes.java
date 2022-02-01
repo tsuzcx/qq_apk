@@ -1,42 +1,22 @@
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.hce.HcePluginInstallActivity;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import dov.com.qq.im.aeeditor.lyric.widget.LyricWithBuoyView;
 
 public class bmes
-  implements admy
+  extends Handler
 {
-  public bmes(HcePluginInstallActivity paramHcePluginInstallActivity) {}
-  
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public bmes(LyricWithBuoyView paramLyricWithBuoyView, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HcePluginInstallActivity", 2, "mApiCallback onFailure code:" + paramInt + "msg:" + paramString);
-    }
-    QQToast.a(this.a.getApplicationContext(), anzj.a(2131704335), 0).a();
-    this.a.finish();
+    super(paramLooper);
   }
   
-  public void onPermission(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HcePluginInstallActivity", 2, "mApiCallback onPermission " + paramInt);
+    if (paramMessage.what == 1) {
+      this.a.a();
     }
-    QQToast.a(this.a.getApplicationContext(), anzj.a(2131704337), 0).a();
-    this.a.finish();
   }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null) {
-      HcePluginInstallActivity.a(this.a, paramJSONObject.optString("openid"));
-    }
-    HcePluginInstallActivity.b(this.a);
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

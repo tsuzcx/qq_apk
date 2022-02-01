@@ -1,21 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
 
-class alki
-  implements View.OnClickListener
+public abstract interface alki
+  extends alkh
 {
-  alki(aljw paramaljw) {}
+  public abstract void a(String paramString);
   
-  public void onClick(View paramView)
-  {
-    aljw.a(this.a).app.a().a("0X800474F", 1);
-    bmim.a(aljw.a(this.a), 4, null);
-    bdll.a(aljw.a(this.a).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 3, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(List<MayKnowRecommend> paramList);
 }
 
 

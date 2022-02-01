@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import birm;
+import bgxo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import niz;
+import nko;
 
 final class SwiftBrowserCookieMonster$5
   implements Runnable
 {
-  SwiftBrowserCookieMonster$5(List paramList, birm parambirm) {}
+  SwiftBrowserCookieMonster$5(List paramList, bgxo parambgxo) {}
   
   public void run()
   {
-    Set localSet = niz.a().a("pskey");
+    Set localSet = nko.a().a("pskey");
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
@@ -24,7 +24,7 @@ final class SwiftBrowserCookieMonster$5
         if (QLog.isColorLevel()) {
           QLog.i("SwiftBrowserCookieMonster", 2, str + " doesn't need pskey any more,so delete! ");
         }
-        this.jdField_a_of_type_Birm.b(str, "p_skey");
+        this.jdField_a_of_type_Bgxo.b(str, "p_skey");
       }
     }
   }

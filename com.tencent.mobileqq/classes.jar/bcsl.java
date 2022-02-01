@@ -1,346 +1,266 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.opengl.GLES20;
+import android.opengl.GLUtils;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.surfaceviewaction.gl.Texture.1;
+import com.tencent.mobileqq.surfaceviewaction.gl.Texture.2;
+import com.tencent.mobileqq.surfaceviewaction.gl.Texture.3;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import msf.msgcomm.msg_comm.C2CTmpMsgHead;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import tencent.im.msg.im_msg_body.MsgBody;
-import tencent.im.msg.im_msg_body.NotOnlineFile;
-import tencent.im.msg.resv21.hummer_resv_21.FileImgInfo;
-import tencent.im.msg.resv21.hummer_resv_21.ResvAttr;
-import tencent.im.s2c.msgtype0x211.submsgtype0x3.SubMsgType0x3.FailNotify;
-import tencent.im.s2c.msgtype0x211.submsgtype0x3.SubMsgType0x3.MsgBody;
-import tencent.im.s2c.msgtype0x211.submsgtype0x3.SubMsgType0x3.ProgressNotify;
-import tencent.im.s2c.msgtype0x211.submsgtype0x4.SubMsgType0x4.MsgBody;
-import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody;
-import tencent.im.s2c.msgtype0x211.submsgtype0x9.C2CType0x211_SubC2CType0x9.MsgBody;
+import java.io.IOException;
 
 public class bcsl
-  implements bcsi
 {
-  private void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, bcre parambcre, List<MessageRecord> paramList)
+  public int a;
+  public Bitmap a;
+  private SpriteGLView jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView;
+  private String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  public boolean b;
+  
+  public bcsl(Context paramContext, SpriteGLView paramSpriteGLView, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211");
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = paramSpriteGLView;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
+    {
+      this.jdField_a_of_type_ArrayOfByte = a(paramString);
+      return;
     }
-    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has())) {}
-    int i;
-    int j;
-    label452:
-    label467:
-    label620:
-    long l1;
-    label515:
-    label558:
-    label735:
-    long l2;
-    label783:
-    label919:
-    long l3;
+    catch (IOException paramContext)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Texture", 2, QLog.getStackTraceString(paramContext));
+    }
+  }
+  
+  public bcsl(SpriteGLView paramSpriteGLView, Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = paramSpriteGLView;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_Boolean = true;
+    paramSpriteGLView.b(new Texture.1(this));
+  }
+  
+  /* Error */
+  private byte[] a(String paramString)
+  {
+    // Byte code:
+    //   0: new 65	java/io/File
+    //   3: dup
+    //   4: aload_1
+    //   5: invokespecial 68	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: astore 7
+    //   10: aload 7
+    //   12: invokevirtual 72	java/io/File:length	()J
+    //   15: lstore 4
+    //   17: lload 4
+    //   19: ldc2_w 73
+    //   22: lcmp
+    //   23: ifle +7 -> 30
+    //   26: aconst_null
+    //   27: astore_1
+    //   28: aload_1
+    //   29: areturn
+    //   30: new 76	java/io/FileInputStream
+    //   33: dup
+    //   34: aload 7
+    //   36: invokespecial 79	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   39: astore_1
+    //   40: lload 4
+    //   42: l2i
+    //   43: istore_2
+    //   44: iload_2
+    //   45: newarray byte
+    //   47: astore 6
+    //   49: iconst_0
+    //   50: istore_2
+    //   51: iload_2
+    //   52: aload 6
+    //   54: arraylength
+    //   55: if_icmpge +98 -> 153
+    //   58: aload_1
+    //   59: aload 6
+    //   61: iload_2
+    //   62: aload 6
+    //   64: arraylength
+    //   65: iload_2
+    //   66: isub
+    //   67: invokevirtual 83	java/io/FileInputStream:read	([BII)I
+    //   70: istore_3
+    //   71: iload_3
+    //   72: iflt +81 -> 153
+    //   75: iload_2
+    //   76: iload_3
+    //   77: iadd
+    //   78: istore_2
+    //   79: goto -28 -> 51
+    //   82: astore 6
+    //   84: aload_1
+    //   85: invokevirtual 86	java/io/FileInputStream:close	()V
+    //   88: new 16	java/io/IOException
+    //   91: dup
+    //   92: new 88	java/lang/StringBuilder
+    //   95: dup
+    //   96: invokespecial 89	java/lang/StringBuilder:<init>	()V
+    //   99: ldc 91
+    //   101: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: lload 4
+    //   106: invokevirtual 98	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   109: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   112: invokespecial 103	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   115: athrow
+    //   116: astore 6
+    //   118: aload_1
+    //   119: invokevirtual 86	java/io/FileInputStream:close	()V
+    //   122: new 16	java/io/IOException
+    //   125: dup
+    //   126: new 88	java/lang/StringBuilder
+    //   129: dup
+    //   130: invokespecial 89	java/lang/StringBuilder:<init>	()V
+    //   133: ldc 105
+    //   135: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: aload 7
+    //   140: invokevirtual 108	java/io/File:getName	()Ljava/lang/String;
+    //   143: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   146: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   149: invokespecial 103	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   152: athrow
+    //   153: iload_2
+    //   154: aload 6
+    //   156: arraylength
+    //   157: if_icmpeq +38 -> 195
+    //   160: aload_1
+    //   161: invokevirtual 86	java/io/FileInputStream:close	()V
+    //   164: new 16	java/io/IOException
+    //   167: dup
+    //   168: new 88	java/lang/StringBuilder
+    //   171: dup
+    //   172: invokespecial 89	java/lang/StringBuilder:<init>	()V
+    //   175: ldc 105
+    //   177: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   180: aload 7
+    //   182: invokevirtual 108	java/io/File:getName	()Ljava/lang/String;
+    //   185: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   188: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   191: invokespecial 103	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   194: athrow
+    //   195: aload_1
+    //   196: invokevirtual 86	java/io/FileInputStream:close	()V
+    //   199: aload 6
+    //   201: astore_1
+    //   202: invokestatic 36	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   205: ifeq -177 -> 28
+    //   208: ldc 38
+    //   210: iconst_2
+    //   211: new 88	java/lang/StringBuilder
+    //   214: dup
+    //   215: invokespecial 89	java/lang/StringBuilder:<init>	()V
+    //   218: ldc 110
+    //   220: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   223: aload_0
+    //   224: getfield 25	bcsl:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   227: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   230: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   233: invokestatic 46	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   236: aload 6
+    //   238: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	239	0	this	bcsl
+    //   0	239	1	paramString	String
+    //   43	115	2	i	int
+    //   70	8	3	j	int
+    //   15	90	4	l	long
+    //   47	16	6	arrayOfByte	byte[]
+    //   82	1	6	localOutOfMemoryError	OutOfMemoryError
+    //   116	121	6	localIOException	IOException
+    //   8	173	7	localFile	java.io.File
+    // Exception table:
+    //   from	to	target	type
+    //   44	49	82	java/lang/OutOfMemoryError
+    //   51	71	116	java/io/IOException
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ArrayOfByte != null) {}
+    for (;;)
+    {
+      try
+      {
+        long l = System.currentTimeMillis();
+        localOptions = new BitmapFactory.Options();
+        if (Build.VERSION.SDK_INT <= 19) {
+          continue;
+        }
+        localOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeByteArray(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte.length, localOptions);
+        int i = (int)(System.currentTimeMillis() - l);
+        if (QLog.isColorLevel()) {
+          QLog.d("Texture", 2, "new Texture: decode time = " + i);
+        }
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(new Texture.2(this));
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        BitmapFactory.Options localOptions;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("Texture", 2, "Texture: cannot decode (" + this.jdField_a_of_type_JavaLangString + "): " + QLog.getStackTraceString(localOutOfMemoryError));
+        continue;
+      }
+      this.jdField_a_of_type_ArrayOfByte = null;
+      return;
+      localOptions.inPreferredConfig = Bitmap.Config.ARGB_4444;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    Texture.3 local3 = new Texture.3(this);
+    if (paramBoolean)
+    {
+      local3.run();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(local3);
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) || (this.b)) {}
     do
     {
-      Object localObject1;
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            return;
-            try
-            {
-              localObject1 = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
-              i = ((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_cmd.get();
-              if (QLog.isColorLevel()) {
-                QLog.d("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[" + i + "]");
-              }
-              switch (i)
-              {
-              case 5: 
-              case 6: 
-              case 10: 
-              case 11: 
-              case 12: 
-              case 14: 
-              case 15: 
-              case 16: 
-              default: 
-                if (!QLog.isColorLevel()) {
-                  continue;
-                }
-                QLog.d("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[" + i + "] is not implemented");
-                return;
-              }
-            }
-            catch (Exception paramMessageHandler) {}
-            if (QLog.isColorLevel())
-            {
-              QLog.e("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : failed.", paramMessageHandler);
-              return;
-              paramMsg = new SubMsgType0x3.MsgBody();
-              int k;
-              for (;;)
-              {
-                try
-                {
-                  paramMsg.mergeFrom((byte[])localObject1);
-                  if (!paramMsg.msg_fail_notify.has()) {
-                    break label558;
-                  }
-                  j = 0;
-                  paramMsg = (SubMsgType0x3.FailNotify)paramMsg.msg_fail_notify.get();
-                  if (!paramMsg.uint32_sessionid.has()) {
-                    break label452;
-                  }
-                  k = paramMsg.uint32_sessionid.get();
-                  if (!paramMsg.uint32_retCode.has()) {
-                    break label467;
-                  }
-                  i = paramMsg.uint32_retCode.get();
-                  if (!paramMsg.bytes_reason.has()) {
-                    break label515;
-                  }
-                  paramMsg = new String(paramMsg.bytes_reason.get().toStringUtf8());
-                  if (QLog.isColorLevel()) {
-                    QLog.d("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : FailNotify sessionId[" + k + "], retCode[" + i + "], reason[" + paramMsg + "]");
-                  }
-                  paramMessageHandler.app.a().a(String.valueOf(parambcre.e), k, i, paramMsg);
-                  return;
-                }
-                catch (InvalidProtocolBufferMicroException paramMessageHandler) {}
-                if (!QLog.isColorLevel()) {
-                  break;
-                }
-                QLog.e("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[0x3] failed", paramMessageHandler);
-                return;
-                if (!QLog.isColorLevel()) {
-                  break;
-                }
-                QLog.e("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : failNotify has not sessionId");
-                return;
-                i = j;
-                if (QLog.isColorLevel())
-                {
-                  QLog.w("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : sessionId[" + k + "], failNotify has not RetCode");
-                  i = j;
-                  continue;
-                  if (QLog.isColorLevel()) {
-                    QLog.w("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : sessionId[" + k + "], failNotify has not reason");
-                  }
-                  paramMsg = "";
-                }
-              }
-              if (paramMsg.msg_progress_notify.has())
-              {
-                j = 0;
-                paramMsg = (SubMsgType0x3.ProgressNotify)paramMsg.msg_progress_notify.get();
-                if (paramMsg.uint32_sessionid.has())
-                {
-                  k = paramMsg.uint32_sessionid.get();
-                  if (!paramMsg.uint32_progress.has()) {
-                    break label735;
-                  }
-                  i = paramMsg.uint32_progress.get();
-                  if (!paramMsg.uint32_average_speed.has()) {
-                    break label783;
-                  }
-                }
-                for (j = paramMsg.uint32_average_speed.get();; j = 0)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : progressNotify sessionId[" + k + "], progress[" + i + "], speed[" + j + "]");
-                  }
-                  paramMessageHandler.app.a().a(String.valueOf(parambcre.e), k, i, j);
-                  return;
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.e("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : progressNotify has not sessionId");
-                  return;
-                  i = j;
-                  if (!QLog.isColorLevel()) {
-                    break label620;
-                  }
-                  QLog.w("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : sessionId[" + k + "], progressNotify has not Progress");
-                  i = j;
-                  break label620;
-                  if (QLog.isColorLevel()) {
-                    QLog.w("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : sessionId[" + k + "], progressNotify has not AverageSpeed");
-                  }
-                }
-              }
-              if (QLog.isColorLevel())
-              {
-                QLog.e("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : progressNotify has neither failNotify not progressNotify");
-                return;
-                if (QLog.isColorLevel()) {
-                  QLog.d("MsgType0x211Decoder", 2, "<FileAssistant>offlineFile come: cmd[0x211, 0x4]");
-                }
-                Object localObject2 = new SubMsgType0x4.MsgBody();
-                SubMsgType0x4.MsgBody localMsgBody;
-                try
-                {
-                  localMsgBody = (SubMsgType0x4.MsgBody)((SubMsgType0x4.MsgBody)localObject2).mergeFrom((byte[])localObject1);
-                  if (localMsgBody.msg_not_online_file.has()) {
-                    break label919;
-                  }
-                  if (!QLog.isColorLevel()) {
-                    continue;
-                  }
-                  QLog.e("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : MsgBody has not NotOnlineFile");
-                  return;
-                }
-                catch (InvalidProtocolBufferMicroException paramMessageHandler) {}
-                if (QLog.isColorLevel())
-                {
-                  QLog.e("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[0x4] failed", paramMessageHandler);
-                  return;
-                  im_msg_body.NotOnlineFile localNotOnlineFile = (im_msg_body.NotOnlineFile)localMsgBody.msg_not_online_file.get();
-                  localObject1 = null;
-                  if (localMsgBody.file_image_info.has()) {
-                    localObject1 = (hummer_resv_21.FileImgInfo)localMsgBody.file_image_info.get();
-                  }
-                  localObject2 = null;
-                  if (localMsgBody.resv_attr.has()) {
-                    localObject2 = (hummer_resv_21.ResvAttr)localMsgBody.resv_attr.get();
-                  }
-                  if (parambcre.jdField_d_of_type_Boolean)
-                  {
-                    paramMessageHandler = new MessageRecord();
-                    l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
-                    l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
-                    paramMessageHandler.msg = localNotOnlineFile.bytes_file_name.get().toStringUtf8();
-                    paramMessageHandler.senderuin = Long.toString(l2);
-                    paramMessageHandler.msgtype = -2005;
-                    paramMessageHandler.frienduin = Long.toString(parambcre.e);
-                    paramMessageHandler.time = l1;
-                    if (localObject1 != null)
-                    {
-                      paramMessageHandler.saveExtInfoToExtStr("file_pic_width", String.valueOf(((hummer_resv_21.FileImgInfo)localObject1).uint32_file_width.get()));
-                      paramMessageHandler.saveExtInfoToExtStr("file_pic_heigth", String.valueOf(((hummer_resv_21.FileImgInfo)localObject1).uint32_file_height.get()));
-                      QLog.i("MsgType0x211Decoder", 1, "Insert ThumbSize toMsg height[" + ((hummer_resv_21.FileImgInfo)localObject1).uint32_file_width.get() + "], width[" + ((hummer_resv_21.FileImgInfo)localObject1).uint32_file_height.get() + "]");
-                    }
-                    paramList.add(paramMessageHandler);
-                    return;
-                  }
-                  paramMessageHandler.app.a().a(paramMessageHandler, paramList, paramMsg, localNotOnlineFile, String.valueOf(parambcre.e), parambcre.jdField_a_of_type_Boolean, parambcre.b, parambcre.jdField_d_of_type_Long, parambcre.jdField_a_of_type_Int, (hummer_resv_21.FileImgInfo)localObject1, (hummer_resv_21.ResvAttr)localObject2);
-                  return;
-                  if (QLog.isColorLevel()) {
-                    QLog.d("MsgType0x211Decoder", 2, "<dataline> message come: cmd[0x211, 0x7]");
-                  }
-                  paramList = new SubMsgType0x7.MsgBody();
-                  try
-                  {
-                    paramList = (SubMsgType0x7.MsgBody)paramList.mergeFrom((byte[])localObject1);
-                    if (!parambcre.jdField_d_of_type_Boolean)
-                    {
-                      ((anvu)paramMessageHandler.app.a(8)).a(paramMsg, paramList);
-                      return;
-                    }
-                  }
-                  catch (InvalidProtocolBufferMicroException paramMessageHandler) {}
-                }
-              }
-            }
-          }
-        } while (!QLog.isColorLevel());
-        QLog.e("MsgType0x211Decoder", 2, "<dataline><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[0x7] failed", paramMessageHandler);
-        return;
-        l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
-        i = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
-        l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_uid.get();
-        l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
-        parambcre = null;
-        if (((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_tmp_msg_head.has()) {
-          paramList = ((msg_comm.C2CTmpMsgHead)((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_tmp_msg_head.get()).toByteArray();
-        }
-        try
-        {
-          paramMsg = ((msg_comm.C2CTmpMsgHead)((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_tmp_msg_head.get()).sig.get().toByteArray();
-          parambcre = paramList;
-          if (paramMsg != null)
-          {
-            atyw.a(String.valueOf(l1), paramMsg);
-            parambcre = paramList;
-          }
-        }
-        catch (Exception paramMsg)
-        {
-          for (;;)
-          {
-            long l4;
-            parambcre = paramList;
-          }
-        }
-        paramMessageHandler.app.a().a(l1, i, l2, l3, parambcre, (byte[])localObject1);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgType0x211Decoder", 2, "<dataline printer> message come: cmd[0x211, 0x9]");
-        }
-        parambcre = new C2CType0x211_SubC2CType0x9.MsgBody();
-        try
-        {
-          parambcre = (C2CType0x211_SubC2CType0x9.MsgBody)parambcre.mergeFrom((byte[])localObject1);
-          ((anvu)paramMessageHandler.app.a(8)).a(paramMsg, parambcre);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramMessageHandler) {}
-      } while (!QLog.isColorLevel());
-      QLog.e("MsgType0x211Decoder", 2, "<dataline><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[0x9] failed", paramMessageHandler);
       return;
-      l1 = paramMsg.msg_head.from_uin.get();
-      l2 = paramMsg.msg_head.to_uin.get();
-      i = paramMsg.msg_head.msg_seq.get();
-      l3 = paramMsg.msg_head.msg_uid.get();
-      j = paramMsg.msg_head.msg_type.get();
-      l4 = paramMsg.msg_head.msg_time.get();
-      ((abur)paramMessageHandler.app.a(51)).a(l1, l2, i, l3, j, "im_push.msg_push", (byte[])localObject1);
+      int[] arrayOfInt = new int[1];
+      GLES20.glGenTextures(1, arrayOfInt, 0);
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.a(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int = arrayOfInt[0];
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b(this.jdField_a_of_type_Int);
+      GLES20.glBindTexture(3553, this.jdField_a_of_type_Int);
+      GLUtils.texImage2D(3553, 0, this.jdField_a_of_type_AndroidGraphicsBitmap, 0);
+      GLES20.glTexParameterf(3553, 10241, 9728.0F);
+      GLES20.glTexParameterf(3553, 10240, 9728.0F);
+      GLES20.glBindTexture(3553, 0);
+      if (!this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.c) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      }
+      this.b = true;
     } while (!QLog.isColorLevel());
-    QLog.d("MsgType0x211Decoder", 2, "device msg push, receive 0x11,0xd msg, fromuin2:" + l1 + ",touin:" + l2 + ", msg seq:" + i + ",msg_uid:" + l3 + ",msg_time:" + l4 + ",msgtype:" + j);
+    QLog.d("Texture", 2, "Texture->load: textureId = " + this.jdField_a_of_type_Int + ", filePath = " + this.jdField_a_of_type_JavaLangString);
   }
   
-  private void b(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre)
+  public void c()
   {
-    int i;
-    if ((paramMsg.msg_head.c2c_cmd.get() == 6) || (paramMsg.msg_head.c2c_tmp_msg_head.has()))
-    {
-      i = 1;
-      if (i != 0) {
-        new bcss().a(paramMessageHandler, paramMsg, paramList, parambcre);
-      }
-      if (!paramMsg.msg_head.c2c_tmp_msg_head.has())
-      {
-        paramMessageHandler = (anyw)paramMessageHandler.app.getManager(51);
-        if (!nmd.a(BaseApplicationImpl.getContext(), String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get()))) {
-          break label146;
-        }
-        if (!paramMessageHandler.b(String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get()))) {
-          parambcre.c = 1025;
-        }
-      }
-    }
-    label146:
-    while ((!nmd.a(BaseApplicationImpl.getContext(), String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get()))) || (paramMessageHandler.b(String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get()))))
-    {
-      return;
-      i = 0;
-      break;
-    }
-    parambcre.c = 1025;
-  }
-  
-  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre)
-  {
-    b(paramMessageHandler, paramMsg, paramList, parambcre);
-    a(paramMessageHandler, paramMsg, parambcre, paramList);
+    a(false);
   }
 }
 

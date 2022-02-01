@@ -1,22 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import android.os.Bundle;
 
-public class athg
-  implements DialogInterface.OnClickListener
+public abstract interface athg
 {
-  public athg(FMActivity paramFMActivity) {}
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.setResult(8001);
-    this.a.finish();
-  }
+  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
+  
+  public abstract void a(String paramString, long paramLong, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     athg
  * JD-Core Version:    0.7.0.1
  */

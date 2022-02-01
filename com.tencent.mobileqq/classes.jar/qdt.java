@@ -1,25 +1,37 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.media.AudioManager;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class qdt
-  extends qdl
+class qdt
+  extends BroadcastReceiver
 {
-  public qdt(NativeCommentView paramNativeCommentView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  qdt(qdf paramqdf, VideoView paramVideoView, ViewBean paramViewBean, ViewBase paramViewBase) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramView = this.a.a.a.a();
-    if (paramView.isPGCShortContent())
+    boolean bool;
+    if (((AudioManager)paramContext.getSystemService("audio")).getStreamVolume(3) <= 0)
     {
-      ozs.b(this.a.getContext(), paramView, (int)paramView.mChannelID);
-      qam.a(this.a.getContext(), paramView);
-      return;
+      bool = true;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyGifvideoBaseVideoVideoView.setMute(bool);
+      paramIntent = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanViewBean;
+      if (!bool) {
+        break label62;
+      }
     }
-    ozs.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
+    label62:
+    for (paramContext = "video_audio_mute";; paramContext = "video_audio_speak")
+    {
+      paramIntent.putMapValue("pgc_video_content_audio_icon", paramContext);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.bindDynamicValue(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanViewBean);
+      return;
+      bool = false;
+      break;
+    }
   }
 }
 

@@ -1,0 +1,25 @@
+package com.tencent.thumbplayer.core.player;
+
+import android.support.annotation.NonNull;
+
+public class TPSurface$TPVideoCropInfo
+{
+  public int cropBottom = -1;
+  public int cropLeft = -1;
+  public int cropRight = -1;
+  public int cropTop = -1;
+  public int height = -1;
+  public int width = -1;
+  
+  @NonNull
+  public String toString()
+  {
+    return "width:" + this.width + ", height:" + this.height + ", cropLeft:" + this.cropLeft + ", cropRight:" + this.cropRight + ", cropTop:" + this.cropTop + ", cropBottom:" + this.cropBottom;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+ * Qualified Name:     com.tencent.thumbplayer.core.player.TPSurface.TPVideoCropInfo
+ * JD-Core Version:    0.7.0.1
+ */

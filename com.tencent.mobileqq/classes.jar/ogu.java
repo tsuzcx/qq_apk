@@ -1,20 +1,84 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.qqshop.qq_ad.QQAdGetRsp.RedPointInfo;
 
-class ogu
-  implements View.OnClickListener
+public class ogu
 {
-  ogu(ogs paramogs, String paramString) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public void onClick(View paramView)
+  public ogu a(qq_ad.QQAdGetRsp.RedPointInfo paramRedPointInfo)
   {
-    if ((ogs.a(this.jdField_a_of_type_Ogs) != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      ozs.a(ogs.a(this.jdField_a_of_type_Ogs).getContext(), this.jdField_a_of_type_JavaLangString);
+    int j = 0;
+    int i;
+    if (paramRedPointInfo.begin_time.has())
+    {
+      i = paramRedPointInfo.begin_time.get();
+      this.c = i;
+      if (!paramRedPointInfo.task_id.has()) {
+        break label172;
+      }
+      i = paramRedPointInfo.task_id.get();
+      label43:
+      this.jdField_a_of_type_Int = i;
+      if (!paramRedPointInfo.tab_id.has()) {
+        break label177;
+      }
+      i = paramRedPointInfo.tab_id.get();
+      label66:
+      this.b = i;
+      if (!paramRedPointInfo.end_time.has()) {
+        break label182;
+      }
+      i = paramRedPointInfo.end_time.get();
+      label89:
+      this.d = i;
+      if (!paramRedPointInfo.delay_second.has()) {
+        break label187;
+      }
+      i = paramRedPointInfo.delay_second.get();
+      label112:
+      this.e = i;
+      i = j;
+      if (paramRedPointInfo.red_type.has()) {
+        i = paramRedPointInfo.red_type.get();
+      }
+      this.f = i;
+      if (!paramRedPointInfo.red_url.has()) {
+        break label192;
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    label172:
+    label177:
+    label182:
+    label187:
+    label192:
+    for (paramRedPointInfo = paramRedPointInfo.red_url.get();; paramRedPointInfo = "")
+    {
+      this.jdField_a_of_type_JavaLangString = paramRedPointInfo;
+      return this;
+      i = 0;
+      break;
+      i = 0;
+      break label43;
+      i = 0;
+      break label66;
+      i = 0;
+      break label89;
+      i = 0;
+      break label112;
+    }
+  }
+  
+  public String toString()
+  {
+    return "RedPointInfo{mTashId=" + this.jdField_a_of_type_Int + ", mTabId=" + this.b + ", mBeginTime=" + this.c + ", mEndTime=" + this.d + ", mDelaySeconds=" + this.e + ", mRedType=" + this.f + ", mRedUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.widget;
 
-import agej;
 import android.content.Context;
 import android.util.AttributeSet;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.widget.MultiImageTextView;
 
 public class AccountOnlineStatusFormSimpleItem
@@ -21,7 +21,7 @@ public class AccountOnlineStatusFormSimpleItem
   protected void a()
   {
     super.a();
-    this.a.setCompoundDrawablePadding(agej.a(12.0F, getResources()));
+    this.a.setCompoundDrawablePadding(AIOUtils.dp2px(12.0F, getResources()));
   }
 }
 

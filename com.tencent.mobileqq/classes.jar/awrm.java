@@ -1,38 +1,30 @@
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import android.text.TextUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
 class awrm
-  implements blih
+  implements WXShareHelper.WXShareListener
 {
-  private int jdField_a_of_type_Int;
+  awrm(awrl paramawrl) {}
   
-  awrm(awrk paramawrk) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    paramInt = paramAbsListView.getFirstVisiblePosition();
-    if (paramInt > this.jdField_a_of_type_Int)
+    if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
     {
-      if (!awrk.a(this.jdField_a_of_type_Awrk).b()) {
-        awrk.a(this.jdField_a_of_type_Awrk).a();
+      WXShareHelper.getInstance().removeObserver(this);
+      if (paramBaseResp.errCode != 0) {
+        break label59;
       }
-      if (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("LocationShareController", 4, "onScrollStateChanged");
-        }
-        awrk.a(this.jdField_a_of_type_Awrk).a();
+      if (this.a.jdField_a_of_type_Awro != null) {
+        this.a.jdField_a_of_type_Awro.a(true);
       }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = paramInt;
+    label59:
+    while (this.a.jdField_a_of_type_Awro == null) {
       return;
-      if (paramInt >= this.jdField_a_of_type_Int) {}
     }
+    this.a.jdField_a_of_type_Awro.a(false);
   }
 }
 

@@ -1,23 +1,32 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.text.style.ReplacementSpan;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 
-class toy
-  extends ReplacementSpan
+public class toy
+  extends Handler
 {
-  private int a;
-  
-  public toy(int paramInt)
+  public toy(ViolaBaseView paramViolaBaseView, Looper paramLooper)
   {
-    this.a = paramInt;
+    super(paramLooper);
   }
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  public void handleMessage(Message paramMessage)
   {
-    return this.a;
+    switch (paramMessage.what)
+    {
+    case 1: 
+    default: 
+      return;
+    case 0: 
+      ViolaBaseView.d(this.a);
+      return;
+    case 3: 
+      ViolaBaseView.a(this.a);
+      return;
+    }
+    ViolaBaseView.a(this.a, true);
+    ViolaBaseView.d(this.a);
   }
 }
 

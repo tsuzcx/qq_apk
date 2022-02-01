@@ -1,28 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-public final class bbop
-  implements Parcelable.Creator<AIOBrowserBaseData>
+final class bbop
+  implements bbos
 {
-  public AIOBrowserBaseData a(Parcel paramParcel)
+  bbop(BusinessObserver paramBusinessObserver) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    Object localObject = paramParcel.readString();
-    try
-    {
-      localObject = AIOBrowserBaseData.a((String)localObject);
-      ((AIOBrowserBaseData)localObject).readFromParcel(paramParcel);
-      return localObject;
-    }
-    catch (ClassNotFoundException paramParcel)
-    {
-      throw new RuntimeException(paramParcel);
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("dataErrorMsg", paramString);
+    localBundle.putInt("dataErrorCode", paramInt);
+    this.a.onReceive(0, false, localBundle);
   }
   
-  public AIOBrowserBaseData[] a(int paramInt)
+  public void a(String paramString)
   {
-    return new AIOBrowserBaseData[paramInt];
+    Bundle localBundle = new Bundle();
+    localBundle.putByteArray("data", paramString.getBytes());
+    localBundle.putString("cmd", "isIpForeign");
+    this.a.onReceive(0, true, localBundle);
   }
 }
 

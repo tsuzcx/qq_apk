@@ -1,22 +1,8 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.soft_component.VideoFeedsSoftAdBarDelegateForAd.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
-public class tox
-  implements tld
+public abstract interface tox
 {
-  tox(tow paramtow) {}
+  public abstract void a();
   
-  public void a(tqt paramtqt, int paramInt1, int paramInt2)
-  {
-    if ((paramtqt == null) || (paramtqt.d == null) || (tow.a(this.a) == null) || (tow.a(this.a).a == null) || (tow.a(this.a).a.mAdvertisementSoftInfo == null)) {}
-    while (!tow.a(this.a).a.mAdvertisementSoftInfo.o.equalsIgnoreCase(paramtqt.d)) {
-      return;
-    }
-    ThreadManager.getUIHandler().post(new VideoFeedsSoftAdBarDelegateForAd.1.1(this, paramInt1, paramInt2));
-  }
+  public abstract void a(String paramString);
 }
 
 

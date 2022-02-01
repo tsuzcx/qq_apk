@@ -1,18 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.TalkBack.Proxy;
 
-class bcbu
-  implements View.OnClickListener
+public final class bcbu
+  implements IMCoreProxyRoute.TalkBack.Proxy
 {
-  bcbu(bcbs parambcbs) {}
-  
-  public void onClick(View paramView)
+  public boolean getTalkBackStatus()
   {
-    this.a.a.b(this.a.a.b);
-    this.a.a.e.setVisibility(0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return AppSetting.c;
   }
 }
 

@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.applets;
 
 import android.content.Context;
-import anui;
+import com.tencent.mobileqq.app.BusinessObserver;
 import mqq.app.NewIntent;
 import mqq.app.Servlet;
 
 public class PublicAccountIntent
   extends NewIntent
 {
-  private anui a;
+  private BusinessObserver a;
   
   public PublicAccountIntent(Context paramContext, Class<? extends Servlet> paramClass)
   {
     super(paramContext, paramClass);
   }
   
-  public anui a()
+  public BusinessObserver a()
   {
     return this.a;
   }
   
-  public void a(anui paramanui)
+  public void a(BusinessObserver paramBusinessObserver)
   {
-    this.a = paramanui;
+    this.a = paramBusinessObserver;
   }
 }
 

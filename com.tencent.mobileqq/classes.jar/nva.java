@@ -1,19 +1,16 @@
-import android.content.Intent;
-import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class nva
+class nva
   implements View.OnClickListener
 {
-  public nva(AccountDetailActivity paramAccountDetailActivity, String paramString) {}
+  nva(num paramnum, String paramString, obr paramobr) {}
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.startActivity(localIntent);
+    num.b(this.jdField_a_of_type_Num, this.jdField_a_of_type_JavaLangString);
+    num.a(this.jdField_a_of_type_Num, this.jdField_a_of_type_Obr.jdField_a_of_type_JavaLangString);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

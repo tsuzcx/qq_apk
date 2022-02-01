@@ -3,14 +3,14 @@ package com.tencent.biz.qqstory.takevideo;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.TextUtils;
-import wsc;
-import ywy;
-import yxt;
+import vts;
+import xyj;
+import xzd;
 
 public class EditVideoFilterNeo$3
   implements Runnable
 {
-  public EditVideoFilterNeo$3(ywy paramywy, wsc paramwsc) {}
+  public EditVideoFilterNeo$3(xyj paramxyj, vts paramvts) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ public class EditVideoFilterNeo$3
     }
     for (;;)
     {
-      this.this$0.a.a.a.putString("extra_local_address_city_name", str);
+      this.this$0.a.a.mExtra.putString("extra_local_address_city_name", str);
       return;
       str = this.a.b;
       continue;

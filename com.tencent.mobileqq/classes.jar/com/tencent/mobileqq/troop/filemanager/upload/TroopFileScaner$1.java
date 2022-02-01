@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import bfvr;
-import bfxo;
+import befc;
+import begz;
 import java.util.LinkedList;
 import java.util.Map;
 
 public class TroopFileScaner$1
   implements Runnable
 {
-  public TroopFileScaner$1(bfxo parambfxo, long paramLong, TroopFileScanTask paramTroopFileScanTask, String paramString) {}
+  public TroopFileScaner$1(begz parambegz, long paramLong, TroopFileScanTask paramTroopFileScanTask, String paramString) {}
   
   public void run()
   {
-    bfxo.a(this.this$0).put(Long.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileScanTask);
-    bfxo.a(this.this$0).add(Long.valueOf(this.jdField_a_of_type_Long));
-    bfvr.c("TroopFileScaner", bfvr.a, "[" + this.jdField_a_of_type_Long + "] startScan filePath. " + this.jdField_a_of_type_JavaLangString + bfxo.a(this.this$0));
-    bfxo.a(this.this$0);
+    begz.a(this.this$0).put(Long.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileScanTask);
+    begz.a(this.this$0).add(Long.valueOf(this.jdField_a_of_type_Long));
+    befc.c("TroopFileScaner", befc.a, "[" + this.jdField_a_of_type_Long + "] startScan filePath. " + this.jdField_a_of_type_JavaLangString + begz.a(this.this$0));
+    begz.a(this.this$0);
   }
 }
 

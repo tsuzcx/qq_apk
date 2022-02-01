@@ -1,12 +1,14 @@
-import android.graphics.drawable.Drawable;
+import kotlin.Metadata;
 
-public class tvj
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/AladdinCheckStep;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/SuperMaskStep;", "()V", "doStep", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tvj
+  extends tvc
 {
-  int jdField_a_of_type_Int;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
+  public boolean a()
+  {
+    boolean bool = tvd.a.a();
+    return tvs.a.a(bool, (tvc)this);
+  }
 }
 
 

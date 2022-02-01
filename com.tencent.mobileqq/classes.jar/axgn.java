@@ -1,118 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
-public class axgn
-  implements axge
+class axgn
+  implements Callback
 {
-  public static String a;
+  axgn(axgm paramaxgm) {}
   
-  static
+  public void onFailure(Call paramCall, IOException paramIOException)
   {
-    jdField_a_of_type_JavaLangString = "MsgBackup_MsgBackupMultiMsgProcessor";
+    QLog.e("TurtleReportCenter", 4, paramIOException, new Object[0]);
   }
   
-  public axgn(QQAppInterface paramQQAppInterface) {}
-  
-  public static String a(String paramString, MessageRecord paramMessageRecord)
+  public void onResponse(Call paramCall, Response paramResponse)
   {
-    String str = ((MessageForStructing)paramMessageRecord).structingMsg.mFileName;
-    paramMessageRecord = new JSONObject();
-    try
-    {
-      paramMessageRecord.put("selfuin", paramString);
-      paramMessageRecord.put("uuid", str);
-      paramMessageRecord.put("msgType", 4);
-      paramMessageRecord.put("msgSubType", 10);
-      return paramMessageRecord.toString();
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+    if ((paramResponse != null) && (paramResponse.code() == 200)) {
+      QLog.i("TurtleReportCenter", 4, "data report success.");
     }
   }
-  
-  public static List<MessageRecord> a(HashMap<String, ArrayList<MessageRecord>> paramHashMap)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramHashMap.keySet().iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.addAll((Collection)paramHashMap.get((String)localIterator.next()));
-    }
-    return localArrayList;
-  }
-  
-  public static String b(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if ((paramMsgBackupResEntity != null) && (!TextUtils.isEmpty(paramMsgBackupResEntity.extraDataStr))) {
-      try
-      {
-        paramMessageRecord = axjn.b(new JSONObject(paramMsgBackupResEntity.extraDataStr).optString("uuid"));
-        return paramMessageRecord;
-      }
-      catch (JSONException paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-      }
-    }
-    return "";
-  }
-  
-  public axgr a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    axgr localaxgr = new axgr();
-    localaxgr.jdField_a_of_type_JavaLangString = a(paramMessageRecord, paramMsgBackupResEntity);
-    localaxgr.jdField_a_of_type_Boolean = true;
-    return localaxgr;
-  }
-  
-  public String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if ((paramMsgBackupResEntity != null) && (!TextUtils.isEmpty(paramMsgBackupResEntity.extraDataStr))) {
-      try
-      {
-        paramMessageRecord = axjn.b(new JSONObject(paramMsgBackupResEntity.extraDataStr).optString("uuid"));
-        return paramMessageRecord;
-      }
-      catch (JSONException paramMessageRecord)
-      {
-        paramMessageRecord.printStackTrace();
-      }
-    }
-    return "";
-  }
-  
-  public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList) {}
-  
-  public boolean a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof ChatMessage)) {
-      return axpm.a((ChatMessage)paramMessageRecord);
-    }
-    return false;
-  }
-  
-  public boolean a(MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    return paramMsgBackupResEntity.msgType == 4;
-  }
-  
-  public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList) {}
 }
 
 

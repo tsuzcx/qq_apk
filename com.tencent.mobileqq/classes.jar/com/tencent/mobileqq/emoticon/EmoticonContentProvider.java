@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import aslg;
+import arfc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
 import com.tencent.qphone.base.util.QLog;
@@ -33,12 +33,12 @@ public class EmoticonContentProvider
         if (!paramBoolean) {
           break label41;
         }
-        localObject1 = paramAppRuntime.b(paramString);
+        localObject1 = paramAppRuntime.getReadableDatabase(paramString);
       }
     }
     return localObject1;
     label41:
-    return paramAppRuntime.a(paramString);
+    return paramAppRuntime.getWritableDatabase(paramString);
   }
   
   @Nullable
@@ -57,7 +57,7 @@ public class EmoticonContentProvider
     {
       localObject = (QQAppInterface)localObject;
       if ("vip_type".equals(paramString1)) {
-        return aslg.a((QQAppInterface)localObject, paramString1);
+        return arfc.a((QQAppInterface)localObject, paramString1);
       }
     }
     return super.call(paramString1, paramString2, paramBundle);

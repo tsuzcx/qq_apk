@@ -1,33 +1,40 @@
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class aenq
-  extends PagerAdapter
+  implements View.OnClickListener
 {
-  public aenq(FontSettingActivity paramFontSettingActivity) {}
+  public aenq(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void destroyItem(View paramView, int paramInt, Object paramObject)
+  public void onClick(View paramView)
   {
-    ((ViewPager)paramView).removeView((View)this.a.a.get(paramInt));
-  }
-  
-  public int getCount()
-  {
-    return this.a.a.size();
-  }
-  
-  public Object instantiateItem(View paramView, int paramInt)
-  {
-    ((ViewPager)paramView).addView((View)this.a.a.get(paramInt), 0);
-    return this.a.a.get(paramInt);
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    Object localObject = new Intent();
+    ((Intent)localObject).putExtra("troop_uin", this.a.b);
+    List localList = (List)this.a.jdField_a_of_type_Aeoz.a.get(TroopMemberListActivity.a(this.a));
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < localList.size())
+    {
+      localArrayList.add(((aeox)localList.get(i)).a);
+      i += 1;
+    }
+    ((Intent)localObject).putExtra("members_uin", localArrayList);
+    PublicFragmentActivity.a(paramView.getContext(), (Intent)localObject, TroopMemberHistoryFragment.class);
+    localObject = ((TroopManager)this.a.app.getManager(52)).b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.app.getCurrentAccountUin());
+    bftc.a("Grp_edu", "teachermsg", "showall", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bftc.a((TroopMemberInfo)localObject) });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

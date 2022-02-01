@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app;
 
-import aobl;
+import amvo;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.troop.data.RecentRecommendTroopItem;
 
 public class MayknowRecommendManager$11
   implements Runnable
 {
-  public MayknowRecommendManager$11(aobl paramaobl, String paramString) {}
+  public MayknowRecommendManager$11(amvo paramamvo, String paramString) {}
   
   public void run()
   {
-    aobl.a(this.this$0).delete(RecentRecommendTroopItem.class.getSimpleName(), "uin=?", new String[] { String.valueOf(this.a) });
+    amvo.a(this.this$0).delete(RecentRecommendTroopItem.class.getSimpleName(), "uin=?", new String[] { String.valueOf(this.a) });
   }
 }
 

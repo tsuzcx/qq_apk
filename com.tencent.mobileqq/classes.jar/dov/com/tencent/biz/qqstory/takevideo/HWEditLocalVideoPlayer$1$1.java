@@ -1,14 +1,14 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bqgk;
-import bqig;
+import bnee;
+import bnfd;
 
 public class HWEditLocalVideoPlayer$1$1
   implements Runnable
 {
   public void run()
   {
-    this.jdField_a_of_type_Bqig.a.a.a(this.jdField_a_of_type_JavaUtilMap);
+    this.jdField_a_of_type_Bnfd.a.a.a(this.jdField_a_of_type_JavaUtilMap);
   }
 }
 

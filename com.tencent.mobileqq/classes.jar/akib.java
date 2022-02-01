@@ -1,24 +1,27 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.VersionUtils;
 
 class akib
-  implements ajkg
+  implements View.OnClickListener
 {
-  akib(akha paramakha) {}
+  akib(akho paramakho) {}
   
-  public void an_() {}
-  
-  public void b()
+  public void onClick(View paramView)
   {
-    if ((this.a.a == null) || (this.a.a.app == null)) {
-      return;
+    if (VersionUtils.isHoneycomb()) {
+      akho.a(this.a).startActivity(new Intent("android.settings.SETTINGS"));
     }
-    ((ajka)this.a.a.app.getManager(34)).d();
-  }
-  
-  public void j_(int paramInt)
-  {
-    this.a.f();
+    for (;;)
+    {
+      bcef.a(akho.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 1, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      akho.a(this.a).startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+    }
   }
 }
 

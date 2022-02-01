@@ -1,24 +1,57 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0x438.oidb_0x438.RedBagInfo;
 
-class ajum
-  implements View.OnLongClickListener
+public class ajum
+  extends Handler
 {
-  private WeakReference<ajuh> a;
-  
-  public ajum(ajuh paramajuh)
+  ajum(ajul paramajul, Looper paramLooper)
   {
-    this.a = new WeakReference(paramajuh);
+    super(paramLooper);
   }
   
-  public boolean onLongClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    ajuh localajuh = (ajuh)this.a.get();
-    if (localajuh != null) {
-      return localajuh.onLongClick(paramView);
+    int i = paramMessage.what;
+    boolean bool;
+    if (paramMessage.arg1 == 1)
+    {
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("PasswdRedBagManager", 2, "receive passwdredbags from group or disgroup, isSuccess = " + bool);
+      }
+      if (bool) {
+        break label56;
+      }
     }
-    return false;
+    for (;;)
+    {
+      return;
+      bool = false;
+      break;
+      label56:
+      if ((i == 1) || (i == 0))
+      {
+        ThreadManager.getFileThreadHandler().post(new PasswdRedBagManager.1.1(this, i));
+        paramMessage = (List)paramMessage.obj;
+        if (paramMessage != null)
+        {
+          paramMessage = paramMessage.iterator();
+          while (paramMessage.hasNext())
+          {
+            oidb_0x438.RedBagInfo localRedBagInfo = (oidb_0x438.RedBagInfo)paramMessage.next();
+            this.a.a(localRedBagInfo);
+          }
+        }
+      }
+    }
   }
 }
 

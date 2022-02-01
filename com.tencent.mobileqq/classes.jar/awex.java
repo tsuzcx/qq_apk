@@ -1,52 +1,26 @@
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.music.QQPlayerService;
 import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
 
 public class awex
-  implements axcc
 {
-  private WeakReference<IVideoOuterStatusListener> a;
+  public static String a = "";
   
-  public awex(WeakReference<IVideoOuterStatusListener> paramWeakReference)
+  public static String a()
   {
-    this.a = paramWeakReference;
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if ((this.a == null) || (this.a.get() == null)) {
-      return;
-    }
-    IVideoOuterStatusListener localIVideoOuterStatusListener = (IVideoOuterStatusListener)this.a.get();
-    if (paramBoolean)
+    if (TextUtils.isEmpty(a)) {}
+    try
     {
-      localIVideoOuterStatusListener.onVideoStop();
-      return;
+      a = QQPlayerService.a(6, "MusicPendantUtil");
+      return a;
     }
-    localIVideoOuterStatusListener.onVideoStart(-1);
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
+    catch (Exception localException)
     {
-    case 0: 
-    default: 
-      return;
-    case 1: 
-      QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_GAIN");
-      awet.a().a(false);
-      a(false);
-      return;
+      for (;;)
+      {
+        QLog.e("MusicPendantUtil", 1, "MusicPendantManager() exception", localException);
+      }
     }
-    QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_LOSS");
-    awet.a().a(true);
-    a(true);
-  }
-  
-  public void a(WeakReference<IVideoOuterStatusListener> paramWeakReference)
-  {
-    this.a = paramWeakReference;
   }
 }
 

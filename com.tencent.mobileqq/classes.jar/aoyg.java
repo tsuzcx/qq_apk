@@ -1,30 +1,29 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.ark.ArkEnvironmentManager.Log;
+import com.tencent.qphone.base.util.QLog;
 
-class aoyg
-  implements xik
+final class aoyg
+  implements ArkEnvironmentManager.Log
 {
-  aoyg(aoyf paramaoyf) {}
-  
-  public void a(xdw paramxdw, bjbs parambjbs)
+  public void d(String paramString1, String paramString2)
   {
-    if ((parambjbs != null) && (parambjbs.isShowing())) {
-      parambjbs.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
-    xii.a(this.a.a);
-    if ((paramxdw != null) && (paramxdw.jdField_a_of_type_Int == 0))
-    {
-      xii.a(paramxdw.jdField_a_of_type_JavaLangString, this.a.a);
-      aoyf.a(this.a);
-      return;
-    }
-    if (!bhnv.g(BaseApplicationImpl.getContext()))
-    {
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131693966, 1).a();
-      return;
-    }
-    this.a.c = "open";
-    aoyf.a(this.a);
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, paramString2);
   }
 }
 

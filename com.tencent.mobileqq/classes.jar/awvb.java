@@ -1,24 +1,19 @@
-import android.os.Handler;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-final class awvb
-  implements bhvc
+class awvb
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public void a(bhva parambhva1, bhva parambhva2)
-  {
-    awuz.a().sendEmptyMessage(10000001);
-  }
+  awvb(awur paramawur) {}
   
-  public void a(String paramString) {}
-  
-  public boolean a(bhva parambhva1, bhva parambhva2, int paramInt)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     return true;
   }
   
-  public void b(bhva parambhva1, bhva parambhva2)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    awuz.a = false;
-    awuz.a().sendEmptyMessage(10000001);
+    return false;
   }
 }
 

@@ -1,17 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.pts.nativemodule.PTSNativeModuleRegistry.IPTSMarkArticleRead;
+import com.tencent.qphone.base.util.QLog;
 
-class qni
-  implements View.OnClickListener
+public class qni
+  implements PTSNativeModuleRegistry.IPTSMarkArticleRead
 {
-  qni(qng paramqng) {}
-  
-  public void onClick(View paramView)
+  public void markArticleRead(long paramLong1, long paramLong2)
   {
-    ozs.a(this.a.jdField_a_of_type_AndroidContentContext, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 2, false, 2, false);
-    sel.a(((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), ((ppu)this.a.jdField_a_of_type_JavaLangObject).e());
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.i("PTSMarkArticleReadModule", 1, "[markArticleRead], articleID = " + paramLong1 + ", channelID = " + paramLong2);
+    try
+    {
+      pkm.a().a(paramLong1, System.currentTimeMillis());
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("PTSMarkArticleReadModule", 1, "[markArticleRead], e = " + localException);
+    }
   }
 }
 

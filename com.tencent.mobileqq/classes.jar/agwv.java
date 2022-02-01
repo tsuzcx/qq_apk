@@ -1,51 +1,52 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.TroopEggLottieAnimHelper.1;
-import com.tencent.widget.XEditTextEx;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XPanelContainer;
 
 public class agwv
-  implements agvc
+  implements agxf<HongBaoPanel>
 {
-  private BaseChatPie a;
+  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private HongBaoPanel jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   public agwv(BaseChatPie paramBaseChatPie)
   {
-    this.a = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.app;
   }
   
-  private void a()
+  public int a()
   {
-    if (this.a == null) {}
-    String str;
-    do
-    {
-      return;
-      str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("chat_inputBarContent");
-    } while ((str == null) || (str.isEmpty()));
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText(str);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestFocus();
-    InputMethodManager localInputMethodManager = (InputMethodManager)this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getSystemService("input_method");
-    if (localInputMethodManager != null) {
-      localInputMethodManager.showSoftInput(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, 1);
-    }
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.post(new TroopEggLottieAnimHelper.1(this, str));
+    return 10;
   }
   
-  public void a(int paramInt)
+  public HongBaoPanel a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a();
+    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel;
   }
   
-  public int[] a()
+  public HongBaoPanel a(Context paramContext)
   {
-    return new int[] { 6 };
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel = ((HongBaoPanel)View.inflate(paramContext, 2131560504, null));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetHongBaoPanel;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(XPanelContainer paramXPanelContainer)
+  {
+    paramXPanelContainer.a(10);
+  }
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 

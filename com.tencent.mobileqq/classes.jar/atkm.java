@@ -1,19 +1,57 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.support.v4.util.MQLruCache;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class atkm
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class atkm
+  extends BroadcastReceiver
 {
-  public atkm(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  atkm(atkl paramatkl) {}
   
-  public void onGlobalLayout()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.ax_();
+    if ((paramIntent == null) || (!"com.tencent.qqhead.getheadresp".equals(paramIntent.getAction()))) {}
+    do
+    {
+      int j;
+      ArrayList localArrayList;
+      do
+      {
+        return;
+        j = paramIntent.getIntExtra("faceType", -1);
+        paramContext = paramIntent.getStringArrayListExtra("uinList");
+        localArrayList = paramIntent.getStringArrayListExtra("headPathList");
+        if (QLog.isColorLevel()) {
+          QLog.d("QFlutter.qqface", 2, "onReceive, faceType: " + j + ", uinList: " + paramContext + ", pathList: " + localArrayList);
+        }
+      } while ((paramContext == null) || (paramContext.isEmpty()) || (localArrayList == null) || (localArrayList.isEmpty()) || (paramContext.size() != localArrayList.size()));
+      paramIntent = new ArrayList();
+      int i = 0;
+      while (i < paramContext.size())
+      {
+        String str1 = (String)localArrayList.get(i);
+        String str2 = (String)paramContext.get(i);
+        atkh localatkh = new atkh(j, str2, 3);
+        if (atkl.a(this.a, localatkh))
+        {
+          atkl.a(this.a, j, str2);
+          paramIntent.add(localatkh);
+          atkl.a(this.a).put(localatkh.c, str1);
+        }
+        i += 1;
+      }
+    } while (paramIntent.isEmpty());
+    paramContext = atkl.a(this.a).obtainMessage(0);
+    paramContext.obj = paramIntent;
+    atkl.a(this.a).sendMessage(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atkm
  * JD-Core Version:    0.7.0.1
  */

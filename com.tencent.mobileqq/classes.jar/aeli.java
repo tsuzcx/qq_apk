@@ -1,34 +1,44 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aeli
-  implements Animation.AnimationListener
+  extends BroadcastReceiver
 {
-  public aeli(DiscussionMemberActivity paramDiscussionMemberActivity, TranslateAnimation paramTranslateAnimation1, Dialog paramDialog, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
+  public aeli(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
+    if (paramIntent == null) {}
+    do
     {
-      this.jdField_a_of_type_AndroidAppDialog.show();
-      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
-      DiscussionMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity).setVisibility(8);
-    }
-    while (paramAnimation != this.b) {
+      do
+      {
+        return;
+      } while (!"changeGroupTribe".equals(paramIntent.getStringExtra("event")));
+      paramContext = paramIntent.getStringExtra("data");
+    } while (paramContext == null);
+    try
+    {
+      paramContext = new JSONObject(paramContext);
+      this.a.a.tribeId = paramContext.optInt("bid");
+      this.a.a.tribeName = paramContext.optString("bname");
+      this.a.e = true;
+      paramContext = new ArrayList();
+      if (!TextUtils.isEmpty(this.a.a.tribeName)) {
+        paramContext.add(this.a.a.tribeName);
+      }
+      this.a.a(9, paramContext, true, 1, true);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.requestLayout();
+    catch (JSONException paramContext) {}
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

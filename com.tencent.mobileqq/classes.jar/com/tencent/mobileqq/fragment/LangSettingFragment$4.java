@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.fragment;
 
-import aguy;
+import afqy;
+import amvi;
 import android.support.v4.app.FragmentActivity;
-import aobf;
 import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
 class LangSettingFragment$4
@@ -12,9 +12,9 @@ class LangSettingFragment$4
   
   public void run()
   {
-    aobf.c(this.this$0.getActivity());
+    amvi.c(this.this$0.getActivity());
     this.this$0.getActivity().finish();
-    aguy.b(this.this$0.getActivity(), GeneralSettingActivity.class);
+    afqy.b(this.this$0.getActivity(), GeneralSettingActivity.class);
   }
 }
 

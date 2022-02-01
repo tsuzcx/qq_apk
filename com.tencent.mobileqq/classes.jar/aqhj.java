@@ -1,22 +1,50 @@
-import java.util.Random;
+import android.support.annotation.NonNull;
 
 public class aqhj
+  extends aqgc<aqhi>
 {
-  public static Random a = new Random();
-  
-  public static final float a(float paramFloat)
+  @NonNull
+  public static aqhi c()
   {
-    return aqhl.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
+    aqhi localaqhi2 = (aqhi)apub.a().a(618);
+    aqhi localaqhi1 = localaqhi2;
+    if (localaqhi2 == null) {
+      localaqhi1 = new aqhi();
+    }
+    return localaqhi1;
   }
   
-  public static final float b(float paramFloat)
+  @NonNull
+  public aqhi a()
   {
-    return aqhk.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
+    return new aqhi();
+  }
+  
+  @NonNull
+  public aqhi a(@NonNull aptx[] paramArrayOfaptx)
+  {
+    return aqhi.a(paramArrayOfaptx[0].a);
+  }
+  
+  @NonNull
+  public aqhi b()
+  {
+    return new aqhi();
+  }
+  
+  public Class<aqhi> clazz()
+  {
+    return aqhi.class;
+  }
+  
+  public int type()
+  {
+    return 618;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqhj
  * JD-Core Version:    0.7.0.1
  */

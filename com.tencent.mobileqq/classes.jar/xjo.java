@@ -1,31 +1,26 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class xjo
-  extends QQUIEventReceiver<xjn, xji>
+class xjo
+  extends whf
 {
-  public xjo(@NonNull xjn paramxjn)
+  xjo(xjn paramxjn) {}
+  
+  public void a()
   {
-    super(paramxjn);
+    super.a();
+    xjn.a(this.a, null);
   }
   
-  public void a(@NonNull xjn paramxjn, @NonNull xji paramxji)
+  public void a(int paramInt)
   {
-    if (TextUtils.equals("SendVideoToFriendHelper", paramxji.jdField_a_of_type_JavaLangString)) {}
-    switch (paramxji.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    }
-    yuk.a(this.TAG, "download video or picture finish. videoLocalPath = %s.", paramxji.b);
-    xjn.a(paramxjn, false);
-    paramxjn.a(paramxjn.jdField_a_of_type_AndroidOsBundle, paramxjn.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramxjn.jdField_a_of_type_JavaLangString, paramxji.b);
+    super.a(paramInt);
+    xwa.a("home_page", "suc_share", 2, paramInt, new String[] { xwa.b(xjn.a(this.a).a) + "", xwa.a(xjn.a(this.a).a) + "", xjn.a(this.a).a.feedId });
   }
   
-  public Class acceptEventClass()
+  public void b(int paramInt)
   {
-    return xji.class;
+    super.b(paramInt);
+    xwa.a("home_page", "share_chanel", 2, paramInt, new String[] { xwa.b(xjn.a(this.a).a) + "", xwa.a(xjn.a(this.a).a) + "", xjn.a(this.a).a.feedId });
   }
 }
 

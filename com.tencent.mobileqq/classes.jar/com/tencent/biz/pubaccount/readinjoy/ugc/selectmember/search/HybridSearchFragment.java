@@ -1,60 +1,52 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search;
 
 import android.view.View;
-import antf;
-import bcbi;
-import bcfr;
-import bcie;
-import bclc;
-import bcmc;
+import baum;
+import bayt;
+import bbbg;
+import bbee;
+import bbfe;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import rie;
-import rig;
-import rih;
-import rii;
+import rpe;
+import rpg;
+import rph;
+import rpi;
 
 public class HybridSearchFragment
   extends BaseSearchFragment
-  implements bcie
+  implements bbbg
 {
   private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private rih jdField_a_of_type_Rih;
+  private rph jdField_a_of_type_Rph;
   
   public static HybridSearchFragment a()
   {
     return new HybridSearchFragment();
   }
   
-  public bcbi a()
+  public baum a()
   {
-    return new rig(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aoof);
+    return new rpg(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder);
   }
   
-  public bcmc a()
+  public bbfe a()
   {
     ArrayList localArrayList = new ArrayList();
     HashSet localHashSet = new HashSet();
-    localHashSet.add(antf.aC);
-    localArrayList.add(new bclc(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1, 1, null, localHashSet));
-    localArrayList.add(new rie());
-    return new rii(localArrayList);
+    localHashSet.add(AppConstants.BABY_Q_UIN);
+    localArrayList.add(new bbee(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1, 1, null, localHashSet));
+    localArrayList.add(new rpe());
+    return new rpi(localArrayList);
   }
   
-  public void a(View paramView)
+  public void a(rph paramrph)
   {
-    paramView = (bcfr)paramView.getTag(2131381109);
-    if (this.jdField_a_of_type_Rih != null) {
-      this.jdField_a_of_type_Rih.a(paramView);
-    }
-  }
-  
-  public void a(rih paramrih)
-  {
-    this.jdField_a_of_type_Rih = paramrih;
+    this.jdField_a_of_type_Rph = paramrph;
   }
   
   public boolean a()
@@ -67,6 +59,14 @@ public class HybridSearchFragment
     this.jdField_a_of_type_JavaUtilSet.clear();
     if (paramList != null) {
       this.jdField_a_of_type_JavaUtilSet.addAll(paramList);
+    }
+  }
+  
+  public void onAction(View paramView)
+  {
+    paramView = (bayt)paramView.getTag(2131380831);
+    if (this.jdField_a_of_type_Rph != null) {
+      this.jdField_a_of_type_Rph.a(paramView);
     }
   }
 }

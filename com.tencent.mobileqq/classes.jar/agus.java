@@ -1,21 +1,13 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class agus
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class agus
+  implements agut
 {
-  agus(aguk paramaguk) {}
-  
-  public void onGlobalLayout()
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if ((aguk.a(this.a).a.getLineCount() > 3) && (aguk.a(this.a).h()) && (aguk.a(this.a).C()) && (!bdgb.b()))
-    {
-      this.a.a.setVisibility(0);
-      return;
-    }
-    this.a.a.setVisibility(8);
+    paramagap.c(paramMessageRecord, paramLinearLayout, paramagcc);
   }
 }
 

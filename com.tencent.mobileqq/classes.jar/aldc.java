@@ -1,21 +1,18 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.lang.ref.WeakReference;
 
 public class aldc
-  implements BusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  public void a(int paramInt, String paramString, Bundle paramBundle) {}
+  public aldc(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 1) && (paramBundle != null))
-    {
-      paramInt = paramBundle.getInt("btype");
-      String str = paramBundle.getString("bid");
-      if ((alda.a(paramInt)) && (!TextUtils.isEmpty(str))) {
-        a(paramInt, str, paramBundle);
-      }
+    if ((this.a.a != null) && (this.a.a.get() != null)) {
+      ((TVK_IMediaPlayer)this.a.a.get()).pauseDownload();
     }
   }
 }

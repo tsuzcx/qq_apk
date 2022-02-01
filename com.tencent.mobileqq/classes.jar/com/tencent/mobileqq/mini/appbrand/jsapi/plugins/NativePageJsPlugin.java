@@ -3,12 +3,12 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import bguq;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.mobileqq.activity.TroopInfoActivity;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 import org.json.JSONObject;
@@ -69,7 +69,7 @@ public class NativePageJsPlugin
       return;
     }
     paramString = TroopInfoActivity.a(paramString, 5);
-    bguq.a(this.jsPluginEngine.appBrandRuntime.activity, paramString, 2);
+    TroopUtils.openTroopInfoActivity(this.jsPluginEngine.appBrandRuntime.activity, paramString, 2);
   }
   
   public void jumpToPublic(String paramString)

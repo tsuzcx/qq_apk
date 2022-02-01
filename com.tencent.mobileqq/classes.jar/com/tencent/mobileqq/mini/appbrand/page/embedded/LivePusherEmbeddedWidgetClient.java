@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.MotionEvent;
 import android.view.Surface;
-import bhsr;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
@@ -15,6 +14,7 @@ import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.mini.widget.media.live.TXLivePusherJSAdapter;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.embeddedwidget.interfaces.IEmbeddedWidget;
 import java.util.Map;
@@ -216,17 +216,13 @@ public class LivePusherEmbeddedWidgetClient
     if ("snapshot".equals(localObject1))
     {
       boolean bool2 = false;
+      paramJSONObject = paramJSONObject.optString("quality");
       boolean bool1 = bool2;
       if (paramJSONObject != null)
       {
-        paramJSONObject = paramJSONObject.optString("quality");
         bool1 = bool2;
-        if (paramJSONObject != null)
-        {
-          bool1 = bool2;
-          if (paramJSONObject.equalsIgnoreCase("compressed")) {
-            bool1 = true;
-          }
+        if (paramJSONObject.equalsIgnoreCase("compressed")) {
+          bool1 = true;
         }
       }
       takePhoto(paramJsRuntime, "operateXWebLivePusher", bool1, paramInt);
@@ -263,13 +259,13 @@ public class LivePusherEmbeddedWidgetClient
           }
           catch (JSONException localJSONException2)
           {
-            break label615;
+            break label607;
           }
           localJSONException3 = localJSONException3;
           paramJSONObject = (JSONObject)localObject1;
           localObject1 = localJSONException3;
         }
-        label615:
+        label607:
         continue;
         if (i == -1)
         {
@@ -293,7 +289,7 @@ public class LivePusherEmbeddedWidgetClient
       paramJSONObject = new JSONObject();
       try
       {
-        if (!bhsr.a(this.tempAudioFilePath))
+        if (!StringUtil.isEmpty(this.tempAudioFilePath))
         {
           paramJSONObject.put("tempFilePath", this.tempAudioFilePath);
           this.tempAudioFilePath = null;
@@ -372,6 +368,7 @@ public class LivePusherEmbeddedWidgetClient
   public void onDestroy()
   {
     QLog.i("miniapp-embedded-live-pusher", 2, "LivePusherEmbeddedWidgetClient.onDestroy");
+    release();
   }
   
   public void onRectChanged(Rect paramRect)

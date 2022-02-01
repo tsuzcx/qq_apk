@@ -166,9 +166,9 @@ public class BlockAdPlugin
     if ("createBlockAd".equals(paramString1))
     {
       QLog.i("[minigame] BlockAdPlugin", 2, "receive createBlockAd event");
-      if ((this.jsPluginEngine == null) || (TextUtils.isEmpty(paramString2)))
+      if (TextUtils.isEmpty(paramString2))
       {
-        QLog.i("[minigame] BlockAdPlugin", 2, "handle createBlockAd event, jsPluginEngine == null");
+        QLog.i("[minigame] BlockAdPlugin", 2, "handle createBlockAd event, jsonParams == null");
         return "";
       }
       try
@@ -191,7 +191,7 @@ public class BlockAdPlugin
         str1 = "";
         i = 0;
         if (!(this.jsPluginEngine.activityContext instanceof GameActivity)) {
-          break label226;
+          break label219;
         }
       }
       str1 = ((GameActivity)this.jsPluginEngine.activityContext).getMiniGameAppId();
@@ -199,7 +199,7 @@ public class BlockAdPlugin
       {
         i = 90;
         BlockAdManager.getInstance().initActivitySize((Activity)localObject2);
-        label226:
+        label219:
         localObject2 = this.jsPluginEngine.activityContext.getCurrentAccountUin();
         String str2 = AdUtils.getSpAdGdtCookie(13);
         initAdParam(paramJsRuntime, AdUtils.createAdRequest(this.jsPluginEngine.activityContext, Long.valueOf((String)localObject2).longValue(), ((BlockAdInfo)localObject1).getAdUnitId(), str1, 53, 13, i, str2, "", "", "", "", ((BlockAdInfo)localObject1).getSize()), (BlockAdInfo)localObject1);
@@ -215,11 +215,6 @@ public class BlockAdPlugin
         if (QLog.isColorLevel()) {
           QLog.i("[minigame] BlockAdPlugin", 2, "receive operateBlockAd event");
         }
-        if (this.jsPluginEngine == null)
-        {
-          QLog.i("[minigame] BlockAdPlugin", 2, "handle operateBlockAd event, jsPluginEngine == null");
-          return "";
-        }
         try
         {
           localObject1 = new JSONObject(paramString2);
@@ -228,7 +223,7 @@ public class BlockAdPlugin
           QLog.i("[minigame] BlockAdPlugin", 2, "handle operateBlockAd type = " + str1);
           localObject1 = BlockAdManager.getInstance().getBlockAdInfo(i);
           if (!"show".equals(str1)) {
-            break label485;
+            break label459;
           }
           if (!(this.jsPluginEngine.activityContext instanceof GameActivity)) {
             continue;
@@ -240,7 +235,7 @@ public class BlockAdPlugin
           QLog.i("[minigame] BlockAdPlugin", 2, "handle operateBlockAd parse json error", localJSONException2);
         }
         continue;
-        label485:
+        label459:
         if ("hide".equals(localJSONException2))
         {
           if ((this.jsPluginEngine.activityContext instanceof GameActivity)) {
@@ -260,9 +255,9 @@ public class BlockAdPlugin
       else if ("updateBlockAdSize".equals(paramString1))
       {
         QLog.i("[minigame] BlockAdPlugin", 2, "updateBlockAdSize " + paramString2);
-        if ((this.jsPluginEngine == null) || (this.jsPluginEngine.activityContext == null) || (paramJsRuntime == null))
+        if (paramJsRuntime == null)
         {
-          QLog.i("[minigame] BlockAdPlugin", 2, "handle updateBlockAdSize event, jsPluginEngine == null");
+          QLog.i("[minigame] BlockAdPlugin", 2, "handle updateBlockAdSize event, webview == null");
           return "";
         }
         updateBlockSize(paramJsRuntime, paramString2);

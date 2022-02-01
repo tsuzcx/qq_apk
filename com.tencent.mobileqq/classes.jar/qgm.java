@@ -1,52 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.HashMap;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableCallBack;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/lite/PTSLiteSwiperEventDispatcher$Builder;", "", "()V", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "getAdapter", "()Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "setAdapter", "(Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;)V", "articleInfoMap", "Ljava/util/HashMap;", "", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;", "Lkotlin/collections/HashMap;", "getArticleInfoMap", "()Ljava/util/HashMap;", "setArticleInfoMap", "(Ljava/util/HashMap;)V", "positionMap", "", "getPositionMap", "setPositionMap", "build", "Lcom/tencent/biz/pubaccount/readinjoy/pts/lite/PTSLiteSwiperEventDispatcher;", "withArticleInfoMap", "withPositionMap", "withRIJAdapter", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/proteus/utils/RIJProteusDrawableHelper$getDrawableFromNet$3", "Lcom/tencent/image/URLDrawable$DownloadListener;", "reTry", "", "getReTry", "()I", "setReTry", "(I)V", "onFileDownloadFailed", "", "errorCode", "onFileDownloadStarted", "onFileDownloadSucceed", "l", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class qgm
+  implements URLDrawable.DownloadListener
 {
-  @NotNull
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  @Nullable
-  private sel jdField_a_of_type_Sel;
-  @NotNull
-  private HashMap<String, ArticleInfo> b = new HashMap();
+  private int jdField_a_of_type_Int;
   
-  @NotNull
-  public final qgl a()
+  qgm(String paramString, DrawableUtil.DrawableCallBack paramDrawableCallBack, URLDrawable paramURLDrawable) {}
+  
+  public void onFileDownloadFailed(int paramInt)
   {
-    qgl localqgl = new qgl(null);
-    qgl.a(localqgl, this.jdField_a_of_type_Sel);
-    qgl.a(localqgl, this.jdField_a_of_type_JavaUtilHashMap);
-    qgl.b(localqgl, this.b);
-    return localqgl;
+    paramInt = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (paramInt + 1);
+    if (paramInt < 3) {
+      this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+    }
+    for (;;)
+    {
+      QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onFileDownloadFailed :" + this.jdField_a_of_type_JavaLangString + "  reTry: " + this.jdField_a_of_type_Int);
+      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(false, (Drawable)this.jdField_a_of_type_ComTencentImageURLDrawable);
+    }
   }
   
-  @NotNull
-  public final qgm a(@NotNull HashMap<String, Integer> paramHashMap)
+  public void onFileDownloadStarted()
   {
-    Intrinsics.checkParameterIsNotNull(paramHashMap, "positionMap");
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    return this;
+    QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onFileDownloadStarted :" + this.jdField_a_of_type_JavaLangString);
   }
   
-  @NotNull
-  public final qgm a(@NotNull sel paramsel)
+  public void onFileDownloadSucceed(long paramLong)
   {
-    Intrinsics.checkParameterIsNotNull(paramsel, "adapter");
-    this.jdField_a_of_type_Sel = paramsel;
-    return this;
-  }
-  
-  @NotNull
-  public final qgm b(@NotNull HashMap<String, ArticleInfo> paramHashMap)
-  {
-    Intrinsics.checkParameterIsNotNull(paramHashMap, "articleInfoMap");
-    this.b = paramHashMap;
-    return this;
+    QLog.i("Q.readinjoy.proteus", 1, "getDrawable: onFileDownloadSucceed :" + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(true, (Drawable)this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
 }
 

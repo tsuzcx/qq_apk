@@ -1,25 +1,33 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.Conversation;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import java.util.List;
 
 public class aejo
+  implements PopupWindow.OnDismissListener
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final String b;
-  private final String c;
+  public aejo(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public aejo(Conversation paramConversation, String paramString1, String paramString2, String paramString3)
+  public void onDismiss()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
-  
-  public void a()
-  {
-    aejp localaejp = new aejp(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a = bhlq.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), 230, this.jdField_a_of_type_JavaLangString, this.b, anzj.a(2131701499), anzj.a(2131701503), localaejp, localaejp);
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.setCancelable(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.show();
+    this.a.a = null;
+    Object localObject;
+    if ((TextPreviewTranslateActivity.b(this.a) != null) && (TextPreviewTranslateActivity.b(this.a).size() > 1))
+    {
+      localObject = this.a.getResources();
+      if (!TextPreviewTranslateActivity.a(this.a)) {
+        break label76;
+      }
+    }
+    label76:
+    for (int i = 2130845519;; i = 2130846062)
+    {
+      localObject = ((Resources)localObject).getDrawable(i);
+      TextPreviewTranslateActivity.b(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
+      return;
+    }
   }
 }
 

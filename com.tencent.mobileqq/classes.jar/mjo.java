@@ -1,69 +1,28 @@
-import android.content.Context;
-import com.tencent.av.app.VideoAppInterface;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.ui.VideoControlUI;
 
 public class mjo
-  extends mjj
+  extends Handler
 {
-  protected mjo(Context paramContext, VideoAppInterface paramVideoAppInterface)
+  public mjo(VideoControlUI paramVideoControlUI, Looper paramLooper)
   {
-    super(paramContext, paramVideoAppInterface);
+    super(paramLooper);
   }
   
-  private void a(mep parammep1, mep parammep2, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    int i = paramInt >> 1;
-    int j = mjk.b(paramInt);
-    parammep1.a(0, 0, 0, 0);
-    parammep1.b(i, 0, paramInt, j);
-    parammep1.d(-15197410);
-    parammep2.a(0, 0, 0, 0);
-    parammep2.b(0, 0, i, j);
-    parammep2.d(-15197410);
-  }
-  
-  public int a()
-  {
-    return 2;
-  }
-  
-  public void a(mep[] paramArrayOfmep, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
-  
-  public void a(mep[] paramArrayOfmep, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
-  {
-    boolean bool;
-    if (!this.a.getCurrentAccountUin().equals(paramArrayOfmep[1].a(0)))
+    String str = (String)paramMessage.obj;
+    switch (paramMessage.what)
     {
-      bool = true;
-      lbj.c("ScreenLayoutSmallUIDouble", "layoutCommon: " + paramBoolean + "|" + bool);
-      if (!bool) {
-        break label112;
-      }
-      if (paramBoolean) {
-        break label94;
-      }
-      paramBoolean = true;
-    }
-    label94:
-    label112:
-    for (;;)
-    {
-      if (paramBoolean)
-      {
-        a(paramArrayOfmep[0], paramArrayOfmep[1], paramInt1);
-        return;
-        bool = false;
-        break;
-        paramBoolean = false;
-        continue;
-      }
-      a(paramArrayOfmep[1], paramArrayOfmep[0], paramInt1);
+    default: 
+      return;
+    case 256: 
+      mak.a(this.a.a, 1037, str);
       return;
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
+    mak.a(this.a.a, 1036, str);
   }
 }
 

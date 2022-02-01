@@ -1,23 +1,19 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.widget.RotateableView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
 
-public class ahud
-  extends ahtx
+public final class ahud
+  implements Parcelable.Creator<ZhituResponse>
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  RotateableView jdField_a_of_type_ComTencentMobileqqWidgetRotateableView;
-  boolean jdField_a_of_type_Boolean = false;
-  public long b;
-  String b;
-  long jdField_c_of_type_Long;
-  String jdField_c_of_type_JavaLangString;
-  View d;
-  int e;
-  int f;
-  int g;
+  public ZhituResponse a(Parcel paramParcel)
+  {
+    return new ZhituResponse(paramParcel);
+  }
   
-  public ahud(ahtz paramahtz) {}
+  public ZhituResponse[] a(int paramInt)
+  {
+    return new ZhituResponse[paramInt];
+  }
 }
 
 

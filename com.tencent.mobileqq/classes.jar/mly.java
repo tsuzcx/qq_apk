@@ -1,23 +1,16 @@
-import android.view.MotionEvent;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.beauty.BeautyView;
 
 public class mly
-  implements lsi
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference<mlx> a;
+  public mly(BeautyView paramBeautyView) {}
   
-  public mly(mlx parammlx)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(parammlx);
-  }
-  
-  public boolean a(lsh paramlsh, MotionEvent paramMotionEvent)
-  {
-    mlx localmlx = (mlx)this.a.get();
-    if (localmlx != null) {
-      return localmlx.a(paramlsh, paramMotionEvent);
-    }
-    return false;
+    this.a.onClick(this.a.a);
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.thumbplayer.tplayer;
 
 import android.view.Surface;
+import android.view.SurfaceHolder;
 import com.tencent.thumbplayer.api.TPCaptureCallBack;
 import com.tencent.thumbplayer.api.TPCaptureParams;
 import com.tencent.thumbplayer.api.TPOptionalParam;
@@ -39,6 +40,8 @@ public abstract interface TPPlayerInternal$ITPPlayerSwitchThreadListener
   
   public abstract long handleGetPlayerBufferLength();
   
+  public abstract int handleGetPlayerType();
+  
   public abstract TPProgramInfo[] handleGetProgramInfo();
   
   public abstract long handleGetPropertyLong(int paramInt);
@@ -71,11 +74,15 @@ public abstract interface TPPlayerInternal$ITPPlayerSwitchThreadListener
   
   public abstract void handlePause();
   
+  public abstract void handlePauseDownload();
+  
   public abstract void handlePrepareAsync();
   
   public abstract void handleRelease();
   
   public abstract void handleReset();
+  
+  public abstract void handleResumeDownload();
   
   public abstract void handleSeekTo(int paramInt1, int paramInt2);
   
@@ -84,6 +91,8 @@ public abstract interface TPPlayerInternal$ITPPlayerSwitchThreadListener
   public abstract void handleSelectTrack(int paramInt, long paramLong);
   
   public abstract void handleSetAudioGainRatio(float paramFloat);
+  
+  public abstract void handleSetAudioNormalizeVolumeParams(String paramString);
   
   public abstract void handleSetDataSource(TPThreadSwitchCommons.TPDataSourceParams paramTPDataSourceParams);
   
@@ -99,9 +108,13 @@ public abstract interface TPPlayerInternal$ITPPlayerSwitchThreadListener
   
   public abstract void handleSetSurface(Surface paramSurface);
   
+  public abstract void handleSetSurfaceHolder(SurfaceHolder paramSurfaceHolder);
+  
   public abstract void handleStart();
   
   public abstract void handleStop();
+  
+  public abstract void handleStopAsync();
   
   public abstract void handleSwitchDef(ITPMediaAsset paramITPMediaAsset, long paramLong, TPVideoInfo paramTPVideoInfo, int paramInt);
   

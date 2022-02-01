@@ -1,24 +1,48 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StrikethroughSpan;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 
-final class swq
-  extends qdl
+class swq
 {
-  swq(int paramInt1, int paramInt2, int paramInt3, String paramString, ArticleInfo paramArticleInfo)
+  int a;
+  private int b;
+  private int c;
+  
+  public static swq a(int paramInt, Object... paramVarArgs)
   {
-    super(paramInt1, paramInt2, paramInt3);
+    swq localswq = new swq();
+    localswq.a = paramInt;
+    switch (paramInt)
+    {
+    case 3: 
+    default: 
+      return localswq;
+    case 1: 
+    case 2: 
+      localswq.b = ((Integer)paramVarArgs[0]).intValue();
+      return localswq;
+    }
+    localswq.c = ((Integer)paramVarArgs[0]).intValue();
+    return localswq;
   }
   
-  public void onClick(@NonNull View paramView)
+  public Object a()
   {
-    ozs.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString, null);
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.isPGCShortContent()))
+    switch (this.a)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.clickArea = 11;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.clickJumpTarget = qam.a(this.jdField_a_of_type_JavaLangString, "-1");
-      ozs.b(paramView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+    default: 
+      return null;
+    case 1: 
+      return new swp(this.b);
+    case 2: 
+      return new ForegroundColorSpan(this.b);
+    case 5: 
+      return new StrikethroughSpan();
+    case 4: 
+      return new StyleSpan(this.c);
     }
+    return new UnderlineSpan();
   }
 }
 

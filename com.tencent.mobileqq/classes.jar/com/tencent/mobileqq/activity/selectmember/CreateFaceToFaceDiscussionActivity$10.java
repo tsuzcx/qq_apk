@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import amcy;
+import akyz;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 
 public class CreateFaceToFaceDiscussionActivity$10
@@ -10,7 +10,7 @@ public class CreateFaceToFaceDiscussionActivity$10
   
   public void run()
   {
-    SosoInterface.a(new amcy(this, 0, true, false, 60000L, false, false, "CreateFaceToFaceDiscussionActivity"));
+    SosoInterface.startLocation(new akyz(this, 0, true, false, 60000L, false, false, "CreateFaceToFaceDiscussionActivity"));
   }
 }
 

@@ -1,8 +1,11 @@
-public class anar
+import com.google.gson.reflect.TypeToken;
+import com.tencent.mobileqq.search.fragment.searchentry.hippy.TKDSearchHistoryBean;
+import java.util.ArrayList;
+
+class anar
+  extends TypeToken<ArrayList<TKDSearchHistoryBean>>
 {
-  public int a;
-  public CharSequence a;
-  public int b;
+  anar(anaq paramanaq) {}
 }
 
 

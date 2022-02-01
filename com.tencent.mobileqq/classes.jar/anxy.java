@@ -1,17 +1,64 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class anxy
-  implements aoel
 {
-  public anxy(FrameHelperActivity paramFrameHelperActivity) {}
+  private static anxy a;
   
-  public void a()
+  public static anxy a()
   {
-    if (this.a.a.hasMessages(17)) {
-      this.a.a.removeMessages(17);
+    if (a == null) {
+      a = new anxy();
     }
-    this.a.a.sendEmptyMessage(17);
+    return a;
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("AR_选图_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("AR_选图_启动累计耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong2 - paramLong1) }));
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("AR_识别_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
+  }
+  
+  public void b(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("QR_识别_启动累计耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong2 - paramLong1) }));
+    }
+  }
+  
+  public void c(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("AR_追踪_单帧耗时 timeCost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
+  }
+  
+  public void d(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("人脸_特征提取_单帧耗时 time cost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
+  }
+  
+  public void e(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARDebugReport", 2, String.format("人脸_追踪_单帧耗时 time cost=%sms", new Object[] { Long.valueOf(paramLong) }));
+    }
   }
 }
 

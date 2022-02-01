@@ -1,8 +1,17 @@
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bbcc
+class bbcc
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean, List<aism> paramList);
+  bbcc(bbcb parambbcb, bayb parambayb) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Bayb.b(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

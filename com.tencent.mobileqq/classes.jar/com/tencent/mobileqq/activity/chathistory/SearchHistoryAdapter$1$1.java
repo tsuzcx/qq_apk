@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import ajbw;
+import ahwg;
 
 class SearchHistoryAdapter$1$1
   implements Runnable

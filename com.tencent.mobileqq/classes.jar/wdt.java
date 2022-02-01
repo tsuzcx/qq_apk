@@ -1,15 +1,37 @@
-import android.widget.FrameLayout;
-import com.tencent.biz.qqcircle.widgets.QCirclePaiTongKuanIconView;
-import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresenter.MultiPicAdapter;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import java.util.List;
 
 public class wdt
 {
-  public FrameLayout a;
-  public QCirclePaiTongKuanIconView a;
-  public URLImageView a;
+  public int a;
+  public String a;
+  public List<LikeEntry> a;
+  public int b;
   
-  public wdt(QCircleFeedItemPicPresenter.MultiPicAdapter paramMultiPicAdapter) {}
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (wdt)paramObject;
+      if (this.a != null) {
+        return this.a.equals(paramObject.a);
+      }
+    } while (paramObject.a == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.a != null) {
+      return this.a.hashCode();
+    }
+    return 0;
+  }
 }
 
 

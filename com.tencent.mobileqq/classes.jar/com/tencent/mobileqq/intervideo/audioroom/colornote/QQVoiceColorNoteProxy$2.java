@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.intervideo.audioroom.colornote;
 
-import aqrn;
+import apkw;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 
 class QQVoiceColorNoteProxy$2
-  implements aqrn
+  implements apkw
 {
   QQVoiceColorNoteProxy$2(QQVoiceColorNoteProxy paramQQVoiceColorNoteProxy, IQQVoiceServiceInfo paramIQQVoiceServiceInfo) {}
   

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.emotionintegrate;
 
+import amtj;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,10 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anzj;
-import asto;
-import astp;
-import bdll;
+import arfo;
+import arfp;
+import bcef;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
@@ -45,22 +45,22 @@ public abstract class AIOEmotionBaseFragment
   protected void a(View paramView)
   {
     paramView.setFitsSystemWindows(true);
-    TextView localTextView = (TextView)paramView.findViewById(2131369042);
-    localTextView.setText(anzj.a(2131698940));
-    localTextView.setOnClickListener(new asto(this));
+    TextView localTextView = (TextView)paramView.findViewById(2131369068);
+    localTextView.setText(amtj.a(2131699175));
+    localTextView.setOnClickListener(new arfo(this));
     if (a())
     {
-      paramView = (ImageView)paramView.findViewById(2131369056);
-      paramView.setImageResource(2130838040);
+      paramView = (ImageView)paramView.findViewById(2131369082);
+      paramView.setImageResource(2130838065);
       paramView.setVisibility(0);
-      paramView.setContentDescription(anzj.a(2131698939));
-      paramView.setOnClickListener(new astp(this));
+      paramView.setContentDescription(amtj.a(2131699174));
+      paramView.setOnClickListener(new arfp(this));
     }
   }
   
   public void a(String paramString)
   {
-    bdll.b(null, "dc00898", "", "", paramString, paramString, this.jdField_a_of_type_Int, 0, "", "", "", "");
+    bcef.b(null, "dc00898", "", "", paramString, paramString, this.jdField_a_of_type_Int, 0, "", "", "", "");
   }
   
   public boolean a()
@@ -103,7 +103,7 @@ public abstract class AIOEmotionBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionBaseFragment
  * JD-Core Version:    0.7.0.1
  */

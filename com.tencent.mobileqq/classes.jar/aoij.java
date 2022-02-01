@@ -1,28 +1,16 @@
-import android.os.Looper;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-public final class aoij
-  extends MqqHandler
+public class aoij
 {
-  public aoij(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void removeCallbacksAndMessages(Object paramObject)
-  {
-    if (paramObject == null)
-    {
-      QLog.e("ThreadManager", 1, "global fileHandler cannot excute removeCallbacksAndMessages");
-      return;
-    }
-    super.removeCallbacksAndMessages(paramObject);
-  }
+  public ArCloudConfigInfo a;
+  public String a = "";
+  public boolean a;
+  public String b = "";
+  public boolean b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoij
  * JD-Core Version:    0.7.0.1
  */

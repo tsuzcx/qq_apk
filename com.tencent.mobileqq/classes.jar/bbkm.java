@@ -1,49 +1,52 @@
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseArray;
 
-class bbkm
-  implements bbmo
+public class bbkm
+  extends bbll
 {
-  bbkm(bbkl parambbkl, int[] paramArrayOfInt) {}
+  public int a;
+  public long a;
+  private SparseArray<Object> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public int c;
+  public long c;
+  public boolean c;
+  public int d;
+  public long d;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  public boolean g = true;
+  public boolean h;
+  public boolean i;
   
-  public void a()
+  public bbkm(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    QLog.w("MergeEditVideo", 1, "mp4ReEncoder start!");
+    this.jdField_a_of_type_Long = paramLong1;
+    this.e = paramLong2;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+    this.c = paramBoolean3;
+    this.d = paramBoolean4;
   }
   
-  public void a(String arg1)
+  public Object a(int paramInt)
   {
-    yup.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { ??? });
-    synchronized (bbkl.a(this.jdField_a_of_type_Bbkl))
-    {
-      bbkl.a(this.jdField_a_of_type_Bbkl, true);
-      bbkl.a(this.jdField_a_of_type_Bbkl).notifyAll();
-      QLog.w("MergeEditVideo", 1, "mp4ReEncoder encode finish!");
-      return;
+    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
+      return this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
     }
+    return null;
   }
   
-  public void a_(int paramInt, Throwable arg2)
+  public void a(int paramInt, Object paramObject)
   {
-    String str;
-    if (??? != null) {
-      str = ???.getMessage();
+    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
+      this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     }
-    for (;;)
-    {
-      yup.b("video_edit", "reEncodeResult", this.jdField_a_of_type_ArrayOfInt[0], 0, new String[] { "", str });
-      yuk.e("MergeEditVideo", "encode error errorCode = " + paramInt + " Exception = " + ???);
-      bbkl.a(this.jdField_a_of_type_Bbkl, paramInt);
-      synchronized (bbkl.a(this.jdField_a_of_type_Bbkl))
-      {
-        bbkl.a(this.jdField_a_of_type_Bbkl, true);
-        bbkl.a(this.jdField_a_of_type_Bbkl).notifyAll();
-        return;
-        str = "UNKNOWN ERROR";
-      }
-    }
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramObject);
   }
-  
-  public void b() {}
 }
 
 

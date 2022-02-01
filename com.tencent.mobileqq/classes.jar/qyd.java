@@ -1,15 +1,20 @@
-public class qyd
+import cooperation.liveroom.LiveRoomGiftCallback;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "type", "", "args", "", "onCall"}, k=3, mv={1, 1, 16})
+final class qyd
+  implements LiveRoomGiftCallback
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
+  qyd(qyb paramqyb) {}
   
-  public qyd(String paramString)
+  public final void onCall(int paramInt, @Nullable String paramString)
   {
-    this.d = paramString;
+    if (paramInt == 7)
+    {
+      qyb.a(this.a);
+      qyb.b(this.a);
+    }
   }
 }
 

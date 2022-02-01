@@ -1,21 +1,46 @@
-import android.view.ViewTreeObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import android.content.Context;
+import android.content.res.AssetManager;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class sza
-  implements szh
+  implements ComplementFileStringLoader
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private String jdField_a_of_type_JavaLangString;
+  private szh jdField_a_of_type_Szh;
   
-  public sza(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView, int paramInt1, int paramInt2)
+  public sza(Context paramContext, String paramString)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Szh = new szh(paramContext, paramString);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public String loadFileAsString(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new szb(this, paramInt1, paramInt2));
+    AssetManager localAssetManager = this.jdField_a_of_type_AndroidContentContext.getAssets();
+    try
+    {
+      InputStream localInputStream = this.jdField_a_of_type_Szh.a(paramString);
+      Object localObject = localInputStream;
+      if (localInputStream == null) {
+        localObject = localAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
+      }
+      localObject = szr.a((InputStream)localObject);
+      return localObject;
+    }
+    catch (IOException localIOException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("AssetsComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
+        localIOException.printStackTrace();
+      }
+    }
+    return null;
   }
 }
 

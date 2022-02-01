@@ -1,27 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class alvv
-  implements Animation.AnimationListener
+class alvv
+  implements EIPCResultCallback
 {
-  public alvv(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  alvv(alvp paramalvp) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    NewFlowCameraActivity.a(this.a).setVisibility(4);
-    NewFlowCameraActivity.a(this.a).setEnabled(false);
-    this.a.e.setVisibility(4);
-    alug.a("", "0X8007C05", this.a.c + "", "", "", "");
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    NewFlowCameraActivity.a(this.a).setEnabled(false);
+    QLog.i("cmgame_process.CmGameServerQIPCModule", 1, "CmShow onDressChanged send!");
   }
 }
 

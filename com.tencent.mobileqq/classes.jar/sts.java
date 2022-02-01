@@ -1,16 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
 class sts
-  extends BroadcastReceiver
+  extends stg
 {
-  sts(stp paramstp) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public sts(stp paramstp, View paramView, BaseData paramBaseData)
   {
-    this.a.g();
+    super(paramView, paramBaseData);
   }
+  
+  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean) {}
 }
 
 

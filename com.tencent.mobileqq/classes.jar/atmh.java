@@ -1,22 +1,24 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.ViewStub;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardFileOption;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class atmh
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public atmh(FileAssistantActivity paramFileAssistantActivity) {}
+  public atmh(ForwardFileOption paramForwardFileOption) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    super.onAnimationEnd(paramAnimator);
-    FileAssistantActivity.a(this.a).setVisibility(8);
+    ForwardFileOption.a(this.a);
+    ForwardFileOption.a(this.a, paramView);
+    bcef.b(null, "dc00898", "", "", "0X800AEEA", "0X800AEEA", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atmh
  * JD-Core Version:    0.7.0.1
  */

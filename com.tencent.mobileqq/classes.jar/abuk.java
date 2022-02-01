@@ -1,31 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.datadef.ProductInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class abuk
-  implements Parcelable.Creator<ProductInfo>
+public class abuk
+  implements View.OnClickListener
 {
-  public ProductInfo a(Parcel paramParcel)
-  {
-    ProductInfo localProductInfo = new ProductInfo();
-    localProductInfo.productId = paramParcel.readInt();
-    localProductInfo.deviceType = paramParcel.readInt();
-    localProductInfo.bindType = paramParcel.readInt();
-    localProductInfo.supportMainMsgType = paramParcel.readInt();
-    localProductInfo.supportFuncMsgType = paramParcel.readInt();
-    localProductInfo.deviceName = paramParcel.readString();
-    localProductInfo.uConnectType = paramParcel.readInt();
-    localProductInfo.deviceOSType = paramParcel.readInt();
-    localProductInfo.regType = paramParcel.readInt();
-    localProductInfo.linkStateDesc = paramParcel.readString();
-    localProductInfo.linkStepDesc = paramParcel.readString();
-    localProductInfo.linkDescImg = paramParcel.readString();
-    return localProductInfo;
-  }
+  public abuk(GdtVideoCeilingTitleBar paramGdtVideoCeilingTitleBar) {}
   
-  public ProductInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ProductInfo[paramInt];
+    if (GdtVideoCeilingTitleBar.a(this.a) != null) {
+      GdtVideoCeilingTitleBar.a(this.a).a(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

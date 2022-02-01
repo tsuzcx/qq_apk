@@ -1,23 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
+import java.util.Map;
 
 public class albd
-  implements View.OnClickListener
+  extends amsu
 {
-  public albd(LingHbFragment paramLingHbFragment) {}
+  public albd(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  public void onClick(View paramView)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    QLog.i("LingHbFragment", 2, "change others...");
-    if (this.a.channel == 65536) {}
-    for (String str = "yyhongbao.word.change";; str = "klhongbao.word.change")
-    {
-      this.a.addUploadData(str, "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (paramBoolean1) {
+      this.a.c();
+    }
+  }
+  
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  {
+    this.a.c();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.c();
     }
   }
 }

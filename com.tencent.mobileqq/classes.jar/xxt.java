@@ -1,29 +1,26 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
-public class xxt
-  extends wjm<xxn, wqm>
+class xxt
+  implements xzv
 {
-  public xxt(xxn paramxxn)
+  xxt(xxs paramxxs) {}
+  
+  public void a()
   {
-    super(paramxxn);
+    xvv.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
   }
   
-  public void a(@NonNull xxn paramxxn, @NonNull wqm paramwqm)
+  public void a(TroopBarPOI paramTroopBarPOI)
   {
-    if ((paramxxn.a != null) && (TextUtils.equals(paramxxn.a.b, paramwqm.a)))
+    xvv.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
+    if (paramTroopBarPOI != null)
     {
-      yuk.a(this.TAG, "receive feed info change event. %s.", paramwqm.toString());
-      paramxxn.i();
+      this.a.a.setLocation(paramTroopBarPOI.a());
+      return;
     }
+    this.a.a.setLocation("None for test!!");
   }
-  
-  public Class acceptEventClass()
-  {
-    return wqm.class;
-  }
-  
-  public void b(@NonNull xxn paramxxn, @NonNull wqm paramwqm) {}
 }
 
 

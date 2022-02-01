@@ -1,90 +1,19 @@
-import androidx.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class belj
-  extends belk
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  private belk jdField_a_of_type_Belk = new belk();
-  belm jdField_a_of_type_Belm = new belm();
+  public belj(ReciteFragment paramReciteFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    a(false);
-  }
-  
-  public void a(belm parambelm)
-  {
-    belm localbelm;
-    if (parambelm.jdField_a_of_type_Int > 0)
-    {
-      if ((this.jdField_a_of_type_Belm.jdField_a_of_type_Char != parambelm.jdField_a_of_type_Char) || (!belw.a(this.jdField_a_of_type_Belm.jdField_a_of_type_JavaLangString, parambelm.jdField_a_of_type_JavaLangString))) {
-        break label135;
-      }
-      if (parambelm.b > 0)
-      {
-        localbelm = this.jdField_a_of_type_Belm;
-        localbelm.jdField_a_of_type_Int += this.jdField_a_of_type_Int + parambelm.jdField_a_of_type_Int;
-        localbelm = this.jdField_a_of_type_Belm;
-        localbelm.b += parambelm.b;
-        this.jdField_a_of_type_Int = 0;
-      }
-    }
-    else
-    {
-      return;
-    }
-    if (this.jdField_a_of_type_Belm.b == 0)
-    {
-      localbelm = this.jdField_a_of_type_Belm;
-      localbelm.jdField_a_of_type_Int += parambelm.jdField_a_of_type_Int;
-      return;
-    }
-    this.jdField_a_of_type_Int += parambelm.jdField_a_of_type_Int;
-    return;
-    label135:
-    a();
-    beks.a(parambelm, this.jdField_a_of_type_Belm);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Belm.jdField_a_of_type_Char != 0) {
-      if ((!paramBoolean) || (this.jdField_a_of_type_Belm.jdField_a_of_type_Char != '=') || (!belw.a(this.jdField_a_of_type_Belm.jdField_a_of_type_JavaLangString))) {
-        break label48;
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Belm.jdField_a_of_type_Char = '\000';
-      return;
-      label48:
-      this.jdField_a_of_type_Belk.a(this.jdField_a_of_type_Belm);
-      if (this.jdField_a_of_type_Int > 0)
-      {
-        this.jdField_a_of_type_Belm.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-        this.jdField_a_of_type_Belm.b = 0;
-        this.jdField_a_of_type_Belk.a(this.jdField_a_of_type_Belm);
-        this.jdField_a_of_type_Int = 0;
-      }
-    }
-  }
-  
-  public void b()
-  {
-    a(true);
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Belk.c();
-    beks.a(this.jdField_a_of_type_Belm);
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    a();
-    return this.jdField_a_of_type_Belk.toString();
+    this.a.m();
+    BeginnerGuideFragment.b(ReciteFragment.a(this.a), null, 4);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

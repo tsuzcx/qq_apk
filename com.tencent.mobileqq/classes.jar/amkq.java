@@ -1,25 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler.1;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
 public class amkq
-  extends Handler
 {
-  public amkq(VipSpecialCareHandler.1 param1, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public static final int a;
+  public static final long a;
+  public static final String a;
+  public static final String b;
+  public static final String c;
+  public long b;
+  public long c;
+  public long d;
   
-  public void handleMessage(Message paramMessage)
+  static
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    amkp.a(this.a.this$0, "-->request timeout");
-    amkp.a(this.a.this$0, -2);
+    jdField_a_of_type_JavaLangString = DeviceInfoUtil.getModel();
+    b = DeviceInfoUtil.getDeviceOSVersion();
+    c = DeviceInfoUtil.getCpuType();
+    jdField_a_of_type_Int = DeviceInfoUtil.getCpuNumber();
+    jdField_a_of_type_Long = DeviceInfoUtil.getCpuFrequency();
   }
 }
 

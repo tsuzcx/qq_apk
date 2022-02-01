@@ -1,53 +1,50 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.MessageQueue.IdleHandler;
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
-import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.data.MessageForApollo;
+import java.util.List;
 
-public class alvf
-  implements MessageQueue.IdleHandler
+public abstract interface alvf
 {
-  public alvf(NewFlowCameraActivity paramNewFlowCameraActivity, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
+  public abstract void a(int paramInt);
   
-  public boolean queueIdle()
-  {
-    if (bdax.d(bdax.b))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.i("PEAK_CAMERA", 2, "hit in black list! needChangeNewSurfaceView ");
-      }
-    }
-    View localView = BaseActivity2.$(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366817);
-    if (localView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(localView);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.F();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.c();
-    if ((!NewFlowCameraActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) && (!NewFlowCameraActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity))) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
-      }
-      NewFlowCameraActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, false);
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("sp_is_cancel_from_music_key", true).commit();
-      NewFlowCameraActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, false);
-      return false;
-      if ((NewFlowCameraActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) && (!NewFlowCameraActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
-      } else {
-        QLog.d("PTV.NewFlowCameraActivity", 2, "onResume from select music and do nothing in 1");
-      }
-    }
-  }
+  public abstract void a(int paramInt1, String paramString1, long paramLong, String paramString2, int paramInt2);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void a(String paramString, int paramInt, long paramLong);
+  
+  public abstract void a(String paramString, int paramInt, List<MessageForApollo> paramList);
+  
+  public abstract void a(String paramString, ahex paramahex);
+  
+  public abstract void a(String paramString, alvh paramalvh);
+  
+  public abstract void a(String paramString, List<ApolloGameData> paramList);
+  
+  public abstract void a(String paramString, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean, int paramInt1, long paramLong, int paramInt2);
+  
+  public abstract void a(boolean paramBoolean, String paramString, int paramInt, long paramLong);
+  
+  public abstract void a(boolean paramBoolean, String paramString1, int paramInt, long paramLong, String paramString2);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt, long paramLong);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void b(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void b(boolean paramBoolean, String paramString, int paramInt, long paramLong);
+  
+  public abstract void c(String paramString);
+  
+  public abstract void d(String paramString);
+  
+  public abstract void e(String paramString);
 }
 
 

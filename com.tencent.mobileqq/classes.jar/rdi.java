@@ -1,6 +1,19 @@
-public abstract interface rdi
+public class rdi
 {
-  public abstract void a(String paramString);
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
 }
 
 

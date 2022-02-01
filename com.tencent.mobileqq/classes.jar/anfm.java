@@ -1,19 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.io.FilenameFilter;
 
-class anfm
-  implements DialogInterface.OnClickListener
+public class anfm
+  implements FilenameFilter
 {
-  anfm(anfj paramanfj) {}
+  public anfm(CleanCache paramCleanCache) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean accept(File paramFile, String paramString)
   {
-    anfj.a(this.a);
+    return !paramString.contains("CrashInfoSummary.txt");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anfm
  * JD-Core Version:    0.7.0.1
  */

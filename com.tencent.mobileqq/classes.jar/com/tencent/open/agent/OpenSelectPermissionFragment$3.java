@@ -1,10 +1,10 @@
 package com.tencent.open.agent;
 
-import avcw;
-import bdll;
-import bjlv;
-import bjop;
-import bjzo;
+import atqa;
+import bcef;
+import bhrj;
+import bhue;
+import biey;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,18 +30,18 @@ class OpenSelectPermissionFragment$3
     }
     ArrayList localArrayList = new ArrayList();
     localObject1 = ((List)localObject1).iterator();
-    bjlv localbjlv1;
+    bhrj localbhrj1;
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
-      localbjlv1 = (bjlv)((Iterator)localObject1).next();
-      localObject2 = new bjlv();
-      ((bjlv)localObject2).jdField_a_of_type_Int = localbjlv1.jdField_a_of_type_Int;
-      ((bjlv)localObject2).jdField_b_of_type_JavaLangString = localbjlv1.jdField_b_of_type_JavaLangString;
-      ((bjlv)localObject2).jdField_b_of_type_Int = localbjlv1.jdField_b_of_type_Int;
-      ((bjlv)localObject2).jdField_a_of_type_Boolean = localbjlv1.jdField_a_of_type_Boolean;
-      ((bjlv)localObject2).jdField_a_of_type_JavaLangString = localbjlv1.jdField_a_of_type_JavaLangString;
-      ((bjlv)localObject2).jdField_b_of_type_Boolean = true;
+      localbhrj1 = (bhrj)((Iterator)localObject1).next();
+      localObject2 = new bhrj();
+      ((bhrj)localObject2).jdField_a_of_type_Int = localbhrj1.jdField_a_of_type_Int;
+      ((bhrj)localObject2).jdField_b_of_type_JavaLangString = localbhrj1.jdField_b_of_type_JavaLangString;
+      ((bhrj)localObject2).jdField_b_of_type_Int = localbhrj1.jdField_b_of_type_Int;
+      ((bhrj)localObject2).jdField_a_of_type_Boolean = localbhrj1.jdField_a_of_type_Boolean;
+      ((bhrj)localObject2).jdField_a_of_type_JavaLangString = localbhrj1.jdField_a_of_type_JavaLangString;
+      ((bhrj)localObject2).jdField_b_of_type_Boolean = true;
       localArrayList.add(localObject2);
     }
     localObject1 = OpenSelectPermissionFragment.a(this.this$0).a();
@@ -50,13 +50,13 @@ class OpenSelectPermissionFragment$3
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localbjlv1 = (bjlv)((Iterator)localObject1).next();
+        localbhrj1 = (bhrj)((Iterator)localObject1).next();
         localObject2 = localArrayList.iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          bjlv localbjlv2 = (bjlv)((Iterator)localObject2).next();
-          if (localbjlv1.jdField_b_of_type_Int == localbjlv2.jdField_b_of_type_Int) {
-            localbjlv2.jdField_b_of_type_Boolean = localbjlv1.jdField_b_of_type_Boolean;
+          bhrj localbhrj2 = (bhrj)((Iterator)localObject2).next();
+          if (localbhrj1.jdField_b_of_type_Int == localbhrj2.jdField_b_of_type_Int) {
+            localbhrj2.jdField_b_of_type_Boolean = localbhrj1.jdField_b_of_type_Boolean;
           }
         }
       }
@@ -65,7 +65,7 @@ class OpenSelectPermissionFragment$3
     if (OpenSelectPermissionFragment.a(this.this$0))
     {
       i = 2;
-      avcw.a("KEY_AUTHORIZE_REQUEST");
+      atqa.a("KEY_AUTHORIZE_REQUEST");
       if (0L != OpenSelectPermissionFragment.a(this.this$0)) {
         break label392;
       }
@@ -80,7 +80,7 @@ class OpenSelectPermissionFragment$3
     label406:
     for (localObject1 = "0X800A117";; localObject1 = "0X800A116")
     {
-      bdll.b(null, "dc00898", "", "", (String)localObject1, (String)localObject1, i, 0, "", "", "", "");
+      bcef.b(null, "dc00898", "", "", (String)localObject1, (String)localObject1, i, 0, "", "", "", "");
       return;
       i = 1;
       break;

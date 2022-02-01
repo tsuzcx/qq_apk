@@ -1,6 +1,24 @@
 public class bbss
 {
-  public static final String a = anzj.a(2131712994);
+  public float a;
+  public int a;
+  public aktu a;
+  public boolean a;
+  public float b;
+  public int b;
+  public int c;
+  
+  public bbss() {}
+  
+  public bbss(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_b_of_type_Int > 0) && (this.jdField_a_of_type_Int > 0) && (this.jdField_a_of_type_Aktu != null) && (this.jdField_a_of_type_Float > 0.01F) && (this.jdField_b_of_type_Float > 0.01F);
+  }
 }
 
 

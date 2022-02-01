@@ -1,25 +1,24 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.vip.pb.TianShuAccess.AdItem;
 
 class bkyz
-  implements MiniAppLauncher.MiniAppLaunchListener
+  implements View.OnClickListener
 {
-  bkyz(bkyw parambkyw, Activity paramActivity) {}
+  bkyz(bkyx parambkyx) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
-      {
-        QLog.d("NavigationJsPlugin", 1, "navigateBackMiniApp ok, finish current.");
-        this.jdField_a_of_type_AndroidAppActivity.finish();
-      }
-      return;
+    bkyx.a(this.a);
+    if ((bkyx.a(this.a) != null) && (bkyx.a(this.a).a() != null) && (bkyx.a(this.a).a().app != null) && (bkyx.a(this.a) != null)) {
+      bkyw.a(bkyx.a(this.a).a().app, 122, String.valueOf(bkyx.a(this.a).iAdId.get()), bkyx.a(this.a).traceinfo.get());
     }
-    QLog.e("NavigationJsPlugin", 1, "navigateBackMiniApp failed");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

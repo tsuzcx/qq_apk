@@ -1,11 +1,11 @@
 package com.tencent.mfsdk.impls.memory;
 
-import adlu;
-import adlv;
+import acin;
+import acio;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bhpc;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
 public class MemoryDumpHelper$1
@@ -15,19 +15,19 @@ public class MemoryDumpHelper$1
   {
     try
     {
-      if (!adlu.a(this.this$0))
+      if (!acin.a(this.this$0))
       {
         if (QLog.isColorLevel()) {
           QLog.d("QAPM_MemoryDumpHelper", 2, "ReportDump init dialog error!");
         }
       }
-      else if (!adlu.a(this.this$0).isShowing())
+      else if (!acin.a(this.this$0).isShowing())
       {
-        adlu.a(this.this$0).setMessage(this.a);
-        adlu.a(this.this$0).setPositiveButton(2131691356, new adlv(this));
-        adlu.a(this.this$0).show();
-        int i = adlu.a(this.this$0).getInt("DumpCount" + AppSetting.a(), 0);
-        adlu.a(this.this$0).edit().putInt("DumpCount" + AppSetting.a(), i + 1).putLong("DumpTime", System.currentTimeMillis()).commit();
+        acin.a(this.this$0).setMessage(this.a);
+        acin.a(this.this$0).setPositiveButton(2131691396, new acio(this));
+        acin.a(this.this$0).show();
+        int i = acin.a(this.this$0).getInt("DumpCount" + AppSetting.a(), 0);
+        acin.a(this.this$0).edit().putInt("DumpCount" + AppSetting.a(), i + 1).putLong("DumpTime", System.currentTimeMillis()).commit();
         if (QLog.isColorLevel())
         {
           QLog.d("QAPM_MemoryDumpHelper", 2, "ReportDump have show dump dialog");

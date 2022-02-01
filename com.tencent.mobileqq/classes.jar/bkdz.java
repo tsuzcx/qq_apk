@@ -1,46 +1,96 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bkdz
 {
-  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("qav_sdk_thread_sub");
-  private static Handler b = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+  private static final char[] jdField_a_of_type_ArrayOfChar = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 0, 0, 35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 0, 0, 0, 0, 0, 63, 0, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 0, 0, 0, 0, 95, 0, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 0, 125, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+  private ConcurrentHashMap<String, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  static
+  public bkdz()
   {
-    jdField_a_of_type_AndroidOsHandlerThread.start();
+    if ("com.tencent.mobileqq:qzone".equals(a()))
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(1024);
+      this.jdField_a_of_type_Boolean = true;
+    }
   }
   
-  public static Handler a()
+  private String a()
   {
-    return jdField_a_of_type_AndroidOsHandler;
+    return BaseApplicationImpl.getApplication().getQQProcessName();
   }
   
-  public static void a(Runnable paramRunnable)
+  private String b(String paramString)
   {
-    b.post(paramRunnable);
+    int k = 0;
+    if (paramString == null) {
+      return null;
+    }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        Object localObject = paramString.toCharArray();
+        i = 0;
+        int j = k;
+        if (i < localObject.length)
+        {
+          localObject[i] = jdField_a_of_type_ArrayOfChar[localObject[i]];
+          if (localObject[i] == 0) {
+            j = 1;
+          }
+        }
+        else
+        {
+          if (j != 0) {
+            return paramString.toLowerCase();
+          }
+          localObject = new String((char[])localObject);
+          return localObject;
+        }
+      }
+      catch (Exception localException)
+      {
+        return paramString.toLowerCase();
+      }
+      i += 1;
+    }
   }
   
-  public static void a(Runnable paramRunnable, long paramLong)
+  public String a(String paramString)
   {
-    b.postDelayed(paramRunnable, paramLong);
+    Object localObject1 = null;
+    Object localObject2 = null;
+    if (paramString == null) {
+      localObject1 = localObject2;
+    }
+    do
+    {
+      do
+      {
+        return localObject1;
+        localObject2 = localObject1;
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+        {
+          localObject2 = localObject1;
+          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
+            localObject2 = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+          }
+        }
+        localObject1 = localObject2;
+      } while (localObject2 != null);
+      localObject2 = b(paramString);
+      localObject1 = localObject2;
+    } while (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject2);
+    return localObject2;
   }
   
-  public static Handler b()
+  public boolean a()
   {
-    return b;
-  }
-  
-  public static void b(Runnable paramRunnable)
-  {
-    b.removeCallbacks(paramRunnable);
-  }
-  
-  public static void c(Runnable paramRunnable)
-  {
-    jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

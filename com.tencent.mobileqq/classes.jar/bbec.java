@@ -1,38 +1,15 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import java.util.List;
 
 class bbec
-  extends Handler
 {
-  public bbec(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  String jdField_a_of_type_JavaLangString;
+  List<bayp> jdField_a_of_type_JavaUtilList;
   
-  public void handleMessage(Message paramMessage)
+  public bbec(String paramString, List<bayp> paramList)
   {
-    bbeg.a("CompoundProcessor", "handleMessage, msg.what = " + paramMessage.what + ",msg.arg1 = " + paramMessage.arg1);
-    switch (paramMessage.what)
-    {
-    case 1: 
-    default: 
-      return;
-    case 2: 
-      i = paramMessage.arg1;
-      paramMessage = paramMessage.getData();
-      bbeg.a("CompoundProcessor", "ret is " + i + ",data is " + paramMessage);
-      return;
-    }
-    int i = paramMessage.arg1;
-    switch (paramMessage.arg1)
-    {
-    default: 
-      return;
-    }
-    paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
-    bbeg.a("CompoundProcessor", "ret is " + i + ",targetFile is " + paramMessage);
+    this.jdField_a_of_type_JavaLangString = paramList;
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
 }
 

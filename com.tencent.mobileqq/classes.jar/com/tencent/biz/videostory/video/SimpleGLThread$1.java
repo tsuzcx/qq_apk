@@ -1,21 +1,21 @@
 package com.tencent.biz.videostory.video;
 
-import abbq;
 import android.opengl.EGLContext;
 import com.tencent.ttpic.baseutils.gles.EglCore;
 import com.tencent.ttpic.baseutils.gles.OffscreenSurface;
 import com.tencent.ttpic.openapi.config.MediaConfig;
+import zyb;
 
 public class SimpleGLThread$1
   implements Runnable
 {
-  public SimpleGLThread$1(abbq paramabbq, EGLContext paramEGLContext) {}
+  public SimpleGLThread$1(zyb paramzyb, EGLContext paramEGLContext) {}
   
   public void run()
   {
-    abbq.a(this.this$0, new EglCore(this.a, 0));
-    abbq.a(this.this$0, new OffscreenSurface(abbq.a(this.this$0), MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT));
-    abbq.a(this.this$0).makeCurrent();
+    zyb.a(this.this$0, new EglCore(this.a, 0));
+    zyb.a(this.this$0, new OffscreenSurface(zyb.a(this.this$0), MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT));
+    zyb.a(this.this$0).makeCurrent();
   }
 }
 

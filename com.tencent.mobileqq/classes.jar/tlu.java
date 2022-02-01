@@ -1,32 +1,29 @@
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.SensorBridgeInvokeHandler.register.1;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import org.jetbrains.annotations.NotNull;
 
-public class tlu
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/SensorBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tlu
+  extends tks
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public static final tlv a = new tlv(null);
   
-  public tlu(JSONObject paramJSONObject)
+  public tlu(@NotNull BridgeModule paramBridgeModule)
   {
-    if (paramJSONObject != null)
-    {
-      this.a = paramJSONObject.optString("dest_url");
-      this.b = paramJSONObject.optString("rl");
-      this.c = paramJSONObject.optString("button_txt");
-      this.d = paramJSONObject.optString("button_bg");
-    }
+    super(paramBridgeModule);
   }
   
-  public String toString()
+  @NotNull
+  public String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder("AdPKImageData{");
-    localStringBuilder.append("destUrl=").append(this.a);
-    localStringBuilder.append(",rl=").append(this.b);
-    localStringBuilder.append(",buttonTxt=").append(this.c);
-    localStringBuilder.append(",buttonBg=").append(this.d);
-    localStringBuilder.append("}");
-    return super.toString();
+    return "sensor";
+  }
+  
+  public void a()
+  {
+    a("getLocation", (Function2)new SensorBridgeInvokeHandler.register.1(this));
   }
 }
 

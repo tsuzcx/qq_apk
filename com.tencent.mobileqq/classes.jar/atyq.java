@@ -1,43 +1,63 @@
-import java.io.FileOutputStream;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class atyq
 {
-  int jdField_a_of_type_Int = -1;
-  long jdField_a_of_type_Long = -1L;
-  atvr jdField_a_of_type_Atvr;
-  atyr jdField_a_of_type_Atyr;
-  bhva jdField_a_of_type_Bhva;
-  FileOutputStream jdField_a_of_type_JavaIoFileOutputStream = null;
-  String jdField_a_of_type_JavaLangString;
-  short jdField_a_of_type_Short = 0;
-  boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long = 0L;
-  bhva jdField_b_of_type_Bhva;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int = 0;
-  long jdField_c_of_type_Long = 0L;
-  String jdField_c_of_type_JavaLangString;
-  int jdField_d_of_type_Int = 0;
-  long jdField_d_of_type_Long = 0L;
-  String jdField_d_of_type_JavaLangString;
-  long jdField_e_of_type_Long;
-  String jdField_e_of_type_JavaLangString;
+  public static atyq a;
+  private Set<String> a;
+  
+  static
+  {
+    jdField_a_of_type_Atyq = new atyq();
+  }
   
   public atyq()
   {
-    this.e = 0L;
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+  }
+  
+  static atyq a(String paramString)
+  {
+    localatyq = new atyq();
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString).optJSONArray("appid_arr");
+        int i = 0;
+        while (i < paramString.length())
+        {
+          String str = paramString.optString(i);
+          if (!TextUtils.isEmpty(str)) {
+            localatyq.jdField_a_of_type_JavaUtilSet.add(str);
+          }
+          i += 1;
+        }
+        return localatyq;
+      }
+      catch (Throwable paramString)
+      {
+        QLog.e("GameShare.confBean", 1, paramString, new Object[0]);
+      }
+    }
+  }
+  
+  boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilSet.contains(paramString);
   }
   
   public String toString()
   {
-    return null;
+    return "NGConfBean{appidArr=" + this.jdField_a_of_type_JavaUtilSet + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atyq
  * JD-Core Version:    0.7.0.1
  */

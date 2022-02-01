@@ -5,9 +5,9 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.util.Xml;
-import aqfy;
-import bhlo;
+import aozj;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
@@ -15,14 +15,14 @@ import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import lwk;
+import lvv;
 import org.xmlpull.v1.XmlPullParser;
 
 public class AVRedPacketConfig
   implements Parcelable, Serializable
 {
   static final String CONFIG_PATH = "avredpacket_config_";
-  public static final Parcelable.Creator<AVRedPacketConfig> CREATOR = new lwk();
+  public static final Parcelable.Creator<AVRedPacketConfig> CREATOR = new lvv();
   static final String TAG = "AVRedPacketConfig";
   public boolean checkEyeOpenClose;
   public boolean checkNormalFaceExpression;
@@ -119,7 +119,7 @@ public class AVRedPacketConfig
     Object localObject = "";
     try
     {
-      String str = bhlo.a(BaseApplicationImpl.getContext());
+      String str = DeviceInfoUtil.getQQVersionWithCode(BaseApplicationImpl.getContext());
       localObject = str;
     }
     catch (Exception localException)
@@ -224,11 +224,11 @@ public class AVRedPacketConfig
       }
       else if (paramString.equalsIgnoreCase("activityBeginTime"))
       {
-        localAVRedPacketConfig.operatingEntranceBeginTime = aqfy.b(localXmlPullParser.nextText());
+        localAVRedPacketConfig.operatingEntranceBeginTime = aozj.b(localXmlPullParser.nextText());
       }
       else if (paramString.equalsIgnoreCase("activityEndTime"))
       {
-        localAVRedPacketConfig.operatingEntranceEndTime = aqfy.b(localXmlPullParser.nextText());
+        localAVRedPacketConfig.operatingEntranceEndTime = aozj.b(localXmlPullParser.nextText());
       }
       else if (paramString.equalsIgnoreCase("androidCommonResUrl"))
       {

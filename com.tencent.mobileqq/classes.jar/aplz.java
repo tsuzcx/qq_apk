@@ -1,18 +1,36 @@
-import android.os.IInterface;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.content.Context;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aplz
-  extends IInterface
+public class aplz
+  implements aplr
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo);
+  public void launch(Context paramContext, ColorNote paramColorNote)
+  {
+    try
+    {
+      paramColorNote = paramColorNote.getReserve();
+      if (paramColorNote == null) {
+        return;
+      }
+      paramColorNote = (SubscribeColorNoteReserveBean)zjx.a(paramColorNote);
+      if (paramColorNote != null)
+      {
+        CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
+        localStFeed.mergeFrom(paramColorNote.feedData);
+        QLog.d("SubscribeColorNoteLauncher", 2, "articleInfo From ColorNote :\n" + localStFeed.toString());
+        zbh.a(paramContext, "", localStFeed, new ExtraTypeInfo(paramColorNote.pageType, 9003), null);
+        return;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+  }
 }
 
 

@@ -1,19 +1,19 @@
+import com.tencent.qphone.base.util.QLog;
+
 class astg
-  extends aogm
+  extends amwl
 {
-  astg(astf paramastf) {}
+  astg(astb paramastb) {}
   
-  protected void a(int paramInt)
+  protected void onSelfPcOnlineStatusUpdateNotify(int paramInt1, int paramInt2)
   {
-    if (astf.a(this.a) != null) {
-      astf.a(this.a).a(paramInt);
-    }
-  }
-  
-  protected void a(asti paramasti)
-  {
-    if (astf.a(this.a) != null) {
-      astf.a(this.a).a(paramasti);
+    if (paramInt1 == 0)
+    {
+      if (astb.a(this.a)) {
+        aszk.a(2131693915);
+      }
+      astb.a(this.a, false);
+      QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "PC offline!");
     }
   }
 }

@@ -1,28 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.PromotionEntry;
-
 public class azea
-  implements View.OnTouchListener
+  implements azeb
 {
-  public azea(PromotionEntry paramPromotionEntry) {}
+  private azfa a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public azea(azfa paramazfa)
   {
-    if (PromotionEntry.a(this.a) == null) {}
-    do
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        PromotionEntry.a(this.a).setAlpha(255);
-        return false;
-      }
-    } while (paramMotionEvent.getAction() != 0);
-    PromotionEntry.a(this.a).setAlpha(100);
-    return false;
+    this.a = paramazfa;
+  }
+  
+  public void a(azfk paramazfk)
+  {
+    if (this.a != null) {
+      this.a.c(paramazfk);
+    }
   }
 }
 

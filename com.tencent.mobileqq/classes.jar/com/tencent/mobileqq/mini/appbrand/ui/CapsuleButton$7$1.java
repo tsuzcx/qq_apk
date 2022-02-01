@@ -13,10 +13,10 @@ class CapsuleButton$7$1
   {
     if (this.this$1.val$miniAppInfo.topType == 1)
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), 2131717995, 0).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), 2131718236, 0).a();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getApplication(), 2131717996, 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), 2131718237, 0).a();
   }
 }
 

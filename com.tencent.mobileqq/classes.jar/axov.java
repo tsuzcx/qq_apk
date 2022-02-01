@@ -1,10 +1,28 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface axov
+public class axov
+  extends Handler
 {
-  public abstract void a(axpl paramaxpl, HashMap<String, ArrayList<MessageRecord>> paramHashMap, axow paramaxow);
+  public axov(ScanOcrView paramScanOcrView) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ScanOcrView", 2, "handleMessage, MSG_SCANLINE");
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      this.a.a(paramMessage.arg1);
+    }
+  }
 }
 
 

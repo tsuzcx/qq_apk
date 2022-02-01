@@ -1,9 +1,11 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import acqa;
+import abmj;
+import bjds;
 import com.tencent.mobileqq.mini.appbrand.jsapi.AdFrequencyLimit;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class InterstitialAdPlugin$MiniInterstitialAd$1
   implements Runnable
@@ -14,21 +16,23 @@ class InterstitialAdPlugin$MiniInterstitialAd$1
   {
     try
     {
-      if (InterstitialAdPlugin.MiniInterstitialAd.access$100(this.this$0).a(InterstitialAdPlugin.MiniInterstitialAd.access$000(this.this$0).activityContext))
+      JSONObject localJSONObject = bjds.a(InterstitialAdPlugin.MiniInterstitialAd.access$000(this.this$0).activityContext, InterstitialAdPlugin.MiniInterstitialAd.access$100(this.this$0), InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$0));
+      InterstitialAdPlugin.MiniInterstitialAd.access$300(this.this$0).a(localJSONObject);
+      if (InterstitialAdPlugin.MiniInterstitialAd.access$300(this.this$0).a(InterstitialAdPlugin.MiniInterstitialAd.access$000(this.this$0).activityContext))
       {
-        InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$0, true, "operateInterstitialAd", this.val$compId, 0, this.val$callbackId);
+        InterstitialAdPlugin.MiniInterstitialAd.access$400(this.this$0, true, "operateInterstitialAd", this.val$compId, 0, this.val$callbackId);
         AdFrequencyLimit.setInterstitialAdShowing(true);
         MiniAppController.getInstance().setActivityResultListener(new InterstitialAdPlugin.MiniInterstitialAd.1.1(this));
         return;
       }
       QLog.e("[minigame] MiniInterstitialAd", 1, "adInterstitial show false");
-      InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$0, false, "operateInterstitialAd", this.val$compId, 1003, this.val$callbackId);
+      InterstitialAdPlugin.MiniInterstitialAd.access$400(this.this$0, false, "operateInterstitialAd", this.val$compId, 1003, this.val$callbackId);
       return;
     }
     catch (Throwable localThrowable)
     {
       QLog.e("[minigame] MiniInterstitialAd", 1, "adInterstitial show Exception:", localThrowable);
-      InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$0, false, "operateInterstitialAd", this.val$compId, 1003, this.val$callbackId);
+      InterstitialAdPlugin.MiniInterstitialAd.access$400(this.this$0, false, "operateInterstitialAd", this.val$compId, 1003, this.val$callbackId);
     }
   }
 }

@@ -1,54 +1,62 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
 import android.os.Bundle;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.List;
+import mqq.manager.TicketManager;
+import tencent.im.oidb.cmd0x876.oidb_0x876.ReqBody;
+import tencent.im.oidb.cmd0x877.oidb_0x877.ReqBody;
+import tencent.im.oidb.cmd0xada.oidb_0xada.ReqBody;
+import tencent.nearby.now.nearby_now_anchor.ReqBatchGetAnchorStatus;
 
 public class aquu
-  implements Application.ActivityLifecycleCallbacks
 {
-  public aquu(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
-  
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityDestroyed: " + paramActivity.getClass().getName());
-    }
-  }
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityResumed: " + paramActivity.getClass().getName());
-    }
-    if (this.a.f)
+    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
+    localReqBody.uid.set(Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
+    localReqBody.tinyid.set(Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
+    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
+    String str = ((TicketManager)localObject).getA2(paramQQAppInterface.getCurrentAccountUin());
+    localObject = ((TicketManager)localObject).getSkey(paramQQAppInterface.getCurrentAccountUin());
+    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject)))
     {
-      this.a.f = false;
-      this.a.d = true;
-      this.a.a().removeCallbacks(this.a.b);
-      this.a.a().postDelayed(this.a.b, 200L);
+      localReqBody.a2.set(str);
+      localReqBody.platform.set(1);
+      localReqBody.version.set("8.4.8");
+      localReqBody.original_id.set(paramQQAppInterface.getCurrentAccountUin());
+      localReqBody.original_key.set((String)localObject);
+      localReqBody.original_id_type.set(1);
     }
+    localReqBody.cmd.set(24727);
+    localReqBody.subcmd.set(6);
+    nmb.a(paramQQAppInterface, new aquv(), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
   }
   
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, aquw paramaquw)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStarted: " + paramActivity.getClass().getName());
-    }
+    oidb_0x877.ReqBody localReqBody = new oidb_0x877.ReqBody();
+    localReqBody.uint32_refer.set(paramInt);
+    nmb.a(paramQQAppInterface, paramaquw, localReqBody.toByteArray(), "OidbSvc.0x877_0", 2167, 0);
   }
   
-  public void onActivityStopped(Activity paramActivity)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, aqux paramaqux)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStopped: " + paramActivity.getClass().getName());
+    nmb.a(paramQQAppInterface, paramaqux, new oidb_0x876.ReqBody().toByteArray(), "OidbSvc.0x876_" + paramInt, 2166, paramInt);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, List<Long> paramList, Bundle paramBundle, aquy paramaquy)
+  {
+    nearby_now_anchor.ReqBatchGetAnchorStatus localReqBatchGetAnchorStatus = new nearby_now_anchor.ReqBatchGetAnchorStatus();
+    localReqBatchGetAnchorStatus.uint64_uin.set(paramList);
+    paramList = paramBundle;
+    if (paramBundle == null) {
+      paramList = new Bundle();
     }
+    nmb.a(paramQQAppInterface, paramaquy, localReqBatchGetAnchorStatus.toByteArray(), "NearbyNowTips.batch_get_anchor_stats", paramList);
   }
 }
 

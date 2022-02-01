@@ -1,126 +1,62 @@
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
+import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.oac.OACProfilePb.ProfileDataReq;
+import com.tencent.pb.oac.OACProfilePb.ProfileDataRsp;
+import cooperation.qzone.PlatformInfor;
+import cooperation.qzone.QUA;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
 
 public class ody
-  implements arae<String>
+  extends odx
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private int b;
-  
-  public static ody a(int paramInt, String paramString, boolean paramBoolean)
+  public static void a(Long paramLong, String paramString, oea<OACProfilePb.ProfileDataRsp> paramoea)
   {
-    ody localody = new ody();
-    localody.jdField_a_of_type_Int = paramInt;
-    if (paramBoolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      localody.b = paramInt;
-      localody.jdField_a_of_type_JavaLangString = paramString;
-      return localody;
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
+    paramString = new OACProfilePb.ProfileDataReq();
+    paramString.puin.set(paramLong.longValue());
+    paramString.attachinfo.set(str);
+    a("officialaccount.clientbusilogic.DataProfile", paramString, OACProfilePb.ProfileDataRsp.class, paramoea);
   }
   
-  public static ody a(String paramString)
+  public static <E extends MessageMicro<?>> void a(String paramString, MessageMicro<?> paramMessageMicro, Class<E> paramClass, oea<E> paramoea)
   {
-    try
-    {
-      ody localody = (ody)arax.a(paramString, ody.class);
-      return localody;
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), ody.class);
+    PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
+    localStQWebReq.Seq.set(-1L);
+    localStQWebReq.qua.set(QUA.getQUA3());
+    localStQWebReq.deviceInfo.set(PlatformInfor.g().getDeviceInfor());
+    localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(paramMessageMicro.toByteArray()));
+    paramMessageMicro = ziv.a();
+    if (!TextUtils.isEmpty(paramMessageMicro)) {
+      localStQWebReq.traceid.set(paramMessageMicro);
     }
-    catch (QStorageInstantiateException localQStorageInstantiateException)
-    {
-      QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + paramString, localQStorageInstantiateException);
-    }
-    return null;
+    localNewIntent.putExtra("traceid", paramMessageMicro);
+    localNewIntent.putExtra("cmd", paramString);
+    localNewIntent.putExtra("data", localStQWebReq.toByteArray());
+    localNewIntent.setObserver(new odz(paramoea, paramClass));
+    BaseApplicationImpl.getApplication().peekAppRuntime().startServlet(localNewIntent);
   }
   
-  public static ody a(araj[] paramArrayOfaraj)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    ody localody = null;
-    int i = 0;
-    while (i < paramArrayOfaraj.length)
-    {
-      localody = a(paramArrayOfaraj[i].jdField_a_of_type_JavaLangString);
-      i += 1;
-    }
-    return localody;
-  }
-  
-  public void a()
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (QQAppInterface)localObject;
-      int i = tvz.a((QQAppInterface)localObject);
-      if (this.jdField_a_of_type_Int != i) {
-        break label47;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PaSubscribeRedDotProcessor", 2, "IGNORE THIS ACTION because of SAME VERSION");
-      }
-    }
-    label47:
-    do
-    {
-      return;
-      tvz.a((QQAppInterface)localObject, this.jdField_a_of_type_Int);
-      tvz.a((QQAppInterface)localObject, this.b, this.jdField_a_of_type_JavaLangString);
-      localObject = (WebProcessManager)((QQAppInterface)localObject).getManager(13);
-    } while (localObject == null);
-    ((WebProcessManager)localObject).e();
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig xml: " + paramString);
-    }
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = paramString.trim();
-        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
-        NodeList localNodeList = paramString.getElementsByTagName("version");
-        Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-        if ((localObject instanceof QQAppInterface))
-        {
-          localObject = (QQAppInterface)localObject;
-          this.jdField_a_of_type_Int = Integer.parseInt(localNodeList.item(0).getFirstChild().getNodeValue());
-          paramString = paramString.getElementsByTagName("public-account-folder");
-          if (paramString.getLength() > 0)
-          {
-            paramString = (Element)paramString.item(0);
-            this.b = Integer.parseInt(paramString.getElementsByTagName("show").item(0).getFirstChild().getNodeValue());
-            this.jdField_a_of_type_JavaLangString = paramString.getElementsByTagName("msg").item(0).getFirstChild().getNodeValue();
-          }
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig xml is empty");
-        return;
-      }
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig error", paramString);
-      }
-      paramString.printStackTrace();
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramIntent = paramIntent.getStringExtra("cmd");
+    udz.a(arrayOfByte, paramIntent);
+    paramPacket.setSSOCommand(paramIntent);
+    if (arrayOfByte != null) {
+      paramPacket.putSendData(bgau.a(arrayOfByte));
     }
   }
 }

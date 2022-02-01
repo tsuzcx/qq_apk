@@ -7,7 +7,7 @@ class AppUIProxy$LoadingUI$1
   
   public void run()
   {
-    AppUIProxy.LoadingUI.access$100(this.this$1);
+    AppUIProxy.LoadingUI.access$100(this.this$0);
   }
 }
 

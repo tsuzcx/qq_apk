@@ -1,24 +1,10 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView;
-
-public class atgq
-  implements Animation.AnimationListener
+public abstract interface atgq
 {
-  public atgq(Face2FaceDetailBaseView paramFace2FaceDetailBaseView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.b();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atgq
  * JD-Core Version:    0.7.0.1
  */

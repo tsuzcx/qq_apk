@@ -1,14 +1,33 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
 
-public abstract class wpz
+public class wpz
+  extends SimpleObserver<xhh>
 {
-  public abstract void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry);
+  public wpz(wpu paramwpu) {}
   
-  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
+  public void a(xhh paramxhh)
   {
-    return false;
+    super.onNext(paramxhh);
+    wpu.a(this.a, paramxhh, new ErrorMessage(), true);
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    xvv.d("Q.qqstory.player.CommentFloatDialogController", "refresh data cancel");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    if (((ErrorMessage)paramError).errorCode == 2223)
+    {
+      wpu.a(this.a, wpu.a(this.a), new ErrorMessage(), false);
+      return;
+    }
+    wpu.a(this.a, wpu.a(this.a), (ErrorMessage)paramError, false);
   }
 }
 

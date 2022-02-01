@@ -20,8 +20,8 @@ public class ab$b
     if (("LongConn.OffPicUp".equalsIgnoreCase(this.b.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(this.b.getServiceCmd()))) {
       QLog.d("MSF.D.RemoteServiceProxy", 1, "enter MonitorTaskWrapper.run(), appseq is " + this.b.getAppSeq());
     }
-    Object localObject = (ToServiceMsg)ab.f.get(Integer.valueOf(this.b.getAppSeq()));
-    if ((localObject != null) && (((ToServiceMsg)localObject).getAttribute("appTimeoutReq", Integer.valueOf(-1)) == this.b.getAttribute("appTimeoutReq", Integer.valueOf(-2))) && ((ToServiceMsg)ab.f.remove(Integer.valueOf(this.b.getAppSeq())) != null))
+    Object localObject = (ToServiceMsg)ab.e.get(Integer.valueOf(this.b.getAppSeq()));
+    if ((localObject != null) && (((ToServiceMsg)localObject).getAttribute("appTimeoutReq", Integer.valueOf(-1)) == this.b.getAttribute("appTimeoutReq", Integer.valueOf(-2))) && ((ToServiceMsg)ab.e.remove(Integer.valueOf(this.b.getAppSeq())) != null))
     {
       QLog.d("MSF.D.RemoteServiceProxy", 1, "found timeout req, appseq is " + this.b.getAppSeq());
       localObject = this.a.a(this.b, this.b.getServiceName() + " timeout");

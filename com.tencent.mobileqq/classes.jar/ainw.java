@@ -1,22 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPagerAdapter;
 
 class ainw
-  implements bgpp
+  implements aiob
 {
-  ainw(ainh paramainh) {}
+  ainw(ainq paramainq) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (paramJSONObject == null) {}
-    while (paramJSONObject.optInt("retcode", -1) != 0) {
-      return;
+    if (ainq.a(this.a) != null) {
+      ainq.a(this.a).a(paramInt1, paramInt2);
     }
-    paramJSONObject = (bgre)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
-    paramInt = paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    paramJSONObject.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, paramInt & 0xF);
   }
 }
 

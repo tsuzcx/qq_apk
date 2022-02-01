@@ -1,18 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class nug
-  implements View.OnClickListener
+public abstract interface nug
 {
-  nug(ntc paramntc, String paramString, oag paramoag) {}
+  public abstract void f();
   
-  public void onClick(View paramView)
-  {
-    ntc.c(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_JavaLangString);
-    ntc.a(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_Oag.jdField_a_of_type_JavaLangString);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void g();
+  
+  public abstract void h();
 }
 
 

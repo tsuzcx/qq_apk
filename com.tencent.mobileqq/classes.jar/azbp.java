@@ -1,17 +1,18 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.ptt.LSRecordPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class azbp
-  implements ValueAnimator.AnimatorUpdateListener
+  extends azbj
 {
-  public azbp(ScanOcrView paramScanOcrView) {}
+  public azbp(LSRecordPanel paramLSRecordPanel) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.e = i;
-    this.a.invalidate();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS startSideAnimation onAnimationEnd");
+    }
+    this.a.b = null;
   }
 }
 

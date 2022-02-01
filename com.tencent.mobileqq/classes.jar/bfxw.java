@@ -1,34 +1,27 @@
-import java.util.UUID;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface bfxw
+class bfxw
+  implements View.OnClickListener
 {
-  public abstract int a();
+  int jdField_a_of_type_Int;
   
-  public abstract long a();
+  public bfxw(bfxr parambfxr, int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public abstract String a();
-  
-  public abstract UUID a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
-  public abstract String b();
-  
-  public abstract int c();
-  
-  public abstract String c();
-  
-  public abstract int d();
-  
-  public abstract String d();
-  
-  public abstract boolean d();
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Bfxr.a != null)
+    {
+      this.jdField_a_of_type_Bfxr.a.onClick(this.jdField_a_of_type_Bfxr, this.jdField_a_of_type_Bfxr.a(this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_Bfxr.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

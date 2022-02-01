@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.utils;
 
 import android.content.Context;
-import bamv;
-import bamx;
+import azcv;
+import azcx;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import java.io.PipedInputStream;
 
 public final class AmrInputStreamWrapper
-  extends bamx
+  extends azcx
 {
   private static boolean jdField_a_of_type_Boolean;
   private long jdField_a_of_type_Long;
@@ -60,7 +60,7 @@ public final class AmrInputStreamWrapper
     this.jdField_a_of_type_Int = 320;
     this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
     this.c = new byte[960];
-    this.jdField_a_of_type_Bamv = new bamv(this.c, 0);
+    this.jdField_a_of_type_Azcv = new azcv(this.c, 0);
   }
   
   /* Error */

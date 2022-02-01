@@ -1,21 +1,30 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout;
 
-public class aypv
-  extends axud
+class aypv
+  implements DialogInterface.OnClickListener
 {
-  public aypv(NearbyProfileFragment paramNearbyProfileFragment, long paramLong) {}
+  aypv(ayps paramayps, Context paramContext, String paramString1, String paramString2, String paramString3) {}
   
-  public void a(long paramLong1, long paramLong2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Long == paramLong1) && (paramLong2 > 0L))
+    String str;
+    if (ayps.a(this.jdField_a_of_type_Ayps).a == 1) {
+      str = "&g_ch=suixintie&actId=460973&isAskFriendPay=0";
+    }
+    for (;;)
     {
-      NearbyProfileFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment).tinyId = paramLong2;
-      NearbyPeopleProfileActivity localNearbyPeopleProfileActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a;
-      if (!NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.j)) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.jdField_a_of_type_Long = paramLong2;
+      bgge.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString + str, this.b, this.c, 0);
+      paramDialogInterface.dismiss();
+      return;
+      if (ayps.a(this.jdField_a_of_type_Ayps).a == 2) {
+        str = "&g_ch=扩列装扮&actId=466499&isAskFriendPay=0";
+      } else {
+        str = "";
       }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a(paramLong2);
     }
   }
 }

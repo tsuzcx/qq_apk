@@ -1,26 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
 public class yom
-  extends QQUIEventReceiver<yol, wsk>
 {
-  public yom(yol paramyol1, @NonNull yol paramyol2)
+  public TextView a;
+  public TextView b;
+  
+  public yom(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    super(paramyol2);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381274));
+    this.b = ((TextView)paramView.findViewById(2131380517));
   }
   
-  public void a(@NonNull yol paramyol, @NonNull wsk paramwsk)
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.playernew.StoryPlayerActivity", 2, "GetStoryListReceiver");
-    }
-    paramyol.b(paramwsk.a);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wsk.class;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(ypb.c(paramTroopStoryItemInfo.publishTime));
   }
 }
 

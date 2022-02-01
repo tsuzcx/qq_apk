@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.werewolves.HalfScreenBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bgzy
-  implements bdyi
+  implements View.OnClickListener
 {
-  public bgzy(TroopGiftToPersonalSurfaceView paramTroopGiftToPersonalSurfaceView, bdyi parambdyi) {}
+  public bgzy(HalfScreenBrowserActivity paramHalfScreenBrowserActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToPersonalSurfaceView.a(0, new bgzz(this));
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

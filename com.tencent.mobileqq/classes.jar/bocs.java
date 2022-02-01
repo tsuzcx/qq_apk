@@ -1,15 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.maxvideo.common.AVIOStruct;
 
-class bocs
-  implements DialogInterface.OnClickListener
+public class bocs
 {
-  bocs(bocn parambocn) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.a(2);
-  }
+  public AVIOStruct a;
+  public byte[] a;
 }
 
 

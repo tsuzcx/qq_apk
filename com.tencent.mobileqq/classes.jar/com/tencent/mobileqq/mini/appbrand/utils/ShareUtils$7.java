@@ -41,7 +41,7 @@ final class ShareUtils$7
       {
         paramJSONObject = URLDrawable.URLDrawableOptions.obtain();
         if (this.val$activity != null) {
-          paramJSONObject.mFailedDrawable = this.val$activity.getResources().getDrawable(2130848422);
+          paramJSONObject.mFailedDrawable = this.val$activity.getResources().getDrawable(2130848333);
         }
         Bitmap localBitmap = ImageUtil.drawableToBitmap(URLDrawable.getDrawable(this.val$sharePicUrl, paramJSONObject).getCurrDrawable());
         paramJSONObject = localBitmap;
@@ -72,16 +72,16 @@ final class ShareUtils$7
         for (;;)
         {
           QLog.e("AppBrandRuntime", 1, "startShareToWeChat. get an exception when handling URLbmp:" + paramJSONObject);
-          paramJSONObject = ImageUtil.drawableToBitmap(this.val$activity.getResources().getDrawable(2130848422));
+          paramJSONObject = ImageUtil.drawableToBitmap(this.val$activity.getResources().getDrawable(2130848333));
           continue;
           if (this.val$shareType == 4) {
-            WXShareHelper.a().c(String.valueOf(System.currentTimeMillis()), "QQ小程序 · " + this.val$apkgInfo.apkgName + ": " + this.val$finalDescription, paramJSONObject, "", str);
+            WXShareHelper.getInstance().shareWebPageToWXFriendCircle(String.valueOf(System.currentTimeMillis()), "QQ小程序 · " + this.val$apkgInfo.apkgName + ": " + this.val$finalDescription, paramJSONObject, "", str);
           }
         }
       }
       if (this.val$shareType == 3)
       {
-        WXShareHelper.a().d(String.valueOf(System.currentTimeMillis()), this.val$finalDescription, paramJSONObject, "QQ小程序 · " + this.val$apkgInfo.apkgName, str);
+        WXShareHelper.getInstance().shareWebPageToWXFriend(String.valueOf(System.currentTimeMillis()), this.val$finalDescription, paramJSONObject, "QQ小程序 · " + this.val$apkgInfo.apkgName, str);
         paramJSONObject = new Bundle();
         paramJSONObject.putParcelable("MiniAppInfoForQQ", this.val$apkgInfo.appConfig.config);
         paramJSONObject.putParcelable("MiniAppLaunchParamForQQ", this.val$apkgInfo.appConfig.launchParam);

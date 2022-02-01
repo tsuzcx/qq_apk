@@ -1,30 +1,29 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aeow
+class aeow
+  implements View.OnClickListener
 {
-  public static void a()
-  {
-    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), JumpActivity.class);
-    localIntent.addFlags(268435456);
-    localIntent.addFlags(536870912);
-    localIntent.addFlags(67108864);
-    localIntent.addFlags(131072);
-    localIntent.setData(Uri.parse("mqqapi://qzone/to_friend_feeds"));
-    BaseApplicationImpl.getContext().startActivity(localIntent);
-  }
+  aeow(aeov paramaeov) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Intent paramIntent, String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((!"msg_tab_camera".equals(paramString)) || (paramIntent == null)) {
-      return;
+    this.a.a.jdField_d_of_type_Boolean = false;
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131691727);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.a.findViewById(2131369068));
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.b);
+    if (this.a.a.jdField_a_of_type_Aeoz != null) {
+      this.a.a.jdField_a_of_type_Aeoz.a();
     }
-    bmtd.a(paramFragmentActivity, paramQQAppInterface, paramIntent, 20005, paramBoolean);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.leba;
 
-import bmtd;
+import cooperation.qzone.QZoneHelper;
 
 class QzoneFrame$3
   implements Runnable
@@ -9,7 +9,7 @@ class QzoneFrame$3
   
   public void run()
   {
-    bmtd.a(this.this$0.a, "Leba");
+    QZoneHelper.preloadQzone(this.this$0.a, "Leba");
   }
 }
 

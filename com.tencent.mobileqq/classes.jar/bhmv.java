@@ -1,22 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.LoginActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.qus.QUSDragFloatingScreenView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bhmv
-  implements DialogInterface.OnDismissListener
+public class bhmv
+  implements View.OnClickListener
 {
-  bhmv(bhmr parambhmr) {}
+  public bhmv(QUSDragFloatingScreenView paramQUSDragFloatingScreenView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if ((this.a.a instanceof LoginActivity)) {
-      ((LoginActivity)this.a.a).finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("QUSDragFloatingScreenView", 2, "on empty click");
     }
+    if (QUSDragFloatingScreenView.a(this.a) != null) {
+      QUSDragFloatingScreenView.a(this.a).d();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhmv
  * JD-Core Version:    0.7.0.1
  */

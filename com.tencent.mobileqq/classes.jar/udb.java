@@ -1,42 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
-import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
+import java.util.Comparator;
 
-public class udb
-  implements uwn
+class udb
+  implements Comparator<TroopBarData>
 {
-  public udb(WSHomeFragment paramWSHomeFragment) {}
+  udb(uda paramuda) {}
   
-  public void a(int paramInt)
+  public int a(TroopBarData paramTroopBarData1, TroopBarData paramTroopBarData2)
   {
-    WSHomeFragment.c(this.a, false);
-    if ((WSHomeFragment.a(this.a) == null) || (WSHomeFragment.b(this.a) == null)) {
-      return;
-    }
-    switch (paramInt)
+    long l1 = Math.max(paramTroopBarData1.mLastMsgTime, paramTroopBarData1.mLastDraftTime);
+    long l2 = Math.max(paramTroopBarData2.mLastMsgTime, paramTroopBarData2.mLastDraftTime);
+    if ((paramTroopBarData2.mIsSticky) && (!paramTroopBarData1.mIsSticky)) {}
+    do
     {
-    }
-    for (;;)
-    {
-      WSHomeFragment.a(this.a).setCurrentItem(paramInt);
-      return;
-      WSHomeFragment.a(this.a).a();
-      WSHomeFragment.b(this.a).b();
-      continue;
-      WSHomeFragment.a(this.a).b();
-      WSHomeFragment.b(this.a).a();
-      if ((upw.a()) && (WSHomeFragment.a == 1))
+      do
       {
-        int i = upw.a + 1;
-        upw.a = i;
-        upw.a = i % 10;
-        bjuh.a().a("card type changed: " + upw.a);
+        return 1;
+        if ((!paramTroopBarData2.mIsSticky) && (paramTroopBarData1.mIsSticky)) {
+          return -1;
+        }
+        if ((!paramTroopBarData2.mIsSticky) || (!paramTroopBarData1.mIsSticky)) {
+          break;
+        }
+      } while (paramTroopBarData2.mLastStickyTime > paramTroopBarData1.mLastStickyTime);
+      if (paramTroopBarData2.mLastStickyTime == paramTroopBarData1.mLastStickyTime) {
+        return 0;
       }
+      return -1;
+    } while (l1 < l2);
+    if (l1 == l2) {
+      return 0;
     }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     udb
  * JD-Core Version:    0.7.0.1
  */

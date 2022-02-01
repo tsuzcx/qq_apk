@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import alid;
-import alih;
+import akfw;
 import android.app.Activity;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
+import com.tencent.mobileqq.activity.qwallet.utils.OSUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -50,7 +50,7 @@ public class ImmersionBar
           break;
         }
         int i = 256;
-        if ((Build.VERSION.SDK_INT >= 21) && (!alih.d()))
+        if ((Build.VERSION.SDK_INT >= 21) && (!OSUtils.isEMUI3_1()))
         {
           if (this.statusBarView != null) {
             i = 1280;
@@ -87,7 +87,7 @@ public class ImmersionBar
   
   public static boolean isSupportStatusBarDarkFont()
   {
-    return (alih.b()) || (alih.f()) || (Build.VERSION.SDK_INT >= 23);
+    return (OSUtils.isMIUI6More()) || (OSUtils.isFlymeOS4More()) || (Build.VERSION.SDK_INT >= 23);
   }
   
   private static void setMIUIStatusBarDarkFont(Window paramWindow, boolean paramBoolean)
@@ -149,11 +149,11 @@ public class ImmersionBar
       if (isSupportStatusBarDarkFont())
       {
         initStateBar(this.statusBarViewColor);
-        if (alih.b()) {
+        if (OSUtils.isMIUI6More()) {
           setMIUIStatusBarDarkFont(this.mWindow, paramBoolean);
         }
-        if (alih.f()) {
-          alid.a(this.mActivity, paramBoolean);
+        if (OSUtils.isFlymeOS4More()) {
+          akfw.a(this.mActivity, paramBoolean);
         }
       }
       return;

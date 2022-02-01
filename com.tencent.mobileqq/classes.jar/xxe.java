@@ -1,28 +1,28 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.EditPicSave.1.1;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
 
 public class xxe
-  extends QQUIEventReceiver<xwr, xas>
+  implements ThreadExcutor.IThreadListener
 {
-  public xxe(@NonNull xwr paramxwr)
-  {
-    super(paramxwr);
-  }
+  xxe(xxd paramxxd) {}
   
-  public void a(@NonNull xwr paramxwr, @NonNull xas paramxas)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    if (paramxas.a.isSuccess())
+    int i = 1;
+    this.a.a.a().postDelayed(new EditPicSave.1.1(this), 500L);
+    if (bbuc.a().a == 1) {}
+    for (;;)
     {
-      yuk.a(paramxwr.b, "receive user info event. %s.", paramxas.toString());
-      paramxwr.i();
+      babc.f(i);
+      return;
+      i = 2;
     }
   }
   
-  public Class acceptEventClass()
-  {
-    return xas.class;
-  }
+  public void onPreRun() {}
 }
 
 

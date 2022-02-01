@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.upgrade;
 
-import bhdm;
+import bfmy;
 
 class NewUpgradeDialog$6$1
   implements Runnable
@@ -9,7 +9,7 @@ class NewUpgradeDialog$6$1
   
   public void run()
   {
-    bhdm.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog$6.this$0, 2);
+    bfmy.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog$6.this$0, 2);
     this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog$6.this$0.a(this.jdField_a_of_type_Int, 2);
   }
 }

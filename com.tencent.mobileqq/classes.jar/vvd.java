@@ -1,43 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqcircle.events.QCirclePushUpdateEvent;
-import com.tencent.biz.qqcircle.requests.QCircleDoRecommendRequest;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StPushList;
-import feedcloud.FeedCloudWrite.StDoPushReq;
-import feedcloud.FeedCloudWrite.StDoPushRsp;
+import android.os.Handler;
+import com.tencent.biz.qqstory.model.TrimmableManager.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class vvd
-  implements aadr<QCircleDoRecommendRequest, FeedCloudWrite.StDoPushRsp, vuz>
+  implements vuf
 {
-  public String a()
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+  private CopyOnWriteArraySet<vug> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+  
+  public vvd()
   {
-    return "QCirclePushRspInterceptor";
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new vve());
   }
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, QCircleDoRecommendRequest paramQCircleDoRecommendRequest, FeedCloudWrite.StDoPushRsp paramStDoPushRsp, vuz paramvuz)
+  private void b(int paramInt)
   {
-    if ((paramBoolean) && (paramLong == 0L) && (paramQCircleDoRecommendRequest != null) && (paramStDoPushRsp != null))
+    xvv.d("TrimmableManager", "trimMemory : level = %d", new Object[] { Integer.valueOf(paramInt) });
+    switch (paramInt)
     {
-      if ((paramQCircleDoRecommendRequest.getReq() != null) && (!TextUtils.isEmpty(paramQCircleDoRecommendRequest.getReq().feed.id.get()))) {
-        break label59;
-      }
-      QLog.d(a(), 4, "interceptReturnRsp params error");
-    }
-    label59:
-    do
-    {
+    default: 
       return;
-      paramString = paramQCircleDoRecommendRequest.getReq().feed.id.get();
-      paramQCircleDoRecommendRequest = vqt.a().a(paramString);
-    } while (paramQCircleDoRecommendRequest == null);
-    int i = paramQCircleDoRecommendRequest.hasClickCount.get() + paramStDoPushRsp.consumeFuel.get();
-    vwl.a(paramQCircleDoRecommendRequest, i);
-    vqt.a().a(paramString, paramQCircleDoRecommendRequest);
-    paramString = new QCirclePushUpdateEvent(uyn.a(), paramString, i);
-    aaak.a().a(paramString);
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+    while (localIterator.hasNext()) {
+      ((vug)localIterator.next()).a(paramInt);
+    }
+    System.gc();
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new TrimmableManager.1(this, paramInt));
+  }
+  
+  public void a(vug paramvug)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramvug);
+  }
+  
+  public void b() {}
+  
+  public void b(vug paramvug)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramvug);
   }
 }
 

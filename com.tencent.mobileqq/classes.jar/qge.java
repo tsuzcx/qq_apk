@@ -1,183 +1,116 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.pts.core.PTSComposer;
-import com.tencent.pts.core.itemview.PTSItemData.Builder;
+import android.graphics.Rect;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class qge
 {
-  public static void a(ArticleInfo paramArticleInfo)
+  public static void a(@NonNull View paramView, String paramString)
   {
-    if ((paramArticleInfo == null) || (TextUtils.isEmpty(paramArticleInfo.proteusItemsData))) {
-      QLog.i("PTSLiteDataParser", 1, "[preHandlePtsLiteData], articleInfo is null or proteusItemsData is null.");
-    }
-    while (!qhv.a().a()) {
-      return;
-    }
-    if (qhv.a().b()) {
-      c(paramArticleInfo);
-    }
-    JSONObject localJSONObject;
-    String str;
+    if (a()) {}
     try
     {
-      localJSONObject = new JSONObject(paramArticleInfo.proteusItemsData);
-      str = localJSONObject.optString("pts_page_name");
-      if (TextUtils.isEmpty(str))
-      {
-        QLog.i("PTSLiteDataParser", 1, "[preHandlePtsLiteData], pageName is empty, pageName = " + str + ", innerUniqueID = " + paramArticleInfo.innerUniqueID + ", json = " + localJSONObject.toString());
-        return;
-      }
-    }
-    catch (JSONException paramArticleInfo)
-    {
-      QLog.e("PTSLiteDataParser", 1, "[preHandlePtsLiteData] error, e = " + paramArticleInfo);
+      JSONObject localJSONObject = new JSONObject();
+      a(paramView, localJSONObject);
+      a(paramString, "logViewHierarchy: " + localJSONObject.toString());
       return;
     }
-    paramArticleInfo.ptsLitePageName = str;
-    b(paramArticleInfo, localJSONObject);
-  }
-  
-  public static void a(ArticleInfo paramArticleInfo, String paramString1, String paramString2)
-  {
-    if ((paramArticleInfo == null) || (TextUtils.isEmpty(paramString1))) {
-      return;
-    }
-    QLog.i("PTSLiteDataParser", 1, "[updateJsonDataPtsRijArticle], key = " + paramString1 + ", value = " + paramString2 + ", title = " + paramArticleInfo.mTitle);
-    try
+    catch (Exception paramView)
     {
-      JSONObject localJSONObject = new JSONObject(paramArticleInfo.proteusItemsData);
-      if (localJSONObject.optJSONObject("$RIJArticle") != null) {
-        localJSONObject.optJSONObject("$RIJArticle").put(paramString1, paramString2);
-      }
-      b(paramArticleInfo, localJSONObject);
-      return;
-    }
-    catch (JSONException paramArticleInfo)
-    {
-      QLog.e("PTSLiteDataParser", 1, "[updateJsonDataPtsRijArticle] error, e = " + paramArticleInfo);
+      QLog.e(paramString, 1, "[logViewHierarchy] ", paramView);
     }
   }
   
-  private static void a(ArticleInfo paramArticleInfo, JSONObject paramJSONObject)
+  public static void a(@NonNull View paramView, @NonNull JSONObject paramJSONObject)
   {
-    if ((paramArticleInfo == null) || (paramJSONObject == null)) {
+    int i = paramView.getLeft();
+    int j = paramView.getRight();
+    int k = paramView.getTop();
+    int m = paramView.getBottom();
+    Object localObject1 = paramView.getClass().getSimpleName();
+    Object localObject2 = new Rect(i, k, j, m);
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("name", localObject1);
+    localJSONObject.put("visibility", paramView.getVisibility());
+    localJSONObject.put("bounds", localObject2);
+    paramJSONObject.put("view", localJSONObject);
+    if ((paramView instanceof ViewGroup))
+    {
+      j = ((ViewGroup)paramView).getChildCount();
+      localObject1 = new JSONArray();
+      i = 0;
+      while (i < j)
+      {
+        localObject2 = new JSONObject();
+        a(((ViewGroup)paramView).getChildAt(i), (JSONObject)localObject2);
+        ((JSONArray)localObject1).put(localObject2);
+        i += 1;
+      }
+      paramJSONObject.put("children", localObject1);
+    }
+  }
+  
+  public static void a(@NonNull ViewBase paramViewBase, String paramString)
+  {
+    if (a()) {}
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      a(paramViewBase, localJSONObject);
+      a(paramString, "logViewBaseHierarchy: " + localJSONObject.toString());
       return;
     }
-    for (;;)
+    catch (Exception paramViewBase)
     {
-      try
+      QLog.e(paramString, 1, "[logViewBaseHierarchy] ", paramViewBase);
+    }
+  }
+  
+  private static void a(@NonNull ViewBase paramViewBase, @NonNull JSONObject paramJSONObject)
+  {
+    Object localObject1 = new Rect(paramViewBase.getDrawLeft(), paramViewBase.getDrawTop(), paramViewBase.getWidth(), paramViewBase.getHeight());
+    Object localObject2 = paramViewBase.getClass().getSimpleName();
+    Object localObject3 = paramViewBase.getName();
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("name", localObject2);
+    localJSONObject.put("id", localObject3);
+    localJSONObject.put("visibility", paramViewBase.getVisibility());
+    localJSONObject.put("bounds", localObject1);
+    paramJSONObject.put("view", localJSONObject);
+    if ((paramViewBase instanceof Layout))
+    {
+      localObject1 = ((Layout)paramViewBase).getSubViews();
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("rowKey", paramArticleInfo.innerUniqueID);
-        Object localObject = ozs.a();
-        if (localObject != null)
+        paramViewBase = new JSONArray();
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          localObject = (pfg)((QQAppInterface)localObject).getManager(163);
-          if (localObject != null)
-          {
-            if (!((pfg)localObject).a().a(paramArticleInfo.mArticleID)) {
-              break label112;
-            }
-            paramArticleInfo = "1";
-            localJSONObject.put("isRead", paramArticleInfo);
-          }
+          localObject2 = (ViewBase)((Iterator)localObject1).next();
+          localObject3 = new JSONObject();
+          a((ViewBase)localObject2, (JSONObject)localObject3);
+          paramViewBase.put(localObject3);
         }
-        paramJSONObject.put("$RIJArticle", localJSONObject);
-        return;
+        paramJSONObject.put("children", paramViewBase);
       }
-      catch (JSONException paramArticleInfo)
-      {
-        QLog.e("PTSLiteDataParser", 1, "[addRIJArticleJson] error, e = " + paramArticleInfo);
-        return;
-      }
-      label112:
-      paramArticleInfo = "0";
     }
   }
   
-  public static void b(ArticleInfo paramArticleInfo)
+  public static void a(String paramString1, String paramString2)
   {
-    if (paramArticleInfo == null) {
-      return;
-    }
-    Object localObject = ozs.a();
-    if (localObject != null)
-    {
-      localObject = (pfg)((QQAppInterface)localObject).getManager(163);
-      if (localObject != null) {
-        ((pfg)localObject).a().a(paramArticleInfo.mArticleID, System.currentTimeMillis());
-      }
-    }
-    a(paramArticleInfo, "isRead", "1");
+    QLog.d(paramString1, 1, paramString2);
   }
   
-  private static void b(ArticleInfo paramArticleInfo, JSONObject paramJSONObject)
+  public static boolean a()
   {
-    if (paramArticleInfo == null) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramArticleInfo.innerUniqueID))
-    {
-      paramArticleInfo.innerUniqueID = ("pts_page_" + System.currentTimeMillis());
-      QLog.i("PTSLiteDataParser", 1, "[updatePtsItemData], innerUniqueId is null.");
-    }
-    String str1 = paramArticleInfo.ptsLitePageName;
-    String str2 = paramArticleInfo.innerUniqueID;
-    String str3 = qib.a().a("default_feeds", str1);
-    a(paramArticleInfo, paramJSONObject);
-    QLog.i("PTSLiteDataParser", 1, "[updatePtsItemData], json = " + paramJSONObject.toString());
-    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(paramJSONObject.toString())) && (!TextUtils.isEmpty(str3)))
-    {
-      paramArticleInfo.ptsItemData = new PTSItemData.Builder().withPageName(str1).withItemID(str2).withJsonData(paramJSONObject.toString()).withFrameTreeJson(str3).build();
-      paramArticleInfo.ptsItemDataBytes = qhx.a(paramArticleInfo.ptsItemData);
-      if (paramArticleInfo.ptsComposer != null) {
-        paramArticleInfo.ptsComposer.setData(paramJSONObject.toString());
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PTSLiteDataParser", 2, "[updatePtsItemData], pageName = " + str1 + ", itemId = " + str2 + ", json = " + paramJSONObject.toString());
-      }
-      if (TextUtils.isEmpty(str3)) {
-        QLog.i("PTSLiteDataParser", 1, "[updatePtsItemData], frameTreeJson is empty.");
-      }
-      paramJSONObject = ozs.a();
-      if (paramJSONObject == null) {
-        break;
-      }
-      paramJSONObject = (pfg)paramJSONObject.getManager(163);
-      if (paramJSONObject == null) {
-        break;
-      }
-      paramJSONObject.a().b(paramArticleInfo);
-      return;
-      QLog.i("PTSLiteDataParser", 1, "[updatePtsItemData] failed, something is null.");
-    }
-  }
-  
-  private static void c(ArticleInfo paramArticleInfo)
-  {
-    if ((paramArticleInfo == null) || (TextUtils.isEmpty(paramArticleInfo.proteusItemsData))) {
-      return;
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramArticleInfo.proteusItemsData);
-      if (TextUtils.equals(localJSONObject.optString("style_ID"), "ReadInjoy_daily_triple_img_cell")) {
-        localJSONObject.put("pts_page_name", "daily_triple_img_card");
-      }
-      paramArticleInfo.proteusItemsData = localJSONObject.toString();
-      return;
-    }
-    catch (JSONException paramArticleInfo)
-    {
-      QLog.e("PTSLiteDataParser", 1, "[convertDailyTripleData] error, e = " + paramArticleInfo);
-    }
+    return true;
   }
 }
 

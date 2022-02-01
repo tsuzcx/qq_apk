@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.imageopt;
 
-import pnj;
-import suo;
+import psp;
+import syo;
 
 public final class RIJImageOptReport$1
   implements Runnable
 {
-  public RIJImageOptReport$1(suo paramsuo, String paramString) {}
+  public RIJImageOptReport$1(syo paramsyo, String paramString) {}
   
   public void run()
   {
-    if (pnj.a(this.jdField_a_of_type_Suo))
+    if (psp.a(this.jdField_a_of_type_Syo))
     {
-      pnj.a(6, this.jdField_a_of_type_Suo);
-      this.jdField_a_of_type_Suo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      pnj.b(this.jdField_a_of_type_Suo);
+      psp.a(6, this.jdField_a_of_type_Syo);
+      this.jdField_a_of_type_Syo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      psp.b(this.jdField_a_of_type_Syo);
     }
   }
 }

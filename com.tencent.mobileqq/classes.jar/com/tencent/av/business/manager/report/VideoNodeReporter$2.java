@@ -3,13 +3,13 @@ package com.tencent.av.business.manager.report;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import lie;
-import lig;
+import lhy;
+import lia;
 
 public class VideoNodeReporter$2
   implements Runnable
 {
-  public VideoNodeReporter$2(lie paramlie, long paramLong) {}
+  public VideoNodeReporter$2(lhy paramlhy, long paramLong) {}
   
   public void run()
   {
@@ -18,13 +18,13 @@ public class VideoNodeReporter$2
       Iterator localIterator = this.this$0.a.iterator();
       while (localIterator.hasNext())
       {
-        lig locallig = (lig)localIterator.next();
-        if (locallig.a == -1L)
+        lia locallia = (lia)localIterator.next();
+        if (locallia.a == -1L)
         {
-          locallig.a = this.a;
+          locallia.a = this.a;
           this.this$0.a(this.a, 26, this.a);
           QLog.d("VideoNodeReporter", 1, "updateCallerRoomId  updated roomId = " + this.a);
-          lie.a(this.this$0, -1L);
+          lhy.a(this.this$0, -1L);
         }
       }
     }

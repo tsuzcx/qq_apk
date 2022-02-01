@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ark.API;
 
 import android.app.Activity;
-import apwn;
+import aoqa;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkAppQQModule$21
   implements Runnable
 {
-  public ArkAppQQModule$21(apwn paramapwn, Activity paramActivity, String paramString) {}
+  public ArkAppQQModule$21(aoqa paramaoqa, Activity paramActivity, String paramString) {}
   
   public void run()
   {

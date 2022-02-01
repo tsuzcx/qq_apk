@@ -1,29 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
+import android.graphics.PointF;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-public final class bnac
-  implements Parcelable.Creator<CoverCacheData.GameCoverInfo>
+public class bnac
+  extends lqa
 {
-  public CoverCacheData.GameCoverInfo a(Parcel paramParcel)
-  {
-    CoverCacheData.GameCoverInfo localGameCoverInfo = new CoverCacheData.GameCoverInfo();
-    if (paramParcel != null)
-    {
-      localGameCoverInfo.jdField_a_of_type_Double = paramParcel.readDouble();
-      localGameCoverInfo.jdField_b_of_type_Double = paramParcel.readDouble();
-      localGameCoverInfo.c = paramParcel.readDouble();
-      localGameCoverInfo.d = paramParcel.readDouble();
-      localGameCoverInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      localGameCoverInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localGameCoverInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    }
-    return localGameCoverInfo;
-  }
+  public bnac(CropVideoActivity paramCropVideoActivity) {}
   
-  public CoverCacheData.GameCoverInfo[] a(int paramInt)
+  public boolean a(lpy paramlpy)
   {
-    return null;
+    float f1 = paramlpy.a().x;
+    float f2 = paramlpy.a().y;
+    CropVideoActivity.a(this.a).a(f1, f2, 0.0F);
+    return true;
   }
 }
 

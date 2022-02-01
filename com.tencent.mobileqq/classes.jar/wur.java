@@ -1,101 +1,44 @@
-import android.support.annotation.Nullable;
-import java.util.Arrays;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
 
-public class wur
+public abstract interface wur
 {
-  public final int a;
-  private final String a;
-  public final String[] a;
-  public final int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public final int i;
+  public abstract int a();
   
-  private wur(JSONObject paramJSONObject)
-  {
-    int k;
-    try
-    {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
-      this.jdField_a_of_type_Int = paramJSONObject.getInt("v");
-      this.b = paramJSONObject.getInt("id");
-      this.i = paramJSONObject.getJSONObject("a").getInt("r");
-      JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
-      this.c = localJSONArray.getInt(0);
-      this.d = localJSONArray.getInt(1);
-      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
-      this.e = localJSONArray.getInt(0);
-      this.f = localJSONArray.getInt(1);
-      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("lp");
-      this.g = localJSONArray.getInt(0);
-      this.h = localJSONArray.getInt(1);
-      paramJSONObject = paramJSONObject.getJSONObject("a").getJSONArray("c");
-      k = paramJSONObject.length();
-      if (k < 1) {
-        throw new IllegalArgumentException("content length should more than 1");
-      }
-    }
-    catch (JSONException paramJSONObject)
-    {
-      throw new IllegalArgumentException(paramJSONObject);
-    }
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[k];
-    while (j < k)
-    {
-      this.jdField_a_of_type_ArrayOfJavaLangString[j] = paramJSONObject.optString(j, "(NULL)");
-      j += 1;
-    }
-  }
+  public abstract long a();
   
-  public static wur a(@Nullable String paramString)
-  {
-    try
-    {
-      paramString = a(new JSONObject(paramString));
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      yuk.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
-      return null;
-    }
-    catch (NullPointerException paramString)
-    {
-      yuk.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
-    }
-    return null;
-  }
+  public abstract View a();
   
-  public static wur a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      paramJSONObject = new wur(paramJSONObject);
-      return paramJSONObject;
-    }
-    catch (IllegalArgumentException paramJSONObject)
-    {
-      yuk.a("StoryVideoItem.PollLayout", "fromJson()", paramJSONObject);
-    }
-    return null;
-  }
+  public abstract wve a();
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public abstract void a();
   
-  public String toString()
-  {
-    return "PollLayout{version=" + this.jdField_a_of_type_Int + ", id=" + this.b + ", screenWidth=" + this.c + ", screenHeight=" + this.d + ", layoutWidth=" + this.e + ", layoutHeight=" + this.f + ", layoutCenterX=" + this.g + ", layoutCenterY=" + this.h + ", rotation=" + this.i + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract void a(wus paramwus);
+  
+  public abstract void a(wut paramwut);
+  
+  public abstract void a(wuu paramwuu);
+  
+  public abstract void a(wuv paramwuv);
+  
+  public abstract void a(wuw paramwuw);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

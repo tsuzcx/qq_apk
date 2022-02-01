@@ -25,7 +25,7 @@ class ClientLogReport$1
             File localFile = localObject[i];
             ClientLogReport.ReportRecord localReportRecord = ClientLogReport.ReportRecord.readFromFile(localFile);
             if ((localReportRecord != null) && (System.currentTimeMillis() - localReportRecord.mTimestamp < 86400000L)) {
-              ClientLogReport.access$100(this.this$0, localReportRecord.mUin, localReportRecord.mTopicId, localReportRecord.mLog, true);
+              this.this$0.sendLog(localReportRecord.mUin, localReportRecord.mTopicId, localReportRecord.mLog, true);
             }
             try
             {

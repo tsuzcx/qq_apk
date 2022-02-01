@@ -1,42 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.opengl.EGLContext;
 
 public class bbww
 {
-  private boolean a = true;
+  int jdField_a_of_type_Int;
+  EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
+  Object jdField_a_of_type_JavaLangObject = new Object();
+  int b;
   
-  public static bbww a(String paramString)
+  public void a(EGLContext paramEGLContext, int paramInt1, int paramInt2)
   {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
-    try
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      bbww localbbww = new bbww();
-      if (new JSONObject(paramString).optInt("enable", 1) == 1) {}
-      for (;;)
-      {
-        localbbww.a = bool;
-        return localbbww;
-        bool = false;
-      }
-      return null;
+      this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      return;
     }
-    catch (Exception paramString)
-    {
-      QLog.e("ScreenShotConfigProcessor", 2, "ScreenShotConfigData parse error", paramString);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.a;
-  }
-  
-  public String toString()
-  {
-    return "ScreenShotConfigData [mSwitchEnable = " + this.a + "]";
   }
 }
 

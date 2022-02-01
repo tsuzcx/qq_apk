@@ -1,16 +1,18 @@
-import android.content.Intent;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
 
 public class avzg
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public long a;
-  public Intent a;
-  public String a;
-  public String b = "";
-  public String c = "";
+  public avzg(MultiAIOViewPager paramMultiAIOViewPager) {}
   
-  public avzg(avzd paramavzd)
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    if (MultiAIOViewPager.a(this.a) != null) {
+      this.a.performClick();
+    }
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

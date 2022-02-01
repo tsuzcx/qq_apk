@@ -1,106 +1,19 @@
-import android.os.Looper;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPolymeric;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 
 public class qpv
-  extends pfh
+  extends qpu
 {
-  public qpv(ComponentHeaderPolymeric paramComponentHeaderPolymeric) {}
-  
-  public void a(long paramLong, boolean paramBoolean)
+  public qpv(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
   {
-    int i;
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      i = 1;
-      if (i != 0) {
-        break label32;
-      }
-      QLog.e("ComponentHeaderPolymeric", 2, "Please call this method in main thread!!!");
-    }
-    label32:
-    ArticleInfo localArticleInfo;
-    do
-    {
-      return;
-      i = 0;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("ComponentHeaderPolymeric", 2, "onUpdateAfterSmallVideoTopicFollow topicId = " + paramLong + " isFollow = " + paramBoolean);
-      }
-      localArticleInfo = (ArticleInfo)this.a.a.a.a().mGroupSubArticleList.get(0);
-    } while ((localArticleInfo == null) || (localArticleInfo.mPolymericInfo == null) || (localArticleInfo.mPolymericInfo.f != paramLong));
-    ComponentHeaderPolymeric.a(this.a).setVisibility(0);
-    if (paramBoolean)
-    {
-      ComponentHeaderPolymeric.a(this.a, true);
-      if ((localArticleInfo.mTopicRecommendFeedsInfo != null) && (localArticleInfo.mTopicRecommendFeedsInfo.a != null)) {
-        ((qzd)localArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).c = 1;
-      }
-      if (localArticleInfo.mPolymericInfo != null)
-      {
-        localArticleInfo.mPolymericInfo.e = 2;
-        return;
-      }
-      QLog.e("ComponentHeaderPolymeric", 2, "articleInfo mPolymericInfo == null articleInfo.mArticleID = " + localArticleInfo.mArticleID);
-      return;
-    }
-    ComponentHeaderPolymeric.a(this.a, false);
-    if ((localArticleInfo.mTopicRecommendFeedsInfo != null) && (localArticleInfo.mTopicRecommendFeedsInfo.a != null)) {
-      ((qzd)localArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).c = 0;
-    }
-    if (localArticleInfo.mPolymericInfo != null)
-    {
-      localArticleInfo.mPolymericInfo.e = 1;
-      return;
-    }
-    QLog.e("ComponentHeaderPolymeric", 2, "articleInfo mPolymericInfo == null articleInfo.mArticleID = " + localArticleInfo.mArticleID);
+    super(paramContext, paramFaceDecoder, paramslt);
   }
   
-  public void b(long paramLong, boolean paramBoolean)
+  public qpk g()
   {
-    int i;
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      i = 1;
-      if (i != 0) {
-        break label32;
-      }
-      QLog.e("ComponentHeaderPolymeric", 2, "Please call this method in main thread!!!");
-    }
-    label32:
-    ArticleInfo localArticleInfo;
-    do
-    {
-      return;
-      i = 0;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("ComponentHeaderPolymeric", 2, "onUpdateAfterAccountFollow uin = " + paramLong + " isFollow = " + paramBoolean);
-      }
-      localArticleInfo = (ArticleInfo)this.a.a.a.a().mGroupSubArticleList.get(0);
-    } while ((localArticleInfo == null) || (localArticleInfo.mPolymericInfo == null) || (localArticleInfo.mPolymericInfo.b != paramLong));
-    SocializeFeedsInfo localSocializeFeedsInfo = localArticleInfo.mSocialFeedInfo;
-    ComponentHeaderPolymeric.a(this.a).setVisibility(0);
-    if (paramBoolean)
-    {
-      ComponentHeaderPolymeric.a(this.a, true);
-      if (localSocializeFeedsInfo != null) {
-        localSocializeFeedsInfo.h = 2;
-      }
-      localArticleInfo.mPolymericInfo.e = 2;
-      return;
-    }
-    ComponentHeaderPolymeric.a(this.a, false);
-    if (localSocializeFeedsInfo != null) {
-      localSocializeFeedsInfo.h = 1;
-    }
-    localArticleInfo.mPolymericInfo.e = 1;
+    this.jdField_a_of_type_Qpj = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

@@ -1,50 +1,29 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.view.View;
-import com.tencent.mobileqq.activity.EditActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3;
 
 class ahfc
-  extends ClickableSpan
+  implements Animator.AnimatorListener
 {
-  ahfc(ahed paramahed) {}
+  ahfc(ahfb paramahfb) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Intent localIntent;
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, EditActivity.class);
-      paramView = ((anws)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      if ((paramView == null) || (!paramView.hasRenamed())) {
-        break label193;
-      }
+    if (ahey.a(this.a.a.this$0) != null) {
+      ahey.a(this.a.a.this$0).setVisibility(0);
     }
-    label193:
-    for (paramView = paramView.discussionName;; paramView = "")
-    {
-      localIntent.putExtra("title", 2131691625);
-      localIntent.putExtra("action", 102);
-      localIntent.putExtra("limit", 48);
-      localIntent.putExtra("current", paramView);
-      localIntent.putExtra("canPostNull", false);
-      localIntent.putExtra("multiLine", false);
-      localIntent.putExtra("selfSet_leftViewText", this.a.jdField_a_of_type_AndroidContentContext.getString(2131690384));
-      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 6002);
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800666A", "0X800666A", 0, 0, "", "", "", "");
-      return;
+    if (ahey.a(this.a.a.this$0) != null) {
+      ahey.a(this.a.a.this$0).setVisibility(4);
     }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

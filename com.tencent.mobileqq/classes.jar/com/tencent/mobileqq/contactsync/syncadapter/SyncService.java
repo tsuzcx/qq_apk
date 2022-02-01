@@ -6,13 +6,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.IBinder;
-import arsy;
+import aqmw;
 import mqq.app.MobileQQ;
 
 public class SyncService
   extends Service
 {
-  private static arsy jdField_a_of_type_Arsy;
+  private static aqmw jdField_a_of_type_Aqmw;
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
   
   public static void a(Context paramContext, boolean paramBoolean)
@@ -41,7 +41,7 @@ public class SyncService
   
   public IBinder onBind(Intent paramIntent)
   {
-    return jdField_a_of_type_Arsy.getSyncAdapterBinder();
+    return jdField_a_of_type_Aqmw.getSyncAdapterBinder();
   }
   
   public void onCreate()
@@ -56,8 +56,8 @@ public class SyncService
     }
     synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (jdField_a_of_type_Arsy == null) {
-        jdField_a_of_type_Arsy = new arsy(getApplicationContext(), true);
+      if (jdField_a_of_type_Aqmw == null) {
+        jdField_a_of_type_Aqmw = new aqmw(getApplicationContext(), true);
       }
       return;
     }

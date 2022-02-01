@@ -1,23 +1,26 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchFragment;
-import com.tencent.widget.ListView;
+import android.os.Bundle;
+import com.tencent.mobileqq.statistics.DailyReport;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.io.File;
 
 public class bcde
-  extends bcbj<bcfr, bcnz>
+  extends bgod
 {
-  public bcde(FTSEntitySearchFragment paramFTSEntitySearchFragment, ListView paramListView, aoof paramaoof)
+  public bcde(DailyReport paramDailyReport, String paramString1, String paramString2)
   {
-    super(paramListView, paramaoof);
+    super(paramString1, paramString2);
   }
   
-  protected bcil<bcfr, bcnz> a(int paramInt)
+  public void onDone(bgoe parambgoe)
   {
-    return new bcii(FTSEntitySearchFragment.a(this.a));
+    super.onDone(parambgoe);
+    long l = parambgoe.a().getLong("id");
+    VasWebviewUtil.reportVasStatus("AvatarPendant", "AvatarPendantOn", String.valueOf(l), 0, 0, 0, 0, bfua.a(new File(bfua.b(l, 4))), "");
   }
   
-  protected bcoa a(int paramInt, ViewGroup paramViewGroup)
+  public boolean onStart(bgoe parambgoe)
   {
-    return new bcnv(paramViewGroup, 2131562880);
+    return true;
   }
 }
 

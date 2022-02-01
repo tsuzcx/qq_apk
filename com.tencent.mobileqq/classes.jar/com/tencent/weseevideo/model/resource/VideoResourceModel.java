@@ -5,6 +5,8 @@ import com.tencent.weseevideo.model.BaseMediaModel;
 public class VideoResourceModel
   extends BaseMediaModel
 {
+  private long cutTimeDuration;
+  private long cutTimeStart;
   private int height;
   private String path;
   private int rotate;
@@ -34,6 +36,8 @@ public class VideoResourceModel
     localVideoResourceModel.setSelectTimeDuration(this.selectTimeDuration);
     localVideoResourceModel.setSourceTimeDurationUs(this.sourceTimeDurationUs);
     localVideoResourceModel.setSelectTimeDurationUs(this.selectTimeDurationUs);
+    localVideoResourceModel.setCutTimeStart(this.cutTimeStart);
+    localVideoResourceModel.setCutTimeDuration(this.cutTimeDuration);
     localVideoResourceModel.setWidth(this.width);
     localVideoResourceModel.setHeight(this.height);
     localVideoResourceModel.setRotate(this.rotate);
@@ -50,8 +54,18 @@ public class VideoResourceModel
         return false;
       }
       paramObject = (VideoResourceModel)paramObject;
-    } while ((this.scaleDuration == paramObject.scaleDuration) && (this.sourceTimeStart == paramObject.sourceTimeStart) && (this.sourceTimeDuration == paramObject.sourceTimeDuration) && (this.type == paramObject.type) && (this.sourceTimeStartUs == paramObject.sourceTimeStartUs) && (this.sourceTimeDurationUs == paramObject.sourceTimeDurationUs) && (this.selectTimeStart == paramObject.selectTimeStart) && (this.selectTimeDuration == paramObject.selectTimeDuration) && (this.selectTimeStartUs == paramObject.selectTimeStartUs) && (this.selectTimeDurationUs == paramObject.selectTimeDurationUs) && (this.width == paramObject.width) && (this.height == paramObject.height) && (this.rotate == paramObject.rotate) && (this.path.equals(paramObject.path)));
+    } while ((this.scaleDuration == paramObject.scaleDuration) && (this.sourceTimeStart == paramObject.sourceTimeStart) && (this.sourceTimeDuration == paramObject.sourceTimeDuration) && (this.type == paramObject.type) && (this.sourceTimeStartUs == paramObject.sourceTimeStartUs) && (this.sourceTimeDurationUs == paramObject.sourceTimeDurationUs) && (this.selectTimeStart == paramObject.selectTimeStart) && (this.selectTimeDuration == paramObject.selectTimeDuration) && (this.selectTimeStartUs == paramObject.selectTimeStartUs) && (this.selectTimeDurationUs == paramObject.selectTimeDurationUs) && (this.cutTimeStart == paramObject.cutTimeStart) && (this.cutTimeDuration == paramObject.cutTimeDuration) && (this.width == paramObject.width) && (this.height == paramObject.height) && (this.rotate == paramObject.rotate) && (this.path.equals(paramObject.path)));
     return false;
+  }
+  
+  public long getCutTimeDuration()
+  {
+    return this.cutTimeDuration;
+  }
+  
+  public long getCutTimeStart()
+  {
+    return this.cutTimeStart;
   }
   
   public int getHeight()
@@ -132,6 +146,16 @@ public class VideoResourceModel
     return this.width;
   }
   
+  public void setCutTimeDuration(long paramLong)
+  {
+    this.cutTimeDuration = paramLong;
+  }
+  
+  public void setCutTimeStart(long paramLong)
+  {
+    this.cutTimeStart = paramLong;
+  }
+  
   public void setHeight(int paramInt)
   {
     this.height = paramInt;
@@ -152,10 +176,19 @@ public class VideoResourceModel
     this.scaleDuration = paramLong;
   }
   
+  @Deprecated
   public void setSelectTimeDuration(long paramLong)
+  {
+    setSelectTimeDuration(paramLong, false);
+  }
+  
+  public void setSelectTimeDuration(long paramLong, boolean paramBoolean)
   {
     this.selectTimeDuration = paramLong;
     this.selectTimeDurationUs = (1000L * paramLong);
+    if (!paramBoolean) {
+      this.cutTimeDuration = paramLong;
+    }
   }
   
   public void setSelectTimeDurationUs(long paramLong)
@@ -164,10 +197,19 @@ public class VideoResourceModel
     this.selectTimeDurationUs = paramLong;
   }
   
+  @Deprecated
   public void setSelectTimeStart(long paramLong)
+  {
+    setSelectTimeStart(paramLong, false);
+  }
+  
+  public void setSelectTimeStart(long paramLong, boolean paramBoolean)
   {
     this.selectTimeStart = paramLong;
     this.selectTimeStartUs = (1000L * paramLong);
+    if (!paramBoolean) {
+      this.cutTimeStart = paramLong;
+    }
   }
   
   public void setSelectTimeStartUs(long paramLong)

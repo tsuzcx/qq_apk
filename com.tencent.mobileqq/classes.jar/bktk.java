@@ -1,8 +1,17 @@
-public abstract interface bktk
+import cooperation.qqreader.host.webview.ReaderBaseWebViewPlugin;
+import cooperation.qqreader.proxy.ReaderJsCallback;
+
+class bktk
+  implements ReaderJsCallback
 {
-  public abstract void a(int paramInt, String paramString);
+  bktk(bkti parambkti) {}
   
-  public abstract void a(byte[] paramArrayOfByte);
+  public void onCallback(String paramString1, String paramString2) {}
+  
+  public void onInitPluginCallBack(ReaderBaseWebViewPlugin paramReaderBaseWebViewPlugin)
+  {
+    paramReaderBaseWebViewPlugin.init(bkti.a(this.a), null);
+  }
 }
 
 

@@ -1,320 +1,295 @@
-import android.annotation.SuppressLint;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.location.data.LocationRoom;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.nearby.now.model.LocationInfo;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBDoubleField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.text.SimpleDateFormat;
+import com.tencent.pb.now.FeedsProtocol.LbsInfo;
+import com.tencent.pb.now.FeedsProtocol.PicFeedsInfo;
+import com.tencent.pb.now.FeedsProtocol.PicInfo;
+import com.tencent.pb.now.FeedsProtocol.RichTitleElement;
+import com.tencent.pb.now.FeedsProtocol.ShortVideoInfo;
+import com.tencent.pb.now.FeedsProtocol.TextFeed;
+import com.tencent.pb.now.FeedsProtocol.TopicCfg;
+import com.tencent.pb.now.FeedsProtocol.UserInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.cmd0x857.TroopTips0x857.LbsShareChangePushInfo;
-import tencent.im.oidb.location.RoomOperate.RspRoomQuery;
-import tencent.im.oidb.location.RoomOperate.UserData;
-import tencent.im.oidb.location.qq_lbs_share.AssemblyPointData;
-import tencent.im.s2c.msgtype0x210.submsgtype0x125.submsgtype0x125.MsgBody;
 
-public final class awpy
-  extends awpz
+public abstract class awpy
 {
-  private awpq jdField_a_of_type_Awpq;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected int a;
+  protected awpz a;
+  public QQAppInterface a;
+  protected ArrayList<VideoData> a;
+  protected boolean a;
   
-  public awpy(QQAppInterface paramQQAppInterface, awpq paramawpq)
+  public awpy()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Awpq = paramawpq;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  @SuppressLint({"SimpleDateFormat"})
-  protected void a(boolean paramBoolean, Object paramObject)
+  protected static VideoData a(int paramInt, List<FeedsProtocol.TopicCfg> paramList, FeedsProtocol.PicFeedsInfo paramPicFeedsInfo, ArrayList<VideoData> paramArrayList)
   {
-    super.a(paramBoolean, paramObject);
-    if (!paramBoolean) {
-      return;
-    }
-    paramObject = (Object[])paramObject;
-    Object localObject2 = (RoomOperate.RspRoomQuery)paramObject[0];
-    int i = ((Integer)paramObject[1]).intValue();
-    Object localObject3 = (String)paramObject[2];
-    paramObject = new LocationRoom.Venue();
-    Object localObject4 = (qq_lbs_share.AssemblyPointData)((RoomOperate.RspRoomQuery)localObject2).assembly_Point.get();
-    if (localObject4 != null) {
-      switch (((qq_lbs_share.AssemblyPointData)localObject4).operation.get())
+    boolean bool2 = false;
+    VideoData localVideoData = new VideoData();
+    localVideoData.jdField_a_of_type_JavaLangString = paramPicFeedsInfo.feeds_id.get().toStringUtf8();
+    localVideoData.jdField_e_of_type_Long = paramPicFeedsInfo.create_time.get();
+    localVideoData.jdField_k_of_type_JavaLangString = paramPicFeedsInfo.share_url.get().toStringUtf8();
+    localVideoData.jdField_g_of_type_JavaLangString = paramPicFeedsInfo.user_info.anchor_name.get().toStringUtf8();
+    localVideoData.jdField_a_of_type_Long = paramPicFeedsInfo.user_info.uid.get();
+    localVideoData.jdField_b_of_type_Long = paramPicFeedsInfo.user_info.explicit_uid.get();
+    localVideoData.jdField_c_of_type_Int = paramPicFeedsInfo.user_info.id_type.get();
+    localVideoData.jdField_h_of_type_JavaLangString = paramPicFeedsInfo.user_info.anchor_name.get().toStringUtf8();
+    localVideoData.jdField_c_of_type_Long = paramPicFeedsInfo.user_info.uid.get();
+    localVideoData.jdField_d_of_type_Long = paramPicFeedsInfo.user_info.explicit_uid.get();
+    localVideoData.jdField_g_of_type_Int = paramPicFeedsInfo.user_info.id_type.get();
+    localVideoData.i = paramPicFeedsInfo.user_info.head_img_url.get().toStringUtf8();
+    if (paramPicFeedsInfo.is_listen.get() != 0) {}
+    Object localObject;
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      localVideoData.jdField_a_of_type_Boolean = bool1;
+      bool1 = bool2;
+      if (paramPicFeedsInfo.is_like.get() != 0) {
+        bool1 = true;
+      }
+      localVideoData.jdField_b_of_type_Boolean = bool1;
+      localVideoData.jdField_b_of_type_Int = paramPicFeedsInfo.like_num.get();
+      localVideoData.jdField_f_of_type_JavaLangString = paramPicFeedsInfo.user_info.head_img_url.get().toStringUtf8();
+      localVideoData.jdField_d_of_type_Int = paramPicFeedsInfo.view_times.get();
+      localVideoData.jdField_e_of_type_Int = paramPicFeedsInfo.user_info.age.get();
+      localVideoData.jdField_f_of_type_Int = paramPicFeedsInfo.user_info.user_gender.get();
+      localVideoData.jdField_g_of_type_Long = paramPicFeedsInfo.user_info.uid.get();
+      localVideoData.jdField_h_of_type_Long = paramPicFeedsInfo.user_info.explicit_uid.get();
+      localVideoData.jdField_h_of_type_Int = paramPicFeedsInfo.user_info.id_type.get();
+      localVideoData.jdField_j_of_type_JavaLangString = "";
+      localVideoData.jdField_j_of_type_Int = paramPicFeedsInfo.feed_type.get();
+      localVideoData.m = paramInt;
+      localIterator = paramPicFeedsInfo.pic_infos.get().iterator();
+      while (localIterator.hasNext())
       {
+        localObject = (FeedsProtocol.PicInfo)localIterator.next();
+        localVideoData.jdField_a_of_type_JavaUtilArrayList.add(new awqc(((FeedsProtocol.PicInfo)localObject).url.get().toStringUtf8(), ((FeedsProtocol.PicInfo)localObject).width.get(), ((FeedsProtocol.PicInfo)localObject).hight.get()));
       }
     }
-    Object localObject1;
-    int j;
+    Iterator localIterator = paramPicFeedsInfo.rpt_msg_rich_title.get().iterator();
+    while (localIterator.hasNext())
+    {
+      localObject = (FeedsProtocol.RichTitleElement)localIterator.next();
+      if (((FeedsProtocol.RichTitleElement)localObject).type.get() == 1) {
+        localVideoData.jdField_j_of_type_JavaLangString += ((FeedsProtocol.RichTitleElement)localObject).text.get().toStringUtf8();
+      } else if (((FeedsProtocol.RichTitleElement)localObject).type.get() == 2) {
+        localVideoData.jdField_j_of_type_JavaLangString = (localVideoData.jdField_j_of_type_JavaLangString + "#" + ((FeedsProtocol.RichTitleElement)localObject).text.get().toStringUtf8() + "#");
+      }
+    }
+    if (paramPicFeedsInfo.lbs_info != null)
+    {
+      paramPicFeedsInfo = (FeedsProtocol.LbsInfo)paramPicFeedsInfo.lbs_info.get();
+      localVideoData.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo = new LocationInfo();
+      localVideoData.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.init(paramPicFeedsInfo.lng.get().toStringUtf8(), paramPicFeedsInfo.lat.get().toStringUtf8(), paramPicFeedsInfo.city.get().toStringUtf8(), paramPicFeedsInfo.name.get().toStringUtf8());
+    }
     for (;;)
     {
-      localObject1 = ((RoomOperate.RspRoomQuery)localObject2).user_list.get();
-      j = ((RoomOperate.RspRoomQuery)localObject2).room_state.get();
-      if (((List)localObject1).size() > 0) {
-        break;
+      paramArrayList.add(awqo.a(paramList, localVideoData));
+      return localVideoData;
+      localVideoData.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo = new LocationInfo();
+    }
+  }
+  
+  protected static VideoData a(int paramInt, List<FeedsProtocol.TopicCfg> paramList, FeedsProtocol.ShortVideoInfo paramShortVideoInfo, ArrayList<VideoData> paramArrayList)
+  {
+    boolean bool2 = false;
+    VideoData localVideoData = new VideoData();
+    localVideoData.jdField_a_of_type_JavaLangString = paramShortVideoInfo.feeds_id.get().toStringUtf8();
+    localVideoData.jdField_a_of_type_Int = 2;
+    localVideoData.jdField_e_of_type_Long = paramShortVideoInfo.create_time.get();
+    localVideoData.jdField_d_of_type_JavaLangString = paramShortVideoInfo.doodle_pic_url.get().toStringUtf8();
+    localVideoData.jdField_k_of_type_JavaLangString = paramShortVideoInfo.share_url.get().toStringUtf8();
+    localVideoData.jdField_c_of_type_JavaLangString = paramShortVideoInfo.pic_url.get().toStringUtf8();
+    localVideoData.jdField_b_of_type_JavaLangString = paramShortVideoInfo.video_url.get().toStringUtf8();
+    localVideoData.jdField_g_of_type_JavaLangString = ((FeedsProtocol.UserInfo)paramShortVideoInfo.anchor_info.get()).anchor_name.get().toStringUtf8();
+    localVideoData.jdField_a_of_type_Long = ((FeedsProtocol.UserInfo)paramShortVideoInfo.anchor_info.get()).uid.get();
+    localVideoData.jdField_b_of_type_Long = paramShortVideoInfo.anchor_info.explicit_uid.get();
+    localVideoData.jdField_c_of_type_Int = paramShortVideoInfo.anchor_info.id_type.get();
+    localVideoData.jdField_h_of_type_JavaLangString = paramShortVideoInfo.user_info.anchor_name.get().toStringUtf8();
+    localVideoData.jdField_c_of_type_Long = paramShortVideoInfo.user_info.uid.get();
+    localVideoData.jdField_d_of_type_Long = paramShortVideoInfo.user_info.explicit_uid.get();
+    localVideoData.jdField_g_of_type_Int = paramShortVideoInfo.user_info.id_type.get();
+    localVideoData.i = paramShortVideoInfo.user_info.head_img_url.get().toStringUtf8();
+    boolean bool1;
+    Iterator localIterator;
+    if (paramShortVideoInfo.is_listen.get() != 0)
+    {
+      bool1 = true;
+      localVideoData.jdField_a_of_type_Boolean = bool1;
+      bool1 = bool2;
+      if (paramShortVideoInfo.is_like.get() != 0) {
+        bool1 = true;
       }
-      QLog.e("LocationObserver", 1, "[queryLocationRoom][error] onQueryRoom: invoked. sessionUin: " + (String)localObject3 + " roomState: " + j + " userDataList: " + ((List)localObject1).size() + " venue: " + paramObject);
-      return;
-      if (((qq_lbs_share.AssemblyPointData)localObject4).operator.get() <= 0L)
-      {
-        paramObject = null;
+      localVideoData.jdField_b_of_type_Boolean = bool1;
+      localVideoData.jdField_b_of_type_Int = paramShortVideoInfo.like_num.get();
+      localVideoData.jdField_f_of_type_JavaLangString = ((FeedsProtocol.UserInfo)paramShortVideoInfo.anchor_info.get()).head_img_url.get().toStringUtf8();
+      localVideoData.jdField_d_of_type_Int = paramShortVideoInfo.view_times.get();
+      localVideoData.jdField_e_of_type_Int = paramShortVideoInfo.user_info.age.get();
+      localVideoData.jdField_f_of_type_Int = paramShortVideoInfo.user_info.user_gender.get();
+      localVideoData.jdField_g_of_type_Long = paramShortVideoInfo.user_info.uid.get();
+      localVideoData.jdField_h_of_type_Long = paramShortVideoInfo.user_info.explicit_uid.get();
+      localVideoData.jdField_h_of_type_Int = paramShortVideoInfo.user_info.id_type.get();
+      localVideoData.jdField_j_of_type_JavaLangString = "";
+      localVideoData.jdField_j_of_type_Int = paramShortVideoInfo.feed_type.get();
+      localVideoData.jdField_k_of_type_Int = paramShortVideoInfo.video_hight.get();
+      localVideoData.l = paramShortVideoInfo.video_width.get();
+      localVideoData.jdField_f_of_type_Long = paramShortVideoInfo.video_time.get();
+      localVideoData.m = paramInt;
+      localIterator = paramShortVideoInfo.rpt_msg_rich_title.get().iterator();
+    }
+    for (;;)
+    {
+      if (!localIterator.hasNext()) {
+        break label646;
       }
-      else
+      FeedsProtocol.RichTitleElement localRichTitleElement = (FeedsProtocol.RichTitleElement)localIterator.next();
+      if (localRichTitleElement.type.get() == 1)
       {
-        paramObject.jdField_a_of_type_JavaLangString = String.valueOf(((qq_lbs_share.AssemblyPointData)localObject4).operator.get());
-        paramObject.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = new LatLng(((qq_lbs_share.AssemblyPointData)localObject4).lat.get(), ((qq_lbs_share.AssemblyPointData)localObject4).lon.get());
-        if (((qq_lbs_share.AssemblyPointData)localObject4).poi_name.has())
-        {
-          localObject1 = ((qq_lbs_share.AssemblyPointData)localObject4).poi_name.get().toStringUtf8();
-          label279:
-          paramObject.b = ((String)localObject1);
-          if (!((qq_lbs_share.AssemblyPointData)localObject4).poi_address.has()) {
-            break label325;
-          }
-        }
-        label325:
-        for (localObject1 = ((qq_lbs_share.AssemblyPointData)localObject4).poi_address.get().toStringUtf8();; localObject1 = "")
-        {
-          paramObject.c = ((String)localObject1);
-          break;
-          localObject1 = "";
-          break label279;
-        }
-        paramObject = null;
+        localVideoData.jdField_j_of_type_JavaLangString += localRichTitleElement.text.get().toStringUtf8();
         continue;
-        paramObject = null;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationObserver", 2, "[queryLocationRoom] onQueryRoom: invoked. sessionUin: " + (String)localObject3 + " userDataList: " + ((List)localObject1).size() + " venue: " + paramObject);
-    }
-    localObject2 = new awpk(i, (String)localObject3);
-    localObject3 = this.jdField_a_of_type_Awpq.a((awpk)localObject2);
-    localObject4 = new ArrayList(20);
-    Iterator localIterator = ((List)localObject1).iterator();
-    if (localIterator.hasNext())
-    {
-      RoomOperate.UserData localUserData = (RoomOperate.UserData)localIterator.next();
-      String str = String.valueOf(localUserData.uin.get());
-      awpi localawpi1 = new awpi(str, new LatLng(localUserData.lat.get(), localUserData.lon.get()), localUserData.direction.get());
-      if ((localawpi1.a().latitude == 0.0D) && (localawpi1.a().longitude == 0.0D))
-      {
-        awpi localawpi2 = ((LocationRoom)localObject3).a(str);
-        if (localawpi2 != null)
-        {
-          localObject1 = "[filter]";
-          localawpi1.a(localawpi2.a(), Double.valueOf(localawpi2.a()));
-          ((List)localObject4).add(localawpi1);
-          label590:
-          if (!QLog.isColorLevel()) {
-            break label794;
-          }
-          localObject1 = "[queryLocationRoom]" + (String)localObject1 + " onQueryRoom invoked  roomState == open: ";
-          if (j != 1) {
-            break label796;
-          }
-        }
-      }
-      label794:
-      label796:
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        QLog.d("LocationObserver", 2, new Object[] { localObject1, Boolean.valueOf(paramBoolean), " uin: ", str, " locationItem: ", localawpi1, " join: ", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(localUserData.join_time.get() * 1000L)), " update: " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Long.valueOf(localUserData.lbs_update_ts.get() * 1000L)) });
-        break;
-        localObject1 = "[killed]";
-        break label590;
-        localObject1 = "[data]";
-        ((List)localObject4).add(localawpi1);
-        break label590;
+        bool1 = false;
         break;
       }
+      if (localRichTitleElement.type.get() == 2) {
+        localVideoData.jdField_j_of_type_JavaLangString = (localVideoData.jdField_j_of_type_JavaLangString + "#" + localRichTitleElement.text.get().toStringUtf8() + "#");
+      }
     }
-    this.jdField_a_of_type_Awpq.a((awpk)localObject2, paramObject, (List)localObject4);
+    label646:
+    if (paramShortVideoInfo.lbs_info.get() != null)
+    {
+      paramShortVideoInfo = (FeedsProtocol.LbsInfo)paramShortVideoInfo.lbs_info.get();
+      localVideoData.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo = new LocationInfo();
+      localVideoData.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.init(paramShortVideoInfo.lng.get().toStringUtf8(), paramShortVideoInfo.lat.get().toStringUtf8(), paramShortVideoInfo.city.get().toStringUtf8(), paramShortVideoInfo.name.get().toStringUtf8());
+    }
+    for (;;)
+    {
+      paramArrayList.add(awqo.a(paramList, localVideoData));
+      return localVideoData;
+      localVideoData.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo = new LocationInfo();
+    }
   }
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public static void a(int paramInt, List<FeedsProtocol.TopicCfg> paramList, FeedsProtocol.TextFeed paramTextFeed, ArrayList<VideoData> paramArrayList)
   {
-    super.b(paramBoolean, paramObject);
-    Object localObject = (Object[])paramObject;
-    if ((localObject == null) || (localObject.length == 0)) {}
-    int i;
-    do
+    boolean bool2 = false;
+    VideoData localVideoData = new VideoData();
+    localVideoData.jdField_a_of_type_JavaLangString = paramTextFeed.feeds_id.get();
+    localVideoData.jdField_e_of_type_Long = paramTextFeed.create_time.get();
+    localVideoData.jdField_k_of_type_JavaLangString = paramTextFeed.share_url.get();
+    localVideoData.jdField_a_of_type_Int = 6;
+    localVideoData.jdField_g_of_type_JavaLangString = paramTextFeed.user_info.anchor_name.get().toStringUtf8();
+    localVideoData.jdField_a_of_type_Long = paramTextFeed.user_info.uid.get();
+    localVideoData.jdField_b_of_type_Long = paramTextFeed.user_info.explicit_uid.get();
+    localVideoData.jdField_c_of_type_Int = paramTextFeed.user_info.id_type.get();
+    localVideoData.jdField_h_of_type_JavaLangString = paramTextFeed.user_info.anchor_name.get().toStringUtf8();
+    localVideoData.jdField_c_of_type_Long = paramTextFeed.user_info.uid.get();
+    localVideoData.jdField_d_of_type_Long = paramTextFeed.user_info.explicit_uid.get();
+    localVideoData.jdField_g_of_type_Int = paramTextFeed.user_info.id_type.get();
+    localVideoData.i = paramTextFeed.user_info.head_img_url.get().toStringUtf8();
+    localVideoData.jdField_f_of_type_JavaLangString = paramTextFeed.user_info.head_img_url.get().toStringUtf8();
+    localVideoData.jdField_e_of_type_Int = paramTextFeed.user_info.age.get();
+    localVideoData.jdField_f_of_type_Int = paramTextFeed.user_info.user_gender.get();
+    localVideoData.jdField_g_of_type_Long = paramTextFeed.user_info.uid.get();
+    localVideoData.jdField_h_of_type_Long = paramTextFeed.user_info.explicit_uid.get();
+    localVideoData.jdField_h_of_type_Int = paramTextFeed.user_info.id_type.get();
+    boolean bool1;
+    Iterator localIterator;
+    if (paramTextFeed.is_listen.get() != 0)
     {
+      bool1 = true;
+      localVideoData.jdField_a_of_type_Boolean = bool1;
+      bool1 = bool2;
+      if (paramTextFeed.is_like.get() != 0) {
+        bool1 = true;
+      }
+      localVideoData.jdField_b_of_type_Boolean = bool1;
+      localVideoData.jdField_b_of_type_Int = paramTextFeed.like_num.get();
+      localVideoData.jdField_f_of_type_JavaLangString = paramTextFeed.user_info.head_img_url.get().toStringUtf8();
+      localVideoData.jdField_d_of_type_Int = paramTextFeed.view_times.get();
+      localVideoData.jdField_j_of_type_Int = 6;
+      localVideoData.m = paramInt;
+      localVideoData.jdField_j_of_type_JavaLangString = "";
+      localIterator = paramTextFeed.rpt_msg_rich_title.get().iterator();
+    }
+    for (;;)
+    {
+      if (!localIterator.hasNext()) {
+        break label543;
+      }
+      FeedsProtocol.RichTitleElement localRichTitleElement = (FeedsProtocol.RichTitleElement)localIterator.next();
+      if (localRichTitleElement.type.get() == 1)
+      {
+        localVideoData.jdField_j_of_type_JavaLangString += localRichTitleElement.text.get().toStringUtf8();
+        continue;
+        bool1 = false;
+        break;
+      }
+      if (localRichTitleElement.type.get() == 2) {
+        new StringBuilder().append("#").append(localRichTitleElement.text.get().toStringUtf8()).append("#").toString();
+      }
+    }
+    label543:
+    if (paramTextFeed.lbs_info != null)
+    {
+      paramTextFeed = (FeedsProtocol.LbsInfo)paramTextFeed.lbs_info.get();
+      localVideoData.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo = new LocationInfo();
+      localVideoData.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo.init(paramTextFeed.lng.get().toStringUtf8(), paramTextFeed.lat.get().toStringUtf8(), paramTextFeed.city.get().toStringUtf8(), paramTextFeed.name.get().toStringUtf8());
+    }
+    for (;;)
+    {
+      paramArrayList.add(awqo.a(paramList, localVideoData));
       return;
-      i = ((Integer)localObject[0]).intValue();
-      paramObject = (Integer)localObject[1];
-      Integer localInteger = (Integer)localObject[2];
-      String str = (String)localObject[3];
-      localObject = (LocationRoom.Venue)localObject[4];
-      this.jdField_a_of_type_Awpq.a(new awpk(localInteger.intValue(), str), (LocationRoom.Venue)localObject, paramObject.intValue(), paramBoolean, i);
-      if (paramBoolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LocationObserver", 2, new Object[] { "[venue] onVenueOpt: invoked. success ", " uin: ", str, " uinType: ", localInteger, " optType: ", paramObject });
-        }
-        this.jdField_a_of_type_Awpq.a.a(localInteger.intValue(), str);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("LocationObserver", 2, new Object[] { "[venue] onVenueOpt: invoked. failed ", " errorCode: ", Integer.valueOf(i) });
+      localVideoData.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo = new LocationInfo();
+    }
   }
   
-  protected void c(boolean paramBoolean, Object paramObject)
+  public int a()
   {
-    super.c(paramBoolean, paramObject);
-    Object localObject = (Object[])paramObject;
-    paramObject = (Integer)localObject[0];
-    String str = String.valueOf(localObject[1]);
-    localObject = (Integer)localObject[2];
-    paramObject = new awpk(paramObject.intValue(), str);
-    this.jdField_a_of_type_Awpq.a(paramObject, ((Integer)localObject).intValue());
+    return this.jdField_a_of_type_Int;
   }
   
-  protected void d(boolean paramBoolean, Object paramObject)
+  public ArrayList<VideoData> a()
   {
-    super.d(paramBoolean, paramObject);
-    Object localObject = (Object[])paramObject;
-    paramObject = (Integer)localObject[0];
-    localObject = String.valueOf(localObject[1]);
-    paramObject = new awpk(paramObject.intValue(), (String)localObject);
-    this.jdField_a_of_type_Awpq.b(paramObject, -1);
+    return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
-  protected void e(boolean paramBoolean, Object paramObject)
+  public void a()
   {
-    super.e(paramBoolean, paramObject);
-    int i;
-    if (paramBoolean)
-    {
-      paramObject = (submsgtype0x125.MsgBody)((Object[])(Object[])paramObject)[0];
-      i = paramObject.uint32_msg_type.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationObserver", 2, new Object[] { "decodeMsg: invoked. ", " optType: ", Integer.valueOf(i) });
-      }
-    }
-    switch (i)
-    {
-    case 4: 
-    default: 
-      return;
-    case 1: 
-    case 2: 
-    case 3: 
-      awpn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject);
-      return;
-    }
-    awpn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject, i);
+    if (this.jdField_a_of_type_Boolean) {}
   }
   
-  protected void f(boolean paramBoolean, Object paramObject)
+  public abstract void a(Bundle paramBundle);
+  
+  public void a(awpz paramawpz)
   {
-    super.f(paramBoolean, paramObject);
-    int i;
-    if (paramBoolean)
-    {
-      paramObject = (TroopTips0x857.LbsShareChangePushInfo)((Object[])(Object[])paramObject)[0];
-      i = paramObject.uint32_msg_type.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationObserver", 2, new Object[] { "onTroopOptPush: invoked. ", " msgType: ", Integer.valueOf(i) });
-      }
-      if (i != 1) {
-        break label80;
-      }
-      awqe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject);
-    }
-    label80:
-    do
-    {
-      do
-      {
-        return;
-        if (i == 2)
-        {
-          awqe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject);
-          return;
-        }
-        if (i == 3)
-        {
-          awqe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject);
-          return;
-        }
-      } while (i == 4);
-      if (i == 101)
-      {
-        awqe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject, i);
-        return;
-      }
-      if (i == 102)
-      {
-        awqe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject, i);
-        return;
-      }
-    } while (i != 103);
-    awqe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject, i);
+    this.jdField_a_of_type_Awpz = paramawpz;
   }
   
-  protected void g(boolean paramBoolean, Object paramObject)
+  public void a(String paramString1, String paramString2) {}
+  
+  public void a(boolean paramBoolean)
   {
-    super.g(paramBoolean, paramObject);
-    Object localObject = (Object[])paramObject;
-    if ((localObject == null) || (localObject.length == 0)) {
-      return;
-    }
-    int j = ((Integer)localObject[0]).intValue();
-    paramObject = (Integer)localObject[1];
-    Integer localInteger = (Integer)localObject[2];
-    localObject = (String)localObject[3];
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationObserver", 2, new Object[] { "onOperateRoom: invoked. ", " uin: ", localObject, " uinType: ", localInteger, " optType: ", paramObject });
-      }
-      this.jdField_a_of_type_Awpq.a.a(localInteger.intValue(), (String)localObject);
-      this.jdField_a_of_type_Awpq.a.b(localInteger.intValue(), (String)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationObserver", 2, new Object[] { "onOperateRoom: invoked. real report invoked. ", " optType: ", paramObject });
-      }
-      if (paramObject.intValue() == 1)
-      {
-        this.jdField_a_of_type_Awpq.b(localInteger.intValue(), (String)localObject);
-        bdll.b(null, "CliOper", "", "", "0X800A764", "0X800A764", 0, 0, "", "0", "0", "");
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Awpq.a(false);
-        return;
-        if (paramObject.intValue() == 2)
-        {
-          this.jdField_a_of_type_Awpq.b(localInteger.intValue(), (String)localObject);
-          if (this.jdField_a_of_type_Awpq.a()) {
-            bdll.b(null, "CliOper", "", "", "0X800A76B", "0X800A76B", awpq.a(this.jdField_a_of_type_Awpq.a()), 0, "", "0", "0", "");
-          }
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationObserver", 2, new Object[] { "onOperateRoom: invoked. ", " errorCode: ", Integer.valueOf(j) });
-    }
-    awpk localawpk = new awpk(localInteger.intValue(), (String)localObject);
-    this.jdField_a_of_type_Awpq.a(localawpk, true);
-    this.jdField_a_of_type_Awpq.a(localawpk, j, paramObject.intValue());
-    int i = 0;
-    if (j == 10101) {}
-    for (i = 3;; i = 2) {
-      do
-      {
-        this.jdField_a_of_type_Awpq.a(localInteger.intValue(), (String)localObject, this.jdField_a_of_type_Awpq.a(), i);
-        return;
-      } while ((j != 10001) && (j != 10003) && (j != 10004) && (j != 10100));
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b() {}
 }
 
 

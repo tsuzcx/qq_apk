@@ -1,20 +1,14 @@
-import java.lang.ref.WeakReference;
+import org.apache.http.HttpResponse;
 
-class bhzy<E>
-  extends WeakReference<bhzw<E>>
-  implements bhzw<E>
+public class bhzy
 {
-  public bhzy(bhzw<E> parambhzw)
-  {
-    super(parambhzw);
-  }
+  public int a;
+  public HttpResponse a;
   
-  public void a(E paramE, Object paramObject)
+  public bhzy(HttpResponse paramHttpResponse, int paramInt)
   {
-    bhzw localbhzw = (bhzw)get();
-    if (localbhzw != null) {
-      localbhzw.a(paramE, paramObject);
-    }
+    this.jdField_a_of_type_OrgApacheHttpHttpResponse = paramHttpResponse;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

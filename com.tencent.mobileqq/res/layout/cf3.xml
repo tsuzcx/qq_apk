@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:layout_gravity="center" android:id="@id/fie" android:background="@drawable/tips_popup_win_bg" android:layout_width="160.0dip" android:layout_height="170.0dip"
+<RelativeLayout android:orientation="vertical" android:id="@id/mpv" android:background="#dd000000" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/mvt" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/al3" android:id="@id/photo_prievew_progress_dialog_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:text="@string/xdj" android:layout_below="@id/mvt" android:layout_centerHorizontal="true" />
-    <Button android:textColor="@color/al3" android:gravity="center" android:id="@id/afr" android:background="@drawable/bku" android:paddingLeft="16.0dip" android:paddingTop="6.0dip" android:paddingRight="16.0dip" android:paddingBottom="6.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="取消" android:layout_below="@id/photo_prievew_progress_dialog_text" android:layout_centerHorizontal="true" />
+    <EditText android:textSize="16.0dip" android:textColor="#ff000000" android:textColorHint="#4d000000" android:layout_gravity="center" android:id="@id/byx" android:background="@color/al3" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="40.0dip" android:hint="@string/wim" android:maxLines="3" android:layout_alignParentBottom="true">
+        <requestFocus />
+    </EditText>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/n1j" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/byx">
+        <dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView android:id="@id/mkw" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/nfn" android:paddingLeft="0.0dip" android:paddingRight="2.0dip" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <ImageView android:id="@id/dum" android:padding="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ekk" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/npb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:minWidth="85.0dip" android:text="完成" android:singleLine="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <org.libpag.PAGView android:id="@id/nl0" android:background="@color/bp" android:layout_width="240.0dip" android:layout_height="270.0dip" android:layout_above="@id/n1j" android:layout_below="@id/nfn" android:layout_centerHorizontal="true" />
 </RelativeLayout>

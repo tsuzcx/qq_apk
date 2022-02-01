@@ -1,61 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
+import java.util.Comparator;
 
-class avzf
-  implements BusinessObserver
+public class avzf
+  implements Comparator<View>
 {
-  avzf(avzd paramavzd, avzh paramavzh, String paramString) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public int a(View paramView1, View paramView2)
   {
-    new Bundle();
-    paramBundle = paramBundle.getByteArray("data");
-    if (paramBundle == null)
+    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
+    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
+    if (paramView1.a != paramView2.a)
     {
-      this.jdField_a_of_type_Avzh.a(this.jdField_a_of_type_JavaLangString, false, -10002);
-      return;
-    }
-    FastAuthorize.AuthorizeResponse localAuthorizeResponse = new FastAuthorize.AuthorizeResponse();
-    try
-    {
-      localAuthorizeResponse.mergeFrom(paramBundle);
-      if ((localAuthorizeResponse.ret.get().equals("0")) && (localAuthorizeResponse.apk_name.has()))
-      {
-        if (localAuthorizeResponse.access_token.has()) {
-          this.jdField_a_of_type_Avzd.a.jdField_a_of_type_JavaLangString = localAuthorizeResponse.access_token.get();
-        }
-        if (localAuthorizeResponse.openid.has()) {
-          this.jdField_a_of_type_Avzd.a.b = localAuthorizeResponse.openid.get();
-        }
-        if (localAuthorizeResponse.pay_token.has()) {
-          this.jdField_a_of_type_Avzd.a.c = localAuthorizeResponse.pay_token.get();
-        }
-        this.jdField_a_of_type_Avzd.a.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_Avzh.a(this.jdField_a_of_type_JavaLangString, true, 0);
-        return;
+      if (paramView1.a) {
+        return 1;
       }
+      return -1;
     }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      this.jdField_a_of_type_Avzh.a(this.jdField_a_of_type_JavaLangString, false, -10003);
-      paramBundle.printStackTrace();
-      return;
-    }
-    QLog.e("XProxy", 2, "获取票据失败");
-    try
-    {
-      this.jdField_a_of_type_Avzh.a(this.jdField_a_of_type_JavaLangString, false, Integer.parseInt(localAuthorizeResponse.ret.get()));
-      return;
-    }
-    catch (NumberFormatException paramBundle)
-    {
-      this.jdField_a_of_type_Avzh.a(this.jdField_a_of_type_JavaLangString, false, 0);
-      QLog.e("XProxy", 2, "获取票据错误码不为int");
-    }
+    return paramView1.b - paramView2.b;
   }
 }
 

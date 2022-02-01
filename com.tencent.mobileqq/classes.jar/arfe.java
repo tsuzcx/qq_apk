@@ -1,47 +1,39 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-public class arfe
+class arfe
+  extends arep
 {
-  public int a = 1;
+  arfe(arfd paramarfd) {}
   
-  public static arfe a(araj[] paramArrayOfaraj)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
   {
-    arfe localarfe = new arfe();
-    for (;;)
+    super.a(paramEmoticonPackage, paramInt, paramBundle);
+    if ((paramEmoticonPackage != null) && (paramInt == 0))
     {
-      int i;
-      try
+      paramBundle = paramBundle.getBundle("jsonReqParams");
+      if (paramBundle != null)
       {
-        int j = paramArrayOfaraj.length;
-        i = 0;
-        if (i < j)
-        {
-          JSONObject localJSONObject = new JSONObject(paramArrayOfaraj[i].a);
-          if (localJSONObject.has("cameraSwitchOnMessageTab")) {
-            localarfe.a = Integer.valueOf(localJSONObject.optString("cameraSwitchOnMessageTab")).intValue();
-          }
+        paramInt = paramBundle.getInt(arfd.jdField_a_of_type_JavaLangString);
+        paramBundle = paramBundle.getString(arfd.b);
+        if (QLog.isColorLevel()) {
+          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack begins, taskId:" + paramInt + ",packId:" + paramEmoticonPackage.epId);
         }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("MsgTabCameraConfBean", 2, "onParsed switch= " + localarfe.a);
-          }
-          return localarfe;
+        boolean bool = this.a.jdField_a_of_type_Arfi.a(paramInt);
+        if (bool) {
+          this.a.a(paramEmoticonPackage.epId, paramBundle, false);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack ends, isTaskExist:" + bool);
         }
       }
-      catch (Throwable paramArrayOfaraj)
-      {
-        QLog.e("MsgTabCameraConfBean", 1, "MsgTabCameraConfBean parse error, ", paramArrayOfaraj);
-        return localarfe;
-      }
-      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arfe
  * JD-Core Version:    0.7.0.1
  */

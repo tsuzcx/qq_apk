@@ -1,11 +1,16 @@
-public class bbcs
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class bbcs
+  implements View.OnClickListener
 {
-  public long a;
-  public boolean a;
+  bbcs(bbcm parambbcm, bazp parambazp, bbhz parambbhz) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    return "OneWayFriendResult{friendUin=" + this.jdField_a_of_type_Long + ", oneWayFriend=" + this.jdField_a_of_type_Boolean + '}';
+    this.jdField_a_of_type_Bazp.a(this.jdField_a_of_type_Bbhz.a());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

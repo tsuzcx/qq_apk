@@ -1,13 +1,10 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import com.tencent.map.lib.basemap.data.GeoPoint;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface bhhs
+public abstract interface bhhs
 {
-  Class a() default Object.class;
+  public abstract void onMapScrollEnd(GeoPoint paramGeoPoint);
+  
+  public abstract void onMapScrollStart(GeoPoint paramGeoPoint);
 }
 
 

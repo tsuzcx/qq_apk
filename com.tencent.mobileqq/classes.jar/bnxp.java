@@ -1,18 +1,17 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment;
+import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment.7;
 
-class bnxp
-  implements View.OnKeyListener
+public class bnxp
+  implements DialogInterface.OnCancelListener
 {
-  bnxp(bnxm parambnxm) {}
+  public bnxp(CaptureQmcfSoDownloadFragment.7 param7) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((paramKeyEvent.getAction() == 0) && (paramInt == 4)) {
-      this.a.d();
-    }
-    return false;
+    CaptureQmcfSoDownloadFragment.a(this.a.this$0).setCameraPermissionResult(false);
   }
 }
 

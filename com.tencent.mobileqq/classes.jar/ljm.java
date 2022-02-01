@@ -1,51 +1,58 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.camera.CameraUtils;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class ljm
-  extends Handler
+  extends lja
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  public ljm(CameraUtils paramCameraUtils, Looper paramLooper)
+  public ljm(liy paramliy, liz paramliz)
   {
-    super(paramLooper);
+    super(paramliy, paramliz);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a() {}
+  
+  public void a(long paramLong, SurfaceTexture paramSurfaceTexture)
   {
-    boolean bool = true;
-    long l = muk.a(paramMessage.obj);
-    if (AudioHelper.f()) {
-      QLog.w("CameraUtils", 1, "CameraHandlerThread, seq[" + l + "], event[" + paramMessage.what + "]");
+    if (paramSurfaceTexture != null) {
+      paramSurfaceTexture.setOnFrameAvailableListener(this);
     }
-    switch (paramMessage.what)
+    if (QLog.isColorLevel()) {
+      QLog.i("SurfaceTag", 2, "setPreviewCallback, seq[" + paramLong + "], surfaceTexture[" + paramSurfaceTexture + "]");
+    }
+  }
+  
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  {
+    lok.a(paramSurfaceTexture);
+    a(this.jdField_a_of_type_Ljb);
+    int i = liy.a;
+    int j = liy.b;
+    this.jdField_a_of_type_Ljn.a(this.jdField_a_of_type_Ljb.a, this.jdField_a_of_type_Liy.f, liy.d, this.jdField_a_of_type_Liy.e, this.jdField_a_of_type_Ljb.c, this.jdField_a_of_type_Ljb.d, this.jdField_a_of_type_Ljb.b, 0, i, j);
+    lok locallok;
+    long l;
+    int k;
+    int m;
+    int n;
+    if (this.jdField_a_of_type_Liz != null)
     {
-    default: 
-      return;
-    case 1: 
-      CameraUtils.a(this.a, l);
-      return;
-    case 2: 
-      if (paramMessage.arg1 == 1) {}
-      for (;;)
-      {
-        CameraUtils.a(this.a, l, bool);
-        return;
-        bool = false;
+      locallok = lok.a();
+      l = this.jdField_a_of_type_Ljn.j;
+      k = liy.c;
+      m = this.jdField_a_of_type_Ljb.a;
+      n = this.jdField_a_of_type_Ljb.b;
+      if (this.jdField_a_of_type_Liy.f != 1) {
+        break label171;
       }
-    case 3: 
-      i = paramMessage.arg1;
-      int j = paramMessage.arg2;
-      CameraUtils.a(this.a, l, i, j);
-      return;
-    case 4: 
-      CameraUtils.b(this.a, l);
+    }
+    label171:
+    for (boolean bool = true;; bool = false)
+    {
+      locallok.a(l, paramSurfaceTexture, i, j, k, m, n, bool, liy.d, System.currentTimeMillis());
+      this.jdField_a_of_type_Liz.a(locallok);
       return;
     }
-    int i = paramMessage.arg1;
-    CameraUtils.a(this.a, l, i);
   }
 }
 

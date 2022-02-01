@@ -1,52 +1,64 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.ad.tangram.Ad;
-import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.canvas.AdCanvasAdapter;
-import com.tencent.ad.tangram.canvas.AdCanvasAdapter.Params;
-import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
-import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasDataBuilderV2;
-import com.tencent.ad.tangram.protocol.gdt_settings.Settings;
-import com.tencent.ad.tangram.protocol.gdt_settings.Settings.SettingsForXJ;
-import com.tencent.ad.tangram.settings.AdSettingsUtil;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
-import com.tencent.gdtad.views.canvas.GdtCanvasBaseFragment;
-import java.lang.ref.WeakReference;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import protocol.KQQConfig.UpgradeInfo;
 
-public final class acne
-  implements AdCanvasAdapter
+public class acne
+  implements View.OnClickListener
 {
-  public int getQueueLength(WeakReference<Context> paramWeakReference)
-  {
-    if (paramWeakReference == null) {}
-    do
-    {
-      return -2147483648;
-      paramWeakReference = AdSettingsUtil.INSTANCE.getSettingsCache((Context)paramWeakReference.get());
-    } while (paramWeakReference == null);
-    if ((paramWeakReference.settingsForXJ.canvas) || (paramWeakReference.settingsForXJ.offline)) {
-      return paramWeakReference.settingsForXJ.queueLength;
-    }
-    return -2147483648;
-  }
+  public acne(AboutActivity paramAboutActivity) {}
   
-  public AdError show(AdCanvasAdapter.Params paramParams)
+  public void onClick(View paramView)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
+    int i = 2;
+    Intent localIntent;
+    if (bicl.a().b())
     {
-      acvc.d("GdtCanvasAdapter", "show error");
-      return new AdError(4);
+      if (bfyr.a()) {
+        i = 1;
+      }
+      bcef.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
+      localIntent = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
+      localIntent.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
+      localIntent.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
+      localIntent.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
+      localIntent.putExtra("activity_type", 4096);
+      if (BaseActivity.sTopActivity != null) {
+        BaseActivity.sTopActivity.startActivity(localIntent);
+      }
     }
-    Object localObject = (GdtAd)GdtAd.class.cast(paramParams.ad);
-    localObject = AdCanvasDataBuilderV2.build(((Activity)paramParams.activity.get()).getApplicationContext(), (Ad)localObject, paramParams.autoDownload);
-    if ((localObject == null) || (!((AdCanvasData)localObject).isValid()))
+    for (;;)
     {
-      acvc.d("GdtCanvasAdapter", "show error");
-      return new AdError(4);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((AboutActivity.a(this.a).jdField_a_of_type_Bfnl != null) && (bfyr.a(AboutActivity.a(this.a).jdField_a_of_type_Bfnl.a)))
+      {
+        if (bfyr.a()) {
+          i = 1;
+        }
+        bcef.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
+        localIntent = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
+        localIntent.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
+        localIntent.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
+        localIntent.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
+        localIntent.putExtra("activity_type", 4096);
+        if (BaseActivity.sTopActivity != null) {
+          BaseActivity.sTopActivity.startActivity(localIntent);
+        }
+      }
+      else if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null))
+      {
+        bcef.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", bfng.a(), "");
+        UpgradeDetailActivity.a(this.a, bfng.a().a(), false, false, true);
+      }
     }
-    GdtCanvasBaseFragment.start((Activity)paramParams.activity.get(), GdtCanvasFragmentForJS.class, (AdCanvasData)localObject, paramParams.extrasForIntent);
-    return new AdError(0);
   }
 }
 

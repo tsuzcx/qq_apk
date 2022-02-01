@@ -1,17 +1,32 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-
-class aobr
-  implements BusinessObserver
+public class aobr
+  extends aobf
 {
-  aobr(aobl paramaobl, String paramString) {}
+  public aoex a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aobr(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, aoex paramaoex, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MayknowRecommendManager", 2, "setRecommendTroopDeleted uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
-    }
+    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_Aoex = paramaoex;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("GeneralAR_3D_ResourceInfo{");
+    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mLuaScriptPath=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", mResourceDirPath='").append(this.c).append('\'');
+    localStringBuilder.append(", mMusicPath='").append(this.d).append('\'');
+    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_Aoex).append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

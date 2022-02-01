@@ -1,22 +1,20 @@
-import android.view.SurfaceView;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.ApolloFavActionData;
+import java.util.Comparator;
 
-public class amis
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class amis
+  implements Comparator<ApolloFavActionData>
 {
-  public amis(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  amis(amir paramamir) {}
   
-  public void onGlobalLayout()
+  public int a(ApolloFavActionData paramApolloFavActionData1, ApolloFavActionData paramApolloFavActionData2)
   {
-    this.a.e = this.a.a.getWidth();
-    this.a.f = this.a.a.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.e + ",mSurfaceViewHeight:" + this.a.f);
+    if (paramApolloFavActionData2.favId == paramApolloFavActionData1.favId) {
+      return 0;
     }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (paramApolloFavActionData2.favId > paramApolloFavActionData1.favId) {
+      return 1;
+    }
+    return -1;
   }
 }
 

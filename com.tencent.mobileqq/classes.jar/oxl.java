@@ -1,16 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.FirstCommentCreateData;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/ui/RIJCommentBubbleView$clickReportOrDelete$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadInJoyCommentUtils$ReportCommentDialogClickListener;", "onClick", "", "msg", "", "reportType", "", "which", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentCreateData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentCreateData;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentCreateData;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class oxl
-  extends osv
+  implements Parcelable.Creator<FirstCommentCreateData>
 {
-  public void a(@NotNull String paramString, int paramInt1, int paramInt2)
+  @NotNull
+  public FirstCommentCreateData a(@NotNull Parcel paramParcel)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "msg");
-    oxi.a(this.a).a().a(oxi.a(this.a).a.commentId, paramString, paramInt1);
+    Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
+    return new FirstCommentCreateData(paramParcel);
+  }
+  
+  @NotNull
+  public FirstCommentCreateData[] a(int paramInt)
+  {
+    return new FirstCommentCreateData[paramInt];
   }
 }
 

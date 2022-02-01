@@ -1,81 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract class ukv
+class ukv
+  implements View.OnClickListener
 {
-  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo, ulc paramulc)
-  {
-    if (QLog.isColorLevel()) {
-      uqf.b("WSPlayerListenerAdapter", 2, "onAccessVideoBitRate onTencentVideoDefnInfo:" + paramTVK_NetVideoInfo);
-    }
-  }
+  ukv(ukq paramukq, String paramString) {}
   
-  public void a(ulc paramulc)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      uqf.b("WSPlayerListenerAdapter", 2, "onCompletion videoPlayer:" + paramulc);
-    }
-  }
-  
-  public void a(ulc paramulc, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      uqf.b("WSPlayerListenerAdapter", 2, "onAccessVideoBitRate videoBitRate:" + paramLong);
-    }
-  }
-  
-  public abstract void a(ulc paramulc, Object paramObject);
-  
-  public void a(ulc paramulc, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      uqf.b("WSPlayerListenerAdapter", 2, "OnDownloadCallback state:" + paramString + ", videoPlayer:" + paramulc);
-    }
-  }
-  
-  public void a(ulc paramulc, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap)
-  {
-    if (QLog.isColorLevel()) {
-      uqf.b("WSPlayerListenerAdapter", 2, "onCaptureImage result:" + paramBoolean + ", errCode:" + paramInt1 + ", id:" + paramInt2 + ", bitmap:" + paramBitmap + ", videoPlayer:" + paramulc);
-    }
-  }
-  
-  public boolean a(ulc paramulc, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      uqf.b("WSPlayerListenerAdapter", 2, "onError model:" + paramInt1 + ", what:" + paramInt2 + ", extra:" + paramInt3 + ", detailInfo:" + paramString + ", info:" + paramObject);
-    }
-    return false;
-  }
-  
-  public boolean a(ulc paramulc, int paramInt, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      uqf.b("WSPlayerListenerAdapter", 2, "onInfo what:" + paramInt + ", extra:" + paramObject + ", videoPlayer:" + paramulc);
-    }
-    return false;
-  }
-  
-  public void b(ulc paramulc)
-  {
-    if (QLog.isColorLevel()) {
-      uqf.b("WSPlayerListenerAdapter", 2, "onSeekComplete videoPlayer:" + paramulc);
-    }
-  }
-  
-  public void b(ulc paramulc, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      uqf.d("WSPlayerListenerAdapter", 2, "onConnectQualityCallback json:" + paramString);
-    }
-  }
-  
-  public void c(ulc paramulc)
-  {
-    if (QLog.isColorLevel()) {
-      uqf.b("WSPlayerListenerAdapter", 2, "onDownloadFinish videoPlayer:" + paramulc);
-    }
+    uya.a("WSUserAuthDialog", "dialog click ok");
+    WSPublicAccReport.getInstance().reportCallDialog("gzh_click", this.jdField_a_of_type_JavaLangString, "authorized_window", 1000001);
+    ukq.a(this.jdField_a_of_type_Ukq);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

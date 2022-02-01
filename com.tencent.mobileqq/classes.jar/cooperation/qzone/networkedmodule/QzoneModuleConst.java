@@ -2,7 +2,6 @@ package cooperation.qzone.networkedmodule;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bnbx;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.LocalMultiProcConfig;
 import java.io.File;
@@ -146,9 +145,9 @@ public class QzoneModuleConst
     }
   }
   
-  public static String getModuleSavePath(Context paramContext, bnbx parambnbx)
+  public static String getModuleSavePath(Context paramContext, QzoneModuleConfigManager.QzoneModuleRecord paramQzoneModuleRecord)
   {
-    return new File(paramContext.getApplicationContext().getDir(QZONE_NETWORKED_MODULE_FILE_PATH, 0), parambnbx.e.toLowerCase() + "_" + parambnbx.a).getAbsolutePath();
+    return new File(paramContext.getApplicationContext().getDir(QZONE_NETWORKED_MODULE_FILE_PATH, 0), paramQzoneModuleRecord.mMD5.toLowerCase() + "_" + paramQzoneModuleRecord.mModuleId).getAbsolutePath();
   }
   
   private static String getSpKeyById(String paramString)
@@ -168,30 +167,30 @@ public class QzoneModuleConst
     //   8: aload_0
     //   9: invokestatic 367	cooperation/qzone/networkedmodule/QzoneModuleConst:getSpKeyById	(Ljava/lang/String;)Ljava/lang/String;
     //   12: iconst_0
-    //   13: invokestatic 434	cooperation/qzone/LocalMultiProcConfig:getInt	(Ljava/lang/String;Ljava/lang/String;I)I
+    //   13: invokestatic 435	cooperation/qzone/LocalMultiProcConfig:getInt	(Ljava/lang/String;Ljava/lang/String;I)I
     //   16: istore_1
     //   17: ldc_w 306
     //   20: iconst_1
     //   21: new 397	java/lang/StringBuilder
     //   24: dup
     //   25: invokespecial 398	java/lang/StringBuilder:<init>	()V
-    //   28: ldc_w 436
-    //   31: invokevirtual 410	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: ldc_w 437
+    //   31: invokevirtual 411	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: iload_1
-    //   35: invokevirtual 439	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   38: invokevirtual 418	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokestatic 442	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   35: invokevirtual 440	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 419	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   41: invokestatic 443	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   44: iload_1
     //   45: iconst_2
     //   46: if_icmpne +28 -> 74
     //   49: iload_3
     //   50: istore_2
-    //   51: invokestatic 446	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   51: invokestatic 447	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   54: ifeq +15 -> 69
     //   57: ldc_w 306
     //   60: iconst_2
-    //   61: ldc_w 448
-    //   64: invokestatic 451	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   61: ldc_w 449
+    //   64: invokestatic 452	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   67: iload_3
     //   68: istore_2
     //   69: ldc 2

@@ -1,34 +1,77 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class anqp
-  implements View.OnClickListener
+public class anqp
+  extends anrh
 {
-  anqp(anqo paramanqo) {}
-  
-  public void onClick(View paramView)
+  public anqp(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private boolean C()
+  {
+    int i = 0;
+    if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getApplication()))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1036) {
-        break label69;
-      }
-      ((amsx)anqo.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694065, 1).a();
+      return false;
     }
-    for (;;)
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("params")) {
+      str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("params");
+    }
+    try
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label69:
-      amst localamst = (amst)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(211);
-      if (localamst != null) {
-        localamst.e();
+      String str2;
+      long[] arrayOfLong;
+      for (;;)
+      {
+        localObject = new JSONObject(new String(bfuc.decode(str1, 0)));
+        str2 = ((JSONObject)localObject).optString("keyword");
+        JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("groupmask");
+        arrayOfLong = new long[localJSONArray.length()];
+        while (i < localJSONArray.length())
+        {
+          arrayOfLong[i] = localJSONArray.optLong(i);
+          i += 1;
+        }
+        str1 = "";
+      }
+      Object localObject = ((JSONObject)localObject).optString("groupname");
+      ActiveEntitySearchActivity.a(this.jdField_a_of_type_AndroidContentContext, str2, (String)localObject, arrayOfLong);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("FTSSearchTabActionQ.uniteSearch.", 2, "参数解析成json错误.  params=" + str1);
       }
     }
+    return true;
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = C();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("FTSSearchTabAction", 1, "doAction error: " + localException.getMessage());
+      a("FTSSearchTabAction");
+    }
+    return false;
   }
 }
 

@@ -1,35 +1,14 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
-
-public class pfk
-  implements ThreadFactory
+class pfk
+  extends pse
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final ThreadGroup jdField_a_of_type_JavaLangThreadGroup;
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
-  
-  public pfk()
+  pfk(pey parampey, String paramString, boolean paramBoolean, int paramInt)
   {
-    Object localObject = System.getSecurityManager();
-    if (localObject != null) {}
-    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
-    {
-      this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
-      this.jdField_a_of_type_JavaLangString = "readinjoy-common-";
-      return;
-    }
+    super(paramString);
   }
   
-  public Thread newThread(Runnable paramRunnable)
+  public void a(prx paramprx)
   {
-    paramRunnable = new Thread(this.jdField_a_of_type_JavaLangThreadGroup, paramRunnable, this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement(), 0L);
-    if (paramRunnable.isDaemon()) {
-      paramRunnable.setDaemon(false);
-    }
-    if (paramRunnable.getPriority() != 5) {
-      paramRunnable.setPriority(5);
-    }
-    return paramRunnable;
+    paramprx.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
   }
 }
 

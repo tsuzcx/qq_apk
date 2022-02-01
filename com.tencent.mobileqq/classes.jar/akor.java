@@ -1,150 +1,252 @@
-import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import com.tencent.widget.ListView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.recent.parcelUtils.ParcelHelper.FieldChangedException;
+import com.tencent.mobileqq.activity.recent.parcelUtils.ParcelHelper.UnsupportedFieldTypeException;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class akor
-  extends ReportDialog
-  implements TextWatcher, View.OnClickListener, View.OnTouchListener
+  extends akoq
 {
-  private akoq jdField_a_of_type_Akoq;
-  private View jdField_a_of_type_AndroidViewView;
-  EditText jdField_a_of_type_AndroidWidgetEditText;
-  ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  
-  public akor(CountryActivity paramCountryActivity, Context paramContext)
+  private static int a(Field paramField)
   {
-    super(paramContext);
-    requestWindowFeature(1);
-    getWindow().setSoftInputMode(36);
-    getWindow().setBackgroundDrawable(new ColorDrawable());
-    setContentView(2131558957);
-    paramContext = getWindow().getAttributes();
-    paramContext.x = 0;
-    paramContext.y = 0;
-    paramContext.width = -1;
-    paramContext.windowAnimations = 16973824;
-    paramContext.gravity = 51;
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366151));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368209));
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    paramContext = (Button)findViewById(2131363745);
-    paramContext.setVisibility(0);
-    paramContext.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376581);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371876));
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131717747);
-    findViewById(2131377176).setVisibility(8);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)findViewById(2131377202));
-    this.jdField_a_of_type_Akoq = new akoq(paramCountryActivity, null);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Akoq);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(this);
+    paramField = paramField.getType();
+    int i = -1;
+    if (paramField == Byte.TYPE) {
+      i = 0;
+    }
+    do
+    {
+      return i;
+      if (paramField == Integer.TYPE) {
+        return 1;
+      }
+      if (paramField == String.class) {
+        return 2;
+      }
+      if (paramField == CharSequence.class) {
+        return 3;
+      }
+      if (paramField == Boolean.TYPE) {
+        return 5;
+      }
+    } while (paramField != Long.TYPE);
+    return 6;
   }
   
-  void a(String paramString)
+  private void a(CharSequence paramCharSequence, Parcel paramParcel)
   {
-    if ((paramString.equals("")) || (paramString.trim().length() == 0))
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_Akoq.a(paramString);
-    if (this.jdField_a_of_type_Akoq.getCount() == 0) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Akoq.notifyDataSetChanged();
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
+    if ((paramCharSequence instanceof QQText)) {}
   }
   
-  public void afterTextChanged(Editable paramEditable)
+  protected Object a(Object paramObject, Field paramField, byte[] paramArrayOfByte)
   {
-    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    a(paramEditable);
-    if (paramEditable.equals(""))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+    return null;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  /* Error */
-  public void dismiss()
+  public final void a(Object paramObject, Parcel paramParcel, ArrayList<Field> paramArrayList)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokespecial 200	android/app/Dialog:dismiss	()V
-    //   4: aload_0
-    //   5: invokestatic 205	adkm:a	(Landroid/app/Dialog;)V
-    //   8: return
-    //   9: astore_1
-    //   10: aload_0
-    //   11: invokestatic 205	adkm:a	(Landroid/app/Dialog;)V
-    //   14: return
-    //   15: astore_1
-    //   16: aload_0
-    //   17: invokestatic 205	adkm:a	(Landroid/app/Dialog;)V
-    //   20: aload_1
-    //   21: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	22	0	this	akor
-    //   9	1	1	localException	java.lang.Exception
-    //   15	6	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   0	4	9	java/lang/Exception
-    //   0	4	15	finally
+    b(paramObject, paramParcel, paramArrayList);
   }
   
-  public void onClick(View paramView)
+  void a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel) {}
+  
+  protected byte[] a(Object paramObject, Field paramField)
   {
-    switch (paramView.getId())
+    return null;
+  }
+  
+  protected void b(Object paramObject, Parcel paramParcel, ArrayList<Field> paramArrayList)
+  {
+    HashMap localHashMap = new HashMap(paramArrayList.size());
+    paramArrayList = paramArrayList.iterator();
+    Object localObject;
+    int i;
+    int k;
+    while (paramArrayList.hasNext())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      dismiss();
+      localObject = (Field)paramArrayList.next();
+      ((Field)localObject).setAccessible(true);
+      String str = ((Field)localObject).getName();
+      i = ((Field)localObject).getModifiers();
+      localHashMap.put(str + "_" + i, localObject);
       continue;
-      this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+      switch (k)
+      {
+      }
+    }
+    for (;;)
+    {
+      if (paramParcel.dataAvail() > 0)
+      {
+        localObject = paramParcel.readString();
+        i = paramParcel.readInt();
+        k = paramParcel.readInt();
+        paramArrayList = (Field)localHashMap.remove((String)localObject + "_" + i);
+        if (paramArrayList == null) {
+          throw new ParcelHelper.FieldChangedException("Field " + (String)localObject + "(" + paramObject + ") not found");
+        }
+        int j = a(paramArrayList);
+        i = j;
+        if (k == 4)
+        {
+          i = j;
+          if (j == -1) {
+            i = 4;
+          }
+        }
+        if (i == k) {
+          break;
+        }
+        paramArrayList = new StringBuilder().append("Field ").append((String)localObject).append("(");
+        paramParcel = paramObject;
+        if (paramObject != null) {
+          paramParcel = paramObject.getClass().getName();
+        }
+        throw new ParcelHelper.FieldChangedException(paramParcel + ") type changed" + k + "->" + i);
+        try
+        {
+          paramArrayList.set(paramObject, Byte.valueOf(paramParcel.readByte()));
+        }
+        catch (ParcelHelper.FieldChangedException paramObject)
+        {
+          throw paramObject;
+          paramArrayList.set(paramObject, Integer.valueOf(paramParcel.readInt()));
+        }
+        catch (Throwable paramObject)
+        {
+          throw new RuntimeException(paramObject);
+        }
+        paramArrayList.set(paramObject, paramParcel.readString());
+        continue;
+        paramArrayList.set(paramObject, TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+        continue;
+        localObject = new byte[paramParcel.readInt()];
+        paramParcel.readByteArray((byte[])localObject);
+        paramArrayList.set(paramObject, a(paramObject, paramArrayList, (byte[])localObject));
+        continue;
+        if (paramParcel.readInt() != 1) {
+          break label552;
+        }
+      }
+    }
+    label552:
+    for (boolean bool = true;; bool = false)
+    {
+      paramArrayList.set(paramObject, Boolean.valueOf(bool));
+      break;
+      paramArrayList.set(paramObject, Long.valueOf(paramParcel.readLong()));
+      break;
+      if (localHashMap.size() > 0)
+      {
+        paramObject = "object " + paramObject.getClass() + " field changed";
+        QLog.e("Recent.Parcel", 1, paramObject);
+        throw new RuntimeException(paramObject);
+      }
+      return;
     }
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  void b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  final boolean b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
   {
-    ((InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    return c(paramObject, paramArrayList, paramParcel);
+  }
+  
+  protected final boolean c(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
+  {
+    Field localField;
+    int j;
+    for (;;)
+    {
+      try
+      {
+        localIterator = paramArrayList.iterator();
+        paramArrayList = null;
+      }
+      catch (ParcelHelper.UnsupportedFieldTypeException paramObject)
+      {
+        Iterator localIterator;
+        throw paramObject;
+        paramParcel.writeInt(localField.getInt(paramObject));
+        continue;
+      }
+      catch (IllegalAccessException paramObject)
+      {
+        label68:
+        throw new RuntimeException(paramObject);
+      }
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localField = (Field)localIterator.next();
+      localField.setAccessible(true);
+      j = a(localField);
+      i = j;
+      if (j == -1)
+      {
+        paramArrayList = a(paramObject, localField);
+        if (paramArrayList == null) {
+          break label338;
+        }
+        i = 4;
+      }
+      if (i == -1) {
+        QLog.d("Recent.Parcel", 2, "Unsupported type " + paramObject.getClass() + "(" + localField.getName() + ")");
+      }
+      paramParcel.writeString(localField.getName());
+      paramParcel.writeInt(localField.getModifiers());
+      paramParcel.writeInt(i);
+      switch (i)
+      {
+      case 0: 
+        paramParcel.writeByte(localField.getByte(paramObject));
+        break;
+      case 1: 
+      case 2: 
+        paramParcel.writeString((String)localField.get(paramObject));
+        break;
+      case 7: 
+        a((CharSequence)localField.get(paramObject), paramParcel);
+        break;
+      case 3: 
+        TextUtils.writeToParcel((CharSequence)localField.get(paramObject), paramParcel, 0);
+      }
+    }
+    for (;;)
+    {
+      label281:
+      paramParcel.writeInt(i);
+      paramParcel.writeByteArray(paramArrayList);
+      break;
+      label295:
+      i = paramArrayList.length;
+    }
+    if (localField.getBoolean(paramObject)) {}
+    for (int i = 1;; i = 0)
+    {
+      paramParcel.writeInt(i);
+      break;
+      paramParcel.writeLong(localField.getLong(paramObject));
+      break;
+      return true;
+      label338:
+      i = j;
+      break label68;
+      break;
+      if (paramArrayList != null) {
+        break label295;
+      }
+      i = 0;
+      break label281;
+    }
   }
 }
 

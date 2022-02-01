@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 final class beam
-  implements DialogInterface.OnClickListener
+  extends amsu
 {
-  beam(bhpc parambhpc) {}
+  WeakReference<beaj> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private beam(beaj parambeaj)
   {
-    if (this.a.isShowing()) {
-      this.a.dismiss();
+    this.a = new WeakReference(parambeaj);
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    beaj localbeaj = (beaj)this.a.get();
+    if ((localbeaj != null) && (paramBoolean) && (paramString != null) && (localbeaj.a != null) && (localbeaj.a.size() > 0) && (paramString.equals(((TroopInfo)localbeaj.a.get(0)).troopuin))) {
+      localbeaj.c();
     }
   }
 }

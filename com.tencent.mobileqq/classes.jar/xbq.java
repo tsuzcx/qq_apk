@@ -1,14 +1,26 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class xbq
-  extends wip
+class xbq
+  extends nmf
 {
-  public List<StoryVideoItem> a;
+  xbq(xbm paramxbm, boolean paramBoolean) {}
   
-  public String toString()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return "GetVideoBasicInfoListEvent{, mVideoList=" + this.a + '}';
+    if (paramInt != 0)
+    {
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramArrayOfByte.a(5, bool);
+        this.a.a(0, this.a.a.getString(2131719238));
+        return;
+      }
+    }
+    ((vla)this.a.a.app.getManager(181)).c(this.b);
   }
 }
 

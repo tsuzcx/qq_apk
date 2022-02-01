@@ -1,43 +1,24 @@
-import java.util.Iterator;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class nie
+class nie
+  implements View.OnTouchListener
 {
-  public static nhu a()
-  {
-    return a(1);
-  }
+  nie(nic paramnic) {}
   
-  public static nhu a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject = ardc.a().a();
-    if (localObject != null)
+    switch (paramMotionEvent.getActionMasked())
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        nhu localnhu = (nhu)((Iterator)localObject).next();
-        if (localnhu.a == paramInt) {
-          return localnhu;
-        }
-      }
     }
-    return new nhu(0, 10, 15);
-  }
-  
-  public static nhu b()
-  {
-    return a(2);
-  }
-  
-  public static nhu c()
-  {
-    return a(3);
-  }
-  
-  public static nhu d()
-  {
-    return a(4);
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

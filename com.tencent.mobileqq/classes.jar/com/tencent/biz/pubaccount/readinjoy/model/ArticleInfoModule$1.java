@@ -3,30 +3,30 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import java.util.HashMap;
 import java.util.List;
-import ocd;
+import odq;
 import org.json.JSONObject;
-import pon;
-import qft;
-import tkd;
+import ptv;
+import qln;
+import tpn;
 
 public class ArticleInfoModule$1
   implements Runnable
 {
-  public ArticleInfoModule$1(pon parampon, qft paramqft, long paramLong1, long paramLong2) {}
+  public ArticleInfoModule$1(ptv paramptv, qln paramqln, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    ToServiceMsg localToServiceMsg = pon.a(this.this$0, this.jdField_a_of_type_Qft);
+    ToServiceMsg localToServiceMsg = ptv.a(this.this$0, this.jdField_a_of_type_Qln);
     if (localToServiceMsg != null)
     {
       localToServiceMsg.getAttributes().put("feedsRequestBeginTime", Long.valueOf(this.jdField_a_of_type_Long));
       localToServiceMsg.getAttributes().put("feedsRequestVersion", Long.valueOf(this.b));
-      if (this.jdField_a_of_type_Qft.jdField_a_of_type_AndroidOsBundle != null) {
-        localToServiceMsg.getAttributes().put("request_extra_data_key", this.jdField_a_of_type_Qft.jdField_a_of_type_AndroidOsBundle);
+      if (this.jdField_a_of_type_Qln.jdField_a_of_type_AndroidOsBundle != null) {
+        localToServiceMsg.getAttributes().put("request_extra_data_key", this.jdField_a_of_type_Qln.jdField_a_of_type_AndroidOsBundle);
       }
-      localToServiceMsg.getAttributes().put("auto_refresh_src", Integer.valueOf(this.jdField_a_of_type_Qft.h));
-      if ((this.jdField_a_of_type_Qft.i & 0x40) != 0) {
-        localToServiceMsg.getAttributes().put("recommendFlag", Integer.valueOf(this.jdField_a_of_type_Qft.i));
+      localToServiceMsg.getAttributes().put("auto_refresh_src", Integer.valueOf(this.jdField_a_of_type_Qln.h));
+      if ((this.jdField_a_of_type_Qln.i & 0x40) != 0) {
+        localToServiceMsg.getAttributes().put("recommendFlag", Integer.valueOf(this.jdField_a_of_type_Qln.i));
       }
     }
     try
@@ -34,15 +34,15 @@ public class ArticleInfoModule$1
       JSONObject localJSONObject = new JSONObject();
       long l2 = -1L;
       long l1 = l2;
-      if (this.jdField_a_of_type_Qft.jdField_b_of_type_JavaUtilList != null)
+      if (this.jdField_a_of_type_Qln.jdField_b_of_type_JavaUtilList != null)
       {
         l1 = l2;
-        if (this.jdField_a_of_type_Qft.jdField_b_of_type_JavaUtilList.size() >= 1) {
-          l1 = ((Long)this.jdField_a_of_type_Qft.jdField_b_of_type_JavaUtilList.get(0)).longValue();
+        if (this.jdField_a_of_type_Qln.jdField_b_of_type_JavaUtilList.size() >= 1) {
+          l1 = ((Long)this.jdField_a_of_type_Qln.jdField_b_of_type_JavaUtilList.get(0)).longValue();
         }
       }
       localJSONObject.put("preload_red_pnt_push_articleID", l1);
-      ocd.a(null, "", "0X8009482", "0X8009482", 0, 0, localJSONObject.toString(), "", "", "", false);
+      odq.a(null, "", "0X8009482", "0X8009482", 0, 0, localJSONObject.toString(), "", "", "", false);
     }
     catch (Exception localException)
     {
@@ -51,11 +51,11 @@ public class ArticleInfoModule$1
         localException.printStackTrace();
       }
     }
-    if ((this.jdField_a_of_type_Qft.jdField_b_of_type_Int == 0) && (this.jdField_a_of_type_Qft.jdField_a_of_type_Long == -1L)) {
+    if ((this.jdField_a_of_type_Qln.jdField_b_of_type_Int == 0) && (this.jdField_a_of_type_Qln.jdField_a_of_type_Long == -1L)) {
       this.this$0.a("-1", 1, 0);
     }
     this.this$0.a(localToServiceMsg);
-    tkd.a().a(localToServiceMsg);
+    tpn.a().a(localToServiceMsg);
   }
 }
 

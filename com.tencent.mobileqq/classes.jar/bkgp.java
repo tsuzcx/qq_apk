@@ -1,21 +1,17 @@
-import android.view.View;
-import com.tencent.qidian.PhotoWallViewForQiDianProfile;
-import com.tencent.widget.AdapterView;
-import java.util.List;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.redtouch.RedTouchUI;
+import com.tencent.widget.SimpleTextView;
+import cooperation.comic.ui.QQComicTabBarView;
 
 public class bkgp
-  implements bljm
 {
-  public bkgp(PhotoWallViewForQiDianProfile paramPhotoWallViewForQiDianProfile) {}
+  public ImageView a;
+  public URLDrawable a;
+  public RedTouchUI a;
+  public SimpleTextView a;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramAdapterView = (bkie)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (this.a.jdField_a_of_type_Bkgs == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Bkgs.a(paramAdapterView);
-  }
+  public bkgp(QQComicTabBarView paramQQComicTabBarView) {}
 }
 
 

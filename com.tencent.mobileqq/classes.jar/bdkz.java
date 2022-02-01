@@ -1,28 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.statistics.LocalCrashCollector;
-import com.tencent.mobileqq.statistics.LocalCrashCollector.3;
-import com.tencent.widget.XEditTextEx;
+import android.view.inputmethod.InputConnection;
+import android.view.inputmethod.InputConnectionWrapper;
+import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorView;
 
 public class bdkz
-  implements DialogInterface.OnClickListener
+  extends InputConnectionWrapper
 {
-  public bdkz(LocalCrashCollector.3 param3) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bdkz(WriteTogetherEditorView paramWriteTogetherEditorView, InputConnection paramInputConnection, boolean paramBoolean)
   {
-    try
-    {
-      LocalCrashCollector.a(this.a.this$0).a.setText("");
-      LocalCrashCollector.a(this.a.this$0).delete(0, LocalCrashCollector.a(this.a.this$0).length());
-      paramDialogInterface.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
-    }
+    super(paramInputConnection, paramBoolean);
+  }
+  
+  public boolean commitText(CharSequence paramCharSequence, int paramInt)
+  {
+    return super.commitText(bdgn.a(paramCharSequence), paramInt);
   }
 }
 

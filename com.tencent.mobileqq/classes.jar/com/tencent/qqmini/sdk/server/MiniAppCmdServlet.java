@@ -17,9 +17,11 @@ import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.manager.BaseLibManager;
 import com.tencent.qqmini.sdk.manager.EngineManager;
+import com.tencent.qqmini.sdk.plugins.FavoritesJsPlugin;
 import com.tencent.qqmini.sdk.report.MiniAppReportManager2;
 import com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04902;
 import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239;
+import org.json.JSONObject;
 
 public class MiniAppCmdServlet
 {
@@ -85,7 +87,26 @@ public class MiniAppCmdServlet
   
   private void onUpdateV8rt(String paramString, Bundle paramBundle, MiniCmdCallback paramMiniCmdCallback)
   {
-    paramString = WnsConfig.getConfig("qqminiapp", "mini_app_v8_rt_url", "https://d3g.qq.com/sngapp/app/update/20200714173502_6904/libtv8rt.so");
+    paramString = WnsConfig.getConfig("qqminiapp", "mini_app_v8_rt_url", "{ \"url\":\"https://down.qq.com/miniapp/libtv8rt_202008101130.so\",\"size\":535136 }");
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    try
+    {
+      paramBundle = new JSONObject(paramString);
+      paramString = paramBundle.getString("url");
+      int i = paramBundle.getInt("size");
+      if ((TextUtils.isEmpty(paramString)) || (i == 0))
+      {
+        QMLog.e("MiniAppCmdServlet", "url is" + paramString + "  size:" + i);
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      QMLog.e("MiniAppCmdServlet", "parse v8rt_url failed", paramString);
+      return;
+    }
     paramBundle = MiniSDKConst.getMiniAppV8rtPath();
     ((DownloaderProxy)ProxyManager.get(DownloaderProxy.class)).download(paramString, null, paramBundle, 60, new MiniAppCmdServlet.2(this, paramMiniCmdCallback));
   }
@@ -232,7 +253,9 @@ public class MiniAppCmdServlet
           QMLog.e("MiniAppCmdServlet", "onMiniAppCmd cmd = " + paramString + ", bundle is null");
         }
       }
-      else if ("cmd_dc_report_log_key_data".equals(paramString)) {
+      else if ("cmd_add_qq_favorites".equals(paramString)) {
+        FavoritesJsPlugin.addFavoritesBundle(paramBundle, paramMiniCmdCallback);
+      } else if ("cmd_dc_report_log_key_data".equals(paramString)) {
         MiniProgramLpReportDC04902.reportToServer(paramBundle);
       } else if ("cmd_rebind_engine_channel".equals(paramString)) {
         rebindEngineChannel(paramString, paramBundle, paramMiniCmdCallback);

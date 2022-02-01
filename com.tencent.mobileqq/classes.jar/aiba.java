@@ -1,50 +1,28 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment.4.1;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiba
-  implements aiaq<View>
+  extends LbsManagerService.OnLocationChangeListener
 {
-  private BaseChatPie a;
-  
-  public aiba(BaseChatPie paramBaseChatPie)
+  public aiba(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment, String paramString)
   {
-    this.a = paramBaseChatPie;
+    super(paramString);
   }
   
-  public int a()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    return 38;
-  }
-  
-  public View a()
-  {
-    return null;
-  }
-  
-  public View a(Context paramContext)
-  {
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    agwg localagwg = (agwg)this.a.a(52);
-    if (paramInt2 == 0)
-    {
-      localagwg.c(false);
-      localagwg.g();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 2, "getview onLocationFinish info = " + paramSosoLbsInfo);
     }
-    localagwg.c(true);
-    localagwg.h();
-  }
-  
-  public boolean a()
-  {
-    return false;
+    if (paramInt != 0)
+    {
+      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 1, "getview onLocationFinish, errorCode=" + paramInt);
+      this.a.a.post(new AddContactViewPagerTroopFragment.4.1(this));
+    }
   }
 }
 

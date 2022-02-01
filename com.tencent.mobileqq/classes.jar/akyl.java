@@ -1,18 +1,23 @@
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akyl
-  implements View.OnClickListener
+public abstract interface akyl
 {
-  public akyl(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  public abstract int a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2);
   
-  public void onClick(View paramView)
-  {
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  @NonNull
+  public abstract View a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(akym paramakym);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract void b(@ColorInt int paramInt);
+  
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

@@ -1,33 +1,117 @@
-import android.view.View;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import com.tencent.qphone.base.util.QLog;
 
-class ajui
-  implements bliz
+public class ajui
+  extends SQLiteOpenHelper
 {
-  ajui(ajuh paramajuh, boolean paramBoolean, Friends paramFriends, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public ajui(Context paramContext, String paramString)
   {
-    if (!bhnv.g(this.jdField_a_of_type_Ajuh.a)) {
-      QQToast.a(this.jdField_a_of_type_Ajuh.a, 1, 2131691989, 0).a();
-    }
-    for (;;)
+    super(paramContext, "passwd_red_bag_" + paramString + ".db", null, 5);
+  }
+  
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  {
+    try
     {
-      this.jdField_a_of_type_Blir.e();
-      return;
-      paramView = (FriendListHandler)ajuh.a(this.jdField_a_of_type_Ajuh).a(1);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
-        bdll.b(ajuh.a(this.jdField_a_of_type_Ajuh), "dc00898", "", "", "0X800808B", "0X800808B", 0, 0, "", "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("PasswdRedBagDBHelper", 2, " onCreate execSQL sqlRedBags=" + "CREATE TABLE IF NOT EXISTS red_bags (redbag_id VARCHAR PRIMARY KEY, redbag_index VARCHAR, uint64_creator_uin VARCHAR, expire_time INTEGER, password VARCHAR, is_open INTEGER, is_finish INTEGER, is_overdue INTEGER, redbag_type INTEGER, last_password VARCHAR, ext_str VARCHAR);" + " sqlRedBagRelation=" + "CREATE TABLE IF NOT EXISTS red_bag_relations (code VARCHAR, source VARCHAR, redbag_id VARCHAR, authkey VARCHAR );" + " sqlUpdateTimes=" + "CREATE TABLE IF NOT EXISTS update_times (code INTEGER, source INTEGER, last_update_time INTEGER, PRIMARY KEY(code,source));");
       }
-      else
+      paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS red_bags (redbag_id VARCHAR PRIMARY KEY, redbag_index VARCHAR, uint64_creator_uin VARCHAR, expire_time INTEGER, password VARCHAR, is_open INTEGER, is_finish INTEGER, is_overdue INTEGER, redbag_type INTEGER, last_password VARCHAR, ext_str VARCHAR);");
+      return;
+    }
+    catch (SQLException localSQLException2)
+    {
+      try
       {
-        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
-        bdll.b(ajuh.a(this.jdField_a_of_type_Ajuh), "dc00898", "", "", "0X800808A", "0X800808A", 0, 0, "", "", "", "");
+        paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS red_bag_relations (code VARCHAR, source VARCHAR, redbag_id VARCHAR, authkey VARCHAR );");
+      }
+      catch (SQLException localSQLException2)
+      {
+        try
+        {
+          for (;;)
+          {
+            paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS update_times (code INTEGER, source INTEGER, last_update_time INTEGER, PRIMARY KEY(code,source));");
+            return;
+            localSQLException1 = localSQLException1;
+            if (QLog.isColorLevel())
+            {
+              QLog.e("PasswdRedBagDBHelper", 2, " onCreate execSQL exception", localSQLException1);
+              continue;
+              localSQLException2 = localSQLException2;
+              if (QLog.isColorLevel()) {
+                QLog.e("PasswdRedBagDBHelper", 2, " onCreate execSQL exception", localSQLException2);
+              }
+            }
+          }
+        }
+        catch (SQLException paramSQLiteDatabase)
+        {
+          while (!QLog.isColorLevel()) {}
+          QLog.e("PasswdRedBagDBHelper", 2, " onCreate execSQL exception", paramSQLiteDatabase);
+        }
+      }
+    }
+  }
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    int i = paramInt1;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("PasswdRedBagDBHelper", 2, "onUpgrade<<<<<oldVersion: " + paramInt1 + " newVersion: " + paramInt2);
+      i = paramInt1;
+    }
+    if (i < paramInt2)
+    {
+      switch (i)
+      {
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        try
+        {
+          paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN redbag_index VARCHAR ");
+        }
+        catch (Exception localException1) {}
+        if (QLog.isColorLevel())
+        {
+          QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN redbag_index VARCHAR ", localException1);
+          continue;
+          try
+          {
+            paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN redbag_type INTEGER DEFAULT 0");
+          }
+          catch (Exception localException2) {}
+          if (QLog.isColorLevel())
+          {
+            QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN redbag_type INTEGER DEFAULT 0", localException2);
+            continue;
+            try
+            {
+              paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN last_password VARCHAR ");
+            }
+            catch (Exception localException3) {}
+            if (QLog.isColorLevel())
+            {
+              QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN last_password VARCHAR ", localException3);
+              continue;
+              try
+              {
+                paramSQLiteDatabase.execSQL("ALTER TABLE red_bags ADD COLUMN ext_str VARCHAR ");
+              }
+              catch (Exception localException4) {}
+              if (QLog.isColorLevel()) {
+                QLog.e("PasswdRedBagDBHelper", 2, " exception occurred when " + "ALTER TABLE red_bags ADD COLUMN ext_str VARCHAR ", localException4);
+              }
+            }
+          }
+        }
       }
     }
   }

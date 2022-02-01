@@ -6,19 +6,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import apdq;
-import apea;
+import anxd;
+import anxm;
 import com.tencent.widget.VerticalGallery;
 
 public class TimeWheelPanel
   extends LinearLayout
-  implements apdq
+  implements anxd
 {
   public int a;
   private Context jdField_a_of_type_AndroidContentContext;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private apea jdField_a_of_type_Apea;
+  private anxm jdField_a_of_type_Anxm;
   private NumberWheelView jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -53,14 +53,14 @@ public class TimeWheelPanel
     if ((this.jdField_a_of_type_AndroidViewLayoutInflater == null) || (this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView == null) || (this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView == null) || (this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView == null))
     {
       this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561100, this);
-      this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131365299));
-      this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131368189));
-      this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131371320));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365300));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368190));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371321));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366070));
+      this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560974, this);
+      this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131365329));
+      this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131368214));
+      this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView = ((NumberWheelView)findViewById(2131371289));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365330));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368215));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371290));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366100));
       this.jdField_a_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setScrollStateListener(this);
       this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setScrollStateListener(this);
       this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView.setScrollStateListener(this);
@@ -128,8 +128,8 @@ public class TimeWheelPanel
     this.jdField_b_of_type_Int = this.jdField_b_of_type_ComTencentMobileqqAppUtilsNumberWheelView.a();
     this.jdField_c_of_type_Int = this.jdField_c_of_type_ComTencentMobileqqAppUtilsNumberWheelView.a();
     setValues(false);
-    if (this.jdField_a_of_type_Apea != null) {
-      this.jdField_a_of_type_Apea.a(paramNumberWheelView, paramVerticalGallery);
+    if (this.jdField_a_of_type_Anxm != null) {
+      this.jdField_a_of_type_Anxm.a(paramNumberWheelView, paramVerticalGallery);
     }
   }
   
@@ -163,9 +163,9 @@ public class TimeWheelPanel
     }
   }
   
-  public void setScrollerStateListener(apea paramapea)
+  public void setScrollerStateListener(anxm paramanxm)
   {
-    this.jdField_a_of_type_Apea = paramapea;
+    this.jdField_a_of_type_Anxm = paramanxm;
   }
   
   public void setValues(boolean paramBoolean)
@@ -188,19 +188,19 @@ public class TimeWheelPanel
   public void setViewVisibility(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 0) {
-      findViewById(2131365295).setVisibility(paramInt2);
+      findViewById(2131365325).setVisibility(paramInt2);
     }
     do
     {
       return;
       if (paramInt1 == 1)
       {
-        findViewById(2131368185).setVisibility(paramInt2);
+        findViewById(2131368210).setVisibility(paramInt2);
         return;
       }
       if (paramInt1 == 2)
       {
-        findViewById(2131371317).setVisibility(paramInt2);
+        findViewById(2131371286).setVisibility(paramInt2);
         return;
       }
     } while (paramInt1 != 3);

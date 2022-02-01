@@ -1,30 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-
 class asjg
-  implements amzt
 {
-  asjg(asiw paramasiw, Bundle paramBundle1, Bundle paramBundle2, MessengerService paramMessengerService) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  long jdField_b_of_type_Long;
   
-  public void a()
+  asjg(asjc paramasjc, int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
-    this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = bbko.a();
   }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("result", paramInt);
-    this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
-  }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asjg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,16 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
+import java.util.ArrayList;
 
-class vfz
-  implements Observer<vxq<List<FeedCloudMeta.StFeed>>>
+public class vfz
 {
-  vfz(vfx paramvfx) {}
-  
-  public void a(@Nullable vxq<List<FeedCloudMeta.StFeed>> paramvxq)
-  {
-    vfx.b(this.a, paramvxq);
-  }
+  public int a;
+  public String a;
+  public ArrayList<vgb> a;
+  public vga a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 

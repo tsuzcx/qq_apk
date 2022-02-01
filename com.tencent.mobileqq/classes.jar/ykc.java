@@ -1,80 +1,57 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.map.geolocation.TencentLocation;
-import com.tribe.async.dispatch.Dispatcher;
+import android.os.Message;
 
 public class ykc
-  extends wzm
-  implements woy<xde, xeu>
 {
-  public String a;
-  private String b;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  
-  private void d()
+  public static String a(int paramInt)
   {
-    xde localxde = new xde();
-    localxde.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localxde.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localxde.jdField_b_of_type_Long = 0L;
-    localxde.c = 10;
-    localxde.d = 10;
-    wow.a().a(localxde, this);
-    yuk.a("Q.qqstory.memories:ShareGroupPageLoader", "send share group list request. request=%s.", localxde.toString());
+    switch (paramInt)
+    {
+    default: 
+      return "BOOLEAN";
+    case 1: 
+      return "TRUE";
+    }
+    return "FALSE";
   }
   
-  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
+  public static String a(Message paramMessage)
   {
-    super.a(paramTencentLocation, paramInt);
-    if (this.jdField_c_of_type_Boolean) {
-      return;
+    switch (paramMessage.what)
+    {
+    default: 
+      return "OTHERS[" + paramMessage.what + "] - " + paramMessage.arg1;
+    case 1: 
+      return "ACTION_VISIBILITY - " + paramMessage.arg1;
+    case 2: 
+      return "ACTION_KEEP_SHOWING - " + a(paramMessage.arg1);
+    case 3: 
+      return "ACTION_PLAY_ANIMATION";
+    case 4: 
+      return "ACTION_STOP_ANIMATION";
+    case 5: 
+      return "ACTION_SET_PROGRESS";
+    case 7: 
+      return "ACTION_UI_EVENT_CLICK - " + b(paramMessage.arg1);
+    case 8: 
+      return "ACTION_UI_EVENT_LONG_CLICK - " + b(paramMessage.arg1);
+    case 9: 
+      return "ACTION_UI_EVENT_TOUCH - " + b(paramMessage.arg1);
+    case 10: 
+      return "ACTION_UI_VISIBILITY_CHANGED - " + paramMessage.arg1;
     }
-    this.jdField_b_of_type_JavaLangString = "";
-    d();
+    return "ACTION_SET_STUBMODE";
   }
   
-  public void a(@NonNull xde paramxde, @Nullable xeu paramxeu, @NonNull ErrorMessage paramErrorMessage)
+  public static String b(int paramInt)
   {
-    yuk.a("Q.qqstory.memories:ShareGroupPageLoader", "get share group list return:%s", paramErrorMessage.toString());
-    if (this.jdField_c_of_type_Boolean)
+    switch (paramInt)
     {
-      yuk.c("Q.qqstory.memories:ShareGroupPageLoader", "don't nothing after terminate");
-      return;
+    default: 
+      return "BOOLEAN";
+    case 0: 
+      return "UNREGISTER";
     }
-    ykd localykd = new ykd(paramErrorMessage, this.jdField_c_of_type_JavaLangString);
-    localykd.jdField_b_of_type_Boolean = false;
-    if ((paramxeu == null) || (paramErrorMessage.isFail()))
-    {
-      wjj.a().dispatch(localykd);
-      return;
-    }
-    this.jdField_b_of_type_JavaLangString = paramxeu.jdField_a_of_type_JavaLangString;
-    localykd.jdField_a_of_type_JavaUtilList = paramxeu.jdField_a_of_type_JavaUtilArrayList;
-    localykd.jdField_a_of_type_Int = paramxeu.b;
-    localykd.jdField_a_of_type_Boolean = paramxeu.jdField_a_of_type_Boolean;
-    localykd.jdField_c_of_type_Boolean = TextUtils.isEmpty(paramxde.jdField_a_of_type_JavaLangString);
-    paramxeu = paramxeu.jdField_a_of_type_JavaUtilArrayList;
-    ((wsu)wth.a(19)).b(paramxeu, paramxde.jdField_b_of_type_JavaLangString, localykd.jdField_c_of_type_Boolean);
-    try
-    {
-      this.jdField_b_of_type_Boolean = true;
-      wjj.a().dispatch(localykd);
-      yuk.a("Q.qqstory.memories:ShareGroupPageLoader", "dispatch share group list return from network: %s", localykd);
-      return;
-    }
-    finally {}
-  }
-  
-  public void c()
-  {
-    super.c();
-    if (this.jdField_c_of_type_Boolean) {
-      return;
-    }
-    d();
+    return "REGISTER";
   }
 }
 

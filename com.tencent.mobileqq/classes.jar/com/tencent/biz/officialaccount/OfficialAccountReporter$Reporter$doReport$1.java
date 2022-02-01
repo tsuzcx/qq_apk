@@ -1,8 +1,8 @@
 package com.tencent.biz.officialaccount;
 
 import android.content.Context;
-import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,7 +37,7 @@ public final class OfficialAccountReporter$Reporter$doReport$1
       if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("code")) {
         localObject = String.valueOf(this.jdField_a_of_type_JavaUtilHashMap.get("code"));
       }
-      bdmc.a((Context)BaseApplicationImpl.getContext()).a("00000KCQ7Y3ITP3Z", str, (String)localObject, true, -1L, -1L, this.jdField_a_of_type_JavaUtilHashMap, "");
+      StatisticCollector.getInstance((Context)BaseApplicationImpl.getContext()).collectPerformance("00000KCQ7Y3ITP3Z", str, (String)localObject, true, -1L, -1L, this.jdField_a_of_type_JavaUtilHashMap, "");
       return;
     }
     catch (Exception localException)

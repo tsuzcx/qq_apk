@@ -1,6 +1,14 @@
-class usl
+import android.content.Context;
+
+public abstract interface usl<U, V>
 {
-  private static final usj a = new usj(null);
+  public abstract usj<U, V> a();
+  
+  public abstract usk a(Context paramContext, usr paramusr);
+  
+  public abstract usn a(Context paramContext);
+  
+  public abstract usr a(Context paramContext, boolean paramBoolean);
 }
 
 

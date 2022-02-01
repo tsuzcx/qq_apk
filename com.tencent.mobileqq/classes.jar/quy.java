@@ -1,12 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.List;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.BackOffGroupInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class quy
+  implements View.OnClickListener
 {
-  public int a;
-  public List<oidb_cmd0x68b.BackOffGroupInfo> a;
-  public List<ArticleInfo> b;
+  public quy(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

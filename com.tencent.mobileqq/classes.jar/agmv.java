@@ -1,17 +1,11 @@
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class agmv
-  implements View.OnClickListener
+public abstract interface agmv
 {
-  agmv(agmu paramagmu) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.b();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(Context paramContext, QQAppInterface paramQQAppInterface, View paramView, MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, String paramString);
 }
 
 

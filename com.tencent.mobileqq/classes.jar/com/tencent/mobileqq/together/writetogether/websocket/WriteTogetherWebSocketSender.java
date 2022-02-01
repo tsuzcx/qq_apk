@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.together.writetogether.websocket;
 
-import benn;
-import beqq;
-import beqt;
-import bequ;
-import bhnv;
+import bdhf;
+import bdjk;
+import bdjn;
+import bdjo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.mobileqq.together.writetogether.client.RoomController;
 import com.tencent.mobileqq.together.writetogether.websocket.msg.BaseToWriteTogetherMsg;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -20,10 +20,10 @@ import mqq.os.MqqHandler;
 import okhttp3.WebSocketListener;
 
 public class WriteTogetherWebSocketSender
-  implements benn
+  implements bdhf
 {
   private int jdField_a_of_type_Int = 2000;
-  private beqq jdField_a_of_type_Beqq;
+  private bdjk jdField_a_of_type_Bdjk;
   private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler;
   public RoomController a;
   private HeartBeat jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketHeartBeat;
@@ -39,9 +39,9 @@ public class WriteTogetherWebSocketSender
   private String jdField_b_of_type_JavaLangString;
   boolean jdField_b_of_type_Boolean;
   
-  public WriteTogetherWebSocketSender(beqq parambeqq)
+  public WriteTogetherWebSocketSender(bdjk parambdjk)
   {
-    this.jdField_a_of_type_Beqq = parambeqq;
+    this.jdField_a_of_type_Bdjk = parambdjk;
     this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketWriteTogetherWebSocketAlarm = new WriteTogetherWebSocketAlarm(this);
     c();
   }
@@ -82,7 +82,7 @@ public class WriteTogetherWebSocketSender
   void a(QQAppInterface paramQQAppInterface)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler == null) {
-      this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new bequ(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new bdjo(this, null);
     }
     AppNetConnInfo.registerConnectionChangeReceiver(paramQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
   }
@@ -92,9 +92,9 @@ public class WriteTogetherWebSocketSender
     this.jdField_b_of_type_Boolean = false;
     this.jdField_b_of_type_JavaLangString = paramString2;
     if (this.jdField_a_of_type_Okhttp3WebSocketListener == null) {
-      this.jdField_a_of_type_Okhttp3WebSocketListener = new beqt(this);
+      this.jdField_a_of_type_Okhttp3WebSocketListener = new bdjn(this);
     }
-    this.jdField_a_of_type_Beqq.a(this.jdField_a_of_type_Okhttp3WebSocketListener);
+    this.jdField_a_of_type_Bdjk.a(this.jdField_a_of_type_Okhttp3WebSocketListener);
     TicketManager localTicketManager = (TicketManager)paramQQAppInterface.getManager(2);
     String str = paramQQAppInterface.getCurrentAccountUin();
     if (localTicketManager != null) {
@@ -102,9 +102,9 @@ public class WriteTogetherWebSocketSender
     }
     a(paramQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherWebsocketHeartBeat.a(paramString1, str);
-    this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherClientRoomController = new RoomController(paramQQAppInterface, this.jdField_a_of_type_Beqq, paramString2, paramString1, paramInt, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherClientRoomController = new RoomController(paramQQAppInterface, this.jdField_a_of_type_Bdjk, paramString2, paramString1, paramInt, this.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherClientRoomController.a(this);
-    this.jdField_a_of_type_Beqq.a();
+    this.jdField_a_of_type_Bdjk.a();
   }
   
   public void a(BaseToWriteTogetherMsg paramBaseToWriteTogetherMsg)
@@ -163,14 +163,14 @@ public class WriteTogetherWebSocketSender
   
   boolean a()
   {
-    return bhnv.a();
+    return NetworkUtil.isNetworkAvailable();
   }
   
   public void b()
   {
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Beqq.b();
+    this.jdField_a_of_type_Bdjk.b();
     if (this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherClientRoomController != null) {
       this.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherClientRoomController.b();
     }

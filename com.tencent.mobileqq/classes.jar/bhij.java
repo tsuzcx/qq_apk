@@ -1,28 +1,54 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.MedalList;
+import com.tencent.mobileqq.data.MedalList.Info;
+import java.util.ArrayList;
 
-final class bhij
-  implements URLDrawable.URLDrawableListener
+public class bhij
 {
-  bhij(WeakReference paramWeakReference) {}
+  private MedalList a;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public int a()
   {
-    if (this.a != null)
-    {
-      paramURLDrawable = (View)this.a.get();
-      if (paramURLDrawable != null) {
-        paramURLDrawable.postInvalidate();
-      }
+    if (this.a != null) {
+      return this.a.infoList.size();
     }
+    return 0;
+  }
+  
+  public int a(int paramInt)
+  {
+    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
+      return ((MedalList.Info)this.a.infoList.get(paramInt)).type;
+    }
+    return 0;
+  }
+  
+  public String a(int paramInt)
+  {
+    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
+      return ((MedalList.Info)this.a.infoList.get(paramInt)).value;
+    }
+    return null;
+  }
+  
+  public void a(MedalList paramMedalList)
+  {
+    this.a = paramMedalList;
+  }
+  
+  public int b(int paramInt)
+  {
+    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
+      return ((MedalList.Info)this.a.infoList.get(paramInt)).isRemind;
+    }
+    return 0;
+  }
+  
+  public int c(int paramInt)
+  {
+    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
+      return ((MedalList.Info)this.a.infoList.get(paramInt)).tipsTimes;
+    }
+    return 0;
   }
 }
 

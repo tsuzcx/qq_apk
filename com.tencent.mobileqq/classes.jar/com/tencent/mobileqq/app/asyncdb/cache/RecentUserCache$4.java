@@ -2,8 +2,8 @@ package com.tencent.mobileqq.app.asyncdb.cache;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import antf;
-import aolh;
+import anes;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
 import com.tencent.mobileqq.data.ConversationInfo;
@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class RecentUserCache$4
   implements Runnable
 {
-  public RecentUserCache$4(aolh paramaolh, SharedPreferences paramSharedPreferences) {}
+  public RecentUserCache$4(anes paramanes, SharedPreferences paramSharedPreferences) {}
   
   public void run()
   {
@@ -29,13 +29,13 @@ public class RecentUserCache$4
     label384:
     for (;;)
     {
-      synchronized (aolh.g(this.this$0))
+      synchronized (anes.g(this.this$0))
       {
-        Iterator localIterator = aolh.h(this.this$0).values().iterator();
+        Iterator localIterator = anes.h(this.this$0).values().iterator();
         if (localIterator.hasNext())
         {
           Entity localEntity = (Entity)localIterator.next();
-          if ((localEntity == null) || (!antf.U.equals(((RecentUser)localEntity).uin))) {
+          if ((localEntity == null) || (!AppConstants.PUBLIC_ACCOUNT_WPA_ASSISTANT_UIN.equals(((RecentUser)localEntity).uin))) {
             break label384;
           }
           localObject1 = (RecentUser)localEntity;
@@ -48,19 +48,19 @@ public class RecentUserCache$4
         if (localObject1 != null)
         {
           localObject1 = this.this$0.getKey((Entity)localObject1);
-          if (aolh.i(this.this$0).containsKey(localObject1)) {
-            aolh.j(this.this$0).remove(localObject1);
+          if (anes.i(this.this$0).containsKey(localObject1)) {
+            anes.j(this.this$0).remove(localObject1);
           }
         }
-        int i = ((SQLiteDatabase)???).delete("recent", "uin=?", new String[] { antf.U });
+        int i = ((SQLiteDatabase)???).delete("recent", "uin=?", new String[] { AppConstants.PUBLIC_ACCOUNT_WPA_ASSISTANT_UIN });
         if (QLog.isColorLevel()) {
           QLog.d("Q.db.Cache.RecentUserCache", 2, "checkPubAccountAssistant | RecentUser delCount = " + i);
         }
-        i = ((SQLiteDatabase)???).delete(ConversationInfo.getConversationInfoTableName(), "uin=?", new String[] { antf.U });
+        i = ((SQLiteDatabase)???).delete(ConversationInfo.getConversationInfoTableName(), "uin=?", new String[] { AppConstants.PUBLIC_ACCOUNT_WPA_ASSISTANT_UIN });
         if (QLog.isColorLevel()) {
           QLog.d("Q.db.Cache.RecentUserCache", 2, "checkPubAccountAssistant | conversationinfo delCount = " + i);
         }
-        i = ((SQLiteDatabase)???).delete(MessageRecord.getTableName(antf.U, 7200), "frienduin=?", new String[] { antf.U });
+        i = ((SQLiteDatabase)???).delete(MessageRecord.getTableName(AppConstants.PUBLIC_ACCOUNT_WPA_ASSISTANT_UIN, 7200), "frienduin=?", new String[] { AppConstants.PUBLIC_ACCOUNT_WPA_ASSISTANT_UIN });
         if (QLog.isColorLevel()) {
           QLog.d("Q.db.Cache.RecentUserCache", 2, "checkPubAccountAssistant | MessageRecord.RecommendMsg delCount = " + i);
         }

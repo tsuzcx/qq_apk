@@ -2,15 +2,15 @@ package com.tencent.mobileqq.mini.utils;
 
 import android.os.Looper;
 import android.os.Message;
-import bete;
-import beyf;
 import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
 import com.tencent.qphone.base.util.QLog;
 
 public class ReportLogUtil$MiniAppTransHandler
-  extends beyf
+  extends TransProcessorHandler
 {
   ReportLogUtil.UploadLogListener uploadLogListener;
   
@@ -23,8 +23,8 @@ public class ReportLogUtil$MiniAppTransHandler
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    bete localbete = (bete)paramMessage.obj;
-    if ((localbete == null) || (localbete.c != 65) || (localbete.b != 24)) {}
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((localFileMsg == null) || (localFileMsg.commandId != 65) || (localFileMsg.fileType != 24)) {}
     do
     {
       do
@@ -37,7 +37,7 @@ public class ReportLogUtil$MiniAppTransHandler
         paramMessage = new Bdh_extinfo.UploadPicExtInfo();
         try
         {
-          paramMessage.mergeFrom(localbete.a);
+          paramMessage.mergeFrom(localFileMsg.bdhExtendInfo);
           paramMessage = paramMessage.bytes_download_url.get().toStringUtf8();
           if (this.uploadLogListener != null) {
             this.uploadLogListener.onSuccess(paramMessage);

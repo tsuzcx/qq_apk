@@ -1,59 +1,26 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForMyEnterTroop;
-import com.tencent.mobileqq.data.MessageRecord;
-
 public class ahmr
-  extends agem
+  implements ahmu
 {
-  public ahmr(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
+  private long a;
+  private long b;
+  
+  public long a()
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+    return this.b;
   }
   
-  protected agen a()
+  public void a(long paramLong)
   {
-    return new ahms(this);
+    this.a = paramLong;
   }
   
-  protected View a(MessageRecord paramMessageRecord, agen paramagen, View paramView, LinearLayout paramLinearLayout, agjk paramagjk)
+  public void b(long paramLong)
   {
-    paramLinearLayout = (ahms)paramagen;
-    paramagen = paramView;
-    if (paramView == null)
+    if (this.a != 0L)
     {
-      paramagen = LayoutInflater.from(this.a).inflate(2131558887, null);
-      paramLinearLayout.b = ((TextView)paramagen.findViewById(2131367669));
+      this.b = (paramLong - this.a + this.b);
+      this.a = 0L;
     }
-    paramLinearLayout.b.setMovementMethod(null);
-    paramLinearLayout.b.setGravity(17);
-    if ((paramMessageRecord instanceof MessageForMyEnterTroop))
-    {
-      paramMessageRecord = (MessageForMyEnterTroop)paramMessageRecord;
-      paramMessageRecord = this.a.getString(2131696540);
-      paramLinearLayout.b.setText(paramMessageRecord);
-      paramView = this.a.getResources().getColorStateList(2131165428);
-      if (paramView != null) {
-        paramLinearLayout.b.setTextColor(paramView);
-      }
-      paramagen.setContentDescription(paramMessageRecord);
-    }
-    return paramagen;
-  }
-  
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
-  
-  public bhum[] a(View paramView)
-  {
-    return null;
   }
 }
 

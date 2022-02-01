@@ -1,11 +1,77 @@
-class vca
-  implements blkc
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stSimpleMetaPerson;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class vca
+  extends ukz<vaq>
+  implements View.OnClickListener
 {
-  vca(vbr paramvbr) {}
+  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
   
-  public void a()
+  public vca(Context paramContext, vct paramvct)
   {
-    vbr.a(this.a, 63);
+    super(paramContext);
+    if (paramvct != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramvct.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+    }
+  }
+  
+  protected void a()
+  {
+    if ((a() != null) && ((((vaq)a()).a() instanceof stSimpleMetaFeed))) {
+      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)((vaq)a()).a());
+    }
+  }
+  
+  protected int b()
+  {
+    return 2131560031;
+  }
+  
+  protected void b()
+  {
+    Object localObject = (vaq)a();
+    if (localObject == null) {}
+    while (!(((vaq)localObject).a() instanceof stSimpleMetaFeed)) {
+      return;
+    }
+    localObject = ((stSimpleMetaFeed)((vaq)localObject).a()).poster;
+    if ((localObject != null) && (!TextUtils.isEmpty(((stSimpleMetaPerson)localObject).nick)))
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("@%s", new Object[] { ((stSimpleMetaPerson)localObject).nick }));
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  protected void c() {}
+  
+  protected void e()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380410));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (paramView.getId() == 2131380410) {
+        uyz.a("nickname", this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+      }
+    }
   }
 }
 

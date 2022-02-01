@@ -1,12 +1,17 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
 class zug
-  extends RecyclerView.ViewHolder
+  implements DialogInterface.OnShowListener
 {
-  zug(zue paramzue, View paramView)
+  zug(zuc paramzuc) {}
+  
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    super(paramView);
+    ((InputMethodManager)this.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getContext().getSystemService("input_method")).showSoftInput(this.a.jdField_a_of_type_AndroidWidgetEditText, 1);
   }
 }
 

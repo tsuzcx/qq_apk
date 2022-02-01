@@ -1,30 +1,30 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QIMNotifyAddFriend;
 
 public class aigz
-  extends aigs
+  extends aigo
 {
-  public Bitmap a;
-  public String b;
+  public QIMNotifyAddFriend a;
   
-  public aigz(String paramString)
+  public aigz(QIMNotifyAddFriend paramQIMNotifyAddFriend)
   {
-    super(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend = paramQIMNotifyAddFriend;
+    this.jdField_a_of_type_Long = paramQIMNotifyAddFriend.pushTime;
   }
   
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  public String a()
   {
-    if (paramRedPacketInfo != null)
-    {
-      this.a = paramRedPacketInfo.icon;
-      this.b = paramRedPacketInfo.resPath;
-    }
+    return String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.uin);
+  }
+  
+  public String a(QQAppInterface paramQQAppInterface)
+  {
+    return "getMessage";
   }
   
   public boolean a()
   {
-    return (this.a != null) && (!TextUtils.isEmpty(this.b));
+    return this.jdField_a_of_type_ComTencentMobileqqDataQIMNotifyAddFriend.hasRead;
   }
 }
 

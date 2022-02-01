@@ -1,14 +1,21 @@
-final class zvg
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.PopupWindow;
+
+class zvg
+  implements View.OnTouchListener
 {
-  public float a;
-  public float b;
-  public float c;
+  zvg(zvf paramzvf) {}
   
-  public zvg(float paramFloat1, float paramFloat2, float paramFloat3)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
+    if (paramMotionEvent.getAction() == 4)
+    {
+      this.a.a.dismiss();
+      return true;
+    }
+    return false;
   }
 }
 

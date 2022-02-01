@@ -2,79 +2,79 @@ package cooperation.qzone.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
 
 public class BaseBusinessAlbumInfo
   implements Parcelable, Cloneable
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
+  public int allow_share;
+  public String individualCover;
+  public boolean isAlbumExist = true;
+  public boolean isFake;
+  public boolean isIndividualityAlbum;
+  public int isShare;
+  public int isSharingOwner;
+  public String mAlbumId;
+  public int mAlbumType;
+  public int mAnonymity;
+  public String mCover;
+  public long mLastUploadTime;
+  public int mPrivacy;
+  public long mSvrTime;
+  public String mTitle;
+  public int mTotal;
+  public long mUin;
+  public int opmask;
+  public int sortType;
   
-  public BaseBusinessAlbumInfo()
+  public BaseBusinessAlbumInfo() {}
+  
+  public BaseBusinessAlbumInfo(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = true;
+    this.mUin = paramLong;
+    this.mAlbumId = paramString1;
+    this.mTitle = paramString2;
+    this.mCover = paramString3;
+    this.mTotal = paramInt1;
+    this.mPrivacy = paramInt2;
+    this.mAlbumType = paramInt3;
+    this.isIndividualityAlbum = paramBoolean;
   }
   
   public BaseBusinessAlbumInfo(String paramString)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.mAlbumId = paramString;
   }
   
-  public BaseBusinessAlbumInfo a()
+  public BaseBusinessAlbumInfo clone()
   {
-    BaseBusinessAlbumInfo localBaseBusinessAlbumInfo = new BaseBusinessAlbumInfo(this.jdField_a_of_type_JavaLangString);
-    localBaseBusinessAlbumInfo.a(this);
+    BaseBusinessAlbumInfo localBaseBusinessAlbumInfo = new BaseBusinessAlbumInfo(this.mAlbumId);
+    localBaseBusinessAlbumInfo.copyFrom(this);
     return localBaseBusinessAlbumInfo;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(BaseBusinessAlbumInfo paramBaseBusinessAlbumInfo)
+  public void copyFrom(BaseBusinessAlbumInfo paramBaseBusinessAlbumInfo)
   {
     if (paramBaseBusinessAlbumInfo == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramBaseBusinessAlbumInfo.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Long = paramBaseBusinessAlbumInfo.jdField_a_of_type_Long;
-    this.jdField_b_of_type_JavaLangString = paramBaseBusinessAlbumInfo.jdField_b_of_type_JavaLangString;
-    this.jdField_c_of_type_JavaLangString = paramBaseBusinessAlbumInfo.jdField_c_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = paramBaseBusinessAlbumInfo.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Int = paramBaseBusinessAlbumInfo.jdField_b_of_type_Int;
-    this.jdField_b_of_type_Long = paramBaseBusinessAlbumInfo.jdField_b_of_type_Long;
-    this.jdField_c_of_type_Int = paramBaseBusinessAlbumInfo.jdField_c_of_type_Int;
-    this.jdField_c_of_type_Long = paramBaseBusinessAlbumInfo.jdField_c_of_type_Long;
-    this.jdField_d_of_type_Int = paramBaseBusinessAlbumInfo.jdField_d_of_type_Int;
-    this.jdField_a_of_type_Boolean = paramBaseBusinessAlbumInfo.jdField_a_of_type_Boolean;
-    this.e = paramBaseBusinessAlbumInfo.e;
-    this.f = paramBaseBusinessAlbumInfo.f;
-    this.jdField_d_of_type_JavaLangString = paramBaseBusinessAlbumInfo.jdField_d_of_type_JavaLangString;
-    this.g = paramBaseBusinessAlbumInfo.g;
-    this.h = paramBaseBusinessAlbumInfo.h;
-    this.i = paramBaseBusinessAlbumInfo.i;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
+    this.mAlbumId = paramBaseBusinessAlbumInfo.mAlbumId;
+    this.mUin = paramBaseBusinessAlbumInfo.mUin;
+    this.mTitle = paramBaseBusinessAlbumInfo.mTitle;
+    this.mCover = paramBaseBusinessAlbumInfo.mCover;
+    this.mTotal = paramBaseBusinessAlbumInfo.mTotal;
+    this.mPrivacy = paramBaseBusinessAlbumInfo.mPrivacy;
+    this.mLastUploadTime = paramBaseBusinessAlbumInfo.mLastUploadTime;
+    this.mAlbumType = paramBaseBusinessAlbumInfo.mAlbumType;
+    this.mSvrTime = paramBaseBusinessAlbumInfo.mSvrTime;
+    this.mAnonymity = paramBaseBusinessAlbumInfo.mAnonymity;
+    this.isIndividualityAlbum = paramBaseBusinessAlbumInfo.isIndividualityAlbum;
+    this.opmask = paramBaseBusinessAlbumInfo.opmask;
+    this.allow_share = paramBaseBusinessAlbumInfo.allow_share;
+    this.individualCover = paramBaseBusinessAlbumInfo.individualCover;
+    this.isShare = paramBaseBusinessAlbumInfo.isShare;
+    this.isSharingOwner = paramBaseBusinessAlbumInfo.isSharingOwner;
+    this.sortType = paramBaseBusinessAlbumInfo.sortType;
   }
   
   public int describeContents()
@@ -97,45 +97,81 @@ public class BaseBusinessAlbumInfo
           return false;
         }
         paramObject = (BaseBusinessAlbumInfo)paramObject;
-        if (this.jdField_a_of_type_JavaLangString != null) {
+        if (this.mAlbumId != null) {
           break;
         }
-      } while (paramObject.jdField_a_of_type_JavaLangString == null);
+      } while (paramObject.mAlbumId == null);
       return false;
-    } while (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
+    } while (this.mAlbumId.equals(paramObject.mAlbumId));
     return false;
+  }
+  
+  public String getId()
+  {
+    return this.mAlbumId;
+  }
+  
+  public String getTitle()
+  {
+    return this.mTitle;
   }
   
   public int hashCode()
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (int j = 0;; j = this.jdField_a_of_type_JavaLangString.hashCode()) {
-      return j + 31;
+    if (this.mAlbumId == null) {}
+    for (int i = 0;; i = this.mAlbumId.hashCode()) {
+      return i + 31;
     }
+  }
+  
+  public void updateFrom(BaseBusinessAlbumInfo paramBaseBusinessAlbumInfo)
+  {
+    if (paramBaseBusinessAlbumInfo == null) {
+      return;
+    }
+    this.mUin = paramBaseBusinessAlbumInfo.mUin;
+    this.mTotal = paramBaseBusinessAlbumInfo.mTotal;
+    this.mPrivacy = paramBaseBusinessAlbumInfo.mPrivacy;
+    this.mAlbumType = paramBaseBusinessAlbumInfo.mAlbumType;
+    if (!TextUtils.isEmpty(paramBaseBusinessAlbumInfo.mTitle)) {
+      this.mTitle = paramBaseBusinessAlbumInfo.mTitle;
+    }
+    if (!TextUtils.isEmpty(paramBaseBusinessAlbumInfo.mCover)) {
+      this.mCover = paramBaseBusinessAlbumInfo.mCover;
+    }
+    this.mSvrTime = paramBaseBusinessAlbumInfo.mSvrTime;
+    this.mAnonymity = paramBaseBusinessAlbumInfo.mAnonymity;
+    this.isIndividualityAlbum = paramBaseBusinessAlbumInfo.isIndividualityAlbum;
+    this.opmask = paramBaseBusinessAlbumInfo.opmask;
+    this.allow_share = paramBaseBusinessAlbumInfo.allow_share;
+    this.individualCover = paramBaseBusinessAlbumInfo.individualCover;
+    this.isShare = paramBaseBusinessAlbumInfo.isShare;
+    this.isSharingOwner = paramBaseBusinessAlbumInfo.isSharingOwner;
+    this.sortType = paramBaseBusinessAlbumInfo.sortType;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeLong(this.jdField_c_of_type_Long);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    if (this.jdField_a_of_type_Boolean) {}
+    paramParcel.writeLong(this.mUin);
+    paramParcel.writeString(this.mAlbumId);
+    paramParcel.writeInt(this.mPrivacy);
+    paramParcel.writeInt(this.mTotal);
+    paramParcel.writeString(this.mCover);
+    paramParcel.writeString(this.mTitle);
+    paramParcel.writeLong(this.mLastUploadTime);
+    paramParcel.writeInt(this.mAlbumType);
+    paramParcel.writeLong(this.mSvrTime);
+    paramParcel.writeInt(this.mAnonymity);
+    if (this.isIndividualityAlbum) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.e);
-      paramParcel.writeInt(this.f);
-      paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-      paramParcel.writeInt(this.g);
-      paramParcel.writeInt(this.h);
-      paramParcel.writeInt(this.i);
+      paramParcel.writeInt(this.opmask);
+      paramParcel.writeInt(this.allow_share);
+      paramParcel.writeString(this.individualCover);
+      paramParcel.writeInt(this.isShare);
+      paramParcel.writeInt(this.isSharingOwner);
+      paramParcel.writeInt(this.sortType);
       return;
     }
   }

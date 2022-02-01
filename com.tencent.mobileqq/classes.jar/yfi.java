@@ -1,22 +1,14 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.List;
+import android.graphics.Bitmap;
 
-public class yfi
+public abstract interface yfi
 {
-  public int a;
-  public String a;
-  public List<CommentEntry> a;
-  public boolean a;
-  public boolean b;
+  public abstract void a();
   
-  public yfi(boolean paramBoolean1, List<CommentEntry> paramList, int paramInt, boolean paramBoolean2, String paramString)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramBoolean2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract void a(Runnable paramRunnable);
+  
+  public abstract void a(yfj paramyfj);
 }
 
 

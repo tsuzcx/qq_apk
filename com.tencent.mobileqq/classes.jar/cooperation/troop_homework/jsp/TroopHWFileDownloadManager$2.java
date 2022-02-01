@@ -1,16 +1,16 @@
 package cooperation.troop_homework.jsp;
 
-import bnsr;
+import bkxy;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
 public class TroopHWFileDownloadManager$2
   implements Runnable
 {
-  public TroopHWFileDownloadManager$2(bnsr parambnsr, String paramString) {}
+  public TroopHWFileDownloadManager$2(bkxy parambkxy, String paramString) {}
   
   public void run()
   {
-    bnsr.a(this.this$0).pauseDownloadTask(this.a);
+    bkxy.a(this.this$0).pauseDownloadTask(this.a);
   }
 }
 

@@ -1,64 +1,19 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.now.NowQQLiveFragment;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
-import mqq.app.AppRuntime;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 public class ayvf
+  extends RecyclerView.ViewHolder
 {
-  private static final String a = BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/testEnv/";
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public static int a()
+  public ayvf(View paramView)
   {
-    Object localObject = a();
-    if (!(localObject instanceof QQAppInterface)) {
-      return 0;
-    }
-    localObject = (QQAppInterface)localObject;
-    if ((((QQAppInterface)localObject).a() == null) || (((QQAppInterface)localObject).a().a() == null)) {
-      return 0;
-    }
-    return ((QQAppInterface)localObject).a().a().a(ayvd.a, 1008);
-  }
-  
-  public static AppRuntime a()
-  {
-    AppRuntime localAppRuntime = null;
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null) {
-      localAppRuntime = localBaseApplicationImpl.getRuntime();
-    }
-    return localAppRuntime;
-  }
-  
-  public static boolean a()
-  {
-    Object localObject = a();
-    if (!(localObject instanceof QQAppInterface)) {
-      return false;
-    }
-    localObject = (QQAppInterface)localObject;
-    if ((((QQAppInterface)localObject).a() == null) || (((QQAppInterface)localObject).a().a() == null)) {
-      return false;
-    }
-    ((QQAppInterface)localObject).a().a(ayvd.a, 1008, true, true);
-    alpb.b((QQAppInterface)localObject, ayvd.a, 1008);
-    tug.a().a((QQAppInterface)localObject, ayvd.a);
-    return true;
-  }
-  
-  public static final boolean a(Context paramContext, String paramString, int paramInt)
-  {
-    NowQQLiveFragment.a(paramContext, paramString, paramInt);
-    return true;
-  }
-  
-  public static boolean b()
-  {
-    return new File(a, "testserver").exists();
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131374056));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131374058));
   }
 }
 

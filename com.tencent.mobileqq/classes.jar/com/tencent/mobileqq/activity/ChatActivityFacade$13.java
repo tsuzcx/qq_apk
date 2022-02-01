@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import axoz;
+import awcg;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -17,12 +17,12 @@ public final class ChatActivityFacade$13
     {
       if (this.jdField_a_of_type_Boolean)
       {
-        ((axoz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(166)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+        ((awcg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(166)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
         return;
       }
       if (this.b)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addMsgForForward(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
         return;
       }
     }
@@ -31,12 +31,12 @@ public final class ChatActivityFacade$13
       QLog.e("ChatActivityFacade", 1, "life circle2:", localException);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().addAndSendMessage(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.13
  * JD-Core Version:    0.7.0.1
  */

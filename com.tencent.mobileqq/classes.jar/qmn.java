@@ -1,36 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class qmn
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/lite/PTSLiteSwiperEventDispatcher$Builder;", "", "()V", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "getAdapter", "()Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;", "setAdapter", "(Lcom/tencent/biz/pubaccount/readinjoy/view/ReadInJoyBaseAdapter;)V", "articleInfoMap", "Ljava/util/HashMap;", "", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;", "Lkotlin/collections/HashMap;", "getArticleInfoMap", "()Ljava/util/HashMap;", "setArticleInfoMap", "(Ljava/util/HashMap;)V", "positionMap", "", "getPositionMap", "setPositionMap", "build", "Lcom/tencent/biz/pubaccount/readinjoy/pts/lite/PTSLiteSwiperEventDispatcher;", "withArticleInfoMap", "withPositionMap", "withRIJAdapter", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qmn
 {
-  qmn(qml paramqml, ArticleInfo paramArticleInfo, qzb paramqzb) {}
+  @NotNull
+  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  @Nullable
+  private slt jdField_a_of_type_Slt;
+  @NotNull
+  private HashMap<String, ArticleInfo> b = new HashMap();
   
-  public void onClick(View paramView)
+  @NotNull
+  public final qmm a()
   {
-    ozs.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    ozs.a(this.jdField_a_of_type_Qml.a, this.jdField_a_of_type_Qzb.b.b);
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("folder_status", ozs.d);
-      localJSONObject.put("kandian_mode", "" + ozs.e());
-      localJSONObject.put("tab_source", "" + ozs.d());
-      ocd.a(null, "", "0X8008277", "0X8008277", 0, 0, "", "", "", localJSONObject.toString(), false);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    qmm localqmm = new qmm(null);
+    qmm.a(localqmm, this.jdField_a_of_type_Slt);
+    qmm.a(localqmm, this.jdField_a_of_type_JavaUtilHashMap);
+    qmm.b(localqmm, this.b);
+    return localqmm;
+  }
+  
+  @NotNull
+  public final qmn a(@NotNull HashMap<String, Integer> paramHashMap)
+  {
+    Intrinsics.checkParameterIsNotNull(paramHashMap, "positionMap");
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    return this;
+  }
+  
+  @NotNull
+  public final qmn a(@NotNull slt paramslt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramslt, "adapter");
+    this.jdField_a_of_type_Slt = paramslt;
+    return this;
+  }
+  
+  @NotNull
+  public final qmn b(@NotNull HashMap<String, ArticleInfo> paramHashMap)
+  {
+    Intrinsics.checkParameterIsNotNull(paramHashMap, "articleInfoMap");
+    this.b = paramHashMap;
+    return this;
   }
 }
 

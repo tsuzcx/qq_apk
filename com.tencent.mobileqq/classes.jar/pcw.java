@@ -1,23 +1,60 @@
-import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.v4.util.LruCache;
-import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.4;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import java.io.File;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class pcw
-  implements OnCompositionLoadedListener
+  implements AladdinConfigHandler
 {
-  public pcw(ReadInJoyLottieDrawable.4 param4) {}
-  
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (paramLottieComposition != null)
+    QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    Map localMap = pbt.a(paramString);
+    Object localObject2 = localMap.keySet();
+    Object localObject1 = "";
+    paramString = "";
+    Iterator localIterator = ((Set)localObject2).iterator();
+    String str;
+    if (localIterator.hasNext())
     {
-      pcs.a().put(this.a.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramLottieComposition);
-      pcs.a(this.a.this$0).post(this.a.jdField_a_of_type_JavaLangRunnable);
+      str = (String)localIterator.next();
+      localObject2 = (String)localMap.get(str);
+      QLog.d("NativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
+      if (TextUtils.equals(str, "native_article"))
+      {
+        bkwm.a("native_proteus_offline_bid", (String)localObject2);
+        paramString = (String)localObject1;
+        localObject1 = localObject2;
+      }
     }
+    for (;;)
+    {
+      localObject2 = paramString;
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
+      break;
+      if (TextUtils.equals(str, "native_article_cdn_url"))
+      {
+        localObject1 = paramString;
+        paramString = (String)localObject2;
+        continue;
+        szu.a(paramString, (String)localObject1);
+        return true;
+      }
+      else
+      {
+        localObject2 = paramString;
+        paramString = (String)localObject1;
+        localObject1 = localObject2;
+      }
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bkwm.a("native_proteus_offline_bid", "0");
   }
 }
 

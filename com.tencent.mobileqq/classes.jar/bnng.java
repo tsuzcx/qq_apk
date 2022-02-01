@@ -1,24 +1,18 @@
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.SecondDemoView;
+import java.util.ArrayList;
 
 public class bnng
-  extends bnnn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public bnng(SecondDemoView paramSecondDemoView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
-    while (!"jumpQQCleanPage".equalsIgnoreCase(paramString3)) {
-      return false;
-    }
-    if (this.a.mRuntime.a() != null)
-    {
-      QQSettingCleanActivity.a(this.a.mRuntime.a());
-      return true;
-    }
-    QLog.e("jumpCleanPage", 2, "call activity with null runtime");
-    return false;
+    paramValueAnimator = (ArrayList)paramValueAnimator.getAnimatedValue();
+    this.a.a = paramValueAnimator;
+    this.a.invalidate();
   }
 }
 

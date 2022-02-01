@@ -1,26 +1,32 @@
+import android.content.Context;
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationClidFragment;
-import com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
-public class ajin
-  implements blpp
+class ajin
+  implements AdapterView.OnItemLongClickListener
 {
-  public ajin(ConnectionsExplorationClidFragment paramConnectionsExplorationClidFragment) {}
+  ajin(ajif paramajif) {}
   
-  public void a(View paramView)
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramView = this.a.getParentFragment();
-    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
-      ((ConnectionsExplorationFragment)paramView).a(false);
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
     }
-  }
-  
-  public void b(View paramView)
-  {
-    paramView = this.a.getParentFragment();
-    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
-      ((ConnectionsExplorationFragment)paramView).a(true);
-    }
+    if ((this.a.jdField_a_of_type_Ajbe.getCount() <= 0) || (paramInt <= 0)) {}
+    do
+    {
+      return true;
+      paramAdapterView = (ajhk)this.a.jdField_a_of_type_Ajbe.getItem(paramInt - 1);
+    } while (paramAdapterView == null);
+    this.a.jdField_a_of_type_Ajhk = paramAdapterView;
+    paramView.setSelected(true);
+    paramAdapterView = new bgaz();
+    paramAdapterView.a(2131365216, amtj.a(2131714198), 2130838962);
+    paramAdapterView.a(2131367094, this.a.jdField_a_of_type_AndroidContentContext.getString(2131692448), 2130838971);
+    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bfue.a(paramView, paramAdapterView, ajif.a(this.a), new ajio(this, paramView));
+    return true;
   }
 }
 

@@ -1,13 +1,16 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
 
 public class ahys
-  implements ahyf
+  extends Handler
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public ahys(SearchBaseActivity paramSearchBaseActivity) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    paramahed.a(paramMessageRecord, paramahfq.b);
+    this.a.a.clearFocus();
   }
 }
 

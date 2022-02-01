@@ -1,17 +1,19 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class ahjg
-  extends ahkx
+  implements odm
 {
-  ahjg(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahjg(ahiu paramahiu) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void a(boolean paramBoolean)
   {
-    return new ahqw(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    this.a.y = false;
+    this.a.p();
+    this.a.b();
+    anky.a(this.a.app, this.a.sessionInfo.curFriendUin, this.a.app.getApp().getResources().getString(2131697718), this.a.sessionInfo.curType, false, true);
   }
 }
 

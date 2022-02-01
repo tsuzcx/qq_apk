@@ -1,18 +1,10 @@
+import android.view.View;
+
 public abstract interface apnn
 {
-  public abstract void a(int paramInt, apnx paramapnx, long paramLong);
+  public abstract String a();
   
-  public abstract void a(apnp paramapnp);
-  
-  public abstract void a(apnq paramapnq);
-  
-  public abstract void a(apnr paramapnr);
-  
-  public abstract void a(apns paramapns);
-  
-  public abstract void a(apnz paramapnz);
-  
-  public abstract void b(apnq paramapnq);
+  public abstract void a(View paramView, int paramInt);
 }
 
 

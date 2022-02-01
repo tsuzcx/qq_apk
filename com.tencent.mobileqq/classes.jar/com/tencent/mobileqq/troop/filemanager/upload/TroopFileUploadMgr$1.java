@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import bfvp;
-import bfvr;
-import bfxt;
+import befa;
+import befc;
+import behe;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
 public class TroopFileUploadMgr$1
   implements Runnable
 {
-  public TroopFileUploadMgr$1(bfxt parambfxt) {}
+  public TroopFileUploadMgr$1(behe parambehe) {}
   
   public void run()
   {
     if (this.this$0.a) {
       return;
     }
-    QQAppInterface localQQAppInterface = bfvp.a();
+    QQAppInterface localQQAppInterface = befa.a();
     if (localQQAppInterface != null)
     {
       AppNetConnInfo.registerConnectionChangeReceiver(localQQAppInterface.getApplication(), this.this$0);
       this.this$0.a = true;
       return;
     }
-    bfvr.a("TroopFileUploadMgr", bfvr.a, "init registerConnectionChangeReceiver fail");
+    befc.a("TroopFileUploadMgr", befc.a, "init registerConnectionChangeReceiver fail");
   }
 }
 

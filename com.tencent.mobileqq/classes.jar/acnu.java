@@ -1,22 +1,16 @@
-import android.os.Looper;
-import com.tencent.ad.tangram.offline.AdOfflineAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
-public final class acnu
-  implements AdOfflineAdapter
+public class acnu
+  implements DialogInterface.OnClickListener
 {
-  public String getAppVersion()
-  {
-    return acvf.a();
-  }
+  public acnu(AccountManageActivity paramAccountManageActivity) {}
   
-  public String getVersionIfExists(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (Looper.myLooper() == Looper.getMainLooper())
-    {
-      acvc.d("GdtOfflineAdapter", "getVersionIfExists error");
-      return null;
-    }
-    return nmj.a(paramString);
+    bcef.b(this.a.app, "CliOper", "", "", "0X80040A7", "0X80040A7", 0, 0, "", "", "", "");
+    this.a.d();
   }
 }
 

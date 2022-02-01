@@ -1,31 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.hardware.Camera.ShutterCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.ShutterCallbackForward.1;
 
-final class apjq
-  implements beup
+public class apjq
+  implements Camera.ShutterCallback
 {
-  public void a(bevl parambevl, bevm parambevm)
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final apjg jdField_a_of_type_Apjg;
+  private final apjh jdField_a_of_type_Apjh;
+  
+  public void onShutter()
   {
-    if ((parambevl == null) || (parambevm == null)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(parambevl instanceof beum));
-      parambevl = (beum)parambevl;
-      parambevl.jdField_a_of_type_Long += parambevm.c;
-      parambevm.c = 0L;
-      parambevm = "bytes=" + parambevl.jdField_a_of_type_Long + "-";
-      parambevl.jdField_a_of_type_JavaUtilHashMap.put("Range", parambevm);
-      parambevm = parambevl.jdField_a_of_type_JavaLangString;
-      if (parambevm.contains("range="))
-      {
-        String str = parambevm.substring(0, parambevm.lastIndexOf("range="));
-        parambevl.jdField_a_of_type_JavaLangString = (str + "range=" + parambevl.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ArConfig_ArResourceDownload", 2, "IBreakDownFix, " + parambevm + ", offset=" + parambevl.jdField_a_of_type_Long);
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.ShutterCallbackForward.1(this));
   }
 }
 

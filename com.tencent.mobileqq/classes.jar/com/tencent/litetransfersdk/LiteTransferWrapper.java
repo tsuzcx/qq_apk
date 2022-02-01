@@ -2,10 +2,10 @@ package com.tencent.litetransfersdk;
 
 import android.os.Handler;
 import android.os.Looper;
-import aumo;
-import bevn;
+import asyy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.transfile.NetworkCenter;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
 import eh;
@@ -112,7 +112,7 @@ public class LiteTransferWrapper
   
   public static int getNetType()
   {
-    return bevn.a().a();
+    return NetworkCenter.getInstance().getNetType();
   }
   
   public void CancelAll(int paramInt, boolean paramBoolean)
@@ -411,26 +411,26 @@ public class LiteTransferWrapper
   {
     try
     {
-      File localFile = new File(aumo.a().b());
+      File localFile = new File(asyy.a().b());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetDefaultPath(aumo.a().b());
-      localFile = new File(aumo.a().d());
+      SetDefaultPath(asyy.a().b());
+      localFile = new File(asyy.a().d());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetThumbPath(aumo.a().d());
-      localFile = new File(aumo.a().c());
+      SetThumbPath(asyy.a().d());
+      localFile = new File(asyy.a().c());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetTempPath(aumo.a().c());
-      localFile = new File(aumo.a().c());
+      SetTempPath(asyy.a().c());
+      localFile = new File(asyy.a().c());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetThumbTempPath(aumo.a().c());
+      SetThumbTempPath(asyy.a().c());
       return;
     }
     catch (Exception localException) {}

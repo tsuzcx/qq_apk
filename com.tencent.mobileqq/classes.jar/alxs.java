@@ -1,53 +1,217 @@
-import android.os.FileObserver;
-import com.tencent.mobileqq.activity.richmedia.state.RMFileEventNotify.1;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.apollo.process.chanel.GeneralEventHandler.1;
+import com.tencent.mobileqq.apollo.process.chanel.GeneralEventHandler.2;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class alxs
-  extends FileObserver
+  implements alxd, Handler.Callback
 {
-  private boolean a;
+  private static long jdField_a_of_type_Long;
+  private int jdField_a_of_type_Int;
+  protected bjng a;
+  public WeakReference<Activity> a;
+  private WeakReference<QQAppInterface> b;
   
-  private void a()
+  public alxs(Activity paramActivity, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if (!this.a)
-    {
-      this.a = true;
-      RMVideoStateMgr.a().a(new RMFileEventNotify.1(this));
-    }
+    this.jdField_a_of_type_Bjng = new bjng(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.b = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onEvent(int paramInt, String paramString)
+  private void b(String paramString)
   {
-    if ((paramInt & 0x20) == 32) {
-      if (QLog.isColorLevel()) {
-        QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][OPEN]  path=" + paramString);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("apollochannel_GeneralEventHandler", 2, "startNewGame reqData:" + paramString);
+    }
+    long l = System.currentTimeMillis();
+    if (l - jdField_a_of_type_Long < 1000L) {
+      QLog.e("apollochannel_GeneralEventHandler", 1, "[startNewGame] current - sLastLaunchGameTime < 1000");
     }
     do
     {
       return;
-      if ((paramInt & 0x400) == 1024)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE_SELF]  path=" + paramString);
-        }
-        a();
-        return;
-      }
-      if ((paramInt & 0x200) == 512)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE]  path=" + paramString);
-        }
-        a();
-        return;
-      }
-    } while ((paramInt & 0x8) != 8);
-    if (QLog.isColorLevel()) {
-      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][CLOSE_WRITE]  path=" + paramString);
+      jdField_a_of_type_Long = l;
+    } while (TextUtils.isEmpty(paramString));
+    ThreadManagerV2.excute(new GeneralEventHandler.2(this, paramString), 16, null, false);
+  }
+  
+  public int a()
+  {
+    return 100;
+  }
+  
+  public alrq a(String paramString)
+  {
+    alrq localalrq = new alrq();
+    String str = ApolloUtil.a(paramString, "tips");
+    int i = ApolloUtil.a(paramString, "length");
+    if (TextUtils.isEmpty(str)) {
+      return localalrq;
     }
-    a();
+    paramString = this.jdField_a_of_type_Bjng.obtainMessage(255);
+    paramString.obj = str;
+    paramString.arg1 = i;
+    paramString.sendToTarget();
+    return localalrq;
+  }
+  
+  public alrq a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    if (this.b == null) {
+      return null;
+    }
+    if (this.jdField_a_of_type_Int != paramInt2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("apollochannel_GeneralEventHandler", 2, new Object[] { "not the same gameId, self:", Integer.valueOf(this.jdField_a_of_type_Int), "cmd gameId:", Integer.valueOf(paramInt2), ",cmd:", paramString1 });
+      }
+      return new alrq();
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+    if (localQQAppInterface == null) {
+      return null;
+    }
+    if ("general_cmd_ui_show_toast".equals(paramString1)) {
+      return a(paramString2);
+    }
+    if ("cs.get_dress_path.local".equals(paramString1))
+    {
+      amja.a(localQQAppInterface, paramString1, paramString2, paramInt1);
+      return new alrq();
+    }
+    if ("cs.report_data_2_backstage.local".equals(paramString1))
+    {
+      amja.b(localQQAppInterface, paramString2);
+      return new alrq();
+    }
+    if ("cs.report_flow_data.local".equals(paramString1))
+    {
+      amja.c(localQQAppInterface, paramString2);
+      return new alrq();
+    }
+    if ("cs.save_recommend_ip.local".equals(paramString1))
+    {
+      amja.a(localQQAppInterface, paramString2);
+      return new alrq();
+    }
+    if ("cs.openFloatTransparentView.local".equals(paramString1))
+    {
+      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+      {
+        amja.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
+        return new alrq();
+      }
+    }
+    else if ("cs.openWebView.local".equals(paramString1))
+    {
+      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+      {
+        amja.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
+        return new alrq();
+      }
+    }
+    else
+    {
+      if ("cs.script_get_nickname.local".equals(paramString1))
+      {
+        QQMessageFacade localQQMessageFacade = localQQAppInterface.getMessageFacade();
+        paramInt2 = -1;
+        String str = "";
+        paramString1 = str;
+        paramInt1 = paramInt2;
+        if (localQQMessageFacade != null)
+        {
+          paramString1 = str;
+          paramInt1 = paramInt2;
+          if (localQQMessageFacade.isChatting())
+          {
+            paramString1 = str;
+            paramInt1 = paramInt2;
+            if (!TextUtils.isEmpty(localQQMessageFacade.getCurrChatUin()))
+            {
+              paramString1 = localQQMessageFacade.getCurrChatUin();
+              paramInt1 = localQQMessageFacade.getCurrChatType();
+            }
+          }
+        }
+        return ambc.a(paramString2, localQQAppInterface, paramInt1, paramString1);
+      }
+      if (!"cs.send_game_msg.local".equals(paramString1)) {
+        break label403;
+      }
+      amja.a(localQQAppInterface, paramString2, (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    }
+    for (;;)
+    {
+      return null;
+      label403:
+      if ("cs.create_xy.local".equals(paramString1))
+      {
+        b(paramString2);
+      }
+      else if ("cs.open_cm_aio.local".equals(paramString1))
+      {
+        a(paramString2);
+      }
+      else if ("cs.show_one_more_page.local".equals(paramString1))
+      {
+        paramString1 = (alnr)localQQAppInterface.getManager(153);
+        if (paramString1 != null) {
+          paramString1.a().h(paramString2);
+        }
+      }
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bjng.removeCallbacksAndMessages(null);
+  }
+  
+  void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("apollochannel_GeneralEventHandler", 2, "openCmAIO reqData:" + paramString);
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      ThreadManagerV2.excute(new GeneralEventHandler.1(this, paramString), 16, null, false);
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    int i = 1;
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return false;
+    } while (!(paramMessage.obj instanceof String));
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    CharSequence localCharSequence = (CharSequence)paramMessage.obj;
+    if (paramMessage.arg1 == 1) {}
+    for (;;)
+    {
+      QQToast.a(localBaseApplication, localCharSequence, i).a();
+      return false;
+      i = 0;
+    }
   }
 }
 

@@ -1,53 +1,71 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.widget.presseffect.PressEffectTextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-class bdmf
+public class bdmf
+  extends BaseAdapter
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  bdmu jdField_a_of_type_Bdmu;
+  ArrayList<bdms> jdField_a_of_type_JavaUtilArrayList;
   
-  public bdmf(long paramLong, String paramString1, String paramString2)
+  protected bdmf(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  
+  public void a(ArrayList<bdms> paramArrayList, bdmu parambdmu)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    int i;
-    if (paramString1 == null)
-    {
-      i = 0;
-      if (paramString2 != null) {
-        break label67;
-      }
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_Bdmu = parambdmu;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity()).inflate(2131560571, paramViewGroup, false);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Int = (j + (i + 19 + 1) + 1);
-      return;
-      i = paramString1.getBytes().length;
-      break;
-      label67:
-      j = paramString2.getBytes().length;
+      PressEffectTextView localPressEffectTextView = (PressEffectTextView)paramView;
+      if (TextUtils.isEmpty(((bdms)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a)) {
+        localPressEffectTextView.setVisibility(8);
+      }
+      for (;;)
+      {
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        localPressEffectTextView.setVisibility(0);
+        localPressEffectTextView.setText(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a(this.jdField_a_of_type_JavaUtilArrayList.size(), ((bdms)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a));
+        localPressEffectTextView.setOnClickListener(new bdmg(this, paramInt));
+      }
     }
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(128);
-    Date localDate = new Date(this.jdField_a_of_type_Long);
-    localStringBuilder.append(bdmc.a().format(localDate));
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append("\n");
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdmf
  * JD-Core Version:    0.7.0.1
  */

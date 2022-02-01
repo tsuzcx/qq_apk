@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.readinjoy.biu;
 
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import onk;
-import onm;
+import oov;
+import oox;
 
 public class ReadInjoyFriendsBiuComponentFragment$ViewHolder$2$1
   implements Runnable
 {
-  public ReadInjoyFriendsBiuComponentFragment$ViewHolder$2$1(onm paramonm, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
+  public ReadInjoyFriendsBiuComponentFragment$ViewHolder$2$1(oox paramoox, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Onm.a.a.setText(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo.nick);
+    this.jdField_a_of_type_Oox.a.a.setText(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo.nick);
   }
 }
 

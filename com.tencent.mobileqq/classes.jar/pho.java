@@ -1,26 +1,32 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class pho
-  implements View.OnClickListener
+class pho
+  implements pen
 {
-  public pho(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, String paramString) {}
+  pho(phl paramphl) {}
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity(), QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyChannelPanelFragment.getActivity().startActivity(localIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyChannelPanelFragment", 2, "info.mChannelJumpUrl:" + this.jdField_a_of_type_JavaLangString);
+    sjy localsjy = (sjy)paramView.getTag();
+    BaseArticleInfo localBaseArticleInfo = phl.a(this.a).a(localsjy.jdField_a_of_type_Int);
+    if (localBaseArticleInfo == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RIJVideoHandleClick", 2, "articleInfo == null, ERROR");
+      }
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((phl.a(this.a).a().a() != null) && (phl.a(this.a).a().a().b()))
+    {
+      phl.a(this.a).a().a().a();
+      phl.a(this.a).a().f(true);
+    }
+    phl.a(this.a).a().a().a(localsjy.g, localsjy.jdField_a_of_type_Int);
+    phl.a(this.a).a().a().a(phl.a(this.a).a().a());
+    phl.a(this.a).a().a().a(localBaseArticleInfo, phk.a(localsjy.jdField_a_of_type_Sdg, localBaseArticleInfo, phl.a(this.a).a().a(), phl.a(this.a)), phl.a(this.a).a().a(), new php(this, localBaseArticleInfo), phl.a(this.a).a().b());
+    psf.a(paramView);
   }
 }
 

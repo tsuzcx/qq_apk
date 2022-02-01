@@ -1,34 +1,12 @@
-import Wallet.AcsPullMsgRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class agcy
-  implements agdr
+final class agcy
+  implements aghk
 {
-  public agcy(ReminderListFragment paramReminderListFragment) {}
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if (paramBoolean)
-    {
-      paramBundle = (AcsPullMsgRsp)paramBundle.getSerializable("rsp");
-      if (paramBundle != null)
-      {
-        paramBundle = paramBundle.msgs;
-        if ((paramBundle != null) && (!paramBundle.isEmpty()))
-        {
-          ArrayList localArrayList = new ArrayList(paramBundle.size());
-          ReminderListFragment.a(this.a, paramBundle, localArrayList, true);
-          return;
-        }
-        ReminderListFragment.b(this.a);
-        return;
-      }
-      ReminderListFragment.b(this.a);
-      return;
-    }
-    ReminderListFragment.a(this.a, anzj.a(2131712261));
+    return 18;
   }
 }
 

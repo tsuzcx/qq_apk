@@ -1,43 +1,39 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo.VTopicVideo;
+import com.tencent.viola.core.dispatch.ComponentAppearEvent;
+import com.tencent.viola.core.dispatch.IEvent;
+import com.tencent.viola.core.dispatch.IObserver;
 
-class tob
-  implements blna
+public class tob
+  implements IObserver
 {
-  tob(toa paramtoa, AdvertisementInfo paramAdvertisementInfo) {}
+  public tob(VTopicVideo paramVTopicVideo) {}
   
-  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public String getRef()
   {
-    paramInt = 0;
-    QQToast.a(toa.a(this.jdField_a_of_type_Toa), 0, 2131694621, 0).a();
-    if ((paramObject != null) && ((paramObject instanceof DislikeInfo))) {}
-    for (long l = ((DislikeInfo)paramObject).a;; l = 0L)
+    return this.a.getRef();
+  }
+  
+  public void onReceive(IEvent paramIEvent)
+  {
+    if ((paramIEvent.getRef().equals(this.a.getRef())) && (this.a.getVideoLifeCycleChangeListener() != null))
     {
-      paramView = "";
-      if (paramInt < paramArrayList.size())
-      {
-        paramObject = (DislikeInfo)paramArrayList.get(paramInt);
-        if (paramObject == null) {
-          break label186;
-        }
-        paramObject = paramView + paramObject.a;
-        paramView = paramObject;
-        if (paramInt != paramArrayList.size() - 1) {
-          paramView = paramObject + ",";
-        }
+      paramIEvent = (ComponentAppearEvent)paramIEvent;
+      if (!paramIEvent.event.equals("didDisappear")) {
+        break label59;
       }
-      label186:
-      for (;;)
+      this.a.getVideoLifeCycleChangeListener().F_();
+    }
+    label59:
+    do
+    {
+      return;
+      if (paramIEvent.event.equals("willAppear"))
       {
-        paramInt += 1;
-        break;
-        nzq.a(new tlx().a(toa.a(this.jdField_a_of_type_Toa)).a(nzq.c).b(nzq.P).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo).a(l).a(paramView).a());
+        this.a.getVideoLifeCycleChangeListener().D_();
         return;
       }
-    }
+    } while (!paramIEvent.event.equals("didAppear"));
+    this.a.getVideoLifeCycleChangeListener().E_();
   }
 }
 

@@ -1,26 +1,22 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
 public class tbs
-  implements Animation.AnimationListener
+  extends AnimatorListenerAdapter
 {
-  public tbs(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
+  public tbs(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    CommonSuspensionGestureLayout.c(this.a).setLayerType(0, null);
-    CommonSuspensionGestureLayout.a(this.a).c();
-    CommonSuspensionGestureLayout.a(this.a).a();
-    CommonSuspensionGestureLayout.b(this.a);
+    ReadInJoyDynamicGridView.b(this.a, false);
+    ReadInJoyDynamicGridView.a(this.a);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    CommonSuspensionGestureLayout.a(this.a).b();
+    ReadInJoyDynamicGridView.b(this.a, true);
+    ReadInJoyDynamicGridView.a(this.a);
   }
 }
 

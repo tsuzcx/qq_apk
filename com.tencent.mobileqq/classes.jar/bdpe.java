@@ -1,72 +1,78 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.troop.activity.TroopAdminList;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import java.util.Map;
 
 public class bdpe
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public bdpe(StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext, Resources paramResources, PopupWindow paramPopupWindow) {}
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   
-  public void onClick(View paramView)
+  public bdpe(TroopAdminList paramTroopAdminList, Context paramContext)
   {
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
     Object localObject;
-    int k;
-    int m;
-    try
+    if (paramView == null)
     {
-      ViewGroup localViewGroup = (ViewGroup)((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().c.findViewById(2131362696);
-      if (localViewGroup == null)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
+      paramView = new bdpf();
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560575, null);
+      paramView.c = ((ImageView)localView.findViewById(2131369250));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371615));
+      paramView.b = ((TextView)localView.findViewById(2131368660));
+      localView.setTag(paramView);
+      localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localObject = (Map)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.jdField_a_of_type_JavaUtilList.get(paramInt);
+      String str = ((Map)localObject).get("uin").toString();
+      paramView.jdField_a_of_type_JavaLangString = str;
+      paramView.c.setBackgroundDrawable(bfvo.b());
+      FaceDrawable localFaceDrawable = FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.app, ((Map)localObject).get("uin").toString(), (byte)3);
+      if (localFaceDrawable != null) {
+        paramView.c.setBackgroundDrawable(localFaceDrawable);
       }
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((Map)localObject).get("nick").toString());
+      if (!this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList.b.equals(str)) {
+        break label249;
+      }
+      paramView.b.setVisibility(0);
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localObject = null;
-      }
-      int[] arrayOfInt = new int[2];
-      ((ViewGroup)localObject).getLocationOnScreen(arrayOfInt);
-      int i = arrayOfInt[1];
-      int j = ((ViewGroup)localObject).getHeight();
-      localObject = new int[2];
-      paramView.getLocationOnScreen((int[])localObject);
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionX = localObject[0];
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY = localObject[1];
-      k = agej.a(106.0F, this.jdField_a_of_type_AndroidContentResResources);
-      m = paramView.getHeight();
-      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY - i + m + k <= j) {
-        break label269;
-      }
-    }
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847106));
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionX, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY - k);
     for (;;)
     {
-      ((oer)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(139)).a(9, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-      localObject = ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getAttributes();
-      ((WindowManager.LayoutParams)localObject).alpha = 0.5F;
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().setAttributes((WindowManager.LayoutParams)localObject);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(new bdpf(this));
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (bdpf)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
       break;
-      label269:
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847105));
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 0, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionX, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.mClickpositionY + m);
+      label249:
+      paramView.b.setVisibility(4);
     }
   }
 }

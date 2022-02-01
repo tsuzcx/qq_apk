@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.location.ui;
 
-import awrg;
-import awrk;
+import avem;
+import aveq;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class LocationPickController$3
   implements Runnable
 {
-  public LocationPickController$3(awrk paramawrk) {}
+  public LocationPickController$3(aveq paramaveq) {}
   
   public void run()
   {
-    if (awrk.a(this.this$0).getCount() <= 0) {
-      awrk.a(this.this$0);
+    if (aveq.a(this.this$0).getCount() <= 0) {
+      aveq.a(this.this$0);
     }
-    QQToast.a(awrk.a(this.this$0), 1, 2131693422, 0).a();
+    QQToast.a(aveq.a(this.this$0), 1, 2131693517, 0).a();
   }
 }
 

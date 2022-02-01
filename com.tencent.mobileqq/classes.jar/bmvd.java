@@ -1,28 +1,45 @@
-import com.tencent.biz.qqcircle.beans.QCircleFakeFeed;
-import com.tencent.biz.qqcircle.events.QCircleFeedEvent;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneIPCModule;
-import feedcloud.FeedCloudRead.StGetFeedDetailRsp;
+import android.text.Spanned;
 
-public class bmvd
-  implements aaav<FeedCloudRead.StGetFeedDetailRsp>
+class bmvd
+  extends bnij
 {
-  public bmvd(QzoneIPCModule paramQzoneIPCModule, QCircleFakeFeed paramQCircleFakeFeed, bmvg parambmvg, int paramInt) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
+  bmvd(bmvc parambmvc, int paramInt)
   {
-    QLog.d("[QzoneIPCModule_upload2]QCircle", 1, "fetch real feed success:" + paramBoolean + "  retCode code:" + paramLong);
-    if ((paramBoolean) && (paramLong == 0L) && (paramStGetFeedDetailRsp.feed != null))
+    super(paramInt);
+  }
+  
+  public int a(CharSequence paramCharSequence)
+  {
+    return 0;
+  }
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  {
+    int j = 0;
+    String str = paramCharSequence.subSequence(paramInt1, paramInt2).toString().replaceAll("\n", "");
+    int i;
+    if (paramInt2 - paramInt1 != str.length())
     {
-      aaak.a().a(new QCircleFeedEvent(this.jdField_a_of_type_ComTencentBizQqcircleBeansQCircleFakeFeed, 2));
-      QzoneIPCModule.a(this.jdField_a_of_type_CooperationQzoneQzoneIPCModule, this.jdField_a_of_type_Bmvg);
+      i = 1;
+      if (i == 0) {
+        break label92;
+      }
+      paramInt2 = str.length();
+      paramInt1 = j;
+      paramCharSequence = str;
     }
-    do
+    label92:
+    for (;;)
     {
-      return;
-      QLog.d("QzoneIPCModule", 1, "start retry retryCount:" + this.jdField_a_of_type_Int);
-    } while (this.jdField_a_of_type_CooperationQzoneQzoneIPCModule.a(this.jdField_a_of_type_ComTencentBizQqcircleBeansQCircleFakeFeed, this.jdField_a_of_type_Int, this.jdField_a_of_type_Bmvg));
-    QzoneIPCModule.a(this.jdField_a_of_type_CooperationQzoneQzoneIPCModule, this.jdField_a_of_type_Bmvg);
+      paramSpanned = super.filter(paramCharSequence, paramInt1, paramInt2, paramSpanned, paramInt3, paramInt4);
+      if ((paramSpanned == null) && (i != 0))
+      {
+        return paramCharSequence;
+        i = 0;
+        break;
+      }
+      return paramSpanned;
+    }
   }
 }
 

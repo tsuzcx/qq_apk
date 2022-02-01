@@ -1,23 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
+import java.util.List;
 
 public class bmjv
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public bmjv(QlinkStandardDialogActivity paramQlinkStandardDialogActivity, String paramString1, String paramString2) {}
+  public bmjv(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    Intent localIntent = AddFriendLogicActivity.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.app.getApp().getApplicationContext(), 1, this.jdField_a_of_type_JavaLangString, null, 3002, 14, this.b, null, null, anzj.a(2131708903), null);
-    localIntent.putExtra("_FROM_QLINK_", true);
-    this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.startActivity(localIntent);
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.finish();
+    int i = 0;
+    if (bmbv.a(paramView)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bmbc.a().B();
+      if (AEEditorMultiCutEditFragment.a(this.a).size() >= 30)
+      {
+        QQToast.a(this.a.getActivity(), this.a.getResources().getString(2131689696, new Object[] { Integer.valueOf(30) }), 0).a();
+      }
+      else
+      {
+        if (AEEditorMultiCutEditFragment.a(this.a).a()) {
+          AEEditorMultiCutEditFragment.a(this.a).b();
+        }
+        Object localObject = new blvw().a(blvr.E).b(false).a(true);
+        if (AEEditorMultiCutEditFragment.a(this.a) != null) {
+          i = AEEditorMultiCutEditFragment.a(this.a).size();
+        }
+        localObject = ((blvw)localObject).a(i).a();
+        blvv.a(this.a.getActivity(), (Bundle)localObject, 1024);
+      }
+    }
   }
 }
 

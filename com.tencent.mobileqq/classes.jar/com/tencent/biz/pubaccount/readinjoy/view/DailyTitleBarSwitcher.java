@@ -8,18 +8,18 @@ import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
-import blih;
+import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import sdr;
-import sds;
+import skz;
+import sla;
 
 public class DailyTitleBarSwitcher
   extends FrameLayout
 {
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new sdr(this);
-  private final blih jdField_a_of_type_Blih = new sds(this);
+  private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new skz(this);
   private DailyTitleBar jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBar;
+  private final AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new sla(this);
   private boolean jdField_a_of_type_Boolean;
   private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
   private DailyTitleBar jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBar;
@@ -87,9 +87,9 @@ public class DailyTitleBarSwitcher
     this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyViewDailyTitleBar.setOnTitleClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
   }
   
-  public blih a()
+  public AbsListView.OnScrollListener a()
   {
-    return this.jdField_a_of_type_Blih;
+    return this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)

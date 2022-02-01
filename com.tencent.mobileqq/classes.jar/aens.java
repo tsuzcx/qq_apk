@@ -1,22 +1,42 @@
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.20;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x74f.oidb_cmd0x74f.RspBody;
 
 public class aens
+  extends nmf
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  public aens(TroopMemberListActivity.20 param20) {}
   
-  public aens(FontSettingActivity paramFontSettingActivity, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_b_of_type_Int = paramInt2;
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramBundle = new oidb_cmd0x74f.RspBody();
+          paramBundle.mergeFrom(paramArrayOfByte);
+          if ((paramBundle.uint32_ret_code.get() == 0) && (paramBundle.bool_display_entrance.get()))
+          {
+            TroopMemberListActivity.a(this.a.this$0, paramBundle.range.get());
+            TroopMemberListActivity.c(this.a.this$0);
+            TroopMemberListActivity.a(this.a.this$0, paramBundle.uint64_next_pull_time.get());
+            return;
+          }
+        }
+        catch (Exception paramArrayOfByte) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopMemberListActivityget_troop_member", 2, "initListView, get0x74f：failed");
   }
 }
 

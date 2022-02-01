@@ -1,28 +1,33 @@
-import com.tencent.map.lib.basemap.data.GeoPoint;
-import com.tencent.mobileqq.widget.QQMapView;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnCameraChangeListener;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.mini.manager.MiniLoadingAdManager.CachedAdInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.AdProxyImpl;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.ILoadingAdListener;
 
 public class bjbp
-  implements TencentMap.OnCameraChangeListener
+  implements Downloader.DownloadListener
 {
-  public bjbp(QQMapView paramQQMapView) {}
+  public bjbp(AdProxyImpl paramAdProxyImpl, AdProxy.ILoadingAdListener paramILoadingAdListener, String paramString, long paramLong, MiniLoadingAdManager.CachedAdInfo paramCachedAdInfo) {}
   
-  public void onCameraChange(CameraPosition paramCameraPosition)
+  public void onDownloadCanceled(String paramString)
   {
-    if ((this.a.jdField_a_of_type_Bjbr != null) && (!this.a.jdField_a_of_type_Boolean))
-    {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_a_of_type_Bjbr.onMapScrollStart(new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D)));
-    }
+    QLog.d("MiniLoadingAdManager", 1, "processSelectAdWithUncachedAd download url= " + paramString + " canceled");
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onDownloadAdEnd(null, -1L, null);
   }
   
-  public void onCameraChangeFinished(CameraPosition paramCameraPosition)
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      QQMapView.a(this.a, paramCameraPosition);
-    }
+    QLog.d("MiniLoadingAdManager", 1, "processSelectAdWithUncachedAd download url= " + paramString + " failed");
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onDownloadAdEnd(null, -1L, null);
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    QLog.d("MiniLoadingAdManager", 1, "processSelectAdWithUncachedAd download url= " + paramString + " succeed");
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onDownloadAdEnd(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqMiniManagerMiniLoadingAdManager$CachedAdInfo.filePath);
   }
 }
 

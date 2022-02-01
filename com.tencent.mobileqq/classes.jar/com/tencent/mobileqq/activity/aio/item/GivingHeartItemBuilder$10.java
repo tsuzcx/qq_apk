@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahdk;
-import ahdm;
+import afzw;
+import afzy;
 import android.app.Activity;
 import android.os.Build.VERSION;
 import android.view.View;
@@ -13,21 +13,21 @@ import com.tencent.qphone.base.util.QLog;
 public class GivingHeartItemBuilder$10
   implements Runnable
 {
-  public GivingHeartItemBuilder$10(ahdk paramahdk, Activity paramActivity, boolean paramBoolean1, boolean paramBoolean2) {}
+  public GivingHeartItemBuilder$10(afzw paramafzw, Activity paramActivity, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
     if (((Build.VERSION.SDK_INT > 16) && (this.jdField_a_of_type_AndroidAppActivity.isDestroyed())) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
       return;
     }
-    View localView = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).getChildAt(0).findViewById(2131362291);
+    View localView = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).getChildAt(0).findViewById(2131362294);
     if (QLog.isColorLevel()) {
       QLog.d("GivingHeart", 2, "start to shake");
     }
     if (this.jdField_a_of_type_Boolean) {}
-    for (AnimationSet localAnimationSet = ahdk.a(this.this$0, this.b);; localAnimationSet = ahdk.a(this.this$0.a, this.b))
+    for (AnimationSet localAnimationSet = afzw.a(this.this$0, this.b);; localAnimationSet = afzw.a(this.this$0.a, this.b))
     {
-      localAnimationSet.setAnimationListener(new ahdm(this));
+      localAnimationSet.setAnimationListener(new afzy(this));
       if (localView == null) {
         break;
       }

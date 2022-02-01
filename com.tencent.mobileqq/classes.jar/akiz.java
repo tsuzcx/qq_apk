@@ -1,31 +1,64 @@
-import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.recent.BannerManager.40.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.ADView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.LinkedList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class akiz
-  implements bljn
+public class akiz
+  implements View.OnClickListener
 {
-  akiz(akir paramakir) {}
+  akiz(akho paramakho) {}
   
-  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "onLongClick, position = " + paramInt);
-    }
-    if ((this.a.jdField_a_of_type_Akip.getCount() <= 0) || (paramInt <= 0)) {}
-    do
+    akho.a(this.a).getSharedPreferences("mobileQQ", 0).edit().putBoolean("push_banner_display" + akho.a(this.a).app.getAccount(), false).commit();
+    Object localObject = akho.a(this.a)[24];
+    ADView localADView;
+    if ((localObject != null) && (((akhk)localObject).a != null))
     {
-      return true;
-      paramAdapterView = (akjl)this.a.jdField_a_of_type_Akip.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_Akjl = paramAdapterView;
-    paramView.setSelected(true);
-    paramAdapterView = new bhuk();
-    paramAdapterView.a(2131365191, anzj.a(2131700196), 2130838930);
-    paramAdapterView.a(2131367078, this.a.jdField_a_of_type_AndroidContentContext.getString(2131692400), 2130838939);
-    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bhkx.a(paramView, paramAdapterView, akir.a(this.a), new akja(this, paramView));
-    return true;
+      localADView = (ADView)((akhk)localObject).a.findViewById(2131362234);
+      if (localADView == null) {
+        break label307;
+      }
+    }
+    label307:
+    for (localObject = localADView.a(0);; localObject = null)
+    {
+      if (localObject != null)
+      {
+        int j = ((ViewGroup)localObject).getChildCount();
+        LinkedList localLinkedList = new LinkedList();
+        int i = 0;
+        while (i < j)
+        {
+          View localView = ((ViewGroup)localObject).getChildAt(i);
+          if (localView != null) {
+            localLinkedList.add((bcgq)localView.getTag());
+          }
+          i += 1;
+        }
+        ThreadManager.getFileThreadHandler().post(new BannerManager.40.1(this, j, localLinkedList));
+        if (localADView != null) {
+          localADView.h();
+        }
+      }
+      this.a.a(24, 0);
+      this.a.a(-1, null);
+      this.a.e = false;
+      bcef.b(akho.a(this.a).app, "dc00898", "", "", "0X80087C3", "0X80087C3", 0, 0, "", "", "", "");
+      bcef.a(akho.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 12, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

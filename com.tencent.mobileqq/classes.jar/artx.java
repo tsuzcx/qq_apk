@@ -1,62 +1,25 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.danmaku.core.DanmakuManager;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
 public class artx
-  implements Handler.Callback
+  extends bcuz
 {
-  private WeakReference<DanmakuManager> a;
+  public artx(FilePreviewActivity paramFilePreviewActivity) {}
   
-  private artx(DanmakuManager paramDanmakuManager)
+  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    this.a = new WeakReference(paramDanmakuManager);
+    super.a(paramTeamWorkFileImportInfo);
+    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
+      FilePreviewActivity.a(this.a).dismiss();
+    }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    DanmakuManager localDanmakuManager = (DanmakuManager)this.a.get();
-    if (localDanmakuManager == null) {
-      return false;
+    super.a(paramString, paramTeamWorkFileImportInfo);
+    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
+      FilePreviewActivity.a(this.a).dismiss();
     }
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    case 1: 
-      DanmakuManager.a(localDanmakuManager, paramMessage);
-      DanmakuManager.a(localDanmakuManager);
-      return false;
-    case 2: 
-      DanmakuManager.a(localDanmakuManager);
-      return false;
-    case 4: 
-      DanmakuManager.b(localDanmakuManager);
-      return false;
-    case 3: 
-      DanmakuManager.c(localDanmakuManager);
-      return false;
-    case 5: 
-      DanmakuManager.b(localDanmakuManager, paramMessage);
-      return false;
-    case 6: 
-      DanmakuManager.d(localDanmakuManager);
-      return false;
-    case 7: 
-      DanmakuManager.e(localDanmakuManager);
-      return false;
-    case 8: 
-      DanmakuManager.f(localDanmakuManager);
-      return false;
-    case 9: 
-      DanmakuManager.g(localDanmakuManager);
-      return false;
-    case 10: 
-      DanmakuManager.h(localDanmakuManager);
-      return false;
-    }
-    DanmakuManager.i(localDanmakuManager);
-    return false;
   }
 }
 

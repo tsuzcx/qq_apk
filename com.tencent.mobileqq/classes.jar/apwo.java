@@ -1,26 +1,16 @@
-import com.tencent.ark.ark.VariantWrapper;
+import java.util.ArrayList;
 
-class apwo
-  implements agzu
+public class apwo
 {
-  apwo(apwn paramapwn, long paramLong) {}
-  
-  public void a()
-  {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Apwn.a(this.jdField_a_of_type_Long);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
-  }
-  
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    this.jdField_a_of_type_Apwn.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
-  }
+  public String b;
+  public ArrayList<aouf> b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apwo
  * JD-Core Version:    0.7.0.1
  */

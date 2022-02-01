@@ -1,35 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Process;
-import android.text.TextUtils;
-import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
 import com.tencent.qphone.base.util.QLog;
 
-public final class awba
-  extends BroadcastReceiver
+public class awba
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public awba(MultiCardPageIndicator paramMultiCardPageIndicator) {}
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("HuayangPluginLauncher", 2, "onReceive ACTION_FORCE_UPDATE");
+      QLog.d("TabPageIndicator", 2, "onSingleTapConfirmed() called with: e = [" + paramMotionEvent + "]");
     }
-    if (TextUtils.equals(paramIntent.getAction(), "action_iv_plugin_update"))
-    {
-      paramIntent = (InstalledPlugin)paramIntent.getSerializableExtra("plugin");
-      if (paramIntent != null)
-      {
-        boolean bool = awbd.a(paramContext, paramIntent).a();
-        if (QLog.isColorLevel()) {
-          QLog.d("HuayangPluginLauncher", 2, "onReceive isCalled:" + bool);
-        }
-        if (!bool)
-        {
-          com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity.a = 0L;
-          Process.killProcess(Process.myPid());
-        }
-      }
+    if (MultiCardPageIndicator.a(this.a) != null) {
+      this.a.performClick();
     }
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 

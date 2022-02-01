@@ -1,20 +1,24 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import mqq.util.WeakReference;
+
 public class azxp
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
+  WeakReference<DialogInterface.OnDismissListener> jdField_a_of_type_MqqUtilWeakReference;
+  
+  azxp(azxo paramazxo, DialogInterface.OnDismissListener paramOnDismissListener)
+  {
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramOnDismissListener);
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localOnDismissListener != null) {
+      localOnDismissListener.onDismiss(paramDialogInterface);
+    }
+  }
 }
 
 

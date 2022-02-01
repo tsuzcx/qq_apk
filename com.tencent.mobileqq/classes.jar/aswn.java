@@ -1,6 +1,14 @@
-public abstract interface aswn
+class aswn
+  implements aszj
 {
-  public abstract void a();
+  aswn(aswm paramaswm) {}
+  
+  public void onNo() {}
+  
+  public void onYes()
+  {
+    aswl.a(this.a.a);
+  }
 }
 
 

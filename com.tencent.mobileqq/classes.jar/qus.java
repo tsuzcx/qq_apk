@@ -1,16 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface qus
+class qus
+  implements View.OnClickListener
 {
-  public abstract String a(BaseArticleInfo paramBaseArticleInfo, TemplateBean paramTemplateBean, ViewBase paramViewBase);
+  qus(quq paramquq, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public abstract void a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void a(Object paramObject);
-  
-  public abstract boolean a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    ComponentContentRecommend localComponentContentRecommend = this.jdField_a_of_type_Quq.a;
+    RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+    if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localComponentContentRecommend.a(localRecommendFollowInfo, bool);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+  }
 }
 
 

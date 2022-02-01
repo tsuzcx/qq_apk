@@ -1,9 +1,10 @@
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+
 public class blbk
+  implements BusinessObserver
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
 }
 
 

@@ -1,378 +1,568 @@
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.Rect;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import android.os.Handler;
-import android.os.Looper;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.biz.qqcircle.bizparts.danmaku.text.EmoCell;
-import com.tencent.biz.qqcircle.bizparts.danmaku.text.EmoObjectPool.2;
-import com.tencent.biz.qqcircle.bizparts.danmaku.text.SystemEmoCell;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.ImageLoader.Options;
-import com.tencent.component.network.utils.thread.PriorityThreadPool;
-import com.tencent.component.network.utils.thread.PriorityThreadPool.Priority;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.QzoneBaseThread;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import cooperation.qzone.util.QZLog;
-import java.lang.ref.SoftReference;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.StoryAlbumEntry;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityTransaction;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class via
+  extends vtt
+  implements vug
 {
-  private static int jdField_a_of_type_Int = bhtq.a(5.0F);
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static via jdField_a_of_type_Via;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private SparseArray<Drawable> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private URLDrawable.URLDrawableOptions jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions;
-  private ConcurrentHashMap<String, SparseArray<SoftReference<EmoCell>>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private volatile int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private vht jdField_a_of_type_Vht;
+  private vuq jdField_a_of_type_Vuq;
+  zon jdField_a_of_type_Zon = null;
   
-  public static int a(String paramString)
+  public static String a(@NonNull List<vil> paramList)
   {
-    int n = -1;
-    int i = n;
-    int i2;
-    int j;
-    int i3;
-    int k;
-    if (!TextUtils.isEmpty(paramString))
+    if (paramList.isEmpty()) {
+      return "";
+    }
+    paramList = paramList.iterator();
+    int n = 0;
+    int m = 0;
+    int k = 0;
+    int j = 0;
+    int i = 0;
+    if (paramList.hasNext())
     {
-      int i1 = paramString.length();
-      i2 = paramString.length();
-      paramString = new StringBuilder().append(paramString);
-      j = 0;
-      i = n;
-      if (j < i1)
+      int i1;
+      int i2;
+      switch (((vil)paramList.next()).jdField_a_of_type_Int)
       {
-        i3 = paramString.codePointAt(j);
-        k = begd.a(i3);
-        if (i3 <= 65535) {
-          break label130;
-        }
-        if (i2 <= j + 2) {
-          break label197;
-        }
-        i = paramString.codePointAt(j + 2);
+      case 5: 
+      default: 
+        i1 = n;
+        i2 = m;
+        n = i;
+        m = j;
+        j = i2;
+        i = i1;
+      }
+      for (;;)
+      {
+        i1 = n;
+        i2 = m;
+        n = i;
+        m = j;
+        j = i2;
+        i = i1;
+        break;
+        i1 = j;
+        i2 = i + 1;
+        i = n;
+        j = m;
+        m = i1;
+        n = i2;
+        continue;
+        i2 = j + 1;
+        i1 = i;
+        i = n;
+        j = m;
+        m = i2;
+        n = i1;
+        continue;
+        k += 1;
+        i1 = j;
+        i2 = i;
+        i = n;
+        j = m;
+        m = i1;
+        n = i2;
+        continue;
+        i2 = m + 1;
+        m = j;
+        i1 = i;
+        i = n;
+        j = i2;
+        n = i1;
+        continue;
+        i2 = n + 1;
+        n = j;
+        i1 = i;
+        i = i2;
+        j = m;
+        m = n;
+        n = i1;
       }
     }
-    for (;;)
-    {
-      label84:
-      if (begd.a(i)) {}
-      for (int m = 1;; m = 0)
-      {
-        if ((k == -1) || (m != 0))
-        {
-          m = begd.a(i3, i);
-          i = m;
-          if (m != -1) {}
-        }
-        for (i = k;; i = k)
-        {
-          if (i != -1)
-          {
-            return i;
-            label130:
-            if (i2 <= j + 1) {
-              break label197;
-            }
-            m = paramString.codePointAt(j + 1);
-            i = m;
-            if (m != 65039) {
-              break label84;
-            }
-            i = m;
-            if (i2 <= j + 2) {
-              break label84;
-            }
-            i = paramString.codePointAt(j + 2);
-            break label84;
-          }
-          j += 1;
-          break;
-        }
-      }
-      label197:
-      i = -1;
-    }
+    paramList = new StringBuilder("{");
+    paramList.append("\"festival\":").append(i).append(",");
+    paramList.append("\"birthday\":").append(j).append(",");
+    paramList.append("\"frequent\":").append(k).append(",");
+    paramList.append("\"unfrequent\":").append(m).append(",");
+    paramList.append("\"aboard\":").append(n).append(",");
+    paramList.append("}");
+    return paramList.toString();
   }
   
-  private Drawable a(int paramInt)
+  public static List<vjq> a(@NonNull HashMap<String, vik> paramHashMap)
   {
-    for (;;)
+    ArrayList localArrayList = new ArrayList(paramHashMap.size());
+    paramHashMap = paramHashMap.entrySet().iterator();
+    while (paramHashMap.hasNext())
     {
+      vik localvik = (vik)((Map.Entry)paramHashMap.next()).getValue();
+      if (localvik.a != null) {
+        localArrayList.add(localvik.a);
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static List<vim> a(vil paramvil, int paramInt)
+  {
+    ArrayList localArrayList = new ArrayList();
+    List localList = paramvil.a();
+    if (localList.size() < paramInt)
+    {
+      localArrayList.addAll(localList);
+      localObject1 = localList.iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        ((vim)((Iterator)localObject1).next()).a(true);
+      }
+      paramvil.a(localList);
+      return localArrayList;
+    }
+    Object localObject1 = localList.iterator();
+    Object localObject2;
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (vim)((Iterator)localObject1).next();
+      if (((vim)localObject2).a()) {
+        ((vim)localObject2).a(false);
+      }
+    }
+    localObject1 = new vjv();
+    ((vjv)localObject1).a(localList);
+    localObject1 = ((vjv)localObject1).a(paramInt, null, 0).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (List)((Iterator)localObject1).next();
+      ((vim)((List)localObject2).get(0)).a(true);
+      localArrayList.add(((List)localObject2).get(0));
+    }
+    paramvil.a(localList);
+    return localArrayList;
+  }
+  
+  private void a(long paramLong1, long paramLong2)
+  {
+    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "saveScanTime lastDateAlbumTime=" + paramLong1 + " ,lastScanPictureTime=" + paramLong2);
+    vuq localvuq = (vuq)vux.a(10);
+    localvuq.b("key_last_pic_scan_time", Long.valueOf(paramLong2));
+    localvuq.b("key_last_date_album_time", Long.valueOf(paramLong1));
+    localvuq.b("key_story_home_scan_time", Long.valueOf(paramLong2));
+  }
+  
+  public static void a(List<vil> paramList)
+  {
+    if (paramList.isEmpty()) {
+      return;
+    }
+    Collections.sort(paramList, new vic());
+  }
+  
+  private void a(viz paramviz)
+  {
+    Object localObject1 = (vuq)vux.a(10);
+    if ((TextUtils.isEmpty(paramviz.a)) || (TextUtils.isEmpty(paramviz.b)))
+    {
+      localObject2 = (String)((vuq)localObject1).b("key_album_debug_k", "");
+      localObject1 = (String)((vuq)localObject1).b("key_album_debug_sse", "");
+      xvv.e("Q.qqstory.recommendAlbum.logic.StoryScanManager", "保存K means 的调试信息失败:" + paramviz.a + " 和 " + paramviz.b);
+      xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "sp K means debug sse info:" + (String)localObject1 + " time info:" + (String)localObject2);
+      return;
+    }
+    if (paramviz.a())
+    {
+      ((vuq)localObject1).b("key_album_debug_k", paramviz.a);
+      ((vuq)localObject1).b("key_album_debug_sse", paramviz.b);
+      xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "sp K means debug sse info:" + paramviz.b + " time info:" + paramviz.a);
+      return;
+    }
+    Object localObject2 = paramviz.a.split(";");
+    paramviz = paramviz.b.split(";");
+    ((vuq)localObject1).b("key_album_debug_k", localObject2[0]);
+    ((vuq)localObject1).b("key_album_debug_sse", paramviz[0]);
+    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "sp K means debug sse info:" + paramviz[0] + " time info:" + localObject2[0]);
+  }
+  
+  public static void b(@NonNull List<vim> paramList)
+  {
+    Collections.sort(paramList, new vid());
+  }
+  
+  public List<vil> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    vuq localvuq = (vuq)vux.a(10);
+    long l = ((Long)localvuq.b("key_last_home_time", Long.valueOf(-1L))).longValue();
+    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
+    Object localObject = vuu.a(localEntityManager, StoryAlbumEntry.class, StoryAlbumEntry.class.getSimpleName(), "state=0 ", null, "startTime desc");
+    if ((localObject == null) || (((List)localObject).isEmpty())) {
+      return localArrayList;
+    }
+    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getNewStoryAlbum : new album time=%s,last time=%d", new Object[] { Long.valueOf(((StoryAlbumEntry)((List)localObject).get(0)).startTime), Long.valueOf(l) });
+    if (((StoryAlbumEntry)((List)localObject).get(0)).startTime <= l) {
+      return localArrayList;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      StoryAlbumEntry localStoryAlbumEntry = (StoryAlbumEntry)((Iterator)localObject).next();
+      vil localvil;
       try
       {
-        Drawable localDrawable = (Drawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-        Object localObject1 = localDrawable;
-        if (localDrawable == null) {}
-        try
-        {
-          localObject1 = BaseApplication.getContext().getResources().getDrawable(2130848250);
-          if (localObject1 != null) {
-            break label75;
-          }
-          localObject1 = new ColorDrawable(Color.parseColor("#e8e8e8"));
+        localvil = vil.a(localStoryAlbumEntry);
+        if (!localvil.c()) {
+          break label241;
         }
-        catch (Exception localException)
-        {
-          ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#e8e8e8"));
-          continue;
-        }
-        return localObject1;
+        localArrayList.add(localvil);
       }
-      finally {}
-      label75:
-      localObject2.setBounds(0, 0, paramInt, paramInt);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
-    }
-  }
-  
-  protected static Drawable a(Drawable paramDrawable, int paramInt)
-  {
-    if ((paramDrawable == null) || (paramInt == 0)) {
-      return paramDrawable;
-    }
-    int i = paramDrawable.getIntrinsicWidth();
-    int j = paramDrawable.getIntrinsicHeight();
-    float f;
-    if ((i > 0) && (j > 0)) {
-      f = paramInt;
-    }
-    for (i = (int)(i * f / j);; i = paramInt)
-    {
-      Drawable.Callback localCallback = paramDrawable.getCallback();
-      paramDrawable.setCallback(null);
-      paramDrawable.setBounds(0, 0, i, paramInt);
-      paramDrawable.setCallback(localCallback);
-      return paramDrawable;
-    }
-  }
-  
-  private URLDrawable a(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions == null) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    }
-    return URLDrawable.getDrawable(paramString, this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions);
-  }
-  
-  private static String a(String paramString)
-  {
-    int i = paramString.indexOf("[dra]") + "[dra]".length();
-    int j = paramString.indexOf("[/dra]");
-    if ((i == -1) || (j == -1)) {
-      return null;
-    }
-    return paramString.substring(i, j);
-  }
-  
-  public static via a()
-  {
-    if (jdField_a_of_type_Via == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Via == null) {
-        jdField_a_of_type_Via = new via();
-      }
-      return jdField_a_of_type_Via;
-    }
-  }
-  
-  private void a(int paramInt1, int paramInt2, ImageLoader.ImageLoadListener paramImageLoadListener, ImageLoader.Options paramOptions)
-  {
-    PriorityThreadPool.getDefault().submit(new vib(this, paramImageLoadListener, paramInt2, paramInt1, paramOptions), PriorityThreadPool.Priority.HIGH);
-  }
-  
-  private void a(EmoCell paramEmoCell, String paramString, int paramInt, vjg paramvjg, ImageLoader.ImageLoadListener paramImageLoadListener)
-  {
-    Object localObject = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoObjectPool", 2, "loadEmoAsync emotionCode: " + paramString + ", bound: " + paramInt);
-    }
-    ImageLoader.Options localOptions;
-    if (asle.a(paramString) != -1)
-    {
-      localOptions = ImageLoader.Options.obtain();
-      localOptions.obj = paramEmoCell;
-      localOptions.useMainThread = true;
-      localOptions.disableHitRateReport = true;
-      a(asle.a(paramString), 1, new vic(this, paramInt, paramvjg, paramImageLoadListener), localOptions);
-      paramString = localObject;
-    }
-    for (;;)
-    {
-      if (paramString != null)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
-        a(paramString, paramInt);
-        paramEmoCell.emoDrawable = paramString;
-        paramEmoCell.isDrawableLoaded = true;
+        yos.a("getNewStoryAlbum DB info have error:" + localInvalidProtocolBufferMicroException, new Object[0]);
       }
-      int i;
-      int j;
-      int k;
-      do
-      {
-        return;
-        if (askx.a(paramString) != -1)
-        {
-          localOptions = ImageLoader.Options.obtain();
-          localOptions.obj = paramEmoCell;
-          localOptions.useMainThread = true;
-          localOptions.disableHitRateReport = true;
-          a(askx.a(paramString), 2, new vic(this, paramInt, paramvjg, paramImageLoadListener), localOptions);
-          paramString = localObject;
-          break;
-        }
-        if (paramString.startsWith("[dra]"))
-        {
-          localOptions = ImageLoader.Options.obtain();
-          localOptions.obj = paramEmoCell;
-          localOptions.useMainThread = true;
-          localOptions.disableHitRateReport = true;
-          a(a(paramString), paramInt, new vic(this, paramInt, paramvjg, paramImageLoadListener), localOptions);
-          paramString = localObject;
-          break;
-        }
-        i = paramString.indexOf("[em]");
-        j = "[em]".length();
-        k = paramString.indexOf("[/em]");
-      } while (k == -1);
-      paramvjg = paramString.substring(i + j, k);
-      try
-      {
-        paramString = bnqj.e(paramvjg);
-        paramvjg = ImageLoader.Options.obtain();
-        paramvjg.obj = paramEmoCell;
-        paramvjg.useMainThread = true;
-        paramvjg.disableHitRateReport = true;
-        paramvjg.type = "qzEmod";
-        paramString = a(paramString);
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          paramString = "https://qzonestyle.gtimg.cn/qzone/em/" + paramvjg + ".gif";
-        }
-      }
+      continue;
+      label241:
+      xvv.e("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getNewStoryAlbum we find the illegal album and deleted it : " + localvil);
+      localInvalidProtocolBufferMicroException.setStatus(1001);
+      localEntityManager.remove(localInvalidProtocolBufferMicroException);
     }
-  }
-  
-  private void a(String paramString, int paramInt, ImageLoader.ImageLoadListener paramImageLoadListener, ImageLoader.Options paramOptions)
-  {
-    QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new EmoObjectPool.2(this, paramString, paramOptions, paramImageLoadListener));
-  }
-  
-  private static int b(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals("qzone_famous_icon"))) {
-      return 2130847947;
+    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getNewStoryAlbum reslut=%s", new Object[] { localArrayList });
+    if (localArrayList.isEmpty()) {
+      return localArrayList;
     }
-    return 0;
-  }
-  
-  private static Drawable b(String paramString, Resources paramResources)
-  {
-    try
+    if (((vil)localArrayList.get(0)).f() <= l)
     {
-      paramString = paramResources.getDrawable(b(paramString));
-      return paramString;
+      localArrayList.clear();
+      return localArrayList;
     }
-    catch (Throwable paramString)
+    localvuq.b("key_last_home_time", Long.valueOf(((vil)localArrayList.get(0)).f()));
+    return localArrayList;
+  }
+  
+  public List<vif> a(long paramLong1, long paramLong2)
+  {
+    return this.jdField_a_of_type_Vht.a(paramLong1, paramLong2);
+  }
+  
+  @NonNull
+  public List<vim> a(Context paramContext)
+  {
+    vuq localvuq = (vuq)vux.a(10);
+    long l = ((Long)localvuq.b("key_story_home_scan_time", Long.valueOf(-1L))).longValue();
+    paramContext = a(paramContext, Math.max(System.currentTimeMillis() / 1000L - 259200L, l));
+    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getNewScanPicList  result=" + paramContext);
+    if (paramContext.size() >= 10)
     {
-      QZLog.e("ERROR", "PICTURE NOT　FOUND！", paramString);
+      localvuq.b("key_story_home_scan_time", Long.valueOf(((vim)paramContext.get(0)).b));
+      return paramContext;
     }
     return null;
   }
   
-  public EmoCell a(String paramString, int paramInt, vjg paramvjg)
+  @NonNull
+  public List<vim> a(Context paramContext, long paramLong)
   {
-    SparseArray localSparseArray = (SparseArray)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (localSparseArray == null) {
-      localSparseArray = new SparseArray();
+    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getNewPicList scan time = " + paramLong);
+    new ArrayList();
+    return new vhs().a(paramContext, 1L + paramLong, false, 500);
+  }
+  
+  public vht a()
+  {
+    return this.jdField_a_of_type_Vht;
+  }
+  
+  public void a()
+  {
+    ((vvd)vux.a(26)).a(this);
+    this.jdField_a_of_type_Vuq = ((vuq)vux.a(10));
+    this.jdField_a_of_type_Zon = zon.a();
+    this.jdField_a_of_type_Zon.a();
+    this.jdField_a_of_type_Vht = new vht();
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+    case 1: 
+      do
+      {
+        return;
+        xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "trimMemory to be 5");
+      } while (Build.VERSION.SDK_INT < 17);
+      return;
     }
+    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "clearAllMemory");
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    int j = 2;
+    Object localObject = this.jdField_a_of_type_Zon;
+    if (paramBoolean)
+    {
+      i = 2;
+      ((zon)localObject).b(i);
+      localObject = (vuq)vux.a(10);
+      if (!paramBoolean) {
+        break label54;
+      }
+    }
+    label54:
+    for (int i = j;; i = 1)
+    {
+      ((vuq)localObject).b("sp_key_user_enable_album_scan", Integer.valueOf(i));
+      return;
+      i = 1;
+      break;
+    }
+  }
+  
+  public boolean a()
+  {
+    int i = ((Integer)this.jdField_a_of_type_Vuq.b("sp_key_user_enable_album_scan", Integer.valueOf(0))).intValue();
+    if ((i == 0) || (i == -1)) {
+      return this.jdField_a_of_type_Vht.b();
+    }
+    return i != 1;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "deletedAlbumById=" + paramLong);
+    if (paramLong >= 0L) {}
+    for (boolean bool = true;; bool = false)
+    {
+      yos.a(bool, "It is not allowed to deleted the id<0");
+      EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
+      StoryAlbumEntry localStoryAlbumEntry = new StoryAlbumEntry();
+      localStoryAlbumEntry.setId(paramLong);
+      localStoryAlbumEntry.setStatus(1001);
+      return localEntityManager.remove(localStoryAlbumEntry);
+    }
+  }
+  
+  public boolean a(Context paramContext)
+  {
+    boolean bool2;
+    if ((this.jdField_a_of_type_Vht != null) && (this.jdField_a_of_type_Vht.a()))
+    {
+      bool2 = true;
+      if (Build.VERSION.SDK_INT < 18) {
+        break label132;
+      }
+    }
+    label132:
+    for (boolean bool3 = true;; bool3 = false)
+    {
+      boolean bool1;
+      if (Build.VERSION.SDK_INT >= 23) {
+        if (paramContext.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) {
+          bool1 = true;
+        }
+      }
+      for (;;)
+      {
+        label50:
+        if ((bool3) && (bool1) && (bool2)) {}
+        for (boolean bool4 = true;; bool4 = false)
+        {
+          xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "isAlbumModuleEnable :%s , isVersionOk :%s , isStoragePermitOk :%s , isConfigOk :%s", new Object[] { Boolean.valueOf(bool4), Boolean.valueOf(bool3), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+          return bool4;
+          bool2 = false;
+          break;
+          bool1 = false;
+          break label50;
+        }
+        bool1 = true;
+      }
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_Vht.b(paramString);
+  }
+  
+  public boolean a(@NonNull List<vil> paramList, boolean paramBoolean)
+  {
+    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "insertAlbumToDb albums=" + paramList.size() + " append=" + paramBoolean);
+    boolean bool;
+    if (!paramList.isEmpty()) {
+      bool = true;
+    }
+    EntityManager localEntityManager;
     for (;;)
     {
-      Object localObject = a(paramInt);
-      SoftReference localSoftReference = (SoftReference)localSparseArray.get(paramInt);
-      if (localSoftReference != null)
+      yos.a(bool, "It is not allow save the empty albums to DB ");
+      localEntityManager = QQStoryContext.a().a().createEntityManager();
+      localEntityManager.getTransaction().begin();
+      if (!paramBoolean) {
+        localEntityManager.drop(StoryAlbumEntry.class);
+      }
+      try
       {
-        EmoCell localEmoCell = (EmoCell)localSoftReference.get();
-        if ((localEmoCell != null) && (localEmoCell.emoDrawable.getBounds().isEmpty())) {
-          a(localEmoCell.emoDrawable, paramInt);
-        }
-        if ((localEmoCell != null) && (localEmoCell.emoDrawable == localObject))
+        paramList = paramList.iterator();
+        for (;;)
         {
-          localEmoCell.isDrawableLoaded = false;
-          a(localEmoCell, paramString, paramInt, paramvjg, null);
+          if (!paramList.hasNext()) {
+            break label226;
+          }
+          vil localvil = (vil)paramList.next();
+          localStoryAlbumEntry = localvil.a();
+          if (localStoryAlbumEntry.getId() <= 0L) {
+            break;
+          }
+          localStoryAlbumEntry.setStatus(1001);
+          if (!localEntityManager.update(localStoryAlbumEntry))
+          {
+            localStoryAlbumEntry.setStatus(1000);
+            localEntityManager.persistOrReplace(localStoryAlbumEntry);
+          }
+          localvil.a(localStoryAlbumEntry.getId());
         }
       }
-      if ((localSoftReference == null) || (localSoftReference.get() == null))
+      catch (Exception paramList)
       {
-        localObject = new EmoCell(new String(paramString), (Drawable)localObject);
-        if (((EmoCell)localObject).emoDrawable.getBounds().isEmpty()) {
-          a(((EmoCell)localObject).emoDrawable, paramInt);
+        for (;;)
+        {
+          StoryAlbumEntry localStoryAlbumEntry;
+          xvv.c("Q.qqstory.recommendAlbum.logic.StoryScanManager", "insertAlbumToDb exception=%s", paramList);
+          return false;
+          bool = false;
+          break;
+          localEntityManager.persistOrReplace(localStoryAlbumEntry);
         }
-        ((EmoCell)localObject).isDrawableLoaded = false;
-        a((EmoCell)localObject, paramString, paramInt, paramvjg, null);
-        localSparseArray.put(paramInt, new SoftReference(localObject));
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localSparseArray);
-        return localObject;
       }
-      return (EmoCell)localSoftReference.get();
-    }
-  }
-  
-  public SystemEmoCell a(String paramString, int paramInt, vjg paramvjg)
-  {
-    paramString = new SystemEmoCell(paramString, paramInt);
-    paramString.isDrawableLoaded = false;
-    a(paramString, paramvjg, null);
-    return paramString;
-  }
-  
-  public void a(EmoCell paramEmoCell, vjg paramvjg, ImageLoader.ImageLoadListener paramImageLoadListener)
-  {
-    if (paramEmoCell == null) {}
-    int i;
-    Drawable localDrawable;
-    do
-    {
-      return;
-      i = (int)paramEmoCell.getWidth(null);
-      localDrawable = a(i);
-    } while (paramEmoCell.emoDrawable != localDrawable);
-    a(paramEmoCell, paramEmoCell.emoCode, i, paramvjg, paramImageLoadListener);
-  }
-  
-  public void a(SystemEmoCell paramSystemEmoCell, vjg paramvjg, ImageLoader.ImageLoadListener paramImageLoadListener)
-  {
-    if (paramSystemEmoCell == null) {
-      return;
-    }
-    int i = a(paramSystemEmoCell.text);
-    if (i >= 0)
-    {
-      paramvjg = behh.a(i, new vid(this, paramvjg, paramSystemEmoCell, paramImageLoadListener));
-      if (paramvjg != null)
+      finally
       {
-        paramSystemEmoCell.isDrawableLoaded = true;
-        paramSystemEmoCell.emoDrawable = paramvjg;
-        a(paramvjg, paramSystemEmoCell.mHeight);
-        paramSystemEmoCell.mWidth = paramvjg.getBounds().width();
-        return;
+        localEntityManager.getTransaction().end();
       }
     }
-    paramSystemEmoCell.isDrawableLoaded = false;
+    label226:
+    localEntityManager.getTransaction().commit();
+    localEntityManager.getTransaction().end();
+    return true;
+  }
+  
+  public boolean a(vil paramvil)
+  {
+    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "deletedAlbumById=" + paramvil);
+    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
+    paramvil = paramvil.a();
+    paramvil.setStatus(1001);
+    return localEntityManager.update(paramvil);
+  }
+  
+  public List<vil> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
+    Object localObject = vuu.a(localEntityManager, StoryAlbumEntry.class, StoryAlbumEntry.class.getSimpleName(), null, null);
+    if (localObject == null) {
+      return localArrayList;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      StoryAlbumEntry localStoryAlbumEntry = (StoryAlbumEntry)((Iterator)localObject).next();
+      vil localvil;
+      try
+      {
+        localvil = vil.a(localStoryAlbumEntry);
+        if (!localvil.c()) {
+          break label144;
+        }
+        if (localvil.c() < 2) {
+          a(localvil, 10);
+        }
+        localArrayList.add(localvil);
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        yos.a("DB info have error:" + localInvalidProtocolBufferMicroException, new Object[0]);
+      }
+      continue;
+      label144:
+      xvv.e("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getAlbumListFromDB we find the illegal album and deleted it : " + localvil);
+      localInvalidProtocolBufferMicroException.setStatus(1001);
+      localEntityManager.remove(localInvalidProtocolBufferMicroException);
+    }
+    a(localArrayList);
+    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "getAlbumListFromDB reslut=" + localArrayList);
+    return localArrayList;
+  }
+  
+  public void b()
+  {
+    ((vvd)vux.a(26)).b(this);
+    this.jdField_a_of_type_Zon.b();
+  }
+  
+  public boolean b(Context paramContext)
+  {
+    if (a(paramContext)) {
+      return this.jdField_a_of_type_Vht.c();
+    }
+    return false;
+  }
+  
+  public boolean b(String paramString)
+  {
+    return this.jdField_a_of_type_Vht.a(paramString);
+  }
+  
+  public List<vjk> c()
+  {
+    return this.jdField_a_of_type_Vht.a();
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Int != 0)
+    {
+      xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "scan task is running so ignore this request.");
+      return;
+    }
+    xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager", "start scan");
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Int = 1;
+    viz localviz = new viz();
+    Context localContext = QQStoryContext.a().a().getBaseContext();
+    Stream.of(Integer.valueOf(0)).map(new ThreadOffFunction("Q.qqstory.recommendAlbum.logic.StoryScanManager", 2)).map(new vix(localContext, localviz)).map(new viy(localviz)).map(new viw(localviz)).map(new viv(localviz)).subscribe(new vib(this, localviz));
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Vht.c();
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_Vht.b();
   }
 }
 

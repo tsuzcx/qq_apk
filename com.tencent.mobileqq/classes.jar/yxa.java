@@ -1,23 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
 
-class yxa
-  implements woy<xcv, xep>
+public class yxa
+  implements DialogInterface.OnClickListener
 {
-  yxa(ywy paramywy) {}
+  public yxa(QRLoginMgrActivity paramQRLoginMgrActivity, yyc paramyyc) {}
   
-  public void a(@NonNull xcv paramxcv, @Nullable xep paramxep, @NonNull ErrorMessage paramErrorMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    yuk.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramxep != null))
-    {
-      yuk.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond success : %s .", paramxep.toString());
-      paramxcv = new wsc(paramxep.a, paramxep.c, paramxep.d, paramxep.e, paramxep.f, paramxcv.d, paramxcv.e);
-      this.a.a(0, paramxcv);
-      return;
-    }
-    yuk.e("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond failed : %s .", new Object[] { paramErrorMessage.toString() });
+    QRLoginMgrActivity.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRLoginMgrActivity, false, this.jdField_a_of_type_Yyc.a);
+    bcef.b(null, "dc00898", "", "", "0X800A474", "0X800A474", this.jdField_a_of_type_Yyc.c, 0, "", "", "", "");
   }
 }
 

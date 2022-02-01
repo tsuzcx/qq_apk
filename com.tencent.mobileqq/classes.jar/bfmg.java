@@ -1,44 +1,14 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import java.io.File;
+import java.io.FilenameFilter;
 
-final class bfmg
-  implements DialogInterface.OnClickListener
+class bfmg
+  implements FilenameFilter
 {
-  bfmg(QQAppInterface paramQQAppInterface, String paramString, Activity paramActivity) {}
+  bfmg(bfmf parambfmf, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean accept(File paramFile, String paramString)
   {
-    paramDialogInterface = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-    TroopInfo localTroopInfo;
-    if (paramDialogInterface != null)
-    {
-      localTroopInfo = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString);
-      if (localTroopInfo != null)
-      {
-        if (!localTroopInfo.isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-          break label124;
-        }
-        paramDialogInterface = "0";
-      }
-    }
-    for (;;)
-    {
-      paramDialogInterface = bfmf.jdField_a_of_type_JavaLangString.replace("$GCODE$", this.jdField_a_of_type_JavaLangString).replace("$UIN$", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).replace("$ROLE$", paramDialogInterface);
-      MiniAppLauncher.startMiniApp(this.jdField_a_of_type_AndroidAppActivity, paramDialogInterface, 2016, bguq.a(localTroopInfo, this.jdField_a_of_type_JavaLangString), null);
-      bdll.b(null, "dc00898", "", "", "0X800B223", "0X800B223", 0, 0, "", "", "", "");
-      return;
-      label124:
-      if (localTroopInfo.isAdmin()) {
-        paramDialogInterface = "1";
-      } else {
-        paramDialogInterface = "2";
-      }
-    }
+    return paramString.startsWith(this.jdField_a_of_type_JavaLangString);
   }
 }
 

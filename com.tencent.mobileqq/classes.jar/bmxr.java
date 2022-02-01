@@ -1,34 +1,47 @@
-import android.os.Environment;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
+import android.view.View;
+import android.view.animation.Animation;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bmxr
 {
-  public static final String a = bigw.a().a();
-  public static final String b = bigv.a("qzone");
-  public static final String c = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath();
-  public static final String d = c + File.separator + "Camera";
-  public static final String e = bigv.a("Tencent/Qzone/AlbumAutoVConvGif/");
-  public static final String f = bigv.a("Tencent/Qzone/VoiceMoodAudio/");
-  public static final String g = bigv.a("jcedata/businessdata/");
-  public static final String h = bigv.a(antf.ba + "qzone" + File.separator + "thumbs" + File.separator);
-  public static final String i = b + File.separator + "MaxVideo";
-  public static final String j = a + File.separator + "ix.jpg";
-  public static final String k = a + File.separator + "Tencent" + File.separator + "MobileQQ" + File.separator + "trace";
-  public static final String l = BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/testEnv";
-  public static final String m = l + File.separator + "testserver";
-  public static final String n = a + File.separator + "Tencent" + File.separator + "qzonebackup";
-  public static final String o = a + File.separator + "Tencent" + File.separator + "wns";
-  public static final String p = a + File.separator + "Tencent/Qzone/qzonedynamicalbum/";
-  public static final String q = bigv.a("qzone" + File.separator + "imageV2");
-  public static final String r = bigv.a("qzone" + File.separator + "video");
-  public static final String s = bigv.a("qzone" + File.separator + "video_cache");
-  public static final String t = bigv.a("qzone" + File.separator + "image_sr");
-  public static final String u = bigv.a("qzone" + File.separator + "file");
-  public static final String v = bigv.a("qzone" + File.separator + "feeds");
-  public static final String w = bigv.a("Tencent/Qzone/cache");
-  public static final String x = bigv.a("Tencent/mobileqq/.emotionsm/");
-  public static final String y = bigv.a("Tencent/qzone_video_local_config.json");
+  public static Animator a(View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt2, paramInt3 });
+    localValueAnimator.addUpdateListener(new bmxs(paramInt1, paramView));
+    return localValueAnimator;
+  }
+  
+  public static Animation a(View paramView, float paramFloat1, float paramFloat2)
+  {
+    return new bfzt(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new bmxt(paramView));
+  }
+  
+  public static void a(List<bmxu> paramList, Animator.AnimatorListener paramAnimatorListener)
+  {
+    if (paramList.size() > 0)
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        bmxu localbmxu = (bmxu)paramList.next();
+        ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(localbmxu.jdField_a_of_type_AndroidViewView, localbmxu.jdField_a_of_type_JavaLangString, new float[] { localbmxu.jdField_a_of_type_Float, localbmxu.jdField_b_of_type_Float }).setDuration(localbmxu.jdField_a_of_type_Long);
+        localObjectAnimator.setStartDelay(localbmxu.jdField_b_of_type_Long);
+        localArrayList.add(localObjectAnimator);
+      }
+      paramList = new AnimatorSet();
+      paramList.playTogether(localArrayList);
+      paramList.addListener(paramAnimatorListener);
+      paramList.start();
+    }
+  }
 }
 
 

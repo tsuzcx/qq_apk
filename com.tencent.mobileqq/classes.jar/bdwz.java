@@ -1,96 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.subaccount.SubAccountProtocManager.2;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
 
 public class bdwz
-  implements Manager
+  implements View.OnKeyListener
 {
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private static byte[] jdField_b_of_type_ArrayOfByte = new byte[0];
-  private static byte[] jdField_c_of_type_ArrayOfByte = new byte[0];
-  private aoib jdField_a_of_type_Aoib = new bdxa(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new SubAccountProtocManager.2(this);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
+  public bdwz(NewTroopContactView paramNewTroopContactView) {}
   
-  public bdwz(QQAppInterface paramQQAppInterface)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.d = false;
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_Aoib);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubAccountProtocManager", 2, "SubAccountProtocManager: manager init");
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return;
-    }
-    synchronized (jdField_c_of_type_ArrayOfByte)
+    if (paramInt == 67)
     {
-      if (this.jdField_c_of_type_Boolean) {
-        return;
+      if (paramKeyEvent.getAction() != 0) {
+        break label35;
       }
+      this.a.jdField_a_of_type_Boolean = TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText());
     }
-    this.jdField_c_of_type_Boolean = true;
-    ((aohz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(17)).a();
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return;
-    }
-    synchronized (jdField_b_of_type_ArrayOfByte)
+    for (;;)
     {
-      if (this.jdField_b_of_type_Boolean) {
-        return;
+      return false;
+      label35:
+      if ((paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean)) {
+        this.a.jdField_a_of_type_Bdxc.a();
       }
-    }
-    this.jdField_b_of_type_Boolean = true;
-    ((aohz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(17)).a(paramString);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return;
-    }
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        return;
-      }
-    }
-    this.jdField_a_of_type_Boolean = true;
-    ((aohz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(17)).a(paramString1, paramString2, paramString3);
-  }
-  
-  public boolean a()
-  {
-    synchronized (jdField_c_of_type_ArrayOfByte)
-    {
-      boolean bool = this.d;
-      return bool;
-    }
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aoib);
-    if (ThreadManager.getSubThreadHandler() != null) {
-      ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     }
   }
 }

@@ -7,7 +7,6 @@ import NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_rsp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnab;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,31 +14,21 @@ import java.util.Map;
 public class CoverCacheData
   implements Parcelable
 {
-  public static final Parcelable.Creator<CoverCacheData> CREATOR = new bnab();
-  public int a;
-  public long a;
-  public CoverCacheData.GameCoverInfo a;
-  public CoverCacheData.PackageInfo a;
-  public String a;
-  public ArrayList<Map<Integer, String>> a;
-  public HashMap<String, String> a;
-  public int b;
-  public String b;
-  public HashMap<String, String> b;
-  public String c;
-  public HashMap<String, String> c;
+  public static final Parcelable.Creator<CoverCacheData> CREATOR = new CoverCacheData.1();
+  public int alian;
+  public HashMap<String, String> backupMapExtInfo;
+  public String coverId = "";
+  public CoverCacheData.GameCoverInfo gameCoverInfo;
+  public int isJigsawOpen;
+  public String local_url = "";
+  public HashMap<String, String> mapExtInfo = new HashMap();
+  public CoverCacheData.PackageInfo packageInfo;
+  public ArrayList<Map<Integer, String>> photoWall = new ArrayList();
+  public String type = "";
+  public long uin;
+  public HashMap<String, String> urls = new HashMap();
   
-  public CoverCacheData()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static CoverCacheData a(long paramLong, feeds_cover paramfeeds_cover)
+  public static CoverCacheData createFromResponse(long paramLong, feeds_cover paramfeeds_cover)
   {
     Object localObject;
     if (paramfeeds_cover == null) {
@@ -50,44 +39,44 @@ public class CoverCacheData
     {
       return localObject;
       localCoverCacheData = new CoverCacheData();
-      localCoverCacheData.jdField_a_of_type_Long = paramLong;
-      localCoverCacheData.jdField_a_of_type_JavaLangString = paramfeeds_cover.id;
-      localCoverCacheData.jdField_b_of_type_JavaLangString = paramfeeds_cover.type;
-      localCoverCacheData.jdField_a_of_type_Int = paramfeeds_cover.photoWallCombinePic;
+      localCoverCacheData.uin = paramLong;
+      localCoverCacheData.coverId = paramfeeds_cover.id;
+      localCoverCacheData.type = paramfeeds_cover.type;
+      localCoverCacheData.isJigsawOpen = paramfeeds_cover.photoWallCombinePic;
       if (paramfeeds_cover.MulRelsotionUrl != null) {
-        localCoverCacheData.jdField_a_of_type_JavaUtilHashMap.putAll(paramfeeds_cover.MulRelsotionUrl);
+        localCoverCacheData.urls.putAll(paramfeeds_cover.MulRelsotionUrl);
       }
       if (paramfeeds_cover.packageInfo != null)
       {
-        localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo = new CoverCacheData.PackageInfo();
-        localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo.jdField_a_of_type_JavaLangString = paramfeeds_cover.packageInfo.prePic;
-        localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo.jdField_b_of_type_JavaLangString = paramfeeds_cover.packageInfo.PackageUrl;
-        localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo.jdField_c_of_type_JavaLangString = paramfeeds_cover.packageInfo.md5;
-        localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo.jdField_a_of_type_Int = paramfeeds_cover.packageInfo.weather;
-        localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo.jdField_b_of_type_Int = paramfeeds_cover.packageInfo.daytime;
-        localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo.jdField_c_of_type_Int = paramfeeds_cover.packageInfo.coverStyle;
+        localCoverCacheData.packageInfo = new CoverCacheData.PackageInfo();
+        localCoverCacheData.packageInfo.prePic = paramfeeds_cover.packageInfo.prePic;
+        localCoverCacheData.packageInfo.PackageUrl = paramfeeds_cover.packageInfo.PackageUrl;
+        localCoverCacheData.packageInfo.md5 = paramfeeds_cover.packageInfo.md5;
+        localCoverCacheData.packageInfo.weather = paramfeeds_cover.packageInfo.weather;
+        localCoverCacheData.packageInfo.daytime = paramfeeds_cover.packageInfo.daytime;
+        localCoverCacheData.packageInfo.coverStyle = paramfeeds_cover.packageInfo.coverStyle;
       }
       if (paramfeeds_cover.gameCoverInfo != null)
       {
-        localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$GameCoverInfo = new CoverCacheData.GameCoverInfo();
-        localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$GameCoverInfo.jdField_a_of_type_Double = paramfeeds_cover.gameCoverInfo.xCoordLU;
-        localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$GameCoverInfo.jdField_b_of_type_Double = paramfeeds_cover.gameCoverInfo.yCoordLU;
-        localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$GameCoverInfo.c = paramfeeds_cover.gameCoverInfo.xCoordRD;
-        localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$GameCoverInfo.d = paramfeeds_cover.gameCoverInfo.yCoordRD;
-        localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$GameCoverInfo.jdField_a_of_type_JavaLangString = paramfeeds_cover.gameCoverInfo.jmpUrl;
-        localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$GameCoverInfo.jdField_b_of_type_JavaLangString = paramfeeds_cover.gameCoverInfo.schema;
-        localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$GameCoverInfo.jdField_a_of_type_Int = paramfeeds_cover.gameCoverInfo.jmpType;
+        localCoverCacheData.gameCoverInfo = new CoverCacheData.GameCoverInfo();
+        localCoverCacheData.gameCoverInfo.xCoordLU = paramfeeds_cover.gameCoverInfo.xCoordLU;
+        localCoverCacheData.gameCoverInfo.yCoordLU = paramfeeds_cover.gameCoverInfo.yCoordLU;
+        localCoverCacheData.gameCoverInfo.xCoordRD = paramfeeds_cover.gameCoverInfo.xCoordRD;
+        localCoverCacheData.gameCoverInfo.yCoordRD = paramfeeds_cover.gameCoverInfo.yCoordRD;
+        localCoverCacheData.gameCoverInfo.jmpUrl = paramfeeds_cover.gameCoverInfo.jmpUrl;
+        localCoverCacheData.gameCoverInfo.schema = paramfeeds_cover.gameCoverInfo.schema;
+        localCoverCacheData.gameCoverInfo.jmpType = paramfeeds_cover.gameCoverInfo.jmpType;
       }
       if ((paramfeeds_cover.vecUrls != null) && (paramfeeds_cover.vecUrls.size() > 0)) {
-        localCoverCacheData.jdField_a_of_type_JavaUtilArrayList.addAll(paramfeeds_cover.vecUrls);
+        localCoverCacheData.photoWall.addAll(paramfeeds_cover.vecUrls);
       }
       localObject = localCoverCacheData;
     } while (paramfeeds_cover.mapExtInfo == null);
-    localCoverCacheData.jdField_b_of_type_JavaUtilHashMap.putAll(paramfeeds_cover.mapExtInfo);
+    localCoverCacheData.mapExtInfo.putAll(paramfeeds_cover.mapExtInfo);
     return localCoverCacheData;
   }
   
-  public static CoverCacheData a(long paramLong, mobile_sub_get_cover_rsp parammobile_sub_get_cover_rsp)
+  public static CoverCacheData createFromResponse(long paramLong, mobile_sub_get_cover_rsp parammobile_sub_get_cover_rsp)
   {
     Object localObject;
     if (parammobile_sub_get_cover_rsp == null) {
@@ -100,33 +89,28 @@ public class CoverCacheData
       {
         return localObject;
         localCoverCacheData = new CoverCacheData();
-        localCoverCacheData.jdField_a_of_type_Long = paramLong;
-        localCoverCacheData.jdField_b_of_type_JavaLangString = parammobile_sub_get_cover_rsp.type;
-        localCoverCacheData.jdField_a_of_type_Int = parammobile_sub_get_cover_rsp.photoWallCombinePic;
+        localCoverCacheData.uin = paramLong;
+        localCoverCacheData.type = parammobile_sub_get_cover_rsp.type;
+        localCoverCacheData.isJigsawOpen = parammobile_sub_get_cover_rsp.photoWallCombinePic;
         if (parammobile_sub_get_cover_rsp.MulRelsotionUrl != null) {
-          localCoverCacheData.jdField_a_of_type_JavaUtilHashMap.putAll(parammobile_sub_get_cover_rsp.MulRelsotionUrl);
+          localCoverCacheData.urls.putAll(parammobile_sub_get_cover_rsp.MulRelsotionUrl);
         }
         if (parammobile_sub_get_cover_rsp.packageInfo != null)
         {
-          localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo = new CoverCacheData.PackageInfo();
-          localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo.jdField_a_of_type_JavaLangString = parammobile_sub_get_cover_rsp.packageInfo.prePic;
-          localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo.jdField_b_of_type_JavaLangString = parammobile_sub_get_cover_rsp.packageInfo.PackageUrl;
-          localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo.jdField_c_of_type_JavaLangString = parammobile_sub_get_cover_rsp.packageInfo.md5;
-          localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo.jdField_a_of_type_Int = parammobile_sub_get_cover_rsp.packageInfo.weather;
-          localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo.jdField_b_of_type_Int = parammobile_sub_get_cover_rsp.packageInfo.daytime;
-          localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo.jdField_c_of_type_Int = parammobile_sub_get_cover_rsp.packageInfo.coverStyle;
+          localCoverCacheData.packageInfo = new CoverCacheData.PackageInfo();
+          localCoverCacheData.packageInfo.prePic = parammobile_sub_get_cover_rsp.packageInfo.prePic;
+          localCoverCacheData.packageInfo.PackageUrl = parammobile_sub_get_cover_rsp.packageInfo.PackageUrl;
+          localCoverCacheData.packageInfo.md5 = parammobile_sub_get_cover_rsp.packageInfo.md5;
+          localCoverCacheData.packageInfo.weather = parammobile_sub_get_cover_rsp.packageInfo.weather;
+          localCoverCacheData.packageInfo.daytime = parammobile_sub_get_cover_rsp.packageInfo.daytime;
+          localCoverCacheData.packageInfo.coverStyle = parammobile_sub_get_cover_rsp.packageInfo.coverStyle;
         }
         localObject = localCoverCacheData;
       } while (parammobile_sub_get_cover_rsp.vecUrls == null);
       localObject = localCoverCacheData;
     } while (parammobile_sub_get_cover_rsp.vecUrls.size() <= 0);
-    localCoverCacheData.jdField_a_of_type_JavaUtilArrayList.addAll(parammobile_sub_get_cover_rsp.vecUrls);
+    localCoverCacheData.photoWall.addAll(parammobile_sub_get_cover_rsp.vecUrls);
     return localCoverCacheData;
-  }
-  
-  public boolean a()
-  {
-    return ("CustomVideoCover".equals(this.jdField_b_of_type_JavaLangString)) || ("VideoCover".equals(this.jdField_b_of_type_JavaLangString));
   }
   
   public int describeContents()
@@ -134,20 +118,25 @@ public class CoverCacheData
     return 0;
   }
   
+  public boolean isVideoCover()
+  {
+    return ("CustomVideoCover".equals(this.type)) || ("VideoCover".equals(this.type));
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeMap(this.jdField_a_of_type_JavaUtilHashMap);
-    paramParcel.writeParcelable(this.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo, paramInt);
-    paramParcel.writeParcelable(this.jdField_a_of_type_CooperationQzoneModelCoverCacheData$GameCoverInfo, paramInt);
-    paramParcel.writeList(this.jdField_a_of_type_JavaUtilArrayList);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeMap(this.jdField_b_of_type_JavaUtilHashMap);
-    paramParcel.writeMap(this.jdField_c_of_type_JavaUtilHashMap);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
+    paramParcel.writeLong(this.uin);
+    paramParcel.writeString(this.coverId);
+    paramParcel.writeString(this.type);
+    paramParcel.writeString(this.local_url);
+    paramParcel.writeMap(this.urls);
+    paramParcel.writeParcelable(this.packageInfo, paramInt);
+    paramParcel.writeParcelable(this.gameCoverInfo, paramInt);
+    paramParcel.writeList(this.photoWall);
+    paramParcel.writeInt(this.isJigsawOpen);
+    paramParcel.writeMap(this.mapExtInfo);
+    paramParcel.writeMap(this.backupMapExtInfo);
+    paramParcel.writeInt(this.alian);
   }
 }
 

@@ -1,36 +1,80 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.support.annotation.NonNull;
 
-public abstract class wnf
-  extends JobSegment<ErrorMessage, ErrorMessage>
+public class wnf
 {
-  protected AtomicInteger a;
-  public wng a;
+  @NonNull
+  public final String a;
+  @NonNull
+  public final String b;
+  @NonNull
+  public final String c;
+  public final String d;
   
-  public wnf()
+  public wnf(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  }
-  
-  protected abstract void a();
-  
-  protected void a(JobContext paramJobContext, ErrorMessage paramErrorMessage)
-  {
-    a();
-  }
-  
-  public void a(wng paramwng)
-  {
-    this.jdField_a_of_type_Wng = paramwng;
-  }
-  
-  protected void b()
-  {
-    if (this.jdField_a_of_type_Wng != null) {
-      this.jdField_a_of_type_Wng.a(this);
+    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null))
+    {
+      xvv.e("Q.qqstory.playernew.TVKPreloader", "vid=%s, videoUrl=%s, localPath=%s", new Object[] { paramString1, paramString2, paramString3 });
+      throw new IllegalArgumentException("vid, videoUrl, localPath should not be null");
     }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = true;
+    boolean bool3 = false;
+    boolean bool1;
+    if (this == paramObject) {
+      bool1 = true;
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool1;
+            bool1 = bool3;
+          } while (paramObject == null);
+          bool1 = bool3;
+        } while (getClass() != paramObject.getClass());
+        paramObject = (wnf)paramObject;
+        bool1 = bool3;
+      } while (!this.a.equals(paramObject.a));
+      bool1 = bool3;
+    } while (!this.b.equals(paramObject.b));
+    if (this.d != null) {
+      bool1 = this.d.equals(paramObject.d);
+    }
+    for (;;)
+    {
+      return bool1;
+      bool1 = bool2;
+      if (paramObject.d != null) {
+        bool1 = false;
+      }
+    }
+  }
+  
+  public int hashCode()
+  {
+    int j = this.a.hashCode();
+    int k = this.b.hashCode();
+    if (this.d != null) {}
+    for (int i = this.d.hashCode();; i = 0) {
+      return i + (j * 31 + k) * 31;
+    }
+  }
+  
+  public String toString()
+  {
+    return "PreloadItem{vid='" + this.a + '\'' + ", debugMsg='" + this.d + '\'' + '}';
   }
 }
 

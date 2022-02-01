@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
-import beex;
+import bcyo;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.teamwork.PadInfo;
 import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class GPadInfo
   extends PadInfo
-  implements beex
+  implements bcyo
 {
   public String creatorCard;
   public long creatorUid;
@@ -62,7 +62,7 @@ public class GPadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GPadInfo
  * JD-Core Version:    0.7.0.1
  */

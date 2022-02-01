@@ -2,9 +2,9 @@ package com.tencent.mobileqq.fragment;
 
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
-import axfx;
-import axhi;
-import axjd;
+import avte;
+import avup;
+import avwk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -40,16 +40,16 @@ class MsgBackupSettingFragment$8
     if (QLog.isColorLevel()) {
       QLog.d("MsgBackup", 2, "start ret = " + i + ", ip = " + MsgBackupSettingFragment.a(this.this$0)[0] + ", udpport = " + MsgBackupSettingFragment.a(this.this$0) + ", tcpport = " + MsgBackupSettingFragment.b(this.this$0));
     }
-    localObject = new axhi();
-    ((axhi)localObject).c(MsgBackupSettingFragment.b(this.this$0)[1]);
-    ((axhi)localObject).b(MsgBackupSettingFragment.b(this.this$0)[0]);
+    localObject = new avup();
+    ((avup)localObject).c(MsgBackupSettingFragment.b(this.this$0)[1]);
+    ((avup)localObject).b(MsgBackupSettingFragment.b(this.this$0)[0]);
     ArrayList localArrayList = new ArrayList(2);
-    ((axhi)localObject).a(axjd.a().a());
-    localArrayList.add(Integer.valueOf(axjd.a().b()));
-    localArrayList.add(Integer.valueOf(axjd.a().a()));
-    ((axhi)localObject).a(localArrayList);
-    localObject = ((axhi)localObject).a();
-    ((axfx)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(162)).a((MsgBackupUserData)localObject, MsgBackupSettingFragment.c(this.this$0), MsgBackupSettingFragment.a(this.this$0));
+    ((avup)localObject).a(avwk.a().a());
+    localArrayList.add(Integer.valueOf(avwk.a().b()));
+    localArrayList.add(Integer.valueOf(avwk.a().a()));
+    ((avup)localObject).a(localArrayList);
+    localObject = ((avup)localObject).a();
+    ((avte)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(162)).a((MsgBackupUserData)localObject, MsgBackupSettingFragment.c(this.this$0), MsgBackupSettingFragment.a(this.this$0));
   }
 }
 

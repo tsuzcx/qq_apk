@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import biql;
+import bgwr;
 
 public class SwiftBrowserScreenShotHandler$1
   implements Runnable
 {
-  public SwiftBrowserScreenShotHandler$1(biql parambiql) {}
+  public SwiftBrowserScreenShotHandler$1(bgwr parambgwr) {}
   
   public void run()
   {

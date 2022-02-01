@@ -1,17 +1,13 @@
-class aufx
-  implements auey
+import android.view.animation.Animation;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+
+public abstract interface aufx
 {
-  aufx(auft paramauft) {}
+  public abstract void a(Animation paramAnimation);
   
-  public void a()
-  {
-    this.a.a(false, aumg.a(this.a.a.a()), this.a.c(), new aufy(this));
-  }
+  public abstract void a(HeartLayout paramHeartLayout, float paramFloat1, float paramFloat2);
   
-  public void b()
-  {
-    auft.b(this.a);
-  }
+  public abstract void b(Animation paramAnimation);
 }
 
 

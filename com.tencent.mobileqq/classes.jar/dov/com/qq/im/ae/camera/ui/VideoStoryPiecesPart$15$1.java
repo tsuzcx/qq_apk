@@ -1,10 +1,10 @@
 package dov.com.qq.im.ae.camera.ui;
 
-import agej;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import bojy;
+import bloe;
 import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 class VideoStoryPiecesPart$15$1
   implements Runnable
@@ -13,16 +13,16 @@ class VideoStoryPiecesPart$15$1
   
   public void run()
   {
-    if ((bojy.a(this.a.this$0) != null) && (bojy.a(this.a.this$0) != null))
+    if ((bloe.a(this.a.this$0) != null) && (bloe.a(this.a.this$0) != null))
     {
-      BitmapDrawable localBitmapDrawable = new BitmapDrawable(bojy.a(this.a.this$0));
-      int i = agej.a(36.0F, bojy.a(this.a.this$0).getResources());
+      BitmapDrawable localBitmapDrawable = new BitmapDrawable(bloe.a(this.a.this$0));
+      int i = AIOUtils.dp2px(36.0F, bloe.a(this.a.this$0).getResources());
       localBitmapDrawable.setBounds(0, 0, i, i);
-      bojy.a(this.a.this$0).setImageDrawable(localBitmapDrawable);
-      bojy.a(this.a.this$0).setEnabled(true);
+      bloe.a(this.a.this$0).setImageDrawable(localBitmapDrawable);
+      bloe.a(this.a.this$0).setEnabled(true);
       return;
     }
-    bojy.a(this.a.this$0).setEnabled(false);
+    bloe.a(this.a.this$0).setEnabled(false);
   }
 }
 

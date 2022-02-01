@@ -1,33 +1,76 @@
+import android.content.Context;
+import android.util.Xml;
+import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import org.apache.http.Header;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.message.BasicNameValuePair;
+import org.xmlpull.v1.XmlSerializer;
 
-final class kzy
+abstract class kzy
   extends kzr
 {
-  kzy(kzp paramkzp) {}
-  
-  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
+  private static String a(List<String> paramList, String paramString)
   {
-    super.a(paramInt, paramArrayOfHeader, paramJSONObject);
+    XmlSerializer localXmlSerializer;
+    StringWriter localStringWriter;
     try
     {
-      paramJSONObject = paramJSONObject.getString("id");
-      this.a.a(paramInt, paramArrayOfHeader, paramJSONObject);
-      return;
+      localXmlSerializer = Xml.newSerializer();
+      localStringWriter = new StringWriter();
+      localXmlSerializer.setOutput(localStringWriter);
+      localXmlSerializer.startDocument("UTF-8", Boolean.valueOf(true));
+      localXmlSerializer.startTag("", "TranslateArrayRequest");
+      localXmlSerializer.startTag("", "AppId");
+      localXmlSerializer.endTag("", "AppId");
+      localXmlSerializer.startTag("", "Texts");
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        String str = (String)paramList.next();
+        localXmlSerializer.startTag("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "string");
+        localXmlSerializer.text(str);
+        localXmlSerializer.endTag("http://schemas.microsoft.com/2003/10/Serialization/Arrays", "string");
+      }
+      localXmlSerializer.endTag("", "Texts");
     }
-    catch (JSONException paramArrayOfHeader)
+    catch (Exception paramList)
     {
-      paramArrayOfHeader.printStackTrace();
+      paramList.printStackTrace();
+      return null;
     }
+    localXmlSerializer.startTag("", "To");
+    localXmlSerializer.text(paramString);
+    localXmlSerializer.endTag("", "To");
+    localXmlSerializer.endTag("", "TranslateArrayRequest");
+    localXmlSerializer.endDocument();
+    paramList = localStringWriter.toString();
+    return paramList;
   }
   
-  public void a(Throwable paramThrowable, JSONObject paramJSONObject)
+  public static void a(Context paramContext, Header[] paramArrayOfHeader, List<String> paramList, String paramString, kzg paramkzg)
   {
-    super.a(paramThrowable, paramJSONObject);
-    if ((paramThrowable != null) && (paramThrowable.getMessage() != null)) {
-      this.a.a(paramThrowable, paramThrowable.getMessage());
+    paramList = new StringEntity(a(paramList, paramString), "UTF-8");
+    a().a(paramContext, "https://api.microsofttranslator.com/V2/Http.svc/TranslateArray", paramArrayOfHeader, paramList, "application/xml", paramkzg);
+  }
+  
+  public static void a(Context paramContext, Header[] paramArrayOfHeader, Map<String, String> paramMap, kzi paramkzi)
+  {
+    ArrayList localArrayList = new ArrayList(4);
+    paramMap = paramMap.entrySet().iterator();
+    while (paramMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      localArrayList.add(new BasicNameValuePair((String)localEntry.getKey(), (String)localEntry.getValue()));
     }
+    paramMap = new UrlEncodedFormEntity(localArrayList);
+    a().a(paramContext, "https://datamarket.accesscontrol.windows.net/v2/OAuth2-13", paramArrayOfHeader, paramMap, "application/x-www-form-urlencoded", paramkzi);
   }
 }
 

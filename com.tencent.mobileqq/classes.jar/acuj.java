@@ -1,48 +1,89 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
-import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS.3.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.manager.AccountManager;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class acuj
-  implements View.OnClickListener
+  extends WtloginObserver
 {
-  public acuj(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
+  public acuj(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  public void onClick(View paramView)
+  public void onAskDevLockSms(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    GdtInterstitialFragmentForJS.a(this.a).b = GdtInterstitialFragmentForJS.a(this.a.getActivity());
-    if (GdtInterstitialFragmentForJS.a(this.a) == null)
-    {
-      str = "ad is not loaded";
-      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
-    }
-    for (;;)
-    {
-      Toast.makeText(this.a.getActivity().getApplicationContext(), str, 0).show();
-      EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a.isFinishing()) {
       return;
-      if (GdtInterstitialFragmentForJS.a(this.a) == null)
-      {
-        str = "ad is loading";
-      }
-      else
-      {
-        if (GdtInterstitialFragmentForJS.a(this.a).a() == 0) {
-          break;
-        }
-        str = GdtInterstitialFragmentForJS.a(this.a).a();
-      }
     }
-    if (GdtInterstitialFragmentForJS.a(this.a).a(this.a.getActivity())) {}
-    for (String str = "正在打开插屏";; str = "打开插屏错误")
+    this.a.c();
+    if ((paramInt == 0) && (paramDevlockInfo != null))
     {
-      AdThreadManager.INSTANCE.postDelayed(new GdtInterstitialFragmentForJS.3.1(this), 0, 5000L);
-      break;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms DevlockInfo.TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount);
+      }
+      if (paramDevlockInfo.TimeLimit <= 0) {
+        paramDevlockInfo.TimeLimit = 60;
+      }
+      AuthDevVerifyCodeActivity.a(this.a, paramDevlockInfo.TimeLimit);
+      return;
     }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms ret = " + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms  errMsg:" + paramErrMsg.getMessage());
+      }
+    }
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      this.a.a(paramErrMsg.getMessage(), 1);
+      return;
+    }
+    paramWUserSigInfo = this.a.getString(2131716113);
+    this.a.a(paramWUserSigInfo, 1);
+  }
+  
+  public void onCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnCheckDevLockSms ret = " + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnCheckDevLockSms  errMsg:" + paramErrMsg.getMessage());
+      }
+    }
+    if (this.a.isFinishing()) {
+      return;
+    }
+    AuthDevVerifyCodeActivity.a(this.a);
+    if (paramInt == 0)
+    {
+      paramWUserSigInfo = (AccountManager)this.a.app.getManager(0);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.refreshDA2(this.a.app.getCurrentAccountUin(), null);
+      }
+      arhf.a().a(null, this.a.app.getCurrentAccountUin(), 9);
+      this.a.setResult(-1);
+      this.a.finish();
+      paramErrMsg = (AppInterface)AuthDevVerifyCodeActivity.a(this.a).get();
+      paramWUserSigInfo = "";
+      if (paramErrMsg != null) {
+        paramWUserSigInfo = paramErrMsg.getAccount();
+      }
+      arhf.a().a(paramErrMsg, this.a, paramWUserSigInfo, true);
+      return;
+    }
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      this.a.a(paramErrMsg.getMessage(), 1);
+      return;
+    }
+    this.a.a(2131716147, 1);
   }
 }
 

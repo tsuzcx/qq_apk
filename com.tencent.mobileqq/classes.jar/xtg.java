@@ -1,44 +1,16 @@
-import android.view.View;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
 
-public abstract interface xtg
+class xtg
+  implements bhfe
 {
-  public abstract int a();
+  xtg(xss paramxss, String paramString, QQStoryAutoPlayView paramQQStoryAutoPlayView) {}
   
-  public abstract long a();
-  
-  public abstract View a();
-  
-  public abstract xtt a();
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract void a(xth paramxth);
-  
-  public abstract void a(xti paramxti);
-  
-  public abstract void a(xtj paramxtj);
-  
-  public abstract void a(xtk paramxtk);
-  
-  public abstract void a(xtl paramxtl);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public void a(String paramString)
+  {
+    xvv.a("Q.qqstory.home:FeedSegment", "vid:%s, animation end", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a().a(4);
+    voe.a().a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView.a());
+  }
 }
 
 

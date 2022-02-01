@@ -1,25 +1,8 @@
-import java.io.BufferedReader;
-
-public class lmd
-  extends lmc
+public abstract interface lmd
 {
-  private float a;
-  private float b;
+  public abstract void a(int paramInt);
   
-  public float a()
-  {
-    return this.jdField_a_of_type_Float + (this.b - this.jdField_a_of_type_Float) * llu.a();
-  }
-  
-  public void a(BufferedReader paramBufferedReader)
-  {
-    super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Float = llz.a(paramBufferedReader, "lowMin");
-    this.b = llz.a(paramBufferedReader, "lowMax");
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
 }
 
 

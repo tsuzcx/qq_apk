@@ -22,17 +22,17 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.HashSet;
-import ofd;
-import ofh;
-import ofw;
-import ofx;
-import ogb;
-import ogd;
-import ogh;
-import ogi;
-import ogj;
-import ogk;
-import ogm;
+import ogq;
+import ogu;
+import ohj;
+import ohk;
+import oho;
+import ohq;
+import ohu;
+import ohv;
+import ohw;
+import ohx;
+import ohz;
 import tencent.im.oidb.qqshop.qq_ad.QQAdGet;
 
 public class EcshopNewPageFragment
@@ -40,7 +40,7 @@ public class EcshopNewPageFragment
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ogj(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ohw(this);
   private SparseArray<EcshopTabFragment> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   private CustomTabView jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView;
   private EcshopTabFragment jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopTabFragment;
@@ -53,7 +53,7 @@ public class EcshopNewPageFragment
   
   private void a()
   {
-    Object localObject = ogb.a();
+    Object localObject = oho.a();
     if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
     {
       if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView != null) {
@@ -67,7 +67,7 @@ public class EcshopNewPageFragment
     }
     for (;;)
     {
-      ofd.a(((qq_ad.QQAdGet)localObject).toByteArray(), "trpc.qqshop.adpush.PushService.GetAd", new ogh(this));
+      ogq.a(((qq_ad.QQAdGet)localObject).toByteArray(), "trpc.qqshop.adpush.PushService.GetAd", new ohu(this));
       return;
       ((qq_ad.QQAdGet)localObject).trigger_type.set(8);
     }
@@ -110,15 +110,15 @@ public class EcshopNewPageFragment
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView = ((CustomTabView)paramView.findViewById(2131365240));
-    if (ofx.a(ofw.a(), 0, this.jdField_a_of_type_Int))
+    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView = ((CustomTabView)paramView.findViewById(2131365264));
+    if (ohk.a(ohj.a(), 0, this.jdField_a_of_type_Int))
     {
       paramView = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView;
       if (this.d) {}
       for (int i = 8;; i = 0)
       {
         paramView.setVisibility(i);
-        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a(ofw.a());
+        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a(ohj.a());
         this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a(this.jdField_a_of_type_Int);
         return;
       }
@@ -131,7 +131,7 @@ public class EcshopNewPageFragment
     FragmentTransaction localFragmentTransaction = getChildFragmentManager().beginTransaction();
     if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopTabFragment == null) {
       if (!paramEcshopTabFragment.isAdded()) {
-        localFragmentTransaction.add(2131365052, paramEcshopTabFragment).commitAllowingStateLoss();
+        localFragmentTransaction.add(2131365079, paramEcshopTabFragment).commitAllowingStateLoss();
       }
     }
     for (;;)
@@ -142,7 +142,7 @@ public class EcshopNewPageFragment
       continue;
       if (!this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopTabFragment.a(paramEcshopTabFragment)) {
         if (!paramEcshopTabFragment.isAdded()) {
-          localFragmentTransaction.hide(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopTabFragment).add(2131365052, paramEcshopTabFragment).commitAllowingStateLoss();
+          localFragmentTransaction.hide(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopTabFragment).add(2131365079, paramEcshopTabFragment).commitAllowingStateLoss();
         } else {
           localFragmentTransaction.hide(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewEcshopTabFragment).show(paramEcshopTabFragment).commitAllowingStateLoss();
         }
@@ -150,9 +150,9 @@ public class EcshopNewPageFragment
     }
   }
   
-  private void a(ArrayList<ofh> paramArrayList)
+  private void a(ArrayList<ogu> paramArrayList)
   {
-    ogb.a(paramArrayList);
+    oho.a(paramArrayList);
     if (QLog.isColorLevel()) {
       QLog.i("Ecshop_EcshopNewPageFragment", 2, "[onResponseRedpoint]");
     }
@@ -163,27 +163,27 @@ public class EcshopNewPageFragment
   
   private void b()
   {
-    this.vg.setTitle(getResources().getString(2131691677));
-    this.vg.setRightImage(getResources().getDrawable(2130850140));
-    ((ImageView)this.vg.findViewById(2131369452)).setImageResource(2130850669);
-    this.vg.setOnItemSelectListener(new ogi(this));
+    this.vg.setTitle(getResources().getString(2131691722));
+    this.vg.setRightImage(getResources().getDrawable(2130850057));
+    ((ImageView)this.vg.findViewById(2131369436)).setImageResource(2130850594);
+    this.vg.setOnItemSelectListener(new ohv(this));
     if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
     {
       ImmersiveUtils.a(true, getActivity().getWindow());
-      this.mContentView.findViewById(2131371835).setVisibility(0);
+      this.mContentView.findViewById(2131371801).setVisibility(0);
       this.vg.setBackgroundColor(-16777216);
     }
     for (;;)
     {
       a(this.mContentView);
       return;
-      this.mContentView.findViewById(2131371835).setVisibility(8);
+      this.mContentView.findViewById(2131371801).setVisibility(8);
     }
   }
   
   public int getContentLayoutId()
   {
-    return 2131561975;
+    return 2131561852;
   }
   
   public void init(Bundle paramBundle)
@@ -256,7 +256,7 @@ public class EcshopNewPageFragment
     if ((this.jdField_a_of_type_AndroidUtilSparseArray != null) && (this.jdField_a_of_type_AndroidUtilSparseArray.size() > 0)) {
       this.jdField_a_of_type_AndroidUtilSparseArray.clear();
     }
-    ogm.a().a(null, "");
+    ohz.a().a(null, "");
     try
     {
       if ((this.c) && (getActivity() != null))
@@ -296,8 +296,8 @@ public class EcshopNewPageFragment
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    ogd.a(null, "gouwu.aio.stay", this.jdField_a_of_type_Int + "", SystemClock.elapsedRealtime() + "", SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long + "");
-    ogd.b(null, "gouwu_aio_stay", this.jdField_a_of_type_Int + "", SystemClock.elapsedRealtime() + "", SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long + "");
+    ohq.a(null, "gouwu.aio.stay", this.jdField_a_of_type_Int + "", SystemClock.elapsedRealtime() + "", SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long + "");
+    ohq.b(null, "gouwu_aio_stay", this.jdField_a_of_type_Int + "", SystemClock.elapsedRealtime() + "", SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long + "");
   }
   
   public void onResume()

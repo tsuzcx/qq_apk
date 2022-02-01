@@ -1,25 +1,57 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import android.view.Window;
-import android.view.animation.TranslateAnimation;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.HashMap;
 
-public class afem
-  implements DialogInterface.OnDismissListener
+class afem
+  implements OnCompositionLoadedListener
 {
-  public afem(PublicAccountListActivity paramPublicAccountListActivity, int paramInt, TranslateAnimation paramTranslateAnimation, InputMethodManager paramInputMethodManager) {}
+  afem(afej paramafej, FileInputStream paramFileInputStream) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.d.setTag("");
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.getWindow().peekDecorView().getWindowToken(), 0);
+    if (afej.a(this.jdField_a_of_type_Afej) == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("LottieAnimation", 2, "LottieComposition.Factory.fromInputStream mLottieView is null!");
+      }
+    }
+    for (;;)
+    {
+      return;
+      try
+      {
+        if (this.jdField_a_of_type_JavaIoFileInputStream != null) {
+          this.jdField_a_of_type_JavaIoFileInputStream.close();
+        }
+        if (paramLottieComposition != null)
+        {
+          afej.a(this.jdField_a_of_type_Afej).setComposition(paramLottieComposition);
+          afej.a(this.jdField_a_of_type_Afej).loop(false);
+          afej.a(this.jdField_a_of_type_Afej).setVisibility(0);
+          afej.a(this.jdField_a_of_type_Afej).playAnimation();
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("LottieAnimation", 2, "playNextAnim fromInputStream succ");
+        }
+      }
+      catch (IOException localIOException)
+      {
+        for (;;)
+        {
+          localIOException.printStackTrace();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("LottieAnimation", 2, "playNextAnim fromInputStream composition null");
+        }
+        afej.a(this.jdField_a_of_type_Afej).clear();
+        this.jdField_a_of_type_Afej.c();
+      }
+    }
   }
 }
 

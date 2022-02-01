@@ -1,12 +1,17 @@
-import java.util.List;
+import android.support.v7.widget.StaggeredGridLayoutManager.ExceptionListener;
+import android.view.View;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface augq
+public class augq
+  implements StaggeredGridLayoutManager.ExceptionListener
 {
-  public abstract void a(long paramLong);
+  public augq(HotPicPageView paramHotPicPageView) {}
   
-  public abstract void a(List<aujx> paramList, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, short paramShort);
-  
-  public abstract void b(String paramString1, String paramString2);
+  public void onGetPositionErr(View paramView, boolean paramBoolean, int paramInt, Exception paramException)
+  {
+    QLog.e("HotPicManagerHotPicPageView", 1, "onGetPositionErr 1  final p:" + paramInt + " rescue:" + paramBoolean + " v:" + paramView + " error: " + paramException);
+  }
 }
 
 

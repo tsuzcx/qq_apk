@@ -1,27 +1,8 @@
-import android.util.Pair;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-class avdc
-  extends aojs
+public abstract interface avdc
 {
-  avdc(avdb paramavdb) {}
-  
-  protected void a(String paramString, List<Pair<String, String>> paramList)
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
-    if (paramList == null) {}
-    for (int i = 0;; i = paramList.size())
-    {
-      QLog.i("ForwardTroopMemberControllerForMiniPie", 2, i);
-      if ((avdb.a(this.a).equals(paramString)) && (avdb.a(this.a) != null))
-      {
-        avdb.a(this.a);
-        avdb.a(this.a).a(paramList);
-      }
-      return;
-    }
-  }
+  public abstract void a(LatLng paramLatLng, Double paramDouble, boolean paramBoolean);
 }
 
 

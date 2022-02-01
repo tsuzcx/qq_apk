@@ -7,7 +7,7 @@ import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy.SoLoaderOption;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.shell.ICommonManager;
-import com.tencent.tissue.v8rt.engine.LibLoader;
+import com.tencent.qqmini.v8rt.engine.LibLoader;
 import java.io.File;
 
 public class V8AsyncLibLoader

@@ -7,8 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import avgj;
-import bjbv;
+import attp;
+import bhhw;
 import com.tencent.mobileqq.activity.NearbyActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -20,8 +20,8 @@ public class BaseFragment
 {
   protected int a;
   protected View a;
-  public avgj a;
-  protected bjbv a;
+  public attp a;
+  protected bhhw a;
   public IphoneTitleBarActivity a;
   protected boolean a;
   protected boolean b;
@@ -41,7 +41,7 @@ public class BaseFragment
     return false;
   }
   
-  public void aP_()
+  public void aA_()
   {
     c();
     onHiddenChanged(false);
@@ -53,7 +53,7 @@ public class BaseFragment
   public void c()
   {
     if ((getActivity() instanceof NearbyActivity)) {
-      ((NearbyActivity)getActivity()).a(this.jdField_a_of_type_Avgj);
+      ((NearbyActivity)getActivity()).a(this.jdField_a_of_type_Attp);
     }
   }
   
@@ -79,8 +79,8 @@ public class BaseFragment
     if (QLog.isColorLevel()) {
       QLog.d("Fragment", 2, "onAttach() " + getClass().getSimpleName() + " " + hashCode());
     }
-    if (this.jdField_a_of_type_Avgj == null) {
-      this.jdField_a_of_type_Avgj = new avgj(this);
+    if (this.jdField_a_of_type_Attp == null) {
+      this.jdField_a_of_type_Attp = new attp(this);
     }
     this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity = ((IphoneTitleBarActivity)getActivity());
     this.jdField_a_of_type_Boolean = true;
@@ -119,8 +119,8 @@ public class BaseFragment
     if (QLog.isColorLevel()) {
       QLog.d("Fragment", 2, "onDestroyView() " + getClass().getSimpleName() + " " + hashCode());
     }
-    if (this.jdField_a_of_type_Bjbv != null) {
-      this.jdField_a_of_type_Bjbv.b();
+    if (this.jdField_a_of_type_Bhhw != null) {
+      this.jdField_a_of_type_Bhhw.b();
     }
     if (this.jdField_a_of_type_AndroidViewView != null)
     {

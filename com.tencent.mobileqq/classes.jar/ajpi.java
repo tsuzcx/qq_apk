@@ -1,43 +1,21 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class ajpi
-  implements View.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
-  ajpi(ajpe paramajpe) {}
+  ajpi(ajpd paramajpd) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
-    if ((localRecommendTroopItem == null) || (TextUtils.isEmpty(localRecommendTroopItem.uin))) {
-      QLog.d("NotifyAndRecAdapter", 2, "del troop but troop is empty");
-    }
-    for (;;)
+    if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      aoga.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, 2, localRecommendTroopItem.uin, new ajpj(this));
-      this.a.b.remove(localRecommendTroopItem);
-      this.a.notifyDataSetChanged();
-      if ((this.a.b != null) && (this.a.b.size() == 0)) {
-        this.a.jdField_a_of_type_Ajop.a().sendEmptyMessage(100);
-      }
-      if (ajpe.a(this.a) != null)
-      {
-        aoga localaoga = (aoga)ajpe.a(this.a).getManager(22);
-        if ((this.a.b != null) && (this.a.b.size() == 0)) {
-          localaoga.a(1);
-        }
-        localaoga.a(localRecommendTroopItem.uin);
-      }
-      bdll.b(null, "P_CliOper", "Grp_recom", "", "msg_page", "Clk_unlike", 0, 0, localRecommendTroopItem.uin, "", "", "");
+      this.a.a.dismiss();
+      ajpd.a(this.a, ajpd.a(this.a), true, Long.valueOf(ajpd.b(this.a)).longValue(), true);
     }
+    return false;
   }
 }
 

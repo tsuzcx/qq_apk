@@ -1,12 +1,17 @@
-class mvk<Data>
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.av.widget.shimmer.ShimmerTextView;
+
+public class mvk
+  extends AccessibilityDelegateCompat
 {
-  final mvj jdField_a_of_type_Mvj;
-  final Data[] jdField_a_of_type_ArrayOfJavaLangObject;
+  public mvk(ShimmerTextView paramShimmerTextView) {}
   
-  mvk(mvj parammvj, Data... paramVarArgs)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    this.jdField_a_of_type_Mvj = parammvj;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramAccessibilityNodeInfoCompat.setVisibleToUser(false);
   }
 }
 

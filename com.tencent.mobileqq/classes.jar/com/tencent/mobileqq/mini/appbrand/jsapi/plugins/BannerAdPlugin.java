@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
-import acvb;
+import abrk;
 import android.text.TextUtils;
-import bhtq;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -18,6 +17,7 @@ import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.data.BannerAdPosInfo;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Set;
@@ -76,7 +76,7 @@ public class BannerAdPlugin
       if (i == 0)
       {
         localJSONObject = localJSONObject.getJSONArray("ads_info").getJSONObject(0);
-        return (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acvb.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject));
+        return (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject));
       }
       if (paramJsRuntime != null)
       {
@@ -148,9 +148,9 @@ public class BannerAdPlugin
         if (!localJSONObject.has("width")) {
           break label521;
         }
-        float f = bhtq.a();
-        j = bhtq.a();
-        i = bhtq.b();
+        float f = ViewUtils.getDensity();
+        j = ViewUtils.getScreenWidth();
+        i = ViewUtils.getScreenHeight();
         if (!(this.jsPluginEngine.activityContext instanceof GameActivity)) {
           break label513;
         }
@@ -270,14 +270,8 @@ public class BannerAdPlugin
   {
     QLog.i("[minigame] BannerAdPlugin", 2, "handleNativeRequest jsonParams : " + paramString2 + " event:" + paramString1);
     Object localObject1 = this.jsPluginEngine.appBrandRuntime.activity;
-    if ("createBannerAd".equals(paramString1))
-    {
+    if ("createBannerAd".equals(paramString1)) {
       QLog.i("[minigame] BannerAdPlugin", 2, "receive createBannerAd event");
-      if (this.jsPluginEngine == null)
-      {
-        QLog.i("[minigame] BannerAdPlugin", 2, "handle createBannerAd event, jsPluginEngine == null");
-        return "";
-      }
     }
     for (;;)
     {
@@ -294,14 +288,14 @@ public class BannerAdPlugin
         String str3 = this.jsPluginEngine.activityContext.getCurrentAccountUin();
         localObject1 = null;
         int k = 0;
-        float f = bhtq.a();
-        int j = bhtq.a();
-        i = bhtq.b();
+        float f = ViewUtils.getDensity();
+        int j = ViewUtils.getScreenWidth();
+        i = ViewUtils.getScreenHeight();
         if ((this.jsPluginEngine.activityContext instanceof GameActivity))
         {
           localObject1 = ((GameActivity)this.jsPluginEngine.activityContext).getMiniGameAppId();
           if (!((GameActivity)this.jsPluginEngine.activityContext).getIsOrientationLandscape()) {
-            break label1159;
+            break label1102;
           }
           i = 90;
           f = ((GameActivity)this.jsPluginEngine.activityContext).getGameDensity();
@@ -397,17 +391,12 @@ public class BannerAdPlugin
         if (QLog.isColorLevel()) {
           QLog.i("[minigame] BannerAdPlugin", 2, "receive operateBannerAd event");
         }
-        if (this.jsPluginEngine == null)
-        {
-          QLog.i("[minigame] BannerAdPlugin", 2, "handle operateBannerAd event, jsPluginEngine == null");
-          return "";
-        }
         try
         {
           localObject1 = new JSONObject(paramString2).getString("type");
           QLog.i("[minigame] BannerAdPlugin", 2, "handle operateBannerAd type = " + (String)localObject1);
           if (!"show".equals(localObject1)) {
-            break label973;
+            break label933;
           }
           if (!(this.jsPluginEngine.activityContext instanceof GameActivity)) {
             continue;
@@ -419,7 +408,7 @@ public class BannerAdPlugin
           QLog.i("[minigame] BannerAdPlugin", 2, "handle operateBannerAd parse json error", localJSONException);
         }
         continue;
-        label973:
+        label933:
         if ("hide".equals(localJSONException))
         {
           if ((this.jsPluginEngine.activityContext instanceof GameActivity)) {
@@ -439,14 +428,14 @@ public class BannerAdPlugin
       else if ("updateBannerAdSize".equals(paramString1))
       {
         QLog.i("[minigame] BannerAdPlugin", 2, "updateBannerAdSize " + paramString2);
-        if ((this.jsPluginEngine == null) || (this.jsPluginEngine.activityContext == null) || (paramJsRuntime == null))
+        if (paramJsRuntime == null)
         {
-          QLog.i("[minigame] BannerAdPlugin", 2, "handle updateBannerAdSize event, jsPluginEngine == null");
+          QLog.i("[minigame] BannerAdPlugin", 2, "handle updateBannerAdSize event, webview == null");
           return "";
         }
         updateBannerSize(paramJsRuntime, paramString2);
         continue;
-        label1159:
+        label1102:
         i = 0;
       }
     }

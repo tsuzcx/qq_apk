@@ -1,28 +1,20 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afwr
-  extends anuw
+  implements View.OnClickListener
 {
-  public afwr(TroopRequestActivity paramTroopRequestActivity) {}
+  public afwr(ArkAppView paramArkAppView, ArkViewModel paramArkViewModel) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.systemmsg.TroopRequestActivity", 2, "onCardDownload() isSuccess = " + paramBoolean + "  data:" + paramObject);
+    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
+      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
     }
-    if (paramObject == null) {}
-    Card localCard;
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramBoolean) || (!(paramObject instanceof Card)));
-      localCard = (Card)paramObject;
-    } while ((localCard.uin == null) || (!localCard.uin.equals(this.a.b)));
-    TroopRequestActivity.a(this.a, (Card)paramObject);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

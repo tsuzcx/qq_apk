@@ -1,6 +1,12 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class agze
+  implements DialogInterface.OnClickListener
 {
-  public static final agzb a = new agzb();
+  agze(agzc paramagzc) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

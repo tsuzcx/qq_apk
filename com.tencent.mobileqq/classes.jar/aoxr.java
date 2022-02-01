@@ -1,99 +1,166 @@
 import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.download.ArkDownloadController.1;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class aoxr
-  extends aoxg
 {
-  public aoxr(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    super(paramQQAppInterface, paramContext);
-  }
+  private static aoxr jdField_a_of_type_Aoxr;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private ArrayList<aoxu> jdField_a_of_type_JavaUtilArrayList = new ArrayList(4);
+  private boolean jdField_a_of_type_Boolean;
+  private ArrayList<aoxu> b = new ArrayList(4);
   
-  public boolean a()
+  public static aoxr a()
   {
+    if (jdField_a_of_type_Aoxr == null) {}
     try
     {
-      boolean bool = e();
-      return bool;
+      if (jdField_a_of_type_Aoxr == null) {
+        jdField_a_of_type_Aoxr = new aoxr();
+      }
+      return jdField_a_of_type_Aoxr;
     }
-    catch (Exception localException)
-    {
-      QLog.e("OnlineDatingAction", 1, "doAction error: " + localException.getMessage());
-      a("OnlineDatingAction");
-    }
-    return false;
+    finally {}
   }
   
-  public boolean e()
+  private void a(Context paramContext, ArrayList<aoxu> paramArrayList, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2)
   {
-    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("roomid");
-    Object localObject6 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromid");
-    Object localObject3 = "";
-    Object localObject1 = localObject3;
-    if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("vasname"))) {}
+    if (paramArrayList.size() <= 4) {
+      paramLinearLayout2.setVisibility(8);
+    }
+    Drawable localDrawable = paramContext.getResources().getDrawable(2130838685);
+    int i = 0;
+    if (i < paramArrayList.size())
+    {
+      Object localObject = (aoxu)paramArrayList.get(i);
+      View localView = LayoutInflater.from(paramContext).inflate(2131558699, null, false);
+      URLImageView localURLImageView = (URLImageView)localView.findViewById(2131368238);
+      TextView localTextView = (TextView)localView.findViewById(2131371963);
+      QLog.d("ark.download.ctrl", 1, new Object[] { "ark.dctrl [initAppView] item[", Integer.valueOf(i), "],app name:", ((aoxu)localObject).b, ",appid:", ((aoxu)localObject).jdField_a_of_type_JavaLangString, ",icon:", ((aoxu)localObject).c });
+      if (i < 7)
+      {
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mRequestWidth = AIOUtils.dp2px(47.0F, paramContext.getResources());
+        localURLDrawableOptions.mRequestHeight = localURLDrawableOptions.mRequestWidth;
+        localURLDrawableOptions.mLoadingDrawable = localDrawable;
+        localURLDrawableOptions.mFailedDrawable = localDrawable;
+        localObject = URLDrawable.getDrawable(((aoxu)localObject).c, localURLDrawableOptions);
+        ((URLDrawable)localObject).setTargetDensity(paramContext.getResources().getDisplayMetrics().densityDpi);
+        if (((URLDrawable)localObject).getStatus() == 2) {
+          ((URLDrawable)localObject).restartDownload();
+        }
+        localURLImageView.setImageDrawable((Drawable)localObject);
+        localTextView.setVisibility(8);
+        label256:
+        if (i >= 4) {
+          break label336;
+        }
+        paramLinearLayout1.addView(localView, i);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if (i != 7) {
+          return;
+        }
+        localURLImageView.setImageDrawable(paramContext.getResources().getDrawable(2130838687));
+        localTextView.setText(String.format("+%d", new Object[] { Integer.valueOf(paramArrayList.size() - 7) }));
+        localTextView.setVisibility(0);
+        break label256;
+        label336:
+        paramLinearLayout2.addView(localView, i - 4);
+      }
+    }
+  }
+  
+  private void a(String paramString)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      QLog.e("ark.download.ctrl", 1, new Object[] { "ark.dctrl [checkWaitQueueToShowDialog] waite size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        this.b.clear();
+        this.b.addAll((ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone());
+        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        b(paramString);
+      }
+      return;
+    }
+  }
+  
+  private void b(String paramString)
+  {
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if ((localBaseActivity == null) || (localBaseActivity.isFinishing()) || (this.b == null) || (this.b.size() <= 0))
+    {
+      if (this.b != null) {}
+      for (int i = this.b.size();; i = 0)
+      {
+        QLog.e("ark.download.ctrl", 1, new Object[] { "ark.dctrl [showDownloadDialog] error,showlist size:", Integer.valueOf(i) });
+        return;
+      }
+    }
+    Object localObject = new aoxs(this, paramString);
     try
     {
-      localObject1 = URLDecoder.decode((String)this.jdField_a_of_type_JavaUtilHashMap.get("vasname"), "utf-8");
-      localObject5 = "";
-      localObject3 = localObject5;
-      if (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("userdata"))) {}
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_Int = this.b.size();
+      QLog.e("ark.download.ctrl", 1, new Object[] { "ark.dctrl [showDownloadDialog] arkappname:", paramString, ",showlist size:", Integer.valueOf(this.jdField_a_of_type_Int) });
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(localBaseActivity, 230, 2131558698, null, String.format(localBaseActivity.getString(2131690136), new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }), localBaseActivity.getString(2131690620), localBaseActivity.getString(2131690133), (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
+      localObject = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131369978);
+      LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131369977);
+      a(localBaseActivity, this.b, (LinearLayout)localObject, localLinearLayout);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new aoxt(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+      bcef.a(null, "dc00898", "", "", "0X800AD1C", "0X800AD1C", 3, 0, String.valueOf(this.jdField_a_of_type_Int), "", paramString, "");
+      return;
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException1)
+    catch (Exception paramString)
     {
-      try
+      QLog.e("ark.download.ctrl", 1, "ark.dctrl [showDownloadDialog] exception:", paramString);
+    }
+  }
+  
+  public void a(String paramString1, String arg2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    QLog.d("ark.download.ctrl", 1, new Object[] { "ark.dctrl [showDownloadPermissionDialog] arkAppName:", paramString1, ", queue size[", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), "], app:" + paramString3 + ",iconUrl:" + paramString4 });
+    aoxu localaoxu = new aoxu();
+    localaoxu.jdField_a_of_type_JavaLangString = ???;
+    localaoxu.c = paramString4;
+    localaoxu.b = paramString3;
+    localaoxu.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.add(localaoxu);
+      if (!this.jdField_a_of_type_Boolean)
       {
-        localObject3 = URLDecoder.decode((String)this.jdField_a_of_type_JavaUtilHashMap.get("vasname"), "utf-8");
-        long l1 = 0L;
-        try
-        {
-          long l2 = Long.parseLong(str);
-          l1 = l2;
-        }
-        catch (NumberFormatException localNumberFormatException1)
-        {
-          for (;;)
-          {
-            int i;
-            localNumberFormatException1.printStackTrace();
-          }
-        }
-        i = 0;
-        try
-        {
-          int j = Integer.parseInt((String)localObject6);
-          i = j;
-        }
-        catch (NumberFormatException localNumberFormatException2)
-        {
-          for (;;)
-          {
-            Object localObject2;
-            Object localObject4;
-            localNumberFormatException2.printStackTrace();
-          }
-        }
-        localObject5 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        localObject6 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        ((awdu)((QQAppInterface)localObject5).getManager(108)).a(this.jdField_a_of_type_AndroidContentContext, l1, "launcher", (String)localObject1, (String)localObject3, i);
-        return true;
-        localUnsupportedEncodingException1 = localUnsupportedEncodingException1;
-        localUnsupportedEncodingException1.printStackTrace();
-        localObject2 = localObject3;
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_JavaLangRunnable = new ArkDownloadController.1(this, paramString1);
+        ArkDispatchTask.getInstance().postToMainThreadDelayed(this.jdField_a_of_type_JavaLangRunnable, 150L);
       }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException2)
-      {
-        for (;;)
-        {
-          Object localObject5;
-          localUnsupportedEncodingException2.printStackTrace();
-          localObject4 = localObject5;
-        }
-      }
+      return;
     }
   }
 }

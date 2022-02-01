@@ -1,35 +1,88 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.Intent;
+import android.os.Bundle;
+import java.util.Iterator;
+import java.util.Set;
 
-public final class wxw
-  extends QQUIEventReceiver<wxp, wtz>
+public class wxw
+  extends wrx
 {
-  public wxw(@NonNull wxp paramwxp)
-  {
-    super(paramwxp);
-  }
+  public wxw(wxu paramwxu) {}
   
-  public void a(@NonNull wxp paramwxp, @NonNull wtz paramwtz)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    yuk.a(this.TAG, "onEvent, %s", String.valueOf(paramwtz));
-    wvn localwvn = paramwxp.a.a(3, "");
-    if ((localwvn != null) && (paramwtz.jdField_b_of_type_JavaLangString.equals(localwvn.jdField_e_of_type_JavaLangString)))
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
     {
-      yuk.b(this.TAG, "onEvent, guideInfoNode read");
-      paramwxp = new wwv();
-      paramwxp.jdField_b_of_type_JavaLangString = localwvn.jdField_a_of_type_JavaLangString;
-      paramwxp.c = localwvn.jdField_a_of_type_Int;
-      paramwxp.d = 5;
-      paramwxp.jdField_b_of_type_Long = localwvn.jdField_e_of_type_Long;
-      wow.a().a(paramwxp, null);
-      return;
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((wqo)localIterator.next()).a(paramInt1, paramInt2, paramIntent);
+      }
     }
-    paramwxp.a.a(paramwtz.jdField_a_of_type_JavaLangString, paramwtz.jdField_a_of_type_Long);
   }
   
-  public Class acceptEventClass()
+  public void a(Bundle paramBundle1, Bundle paramBundle2)
   {
-    return wtz.class;
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((wqo)localIterator.next()).a(paramBundle1, paramBundle2);
+      }
+    }
+  }
+  
+  public void c()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((wqo)localIterator.next()).c();
+      }
+    }
+  }
+  
+  public void d()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((wqo)localIterator.next()).d();
+      }
+    }
+  }
+  
+  public void e()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((wqo)localIterator.next()).e();
+      }
+    }
+  }
+  
+  public void f()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((wqo)localIterator.next()).f();
+      }
+    }
+  }
+  
+  public void g()
+  {
+    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    {
+      Iterator localIterator = this.a.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((wqo)localIterator.next()).g();
+      }
+    }
   }
 }
 

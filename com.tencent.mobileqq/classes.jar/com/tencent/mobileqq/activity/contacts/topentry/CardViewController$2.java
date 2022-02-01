@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.contacts.topentry;
 
-import ajwv;
+import airs;
 import java.util.ArrayList;
 
 public class CardViewController$2
   implements Runnable
 {
-  public CardViewController$2(ajwv paramajwv) {}
+  public CardViewController$2(airs paramairs) {}
   
   public void run()
   {
-    ArrayList localArrayList = ajwv.a(this.this$0);
-    ajwv.a(this.this$0, localArrayList);
+    ArrayList localArrayList = airs.a(this.this$0);
+    airs.a(this.this$0, localArrayList);
   }
 }
 

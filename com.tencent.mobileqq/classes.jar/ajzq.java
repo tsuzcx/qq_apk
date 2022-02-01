@@ -1,13 +1,26 @@
-import android.animation.ValueAnimator;
-import android.widget.ProgressBar;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class ajzq
+  implements View.OnFocusChangeListener
 {
-  public static ValueAnimator a(ProgressBar paramProgressBar, int paramInt)
+  public ajzq(WordChainHbFragment paramWordChainHbFragment) {}
+  
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, paramInt }).setDuration(500L);
-    localValueAnimator.addUpdateListener(new ajzr(paramProgressBar));
-    return localValueAnimator;
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_Nmg = new nmg(this.a.jdField_a_of_type_AndroidViewView, new ajzr(this), ImmersiveUtils.getStatusBarHeight(this.a.getActivity()) + 160);
+      WordChainHbFragment.a(this.a, 8);
+    }
+    do
+    {
+      return;
+      WordChainHbFragment.a(this.a, 0);
+    } while (this.a.jdField_a_of_type_Nmg == null);
+    this.a.jdField_a_of_type_Nmg.a();
   }
 }
 

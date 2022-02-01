@@ -1,46 +1,21 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.qidian.data.QidianExternalInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class adsy
-  extends bkia
+  implements DialogInterface.OnClickListener
 {
-  public adsy(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public adsy(NotificationActivity paramNotificationActivity) {}
   
-  protected void b(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
-    {
-      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
-      if (AddFriendVerifyActivity.a(this.a).equals(paramHashMap.uin)) {
-        if (AddFriendVerifyActivity.a(this.a) != null)
-        {
-          str = AddFriendVerifyActivity.a(this.a).getText().toString();
-          if ((TextUtils.isEmpty(str)) || (str.equals(AddFriendVerifyActivity.a(this.a)))) {
-            AddFriendVerifyActivity.a(this.a).setText(paramHashMap.nickname);
-          }
-        }
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      String str;
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo not current uin");
-      return;
-    }
-    QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo fail");
+    NotificationActivity.b(this.a, 0);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adsy
  * JD-Core Version:    0.7.0.1
  */

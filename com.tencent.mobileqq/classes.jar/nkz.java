@@ -1,59 +1,31 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.PoiMapActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RspBody;
-import tencent.im.oidb.cmd0x791.oidb_0x791.SetRedDotRes;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-class nkz
-  implements BusinessObserver
+public class nkz
+  implements AbsListView.OnScrollListener
 {
-  nkz(nku paramnku) {}
+  public nkz(PoiMapActivity paramPoiMapActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramBoolean) {
-      try
-      {
-        Object localObject = paramBundle.getByteArray("data");
-        paramBundle = new oidb_sso.OIDBSSOPkg();
-        paramBundle.mergeFrom((byte[])localObject);
-        if ((paramBundle != null) && (paramBundle.uint32_result.has()) && (paramBundle.uint32_result.get() == 0) && (paramBundle.bytes_bodybuffer.has()))
-        {
-          if (paramBundle.bytes_bodybuffer.get() == null) {
-            return;
-          }
-          localObject = new oidb_0x791.RspBody();
-          ((oidb_0x791.RspBody)localObject).mergeFrom(paramBundle.bytes_bodybuffer.get().toByteArray());
-          localObject = (oidb_0x791.SetRedDotRes)((oidb_0x791.RspBody)localObject).msg_set_reddot_res.get();
-          if (localObject != null)
-          {
-            paramBundle = "";
-            localObject = ((oidb_0x791.SetRedDotRes)localObject).rpt_uint64_failed_uin.get().iterator();
-            while (((Iterator)localObject).hasNext())
-            {
-              long l = ((Long)((Iterator)localObject).next()).longValue();
-              paramBundle = paramBundle + String.valueOf(l) + ",";
-            }
-            if ((!TextUtils.isEmpty(paramBundle)) && (QLog.isColorLevel()))
-            {
-              QLog.d("SplashActivityQ.qqstory.redPoint", 2, "setRedDotInfo failed result is:" + paramBundle);
-              return;
-            }
-          }
-        }
+    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("PoiMapActivity", 4, "onScrollStateChanged");
       }
-      catch (InvalidProtocolBufferMicroException paramBundle)
+      if ((!this.a.f) && (this.a.d))
       {
-        paramBundle.printStackTrace();
+        this.a.f = true;
+        paramAbsListView = this.a;
+        paramAbsListView.n += 1;
+        if (QLog.isDevelopLevel()) {
+          QLog.i("PoiMapActivity", 4, "onScrollStateChanged mSearchPage:" + this.a.n);
+        }
+        this.a.a(this.a.h, this.a.i, this.a.c, "", this.a.n, 20);
       }
     }
   }

@@ -1,8 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bqcj;
-import brij;
-import com.tencent.biz.qqstory.app.QQStoryContext;
+import bncm;
+import bobu;
 
 class EditVideoActivity$1
   implements Runnable
@@ -11,8 +10,8 @@ class EditVideoActivity$1
   
   public void run()
   {
-    brij.a(QQStoryContext.a().a(), this.this$0);
-    bqcj.a(QQStoryContext.a().a(), this.this$0);
+    bobu.a();
+    bncm.a();
   }
 }
 

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.reflect.Field;
-import tzq;
+import ugf;
 
 public final class StructMsgForHypertext$HyperTextView
   extends TextView
@@ -65,7 +65,7 @@ public final class StructMsgForHypertext$HyperTextView
   
   public void onClick(View paramView)
   {
-    Object localObject = paramView.getTag(2131378101);
+    Object localObject = paramView.getTag(2131377871);
     if ((localObject != null) && ((localObject instanceof StructMsgForHypertext)))
     {
       localObject = (StructMsgForHypertext)localObject;
@@ -85,7 +85,7 @@ public final class StructMsgForHypertext$HyperTextView
         Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
         localIntent.putExtra("big_brother_source_key", "biz_src_jc_aio");
         localIntent.putExtra("url", ((StructMsgForHypertext)localObject).mMsgUrl);
-        tzq.a(((StructMsgForHypertext)localObject).message, localIntent, ((StructMsgForHypertext)localObject).mMsgUrl);
+        ugf.a(((StructMsgForHypertext)localObject).message, localIntent, ((StructMsgForHypertext)localObject).mMsgUrl);
         localContext.startActivity(localIntent);
         this.jdField_a_of_type_Boolean = true;
       }
@@ -102,7 +102,7 @@ public final class StructMsgForHypertext$HyperTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForHypertext.HyperTextView
  * JD-Core Version:    0.7.0.1
  */

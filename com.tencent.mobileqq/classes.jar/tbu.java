@@ -1,23 +1,57 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import android.widget.BaseAdapter;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-public class tbu
-  implements Animation.AnimationListener
+public abstract class tbu<T>
+  extends BaseAdapter
+  implements tbw
 {
-  public tbu(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, int paramInt1, int paramInt2) {}
+  private int jdField_a_of_type_Int;
+  private HashMap<T, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(T paramT)
   {
-    CommonSuspensionGestureLayout.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).setVisibility(8);
-    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout).a(true, this.jdField_a_of_type_Int, this.b);
-    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaCommonSuspensionGestureLayout, this.b);
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    localHashMap.put(paramT, Integer.valueOf(i));
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  protected void a(List<T> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      a(paramList.next());
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void b()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public T getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public final long getItemId(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilHashMap.size())) {
+      return -1L;
+    }
+    Object localObject = getItem(paramInt);
+    if (this.jdField_a_of_type_JavaUtilHashMap.get(localObject) != null) {
+      return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue();
+    }
+    return paramInt;
+  }
+  
+  public final boolean hasStableIds()
+  {
+    return true;
+  }
 }
 
 

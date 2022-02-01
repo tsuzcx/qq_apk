@@ -1,73 +1,27 @@
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.text.TextUtils;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import org.json.JSONObject;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout;
 
-class ayqa
-  extends AsyncTask<Integer, Void, Bundle>
+public class ayqa
+  extends RecyclerView.ViewHolder
 {
-  ayqa(aypz paramaypz) {}
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public RoundRelativeLayout a;
+  public ImageView b;
   
-  protected Bundle a(Integer... paramVarArgs)
+  public ayqa(ayps paramayps, View paramView)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("downloadcode", paramVarArgs[0].intValue());
-    try
-    {
-      paramVarArgs = (HttpURLConnection)new URL("https://tiantian.qq.com/qiqimanage/qunpack/android/58.json").openConnection();
-      paramVarArgs.setConnectTimeout(5000);
-      paramVarArgs.setReadTimeout(30000);
-      paramVarArgs.setRequestMethod("GET");
-      paramVarArgs.setRequestProperty("Connection", "Keep-Alive");
-      paramVarArgs.connect();
-      paramVarArgs = new BufferedReader(new InputStreamReader(paramVarArgs.getInputStream()));
-      Object localObject = new StringBuffer();
-      for (;;)
-      {
-        String str = paramVarArgs.readLine();
-        if (str == null) {
-          break;
-        }
-        ((StringBuffer)localObject).append(str).append("\n");
-      }
-      localObject = ((StringBuffer)localObject).toString();
-      paramVarArgs.close();
-      paramVarArgs = new JSONObject((String)localObject);
-      if (paramVarArgs.optInt("errCode", -1) == 0)
-      {
-        paramVarArgs = paramVarArgs.optJSONObject("data");
-        if (paramVarArgs != null)
-        {
-          paramVarArgs = paramVarArgs.optJSONObject("package");
-          if (paramVarArgs != null)
-          {
-            localBundle.putString("DownPackage", paramVarArgs.optString("package"));
-            localBundle.putString("DownUrl", paramVarArgs.optString("url"));
-            localBundle.putString("DownAppId", paramVarArgs.optString("appid"));
-          }
-        }
-      }
-      return localBundle;
-    }
-    catch (Exception paramVarArgs) {}
-    return null;
-  }
-  
-  protected void a(Bundle paramBundle)
-  {
-    if (paramBundle != null)
-    {
-      this.a.b = paramBundle.getString("DownPackage");
-      this.a.d = paramBundle.getString("DownUrl");
-      this.a.c = paramBundle.getString("DownAppId");
-      if ((!TextUtils.isEmpty(this.a.b)) && (!TextUtils.isEmpty(this.a.c)) && (!TextUtils.isEmpty(this.a.d))) {
-        this.a.a(paramBundle.getInt("downloadcode"));
-      }
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379724));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368464));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetRoundRelativeLayout = ((RoundRelativeLayout)paramView.findViewById(2131363428));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369937));
+    this.b = ((ImageView)paramView.findViewById(2131368589));
   }
 }
 

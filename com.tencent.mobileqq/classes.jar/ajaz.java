@@ -1,17 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
-public class ajaz
-  implements DialogInterface.OnClickListener
+class ajaz
 {
-  public ajaz(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    BlessSelectMemberActivity.a(this.a, null);
-  }
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 

@@ -1,34 +1,18 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 public class nyw
-  implements bliz
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public nyw(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  public nyw(VideoCoverView paramVideoCoverView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (ReadInJoyNativeAdFragment.a(this.a)) {
-      return;
-    }
-    ReadInJoyNativeAdFragment.a(this.a, true);
-    paramView = "";
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ReadInJoyNativeAdFragment.a(this.a).dismiss();
-      QQToast.a(this.a.getActivity(), 2, paramView, 0).b(0);
-      return;
-      nzq.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 1, 0);
-      paramView = this.a.getString(2131717190);
-      continue;
-      nzq.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 2, 0);
-      paramView = this.a.getString(2131717192);
-    }
+    this.a.jdField_a_of_type_Int = 7;
+    nya.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString);
+    this.a.g();
+    return false;
   }
 }
 

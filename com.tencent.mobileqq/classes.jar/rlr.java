@@ -1,36 +1,16 @@
-public abstract interface rlr
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
+
+public class rlr
+  extends rmy
 {
-  public abstract void a(rrm paramrrm);
+  public rlr(EditVideoFragment paramEditVideoFragment) {}
   
-  public abstract void a(rrm paramrrm, int paramInt1, int paramInt2, String paramString);
-  
-  public abstract void a(rrm paramrrm, int paramInt, boolean paramBoolean);
-  
-  public abstract void a(rrm paramrrm, long paramLong1, long paramLong2);
-  
-  public abstract void a(rrm paramrrm, boolean paramBoolean);
-  
-  public abstract void a(rrm paramrrm, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract boolean a(rrm paramrrm);
-  
-  public abstract void b(rrm paramrrm);
-  
-  public abstract void b(rrm paramrrm, boolean paramBoolean);
-  
-  public abstract void c(rrm paramrrm);
-  
-  public abstract void d(rrm paramrrm);
-  
-  public abstract void e(rrm paramrrm);
-  
-  public abstract void f(rrm paramrrm);
-  
-  public abstract void g(rrm paramrrm);
-  
-  public abstract void h(rrm paramrrm);
-  
-  public abstract void i(rrm paramrrm);
+  public void o()
+  {
+    if ((EditVideoFragment.a(this.a) != null) && (EditVideoFragment.a(this.a))) {
+      EditVideoFragment.a(this.a).b();
+    }
+  }
 }
 
 

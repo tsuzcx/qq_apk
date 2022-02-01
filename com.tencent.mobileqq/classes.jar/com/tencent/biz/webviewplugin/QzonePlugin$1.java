@@ -1,17 +1,17 @@
 package com.tencent.biz.webviewplugin;
 
-import abgi;
+import aact;
 import com.tencent.smtt.sdk.WebView;
 
 public class QzonePlugin$1
   implements Runnable
 {
-  public QzonePlugin$1(abgi paramabgi, byte[] paramArrayOfByte) {}
+  public QzonePlugin$1(aact paramaact, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    if (abgi.a(this.this$0) != null) {
-      abgi.a(this.this$0).postUrl(abgi.a(this.this$0), this.a);
+    if (aact.a(this.this$0) != null) {
+      aact.a(this.this$0).postUrl(aact.a(this.this$0), this.a);
     }
   }
 }

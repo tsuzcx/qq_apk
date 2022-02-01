@@ -9,7 +9,7 @@ class GameRuntimeStateObserver$5
   
   public void run()
   {
-    if (!GameRuntimeStateObserver.access$200(this.this$0).isFinishing()) {
+    if ((GameRuntimeStateObserver.access$200(this.this$0) != null) && (!GameRuntimeStateObserver.access$200(this.this$0).isFinishing())) {
       GameRuntimeStateObserver.access$200(this.this$0).finish();
     }
   }

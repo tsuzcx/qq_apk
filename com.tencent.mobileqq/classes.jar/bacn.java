@@ -1,20 +1,8 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import android.graphics.Bitmap;
 
-public class bacn
+public abstract interface bacn
 {
-  public int a;
-  public Point a;
-  public int b;
-  public Point b;
-  public int c;
-  public Point c;
-  public int d;
-  public Point d;
-  public Point e;
-  public Point f;
-  
-  public bacn(SingleTouchLayout paramSingleTouchLayout) {}
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

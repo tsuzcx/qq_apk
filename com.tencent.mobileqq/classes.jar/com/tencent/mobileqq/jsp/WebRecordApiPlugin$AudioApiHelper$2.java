@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.jsp;
 
-import awji;
-import bhjc;
+import auwm;
+import com.tencent.mobileqq.util.SharePreferenceUtils;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,7 +11,7 @@ import java.util.Date;
 public class WebRecordApiPlugin$AudioApiHelper$2
   implements Runnable
 {
-  public WebRecordApiPlugin$AudioApiHelper$2(awji paramawji, String paramString) {}
+  public WebRecordApiPlugin$AudioApiHelper$2(auwm paramauwm, String paramString) {}
   
   public void run()
   {
@@ -41,7 +41,7 @@ public class WebRecordApiPlugin$AudioApiHelper$2
               if (((Date)localObject2).before(((Calendar)localObject3).getTime()))
               {
                 localObject1[i].delete();
-                bhjc.a(this.jdField_a_of_type_Awji.a, str);
+                SharePreferenceUtils.remove(this.jdField_a_of_type_Auwm.a, str);
               }
               i += 1;
             }
@@ -57,7 +57,7 @@ public class WebRecordApiPlugin$AudioApiHelper$2
       }
       long l = System.currentTimeMillis();
       localObject1 = new SimpleDateFormat("yyyyMMdd").format(new Date(l));
-      bhjc.a(this.jdField_a_of_type_Awji.a, "LAST_DELETE_TIME", (String)localObject1);
+      SharePreferenceUtils.set(this.jdField_a_of_type_Auwm.a, "LAST_DELETE_TIME", (String)localObject1);
     }
   }
 }

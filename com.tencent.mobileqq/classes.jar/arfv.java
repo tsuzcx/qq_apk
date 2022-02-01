@@ -1,69 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 
 public class arfv
+  implements avtb<EmoticonPackage>
 {
-  private boolean a;
+  public arfv(AIOEmotionFragment paramAIOEmotionFragment, QQAppInterface paramQQAppInterface) {}
   
-  public static arfv a(araj[] paramArrayOfaraj)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    arfv localarfv = new arfv();
-    StringBuilder localStringBuilder = new StringBuilder();
-    for (;;)
+    if (paramEmoticonPackage == null)
     {
-      try
-      {
-        int j = paramArrayOfaraj.length;
-        int i = 0;
-        if (i < j)
-        {
-          String str = paramArrayOfaraj[i].a;
-          QLog.d("OpenSdkD55Processor", 1, new Object[] { "content=", str });
-          JSONObject localJSONObject = new JSONObject(str);
-          if (localJSONObject.has("enable_d55"))
-          {
-            if (localJSONObject.optInt("enable_d55", 0) == 1)
-            {
-              bool = true;
-              localarfv.a = bool;
-            }
-          }
-          else
-          {
-            localStringBuilder.append("config: ").append(str).append(",");
-            i += 1;
-          }
-        }
-        else
-        {
-          QLog.d("OpenSdkD55Processor", 1, "parse, content:" + localStringBuilder.toString());
-          return localarfv;
-        }
-      }
-      catch (JSONException paramArrayOfaraj)
-      {
-        QLog.e("OpenSdkD55Processor", 1, "JSONException", paramArrayOfaraj);
-        return null;
-      }
-      boolean bool = false;
+      AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 7);
+      return;
     }
-  }
-  
-  public boolean a()
-  {
-    return this.a;
-  }
-  
-  public String toString()
-  {
-    new StringBuilder().append("isSwitchOpen:").append(this.a);
-    return super.toString();
+    agif.a(7, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arfv
  * JD-Core Version:    0.7.0.1
  */

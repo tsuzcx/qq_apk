@@ -1,12 +1,27 @@
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
+
 class xgy
-  extends xgd
+  extends ParallelJobSegment<String, xgu>
 {
-  xgy(xgp paramxgp, xhx paramxhx) {}
+  public int a;
   
-  public boolean b()
+  public xgy(xgs paramxgs, int paramInt)
   {
-    this.jdField_a_of_type_Xhx.e = ((String)a("UploadImageJob_out_image_url"));
-    return true;
+    super("RequestLikeListSegment");
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected void a(JobContext paramJobContext, String paramString)
+  {
+    xhm localxhm = new xhm();
+    localxhm.jdField_a_of_type_JavaLangString = paramString;
+    localxhm.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Int != -1) {
+      localxhm.c = this.jdField_a_of_type_Int;
+    }
+    vqn.a().a(localxhm, new xgz(this, paramJobContext, paramString));
   }
 }
 

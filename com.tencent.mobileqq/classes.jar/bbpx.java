@@ -1,8 +1,6 @@
 public class bbpx
 {
-  public int a;
-  public String a;
-  public int b;
+  public void a() {}
 }
 
 

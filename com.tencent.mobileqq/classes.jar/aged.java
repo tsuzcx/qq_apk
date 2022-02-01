@@ -1,77 +1,17 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.mobileqq.activity.aio.AIOTipsController.1;
-import com.tencent.mobileqq.activity.aio.AIOTipsController.2;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aged
+class aged
+  extends aghj
 {
-  public agee a;
-  private ViewGroup a;
-  
-  public aged(ViewGroup paramViewGroup)
+  aged(agcw paramagcw)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    super(paramagcw, null);
   }
   
-  public void a()
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-  }
-  
-  public void a(agee paramagee)
-  {
-    this.jdField_a_of_type_Agee = paramagee;
-  }
-  
-  public void a(aiwf paramaiwf)
-  {
-    if (QLog.isColorLevel()) {
-      if (paramaiwf != null) {
-        break label65;
-      }
-    }
-    label65:
-    for (String str = "null";; str = Integer.toHexString(System.identityHashCode(paramaiwf)))
-    {
-      QLog.d("AIOTipsController", 2, "showHearerTips called object=" + str);
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewViewGroup.post(new AIOTipsController.2(this, paramaiwf));
-      return;
-    }
-  }
-  
-  public void a(View paramView, aiwf paramaiwf)
-  {
-    int j;
-    if (paramView != null)
-    {
-      j = this.jdField_a_of_type_AndroidViewViewGroup.indexOfChild(paramView);
-      if (j == -1) {
-        this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, new ViewGroup.LayoutParams(-1, -2));
-      }
-      int i = 0;
-      while (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
-      {
-        this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i).setVisibility(8);
-        i += 1;
-      }
-      if (QLog.isColorLevel()) {
-        if (paramaiwf != null) {
-          break label152;
-        }
-      }
-    }
-    label152:
-    for (String str = "null";; str = Integer.toHexString(System.identityHashCode(paramaiwf)))
-    {
-      QLog.d("AIOTipsController", 2, "showHearerTips called childIndex = " + j + " object=" + str);
-      paramView.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewViewGroup.post(new AIOTipsController.1(this, paramaiwf));
-      return;
-    }
+    return asgg.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, 65, paramChatMessage);
   }
 }
 

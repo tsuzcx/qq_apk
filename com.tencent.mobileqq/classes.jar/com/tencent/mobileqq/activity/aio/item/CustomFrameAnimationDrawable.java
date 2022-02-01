@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahca;
-import ahcb;
-import ahcc;
-import ahcd;
-import ahce;
+import afym;
+import afyn;
+import afyo;
+import afyp;
+import afyq;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -30,10 +30,10 @@ public class CustomFrameAnimationDrawable
   implements Runnable
 {
   private int jdField_a_of_type_Int;
-  ahca jdField_a_of_type_Ahca = null;
-  public ahcb a;
-  private ahcc jdField_a_of_type_Ahcc;
-  private ahcd jdField_a_of_type_Ahcd;
+  afym jdField_a_of_type_Afym = null;
+  public afyn a;
+  private afyo jdField_a_of_type_Afyo;
+  private afyp jdField_a_of_type_Afyp;
   Resources jdField_a_of_type_AndroidContentResResources = null;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
   Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
@@ -53,9 +53,9 @@ public class CustomFrameAnimationDrawable
   private int jdField_e_of_type_Int;
   private boolean jdField_e_of_type_Boolean;
   
-  private CustomFrameAnimationDrawable(ahcb paramahcb, Resources paramResources)
+  private CustomFrameAnimationDrawable(afyn paramafyn, Resources paramResources)
   {
-    this.jdField_a_of_type_Ahcb = paramahcb;
+    this.jdField_a_of_type_Afyn = paramafyn;
     a(paramResources);
   }
   
@@ -66,7 +66,7 @@ public class CustomFrameAnimationDrawable
     this.jdField_a_of_type_JavaUtilArrayList = null;
     this.jdField_a_of_type_AndroidContentResResources = paramResources;
     this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_Ahcb = new ahcb();
+    this.jdField_a_of_type_Afyn = new afyn();
     this.jdField_a_of_type_JavaUtilVector = new Vector();
     int j;
     if (paramResources != null)
@@ -74,9 +74,9 @@ public class CustomFrameAnimationDrawable
       j = paramResources.getDisplayMetrics().densityDpi;
       if (j != 0) {}
     }
-    for (this.jdField_b_of_type_Int = i;; this.jdField_b_of_type_Int = this.jdField_a_of_type_Ahcb.jdField_b_of_type_Int)
+    for (this.jdField_b_of_type_Int = i;; this.jdField_b_of_type_Int = this.jdField_a_of_type_Afyn.jdField_b_of_type_Int)
     {
-      this.jdField_a_of_type_Ahcb.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      this.jdField_a_of_type_Afyn.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
       if (paramBitmap == null) {
         break label200;
       }
@@ -91,14 +91,69 @@ public class CustomFrameAnimationDrawable
     this.jdField_c_of_type_Int = -1;
   }
   
-  public CustomFrameAnimationDrawable(Resources paramResources, Bitmap paramBitmap, MqqHandler paramMqqHandler, ahcb paramahcb, String paramString, boolean paramBoolean)
+  public CustomFrameAnimationDrawable(Resources paramResources, Bitmap paramBitmap, MqqHandler paramMqqHandler, afyn paramafyn, String paramString, boolean paramBoolean)
   {
     this(paramResources, paramBitmap, paramMqqHandler);
-    this.jdField_a_of_type_Ahcb = paramahcb;
+    this.jdField_a_of_type_Afyn = paramafyn;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Boolean = paramBoolean;
     if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Boolean)) {
       ThreadManager.postImmediately(new CustomFrameAnimationDrawable.1(this), null, true);
+    }
+  }
+  
+  private void a(int paramInt, long paramLong)
+  {
+    Object localObject;
+    if (paramInt < this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (paramInt - this.jdField_a_of_type_Afyn.jdField_c_of_type_Int < 2)
+      {
+        localObject = (afyq)this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$DecodeRunnable == null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$DecodeRunnable = new CustomFrameAnimationDrawable.DecodeRunnable(this, paramInt, ((afyq)localObject).jdField_a_of_type_JavaLangString, ((afyq)localObject).jdField_c_of_type_Int, this.jdField_a_of_type_Afyn.jdField_b_of_type_JavaUtilArrayList);
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$DecodeRunnable.a(this.jdField_a_of_type_AndroidContentResResources);
+          if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+            this.jdField_a_of_type_MqqOsMqqHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$DecodeRunnable);
+          }
+          localObject = this.jdField_a_of_type_Afyn;
+          ((afyn)localObject).jdField_c_of_type_Int += 1;
+          if (!this.jdField_a_of_type_Afyn.jdField_d_of_type_Boolean)
+          {
+            localObject = this.jdField_a_of_type_Afyn;
+            ((afyn)localObject).jdField_c_of_type_Int %= this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.size();
+          }
+        }
+      }
+      localObject = (afyq)this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Afyn.jdField_a_of_type_Int);
+      if (paramLong != 0L) {
+        break label312;
+      }
+    }
+    label312:
+    for (paramLong = SystemClock.uptimeMillis() + ((afyq)localObject).jdField_b_of_type_Int;; paramLong = SystemClock.uptimeMillis() + paramLong)
+    {
+      scheduleSelf(this, paramLong);
+      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Boolean))
+      {
+        HapticManager localHapticManager = HapticManager.a();
+        paramInt = this.jdField_a_of_type_Int;
+        int i = this.jdField_a_of_type_Afyn.jdField_a_of_type_Int;
+        localHapticManager.a(paramInt, ((afyq)localObject).jdField_b_of_type_Int * i);
+      }
+      return;
+      if (this.jdField_a_of_type_Afym != null) {
+        this.jdField_a_of_type_Afym.a();
+      }
+      if (this.jdField_b_of_type_Boolean)
+      {
+        j();
+        this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.clear();
+      }
+      this.jdField_a_of_type_Afyn.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Afyn.jdField_c_of_type_Boolean = true;
+      return;
     }
   }
   
@@ -113,7 +168,7 @@ public class CustomFrameAnimationDrawable
         i = 160;
       }
     }
-    for (this.jdField_b_of_type_Int = i;; this.jdField_b_of_type_Int = this.jdField_a_of_type_Ahcb.jdField_b_of_type_Int)
+    for (this.jdField_b_of_type_Int = i;; this.jdField_b_of_type_Int = this.jdField_a_of_type_Afyn.jdField_b_of_type_Int)
     {
       m();
       return;
@@ -143,29 +198,112 @@ public class CustomFrameAnimationDrawable
     this.jdField_c_of_type_Int = -1;
   }
   
-  public int a()
+  private void n()
   {
-    return this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int;
+    Object localObject = a();
+    if (localObject != null)
+    {
+      Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      if ((!this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilVector.size() <= 2)) {
+        this.jdField_a_of_type_JavaUtilVector.add(localBitmap);
+      }
+      this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
+      localObject = this.jdField_a_of_type_Afyn;
+      ((afyn)localObject).jdField_a_of_type_Int += 1;
+      if (!this.jdField_a_of_type_Afyn.jdField_d_of_type_Boolean)
+      {
+        localObject = this.jdField_a_of_type_Afyn;
+        ((afyn)localObject).jdField_a_of_type_Int %= this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.size();
+      }
+      if (this.jdField_a_of_type_Afyo != null) {
+        this.jdField_a_of_type_Afyo.onUpdate(this.jdField_a_of_type_Afyn.jdField_a_of_type_Int);
+      }
+      invalidateSelf();
+    }
+    int j = this.jdField_a_of_type_Afyn.jdField_c_of_type_Int + 1;
+    long l1 = 0L;
+    long l2 = l1;
+    int i = j;
+    if (!this.jdField_a_of_type_Afyn.jdField_d_of_type_Boolean)
+    {
+      if (j >= this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.size()) {
+        l1 = this.jdField_e_of_type_Int;
+      }
+      i = j % this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.size();
+      l2 = l1;
+    }
+    a(i, l2);
   }
   
-  public ahce a(int paramInt)
+  private void o()
+  {
+    if (this.jdField_a_of_type_Afyn.jdField_d_of_type_Boolean)
+    {
+      if (this.jdField_a_of_type_Afyn.jdField_a_of_type_Int < this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        invalidateSelf();
+        if (this.jdField_a_of_type_Afyo != null) {
+          this.jdField_a_of_type_Afyo.onUpdate(this.jdField_a_of_type_Afyn.jdField_a_of_type_Int);
+        }
+        localObject = (afyq)this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Afyn.jdField_a_of_type_Int);
+        l = SystemClock.uptimeMillis();
+        scheduleSelf(this, ((afyq)localObject).jdField_b_of_type_Int + l);
+        localObject = this.jdField_a_of_type_Afyn;
+        ((afyn)localObject).jdField_a_of_type_Int += 1;
+      }
+      do
+      {
+        do
+        {
+          return;
+        } while (this.jdField_a_of_type_Afyn.jdField_c_of_type_Boolean);
+        if (this.jdField_a_of_type_Afym != null) {
+          this.jdField_a_of_type_Afym.a();
+        }
+        this.jdField_a_of_type_Afyn.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Afyn.jdField_c_of_type_Boolean = true;
+      } while (this.jdField_a_of_type_JavaLangString == null);
+      if (this.jdField_a_of_type_Boolean) {
+        HapticManager.a().c(this.jdField_a_of_type_Int);
+      }
+      this.jdField_a_of_type_Int = 0;
+      return;
+    }
+    this.jdField_a_of_type_Afyn.jdField_a_of_type_Int %= this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.size();
+    invalidateSelf();
+    if (this.jdField_a_of_type_Afyo != null) {
+      this.jdField_a_of_type_Afyo.onUpdate(this.jdField_a_of_type_Afyn.jdField_a_of_type_Int);
+    }
+    Object localObject = (afyq)this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Afyn.jdField_a_of_type_Int);
+    long l = SystemClock.uptimeMillis();
+    scheduleSelf(this, ((afyq)localObject).jdField_b_of_type_Int + l);
+    localObject = this.jdField_a_of_type_Afyn;
+    ((afyn)localObject).jdField_a_of_type_Int += 1;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Afyn.jdField_a_of_type_Int;
+  }
+  
+  public afyq a(int paramInt)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Ahcb != null)
+    if (this.jdField_a_of_type_Afyn != null)
     {
       localObject1 = localObject2;
-      if (this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList != null)
+      if (this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList != null)
       {
         localObject1 = localObject2;
-        if (this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+        if (this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.size() > 0)
         {
           localObject1 = localObject2;
           if (paramInt >= 0)
           {
             localObject1 = localObject2;
-            if (paramInt < this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.size()) {
-              localObject1 = (ahce)this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+            if (paramInt < this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.size()) {
+              localObject1 = (afyq)this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
             }
           }
         }
@@ -178,11 +316,11 @@ public class CustomFrameAnimationDrawable
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Ahcb.jdField_b_of_type_JavaUtilArrayList != null)
+    if (this.jdField_a_of_type_Afyn.jdField_b_of_type_JavaUtilArrayList != null)
     {
       localObject1 = localObject2;
-      if (this.jdField_a_of_type_Ahcb.jdField_b_of_type_JavaUtilArrayList.size() > 0) {
-        localObject1 = (Bitmap)this.jdField_a_of_type_Ahcb.jdField_b_of_type_JavaUtilArrayList.remove(0);
+      if (this.jdField_a_of_type_Afyn.jdField_b_of_type_JavaUtilArrayList.size() > 0) {
+        localObject1 = (Bitmap)this.jdField_a_of_type_Afyn.jdField_b_of_type_JavaUtilArrayList.remove(0);
       }
     }
     return localObject1;
@@ -195,37 +333,37 @@ public class CustomFrameAnimationDrawable
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Ahcb.jdField_d_of_type_Int = paramInt;
+    this.jdField_a_of_type_Afyn.jdField_d_of_type_Int = paramInt;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    ahce localahce = new ahce();
-    localahce.jdField_a_of_type_Int = paramInt1;
-    localahce.jdField_b_of_type_Int = paramInt2;
-    localahce.jdField_c_of_type_Int = paramInt3;
-    localahce.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.add(localahce);
+    afyq localafyq = new afyq();
+    localafyq.jdField_a_of_type_Int = paramInt1;
+    localafyq.jdField_b_of_type_Int = paramInt2;
+    localafyq.jdField_c_of_type_Int = paramInt3;
+    localafyq.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.add(localafyq);
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
   {
-    ahce localahce = new ahce();
-    localahce.jdField_a_of_type_Int = paramInt1;
-    localahce.jdField_b_of_type_Int = paramInt2;
-    localahce.jdField_a_of_type_JavaLangString = paramString;
-    localahce.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.add(localahce);
+    afyq localafyq = new afyq();
+    localafyq.jdField_a_of_type_Int = paramInt1;
+    localafyq.jdField_b_of_type_Int = paramInt2;
+    localafyq.jdField_a_of_type_JavaLangString = paramString;
+    localafyq.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.add(localafyq);
   }
   
-  public void a(ahca paramahca)
+  public void a(afym paramafym)
   {
-    this.jdField_a_of_type_Ahca = paramahca;
+    this.jdField_a_of_type_Afym = paramafym;
   }
   
-  public void a(ahcc paramahcc)
+  public void a(afyo paramafyo)
   {
-    this.jdField_a_of_type_Ahcc = paramahcc;
+    this.jdField_a_of_type_Afyo = paramafyo;
   }
   
   public void a(Bitmap paramBitmap)
@@ -235,23 +373,23 @@ public class CustomFrameAnimationDrawable
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Ahcb.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Afyn.jdField_b_of_type_Boolean = paramBoolean;
   }
   
   public int b()
   {
-    return this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+    return this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.size() - 1;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Ahcb.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Afyn.jdField_b_of_type_Boolean = true;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Ahcb.jdField_c_of_type_Int = paramInt;
+    this.jdField_a_of_type_Afyn.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Afyn.jdField_c_of_type_Int = paramInt;
   }
   
   public void c()
@@ -259,22 +397,22 @@ public class CustomFrameAnimationDrawable
     unscheduleSelf(this);
     if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
     {
-      this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Ahcb.jdField_c_of_type_Int = 0;
+      this.jdField_a_of_type_Afyn.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_Afyn.jdField_c_of_type_Int = 0;
       invalidateSelf();
       scheduleSelf(this, 0L);
     }
-    while (this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+    while (this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.size() == 0)
     {
       if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Boolean)) {
         this.jdField_a_of_type_Int = HapticManager.a().a(this.jdField_a_of_type_JavaLangString, 2);
       }
-      this.jdField_a_of_type_Ahcb.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Ahcb.jdField_c_of_type_Boolean = false;
+      this.jdField_a_of_type_Afyn.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Afyn.jdField_c_of_type_Boolean = false;
       return;
     }
-    if ((this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.size() == -1) || (this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {}
-    for (this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int = -1;; this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int = 0)
+    if ((this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.size() == -1) || (this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {}
+    for (this.jdField_a_of_type_Afyn.jdField_a_of_type_Int = -1;; this.jdField_a_of_type_Afyn.jdField_a_of_type_Int = 0)
     {
       scheduleSelf(this, 0L);
       break;
@@ -285,13 +423,13 @@ public class CustomFrameAnimationDrawable
   {
     this.jdField_e_of_type_Boolean = false;
     unscheduleSelf(this);
-    this.jdField_a_of_type_Ahcb.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Afyn.jdField_a_of_type_Boolean = true;
     scheduleSelf(this, 0L);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    Paint localPaint = this.jdField_a_of_type_Ahcb.jdField_a_of_type_AndroidGraphicsPaint;
+    Paint localPaint = this.jdField_a_of_type_Afyn.jdField_a_of_type_AndroidGraphicsPaint;
     if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
       if (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())
       {
@@ -301,12 +439,12 @@ public class CustomFrameAnimationDrawable
         this.jdField_a_of_type_AndroidGraphicsBitmap = null;
       }
     }
-    label484:
+    label488:
     for (;;)
     {
       return;
       Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
-      if (this.jdField_a_of_type_Ahcb.jdField_b_of_type_Boolean)
+      if (this.jdField_a_of_type_Afyn.jdField_b_of_type_Boolean)
       {
         paramCanvas.save();
         paramCanvas.scale(-1.0F, 1.0F, this.jdField_c_of_type_Int / 2, this.jdField_d_of_type_Int / 2);
@@ -315,32 +453,32 @@ public class CustomFrameAnimationDrawable
       this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
       int i = paramCanvas.getWidth();
       float f = paramCanvas.getHeight() * 1.0F / this.jdField_d_of_type_Int;
-      if (this.jdField_a_of_type_Ahcb.jdField_d_of_type_Int == 1) {
+      if (this.jdField_a_of_type_Afyn.jdField_d_of_type_Int == 1) {
         paramCanvas.translate((i / f - this.jdField_c_of_type_Int) / 2.0F, 0.0F);
       }
       for (;;)
       {
         paramCanvas.drawBitmap((Bitmap)localObject, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, localPaint);
-        if (!this.jdField_a_of_type_Ahcb.jdField_b_of_type_Boolean) {
+        if (!this.jdField_a_of_type_Afyn.jdField_b_of_type_Boolean) {
           break;
         }
         paramCanvas.restore();
         return;
-        if (this.jdField_a_of_type_Ahcb.jdField_d_of_type_Int == 2) {
+        if (this.jdField_a_of_type_Afyn.jdField_d_of_type_Int == 2) {
           paramCanvas.translate(Math.abs(i / f - this.jdField_c_of_type_Int) / 2.0F, 0.0F);
         }
       }
       if (this.jdField_a_of_type_JavaUtilArrayList != null)
       {
-        if (this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int < 0) {
+        if (this.jdField_a_of_type_Afyn.jdField_a_of_type_Int < 0) {
           localObject = null;
         }
         for (;;)
         {
           if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
-            break label484;
+            break label488;
           }
-          if (this.jdField_a_of_type_Ahcb.jdField_b_of_type_Boolean)
+          if (this.jdField_a_of_type_Afyn.jdField_b_of_type_Boolean)
           {
             paramCanvas.save();
             paramCanvas.scale(-1.0F, 1.0F, ((Bitmap)localObject).getWidth() / 2, ((Bitmap)localObject).getHeight() / 2);
@@ -348,19 +486,19 @@ public class CustomFrameAnimationDrawable
           this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
           this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
           paramCanvas.drawBitmap((Bitmap)localObject, 0.0F, 0.0F, localPaint);
-          if (!this.jdField_a_of_type_Ahcb.jdField_b_of_type_Boolean) {
+          if (!this.jdField_a_of_type_Afyn.jdField_b_of_type_Boolean) {
             break;
           }
           paramCanvas.restore();
           return;
-          if (this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int >= this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.size())
+          if (this.jdField_a_of_type_Afyn.jdField_a_of_type_Int >= this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.size())
           {
-            localObject = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(((ahce)this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.size() - 1)).jdField_a_of_type_Int);
+            localObject = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(((afyq)this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.size() - 1)).jdField_a_of_type_Int);
           }
           else
           {
-            localObject = (ahce)this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int);
-            localObject = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(((ahce)localObject).jdField_a_of_type_Int);
+            localObject = (afyq)this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Afyn.jdField_a_of_type_Int);
+            localObject = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(((afyq)localObject).jdField_a_of_type_Int);
           }
         }
       }
@@ -375,35 +513,35 @@ public class CustomFrameAnimationDrawable
   
   public void f()
   {
-    if (this.jdField_a_of_type_Ahcb.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Afyn.jdField_a_of_type_Boolean) {
       unscheduleSelf(this);
     }
     if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_d_of_type_Boolean))
     {
       int i = 0;
-      while (i < this.jdField_a_of_type_Ahcb.jdField_b_of_type_JavaUtilArrayList.size())
+      while (i < this.jdField_a_of_type_Afyn.jdField_b_of_type_JavaUtilArrayList.size())
       {
-        Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_Ahcb.jdField_b_of_type_JavaUtilArrayList.remove(0);
+        Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_Afyn.jdField_b_of_type_JavaUtilArrayList.remove(0);
         if (localBitmap != null) {
           localBitmap.recycle();
         }
         i += 1;
       }
-      this.jdField_a_of_type_Ahcb.jdField_b_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_Ahcb.jdField_c_of_type_Int = this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Afyn.jdField_b_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_Afyn.jdField_c_of_type_Int = this.jdField_a_of_type_Afyn.jdField_a_of_type_Int;
     }
   }
   
   public void g()
   {
-    if (this.jdField_a_of_type_Ahcb.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Afyn.jdField_a_of_type_Boolean) {
       unscheduleSelf(this);
     }
   }
   
   public int getAlpha()
   {
-    return this.jdField_a_of_type_Ahcb.jdField_a_of_type_AndroidGraphicsPaint.getAlpha();
+    return this.jdField_a_of_type_Afyn.jdField_a_of_type_AndroidGraphicsPaint.getAlpha();
   }
   
   public int getIntrinsicHeight()
@@ -423,13 +561,13 @@ public class CustomFrameAnimationDrawable
   
   public void h()
   {
-    this.jdField_a_of_type_Ahcb.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_Afyn.jdField_d_of_type_Boolean = true;
   }
   
   public void i()
   {
-    if (this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList != null) {
-      this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList != null) {
+      this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.clear();
     }
   }
   
@@ -440,7 +578,7 @@ public class CustomFrameAnimationDrawable
       this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
       this.jdField_a_of_type_AndroidGraphicsBitmap = null;
     }
-    Object localObject1 = this.jdField_a_of_type_Ahcb.jdField_b_of_type_JavaUtilArrayList;
+    Object localObject1 = this.jdField_a_of_type_Afyn.jdField_b_of_type_JavaUtilArrayList;
     Object localObject2 = ((ArrayList)localObject1).iterator();
     while (((Iterator)localObject2).hasNext())
     {
@@ -482,194 +620,60 @@ public class CustomFrameAnimationDrawable
   
   public void run()
   {
-    if (this.jdField_e_of_type_Boolean)
-    {
+    if (this.jdField_e_of_type_Boolean) {
       if (QLog.isColorLevel()) {
         QLog.i("CustomFrameAnimationDrawable", 2, "paused");
       }
-      return;
     }
-    int j;
-    int i;
-    Object localObject1;
-    Object localObject2;
-    long l;
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
+    do
     {
-      j = this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int + 1;
-      i = j;
-      if (!this.jdField_a_of_type_Ahcb.jdField_d_of_type_Boolean) {
-        i = j % this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.size();
-      }
-      if (i < this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.size())
+      do
       {
-        localObject1 = a();
-        if (localObject1 != null)
-        {
-          localObject2 = this.jdField_a_of_type_AndroidGraphicsBitmap;
-          if ((!this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilVector.size() <= 2)) {
-            this.jdField_a_of_type_JavaUtilVector.add(localObject2);
-          }
-          this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject1);
-          localObject1 = this.jdField_a_of_type_Ahcb;
-          ((ahcb)localObject1).jdField_a_of_type_Int += 1;
-          if (!this.jdField_a_of_type_Ahcb.jdField_d_of_type_Boolean)
-          {
-            localObject1 = this.jdField_a_of_type_Ahcb;
-            ((ahcb)localObject1).jdField_a_of_type_Int %= this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.size();
-          }
-          if (this.jdField_a_of_type_Ahcc != null) {
-            this.jdField_a_of_type_Ahcc.onUpdate(this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int);
-          }
-          invalidateSelf();
-        }
-        i = this.jdField_a_of_type_Ahcb.jdField_c_of_type_Int + 1;
-        if (this.jdField_a_of_type_Ahcb.jdField_d_of_type_Boolean) {
-          break label1019;
-        }
-        if (i < this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.size()) {
-          break label1014;
-        }
-        l = this.jdField_e_of_type_Int;
-        label259:
-        i %= this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.size();
-      }
-    }
-    for (;;)
-    {
-      if (i < this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        if (i - this.jdField_a_of_type_Ahcb.jdField_c_of_type_Int < 2)
-        {
-          localObject1 = (ahce)this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.get(i);
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$DecodeRunnable == null)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$DecodeRunnable = new CustomFrameAnimationDrawable.DecodeRunnable(this, i, ((ahce)localObject1).jdField_a_of_type_JavaLangString, ((ahce)localObject1).jdField_c_of_type_Int, this.jdField_a_of_type_Ahcb.jdField_b_of_type_JavaUtilArrayList);
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$DecodeRunnable.a(this.jdField_a_of_type_AndroidContentResResources);
-            if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
-              this.jdField_a_of_type_MqqOsMqqHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemCustomFrameAnimationDrawable$DecodeRunnable);
-            }
-            localObject1 = this.jdField_a_of_type_Ahcb;
-            ((ahcb)localObject1).jdField_c_of_type_Int += 1;
-            if (!this.jdField_a_of_type_Ahcb.jdField_d_of_type_Boolean)
-            {
-              localObject1 = this.jdField_a_of_type_Ahcb;
-              ((ahcb)localObject1).jdField_c_of_type_Int %= this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.size();
-            }
-          }
-        }
-        localObject1 = (ahce)this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int);
-        if (l != 0L) {
-          break label582;
-        }
-      }
-      label582:
-      for (l = SystemClock.uptimeMillis() + ((ahce)localObject1).jdField_b_of_type_Int;; l = SystemClock.uptimeMillis() + l)
-      {
-        scheduleSelf(this, l);
-        if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_Boolean)) {
+        return;
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null)) {
           break;
         }
-        localObject2 = HapticManager.a();
-        i = this.jdField_a_of_type_Int;
-        j = this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int;
-        ((HapticManager)localObject2).a(i, ((ahce)localObject1).jdField_b_of_type_Int * j);
-        return;
-        if (this.jdField_a_of_type_Ahca != null) {
-          this.jdField_a_of_type_Ahca.a();
+        int j = this.jdField_a_of_type_Afyn.jdField_a_of_type_Int + 1;
+        int i = j;
+        if (!this.jdField_a_of_type_Afyn.jdField_d_of_type_Boolean) {
+          i = j % this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.size();
+        }
+        if (i < this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.size())
+        {
+          n();
+          return;
+        }
+        if (this.jdField_a_of_type_Afym != null) {
+          this.jdField_a_of_type_Afym.a();
         }
         if (this.jdField_b_of_type_Boolean)
         {
           j();
-          this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.clear();
+          this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.clear();
         }
-        this.jdField_a_of_type_Ahcb.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Ahcb.jdField_c_of_type_Boolean = true;
-        return;
-      }
-      if (this.jdField_a_of_type_Ahca != null) {
-        this.jdField_a_of_type_Ahca.a();
-      }
-      if (this.jdField_b_of_type_Boolean)
-      {
-        j();
-        this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.clear();
-      }
-      this.jdField_a_of_type_Ahcb.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Ahcb.jdField_c_of_type_Boolean = true;
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        break;
-      }
+        this.jdField_a_of_type_Afyn.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Afyn.jdField_c_of_type_Boolean = true;
+      } while (this.jdField_a_of_type_JavaLangString == null);
       if (this.jdField_a_of_type_Boolean) {
         HapticManager.a().c(this.jdField_a_of_type_Int);
       }
       this.jdField_a_of_type_Int = 0;
       return;
-      if (this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.size() == 1)
-      {
-        invalidateSelf();
-        if (this.jdField_a_of_type_Ahcc == null) {
-          break;
-        }
-        this.jdField_a_of_type_Ahcc.onUpdate(this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int);
-        return;
+      if (this.jdField_a_of_type_Afyn.jdField_a_of_type_JavaUtilArrayList.size() != 1) {
+        break;
       }
-      if (this.jdField_a_of_type_Ahcb.jdField_d_of_type_Boolean == true)
-      {
-        if (this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int < this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.size())
-        {
-          invalidateSelf();
-          if (this.jdField_a_of_type_Ahcc != null) {
-            this.jdField_a_of_type_Ahcc.onUpdate(this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int);
-          }
-          localObject1 = (ahce)this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int);
-          l = SystemClock.uptimeMillis();
-          scheduleSelf(this, ((ahce)localObject1).jdField_b_of_type_Int + l);
-          localObject1 = this.jdField_a_of_type_Ahcb;
-          ((ahcb)localObject1).jdField_a_of_type_Int += 1;
-          return;
-        }
-        if (this.jdField_a_of_type_Ahcb.jdField_c_of_type_Boolean) {
-          break;
-        }
-        if (this.jdField_a_of_type_Ahca != null) {
-          this.jdField_a_of_type_Ahca.a();
-        }
-        this.jdField_a_of_type_Ahcb.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Ahcb.jdField_c_of_type_Boolean = true;
-        if (this.jdField_a_of_type_JavaLangString == null) {
-          break;
-        }
-        if (this.jdField_a_of_type_Boolean) {
-          HapticManager.a().c(this.jdField_a_of_type_Int);
-        }
-        this.jdField_a_of_type_Int = 0;
-        return;
-      }
-      this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int %= this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.size();
       invalidateSelf();
-      if (this.jdField_a_of_type_Ahcc != null) {
-        this.jdField_a_of_type_Ahcc.onUpdate(this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int);
-      }
-      localObject1 = (ahce)this.jdField_a_of_type_Ahcb.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Ahcb.jdField_a_of_type_Int);
-      l = SystemClock.uptimeMillis();
-      scheduleSelf(this, ((ahce)localObject1).jdField_b_of_type_Int + l);
-      localObject1 = this.jdField_a_of_type_Ahcb;
-      ((ahcb)localObject1).jdField_a_of_type_Int += 1;
-      return;
-      label1014:
-      l = 0L;
-      break label259;
-      label1019:
-      l = 0L;
-    }
+    } while (this.jdField_a_of_type_Afyo == null);
+    this.jdField_a_of_type_Afyo.onUpdate(this.jdField_a_of_type_Afyn.jdField_a_of_type_Int);
+    return;
+    o();
   }
   
   public void setAlpha(int paramInt)
   {
-    if (paramInt != this.jdField_a_of_type_Ahcb.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    if (paramInt != this.jdField_a_of_type_Afyn.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
     {
-      this.jdField_a_of_type_Ahcb.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      this.jdField_a_of_type_Afyn.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
       invalidateSelf();
     }
   }
@@ -681,7 +685,7 @@ public class CustomFrameAnimationDrawable
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_Ahcb.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.jdField_a_of_type_Afyn.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
     invalidateSelf();
   }
 }

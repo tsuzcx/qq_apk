@@ -1,18 +1,27 @@
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class arhk
-  implements bpuc
+final class arhk
+  implements DialogInterface.OnKeyListener
 {
-  arhk(arhj paramarhj) {}
+  arhk(BaseActivity paramBaseActivity) {}
   
-  public void a(String paramString)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    ((QIMMusicConfigManager)bplq.a(2)).a(paramString);
+    if (paramInt == 4)
+    {
+      paramDialogInterface.dismiss();
+      this.a.finish();
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arhk
  * JD-Core Version:    0.7.0.1
  */

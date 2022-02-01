@@ -3,12 +3,12 @@ package com.tencent.mobileqq.troop.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bfqc;
+import bdzm;
 
 public class TroopBarMyBar
   implements Parcelable
 {
-  public static final Parcelable.Creator<TroopBarMyBar> CREATOR = new bfqc();
+  public static final Parcelable.Creator<TroopBarMyBar> CREATOR = new bdzm();
   public int a;
   public String a;
   public int b;

@@ -1,10 +1,23 @@
-import android.widget.RelativeLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface mhh
+class mhh
+  implements View.OnClickListener
 {
-  public abstract void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean);
+  mhh(mha parammha) {}
   
-  public abstract void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    if (!mha.a(this.a))
+    {
+      this.a.c();
+      mha.a(this.a).a.f(0L);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

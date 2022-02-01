@@ -1,29 +1,19 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import mqq.app.QQPermissionCallback;
 
 class aiab
-  implements View.OnTouchListener
+  implements QQPermissionCallback
 {
-  aiab(ahzx paramahzx) {}
+  aiab(aiaa paramaiaa, boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (Build.VERSION.SDK_INT >= 11) {
-          paramView.setAlpha(1.0F);
-        }
-      }
+    aiaa.a(this.jdField_a_of_type_Aiaa).i();
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      aiaa.a(this.jdField_a_of_type_Aiaa, this.jdField_a_of_type_JavaLangString, this.b);
     }
   }
 }

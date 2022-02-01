@@ -1,19 +1,26 @@
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.troop.widget.AddedRobotView;
+import com.tencent.qphone.base.util.QLog;
 
-final class bfel
-  implements QQPermissionCallback
+public class bfel
+  extends RecyclerView.OnScrollListener
 {
-  bfel(AppActivity paramAppActivity) {}
+  public bfel(AddedRobotView paramAddedRobotView) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (!this.a.isFinishing()) {
-      bhlq.b(this.a);
+    QLog.i("AddedRobotView", 1, "onScrollStateChanged state: " + paramInt);
+    if (paramInt != 0) {
+      AddedRobotView.a(this.a).pause();
     }
+    while (!AddedRobotView.a(this.a).isPausing()) {
+      return;
+    }
+    AddedRobotView.a(this.a).resume();
+    AddedRobotView.a(this.a).notifyDataSetChanged();
   }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

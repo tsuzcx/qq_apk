@@ -1,132 +1,38 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
 
-public class auiu
-  extends aujd
+class auiu
+  extends RecyclerView.AdapterDataObserver
 {
-  public auiu(augj paramaugj, Activity paramActivity)
+  auiu(auit paramauit) {}
+  
+  public void onChanged()
   {
-    super(paramaugj, paramActivity);
+    super.onChanged();
+    this.a.notifyDataSetChanged();
   }
   
-  private void a(int paramInt)
+  public void onItemRangeChanged(int paramInt1, int paramInt2)
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131692250));
-      return;
-    case 1: 
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131692249));
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131692251));
+    super.onItemRangeChanged(paramInt1, paramInt2);
+    this.a.notifyItemRangeChanged(paramInt1, paramInt2);
   }
   
-  private void b(int paramInt)
+  public void onItemRangeInserted(int paramInt1, int paramInt2)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.e("SimpleFilePresenter<FileAssistant>", 2, "getFileTips: opType[" + paramInt + "not implemented");
-      }
-    case -1: 
-    case 1: 
-    case 12: 
-    case 13: 
-      return;
-    case 11: 
-      c(this.jdField_a_of_type_Augj.b());
-      return;
-    case 9: 
-      d(this.jdField_a_of_type_Augj.b());
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(false);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(false);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131694117));
+    super.onItemRangeInserted(paramInt1, paramInt2);
+    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
   }
   
-  private void c()
+  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = this.jdField_a_of_type_Augj.g();
-    a(this.jdField_a_of_type_Augj.e());
-    b(i);
+    super.onItemRangeMoved(paramInt1, paramInt2, paramInt3);
+    this.a.notifyItemRangeChanged(paramInt1, paramInt2 + paramInt3);
   }
   
-  private void c(int paramInt)
+  public void onItemRangeRemoved(int paramInt1, int paramInt2)
   {
-    switch (paramInt)
-    {
-    case 10: 
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.e("SimpleFilePresenter<FileAssistant>", 2, "getFileTips: opType[OPERATION_TYPE_OLFILE_BE_PC_HANDLED] status[" + paramInt + "not implemented");
-      }
-      break;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(false);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131694113));
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131694116));
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131694117));
-    }
-  }
-  
-  private void d(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 13: 
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.e("SimpleFilePresenter<FileAssistant>", 2, "getFileTips: opType[OPERATION_TYPE_OLFILE_GOTO_UPLOAD] status[" + paramInt + "not implemented");
-      }
-    case 14: 
-    case 15: 
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131694112));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(false);
-  }
-  
-  public void a()
-  {
-    super.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("SimpleFilePresenter<FileAssistant>", 1, "FileBrowserPresenter init: type = online simple");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.g(auog.a(this.jdField_a_of_type_Augj.c()));
-    c();
-  }
-  
-  public void g()
-  {
-    m();
-    c();
-  }
-  
-  protected void h()
-  {
-    super.h();
-    int i = this.jdField_a_of_type_Augj.b();
-    if ((i == 8) || (i == 9) || (i == 5) || (i == 7) || (i == 12) || (i == 6) || (i == 16)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(false);
-    }
+    super.onItemRangeRemoved(paramInt1, paramInt2);
+    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
   }
 }
 

@@ -1,35 +1,72 @@
-import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
-import UserGrowth.stSimpleMetaFeed;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
-class uus
-  implements SeekBar.OnSeekBarChangeListener
+public class uus
+  extends uuq<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  uus(uuq paramuuq) {}
+  private int a;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public uus(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt)
   {
-    if ((paramSeekBar == null) || (uuq.a(this.a) == null) || (uuq.a(this.a) == null)) {}
+    super(paramWSRedDotPushMsg);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  {
+    int i = 2;
+    boolean bool1 = true;
+    if (paramWSPushStrategyInfo == null) {
+      return false;
+    }
+    boolean bool2 = TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme);
+    if (!bool2)
+    {
+      ukw.a(paramContext, paramWSPushStrategyInfo.mScheme);
+      paramContext = uyo.a();
+      if (paramContext != null) {
+        paramContext.a(null);
+      }
+      uyo.a();
+    }
+    if (this.jdField_a_of_type_Int == 2) {
+      if (bool2)
+      {
+        i = 2;
+        if (this.jdField_a_of_type_Uuh != null) {
+          break label93;
+        }
+        paramContext = "";
+        label74:
+        uvr.a(i, 1, paramContext);
+        label80:
+        if (bool2) {
+          break label133;
+        }
+      }
+    }
     for (;;)
     {
-      EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
-      return;
-      usv localusv = (usv)uuq.a(this.a).a;
-      if ((localusv != null) && ((localusv.a() instanceof stSimpleMetaFeed)))
-      {
-        float f = paramSeekBar.getProgress();
-        int i = ((stSimpleMetaFeed)localusv.a()).video.duration;
-        int j = (int)(f / 1000.0F * i);
-        uqf.a("WS_VIDEO_seekBar", "WSVerticalItemVideoProgressController onStopTrackingTouch() progress:" + f + ", videoDuration:" + i + ", position:" + j);
-        uuq.a(this.a).a(j, true);
+      return bool1;
+      i = 1;
+      break;
+      label93:
+      paramContext = ((WSRedDotPushMsg)this.jdField_a_of_type_Uuh).mFeedIds;
+      break label74;
+      if (this.jdField_a_of_type_Int != 6) {
+        break label80;
       }
+      if (bool2) {}
+      for (;;)
+      {
+        uvr.d(i);
+        break;
+        i = 1;
+      }
+      label133:
+      bool1 = false;
     }
   }
 }

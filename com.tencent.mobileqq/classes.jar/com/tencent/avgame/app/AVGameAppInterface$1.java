@@ -1,7 +1,7 @@
 package com.tencent.avgame.app;
 
 import com.tencent.qphone.base.util.QLog;
-import nfg;
+import ngn;
 
 class AVGameAppInterface$1
   implements Runnable

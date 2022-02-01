@@ -36,6 +36,7 @@ public final class stGlobalConfig
   public Map<String, String> mapExt;
   public int open_4g_autodownload;
   public pendantConfig pendant;
+  public int playerType;
   public stPopWindowsConfig red_dot_window;
   public stUserAuth user_auth;
   public ArrayList<stPopWindowsConfig> windows_config;
@@ -57,7 +58,7 @@ public final class stGlobalConfig
   
   public stGlobalConfig() {}
   
-  public stGlobalConfig(stJumpInfo paramstJumpInfo, ArrayList<stPopWindowsConfig> paramArrayList, byte paramByte1, int paramInt1, int paramInt2, pendantConfig parampendantConfig, int paramInt3, byte paramByte2, downloadConfig paramdownloadConfig, String paramString, stLinkConfig paramstLinkConfig, stPopWindowsConfig paramstPopWindowsConfig, boolean paramBoolean, Map<String, String> paramMap, stCallInfo paramstCallInfo, stUserAuth paramstUserAuth, stCommentConfig paramstCommentConfig, stAioAction paramstAioAction)
+  public stGlobalConfig(stJumpInfo paramstJumpInfo, ArrayList<stPopWindowsConfig> paramArrayList, byte paramByte1, int paramInt1, int paramInt2, pendantConfig parampendantConfig, int paramInt3, byte paramByte2, downloadConfig paramdownloadConfig, String paramString, stLinkConfig paramstLinkConfig, stPopWindowsConfig paramstPopWindowsConfig, boolean paramBoolean, Map<String, String> paramMap, stCallInfo paramstCallInfo, stUserAuth paramstUserAuth, stCommentConfig paramstCommentConfig, stAioAction paramstAioAction, int paramInt4)
   {
     this.jumpinfo = paramstJumpInfo;
     this.windows_config = paramArrayList;
@@ -77,6 +78,7 @@ public final class stGlobalConfig
     this.user_auth = paramstUserAuth;
     this.commentConfig = paramstCommentConfig;
     this.aioAction = paramstAioAction;
+    this.playerType = paramInt4;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -99,6 +101,7 @@ public final class stGlobalConfig
     this.user_auth = ((stUserAuth)paramJceInputStream.read(cache_user_auth, 15, false));
     this.commentConfig = ((stCommentConfig)paramJceInputStream.read(cache_commentConfig, 16, false));
     this.aioAction = ((stAioAction)paramJceInputStream.read(cache_aioAction, 17, false));
+    this.playerType = paramJceInputStream.read(this.playerType, 18, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -145,6 +148,7 @@ public final class stGlobalConfig
     if (this.aioAction != null) {
       paramJceOutputStream.write(this.aioAction, 17);
     }
+    paramJceOutputStream.write(this.playerType, 18);
   }
 }
 

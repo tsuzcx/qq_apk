@@ -10,9 +10,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bdax;
-import bdfo;
-import bdfp;
+import bbub;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLDrawableDownListener;
@@ -25,60 +23,70 @@ import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Arrays;
-import zom;
+import ypi;
 
 public class ImageViewVideoPlayer
   extends LinearLayout
   implements URLDrawableDownListener, VideoDrawable.OnPlayRepeatListener, VideoDrawable.OnPlayerOneFrameListener
 {
-  private static ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(-14342358);
-  public int a;
-  public Bitmap a;
-  public BitmapDrawable a;
-  public bdfo a;
-  public bdfp a;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  public URLImageView a;
-  public VideoDrawable a;
-  private PlayerProgressBar jdField_a_of_type_ComTencentMobileqqShortvideoWidgetPlayerProgressBar;
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  public boolean b;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
-  private boolean e = true;
-  private boolean f;
+  public static final int AIO_VIDEO_FRAME_LIMIT_NUM = 3;
+  private static final int G_CUT_FRAMES_PLAY = 3;
+  public static final int IMV_PLAYER_STATE_INIT = 2;
+  public static final int IMV_PLAYER_STATE_START = 3;
+  public static final int IMV_PLAYER_STATE_STOP = 4;
+  public static final int IMV_PLAYER_STATE_UNINIT = 1;
+  public static final int QQSTORY_VIDEO_FRAME_LIMIT_NUM = 3;
+  public static final int QZONE_VIDEO_FRAME_LIMIT_NUM = 3;
+  public static final int RESULT_ERROR_NO_AUDIO_FILE = -2;
+  public static final int RESULT_ERROR_NO_SOURCE = -1;
+  public static final int RESULT_ERROR_NO_VIDEO_FILE = -3;
+  public static final int RESULT_ERROR_PARAM_INVALID = -4;
+  private static final String TAG = "ImageViewVideoPlayer";
+  public static final int VIDEO_FRAME_LIMIT_NUM = 11;
+  private static ColorDrawable sLoading = new ColorDrawable(-14342358);
+  private String mAFile;
+  private int mCurrentPlayedFrame;
+  private boolean mEnableCyclePlay;
+  public ImageViewVideoPlayer.IMPFrameListener mFrameListener;
+  private boolean mHaveEnded;
+  public Bitmap mLastFramePicture;
+  public BitmapDrawable mLoadingBitmap;
+  private boolean mNeedPlayAudio;
+  private boolean mNeedProgress = true;
+  public URLImageView mPlayer;
+  public ImageViewVideoPlayer.IMPlayerEndListener mPlayerEndListener;
+  public int mPlayerState = 1;
+  private PlayerProgressBar mProgressBar;
+  public boolean mRequireAudioFocus = true;
+  public boolean mSecurityChecked;
+  private int mTotalFrame;
+  private URLDrawable mUrlDrawable;
+  private String mVFile;
+  public VideoDrawable mVideoDrawable;
   
   public ImageViewVideoPlayer(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Boolean = true;
-    a(paramContext);
+    initUI(paramContext);
   }
   
   public ImageViewVideoPlayer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Boolean = true;
-    a(paramContext);
+    initUI(paramContext);
   }
   
-  private void a()
+  private void checkAndGetVideoDrawable()
   {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {}
+    if (this.mUrlDrawable != null) {}
     try
     {
-      Drawable localDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable();
+      Drawable localDrawable = this.mUrlDrawable.getCurrDrawable();
       if ((localDrawable != null) && ((localDrawable instanceof VideoDrawable)))
       {
-        this.jdField_a_of_type_ComTencentImageVideoDrawable = ((VideoDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
-        boolean bool2 = this.jdField_a_of_type_ComTencentImageVideoDrawable.isAudioPlaying();
-        if ((!bdax.d(bdax.c)) && (!bdax.a(bdax.d))) {
+        this.mVideoDrawable = ((VideoDrawable)this.mUrlDrawable.getCurrDrawable());
+        boolean bool2 = this.mVideoDrawable.isAudioPlaying();
+        if ((!bbub.d(bbub.c)) && (!bbub.a(bbub.d))) {
           break label141;
         }
         bool1 = true;
@@ -86,7 +94,7 @@ public class ImageViewVideoPlayer
           QLog.i("ImageViewVideoPlayer", 2, "initPlayer: audioPlaying= " + bool2 + " black=" + bool1);
         }
         if (bool1) {
-          this.jdField_a_of_type_ComTencentImageVideoDrawable.disableGlobalPause();
+          this.mVideoDrawable.disableGlobalPause();
         }
       }
       return;
@@ -106,30 +114,43 @@ public class ImageViewVideoPlayer
     }
   }
   
-  private void a(Context paramContext)
+  private void endFramePlay()
   {
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(paramContext);
-    super.addView(this.jdField_a_of_type_ComTencentImageURLImageView, localLayoutParams);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetPlayerProgressBar = new PlayerProgressBar(paramContext);
-    super.addView(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetPlayerProgressBar, localLayoutParams);
-    super.setVisibility(8);
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  private void f()
-  {
-    if (!this.jdField_c_of_type_Boolean)
+    if (!this.mHaveEnded)
     {
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidGraphicsBitmap = a();
-      c();
-      e();
+      this.mHaveEnded = true;
+      this.mLastFramePicture = getCurrentBitmap();
+      stopPlayer();
+      releasePlayer();
       getHandler().postAtFrontOfQueue(new ImageViewVideoPlayer.3(this));
     }
   }
   
-  public int a(String paramString)
+  private void initUI(Context paramContext)
+  {
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
+    this.mPlayer = new URLImageView(paramContext);
+    super.addView(this.mPlayer, localLayoutParams);
+    this.mProgressBar = new PlayerProgressBar(paramContext);
+    super.addView(this.mProgressBar, localLayoutParams);
+    super.setVisibility(8);
+    this.mPlayerState = 1;
+  }
+  
+  public boolean checkVideoSourceValidate(RMVideoStateMgr paramRMVideoStateMgr)
+  {
+    return paramRMVideoStateMgr.c(11);
+  }
+  
+  public Bitmap getCurrentBitmap()
+  {
+    if (this.mVideoDrawable != null) {
+      return this.mVideoDrawable.getCurrentBitmap();
+    }
+    return null;
+  }
+  
+  public int getVFileAndAFile(String paramString)
   {
     int i = -1;
     if (paramString == null) {
@@ -168,217 +189,110 @@ public class ImageViewVideoPlayer
         QLog.d("ImageViewVideoPlayer", 2, "getVFileAndAFile(), current file = " + localFile);
       }
       if (localFile.endsWith(".af")) {
-        this.jdField_b_of_type_JavaLangString = (str + localFile);
+        this.mAFile = (str + localFile);
       }
-      if ((localFile.endsWith(".vf")) && (zom.a(str + localFile) > 0L)) {
-        this.jdField_a_of_type_JavaLangString = (str + localFile);
+      if ((localFile.endsWith(".vf")) && (ypi.a(str + localFile) > 0L)) {
+        this.mVFile = (str + localFile);
       }
       i += 1;
     }
-    if ((this.jdField_a_of_type_JavaLangString == null) || ("".equals(this.jdField_a_of_type_JavaLangString))) {
+    if ((this.mVFile == null) || ("".equals(this.mVFile))) {
       return -3;
     }
-    if ((this.jdField_b_of_type_JavaLangString == null) || ("".equals(this.jdField_b_of_type_JavaLangString))) {
+    if ((this.mAFile == null) || ("".equals(this.mAFile))) {
       return -2;
     }
-    this.f = false;
-    if (zom.a(this.jdField_b_of_type_JavaLangString) > 0L)
+    this.mNeedPlayAudio = false;
+    if (ypi.a(this.mAFile) > 0L)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ImageViewVideoPlayer", 2, "getVFileAndAFile(), mNeedPlayAudio = " + this.f);
+        QLog.d("ImageViewVideoPlayer", 2, "getVFileAndAFile(), mNeedPlayAudio = " + this.mNeedPlayAudio);
       }
-      this.f = true;
+      this.mNeedPlayAudio = true;
     }
     return 0;
   }
   
-  public Bitmap a()
+  public String getmAFile()
   {
-    if (this.jdField_a_of_type_ComTencentImageVideoDrawable != null) {
-      return this.jdField_a_of_type_ComTencentImageVideoDrawable.getCurrentBitmap();
-    }
-    return null;
+    return this.mAFile;
   }
   
-  public String a()
+  public boolean initEditPlayer(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3)
   {
-    return this.jdField_b_of_type_JavaLangString;
+    this.mSecurityChecked = true;
+    this.mAFile = paramString2;
+    this.mVFile = paramString3;
+    return initPlayer(paramInt1, paramInt2, paramInt3, paramString1, false);
   }
   
-  public void a(int paramInt1, float paramFloat, boolean paramBoolean, int paramInt2)
+  public boolean initPlayer(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt1, (int)(paramInt1 * paramFloat));
-    this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(localLayoutParams);
-    this.e = paramBoolean;
-    if (this.e)
-    {
-      localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt2);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetPlayerProgressBar.setLayoutParams(localLayoutParams);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetPlayerProgressBar.setVisibility(8);
+    return initPlayer(paramInt1, paramInt2, paramInt3, paramString, true);
   }
   
-  public void a(int paramInt1, int paramInt2, float paramFloat, boolean paramBoolean, int paramInt3)
+  public boolean initPlayer(int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
   {
-    int i = (int)(paramInt1 * paramFloat);
-    if (QLog.isColorLevel()) {
-      QLog.i("ImageViewVideoPlayer", 2, "updateUISize width" + paramInt1 + "height" + i + "screenHeight=" + paramInt2);
-    }
-    if (i < paramInt2) {}
-    for (;;)
-    {
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt2);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(localLayoutParams);
-      this.e = paramBoolean;
-      if (this.e)
-      {
-        localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt3);
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetPlayerProgressBar.setLayoutParams(localLayoutParams);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetPlayerProgressBar.setVisibility(8);
-      return;
-      paramInt2 = i;
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
-  {
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt2);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(localLayoutParams);
-    this.e = paramBoolean;
-    if (this.e)
-    {
-      localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt3);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetPlayerProgressBar.setLayoutParams(localLayoutParams);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetPlayerProgressBar.setVisibility(8);
-  }
-  
-  public boolean a(int paramInt1, int paramInt2, int paramInt3, String paramString)
-  {
-    return a(paramInt1, paramInt2, paramInt3, paramString, true);
-  }
-  
-  public boolean a(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString3;
-    return a(paramInt1, paramInt2, paramInt3, paramString1, false);
-  }
-  
-  public boolean a(int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (a(paramString) != 0)) {
+    if ((!this.mSecurityChecked) && (getVFileAndAFile(paramString) != 0)) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentImageVideoDrawable = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_b_of_type_Int = (paramInt3 - 3);
-    if (this.e)
+    this.mVideoDrawable = null;
+    this.mSecurityChecked = false;
+    this.mLastFramePicture = null;
+    this.mTotalFrame = (paramInt3 - 3);
+    if (this.mNeedProgress)
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetPlayerProgressBar.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetPlayerProgressBar.jdField_b_of_type_Int = paramInt2;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetPlayerProgressBar.jdField_c_of_type_Int = paramInt3;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetPlayerProgressBar.setCurrentProgress(0, false);
+      this.mProgressBar.a = paramInt1;
+      this.mProgressBar.b = paramInt2;
+      this.mProgressBar.c = paramInt3;
+      this.mProgressBar.setCurrentProgress(0, false);
     }
     paramString = URLDrawable.URLDrawableOptions.obtain();
     paramString.mFailedDrawable = null;
-    paramString.mLoadingDrawable = jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null) {
-      paramString.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
+    paramString.mLoadingDrawable = sLoading;
+    if (this.mLoadingBitmap != null) {
+      paramString.mLoadingDrawable = this.mLoadingBitmap;
     }
     VideoDrawable.VideoDrawableParams localVideoDrawableParams = new VideoDrawable.VideoDrawableParams();
     localVideoDrawableParams.mVideoRoundCorner = 0;
     localVideoDrawableParams.mRequestedFPS = -1;
     localVideoDrawableParams.mEnableAntiAlias = true;
     localVideoDrawableParams.mEnableFilter = true;
-    localVideoDrawableParams.mPlayAudioFrame = this.f;
+    localVideoDrawableParams.mPlayAudioFrame = this.mNeedPlayAudio;
     localVideoDrawableParams.mPlayVideoFrame = true;
     localVideoDrawableParams.mDecodeType = 1;
-    localVideoDrawableParams.mAfPath = this.jdField_b_of_type_JavaLangString;
-    localVideoDrawableParams.mVfPath = this.jdField_a_of_type_JavaLangString;
+    localVideoDrawableParams.mAfPath = this.mAFile;
+    localVideoDrawableParams.mVfPath = this.mVFile;
     localVideoDrawableParams.mTotalTime = paramInt2;
     localVideoDrawableParams.mVideoFrames = paramInt3;
     paramString.mExtraInfo = localVideoDrawableParams;
-    if ((!this.d) || (!paramBoolean)) {
+    if ((!this.mEnableCyclePlay) || (!paramBoolean)) {
       paramString.mUseMemoryCache = false;
     }
-    this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(new File(this.jdField_a_of_type_JavaLangString), paramString);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(this);
-    a();
-    if (this.jdField_a_of_type_ComTencentImageVideoDrawable != null)
+    this.mUrlDrawable = URLDrawable.getDrawable(new File(this.mVFile), paramString);
+    this.mPlayer.setURLDrawableDownListener(this);
+    checkAndGetVideoDrawable();
+    if (this.mVideoDrawable != null)
     {
-      this.jdField_a_of_type_ComTencentImageVideoDrawable.setOnPlayRepeatListener(this);
-      this.jdField_a_of_type_ComTencentImageVideoDrawable.setOnPlayerOneFrameListener(this);
-      if (!this.d) {
-        this.jdField_a_of_type_ComTencentImageVideoDrawable.resetAndPlayAudioOnce();
+      this.mVideoDrawable.setOnPlayRepeatListener(this);
+      this.mVideoDrawable.setOnPlayerOneFrameListener(this);
+      if (!this.mEnableCyclePlay) {
+        this.mVideoDrawable.resetAndPlayAudioOnce();
       }
     }
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_c_of_type_Boolean = false;
+    this.mPlayerState = 2;
+    this.mHaveEnded = false;
     return true;
-  }
-  
-  public boolean a(RMVideoStateMgr paramRMVideoStateMgr)
-  {
-    return paramRMVideoStateMgr.c(11);
-  }
-  
-  public void b()
-  {
-    super.setVisibility(0);
-    if (this.jdField_a_of_type_ComTencentImageURLImageView != null) {
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    }
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  public void c()
-  {
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable != null) && (this.jdField_a_of_type_ComTencentImageVideoDrawable != null)) {
-      this.jdField_a_of_type_ComTencentImageVideoDrawable.stopAudio();
-    }
-    Handler localHandler = super.getHandler();
-    if (localHandler != null) {
-      localHandler.postAtFrontOfQueue(new ImageViewVideoPlayer.1(this));
-    }
-    this.jdField_a_of_type_Int = 4;
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_ComTencentImageVideoDrawable != null) {
-      this.jdField_a_of_type_ComTencentImageVideoDrawable.resetPlay();
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_ComTencentImageVideoDrawable != null)
-    {
-      this.jdField_a_of_type_ComTencentImageVideoDrawable.enableGlobalPause();
-      this.jdField_a_of_type_ComTencentImageVideoDrawable.removeOnPlayRepeatListener(this);
-      this.jdField_a_of_type_ComTencentImageVideoDrawable.setOnPlayRepeatListener(null);
-    }
-    this.jdField_a_of_type_ComTencentImageURLDrawable = null;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Int = 1;
   }
   
   public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    a();
+    checkAndGetVideoDrawable();
   }
   
   public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    a();
+    checkAndGetVideoDrawable();
   }
   
   public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
@@ -387,13 +301,13 @@ public class ImageViewVideoPlayer
   
   public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    a();
-    if (this.jdField_a_of_type_ComTencentImageVideoDrawable != null)
+    checkAndGetVideoDrawable();
+    if (this.mVideoDrawable != null)
     {
-      this.jdField_a_of_type_ComTencentImageVideoDrawable.setOnPlayRepeatListener(this);
-      this.jdField_a_of_type_ComTencentImageVideoDrawable.setOnPlayerOneFrameListener(this);
-      if (!this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentImageVideoDrawable.disableRequireAudioFocus();
+      this.mVideoDrawable.setOnPlayRepeatListener(this);
+      this.mVideoDrawable.setOnPlayerOneFrameListener(this);
+      if (!this.mRequireAudioFocus) {
+        this.mVideoDrawable.disableRequireAudioFocus();
       }
     }
   }
@@ -403,60 +317,154 @@ public class ImageViewVideoPlayer
     if (QLog.isColorLevel()) {
       QLog.i("ImageViewVideoPlayer", 2, "onPlayRepeat: repeatTimes= " + paramInt);
     }
-    if (!this.d)
+    if (!this.mEnableCyclePlay)
     {
-      if (this.e) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetPlayerProgressBar.setCurrentProgress(this.jdField_c_of_type_Int, true);
+      if (this.mNeedProgress) {
+        this.mProgressBar.setCurrentProgress(this.mCurrentPlayedFrame, true);
       }
-      f();
+      endFramePlay();
       return;
     }
-    this.jdField_c_of_type_Int = 0;
+    this.mCurrentPlayedFrame = 0;
     getHandler().postAtFrontOfQueue(new ImageViewVideoPlayer.2(this, paramInt));
   }
   
   public void oneFrameDrawed()
   {
-    this.jdField_c_of_type_Int += 1;
-    if (this.jdField_c_of_type_Int >= this.jdField_b_of_type_Int) {}
+    this.mCurrentPlayedFrame += 1;
+    if (this.mCurrentPlayedFrame >= this.mTotalFrame) {}
     for (boolean bool = true;; bool = false)
     {
-      if (this.e) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetPlayerProgressBar.setCurrentProgress(this.jdField_c_of_type_Int, bool);
+      if (this.mNeedProgress) {
+        this.mProgressBar.setCurrentProgress(this.mCurrentPlayedFrame, bool);
       }
-      if ((bool) && (!this.d)) {
-        f();
+      if ((bool) && (!this.mEnableCyclePlay)) {
+        endFramePlay();
       }
-      if (this.jdField_a_of_type_Bdfo != null) {
-        this.jdField_a_of_type_Bdfo.a(this.jdField_c_of_type_Int);
+      if (this.mFrameListener != null) {
+        this.mFrameListener.onCurrentFrame(this.mCurrentPlayedFrame);
       }
       return;
     }
   }
   
+  public void releasePlayer()
+  {
+    if (this.mVideoDrawable != null)
+    {
+      this.mVideoDrawable.enableGlobalPause();
+      this.mVideoDrawable.removeOnPlayRepeatListener(this);
+      this.mVideoDrawable.setOnPlayRepeatListener(null);
+    }
+    this.mUrlDrawable = null;
+    this.mTotalFrame = 0;
+    this.mCurrentPlayedFrame = 0;
+    this.mPlayerState = 1;
+  }
+  
+  public void resetPlay()
+  {
+    if (this.mVideoDrawable != null) {
+      this.mVideoDrawable.resetPlay();
+    }
+  }
+  
   public void setCyclePlay(boolean paramBoolean)
   {
-    this.d = paramBoolean;
+    this.mEnableCyclePlay = paramBoolean;
   }
   
-  public void setIMPFrameListener(bdfo parambdfo)
+  public void setIMPFrameListener(ImageViewVideoPlayer.IMPFrameListener paramIMPFrameListener)
   {
-    this.jdField_a_of_type_Bdfo = parambdfo;
+    this.mFrameListener = paramIMPFrameListener;
   }
   
-  public void setIMPlayerEndListener(bdfp parambdfp)
+  public void setIMPlayerEndListener(ImageViewVideoPlayer.IMPlayerEndListener paramIMPlayerEndListener)
   {
-    this.jdField_a_of_type_Bdfp = parambdfp;
+    this.mPlayerEndListener = paramIMPlayerEndListener;
   }
   
   public void setNeedPlayAudio(boolean paramBoolean)
   {
-    this.f = paramBoolean;
+    this.mNeedPlayAudio = paramBoolean;
+  }
+  
+  public void startPlayer()
+  {
+    super.setVisibility(0);
+    if (this.mPlayer != null) {
+      this.mPlayer.setImageDrawable(this.mUrlDrawable);
+    }
+    this.mPlayerState = 3;
+  }
+  
+  public void stopPlayer()
+  {
+    if ((this.mUrlDrawable != null) && (this.mVideoDrawable != null)) {
+      this.mVideoDrawable.stopAudio();
+    }
+    Handler localHandler = super.getHandler();
+    if (localHandler != null) {
+      localHandler.postAtFrontOfQueue(new ImageViewVideoPlayer.1(this));
+    }
+    this.mPlayerState = 4;
+  }
+  
+  public void updateUISize(int paramInt1, float paramFloat, boolean paramBoolean, int paramInt2)
+  {
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt1, (int)(paramInt1 * paramFloat));
+    this.mPlayer.setLayoutParams(localLayoutParams);
+    this.mNeedProgress = paramBoolean;
+    if (this.mNeedProgress)
+    {
+      localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt2);
+      this.mProgressBar.setLayoutParams(localLayoutParams);
+      return;
+    }
+    this.mProgressBar.setVisibility(8);
+  }
+  
+  public void updateUISize(int paramInt1, int paramInt2, float paramFloat, boolean paramBoolean, int paramInt3)
+  {
+    int i = (int)(paramInt1 * paramFloat);
+    if (QLog.isColorLevel()) {
+      QLog.i("ImageViewVideoPlayer", 2, "updateUISize width" + paramInt1 + "height" + i + "screenHeight=" + paramInt2);
+    }
+    if (i < paramInt2) {}
+    for (;;)
+    {
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt2);
+      this.mPlayer.setLayoutParams(localLayoutParams);
+      this.mNeedProgress = paramBoolean;
+      if (this.mNeedProgress)
+      {
+        localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt3);
+        this.mProgressBar.setLayoutParams(localLayoutParams);
+        return;
+      }
+      this.mProgressBar.setVisibility(8);
+      return;
+      paramInt2 = i;
+    }
+  }
+  
+  public void updateUISize(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
+  {
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt2);
+    this.mPlayer.setLayoutParams(localLayoutParams);
+    this.mNeedProgress = paramBoolean;
+    if (this.mNeedProgress)
+    {
+      localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt3);
+      this.mProgressBar.setLayoutParams(localLayoutParams);
+      return;
+    }
+    this.mProgressBar.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer
  * JD-Core Version:    0.7.0.1
  */

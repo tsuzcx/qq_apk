@@ -1,38 +1,38 @@
 package com.tencent.open.agent;
 
+import amtj;
+import anca;
+import andd;
 import android.support.v4.app.FragmentActivity;
-import anzj;
-import aoip;
-import aojs;
-import bjmx;
+import bhsl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.Set;
 
 public class JoinTroopPreVerificationFragment
   extends TroopAbilityPreVerificationFragment
 {
-  private aojs a;
+  private andd a;
   
   public JoinTroopPreVerificationFragment()
   {
-    this.jdField_a_of_type_Aojs = new bjmx(this);
+    this.jdField_a_of_type_Andd = new bhsl(this);
   }
   
   protected void a()
   {
     super.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aojs);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Andd);
   }
   
   protected void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      ((aoip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).b(Integer.valueOf(this.c).intValue(), Integer.valueOf(this.g).intValue());
+      ((anca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(20)).b(Integer.valueOf(this.c).intValue(), Integer.valueOf(this.g).intValue());
       return;
     }
     d();
-    a(anzj.a(2131704780));
+    a(amtj.a(2131705010));
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
   }
   
@@ -47,7 +47,7 @@ public class JoinTroopPreVerificationFragment
   protected void b()
   {
     super.b();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aojs);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Andd);
   }
 }
 

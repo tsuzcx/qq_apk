@@ -1,8 +1,14 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
 
-public abstract interface aibm
+public class aibm
+  implements aiqz
 {
-  public abstract void a(AIOImageData paramAIOImageData, boolean paramBoolean);
+  public aibm(TroopView paramTroopView) {}
+  
+  public long a()
+  {
+    return TroopView.a(this.a);
+  }
 }
 
 

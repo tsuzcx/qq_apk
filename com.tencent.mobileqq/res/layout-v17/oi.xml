@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/nz2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/nti" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView android:id="@id/csj" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
     <View android:id="@id/csm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <TextView android:textSize="14.0dip" android:textColor="#ffa6a6a6" android:id="@id/efs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/mzu" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />

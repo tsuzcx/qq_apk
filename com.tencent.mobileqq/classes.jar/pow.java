@@ -1,24 +1,13 @@
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+
 public class pow
+  implements pqe
 {
-  public int a;
-  public long a;
-  public boolean a;
+  public pow(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public pow(long paramLong, int paramInt)
+  public void a()
   {
-    this(paramLong, paramInt, false);
-  }
-  
-  public pow(long paramLong, int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "BatchFollowModel{followUin=" + this.jdField_a_of_type_Long + ", accountType=" + this.jdField_a_of_type_Int + ", isFollowed=" + this.jdField_a_of_type_Boolean + '}';
+    ReadInJoySelfFragment.a(this.a, 12);
   }
 }
 

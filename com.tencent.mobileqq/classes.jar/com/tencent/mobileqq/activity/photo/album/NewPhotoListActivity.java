@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.photo.album;
 
 import Override;
-import aksz;
-import akta;
-import aktb;
-import akvk;
+import ajqp;
+import ajqq;
+import ajqr;
+import ajta;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -17,15 +17,15 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import antf;
-import aquy;
-import bhkd;
-import bhmi;
-import brkf;
-import brkg;
+import apoh;
+import bodq;
+import bodr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.startup.step.CheckPermission;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -37,12 +37,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import lju;
+import ljo;
 
 public class NewPhotoListActivity
   extends AbstractPhotoListActivity
 {
-  public aktb a;
+  public ajqr a;
   public Handler a;
   View a;
   public Button a;
@@ -54,8 +54,8 @@ public class NewPhotoListActivity
   
   public NewPhotoListActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new akta(this);
-    this.jdField_a_of_type_Aktb = new aktb(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ajqq(this);
+    this.jdField_a_of_type_Ajqr = new ajqr(this);
   }
   
   public int a(String paramString)
@@ -63,7 +63,7 @@ public class NewPhotoListActivity
     if ((TextUtils.isEmpty(paramString)) || (a(paramString) == null)) {
       return -1;
     }
-    return bhkd.getMediaType(a(paramString));
+    return AlbumUtil.getMediaType(a(paramString));
   }
   
   public LocalMediaInfo a(String paramString)
@@ -80,11 +80,11 @@ public class NewPhotoListActivity
     {
       if ((localLocalMediaInfo != null) && ((localLocalMediaInfo.mediaWidth == 0) || (localLocalMediaInfo.mediaHeight == 0)))
       {
-        brkg localbrkg = new brkg();
-        brkf.a(paramString, localbrkg);
-        localLocalMediaInfo.mediaWidth = localbrkg.a[0];
-        localLocalMediaInfo.mediaHeight = localbrkg.a[1];
-        localLocalMediaInfo.rotation = localbrkg.a[2];
+        bodr localbodr = new bodr();
+        bodq.a(paramString, localbodr);
+        localLocalMediaInfo.mediaWidth = localbodr.a[0];
+        localLocalMediaInfo.mediaHeight = localbodr.a[1];
+        localLocalMediaInfo.rotation = localbodr.a[2];
         if (localPhotoCommonBaseData.allMediaInfoHashMap != null)
         {
           paramString = (LocalMediaInfo)localPhotoCommonBaseData.allMediaInfoHashMap.get(paramString);
@@ -109,18 +109,18 @@ public class NewPhotoListActivity
       if (localFile.exists())
       {
         localObject = localFile.getName();
-        String str = antf.bn + (String)localObject;
+        String str = AppConstants.SDCARD_IMG_CAMERA + (String)localObject;
         localObject = paramString;
         if (!str.equals(paramString))
         {
-          localObject = new File(antf.bn);
+          localObject = new File(AppConstants.SDCARD_IMG_CAMERA);
           if (!((File)localObject).exists()) {
             ((File)localObject).mkdirs();
           }
           boolean bool2 = localFile.renameTo(new File(str));
           boolean bool1 = bool2;
           if (!bool2) {
-            bool1 = bhmi.b(paramString, str);
+            bool1 = FileUtils.moveFile(paramString, str);
           }
           QLog.d("PhotoListActivity", 2, new Object[] { "saveToDCIM rename to :", str });
           localObject = paramString;
@@ -140,7 +140,7 @@ public class NewPhotoListActivity
   
   public void a()
   {
-    if (lju.b(BaseApplicationImpl.getContext())) {}
+    if (ljo.b(BaseApplicationImpl.getContext())) {}
     label27:
     do
     {
@@ -225,8 +225,9 @@ public class NewPhotoListActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -242,13 +243,13 @@ public class NewPhotoListActivity
   public void doOnPause()
   {
     super.doOnPause();
-    aquy.a(BaseApplicationImpl.getContext(), 2, true);
+    apoh.a(BaseApplicationImpl.getContext(), 2, true);
   }
   
   protected PhotoListLogic generateLogic()
   {
     int i = getIntent().getIntExtra("enter_from", 0);
-    PhotoListLogic localPhotoListLogic = akvk.a(i, this);
+    PhotoListLogic localPhotoListLogic = ajta.a(i, this);
     if (QLog.isColorLevel()) {
       QLog.d("PhotoListActivity", 2, "generateLogic:" + localPhotoListLogic.getClass().getName() + " enterFrom:" + i);
     }
@@ -262,8 +263,8 @@ public class NewPhotoListActivity
   
   protected Dialog getDialog()
   {
-    ReportDialog localReportDialog = new ReportDialog(this, 2131755824);
-    localReportDialog.setContentView(2131559572);
+    ReportDialog localReportDialog = new ReportDialog(this, 2131755826);
+    localReportDialog.setContentView(2131559574);
     return localReportDialog;
   }
   
@@ -274,21 +275,21 @@ public class NewPhotoListActivity
   
   protected void initUI()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131376925);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131376679);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       localRelativeLayout.setFitsSystemWindows(true);
       localRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367695);
-    this.d = ((TextView)findViewById(2131380495));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370537));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131374827));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374833));
-    this.b = ((TextView)findViewById(2131374828));
-    this.c = ((TextView)findViewById(2131368486));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367727);
+    this.d = ((TextView)findViewById(2131380219));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370505));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131374592));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131374598));
+    this.b = ((TextView)findViewById(2131374593));
+    this.c = ((TextView)findViewById(2131368511));
     super.initUI();
-    this.mGridView.addOnScrollListener(new aksz(this));
+    this.mGridView.addOnScrollListener(new ajqp(this));
   }
   
   public void onClick(View paramView)

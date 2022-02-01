@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.troop.createNewTroop.RelationFriendsTroopViewHelper.4.1;
-import com.tencent.widget.PinnedFooterExpandableListView;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
 
 public class bfoe
-  implements bfqu
+  implements DialogInterface.OnClickListener
 {
-  bfoe(bfod parambfod) {}
+  public bfoe(UpgradeActivity paramUpgradeActivity) {}
   
-  public void a(ArrayList<Entity> paramArrayList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.post(new RelationFriendsTroopViewHelper.4.1(this, paramArrayList));
-    }
+    UpgradeActivity.a(this.a, false);
+    bcef.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, bfnf.b(), String.valueOf(0), bfng.a(), "");
   }
 }
 

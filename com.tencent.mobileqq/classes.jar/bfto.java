@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
-
 class bfto
-  implements Comparator<MessageRecord>
 {
-  bfto(bftn parambftn) {}
-  
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
-  }
+  static bftm a = new bftm(null);
 }
 
 

@@ -1,17 +1,17 @@
 package com.tencent.biz.richframework.part.block;
 
-import aabj;
-import aabp;
-import aabq;
+import yzj;
+import yzp;
+import yzq;
 
 public class MultiViewBlock$1$6
   implements Runnable
 {
-  public MultiViewBlock$1$6(aabq paramaabq, int paramInt1, int paramInt2) {}
+  public MultiViewBlock$1$6(yzq paramyzq, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aabq.a.getBlockMerger().notifyItemMoved(this.jdField_a_of_type_Aabq.a.getGlobalPosition(this.jdField_a_of_type_Int), this.jdField_a_of_type_Aabq.a.getGlobalPosition(this.b));
+    this.jdField_a_of_type_Yzq.a.a().notifyItemMoved(this.jdField_a_of_type_Yzq.a.b(this.jdField_a_of_type_Int), this.jdField_a_of_type_Yzq.a.b(this.b));
   }
 }
 

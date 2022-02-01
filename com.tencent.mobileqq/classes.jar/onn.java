@@ -1,74 +1,147 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.List;
 
 public class onn
+  extends BaseAdapter
+  implements AdapterView.OnItemClickListener
 {
-  private static AladdinConfig a()
-  {
-    return Aladdin.getConfig(278);
-  }
+  private List<onq> jdField_a_of_type_JavaUtilList;
   
-  public static String a()
-  {
-    return a().getString("comment_guide_wording", "");
-  }
+  private onn(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
   
-  public static boolean a()
+  private void a(onr paramonr, int paramInt, View paramView)
   {
-    return a().getIntegerFromString("comment_and_biu_combine_switch", 0) == 1;
-  }
-  
-  public static String b()
-  {
-    return a().getString("biu_editor_guide_wording", "");
-  }
-  
-  public static boolean b()
-  {
-    return a().getIntegerFromString("biu_editor_checkbox_default_status", 0) == 1;
-  }
-  
-  public static String c()
-  {
-    return a().getString("biu_editor_confirm_btn_wording", "");
-  }
-  
-  public static boolean c()
-  {
-    return a().getIntegerFromString("biu_editor_checkbox_enable_remember", 0) == 1;
-  }
-  
-  public static String d()
-  {
-    return a().getString("biu_editor_checkbox_wording", "");
-  }
-  
-  public static boolean d()
-  {
-    return a().getIntegerFromString("biu_editor_checkbox_hidden", 0) == 1;
-  }
-  
-  public static String e()
-  {
-    if (a()) {
-      return a().getString("operate_cell_aladding_keys", "");
+    onq localonq = (onq)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    onr.a(paramonr).setText(onq.b(localonq));
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)onr.a(paramonr).getLayoutParams();
+    Object localObject = localLayoutParams;
+    if (localLayoutParams == null) {
+      localObject = new RelativeLayout.LayoutParams(-2, -2);
     }
-    return "";
+    onr.a(paramonr).setImageDrawable(ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity).a(1008, onq.c(localonq)));
+    int i;
+    if (ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity))
+    {
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = 0;
+      localObject = onr.a(paramonr);
+      if (!ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity)) {
+        break label238;
+      }
+      i = 0;
+      label121:
+      ((View)localObject).setVisibility(i);
+      onr.a(paramonr).setOnClickListener(new ono(this, paramView));
+      if (paramInt != getCount() - 1) {
+        break label245;
+      }
+      onr.b(paramonr).setVisibility(8);
+      label163:
+      onr.a(paramonr).setOnClickListener(new onp(this, localonq));
+      onr.a(paramonr, onq.c(localonq));
+      if (!ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity)) {
+        break label256;
+      }
+      onr.c(paramonr).setBackgroundResource(2131166895);
+    }
+    for (;;)
+    {
+      onr.c(paramonr).setPressed(false);
+      return;
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity.getResources().getDimensionPixelSize(2131298769);
+      break;
+      label238:
+      i = 8;
+      break label121;
+      label245:
+      onr.b(paramonr).setVisibility(0);
+      break label163;
+      label256:
+      onr.c(paramonr).setBackgroundResource(2130841733);
+    }
   }
   
-  public static boolean e()
+  public void a(List<onq> paramList)
   {
-    return a().getIntegerFromString("biu_feed_card_white_jump", 1) == 1;
+    if (paramList == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
   }
   
-  public static boolean f()
+  public int getCount()
   {
-    return a().getIntegerFromString("biu_feed_card_gray_jump", 1) == 1;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
   }
   
-  public static boolean g()
+  public Object getItem(int paramInt)
   {
-    return a().getIntegerFromString("biu_feed_card_btn_jump", 1) == 1;
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
+    {
+      paramView = new onr(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity, null);
+      localView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity.getLayoutInflater().inflate(2131560288, paramViewGroup, false);
+      onr.a(paramView, localView.findViewById(2131365035));
+      onr.b(paramView, localView.findViewById(2131365376));
+      onr.a(paramView, (ImageView)localView.findViewById(2131377963));
+      onr.a(paramView, (TextView)localView.findViewById(2131377969));
+      onr.a(paramView, (Button)localView.findViewById(2131380126));
+      onr.c(paramView, localView.findViewById(2131365665));
+      localView.setTag(paramView);
+      localView.setTag(-3, Integer.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity.getResources().getDimensionPixelSize(2131298770)));
+    }
+    for (;;)
+    {
+      a(paramView, paramInt, localView);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      onr localonr = (onr)paramView.getTag();
+      localView = paramView;
+      paramView = localonr;
+    }
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramAdapterView = (onq)getItem((int)paramLong);
+    if ((paramAdapterView == null) || (ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity))) {
+      return;
+    }
+    paramView = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity, AccountDetailActivity.class);
+    paramView.putExtra("uin", onq.c(paramAdapterView));
+    paramView.putExtra("report_src_param_type", "");
+    paramView.putExtra("report_src_param_name", "");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadinjoySubscriptManagerActivity.startActivity(paramView);
   }
 }
 

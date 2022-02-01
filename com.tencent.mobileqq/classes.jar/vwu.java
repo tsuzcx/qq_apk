@@ -1,157 +1,21 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.text.TextUtils;
-import com.tencent.biz.qqcircle.fragments.QCircleBaseTabFragment;
-import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
-import com.tencent.biz.qqcircle.requests.QCircleGetGroupFeedListRequest;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudCommon.StCommonExt;
-import feedcloud.FeedCloudMeta.StDittoFeed;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudRead.StGetFeedListReq;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import qqcircle.QQCircleFeedBase.StFollowPageData;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-public class vwu
-  extends aabb
+public abstract class vwu
+  extends SosoInterface.OnLocationListener
 {
-  private MutableLiveData<vxq<List<FeedCloudMeta.StFeed>>> jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
-  private FeedCloudCommon.StCommonExt jdField_a_of_type_FeedcloudFeedCloudCommon$StCommonExt;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<FeedCloudMeta.StFeed> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private vbe jdField_a_of_type_Vbe;
-  private boolean jdField_a_of_type_Boolean;
-  private final MutableLiveData<FeedCloudMeta.StFeed> jdField_b_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
-  private String jdField_b_of_type_JavaLangString;
-  private MutableLiveData<QQCircleFeedBase.StFollowPageData> jdField_c_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
-  private String jdField_c_of_type_JavaLangString;
-  
-  private void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2)
+  public vwu(String paramString)
   {
-    boolean bool = true;
-    if (TextUtils.isEmpty(paramString1))
+    super(0, true, false, 300000L, false, false, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
     {
-      QLog.e("QCircleAggregationFeedViewModel", 1, "requestFeedsData() troopUin is null!");
-      return;
-    }
-    paramString1 = new QCircleGetGroupFeedListRequest(Long.parseLong(paramString1), this.jdField_a_of_type_Vbe, paramString2, paramString3, uyq.a().a());
-    paramString1.setRetryCount(1);
-    paramString2 = paramString1.mRequest.extInfo;
-    if (!paramBoolean1) {}
-    for (;;)
-    {
-      paramString2.set(a(bool));
-      paramString1.setEnableCache(paramBoolean2);
-      this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.setValue(vxq.b());
-      a(paramString1, new vwv(this, paramString1, paramBoolean1));
-      return;
-      bool = false;
-    }
-  }
-  
-  private boolean a(List<FeedCloudMeta.StFeed> paramList)
-  {
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      FeedCloudMeta.StFeed localStFeed = (FeedCloudMeta.StFeed)localIterator.next();
-      if (localStFeed.dittoFeed.dittoId.get() == 2)
-      {
-        this.jdField_b_of_type_AndroidArchLifecycleMutableLiveData.postValue(localStFeed);
-        paramList.remove(localStFeed);
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public MutableLiveData<vxq<List<FeedCloudMeta.StFeed>>> a()
-  {
-    return this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData;
-  }
-  
-  public FeedCloudCommon.StCommonExt a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Vua != null) {
-      return this.jdField_a_of_type_Vua.a(paramBoolean);
-    }
-    return new FeedCloudCommon.StCommonExt();
-  }
-  
-  public String a()
-  {
-    return "QCircleAggregationFeedViewModel";
-  }
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(FeedCloudCommon.StCommonExt paramStCommonExt)
-  {
-    if (this.jdField_a_of_type_Vua != null) {
-      this.jdField_a_of_type_Vua.a(paramStCommonExt);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    a(paramString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, true, false);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    a(paramString, null, this.jdField_a_of_type_JavaLangString, false, paramBoolean);
-  }
-  
-  public void a(List<FeedCloudMeta.StFeed> paramList)
-  {
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      if (this.jdField_b_of_type_AndroidArchLifecycleMutableLiveData.getValue() != null) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(0, this.jdField_b_of_type_AndroidArchLifecycleMutableLiveData.getValue());
-      }
-    }
-  }
-  
-  public void a(vbe paramvbe)
-  {
-    this.jdField_a_of_type_Vbe = paramvbe;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public MutableLiveData<QQCircleFeedBase.StFollowPageData> b()
-  {
-    return this.jdField_c_of_type_AndroidArchLifecycleMutableLiveData;
-  }
-  
-  public void b(String paramString)
-  {
-    if (QCircleBaseTabFragment.jdField_b_of_type_JavaLangString.equals(paramString)) {
-      this.jdField_a_of_type_Vua = vua.a(1);
-    }
-    while (!QCircleBaseTabFragment.jdField_c_of_type_JavaLangString.equals(paramString)) {
-      return;
-    }
-    this.jdField_a_of_type_Vua = vua.a(3);
-  }
-  
-  public void c(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (!paramString.startsWith("qcircle_fakeid_")))
-    {
-      paramString = new QCircleGetFeedListRequest(this.jdField_a_of_type_Vbe, null, null, uyq.a().a());
-      paramString.mRequest.extInfo.set(a(true));
-      if (VSBaseRequest.isCacheExist(paramString)) {
-        VSBaseRequest.reMoveCache(paramString);
-      }
+      vwq.a = new vwp((int)(paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D), (int)(paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D));
+      xvv.b("LbsManager", "onLocationFinish success : " + vwq.a);
     }
   }
 }

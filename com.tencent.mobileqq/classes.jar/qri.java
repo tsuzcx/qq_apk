@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager.OpenRedPacketResultStruct;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class qri
-  implements Parcelable.Creator<RIJRedPacketManager.OpenRedPacketResultStruct>
+class qri
+  implements View.OnClickListener
 {
-  public RIJRedPacketManager.OpenRedPacketResultStruct a(Parcel paramParcel)
-  {
-    return new RIJRedPacketManager.OpenRedPacketResultStruct(paramParcel);
-  }
+  qri(qrh paramqrh) {}
   
-  public RIJRedPacketManager.OpenRedPacketResultStruct[] a(int paramInt)
-  {
-    return new RIJRedPacketManager.OpenRedPacketResultStruct[paramInt];
-  }
+  public void onClick(View paramView) {}
 }
 
 

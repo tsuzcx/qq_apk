@@ -1,191 +1,164 @@
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableString;
 import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils;
+import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
+import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
+import com.tencent.mobileqq.activity.aio.item.PttAudioChangeView;
+import com.tencent.mobileqq.activity.aio.item.PttAudioPlayView;
+import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.sdk.LaunchParam;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URLDecoder;
-import java.util.HashMap;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class agkp
+  extends aezf
 {
-  public static void a(PlusPanel paramPlusPanel, agjm paramagjm)
-  {
-    if (paramPlusPanel == null) {
-      return;
-    }
-    switch (paramagjm.a)
-    {
-    default: 
-      b(paramPlusPanel, paramagjm);
-    }
-    for (;;)
-    {
-      paramPlusPanel.b(paramagjm.b);
-      return;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("extra.GROUP_UIN", paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      localBundle.putString("selfSet_leftViewText", anzj.a(2131714501));
-      BulkSendMessageFragment.a(paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), localBundle);
-    }
-  }
+  public afce a;
+  public akxy a;
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public ETTextView a;
+  public VoicePrintUtils.VoicePrintView a;
+  public BreathAnimationLayout a;
+  public PttAudioChangeView a;
+  public PttAudioPlayView a;
+  public PttAudioWaveView a;
+  public StringBuilder a;
+  private boolean a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public ImageView d;
+  public ImageView e;
+  public ImageView f;
   
-  public static boolean a(Context paramContext, String paramString, BaseChatPie paramBaseChatPie, agjm paramagjm)
+  private void a(agkp paramagkp, QQAppInterface paramQQAppInterface, MessageForPtt paramMessageForPtt)
   {
-    com.tencent.TMG.utils.QLog.i("TroopPlusPanelUtils", 1, "troopFormLog openMiniApp:url :" + paramString);
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return MiniAppLauncher.startMiniApp(paramContext, paramString.replace("$UIN$", paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).replace("$GCODE$", paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a).replace("$APPID$", String.valueOf(paramagjm.b)), 2016, paramBaseChatPie.a(), null);
-  }
-  
-  public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    com.tencent.TMG.utils.QLog.i("TroopPlusPanelUtils", 1, "troopFormLog openTroopFormMiniAppInTroopAIO:url :" + paramString1);
-    if ((TextUtils.isEmpty(paramString1)) || (paramContext == null)) {
-      return false;
-    }
-    HashMap localHashMap;
-    if (paramString1.startsWith("mqqapi://microapp/open?"))
-    {
-      paramString1 = paramString1.substring(paramString1.indexOf("?") + 1);
-      localHashMap = new HashMap();
-    }
-    for (;;)
-    {
-      int i;
-      String str;
-      try
-      {
-        String[] arrayOfString = paramString1.split("&");
-        int j = arrayOfString.length;
-        i = 0;
-        if (i < j)
-        {
-          paramString1 = arrayOfString[i].split("=");
-          if ((paramString1 == null) || (paramString1.length != 2)) {
-            break label488;
-          }
-          Object localObject = paramString1[0];
-          str = URLDecoder.decode(paramString1[1]);
-          if (!localObject.contains("extraData"))
-          {
-            paramString1 = str;
-            if (!localObject.contains("path")) {}
-          }
-          else
-          {
-            paramString1 = str.replace("$GCODE$", "groupid=" + paramString2 + "&groupname=" + paramString3 + "&uinType=" + paramInt);
-          }
-          localHashMap.put(localObject, paramString1);
-        }
-      }
-      catch (Exception paramString1)
-      {
-        com.tencent.qphone.base.util.QLog.e("TroopPlusPanelUtils", 1, "troopFormLog openTroopFormMiniAppInTroopAIO, " + com.tencent.qphone.base.util.QLog.getStackTraceString(paramString1));
-      }
-      if (!TextUtils.isEmpty((CharSequence)localHashMap.get("appid")))
-      {
-        paramString1 = new LaunchParam();
-        paramString1.miniAppId = ((String)localHashMap.get("appid"));
-        paramString2 = (String)localHashMap.get("path");
-        paramString3 = (String)localHashMap.get("extraData");
-        str = (String)localHashMap.get("envVersion");
-        try
-        {
-          if (!TextUtils.isEmpty(paramString2)) {
-            paramString1.entryPath = URLDecoder.decode(paramString2.replaceAll("%(?![0-9a-fA-F]{2})", "%25").replaceAll("\\+", "%2B"), "UTF-8");
-          }
-          if (!TextUtils.isEmpty(paramString3)) {
-            paramString1.navigateExtData = URLDecoder.decode(paramString3, "UTF-8");
-          }
-          if (!TextUtils.isEmpty(str)) {
-            paramString1.envVersion = URLDecoder.decode(str, "UTF-8");
-          }
-        }
-        catch (UnsupportedEncodingException paramString2)
-        {
-          for (;;)
-          {
-            com.tencent.qphone.base.util.QLog.e("TroopPlusPanelUtils", 1, "troopFormLog openTroopFormMiniAppInTroopAIO, " + com.tencent.qphone.base.util.QLog.getStackTraceString(paramString2));
-          }
-        }
-        paramString1.scene = 2016;
-        com.tencent.TMG.utils.QLog.i("TroopPlusPanelUtils", 1, "troopFormLog openTroopFormMiniAppInTroopAIO:argumentMap :" + localHashMap.toString());
-        MiniAppLauncher.launchMiniAppById(paramContext, paramString1.miniAppId, paramString1.entryPath, paramString1.navigateExtData, paramString1.envVersion, paramString1.reportData, paramString1.scene);
-        return true;
-        return MiniAppLauncher.startMiniApp(paramContext, paramString1, 2016, null);
-      }
-      return false;
-      label488:
-      i += 1;
-    }
-  }
-  
-  public static boolean a(TroopAIOAppInfo paramTroopAIOAppInfo, BaseChatPie paramBaseChatPie, agjm paramagjm)
-  {
-    if ((paramTroopAIOAppInfo != null) && (paramBaseChatPie != null) && (MiniAppLauncher.isMiniAppUrl(paramTroopAIOAppInfo.url)))
-    {
-      a(paramBaseChatPie.a(), paramTroopAIOAppInfo.url, paramBaseChatPie, paramagjm);
-      return true;
-    }
-    return false;
-  }
-  
-  private static void b(PlusPanel paramPlusPanel, agjm paramagjm)
-  {
-    if (paramagjm.a >= 0) {}
+    if ((paramagkp == null) || (paramQQAppInterface == null) || (paramQQAppInterface.getApp() == null) || (paramMessageForPtt == null) || (paramMessageForPtt.getSttResult() == null)) {}
+    int i;
     do
     {
-      Object localObject;
       do
       {
         return;
-        localObject = null;
-        if (paramPlusPanel.jdField_a_of_type_AndroidUtilSparseArray != null) {
-          localObject = (TroopAIOAppInfo)paramPlusPanel.jdField_a_of_type_AndroidUtilSparseArray.get(paramagjm.b);
-        }
-      } while ((localObject == null) || (((TroopAIOAppInfo)localObject).url == null));
-      paramagjm = ((TroopAIOAppInfo)localObject).url.replace("$UIN$", paramPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).replace("$GCODE$", paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a).replace("$APPID$", String.valueOf(paramagjm.b));
-      int j = 0;
-      int i = j;
-      try
+        paramQQAppInterface = paramQQAppInterface.getApp().getApplicationContext();
+      } while (paramQQAppInterface == null);
+      i = paramMessageForPtt.getSttResult().a();
+    } while (((i != 3) && (i != 4)) || (paramagkp.b == null));
+    paramagkp.b.setVisibility(0);
+    paramagkp.b.setText(paramQQAppInterface.getString(2131718620));
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView.a();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.b();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioChangeView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioChangeView.a();
+    }
+  }
+  
+  public void a(agkp paramagkp, QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      break label7;
+    }
+    label7:
+    label147:
+    for (;;)
+    {
+      return;
+      if (paramagkp != null)
       {
-        if (TextUtils.equals(new URI(paramagjm).getScheme(), "mqqapi"))
+        if (paramQQAppInterface != null) {}
+        for (paramQQAppInterface = paramQQAppInterface.getApp().getApplicationContext();; paramQQAppInterface = null)
         {
-          localObject = bhni.a(paramPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), paramagjm);
-          i = j;
-          if (localObject != null)
+          if (paramQQAppInterface == null) {
+            break label147;
+          }
+          if (paramagkp.jdField_a_of_type_AndroidWidgetProgressBar != null) {
+            paramagkp.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+          }
+          paramString = (RelativeLayout.LayoutParams)paramagkp.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getLayoutParams();
+          paramQQAppInterface = paramQQAppInterface.getResources();
+          paramString.leftMargin = AIOUtils.dp2px(0.0F, paramQQAppInterface);
+          if (paramagkp.jdField_a_of_type_ComEtrumpMixlayoutETTextView == null) {
+            break;
+          }
+          int j = AIOUtils.dp2px(9.0F, paramQQAppInterface);
+          try
           {
-            ((bhmr)localObject).a();
-            i = 1;
+            i = paramQQAppInterface.getDrawable(2130844725).getIntrinsicHeight();
+            int k = AIOUtils.dp2px(22.0F, paramQQAppInterface);
+            paramagkp.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setPadding(j, BaseChatItemLayout.m, j, i + k);
+            return;
+          }
+          catch (Exception paramString)
+          {
+            for (;;)
+            {
+              int i = AIOUtils.dp2px(24.0F, paramQQAppInterface);
+              QLog.e("PttItemBuilder", 1, "", paramString);
+            }
           }
         }
       }
-      catch (URISyntaxException localURISyntaxException)
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, MessageForPtt paramMessageForPtt, SpannableString paramSpannableString, int paramInt)
+  {
+    if (paramQQAppInterface == null) {
+      QLog.e("PttItemBuilder", 1, "refreshSttUIForShardAnimator app is null!");
+    }
+    int i;
+    boolean bool1;
+    boolean bool2;
+    do
+    {
+      return;
+      i = agkm.a(paramQQAppInterface, paramMessageForPtt);
+      bool1 = agkm.a(paramQQAppInterface, paramMessageForPtt);
+      switch (i)
       {
-        for (;;)
-        {
-          i = j;
-        }
+      default: 
+        return;
       }
-    } while (i != 0);
-    localObject = new Intent(paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", paramagjm);
-    ((Intent)localObject).putExtra("selfSet_leftViewText", anzj.a(2131714497));
-    paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().startActivity((Intent)localObject);
+      i = agkm.b(paramMessageForPtt, i, paramQQAppInterface);
+      bool2 = VoicePrintUtils.a(paramQQAppInterface, paramQQAppInterface.getApp().getBaseContext(), this, paramMessageForPtt);
+    } while ((this.jdField_a_of_type_ComEtrumpMixlayoutETTextView == null) || (i != 2) || (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getVisibility() != 0));
+    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setText(paramSpannableString);
+    a(this, paramQQAppInterface, paramSpannableString.toString());
+    agkm.a(this, paramMessageForPtt, i, bool2, paramMessageForPtt.timeStr, bool1, paramQQAppInterface, paramInt, paramSpannableString.toString());
+    a(this, paramQQAppInterface, paramMessageForPtt);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

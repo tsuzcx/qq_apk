@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity.richmedia;
 
 import Override;
+import amtj;
 import android.annotation.TargetApi;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -15,25 +16,21 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anzj;
-import awhm;
-import bcwy;
-import bcxw;
-import bcxy;
-import bczy;
-import bczz;
-import bded;
-import bdek;
-import bhnv;
-import borf;
-import borg;
-import bori;
-import bork;
-import bpam;
+import auuk;
+import bbqi;
+import bbrg;
+import bbri;
+import bbtd;
+import bbte;
+import bbxc;
+import bbxj;
+import blvn;
+import blvp;
+import bmbx;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.AccountDpcManager.DpcAccountNames;
@@ -42,17 +39,20 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.CircleProgress;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.download.AEResInfo;
+import dov.com.qq.im.ae.download.AEResUtil;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
-import yem;
+import xfx;
 
 public class NewPreFlowCamera
   extends BaseActivity
-  implements View.OnClickListener, bcxw, bcxy, bczz, bori
+  implements View.OnClickListener, bbrg, bbri, bbte, blvp
 {
   private int jdField_a_of_type_Int;
   Button jdField_a_of_type_AndroidWidgetButton;
@@ -60,7 +60,7 @@ public class NewPreFlowCamera
   TextView jdField_a_of_type_AndroidWidgetTextView;
   CameraPreviewNew jdField_a_of_type_ComTencentMobileqqActivityRichmediaCameraPreviewNew = null;
   CircleProgress jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress;
-  private yem jdField_a_of_type_Yem;
+  private xfx jdField_a_of_type_Xfx;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -73,7 +73,7 @@ public class NewPreFlowCamera
   
   private void a(String paramString)
   {
-    e();
+    d();
     ThreadManager.getUIHandler().post(new NewPreFlowCamera.1(this, paramString));
   }
   
@@ -87,31 +87,31 @@ public class NewPreFlowCamera
     ThreadManager.getUIHandler().post(new NewPreFlowCamera.2(this, paramString));
   }
   
-  private void d()
+  private void c()
   {
-    boolean bool = bhnv.g(null);
-    VideoEnvironment.a("NewPreFlowCamera", "startDownloadConfig netUsable=" + bool, null);
+    boolean bool = NetworkUtil.isNetworkAvailable(null);
+    VideoEnvironment.LogDownLoad("NewPreFlowCamera", "startDownloadConfig netUsable=" + bool, null);
     if (bool)
     {
-      VideoEnvironment.a("NewPreFlowCamera", anzj.a(2131706421), null);
+      VideoEnvironment.LogDownLoad("NewPreFlowCamera", amtj.a(2131706651), null);
       ShortVideoResourceManager.b(this.app, this);
       return;
     }
-    b(anzj.a(2131706432));
+    b(amtj.a(2131706662));
   }
   
-  private void e()
+  private void d()
   {
     if (a())
     {
       int i = (this.jdField_c_of_type_Int + this.jdField_d_of_type_Int) / 2;
-      b(anzj.a(2131706422) + i + "%");
+      b(amtj.a(2131706652) + i + "%");
       return;
     }
-    b(anzj.a(2131706428) + this.jdField_c_of_type_Int + "%");
+    b(amtj.a(2131706658) + this.jdField_c_of_type_Int + "%");
   }
   
-  private void f()
+  private void e()
   {
     if (a()) {
       if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.jdField_d_of_type_Int > 100)) {
@@ -122,13 +122,6 @@ public class NewPreFlowCamera
       return;
     }
     a();
-  }
-  
-  public void B_()
-  {
-    b(anzj.a(2131706419));
-    VideoEnvironment.a("NewPreFlowCamera", anzj.a(2131706426), null);
-    bcwy.a(3, -1500);
   }
   
   public void a()
@@ -146,31 +139,31 @@ public class NewPreFlowCamera
     if (localSessionInfo2 == null)
     {
       localSessionInfo1 = new SessionInfo();
-      localSessionInfo1.jdField_a_of_type_Int = 0;
+      localSessionInfo1.curType = 0;
     }
     localIntent.putExtra("PhotoConst.SEND_SESSION_INFO", localSessionInfo1);
     localIntent.putExtra("sv_config", DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.SV658Cfg.name(), null));
     localIntent.putExtra("sv_whitelist", DeviceProfileManager.a().a(DeviceProfileManager.AccountDpcManager.DpcAccountNames.picpredownload_whitelist.name()));
-    QLog.d("NewPreFlowCamera", 2, "ShortVideoUtils.loadShortVideoSo: loadBeginStatus=" + VideoEnvironment.a());
-    ShortVideoUtils.a(this.app);
-    boolean bool = ShortVideoUtils.a();
+    QLog.d("NewPreFlowCamera", 2, "ShortVideoUtils.loadShortVideoSo: loadBeginStatus=" + VideoEnvironment.getShortVideoSoLibLoadStatus());
+    ShortVideoUtils.loadShortVideoSo(this.app);
+    boolean bool = ShortVideoUtils.isVideoSoLibLoaded();
     QLog.d("NewPreFlowCamera", 2, "ShortVideoUtils.loadShortVideoSo: avCodecIsOK=" + bool);
     if (bool)
     {
-      int i = VideoEnvironment.b();
+      int i = VideoEnvironment.getAVCodecVersion();
       QLog.d("NewPreFlowCamera", 2, "is load AVCodec: versionCode=" + i);
-      bool = bdek.a(this.app, BaseApplicationImpl.getContext());
-      VideoEnvironment.a("NewPreFlowCamera", "startNewFlow startDownloadFilterSo=" + bool, null);
+      bool = bbxj.a(this.app, BaseApplicationImpl.getContext());
+      VideoEnvironment.LogDownLoad("NewPreFlowCamera", "startNewFlow startDownloadFilterSo=" + bool, null);
       localIntent.putExtra("edit_video_type", this.e);
       localIntent.putExtra("entrance_type", this.f);
       localIntent.putExtra("flow_camera_use_filter_function", bool);
-      localIntent.putExtra("flow_camera_use_3dfilter_function", bded.a("TKGLRenderer"));
+      localIntent.putExtra("flow_camera_use_3dfilter_function", bbxc.a("TKGLRenderer"));
       localIntent.putExtra("flow_camera_video_mode", true);
       localIntent.putExtra("flow_key_from_guide", this.jdField_c_of_type_Boolean);
       localIntent.putExtra("activity_start_time", SystemClock.elapsedRealtime());
       localIntent.setClass(this, NewFlowCameraActivity.class);
       if (this.e == 10002) {
-        this.jdField_a_of_type_Yem.a(localIntent);
+        this.jdField_a_of_type_Xfx.a(localIntent);
       }
       if (this.e == 10004)
       {
@@ -182,8 +175,8 @@ public class NewPreFlowCamera
     }
     else
     {
-      b(anzj.a(2131706417));
-      QLog.d("NewPreFlowCamera", 2, "ShortVideoUtils.loadShortVideoSo:AVCodec load error code=" + VideoEnvironment.a());
+      b(amtj.a(2131706647));
+      QLog.d("NewPreFlowCamera", 2, "ShortVideoUtils.loadShortVideoSo:AVCodec load error code=" + VideoEnvironment.getShortVideoSoLibLoadStatus());
       return;
     }
     if (this.f == 15)
@@ -191,7 +184,7 @@ public class NewPreFlowCamera
       if (QLog.isColorLevel()) {
         QLog.d("NewPreFlowCamera", 2, "QQStoryApiPlugin.gotoStoryTakeVideoActivity");
       }
-      awhm.a(this);
+      auuk.a(this);
       super.finish();
       return;
     }
@@ -212,139 +205,16 @@ public class NewPreFlowCamera
     ThreadManager.getUIHandler().post(new NewPreFlowCamera.5(this, paramInt));
   }
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    VideoEnvironment.a("NewPreFlowCamera", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
-    if ((paramInt1 == 1) || (paramInt1 == 0))
-    {
-      if (paramInt2 != 0)
-      {
-        VideoEnvironment.a("NewPreFlowCamera", anzj.a(2131706420) + paramInt2 + "]", null);
-        ShortVideoResourceManager.a(anzj.a(2131706418));
-        bcwy.a(1, paramInt2);
-        return;
-      }
-      ArrayList localArrayList = new ArrayList(1);
-      paramInt1 = ShortVideoResourceManager.a(this.app, localArrayList);
-      if (paramInt1 == 0)
-      {
-        VideoEnvironment.a("NewPreFlowCamera", anzj.a(2131706423), null);
-        ShortVideoResourceManager.a(this.app, localArrayList, this);
-        paramInt1 = bork.a(borf.jdField_b_of_type_Borf);
-        if (paramInt1 == 2)
-        {
-          borg.a().a(borf.jdField_b_of_type_Borf, this, false);
-          return;
-        }
-        if (paramInt1 == 1) {
-          borg.a().a(borf.jdField_b_of_type_Borf, null, false);
-        }
-        this.jdField_b_of_type_Int = 100;
-        this.jdField_b_of_type_Boolean = true;
-        VideoEnvironment.a("NewPreFlowCamera", "onConfigResult| getFilterSoState != AEResUtil.AERES_NOT_EXIST", null);
-        return;
-      }
-      VideoEnvironment.a("NewPreFlowCamera", anzj.a(2131706427) + paramInt1 + "]", null);
-      ShortVideoResourceManager.a(anzj.a(2131706425));
-      bcwy.a(1, paramInt1);
-      return;
-    }
-    VideoEnvironment.a("NewPreFlowCamera", anzj.a(2131706415) + paramInt2 + "]", null);
-    ShortVideoResourceManager.a(anzj.a(2131706429));
-    bcwy.a(1, paramInt2);
-  }
-  
-  public void a(borf paramborf, long paramLong1, long paramLong2)
-  {
-    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    if ((paramborf != null) && (paramborf.jdField_b_of_type_JavaLangString != null) && (paramborf.jdField_b_of_type_JavaLangString.equals(borf.jdField_b_of_type_Borf.jdField_b_of_type_JavaLangString))) {
-      this.jdField_b_of_type_Int = i;
-    }
-    this.jdField_c_of_type_Int = ((this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) / 2);
-    a("doUserDownloadResourceAVCodec:");
-    VideoEnvironment.a("NewPreFlowCamera", "name=" + paramborf.jdField_b_of_type_JavaLangString + ",totalLen=" + paramLong2 + ",curOffset=" + paramLong1 + ",localProgress=" + i, null);
-  }
-  
-  public void a(borf paramborf, String paramString, boolean paramBoolean, int paramInt)
-  {
-    if ((paramborf != null) && (paramborf.jdField_b_of_type_JavaLangString != null) && (paramborf.jdField_b_of_type_JavaLangString.equals(borf.jdField_b_of_type_Borf.jdField_b_of_type_JavaLangString)))
-    {
-      if (paramInt != 0)
-      {
-        bpam.d("NewPreFlowCamera", "[onAEDownloadFinish] errorType :" + paramInt);
-        VideoEnvironment.a("NewPreFlowCamera", anzj.a(2131706430) + paramInt + "]", null);
-        ShortVideoResourceManager.a(anzj.a(2131706416));
-        bcwy.a(2, paramInt);
-      }
-    }
-    else {
-      return;
-    }
-    bpam.b("NewPreFlowCamera", "[onAEDownloadFinish] mFilterState 100");
-    this.jdField_b_of_type_Int = 100;
-    this.jdField_b_of_type_Boolean = true;
-    if (!isFinishing())
-    {
-      bpam.b("NewPreFlowCamera", "[onAEDownloadFinish] isAvCodecDownloaded=" + this.jdField_a_of_type_Boolean);
-      VideoEnvironment.a("NewPreFlowCamera", "[Filter]isAvCodecDownloaded=" + this.jdField_a_of_type_Boolean, null);
-      f();
-      return;
-    }
-    bpam.b("NewPreFlowCamera", "[onAEDownloadFinish] isFinishing= tru");
-    VideoEnvironment.a("NewPreFlowCamera", "isFinishing= true", null);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
-    {
-      if (paramInt == 0) {
-        break label110;
-      }
-      VideoEnvironment.a("NewPreFlowCamera", anzj.a(2131706431) + paramInt + "]", null);
-      ShortVideoResourceManager.a(anzj.a(2131706433));
-      bcwy.a(2, paramInt);
-    }
-    for (;;)
-    {
-      VideoEnvironment.a("NewPreFlowCamera", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-      return;
-      label110:
-      this.jdField_a_of_type_Int = 100;
-      this.jdField_a_of_type_Boolean = true;
-      if (!isFinishing())
-      {
-        VideoEnvironment.a("NewPreFlowCamera", "[AVCodec]isFilterDownloaded=" + this.jdField_b_of_type_Boolean, null);
-        f();
-      }
-      else
-      {
-        VideoEnvironment.a("NewPreFlowCamera", "isFinishing= true", null);
-      }
-    }
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    if (paramString.startsWith("new_qq_android_native_short_video_")) {
-      this.jdField_a_of_type_Int = i;
-    }
-    this.jdField_c_of_type_Int = ((this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) / 2);
-    a("doUserDownloadResourceAVCodec:");
-    VideoEnvironment.a("NewPreFlowCamera", "name=" + paramString + ",totalLen=" + paramLong2 + ",curOffset=" + paramLong1 + ",localProgress=" + i, null);
-  }
-  
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     ThreadManager.getUIHandler().post(new NewPreFlowCamera.4(this, paramBoolean1, paramInt));
   }
   
-  public void c()
+  public void b()
   {
     this.jdField_d_of_type_Int = 0;
-    bczy.a().a(true, this);
-    boolean bool = bczy.a().a();
+    bbtd.a().a(true, this);
+    boolean bool = bbtd.a().a();
     if (QLog.isColorLevel()) {
       QLog.d("NewPreFlowCamera", 2, "preDownloadGestureRes:" + bool);
     }
@@ -359,8 +229,9 @@ public class NewPreFlowCamera
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -393,44 +264,44 @@ public class NewPreFlowCamera
       finish();
       return false;
     }
-    this.jdField_a_of_type_Yem = new yem(this.app);
+    this.jdField_a_of_type_Xfx = new xfx(this.app);
     this.jdField_c_of_type_Boolean = getIntent().getBooleanExtra("flow_key_from_guide", false);
     this.e = getIntent().getIntExtra("edit_video_type", 10000);
     this.f = getIntent().getIntExtra("entrance_type", 99);
-    setContentView(2131561223);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376925));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131366825));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131365187));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131167302), 100, getResources().getColor(2131165367));
+    setContentView(2131561097);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376679));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131366849));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131365212));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131167337), 100, getResources().getColor(2131165375));
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(6.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setProgress(0.0F);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366920));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366943));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    if (!VideoEnvironment.c(this.app))
+    if (!VideoEnvironment.supportShortVideoRecordAndPlay(this.app))
     {
-      QQToast.a(VideoEnvironment.a(), anzj.a(2131706424), 1).a();
+      QQToast.a(VideoEnvironment.getContext(), amtj.a(2131706654), 1).a();
       super.finish();
       return true;
     }
     boolean bool2;
     if (a())
     {
-      c();
-      bool2 = VideoEnvironment.e(this.app);
-      if (bork.a(borf.jdField_b_of_type_Borf) == 2) {
+      b();
+      bool2 = VideoEnvironment.checkAVCodecLoadIsOK(this.app);
+      if (AEResUtil.getAEResStatus(AEResInfo.AE_RES_BASE_PACKAGE) == 2) {
         break label360;
       }
     }
     label360:
     for (boolean bool1 = true;; bool1 = false)
     {
-      VideoEnvironment.a("NewPreFlowCamera", "checkAVCodecLoadIsOK loaded=" + bool2 + ",exists=" + bool1, null);
+      VideoEnvironment.LogDownLoad("NewPreFlowCamera", "checkAVCodecLoadIsOK loaded=" + bool2 + ",exists=" + bool1, null);
       if ((bool2) && (bool1)) {
         break label365;
       }
-      bcwy.a(2);
-      d();
+      bbqi.a(2);
+      c();
       return true;
       this.jdField_d_of_type_Int = 101;
       break;
@@ -446,15 +317,15 @@ public class NewPreFlowCamera
     if (this.app != null)
     {
       ShortVideoResourceManager.a(this.app, this);
-      borg.a().a(this);
+      blvn.a().a(this);
     }
-    bczy.a().a(false, this);
+    bbtd.a().a(false, this);
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    View localView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366817);
+    View localView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366841);
     if (localView != null) {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(localView);
     }
@@ -467,7 +338,7 @@ public class NewPreFlowCamera
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaCameraPreviewNew = new CameraPreviewNew(this, null);
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaCameraPreviewNew.setCamera(this.jdField_c_of_type_Boolean);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaCameraPreviewNew.setId(2131366817);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaCameraPreviewNew.setId(2131366841);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaCameraPreviewNew, 0, localLayoutParams);
   }
   
@@ -483,6 +354,46 @@ public class NewPreFlowCamera
     super.finish();
   }
   
+  public void onAEDownloadFinish(AEResInfo paramAEResInfo, String paramString, boolean paramBoolean, int paramInt)
+  {
+    if ((paramAEResInfo != null) && (paramAEResInfo.resPrefix != null) && (paramAEResInfo.resPrefix.equals(AEResInfo.AE_RES_BASE_PACKAGE.resPrefix)))
+    {
+      if (paramInt != 0)
+      {
+        bmbx.d("NewPreFlowCamera", "[onAEDownloadFinish] errorType :" + paramInt);
+        VideoEnvironment.LogDownLoad("NewPreFlowCamera", amtj.a(2131706660) + paramInt + "]", null);
+        ShortVideoResourceManager.a(amtj.a(2131706646));
+        bbqi.a(2, paramInt);
+      }
+    }
+    else {
+      return;
+    }
+    bmbx.b("NewPreFlowCamera", "[onAEDownloadFinish] mFilterState 100");
+    this.jdField_b_of_type_Int = 100;
+    this.jdField_b_of_type_Boolean = true;
+    if (!isFinishing())
+    {
+      bmbx.b("NewPreFlowCamera", "[onAEDownloadFinish] isAvCodecDownloaded=" + this.jdField_a_of_type_Boolean);
+      VideoEnvironment.LogDownLoad("NewPreFlowCamera", "[Filter]isAvCodecDownloaded=" + this.jdField_a_of_type_Boolean, null);
+      e();
+      return;
+    }
+    bmbx.b("NewPreFlowCamera", "[onAEDownloadFinish] isFinishing= tru");
+    VideoEnvironment.LogDownLoad("NewPreFlowCamera", "isFinishing= true", null);
+  }
+  
+  public void onAEProgressUpdate(AEResInfo paramAEResInfo, long paramLong1, long paramLong2)
+  {
+    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+    if ((paramAEResInfo != null) && (paramAEResInfo.resPrefix != null) && (paramAEResInfo.resPrefix.equals(AEResInfo.AE_RES_BASE_PACKAGE.resPrefix))) {
+      this.jdField_b_of_type_Int = i;
+    }
+    this.jdField_c_of_type_Int = ((this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) / 2);
+    a("doUserDownloadResourceAVCodec:");
+    VideoEnvironment.LogDownLoad("NewPreFlowCamera", "name=" + paramAEResInfo.resPrefix + ",totalLen=" + paramLong2 + ",curOffset=" + paramLong1 + ",localProgress=" + i, null);
+  }
+  
   public void onClick(View paramView)
   {
     switch (paramView.getId())
@@ -496,11 +407,101 @@ public class NewPreFlowCamera
     }
   }
   
+  public void onConfigResult(int paramInt1, int paramInt2)
+  {
+    VideoEnvironment.LogDownLoad("NewPreFlowCamera", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
+    if ((paramInt1 == 1) || (paramInt1 == 0))
+    {
+      if (paramInt2 != 0)
+      {
+        VideoEnvironment.LogDownLoad("NewPreFlowCamera", amtj.a(2131706650) + paramInt2 + "]", null);
+        ShortVideoResourceManager.a(amtj.a(2131706648));
+        bbqi.a(1, paramInt2);
+        return;
+      }
+      ArrayList localArrayList = new ArrayList(1);
+      paramInt1 = ShortVideoResourceManager.a(this.app, localArrayList);
+      if (paramInt1 == 0)
+      {
+        VideoEnvironment.LogDownLoad("NewPreFlowCamera", amtj.a(2131706653), null);
+        ShortVideoResourceManager.a(this.app, localArrayList, this);
+        paramInt1 = AEResUtil.getAEResStatus(AEResInfo.AE_RES_BASE_PACKAGE);
+        if (paramInt1 == 2)
+        {
+          blvn.a().a(AEResInfo.AE_RES_BASE_PACKAGE, this, false);
+          return;
+        }
+        if (paramInt1 == 1) {
+          blvn.a().a(AEResInfo.AE_RES_BASE_PACKAGE, null, false);
+        }
+        this.jdField_b_of_type_Int = 100;
+        this.jdField_b_of_type_Boolean = true;
+        VideoEnvironment.LogDownLoad("NewPreFlowCamera", "onConfigResult| getFilterSoState != AEResUtil.AERES_NOT_EXIST", null);
+        return;
+      }
+      VideoEnvironment.LogDownLoad("NewPreFlowCamera", amtj.a(2131706657) + paramInt1 + "]", null);
+      ShortVideoResourceManager.a(amtj.a(2131706655));
+      bbqi.a(1, paramInt1);
+      return;
+    }
+    VideoEnvironment.LogDownLoad("NewPreFlowCamera", amtj.a(2131706645) + paramInt2 + "]", null);
+    ShortVideoResourceManager.a(amtj.a(2131706659));
+    bbqi.a(1, paramInt2);
+  }
+  
   @Override
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
+  }
+  
+  public void onDownloadFinish(String paramString1, int paramInt, String paramString2)
+  {
+    if (paramString1.startsWith("new_qq_android_native_short_video_"))
+    {
+      if (paramInt == 0) {
+        break label110;
+      }
+      VideoEnvironment.LogDownLoad("NewPreFlowCamera", amtj.a(2131706661) + paramInt + "]", null);
+      ShortVideoResourceManager.a(amtj.a(2131706663));
+      bbqi.a(2, paramInt);
+    }
+    for (;;)
+    {
+      VideoEnvironment.LogDownLoad("NewPreFlowCamera", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
+      return;
+      label110:
+      this.jdField_a_of_type_Int = 100;
+      this.jdField_a_of_type_Boolean = true;
+      if (!isFinishing())
+      {
+        VideoEnvironment.LogDownLoad("NewPreFlowCamera", "[AVCodec]isFilterDownloaded=" + this.jdField_b_of_type_Boolean, null);
+        e();
+      }
+      else
+      {
+        VideoEnvironment.LogDownLoad("NewPreFlowCamera", "isFinishing= true", null);
+      }
+    }
+  }
+  
+  public void onNetWorkNone()
+  {
+    b(amtj.a(2131706649));
+    VideoEnvironment.LogDownLoad("NewPreFlowCamera", amtj.a(2131706656), null);
+    bbqi.a(3, -1500);
+  }
+  
+  public void onUpdateProgress(String paramString, long paramLong1, long paramLong2)
+  {
+    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+    if (paramString.startsWith("new_qq_android_native_short_video_")) {
+      this.jdField_a_of_type_Int = i;
+    }
+    this.jdField_c_of_type_Int = ((this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) / 2);
+    a("doUserDownloadResourceAVCodec:");
+    VideoEnvironment.LogDownLoad("NewPreFlowCamera", "name=" + paramString + ",totalLen=" + paramLong2 + ",curOffset=" + paramLong1 + ",localProgress=" + i, null);
   }
 }
 

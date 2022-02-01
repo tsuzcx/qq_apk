@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aikg;
-import aikp;
-import avld;
-import avlf;
+import ahfp;
+import ahgb;
+import atyd;
+import atyf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gamecenter.message.GameUserInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 public class GameMsgChatPie$GameUsrAvatarClickLis$1
   implements Runnable
 {
-  public GameMsgChatPie$GameUsrAvatarClickLis$1(aikp paramaikp) {}
+  public GameMsgChatPie$GameUsrAvatarClickLis$1(ahgb paramahgb) {}
   
   public void run()
   {
@@ -19,37 +19,37 @@ public class GameMsgChatPie$GameUsrAvatarClickLis$1
     {
       try
       {
-        Object localObject = ((avld)aikp.a(this.this$0).getManager(358)).a(aikp.a(this.this$0));
+        Object localObject = ((atyd)ahgb.a(this.this$0).getManager(358)).a(ahgb.a(this.this$0));
         if (localObject == null)
         {
-          QLog.w(aikg.g, 1, "GameUsrAvatarClickLis, usrInfo is null");
+          QLog.w(ahfp.b, 1, "GameUsrAvatarClickLis, usrInfo is null");
           return;
         }
-        aikp.a(this.this$0);
+        ahgb.a(this.this$0);
         String str2 = ((GameUserInfo)localObject).mAppId;
-        if (aikp.a(this.this$0))
+        if (ahgb.a(this.this$0))
         {
           localObject = "0";
-          avlf.a(str2, "1", "145", "920", "92005", "206352", "", "", "20", (String)localObject);
-          if (!aikp.b(this.this$0)) {
+          atyf.a(str2, "1", "145", "920", "92005", "206352", "", "", "20", (String)localObject);
+          if (!ahgb.b(this.this$0)) {
             break;
           }
           if (!QLog.isColorLevel()) {
             return;
           }
-          QLog.d(aikg.g, 2, "GameUsrAvatarClickLis already update.");
+          QLog.d(ahfp.b, 2, "GameUsrAvatarClickLis already update.");
           return;
         }
       }
       catch (Throwable localThrowable)
       {
-        QLog.e(aikg.g, 1, localThrowable, new Object[0]);
+        QLog.e(ahfp.b, 1, localThrowable, new Object[0]);
         return;
       }
       String str1 = "1";
     }
-    aikp.a(this.this$0, aikp.a(this.this$0));
-    aikp.a(this.this$0, true);
+    ahgb.a(this.this$0, ahgb.a(this.this$0));
+    ahgb.a(this.this$0, true);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand;
 
+import amtj;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
@@ -8,7 +9,6 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import anzj;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
@@ -141,7 +141,7 @@ public final class AppBrandRuntimeContainer
     while (localIterator.hasNext())
     {
       AppBrandRuntime localAppBrandRuntime = (AppBrandRuntime)localIterator.next();
-      if ((localAppBrandRuntime.apkgInfo != null) && (localAppBrandRuntime.apkgInfo.appConfig != null) && (localAppBrandRuntime.apkgInfo.appConfig.config != null) && (localAppBrandRuntime.apkgInfo.appConfig.isInternalApp()) && (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_runtime_alive_ids_internal", "1109875297").contains(localAppBrandRuntime.apkgInfo.appConfig.config.appId)))
+      if ((localAppBrandRuntime != null) && (localAppBrandRuntime.apkgInfo != null) && (localAppBrandRuntime.apkgInfo.appConfig != null) && (localAppBrandRuntime.apkgInfo.appConfig.config != null) && (localAppBrandRuntime.apkgInfo.appConfig.isInternalApp()) && (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_runtime_alive_ids_internal", "1109875297").contains(localAppBrandRuntime.apkgInfo.appConfig.config.appId)))
       {
         QLog.d("miniapp-start_AppBrandRuntimeContainer", 1, "RunTime will not be cleaned.  appid=" + localAppBrandRuntime.apkgInfo.appConfig.config.appId);
       }
@@ -337,7 +337,7 @@ public final class AppBrandRuntimeContainer
         if (this.mDebugLayout.getParent() != null) {
           ((ViewGroup)this.mDebugLayout.getParent()).removeView(this.mDebugLayout);
         }
-        this.mDebugText.setText(anzj.a(2131699509));
+        this.mDebugText.setText(amtj.a(2131699744));
         paramFrameLayout.addView(this.mDebugLayout, new ViewGroup.LayoutParams(-1, -1));
         this.mDebugLayout.setVisibility(4);
       }

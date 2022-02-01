@@ -1,119 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.1;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.2;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.3;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.4;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSEngineLoader.5;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class qgu
+  implements ViewBase.IBuilder
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static volatile qgu jdField_a_of_type_Qgu;
-  public final boolean a;
-  private final String jdField_b_of_type_JavaLangString = nmp.a("3980") + "3980";
-  private volatile boolean jdField_b_of_type_Boolean;
-  private final String c = BaseApplicationImpl.getApplication().getFilesDir().getParent() + "/txlib/" + "readinjoy_pts_engine";
-  
-  private qgu()
+  public ViewBase build(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public static qgu a()
-  {
-    if (jdField_a_of_type_Qgu == null) {}
-    try
-    {
-      if (jdField_a_of_type_Qgu == null) {
-        jdField_a_of_type_Qgu = new qgu();
-      }
-      return jdField_a_of_type_Qgu;
-    }
-    finally {}
-  }
-  
-  private boolean b()
-  {
-    Object localObject = this.c + "/" + "libpts.so";
-    String str = this.c + "/" + "pts_config.json";
-    boolean bool1 = bhmi.a((String)localObject);
-    boolean bool2 = qgy.a(str);
-    jdField_a_of_type_JavaLangString = qgy.b(str);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[checkInnerPTSEngineIsValid]").append("\n").append(", ptsEngineVersion = ").append(jdField_a_of_type_JavaLangString).append("\n").append(", isSoExists = ").append(bool1).append("\n").append(", isVersionSupport = ").append(bool2).append("\n");
-    QLog.i("PTSEngineLoader", 1, ((StringBuilder)localObject).toString());
-    return (bool1) && (bool2);
-  }
-  
-  private void c()
-  {
-    ThreadManager.excute(new PTSEngineLoader.3(this), 128, null, true);
-  }
-  
-  private boolean c()
-  {
-    return false;
-  }
-  
-  private void d()
-  {
-    ThreadManager.excute(new PTSEngineLoader.4(this), 64, null, false);
-  }
-  
-  private void e()
-  {
-    if (c()) {
-      return;
-    }
-    if (a())
-    {
-      QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], pts engine is ready, do not load again.");
-      return;
-    }
-    if (b())
-    {
-      PTSEngineLoader.5 local5 = new PTSEngineLoader.5(this);
-      qgw.a().a(local5);
-      return;
-    }
-    QLog.i("PTSEngineLoader", 1, "[loadPTSEngineImpl], inner dir is not valid, load pts engine failed.");
-    d();
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    PTSEngineLoader.1 local1 = new PTSEngineLoader.1(this);
-    ThreadManager.getSubThreadHandler().postDelayed(local1, 10000L);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    try
-    {
-      this.jdField_b_of_type_Boolean = false;
-      PTSEngineLoader.2 local2 = new PTSEngineLoader.2(this);
-      ThreadManager.getFileThreadHandler().post(local2);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return new qgt(paramVafContext);
   }
 }
 

@@ -1,16 +1,25 @@
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class vzl
-  implements aakg
+  extends QQUIEventReceiver<vzf, wrl>
 {
-  public vzl(QCircleFeedCommentWidget paramQCircleFeedCommentWidget) {}
-  
-  public void a()
+  public vzl(@NonNull vzf paramvzf)
   {
-    QCircleFeedCommentWidget.b(this.a, 0);
+    super(paramvzf);
   }
   
-  public void a(int paramInt) {}
+  public void a(@NonNull vzf paramvzf, @NonNull wrl paramwrl)
+  {
+    if ((paramvzf.a.a().equals(paramwrl.jdField_a_of_type_JavaLangString)) && ((paramwrl.jdField_a_of_type_Wod instanceof wor))) {
+      paramvzf.a(((wor)paramwrl.jdField_a_of_type_Wod).a(), paramwrl.b);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wrl.class;
+  }
 }
 
 

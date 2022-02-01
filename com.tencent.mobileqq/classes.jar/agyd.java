@@ -1,15 +1,26 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.VideoListener.1;
 
-class agyd
-  extends agen
+public class agyd
+  implements VideoDrawable.OnPlayRepeatListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView b;
-  TextView c;
-  TextView d;
+  public AIOGalleryAdapter a;
   
-  agyd(agyb paramagyb) {}
+  public agyd(AIOGalleryAdapter paramAIOGalleryAdapter)
+  {
+    this.a = paramAIOGalleryAdapter;
+  }
+  
+  public void onPlayRepeat(int paramInt)
+  {
+    if (paramInt != 1) {
+      return;
+    }
+    new Handler(Looper.getMainLooper()).post(new AIOGalleryAdapter.VideoListener.1(this));
+  }
 }
 
 

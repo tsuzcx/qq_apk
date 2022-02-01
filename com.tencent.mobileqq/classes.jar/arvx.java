@@ -1,21 +1,26 @@
-final class arvx<T>
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ExpandableListView;
+
+class arvx
+  implements yuw
 {
-  public arvx<T> a;
-  public final T a;
-  public arvx<T> b;
+  arvx(arvv paramarvv, int paramInt) {}
   
-  public arvx()
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangObject = null;
-    this.jdField_a_of_type_Arvx = this;
-    this.b = this;
+    String str = (String)this.jdField_a_of_type_Arvv.getGroup(this.jdField_a_of_type_Int);
+    if (arvv.a(this.jdField_a_of_type_Arvv).c(this.jdField_a_of_type_Int))
+    {
+      QQAppInterface.speak(str + amtj.a(2131708737));
+      return;
+    }
+    QQAppInterface.speak(str + amtj.a(2131708717));
   }
   
-  public arvx(T paramT, arvx<T> paramarvx1, arvx<T> paramarvx2)
+  public void b()
   {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    this.jdField_a_of_type_Arvx = paramarvx1;
-    this.b = paramarvx2;
+    QLog.e("ACCESS_SILAS", 1, "onViewFocusClear");
   }
 }
 

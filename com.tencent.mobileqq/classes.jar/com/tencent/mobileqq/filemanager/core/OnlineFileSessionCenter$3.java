@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atws;
+import asjc;
 
 public class OnlineFileSessionCenter$3
   implements Runnable
 {
-  public OnlineFileSessionCenter$3(atws paramatws, int paramInt) {}
+  public OnlineFileSessionCenter$3(asjc paramasjc, int paramInt) {}
   
   public void run()
   {

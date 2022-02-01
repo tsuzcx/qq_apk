@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.ar.view;
 
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import aodo;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class ARScanEntryView$15
   implements Runnable
@@ -9,7 +10,7 @@ class ARScanEntryView$15
   
   public void run()
   {
-    this.this$0.a.setVisibility(8);
+    this.this$0.a.a.dismiss();
   }
 }
 

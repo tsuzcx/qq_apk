@@ -1,14 +1,63 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.Comparator;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
 
-class ajix
-  implements Comparator<MayKnowRecommend>
+public class ajix
+  implements IMiniMsgUnreadCallback
 {
-  ajix(ajis paramajis) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
+  public ajix(View paramView, TextView paramTextView)
   {
-    return paramMayKnowRecommend2.timestamp - paramMayKnowRecommend1.timestamp;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+  }
+  
+  public void destroy()
+  {
+    this.jdField_a_of_type_AndroidViewView = null;
+    this.jdField_a_of_type_AndroidWidgetTextView = null;
+  }
+  
+  public void hide()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+  }
+  
+  public void hideUnread()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  public boolean show(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    updateUnreadCount(paramInt, false);
+    return true;
+  }
+  
+  public void updateOnBackFromMiniAIO(Bundle paramBundle) {}
+  
+  public void updateUnreadCount(int paramInt, boolean paramBoolean)
+  {
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    String str = String.valueOf(paramInt);
+    if (paramInt > 99) {
+      str = "99+";
+    }
+    localTextView.setText(str);
+    if (!paramBoolean)
+    {
+      if (paramInt <= 0) {
+        localTextView.setVisibility(8);
+      }
+    }
+    else {
+      return;
+    }
+    localTextView.setVisibility(0);
   }
 }
 

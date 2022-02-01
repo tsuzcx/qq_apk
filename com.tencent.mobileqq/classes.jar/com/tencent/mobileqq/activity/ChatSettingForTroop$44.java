@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity;
 import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 class ChatSettingForTroop$44
@@ -24,7 +24,7 @@ class ChatSettingForTroop$44
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.44
  * JD-Core Version:    0.7.0.1
  */

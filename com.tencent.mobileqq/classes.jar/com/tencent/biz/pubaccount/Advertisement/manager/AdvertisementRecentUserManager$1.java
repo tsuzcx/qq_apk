@@ -2,21 +2,21 @@ package com.tencent.biz.pubaccount.Advertisement.manager;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import nwf;
-import nwg;
-import nwo;
-import nws;
+import nxq;
+import nxr;
+import nxz;
+import nyd;
 
 public class AdvertisementRecentUserManager$1
   implements Runnable
 {
-  public AdvertisementRecentUserManager$1(nwo paramnwo, nwf paramnwf) {}
+  public AdvertisementRecentUserManager$1(nxz paramnxz, nxq paramnxq) {}
   
   public void run()
   {
     Iterator localIterator = this.a.a.iterator();
     while (localIterator.hasNext()) {
-      nws.b(((nwg)localIterator.next()).b);
+      nyd.b(((nxr)localIterator.next()).b);
     }
   }
 }

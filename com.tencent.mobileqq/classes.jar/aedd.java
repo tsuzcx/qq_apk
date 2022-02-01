@@ -1,36 +1,32 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aedd
-  implements View.OnClickListener
+  implements bgql
 {
-  public aedd(ChatHistory paramChatHistory) {}
+  private final WeakReference<RegisterQQNumberActivity> a;
   
-  public void onClick(View paramView)
+  public aedd(RegisterQQNumberActivity paramRegisterQQNumberActivity)
   {
-    if (this.a.d > 1)
-    {
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839104);
-      ChatHistory localChatHistory = this.a;
-      localChatHistory.d -= 1;
-      if (this.a.d <= 1)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840479);
+    this.a = new WeakReference(paramRegisterQQNumberActivity);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+      if (QLog.isColorLevel()) {
+        QLog.i("RegisterQQNumberActivity", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
       }
-      this.a.e = ((this.a.d - 1) * 8);
-      this.a.jdField_a_of_type_Aede.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-      this.a.t();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    RegisterQQNumberActivity localRegisterQQNumberActivity;
+    do
+    {
+      return;
+      localRegisterQQNumberActivity = (RegisterQQNumberActivity)this.a.get();
+    } while (localRegisterQQNumberActivity == null);
+    localRegisterQQNumberActivity.a(paramString, paramBoolean);
   }
 }
 

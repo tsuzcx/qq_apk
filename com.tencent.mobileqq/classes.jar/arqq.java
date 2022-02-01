@@ -1,65 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import kotlin.Metadata;
 
-public class arqq
-  extends arac<arqo>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"}, k=3, mv={1, 1, 16})
+final class arqq
+  implements DialogInterface.OnCancelListener
 {
-  public static arqo a()
-  {
-    return (arqo)aran.a().a(525);
-  }
+  public static final arqq a = new arqq();
   
-  @NonNull
-  public arqo a(int paramInt)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    return new arqo();
-  }
-  
-  @Nullable
-  public arqo a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arqo.a(paramArrayOfaraj);
-    }
-    return null;
-  }
-  
-  public void a(arqo paramarqo) {}
-  
-  public Class<arqo> clazz()
-  {
-    return arqo.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TencentDocLocalCooperationProcessor", 1, "TIM_CONVERT_TEAMWORK_CONFIG failed, resultCode:" + paramInt);
-  }
-  
-  public int type()
-  {
-    return 525;
+    bcef.b(null, "dc00898", "", "", "0X800B08B", "0X800B08B", 2, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqq
  * JD-Core Version:    0.7.0.1
  */

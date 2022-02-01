@@ -1,30 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import kotlin.jvm.JvmStatic;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import java.util.ArrayList;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/utils/ColdPalaceHelper$Companion;", "", "()V", "COLD_PALACE_IMAGE_URL", "", "PUNISH_FOREVER", "", "PUNISH_NONE", "SP_FILE", "SP_KEY_ME_IN_COLD_PALACE_TIMES", "SP_KEY_PUNISH_LEFT_TIME", "SP_KEY_PUNISH_TIME_SINCE", "SP_KEY_SHOW_GRAY_TIP_ENTRY", "SP_KEY_SKILL_TIP", "SP_KEY_SKILL_USEUP_TIP", "SP_KEY_SKILL_USEUP_TITLE", "SP_KEY_WARN_ME_FORBBIDEN", "SP_KEY_WARN_ME_IN_COLDPALACE", "TAG", "type_skill_tip", "", "type_skill_useup_tip", "type_skill_useup_title", "type_warn_free_time_tip", "type_warn_me_forbbiden", "type_warn_me_in_coldpalace_tip", "getHelper", "Lcom/tencent/mobileqq/extendfriend/utils/ColdPalaceHelper;", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "isExtendMsgRspType", "", "ntRspType", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class atcf
+public class atcf
+  implements aszj
 {
-  @JvmStatic
-  @NotNull
-  public final atce a(@NotNull QQAppInterface paramQQAppInterface)
+  public atcf(SendBottomBar paramSendBottomBar) {}
+  
+  public void onNo() {}
+  
+  public void onYes()
   {
-    Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
-    paramQQAppInterface = paramQQAppInterface.getManager(264);
-    if (paramQQAppInterface == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.extendfriend.ExtendFriendManager");
-    }
-    paramQQAppInterface = ((asvi)paramQQAppInterface).a();
-    Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "extendFriendManager.coldPalaceHelper");
-    return paramQQAppInterface;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(aslg.a());
+    Intent localIntent = new Intent();
+    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
+    SendBottomBar.a(this.a).setResult(-1, localIntent);
+    SendBottomBar.a(this.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atcf
  * JD-Core Version:    0.7.0.1
  */

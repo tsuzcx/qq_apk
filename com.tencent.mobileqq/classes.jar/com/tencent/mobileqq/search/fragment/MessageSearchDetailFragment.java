@@ -7,9 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import aoof;
-import bcbk;
-import bcct;
+import bauo;
+import bavv;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
 import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
@@ -21,8 +21,8 @@ public class MessageSearchDetailFragment
 {
   private static FullMessageSearchResult.SearchResultItem jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aoof jdField_a_of_type_Aoof;
-  private bcbk jdField_a_of_type_Bcbk;
+  private bauo jdField_a_of_type_Bauo;
+  private FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private String jdField_a_of_type_JavaLangString;
   private FullMessageSearchResult.SearchResultItem b;
@@ -47,9 +47,9 @@ public class MessageSearchDetailFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559338, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131367946));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131370012));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559340, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131367979));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131370009));
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -57,8 +57,8 @@ public class MessageSearchDetailFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Aoof != null) {
-      this.jdField_a_of_type_Aoof.d();
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.destory();
     }
   }
   
@@ -68,18 +68,18 @@ public class MessageSearchDetailFragment
     if ((this.b == null) || (this.b.secondPageMessageUniseq == null)) {}
     for (int i = 0;; i = this.b.secondPageMessageUniseq.size())
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131717750, new Object[] { Integer.valueOf(i), this.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_Aoof = new aoof(getActivity(), getActivity().app);
-      this.jdField_a_of_type_Bcbk = new bcct(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Aoof, this.b, this.jdField_a_of_type_JavaLangString, getActivity().app);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Bcbk);
-      this.jdField_a_of_type_Bcbk.a();
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131717988, new Object[] { Integer.valueOf(i), this.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder(getActivity(), getActivity().app);
+      this.jdField_a_of_type_Bauo = new bavv(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder, this.b, this.jdField_a_of_type_JavaLangString, getActivity().app);
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Bauo);
+      this.jdField_a_of_type_Bauo.a();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.MessageSearchDetailFragment
  * JD-Core Version:    0.7.0.1
  */

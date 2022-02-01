@@ -1,76 +1,70 @@
-import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
-import cooperation.qzone.QzoneFeedsPluginProxyActivity;
-import cooperation.qzone.QzoneFullscreenPluginProxyActivity;
-import cooperation.qzone.QzoneGPUPluginProxyActivity;
-import cooperation.qzone.QzoneNOGPUPluginProxyActivity;
-import cooperation.qzone.QzoneOrientationPluginProxyActivity;
-import cooperation.qzone.QzonePictureExtPluginProxyActivity;
-import cooperation.qzone.QzonePicturePluginProxyActivity;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.qzone.QzonePublishMoodProxyActivity;
-import cooperation.qzone.QzoneTransNoTitlePluginProxyActivity;
-import cooperation.qzone.QzoneTransWithKeyboardPluginProxyActivity;
-import cooperation.qzone.QzoneTranslucentGPUPluginProxyActivity;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.util.WeakReference;
 
-public class bmvn
+class bmvn
+  implements INetEngine.INetEngineListener
 {
-  public static Class<? extends PluginProxyActivity> a(String paramString)
+  bmvn(bmvm parambmvm) {}
+  
+  public void onResp(NetResp arg1)
   {
-    if (QzonePluginProxyActivity.a(QzonePluginProxyActivity.a(), paramString)) {
-      return QzonePicturePluginProxyActivity.class;
+    bmvl localbmvl = (bmvl)???.mReq.getUserData();
+    if (QLog.isColorLevel()) {
+      QLog.i("DText", 2, "onResp, url is: " + localbmvl.jdField_a_of_type_JavaLangString + " http status: " + ???.mHttpCode);
     }
-    if (QzonePluginProxyActivity.a(QzonePluginProxyActivity.b(), paramString)) {
-      return QzoneTransNoTitlePluginProxyActivity.class;
+    bmvm.a(this.a, localbmvl);
+    if ((bmvm.a(this.a).b(localbmvl)) && (bmvm.a(this.a).a(localbmvl))) {}
+    for (boolean bool = true;; bool = false) {
+      for (;;)
+      {
+        int i;
+        synchronized (bmvm.a(this.a))
+        {
+          ArrayList localArrayList = (ArrayList)bmvm.a(this.a).remove(localbmvl.jdField_a_of_type_JavaLangString);
+          i = localArrayList.size() - 1;
+          if (i >= 0)
+          {
+            WeakReference localWeakReference = (WeakReference)localArrayList.get(i);
+            if (localWeakReference.get() != null) {
+              ((bmvo)localWeakReference.get()).a(bool, localbmvl.jdField_a_of_type_JavaLangString);
+            }
+          }
+          else
+          {
+            return;
+          }
+        }
+        i -= 1;
+      }
     }
-    if ("com.qzone.common.activities.FeedActionPanelActivity".equals(paramString)) {
-      return QzoneTransWithKeyboardPluginProxyActivity.class;
+  }
+  
+  public void onUpdateProgeress(NetReq arg1, long paramLong1, long paramLong2)
+  {
+    bmvl localbmvl = (bmvl)???.getUserData();
+    synchronized (bmvm.a(this.a))
+    {
+      Iterator localIterator = ((ArrayList)bmvm.a(this.a).get(localbmvl.jdField_a_of_type_JavaLangString)).iterator();
+      while (localIterator.hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if (localWeakReference.get() != null) {
+          ((bmvo)localWeakReference.get()).a((float)(100L * paramLong1 / paramLong2), localbmvl.jdField_a_of_type_JavaLangString, localbmvl.jdField_a_of_type_Int);
+        }
+      }
     }
-    if ("com.qzone.common.activities.QZoneRapidCommentActivity".equals(paramString)) {
-      return QzoneTransNoTitlePluginProxyActivity.class;
+    float f = (float)paramLong1 * 100.0F / (float)paramLong2;
+    localObject.b = ((int)f);
+    if (QLog.isColorLevel()) {
+      QLog.i("DText", 2, "onResDownloadProgressUpdate url: " + localObject.jdField_a_of_type_JavaLangString + " progress: " + f + " curOffset: " + paramLong1 + " totalLen: " + paramLong2);
     }
-    if ("com.qzone.face.ui.QzoneMarkFaceActivity".equals(paramString)) {
-      return QzonePictureExtPluginProxyActivity.class;
-    }
-    if (("com.qzone.preview.QZoneVideoFloatActivity".equals(paramString)) || ("com.qzone.preview.QZoneAdvertiseVideoFloatActivity".equals(paramString)) || ("com.qzone.preview.QZoneEncourageAdvActivity".equals(paramString)) || ("com.qzone.preview.VideoPlayerActivity".equals(paramString)) || ("com.qzone.commoncode.module.videorecommend.ui.QzoneVideoFullscreenRecommendActivity".equals(paramString))) {
-      return QzoneOrientationPluginProxyActivity.class;
-    }
-    if ("com.qzone.commoncode.module.videorecommend.ui.QzoneVideoRecommendActivity".equals(paramString)) {
-      return QzoneTranslucentGPUPluginProxyActivity.class;
-    }
-    if ("com.qzone.video.activity.TrimVideoActivity".equals(paramString)) {
-      return QzoneNOGPUPluginProxyActivity.class;
-    }
-    if ("com.qzone.video.activity.PreviewVideoActivity".equals(paramString)) {
-      return QzoneNOGPUPluginProxyActivity.class;
-    }
-    if ("com.qzone.publish.ui.activity.QZonePublishMoodRealActivity".equals(paramString)) {
-      return QzonePublishMoodProxyActivity.class;
-    }
-    if ("com.qzone.publish.ui.activity.QZonePublishMoodTabActivity".equals(paramString)) {
-      return QzonePublishMoodProxyActivity.class;
-    }
-    if ("com.qzone.publish.ui.activity.QzonePublishSecretShuoShuoH5Activity".equals(paramString)) {
-      return QzonePublishMoodProxyActivity.class;
-    }
-    if ("com.qzone.feed.ui.activity.QZoneFriendFeedActivity".equals(paramString)) {
-      return QzoneFeedsPluginProxyActivity.class;
-    }
-    if ("com.qzone.common.activities.QzoneDialogActivity".equals(paramString)) {
-      return QzoneFullscreenPluginProxyActivity.class;
-    }
-    if ("com.qzone.feed.ui.activity.QZoneExtendFeedActiviy".equals(paramString)) {
-      return QzoneTranslucentGPUPluginProxyActivity.class;
-    }
-    if ("com.qzone.feed.ui.activity.QZoneExtendLiveCollectActivity".equals(paramString)) {
-      return QzoneTranslucentGPUPluginProxyActivity.class;
-    }
-    if ("com.qzone.publish.ui.activity.QQPublicAccountPublishFeedActivity".equals(paramString)) {
-      return QzonePublishMoodProxyActivity.class;
-    }
-    if ("com.tencent.qcircle.QCirclePublishFeedActivity".equals(paramString)) {
-      return QzonePublishMoodProxyActivity.class;
-    }
-    return QzoneGPUPluginProxyActivity.class;
   }
 }
 

@@ -2,20 +2,20 @@ package com.tencent.biz.pubaccount.AccountDetail.model;
 
 import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.qphone.base.util.QLog;
-import nsm;
-import nsn;
+import ntv;
+import ntw;
 
 public class AccountDetailBaseInfoModel$1$1
   implements Runnable
 {
-  public AccountDetailBaseInfoModel$1$1(nsn paramnsn, AccountDetail paramAccountDetail) {}
+  public AccountDetailBaseInfoModel$1$1(ntw paramntw, AccountDetail paramAccountDetail) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("AccountDetailBaseInfoModel", 2, "saveAccountDetailInSubThread");
     }
-    nsm.a(this.this$0.a, this.a);
+    ntv.a(this.this$0.a, this.a);
   }
 }
 

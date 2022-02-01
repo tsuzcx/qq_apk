@@ -1,24 +1,78 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class ader
-  implements adci
+  extends aliy
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
+  private List<adeo> jdField_a_of_type_JavaUtilList;
+  
+  public ader(List<adeo> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qwallet.push", 2, "receive msg0x210submsg0x7e");
-    }
-    akyb.b(paramQQAppInterface, paramMsgType0x210.vProtobuf, paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
+    super(paramList, paramList.app, paramList.a, 1, true);
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public int getCount()
   {
-    a(paramadan.a(), paramMsgInfo, paramMsgType0x210);
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
     return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    Object localObject;
+    if (paramView == null)
+    {
+      localView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.getLayoutInflater().inflate(2131559105, paramViewGroup, false);
+      paramView = new adet(null);
+      paramView.c = ((ImageView)localView.findViewById(2131369251));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379724));
+      localView.setTag(paramView);
+      localObject = (adeo)getItem(paramInt);
+      if (localObject != null)
+      {
+        if ((((adeo)localObject).b != null) && (!"".equals(((adeo)localObject).b.trim()))) {
+          break label176;
+        }
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((adeo)localObject).jdField_a_of_type_JavaLangString);
+      }
+    }
+    for (;;)
+    {
+      paramView.jdField_a_of_type_JavaLangString = ((adeo)localObject).jdField_a_of_type_JavaLangString;
+      paramView.c.setImageBitmap(a(1, ((adeo)localObject).jdField_a_of_type_JavaLangString));
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (adet)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+      break;
+      label176:
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((adeo)localObject).b);
+    }
   }
 }
 

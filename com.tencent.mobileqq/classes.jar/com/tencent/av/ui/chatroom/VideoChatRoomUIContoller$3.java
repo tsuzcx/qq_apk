@@ -3,36 +3,36 @@ package com.tencent.av.ui.chatroom;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import mne;
-import mng;
+import mmn;
+import mmp;
 
 public class VideoChatRoomUIContoller$3
   implements Runnable
 {
-  public VideoChatRoomUIContoller$3(mng parammng) {}
+  public VideoChatRoomUIContoller$3(mmp parammmp) {}
   
   public void run()
   {
-    if ((QLog.isDevelopLevel()) && (mng.a(this.this$0) != null))
+    if ((QLog.isDevelopLevel()) && (mmp.a(this.this$0) != null))
     {
-      if (mng.a(this.this$0) == null) {
-        mng.a(this.this$0, new StringBuilder(300));
+      if (mmp.a(this.this$0) == null) {
+        mmp.a(this.this$0, new StringBuilder(300));
       }
-      mng.a(this.this$0).setLength(0);
-      mng.a(this.this$0).append("updateChatRoomMsgList, list[");
-      Iterator localIterator = mng.a(this.this$0).iterator();
+      mmp.a(this.this$0).setLength(0);
+      mmp.a(this.this$0).append("updateChatRoomMsgList, list[");
+      Iterator localIterator = mmp.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        mne localmne = (mne)localIterator.next();
-        if (localmne != null) {
-          mng.a(this.this$0).append(localmne.b()).append(", ");
+        mmn localmmn = (mmn)localIterator.next();
+        if (localmmn != null) {
+          mmp.a(this.this$0).append(localmmn.b()).append(", ");
         }
       }
-      mng.a(this.this$0).append("]");
-      QLog.i("ChatRoomUtil", 4, mng.a(this.this$0).toString());
+      mmp.a(this.this$0).append("]");
+      QLog.i("ChatRoomUtil", 4, mmp.a(this.this$0).toString());
     }
-    if ((mng.a(this.this$0) != null) && (mng.a(this.this$0) != null)) {
-      mng.a(this.this$0).a(mng.a(this.this$0), true);
+    if ((mmp.a(this.this$0) != null) && (mmp.a(this.this$0) != null)) {
+      mmp.a(this.this$0).a(mmp.a(this.this$0), true);
     }
   }
 }

@@ -1,29 +1,92 @@
 import android.app.Activity;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
-import org.json.JSONObject;
+import android.content.ContentResolver;
+import android.database.ContentObserver;
+import android.os.Handler;
+import android.provider.Settings.SettingNotFoundException;
+import android.provider.Settings.System;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
 
-class rtt
-  implements sgx
+public class rtt
 {
-  rtt(rtr paramrtr, VideoInfo paramVideoInfo, JSONObject paramJSONObject) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private ContentObserver jdField_a_of_type_AndroidDatabaseContentObserver = new rtu(this, new Handler());
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public boolean a(View paramView, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public rtt(Activity paramActivity)
   {
-    paramView = ozs.a();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) {
-      pfa.a().a(Long.valueOf(paramView).longValue(), rsx.a(this.jdField_a_of_type_Rtr.a).a.makeDislikeParam(paramArrayList, rsx.a(this.jdField_a_of_type_Rtr.a).g));
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  private void c()
+  {
+    if (!this.b)
+    {
+      this.b = true;
+      this.jdField_a_of_type_AndroidAppActivity.getContentResolver().registerContentObserver(Settings.System.getUriFor("screen_brightness"), true, this.jdField_a_of_type_AndroidDatabaseContentObserver);
     }
-    QQToast.a(rsx.a(this.jdField_a_of_type_Rtr.a), -1, rsx.a(this.jdField_a_of_type_Rtr.a).getString(2131698587), 0).b(rsx.a(this.jdField_a_of_type_Rtr.a).getResources().getDimensionPixelSize(2131299011));
-    rsx.a(this.jdField_a_of_type_Rtr.a).dismiss();
-    rsx.b(this.jdField_a_of_type_Rtr.a, false);
-    ocd.b(null, null, "0X800913C", "0X800913C", 0, 0, null, null, null, new sbg(odr.a(null, null, null, null, this.jdField_a_of_type_OrgJsonJSONObject)).i(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g).a(paramArrayList).a().a(), false);
-    return true;
+  }
+  
+  private void d()
+  {
+    if (this.b)
+    {
+      this.b = false;
+      this.jdField_a_of_type_AndroidAppActivity.getContentResolver().unregisterContentObserver(this.jdField_a_of_type_AndroidDatabaseContentObserver);
+    }
+  }
+  
+  public int a()
+  {
+    ContentResolver localContentResolver = this.jdField_a_of_type_AndroidAppActivity.getContentResolver();
+    try
+    {
+      int i = Settings.System.getInt(localContentResolver, "screen_brightness");
+      return i;
+    }
+    catch (Settings.SettingNotFoundException localSettingNotFoundException) {}
+    return 0;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppActivity.getWindow().getAttributes();
+      localLayoutParams.screenBrightness = -1.0F;
+      this.jdField_a_of_type_AndroidAppActivity.getWindow().setAttributes(localLayoutParams);
+    }
+  }
+  
+  public void a(float paramFloat)
+  {
+    c();
+    this.jdField_a_of_type_Boolean = true;
+    WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidAppActivity.getWindow().getAttributes();
+    localLayoutParams.screenBrightness = paramFloat;
+    this.jdField_a_of_type_AndroidAppActivity.getWindow().setAttributes(localLayoutParams);
+  }
+  
+  public boolean a()
+  {
+    ContentResolver localContentResolver = this.jdField_a_of_type_AndroidAppActivity.getContentResolver();
+    try
+    {
+      int i = Settings.System.getInt(localContentResolver, "screen_brightness_mode");
+      return i == 1;
+    }
+    catch (Settings.SettingNotFoundException localSettingNotFoundException)
+    {
+      localSettingNotFoundException.printStackTrace();
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    d();
   }
 }
 

@@ -1,16 +1,9 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.videostory.video.FrameVideoHelper.FrameBuffer;
+import java.util.ArrayList;
 
-public class zxu
-  implements zye
+public abstract interface zxu
 {
-  public zxu(ScannerActivity paramScannerActivity, long paramLong) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentBizQrcodeActivityScannerActivity.b();
-    QLog.d("ScannerActivity", 2, "launchAr time end: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-  }
+  public abstract void a(boolean paramBoolean, ArrayList<FrameVideoHelper.FrameBuffer> paramArrayList, long paramLong);
 }
 
 

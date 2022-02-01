@@ -1,27 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
-public class raw
-  implements uyg
+class raw
+  extends raj
 {
-  public raw(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  raw(rau paramrau, AppInterface paramAppInterface) {}
   
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable) {}
-  
-  public void a(URL paramURL, suk paramsuk)
+  public Drawable a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment cover download success");
-    }
-    ReadInJoyDeliverVideoActivity.c(this.a, ShortVideoPreviewActivity.a(paramsuk.a()));
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment local cover is " + ReadInJoyDeliverVideoActivity.a(this.a));
-    }
-    this.a.setRightViewTextDisable(1);
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_mine_selected");
   }
 }
 

@@ -1,64 +1,66 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.TMG.utils.QLog;
 
-class aqeh
-  implements DialogInterface.OnClickListener
+public class aqeh
+  extends aptq<aqeg>
 {
-  aqeh(aqeg paramaqeg, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  @NonNull
+  public aqeg a(int paramInt)
   {
-    paramDialogInterface = aqeg.a(this.jdField_a_of_type_Aqeg);
-    int i = 0;
-    for (;;)
+    return new aqeg();
+  }
+  
+  @Nullable
+  public aqeg a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
     {
-      try
-      {
-        if (i < aqeg.a(this.jdField_a_of_type_Aqeg).size())
-        {
-          aqej localaqej = (aqej)aqeg.a(this.jdField_a_of_type_Aqeg).get(i);
-          if (localaqej == null) {
-            break label269;
-          }
-          localaqej.a.onClick(aqeg.a(this.jdField_a_of_type_Aqeg), paramInt);
-          break label269;
-        }
+      aqeg localaqeg2 = aqeg.a(paramArrayOfaptx[0].a);
+      aqeg localaqeg1 = localaqeg2;
+      if (localaqeg2 == null) {
+        localaqeg1 = new aqeg();
       }
-      finally {}
-      try
-      {
-        aqeg.a(this.jdField_a_of_type_Aqeg, false);
-        if ((aqeg.a(this.jdField_a_of_type_Aqeg) != null) && (aqeg.a(this.jdField_a_of_type_Aqeg).isShowing())) {
-          aqeg.a(this.jdField_a_of_type_Aqeg).dismiss();
-        }
-        aqeg.a(this.jdField_a_of_type_Aqeg, this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("WriteTogetherConfProcessor", 0, "onParsed " + paramArrayOfaptx[0].a);
       }
-      catch (Exception paramDialogInterface)
-      {
-        QLog.e("ark.download.ctrl", 1, "ark.dctrl [onClickListener] clicked dismiss exception:", paramDialogInterface);
-        continue;
-        if (paramInt != 0) {
-          continue;
-        }
-        bdll.a(null, "dc00898", "", "", "0X800AD1E", "0X800AD1E", 3, 0, String.valueOf(aqeg.a(this.jdField_a_of_type_Aqeg)), "", this.jdField_a_of_type_JavaLangString, "");
-        return;
-      }
-      QLog.d("ark.download.ctrl", 1, new Object[] { "ark.dctrl [onClickListener] which=", Integer.valueOf(paramInt), ",cost=", Long.valueOf(Math.abs(System.currentTimeMillis() - aqeg.a(this.jdField_a_of_type_Aqeg))) });
-      if (paramInt == 1)
-      {
-        bdll.a(null, "dc00898", "", "", "0X800AD1D", "0X800AD1D", 3, 0, String.valueOf(aqeg.a(this.jdField_a_of_type_Aqeg)), "", this.jdField_a_of_type_JavaLangString, "");
-        return;
-      }
-      label269:
-      i += 1;
+      return localaqeg1;
     }
+    return new aqeg();
+  }
+  
+  public void a(aqeg paramaqeg) {}
+  
+  public Class<aqeg> clazz()
+  {
+    return aqeg.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 653;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqeh
  * JD-Core Version:    0.7.0.1
  */

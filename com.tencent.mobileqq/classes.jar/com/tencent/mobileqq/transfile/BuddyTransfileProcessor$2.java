@@ -1,36 +1,34 @@
 package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
-import bdoc;
-import berv;
-import bete;
-import bhnv;
+import bcgn;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-public class BuddyTransfileProcessor$2
+class BuddyTransfileProcessor$2
   implements Runnable
 {
-  public BuddyTransfileProcessor$2(berv paramberv, String paramString, short paramShort, long paramLong, Bundle paramBundle, boolean paramBoolean) {}
+  BuddyTransfileProcessor$2(BuddyTransfileProcessor paramBuddyTransfileProcessor, String paramString, short paramShort, long paramLong, Bundle paramBundle, boolean paramBoolean) {}
   
   public void run()
   {
-    bete localbete;
-    if ((bdoc.b(this.this$0.jdField_a_of_type_Bete.c) != 0) && (!this.this$0.e))
+    FileMsg localFileMsg;
+    if ((bcgn.b(this.this$0.file.filePath) != 0) && (!this.this$0.setPttRecordFinishTime))
     {
-      localbete = this.this$0.jdField_a_of_type_Bete;
-      berv localberv = this.this$0;
+      localFileMsg = this.this$0.file;
+      BuddyTransfileProcessor localBuddyTransfileProcessor = this.this$0;
       long l = System.nanoTime();
-      localberv.k = l;
-      localbete.g = l;
-      this.this$0.e = true;
+      localBuddyTransfileProcessor.mStartTime = l;
+      localFileMsg.startTime = l;
+      this.this$0.setPttRecordFinishTime = true;
     }
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, berv.a(this.this$0), this.this$0.jdField_a_of_type_Bete.c, this.jdField_a_of_type_Short, berv.a(this.this$0), berv.a(this.this$0), this.this$0.r, this.this$0.s, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidOsBundle);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), true, bhnv.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()), 2, 0, bdoc.a(this.this$0.jdField_a_of_type_Bete.c, this.jdField_a_of_type_Short));
-    if (!this.jdField_a_of_type_Boolean)
+    this.this$0.app.getMsgHandler().a(this.val$selfUin, BuddyTransfileProcessor.access$100(this.this$0), this.this$0.file.filePath, this.val$shPackSeq, BuddyTransfileProcessor.access$200(this.this$0), BuddyTransfileProcessor.access$300(this.this$0), this.this$0.voiceType, this.this$0.voiceLength, this.val$subBubbleId, this.val$params);
+    this.this$0.app.sendAppDataIncerment(this.this$0.app.getAccount(), true, NetworkUtil.getNetworkType(this.this$0.app.getApp()), 2, 0, bcgn.a(this.this$0.file.filePath, this.val$shPackSeq));
+    if (!this.val$isresend)
     {
-      localbete = this.this$0.jdField_a_of_type_Bete;
-      localbete.e += bdoc.a(this.this$0.jdField_a_of_type_Bete.c, this.jdField_a_of_type_Short);
+      localFileMsg = this.this$0.file;
+      localFileMsg.transferedSize += bcgn.a(this.this$0.file.filePath, this.val$shPackSeq);
     }
   }
 }

@@ -1,34 +1,18 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x35.Submsgtype0x35.MsgBody;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
-public class adds
-  implements adci
+class adds
+  implements DialogInterface.OnClickListener
 {
-  private static void a(MsgType0x210 paramMsgType0x210)
-  {
-    try
-    {
-      int i = ((Submsgtype0x35.MsgBody)new Submsgtype0x35.MsgBody().mergeFrom(paramMsgType0x210.vProtobuf)).uint32_bubble_timestamp.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageProcessor", 2, "bubble push timestamp=" + i);
-      }
-      return;
-    }
-    catch (Exception paramMsgType0x210)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("Q.msg.BaseMessageProcessor", 2, "<---decodeC2CMsgPkg_SecretfileReport parse failed.", paramMsgType0x210);
-    }
-  }
+  adds(addr paramaddr) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a(paramMsgType0x210);
-    return null;
+    if ((this.a.a.a != null) && (this.a.a.a.isShowing()) && (this.a.a.a.getWindow() != null)) {
+      this.a.a.a.dismiss();
+    }
   }
 }
 

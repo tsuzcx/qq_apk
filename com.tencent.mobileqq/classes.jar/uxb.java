@@ -1,17 +1,8 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
-
-public class uxb
+public abstract interface uxb
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  public TextView a;
-  public VideoFeedsAlphaMaskView a;
-  public ZImageView a;
-  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+  public abstract void a(String paramString);
+  
+  public abstract void b(String paramString);
 }
 
 

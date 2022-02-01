@@ -1,48 +1,28 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.Iterator;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class ajdf
-  implements sjy
+  implements aknm
 {
-  public ajdf(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  private final int jdField_a_of_type_Int = -2147483648;
   
-  public void a(String paramString)
+  private ajdf(Conversation paramConversation) {}
+  
+  public void a(int paramInt, List<RecentBaseData> paramList) {}
+  
+  public void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
   {
-    Object localObject;
-    if (paramString != null)
+    if (paramDragFrameLayout.a() == -1)
     {
-      Iterator localIterator = this.a.c.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject = (ChannelInfo)localIterator.next();
-      } while (!paramString.equals(((ChannelInfo)localObject).mChannelName));
-    }
-    for (paramString = (String)localObject;; paramString = null)
-    {
-      if (paramString != null)
-      {
-        if (!TextUtils.isEmpty(paramString.mJumpUrl))
-        {
-          localObject = new Intent(this.a, QQBrowserActivity.class);
-          ((Intent)localObject).putExtra("hide_operation_bar", true);
-          ((Intent)localObject).putExtra("url", paramString.mJumpUrl);
-          this.a.startActivity((Intent)localObject);
-        }
-      }
-      else {
-        return;
-      }
-      oix.a(this.a, paramString.mChannelID, paramString.mChannelName, paramString.mChannelType, 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.b.sendEmptyMessage(10);
+      FrameHelperActivity.c(true);
       return;
     }
+    FrameHelperActivity.c(false);
   }
 }
 

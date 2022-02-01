@@ -1,24 +1,76 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.Now;
 
 public class adum
-  implements View.OnClickListener
+  implements xfw
 {
-  public adum(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  public adum(Now paramNow) {}
   
-  public void onClick(View paramView)
+  public View a()
   {
-    if (ArkFullScreenAppActivity.a(this.a) != null) {
-      aqca.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).a, null, aqca.b, 0, 0);
+    return this.a.jdField_b_of_type_AndroidWidgetRelativeLayout;
+  }
+  
+  public ImageView a()
+  {
+    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      yos.a(bool);
+      return this.a.jdField_a_of_type_AndroidWidgetImageView;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkFullScreenAppActivity", 2, "click to close");
+  }
+  
+  public TextView a()
+  {
+    if (this.a.c != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      yos.a(bool);
+      return this.a.c;
     }
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void a()
+  {
+    this.a.a();
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      Now.a(this.a);
+      return;
+    }
+    Now.b(this.a);
+  }
+  
+  public void b()
+  {
+    this.a.a(false);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    this.a.a(true);
   }
 }
 

@@ -1,51 +1,49 @@
+import android.text.TextUtils;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
-import kotlin.Metadata;
-import kotlin.jvm.JvmStatic;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/config/handlers/ViolaVideoFeedsConfigHandler;", "Lcom/tencent/aladdin/config/handlers/AladdinConfigHandler;", "()V", "onReceiveConfig", "", "id", "", "version", "content", "", "onWipeConfig", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pcf
+public class pcf
   implements AladdinConfigHandler
 {
-  public static final pcg a = new pcg(null);
-  
-  @JvmStatic
-  public static final boolean a(int paramInt)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    return a.a(paramInt);
-  }
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, @Nullable String paramString)
-  {
-    try
+    QLog.d("BiuTriggerTypeConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = pbt.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      paramString = pan.a(paramString);
-      Intrinsics.checkExpressionValueIsNotNull(paramString, "configs");
-      paramString = paramString.entrySet().iterator();
-      while (paramString.hasNext())
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("BiuTriggerTypeConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "on_click"))
       {
-        Map.Entry localEntry = (Map.Entry)paramString.next();
-        if ("from_source".equals(localEntry.getKey())) {
-          bnrf.a("viola_video_feeds_config", localEntry.getValue());
+        if (TextUtils.equals(str2, "fast_biu")) {}
+        for (paramInt1 = 1;; paramInt1 = 0)
+        {
+          bkwm.a("sp_key_biu_button_click_behaviour", Integer.valueOf(paramInt1));
+          break;
         }
       }
-      return true;
+      if (TextUtils.equals(str1, "on_long_pressed"))
+      {
+        if (TextUtils.equals(str2, "fast_biu")) {}
+        for (paramInt1 = 1;; paramInt1 = 0)
+        {
+          bkwm.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(paramInt1));
+          break;
+        }
+      }
     }
-    catch (Exception paramString)
-    {
-      QLog.e("ViolaVideoFeedsConfigHandler", 1, "[ViolaVideoFeedsConfigHandler]: " + paramString.getMessage());
-    }
+    return true;
   }
   
   public void onWipeConfig(int paramInt)
   {
-    bnrf.a("viola_video_feeds_config", "");
+    bkwm.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0));
+    bkwm.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1));
   }
 }
 

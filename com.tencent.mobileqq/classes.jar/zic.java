@@ -1,20 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zic
   implements View.OnClickListener
 {
-  public zic(PermissionSettingActivity paramPermissionSettingActivity) {}
+  public zic(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
   
   public void onClick(View paramView)
   {
-    zia localzia = PermissionSettingActivity.a(this.a).a();
-    if (localzia != null)
-    {
-      PermissionSettingActivity.a(this.a, localzia);
-      this.a.finish();
+    if (SubscribeMultiPicFragment.a(this.a) != null) {
+      this.a.a(SubscribeMultiPicFragment.a(this.a).a(1));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

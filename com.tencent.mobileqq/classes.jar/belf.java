@@ -1,12 +1,16 @@
-public class belf
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+
+class belf
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public beko a;
-  public String a;
+  belf(bele parambele, String paramString) {}
   
-  public belf(String paramString, beko parambeko)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Beko = parambeko;
+    bele.a(this.jdField_a_of_type_Bele).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    bele.a(this.jdField_a_of_type_Bele, this.jdField_a_of_type_JavaLangString);
   }
 }
 

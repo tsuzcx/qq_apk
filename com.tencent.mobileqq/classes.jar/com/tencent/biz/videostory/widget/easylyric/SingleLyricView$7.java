@@ -1,6 +1,6 @@
 package com.tencent.biz.videostory.widget.easylyric;
 
-import abbz;
+import zyk;
 
 class SingleLyricView$7
   implements Runnable
@@ -9,7 +9,7 @@ class SingleLyricView$7
   
   public void run()
   {
-    SingleLyricView.a(this.this$0, abbz.a().a(this.a, this.b));
+    SingleLyricView.a(this.this$0, zyk.a().a(this.a, this.b));
   }
 }
 

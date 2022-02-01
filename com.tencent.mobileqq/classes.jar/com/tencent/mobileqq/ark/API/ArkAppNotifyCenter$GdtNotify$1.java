@@ -1,14 +1,15 @@
 package com.tencent.mobileqq.ark.API;
 
-import aggs;
-import alit;
+import aezn;
+import akgl;
 import android.graphics.Rect;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import apwi;
+import aopv;
 import com.tencent.ark.ark;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.bubble.ChatXListView;
@@ -17,12 +18,11 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import zps;
 
 public class ArkAppNotifyCenter$GdtNotify$1
   implements Runnable
 {
-  public ArkAppNotifyCenter$GdtNotify$1(apwi paramapwi, JSONObject paramJSONObject, String paramString1, String paramString2) {}
+  public ArkAppNotifyCenter$GdtNotify$1(aopv paramaopv, JSONObject paramJSONObject, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -40,10 +40,10 @@ public class ArkAppNotifyCenter$GdtNotify$1
         if (((ChatFragment)localObject2).a == null) {
           break label474;
         }
-        localObject1 = ((ChatFragment)localObject2).a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+        localObject1 = ((ChatFragment)localObject2).a.listView;
         JSONArray localJSONArray1 = new JSONArray();
         this.jdField_a_of_type_OrgJsonJSONObject.put("results", localJSONArray1);
-        localObject2 = ((ChatFragment)localObject2).a.jdField_a_of_type_Aggs.a();
+        localObject2 = ((ChatFragment)localObject2).a.listAdapter.a();
         JSONArray localJSONArray2 = new JSONObject(this.jdField_a_of_type_JavaLangString).optJSONArray("traceids");
         if (i >= localJSONArray2.length()) {
           break label524;
@@ -58,21 +58,21 @@ public class ArkAppNotifyCenter$GdtNotify$1
         localJSONObject1 = new JSONObject();
         localJSONObject2.put("traceid", localObject3);
         localJSONObject2.put("rect", localJSONObject1);
-        localObject3 = alit.a((ChatMessage)localObject4, (ChatXListView)localObject1);
+        localObject3 = akgl.a((ChatMessage)localObject4, (ChatXListView)localObject1);
         if (localObject3 == null) {
           break label435;
         }
-        localObject3 = (ArkAppView)((View)localObject3).findViewById(2131362928);
+        localObject3 = (ArkAppView)((View)localObject3).findViewById(2131362940);
         if (localObject3 == null) {
           break label396;
         }
-        localObject4 = alit.a((View)localObject3);
+        localObject4 = akgl.a((View)localObject3);
         if (localObject4 != null)
         {
-          localJSONObject1.put("left", zps.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).left));
-          localJSONObject1.put("top", zps.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).top));
-          localJSONObject1.put("right", zps.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).right));
-          localJSONObject1.put("bottom", zps.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).bottom));
+          localJSONObject1.put("left", UIUtils.px2dip(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).left));
+          localJSONObject1.put("top", UIUtils.px2dip(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).top));
+          localJSONObject1.put("right", UIUtils.px2dip(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).right));
+          localJSONObject1.put("bottom", UIUtils.px2dip(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).bottom));
         }
       }
       catch (Exception localException)

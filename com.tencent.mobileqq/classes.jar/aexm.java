@@ -1,48 +1,16 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0x5e1.RspBody;
-import tencent.im.oidb.oidb_0x5e1.UdcUinData;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class aexm
-  extends ayxn
+final class aexm
+  implements aeya
 {
-  public aexm(LoginInfoActivity paramLoginInfoActivity) {}
-  
-  public void a(String paramString1, int paramInt, String paramString2)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    QQToast.a(this.a, paramString2, 0).a();
-    QLog.e("LoginInfoActivity.AccDevSec", 1, "cmd : " + paramString1 + " request failed  code : " + paramInt + " message : " + paramString2);
-    LoginInfoActivity.a(this.a).setVisibility(4);
-  }
-  
-  public void a(oidb_0x5e1.RspBody paramRspBody)
-  {
-    LoginInfoActivity.a(this.a, paramRspBody);
-    int i = ((oidb_0x5e1.UdcUinData)paramRspBody.rpt_msg_uin_data.get(0)).user_login_guard_face.get();
-    TextView localTextView = LoginInfoActivity.c(this.a);
-    if (i == 1)
-    {
-      paramRspBody = this.a.getString(2131691952);
-      localTextView.setText(paramRspBody);
-      LoginInfoActivity.a(this.a).setVisibility(4);
-      LoginInfoActivity.c(this.a).setVisibility(0);
-      if (i != 1) {
-        break label122;
-      }
-    }
-    label122:
-    for (paramRspBody = "1";; paramRspBody = "0")
-    {
-      bdll.b(null, "dc00898", "", "", "0X800AA7A", "0X800AA7A", 0, 0, paramRspBody, "", "", "");
-      return;
-      paramRspBody = this.a.getString(2131691957);
-      break;
-    }
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramMessageRecord.senderuin, 57);
+    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
+    return paramQQAppInterface;
   }
 }
 

@@ -19,22 +19,23 @@ import com.tencent.biz.pubaccount.PublicAccountBrowser;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import ocd;
-import ozs;
-import ppu;
-import qjf;
-import qjp;
-import qno;
-import sel;
+import odq;
+import pay;
+import pgb;
+import pgw;
+import pvc;
+import qpi;
+import qps;
+import qtr;
 
 public class ComponentContentUgcSource
   extends LinearLayout
-  implements View.OnClickListener, qjf
+  implements View.OnClickListener, qpi
 {
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   private String jdField_a_of_type_JavaLangString;
-  qno jdField_a_of_type_Qno;
+  qtr jdField_a_of_type_Qtr;
   
   public ComponentContentUgcSource(Context paramContext)
   {
@@ -61,22 +62,22 @@ public class ComponentContentUgcSource
       localObject = new Intent(getContext(), PublicAccountBrowser.class);
       ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
       getContext().startActivity((Intent)localObject);
-      localObject = this.jdField_a_of_type_Qno.a.a();
+      localObject = this.jdField_a_of_type_Qtr.a.a();
     } while (localObject == null);
-    ocd.a((ArticleInfo)localObject);
-    sel.a((ArticleInfo)localObject, this.jdField_a_of_type_Qno.a.e());
+    odq.a((ArticleInfo)localObject);
+    pgw.b((ArticleInfo)localObject, this.jdField_a_of_type_Qtr.a.e());
   }
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Qno = new qno();
+    this.jdField_a_of_type_Qtr = new qtr();
     a(paramContext);
     a();
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560289, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560296, this, true);
   }
   
   public void a()
@@ -91,17 +92,17 @@ public class ComponentContentUgcSource
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380352));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380078));
     this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131380353));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131380079));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof ppu))
+    if ((paramObject instanceof pvc))
     {
-      paramObject = (ppu)paramObject;
-      this.jdField_a_of_type_Qno.a(paramObject);
+      paramObject = (pvc)paramObject;
+      this.jdField_a_of_type_Qtr.a(paramObject);
       paramObject = paramObject.a();
       if (paramObject != null) {
         break label46;
@@ -112,7 +113,7 @@ public class ComponentContentUgcSource
     }
     return;
     label46:
-    if ((sel.g(paramObject)) || ((sel.i(paramObject)) && (!sel.m(paramObject))) || (ozs.g(paramObject)) || ((ozs.h(paramObject)) && (!sel.l(paramObject))) || (sel.d(paramObject)))
+    if ((pgb.g(paramObject)) || ((pgb.i(paramObject)) && (!pgb.m(paramObject))) || (pay.h(paramObject)) || ((pay.i(paramObject)) && (!pgb.l(paramObject))) || (pgb.d(paramObject)))
     {
       localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
       ((LinearLayout.LayoutParams)localObject).topMargin = 0;
@@ -140,9 +141,9 @@ public class ComponentContentUgcSource
     }
   }
   
-  public void a(qjp paramqjp)
+  public void a(qps paramqps)
   {
-    this.jdField_a_of_type_Qno.a(paramqjp);
+    this.jdField_a_of_type_Qtr.a(paramqps);
   }
   
   public void onClick(View paramView)

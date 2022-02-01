@@ -2,8 +2,7 @@ package cooperation.qzone.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import bhmq;
-import bnjm;
+import bfvo;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.pfc.opencv.QzoneVision;
@@ -11,40 +10,40 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
 
-public class GifAntishakeModule$1
+class GifAntishakeModule$1
   implements Runnable
 {
-  public GifAntishakeModule$1(bnjm parambnjm, int paramInt1, int paramInt2, int paramInt3, ArrayList paramArrayList, Bitmap paramBitmap, int paramInt4, int paramInt5, String[] paramArrayOfString, CountDownLatch paramCountDownLatch) {}
+  GifAntishakeModule$1(GifAntishakeModule paramGifAntishakeModule, int paramInt1, int paramInt2, int paramInt3, ArrayList paramArrayList, Bitmap paramBitmap, int paramInt4, int paramInt5, String[] paramArrayOfString, CountDownLatch paramCountDownLatch) {}
   
   public void run()
   {
     try
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QzoneVision", 2, "frame: " + this.jdField_a_of_type_Int + ", startAntishake at " + System.currentTimeMillis());
+        QLog.d("QzoneVision", 2, "frame: " + this.val$frame + ", startAntishake at " + System.currentTimeMillis());
       }
-      Bitmap localBitmap1 = Bitmap.createBitmap(this.b, this.c, Bitmap.Config.RGB_565);
-      Bitmap localBitmap2 = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (localBitmap2 != null) && (localBitmap1 != null))
+      Bitmap localBitmap1 = Bitmap.createBitmap(this.val$width, this.val$height, Bitmap.Config.RGB_565);
+      Bitmap localBitmap2 = (Bitmap)this.val$beforeBitmap.get(this.val$frame);
+      if ((this.val$flagBitmap != null) && (localBitmap2 != null) && (localBitmap1 != null))
       {
-        QzoneVision.getAntiShakeBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localBitmap2, localBitmap1);
-        localBitmap2 = Bitmap.createBitmap(localBitmap1, this.d, this.e, localBitmap1.getWidth() - this.d * 2, localBitmap1.getHeight() - this.e * 2);
+        QzoneVision.getAntiShakeBitmap(this.val$flagBitmap, localBitmap2, localBitmap1);
+        localBitmap2 = Bitmap.createBitmap(localBitmap1, this.val$widshrink, this.val$heishrink, localBitmap1.getWidth() - this.val$widshrink * 2, localBitmap1.getHeight() - this.val$heishrink * 2);
         if (QLog.isColorLevel()) {
-          QLog.d("QzoneVision", 2, "frame: " + this.jdField_a_of_type_Int + ", endAntishake and startSave at " + System.currentTimeMillis());
+          QLog.d("QzoneVision", 2, "frame: " + this.val$frame + ", endAntishake and startSave at " + System.currentTimeMillis());
         }
-        String str = PhotoUtils.a(bnjm.a(this.this$0), ".IMG" + this.jdField_a_of_type_Int, ".jpg");
-        bhmq.a(localBitmap2, new File(str));
+        String str = PhotoUtils.getCameraPath(GifAntishakeModule.access$000(this.this$0), ".IMG" + this.val$frame, ".jpg");
+        bfvo.a(localBitmap2, new File(str));
         if (!localBitmap1.isRecycled()) {
           localBitmap1.recycle();
         }
         if (!localBitmap2.isRecycled()) {
           localBitmap2.recycle();
         }
-        this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int] = str;
-        bnjm.b();
-        bnjm.a(this.this$0, bnjm.c());
+        this.val$outputPath[this.val$frame] = str;
+        GifAntishakeModule.access$108();
+        GifAntishakeModule.access$200(this.this$0, GifAntishakeModule.access$100());
         if (QLog.isColorLevel()) {
-          QLog.d("QzoneVision", 2, "frame: " + this.jdField_a_of_type_Int + ", endSave at " + System.currentTimeMillis());
+          QLog.d("QzoneVision", 2, "frame: " + this.val$frame + ", endSave at " + System.currentTimeMillis());
         }
       }
     }
@@ -55,7 +54,7 @@ public class GifAntishakeModule$1
         localThrowable.printStackTrace();
       }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.val$countDownLatch.countDown();
   }
 }
 

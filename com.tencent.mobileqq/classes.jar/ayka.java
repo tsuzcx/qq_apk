@@ -1,23 +1,20 @@
 import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.profile.CustomCoverFragment;
+import mqq.app.QQPermissionCallback;
 
 public class ayka
-  extends axxn
+  implements QQPermissionCallback
 {
-  public ayka(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment) {}
+  public ayka(CustomCoverFragment paramCustomCoverFragment, FragmentActivity paramFragmentActivity) {}
   
-  protected void a(boolean paramBoolean)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyAuthVideoPlayerFragment", 2, "onDeleteNearbyPeopleAuthVideo isSuccess:" + paramBoolean);
-    }
-    ((axup)this.a.getActivity().app.getManager(106)).d.put(this.a.getActivity().app.getCurrentAccountUin(), Integer.valueOf(1));
-    if (paramBoolean) {
-      this.a.getActivity().finish();
-    }
+    bfur.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    CustomCoverFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileCustomCoverFragment, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
   }
 }
 

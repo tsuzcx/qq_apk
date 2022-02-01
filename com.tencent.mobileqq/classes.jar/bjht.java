@@ -1,12 +1,20 @@
-import android.content.Context;
-import com.tencent.wifisdk.TMSDKCustomConfig.IInstaller;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-final class bjht
-  implements TMSDKCustomConfig.IInstaller
+class bjht
+  implements bjiq
 {
-  public boolean installApp(Context paramContext, String paramString)
+  protected long a;
+  
+  public bjht(bjhp parambjhp, long paramLong)
   {
-    return bjva.a(paramContext, paramString, "biz_src_wifi");
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    if (this.jdField_a_of_type_Long != 0L) {
+      QSecFramework.a(7L, this.jdField_a_of_type_Long, paramInt, 0L, paramArrayOfByte1, paramArrayOfByte2, null, null);
+    }
   }
 }
 

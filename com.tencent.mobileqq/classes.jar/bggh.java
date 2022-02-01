@@ -1,35 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
-import java.util.ArrayList;
-
-class bggh
-  implements bliz
+class bggh<E>
 {
-  bggh(bggg parambggg, blir paramblir, boolean paramBoolean, bgei parambgei) {}
+  public bggg<E> a;
+  public Object a;
+  public String a;
   
-  public void OnClick(View paramView, int paramInt)
+  public bggh(bggg<E> parambggg, Object paramObject, String paramString)
   {
-    this.jdField_a_of_type_Blir.dismiss();
-    int i = paramInt;
-    if (!this.jdField_a_of_type_Boolean) {
-      i = paramInt + 1;
-    }
-    switch (i)
-    {
-    default: 
-      paramView = "";
-    }
-    for (;;)
-    {
-      bhju.a("Grp_edu", "Grp_recite", "Blueword_Clk", 0, 0, new String[] { this.jdField_a_of_type_Bgei.f, paramView });
-      return;
-      SelectReciteParagraphFragment.a(paramView.getContext(), this.jdField_a_of_type_Bgei.f, this.jdField_a_of_type_Bgei.jdField_a_of_type_JavaLangString, new ArrayList(this.jdField_a_of_type_Bgei.jdField_a_of_type_JavaUtilList), this.jdField_a_of_type_Bgei.c);
-      paramView = "2";
-      continue;
-      SearchReciteArticleFragment.a(paramView.getContext(), this.jdField_a_of_type_Bgei.f, "", this.jdField_a_of_type_Bgei.c);
-      paramView = "0";
-    }
+    this.jdField_a_of_type_Bggg = parambggg;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

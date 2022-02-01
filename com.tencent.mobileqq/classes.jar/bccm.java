@@ -1,25 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.ImageView;
 
-public class bccm
-  implements View.OnTouchListener
+public final class bccm
+  implements bcab
 {
-  public bccm(FunctionSearchFragment paramFunctionSearchFragment) {}
+  public bccm(ImageView paramImageView1, ImageView paramImageView2) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if ((this.a != null) && (this.b != null))
+    {
+      this.a.setVisibility(8);
+      this.b.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bccm
  * JD-Core Version:    0.7.0.1
  */

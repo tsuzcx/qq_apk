@@ -1,20 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
 
-public class bgcp
-  implements DialogInterface.OnClickListener
+public abstract interface bgcp
 {
-  public bgcp(ReciteRecordLayout paramReciteRecordLayout) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.e();
-    if (ReciteRecordLayout.a(this.a) != null) {
-      ReciteRecordLayout.a(this.a).e();
-    }
-    paramDialogInterface.dismiss();
-  }
+  public abstract URLDrawable a(Drawable paramDrawable);
 }
 
 

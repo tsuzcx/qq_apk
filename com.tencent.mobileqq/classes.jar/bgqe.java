@@ -1,45 +1,61 @@
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class bgqe
 {
   public int a;
-  public long a;
   public String a;
+  public List<bgqg> a;
   public boolean a;
-  public int b;
   public String b;
-  public int c;
-  private String c;
-  public int d;
+  public String c;
   
-  public String a()
+  public bgqe()
   {
-    if ((this.jdField_a_of_type_Int & 0x4) == 4) {
-      return "classteacher";
-    }
-    if ((this.jdField_a_of_type_Int & 0x8) == 8) {
-      return "teacher";
-    }
-    if ((this.jdField_a_of_type_Int & 0x1) == 1) {
-      return "owner";
-    }
-    if ((this.jdField_a_of_type_Int & 0x2) == 2) {
-      return "admin";
-    }
-    return "other";
+    this.jdField_a_of_type_Int = -30009;
   }
   
-  public void a(String paramString)
+  public bgqe(JSONObject paramJSONObject)
   {
-    this.jdField_c_of_type_JavaLangString = bgqd.a(paramString, "").trim().replaceAll("\\s+", " ");
-  }
-  
-  public String b()
-  {
-    return this.jdField_c_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = -30009;
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("msg");
+    if (paramJSONObject.optInt("openflag") == 1)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("ret", -30009);
+      this.c = paramJSONObject.optString("content");
+      this.b = paramJSONObject.optString("url");
+      paramJSONObject = paramJSONObject.optString("list");
+      if (!TextUtils.isEmpty(paramJSONObject)) {
+        break label96;
+      }
+    }
+    for (;;)
+    {
+      return;
+      bool = false;
+      break;
+      label96:
+      paramJSONObject = new JSONArray(paramJSONObject);
+      int j = paramJSONObject.length();
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      while (i < j)
+      {
+        JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
+        if (localJSONObject != null) {
+          this.jdField_a_of_type_JavaUtilList.add(new bgqg(localJSONObject.optString("num"), localJSONObject.optString("light")));
+        }
+        i += 1;
+      }
+    }
   }
   
   public String toString()
   {
-    return "KeywordResult{msgId=" + this.jdField_a_of_type_Long + ", troopUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", userRole=" + this.jdField_a_of_type_Int + ", action=" + this.jdField_b_of_type_Int + ", keyword='" + this.jdField_b_of_type_JavaLangString + '\'' + ", startPos=" + this.jdField_c_of_type_Int + ", endPos=" + this.d + ", content=" + this.jdField_c_of_type_JavaLangString + '}';
+    return "LiangHaoRsp{openFlag=" + this.jdField_a_of_type_Boolean + ", ret=" + this.jdField_a_of_type_Int + ", msg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", moreUrl='" + this.b + '\'' + ", content='" + this.c + '\'' + '}';
   }
 }
 

@@ -1,23 +1,23 @@
 package com.tencent.open.appstore.dl;
 
-import bjsx;
-import bjsz;
+import bhym;
+import bhyo;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class DownloadManagerV2$11
   implements Runnable
 {
-  public DownloadManagerV2$11(bjsz parambjsz, String paramString) {}
+  public DownloadManagerV2$11(bhyo parambhyo, String paramString) {}
   
   public void run()
   {
-    if (bjsz.a(this.this$0).get(this.a) != null) {}
+    if (bhyo.a(this.this$0).get(this.a) != null) {}
     DownloadInfo localDownloadInfo;
     do
     {
       return;
-      localDownloadInfo = bjsx.a().a(this.a);
+      localDownloadInfo = bhym.a().a(this.a);
     } while (localDownloadInfo == null);
     this.this$0.c(localDownloadInfo);
   }

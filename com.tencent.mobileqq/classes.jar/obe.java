@@ -1,16 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils.3;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.observer.BusinessObserver;
 
 public class obe
-  implements DialogInterface.OnClickListener
+  implements BusinessObserver
 {
-  public obe(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
+  public obe(NativeAdUtils.3 param3) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
+    if (paramBoolean) {}
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle == null) {
+        return;
+      }
+      WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+      localWebSsoResponseBody.mergeFrom(paramBundle);
+      if ((!localWebSsoResponseBody.ret.has()) || (localWebSsoResponseBody.ret.get() != 0)) {
+        return;
+      }
+      paramBundle = "";
+      if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) {
+        paramBundle = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mTitle;
+      }
+      twp.a("REPORT_LINK", "new report success : title = " + paramBundle + " type = " + this.a.jdField_a_of_type_Trl.a());
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
+    twp.a("REPORT_LINK", "new report fail : " + this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo + " type = " + this.a.jdField_a_of_type_Trl.a());
+    return;
   }
 }
 

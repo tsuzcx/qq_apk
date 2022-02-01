@@ -1,73 +1,20 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtHandler;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.gdtad.jsbridge.GdtBaseHalfScreenFragmentForJs;
-import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
-import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
-import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class acuf
-  implements acun
+public class acuf
+  extends anau
 {
-  private GdtDwellTimeStatisticsAfterClick a;
+  public acuf(AuthDevRenameActivity paramAuthDevRenameActivity) {}
   
-  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
+  protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    Object localObject = null;
-    if (paramacts != null) {}
-    GdtHandler.Params localParams;
-    for (Activity localActivity = paramacts.a();; localActivity = null)
+    AuthDevRenameActivity.a(this.a);
+    if (!paramBoolean)
     {
-      localParams = new GdtHandler.Params();
-      boolean bool = GdtHandler.a(localParams, paramVarArgs[0]);
-      if ((paramacts != null) && (localActivity != null) && (bool)) {
-        break;
-      }
-      acvc.d("GdtHandleAdJsCallHandler", "handleJsCallRequest error");
-      return true;
+      QQToast.a(this.a, this.a.getString(2131691904), 0).b(this.a.getTitleBarHeight());
+      return;
     }
-    for (;;)
-    {
-      try
-      {
-        acvc.b("GdtHandleAdJsCallHandler", new JSONObject(paramVarArgs[0]).toString());
-        localParams.jdField_c_of_type_Int = 7;
-        localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localActivity);
-        localParams.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramacts.a());
-        localParams.jdField_a_of_type_JavaLangClass = GdtVideoCeilingFragmentForJS.class;
-        localParams.jdField_b_of_type_JavaLangClass = GdtCanvasFragmentForJS.class;
-        localParams.jdField_c_of_type_JavaLangClass = GdtBaseHalfScreenFragmentForJs.class;
-        paramVarArgs = paramacts.a().getIntent();
-        if (TextUtils.isEmpty(paramVarArgs.getStringExtra("big_brother_ref_source_key")))
-        {
-          paramVarArgs = paramVarArgs.getStringExtra("big_brother_source_key");
-          localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
-          localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramVarArgs);
-          this.a = new GdtDwellTimeStatisticsAfterClick(localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd, new WeakReference(paramacts.mRuntime.a()));
-          this.a.a();
-          GdtHandler.a(localParams);
-          paramacts.callJs(paramString, null);
-          paramString = localObject;
-          if (paramacts != null) {
-            paramString = paramacts.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "handleClick", paramString, localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
-          return true;
-        }
-      }
-      catch (Throwable paramacts)
-      {
-        acvc.d("GdtHandleAdJsCallHandler", "handleJsCallRequest error", paramacts);
-        return true;
-      }
-      paramVarArgs = paramVarArgs.getStringExtra("big_brother_ref_source_key");
-    }
+    this.a.finish();
   }
 }
 

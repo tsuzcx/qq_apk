@@ -48,22 +48,11 @@ import android.widget.Filter.FilterListener;
 import android.widget.Filterable;
 import android.widget.ListAdapter;
 import android.widget.PopupWindow;
-import bhjs;
-import blgz;
-import blic;
-import blid;
-import blie;
-import blif;
-import blig;
-import blih;
-import blii;
-import blij;
-import blil;
-import bljk;
-import bljn;
-import blle;
-import blnu;
-import blqo;
+import bfta;
+import bjmo;
+import bjqa;
+import bjse;
+import bjup;
 import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
@@ -107,6 +96,7 @@ public abstract class AbsListView
   private static final int OVER_FLING_DISTANCE = 30;
   public static final int OVER_SCROLL_TOUCH_MODE_FAST = 1;
   public static final int OVER_SCROLL_TOUCH_MODE_NORMAL = 0;
+  public static final int OVER_SCROLL_TOUCH_MODE_SMOOTH = 2;
   private static final boolean PROFILE_FLINGING = false;
   private static final boolean PROFILE_SCROLLING = false;
   protected static final int TOUCH_MODE_DONE_WAITING = 2;
@@ -124,21 +114,21 @@ public abstract class AbsListView
   public static final int TRANSCRIPT_MODE_DISABLED = 0;
   public static final int TRANSCRIPT_MODE_NORMAL = 1;
   private int mActivePointerId = -1;
-  public ListAdapter mAdapter;
+  ListAdapter mAdapter;
   int mBottomOverflingDistance;
   private AbsListView.MoveToBottomScroller mBottomScroller;
   int mCacheColorHint;
   boolean mCachingActive;
   boolean mCachingStarted;
   private boolean mCallbackOnUnClickItem;
-  public SparseBooleanArray mCheckStates;
-  blgz<Integer> mCheckedIdStates;
+  SparseBooleanArray mCheckStates;
+  bjmo<Integer> mCheckedIdStates;
   int mCheckedItemCount;
-  public ActionMode mChoiceActionMode;
+  ActionMode mChoiceActionMode;
   int mChoiceMode = 0;
   private Runnable mClearScrollingCache;
   private ContextMenu.ContextMenuInfo mContextMenuInfo;
-  blid mDataSetObserver;
+  AbsListView.AdapterDataSetObserver mDataSetObserver;
   private InputConnection mDefInputConnection;
   private boolean mDeferNotifyDataSetChanged;
   private float mDensityScale;
@@ -146,11 +136,11 @@ public abstract class AbsListView
   private boolean mDisableOverScrollTop;
   boolean mDrawSelectorOnTop = false;
   private boolean mEdgeEffectEnabled;
-  public blle mEdgeGlowBottom;
-  public blle mEdgeGlowTop;
+  public bjqa mEdgeGlowBottom;
+  public bjqa mEdgeGlowTop;
   public boolean mEnableStory;
   boolean mFastScrollEnabled;
-  public FastScroller mFastScroller;
+  FastScroller mFastScroller;
   private boolean mFiltered;
   private int mFirstPositionDistanceGuess;
   private boolean mFlingProfilingStarted;
@@ -175,20 +165,20 @@ public abstract class AbsListView
   private int mLastTouchMode = -1;
   int mLastY;
   int mLayoutMode = 0;
-  public Rect mListPadding = new Rect();
+  protected Rect mListPadding = new Rect();
   private int mMaximumVelocity;
   private int mMinimumVelocity;
   int mMotionCorrection;
-  public int mMotionPosition;
+  int mMotionPosition;
   int mMotionViewNewTop;
   int mMotionViewOriginalTop;
   int mMotionX;
   int mMotionY;
-  blif mMultiChoiceModeCallback;
+  AbsListView.MultiChoiceModeWrapper mMultiChoiceModeCallback;
   private boolean mNeedCheckSpringback;
-  private blig mOnScrollButtomListener;
-  private blih mOnScrollListener;
-  private ArrayList<blih> mOnScrollListenerList = new ArrayList();
+  private AbsListView.OnScrollButtomListener mOnScrollButtomListener;
+  private AbsListView.OnScrollListener mOnScrollListener;
+  private ArrayList<AbsListView.OnScrollListener> mOnScrollListenerList = new ArrayList();
   private int mOverScrollMode;
   private int mOverScrollTouchMode = 0;
   int mOverscrollDistance;
@@ -201,7 +191,7 @@ public abstract class AbsListView
   private boolean mPopupHidden;
   AbsListView.PositionScroller mPositionScroller;
   private InputConnectionWrapper mPublicInputConnection;
-  public final blii mRecycler = new blii(this);
+  final AbsListView.RecycleBin mRecycler = new AbsListView.RecycleBin(this);
   int mResurrectToPosition = -1;
   View mScrollDown;
   private boolean mScrollProfilingStarted;
@@ -215,10 +205,10 @@ public abstract class AbsListView
   int mSelectionRightPadding = 0;
   int mSelectionTopPadding = 0;
   Drawable mSelector;
-  public int mSelectorPosition = -1;
+  int mSelectorPosition = -1;
   Rect mSelectorRect = new Rect();
   private boolean mSmoothScrollbarEnabled = true;
-  public boolean mStackFromBottom;
+  boolean mStackFromBottom;
   EditText mTextFilter;
   private boolean mTextFilterEnabled;
   int mTopOverflingDistance;
@@ -264,7 +254,7 @@ public abstract class AbsListView
   {
     super(paramContext, paramAttributeSet, paramInt);
     initAbsListView();
-    paramContext = new blqo(paramContext.obtainStyledAttributes(paramAttributeSet, ABSLISTVIEW, paramInt, 0));
+    paramContext = new bjup(paramContext.obtainStyledAttributes(paramAttributeSet, ABSLISTVIEW, paramInt, 0));
     try
     {
       paramAttributeSet = paramContext.a(ABSLISTVIEW_LIST_SELECTOR);
@@ -367,7 +357,7 @@ public abstract class AbsListView
     {
       Context localContext = getContext();
       PopupWindow localPopupWindow = new PopupWindow(localContext);
-      this.mTextFilter = ((EditText)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131563070, null));
+      this.mTextFilter = ((EditText)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131562951, null));
       this.mTextFilter.setRawInputType(177);
       this.mTextFilter.setImeOptions(268435456);
       this.mTextFilter.addTextChangedListener(this);
@@ -581,7 +571,7 @@ public abstract class AbsListView
     }
   }
   
-  public static View retrieveFromScrap(ArrayList<View> paramArrayList, int paramInt)
+  static View retrieveFromScrap(ArrayList<View> paramArrayList, int paramInt)
   {
     int j = paramArrayList.size();
     if (j > 0)
@@ -590,7 +580,7 @@ public abstract class AbsListView
       while (i < j)
       {
         View localView = (View)paramArrayList.get(i);
-        if (((AbsListView.LayoutParams)localView.getLayoutParams()).jdField_b_of_type_Int == paramInt)
+        if (((AbsListView.LayoutParams)localView.getLayoutParams()).scrappedFromPosition == paramInt)
         {
           paramArrayList.remove(i);
           return localView;
@@ -605,7 +595,7 @@ public abstract class AbsListView
   private int reviseOverScrollByTouch(int paramInt)
   {
     if (this.mScrollY * paramInt < 0) {}
-    while (this.mLayoutHeight == 0) {
+    while ((this.mLayoutHeight == 0) || (this.mOverScrollTouchMode == 2)) {
       return paramInt;
     }
     if (this.mOverScrollTouchMode == 1) {}
@@ -824,7 +814,7 @@ public abstract class AbsListView
   protected void abordFling()
   {
     if (this.mFlingRunnable != null) {
-      this.mFlingRunnable.a();
+      this.mFlingRunnable.endFling();
     }
   }
   
@@ -862,9 +852,9 @@ public abstract class AbsListView
     }
   }
   
-  public void addOnScrollListener(blih paramblih)
+  public void addOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    this.mOnScrollListenerList.add(paramblih);
+    this.mOnScrollListenerList.add(paramOnScrollListener);
   }
   
   public void addTouchables(ArrayList<View> paramArrayList)
@@ -1043,7 +1033,7 @@ public abstract class AbsListView
         this.mCheckedIdStates.a(l);
         this.mCheckedItemCount -= 1;
         if ((this.mChoiceActionMode != null) && (this.mMultiChoiceModeCallback != null)) {
-          this.mMultiChoiceModeCallback.a(this.mChoiceActionMode, n, l, false);
+          this.mMultiChoiceModeCallback.onItemCheckedStateChanged(this.mChoiceActionMode, n, l, false);
         }
         k = i - 1;
         j = 1;
@@ -1067,7 +1057,7 @@ public abstract class AbsListView
   
   ContextMenu.ContextMenuInfo createContextMenuInfo(View paramView, int paramInt, long paramLong)
   {
-    return new bljk(paramView, paramInt, paramLong);
+    return new AdapterView.AdapterContextMenuInfo(paramView, paramInt, paramLong);
   }
   
   public void deferNotifyDataSetChanged()
@@ -1148,14 +1138,14 @@ public abstract class AbsListView
         }
         if (this.mForStory) {
           if (i != getScrollY()) {
-            this.mFlingRunnable.b(i);
+            this.mFlingRunnable.startSpringback(i);
           }
         }
         while (QLog.isColorLevel())
         {
           QLog.i("ListViewOverScroll", 2, this.mForHongBao + "| absList dispatchTouchEvent, mScrollY:" + this.mScrollY + " targetY: " + i);
           return bool;
-          this.mFlingRunnable.b(i);
+          this.mFlingRunnable.startSpringback(i);
         }
       }
     }
@@ -1166,7 +1156,7 @@ public abstract class AbsListView
     if (this.mFlingRunnable == null) {
       this.mFlingRunnable = new AbsListView.FlingRunnable(this);
     }
-    this.mFlingRunnable.b(paramInt);
+    this.mFlingRunnable.startSpringback(paramInt);
   }
   
   public void draw(Canvas paramCanvas)
@@ -1291,19 +1281,19 @@ public abstract class AbsListView
           this.mFlingRunnable = new AbsListView.FlingRunnable(this);
         }
         reportScrollStateChange(2);
-        this.mFlingRunnable.a(-i1);
+        this.mFlingRunnable.start(-i1);
         return;
       }
       this.mTouchMode = -1;
       reportScrollStateChange(0);
       if (this.mFlingRunnable != null) {
-        this.mFlingRunnable.a();
+        this.mFlingRunnable.endFling();
       }
       if (this.mPositionScroller != null) {
-        this.mPositionScroller.a();
+        this.mPositionScroller.stop();
       }
     } while (this.mBottomScroller == null);
-    this.mBottomScroller.b();
+    this.mBottomScroller.stop();
   }
   
   protected ViewGroup.LayoutParams generateDefaultLayoutParams()
@@ -1369,8 +1359,8 @@ public abstract class AbsListView
       localObject = new long[0];
       return localObject;
     }
-    blgz localblgz = this.mCheckedIdStates;
-    int j = localblgz.a();
+    bjmo localbjmo = this.mCheckedIdStates;
+    int j = localbjmo.a();
     long[] arrayOfLong = new long[j];
     for (;;)
     {
@@ -1378,7 +1368,7 @@ public abstract class AbsListView
       if (i >= j) {
         break;
       }
-      arrayOfLong[i] = localblgz.a(i);
+      arrayOfLong[i] = localbjmo.a(i);
       i += 1;
     }
   }
@@ -1411,16 +1401,16 @@ public abstract class AbsListView
   
   public float getFlingVelocity()
   {
-    if ((this.mFlingRunnable != null) && (AbsListView.FlingRunnable.a(this.mFlingRunnable) != null)) {
-      return AbsListView.FlingRunnable.a(this.mFlingRunnable).a();
+    if ((this.mFlingRunnable != null) && (AbsListView.FlingRunnable.access$1100(this.mFlingRunnable) != null)) {
+      return AbsListView.FlingRunnable.access$1100(this.mFlingRunnable).a();
     }
     return -1.0F;
   }
   
   public float getFlingVelocityY()
   {
-    if ((this.mFlingRunnable != null) && (AbsListView.FlingRunnable.a(this.mFlingRunnable) != null)) {
-      return AbsListView.FlingRunnable.a(this.mFlingRunnable).b();
+    if ((this.mFlingRunnable != null) && (AbsListView.FlingRunnable.access$1100(this.mFlingRunnable) != null)) {
+      return AbsListView.FlingRunnable.access$1100(this.mFlingRunnable).b();
     }
     return -1.0F;
   }
@@ -1475,7 +1465,7 @@ public abstract class AbsListView
     return this.mListPadding.top;
   }
   
-  public blih getOnScrollListener()
+  public AbsListView.OnScrollListener getOnScrollListener()
   {
     return this.mOnScrollListener;
   }
@@ -1488,7 +1478,7 @@ public abstract class AbsListView
   public int getRemainFlingDisY()
   {
     if (this.mFlingRunnable != null) {
-      return AbsListView.FlingRunnable.a(this.mFlingRunnable).e() - AbsListView.FlingRunnable.a(this.mFlingRunnable).b();
+      return AbsListView.FlingRunnable.access$1100(this.mFlingRunnable).e() - AbsListView.FlingRunnable.access$1100(this.mFlingRunnable).b();
     }
     return -1;
   }
@@ -1731,7 +1721,7 @@ public abstract class AbsListView
     }
     Iterator localIterator = this.mOnScrollListenerList.iterator();
     while (localIterator.hasNext()) {
-      ((blih)localIterator.next()).onScroll(this, this.mFirstPosition, getChildCount(), this.mItemCount);
+      ((AbsListView.OnScrollListener)localIterator.next()).onScroll(this, this.mFirstPosition, getChildCount(), this.mItemCount);
     }
     onScrollChanged(0, 0, 0, 0);
   }
@@ -1837,7 +1827,7 @@ public abstract class AbsListView
             if (this.mPendingCheckForKeyLongPress == null) {
               this.mPendingCheckForKeyLongPress = new AbsListView.CheckForKeyLongPress(this, null);
             }
-            this.mPendingCheckForKeyLongPress.a();
+            this.mPendingCheckForKeyLongPress.rememberWindowAttachCount();
             postDelayed(this.mPendingCheckForKeyLongPress, ViewConfiguration.getLongPressTimeout());
             return;
             label172:
@@ -1850,15 +1840,15 @@ public abstract class AbsListView
   
   protected void layoutChildren() {}
   
-  protected blid newObserver()
+  protected AbsListView.AdapterDataSetObserver newObserver()
   {
-    return new blid(this);
+    return new AbsListView.AdapterDataSetObserver(this);
   }
   
   View obtainView(int paramInt, boolean[] paramArrayOfBoolean)
   {
     paramArrayOfBoolean[0] = false;
-    View localView2 = this.mRecycler.b(paramInt);
+    View localView2 = this.mRecycler.getScrapView(paramInt);
     View localView1;
     if (localView2 != null)
     {
@@ -1868,7 +1858,7 @@ public abstract class AbsListView
       }
       if (localView1 != localView2)
       {
-        this.mRecycler.a(localView2, paramInt);
+        this.mRecycler.addScrapView(localView2, paramInt);
         paramArrayOfBoolean = localView1;
         if (this.mCacheColorHint != 0)
         {
@@ -1935,7 +1925,7 @@ public abstract class AbsListView
       if (paramInt == 0) {
         break label121;
       }
-      localObject = blii.a(this.mRecycler);
+      localObject = AbsListView.RecycleBin.access$3600(this.mRecycler);
       i = localObject.length;
       paramInt = 0;
       while (paramInt < i)
@@ -1946,10 +1936,10 @@ public abstract class AbsListView
         paramInt += 1;
       }
     }
-    if (!checkScrap(blii.a(this.mRecycler))) {
+    if (!checkScrap(AbsListView.RecycleBin.access$3700(this.mRecycler))) {
       bool1 = false;
     }
-    Object localObject = blii.a(this.mRecycler);
+    Object localObject = AbsListView.RecycleBin.access$3800(this.mRecycler);
     int i = localObject.length;
     paramInt = 0;
     for (;;)
@@ -2004,7 +1994,7 @@ public abstract class AbsListView
       if (this.mPublicInputConnection == null)
       {
         this.mDefInputConnection = new BaseInputConnection(this, false);
-        this.mPublicInputConnection = new blic(this, this.mTextFilter.onCreateInputConnection(paramEditorInfo), true);
+        this.mPublicInputConnection = new AbsListView.3(this, this.mTextFilter.onCreateInputConnection(paramEditorInfo), true);
       }
       paramEditorInfo.inputType = 177;
       paramEditorInfo.imeOptions = 6;
@@ -2021,7 +2011,7 @@ public abstract class AbsListView
     dismissPopup();
     try
     {
-      this.mRecycler.b();
+      this.mRecycler.clear();
       ViewTreeObserver localViewTreeObserver = getViewTreeObserver();
       localViewTreeObserver.removeOnTouchModeChangeListener(this);
       if ((this.mTextFilterEnabled) && (this.mPopup != null))
@@ -2029,45 +2019,51 @@ public abstract class AbsListView
         localViewTreeObserver.removeGlobalOnLayoutListener(this);
         this.mGlobalLayoutListenerAddedFilter = false;
       }
-      if ((this.mAdapter != null) && (this.mDataSetObserver != null))
+      if ((this.mAdapter == null) || (this.mDataSetObserver == null)) {}
+    }
+    catch (Exception localException1)
+    {
+      try
       {
         this.mAdapter.unregisterDataSetObserver(this.mDataSetObserver);
         this.mDataSetObserver = null;
+        if (this.mScrollStrictSpan != null) {
+          this.mScrollStrictSpan = finishSpan(this.mScrollStrictSpan);
+        }
+        if (this.mFlingStrictSpan != null) {
+          this.mFlingStrictSpan = finishSpan(this.mFlingStrictSpan);
+        }
+        if (this.mFlingRunnable != null) {
+          removeCallbacks(this.mFlingRunnable);
+        }
+        if (this.mPositionScroller != null) {
+          this.mPositionScroller.stop();
+        }
+        if (this.mBottomScroller != null) {
+          this.mBottomScroller.stop();
+        }
+        if (this.mClearScrollingCache != null) {
+          removeCallbacks(this.mClearScrollingCache);
+        }
+        if (this.mPerformClick != null) {
+          removeCallbacks(this.mPerformClick);
+        }
+        if (this.mTouchModeReset != null)
+        {
+          removeCallbacks(this.mTouchModeReset);
+          this.mTouchModeReset = null;
+        }
+        this.mIsAttached = false;
+        return;
+        localException1 = localException1;
+        localException1.printStackTrace();
       }
-      if (this.mScrollStrictSpan != null) {
-        this.mScrollStrictSpan = finishSpan(this.mScrollStrictSpan);
-      }
-      if (this.mFlingStrictSpan != null) {
-        this.mFlingStrictSpan = finishSpan(this.mFlingStrictSpan);
-      }
-      if (this.mFlingRunnable != null) {
-        removeCallbacks(this.mFlingRunnable);
-      }
-      if (this.mPositionScroller != null) {
-        this.mPositionScroller.a();
-      }
-      if (this.mBottomScroller != null) {
-        this.mBottomScroller.b();
-      }
-      if (this.mClearScrollingCache != null) {
-        removeCallbacks(this.mClearScrollingCache);
-      }
-      if (this.mPerformClick != null) {
-        removeCallbacks(this.mPerformClick);
-      }
-      if (this.mTouchModeReset != null)
+      catch (Exception localException2)
       {
-        removeCallbacks(this.mTouchModeReset);
-        this.mTouchModeReset = null;
-      }
-      this.mIsAttached = false;
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
+        for (;;)
+        {
+          QLog.e("XListView", 1, "onDetachedFromWindow unregisterDataSetObserver fail.", localException2);
+        }
       }
     }
   }
@@ -2308,7 +2304,7 @@ public abstract class AbsListView
           getChildAt(paramInt1).forceLayout();
           paramInt1 += 1;
         }
-        this.mRecycler.a();
+        this.mRecycler.markChildrenDirty();
       }
       if ((this.mFastScroller != null) && (this.mItemCount != this.mOldItemCount)) {
         this.mFastScroller.a(this.mOldItemCount, this.mItemCount);
@@ -2321,7 +2317,7 @@ public abstract class AbsListView
         if (this.mBottomScroller == null) {
           this.mBottomScroller = new AbsListView.MoveToBottomScroller(this);
         }
-        this.mBottomScroller.a();
+        this.mBottomScroller.start();
       }
       return;
     }
@@ -2395,50 +2391,50 @@ public abstract class AbsListView
     paramParcelable = (AbsListView.SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
     this.mDataChanged = true;
-    this.mSyncHeight = paramParcelable.c;
-    if (paramParcelable.jdField_a_of_type_Long >= 0L)
+    this.mSyncHeight = paramParcelable.height;
+    if (paramParcelable.selectedId >= 0L)
     {
       this.mNeedSync = true;
-      this.mSyncRowId = paramParcelable.jdField_a_of_type_Long;
-      this.mSyncPosition = paramParcelable.jdField_b_of_type_Int;
-      this.mSpecificTop = paramParcelable.jdField_a_of_type_Int;
-      this.mSpecificBottom = paramParcelable.jdField_a_of_type_Int;
+      this.mSyncRowId = paramParcelable.selectedId;
+      this.mSyncPosition = paramParcelable.position;
+      this.mSpecificTop = paramParcelable.viewTop;
+      this.mSpecificBottom = paramParcelable.viewTop;
       this.mSyncMode = 0;
     }
     for (;;)
     {
-      setFilterText(paramParcelable.jdField_a_of_type_JavaLangString);
-      if (paramParcelable.jdField_a_of_type_AndroidUtilSparseBooleanArray != null) {
-        this.mCheckStates = paramParcelable.jdField_a_of_type_AndroidUtilSparseBooleanArray;
+      setFilterText(paramParcelable.filter);
+      if (paramParcelable.checkState != null) {
+        this.mCheckStates = paramParcelable.checkState;
       }
-      if (paramParcelable.jdField_a_of_type_Blgz != null) {
-        this.mCheckedIdStates = paramParcelable.jdField_a_of_type_Blgz;
+      if (paramParcelable.checkIdState != null) {
+        this.mCheckedIdStates = paramParcelable.checkIdState;
       }
-      this.mCheckedItemCount = paramParcelable.d;
-      if ((VersionUtils.isHoneycomb()) && (paramParcelable.jdField_a_of_type_Boolean) && (this.mChoiceMode == 3) && (this.mMultiChoiceModeCallback != null)) {
+      this.mCheckedItemCount = paramParcelable.checkedItemCount;
+      if ((VersionUtils.isHoneycomb()) && (paramParcelable.inActionMode) && (this.mChoiceMode == 3) && (this.mMultiChoiceModeCallback != null)) {
         this.mChoiceActionMode = startActionMode(this.mMultiChoiceModeCallback);
       }
       requestLayout();
       return;
-      if (paramParcelable.jdField_b_of_type_Long >= 0L)
+      if (paramParcelable.firstId >= 0L)
       {
         setSelectedPositionInt(-1);
         setNextSelectedPositionInt(-1);
         this.mSelectorPosition = -1;
-        if (paramParcelable.jdField_b_of_type_Int != 2147483647)
+        if (paramParcelable.position != 2147483647)
         {
           this.mNeedSync = true;
-          this.mSyncRowId = paramParcelable.jdField_b_of_type_Long;
+          this.mSyncRowId = paramParcelable.firstId;
           if (!this.mStackFromBottom)
           {
-            this.mSyncPosition = paramParcelable.jdField_b_of_type_Int;
-            this.mSpecificTop = paramParcelable.jdField_a_of_type_Int;
+            this.mSyncPosition = paramParcelable.position;
+            this.mSpecificTop = paramParcelable.viewTop;
             this.mSyncMode = 1;
           }
           else
           {
-            this.mSyncPosition = paramParcelable.jdField_b_of_type_Int;
-            this.mSpecificBottom = paramParcelable.jdField_a_of_type_Int;
+            this.mSyncPosition = paramParcelable.position;
+            this.mSpecificBottom = paramParcelable.viewTop;
             this.mSyncMode = 2;
           }
         }
@@ -2457,14 +2453,14 @@ public abstract class AbsListView
     if ((getChildCount() > 0) && (this.mItemCount > 0))
     {
       i = 1;
-      localSavedState.c = this.mLayoutHeight;
+      localSavedState.height = this.mLayoutHeight;
       if (this.mSelectedPosition < 0) {
         break label288;
       }
-      localSavedState.jdField_a_of_type_Long = this.mNextSelectedRowId;
+      localSavedState.selectedId = this.mNextSelectedRowId;
       if (i != 0)
       {
-        localSavedState.jdField_b_of_type_Int = getSelectedItemPosition();
+        localSavedState.position = getSelectedItemPosition();
         localObject = getChildAt(this.mSelectedPosition - this.mFirstPosition);
         if (localObject != null)
         {
@@ -2473,12 +2469,12 @@ public abstract class AbsListView
           }
           i = this.mLayoutHeight - ((View)localObject).getBottom();
           label114:
-          localSavedState.jdField_a_of_type_Int = i;
+          localSavedState.viewTop = i;
         }
-        localSavedState.jdField_b_of_type_Long = -1L;
+        localSavedState.firstId = -1L;
       }
       label128:
-      localSavedState.jdField_a_of_type_JavaLangString = null;
+      localSavedState.filter = null;
       if (this.mFiltered)
       {
         localObject = this.mTextFilter;
@@ -2486,7 +2482,7 @@ public abstract class AbsListView
         {
           localObject = ((EditText)localObject).getText();
           if (localObject != null) {
-            localSavedState.jdField_a_of_type_JavaLangString = localObject.toString();
+            localSavedState.filter = localObject.toString();
           }
         }
       }
@@ -2496,19 +2492,19 @@ public abstract class AbsListView
     }
     for (;;)
     {
-      localSavedState.jdField_a_of_type_Boolean = bool;
+      localSavedState.inActionMode = bool;
       if (this.mCheckStates != null) {
-        localSavedState.jdField_a_of_type_AndroidUtilSparseBooleanArray = this.mCheckStates.clone();
+        localSavedState.checkState = this.mCheckStates.clone();
       }
       if (this.mCheckedIdStates == null) {
         break label566;
       }
-      localObject = new blgz();
+      localObject = new bjmo();
       int j = this.mCheckedIdStates.a();
       i = k;
       while (i < j)
       {
-        ((blgz)localObject).a(this.mCheckedIdStates.a(i), this.mCheckedIdStates.a(i));
+        ((bjmo)localObject).a(this.mCheckedIdStates.a(i), this.mCheckedIdStates.a(i));
         i += 1;
       }
       i = 0;
@@ -2521,19 +2517,19 @@ public abstract class AbsListView
       {
         if ((i != 0) && (this.mFirstPosition >= 0))
         {
-          localSavedState.jdField_a_of_type_Int = getChildAt(0).getTop();
+          localSavedState.viewTop = getChildAt(0).getTop();
           j = this.mFirstPosition;
           i = j;
           if (j >= this.mItemCount) {
             i = this.mItemCount - 1;
           }
-          localSavedState.jdField_b_of_type_Int = i;
-          localSavedState.jdField_b_of_type_Long = this.mAdapter.getItemId(i);
+          localSavedState.position = i;
+          localSavedState.firstId = this.mAdapter.getItemId(i);
           break label128;
         }
-        localSavedState.jdField_a_of_type_Int = 0;
-        localSavedState.jdField_b_of_type_Long = -1L;
-        localSavedState.jdField_b_of_type_Int = 0;
+        localSavedState.viewTop = 0;
+        localSavedState.firstId = -1L;
+        localSavedState.position = 0;
         break label128;
       }
       if ((i != 0) && (this.mFirstPosition >= 0))
@@ -2544,7 +2540,7 @@ public abstract class AbsListView
           i = -1;
           label414:
           localObject = getChildAt(j - 1);
-          localSavedState.jdField_a_of_type_Int = (this.mLayoutHeight - ((View)localObject).getBottom());
+          localSavedState.viewTop = (this.mLayoutHeight - ((View)localObject).getBottom());
           j = i;
           if (i >= this.mItemCount) {
             j = this.mItemCount - 1;
@@ -2554,24 +2550,24 @@ public abstract class AbsListView
           }
         }
         label521:
-        for (localSavedState.jdField_b_of_type_Int = 2147483647;; localSavedState.jdField_b_of_type_Int = j)
+        for (localSavedState.position = 2147483647;; localSavedState.position = j)
         {
-          localSavedState.jdField_b_of_type_Long = this.mAdapter.getItemId(j);
+          localSavedState.firstId = this.mAdapter.getItemId(j);
           break;
           i = this.mFirstPosition + j - 1;
           break label414;
         }
       }
-      localSavedState.jdField_a_of_type_Int = 0;
-      localSavedState.jdField_b_of_type_Long = -1L;
-      localSavedState.jdField_b_of_type_Int = 0;
+      localSavedState.viewTop = 0;
+      localSavedState.firstId = -1L;
+      localSavedState.position = 0;
       break label128;
       label553:
       bool = false;
     }
-    localSavedState.jdField_a_of_type_Blgz = ((blgz)localObject);
+    localSavedState.checkIdState = ((bjmo)localObject);
     label566:
-    localSavedState.d = this.mCheckedItemCount;
+    localSavedState.checkedItemCount = this.mCheckedItemCount;
     return localSavedState;
   }
   
@@ -2698,12 +2694,12 @@ public abstract class AbsListView
         }
         removeCallbacks(this.mPendingCheckForTap);
         return true;
-        this.mFlingRunnable.a();
+        this.mFlingRunnable.endFling();
         if (this.mPositionScroller != null) {
-          this.mPositionScroller.a();
+          this.mPositionScroller.stop();
         }
         if (this.mBottomScroller != null) {
-          this.mBottomScroller.b();
+          this.mBottomScroller.stop();
         }
         this.mTouchMode = 5;
         this.mMotionX = ((int)paramMotionEvent.getX());
@@ -2717,11 +2713,11 @@ public abstract class AbsListView
       if (this.mTouchMode == 4)
       {
         createScrollingCache();
-        this.mFlingRunnable.a();
+        this.mFlingRunnable.endFling();
         this.mTouchMode = 3;
         this.mMotionCorrection = 0;
         i = findMotionRow(k);
-        this.mFlingRunnable.b();
+        this.mFlingRunnable.flywheelTouch();
         continue;
         j = paramMotionEvent.findPointerIndex(this.mActivePointerId);
         if (j == -1) {
@@ -2787,8 +2783,8 @@ public abstract class AbsListView
                   this.mPerformClick = new AbsListView.PerformClick(this, null);
                 }
                 localPerformClick = this.mPerformClick;
-                localPerformClick.jdField_a_of_type_Int = j;
-                localPerformClick.a();
+                localPerformClick.mClickMotionPosition = j;
+                localPerformClick.rememberWindowAttachCount();
                 if ((localObject == null) || (((View)localObject).hasFocusable()) || (i == 0)) {
                   break label1098;
                 }
@@ -2879,20 +2875,20 @@ public abstract class AbsListView
                       this.mFlingRunnable = new AbsListView.FlingRunnable(this);
                     }
                     reportScrollStateChange(2);
-                    this.mFlingRunnable.a(-i1);
+                    this.mFlingRunnable.start(-i1);
                     break;
                   }
                   label1354:
                   this.mTouchMode = -1;
                   reportScrollStateChange(0);
                   if (this.mFlingRunnable != null) {
-                    this.mFlingRunnable.a();
+                    this.mFlingRunnable.endFling();
                   }
                   if (this.mPositionScroller != null) {
-                    this.mPositionScroller.a();
+                    this.mPositionScroller.stop();
                   }
                   if (this.mBottomScroller != null) {
-                    this.mBottomScroller.b();
+                    this.mBottomScroller.stop();
                   }
                 }
               }
@@ -2907,7 +2903,7 @@ public abstract class AbsListView
             this.mFlingRunnable = new AbsListView.FlingRunnable(this);
           }
           reportScrollStateChange(2);
-          this.mFlingRunnable.b(getSpringbackOffset());
+          this.mFlingRunnable.startSpringback(getSpringbackOffset());
           localObject = this.mVelocityTracker;
           ((VelocityTracker)localObject).computeCurrentVelocity(1000, this.mMaximumVelocity);
           if (VersionUtils.isrFroyo()) {}
@@ -2936,7 +2932,7 @@ public abstract class AbsListView
             if (this.mFlingRunnable == null) {
               this.mFlingRunnable = new AbsListView.FlingRunnable(this);
             }
-            this.mFlingRunnable.b(0);
+            this.mFlingRunnable.startSpringback(0);
             continue;
             this.mTouchMode = -1;
             setPressed(false);
@@ -3011,13 +3007,13 @@ public abstract class AbsListView
         i = this.mTouchMode;
       } while ((i != 5) && (i != 6));
       if ((this.mFlingRunnable != null) && (this.mScrollY == 0)) {
-        this.mFlingRunnable.a();
+        this.mFlingRunnable.endFling();
       }
       if (this.mPositionScroller != null) {
-        this.mPositionScroller.a();
+        this.mPositionScroller.stop();
       }
       if (this.mBottomScroller != null) {
-        this.mBottomScroller.b();
+        this.mBottomScroller.stop();
       }
     } while (getScrollY() == 0);
     this.mScrollY = 0;
@@ -3044,12 +3040,12 @@ public abstract class AbsListView
         if (this.mFlingRunnable != null)
         {
           removeCallbacks(this.mFlingRunnable);
-          this.mFlingRunnable.a();
+          this.mFlingRunnable.endFling();
           if (this.mPositionScroller != null) {
-            this.mPositionScroller.a();
+            this.mPositionScroller.stop();
           }
           if (this.mBottomScroller != null) {
-            this.mBottomScroller.b();
+            this.mBottomScroller.stop();
           }
           resetScrollY();
         }
@@ -3240,7 +3236,7 @@ public abstract class AbsListView
           if (this.mChoiceActionMode == null) {
             break label380;
           }
-          this.mMultiChoiceModeCallback.a(this.mChoiceActionMode, paramInt, paramLong, bool1);
+          this.mMultiChoiceModeCallback.onItemCheckedStateChanged(this.mChoiceActionMode, paramInt, paramLong, bool1);
           i = j;
           label167:
           this.mDataChanged = true;
@@ -3320,7 +3316,7 @@ public abstract class AbsListView
       return bool2;
     }
     if (this.mOnItemLongClickListener != null) {}
-    for (boolean bool2 = this.mOnItemLongClickListener.a(this, paramView, paramInt, paramLong);; bool2 = false)
+    for (boolean bool2 = this.mOnItemLongClickListener.onItemLongClick(this, paramView, paramInt, paramLong);; bool2 = false)
     {
       bool1 = bool2;
       if (!bool2)
@@ -3371,15 +3367,15 @@ public abstract class AbsListView
     return -9223372036854775808L;
   }
   
-  public void positionSelector(int paramInt, View paramView)
+  void positionSelector(int paramInt, View paramView)
   {
     if (paramInt != -1) {
       this.mSelectorPosition = paramInt;
     }
     Rect localRect = this.mSelectorRect;
     localRect.set(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
-    if ((paramView instanceof blil)) {
-      ((blil)paramView).a(localRect);
+    if ((paramView instanceof AbsListView.SelectionBoundsAdjuster)) {
+      ((AbsListView.SelectionBoundsAdjuster)paramView).adjustListItemSelectionBounds(localRect);
     }
     positionSelector(localRect.left, localRect.top, localRect.right, localRect.bottom);
     boolean bool = this.mIsChildViewEnabled;
@@ -3402,22 +3398,22 @@ public abstract class AbsListView
   public void reclaimViews(List<View> paramList)
   {
     int j = getChildCount();
-    blij localblij = blii.a(this.mRecycler);
+    AbsListView.RecyclerListener localRecyclerListener = AbsListView.RecycleBin.access$3500(this.mRecycler);
     int i = 0;
     while (i < j)
     {
       View localView = getChildAt(i);
       AbsListView.LayoutParams localLayoutParams = (AbsListView.LayoutParams)localView.getLayoutParams();
-      if ((localLayoutParams != null) && (this.mRecycler.a(localLayoutParams.jdField_a_of_type_Int)))
+      if ((localLayoutParams != null) && (this.mRecycler.shouldRecycleViewType(localLayoutParams.viewType)))
       {
         paramList.add(localView);
-        if (localblij != null) {
-          localblij.b(localView);
+        if (localRecyclerListener != null) {
+          localRecyclerListener.onMovedToScrapHeap(localView);
         }
       }
       i += 1;
     }
-    this.mRecycler.a(paramList);
+    this.mRecycler.reclaimScrapViews(paramList);
     removeAllViewsInLayout();
   }
   
@@ -3431,7 +3427,7 @@ public abstract class AbsListView
     return Math.min(Math.max(0, i), this.mItemCount - 1);
   }
   
-  public void rememberSyncState()
+  void rememberSyncState()
   {
     int i = -1;
     if (getChildCount() > 0)
@@ -3498,9 +3494,9 @@ public abstract class AbsListView
     }
   }
   
-  public void removeOnScrollListener(blih paramblih)
+  public void removeOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    this.mOnScrollListenerList.remove(paramblih);
+    this.mOnScrollListenerList.remove(paramOnScrollListener);
   }
   
   protected void reportScrollStateChange(int paramInt)
@@ -3517,7 +3513,7 @@ public abstract class AbsListView
     label48:
     for (boolean bool = true;; bool = false)
     {
-      bhjs.a(bool);
+      bfta.a(bool);
       if (this.mOnScrollListener != null) {
         this.mOnScrollListener.onScrollStateChanged(this, paramInt);
       }
@@ -3609,10 +3605,10 @@ public abstract class AbsListView
         this.mResurrectToPosition = -1;
         removeCallbacks(this.mFlingRunnable);
         if (this.mPositionScroller != null) {
-          this.mPositionScroller.a();
+          this.mPositionScroller.stop();
         }
         if (this.mBottomScroller != null) {
-          this.mBottomScroller.b();
+          this.mBottomScroller.stop();
         }
         this.mTouchMode = -1;
         clearScrollingCache();
@@ -3829,7 +3825,7 @@ public abstract class AbsListView
   public void setAdapter(ListAdapter paramListAdapter)
   {
     if ((paramListAdapter != null) && (this.mChoiceMode != 0) && (this.mAdapter.hasStableIds()) && (this.mCheckedIdStates == null)) {
-      this.mCheckedIdStates = new blgz();
+      this.mCheckedIdStates = new bjmo();
     }
     if (this.mCheckStates != null) {
       this.mCheckStates.clear();
@@ -3851,7 +3847,7 @@ public abstract class AbsListView
         getChildAt(i).setDrawingCacheBackgroundColor(paramInt);
         i += 1;
       }
-      this.mRecycler.b(paramInt);
+      this.mRecycler.setCacheColorHint(paramInt);
     }
   }
   
@@ -3875,7 +3871,7 @@ public abstract class AbsListView
         this.mCheckStates = new SparseBooleanArray();
       }
       if ((this.mCheckedIdStates == null) && (this.mAdapter != null) && (this.mAdapter.hasStableIds())) {
-        this.mCheckedIdStates = new blgz();
+        this.mCheckedIdStates = new bjmo();
       }
       if (this.mChoiceMode == 3)
       {
@@ -3901,10 +3897,10 @@ public abstract class AbsListView
       if ((this.mOverScrollMode != 2) && (this.mEdgeGlowTop == null))
       {
         localContext = getContext();
-        this.mEdgeGlowTop = new blle(localContext);
+        this.mEdgeGlowTop = new bjqa(localContext);
       }
     }
-    for (this.mEdgeGlowBottom = new blle(localContext);; this.mEdgeGlowBottom = null)
+    for (this.mEdgeGlowBottom = new bjqa(localContext);; this.mEdgeGlowBottom = null)
     {
       this.mEdgeEffectEnabled = paramBoolean;
       return;
@@ -3979,7 +3975,7 @@ public abstract class AbsListView
           ((Filterable)this.mAdapter).getFilter().filter(paramString);
         }
         this.mFiltered = true;
-        this.mDataSetObserver.a();
+        this.mDataSetObserver.clearSavedState();
       }
     }
   }
@@ -4007,13 +4003,13 @@ public abstract class AbsListView
     if (this.mFlingRunnable == null) {
       this.mFlingRunnable = new AbsListView.FlingRunnable(this);
     }
-    AbsListView.FlingRunnable.a(this.mFlingRunnable).a(paramFloat);
+    AbsListView.FlingRunnable.access$1100(this.mFlingRunnable).a(paramFloat);
   }
   
   public void setInterpolator(Interpolator paramInterpolator)
   {
     if (this.mFlingRunnable != null) {
-      AbsListView.FlingRunnable.a(this.mFlingRunnable).a(paramInterpolator);
+      AbsListView.FlingRunnable.access$1100(this.mFlingRunnable).a(paramInterpolator);
     }
   }
   
@@ -4057,7 +4053,7 @@ public abstract class AbsListView
           if (this.mChoiceActionMode != null)
           {
             long l = this.mAdapter.getItemId(paramInt);
-            this.mMultiChoiceModeCallback.a(this.mChoiceActionMode, paramInt, l, paramBoolean);
+            this.mMultiChoiceModeCallback.onItemCheckedStateChanged(this.mChoiceActionMode, paramInt, l, paramBoolean);
           }
         }
       }
@@ -4111,12 +4107,12 @@ public abstract class AbsListView
     this.mMaximumVelocity = paramInt;
   }
   
-  public void setMultiChoiceModeListener(blie paramblie)
+  public void setMultiChoiceModeListener(AbsListView.MultiChoiceModeListener paramMultiChoiceModeListener)
   {
     if (this.mMultiChoiceModeCallback == null) {
-      this.mMultiChoiceModeCallback = new blif(this);
+      this.mMultiChoiceModeCallback = new AbsListView.MultiChoiceModeWrapper(this);
     }
-    this.mMultiChoiceModeCallback.a(paramblie);
+    this.mMultiChoiceModeCallback.setWrapped(paramMultiChoiceModeListener);
   }
   
   public void setNeedCheckSpringback(boolean paramBoolean)
@@ -4124,15 +4120,15 @@ public abstract class AbsListView
     this.mNeedCheckSpringback = paramBoolean;
   }
   
-  public void setOnScrollListener(blih paramblih)
+  public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    this.mOnScrollListener = paramblih;
+    this.mOnScrollListener = paramOnScrollListener;
     invokeOnItemScrollListener();
   }
   
-  public void setOnScrollToButtomListener(blig paramblig)
+  public void setOnScrollToButtomListener(AbsListView.OnScrollButtomListener paramOnScrollButtomListener)
   {
-    this.mOnScrollButtomListener = paramblig;
+    this.mOnScrollButtomListener = paramOnScrollButtomListener;
   }
   
   public void setOverScrollEffectPadding(int paramInt1, int paramInt2)
@@ -4146,7 +4142,7 @@ public abstract class AbsListView
     if (this.mFlingRunnable == null) {
       this.mFlingRunnable = new AbsListView.FlingRunnable(this);
     }
-    AbsListView.FlingRunnable.a(this.mFlingRunnable).a(paramInt);
+    AbsListView.FlingRunnable.access$1100(this.mFlingRunnable).a(paramInt);
   }
   
   public void setOverScrollMode(int paramInt)
@@ -4162,8 +4158,8 @@ public abstract class AbsListView
     }
     try
     {
-      this.mEdgeGlowTop = new blle(localContext);
-      for (this.mEdgeGlowBottom = new blle(localContext);; this.mEdgeGlowBottom = null)
+      this.mEdgeGlowTop = new bjqa(localContext);
+      for (this.mEdgeGlowBottom = new bjqa(localContext);; this.mEdgeGlowBottom = null)
       {
         label90:
         this.mOverScrollMode = paramInt;
@@ -4187,9 +4183,9 @@ public abstract class AbsListView
     this.mOverScrollTouchMode = paramInt;
   }
   
-  public void setRecyclerListener(blij paramblij)
+  public void setRecyclerListener(AbsListView.RecyclerListener paramRecyclerListener)
   {
-    blii.a(this.mRecycler, paramblij);
+    AbsListView.RecycleBin.access$3502(this.mRecycler, paramRecyclerListener);
   }
   
   public void setScrollIndicators(View paramView1, View paramView2)
@@ -4275,7 +4271,7 @@ public abstract class AbsListView
     }
   }
   
-  public boolean shouldShowSelector()
+  boolean shouldShowSelector()
   {
     return ((hasFocus()) && (!isInTouchMode())) || (touchModeDrawsInPressedState());
   }
@@ -4305,7 +4301,7 @@ public abstract class AbsListView
     {
       long l = this.mAdapter.getItemId(i);
       if (this.mOnItemLongClickListener != null) {
-        bool2 = this.mOnItemLongClickListener.a(this, paramView, i, l);
+        bool2 = this.mOnItemLongClickListener.onItemLongClick(this, paramView, i, l);
       }
       bool1 = bool2;
       if (!bool2)
@@ -4329,17 +4325,17 @@ public abstract class AbsListView
     int n = this.mPaddingBottom;
     if ((paramInt1 == 0) || (this.mItemCount == 0) || (j == 0) || ((i == 0) && (getChildAt(0).getTop() == k) && (paramInt1 < 0)) || ((i + j - 1 == this.mItemCount - 1) && (getChildAt(j - 1).getBottom() == m - n) && (paramInt1 > 0)))
     {
-      this.mFlingRunnable.a();
+      this.mFlingRunnable.endFling();
       if (this.mPositionScroller != null) {
-        this.mPositionScroller.a();
+        this.mPositionScroller.stop();
       }
       if (this.mBottomScroller != null) {
-        this.mBottomScroller.b();
+        this.mBottomScroller.stop();
       }
       return;
     }
     reportScrollStateChange(2);
-    this.mFlingRunnable.b(paramInt1, paramInt2);
+    this.mFlingRunnable.startScroll(paramInt1, paramInt2);
   }
   
   public void smoothScrollByImmediately(int paramInt1, int paramInt2)
@@ -4354,17 +4350,17 @@ public abstract class AbsListView
     int n = this.mPaddingBottom;
     if ((paramInt1 == 0) || (this.mItemCount == 0) || (j == 0) || ((i == 0) && (getChildAt(0).getTop() == k) && (paramInt1 < 0)) || ((i + j - 1 == this.mItemCount - 1) && (getChildAt(j - 1).getBottom() == m - n) && (paramInt1 > 0)))
     {
-      this.mFlingRunnable.a();
+      this.mFlingRunnable.endFling();
       if (this.mPositionScroller != null) {
-        this.mPositionScroller.a();
+        this.mPositionScroller.stop();
       }
       if (this.mBottomScroller != null) {
-        this.mBottomScroller.b();
+        this.mBottomScroller.stop();
       }
       return;
     }
     reportScrollStateChange(2);
-    this.mFlingRunnable.a(paramInt1, paramInt2);
+    this.mFlingRunnable.startScrollImmediately(paramInt1, paramInt2);
   }
   
   void smoothScrollByOffset(int paramInt)
@@ -4426,7 +4422,7 @@ public abstract class AbsListView
     if (this.mPositionScroller == null) {
       this.mPositionScroller = new AbsListView.PositionScroller(this);
     }
-    this.mPositionScroller.a(paramInt);
+    this.mPositionScroller.start(paramInt);
   }
   
   public void smoothScrollToPosition(int paramInt1, int paramInt2)
@@ -4434,7 +4430,7 @@ public abstract class AbsListView
     if (this.mPositionScroller == null) {
       this.mPositionScroller = new AbsListView.PositionScroller(this);
     }
-    this.mPositionScroller.a(paramInt1, paramInt2);
+    this.mPositionScroller.start(paramInt1, paramInt2);
   }
   
   public void smoothScrollToPositionFromTop(int paramInt1, int paramInt2)
@@ -4442,7 +4438,7 @@ public abstract class AbsListView
     if (this.mPositionScroller == null) {
       this.mPositionScroller = new AbsListView.PositionScroller(this);
     }
-    this.mPositionScroller.b(paramInt1, paramInt2);
+    this.mPositionScroller.startWithOffset(paramInt1, paramInt2);
   }
   
   public void smoothScrollToPositionFromTop(int paramInt1, int paramInt2, int paramInt3)
@@ -4450,7 +4446,7 @@ public abstract class AbsListView
     if (this.mPositionScroller == null) {
       this.mPositionScroller = new AbsListView.PositionScroller(this);
     }
-    this.mPositionScroller.a(paramInt1, paramInt2, paramInt3);
+    this.mPositionScroller.startWithOffset(paramInt1, paramInt2, paramInt3);
   }
   
   public void springBackTo(int paramInt)
@@ -4458,7 +4454,7 @@ public abstract class AbsListView
     if (this.mFlingRunnable == null) {
       this.mFlingRunnable = new AbsListView.FlingRunnable(this);
     }
-    this.mFlingRunnable.b(paramInt);
+    this.mFlingRunnable.startSpringback(paramInt);
   }
   
   public boolean startScrollIfNeeded(int paramInt)
@@ -4588,7 +4584,7 @@ public abstract class AbsListView
             paramInt2 = 1;
             break;
             if ((this.mOnScrollButtomListener != null) && (n <= 0)) {
-              this.mOnScrollButtomListener.a(n);
+              this.mOnScrollButtomListener.onScrollToButtom(n);
             }
             if (n == 0) {
               break label782;
@@ -4672,7 +4668,7 @@ public abstract class AbsListView
       if ((i1 < i7) || (i1 >= i8)) {
         break label811;
       }
-      this.mRecycler.a(localView, i1);
+      this.mRecycler.addScrapView(localView, i1);
       break label811;
       label616:
       paramInt1 = getHeight() - n;
@@ -4695,7 +4691,7 @@ public abstract class AbsListView
         if ((paramInt2 < i7) || (paramInt2 >= i8)) {
           break label832;
         }
-        this.mRecycler.a(localView, paramInt2);
+        this.mRecycler.addScrapView(localView, paramInt2);
         break label832;
         label705:
         if (this.mSelectorPosition != -1)

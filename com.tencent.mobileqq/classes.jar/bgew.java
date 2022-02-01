@@ -1,49 +1,38 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder.ImageUploadHandler.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.vas.IndividuationUrlHelper.1.1;
+import java.lang.ref.SoftReference;
+import java.util.List;
+import java.util.Map;
 
-public class bgew
-  implements bnsp
+public final class bgew
+  implements bgez
 {
-  private bgee a;
-  
-  public bgew(ArithmeticViewHolder paramArithmeticViewHolder, bgee parambgee)
+  public void a()
   {
-    this.jdField_a_of_type_Bgee = parambgee;
-  }
-  
-  private void a(bgee parambgee)
-  {
-    ThreadManager.getUIHandler().post(new ArithmeticViewHolder.ImageUploadHandler.1(this, parambgee));
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Bgee.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_Bgee.jdField_a_of_type_Int = paramInt;
-    ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder).c(this.jdField_a_of_type_Bgee);
-    a(this.jdField_a_of_type_Bgee);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_Bgee.jdField_b_of_type_Int = 3;
-    this.jdField_a_of_type_Bgee.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bgee.jdField_a_of_type_Int = 100;
-    ArithmeticViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder).c(this.jdField_a_of_type_Bgee);
-    a(this.jdField_a_of_type_Bgee);
-    if (QLog.isColorLevel()) {
-      QLog.d("ArithmeticViewHolder", 2, "update success , url = " + paramString);
+    int i = 0;
+    if (i < bgev.a().size())
+    {
+      Object localObject = (SoftReference)bgev.a().get(i);
+      if (localObject != null)
+      {
+        localObject = (bgex)((SoftReference)localObject).get();
+        if (localObject != null) {
+          break label50;
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        label50:
+        String str = (String)bgev.b().get(((bgex)localObject).jdField_a_of_type_JavaLangString);
+        if ((((bgex)localObject).jdField_a_of_type_AndroidWidgetImageView != null) && (!TextUtils.isEmpty(str))) {
+          ((bgex)localObject).jdField_a_of_type_AndroidWidgetImageView.post(new IndividuationUrlHelper.1.1(this, (bgex)localObject, str));
+        }
+      }
     }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Bgee.jdField_b_of_type_Int = 2;
-    a(this.jdField_a_of_type_Bgee);
-    QLog.w("ArithmeticViewHolder", 2, "upload error , code = " + paramInt + " ;local path = " + this.jdField_a_of_type_Bgee.jdField_b_of_type_JavaLangString);
+    bgev.a().clear();
   }
 }
 

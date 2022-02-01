@@ -1,24 +1,24 @@
 package com.tencent.biz.qqstory.base.download;
 
-import wjv;
-import wkb;
-import wkd;
+import vlu;
+import vma;
+import vmc;
 
 public class DownloadUrlManager$2$1
   implements Runnable
 {
-  public DownloadUrlManager$2$1(wjv paramwjv, wkb paramwkb) {}
+  public DownloadUrlManager$2$1(vlu paramvlu, vma paramvma) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Wjv.a != null) {
-      this.jdField_a_of_type_Wjv.a.a(this.jdField_a_of_type_Wkb);
+    if (this.jdField_a_of_type_Vlu.a != null) {
+      this.jdField_a_of_type_Vlu.a.a(this.jdField_a_of_type_Vma);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.download.DownloadUrlManager.2.1
  * JD-Core Version:    0.7.0.1
  */

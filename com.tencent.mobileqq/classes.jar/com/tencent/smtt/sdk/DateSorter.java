@@ -16,10 +16,10 @@ public class DateSorter
   
   public DateSorter(Context paramContext)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b()))
+    x localx = x.a();
+    if ((localx != null) && (localx.b()))
     {
-      this.b = localv.c().h(paramContext);
+      this.b = localx.c().h(paramContext);
       return;
     }
     this.a = new android.webkit.DateSorter(paramContext);
@@ -28,12 +28,12 @@ public class DateSorter
   private static boolean a()
   {
     boolean bool2 = false;
-    v localv = v.a();
+    x localx = x.a();
     boolean bool1 = bool2;
-    if (localv != null)
+    if (localx != null)
     {
       bool1 = bool2;
-      if (localv.b()) {
+      if (localx.b()) {
         bool1 = true;
       }
     }
@@ -42,8 +42,8 @@ public class DateSorter
   
   public long getBoundary(int paramInt)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
       return this.b.getBoundary(paramInt);
     }
     return this.a.getBoundary(paramInt);
@@ -51,8 +51,8 @@ public class DateSorter
   
   public int getIndex(long paramLong)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
       return this.b.getIndex(paramLong);
     }
     return this.a.getIndex(paramLong);
@@ -60,8 +60,8 @@ public class DateSorter
   
   public String getLabel(int paramInt)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
       return this.b.getLabel(paramInt);
     }
     return this.a.getLabel(paramInt);

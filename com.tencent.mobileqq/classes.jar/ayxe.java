@@ -1,24 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ayxe
-  implements Callback
+  implements View.OnClickListener
 {
   ayxe(ayxd paramayxd) {}
   
-  public void onFailure(Call paramCall, IOException paramIOException)
+  public void onClick(View paramView)
   {
-    QLog.e("ReportCenter", 4, paramIOException, new Object[0]);
-  }
-  
-  public void onResponse(Call paramCall, Response paramResponse)
-  {
-    if ((paramResponse != null) && (paramResponse.code() == 200)) {
-      QLog.i("ReportCenter", 4, "data report success.");
-    }
+    ayxd.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import bhnv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
 import com.tencent.mobileqq.minigame.manager.EngineManager;
 import com.tencent.mobileqq.minigame.manager.LocalGameEngine;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -19,7 +19,7 @@ class BaseLibManager$1$1$1
     BaseLibInfo localBaseLibInfo2 = BaseLibInfo.fromJSON(this.val$obj.optJSONObject(BaseLibInfo.getKey(2)));
     JSONObject localJSONObject = this.val$obj.optJSONObject(BaseLibInfo.getKey(3));
     BaseLibInfo localBaseLibInfo1 = BaseLibInfo.fromJSON(localJSONObject);
-    boolean bool = bhnv.h(BaseApplicationImpl.getApplication());
+    boolean bool = NetworkUtil.isWifiConnected(BaseApplicationImpl.getApplication());
     QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] gameEngineLib " + localBaseLibInfo2 + ", miniAppEnginLib " + localJSONObject + " isWifi:" + bool);
     if (!LocalGameEngine.g().isWnsConfigModel()) {
       if (localBaseLibInfo2 != null) {

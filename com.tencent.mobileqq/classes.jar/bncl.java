@@ -1,10 +1,18 @@
-public abstract interface bncl
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+
+public class bncl
+  extends boax
 {
-  public abstract void a();
+  public bncl(EditPicActivity paramEditPicActivity) {}
   
-  public abstract void a(float paramFloat);
-  
-  public abstract void a(float paramFloat1, float paramFloat2);
+  public void a()
+  {
+    xvv.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
+    bnca localbnca = (bnca)this.a.a.a(bnca.class);
+    if (localbnca != null) {
+      localbnca.b();
+    }
+  }
 }
 
 

@@ -1,34 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
-import com.tencent.robolectric.ShadowParcel;
-import java.util.Arrays;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8.1.1;
 
-class aoue
-  implements PermissionMonitor.Listener
+public class aoue
+  extends aout
 {
-  static
-  {
-    if (!aotx.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
+  public aoue(ArkAiDictUpdateMgr.8 param8) {}
   
-  aoue(aotx paramaotx) {}
-  
-  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
+  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte)
   {
-    if (aotx.a(this.jdField_a_of_type_Aotx) != Thread.currentThread()) {}
-    while ((!aotx.a(this.jdField_a_of_type_Aotx)) || (paramArrayOfObject.length != 2)) {
-      return;
-    }
-    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aotx.a(this.jdField_a_of_type_Aotx))) {
-      throw new AssertionError();
-    }
-    ShadowParcel.a((int)aotx.a(this.jdField_a_of_type_Aotx), ((Integer)paramArrayOfObject[1]).intValue());
-    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
+    ThreadManager.post(new ArkAiDictUpdateMgr.8.1.1(this, paramArrayOfByte, paramBoolean), 5, null, true);
   }
 }
 

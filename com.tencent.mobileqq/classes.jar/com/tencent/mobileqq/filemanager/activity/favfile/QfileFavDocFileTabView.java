@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.filemanager.activity.favfile;
 
 import android.content.Context;
-import atli;
-import atlm;
-import bdll;
+import arxr;
+import arxv;
+import bcef;
 
 public class QfileFavDocFileTabView
   extends QfileFavFileTabView
 {
-  public QfileFavDocFileTabView(Context paramContext, atlm paramatlm, atli paramatli)
+  public QfileFavDocFileTabView(Context paramContext, arxv paramarxv, arxr paramarxr)
   {
-    super(paramContext, paramatlm, paramatli);
+    super(paramContext, paramarxv, paramarxr);
   }
   
   protected void a(boolean paramBoolean)
   {
-    bdll.b(this.a, "dc00898", "", "", "0X800AFA9", "0X800AFA9", 0, 0, "", "", "", "");
+    bcef.b(this.a, "dc00898", "", "", "0X800AFA9", "0X800AFA9", 0, 0, "", "", "", "");
   }
   
   protected int b()
@@ -25,7 +25,7 @@ public class QfileFavDocFileTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavDocFileTabView
  * JD-Core Version:    0.7.0.1
  */

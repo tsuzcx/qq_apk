@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import aiuz;
-import aiwh;
+import ahpk;
+import ahqs;
 
 class FraudTipsBar$1$1
   implements Runnable
@@ -10,8 +10,8 @@ class FraudTipsBar$1$1
   
   public void run()
   {
-    aiuz.a(this.a.this$0, 2);
-    aiuz.a(this.a.this$0).a();
+    ahpk.a(this.a.this$0, 2);
+    ahpk.a(this.a.this$0).a();
   }
 }
 

@@ -1,42 +1,78 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.io.File;
 
-public class amhh
+class amhh
+  implements INetEngine.INetEngineListener
 {
-  public static AtomicBoolean a;
-  public static String[] a;
+  amhh(amhg paramamhg, String paramString, amhe paramamhe) {}
   
-  static
+  public void onResp(NetResp paramNetResp)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "MI 3", "Coolpad 8675", "OPPO R7", "Redmi Note 2", "MX4", "vivo X5L", "m3 note", "PRO 6" };
-  }
-  
-  public static void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (;;)
+    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetResp.mReq;
+    if (this.jdField_a_of_type_Amhg.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq) {
+      this.jdField_a_of_type_Amhg.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TMG_Downloader", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localHttpNetReq.mReqUrl, Integer.valueOf(paramNetResp.mResult), Integer.valueOf(paramNetResp.mHttpCode), this.jdField_a_of_type_JavaLangString }));
+    }
+    if (paramNetResp.mResult == 0)
     {
-      try
+      paramNetResp = new File(localHttpNetReq.mOutPath);
+      if (!paramNetResp.exists()) {}
+    }
+    do
+    {
+      for (;;)
       {
-        if (Integer.valueOf(paramString).intValue() == 0)
+        try
         {
-          jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideo.ProgressiveUtils", 2, "parseConfig(): config = " + paramString + ", sProgressiveEnable = " + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+          paramNetResp = paramNetResp.getParent();
+          FileUtils.uncompressZip(localHttpNetReq.mOutPath, paramNetResp, false);
+          amhf.a(this.jdField_a_of_type_Amhe.b);
+          i = 1;
+          if (i == 0) {
+            break;
           }
+          if (this.jdField_a_of_type_Amhg.jdField_a_of_type_Amhi != null)
+          {
+            this.jdField_a_of_type_Amhg.jdField_a_of_type_Amhi.a(100);
+            this.jdField_a_of_type_Amhg.jdField_a_of_type_Amhi.a(0, "Download Complete!!!");
+          }
+          this.jdField_a_of_type_Amhg.jdField_a_of_type_Boolean = false;
           return;
         }
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        continue;
+        catch (Exception paramNetResp)
+        {
+          paramNetResp.printStackTrace();
+        }
+        int i = 0;
       }
-      catch (Exception localException)
-      {
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        continue;
+    } while (this.jdField_a_of_type_Amhg.jdField_a_of_type_Amhi == null);
+    this.jdField_a_of_type_Amhg.jdField_a_of_type_Amhi.a(2, "");
+  }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
+  {
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Amhg.jdField_a_of_type_Amhi != null) {
+        this.jdField_a_of_type_Amhg.jdField_a_of_type_Amhi.a(i);
       }
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      return;
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+      }
     }
   }
 }

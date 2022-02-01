@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import anum;
+import amov;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class AccountOnlineStateActivity$3
@@ -10,9 +10,9 @@ class AccountOnlineStateActivity$3
   
   public void run()
   {
-    anum localanum = (anum)AccountOnlineStateActivity.a(this.this$0).a(2);
-    if (localanum != null) {
-      localanum.B();
+    amov localamov = (amov)AccountOnlineStateActivity.a(this.this$0).getBusinessHandler(2);
+    if (localamov != null) {
+      localamov.B();
     }
   }
 }

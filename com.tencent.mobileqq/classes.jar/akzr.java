@@ -1,73 +1,75 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.selectmember.FriendTabView;
+import com.tencent.mobileqq.activity.selectmember.FriendTabView.3.1;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akzr
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  public akzr(TransactionActivity paramTransactionActivity) {}
+  public akzr(FriendTabView paramFriendTabView) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    for (boolean bool = true;; bool = false)
+    QLog.d("FriendTabView", 2, "----->onBuddyListClick");
+    alan localalan = (alan)paramView.getTag();
+    String str;
+    boolean bool;
+    if ((localalan != null) && (localalan.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localalan.jdField_a_of_type_JavaLangObject != null))
     {
-      try
+      str = "";
+      if (!(localalan.jdField_a_of_type_JavaLangObject instanceof Friends)) {
+        break label243;
+      }
+      str = ((Friends)localalan.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
+      if (localalan.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
       {
-        Button localButton = TransactionActivity.a(this.a);
-        if (TextUtils.isEmpty(paramEditable.toString())) {
-          continue;
+        if (!localalan.jdField_a_of_type_JavaLangString.startsWith("+")) {
+          break label269;
         }
-        localButton.setEnabled(bool);
-        float f = Float.parseFloat(paramEditable.toString());
-        int i = TransactionActivity.a(this.a).getText().length();
-        paramEditable = TransactionActivity.a(this.a, f);
-        if (bhsr.a(paramEditable))
+        bool = this.a.a.onListViewItemClick(localalan.jdField_a_of_type_JavaLangString, str, 4, "-1", "");
+        label110:
+        if (QLog.isDevelopLevel()) {
+          QLog.d("FriendTabView", 2, "----->onBuddyListClick = " + bool);
+        }
+        localalan.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+        if (AppSetting.c)
         {
-          TransactionActivity.a(this.a).setVisibility(0);
-          TransactionActivity.a(this.a).setVisibility(8);
-          TransactionActivity.a(this.a).setVisibility(8);
-        }
-        while ((i > 0) && (!TransactionActivity.a(this.a).getText().toString().startsWith(".")) && (!TransactionActivity.a(this.a).getText().toString().endsWith(".")) && (TransactionActivity.a(this.a, TransactionActivity.a(this.a).getText().toString())))
-        {
-          if ((TransactionActivity.a(this.a) > 0) && (!TextUtils.isEmpty(TransactionActivity.a(this.a))) && (f * 100.0F >= TransactionActivity.a(this.a)) && (!TextUtils.isEmpty(TransactionActivity.a(this.a)))) {
-            this.a.a(TransactionActivity.a(this.a));
+          if (!localalan.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+            break label294;
           }
-          if (TransactionActivity.a(this.a).isEnabled()) {
-            break label406;
-          }
-          TransactionActivity.a(this.a).setEnabled(true);
-          this.a.a(TransactionActivity.b(this.a), 128, "transfer.amount.enable", "", "", TransactionActivity.b(this.a), "");
-          return;
-          TransactionActivity.a(this.a).setVisibility(8);
-          TransactionActivity.a(this.a).setVisibility(0);
-          TransactionActivity.a(this.a).setVisibility(0);
-          TransactionActivity.a(this.a).setText(paramEditable);
-        }
-        if (!TransactionActivity.a(this.a).isEnabled()) {
-          break label406;
+          paramView.setContentDescription(localalan.d.getText().toString() + amtj.a(2131704069));
         }
       }
-      catch (Exception paramEditable)
-      {
-        paramEditable.printStackTrace();
-        return;
+    }
+    for (;;)
+    {
+      this.a.c();
+      if (AppSetting.c) {
+        paramView.postDelayed(new FriendTabView.3.1(this, paramView), 2000L);
       }
-      TransactionActivity.a(this.a).setEnabled(false);
-      this.a.a(TransactionActivity.b(this.a), 128, "transfer.amount.disable", "", "", TransactionActivity.b(this.a), "");
-      label406:
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label243:
+      if (!(localalan.jdField_a_of_type_JavaLangObject instanceof PhoneContact)) {
+        break;
+      }
+      str = ((PhoneContact)localalan.jdField_a_of_type_JavaLangObject).name;
+      break;
+      label269:
+      bool = this.a.a.onListViewItemClick(localalan.jdField_a_of_type_JavaLangString, str, 0, "-1", "");
+      break label110;
+      label294:
+      paramView.setContentDescription(localalan.d.getText().toString() + amtj.a(2131704070));
     }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

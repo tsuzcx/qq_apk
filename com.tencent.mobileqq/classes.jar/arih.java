@@ -1,78 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
-public class arih
-  extends arac<arig>
+class arih
+  implements bldd
 {
-  @NonNull
-  public arig a(int paramInt)
-  {
-    return new arig();
-  }
+  arih(arig paramarig) {}
   
-  @Nullable
-  public arig a(araj[] paramArrayOfaraj)
+  public void a()
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0) && (paramArrayOfaraj[0] != null))
-    {
-      arig localarig = arig.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QuickAuthorityConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
-      }
-      return localarig;
+    if (this.a.a != null) {
+      this.a.a.e(this.a.getPosition());
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickAuthorityConfProcessor", 2, "onParsed is null");
-    }
-    return null;
-  }
-  
-  public void a(arig paramarig)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickAuthorityConfProcessor", 2, "onUpdate " + paramarig.toString());
-    }
-  }
-  
-  public Class<arig> clazz()
-  {
-    return arig.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickAuthorityConfProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickAuthorityConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public int type()
-  {
-    return 546;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arih
  * JD-Core Version:    0.7.0.1
  */

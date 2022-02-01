@@ -1,17 +1,34 @@
-import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnCompletionListener;
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-import tv.danmaku.ijk.media.player.IMediaPlayer.OnCompletionListener;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.SystemClock;
+import android.view.View;
 
 class bkze
-  implements IMediaPlayer.OnCompletionListener
+  extends View
 {
-  bkze(bkzb parambkzb, ReliableVideoPlayer.OnCompletionListener paramOnCompletionListener) {}
+  private View jdField_a_of_type_AndroidViewView;
   
-  public void onCompletion(IMediaPlayer paramIMediaPlayer)
+  public bkze(bkzd parambkzd, Context paramContext, View paramView, Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnCompletionListener != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnCompletionListener.onCompletion(this.jdField_a_of_type_Bkzb);
-    }
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    setBackgroundDrawable(paramDrawable);
+  }
+  
+  public void invalidateDrawable(Drawable paramDrawable)
+  {
+    this.jdField_a_of_type_AndroidViewView.invalidate();
+  }
+  
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
+  {
+    long l = SystemClock.uptimeMillis();
+    this.jdField_a_of_type_AndroidViewView.postDelayed(paramRunnable, paramLong - l);
+  }
+  
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_AndroidViewView.removeCallbacks(paramRunnable);
   }
 }
 

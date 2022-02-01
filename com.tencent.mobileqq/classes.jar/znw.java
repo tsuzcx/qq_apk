@@ -1,99 +1,23 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
 
 public class znw
+  implements ISuperPlayer.OnCompletionListener
 {
-  public static <T> T a(T paramT)
-  {
-    if (paramT == null) {
-      yuk.e("Q.qqstory.AssertUtils", "checkNotNull failed:" + a(2));
-    }
-    return paramT;
-  }
+  public znw(TribeVideoPlugin paramTribeVideoPlugin, zod paramzod) {}
   
-  public static String a(int paramInt)
+  public void onCompletion(ISuperPlayer paramISuperPlayer)
   {
-    for (;;)
+    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
     {
-      try
-      {
-        localObject = new RuntimeException("getStackTrace").getStackTrace();
-        localStringBuilder = new StringBuilder();
-        i = paramInt;
-        if (localObject.length > paramInt) {
-          break label87;
-        }
-        i = localObject.length;
-      }
-      catch (Exception localException)
-      {
-        Object localObject;
-        StringBuilder localStringBuilder;
-        int i;
-        return "";
-      }
-      if (paramInt < i)
-      {
-        localStringBuilder.append("\n" + localObject[paramInt].toString());
-        paramInt += 1;
-      }
-      else
-      {
-        localObject = localStringBuilder.toString();
-        return localObject;
-        label87:
-        paramInt = 2;
-      }
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(6, zod.a(this.jdField_a_of_type_Zod));
+      paramISuperPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
+      paramISuperPlayer.obj = zod.a(this.jdField_a_of_type_Zod);
+      paramISuperPlayer.what = 6;
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramISuperPlayer);
     }
   }
-  
-  public static void a() {}
-  
-  public static <T> void a(T paramT)
-  {
-    if (paramT == null)
-    {
-      paramT = zpn.a("StoryAssertUtils Exception!");
-      bdkh.a(paramT, "StoryAssertUtils assertNotNull_DEBUG()");
-      yuk.c("Q.qqstory.AssertUtils", "assertNotNull_DEBUG failed: ", paramT);
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    yuk.e("Q.qqstory.AssertUtils", "checkNotEmpty failed :" + a(2));
-  }
-  
-  public static void a(String paramString, Object... paramVarArgs)
-  {
-    if (paramVarArgs.length == 0) {}
-    for (;;)
-    {
-      yuk.e("Q.qqstory.AssertUtils", paramString);
-      return;
-      paramString = String.format(paramString, paramVarArgs);
-    }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      yuk.e("Q.qqstory.AssertUtils", "assertTrue failed:" + a(4));
-    }
-  }
-  
-  public static void a(boolean paramBoolean, @NonNull String paramString)
-  {
-    if (paramBoolean) {
-      return;
-    }
-    yuk.e("Q.qqstory.AssertUtils", paramString);
-  }
-  
-  public static void b() {}
 }
 
 

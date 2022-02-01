@@ -1,9 +1,25 @@
 import android.view.View;
-import com.tencent.widget.ExpandableListView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface blll
+class blll
+  implements View.OnClickListener
 {
-  public abstract boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong);
+  blll(bllh parambllh) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.a.isPlaying()) {
+      this.a.a.pause();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.a.resume();
+    }
+  }
 }
 
 

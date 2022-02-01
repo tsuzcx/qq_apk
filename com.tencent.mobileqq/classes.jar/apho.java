@@ -1,26 +1,19 @@
-public abstract interface apho
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.CardMobileInfo;
+
+public final class apho
+  implements Parcelable.Creator<CardMobileInfo>
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public CardMobileInfo a(Parcel paramParcel)
+  {
+    return new CardMobileInfo(paramParcel);
+  }
   
-  public abstract void a(aphw paramaphw);
-  
-  public abstract int b();
-  
-  public abstract int c();
-  
-  public abstract String c();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract boolean d();
-  
-  public abstract void e();
-  
-  public abstract boolean e();
-  
-  public abstract void f();
+  public CardMobileInfo[] a(int paramInt)
+  {
+    return new CardMobileInfo[paramInt];
+  }
 }
 
 

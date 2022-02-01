@@ -1,37 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.revokemsg.RevokeMsgInfo;
+import java.util.Comparator;
 
-public final class bbea
-  implements Parcelable.Creator<RevokeMsgInfo>
+final class bbea
+  implements Comparator<bayp>
 {
-  public RevokeMsgInfo a(Parcel paramParcel)
+  public int a(bayp parambayp1, bayp parambayp2)
   {
-    boolean bool = true;
-    RevokeMsgInfo localRevokeMsgInfo = new RevokeMsgInfo();
-    localRevokeMsgInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localRevokeMsgInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localRevokeMsgInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localRevokeMsgInfo.d = paramParcel.readString();
-    localRevokeMsgInfo.b = paramParcel.readLong();
-    localRevokeMsgInfo.c = paramParcel.readLong();
-    localRevokeMsgInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    localRevokeMsgInfo.jdField_e_of_type_Int = paramParcel.readInt();
-    localRevokeMsgInfo.jdField_f_of_type_Int = paramParcel.readInt();
-    if (paramParcel.readInt() == 1) {}
-    for (;;)
-    {
-      localRevokeMsgInfo.jdField_a_of_type_Boolean = bool;
-      localRevokeMsgInfo.g = paramParcel.readInt();
-      localRevokeMsgInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-      return localRevokeMsgInfo;
-      bool = false;
+    int i;
+    if (parambayp2.a() == null) {
+      i = -1;
     }
-  }
-  
-  public RevokeMsgInfo[] a(int paramInt)
-  {
-    return new RevokeMsgInfo[paramInt];
+    int j;
+    do
+    {
+      return i;
+      if (parambayp1.a() == null) {
+        return 1;
+      }
+      j = Integer.signum(parambayp2.a().c - parambayp1.a().c);
+      i = j;
+    } while (j != 0);
+    return bbdz.a(parambayp1, parambayp2);
   }
 }
 

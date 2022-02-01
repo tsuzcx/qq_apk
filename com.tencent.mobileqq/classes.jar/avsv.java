@@ -1,10 +1,25 @@
-import android.view.animation.Animation;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 
-public abstract interface avsv
+class avsv
+  implements avtb<PicEmoticonInfo>
 {
-  public abstract void a(Animation paramAnimation);
+  avsv(avsq paramavsq, boolean paramBoolean, SessionInfo paramSessionInfo) {}
   
-  public abstract void b(Animation paramAnimation);
+  public void a(PicEmoticonInfo paramPicEmoticonInfo)
+  {
+    if ((paramPicEmoticonInfo != null) && (paramPicEmoticonInfo.emoticon != null))
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        avsq.a(this.jdField_a_of_type_Avsq.a, "0X800A937", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramPicEmoticonInfo.emoticon.epId);
+      }
+    }
+    else {
+      return;
+    }
+    avsq.a(this.jdField_a_of_type_Avsq.a, "0X800A936", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, paramPicEmoticonInfo.emoticon.epId);
+  }
 }
 
 

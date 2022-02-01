@@ -1,11 +1,6 @@
-import android.graphics.Bitmap;
-
-public class zgw
+public abstract interface zgw
 {
-  public int a;
-  public long a = -1L;
-  public Bitmap a;
-  public String a;
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

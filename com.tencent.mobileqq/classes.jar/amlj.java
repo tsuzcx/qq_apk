@@ -1,23 +1,33 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
 
 class amlj
   implements View.OnClickListener
 {
-  amlj(amli paramamli, amlh paramamlh, int paramInt) {}
+  amlj(amli paramamli) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Amlh.a.isChecked()) {}
-    for (((aoui)this.jdField_a_of_type_Amli.a.get(this.jdField_a_of_type_Int)).a = false;; ((aoui)this.jdField_a_of_type_Amli.a.get(this.jdField_a_of_type_Int)).a = true)
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      this.jdField_a_of_type_Amli.notifyItemChanged(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Amli.a();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1036) {
+        break label69;
+      }
+      ((alnr)amli.a(this.a).app.getManager(153)).a().c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+    }
+    for (;;)
+    {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
+      label69:
+      alnn localalnn = (alnn)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(211);
+      if (localalnn != null) {
+        localalnn.e();
+      }
     }
   }
 }

@@ -1,82 +1,39 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.util.Log;
+import com.tencent.mobileqq.apollo.GLTextureView;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class alqk
-  extends alqb
-  implements Cloneable
+  implements alqn
 {
-  public alqk(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = anzj.a(2131698502);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
+  private int jdField_a_of_type_Int = 12440;
   
-  public Object a(int paramInt, bfoy parambfoy, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramObject instanceof alqk))
-    {
-      paramObject = (alqk)paramObject;
-      paramObject.jdField_a_of_type_Bfoz.a(parambfoy.jdField_a_of_type_Bfoz);
-      return paramObject;
-    }
-    paramObject = new alqk(BaseApplication.getContext());
-    paramObject.jdField_a_of_type_Bfoz = new bfoz(parambfoy.jdField_a_of_type_Bfoz);
-    return paramObject;
-  }
+  private alqk(GLTextureView paramGLTextureView) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    QLog.d("TroopConfessToMeMsg", 2, "deSerialize");
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
+    int[] arrayOfInt = new int[3];
+    arrayOfInt[0] = this.jdField_a_of_type_Int;
+    arrayOfInt[1] = GLTextureView.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView);
+    arrayOfInt[2] = 12344;
+    EGLContext localEGLContext = EGL10.EGL_NO_CONTEXT;
+    if (GLTextureView.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 0) {}
+    for (;;)
     {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      this.c = paramArrayOfByte.getString("messageNavInfo");
-      if ((this.c != null) && (this.c.length() != 0)) {
-        this.jdField_a_of_type_Bfoz.a(this.c);
-      }
-      return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
+      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
+      arrayOfInt = null;
     }
   }
   
-  public byte[] a()
+  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
     {
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("time", this.jdField_a_of_type_Int);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      if (this.jdField_a_of_type_Bfoz != null) {
-        this.c = this.jdField_a_of_type_Bfoz.a();
-      }
-      localJSONObject.put("messageNavInfo", this.c);
+      Log.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
+      alqp.a("eglDestroyContex", paramEGL10.eglGetError());
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-    return localJSONObject.toString().getBytes();
   }
 }
 

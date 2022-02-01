@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import awuz;
+import avif;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -11,11 +11,11 @@ public class SetLogOn
 {
   public int a()
   {
-    String str = this.a.app.a(ServerConfigManager.ConfigType.common, "QQIniUrl");
+    String str = this.a.app.getServerConfigValue(ServerConfigManager.ConfigType.common, "QQIniUrl");
     if ((str != null) && (str.length() > 0)) {
-      awuz.b = str.trim();
+      avif.b = str.trim();
     }
-    awuz.a(this.a.app.getApp(), true);
+    avif.a(this.a.app.getApp(), true);
     return 7;
   }
 }

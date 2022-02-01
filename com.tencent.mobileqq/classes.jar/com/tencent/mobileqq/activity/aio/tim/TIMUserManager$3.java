@@ -11,15 +11,15 @@ public final class TIMUserManager$3
 {
   public void run()
   {
-    Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130849842);
-    Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130849843);
-    Drawable localDrawable3 = SkinEngine.getInstances().getDefaultThemeDrawable(2130849892);
+    Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130849759);
+    Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130849760);
+    Drawable localDrawable3 = SkinEngine.getInstances().getDefaultThemeDrawable(2130849809);
     StateListDrawable localStateListDrawable = new StateListDrawable();
-    Drawable localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130849988);
+    Drawable localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130849905);
     localStateListDrawable.addState(new int[] { -16842910 }, localDrawable4);
-    localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130849991);
+    localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130849908);
     localStateListDrawable.addState(new int[] { 16842910 }, localDrawable4);
-    localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130849992);
+    localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130849909);
     localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable4);
     ThreadManager.getUIHandler().post(new TIMUserManager.3.1(this, localDrawable1, localDrawable2, localDrawable3, localStateListDrawable));
   }

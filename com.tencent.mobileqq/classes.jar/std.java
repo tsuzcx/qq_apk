@@ -1,44 +1,14 @@
-import android.util.Log;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-public class std
+public abstract interface std
 {
-  private static String jdField_a_of_type_JavaLangString = "TimeUtil";
-  private static ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(8));
+  public abstract int a();
   
-  public static long a(String paramString)
-  {
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
-    {
-      long l1 = System.currentTimeMillis();
-      long l2 = l1 - ((Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).longValue();
-      Log.d(jdField_a_of_type_JavaLangString, paramString + " end spent time : " + l2 + "      end time " + l1);
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      return l2;
-    }
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
-    Log.d(jdField_a_of_type_JavaLangString, paramString + " start time : " + System.currentTimeMillis());
-    return -1L;
-  }
+  public abstract BaseData a();
   
-  public static long b(String paramString)
-  {
-    paramString = (Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
-    if (paramString == null) {
-      return -1L;
-    }
-    return paramString.longValue();
-  }
+  public abstract void a();
   
-  public static long c(String paramString)
-  {
-    long l = -1L;
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-      l = ((Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString)).longValue();
-    }
-    return l;
-  }
+  public abstract void b();
 }
 
 

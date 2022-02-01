@@ -1,19 +1,9 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import com.tencent.mobileqq.profile.stickynote.publish.StickyNotePublishConstant.1;
+import java.util.List;
 
-class ayov
-  implements TextWatcher
+public class ayov
 {
-  ayov(ayot paramayot) {}
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    axxb.a(this.a.f, 90);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public static final List<aypb> a = new StickyNotePublishConstant.1();
 }
 
 

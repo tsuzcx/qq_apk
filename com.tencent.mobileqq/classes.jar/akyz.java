@@ -1,23 +1,50 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKuaKuaFragment;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity.10;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
 public class akyz
-  implements Animator.AnimatorListener
+  extends SosoInterface.OnLocationListener
 {
-  public akyz(RedPacketKuaKuaFragment paramRedPacketKuaKuaFragment) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public akyz(CreateFaceToFaceDiscussionActivity.10 param10, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    this.a.b.setRotation(0.0F);
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt != 0) || (paramSosoLbsInfo == null))
+    {
+      paramSosoLbsInfo = this.a.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
+      paramSosoLbsInfo.arg1 = 1;
+      paramSosoLbsInfo.arg2 = 2131698300;
+      paramSosoLbsInfo.sendToTarget();
+      return;
+    }
+    paramSosoLbsInfo = CreateFaceToFaceDiscussionActivity.a(this.a.this$0, paramSosoLbsInfo);
+    amwv localamwv = (amwv)this.a.this$0.app.getBusinessHandler(33);
+    switch (this.a.jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    case 0: 
+      localamwv.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, this.a.this$0.b, this.a.this$0.h);
+      return;
+    case 1: 
+      localamwv.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, 2, this.a.this$0.h);
+      return;
+    case 2: 
+      localamwv.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, true);
+      return;
+    case 3: 
+      localamwv.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, false);
+      return;
+    }
+    localamwv.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo);
+  }
 }
 
 

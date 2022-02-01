@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.statistics.UEC.UECItem;
-import java.util.ArrayList;
-
-public abstract interface bdmr
+public abstract class bdmr
 {
-  public abstract void a(ArrayList<UEC.UECItem> paramArrayList);
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdmr
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ class UIJsPlugin$13
     //   3: getfield 19	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13:this$0	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin;
     //   6: getfield 42	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
     //   9: invokevirtual 48	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:getActivityContext	()Lcom/tencent/mobileqq/app/BaseActivity;
-    //   12: invokestatic 54	blir:a	(Landroid/content/Context;)Lblir;
+    //   12: invokestatic 54	bjnw:a	(Landroid/content/Context;)Lbjnw;
     //   15: astore 10
     //   17: new 56	org/json/JSONObject
     //   20: dup
@@ -59,7 +59,7 @@ class UIJsPlugin$13
     //   115: aload 11
     //   117: ldc 103
     //   119: invokevirtual 106	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   122: invokevirtual 109	blir:a	(Ljava/lang/CharSequence;ILjava/lang/String;)V
+    //   122: invokevirtual 109	bjnw:a	(Ljava/lang/CharSequence;ILjava/lang/String;)V
     //   125: iload_1
     //   126: iconst_1
     //   127: iadd
@@ -101,32 +101,32 @@ class UIJsPlugin$13
     //   203: return
     //   204: aload 10
     //   206: ldc 127
-    //   208: invokestatic 131	anzj:a	(I)Ljava/lang/String;
-    //   211: invokevirtual 135	blir:d	(Ljava/lang/CharSequence;)V
+    //   208: invokestatic 131	amtj:a	(I)Ljava/lang/String;
+    //   211: invokevirtual 135	bjnw:d	(Ljava/lang/CharSequence;)V
     //   214: aload 10
-    //   216: invokevirtual 138	blir:show	()V
+    //   216: invokevirtual 138	bjnw:show	()V
     //   219: aload 10
     //   221: iconst_1
-    //   222: invokevirtual 141	blir:d	(Z)V
+    //   222: invokevirtual 141	bjnw:d	(Z)V
     //   225: aload 10
     //   227: new 143	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13$1
     //   230: dup
     //   231: aload_0
     //   232: invokespecial 146	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13$1:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13;)V
-    //   235: invokevirtual 149	blir:a	(Lbljb;)V
+    //   235: invokevirtual 149	bjnw:a	(Lbjog;)V
     //   238: aload 10
     //   240: new 151	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13$2
     //   243: dup
     //   244: aload_0
     //   245: invokespecial 152	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13$2:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13;)V
-    //   248: invokevirtual 156	blir:setOnCancelListener	(Landroid/content/DialogInterface$OnCancelListener;)V
+    //   248: invokevirtual 156	bjnw:setOnCancelListener	(Landroid/content/DialogInterface$OnCancelListener;)V
     //   251: aload 10
     //   253: new 158	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13$3
     //   256: dup
     //   257: aload_0
     //   258: aload 10
-    //   260: invokespecial 161	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13$3:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13;Lblir;)V
-    //   263: invokevirtual 164	blir:a	(Lbliz;)V
+    //   260: invokespecial 161	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13$3:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13;Lbjnw;)V
+    //   263: invokevirtual 164	bjnw:a	(Lbjoe;)V
     //   266: return
     //   267: aload_0
     //   268: getfield 19	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13:this$0	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin;
@@ -540,7 +540,7 @@ class UIJsPlugin$13
     //   892	215	7	bool2	boolean
     //   894	222	8	bool3	boolean
     //   896	228	9	bool4	boolean
-    //   15	91	10	localblir	blir
+    //   15	91	10	localbjnw	bjnw
     //   171	88	10	localJSONException1	org.json.JSONException
     //   341	28	10	localJSONObject	org.json.JSONObject
     //   406	28	10	localJSONException2	org.json.JSONException

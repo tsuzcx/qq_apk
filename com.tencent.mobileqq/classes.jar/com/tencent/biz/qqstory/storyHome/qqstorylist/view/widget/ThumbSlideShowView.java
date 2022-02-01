@@ -20,12 +20,12 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.ArrayList;
-import yoc;
-import znw;
-import zps;
+import xpn;
+import yos;
 
 public class ThumbSlideShowView
   extends ImageSwitcher
@@ -35,7 +35,7 @@ public class ThumbSlideShowView
   private long jdField_a_of_type_Long;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private ArrayList<LocalMediaInfo> jdField_a_of_type_JavaUtilArrayList;
-  private yoc jdField_a_of_type_Yoc;
+  private xpn jdField_a_of_type_Xpn;
   private BitmapDrawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
   private Handler b;
   
@@ -54,10 +54,10 @@ public class ThumbSlideShowView
   private Bitmap a(Context paramContext, LocalMediaInfo paramLocalMediaInfo, int paramInt, BitmapFactory.Options paramOptions)
   {
     Bitmap localBitmap = null;
-    znw.b();
+    yos.b();
     if (paramContext == null)
     {
-      znw.a("Need the context to get thumbnail!", new Object[0]);
+      yos.a("Need the context to get thumbnail!", new Object[0]);
       paramContext = localBitmap;
     }
     do
@@ -65,7 +65,7 @@ public class ThumbSlideShowView
       return paramContext;
       if ((paramInt != 1) && (paramInt != 3))
       {
-        znw.a("kind is illegal", new Object[0]);
+        yos.a("kind is illegal", new Object[0]);
         return null;
       }
       long l = paramLocalMediaInfo._id;
@@ -78,8 +78,8 @@ public class ThumbSlideShowView
   private void b()
   {
     super.setFactory(this);
-    Animation localAnimation1 = AnimationUtils.loadAnimation(getContext(), 2130772037);
-    Animation localAnimation2 = AnimationUtils.loadAnimation(getContext(), 2130772039);
+    Animation localAnimation1 = AnimationUtils.loadAnimation(getContext(), 2130772039);
+    Animation localAnimation2 = AnimationUtils.loadAnimation(getContext(), 2130772041);
     localAnimation1.setDuration(800L);
     localAnimation2.setDuration(800L);
     super.setInAnimation(localAnimation1);
@@ -87,7 +87,7 @@ public class ThumbSlideShowView
     super.setAnimateFirstView(true);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     this.b = new Handler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_Yoc = new yoc(zps.b(getContext(), 8.0F), 0, 1.418182F, null, null);
+    this.jdField_a_of_type_Xpn = new xpn(UIUtils.dip2pxWithoutFontScale(getContext(), 8.0F), 0, 1.418182F, null, null);
   }
   
   public void a()
@@ -170,7 +170,7 @@ public class ThumbSlideShowView
         }
         if (paramMessage != null)
         {
-          this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable[i] = new BitmapDrawable(getContext().getResources(), this.jdField_a_of_type_Yoc.a(paramMessage));
+          this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable[i] = new BitmapDrawable(getContext().getResources(), this.jdField_a_of_type_Xpn.a(paramMessage));
           paramMessage.recycle();
         }
       }

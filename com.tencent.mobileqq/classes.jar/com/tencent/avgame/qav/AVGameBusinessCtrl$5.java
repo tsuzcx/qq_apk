@@ -3,24 +3,24 @@ package com.tencent.avgame.qav;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.util.WeakReference;
-import mxw;
-import nfm;
+import myh;
+import ngu;
 
 public class AVGameBusinessCtrl$5
   implements Runnable
 {
-  public AVGameBusinessCtrl$5(nfm paramnfm, int paramInt1, int paramInt2) {}
+  public AVGameBusinessCtrl$5(ngu paramngu, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    synchronized (nfm.a(this.this$0))
+    synchronized (ngu.a(this.this$0))
     {
-      Iterator localIterator = nfm.a(this.this$0).iterator();
+      Iterator localIterator = ngu.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
         if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-          ((mxw)localWeakReference.get()).a(this.a, this.b);
+          ((myh)localWeakReference.get()).a(this.a, this.b);
         }
       }
     }

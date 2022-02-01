@@ -1,12 +1,17 @@
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-import com.tencent.mobileqq.javahooksdk.ReplaceMethodCallback;
+import java.util.Comparator;
 
-class awft
-  implements ReplaceMethodCallback
+final class awft
+  implements Comparator<awfu>
 {
-  public void replaceMethod(MethodHookParam paramMethodHookParam)
+  public int a(awfu paramawfu1, awfu paramawfu2)
   {
-    awfr.a(true);
+    if (paramawfu1.b < paramawfu2.b) {
+      return -1;
+    }
+    if (paramawfu1.b > paramawfu2.b) {
+      return 1;
+    }
+    return 0;
   }
 }
 

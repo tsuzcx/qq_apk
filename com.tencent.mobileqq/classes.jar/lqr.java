@@ -1,10 +1,6 @@
 public abstract interface lqr
 {
-  public abstract void a(lqq paramlqq);
-  
-  public abstract boolean a(lqq paramlqq);
-  
-  public abstract boolean b(lqq paramlqq);
+  public abstract void a();
 }
 
 

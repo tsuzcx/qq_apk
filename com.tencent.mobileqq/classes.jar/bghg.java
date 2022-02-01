@@ -1,18 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-class bghg
-  extends BroadcastReceiver
+public class bghg
 {
-  bghg(bghf parambghf) {}
+  public ImageView a;
+  RelativeLayout a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bghg(RelativeLayout paramRelativeLayout)
   {
-    paramContext = paramIntent.getStringExtra("callback");
-    QLog.d("TroopReceiver", 4, paramContext);
-    this.a.e(paramContext);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramRelativeLayout.findViewById(2131378707));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramRelativeLayout.findViewById(2131377914));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramRelativeLayout.findViewById(2131369056));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramRelativeLayout.findViewById(2131369057));
   }
 }
 

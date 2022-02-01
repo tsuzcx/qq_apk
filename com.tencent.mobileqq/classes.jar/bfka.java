@@ -1,107 +1,33 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.Window;
-import android.widget.Button;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import tencent.im.oidb.cmd0x962.oidb_0x962.FinishInfo;
+import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
 
-public class bfka
-  implements BusinessObserver
+class bfka
+  extends bfch
 {
-  public bfka(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  bfka(bfjm parambfjm, MessageForDeliverGiftTips paramMessageForDeliverGiftTips) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
   {
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.a.a(false);
-    if ((this.a.jdField_a_of_type_Bjbs != null) && (this.a.jdField_a_of_type_Bjbs.isShowing())) {
-      this.a.jdField_a_of_type_Bjbs.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopInteractGiftAnimationController", 2, "checkInteract: errorCode = " + paramInt);
     }
-    TroopBarReplyActivity localTroopBarReplyActivity = this.a;
-    this.a.getString(2131695614);
-    if (paramBoolean) {}
-    for (;;)
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState = paramRspBody.uint32_play_state.get();
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.alreadyPlayMicroseconds = paramRspBody.uint64_already_pay_microseconds.get();
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds = paramRspBody.uint64_play_total_microseconds.get();
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState == 2) && (paramRspBody.msg_finish_info.has()))
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          continue;
-        }
-        localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        if (paramInt == 0) {
-          continue;
-        }
-        localObject = paramBundle.optString("msg");
-        paramBundle = (Bundle)localObject;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          paramBundle = this.a.getString(2131695615, new Object[] { Integer.valueOf(paramInt) });
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        try
-        {
-          this.a.getWindow().setSoftInputMode(19);
-          this.a.b = true;
-          Object localObject = paramBundle.optJSONObject("post");
-          if (localObject != null) {
-            ((JSONObject)localObject).optString("title");
-          }
-          localObject = new Intent();
-          ((Intent)localObject).putExtra("result", paramBundle.toString());
-          this.a.setResult(-1, (Intent)localObject);
-          this.a.finish();
-          return;
-          paramBundle = paramBundle;
-          paramBundle = this.a.getString(2131695615, new Object[] { Integer.valueOf(9992) });
-        }
-        catch (Exception localException)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("IphoneTitleBarActivity", 2, QLog.getStackTraceString(localException));
-          continue;
-        }
-        paramBundle = this.a.getString(2131695615, new Object[] { Integer.valueOf(9991) });
-        continue;
-      }
-      this.a.jdField_a_of_type_Boolean = false;
-      QQToast.a(localTroopBarReplyActivity, 1, paramBundle, 0).b(this.a.getTitleBarHeight());
-      if (this.a.k) {
-        bgqv.a("reply_page", "fail", this.a.o, "4", "", "");
-      }
-      return;
-      paramBundle = paramBundle.getJSONObject("result");
-      localObject = new StringBuffer();
-      if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-        ((StringBuffer)localObject).append("0");
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI != null) {
-        ((StringBuffer)localObject).append("1");
-      }
-      if (!TextUtils.isEmpty(bgqv.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetXEditTextExWithListener))) {
-        ((StringBuffer)localObject).append("2");
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo != null) {
-        ((StringBuffer)localObject).append("5");
-      }
-      if (this.a.k) {
-        bgqv.a("reply_page", "suc", this.a.o, "", ((StringBuffer)localObject).toString(), "");
-      }
-      paramBundle = this.a.getString(2131695615, new Object[] { Integer.valueOf(9992) });
+      paramRspBody = (oidb_0x962.FinishInfo)paramRspBody.msg_finish_info.get();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactText = paramRspBody.bytes_text.get().toStringUtf8();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.participateNum = paramRspBody.uint32_participate_num.get();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstUin = paramRspBody.uint64_first_uin.get();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstNickname = paramRspBody.bytes_first_nick_name.get().toStringUtf8();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interacEndtUrl = paramRspBody.bytes_url.get().toStringUtf8();
     }
   }
 }

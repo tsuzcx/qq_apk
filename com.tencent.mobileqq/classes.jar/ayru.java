@@ -1,6 +1,16 @@
-public abstract interface ayru
+import android.os.Handler.Callback;
+import android.os.Message;
+
+class ayru
+  implements Handler.Callback
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  ayru(ayrt paramayrt) {}
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
+    return true;
+  }
 }
 
 

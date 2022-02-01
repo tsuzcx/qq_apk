@@ -1,47 +1,122 @@
-import android.os.Handler;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.av.ui.beauty.BeautySeekView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.text.QQText;
+import java.util.List;
 
 public class mmn
-  implements SeekBar.OnSeekBarChangeListener
 {
-  public mmn(BeautySeekView paramBeautySeekView) {}
+  public static final Object a;
+  private static mmn jdField_b_of_type_Mmn;
+  private static int jdField_c_of_type_Int;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private QQText jdField_a_of_type_ComTencentMobileqqTextQQText;
+  private String jdField_a_of_type_JavaLangString;
+  private mmn jdField_a_of_type_Mmn;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private String jdField_c_of_type_JavaLangString;
+  private String d;
+  private String e;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  static
   {
-    if (BeautySeekView.a(this.a) != paramInt)
+    jdField_a_of_type_JavaLangObject = new Object();
+  }
+  
+  public static mmn a()
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      BeautySeekView.a(this.a, paramInt);
-      if (paramBoolean) {
-        BeautySeekView.a(this.a).setContentDescription(paramInt + "%");
+      if (jdField_b_of_type_Mmn != null)
+      {
+        mmn localmmn = jdField_b_of_type_Mmn;
+        jdField_b_of_type_Mmn = localmmn.jdField_a_of_type_Mmn;
+        localmmn.jdField_a_of_type_Mmn = null;
+        jdField_c_of_type_Int -= 1;
+        return localmmn;
       }
-      BeautySeekView.a(this.a, paramInt);
-      BeautySeekView.b(this.a, BeautySeekView.a(this.a));
-    }
-    if (BeautySeekView.a(this.a) != null) {
-      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 2, paramInt);
+      return new mmn();
     }
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public static void a(List<mmn> paramList)
   {
-    BeautySeekView.a(this.a).removeCallbacks(this.a.a);
-    BeautySeekView.a(this.a).setVisibility(0);
-    if (BeautySeekView.a(this.a) != null) {
-      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 1, BeautySeekView.a(this.a));
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    for (;;)
+    {
+      return;
+      int i = paramList.size() - 1;
+      while (i >= 0)
+      {
+        mmn localmmn = (mmn)paramList.remove(i);
+        if (localmmn != null) {
+          localmmn.a();
+        }
+        i -= 1;
+      }
     }
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public CharSequence a()
   {
-    BeautySeekView.a(this.a).postDelayed(this.a.a, 300L);
-    if (BeautySeekView.a(this.a) != null) {
-      BeautySeekView.a(this.a).a(BeautySeekView.a(this.a), 3, BeautySeekView.a(this.a));
+    return this.jdField_a_of_type_ComTencentMobileqqTextQQText;
+  }
+  
+  public String a()
+  {
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentMobileqqTextQQText = null;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.d = null;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.e = null;
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_c_of_type_Int < 200)
+      {
+        this.jdField_a_of_type_Mmn = jdField_b_of_type_Mmn;
+        jdField_b_of_type_Mmn = this;
+        jdField_c_of_type_Int += 1;
+      }
+      return;
     }
-    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqTextQQText = ljx.a(paramString, 16);
+  }
+  
+  public String b()
+  {
+    return this.e;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  public void c(String paramString)
+  {
+    this.e = paramString;
+  }
+  
+  public String toString()
+  {
+    return "VideoChatMessage{type=" + this.jdField_a_of_type_Int + ", content='" + this.jdField_a_of_type_ComTencentMobileqqTextQQText + '\'' + ", filepath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", sendState=" + this.jdField_b_of_type_Int + ", time='" + this.jdField_b_of_type_JavaLangString + '\'' + ", header='" + this.jdField_c_of_type_JavaLangString + '\'' + ", imageUrl='" + this.d + '\'' + ", voiceTime=" + this.jdField_a_of_type_Long + ", msgId='" + this.e + '\'' + '}';
   }
 }
 

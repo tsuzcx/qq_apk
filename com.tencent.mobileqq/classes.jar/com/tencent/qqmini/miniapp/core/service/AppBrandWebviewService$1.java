@@ -17,17 +17,18 @@ class AppBrandWebviewService$1
   
   public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
+    AppBrandWebviewService.access$000(this.this$0, paramConsoleMessage);
     if (paramConsoleMessage != null)
     {
       if (paramConsoleMessage.messageLevel() != ConsoleMessage.MessageLevel.ERROR) {
-        break label65;
+        break label73;
       }
       QMLog.e("AppBrandWebviewService", "consoleMessage.message() " + paramConsoleMessage.message() + " line:" + paramConsoleMessage.lineNumber());
     }
     for (;;)
     {
       return super.onConsoleMessage(paramConsoleMessage);
-      label65:
+      label73:
       QMLog.i("AppBrandWebviewService", "consoleMessage.message() " + paramConsoleMessage.message());
     }
   }

@@ -1,32 +1,66 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import android.view.View;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class adhh
-  extends adic
+  implements bbbg
 {
-  public int a()
-  {
-    return 1000;
-  }
+  public adhh(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  public void onAction(View paramView)
   {
-    new bcrt().b(paramList, paramList1, paramStringBuilder, paramMsg, paramBoolean2);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (3 == paramElem.common_elem.uint32_service_type.get());
+    int i = 3000;
+    paramView = (bayp)paramView.getTag(2131380831);
+    if (paramView == null) {
+      return;
+    }
+    String str1 = paramView.b();
+    String str2 = paramView.a().toString();
+    if ((paramView instanceof baxd)) {
+      paramView = ((baxd)paramView).e();
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOption.ForwardEntranceActivity", 2, "onAction, uin = " + str1 + ", displayName = " + str2 + ", troopUin = " + paramView + ", type = " + i);
+      }
+      if ((i != -1) && (ForwardRecentActivity.a(this.a, new ResultRecord(str1, str2, i, paramView, "")))) {
+        ForwardRecentActivity.a(this.a).notifyDataSetChanged();
+      }
+      ForwardRecentActivity.h(this.a);
+      return;
+      if ((paramView instanceof baxb))
+      {
+        paramView = ((baxb)paramView).b();
+      }
+      else if ((paramView instanceof baxj))
+      {
+        paramView = ((baxj)paramView).a;
+        i = 1;
+      }
+      else if ((paramView instanceof baxo))
+      {
+        paramView = ((baxo)paramView).a().troopuin;
+        i = 1;
+      }
+      else if ((paramView instanceof baxe))
+      {
+        i = 0;
+        paramView = "-1";
+      }
+      else
+      {
+        i = -1;
+        paramView = "-1";
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adhh
  * JD-Core Version:    0.7.0.1
  */

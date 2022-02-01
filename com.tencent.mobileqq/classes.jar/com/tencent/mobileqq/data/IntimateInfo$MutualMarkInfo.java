@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import axsr;
+import awfy;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -63,7 +63,7 @@ public class IntimateInfo$MutualMarkInfo
         if ((localMutualMarkInfo.gradeResourceInfo != null) && (localMutualMarkInfo.gradeResourceInfo.bytes_static_url.has())) {
           localMutualMarkInfo.iconStaticUrl = localMutualMarkInfo.gradeResourceInfo.bytes_static_url.get().toStringUtf8();
         }
-        localMutualMarkInfo.iconStaticUrl = axsr.c(localMutualMarkInfo.iconStaticUrl);
+        localMutualMarkInfo.iconStaticUrl = awfy.c(localMutualMarkInfo.iconStaticUrl);
         return localMutualMarkInfo;
         i = 0;
         continue;

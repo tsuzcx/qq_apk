@@ -2,7 +2,7 @@ package cooperation.qzone.contentbox.model;
 
 import NS_QZONE_MQMSG.UserPersonalData;
 import NS_QZONE_MQMSG.UserPersonalProfile;
-import bntl;
+import bkys;
 import cooperation.qzone.util.QZLog;
 import java.io.Serializable;
 import java.util.HashMap;
@@ -21,7 +21,7 @@ public class MQUserPersonalData
   public Map<String, MQUserPersonalProfile> mUserPersonalProfileMap;
   public String mYJumpUrl = "";
   
-  private Map<String, JSONObject> a()
+  private Map<String, JSONObject> getMapJson()
   {
     if (this.mUserPersonalProfileMap == null)
     {
@@ -40,27 +40,6 @@ public class MQUserPersonalData
     return localHashMap;
   }
   
-  private static Map<String, MQUserPersonalProfile> a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {}
-    HashMap localHashMap;
-    do
-    {
-      return null;
-      localHashMap = new HashMap();
-      paramJSONObject = bntl.a(paramJSONObject.toString());
-    } while (paramJSONObject == null);
-    paramJSONObject = paramJSONObject.entrySet().iterator();
-    while (paramJSONObject.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)paramJSONObject.next();
-      if (localEntry != null) {
-        localHashMap.put(localEntry.getKey(), MQUserPersonalProfile.parseFromJson(new JSONObject((Map)localEntry.getValue())));
-      }
-    }
-    return localHashMap;
-  }
-  
   public static MQUserPersonalData parseFromJson(JSONObject paramJSONObject)
   {
     if (paramJSONObject == null) {
@@ -69,7 +48,7 @@ public class MQUserPersonalData
     MQUserPersonalData localMQUserPersonalData = new MQUserPersonalData();
     try
     {
-      localMQUserPersonalData.mUserPersonalProfileMap = a(paramJSONObject.optJSONObject("mUserPersonalProfileMap"));
+      localMQUserPersonalData.mUserPersonalProfileMap = parseMapJson(paramJSONObject.optJSONObject("mUserPersonalProfileMap"));
       localMQUserPersonalData.mYJumpUrl = paramJSONObject.optString("mYJumpUrl");
       localMQUserPersonalData.mLYJumpUrl = paramJSONObject.optString("mLYJumpUrl");
       localMQUserPersonalData.mBVJumpUrl = paramJSONObject.optString("mBVJumpUrl");
@@ -80,6 +59,27 @@ public class MQUserPersonalData
       QZLog.e("MsgVip.MQUserPersonalData", "parseFromJson error", paramJSONObject);
     }
     return localMQUserPersonalData;
+  }
+  
+  private static Map<String, MQUserPersonalProfile> parseMapJson(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {}
+    HashMap localHashMap;
+    do
+    {
+      return null;
+      localHashMap = new HashMap();
+      paramJSONObject = bkys.a(paramJSONObject.toString());
+    } while (paramJSONObject == null);
+    paramJSONObject = paramJSONObject.entrySet().iterator();
+    while (paramJSONObject.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramJSONObject.next();
+      if (localEntry != null) {
+        localHashMap.put(localEntry.getKey(), MQUserPersonalProfile.parseFromJson(new JSONObject((Map)localEntry.getValue())));
+      }
+    }
+    return localHashMap;
   }
   
   public static MQUserPersonalData readFrom(UserPersonalData paramUserPersonalData)
@@ -112,7 +112,7 @@ public class MQUserPersonalData
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      Map localMap = a();
+      Map localMap = getMapJson();
       if (localMap != null) {
         localJSONObject.put("mUserPersonalProfileMap", new JSONObject(localMap));
       }

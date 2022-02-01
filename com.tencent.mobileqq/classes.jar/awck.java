@@ -1,14 +1,7 @@
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedDns;
-
-class awck
-  implements CustomizedDns
+public class awck
 {
-  awck(awcc paramawcc) {}
-  
-  public String getip(String paramString)
-  {
-    return awde.a().a(paramString);
-  }
+  public static final String a = amtj.a(2131706133);
+  public static final String b = amtj.a(2131706130);
 }
 
 

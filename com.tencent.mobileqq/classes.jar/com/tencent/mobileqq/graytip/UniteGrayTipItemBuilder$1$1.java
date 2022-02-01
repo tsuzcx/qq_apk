@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.graytip;
 
-import avoy;
+import auca;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.pic.PicPreDownloader;
@@ -12,7 +12,7 @@ class UniteGrayTipItemBuilder$1$1
   
   public void run()
   {
-    this.a.this$0.a.a().a((MessageForPic)this.a.a, 2);
+    this.a.this$0.a.getPicPreDownloader().a((MessageForPic)this.a.a, 2);
   }
 }
 

@@ -1,39 +1,10 @@
-import android.content.Context;
-import android.graphics.Rect;
-import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3;
-import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3.1.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-
-public class aiip
-  implements OnCompositionLoadedListener
+public abstract interface aiip<T>
 {
-  public aiip(ConfessChatPie.3 param3) {}
+  public abstract int a();
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
-  {
-    int i = agej.a(30.0F, this.a.this$0.jdField_a_of_type_AndroidContentContext.getResources());
-    int j = agej.a(30.0F, this.a.this$0.jdField_a_of_type_AndroidContentContext.getResources());
-    if (paramLottieComposition == null)
-    {
-      QLog.e(this.a.this$0.jdField_a_of_type_JavaLangString, 1, "onCompositionLoaded lottieComposition is null");
-      return;
-    }
-    Object localObject = paramLottieComposition.getBounds();
-    float f1 = i / ((Rect)localObject).width();
-    float f2 = j / ((Rect)localObject).height();
-    localObject = new LottieDrawable();
-    ((LottieDrawable)localObject).setComposition(paramLottieComposition);
-    ((LottieDrawable)localObject).setScale(f1, f2);
-    ((LottieDrawable)localObject).loop(false);
-    aiim.a(this.a.this$0, (LottieDrawable)localObject);
-    aiim.a(this.a.this$0).addAnimatorListener(new aiiq(this));
-    ThreadManager.getUIHandler().post(new ConfessChatPie.3.1.2(this));
-  }
+  public abstract void a(aiix paramaiix, T paramT, int paramInt);
+  
+  public abstract boolean a(T paramT, int paramInt);
 }
 
 

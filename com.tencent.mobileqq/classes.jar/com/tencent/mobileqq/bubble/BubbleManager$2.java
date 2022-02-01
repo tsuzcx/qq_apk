@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.bubble;
 
-import bhsq;
+import bfzg;
 
 class BubbleManager$2
   implements Runnable
@@ -9,9 +9,9 @@ class BubbleManager$2
   
   public void run()
   {
-    bhsq.a(null, "AIO_bubble_craete_bubble_info");
+    bfzg.a(null, "AIO_bubble_craete_bubble_info");
     this.this$0.a(this.a, true);
-    bhsq.a("AIO_bubble_craete_bubble_info", null);
+    bfzg.a("AIO_bubble_craete_bubble_info", null);
   }
 }
 

@@ -1,32 +1,22 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import com.tencent.widget.SwipListView;
 
 public class ajcx
-  implements ampn
+  extends axvm
 {
-  public ajcx(AddContactsView paramAddContactsView) {}
+  public ajcx(Conversation paramConversation) {}
   
-  public void a()
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onAllRecommendsCaneled");
+    if (this.a.a != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, new Object[] { "onSetOnlineStatus, isSuccess", Boolean.valueOf(paramBoolean) });
+      }
+      this.a.a.a("OnlineStatusObserver.onSetOnlineStatus");
     }
-    this.a.b.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onRecommendsAvailable");
-    }
-    this.a.b.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
-    this.a.e();
   }
 }
 

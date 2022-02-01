@@ -1,18 +1,82 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.listentogether.data.ISong;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class avbn
-  implements DialogInterface.OnClickListener
+class avbn
+  extends Handler
 {
-  public avbn(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  private final WeakReference<avbl> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  avbn(avbl paramavbl, Looper paramLooper)
   {
-    this.a.a(false);
-    com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp.f = false;
-    this.a.a.finish();
+    super(paramLooper);
+    this.a = new WeakReference(paramavbl);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    avbl localavbl = (avbl)this.a.get();
+    if (localavbl == null) {
+      super.handleMessage(paramMessage);
+    }
+    do
+    {
+      do
+      {
+        return;
+        switch (paramMessage.what)
+        {
+        default: 
+          super.handleMessage(paramMessage);
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, "--->handleMessage[MSG_FROM_SERVICE]");
+      return;
+      paramMessage = paramMessage.getData();
+      paramMessage.setClassLoader(ISong.class.getClassLoader());
+      paramMessage = (ISong)paramMessage.getParcelable("key_song");
+      if (QLog.isColorLevel()) {
+        QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_PLAY_SONG_CHANGE] %s", new Object[] { paramMessage.a() }));
+      }
+      avbl.a(localavbl, paramMessage);
+      return;
+      paramMessage = paramMessage.getData();
+      String str = paramMessage.getString("key_id");
+      i = paramMessage.getInt("key_play_state", -1);
+      if (QLog.isColorLevel()) {
+        QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_PLAY_STATE_CHANGE] %s %s", new Object[] { str, avbf.a(i) }));
+      }
+      avbl.a(localavbl, str, i);
+    } while ((i != 4) || (!avbl.a(localavbl)));
+    avbl.a(localavbl);
+    return;
+    boolean bool1 = paramMessage.getData().getBoolean("key_net_state", false);
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_NET_STATE_CHANGE] %b", new Object[] { Boolean.valueOf(bool1) }));
+    }
+    avbl.a(localavbl, bool1);
+    return;
+    paramMessage = paramMessage.getData();
+    bool1 = paramMessage.getBoolean("key_focus_state", false);
+    boolean bool2 = paramMessage.getBoolean("key_focus_transient", false);
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_FOCUS_STATE_CHANGE] %b_%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+    }
+    avbl.a(localavbl, bool1, bool2);
+    return;
+    paramMessage = paramMessage.getData();
+    int i = paramMessage.getInt("key_position", -1);
+    int j = paramMessage.getInt("key_duration", -1);
+    paramMessage = paramMessage.getString("key_id");
+    if (((i <= 0) || (j <= 0)) && (QLog.isColorLevel())) {
+      QLog.i("QQMusicPlay.QQMusicPlayClient", 2, String.format("--->handleMessage[MSG_FROM_SERVICE_PROGRESS_CHANGE] [%d/%d] %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), paramMessage }));
+    }
+    avbl.a(localavbl, paramMessage, i, j);
   }
 }
 

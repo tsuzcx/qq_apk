@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.view.pullrefresh;
 
-import aayo;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -18,10 +17,11 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import zvb;
 
 public class SkinPullRefreshHeader
   extends RelativeLayout
-  implements aayo
+  implements zvb
 {
   private static final int jdField_b_of_type_Int = Color.parseColor("#f7f7f7");
   private int jdField_a_of_type_Int = 0;
@@ -108,11 +108,11 @@ public class SkinPullRefreshHeader
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       return;
-      localDrawable = getResources().getDrawable(2130849571);
+      localDrawable = getResources().getDrawable(2130849483);
       continue;
-      localDrawable = getResources().getDrawable(2130849569);
+      localDrawable = getResources().getDrawable(2130849481);
       continue;
-      localDrawable = getResources().getDrawable(2130849570);
+      localDrawable = getResources().getDrawable(2130849482);
     }
   }
   
@@ -152,7 +152,7 @@ public class SkinPullRefreshHeader
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
-  public void aq_()
+  public void ag_()
   {
     if (this.jdField_a_of_type_AndroidWidgetProgressBar != null)
     {
@@ -163,7 +163,7 @@ public class SkinPullRefreshHeader
   
   public void b(long paramLong)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718367);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131718609);
   }
   
   public void c(long paramLong)
@@ -177,12 +177,12 @@ public class SkinPullRefreshHeader
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365046));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131376445));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376446));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376444));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376441);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131376447);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365073));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131376213));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376214));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376212));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131376209);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131376215);
     c(0L);
   }
   
@@ -238,7 +238,7 @@ public class SkinPullRefreshHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.SkinPullRefreshHeader
  * JD-Core Version:    0.7.0.1
  */

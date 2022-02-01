@@ -1,36 +1,41 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.3;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class awxq
-  extends biht
+class awxq
+  implements URLDrawable.URLDrawableListener
 {
-  public awxq(PngFrameManager.3 param3) {}
+  awxq(awxp paramawxp, ImageView paramImageView) {}
   
-  public void onDone(bihu parambihu)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PngFrameManager", 2, "func onDone.【aio preview】");
+      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadCanceled");
     }
-    synchronized (this.a.this$0)
-    {
-      if (this.a.this$0.a != null)
-      {
-        if (parambihu.a() != 3) {
-          this.a.this$0.a.obtainMessage(226, this.a.jdField_a_of_type_Awxu).sendToTarget();
-        }
-      }
-      else {
-        return;
-      }
-      parambihu = awxw.a(this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_Awxu.a = parambihu;
-      this.a.this$0.a.obtainMessage(227, this.a.jdField_a_of_type_Awxu).sendToTarget();
-      BaseApplicationImpl.sImageCache.put(this.a.jdField_a_of_type_JavaLangString, parambihu);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadFialed");
     }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadProgressed");
+    }
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.nearby_people_card.", 2, "download vote headImage success");
+    }
+    this.jdField_a_of_type_Awxp.a.a(this.jdField_a_of_type_AndroidWidgetImageView, paramURLDrawable);
   }
 }
 

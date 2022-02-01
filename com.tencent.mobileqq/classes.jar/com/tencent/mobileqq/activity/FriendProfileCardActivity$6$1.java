@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aepz;
-import azxr;
+import adix;
+import aymg;
 
 public class FriendProfileCardActivity$6$1
   implements Runnable
 {
-  public FriendProfileCardActivity$6$1(aepz paramaepz) {}
+  public FriendProfileCardActivity$6$1(adix paramadix) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class FriendProfileCardActivity$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileCardActivity.6.1
  * JD-Core Version:    0.7.0.1
  */

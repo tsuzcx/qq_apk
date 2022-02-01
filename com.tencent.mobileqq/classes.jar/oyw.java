@@ -1,16 +1,19 @@
+import android.annotation.TargetApi;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class oyw
-  implements View.OnClickListener
+public class oyw
 {
-  oyw(oyv paramoyv, String paramString1, String paramString2) {}
-  
-  public void onClick(View paramView)
+  @TargetApi(16)
+  public static void a(View paramView, Drawable paramDrawable)
   {
-    oyv.a(this.jdField_a_of_type_Oyv).a(this.jdField_a_of_type_JavaLangString, this.b);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      paramView.setBackground(paramDrawable);
+      return;
+    }
+    paramView.setBackgroundDrawable(paramDrawable);
   }
 }
 

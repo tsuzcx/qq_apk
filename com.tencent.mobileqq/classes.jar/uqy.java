@@ -1,20 +1,6 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-final class uqy
-  implements Animation.AnimationListener
+public abstract interface uqy
 {
-  uqy(View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.setTag(-1, null);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(urj paramurj);
 }
 
 

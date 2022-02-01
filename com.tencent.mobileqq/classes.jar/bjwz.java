@@ -1,74 +1,98 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bjwz
-  implements EIPCResultCallback
+public abstract class bjwz<M, VH extends bjwy<M>>
+  extends RecyclerView.Adapter<bjwy<M>>
 {
-  bjwz(bjwy parambjwy) {}
+  protected Context a;
+  protected View a;
+  protected bjww a;
+  protected bjwx a;
+  protected View b;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public bjwz(Context paramContext)
   {
-    bjtx.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback...");
-    if (paramEIPCResult == null) {
-      return;
-    }
-    Object localObject1 = paramEIPCResult.data;
-    if (localObject1 == null)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public abstract VH a(ViewGroup paramViewGroup, int paramInt);
+  
+  public void a(View paramView)
+  {
+    if (paramView == null)
     {
-      bjtx.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback data is null...");
+      Log.w("HeaderAndFooterAdapter", "add the footer view is null");
       return;
     }
-    paramEIPCResult = ((Bundle)localObject1).getString("PackageName");
-    int i = ((Bundle)localObject1).getInt("VersionCode");
-    bjwy.a(this.a).put(bjwy.a(this.a, paramEIPCResult, i), Boolean.valueOf(false));
-    String str1 = ((Bundle)localObject1).getString("Code");
-    boolean bool = ((Bundle)localObject1).getBoolean("IsSuccess");
-    bjtx.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback pkgName|" + paramEIPCResult + " versionCode|" + i + " isSuc|" + bool + " code|" + str1);
+    this.b = paramView;
+    notifyDataSetChanged();
+  }
+  
+  public void a(bjww parambjww)
+  {
+    this.jdField_a_of_type_Bjww = parambjww;
+  }
+  
+  public abstract void a(VH paramVH, int paramInt);
+  
+  public final bjwy b(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (paramInt == 1024) {
+      paramViewGroup = new bjwy(this.jdField_a_of_type_AndroidViewView);
+    }
     for (;;)
     {
-      bjwh localbjwh;
-      Bundle localBundle;
-      try
-      {
-        localObject1 = bjwy.a(this.a, paramEIPCResult, i);
-        String str2 = (String)bjwy.a(this.a).get(localObject1);
-        Object localObject2 = (List)bjwy.b(this.a).get(localObject1);
-        if (localObject2 == null) {
-          break label315;
-        }
-        localObject2 = ((List)localObject2).iterator();
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
-        }
-        localbjwh = (bjwh)((Iterator)localObject2).next();
-        if (localbjwh == null) {
-          continue;
-        }
-        localBundle = new Bundle();
-        if (TextUtils.isEmpty(str2))
-        {
-          localbjwh.a(paramEIPCResult, i, str1, bool, localBundle);
-          continue;
-        }
-        localBundle.putString(bjwo.a, str2);
+      if (this.jdField_a_of_type_Bjww != null) {
+        paramViewGroup.itemView.setOnClickListener(new bjxa(this, paramViewGroup));
       }
-      finally {}
-      localbjwh.a(paramEIPCResult, i, str1, bool, localBundle);
-    }
-    bjwy.b(this.a).remove(localObject1);
-    for (;;)
-    {
-      return;
-      label315:
-      bjtx.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback getCodeListener is null");
+      if (this.jdField_a_of_type_Bjwx != null) {
+        paramViewGroup.itemView.setOnLongClickListener(new bjxb(this, paramViewGroup));
+      }
+      return paramViewGroup;
+      if (paramInt == 1025) {
+        paramViewGroup = new bjwy(this.b);
+      } else {
+        paramViewGroup = a(paramViewGroup, paramInt);
+      }
     }
   }
+  
+  public final void b(bjwy parambjwy, int paramInt)
+  {
+    switch (parambjwy.getItemViewType())
+    {
+    default: 
+      a(parambjwy, paramInt);
+    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(parambjwy, paramInt, getItemId(paramInt));
+  }
+  
+  public int c()
+  {
+    int i = 0;
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      i = 1;
+    }
+    int j = i;
+    if (this.b != null) {
+      j = i + 1;
+    }
+    return j;
+  }
+  
+  public int d()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public abstract long getItemId(int paramInt);
 }
 
 

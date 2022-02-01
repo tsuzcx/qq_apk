@@ -1,58 +1,52 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 
-public class assn
+class assn
+  implements asrk
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private asmr jdField_a_of_type_Asmr;
-  private asso jdField_a_of_type_Asso;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  assn(assj paramassj) {}
   
-  public assn(Context paramContext)
+  public void a(assv paramassv)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public assn a(EditText paramEditText)
-  {
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    return this;
-  }
-  
-  public assn a(asmr paramasmr)
-  {
-    this.jdField_a_of_type_Asmr = paramasmr;
-    return this;
-  }
-  
-  public assn a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-    return this;
-  }
-  
-  public SystemAndEmojiUniversalPanel a()
-  {
-    SystemAndEmojiUniversalPanel localSystemAndEmojiUniversalPanel = (SystemAndEmojiUniversalPanel)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559141, null);
-    a(localSystemAndEmojiUniversalPanel);
-    return localSystemAndEmojiUniversalPanel;
-  }
-  
-  public void a(SystemAndEmojiUniversalPanel paramSystemAndEmojiUniversalPanel)
-  {
-    if (paramSystemAndEmojiUniversalPanel == null) {
+    asqs localasqs = ((asrn)paramassv).a();
+    if (localasqs != null)
+    {
+      if (1 != localasqs.c()) {
+        break label147;
+      }
+      if (!localasqs.a().isZipInnerFile) {
+        break label91;
+      }
+      paramassv = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().c(localasqs.a());
+      if ((paramassv != null) && (this.a.jdField_a_of_type_Assy != null)) {
+        this.a.jdField_a_of_type_Assy.a(String.valueOf(localasqs.a()), paramassv);
+      }
+    }
+    label91:
+    while (2 != localasqs.c())
+    {
+      do
+      {
+        return;
+        paramassv = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(localasqs.a(), 7);
+      } while ((paramassv == null) || (this.a.jdField_a_of_type_Assy == null));
+      this.a.jdField_a_of_type_Assy.a(localasqs.c(), paramassv);
       return;
     }
-    paramSystemAndEmojiUniversalPanel.setEmoticonCallback(this.jdField_a_of_type_Asmr);
-    paramSystemAndEmojiUniversalPanel.setDispatchKeyEventListener(this.jdField_a_of_type_Asso);
-    paramSystemAndEmojiUniversalPanel.setShowDeleteButton(this.jdField_a_of_type_AndroidWidgetEditText);
-    paramSystemAndEmojiUniversalPanel.setShowCommonUsedSystemEmoji(this.jdField_a_of_type_Boolean);
-    paramSystemAndEmojiUniversalPanel.setFilterSysFaceBeyond255Enable(this.b);
-    paramSystemAndEmojiUniversalPanel.a();
+    label147:
+    asdg localasdg = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine();
+    String str = localasqs.e();
+    if (localasqs.a() == null) {}
+    for (paramassv = null;; paramassv = localasqs.a().e)
+    {
+      paramassv = localasdg.a(str, paramassv, 7, localasqs);
+      if ((paramassv == null) || (this.a.jdField_a_of_type_Assy == null)) {
+        break;
+      }
+      this.a.jdField_a_of_type_Assy.a(localasqs.e(), paramassv);
+      return;
+    }
   }
 }
 

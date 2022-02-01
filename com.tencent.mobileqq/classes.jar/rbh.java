@@ -1,9 +1,4 @@
-import android.view.View;
-
-public abstract interface rbh
-{
-  public abstract void a(View paramView, int paramInt);
-}
+public abstract interface rbh {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.activity.aio.tim;
 
-import aiuk;
+import ahov;
 import com.tencent.qphone.base.util.QLog;
 
 public class TIMUserManager$2
   implements Runnable
 {
-  public TIMUserManager$2(aiuk paramaiuk, String paramString1, String paramString2, boolean paramBoolean) {}
+  public TIMUserManager$2(ahov paramahov, String paramString1, String paramString2, boolean paramBoolean) {}
   
   public void run()
   {
-    if (aiuk.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b) == 0) {
-      if (aiuk.a(this.this$0, this.b))
+    if (ahov.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b) == 0) {
+      if (ahov.a(this.this$0, this.b))
       {
-        aiuk.a(this.this$0);
-        aiuk.a(this.this$0, 2);
+        ahov.a(this.this$0);
+        ahov.a(this.this$0, 2);
       }
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("TIMUserManager", 2, this.jdField_a_of_type_Boolean + " startDownLoadTimTheme TimIconsState " + aiuk.a(this.this$0));
+        QLog.i("TIMUserManager", 2, this.jdField_a_of_type_Boolean + " startDownLoadTimTheme TimIconsState " + ahov.a(this.this$0));
       }
       return;
-      aiuk.a(this.this$0, 4);
+      ahov.a(this.this$0, 4);
       continue;
-      aiuk.a(this.this$0, 3);
+      ahov.a(this.this$0, 3);
     }
   }
 }

@@ -1,15 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
-class aegs
-  implements DialogInterface.OnClickListener
+public class aegs
+  extends RecyclerView.ItemDecoration
 {
-  aegs(aegr paramaegr, boolean paramBoolean) {}
+  private int jdField_a_of_type_Int;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aegs(aegj paramaegj, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      bdll.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.right = this.jdField_a_of_type_Int;
+    paramRect.bottom = this.jdField_a_of_type_Int;
+    paramRect.left = this.jdField_a_of_type_Int;
+    if (paramRecyclerView.getChildPosition(paramView) != 0) {
+      paramRect.right = this.jdField_a_of_type_Int;
     }
   }
 }

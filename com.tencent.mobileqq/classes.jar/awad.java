@@ -1,17 +1,24 @@
 import android.view.View;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.3;
-import com.tencent.shadow.dynamic.host.EnterCallback;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.multicard.MultiCardItemFragment;
+import java.lang.ref.WeakReference;
 
-public class awad
-  implements EnterCallback
+class awad
+  implements View.OnLongClickListener
 {
-  public awad(GroupVideoManager.3 param3) {}
+  awad(awac paramawac) {}
   
-  public void onCloseLoadingView() {}
-  
-  public void onEnterComplete() {}
-  
-  public void onShowLoadingView(View paramView) {}
+  public boolean onLongClick(View paramView)
+  {
+    if (this.a.a != null)
+    {
+      paramView = (MultiCardItemFragment)this.a.a.get();
+      if (paramView != null) {
+        paramView.a(this.a);
+      }
+    }
+    return true;
+  }
 }
 
 

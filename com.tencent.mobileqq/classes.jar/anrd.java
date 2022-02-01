@@ -1,38 +1,42 @@
-import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class anrd
-  implements OnCompositionLoadedListener
+  extends anrh
 {
-  public anrd(ApolloLottieAnim paramApolloLottieAnim, DiniFlyAnimationView paramDiniFlyAnimationView, boolean paramBoolean) {}
-  
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public anrd(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (paramLottieComposition == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloLottieAnim", 2, "composition is null ,return");
-      }
-    }
-    do
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  public boolean a()
+  {
+    try
     {
-      return;
-      if (!ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim)) {
-        break;
+      String str = c((String)this.jdField_a_of_type_JavaUtilHashMap.get("url"));
+      if ((TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("appid"))) || (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("openid"))))
+      {
+        QLog.e("IdentifierWebJumpAction", 1, "identification with illegal params");
+        return true;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloLottieAnim", 2, "anim is destroy ,return");
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setComposition(paramLottieComposition);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetDelegate(new anre(this));
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80097E8", "0X80097E8", 0, 0, "", "", (String)this.jdField_a_of_type_JavaUtilHashMap.get("appid"), "");
+      aukc.a();
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", str);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      return true;
     }
-    ApolloLottieAnim.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim, true);
+    catch (Exception localException)
+    {
+      QLog.e("IdentifierWebJumpAction", 1, "doAction error: " + localException.getMessage());
+      a("IdentifierWebJumpAction");
+    }
+    return false;
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import mbx;
+import mbg;
 
 public class AVActivity$MyVideoObserver$1
   implements Runnable
 {
-  public AVActivity$MyVideoObserver$1(mbx parammbx) {}
+  public AVActivity$MyVideoObserver$1(mbg parammbg) {}
   
   public void run()
   {

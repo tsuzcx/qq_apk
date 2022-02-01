@@ -2,7 +2,7 @@ package com.tencent.mobileqq.app.msgnotify;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.widget.ImageView;
-import aovh;
+import anoh;
 
 class MsgNotifyPushDialog$4$1
   implements Runnable

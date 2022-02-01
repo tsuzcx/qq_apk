@@ -1,10 +1,8 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/CodecReuseHelper$OnCodecReuseInfoUpdateCallback;", "", "onCodecReuseInfoUpdate", "", "debugInfo", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface rli
+class rli
 {
-  public abstract void a(@NotNull String paramString);
+  public int a;
+  public int b;
+  public int c;
 }
 
 

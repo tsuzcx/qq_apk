@@ -1,11 +1,13 @@
-public class bkgk
+import com.tencent.mobileqq.colornote.data.ColorNote;
+
+class bkgk
+  implements apkw
 {
-  public String a;
-  public String b;
+  bkgk(bkgj parambkgj, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte) {}
   
-  public String toString()
+  public ColorNote getColorNote()
   {
-    return "[MediaCodecInfo] name : " + this.a + " ;path = " + this.b;
+    return new aple().a(16908292).a(this.jdField_a_of_type_JavaLangString).b(this.b).c(this.c).d("resdrawable://2130838933").a(this.jdField_a_of_type_ArrayOfByte).a();
   }
 }
 

@@ -1,13 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-
-public class amik
-  implements DialogInterface.OnClickListener
+public abstract interface amik
 {
-  public amik(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void b();
 }
 
 

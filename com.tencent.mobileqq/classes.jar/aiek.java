@@ -1,6 +1,20 @@
+import java.util.Comparator;
+
 class aiek
+  implements Comparator<aigo>
 {
-  private static final aiei a = new aiei(null);
+  aiek(aiej paramaiej) {}
+  
+  public int a(aigo paramaigo1, aigo paramaigo2)
+  {
+    if ((!paramaigo1.a()) && (paramaigo2.a())) {
+      return -1;
+    }
+    if ((paramaigo1.a()) && (!paramaigo2.a())) {
+      return 1;
+    }
+    return (int)(paramaigo2.a - paramaigo1.a);
+  }
 }
 
 

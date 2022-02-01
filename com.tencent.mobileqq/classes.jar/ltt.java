@@ -1,65 +1,25 @@
-import android.text.TextUtils;
-import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecognizer;
-import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecognizerListener;
-import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecognizerResult;
-import com.qq.wx.voice.embedqqegg.recognizer.VoiceRecordState;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 
 class ltt
-  implements VoiceRecognizerListener
+  implements SoundPool.OnLoadCompleteListener
 {
-  ltt(ltr paramltr) {}
+  ltt(lts paramlts, ltu paramltu) {}
   
-  public void onGetError(int paramInt)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    QLog.d("AVVoiceRecog", 2, "onGetError. err = " + paramInt);
-  }
-  
-  public void onGetResult(VoiceRecognizerResult paramVoiceRecognizerResult)
-  {
-    if ((!ltr.a(this.a)) || (ltr.b(this.a))) {
-      QLog.i("AVVoiceRecog", 1, "onGetResult. discard. !mIsInitAndStart || mIsPause.");
-    }
-    label162:
-    for (;;)
-    {
-      return;
-      if (paramVoiceRecognizerResult.isHalf)
-      {
-        QLog.i("AVVoiceRecog", 1, "onGetResult. result.isHalf.");
-        return;
-      }
-      if (TextUtils.isEmpty(paramVoiceRecognizerResult.text)) {
-        QLog.i("AVVoiceRecog", 1, "onGetResult. result.text == null.");
-      }
-      for (;;)
-      {
-        if (!paramVoiceRecognizerResult.isEnd) {
-          break label162;
-        }
-        int i = VoiceRecognizer.shareInstance().startReceiving();
-        if (i >= 0) {
-          break;
-        }
-        QLog.i("AVVoiceRecog", 1, "restart falied. ret = " + i);
-        return;
-        QLog.i("AVVoiceRecog", 1, "onGetResult. result.text = " + paramVoiceRecognizerResult.text);
-        if (ltr.a(this.a) != null) {
-          ltr.a(this.a).a(paramVoiceRecognizerResult.text);
-        }
-      }
-    }
-  }
-  
-  public void onGetVoiceRecordState(VoiceRecordState paramVoiceRecordState)
-  {
-    QLog.d("AVVoiceRecog", 2, "onGetVoiceRecordState. state = " + paramVoiceRecordState);
-  }
-  
-  public void onVolumeChanged(int paramInt)
-  {
+    paramSoundPool = this.jdField_a_of_type_Lts;
+    paramSoundPool.c += 1;
     if (QLog.isColorLevel()) {
-      QLog.d("AVVoiceRecog", 2, "onVolumeChanged. volume = " + paramInt);
+      QLog.d("SoundPoolHelper", 2, "loadMusic onLoadComplete,sampleId = " + paramInt1 + ",status = " + paramInt2 + ",loadedCount = " + this.jdField_a_of_type_Lts.c + ",musicCount = " + this.jdField_a_of_type_Lts.b);
+    }
+    if (paramInt2 == 0) {
+      this.jdField_a_of_type_Lts.a.add(Integer.valueOf(paramInt1));
+    }
+    if (this.jdField_a_of_type_Lts.c == this.jdField_a_of_type_Lts.b) {
+      this.jdField_a_of_type_Ltu.a();
     }
   }
 }

@@ -1,18 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.utils.InviteBaseData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.ResultReceiver;
+import com.tencent.av.utils.PopupDialogQQSide;
 
-public final class msr
-  implements Parcelable.Creator<InviteBaseData>
+public class msr
+  implements DialogInterface.OnClickListener
 {
-  public InviteBaseData a(Parcel paramParcel)
-  {
-    return new InviteBaseData(paramParcel);
-  }
+  public msr(PopupDialogQQSide paramPopupDialogQQSide, ResultReceiver paramResultReceiver) {}
   
-  public InviteBaseData[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new InviteBaseData[paramInt];
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, this.jdField_a_of_type_ComTencentAvUtilsPopupDialogQQSide.getArguments());
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

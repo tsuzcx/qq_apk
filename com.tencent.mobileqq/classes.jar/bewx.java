@@ -1,27 +1,21 @@
-class bewx
-  extends aocj
+public class bewx
 {
-  bewx(bewv parambewv) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c;
   
-  public void a(boolean paramBoolean, long paramLong, aock paramaock)
+  public bewx(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramaock);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    if (paramaock != null) {
-      this.a.v = paramaock.d;
-    }
-    this.a.a(-1, "MessageForScribble SEND FAIL", "", this.a.b);
-    this.a.d();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bewx
  * JD-Core Version:    0.7.0.1
  */

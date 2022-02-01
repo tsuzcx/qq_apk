@@ -1,15 +1,6 @@
-import com.tencent.biz.qqcircle.events.QCircleContentImmersiveEvent;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
-
-public class vmc
-  implements wew
+public abstract interface vmc
 {
-  public vmc(QCircleContentImage paramQCircleContentImage) {}
-  
-  public void a(float paramFloat)
-  {
-    aaak.a().a(new QCircleContentImmersiveEvent(3));
-  }
+  public abstract void a(vma paramvma);
 }
 
 

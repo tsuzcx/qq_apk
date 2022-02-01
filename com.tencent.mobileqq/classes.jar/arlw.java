@@ -1,100 +1,60 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class arlw
-  extends arac<arlv>
+  extends arht
 {
-  @NonNull
-  public arlv a(int paramInt)
+  public arlw(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    return new arlv();
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSquareFragment", 2, String.format("onUpdateCampusCertificateStatus isSuccess=%s scene=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
+    }
+    if ((paramBoolean) && (paramInt == 1)) {
+      ExtendFriendSquareFragment.b(this.a);
+    }
+    if (paramBoolean) {
+      ExtendFriendSquareFragment.a(this.a);
+    }
   }
   
-  @Nullable
-  public arlv a(araj[] paramArrayOfaraj)
+  protected void a(boolean paramBoolean, int paramInt1, int paramInt2, ariy paramariy, int paramInt3)
   {
-    QLog.i("QFileFileReaderConfigProcessor<QFile>", 1, "onParsed");
-    if (paramArrayOfaraj != null) {
-      try
-      {
-        if (paramArrayOfaraj.length > 0)
-        {
-          paramArrayOfaraj = (arlv)arax.a(paramArrayOfaraj[0].a, arlv.class);
-          return paramArrayOfaraj;
-        }
-      }
-      catch (QStorageInstantiateException paramArrayOfaraj) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSquareFragment", 2, String.format("onMatchResponse success=%s match_op=%s retCode=%s info=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramariy }));
     }
-    return null;
   }
   
-  public void a(arlv paramarlv)
+  protected void a(boolean paramBoolean1, long paramLong, String paramString, boolean paramBoolean2, byte[] paramArrayOfByte, boolean paramBoolean3, boolean paramBoolean4, int paramInt, List<arjk> paramList, arix paramarix)
   {
-    if (paramarlv == null) {
-      QLog.i("QFileFileReaderConfigProcessor<QFile>", 1, "onUpdate: newConf is null.");
-    }
-    label123:
-    for (;;)
-    {
+    if (this.a.b != paramLong) {
       return;
-      QLog.i("QFileFileReaderConfigProcessor<QFile>", 1, "onUpdate");
-      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface)) {}
-      for (localObject = (QQAppInterface)localObject;; localObject = null)
-      {
-        if (localObject == null) {
-          break label123;
-        }
-        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject).c(), 0).edit();
-        localEditor.putString("file_reader_key", paramarlv.a);
-        localEditor.apply();
-        localObject = (atsh)((QQAppInterface)localObject).getManager(317);
-        if (localObject == null) {
-          break;
-        }
-        ((atsh)localObject).a(paramarlv);
-        return;
-      }
+    }
+    try
+    {
+      ExtendFriendSquareFragment.a(this.a, 1);
+      ExtendFriendSquareFragment.a(this.a, paramBoolean1, paramString, paramBoolean2, paramArrayOfByte, paramBoolean3, paramBoolean4, paramInt, paramList, paramarix);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ExtendFriendSquareFragment", 1, "onGetSquareStrangerList exception", paramString);
     }
   }
   
-  public Class<arlv> clazz()
+  protected void d(boolean paramBoolean)
   {
-    return arlv.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 645;
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSquareFragment", 2, "onLimitChatResourceStateUpdate, isReady = " + paramBoolean);
+    }
+    ExtendFriendSquareFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arlw
  * JD-Core Version:    0.7.0.1
  */

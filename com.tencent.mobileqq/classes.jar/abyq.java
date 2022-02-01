@@ -1,16 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForPtt;
-
-class abyq
-  implements bliz
+public class abyq
+  implements abyp
 {
-  abyq(abyo paramabyo, ahoc paramahoc, MessageForPtt paramMessageForPtt, blir paramblir) {}
+  private abxq<Integer, abyo> a = new abxr();
   
-  public void OnClick(View paramView, int paramInt)
+  public abyo a(Integer paramInteger)
   {
-    this.jdField_a_of_type_Abyo.a(this.jdField_a_of_type_Ahoc, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    this.jdField_a_of_type_Abyo.b();
-    this.jdField_a_of_type_Blir.dismiss();
+    return (abyo)this.a.a(paramInteger);
+  }
+  
+  public void a(Integer paramInteger, Class<? extends abyo> paramClass)
+  {
+    this.a.a(paramInteger, paramClass);
   }
 }
 

@@ -1,28 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.Conversation;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 
-class alkf
-  implements DialogInterface.OnClickListener
+public class alkf
 {
-  alkf(alke paramalke) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (andl.a() != null) {
-      anbd.a();
-    }
-    paramDialogInterface = anbd.a();
-    if (paramDialogInterface != null)
-    {
-      paramDialogInterface = paramDialogInterface.getHandler(Conversation.class);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(1134052));
-      }
-    }
-  }
+  public int a = 1;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public MayKnowRecommend a;
+  public String a;
+  public boolean a;
+  public TextView b;
+  public String b;
+  public TextView c;
+  public TextView d;
 }
 
 

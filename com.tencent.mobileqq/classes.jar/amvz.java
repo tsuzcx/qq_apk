@@ -1,9 +1,8 @@
-import com.tencent.mobileqq.apollo.GLTextureView;
-
 public class amvz
-  extends amvp
 {
-  public amvz(GLTextureView paramGLTextureView, boolean paramBoolean) {}
+  public int a;
+  public long a;
+  public short a;
 }
 
 

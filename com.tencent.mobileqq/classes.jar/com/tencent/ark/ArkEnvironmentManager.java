@@ -22,6 +22,7 @@ public class ArkEnvironmentManager
   private HashMap<String, Long> _logTimestamp = new HashMap();
   private String mCurUin;
   private ArkEnvironmentManager.IDataReport mDataReport;
+  private boolean mEnableAndroid9EmojiSupport = false;
   boolean mIsAccelerationChecked = false;
   boolean mIsDebug = false;
   boolean mIsHardwareAcceleration = false;
@@ -301,6 +302,7 @@ public class ArkEnvironmentManager
     while (!this.mLoader.Load()) {
       return false;
     }
+    ark.arkSetAndroid9EmojiFeatureSupport(this.mEnableAndroid9EmojiSupport);
     ArkViewModel.precreateOfflineContext();
     ark.SetEnvironmentManager(this);
     return true;
@@ -416,6 +418,11 @@ public class ArkEnvironmentManager
   {
     this.mIsDebug = paramBoolean;
     ArkUtil.checkVersion(paramBoolean);
+  }
+  
+  public void setEnableAndroid9EmojiSupport(boolean paramBoolean)
+  {
+    this.mEnableAndroid9EmojiSupport = paramBoolean;
   }
   
   public void setEnableShowFps(boolean paramBoolean)

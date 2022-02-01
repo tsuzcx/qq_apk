@@ -1,33 +1,46 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager.6;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
 
 public class rmb
-  implements bgpp
+  implements rlp
 {
-  public rmb(ReadInJoyWebDataManager.6 param6) {}
+  private rlq jdField_a_of_type_Rlq;
+  private rma jdField_a_of_type_Rma;
+  private rnh jdField_a_of_type_Rnh;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public rmb(rma paramrma)
   {
-    QLog.w("ReadInJoyWebDataManager", 2, Long.toString(Thread.currentThread().getId()));
-    if (paramJSONObject != null) {}
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("ReadInJoyWebDataManager", 2, "sendLog result:" + paramJSONObject.toString());
-        }
-        return;
-      }
-      catch (Exception paramJSONObject)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.w("ReadInJoyWebDataManager", 2, "sendLog result Exception :" + paramJSONObject);
-        return;
-      }
+    this.jdField_a_of_type_Rma = paramrma;
+    this.jdField_a_of_type_Rnh = new rnh(this.jdField_a_of_type_Rma);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Rnh.a();
+    this.jdField_a_of_type_Rlq = null;
+  }
+  
+  public void a(UgcVideo paramUgcVideo)
+  {
+    if (this.jdField_a_of_type_Rlq != null) {
+      this.jdField_a_of_type_Rlq.a();
     }
-    QLog.w("ReadInJoyWebDataManager", 2, "sendLog result null");
+    this.jdField_a_of_type_Rma.a(paramUgcVideo, null);
+  }
+  
+  public void a(rlq paramrlq)
+  {
+    this.jdField_a_of_type_Rnh.a(paramrlq);
+    this.jdField_a_of_type_Rlq = paramrlq;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Rnh.b();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Rnh.c();
   }
 }
 

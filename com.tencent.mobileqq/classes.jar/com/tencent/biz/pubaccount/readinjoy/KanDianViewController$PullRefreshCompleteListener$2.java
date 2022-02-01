@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
 import java.io.File;
-import ohf;
-import ohi;
-import ohj;
-import qtl;
+import ois;
+import oiv;
+import oiw;
+import raj;
 
 public class KanDianViewController$PullRefreshCompleteListener$2
   implements Runnable
 {
-  public KanDianViewController$PullRefreshCompleteListener$2(ohi paramohi) {}
+  public KanDianViewController$PullRefreshCompleteListener$2(oiv paramoiv) {}
   
   public void run()
   {
-    String str = qtl.f();
+    String str = raj.f();
     if ((str != null) && (new File(str).exists()))
     {
-      ohf.a(this.a.a, str);
-      ohf.a(this.a.a).removeMessages(3);
-      ohf.a(this.a.a).sendEmptyMessage(2);
+      ois.a(this.a.a, str);
+      ois.a(this.a.a).removeMessages(3);
+      ois.a(this.a.a).sendEmptyMessage(2);
     }
   }
 }

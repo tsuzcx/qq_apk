@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.fragment;
 
 import android.content.Context;
 import java.util.List;
-import piz;
+import pol;
 
 class ReadInJoyProteusFamilyFragment$1
   implements Runnable
@@ -11,7 +11,7 @@ class ReadInJoyProteusFamilyFragment$1
   
   public void run()
   {
-    this.this$0.setTitle(ReadInJoyProteusFamilyFragment.a(this.this$0).getString(2131717222) + "(" + this.a.size() + ")");
+    this.this$0.setTitle(ReadInJoyProteusFamilyFragment.a(this.this$0).getString(2131717455) + "(" + this.a.size() + ")");
     if (ReadInJoyProteusFamilyFragment.a(this.this$0) != null) {
       ReadInJoyProteusFamilyFragment.a(this.this$0).a(true, this.a);
     }

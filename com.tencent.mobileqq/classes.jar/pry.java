@@ -1,32 +1,54 @@
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.handlers.DailyHandler.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.ListView;
+import java.util.Map;
 
-class pry
-  implements prp<BEAN>
+public class pry
+  extends prx
 {
-  pry(prw paramprw) {}
-  
-  public void a(boolean paramBoolean, List<BEAN> paramList, int paramInt, String paramString)
+  public int a()
   {
-    if (prw.a(this.a) != null)
-    {
-      if (!paramBoolean) {
-        break label69;
-      }
-      prw.a(this.a).setListData(paramList, true);
-      if (prw.a(this.a).a()) {
-        prw.a(this.a).setFooterHasMore();
+    return 3;
+  }
+  
+  public void a(View paramView, ListView paramListView, long paramLong) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramAdapterView = (ArticleInfo)a((int)paramLong);
+    if (pcl.c(b())) {
+      if (!pay.a(paramAdapterView)) {
+        break label35;
       }
     }
-    else
+    label35:
+    for (paramInt = 4;; paramInt = 2)
     {
+      ozh.a(paramInt);
       return;
     }
-    prw.a(this.a).setFooterNoMore();
-    return;
-    label69:
-    QLog.i("ListPresenter", 2, "loadNextPage error, errorCode=" + paramInt + ", errorMsg= " + paramString);
-    prw.a(this.a).setFooterError(paramInt, paramString);
+  }
+  
+  public void a(Map<Long, rcn> paramMap, boolean paramBoolean)
+  {
+    super.a(paramMap, paramBoolean);
+    if (pcl.c(b()))
+    {
+      paramMap = a();
+      if (bkwm.x()) {
+        break label36;
+      }
+      QLog.d("DailyHandler", 1, "detachFromViewGroup,now cmd is 0x68b");
+    }
+    label36:
+    while (paramMap == null) {
+      return;
+    }
+    ThreadManager.executeOnSubThread(new DailyHandler.1(this, paramMap.a()));
   }
 }
 

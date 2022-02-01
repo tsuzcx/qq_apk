@@ -1,21 +1,10 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
+import org.jetbrains.annotations.NotNull;
 
-public class tbb
-  extends AnimatorListenerAdapter
+public abstract interface tbb
 {
-  public tbb(ReadInJoyColorBandEntranceButton paramReadInJoyColorBandEntranceButton) {}
+  public abstract void a();
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.setClickable(true);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.setClickable(true);
-  }
+  public abstract void a(@NotNull String paramString);
 }
 
 

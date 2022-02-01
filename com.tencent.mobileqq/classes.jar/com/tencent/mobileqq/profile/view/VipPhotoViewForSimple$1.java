@@ -17,7 +17,7 @@ class VipPhotoViewForSimple$1
   
   public void run()
   {
-    Object localObject1 = (QZonePhotoWall)this.this$0.a.a().createEntityManager().find(QZonePhotoWall.class, VipPhotoViewForSimple.a(this.this$0));
+    Object localObject1 = (QZonePhotoWall)this.this$0.a.getEntityManagerFactory().createEntityManager().find(QZonePhotoWall.class, VipPhotoViewForSimple.a(this.this$0));
     if (localObject1 != null)
     {
       localObject1 = ((QZonePhotoWall)localObject1).unpackPhotoWallData();

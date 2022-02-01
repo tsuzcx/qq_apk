@@ -1,8 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
-public abstract interface ppi
+public class ppi
+  implements pqe
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo);
+  public ppi(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void a()
+  {
+    ReadInJoySelfFragment.g(this.a);
+  }
 }
 
 

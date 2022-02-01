@@ -1,25 +1,25 @@
 package com.tencent.common.app;
 
+import amvi;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Looper;
-import anui;
-import aobf;
-import aran;
-import arix;
-import azpm;
-import bern;
-import beuo;
-import bhuw;
-import bhvb;
+import apub;
+import aqcq;
+import aycu;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
+import com.tencent.mobileqq.transfile.BaseTransFileController;
+import com.tencent.mobileqq.transfile.INetEngine;
 import com.tencent.mobileqq.transfile.ProtoReqManager;
 import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -32,10 +32,10 @@ import mqq.os.MqqHandler;
 
 public abstract class AppInterface
   extends IMCoreAppRuntime
-  implements bhvb
+  implements IHttpCommunicatorFlowCount
 {
   public BaseApplicationImpl app;
-  protected bhuw comunicator;
+  protected HttpCommunicator comunicator;
   private MqqHandler defaultHanlder = new MqqHandler(Looper.getMainLooper());
   protected final ConcurrentHashMap<Class, MqqHandler> handlerMap = new ConcurrentHashMap();
   public HwEngine mHwEngine;
@@ -225,9 +225,9 @@ public abstract class AppInterface
     paramPluginRuntime.sendAppDataIncerment(paramString, getAppDataIncermentTags(paramString, paramBoolean, paramInt1, paramInt2, paramInt3, paramLong), paramLong);
   }
   
-  public void addObserver(anui paramanui) {}
+  public void addObserver(BusinessObserver paramBusinessObserver) {}
   
-  public void addObserver(anui paramanui, boolean paramBoolean) {}
+  public void addObserver(BusinessObserver paramBusinessObserver, boolean paramBoolean) {}
   
   public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
@@ -243,7 +243,7 @@ public abstract class AppInterface
     return null;
   }
   
-  public List<anui> getBusinessObserver(int paramInt)
+  public List<BusinessObserver> getBusinessObserver(int paramInt)
   {
     return null;
   }
@@ -275,7 +275,7 @@ public abstract class AppInterface
     return this.defaultHanlder;
   }
   
-  public bhuw getHttpCommunicatort()
+  public HttpCommunicator getHttpCommunicatort()
   {
     if (this.comunicator == null) {}
     try
@@ -296,12 +296,12 @@ public abstract class AppInterface
     int j;
     if (this.mHwEngine == null)
     {
-      arix localarix = (arix)aran.a().a(538);
+      aqcq localaqcq = (aqcq)apub.a().a(538);
       localMobileQQ = getApplication();
       str = getCurrentAccountUin();
       i = getAppid();
-      j = aobf.a();
-      if ((localarix == null) || (!localarix.a)) {
+      j = amvi.a();
+      if ((localaqcq == null) || (!localaqcq.a)) {
         break label81;
       }
     }
@@ -313,7 +313,7 @@ public abstract class AppInterface
     }
   }
   
-  public beuo getNetEngine(int paramInt)
+  public INetEngine getNetEngine(int paramInt)
   {
     return null;
   }
@@ -331,7 +331,7 @@ public abstract class AppInterface
     finally {}
   }
   
-  public bern getTransFileController()
+  public BaseTransFileController getTransFileController()
   {
     return null;
   }
@@ -351,8 +351,8 @@ public abstract class AppInterface
   
   protected void httpCommunicatorCreate()
   {
-    this.comunicator = new bhuw(this, 128);
-    this.comunicator.a();
+    this.comunicator = new HttpCommunicator(this, 128);
+    this.comunicator.start();
   }
   
   public boolean isAppOnForeground(Context paramContext, String paramString)
@@ -389,7 +389,7 @@ public abstract class AppInterface
     this.handlerMap.remove(paramClass);
   }
   
-  public void removeObserver(anui paramanui) {}
+  public void removeObserver(BusinessObserver paramBusinessObserver) {}
   
   public void reportClickEvent(String paramString1, String paramString2)
   {
@@ -418,7 +418,7 @@ public abstract class AppInterface
     }
     for (;;)
     {
-      azpm.a(paramLong, paramBoolean, bool);
+      aycu.a(paramLong, paramBoolean, bool);
       return;
       label156:
       paramBoolean = false;

@@ -1,30 +1,30 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class aymd
-  implements View.OnClickListener
+public class aymd
 {
-  aymd(aykx paramaykx, String paramString) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(View paramView)
+  public boolean a()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Aykx.a, QQBrowserActivity.class);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
-    Object localObject = this.jdField_a_of_type_Aykx.a;
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_Aykx.a.j)) {}
-    for (localObject = "1";; localObject = "2")
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (this.b != null)
     {
-      localIntent.putExtra("url", (String)localObject);
-      this.jdField_a_of_type_Aykx.a.startActivity(localIntent);
-      bdll.b(this.jdField_a_of_type_Aykx.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_fans", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Aykx.a.l = true;
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      bool1 = bool2;
+      if (this.b.trim().length() > 0) {
+        bool1 = false;
+      }
     }
+    return bool1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.b).append(",").append(this.c).append(",").append(this.d).append("]");
+    return localStringBuilder.toString();
   }
 }
 

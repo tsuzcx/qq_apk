@@ -5,32 +5,32 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.drawable.Drawable;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
-import bhtq;
-import bmrq;
-import bntp;
-import bntq;
-import bntu;
+import bkvx;
+import bkyw;
+import bkyx;
+import bkzb;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.home.Conversation;
 import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.vip.pb.TianShuAccess.AdItem;
 
 public class TianshuBigInsertPage$4$1
   implements Runnable
 {
-  public TianshuBigInsertPage$4$1(bntu parambntu, PreloadManager.PathResult paramPathResult) {}
+  public TianshuBigInsertPage$4$1(bkzb parambkzb, PreloadManager.PathResult paramPathResult) {}
   
   public void run()
   {
     QLog.d("TianshuBigInsertPage", 2, "show insert page...");
-    bmrq.a(bntq.a(this.jdField_a_of_type_Bntu.a));
-    bntq.a(this.jdField_a_of_type_Bntu.a).addView(bntq.a(this.jdField_a_of_type_Bntu.a));
+    bkvx.a(bkyx.a(this.jdField_a_of_type_Bkzb.a));
+    bkyx.a(this.jdField_a_of_type_Bkzb.a).addView(bkyx.a(this.jdField_a_of_type_Bkzb.a));
     Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
     localObject1 = URLDrawable.getFileDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$PathResult.filePath, (URLDrawable.URLDrawableOptions)localObject1);
     try
@@ -39,14 +39,14 @@ public class TianshuBigInsertPage$4$1
       ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
       BitmapFactory.decodeFile(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$PathResult.filePath, (BitmapFactory.Options)localObject2);
       QLog.d("TianshuBigInsertPage", 2, "bitmap w: " + ((BitmapFactory.Options)localObject2).outWidth + ", h: " + ((BitmapFactory.Options)localObject2).outHeight);
-      int i = bhtq.a();
+      int i = ViewUtils.getScreenWidth();
       i = (int)(((BitmapFactory.Options)localObject2).outHeight * 1.0F / ((BitmapFactory.Options)localObject2).outWidth * i);
       if (i > 0)
       {
         QLog.d("TianshuBigInsertPage", 2, "calc height: " + i);
-        localObject2 = bntq.a(this.jdField_a_of_type_Bntu.a).getLayoutParams();
+        localObject2 = bkyx.a(this.jdField_a_of_type_Bkzb.a).getLayoutParams();
         ((ViewGroup.LayoutParams)localObject2).height = i;
-        bntq.a(this.jdField_a_of_type_Bntu.a).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        bkyx.a(this.jdField_a_of_type_Bkzb.a).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       }
     }
     catch (Throwable localThrowable)
@@ -56,10 +56,10 @@ public class TianshuBigInsertPage$4$1
         localThrowable.printStackTrace();
       }
     }
-    bntq.a(this.jdField_a_of_type_Bntu.a).setBackgroundDrawable((Drawable)localObject1);
-    bntq.a(bntq.b(this.jdField_a_of_type_Bntu.a));
-    if ((bntq.a(this.jdField_a_of_type_Bntu.a) != null) && (bntq.a(this.jdField_a_of_type_Bntu.a).a() != null) && (bntq.a(this.jdField_a_of_type_Bntu.a).a().app != null) && (bntq.a(this.jdField_a_of_type_Bntu.a) != null)) {
-      bntp.a(bntq.a(this.jdField_a_of_type_Bntu.a).a().app, 101, String.valueOf(bntq.a(this.jdField_a_of_type_Bntu.a).iAdId.get()), bntq.a(this.jdField_a_of_type_Bntu.a).traceinfo.get());
+    bkyx.a(this.jdField_a_of_type_Bkzb.a).setBackgroundDrawable((Drawable)localObject1);
+    bkyx.a(bkyx.b(this.jdField_a_of_type_Bkzb.a));
+    if ((bkyx.a(this.jdField_a_of_type_Bkzb.a) != null) && (bkyx.a(this.jdField_a_of_type_Bkzb.a).a() != null) && (bkyx.a(this.jdField_a_of_type_Bkzb.a).a().app != null) && (bkyx.a(this.jdField_a_of_type_Bkzb.a) != null)) {
+      bkyw.a(bkyx.a(this.jdField_a_of_type_Bkzb.a).a().app, 101, String.valueOf(bkyx.a(this.jdField_a_of_type_Bkzb.a).iAdId.get()), bkyx.a(this.jdField_a_of_type_Bkzb.a).traceinfo.get());
     }
   }
 }

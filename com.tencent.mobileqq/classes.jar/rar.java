@@ -1,87 +1,50 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
+import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.ReqBody;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
 public class rar
+  extends BusinessHandler
 {
-  private long[] jdField_a_of_type_ArrayOfLong = new long[9];
-  private long[] b = new long[9];
-  private long[] c = new long[9];
-  private long[] d = new long[9];
-  private long[] e = new long[9];
-  private long[] f = new long[9];
-  
-  public rar(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
-  
-  public void a(int paramInt, long paramLong)
+  public rar(QQAppInterface paramQQAppInterface)
   {
-    if (paramInt < 9) {
-      this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
+    super(paramQQAppInterface);
+  }
+  
+  public void a(SkinData paramSkinData, GuideData paramGuideData1, RefreshData paramRefreshData, GuideData paramGuideData2, int paramInt)
+  {
+    paramGuideData1 = new oidb_0x5bd.ReqBody();
+    paramGuideData1.uint64_uin.set(this.app.getLongAccountUin(), true);
+    paramGuideData1.uint32_source.set(paramInt);
+    if (paramSkinData != null) {
+      paramGuideData1.msg_current_skin_info.set(paramSkinData.toBody(), true);
     }
-  }
-  
-  public long[] a()
-  {
-    return this.c;
-  }
-  
-  public void b(int paramInt, long paramLong)
-  {
-    if (paramInt < 9) {
-      this.b[paramInt] = paramLong;
+    if (paramRefreshData != null) {
+      paramGuideData1.msg_current_refresh_info.set(paramRefreshData.toRefreshInfoBody(), true);
     }
-  }
-  
-  public long[] b()
-  {
-    return this.d;
-  }
-  
-  public void c(int paramInt, long paramLong)
-  {
-    if (paramInt < 9) {
-      this.c[paramInt] = paramLong;
+    if (paramGuideData2 != null) {
+      paramGuideData1.msg_current_guide_info.set(paramGuideData2.toBody(), true);
     }
+    nmb.a(this.app, new ras(this), paramGuideData1.toByteArray(), "OidbSvc.0x5bd_1", 1469, 1, new Bundle(), 6000L);
   }
   
-  public long[] c()
+  public Class<? extends BusinessObserver> observerClass()
   {
-    return this.b;
+    return rat.class;
   }
   
-  public void d(int paramInt, long paramLong)
-  {
-    if (paramInt < 9) {
-      this.d[paramInt] = paramLong;
-    }
-  }
-  
-  public long[] d()
-  {
-    return this.jdField_a_of_type_ArrayOfLong;
-  }
-  
-  public void e(int paramInt, long paramLong)
-  {
-    if (paramInt < 9) {
-      this.e[paramInt] = paramLong;
-    }
-  }
-  
-  public long[] e()
-  {
-    return this.f;
-  }
-  
-  public void f(int paramInt, long paramLong)
-  {
-    if (paramInt < 9) {
-      this.f[paramInt] = paramLong;
-    }
-  }
-  
-  public long[] f()
-  {
-    return this.e;
-  }
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

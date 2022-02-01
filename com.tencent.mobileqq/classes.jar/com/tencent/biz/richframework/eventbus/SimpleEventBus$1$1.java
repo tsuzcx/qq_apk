@@ -1,45 +1,43 @@
 package com.tencent.biz.richframework.eventbus;
 
-import aaak;
-import aaal;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.subscribe.event.PraisedUpdateEvents;
 import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
 import com.tencent.qphone.base.util.QLog;
 
-public class SimpleEventBus$1$1
+class SimpleEventBus$1$1
   implements Runnable
 {
-  public SimpleEventBus$1$1(aaal paramaaal, String paramString, Bundle paramBundle) {}
+  SimpleEventBus$1$1(SimpleEventBus.1 param1, String paramString, Bundle paramBundle) {}
   
   public void run()
   {
-    QLog.d("SimpleEventBus", 4, "onServerCall action" + this.jdField_a_of_type_JavaLangString);
-    if (aaak.b.equals(this.jdField_a_of_type_JavaLangString)) {
-      if (this.jdField_a_of_type_AndroidOsBundle != null)
+    QLog.d("SimpleEventBus", 4, "onServerCall action" + this.val$action);
+    if (SimpleEventBus.ACTION_PRAISED_UPDATE.equals(this.val$action)) {
+      if (this.val$params != null)
       {
-        localObject = this.jdField_a_of_type_AndroidOsBundle.getString("feed_id", "");
-        i = this.jdField_a_of_type_AndroidOsBundle.getInt("feed_like_status", 0);
-        j = this.jdField_a_of_type_AndroidOsBundle.getInt("feed_like_num", 0);
+        localObject = this.val$params.getString("feed_id", "");
+        i = this.val$params.getInt("feed_like_status", 0);
+        j = this.val$params.getInt("feed_like_num", 0);
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          this.jdField_a_of_type_Aaal.a.a(new PraisedUpdateEvents((String)localObject, i, j));
+          this.this$1.this$0.dispatchEvent(new PraisedUpdateEvents((String)localObject, i, j));
         }
       }
     }
-    while (!aaak.c.equals(this.jdField_a_of_type_JavaLangString))
+    while (!SimpleEventBus.ACTION_DRAFT_SYSTEM_CHANGE.equals(this.val$action))
     {
       int i;
       int j;
       return;
     }
     Object localObject = new SubDraftChangeEvent();
-    if (this.jdField_a_of_type_AndroidOsBundle != null)
+    if (this.val$params != null)
     {
-      ((SubDraftChangeEvent)localObject).setDraftID(this.jdField_a_of_type_AndroidOsBundle.getString("draftId", ""));
-      ((SubDraftChangeEvent)localObject).setIsSave(this.jdField_a_of_type_AndroidOsBundle.getBoolean("save_draft", false));
+      ((SubDraftChangeEvent)localObject).setDraftID(this.val$params.getString("draftId", ""));
+      ((SubDraftChangeEvent)localObject).setIsSave(this.val$params.getBoolean("save_draft", false));
     }
-    this.jdField_a_of_type_Aaal.a.a((SimpleBaseEvent)localObject);
+    this.this$1.this$0.dispatchEvent((SimpleBaseEvent)localObject);
   }
 }
 

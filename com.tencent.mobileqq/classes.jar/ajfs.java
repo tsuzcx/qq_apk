@@ -1,20 +1,16 @@
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
 
 class ajfs
-  implements QQPermissionCallback
+  implements DialogInterface.OnClickListener
 {
-  ajfs(ajfr paramajfr, boolean paramBoolean, String paramString1, String paramString2) {}
+  ajfs(ajey paramajey) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ajfr.a(this.jdField_a_of_type_Ajfr).i();
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      ajfr.a(this.jdField_a_of_type_Ajfr, this.jdField_a_of_type_JavaLangString, this.b);
-    }
+    paramDialogInterface.dismiss();
+    this.a.a.finish();
   }
 }
 

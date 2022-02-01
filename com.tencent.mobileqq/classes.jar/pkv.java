@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class pkv
-  implements View.OnClickListener
+final class pkv
+  extends LbsManagerService.OnLocationChangeListener
 {
-  public pkv(ReadInJoyViolaChannelFragment paramReadInJoyViolaChannelFragment) {}
-  
-  public void onClick(View paramView)
+  pkv(String paramString, boolean paramBoolean)
   {
-    ReadInJoyViolaChannelFragment.a(this.a).d();
-    ReadInJoyViolaChannelFragment.a(this.a);
-    ReadInJoyViolaChannelFragment.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramString, paramBoolean);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    pku.a(false);
+    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "onLocationFinish errCode = ", Integer.valueOf(paramInt) });
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null)) {
+      ugf.a(100, new ArrayList());
+    }
   }
 }
 

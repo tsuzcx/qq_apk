@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class afhy
-  implements bbsr
+class afhy
+  implements View.OnTouchListener
 {
-  public afhy(QQSettingMe paramQQSettingMe) {}
+  afhy(afhx paramafhx) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.a.c) && (paramInt1 == 102) && (paramInt2 == 300)) {
-      this.a.z();
+    paramView = paramView.getTag(2131362344);
+    if (!(paramView instanceof GestureDetector)) {
+      return false;
     }
+    paramView = (GestureDetector)paramView;
+    paramView.setIsLongpressEnabled(true);
+    paramView.onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

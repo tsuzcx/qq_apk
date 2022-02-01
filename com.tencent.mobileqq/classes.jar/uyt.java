@@ -1,37 +1,20 @@
 import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
 final class uyt
-  implements URLDrawableDownListener
+  implements Animation.AnimationListener
 {
-  uyt(URLDrawableDownListener paramURLDrawableDownListener, long paramLong, String paramString) {}
+  uyt(View paramView) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawableDownListener != null) {
-      this.jdField_a_of_type_ComTencentImageURLDrawableDownListener.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    }
-    if (this.jdField_a_of_type_Long > 0L) {
-      vts.a("image_load_ret", String.valueOf((float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F), "-1", this.jdField_a_of_type_JavaLangString, 5);
-    }
+    this.a.setTag(-1, null);
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawableDownListener != null) {
-      this.jdField_a_of_type_ComTencentImageURLDrawableDownListener.onLoadSuccessed(paramView, paramURLDrawable);
-    }
-    if (this.jdField_a_of_type_Long > 0L) {
-      vts.a("image_load_ret", String.valueOf((float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F), "0", this.jdField_a_of_type_JavaLangString, 5);
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

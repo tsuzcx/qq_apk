@@ -1,35 +1,32 @@
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.QZoneClickReport;
+import cooperation.qzone.QZoneClickReport.ReportInfo;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 
-public class agmh
-  extends AsyncTask<String, Void, Bitmap>
+class agmh
+  implements View.OnClickListener
 {
-  public agmh(VoicePrintUtils.VoicePrintView paramVoicePrintView) {}
+  agmh(agmf paramagmf) {}
   
-  protected Bitmap a(String... paramVarArgs)
+  public void onClick(View paramView)
   {
-    paramVarArgs = paramVarArgs[0];
-    if (BaseApplicationImpl.sImageCache.get(paramVarArgs) == null)
+    if (((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
     {
-      Bitmap localBitmap = BubbleManager.a(paramVarArgs, this.a.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("VoicePrintUtils.DecodePngTask", 2, "decode " + paramVarArgs + "in background.");
-      }
-      BaseApplicationImpl.sImageCache.put(paramVarArgs, localBitmap);
+      Object localObject = new QZoneClickReport.ReportInfo();
+      ((QZoneClickReport.ReportInfo)localObject).actionType = "330";
+      ((QZoneClickReport.ReportInfo)localObject).subactionType = "3";
+      ((QZoneClickReport.ReportInfo)localObject).reserves = "2";
+      QZoneClickReport.startReportImediately(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (QZoneClickReport.ReportInfo)localObject);
+      localObject = QZoneHelper.UserInfo.getInstance();
+      QZoneHelper.forwardToUserHome((Activity)this.a.jdField_a_of_type_AndroidContentContext, (QZoneHelper.UserInfo)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, 0, 0, 0);
     }
-    return null;
-  }
-  
-  protected void a(Bitmap paramBitmap)
-  {
-    VoicePrintUtils.VoicePrintView.a(this.a);
-    this.a.setImageDrawable(VoicePrintUtils.VoicePrintView.a(this.a));
-    this.a.invalidate();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,18 +1,16 @@
-public class muc
+import com.tencent.qphone.base.util.QLog;
+
+class muc
+  implements bjog
 {
-  public beum a;
-  public String a = "";
-  public String b = "";
-  public String c = "";
+  muc(mua parammua) {}
   
-  public String toString()
+  public void onDismiss()
   {
-    StringBuffer localStringBuffer = new StringBuffer("DownloadInfo{");
-    localStringBuffer.append(", url='").append(this.a).append('\'');
-    localStringBuffer.append(", md5='").append(this.b).append('\'');
-    localStringBuffer.append(", fileName='").append(this.c).append('\'');
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D22 at: " + System.currentTimeMillis());
+    }
+    bcef.b(null, "CliOper", "", "", "0X8008D22", "0X8008D22", 0, 0, "", "", "", "");
   }
 }
 

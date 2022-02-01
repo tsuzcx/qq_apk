@@ -1,218 +1,70 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import android.graphics.RectF;
 
 public class tbg
 {
-  final ArrayList<tbf> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private Set<Character> jdField_a_of_type_JavaUtilSet;
-  private final tbh jdField_a_of_type_Tbh;
-  boolean jdField_a_of_type_Boolean = false;
-  private tbd[] jdField_a_of_type_ArrayOfTbd;
-  boolean b = false;
-  
-  public tbg(tbh paramtbh)
+  public static RectF a(float[] paramArrayOfFloat)
   {
-    this.jdField_a_of_type_Tbh = paramtbh;
-  }
-  
-  public float a()
-  {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    float f = 0.0F;
-    int i = 0;
-    while (i < j)
+    RectF localRectF = new RectF((1.0F / 1.0F), (1.0F / 1.0F), (1.0F / -1.0F), (1.0F / -1.0F));
+    int i = 1;
+    if (i < paramArrayOfFloat.length)
     {
-      f += ((tbf)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b();
-      i += 1;
-    }
-    return f;
-  }
-  
-  public void a()
-  {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      ((tbf)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a();
-      i += 1;
-    }
-  }
-  
-  public void a(float paramFloat)
-  {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      ((tbf)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramFloat, this.b);
-      i += 1;
-    }
-  }
-  
-  public void a(Canvas paramCanvas, Paint paramPaint)
-  {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      tbf localtbf = (tbf)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      localtbf.a(paramCanvas, paramPaint);
-      paramCanvas.translate(localtbf.a(), 0.0F);
-      i += 1;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(char[] paramArrayOfChar)
-  {
-    if (this.jdField_a_of_type_ArrayOfTbd == null) {
-      throw new IllegalStateException("Need to call #setCharacterLists first.");
-    }
-    int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      if (((tbf)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a() > 0.0F) {
-        i += 1;
+      float f2 = Math.round(paramArrayOfFloat[(i - 1)] * 10.0F) / 10.0F;
+      float f1 = Math.round(paramArrayOfFloat[i] * 10.0F) / 10.0F;
+      float f3;
+      if (f2 < localRectF.left)
+      {
+        f3 = f2;
+        label71:
+        localRectF.left = f3;
+        if (f1 >= localRectF.top) {
+          break label145;
+        }
+        f3 = f1;
+        label89:
+        localRectF.top = f3;
+        if (f2 <= localRectF.right) {
+          break label154;
+        }
+        label105:
+        localRectF.right = f2;
+        if (f1 <= localRectF.bottom) {
+          break label163;
+        }
       }
       for (;;)
       {
+        localRectF.bottom = f1;
+        i += 2;
         break;
-        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        f3 = localRectF.left;
+        break label71;
+        label145:
+        f3 = localRectF.top;
+        break label89;
+        label154:
+        f2 = localRectF.right;
+        break label105;
+        label163:
+        f1 = localRectF.bottom;
       }
     }
-    int[] arrayOfInt = tbc.a(a(), paramArrayOfChar, this.jdField_a_of_type_JavaUtilSet);
-    int m = 0;
-    int i1 = 1;
-    int i2 = 1;
-    int n = 0;
-    i = 0;
-    if (m < arrayOfInt.length)
-    {
-      int i4;
-      int j;
-      int k;
-      int i3;
-      switch (arrayOfInt[m])
-      {
-      default: 
-        throw new IllegalArgumentException("Unknown action: " + arrayOfInt[m]);
-      case 1: 
-        this.jdField_a_of_type_JavaUtilArrayList.add(i, new tbf(this.jdField_a_of_type_ArrayOfTbd, this.jdField_a_of_type_Tbh));
-      case 0: 
-        tbf localtbf = (tbf)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        localtbf.a(i2, paramArrayOfChar[n], this.b);
-        i4 = i + 1;
-        n += 1;
-        j = i1;
-        k = i2;
-        i3 = n;
-        i = i4;
-        if (this.jdField_a_of_type_Boolean) {
-          if (localtbf.a() == localtbf.b())
-          {
-            j = i1;
-            k = i2;
-            i3 = n;
-            i = i4;
-            if (i2 <= 1) {
-              break;
-            }
-          }
-          else
-          {
-            k = i2 + i1;
-            j = i1 + 1;
-            i = i4;
-            i3 = n;
-          }
-        }
-        break;
-      }
-      for (;;)
-      {
-        m += 1;
-        i1 = j;
-        i2 = k;
-        n = i3;
-        break;
-        ((tbf)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(i2, '\000', this.b);
-        i4 = i + 1;
-        j = i1;
-        k = i2;
-        i3 = n;
-        i = i4;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          k = i2 + i1;
-          j = i1 + 1;
-          i3 = n;
-          i = i4;
-        }
-      }
-    }
+    localRectF.sort();
+    return localRectF;
   }
   
-  public void a(String... paramVarArgs)
+  public static float[] a(RectF paramRectF)
   {
-    int j = 0;
-    this.jdField_a_of_type_ArrayOfTbd = new tbd[paramVarArgs.length];
-    int i = 0;
-    while (i < paramVarArgs.length)
-    {
-      this.jdField_a_of_type_ArrayOfTbd[i] = new tbd(paramVarArgs[i]);
-      i += 1;
-    }
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    i = j;
-    while (i < paramVarArgs.length)
-    {
-      this.jdField_a_of_type_JavaUtilSet.addAll(this.jdField_a_of_type_ArrayOfTbd[i].a());
-      i += 1;
-    }
+    return new float[] { paramRectF.left, paramRectF.top, paramRectF.right, paramRectF.top, paramRectF.right, paramRectF.bottom, paramRectF.left, paramRectF.bottom };
   }
   
-  char[] a()
+  public static float[] a(float[] paramArrayOfFloat)
   {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    char[] arrayOfChar = new char[j];
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfChar[i] = ((tbf)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a();
-      i += 1;
-    }
-    return arrayOfChar;
+    return new float[] { (float)Math.sqrt(Math.pow(paramArrayOfFloat[0] - paramArrayOfFloat[2], 2.0D) + Math.pow(paramArrayOfFloat[1] - paramArrayOfFloat[3], 2.0D)), (float)Math.sqrt(Math.pow(paramArrayOfFloat[2] - paramArrayOfFloat[4], 2.0D) + Math.pow(paramArrayOfFloat[3] - paramArrayOfFloat[5], 2.0D)) };
   }
   
-  public tbd[] a()
+  public static float[] b(RectF paramRectF)
   {
-    return this.jdField_a_of_type_ArrayOfTbd;
-  }
-  
-  public float b()
-  {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    float f = 0.0F;
-    int i = 0;
-    while (i < j)
-    {
-      f += ((tbf)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a();
-      i += 1;
-    }
-    return f;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
+    return new float[] { paramRectF.centerX(), paramRectF.centerY() };
   }
 }
 

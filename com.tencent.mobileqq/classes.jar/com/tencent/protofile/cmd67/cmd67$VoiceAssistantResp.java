@@ -1,0 +1,23 @@
+package com.tencent.protofile.cmd67;
+
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
+import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+
+public final class cmd67$VoiceAssistantResp
+  extends MessageMicro<VoiceAssistantResp>
+{
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34 }, new String[] { "int32_ret_code", "msg_asr_resp", "msg_nlp_resp", "msg_user_info" }, new Object[] { Integer.valueOf(0), null, null, null }, VoiceAssistantResp.class);
+  public final PBInt32Field int32_ret_code = PBField.initInt32(0);
+  public cmd67.VoiceAssistantASRResp msg_asr_resp = new cmd67.VoiceAssistantASRResp();
+  public cmd67.VoiceAssistantNLPResp msg_nlp_resp = new cmd67.VoiceAssistantNLPResp();
+  public final PBRepeatMessageField<cmd67.UserInfo> msg_user_info = PBField.initRepeatMessage(cmd67.UserInfo.class);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.protofile.cmd67.cmd67.VoiceAssistantResp
+ * JD-Core Version:    0.7.0.1
+ */

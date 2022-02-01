@@ -1,26 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.Context;
+import android.graphics.Color;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
-final class bhjt
-  extends Handler
+public class bhjt
+  extends ReportDialog
 {
-  bhjt(Looper paramLooper)
+  private TextView a;
+  
+  public bhjt(Context paramContext)
   {
-    super(paramLooper);
+    super(paramContext, 2131755166);
+    getWindow().setFlags(16, 16);
+    getWindow().setFlags(8, 8);
+    getWindow().setGravity(17);
+    setContentView(2131561491);
+    this.a = ((TextView)findViewById(2131378890));
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
+      this.a.setTextColor(Color.parseColor("#FF737373"));
+    }
+    setCancelable(false);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      bhjs.a();
-      return;
-    }
-    bhjs.b();
+    this.a.setText(paramString);
   }
 }
 

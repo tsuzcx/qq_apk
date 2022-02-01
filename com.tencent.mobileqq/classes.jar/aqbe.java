@@ -1,16 +1,16 @@
 class aqbe
-  implements aqbh
+  implements bmxi
 {
-  aqbe(aqay paramaqay) {}
+  aqbe(aqbd paramaqbd) {}
   
-  public void a(aqbk paramaqbk, boolean paramBoolean, byte[] paramArrayOfByte)
+  public void a(String paramString)
   {
-    this.a.a((aqbl)paramaqbk, paramBoolean, paramArrayOfByte);
+    ((boba)bmql.a(3)).a(paramString, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqbe
  * JD-Core Version:    0.7.0.1
  */

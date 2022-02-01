@@ -1,20 +1,20 @@
 package com.tencent.av.business.manager;
 
-import bhmi;
-import lgn;
-import lgo;
+import com.tencent.mobileqq.utils.FileUtils;
+import lgh;
+import lgi;
 
 public class Checker$1
   implements Runnable
 {
-  public Checker$1(lgn paramlgn, lgo paramlgo, String paramString) {}
+  public Checker$1(lgh paramlgh, lgi paramlgi, String paramString) {}
   
   public void run()
   {
-    if (bhmi.a(this.jdField_a_of_type_Lgo.jdField_a_of_type_JavaLangString)) {
-      this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Lgo);
+    if (FileUtils.fileExists(this.jdField_a_of_type_Lgi.jdField_a_of_type_JavaLangString)) {
+      this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Lgi);
     }
-    lgn.a(this.this$0);
+    lgh.a(this.this$0);
   }
 }
 

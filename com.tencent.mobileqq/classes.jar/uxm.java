@@ -1,20 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class uxm
-  implements View.OnClickListener
+public abstract interface uxm
 {
-  public uxm(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    if (this.a.a.isShowing()) {
-      this.a.a.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

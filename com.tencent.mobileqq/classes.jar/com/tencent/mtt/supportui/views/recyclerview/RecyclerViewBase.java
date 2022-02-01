@@ -824,9 +824,9 @@ public abstract class RecyclerViewBase
         i = 0;
         while (i < j)
         {
-          localObject1 = (RecyclerViewBase.ViewHolder)this.mState.mPostLayoutHolderMap.keyAt(i);
-          localObject2 = (RecyclerViewBase.ItemHolderInfo)this.mState.mPostLayoutHolderMap.valueAt(i);
-          handleLayoutHolder((RecyclerViewBase.ViewHolder)localObject1, (RecyclerViewBase.ItemHolderInfo)this.mState.mPreLayoutHolderMap.get(localObject1), (RecyclerViewBase.ItemHolderInfo)localObject2);
+          localObject2 = (RecyclerViewBase.ViewHolder)this.mState.mPostLayoutHolderMap.keyAt(i);
+          localObject1 = (RecyclerViewBase.ItemHolderInfo)this.mState.mPostLayoutHolderMap.valueAt(i);
+          handleLayoutHolder((RecyclerViewBase.ViewHolder)localObject2, (RecyclerViewBase.ItemHolderInfo)this.mState.mPreLayoutHolderMap.get(localObject2), (RecyclerViewBase.ItemHolderInfo)localObject1);
           i += 1;
         }
       }

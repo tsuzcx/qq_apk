@@ -1,24 +1,87 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.widgets.TabLayout;
+import com.tencent.biz.widgets.TabLayout.TabAdapter.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class aaew
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract class aaew<T>
+  extends BaseAdapter
 {
-  private View jdField_a_of_type_AndroidViewView;
+  protected Context a;
+  public TabLayout a;
+  protected List<T> a;
   
-  private aaew(FollowedRecommendBannerView paramFollowedRecommendBannerView, View paramView)
+  public aaew(Context paramContext, List<T> paramList)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected abstract int a();
+  
+  protected abstract void a(aaex paramaaex, T paramT, int paramInt);
+  
+  public void a(TabLayout paramTabLayout)
   {
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout = paramTabLayout;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size() + 1;
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1 = null;
+    Object localObject2;
+    if (paramInt < getCount() - 1)
+    {
+      localObject2 = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.a(paramInt);
+      paramView = (View)localObject2;
+      if (localObject2 == null)
+      {
+        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(a(), paramViewGroup, false);
+        paramView.post(new TabLayout.TabAdapter.1(this, paramInt, paramView));
+      }
+      localObject2 = new aaex(paramView, null);
+      paramView.setTranslationX(0.0F);
+      if (this.jdField_a_of_type_JavaUtilList != null) {
+        localObject1 = this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      }
+      a((aaex)localObject2, localObject1, paramInt);
+      localObject1 = paramView;
+      localObject2 = localObject1;
+      localObject1 = paramView;
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+      return localObject2;
+      localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560227, paramViewGroup, false);
+      paramView = (View)localObject1;
+      localObject2 = paramView;
+    }
   }
 }
 

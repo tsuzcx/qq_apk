@@ -10,16 +10,8 @@ class TaskManager$17
   
   public Object invoke(JSContext paramJSContext, int paramInt, Object[] paramArrayOfObject)
   {
-    Object localObject = (String)paramArrayOfObject[0];
-    paramJSContext = (String)paramArrayOfObject[1];
-    paramArrayOfObject = (String)paramArrayOfObject[2];
-    localObject = ReadInJoyMMapKvStorage.getInstance(TaskManager.access$900(this.this$0, (String)localObject));
-    if ((((ReadInJoyMMapKvStorage)localObject).getExpiredTime() != 0) && (((ReadInJoyMMapKvStorage)localObject).getExpiredTime() < System.currentTimeMillis() / 1000L))
-    {
-      ((ReadInJoyMMapKvStorage)localObject).invalidate();
-      return Integer.valueOf(0);
-    }
-    ((ReadInJoyMMapKvStorage)localObject).update(paramArrayOfObject, paramJSContext);
+    paramJSContext = (String)paramArrayOfObject[0];
+    ReadInJoyMMapKvStorage.getInstance(TaskManager.access$900(this.this$0, paramJSContext)).invalidate();
     return Integer.valueOf(1);
   }
 }

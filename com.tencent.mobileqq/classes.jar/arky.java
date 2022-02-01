@@ -1,16 +1,10 @@
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
-
 public abstract interface arky
 {
-  public abstract long a();
-  
-  public abstract ExcitingTransferDownloadConfig a();
-  
-  public abstract boolean a();
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arky
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,27 @@
+import android.text.Editable;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class biyz
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnTouchListener
 {
-  public biyz(InputMethodRelativeLayout paramInputMethodRelativeLayout) {}
+  public biyz(Login paramLogin) {}
   
-  public void onGlobalLayout()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i;
-    if (this.a.a != null)
-    {
-      i = InputMethodRelativeLayout.a(this.a);
-      if (i != InputMethodRelativeLayout.b(this.a))
-      {
-        int j = this.a.getRootView().getHeight();
-        if (j - i <= j / 4) {
-          break label102;
-        }
-        InputMethodRelativeLayout.a(this.a, true);
+    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText) {
+      if ((paramMotionEvent.getAction() == 0) && (this.a.jdField_b_of_type_AndroidWidgetEditText.getText().length() > 0)) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
       }
     }
-    for (;;)
-    {
-      this.a.a.a(InputMethodRelativeLayout.a(this.a), InputMethodRelativeLayout.b(this.a), i);
-      this.a.requestLayout();
-      InputMethodRelativeLayout.a(this.a, i);
-      return;
-      label102:
-      InputMethodRelativeLayout.a(this.a, false);
+    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramMotionEvent.getAction() != 0) || (this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length() <= 0)) {
+      return false;
     }
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    return false;
   }
 }
 

@@ -1,29 +1,13 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.ClipboardManager;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
 
-final class bdot
-  implements bliz
+public class bdot
+  implements DialogInterface.OnClickListener
 {
-  bdot(String paramString, Context paramContext) {}
+  public bdot(MediaPreviewActivity paramMediaPreviewActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      bdos.a().dismiss();
-      return;
-      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      continue;
-      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

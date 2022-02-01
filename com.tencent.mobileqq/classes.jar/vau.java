@@ -1,28 +1,17 @@
-public class vau
+import android.view.View;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
+import com.tencent.qflutter.utils.FLog;
+import java.lang.ref.WeakReference;
+
+class vau
+  implements AdExposureChecker.ExposureCallback
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
+  vau(vat paramvat) {}
   
-  private vau(vaw paramvaw)
+  public void onExposure(WeakReference<View> paramWeakReference)
   {
-    this.a = paramvaw.a;
-    this.b = paramvaw.b;
-    this.c = paramvaw.c;
-    this.d = paramvaw.d;
-    this.e = paramvaw.e;
-    this.f = paramvaw.f;
-    this.g = paramvaw.g;
-    this.h = paramvaw.h;
-    this.i = paramvaw.j;
-    this.j = paramvaw.i;
+    FLog.e("AdExposureChecker", "onExposure");
+    var.a(vat.a(this.a), (vaq)this.a.a());
   }
 }
 

@@ -1,26 +1,61 @@
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.text.ClipboardManager;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajgu
+class ajgu
   implements View.OnClickListener
 {
-  public ajgu(TroopView paramTroopView) {}
+  ajgu(ajgq paramajgq) {}
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.a.jdField_a_of_type_Ajdw.a(), SearchContactsActivity.class);
-    localIntent.putExtra("from_key", 1);
-    localIntent.putExtra("fromType", 13);
-    this.a.jdField_a_of_type_Ajdw.a().startActivity(localIntent);
-    this.a.jdField_a_of_type_Ajdw.a().overridePendingTransition(0, 0);
-    bcni.a("add_page", "search", "active_frame", 2, 0, new String[] { "" });
-    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BEC", "0X8004BEC", 2, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = paramView.getId();
+    if (QLog.isColorLevel()) {
+      QLog.i("C2CMessageSearchDialog", 2, "onClick, id = " + i);
+    }
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.a.jdField_a_of_type_Ajhk != null)
+      {
+        ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_Ajhk.a.msg);
+        continue;
+        if (this.a.jdField_a_of_type_Ajhk != null)
+        {
+          Bundle localBundle = new Bundle();
+          localBundle.putInt("forward_type", -1);
+          localBundle.putString("forward_text", this.a.jdField_a_of_type_Ajhk.a.msg);
+          Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, ForwardRecentActivity.class);
+          localIntent.putExtras(localBundle);
+          ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 21);
+          continue;
+          if (QLog.isColorLevel()) {
+            QLog.i("C2CMessageSearchDialog", 2, "OnClickListener, setMessageItems");
+          }
+          this.a.c = false;
+          ajgq.a(this.a).setVisibility(8);
+          ajgq.a(this.a, 0, null);
+          this.a.jdField_a_of_type_Ajgo.a(ajgq.a(this.a), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long);
+          this.a.jdField_a_of_type_Ajgo.notifyDataSetChanged();
+          this.a.b = 1;
+          VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history", "ChatSearch", "Clk_cloudtips", 0, 0, new String[0]);
+        }
+      }
+    }
   }
 }
 

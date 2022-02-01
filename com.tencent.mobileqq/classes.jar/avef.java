@@ -1,63 +1,15 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.6;
 
 public class avef
-  extends BaseAdapter
+  implements DialogInterface.OnClickListener
 {
-  public avef(LangSettingFragment paramLangSettingFragment) {}
+  public avef(LocationDialogUtil.6 param6) {}
   
-  private View.OnClickListener a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new aveg(this, paramInt);
-  }
-  
-  private boolean a(int paramInt)
-  {
-    if ((paramInt >= LangSettingFragment.a().size()) || (paramInt < 0)) {
-      return false;
-    }
-    return ((Integer)LangSettingFragment.a().get(paramInt)).intValue() == 1033;
-  }
-  
-  public int getCount()
-  {
-    return LangSettingFragment.a().size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    FormSimpleItem localFormSimpleItem = new FormSimpleItem(this.a.getActivity());
-    if (paramInt == LangSettingFragment.a(this.a)) {
-      localFormSimpleItem.setRightIcon(this.a.getResources().getDrawable(2130844727));
-    }
-    for (;;)
-    {
-      if (paramInt < LangSettingFragment.a().size()) {
-        localFormSimpleItem.setLeftText(LangSettingFragment.a(this.a, paramInt, false));
-      }
-      localFormSimpleItem.setTag(Integer.valueOf(paramInt));
-      localFormSimpleItem.setOnClickListener(a(paramInt));
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localFormSimpleItem;
-      localFormSimpleItem.setRightIcon(null);
-    }
+    avdr.a(this.a.b, "0X800A76A");
   }
 }
 

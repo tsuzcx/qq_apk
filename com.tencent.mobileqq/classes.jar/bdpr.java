@@ -1,38 +1,16 @@
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.LinearLayout.LayoutParams;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class bdpr
-  extends Animation
+  implements AdapterView.OnItemClickListener
 {
-  int jdField_a_of_type_Int;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  public bdpr(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
   
-  public bdpr(ViewGroup paramViewGroup)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    int i = View.MeasureSpec.makeMeasureSpec(0, 0);
-    int j = View.MeasureSpec.makeMeasureSpec(0, 0);
-    this.jdField_a_of_type_AndroidViewViewGroup.measure(i, j);
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getMeasuredHeight();
-    paramViewGroup = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramViewGroup.height = 0;
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramViewGroup);
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-  }
-  
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
-  }
-  
-  public boolean willChangeBounds()
-  {
-    return true;
+    this.a.finish();
   }
 }
 

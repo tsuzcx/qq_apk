@@ -1,17 +1,17 @@
 package com.tencent.biz.richframework.widget;
 
-import aaea;
+import zax;
 
 public class BaseVideoView$1$1
   implements Runnable
 {
-  public BaseVideoView$1$1(aaea paramaaea) {}
+  public BaseVideoView$1$1(zax paramzax) {}
   
   public void run()
   {
     BaseVideoView.a(this.a.a);
     if ((BaseVideoView.a(this.a.a) != null) && (!BaseVideoView.a(this.a.a))) {
-      this.a.a.e();
+      this.a.a.h();
     }
   }
 }

@@ -1,18 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class mjg
-  extends Animation
+  implements View.OnClickListener
 {
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public mjg(VideoControlUI paramVideoControlUI) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramFloat < 0.5F) {}
-    for (float f = (0.5F - paramFloat) / 0.5F;; f = (paramFloat - 0.5F) / 0.5F)
-    {
-      paramTransformation.setAlpha(f);
-      super.applyTransformation(paramFloat, paramTransformation);
-      return;
+    mrd.c(paramView.getId());
+    AVActivity localAVActivity = this.a.a();
+    if (localAVActivity != null) {
+      localAVActivity.BtnOnClick(paramView);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

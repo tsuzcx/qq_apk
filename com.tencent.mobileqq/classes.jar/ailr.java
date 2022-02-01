@@ -1,27 +1,47 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class ailr
-  implements DialogInterface.OnClickListener
+public class ailr
+  implements View.OnClickListener
 {
-  ailr(ailq paramailq) {}
+  public ailr(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Ailn.d = new ReportDialog(this.a.jdField_a_of_type_Ailn.a(), 2131755824);
-    this.a.jdField_a_of_type_Ailn.d.setContentView(2131558434);
-    this.a.jdField_a_of_type_Ailn.d.setCancelable(true);
-    ((TextView)this.a.jdField_a_of_type_Ailn.d.findViewById(2131365519)).setText(this.a.jdField_a_of_type_Ailn.a().getString(2131717902));
-    this.a.jdField_a_of_type_Ailn.d.show();
-    ((anzp)this.a.jdField_a_of_type_Ailn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).b(this.a.jdField_a_of_type_Ailn.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Ailn.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.a.jdField_a_of_type_JavaLangString, 1);
-    bdll.b(this.a.jdField_a_of_type_Ailn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005D55", "0X8005D55", 0, 0, "", "", "", "");
+    if (!(paramView.getTag() instanceof aijj)) {}
+    aijj localaijj;
+    do
+    {
+      do
+      {
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        localaijj = (aijj)paramView.getTag();
+      } while (localaijj.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() != 2);
+      this.a.a(localaijj);
+      if (localaijj.jdField_a_of_type_Int == 82) {
+        bcef.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", localaijj.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
+      }
+    } while (localaijj.jdField_a_of_type_Int != 91);
+    Object localObject = (TroopManager)this.a.a.getManager(52);
+    if (localObject != null)
+    {
+      localObject = ((TroopManager)localObject).b(String.valueOf(localaijj.f));
+      if (localObject == null) {}
+    }
+    for (long l = ((TroopInfo)localObject).dwGroupClassExt;; l = 0L)
+    {
+      bcef.b(null, "dc00898", "", String.valueOf(localaijj.f), "0X800B4B4", "0X800B4B4", 0, 0, String.valueOf(l), "", "", "");
+      break;
+    }
   }
 }
 

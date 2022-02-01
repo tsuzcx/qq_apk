@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr.6.1;
-import java.util.UUID;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bfxu
-  implements bfxx
+class bfxu
+  implements View.OnClickListener
 {
-  bfxu(bfxt parambfxt) {}
+  bfxu(bfxr parambfxr, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void a(UUID paramUUID, boolean paramBoolean, int paramInt, bfxw parambfxw)
+  public void onClick(View paramView)
   {
-    bfvh.a(new TroopFileUploadMgr.6.1(this, paramUUID, paramBoolean, paramInt, parambfxw), false);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bfxr, 0);
+    }
+    this.jdField_a_of_type_Bfxr.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

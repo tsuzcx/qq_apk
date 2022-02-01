@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import altn;
+import akre;
 
 class EditLocalVideoMusicMixRunnable$1
   implements Runnable

@@ -1,24 +1,26 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avuw
   implements View.OnClickListener
 {
-  public avuw(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
+  public avuw(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
   public void onClick(View paramView)
   {
-    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
-    if (this.a.a == null) {}
+    if (MsgBackupDateFragment.a(this.a) == 0) {
+      avwr.a("0X800A237");
+    }
     for (;;)
     {
+      this.a.a();
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      this.a.a.a(3, paramView);
-      QLog.d("HotVideoRelativeLayout", 2, "click mute view");
+      if (avtq.c) {
+        avwr.a("0X800A25C");
+      }
     }
   }
 }

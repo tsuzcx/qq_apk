@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bdll;
+import bcef;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -46,9 +46,9 @@ public class TroopUsageTimeReport
       SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
       if (localSessionInfo != null)
       {
-        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "time", "aio_time", 0, i, 0, localSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "time", "aio_time", 0, i, 0, localSessionInfo.curFriendUin, "", "", "");
         if (QLog.isColorLevel()) {
-          QLog.d("TroopUsageTimeReport-->AioUseTime", 2, "uin=" + this.jdField_a_of_type_JavaLangString + ",mTroopUin=" + localSessionInfo.jdField_a_of_type_JavaLangString + ",time=" + l + "s");
+          QLog.d("TroopUsageTimeReport-->AioUseTime", 2, "uin=" + this.jdField_a_of_type_JavaLangString + ",mTroopUin=" + localSessionInfo.curFriendUin + ",time=" + l + "s");
         }
       }
       this.jdField_a_of_type_Boolean = false;
@@ -69,9 +69,9 @@ public class TroopUsageTimeReport
       SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
       if (localSessionInfo != null)
       {
-        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "time", "grp_time", 0, i, 0, localSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+        bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "time", "grp_time", 0, i, 0, localSessionInfo.curFriendUin, "", "", "");
         if (QLog.isColorLevel()) {
-          QLog.d("TroopUsageTimeReport-->TroopUseTime", 2, "uin=" + this.jdField_a_of_type_JavaLangString + ",mTroopUin=" + localSessionInfo.jdField_a_of_type_JavaLangString + ",time=" + l + "s");
+          QLog.d("TroopUsageTimeReport-->TroopUseTime", 2, "uin=" + this.jdField_a_of_type_JavaLangString + ",mTroopUin=" + localSessionInfo.curFriendUin + ",time=" + l + "s");
         }
       }
       this.jdField_b_of_type_Boolean = false;

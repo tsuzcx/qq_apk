@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video.player;
 
 import android.widget.TextView;
-import rzo;
+import sgs;
 
 public class ReadInjoyPlayer$3
   implements Runnable
 {
   public void run()
   {
-    if (rzo.a(this.this$0) != null) {
-      rzo.a(this.this$0).setVisibility(8);
+    if (sgs.a(this.this$0) != null) {
+      sgs.a(this.this$0).setVisibility(8);
     }
   }
 }

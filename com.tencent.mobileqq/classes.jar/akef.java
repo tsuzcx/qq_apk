@@ -1,107 +1,19 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.29.1;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.29.2;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class akef
-  implements bliz
+  implements akdo
 {
-  public akef(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public akef(DrawHbFragment paramDrawHbFragment, View paramView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt)
   {
-    if ((!ChatHistoryTroopMemberFragment.c(this.a)) && (paramInt >= 5)) {}
-    for (int i = paramInt + 1;; i = paramInt)
+    if (paramInt == 0)
     {
-      if (this.a.h) {
-        if (paramInt == 0) {
-          this.a.jdField_b_of_type_AndroidOsHandler.postDelayed(new ChatHistoryTroopMemberFragment.29.1(this), 320L);
-        }
-      }
-      for (;;)
-      {
-        if ((this.a.jdField_a_of_type_Blir != null) && (this.a.jdField_a_of_type_Blir.isShowing())) {
-          this.a.jdField_a_of_type_Blir.dismiss();
-        }
-        return;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Q.history.BaseFragment", 2, "mOnActionSheetClickListener.OnClick, error : which = " + paramInt + ", troopUin = " + this.a.c);
-          continue;
-          if (this.a.jdField_d_of_type_Int == 9) {
-            switch (i)
-            {
-            default: 
-              break;
-            case 0: 
-              this.a.f = true;
-              this.a.u = "";
-              this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-              this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-              this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-              if (this.a.jdField_a_of_type_Akfe != null) {
-                this.a.jdField_a_of_type_Akfe.a();
-              }
-              bdll.b(this.a.getActivity().app, "P_CliOper", "Grp_pay", "", "un_pay_list", "Clk_del", 0, 0, this.a.c, this.a.o, "", "");
-              break;
-            }
-          } else {
-            switch (i)
-            {
-            default: 
-              break;
-            case 0: 
-              this.a.A();
-              break;
-            case 1: 
-              if (!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
-              {
-                paramView = new Intent(this.a.getActivity(), SelectMemberActivity.class);
-                paramView.putExtra("param_from", 30);
-                paramView.putExtra("group_uin", this.a.c);
-                paramView.putExtra("param_groupcode", this.a.jdField_b_of_type_JavaLangString);
-                paramView.putExtra("param_from", 30);
-                paramView.putExtra("param_subtype", 4);
-                paramView.putExtra("param_entrance", 30);
-                paramView.putExtra("param_max", 30);
-                paramView.putExtra("param_exit_animation", 3);
-                this.a.startActivity(paramView);
-                this.a.getActivity().overridePendingTransition(2130771997, 0);
-                bdll.b(this.a.getActivity().app, "dc00899", "Grp_mber", "", "mber_list", "clk_Add", 0, 0, this.a.c, "", "", "");
-              }
-              break;
-            case 2: 
-              this.a.jdField_b_of_type_AndroidOsHandler.postDelayed(new ChatHistoryTroopMemberFragment.29.2(this), 320L);
-              break;
-            case 3: 
-              this.a.g = true;
-              this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-              ChatHistoryTroopMemberFragment.a(this.a);
-              this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-              this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-              this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-              this.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)ChatHistoryTroopMemberFragment.a(this.a, 2131369044));
-              this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-              this.a.jdField_d_of_type_AndroidWidgetTextView.setText(anzj.a(2131700526));
-              this.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new akeg(this));
-              if (this.a.jdField_a_of_type_Akfe != null) {
-                this.a.jdField_a_of_type_Akfe.a();
-              }
-              paramView = this.a.o;
-              this.a.a("Clk_del", paramView, "");
-            }
-          }
-        }
-      }
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131368638).setVisibility(8);
+      return;
     }
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131368638).setVisibility(0);
   }
 }
 

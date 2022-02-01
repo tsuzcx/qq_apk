@@ -1,44 +1,18 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aegw
-  implements bnsj
+  implements View.OnClickListener
 {
-  public aegw(ChatSettingForTroop paramChatSettingForTroop) {}
+  public aegw(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    boolean bool;
-    Object localObject;
-    if (paramInt == 0)
-    {
-      this.a.b = true;
-      bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim();
-      localObject = this.a.jdField_a_of_type_ArrayOfAndroidViewView[5];
-      if (localObject != null) {
-        if (!bool) {
-          break label88;
-        }
-      }
-    }
-    label88:
-    for (paramInt = 0;; paramInt = 8)
-    {
-      ((View)localObject).setVisibility(paramInt);
-      localObject = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[6];
-      if (localObject != null)
-      {
-        paramInt = i;
-        if (bool) {
-          paramInt = 3;
-        }
-        ((FormSimpleItem)localObject).setBgType(paramInt);
-      }
-      return;
-    }
+    SoundAndVibrateActivity.a(this.a, "CHANNEL_ID_GROUP_MSG");
+    bcef.b(null, "CliOper", "", "", "0X800AC8A", "0X800AC8A", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

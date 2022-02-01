@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.1;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.2;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.3;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awok
+class awok
+  implements View.OnClickListener
 {
-  public static void a(int paramInt1, int paramInt2)
-  {
-    ThreadManager.post(new QQMusicPlayReport.2(paramInt1, paramInt2), 5, null, false);
-  }
+  awok(awoj paramawoj) {}
   
-  public static void a(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    ThreadManager.post(new QQMusicPlayReport.1(paramBoolean, paramInt), 5, null, false);
-  }
-  
-  public static void b(boolean paramBoolean, int paramInt)
-  {
-    ThreadManager.post(new QQMusicPlayReport.3(paramBoolean, bhnv.b(null), paramInt), 5, null, false);
+    if (awoj.a(this.a) != null) {
+      awoj.a(this.a).a(awoj.a(this.a));
+    }
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

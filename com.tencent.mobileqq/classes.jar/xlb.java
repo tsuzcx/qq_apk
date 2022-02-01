@@ -1,17 +1,18 @@
-class xlb
-  implements xmu
+import java.util.ArrayList;
+import java.util.List;
+
+public class xlb
+  extends vko
 {
-  xlb(xla paramxla) {}
+  public String a;
+  public ArrayList<String> a;
+  public List<String> a;
+  public boolean a;
   
-  public void a()
+  public xlb(String paramString)
   {
-    xla.a(this.a);
-  }
-  
-  public void a(xms paramxms, String paramString, boolean paramBoolean)
-  {
-    yuk.d("Q.qqstory.playernew.StoryPlayerImpl", "onGroupDataDelete, groupId=%s, vid=%s", new Object[] { paramxms.a, paramString });
-    xla.a(this.a).a(paramxms, paramString, paramBoolean);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

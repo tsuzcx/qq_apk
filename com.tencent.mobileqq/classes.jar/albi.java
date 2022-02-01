@@ -1,20 +1,16 @@
 import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class albi
-  implements akxk
+class albi
+  extends andd
 {
-  public albi(QzoneHbFragment paramQzoneHbFragment) {}
+  albi(albg paramalbg) {}
   
-  public void a() {}
-  
-  public void a(Object paramObject)
+  protected void onUpdateNewTroopFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if ((paramObject instanceof Bitmap))
-    {
-      paramObject = QzoneHbFragment.a(this.a).obtainMessage();
-      paramObject.what = 102;
-      QzoneHbFragment.a(this.a).sendMessage(paramObject);
+    Bitmap localBitmap = this.a.a.getFaceBitmap(113, paramString, false, 0);
+    if (localBitmap != null) {
+      albg.a(this.a, paramString, localBitmap);
     }
   }
 }

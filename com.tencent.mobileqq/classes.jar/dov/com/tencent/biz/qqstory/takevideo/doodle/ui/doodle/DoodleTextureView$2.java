@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import bqnt;
-import bqoq;
+import bnkb;
+import bnky;
 import com.tencent.qphone.base.util.QLog;
 
 class DoodleTextureView$2
@@ -14,9 +14,9 @@ class DoodleTextureView$2
     if (this.this$0.a != null)
     {
       this.this$0.a.g();
-      bqoq localbqoq = (bqoq)this.this$0.a.a(102);
-      if (localbqoq != null) {
-        localbqoq.b();
+      bnky localbnky = (bnky)this.this$0.a.a(102);
+      if (localbnky != null) {
+        localbnky.b();
       }
       this.this$0.a = null;
     }

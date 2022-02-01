@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.statistics;
 
+import amtj;
 import android.support.v4.app.FragmentActivity;
-import anzj;
-import bdky;
-import bdkz;
-import bhlq;
-import bhpc;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import bcds;
+import bcdt;
+import bfur;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class LocalCrashCollector$3
   implements Runnable
@@ -18,13 +18,13 @@ public class LocalCrashCollector$3
   {
     try
     {
-      SessionInfo localSessionInfo = LocalCrashCollector.a(this.this$0).a();
-      FragmentActivity localFragmentActivity = LocalCrashCollector.a(this.this$0).a;
+      SessionInfo localSessionInfo = LocalCrashCollector.a(this.this$0).getSessionInfo();
+      FragmentActivity localFragmentActivity = LocalCrashCollector.a(this.this$0).mActivity;
       Object localObject;
       String str;
       if (LocalCrashCollector.a(this.this$0) > 0)
       {
-        localObject = anzj.a(2131705163) + localSessionInfo.d;
+        localObject = amtj.a(2131705393) + localSessionInfo.curFriendNick;
         if (LocalCrashCollector.a(this.this$0) <= 0) {
           break label183;
         }
@@ -36,14 +36,14 @@ public class LocalCrashCollector$3
       }
       label183:
       label188:
-      for (int i = 2131690669;; i = 2131694098)
+      for (int i = 2131690709;; i = 2131694201)
       {
-        localObject = bhlq.a(localFragmentActivity, 230, (String)localObject, str, 2131690580, i, new bdky(this, localSessionInfo), new bdkz(this));
-        ((bhpc)localObject).adjustTitle();
-        if (LocalCrashCollector.a(this.this$0).a.isFinishing()) {
+        localObject = bfur.a(localFragmentActivity, 230, (String)localObject, str, 2131690620, i, new bcds(this, localSessionInfo), new bcdt(this));
+        ((QQCustomDialog)localObject).adjustTitle();
+        if (LocalCrashCollector.a(this.this$0).mActivity.isFinishing()) {
           return;
         }
-        ((bhpc)localObject).show();
+        ((QQCustomDialog)localObject).show();
         return;
         localObject = "0 Crash";
         break;
@@ -60,7 +60,7 @@ public class LocalCrashCollector$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.LocalCrashCollector.3
  * JD-Core Version:    0.7.0.1
  */

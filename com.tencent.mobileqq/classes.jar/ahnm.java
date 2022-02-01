@@ -1,232 +1,281 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.widget.BaseAdapter;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.item.PokeEmoItemBuilder.1;
-import com.tencent.mobileqq.activity.aio.stickerbubble.PokeEmoItemView;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleReceiverAnimationRunnable;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPokeEmo;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
 
 public class ahnm
-  extends BaseBubbleBuilder
+  extends ahnb
 {
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private StickerBubbleReceiverAnimationRunnable jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleReceiverAnimationRunnable;
-  protected long c;
+  int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
+  private int jdField_d_of_type_Int;
+  private String jdField_d_of_type_JavaLangString;
+  private int jdField_e_of_type_Int;
+  private String jdField_e_of_type_JavaLangString;
+  private int jdField_f_of_type_Int;
+  private String jdField_f_of_type_JavaLangString;
+  private int jdField_g_of_type_Int;
+  private String jdField_g_of_type_JavaLangString;
+  private int jdField_h_of_type_Int;
+  private String jdField_h_of_type_JavaLangString;
+  private String i;
+  private String j;
+  private String k;
+  private String l;
   
-  public ahnm(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
-  {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-  }
-  
-  private void a(ahno paramahno, MessageForPokeEmo paramMessageForPokeEmo)
-  {
-    int i = paramMessageForPokeEmo.pokeemoId;
-    int j = paramMessageForPokeEmo.pokeemoPressCount;
-    paramahno.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramMessageForPokeEmo;
-    ahnt.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    boolean bool = ahnt.b;
-    if (bool)
-    {
-      Drawable localDrawable = airq.a(i);
-      paramahno.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePokeEmoItemView.setImageDrawable(localDrawable);
-      paramahno.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePokeEmoItemView.setText("x" + Integer.toString(paramMessageForPokeEmo.pokeemoPressCount));
-      paramahno.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePokeEmoItemView.setIsSend(paramMessageForPokeEmo.isSend());
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmoItemBuilder", 2, String.format(" initBubbleView.forbidPoke=%b,isResDownload = %b,pokeMsg.isPlay = %b,animatingCount = %d,emoId = %d", new Object[] { Boolean.valueOf(agej.k), Boolean.valueOf(bool), Boolean.valueOf(paramMessageForPokeEmo.isNeedPlayed), Integer.valueOf(agej.b), Integer.valueOf(paramMessageForPokeEmo.pokeemoId) }));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmoItemBuilder", 2, "sGesturePWDUnlockShowing: " + GesturePWDUnlockActivity.c);
-      }
-      if (!agej.k) {
-        break label269;
-      }
-    }
-    label269:
-    label397:
-    do
-    {
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841475);
-        }
-        paramahno.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePokeEmoItemView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        paramahno.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePokeEmoItemView.setText("x" + paramMessageForPokeEmo.pokeemoPressCount * 1000);
-        break;
-        if ((!bool) || (paramMessageForPokeEmo.isSend()) || (!paramMessageForPokeEmo.isNeedPlayed) || ((this.jdField_a_of_type_AndroidContentContext instanceof ChatHistoryActivity)) || (GesturePWDUnlockActivity.c)) {
-          break label397;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("PokeEmoItemBuilder", 2, "show animation from item builder");
-        }
-        agej.b += 1;
-        paramMessageForPokeEmo.setIsNeedPlayed(false);
-        paramahno = ((ViewGroup)((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView()).getChildAt(0).findViewById(2131362291);
-      } while (paramahno == null);
-      paramMessageForPokeEmo = airq.b(i);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleReceiverAnimationRunnable = new StickerBubbleReceiverAnimationRunnable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, j, paramahno, paramMessageForPokeEmo);
-      ThreadManager.getUIHandler().post(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleReceiverAnimationRunnable);
-      return;
-    } while (paramMessageForPokeEmo.isNeedPlayed);
-    paramMessageForPokeEmo.setIsNeedPlayed(false);
-  }
-  
-  public int a(ChatMessage paramChatMessage)
+  public int a()
   {
     return 0;
   }
   
-  public aggl a()
+  public String a()
   {
-    return new ahno(this);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public View a(ChatMessage paramChatMessage, aggl paramaggl, View paramView, BaseChatItemLayout paramBaseChatItemLayout, agjk paramagjk)
+  public void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext;
-    paramBaseChatItemLayout = (MessageForPokeEmo)paramChatMessage;
-    ahno localahno = (ahno)paramaggl;
-    if (QLog.isColorLevel()) {
-      QLog.d("PokeMsg", 2, "type: " + paramBaseChatItemLayout.pokeemoId + " count: " + paramBaseChatItemLayout.pokeemoPressCount);
-    }
-    paramaggl = paramView;
-    if (paramView == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeEmoItemBuilder", 2, "[getBubbleView]:content is null");
-      }
-      paramaggl = new RelativeLayout((Context)localObject);
-      paramaggl.setId(2131376925);
-      paramView = new PokeEmoItemView((Context)localObject);
-      paramView.setId(2131372861);
-      paramaggl.addView(paramView, new ViewGroup.LayoutParams(-1, agej.a(80.0F, ((Context)localObject).getResources())));
-      localahno.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePokeEmoItemView = paramView;
-      localObject = airq.a;
-      if (localObject != null)
-      {
-        QLog.e("PokeEmoItemBuilder", 1, "mTypeface  != null ");
-        paramView.setTypeFace((Typeface)localObject);
-        paramView.setText("x3");
-        bhga.a(paramView, false);
-      }
-    }
-    else
-    {
-      if ((!localahno.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePokeEmoItemView.a()) && (airq.a != null)) {
-        localahno.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePokeEmoItemView.setTypeFace(airq.a);
-      }
-      if ("PEPanelHelper.mTypeface != null :" + airq.a == null) {
-        break label358;
-      }
-    }
-    label358:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.e("PokeEmoItemBuilder", 1, new Object[] { Boolean.valueOf(bool) });
-      paramaggl.setTag(localahno);
-      paramaggl.setOnTouchListener(paramagjk);
-      paramaggl.setOnLongClickListener(paramagjk);
-      a(localahno, paramBaseChatItemLayout);
-      if (e)
-      {
-        if ((localahno.b != null) && (localahno.b.length() > 0)) {
-          localahno.b.setLength(0);
-        }
-        paramaggl.setContentDescription(a(paramChatMessage));
-      }
-      return paramaggl;
-      if ((!ahnt.b) || (airq.b)) {
-        break;
-      }
-      airq.b = true;
-      ThreadManager.executeOnSubThread(new PokeEmoItemBuilder.1(this));
-      break;
-    }
+    this.jdField_b_of_type_Int = paramInt;
   }
   
-  public String a(ChatMessage paramChatMessage)
+  public void a(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramChatMessage.time > 0L) {
-      localStringBuilder.append(bhsw.a(this.jdField_a_of_type_AndroidContentContext, 3, paramChatMessage.time * 1000L)).append(" ");
-    }
-    MessageForPokeEmo localMessageForPokeEmo = (MessageForPokeEmo)paramChatMessage;
-    if (paramChatMessage.isSend()) {
-      localStringBuilder.append("我向" + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d + String.format("发出%d个轻互动表情%s", new Object[] { Integer.valueOf(localMessageForPokeEmo.pokeemoPressCount), localMessageForPokeEmo.summary }));
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d + String.format("发来%d个轻互动表情%s", new Object[] { Integer.valueOf(localMessageForPokeEmo.pokeemoPressCount), localMessageForPokeEmo.summary }));
-    }
+    this.jdField_f_of_type_JavaLangString = paramString;
   }
   
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    super.a();
-    agej.b = 0;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
+  public int b()
   {
-    switch (paramInt)
-    {
-    default: 
-      super.a(paramInt, paramContext, paramChatMessage);
-      return;
-    case 2131365352: 
-      aean.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
-      return;
+    return 0;
+  }
+  
+  public long b()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public String c()
+  {
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_d_of_type_Int = paramInt;
+  }
+  
+  public void c(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int d()
+  {
+    return this.jdField_f_of_type_Int;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.jdField_e_of_type_Int = paramInt;
+  }
+  
+  public void d(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+  }
+  
+  public void d(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  public int e()
+  {
+    return this.jdField_g_of_type_Int;
+  }
+  
+  public String e()
+  {
+    return this.jdField_f_of_type_JavaLangString;
+  }
+  
+  public void e(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void e(String paramString)
+  {
+    this.jdField_d_of_type_JavaLangString = paramString;
+  }
+  
+  public int f()
+  {
+    return this.jdField_h_of_type_Int;
+  }
+  
+  public String f()
+  {
+    return this.jdField_d_of_type_JavaLangString;
+  }
+  
+  public void f(int paramInt)
+  {
+    this.jdField_f_of_type_Int = paramInt;
+  }
+  
+  public void f(String paramString)
+  {
+    this.i = paramString;
+  }
+  
+  public int g()
+  {
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return this.jdField_b_of_type_Int;
     }
-    super.d(paramChatMessage);
+    return this.jdField_d_of_type_Int;
   }
   
-  public void a(View paramView)
+  public String g()
   {
-    super.a(paramView);
-    if (agej.a(paramView).isMultiMsg) {}
-    do
-    {
-      return;
-      paramView = (MessageForPokeEmo)agej.a(paramView);
-    } while (!paramView.isSendFromLocal());
-    blir localblir = (blir)blji.a(this.jdField_a_of_type_AndroidContentContext, null);
-    localblir.a(2131689933, 5);
-    localblir.c(2131690580);
-    localblir.a(new ahnn(this, paramView, localblir));
-    localblir.show();
+    return this.i;
   }
   
-  public bhum[] a(View paramView)
+  public void g(int paramInt)
   {
-    bhuk localbhuk = new bhuk();
-    paramView = (aghd)agej.a(paramView);
-    if ((paramView != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) && ((paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForPokeEmo)) && (paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop == 0)) {
-      a(paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage, localbhuk);
+    this.jdField_g_of_type_Int = paramInt;
+  }
+  
+  public void g(String paramString)
+  {
+    this.j = paramString;
+  }
+  
+  public int h()
+  {
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return this.jdField_c_of_type_Int;
     }
-    aean.a(localbhuk, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    super.e(localbhuk, this.jdField_a_of_type_AndroidContentContext);
-    return localbhuk.a();
+    return this.jdField_e_of_type_Int;
+  }
+  
+  public String h()
+  {
+    return this.j;
+  }
+  
+  public void h(int paramInt)
+  {
+    this.jdField_h_of_type_Int = paramInt;
+  }
+  
+  public void h(String paramString)
+  {
+    this.k = paramString;
+  }
+  
+  public String i()
+  {
+    return this.l;
+  }
+  
+  public void i(String paramString)
+  {
+    this.l = paramString;
+  }
+  
+  public String j()
+  {
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return this.jdField_c_of_type_JavaLangString;
+    }
+    return this.jdField_d_of_type_JavaLangString;
+  }
+  
+  public void j(String paramString)
+  {
+    this.jdField_g_of_type_JavaLangString = paramString;
+  }
+  
+  public String k()
+  {
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void k(String paramString)
+  {
+    this.jdField_h_of_type_JavaLangString = paramString;
+  }
+  
+  public String l()
+  {
+    if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
+      this.jdField_e_of_type_JavaLangString = ahns.d(k());
+    }
+    return this.jdField_e_of_type_JavaLangString;
+  }
+  
+  public String m()
+  {
+    return this.jdField_g_of_type_JavaLangString;
+  }
+  
+  public String n()
+  {
+    return this.jdField_h_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    return "imgUrl=" + this.jdField_a_of_type_JavaLangString + " thumbUrl=" + this.jdField_b_of_type_JavaLangString + " imgMd5=" + this.jdField_c_of_type_JavaLangString + " thumbMd5=" + this.jdField_d_of_type_JavaLangString + " imgWidth=" + this.jdField_b_of_type_Int + " imgHeight=" + this.jdField_c_of_type_Int + " thumbWidth=" + this.jdField_d_of_type_Int + " thumbHeight=" + this.jdField_e_of_type_Int + " imgFileSize=" + this.jdField_a_of_type_Long + " thumbFileSize=" + this.jdField_b_of_type_Long;
   }
 }
 

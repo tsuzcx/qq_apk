@@ -1,25 +1,22 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class wov
+class wov
+  implements vqp<weo, wep>
 {
-  public int a;
-  public String b;
+  wov(wou paramwou, woj paramwoj) {}
   
-  public wov() {}
-  
-  public wov(int paramInt, String paramString)
+  public void a(@NonNull weo paramweo, @Nullable wep paramwep, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.a = paramInt;
-    this.b = paramString;
-  }
-  
-  public wov(qqstory_struct.ErrorInfo paramErrorInfo)
-  {
-    this.a = paramErrorInfo.error_code.get();
-    this.b = paramErrorInfo.error_desc.get().toStringUtf8();
+    if ((paramErrorMessage.isFail()) || (paramwep == null))
+    {
+      xvv.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "pull feedId list fail %s", paramErrorMessage.toString());
+      this.jdField_a_of_type_Woj.a(paramErrorMessage, null, false);
+      return;
+    }
+    this.jdField_a_of_type_Wou.a.a(paramwep.jdField_a_of_type_JavaUtilList, paramwep.jdField_a_of_type_JavaLangString, paramwep.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Woj.a(paramErrorMessage, wnr.b(paramwep.jdField_a_of_type_JavaUtilList), paramwep.jdField_a_of_type_Boolean);
   }
 }
 

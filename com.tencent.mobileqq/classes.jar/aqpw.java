@@ -1,6 +1,6 @@
-public abstract interface aqpw
+public abstract interface aqpw<T>
 {
-  public abstract void a(byte[] paramArrayOfByte, aqpx paramaqpx, int paramInt);
+  public abstract int a(T paramT, long paramLong);
 }
 
 

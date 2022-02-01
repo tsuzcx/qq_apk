@@ -1,22 +1,15 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class amcu
-  extends MqqHandler
+  implements DialogInterface.OnClickListener
 {
-  public amcu(ContactsInnerFrame paramContactsInnerFrame) {}
+  public amcu(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return;
-    }
-    ContactsInnerFrame.a(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 

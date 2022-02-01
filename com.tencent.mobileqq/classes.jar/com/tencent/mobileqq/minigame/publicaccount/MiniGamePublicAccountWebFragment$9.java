@@ -10,8 +10,8 @@ class MiniGamePublicAccountWebFragment$9
   
   public void run()
   {
-    if ((this.this$0.getActivity() != null) && (!this.this$0.getActivity().isFinishing()) && (MiniGamePublicAccountWebFragment.access$1600(this.this$0) != null)) {
-      MiniGamePublicAccountWebFragment.access$1600(this.this$0).setCurrentItem(this.val$pos);
+    if ((this.this$0.getActivity() != null) && (!this.this$0.getActivity().isFinishing()) && (MiniGamePublicAccountWebFragment.access$1800(this.this$0) != null)) {
+      MiniGamePublicAccountWebFragment.access$1800(this.this$0).setCurrentItem(this.val$pos);
     }
   }
 }

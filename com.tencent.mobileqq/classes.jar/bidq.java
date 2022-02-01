@@ -1,51 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.vas.update.business.BaseUpdateBusiness;
-import com.tencent.vas.update.callback.IVasUpdateFactory;
-import com.tencent.vas.update.callback.VasBusinessManager;
-import mqq.manager.Manager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.downloadnew.common.NoticeParam;
 
-public class bidq
-  extends VasBusinessManager
-  implements Manager
+public final class bidq
+  implements Parcelable.Creator<NoticeParam>
 {
-  private bied a;
-  
-  public bidq(QQAppInterface paramQQAppInterface)
+  public NoticeParam a(Parcel paramParcel)
   {
-    QLog.e("VasUpdate_QQVasUpdateManager", 1, "QQVasUpdateManager onCreate");
+    return new NoticeParam(paramParcel);
   }
   
-  public static boolean a()
+  public NoticeParam[] a(int paramInt)
   {
-    return true;
-  }
-  
-  public bied a()
-  {
-    return this.a;
-  }
-  
-  public IVasUpdateFactory createVasUpdateFactory()
-  {
-    this.a = new bied();
-    return this.a;
-  }
-  
-  public void onDestroy()
-  {
-    QLog.e("VasUpdate_QQVasUpdateManager", 1, "onDestroy");
-    super.onDestory();
-  }
-  
-  public BaseUpdateBusiness[] registerBusinessCallback()
-  {
-    return new BaseUpdateBusiness[] { new bidu() };
-  }
-  
-  public BaseUpdateBusiness registerCommonBusinessCallback()
-  {
-    return new bidt();
+    return new NoticeParam[paramInt];
   }
 }
 

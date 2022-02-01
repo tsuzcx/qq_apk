@@ -1,8 +1,17 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
-public abstract class aldn
+public class aldn
+  implements aszj
 {
-  public abstract void a(PreloadManager paramPreloadManager);
+  public aldn(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  
+  public void onNo() {}
+  
+  public void onYes()
+  {
+    ShortVideoPreviewActivity.b(this.a);
+    this.a.setResult(-1);
+  }
 }
 
 

@@ -1,18 +1,15 @@
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity.2;
 
 public class aecr
   implements DialogInterface.OnClickListener
 {
-  public aecr(ChatHistory paramChatHistory) {}
+  public aecr(RegisterNewBaseActivity.2 param2) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setEnabled(true);
-    this.a.c.dismiss();
+    paramDialogInterface.dismiss();
   }
 }
 

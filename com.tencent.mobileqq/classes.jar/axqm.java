@@ -1,35 +1,46 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Random;
 
-class axqm
-  implements bcxm
+public class axqm
+  extends bbjd
 {
-  axqm(axqb paramaxqb, axpw paramaxpw, String paramString) {}
+  OlympicToolAppInterface jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
+  Random jdField_a_of_type_JavaUtilRandom = new Random();
   
-  public void a(int paramInt)
+  public axqm(OlympicToolAppInterface paramOlympicToolAppInterface)
   {
-    if ((this.jdField_a_of_type_Axpw.a != null) && (this.jdField_a_of_type_Axpw.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (QLog.isColorLevel())) {
-      QLog.d("MultiRichMediaSaveManager", 2, "downloadVideo onComplete, key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt + " , uniseq = " + this.jdField_a_of_type_Axpw.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+    if (QLog.isColorLevel()) {
+      QLog.i("OlympicToolService", 2, "new OlympicToolService");
     }
-    this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_Axpw, paramInt, 0, "");
+    this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface = paramOlympicToolAppInterface;
+    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
   }
   
-  public void b(int paramInt)
+  public AppInterface a()
   {
-    if ((this.jdField_a_of_type_Axpw.a != null) && (this.jdField_a_of_type_Axpw.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) && (QLog.isColorLevel())) {
-      QLog.d("MultiRichMediaSaveManager", 2, "downloadVideo onProgress , key = " + this.jdField_a_of_type_JavaLangString + ", pos = " + paramInt + " , uniseq = " + this.jdField_a_of_type_Axpw.a.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-    }
-    if (this.jdField_a_of_type_Axpw.a != null)
+    return this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicToolAppInterface;
+  }
+  
+  protected void a()
+  {
+    try
     {
-      String str = this.jdField_a_of_type_Axqb.a(this.jdField_a_of_type_Axpw.a.jdField_a_of_type_Bcwx);
-      axpx localaxpx = this.jdField_a_of_type_Axqb.a(str);
-      if ((localaxpx != null) && (!localaxpx.a))
-      {
-        localaxpx.c = paramInt;
-        this.jdField_a_of_type_Axqb.a(str, localaxpx);
-        axqb.a(this.jdField_a_of_type_Axqb, localaxpx, localaxpx.c);
-      }
+      super.a();
+      return;
     }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    super.b(paramToServiceMsg, null, axqn.class);
   }
 }
 

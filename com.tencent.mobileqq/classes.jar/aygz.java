@@ -1,106 +1,105 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import java.io.File;
+import android.util.SparseArray;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aygz
-  implements aygm
 {
-  TextureVideoView a;
+  private final SparseArray<Class<? extends aygw>> a = new SparseArray();
   
-  public aygz(Context paramContext)
+  public aygz()
   {
-    this.a = new TextureVideoView(paramContext.getApplicationContext());
+    a();
   }
   
-  public int a()
+  private aygw a(BaseChatPie paramBaseChatPie)
   {
-    if (this.a == null) {
-      return 0;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.app;
+    paramBaseChatPie = paramBaseChatPie.sessionInfo;
+    HotChatManager localHotChatManager = (HotChatManager)localQQAppInterface.getManager(60);
+    if ((localHotChatManager != null) && (localHotChatManager.b(paramBaseChatPie.curFriendUin))) {
+      return new ayhr();
     }
-    return (int)(this.a.getCurrentPosition() / (this.a.getDuration() + 0.1D) * 100.0D);
-  }
-  
-  public long a()
-  {
-    return this.a.getCurrentPosition();
-  }
-  
-  public View a()
-  {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    this.a.a();
-  }
-  
-  public void a(long paramLong)
-  {
-    this.a.seekTo((int)paramLong);
-  }
-  
-  public void a(aygn paramaygn)
-  {
-    this.a.setOnCompletionListener(new ayha(this, paramaygn));
-  }
-  
-  public void a(aygo paramaygo) {}
-  
-  public void a(aygp paramaygp)
-  {
-    this.a.setOnErrorListener(new ayhb(this, paramaygp, null));
-  }
-  
-  public void a(aygq paramaygq)
-  {
-    this.a.setOnInfoListener(new ayhc(this, paramaygq));
-  }
-  
-  public void a(aygr paramaygr)
-  {
-    TextureVideoView localTextureVideoView = this.a;
-    if (paramaygr == null) {}
-    for (paramaygr = null;; paramaygr = new ayhd(this, paramaygr))
-    {
-      localTextureVideoView.setOnPreparedListener(paramaygr);
-      return;
+    if (nmy.a().a(paramBaseChatPie.curFriendUin)) {
+      return new ayhp();
     }
+    if (TroopInfo.isQidianPrivateTroop(localQQAppInterface, paramBaseChatPie.curFriendUin)) {
+      return new ayhs();
+    }
+    return new ayhq();
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, long paramLong)
+  private void a()
   {
-    paramString1 = paramString3;
-    if (!TextUtils.isEmpty(paramString2))
+    this.a.put(1000, ayhl.class);
+    this.a.put(1004, ayhl.class);
+    this.a.put(1008, ayha.class);
+    this.a.put(1024, ayha.class);
+    this.a.put(1020, aygp.class);
+    this.a.put(1005, aygp.class);
+    this.a.put(1003, aygp.class);
+    this.a.put(1022, aygp.class);
+    this.a.put(1009, aygp.class);
+    this.a.put(1023, aygp.class);
+    this.a.put(3000, aygt.class);
+    this.a.put(10004, ayhm.class);
+    this.a.put(1006, ayhj.class);
+    this.a.put(1025, ayhh.class);
+    this.a.put(1001, ayhn.class);
+    this.a.put(10002, ayho.class);
+    this.a.put(1010, ayhk.class);
+    this.a.put(1021, ayhi.class);
+    this.a.put(6000, aygq.class);
+    this.a.put(9501, aygs.class);
+  }
+  
+  private aygw b(BaseChatPie paramBaseChatPie, boolean paramBoolean)
+  {
+    QQAppInterface localQQAppInterface = paramBaseChatPie.app;
+    paramBaseChatPie = paramBaseChatPie.sessionInfo;
+    if (bezm.b(localQQAppInterface, paramBaseChatPie.curFriendUin)) {
+      return new ayhf();
+    }
+    if (nns.b(paramBaseChatPie.curFriendUin)) {
+      return new ayhb();
+    }
+    if (paramBoolean) {
+      return new ayhe();
+    }
+    if (localQQAppInterface.getCurrentUin().equals(paramBaseChatPie.curFriendUin)) {
+      return new ayhg();
+    }
+    return new ayhd();
+  }
+  
+  public aygw a(BaseChatPie paramBaseChatPie, boolean paramBoolean)
+  {
+    QQAppInterface localQQAppInterface = paramBaseChatPie.app;
+    int i = paramBaseChatPie.sessionInfo.curType;
+    if ((i == 0) || (ChatActivityUtils.a(localQQAppInterface, paramBaseChatPie.sessionInfo.curFriendUin))) {
+      return b(paramBaseChatPie, paramBoolean);
+    }
+    if (i == 1) {
+      return a(paramBaseChatPie);
+    }
+    try
     {
-      paramString1 = paramString3;
-      if (wkr.a(new File(paramString2))) {
-        paramString1 = paramString2;
+      paramBaseChatPie = (Class)this.a.get(i);
+      if (paramBaseChatPie != null)
+      {
+        paramBaseChatPie = (aygw)paramBaseChatPie.newInstance();
+        return paramBaseChatPie;
       }
     }
-    this.a.setVideoPath(paramString1);
-  }
-  
-  public boolean a()
-  {
-    return this.a.isPlaying();
-  }
-  
-  public void b()
-  {
-    this.a.start();
-  }
-  
-  public void c()
-  {
-    this.a.pause();
-  }
-  
-  public void d()
-  {
-    b();
+    catch (Throwable paramBaseChatPie)
+    {
+      QLog.d("PlusPanelLoaderFactory", 1, paramBaseChatPie, new Object[0]);
+    }
+    return new aygr();
   }
 }
 

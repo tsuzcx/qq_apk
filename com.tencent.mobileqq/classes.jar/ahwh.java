@@ -1,11 +1,15 @@
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.view.View;
+import android.widget.TextView;
 
-public class ahwh
-  extends ahwf
+class ahwh
 {
-  public EllipsizingTextView a;
-  public BubbleImageView a;
+  public TextView a;
+  
+  public ahwh(View paramView)
+  {
+    this.a = ((TextView)paramView.findViewById(2131378367));
+    paramView.setTag(this);
+  }
 }
 
 

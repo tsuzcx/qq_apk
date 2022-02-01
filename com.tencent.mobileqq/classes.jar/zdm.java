@@ -1,8 +1,24 @@
-import android.graphics.PointF;
+import android.widget.PopupWindow;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.4.1;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface zdm
+public class zdm
+  implements zcs
 {
-  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
+  public zdm(DetailBaseBlock.4.1 param1) {}
+  
+  public void a()
+  {
+    QLog.d(zdg.jdField_a_of_type_JavaLangString, 2, "showPraiseTipView");
+  }
+  
+  public void b()
+  {
+    QLog.d(zdg.jdField_a_of_type_JavaLangString, 2, "dismiss popupWindow priseTipView");
+    if (this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    }
+  }
 }
 
 

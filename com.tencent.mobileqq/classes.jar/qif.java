@@ -1,7 +1,39 @@
-import kotlin.Metadata;
+import android.os.Looper;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.10.1;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.10.2;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushComponentExtDataProcessor$Companion;", "", "()V", "ACTION_DATA", "", "ACTION_DATA_FILED_ARTICLE_ID", "ACTION_DATA_FILED_ID", "ACTION_DATA_FILED_PUSH_EXT_DATA", "ACTION_DATA_FILED_PUSH_ROW_KEY", "ACTION_DATA_FILED_SUBSCRIPTS", "ADDITIONAL_FIELD_BRIEF", "ADDITIONAL_FIELD_ORANGE_WORD", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qif {}
+public class qif
+  extends pkt
+{
+  qif(qid paramqid) {}
+  
+  public void a(ArticleInfo paramArticleInfo, boolean paramBoolean)
+  {
+    paramArticleInfo = new ReadInJoySocializeRecommendFollowView.10.2(this, paramArticleInfo, paramBoolean);
+    if (Looper.getMainLooper() == Looper.myLooper()) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      ThreadManager.getUIHandler().post(paramArticleInfo);
+      return;
+    }
+    paramArticleInfo.run();
+  }
+  
+  public void b(long paramLong, boolean paramBoolean)
+  {
+    ReadInJoySocializeRecommendFollowView.10.1 local1 = new ReadInJoySocializeRecommendFollowView.10.1(this, paramLong, paramBoolean);
+    if (Looper.getMainLooper() == Looper.myLooper()) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      ThreadManager.getUIHandler().post(local1);
+      return;
+    }
+    local1.run();
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

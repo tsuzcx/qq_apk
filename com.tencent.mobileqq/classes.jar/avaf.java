@@ -1,19 +1,21 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.forward.ForwardPhotoOption;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
 public class avaf
-  implements auyi
+  implements DialogInterface.OnClickListener
 {
-  public avaf(ForwardPhotoOption paramForwardPhotoOption) {}
+  public avaf(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, ListenTogetherManager paramListenTogetherManager, avau paramavau) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ForwardPhotoOption.a(this.a).a.setVisibility(0);
-  }
-  
-  public void b()
-  {
-    ForwardPhotoOption.a(this.a).a.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.c();
+    this.jdField_a_of_type_Avau.b(false);
+    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    }
   }
 }
 

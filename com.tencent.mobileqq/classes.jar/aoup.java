@@ -1,10 +1,20 @@
-public abstract interface aoup
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+
+class aoup
+  implements BusinessObserver
 {
-  public abstract void a(int paramInt);
+  aoup(aoul paramaoul) {}
   
-  public abstract void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4);
-  
-  public abstract void b();
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (!paramBoolean)
+    {
+      ArkAppCenter.c("ArkApp.ArkAppCGI", "ArkSafe,doReport, sso request failed");
+      return;
+    }
+    ArkAppCenter.b("ArkApp.ArkAppCGI", "ArkSafe.doReport.server.back=" + paramObject);
+  }
 }
 
 

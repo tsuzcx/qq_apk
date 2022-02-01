@@ -1,107 +1,91 @@
 import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import com.tencent.mobileqq.vip.diy.ProfileTemplateNickNameContainer;
-import com.tencent.mobileqq.vip.diy.TemplateLikeView;
-import com.tencent.mobileqq.vip.diy.common.DIYImageView;
-import com.tencent.mobileqq.widget.ProfileNameView;
-import java.util.HashMap;
-import org.json.JSONObject;
+import com.tencent.av.video.call.ClientLogReport;
+import com.tencent.av.video.call.GAClientLogReport;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
 public class biiv
-  extends bnvo
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TemplateLikeView jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView;
-  private ProfileNameView jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView;
-  private String jdField_a_of_type_JavaLangString = "";
-  private HashMap<String, View> jdField_a_of_type_JavaUtilHashMap;
-  private HashMap<String, bnvn> b;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private biiy jdField_a_of_type_Biiy;
   
-  public biiv(HashMap<String, View> paramHashMap, String paramString)
+  public biiv(Context paramContext, biiy parambiiy)
   {
-    if (paramHashMap == null) {
-      throw new RuntimeException("create the QVipProfileJsonInflaterFactory with null profileHeaderViewsMap");
-    }
-    this.b = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    bijd.a().a(this.jdField_a_of_type_AndroidContentContext, a());
+    this.jdField_a_of_type_Biiy = parambiiy;
+    ClientLogReport.instance();
+    GAClientLogReport.instance();
   }
   
-  public View a(Context paramContext, String paramString)
+  public static int a()
   {
-    if ("pf_name".equals(paramString))
+    int i;
+    if (AppNetConnInfo.isWifiConn()) {
+      i = 1;
+    }
+    for (;;)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView != null) {
-        throw new RuntimeException("It have duplicate " + paramString);
+      bija.c("QavCtrl", String.format("getApn networkType=%s", new Object[] { Integer.valueOf(i) }));
+      return i;
+      if (AppNetConnInfo.isMobileConn()) {
+        switch (AppNetConnInfo.getMobileInfo())
+        {
+        default: 
+          i = 100;
+          break;
+        case 1: 
+          i = 3;
+          break;
+        case 2: 
+          i = 9;
+          break;
+        case 3: 
+          i = 11;
+          break;
+        case 4: 
+          i = 14;
+          break;
+        }
+      } else {
+        i = 0;
       }
-      yuk.b("DIYProfileTemplate.QVipProfileJsonInflaterFactory", "创建了昵称控件");
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView = new ProfileNameView(paramContext);
-      paramContext = new ProfileTemplateNickNameContainer(paramContext, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
-      this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_nick_name", this.jdField_a_of_type_ComTencentMobileqqWidgetProfileNameView);
-      return paramContext;
     }
-    if ("pf_avatar".equals(paramString))
-    {
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        throw new RuntimeException("It have duplicate " + paramString);
-      }
-      yuk.b("DIYProfileTemplate.QVipProfileJsonInflaterFactory", "创建了头像控件");
-      paramContext = LayoutInflater.from(paramContext).inflate(2131562096, null);
-      this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131374863);
-      this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_diy_nick_container", this.jdField_a_of_type_AndroidViewView);
-      return paramContext;
-    }
-    if ("pf_like".equals(paramString))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView != null) {
-        throw new RuntimeException("It have duplicate " + paramString);
-      }
-      yuk.b("DIYProfileTemplate.QVipProfileJsonInflaterFactory", "创建了点赞控件");
-      this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView = new TemplateLikeView(paramContext);
-      this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView.a(0);
-      this.jdField_a_of_type_JavaUtilHashMap.put("map_key_like", this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView);
-      return this.jdField_a_of_type_ComTencentMobileqqVipDiyTemplateLikeView;
-    }
-    if ("image_view".equals(paramString)) {
-      return new DIYImageView(paramContext);
-    }
-    return super.a(paramContext, paramString);
   }
   
-  public bnvn a(String paramString, View paramView)
+  public static void a(biir parambiir)
   {
-    if ("pf_name".equals(paramString)) {
-      return new biit(paramString, paramView, this.jdField_a_of_type_JavaLangString);
+    if (parambiir != null) {
+      parambiir.b();
     }
-    if ("pf_avatar".equals(paramString)) {
-      return new biir(paramString, paramView, this.b);
-    }
-    if ("pf_like".equals(paramString)) {
-      return new biis(paramString, paramView, this.jdField_a_of_type_JavaLangString);
-    }
-    if ("image_view".equals(paramString)) {
-      return new biix(paramString, paramView, this.jdField_a_of_type_JavaLangString);
-    }
-    return super.a(paramString, paramView);
   }
   
-  public void a(bnvn parambnvn, JSONObject paramJSONObject)
+  public static void a(biir parambiir, Context paramContext, long paramLong)
   {
-    Object localObject = paramJSONObject.optString("id");
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (parambnvn != null)) {
-      this.b.put(localObject, parambnvn);
+    if (parambiir != null) {
+      parambiir.b(lkq.a(paramLong, String.valueOf(AppSetting.a()), paramContext));
     }
-    if ("pf_avatar".equals(paramJSONObject.optString("type")))
+  }
+  
+  public biiw a()
+  {
+    return this.jdField_a_of_type_Biiy;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Biiy != null)
     {
-      localObject = paramJSONObject.optString("border", "");
-      localObject = (bnvn)this.b.get(localObject);
-      if (localObject != null) {
-        this.jdField_a_of_type_JavaUtilHashMap.put("map_key_profile_diy_avatar_sticker", ((bnvn)localObject).a());
-      }
+      this.jdField_a_of_type_Biiy.g();
+      this.jdField_a_of_type_Biiy = null;
     }
-    super.a(parambnvn, paramJSONObject);
+    this.jdField_a_of_type_AndroidContentContext = null;
+    bijd.a().a();
+  }
+  
+  protected boolean a()
+  {
+    return true;
   }
 }
 

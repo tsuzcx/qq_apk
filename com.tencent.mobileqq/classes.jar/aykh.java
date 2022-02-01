@@ -1,23 +1,76 @@
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 
 public class aykh
-  extends aoaa
+  extends awwv
 {
-  public aykh(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  FriendProfilePicBrowserActivity a;
   
-  public void b(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public aykh(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, aagc paramaagc)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onDismissHotChat.isSuccess=" + paramBoolean + ",groupcode=" + paramString1 + ",result=" + paramInt + ",strError=" + paramString2);
+    super(paramFriendProfilePicBrowserActivity, paramaagc);
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity = paramFriendProfilePicBrowserActivity;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Awxb != null) {
+      return this.jdField_a_of_type_Awxb.b();
     }
-    if ((paramBoolean) && (paramInt == 0) && (NearbyPeopleProfileActivity.a(this.a) != null) && (NearbyPeopleProfileActivity.a(this.a).hotInfo != null) && (paramString1 != null) && (paramString1.equals(NearbyPeopleProfileActivity.a(this.a).hotInfo.troopUin)) && (NearbyPeopleProfileActivity.a(this.a) != null))
-    {
-      NearbyPeopleProfileActivity.a(this.a).strHotChatInfo = "";
-      NearbyPeopleProfileActivity.a(this.a).hotInfo = null;
+    return -1;
+  }
+  
+  protected RelativeLayout a()
+  {
+    return (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131561366, null);
+  }
+  
+  public PicInfo a()
+  {
+    PicInfo localPicInfo = null;
+    if (this.jdField_a_of_type_Awxb.a() != null) {
+      localPicInfo = this.jdField_a_of_type_Awxb.a().a;
     }
+    return localPicInfo;
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    super.a(paramViewGroup);
+    if (this.jdField_a_of_type_Awwu != null) {
+      this.jdField_a_of_type_Awwu.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity);
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  protected void d(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.c();
+    }
+  }
+  
+  public void h()
+  {
+    super.h();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.b();
+    }
+  }
+  
+  public void u()
+  {
+    if (this.jdField_a_of_type_Awwu != null) {
+      this.jdField_a_of_type_Awwu.a(null);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity = null;
   }
 }
 

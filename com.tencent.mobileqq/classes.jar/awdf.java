@@ -1,20 +1,21 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedTicket;
-import java.util.concurrent.Future;
+import android.content.Context;
+import com.tencent.mobileqq.widget.QQToast;
 
-class awdf
-  implements CustomizedTicket
+public class awdf
 {
-  awdf(awde paramawde) {}
-  
-  public Future<Bundle> getA1(String paramString1, String paramString2, String paramString3, String paramString4)
+  public static void a(Context paramContext)
   {
-    return this.a.a(paramString1, paramString2, paramString3, paramString4);
+    QQToast.a(paramContext, paramContext.getString(2131717775), 0).a();
   }
   
-  public Future<Bundle> getAccessToken(String paramString1, String paramString2)
+  public static void b(Context paramContext)
   {
-    return this.a.a(paramString1, paramString2);
+    QQToast.a(paramContext, paramContext.getString(2131717770), 0).a();
+  }
+  
+  public static void c(Context paramContext)
+  {
+    QQToast.a(paramContext, paramContext.getString(2131717787), 0).a();
   }
 }
 

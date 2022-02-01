@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import oyj;
+import ozp;
 
 public final class ArticleInfoModule$45
   implements Runnable
@@ -10,7 +10,7 @@ public final class ArticleInfoModule$45
   
   public void run()
   {
-    oyj.a(this.a);
+    ozp.a(this.a);
   }
 }
 

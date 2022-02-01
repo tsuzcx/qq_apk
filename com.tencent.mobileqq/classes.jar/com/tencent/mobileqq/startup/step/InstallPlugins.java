@@ -4,14 +4,14 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.os.Process;
 import android.text.TextUtils;
-import bdij;
-import bdik;
-import bdmc;
-import bmgk;
-import bmhc;
+import bcaz;
+import bcba;
+import bkkq;
+import bkli;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Iterator;
@@ -22,8 +22,8 @@ import mqq.app.MobileQQ;
 public class InstallPlugins
   extends Step
 {
-  public static bdij a;
-  public static bdik a;
+  public static bcaz a;
+  public static bcba a;
   public static final String[] a;
   
   static
@@ -35,18 +35,18 @@ public class InstallPlugins
   {
     try
     {
-      if (jdField_a_of_type_Bdij != null)
+      if (jdField_a_of_type_Bcaz != null)
       {
         Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
         if (localObject1 != null)
         {
           localObject1 = ((AppRuntime)localObject1).getAccount();
           if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-            bdmc.a(BaseApplicationImpl.getApplication()).a((String)localObject1, "qzonePrePluginInstall", jdField_a_of_type_Bdij.jdField_a_of_type_Boolean, jdField_a_of_type_Bdij.jdField_a_of_type_Long, 0L, null, null);
+            StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance((String)localObject1, "qzonePrePluginInstall", jdField_a_of_type_Bcaz.jdField_a_of_type_Boolean, jdField_a_of_type_Bcaz.jdField_a_of_type_Long, 0L, null, null);
           }
-          QLog.i("plugin_tag.InstallPlugins", 1, "install qzone:" + jdField_a_of_type_Bdij.jdField_a_of_type_Boolean + ",cost:" + jdField_a_of_type_Bdij.jdField_a_of_type_Long);
+          QLog.i("plugin_tag.InstallPlugins", 1, "install qzone:" + jdField_a_of_type_Bcaz.jdField_a_of_type_Boolean + ",cost:" + jdField_a_of_type_Bcaz.jdField_a_of_type_Long);
         }
-        jdField_a_of_type_Bdij = null;
+        jdField_a_of_type_Bcaz = null;
       }
       return;
     }
@@ -59,7 +59,7 @@ public class InstallPlugins
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 95	com/tencent/mobileqq/startup/step/InstallPlugins:jdField_a_of_type_Bdik	Lbdik;
+    //   3: getstatic 97	com/tencent/mobileqq/startup/step/InstallPlugins:jdField_a_of_type_Bcba	Lbcba;
     //   6: ifnull +129 -> 135
     //   9: invokestatic 30	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   12: invokevirtual 34	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
@@ -72,38 +72,38 @@ public class InstallPlugins
     //   25: aload_2
     //   26: invokestatic 46	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   29: ifne +102 -> 131
-    //   32: new 97	java/util/HashMap
+    //   32: new 99	java/util/HashMap
     //   35: dup
-    //   36: invokespecial 98	java/util/HashMap:<init>	()V
+    //   36: invokespecial 100	java/util/HashMap:<init>	()V
     //   39: astore_3
     //   40: aload_3
-    //   41: ldc 100
-    //   43: getstatic 95	com/tencent/mobileqq/startup/step/InstallPlugins:jdField_a_of_type_Bdik	Lbdik;
-    //   46: getfield 105	bdik:jdField_a_of_type_Int	I
-    //   49: invokestatic 109	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   52: invokevirtual 113	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   41: ldc 102
+    //   43: getstatic 97	com/tencent/mobileqq/startup/step/InstallPlugins:jdField_a_of_type_Bcba	Lbcba;
+    //   46: getfield 107	bcba:jdField_a_of_type_Int	I
+    //   49: invokestatic 111	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   52: invokevirtual 115	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   55: pop
     //   56: aload_3
-    //   57: ldc 115
+    //   57: ldc 117
     //   59: iload_0
-    //   60: invokestatic 109	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   63: invokevirtual 113	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   60: invokestatic 111	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   63: invokevirtual 115	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   66: pop
     //   67: invokestatic 30	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   70: invokestatic 51	bdmc:a	(Landroid/content/Context;)Lbdmc;
+    //   70: invokestatic 52	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   73: astore 4
-    //   75: new 68	java/lang/StringBuilder
+    //   75: new 70	java/lang/StringBuilder
     //   78: dup
-    //   79: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   82: getstatic 95	com/tencent/mobileqq/startup/step/InstallPlugins:jdField_a_of_type_Bdik	Lbdik;
-    //   85: getfield 118	bdik:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   88: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   91: ldc 120
-    //   93: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   96: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   79: invokespecial 71	java/lang/StringBuilder:<init>	()V
+    //   82: getstatic 97	com/tencent/mobileqq/startup/step/InstallPlugins:jdField_a_of_type_Bcba	Lbcba;
+    //   85: getfield 120	bcba:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   88: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   91: ldc 122
+    //   93: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   96: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   99: astore 5
-    //   101: getstatic 95	com/tencent/mobileqq/startup/step/InstallPlugins:jdField_a_of_type_Bdik	Lbdik;
-    //   104: getfield 105	bdik:jdField_a_of_type_Int	I
+    //   101: getstatic 97	com/tencent/mobileqq/startup/step/InstallPlugins:jdField_a_of_type_Bcba	Lbcba;
+    //   104: getfield 107	bcba:jdField_a_of_type_Int	I
     //   107: ifne +32 -> 139
     //   110: iconst_1
     //   111: istore_1
@@ -111,15 +111,15 @@ public class InstallPlugins
     //   114: aload_2
     //   115: aload 5
     //   117: iload_1
-    //   118: getstatic 95	com/tencent/mobileqq/startup/step/InstallPlugins:jdField_a_of_type_Bdik	Lbdik;
-    //   121: getfield 123	bdik:b	I
+    //   118: getstatic 97	com/tencent/mobileqq/startup/step/InstallPlugins:jdField_a_of_type_Bcba	Lbcba;
+    //   121: getfield 125	bcba:b	I
     //   124: i2l
     //   125: lconst_0
     //   126: aload_3
     //   127: aconst_null
-    //   128: invokevirtual 64	bdmc:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   128: invokevirtual 66	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   131: aconst_null
-    //   132: putstatic 95	com/tencent/mobileqq/startup/step/InstallPlugins:jdField_a_of_type_Bdik	Lbdik;
+    //   132: putstatic 97	com/tencent/mobileqq/startup/step/InstallPlugins:jdField_a_of_type_Bcba	Lbcba;
     //   135: ldc 2
     //   137: monitorexit
     //   138: return
@@ -138,7 +138,7 @@ public class InstallPlugins
     //   15	100	2	localObject1	Object
     //   144	5	2	localObject2	Object
     //   39	88	3	localHashMap	java.util.HashMap
-    //   73	40	4	localbdmc	bdmc
+    //   73	40	4	localStatisticCollector	StatisticCollector
     //   99	17	5	str	String
     // Exception table:
     //   from	to	target	type
@@ -157,7 +157,7 @@ public class InstallPlugins
       if (localFile2.exists()) {
         localFile2.delete();
       }
-      bmhc.a(paramString, localFile1);
+      bkli.a(paramString, localFile1);
     }
     catch (Exception paramString)
     {
@@ -195,45 +195,45 @@ public class InstallPlugins
   private static boolean a(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: getstatic 130	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   0: getstatic 132	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   3: astore 5
-    //   5: new 138	java/io/File
+    //   5: new 140	java/io/File
     //   8: dup
     //   9: aload 5
-    //   11: invokestatic 136	com/tencent/mobileqq/pluginsdk/PluginUtils:getPluginInstallDir	(Landroid/content/Context;)Ljava/io/File;
+    //   11: invokestatic 138	com/tencent/mobileqq/pluginsdk/PluginUtils:getPluginInstallDir	(Landroid/content/Context;)Ljava/io/File;
     //   14: aload_0
-    //   15: invokespecial 141	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   15: invokespecial 143	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   18: astore 6
     //   20: aload 6
-    //   22: invokevirtual 145	java/io/File:exists	()Z
+    //   22: invokevirtual 147	java/io/File:exists	()Z
     //   25: ifeq +22 -> 47
     //   28: ldc 16
     //   30: aload_0
-    //   31: invokevirtual 173	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   31: invokevirtual 175	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   34: ifeq +13 -> 47
-    //   37: ldc 66
+    //   37: ldc 68
     //   39: iconst_1
-    //   40: ldc 175
-    //   42: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   40: ldc 177
+    //   42: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   45: iconst_1
     //   46: ireturn
     //   47: aload_0
-    //   48: invokestatic 181	com/tencent/mobileqq/pluginsdk/PluginStatic:getClassLoader	(Ljava/lang/String;)Ljava/lang/ClassLoader;
+    //   48: invokestatic 183	com/tencent/mobileqq/pluginsdk/PluginStatic:getClassLoader	(Ljava/lang/String;)Ljava/lang/ClassLoader;
     //   51: ifnull +13 -> 64
-    //   54: ldc 66
+    //   54: ldc 68
     //   56: iconst_1
-    //   57: ldc 183
-    //   59: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   57: ldc 185
+    //   59: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   62: iconst_1
     //   63: ireturn
     //   64: aload_0
-    //   65: invokestatic 185	com/tencent/mobileqq/startup/step/InstallPlugins:a	(Ljava/lang/String;)V
+    //   65: invokestatic 187	com/tencent/mobileqq/startup/step/InstallPlugins:a	(Ljava/lang/String;)V
     //   68: aconst_null
     //   69: astore_3
     //   70: aload 5
     //   72: aload_0
     //   73: aload 6
-    //   75: invokestatic 189	com/tencent/mobileqq/pluginsdk/PluginUtils:extractPluginAndGetMd5Code	(Landroid/content/Context;Ljava/lang/String;Ljava/io/File;)Ljava/lang/String;
+    //   75: invokestatic 191	com/tencent/mobileqq/pluginsdk/PluginUtils:extractPluginAndGetMd5Code	(Landroid/content/Context;Ljava/lang/String;Ljava/io/File;)Ljava/lang/String;
     //   78: astore 4
     //   80: aload 4
     //   82: astore_3
@@ -242,160 +242,160 @@ public class InstallPlugins
     //   87: ifne +260 -> 347
     //   90: aload 5
     //   92: aload_0
-    //   93: invokestatic 193	com/tencent/mobileqq/pluginsdk/PluginUtils:getPluginLibPath	(Landroid/content/Context;Ljava/lang/String;)Ljava/io/File;
-    //   96: invokevirtual 196	java/io/File:getCanonicalPath	()Ljava/lang/String;
+    //   93: invokestatic 195	com/tencent/mobileqq/pluginsdk/PluginUtils:getPluginLibPath	(Landroid/content/Context;Ljava/lang/String;)Ljava/io/File;
+    //   96: invokevirtual 198	java/io/File:getCanonicalPath	()Ljava/lang/String;
     //   99: astore 4
     //   101: aload 6
-    //   103: invokevirtual 196	java/io/File:getCanonicalPath	()Ljava/lang/String;
+    //   103: invokevirtual 198	java/io/File:getCanonicalPath	()Ljava/lang/String;
     //   106: aload 4
-    //   108: invokestatic 200	com/tencent/mobileqq/pluginsdk/PluginUtils:extractLibs	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   108: invokestatic 202	com/tencent/mobileqq/pluginsdk/PluginUtils:extractLibs	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   111: astore 4
-    //   113: ldc 66
+    //   113: ldc 68
     //   115: iconst_1
-    //   116: new 68	java/lang/StringBuilder
+    //   116: new 70	java/lang/StringBuilder
     //   119: dup
-    //   120: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   123: ldc 202
-    //   125: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   120: invokespecial 71	java/lang/StringBuilder:<init>	()V
+    //   123: ldc 204
+    //   125: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   128: aload 4
-    //   130: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   136: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   130: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   133: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   136: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   139: aload 4
     //   141: invokestatic 46	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   144: ifeq +203 -> 347
     //   147: aload_0
     //   148: aload 6
-    //   150: invokevirtual 205	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   153: invokestatic 209	bmhe:a	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   150: invokevirtual 207	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   153: invokestatic 211	bklk:a	(Ljava/lang/String;Ljava/lang/String;)Z
     //   156: ifeq +191 -> 347
     //   159: aload 5
     //   161: aload_0
-    //   162: invokestatic 213	com/tencent/mobileqq/pluginsdk/PluginStatic:getOrCreateClassLoader	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/ClassLoader;
+    //   162: invokestatic 215	com/tencent/mobileqq/pluginsdk/PluginStatic:getOrCreateClassLoader	(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/ClassLoader;
     //   165: astore 4
     //   167: aload 4
     //   169: aload_1
-    //   170: invokevirtual 219	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   170: invokevirtual 221	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
     //   173: astore 4
-    //   175: ldc 66
+    //   175: ldc 68
     //   177: iconst_1
-    //   178: new 68	java/lang/StringBuilder
+    //   178: new 70	java/lang/StringBuilder
     //   181: dup
-    //   182: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   185: ldc 221
-    //   187: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   182: invokespecial 71	java/lang/StringBuilder:<init>	()V
+    //   185: ldc 223
+    //   187: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   190: aload_1
-    //   191: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   194: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   197: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   191: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   194: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   197: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   200: aload 4
     //   202: ifnull +145 -> 347
-    //   205: new 223	cooperation/plugin/PluginInfo
+    //   205: new 225	cooperation/plugin/PluginInfo
     //   208: dup
-    //   209: invokespecial 224	cooperation/plugin/PluginInfo:<init>	()V
+    //   209: invokespecial 226	cooperation/plugin/PluginInfo:<init>	()V
     //   212: astore_1
     //   213: aload_1
     //   214: aload_0
-    //   215: putfield 227	cooperation/plugin/PluginInfo:mID	Ljava/lang/String;
+    //   215: putfield 229	cooperation/plugin/PluginInfo:mID	Ljava/lang/String;
     //   218: aload_1
     //   219: aload_3
-    //   220: putfield 230	cooperation/plugin/PluginInfo:mMD5	Ljava/lang/String;
+    //   220: putfield 232	cooperation/plugin/PluginInfo:mMD5	Ljava/lang/String;
     //   223: aload_1
     //   224: iconst_1
-    //   225: putfield 233	cooperation/plugin/PluginInfo:mUpdateType	I
+    //   225: putfield 235	cooperation/plugin/PluginInfo:mUpdateType	I
     //   228: aload_1
     //   229: iconst_0
-    //   230: putfield 236	cooperation/plugin/PluginInfo:mInstallType	I
+    //   230: putfield 238	cooperation/plugin/PluginInfo:mInstallType	I
     //   233: aload_1
     //   234: iconst_4
-    //   235: putfield 239	cooperation/plugin/PluginInfo:mState	I
+    //   235: putfield 241	cooperation/plugin/PluginInfo:mState	I
     //   238: aload_1
     //   239: aload 6
-    //   241: invokevirtual 243	java/io/File:length	()J
-    //   244: putfield 246	cooperation/plugin/PluginInfo:mLength	J
+    //   241: invokevirtual 245	java/io/File:length	()J
+    //   244: putfield 248	cooperation/plugin/PluginInfo:mLength	J
     //   247: aload_1
     //   248: aload 6
-    //   250: invokevirtual 205	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   253: putfield 249	cooperation/plugin/PluginInfo:mInstalledPath	Ljava/lang/String;
+    //   250: invokevirtual 207	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   253: putfield 251	cooperation/plugin/PluginInfo:mInstalledPath	Ljava/lang/String;
     //   256: aload_1
-    //   257: invokestatic 251	bmhe:a	()Ljava/lang/String;
-    //   260: putfield 254	cooperation/plugin/PluginInfo:mFingerPrint	Ljava/lang/String;
+    //   257: invokestatic 253	bklk:a	()Ljava/lang/String;
+    //   260: putfield 256	cooperation/plugin/PluginInfo:mFingerPrint	Ljava/lang/String;
     //   263: aload_1
     //   264: aload 5
-    //   266: invokestatic 136	com/tencent/mobileqq/pluginsdk/PluginUtils:getPluginInstallDir	(Landroid/content/Context;)Ljava/io/File;
-    //   269: invokestatic 257	bmhc:a	(Lcooperation/plugin/PluginInfo;Ljava/io/File;)V
-    //   272: ldc 66
+    //   266: invokestatic 138	com/tencent/mobileqq/pluginsdk/PluginUtils:getPluginInstallDir	(Landroid/content/Context;)Ljava/io/File;
+    //   269: invokestatic 259	bkli:a	(Lcooperation/plugin/PluginInfo;Ljava/io/File;)V
+    //   272: ldc 68
     //   274: iconst_1
-    //   275: ldc_w 259
-    //   278: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   275: ldc_w 261
+    //   278: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   281: iconst_1
     //   282: ireturn
     //   283: astore 4
-    //   285: invokestatic 264	bhmi:a	()F
+    //   285: invokestatic 267	com/tencent/mobileqq/utils/FileUtils:getAvailableInnernalMemorySize	()F
     //   288: fstore_2
-    //   289: ldc_w 266
+    //   289: ldc_w 269
     //   292: iconst_1
-    //   293: new 68	java/lang/StringBuilder
+    //   293: new 70	java/lang/StringBuilder
     //   296: dup
-    //   297: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   300: ldc_w 268
-    //   303: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   297: invokespecial 71	java/lang/StringBuilder:<init>	()V
+    //   300: ldc_w 271
+    //   303: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   306: aload 6
-    //   308: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   311: ldc_w 273
-    //   314: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   308: invokevirtual 274	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   311: ldc_w 276
+    //   314: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   317: fload_2
-    //   318: invokevirtual 276	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   321: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   318: invokevirtual 279	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   321: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   324: aload 4
-    //   326: invokestatic 164	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   326: invokestatic 166	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   329: goto -246 -> 83
     //   332: astore_1
-    //   333: ldc 66
+    //   333: ldc 68
     //   335: iconst_1
-    //   336: ldc 160
+    //   336: ldc 162
     //   338: aload_1
-    //   339: invokestatic 278	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   339: invokestatic 281	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   342: aload_0
-    //   343: invokestatic 281	com/tencent/mobileqq/pluginsdk/PluginStatic:removeClassLoader	(Ljava/lang/String;)Ljava/lang/ClassLoader;
+    //   343: invokestatic 284	com/tencent/mobileqq/pluginsdk/PluginStatic:removeClassLoader	(Ljava/lang/String;)Ljava/lang/ClassLoader;
     //   346: pop
     //   347: aload_0
-    //   348: invokestatic 185	com/tencent/mobileqq/startup/step/InstallPlugins:a	(Ljava/lang/String;)V
-    //   351: new 283	android/content/Intent
+    //   348: invokestatic 187	com/tencent/mobileqq/startup/step/InstallPlugins:a	(Ljava/lang/String;)V
+    //   351: new 286	android/content/Intent
     //   354: dup
-    //   355: ldc_w 285
-    //   358: invokespecial 287	android/content/Intent:<init>	(Ljava/lang/String;)V
+    //   355: ldc_w 288
+    //   358: invokespecial 290	android/content/Intent:<init>	(Ljava/lang/String;)V
     //   361: astore_1
     //   362: aload_1
-    //   363: invokestatic 293	mqq/app/MobileQQ:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   366: invokevirtual 298	com/tencent/qphone/base/util/BaseApplication:getPackageName	()Ljava/lang/String;
-    //   369: invokevirtual 302	android/content/Intent:setPackage	(Ljava/lang/String;)Landroid/content/Intent;
+    //   363: invokestatic 296	mqq/app/MobileQQ:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   366: invokevirtual 301	com/tencent/qphone/base/util/BaseApplication:getPackageName	()Ljava/lang/String;
+    //   369: invokevirtual 305	android/content/Intent:setPackage	(Ljava/lang/String;)Landroid/content/Intent;
     //   372: pop
     //   373: aload_1
-    //   374: ldc_w 304
-    //   377: getstatic 307	com/tencent/common/app/BaseApplicationImpl:processName	Ljava/lang/String;
-    //   380: invokevirtual 311	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   374: ldc_w 307
+    //   377: getstatic 310	com/tencent/common/app/BaseApplicationImpl:processName	Ljava/lang/String;
+    //   380: invokevirtual 314	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   383: pop
     //   384: aload_1
-    //   385: ldc_w 313
+    //   385: ldc_w 316
     //   388: aload_0
-    //   389: invokevirtual 311	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   389: invokevirtual 314	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   392: pop
     //   393: aload 5
     //   395: aload_1
-    //   396: invokevirtual 319	android/content/Context:sendBroadcast	(Landroid/content/Intent;)V
-    //   399: ldc 66
+    //   396: invokevirtual 322	android/content/Context:sendBroadcast	(Landroid/content/Intent;)V
+    //   399: ldc 68
     //   401: iconst_1
-    //   402: ldc_w 321
-    //   405: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   402: ldc_w 324
+    //   405: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   408: iconst_0
     //   409: ireturn
     //   410: astore_1
-    //   411: ldc 66
+    //   411: ldc 68
     //   413: iconst_1
-    //   414: ldc 160
+    //   414: ldc 162
     //   416: aload_1
-    //   417: invokestatic 164	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   417: invokestatic 166	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   420: goto -73 -> 347
     // Local variable table:
     //   start	length	slot	name	signature
@@ -425,13 +425,13 @@ public class InstallPlugins
     if (localObject1 != null)
     {
       QLog.i("plugin_tag.InstallPlugins", 1, "preinstall by pluginmanger");
-      localObject1 = (bmgk)((QQAppInterface)localObject1).getManager(27);
+      localObject1 = (bkkq)((QQAppInterface)localObject1).getManager(27);
       localObject3 = jdField_a_of_type_ArrayOfJavaLangString;
       int j = localObject3.length;
       int i = 0;
       while (i < j)
       {
-        ((bmgk)localObject1).installPlugin(localObject3[i], null);
+        ((bkkq)localObject1).installPlugin(localObject3[i], null);
         i += 1;
       }
       try
@@ -472,9 +472,9 @@ public class InstallPlugins
       {
         QLog.d("plugin_tag.InstallPlugins", 1, "", localThrowable);
         QLog.i("plugin_tag.InstallPlugins", 1, "qzone");
-        jdField_a_of_type_Bdij = new bdij();
-        jdField_a_of_type_Bdij.jdField_a_of_type_Boolean = a("qzone_plugin.apk", "com.qzone.Foo");
-        jdField_a_of_type_Bdij.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
+        jdField_a_of_type_Bcaz = new bcaz();
+        jdField_a_of_type_Bcaz.jdField_a_of_type_Boolean = a("qzone_plugin.apk", "com.qzone.Foo");
+        jdField_a_of_type_Bcaz.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
         QLog.i("plugin_tag.InstallPlugins", 1, "qwallet");
         a("qwallet_plugin.apk", "com.qwallet.utils.Foo");
       }
@@ -489,7 +489,7 @@ public class InstallPlugins
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InstallPlugins
  * JD-Core Version:    0.7.0.1
  */

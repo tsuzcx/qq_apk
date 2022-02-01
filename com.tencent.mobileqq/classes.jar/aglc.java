@@ -1,27 +1,19 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aglc
+class aglc
+  implements View.OnClickListener
 {
-  public float a;
-  public int a;
-  public long a;
-  public aglb a;
-  public View a;
-  public boolean a;
-  public float b;
-  public int b;
-  public boolean b;
-  public float c = 0.0F;
-  public float d = 1.0F;
-  public float e = 1.0F;
-  public float f = 1.0F;
+  aglc(aglb paramaglb) {}
   
-  public aglc()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
+    ChatMessage localChatMessage = this.a.a(paramView);
+    this.a.a.b(localChatMessage);
+    this.a.a.d();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

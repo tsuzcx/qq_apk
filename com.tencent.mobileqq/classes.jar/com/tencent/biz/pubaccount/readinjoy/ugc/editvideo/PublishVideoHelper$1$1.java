@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.ugc.editvideo;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
-import rfd;
+import rmd;
 
 public class PublishVideoHelper$1$1
   implements Runnable
 {
-  public PublishVideoHelper$1$1(rfd paramrfd, int paramInt) {}
+  public PublishVideoHelper$1$1(rmd paramrmd, int paramInt) {}
   
   public void run()
   {

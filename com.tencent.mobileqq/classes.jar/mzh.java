@@ -1,35 +1,46 @@
-import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public class mzh
 {
-  public int a;
-  public String a;
-  public String b = null;
-  
-  public mzh()
+  public <VH extends mzg<?>> VH a(int paramInt, @NonNull ViewGroup paramViewGroup, @NonNull Class<VH> paramClass)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-  }
-  
-  public boolean a()
-  {
-    return !TextUtils.isEmpty(this.b);
-  }
-  
-  public boolean b()
-  {
-    return (a()) && (this.jdField_a_of_type_Int == 1);
-  }
-  
-  public String toString()
-  {
-    return "{redPoint: " + this.jdField_a_of_type_Int + ", iconUrl: " + this.jdField_a_of_type_JavaLangString + ", jumpUrl: " + this.b + "}";
+    try
+    {
+      Constructor localConstructor = paramClass.getDeclaredConstructor(new Class[] { View.class });
+      localConstructor.setAccessible(true);
+      paramViewGroup = (mzg)localConstructor.newInstance(new Object[] { LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false) });
+      return paramViewGroup;
+    }
+    catch (NoSuchMethodException paramViewGroup)
+    {
+      paramViewGroup.printStackTrace();
+      throw new RuntimeException(paramClass.getName() + " has no match constructor!");
+    }
+    catch (IllegalAccessException paramViewGroup)
+    {
+      paramViewGroup.printStackTrace();
+      return null;
+    }
+    catch (InstantiationException paramViewGroup)
+    {
+      paramViewGroup.printStackTrace();
+      return null;
+    }
+    catch (InvocationTargetException paramViewGroup)
+    {
+      paramViewGroup.printStackTrace();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mzh
  * JD-Core Version:    0.7.0.1
  */

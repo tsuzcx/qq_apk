@@ -5,14 +5,14 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import bizh;
-import bizi;
+import bhfj;
+import bhfk;
 
 public class CommonImageView
   extends ImageView
-  implements bizi
+  implements bhfk
 {
-  private bizh a;
+  private bhfj a;
   
   public CommonImageView(Context paramContext)
   {
@@ -29,12 +29,12 @@ public class CommonImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a(Canvas paramCanvas)
+  public void b(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
   }
   
-  public void b(Canvas paramCanvas)
+  public void c(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
   }
@@ -59,15 +59,15 @@ public class CommonImageView
     super.onDraw(paramCanvas);
   }
   
-  public void setMosaicEffect(bizh parambizh)
+  public void setMosaicEffect(bhfj parambhfj)
   {
-    bizh localbizh = this.a;
-    if (localbizh != null) {
-      localbizh.a(null);
+    bhfj localbhfj = this.a;
+    if (localbhfj != null) {
+      localbhfj.a(null);
     }
-    this.a = parambizh;
-    if (parambizh != null) {
-      parambizh.a(this);
+    this.a = parambhfj;
+    if (parambhfj != null) {
+      parambhfj.a(this);
     }
     invalidate();
   }

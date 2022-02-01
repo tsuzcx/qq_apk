@@ -49,21 +49,57 @@
         }
       },
       {
-        "view_type": "ReadInJoyCommentView",
-        "view_id": "id_article_comment",
+        "view_type":"container",
+        "layout_type":"layout_relative",
         "margin_left": "12",
         "margin_bottom": "10",
-        "attributes": {
-          "setPreAccountUin:": "$feeds_pre_account_uin",
-          "setArticleModel:": "-1"
+        "height":{
+          "type":"wrap_content"
         },
-        "height": {
-          "type": "wrap_content"
+        "width":{
+          "type":"wrap_content"
         },
-        "width": {
-          "type": "relative",
-          "value": "351"
-        }
+        "subviews":[
+          {
+            "view_type": "ReadInJoyCommentView",
+            "view_id": "id_article_comment",
+            "attributes": {
+              "setPreAccountUin:": "$feeds_pre_account_uin",
+              "setArticleModel:": "-1"
+            },
+            "height": {
+              "type": "wrap_content"
+            },
+            "width": {
+              "type": "relative",
+              "value": "347"
+            }
+          },
+          {
+            "view_type": "UILabel",
+            "view_id": "id_novel_text",
+            "align_parent_bottom": "YES",
+            "align_parent_right": "YES",
+            "default_visible": "YES",
+            "margin_top": "-22",
+            "margin_right": "25",
+            "below_of_view": "id_article_comment",
+            "height": {
+              "type": "relative",
+              "value": "20"
+            },
+            "width": {
+              "type": "wrap_content"
+            },
+            "attributes": {
+              "setText:": "$read_novel_text",
+              "setFontSizeString:": "16",
+              "setTextColorString:": "#FF136CE9",
+              "setBackgroundColorString:": "#FFFFFFFF",
+              "setTextAlignmentString:": "1"
+            }
+          }
+        ]
       },
       {
         "$includeComponet": "componet/read_article.geojson"
@@ -85,7 +121,8 @@
           "value": "375"
         },
         "attributes": {
-          "setArticleModel:": "-1"
+          "setArticleModel:": "-1",
+          "setCornerUrls:": ["http://pub.idqqimg.com/pc/misc/files/20190731/a028a8dc813242798fea97e6d5e97bd7.png", "http://pub.idqqimg.com/pc/misc/files/20190731/2d50072506b64296a134f2e67e7b3908.png", "http://pub.idqqimg.com/pc/misc/files/20190731/8faadc88c8bd42d19777de82572656df.png", "http://pub.idqqimg.com/pc/misc/files/20190731/900ec8daa82e480382ccc52bd3f0ee0e.png"]
         }
       },
       {
@@ -98,8 +135,8 @@
         "view_type":"UIView",
         "view_id":"id_flow_guide_separator",
         "default_visible":"NO",
-        "margin_left":"6",
-        "margin_right":"6",
+        "margin_left":"14",
+        "margin_right":"14",
         "margin_top":"0",
         "height":{
           "type":"absolutely",
@@ -110,7 +147,6 @@
           "type": "match_parent"
         },
         "attributes":{
-          "setFrameString:":"-1",
           "setBackgroundColorString:":"#E5E5E5",
           "setAttatchInfo:":"$separatorShouldShould"
         }
@@ -119,7 +155,21 @@
         "$includeComponet": "componet/flow_guide_bottom_1_2_3.geojson"
       },
       {
-        "$includeComponet": "componet/separator.geojson"
+          "view_type": "container",
+          "default_visible": "YES",
+          "margin_top": "-10",
+          "height": {
+              "type": "wrap_content"
+          },
+          "width": {
+              "type": "relative",
+              "value": "375"
+          },
+          "subviews": [
+              {
+                  "$includeComponet": "componet/separator_normal_bottom.geojson"
+              }
+          ]
       }
     ]
   }

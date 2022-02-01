@@ -1,28 +1,80 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ListView;
 
 public class plq
-  implements plz
 {
-  public plq(VideoView paramVideoView) {}
+  static int jdField_a_of_type_Int = -1;
+  static long jdField_a_of_type_Long;
+  static int jdField_b_of_type_Int = -1;
+  static long jdField_b_of_type_Long;
+  static int c;
   
-  public void a(String[] paramArrayOfString1, String[] arg2)
+  public static int a()
   {
-    if ((??? != null) && (???.length > 0) && (paramArrayOfString1 != null) && (paramArrayOfString1.length > 0))
+    return c;
+  }
+  
+  static void a(AbsListView paramAbsListView)
+  {
+    pls localpls = new pls();
+    int i = paramAbsListView.getLastVisiblePosition();
+    int j = ((ListAdapter)paramAbsListView.getAdapter()).getCount();
+    localpls.jdField_a_of_type_Int = b();
+    localpls.jdField_b_of_type_Int = Math.abs(jdField_b_of_type_Int - jdField_a_of_type_Int);
+    localpls.jdField_a_of_type_Long = (jdField_b_of_type_Long - jdField_a_of_type_Long);
+    localpls.c = (j - i);
+    localpls.jdField_b_of_type_Long = jdField_b_of_type_Long;
+    localpls.d = j;
+    plr.a(localpls);
+  }
+  
+  public static void a(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramAbsListView == null) || (paramAbsListView.getChildCount() == 0) || (paramAbsListView.getAdapter() == null)) {}
+    do
     {
-      String str = ???[0];
-      synchronized (this.a)
+      do
       {
-        if ((!TextUtils.isEmpty(VideoView.access$3200(this.a))) && (VideoView.access$3200(this.a).equals(paramArrayOfString1[0])))
-        {
-          this.a.openVideoByUrl(str);
-          return;
-        }
-        QLog.d("gifvideo.VideoView", 2, "not current video");
+        return;
+        b(paramAbsListView, paramInt);
+      } while ((plr.jdField_a_of_type_Long < 0L) || (plr.jdField_b_of_type_Long < 0L));
+      switch (paramInt)
+      {
+      default: 
+        return;
       }
+    } while ((jdField_b_of_type_Int >= 0) || (jdField_b_of_type_Long >= 0L));
+    jdField_b_of_type_Int = paramAbsListView.getFirstVisiblePosition();
+    jdField_b_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+    a(paramAbsListView);
+    return;
+    jdField_a_of_type_Int = paramAbsListView.getFirstVisiblePosition();
+    jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+    jdField_b_of_type_Int = -1;
+    jdField_b_of_type_Long = -1L;
+  }
+  
+  static int b()
+  {
+    if (jdField_a_of_type_Int > jdField_b_of_type_Int) {
+      return 0;
     }
-    QLog.d("gifvideo.VideoView", 2, "urls null");
+    return 1;
+  }
+  
+  private static void b(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt != 0) {
+      return;
+    }
+    c = paramAbsListView.getFirstVisiblePosition() - ((ListView)paramAbsListView).getHeaderViewsCount();
+    if (c < 0) {
+      c = 0;
+    }
+    QLog.d("ReadinjoySPEventReport", 2, new Object[] { "[onScrollStateChanged] record firstItemPos : ", Integer.valueOf(c) });
   }
 }
 

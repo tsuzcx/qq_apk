@@ -761,7 +761,7 @@ public class VideoEmbeddedWidgetClient
     {
       label49:
       return;
-      if ((getCurrState() != this.stateCanPlay) || (this.videoTexture == null)) {
+      if ((getCurrState() != this.stateCanPlay) || (this.videoTexture == null) || (this.mMediaPlayer == null)) {
         continue;
       }
       QLog.d("miniapp-embedded", 1, "stateCanPlay!!!!");
@@ -779,7 +779,7 @@ public class VideoEmbeddedWidgetClient
           this.renderer.resumeRender();
         }
       }
-      if (((!this.autoplay) && (!this.hasPlayClicked)) || (this.mMediaPlayer == null)) {
+      if ((!this.autoplay) && (!this.hasPlayClicked)) {
         break;
       }
       try

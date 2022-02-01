@@ -1,33 +1,8 @@
-import NS_MOBILE_PHOTO.operation_red_touch_req;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.view.View;
 
-public class bapz
-  extends QzoneExternalRequest
+public abstract interface bapz
 {
-  public JceStruct a;
-  
-  public bapz(long paramLong, operation_red_touch_req paramoperation_red_touch_req)
-  {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.a = paramoperation_red_touch_req;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.asy_photo.OperationRedTouch";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "OperationRedTouch";
-  }
+  public abstract void a(View paramView, int paramInt, bapy parambapy);
 }
 
 

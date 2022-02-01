@@ -1,124 +1,91 @@
-import PayMQQ.UniPayRequest;
-import PayMQQ.UniPayResponse;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import com.tencent.mobileqq.minicode.recog.MiniCodeDetector;
+import com.tencent.mobileqq.minicode.recog.RecogCallback;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.List;
 
-public class aokc
-  extends anud
+class aokc
+  implements RecogCallback
 {
-  private ArrayList<aokd> a = new ArrayList();
+  aokc(aokb paramaokb, Rect paramRect, long paramLong, Object paramObject, MiniCodeDetector paramMiniCodeDetector, boolean[] paramArrayOfBoolean, Bitmap paramBitmap) {}
   
-  public aokc(AppInterface paramAppInterface)
+  public void onDetectReady(int paramInt)
   {
-    super(paramAppInterface);
-  }
-  
-  protected aokc(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
-  
-  private void a()
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((aokd)localIterator.next()).a();
+    if ((this.jdField_a_of_type_ComTencentMobileqqMinicodeRecogMiniCodeDetector != null) && (aokb.a(this.jdField_a_of_type_Aokb) != null)) {
+      this.jdField_a_of_type_ArrayOfBoolean[0] = this.jdField_a_of_type_ComTencentMobileqqMinicodeRecogMiniCodeDetector.detect(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Long);
     }
-  }
-  
-  public void a(aokd paramaokd)
-  {
-    if (paramaokd == null) {}
-    while (this.a.contains(paramaokd)) {
-      return;
-    }
-    this.a.add(paramaokd);
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.app == null) {
-      paramString = new UniPayRequest(this.mApp.getCurrentAccountUin(), "android" + paramString);
-    }
-    for (ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.mApp.getCurrentAccountUin(), "VipSTCheckServer.UinPay");; localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "VipSTCheckServer.UinPay"))
+    for (;;)
     {
-      localToServiceMsg.extraData.putSerializable("UniPayRequest", paramString);
-      super.send(localToServiceMsg);
-      return;
-      paramString = new UniPayRequest(this.app.getCurrentAccountUin(), "android" + paramString);
-    }
-  }
-  
-  public void b(aokd paramaokd)
-  {
-    if ((paramaokd != null) && (this.a.contains(paramaokd))) {
-      this.a.remove(paramaokd);
-    }
-  }
-  
-  protected Class<? extends anui> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null)) {}
-    do
-    {
-      do
-      {
-        return;
-        str1 = paramToServiceMsg.getServiceCmd();
-      } while (TextUtils.isEmpty(str1));
-      if ((str1.compareTo("VipSTCheckServer.UinPay") == 0) && (QLog.isColorLevel())) {
-        QLog.i("UniPayHandler", 2, "req---" + paramToServiceMsg + ",res----" + paramFromServiceMsg + ",data-----" + paramObject);
+      if (QLog.isColorLevel()) {
+        QLog.i("MiniRecog.MiniCodeController", 2, "detectSync onDetectReady exec=" + this.jdField_a_of_type_ArrayOfBoolean[0]);
       }
-    } while (str1.compareTo("VipSTCheckServer.UinPay") != 0);
-    paramFromServiceMsg = (UniPayResponse)paramObject;
-    paramToServiceMsg = paramFromServiceMsg.getSUin();
-    int i = paramFromServiceMsg.getIShowOpen();
-    int j = paramFromServiceMsg.getIUniPayType();
-    new HashMap();
-    Object localObject = paramFromServiceMsg.getMapResponse();
-    paramFromServiceMsg = (String)((Map)localObject).get("cur_st");
-    paramObject = (String)((Map)localObject).get("net_mobile_club");
-    String str1 = (String)((Map)localObject).get("open_month");
-    String str2 = (String)((Map)localObject).get("platform");
-    String str3 = (String)((Map)localObject).get("ret");
-    String str4 = (String)((Map)localObject).get("show_open");
-    String str5 = (String)((Map)localObject).get("uin");
-    localObject = (String)((Map)localObject).get("uin_pay_type");
-    if (QLog.isColorLevel()) {
-      QLog.d("UniPayHandler", 2, "sUin==" + paramToServiceMsg + ",isShowOpen==" + i + ",iUniPayType==" + j);
+      if (this.jdField_a_of_type_ArrayOfBoolean[0] == 0) {}
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_a_of_type_JavaLangObject.notifyAll();
+        return;
+        this.jdField_a_of_type_ArrayOfBoolean[0] = false;
+      }
     }
-    SharedPreferences.Editor localEditor = this.app.getApp().getSharedPreferences("uniPaySp_" + paramToServiceMsg, 4).edit();
-    localEditor.putString("sUin", paramToServiceMsg);
-    localEditor.putInt("isShowOpen", i);
-    localEditor.putInt("iUinpPayType", j);
-    localEditor.putString("cur_st", paramFromServiceMsg);
-    localEditor.putString("net_mobile_club", paramObject);
-    localEditor.putString("open_month", str1);
-    localEditor.putString("platform", str2);
-    localEditor.putString("ret", str3);
-    localEditor.putString("show_open", str4);
-    localEditor.putString("uin", str5);
-    localEditor.putString("uin_pay_type", (String)localObject);
-    localEditor.commit();
-    a();
   }
+  
+  public void onDetectResult(List<aojx> arg1, long paramLong)
+  {
+    int i = 0;
+    label55:
+    boolean bool;
+    label68:
+    int j;
+    int k;
+    int m;
+    if (i < ???.size())
+    {
+      if (((aojx)???.get(i)).jdField_a_of_type_Int != 2) {
+        break label217;
+      }
+      ??? = (aojx)???.get(i);
+      this.jdField_a_of_type_AndroidGraphicsRect.set(???.jdField_a_of_type_AndroidGraphicsRect);
+      if (QLog.isColorLevel())
+      {
+        if (??? == null) {
+          break label226;
+        }
+        bool = true;
+        i = this.jdField_a_of_type_AndroidGraphicsRect.left;
+        j = this.jdField_a_of_type_AndroidGraphicsRect.top;
+        k = this.jdField_a_of_type_AndroidGraphicsRect.width();
+        m = this.jdField_a_of_type_AndroidGraphicsRect.height();
+        if (??? == null) {
+          break label232;
+        }
+      }
+    }
+    label217:
+    label226:
+    label232:
+    for (float f = ???.jdField_a_of_type_Float;; f = 0.0F)
+    {
+      QLog.i("MiniRecog.MiniCodeController", 2, String.format("detectSync onDetectResult=%b [left,top,w,h,score]=[%d, %d, %d, %d]", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Float.valueOf(f) }));
+      if (paramLong == this.jdField_a_of_type_Long)
+      {
+        synchronized (this.jdField_a_of_type_JavaLangObject)
+        {
+          this.jdField_a_of_type_JavaLangObject.notifyAll();
+          return;
+        }
+        ??? = null;
+        break label55;
+      }
+      return;
+      i += 1;
+      break;
+      bool = false;
+      break label68;
+    }
+  }
+  
+  public void onSaveImg(long paramLong) {}
 }
 
 

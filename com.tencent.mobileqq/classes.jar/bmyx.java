@@ -1,22 +1,33 @@
-public class bmyx
+import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+
+public abstract interface bmyx
 {
-  public int a;
-  public String a;
-  public String b;
+  public abstract int a();
   
-  public bmyx() {}
+  public abstract void a(int paramInt);
   
-  public bmyx(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = "";
-  }
+  public abstract void a(int paramInt, QIMFilterCategoryItem paramQIMFilterCategoryItem);
   
-  public String toString()
-  {
-    return "[id=" + this.jdField_a_of_type_Int + ",fTypePath=" + this.jdField_a_of_type_JavaLangString + ", tTYpePath=" + this.b + "]";
-  }
+  public abstract void a(int paramInt, Object... paramVarArgs);
+  
+  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, String paramString);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d(int paramInt);
 }
 
 

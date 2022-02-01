@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.app.hiddenchat;
 
-import almc;
+import akju;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import aoqy;
-import apaw;
-import axan;
+import anjh;
+import anuz;
+import avnu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.qphone.base.util.QLog;
@@ -21,52 +20,32 @@ class HiddenChatFragment$1
   
   public void run()
   {
-    int j = 0;
-    Object localObject1 = HiddenChatFragment.a(this.this$0).a().a().a();
+    Object localObject1 = HiddenChatFragment.a(this.this$0).getProxyManager().a().a();
     HiddenChatFragment.a(this.this$0).a((List)localObject1);
-    Object localObject2 = HiddenChatFragment.a((List)localObject1, axan.a().c(HiddenChatFragment.a(this.this$0)));
+    Object localObject2 = HiddenChatFragment.a((List)localObject1, avnu.a().c(HiddenChatFragment.a(this.this$0)));
     localObject1 = new ArrayList(((List)localObject2).size());
-    QQAppInterface localQQAppInterface = HiddenChatFragment.a(this.this$0);
-    FragmentActivity localFragmentActivity = this.this$0.getActivity();
-    int i;
-    if (localObject2 != null) {
-      i = ((List)localObject2).size();
+    akju.a((List)localObject2, HiddenChatFragment.a(this.this$0), this.this$0.getActivity(), (List)localObject1, ((List)localObject2).size());
+    if (QLog.isColorLevel()) {
+      QLog.i("tag_hidden_chat", 2, "data|size" + ((List)localObject1).size());
     }
-    for (;;)
+    try
     {
-      almc.a((List)localObject2, localQQAppInterface, localFragmentActivity, (List)localObject1, i);
-      if (QLog.isColorLevel())
+      Collections.sort((List)localObject1, HiddenChatFragment.a(this.this$0));
+      if (HiddenChatFragment.a(this.this$0) != null)
       {
-        localObject2 = new StringBuilder().append("data|size");
-        if (localObject1 != null) {
-          break label217;
-        }
-        i = j;
-        QLog.i("tag_hidden_chat", 2, i);
+        localObject2 = HiddenChatFragment.a(this.this$0).obtainMessage(2);
+        ((Message)localObject2).obj = localObject1;
+        HiddenChatFragment.a(this.this$0).removeMessages(2);
+        HiddenChatFragment.a(this.this$0).sendMessage((Message)localObject2);
       }
-      try
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        Collections.sort((List)localObject1, HiddenChatFragment.a(this.this$0));
-        if (HiddenChatFragment.a(this.this$0) != null)
-        {
-          localObject2 = HiddenChatFragment.a(this.this$0).obtainMessage(2);
-          ((Message)localObject2).obj = localObject1;
-          HiddenChatFragment.a(this.this$0).removeMessages(2);
-          HiddenChatFragment.a(this.this$0).sendMessage((Message)localObject2);
-        }
-        return;
-        i = 0;
-        continue;
-        label217:
-        i = ((List)localObject1).size();
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("RecentDataListManager", 2, "Comparator Exception: ", localException);
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("RecentDataListManager", 2, "Comparator Exception: ", localException);
         }
       }
     }

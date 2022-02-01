@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.tim;
 
-import aiuk;
+import ahov;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
@@ -10,30 +10,30 @@ import com.tencent.qphone.base.util.QLog;
 public class TIMUserManager$1
   implements Runnable
 {
-  public TIMUserManager$1(aiuk paramaiuk, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
+  public TIMUserManager$1(ahov paramahov, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
   
   public void run()
   {
-    if (aiuk.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b) == 0) {
-      if (aiuk.a(this.this$0, this.b))
+    if (ahov.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b) == 0) {
+      if (ahov.a(this.this$0, this.b))
       {
-        aiuk.a(this.this$0);
-        aiuk.a(this.this$0, false);
-        aiuk.a(this.this$0, 2);
+        ahov.a(this.this$0);
+        ahov.a(this.this$0, false);
+        ahov.a(this.this$0, 2);
         SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).edit();
-        localEditor.putBoolean("tim_user_special_need_force_download", aiuk.a(this.this$0));
+        localEditor.putBoolean("tim_user_special_need_force_download", ahov.a(this.this$0));
         localEditor.commit();
       }
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("TIMUserManager", 2, this.jdField_a_of_type_Boolean + " startDownLoadTimTheme TimIconsState " + aiuk.a(this.this$0));
+        QLog.i("TIMUserManager", 2, this.jdField_a_of_type_Boolean + " startDownLoadTimTheme TimIconsState " + ahov.a(this.this$0));
       }
       return;
-      aiuk.a(this.this$0, 4);
+      ahov.a(this.this$0, 4);
       continue;
-      aiuk.a(this.this$0, 3);
+      ahov.a(this.this$0, 3);
     }
   }
 }

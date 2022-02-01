@@ -1,16 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.res.Resources;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.os.MqqHandler;
 
-class aimt
-  implements View.OnClickListener
+public class aimt
+  extends MqqHandler
 {
-  aimt(aimn paramaimn) {}
+  public aimt(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    aimn.a(this.a, paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    case 1015: 
+    case 1017: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (TroopWithCommonFriendsFragment.a(this.a) == null);
+      TroopWithCommonFriendsFragment.a(this.a).notifyDataSetChanged();
+      return;
+    case 1014: 
+      paramMessage = this.a.a.getResources().getString(2131718765);
+      QQToast.a(this.a.a, 1, paramMessage, 0).b(this.a.a());
+      return;
+    case 1016: 
+      QQToast.a(this.a.a, this.a.getString(2131718128), 0).b(this.a.a());
+      return;
+    }
+    QQToast.a(this.a.a, this.a.getString(2131718115), 0).b(this.a.a());
   }
 }
 

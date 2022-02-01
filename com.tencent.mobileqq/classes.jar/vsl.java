@@ -1,19 +1,15 @@
-import feedcloud.FeedCloudMeta.StFeed;
-import qqcircle.QQCircleFeedBase.StPolyLike;
-
-class vsl
-  implements aazo
+public class vsl
+  extends vko
 {
-  vsl(vsj paramvsj, FeedCloudMeta.StFeed paramStFeed, int paramInt, QQCircleFeedBase.StPolyLike paramStPolyLike) {}
-  
-  public void a()
-  {
-    if (nny.a(vsj.a(this.jdField_a_of_type_Vsj)))
-    {
-      this.jdField_a_of_type_Vsj.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Int, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike);
-      vsj.a(this.jdField_a_of_type_Vsj, true);
-    }
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 

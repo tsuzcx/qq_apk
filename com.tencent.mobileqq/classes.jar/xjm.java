@@ -1,96 +1,63 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.VideoUrlEntry;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoFullInfoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoFullInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoUrl;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailListView;
+import com.tencent.biz.qqstory.utils.UIUtils;
 
-public abstract class xjm
-  extends nko
+public class xjm
+  extends ysg
 {
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static final String KEY = "DetailEmptySegment";
+  
+  public xjm(Context paramContext)
   {
-    long l = paramBundle.getLong("key_for_start_time");
-    l = System.currentTimeMillis() - l;
-    Object localObject1 = new qqstory_service.RspBatchGetVideoFullInfoList();
-    if ((paramInt != 0) || (paramArrayOfByte == null))
+    super(paramContext);
+  }
+  
+  public void N_()
+  {
+    if (((StoryDetailListView)a()).a())
     {
-      a(paramInt, null, null);
-      yup.b("story_net", xdo.a, 0, paramInt, new String[] { "", l + "", yup.a(BaseApplication.getContext()) });
-      return null;
+      this.jdField_a_of_type_Boolean = false;
+      return;
     }
-    for (;;)
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View a(int paramInt, xsh paramxsh, ViewGroup paramViewGroup)
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)) {}
+    for (paramInt = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight();; paramInt = 0)
     {
-      try
-      {
-        ((qqstory_service.RspBatchGetVideoFullInfoList)localObject1).mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = (qqstory_struct.ErrorInfo)((qqstory_service.RspBatchGetVideoFullInfoList)localObject1).result.get();
-        Object localObject2 = (qqstory_struct.StoryVideoFullInfo)((qqstory_service.RspBatchGetVideoFullInfoList)localObject1).video_list.get(0);
-        paramBundle = paramArrayOfByte.error_desc.get().toStringUtf8();
-        paramInt = paramArrayOfByte.error_code.get();
-        if (paramInt == 0)
-        {
-          paramBundle = new StoryVideoItem();
-          paramBundle.convertFrom((qqstory_struct.StoryVideoFullInfo)localObject2);
-          paramBundle.mInteractStatus = ((qqstory_service.RspBatchGetVideoFullInfoList)localObject1).interact_status.get();
-          if (paramBundle.mErrorCode == 0) {
-            ((wte)wth.a(5)).a(paramBundle.mVid, paramBundle);
-          }
-          localObject2 = ((qqstory_struct.StoryVideoFullInfo)localObject2).compressed_video.get();
-          if (localObject2 != null)
-          {
-            localObject1 = new ArrayList(((List)localObject2).size());
-            localObject2 = ((List)localObject2).iterator();
-            if (((Iterator)localObject2).hasNext())
-            {
-              qqstory_struct.VideoUrl localVideoUrl = (qqstory_struct.VideoUrl)((Iterator)localObject2).next();
-              VideoUrlEntry localVideoUrlEntry = new VideoUrlEntry();
-              localVideoUrlEntry.vid = paramBundle.mVid;
-              localVideoUrlEntry.videoUrlLevel = localVideoUrl.video_level.get();
-              localVideoUrlEntry.videoUrl = localVideoUrl.video_url.get();
-              ((List)localObject1).add(localVideoUrlEntry);
-              continue;
-            }
-          }
-        }
-        a(paramInt, paramBundle, null);
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.qqstory.player.PlayModeUtils", 2, "getVideoInfo - onResult, InvalidProtocolBufferMicroException, e:" + paramArrayOfByte.getMessage());
-        }
-        a(-1, null, null);
-        return null;
-        ((wjt)wth.a(28)).b((List)localObject1);
-        a(paramInt, null, paramBundle);
-        yup.b("story_net", xdo.a, 0, paramInt, new String[] { "", l + "", yup.a(BaseApplication.getContext()) });
-        return paramArrayOfByte;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.qqstory.player.PlayModeUtils", 2, "getVideoInfo - onResult, other exception, e:" + paramArrayOfByte.getMessage());
-        }
-        a(-1, null, null);
-        return null;
-      }
+      int i = UIUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext);
+      int j = UIUtils.getWindowScreenWidth(this.jdField_a_of_type_AndroidContentContext);
+      int k = UIUtils.getWindowScreenHeight(this.jdField_a_of_type_AndroidContentContext);
+      paramxsh.a().getLayoutParams().width = j;
+      paramxsh.a().getLayoutParams().height = (k - paramInt - i);
+      xvv.b("Q.qqstory.detail.DetailEmptySegment", "titleBarHeight=%d, statusBarHeight=%d, screenHeight=%d.", Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(k));
+      return paramxsh.a();
     }
   }
   
-  public abstract void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem);
+  public String a()
+  {
+    return "DetailEmptySegment";
+  }
+  
+  public xsh a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new xsh(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561580, paramViewGroup, false));
+  }
 }
 
 

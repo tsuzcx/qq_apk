@@ -1,18 +1,22 @@
-import android.content.Context;
-import android.view.MotionEvent;
+import android.os.Message;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 class akji
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  akji(akjc paramakjc) {}
+  akji(akho paramakho, int paramInt1, int paramInt2, String paramString, int paramInt3) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    anbt.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, this.c, akho.a(this.jdField_a_of_type_Akho));
+    bcef.b(null, "CliOper", "", "", "theme", "0X8007233", 0, 0, String.valueOf(this.c), "", "", "");
+    akho.a(this.jdField_a_of_type_Akho).obtainMessage(16).sendToTarget();
+    bcef.a(akho.a(this.jdField_a_of_type_Akho).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 15, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

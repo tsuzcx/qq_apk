@@ -1,20 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
-public class adsu
+class adsu
   implements DialogInterface.OnDismissListener
 {
-  public adsu(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  adsu(adst paramadst) {}
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a = null;
+    this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adsu
  * JD-Core Version:    0.7.0.1
  */

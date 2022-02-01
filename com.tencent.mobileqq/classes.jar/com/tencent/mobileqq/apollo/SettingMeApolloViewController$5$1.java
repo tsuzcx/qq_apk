@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.apollo;
 
-import amwf;
-import amyi;
+import alqz;
+import altc;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class SettingMeApolloViewController$5$1
   implements Runnable
 {
-  public SettingMeApolloViewController$5$1(amwf paramamwf, int paramInt, ViewGroup paramViewGroup, QQAppInterface paramQQAppInterface, String paramString) {}
+  public SettingMeApolloViewController$5$1(alqz paramalqz, int paramInt, ViewGroup paramViewGroup, QQAppInterface paramQQAppInterface, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Amwf.a.a == null) {
+    if (this.jdField_a_of_type_Alqz.a.a == null) {
       return;
     }
     if (this.jdField_a_of_type_Int == 1)
     {
-      this.jdField_a_of_type_Amwf.a.a.a(SettingMeApolloViewController.a(this.jdField_a_of_type_Amwf.a), this.jdField_a_of_type_AndroidViewViewGroup.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_Alqz.a.a.a(SettingMeApolloViewController.a(this.jdField_a_of_type_Alqz.a), this.jdField_a_of_type_AndroidViewViewGroup.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       return;
     }
     if (this.jdField_a_of_type_Int == 2)
     {
-      this.jdField_a_of_type_Amwf.a.a.b(SettingMeApolloViewController.a(this.jdField_a_of_type_Amwf.a), this.jdField_a_of_type_AndroidViewViewGroup.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_Alqz.a.a.b(SettingMeApolloViewController.a(this.jdField_a_of_type_Alqz.a), this.jdField_a_of_type_AndroidViewViewGroup.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       return;
     }
-    SettingMeApolloViewController.a(this.jdField_a_of_type_Amwf.a, this.jdField_a_of_type_JavaLangString);
+    SettingMeApolloViewController.a(this.jdField_a_of_type_Alqz.a, this.jdField_a_of_type_JavaLangString);
   }
 }
 

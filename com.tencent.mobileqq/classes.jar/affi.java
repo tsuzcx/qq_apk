@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class affi
-  implements aqvd
+class affi
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public affi(QQBrowserActivity paramQQBrowserActivity) {}
+  affi(affh paramaffh) {}
   
-  public void onColorNoteAnimFinish()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    QQBrowserActivity.a(this.a);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    affh.a(this.a, f);
   }
 }
 

@@ -1,4 +1,10 @@
-// INTERNAL ERROR //
+public abstract interface avlu
+{
+  public abstract void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, float paramFloat);
+  
+  public abstract void a(int[] paramArrayOfInt, int paramInt1, int paramInt2);
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avlu

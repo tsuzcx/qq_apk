@@ -3,19 +3,19 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.video;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import tqt;
+import txh;
 
 public class ADVideoAppDownloadManager$LoadTask
   implements Runnable
 {
   private int jdField_a_of_type_Int;
   private WeakReference<ADVideoAppDownloadManager> jdField_a_of_type_JavaLangRefWeakReference;
-  private tqt jdField_a_of_type_Tqt;
+  private txh jdField_a_of_type_Txh;
   
-  public ADVideoAppDownloadManager$LoadTask(ADVideoAppDownloadManager paramADVideoAppDownloadManager, tqt paramtqt)
+  public ADVideoAppDownloadManager$LoadTask(ADVideoAppDownloadManager paramADVideoAppDownloadManager, txh paramtxh)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramADVideoAppDownloadManager);
-    this.jdField_a_of_type_Tqt = paramtqt;
+    this.jdField_a_of_type_Txh = paramtxh;
   }
   
   public void run()
@@ -25,7 +25,7 @@ public class ADVideoAppDownloadManager$LoadTask
       if (QLog.isColorLevel()) {
         QLog.d("ADVideoAppDownloadManager", 2, " mLoadAppJob running... ");
       }
-      if (this.jdField_a_of_type_Tqt != null)
+      if (this.jdField_a_of_type_Txh != null)
       {
         localADVideoAppDownloadManager = (ADVideoAppDownloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
         if (localADVideoAppDownloadManager == null) {
@@ -33,15 +33,15 @@ public class ADVideoAppDownloadManager$LoadTask
         }
         l = System.currentTimeMillis();
         this.jdField_a_of_type_Int += 1;
-        tqt localtqt = this.jdField_a_of_type_Tqt;
-        if (!localtqt.a()) {
+        txh localtxh = this.jdField_a_of_type_Txh;
+        if (!localtxh.a()) {
           break label192;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("ADVideoAppDownloadManager", 2, "mLoadAppJob loader sucess!!! " + localtqt.c);
+          QLog.d("ADVideoAppDownloadManager", 2, "mLoadAppJob loader sucess!!! " + localtxh.c);
         }
-        if ((ADVideoAppDownloadManager.a(localADVideoAppDownloadManager) != null) && (!TextUtils.isEmpty(ADVideoAppDownloadManager.a(localADVideoAppDownloadManager).d)) && (ADVideoAppDownloadManager.a(localADVideoAppDownloadManager).d.equals(localtqt.d))) {
-          localADVideoAppDownloadManager.a(localtqt);
+        if ((ADVideoAppDownloadManager.a(localADVideoAppDownloadManager) != null) && (!TextUtils.isEmpty(ADVideoAppDownloadManager.a(localADVideoAppDownloadManager).d)) && (ADVideoAppDownloadManager.a(localADVideoAppDownloadManager).d.equals(localtxh.d))) {
+          localADVideoAppDownloadManager.a(localtxh);
         }
         ADVideoAppDownloadManager.a(localADVideoAppDownloadManager, true, System.currentTimeMillis() - l);
       }
@@ -69,7 +69,7 @@ public class ADVideoAppDownloadManager$LoadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadManager.LoadTask
  * JD-Core Version:    0.7.0.1
  */

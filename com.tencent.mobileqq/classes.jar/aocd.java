@@ -1,79 +1,40 @@
-import android.os.Bundle;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.PbSendMsgResp;
-
 public class aocd
+  extends aobf
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private FromServiceMsg jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-  private ToServiceMsg jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
-  private String jdField_a_of_type_JavaLangString;
-  private msg_svc.PbSendMsgResp jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
+  public aoex a;
+  public aokz a;
+  public boolean a;
+  public long b;
+  public String b;
+  public int d;
+  public int e = 1;
   
-  public aocd(MessageHandler paramMessageHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, msg_svc.PbSendMsgResp paramPbSendMsgResp, int paramInt1, boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt2)
+  public aocd(String paramString1, int paramInt1, int paramInt2, int paramInt3, aokz paramaokz, aoex paramaoex, String paramString2, long paramLong, boolean paramBoolean, int paramInt4, int paramInt5, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-    this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp = paramPbSendMsgResp;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = paramInt2;
+    super(paramString1, paramInt1, paramInt2, paramInt5, paramFloat1, paramFloat2, paramFloat3);
+    this.d = paramInt3;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramInt4;
+    this.jdField_a_of_type_Aokz = paramaokz;
+    this.jdField_a_of_type_Aoex = paramaoex;
   }
   
-  public aocd a()
+  public String toString()
   {
-    if ((this.jdField_a_of_type_Int == 10) || (this.jdField_a_of_type_Int == 34))
-    {
-      this.jdField_b_of_type_Boolean = true;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Long);
-      if (MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, (MessageRecord)localObject, this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.removeMessageObserver(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg)))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_b_of_type_Long);
-        this.jdField_a_of_type_Boolean = true;
-        return this;
-      }
-    }
-    MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp);
-    Object localObject = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData;
-    Object[] arrayOfObject = new Object[6];
-    arrayOfObject[0] = ((Bundle)localObject).getString("uToUin");
-    arrayOfObject[1] = Integer.valueOf(3000);
-    arrayOfObject[2] = Integer.valueOf(this.jdField_a_of_type_Int);
-    arrayOfObject[3] = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttribute("sendmsgHandler");
-    arrayOfObject[4] = Long.valueOf(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.getLong("timeOut"));
-    arrayOfObject[5] = Long.valueOf(this.jdField_a_of_type_Long);
-    MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, arrayOfObject, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getUin(), this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(3008, false, arrayOfObject);
-    if ((this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp != null) && (this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp.errmsg.has()) && (this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp.errmsg.get() != null) && (QLog.isColorLevel())) {
-      QLog.d("Q.msg.MessageHandler", 2, "send dicussion msg failed: " + this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgResp.errmsg.get());
-    }
-    this.jdField_a_of_type_Boolean = false;
-    return this;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
+    StringBuilder localStringBuilder = new StringBuilder("OnlineVideoARRenderableInfo{");
+    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mRealRenderType=").append(this.d);
+    localStringBuilder.append(", mKeyingParams='").append(this.jdField_a_of_type_Aokz).append('\'');
+    localStringBuilder.append(", mVideoUrl='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", mVideoSize='").append(this.jdField_b_of_type_Long).append('\'');
+    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_Aoex).append('\'');
+    localStringBuilder.append(", isSoftPlay='").append(this.jdField_a_of_type_Boolean).append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

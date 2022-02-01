@@ -1,10 +1,34 @@
-final class bnvy
-  extends bnhx<bnvx, Void>
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.3.1;
+
+public class bnvy
+  implements INetInfoHandler
 {
-  protected bnvx a(Void paramVoid)
+  bnvy(bnvx parambnvx) {}
+  
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
   {
-    return new bnvx();
+    Thread.currentThread().getId();
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      bnvx.a(this.a);
+    }
+    while (bnvx.a(this.a) == null) {
+      return;
+    }
+    bnvx.a(this.a).post(new LbsFilterStatusManager.3.1(this));
   }
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 

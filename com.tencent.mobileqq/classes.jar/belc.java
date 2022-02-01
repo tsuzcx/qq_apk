@@ -1,20 +1,8 @@
-import java.util.regex.Matcher;
+import com.tencent.mobileqq.troop.homework.recite.ui.PinyinTextView;
 
-final class belc
-  implements belv
+public class belc
 {
-  belc(beko parambeko1, beko parambeko2) {}
-  
-  public String a(Matcher paramMatcher)
-  {
-    int i = beks.a(paramMatcher.group(1));
-    paramMatcher = this.a.a(i);
-    if (paramMatcher == null) {
-      return "";
-    }
-    i = this.b.a(paramMatcher);
-    return '*' + beks.a(i);
-  }
+  PinyinTextView a;
 }
 
 

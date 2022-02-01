@@ -9,20 +9,20 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import binq;
-import birg;
-import bjef;
+import bgtw;
+import bhkb;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.ToolAppRuntime;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 import mqq.app.AppRuntime;
-import phc;
-import phd;
-import rpt;
-import zps;
+import pmp;
+import pmq;
+import rwv;
 
 public class ReadInJoyAdIMAXBrowserFragment
   extends WebViewFragment
@@ -41,7 +41,7 @@ public class ReadInJoyAdIMAXBrowserFragment
   
   private View.OnClickListener a()
   {
-    return new phd(this);
+    return new pmq(this);
   }
   
   private void a()
@@ -53,33 +53,33 @@ public class ReadInJoyAdIMAXBrowserFragment
     if (LiuHaiUtils.b()) {}
     for (int i = LiuHaiUtils.b(getActivity());; i = 0)
     {
-      if (this.mUIStyleHandler.jdField_a_of_type_Binq.a != null) {
-        this.mUIStyleHandler.jdField_a_of_type_Binq.a.setVisibility(8);
+      if (this.mUIStyleHandler.mSwiftTitleUI.titleContainer != null) {
+        this.mUIStyleHandler.mSwiftTitleUI.titleContainer.setVisibility(8);
       }
-      if (this.mUIStyleHandler.d != null) {
-        adjustWebViewTopMargin(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131296599), 0);
+      if (this.mUIStyleHandler.mRootView != null) {
+        adjustWebViewTopMargin(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131296654), 0);
       }
-      if (this.mUIStyleHandler.c == null) {
+      if (this.mUIStyleHandler.webviewWrapper == null) {
         return;
       }
-      int j = zps.a(getActivity(), 30.0F);
+      int j = UIUtils.dip2px(getActivity(), 30.0F);
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getActivity());
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842883);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842937);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(j, j);
       localLayoutParams.addRule(10);
       localLayoutParams.addRule(9);
-      localLayoutParams.leftMargin = zps.a(getActivity(), 15.0F);
-      localLayoutParams.topMargin = (zps.a(getActivity(), 15.0F) + i);
-      this.mUIStyleHandler.c.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new phc(this));
+      localLayoutParams.leftMargin = UIUtils.dip2px(getActivity(), 15.0F);
+      localLayoutParams.topMargin = (UIUtils.dip2px(getActivity(), 15.0F) + i);
+      this.mUIStyleHandler.webviewWrapper.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new pmp(this));
       this.b = new ImageView(getActivity());
-      this.b.setBackgroundResource(2130842885);
+      this.b.setBackgroundResource(2130842939);
       localLayoutParams = new RelativeLayout.LayoutParams(j, j);
       localLayoutParams.addRule(10);
       localLayoutParams.addRule(11);
-      localLayoutParams.rightMargin = zps.a(getActivity(), 15.0F);
-      localLayoutParams.topMargin = (i + zps.a(getActivity(), 15.0F));
-      this.mUIStyleHandler.c.addView(this.b, localLayoutParams);
+      localLayoutParams.rightMargin = UIUtils.dip2px(getActivity(), 15.0F);
+      localLayoutParams.topMargin = (i + UIUtils.dip2px(getActivity(), 15.0F));
+      this.mUIStyleHandler.webviewWrapper.addView(this.b, localLayoutParams);
       this.b.setOnClickListener(a());
       return;
     }
@@ -93,12 +93,12 @@ public class ReadInJoyAdIMAXBrowserFragment
     }
     getWebView().setVerticalScrollBarEnabled(false);
     getWebView().setHorizontalScrollBarEnabled(false);
-    if ((this.mUIStyleHandler != null) && (this.mUIStyleHandler.jdField_a_of_type_Bjef != null)) {
-      this.mUIStyleHandler.jdField_a_of_type_Bjef.a(false);
+    if ((this.mUIStyleHandler != null) && (this.mUIStyleHandler.mProgressBarController != null)) {
+      this.mUIStyleHandler.mProgressBarController.a(false);
     }
-    if ((this.mUIStyleHandler != null) && (this.mUIStyleHandler.d != null))
+    if ((this.mUIStyleHandler != null) && (this.mUIStyleHandler.mRootView != null))
     {
-      paramBundle = this.mUIStyleHandler.d.findViewById(2131365074);
+      paramBundle = this.mUIStyleHandler.mRootView.findViewById(2131365102);
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
@@ -106,7 +106,7 @@ public class ReadInJoyAdIMAXBrowserFragment
     if (this.mSystemBarComp != null) {
       this.mSystemBarComp.setVisibility(8);
     }
-    rpt.a(getHostActivity());
+    rwv.a(getHostActivity());
     paramBundle = BaseApplicationImpl.getApplication().getRuntime();
     if ((paramBundle instanceof ToolAppRuntime)) {
       this.jdField_a_of_type_MqqAppAppRuntime = paramBundle.getAppRuntime("modular_web");
@@ -120,18 +120,18 @@ public class ReadInJoyAdIMAXBrowserFragment
   {
     if (this.mUIStyleHandler != null)
     {
-      this.mUIStyleHandler.jdField_a_of_type_Birj.D = true;
-      this.mUIStyleHandler.jdField_a_of_type_Birj.f = true;
-      this.mUIStyle.n = true;
+      this.mUIStyleHandler.mUIStyle.mIsDisableRefreshView = true;
+      this.mUIStyleHandler.mUIStyle.needHideBottomBar = true;
+      this.mUIStyle.isCurrentTitleTransparent = true;
     }
-    rpt.a(getHostActivity());
+    rwv.a(getHostActivity());
     return super.doCreateLoopStep_InitData(paramBundle);
   }
   
   public void onResume()
   {
     super.onResume();
-    rpt.a(getHostActivity());
+    rwv.a(getHostActivity());
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.gdtad.adapter;
 
-import acmz;
+import abjh;
 import com.tencent.ad.tangram.ark.AdArkAdapter.Params;
 import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
 public class GdtArkViewAdapter$5
   implements Runnable
 {
-  public GdtArkViewAdapter$5(acmz paramacmz, ArkAppView paramArkAppView, AdArkAdapter.Params paramParams) {}
+  public GdtArkViewAdapter$5(abjh paramabjh, ArkAppView paramArkAppView, AdArkAdapter.Params paramParams) {}
   
   public void run()
   {
-    acmz.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView, this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Params.appName, this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Params.viewName, "0.0.0.1", this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Params.metaData);
+    abjh.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView, this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Params.appName, this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Params.viewName, "0.0.0.1", this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Params.metaData);
   }
 }
 

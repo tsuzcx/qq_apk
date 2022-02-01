@@ -1,16 +1,14 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import amem;
-
-public class SelectMemberActivity$16$1
+class SelectMemberActivity$16$1
   implements Runnable
 {
-  public SelectMemberActivity$16$1(amem paramamem) {}
+  SelectMemberActivity$16$1(SelectMemberActivity.16 param16) {}
   
   public void run()
   {
-    if (!this.a.a.isFinishing()) {
-      this.a.a.finish();
+    if (!this.this$1.this$0.isFinishing()) {
+      this.this$1.this$0.finish();
     }
   }
 }

@@ -1,17 +1,10 @@
-class aufw
-  implements aumz
+import android.view.animation.Animation;
+
+public abstract interface aufw
 {
-  aufw(aufv paramaufv) {}
+  public abstract void a(Animation paramAnimation);
   
-  public void a()
-  {
-    auft.a(this.a.a);
-    if (this.a.a.a != null) {
-      this.a.a.a.d();
-    }
-  }
-  
-  public void b() {}
+  public abstract void b(Animation paramAnimation);
 }
 
 

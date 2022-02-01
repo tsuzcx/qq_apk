@@ -1,38 +1,46 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.hotpic.HotPicTab;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
 public class avul
-  extends Handler
 {
-  public avul(HotPicTab paramHotPicTab) {}
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public void handleMessage(Message paramMessage)
+  public avuk a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      HotPicTab.a(this.a, 0.0F);
-      HotPicTab.a(this.a, (float)(HotPicTab.a(this.a) + 0.1D));
-      this.a.invalidate();
-      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
-      return;
-    case 1: 
-      HotPicTab.a(this.a, (float)(HotPicTab.a(this.a) + 0.1D));
-      if (HotPicTab.a(this.a) < 1.0F)
-      {
-        this.a.invalidate();
-        sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
-        return;
-      }
-      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(2), 10L);
-      return;
-    }
-    HotPicTab.a(this.a, 1.0F);
-    HotPicTab.a(this.a, HotPicTab.a(this.a));
-    this.a.invalidate();
+    return new avuk(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_b_of_type_Int);
+  }
+  
+  public avul a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public avul a(MsgBackupUserData paramMsgBackupUserData)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    return this;
+  }
+  
+  public avul a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public avul b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public avul b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
   }
 }
 

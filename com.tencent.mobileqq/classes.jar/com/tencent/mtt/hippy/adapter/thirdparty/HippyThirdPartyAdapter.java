@@ -1,26 +1,20 @@
 package com.tencent.mtt.hippy.adapter.thirdparty;
 
+import org.json.JSONObject;
+
 public abstract class HippyThirdPartyAdapter
 {
-  protected Object mExternalData;
-  
-  public HippyThirdPartyAdapter()
-  {
-    this.mExternalData = null;
-  }
-  
-  public HippyThirdPartyAdapter(Object paramObject)
-  {
-    this.mExternalData = paramObject;
-  }
-  
   public abstract void SetHippyBridgeId(long paramLong);
   
   public abstract String getAppVersion();
   
+  public abstract JSONObject getExtraData();
+  
   public abstract String getPackageName();
   
   public abstract String getPageUrl();
+  
+  public abstract void setExtraData(JSONObject paramJSONObject);
   
   public abstract void setPageUrl(String paramString);
 }

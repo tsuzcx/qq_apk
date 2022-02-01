@@ -1,11 +1,18 @@
-class yte
-  implements zpx<ypc>
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.SlideTabViewPager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class yte
+  implements View.OnClickListener
 {
-  yte(ysw paramysw) {}
+  public yte(SlideTabViewPager paramSlideTabViewPager) {}
   
-  public ypc a()
+  public void onClick(View paramView)
   {
-    return new ypc(new ytf(this));
+    Integer localInteger = (Integer)paramView.getTag();
+    this.a.setTab(localInteger.intValue());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

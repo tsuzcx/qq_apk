@@ -82,7 +82,6 @@
                                             "value": "363"
                                         },
                                         "attributes": {
-                                            "setFrameString:": "-1",
                                             "setImageWithURLString:lineup:": [
                                                 "$article_large_imge_url",
                                                 "$lineup"
@@ -176,7 +175,6 @@
                                                     "type": "wrap_content"
                                                 },
                                                 "attributes": {
-                                                    "setFrameString:": "-1",
                                                     "setText:": "$video_count_title",
                                                     "setTextColorString:": "#FFFFFF",
                                                     "setFontSizeString:": "12",
@@ -199,7 +197,6 @@
                                                     "value": "12"
                                                 },
                                                 "attributes": {
-                                                    "setFrameString:": "-1",
                                                     "loadImageWithPath:": "small_video_play_icon.png"
                                                 }
                                             },
@@ -217,7 +214,6 @@
                                                     "type": "wrap_content"
                                                 },
                                                 "attributes": {
-                                                    "setFrameString:": "-1",
                                                     "setText:": "$video_play_times",
                                                     "setTextColorString:": "#FFFFFF",
                                                     "setFontSizeString:": "12",
@@ -242,7 +238,6 @@
                                             "value": "342"
                                         },
                                         "attributes": {
-                                            "setFrameString:": "-1",
                                             "setText:": "$artilce_title_text",
                                             "setTextColorString:": "#FFFFFF",
                                             "setBoldFontSizeString:": "17",
@@ -293,7 +288,6 @@
                     "value": "375"
                 },
                 "attributes": {
-                    "setFrameString:": "-1",
                     "setBackgroundColorString:": "#f2f2f2"
                 }
             }

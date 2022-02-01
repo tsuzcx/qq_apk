@@ -1,11 +1,26 @@
-public abstract class bdnq
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+
+public class bdnq
+  implements bjoe
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public bdnq(AbsPublishActivity paramAbsPublishActivity, bjnw parambjnw) {}
   
-  public abstract String a(int paramInt);
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.e();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_AndroidNetUri = TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new bdnr(this));
+      continue;
+      TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.c);
+    }
+  }
 }
 
 

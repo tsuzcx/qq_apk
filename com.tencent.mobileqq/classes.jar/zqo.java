@@ -1,39 +1,54 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
+import java.io.File;
+import java.util.HashMap;
 
-public class zqo
+public abstract class zqo
 {
-  public int a;
-  public String a;
-  public ArrayList<Object> a;
-  public zqq a;
-  public String[] a;
+  zqo jdField_a_of_type_Zqo;
+  zqp jdField_a_of_type_Zqp;
+  String c;
+  String d;
   
-  public zqo() {}
-  
-  public zqo(String[] paramArrayOfString, String paramString, zqq paramzqq)
+  public zqo(zpq paramzpq, zqp paramzqp, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Zqq = paramzqq;
+    this.jdField_a_of_type_Zqp = paramzqp;
+    this.c = paramString;
   }
   
-  public String toString()
+  public File a()
   {
-    String str1;
-    if (this.jdField_a_of_type_ArrayOfJavaLangString == null)
-    {
-      str1 = "null";
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        break label86;
-      }
+    int i = this.c.indexOf("_");
+    Object localObject = this.c.substring(i + 1, this.c.length());
+    localObject = new File(zpq.jdField_a_of_type_JavaLangString + File.separator + (String)localObject);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
     }
-    label86:
-    for (String str2 = "null";; str2 = TextUtils.join(",", this.jdField_a_of_type_JavaUtilArrayList.toArray()))
+    return localObject;
+  }
+  
+  public zqa a()
+  {
+    synchronized (this.b.jdField_a_of_type_JavaLangObject)
     {
-      return "FFmpegCommandUnit{ cmdType :" + this.jdField_a_of_type_Int + "\n cmd: " + str1 + "\n output: " + this.jdField_a_of_type_JavaLangString + "\n arguments: " + str2;
-      str1 = TextUtils.join(" ", this.jdField_a_of_type_ArrayOfJavaLangString);
-      break;
+      zqa localzqa = (zqa)this.b.jdField_a_of_type_JavaUtilHashMap.get(this.c);
+      return localzqa;
+    }
+  }
+  
+  public abstract void a();
+  
+  public File b()
+  {
+    File localFile = new File(zpq.jdField_a_of_type_JavaLangString + File.separator + "cache");
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return localFile;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Zqo != null) {
+      this.jdField_a_of_type_Zqo.a();
     }
   }
 }

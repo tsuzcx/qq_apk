@@ -1,16 +1,20 @@
-class vfl
-  implements vlb
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+
+public class vfl
+  extends Handler
 {
-  vfl(vfi paramvfi) {}
+  public vfl(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.b("rich_meida_download_progress", Integer.valueOf(paramInt));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.a.b("rich_media_download_status", Boolean.valueOf(paramBoolean));
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    PublicAccountImageCollectionMainActivity.b(this.a);
   }
 }
 

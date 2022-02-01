@@ -1,227 +1,296 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.utils.ViewUtils;
+
 public class akwm
-  extends akwl
 {
-  private static final byte[] a;
-  private static final byte[] b;
+  private final float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int = -1;
+  private akwg jdField_a_of_type_Akwg;
+  private akwn jdField_a_of_type_Akwn;
+  private final Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+  private final float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int = 4;
+  private final Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  private final float jdField_c_of_type_Float;
+  private int jdField_c_of_type_Int = Color.parseColor("#298be7");
+  private final float d;
+  private float e;
+  private float f;
+  private float g;
+  private float h;
+  private float i;
+  private float j;
+  private float k;
   
-  static
+  public akwm(akwg paramakwg, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    jdField_a_of_type_ArrayOfByte = "WEBP".getBytes();
-    jdField_b_of_type_ArrayOfByte = "RIFF".getBytes();
+    this.jdField_a_of_type_Akwg = paramakwg;
+    Object localObject = this.jdField_a_of_type_Akwg.getContext();
+    this.jdField_a_of_type_Float = (ViewUtils.getScreenWidth() * 0.0375F);
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float * 0.5F);
+    this.d = paramInt3;
+    paramakwg = a(((Context)localObject).getResources(), 2130849070, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
+    localObject = a(((Context)localObject).getResources(), 2130849072, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
+    ColorDrawable localColorDrawable = new ColorDrawable(this.jdField_c_of_type_Int);
+    localColorDrawable.setBounds(0, 0, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float, Bitmap.Config.RGB_565);
+    Canvas localCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    localColorDrawable.draw(localCanvas);
+    if (paramakwg != null) {
+      localCanvas.drawBitmap(paramakwg, (this.jdField_a_of_type_Float - paramakwg.getWidth()) / 2.0F, (this.jdField_b_of_type_Float - paramakwg.getHeight()) / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float, Bitmap.Config.RGB_565);
+    localCanvas.setBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap);
+    localColorDrawable.draw(localCanvas);
+    if (localObject != null) {
+      localCanvas.drawBitmap((Bitmap)localObject, (this.jdField_a_of_type_Float - ((Bitmap)localObject).getWidth()) / 2.0F, (this.jdField_b_of_type_Float - ((Bitmap)localObject).getHeight()) / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    this.h = (1.0F * paramInt4 / paramInt2 * paramFloat1 + this.jdField_a_of_type_Float);
+    this.g = (2000.0F / paramInt2 * paramFloat1);
+    this.j = (paramInt3 - this.jdField_a_of_type_Float);
+    this.k = this.jdField_a_of_type_Float;
+    this.e = this.jdField_a_of_type_Float;
+    this.f = this.h;
   }
   
-  public akwm(String paramString)
+  private void a(float paramFloat, Canvas paramCanvas)
   {
-    super(paramString);
-    this.jdField_a_of_type_JavaLangString = "PhotoIncompatibleWebp";
-    this.jdField_b_of_type_JavaLangString = "reportGenerateWebp";
+    paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, paramFloat, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  /* Error */
-  static boolean a(String paramString)
+  private boolean a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore 5
-    //   3: bipush 16
-    //   5: newarray byte
-    //   7: astore 7
-    //   9: new 44	java/io/FileInputStream
-    //   12: dup
-    //   13: aload_0
-    //   14: invokespecial 45	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   17: astore 6
-    //   19: aload 6
-    //   21: astore_0
-    //   22: aload 6
-    //   24: aload 7
-    //   26: invokevirtual 49	java/io/FileInputStream:read	([B)I
-    //   29: pop
-    //   30: aload 6
-    //   32: astore_0
-    //   33: aload 7
-    //   35: arraylength
-    //   36: istore_1
-    //   37: iload_1
-    //   38: bipush 12
-    //   40: if_icmpge +31 -> 71
-    //   43: iload 5
-    //   45: istore 4
-    //   47: aload 6
-    //   49: ifnull +12 -> 61
-    //   52: aload 6
-    //   54: invokevirtual 52	java/io/FileInputStream:close	()V
-    //   57: iload 5
-    //   59: istore 4
-    //   61: iload 4
-    //   63: ireturn
-    //   64: astore_0
-    //   65: aload_0
-    //   66: invokevirtual 55	java/io/IOException:printStackTrace	()V
-    //   69: iconst_0
-    //   70: ireturn
-    //   71: iconst_0
-    //   72: istore_1
-    //   73: aload 6
-    //   75: astore_0
-    //   76: iload_1
-    //   77: getstatic 23	akwm:jdField_b_of_type_ArrayOfByte	[B
-    //   80: arraylength
-    //   81: if_icmpge +52 -> 133
-    //   84: aload 6
-    //   86: astore_0
-    //   87: getstatic 23	akwm:jdField_b_of_type_ArrayOfByte	[B
-    //   90: iload_1
-    //   91: baload
-    //   92: istore_2
-    //   93: aload 7
-    //   95: iload_1
-    //   96: baload
-    //   97: istore_3
-    //   98: iload_2
-    //   99: iload_3
-    //   100: if_icmpeq +26 -> 126
-    //   103: iload 5
-    //   105: istore 4
-    //   107: aload 6
-    //   109: ifnull -48 -> 61
-    //   112: aload 6
-    //   114: invokevirtual 52	java/io/FileInputStream:close	()V
-    //   117: iconst_0
-    //   118: ireturn
-    //   119: astore_0
-    //   120: aload_0
-    //   121: invokevirtual 55	java/io/IOException:printStackTrace	()V
-    //   124: iconst_0
-    //   125: ireturn
-    //   126: iload_1
-    //   127: iconst_1
-    //   128: iadd
-    //   129: istore_1
-    //   130: goto -57 -> 73
-    //   133: bipush 8
-    //   135: istore_1
-    //   136: iload_1
-    //   137: bipush 12
-    //   139: if_icmpge +55 -> 194
-    //   142: aload 6
-    //   144: astore_0
-    //   145: getstatic 19	akwm:jdField_a_of_type_ArrayOfByte	[B
-    //   148: iload_1
-    //   149: bipush 8
-    //   151: isub
-    //   152: baload
-    //   153: istore_2
-    //   154: aload 7
-    //   156: iload_1
-    //   157: baload
-    //   158: istore_3
-    //   159: iload_2
-    //   160: iload_3
-    //   161: if_icmpeq +26 -> 187
-    //   164: iload 5
-    //   166: istore 4
-    //   168: aload 6
-    //   170: ifnull -109 -> 61
-    //   173: aload 6
-    //   175: invokevirtual 52	java/io/FileInputStream:close	()V
-    //   178: iconst_0
-    //   179: ireturn
-    //   180: astore_0
-    //   181: aload_0
-    //   182: invokevirtual 55	java/io/IOException:printStackTrace	()V
-    //   185: iconst_0
-    //   186: ireturn
-    //   187: iload_1
-    //   188: iconst_1
-    //   189: iadd
-    //   190: istore_1
-    //   191: goto -55 -> 136
-    //   194: iconst_1
-    //   195: istore 4
-    //   197: aload 6
-    //   199: ifnull -138 -> 61
-    //   202: aload 6
-    //   204: invokevirtual 52	java/io/FileInputStream:close	()V
-    //   207: iconst_1
-    //   208: ireturn
-    //   209: astore_0
-    //   210: aload_0
-    //   211: invokevirtual 55	java/io/IOException:printStackTrace	()V
-    //   214: iconst_1
-    //   215: ireturn
-    //   216: astore 7
-    //   218: aconst_null
-    //   219: astore 6
-    //   221: aload 6
-    //   223: astore_0
-    //   224: aload 7
-    //   226: invokevirtual 56	java/lang/Exception:printStackTrace	()V
-    //   229: iload 5
-    //   231: istore 4
-    //   233: aload 6
-    //   235: ifnull -174 -> 61
-    //   238: aload 6
-    //   240: invokevirtual 52	java/io/FileInputStream:close	()V
-    //   243: iconst_0
-    //   244: ireturn
-    //   245: astore_0
-    //   246: aload_0
-    //   247: invokevirtual 55	java/io/IOException:printStackTrace	()V
-    //   250: iconst_0
-    //   251: ireturn
-    //   252: astore 6
-    //   254: aconst_null
-    //   255: astore_0
-    //   256: aload_0
-    //   257: ifnull +7 -> 264
-    //   260: aload_0
-    //   261: invokevirtual 52	java/io/FileInputStream:close	()V
-    //   264: aload 6
-    //   266: athrow
-    //   267: astore_0
-    //   268: aload_0
-    //   269: invokevirtual 55	java/io/IOException:printStackTrace	()V
-    //   272: goto -8 -> 264
-    //   275: astore 6
-    //   277: goto -21 -> 256
-    //   280: astore 7
-    //   282: goto -61 -> 221
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	285	0	paramString	String
-    //   36	155	1	i	int
-    //   92	70	2	j	int
-    //   97	65	3	k	int
-    //   45	187	4	bool1	boolean
-    //   1	229	5	bool2	boolean
-    //   17	222	6	localFileInputStream	java.io.FileInputStream
-    //   252	13	6	localObject1	java.lang.Object
-    //   275	1	6	localObject2	java.lang.Object
-    //   7	148	7	arrayOfByte	byte[]
-    //   216	9	7	localException1	java.lang.Exception
-    //   280	1	7	localException2	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   52	57	64	java/io/IOException
-    //   112	117	119	java/io/IOException
-    //   173	178	180	java/io/IOException
-    //   202	207	209	java/io/IOException
-    //   9	19	216	java/lang/Exception
-    //   238	243	245	java/io/IOException
-    //   9	19	252	finally
-    //   260	264	267	java/io/IOException
-    //   22	30	275	finally
-    //   33	37	275	finally
-    //   76	84	275	finally
-    //   87	93	275	finally
-    //   145	154	275	finally
-    //   224	229	275	finally
-    //   22	30	280	java/lang/Exception
-    //   33	37	280	java/lang/Exception
-    //   76	84	280	java/lang/Exception
-    //   87	93	280	java/lang/Exception
-    //   145	154	280	java/lang/Exception
+    return (Math.abs(paramFloat1 - paramFloat3) <= this.jdField_a_of_type_Float * 2.0F) && (paramFloat2 > 0.0F) && (paramFloat2 < this.jdField_b_of_type_Float);
+  }
+  
+  private void b(float paramFloat, Canvas paramCanvas)
+  {
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramFloat - this.jdField_a_of_type_Float, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+  }
+  
+  private boolean b(float paramFloat1, float paramFloat2)
+  {
+    return Math.abs(paramFloat1 - paramFloat2) == 0.0F;
+  }
+  
+  public float a()
+  {
+    return this.jdField_b_of_type_Float;
+  }
+  
+  public int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
+  {
+    int i1 = paramOptions.outHeight;
+    int i2 = paramOptions.outWidth;
+    int n = 1;
+    int m = 1;
+    if ((i1 > paramInt2) || (i2 > paramInt1))
+    {
+      i1 /= 2;
+      i2 /= 2;
+      for (;;)
+      {
+        n = m;
+        if (i1 / m <= paramInt2) {
+          break;
+        }
+        n = m;
+        if (i2 / m <= paramInt1) {
+          break;
+        }
+        m *= 2;
+      }
+    }
+    return n;
+  }
+  
+  public Bitmap a(Resources paramResources, int paramInt1, int paramInt2, int paramInt3)
+  {
+    int m = 1;
+    if (paramResources == null) {}
+    while (paramInt1 <= 0) {
+      return null;
+    }
+    try
+    {
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inJustDecodeBounds = true;
+      BitmapFactory.decodeResource(paramResources, paramInt1, localOptions);
+      if ((paramInt2 <= 0) && (paramInt3 <= 0)) {}
+      for (paramInt2 = m;; paramInt2 = a(localOptions, paramInt2, paramInt3))
+      {
+        localOptions.inJustDecodeBounds = false;
+        localOptions.inSampleSize = paramInt2;
+        return BitmapFactory.decodeResource(paramResources, paramInt1, localOptions);
+      }
+      return null;
+    }
+    catch (Exception paramResources)
+    {
+      paramResources.printStackTrace();
+      return null;
+    }
+    catch (OutOfMemoryError paramResources)
+    {
+      paramResources.printStackTrace();
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Akwn = null;
+    this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    if (paramFloat1 >= 0.0F) {}
+    for (this.k = (this.jdField_a_of_type_Float + paramFloat1);; this.k = this.jdField_a_of_type_Float)
+    {
+      if (paramFloat2 >= 0.0F) {
+        this.j = Math.min(this.jdField_a_of_type_Float + paramFloat2, this.d - this.jdField_a_of_type_Float);
+      }
+      return;
+    }
+  }
+  
+  public void a(akwn paramakwn)
+  {
+    this.jdField_a_of_type_Akwn = paramakwn;
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    paramCanvas.save();
+    int m = this.jdField_a_of_type_AndroidGraphicsPaint.getColor();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_c_of_type_Int);
+    paramCanvas.drawRect(this.e, 0.0F, this.f, this.jdField_b_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawRect(this.e, this.jdField_b_of_type_Float - this.jdField_b_of_type_Int, this.f, this.jdField_b_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(m);
+    b(this.e, paramCanvas);
+    a(this.f, paramCanvas);
+    paramCanvas.restore();
+  }
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getX();
+    if (paramMotionEvent.getAction() == 1) {
+      this.jdField_a_of_type_Int = -1;
+    }
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.i = paramMotionEvent.getX();
+      return;
+    }
+    float f2;
+    float f3;
+    if (paramMotionEvent.getAction() == 2)
+    {
+      f2 = f1 - this.i;
+      if (this.jdField_a_of_type_Int != 0) {
+        break label186;
+      }
+      f3 = Math.max(this.f - this.h, this.k);
+      if (f1 < f3)
+      {
+        this.e = f3;
+        return;
+      }
+      if ((f2 >= 0.0F) || (f2 + this.e > this.jdField_a_of_type_Float)) {
+        break label148;
+      }
+      this.e = f3;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Akwg.invalidate();
+      if (this.jdField_a_of_type_Akwn == null) {
+        break;
+      }
+      this.jdField_a_of_type_Akwn.a(this.e, this.f);
+      return;
+      label148:
+      if (this.f - f1 < this.g)
+      {
+        this.e = (this.f - this.g);
+      }
+      else
+      {
+        this.e = f1;
+        continue;
+        label186:
+        if (this.jdField_a_of_type_Int == 1)
+        {
+          f3 = Math.min(this.e + this.h, this.j);
+          if (f1 > f3)
+          {
+            this.f = f3;
+            return;
+          }
+          if ((f2 > 0.0F) && (f2 + this.f >= this.h)) {
+            this.f = f3;
+          } else if (f1 - this.e < this.g) {
+            this.f = (this.e + this.g);
+          } else {
+            this.f = f1;
+          }
+        }
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return (!b(this.e, this.jdField_a_of_type_Float)) || (!b(this.f, this.h));
+  }
+  
+  public boolean a(float paramFloat1, float paramFloat2)
+  {
+    boolean bool1 = a(paramFloat1, paramFloat2, this.e - this.jdField_c_of_type_Float);
+    boolean bool2 = a(paramFloat1, paramFloat2, this.f + this.jdField_c_of_type_Float);
+    if (bool1)
+    {
+      this.jdField_a_of_type_Int = 0;
+      return true;
+    }
+    if (bool2)
+    {
+      this.jdField_a_of_type_Int = 1;
+      return true;
+    }
+    return false;
+  }
+  
+  public float b()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Akwn = null;
+    this.e = 0.0F;
+    this.f = 0.0F;
+  }
+  
+  public float c()
+  {
+    return this.f - this.e;
   }
 }
 

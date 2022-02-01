@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.app.message;
 
 import android.text.TextUtils;
-import aotb;
+import anlw;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ProfileCardMessageProcessor$1
   implements Runnable
 {
-  public ProfileCardMessageProcessor$1(aotb paramaotb) {}
+  public ProfileCardMessageProcessor$1(anlw paramanlw) {}
   
   public void run()
   {
-    if (!TextUtils.isEmpty(aotb.a(this.this$0).getAccount())) {
-      ((FriendListHandler)aotb.b(this.this$0).a(1)).b(aotb.c(this.this$0).getAccount());
+    if (!TextUtils.isEmpty(anlw.a(this.this$0).getAccount())) {
+      ((FriendListHandler)anlw.b(this.this$0).getBusinessHandler(1)).getFriendInfo(anlw.c(this.this$0).getAccount());
     }
   }
 }

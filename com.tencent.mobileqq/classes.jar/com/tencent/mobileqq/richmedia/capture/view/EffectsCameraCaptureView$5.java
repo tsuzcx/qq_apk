@@ -6,13 +6,11 @@ import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 class EffectsCameraCaptureView$5
   implements Runnable
 {
-  EffectsCameraCaptureView$5(EffectsCameraCaptureView paramEffectsCameraCaptureView, int paramInt) {}
+  EffectsCameraCaptureView$5(EffectsCameraCaptureView paramEffectsCameraCaptureView) {}
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.getBusinessOperation().setUpCosmeticsAlpha(this.a);
-    }
+    this.this$0.a.getBusinessOperation().handleDanceGameAudioResume();
   }
 }
 

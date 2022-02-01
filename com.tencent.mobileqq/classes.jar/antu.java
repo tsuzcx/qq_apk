@@ -1,75 +1,40 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class antu
-  extends BroadcastReceiver
+  extends anrh
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public antu(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    int j = 0;
-    int i = 0;
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (localBaseActivity == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("qqBaseActivity", 2, paramIntent.getAction());
-      }
-    }
-    for (;;)
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  public boolean a()
+  {
+    try
     {
-      return;
-      if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
-      {
-        if ((localBaseActivity.mStopFlag == 0) && (localBaseActivity.mCanLock) && (GesturePWDUtils.getGesturePWDState(localBaseActivity, localBaseActivity.getCurrentAccountUin()) == 2) && (GesturePWDUtils.getGesturePWDMode(localBaseActivity, localBaseActivity.getCurrentAccountUin()) == 21) && (!(localBaseActivity instanceof GesturePWDUnlockActivity)) && (!(localBaseActivity instanceof LoginActivity)) && (!GesturePWDUtils.getGestureLocking(localBaseActivity)))
-        {
-          BaseActivity.mAppForground = false;
-          GesturePWDUtils.setAppForground(paramContext, BaseActivity.mAppForground);
-          BaseActivity.isUnLockSuccess = false;
-          if (BaseActivity.access$300() == null) {
-            continue;
-          }
-          if (SettingCloneUtil.readValue(paramContext, null, paramContext.getString(2131694432), "qqsetting_screenshot_key", false)) {
-            break label169;
-          }
-        }
-        for (;;)
-        {
-          if (i == 0) {
-            break label172;
-          }
-          localBaseActivity.turnOffShake();
-          return;
-          localBaseActivity.receiveScreenOff();
-          break;
-          label169:
-          i = 1;
-        }
-      }
-      else
-      {
-        label172:
-        if ((paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) && (BaseActivity.access$300() == null))
-        {
-          if (!SettingCloneUtil.readValue(paramContext, null, paramContext.getString(2131694432), "qqsetting_screenshot_key", false)) {}
-          for (i = j; i != 0; i = 1)
-          {
-            localBaseActivity.turnOnShake();
-            return;
-          }
-        }
-      }
+      boolean bool = i();
+      return bool;
     }
+    catch (Exception localException)
+    {
+      QLog.e("IdentifierWebJumpAction", 1, "doAction error: " + localException.getMessage());
+      a("IdentifierWebJumpAction");
+    }
+    return false;
+  }
+  
+  public boolean i()
+  {
+    SmallVideoFragment.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     antu
  * JD-Core Version:    0.7.0.1
  */

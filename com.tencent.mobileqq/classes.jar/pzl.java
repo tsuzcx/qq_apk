@@ -1,116 +1,57 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class pzl
-  implements ViewBase.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ppu jdField_a_of_type_Ppu;
-  private int b;
-  private int c;
-  
-  public pzl(ppu paramppu, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    this.jdField_a_of_type_Ppu = paramppu;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
-  }
-  
-  private int a(int paramInt)
-  {
-    switch (paramInt)
+    JSONObject localJSONObject = new JSONObject();
+    String str4 = "";
+    String str5 = "";
+    String str6 = "";
+    qai.a(paramBaseArticleInfo, localJSONObject, true);
+    qai.a(paramBaseArticleInfo, localJSONObject);
+    qai.d(paramBaseArticleInfo, localJSONObject);
+    qai.n(paramBaseArticleInfo, localJSONObject);
+    qai.g(paramBaseArticleInfo, localJSONObject);
+    qai.h(paramBaseArticleInfo, localJSONObject);
+    qai.Z(paramBaseArticleInfo, localJSONObject);
+    qai.ac(paramBaseArticleInfo, localJSONObject);
+    qai.ad(paramBaseArticleInfo, localJSONObject);
+    localJSONObject.put("style_ID", "ReadInjoy_ad_small_game_triple_img_cell");
+    qai.a(localJSONObject, paramBaseArticleInfo);
+    String str1 = str6;
+    String str2 = str5;
+    String str3 = str4;
+    if (paramBaseArticleInfo.mSmallMiniGameInfo != null)
     {
-    case 1112: 
-    default: 
-      return 0;
-    case 1113: 
-      return 1;
-    }
-    return 2;
-  }
-  
-  public void a()
-  {
-    int k = this.jdField_a_of_type_Int;
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_Ppu.a();
-    int i;
-    if (localArticleInfo != null)
-    {
-      if (!localArticleInfo.hasChannelInfo()) {
-        break label148;
-      }
-      i = localArticleInfo.mChannelInfoId;
-      if (!TextUtils.isEmpty(localArticleInfo.mArticleFriendLikeText)) {
-        break label153;
-      }
-    }
-    label148:
-    label153:
-    for (int j = 0;; j = 1)
-    {
-      String str = ozs.d(localArticleInfo);
-      ocd.a(null, "CliOper", "", localArticleInfo.mSubscribeID, "0X8007625", "0X8007625", 0, 0, Long.toString(localArticleInfo.mFeedId), Long.toString(localArticleInfo.mArticleID), Integer.toString(localArticleInfo.mStrategyId), ozs.a(localArticleInfo.mAlgorithmID, ozs.a(localArticleInfo), k, i, j, bhnv.h(this.jdField_a_of_type_AndroidContentContext), str, localArticleInfo.mStrCircleId, localArticleInfo.innerUniqueID, ozs.f(localArticleInfo), localArticleInfo), false);
-      ubk.a(localArticleInfo, k);
-      return;
-      i = 0;
-      break;
-    }
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if ((this.jdField_a_of_type_Ppu == null) || (this.jdField_a_of_type_Ppu.a() == null) || (this.jdField_a_of_type_Ppu.a().mSmallMiniGameInfo == null)) {
-      return;
-    }
-    String str = "";
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_Ppu.a();
-    switch (this.c)
-    {
-    default: 
-      paramViewBase = "";
-    case 1115: 
-    case 1112: 
-    case 1113: 
-    case 1114: 
-      for (;;)
+      str1 = str6;
+      str2 = str5;
+      str3 = str4;
+      if (paramBaseArticleInfo.mSmallMiniGameInfo.a != null)
       {
-        if ((!TextUtils.isEmpty(paramViewBase)) && (!TextUtils.isEmpty(str)) && (!MiniAppLauncher.startMiniApp(this.jdField_a_of_type_AndroidContentContext, paramViewBase, 2103, null)))
+        str1 = str6;
+        str2 = str5;
+        str3 = str4;
+        if (paramBaseArticleInfo.mSmallMiniGameInfo.a.length() > 2)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("OnSmallGameCardClickListener", 0, "mini game url error jump by appid url = " + paramViewBase);
-          }
-          MiniAppLauncher.launchMiniAppById(this.jdField_a_of_type_AndroidContentContext, str, null, null, null, null, 2103);
+          str3 = paramBaseArticleInfo.mSmallMiniGameInfo.a.optString(0);
+          str2 = paramBaseArticleInfo.mSmallMiniGameInfo.a.optString(1);
+          str1 = paramBaseArticleInfo.mSmallMiniGameInfo.a.optString(2);
         }
-        a();
-        return;
-        nzq.a(this.jdField_a_of_type_AndroidContentContext, localArticleInfo, this.jdField_a_of_type_Ppu.h(), this.b, nzq.jdField_a_of_type_Int);
-        paramViewBase = localArticleInfo.mSmallMiniGameInfo.b(this.b);
-        str = localArticleInfo.mSmallMiniGameInfo.a(this.b);
-        continue;
-        int i = a(this.c);
-        nzq.a(this.jdField_a_of_type_AndroidContentContext, localArticleInfo, this.jdField_a_of_type_Ppu.h(), i, nzq.jdField_a_of_type_Int);
-        paramViewBase = localArticleInfo.mSmallMiniGameInfo.b(i);
-        str = localArticleInfo.mSmallMiniGameInfo.a(i);
       }
     }
-    nyo localnyo = new nyo().a(501L).b(50101L).c(5010105L).d(9L);
-    if (localArticleInfo.mSmallMiniGameInfo.a()) {}
-    for (paramViewBase = "3";; paramViewBase = "2")
-    {
-      paramViewBase = localnyo.h(paramViewBase).i(String.valueOf(this.b)).a();
-      nzq.a(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
-      ozs.d(this.jdField_a_of_type_AndroidContentContext, localArticleInfo.mSmallMiniGameInfo.a);
-      paramViewBase = "";
-      break;
-    }
+    paramBaseArticleInfo = new JSONObject();
+    paramBaseArticleInfo.put("multi_img_url1", str3);
+    localJSONObject.put("id_multi_img_1", paramBaseArticleInfo);
+    paramBaseArticleInfo = new JSONObject();
+    paramBaseArticleInfo.put("multi_img_url2", str2);
+    localJSONObject.put("id_multi_img_2", paramBaseArticleInfo);
+    paramBaseArticleInfo = new JSONObject();
+    paramBaseArticleInfo.put("multi_img_url3", str1);
+    localJSONObject.put("id_multi_img_3", paramBaseArticleInfo);
+    return localJSONObject;
   }
 }
 

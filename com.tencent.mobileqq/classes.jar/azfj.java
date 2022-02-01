@@ -1,22 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class azfj
-  extends azik
 {
-  public azfj(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  private azfa a;
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public azfj(azfa paramazfa)
   {
-    super.a(paramBoolean, paramBundle);
-    if (paramBoolean)
-    {
-      if (!paramBundle.getBoolean("param_need_switch_online_status")) {
-        AccountOnlineStateActivity.a(this.a, true, 0);
+    this.a = paramazfa;
+  }
+  
+  public void a(azfk paramazfk)
+  {
+    if (paramazfk == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("VoiceModel", 2, "executeCommand commandInformation is null");
       }
-      return;
     }
-    AccountOnlineStateActivity.a(this.a, true, -1);
+    azeb localazeb;
+    do
+    {
+      return;
+      localazeb = new azew(this.a).a(paramazfk.a);
+    } while (localazeb == null);
+    new azex(localazeb).a(paramazfk);
   }
 }
 

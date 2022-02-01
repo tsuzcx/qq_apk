@@ -1,18 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.imcore.proxy.RecentRoute.TimeFormatterUtils.Proxy;
 
-public class bcbc
-  implements View.OnClickListener
+public final class bcbc
+  implements RecentRoute.TimeFormatterUtils.Proxy
 {
-  public bcbc(UniteSearchActivity paramUniteSearchActivity) {}
-  
-  public void onClick(View paramView)
+  public String getRecentMessageDateTime(StringBuffer paramStringBuffer, long paramLong, boolean paramBoolean, String paramString)
   {
-    this.a.e();
-    UniteSearchActivity.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return bfzl.a(paramStringBuffer, paramLong, paramBoolean, paramString);
   }
 }
 

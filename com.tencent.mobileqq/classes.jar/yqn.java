@@ -1,20 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class yqn
-  implements View.OnClickListener
+class yqn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public yqn(StoryListPresenter.4.1 param1) {}
+  yqn(yqm paramyqm) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    yup.a("home_page", "clk_up_shoot", 0, 0, new String[0]);
-    this.a.a.this$0.jdField_a_of_type_Yqx.a(false, true, 13, null);
-    this.a.a.this$0.jdField_a_of_type_Ytq.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    yqm.a(this.a, f);
   }
 }
 

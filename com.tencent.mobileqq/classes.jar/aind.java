@@ -1,26 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment;
 
-class aind
-  implements View.OnClickListener
+public class aind
+  extends amwl
 {
-  aind(aimx paramaimx) {}
+  private aind(AlphabetFriendFragment paramAlphabetFriendFragment) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateFriendsList()
   {
-    Object localObject = paramView.getTag();
-    if (!(localObject instanceof Integer)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      String str = this.a.a.jdField_a_of_type_JavaLangString;
-      if (this.a.a.jdField_a_of_type_Int == 1006) {
-        str = this.a.a.f;
-      }
-      aimx.a(this.a, (Integer)localObject, str);
+    if (AlphabetFriendFragment.b(this.a)) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
     }
   }
 }

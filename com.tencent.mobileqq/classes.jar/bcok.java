@@ -1,26 +1,20 @@
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import com.tencent.widget.HorizontalListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import kotlin.Metadata;
 
-public class bcok
-  extends bcog
-  implements blmh
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
+final class bcok
+  implements DialogInterface.OnClickListener
 {
-  public bcgf a;
-  public HorizontalListView a;
+  bcok(bcof parambcof, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean) {}
   
-  public bcok(ViewGroup paramViewGroup, int paramInt)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)((LinearLayout)a(paramInt)).findViewById(2131377201));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(this);
-  }
-  
-  public void onScrollStateChanged(int paramInt)
-  {
-    if (paramInt == 4097) {
-      this.jdField_a_of_type_Bcgf.b = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getCurrentX();
+    if ((paramDialogInterface instanceof QQCustomDialog)) {
+      ((QQCustomDialog)paramDialogInterface).setOnDismissListener(null);
     }
+    bcof.a(this.jdField_a_of_type_Bcof, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Boolean);
   }
 }
 

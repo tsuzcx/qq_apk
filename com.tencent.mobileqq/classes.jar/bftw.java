@@ -1,8 +1,14 @@
-public class bftw
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+
+final class bftw
+  implements MediaPlayer.OnCompletionListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int b;
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    paramMediaPlayer.release();
+    bftt.a = null;
+  }
 }
 
 

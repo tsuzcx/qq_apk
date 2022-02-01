@@ -1,22 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
 public class tpx
 {
-  private static int a()
+  public static void a(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity, int paramInt1, int paramInt2, int paramInt3, tqh paramtqh)
   {
-    return 2;
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    if (a()) {
-      QLog.d(paramString1, a(), paramString2);
+    if (paramAdvertisementInfo == null) {
+      return;
     }
-  }
-  
-  private static boolean a()
-  {
-    return QLog.isColorLevel();
+    uhs.a(paramActivity);
+    int i = paramAdvertisementInfo.clickPos;
+    boolean bool = tqg.a(paramAdvertisementInfo, paramActivity, paramtqh);
+    if (bool)
+    {
+      paramInt1 = obb.T;
+      paramAdvertisementInfo.clickPos = i;
+    }
+    for (;;)
+    {
+      tqk.a(bool, paramActivity, paramAdvertisementInfo, paramInt1, paramInt2, paramInt3);
+      return;
+    }
   }
 }
 

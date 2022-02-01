@@ -1,42 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONObject;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public final class agsc
+class agsc
+  implements View.OnTouchListener
 {
-  public HashMap<String, String> a = new HashMap();
+  agsc(agrz paramagrz, afce paramafce) {}
   
-  private void a(String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ECommerceDataReportConfigProcessor", 2, "configText : " + paramString);
-      }
-      try
-      {
-        paramString = new JSONObject(paramString);
-        Iterator localIterator = paramString.keys();
-        while (localIterator.hasNext())
-        {
-          String str1 = (String)localIterator.next();
-          if (!TextUtils.isEmpty(str1))
-          {
-            String str2 = paramString.optString(str1, "");
-            if (!TextUtils.isEmpty(str2)) {
-              this.a.put(str1, str2);
-            }
-          }
-        }
-        return;
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("ECommerceDataReportConfigProcessor", 1, paramString, new Object[0]);
-      }
-    }
+    this.jdField_a_of_type_Afce.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 

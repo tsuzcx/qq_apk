@@ -1,49 +1,26 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.HashMap;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ajpr
-  implements View.OnClickListener
+final class ajpr
+  implements DialogInterface.OnClickListener
 {
-  public ajpr(TroopActivity paramTroopActivity) {}
+  ajpr(Activity paramActivity, String paramString1, String paramString2, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = false;
-    switch (paramView.getId())
+    switch (paramInt)
     {
     default: 
-      this.a.b();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (this.a.a != null)
-      {
-        Intent localIntent = new Intent();
-        if (!this.a.a.isEmpty()) {
-          bool = true;
-        }
-        localIntent.putExtra("isDataChanged", bool);
-        this.a.setResult(-1, localIntent);
-      }
-      this.a.onBackPressed();
-      continue;
-      bdll.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right", 0, 0, "", "", "", "");
-      if (this.a.a())
-      {
-        this.a.b();
-      }
-      else
-      {
-        bdll.b(this.a.app, "CliOper", "", "", "Grp", "Clk_grplist_plus", 0, 0, "", "", "", "");
-        this.a.a();
-      }
+    case 0: 
+      ajpl.a(this.jdField_a_of_type_AndroidAppActivity, true, this.jdField_a_of_type_JavaLangString, this.b, false);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFC", "0X8009DFC", 0, 0, this.b, "", "", "");
+      return;
     }
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFD", "0X8009DFD", 0, 0, this.b, "", "", "");
   }
 }
 

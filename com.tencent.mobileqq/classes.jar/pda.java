@@ -1,54 +1,57 @@
-import com.tencent.qqlive.module.videoreport.PageParams;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import java.util.Set;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/dt/RIJDtParamBuilder;", "", "()V", "params", "Ljava/util/HashMap;", "", "addChannelID", "channelID", "", "addElementID", "id", "addRowkey", "rowkey", "build", "", "buildPageParams", "Lcom/tencent/qqlive/module/videoreport/PageParams;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pda
+public class pda
+  implements AladdinConfigHandler
 {
-  private final HashMap<String, Object> a = new HashMap();
+  private static final Set<String> a = ;
   
-  public pda()
+  public static Set<String> a()
   {
-    Map localMap = (Map)this.a;
-    String str = pcz.a;
-    Intrinsics.checkExpressionValueIsNotNull(str, "RIJDtConstant.APP_KEY");
-    localMap.put("dt_appkey", str);
+    return a;
   }
   
-  @NotNull
-  public final PageParams a()
+  private static Set<String> b()
   {
-    return new PageParams((Map)this.a);
-  }
-  
-  @NotNull
-  public final Map<String, Object> a()
-  {
-    return (Map)this.a;
-  }
-  
-  @NotNull
-  public final pda a(long paramLong)
-  {
-    ((Map)this.a).put("channel_id", Long.valueOf(paramLong));
-    return this;
-  }
-  
-  @NotNull
-  public final pda a(@Nullable String paramString)
-  {
-    Map localMap = (Map)this.a;
-    if (paramString != null) {}
-    for (;;)
-    {
-      localMap.put("rowkey", paramString);
-      return this;
-      paramString = "null";
+    HashSet localHashSet = new HashSet();
+    Object localObject = (String)bkwm.a("default_feeds_aladdin_keys", "");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return localHashSet;
     }
+    localObject = ((String)localObject).split("\\|");
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
+    {
+      localHashSet.add(localObject[i]);
+      i += 1;
+    }
+    return localHashSet;
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("WhiteListBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = pbt.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("WhiteListBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      bkwm.a("default_feeds_aladdin_keys", str2);
+    }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("WhiteListBidConfigHandler", 1, "[onWipeConfig]");
   }
 }
 

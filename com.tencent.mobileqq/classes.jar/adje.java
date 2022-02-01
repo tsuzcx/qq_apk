@@ -1,42 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
 
-public class adje
-  implements adbw
+class adje
+  implements bjoe
 {
-  public int a()
-  {
-    return 1037;
-  }
+  adje(adja paramadja, int[] paramArrayOfInt, mup parammup) {}
   
-  public boolean a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(159);
-    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramMessageRecord = paramQQAppInterface.a().b(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
-    if (paramMessageRecord != null) {
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    int i = this.jdField_a_of_type_ArrayOfInt[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileCardActivity", 2, "videoActionSheet onClick,showItems =  " + Arrays.toString(this.jdField_a_of_type_ArrayOfInt) + ",which = " + paramInt + ",item = " + i);
     }
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 8037;
+    this.jdField_a_of_type_Mup.dismiss();
+    switch (i)
+    {
+    default: 
+      return;
+    case 1: 
+      FriendProfileCardActivity.a(this.jdField_a_of_type_Adja.a.app, this.jdField_a_of_type_Adja.a, this.jdField_a_of_type_Adja.a.a);
+      bcef.b(this.jdField_a_of_type_Adja.a.app, "CliOper", "", "", "0X8008405", "0X8008405", 0, 0, "", "", "", "");
+      return;
+    }
+    paramView = new SessionInfo();
+    paramView.curType = bfrj.a(this.jdField_a_of_type_Adja.a.a.a);
+    paramView.curFriendUin = this.jdField_a_of_type_Adja.a.a.a.a;
+    paramView.curFriendNick = FriendProfileCardActivity.a(this.jdField_a_of_type_Adja.a.a, this.jdField_a_of_type_Adja.a.app);
+    paramView.troopUin = this.jdField_a_of_type_Adja.a.a.a.d;
+    afcm.a(this.jdField_a_of_type_Adja.a.app, this.jdField_a_of_type_Adja.a, paramView, false, null, null);
+    bcef.b(this.jdField_a_of_type_Adja.a.app, "CliOper", "", "", "0X80085D6", "0X80085D6", 9, 0, "", "", "", "");
   }
 }
 

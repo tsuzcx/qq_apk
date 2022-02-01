@@ -1,31 +1,29 @@
 package com.tencent.biz.richframework.network.observer;
 
-import aaau;
-import aaav;
 import com.tencent.biz.richframework.network.request.VSBaseRequest;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class VSDispatchObserver$7
+class VSDispatchObserver$7
   implements Runnable
 {
-  public VSDispatchObserver$7(aaau paramaaau, VSBaseRequest paramVSBaseRequest, MessageMicro paramMessageMicro) {}
+  VSDispatchObserver$7(VSDispatchObserver paramVSDispatchObserver, VSBaseRequest paramVSBaseRequest, MessageMicro paramMessageMicro) {}
   
   public void run()
   {
     try
     {
-      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)aaau.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestVSBaseRequest.getContextHashCode()));
-      int i = this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestVSBaseRequest.getCurrentSeq();
+      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)VSDispatchObserver.access$300(this.this$0).get(Integer.valueOf(this.val$request.getContextHashCode()));
+      int i = this.val$request.getCurrentSeq();
       if (localConcurrentHashMap != null)
       {
         if (localConcurrentHashMap.get(Integer.valueOf(i)) == null)
         {
-          QLog.d("VSNetworkHelper| Protocol Cache", 1, String.format("VSDispatchObserver: onReceive: CmdName:%s Seq:%d CallBack is Null or has Removed", new Object[] { this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestVSBaseRequest.getCmdName(), Integer.valueOf(this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestVSBaseRequest.getCurrentSeq()) }));
+          QLog.d("VSNetworkHelper| Protocol Cache", 1, String.format("VSDispatchObserver: onReceive: CmdName:%s Seq:%d CallBack is Null or has Removed", new Object[] { this.val$request.getCmdName(), Integer.valueOf(this.val$request.getCurrentSeq()) }));
           return;
         }
-        ((aaav)localConcurrentHashMap.get(Integer.valueOf(i))).onReceive(true, 0L, "_VSNetworkHelperCache", this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro);
+        ((VSDispatchObserver.onVSRspCallBack)localConcurrentHashMap.get(Integer.valueOf(i))).onReceive(this.val$request, true, 0L, "_VSNetworkHelperCache", this.val$finalRsp);
         return;
       }
     }

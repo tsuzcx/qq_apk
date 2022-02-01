@@ -1,52 +1,35 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment.2.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class pkw
-  implements tjr
+  implements ThreadFactory
 {
-  public pkw(ReadInJoyViolaChannelFragment paramReadInJoyViolaChannelFragment) {}
+  private final String jdField_a_of_type_JavaLangString;
+  private final ThreadGroup jdField_a_of_type_JavaLangThreadGroup;
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
   
-  public void a()
+  public pkw()
   {
-    if (this.a.getActivity() != null) {
-      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadInJoyViolaChannelFragment.2.1(this), 200L);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyViolaChannelFragment", 2, "initViola success!");
-    }
-    if ((this.a.a != null) && (this.a.a.c()) && (this.a.c()) && (ReadinjoyTabFrame.d_())) {
-      this.a.a.a(true);
+    Object localObject = System.getSecurityManager();
+    if (localObject != null) {}
+    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
+    {
+      this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
+      this.jdField_a_of_type_JavaLangString = "readinjoy-common-";
+      return;
     }
   }
   
-  public void a(int paramInt)
+  public Thread newThread(Runnable paramRunnable)
   {
-    ReadInJoyViolaChannelFragment.a(this.a);
-    ReadInJoyViolaChannelFragment.a(this.a).c();
-    if (QLog.isColorLevel()) {
-      QLog.e("ReadInJoyViolaChannelFragment", 2, "initViola error,error code=" + paramInt);
+    paramRunnable = new Thread(this.jdField_a_of_type_JavaLangThreadGroup, paramRunnable, this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement(), 0L);
+    if (paramRunnable.isDaemon()) {
+      paramRunnable.setDaemon(false);
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
-  
-  public void a(String paramString, int paramInt)
-  {
-    if ((1 == paramInt) && (paz.a())) {
-      pfd.a().l();
+    if (paramRunnable.getPriority() != 5) {
+      paramRunnable.setPriority(5);
     }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyViolaChannelFragment", 2, "initViola process,process code=" + paramInt);
-    }
+    return paramRunnable;
   }
 }
 

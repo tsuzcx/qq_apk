@@ -1,23 +1,35 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.LocalVideoPreviewCallback;
-import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
-import com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.1.1;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.FrameHelperActivity.9.1;
+import com.tencent.mobileqq.app.FrameHelperActivity.9.2;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class amso
-  extends AVVideoCtrl.LocalVideoPreviewCallback
+  implements axvc
 {
-  amso(amsn paramamsn) {}
+  public amso(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
+  public TextView a()
   {
-    Object localObject = anbd.a(amsm.a(this.a.a));
-    if (localObject == null) {}
-    do
-    {
-      return;
-      localObject = ((ande)localObject).a();
-    } while (localObject == null);
-    ((ApolloSurfaceView)localObject).queueEvent(new AVCameraCaptureModel.1.1.1(this, (ApolloSurfaceView)localObject, paramVideoFrame));
+    Conversation localConversation = (Conversation)this.a.a(Conversation.class);
+    if (localConversation != null) {
+      return localConversation.a;
+    }
+    return null;
+  }
+  
+  public void a(Drawable paramDrawable, String paramString)
+  {
+    ThreadManagerV2.getUIHandlerV2().post(new FrameHelperActivity.9.2(this, paramDrawable, paramString));
+  }
+  
+  public void a(String paramString, Drawable paramDrawable)
+  {
+    Conversation localConversation = (Conversation)this.a.a(Conversation.class);
+    ThreadManagerV2.getUIHandlerV2().post(new FrameHelperActivity.9.1(this, localConversation, paramDrawable, paramString));
   }
 }
 

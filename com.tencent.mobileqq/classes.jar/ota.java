@@ -1,15 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
 public class ota
-  extends pfh
+  implements oww
 {
-  public ota(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
+  public ota(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   
-  public void b(String paramString)
+  public void a(int paramInt)
   {
-    super.b(paramString);
-    ReadInJoySecondCommentListFragment.a(this.a).a(paramString, 2);
-    ReadInJoySecondCommentListFragment.a(this.a).notifyDataSetChanged();
+    if (paramInt != 2) {
+      this.a.d();
+    }
   }
 }
 

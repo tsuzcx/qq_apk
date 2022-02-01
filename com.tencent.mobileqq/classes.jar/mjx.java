@@ -1,22 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
 
-public class mjx
-  implements View.OnClickListener
+class mjx
+  implements mho
 {
-  public mjx(VideoControlUI paramVideoControlUI) {}
+  mjx(mjw parammjw) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    mru.c(paramView.getId());
-    AVActivity localAVActivity = this.a.a();
-    if (localAVActivity != null) {
-      localAVActivity.BtnOnClick(paramView);
+    if (this.a.a.a != null)
+    {
+      this.a.a.a.setViewEnable(2131373411, false);
+      this.a.a.a.setViewEnable(2131363109, false);
+      this.a.a.a.setViewEnable(2131363121, false);
+      this.a.a.a.setViewEnable(2131363120, false);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void b()
+  {
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 2130772177);
   }
 }
 

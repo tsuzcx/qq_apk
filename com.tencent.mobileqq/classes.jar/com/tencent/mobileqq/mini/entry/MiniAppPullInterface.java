@@ -10,7 +10,7 @@ public abstract interface MiniAppPullInterface
   
   public abstract boolean hasOpenDesktop();
   
-  public abstract void hideMiniAppEntry();
+  public abstract void hideMiniAppEntry(int paramInt);
   
   public abstract void initLater(DrawerFrame paramDrawerFrame);
   

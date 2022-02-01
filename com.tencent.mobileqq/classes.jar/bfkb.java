@@ -1,19 +1,50 @@
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import mqq.app.QQPermissionCallback;
+import java.util.ArrayList;
 
 public class bfkb
-  implements QQPermissionCallback
 {
-  public bfkb(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public int a;
+  public bfkb a;
+  public String a;
+  public ArrayList<bfkb> a;
+  public String b;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  private bfkb() {}
+  
+  public bfkb(int paramInt, String paramString1, String paramString2)
   {
-    bhlq.a(this.a, paramArrayOfString, paramArrayOfInt);
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public String a()
   {
-    this.a.f();
+    String str = this.jdField_a_of_type_JavaLangString;
+    bfkb localbfkb = this;
+    while (localbfkb.jdField_a_of_type_Bfkb != null)
+    {
+      localbfkb = localbfkb.jdField_a_of_type_Bfkb;
+      str = localbfkb.jdField_a_of_type_JavaLangString + "-" + str;
+    }
+    return str;
+  }
+  
+  public void a(bfkb parambfkb)
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(parambfkb);
+  }
+  
+  public boolean a(bfkb parambfkb)
+  {
+    if ((parambfkb != null) && (parambfkb.jdField_a_of_type_Int + 1 == this.jdField_a_of_type_Int))
+    {
+      this.jdField_a_of_type_Bfkb = parambfkb;
+      return true;
+    }
+    return false;
   }
 }
 

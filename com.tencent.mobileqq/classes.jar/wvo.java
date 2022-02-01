@@ -1,102 +1,39 @@
-import java.util.Comparator;
+import android.app.AlertDialog.Builder;
+import android.content.Context;
+import android.widget.MediaController;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.qphone.base.util.QLog;
 
 public class wvo
-  implements Comparator<wvn>
+  implements wxc
 {
-  public int a(wvn paramwvn1, wvn paramwvn2)
+  public wvo(TextureVideoView paramTextureVideoView) {}
+  
+  public boolean a(wwz paramwwz, int paramInt1, int paramInt2)
   {
-    int k = 0;
-    int m = 0;
-    int n = 0;
-    int i1 = 0;
-    int i = 0;
-    int j = 1;
-    if (paramwvn1.a == 1) {
-      if (paramwvn2.a != 1) {}
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "Error: " + paramInt1 + "," + paramInt2);
     }
-    do
+    this.a.jdField_a_of_type_Int = -1;
+    this.a.b = -1;
+    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
+    }
+    if ((this.a.jdField_a_of_type_Wxc != null) && (this.a.jdField_a_of_type_Wxc.a(paramwwz, paramInt1, paramInt2))) {}
+    while (this.a.getWindowToken() == null) {
+      return true;
+    }
+    this.a.getContext().getResources();
+    if (paramInt1 == 200) {}
+    for (paramInt1 = 17039381;; paramInt1 = 17039377)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  for (;;)
-                  {
-                    return i;
-                    i = -1;
-                  }
-                  i = j;
-                } while (paramwvn2.a == 1);
-                if (((paramwvn2.a == 13) && (paramwvn2.b == 0)) || ((paramwvn1.a == 13) && (paramwvn1.b > 0))) {
-                  return -1;
-                }
-                if (paramwvn2.a != 13) {
-                  break;
-                }
-                i = j;
-              } while (paramwvn2.b > 0);
-              if (paramwvn1.a != 13) {
-                break;
-              }
-              i = j;
-            } while (paramwvn1.b == 0);
-            if (paramwvn1.a == 2)
-            {
-              if (paramwvn2.a == 2) {}
-              for (i = k;; i = -1) {
-                return i;
-              }
-            }
-            i = j;
-          } while (paramwvn2.a == 2);
-          if (paramwvn1.a == 3)
-          {
-            if (paramwvn2.a == 3) {}
-            for (i = m;; i = -1) {
-              return i;
-            }
-          }
-          i = j;
-        } while (paramwvn2.a == 3);
-        if ((paramwvn1.a == 5) && (paramwvn1.a() > 0))
-        {
-          if ((paramwvn2.a == 5) && (paramwvn2.a() > 0)) {}
-          for (i = n;; i = -1) {
-            return i;
-          }
-        }
-        if (paramwvn2.a != 5) {
-          break;
-        }
-        i = j;
-      } while (paramwvn2.a() > 0);
-      if (paramwvn1.a == 4)
-      {
-        if (paramwvn2.a == 4) {}
-        for (i = i1;; i = 1) {
-          return i;
-        }
-      }
-      if (paramwvn2.a == 4) {
-        return -1;
-      }
-      if ((paramwvn1.b > 0) && (paramwvn2.b == 0)) {
-        return -1;
-      }
-      if (paramwvn1.b != 0) {
+      paramwwz = TextureVideoView.a(this.a);
+      if (paramwwz == null) {
         break;
       }
-      i = j;
-    } while (paramwvn2.b > 0);
-    return -wxl.a(paramwvn1.d, paramwvn2.d);
+      new AlertDialog.Builder(paramwwz).setMessage(paramInt1).setPositiveButton(17039376, new wvp(this)).setCancelable(false).show();
+      return true;
+    }
   }
 }
 

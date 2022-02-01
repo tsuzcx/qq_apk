@@ -1,25 +1,49 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.ServerNotifyObserver;
 
 public class aesh
-  implements CompoundButton.OnCheckedChangeListener
+  extends ServerNotifyObserver
 {
-  public aesh(GeneralSettingActivity paramGeneralSettingActivity) {}
+  public aesh(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onReceiveVerifyCode(String paramString1, int paramInt, String paramString2, byte[] paramArrayOfByte)
   {
-    behm.a(paramBoolean);
-    if (paramBoolean) {
-      behm.a(new aesi(this.a.jdField_a_of_type_Afnr, this.a.jdField_a_of_type_AndroidViewView));
+    QLog.d("VerifyCodeActivity", 1, "onReceiveVerifyCode");
+    this.a.b = false;
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("");
+      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131719447), 0).a();
     }
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setKey(paramString1);
+    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setSeq(paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString().length() > 4)) {
+      VerifyCodeActivity.a(this.a, true);
+    }
+    if (paramArrayOfByte != null)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bfpx.a(paramArrayOfByte, 0, paramArrayOfByte.length));
+      this.a.a(false);
+      return;
+    }
+    Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131719444), 1).show();
+  }
+  
+  public void onVerifyClose()
+  {
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aesh
  * JD-Core Version:    0.7.0.1
  */

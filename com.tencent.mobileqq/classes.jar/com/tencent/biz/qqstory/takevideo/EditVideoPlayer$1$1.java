@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import yyd;
+import xzn;
 
 class EditVideoPlayer$1$1
   implements Runnable
@@ -9,7 +9,7 @@ class EditVideoPlayer$1$1
   
   public void run()
   {
-    this.a.this$0.f();
+    this.a.this$0.onPlayerRecyle();
   }
 }
 

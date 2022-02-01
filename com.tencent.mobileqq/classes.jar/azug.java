@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.mobileqq.portal.PortalManager.5.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import java.util.Comparator;
 
 public class azug
-  extends anyu
+  implements Comparator<ReceiptMessageReadMemberListFragment.MemberInfo>
 {
-  public azug(PortalManager paramPortalManager) {}
+  public azug(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public int a(ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo1, ReceiptMessageReadMemberListFragment.MemberInfo paramMemberInfo2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PortalManagerhead", 2, "onUpdateCustomHead isSuccess = " + paramBoolean + ", mobileNumber = " + paramString);
+    if (paramMemberInfo1.a == paramMemberInfo2.a) {
+      return 0;
     }
-    if (this.a.a.containsKey(paramString)) {
-      ThreadManager.getSubThreadHandler().post(new PortalManager.5.1(this, paramString, paramBoolean));
+    if (paramMemberInfo1.a < paramMemberInfo2.a) {
+      return -1;
     }
+    return 1;
   }
 }
 

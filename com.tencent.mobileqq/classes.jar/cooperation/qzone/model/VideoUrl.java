@@ -3,22 +3,34 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnas;
 
 public class VideoUrl
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoUrl> CREATOR = new bnas();
-  public int a;
-  public String a;
-  public int b;
+  public static final Parcelable.Creator<VideoUrl> CREATOR = new VideoUrl.1();
+  public int decoderType;
+  public String url;
+  public int videoRate;
   
   public VideoUrl() {}
   
   public VideoUrl(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = 1;
+    this.url = paramString;
+    this.decoderType = 1;
+  }
+  
+  public VideoUrl(String paramString, int paramInt)
+  {
+    this.url = paramString;
+    this.decoderType = paramInt;
+  }
+  
+  public VideoUrl(String paramString, int paramInt1, int paramInt2)
+  {
+    this.url = paramString;
+    this.decoderType = paramInt1;
+    this.videoRate = paramInt2;
   }
   
   public int describeContents()
@@ -28,14 +40,14 @@ public class VideoUrl
   
   public String toString()
   {
-    return "VideoUrl [url=" + this.jdField_a_of_type_JavaLangString + ", decoderType=" + this.jdField_a_of_type_Int + ", videoRate=" + this.b + "]";
+    return "VideoUrl [url=" + this.url + ", decoderType=" + this.decoderType + ", videoRate=" + this.videoRate + "]";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.b);
+    paramParcel.writeString(this.url);
+    paramParcel.writeInt(this.decoderType);
+    paramParcel.writeInt(this.videoRate);
   }
 }
 

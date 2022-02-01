@@ -1,120 +1,41 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.io.File;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bcye
+  implements View.OnClickListener
 {
-  private static String a = "Xiaomi;Redmi 4X;23|LGE;Nexus 5X;27|HUAWEI;CAM-UL00;23";
+  public bcye(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public static int a(ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
+  public void onClick(View paramView)
   {
-    if (paramSVConfigItem.versionCode >= 1) {}
-    for (int i = 0;; i = -4)
+    bcxs localbcxs = (bcxs)paramView.getTag();
+    if (localbcxs.jdField_a_of_type_Int == bcxq.b)
     {
-      VideoEnvironment.a("ShortVideoTrackingResourceMgr", "[checkResourceLowLimitVersion]limitVer=1 downVer=" + paramSVConfigItem.versionCode + " errCode=" + i, null);
-      return i;
+      bcvs.a(this.a.app, "0X8009938");
+      bcvs.a(this.a.app, this.a, 2, "group_online_doc_more_temp", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
+      bcef.b(this.a.app, "dc00898", "", "", "0X8009C67", "0X8009C67", 0, 0, "", "", "" + GroupTeamWorkListActivity.a(this.a), "");
     }
-  }
-  
-  public static String a()
-  {
-    String str = BaseApplicationImpl.getApplication().getSharedPreferences("tracking_short_video_mgr_sp", 4).getString("tracking_sv_md5_version_soname_key", "Tracking000_0");
-    boolean bool = bcwi.a(str, 1);
-    VideoEnvironment.a("ShortVideoTrackingResourceMgr", "getCurrentPendantUnzipPath success=" + bool + ",md5Version=" + str, null);
-    if (bool) {
-      return str;
-    }
-    return "Tracking000_0";
-  }
-  
-  static boolean a()
-  {
-    return bdfb.a();
-  }
-  
-  static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
-  {
-    return bdek.g();
-  }
-  
-  static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
-    boolean bool2 = true;
-    boolean bool1 = false;
-    label349:
     for (;;)
     {
-      try
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      String str = ataw.a(this.a.app, this.a.a, this.a.app.getLongAccountUin());
+      if (!TextUtils.isEmpty(str))
       {
-        paramQQAppInterface = b();
-        paramQQAppInterface = paramQQAppInterface + paramString1 + File.separator;
-        File localFile = new File(paramQQAppInterface);
-        if (localFile.exists())
-        {
-          if ((a().equals(paramString1)) && (bcwi.a(paramQQAppInterface, "tracking_config_file")))
-          {
-            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:[checkUnzipFileListSizeIsOK]success=true", null);
-            return bool1;
-          }
-          bhmi.a(paramQQAppInterface);
-          VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:[deleteDirectory|already exists]unzipPath=" + paramQQAppInterface, null);
-        }
-        bool1 = localFile.mkdirs();
-        VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:[exists]mkOK=" + bool1, null);
-        try
-        {
-          bhmi.a(paramString2, paramQQAppInterface, false);
-          boolean bool3 = bcwi.a(paramQQAppInterface, "tracking_config_file");
-          VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK success=" + bool3, null);
-          bool1 = bool2;
-          if (bool3)
-          {
-            bool1 = a(paramString1);
-            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK saveOK=" + bool1, null);
-            if (bool1) {
-              break label349;
-            }
-            bool1 = a(paramString1);
-            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK[two]saveOK=" + bool1, null);
-            if (bool1) {
-              break label349;
-            }
-            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK[two] needRestore=true,saveOK=false", null);
-            bool1 = a("Tracking000_0");
-            VideoEnvironment.a("ShortVideoTrackingResourceMgr", "uncompressTrackingZip:checkUnzipFileListSizeIsOK clearMemoryOK=" + bool1 + ",signature=" + paramString1, null);
-            bool1 = bool2;
-          }
-        }
-        catch (Exception paramQQAppInterface)
-        {
-          paramQQAppInterface.printStackTrace();
-          bool1 = bool2;
-          continue;
-        }
-        bool1 = false;
+        QQToast.a(this.a, str, 0).a();
       }
-      finally {}
+      else
+      {
+        bcvs.a(this.a.app, "0X8009937");
+        bcvs.a(this.a.app, this.a, "group_online_doc_temp", GroupTeamWorkListActivity.a(this.a), localbcxs.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateInfo);
+        bcef.b(this.a.app, "dc00898", "", "", "0X8009C66", "0X8009C66", 0, 0, "", "", "" + GroupTeamWorkListActivity.a(this.a), "");
+      }
     }
-  }
-  
-  private static boolean a(String paramString)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("tracking_short_video_mgr_sp", 4).edit();
-    localEditor.putString("tracking_sv_md5_version_soname_key", paramString);
-    boolean bool = localEditor.commit();
-    VideoEnvironment.a("ShortVideoTrackingResourceMgr", "storeNewPendantUnzipPath commitValue=" + bool + ",pathName=" + paramString, null);
-    return bool;
-  }
-  
-  public static String b()
-  {
-    String str = bdek.a();
-    return str + "tracking_res_cache" + File.separator;
   }
 }
 

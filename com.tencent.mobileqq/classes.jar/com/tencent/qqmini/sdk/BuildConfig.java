@@ -9,7 +9,7 @@ public final class BuildConfig
   public static final String FLAVOR = "internal";
   public static final String LIBRARY_PACKAGE_NAME = "com.tencent.qqmini.sdk";
   public static final int VERSION_CODE = 1;
-  public static final String VERSION_NAME = "1.7.0_8_b448de1";
+  public static final String VERSION_NAME = "1.8.0_25_0ea610c";
 }
 
 

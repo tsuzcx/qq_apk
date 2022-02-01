@@ -1,19 +1,17 @@
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingDialog$initView$3", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class acqs
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class acqs
+  implements DialogInterface.OnClickListener
 {
-  acqs(ViewGroup paramViewGroup) {}
+  public acqs(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
-    QLog.i("GdtMotiveBrowsingDialog", 1, "onGlobalLayout:" + acqn.a(this.jdField_a_of_type_Acqn) + " l=" + this.jdField_a_of_type_AndroidViewViewGroup.getLeft() + ",t=" + this.jdField_a_of_type_AndroidViewViewGroup.getTop() + ",r=" + this.jdField_a_of_type_AndroidViewViewGroup.getRight() + ",b=" + this.jdField_a_of_type_AndroidViewViewGroup.getBottom());
+    AddRequestActivity.a(this.a).dismiss();
+    AddRequestActivity.b(this.a, false);
   }
 }
 

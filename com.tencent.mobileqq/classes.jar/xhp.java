@@ -1,8 +1,22 @@
-public abstract interface xhp
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+
+final class xhp
+  extends ClickableSpan
 {
-  public abstract void a(boolean paramBoolean);
+  xhp(xhq paramxhq, String paramString, int paramInt) {}
   
-  public abstract void b(boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Xhq.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(paramTextPaint.getColor());
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 

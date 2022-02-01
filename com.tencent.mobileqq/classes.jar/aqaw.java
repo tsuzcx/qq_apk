@@ -1,17 +1,18 @@
-public class aqaw
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+
+class aqaw
+  implements bmxi
 {
-  public volatile int a;
-  public volatile boolean a;
+  aqaw(aqav paramaqav) {}
   
-  private aqaw()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
+    ((DynamicTextConfigManager)bmql.a(7)).a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqaw
  * JD-Core Version:    0.7.0.1
  */

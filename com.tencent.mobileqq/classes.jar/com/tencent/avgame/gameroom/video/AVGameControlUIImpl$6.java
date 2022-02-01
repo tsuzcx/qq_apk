@@ -1,6 +1,6 @@
 package com.tencent.avgame.gameroom.video;
 
-import nfm;
+import ngu;
 
 class AVGameControlUIImpl$6
   implements Runnable
@@ -10,7 +10,7 @@ class AVGameControlUIImpl$6
   public void run()
   {
     if (this.this$0.a()) {}
-    while (nfm.b().a() != 1) {
+    while (ngu.b().a() != 1) {
       return;
     }
     AVGameControlUIImpl.b(this.this$0, 7);

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history.widget;
 
-import akgl;
+import ajbl;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 public class DispatchTouchEventRelativeLayout
   extends RelativeLayout
 {
-  private akgl a;
+  private ajbl a;
   
   public DispatchTouchEventRelativeLayout(Context paramContext)
   {
@@ -34,9 +34,9 @@ public class DispatchTouchEventRelativeLayout
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public void setOnDispatchListener(akgl paramakgl)
+  public void setOnDispatchListener(ajbl paramajbl)
   {
-    this.a = paramakgl;
+    this.a = paramajbl;
   }
 }
 

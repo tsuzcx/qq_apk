@@ -1,10 +1,11 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
 import java.util.List;
 
-public abstract interface ashj
+class ashj
+  implements asho
 {
-  public abstract void a(float paramFloat, List<Integer> paramList);
-  
-  public abstract void a(List<Integer> paramList);
+  ashj(ashf paramashf, boolean paramBoolean1, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, boolean paramBoolean2, String paramString3, short paramShort, String paramString4, List paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle) {}
 }
 
 

@@ -1,9 +1,38 @@
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import java.util.List;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-public abstract interface awsg
+public class awsg
+  implements AdapterView.OnItemLongClickListener
 {
-  public abstract void a(List<LocationRoom.Venue> paramList);
+  public awsg(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramAdapterView = (Comments.Comment)paramAdapterView.getAdapter().getItem(paramInt);
+    if (paramAdapterView == null) {
+      return true;
+    }
+    paramLong = Long.parseLong(this.a.a.getCurrentAccountUin());
+    if (paramAdapterView.c == paramLong)
+    {
+      this.a.c(paramAdapterView);
+      return true;
+    }
+    if (ShortVideoCommentsView.a(this.a).c == paramLong) {
+      this.a.e(paramAdapterView);
+    }
+    for (;;)
+    {
+      return false;
+      this.a.d(paramAdapterView);
+    }
+  }
 }
 
 

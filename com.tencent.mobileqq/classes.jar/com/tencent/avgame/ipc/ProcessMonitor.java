@@ -3,14 +3,14 @@ package com.tencent.avgame.ipc;
 import android.content.SharedPreferences;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.avgame.session.AVGameSession;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.app.Foreground;
-import nfm;
+import ngu;
+import nhn;
 
 public class ProcessMonitor
 {
@@ -148,8 +148,8 @@ public class ProcessMonitor
   
   boolean a()
   {
-    AVGameSession localAVGameSession = nfm.b().a();
-    if ((localAVGameSession != null) && (!localAVGameSession.a())) {
+    nhn localnhn = ngu.b().a();
+    if ((localnhn != null) && (!localnhn.a())) {
       if (QLog.isColorLevel()) {
         QLog.i("ProcessMonitor", 2, "checkAndExitAVGame, in game now.");
       }

@@ -14,11 +14,11 @@ class MediaJsPlugin$4
   
   public void run()
   {
-    CoverView localCoverView = CoverViewAction.obtain(MediaJsPlugin.access$1100(this.this$0)).get(this.val$videoPlayerId);
+    CoverView localCoverView = CoverViewAction.obtain(MediaJsPlugin.access$1000(this.this$0)).get(this.val$videoPlayerId);
     if ((localCoverView instanceof CoverVideoView))
     {
-      ((ObserverManager)MediaJsPlugin.access$1200(this.this$0).getManager(ObserverManager.class)).deleteObserver(((CoverVideoView)localCoverView).getVideoPlayerStatusObserver());
-      CoverViewAction.obtain(MediaJsPlugin.access$1300(this.this$0)).del(this.val$videoPlayerId);
+      ((ObserverManager)MediaJsPlugin.access$1100(this.this$0).getManager(ObserverManager.class)).deleteObserver(((CoverVideoView)localCoverView).getVideoPlayerStatusObserver());
+      CoverViewAction.obtain(MediaJsPlugin.access$1200(this.this$0)).del(this.val$videoPlayerId);
       this.val$req.ok();
       return;
     }

@@ -1,39 +1,35 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.confess.ConfessPlugin;
 
-class apsg
-  extends Handler
+public class apsg
+  implements View.OnTouchListener
 {
-  public apsg(apsf paramapsf, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public apsg(ConfessPlugin paramConfessPlugin) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
+    switch (paramMotionEvent.getAction())
     {
     }
-    do
+    for (;;)
     {
-      return;
-      apsf.a(this.a);
-      return;
-      if (apsf.a(this.a))
+      return false;
+      if ((paramView instanceof TextView))
       {
-        apsf.a(this.a, false);
-        apra.a();
+        int i = ((TextView)paramView).getCurrentTextColor();
+        ((TextView)paramView).setTextColor(Color.argb(128, Color.red(i), Color.green(i), Color.blue(i)));
+        continue;
+        if ((paramView instanceof TextView))
+        {
+          i = ((TextView)paramView).getCurrentTextColor();
+          ((TextView)paramView).setTextColor(Color.argb(255, Color.red(i), Color.green(i), Color.blue(i)));
+        }
       }
-      try
-      {
-        apsf.b(this.a);
-        return;
-      }
-      catch (Throwable paramMessage) {}
-    } while (!QLog.isColorLevel());
-    QLog.i("QRSession", 2, paramMessage.getMessage(), paramMessage);
+    }
   }
 }
 

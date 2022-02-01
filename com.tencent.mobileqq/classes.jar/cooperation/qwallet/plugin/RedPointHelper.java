@@ -1,6 +1,5 @@
 package cooperation.qwallet.plugin;
 
-import agej;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -8,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class RedPointHelper
 {
@@ -74,8 +74,8 @@ public class RedPointHelper
     if ((paramInt1 & 0x8) != 0) {
       i = j + paramView.getHeight() / 2 - m / 2;
     }
-    paramInt1 = agej.a(paramInt2, this.mContext.getResources());
-    paramInt2 = agej.a(paramInt3, this.mContext.getResources());
+    paramInt1 = AIOUtils.dp2px(paramInt2, this.mContext.getResources());
+    paramInt2 = AIOUtils.dp2px(paramInt3, this.mContext.getResources());
     this.popupWindow.showAtLocation(paramView, 0, k + paramInt1, i + paramInt2);
   }
 }

@@ -1,71 +1,155 @@
+import android.app.Dialog;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.ReadStoryVideoEventReceiver.1;
-import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.ReadStoryVideoEventReceiver.2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tribe.async.dispatch.Subscriber;
+import java.util.Map;
 
-public final class xba
-  extends QQUIEventReceiver<xax, wtz>
+public class xba
+  extends AbsVideoInfoWidget
+  implements View.OnClickListener
 {
-  public xba(@NonNull xax paramxax)
+  private TextView a;
+  private String c = "";
+  private boolean e;
+  
+  public xba(View paramView)
   {
-    super(paramxax);
+    super(paramView);
   }
   
-  private void b(xax paramxax, wtz paramwtz)
+  public String a()
   {
-    Object localObject = ((wwg)xax.a(paramxax).getManager(251)).a().a(3, "");
-    if ((localObject != null) && (paramwtz.b.equals(((wvn)localObject).e))) {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.TAG, 2, "onEvent: invoked. Message: guideInfo: " + localObject);
+    return "WeishiTagVideoInfoWidget";
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+  }
+  
+  public void a(@NonNull Map<Subscriber, String> paramMap)
+  {
+    paramMap.put(new xbc(this), "");
+  }
+  
+  public void a(@NonNull wsk paramwsk, @NonNull StoryVideoItem paramStoryVideoItem)
+  {
+    paramwsk = paramwsk.a();
+    if (paramwsk == null)
+    {
+      k();
+      return;
+    }
+    if (TextUtils.equals(this.c, paramStoryVideoItem.mVid))
+    {
+      this.e = false;
+      int i = paramwsk.mSourceTagType;
+      if (i != 1) {
+        break label123;
+      }
+      j();
+      bcef.b(null, "dc00898", "", "", "weishi_share_videoplay", "story_entry_exp", 0, 0, "", "", "", "");
+      paramStoryVideoItem = yqq.b(i);
+      switch (i)
+      {
+      default: 
+        paramwsk = paramStoryVideoItem;
       }
     }
-    wvn localwvn;
-    do
-    {
-      return;
-      localObject = (wjk)xax.a(paramxax).getManager(197);
-      localwvn = ((wjk)localObject).b(paramwtz.jdField_a_of_type_JavaLangString);
-      if (QLog.isColorLevel()) {
-        QLog.i(this.TAG, 2, "syncHaloReadStatus: invoked. Message: haloNodeInfo: " + localwvn + "\nmanager: " + localObject);
-      }
-    } while (localwvn == null);
-    int i = localwvn.a.size() - 1;
     for (;;)
     {
-      if (i >= 0)
-      {
-        wwf localwwf = (wwf)localwvn.a.get(i);
-        if ((localwwf.jdField_a_of_type_Long == paramwtz.jdField_a_of_type_Long) && (!localwwf.jdField_a_of_type_Boolean))
-        {
-          localwwf.jdField_a_of_type_Boolean = true;
-          localwvn.b -= 1;
-        }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramwsk);
+      return;
+      this.e = true;
+      this.c = paramStoryVideoItem.mVid;
+      break;
+      label123:
+      k();
+      return;
+      paramwsk = paramStoryVideoItem;
+      if (TextUtils.isEmpty(paramStoryVideoItem)) {
+        paramwsk = "来自微视APP";
       }
-      else
-      {
-        ((wjk)localObject).c(localwvn);
-        ((wjk)localObject).b(localwvn);
-        paramxax = new RecentTabHaloPresenter.ReadStoryVideoEventReceiver.2(this, paramxax);
-        ThreadManager.getUIHandler().post(paramxax);
-        return;
-      }
-      i -= 1;
     }
   }
   
-  public void a(@NonNull xax paramxax, @NonNull wtz paramwtz)
+  public boolean a(@NonNull wsk paramwsk, @NonNull StoryVideoItem paramStoryVideoItem)
   {
-    ThreadManager.post(new RecentTabHaloPresenter.ReadStoryVideoEventReceiver.1(this, paramxax, paramwtz), 8, null, true);
+    if ((paramwsk.a != null) && (paramwsk.a.a == 13)) {}
+    while (paramStoryVideoItem.mSourceTagType != 1) {
+      return false;
+    }
+    return true;
   }
   
-  public Class acceptEventClass()
+  public int b()
   {
-    return wtz.class;
+    return -1;
+  }
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Wsk != null)
+    {
+      localObject = this.jdField_a_of_type_Wsk.a();
+      if (localObject != null) {
+        break label41;
+      }
+      xvv.e(this.b, "click error , video info not found");
+    }
+    label41:
+    VideoViewVideoHolder localVideoViewVideoHolder;
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localObject = null;
+      break;
+      localVideoViewVideoHolder = ((StoryPlayerGroupHolder)a()).a();
+      yqq.a(((StoryVideoItem)localObject).mSourceTagType);
+      switch (((StoryVideoItem)localObject).mSourceTagType)
+      {
+      }
+    }
+    Dialog localDialog = yrr.a(b(), ((StoryVideoItem)localObject).mOwnerUid, "4", ((StoryVideoItem)localObject).mVid, 3, ((StoryVideoItem)localObject).mWsSchema);
+    if (localDialog != null)
+    {
+      localDialog.setOnDismissListener(new xbb(this, localVideoViewVideoHolder));
+      if (localVideoViewVideoHolder != null) {
+        localVideoViewVideoHolder.c(true);
+      }
+    }
+    int i;
+    if (yqu.a(b()))
+    {
+      i = 2;
+      label154:
+      xwa.a("weishi_share", "tag_clk", 0, i, new String[] { "4", ((StoryVideoItem)localObject).mOwnerUid, "weishi", ((StoryVideoItem)localObject).mVid });
+      if (!yqu.a(b())) {
+        break label235;
+      }
+    }
+    label235:
+    for (Object localObject = "story_clk_ws";; localObject = "story_dl_ws")
+    {
+      bcef.b(null, "dc00898", "", "", "weishi_share_videoplay", (String)localObject, 0, 0, "", "", "", "");
+      break;
+      i = 1;
+      break label154;
+    }
   }
 }
 

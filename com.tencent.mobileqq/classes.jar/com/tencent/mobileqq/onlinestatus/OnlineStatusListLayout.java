@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import agej;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -9,7 +8,8 @@ import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import azib;
+import axvj;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,18 +74,18 @@ public class OnlineStatusListLayout
   
   private void a()
   {
-    this.d = agej.a(14.0F, getResources());
-    this.e = agej.a(9.0F, getResources());
-    this.f = agej.a(39.0F, getResources());
+    this.d = AIOUtils.dp2px(14.0F, getResources());
+    this.e = AIOUtils.dp2px(9.0F, getResources());
+    this.f = AIOUtils.dp2px(39.0F, getResources());
     setPadding(this.d, this.e, this.d, this.f);
-    this.jdField_b_of_type_Int = agej.a(9.0F, getResources());
-    this.jdField_c_of_type_Int = agej.a(9.0F, getResources());
+    this.jdField_b_of_type_Int = AIOUtils.dp2px(9.0F, getResources());
+    this.jdField_c_of_type_Int = AIOUtils.dp2px(9.0F, getResources());
   }
   
-  public static boolean a(azib paramazib1, azib paramazib2)
+  public static boolean a(axvj paramaxvj1, axvj paramaxvj2)
   {
-    if ((paramazib1 == null) || (paramazib2 == null) || (paramazib1.jdField_a_of_type_MqqAppAppRuntime$Status.getValue() != paramazib2.jdField_a_of_type_MqqAppAppRuntime$Status.getValue())) {}
-    while (paramazib1.jdField_a_of_type_Long != paramazib2.jdField_a_of_type_Long) {
+    if ((paramaxvj1 == null) || (paramaxvj2 == null) || (paramaxvj1.jdField_a_of_type_MqqAppAppRuntime$Status.getValue() != paramaxvj2.jdField_a_of_type_MqqAppAppRuntime$Status.getValue())) {}
+    while (paramaxvj1.jdField_a_of_type_Long != paramaxvj2.jdField_a_of_type_Long) {
       return false;
     }
     return true;
@@ -113,7 +113,7 @@ public class OnlineStatusListLayout
     }
   }
   
-  public void a(List<azib> paramList, ArrayList<azib> paramArrayList)
+  public void a(List<axvj> paramList, ArrayList<axvj> paramArrayList)
   {
     int j = 0;
     while (j < getChildCount())
@@ -136,15 +136,15 @@ public class OnlineStatusListLayout
     }
     Object localObject = (OnlineStatusItemView)localObject;
     ((OnlineStatusItemView)localObject).setVisibility(0);
-    azib localazib = (azib)paramList.get(j);
-    ((OnlineStatusItemView)localObject).a(localazib);
-    ((OnlineStatusItemView)localObject).setTag(localazib);
+    axvj localaxvj = (axvj)paramList.get(j);
+    ((OnlineStatusItemView)localObject).a(localaxvj);
+    ((OnlineStatusItemView)localObject).setTag(localaxvj);
     int k = 0;
     for (;;)
     {
       if (k < paramArrayList.size())
       {
-        if (a(localazib, (azib)paramArrayList.get(k))) {
+        if (a(localaxvj, (axvj)paramArrayList.get(k))) {
           ((OnlineStatusItemView)localObject).a(true);
         }
       }

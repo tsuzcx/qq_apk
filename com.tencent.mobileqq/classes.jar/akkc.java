@@ -1,43 +1,22 @@
-import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.activity.history.tendoc.TenDocMessageResultAdapter;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
-class akkc
-  implements bljm
+public class akkc
+  extends aklb
 {
-  akkc(akka paramakka) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public View a(int paramInt, Object paramObject, aklg paramaklg, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, aknm paramaknm)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TenDocMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
-    }
-    if ((akka.a(this.a).getCount() <= 0) || (paramInt <= 0)) {
-      return;
-    }
-    paramAdapterView = (akjl)akka.a(this.a).getItem(paramInt - 1);
-    if ((paramAdapterView != null) && (paramAdapterView.a != null))
-    {
-      paramAdapterView = paramAdapterView.a;
-      QLog.d("TenDocMessageSearchDialog", 4, "jump to mr: " + paramAdapterView.msgseq + " " + paramAdapterView.shmsgseq);
-      if (adak.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)) {
-        ChatHistoryBubbleListForTroopFragment.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramAdapterView.shmsgseq, 0, 2);
-      }
-      for (;;)
-      {
-        bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A175", "0X800A175", akka.a(this.a), 0, "", "", "s_qq_history_tab", "");
-        this.a.a(true);
-        return;
-        ChatHistoryActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.h, paramAdapterView.time, paramAdapterView.shmsgseq, 0);
-      }
-    }
-    QLog.e("TenDocMessageSearchDialog", 2, "null item: " + paramInt);
+    paramObject = new View(paramContext);
+    paramObject.setBackgroundColor(Color.parseColor("#f2f2f2"));
+    paramObject.setMinimumHeight(DisplayUtil.dip2px(paramContext, 20.0F));
+    paramObject.setMinimumWidth((int)DeviceInfoUtil.getDispalyWidth());
+    return paramObject;
   }
 }
 

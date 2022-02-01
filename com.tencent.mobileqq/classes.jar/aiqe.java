@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
 public class aiqe
-  extends aoka
+  extends RecyclerView.ItemDecoration
 {
-  public aiqe(TroopChatPie paramTroopChatPie) {}
+  private int a;
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public aiqe(int paramInt)
   {
-    this.a.f(65536);
+    this.a = paramInt;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.right = this.a;
   }
 }
 

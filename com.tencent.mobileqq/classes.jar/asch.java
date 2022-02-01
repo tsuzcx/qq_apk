@@ -1,10 +1,16 @@
-public abstract interface asch
+class asch
+  implements ascz
 {
-  public abstract void a(int paramInt);
+  asch(asbj paramasbj) {}
+  
+  public void a(Object[] paramArrayOfObject)
+  {
+    asbj.access$2000(this.a, paramArrayOfObject[2]);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asch
  * JD-Core Version:    0.7.0.1
  */

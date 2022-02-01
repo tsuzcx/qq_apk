@@ -1,28 +1,36 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.onlinestatus.StatusVisibleFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
 
 class axyz
   implements View.OnClickListener
 {
-  axyz(axyy paramaxyy, int paramInt, bitz parambitz) {}
+  axyz(axyy paramaxyy, boolean paramBoolean) {}
   
   public void onClick(View paramView)
   {
-    try
+    int i = 1;
+    if (this.jdField_a_of_type_Boolean)
     {
-      long l = Long.parseLong(((axyx)this.jdField_a_of_type_Axyy.a.a.get(this.jdField_a_of_type_Int)).a);
-      this.jdField_a_of_type_Bitz.a(this.jdField_a_of_type_Axyy.a.b, l, null);
-      this.jdField_a_of_type_Axyy.a.a("invite_page", "kick_out");
-      label62:
+      axvz.a("0X800AF41", 2, String.valueOf(this.jdField_a_of_type_Axyy.jdField_a_of_type_Int));
+      if (this.jdField_a_of_type_Axyy.jdField_a_of_type_Int != 1) {
+        break label84;
+      }
+    }
+    for (;;)
+    {
+      StatusVisibleFragment.a(this.jdField_a_of_type_Axyy.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Axyy.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem, i, 999);
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (Exception localException)
-    {
-      break label62;
+      axvz.a("0X800AF41", 1, String.valueOf(this.jdField_a_of_type_Axyy.jdField_a_of_type_Int));
+      break;
+      label84:
+      if (this.jdField_a_of_type_Axyy.jdField_a_of_type_Int == 2) {
+        i = 3;
+      } else {
+        i = 0;
+      }
     }
   }
 }

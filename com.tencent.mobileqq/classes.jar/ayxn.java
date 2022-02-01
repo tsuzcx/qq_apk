@@ -1,264 +1,187 @@
-import android.os.Bundle;
-import android.util.Base64;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.org.pb.oidb_0xe96.RspBody;
-import com.tencent.qphone.base.util.QLog;
-import face.FaceForeignIp.AvailableResponse;
-import face.qqlogin.FaceSecureCheck.SecureCheckResponse;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x9ae.cmd0x9ae.RspBody;
-import tencent.im.oidb.oidb_0x5e1.RspBody;
-import tencent.im.oidb.oidb_0x87a.RspBody;
-import tencent.im.oidb.oidb_0x87c.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import java.util.Arrays;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class ayxn
-  implements BusinessObserver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/vas/VasCardData;", "", "lCurrentStyleId", "", "lCurrentBgId", "backgroundUrl", "", "backgroundColor", "dynamicCardFlag", "", "strZipUrl", "strActiveUrl", "strDrawerCardUrl", "strWzryHeroUrl", "wzryHonorInfo", "", "strExtInfo", "strCurrentBgUrl", "(JJLjava/lang/String;JILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BLjava/lang/String;Ljava/lang/String;)V", "getBackgroundColor", "()J", "getBackgroundUrl", "()Ljava/lang/String;", "getDynamicCardFlag", "()I", "getLCurrentBgId", "getLCurrentStyleId", "getStrActiveUrl", "getStrCurrentBgUrl", "getStrDrawerCardUrl", "getStrExtInfo", "getStrWzryHeroUrl", "getStrZipUrl", "getWzryHonorInfo", "()[B", "component1", "component10", "component11", "component12", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "", "other", "hashCode", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ayxn
 {
-  public void a() {}
+  private final int jdField_a_of_type_Int;
+  private final long jdField_a_of_type_Long;
+  @NotNull
+  private final String jdField_a_of_type_JavaLangString;
+  @Nullable
+  private final byte[] jdField_a_of_type_ArrayOfByte;
+  private final long jdField_b_of_type_Long;
+  @NotNull
+  private final String jdField_b_of_type_JavaLangString;
+  private final long jdField_c_of_type_Long;
+  @NotNull
+  private final String jdField_c_of_type_JavaLangString;
+  @NotNull
+  private final String d;
+  @NotNull
+  private final String e;
+  @Nullable
+  private final String f;
+  @Nullable
+  private final String g;
   
-  public void a(oidb_0xe96.RspBody paramRspBody) {}
-  
-  public void a(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse) {}
-  
-  public void a(String paramString1, int paramInt, String paramString2) {}
-  
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(cmd0x9ae.RspBody paramRspBody) {}
-  
-  public void a(oidb_0x5e1.RspBody paramRspBody) {}
-  
-  public void a(oidb_0x87a.RspBody paramRspBody) {}
-  
-  public void a(oidb_0x87c.RspBody paramRspBody) {}
-  
-  public void a(boolean paramBoolean, String paramString) {}
-  
-  public void a(byte[] paramArrayOfByte) {}
-  
-  public void b() {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ayxn()
   {
-    String str = paramBundle.getString("cmd");
-    if (!paramBoolean)
+    this(0L, 0L, null, 0L, 0, null, null, null, null, null, null, null, 4095, null);
+  }
+  
+  public ayxn(long paramLong1, long paramLong2, @NotNull String paramString1, long paramLong3, int paramInt, @NotNull String paramString2, @NotNull String paramString3, @NotNull String paramString4, @NotNull String paramString5, @Nullable byte[] paramArrayOfByte, @Nullable String paramString6, @Nullable String paramString7)
+  {
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_c_of_type_Long = paramLong3;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.f = paramString6;
+    this.g = paramString7;
+  }
+  
+  public final long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  @NotNull
+  public final String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public final long b()
+  {
+    return this.jdField_b_of_type_Long;
+  }
+  
+  @NotNull
+  public final String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  @NotNull
+  public final String c()
+  {
+    return this.e;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
     {
-      localObject = paramBundle.getString("dataErrorMsg", "");
-      paramInt = paramBundle.getInt("dataErrorCode");
-      QLog.e("LoginVerifyObserver", 1, "LoginVerifyObserver onReceive error, code is : " + paramInt + ", error msg is : " + (String)localObject + " cmd is : " + str);
-      a(str, paramInt, (String)localObject);
+      if ((paramObject instanceof ayxn))
+      {
+        paramObject = (ayxn)paramObject;
+        if ((this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long) || (this.jdField_b_of_type_Long != paramObject.jdField_b_of_type_Long) || (!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (this.jdField_c_of_type_Long != paramObject.jdField_c_of_type_Long) || (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (!Intrinsics.areEqual(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) || (!Intrinsics.areEqual(this.jdField_c_of_type_JavaLangString, paramObject.jdField_c_of_type_JavaLangString)) || (!Intrinsics.areEqual(this.d, paramObject.d)) || (!Intrinsics.areEqual(this.e, paramObject.e)) || (!Intrinsics.areEqual(this.jdField_a_of_type_ArrayOfByte, paramObject.jdField_a_of_type_ArrayOfByte)) || (!Intrinsics.areEqual(this.f, paramObject.f)) || (!Intrinsics.areEqual(this.g, paramObject.g))) {}
+      }
     }
-    do
+    else {
+      return true;
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    int i3 = 0;
+    long l = this.jdField_a_of_type_Long;
+    int i4 = (int)(l ^ l >>> 32);
+    l = this.jdField_b_of_type_Long;
+    int i5 = (int)(l ^ l >>> 32);
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    int i;
+    int i6;
+    int i7;
+    int j;
+    label94:
+    int k;
+    label111:
+    int m;
+    label129:
+    int n;
+    label147:
+    int i1;
+    if (localObject != null)
     {
-      return;
-      QLog.d("LoginVerifyObserver", 1, "LoginVerifyObserver success, cmd is : " + str);
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle == null)
-      {
-        QLog.e("LoginVerifyObserver", 1, "LoginVerifyObserver onReceive success but data is null");
-        a(str, -1, "data is null");
-        return;
+      i = localObject.hashCode();
+      l = this.jdField_c_of_type_Long;
+      i6 = (int)(l ^ l >>> 32);
+      i7 = this.jdField_a_of_type_Int;
+      localObject = this.jdField_b_of_type_JavaLangString;
+      if (localObject == null) {
+        break label272;
       }
-      if ("getTmpkey".equals(str))
-      {
-        try
-        {
-          paramBundle = new JSONObject(new String(paramBundle));
-          paramInt = paramBundle.optInt("ret", -1);
-          if (paramInt == 0)
-          {
-            a(paramBundle.optString("openid"), paramBundle.optString("tmpkey"));
-            return;
-          }
-        }
-        catch (JSONException paramBundle)
-        {
-          QLog.e("LoginVerifyObserver", 1, "getTmpKey error : JSONException " + paramBundle.getMessage());
-          a(str, -1, paramBundle.getMessage());
-          return;
-        }
-        paramBundle = paramBundle.optString("errmsg");
-        a(str, paramInt, paramBundle);
-        QLog.e("LoginVerifyObserver", 1, "getTmpError, ret : " + paramInt + "  error : " + paramBundle);
-        return;
+      j = localObject.hashCode();
+      localObject = this.jdField_c_of_type_JavaLangString;
+      if (localObject == null) {
+        break label277;
       }
-      if ("getAppConfig".equals(str))
-      {
-        try
-        {
-          paramBundle = new JSONObject(new String(paramBundle));
-          paramInt = paramBundle.optInt("ret", -1);
-          if (paramInt == 0)
-          {
-            a(Base64.decode(paramBundle.optString("appconf_rsp"), 11));
-            return;
-          }
-        }
-        catch (JSONException paramBundle)
-        {
-          QLog.e("LoginVerifyObserver", 1, "getAppconf error : JSONException " + paramBundle.getMessage());
-          a(str, -1, paramBundle.getMessage());
-          return;
-        }
-        paramBundle = paramBundle.optString("errmsg");
-        a(str, paramInt, paramBundle);
-        QLog.e("LoginVerifyObserver", 1, "getAppconf, ret : " + paramInt + "  error : " + paramBundle);
-        return;
+      k = localObject.hashCode();
+      localObject = this.d;
+      if (localObject == null) {
+        break label282;
       }
-      if ("isIpForeign".equals(str))
-      {
-        for (;;)
-        {
-          try
-          {
-            paramBundle = new JSONObject(new String(paramBundle));
-            paramInt = paramBundle.optInt("ret", -1);
-            if (paramInt != 0) {
-              break;
-            }
-            paramBundle = Base64.decode(paramBundle.optString("available_rsp"), 11);
-            localObject = new FaceForeignIp.AvailableResponse();
-            ((FaceForeignIp.AvailableResponse)localObject).mergeFrom(paramBundle);
-            paramInt = ((FaceForeignIp.AvailableResponse)localObject).ret.get();
-            paramBundle = ((FaceForeignIp.AvailableResponse)localObject).msg.get();
-            if (paramInt != 1)
-            {
-              paramBoolean = true;
-              a(paramBoolean, paramBundle);
-              return;
-            }
-          }
-          catch (Exception paramBundle)
-          {
-            QLog.e("LoginVerifyObserver", 1, new Object[] { "IP_IS_FOREIGN_HTTPS error : ", paramBundle.getMessage() });
-            a(str, -1, paramBundle.getMessage());
-            return;
-          }
-          paramBoolean = false;
-        }
-        paramBundle = paramBundle.optString("errmsg");
-        QLog.e("LoginVerifyObserver", 1, new Object[] { "IP_IS_FOREIGN_HTTPS, ret : ", Integer.valueOf(paramInt), " error : ", paramBundle });
-        a(str, paramInt, paramBundle);
-        return;
+      m = localObject.hashCode();
+      localObject = this.e;
+      if (localObject == null) {
+        break label288;
       }
-      if ("FaceRecognition.Available".equals(str))
-      {
-        localObject = new FaceForeignIp.AvailableResponse();
-        for (;;)
-        {
-          try
-          {
-            ((FaceForeignIp.AvailableResponse)localObject).mergeFrom(paramBundle);
-            paramInt = ((FaceForeignIp.AvailableResponse)localObject).ret.get();
-            paramBundle = ((FaceForeignIp.AvailableResponse)localObject).msg.get();
-            if (paramInt != 1)
-            {
-              paramBoolean = true;
-              a(paramBoolean, paramBundle);
-              return;
-            }
-          }
-          catch (InvalidProtocolBufferMicroException paramBundle)
-          {
-            QLog.e("LoginVerifyObserver", 1, new Object[] { "AvailableResponse merge from data error : ", paramBundle.getMessage() });
-            a(str, -1, paramBundle.getMessage());
-            return;
-          }
-          paramBoolean = false;
-        }
+      n = localObject.hashCode();
+      localObject = this.jdField_a_of_type_ArrayOfByte;
+      if (localObject == null) {
+        break label294;
       }
-      if ("FaceRecognition.SecureCheck".equals(str))
-      {
-        localObject = new FaceSecureCheck.SecureCheckResponse();
-        try
-        {
-          ((FaceSecureCheck.SecureCheckResponse)localObject).mergeFrom(paramBundle);
-          paramInt = ((FaceSecureCheck.SecureCheckResponse)localObject).uint32_errcode.get();
-          if (paramInt != 0)
-          {
-            paramBundle = ((FaceSecureCheck.SecureCheckResponse)localObject).str_err_msg.get();
-            a(str, paramInt, paramBundle);
-            QLog.e("LoginVerifyObserver", 1, "sso result error, ret : " + paramInt + "  error : " + paramBundle);
-            return;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramBundle)
-        {
-          QLog.e("LoginVerifyObserver", 1, new Object[] { "SecureCheckResponse merge from data error : ", paramBundle.getMessage() });
-          return;
-        }
-        a((FaceSecureCheck.SecureCheckResponse)localObject);
-        return;
+      i1 = Arrays.hashCode((byte[])localObject);
+      label165:
+      localObject = this.f;
+      if (localObject == null) {
+        break label300;
       }
-      try
-      {
-        localObject = new oidb_sso.OIDBSSOPkg();
-        ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom(paramBundle);
-        paramInt = ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get();
-        if (paramInt != 0)
-        {
-          paramBundle = ((oidb_sso.OIDBSSOPkg)localObject).str_error_msg.get();
-          a(str, paramInt, paramBundle);
-          QLog.e("LoginVerifyObserver", 1, "sso result error, ret : " + paramInt + "  error : " + paramBundle);
-          return;
-        }
+    }
+    label272:
+    label277:
+    label282:
+    label288:
+    label294:
+    label300:
+    for (int i2 = localObject.hashCode();; i2 = 0)
+    {
+      localObject = this.g;
+      if (localObject != null) {
+        i3 = localObject.hashCode();
       }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        a(str, -1, paramBundle.getMessage());
-        return;
-      }
-      paramBundle = ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get().toByteArray();
-      if ("OidbSvc.0x5e1_295".equals(str))
-      {
-        localObject = new oidb_0x5e1.RspBody();
-        ((oidb_0x5e1.RspBody)localObject).mergeFrom(paramBundle);
-        a((oidb_0x5e1.RspBody)localObject);
-        return;
-      }
-      if ("OidbSvc.0x87c_108".equals(str))
-      {
-        localObject = new oidb_0x87c.RspBody();
-        ((oidb_0x87c.RspBody)localObject).mergeFrom(paramBundle);
-        a((oidb_0x87c.RspBody)localObject);
-        return;
-      }
-      if ("OidbSvc.0x87a_108".equals(str))
-      {
-        localObject = new oidb_0x87a.RspBody();
-        ((oidb_0x87a.RspBody)localObject).mergeFrom(paramBundle);
-        a((oidb_0x87a.RspBody)localObject);
-        return;
-      }
-      if ("OidbSvc.0x587_63".equals(str))
-      {
-        b();
-        return;
-      }
-      if ("OidbSvc.0xe96_0".equals(str))
-      {
-        localObject = new oidb_0xe96.RspBody();
-        ((oidb_0xe96.RspBody)localObject).mergeFrom(paramBundle);
-        a((oidb_0xe96.RspBody)localObject);
-        return;
-      }
-      if ("OidbSvc.0xe9a_0".equals(str))
-      {
-        a();
-        return;
-      }
-    } while ((!"OidbSvc.0x9ae_13".equals(str)) && (!"OidbSvc.0x9ae_14".equals(str)));
-    Object localObject = new cmd0x9ae.RspBody();
-    ((cmd0x9ae.RspBody)localObject).mergeFrom(paramBundle);
-    a((cmd0x9ae.RspBody)localObject);
+      return (i2 + (i1 + (n + (m + (k + (j + (((i + (i4 * 31 + i5) * 31) * 31 + i6) * 31 + i7) * 31) * 31) * 31) * 31) * 31) * 31) * 31 + i3;
+      i = 0;
+      break;
+      j = 0;
+      break label94;
+      k = 0;
+      break label111;
+      m = 0;
+      break label129;
+      n = 0;
+      break label147;
+      i1 = 0;
+      break label165;
+    }
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "VasCardData(lCurrentStyleId=" + this.jdField_a_of_type_Long + ", lCurrentBgId=" + this.jdField_b_of_type_Long + ", backgroundUrl=" + this.jdField_a_of_type_JavaLangString + ", backgroundColor=" + this.jdField_c_of_type_Long + ", dynamicCardFlag=" + this.jdField_a_of_type_Int + ", strZipUrl=" + this.jdField_b_of_type_JavaLangString + ", strActiveUrl=" + this.jdField_c_of_type_JavaLangString + ", strDrawerCardUrl=" + this.d + ", strWzryHeroUrl=" + this.e + ", wzryHonorInfo=" + Arrays.toString(this.jdField_a_of_type_ArrayOfByte) + ", strExtInfo=" + this.f + ", strCurrentBgUrl=" + this.g + ")";
   }
 }
 

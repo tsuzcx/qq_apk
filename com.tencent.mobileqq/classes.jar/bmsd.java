@@ -1,79 +1,282 @@
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectOutputStream;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import dov.com.qq.im.capture.data.ComboLockManager.2;
+import dov.com.qq.im.capture.data.FilterCategory;
+import dov.com.qq.im.capture.data.LockedCategory;
+import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class bmsd
+  implements IEventReceiver
 {
-  private ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream();
-  private ObjectOutputStream jdField_a_of_type_JavaIoObjectOutputStream = new ObjectOutputStream(this.jdField_a_of_type_JavaIoByteArrayOutputStream);
+  public static final String a;
+  int jdField_a_of_type_Int = -1;
+  bmsg jdField_a_of_type_Bmsg;
+  bnuc jdField_a_of_type_Bnuc;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = bmqh.a();
+  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new bmsf(this);
+  LockedCategory jdField_a_of_type_DovComQqImCaptureDataLockedCategory;
+  public QIMFilterCategoryItem a;
+  HashMap<String, LockedCategory> jdField_a_of_type_JavaUtilHashMap;
+  volatile boolean jdField_a_of_type_Boolean = false;
+  boolean b;
+  public boolean c;
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = aktw.jdField_a_of_type_JavaLangString + "/tencent/qim/share/";
+  }
+  
+  public bmsd()
+  {
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  private void c()
+  {
+    if (this.jdField_a_of_type_Bmsg == null)
+    {
+      this.jdField_a_of_type_Bmsg = new bmsg(this);
+      if (QLog.isColorLevel()) {
+        QLog.i("ComboLockManager", 2, "registerStoryReceiver");
+      }
+      vli.a().registerSubscriber(this.jdField_a_of_type_Bmsg);
+    }
+  }
+  
+  public LockedCategory a(String paramString)
+  {
+    return (LockedCategory)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bmsg != null)
+    {
+      this.jdField_a_of_type_Bmsg = new bmsg(this);
+      if (QLog.isColorLevel()) {
+        QLog.i("ComboLockManager", 2, "unregisterStoryReceiver");
+      }
+      vli.a().unRegisterSubscriber(this.jdField_a_of_type_Bmsg);
+      this.jdField_a_of_type_Bmsg = null;
+    }
+  }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaIoObjectOutputStream.writeInt(paramInt);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(Object paramObject)
+  public void a(bnuc parambnuc)
   {
-    this.jdField_a_of_type_JavaIoObjectOutputStream.writeObject(paramObject);
+    if (this.jdField_a_of_type_Bnuc == parambnuc) {
+      if (QLog.isColorLevel()) {
+        QLog.i("ComboLockManager", 2, "same data");
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("ComboLockManager", 2, "updateConfigData isfrist " + this.jdField_b_of_type_Boolean + " sendStory " + this.jdField_a_of_type_Boolean);
+      }
+      if (this.jdField_b_of_type_Boolean)
+      {
+        this.jdField_b_of_type_Boolean = false;
+        if (QLog.isColorLevel()) {
+          QLog.i("ComboLockManager", 2, "updateConfigData first card.snedSrory " + this.jdField_a_of_type_Boolean);
+        }
+      }
+      this.jdField_a_of_type_JavaUtilHashMap = parambnuc.jdField_a_of_type_JavaUtilHashMap;
+      this.jdField_a_of_type_Bnuc = parambnuc;
+      parambnuc = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      while (parambnuc.hasNext())
+      {
+        Object localObject = (String)parambnuc.next();
+        localObject = (LockedCategory)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+        ((LockedCategory)localObject).jdField_a_of_type_Boolean = a(((LockedCategory)localObject).jdField_a_of_type_JavaLangString);
+        if ((((LockedCategory)localObject).jdField_a_of_type_Boolean) && (((LockedCategory)localObject).jdField_a_of_type_Int == 2))
+        {
+          this.jdField_a_of_type_DovComQqImCaptureDataLockedCategory = ((LockedCategory)localObject);
+          c();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("ComboLockManager", 2, "updateConfigData " + localObject + " lock " + ((LockedCategory)localObject).jdField_a_of_type_Boolean);
+        }
+      }
+    }
   }
   
   public void a(String paramString)
   {
-    a(paramString, "");
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (paramString1 == null)
-    {
-      this.jdField_a_of_type_JavaIoObjectOutputStream.writeUTF(paramString2);
-      return;
+    paramString = (LockedCategory)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (paramString != null) {
+      paramString.jdField_a_of_type_Boolean = false;
     }
-    this.jdField_a_of_type_JavaIoObjectOutputStream.writeUTF(paramString1);
   }
   
-  public void a(boolean paramBoolean)
+  public boolean a(String paramString)
   {
-    this.jdField_a_of_type_JavaIoObjectOutputStream.writeBoolean(paramBoolean);
-  }
-  
-  public byte[] a()
-  {
-    try
+    boolean bool2 = false;
+    int i = 0;
+    boolean bool1;
+    LockedCategory localLockedCategory;
+    if (this.jdField_a_of_type_JavaUtilHashMap == null)
     {
-      this.jdField_a_of_type_JavaIoObjectOutputStream.close();
-      try
+      bool1 = false;
+      i = -1;
+      localLockedCategory = null;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel())
       {
-        label7:
-        arrayOfByte1 = this.jdField_a_of_type_JavaIoByteArrayOutputStream.toByteArray();
+        QLog.i("ComboLockManager", 2, "is locke " + paramString + " code" + i);
+        if (i == 3) {
+          QLog.i("ComboLockManager", 2, "islock result" + bool1 + " type " + localLockedCategory.jdField_a_of_type_Int + " mHaveSendStory " + this.jdField_a_of_type_Boolean);
+        }
       }
-      catch (Exception localException1)
+      return bool1;
+      localLockedCategory = (LockedCategory)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      if (localLockedCategory == null)
       {
-        for (;;)
+        bool1 = false;
+      }
+      else if (!localLockedCategory.jdField_a_of_type_Boolean)
+      {
+        bool1 = false;
+        i = 1;
+      }
+      else if (localLockedCategory.a())
+      {
+        bool1 = false;
+        i = 2;
+      }
+      else if (localLockedCategory.jdField_a_of_type_Int == 2)
+      {
+        if (this.jdField_a_of_type_Boolean)
         {
-          try
+          bool1 = bool2;
+          if (this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem != null)
           {
-            byte[] arrayOfByte1;
-            this.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
-            return arrayOfByte1;
+            bool1 = bool2;
+            if (!this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.jdField_a_of_type_JavaLangString.equals(paramString)) {}
           }
-          catch (Exception localException3)
+        }
+        else
+        {
+          bool1 = true;
+        }
+        i = 3;
+      }
+      else if (localLockedCategory.jdField_a_of_type_Int == 1)
+      {
+        if (!localLockedCategory.jdField_b_of_type_Boolean)
+        {
+          localLockedCategory.jdField_a_of_type_Boolean = bfyz.x(BaseApplicationImpl.getApplication(), paramString);
+          localLockedCategory.jdField_b_of_type_Boolean = true;
+        }
+        bool1 = localLockedCategory.jdField_a_of_type_Boolean;
+        i = 3;
+      }
+      else
+      {
+        bool1 = false;
+        i = 3;
+      }
+    }
+  }
+  
+  public boolean a(String paramString, Context paramContext)
+  {
+    boolean bool = false;
+    if (a(paramString))
+    {
+      Object localObject2 = a(paramString).jdField_b_of_type_JavaLangString;
+      Object localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        QLog.e("ComboLockManager", 1, "empty jump url");
+        localObject1 = "https://ti.qq.com/unlocked/index.html?_wv=536870912&id=" + paramString;
+      }
+      localObject2 = new Intent(paramContext, QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      ((Intent)localObject2).putExtra("k_f_id", paramString);
+      paramContext.startActivity((Intent)localObject2);
+      if (QLog.isColorLevel()) {
+        QLog.i("ComboLockManager", 2, "handleLockItemClick id " + paramString);
+      }
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ComboLockManager", 2, "handleSendStory");
+    }
+    this.jdField_a_of_type_Boolean = true;
+    vli.a().unRegisterSubscriber(this.jdField_a_of_type_Bmsg);
+    Object localObject = (amov)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(2);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver, true);
+    if (this.jdField_a_of_type_DovComQqImCaptureDataLockedCategory != null)
+    {
+      localObject = BaseApplicationImpl.getContext();
+      bmse localbmse = new bmse(this, (Context)localObject);
+      ThreadManager.getUIHandler().postDelayed(new ComboLockManager.2(this, (Context)localObject, localbmse), 1000L);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    Object localObject1 = this.jdField_a_of_type_Bnuc.a(this.jdField_a_of_type_Int).a;
+    if (localObject1 != null)
+    {
+      localObject1 = ((ArrayList)localObject1).iterator();
+      for (;;)
+      {
+        if (!((Iterator)localObject1).hasNext()) {
+          break label101;
+        }
+        Object localObject2 = (FilterCategory)((Iterator)localObject1).next();
+        if (((FilterCategory)localObject2).a != null)
+        {
+          localObject2 = ((FilterCategory)localObject2).a.iterator();
+          if (((Iterator)localObject2).hasNext())
           {
-            byte[] arrayOfByte2;
-            return arrayOfByte2;
+            QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)((Iterator)localObject2).next();
+            if (!paramString.equals(localQIMFilterCategoryItem.jdField_a_of_type_JavaLangString)) {
+              break;
+            }
+            this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem = localQIMFilterCategoryItem;
           }
-          localException1 = localException1;
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.msg.qqwalletmsg", 2, "flushDataAndCloseStream toByteArray Exception", localException1);
-          }
-          arrayOfByte2 = null;
         }
       }
     }
-    catch (Exception localException2)
-    {
-      break label7;
+    label101:
+    if (QLog.isColorLevel()) {
+      QLog.i("ComboLockManager", 2, "setLockingItem " + paramString + " result " + this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem);
     }
+  }
+  
+  public boolean isValidate()
+  {
+    return true;
   }
 }
 

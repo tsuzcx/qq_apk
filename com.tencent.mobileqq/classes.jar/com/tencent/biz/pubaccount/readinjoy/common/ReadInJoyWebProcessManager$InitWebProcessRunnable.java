@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.os.Build.VERSION;
-import bdmc;
-import bhlo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import ozs;
+import pay;
 
 class ReadInJoyWebProcessManager$InitWebProcessRunnable
   implements Runnable
@@ -25,15 +25,15 @@ class ReadInJoyWebProcessManager$InitWebProcessRunnable
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
-      localHashMap.put("param_totalMem", String.valueOf(bhlo.d()));
-      localHashMap.put("param_availableMem", String.valueOf(bhlo.e()));
-      localHashMap.put("param_cpuNum", String.valueOf(bhlo.b()));
-      localHashMap.put("param_cpuFreq", String.valueOf(bhlo.a()));
+      localHashMap.put("param_totalMem", String.valueOf(DeviceInfoUtil.getSystemTotalMemory()));
+      localHashMap.put("param_availableMem", String.valueOf(DeviceInfoUtil.getSystemAvaialbeMemory()));
+      localHashMap.put("param_cpuNum", String.valueOf(DeviceInfoUtil.getCpuNumber()));
+      localHashMap.put("param_cpuFreq", String.valueOf(DeviceInfoUtil.getCpuFrequency()));
       localHashMap.put("param_preloadLevel", String.valueOf(paramInt));
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.ReadInJoyWebProcessManager", 2, "preloadToolProcessReport:" + localHashMap.toString());
       }
-      bdmc.a(this.a.getApp()).a(this.a.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
+      StatisticCollector.getInstance(this.a.getApp()).collectPerformance(this.a.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
       return;
     }
     catch (Exception localException)
@@ -52,8 +52,8 @@ class ReadInJoyWebProcessManager$InitWebProcessRunnable
       WebProcessManager localWebProcessManager = (WebProcessManager)this.a.getManager(13);
       if (localWebProcessManager != null)
       {
-        int i = ozs.f();
-        if (ozs.h()) {
+        int i = pay.f();
+        if (pay.h()) {
           a(i);
         }
         if (i == 1) {

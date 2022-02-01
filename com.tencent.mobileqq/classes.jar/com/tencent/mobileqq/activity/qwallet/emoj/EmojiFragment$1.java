@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import albm;
+import ajzf;
 import android.text.Editable;
 import android.widget.EditText;
 
 class EmojiFragment$1
-  extends albm
+  extends ajzf
 {
   EmojiFragment$1(EmojiFragment paramEmojiFragment) {}
   

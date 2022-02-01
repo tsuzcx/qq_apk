@@ -1,117 +1,111 @@
-import android.os.Build;
-import android.os.Build.VERSION;
 import android.text.TextUtils;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 
 public class lig
+  extends lic
 {
-  public int a;
-  public long a;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  long[] jdField_a_of_type_ArrayOfLong = new long[41];
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
+  boolean a;
+  int c = -1;
+  int d = -1;
   
-  lig()
+  public lig(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_d_of_type_JavaLangString = "KilledBySystem";
+    super(paramVideoAppInterface);
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public String a()
+  public int a(String paramString)
   {
-    String str1 = Build.MODEL;
-    String str2 = String.valueOf(Build.VERSION.SDK_INT);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("Android").append('|');
-    localStringBuilder.append(str1).append('|');
-    localStringBuilder.append(str2).append('|');
-    localStringBuilder.append(str2).append('|');
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append('|');
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append('|');
-    if (this.jdField_b_of_type_Int != -1) {
-      localStringBuilder.append(this.jdField_b_of_type_Int).append('|');
+    int j = 0;
+    int i;
+    if ("750".equalsIgnoreCase(paramString)) {
+      i = this.c;
     }
     for (;;)
     {
-      localStringBuilder.append(this.jdField_a_of_type_Int).append('|');
-      return localStringBuilder.toString();
-      localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[20])).append('|');
+      lba.f("SupportZimu", "isSupportPeer:" + paramString + "|" + i);
+      return i;
+      if ("735".equalsIgnoreCase(paramString))
+      {
+        i = this.d;
+      }
+      else
+      {
+        i = j;
+        if ("live".equalsIgnoreCase(paramString))
+        {
+          i = j;
+          if (this.jdField_a_of_type_Boolean) {
+            i = 1;
+          }
+        }
+      }
     }
   }
   
-  public String a(int paramInt, long paramLong)
+  public boolean a(int paramInt, String paramString)
   {
-    if ((paramInt >= 0) && (paramInt < 41))
+    lba.f("SupportZimu", "onReceiveSupportMessage type:" + paramInt + "|" + paramString);
+    if (!TextUtils.isEmpty(paramString))
     {
-      StringBuilder localStringBuilder;
-      if (paramLong == 1L)
+      String[] arrayOfString = paramString.split("\\|");
+      paramString = null;
+      if (arrayOfString.length > 0) {
+        paramString = arrayOfString[0];
+      }
+      switch (paramInt)
       {
-        this.jdField_a_of_type_ArrayOfLong[paramInt] = 1L;
-        localStringBuilder = new StringBuilder();
-        paramInt = 0;
-        label34:
-        if (paramInt >= 41) {
-          break label242;
-        }
-        switch (paramInt)
+      }
+      while (("SUPPORT_TRUE".equalsIgnoreCase(paramString)) || ("SUPPORT_FALSE".equalsIgnoreCase(paramString)))
+      {
+        return true;
+        if ("SUPPORT_TRUE".equalsIgnoreCase(paramString))
         {
-        default: 
-          localStringBuilder.append(String.valueOf(this.jdField_a_of_type_ArrayOfLong[paramInt])).append('|');
+          this.c = 1;
+        }
+        else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString))
+        {
+          this.c = 0;
+          continue;
+          if ("SUPPORT_TRUE".equalsIgnoreCase(paramString))
+          {
+            this.d = 1;
+          }
+          else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString))
+          {
+            this.d = 0;
+            continue;
+            if ("SUPPORT_TRUE".equalsIgnoreCase(paramString)) {
+              this.jdField_a_of_type_Boolean = true;
+            } else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString)) {
+              this.jdField_a_of_type_Boolean = false;
+            }
+          }
         }
       }
-      for (;;)
-      {
-        paramInt += 1;
-        break label34;
-        this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
-        break;
-        if (this.jdField_a_of_type_ArrayOfLong[14] == 0L)
-        {
-          this.jdField_a_of_type_JavaLangString = lie.a();
-          this.jdField_a_of_type_ArrayOfLong[14] = 1L;
-        }
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append('|');
-        continue;
-        localStringBuilder.append(this.jdField_d_of_type_JavaLangString).append('|');
-        continue;
-        localStringBuilder.append(0).append('|');
-        continue;
-        if (this.jdField_b_of_type_Long > 0L) {
-          this.jdField_c_of_type_Long = ((System.currentTimeMillis() - this.jdField_b_of_type_Long) / 1000L);
-        }
-        localStringBuilder.append(this.jdField_c_of_type_Long).append('|');
-      }
-      label242:
-      return localStringBuilder.toString();
     }
-    lbj.d("VideoNodeReporter", "buildBody report error:" + paramInt);
-    return null;
+    return false;
   }
   
-  public void a(lff paramlff, String paramString)
+  public boolean a(String paramString)
   {
-    if (paramlff != null)
-    {
-      if (paramlff.k != -1) {
-        this.jdField_a_of_type_Int = paramlff.k;
-      }
-      if (paramlff.jdField_d_of_type_Int != 0) {
-        this.jdField_b_of_type_Int = paramlff.jdField_d_of_type_Int;
-      }
-      if (!TextUtils.isEmpty(paramlff.jdField_d_of_type_JavaLangString)) {
-        this.jdField_b_of_type_JavaLangString = paramlff.jdField_d_of_type_JavaLangString;
-      }
-    }
-    if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_c_of_type_JavaLangString = paramString;
-    }
+    return false;
+  }
+  
+  public void b()
+  {
+    VideoController localVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    localVideoController.a(12, "SUPPORT_TRUE");
+    localVideoController.a(13, "SUPPORT_TRUE");
+    lba.f("SupportZimu", "sendSupportMsg");
+  }
+  
+  public void c()
+  {
+    this.c = -1;
+    this.d = -1;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

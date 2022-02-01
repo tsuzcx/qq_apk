@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app;
 
-import anum;
+import amov;
 
 public class CardHandler$4
   implements Runnable
 {
-  public CardHandler$4(anum paramanum) {}
+  public CardHandler$4(amov paramamov) {}
   
   public void run()
   {
-    anum.a(this.this$0);
+    amov.a(this.this$0);
   }
 }
 

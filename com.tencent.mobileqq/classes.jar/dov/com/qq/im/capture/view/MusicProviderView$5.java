@@ -1,6 +1,6 @@
 package dov.com.qq.im.capture.view;
 
-import com.tencent.mobileqq.widget.QQViewPager;
+import com.tencent.mobileqq.widget.bounce.BounceViewPager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.GridView;
 import dov.com.qq.im.capture.adapter.MusicProviderPagerAdapter;
@@ -12,7 +12,7 @@ class MusicProviderView$5
   
   public void run()
   {
-    int i = this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem();
+    int i = this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.getCurrentItem();
     GridView localGridView = this.this$0.jdField_a_of_type_DovComQqImCaptureAdapterMusicProviderPagerAdapter.b(i);
     if (localGridView != null)
     {

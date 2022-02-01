@@ -1,23 +1,13 @@
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-
-class wdc
-  extends LinearLayoutManager
+public final class wdc
+  extends vko
 {
-  wdc(wdb paramwdb, Context paramContext, int paramInt, boolean paramBoolean)
-  {
-    super(paramContext, paramInt, paramBoolean);
-  }
-  
-  public boolean canScrollHorizontally()
-  {
-    return false;
-  }
-  
-  public boolean canScrollVertically()
-  {
-    return false;
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
 }
 
 

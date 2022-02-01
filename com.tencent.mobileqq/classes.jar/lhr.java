@@ -1,191 +1,235 @@
 import android.text.TextUtils;
-import com.tencent.av.business.manager.pendant.AVEffectPendantReport.1;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.pendant.EffectPendantTools.1;
 import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.beacon.event.UserAction;
+import com.tencent.av.opengl.effects.AEFilterSupport;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ptvfilter.material.QQTemplateParser;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.SecUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.filter.FabbyMvPart;
+import com.tencent.ttpic.openapi.filter.FabbyParts;
+import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import java.io.File;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.List;
 
 public class lhr
+  extends lhm
 {
-  private static int jdField_a_of_type_Int;
-  private static ArrayList<PendantItem> jdField_a_of_type_JavaUtilArrayList;
-  private static int b;
+  public String d;
   
-  private static Class<?> a()
+  public lhr(VideoAppInterface paramVideoAppInterface)
   {
-    return PendantItem.class;
+    super(paramVideoAppInterface);
   }
   
-  private static String a()
+  public static int a(PendantItem paramPendantItem, boolean paramBoolean)
   {
-    return "content";
-  }
-  
-  private static String a(PendantItem paramPendantItem)
-  {
-    String str = null;
-    if (paramPendantItem != null) {
-      str = lbm.c() + paramPendantItem.getName();
-    }
-    return str;
-  }
-  
-  private static ArrayList<PendantItem> a(String paramString)
-  {
-    localArrayList = new ArrayList();
-    b = 0;
-    jdField_a_of_type_Int = 0;
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        int j = mvd.b();
-        Object localObject = a();
-        if (paramString.has((String)localObject))
-        {
-          paramString = paramString.getJSONArray((String)localObject);
-          localObject = a();
-          int i = 0;
-          while (i < paramString.length())
-          {
-            PendantItem localPendantItem = (PendantItem)bhhq.a((JSONObject)paramString.get(i), (Class)localObject);
-            if ((localPendantItem != null) && (!TextUtils.isEmpty(localPendantItem.getId())) && (localPendantItem.isShow()))
-            {
-              int k = localPendantItem.getPlatform();
-              if ((k == 0) || (j >= k))
-              {
-                boolean bool = b(localPendantItem);
-                localPendantItem.setUsable(bool);
-                localArrayList.add(localPendantItem);
-                b += 1;
-                if (bool) {
-                  jdField_a_of_type_Int += 1;
-                }
-              }
-            }
-            i += 1;
-          }
-        }
-        return localArrayList;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-  }
-  
-  public static void a()
-  {
-    bhsi.b(jdField_a_of_type_Int, b);
-    lbj.c("AVEffectPendantReport", "setAVPendantDownloadInfo()  mTotalCount = " + b + "  mDownloadCount = " + jdField_a_of_type_Int);
-  }
-  
-  private static String b()
-  {
-    return lbx.b(e()).a;
-  }
-  
-  public static void b()
-  {
-    bhsi.c();
-    lbj.c("AVEffectPendantReport", "setAVPendantUseInfo()  time = " + System.currentTimeMillis());
-  }
-  
-  private static boolean b(PendantItem paramPendantItem)
-  {
-    if ((e() <= 0) || (paramPendantItem == null) || (TextUtils.isEmpty(paramPendantItem.getId()))) {
-      lbj.e("AVEffectPendantReport", "isTemplateUsable:" + e() + "|");
-    }
-    do
+    if ((paramPendantItem != null) || (paramBoolean)) {}
+    switch (AEFilterSupport.a())
     {
-      return false;
-      if (TextUtils.isEmpty(paramPendantItem.getResurl())) {
+    case 5: 
+    case 6: 
+    default: 
+      return 0;
+    case 3: 
+      return 3;
+    case 4: 
+      return 4;
+    }
+    return 5;
+  }
+  
+  public static boolean a(VideoMaterial paramVideoMaterial)
+  {
+    if (paramVideoMaterial != null)
+    {
+      if (paramVideoMaterial.getFabbyParts() != null)
+      {
+        paramVideoMaterial = paramVideoMaterial.getFabbyParts().getParts().iterator();
+        FabbyMvPart localFabbyMvPart;
+        do
+        {
+          if (!paramVideoMaterial.hasNext()) {
+            break;
+          }
+          localFabbyMvPart = (FabbyMvPart)paramVideoMaterial.next();
+        } while ((localFabbyMvPart.bgItem == null) || (localFabbyMvPart.bgItem.name == null) || (!localFabbyMvPart.bgItem.name.endsWith("_360")));
         return true;
       }
-    } while (!new File(a(paramPendantItem)).exists());
-    System.currentTimeMillis();
-    String str = SecUtil.getFileMd5(a(paramPendantItem));
-    System.currentTimeMillis();
-    return paramPendantItem.getMd5().equalsIgnoreCase(str);
+    }
+    else {
+      return false;
+    }
+    return false;
   }
   
-  public static void c()
-  {
-    ThreadManager.getFileThreadHandler().post(new AVEffectPendantReport.1());
-  }
-  
-  public static void d()
-  {
-    String str = b();
-    jdField_a_of_type_JavaUtilArrayList = null;
-    jdField_a_of_type_JavaUtilArrayList = a(str);
-  }
-  
-  private static int e()
+  public int a()
   {
     return 106;
   }
   
-  public static void e()
+  public VideoMaterial a(String paramString)
   {
-    long l1 = -1L;
-    try
+    VideoMaterial localVideoMaterial = QQTemplateParser.parseVideoMaterial(paramString, "params");
+    localVideoMaterial.setDataPath(paramString);
+    return localVideoMaterial;
+  }
+  
+  public lho a(int paramInt1, int paramInt2)
+  {
+    lho locallho = super.a(paramInt1, paramInt2);
+    if ((this.jdField_a_of_type_Lhq != null) && (locallho != null) && (locallho.a != null))
     {
-      localHashMap = new HashMap();
-      bool = bhsi.b();
-      arrayOfInt = bhsi.b();
-      l2 = bhsi.b();
-      if ((!bool) && (arrayOfInt[1] <= 0))
-      {
-        bbew.a().b(false);
-        bhsi.d();
+      boolean bool = lhk.a().b();
+      if ((!a(locallho.a)) || (bool)) {
+        this.jdField_a_of_type_Lhq.c(0);
       }
-      if (l2 <= 0L) {
-        break label380;
-      }
-      l1 = (System.currentTimeMillis() - l2) / 1000L;
     }
-    catch (Throwable localThrowable)
+    return locallho;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    long l = AudioHelper.b();
+    if (QLog.isDevelopLevel()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 4, "MuteByOthers, seq[" + l + "], fromMuteKey[" + paramInt + "], data[" + paramString + "]");
+    }
+    if (paramInt == b()) {}
+    do
     {
-      int[] arrayOfInt;
       do
       {
-        HashMap localHashMap;
-        boolean bool;
-        long l2;
-        BigDecimal localBigDecimal;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("AVEffectPendantReport", 2, "reportAVPendantDownloadInfo", localThrowable);
         return;
-        if ((arrayOfInt[0] <= 0) && (arrayOfInt[1] <= 0)) {
+        if (paramInt != 3003) {
           break;
         }
-      } while (arrayOfInt[0] <= arrayOfInt[1]);
+      } while (!"creativecop".equals(paramString));
+      a(l, "0");
+      return;
+    } while ((paramInt != 3001) && (paramInt != 3004) && (paramInt != 3005));
+    a(l, "0");
+  }
+  
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  {
+    switch (paramInt)
+    {
     }
-    localBigDecimal = new BigDecimal(arrayOfInt[0] * 1.0F / arrayOfInt[1]);
-    localHashMap.put("filter_download", String.valueOf(arrayOfInt[0]));
-    localHashMap.put("filter_total", String.valueOf(arrayOfInt[1]));
-    localHashMap.put("filter_ratio", String.valueOf(localBigDecimal.setScale(2, 4).floatValue()));
-    localHashMap.put("filter_spacing", String.valueOf(l1));
-    if (QLog.isColorLevel()) {
-      QLog.d("DailyReport", 2, "reportAVPendantDownloadInfo filter_download = " + arrayOfInt[0] + ",filter_total = " + arrayOfInt[1] + ",filter_spacing" + l1);
+    do
+    {
+      return;
+      paramString1 = (PendantItem)a();
+    } while ((paramString1 == null) || (TextUtils.isEmpty(paramString1.getId())));
+    a(paramLong, null);
+  }
+  
+  public boolean a(long paramLong, PendantItem paramPendantItem)
+  {
+    boolean bool = super.a(paramLong, paramPendantItem);
+    if ((bool) && (paramPendantItem != null) && (!TextUtils.equals("0", paramPendantItem.getId())))
+    {
+      localObject = (lgn)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
+      if (localObject != null) {
+        ((lgn)localObject).a(3002, paramPendantItem.getId());
+      }
     }
-    bool = UserAction.onUserAction("AVFunChatExpression", true, -1L, -1L, localHashMap, true);
-    UserAction.flushObjectsToDB(true);
-    lbj.c("AVEffectPendantReport", "reportAVPendantDownloadInfo, filter_download[" + (String)localHashMap.get("filter_download") + "], filter_total[" + (String)localHashMap.get("filter_total") + "],filter_total[" + (String)localHashMap.get("filter_ratio") + "],filter_ratio[" + (String)localHashMap.get("filter_spacing") + "], lastUserTime = " + l2 + "    ret[" + bool + "]");
-    return;
-    label380:
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (paramPendantItem == null) {}
+    for (Object localObject = null;; localObject = paramPendantItem.getId())
+    {
+      lhs.a(str, (String)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.i(this.jdField_a_of_type_JavaLangString, 2, "setCurrentItem, item[" + paramPendantItem + "]");
+      }
+      return bool;
+    }
+  }
+  
+  protected boolean a(PendantItem paramPendantItem)
+  {
+    int j = 1;
+    if ((a() <= 0) || (paramPendantItem == null) || (TextUtils.isEmpty(paramPendantItem.getId())))
+    {
+      lba.h(this.jdField_a_of_type_JavaLangString, "isTemplateUsable:" + a() + "|");
+      return false;
+    }
+    if (TextUtils.isEmpty(paramPendantItem.getResurl())) {
+      return true;
+    }
+    File localFile = new File(a(paramPendantItem));
+    boolean bool = localFile.exists();
+    Object localObject1;
+    long l1;
+    Object localObject2;
+    if (!bool)
+    {
+      localObject1 = lbe.b() + paramPendantItem.getName();
+      localFile = new File((String)localObject1);
+      if (localFile.exists())
+      {
+        l1 = System.currentTimeMillis();
+        localObject1 = SecUtil.getFileMd5((String)localObject1);
+        long l2 = System.currentTimeMillis();
+        localObject2 = paramPendantItem.getMd5();
+        lba.f(this.jdField_a_of_type_JavaLangString, "isTemplateUsable :" + (String)localObject1 + "|" + (String)localObject2 + "|" + (l2 - l1));
+        bool = ((String)localObject2).equalsIgnoreCase((String)localObject1);
+      }
+    }
+    for (;;)
+    {
+      int i;
+      if (bool)
+      {
+        localObject1 = c(paramPendantItem);
+        localObject2 = new File((String)localObject1, "params.json");
+        l1 = ((File)localObject2).length();
+        if (((((File)localObject2).exists()) && (l1 < 1L)) || (!((File)localObject2).exists()))
+        {
+          i = 1;
+          if (i == 0) {
+            break label370;
+          }
+          localObject1 = new File((String)localObject1, "params.dat");
+          l1 = ((File)localObject1).length();
+          if (((File)localObject1).exists())
+          {
+            i = j;
+            if (l1 < 1L) {}
+          }
+          else
+          {
+            if (((File)localObject1).exists()) {
+              break label362;
+            }
+            i = j;
+          }
+        }
+      }
+      label362:
+      label370:
+      for (;;)
+      {
+        if (i != 0)
+        {
+          ThreadManager.post(new EffectPendantTools.1(this, localFile, paramPendantItem), 5, null, false);
+          return false;
+          i = 0;
+          break;
+          i = 0;
+          continue;
+        }
+        return bool;
+      }
+    }
+  }
+  
+  public int b()
+  {
+    return 3002;
   }
 }
 

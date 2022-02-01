@@ -1,79 +1,75 @@
 package cooperation.qzone.statistic.access;
 
 import android.content.Context;
-import bmaa;
-import bnhz;
-import bnia;
-import bnie;
-import bnif;
-import bnig;
-import bnih;
-import bnio;
-import bnip;
+import common.config.service.QZoneConfigHelper;
 import cooperation.qzone.statistic.access.concept.Collector;
+import cooperation.qzone.statistic.access.concept.Global;
 import cooperation.qzone.statistic.access.concept.Key;
+import cooperation.qzone.statistic.access.concept.Sampler;
 import cooperation.qzone.statistic.access.concept.Statistic;
+import java.util.Random;
 
 public class WnsCollector
   extends Collector
 {
-  public static WnsCollector a;
-  protected Statistic a;
-  
-  static
-  {
-    jdField_a_of_type_CooperationQzoneStatisticAccessWnsCollector = new WnsCollector();
-  }
+  private static Context context;
+  public static WnsCollector instance = new WnsCollector();
+  protected Statistic publicShareInfo = new Statistic(WnsKeys.PublicKeys);
+  protected Random sampleRandom;
   
   public WnsCollector()
   {
-    this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic = new Statistic(WnsKeys.PublicKeys);
-    bnih localbnih = new bnih(bmaa.d(), bmaa.c(), true);
-    bnif localbnif = new bnif(bmaa.a());
-    bnhz localbnhz = new bnhz();
-    localbnhz.a(this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic);
-    bnig localbnig = new bnig("https://wspeed.qq.com/w.cgi");
-    localbnig.a(true);
-    localbnig.a().a(true);
-    a(localbnih);
-    a(localbnif);
-    a(localbnhz);
-    a(localbnig);
+    WnsCondition localWnsCondition = new WnsCondition(QZoneConfigHelper.getAccReportInterval(), QZoneConfigHelper.getAccReportCount(), true);
+    LinearSampler localLinearSampler = new LinearSampler(QZoneConfigHelper.getAccReportSamples());
+    HttpAssembler localHttpAssembler = new HttpAssembler();
+    localHttpAssembler.setPublicField(this.publicShareInfo);
+    WapProxyHttpDeliverer localWapProxyHttpDeliverer = new WapProxyHttpDeliverer("https://wspeed.qq.com/w.cgi");
+    localWapProxyHttpDeliverer.setGZipEnabled(true);
+    localWapProxyHttpDeliverer.getServers().setOptionalEnabled(true);
+    setCondition(localWnsCondition);
+    setSampler(localLinearSampler);
+    setAssembler(localHttpAssembler);
+    setDeliverer(localWapProxyHttpDeliverer);
   }
   
-  public static WnsCollector a()
+  public static WnsCollector Instance()
   {
-    if (jdField_a_of_type_CooperationQzoneStatisticAccessWnsCollector == null) {
-      jdField_a_of_type_CooperationQzoneStatisticAccessWnsCollector = new WnsCollector();
+    if (instance == null) {
+      instance = new WnsCollector();
     }
-    return jdField_a_of_type_CooperationQzoneStatisticAccessWnsCollector;
+    return instance;
   }
   
-  public Statistic a()
+  public Statistic createStatistic()
   {
     Statistic localStatistic = new Statistic(WnsKeys.PrivateKeys);
     localStatistic.setValue(WnsKeys.DType, Integer.valueOf(0));
     localStatistic.setValue(WnsKeys.ODetails, "");
     localStatistic.setValue(WnsKeys.Timestamp, Long.valueOf(System.currentTimeMillis() / 1000L));
     Key localKey = WnsKeys.Frequency;
-    if (a() == null) {}
-    for (int i = 1;; i = a().a())
+    if (getSampler() == null) {}
+    for (int i = 1;; i = getSampler().getFrequency())
     {
       localStatistic.setValue(localKey, Integer.valueOf(i));
       return localStatistic;
     }
   }
   
-  public void a(Context paramContext)
+  public Statistic getPublicShareInfo()
   {
-    bnio.a(paramContext);
+    return this.publicShareInfo;
   }
   
-  public void a(String paramString1, String paramString2, String paramString3)
+  public void init(Context paramContext)
   {
-    this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic.setValue(WnsKeys.Device, paramString1);
-    this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic.setValue(WnsKeys.SDKVersion, paramString2);
-    this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatistic.setValue(WnsKeys.DeviceInfo, paramString3);
+    Global.setContext(paramContext);
+  }
+  
+  public void setPublicShareInfo(String paramString1, String paramString2, String paramString3)
+  {
+    this.publicShareInfo.setValue(WnsKeys.Device, paramString1);
+    this.publicShareInfo.setValue(WnsKeys.SDKVersion, paramString2);
+    this.publicShareInfo.setValue(WnsKeys.DeviceInfo, paramString3);
   }
 }
 

@@ -1,14 +1,19 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 
-class bhcw
-  implements FilenameFilter
+final class bhcw
+  implements bhbf
 {
-  bhcw(bhct parambhct, String paramString) {}
-  
-  public boolean accept(File paramFile, String paramString)
+  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
+    Matrix localMatrix = new Matrix();
+    if (paramDrawable == null) {
+      return localMatrix;
+    }
+    paramInt2 = paramDrawable.getIntrinsicWidth();
+    float f = paramInt1 / paramInt2;
+    localMatrix.setScale(f, f);
+    return localMatrix;
   }
 }
 

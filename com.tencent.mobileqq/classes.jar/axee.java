@@ -1,32 +1,34 @@
-import com.tencent.mobileqq.miniapp.ui.MiniAppActivity;
+import android.view.View;
+import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.ListView;
 
-public abstract class axee
+public class axee
+  implements AbsListView.OnScrollListener
 {
-  public axeh a;
-  public MiniAppActivity a;
+  public axee(NearbyMomentFragment paramNearbyMomentFragment) {}
   
-  public axee(MiniAppActivity paramMiniAppActivity, String paramString, int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity = paramMiniAppActivity;
-  }
-  
-  public abstract void a();
-  
-  public void a(axeh paramaxeh)
-  {
-    this.jdField_a_of_type_Axeh = paramaxeh;
-    if (this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity.jdField_a_of_type_Axeh = paramaxeh;
+    int i = 0;
+    if (paramInt == 0)
+    {
+      paramInt = i;
+      if (NearbyMomentFragment.a(this.a).getLastVisiblePosition() == NearbyMomentFragment.a(this.a).getCount() - 1)
+      {
+        paramAbsListView = NearbyMomentFragment.a(this.a).getChildAt(NearbyMomentFragment.a(this.a).getLastVisiblePosition() - NearbyMomentFragment.a(this.a).getFirstVisiblePosition());
+        paramInt = i;
+        if (NearbyMomentFragment.a(this.a).getHeight() >= paramAbsListView.getBottom()) {
+          paramInt = 1;
+        }
+      }
+      if (paramInt != 0) {
+        NearbyMomentFragment.a(this.a);
+      }
     }
-  }
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public void c()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqMiniappUiMiniAppActivity = null;
   }
 }
 

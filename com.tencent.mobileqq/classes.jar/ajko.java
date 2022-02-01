@@ -1,17 +1,20 @@
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import mqq.app.QQPermissionCallback;
 
-public class ajko
-  extends amof
+class ajko
+  implements QQPermissionCallback
 {
-  public Button a;
-  public TextView a;
-  public SysSuspiciousMsg a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  ajko(ajkm paramajkm) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bfur.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a.a = ProfileActivity.a(this.a.a, 5);
+  }
 }
 
 

@@ -2,8 +2,8 @@ package cooperation.troop;
 
 import android.os.Handler;
 import android.os.Message;
-import bmgk;
-import bnsj;
+import bkkq;
+import bkxq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.lang.ref.WeakReference;
@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 class TroopPluginManager$1
   implements Runnable
 {
-  TroopPluginManager$1(TroopPluginManager paramTroopPluginManager, String paramString, bnsj parambnsj) {}
+  TroopPluginManager$1(TroopPluginManager paramTroopPluginManager, String paramString, bkxq parambkxq) {}
   
   public void run()
   {
@@ -20,10 +20,10 @@ class TroopPluginManager$1
     if (localObject == null) {
       return;
     }
-    if (((bmgk)((QQAppInterface)localObject).getManager(27)).isPlugininstalled(this.jdField_a_of_type_JavaLangString))
+    if (((bkkq)((QQAppInterface)localObject).getManager(27)).isPlugininstalled(this.jdField_a_of_type_JavaLangString))
     {
       localObject = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001);
-      ((Message)localObject).obj = this.jdField_a_of_type_Bnsj;
+      ((Message)localObject).obj = this.jdField_a_of_type_Bkxq;
       ((Message)localObject).arg1 = 0;
       ((Message)localObject).sendToTarget();
       return;
@@ -31,12 +31,12 @@ class TroopPluginManager$1
     if (this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(this.jdField_a_of_type_JavaLangString))
     {
       localObject = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001);
-      ((Message)localObject).obj = this.jdField_a_of_type_Bnsj;
+      ((Message)localObject).obj = this.jdField_a_of_type_Bkxq;
       ((Message)localObject).arg1 = 1;
       ((Message)localObject).sendToTarget();
     }
     this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(this.jdField_a_of_type_JavaLangString);
-    ThreadManager.post(new TroopPluginManager.InstallRunable(this.this$0, this.jdField_a_of_type_Bnsj, this.jdField_a_of_type_JavaLangString), 8, null, true);
+    ThreadManager.post(new TroopPluginManager.InstallRunable(this.this$0, this.jdField_a_of_type_Bkxq, this.jdField_a_of_type_JavaLangString), 8, null, true);
   }
 }
 

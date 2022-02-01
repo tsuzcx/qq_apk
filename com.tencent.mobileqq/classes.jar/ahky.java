@@ -1,9 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-abstract interface ahky
+class ahky
+  implements View.OnClickListener
 {
-  public abstract int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage);
+  ahky(ahkw paramahkw) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!this.a.hasDestory) {
+      bezm.a(this.a.mContext, null, this.a.sessionInfo.curFriendUin);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

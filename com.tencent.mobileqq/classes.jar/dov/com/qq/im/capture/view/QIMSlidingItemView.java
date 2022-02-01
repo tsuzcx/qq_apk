@@ -1,6 +1,5 @@
 package dov.com.qq.im.capture.view;
 
-import agej;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,14 +8,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bpwi;
+import bmzm;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class QIMSlidingItemView
   extends LinearLayout
 {
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  bpwi jdField_a_of_type_Bpwi;
+  bmzm jdField_a_of_type_Bmzm;
   
   public QIMSlidingItemView(@NonNull Context paramContext)
   {
@@ -42,12 +42,12 @@ public class QIMSlidingItemView
     setGravity(16);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(agej.a(13.0F, getResources()), agej.a(12.0F, getResources()));
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(AIOUtils.dp2px(13.0F, getResources()), AIOUtils.dp2px(12.0F, getResources()));
     localLayoutParams.gravity = 17;
     addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.leftMargin = agej.a(4.0F, getResources());
+    localLayoutParams.leftMargin = AIOUtils.dp2px(4.0F, getResources());
     addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
   }
   
@@ -71,20 +71,20 @@ public class QIMSlidingItemView
       }
     }
     label41:
-    for (paramInt = this.jdField_a_of_type_Bpwi.b;; paramInt = this.jdField_a_of_type_Bpwi.jdField_a_of_type_Int)
+    for (paramInt = this.jdField_a_of_type_Bmzm.b;; paramInt = this.jdField_a_of_type_Bmzm.jdField_a_of_type_Int)
     {
       localImageView.setImageResource(paramInt);
       return;
     }
   }
   
-  public void setData(bpwi parambpwi)
+  public void setData(bmzm parambmzm)
   {
-    this.jdField_a_of_type_Bpwi = parambpwi;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Bpwi.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Bpwi.jdField_a_of_type_Int != 0)
+    this.jdField_a_of_type_Bmzm = parambmzm;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Bmzm.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Bmzm.jdField_a_of_type_Int != 0)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_a_of_type_Bpwi.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_a_of_type_Bmzm.jdField_a_of_type_Int);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
   }

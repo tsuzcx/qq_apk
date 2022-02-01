@@ -1,15 +1,15 @@
-class bhxr
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import java.util.List;
+
+public abstract interface bhxr
+  extends DownloadListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b = "";
+  public abstract void a(int paramInt);
   
-  bhxr(bhxk parambhxk)
-  {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public abstract void a(DownloadInfo paramDownloadInfo, int paramInt);
+  
+  public abstract void a(List<DownloadInfo> paramList);
 }
 
 

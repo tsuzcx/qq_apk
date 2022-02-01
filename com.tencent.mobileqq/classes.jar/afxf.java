@@ -1,25 +1,24 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import com.tencent.ark.open.delegate.ArkDelegateManager;
+import com.tencent.ark.open.delegate.IArkDelegateNet;
+import java.lang.ref.WeakReference;
 
 public class afxf
-  implements View.OnClickListener
+  extends afxh
 {
-  public afxf(TroopRequestActivity paramTroopRequestActivity) {}
-  
-  public void onClick(View paramView)
+  public afxf(String paramString)
   {
-    Intent localIntent = new Intent(this.a, AccountDetailActivity.class);
-    localIntent.putExtra("uin", this.a.a.req_uin.get() + "");
-    localIntent.putExtra("source", 112);
-    this.a.startActivity(localIntent);
-    bdll.b(this.a.app, "P_CliOper", "Grp_public", "", "oper", "Clk_invite", 0, 0, "", "", "", this.a.a.req_uin.get() + "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(null, paramString);
+  }
+  
+  protected boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    WeakReference localWeakReference = new WeakReference(this);
+    IArkDelegateNet localIArkDelegateNet = ArkDelegateManager.getInstance().getNetDelegate();
+    if (localIArkDelegateNet == null) {
+      return false;
+    }
+    localIArkDelegateNet.sendAppMsg(paramString1, paramString2, this.a, paramInt2, new afxg(this, localWeakReference));
+    return true;
   }
 }
 

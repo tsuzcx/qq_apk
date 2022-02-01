@@ -1,16 +1,17 @@
-import android.content.Context;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 
 public class ayvh
   extends RecyclerView.ViewHolder
 {
-  private final Context a;
+  View a;
+  View b;
   
   public ayvh(View paramView)
   {
     super(paramView);
-    this.a = paramView.getContext();
+    this.b = paramView.findViewById(2131374055);
+    this.a = paramView.findViewById(2131374055);
   }
 }
 

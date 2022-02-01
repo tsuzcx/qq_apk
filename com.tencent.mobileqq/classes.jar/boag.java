@@ -1,58 +1,105 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup.1;
+import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup.2;
+import java.util.LinkedList;
 
 public class boag
-  implements Cloneable
+  extends GPUBaseFilter
 {
-  public final int a;
-  public final long a;
-  public boai a;
-  public final String a;
-  public final int b;
-  public final String b;
-  public final String c;
-  public final String d;
-  public final String e;
-  public String f;
-  public final String g;
+  private float jdField_a_of_type_Float;
+  private boad jdField_a_of_type_Boad;
+  private final LinkedList<Runnable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private boad b;
   
-  private boag(int paramInt1, String paramString1, String paramString2, String paramString3, long paramLong, int paramInt2, String paramString4, String paramString5, String paramString6)
+  private void a(@NonNull Runnable paramRunnable)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.g = paramString6;
-  }
-  
-  public static boag a(int paramInt1, String paramString1, String paramString2, String paramString3, long paramLong, int paramInt2, String paramString4, String paramString5, String paramString6)
-  {
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString5)) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString3)) || (paramLong < 0L)) {
-      throw new IllegalArgumentException("The params fileName, pDirKey, fileId, sha and fileSize should be valid.");
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    {
+      this.jdField_a_of_type_JavaUtilLinkedList.add(paramRunnable);
+      return;
     }
-    return new boag(paramInt1, paramString1, paramString2, paramString3.toLowerCase(), paramLong, paramInt2, paramString4, paramString5, paramString6);
   }
   
-  public boag a()
+  private void a(@NonNull LinkedList<Runnable> paramLinkedList)
   {
     try
     {
-      boag localboag = (boag)super.clone();
-      return localboag;
+      while (!paramLinkedList.isEmpty())
+      {
+        Runnable localRunnable = (Runnable)paramLinkedList.poll();
+        if (localRunnable != null) {
+          localRunnable.run();
+        }
+      }
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return null;
+    finally {}
   }
   
-  public void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
+  public void a()
   {
-    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString3)) && (TextUtils.isEmpty(paramString4))) {
+    a(this.jdField_a_of_type_JavaUtilLinkedList);
+  }
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5)
+  {
+    a(new GpuImagePartsFilterGroup.2(this, paramInt1, paramInt4, paramInt5, paramInt2, paramInt3, paramFloat));
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (!boab.a(paramInt1)) {
+      throw new IllegalArgumentException("filterType " + paramInt1 + " is invalid color filter type");
+    }
+    a(new GpuImagePartsFilterGroup.1(this, paramInt1, paramInt2, paramInt3));
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boad != null) || (this.b != null);
+  }
+  
+  public void destroy()
+  {
+    if (this.jdField_a_of_type_Boad != null) {
+      this.jdField_a_of_type_Boad.destroy();
+    }
+    if (this.b != null) {
+      this.b.destroy();
+    }
+  }
+  
+  public void drawTexture(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    if (!a())
+    {
+      xvv.e("Q.qqstory.publish.edit GpuImagePartsFilterGroup", "must set filters before draw texture");
       return;
     }
-    this.jdField_a_of_type_Boai = new boai(this, paramString1, paramInt, paramString2, paramString3, paramString4, paramString5, null);
+    if (this.jdField_a_of_type_Boad != null) {
+      this.jdField_a_of_type_Boad.drawTexture(paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
+    }
+    this.b.drawTexture(paramInt, paramArrayOfFloat1, paramArrayOfFloat2);
+  }
+  
+  public void init()
+  {
+    if ((this.jdField_a_of_type_Boad != null) && (!this.jdField_a_of_type_Boad.isInitialized())) {
+      this.jdField_a_of_type_Boad.init();
+    }
+    if ((this.b != null) && (!this.b.isInitialized())) {
+      this.b.init();
+    }
+  }
+  
+  public void onOutputSizeChanged(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Boad != null) {
+      this.jdField_a_of_type_Boad.onOutputSizeChanged(paramInt1, paramInt2);
+    }
+    if (this.b != null) {
+      this.b.onOutputSizeChanged(paramInt1, paramInt2);
+    }
   }
 }
 

@@ -1,19 +1,12 @@
-import android.support.v4.util.LruCache;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
-
 class wis
-  extends LruCache<KEY, VALUE>
+  extends wht
 {
-  wis(wir paramwir, int paramInt)
-  {
-    super(paramInt);
-  }
+  wis(wif paramwif, wjn paramwjn) {}
   
-  protected void a(boolean paramBoolean, KEY paramKEY, VALUE paramVALUE1, VALUE paramVALUE2)
+  public boolean b()
   {
-    this.a.a.put(paramKEY, new WeakReference(paramVALUE1));
-    this.a.a();
+    this.jdField_a_of_type_Wjn.e = ((String)a("UploadImageJob_out_image_url"));
+    return true;
   }
 }
 

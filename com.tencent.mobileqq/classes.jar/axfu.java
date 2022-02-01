@@ -1,6 +1,9 @@
-public abstract interface axfu<R>
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+
+public class axfu
+  extends axfs
 {
-  public abstract void postQuery(R paramR);
+  public PublishVideoEntry a;
 }
 
 

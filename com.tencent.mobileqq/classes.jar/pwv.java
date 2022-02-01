@@ -1,22 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class pwv
-  implements ViewBase.OnClickListener
+public class pwv
+  implements pwf
 {
-  pwv(pws parampws, ArticleInfo paramArticleInfo, Container paramContainer) {}
+  public pwv(UserOperationModule.1 param1) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void onLoadUserInfoFailed(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.a != null)
-    {
-      paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.a;
-      rpt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
-      pws.a(this.jdField_a_of_type_Pws, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramViewBase.e);
+    QLog.e("UserOperationModule", 1, "handle0x978Resp onLoadUserInfoFailed, uin=" + paramString1 + ", errMsg=" + paramString2);
+    pwu.a(this.a.this$0, this.a.jdField_a_of_type_Int, "", this.a.b, 2, this.a.jdField_a_of_type_Boolean);
+  }
+  
+  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  {
+    paramString = "";
+    if (paramReadInJoyUserInfo != null) {
+      paramString = paramReadInJoyUserInfo.faceUrl;
     }
+    pwu.a(this.a.this$0, this.a.jdField_a_of_type_Int, paramString, this.a.b, 2, this.a.jdField_a_of_type_Boolean);
   }
 }
 

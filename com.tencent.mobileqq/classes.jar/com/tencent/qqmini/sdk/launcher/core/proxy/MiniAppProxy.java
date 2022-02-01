@@ -1,5 +1,6 @@
 package com.tencent.qqmini.sdk.launcher.core.proxy;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -37,6 +38,8 @@ public abstract class MiniAppProxy
   public abstract String getAppId();
   
   public abstract String getAppName();
+  
+  public abstract void getAppUpdate(Activity paramActivity, MiniAppProxy.IAppUpdateListener paramIAppUpdateListener);
   
   public abstract String getAppVersion();
   
@@ -98,13 +101,15 @@ public abstract class MiniAppProxy
   
   public abstract void sendData(byte[] paramArrayOfByte, MiniAppProxy.SenderListener paramSenderListener);
   
+  public abstract void sendRequestByMsf(byte[] paramArrayOfByte, String paramString, MiniAppProxy.SenderListener paramSenderListener);
+  
   public abstract void setDrawableCallback(Drawable paramDrawable, MiniAppProxy.IDrawableLoadedCallBack paramIDrawableLoadedCallBack);
   
   public abstract boolean startBrowserActivity(Context paramContext, Intent paramIntent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy
  * JD-Core Version:    0.7.0.1
  */

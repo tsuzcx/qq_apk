@@ -25,7 +25,7 @@ class QfileBaseRecentFileTabView$2$1
       QLog.i(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "initFileEntities size[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0.jdField_a_of_type_JavaUtilList.size() + "]");
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0.a();
-    SharedPreferences localSharedPreferences = QfileBaseRecentFileTabView.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0).getApplication().getSharedPreferences("OfflineFileMerge" + QfileBaseRecentFileTabView.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0).c(), 0);
+    SharedPreferences localSharedPreferences = QfileBaseRecentFileTabView.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0).getApplication().getSharedPreferences("OfflineFileMerge" + QfileBaseRecentFileTabView.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView$2.this$0).getCurrentUin(), 0);
     long l1 = localSharedPreferences.getLong("LastRequestTime", 0L);
     long l2 = System.currentTimeMillis();
     if (Math.abs(l2 - l1) > 86400000L)
@@ -46,7 +46,7 @@ class QfileBaseRecentFileTabView$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.2.1
  * JD-Core Version:    0.7.0.1
  */

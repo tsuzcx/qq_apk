@@ -1,48 +1,32 @@
-import java.util.HashMap;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class bfzp
+final class bfzp
+  extends ClickableSpan
 {
-  public static final String a;
-  public static final HashMap<String, Integer> a;
-  public static final String[] a;
-  public static final String b;
-  public static final String[] b;
-  public static final String c;
-  public static final String[] c;
-  public static final String d;
-  public static final String e;
-  public static final String f;
-  public static final String g;
-  public static final String h;
-  public static final String i;
-  public static final String j;
+  bfzp(Context paramContext, awqo paramawqo) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "type" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "str", "img", "video", "voice" };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { "recite", "calculation" };
-    jdField_a_of_type_JavaLangString = anzj.a(2131704405);
-    jdField_b_of_type_JavaLangString = anzj.a(2131704410);
-    jdField_c_of_type_JavaLangString = anzj.a(2131704415);
-    d = anzj.a(2131704400);
-    e = anzj.a(2131704413);
-    f = anzj.a(2131704411);
-    g = anzj.a(2131704399);
-    h = anzj.a(2131704407);
-    i = anzj.a(2131704408);
-    j = anzj.a(2131704414);
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put(jdField_a_of_type_JavaLangString, Integer.valueOf(2130840328));
-    jdField_a_of_type_JavaUtilHashMap.put(jdField_b_of_type_JavaLangString, Integer.valueOf(2130840332));
-    jdField_a_of_type_JavaUtilHashMap.put(jdField_c_of_type_JavaLangString, Integer.valueOf(2130840329));
-    jdField_a_of_type_JavaUtilHashMap.put(d, Integer.valueOf(2130840334));
-    jdField_a_of_type_JavaUtilHashMap.put(e, Integer.valueOf(2130840335));
-    jdField_a_of_type_JavaUtilHashMap.put(f, Integer.valueOf(2130840330));
-    jdField_a_of_type_JavaUtilHashMap.put(g, Integer.valueOf(2130840327));
-    jdField_a_of_type_JavaUtilHashMap.put(h, Integer.valueOf(2130840331));
-    jdField_a_of_type_JavaUtilHashMap.put(i, Integer.valueOf(2130840326));
-    jdField_a_of_type_JavaUtilHashMap.put(j, Integer.valueOf(2130840333));
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_Awqo.b());
+    if (QLog.isColorLevel()) {
+      QLog.i("TopicHelper", 2, "mVideoData.topicInfo.getTopicJumpUrl() :" + this.jdField_a_of_type_Awqo.b());
+    }
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#00aced"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

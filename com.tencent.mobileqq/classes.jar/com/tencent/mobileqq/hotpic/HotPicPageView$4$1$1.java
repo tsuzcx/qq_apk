@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.hotpic;
 
-import avtt;
-import avub;
-import bjcf;
+import augt;
+import auhb;
+import bhig;
 
 class HotPicPageView$4$1$1
   implements Runnable
@@ -11,13 +11,13 @@ class HotPicPageView$4$1$1
   
   public void run()
   {
-    HotVideoData localHotVideoData = this.a.a.jdField_a_of_type_Avub.a();
-    if ((localHotVideoData == null) || (this.a.a.jdField_a_of_type_Avub.jdField_a_of_type_Int != 1) || (localHotVideoData.picIndex != this.a.a.jdField_a_of_type_Int))
+    HotVideoData localHotVideoData = this.a.a.jdField_a_of_type_Auhb.a();
+    if ((localHotVideoData == null) || (this.a.a.jdField_a_of_type_Auhb.jdField_a_of_type_Int != 1) || (localHotVideoData.picIndex != this.a.a.jdField_a_of_type_Int))
     {
-      new bjcf(this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a).a(HotVideoMongoliaRelativeLayout.d, 100, 0, 2);
+      new bhig(this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a).a(HotVideoMongoliaRelativeLayout.d, 100, 0, 2);
       return;
     }
-    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.c(this.a.a.jdField_a_of_type_Avub, this.a.a.jdField_a_of_type_Int);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.c(this.a.a.jdField_a_of_type_Auhb, this.a.a.jdField_a_of_type_Int);
   }
 }
 

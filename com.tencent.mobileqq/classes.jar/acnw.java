@@ -1,28 +1,23 @@
-import android.content.Context;
-import com.tencent.ad.tangram.dialog.AdProgressDialogAdapter;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class acnw
-  implements AdProgressDialogAdapter
+  extends anbq
 {
-  private bjbs a;
+  public acnw(AccountManageActivity paramAccountManageActivity) {}
   
-  public void dismiss()
+  protected void a(boolean paramBoolean, bcqu parambcqu)
   {
-    if ((this.a != null) && (this.a.isShowing()))
-    {
-      this.a.dismiss();
-      this.a = null;
-    }
+    AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
   }
   
-  public void show(Context paramContext, int paramInt)
+  protected void b(boolean paramBoolean, bcqu parambcqu)
   {
-    if ((this.a == null) && (paramContext != null) && (paramContext.getResources() != null)) {
-      this.a = new bjbs(paramContext, paramInt);
-    }
-    if (this.a != null) {
-      this.a.show();
-    }
+    AccountManageActivity.a(this.a, false);
+  }
+  
+  protected void c(boolean paramBoolean, bcqu parambcqu)
+  {
+    AccountManageActivity.a(this.a, false);
   }
 }
 

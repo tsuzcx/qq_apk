@@ -1,36 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment.1.1;
-import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import java.util.List;
 
-public class tcj
-  implements HippyQQEngine.HippyQQEngineListener
+class tcj
+  extends bjmc
 {
-  public tcj(ViolaFragment paramViolaFragment) {}
+  tcj(tci paramtci) {}
   
-  public void onError(int paramInt, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.getActivity() != null) {}
-    for (Looper localLooper = this.a.getActivity().getMainLooper();; localLooper = BaseActivity.sTopActivity.getMainLooper())
+    super.onAnimationEnd(paramAnimation);
+    if (tch.a(this.a.a) != null)
     {
-      new Handler(localLooper).postDelayed(new ViolaFragment.1.1(this), 1000L);
-      if (QLog.isColorLevel()) {
-        QLog.e("ViolaFragment", 2, "initHippy error statusCode=" + paramInt + ", msg=" + paramString);
-      }
-      return;
-    }
-  }
-  
-  public void onSuccess()
-  {
-    this.a.mViolaUiDelegate.b();
-    this.a.mViolaUiDelegate.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaFragment", 2, "reloadPage success!");
+      paramAnimation = new ArrayList();
+      paramAnimation.add(tch.a(this.a.a));
+      tch.a(this.a.a).a(paramAnimation, tch.a(this.a.a));
+      QQToast.a(this.a.a.a, 2, 2131717377, 0).a();
     }
   }
 }

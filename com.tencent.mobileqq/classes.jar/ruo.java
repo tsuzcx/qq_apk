@@ -1,19 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
 class ruo
-  extends AnimatorListenerAdapter
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  ruo(rul paramrul, rot paramrot) {}
+  ruo(run paramrun) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.jdField_a_of_type_Rul.b(this.jdField_a_of_type_Rot);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    rul.a(this.jdField_a_of_type_Rul).setRepeatCount(0);
+    if (QLog.isColorLevel()) {
+      QLog.d(run.a(), 2, "播放器状态回调 onCompletion");
+    }
+    if (run.a(this.a) != null) {
+      run.a(this.a).a(1, null, run.a(this.a), System.currentTimeMillis() - run.a(this.a));
+    }
   }
 }
 

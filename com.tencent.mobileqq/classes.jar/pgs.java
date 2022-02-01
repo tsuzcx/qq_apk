@@ -1,47 +1,18 @@
-import android.app.Activity;
-import android.content.Intent;
-import org.jetbrains.annotations.NotNull;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class pgs
-  extends pgp
+class pgs
+  implements PopupWindow.OnDismissListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private boolean jdField_a_of_type_Boolean;
+  pgs(pgn parampgn, ped paramped) {}
   
-  public pgs(@NotNull pgq parampgq, Activity paramActivity)
+  public void onDismiss()
   {
-    super(parampgq, "RIJDailyPopupStep");
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  private boolean b()
-  {
-    int j = 5;
-    Intent localIntent = this.jdField_a_of_type_AndroidAppActivity.getIntent();
-    int i = j;
-    if (localIntent != null)
+    pgn.a(this.jdField_a_of_type_Pgn).a(1.0F);
+    if (this.jdField_a_of_type_Ped.a().b())
     {
-      i = j;
-      if (localIntent.hasExtra("launch_from")) {
-        i = localIntent.getIntExtra("launch_from", 5);
-      }
+      this.jdField_a_of_type_Ped.a().a().c();
+      this.jdField_a_of_type_Ped.a().f(false);
     }
-    if (i == 15) {}
-    for (boolean bool = true;; bool = false)
-    {
-      tpx.a("RIJDailyFloatingPopupStep", "isOpenFloatingWindow = " + bool);
-      return bool;
-    }
-  }
-  
-  protected void g() {}
-  
-  protected void h() {}
-  
-  public void i()
-  {
-    this.jdField_a_of_type_Boolean = b();
-    a(this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,11 +1,25 @@
-import cooperation.qqreader.net.BaseCgiTask;
+import android.graphics.Bitmap;
+import com.tencent.weishi.module.edit.widget.playtrack.provider.IPlayTrackViewBitmapProvider;
+import com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbProviderManager;
+import com.tencent.weseevideo.camera.mvauto.redo.CutModelKt;
+import com.tencent.weseevideo.camera.mvauto.redo.VideoResourceModelKt;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackTimeLineView;
 
-public abstract class bmqd
-  implements bmqa
+public class bmqd
+  implements IPlayTrackViewBitmapProvider
 {
-  public void a(BaseCgiTask paramBaseCgiTask, String paramString) {}
+  public bmqd(VideoTrackTimeLineView paramVideoTrackTimeLineView) {}
   
-  public void b(bmqc parambmqc) {}
+  public Bitmap getBitmap(long paramLong)
+  {
+    if (VideoTrackTimeLineView.a(this.a) == null) {
+      return VideoThumbProviderManager.getInstance().getBitmapByTime(0L, null, "");
+    }
+    if (VideoTrackTimeLineView.a(this.a).getResource().getScaleDuration() == 0L) {}
+    for (paramLong = VideoTrackTimeLineView.a(this.a).getResource().getSelectTimeStart() + paramLong;; paramLong = ((float)VideoTrackTimeLineView.a(this.a).getResource().getSelectTimeStart() + (float)(VideoTrackTimeLineView.a(this.a).getResource().getSelectTimeDuration() * paramLong) * 1.0F / (float)VideoTrackTimeLineView.a(this.a).getResource().getScaleDuration())) {
+      return VideoThumbProviderManager.getInstance().getBitmapByTime(paramLong, this.a.a(), VideoTrackTimeLineView.a(this.a).getResource().getPath());
+    }
+  }
 }
 
 

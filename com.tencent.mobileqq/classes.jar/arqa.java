@@ -1,12 +1,10 @@
-public class arqa
+public abstract interface arqa
 {
-  public int a = -1;
-  public String a;
-  public int b;
+  public abstract void a(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqa
  * JD-Core Version:    0.7.0.1
  */

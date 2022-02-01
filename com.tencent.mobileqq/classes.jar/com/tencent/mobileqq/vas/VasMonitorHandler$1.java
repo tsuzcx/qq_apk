@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import biaa;
+import bggk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ public final class VasMonitorHandler$1
   
   public void run()
   {
-    biaa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaLangString);
+    bggk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaLangString);
   }
 }
 

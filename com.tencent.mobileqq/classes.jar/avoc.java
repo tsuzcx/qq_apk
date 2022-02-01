@@ -1,101 +1,49 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.webviewplugin.PayJsPlugin;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletMixJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.WadlWebViewJsPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Locale;
 
 public class avoc
-  extends bimg
-  implements bine
+  implements Handler.Callback
 {
-  private static final String TAG = "QQGameWebViewBuilder";
+  public avoc(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
   
-  public avoc(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
+  public boolean handleMessage(Message paramMessage)
   {
-    super(paramContext, paramActivity, paramAppInterface);
-    this.mWebview = paramTouchWebView;
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 0: 
+      if ((!this.a.a()) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1))
+      {
+        this.a.jdField_a_of_type_Akkk.a(this.a.jdField_b_of_type_JavaUtilList);
+        this.a.jdField_a_of_type_Akkk.a(21);
+        this.a.b();
+        if ((this.a.c) || (this.a.jdField_b_of_type_JavaUtilList.size() == 0)) {
+          this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        }
+        while (!this.a.jdField_a_of_type_Boolean)
+        {
+          this.a.jdField_a_of_type_Boolean = true;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("MatchChatMsgListFragment", 2, String.format(Locale.getDefault(), "init ui cost time : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) }));
+          return false;
+          this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        }
+      }
+      this.a.jdField_b_of_type_Boolean = true;
+      return false;
+    }
+    MatchChatMsgListFragment.a(this.a, MatchChatMsgListFragment.a(this.a));
+    return false;
   }
-  
-  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
-  {
-    super.bindJavaScript(paramArrayList);
-    paramArrayList.add(new WadlWebViewJsPlugin());
-    paramArrayList.add(new avod());
-    paramArrayList.add(new QWalletPayJsPlugin());
-    paramArrayList.add(new PayJsPlugin());
-    paramArrayList.add(new QWalletCommonJsPlugin());
-    paramArrayList.add(new QWalletBluetoothJsPlugin());
-    paramArrayList.add(new awhh());
-    paramArrayList.add(new UiApiPlugin());
-    paramArrayList.add(new SensorAPIJavaScript());
-    paramArrayList.add(new awgf());
-    paramArrayList.add(new MediaApiPlugin());
-    paramArrayList.add(new VasCommonJsPlugin());
-    paramArrayList.add(new bigs());
-    paramArrayList.add(new QWalletMixJsPlugin());
-    paramArrayList.add(new abgp());
-  }
-  
-  public void buildBottomBar() {}
-  
-  public void buildContentView(Bundle paramBundle) {}
-  
-  public void buildData() {}
-  
-  public void buildLayout() {}
-  
-  public void buildTitleBar() {}
-  
-  public void buildWebView(AppInterface paramAppInterface)
-  {
-    super.buildBaseWebView(paramAppInterface);
-  }
-  
-  public void onDestroy()
-  {
-    super.doOnDestroy();
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onPause()
-  {
-    super.doOnPause();
-  }
-  
-  public void onResume()
-  {
-    super.doOnResume();
-  }
-  
-  public void onWebViewReady()
-  {
-    super.onWebViewReady();
-  }
-  
-  public void preInitWebviewPlugin() {}
 }
 
 

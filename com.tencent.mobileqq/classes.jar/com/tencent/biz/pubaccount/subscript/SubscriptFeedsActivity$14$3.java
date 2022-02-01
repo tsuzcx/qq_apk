@@ -2,24 +2,24 @@ package com.tencent.biz.pubaccount.subscript;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import tux;
-import tvc;
+import ubn;
+import ubs;
 
 public class SubscriptFeedsActivity$14$3
   implements Runnable
 {
-  public SubscriptFeedsActivity$14$3(tux paramtux, Serializable paramSerializable) {}
+  public SubscriptFeedsActivity$14$3(ubn paramubn, Serializable paramSerializable) {}
   
   public void run()
   {
     SubscriptFeedsActivity localSubscriptFeedsActivity;
-    if ((this.jdField_a_of_type_JavaIoSerializable != null) && (SubscriptFeedsActivity.a(this.jdField_a_of_type_Tux.a) != null))
+    if ((this.jdField_a_of_type_JavaIoSerializable != null) && (SubscriptFeedsActivity.a(this.jdField_a_of_type_Ubn.a) != null))
     {
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Tux.a, (ArrayList)this.jdField_a_of_type_JavaIoSerializable);
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Tux.a).b(SubscriptFeedsActivity.a(this.jdField_a_of_type_Tux.a));
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Tux.a).a = true;
-      localSubscriptFeedsActivity = this.jdField_a_of_type_Tux.a;
-      if (SubscriptFeedsActivity.a(this.jdField_a_of_type_Tux.a).f != 1) {
+      SubscriptFeedsActivity.a(this.jdField_a_of_type_Ubn.a, (ArrayList)this.jdField_a_of_type_JavaIoSerializable);
+      SubscriptFeedsActivity.a(this.jdField_a_of_type_Ubn.a).b(SubscriptFeedsActivity.a(this.jdField_a_of_type_Ubn.a));
+      SubscriptFeedsActivity.a(this.jdField_a_of_type_Ubn.a).a = true;
+      localSubscriptFeedsActivity = this.jdField_a_of_type_Ubn.a;
+      if (SubscriptFeedsActivity.a(this.jdField_a_of_type_Ubn.a).f != 1) {
         break label110;
       }
     }
@@ -33,7 +33,7 @@ public class SubscriptFeedsActivity$14$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.14.3
  * JD-Core Version:    0.7.0.1
  */

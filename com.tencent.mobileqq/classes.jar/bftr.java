@@ -1,72 +1,34 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Vector;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-public class bftr
+public final class bftr
+  extends BroadcastReceiver
 {
-  public bftt a;
-  private Comparator<bftv> a;
-  public Vector<bftv> a;
-  public AtomicBoolean a;
-  public boolean a;
+  public bftr(BaseApplicationImpl paramBaseApplicationImpl) {}
   
-  public bftr()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_JavaUtilVector = new Vector();
-    this.jdField_a_of_type_JavaUtilComparator = new bfts(this);
-  }
-  
-  public void a(String paramString)
-  {
-    int i = 0;
-    for (;;)
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    int i;
+    do
     {
-      try
+      do
       {
-        paramString = new JSONObject(paramString);
-        Object localObject = paramString.optJSONArray("effectSwitch");
-        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-        {
-          if (((JSONArray)localObject).getJSONObject(0).optInt("androidSwitch") == 1)
-          {
-            bool = true;
-            this.jdField_a_of_type_Boolean = bool;
-          }
-        }
-        else
-        {
-          paramString = paramString.optJSONArray("grayMsgList");
-          if ((paramString != null) && (paramString.length() > 0))
-          {
-            if (i < paramString.length())
-            {
-              localObject = paramString.getJSONObject(i);
-              bftv localbftv = new bftv();
-              localbftv.a((JSONObject)localObject);
-              this.jdField_a_of_type_JavaUtilVector.add(localbftv);
-              i += 1;
-              continue;
-            }
-            Collections.sort(this.jdField_a_of_type_JavaUtilVector, this.jdField_a_of_type_JavaUtilComparator);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopEnterEffect.Config", 2, "config mergeFromJSON enable = " + this.jdField_a_of_type_Boolean + " graytips: " + this.jdField_a_of_type_JavaUtilVector.size());
-          }
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("TroopEnterEffect.Config", 1, "mergeFromJSON error: " + paramString.getMessage());
         return;
+      } while (!"tencent.video.q2v.debug".equals(paramIntent.getAction()));
+      i = paramIntent.getIntExtra("_debug_Event_index", -1);
+      int j = paramIntent.getIntExtra("_debug_Event_value", -1);
+      if ((i >= 0) && (i < 39))
+      {
+        AudioHelper.a[i] = j;
+        QLog.w("AudioHelper", 1, "ReceiverDebugValue, [" + i + "]=[" + j + "]");
       }
-      boolean bool = false;
-    }
+    } while (i != 2);
+    AudioHelper.a(this.a.getApplicationContext());
   }
 }
 

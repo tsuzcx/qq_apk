@@ -1,25 +1,39 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
-public abstract class bfdp
-  extends RecyclerView.ViewHolder
+class bfdp
+  extends amsu
 {
-  public int a;
-  public SeekBar a;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  public RelativeLayout b;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  ImageView d;
+  bfdp(bfdm parambfdm) {}
   
-  bfdp(View paramView)
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    super(paramView);
+    if (!this.a.b(paramString)) {}
+    while (!paramBoolean1) {
+      return;
+    }
+    bfdm.a(this.a, paramString);
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    paramObject = "" + paramObject;
+    if (!this.a.b(paramObject)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!paramBoolean);
+      bfdm.a(this.a, paramObject);
+    } while (!(this.a.a instanceof QQAppInterface));
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a;
+    ((amsw)this.a.a.getManager(51)).d(paramObject);
+    azxb.a(localQQAppInterface, paramObject);
+    bdcj.a(localQQAppInterface, paramObject);
+    localQQAppInterface.getProxyManager().a().a(paramObject, true);
   }
 }
 

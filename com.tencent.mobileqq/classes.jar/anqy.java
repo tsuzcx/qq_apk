@@ -1,46 +1,46 @@
-import android.app.Activity;
-import android.os.Looper;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.view.ApolloGameWrapper.1;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class anqy
+  extends anri
 {
-  public static void a(boolean paramBoolean, Activity paramActivity, aiwh paramaiwh, AppInterface paramAppInterface, String paramString, anqz paramanqz)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    a(paramBoolean, paramActivity, paramaiwh, paramAppInterface, paramString, paramanqz, true);
-  }
-  
-  public static void a(boolean paramBoolean1, Activity paramActivity, aiwh paramaiwh, AppInterface paramAppInterface, String paramString, anqz paramanqz, boolean paramBoolean2)
-  {
-    if (paramanqz == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.ApolloGameWrapper", 2, "checkApolloGame listener is null");
-      }
-      return;
+    paramQQAppInterface = new anqx(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "microapp";
+    paramQQAppInterface.c = "open";
+    if (QLog.isColorLevel()) {
+      QLog.d("HttpOpenMicroAppParser", 2, "[miniapp-scheme], open microapp scheme=" + paramString);
     }
-    if ((paramActivity == null) || (paramAppInterface == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.ApolloGameWrapper", 2, "checkApolloGame activity is null OR appInterface is null");
-      }
-      paramanqz.a(false, null);
-      return;
+    paramContext = paramString.split("\\?");
+    if ((paramContext.length < 2) || (paramContext[0].length() == 0)) {
+      return paramQQAppInterface;
     }
-    if (Looper.getMainLooper() == Looper.myLooper())
+    paramContext = paramString.substring(paramContext[0].length() + 1).split("&");
+    if (paramContext != null)
     {
-      paramaiwh = andl.a(paramString);
-      if ((paramaiwh == null) || (paramaiwh.a == null) || (paramaiwh.a.get() != paramActivity))
+      int i = 0;
+      while (i < paramContext.length)
       {
-        paramanqz.a(false, paramaiwh);
-        return;
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2))
+        {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+          if (QLog.isColorLevel()) {
+            QLog.d("HttpOpenMicroAppParser", 2, "[miniapp-scheme], open microapp key=" + paramString[0] + ", value=" + paramString[1]);
+          }
+        }
+        i += 1;
       }
-      paramanqz.a(true, paramaiwh);
-      return;
     }
-    paramActivity.runOnUiThread(new ApolloGameWrapper.1(paramString, paramActivity, paramanqz));
+    paramContext = paramQQAppInterface.b("fakeUrl");
+    if ((TextUtils.isEmpty(paramQQAppInterface.b("scene"))) && (!TextUtils.isEmpty(paramContext))) {
+      paramQQAppInterface.a("scene", String.valueOf(2003));
+    }
+    return paramQQAppInterface;
   }
 }
 

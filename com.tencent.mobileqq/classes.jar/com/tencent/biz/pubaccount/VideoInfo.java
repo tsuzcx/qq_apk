@@ -1,41 +1,41 @@
 package com.tencent.biz.pubaccount;
 
-import agej;
+import amsw;
 import android.app.Activity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anyw;
-import bhtq;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowLayout.StressState;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
-import ocx;
-import odl;
-import odm;
+import oek;
+import oey;
+import oez;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import rpt;
-import tay;
-import tmf;
+import pvp;
+import rwv;
+import tfb;
+import trv;
 
 public class VideoInfo
-  implements Parcelable, tay
+  implements Parcelable, tfb
 {
-  public static final Parcelable.Creator<VideoInfo> CREATOR = new ocx();
-  public String A;
+  public static final Parcelable.Creator<VideoInfo> CREATOR = new oek();
   public int a;
   public long a;
   public VideoAdInfo a;
@@ -54,16 +54,17 @@ public class VideoInfo
   public String a;
   public ArrayList<DislikeInfo> a;
   public HashSet<String> a;
-  public odl a;
-  public odm a;
-  public tmf a;
+  public oey a;
+  public oez a;
+  public pvp a;
+  public trv a;
   public boolean a;
   private Object[] a;
   public int b;
   public long b;
   public String b;
   public ArrayList<String> b;
-  public odl b;
+  public oey b;
   public boolean b;
   public int c;
   public long c;
@@ -112,13 +113,17 @@ public class VideoInfo
   public boolean o;
   public int p;
   public String p;
-  private boolean p;
+  public boolean p;
   public int q;
   public String q;
+  public boolean q;
   public int r;
   public String r;
+  public boolean r;
   public int s;
   public String s;
+  private boolean s;
+  public int t;
   public String t;
   public String u;
   public String v;
@@ -130,10 +135,10 @@ public class VideoInfo
   public VideoInfo()
   {
     this.jdField_i_of_type_Int = 1;
-    this.jdField_a_of_type_Tmf = new tmf();
+    this.jdField_a_of_type_Trv = new trv();
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_p_of_type_Boolean = true;
+    this.jdField_s_of_type_Boolean = true;
     this.jdField_h_of_type_Boolean = true;
     this.jdField_i_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout$StressState = VideoFeedsStressFollowLayout.StressState.Shrink;
@@ -142,10 +147,10 @@ public class VideoInfo
   public VideoInfo(Parcel paramParcel)
   {
     this.jdField_i_of_type_Int = 1;
-    this.jdField_a_of_type_Tmf = new tmf();
+    this.jdField_a_of_type_Trv = new trv();
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_p_of_type_Boolean = true;
+    this.jdField_s_of_type_Boolean = true;
     this.jdField_h_of_type_Boolean = true;
     this.jdField_i_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout$StressState = VideoFeedsStressFollowLayout.StressState.Shrink;
@@ -174,7 +179,7 @@ public class VideoInfo
       bool1 = true;
       this.jdField_a_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label892;
+        break label898;
       }
       bool1 = true;
       label260:
@@ -183,14 +188,14 @@ public class VideoInfo
       this.jdField_l_of_type_JavaLangString = paramParcel.readString();
       this.jdField_f_of_type_Int = paramParcel.readInt();
       this.jdField_o_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_p_of_type_JavaLangString = paramParcel.readString();
+      this.p = paramParcel.readString();
       this.jdField_q_of_type_JavaLangString = paramParcel.readString();
       this.jdField_r_of_type_JavaLangString = paramParcel.readString();
       this.jdField_d_of_type_Long = paramParcel.readLong();
       this.jdField_h_of_type_Int = paramParcel.readInt();
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = ((ArticleInfo)paramParcel.readParcelable(ArticleInfo.class.getClassLoader()));
       if (paramParcel.readByte() == 0) {
-        break label897;
+        break label903;
       }
       bool1 = true;
       label362:
@@ -199,19 +204,19 @@ public class VideoInfo
       this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo = ((VideoAdInfo)paramParcel.readParcelable(VideoAdInfo.class.getClassLoader()));
       this.jdField_b_of_type_JavaUtilArrayList = paramParcel.createStringArrayList();
       if (paramParcel.readByte() == 0) {
-        break label902;
+        break label908;
       }
       bool1 = true;
       label408:
       this.jdField_d_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label907;
+        break label913;
       }
       bool1 = true;
       label422:
       this.jdField_e_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label912;
+        break label918;
       }
       bool1 = true;
       label436:
@@ -223,44 +228,44 @@ public class VideoInfo
       this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$DownloadBarInfo = ((VideoInfo.DownloadBarInfo)paramParcel.readParcelable(VideoInfo.DownloadBarInfo.class.getClassLoader()));
       this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ECommerceEntranceInfo = ((VideoInfo.ECommerceEntranceInfo)paramParcel.readParcelable(VideoInfo.ECommerceEntranceInfo.class.getClassLoader()));
       if (paramParcel.readByte() == 0) {
-        break label917;
+        break label923;
       }
       bool1 = true;
       label530:
-      this.jdField_p_of_type_Boolean = bool1;
+      this.jdField_s_of_type_Boolean = bool1;
       this.jdField_l_of_type_Int = paramParcel.readInt();
       this.jdField_f_of_type_Long = paramParcel.readLong();
-      this.jdField_p_of_type_Int = paramParcel.readInt();
       this.jdField_q_of_type_Int = paramParcel.readInt();
       this.jdField_r_of_type_Int = paramParcel.readInt();
+      this.jdField_s_of_type_Int = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
-        break label922;
+        break label928;
       }
       bool1 = true;
       label584:
-      this.jdField_n_of_type_Boolean = bool1;
+      this.jdField_q_of_type_Boolean = bool1;
       if (paramParcel.readByte() == 0) {
-        break label927;
+        break label933;
       }
       bool1 = true;
       label598:
-      this.jdField_o_of_type_Boolean = bool1;
-      this.jdField_s_of_type_Int = paramParcel.readInt();
+      this.jdField_r_of_type_Boolean = bool1;
+      this.t = paramParcel.readInt();
+      this.w = paramParcel.readString();
       this.x = paramParcel.readString();
       this.y = paramParcel.readString();
-      this.z = paramParcel.readString();
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout$StressState = VideoFeedsStressFollowLayout.StressState.valueOf(paramParcel.readString());
-      this.A = paramParcel.readString();
+      this.z = paramParcel.readString();
       this.jdField_e_of_type_Long = paramParcel.readLong();
       if (paramParcel.readByte() == 0) {
-        break label932;
+        break label938;
       }
       bool1 = true;
       label671:
       this.jdField_g_of_type_Boolean = bool1;
       this.jdField_s_of_type_JavaLangString = paramParcel.readString();
       if (paramParcel.readByte() != 0) {
-        break label937;
+        break label943;
       }
       bool1 = true;
       label693:
@@ -269,13 +274,12 @@ public class VideoInfo
       this.jdField_m_of_type_Int = paramParcel.readInt();
       this.jdField_n_of_type_Int = paramParcel.readInt();
       this.u = paramParcel.readString();
-      this.v = paramParcel.readString();
       this.jdField_o_of_type_Int = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
-        break label942;
+        break label948;
       }
       bool1 = true;
-      label759:
+      label751:
       this.jdField_k_of_type_Boolean = bool1;
       this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$LikeActionDownloadBar = ((VideoInfo.LikeActionDownloadBar)paramParcel.readParcelable(VideoInfo.LikeActionDownloadBar.class.getClassLoader()));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructVideoColumnInfo = ((VideoColumnInfo)paramParcel.readParcelable(VideoColumnInfo.class.getClassLoader()));
@@ -283,37 +287,44 @@ public class VideoInfo
       this.jdField_m_of_type_JavaLangString = paramParcel.readString();
       this.jdField_n_of_type_JavaLangString = paramParcel.readString();
       if (paramParcel.readInt() == 0) {
-        break label947;
+        break label953;
       }
       bool1 = true;
-      label840:
+      label832:
       this.jdField_l_of_type_Boolean = bool1;
-      this.w = paramParcel.readString();
+      this.v = paramParcel.readString();
       this.jdField_g_of_type_Int = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
-        break label952;
+        break label958;
       }
-    }
-    label897:
-    label902:
-    label907:
-    label912:
-    label917:
-    label922:
-    label927:
-    label932:
-    label937:
-    label942:
-    label947:
-    label952:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
+      bool1 = true;
+      label862:
       this.jdField_m_of_type_Boolean = bool1;
       this.jdField_d_of_type_JavaUtilArrayList = paramParcel.createTypedArrayList(VideoInfo.RichTitleInfo.CREATOR);
+      if (paramParcel.readByte() == 0) {
+        break label963;
+      }
+    }
+    label898:
+    label903:
+    label908:
+    label913:
+    label918:
+    label923:
+    label928:
+    label933:
+    label938:
+    label943:
+    label948:
+    label953:
+    label958:
+    label963:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.jdField_n_of_type_Boolean = bool1;
       return;
       bool1 = false;
       break;
-      label892:
       bool1 = false;
       break label260;
       bool1 = false;
@@ -335,15 +346,17 @@ public class VideoInfo
       bool1 = false;
       break label693;
       bool1 = false;
-      break label759;
+      break label751;
       bool1 = false;
-      break label840;
+      break label832;
+      bool1 = false;
+      break label862;
     }
   }
   
   private void a(Activity paramActivity)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangObject = rpt.a(paramActivity, b(), c());
+    this.jdField_a_of_type_ArrayOfJavaLangObject = rwv.a(paramActivity, b(), c());
     if (QLog.isColorLevel())
     {
       paramActivity = new StringBuilder("VideoInfo innerInitVideoAreaHeightInfo() ");
@@ -370,7 +383,7 @@ public class VideoInfo
   
   public int a(Activity paramActivity, int paramInt)
   {
-    return rpt.a(paramActivity, this, paramInt);
+    return rwv.a(paramActivity, this, paramInt);
   }
   
   public String a()
@@ -387,7 +400,7 @@ public class VideoInfo
   public URL a()
   {
     if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null)) {
-      return ShortVideoUtils.a(ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbMD5, "jpg"));
+      return ShortVideoUtils.getThumbUrl(ShortVideoUtils.getShortVideoThumbPicPath(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.thumbMD5, "jpg"));
     }
     try
     {
@@ -431,7 +444,7 @@ public class VideoInfo
     this.jdField_l_of_type_JavaLangString = paramVideoInfo.jdField_l_of_type_JavaLangString;
     this.jdField_f_of_type_Int = paramVideoInfo.jdField_f_of_type_Int;
     this.jdField_o_of_type_JavaLangString = paramVideoInfo.jdField_o_of_type_JavaLangString;
-    this.jdField_p_of_type_JavaLangString = paramVideoInfo.jdField_p_of_type_JavaLangString;
+    this.p = paramVideoInfo.p;
     this.jdField_q_of_type_JavaLangString = paramVideoInfo.jdField_q_of_type_JavaLangString;
     this.jdField_r_of_type_JavaLangString = paramVideoInfo.jdField_r_of_type_JavaLangString;
     this.jdField_d_of_type_Long = paramVideoInfo.jdField_d_of_type_Long;
@@ -450,19 +463,19 @@ public class VideoInfo
     this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$InterruptedWeishiAd = paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$InterruptedWeishiAd;
     this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$DownloadBarInfo = paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$DownloadBarInfo;
     this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ECommerceEntranceInfo = paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ECommerceEntranceInfo;
-    this.jdField_p_of_type_Boolean = paramVideoInfo.jdField_p_of_type_Boolean;
+    this.jdField_s_of_type_Boolean = paramVideoInfo.jdField_s_of_type_Boolean;
     this.jdField_l_of_type_Int = paramVideoInfo.jdField_l_of_type_Int;
     this.jdField_f_of_type_Long = paramVideoInfo.jdField_f_of_type_Long;
-    this.jdField_p_of_type_Int = paramVideoInfo.jdField_p_of_type_Int;
     this.jdField_q_of_type_Int = paramVideoInfo.jdField_q_of_type_Int;
     this.jdField_r_of_type_Int = paramVideoInfo.jdField_r_of_type_Int;
-    this.jdField_n_of_type_Boolean = paramVideoInfo.jdField_n_of_type_Boolean;
-    this.jdField_o_of_type_Boolean = paramVideoInfo.jdField_o_of_type_Boolean;
     this.jdField_s_of_type_Int = paramVideoInfo.jdField_s_of_type_Int;
+    this.jdField_q_of_type_Boolean = paramVideoInfo.jdField_q_of_type_Boolean;
+    this.jdField_r_of_type_Boolean = paramVideoInfo.jdField_r_of_type_Boolean;
+    this.t = paramVideoInfo.t;
+    this.w = paramVideoInfo.w;
     this.x = paramVideoInfo.x;
     this.y = paramVideoInfo.y;
     this.z = paramVideoInfo.z;
-    this.A = paramVideoInfo.A;
     this.jdField_e_of_type_Long = paramVideoInfo.jdField_e_of_type_Long;
     this.jdField_g_of_type_Boolean = paramVideoInfo.jdField_g_of_type_Boolean;
     this.jdField_s_of_type_JavaLangString = paramVideoInfo.jdField_s_of_type_JavaLangString;
@@ -472,7 +485,6 @@ public class VideoInfo
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID = this.jdField_c_of_type_Long;
     }
     this.u = paramVideoInfo.u;
-    this.v = paramVideoInfo.v;
     this.jdField_o_of_type_Int = paramVideoInfo.jdField_o_of_type_Int;
     this.jdField_k_of_type_Boolean = paramVideoInfo.jdField_k_of_type_Boolean;
     this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$LikeActionDownloadBar = paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$LikeActionDownloadBar;
@@ -482,10 +494,11 @@ public class VideoInfo
     this.jdField_m_of_type_JavaLangString = paramVideoInfo.jdField_m_of_type_JavaLangString;
     this.jdField_n_of_type_JavaLangString = paramVideoInfo.jdField_n_of_type_JavaLangString;
     this.jdField_l_of_type_Boolean = paramVideoInfo.jdField_l_of_type_Boolean;
-    this.w = paramVideoInfo.w;
+    this.v = paramVideoInfo.v;
     this.jdField_g_of_type_Int = paramVideoInfo.jdField_g_of_type_Int;
     this.jdField_m_of_type_Boolean = paramVideoInfo.jdField_m_of_type_Boolean;
     this.jdField_d_of_type_JavaUtilArrayList = paramVideoInfo.jdField_d_of_type_JavaUtilArrayList;
+    this.jdField_n_of_type_Boolean = paramVideoInfo.jdField_n_of_type_Boolean;
   }
   
   public void a(String paramString)
@@ -526,10 +539,10 @@ public class VideoInfo
   {
     if ((this.jdField_b_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_j_of_type_JavaLangString)) && (paramQQAppInterface != null))
     {
-      if (this.jdField_j_of_type_JavaLangString.equals(paramQQAppInterface.c())) {
+      if (this.jdField_j_of_type_JavaLangString.equals(paramQQAppInterface.getCurrentUin())) {
         return true;
       }
-      if (((anyw)paramQQAppInterface.getManager(51)).b(this.jdField_j_of_type_JavaLangString)) {
+      if (((amsw)paramQQAppInterface.getManager(51)).b(this.jdField_j_of_type_JavaLangString)) {
         return true;
       }
     }
@@ -540,7 +553,7 @@ public class VideoInfo
   {
     int i1 = -1;
     paramInt = a(paramActivity, paramInt);
-    int i2 = bhtq.a(50.0F);
+    int i2 = ViewUtils.dip2px(50.0F);
     switch (paramInt)
     {
     case 1: 
@@ -550,7 +563,7 @@ public class VideoInfo
     for (;;)
     {
       return new int[] { paramInt, i1 };
-      int i3 = agej.a(10.0F, paramActivity.getResources());
+      int i3 = AIOUtils.dp2px(10.0F, paramActivity.getResources());
       i1 = i3;
       paramInt = i2;
       if (LiuHaiUtils.b())
@@ -561,11 +574,11 @@ public class VideoInfo
         if (!paramBoolean)
         {
           int i4 = b(paramActivity);
-          int i5 = rpt.b(paramActivity)[1];
+          int i5 = rwv.b(paramActivity)[1];
           if (i5 < i4) {
             break;
           }
-          i3 = agej.a(10.0F, paramActivity.getResources());
+          i3 = AIOUtils.dp2px(10.0F, paramActivity.getResources());
           if (b(paramActivity))
           {
             i1 = i3;
@@ -573,11 +586,11 @@ public class VideoInfo
             if ((i5 - i4) / 2 <= i2) {
               continue;
             }
-            paramInt = (i5 - i4) / 2 + agej.a(32.0F, paramActivity.getResources());
+            paramInt = (i5 - i4) / 2 + AIOUtils.dp2px(32.0F, paramActivity.getResources());
             i1 = i3;
             continue;
           }
-          paramInt = (i5 - i4) / 2 + agej.a(10.0F, paramActivity.getResources());
+          paramInt = (i5 - i4) / 2 + AIOUtils.dp2px(10.0F, paramActivity.getResources());
           i1 = i3;
           continue;
         }
@@ -588,14 +601,14 @@ public class VideoInfo
       }
     }
     label228:
-    paramInt = rpt.b(paramActivity)[1];
-    i1 = rpt.b(paramActivity)[0];
+    paramInt = rwv.b(paramActivity)[1];
+    i1 = rwv.b(paramActivity)[0];
     float f1 = b() / c();
     i1 = (int)(i1 * f1);
     if (i1 <= paramInt) {}
-    for (i1 = (paramInt - i1) / 2 + agej.a(16.0F, paramActivity.getResources());; i1 = agej.a(16.0F, paramActivity.getResources()))
+    for (i1 = (paramInt - i1) / 2 + AIOUtils.dp2px(16.0F, paramActivity.getResources());; i1 = AIOUtils.dp2px(16.0F, paramActivity.getResources()))
     {
-      paramInt = agej.a(16.0F, paramActivity.getResources());
+      paramInt = AIOUtils.dp2px(16.0F, paramActivity.getResources());
       break;
     }
   }
@@ -675,17 +688,17 @@ public class VideoInfo
       localStringBuilder.append("isVerified=").append(this.jdField_a_of_type_Boolean).append(", ");
       localStringBuilder.append("biuCount=").append(this.jdField_f_of_type_Int).append(", ");
       localStringBuilder.append("commentCount=").append(this.jdField_e_of_type_Int).append(", ");
-      localStringBuilder.append("playCount=").append(this.jdField_q_of_type_Int).append(", ");
-      localStringBuilder.append("likeCount=").append(this.jdField_r_of_type_Int).append(", ");
-      localStringBuilder.append("isDianZan=").append(this.jdField_o_of_type_Boolean).append(", ");
-      localStringBuilder.append("dianZanCount=").append(this.jdField_s_of_type_Int).append(", ");
+      localStringBuilder.append("playCount=").append(this.jdField_r_of_type_Int).append(", ");
+      localStringBuilder.append("likeCount=").append(this.jdField_s_of_type_Int).append(", ");
+      localStringBuilder.append("isDianZan=").append(this.jdField_r_of_type_Boolean).append(", ");
+      localStringBuilder.append("dianZanCount=").append(this.t).append(", ");
       localStringBuilder.append("thirdAction=").append(this.jdField_o_of_type_JavaLangString).append(", ");
-      localStringBuilder.append("thirdIconUrl=").append(this.jdField_p_of_type_JavaLangString).append(", ");
+      localStringBuilder.append("thirdIconUrl=").append(this.p).append(", ");
       localStringBuilder.append("xgFileSize=").append(this.jdField_b_of_type_Long).append(", ");
-      localStringBuilder.append("articleSubsText").append(this.x).append(", ");
-      localStringBuilder.append("articleSubsColor=").append(this.y).append(", ");
+      localStringBuilder.append("articleSubsText").append(this.w).append(", ");
+      localStringBuilder.append("articleSubsColor=").append(this.x).append(", ");
       localStringBuilder.append("isUgc=").append(this.jdField_b_of_type_Boolean).append(", ");
-      localStringBuilder.append("isFollowed=").append(this.jdField_n_of_type_Boolean).append(", ");
+      localStringBuilder.append("isFollowed=").append(this.jdField_q_of_type_Boolean).append(", ");
       localStringBuilder.append("aioShareUrl=").append(this.jdField_m_of_type_JavaLangString).append(", ");
       localStringBuilder.append("qzoneShareUrl=").append(this.jdField_n_of_type_JavaLangString).append(", ");
       break label114;
@@ -719,22 +732,23 @@ public class VideoInfo
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (VideoInfo.RichTitleInfo)((Iterator)localObject1).next();
-        localStringBuilder.append(((VideoInfo.RichTitleInfo)localObject2).jdField_c_of_type_JavaLangString + " " + ((VideoInfo.RichTitleInfo)localObject2).jdField_a_of_type_JavaLangString);
+        if (localObject2 != null) {
+          localStringBuilder.append(((VideoInfo.RichTitleInfo)localObject2).jdField_c_of_type_JavaLangString + " " + ((VideoInfo.RichTitleInfo)localObject2).jdField_a_of_type_JavaLangString);
+        }
       }
       localStringBuilder.append("]");
     }
-    localStringBuilder.append("videoReportInfo=").append(this.z).append(", ");
-    localStringBuilder.append("avatarJumpUrl=").append(this.A).append(", ");
+    localStringBuilder.append("videoReportInfo=").append(this.y).append(", ");
+    localStringBuilder.append("avatarJumpUrl=").append(this.z).append(", ");
     localStringBuilder.append("dynamicInsertTriggerSec=").append(this.jdField_n_of_type_Int).append(", ");
     localStringBuilder.append("videoLogoUrl=").append(this.u).append(", ");
-    localStringBuilder.append("vIconUrl=").append(this.v).append(", ");
     localStringBuilder.append("followCount=").append(this.jdField_o_of_type_Int).append(", ");
     localStringBuilder.append("isShowStressFollow=").append(this.jdField_k_of_type_Boolean).append(", ");
     localStringBuilder.append("likeActionDownloadBar=").append(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$LikeActionDownloadBar).append(", ");
     localStringBuilder.append("videoColumnInfo=").append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructVideoColumnInfo).append(", ");
     localStringBuilder.append("columnId=").append(this.jdField_g_of_type_Int).append(", ");
     localStringBuilder.append("softAdDownloadBarInfo=").append(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$SoftAdDownloadBarInfo).append(", ");
-    localStringBuilder.append("wechatShareUrl=").append(this.w).append(", ");
+    localStringBuilder.append("wechatShareUrl=").append(this.v).append(", ");
     localStringBuilder.append("]");
     localStringBuilder.append("isUseGif=").append(this.jdField_g_of_type_Boolean).append(", ").append("gifUrl=").append(this.jdField_s_of_type_JavaLangString).append(", ").append("isShowCover=").append(this.jdField_h_of_type_Boolean).append("]");
     localStringBuilder.append("isForbidReprint=").append(this.jdField_l_of_type_Boolean);
@@ -811,6 +825,11 @@ public class VideoInfo
     return null;
   }
   
+  public String toString()
+  {
+    return "VideoInfo{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", coverUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", title='" + this.jdField_c_of_type_JavaLangString + '\'' + ", articleID='" + this.jdField_g_of_type_JavaLangString + '\'' + ", videoUrl='" + this.jdField_r_of_type_JavaLangString + '\'' + ", recommendSeq=" + this.jdField_e_of_type_Long + '}';
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i2 = 1;
@@ -840,7 +859,7 @@ public class VideoInfo
       i1 = 1;
       paramParcel.writeByte((byte)i1);
       if (!this.jdField_b_of_type_Boolean) {
-        break label760;
+        break label767;
       }
       i1 = 1;
       label188:
@@ -849,14 +868,14 @@ public class VideoInfo
       paramParcel.writeString(this.jdField_l_of_type_JavaLangString);
       paramParcel.writeInt(this.jdField_f_of_type_Int);
       paramParcel.writeString(this.jdField_o_of_type_JavaLangString);
-      paramParcel.writeString(this.jdField_p_of_type_JavaLangString);
+      paramParcel.writeString(this.p);
       paramParcel.writeString(this.jdField_q_of_type_JavaLangString);
       paramParcel.writeString(this.jdField_r_of_type_JavaLangString);
       paramParcel.writeLong(this.jdField_d_of_type_Long);
       paramParcel.writeInt(this.jdField_h_of_type_Int);
       paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramInt);
       if (!this.jdField_c_of_type_Boolean) {
-        break label765;
+        break label772;
       }
       i1 = 1;
       label284:
@@ -865,19 +884,19 @@ public class VideoInfo
       paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo, paramInt);
       paramParcel.writeStringList(this.jdField_b_of_type_JavaUtilArrayList);
       if (!this.jdField_d_of_type_Boolean) {
-        break label770;
+        break label777;
       }
       i1 = 1;
       label324:
       paramParcel.writeByte((byte)i1);
       if (!this.jdField_e_of_type_Boolean) {
-        break label775;
+        break label782;
       }
       i1 = 1;
       label339:
       paramParcel.writeByte((byte)i1);
       if (!this.jdField_f_of_type_Boolean) {
-        break label780;
+        break label787;
       }
       i1 = 1;
       label354:
@@ -888,45 +907,45 @@ public class VideoInfo
       paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$InterruptedWeishiAd, paramInt);
       paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$DownloadBarInfo, paramInt);
       paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ECommerceEntranceInfo, paramInt);
-      if (!this.jdField_p_of_type_Boolean) {
-        break label785;
+      if (!this.jdField_s_of_type_Boolean) {
+        break label792;
       }
       i1 = 1;
       label421:
       paramParcel.writeByte((byte)i1);
       paramParcel.writeInt(this.jdField_l_of_type_Int);
       paramParcel.writeLong(this.jdField_f_of_type_Long);
-      paramParcel.writeInt(this.jdField_p_of_type_Int);
       paramParcel.writeInt(this.jdField_q_of_type_Int);
       paramParcel.writeInt(this.jdField_r_of_type_Int);
-      if (!this.jdField_n_of_type_Boolean) {
-        break label790;
+      paramParcel.writeInt(this.jdField_s_of_type_Int);
+      if (!this.jdField_q_of_type_Boolean) {
+        break label797;
       }
       i1 = 1;
       label476:
       paramParcel.writeByte((byte)i1);
-      if (!this.jdField_o_of_type_Boolean) {
-        break label795;
+      if (!this.jdField_r_of_type_Boolean) {
+        break label802;
       }
       i1 = 1;
       label491:
       paramParcel.writeByte((byte)i1);
-      paramParcel.writeInt(this.jdField_s_of_type_Int);
+      paramParcel.writeInt(this.t);
+      paramParcel.writeString(this.w);
       paramParcel.writeString(this.x);
       paramParcel.writeString(this.y);
-      paramParcel.writeString(this.z);
       paramParcel.writeString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsStressFollowLayout$StressState.name());
-      paramParcel.writeString(this.A);
+      paramParcel.writeString(this.z);
       paramParcel.writeLong(this.jdField_e_of_type_Long);
       if (!this.jdField_g_of_type_Boolean) {
-        break label800;
+        break label807;
       }
       i1 = 1;
       label565:
       paramParcel.writeByte((byte)i1);
       paramParcel.writeString(this.jdField_s_of_type_JavaLangString);
       if (!this.jdField_h_of_type_Boolean) {
-        break label805;
+        break label812;
       }
       i1 = 0;
       label588:
@@ -935,13 +954,12 @@ public class VideoInfo
       paramParcel.writeInt(this.jdField_m_of_type_Int);
       paramParcel.writeInt(this.jdField_n_of_type_Int);
       paramParcel.writeString(this.u);
-      paramParcel.writeString(this.v);
       paramParcel.writeInt(this.jdField_o_of_type_Int);
       if (!this.jdField_k_of_type_Boolean) {
-        break label810;
+        break label817;
       }
       i1 = 1;
-      label651:
+      label643:
       paramParcel.writeInt(i1);
       paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$LikeActionDownloadBar, paramInt);
       paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructVideoColumnInfo, paramInt);
@@ -949,39 +967,46 @@ public class VideoInfo
       paramParcel.writeString(this.jdField_m_of_type_JavaLangString);
       paramParcel.writeString(this.jdField_n_of_type_JavaLangString);
       if (!this.jdField_l_of_type_Boolean) {
-        break label815;
+        break label822;
       }
       paramInt = 1;
-      label708:
+      label700:
       paramParcel.writeInt((byte)paramInt);
-      paramParcel.writeString(this.w);
+      paramParcel.writeString(this.v);
       paramParcel.writeInt(this.jdField_g_of_type_Int);
       if (!this.jdField_m_of_type_Boolean) {
-        break label820;
+        break label827;
+      }
+      paramInt = 1;
+      label731:
+      paramParcel.writeByte((byte)paramInt);
+      paramParcel.writeTypedList(this.jdField_d_of_type_JavaUtilArrayList);
+      if (!this.jdField_n_of_type_Boolean) {
+        break label832;
       }
     }
-    label770:
-    label775:
-    label780:
-    label785:
-    label790:
-    label795:
-    label800:
-    label805:
-    label810:
-    label815:
-    label820:
+    label772:
+    label777:
+    label782:
+    label787:
+    label792:
+    label797:
+    label802:
+    label807:
+    label812:
+    label817:
+    label822:
+    label827:
+    label832:
     for (paramInt = i2;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeTypedList(this.jdField_d_of_type_JavaUtilArrayList);
       return;
       i1 = 0;
       break;
-      label760:
+      label767:
       i1 = 0;
       break label188;
-      label765:
       i1 = 0;
       break label284;
       i1 = 0;
@@ -1001,9 +1026,11 @@ public class VideoInfo
       i1 = 1;
       break label588;
       i1 = 0;
-      break label651;
+      break label643;
       paramInt = 0;
-      break label708;
+      break label700;
+      paramInt = 0;
+      break label731;
     }
   }
 }

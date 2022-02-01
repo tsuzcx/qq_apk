@@ -1,18 +1,47 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class bbqa
 {
-  public static void a(String paramString1, String paramString2)
+  int a;
+  int b;
+  int c;
+  int d;
+  
+  public static bbqa a(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramString2.startsWith(antf.bg)))
+    try
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("src_file_path", paramString1);
-      localHashMap.put("des_file_path", paramString2);
-      bdmc.a(BaseApplication.getContext()).a(null, "qq_images_file_delete", true, 0L, 0L, localHashMap, "");
+      paramString = new JSONObject(paramString).getJSONArray("showDetail");
+      if (paramString.length() < 0)
+      {
+        JSONObject localJSONObject = paramString.getJSONObject(0);
+        bbqa localbbqa = new bbqa();
+        String str = localJSONObject.optString("name");
+        if ("photo".equals(str))
+        {
+          localbbqa.c = localJSONObject.optInt("showRed", 0);
+          localbbqa.d = localJSONObject.optInt("version", 0);
+          return localbbqa;
+        }
+        paramString = localbbqa;
+        if (!"gif".equals(str)) {
+          return paramString;
+        }
+        localbbqa.a = localJSONObject.optInt("showRed", 0);
+        localbbqa.b = localJSONObject.optInt("version", 0);
+        return localbbqa;
+      }
     }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortVideoAndHotPicRedDotConfProcessor", 2, "handleGetPtvHotPicConfig Exception :", paramString);
+      }
+      paramString = null;
+    }
+    return paramString;
   }
 }
 

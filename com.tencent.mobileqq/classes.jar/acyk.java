@@ -1,17 +1,29 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class acyk
+class acyk
   implements View.OnClickListener
 {
-  public acyk(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
+  acyk(acyf paramacyf, PicEmoticonInfo paramPicEmoticonInfo) {}
   
   public void onClick(View paramView)
   {
-    GdtVideoImaxFragment.a(this.a);
-    GdtVideoImaxFragment.b(this.a);
+    if ((paramView != null) && ((paramView instanceof ImageView)))
+    {
+      View localView = (View)paramView.getParent();
+      Object localObject = paramView.getTag();
+      String str = EmoticonUtils.emoticonSoundPath.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon.epId).replace("[eId]", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon.eId);
+      if (this.jdField_a_of_type_Acyf.a.a == null) {
+        this.jdField_a_of_type_Acyf.a.a = new acyq(this.jdField_a_of_type_Acyf.a);
+      }
+      this.jdField_a_of_type_Acyf.a.a.a(1, localView, localObject, str);
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

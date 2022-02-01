@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import azhk;
+import axus;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime.Status;
 import mqq.util.WeakReference;
@@ -26,7 +26,7 @@ public final class BatteryBroadcastReceiver
     QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get();
     if ((localQQAppInterface != null) && (localQQAppInterface.getOnlineStatus() == AppRuntime.Status.online) && (localQQAppInterface.getExtOnlineStatus() == 1000L))
     {
-      localQQAppInterface.a(AppRuntime.Status.online, 1000L);
+      localQQAppInterface.updateOnlineStatus(AppRuntime.Status.online, 1000L);
       if (QLog.isColorLevel()) {
         QLog.d("BatteryBroadcastReceiver", 2, "toggleChangeInCharging");
       }
@@ -89,7 +89,7 @@ public final class BatteryBroadcastReceiver
         this.jdField_a_of_type_Int = i;
         paramIntent = new Bundle();
         paramIntent.putInt("KEY_BATTERY", i);
-        paramContext.notifyObservers(azhk.class, 0, true, paramIntent);
+        paramContext.notifyObservers(axus.class, 0, true, paramIntent);
       }
     }
     paramContext.setBatteryCapacity(i);

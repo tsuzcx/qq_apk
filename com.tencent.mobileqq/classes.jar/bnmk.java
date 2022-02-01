@@ -1,289 +1,114 @@
-import NS_QMALL_COVER.AlbumThemeSkin;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.webviewplugin.QZonePassivePraiseJsPlugin.1;
-import java.io.File;
-import java.util.Map;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
+import dov.com.qq.im.capture.view.QIMCommonLoadingView;
 
 public class bnmk
-  extends bnnn
-  implements bngj
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  private bmuu jdField_a_of_type_Bmuu;
-  private String jdField_a_of_type_JavaLangString = "";
+  public int a;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  atic jdField_a_of_type_Atic;
+  public DynamicTextConfigManager.DynamicTextConfigBean a;
+  QIMCommonLoadingView jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView;
+  View jdField_b_of_type_AndroidViewView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  ImageView c;
+  ImageView d;
   
-  private void a(WebViewPlugin paramWebViewPlugin, bioy parambioy, String[] paramArrayOfString)
+  public bnmk(View paramView, atic paramatic)
   {
-    String str;
-    if ((paramArrayOfString != null) && (paramArrayOfString.length > 0) && (paramArrayOfString[0] != null)) {
-      str = "";
+    super(paramView);
+    this.jdField_a_of_type_Atic = paramatic;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365925));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365926));
+    this.c = ((ImageView)paramView.findViewById(2131365928));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365927);
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView = ((QIMCommonLoadingView)paramView.findViewById(2131370292));
+    this.d = ((ImageView)paramView.findViewById(2131368630));
+    paramView.setOnClickListener(this);
+    paramatic = (RelativeLayout.LayoutParams)this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.c.getLayoutParams();
+    paramView = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+    paramatic.width = paramView.width;
+    paramatic.height = paramView.height;
+    paramatic.addRule(10);
+    paramatic.addRule(9);
+    paramatic.addRule(12);
+    paramatic.addRule(11);
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.setLayoutParams(paramatic);
+    localLayoutParams.width = paramView.width;
+    localLayoutParams.height = paramView.height;
+    localLayoutParams.addRule(10);
+    localLayoutParams.addRule(9);
+    localLayoutParams.addRule(12);
+    localLayoutParams.addRule(11);
+    this.c.setLayoutParams(localLayoutParams);
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.getVisibility() != 0) {
+      this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.setVisibility(0);
     }
-    do
-    {
-      for (;;)
-      {
-        try
-        {
-          parambioy = new JSONObject(paramArrayOfString[0]);
-          paramWebViewPlugin = parambioy.getString("zipUrl");
-          parambioy.printStackTrace();
-        }
-        catch (JSONException parambioy)
-        {
-          try
-          {
-            parambioy = parambioy.getString("callback");
-            if ((!TextUtils.isEmpty(paramWebViewPlugin)) && (!TextUtils.isEmpty(parambioy))) {
-              break;
-            }
-            return;
-          }
-          catch (JSONException parambioy)
-          {
-            for (;;)
-            {
-              continue;
-              int i = 0;
-            }
-          }
-          parambioy = parambioy;
-          paramWebViewPlugin = "";
-        }
-        parambioy = str;
-      }
-      paramWebViewPlugin = paramWebViewPlugin.replace("sbig", awyq.a());
-      paramWebViewPlugin = new File(bmur.b(bjtz.d(paramWebViewPlugin)) + awyq.a());
-      if ((!paramWebViewPlugin.exists()) || (!paramWebViewPlugin.isDirectory())) {
-        break;
-      }
-      i = 1;
-    } while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null);
-    paramWebViewPlugin = "window." + parambioy + "({checked:" + i + "})";
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramWebViewPlugin);
-  }
-  
-  private void b()
-  {
-    bngf.a().a().u();
-  }
-  
-  private void b(WebViewPlugin paramWebViewPlugin, bioy parambioy, String[] paramArrayOfString)
-  {
-    parambioy.a().getHandler(bnnh.class).post(new QZonePassivePraiseJsPlugin.1(this, paramArrayOfString));
-  }
-  
-  private void c(WebViewPlugin paramWebViewPlugin, bioy parambioy, String[] paramArrayOfString)
-  {
-    Object localObject;
-    if ((paramArrayOfString != null) && (paramArrayOfString.length > 0) && (paramArrayOfString[0] != null)) {
-      localObject = "";
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.setProgress((int)paramFloat);
+    int i = this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.getMeasuredWidth();
+    int j = this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.getMeasuredHeight();
+    if (QLog.isColorLevel()) {
+      QLog.i("DText", 2, "updateProgress progress is: " + paramFloat + " pos is: " + this.jdField_a_of_type_Int + " width is: " + i + "height is: " + j);
     }
-    label56:
-    do
-    {
-      do
-      {
-        for (;;)
-        {
-          try
-          {
-            parambioy = new JSONObject(paramArrayOfString[0]);
-            paramWebViewPlugin = parambioy.getString("zipUrl");
-            parambioy.printStackTrace();
-          }
-          catch (JSONException parambioy)
-          {
-            try
-            {
-              parambioy = parambioy.getString("callback");
-              if (!TextUtils.isEmpty(parambioy)) {
-                break;
-              }
-              return;
-            }
-            catch (JSONException parambioy)
-            {
-              break label56;
-            }
-            parambioy = parambioy;
-            paramWebViewPlugin = "";
-          }
-          parambioy = (bioy)localObject;
-        }
-        paramArrayOfString = bmur.b(bjtz.d(paramWebViewPlugin.replace("sbig", awyq.a())));
-        localObject = new File(paramArrayOfString);
-      } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
-      this.jdField_a_of_type_Bmuu = new bmuu(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a());
-    } while (!bmuu.a());
-    this.jdField_a_of_type_Bmuu.a(paramWebViewPlugin, paramArrayOfString, true, new bnml(this, parambioy));
   }
   
-  private void d(WebViewPlugin paramWebViewPlugin, bioy parambioy, String[] paramArrayOfString)
+  public void a(boolean paramBoolean)
   {
-    AlbumThemeSkin localAlbumThemeSkin;
-    if ((paramArrayOfString != null) && (paramArrayOfString.length > 0) && (paramArrayOfString[0] != null))
-    {
-      parambioy = "";
-      localAlbumThemeSkin = new AlbumThemeSkin();
-      paramWebViewPlugin = parambioy;
+    if (this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.getVisibility() != 8) {
+      this.jdField_a_of_type_DovComQqImCaptureViewQIMCommonLoadingView.setVisibility(8);
+    }
+    if (paramBoolean) {
+      if (this.d.getVisibility() != 8) {
+        this.d.setVisibility(8);
+      }
     }
     for (;;)
     {
-      try
-      {
-        paramArrayOfString = new JSONObject(paramArrayOfString[0]);
-        paramWebViewPlugin = parambioy;
-        localAlbumThemeSkin.iItemId = paramArrayOfString.getInt("itemId");
-        paramWebViewPlugin = parambioy;
-        if (localAlbumThemeSkin.iItemId != -1) {
-          continue;
-        }
-        paramWebViewPlugin = parambioy;
-        bngf.a().a().a(0L, localAlbumThemeSkin);
+      if (QLog.isColorLevel()) {
+        QLog.i("DText", 2, "finish download pos is: " + this.jdField_a_of_type_Int);
       }
-      catch (JSONException parambioy)
-      {
-        parambioy.printStackTrace();
-        parambioy = paramWebViewPlugin;
-        continue;
-      }
-      if (TextUtils.isEmpty(parambioy)) {}
       return;
-      paramWebViewPlugin = parambioy;
-      localAlbumThemeSkin.strPicZipUrl = paramArrayOfString.getString("zipurl");
-      paramWebViewPlugin = parambioy;
-      localAlbumThemeSkin.iColor = paramArrayOfString.getInt("icolor");
-      paramWebViewPlugin = parambioy;
-      localAlbumThemeSkin.lTabBarSelectedFontColor = paramArrayOfString.getLong("tabBarFontColorSelected");
-      paramWebViewPlugin = parambioy;
-      localAlbumThemeSkin.lTabBarUnselectedFontColor = paramArrayOfString.getLong("tabBarFontColor");
-      paramWebViewPlugin = parambioy;
-      localAlbumThemeSkin.lVideoButonColor = paramArrayOfString.getLong("videoButonColor");
-      paramWebViewPlugin = parambioy;
-      localAlbumThemeSkin.lVideoButtonBgColor = paramArrayOfString.getLong("videoButtonBgColor");
-      paramWebViewPlugin = parambioy;
-      localAlbumThemeSkin.lTabbarUnderLineColor = paramArrayOfString.getLong("tabbarUnderLineColor");
-      paramWebViewPlugin = parambioy;
-      bngf.a().a().a(0L, localAlbumThemeSkin);
-      paramWebViewPlugin = parambioy;
-      paramArrayOfString = paramArrayOfString.getString("callback");
-      parambioy = paramArrayOfString;
-      paramWebViewPlugin = paramArrayOfString;
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null)
-      {
-        paramWebViewPlugin = paramArrayOfString;
-        parambioy = "window." + paramArrayOfString + "({})";
-        paramWebViewPlugin = paramArrayOfString;
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(parambioy);
-        parambioy = paramArrayOfString;
+      if (this.d.getVisibility() != 0) {
+        this.d.setVisibility(0);
       }
     }
   }
   
-  public void a()
+  public void b(boolean paramBoolean)
   {
-    super.a();
-  }
-  
-  public void a(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    super.a(paramIntent, paramByte, paramInt);
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!"Qzone".equals(paramString2)) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
-      return false;
-    }
-    if ("checkAnimationRs".equalsIgnoreCase(paramString3))
-    {
-      a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    if ("downloadAnimationRs".equalsIgnoreCase(paramString3))
-    {
-      bngf.a().a(this);
-      b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    if ("playAnimation".equalsIgnoreCase(paramString3))
-    {
-      c(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    if ("SetAlbumListThemeSkin".equalsIgnoreCase(paramString3))
-    {
-      d(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    if ("hasClickedHighFiveFromLikeList".equalsIgnoreCase(paramString3))
-    {
-      b();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    if (paramLong == 8589934601L)
-    {
-      String str = QzoneConfig.getInstance().getConfig("H5Url", "GiftDetailPage", "https://h5.qzone.qq.com/gift/detail?_wv=2097155&_proxy=1&uin={uin}&ugcid={ugcid}");
-      if (!TextUtils.isEmpty(str))
-      {
-        int i = str.indexOf("?");
-        if (i != -1)
-        {
-          str = str.substring(0, i);
-          if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith(str)) && (this.jdField_a_of_type_Bmuu != null)) {
-            this.jdField_a_of_type_Bmuu.b();
-          }
-        }
+    if (paramBoolean) {
+      if (this.c.getVisibility() != 0) {
+        this.c.setVisibility(0);
       }
     }
-    return super.a(paramString, paramLong, paramMap);
-  }
-  
-  public void onWebEvent(String paramString, Bundle paramBundle)
-  {
-    if ((paramBundle == null) || (!paramBundle.containsKey("data"))) {}
-    for (;;)
-    {
+    while (this.c.getVisibility() == 8) {
       return;
-      paramBundle = paramBundle.getBundle("data");
-      if (paramBundle == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QZoneGiftFullScreenJsPlugin", 2, "call js function,bundle is empty");
-        }
-      }
-      else if ("cmd.downloadPassivePraise".equals(paramString))
-      {
-        int i = paramBundle.getInt("Gift_DownloadProgress_FullScreen");
-        paramString = "-1";
-        if (i > 0) {
-          if (i >= 100) {
-            break label163;
-          }
-        }
-        label163:
-        for (paramString = String.format("%.1f", new Object[] { Double.valueOf(i * 0.01D) }); (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)); paramString = "1")
-        {
-          paramString = "window." + this.jdField_a_of_type_JavaLangString + "({download:" + paramString + "})";
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(paramString);
-          return;
-        }
-      }
     }
+    this.c.setVisibility(8);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((paramView == this.jdField_a_of_type_AndroidViewView) && (this.jdField_a_of_type_Atic != null)) {
+      this.jdField_a_of_type_Atic.a(paramView, getAdapterPosition(), -1);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,12 +1,11 @@
-public class yov
-  extends wip
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
+
+abstract interface yov
 {
-  public int a;
+  public abstract void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener);
   
-  public yov(int paramInt)
-  {
-    this.a = paramInt;
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 

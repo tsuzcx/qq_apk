@@ -1,46 +1,24 @@
-import android.content.Context;
-import android.support.annotation.IdRes;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Handler;
+import android.os.Message;
 
-public class blsy<M>
-  extends RecyclerView.ViewHolder
+class blsy
+  extends Handler
 {
-  private SparseArray<View> a = new SparseArray();
+  private blsy(blsw paramblsw) {}
   
-  public blsy(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramView);
-  }
-  
-  public blsy(ViewGroup paramViewGroup, int paramInt)
-  {
-    super(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false));
-  }
-  
-  protected Context a()
-  {
-    return this.itemView.getContext();
-  }
-  
-  protected <T extends View> T a(@IdRes int paramInt)
-  {
-    View localView2 = (View)this.a.get(paramInt);
-    View localView1 = localView2;
-    if (localView2 == null)
+    switch (paramMessage.what)
     {
-      localView1 = this.itemView.findViewById(paramInt);
-      this.a.put(paramInt, localView1);
+    default: 
+      return;
+    case 1004: 
+    case 1009: 
+      blsw.a(this.a);
+      return;
     }
-    return localView1;
+    this.a.a();
   }
-  
-  public void a(M paramM) {}
-  
-  public void g() {}
 }
 
 

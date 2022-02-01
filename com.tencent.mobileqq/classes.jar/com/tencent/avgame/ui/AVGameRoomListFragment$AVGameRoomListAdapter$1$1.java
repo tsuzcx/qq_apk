@@ -2,40 +2,40 @@ package com.tencent.avgame.ui;
 
 import java.util.ArrayList;
 import java.util.List;
-import mxq;
-import nhb;
-import nhc;
+import myb;
+import nio;
+import nip;
 
 public class AVGameRoomListFragment$AVGameRoomListAdapter$1$1
   implements Runnable
 {
-  public AVGameRoomListFragment$AVGameRoomListAdapter$1$1(nhc paramnhc, mxq parammxq) {}
+  public AVGameRoomListFragment$AVGameRoomListAdapter$1$1(nip paramnip, myb parammyb) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Mxq == null) || (this.jdField_a_of_type_Mxq.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_Mxq.jdField_a_of_type_JavaUtilList == null) || (!nhb.a(this.jdField_a_of_type_Nhc.a).equals(this.jdField_a_of_type_Mxq.jdField_a_of_type_JavaLangString))) {}
-    while ((nhb.a(this.jdField_a_of_type_Nhc.a) > 0) && (this.jdField_a_of_type_Mxq.c == 0) && (this.jdField_a_of_type_Mxq.b <= nhb.a(this.jdField_a_of_type_Nhc.a))) {
+    if ((this.jdField_a_of_type_Myb == null) || (this.jdField_a_of_type_Myb.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_Myb.jdField_a_of_type_JavaUtilList == null) || (!nio.a(this.jdField_a_of_type_Nip.a).equals(this.jdField_a_of_type_Myb.jdField_a_of_type_JavaLangString))) {}
+    while ((nio.a(this.jdField_a_of_type_Nip.a) > 0) && (this.jdField_a_of_type_Myb.c == 0) && (this.jdField_a_of_type_Myb.b <= nio.a(this.jdField_a_of_type_Nip.a))) {
       return;
     }
     Object localObject = new ArrayList();
-    if (nhb.a(this.jdField_a_of_type_Nhc.a) > 0)
+    if (nio.a(this.jdField_a_of_type_Nip.a) > 0)
     {
-      ((List)localObject).addAll(nhb.a(this.jdField_a_of_type_Nhc.a));
-      nhb.a(this.jdField_a_of_type_Nhc.a, (List)localObject, this.jdField_a_of_type_Mxq.jdField_a_of_type_JavaUtilList);
-      nhb.a(this.jdField_a_of_type_Nhc.a, (List)localObject);
-      nhb.a(this.jdField_a_of_type_Nhc.a, this.jdField_a_of_type_Mxq.b);
-      localObject = this.jdField_a_of_type_Nhc.a;
-      if (this.jdField_a_of_type_Mxq.c <= 0) {
+      ((List)localObject).addAll(nio.a(this.jdField_a_of_type_Nip.a));
+      nio.a(this.jdField_a_of_type_Nip.a, (List)localObject, this.jdField_a_of_type_Myb.jdField_a_of_type_JavaUtilList);
+      nio.a(this.jdField_a_of_type_Nip.a, (List)localObject);
+      nio.a(this.jdField_a_of_type_Nip.a, this.jdField_a_of_type_Myb.b);
+      localObject = this.jdField_a_of_type_Nip.a;
+      if (this.jdField_a_of_type_Myb.c <= 0) {
         break label234;
       }
     }
     label234:
     for (boolean bool = true;; bool = false)
     {
-      nhb.a((nhb)localObject, bool);
-      this.jdField_a_of_type_Nhc.a.notifyDataSetChanged();
+      nio.a((nio)localObject, bool);
+      this.jdField_a_of_type_Nip.a.notifyDataSetChanged();
       return;
-      ((List)localObject).addAll(this.jdField_a_of_type_Mxq.jdField_a_of_type_JavaUtilList);
+      ((List)localObject).addAll(this.jdField_a_of_type_Myb.jdField_a_of_type_JavaUtilList);
       break;
     }
   }

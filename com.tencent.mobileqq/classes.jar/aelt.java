@@ -1,77 +1,37 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class aelt
-  extends amoe
+  extends amsu
 {
-  private List<aelq> jdField_a_of_type_JavaUtilList;
+  public aelt(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public aelt(List<aelq> paramList)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    super(paramList, paramList.app, paramList.a, 1, true);
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    Object localObject;
-    if (paramView == null)
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!bftf.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin))) {}
+    String str;
+    do
     {
-      localView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.getLayoutInflater().inflate(2131559097, paramViewGroup, false);
-      paramView = new aelv(null);
-      paramView.c = ((ImageView)localView.findViewById(2131369234));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379958));
-      localView.setTag(paramView);
-      localObject = (aelq)getItem(paramInt);
-      if (localObject != null)
+      return;
+      this.a.c = false;
+      str = ContactUtils.getFriendDisplayName(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
+      if (!TextUtils.isEmpty(str))
       {
-        if ((((aelq)localObject).b != null) && (!"".equals(((aelq)localObject).b.trim()))) {
-          break label176;
-        }
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((aelq)localObject).jdField_a_of_type_JavaLangString);
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick = str;
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
       }
-    }
-    for (;;)
-    {
-      paramView.jdField_a_of_type_JavaLangString = ((aelq)localObject).jdField_a_of_type_JavaLangString;
-      paramView.c.setImageBitmap(a(1, ((aelq)localObject).jdField_a_of_type_JavaLangString));
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (aelv)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-      break;
-      label176:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((aelq)localObject).b);
+    } while (!QLog.isColorLevel());
+    QLog.i("Q.troopinfo", 2, "onUpdateFriendInfo|uin = " + paramString + ", tmpNickName = " + str);
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (bftf.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin))) {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
     }
   }
 }

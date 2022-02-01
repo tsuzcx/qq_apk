@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.view;
 
-import anrh;
-import anri;
+import amly;
+import amlz;
 
 public class ApolloPanel$1$2
   implements Runnable
 {
-  public ApolloPanel$1$2(anri paramanri) {}
+  public ApolloPanel$1$2(amlz paramamlz) {}
   
   public void run()
   {

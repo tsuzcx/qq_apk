@@ -1,21 +1,20 @@
-public class bnft
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+
+final class bnft
+  implements Animation.AnimationListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
+  bnft(View paramView) {}
   
-  public bnft(String paramString1, String paramString2, boolean paramBoolean, int paramInt, String paramString3, String paramString4)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.c = paramString3;
-    this.d = paramString4;
+    this.a.setAnimation(null);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

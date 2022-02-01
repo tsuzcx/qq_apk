@@ -1,54 +1,52 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import java.lang.ref.WeakReference;
 
-public class rsw
-  extends MSFServlet
+class rsw
+  extends OrientationEventListener
 {
-  public String[] getPreferSSOCommands()
+  rsw(rsv paramrsv, Context paramContext, WeakReference paramWeakReference)
   {
-    return null;
+    super(paramContext);
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void onOrientationChanged(int paramInt)
   {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    if (!rsv.a(this.jdField_a_of_type_Rsv, paramInt)) {
+      break label11;
     }
+    label11:
+    label159:
     for (;;)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("VideoFeedsServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
-      }
-      ((VideoFeedsAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
       return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
+      if (!(this.jdField_a_of_type_Rsv.a() instanceof SplashActivity))
       {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
+        int i = rsv.a(this.jdField_a_of_type_Rsv);
+        if (((paramInt >= 0) && (paramInt <= 30)) || (paramInt > 330)) {
+          paramInt = 1;
         }
-        if (QLog.isDevelopLevel()) {
-          QLog.i("VideoFeedsServlet", 4, "send: " + paramIntent.getServiceCmd());
+        for (;;)
+        {
+          if (paramInt == rsv.a(this.jdField_a_of_type_Rsv)) {
+            break label159;
+          }
+          rsv.a(this.jdField_a_of_type_Rsv, paramInt);
+          if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+            break;
+          }
+          ((rsx)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramInt);
+          return;
+          if ((paramInt > 70) && (paramInt <= 110)) {
+            paramInt = 8;
+          } else if ((paramInt > 150) && (paramInt <= 210)) {
+            paramInt = 9;
+          } else if ((paramInt > 250) && (paramInt <= 290)) {
+            paramInt = 0;
+          } else {
+            paramInt = i;
+          }
         }
       }
     }

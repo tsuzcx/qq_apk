@@ -1,45 +1,88 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewConfiguration;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.resourcesgrab.ResourceGrabView;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bbds
-  implements View.OnTouchListener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int = 0;
-  float b = 0.0F;
+  private int jdField_a_of_type_Int = 1;
+  private String jdField_a_of_type_JavaLangString = "";
+  private String b = "";
   
-  public bbds(ResourceGrabView paramResourceGrabView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static String a(int paramInt, boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    switch (paramMotionEvent.getAction())
+    int i = 1;
+    try
     {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("entry", paramInt);
+      if (paramBoolean1)
+      {
+        paramInt = 1;
+        localJSONObject.put("match", paramInt);
+        localJSONObject.put("keyword", paramString);
+        if (!paramBoolean2) {
+          break label74;
+        }
+      }
+      label74:
+      for (paramInt = i;; paramInt = 0)
+      {
+        localJSONObject.put("nightmode", paramInt);
+        paramString = localJSONObject.toString();
+        return paramString;
+        paramInt = 0;
+        break;
+      }
+      return null;
     }
-    for (;;)
+    catch (JSONException paramString)
     {
-      return true;
-      ResourceGrabView.a(this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabView, System.currentTimeMillis());
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.b = paramMotionEvent.getY();
-      this.jdField_a_of_type_Int = ResourceGrabView.a(this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabView).y;
-      continue;
-      float f1 = paramMotionEvent.getY();
-      paramView = ResourceGrabView.a(this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabView);
-      float f2 = paramView.y;
-      paramView.y = ((int)((f1 - this.b) / 3.0F + f2));
-      ResourceGrabView.a(this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabView).updateViewLayout(this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabView, ResourceGrabView.a(this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabView));
-      continue;
-      int i = ResourceGrabView.a(this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabView).y;
-      int j = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
-      if ((Math.abs(i - this.jdField_a_of_type_Int) <= j) && (System.currentTimeMillis() - ResourceGrabView.a(this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabView) >= 500L)) {
-        this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabView.a();
+      QLog.e("RichMetaData", 2, "setLayout101ExtraData exception:" + paramString);
+    }
+  }
+  
+  public String a()
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    try
+    {
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("serverdata", new JSONObject(this.jdField_a_of_type_JavaLangString));
+      localJSONObject2.put("state", this.jdField_a_of_type_Int);
+      if (!TextUtils.isEmpty(this.b)) {
+        localJSONObject2.put("extradata", new JSONObject(this.b));
+      }
+      localJSONObject1.put("data", localJSONObject2);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("RichMetaData", 2, "convertMetaData exception : " + localJSONException);
       }
     }
+    return localJSONObject1.toString();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Int = 1;
+      return;
+    }
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void b(String paramString)
+  {
+    this.b = paramString;
   }
 }
 

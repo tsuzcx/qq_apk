@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.utils;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bisp;
+import bgyr;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -19,9 +19,9 @@ final class TroopApplicationListUtil$4
   
   public void handleMessage(Message paramMessage)
   {
-    if ((paramMessage.obj instanceof bisp))
+    if ((paramMessage.obj instanceof bgyr))
     {
-      paramMessage = (bisp)paramMessage.obj;
+      paramMessage = (bgyr)paramMessage.obj;
       if (paramMessage.c == 0)
       {
         try
@@ -30,7 +30,7 @@ final class TroopApplicationListUtil$4
           {
             QLog.d("TroopApplicationListUtil", 1, new Object[] { "handleMessage cgiState.htmlBody: ", paramMessage.d });
             int i = new JSONObject(paramMessage.d).optInt("ec", -1);
-            TroopApplicationListUtil.access$000(i);
+            TroopApplicationListUtil.showToast(i);
             paramMessage = new JSONObject();
             if ((i == 0) || (i == 41012))
             {
@@ -39,7 +39,7 @@ final class TroopApplicationListUtil$4
             }
             for (;;)
             {
-              TroopApplicationListUtil.access$100(i, this.val$groupUin, this.val$appId);
+              TroopApplicationListUtil.access$000(i, this.val$groupUin, this.val$appId);
               return;
               paramMessage.put("errorCode", i);
               this.val$jsPluginEngine.callbackJsEventFail(this.val$jsPluginParam.jsRuntime, this.val$jsPluginParam.event, paramMessage, this.val$jsPluginParam.callbackId);

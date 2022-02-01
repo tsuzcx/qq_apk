@@ -1,17 +1,14 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 class ahkj
-  extends ahkx
+  implements DialogInterface.OnCancelListener
 {
-  ahkj(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahkj(ahiu paramahiu) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    return new ahdf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    this.a.finish();
   }
 }
 

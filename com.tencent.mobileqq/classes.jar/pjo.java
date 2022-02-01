@@ -1,16 +1,13 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
 
-public class pjo
-  implements pks
+class pjo
+  implements rgr<DynamicChannelDataModel>
 {
-  public pjo(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  pjo(pjn parampjn, long paramLong) {}
   
-  public void a()
+  public boolean a(DynamicChannelDataModel paramDynamicChannelDataModel)
   {
-    ozs.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), oyu.r);
-    ocd.a(null, "CliOper", "", "", "0X8008E3C", "0X8008E3C", 0, 0, "", "", "", ozs.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), "8.4.5".replace("", ""), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()), false);
+    return paramDynamicChannelDataModel.recommendSeq > this.jdField_a_of_type_Long;
   }
 }
 

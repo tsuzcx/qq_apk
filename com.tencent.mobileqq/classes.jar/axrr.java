@@ -1,195 +1,353 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.RemoteException;
-import android.provider.Settings.Secure;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import android.widget.Button;
+import android.widget.PopupMenu;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class axrr
-  implements View.OnClickListener
 {
-  private blir a;
+  static final String jdField_a_of_type_JavaLangString = anzv.jdField_a_of_type_JavaLangString + "_Res";
+  long jdField_a_of_type_Long = 0L;
+  private anzl jdField_a_of_type_Anzl;
+  private anzu jdField_a_of_type_Anzu;
+  private axrw jdField_a_of_type_Axrw;
+  private bbte jdField_a_of_type_Bbte;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private ScanTorchActivity jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity;
+  private boolean jdField_a_of_type_Boolean;
+  int[] jdField_a_of_type_ArrayOfInt = { 100, 100, 100, 100, 100 };
   
-  public axrr(MusicPlayerActivity paramMusicPlayerActivity) {}
-  
-  public void onClick(View paramView)
+  public axrr(ScanTorchActivity paramScanTorchActivity)
   {
-    Object localObject5 = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity);
-    switch (paramView.getId())
+    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity = paramScanTorchActivity;
+  }
+  
+  private void a(AppInterface paramAppInterface, anzl paramanzl)
+  {
+    if ((paramanzl != null) && ((!paramanzl.jdField_a_of_type_Boolean) || (paramanzl.a() != null)))
     {
+      this.jdField_a_of_type_Anzl = paramanzl;
+      d(paramAppInterface);
+      anzv.a(paramAppInterface).a(paramAppInterface, paramanzl.jdField_a_of_type_JavaLangString);
+      a(paramAppInterface, this.jdField_a_of_type_Axrw.c());
+      return;
     }
+    a("onGetTransferDoorConfig", paramAppInterface, true);
+  }
+  
+  private void a(AppInterface paramAppInterface, boolean paramBoolean)
+  {
+    boolean bool = a(paramAppInterface);
+    if (this.jdField_a_of_type_ArrayOfInt[0] == 100) {
+      a("tryDownload", paramAppInterface);
+    }
+    if (bool)
+    {
+      a("tryDownload", paramAppInterface, false);
+      return;
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    a("tryDownload", true);
+  }
+  
+  private void a(String paramString, AppInterface paramAppInterface)
+  {
+    boolean bool1 = false;
+    if (d()) {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "checkEntryRes, scanTorchActivity为空");
+    }
+    boolean bool2;
+    do
+    {
+      return;
+      paramAppInterface = a();
+      if (paramAppInterface == null)
+      {
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "checkEntryRes, promotion为空");
+        return;
+      }
+      bool2 = this.jdField_a_of_type_Axrw.b();
+      if (this.jdField_a_of_type_ArrayOfInt[0] == 100) {
+        bool1 = true;
+      }
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "checkEntryRes, from[" + paramString + "], isReadyShowEntry[" + bool2 + "], isEntryReady[" + bool1 + "], promotionItem[" + paramAppInterface + "]");
+    } while ((!bool2) || (!bool1));
+    this.jdField_a_of_type_Axrw.a(paramAppInterface);
+  }
+  
+  private void a(String paramString, AppInterface paramAppInterface, boolean paramBoolean)
+  {
+    if (d()) {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "checkAllRes, scanTorchActivity为空, from[" + paramString + "], notify[" + paramBoolean + "]");
+    }
+    do
+    {
+      return;
+      paramAppInterface = a();
+      if (paramAppInterface != null) {
+        break;
+      }
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "checkAllRes, promotionItem为空, from[" + paramString + "], notify[" + paramBoolean + "]");
+    } while (!paramBoolean);
+    this.jdField_a_of_type_Axrw.a(paramAppInterface, false);
+    return;
+    a("checkAllRes", true);
+    if (a())
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "checkAllRes, 还在下载中, from[" + paramString + "], notify[" + paramBoolean + "]");
+      return;
+    }
+    if (b())
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "checkAllRes, 下载失败, from[" + paramString + "], notify[" + paramBoolean + "]");
+      this.jdField_a_of_type_Axrw.a(paramAppInterface, false);
+      return;
+    }
+    if (!this.jdField_a_of_type_Axrw.a())
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "checkAllRes, ArEngine未准备好, from[" + paramString + "], notify[" + paramBoolean + "]");
+      return;
+    }
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "checkAllRes, all ready, from[" + paramString + "], notify[" + paramBoolean + "]");
+    a();
+    this.jdField_a_of_type_Axrw.a(paramAppInterface, true);
+  }
+  
+  private void a(String paramString, boolean paramBoolean)
+  {
+    if (d()) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Long == 0L)
+      {
+        this.jdField_a_of_type_Long = (System.currentTimeMillis() + 1500L);
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "showDownloadProgress, 忽略1, from[" + paramString + "], progress[" + paramBoolean + "]");
+        return;
+      }
+      if (this.jdField_a_of_type_Long > System.currentTimeMillis())
+      {
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "showDownloadProgress, 忽略2, from[" + paramString + "], progress[" + paramBoolean + "]");
+        return;
+      }
+    } while ((!paramBoolean) || (!c()));
+    this.jdField_a_of_type_Axrw.a("PromotionRes_" + paramString, 0);
+  }
+  
+  private boolean d()
+  {
+    return (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.c);
+  }
+  
+  public int a()
+  {
+    int i = 0;
+    int j = 0;
+    while (i < this.jdField_a_of_type_ArrayOfInt.length)
+    {
+      j += this.jdField_a_of_type_ArrayOfInt[i];
+      i += 1;
+    }
+    return j / this.jdField_a_of_type_ArrayOfInt.length;
+  }
+  
+  public anzl a()
+  {
+    return this.jdField_a_of_type_Anzl;
+  }
+  
+  void a()
+  {
+    if (AudioHelper.a(5) != 1) {}
+    Button localButton;
+    do
+    {
+      return;
+      localButton = (Button)this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.findViewById(2131365337);
+      localButton.setVisibility(0);
+    } while (localButton.getTag() != null);
+    localButton.setTag(new Object());
+    localButton.setOnClickListener(new axrv(this));
+  }
+  
+  public void a(axrw paramaxrw)
+  {
+    this.jdField_a_of_type_Axrw = paramaxrw;
+  }
+  
+  public void a(AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+  }
+  
+  public void a(AppInterface paramAppInterface, PopupMenu paramPopupMenu) {}
+  
+  public void a(AppInterface paramAppInterface, String paramString)
+  {
+    if (this.jdField_a_of_type_Axrw.c())
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "getRes,  需要显示穿越门进度条");
+      this.jdField_a_of_type_Boolean = true;
+    }
+    QLog.d(jdField_a_of_type_JavaLangString, 1, "getRes, activityID[" + paramString + "], TotalProgress[" + a() + "]");
+    anzv.a(paramAppInterface).a(paramAppInterface, new axrs(this, paramString, paramAppInterface));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    int i = 0;
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.finish();
-      continue;
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X800682A", "0X800682A", 0, 0, "", "", "", "");
-      Object localObject4 = paramView.getTag();
-      Object localObject1 = paramView.getContext();
-      if ((!(localObject4 instanceof axsa)) || (localObject1 == null)) {
-        continue;
-      }
-      localObject4 = (axsa)localObject4;
-      localObject5 = new ArrayList();
-      int i = 0;
-      while (i <= 3)
+      boolean bool1 = bool2;
+      if (i < this.jdField_a_of_type_ArrayOfInt.length)
       {
-        ((List)localObject5).add(bljf.a(i));
+        if ((this.jdField_a_of_type_ArrayOfInt[i] >= 0) && (this.jdField_a_of_type_ArrayOfInt[i] <= 99))
+        {
+          QLog.w(jdField_a_of_type_JavaLangString, 1, "isDownloading, index[" + i + "], Progress[" + this.jdField_a_of_type_ArrayOfInt[i] + "]");
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  public boolean a(AppInterface paramAppInterface)
+  {
+    Object localObject1 = a();
+    if (localObject1 == null)
+    {
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "isResReady no promotion Item so reay");
+      return true;
+    }
+    localObject1 = ((anzl)localObject1).a();
+    int i = ((TreeMap)localObject1).size();
+    Object localObject2;
+    if (i + 1 > this.jdField_a_of_type_ArrayOfInt.length)
+    {
+      localObject2 = "checkRes, zip数目不对, itemCount[" + i + "]";
+      QLog.w(jdField_a_of_type_JavaLangString, 1, (String)localObject2);
+      if (AudioHelper.e()) {
+        throw new IllegalStateException((String)localObject2);
+      }
+    }
+    localObject1 = ((TreeMap)localObject1).entrySet().iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (anzm)((Map.Entry)((Iterator)localObject1).next()).getValue();
+      if (anzs.a(paramAppInterface.getCurrentAccountUin(), (anzm)localObject2)) {
+        this.jdField_a_of_type_ArrayOfInt[localObject2.a] = 100;
+      } else {
+        this.jdField_a_of_type_ArrayOfInt[localObject2.a] = 0;
+      }
+    }
+    if (bbvp.b())
+    {
+      this.jdField_a_of_type_ArrayOfInt[3] = 100;
+      int j = a();
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "checkRes, itemCount[" + i + "], Progress0[" + this.jdField_a_of_type_ArrayOfInt[0] + "], Progress1[" + this.jdField_a_of_type_ArrayOfInt[1] + "], Progress2[" + this.jdField_a_of_type_ArrayOfInt[2] + "], Progress3[" + this.jdField_a_of_type_ArrayOfInt[3] + "], TotalProgress[" + j + "]");
+      if (j != 100) {
+        break label324;
+      }
+    }
+    label324:
+    for (boolean bool = true;; bool = false)
+    {
+      return bool;
+      this.jdField_a_of_type_ArrayOfInt[3] = 0;
+      break;
+    }
+  }
+  
+  public void b(AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity = null;
+    if (this.jdField_a_of_type_Anzu != null)
+    {
+      anzv.a(paramAppInterface).b(this.jdField_a_of_type_Anzu);
+      this.jdField_a_of_type_Anzu = null;
+    }
+    if (this.jdField_a_of_type_Bbte != null) {
+      bbtd.a().a(false, this.jdField_a_of_type_Bbte);
+    }
+    this.jdField_a_of_type_Anzl = null;
+  }
+  
+  public boolean b()
+  {
+    if (a()) {}
+    for (;;)
+    {
+      return false;
+      int i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfInt.length)
+      {
+        if (this.jdField_a_of_type_ArrayOfInt[i] < 0)
+        {
+          QLog.w(jdField_a_of_type_JavaLangString, 1, "isDownloadError, index[" + i + "], errCode[" + this.jdField_a_of_type_ArrayOfInt[i] + "]");
+          return true;
+        }
         i += 1;
       }
-      Object localObject6 = new bljf((Context)localObject1);
-      ((bljf)localObject6).a((List)localObject5);
-      this.jdField_a_of_type_Blir = bljf.a((Context)localObject1, (bljf)localObject6, new axrs(this, (axsa)localObject4), null, null, true);
-      this.jdField_a_of_type_Blir.show();
-      continue;
-      if (localObject5 == null) {
-        continue;
-      }
-      localObject1 = Settings.Secure.getString(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.getContentResolver(), "android_id");
-      try
-      {
-        localObject4 = ((axqs)localObject5).a();
-        if (localObject4 == null) {
-          continue;
-        }
-        localObject4 = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, (SongInfo)localObject4);
-        if (!MusicPlayerActivity.a().containsKey(localObject4)) {
-          continue;
-        }
-        localObject5 = paramView.getTag();
-        if (!paramView.isSelected()) {
-          break label420;
-        }
-        bdll.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X8006829", "0X8006829", 0, 0, "", "", "", "");
-        MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity).a((String)localObject1, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app.getLongAccountUin(), ((Long)MusicPlayerActivity.a().get(localObject4)).longValue(), false);
-        paramView.setSelected(false);
-        MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity).setImageResource(2130841308);
-        if (!(localObject5 instanceof Integer)) {
-          continue;
-        }
-        i = ((Integer)localObject5).intValue();
-        MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, 2130841308, i);
-      }
-      catch (RemoteException localRemoteException1)
-      {
-        QLog.e("MusicPlayerActivity", 1, "add favourite RemoteException ", localRemoteException1);
-      }
-      continue;
-      label420:
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X8006828", "0X8006828", 0, 0, "", "", "", "");
-      MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity).a(localRemoteException1, this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app.getLongAccountUin(), ((Long)MusicPlayerActivity.a().get(localObject4)).longValue(), true);
-      paramView.setSelected(true);
-      MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity).setImageResource(2130841307);
-      if (!(localObject5 instanceof Integer)) {
-        continue;
-      }
-      i = ((Integer)localObject5).intValue();
-      MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, 2130841307, i);
-      continue;
-      if (localObject5 == null) {
-        continue;
-      }
-      try
-      {
-        switch (((axqs)localObject5).a())
-        {
-        case 2: 
-          localObject4 = ((axqs)localObject5).a();
-          if ((localObject4 == null) || (localObject4.length <= 0)) {
-            continue;
-          }
-          i = ((axqs)localObject5).g();
-          if (i >= 0) {
-            if (i < localObject4.length) {}
-          }
-          break;
-        case 3: 
-        default: 
-          for (;;)
-          {
-            for (;;)
-            {
-              label568:
-              localObject6 = ((axqs)localObject5).a();
-              if (TextUtils.isEmpty((CharSequence)localObject6)) {
-                break;
-              }
-              ((axqs)localObject5).a((String)localObject6, (SongInfo[])localObject4, i);
-              if (localRemoteException1 == null) {
-                break;
-              }
-              localObject4 = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, localRemoteException1);
-              if (!MusicPlayerActivity.b().containsKey(localObject4)) {
-                break;
-              }
-              localObject4 = (axsb)MusicPlayerActivity.b().get(localObject4);
-              Object localObject2 = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, (axqs)localObject5, localRemoteException1, ((axsb)localObject4).a);
-              MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, (axsb)localObject4, (String)localObject2);
-              break;
-              ((axqs)localObject5).a();
-              break;
-              ((axqs)localObject5).b();
-              break;
-              bdll.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X800682B", "0X800682B", 0, 0, "", "", "", "");
-              if (axsd.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, "com.tencent.qqmusic"))
-              {
-                localObject4 = null;
-                localObject2 = localObject4;
-                if (localObject5 != null) {}
-                try
-                {
-                  localObject2 = ((axqs)localObject5).a();
-                  if (localObject2 == null) {
-                    break;
-                  }
-                  localObject2 = MusicPlayerActivity.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, (SongInfo)localObject2);
-                  if (!MusicPlayerActivity.a().containsKey(localObject2)) {
-                    break;
-                  }
-                  localObject2 = new Intent("android.intent.action.VIEW", Uri.parse(String.format("androidqqmusic://form=webpage&mid=23&k1=0&k2=%s&download=1&action=download", new Object[] { String.valueOf(MusicPlayerActivity.a().get(localObject2)) })));
-                  ((Intent)localObject2).putExtra("big_brother_source_key", "biz_src_qqmusic");
-                  this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.startActivity((Intent)localObject2);
-                  bdll.b(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.app, "CliOper", "", "", "0X800682C", "0X800682C", 0, 0, "", "", "", "");
-                }
-                catch (RemoteException localRemoteException2)
-                {
-                  for (;;)
-                  {
-                    QLog.e("MusicPlayerActivity", 1, "music player activity RemoteException ", localRemoteException2);
-                    localObject3 = localObject4;
-                  }
-                }
-              }
-            }
-            Object localObject3 = (blir)blji.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity, null);
-            ((blir)localObject3).a(2131693906);
-            ((blir)localObject3).a(2131693908, 2);
-            ((blir)localObject3).c(2131693905);
-            ((blir)localObject3).a(new axrt(this, paramView, (blir)localObject3));
-            ((blir)localObject3).show();
-            break;
-            localObject3 = null;
-            continue;
-            break label568;
-            localObject3 = localObject4[0];
-            i = 0;
-          }
-        }
-      }
-      catch (RemoteException localRemoteException3) {}
     }
+  }
+  
+  public void c(AppInterface paramAppInterface)
+  {
+    anzl localanzl = a();
+    boolean bool2 = a();
+    boolean bool1 = false;
+    if (!bool2) {
+      bool1 = b();
+    }
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "reTry, promotionItem[" + localanzl + "], isDownloading[" + bool2 + "], isDownloadError[" + bool1 + "], needShowDownloadProgress[" + this.jdField_a_of_type_Boolean + "], TotalProgress[" + a() + "]");
+    this.jdField_a_of_type_Boolean = true;
+    if (localanzl == null) {}
+    while (bool2) {
+      return;
+    }
+    anzv.a(paramAppInterface).a(paramAppInterface, localanzl.jdField_a_of_type_JavaLangString);
+    a(paramAppInterface, this.jdField_a_of_type_Axrw.c());
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  void d(AppInterface paramAppInterface)
+  {
+    if (this.jdField_a_of_type_Anzu != null) {
+      return;
+    }
+    this.jdField_a_of_type_Bbte = new axrt(this, paramAppInterface);
+    bbtd.a().a(true, this.jdField_a_of_type_Bbte);
+    this.jdField_a_of_type_Anzu = new axru(this, paramAppInterface);
+    anzv.a(paramAppInterface).a(this.jdField_a_of_type_Anzu);
+  }
+  
+  public void e(AppInterface paramAppInterface)
+  {
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "onAREngineReady");
+    a("onAREngineReady", paramAppInterface, false);
+  }
+  
+  public void f(AppInterface paramAppInterface)
+  {
+    a("onAREngineReady", paramAppInterface);
   }
 }
 

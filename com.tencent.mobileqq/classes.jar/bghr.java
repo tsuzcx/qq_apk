@@ -1,78 +1,51 @@
 import android.content.Context;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.URLThemeImageView;
+import com.tencent.theme.TextHook;
 
-public abstract class bghr
-  implements bghu
+final class bghr
+  extends bbyo
 {
-  protected int a;
-  protected Context a;
-  protected SessionInfo a;
-  protected QQAppInterface a;
-  protected final String a;
-  
-  public bghr(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = ("Navigate." + getClass().getSimpleName());
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-  }
-  
-  protected int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @DrawableRes
-  public int a(int paramInt)
-  {
-    return 0;
-  }
-  
-  public bghr a(int paramInt)
-  {
-    return this;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView, String paramString) {}
-  
-  public void a(int paramInt1, bfpe parambfpe, String paramString, int paramInt2, TextView paramTextView1, TextView paramTextView2, long paramLong) {}
-  
-  public boolean a(int paramInt)
-  {
-    return true;
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    return true;
-  }
-  
-  public boolean a(int paramInt, URLThemeImageView paramURLThemeImageView, String paramString)
-  {
-    return false;
-  }
-  
-  protected boolean a(@NonNull MessageRecord paramMessageRecord, long paramLong1, long paramLong2)
-  {
-    if ((paramMessageRecord.shmsgseq <= paramLong2) && (QLog.isColorLevel())) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkShMsgSeqCanShow, shMsgSeq = " + paramMessageRecord.shmsgseq + ", firstMsgSeq = " + paramLong1 + ", lastReadSeq = " + paramLong2);
+    paramInt = 0;
+    Object localObject1;
+    if (paramBoolean1)
+    {
+      localObject1 = BaseApplicationImpl.getApplication().getApplicationContext();
+      if (!bbyp.b()) {
+        break label48;
+      }
+      localObject2 = TextHook.getFontPath((Context)localObject1);
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        bghq.a((Context)localObject1, (String)localObject2);
+        bghq.a(false);
+      }
     }
-    return (paramMessageRecord.shmsgseq < paramLong1) && (paramMessageRecord.shmsgseq > paramLong2);
+    label48:
+    do
+    {
+      return;
+      localObject1 = bghq.a((Context)localObject1);
+    } while (TextUtils.isEmpty((CharSequence)localObject1));
+    Object localObject2 = aszt.a((String)localObject1).split("\\.");
+    try
+    {
+      int i = Integer.parseInt(localObject2[0]);
+      if (localObject2.length > 2) {
+        paramInt = Integer.parseInt(localObject2[1]);
+      }
+      bghq.b(i, paramInt);
+      return;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      QLog.e("ThemeFontAdapter", 1, "switchFont  prePath:" + (String)localObject1, localNumberFormatException);
+      localNumberFormatException.printStackTrace();
+    }
   }
-  
-  public void b() {}
 }
 
 

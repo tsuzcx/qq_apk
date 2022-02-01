@@ -1,311 +1,527 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.together.writetogether.data.EditUserHistory;
-import com.tencent.mobileqq.together.writetogether.data.OpenDocParam;
+import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
+import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
+import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
+import com.tencent.mobileqq.troop.homework.recite.ui.PinyinTextView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Iterator;
 import java.util.List;
-import mqq.app.AppRuntime;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0xe89.oidb_cmd0xe89.Atext;
-import tencent.im.oidb.cmd0xe89.oidb_cmd0xe89.EditUinInfo;
-import tencent.im.oidb.cmd0xe89.oidb_cmd0xe89.RspGetDocContent;
 
 public class bemv
 {
-  public static int a()
-  {
-    int j = b().getInt("KEY_WRITE_TOGETHER_WORD_LIMIT_", 0);
-    int i = j;
-    if (j == 0) {
-      i = 10000;
-    }
-    return i;
-  }
+  double jdField_a_of_type_Double = -1.0D;
+  protected int a;
+  protected Handler a;
+  protected HandlerThread a;
+  protected bemx a;
+  protected bemy a;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
+  protected ArticleInfo a;
+  WordInfo jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo = null;
+  String jdField_a_of_type_JavaLangString;
+  protected ArrayList<WordInfo> a;
+  protected List<String> a;
+  protected boolean a;
+  protected int b;
+  boolean b;
+  protected int c;
+  int d = 0;
+  int e = 0;
+  int f = -1;
+  int g = 0;
+  int h = 0;
   
-  public static int a(int paramInt)
+  public bemv(ArticleInfo paramArticleInfo, bemy parambemy, QQAppInterface paramQQAppInterface, String paramString)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(2);
+    this.jdField_a_of_type_AndroidOsHandler = new bemw(this, Looper.getMainLooper());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52));
+    int i = 0;
+    while (i < this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.size())
     {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
-    case 3: 
-      return 3;
-    case 5: 
-      return 4;
-    case 7: 
-      return 5;
-    case 4: 
-      return 6;
-    case 8: 
-      return 7;
+      ((ParagraphInfo)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.get(i)).resetWordsReciteStatus();
+      i += 1;
     }
-    return 8;
+    this.jdField_a_of_type_Bemy = parambemy;
+    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("ReciteDetectHandlerThread");
+    this.jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.jdField_a_of_type_Bemx = new bemx(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public static int a(QQAppInterface paramQQAppInterface, String paramString)
+  protected WordInfo a()
   {
-    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(52)).b(paramString);
-    if (paramQQAppInterface == null) {
-      return 0;
-    }
-    return (int)paramQQAppInterface.dwGroupClassExt;
-  }
-  
-  public static aamq a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
-  {
-    paramString1 = new aamq();
-    paramString1.jdField_a_of_type_JavaLangString = "android";
-    paramString1.jdField_b_of_type_JavaLangString = AppSetting.f();
-    paramString1.jdField_c_of_type_JavaLangString = "1";
-    paramString1.jdField_e_of_type_JavaLangString = "KQQ";
-    paramString1.f = "2400002";
-    paramString1.h = "25043";
-    paramString1.g = "write_togethe";
-    paramString1.j = ("group_id:" + paramString2 + "|doc_id:" + paramString3 + "|base_version:" + paramInt);
-    paramString1.s = paramString2;
-    paramString1.jdField_d_of_type_JavaLangString = paramString4;
-    return paramString1;
-  }
-  
-  public static benw a(String paramString)
-  {
-    benw localbenw = new benw();
-    try
+    for (;;)
     {
-      paramString = new JSONObject(paramString);
-      localbenw.jdField_a_of_type_JavaLangString = paramString.optString("creatorId");
-      localbenw.jdField_a_of_type_Long = paramString.optLong("mtime");
-      localbenw.jdField_b_of_type_JavaLangString = paramString.optString("padId");
-      return localbenw;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("WriteTogetherUtils", 4, "[parseMetaDataFromJson] parse json error", paramString);
-    }
-    return localbenw;
-  }
-  
-  public static OpenDocParam a(oidb_cmd0xe89.RspGetDocContent paramRspGetDocContent)
-  {
-    OpenDocParam localOpenDocParam = new OpenDocParam();
-    localOpenDocParam.f = paramRspGetDocContent.bytes_global_padid.get().toStringUtf8();
-    localOpenDocParam.jdField_a_of_type_Int = paramRspGetDocContent.uint32_doc_type.get();
-    localOpenDocParam.g = paramRspGetDocContent.bytes_title.get().toStringUtf8();
-    oidb_cmd0xe89.Atext localAtext = (oidb_cmd0xe89.Atext)paramRspGetDocContent.msg_atext.get(0);
-    localOpenDocParam.jdField_d_of_type_JavaLangString = localAtext.bytes_name.get().toStringUtf8();
-    localOpenDocParam.jdField_e_of_type_JavaLangString = localAtext.bytes_subid.get().toStringUtf8();
-    localOpenDocParam.jdField_a_of_type_JavaLangString = localAtext.bytes_text.get().toStringUtf8();
-    localOpenDocParam.jdField_b_of_type_JavaLangString = localAtext.bytes_attribs.get().toStringUtf8();
-    localOpenDocParam.jdField_c_of_type_JavaLangString = localAtext.bytes_apool.get().toStringUtf8();
-    localOpenDocParam.h = paramRspGetDocContent.bytes_subid.get().toStringUtf8();
-    localOpenDocParam.jdField_b_of_type_Int = paramRspGetDocContent.uint32_baseRev.get();
-    localOpenDocParam.jdField_c_of_type_Int = paramRspGetDocContent.uint32_baseLen.get();
-    localOpenDocParam.i = paramRspGetDocContent.bytes_meta.get().toStringUtf8();
-    localOpenDocParam.jdField_d_of_type_Int = paramRspGetDocContent.uint32_sheetPosLen.get();
-    localOpenDocParam.j = paramRspGetDocContent.bytes_owner_appid.get().toStringUtf8();
-    localOpenDocParam.jdField_a_of_type_Long = paramRspGetDocContent.uint64_baseLen.get();
-    localOpenDocParam.jdField_b_of_type_Long = paramRspGetDocContent.uint64_sheetPosLen.get();
-    localOpenDocParam.jdField_a_of_type_JavaUtilList = a(paramRspGetDocContent.rpt_edit_uin_list.get());
-    localOpenDocParam.jdField_c_of_type_Long = paramRspGetDocContent.uint64_owner_uin.get();
-    if (paramRspGetDocContent.uint32_max_len.has()) {}
-    for (int i = paramRspGetDocContent.uint32_max_len.get();; i = 10000)
-    {
-      localOpenDocParam.jdField_e_of_type_Int = i;
-      if (localOpenDocParam.jdField_e_of_type_Int <= 0) {
-        localOpenDocParam.jdField_e_of_type_Int = 10000;
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ReciteDetect.ReciteDetectManager", 2, "getNextWord detectingParagraphPos = " + this.e + " detectingWordInParagaphPos" + this.f + " lastParagraphDetectEnd" + this.jdField_b_of_type_Boolean);
+        }
+        if (this.jdField_b_of_type_Boolean)
+        {
+          this.e += 1;
+          this.f = 0;
+          this.jdField_b_of_type_Boolean = false;
+          if (this.e < this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.size())
+          {
+            Object localObject1 = ((ParagraphInfo)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.get(this.e)).generateOrGetWordInfoList(this.e);
+            if (this.f < ((List)localObject1).size())
+            {
+              WordInfo localWordInfo = (WordInfo)((List)localObject1).get(this.f);
+              localWordInfo.paragraphPos = this.e;
+              if (QLog.isColorLevel()) {
+                QLog.d("ReciteDetect.ReciteDetectManager", 2, String.format("正在检测的文字是：%s", new Object[] { localWordInfo.toString() }));
+              }
+              if (this.f == ((List)localObject1).size() - 1) {
+                this.jdField_b_of_type_Boolean = true;
+              }
+              localObject1 = localWordInfo;
+              if (!PinyinTextView.a(localWordInfo.text))
+              {
+                this.jdField_a_of_type_Int += 1;
+                localObject1 = localWordInfo;
+              }
+              return localObject1;
+            }
+          }
+        }
+        else
+        {
+          this.f += 1;
+          continue;
+        }
+        Object localObject3 = null;
       }
-      return localOpenDocParam;
+      finally {}
     }
   }
   
-  public static String a(CharSequence paramCharSequence)
+  protected void a()
   {
-    if (TextUtils.isEmpty(paramCharSequence)) {
-      return "";
-    }
-    return new begp(paramCharSequence, 5).a(false);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = true;
+    this.c = 0;
+    this.jdField_a_of_type_Double = 0.0D;
+    this.g = 0;
+    this.h = 0;
   }
   
-  public static String a(String paramString)
+  public void a(double paramDouble, String[] paramArrayOfString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramString.length() < 7)) {}
+    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0) || (this.jdField_a_of_type_Bemy == null) || (this.jdField_a_of_type_Boolean)) {}
+    while (this.jdField_a_of_type_Double > paramDouble) {
+      return;
+    }
+    Message localMessage = this.jdField_a_of_type_Bemx.obtainMessage(2);
+    Bundle localBundle = new Bundle();
+    localBundle.putDouble("startTime", paramDouble);
+    localBundle.putStringArray("pinyins", paramArrayOfString);
+    localMessage.setData(localBundle);
+    localMessage.sendToTarget();
+  }
+  
+  protected void a(int paramInt)
+  {
+    int i;
+    label197:
     do
     {
-      return paramString;
-      if (paramString.startsWith("p.")) {
+      for (;;)
+      {
+        try
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ReciteDetect.ReciteDetectManager", 2, "doDetectNextWord, start");
+          }
+          i = this.jdField_a_of_type_JavaUtilList.size();
+          if (i == 0) {
+            return;
+          }
+          if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo == null)
+          {
+            WordInfo localWordInfo = b();
+            if (localWordInfo != null) {
+              this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo = localWordInfo;
+            }
+          }
+          else
+          {
+            if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo != null) {
+              break;
+            }
+            b();
+            continue;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo = a();
+        }
+        finally {}
+        while ((this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo != null) && (!this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo.isNormalWord()))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo.color = WordInfo.COLOR_DEFAULT;
+          localObject2 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+          ((Message)localObject2).what = 0;
+          ((Message)localObject2).obj = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo;
+          this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
+          this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo = a();
+        }
+      }
+      if (!QLog.isColorLevel()) {
+        break label774;
+      }
+      QLog.d("ReciteDetect.ReciteDetectManager", 2, String.format("背诵内容[%s]\n检测答案[%s]", new Object[] { this.jdField_a_of_type_JavaUtilList.toString(), this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo.pinyin2Detect.toString() }));
+      break label774;
+      if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+        break label777;
+      }
+      localObject2 = (String)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo.isPinyinDetectRight((String)localObject2))
+      {
+        this.d = 0;
+        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo.color = WordInfo.COLOR_DEFAULT;
+        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo.isDetected = true;
+        localObject2 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+        ((Message)localObject2).what = 0;
+        ((Message)localObject2).obj = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo;
+        this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
+        if (i >= this.h)
+        {
+          this.g += i - this.h;
+          if (QLog.isColorLevel()) {
+            QLog.d("ReciteDetect.ReciteDetectManager", 2, "detected！！！mLastSentenceSubLen:" + this.g);
+          }
+        }
+        for (this.h = 0;; this.h -= i)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo = null;
+          localObject2 = this.jdField_a_of_type_JavaUtilList.toString();
+          this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList.subList(i + 1, this.jdField_a_of_type_JavaUtilList.size());
+          localObject3 = this.jdField_a_of_type_JavaUtilList.toString();
+          if (QLog.isColorLevel()) {
+            QLog.d("ReciteDetect.ReciteDetectManager", 2, String.format("识别结果,对 || 对背诵内容进行截断，为下一个字检测所用：\n before[%s], \n after[%s], removeIndex[%d]", new Object[] { localObject2, localObject3, Integer.valueOf(i) }));
+          }
+          if (paramInt >= this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a.jdField_b_of_type_Int) {
+            break;
+          }
+          a(paramInt + 1);
+          break;
+        }
+      }
+      if (i <= this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a.c) {
+        break label767;
+      }
+      this.d += 1;
+      this.jdField_b_of_type_Int += 1;
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo.color = WordInfo.COLOR_WRONG;
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo.isDetected = true;
+      localObject2 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      ((Message)localObject2).what = 0;
+      ((Message)localObject2).obj = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo;
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo = null;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReciteDetect.ReciteDetectManager", 2, String.format("识别结果,错||mErroCount[%d], continuousWrongNum[%d]", new Object[] { Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.d) }));
+      }
+      if (this.d < this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a.d) {
         break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("WriteTogetherUtils", 2, "userId is not start with p.");
-    return paramString;
-    return paramString.substring(2);
-  }
-  
-  public static String a(String paramString, long paramLong)
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(paramLong);
-    return String.format(paramString, new Object[] { Integer.valueOf(localCalendar.get(1)), Integer.valueOf(localCalendar.get(2) + 1) });
-  }
-  
-  public static String a(String paramString1, String paramString2, long paramLong)
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(paramLong);
-    return String.format(paramString1, new Object[] { paramString2, Integer.valueOf(localCalendar.get(1)), Integer.valueOf(localCalendar.get(2) + 1) });
-  }
-  
-  private static List<EditUserHistory> a(List<oidb_cmd0xe89.EditUinInfo> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+      if (QLog.isColorLevel()) {
+        QLog.d("ReciteDetect.ReciteDetectManager", 2, "repeatRecite");
+      }
+      a();
+      localObject2 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      ((Message)localObject2).what = 1;
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
+    } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
+    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    String str1 = this.jdField_a_of_type_JavaLangString;
+    String str2 = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo != null) {}
+    for (Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.title;; localObject2 = "")
     {
-      oidb_cmd0xe89.EditUinInfo localEditUinInfo = (oidb_cmd0xe89.EditUinInfo)paramList.next();
-      localArrayList.add(new EditUserHistory(String.valueOf(localEditUinInfo.uint.get()), localEditUinInfo.last_edit_ts.get(), localEditUinInfo.nick_name.get().toStringUtf8()));
+      bftc.a((QQAppInterface)localObject3, str1, "Grp_recite", "Norecognize_Recite_Again_Clk", 0, 0, new String[] { str2, "", localObject2, "" });
+      break;
+      if (paramInt >= this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a.jdField_b_of_type_Int) {
+        break;
+      }
+      a(paramInt + 1);
+      break;
+      label767:
+      i += 1;
+      break label197;
+      label774:
+      i = 0;
+      break label197;
+      label777:
+      break;
     }
-    return localArrayList;
   }
   
-  public static void a(int paramInt)
+  protected void a(WordInfo paramWordInfo)
   {
-    b().edit().putInt("KEY_WRITE_TOGETHER_WORD_LIMIT_", paramInt).apply();
-  }
-  
-  public static void a(Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
-  {
-    paramActivity = bhlq.a(paramActivity, anzj.a(2131719381), 2131719350, 2131719351, paramOnClickListener2, paramOnClickListener1);
-    if ((paramActivity != null) && (!paramActivity.isShowing())) {
-      paramActivity.show();
+    label274:
+    for (;;)
+    {
+      try
+      {
+        Object localObject;
+        if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+        {
+          localObject = null;
+          if (localObject == null) {
+            break label274;
+          }
+          if ((paramWordInfo.paragraphPos >= ((WordInfo)localObject).paragraphPos) && (paramWordInfo.wordPos > ((WordInfo)localObject).wordPos))
+          {
+            break label274;
+            if ((paramWordInfo != null) && (paramWordInfo.paragraphPos < this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.size()) && (i != 0))
+            {
+              localObject = ((ParagraphInfo)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.paragraphs.get(paramWordInfo.paragraphPos)).generateOrGetWordInfoList(paramWordInfo.paragraphPos);
+              i = paramWordInfo.wordPos + 1;
+              if (i < ((List)localObject).size())
+              {
+                WordInfo localWordInfo = (WordInfo)((List)localObject).get(i);
+                if (QLog.isColorLevel()) {
+                  QLog.d("ReciteDetect.ReciteDetectManager", 2, String.format("ifNextWordIsPunctuationThenShow：%s", new Object[] { localWordInfo.toString() }));
+                }
+                if (!localWordInfo.isNormalWord())
+                {
+                  localWordInfo.color = WordInfo.COLOR_DEFAULT;
+                  this.jdField_a_of_type_Bemy.a(localWordInfo);
+                  if ((this.e == paramWordInfo.wordPos) && (this.f == paramWordInfo.paragraphPos))
+                  {
+                    this.f += 1;
+                    if (i == ((List)localObject).size() - 1) {
+                      this.jdField_b_of_type_Boolean = true;
+                    }
+                  }
+                  a(localWordInfo);
+                }
+              }
+            }
+          }
+        }
+        else
+        {
+          localObject = (WordInfo)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+          continue;
+        }
+        int i = 0;
+        continue;
+        i = 1;
+      }
+      finally {}
     }
   }
   
-  public static void a(Context paramContext, String paramString1, String paramString2, bemy parambemy)
+  /* Error */
+  protected WordInfo b()
   {
-    paramContext = new bhpc(paramContext, 2131755824);
-    paramContext.setContentView(2131559008);
-    paramContext.dismissMessage();
-    ((RelativeLayout.LayoutParams)paramContext.getTitleTextView().getLayoutParams()).bottomMargin = bhtq.a(26.0F);
-    paramContext.setCanceledOnTouchOutside(false);
-    paramContext.setTitle(paramString1);
-    paramContext.getTitleTextView().setSingleLine(false);
-    paramContext.getTitleTextView().setMaxLines(2);
-    paramContext.setNegativeButton(paramString2, new bemx(paramContext, parambemy));
-    if (paramContext.isShowing()) {
-      paramContext.dismiss();
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 61	bemv:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   6: invokevirtual 331	java/util/ArrayList:isEmpty	()Z
+    //   9: ifne +19 -> 28
+    //   12: aload_0
+    //   13: getfield 61	bemv:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   16: iconst_0
+    //   17: invokevirtual 346	java/util/ArrayList:remove	(I)Ljava/lang/Object;
+    //   20: checkcast 176	com/tencent/mobileqq/troop/homework/recite/data/WordInfo
+    //   23: astore_1
+    //   24: aload_0
+    //   25: monitorexit
+    //   26: aload_1
+    //   27: areturn
+    //   28: aconst_null
+    //   29: astore_1
+    //   30: goto -6 -> 24
+    //   33: astore_1
+    //   34: aload_0
+    //   35: monitorexit
+    //   36: aload_1
+    //   37: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	38	0	this	bemv
+    //   23	7	1	localWordInfo	WordInfo
+    //   33	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	24	33	finally
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_Boolean = true;
+      if (this.jdField_a_of_type_Bemy == null) {
+        break;
+      }
+      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      localMessage.what = 2;
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    } while (!QLog.isColorLevel());
+    QLog.d("ReciteDetect.ReciteDetectManager", 2, String.format("onCompleteRecite, mWordTotalCount[%d], mErroCount[%d], mRemindCount[%d]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.c) }));
+    return;
+    this.jdField_a_of_type_Int = 0;
+    this.c = 0;
+  }
+  
+  protected void b(double paramDouble, String[] paramArrayOfString)
+  {
+    int j = 0;
+    for (;;)
+    {
+      String str1;
+      ArrayList localArrayList;
+      try
+      {
+        str1 = this.jdField_a_of_type_JavaUtilList.toString() + ",mLastSentenceSubLen:" + this.g;
+        String str2;
+        if (this.jdField_a_of_type_Double != paramDouble)
+        {
+          this.jdField_a_of_type_Double = paramDouble;
+          this.g = 0;
+          i = 0;
+          localArrayList = new ArrayList(paramArrayOfString.length);
+          if (j >= paramArrayOfString.length) {
+            break label149;
+          }
+          str2 = paramArrayOfString[j];
+          if (PinyinTextView.a(str2))
+          {
+            if (!QLog.isColorLevel()) {
+              break label297;
+            }
+            QLog.d("ReciteDetect.ReciteDetectManager", 2, "背诵内容是标点符号，跳过");
+            break label297;
+          }
+        }
+        else
+        {
+          if (this.g == 0) {
+            break label306;
+          }
+          j = this.g;
+          i = 0;
+          continue;
+        }
+        localArrayList.add(str2);
+      }
+      finally {}
+      label149:
+      if (i != 0)
+      {
+        if (this.h != 0) {
+          break label258;
+        }
+        this.jdField_a_of_type_JavaUtilList.clear();
+      }
+      for (;;)
+      {
+        if (!localArrayList.isEmpty())
+        {
+          this.h = this.jdField_a_of_type_JavaUtilList.size();
+          this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("yellowye", 2, "recitingPinyinsList, 插入前：" + str1 + "\n插入后：" + this.jdField_a_of_type_JavaUtilList.toString());
+        }
+        return;
+        label258:
+        if (this.h <= this.jdField_a_of_type_JavaUtilList.size() - 1) {
+          this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList.subList(0, this.h);
+        }
+      }
+      label297:
+      j += 1;
+      continue;
+      label306:
+      int i = 1;
     }
-    paramContext.show();
-    paramContext = paramContext.getTitleTextView();
-    paramContext.setClickable(true);
-    paramContext.setFocusable(true);
-    paramContext.setFocusableInTouchMode(true);
-    bhga.a(paramContext, true);
   }
   
-  public static void a(BaseActivity paramBaseActivity, bemy parambemy)
+  public void c()
   {
-    Resources localResources = paramBaseActivity.getResources();
-    paramBaseActivity = bhlq.a(paramBaseActivity, localResources.getString(2131719398), localResources.getString(2131719388), localResources.getString(2131719392), new bemw(parambemy));
-    paramBaseActivity.setCancelable(false);
-    paramBaseActivity.show();
-  }
-  
-  public static boolean a()
-  {
-    return b().getBoolean("KEY_WRITE_TOGETHER_IS_FIRST_USE_", true);
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
-  }
-  
-  public static boolean a(long paramLong1, long paramLong2)
-  {
-    Calendar localCalendar1 = Calendar.getInstance();
-    localCalendar1.setTimeInMillis(paramLong1);
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar2.setTimeInMillis(paramLong2);
-    return localCalendar1.get(1) == localCalendar2.get(1);
-  }
-  
-  public static boolean a(bekn parambekn)
-  {
-    if ((parambekn == null) || (TextUtils.isEmpty(parambekn.jdField_a_of_type_JavaLangString))) {}
-    while (parambekn.jdField_a_of_type_JavaLangString.length() <= a()) {
-      return false;
+    try
+    {
+      this.jdField_a_of_type_Double = 0.0D;
+      this.jdField_a_of_type_Double = -1.0D;
+      this.h = 0;
+      return;
     }
-    return true;
-  }
-  
-  public static boolean a(SessionInfo paramSessionInfo)
-  {
-    if ((paramSessionInfo == null) && (QLog.isColorLevel())) {
-      QLog.d("WriteTogetherUtils", 2, "[shouldShowWriteTogetherMenuItem] sessionInfo is null. ");
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
-    return (paramSessionInfo != null) && (paramSessionInfo.jdField_a_of_type_Int == 1);
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  public void d()
   {
-    ((aoip)paramQQAppInterface.a(20)).b(paramString, false);
-    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(52)).c(paramString);
-    return (paramQQAppInterface != null) && ((paramQQAppInterface.dwGroupFlagExt3 & 0x40000000) == 0L);
-  }
-  
-  private static SharedPreferences b()
-  {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    str = "FILE_WRITE_TOGETHER_" + str;
-    return BaseApplicationImpl.getApplication().getSharedPreferences(str, 0);
-  }
-  
-  public static String b(String paramString, long paramLong)
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(paramLong);
-    return String.format(paramString, new Object[] { Integer.valueOf(localCalendar.get(2) + 1), Integer.valueOf(localCalendar.get(5)) });
-  }
-  
-  public static String b(String paramString1, String paramString2, long paramLong)
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(paramLong);
-    return String.format(paramString1, new Object[] { paramString2, Integer.valueOf(localCalendar.get(2) + 1), Integer.valueOf(localCalendar.get(5)) });
-  }
-  
-  public static String c(String paramString, long paramLong)
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(paramLong);
-    return String.format(paramString, new Object[] { Integer.valueOf(localCalendar.get(11)), Integer.valueOf(localCalendar.get(12)) });
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a.jdField_a_of_type_Int)
+        {
+          Object localObject2;
+          if ((this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo != null) && (!this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo.isReminded))
+          {
+            localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataWordInfo;
+            if (localObject2 != null)
+            {
+              ((WordInfo)localObject2).color = -7829368;
+              ((WordInfo)localObject2).isReminded = true;
+              this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+              this.jdField_a_of_type_Bemy.a((WordInfo)localObject2);
+              this.c += 1;
+            }
+          }
+          else
+          {
+            WordInfo localWordInfo = a();
+            localObject2 = localWordInfo;
+            if (localWordInfo == null) {
+              continue;
+            }
+            localObject2 = localWordInfo;
+            if (localWordInfo.isNormalWord()) {
+              continue;
+            }
+            localWordInfo.color = WordInfo.COLOR_DEFAULT;
+            this.jdField_a_of_type_Bemy.a(localWordInfo);
+            localWordInfo = a();
+            continue;
+          }
+        }
+        else
+        {
+          return;
+        }
+      }
+      finally {}
+      i += 1;
+    }
   }
 }
 

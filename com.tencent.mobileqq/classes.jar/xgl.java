@@ -1,130 +1,51 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.atvideo.view.StoryAtVideoFragment;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import java.util.List;
 
 public class xgl
-  extends xhm
+  extends vll<StoryAtVideoFragment, xhv>
 {
-  public static final String a;
-  public boolean a;
-  private final int[] a;
-  
-  static
+  public xgl(StoryAtVideoFragment paramStoryAtVideoFragment)
   {
-    jdField_a_of_type_JavaLangString = "https://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&ptype=%d&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + wnu.a(2131698598);
+    super(paramStoryAtVideoFragment);
   }
   
-  public xgl(StoryVideoItem paramStoryVideoItem, boolean paramBoolean, String paramString)
+  public void a(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull xhv paramxhv)
   {
-    QQAppInterface localQQAppInterface = xiz.a();
-    wtt localwtt = (wtt)wth.a(2);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.c = localQQAppInterface.getCurrentNickname();
-    String str;
-    int i;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isPollVideo())
+    if ((!paramxhv.jdField_a_of_type_JavaLangString.equals(paramStoryAtVideoFragment.jdField_a_of_type_JavaLangString)) || (paramxhv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramStoryAtVideoFragment.jdField_a_of_type_Xhh == null))
     {
-      str = this.c + anzj.a(2131705940);
-      this.jdField_d_of_type_JavaLangString = str;
-      this.f = paramStoryVideoItem.mOwnerUid;
-      this.e = localwtt.a(this.f, false);
-      this.g = paramStoryVideoItem.mDoodleText;
-      str = paramString;
-      if (paramString == null) {
-        str = "";
-      }
-      this.h = str;
-      if (!paramStoryVideoItem.isMine()) {
-        break label363;
-      }
-      i = 0;
-      label137:
-      this.b = i;
-      this.c = localQQAppInterface.getCurrentNickname();
-      paramStoryVideoItem = localwtt.b(this.f);
-      if ((paramStoryVideoItem != null) && (paramStoryVideoItem.isVip)) {
-        this.c = paramStoryVideoItem.nickName;
-      }
-      this.jdField_d_of_type_JavaLangString = a();
-      this.k = this.jdField_d_of_type_JavaLangString;
-      this.i = b();
-      this.j = ("#" + win.jdField_a_of_type_JavaLangString + "# " + a() + "（" + this.i + "）");
-      this.jdField_d_of_type_Int = 11;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label369;
-      }
-    }
-    label363:
-    label369:
-    for (this.jdField_d_of_type_Int = 4;; this.jdField_d_of_type_Int = 1)
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label377;
-      }
-      this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 38, 39, 40, 55, 45 };
-      return;
-      str = this.c + anzj.a(2131705941) + win.jdField_a_of_type_JavaLangString;
-      break;
-      i = 1;
-      break label137;
-    }
-    label377:
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 0, 32, 33, 34, 54, 45 };
-  }
-  
-  protected String a(int paramInt)
-  {
-    int i = 3;
-    if (paramInt == 1)
-    {
-      str1 = this.e;
-      str2 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid;
-      str3 = this.f;
-      str4 = this.h;
-      paramInt = this.b;
-      if (this.jdField_a_of_type_Boolean) {}
-      for (;;)
-      {
-        return String.format("mqqapi://qstory/openVideo?src_type=app&version=1&fromId=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&ptype=%d", new Object[] { str1, str2, str3, str4, Integer.valueOf(paramInt), Integer.valueOf(i) });
-        i = 1;
-      }
-    }
-    String str1 = jdField_a_of_type_JavaLangString;
-    String str2 = this.e;
-    String str3 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid;
-    String str4 = this.f;
-    String str5 = this.h;
-    int j = this.b;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      return String.format(str1, new Object[] { str2, str3, str4, str5, Integer.valueOf(j), Integer.valueOf(i), b(paramInt), Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]) });
-      i = 1;
-    }
-  }
-  
-  protected void a(xhu paramxhu)
-  {
-    wuu localwuu;
-    if ((paramxhu instanceof xhv))
-    {
-      localwuu = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoGameInfo();
-      if (localwuu != null) {}
-    }
-    else
-    {
+      xvv.b(this.TAG, "ignore this comment list event. %s.", paramxhv.toString());
       return;
     }
-    paramxhu = (xhv)paramxhu;
-    paramxhu.o = localwuu.b;
-    if (localwuu.a == 2) {}
-    for (paramxhu.p = anzj.a(2131705942);; paramxhu.p = (localwuu.c + anzj.a(2131705943)))
+    if (!paramStoryAtVideoFragment.jdField_a_of_type_Xhh.c())
     {
-      paramxhu.jdField_d_of_type_JavaLangString = a();
+      xvv.e(this.TAG, "this feed does not support video list.ignore this comment list event. %s.", new Object[] { paramxhv.toString() });
       return;
     }
+    xvv.a(this.TAG, "receive comment list event. %s.", paramxhv.toString());
+    paramStoryAtVideoFragment.jdField_a_of_type_Xhh.a(paramxhv.jdField_a_of_type_JavaUtilList, paramxhv.c);
+    paramStoryAtVideoFragment.jdField_a_of_type_Xhh.a().updateVideoInfo(paramxhv.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
+    if (paramStoryAtVideoFragment.jdField_a_of_type_Xhh.a().size() < 1)
+    {
+      paramStoryAtVideoFragment.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+      paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setVisibility(8);
+      paramStoryAtVideoFragment.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      return;
+    }
+    paramStoryAtVideoFragment.a(paramStoryAtVideoFragment.jdField_a_of_type_Xhh);
   }
+  
+  public Class acceptEventClass()
+  {
+    return xhv.class;
+  }
+  
+  public void b(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull xhv paramxhv) {}
 }
 
 

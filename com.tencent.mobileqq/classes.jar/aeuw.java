@@ -1,22 +1,24 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
 
 public class aeuw
-  extends aeuk
+  implements aeup
 {
-  public aeuw(JumpActivity paramJumpActivity)
-  {
-    super(paramJumpActivity);
-  }
+  public aeuw(BirthdayActivatePage paramBirthdayActivatePage) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void a(int paramInt)
   {
-    this.b.d(paramInt1, paramInt2, paramIntent);
+    if (paramInt > 0)
+    {
+      this.a.a.setEnabled(true);
+      return;
+    }
+    this.a.a.setEnabled(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeuw
  * JD-Core Version:    0.7.0.1
  */

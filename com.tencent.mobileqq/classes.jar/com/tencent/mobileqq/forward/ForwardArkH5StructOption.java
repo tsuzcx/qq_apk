@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.forward;
 
-import aean;
+import acvv;
+import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anzj;
-import apzk;
-import aqbu;
-import auxs;
-import bcpt;
-import bcry;
-import bdow;
-import bhpc;
-import bjqh;
+import aosx;
+import aovh;
+import atkv;
+import bbjb;
+import bbli;
+import bchh;
+import bhvw;
 import com.tencent.ark.open.ArkAppCacheMgr;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -39,7 +39,7 @@ public class ForwardArkH5StructOption
     String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_h5_from_normal");
     String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_view");
     if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
-      apzk.a(str1, str3, str2, new auxs(this));
+      aosx.a(str1, str3, str2, new atkv(this));
     }
   }
   
@@ -50,26 +50,26 @@ public class ForwardArkH5StructOption
     return super.a();
   }
   
-  public boolean a(bhpc parambhpc)
+  public boolean a(QQCustomDialog paramQQCustomDialog)
   {
     if ((this.jdField_a_of_type_AndroidOsBundle.getBoolean("is_ark_display_share")) && (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_from_h5_parse_meta_success"))) {}
     for (;;)
     {
       return true;
-      super.a(parambhpc);
+      super.a(paramQQCustomDialog);
     }
   }
   
   protected boolean a(String paramString1, String paramString2, int paramInt)
   {
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_Int = paramInt;
-    localSessionInfo.jdField_a_of_type_JavaLangString = paramString1;
-    localSessionInfo.b = paramString2;
-    if ((localSessionInfo.jdField_a_of_type_Int < 0) || (TextUtils.isEmpty(localSessionInfo.jdField_a_of_type_JavaLangString)))
+    localSessionInfo.curType = paramInt;
+    localSessionInfo.curFriendUin = paramString1;
+    localSessionInfo.troopUin = paramString2;
+    if ((localSessionInfo.curType < 0) || (TextUtils.isEmpty(localSessionInfo.curFriendUin)))
     {
       if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct")) {
-        bjqh.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
+        bhvw.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
       }
       return false;
     }
@@ -97,11 +97,11 @@ public class ForwardArkH5StructOption
       }
       for (;;)
       {
-        String str3 = String.format(anzj.a(2131703623), new Object[] { paramString1 });
+        String str3 = String.format(amtj.a(2131703853), new Object[] { paramString1 });
         if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)))
         {
           if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct")) {
-            bjqh.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
+            bhvw.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "1", false);
           }
           return false;
           paramString1 = "";
@@ -111,14 +111,14 @@ public class ForwardArkH5StructOption
           break label188;
         }
         if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_app_direct")) {
-          bjqh.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "0", false);
+          bhvw.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "0", "2000", "2006", "0", false);
         }
         paramString1 = new ArkAppMessage(str3, (String)localObject1, paramString1, (String)localObject2, paramString2, str1, str2, "");
-        paramString2 = (ArkAppMessage)aqbu.a(2, (String)localObject1, this.jdField_a_of_type_AndroidOsBundle, paramString1);
+        paramString2 = (ArkAppMessage)aovh.a(2, (String)localObject1, this.jdField_a_of_type_AndroidOsBundle, paramString1);
         if (paramString2 == null) {}
         for (;;)
         {
-          localObject1 = bdow.a(this.jdField_a_of_type_AndroidOsBundle);
+          localObject1 = bchh.a(this.jdField_a_of_type_AndroidOsBundle);
           paramString2 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_appId_ark_from_sdk");
           localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_name");
           str1 = this.jdField_a_of_type_AndroidOsBundle.getString("struct_share_key_source_action_data");
@@ -133,20 +133,20 @@ public class ForwardArkH5StructOption
             paramString1.mSourceUrl = str3;
           }
           if (localObject1 != null) {
-            switch (localSessionInfo.jdField_a_of_type_Int)
+            switch (localSessionInfo.curType)
             {
             }
           }
-          for (paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();; paramString2 = localSessionInfo.b)
+          for (paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();; paramString2 = localSessionInfo.troopUin)
           {
             localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
             str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-            str2 = localSessionInfo.jdField_a_of_type_JavaLangString;
-            paramInt = localSessionInfo.jdField_a_of_type_Int;
-            int i = bcpt.jdField_a_of_type_Int;
-            bcpt.jdField_a_of_type_Int = i + 1;
-            paramString1.containStructMsg = bcry.a((QQAppInterface)localObject2, str1, str2, paramString2, paramInt, i, (AbsStructMsg)localObject1);
-            aean.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramString1);
+            str2 = localSessionInfo.curFriendUin;
+            paramInt = localSessionInfo.curType;
+            int i = bbjb.a;
+            bbjb.a = i + 1;
+            paramString1.containStructMsg = bbli.a((QQAppInterface)localObject2, str1, str2, paramString2, paramInt, i, (AbsStructMsg)localObject1);
+            acvv.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramString1);
             return true;
           }
           paramString1 = paramString2;
@@ -161,7 +161,7 @@ public class ForwardArkH5StructOption
     boolean bool1 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_from_h5_success");
     boolean bool2 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_ark_from_h5_parse_meta_success");
     QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 1, new Object[] { "ShareArkFromH5 before sendArkMag isUrlLegal=", Boolean.valueOf(bool1), ", isMetaLegal=", Boolean.valueOf(bool2) });
-    if (g())
+    if (i())
     {
       Iterator localIterator;
       if ((bool1) && (bool2))
@@ -172,7 +172,7 @@ public class ForwardArkH5StructOption
       while (localIterator.hasNext())
       {
         ResultRecord localResultRecord = (ResultRecord)localIterator.next();
-        a(localResultRecord.jdField_a_of_type_JavaLangString, localResultRecord.c, localResultRecord.a());
+        a(localResultRecord.uin, localResultRecord.groupUin, localResultRecord.getUinType());
         continue;
         super.d();
       }
@@ -181,13 +181,13 @@ public class ForwardArkH5StructOption
     if ((bool1) && (bool2))
     {
       G();
-      l_();
+      i_();
       return;
     }
     super.d();
   }
   
-  protected boolean l_()
+  protected boolean i_()
   {
     int i = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
     boolean bool = a(this.jdField_a_of_type_AndroidOsBundle.getString("uin"), this.jdField_a_of_type_AndroidOsBundle.getString("troop_uin"), i);

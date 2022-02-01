@@ -1,30 +1,8 @@
-import UserGrowth.stFeed;
-import UserGrowth.stMagicBrand;
-import UserGrowth.stSchema;
-import UserGrowth.stSimpleMetaFeed;
+import android.net.Uri;
 
-class uie
-  implements uwg
+public abstract interface uie
 {
-  uie(uhz paramuhz) {}
-  
-  public void a(Object paramObject)
-  {
-    if ((paramObject instanceof stSchema))
-    {
-      upw.a(uhz.a(this.a).a(), (stSchema)paramObject, 700, uhz.a(this.a), "bottom_label");
-      uhz.a(this.a, "bottom_label", 2);
-    }
-  }
-  
-  public void b(Object paramObject)
-  {
-    if ((!(paramObject instanceof stSchema)) || (uhz.a(this.a).feed == null) || (uhz.a(this.a).feed.magicBrand == null)) {
-      return;
-    }
-    upw.a(uhz.a(this.a).a(), (stSchema)paramObject, 700, uhz.a(this.a), "bottom_label");
-    uhz.a(this.a, "bottom_label", uhz.a(this.a).feed.magicBrand.type);
-  }
+  public abstract void a(Uri paramUri, String paramString, int paramInt);
 }
 
 

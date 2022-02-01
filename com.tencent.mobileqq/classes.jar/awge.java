@@ -1,22 +1,15 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 
 class awge
-  implements aasd
+  implements INetEngine.INetEngineListener
 {
-  awge(awgd paramawgd, String paramString) {}
+  awge(awgd paramawgd) {}
   
-  public void callback(Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Awgd.isDestroy) {}
-    do
-    {
-      return;
-      paramBundle = String.format("{\"result\":%d, \"errMsg\":\"%s\", \"uin\":\"%s\"}", new Object[] { Integer.valueOf(paramBundle.getInt("result", -1)), paramBundle.getString("errMsg"), paramBundle.getString("retUin") });
-      this.jdField_a_of_type_Awgd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-    } while (!QLog.isColorLevel());
-    QLog.e("ConnectApiPlugin", 2, new Object[] { "handleJsRequest callback:", paramBundle });
-  }
+  public void onResp(NetResp paramNetResp) {}
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

@@ -34,21 +34,17 @@ public abstract class FlowActivity
     if (paramBundle == null) {
       return;
     }
-    this.jdField_a_of_type_Int = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131297034));
+    this.jdField_a_of_type_Int = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131297089));
   }
   
   protected abstract void a(ViewGroup paramViewGroup);
   
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return super.onTouchEvent(paramMotionEvent);
-  }
-  
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -82,11 +78,11 @@ public abstract class FlowActivity
     getWindow().addFlags(512);
     paramBundle = getIntent().getExtras();
     if (paramBundle == null) {
-      this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131297034));
+      this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131297089));
     }
     a(paramBundle);
     setContentView(2131558449);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)$(2131366921));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131366944));
     if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
       a(this.jdField_a_of_type_AndroidViewViewGroup);
     }

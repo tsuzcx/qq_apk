@@ -1,61 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.oidb_0xb7e.RspBody;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
-class pnt
-  extends nkn
+public class pnt
+  extends pnv
 {
-  pnt(pns parampns, boolean paramBoolean) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  pnt(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, View paramView)
   {
-    if (paramInt == 0)
-    {
-      try
-      {
-        paramBundle = new oidb_0xb7e.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (!paramBundle.rpt_top_item.has()) {
-          break label129;
-        }
-        List localList = paramBundle.rpt_top_item.get();
-        if ((localList == null) || (localList.size() <= 0))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(pns.a, 2, "requestDiandianTopConfig rpt_top_item is empty");
-          }
-          pfd.a().a(true, null);
-          pns.a(this.a, paramArrayOfByte, 0L);
-          return;
-        }
-        pns.a(this.a, paramArrayOfByte, System.currentTimeMillis());
-        if (!this.b) {
-          return;
-        }
-        pns.a(this.a, paramBundle);
-        return;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-      }
-      QLog.e(pns.a, 2, "requestDiandianTopConfig parser failed");
-      return;
-      label129:
-      if (QLog.isColorLevel()) {
-        QLog.d(pns.a, 2, "requestDiandianTopConfig rpt_top_item is empty");
-      }
-      pns.a(this.a, paramArrayOfByte, 0L);
-      pfd.a().a(true, null);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e(pns.a, 2, "requestDiandianTopConfig failed errorCode = " + paramInt);
-    }
+    super(paramReadInJoyPicWaterFallFragment, paramView);
+    this.b = ((URLImageView)paramView.findViewById(2131365172));
+    this.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362666));
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new ColorDrawable(Color.parseColor("#7f000000")));
+    AIOUtils.dp2px(3.0F, paramReadInJoyPicWaterFallFragment.getResources());
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362003));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378707));
+    paramView.setOnClickListener(new pnu(this, paramReadInJoyPicWaterFallFragment));
   }
 }
 

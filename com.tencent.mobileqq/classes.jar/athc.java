@@ -1,21 +1,35 @@
+import android.os.Bundle;
+
 public class athc
-  extends atha
 {
-  public String a;
-  public boolean a;
-  public String b;
+  public long a;
+  public long b;
   
-  public athc(String paramString1, boolean paramBoolean, String paramString2, String paramString3)
+  public athc(long paramLong1, long paramLong2)
   {
-    super(1, paramString1);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.b = paramString3;
+    this.a = paramLong1;
+    this.b = paramLong2;
+  }
+  
+  public static athc a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return null;
+    }
+    return new athc(paramBundle.getLong("RPARAM_RECV_SIZE"), paramBundle.getLong("RPARAM_TRANS_SIZE"));
+  }
+  
+  public Bundle a()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("RPARAM_RECV_SIZE", this.a);
+    localBundle.putLong("RPARAM_TRANS_SIZE", this.b);
+    return localBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     athc
  * JD-Core Version:    0.7.0.1
  */

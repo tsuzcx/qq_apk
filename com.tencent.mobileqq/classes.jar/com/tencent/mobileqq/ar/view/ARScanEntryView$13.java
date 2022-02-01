@@ -9,7 +9,8 @@ class ARScanEntryView$13
   
   public void run()
   {
-    this.this$0.a.setVisibility(0);
+    this.this$0.a.setVisibility(8);
+    this.this$0.a.b();
   }
 }
 

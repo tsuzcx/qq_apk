@@ -1,66 +1,19 @@
-import java.lang.ref.WeakReference;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
-public class alwy
+class alwy
+  implements QQPermissionCallback
 {
-  private static WeakReference<alxa> a;
-  private static WeakReference<alwz> b;
+  alwy(alwt paramalwt, AppActivity paramAppActivity) {}
   
-  public static void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (b != null) {}
-    for (alwz localalwz = (alwz)b.get();; localalwz = null)
-    {
-      if (localalwz != null) {
-        localalwz.i();
-      }
-      return;
-    }
+    bfur.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public static void a(int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (b != null) {}
-    for (alwz localalwz = (alwz)b.get();; localalwz = null)
-    {
-      if (localalwz != null) {
-        localalwz.b(paramInt);
-      }
-      return;
-    }
-  }
-  
-  public static void a(alwz paramalwz)
-  {
-    b = new WeakReference(paramalwz);
-  }
-  
-  public static void a(alxa paramalxa)
-  {
-    a = new WeakReference(paramalxa);
-  }
-  
-  public static void a(String paramString)
-  {
-    if (b != null) {}
-    for (alwz localalwz = (alwz)b.get();; localalwz = null)
-    {
-      if (localalwz != null) {
-        localalwz.c(paramString);
-      }
-      return;
-    }
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    if (a != null) {}
-    for (alxa localalxa = (alxa)a.get();; localalxa = null)
-    {
-      if (localalxa != null) {
-        localalxa.a(paramString, paramInt);
-      }
-      return;
-    }
+    this.jdField_a_of_type_Alwt.grant();
   }
 }
 

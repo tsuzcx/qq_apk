@@ -1,23 +1,59 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import java.util.List;
-
 public class ayyo
-  implements PopupWindow.OnDismissListener
 {
-  public ayyo(OCRResultActivity paramOCRResultActivity) {}
-  
-  public void onDismiss()
+  public static aysw a(int paramInt, aysx paramaysx, aymg paramaymg)
   {
-    this.a.b = null;
-    if ((OCRResultActivity.b(this.a) != null) && (OCRResultActivity.b(this.a).size() > 1))
+    switch (paramInt)
     {
-      Drawable localDrawable = this.a.getResources().getDrawable(2130845640);
-      this.a.a.setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
+    default: 
+      return null;
+    case 1002: 
+      return a(paramaysx, paramaymg);
     }
+    return b(paramaysx, paramaymg);
+  }
+  
+  private static aysw a(aysx paramaysx, aymg paramaymg)
+  {
+    ayyi localayyi = null;
+    long l = paramaymg.a;
+    if ((l == aymn.b) || (l == aymn.c) || (l == aymn.d)) {
+      localayyi = new ayyi(paramaysx, paramaymg);
+    }
+    do
+    {
+      return localayyi;
+      if (l == aymn.e) {
+        return new ayyj(paramaysx, paramaymg);
+      }
+      if (l == aymn.f) {
+        return new ayyl(paramaysx, paramaymg);
+      }
+      if (l == aymn.g) {
+        return new ayyk(paramaysx, paramaymg);
+      }
+      if ((l == aymn.i) || (l == aymn.j)) {
+        return new ayyn(paramaysx, paramaymg);
+      }
+      if (l == aymn.k) {
+        return new ayym(paramaysx, paramaymg);
+      }
+    } while (!aymn.a(l));
+    return new ayyh(paramaysx, paramaymg);
+  }
+  
+  private static aysw b(aysx paramaysx, aymg paramaymg)
+  {
+    long l = paramaymg.a;
+    if (aymn.a(l)) {
+      return new ayxx(paramaysx, paramaymg);
+    }
+    if ((l == aymn.i) || (l == aymn.j)) {
+      return new ayya(paramaysx, paramaymg);
+    }
+    if (l == aymn.g) {
+      return new ayxy(paramaysx, paramaymg);
+    }
+    return new ayxu(paramaysx, paramaymg);
   }
 }
 

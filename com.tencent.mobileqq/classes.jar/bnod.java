@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class bnod
-  implements DialogInterface.OnClickListener
+public class bnod
 {
-  bnod(bnnx parambnnx, String[] paramArrayOfString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    bnnx.a(this.jdField_a_of_type_Bnnx, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
-  }
+  public int a;
+  public bnnz<Boolean, bnoe> a;
+  public String a;
+  public boolean a;
+  public int b;
+  public bnnz<Boolean, bnof> b;
+  public String b;
+  public boolean b;
+  public int c;
+  public int d;
 }
 
 

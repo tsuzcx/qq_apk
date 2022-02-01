@@ -1,185 +1,53 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqhr
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  public boolean h;
-  public boolean i;
-  public boolean j;
+  private static String jdField_a_of_type_JavaLangString = "https://club.vip.qq.com/official?_wv=16778247&_wwv=68&_nav_alpha=0&pay_src=10&_wvx=10&_proxy=1";
+  private boolean jdField_a_of_type_Boolean;
   
-  public aqhr()
+  @NonNull
+  public static aqhr a(String paramString)
   {
-    a();
+    aqhr localaqhr = new aqhr();
+    if (TextUtils.isEmpty(paramString))
+    {
+      localaqhr.jdField_a_of_type_Boolean = false;
+      return localaqhr;
+    }
+    a(paramString);
+    localaqhr.jdField_a_of_type_Boolean = true;
+    return localaqhr;
   }
   
-  public void a()
+  public static String a()
   {
-    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.dynamic_avatar.name());
-    this.jdField_a_of_type_JavaLangString = ((String)localObject);
-    this.jdField_a_of_type_Boolean = true;
-    for (;;)
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  private static void a(String paramString)
+  {
+    try
     {
-      try
-      {
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length < 11) {
-          continue;
-        }
-        this.jdField_a_of_type_Boolean = false;
-        if (Integer.valueOf(localObject[0]).intValue() != 1) {
-          continue;
-        }
-        this.jdField_b_of_type_Boolean = true;
-        if (!this.jdField_b_of_type_Boolean) {
-          continue;
-        }
-        if (Integer.valueOf(localObject[1]).intValue() != 1) {
-          continue;
-        }
-        this.jdField_c_of_type_Boolean = true;
-      }
-      catch (Exception localException)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("DynamicAvatarConfig", 2, "parse config exception:" + localException.getMessage());
-        continue;
-        this.jdField_c_of_type_Boolean = false;
-        continue;
-        this.jdField_d_of_type_Boolean = false;
-        continue;
-        this.e = false;
-        continue;
-        this.f = false;
-        continue;
-        this.g = false;
-        continue;
-        this.h = false;
-        continue;
-        this.i = false;
-        continue;
-        this.j = false;
-        continue;
-        this.jdField_c_of_type_Boolean = false;
-        this.jdField_d_of_type_Boolean = false;
-        this.e = false;
-        this.f = false;
-        this.g = false;
-        this.h = false;
-        this.i = false;
-        this.j = false;
-        continue;
-        if ((this.jdField_a_of_type_Int > 0) && (this.jdField_b_of_type_Int > 0)) {
-          continue;
-        }
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_c_of_type_Boolean = false;
-        this.jdField_d_of_type_Boolean = false;
-        this.e = false;
-        this.f = false;
-        this.g = false;
-        this.h = false;
-        this.i = false;
-        this.j = false;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("DynamicAvatarConfig", 2, "maxPlayingCount or maxPlayCountOneDay <= 0");
-        if (this.jdField_c_of_type_Int > 0) {
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("DynamicAvatarConfig", 2, "adjust samllSizeFPS:" + this.jdField_c_of_type_Int);
-        this.jdField_c_of_type_Int = 18;
-        if (this.jdField_d_of_type_Int > 0) {
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("DynamicAvatarConfig", 2, "adjust bigSizeFPS:" + this.jdField_d_of_type_Int);
-        this.jdField_d_of_type_Int = 18;
-      }
-      if (Integer.valueOf(localObject[2]).intValue() != 1) {
-        continue;
-      }
-      this.jdField_d_of_type_Boolean = true;
-      if (Integer.valueOf(localObject[3]).intValue() != 1) {
-        continue;
-      }
-      this.e = true;
-      if (Integer.valueOf(localObject[4]).intValue() != 1) {
-        continue;
-      }
-      this.f = true;
-      if (Integer.valueOf(localObject[5]).intValue() != 1) {
-        continue;
-      }
-      this.g = true;
-      if (Integer.valueOf(localObject[6]).intValue() != 1) {
-        continue;
-      }
-      this.h = true;
-      if (Integer.valueOf(localObject[11]).intValue() != 1) {
-        continue;
-      }
-      this.i = true;
-      if (Integer.valueOf(localObject[12]).intValue() != 1) {
-        continue;
-      }
-      this.j = true;
-      this.jdField_a_of_type_Int = Integer.valueOf(localObject[7]).intValue();
-      this.jdField_b_of_type_Int = Integer.valueOf(localObject[8]).intValue();
-      this.jdField_c_of_type_Int = Integer.valueOf(localObject[9]).intValue();
-      this.jdField_d_of_type_Int = Integer.valueOf(localObject[10]).intValue();
-      if (!this.jdField_a_of_type_Boolean) {
-        continue;
-      }
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_d_of_type_Boolean = true;
-      this.e = true;
-      this.f = true;
-      this.g = true;
-      this.h = true;
-      this.jdField_a_of_type_Int = 8;
-      this.jdField_b_of_type_Int = 200;
-      this.jdField_c_of_type_Int = 18;
-      this.jdField_d_of_type_Int = 18;
-      this.i = true;
-      this.j = true;
+      jdField_a_of_type_JavaLangString = new JSONObject(paramString).getString("qqvip_vip_account");
       return;
-      this.jdField_b_of_type_Boolean = false;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
-  public String toString()
+  public Boolean a()
   {
-    StringBuilder localStringBuilder = new StringBuilder("");
-    localStringBuilder.append("dpcString:").append(this.jdField_a_of_type_JavaLangString).append(",isPlayInAll:").append(this.jdField_b_of_type_Boolean).append(",isPlayInMsgTab:").append(this.jdField_c_of_type_Boolean).append(",isPlayInContacts:").append(this.jdField_d_of_type_Boolean).append(",isPlayInNearList:").append(this.e).append(",isPlayInFriendProfile:").append(this.f).append(",isPlayInNearProfile:").append(this.g).append(",isPlayInTroopProfile:").append(this.h).append(",maxPlayingCount:").append(this.jdField_a_of_type_Int).append(",maxPlayCountOneDay:").append(this.jdField_b_of_type_Int).append(",bigSizeFPS:").append(this.jdField_d_of_type_Int).append(",smallSizeFPS:").append(this.jdField_c_of_type_Int).append(",isConvsPlayAfterKill:").append(this.i).append(",isContactPlayAfterKill:").append(this.j).append(",isUseDefault:").append(this.jdField_a_of_type_Boolean);
-    return localStringBuilder.toString();
+    return Boolean.valueOf(this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqhr
  * JD-Core Version:    0.7.0.1
  */

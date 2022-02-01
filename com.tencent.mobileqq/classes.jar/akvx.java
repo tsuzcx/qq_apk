@@ -1,50 +1,76 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import cooperation.qzone.cache.CacheManager;
+import cooperation.qzone.cache.SDCardMountMonitorReceiver;
+import cooperation.qzone.cache.SDCardMountMonitorReceiver.SDCardMountStateListener;
+import java.io.File;
 
-class akvx
-  implements View.OnClickListener
+public class akvx
+  implements SDCardMountMonitorReceiver.SDCardMountStateListener
 {
-  akvx(akvw paramakvw) {}
+  private static akvx jdField_a_of_type_Akvx;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private akvy jdField_a_of_type_Akvy;
+  private String jdField_a_of_type_JavaLangString = "";
   
-  public void onClick(View paramView)
+  private akvx()
   {
-    Intent localIntent = new Intent();
-    int i = ((NewPhotoPreviewActivity)this.a.mActivity).getCurrentSelectedPostion();
-    if ((akvw.a(this.a).selectedPhotoList == null) || (akvw.b(this.a).selectedPhotoList.size() == 0)) {
-      if ((akvw.a(this.a).paths != null) && (i != -1))
-      {
-        ArrayList localArrayList = new ArrayList();
-        String str = (String)akvw.b(this.a).paths.get(i);
-        if (TextUtils.isEmpty(str)) {
-          break label182;
-        }
-        localArrayList.add(str);
-        localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", localArrayList);
-        bdll.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, "1", "", "", "");
-      }
-    }
-    for (;;)
+    a();
+    SDCardMountMonitorReceiver.getInstance().addListener(this);
+  }
+  
+  public static akvx a()
+  {
+    if (jdField_a_of_type_Akvx == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      ((NewPhotoPreviewActivity)this.a.mActivity).setResult(-1, localIntent);
-      ((NewPhotoPreviewActivity)this.a.mActivity).finish();
-      EventCollector.getInstance().onViewClicked(paramView);
+      if (jdField_a_of_type_Akvx == null) {
+        jdField_a_of_type_Akvx = new akvx();
+      }
+      return jdField_a_of_type_Akvx;
+    }
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_JavaLangString = CacheManager.getVideoFileCacheDir();
+    if (QLog.isColorLevel()) {
+      QLog.d("StorageManager", 2, "updateStorePath, storeVideoPath=" + this.jdField_a_of_type_JavaLangString);
+    }
+    try
+    {
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      if (!localFile.exists()) {
+        localFile.mkdirs();
+      }
       return;
-      label182:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("PhotoPreviewActivity", 2, "sendBtn click currentPath is null");
-        continue;
-        localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", akvw.c(this.a).selectedPhotoList);
-        bdll.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, String.valueOf(akvw.d(this.a).selectedPhotoList.size()), "", "", "");
+    }
+    catch (Exception localException)
+    {
+      QLog.e("StorageManager", 2, "create root path directory error", localException);
+    }
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void onSDCardMountStateChange(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StorageManager", 2, "sdcard mount receiver, isMount=" + paramBoolean);
+    }
+    String str = CacheManager.getVideoFileCacheDir();
+    if ((this.jdField_a_of_type_Akvy != null) && (!str.equals(this.jdField_a_of_type_JavaLangString)))
+    {
+      if (paramBoolean) {
+        this.jdField_a_of_type_Akvy.a(1, this.jdField_a_of_type_JavaLangString);
       }
     }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_Akvy.a(0, this.jdField_a_of_type_JavaLangString);
   }
 }
 

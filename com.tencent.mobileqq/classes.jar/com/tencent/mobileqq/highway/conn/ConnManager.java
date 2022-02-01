@@ -351,16 +351,21 @@ public class ConnManager
   public void onDisConnect(int paramInt, IConnection paramIConnection)
   {
     HwNetworkCenter.getInstance(this.engine.getAppContext()).updateNetInfo(this.engine.getAppContext());
-    if ((IConnection)this.connections.remove(Integer.valueOf(paramIConnection.getConnId())) != null)
+    IConnection localIConnection = (IConnection)this.connections.remove(Integer.valueOf(paramIConnection.getConnId()));
+    if ((localIConnection == null) || (localIConnection.getProtoType() != 2)) {}
+    synchronized (this.connections)
     {
+      BdhLogUtil.LogEvent("C", "OnDisConnect, mHERace.doOnConnFail.");
+      this.mHERace.doOnConnFail(localIConnection);
       this.connectedConn -= 1;
       this.engine.mRequestWorker.onConnClose(paramInt);
       BdhLogUtil.LogEvent("C", "OnDisConnect :　connId:" + paramInt + " Size:" + this.connections.size());
-    }
-    if (paramIConnection.getConnId() == this.iHttpPatchConnId)
-    {
-      this.iHttpPatchConnId = -1;
-      this.bUseHttpPatch.set(false);
+      if (paramIConnection.getConnId() == this.iHttpPatchConnId)
+      {
+        this.iHttpPatchConnId = -1;
+        this.bUseHttpPatch.set(false);
+      }
+      return;
     }
   }
   

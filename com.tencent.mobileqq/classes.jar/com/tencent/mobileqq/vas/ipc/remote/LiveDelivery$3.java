@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.vas.ipc.remote;
 
+import amyh;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aoeg;
 import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import eipc.EIPCModule;
 import eipc.EIPCResult;
-import twk;
+import uda;
 
 class LiveDelivery$3
-  extends aoeg
+  extends amyh
 {
   LiveDelivery$3(LiveDelivery paramLiveDelivery, EIPCModule paramEIPCModule, int paramInt, QQAppInterface paramQQAppInterface) {}
   
@@ -22,9 +22,9 @@ class LiveDelivery$3
     localEIPCResult.data.putBoolean("isSuccess", paramBoolean);
     localEIPCResult.data.putString("uin", paramString);
     this.val$moudle.callbackResult(this.val$callbackId, localEIPCResult);
-    if ((paramBoolean) && (TextUtils.isEmpty(twk.a().a(paramString))))
+    if ((paramBoolean) && (TextUtils.isEmpty(uda.a().a(paramString))))
     {
-      paramString = (PublicAccountHandler)this.val$app.a(11);
+      paramString = (PublicAccountHandler)this.val$app.getBusinessHandler(11);
       if (paramString != null) {
         paramString.a();
       }

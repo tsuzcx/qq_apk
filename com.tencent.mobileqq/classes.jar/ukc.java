@@ -1,6 +1,27 @@
-public abstract interface ukc
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import java.lang.ref.WeakReference;
+
+class ukc
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public abstract void a(Object paramObject, int paramInt1, int paramInt2, String paramString, boolean paramBoolean, uke paramuke);
+  private WeakReference<uka> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  ukc(uka paramuka1, uka paramuka2)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramuka2);
+  }
+  
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
+    if (paramBoolean) {}
+    for (String str = "success";; str = "fail")
+    {
+      uya.d("WSPublisherDialog", str + ", bundle: " + paramBundle.toString());
+      return;
+    }
+  }
 }
 
 

@@ -1,92 +1,49 @@
-import com.qq.jce.wup.BasicClassTypeUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.PluginStatic;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import mqq.app.AppRuntime;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
 
 public class bnsf
 {
-  public static final AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  public static final int[] a;
+  public static final int[] b;
+  public static final int[] c = { 2130846691, 2130846694, 2130846692, 2130846697, 2130846696 };
+  public static final int[] d = { 2130846693, 2130846691, 2130846694, 2130846692, 2130846697, 2130846696 };
+  public int a;
+  public Drawable a;
+  public String a;
+  public int b;
+  public String b;
+  
+  static
   {
-    if (paramBaseApplicationImpl == null) {
-      return null;
+    jdField_a_of_type_ArrayOfInt = new int[] { -1, -2148308, -1009097, -8136876, -13338378 };
+    jdField_b_of_type_ArrayOfInt = new int[] { -16777216, -1, -2148308, -1009097, -8136876, -13338378 };
+  }
+  
+  public bnsf(Drawable paramDrawable, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    if (paramInt1 == 0) {
+      this.jdField_b_of_type_JavaLangString = ColorPicker.a(paramInt2);
     }
-    if ("troop_member_card_plugin.apk".equals(paramString)) {}
-    label158:
-    for (String str = "com.tencent.mobileqq.memcard.base.TroopMemberCardAppInterface";; str = null) {
-      try
-      {
-        for (;;)
-        {
-          Class localClass = Class.forName(str);
-          paramBaseApplicationImpl = localClass;
-          if (paramBaseApplicationImpl != null) {
-            break;
-          }
-          try
-          {
-            QLog.e("TroopMemCardLog", 1, "*createTroopMemcardAppInterface load class fail");
-            return null;
-          }
-          catch (ClassNotFoundException paramBaseApplicationImpl)
-          {
-            paramBaseApplicationImpl.printStackTrace();
-            return null;
-          }
-          if (!"troop_manage_plugin.apk".equals(paramString)) {
-            break label158;
-          }
-          str = "com.tencent.mobileqq.base.TroopManageAppInterface";
-        }
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        for (;;)
-        {
-          paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, paramString);
-          paramBaseApplicationImpl = paramString.loadClass(str);
-          BasicClassTypeUtil.setClassLoader(true, paramString);
-        }
-      }
-      catch (IllegalArgumentException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-        if ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime))) {
-          break;
-        }
-        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-        return paramBaseApplicationImpl;
-      }
-      catch (IllegalAccessException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
-      catch (InstantiationException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
-      catch (InvocationTargetException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
-      catch (NoSuchMethodException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
-      catch (Exception paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-        return null;
-      }
+  }
+  
+  public bnsf(Drawable paramDrawable, int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = Color.parseColor(paramString);
+  }
+  
+  public static int a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return jdField_b_of_type_ArrayOfInt[2];
     }
+    return jdField_a_of_type_ArrayOfInt[1];
   }
 }
 

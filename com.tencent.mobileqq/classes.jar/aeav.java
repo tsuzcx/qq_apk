@@ -1,23 +1,17 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
 
-public final class aeav
-  implements DialogInterface.OnClickListener
+public class aeav
+  extends ampv
 {
-  public aeav(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, aebz paramaebz, aeca paramaeca, BaseActivity paramBaseActivity, boolean paramBoolean) {}
+  public aeav(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpgradeConfig(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    if (paramInt == 1)
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aebz, this.jdField_a_of_type_Aeca);
-      return;
+    QQSettingMe.a(this.a, paramUpgradeDetailWrapper);
+    if (this.a.c) {
+      this.a.n();
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Boolean, null);
   }
 }
 

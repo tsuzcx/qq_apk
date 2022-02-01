@@ -8,18 +8,18 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import antf;
-import aser;
-import asev;
-import asfa;
-import bhlq;
-import bhnv;
-import bhpr;
-import bioy;
+import aqyp;
+import aqyt;
+import aqyy;
+import bfur;
+import bgve;
 import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
@@ -58,7 +58,7 @@ public class ThemeAndBubbleCommonJsPlugin
   
   public void getNetwork(JSONObject paramJSONObject, String paramString)
   {
-    int i = bhnv.a(this.mRuntime.a());
+    int i = NetworkUtil.getSystemNetwork(this.mRuntime.a());
     try
     {
       paramJSONObject = new JSONObject();
@@ -143,7 +143,7 @@ public class ThemeAndBubbleCommonJsPlugin
     {
       paramString2 = new Bundle();
       paramString2.putString("jumpTo", paramJsBridgeListener.optString("jumpto"));
-      super.sendRemoteReq(asev.a("ipc_open_settings", paramString1, this.mOnRemoteResp.key, paramString2), false, true);
+      super.sendRemoteReq(aqyt.a("ipc_open_settings", paramString1, this.mOnRemoteResp.key, paramString2), false, true);
       return true;
     }
     if ("isWhiteName".equals(paramString3))
@@ -243,16 +243,16 @@ public class ThemeAndBubbleCommonJsPlugin
       paramString = new StringBuilder();
       paramString.append(paramJSONObject);
       paramString.append("?client=androidQQ");
-      paramString.append("&version=8.4.5.4745");
+      paramString.append("&version=8.4.8.4810");
       paramString.append("&system=" + Build.VERSION.RELEASE);
       paramString.append("&device=" + Build.DEVICE);
       paramString.append("&uin=" + ((AppActivity)this.mRuntime.a()).getAppRuntime().getAccount());
-      paramJSONObject = asfa.a("VIP_xingying", paramString.toString());
+      paramJSONObject = aqyy.a("VIP_xingying", paramString.toString());
       if (QLog.isColorLevel()) {
         QLog.i("CommonJsHandler", 2, "CommonJsHandler saveImage imageUrl=" + paramJSONObject);
       }
       paramString = System.currentTimeMillis() + ".jpg";
-      ThreadManager.executeOnNetWorkThread(new ThemeAndBubbleCommonJsPlugin.5(this, paramJSONObject, new File(antf.bg, paramString)));
+      ThreadManager.executeOnNetWorkThread(new ThemeAndBubbleCommonJsPlugin.5(this, paramJSONObject, new File(AppConstants.SDCARD_IMG_SAVE, paramString)));
       return;
     }
     catch (Exception paramJSONObject)
@@ -274,19 +274,19 @@ public class ThemeAndBubbleCommonJsPlugin
       }
       if (paramJSONObject.length >= 1)
       {
-        localObject = bhlq.a(this.mRuntime.a(), 230);
-        ((bhpr)localObject).a(str2);
-        ((bhpr)localObject).b(str1);
-        ((bhpr)localObject).a(paramJSONObject[0], new ThemeAndBubbleCommonJsPlugin.1(this, paramString));
+        localObject = bfur.a(this.mRuntime.a(), 230);
+        ((QQCustomDialogThreeBtns)localObject).setTitle(str2);
+        ((QQCustomDialogThreeBtns)localObject).setMessage(str1);
+        ((QQCustomDialogThreeBtns)localObject).setLeftButton(paramJSONObject[0], new ThemeAndBubbleCommonJsPlugin.1(this, paramString));
         if (paramJSONObject.length >= 2) {
-          ((bhpr)localObject).b(paramJSONObject[1], new ThemeAndBubbleCommonJsPlugin.2(this, paramString));
+          ((QQCustomDialogThreeBtns)localObject).setMiddleButton(paramJSONObject[1], new ThemeAndBubbleCommonJsPlugin.2(this, paramString));
         }
         if (paramJSONObject.length >= 3) {
-          ((bhpr)localObject).c(paramJSONObject[2], new ThemeAndBubbleCommonJsPlugin.3(this, paramString));
+          ((QQCustomDialogThreeBtns)localObject).setRightButton(paramJSONObject[2], new ThemeAndBubbleCommonJsPlugin.3(this, paramString));
         }
-        ((bhpr)localObject).setCanceledOnTouchOutside(false);
-        ((bhpr)localObject).setOnKeyListener(new ThemeAndBubbleCommonJsPlugin.4(this, (bhpr)localObject, paramString));
-        ((bhpr)localObject).show();
+        ((QQCustomDialogThreeBtns)localObject).setCanceledOnTouchOutside(false);
+        ((QQCustomDialogThreeBtns)localObject).setOnKeyListener(new ThemeAndBubbleCommonJsPlugin.4(this, (QQCustomDialogThreeBtns)localObject, paramString));
+        ((QQCustomDialogThreeBtns)localObject).show();
         return;
       }
       super.callJsOnError(paramString, "Button no found - " + (String)localObject);

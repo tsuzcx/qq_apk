@@ -1,23 +1,24 @@
-import android.text.TextUtils;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.json.JSONObject;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"putStringIfNotEmpty", "", "Lorg/json/JSONObject;", "key", "", "value", "defaultValue", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-public final class pnp
+public class pnp
+  extends RecyclerView.OnScrollListener
 {
-  public static final void a(@NotNull JSONObject paramJSONObject, @Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3)
+  public pnp(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramJSONObject, "$this$putStringIfNotEmpty");
-    if (!TextUtils.isEmpty((CharSequence)paramString2)) {
-      paramJSONObject.put(paramString1, paramString2);
-    }
-    while (paramString3 == null) {
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0) {}
+    for (;;)
+    {
+      if (pch.a()) {
+        pkp.a().l();
+      }
       return;
+      ReadInJoyPicWaterFallFragment.a(this.a);
     }
-    paramJSONObject.put(paramString1, paramString3);
   }
 }
 

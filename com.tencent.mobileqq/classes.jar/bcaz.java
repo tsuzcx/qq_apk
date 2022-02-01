@@ -1,21 +1,12 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-
 public class bcaz
-  extends ClickableSpan
 {
-  public bcaz(UniteSearchActivity paramUniteSearchActivity) {}
+  public long a;
+  public boolean a;
   
-  public void onClick(View paramView)
+  public bcaz()
   {
-    this.a.openContextMenu(this.a.a);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = -1L;
   }
 }
 

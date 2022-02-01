@@ -1,15 +1,25 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.qphone.base.util.QLog;
 
-class spu
-  extends spi
+public class spu
+  implements DialogInterface.OnClickListener
 {
-  public spu(spr paramspr, View paramView, BaseData paramBaseData)
-  {
-    super(paramView, paramBaseData);
-  }
+  public spu(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog remain cancel");
+    }
+    paramDialogInterface = pkm.a().a();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.b();
+    }
+    pkm.a().b(41695);
+  }
 }
 
 

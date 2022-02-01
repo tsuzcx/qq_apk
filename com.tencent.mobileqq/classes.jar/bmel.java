@@ -1,20 +1,19 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class bmel
-  extends FlingGestureHandler
+class bmel
+  extends Handler
 {
-  boolean a = true;
-  
-  public bmel(Activity paramActivity)
+  bmel(bmej parambmej, Looper paramLooper)
   {
-    super(paramActivity);
+    super(paramLooper);
   }
   
-  public void flingLToR()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a) {
-      super.flingLToR();
+    if (paramMessage.what == 993323) {
+      this.a.a();
     }
   }
 }

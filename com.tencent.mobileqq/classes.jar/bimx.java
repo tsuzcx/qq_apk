@@ -1,89 +1,41 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qidian.QidianProfileCardActivity.QidianCompoundProfileItem;
 
-class bimx
-  implements aasd
+public final class bimx
+  implements Parcelable.Creator<QidianProfileCardActivity.QidianCompoundProfileItem>
 {
-  bimx(bimw parambimw, String paramString, boolean paramBoolean) {}
-  
-  public void callback(Bundle paramBundle)
+  public QidianProfileCardActivity.QidianCompoundProfileItem a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_Bimw.isDestroy) {}
-    do
+    boolean bool2 = true;
+    QidianProfileCardActivity.QidianCompoundProfileItem localQidianCompoundProfileItem = new QidianProfileCardActivity.QidianCompoundProfileItem();
+    localQidianCompoundProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localQidianCompoundProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localQidianCompoundProfileItem.c = paramParcel.readString();
+    if (paramParcel.readByte() != 0)
     {
-      return;
-      if (TextUtils.equals(this.jdField_a_of_type_Bimw.b, this.jdField_a_of_type_JavaLangString)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("WebSecurityPluginV2", 2, "receive check result but not current url");
-    return;
-    int i = paramBundle.getInt("result", -1);
-    int j;
-    int k;
-    int m;
-    int n;
-    long l;
-    Object localObject;
-    if (i == 0)
-    {
-      j = paramBundle.getInt("jumpResult");
-      k = paramBundle.getInt("level");
-      m = paramBundle.getInt("subLevel");
-      n = paramBundle.getInt("umrType");
-      l = paramBundle.getLong("operationBit");
-      localObject = this.jdField_a_of_type_Bimw;
-      int i1 = ((bimw)localObject).jdField_a_of_type_Boolean;
-      if (k == 15)
-      {
-        i = 1;
-        label116:
-        ((bimw)localObject).jdField_a_of_type_Boolean = (i & i1);
-        if (j != 0) {
-          break label252;
-        }
-        if (this.jdField_a_of_type_Boolean) {
-          break label362;
-        }
+      bool1 = true;
+      localQidianCompoundProfileItem.jdField_a_of_type_Boolean = bool1;
+      localQidianCompoundProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readByte() == 0) {
+        break label103;
       }
     }
-    label167:
-    label360:
-    label362:
-    for (paramBundle = this.jdField_a_of_type_JavaLangString;; paramBundle = null)
+    label103:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      QLog.i("UrlCheckLog", 1, "check pass l=" + k);
-      this.jdField_a_of_type_Bimw.a(l);
-      for (;;)
-      {
-        if (TextUtils.isEmpty(paramBundle)) {
-          break label360;
-        }
-        localObject = this.jdField_a_of_type_Bimw.mRuntime.a();
-        if (localObject == null) {
-          break;
-        }
-        QLog.i("WebSecurityPluginV2", 1, "now jump url=" + noe.b(paramBundle, new String[0]));
-        this.jdField_a_of_type_Bimw.jdField_a_of_type_JavaLangString = paramBundle;
-        ((CustomWebView)localObject).loadUrl(paramBundle);
-        return;
-        i = 0;
-        break label116;
-        label252:
-        paramBundle = paramBundle.getString("jumpUrl");
-        QLog.i("UrlCheckLog", 1, "check finish jr=" + j + ", l=" + k + ", sl=" + m + ", umr=" + n);
-        break label167;
-        QLog.i("UrlCheckLog", 1, "check fail r=" + i);
-        if (!this.jdField_a_of_type_Boolean) {
-          paramBundle = this.jdField_a_of_type_JavaLangString;
-        } else {
-          paramBundle = null;
-        }
-      }
+      localQidianCompoundProfileItem.jdField_b_of_type_Boolean = bool1;
+      localQidianCompoundProfileItem.d = paramParcel.readString();
+      localQidianCompoundProfileItem.e = paramParcel.readString();
+      return localQidianCompoundProfileItem;
+      bool1 = false;
       break;
     }
+  }
+  
+  public QidianProfileCardActivity.QidianCompoundProfileItem[] a(int paramInt)
+  {
+    return new QidianProfileCardActivity.QidianCompoundProfileItem[paramInt];
   }
 }
 

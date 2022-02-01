@@ -1,23 +1,6 @@
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-
-class vox
-  extends LinearLayoutManager
+public abstract interface vox
 {
-  vox(vow paramvow, Context paramContext, int paramInt, boolean paramBoolean)
-  {
-    super(paramContext, paramInt, paramBoolean);
-  }
-  
-  public boolean canScrollHorizontally()
-  {
-    return false;
-  }
-  
-  public boolean canScrollVertically()
-  {
-    return false;
-  }
+  public abstract void a(vow paramvow);
 }
 
 

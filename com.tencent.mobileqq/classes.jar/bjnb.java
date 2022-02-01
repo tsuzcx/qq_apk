@@ -1,31 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityAccountView;
-import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class bjnb
-  implements View.OnClickListener
+public class bjnb<T>
 {
-  public bjnb(OpenAuthorityAccountView paramOpenAuthorityAccountView, String paramString) {}
+  private long jdField_a_of_type_Long;
+  private bjnc<T> jdField_a_of_type_Bjnc;
+  private long b;
   
-  public void onClick(View paramView)
+  private bjnb(bjnc<T> parambjnc)
   {
-    if (((OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) instanceof PublicFragmentActivityForOpenSDK)) && (OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) != null)) {
-      OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView).a(this.jdField_a_of_type_JavaLangString, true);
-    }
-    for (;;)
+    this.jdField_a_of_type_Bjnc = parambjnc;
+  }
+  
+  public static <T> bjnb<T> a(bjnc<T> parambjnc)
+  {
+    return new bjnb(parambjnc);
+  }
+  
+  public bjnb<T> a(long paramLong)
+  {
+    this.b = paramLong;
+    return this;
+  }
+  
+  public bjnb<T> a(T paramT)
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long > this.b)
     {
-      if (OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) != null) {
-        OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView).dismiss();
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) instanceof QuickLoginAuthorityActivity)) {
-        ((QuickLoginAuthorityActivity)OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
+      this.jdField_a_of_type_Long = l;
+      if (this.jdField_a_of_type_Bjnc != null) {
+        this.jdField_a_of_type_Bjnc.execute(paramT);
       }
     }
+    return this;
   }
 }
 

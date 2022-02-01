@@ -1,19 +1,38 @@
 package cooperation.qzone;
 
-import bnez;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
-public final class QZoneHelper$7
+final class QZoneHelper$7
   implements Runnable
 {
-  public QZoneHelper$7(QQAppInterface paramQQAppInterface) {}
+  QZoneHelper$7(QZoneHelper.StartActivity paramStartActivity) {}
   
   public void run()
   {
-    bnez localbnez = (bnez)this.a.getManager(175);
-    if (localbnez != null) {
-      localbnez.b();
+    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
+    if ((localObject == null) || (((List)localObject).size() <= 0))
+    {
+      this.val$startActivity.onStart(true, false);
+      return;
     }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if ("com.tencent.mobileqq:qzone".equals(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QZoneHelper", 2, "QzoneProcess is exist");
+        }
+        this.val$startActivity.onStart(true, true);
+        return;
+      }
+    }
+    this.val$startActivity.onStart(true, false);
   }
 }
 

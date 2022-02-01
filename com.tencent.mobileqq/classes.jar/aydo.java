@@ -1,17 +1,24 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-
-class aydo
-  extends nkp
+public class aydo
 {
-  aydo(aydm paramaydm, aydt paramaydt) {}
+  public aydp a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public String a()
   {
-    QLog.i("reportPlay", 1, " reportPlay code:" + paramInt);
-    if (this.jdField_a_of_type_Aydt != null) {
-      this.jdField_a_of_type_Aydt.a(paramInt, paramArrayOfByte, paramBundle);
+    return null;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.a == null) {
+      this.a = new aydp();
     }
+    this.a.a = paramString1;
+    this.a.b = paramString2;
+  }
+  
+  protected boolean a()
+  {
+    return false;
   }
 }
 

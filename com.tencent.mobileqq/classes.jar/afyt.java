@@ -1,18 +1,16 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
-public class afyt
-  implements View.OnClickListener
+class afyt
+  implements bjoe
 {
-  public afyt(TroopTransferActivity paramTroopTransferActivity) {}
+  afyt(afyr paramafyr, MessageForDeviceFile paramMessageForDeviceFile, bjnw parambjnw) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a.setText("");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Afyr.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    this.jdField_a_of_type_Afyr.b();
+    this.jdField_a_of_type_Bjnw.dismiss();
   }
 }
 

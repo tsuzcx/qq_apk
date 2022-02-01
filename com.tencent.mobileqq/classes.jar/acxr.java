@@ -1,13 +1,26 @@
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class acxr
-  implements actm
+  extends Handler
 {
-  public acxr(GdtVideoCommonView paramGdtVideoCommonView) {}
+  public acxr(ChatHistory paramChatHistory) {}
   
-  public void a(Object... paramVarArgs)
+  public void handleMessage(Message paramMessage)
   {
-    GdtVideoCommonView.a(this.a);
+    if (paramMessage.what == 1)
+    {
+      if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
+        this.a.a.dismiss();
+      }
+      this.a.a = new bhht(this.a, this.a.getTitleBarHeight());
+      this.a.a.setCancelable(false);
+      this.a.a.c(2131691382);
+      if (!this.a.isFinishing()) {
+        this.a.a.show();
+      }
+    }
   }
 }
 

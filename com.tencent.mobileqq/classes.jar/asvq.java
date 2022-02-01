@@ -1,20 +1,47 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.extendfriend.ExtendFriendManager.9;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public class asvq
-  extends apck
+class asvq
+  implements atez
 {
-  public asvq(ExtendFriendManager.9 param9, String paramString, boolean paramBoolean)
+  asvq(asvn paramasvn) {}
+  
+  public void a(boolean paramBoolean)
   {
-    super(paramString, paramBoolean);
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Asqq != null)) {
+      this.a.jdField_a_of_type_Asqq.a();
+    }
+    if (paramBoolean)
+    {
+      if (this.a.jdField_a_of_type_Asst.e() == 10) {
+        asqw.a(this.a.jdField_a_of_type_Asst.c());
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Asst.d(), this);
+      asvn.c(this.a, true);
+      this.a.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(4);
+      asvn.a(this.a);
+      return;
+    }
+    if (asvn.b(this.a))
+    {
+      asvn.c(this.a, false);
+      if (this.a.d) {
+        this.a.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
+      }
+      asvn.d(this.a, true);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d();
+      if (this.a.jdField_a_of_type_Asqp != null) {
+        this.a.jdField_a_of_type_Asqp.a();
+      }
+    }
+    aspt.a().a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Asst.d(), asvn.a(this.a), true);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendManager", 2, "getExtendFriendLocationInfoSync onLocationFinish " + paramInt);
-    }
+    asvn.b(this.a, paramBoolean2);
+    asvn.a(this.a, paramBoolean1);
   }
 }
 

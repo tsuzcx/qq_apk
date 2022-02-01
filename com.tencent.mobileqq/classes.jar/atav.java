@@ -1,185 +1,330 @@
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
-import com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp.HorseRaceLampVew;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class atav
-  extends asvt
+  implements atau
 {
-  public atav(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
-  
-  protected void a(boolean paramBoolean, int paramInt)
+  private void a(String paramString)
   {
-    asvi localasvi = (asvi)ExtendFriendLimitChatMatchFragment.a(this.a).app.getManager(264);
-    int j;
-    int i;
-    if (localasvi != null)
-    {
-      j = (int)localasvi.a();
-      i = (int)localasvi.b();
-    }
-    for (int k = (int)localasvi.c();; k = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ExtendFriendLimitChatMatchFragment", 2, "onUpdateCampusCertificateStatus,isSuccess = " + paramBoolean + ",maxMatchCount = " + j + ",matchedCount = " + i + ",leftMatchCount = " + k + ",scene = " + paramInt);
-      }
-      if ((paramBoolean) && (paramInt == 1))
-      {
-        ExtendFriendLimitChatMatchFragment.b(this.a).setVisibility(0);
-        ExtendFriendLimitChatMatchFragment.f(this.a);
-        if (ExtendFriendLimitChatMatchFragment.a(this.a).isShowing()) {
-          ExtendFriendLimitChatMatchFragment.a(this.a).b(j, k, localasvi.a());
-        }
-      }
-      return;
-      i = 0;
-      j = 0;
-    }
+    aszr.a(paramString);
   }
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void A()
+  {
+    a("0X80045D1");
+  }
+  
+  public void B()
+  {
+    a("0X80045D2");
+  }
+  
+  public void C()
+  {
+    a("0X80045DE");
+  }
+  
+  public void D()
+  {
+    a("0X80045DD");
+  }
+  
+  public void E()
+  {
+    a("0X80045DC");
+  }
+  
+  public void F()
+  {
+    a("0X80045A8");
+  }
+  
+  public void G()
+  {
+    a("0X80045AE");
+  }
+  
+  public void H()
+  {
+    a("0X80045A9");
+  }
+  
+  public void I()
+  {
+    a("0X80045AD");
+  }
+  
+  public void J()
+  {
+    a("0X80045AA");
+  }
+  
+  public void K()
+  {
+    a("0X80045BF");
+  }
+  
+  public void L()
+  {
+    a("0X80045C5");
+  }
+  
+  public void M()
+  {
+    a("0X80045C0");
+  }
+  
+  public void N()
+  {
+    a("0X80045C4");
+  }
+  
+  public void O()
+  {
+    a("0X80045C1");
+  }
+  
+  public void P()
+  {
+    a("0X80045B4");
+  }
+  
+  public void Q()
+  {
+    a("0X80045B0");
+  }
+  
+  public void R()
+  {
+    a("0X80045B6");
+  }
+  
+  public void S()
+  {
+    a("0X80045B3");
+  }
+  
+  public void T()
+  {
+    a("0X80045B5");
+  }
+  
+  public void U()
+  {
+    a("0X80045CB");
+  }
+  
+  public void V()
+  {
+    a("0X80045C7");
+  }
+  
+  public void W()
+  {
+    a("0X80045CD");
+  }
+  
+  public void X()
+  {
+    a("0X80045CA");
+  }
+  
+  public void Y()
+  {
+    a("0X80045CC");
+  }
+  
+  public void Z()
+  {
+    a("0X80045D3");
+  }
+  
+  public void a()
+  {
+    a("0X80045D8");
+  }
+  
+  public void aa()
+  {
+    a("0X80045D6");
+  }
+  
+  public void ab()
+  {
+    a("0X80045D4");
+  }
+  
+  public void ac()
+  {
+    a("0X80045D5");
+  }
+  
+  public void ad()
+  {
+    a("0X8004838");
+  }
+  
+  public void ae()
+  {
+    a("0X8004837");
+  }
+  
+  public void af()
+  {
+    a("0X8004834");
+  }
+  
+  public void ag()
+  {
+    a("0X8004836");
+  }
+  
+  public void ah()
+  {
+    a("0X8004835");
+  }
+  
+  public void ai()
+  {
+    a("0X8004832");
+  }
+  
+  public void aj()
+  {
+    a("0X8004831");
+  }
+  
+  public void ak()
+  {
+    a("0X8004833");
+  }
+  
+  public void b()
+  {
+    a("0X80045D8");
+  }
+  
+  public void c()
+  {
+    a("0X80045D8");
+  }
+  
+  public void d()
+  {
+    a("0X80045BE");
+  }
+  
+  public void e()
+  {
+    a("0X80045BD");
+  }
+  
+  public void f()
+  {
+    a("0X80045BC");
+  }
+  
+  public void g() {}
+  
+  public void h()
+  {
+    a("0X80045E6");
+  }
+  
+  public void i()
+  {
+    a("0X80045E7");
+  }
+  
+  public void j()
+  {
+    a("0X80045E8");
+  }
+  
+  public void k()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendLimitChatMatchFragment", 2, "onUpdateSignalBombPush " + paramBoolean + " " + paramString);
-    }
-    if ((ExtendFriendLimitChatMatchFragment.a(this.a) == 1) && (ExtendFriendLimitChatMatchFragment.a(this.a) != null) && (ExtendFriendLimitChatMatchFragment.a(this.a).isResume()) && (ExtendFriendLimitChatMatchFragment.a(this.a).a() != 2) && (!ExtendFriendLimitChatMatchFragment.a(this.a))) {
-      ExtendFriendLimitChatMatchFragment.a(this.a, atbg.a(ExtendFriendLimitChatMatchFragment.a(this.a), ExtendFriendLimitChatMatchFragment.a(this.a).app, ExtendFriendLimitChatMatchFragment.a(this.a)));
+      QLog.e("ImplDataReportHandle_Ver51<FileAssistant>", 2, "localfile download?!" + aszt.a());
     }
   }
   
-  protected void a(boolean paramBoolean1, ArrayList<asxk> paramArrayList, boolean paramBoolean2, int paramInt, ArrayList<String> paramArrayList1, boolean paramBoolean3)
+  public void l()
   {
-    paramBoolean2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.i("ExtendFriendLimitChatMatchFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean1);
-    }
-    if (paramBoolean1)
-    {
-      if (paramInt > 0) {
-        break label130;
-      }
-      QLog.e("ExtendFriendLimitChatMatchFragment", 2, "onlineCount  wrong");
-      if ((paramArrayList1 != null) && (paramArrayList1.size() > 0))
-      {
-        if (this.a.jdField_a_of_type_Atel == null) {
-          break label197;
-        }
-        this.a.jdField_a_of_type_Atel.a(paramArrayList1);
-      }
-      label85:
-      if ((ExtendFriendLimitChatMatchFragment.a(this.a) != null) && (!ExtendFriendLimitChatMatchFragment.a(this.a).isFinishing()) && (ExtendFriendLimitChatMatchFragment.a(this.a).app != null)) {
-        break label208;
-      }
-      QLog.e("ExtendFriendLimitChatMatchFragment", 2, "mActivity finish ");
-    }
-    label130:
-    label197:
-    label208:
-    do
-    {
-      return;
-      Object localObject = paramInt + BaseApplication.getContext().getResources().getString(2131698053);
-      if (ExtendFriendLimitChatMatchFragment.a(this.a) != null)
-      {
-        ExtendFriendLimitChatMatchFragment.a(this.a).setText((CharSequence)localObject);
-        break;
-      }
-      QLog.e("ExtendFriendLimitChatMatchFragment", 2, "mMatchCountTxt is null");
-      break;
-      QLog.e("ExtendFriendLimitChatMatchFragment", 2, "mHeadsPanleView is null");
-      break label85;
-      paramArrayList1 = (asvi)ExtendFriendLimitChatMatchFragment.a(this.a).app.getManager(264);
-      if (paramArrayList1.i())
-      {
-        ExtendFriendLimitChatMatchFragment.a(this.a).setVisibility(0);
-        QLog.d("ExtendFriendLimitChatMatchFragment", 2, "signalBtn VISIBLE with controlbit");
-        if (!paramBoolean3) {
-          break label454;
-        }
-        if (paramArrayList1 != null)
-        {
-          if (paramArrayList1.i()) {
-            break label418;
-          }
-          ExtendFriendLimitChatMatchFragment.b(this.a, true);
-          QLog.e("ExtendFriendLimitChatMatchFragment", 2, "bSignalBombOpen FALSE BUG signaflag open NEED PB CLOSE");
-        }
-      }
-      for (;;)
-      {
-        if ((paramArrayList == null) || (paramArrayList.size() <= 0) || (ExtendFriendLimitChatMatchFragment.a(this.a) == null)) {
-          break label593;
-        }
-        paramInt = 0;
-        while (paramInt < paramArrayList.size())
-        {
-          localObject = (asxk)paramArrayList.get(paramInt);
-          if (!TextUtils.isEmpty(((asxk)localObject).jdField_a_of_type_JavaLangString)) {
-            ExtendFriendLimitChatMatchFragment.a(this.a, ExtendFriendLimitChatMatchFragment.a(this.a) + ((asxk)localObject).jdField_a_of_type_JavaLangString + ";");
-          }
-          paramInt += 1;
-        }
-        ExtendFriendLimitChatMatchFragment.a(this.a).setVisibility(8);
-        QLog.d("ExtendFriendLimitChatMatchFragment", 2, "signalBtn GONE with controlbit");
-        break;
-        if (!atbg.a())
-        {
-          ExtendFriendLimitChatMatchFragment.b(this.a, true);
-          ExtendFriendLimitChatMatchFragment.e(this.a);
-        }
-        else
-        {
-          ExtendFriendLimitChatMatchFragment.a(this.a, true, true);
-          continue;
-          ExtendFriendLimitChatMatchFragment.a(this.a, false, true);
-        }
-      }
-      paramBoolean1 = paramBoolean2;
-      if (paramArrayList1 != null) {
-        paramBoolean1 = paramArrayList1.h();
-      }
-      paramInt = paramArrayList.size() - 1;
-      while (paramInt >= 0)
-      {
-        if ((((asxk)paramArrayList.get(paramInt)).jdField_a_of_type_Int == 10000) && (!paramBoolean1))
-        {
-          QLog.e("ExtendFriendLimitChatMatchFragment", 2, "MATCH_CHAT_TAG_ID_FOR_VOICE_MATCH REMOVE by flag");
-          paramArrayList.remove(paramInt);
-        }
-        paramInt -= 1;
-      }
-      paramArrayList1 = new atfh();
-      paramArrayList1.a(paramArrayList);
-      if (paramArrayList.size() <= 0) {
-        break label583;
-      }
-    } while (ExtendFriendLimitChatMatchFragment.a(this.a) == null);
-    label418:
-    label454:
-    ExtendFriendLimitChatMatchFragment.a(this.a).setAdapter(paramArrayList1);
-    return;
-    label583:
-    QLog.e("ExtendFriendLimitChatMatchFragment", 2, "TaginfoInfo size 0");
-    return;
-    label593:
-    QLog.e("ExtendFriendLimitChatMatchFragment", 2, "TagInfo size 0");
+    a("0X80045E3");
   }
   
-  protected void l_(int paramInt)
+  public void m()
   {
-    axaw.a(this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, ExtendFriendLimitChatMatchFragment.a(this.a).app);
+    a("0X80045E4");
+  }
+  
+  public void n()
+  {
+    a("0X80045E5");
+  }
+  
+  public void o()
+  {
+    a("0X80045DF");
+  }
+  
+  public void p()
+  {
+    a("0X80045E0");
+  }
+  
+  public void q()
+  {
+    a("0X80045E1");
+  }
+  
+  public void r()
+  {
+    a("0X80045E2");
+  }
+  
+  public void s()
+  {
+    a("0X80045B7");
+  }
+  
+  public void t()
+  {
+    a("0X80045B8");
+  }
+  
+  public void u()
+  {
+    a("0X80045B9");
+  }
+  
+  public void v()
+  {
+    a("0X80045BA");
+  }
+  
+  public void w()
+  {
+    a("0X80045BB");
+  }
+  
+  public void x()
+  {
+    a("0X80045CE");
+  }
+  
+  public void y()
+  {
+    a("0X80045CF");
+  }
+  
+  public void z()
+  {
+    a("0X80045D0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atav
  * JD-Core Version:    0.7.0.1
  */

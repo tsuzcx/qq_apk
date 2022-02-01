@@ -1,18 +1,22 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
+import android.os.Handler;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper.6.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
 public class aefe
-  implements DialogInterface.OnClickListener
+  implements INetEventHandler
 {
-  public aefe(ChatSettingActivity paramChatSettingActivity) {}
+  aefe(aeey paramaeey) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    this.a.finish();
-    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
-      ChatSettingActivity.a(this.a).dismiss();
+    if (!paramBoolean)
+    {
+      Toast.makeText(BaseApplicationImpl.getApplication(), this.a.a.getString(2131694072), 1).show();
+      SendMultiPictureHelper.6.1 local1 = new SendMultiPictureHelper.6.1(this);
+      new Handler().postDelayed(local1, 3000L);
     }
   }
 }

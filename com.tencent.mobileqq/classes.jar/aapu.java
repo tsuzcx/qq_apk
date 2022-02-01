@@ -1,8 +1,21 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import com.tencent.device.bind.DevicePluginDownloadActivity;
+import mqq.app.QQPermissionCallback;
 
-public abstract interface aapu
+public class aapu
+  implements QQPermissionCallback
 {
-  public abstract void b(CertifiedAccountMeta.StFeed paramStFeed);
+  public aapu(DevicePluginDownloadActivity paramDevicePluginDownloadActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    bfur.a(this.a);
+    this.a.finish();
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    DevicePluginDownloadActivity.a(this.a);
+  }
 }
 
 

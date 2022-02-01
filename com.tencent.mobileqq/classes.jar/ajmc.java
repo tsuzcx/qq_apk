@@ -1,45 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MayKnowRecommend;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.ContactListView;
 
 public class ajmc
-  extends ajmf
+  extends amsu
 {
-  public MayKnowRecommend a;
+  public ajmc(ContactListView paramContactListView) {}
   
-  public ajmc(MayKnowRecommend paramMayKnowRecommend)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend = paramMayKnowRecommend;
-    this.jdField_a_of_type_Long = paramMayKnowRecommend.timestamp;
-  }
+  protected void onAddFriend(String paramString) {}
   
-  public String a()
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend.uin;
-  }
-  
-  public String a(QQAppInterface paramQQAppInterface)
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      paramQQAppInterface = (aobl)paramQQAppInterface.getManager(159);
-      if (paramQQAppInterface == null) {
-        break label67;
-      }
+    if ((paramBoolean1) && (paramBoolean2) && (!paramBoolean3)) {
+      this.a.j();
     }
-    label67:
-    for (boolean bool = paramQQAppInterface.a();; bool = false)
-    {
-      paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqDataMayKnowRecommend.getDisplayName(bool);
-      this.jdField_a_of_type_JavaLangString = String.format(BaseApplicationImpl.sApplication.getString(2131689654), new Object[] { paramQQAppInterface });
-      return this.jdField_a_of_type_JavaLangString;
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
   }
 }
 

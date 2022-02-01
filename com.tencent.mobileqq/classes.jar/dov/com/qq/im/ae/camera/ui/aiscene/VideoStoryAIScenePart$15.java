@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.camera.ui.aiscene;
 
-import bokv;
+import blpb;
 
 public class VideoStoryAIScenePart$15
   implements Runnable
 {
-  public VideoStoryAIScenePart$15(bokv parambokv) {}
+  public VideoStoryAIScenePart$15(blpb paramblpb) {}
   
   public void run()
   {
-    this.this$0.e();
+    this.this$0.b();
   }
 }
 

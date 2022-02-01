@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.qim;
 
-import aifn;
-import aifo;
+import ahcd;
+import ahce;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -14,7 +14,7 @@ import mqq.os.MqqHandler;
 public class QIMUserManager$5
   implements Runnable
 {
-  public QIMUserManager$5(aifn paramaifn, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  public QIMUserManager$5(ahcd paramahcd, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
   public void run()
   {
@@ -26,25 +26,25 @@ public class QIMUserManager$5
         if (!localIterator.hasNext()) {
           break;
         }
-        aifo localaifo = (aifo)localIterator.next();
-        if ((this.b == null) || (this.b.size() <= localaifo.jdField_a_of_type_Int)) {
+        ahce localahce = (ahce)localIterator.next();
+        if ((this.b == null) || (this.b.size() <= localahce.jdField_a_of_type_Int)) {
           continue;
         }
-        if (((int[])this.b.get(localaifo.jdField_a_of_type_Int)).length >= 7)
+        if (((int[])this.b.get(localahce.jdField_a_of_type_Int)).length >= 7)
         {
           i = 5;
-          if (((int[])this.b.get(localaifo.jdField_a_of_type_Int)).length < 7) {
+          if (((int[])this.b.get(localahce.jdField_a_of_type_Int)).length < 7) {
             break label264;
           }
           j = 6;
           StateListDrawable localStateListDrawable = new StateListDrawable();
-          Drawable localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localaifo.jdField_a_of_type_Int))[j]);
+          Drawable localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localahce.jdField_a_of_type_Int))[j]);
           localStateListDrawable.addState(new int[] { 16842913, 16842910 }, localDrawable);
-          localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localaifo.jdField_a_of_type_Int))[j]);
+          localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localahce.jdField_a_of_type_Int))[j]);
           localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable);
-          localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localaifo.jdField_a_of_type_Int))[i]);
+          localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localahce.jdField_a_of_type_Int))[i]);
           localStateListDrawable.addState(new int[] { 16842910 }, localDrawable);
-          localaifo.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
+          localahce.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
           continue;
         }
         int i = 4;

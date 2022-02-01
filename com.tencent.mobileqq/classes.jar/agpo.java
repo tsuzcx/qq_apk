@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class agpo
-  implements agrk
+  implements PopupWindow.OnDismissListener
 {
-  public agpo(DoodlePanel paramDoodlePanel) {}
+  public agpo(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void a(int paramInt)
+  public void onDismiss()
   {
-    if (DoodlePanel.a(this.a) != null)
-    {
-      if (DoodlePanel.a(this.a) != null) {
-        DoodlePanel.a(this.a).setTemplateID(paramInt);
-      }
-      DoodlePanel.a(this.a);
-      bhjc.a(this.a.getContext(), "aio_doodle_template_picker_select", String.valueOf(paramInt));
-    }
+    StructingMsgItemBuilder.b(this.a, false);
   }
 }
 

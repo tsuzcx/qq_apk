@@ -1,45 +1,24 @@
-import android.view.View;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
+import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import friendlist.GetOnlineInfoResp;
+import mqq.os.MqqHandler;
 
-class ytk
-  extends yop
+public class ytk
+  extends amsu
 {
-  ytk(ysw paramysw) {}
+  public ytk(StoryQIMBadgeView paramStoryQIMBadgeView) {}
   
-  public void a(int paramInt, View paramView, Object paramObject, yqw paramyqw)
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    boolean bool;
-    switch (paramView.getId())
-    {
-    default: 
-      if (ysw.a(this.a).a().size() <= 0) {
-        break label149;
-      }
-      paramView = this.a;
-      if (!ysw.a(this.a))
-      {
-        bool = true;
-        ysw.a(paramView, bool);
-        ysw.a(this.a);
-        if (!ysw.a(this.a)) {
-          break label143;
-        }
-      }
-      break;
-    }
-    label143:
-    for (paramView = "1";; paramView = "2")
-    {
-      yup.a("mystory", "clk_fold", 0, 0, new String[] { paramView, "2" });
-      yup.a("home_page", "exp_share_day", 0, 0, new String[0]);
+    super.onGetOnlineInfoByUinOrMobile(paramBoolean, paramLong, paramString, paramGetOnlineInfoResp);
+    if ((StoryQIMBadgeView.a(this.a) == null) || (paramGetOnlineInfoResp == null) || (TextUtils.isEmpty(StoryQIMBadgeView.a(this.a).qq))) {}
+    while ((!paramBoolean) || (!bftf.a(StoryQIMBadgeView.a(this.a).qq, paramString))) {
       return;
-      ysw.a(this.a, ysw.a(this.a), paramView);
-      return;
-      bool = false;
-      break;
     }
-    label149:
-    ysw.a(this.a, ysw.a(this.a), paramView);
+    ThreadManager.getUIHandler().post(new StoryQIMBadgeView.1.1(this, paramGetOnlineInfoResp, paramString));
   }
 }
 

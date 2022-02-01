@@ -1,13 +1,24 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ahxv
-  implements ahyf
+  implements View.OnClickListener
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public ahxv(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  
+  public void onClick(View paramView)
   {
-    paramahed.a(paramahfq.b, paramString);
+    InputMethodManager localInputMethodManager = (InputMethodManager)this.a.getSystemService("input_method");
+    if ((localInputMethodManager != null) && (localInputMethodManager.isActive())) {
+      localInputMethodManager.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+    }
+    this.a.setResult(1);
+    this.a.finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

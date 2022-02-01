@@ -1,16 +1,23 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.ProviderViewEditContainer;
 
-final class bndo
-  implements bndq
+class bndo
+  implements bnja
 {
-  public void a(boolean paramBoolean, Context paramContext, bndr parambndr)
+  bndo(bndn parambndn) {}
+  
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
+    this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a();
+    if (this.a.jdField_a_of_type_Bnee.a == 11) {
+      this.a.jdField_a_of_type_Bnee.a(0);
     }
-    if (paramBoolean) {
-      bndl.c(paramContext, parambndr);
+  }
+  
+  public void a(bnno parambnno)
+  {
+    this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a(103, new Object[] { parambnno });
+    if (this.a.jdField_a_of_type_Bnee.a == 0) {
+      this.a.jdField_a_of_type_Bnee.a(11);
     }
   }
 }

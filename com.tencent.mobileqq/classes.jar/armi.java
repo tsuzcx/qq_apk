@@ -1,104 +1,101 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.SendMessageHandler;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.collections.ArraysKt;
+import kotlin.jvm.internal.Intrinsics;
+import mqq.app.MobileQQ;
+import org.jetbrains.annotations.Nullable;
 
-public class armi
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/extendfriend/limitchat/AioLimitColdPalaceHelper$1", "Lcom/tencent/mobileqq/app/MessageObserver;", "onMessageRecordAdded", "", "list", "", "Lcom/tencent/mobileqq/data/MessageRecord;", "onUpdateSendMsgError", "uin", "", "uinType", "", "replyCode", "sendMessageHandler", "Lcom/tencent/mobileqq/utils/SendMessageHandler;", "timeOut", "", "dbid", "errMsg", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class armi
+  extends amwl
 {
-  @NonNull
-  public final armj a;
-  @NonNull
-  public final armj b;
-  @NonNull
-  public final armj c;
-  
-  private armi()
+  public void onMessageRecordAdded(@Nullable List<MessageRecord> paramList)
   {
-    this(a(null, ""), a(null, ""), a(null, ""));
-  }
-  
-  private armi(armj paramarmj1, armj paramarmj2, armj paramarmj3)
-  {
-    this.a = paramarmj1;
-    this.b = paramarmj2;
-    this.c = paramarmj3;
-    if (QLog.isColorLevel()) {
-      QLog.d("KC.ConfigProcessor", 1, toString());
-    }
-  }
-  
-  @NonNull
-  public static armi a()
-  {
-    return new armi();
-  }
-  
-  @NonNull
-  public static armi a(@Nullable String paramString)
-  {
-    try
+    if (armh.a(this.a)) {}
+    Object localObject2;
+    Object localObject1;
+    label93:
+    label98:
+    do
     {
-      if (!TextUtils.isEmpty(paramString))
+      do
       {
-        paramString = new JSONObject(paramString);
-        return new armi(a(paramString, "AIO"), a(paramString, "group"), a(paramString, "download"));
-      }
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        QLog.e("KC.ConfigProcessor", 1, "json parse error:" + paramString);
-        paramString = null;
-      }
-    }
-  }
-  
-  @NonNull
-  private static armj a(JSONObject paramJSONObject, String paramString)
-  {
-    boolean bool = false;
-    if ((paramJSONObject != null) && (!TextUtils.isEmpty(paramString))) {
-      try
-      {
-        Object localObject = paramJSONObject.optJSONObject(paramString);
-        paramJSONObject = ((JSONObject)localObject).optString("content", null);
-        JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("keyWords");
-        localObject = ((JSONObject)localObject).optJSONArray("actionUrls");
-        String[] arrayOfString1 = new String[localJSONArray.length()];
-        String[] arrayOfString2 = new String[localJSONArray.length()];
-        int i = 0;
-        while (i < localJSONArray.length())
+        return;
+        if (QLog.isColorLevel())
         {
-          arrayOfString1[i] = localJSONArray.optString(i, null);
-          arrayOfString2[i] = ((JSONArray)localObject).optString(i, null);
-          i += 1;
+          localObject2 = new StringBuilder().append("onMessageRecordAdded msg size is ");
+          if (paramList == null) {
+            break label93;
+          }
         }
-        if (paramJSONObject != null) {
-          bool = true;
+        for (localObject1 = Integer.valueOf(paramList.size());; localObject1 = null)
+        {
+          QLog.i("AioLimitColdPalaceHelper", 2, localObject1);
+          if ((!this.a.a()) || (!this.a.b())) {
+            break label98;
+          }
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.i("AioLimitColdPalaceHelper", 2, "onMessageRecordAdded: has insert ");
+          return;
         }
-        paramJSONObject = new armj(paramString, bool, paramJSONObject, arrayOfString1, arrayOfString2);
-        return paramJSONObject;
+      } while (this.a.a().sessionInfo == null);
+      localObject1 = this.a.a().sessionInfo;
+      if (localObject1 == null) {
+        Intrinsics.throwNpe();
       }
-      catch (Exception paramJSONObject)
+    } while ((TextUtils.isEmpty((CharSequence)((SessionInfo)localObject1).curFriendUin)) || (paramList == null));
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      localObject1 = (MessageRecord)paramList.next();
+      localObject2 = abwz.h;
+      Intrinsics.checkExpressionValueIsNotNull(localObject2, "MsgProxyUtils.MSGTYPE_HISTORY_INVISIBLE");
+      if (!ArraysKt.contains((int[])localObject2, ((MessageRecord)localObject1).msgtype))
       {
-        QLog.e("KC.ConfigProcessor", 1, "json parse error:" + paramJSONObject);
+        localObject2 = this.a.a().sessionInfo;
+        if (localObject2 == null) {
+          Intrinsics.throwNpe();
+        }
+        if (Intrinsics.areEqual(((SessionInfo)localObject2).curFriendUin, ((MessageRecord)localObject1).senderuin))
+        {
+          localObject1 = this.a;
+          ((armh)localObject1).b(((armh)localObject1).b() + 1);
+          if ((this.a.a()) && (!this.a.b()) && (this.a.b() >= this.a.c())) {
+            this.a.f();
+          }
+        }
       }
     }
-    return new armj();
   }
   
-  public String toString()
+  protected void onUpdateSendMsgError(@Nullable String paramString1, int paramInt1, int paramInt2, @Nullable SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, @Nullable String paramString2)
   {
-    return "KingCardConfig{aio=" + this.a + ", group=" + this.b + ", download=" + this.c + '}';
+    QLog.d("AioLimitColdPalaceHelper", 1, "onUpdateSendMsgError uinType=" + paramInt1 + " uin=" + MobileQQ.getShortUinStr(paramString1));
+    if (paramInt2 == 69)
+    {
+      paramSendMessageHandler = arom.a;
+      paramString2 = this.a.a().app;
+      Intrinsics.checkExpressionValueIsNotNull(paramString2, "mChatPie.app");
+      paramSendMessageHandler = paramSendMessageHandler.a(paramString2);
+      if (paramString1 == null) {
+        Intrinsics.throwNpe();
+      }
+      paramSendMessageHandler.a(paramString1, paramInt1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     armi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-public final class bjwp
-  implements Parcelable.Creator<DownloadInfo>
+public abstract class bjwp
+  extends bjwj
 {
-  public DownloadInfo a(Parcel paramParcel)
+  private int a;
+  private int b;
+  
+  public bjwp(int paramInt1, int paramInt2)
   {
-    return new DownloadInfo(paramParcel);
+    this.a = paramInt2;
+    this.b = paramInt1;
   }
   
-  public DownloadInfo[] a(int paramInt)
+  public int a(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
   {
-    return new DownloadInfo[paramInt];
+    return this.a;
+  }
+  
+  public int b(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  {
+    return this.b;
+  }
+  
+  public int getMovementFlags(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
+  {
+    return makeMovementFlags(b(paramRecyclerView, paramViewHolder), a(paramRecyclerView, paramViewHolder));
   }
 }
 

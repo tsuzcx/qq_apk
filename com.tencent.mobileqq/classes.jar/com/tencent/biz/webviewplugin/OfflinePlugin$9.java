@@ -1,22 +1,22 @@
 package com.tencent.biz.webviewplugin;
 
-import abff;
+import aabq;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import java.util.HashMap;
-import txl;
+import uea;
 
 public class OfflinePlugin$9
   implements Runnable
 {
-  public OfflinePlugin$9(abff paramabff) {}
+  public OfflinePlugin$9(aabq paramaabq) {}
   
   public void run()
   {
-    if (abff.jdField_a_of_type_JavaUtilHashMap != null)
+    if (aabq.jdField_a_of_type_JavaUtilHashMap != null)
     {
-      txl localtxl = (txl)abff.jdField_a_of_type_JavaUtilHashMap.get(abff.a(this.this$0));
-      if ((localtxl != null) && (localtxl.b() == 1))
+      uea localuea = (uea)aabq.jdField_a_of_type_JavaUtilHashMap.get(aabq.a(this.this$0));
+      if ((localuea != null) && (localuea.b() == 1))
       {
         if (this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
           this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
@@ -24,7 +24,7 @@ public class OfflinePlugin$9
         if (this.this$0.jdField_a_of_type_AndroidWidgetProgressBar != null) {
           this.this$0.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
         }
-        localtxl.a(2);
+        localuea.a(2);
       }
     }
   }

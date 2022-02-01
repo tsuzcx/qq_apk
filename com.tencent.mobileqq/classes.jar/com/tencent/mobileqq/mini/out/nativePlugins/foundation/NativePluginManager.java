@@ -26,6 +26,8 @@ public class NativePluginManager
     pluginList.add(new NativePluginManager.PluginInfo("invokeGameBuddyAio", "com.tencent.mobileqq.mini.out.nativePlugins.GameBuddyPlugin"));
     pluginList.add(new NativePluginManager.PluginInfo("checkGameBuddyType", "com.tencent.mobileqq.mini.out.nativePlugins.GameBuddyPlugin"));
     pluginList.add(new NativePluginManager.PluginInfo("getGUID", "com.tencent.mobileqq.mini.out.nativePlugins.DeviceInfoPlugin"));
+    pluginList.add(new NativePluginManager.PluginInfo("sendMsg", "com.tencent.mobileqq.mini.out.nativePlugins.SmsPlugin"));
+    pluginList.add(new NativePluginManager.PluginInfo("nowlive", "com.tencent.mobileqq.mini.out.nativePlugins.NowLiveNativePlugin"));
   }
   
   public static Set<NativePluginManager.PluginInfo> getPluginInfo()

@@ -1,34 +1,38 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.InputStream;
 
-class szb
-  implements ViewTreeObserver.OnPreDrawListener
+public class szb
+  implements ComplementFileStringLoader
 {
-  private final int jdField_a_of_type_Int;
-  private final int b;
+  private szi a;
   
-  szb(sza paramsza, int paramInt1, int paramInt2)
+  public szb(szi paramszi)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.a = paramszi;
   }
   
-  public boolean onPreDraw()
+  public String loadFileAsString(String paramString)
   {
-    this.jdField_a_of_type_Sza.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Sza.a, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Sza.a) + sza.a(this.jdField_a_of_type_Sza));
-    ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Sza.a, ReadInJoyNinePicDeliverDynamicGridView.b(this.jdField_a_of_type_Sza.a) + sza.b(this.jdField_a_of_type_Sza));
-    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Sza.a) != null) {
-      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Sza.a).setVisibility(0);
+    try
+    {
+      InputStream localInputStream = this.a.a(paramString);
+      if (localInputStream == null) {
+        throw new IllegalStateException(paramString + " not found");
+      }
     }
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Sza.a, this.jdField_a_of_type_Sza.a.a(ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Sza.a)));
-    if (ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Sza.a) != null) {
-      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Sza.a).setVisibility(4);
+    catch (IOException localIOException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("OfflineComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
+        localIOException.printStackTrace();
+      }
+      return null;
     }
-    ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_Sza.a, this.jdField_a_of_type_Int, this.b);
-    return true;
+    String str = szr.a(localIOException);
+    return str;
   }
 }
 

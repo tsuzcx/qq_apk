@@ -1,14 +1,61 @@
-import com.tencent.mobileqq.together.writetogether.websocket.msg.BaseToWriteTogetherMsg;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract interface beml
+public class beml
+  extends BaseAdapter
 {
-  public abstract void a(int paramInt);
+  public bemm a;
+  protected List<String> a = new ArrayList();
   
-  public abstract void a(bemm parambemm);
+  public String a(int paramInt)
+  {
+    return (String)this.a.get(paramInt);
+  }
   
-  public abstract void a(BaseToWriteTogetherMsg paramBaseToWriteTogetherMsg);
+  public void a(String paramString)
+  {
+    this.a.add(paramString);
+  }
   
-  public abstract void b(bemm parambemm);
+  public int getCount()
+  {
+    return this.a.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560655, null, false);
+      paramView = new bemn(this);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379863));
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramView);
+      localView.setTag(paramView);
+    }
+    for (;;)
+    {
+      Object localObject = a(paramInt);
+      paramView.jdField_a_of_type_Int = paramInt;
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      localObject = (bemn)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+    }
+  }
 }
 
 

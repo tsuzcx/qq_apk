@@ -1,10 +1,10 @@
 package Wallet;
 
-import bhlo;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig.RedInfo;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -46,7 +46,7 @@ public final class RedInfoSyncReq
       QWRedConfig.RedInfo localRedInfo = (QWRedConfig.RedInfo)paramList.next();
       localArrayList.add(new RedInfo(localRedInfo.path, localRedInfo.taskId, localRedInfo.isShow));
     }
-    return new RedInfoSyncReq(1, bhlo.c(), bhlo.e(), bhlo.i(), localArrayList);
+    return new RedInfoSyncReq(1, DeviceInfoUtil.getQQVersion(), DeviceInfoUtil.getDeviceOSVersion(), DeviceInfoUtil.getModel(), localArrayList);
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

@@ -1,17 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class befb
-  implements DialogInterface.OnDismissListener
+public class befb
 {
-  befb(beez parambeez) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (beez.a(this.a) != null) {
-      beez.a(this.a).a();
-    }
-  }
+  public int a;
+  public String a;
+  public int b;
 }
 
 

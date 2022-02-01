@@ -1,35 +1,55 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.graphics.Color;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.cmd0x934.cmd0x934.ItemInfo;
 
-class bffw
-  extends BroadcastReceiver
+public class bffw
 {
-  bffw(bffu parambffu) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bffw()
   {
-    if ("com.tencent.mobileqq.JoinTroopUtil.RET_ACTION".equals(paramIntent.getAction())) {}
-    switch (paramIntent.getIntExtra("ret_action", 1000))
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -16777216;
+    this.jdField_c_of_type_Int = -7829368;
+  }
+  
+  public static bffw a(String paramString1, String paramString2)
+  {
+    bffw localbffw = new bffw();
+    localbffw.jdField_a_of_type_JavaLangString = paramString1;
+    localbffw.jdField_b_of_type_JavaLangString = "";
+    localbffw.jdField_c_of_type_JavaLangString = paramString2;
+    try
     {
-    default: 
-      bffu.a(this.a, bffu.a(this.a).troopUin, 2);
-      return;
-    case 1000: 
-      bffu.a(this.a, bffu.a(this.a).troopUin, 2);
-      return;
-    case 1001: 
-      bffu.a(this.a, bffu.a(this.a).troopUin, 2);
-      return;
-    case 1002: 
-      bffu.a(this.a, bffu.a(this.a).troopUin, 2);
-      return;
-    case 1003: 
-      bffu.a(this.a, bffu.a(this.a).troopUin, 1);
-      return;
+      localbffw.jdField_a_of_type_Int = 0;
+      localbffw.jdField_b_of_type_Int = 0;
+      localbffw.jdField_c_of_type_Int = 0;
+      return localbffw;
     }
-    bffu.a(this.a, bffu.a(this.a).troopUin, 3);
+    catch (Exception paramString1) {}
+    return localbffw;
+  }
+  
+  public static bffw a(cmd0x934.ItemInfo paramItemInfo)
+  {
+    bffw localbffw = new bffw();
+    localbffw.jdField_a_of_type_JavaLangString = paramItemInfo.title.get();
+    localbffw.jdField_b_of_type_JavaLangString = paramItemInfo.icon.get();
+    localbffw.jdField_c_of_type_JavaLangString = paramItemInfo.url.get();
+    try
+    {
+      localbffw.jdField_a_of_type_Int = Color.parseColor(paramItemInfo.color.get());
+      localbffw.jdField_b_of_type_Int = Color.parseColor(paramItemInfo.font_color.get());
+      localbffw.jdField_c_of_type_Int = Color.parseColor(paramItemInfo.border_color.get());
+      return localbffw;
+    }
+    catch (Exception paramItemInfo) {}
+    return localbffw;
   }
 }
 

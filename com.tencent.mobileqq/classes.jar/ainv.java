@@ -1,33 +1,11 @@
-import android.view.View;
-
 class ainv
-  implements bliz
+  implements aiqz
 {
-  ainv(ainh paramainh) {}
+  ainv(ainq paramainq) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public long a()
   {
-    if (this.a.ag) {
-      return;
-    }
-    this.a.ag = true;
-    if ((this.a.jdField_a_of_type_ArrayOfInt != null) && (this.a.jdField_a_of_type_ArrayOfInt.length > 0))
-    {
-      this.a.z(2131694705);
-      paramInt = this.a.jdField_a_of_type_ArrayOfInt[0];
-      if (paramInt == 0) {
-        this.a.b(true, 0);
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Blir.dismiss();
-      return;
-      this.a.b(false, paramInt);
-      continue;
-      this.a.z(2131694705);
-      this.a.b(true, 0);
-    }
+    return ainq.a(this.a);
   }
 }
 

@@ -1,22 +1,11 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
-import com.tencent.mobileqq.widget.TipsBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.persistence.Entity;
 
 public class albo
-  implements View.OnClickListener
 {
-  public albo(SendHbMainFragment paramSendHbMainFragment, TipsBar paramTipsBar, SharedPreferences paramSharedPreferences, int paramInt) {}
+  public int a;
+  public Entity a;
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("red_packet_bulletin", this.jdField_a_of_type_Int).apply();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  protected albo(albm paramalbm) {}
 }
 
 

@@ -9,19 +9,19 @@ import android.view.LayoutInflater;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnScrollChangedListener;
 import android.widget.FrameLayout;
-import bczs;
-import boof;
-import boog;
-import boqq;
-import boqr;
-import boqu;
-import born;
-import bpam;
-import bplg;
-import bplq;
-import bpop;
-import bpwl;
-import bpwm;
+import bbsx;
+import blsm;
+import blsn;
+import blux;
+import bluy;
+import blvb;
+import blvr;
+import bmbx;
+import bmqh;
+import bmql;
+import bmtc;
+import bmzp;
+import bmzq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.QQViewPager;
@@ -34,39 +34,39 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.os.MqqHandler;
-import zqd;
+import yqu;
 
 public class AEMaterialProviderView
   extends FrameLayout
-  implements ViewPager.OnPageChangeListener, ViewTreeObserver.OnScrollChangedListener, bczs, bpwl
+  implements ViewPager.OnPageChangeListener, ViewTreeObserver.OnScrollChangedListener, bbsx, bmzp
 {
   private int jdField_a_of_type_Int = 1;
-  private boof jdField_a_of_type_Boof;
-  private boqr jdField_a_of_type_Boqr;
-  public bpop a;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = bplg.a();
+  private blsm jdField_a_of_type_Blsm;
+  private bluy jdField_a_of_type_Bluy;
+  public bmtc a;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = bmqh.a();
   private QQViewPager jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
   private AEMaterialTabAdapter jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter;
   private QIMSlidingTabView jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView;
-  private List<boqq> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private List<blux> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   private boolean jdField_a_of_type_Boolean = true;
   private boolean b;
   
-  public AEMaterialProviderView(Context paramContext, boof paramboof)
+  public AEMaterialProviderView(Context paramContext, blsm paramblsm)
   {
     super(paramContext);
-    this.jdField_a_of_type_Bpop = new boog(this);
-    this.jdField_a_of_type_Boof = paramboof;
+    this.jdField_a_of_type_Bmtc = new blsn(this);
+    this.jdField_a_of_type_Blsm = paramblsm;
     c();
   }
   
-  private boqq a(String paramString)
+  private blux a(String paramString)
   {
     if ((this.jdField_a_of_type_JavaUtilList == null) || (TextUtils.isEmpty(paramString))) {
       return null;
     }
-    boqq localboqq;
-    boqu localboqu;
+    blux localblux;
+    blvb localblvb;
     do
     {
       Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
@@ -78,34 +78,34 @@ public class AEMaterialProviderView
           if (!localIterator1.hasNext()) {
             break;
           }
-          localboqq = (boqq)localIterator1.next();
-        } while ((localboqq == null) || (localboqq.jdField_a_of_type_JavaUtilList == null));
-        localIterator2 = localboqq.jdField_a_of_type_JavaUtilList.iterator();
+          localblux = (blux)localIterator1.next();
+        } while ((localblux == null) || (localblux.jdField_a_of_type_JavaUtilList == null));
+        localIterator2 = localblux.jdField_a_of_type_JavaUtilList.iterator();
       }
-      localboqu = (boqu)localIterator2.next();
-    } while ((localboqu == null) || (!paramString.equals(localboqu.a)));
-    return localboqq;
+      localblvb = (blvb)localIterator2.next();
+    } while ((localblvb == null) || (!paramString.equals(localblvb.a)));
+    return localblux;
     return null;
   }
   
-  private ArrayList<bpwm> a()
+  private ArrayList<bmzq> a()
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      boqq localboqq = (boqq)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (localboqq == null) {}
+      blux localblux = (blux)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (localblux == null) {}
       for (;;)
       {
         i += 1;
         break;
-        if (-1 == localboqq.jdField_a_of_type_Int) {
+        if (-1 == localblux.jdField_a_of_type_Int) {
           this.jdField_a_of_type_Int = i;
         }
-        bpwm localbpwm = new bpwm();
-        localbpwm.a = localboqq.b;
-        localArrayList.add(localbpwm);
+        bmzq localbmzq = new bmzq();
+        localbmzq.a = localblux.b;
+        localArrayList.add(localbmzq);
       }
     }
     return localArrayList;
@@ -116,25 +116,25 @@ public class AEMaterialProviderView
     if ((getContext() instanceof QIMCameraCaptureActivity))
     {
       QIMCameraCaptureActivity localQIMCameraCaptureActivity = (QIMCameraCaptureActivity)getContext();
-      return (localQIMCameraCaptureActivity != null) && (born.j(localQIMCameraCaptureActivity.getIntent()));
+      return (localQIMCameraCaptureActivity != null) && (blvr.j(localQIMCameraCaptureActivity.getIntent()));
     }
     return false;
   }
   
   private void c()
   {
-    LayoutInflater.from(getContext()).inflate(2131558504, this);
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)findViewById(2131379188));
+    LayoutInflater.from(getContext()).inflate(2131558503, this);
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)findViewById(2131378957));
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.setTabCheckListener(this);
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.getViewTreeObserver().addOnScrollChangedListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131381041));
-    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter = new AEMaterialTabAdapter(getContext(), this.jdField_a_of_type_Boof);
-    this.jdField_a_of_type_Boqr = ((boqr)bplq.a(18));
-    this.jdField_a_of_type_Boqr.b(false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131380767));
+    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter = new AEMaterialTabAdapter(getContext(), this.jdField_a_of_type_Blsm);
+    this.jdField_a_of_type_Bluy = ((bluy)bmql.a(18));
+    this.jdField_a_of_type_Bluy.b(false);
     this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter.a(new ArrayList());
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setOnPageChangeListener(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialTabAdapter);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Bpop);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Bmtc);
     a(true);
   }
   
@@ -145,30 +145,25 @@ public class AEMaterialProviderView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boqr != null)
+    if (this.jdField_a_of_type_Bluy != null)
     {
-      if (((getContext() instanceof Activity)) && (born.j(((Activity)getContext()).getIntent()))) {
-        this.jdField_a_of_type_Boqr.i();
+      if (((getContext() instanceof Activity)) && (blvr.j(((Activity)getContext()).getIntent()))) {
+        this.jdField_a_of_type_Bluy.e();
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_Boqr.h();
+    this.jdField_a_of_type_Bluy.d();
   }
   
   public void a(int paramInt)
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager != null) && (this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView != null))
     {
-      bpam.b("AEMaterialProviderView", "locatePage: " + paramInt);
+      bmbx.b("AEMaterialProviderView", "locatePage: " + paramInt);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(paramInt);
     }
-  }
-  
-  public void a(Object paramObject, int paramInt, Object... paramVarArgs)
-  {
-    if ((paramInt == 114) && (paramVarArgs != null) && (paramVarArgs.length != 1)) {}
   }
   
   public void a(String paramString1, String paramString2)
@@ -202,9 +197,9 @@ public class AEMaterialProviderView
           if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
             break label367;
           }
-          if ((paramString1 != null) && (paramString1.equals(((boqq)this.jdField_a_of_type_JavaUtilList.get(i)).b)))
+          if ((paramString1 != null) && (paramString1.equals(((blux)this.jdField_a_of_type_JavaUtilList.get(i)).b)))
           {
-            paramString1 = (boqq)this.jdField_a_of_type_JavaUtilList.get(i);
+            paramString1 = (blux)this.jdField_a_of_type_JavaUtilList.get(i);
             break;
           }
           i += 1;
@@ -214,8 +209,8 @@ public class AEMaterialProviderView
       label191:
       if (j < paramString1.jdField_a_of_type_JavaUtilList.size())
       {
-        localObject = (boqu)paramString1.jdField_a_of_type_JavaUtilList.get(j);
-        if (!((boqu)localObject).a.equals(paramString2)) {}
+        localObject = (blvb)paramString1.jdField_a_of_type_JavaUtilList.get(j);
+        if (!((blvb)localObject).a.equals(paramString2)) {}
       }
       for (paramString1 = (String)localObject;; paramString1 = null)
       {
@@ -229,7 +224,7 @@ public class AEMaterialProviderView
         this.b = true;
         if (paramString1.a())
         {
-          zqd.a(getContext(), paramString1);
+          yqu.a(getContext(), paramString1);
           return;
           j += 1;
           break label191;
@@ -251,8 +246,8 @@ public class AEMaterialProviderView
     int i;
     if (a())
     {
-      localObject = this.jdField_a_of_type_Boqr.a();
-      bpam.a("AEMaterialProviderView", "### updateData: fromCircle = " + a() + " | totalList = " + localObject.toString());
+      localObject = this.jdField_a_of_type_Bluy.a();
+      bmbx.a("AEMaterialProviderView", "### updateData: fromCircle = " + a() + " | totalList = " + localObject.toString());
       this.jdField_a_of_type_JavaUtilList = new ArrayList((Collection)localObject);
       j = this.jdField_a_of_type_Int;
       i = j;
@@ -277,8 +272,8 @@ public class AEMaterialProviderView
             if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
               break label394;
             }
-            boqq localboqq = (boqq)this.jdField_a_of_type_JavaUtilList.get(i);
-            if ((localboqq == null) || (TextUtils.isEmpty(localboqq.b)) || (!localboqq.b.equals(((boqq)localObject).b))) {
+            blux localblux = (blux)this.jdField_a_of_type_JavaUtilList.get(i);
+            if ((localblux == null) || (TextUtils.isEmpty(localblux.b)) || (!localblux.b.equals(((blux)localObject).b))) {
               break label387;
             }
           }
@@ -298,7 +293,7 @@ public class AEMaterialProviderView
       }
       if (this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView != null)
       {
-        this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.a(a());
+        this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.initTabItemsWithRedDot(a());
         this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.setTabCheckListener(this);
       }
       j = i;
@@ -315,7 +310,7 @@ public class AEMaterialProviderView
         a(j);
       }
       return;
-      localObject = this.jdField_a_of_type_Boqr.a(paramBoolean);
+      localObject = this.jdField_a_of_type_Bluy.a(paramBoolean);
       break;
       label387:
       i += 1;
@@ -327,22 +322,21 @@ public class AEMaterialProviderView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Boqr != null)
+    if (this.jdField_a_of_type_Bluy != null)
     {
-      this.jdField_a_of_type_Boqr.j();
-      this.jdField_a_of_type_Boqr.a(111);
-      this.jdField_a_of_type_Boqr.a(113);
-      this.jdField_a_of_type_Boqr.a(112);
+      this.jdField_a_of_type_Bluy.f();
+      this.jdField_a_of_type_Bluy.a(111);
+      this.jdField_a_of_type_Bluy.a(113);
+      this.jdField_a_of_type_Bluy.a(112);
     }
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Bpop);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Bmtc);
     }
   }
   
-  @TargetApi(9)
-  public void b(int paramInt)
+  public void notify(Object paramObject, int paramInt, Object... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(paramInt);
+    if ((paramInt == 114) && (paramVarArgs != null) && (paramVarArgs.length != 1)) {}
   }
   
   public void onPageScrollStateChanged(int paramInt) {}
@@ -351,10 +345,16 @@ public class AEMaterialProviderView
   
   public void onPageSelected(int paramInt)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.a(paramInt);
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.onTabChecked(paramInt);
   }
   
   public void onScrollChanged() {}
+  
+  @TargetApi(9)
+  public void onTabChecked(int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(paramInt);
+  }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {

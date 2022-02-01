@@ -1,46 +1,59 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.FontSettingActivity.AioListAdapter.1;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.apollo_push_msgInfo.STPushMsgElem;
-import tencent.im.s2c.msgtype0x210.submsgtype0xe8.submsgtype0xe8.MsgBody;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class adgn
-  implements adci
+  extends BaseAdapter
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  public adgn(FontSettingActivity paramFontSettingActivity) {}
+  
+  public int getCount()
   {
-    QLog.d("ApolloPushManager", 1, "recv action push message 0x210_0xe8, [C2C.OnlinePush]");
-    try
-    {
-      submsgtype0xe8.MsgBody localMsgBody = new submsgtype0xe8.MsgBody();
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      if (localMsgBody.msg_item.has())
-      {
-        paramMsgType0x210 = (apollo_push_msgInfo.STPushMsgElem)localMsgBody.msg_item.get();
-        if (paramQQAppInterface != null)
-        {
-          paramQQAppInterface = (amts)paramQQAppInterface.getManager(227);
-          paramQQAppInterface.a(0, paramMsgType0x210);
-          paramQQAppInterface.c(paramMsgType0x210);
-          paramQQAppInterface.b(paramMsgType0x210);
-          paramQQAppInterface.a(paramMsgType0x210);
-        }
-      }
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      paramQQAppInterface.printStackTrace();
-      QLog.e("ApolloPushManager", 1, "[msg0x210.uSubMsgType == 0xe8], errInfo->" + paramQQAppInterface.getMessage());
-    }
+    return this.a.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public Object getItem(int paramInt)
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    return this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = this.a.jdField_a_of_type_Adgp.a(paramInt, getCount(), (ChatMessage)this.a.jdField_a_of_type_JavaUtilList.get(paramInt), paramView, paramViewGroup, null);
+    agql localagql = (agql)localView.getTag();
+    localagql.d.setOnClickListener(null);
+    if ((localagql.d instanceof AnimationTextView)) {
+      ((AnimationTextView)localagql.d).onDoubleClick = null;
+    }
+    if ((FontSettingActivity.a(this.a)) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
+    {
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.a();
+    }
+    if ((this.a.c) && (paramInt == this.a.jdField_a_of_type_JavaUtilList.size() - 1))
+    {
+      this.a.c = false;
+      FontSettingActivity.a(this.a).postDelayed(new FontSettingActivity.AioListAdapter.1(this), 100L);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("qqBaseActivity", 2, "[AioListAdapter#getView] invoked");
+    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 

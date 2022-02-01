@@ -1,16 +1,60 @@
-import java.io.File;
-import java.io.FilenameFilter;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.util.Log;
+import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
-class bmdh
-  implements FilenameFilter
+public class bmdh
+  extends ScheduledThreadPoolExecutor
 {
-  bmdh(bmdg parambmdg) {}
-  
-  public boolean accept(File paramFile, String paramString)
+  public bmdh(TimerTaskManager paramTimerTaskManager, int paramInt)
   {
-    return (paramFile != null) && (paramFile.isDirectory()) && (bmdg.a(this.a).matcher(paramString).matches());
+    super(paramInt);
+  }
+  
+  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
+  {
+    super.afterExecute(paramRunnable, paramThrowable);
+    Throwable localThrowable1 = paramThrowable;
+    if (paramThrowable == null)
+    {
+      localThrowable1 = paramThrowable;
+      if (!(paramRunnable instanceof Future)) {}
+    }
+    try
+    {
+      paramRunnable = (Future)paramRunnable;
+      localThrowable1 = paramThrowable;
+      if (paramRunnable.isDone())
+      {
+        paramRunnable.get();
+        localThrowable1 = paramThrowable;
+      }
+    }
+    catch (CancellationException localCancellationException)
+    {
+      break label46;
+    }
+    catch (ExecutionException paramRunnable)
+    {
+      for (;;)
+      {
+        localThrowable2 = paramRunnable.getCause();
+      }
+    }
+    catch (InterruptedException paramRunnable)
+    {
+      for (;;)
+      {
+        label46:
+        paramRunnable.printStackTrace();
+        Throwable localThrowable2 = paramThrowable;
+      }
+    }
+    if (localThrowable1 != null) {
+      Log.e("LyricTimerTaskManager", "Exception happen when execute task! : " + localThrowable1.toString());
+    }
   }
 }
 

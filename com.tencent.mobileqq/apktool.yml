@@ -1,5 +1,5 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: QQ-8.4.5-1468-3834.apk
+apkFileName: QQ-8.4.8-1492-3834.apk
 compressionType: false
 doNotCompress:
 - resources.arsc
@@ -29,11 +29,15 @@ doNotCompress:
 - assets/benchmark/high/nubia.json
 - assets/benchmark/middle/samsung.json
 - assets/benchmark/vlow/meizu.json
+- assets/camera/template/template.json
 - gif
 - assets/plugins/PluginManifest
 - assets/proteus/comment_feeds/manifest
 - assets/proteus/commercialAd_feeds/manifest
 - assets/proteus/daily_dynamic_header/manifest
+- assets/proteus/default_feeds/pages/bili_double_items/manifest
+- assets/proteus/default_feeds/pages/bili_double_items_white/manifest
+- assets/proteus/default_feeds/pages/bili_large_item/manifest
 - assets/proteus/default_feeds/pages/daily_check/manifest
 - assets/proteus/default_feeds/pages/daily_triple_img_card/manifest
 - assets/proteus/default_feeds/pages/horizontal_avatars/manifest
@@ -209,13 +213,11 @@ doNotCompress:
 - r/v/f217.gif
 - r/v/f218.gif
 - r/v/f219.gif
-- r/w/a.hapt
 - mp3
 - r/w/a2.mp4
 - r/w/ad
 - r/w/ae
 - r/w/d.hapt
-- r/w/h.hapt
 - r/w/i.hapt
 isFrameworkApk: false
 packageInfo:
@@ -250,5 +252,5 @@ usesFramework:
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '1468'
-  versionName: 8.4.5
+  versionCode: '1492'
+  versionName: 8.4.8

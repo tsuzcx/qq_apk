@@ -1,82 +1,126 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.qq.taf.jce.HexUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.MD5;
-import java.io.File;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import com.tencent.mobileqq.teamworkforgroup.GPadInfo;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bcyc
+  extends bcyn
 {
-  public static bcyd a(String paramString)
-  {
-    return new bcyd(paramString);
-  }
+  public bcyc(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public static String a()
+  public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("short_video_mgr_sp", 4).getString("sv_md5_version_soname_key", "d000_1");
-  }
-  
-  public static String a(File paramFile)
-  {
-    return bhmi.a(paramFile);
-  }
-  
-  public static String a(String paramString)
-  {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupTeamWorkListActivity", 2, " onDeletePanInfo success: " + paramBoolean + " \nretCode: " + paramInt + " \nerrorMsg: " + paramString);
+    }
+    if ((paramBoolean) && (paramInt == 0))
     {
-      String str1 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
-      VideoEnvironment.a("ShortVideoSoManager:computeMd5[MD5.getFileMd5]md5=" + str1, null);
-      String str3;
-      if (str1 != null)
+      GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, 5);
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131691377), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131691370), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(2);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString, List<GPadInfo> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, " onGetPadTemplateList success: " + paramBoolean + " \nretCode: " + paramInt + " \nerrorMsg: " + paramString);
+    }
+    if ((paramBoolean) && (paramInt == 0))
+    {
+      GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, 2);
+      if (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity) != null) {
+        GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).notifyDataSetChanged();
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt1, String paramString, List<GPadInfo> paramList, int paramInt2, int paramInt3)
+  {
+    int i = 1;
+    int j = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, " onGetPadList success: " + paramBoolean + " \nretCode: " + paramInt1 + " \nerrorMsg: " + paramString + "\n next =" + paramInt2);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.b = paramInt2;
+    if (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity))
+    {
+      if (paramBoolean)
       {
-        str3 = str1;
-        if (!"".equals(str1)) {}
+        paramInt2 = 1;
+        paramString = this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a.obtainMessage(111, paramInt2, 0);
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a.sendMessageDelayed(paramString, 500L);
+        GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, false);
+      }
+    }
+    else
+    {
+      if (GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(2);
+        GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, false);
+      }
+      if (paramInt3 != 2) {
+        break label211;
+      }
+      paramInt2 = 3;
+    }
+    for (;;)
+    {
+      if ((paramBoolean) && (paramInt1 == 0))
+      {
+        GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, paramInt2);
+        paramInt1 = j;
+        if (paramInt1 != 0) {
+          GroupTeamWorkListActivity.d(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(8);
+        }
+        return;
+        paramInt2 = 2;
+        break;
+        label211:
+        if (paramInt3 != 3) {
+          break label398;
+        }
+        paramInt2 = 4;
+        continue;
+      }
+      if (paramInt2 == 2)
+      {
+        if ((GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity) != null) && (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).getCount() == 0))
+        {
+          GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(8);
+          if (GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).getVisibility() == 0) {
+            GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(8);
+          }
+          GroupTeamWorkListActivity.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(0);
+        }
       }
       else
       {
-        str3 = b(paramString);
+        label300:
+        if (paramInt2 != 4) {
+          break label393;
+        }
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131693496), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
       }
-      return str3;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
+      label393:
+      for (paramInt1 = i;; paramInt1 = 0)
       {
-        VideoEnvironment.a("ShortVideoSoManager:computeMd5[MD5.getFileMd5] ", localUnsatisfiedLinkError);
-        String str2 = b(paramString);
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(2);
+        break;
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131693496), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
+        break label300;
       }
+      label398:
+      paramInt2 = 2;
     }
-  }
-  
-  public static final String a(String paramString1, String paramString2)
-  {
-    return paramString1 + '_' + paramString2;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("short_video_mgr_sp", 4).edit();
-    localEditor.putString("sv_md5_version_soname_key", paramString);
-    boolean bool = localEditor.commit();
-    VideoEnvironment.a("ShortVideoSoManager.storeSoNewVersion saveAVCodecOK=" + bool, null);
-    return bool;
-  }
-  
-  static String b(String paramString)
-  {
-    try
-    {
-      paramString = bleb.a(new File(paramString));
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      VideoEnvironment.a("ShortVideoSoManager:computeMd5[getFileMD5String]", paramString);
-    }
-    return null;
   }
 }
 

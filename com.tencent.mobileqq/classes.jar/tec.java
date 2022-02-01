@@ -1,21 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class tec
-  implements tcg
+public abstract interface tec
 {
-  public tec(BridgeModule paramBridgeModule, String paramString) {}
+  public abstract View a(ViewGroup paramViewGroup);
   
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, null);
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, null);
-  }
+  public abstract void a(tdz paramtdz1, @Nullable tdz paramtdz2, int paramInt);
 }
 
 

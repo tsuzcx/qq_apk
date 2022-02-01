@@ -1,24 +1,24 @@
-public class aogm
-  implements anui
+public abstract interface aogm
 {
-  protected void a(int paramInt) {}
+  public abstract long a();
   
-  protected void a(asti paramasti) {}
+  public abstract void a(int paramInt, aohg paramaohg);
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    if ((paramBoolean) && (paramObject != null))
-    {
-      a((asti)paramObject);
-      return;
-    }
-    a(((Integer)paramObject).intValue());
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(aoin paramaoin);
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 

@@ -1,8 +1,6 @@
-import java.util.UUID;
-
-public abstract interface bfwq
+class bfwq
 {
-  public abstract void a(UUID paramUUID, boolean paramBoolean, int paramInt, bfwo parambfwo);
+  private static final bfwo a = new bfwo(null);
 }
 
 

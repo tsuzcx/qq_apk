@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.takevideo.artfilter;
 
-import bcxo;
-import borf;
-import borg;
+import bbqy;
+import blvn;
+import dov.com.qq.im.ae.download.AEResInfo;
 
 class ArtFilterBridgeActivity$1
   implements Runnable
@@ -11,8 +11,8 @@ class ArtFilterBridgeActivity$1
   
   public void run()
   {
-    borg.a().a(borf.b, null, false);
-    bcxo.a(this.this$0.app);
+    blvn.a().a(AEResInfo.AE_RES_BASE_PACKAGE, null, false);
+    bbqy.a(this.this$0.app);
   }
 }
 

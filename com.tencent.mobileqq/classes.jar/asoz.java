@@ -1,13 +1,28 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ProgressButton;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 
-public class asoz
-  extends aslu
+class asoz
+  implements ShareActionSheet.OnItemClickListener
 {
-  public TextView a;
-  public URLImageView a;
-  public ProgressButton a;
+  asoz(asox paramasox) {}
+  
+  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  {
+    if (paramActionSheetItem == null) {}
+    do
+    {
+      return;
+      asox.a(this.a).dismiss();
+      if (paramActionSheetItem.listener != null)
+      {
+        paramActionSheetItem.listener.onClick(null);
+        return;
+      }
+    } while (asox.a(this.a) == null);
+    asox.a(this.a).a(paramActionSheetItem);
+  }
 }
 
 

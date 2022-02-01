@@ -1,22 +1,22 @@
-import java.util.Comparator;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-final class wfx
-  implements Comparator<wgg>
+public class wfx
+  extends vqm
 {
-  public int a(wgg paramwgg1, wgg paramwgg2)
+  public int b;
+  public int c;
+  
+  public wfx(qqstory_service.RspGetBlackList paramRspGetBlackList)
   {
-    if (paramwgg1.a() > paramwgg2.a()) {}
-    do
-    {
-      return 1;
-      if (paramwgg1.a() < paramwgg2.a()) {
-        return -1;
-      }
-      if (paramwgg1.d() == paramwgg2.d()) {
-        return 0;
-      }
-    } while (paramwgg1.d() < paramwgg2.d());
-    return -1;
+    super(paramRspGetBlackList.result);
+    this.b = paramRspGetBlackList.black_status.get();
+    this.c = paramRspGetBlackList.update_interval.get();
+  }
+  
+  public String toString()
+  {
+    return "GetBlackListStatusResponse{blackStatus=" + this.b + ", updateInterval=" + this.c + '}';
   }
 }
 

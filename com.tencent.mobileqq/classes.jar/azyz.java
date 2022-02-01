@@ -1,32 +1,49 @@
-import android.os.Handler;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
-import com.tencent.upload.uinterface.data.UpsImageUploadResult;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.widget.TabDragAnimationView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 public class azyz
-  extends babr
+  extends azza
 {
-  public azyz(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3)
+  private Drawable a(View paramView, String paramString)
   {
-    super(paramLong, paramString1, paramArrayOfByte, paramString2);
+    if ((paramView != null) && (!TextUtils.isEmpty(paramString))) {
+      try
+      {
+        paramString = paramView.getClass().getDeclaredField(paramString);
+        paramString.setAccessible(true);
+        paramView = paramString.get(paramView);
+        if ((paramView instanceof Drawable))
+        {
+          paramView = (Drawable)paramView;
+          return paramView;
+        }
+      }
+      catch (Exception paramView)
+      {
+        QLog.d("GrabMainTabResourceName", 1, paramView, new Object[0]);
+      }
+    }
+    return null;
   }
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public List<azys> a(View paramView)
   {
-    switch (paramInt)
+    ArrayList localArrayList = new ArrayList();
+    if ((paramView instanceof TabDragAnimationView))
     {
-    default: 
-    case 1001: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
-      } while (a() == null);
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a());
-      return;
+      a(a(paramView, "mBgDrawable"), localArrayList, 0);
+      a(a(paramView, "mBgPressedDrawable"), localArrayList, 0);
+      a(a(paramView, "mEmotionDrawable"), localArrayList, 0);
+      a(a(paramView, "mEmotionPressedDrawable"), localArrayList, 0);
+      a(a(paramView, "mClickAnimationDrawable"), localArrayList, 0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
-    paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(24, a());
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage(paramVarArgs);
+    return localArrayList;
   }
 }
 

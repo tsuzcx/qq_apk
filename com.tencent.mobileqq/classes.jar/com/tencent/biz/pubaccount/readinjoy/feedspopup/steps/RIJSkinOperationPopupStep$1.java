@@ -5,26 +5,26 @@ import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import pgw;
-import qtp;
-import qtq;
-import qtt;
-import qtw;
-import quo;
+import pmj;
+import ran;
+import rao;
+import rar;
+import rau;
+import rbm;
 
 public class RIJSkinOperationPopupStep$1
   implements Runnable
 {
-  public RIJSkinOperationPopupStep$1(pgw parampgw) {}
+  public RIJSkinOperationPopupStep$1(pmj parampmj) {}
   
   public void run()
   {
     Object localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    qtt localqtt = (qtt)((QQAppInterface)localObject2).a(121);
-    qtw localqtw = (qtw)((QQAppInterface)localObject2).getManager(261);
-    Object localObject1 = (qtp)((QQAppInterface)localObject2).getManager(271);
-    qtq localqtq = (qtq)((QQAppInterface)localObject2).getManager(270);
-    localObject2 = localqtq.a(pgw.a(this.this$0), 0);
+    rar localrar = (rar)((QQAppInterface)localObject2).getBusinessHandler(121);
+    rau localrau = (rau)((QQAppInterface)localObject2).getManager(261);
+    Object localObject1 = (ran)((QQAppInterface)localObject2).getManager(271);
+    rao localrao = (rao)((QQAppInterface)localObject2).getManager(270);
+    localObject2 = localrao.a(pmj.a(this.this$0), 0);
     boolean bool1;
     label139:
     boolean bool2;
@@ -49,7 +49,7 @@ public class RIJSkinOperationPopupStep$1
       if ((!bool1) || (!bool2)) {
         break label364;
       }
-      bool1 = quo.a(((RefreshData)localObject2).id);
+      bool1 = rbm.a(((RefreshData)localObject2).id);
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.4tab", 2, "checkSkinAndRefresh dataMatch = true, timeMatch = true, resValid =" + bool1);
       }
@@ -59,13 +59,13 @@ public class RIJSkinOperationPopupStep$1
       if (!((RefreshData)localObject2).isShown) {
         break label325;
       }
-      localqtq.a(1, ((RefreshData)localObject2).id, ((RefreshData)localObject2).seq, 0);
-      localqtq.a(true);
+      localrao.a(1, ((RefreshData)localObject2).id, ((RefreshData)localObject2).seq, 0);
+      localrao.a(true);
     }
     for (;;)
     {
-      localObject1 = (GuideData)((qtp)localObject1).a("operation_guide");
-      localqtt.a(localqtw.a(pgw.a(this.this$0)), null, (RefreshData)localObject2, (GuideData)localObject1, 0);
+      localObject1 = (GuideData)((ran)localObject1).a("operation_guide");
+      localrar.a(localrau.a(pmj.a(this.this$0)), null, (RefreshData)localObject2, (GuideData)localObject1, 0);
       return;
       QLog.d("Q.readinjoy.4tab", 2, "checkSkinAndRefresh refreshData = " + ((RefreshData)localObject2).toString());
       break;
@@ -76,17 +76,17 @@ public class RIJSkinOperationPopupStep$1
       bool2 = false;
       break label164;
       label325:
-      localqtq.a(0, "", -1L, 0);
+      localrao.a(0, "", -1L, 0);
       continue;
       label340:
-      localqtq.a(0, "", -1L, 0);
-      localqtq.a((RefreshData)localObject2, 0);
+      localrao.a(0, "", -1L, 0);
+      localrao.a((RefreshData)localObject2, 0);
       continue;
       label364:
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.4tab", 2, "checkSkinAndRefresh dataMatch =" + bool1 + ",timeMatch = " + bool2);
       }
-      localqtq.a(0, "", -1L, 0);
+      localrao.a(0, "", -1L, 0);
     }
   }
 }

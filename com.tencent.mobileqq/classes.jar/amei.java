@@ -1,18 +1,29 @@
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-
 public class amei
-  implements aebz
+  implements Comparable
 {
-  public amei(SelectMemberActivity paramSelectMemberActivity) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
   
-  public void a() {}
-  
-  public void b() {}
-  
-  public void c()
+  public int compareTo(Object paramObject)
   {
-    this.a.e = 2;
-    this.a.finish();
+    paramObject = (amei)paramObject;
+    if (this.d < paramObject.d) {
+      return 1;
+    }
+    if (this.d > paramObject.d) {
+      return -1;
+    }
+    return 0;
   }
 }
 

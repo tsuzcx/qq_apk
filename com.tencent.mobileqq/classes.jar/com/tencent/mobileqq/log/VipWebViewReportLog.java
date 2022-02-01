@@ -4,7 +4,7 @@ import android.content.Context;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import antf;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
-import noe;
+import npn;
 import org.json.JSONObject;
 
 public class VipWebViewReportLog
@@ -47,7 +47,7 @@ public class VipWebViewReportLog
     jdField_a_of_type_JavaUtilSet = new HashSet();
     jdField_b_of_type_Int = 1;
     jdField_c_of_type_Int = 2;
-    jdField_b_of_type_JavaLangString = antf.ba + "WebViewCheck" + File.separator;
+    jdField_b_of_type_JavaLangString = AppConstants.SDCARD_PATH + "WebViewCheck" + File.separator;
     jdField_c_of_type_JavaLangString = "WebViewCheck" + File.separator;
     e = "null";
     f = "null";
@@ -543,7 +543,7 @@ public class VipWebViewReportLog
           if (!str.equalsIgnoreCase("cookie")) {
             break;
           }
-          localStringBuilder.append(str + ":" + noe.c((String)paramJSONObject.get(str), new String[0]) + "\n");
+          localStringBuilder.append(str + ":" + npn.c((String)paramJSONObject.get(str), new String[0]) + "\n");
         }
       }
     }
@@ -619,12 +619,12 @@ public class VipWebViewReportLog
         String str = (String)localIterator.next();
         if ((!TextUtils.isEmpty(str)) && (paramString.contains(str)))
         {
-          QLog.d("WebCoreDump", 1, "-->url:" + noe.b(paramString, new String[0]) + " is in white list");
+          QLog.d("WebCoreDump", 1, "-->url:" + npn.b(paramString, new String[0]) + " is in white list");
           return true;
         }
       }
     }
-    QLog.d("WebCoreDump", 1, "-->url:" + noe.b(paramString, new String[0]) + " is not in white list");
+    QLog.d("WebCoreDump", 1, "-->url:" + npn.b(paramString, new String[0]) + " is not in white list");
     return false;
   }
   

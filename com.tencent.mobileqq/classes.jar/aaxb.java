@@ -1,32 +1,26 @@
-import android.content.res.Resources;
-import android.widget.Button;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.device.qfind.QFindBLEScanMgr;
+import com.tencent.device.qfind.QFindBLEScanMgr.ScanReceiver.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aaxb
-  extends bgst
+  extends BroadcastReceiver
 {
-  public aaxb(TroopGiftPanel paramTroopGiftPanel) {}
-  
-  public void a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.a(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetButton.setText(TroopGiftPanel.a(this.a));
-    TroopGiftPanel.a(this.a, 0L);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    super.a(paramInt, paramString);
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, anzj.a(2131714208), 0).b(this.a.getResources().getDimensionPixelSize(2131299011));
-    TroopGiftPanel.a(true);
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    super.b(paramInt, paramString);
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, anzj.a(2131714175), 0).b(this.a.getResources().getDimensionPixelSize(2131299011));
-    TroopGiftPanel.a(true);
+    if (QLog.isColorLevel()) {
+      QLog.i("QFindBLE", 2, "QFindBLEScanMgr alarm is coming " + paramIntent.getAction());
+    }
+    if ((this.a.a == null) || (System.currentTimeMillis() - QFindBLEScanMgr.a(this.a) < this.a.h)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QFindBLE", 2, "QFindBLEScanMgr startScan");
+    }
+    this.a.a.post(new QFindBLEScanMgr.ScanReceiver.1(this));
   }
 }
 

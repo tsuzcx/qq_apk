@@ -1,15 +1,13 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bojo;
-
 class AECameraGLSurfaceView$14
   implements Runnable
 {
-  AECameraGLSurfaceView$14(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
+  AECameraGLSurfaceView$14(AECameraGLSurfaceView paramAECameraGLSurfaceView, Runnable paramRunnable) {}
   
   public void run()
   {
-    AECameraGLSurfaceView.a(this.this$0).e();
+    this.val$applyRunnable.run();
   }
 }
 

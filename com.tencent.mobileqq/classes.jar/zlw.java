@@ -1,11 +1,17 @@
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.subscribe.event.SharePanelShowStateEvent;
 
 class zlw
+  implements DialogInterface.OnDismissListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ImageView b;
-  
   zlw(zlv paramzlv) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    SimpleEventBus.getInstance().dispatchEvent(new SharePanelShowStateEvent(false));
+  }
 }
 
 

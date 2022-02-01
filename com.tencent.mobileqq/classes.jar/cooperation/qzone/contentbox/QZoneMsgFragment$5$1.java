@@ -1,6 +1,5 @@
 package cooperation.qzone.contentbox;
 
-import bmyc;
 import cooperation.qzone.contentbox.model.MQMsg;
 import cooperation.qzone.contentbox.model.QZoneMsgEntityNew;
 import java.util.ArrayList;
@@ -16,10 +15,10 @@ class QZoneMsgFragment$5$1
     ArrayList localArrayList = new ArrayList();
     Object localObject1;
     MQMsg localMQMsg;
-    if (QZoneMsgFragment.b(this.jdField_a_of_type_CooperationQzoneContentboxQZoneMsgFragment$5.this$0))
+    if (QZoneMsgFragment.access$200(this.this$1.this$0))
     {
       localObject2 = null;
-      Iterator localIterator1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator1 = this.val$qzoneMessageRsp.iterator();
       for (;;)
       {
         if (localIterator1.hasNext())
@@ -57,10 +56,10 @@ class QZoneMsgFragment$5$1
       }
       for (;;)
       {
-        this.jdField_a_of_type_CooperationQzoneContentboxQZoneMsgFragment$5.this$0.a.a(localArrayList);
-        QZoneMsgFragment.a(this.jdField_a_of_type_CooperationQzoneContentboxQZoneMsgFragment$5.this$0);
+        this.this$1.this$0.adapter.setMQMsgs(localArrayList);
+        QZoneMsgFragment.access$300(this.this$1.this$0);
         return;
-        localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        localObject1 = this.val$qzoneMessageRsp.iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (QZoneMsgEntityNew)((Iterator)localObject1).next();

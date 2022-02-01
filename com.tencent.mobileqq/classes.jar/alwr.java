@@ -1,8 +1,22 @@
-public abstract interface alwr
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+
+class alwr
+  extends amsu
 {
-  public abstract void a();
+  alwr(alwq paramalwq) {}
   
-  public abstract void b();
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("qwe", 2, "onUpdateFriendInfo:" + paramString);
+    }
+    if ((alwq.a(this.a) != null) && (alwq.a(this.a).get(paramString + "nick") != null))
+    {
+      int i = ((Integer)alwq.a(this.a).remove(paramString + "nick")).intValue();
+      this.a.a(i, paramString, 1);
+    }
+  }
 }
 
 

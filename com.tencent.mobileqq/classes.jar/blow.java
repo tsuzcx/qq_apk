@@ -1,6 +1,8 @@
 public abstract interface blow
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void a(blpa paramblpa);
+  
+  public abstract void a(String paramString);
 }
 
 

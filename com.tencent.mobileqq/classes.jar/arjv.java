@@ -1,89 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class arjv
-  extends arac<arju>
+  implements aroz
 {
-  @NonNull
-  public static arju a()
+  public arjv(ExtendFriendBaseFragment paramExtendFriendBaseFragment) {}
+  
+  public void enterAio(String paramString1, String paramString2)
   {
-    arju localarju2 = (arju)aran.a().a(435);
-    arju localarju1 = localarju2;
-    if (localarju2 == null) {
-      localarju1 = new arju();
-    }
-    return localarju1;
+    aros.a(this.a.a, paramString1, paramString2);
   }
   
-  @NonNull
-  public arju a(int paramInt)
+  public void showCampusVerifyDialog(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
   {
-    return new arju();
+    aros.a(this.a.a, paramBoolean, paramInt, paramString1, paramString2);
   }
   
-  @Nullable
-  public arju a(araj[] paramArrayOfaraj)
+  public void showMatchCountDialog()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfaraj != null)
+    aros.a(this.a.a);
+  }
+  
+  public void showToast(int paramInt)
+  {
+    if (this.a.a == null)
     {
-      localObject1 = localObject2;
-      if (paramArrayOfaraj.length > 0) {
-        localObject1 = arju.a(paramArrayOfaraj);
-      }
+      QLog.d("ExtendFriendBaseFragment", 1, "sendMsgDirectly()-> showToast() mActivity is null just return");
+      return;
     }
-    return localObject1;
-  }
-  
-  public void a(arju paramarju)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopUrlConfProcessor", 2, "onUpdate " + paramarju.toString());
-    }
-  }
-  
-  public Class<arju> clazz()
-  {
-    return arju.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopUrlConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 435;
+    aros.a(this.a.a, this.a.a.getString(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arjv
  * JD-Core Version:    0.7.0.1
  */

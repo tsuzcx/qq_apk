@@ -1,26 +1,11 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.appcommon.now.download.local.DownloadNativeApi.1;
+import android.view.View;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
-public class bjsl
-  implements DialogInterface.OnClickListener
+public abstract interface bjsl
 {
-  public bjsl(DownloadNativeApi.1 param1) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    try
-    {
-      paramDialogInterface.dismiss();
-      label6:
-      bjsj.a(this.a.this$0).onDownloadCancel(this.a.a);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      break label6;
-    }
-  }
+  public abstract void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt);
 }
 
 

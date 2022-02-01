@@ -1,29 +1,19 @@
-public class sve
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+
+class sve
+  implements svf
 {
-  public String a;
-  public suz a;
-  public String b;
+  sve(sup paramsup) {}
   
-  public sve(String paramString, suz paramsuz, boolean paramBoolean)
+  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException();
+    paramViewBase = paramProteusItemData.c;
+    if ((paramViewBase != null) && ((paramContext instanceof FastWebActivity))) {
+      swl.a(paramViewBase, (FastWebActivity)paramContext, paramProteusItemData.b, paramProteusItemData.a);
     }
-    this.jdField_a_of_type_Suz = paramsuz;
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      return;
-    }
-    this.b = paramString;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return this.b;
-    }
-    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

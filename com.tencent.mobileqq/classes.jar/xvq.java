@@ -1,6 +1,16 @@
-public abstract interface xvq
+import android.database.DataSetObserver;
+import com.tencent.biz.qqstory.storyHome.tag.TagFlowLayout;
+
+public class xvq
+  extends DataSetObserver
 {
-  public abstract void a(xvo paramxvo);
+  public xvq(TagFlowLayout paramTagFlowLayout) {}
+  
+  public void onChanged()
+  {
+    super.onChanged();
+    this.a.a();
+  }
 }
 
 

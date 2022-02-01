@@ -1,16 +1,12 @@
-import com.tencent.mobileqq.data.MessageForTofuIntimateAnniversary;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
 
 public class bcty
-  implements adbf
 {
-  public MessageRecord a(int paramInt)
-  {
-    if (paramInt == -7009) {
-      return new MessageForTofuIntimateAnniversary();
-    }
-    return null;
-  }
+  public int a;
+  public TimDocSSOMsg.UinRightInfo a;
+  public String a;
+  public String b;
+  public String c;
 }
 
 

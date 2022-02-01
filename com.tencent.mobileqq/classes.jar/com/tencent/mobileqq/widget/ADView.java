@@ -13,9 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bdof;
-import biuv;
-import biuw;
+import bcgq;
+import bhax;
+import bhay;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.QZLog;
 
@@ -23,7 +23,7 @@ public class ADView
   extends LinearLayout
 {
   protected float a;
-  private biuw jdField_a_of_type_Biuw = new biuw(this);
+  private bhay jdField_a_of_type_Bhay = new bhay(this);
   public WorkSpaceView a;
   public final String a;
   private boolean jdField_a_of_type_Boolean;
@@ -136,7 +136,7 @@ public class ADView
       localObject = new LinearLayout(getContext());
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView = new WorkSpaceView(getContext());
       setCircle(this.f);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setOnScreenChangeListener(new biuv(this, (LinearLayout)localObject));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setOnScreenChangeListener(new bhax(this, (LinearLayout)localObject));
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setId(100000);
@@ -170,7 +170,7 @@ public class ADView
     localLayoutParams.addRule(14, 100000);
     localLayoutParams.setMargins(0, 0, 0, (int)(6.0F * this.jdField_a_of_type_Float));
     paramLinearLayout.setGravity(16);
-    paramLinearLayout.setBackgroundResource(2130840509);
+    paramLinearLayout.setBackgroundResource(2130840544);
     paramLinearLayout.setPadding((int)(4.0F * this.jdField_a_of_type_Float), 0, (int)(2.0F * this.jdField_a_of_type_Float), 0);
     paramLinearLayout.setLayoutParams(localLayoutParams);
   }
@@ -232,12 +232,12 @@ public class ADView
   
   public void i()
   {
-    this.jdField_a_of_type_Biuw.removeMessages(0);
+    this.jdField_a_of_type_Bhay.removeMessages(0);
     try
     {
-      bdof localbdof = (bdof)this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.getChildAt(this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.a()).getTag();
-      k = localbdof.a;
-      setContentDescription(localbdof.n);
+      bcgq localbcgq = (bcgq)this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.getChildAt(this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.a()).getTag();
+      k = localbcgq.a;
+      setContentDescription(localbcgq.n);
       k *= 1000;
     }
     catch (Exception localException)
@@ -247,12 +247,12 @@ public class ADView
         int k = 5000;
       }
     }
-    this.jdField_a_of_type_Biuw.sendEmptyMessageDelayed(0, k);
+    this.jdField_a_of_type_Bhay.sendEmptyMessageDelayed(0, k);
   }
   
   public void j()
   {
-    this.jdField_a_of_type_Biuw.sendEmptyMessage(1);
+    this.jdField_a_of_type_Bhay.sendEmptyMessage(1);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)

@@ -1,15 +1,11 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class ajnc
-  implements Comparator<PhoneContact>
+public class ajnc
 {
-  ajnc(ajnb paramajnb) {}
-  
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
-  {
-    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
-  }
+  public ImageView a;
+  public TextView a;
+  public bfxc a;
 }
 
 

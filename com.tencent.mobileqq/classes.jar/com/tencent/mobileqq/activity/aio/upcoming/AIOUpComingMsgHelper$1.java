@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.upcoming;
 
-import aiwv;
-import aixg;
+import ahrg;
+import ahrr;
 import android.os.Message;
-import bdll;
+import bcef;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -13,24 +13,24 @@ import mqq.os.MqqHandler;
 public class AIOUpComingMsgHelper$1
   implements Runnable
 {
-  public AIOUpComingMsgHelper$1(aiwv paramaiwv, long paramLong) {}
+  public AIOUpComingMsgHelper$1(ahrg paramahrg, long paramLong) {}
   
   public void run()
   {
-    MessageRecord localMessageRecord = aiwv.a(this.this$0).a().b(aiwv.a(this.this$0).jdField_a_of_type_JavaLangString, aiwv.a(this.this$0).jdField_a_of_type_Int, this.a);
-    if (!aixg.a(localMessageRecord)) {
+    MessageRecord localMessageRecord = ahrg.a(this.this$0).getMessageFacade().queryMsgItemByUniseq(ahrg.a(this.this$0).curFriendUin, ahrg.a(this.this$0).curType, this.a);
+    if (!ahrr.a(localMessageRecord)) {
       localMessageRecord = null;
     }
     for (;;)
     {
       if (localMessageRecord == null) {
-        bdll.b(null, "dc00898", "", "", "0X800AE94", "0X800AE94", 0, 0, "", "", "", "");
+        bcef.b(null, "dc00898", "", "", "0X800AE94", "0X800AE94", 0, 0, "", "", "", "");
       }
-      Message localMessage = aiwv.a(this.this$0).obtainMessage();
+      Message localMessage = ahrg.a(this.this$0).obtainMessage();
       localMessage.what = 1;
       localMessage.obj = localMessageRecord;
-      aiwv.a(this.this$0).sendMessage(localMessage);
-      aiwv.a(this.this$0, aiwv.a(this.this$0).jdField_a_of_type_JavaLangString);
+      ahrg.a(this.this$0).sendMessage(localMessage);
+      ahrg.a(this.this$0, ahrg.a(this.this$0).curFriendUin);
       return;
     }
   }

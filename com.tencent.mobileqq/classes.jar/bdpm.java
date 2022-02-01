@@ -1,29 +1,17 @@
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
+
 public class bdpm
+  implements AdapterView.OnItemLongClickListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  public bdpm(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
   
-  public bdpm(String paramString)
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this(null, null, null, null, null, null, null, paramString);
-  }
-  
-  public bdpm(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
-  {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.f = paramString6;
-    this.g = paramString7;
-    this.h = paramString8;
+    TroopAvatarWallEditActivity.a(this.a);
+    return true;
   }
 }
 

@@ -1,13 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
-class tix
-  implements osf
+public class tix
+  extends tjd
 {
-  tix(tis paramtis) {}
-  
-  public void onViewCreated(boolean paramBoolean)
+  public tix(BridgeModule paramBridgeModule)
   {
-    tis.a(this.a).d();
+    super(paramBridgeModule);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    BridgeModule.access$800(this.a, paramInt2, paramIntent);
   }
 }
 

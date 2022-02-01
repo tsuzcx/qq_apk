@@ -1,12 +1,23 @@
 public class bhzf
+  extends bhzg
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  private String n;
   
-  public bhzf(bhzd parambhzd) {}
+  public static bhzf a()
+  {
+    return new bhzf();
+  }
+  
+  public bhzf a(String paramString)
+  {
+    this.n = paramString;
+    return this;
+  }
+  
+  public String a()
+  {
+    return b() + "|" + c() + "|" + this.n;
+  }
 }
 
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
+import amtj;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
-import anzj;
-import aqib;
+import apbm;
 import java.io.File;
 
 class SelectCoverActivity$3
@@ -26,14 +26,14 @@ class SelectCoverActivity$3
         } while (this.this$0.jdField_b_of_type_Boolean);
         if (TextUtils.isEmpty(this.this$0.jdField_b_of_type_JavaLangString))
         {
-          SelectCoverActivity.a(this.this$0, 2, anzj.a(2131712591), 0);
+          SelectCoverActivity.a(this.this$0, 2, amtj.a(2131712823), 0);
           return;
         }
-        SelectCoverActivity.a(this.this$0, 0, anzj.a(2131712584), 0);
+        SelectCoverActivity.a(this.this$0, 0, amtj.a(2131712816), 0);
         if ((this.this$0.jdField_d_of_type_Int != 1) && (this.this$0.jdField_d_of_type_Int != 3)) {
           break;
         }
-      } while ((TextUtils.isEmpty(this.this$0.jdField_a_of_type_Aqib.a)) || (!new File(this.this$0.jdField_a_of_type_Aqib.a).exists()) || (TextUtils.isEmpty(this.this$0.jdField_a_of_type_Aqib.jdField_b_of_type_JavaLangString)) || (!new File(this.this$0.jdField_a_of_type_Aqib.jdField_b_of_type_JavaLangString).exists()));
+      } while ((TextUtils.isEmpty(this.this$0.jdField_a_of_type_Apbm.a)) || (!new File(this.this$0.jdField_a_of_type_Apbm.a).exists()) || (TextUtils.isEmpty(this.this$0.jdField_a_of_type_Apbm.jdField_b_of_type_JavaLangString)) || (!new File(this.this$0.jdField_a_of_type_Apbm.jdField_b_of_type_JavaLangString).exists()));
       SelectCoverActivity.b(this.this$0);
       return;
     } while (this.this$0.jdField_d_of_type_Int != 2);

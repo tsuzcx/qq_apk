@@ -1,17 +1,44 @@
-import android.graphics.PointF;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import java.util.List;
+import android.util.SparseArray;
+import com.tencent.mobileqq.data.ApolloGameData;
+import java.util.Comparator;
 
-public class alvg
-  implements akxo
+class alvg
+  implements Comparator<ApolloGameData>
 {
-  public alvg(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  SparseArray<Long> a;
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, double paramDouble, List<List<PointF>> paramList)
+  alvg(SparseArray paramSparseArray)
   {
-    if ((this.a.E) && (paramInt1 > 0)) {
-      NewFlowCameraActivity.c = true;
+    this.a = paramSparseArray;
+  }
+  
+  public int a(ApolloGameData paramApolloGameData1, ApolloGameData paramApolloGameData2)
+  {
+    long l2 = 0L;
+    long l1;
+    if (this.a.get(paramApolloGameData1.gameId) == null)
+    {
+      l1 = 0L;
+      if (this.a.get(paramApolloGameData2.gameId) != null) {
+        break label63;
+      }
     }
+    for (;;)
+    {
+      if (l1 <= l2) {
+        break label85;
+      }
+      return -1;
+      l1 = ((Long)this.a.get(paramApolloGameData1.gameId)).longValue();
+      break;
+      label63:
+      l2 = ((Long)this.a.get(paramApolloGameData2.gameId)).longValue();
+    }
+    label85:
+    if (l1 < l2) {
+      return 1;
+    }
+    return 0;
   }
 }
 

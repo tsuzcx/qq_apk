@@ -1,25 +1,47 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
-public class bfjb
-  implements TextWatcher
+class bfjb
+  implements bcrz
 {
-  public bfjb(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public int a;
+  public long a;
+  public long b;
+  public long c;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  bfjb(bfip parambfip)
   {
-    if ((!TextUtils.isEmpty(this.a.x)) && (paramInt1 > 0) && (paramInt1 < this.a.x.length() + 1) && (paramInt2 > paramInt3))
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a()
+  {
+    this.c = NetConnInfoCenter.getServerTimeMillis();
+    switch (this.jdField_a_of_type_Int)
     {
-      this.a.d(false);
-      return;
     }
-    TroopBarPublishActivity.a(this.a);
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_giftTroopGiftAnimationController", 2, "animation frame end. requestState:" + this.jdField_a_of_type_Int);
+      }
+      return;
+      this.jdField_a_of_type_Bfip.a(0L);
+      continue;
+      this.jdField_a_of_type_Bfip.a(3000L);
+      continue;
+      long l = this.c - this.b;
+      if (l >= 2000L)
+      {
+        this.jdField_a_of_type_Bfip.a(0L);
+      }
+      else
+      {
+        this.jdField_a_of_type_Bfip.a(2000L - l);
+        continue;
+        this.jdField_a_of_type_Bfip.a(3000L);
+      }
+    }
   }
 }
 

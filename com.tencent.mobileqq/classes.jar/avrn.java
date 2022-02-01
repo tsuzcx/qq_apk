@@ -1,12 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class avrn
-  implements DialogInterface.OnClickListener
+public class avrn
+  extends vko
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a;
+  public avro a;
+  public String a;
+  public boolean a;
+  public Object[] a;
+  
+  public String toString()
   {
-    paramDialogInterface.dismiss();
+    return "MiniAppEvent {, isSuccess=" + this.jdField_a_of_type_Boolean + ", type=" + this.jdField_a_of_type_Int + ", src=" + this.jdField_a_of_type_JavaLangString + " }";
   }
 }
 

@@ -1,67 +1,32 @@
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.vas.update.callback.IVasLog;
 
-public class bieb
-  implements IVasLog
+final class bieb
+  implements URLDrawable.URLDrawableListener
 {
-  public void d(String paramString1, String paramString2)
+  bieb(ImageView paramImageView) {}
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    QLog.d(paramString1, 1, paramString2);
+    QLog.d("CommonUtils_", 1, "onLoadCanceled");
   }
   
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    QLog.d(paramString1, 1, paramString2, paramThrowable);
+    QLog.d("CommonUtils_", 1, "onLoadFialed urldrawable load failed ");
   }
   
-  public void e(String paramString1, String paramString2)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    QLog.e(paramString1, 1, paramString2);
+    QLog.d("CommonUtils_", 1, "onLoadProgressed");
   }
   
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    QLog.e(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.i(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public boolean isColorLevel()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public boolean isDebugVersion()
-  {
-    return false;
-  }
-  
-  public void v(String paramString1, String paramString2)
-  {
-    QLog.d(paramString1, 1, paramString2);
-  }
-  
-  public void v(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.d(paramString1, 1, paramString2, paramThrowable);
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.w(paramString1, 1, paramString2, paramThrowable);
+    this.a.setImageDrawable(paramURLDrawable);
+    QLog.d("CommonUtils_", 1, "onLoadSuccessed");
   }
 }
 

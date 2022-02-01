@@ -214,7 +214,7 @@ public class MiniDexConfig
         QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "", localThrowable);
         if (TextUtils.isEmpty(this.minBaselibVersion))
         {
-          String str2 = StorageUtil.getPreference().getString("version", "1.18.0.00132");
+          String str2 = StorageUtil.getPreference().getString("version", "1.19.0.00043");
           if (BaseLibInfo.needUpdateVersion(this.minBaselibVersion, str2))
           {
             QMLog.e("minisdk-MiniAppDexLoader_DexConfig", "baselib version is not match. minBaselibVersion=" + this.platformVersion + " currBaselibVersion=" + str2);
@@ -246,7 +246,7 @@ public class MiniDexConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.dynamic.MiniDexConfig
  * JD-Core Version:    0.7.0.1
  */

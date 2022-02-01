@@ -1,91 +1,53 @@
-import MQQ.PrivExtV2Rsp;
-import MQQ.VipMedalList;
-import MQQ.VipUserInfo;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.QQSettingMe.30.1;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.smtt.sdk.WebView;
 
 public class afib
-  extends aokw
+  extends SwiftBrowserUIStyleHandler
 {
-  public afib(QQSettingMe paramQQSettingMe) {}
+  afib(ConfessHalfScreenActivity.ConfessBrowserFragment paramConfessBrowserFragment) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void initWebViewInContentView()
   {
-    if ((paramBoolean) && (paramInt >= 0) && (this.a.a != null))
+    WebView localWebView;
+    if (this.mComponentContext.a() != null)
     {
-      Object localObject = this.a.a.getPreferences();
-      if (localObject != null) {
-        ((SharedPreferences)localObject).edit().putInt("key_selfvip_growthvalue", paramInt).commit();
+      localWebView = this.mComponentContext.a();
+      localWebView.setId(2131381043);
+      if (this.mBrowserWebviewColor != -1) {
+        localWebView.setBackgroundColor(this.mBrowserWebviewColor);
       }
-      localObject = this.a.a.getCurrentAccountUin();
+      Object localObject = (Activity)localWebView.getContext();
+      if ((localObject instanceof ConfessHalfScreenActivity))
+      {
+        localObject = (ConfessHalfScreenActivity)localObject;
+        ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.a, ConfessHalfScreenActivity.a((ConfessHalfScreenActivity)localObject));
+      }
       if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoObserver");
+        QLog.i("SwiftBrowserUIStyleHandler", 2, "initWebViewInContentView height=" + ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.a));
       }
-      this.a.c((String)localObject);
+      if (!(this.webviewWrapper instanceof RelativeLayout)) {
+        break label171;
+      }
+      localObject = new RelativeLayout.LayoutParams(-1, ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.a));
+      ((RelativeLayout.LayoutParams)localObject).addRule(12);
+      this.webviewWrapper.addView(localWebView, 0, (ViewGroup.LayoutParams)localObject);
     }
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    Object localObject;
-    if (paramInt == 1) {
-      if (paramBoolean)
-      {
-        paramObject = (PrivExtV2Rsp)paramObject;
-        localObject = paramObject.vipInfo;
-        if ((localObject != null) && (((VipUserInfo)localObject).bUpdate == 1))
-        {
-          localObject = ((VipUserInfo)localObject).sUri;
-          if (localObject != null)
-          {
-            QQSettingMe.b(this.a, (String)localObject);
-            if (QLog.isColorLevel()) {
-              QLog.d("QQSettingRedesign", 2, "vip url = " + (String)localObject);
-            }
-            localObject = this.a.a.getApplication().getSharedPreferences(this.a.a.getCurrentAccountUin(), 4).edit().putString("VIPCenter_url_key", (String)localObject);
-            if (Build.VERSION.SDK_INT >= 9) {
-              break label216;
-            }
-            ((SharedPreferences.Editor)localObject).commit();
-          }
-        }
-        localObject = this.a.a.getCurrentAccountUin();
-        this.a.c((String)localObject);
-        if (paramObject.medalInfoList != null) {
-          bhyu.a(paramObject.medalInfoList.lhNumFlag, paramObject.medalInfoList.lhLogoLv);
-        }
-        this.a.b.post(new QQSettingMe.30.1(this));
-      }
-      else
-      {
-        QQSettingMe.f(this.a);
-      }
-    }
-    label216:
-    do
+    for (;;)
     {
+      this.webviewWrapper.setOnClickListener(new afic(this));
       return;
-      ((SharedPreferences.Editor)localObject).apply();
-      break;
-      if ((paramBoolean) && (paramInt == 6))
-      {
-        QQSettingMe.f(this.a);
-        return;
-      }
-      if (paramInt == 4)
-      {
-        this.a.b.sendEmptyMessage(2);
-        return;
-      }
-    } while (paramInt != 5);
-    this.a.b.sendMessage(this.a.b.obtainMessage(3, paramObject));
+      label171:
+      this.webviewWrapper.addView(localWebView, 0, new ViewGroup.LayoutParams(-1, ConfessHalfScreenActivity.ConfessBrowserFragment.a(this.a)));
+    }
   }
 }
 

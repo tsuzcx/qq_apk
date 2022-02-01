@@ -1,17 +1,16 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FriendListFragment;
 
-class roh
-  extends RecyclerView.AdapterDataObserver
+public class roh
+  implements bjqk
 {
-  private roh(rnu paramrnu) {}
+  public roh(FriendListFragment paramFriendListFragment) {}
   
-  public void onChanged() {}
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2) {}
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
+  public void a(int paramInt)
   {
-    onItemRangeChanged(paramInt1, paramInt2);
+    if (FriendListFragment.a(this.a) != null) {
+      FriendListFragment.a(this.a).onClick(null);
+    }
   }
 }
 

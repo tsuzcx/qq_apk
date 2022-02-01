@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.servlet;
 
-import bcvp;
+import bboz;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
@@ -8,7 +8,7 @@ import mqq.app.NewIntent;
 public class QZoneNotifyServlet$5
   implements Runnable
 {
-  public QZoneNotifyServlet$5(bcvp parambcvp) {}
+  public QZoneNotifyServlet$5(bboz parambboz) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class QZoneNotifyServlet$5
     if (localAppRuntime == null) {
       return;
     }
-    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), bcvp.class);
+    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), bboz.class);
     localNewIntent.setAction("Qzone_Get_NewAndUnread_Count");
     localNewIntent.putExtra("bNotWorkInBackGround", true);
     localNewIntent.putExtra("qzone_send_by_time", 4);
@@ -28,7 +28,7 @@ public class QZoneNotifyServlet$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneNotifyServlet.5
  * JD-Core Version:    0.7.0.1
  */

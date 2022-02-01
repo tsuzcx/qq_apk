@@ -1,13 +1,13 @@
-import java.util.Comparator;
-
-class asgu
-  implements Comparator<String>
+public class asgu
 {
-  asgu(asgs paramasgs) {}
+  long jdField_a_of_type_Long = 0L;
+  asgx jdField_a_of_type_Asgx;
+  public volatile boolean a;
+  public volatile boolean b = false;
   
-  public int a(String paramString1, String paramString2)
+  asgu(asgt paramasgt)
   {
-    return paramString2.compareTo(paramString1);
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

@@ -1,48 +1,81 @@
-import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class ofo
-  extends apcq
+  extends aptq<ofn>
 {
-  public ofo(ShopWebViewFragment paramShopWebViewFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  @NonNull
+  public ofn a(int paramInt)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    if (paramInt == 0)
+    {
+      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface))
+      {
+        localObject = (QQAppInterface)localObject;
+        uex.a((QQAppInterface)localObject, uex.a((QQAppInterface)localObject));
+        return ofn.a();
+      }
+    }
+    return new ofn();
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  @Nullable
+  public ofn a(aptx[] paramArrayOfaptx)
   {
-    if ((this.a.mApp == null) || (this.a.jdField_a_of_type_JavaUtilList == null)) {}
-    ArrayList localArrayList;
-    double d1;
-    double d2;
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramInt != 0) || (paramSosoLbsInfo == null));
-      localArrayList = new ArrayList();
-      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        RecentShopParcel localRecentShopParcel = (RecentShopParcel)localIterator.next();
-        if (localRecentShopParcel.c != 1) {
-          try
-          {
-            localArrayList.add(Long.valueOf(Long.valueOf(localRecentShopParcel.a).longValue()));
-          }
-          catch (Exception localException) {}
-        }
-      }
-      d1 = paramSosoLbsInfo.a.a;
-      d2 = paramSosoLbsInfo.a.b;
-    } while (this.a.jdField_a_of_type_Ofa == null);
-    this.a.jdField_a_of_type_Ofa.a(this.a.mApp, localArrayList, d2, d1);
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountCenterUrlConfProcessor", 2, "[onParsed]");
+    }
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return ofn.a(paramArrayOfaptx);
+    }
+    return null;
+  }
+  
+  public void a(ofn paramofn)
+  {
+    paramofn.a();
+    paramofn.b();
+  }
+  
+  public Class<ofn> clazz()
+  {
+    return ofn.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return false;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return uex.b((QQAppInterface)localAppRuntime);
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 70;
   }
 }
 

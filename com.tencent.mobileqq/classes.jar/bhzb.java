@@ -1,552 +1,217 @@
-import android.graphics.Color;
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.Html;
 import android.text.TextUtils;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.widget.RemoteViews;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.common.NoticeParam;
+import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
 
 public class bhzb
+  extends Handler
 {
-  public static bhzd a(QQAppInterface paramQQAppInterface, int paramInt)
+  protected Notification a;
+  protected NoticeParam a;
+  
+  public bhzb()
   {
-    Object localObject = antf.bZ + paramInt + File.separator + "config.json";
-    paramQQAppInterface = VasQuickUpdateManager.getFileFromLocal(paramQQAppInterface, 1000L, "signature.item." + paramInt + ".json", (String)localObject, true, null);
-    try
+    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam = new NoticeParam();
+  }
+  
+  public bhzb(Looper paramLooper)
+  {
+    super(paramLooper);
+    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam = new NoticeParam();
+  }
+  
+  protected String a(int paramInt)
+  {
+    return bhpc.a().a().getString(paramInt);
+  }
+  
+  protected String a(int paramInt, Object... paramVarArgs)
+  {
+    return bhpc.a().a().getString(paramInt, paramVarArgs);
+  }
+  
+  protected void a(Notification paramNotification, PendingIntent paramPendingIntent, boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      paramQQAppInterface = bhmi.a(paramQQAppInterface, -1);
-      if (paramQQAppInterface == null)
+      if (Build.VERSION.SDK_INT > 10)
       {
-        QLog.e("SignatureTemplateConfig", 1, "read config fail result = null");
-        return null;
-      }
-    }
-    catch (OutOfMemoryError paramQQAppInterface)
-    {
-      QLog.e("SignatureTemplateConfig", 1, "read config fail", paramQQAppInterface);
-      return null;
-    }
-    localObject = new bhzd(Integer.toString(paramInt));
-    a(paramQQAppInterface, (bhzd)localObject);
-    return localObject;
-  }
-  
-  private static Object a(boolean paramBoolean, Object paramObject1, Object paramObject2)
-  {
-    if (paramBoolean) {
-      return paramObject1;
-    }
-    return paramObject2;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString2)) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder(antf.bZ);
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramString2);
-    return localStringBuilder.toString();
-  }
-  
-  private static void a(bhzd parambhzd, JSONArray paramJSONArray)
-  {
-    int i = 0;
-    while (i < paramJSONArray.length())
-    {
-      a(parambhzd, paramJSONArray.getJSONObject(i));
-      i += 1;
-    }
-  }
-  
-  private static void a(bhzd parambhzd, JSONObject paramJSONObject)
-  {
-    int i;
-    int j;
-    if (paramJSONObject.has("aio_rows"))
-    {
-      i = paramJSONObject.getInt("aio_rows");
-      if ((i == 0) || ((i > 1) && (i < 6)))
-      {
-        bhze[] arrayOfbhze = parambhzd.jdField_a_of_type_ArrayOfBhze;
-        if (i != 0) {
-          break label356;
-        }
-        j = i;
-        label43:
-        arrayOfbhze[j].jdField_a_of_type_Int = i;
-        arrayOfbhze = parambhzd.jdField_a_of_type_ArrayOfBhze;
-        if (i != 0) {
-          break label363;
-        }
-        j = i;
-        label63:
-        arrayOfbhze[j].jdField_a_of_type_JavaLangString = ((String)a(paramJSONObject.has("pngZip"), paramJSONObject.getString("pngZip"), ""));
-        arrayOfbhze = parambhzd.jdField_a_of_type_ArrayOfBhze;
-        if (i != 0) {
-          break label370;
-        }
-        j = i;
-        label102:
-        arrayOfbhze[j].jdField_a_of_type_Float = ((Float)a(paramJSONObject.has("posX"), paramJSONObject.getString("posX"), Integer.valueOf(0))).floatValue();
-        arrayOfbhze = parambhzd.jdField_a_of_type_ArrayOfBhze;
-        if (i != 0) {
-          break label377;
-        }
-        j = i;
-        label146:
-        arrayOfbhze[j].jdField_b_of_type_Float = ((Float)a(paramJSONObject.has("posY"), paramJSONObject.getString("posY"), Integer.valueOf(0))).floatValue();
-        arrayOfbhze = parambhzd.jdField_a_of_type_ArrayOfBhze;
-        if (i != 0) {
-          break label384;
-        }
-        j = i;
-        label190:
-        arrayOfbhze[j].jdField_c_of_type_Float = ((Float)a(paramJSONObject.has("width"), paramJSONObject.getString("width"), Integer.valueOf(0))).floatValue();
-        arrayOfbhze = parambhzd.jdField_a_of_type_ArrayOfBhze;
-        if (i != 0) {
-          break label391;
-        }
-        j = i;
-        label234:
-        arrayOfbhze[j].d = ((Float)a(paramJSONObject.has("height"), paramJSONObject.getString("height"), Integer.valueOf(0))).floatValue();
-        arrayOfbhze = parambhzd.jdField_a_of_type_ArrayOfBhze;
-        if (i != 0) {
-          break label398;
-        }
-        j = i;
-        label278:
-        arrayOfbhze[j].jdField_b_of_type_Int = ((Integer)a(paramJSONObject.has("repeatTimes"), paramJSONObject.getString("repeatTimes"), Integer.valueOf(0))).intValue();
-        parambhzd = parambhzd.jdField_a_of_type_ArrayOfBhze;
-        if (i != 0) {
-          break label405;
-        }
-      }
-    }
-    for (;;)
-    {
-      parambhzd[i].jdField_c_of_type_Int = ((Integer)a(paramJSONObject.has("interval"), paramJSONObject.getString("interval"), Integer.valueOf(0))).intValue();
-      return;
-      i = -1;
-      break;
-      label356:
-      j = i - 1;
-      break label43;
-      label363:
-      j = i - 1;
-      break label63;
-      label370:
-      j = i - 1;
-      break label102;
-      label377:
-      j = i - 1;
-      break label146;
-      label384:
-      j = i - 1;
-      break label190;
-      label391:
-      j = i - 1;
-      break label234;
-      label398:
-      j = i - 1;
-      break label278;
-      label405:
-      i -= 1;
-    }
-  }
-  
-  public static void a(String paramString, bhzd parambhzd)
-  {
-    Object localObject;
-    try
-    {
-      paramString = new JSONObject(paramString);
-      localObject = paramString.optJSONArray("data");
-      if ((localObject == null) || (((JSONArray)localObject).length() != 1)) {
-        break label888;
-      }
-      localObject = ((JSONArray)localObject).getJSONObject(0);
-      if (((JSONObject)localObject).optInt("platId") == 1)
-      {
-        parambhzd.a();
+        paramNotification.contentView.setOnClickPendingIntent(2131371926, paramPendingIntent);
         return;
       }
-      parambhzd.jdField_f_of_type_JavaLangString = ((JSONObject)localObject).optString("qqVer", "0.0.0");
-      if (AppSetting.a(parambhzd.jdField_f_of_type_JavaLangString) < 0)
-      {
-        parambhzd.a();
-        return;
-      }
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("SignatureTemplateConfig", 1, "getSignatureTemplateInfoFromFile error: " + paramString.getMessage());
+      paramNotification.contentIntent = paramPendingIntent;
       return;
     }
-    parambhzd.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("name", anzj.a(2131712998));
-    parambhzd.jdField_b_of_type_Int = ((JSONObject)localObject).optInt("type", -1);
-    parambhzd.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("feeType", 1);
-    parambhzd.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("actUrl", null);
-    parambhzd.jdField_c_of_type_Int = ((JSONObject)localObject).optInt("newOrHot", 0);
-    parambhzd.jdField_d_of_type_Int = ((JSONObject)localObject).optInt("platId");
-    parambhzd.jdField_e_of_type_JavaLangString = ((JSONObject)localObject).optString("fontColor", "");
-    parambhzd.jdField_g_of_type_Int = ((JSONObject)localObject).optInt("signType", 0);
-    for (;;)
+    paramNotification.contentIntent = paramPendingIntent;
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    Object localObject1 = paramMessage.getData();
+    Object localObject2 = ((Bundle)localObject1).getString(bibw.jdField_a_of_type_JavaLangString);
+    bhzm.a("NoticeHintHandler", "+++++what:" + paramMessage.what + "+++++" + localObject1);
+    localObject2 = bhyo.a().a((String)localObject2);
+    if (localObject2 != null)
     {
-      int j;
-      int i;
-      try
-      {
-        Color.parseColor(parambhzd.jdField_e_of_type_JavaLangString);
-        parambhzd.n = ((JSONObject)localObject).optString("defText", "");
-        parambhzd.o = ((JSONObject)localObject).optString("defTextColor", "");
+      if (((DownloadInfo)localObject2).i == TMAssistantDownloadConst.SHOW_NOTIFICATION_TRUE) {
+        bhzm.c("NoticeHintHandler", "notification isShowNotification=" + ((DownloadInfo)localObject2).i);
       }
-      catch (Exception localException2)
-      {
-        try
-        {
-          Color.parseColor(parambhzd.o);
-          parambhzd.p = ((JSONObject)localObject).optString("timeAndLocation", "");
-        }
-        catch (Exception localException2)
-        {
-          try
-          {
-            Color.parseColor(parambhzd.p);
-            parambhzd.jdField_e_of_type_Int = ((JSONObject)localObject).optInt("isLimited", 1);
-            parambhzd.q = ((JSONObject)localObject).optString("startTime");
-            parambhzd.r = ((JSONObject)localObject).optString("endTime");
-            parambhzd.s = ((JSONObject)localObject).optString("dot9png");
-            parambhzd.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("cover");
-            parambhzd.jdField_g_of_type_JavaLangString = ((JSONObject)localObject).optString("aio_2");
-            parambhzd.h = ((JSONObject)localObject).optString("aio_3");
-            parambhzd.i = ((JSONObject)localObject).optString("aio_4");
-            parambhzd.j = ((JSONObject)localObject).optString("icon");
-            parambhzd.k = ((JSONObject)localObject).optString("view");
-            parambhzd.l = ((JSONObject)localObject).optString("action_off");
-            parambhzd.m = ((JSONObject)localObject).optString("action_on");
-            parambhzd.t = ((JSONObject)localObject).optString("backgroundColor");
-            parambhzd.u = ((JSONObject)localObject).optString("shadowColor");
-            parambhzd.jdField_f_of_type_Int = ((JSONObject)localObject).optInt("materialVersion");
-            if (paramString.has("dynamicItem"))
-            {
-              localObject = paramString.getJSONArray("dynamicItem");
-              j = 0;
-              if (j < ((JSONArray)localObject).length())
-              {
-                JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(j);
-                i = localJSONObject.optInt("aio_rows", -1);
-                if ((i != 0) && ((i <= 1) || (i >= 6))) {
-                  break label889;
-                }
-                bhze[] arrayOfbhze = parambhzd.jdField_a_of_type_ArrayOfBhze;
-                if (i != 0) {
-                  break label896;
-                }
-                k = i;
-                arrayOfbhze[k].jdField_a_of_type_Int = i;
-                arrayOfbhze = parambhzd.jdField_a_of_type_ArrayOfBhze;
-                if (i != 0) {
-                  break label904;
-                }
-                k = i;
-                arrayOfbhze[k].jdField_a_of_type_JavaLangString = localJSONObject.optString("pngZip");
-                arrayOfbhze = parambhzd.jdField_a_of_type_ArrayOfBhze;
-                if (i != 0) {
-                  break label912;
-                }
-                k = i;
-                arrayOfbhze[k].jdField_a_of_type_Float = ((float)localJSONObject.optDouble("posX", 0.0D));
-                arrayOfbhze = parambhzd.jdField_a_of_type_ArrayOfBhze;
-                if (i != 0) {
-                  break label920;
-                }
-                k = i;
-                arrayOfbhze[k].jdField_b_of_type_Float = ((float)localJSONObject.optDouble("posY", 0.0D));
-                arrayOfbhze = parambhzd.jdField_a_of_type_ArrayOfBhze;
-                if (i != 0) {
-                  break label928;
-                }
-                k = i;
-                arrayOfbhze[k].jdField_c_of_type_Float = ((float)localJSONObject.optDouble("width", 0.0D));
-                arrayOfbhze = parambhzd.jdField_a_of_type_ArrayOfBhze;
-                if (i != 0) {
-                  break label936;
-                }
-                k = i;
-                arrayOfbhze[k].d = ((float)localJSONObject.optDouble("height", 0.0D));
-                arrayOfbhze = parambhzd.jdField_a_of_type_ArrayOfBhze;
-                if (i != 0) {
-                  break label944;
-                }
-                k = i;
-                arrayOfbhze[k].jdField_b_of_type_Int = localJSONObject.optInt("repeatTimes", 0);
-                arrayOfbhze = parambhzd.jdField_a_of_type_ArrayOfBhze;
-                if (i != 0) {
-                  break label952;
-                }
-                arrayOfbhze[i].jdField_c_of_type_Int = localJSONObject.optInt("interval", 0);
-                break label889;
-                localException1 = localException1;
-                parambhzd.jdField_e_of_type_JavaLangString = "";
-                continue;
-                localException2 = localException2;
-                parambhzd.o = "";
-              }
-            }
-          }
-          catch (Exception localException3)
-          {
-            parambhzd.p = "";
-            continue;
-            paramString = paramString.optJSONArray("imgItem");
-            if ((paramString != null) && (paramString.length() > 0))
-            {
-              paramString = paramString.getJSONObject(0);
-              parambhzd.getClass();
-              localObject = new bhzf(parambhzd);
-              ((bhzf)localObject).jdField_b_of_type_JavaLangString = paramString.optString("content");
-              ((bhzf)localObject).jdField_a_of_type_JavaLangString = paramString.optString("img");
-              ((bhzf)localObject).jdField_a_of_type_Int = paramString.optInt("imgWidth");
-              ((bhzf)localObject).jdField_b_of_type_Int = paramString.optInt("imgHeight");
-              ((bhzf)localObject).jdField_c_of_type_JavaLangString = paramString.optString("imgCover");
-              parambhzd.jdField_a_of_type_Bhzf = ((bhzf)localObject);
-            }
-          }
-        }
-      }
-      label888:
+    }
+    else {
       return;
-      label889:
-      j += 1;
-      continue;
-      label896:
-      int k = i - 1;
-      continue;
-      label904:
-      k = i - 1;
-      continue;
-      label912:
-      k = i - 1;
-      continue;
-      label920:
-      k = i - 1;
-      continue;
-      label928:
-      k = i - 1;
-      continue;
-      label936:
-      k = i - 1;
-      continue;
-      label944:
-      k = i - 1;
-      continue;
-      label952:
-      i -= 1;
     }
-  }
-  
-  private static void a(Map<Integer, bhzc> paramMap, JSONObject paramJSONObject, Iterator paramIterator)
-  {
-    paramJSONObject = paramJSONObject.getJSONArray((String)paramIterator.next());
-    int i = 0;
-    while (i < paramJSONObject.length())
-    {
-      Object localObject = paramJSONObject.getJSONObject(i);
-      paramIterator = new bhzd(((JSONObject)localObject).getString("id"));
-      b(paramIterator, ((JSONObject)localObject).getJSONArray("data"));
-      if (((JSONObject)localObject).has("dynamicItem")) {
-        a(paramIterator, ((JSONObject)localObject).getJSONArray("dynamicItem"));
-      }
-      localObject = ((JSONObject)localObject).optJSONArray("imgItem");
-      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-      {
-        localObject = ((JSONArray)localObject).getJSONObject(0);
-        paramIterator.getClass();
-        bhzf localbhzf = new bhzf(paramIterator);
-        localbhzf.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("content");
-        localbhzf.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("img");
-        localbhzf.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("imgWidth");
-        localbhzf.jdField_b_of_type_Int = ((JSONObject)localObject).optInt("imgHeight");
-        localbhzf.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("imgCover");
-        paramIterator.jdField_a_of_type_Bhzf = localbhzf;
-      }
-      localObject = (bhzc)paramMap.get(Integer.valueOf(paramIterator.jdField_b_of_type_Int));
-      if (localObject != null) {
-        ((bhzc)localObject).jdField_a_of_type_JavaUtilArrayList.add(paramIterator);
-      }
-      i += 1;
-    }
-  }
-  
-  public static bhzc[] a(QQAppInterface paramQQAppInterface)
-  {
-    Object localObject1;
-    try
-    {
-      localObject1 = new LinkedHashMap();
-      paramQQAppInterface = new File(SignatureManager.jdField_b_of_type_JavaLangString);
-      try
-      {
-        paramQQAppInterface = bhmi.a(paramQQAppInterface, -1);
-        if (paramQQAppInterface != null) {
-          break label119;
-        }
-      }
-      catch (OutOfMemoryError paramQQAppInterface)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("SignatureTemplateConfig", 2, "read config fail", paramQQAppInterface);
-        return null;
-      }
-      return null;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      localObject1 = new File(SignatureManager.jdField_b_of_type_JavaLangString);
-      if ((((File)localObject1).exists()) && (((File)localObject1).isFile())) {
-        ((File)localObject1).delete();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SignatureTemplateConfig", 2, "parse sig cfg fail " + paramQQAppInterface.getMessage());
-      }
-      paramQQAppInterface = null;
-    }
+    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString = ((DownloadInfo)localObject2).c;
+    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_JavaLangString = ((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.d = ((DownloadInfo)localObject2).e;
+    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString = ((DownloadInfo)localObject2).g;
+    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_AndroidContentIntent = ((DownloadInfo)localObject2).jdField_a_of_type_AndroidContentIntent;
+    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_Long = ((DownloadInfo)localObject2).jdField_a_of_type_Long;
+    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.g = ((DownloadInfo)localObject2).h;
+    this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.e = ((DownloadInfo)localObject2).d;
     for (;;)
     {
-      return paramQQAppInterface;
-      label119:
-      paramQQAppInterface = new JSONObject((String)paramQQAppInterface.subSequence(paramQQAppInterface.indexOf("{"), paramQQAppInterface.length())).getJSONObject("data");
-      Object localObject2 = paramQQAppInterface.getJSONArray("itemType");
-      int i = 0;
-      while (i < ((JSONArray)localObject2).length())
+      try
       {
-        JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(i);
-        bhzc localbhzc = new bhzc();
-        localbhzc.jdField_a_of_type_Int = localJSONObject.getInt("sigId");
-        localbhzc.jdField_a_of_type_JavaLangString = localJSONObject.getString("sigType");
-        ((Map)localObject1).put(Integer.valueOf(localbhzc.jdField_a_of_type_Int), localbhzc);
-        i += 1;
-      }
-      paramQQAppInterface = paramQQAppInterface.getJSONObject("items");
-      localObject2 = paramQQAppInterface.keys();
-      while (((Iterator)localObject2).hasNext()) {
-        a((Map)localObject1, paramQQAppInterface, (Iterator)localObject2);
-      }
-      paramQQAppInterface = ((Map)localObject1).entrySet().iterator();
-      while (paramQQAppInterface.hasNext()) {
-        if (((bhzc)((Map.Entry)paramQQAppInterface.next()).getValue()).jdField_a_of_type_JavaUtilArrayList.size() == 0) {
-          paramQQAppInterface.remove();
+        if (this.jdField_a_of_type_AndroidAppNotification == null)
+        {
+          this.jdField_a_of_type_AndroidAppNotification = bidk.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam);
+          if (this.jdField_a_of_type_AndroidAppNotification == null) {
+            break;
+          }
+        }
+        switch (paramMessage.what)
+        {
+        default: 
+          int i = bidk.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
+          long l = bidk.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_AndroidAppNotification.when = l;
+          bidk.a().a(i, this.jdField_a_of_type_AndroidAppNotification);
+          bhzm.c("NoticeHintHandler", "notify key=" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString + " type=" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_Int + "appid=" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
+          return;
+          localObject1 = new RemoteViews(bhpc.a().a().getPackageName(), 2131559661);
+          bidk.a().a((RemoteViews)localObject1);
+          ((RemoteViews)localObject1).setInt(2131371926, "setBackgroundColor", -1);
+          ((RemoteViews)localObject1).setInt(2131371928, "setTextColor", -16777216);
+          ((RemoteViews)localObject1).setInt(2131371922, "setTextColor", -12303292);
+          ((RemoteViews)localObject1).setInt(2131371916, "setTextColor", -12303292);
+          this.jdField_a_of_type_AndroidAppNotification.contentView = ((RemoteViews)localObject1);
+          continue;
         }
       }
-      paramQQAppInterface = new bhzc[((Map)localObject1).values().size()];
-      ((Map)localObject1).values().toArray(paramQQAppInterface);
-    }
-  }
-  
-  private static void b(bhzd parambhzd, JSONArray paramJSONArray)
-  {
-    int i = 0;
-    if (i < paramJSONArray.length())
-    {
-      JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-      if (localJSONObject.getInt("platId") == 1) {}
+      catch (Exception localException)
+      {
+        bhzm.c("NoticeHintHandler", "init Notification>>>", localException);
+        continue;
+        bhzm.b("NoticeHintHandler", ">>downloading:" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
+        bhzm.c("NoticeHintHandler", "size = " + ((DownloadInfo)localObject2).jdField_f_of_type_Int + " content = ");
+        this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131694151, new Object[] { ((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString });
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371916, 8);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371911, 0);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371922, 0);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setProgressBar(2131371910, 100, ((DownloadInfo)localObject2).jdField_f_of_type_Int, false);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371922, ((DownloadInfo)localObject2).jdField_f_of_type_Int * 100 / 100 + "%");
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131371917, 2130844269);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371928, bhzp.a(a(2131694154, new Object[] { ((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString }), 18, true));
+        a(this.jdField_a_of_type_AndroidAppNotification, bido.a(2, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), true);
+        if (!TextUtils.isEmpty(""))
+        {
+          this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371916, 0);
+          this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371916, Html.fromHtml(""));
+          this.jdField_a_of_type_AndroidAppNotification.flags = 32;
+          paramMessage = this.jdField_a_of_type_AndroidAppNotification;
+          paramMessage.flags |= 0x2;
+          continue;
+        }
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371916, 8);
+        continue;
+        this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131694151, new Object[] { ((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString });
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371916, 0);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371911, 8);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371922, 8);
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371928, bhzp.a(a(2131694154, new Object[] { ((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString }), 18, true));
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371916, a(2131691711));
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131371917, 2130844269);
+        a(this.jdField_a_of_type_AndroidAppNotification, bido.a(2, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), true);
+        this.jdField_a_of_type_AndroidAppNotification.flags = 32;
+        paramMessage = this.jdField_a_of_type_AndroidAppNotification;
+        paramMessage.flags |= 0x2;
+        bidk.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString);
+        continue;
+        bhzm.b("NoticeHintHandler", ">>complete:" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_b_of_type_Int = 3;
+        this.jdField_a_of_type_AndroidAppNotification = bidk.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam);
+      }
+      if (this.jdField_a_of_type_AndroidAppNotification == null) {
+        break;
+      }
+      this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131694149);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371916, 0);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371911, 8);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371922, 8);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371916, a(2131694134));
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371928, bhzp.a(((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString, 18, true));
+      a(this.jdField_a_of_type_AndroidAppNotification, bido.a(4, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), false);
+      paramMessage = bhzk.a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
+      if (paramMessage != null) {
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewBitmap(2131371917, paramMessage);
+      }
       for (;;)
       {
-        i += 1;
+        this.jdField_a_of_type_AndroidAppNotification.flags = 16;
+        paramMessage = this.jdField_a_of_type_AndroidAppNotification;
+        paramMessage.flags &= 0xFFFFFFFD;
+        bidk.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString);
         break;
-        parambhzd.jdField_f_of_type_JavaLangString = localJSONObject.getString("qqVer");
-        if (AppSetting.a(parambhzd.jdField_f_of_type_JavaLangString) >= 0)
-        {
-          parambhzd.jdField_b_of_type_JavaLangString = ((String)a(localJSONObject.has("name"), localJSONObject.getString("name"), anzj.a(2131712979)));
-          parambhzd.jdField_b_of_type_Int = ((Integer)a(localJSONObject.has("type"), Integer.valueOf(localJSONObject.getInt("type")), Integer.valueOf(-1))).intValue();
-          parambhzd.jdField_a_of_type_Int = ((Integer)a(localJSONObject.has("feeType"), Integer.valueOf(localJSONObject.getInt("feeType")), Integer.valueOf(1))).intValue();
-          parambhzd.jdField_c_of_type_JavaLangString = ((String)a(localJSONObject.has("actUrl"), localJSONObject.getString("actUrl"), null));
-          parambhzd.jdField_c_of_type_Int = ((Integer)a(localJSONObject.has("newOrHot"), localJSONObject.getString("newOrHot"), Integer.valueOf(0))).intValue();
-          parambhzd.jdField_d_of_type_Int = localJSONObject.getInt("platId");
-          parambhzd.jdField_e_of_type_JavaLangString = ((String)a(localJSONObject.has("fontColor"), localJSONObject.getString("fontColor"), ""));
-          try
-          {
-            Color.parseColor(parambhzd.jdField_e_of_type_JavaLangString);
-            parambhzd.n = ((String)a(localJSONObject.has("defText"), localJSONObject.getString("defText"), ""));
-            parambhzd.o = ((String)a(localJSONObject.has("defTextColor"), localJSONObject.getString("defTextColor"), ""));
-          }
-          catch (Exception localException2)
-          {
-            try
-            {
-              Color.parseColor(parambhzd.o);
-              parambhzd.p = ((String)a(localJSONObject.has("timeAndLocation"), localJSONObject.getString("timeAndLocation"), ""));
-            }
-            catch (Exception localException2)
-            {
-              try
-              {
-                for (;;)
-                {
-                  Color.parseColor(parambhzd.p);
-                  parambhzd.jdField_e_of_type_Int = ((Integer)a(localJSONObject.has("isLimited"), localJSONObject.getString("isLimited"), Integer.valueOf(1))).intValue();
-                  parambhzd.q = ((String)a(localJSONObject.has("startTime"), localJSONObject.getString("startTime"), ""));
-                  parambhzd.r = ((String)a(localJSONObject.has("endTime"), localJSONObject.getString("endTime"), ""));
-                  parambhzd.s = ((String)a(localJSONObject.has("dot9png"), localJSONObject.getString("dot9png"), ""));
-                  parambhzd.t = ((String)a(localJSONObject.has("backgroundColor"), localJSONObject.getString("backgroundColor"), ""));
-                  if (localJSONObject.has("cover")) {
-                    parambhzd.jdField_d_of_type_JavaLangString = localJSONObject.getString("cover");
-                  }
-                  if (localJSONObject.has("aio_2")) {
-                    parambhzd.jdField_g_of_type_JavaLangString = localJSONObject.getString("aio_2");
-                  }
-                  if (localJSONObject.has("aio_3")) {
-                    parambhzd.h = localJSONObject.getString("aio_3");
-                  }
-                  if (localJSONObject.has("aio_4")) {
-                    parambhzd.i = localJSONObject.getString("aio_4");
-                  }
-                  if (localJSONObject.has("icon")) {
-                    parambhzd.j = localJSONObject.getString("icon");
-                  }
-                  if (localJSONObject.has("view")) {
-                    parambhzd.k = localJSONObject.getString("view");
-                  }
-                  if (localJSONObject.has("action_off")) {
-                    parambhzd.l = localJSONObject.getString("action_off");
-                  }
-                  if (!localJSONObject.has("action_on")) {
-                    break;
-                  }
-                  parambhzd.m = localJSONObject.getString("action_on");
-                  break;
-                  localException1 = localException1;
-                  parambhzd.jdField_e_of_type_JavaLangString = "";
-                }
-                localException2 = localException2;
-                parambhzd.o = "";
-              }
-              catch (Exception localException3)
-              {
-                for (;;)
-                {
-                  parambhzd.p = "";
-                }
-              }
-            }
-          }
-        }
+        bhzm.b("NoticeHintHandler", ">>download icon fail,so we use default notification icon");
+        this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131371917, 2130844269);
       }
+      bhzm.b("NoticeHintHandler", ">>pause:" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131694136);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371916, 0);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371911, 8);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371922, 8);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131371917, 2130844272);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371928, bhzp.a(((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString, 18, true));
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371916, a(2131694136));
+      a(this.jdField_a_of_type_AndroidAppNotification, bido.a(1, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), true);
+      this.jdField_a_of_type_AndroidAppNotification.flags = 16;
+      paramMessage = this.jdField_a_of_type_AndroidAppNotification;
+      paramMessage.flags &= 0xFFFFFFFD;
+      bidk.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString);
+      continue;
+      bhzm.b("NoticeHintHandler", ">>error:" + this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371916, 0);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371911, 8);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setViewVisibility(2131371922, 8);
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setImageViewResource(2131371917, 2130844270);
+      String str = (String)paramMessage.obj;
+      paramMessage = str;
+      if (TextUtils.isEmpty(str)) {
+        paramMessage = a(2131691703);
+      }
+      this.jdField_a_of_type_AndroidAppNotification.tickerText = a(2131694150, new Object[] { paramMessage });
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371916, a(2131694135, new Object[] { paramMessage }));
+      this.jdField_a_of_type_AndroidAppNotification.contentView.setTextViewText(2131371928, bhzp.a(((DownloadInfo)localObject2).jdField_f_of_type_JavaLangString, 18, true));
+      a(this.jdField_a_of_type_AndroidAppNotification, bido.a(1, this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam), true);
+      this.jdField_a_of_type_AndroidAppNotification.flags = 16;
+      paramMessage = this.jdField_a_of_type_AndroidAppNotification;
+      paramMessage.flags &= 0xFFFFFFFD;
+      bidk.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString);
     }
+    bidk.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewCommonNoticeParam.jdField_f_of_type_JavaLangString);
   }
 }
 

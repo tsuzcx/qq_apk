@@ -1,19 +1,25 @@
-import com.tencent.maxvideo.common.AVIOStruct;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import java.util.concurrent.atomic.AtomicReference;
+import com.tencent.qphone.base.util.QLog;
 
-public class bdds
+class bdds
+  extends andd
 {
-  public int a;
-  public bdbu a;
-  public bden a;
-  public AVIOStruct a;
-  public AtomicReference<SVHwEncoder> a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  bdds(bddq parambddq) {}
+  
+  protected void onGetSignInStatus(boolean paramBoolean, String paramString1, String paramString2, Object paramObject, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ClockInViewHelper", 2, "onGetSignInStatus isSucc = " + paramBoolean + ", troopUin = " + paramString1 + ", memberUin = " + paramString2);
+    }
+    bddq.a(this.a, paramBoolean, paramString1, paramString2, paramObject, paramInt);
+  }
+  
+  protected void onSetSignInStatus(boolean paramBoolean, String paramString1, String paramString2, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ClockInViewHelper", 2, "onSetSignInStatus isSucc = " + paramBoolean + ", troopUin = " + paramString1 + ", memberUin = " + paramString2);
+    }
+    bddq.a(this.a, paramBoolean, paramString1, paramString2, paramObject);
+  }
 }
 
 

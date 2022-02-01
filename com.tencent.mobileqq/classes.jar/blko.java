@@ -1,20 +1,39 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Rect;
-import com.tencent.widget.DynamicGridView;
+import android.graphics.SurfaceTexture;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.AEGLSurfaceListener;
+import dov.com.qq.im.ae.camera.core.AECameraManager;
 
-public class blko
-  implements TypeEvaluator<Rect>
+class blko
+  implements AECameraGLSurfaceView.AEGLSurfaceListener
 {
-  public blko(DynamicGridView paramDynamicGridView) {}
+  blko(bljy parambljy) {}
   
-  public int a(int paramInt1, int paramInt2, float paramFloat)
+  public void onFirstFrameDone()
   {
-    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
+    bmau.a().a("onFirstFrameDone");
+    bljy.b(this.a);
   }
   
-  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
+  public void onOrientionChanged(int paramInt)
   {
-    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
+    this.a.jdField_a_of_type_DovComQqImAeCameraCoreAECameraManager.setActivityOrientation(paramInt);
+  }
+  
+  public void onPreviewSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.jdField_a_of_type_DovComQqImAeCameraCoreAECameraManager.setFocusOperatorMatrix(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onPreviewSurfaceTextureCreate(SurfaceTexture paramSurfaceTexture)
+  {
+    this.a.jdField_a_of_type_AndroidGraphicsSurfaceTexture = paramSurfaceTexture;
+    bmbx.b(this.a.jdField_a_of_type_JavaLangString, "onPreviewSurfaceTextureCreate---" + this.a.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.a.l();
+  }
+  
+  public void onPreviewSurfaceTextureRelease()
+  {
+    bmbx.b(this.a.jdField_a_of_type_JavaLangString, "onPreviewSurfaceTextureRelease---" + this.a.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.a.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
   }
 }
 

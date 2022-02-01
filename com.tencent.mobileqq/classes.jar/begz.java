@@ -1,285 +1,214 @@
-import android.text.Editable.Factory;
-import android.text.SpannableStringBuilder;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScanTask;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScaner.1;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScaner.2;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScaner.3;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class begz
-  extends SpannableStringBuilder
+  implements begy
 {
-  public static Editable.Factory a;
-  public static Editable.Factory b;
-  private int a;
-  private int b;
+  private static long jdField_a_of_type_Long = 1L;
+  private static begz jdField_a_of_type_Begz;
+  private LinkedList<Long> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private Map<Long, TroopFileScanTask> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private LinkedList<TroopFileScanTask> b = new LinkedList();
+  private LinkedList<TroopFileScanTask> c = new LinkedList();
   
-  static
+  public static begz a()
   {
-    jdField_a_of_type_AndroidTextEditable$Factory = new beha();
-    jdField_b_of_type_AndroidTextEditable$Factory = new behb();
-  }
-  
-  public begz(CharSequence paramCharSequence, int paramInt)
-  {
-    this(paramCharSequence, paramInt, 32);
-  }
-  
-  public begz(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    super(a(paramCharSequence, paramInt1, paramInt2));
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Int = paramInt1;
-  }
-  
-  public static Editable.Factory a(int paramInt)
-  {
-    return new behc(paramInt);
-  }
-  
-  private static final CharSequence a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    if ((paramCharSequence instanceof begp)) {
-      return ((begp)paramCharSequence).a();
-    }
-    return new begp(paramCharSequence, paramInt1, paramInt2).a();
-  }
-  
-  public String a()
-  {
-    int j = 0;
-    int i = length();
-    Object localObject1 = new char[i];
-    getChars(0, i, (char[])localObject1, 0);
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append((char[])localObject1);
-    int k = "[emoji]".length();
-    localObject1 = (begw[])getSpans(0, i, begw.class);
-    i = 0;
-    if (j < localObject1.length)
-    {
-      Object localObject2 = localObject1[j];
-      int m = getSpanStart(localObject2);
-      int n = getSpanEnd(localObject2);
-      switch (((begw)localObject2).c)
-      {
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        localStringBuffer.replace(m + i, n + i, "[emoji]");
-        i += k - (n - m);
-        continue;
-        localObject2 = ((begw)localObject2).a();
-        localStringBuffer.replace(m + i, n + i, (String)localObject2);
-        i += ((String)localObject2).length() - (n - m);
-        continue;
-        localObject2 = asle.a(((begw)localObject2).jdField_a_of_type_Int & 0x7FFFFFFF);
-        localStringBuffer.replace(m + i, n + i, (String)localObject2);
-        i += ((String)localObject2).length() - (n - m);
-      }
-    }
-    return localStringBuffer.toString();
-  }
-  
-  public void getChars(int paramInt1, int paramInt2, char[] paramArrayOfChar, int paramInt3)
-  {
-    int i = paramInt1;
-    if (paramInt1 < 0) {
-      i = 0;
-    }
-    int j = length();
-    paramInt1 = paramInt2;
-    if (paramInt2 > j) {
-      paramInt1 = j;
-    }
     try
     {
-      super.getChars(i, paramInt1, paramArrayOfChar, paramInt3);
-      return;
+      if (jdField_a_of_type_Begz == null) {
+        jdField_a_of_type_Begz = new begz();
+      }
+      begz localbegz = jdField_a_of_type_Begz;
+      return localbegz;
     }
-    catch (IndexOutOfBoundsException paramArrayOfChar)
-    {
-      QLog.e("QQTextBuilder", 1, "text:" + a());
-    }
+    finally {}
   }
   
-  public SpannableStringBuilder replace(int paramInt1, int paramInt2, CharSequence paramCharSequence, int paramInt3, int paramInt4)
+  private String a()
   {
-    if (paramInt1 < 0) {
-      j = 0;
+    return " WS:" + this.jdField_a_of_type_JavaUtilMap.size() + " QS:" + this.jdField_a_of_type_JavaUtilLinkedList.size() + " PRS:" + this.c.size() + " RS:" + this.b.size();
+  }
+  
+  private LinkedList<TroopFileScanTask> a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
+    LinkedList localLinkedList = new LinkedList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    TroopFileScanTask localTroopFileScanTask;
+    while (localIterator.hasNext())
+    {
+      localTroopFileScanTask = (TroopFileScanTask)((Map.Entry)localIterator.next()).getValue();
+      if (paramString.equalsIgnoreCase(localTroopFileScanTask.a()))
+      {
+        localLinkedList.add(localTroopFileScanTask);
+        localIterator.remove();
+      }
+    }
+    localIterator = this.c.iterator();
+    while (localIterator.hasNext())
+    {
+      localTroopFileScanTask = (TroopFileScanTask)localIterator.next();
+      if (paramString.equalsIgnoreCase(localTroopFileScanTask.a()))
+      {
+        localLinkedList.add(localTroopFileScanTask);
+        localIterator.remove();
+      }
+    }
+    return localLinkedList;
+  }
+  
+  private void a()
+  {
+    if (this.b.size() >= 2) {}
+    label146:
     for (;;)
     {
-      try
-      {
-        k = length();
-        if (paramInt2 > k)
-        {
-          paramInt1 = k;
-          paramInt2 = paramInt1;
-          if (paramInt1 < 0) {
-            i = paramInt1;
-          }
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        int k;
-        Object localObject;
-        QLog.e("QQText", 1, "QQTextBuilder.replace caused crash..text:" + toString() + ", replace text:" + paramCharSequence + " , " + j + "-" + paramInt2 + " , " + paramInt3 + "-" + paramInt4, localThrowable1);
-        return new SpannableStringBuilder();
-      }
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          break label259;
-        }
-        i = paramInt1;
-        QLog.w("QQTextBuilder", 2, "selection error, start = " + j + " end = " + paramInt1 + " length = " + k);
-      }
-      catch (Throwable localThrowable2)
-      {
-        paramInt2 = i;
-        continue;
-        continue;
-        paramInt2 = 0;
-        continue;
-      }
-      i = paramInt2;
-      if (paramCharSequence.length() <= 0) {
-        break label256;
-      }
-      i = paramInt2;
-      localObject = new begp(paramCharSequence, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int).a();
-      paramCharSequence = (CharSequence)localObject;
-      try
-      {
-        localObject = super.replace(j, paramInt2, paramCharSequence, paramInt3, paramInt4);
-        return localObject;
-      }
-      catch (Throwable localThrowable3)
-      {
-        continue;
-      }
-      j = paramInt1;
-      continue;
-      paramInt1 = paramInt2;
-    }
-  }
-  
-  public CharSequence subSequence(int paramInt1, int paramInt2)
-  {
-    if (!begp.a) {
-      localObject1 = super.subSequence(paramInt1, paramInt2);
-    }
-    do
-    {
-      return localObject1;
-      if (paramInt1 != 0) {
-        break;
-      }
-      localObject1 = this;
-    } while (paramInt2 == length());
-    int i = paramInt1;
-    if (paramInt1 < 0) {
-      i = 0;
-    }
-    int j = length();
-    paramInt1 = paramInt2;
-    if (paramInt2 > j) {
-      paramInt1 = j;
-    }
-    Object localObject2 = new char[paramInt1 - i];
-    getChars(i, paramInt1, (char[])localObject2, 0);
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append((char[])localObject2);
-    localObject2 = (begw[])getSpans(i, paramInt1, begw.class);
-    if (paramInt1 - i > 0)
-    {
-      paramInt2 = 0;
-      if (paramInt2 < localObject2.length)
-      {
-        Object localObject3 = localObject2[paramInt2];
-        int k = getSpanStart(localObject3);
-        int m = getSpanEnd(localObject3);
-        j = k;
-        if (k < i) {
-          j = i;
-        }
-        k = m;
-        if (m > paramInt1) {
-          k = paramInt1;
-        }
-        switch (localObject3.c)
-        {
-        }
-        for (;;)
-        {
-          paramInt2 += 1;
-          break;
-          try
-          {
-            ((StringBuilder)localObject1).replace(j - i, k - i, behh.a(localObject3.jdField_a_of_type_Int));
-          }
-          catch (Exception localException)
-          {
-            QLog.e("QQTextBuilder", 1, localException.getStackTrace());
-          }
-          continue;
-          Object localObject4 = (begy)localException;
-          localObject4 = asfa.a(((begy)localObject4).e, ((begy)localObject4).f);
-          ((StringBuilder)localObject1).replace(j - i, k - i, String.valueOf(new char[] { '\024', localObject4[3], localObject4[2], localObject4[1], localObject4[0] }));
-          continue;
-          ((StringBuilder)localObject1).replace(j - i, k - i, behh.b(((begw)localObject4).jdField_a_of_type_Int));
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  public String toString()
-  {
-    if (!begp.a) {
-      return super.toString();
-    }
-    int i = length();
-    Object localObject1 = new char[i];
-    getChars(0, i, (char[])localObject1, 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append((char[])localObject1);
-    int j = localStringBuilder.length();
-    localObject1 = (begw[])getSpans(0, i, begw.class);
-    i = 0;
-    if (i < localObject1.length)
-    {
-      Object localObject2 = localObject1[i];
-      int k = getSpanStart(localObject2);
-      int m = getSpanEnd(localObject2);
-      if ((k < j) && (m <= j)) {
-        switch (((begw)localObject2).c)
-        {
-        }
-      }
+      return;
       for (;;)
       {
-        i += 1;
-        break;
-        localStringBuilder.replace(k, m, behh.a(((begw)localObject2).jdField_a_of_type_Int));
-        continue;
-        localObject2 = (begy)localObject2;
-        localObject2 = asfa.a(((begy)localObject2).e, ((begy)localObject2).f);
-        localStringBuilder.replace(k, m, String.valueOf(new char[] { '\024', localObject2[3], localObject2[2], localObject2[1], localObject2[0] }));
-        if (QLog.isColorLevel())
-        {
-          QLog.d("QQTextBuilder", 2, "start:" + k + ",end:" + m);
-          continue;
-          localStringBuilder.replace(k, m, behh.b(((begw)localObject2).jdField_a_of_type_Int));
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.e("QQText", 2, "error emo pos. start:" + k + " end: " + m + " length: " + j);
+        if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0) {
+          break label146;
+        }
+        long l = ((Long)this.jdField_a_of_type_JavaUtilLinkedList.remove(0)).longValue();
+        TroopFileScanTask localTroopFileScanTask = (TroopFileScanTask)this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(l));
+        if (localTroopFileScanTask != null) {
+          if (a(localTroopFileScanTask.a()))
+          {
+            befc.b("TroopFileScaner", befc.a, "[" + localTroopFileScanTask.a() + "] has same task gening. add WD task");
+            this.c.add(localTroopFileScanTask);
+            localTroopFileScanTask.b();
+          }
+          else
+          {
+            this.b.add(localTroopFileScanTask);
+            if (localTroopFileScanTask.a()) {
+              break;
+            }
+            this.b.remove(localTroopFileScanTask);
           }
         }
       }
     }
-    return localStringBuilder.toString();
+  }
+  
+  private boolean a(long paramLong)
+  {
+    int i = 1;
+    Iterator localIterator = this.b.iterator();
+    TroopFileScanTask localTroopFileScanTask;
+    while (localIterator.hasNext())
+    {
+      localTroopFileScanTask = (TroopFileScanTask)localIterator.next();
+      if (paramLong == localTroopFileScanTask.a())
+      {
+        localTroopFileScanTask.a();
+        localIterator.remove();
+      }
+    }
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      boolean bool2 = bool1;
+      if (!bool1)
+      {
+        localIterator = this.c.iterator();
+        if (localIterator.hasNext())
+        {
+          localTroopFileScanTask = (TroopFileScanTask)localIterator.next();
+          if (paramLong != localTroopFileScanTask.a()) {
+            break label215;
+          }
+          localTroopFileScanTask.a();
+          localIterator.remove();
+          bool1 = true;
+        }
+      }
+      label215:
+      for (;;)
+      {
+        break;
+        if ((TroopFileScanTask)this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong)) != null) {}
+        for (;;)
+        {
+          bool2 = bool1 | i | this.jdField_a_of_type_JavaUtilLinkedList.remove(Long.valueOf(paramLong));
+          if (bool2) {
+            befc.c("TroopFileScaner", befc.a, "[" + paramLong + "] stopScan." + a());
+          }
+          return bool2;
+          i = 0;
+        }
+      }
+    }
+  }
+  
+  private boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      if (paramString.equalsIgnoreCase(((TroopFileScanTask)localIterator.next()).a())) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private void b(long paramLong, boolean paramBoolean, int paramInt, TroopFileScanTask paramTroopFileScanTask)
+  {
+    this.b.remove(paramTroopFileScanTask);
+    this.c.remove(paramTroopFileScanTask);
+    befc.c("TroopFileScaner", befc.a, "[" + paramLong + "] onTaskDoneInter.  bSuc:" + paramBoolean + " errCode:" + paramInt + a());
+    Object localObject = a(paramTroopFileScanTask.a());
+    if ((localObject != null) && (((LinkedList)localObject).size() > 0))
+    {
+      befc.b("TroopFileScaner", befc.a, "[" + paramLong + "] onTaskDoneInter. " + ((LinkedList)localObject).size() + " same task passive complete. " + a());
+      localObject = ((LinkedList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((TroopFileScanTask)((Iterator)localObject).next()).a(paramBoolean, paramInt, paramTroopFileScanTask.a(), paramTroopFileScanTask.b(), paramTroopFileScanTask.a(), paramTroopFileScanTask.b(), paramTroopFileScanTask.c(), paramTroopFileScanTask.a());
+      }
+    }
+    a();
+  }
+  
+  public long a(String paramString, beha parambeha, Bundle paramBundle)
+  {
+    long l2 = jdField_a_of_type_Long;
+    jdField_a_of_type_Long = l2 + 1L;
+    long l1 = l2;
+    if (l2 == 0L)
+    {
+      l1 = jdField_a_of_type_Long;
+      jdField_a_of_type_Long = l1 + 1L;
+    }
+    parambeha = TroopFileScanTask.a(l1, paramString, this, parambeha);
+    if (parambeha == null) {
+      return 0L;
+    }
+    bees.a(new TroopFileScaner.1(this, l1, parambeha, paramString), true);
+    return l1;
+  }
+  
+  public void a(long paramLong)
+  {
+    bees.a(new TroopFileScaner.2(this, paramLong), true);
+  }
+  
+  public void a(long paramLong, boolean paramBoolean, int paramInt, TroopFileScanTask paramTroopFileScanTask)
+  {
+    bees.a(new TroopFileScaner.3(this, paramLong, paramBoolean, paramInt, paramTroopFileScanTask), false);
   }
 }
 

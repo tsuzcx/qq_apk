@@ -7,6 +7,10 @@ import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.decoder.RenderContext;
 import com.tencent.tav.decoder.RenderContextParams;
 import com.tencent.tavkit.ciimage.CIContext;
+import com.tencent.tavkit.composition.model.TAVVideoCompositionTrack;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class RenderInfo
 {
@@ -16,12 +20,21 @@ public class RenderInfo
   private final CGSize renderSize;
   @NonNull
   private final CMTime time;
+  @NonNull
+  private final List<TAVVideoCompositionTrack> tracks = new ArrayList();
   
   public RenderInfo(@NonNull CMTime paramCMTime, @NonNull CGSize paramCGSize, @NonNull CIContext paramCIContext)
   {
     this.time = paramCMTime;
     this.renderSize = paramCGSize;
     this.ciContext = paramCIContext;
+  }
+  
+  void addTrack(TAVVideoCompositionTrack paramTAVVideoCompositionTrack)
+  {
+    if (!this.tracks.contains(paramTAVVideoCompositionTrack)) {
+      this.tracks.add(paramTAVVideoCompositionTrack);
+    }
   }
   
   @NonNull
@@ -60,6 +73,26 @@ public class RenderInfo
   public CMTime getTime()
   {
     return this.time;
+  }
+  
+  @Nullable
+  public Object getTrackExtraInfo(String paramString)
+  {
+    Iterator localIterator = this.tracks.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = ((TAVVideoCompositionTrack)localIterator.next()).getExtraTrackInfo(paramString);
+      if (localObject != null) {
+        return localObject;
+      }
+    }
+    return null;
+  }
+  
+  @NonNull
+  public List<TAVVideoCompositionTrack> getTracks()
+  {
+    return this.tracks;
   }
   
   public void putParam(String paramString, Object paramObject)

@@ -1,13 +1,31 @@
-import tv.danmaku.ijk.media.player.IMediaPlayer;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import cooperation.troop.TroopPluginManager.InstallRunable;
 
-class bkxo
-  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnPreparedListener
+public class bkxo
+  extends Handler
 {
-  bkxo(bkxn parambkxn, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnPreparedListener paramOnPreparedListener) {}
-  
-  public void onPrepared(IMediaPlayer paramIMediaPlayer)
+  public bkxo(TroopPluginManager.InstallRunable paramInstallRunable, Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnPreparedListener.onPrepared(this.jdField_a_of_type_Bkxn);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.a == null);
+      this.a.a.a(0);
+      return;
+    } while (this.a.a == null);
+    this.a.a.a(2);
   }
 }
 

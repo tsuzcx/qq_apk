@@ -3,8 +3,8 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import bioy;
-import biqd;
+import bgve;
+import bgwj;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -34,13 +34,13 @@ public class ColorRingJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("ColorRingJsPlugin", 2, "changeTab");
     }
-    biqd localbiqd = (biqd)super.getBrowserComponent(32);
-    if (localbiqd != null)
+    bgwj localbgwj = (bgwj)super.getBrowserComponent(32);
+    if (localbgwj != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putString("callbackId", paramString);
-      paramString = localbiqd.a.obtainMessage(5, localBundle);
-      localbiqd.a.dispatchMessage(paramString);
+      paramString = localbgwj.a.obtainMessage(5, localBundle);
+      localbgwj.a.dispatchMessage(paramString);
     }
   }
   
@@ -126,15 +126,15 @@ public class ColorRingJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("ColorRingJsPlugin", 2, "play, id=" + paramLong);
     }
-    biqd localbiqd = (biqd)super.getBrowserComponent(32);
-    if (localbiqd != null)
+    bgwj localbgwj = (bgwj)super.getBrowserComponent(32);
+    if (localbgwj != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putLong("id", paramLong);
       localBundle.putString("callbackId", paramString2);
       localBundle.putString("type", paramString1);
-      paramString1 = localbiqd.a.obtainMessage(3, localBundle);
-      localbiqd.a.dispatchMessage(paramString1);
+      paramString1 = localbgwj.a.obtainMessage(3, localBundle);
+      localbgwj.a.dispatchMessage(paramString1);
     }
   }
   
@@ -143,16 +143,16 @@ public class ColorRingJsPlugin
     if (QLog.isColorLevel()) {
       QLog.d("ColorRingJsPlugin", 2, "setup, id=" + paramLong);
     }
-    biqd localbiqd = (biqd)super.getBrowserComponent(32);
-    if (localbiqd != null)
+    bgwj localbgwj = (bgwj)super.getBrowserComponent(32);
+    if (localbgwj != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putLong("id", paramLong);
       localBundle.putInt("status", paramInt);
       localBundle.putString("type", paramString1);
       localBundle.putString("callbackId", paramString2);
-      paramString1 = localbiqd.a.obtainMessage(4, localBundle);
-      localbiqd.a.dispatchMessage(paramString1);
+      paramString1 = localbgwj.a.obtainMessage(4, localBundle);
+      localbgwj.a.dispatchMessage(paramString1);
     }
   }
 }

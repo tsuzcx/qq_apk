@@ -1,13 +1,30 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.ColorNickTextView;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class akid
+class akid
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public ColorNickTextView a;
-  public TextView b;
+  akid(akho paramakho) {}
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      Bundle localBundle = new Bundle();
+      localBundle.putBoolean("string_from", false);
+      localBundle.putBoolean("string_uin", true);
+      localBundle.putLong("device_din", 0L);
+      localBundle.putInt("sTitleID", 0);
+      bkoi.a(akho.a(this.a), localBundle, "com.qqdataline.activity.LiteWifiphotoActivity");
+    }
+  }
 }
 
 

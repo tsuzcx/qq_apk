@@ -1,29 +1,21 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFollowRcmd;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aagf
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public aagf(aagd paramaagd, View paramView)
-  {
-    super(paramView);
-  }
+  aagf(aagd paramaagd) {}
   
-  public void a(CertifiedAccountMeta.StFollowRcmd paramStFollowRcmd, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((this.itemView instanceof BlankRecommendItemView))
-    {
-      ((BlankRecommendItemView)this.itemView).setData(paramStFollowRcmd);
-      ((BlankRecommendItemView)this.itemView).setExtraTypeInfo(this.a.getExtraTypeInfo());
-      ((BlankRecommendItemView)this.itemView).setPos(paramInt);
-    }
+    this.a.e();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aagf
  * JD-Core Version:    0.7.0.1
  */

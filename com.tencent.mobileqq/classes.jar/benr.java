@@ -1,6 +1,15 @@
-public abstract interface benr
+public class benr
+  extends beno
 {
-  public abstract void a(boolean paramBoolean);
+  public int a()
+  {
+    return 0;
+  }
+  
+  public int b()
+  {
+    return -1;
+  }
 }
 
 

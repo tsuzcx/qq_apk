@@ -1,107 +1,228 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+
 public class betf
 {
   public int a;
-  public long a;
-  public String a;
-  public boolean a;
+  private LinkedHashMap<String, List<ajac>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  private List<ajac> jdField_a_of_type_JavaUtilList;
+  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
+  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
   public int b;
-  public long b;
-  public boolean b;
+  private List<ajac> b;
   public int c;
-  public long c;
-  public int d;
+  private List<ajac> c;
   
-  public betf()
+  public betf(List<ajac> paramList)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 9001;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_c_of_type_Long = 9223372036854775807L;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_c_of_type_JavaUtilList = new ArrayList();
   }
   
-  public long a()
+  private betg a(QQAppInterface paramQQAppInterface, TroopInfo paramTroopInfo, String paramString, betg parambetg, boolean paramBoolean)
   {
-    long l = 0L;
-    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Long != 0L)) {
-      l = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
-    }
-    while ((this.jdField_a_of_type_Long == 0L) && (this.jdField_b_of_type_Long == 0L)) {
-      return l;
-    }
-    return 612345L;
-  }
-  
-  public String a()
-  {
-    if (a())
+    if (((best.a(paramQQAppInterface, paramTroopInfo)) || (best.b(paramQQAppInterface, paramTroopInfo))) && (!paramBoolean))
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("{");
-      localStringBuilder.append("elapsed:" + a());
-      localStringBuilder.append(",tryCount:" + this.jdField_b_of_type_Int);
-      localStringBuilder.append("}");
-      return localStringBuilder.toString();
+      paramQQAppInterface = bete.a();
+      if ((TextUtils.isEmpty(paramString)) || (bete.a(paramString, paramQQAppInterface))) {
+        parambetg.jdField_a_of_type_JavaUtilList.add(0, paramQQAppInterface);
+      }
     }
-    return "{}";
+    return parambetg;
   }
   
-  public String a(int paramInt)
+  private betg a(String paramString, boolean paramBoolean, TroopInfo paramTroopInfo)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("_");
-    if (this.jdField_a_of_type_Boolean) {
-      if (this.jdField_a_of_type_Long > 0L)
+    paramTroopInfo = a(paramString, paramTroopInfo);
+    if (paramTroopInfo.length >= 3)
+    {
+      this.jdField_a_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)paramTroopInfo[0]);
+      this.jdField_a_of_type_ArrayOfInt = ((int[])paramTroopInfo[1]);
+    }
+    for (this.jdField_a_of_type_ArrayOfJavaLangString = ((String[])paramTroopInfo[2]);; this.jdField_a_of_type_ArrayOfJavaLangString = new String[0])
+    {
+      this.jdField_c_of_type_JavaUtilList = a(this.jdField_a_of_type_JavaUtilLinkedHashMap);
+      paramTroopInfo = new betg();
+      paramTroopInfo.jdField_a_of_type_JavaLangString = paramString;
+      paramTroopInfo.jdField_a_of_type_Boolean = paramBoolean;
+      paramTroopInfo.jdField_a_of_type_ArrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      paramTroopInfo.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      paramTroopInfo.jdField_a_of_type_JavaUtilList = this.jdField_c_of_type_JavaUtilList;
+      return paramTroopInfo;
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+      this.jdField_a_of_type_ArrayOfInt = new int[0];
+    }
+  }
+  
+  private List<ajac> a(LinkedHashMap<String, List<ajac>> paramLinkedHashMap)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramLinkedHashMap = paramLinkedHashMap.entrySet().iterator();
+    while (paramLinkedHashMap.hasNext()) {
+      localArrayList.addAll((Collection)((Map.Entry)paramLinkedHashMap.next()).getValue());
+    }
+    return localArrayList;
+  }
+  
+  private Object[] a(String paramString, TroopInfo paramTroopInfo)
+  {
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+    Object localObject1;
+    Object localObject2;
+    int i;
+    for (;;)
+    {
+      ajac localajac;
+      try
       {
-        localStringBuilder.append("1");
-        localStringBuilder.append("_");
+        this.jdField_b_of_type_Int = 0;
+        this.jdField_a_of_type_Int = 0;
+        this.jdField_c_of_type_Int = 0;
+        Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localajac = (ajac)localIterator.next();
+        if ((localajac.jdField_a_of_type_Boolean) || ((!TextUtils.isEmpty(paramString)) && (best.a(localajac.jdField_a_of_type_JavaLangString, paramTroopInfo)))) {
+          break label664;
+        }
+        if ((TextUtils.isEmpty(paramString)) || (!best.b(localajac.jdField_a_of_type_JavaLangString, paramTroopInfo))) {
+          break label228;
+        }
       }
+      finally {}
+      localObject2 = localObject1;
+      if (((String)localObject1).length() == 1)
+      {
+        i = ((String)localObject1).charAt(0);
+        localObject2 = localObject1;
+        if (!((String)localObject1).equals("★"))
+        {
+          if ((65 > i) || (i > 90)) {
+            break label671;
+          }
+          label160:
+          localObject2 = ((String)localObject1).toUpperCase();
+        }
+      }
+      label167:
+      if (localLinkedHashMap.get(localObject2) == null) {
+        localLinkedHashMap.put(localObject2, new ArrayList());
+      }
+      this.jdField_b_of_type_Int += 1;
+      ((List)localLinkedHashMap.get(localObject2)).add(localajac);
+      continue;
+      label228:
+      localObject1 = localajac.x;
+      if ((localObject1 == null) || (((String)localObject1).length() == 0)) {
+        break label688;
+      }
+      localObject1 = ((String)localObject1).substring(0, 1);
+    }
+    paramTroopInfo = new besx(paramTroopInfo);
+    paramString = new LinkedHashMap();
+    long l = System.currentTimeMillis();
+    if (localLinkedHashMap.get("★") != null)
+    {
+      this.jdField_a_of_type_Int += 1;
+      Collections.sort((List)localLinkedHashMap.get("★"), paramTroopInfo);
+      paramString.put("★", localLinkedHashMap.get("★"));
     }
     for (;;)
     {
-      if ((!(this instanceof betg)) && (!this.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_Int > 0))
+      if (c1 <= 'Z')
       {
-        this.d += this.jdField_c_of_type_Int;
-        this.jdField_c_of_type_Int = 0;
+        if (localLinkedHashMap.get(String.valueOf(c1)) != null)
+        {
+          this.jdField_a_of_type_Int += 1;
+          Collections.sort((List)localLinkedHashMap.get(String.valueOf(c1)), paramTroopInfo);
+          paramString.put(String.valueOf(c1), localLinkedHashMap.get(String.valueOf(c1)));
+        }
       }
-      localStringBuilder.append(this.jdField_c_of_type_Int).append("_");
-      localStringBuilder.append(this.d).append("_");
-      localStringBuilder.append(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long);
-      return localStringBuilder.toString();
-      localStringBuilder.append("-1");
-      break;
-      localStringBuilder.append("0").append("_");
+      else
+      {
+        if (localLinkedHashMap.get("#") != null)
+        {
+          this.jdField_a_of_type_Int += 1;
+          Collections.sort((List)localLinkedHashMap.get("#"), paramTroopInfo);
+          paramString.put("#", localLinkedHashMap.get("#"));
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("SearchTask", 2, "constructHashStruct-sort: invoked.  cost: " + (System.currentTimeMillis() - l));
+        }
+        localLinkedHashMap.clear();
+        paramTroopInfo = new int[paramString.keySet().size()];
+        localObject1 = new String[paramTroopInfo.length];
+        localObject2 = paramString.keySet().iterator();
+        if (paramTroopInfo.length == 0) {
+          return new Object[0];
+        }
+        paramTroopInfo[0] = 0;
+        i = 1;
+        while (i < paramTroopInfo.length)
+        {
+          int j = paramTroopInfo[i];
+          int k = paramTroopInfo[(i - 1)];
+          paramTroopInfo[i] = (((List)paramString.get(((Iterator)localObject2).next())).size() + k + j);
+          i += 1;
+        }
+        localObject2 = paramString.keySet().iterator();
+        i = 0;
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject1[i] = ((String)((Iterator)localObject2).next());
+          i += 1;
+        }
+        return new Object[] { paramString, paramTroopInfo, localObject1 };
+        label664:
+        localObject1 = "★";
+        break;
+        label671:
+        if ((97 <= i) && (i <= 122))
+        {
+          break label160;
+          label688:
+          localObject1 = "#";
+          break;
+        }
+        localObject2 = "#";
+        break label167;
+        c1 = 'A';
+        continue;
+      }
+      char c1 = (char)(c1 + '\001');
     }
   }
   
-  public void a()
+  public betg a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean1, SessionInfo paramSessionInfo, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 9001;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_c_of_type_Int = 0;
-    this.d = 0;
-    this.jdField_c_of_type_Long = 9223372036854775807L;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Long != 0L) || (this.jdField_b_of_type_Long != 0L);
-  }
-  
-  public String toString()
-  {
-    return "result:" + this.jdField_a_of_type_Boolean + " startTime:" + this.jdField_a_of_type_Long + " finishTime:" + this.jdField_b_of_type_Long + " errCode:" + this.jdField_a_of_type_Int;
+    TroopInfo localTroopInfo = null;
+    if (paramSessionInfo != null)
+    {
+      paramSessionInfo = paramSessionInfo.curFriendUin;
+      localTroopInfo = ((TroopManager)paramQQAppInterface.getManager(52)).b(paramSessionInfo);
+    }
+    if (TextUtils.isEmpty(paramString)) {}
+    for (this.jdField_b_of_type_JavaUtilList = bete.a(paramQQAppInterface, this.jdField_a_of_type_JavaUtilList, paramBoolean1);; this.jdField_b_of_type_JavaUtilList = new ArrayList(bete.a(paramString, bete.a(paramQQAppInterface, this.jdField_a_of_type_JavaUtilList, paramBoolean1), paramQQAppInterface, localTroopInfo))) {
+      return a(paramQQAppInterface, localTroopInfo, paramString, a(paramString, paramBoolean1, localTroopInfo), paramBoolean2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     betf
  * JD-Core Version:    0.7.0.1
  */

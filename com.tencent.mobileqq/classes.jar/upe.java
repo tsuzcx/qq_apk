@@ -1,6 +1,25 @@
-public abstract interface upe
+import UserGrowth.stFeed;
+import android.view.ViewGroup;
+
+public class upe
 {
-  public abstract void a(int paramInt);
+  public static bjwy<stFeed> a(int paramInt, ViewGroup paramViewGroup, ujh paramujh)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return uou.a(paramViewGroup, paramujh);
+    case 1: 
+      return upf.a(paramViewGroup, paramujh);
+    case 2: 
+      return uou.a(paramViewGroup, paramujh);
+    case 101: 
+      return upg.a(paramViewGroup, paramujh);
+    case 102: 
+      return uph.a(paramViewGroup, paramujh);
+    }
+    return upc.a(paramViewGroup, paramujh);
+  }
 }
 
 

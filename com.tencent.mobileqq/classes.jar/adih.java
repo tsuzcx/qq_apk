@@ -1,27 +1,28 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import java.util.Map;
 
 public class adih
-  extends adic
+  extends amsu
 {
-  public int a()
+  public adih(ForwardTroopListFragment paramForwardTroopListFragment) {}
+  
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return super.a() + 1;
+    if (paramBoolean1) {
+      this.a.a();
+    }
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
   {
-    aqzo.a(paramList, paramList1, paramStringBuilder, paramMsg);
-    return true;
+    this.a.a();
   }
   
-  public boolean a(im_msg_body.Elem paramElem)
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    return (paramElem.common_elem.has()) && (21 == paramElem.common_elem.uint32_service_type.get()) && (3 == paramElem.common_elem.uint32_business_type.get());
+    if (paramBoolean) {
+      this.a.a();
+    }
   }
 }
 

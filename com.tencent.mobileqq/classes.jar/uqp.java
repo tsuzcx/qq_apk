@@ -1,17 +1,52 @@
-import android.content.Context;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
 
-final class uqp
-  implements ShareActionSheet.OnItemClickListener
+public class uqp
 {
-  uqp(Context paramContext, upd paramupd) {}
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  private IMiniMsgUnreadCallback a()
   {
-    uqi.a(this.jdField_a_of_type_AndroidContentContext, paramActionSheetItem, this.jdField_a_of_type_Upd);
-    paramShareActionSheet.dismiss();
+    return new uqq(this);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public MiniMsgUserParam a()
+  {
+    MiniMsgUserParam localMiniMsgUserParam = new MiniMsgUserParam();
+    localMiniMsgUserParam.businessName = 6;
+    localMiniMsgUserParam.accessType = 2;
+    localMiniMsgUserParam.filterMsgType = 0;
+    localMiniMsgUserParam.unreadCallback = a();
+    return localMiniMsgUserParam;
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(MiniMsgUser paramMiniMsgUser)
+  {
+    if ((this.jdField_a_of_type_Int > 0) && (paramMiniMsgUser != null) && (this.jdField_a_of_type_AndroidViewView != null))
+    {
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      paramMiniMsgUser.onClick(this.jdField_a_of_type_AndroidViewView);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

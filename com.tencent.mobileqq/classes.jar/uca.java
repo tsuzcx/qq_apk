@@ -1,72 +1,40 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
-import com.tencent.biz.pubaccount.util.SwipeBackLayout;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.util.Base64;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectOutputStream;
+import java.util.List;
 
 public class uca
-  extends GestureDetector.SimpleOnGestureListener
 {
-  private float jdField_a_of_type_Float;
+  public static final String a = amtj.a(2131713699);
+  public static final String b = amtj.a(2131713690);
+  public static final String c = amtj.a(2131713694);
+  public static final String d = amtj.a(2131713704);
+  public static final String e = amtj.a(2131713692);
+  public static final String f = amtj.a(2131713691);
+  public static final String g = amtj.a(2131713689);
+  public static final String h = amtj.a(2131713706);
+  public static final String i = amtj.a(2131713698);
+  public static final String j = amtj.a(2131713700);
+  public static final String k = amtj.a(2131713703);
+  public static final String l = amtj.a(2131713701);
+  public static final String m = amtj.a(2131713708);
+  public static final String n = amtj.a(2131713697);
+  public static final String o = amtj.a(2131713693);
+  public static final String p = amtj.a(2131713702);
   
-  public uca(SwipeBackLayout paramSwipeBackLayout, Context paramContext)
+  public static String a(List<?> paramList)
   {
-    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (SwipeBackLayout.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout))
-    {
-      bool1 = bool2;
-      if (SwipeBackLayout.c(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout))
-      {
-        bool1 = bool2;
-        if (!this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.jdField_a_of_type_Ube.a())
-        {
-          bool1 = bool2;
-          if (this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null) {
-            bool1 = this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.a(paramMotionEvent1);
-          }
-        }
-      }
-    }
-    if ((!this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.d) || (paramFloat1 < 200.0F)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    if ((f1 < 0.0F) && (f2 < 0.5F) && (SwipeBackLayout.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout)) && (SwipeBackLayout.c(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout)) && (!bool1))
-    {
-      if (!(this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-        break label233;
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.c = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.flingLToR();
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.a();
-    }
-    for (;;)
-    {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      label233:
-      if (this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null)
-      {
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.flingLToR();
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilSwipeBackLayout.a();
-      }
-    }
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(localByteArrayOutputStream);
+    localObjectOutputStream.writeObject(paramList);
+    paramList = new String(Base64.encode(localByteArrayOutputStream.toByteArray(), 0));
+    localObjectOutputStream.close();
+    return paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uca
  * JD-Core Version:    0.7.0.1
  */

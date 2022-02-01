@@ -1,32 +1,34 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.style.ImageSpan;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.graphics.drawable.GradientDrawable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
-public class aegl
-  extends ImageSpan
+class aegl
+  extends RecyclerView.ViewHolder
 {
-  public aegl(ChatSettingForTroop paramChatSettingForTroop, Drawable paramDrawable, int paramInt)
+  View jdField_a_of_type_AndroidViewView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  URLImageView b;
+  
+  public aegl(aegj paramaegj, View paramView)
   {
-    super(paramDrawable, paramInt);
+    super(paramView);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368476));
+    this.b = ((URLImageView)paramView.findViewById(2131368491));
+    this.b.setBackgroundDrawable(a());
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370267);
   }
   
-  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  private Drawable a()
   {
-    paramCanvas.save();
-    paramCanvas.translate(bdep.a(9.0F), 0.0F);
-    super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
-    paramCanvas.restore();
-  }
-  
-  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    return getDrawable().getBounds().right + bdep.a(9.0F);
+    Resources localResources = this.itemView.getResources();
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setCornerRadius(AIOUtils.dp2px(5.0F, localResources));
+    localGradientDrawable.setStroke(AIOUtils.dp2px(1.5F, localResources), localResources.getColor(2131167120));
+    return localGradientDrawable;
   }
 }
 

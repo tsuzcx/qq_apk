@@ -1,9 +1,20 @@
-import android.os.IInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface qsf
-  extends IInterface
+class qsf
+  implements View.OnClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  qsf(qse paramqse) {}
+  
+  public void onClick(View paramView)
+  {
+    pet localpet = this.a.jdField_a_of_type_Slt.a().a();
+    if (localpet != null) {
+      localpet.a(null, ((pvc)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

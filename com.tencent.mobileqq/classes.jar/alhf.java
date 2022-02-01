@@ -1,33 +1,7 @@
-public class alhf
-{
-  private static volatile alhf jdField_a_of_type_Alhf;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static alhf a()
-  {
-    if (jdField_a_of_type_Alhf == null) {}
-    try
-    {
-      if (jdField_a_of_type_Alhf == null) {
-        jdField_a_of_type_Alhf = new alhf();
-      }
-      return jdField_a_of_type_Alhf;
-    }
-    finally {}
-  }
-  
-  public void a(alhh paramalhh)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (paramalhh != null) {
-        paramalhh.a(true);
-      }
-      return;
-    }
-    bdgx.a().a("tensorflowlite_jni", new alhg(this, paramalhh));
-  }
-}
+import kotlin.Metadata;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WebPageData$Companion;", "", "()V", "EVENT_ARK_LOAD_STATE", "", "EVENT_CHANGE_PAGE_BG", "EVENT_JS_CALL", "EVENT_TIP_LOCATION_FAIL", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class alhf {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

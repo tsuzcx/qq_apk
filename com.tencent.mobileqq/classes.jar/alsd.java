@@ -1,13 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 
-public class alsd
-  implements DialogInterface.OnClickListener
+public abstract interface alsd
 {
-  public alsd(LoginView paramLoginView) {}
+  public abstract void a(CmGameStartChecker.StartCheckParam paramStartCheckParam);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void b(CmGameStartChecker.StartCheckParam paramStartCheckParam);
 }
 
 

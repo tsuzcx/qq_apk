@@ -1,25 +1,42 @@
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.relationx.friendclue.FriendClueManager.2.1;
+import com.tencent.qphone.base.util.QLog;
 
-class azwq
-  implements bliz
+public class azwq
+  extends CardObserver
 {
-  azwq(azwo paramazwo, PersonalityLabelInfo paramPersonalityLabelInfo, blir paramblir) {}
+  azwq(azwp paramazwp) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendClueManager", 2, String.format("the result of onCardDownload is:%b", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    for (;;)
+    azwp.a(this.a).removeMessages(1);
+    azwp.a(this.a).removeObserver(this.a.a);
+    if (paramBoolean) {
+      if (!(paramObject instanceof Card)) {
+        break label135;
+      }
+    }
+    label135:
+    for (paramObject = (Card)paramObject;; paramObject = null)
     {
-      this.jdField_a_of_type_Blir.e();
+      if (paramObject != null)
+      {
+        Message localMessage = new Message();
+        localMessage.obj = paramObject;
+        localMessage.what = 2;
+        azwp.a(this.a).sendMessage(localMessage);
+      }
       return;
-      azwo.a(this.jdField_a_of_type_Azwo, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
-      continue;
-      PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Azwo.a, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
-      this.jdField_a_of_type_Azwo.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
+      azwp.a(this.a).post(new FriendClueManager.2.1(this));
+      QLog.e("FriendClueManager", 1, "get intimateInfo failed");
+      return;
     }
   }
 }

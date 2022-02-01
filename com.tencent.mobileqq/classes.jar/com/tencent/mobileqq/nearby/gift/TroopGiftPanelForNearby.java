@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.nearby.gift;
 
-import aawl;
-import aaxw;
 import android.content.Context;
-import axug;
-import ayac;
-import bgsu;
+import awhn;
+import awnk;
+import bfci;
 import com.tencent.biz.troopgift.TroopGiftPanel;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.HotChatInfo;
 import java.lang.ref.WeakReference;
+import zsy;
+import zuj;
 
 public class TroopGiftPanelForNearby
   extends TroopGiftPanel
@@ -22,9 +22,9 @@ public class TroopGiftPanelForNearby
   protected boolean e;
   protected boolean f;
   
-  public TroopGiftPanelForNearby(QQAppInterface paramQQAppInterface, Context paramContext, aaxw paramaaxw, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, BaseChatPie paramBaseChatPie)
+  public TroopGiftPanelForNearby(QQAppInterface paramQQAppInterface, Context paramContext, zuj paramzuj, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, BaseChatPie paramBaseChatPie)
   {
-    super(paramContext, paramaaxw, false);
+    super(paramContext, paramzuj, false);
     this.c = new WeakReference(paramQQAppInterface);
     this.jdField_b_of_type_JavaLangString = "OidbSvc.0x7f8";
     this.g = 2040;
@@ -55,10 +55,10 @@ public class TroopGiftPanelForNearby
     if (localObject == null) {
       return;
     }
-    localObject = (bgsu)((AppInterface)localObject).getManager(113);
-    aawl localaawl = this.jdField_a_of_type_Aawl;
-    int j = localaawl.b;
-    if (localaawl.b == 0) {
+    localObject = (bfci)((AppInterface)localObject).getManager(113);
+    zsy localzsy = this.jdField_a_of_type_Zsy;
+    int j = localzsy.b;
+    if (localzsy.b == 0) {
       j = b();
     }
     int i;
@@ -76,13 +76,13 @@ public class TroopGiftPanelForNearby
       int m = this.k;
       String str = a();
       long l = Long.parseLong(paramString);
-      int n = localaawl.c;
-      if (localaawl.b == 0) {}
+      int n = localzsy.c;
+      if (localzsy.b == 0) {}
       for (int k = 1;; k = 0)
       {
-        ((bgsu)localObject).a("OidbSvc.0x7f6", 2038, i, m, str, 2, j, l, n, k, localaawl.jdField_a_of_type_Int, 0, new ayac(this), localaawl.e);
-        this.jdField_a_of_type_Aawl.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Aawl = null;
+        ((bfci)localObject).a("OidbSvc.0x7f6", 2038, i, m, str, 2, j, l, n, k, localzsy.jdField_a_of_type_Int, 0, new awnk(this), localzsy.e);
+        this.jdField_a_of_type_Zsy.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Zsy = null;
         return;
         i = 2;
         break;
@@ -102,22 +102,22 @@ public class TroopGiftPanelForNearby
       Object localObject = (HotChatManager)localQQAppInterface.getManager(60);
       if (localObject != null)
       {
-        localObject = ((HotChatManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+        localObject = ((HotChatManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
         if (localObject == null) {
           break label78;
         }
-        axug.a((HotChatInfo)localObject, localQQAppInterface, a(), 0);
+        awhn.a((HotChatInfo)localObject, localQQAppInterface, a(), 0);
       }
       for (;;)
       {
-        if (this.jdField_a_of_type_Aaxw == null) {
+        if (this.jdField_a_of_type_Zuj == null) {
           break label90;
         }
-        this.jdField_a_of_type_Aaxw.b();
+        this.jdField_a_of_type_Zuj.b();
         return;
         localObject = null;
         break;
-        c(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+        c(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin);
       }
     }
   }

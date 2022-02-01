@@ -1,27 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.guide.GuideHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class mdv
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public mdv(EffectSettingUi paramEffectSettingUi) {}
+  public mdv(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    EffectSettingUi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, -1007L);
-    this.a.b(-1007L, true);
-    mbz.b();
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      AVActivity localAVActivity = (AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-      localAVActivity.a.a(-1007L, localAVActivity, 99, 0);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.b();
   }
 }
 

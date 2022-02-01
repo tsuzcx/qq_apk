@@ -1,12 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
-public final class bmtz
-  implements DialogInterface.OnClickListener
+class bmtz
+  implements boay
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bmtz(bmty parambmty) {}
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    synchronized (bmty.a(this.a))
+    {
+      if (paramPtvTemplateInfo.id.equals(bmty.a(this.a).id))
+      {
+        bmty.a(this.a).downloading = true;
+        bmty.a(this.a, 1.0F * paramInt / 100.0F);
+        bmty.a(this.a, 1);
+      }
+      return;
+    }
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  {
+    synchronized (bmty.a(this.a))
+    {
+      if (paramPtvTemplateInfo.id.equals(bmty.a(this.a).id))
+      {
+        bmty.a(this.a).downloading = false;
+        bmty.a(this.a).usable = paramBoolean;
+      }
+      if (paramBoolean)
+      {
+        if (bmty.a(this.a).id.equals(paramPtvTemplateInfo.id))
+        {
+          bmty.a(this.a, 3);
+          bmty.a(this.a, 1.0F);
+          this.a.b();
+        }
+        return;
+      }
+      this.a.a(4);
+      bmty.a(this.a, 2);
+    }
   }
 }
 

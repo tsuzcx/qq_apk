@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import asdd;
-import asej;
+import aqxb;
+import aqyh;
 import com.tencent.mobileqq.persistence.Entity;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -12,43 +12,43 @@ public abstract class XmlData
   public static final int STATE_LOADING = 2;
   public static final int STATE_NONE = 0;
   public static final int STATE_SUCCESS = 1;
-  @asej(a=true, b=false)
+  @aqyh(a=true, b=false)
   public String MD5;
-  @asej(a=true, b=true)
+  @aqyh(a=true, b=true)
   public boolean StoreBackup;
-  @asej(a=true, b=true)
+  @aqyh(a=true, b=true)
   public int Version;
   public long downSize;
-  @asej(a=false, b=true)
+  @aqyh(a=false, b=true)
   public boolean hasResDownloaded;
   public boolean isUserClick;
-  @asej(a=true, b=true)
+  @aqyh(a=true, b=true)
   public boolean load2G;
-  @asej(a=true, b=true)
+  @aqyh(a=true, b=true)
   public boolean load3G;
-  @asej(a=false, b=true)
+  @aqyh(a=false, b=true)
   public int loadState;
-  @asej(a=true, b=true)
+  @aqyh(a=true, b=true)
   public boolean loadWifi;
-  @asej(a=true, b=true)
+  @aqyh(a=true, b=true)
   public boolean net_2_2G;
-  @asej(a=true, b=true)
+  @aqyh(a=true, b=true)
   public boolean net_2_3G;
-  @asej(a=true, b=true)
+  @aqyh(a=true, b=true)
   public boolean net_2_wifi;
-  @asej(a=true, b=true)
+  @aqyh(a=true, b=true)
   public boolean notPreDownloadInLowEndPhone;
   public int reqLoadCount;
   public String strLog;
-  @asej(a=true, b=true)
+  @aqyh(a=true, b=true)
   public String strPkgName;
-  @asej(a=true, b=true)
+  @aqyh(a=true, b=true)
   public String strResName;
-  @asej(a=true, b=false)
+  @aqyh(a=true, b=false)
   public String strResURL_big;
-  @asej(a=true, b=false)
+  @aqyh(a=true, b=false)
   public String strResURL_small;
-  @asej(a=false, b=true)
+  @aqyh(a=false, b=true)
   public long tLoadFail;
   public long tStart;
   public long totalSize;
@@ -73,7 +73,7 @@ public abstract class XmlData
         {
           i += 1;
           break;
-          if (((Field)localObject).isAnnotationPresent(asej.class))
+          if (((Field)localObject).isAnnotationPresent(aqyh.class))
           {
             if (!((Field)localObject).isAccessible()) {
               ((Field)localObject).setAccessible(true);
@@ -102,14 +102,14 @@ public abstract class XmlData
     do
     {
       return;
-      arrayOfField = asdd.a(paramXmlData.getClass());
+      arrayOfField = aqxb.a(paramXmlData.getClass());
     } while ((arrayOfField == null) || (arrayOfField.length == 0));
     int j = arrayOfField.length;
     int i = 0;
     while (i < j)
     {
       Field localField = arrayOfField[i];
-      if ((localField.isAnnotationPresent(asej.class)) && (((asej)localField.getAnnotation(asej.class)).a())) {}
+      if ((localField.isAnnotationPresent(aqyh.class)) && (((aqyh)localField.getAnnotation(aqyh.class)).a())) {}
       try
       {
         localField.set(this, localField.get(paramXmlData));
@@ -134,7 +134,7 @@ public abstract class XmlData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.XmlData
  * JD-Core Version:    0.7.0.1
  */

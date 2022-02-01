@@ -1,169 +1,23 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.VideoCaptureFragment;
 
 public class rkn
-  extends rkl
+  implements skq
 {
-  private long jdField_a_of_type_Long;
-  beyf jdField_a_of_type_Beyf = new rko(this);
-  beyg jdField_a_of_type_Beyg;
-  private Long jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
-  private String jdField_a_of_type_JavaLangString;
-  private long jdField_b_of_type_Long;
-  private Long jdField_b_of_type_JavaLangLong = Long.valueOf(0L);
-  private String jdField_b_of_type_JavaLangString;
-  private long jdField_c_of_type_Long;
-  private String jdField_c_of_type_JavaLangString;
-  private long jdField_d_of_type_Long;
-  private String jdField_d_of_type_JavaLangString;
+  public rkn(VideoCaptureFragment paramVideoCaptureFragment) {}
   
-  public rkn(Context paramContext, QQAppInterface paramQQAppInterface, rkm paramrkm)
+  public void a()
   {
-    super(paramContext, paramQQAppInterface, paramrkm);
+    VideoCaptureFragment.a(this.a).b();
   }
   
-  private void a(int paramInt)
+  public void a(int paramInt)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    long l1 = this.jdField_b_of_type_Long;
-    long l2 = this.jdField_a_of_type_Long;
-    bdmc localbdmc = bdmc.a(this.jdField_a_of_type_AndroidContentContext);
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localbdmc.a(str, "actReadInJoyUGCVideo", bool, l1 - l2, 0L, localHashMap, "");
-      return;
-    }
+    VideoCaptureFragment.a(this.a).a(paramInt);
   }
   
-  private void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  public void a(int paramInt1, int paramInt2)
   {
-    b(paramInt);
-    c(paramInt);
-    if (this.jdField_a_of_type_Rkm != null) {
-      this.jdField_a_of_type_Rkm.a(paramInt, paramString1, paramString2, paramString3);
-    }
-  }
-  
-  private void b(int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    localHashMap.put("cover_size_before_compression", this.jdField_a_of_type_JavaLangLong.toString());
-    localHashMap.put("cover_size_after_compression", this.jdField_b_of_type_JavaLangLong.toString());
-    bdmc localbdmc = bdmc.a(this.jdField_a_of_type_AndroidContentContext);
-    String str = ozs.a();
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localbdmc.a(str, "actReadInJoyDeliverVideoCompressCover", bool, this.jdField_b_of_type_Long - this.jdField_a_of_type_Long, 0L, localHashMap, "");
-      return;
-    }
-  }
-  
-  private void c(int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    bdmc localbdmc = bdmc.a(this.jdField_a_of_type_AndroidContentContext);
-    String str = ozs.a();
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localbdmc.a(str, "actReadInJoyDeliverVideoUploadCover", bool, this.jdField_c_of_type_Long - this.jdField_d_of_type_Long, 0L, localHashMap, "");
-      return;
-    }
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    a(paramString, paramBoolean, 0);
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageUploadController", 2, "startUploadPic path=" + paramString);
-    }
-    this.jdField_d_of_type_JavaLangString = paramString;
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageUploadController", 2, "startUploadPic empty path!");
-      }
-      a(1001, null, null, null);
-      return;
-    }
-    Object localObject = new File(paramString);
-    if (!((File)localObject).exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageUploadController", 2, "startUploadPic file not exist, path=" + paramString);
-      }
-      a(1002, null, null, null);
-      return;
-    }
-    this.jdField_a_of_type_JavaLangLong = Long.valueOf(((File)localObject).length());
-    if (!nny.a(this.jdField_a_of_type_AndroidContentContext))
-    {
-      a(1003, null, null, null);
-      return;
-    }
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    localObject = new CompressInfo(paramString, paramInt);
-    ((CompressInfo)localObject).f = 0;
-    if (!azrm.a((CompressInfo)localObject)) {
-      a(1001);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageUploadController", 2, "startUploadPic compressPath=" + ((CompressInfo)localObject).jdField_e_of_type_JavaLangString + ", originPath=" + paramString + ", outWidth=" + ((CompressInfo)localObject).d + ", outHeight=" + ((CompressInfo)localObject).jdField_e_of_type_Int);
-    }
-    if (TextUtils.isEmpty(((CompressInfo)localObject).jdField_e_of_type_JavaLangString)) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_b_of_type_JavaLangLong = Long.valueOf(new File(this.jdField_a_of_type_JavaLangString).length());
-      this.jdField_b_of_type_Long = System.currentTimeMillis();
-      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      this.jdField_a_of_type_Beyf.addFilter(new Class[] { berh.class });
-      paramString.a(this.jdField_a_of_type_Beyf);
-      this.jdField_a_of_type_Beyg = new beyg();
-      this.jdField_a_of_type_Beyg.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Beyg.jdField_c_of_type_Int = 10;
-      this.jdField_a_of_type_Beyg.i = this.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Beyg.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
-      this.jdField_a_of_type_Beyg.jdField_c_of_type_JavaLangString = "0";
-      this.jdField_a_of_type_Beyg.b = 24;
-      this.jdField_a_of_type_Beyg.jdField_a_of_type_JavaLangString = "KandianUGCPicUpload";
-      paramString.a(this.jdField_a_of_type_Beyg);
-      return;
-      paramString = ((CompressInfo)localObject).jdField_e_of_type_JavaLangString;
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Beyf);
-    if ((!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_d_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageUploadController", 2, "clearTempFile(image), origin:" + this.jdField_d_of_type_JavaLangString + ", compress:" + this.jdField_a_of_type_JavaLangString);
-      }
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (localFile.exists()) {
-        localFile.delete();
-      }
-    }
+    VideoCaptureFragment.a(this.a).a(paramInt1, paramInt2);
   }
 }
 

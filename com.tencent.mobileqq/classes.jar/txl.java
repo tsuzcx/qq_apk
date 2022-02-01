@@ -1,81 +1,16 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-
-public class txl
-  implements nmg
+class txl
+  implements tqb
 {
-  public int a;
-  public String a;
-  private ArrayList<nnx> a;
-  private int b;
-  public String b;
-  private int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  txl(txk paramtxk, txh paramtxh) {}
   
-  public txl(String paramString)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((nnx)localIterator.next()).a();
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Txk.c(this.jdField_a_of_type_Txh);
+      return;
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
-  public void a(nnx paramnnx)
-  {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramnnx)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramnnx);
-    }
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public void b(nnx paramnnx)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.remove(paramnnx);
-  }
-  
-  public int c()
-  {
-    return this.c;
-  }
-  
-  public void loaded(String paramString, int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((nnx)localIterator.next()).loaded(paramString, paramInt);
-    }
-  }
-  
-  public void progress(int paramInt)
-  {
-    this.c = paramInt;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((nnx)localIterator.next()).progress(paramInt);
-    }
+    this.jdField_a_of_type_Txk.d(this.jdField_a_of_type_Txh);
   }
 }
 

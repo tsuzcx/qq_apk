@@ -1,12 +1,8 @@
-class auis
-  implements auea
+import com.tencent.mobileqq.hotpic.HotPicData;
+
+public abstract interface auis
 {
-  auis(auip paramauip) {}
-  
-  public void a(int paramInt)
-  {
-    this.a.a(paramInt);
-  }
+  public abstract void a(HotPicData paramHotPicData);
 }
 
 

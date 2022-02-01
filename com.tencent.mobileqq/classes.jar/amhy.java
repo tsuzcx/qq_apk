@@ -1,60 +1,13 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
+import java.util.List;
 
-public class amhy
-  implements SeekBar.OnSeekBarChangeListener
+public abstract interface amhy
 {
-  public amhy(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public abstract void a(amhz paramamhz);
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onProgressChanged: progress = " + paramInt + ",fromUser=" + paramBoolean);
-    }
-    this.a.m = true;
-    if (paramBoolean)
-    {
-      paramSeekBar = this.a;
-      paramSeekBar.h += 1;
-      ShortVideoPlayActivity.b(this.a, true);
-      ShortVideoPlayActivity.c(this.a, true);
-    }
-    this.a.b(paramInt * this.a.d / 10000L);
-  }
+  public abstract void a(List<TraceData> paramList);
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    ShortVideoPlayActivity.b(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onStartTrackingTouch: progress = " + i);
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    this.a.l();
-    ShortVideoPlayActivity localShortVideoPlayActivity = this.a;
-    localShortVideoPlayActivity.i += 1;
-    this.a.g = true;
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    int j = (int)(i * this.a.d / 10000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onStopTrackingTouch: seekProgress = " + i + ", mCacheProgress= " + ShortVideoPlayActivity.b(this.a) + ", timestamp = " + j);
-    }
-    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.a();
-      }
-      this.a.a(j);
-    }
-    ShortVideoPlayActivity.b(this.a, false);
-    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
-  }
+  public abstract void b(List<TraceData> paramList);
 }
 
 

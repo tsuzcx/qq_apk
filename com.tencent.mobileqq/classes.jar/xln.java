@@ -1,66 +1,80 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.view.TextureView;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tribe.async.dispatch.Dispatcher;
 
 public class xln
+  extends wbc
+  implements vqp<weu, wgk>
 {
-  public static TextureView a(View paramView)
+  public String a;
+  private String b;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  
+  private void d()
   {
-    if ((paramView instanceof ViewGroup))
-    {
-      paramView = (ViewGroup)paramView;
-      int i = 0;
-      while (i < paramView.getChildCount())
-      {
-        TextureView localTextureView = a(paramView.getChildAt(i));
-        if (localTextureView != null) {
-          return localTextureView;
-        }
-        i += 1;
-      }
-    }
-    if ((paramView instanceof TextureView)) {
-      return (TextureView)paramView;
-    }
-    return null;
+    weu localweu = new weu();
+    localweu.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localweu.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localweu.jdField_b_of_type_Long = 0L;
+    localweu.c = 10;
+    localweu.d = 10;
+    vqn.a().a(localweu, this);
+    xvv.a("Q.qqstory.memories:ShareGroupPageLoader", "send share group list request. request=%s.", localweu.toString());
   }
   
-  public static boolean a(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
   {
-    if (paramBitmap.getConfig() != Bitmap.Config.ARGB_8888)
-    {
-      znw.a(false, "bitmap is not ARGB_8888");
-      return false;
+    super.a(paramTencentLocation, paramInt);
+    if (this.jdField_c_of_type_Boolean) {
+      return;
     }
-    int j = paramBitmap.getWidth();
-    int k = paramBitmap.getHeight();
-    int m = j / paramInt1;
-    int n = k / paramInt1;
-    paramInt1 = 0;
-    for (;;)
+    this.jdField_b_of_type_JavaLangString = "";
+    d();
+  }
+  
+  public void a(@NonNull weu paramweu, @Nullable wgk paramwgk, @NonNull ErrorMessage paramErrorMessage)
+  {
+    xvv.a("Q.qqstory.memories:ShareGroupPageLoader", "get share group list return:%s", paramErrorMessage.toString());
+    if (this.jdField_c_of_type_Boolean)
     {
-      if (paramInt1 >= j) {
-        break label118;
-      }
-      int i = 0;
-      for (;;)
-      {
-        if (i >= k) {
-          break label110;
-        }
-        int i1 = paramBitmap.getPixel(paramInt1, i);
-        if (((i1 & 0xFF) > paramInt2) || ((i1 >> 8 & 0xFF) > paramInt2) || ((i1 >> 16 & 0xFF) > paramInt2)) {
-          break;
-        }
-        i += n;
-      }
-      label110:
-      paramInt1 += m;
+      xvv.c("Q.qqstory.memories:ShareGroupPageLoader", "don't nothing after terminate");
+      return;
     }
-    label118:
-    return true;
+    xlo localxlo = new xlo(paramErrorMessage, this.jdField_c_of_type_JavaLangString);
+    localxlo.jdField_b_of_type_Boolean = false;
+    if ((paramwgk == null) || (paramErrorMessage.isFail()))
+    {
+      vli.a().dispatch(localxlo);
+      return;
+    }
+    this.jdField_b_of_type_JavaLangString = paramwgk.jdField_a_of_type_JavaLangString;
+    localxlo.jdField_a_of_type_JavaUtilList = paramwgk.jdField_a_of_type_JavaUtilArrayList;
+    localxlo.jdField_a_of_type_Int = paramwgk.b;
+    localxlo.jdField_a_of_type_Boolean = paramwgk.jdField_a_of_type_Boolean;
+    localxlo.jdField_c_of_type_Boolean = TextUtils.isEmpty(paramweu.jdField_a_of_type_JavaLangString);
+    paramwgk = paramwgk.jdField_a_of_type_JavaUtilArrayList;
+    ((vuk)vux.a(19)).b(paramwgk, paramweu.jdField_b_of_type_JavaLangString, localxlo.jdField_c_of_type_Boolean);
+    try
+    {
+      this.jdField_b_of_type_Boolean = true;
+      vli.a().dispatch(localxlo);
+      xvv.a("Q.qqstory.memories:ShareGroupPageLoader", "dispatch share group list return from network: %s", localxlo);
+      return;
+    }
+    finally {}
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.jdField_c_of_type_Boolean) {
+      return;
+    }
+    d();
   }
 }
 

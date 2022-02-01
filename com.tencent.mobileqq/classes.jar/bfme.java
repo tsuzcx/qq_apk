@@ -1,62 +1,10 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import javax.annotation.Nullable;
+import java.util.List;
 
 public class bfme
-  extends arac<bfmd>
 {
-  @NonNull
-  public bfmd a(int paramInt)
-  {
-    QLog.d("TroopBlockConfigProcessor", 2, "migrateOldOrDefaultContent, type: " + paramInt);
-    return new bfmd();
-  }
-  
-  @Nullable
-  public bfmd a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return bfmd.a(paramArrayOfaraj[0].a);
-    }
-    return null;
-  }
-  
-  public void a(bfmd parambfmd) {}
-  
-  public Class<bfmd> clazz()
-  {
-    return bfmd.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return true;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.d("TroopBlockConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
-  }
-  
-  public int type()
-  {
-    return 673;
-  }
+  public String a;
+  public List<String> a;
+  public boolean a;
 }
 
 

@@ -547,6 +547,7 @@ public class DiniFlyAnimationView
   
   public void setAnimation(JsonReader paramJsonReader, @Nullable String paramString)
   {
+    DiniFlyLog.i("DiniFlyAnimationView", 1, "setAnimation cacheKey:" + paramString, null);
     setCompositionTask(LottieCompositionFactory.fromJsonReader(paramJsonReader, paramString));
   }
   
@@ -570,6 +571,7 @@ public class DiniFlyAnimationView
   
   public void setAnimationFromUrl(String paramString)
   {
+    DiniFlyLog.i("DiniFlyAnimationView", 1, "setAnimation url:" + paramString.split(""), null);
     setCompositionTask(LottieCompositionFactory.fromUrl(getContext(), paramString));
   }
   
@@ -578,14 +580,15 @@ public class DiniFlyAnimationView
     if (L.DBG) {
       Log.v(TAG, "Set Composition \n" + paramLottieComposition);
     }
-    this.lottieDrawable.setCallback(this);
-    this.composition = paramLottieComposition;
-    boolean bool = this.lottieDrawable.setComposition(paramLottieComposition);
-    enableOrDisableHardwareLayer();
-    if ((getDrawable() == this.lottieDrawable) && (!bool)) {}
-    for (;;)
+    try
     {
-      return;
+      this.lottieDrawable.setCallback(this);
+      this.composition = paramLottieComposition;
+      boolean bool = this.lottieDrawable.setComposition(paramLottieComposition);
+      enableOrDisableHardwareLayer();
+      if ((getDrawable() == this.lottieDrawable) && (!bool)) {
+        return;
+      }
       setImageDrawable(null);
       setImageDrawable(this.lottieDrawable);
       requestLayout();
@@ -593,6 +596,11 @@ public class DiniFlyAnimationView
       while (localIterator.hasNext()) {
         ((LottieOnCompositionLoadedListener)localIterator.next()).onCompositionLoaded(paramLottieComposition);
       }
+      return;
+    }
+    catch (Exception localException)
+    {
+      DiniFlyLog.i("DiniFlyAnimationView", 1, "setComposition url:" + paramLottieComposition.toString(), localException);
     }
   }
   
@@ -743,7 +751,7 @@ public class DiniFlyAnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.DiniFlyAnimationView
  * JD-Core Version:    0.7.0.1
  */

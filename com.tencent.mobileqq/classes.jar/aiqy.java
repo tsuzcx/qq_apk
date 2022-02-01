@@ -1,16 +1,63 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class aiqy
-  implements View.OnClickListener
+public final class aiqy
 {
-  aiqy(aiqx paramaiqx) {}
-  
-  public void onClick(View paramView)
+  private static boolean m(int paramInt)
   {
-    aiqx.a(this.a, paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return paramInt == -3;
+  }
+  
+  private static boolean n(int paramInt)
+  {
+    return paramInt == -2;
+  }
+  
+  private static boolean o(int paramInt)
+  {
+    return paramInt == -1;
+  }
+  
+  private static boolean p(int paramInt)
+  {
+    return paramInt < 0;
+  }
+  
+  private static boolean q(int paramInt)
+  {
+    return paramInt == 0;
+  }
+  
+  private static boolean r(int paramInt)
+  {
+    return paramInt == 1;
+  }
+  
+  private static boolean s(int paramInt)
+  {
+    return paramInt == 2;
+  }
+  
+  private static boolean t(int paramInt)
+  {
+    return paramInt == 3;
+  }
+  
+  private static boolean u(int paramInt)
+  {
+    return paramInt == 4;
+  }
+  
+  private static boolean v(int paramInt)
+  {
+    return paramInt == 5;
+  }
+  
+  private static boolean w(int paramInt)
+  {
+    return paramInt > 2;
+  }
+  
+  private static boolean x(int paramInt)
+  {
+    return paramInt >= 1;
   }
 }
 

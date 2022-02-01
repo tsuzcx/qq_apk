@@ -1,18 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ocr.OCRPerformFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.PointF;
+import com.tencent.mobileqq.profile.view.SingleTouchLayout;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-public class ayxz
-  implements View.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "measuredWidth", "", "measuredHeight", "onMeasured", "com/tencent/mobileqq/profilecard/vas/component/background/VasProfileSimpleBackgroundComponent$updateDiyText$1$1"}, k=3, mv={1, 1, 16})
+final class ayxz
+  implements aeta
 {
-  public ayxz(OCRPerformFragment paramOCRPerformFragment) {}
+  ayxz(ayxy paramayxy) {}
   
-  public void onClick(View paramView)
+  public final void a(int paramInt1, int paramInt2)
   {
-    ayyb.a("0X800AADF", 0);
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
+    Object localObject = ayxy.a(this.a);
+    if (localObject == null) {
+      Intrinsics.throwNpe();
+    }
+    ((SingleTouchLayout)localObject).setActualViewSize(paramInt1, paramInt2);
+    localObject = ayxy.a(this.a);
+    if (localObject == null) {
+      Intrinsics.throwNpe();
+    }
+    ((SingleTouchLayout)localObject).invalidate();
+    if (QLog.isColorLevel())
+    {
+      localObject = this.a.b();
+      StringBuilder localStringBuilder = new StringBuilder().append("updateDiyText: x=");
+      SingleTouchLayout localSingleTouchLayout = ayxy.a(this.a);
+      if (localSingleTouchLayout == null) {
+        Intrinsics.throwNpe();
+      }
+      localStringBuilder = localStringBuilder.append(localSingleTouchLayout.a().x).append(',').append("y=");
+      localSingleTouchLayout = ayxy.a(this.a);
+      if (localSingleTouchLayout == null) {
+        Intrinsics.throwNpe();
+      }
+      QLog.d((String)localObject, 2, localSingleTouchLayout.a().y + ',' + "width=" + paramInt1 + ',' + "height=" + paramInt2);
+    }
   }
 }
 

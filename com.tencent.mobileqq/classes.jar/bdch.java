@@ -1,33 +1,83 @@
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class bdch
 {
-  static int jdField_a_of_type_Int = 3;
-  int[] jdField_a_of_type_ArrayOfInt;
-  int b;
-  int c;
+  SparseArray<bdce> jdField_a_of_type_AndroidUtilSparseArray;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public bdch(String paramString, int paramInt)
+  bdch(QQAppInterface paramQQAppInterface)
   {
-    this.c = paramInt;
-    paramString = paramString.split(" ");
-    if (paramString.length != 2) {
-      throw new Exception("data illegal");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(bdcf.a.length);
+  }
+  
+  bdce a(int paramInt)
+  {
+    bdce localbdce = (bdce)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localbdce != null) {
+      ??? = localbdce;
     }
-    if (paramString[1].equals("1")) {}
-    for (this.b = 1;; this.b = 0)
+    do
     {
-      paramString = paramString[0].toCharArray();
-      this.jdField_a_of_type_ArrayOfInt = new int[paramString.length];
-      paramInt = i;
-      while (paramInt < paramString.length)
+      do
       {
-        this.jdField_a_of_type_ArrayOfInt[paramInt] = (Integer.valueOf(paramString[paramInt]).intValue() - Integer.valueOf(48).intValue());
-        paramInt += 1;
+        return ???;
+        switch (paramInt)
+        {
+        default: 
+          ??? = localbdce;
+        }
+      } while (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null);
+      ??? = localbdce;
+    } while (localbdce == null);
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+      {
+        if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
+          break label167;
+        }
+        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localbdce);
+        return localbdce;
       }
-      if (!paramString[1].equals("0")) {
-        break;
-      }
+      Object localObject2 = new bdcp(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      break;
+      localObject2 = new bdco(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      break;
+      localObject2 = new bdcr(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      break;
+      localObject2 = new bdcq(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      break;
+      label167:
+      localObject2 = (bdce)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
     }
-    throw new Exception("data illegal");
+  }
+  
+  void a()
+  {
+    for (;;)
+    {
+      int i;
+      synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+      {
+        int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
+        i = 0;
+        if (i < j)
+        {
+          bdce localbdce = (bdce)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+          if (localbdce != null) {
+            localbdce.a();
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+          return;
+        }
+      }
+      i += 1;
+    }
   }
 }
 

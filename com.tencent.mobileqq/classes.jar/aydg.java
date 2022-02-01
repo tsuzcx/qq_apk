@@ -1,97 +1,40 @@
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.FeedsProtocol.TopicCfg;
-import com.tencent.pb.now.ilive_feeds_read.TopicCfg;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq;
+import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
+import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.C2CPicUpResp;
+import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.GroupPicUpResp;
+import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.RespCommon;
+import com.tencent.mobileqq.transfile.protohandler.RichProtoProc.RichProtoCallback;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-public class aydg
+final class aydg
+  implements RichProtoProc.RichProtoCallback
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private String d;
+  aydg(String paramString1, String paramString2, PhotoSendParams paramPhotoSendParams) {}
   
-  public static aysk a(List<ilive_feeds_read.TopicCfg> paramList, aysk paramaysk)
+  public void onBusiProtoResp(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)
   {
-    if ((paramList != null) && (!paramList.isEmpty()))
+    int j = 0;
+    if (j < paramRichProtoResp.resps.size())
     {
-      paramList = (ilive_feeds_read.TopicCfg)paramList.get(0);
-      paramaysk.a = new aydg();
-      paramaysk.a.d(paramList.jump_url.get());
-      paramaysk.a.b(paramList.topic_name.get());
-      paramaysk.a.a(paramList.topic_desc.get());
-      paramaysk.a.b(paramList.topic_parti_num.get());
-      paramaysk.a.c(paramList.topic_pic_url.get());
-      paramaysk.a.a(paramList.topic_tag.get());
-      paramaysk.a.c(paramList.topic_type.get());
+      paramRichProtoReq = (RichProto.RichProtoResp.RespCommon)paramRichProtoResp.resps.get(j);
+      int i = -1;
+      if ((paramRichProtoReq instanceof RichProto.RichProtoResp.GroupPicUpResp)) {
+        i = ((RichProto.RichProtoResp.GroupPicUpResp)paramRichProtoReq).result;
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("PicAioQzonePreSendMgr", 2, "picPreSendProcess request Result, resultCode:" + i + ", selfUin:" + this.jdField_a_of_type_JavaLangString + ", friendUin:" + this.b + ", md5:" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawMd5 + ", commonInfo:" + paramRichProtoReq.toString());
+        }
+        j += 1;
+        break;
+        if ((paramRichProtoReq instanceof RichProto.RichProtoResp.C2CPicUpResp)) {
+          i = ((RichProto.RichProtoResp.C2CPicUpResp)paramRichProtoReq).result;
+        }
+      }
     }
-    return paramaysk;
-  }
-  
-  public static VideoData a(List<FeedsProtocol.TopicCfg> paramList, VideoData paramVideoData)
-  {
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      paramList = (FeedsProtocol.TopicCfg)paramList.get(0);
-      paramVideoData.a = new aydg();
-      paramVideoData.a.d(paramList.jump_url.get());
-      paramVideoData.a.b(paramList.topic_name.get());
-      paramVideoData.a.a(paramList.topic_desc.get());
-      paramVideoData.a.b(paramList.topic_parti_num.get());
-      paramVideoData.a.c(paramList.topic_pic_url.get());
-      paramVideoData.a.a(paramList.topic_tag.get());
-      paramVideoData.a.c(paramList.topic_type.get());
-    }
-    return paramVideoData;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String b()
-  {
-    return this.d;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  public void d(String paramString)
-  {
-    this.d = paramString;
   }
 }
 

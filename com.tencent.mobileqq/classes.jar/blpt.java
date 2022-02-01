@@ -1,12 +1,24 @@
-import android.view.animation.Interpolator;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class blpt
-  implements Interpolator
+class blpt
+  implements Animator.AnimatorListener
 {
-  public float getInterpolation(float paramFloat)
+  blpt(blpr paramblpr) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return (float)(Math.pow(paramFloat - 1.0D, 5.0D) + 1.0D);
+    if (QLog.isColorLevel()) {
+      QLog.d("AEBottomListPart", 2, "Watermark Panel Opened!");
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

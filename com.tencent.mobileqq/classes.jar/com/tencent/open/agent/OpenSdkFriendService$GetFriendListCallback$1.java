@@ -1,20 +1,20 @@
 package com.tencent.open.agent;
 
-import bjoi;
-import bjom;
+import bhtw;
+import bhua;
 import java.util.ArrayList;
 
 public class OpenSdkFriendService$GetFriendListCallback$1
   implements Runnable
 {
-  public OpenSdkFriendService$GetFriendListCallback$1(bjom parambjom, ArrayList paramArrayList, String paramString) {}
+  public OpenSdkFriendService$GetFriendListCallback$1(bhua parambhua, ArrayList paramArrayList, String paramString) {}
   
   public void run()
   {
-    if ("action_invite".equals(this.jdField_a_of_type_Bjom.a.d))
+    if ("action_invite".equals(this.jdField_a_of_type_Bhua.a.d))
     {
-      this.jdField_a_of_type_Bjom.a.a(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_Bjom.a.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Bhua.a.a(this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_Bhua.a.a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

@@ -1,49 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class adjh
-  implements adbw
+  implements Animation.AnimationListener
 {
-  public int a()
+  public adjh(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return 10004;
+    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
   }
   
-  public boolean a()
-  {
-    return false;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(153);
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    paramMessageRecord = paramQQAppInterface.a().m(paramMessageRecord.frienduin);
-    if (paramMessageRecord != null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MovieTicketTmpRoutingType", 2, "movieTicket------>" + bhml.a(paramMessageRecord) + ",length:" + paramMessageRecord.length);
-      }
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
-    }
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 8032;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

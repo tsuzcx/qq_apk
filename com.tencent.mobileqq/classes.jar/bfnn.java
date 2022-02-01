@@ -1,26 +1,51 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
 
-public class bfnn
-  implements AdapterView.OnItemClickListener
+public final class bfnn
+  implements Parcelable.Creator<UpgradeTIMWrapper>
 {
-  public bfnn(NewTroopContactView paramNewTroopContactView) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public UpgradeTIMWrapper a(Parcel paramParcel)
   {
-    String str = ((ResultRecord)paramView.getTag()).a;
-    if (this.a.a(str))
+    Object localObject = null;
+    String str2 = paramParcel.readString();
+    String str3 = paramParcel.readString();
+    String str4 = paramParcel.readString();
+    String str5 = paramParcel.readString();
+    String str6 = paramParcel.readString();
+    int j = 0;
+    for (;;)
     {
-      NewTroopContactView.a(this.a, str);
-      this.a.a.notifyDataSetChanged();
-      this.a.b(false);
-      NewTroopContactView.a(this.a);
+      try
+      {
+        int i = paramParcel.readInt();
+        j = i;
+        String str1 = paramParcel.readString();
+        paramParcel.printStackTrace();
+      }
+      catch (Exception paramParcel)
+      {
+        try
+        {
+          paramParcel = paramParcel.readString();
+          return new UpgradeTIMWrapper(str2, str3, str4, str5, str6, i, str1, paramParcel);
+        }
+        catch (Exception paramParcel)
+        {
+          break label81;
+        }
+        paramParcel = paramParcel;
+        str1 = null;
+        i = j;
+      }
+      label81:
+      paramParcel = localObject;
     }
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+  }
+  
+  public UpgradeTIMWrapper[] a(int paramInt)
+  {
+    return null;
   }
 }
 

@@ -1,15 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.rmw.RMWService;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
 
-public class zjd
-  extends Handler
+class zjd
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public zjd(RMWService paramRMWService) {}
+  zjd(zjc paramzjc) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onPreDraw()
   {
-    zjb.b("RMWService", "service.handle : " + zjc.a(paramMessage));
+    zjc.a(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
+    zjc.a(this.a, zjc.a(this.a).getLeft(), zjc.a(this.a).getTop(), zjc.a(this.a).getWidth(), zjc.a(this.a).getHeight());
+    QLog.d("TransitionAnimHelper", 4, new Object[] { "initImageEnterAnimation left:" + zjc.a(this.a).getLeft(), ",top:", Integer.valueOf(zjc.a(this.a).getTop()), ",width:", Integer.valueOf(zjc.a(this.a).getWidth()), ",height:", Integer.valueOf(zjc.a(this.a).getHeight()) });
+    return true;
   }
 }
 

@@ -1,26 +1,30 @@
 package com.tencent.qqmini.sdk.plugins;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.qqmini.sdk.core.manager.ActivityResultManager;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
 
 class SettingsJsPlugin$1
-  implements IActivityResultListener
+  extends BroadcastReceiver
 {
-  SettingsJsPlugin$1(SettingsJsPlugin paramSettingsJsPlugin, RequestEvent paramRequestEvent) {}
+  SettingsJsPlugin$1(SettingsJsPlugin paramSettingsJsPlugin) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QMLog.d("SettingsJsPlugin", "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
-    if (paramInt1 == 5)
-    {
-      SettingsJsPlugin.access$000(this.this$0, this.val$req);
-      ActivityResultManager.g().removeActivityResultListener(this);
-      return true;
+    paramContext = paramIntent.getAction();
+    if (QMLog.isColorLevel()) {
+      QMLog.d("SettingsJsPlugin", String.format("receiver.onReceive action=%s", new Object[] { paramContext }));
     }
-    return false;
+    if ("action_return_address_to_miniapp".equals(paramContext))
+    {
+      paramContext = paramIntent.getStringExtra("key_miniapp_address_info");
+      if (SettingsJsPlugin.access$000(this.this$0) != null)
+      {
+        SettingsJsPlugin.access$100(this.this$0, paramContext, SettingsJsPlugin.access$000(this.this$0));
+        SettingsJsPlugin.access$002(this.this$0, null);
+      }
+    }
   }
 }
 

@@ -1,16 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.proxyimpl.ShareProxyImpl.5.2;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
 
-public class bkzy
-  implements DialogInterface.OnClickListener
+class bkzy
+  implements ModuleDownloadListener
 {
-  public bkzy(ShareProxyImpl.5.2 param2) {}
+  bkzy(bkzx parambkzx, blac paramblac) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDownloadCanceled(String paramString)
   {
-    QLog.e("ShareProxyImpl", 1, "dialog click ");
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+    bkzx.a(this.jdField_a_of_type_Bkzx, false);
+    this.jdField_a_of_type_Blac.a(false);
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("vip_tar_engine.jar")) {
+      return;
+    }
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bkzx.a(), " onDownloadSucceed = ", bkzx.b() });
+    LocalMultiProcConfig.putString("VipARUtils_JAR_md5", bkzx.b());
+    bkzx.a(this.jdField_a_of_type_Bkzx);
+    this.jdField_a_of_type_Blac.a(bkzx.a(this.jdField_a_of_type_Bkzx));
   }
 }
 

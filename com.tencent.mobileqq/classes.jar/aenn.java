@@ -1,18 +1,30 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aenn
   implements View.OnClickListener
 {
-  public aenn(FontSettingActivity paramFontSettingActivity) {}
+  public aenn(TroopMemberListActivity paramTroopMemberListActivity) {}
   
   public void onClick(View paramView)
   {
-    if (anxh.a(this.a, FontSettingActivity.a(this.a), true)) {
-      anxh.a();
+    yos.a(this.a.jdField_a_of_type_Aeoz);
+    yos.a(this.a.jdField_a_of_type_JavaUtilList);
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+    {
+      localArrayList.add(((aeox)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
+      i += 1;
     }
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", localArrayList);
+    this.a.setResult(-1, localIntent);
     this.a.finish();
     EventCollector.getInstance().onViewClicked(paramView);
   }

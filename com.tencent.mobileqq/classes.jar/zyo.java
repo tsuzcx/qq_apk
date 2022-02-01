@@ -1,18 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView.1.1;
 
-class zyo
-  implements View.OnClickListener
+public class zyo
+  implements zym
 {
-  zyo(zyl paramzyl, zyr paramzyr) {}
+  public zyo(SingleLyricView paramSingleLyricView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (zyl.a(this.jdField_a_of_type_Zyl) != null) {
-      zyl.a(this.jdField_a_of_type_Zyl).c(this.jdField_a_of_type_Zyr);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    SingleLyricView.a(this.a).b();
+  }
+  
+  public void a(long paramLong)
+  {
+    this.a.post(new SingleLyricView.1.1(this, paramLong));
+  }
+  
+  public void b()
+  {
+    SingleLyricView.a(this.a).c();
   }
 }
 

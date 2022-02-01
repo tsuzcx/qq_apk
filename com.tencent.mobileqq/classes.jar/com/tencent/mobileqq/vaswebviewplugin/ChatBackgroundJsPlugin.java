@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
+import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -10,14 +11,13 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
 import android.view.Window;
-import anzj;
-import apdf;
-import aser;
-import asev;
-import bdll;
-import bhmq;
-import bhyk;
-import bioy;
+import anws;
+import aqyp;
+import aqyt;
+import bcef;
+import bfvo;
+import bgev;
+import bgve;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
@@ -238,7 +238,7 @@ public class ChatBackgroundJsPlugin
     //   329: aload 14
     //   331: astore_2
     //   332: aload_3
-    //   333: invokestatic 139	bnni:a	(Ljava/lang/String;)Lbnnl;
+    //   333: invokestatic 139	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:getBitmapSize	(Ljava/lang/String;)Lcooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin$Size;
     //   336: astore 14
     //   338: aload 14
     //   340: ifnonnull +280 -> 620
@@ -377,7 +377,7 @@ public class ChatBackgroundJsPlugin
     //   620: aload_0
     //   621: iload_1
     //   622: aload 14
-    //   624: invokestatic 173	bnnu:a	(Landroid/content/Context;ILbnnl;)D
+    //   624: invokestatic 174	cooperation/qzone/webviewplugin/QzonePhotoWallPlugin:getRatio	(Landroid/content/Context;ILcooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin$Size;)D
     //   627: dstore 8
     //   629: dload 8
     //   631: dconst_0
@@ -385,28 +385,28 @@ public class ChatBackgroundJsPlugin
     //   633: ifle +33 -> 666
     //   636: aload 14
     //   638: aload 14
-    //   640: getfield 177	bnnl:a	I
+    //   640: getfield 179	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin$Size:width	I
     //   643: i2d
     //   644: dload 8
     //   646: ddiv
     //   647: d2i
-    //   648: putfield 177	bnnl:a	I
+    //   648: putfield 179	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin$Size:width	I
     //   651: aload 14
     //   653: aload 14
-    //   655: getfield 180	bnnl:b	I
+    //   655: getfield 182	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin$Size:height	I
     //   658: i2d
     //   659: dload 8
     //   661: ddiv
     //   662: d2i
-    //   663: putfield 180	bnnl:b	I
+    //   663: putfield 182	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin$Size:height	I
     //   666: aload_3
     //   667: aload 14
-    //   669: getfield 177	bnnl:a	I
+    //   669: getfield 179	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin$Size:width	I
     //   672: aload 14
-    //   674: getfield 180	bnnl:b	I
-    //   677: invokestatic 183	bnni:a	(Ljava/lang/String;II)Ljava/lang/String;
+    //   674: getfield 182	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin$Size:height	I
+    //   677: invokestatic 186	cooperation/qzone/webviewplugin/QzoneDynamicAlbumPlugin:encodeBase64File	(Ljava/lang/String;II)Ljava/lang/String;
     //   680: iconst_2
-    //   681: invokestatic 189	android/util/Base64:decode	(Ljava/lang/String;I)[B
+    //   681: invokestatic 192	android/util/Base64:decode	(Ljava/lang/String;I)[B
     //   684: astore 14
     //   686: new 119	java/io/FileOutputStream
     //   689: dup
@@ -417,7 +417,7 @@ public class ChatBackgroundJsPlugin
     //   696: astore_0
     //   697: aload_3
     //   698: aload 14
-    //   700: invokevirtual 193	java/io/FileOutputStream:write	([B)V
+    //   700: invokevirtual 196	java/io/FileOutputStream:write	([B)V
     //   703: aload_3
     //   704: astore_0
     //   705: aload_3
@@ -442,7 +442,7 @@ public class ChatBackgroundJsPlugin
     //   740: new 146	java/lang/StringBuilder
     //   743: dup
     //   744: invokespecial 147	java/lang/StringBuilder:<init>	()V
-    //   747: ldc 195
+    //   747: ldc 198
     //   749: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   752: aload_0
     //   753: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -473,7 +473,7 @@ public class ChatBackgroundJsPlugin
     //   795: new 146	java/lang/StringBuilder
     //   798: dup
     //   799: invokespecial 147	java/lang/StringBuilder:<init>	()V
-    //   802: ldc 195
+    //   802: ldc 198
     //   804: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   807: aload_0
     //   808: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -502,7 +502,7 @@ public class ChatBackgroundJsPlugin
     //   852: new 146	java/lang/StringBuilder
     //   855: dup
     //   856: invokespecial 147	java/lang/StringBuilder:<init>	()V
-    //   859: ldc 195
+    //   859: ldc 198
     //   861: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   864: aload_0
     //   865: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -528,7 +528,7 @@ public class ChatBackgroundJsPlugin
     //   902: new 146	java/lang/StringBuilder
     //   905: dup
     //   906: invokespecial 147	java/lang/StringBuilder:<init>	()V
-    //   909: ldc 195
+    //   909: ldc 198
     //   911: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   914: aload_0
     //   915: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -621,7 +621,7 @@ public class ChatBackgroundJsPlugin
     ((Intent)localObject).putExtra("isFromPhoto", true);
     ((Intent)localObject).putExtra("fromChatBackgroundJsPlugin", true);
     ((Intent)localObject).putExtra("onNewIntentReDoStateMachine", false);
-    PhotoUtils.a((Intent)localObject, this.mRuntime.a(), QQBrowserActivity.class.getName(), localRect.width() / 5 * 4, localRect.height() / 5 * 4, localRect.width(), localRect.height(), str);
+    PhotoUtils.startPhotoListEdit((Intent)localObject, this.mRuntime.a(), QQBrowserActivity.class.getName(), localRect.width() / 5 * 4, localRect.height() / 5 * 4, localRect.width(), localRect.height(), str);
     localObject = new JSONObject();
     try
     {
@@ -650,7 +650,7 @@ public class ChatBackgroundJsPlugin
   
   private String getCustomImageFilePath()
   {
-    return ThemeDiyStyleLogic.getDataDIYDir() + apdf.a(this.browserApp.getAccount()) + "/" + System.currentTimeMillis() + ".jpg";
+    return ThemeDiyStyleLogic.getDataDIYDir() + anws.a(this.browserApp.getAccount()) + "/" + System.currentTimeMillis() + ".jpg";
   }
   
   private void handleCustomPic(Intent paramIntent)
@@ -677,8 +677,8 @@ public class ChatBackgroundJsPlugin
       localIntent.putExtra("effectId", paramInt2);
       localIntent.putExtra("uinType", paramInt1);
       this.browserApp.getApp().sendBroadcast(localIntent);
-      QQToast.a(this.mRuntime.a(), 2131694460, 0).a();
-      bdll.b(null, "CliOper", "", "", "chatbackground", "BjIDShezhi", 0, 0, "1", "", "", "");
+      QQToast.a(this.mRuntime.a(), 2131694574, 0).a();
+      bcef.b(null, "CliOper", "", "", "chatbackground", "BjIDShezhi", 0, 0, "1", "", "", "");
     }
   }
   
@@ -747,7 +747,7 @@ public class ChatBackgroundJsPlugin
     }
     for (;;)
     {
-      super.sendRemoteReq(asev.a(paramJsBridgeListener, paramVarArgs, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+      super.sendRemoteReq(aqyt.a(paramJsBridgeListener, paramVarArgs, this.mOnRemoteResp.key, this.mReqBundle), false, true);
       return true;
       if ("startDownload".equals(paramString3)) {}
       try
@@ -891,11 +891,11 @@ public class ChatBackgroundJsPlugin
       {
         paramJsBridgeListener = new Intent();
         paramJsBridgeListener.putExtra("bg_replace_entrance", 8);
-        paramJsBridgeListener.putExtra("selfSet_leftViewText", this.mRuntime.a().getString(2131690559));
+        paramJsBridgeListener.putExtra("selfSet_leftViewText", this.mRuntime.a().getString(2131690599));
         paramJsBridgeListener.putExtra("hide_left_button", false);
         paramJsBridgeListener.putExtra("show_right_close_button", false);
         paramJsBridgeListener.putExtra("startOpenPageTime", System.currentTimeMillis());
-        VasWebviewUtil.openQQBrowserWithoutAD(this.mRuntime.a(), bhyk.a(this.mRuntime.a(), "background", ""), 33554432L, paramJsBridgeListener, false, -1);
+        VasWebviewUtil.openQQBrowserWithoutAD(this.mRuntime.a(), bgev.a(this.mRuntime.a(), "background", ""), 33554432L, paramJsBridgeListener, false, -1);
         paramJsBridgeListener = new JSONObject();
         paramJsBridgeListener.put("result", 0);
         super.callJs(paramVarArgs, new String[] { paramJsBridgeListener.toString() });
@@ -973,7 +973,7 @@ public class ChatBackgroundJsPlugin
       }
       str3 = new String(Base64.decode(str3, 2));
       str4 = getCustomImageFilePath();
-      i = bhmq.b(str3);
+      i = bfvo.b(str3);
       bool = compressBitmapToFile(this.mRuntime.a(), Integer.parseInt(paramString2), BitmapFactory.decodeFile(str3), str4, Float.parseFloat(str1), Float.parseFloat((String)localObject2), Float.parseFloat((String)localObject1), i);
       if (bool) {
         handleCustomPic(paramJsBridgeListener, Integer.parseInt(str2), str4, Integer.parseInt(paramString3), true);
@@ -989,7 +989,7 @@ public class ChatBackgroundJsPlugin
       {
         paramString2.put("code", paramJsBridgeListener);
         if (!bool) {
-          paramString2.put("msg", anzj.a(2131700496));
+          paramString2.put("msg", amtj.a(2131700731));
         }
       }
       catch (JSONException paramJsBridgeListener)

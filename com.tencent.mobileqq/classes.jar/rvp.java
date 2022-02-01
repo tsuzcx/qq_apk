@@ -1,30 +1,34 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.VideoInfo;
 
 class rvp
-  extends Handler
+  implements Animation.AnimationListener
 {
-  rvp(rvo paramrvo, Looper paramLooper)
+  rvp(rvo paramrvo) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramLooper);
+    if ((ruw.a(this.a.c) == rvo.a(this.a)) && (ruw.a(this.a.c) != null)) {
+      ruw.a(this.a.c).a(rvo.a(this.a));
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    switch (paramMessage.what)
+    if ((rvo.a(this.a).a != null) && (rvo.a(this.a).a.a != null))
     {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsVideoUIDelegate", 2, "mUiHandler.postDelayed() innerChangePlayButton(SHOW_LOADING_BTN) mIsNeedShowLoading = " + rvo.a(this.a));
+      boolean bool = rvo.a(this.a).a.a.r;
+      if (rvo.a(this.a).o != null) {
+        rvo.a(this.a).o.setImageDrawable(ruw.a(this.a.c, this.a.a(bool)));
       }
-    } while (!rvo.a(this.a));
-    this.a.a(1);
+    }
+    paramAnimation.setInterpolator(new AnticipateInterpolator());
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,8 +1,6 @@
-import android.view.View;
-
 public abstract interface seg
 {
-  public abstract void a(View paramView);
+  public abstract void a(sdg paramsdg, int paramInt1, int paramInt2);
 }
 
 

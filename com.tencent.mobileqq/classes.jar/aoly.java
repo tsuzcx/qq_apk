@@ -1,23 +1,60 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import java.io.File;
-import java.util.Comparator;
+import android.content.Context;
+import android.graphics.SurfaceTexture;
+import android.opengl.GLSurfaceView;
+import android.opengl.GLSurfaceView.Renderer;
+import android.util.Size;
+import java.nio.FloatBuffer;
 
-public class aoly
-  implements Comparator<File>
+public abstract interface aoly
+  extends GLSurfaceView.Renderer
 {
-  public aoly(CleanCache paramCleanCache) {}
+  public abstract int a();
   
-  public int a(File paramFile1, File paramFile2)
-  {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract long a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, SurfaceTexture paramSurfaceTexture, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
+  
+  public abstract void a(int paramInt, Object paramObject);
+  
+  public abstract void a(int paramInt, float[] paramArrayOfFloat);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(aoav paramaoav);
+  
+  public abstract void a(aobc paramaobc);
+  
+  public abstract void a(aobg paramaobg);
+  
+  public abstract void a(aonf paramaonf);
+  
+  public abstract void a(FloatBuffer paramFloatBuffer, Size paramSize);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(GLSurfaceView paramGLSurfaceView, Context paramContext);
+  
+  public abstract boolean a(aobf paramaobf);
+  
+  public abstract boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2);
+  
+  public abstract void b();
+  
+  public abstract void b(long paramLong);
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoly
  * JD-Core Version:    0.7.0.1
  */

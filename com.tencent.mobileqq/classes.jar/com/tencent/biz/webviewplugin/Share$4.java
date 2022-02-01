@@ -1,42 +1,42 @@
 package com.tencent.biz.webviewplugin;
 
-import abgu;
+import aadf;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.text.TextUtils;
-import bilw;
+import bgsf;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import nnw;
+import npg;
 
 public class Share$4
   implements Runnable
 {
-  public Share$4(abgu paramabgu, String paramString1, String paramString2, String paramString3, String paramString4, ApplicationInfo paramApplicationInfo) {}
+  public Share$4(aadf paramaadf, String paramString1, String paramString2, String paramString3, String paramString4, ApplicationInfo paramApplicationInfo) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(abgu.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina download image:" + this.jdField_a_of_type_JavaLangString);
+      QLog.d(aadf.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina download image:" + this.jdField_a_of_type_JavaLangString);
     }
-    String str = nnw.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
+    String str = npg.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
     if (QLog.isColorLevel()) {
-      QLog.d(abgu.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina path:" + str);
+      QLog.d(aadf.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina path:" + str);
     }
-    if (bilw.a(this.this$0.jdField_a_of_type_AndroidAppActivity))
+    if (bgsf.a(this.this$0.jdField_a_of_type_AndroidAppActivity))
     {
-      bilw.a(2).a(this.this$0.jdField_a_of_type_AndroidAppActivity, this.b, this.c, this.d, " ", BitmapFactory.decodeFile(str));
-      QLog.d(abgu.jdField_a_of_type_JavaLangString, 1, "shareMsgToSina use weibo sdk!");
+      bgsf.a(2).a(this.this$0.jdField_a_of_type_AndroidAppActivity, this.b, this.c, this.d, " ", BitmapFactory.decodeFile(str));
+      QLog.d(aadf.jdField_a_of_type_JavaLangString, 1, "shareMsgToSina use weibo sdk!");
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(abgu.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start weibo!");
+        QLog.d(aadf.jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start weibo!");
       }
       return;
       Intent localIntent = new Intent("android.intent.action.SEND");

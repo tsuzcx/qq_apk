@@ -1,20 +1,22 @@
-public class avio
-  implements anui
+import android.net.ConnectivityManager.NetworkCallback;
+import android.net.Network;
+import com.tencent.qphone.base.util.QLog;
+
+class avio
+  extends ConnectivityManager.NetworkCallback
 {
-  public void a() {}
+  avio(avin paramavin) {}
   
-  public void a(avir paramavir) {}
-  
-  protected void a(boolean paramBoolean, avir paramavir) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onAvailable(Network paramNetwork)
   {
-    switch (paramInt)
+    QLog.d("GateWayVerifyManager", 1, "switch network success");
+    if ((avin.a(this.a) == null) || (!avin.a(this.a).equals(paramNetwork)))
     {
-    default: 
-      return;
+      avin.a(this.a, paramNetwork);
+      if (avin.a(this.a) != null) {
+        avin.a(this.a).a(paramNetwork);
+      }
     }
-    a(paramBoolean, (avir)paramObject);
   }
 }
 

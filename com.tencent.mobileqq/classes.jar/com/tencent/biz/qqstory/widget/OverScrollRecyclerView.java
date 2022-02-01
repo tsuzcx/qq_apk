@@ -5,12 +5,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.util.AttributeSet;
-import zus;
+import yud;
 
 public class OverScrollRecyclerView
   extends RecyclerView
 {
-  protected final zus a = new zus(this);
+  protected final yud a = new yud(this);
   
   public OverScrollRecyclerView(Context paramContext)
   {

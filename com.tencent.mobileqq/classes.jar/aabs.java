@@ -1,118 +1,171 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class aabs<E>
-  extends RecyclerView.Adapter
+class aabs
+  extends Handler
 {
-  public ArrayList<E> mDataList = new ArrayList();
-  
-  public void addAll(List<E> paramList)
+  aabs(aabq paramaabq, Looper paramLooper)
   {
-    if (paramList == null) {
-      return;
-    }
-    this.mDataList.addAll(paramList);
-    notifyItemRangeInserted(this.mDataList.size(), paramList.size());
+    super(paramLooper);
   }
   
-  public void addAll(E[] paramArrayOfE)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramArrayOfE == null) {}
-    for (;;)
-    {
-      return;
-      int j = paramArrayOfE.length;
-      int i = 0;
-      while (i < j)
-      {
-        E ? = paramArrayOfE[i];
-        this.mDataList.add(?);
-        i += 1;
-      }
-    }
-  }
-  
-  public E addData(E paramE)
-  {
-    if (paramE == null) {}
+    if (this.a.jdField_a_of_type_Boolean) {}
+    label32:
+    Object localObject2;
+    label468:
     do
     {
-      return null;
-      Iterator localIterator = this.mDataList.iterator();
-      while (localIterator.hasNext())
+      do
       {
-        Object localObject = localIterator.next();
-        if (localObject == paramE) {
-          return localObject;
-        }
-        if (isItemEqual(localObject, paramE))
+        do
         {
-          copyItem(localObject, paramE);
-          return localObject;
+          do
+          {
+            Object localObject1;
+            do
+            {
+              return;
+              switch (paramMessage.what)
+              {
+              default: 
+                if (paramMessage.arg1 != 1) {
+                  break label468;
+                }
+                this.a.b = paramMessage.arg2;
+                localObject1 = (String)paramMessage.obj;
+                localObject2 = this.a.mRuntime.a();
+              }
+            } while (localObject2 == null);
+            if (this.a.jdField_a_of_type_Long == -1L) {
+              this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+            }
+            ((CustomWebView)localObject2).loadUrlOriginal((String)localObject1);
+            ((CustomWebView)localObject2).requestFocus();
+            if (QLog.isColorLevel()) {
+              QLog.i("OfflinePluginQQ", 2, "mCheckupHandler loadUrl start \n" + (String)localObject1);
+            }
+            this.a.a((String)localObject1);
+            for (;;)
+            {
+              for (;;)
+              {
+                localObject1 = this.a.mRuntime.a();
+                localObject2 = this.a.mRuntime.a(this.a.mRuntime.a());
+                if ((localObject2 == null) || (!(localObject2 instanceof bgzi))) {
+                  break;
+                }
+                if (paramMessage.arg1 != 4) {
+                  break label535;
+                }
+                if ((aabq.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(aabq.a(this.a)))) {
+                  break;
+                }
+                localObject1 = (uea)aabq.jdField_a_of_type_JavaUtilHashMap.get(aabq.a(this.a));
+                if (this.a.jdField_a_of_type_AndroidWidgetProgressBar != null) {
+                  this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramMessage.arg2);
+                }
+                if (this.a.jdField_a_of_type_AndroidWidgetTextView == null) {
+                  break;
+                }
+                this.a.jdField_a_of_type_AndroidWidgetTextView.setText(((uea)localObject1).e + paramMessage.arg2 + "%");
+                return;
+                try
+                {
+                  localObject1 = (String)((Object[])(Object[])paramMessage.obj)[1];
+                  localObject2 = new JSONObject();
+                  ((JSONObject)localObject2).put("retcode", 0);
+                  ((JSONObject)localObject2).put("data", npn.a((String)localObject1));
+                  this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject2).toString() });
+                }
+                catch (Exception localException1)
+                {
+                  try
+                  {
+                    JSONObject localJSONObject1 = new JSONObject();
+                    localJSONObject1.put("retcode", -1);
+                    localJSONObject1.put("msg", "error");
+                    this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { localJSONObject1.toString() });
+                  }
+                  catch (JSONException localJSONException) {}
+                }
+              }
+              if (!QLog.isColorLevel()) {
+                break label32;
+              }
+              QLog.d("OfflinePluginQQ", 2, "OfflinePlugin, batchCheckUpdate, JSONException :" + localJSONException);
+              break label32;
+              if (paramMessage.arg1 == 2)
+              {
+                if (QLog.isDevelopLevel()) {
+                  QLog.i("OfflinePluginQQ", 4, "checkOfflineUpBack refresh current url");
+                }
+                this.a.c();
+              }
+              else if (paramMessage.arg1 == 3)
+              {
+                try
+                {
+                  JSONObject localJSONObject2 = (JSONObject)paramMessage.obj;
+                  this.a.a(localJSONObject2);
+                }
+                catch (Exception localException2)
+                {
+                  localException2.printStackTrace();
+                }
+              }
+            }
+          } while ((paramMessage.arg1 != 5) || (aabq.jdField_a_of_type_JavaUtilHashMap == null) || (TextUtils.isEmpty(aabq.a(this.a))));
+          localObject2 = (uea)aabq.jdField_a_of_type_JavaUtilHashMap.get(aabq.a(this.a));
+        } while (localObject2 == null);
+        if (paramMessage.arg2 != 0) {
+          break;
         }
+        ((uea)localObject2).a(3);
+      } while (localException2 == null);
+      paramMessage = localException2.getResources().getDrawable(2130839420);
+      paramMessage.setBounds(0, 0, 40, 40);
+      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramMessage, null, null, null);
       }
-    } while (!this.mDataList.add(paramE));
-    return this.mDataList.get(this.mDataList.size() - 1);
-  }
-  
-  public void addData(E paramE, int paramInt)
-  {
-    this.mDataList.add(paramInt, paramE);
-  }
-  
-  public void clearData()
-  {
-    this.mDataList.clear();
-  }
-  
-  protected void copyItem(E paramE1, E paramE2) {}
-  
-  public void delete(int paramInt)
-  {
-    if (paramInt < this.mDataList.size()) {
-      this.mDataList.remove(paramInt);
-    }
-  }
-  
-  public ArrayList<E> getDataList()
-  {
-    return this.mDataList;
-  }
-  
-  public int getDataNumber()
-  {
-    return this.mDataList.size();
-  }
-  
-  public int getItemCount()
-  {
-    return this.mDataList.size();
-  }
-  
-  protected boolean isItemEqual(E paramE1, E paramE2)
-  {
-    return false;
-  }
-  
-  public void setDatas(ArrayList<E> paramArrayList)
-  {
-    this.mDataList.clear();
-    notifyDataSetChanged();
-    if (paramArrayList == null) {
+      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(((uea)localObject2).d);
+      }
+      if (this.a.jdField_a_of_type_AndroidWidgetProgressBar != null) {
+        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      }
+    } while (this.a.jdField_a_of_type_AndroidWidgetLinearLayout == null);
+    label535:
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    return;
+    if ((paramMessage.arg2 == 5) || (paramMessage.arg2 == 7))
+    {
+      if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      }
+      ((uea)localObject2).a(4);
       return;
     }
-    this.mDataList.addAll(paramArrayList);
-    notifyDataSetChanged();
-  }
-  
-  public void updateData(E paramE, int paramInt)
-  {
-    if ((paramE == null) || (paramInt >= this.mDataList.size())) {
-      return;
+    yyi.a(1, 2131695574);
+    if (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     }
-    this.mDataList.set(paramInt, paramE);
+    ((uea)localObject2).a(4);
   }
 }
 

@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.widget.TextView;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
-import mhc;
+import mgl;
 
 class MultiVideoEnterPageActivity$RefreshDisplayNameRunnable
   implements Runnable
@@ -13,13 +13,13 @@ class MultiVideoEnterPageActivity$RefreshDisplayNameRunnable
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131694762);
+    Object localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131694900);
     if (this.this$0.jdField_c_of_type_Int == 2) {
       localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(3000, String.valueOf(this.this$0.jdField_a_of_type_Long), null);
     }
     for (;;)
     {
-      this.this$0.jdField_a_of_type_Mhc.a.setText((CharSequence)localObject);
+      this.this$0.jdField_a_of_type_Mgl.a.setText((CharSequence)localObject);
       localObject = this.this$0;
       ((MultiVideoEnterPageActivity)localObject).g += 1;
       if (this.this$0.jdField_c_of_type_JavaLangRunnable != null)

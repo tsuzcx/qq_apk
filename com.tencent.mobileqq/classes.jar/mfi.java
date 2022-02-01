@@ -1,18 +1,16 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import com.tencent.qphone.base.util.QLog;
 
 public class mfi
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public mfi(MultiIncomingCallsActivity paramMultiIncomingCallsActivity, long paramLong, Intent paramIntent, lff paramlff) {}
+  public mfi(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_Lff);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.w(this.a.d, 1, "showConfirmBoxToHangup, no, mRelationId[" + this.a.b + "]");
   }
 }
 

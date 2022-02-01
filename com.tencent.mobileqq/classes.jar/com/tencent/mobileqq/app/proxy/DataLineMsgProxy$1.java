@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app.proxy;
 
-import apas;
+import anuv;
 import com.tencent.mobileqq.persistence.EntityManager;
 
 public class DataLineMsgProxy$1
   implements Runnable
 {
-  public DataLineMsgProxy$1(apas paramapas, EntityManager paramEntityManager, String paramString) {}
+  public DataLineMsgProxy$1(anuv paramanuv, EntityManager paramEntityManager, String paramString) {}
   
   public void run()
   {

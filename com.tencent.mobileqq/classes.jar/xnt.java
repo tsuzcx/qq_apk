@@ -1,28 +1,35 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class xnt
-  extends Subscriber.SingleEventSubscriberNoRefect<wmd>
+public final class xnt
+  extends QQUIEventReceiver<xnp, wbm>
 {
-  xno a;
-  
-  public xnt(@NonNull xno paramxno)
+  public xnt(@NonNull xnp paramxnp)
   {
-    this.a = paramxno;
+    super(paramxnp);
   }
   
-  protected void a(@NonNull wmd paramwmd)
+  public void a(@NonNull xnp paramxnp, @NonNull wbm paramwbm)
   {
-    if ((paramwmd.b != null) && (paramwmd.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)) {
-      xno.a(this.a, paramwmd.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramwmd.b.mVid, paramwmd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.feedId);
+    xvv.a(this.TAG, "receive feature event. %s.", paramwbm.toString());
+    if ((paramwbm.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwbm.jdField_a_of_type_JavaUtilList != null))
+    {
+      paramwbm = paramwbm.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramwbm.hasNext())
+      {
+        vwa localvwa = (vwa)paramwbm.next();
+        xnp.a(paramxnp).put(localvwa.a, localvwa);
+      }
     }
   }
   
   public Class acceptEventClass()
   {
-    return wmd.class;
+    return wbm.class;
   }
 }
 

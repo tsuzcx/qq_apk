@@ -1,52 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
-import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
 public class uju
+  implements vds
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private boolean jdField_a_of_type_Boolean = true;
+  public uju(WSHomeFragment paramWSHomeFragment) {}
   
-  private IMiniMsgUnreadCallback a()
+  public void a()
   {
-    return new ujv(this);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public MiniMsgUserParam a()
-  {
-    MiniMsgUserParam localMiniMsgUserParam = new MiniMsgUserParam();
-    localMiniMsgUserParam.businessName = 6;
-    localMiniMsgUserParam.accessType = 2;
-    localMiniMsgUserParam.filterMsgType = 0;
-    localMiniMsgUserParam.unreadCallback = a();
-    return localMiniMsgUserParam;
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(MiniMsgUser paramMiniMsgUser)
-  {
-    if ((this.jdField_a_of_type_Int > 0) && (paramMiniMsgUser != null) && (this.jdField_a_of_type_AndroidViewView != null))
-    {
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      paramMiniMsgUser.onClick(this.jdField_a_of_type_AndroidViewView);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    WSPublicAccReport.getInstance().reportMessageBubblePopupClick(WSHomeFragment.a, WSHomeFragment.b(this.a));
+    WSHomeFragment.b(this.a);
+    ((utr)this.a.b()).a(this.a.getActivity(), 601);
   }
 }
 

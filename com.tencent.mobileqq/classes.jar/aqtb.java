@@ -1,17 +1,12 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aqtb
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  aqtb(aqsy paramaqsy) {}
+  aqtb(aqsz paramaqsz) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return aqsy.a(this.a).onTouchEvent(paramMotionEvent);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

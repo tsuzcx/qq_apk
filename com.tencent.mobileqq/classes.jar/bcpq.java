@@ -1,53 +1,39 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
+import com.tencent.shadow.dynamic.host.EnterCallback;
 
 public class bcpq
-  extends bcnt
+  implements bcpp
 {
-  private View a;
-  public Button a;
+  private final DynamicPluginManager jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager;
+  private final String jdField_a_of_type_JavaLangString = "shadow::PluginManagerWrapper";
+  private final String b;
   
-  public bcpq(ViewGroup paramViewGroup, int paramInt)
+  public bcpq(String paramString, DynamicPluginManager paramDynamicPluginManager)
   {
-    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager = paramDynamicPluginManager;
+    this.b = paramString;
   }
   
-  public Button a()
+  public void enter(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
   {
-    return this.jdField_a_of_type_AndroidWidgetButton;
-  }
-  
-  protected void a()
-  {
-    this.h = ((TextView)this.b.findViewById(2131371827));
-    this.e = ((ImageView)this.b.findViewById(2131361795));
-    this.i = ((TextView)this.b.findViewById(2131376588));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.b.findViewById(2131376575));
-    this.jdField_a_of_type_AndroidWidgetButton.setText(anzj.a(2131689551));
-    this.k = ((TextView)this.b.findViewById(2131377861));
-    this.j = ((TextView)this.b.findViewById(2131376585));
-    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131380059);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    View localView;
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    if (QLog.isColorLevel()) {
+      QLog.i("shadow::PluginManagerWrapper", 2, "enter formId:" + paramLong + " enterCallback:" + paramEnterCallback);
+    }
+    aumj.a().a(this.b, this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      localView = this.jdField_a_of_type_AndroidViewView;
-      if (!paramBoolean) {
-        break label24;
+      localObject = (bcpa)((QQAppInterface)localObject).getManager(362);
+      if (localObject != null) {
+        ((bcpa)localObject).a(this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager);
       }
     }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localView.setVisibility(i);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager.enter(paramContext, paramLong, paramBundle, paramEnterCallback);
   }
 }
 

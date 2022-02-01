@@ -1,6 +1,24 @@
-class awnj
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+
+public class awnj
+  extends SosoInterface.OnLocationListener
 {
-  private static awnh a = new awnh(null);
+  public awnj(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  {
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    {
+      awng.jdField_a_of_type_ArrayOfLong[0] = ((paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D));
+      awng.jdField_a_of_type_ArrayOfLong[1] = ((paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D));
+      awng.jdField_a_of_type_Long = System.currentTimeMillis();
+    }
+  }
 }
 
 

@@ -1,37 +1,20 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x11b.submsgtype0x11b.MsgBody;
+import android.view.View;
+import com.tencent.mobileqq.activity.home.Conversation;
+import mqq.app.QQPermissionCallback;
 
-public class adcy
-  implements adci
+class adcy
+  implements QQPermissionCallback
 {
-  private static void a(adan paramadan, MsgType0x210 paramMsgType0x210)
+  adcy(adcx paramadcx, View paramView) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x11b");
-    }
-    try
-    {
-      submsgtype0x11b.MsgBody localMsgBody = new submsgtype0x11b.MsgBody();
-      if (paramadan.a(paramMsgType0x210))
-      {
-        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-        axga.a().a(localMsgBody);
-      }
-      return;
-    }
-    catch (Exception paramadan)
-    {
-      QLog.e("Q.msg.BaseMessageProcessor", 1, "[msg0x210.uSubMsgType == 0x11b], errInfo->" + paramadan.getMessage());
-    }
+    bfur.a(adcx.a(this.jdField_a_of_type_Adcx).a());
   }
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    a(paramadan, paramMsgType0x210);
-    return null;
+    this.jdField_a_of_type_Adcx.b(this.jdField_a_of_type_AndroidViewView);
   }
 }
 

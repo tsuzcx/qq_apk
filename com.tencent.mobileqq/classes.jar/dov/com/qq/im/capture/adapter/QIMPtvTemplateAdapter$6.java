@@ -1,20 +1,20 @@
 package dov.com.qq.im.capture.adapter;
 
-import bplz;
-import brhn;
+import bmqu;
+import boba;
 import com.tencent.qphone.base.util.QLog;
 
 public class QIMPtvTemplateAdapter$6
   implements Runnable
 {
-  public QIMPtvTemplateAdapter$6(bplz parambplz) {}
+  public QIMPtvTemplateAdapter$6(bmqu parambmqu) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QIMPtvTemplateManager", 2, "start download template runnable");
     }
-    this.this$0.jdField_a_of_type_Brhn.a(this.this$0.jdField_a_of_type_Brhn.a(), this.this$0.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, bplz.a(this.this$0));
+    this.this$0.jdField_a_of_type_Boba.a(this.this$0.jdField_a_of_type_Boba.getApp(), this.this$0.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, bmqu.a(this.this$0));
     this.this$0.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.downloading = true;
   }
 }

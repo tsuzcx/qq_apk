@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkBabyqReply;
-import java.util.ArrayList;
-
-final class ahhj
-  implements ahky
+class ahhj
+  implements zuj
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  ahhj(ahgz paramahgz) {}
+  
+  public void a()
   {
-    paramQQAppInterface = (MessageForArkBabyqReply)paramChatMessage;
-    if ((paramQQAppInterface.mArkBabyqReplyCardList == null) || (paramQQAppInterface.mArkBabyqReplyCardList.size() <= 0)) {
-      return 83;
-    }
-    return 82;
+    this.a.a.a(false, false, 4);
+  }
+  
+  public void b()
+  {
+    this.a.a.a();
   }
 }
 

@@ -1,18 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.share.QZoneShareActivity;
-import cooperation.qzone.share.QZoneShareActivity.4.2;
-
 public class bnhf
-  implements DialogInterface.OnClickListener
 {
-  public bnhf(QZoneShareActivity.4.2 param2) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String toString()
   {
-    QLog.e("QZoneShare", 1, "dialog click ");
-    this.a.a.a.finish();
+    return "TextInfo{text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_a_of_type_Int + ", size=" + this.b + ", state=" + this.c + '}';
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.ecommerce;
 
-import agsc;
-import agsd;
-import aran;
+import afnw;
+import afnx;
+import apub;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -17,12 +17,12 @@ public final class ECommerceDataReportUtil$1
   {
     try
     {
-      agsc localagsc = (agsc)aran.a().a(592);
-      if ((localagsc != null) && (localagsc.a != null) && (!localagsc.a.isEmpty()))
+      afnw localafnw = (afnw)apub.a().a(592);
+      if ((localafnw != null) && (localafnw.a != null) && (!localafnw.a.isEmpty()))
       {
-        agsd.a(localagsc.a);
-        agsd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        agsd.a((QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+        afnx.a(localafnw.a);
+        afnx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        afnx.a((QQAppInterface)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
       }
       return;
     }

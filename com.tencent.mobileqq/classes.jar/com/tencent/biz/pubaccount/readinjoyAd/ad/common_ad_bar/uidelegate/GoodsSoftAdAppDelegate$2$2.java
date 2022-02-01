@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate;
 
-import tlj;
-import tll;
+import tqz;
+import trb;
 
 public class GoodsSoftAdAppDelegate$2$2
   implements Runnable
 {
-  public GoodsSoftAdAppDelegate$2$2(tll paramtll) {}
+  public GoodsSoftAdAppDelegate$2$2(trb paramtrb) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class GoodsSoftAdAppDelegate$2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GoodsSoftAdAppDelegate.2.2
  * JD-Core Version:    0.7.0.1
  */

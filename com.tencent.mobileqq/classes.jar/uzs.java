@@ -1,25 +1,16 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class uzs
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public uzs(BaseWidgetView paramBaseWidgetView)
-  {
-    super(paramBaseWidgetView);
-  }
+  uzs(uzr paramuzr) {}
   
-  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo, var paramvar)
+  public void onClick(View paramView)
   {
-    if ((this.itemView instanceof BaseWidgetView))
-    {
-      this.itemView.setTag(this);
-      ((BaseWidgetView)this.itemView).setInteractor(paramvar);
-      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
-      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
-    }
+    uzr.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

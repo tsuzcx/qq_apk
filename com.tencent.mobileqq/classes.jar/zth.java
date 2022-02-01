@@ -1,27 +1,19 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zth
-  extends AccessibilityDelegateCompat
+  implements AdapterView.OnItemClickListener
 {
-  public zth(LeftTabBarView paramLeftTabBarView) {}
+  public zth(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (LeftTabBarView.a(this.a, paramView) == LeftTabBarView.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
-    }
-  }
-  
-  public void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    super.sendAccessibilityEvent(paramView, paramInt);
+    this.a.onTabSelected(0, paramInt);
+    paramView.setSelected(true);
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 

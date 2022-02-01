@@ -1,20 +1,13 @@
-import java.util.HashMap;
-import java.util.Map;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public final class bnkl
+public abstract interface bnkl
 {
-  public int a;
-  public Map<String, String> a;
+  public abstract EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig);
   
-  public bnkl()
-  {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public String toString()
-  {
-    return "ctrl:[cmd = " + this.jdField_a_of_type_Int + ", data = " + this.jdField_a_of_type_JavaUtilMap + "]";
-  }
+  public abstract void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext);
 }
 
 

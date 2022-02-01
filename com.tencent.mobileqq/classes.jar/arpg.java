@@ -1,35 +1,27 @@
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class arpg
+final class arpg
+  implements View.OnTouchListener
 {
-  private arph jdField_a_of_type_Arph;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public arpg()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Arph = new arph();
-  }
-  
-  public arpg(String paramString, arph paramarph)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Arph = paramarph;
-  }
-  
-  public arph a()
-  {
-    return this.jdField_a_of_type_Arph;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Arph == null) || (this.jdField_a_of_type_Arph.a == null) || (this.jdField_a_of_type_Arph.a.size() <= 0);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arpg
  * JD-Core Version:    0.7.0.1
  */

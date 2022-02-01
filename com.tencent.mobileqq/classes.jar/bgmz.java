@@ -1,40 +1,44 @@
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.vashealth.VideoCallBack;
 import com.tencent.qphone.base.util.QLog;
 
 public class bgmz
-  extends aojs
+  extends Handler
 {
-  public bgmz(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
+  public bgmz(VideoCallBack paramVideoCallBack, bhht parambhht, String paramString, Activity paramActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VisitorTroopCardFragment.Activity", 2, "onQueryJoinTroopCanNoVerify result:" + paramBoolean);
-    }
-    if (paramBoolean)
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VisitorTroopCardFragment.Activity", 2, "onQueryJoinTroopCanNoVerify noVerify:" + paramInt);
-      }
-      this.a.b = paramInt;
-      if (this.a.b == 1)
-      {
-        if (this.a.a.isHomeworkTroop())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("VisitorTroopCardFragment.Activity", 2, "onQueryJoinTroopCanNoVerify isHomeworkTroop true");
-          }
-          this.a.a(1);
-          return;
-        }
-        this.a.e();
-        return;
-      }
-      VisitorTroopCardFragment.b(this.a);
-      return;
     }
-    VisitorTroopCardFragment.b(this.a);
+    int i;
+    do
+    {
+      return;
+      if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing())) {
+        this.jdField_a_of_type_Bhht.dismiss();
+      }
+      i = paramMessage.arg1;
+      if (i != 0) {
+        break;
+      }
+      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+      Intent localIntent = new Intent();
+      localIntent.putExtra("video_dir", paramMessage);
+      localIntent.putExtra("thumb_dir", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidAppActivity.setResult(1, localIntent);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+    } while (!QLog.isColorLevel());
+    QLog.i("VideoCallBack", 2, "encode success: " + paramMessage);
+    return;
+    this.jdField_a_of_type_AndroidAppActivity.setResult(2);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    QLog.e("VideoCallBack", 1, "error! ret = " + i);
   }
 }
 

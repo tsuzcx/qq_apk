@@ -1,50 +1,44 @@
-import android.text.TextUtils;
-import com.immersion.touchsensesdk.AsyncConnectionProxy;
-import com.immersion.touchsensesdk.IConnection;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.IMMRRsp;
+import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.RspBody;
 
 public class hn
-  extends AsyncConnectionProxy
+  extends nmf
 {
-  private WeakReference<QQAppInterface> a;
+  private hl a;
   
-  public hn()
+  public hn(boolean paramBoolean, hl paramhl)
   {
-    if (BaseApplicationImpl.sProcessId == 1) {
-      this.a = new WeakReference((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-    }
+    super(paramBoolean);
+    this.a = paramhl;
   }
   
-  public void connect(String paramString, int paramInt1, int paramInt2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    ho localho = (ho)((QQAppInterface)this.a.get()).a(116);
-    localho.a(this);
-    localho.a(paramString);
-  }
-  
-  public void setConnection(IConnection paramIConnection)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("HapticMediaPlayer connection == NULL -->");
-      if (paramIConnection != null) {
-        break label45;
+    paramBundle = new oidb_0xa4d.RspBody();
+    if (paramInt == 0) {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("ImmersionHandler", 2, "HapticMediaPlayer request success.errorcode = " + paramInt);
+        }
+        paramBundle.mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (oidb_0xa4d.IMMRRsp)paramBundle.msg_immr_rsp.get();
+        this.a.setConnection(new hj(paramArrayOfByte));
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+        return;
       }
     }
-    label45:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.i("ImmerIConnectionProxy", 2, bool);
-      super.setConnection(paramIConnection);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.e("ImmersionHandler", 2, "HapticMediaPlayer request failerrorcode = " + paramInt);
     }
+    this.a.setConnection(null);
   }
 }
 

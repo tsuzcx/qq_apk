@@ -1,32 +1,64 @@
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
-import com.tencent.mobileqq.richmedia.capture.view.ArithmeticCaptureView;
+import android.content.SharedPreferences;
+import java.lang.reflect.Field;
 
-class bfym
-  extends zmn
+public class bfym
 {
-  bfym(bfyl parambfyl, LayoutInflater paramLayoutInflater)
+  public static SharedPreferences a(Context paramContext, String paramString)
   {
-    super(paramLayoutInflater);
-  }
-  
-  protected View a(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
-  {
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, new int[] { 16842960 });
-    int i = localTypedArray.getResourceId(0, -1);
-    localTypedArray.recycle();
-    if (i == 2131364134) {
-      return new ArithmeticCaptureView(paramContext, paramAttributeSet);
+    if ((paramContext == null) || (paramString == null) || (paramString.length() <= 0)) {
+      return null;
     }
-    return super.a(paramView, paramString, paramContext, paramAttributeSet);
+    try
+    {
+      Class localClass = Class.forName("android.content.Context");
+      i = ((Integer)localClass.getField("MODE_MULTI_PROCESS").get(localClass)).intValue();
+      int j = i;
+      if (i == -1) {
+        j = 0;
+      }
+      return paramContext.getSharedPreferences(paramString, j);
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      for (;;)
+      {
+        i = -1;
+      }
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      for (;;)
+      {
+        i = -1;
+      }
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      for (;;)
+      {
+        i = -1;
+      }
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      for (;;)
+      {
+        i = -1;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        int i = -1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfym
  * JD-Core Version:    0.7.0.1
  */

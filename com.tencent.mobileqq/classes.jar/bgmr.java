@@ -1,37 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment.17;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vashealth.SportManager.3.1;
+import mqq.observer.BusinessObserver;
 
 public class bgmr
-  implements DialogInterface.OnClickListener
+  implements BusinessObserver
 {
-  public bgmr(VisitorTroopCardFragment.17 param17) {}
+  bgmr(bgmp parambgmp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramInt == 1)
-    {
-      this.a.this$0.a.cancel();
-      return;
-    }
-    try
-    {
-      ForwardSdkShareOption.a(this.a.this$0.getActivity(), true, "action_game_join_group", Long.valueOf(this.a.this$0.getActivity().getIntent().getStringExtra("appid")).longValue(), -1, this.a.a);
-      this.a.this$0.a.cancel();
-      this.a.this$0.getActivity().finish();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        QLog.e("VisitorTroopCardFragment.Activity", 1, "showAlertDlg error = " + paramDialogInterface);
-      }
+    if (paramBoolean) {
+      ThreadManager.post(new SportManager.3.1(this, paramBundle.getString("StepInfoJSON")), 5, null, true);
     }
   }
 }

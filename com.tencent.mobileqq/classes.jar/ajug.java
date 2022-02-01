@@ -1,26 +1,26 @@
-import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
-import java.util.ArrayList;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajug
-  extends abuq
+class ajug
+  extends AsyncTask<String, Void, AnimationView.AnimationInfo>
 {
-  public ajug(DeviceFragment paramDeviceFragment) {}
+  private ajug(ajue paramajue) {}
   
-  protected void a(ArrayList<DeviceInfo> paramArrayList)
+  protected AnimationView.AnimationInfo a(String... paramVarArgs)
   {
-    if (this.a.e)
-    {
-      this.a.e = false;
-      if (DeviceFragment.a(this.a) != null) {
-        DeviceFragment.b(this.a).a(this.a.b(), true, null);
-      }
+    if ("1".equals(paramVarArgs[1])) {
+      return AnimationView.AnimationInfo.loadFromZip(paramVarArgs[0]);
     }
-    if (this.a.a == null) {
-      return;
+    return AnimationView.AnimationInfo.loadFromFolder(paramVarArgs[0]);
+  }
+  
+  protected void a(AnimationView.AnimationInfo paramAnimationInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FrameAnimHelper", 2, "task over info = " + paramAnimationInfo);
     }
-    this.a.a.a = ((ArrayList)paramArrayList.clone());
-    this.a.a.notifyDataSetChanged();
+    this.a.a(paramAnimationInfo);
   }
 }
 

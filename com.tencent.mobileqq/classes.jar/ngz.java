@@ -1,18 +1,24 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.avgame.ui.AVGameRoomListFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.avgame.qav.AVGameCameraAssistant;
+import com.tencent.avgame.qav.AVGameCameraAssistant.3;
+import com.tencent.qphone.base.util.QLog;
 
 public class ngz
-  implements View.OnClickListener
+  extends myc
 {
-  public ngz(AVGameRoomListFragment paramAVGameRoomListFragment) {}
+  public ngz(AVGameCameraAssistant.3 param3) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, boolean paramBoolean, String paramString)
   {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.i("AVGameCameraAssistant", 2, "notifyEvent, id[" + paramInt + "], result[" + paramBoolean + "]");
+    }
+    if ((paramInt == 1) && (paramBoolean))
+    {
+      if (AVGameCameraAssistant.a(this.a.this$0) != null) {
+        AVGameCameraAssistant.a(this.a.this$0).g();
+      }
+      AVGameCameraAssistant.a(this.a.this$0);
+    }
   }
 }
 

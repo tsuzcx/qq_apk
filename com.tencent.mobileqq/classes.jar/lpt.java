@@ -1,136 +1,155 @@
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.opengl.GLES20;
+import android.opengl.Matrix;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileOutputStream;
+import com.tencent.ttpic.openapi.filter.TextureRender;
 
-class lpt
+@TargetApi(16)
+public class lpt
+  implements lpk
 {
   private int jdField_a_of_type_Int;
-  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
-  private int d;
+  public final SurfaceTexture a;
+  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+  private boolean jdField_a_of_type_Boolean = true;
+  private final float[] jdField_a_of_type_ArrayOfFloat;
+  private final float[] b;
   
-  public lpt(String paramString)
+  public lpt(SurfaceTexture paramSurfaceTexture)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.d = 0;
-    this.c = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("SurfaceTag", 2, "SurfacePreRender");
+    }
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = paramSurfaceTexture;
+    lok.a("SurfaceMode");
+    this.jdField_a_of_type_ArrayOfFloat = new float[16];
+    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
+    this.jdField_a_of_type_Boolean = true;
+    this.b = new float[16];
+    Matrix.setIdentityM(this.b, 0);
+    Matrix.scaleM(this.b, 0, -1.0F, -1.0F, 1.0F);
   }
   
-  private void b()
+  public lpf a(loy paramloy, lok paramlok, lpf paramlpf)
   {
-    if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {}
     try
     {
-      this.jdField_a_of_type_JavaIoFileOutputStream.flush();
-      try
+      paramlok.a(this.jdField_a_of_type_ArrayOfFloat);
+      if (paramlok.jdField_a_of_type_Boolean != this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_JavaIoFileOutputStream.close();
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
-        return;
-      }
-      catch (Throwable localThrowable1)
-      {
-        for (;;)
+        this.jdField_a_of_type_Boolean = paramlok.jdField_a_of_type_Boolean;
+        if (this.jdField_a_of_type_Boolean)
         {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("FilterProcessTest", 4, "DebugFile-save close fail path: " + this.jdField_b_of_type_JavaLangString, localThrowable1);
-          }
+          Matrix.setIdentityM(this.b, 0);
+          Matrix.scaleM(this.b, 0, -1.0F, -1.0F, 1.0F);
         }
       }
-      try
+      else
       {
-        this.jdField_a_of_type_JavaIoFileOutputStream.close();
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
-        throw localObject;
-      }
-      catch (Throwable localThrowable4)
-      {
-        for (;;)
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("FilterProcessTest", 4, "DebugFile-save close fail path: " + this.jdField_b_of_type_JavaLangString, localThrowable4);
-          }
+        int i = paramlok.b;
+        int j = paramlok.jdField_a_of_type_Int;
+        GLES20.glBindFramebuffer(36160, paramlpf.jdField_a_of_type_Int);
+        GLES20.glViewport(0, 0, i, j);
+        GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+        GLES20.glClear(16640);
+        if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null) {
+          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, this.b);
         }
+        GLES20.glBindFramebuffer(36160, 0);
       }
     }
-    catch (Throwable localThrowable2)
+    catch (Throwable paramloy)
     {
-      localThrowable2 = localThrowable2;
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FilterProcessTest", 4, "DebugFile-save flush fail path: " + this.jdField_b_of_type_JavaLangString, localThrowable2);
-      }
       try
-      {
-        this.jdField_a_of_type_JavaIoFileOutputStream.close();
-        this.jdField_a_of_type_JavaIoFileOutputStream = null;
-        return;
-      }
-      catch (Throwable localThrowable3)
       {
         for (;;)
         {
+          if (Build.VERSION.SDK_INT >= 19) {
+            paramlok.jdField_a_of_type_AndroidGraphicsSurfaceTexture.releaseTexImage();
+          }
+          return paramlpf;
+          paramloy = paramloy;
           if (QLog.isDevelopLevel()) {
-            QLog.i("FilterProcessTest", 4, "DebugFile-save close fail path: " + this.jdField_b_of_type_JavaLangString, localThrowable3);
+            QLog.i("SurfaceTag", 4, "render, surface[" + paramlok.jdField_a_of_type_AndroidGraphicsSurfaceTexture + "]", paramloy);
           }
         }
+        Matrix.setIdentityM(this.b, 0);
+        Matrix.scaleM(this.b, 0, 1.0F, -1.0F, 1.0F);
+      }
+      catch (Throwable paramloy)
+      {
+        while (!QLog.isDevelopLevel()) {}
+        QLog.i("SurfaceTag", 4, "render", paramloy);
       }
     }
-    finally {}
+    return paramlpf;
   }
   
   public void a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FilterProcessTest", 4, String.format("DebugFile-end size[%s, %s], fmt[%s], frame[%s], path[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.c), Integer.valueOf(this.d), this.jdField_b_of_type_JavaLangString }));
-    }
-    b();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.d = 0;
-    this.c = 0;
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((paramArrayOfByte == null) || (paramInt2 == 0) || (paramInt3 == 0)) {
-      return;
-    }
-    if ((this.jdField_a_of_type_JavaIoFileOutputStream == null) || (this.jdField_a_of_type_Int != paramInt2) || (this.jdField_b_of_type_Int != paramInt3) || (this.c != paramInt1))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FilterProcessTest", 4, String.format("DebugFile-save pre_size[%s,%s], cur_size[%s,%s], pre_fmt[%s], cur_fmt[%s], count[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(this.c), Integer.valueOf(paramInt1), Integer.valueOf(this.d) }));
-      }
-      b();
-      this.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "_" + lps.a(paramInt2, paramInt3, paramInt1) + ".yuv");
-      File localFile = new File(this.jdField_b_of_type_JavaLangString);
-      if ((localFile.exists()) && (localFile.isFile()) && (!localFile.delete()) && (QLog.isDevelopLevel())) {
-        QLog.i("FilterProcessTest", 4, "DebugFile-save del fail path: " + this.jdField_b_of_type_JavaLangString);
-      }
-    }
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+    this.jdField_a_of_type_Int = GlUtil.createTexture(36197);
+    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {}
     try
     {
-      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(this.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_Int = paramInt2;
-      this.jdField_b_of_type_Int = paramInt3;
-      this.d = 0;
-      this.c = paramInt1;
-      this.d += 1;
-      lps.a(this.jdField_a_of_type_JavaIoFileOutputStream, paramArrayOfByte);
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.detachFromGLContext();
+    }
+    catch (Throwable localThrowable1)
+    {
+      try
+      {
+        for (;;)
+        {
+          this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.attachToGLContext(this.jdField_a_of_type_Int);
+          if (QLog.isColorLevel()) {
+            QLog.i("SurfaceTag", 2, "genTexture");
+          }
+          return;
+          localThrowable1 = localThrowable1;
+          QLog.i("SurfaceTag", 2, "genTexture1", localThrowable1);
+        }
+      }
+      catch (Throwable localThrowable2)
+      {
+        for (;;)
+        {
+          QLog.i("SurfaceTag", 2, "genTexture2", localThrowable2);
+        }
+      }
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public boolean a(lok paramlok)
+  {
+    return (paramlok != null) && (paramlok.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) && (paramlok.jdField_a_of_type_AndroidGraphicsSurfaceTexture == this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.detachFromGLContext();
+      int[] arrayOfInt = new int[1];
+      arrayOfInt[0] = this.jdField_a_of_type_Int;
+      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+      if (QLog.isColorLevel()) {
+        QLog.i("SurfaceTag", 2, "delTexture");
+      }
       return;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("FilterProcessTest", 4, "DebugFile-save create FileOutputStream fail path: " + this.jdField_b_of_type_JavaLangString);
-        }
+        QLog.i("SurfaceTag", 2, "delTexture", localThrowable);
       }
     }
   }

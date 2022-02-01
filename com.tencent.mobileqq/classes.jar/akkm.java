@@ -1,18 +1,13 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import com.tencent.widget.XListView;
 
 class akkm
-  implements View.OnTouchListener
+  implements wco
 {
-  akkm(akkg paramakkg) {}
+  akkm(akkk paramakkk) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    this.a.a.invalidateViews();
   }
 }
 

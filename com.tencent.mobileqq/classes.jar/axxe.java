@@ -1,16 +1,18 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
 
-final class axxe
-  implements ayud
+public class axxe
+  extends axxf
 {
-  axxe(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
-  
-  public void onClick(View paramView)
+  axxe()
   {
-    axxd.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1);
+    super(1);
+    this.a = "StepEmptySensor";
   }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent) {}
 }
 
 

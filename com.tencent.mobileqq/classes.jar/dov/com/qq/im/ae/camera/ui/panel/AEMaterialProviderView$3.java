@@ -1,27 +1,27 @@
 package dov.com.qq.im.ae.camera.ui.panel;
 
-import booa;
-import boqu;
+import blsh;
+import blvb;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
 class AEMaterialProviderView$3
   implements Runnable
 {
-  AEMaterialProviderView$3(AEMaterialProviderView paramAEMaterialProviderView, int paramInt, boqu paramboqu) {}
+  AEMaterialProviderView$3(AEMaterialProviderView paramAEMaterialProviderView, int paramInt, blvb paramblvb) {}
   
   public void run()
   {
     AEGridView localAEGridView = (AEGridView)AEMaterialProviderView.a(this.this$0).a.get(Integer.valueOf(this.jdField_a_of_type_Int));
     if (localAEGridView != null)
     {
-      localbooa = (booa)localAEGridView.getAdapter();
-      localAEGridView.a(this.jdField_a_of_type_Boqu.b);
-      localbooa.a(this.jdField_a_of_type_Boqu);
+      localblsh = (blsh)localAEGridView.getAdapter();
+      localAEGridView.a(this.jdField_a_of_type_Blvb.b);
+      localblsh.a(this.jdField_a_of_type_Blvb);
     }
     while (!QLog.isColorLevel())
     {
-      booa localbooa;
+      blsh localblsh;
       return;
     }
     QLog.d("AEMaterialProviderView", 2, "gridView is null");

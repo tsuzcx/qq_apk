@@ -1,21 +1,20 @@
-import android.view.View;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.QQPermissionCallback;
 
-public class acsk
-  extends acsl
+class acsk
+  implements QQPermissionCallback
 {
-  public int a;
-  public View a;
-  public int b;
-  public View b;
-  public int c;
-  public View c;
-  public int d;
-  public View d;
-  public int e;
-  public View e;
-  public int f;
-  public int g;
-  public int h;
+  acsk(acsi paramacsi, azhn paramazhn) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QQToast.a(this.jdField_a_of_type_Acsi.a, 2131694857, 1).a();
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    azhh.a().a(this.jdField_a_of_type_Acsi.a, "AssistantSettingActivity", this.jdField_a_of_type_Azhn);
+  }
 }
 
 

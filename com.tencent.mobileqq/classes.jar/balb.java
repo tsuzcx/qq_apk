@@ -1,32 +1,28 @@
-import android.util.SparseArray;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
+import com.tencent.richmediabrowser.listener.IGalleryImageListener;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileSettingConstants$Companion;", "", "()V", "ALL_NOT_VISIBLE_STATE", "", "ALL_VISIBLE_STATE", "CLOSE_SWITCH_STATE", "FIELD_PRIVACY_AGE", "FIELD_PRIVACY_BIRTHDAY", "FIELD_PRIVACY_COLLEGE", "FIELD_PRIVACY_COMPANY", "FIELD_PRIVACY_CONSTELLATION", "FIELD_PRIVACY_EMAIL", "FIELD_PRIVACY_HOMETOWN", "FIELD_PRIVACY_LOCATION", "FIELD_PRIVACY_PERSONAL_NOTE", "FIELD_PRIVACY_PROFESSION", "FIELD_PRIVACY_SEX", "INVALID_STATE", "INVALID_SWITCH_STATE", "ITEM_TYPE_BASE", "ITEM_TYPE_EMPTY", "ITEM_TYPE_OTHER", "ITEM_TYPE_OTHER_WITH_SECOND_LINE", "ITEM_TYPE_TITLE", "ONLY_FRIEND_VISIBLE_STATE", "OPEN_SWITCH_STATE", "PARAM_SWITCHES_CHANGED", "", "PROFILE_DISPLAY_FIELD_BASE_ITEMS", "", "getPROFILE_DISPLAY_FIELD_BASE_ITEMS", "()[[Ljava/lang/Integer;", "[[Ljava/lang/Integer;", "PROFILE_DISPLAY_FIELD_CONFIG_MAP", "Landroid/util/SparseArray;", "getPROFILE_DISPLAY_FIELD_CONFIG_MAP", "()Landroid/util/SparseArray;", "PROFILE_DISPLAY_FIELD_OTHER_ITEMS", "getPROFILE_DISPLAY_FIELD_OTHER_ITEMS", "PROFILE_DISPLAY_FIELD_OTHER_SPEC_DEFAULT_CLOSE_ITEMS", "getPROFILE_DISPLAY_FIELD_OTHER_SPEC_DEFAULT_CLOSE_ITEMS", "()[Ljava/lang/Integer;", "[Ljava/lang/Integer;", "REQUEST_CODE_SWITCHES", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class balb
+class balb
+  implements IGalleryImageListener
 {
-  @NotNull
-  public final SparseArray<Integer> a()
-  {
-    return bala.a();
-  }
+  balb(bakw parambakw, RichMediaBrowserInfo paramRichMediaBrowserInfo, String paramString, URLDrawable paramURLDrawable, AIOPictureData paramAIOPictureData) {}
   
-  @NotNull
-  public final Integer[] a()
-  {
-    return bala.a();
-  }
+  public void onLoadDrawable(int paramInt, URLDrawable paramURLDrawable) {}
   
-  @NotNull
-  public final Integer[][] a()
+  public void onLoadSuccessed(int paramInt, boolean paramBoolean)
   {
-    return bala.a();
-  }
-  
-  @NotNull
-  public final Integer[][] b()
-  {
-    return bala.b();
+    this.jdField_a_of_type_Bakw.b.setVisibility(8);
+    if (paramBoolean)
+    {
+      bakw.a(this.jdField_a_of_type_Bakw, this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
+      return;
+    }
+    if ((!bakw.a(this.jdField_a_of_type_Bakw, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData, this.jdField_a_of_type_Bakw.a)) && (!bakw.a(this.jdField_a_of_type_Bakw, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData, this.jdField_a_of_type_Bakw.a)) && (!bakw.b(this.jdField_a_of_type_Bakw, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData, this.jdField_a_of_type_Bakw.a))) {
+      bakw.a(this.jdField_a_of_type_Bakw, this.jdField_a_of_type_Bakw.a);
+    }
+    bakw.a(this.jdField_a_of_type_Bakw, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOPictureData.jdField_a_of_type_Int, 2);
   }
 }
 

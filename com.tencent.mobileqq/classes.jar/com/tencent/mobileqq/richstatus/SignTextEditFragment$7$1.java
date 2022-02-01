@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.richstatus;
 
-import bbtl;
+import bang;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class SignTextEditFragment$7$1
   implements Runnable
 {
-  public SignTextEditFragment$7$1(bbtl parambbtl) {}
+  public SignTextEditFragment$7$1(bang parambang) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class SignTextEditFragment$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignTextEditFragment.7.1
  * JD-Core Version:    0.7.0.1
  */

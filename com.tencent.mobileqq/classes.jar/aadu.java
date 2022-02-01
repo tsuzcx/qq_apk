@@ -1,8 +1,24 @@
-public abstract interface aadu<T>
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
+class aadu
+  extends Handler
 {
-  public abstract void a(T paramT);
+  aadu(aadt paramaadt, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void a(boolean paramBoolean, long paramLong, String paramString, T paramT, Object paramObject);
+  public void handleMessage(Message paramMessage)
+  {
+    if ((paramMessage.what == 203) && ((paramMessage.obj instanceof Bundle)))
+    {
+      paramMessage = (Bundle)paramMessage.obj;
+      aadt.a(this.a, paramMessage);
+    }
+  }
 }
 
 

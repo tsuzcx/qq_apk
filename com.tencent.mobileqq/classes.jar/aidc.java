@@ -1,28 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
 
 class aidc
-  implements DialogInterface.OnClickListener
+  implements bamo
 {
-  aidc(aicy paramaicy, int paramInt) {}
+  aidc(aidb paramaidb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    if (paramInt == 1)
-    {
-      if (this.jdField_a_of_type_Int != 0) {
-        break label47;
-      }
-      this.jdField_a_of_type_Aicy.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(1) });
-    }
-    for (;;)
-    {
-      aicy.b(this.jdField_a_of_type_Aicy, null);
-      return;
-      label47:
-      if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_Aicy.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(2) });
-      }
+    if ((paramInt2 == 200) && (paramBitmap != null)) {
+      this.a.notifyDataSetChanged();
     }
   }
 }

@@ -14,6 +14,6 @@
     <LinearLayout android:id="@id/gmy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a0e" android:layout_below="@id/d38" android:layout_alignLeft="@id/gru">
         <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:id="@id/gmx" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     </LinearLayout>
-    <FrameLayout android:id="@id/ngr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginRight="@dimen/a03" android:layout_below="@id/gmy" android:layout_alignLeft="@id/gmy" />
-    <FrameLayout android:id="@id/ngs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_below="@id/gmy" android:layout_alignLeft="@id/gmy" />
+    <FrameLayout android:id="@id/nba" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginRight="@dimen/a03" android:layout_below="@id/gmy" android:layout_alignLeft="@id/gmy" />
+    <FrameLayout android:id="@id/nbb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_below="@id/gmy" android:layout_alignLeft="@id/gmy" />
 </RelativeLayout>

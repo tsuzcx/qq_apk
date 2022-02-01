@@ -1,61 +1,29 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadComDownloader.3;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.lang.ref.WeakReference;
 
 public class aldd
+  extends BroadcastReceiver
 {
-  private static volatile aldd jdField_a_of_type_Aldd;
-  private bihw jdField_a_of_type_Bihw;
-  private bihz jdField_a_of_type_Bihz;
+  public aldd(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  private aldd()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Bihw == null)
-    {
-      this.jdField_a_of_type_Bihw = new bihw(null);
-      this.jdField_a_of_type_Bihz = this.jdField_a_of_type_Bihw.a(1);
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onReceive ===>" + paramContext);
     }
-  }
-  
-  public static aldd a()
-  {
-    if (jdField_a_of_type_Aldd == null) {}
-    try
+    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext)))
     {
-      if (jdField_a_of_type_Aldd == null) {
-        jdField_a_of_type_Aldd = new aldd();
+      if ((this.a.a != null) && (this.a.a.get() != null) && (((TVK_IMediaPlayer)this.a.a.get()).isPlaying())) {
+        this.a.k = true;
       }
-      return jdField_a_of_type_Aldd;
+      this.a.j();
     }
-    finally {}
-  }
-  
-  private void a(Bundle paramBundle, biht parambiht, DownloadParam paramDownloadParam)
-  {
-    ThreadManager.post(new PreloadComDownloader.3(this, paramDownloadParam, parambiht, paramBundle), 8, null, true);
-  }
-  
-  public void a(DownloadParam paramDownloadParam, biht parambiht, Bundle paramBundle)
-  {
-    if ((paramDownloadParam == null) || (TextUtils.isEmpty(paramDownloadParam.url)) || (TextUtils.isEmpty(paramDownloadParam.filePath))) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      if (!paramDownloadParam.isPreDownload) {
-        break;
-      }
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    } while (localQQAppInterface == null);
-    parambiht = new alde(this, parambiht);
-    parambiht = new aldf(this, localQQAppInterface, paramDownloadParam.url, paramBundle, parambiht, paramDownloadParam);
-    ((bezv)localQQAppInterface.getManager(193)).a(10069, "qqpay", paramDownloadParam.url, 0, paramDownloadParam.url, paramDownloadParam.filePath, 2, 0, true, parambiht);
-    return;
-    a(paramBundle, parambiht, paramDownloadParam);
   }
 }
 

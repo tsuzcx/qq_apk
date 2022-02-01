@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import aibo;
+import agye;
 import android.app.Activity;
 import android.widget.RelativeLayout;
 
@@ -11,12 +11,12 @@ class AIOEmotionFragment$12
   
   public void run()
   {
-    aibo.a((Activity)this.this$0.jdField_a_of_type_AndroidContentContext, (RelativeLayout)this.this$0.jdField_a_of_type_AndroidViewView);
+    agye.a((Activity)this.this$0.jdField_a_of_type_AndroidContentContext, (RelativeLayout)this.this$0.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment.12
  * JD-Core Version:    0.7.0.1
  */

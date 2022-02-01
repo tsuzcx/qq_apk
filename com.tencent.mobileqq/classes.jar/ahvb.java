@@ -1,20 +1,27 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import mqq.app.AppRuntime;
 
-public class ahvb
-  implements wkz
+class ahvb
+  implements DialogInterface.OnClickListener
 {
-  long jdField_a_of_type_Long;
-  ahvc jdField_a_of_type_Ahvc;
-  String jdField_a_of_type_JavaLangString;
+  ahvb(ahva paramahva) {}
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!paramString1.equals(this.a)) {}
+    if (this.a.a.getActivity() != null)
+    {
+      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
+      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
+      this.a.a.getActivity().startActivity(localIntent);
+    }
+    paramDialogInterface.dismiss();
   }
-  
-  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
-  
-  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 

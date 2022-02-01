@@ -1,19 +1,11 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.1;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.5.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import mqq.os.MqqHandler;
-
-public class xup
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+class xup
+  implements yqo<xqn>
 {
-  xup(xuk paramxuk) {}
+  xup(xuh paramxuh) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public xqn a()
   {
-    ThreadManager.executeOnSubThread(new VideoViewTVKImpl.5.1(this, paramTVK_IMediaPlayer));
-    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.5.2(this));
+    return new xqn(new xuq(this));
   }
 }
 

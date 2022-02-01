@@ -1,11 +1,36 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
 public class nhf
+  extends Handler
 {
-  public String a;
-  public String b;
-  
-  public boolean a()
+  public nhf(nhe paramnhe, Looper paramLooper)
   {
-    return (this.a != null) && (this.b != null);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    case 257: 
+    default: 
+      return;
+    case 152: 
+      nhe.a(this.a);
+      return;
+    case 153: 
+      nhe.b(this.a);
+      return;
+    case 256: 
+      int i = paramMessage.arg1;
+      int j = paramMessage.arg2;
+      long l = ((Long)paramMessage.obj).longValue();
+      this.a.a(null, i, j, l);
+      return;
+    }
+    nhe.b(this.a);
   }
 }
 

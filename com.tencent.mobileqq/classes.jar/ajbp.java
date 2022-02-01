@@ -1,8 +1,18 @@
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.home.Conversation;
 
-public abstract interface ajbp
+public class ajbp
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(ChatMessage paramChatMessage);
+  public ajbp(Conversation paramConversation) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
+    }
+  }
 }
 
 

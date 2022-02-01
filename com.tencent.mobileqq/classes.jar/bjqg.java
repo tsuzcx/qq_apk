@@ -1,8 +1,18 @@
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
+
 public class bjqg
+  implements ContextMenu.ContextMenuInfo
 {
-  public static String a(String paramString1, String paramString2)
+  public long a;
+  public View a;
+  public long b;
+  
+  public bjqg(View paramView, long paramLong1, long paramLong2)
   {
-    return String.format("https://q.qlogo.cn/qqapp/%s/%s/%d", new Object[] { paramString1, paramString2, Short.valueOf(100) });
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 

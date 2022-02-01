@@ -1,41 +1,59 @@
-import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class alcv
-  extends alcd
+  implements SeekBar.OnSeekBarChangeListener
 {
-  private int a;
+  public alcv(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public alcv(EditText paramEditText)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    super(paramEditText);
-    this.jdField_a_of_type_Int = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onProgressChanged: progress = " + paramInt + ",fromUser=" + paramBoolean);
+    }
+    this.a.m = true;
+    if (paramBoolean)
+    {
+      paramSeekBar = this.a;
+      paramSeekBar.h += 1;
+      ShortVideoPlayActivity.b(this.a, true);
+      ShortVideoPlayActivity.c(this.a, true);
+    }
+    this.a.b(paramInt * this.a.d / 10000L);
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    CharSequence localCharSequence = paramCharSequence;
-    if (paramCharSequence.toString().contains("."))
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    ShortVideoPlayActivity.b(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onStartTrackingTouch: progress = " + i);
+    }
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    this.a.l();
+    ShortVideoPlayActivity localShortVideoPlayActivity = this.a;
+    localShortVideoPlayActivity.i += 1;
+    this.a.g = true;
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    int j = (int)(i * this.a.d / 10000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onStopTrackingTouch: seekProgress = " + i + ", mCacheProgress= " + ShortVideoPlayActivity.b(this.a) + ", timestamp = " + j);
+    }
+    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      localCharSequence = paramCharSequence;
-      if (paramCharSequence.length() - 1 - paramCharSequence.toString().indexOf(".") > this.jdField_a_of_type_Int)
-      {
-        localCharSequence = paramCharSequence.toString().subSequence(0, paramCharSequence.toString().indexOf(".") + this.jdField_a_of_type_Int + 1);
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(localCharSequence);
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(localCharSequence.length());
+      if (this.a.jdField_a_of_type_Int == 2) {
+        this.a.a();
       }
+      this.a.a(j);
     }
-    paramCharSequence = localCharSequence;
-    if (localCharSequence.toString().trim().substring(0).equals("."))
-    {
-      paramCharSequence = "0" + localCharSequence;
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence);
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(2);
-    }
-    if ((paramCharSequence.toString().startsWith("0")) && (paramCharSequence.toString().trim().length() > 1) && (!paramCharSequence.toString().substring(1, 2).equals(".")))
-    {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.subSequence(0, 1));
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(1);
-    }
+    ShortVideoPlayActivity.b(this.a, false);
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

@@ -1,17 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.os.Bundle;
 
-class ayop
-  implements DialogInterface.OnClickListener
+public abstract interface ayop
 {
-  ayop(aynp paramaynp, bhpc parambhpc) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Bhpc.dismiss();
-    this.jdField_a_of_type_Aynp.a.g();
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle);
 }
 
 

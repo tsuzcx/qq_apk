@@ -1,15 +1,35 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.ar.util.VipARUtils.4;
 
-final class blab
-  implements DialogInterface.OnClickListener
+public class blab
+  implements ModuleDownloadListener
 {
-  blab(Activity paramActivity) {}
+  public blab(VipARUtils.4 param4) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDownloadCanceled(String paramString)
   {
-    mvd.a(this.a);
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+  }
+  
+  public void onDownloadFailed(String paramString)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+  }
+  
+  public void onDownloadProgress(String paramString, float paramFloat)
+  {
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("libTar.so")) {
+      return;
+    }
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bkzx.c(), " onDownloadSucceed = ", bkzx.d() });
+    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bkzx.d());
   }
 }
 

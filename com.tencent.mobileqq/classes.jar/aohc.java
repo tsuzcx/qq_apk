@@ -1,11 +1,14 @@
-import com.google.gson.reflect.TypeToken;
-import com.tencent.mobileqq.search.fragment.searchentry.hippy.TKDSearchHistoryBean;
-import java.util.ArrayList;
+import com.tencent.YTFace.model.FaceStatus;
 
-class aohc
-  extends TypeToken<ArrayList<TKDSearchHistoryBean>>
+public class aohc
 {
-  aohc(aohb paramaohb) {}
+  public int a = 3000;
+  public FaceStatus[] a;
+  
+  public String toString()
+  {
+    return "ARCloudRecogReqFaceInfo{timeout = " + this.a + '}';
+  }
 }
 
 

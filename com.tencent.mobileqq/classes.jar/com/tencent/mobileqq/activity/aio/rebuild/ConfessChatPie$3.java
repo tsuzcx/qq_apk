@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aiim;
-import aiip;
+import ahey;
+import ahfb;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.qphone.base.util.QLog;
 
 public class ConfessChatPie$3
   implements Runnable
 {
-  public ConfessChatPie$3(aiim paramaiim) {}
+  public ConfessChatPie$3(ahey paramahey) {}
   
   public void run()
   {
     try
     {
-      LottieComposition.Factory.fromAssetFileName(this.this$0.jdField_a_of_type_AndroidContentContext, "qq_confess_holmes_progress_lottie.json", new aiip(this));
+      LottieComposition.Factory.fromAssetFileName(this.this$0.mContext, "qq_confess_holmes_progress_lottie.json", new ahfb(this));
       return;
     }
     catch (Exception localException)
     {
-      QLog.e(this.this$0.jdField_a_of_type_JavaLangString, 1, "loadHolmesProgressAnimation fail.", localException);
+      QLog.e(this.this$0.tag, 1, "loadHolmesProgressAnimation fail.", localException);
     }
   }
 }

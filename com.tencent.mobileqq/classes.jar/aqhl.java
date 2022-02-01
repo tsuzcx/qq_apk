@@ -1,32 +1,50 @@
-class aqhl
+import android.support.annotation.NonNull;
+
+public class aqhl
+  extends aqgc<aqhk>
 {
-  static final float[] a;
-  
-  static
+  @NonNull
+  public static aqhk c()
   {
-    int k = 0;
-    a = new float[8192];
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      j = k;
-      if (i >= 8192) {
-        break;
-      }
-      a[i] = ((float)Math.sin((i + 0.5F) / 8192.0F * 6.283186F));
-      i += 1;
+    aqhk localaqhk2 = (aqhk)apub.a().a(665);
+    aqhk localaqhk1 = localaqhk2;
+    if (localaqhk2 == null) {
+      localaqhk1 = new aqhk();
     }
-    while (j < 360)
-    {
-      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.sin(j * 0.01745329F));
-      j += 90;
-    }
+    return localaqhk1;
+  }
+  
+  @NonNull
+  public aqhk a()
+  {
+    return new aqhk();
+  }
+  
+  @NonNull
+  public aqhk a(@NonNull aptx[] paramArrayOfaptx)
+  {
+    return aqhk.a(paramArrayOfaptx[0].a);
+  }
+  
+  @NonNull
+  public aqhk b()
+  {
+    return new aqhk();
+  }
+  
+  public Class<aqhk> clazz()
+  {
+    return aqhk.class;
+  }
+  
+  public int type()
+  {
+    return 665;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqhl
  * JD-Core Version:    0.7.0.1
  */

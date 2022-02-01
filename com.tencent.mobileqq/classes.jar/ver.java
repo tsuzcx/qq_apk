@@ -1,36 +1,33 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qqcircle.requests.QCircleSetUserSwitchRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 class ver
-  implements CompoundButton.OnCheckedChangeListener
+  implements vfg
 {
-  ver(veo paramveo) {}
+  ver(veq paramveq) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(Object paramObject)
   {
-    int i;
-    if (paramBoolean)
+    if ((paramObject instanceof vex))
     {
-      i = 0;
-      QCircleSetUserSwitchRequest localQCircleSetUserSwitchRequest = new QCircleSetUserSwitchRequest(2, i);
-      VSNetworkHelper.a().a(localQCircleSetUserSwitchRequest, new ves(this, paramBoolean));
-      if (!paramBoolean) {
-        break label62;
+      if (!this.a.b) {
+        ((PublicAccountImageCollectionMainActivity)veq.a(this.a)).h();
       }
-      vtq.a("", 11, 23, 5);
+      this.a.b = true;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      i = 1;
-      break;
-      label62:
-      vtq.a("", 11, 23, 4);
+    while ((paramObject instanceof vey)) {
+      if (veq.a(this.a))
+      {
+        this.a.d(true);
+        return;
+        ((PublicAccountImageCollectionMainActivity)veq.a(this.a)).g();
+      }
+      else
+      {
+        this.a.d(false);
+        return;
+      }
     }
+    this.a.d(true);
   }
 }
 

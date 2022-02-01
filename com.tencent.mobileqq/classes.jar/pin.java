@@ -1,55 +1,47 @@
-import android.graphics.Color;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.HeadImageWithRing;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
-import com.tencent.image.URLImageView;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.expand.IProteusDtReporter;
+import com.tencent.qqlive.module.videoreport.VideoReport;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Map;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class pin
-  extends pij
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/dt/RIJProteusDtImpl;", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/expand/IProteusDtReporter;", "()V", "needCallDtReportFun", "", "getNeedCallDtReportFun", "()Z", "setNeedCallDtReportFun", "(Z)V", "handleProteusViewClick", "", "view", "Landroid/view/View;", "setDtElementIdWithParams", "id", "", "params", "", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pin
+  implements IProteusDtReporter
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  HeadImageWithRing jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadImageWithRing;
-  ReadInJoyNickNameTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView;
-  View jdField_b_of_type_AndroidViewView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  View jdField_c_of_type_AndroidViewView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  TextView d;
-  TextView e;
+  private boolean a = true;
   
-  pin(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, View paramView)
+  public pin()
   {
-    super(paramReadInJoyPicWaterFallFragment, paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378936));
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131378647);
-    this.jdField_c_of_type_AndroidViewView.setBackgroundDrawable(new bjfa(Color.parseColor("#D9D9D8"), 0));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131365145));
-    this.jdField_b_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131371928);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371926));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371912));
-    this.e = ((TextView)paramView.findViewById(2131371932));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131371813));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadImageWithRing = ((HeadImageWithRing)paramView.findViewById(2131368912));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadImageWithRing.setAttrs(agej.a(0.5F, paramReadInJoyPicWaterFallFragment.getResources()), Color.parseColor("#0c000000"));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadImageWithRing.setDrawRing(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadImageWithRing.setCorner(agej.a(12.0F, paramReadInJoyPicWaterFallFragment.getResources()) / 2);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369926));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379990));
-    this.d = ((TextView)paramView.findViewById(2131379222));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131379210);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(new bjfa(Color.parseColor("#D9D9D8"), 0));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379205));
-    paramView.setOnClickListener(new pio(this, paramReadInJoyPicWaterFallFragment));
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new pip(this, paramReadInJoyPicWaterFallFragment));
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new piq(this, paramReadInJoyPicWaterFallFragment));
+    if (Aladdin.getConfig(381).getIntegerFromString("allow_call_dt_report", 1) == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.a = bool;
+      QLog.d("RIJProteusDtImpl", 1, "init needCallDtClckFun: " + this.a);
+      return;
+    }
+  }
+  
+  public void handleProteusViewClick(@Nullable View paramView)
+  {
+    if (this.a) {
+      EventCollector.getInstance().onViewClicked(paramView);
+    }
+  }
+  
+  public void setDtElementIdWithParams(@Nullable View paramView, @Nullable String paramString, @Nullable Map<String, Object> paramMap)
+  {
+    VideoReport.setElementId(paramView, paramString);
+    if (paramMap != null) {
+      VideoReport.setElementParams(paramView, new pil().a(paramMap).a());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJProteusDtImpl", 0, "id : " + paramString + ", params : " + paramMap);
+    }
   }
 }
 

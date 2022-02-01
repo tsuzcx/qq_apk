@@ -1,64 +1,16 @@
-import Wallet.AcsMsg;
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
 
 public class agci
+  implements View.OnTouchListener
 {
-  public static String a(AcsMsg paramAcsMsg)
-  {
-    if (paramAcsMsg == null) {
-      return null;
-    }
-    if (paramAcsMsg.type == 0) {
-      return paramAcsMsg.msg_id;
-    }
-    return paramAcsMsg.msg_id + "-" + paramAcsMsg.sub_time;
-  }
+  public agci(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
   
-  public static void a(Context paramContext, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    String str = anzj.a(2131716245);
-    if (paramInt == 0) {
-      str = anzj.a(2131716165);
-    }
-    for (;;)
-    {
-      QQToast.a(paramContext, 2, str, 0).a();
-      return;
-      if (paramInt == 6) {
-        str = anzj.a(2131716165);
-      } else if (paramInt == -1) {
-        str = anzj.a(2131716245);
-      }
-    }
-  }
-  
-  public static void a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    if (paramAppInterface == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQNotifyHelper", 1, "doReport app is null");
-      }
-      return;
-    }
-    HashMap localHashMap = new HashMap(12);
-    localHashMap.put("time_stamp", String.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-    localHashMap.put("bussiness_id", paramString2);
-    localHashMap.put("remind_id", paramString3);
-    localHashMap.put("uin", paramAppInterface.getCurrentAccountUin());
-    if (paramString4 != null) {
-      localHashMap.put("flag1", paramString4);
-    }
-    if (paramString5 != null) {
-      localHashMap.put("flag2", paramString5);
-    }
-    bdmc.a(BaseApplicationImpl.getContext()).a("", paramString1, true, 0L, 0L, localHashMap, "");
+    return true;
   }
 }
 

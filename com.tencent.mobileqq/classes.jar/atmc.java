@@ -1,37 +1,20 @@
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavPicFileTabView;
-import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.forward.ForwardFileOption;
 
 public class atmc
-  implements atmb
+  implements View.OnLongClickListener
 {
-  public atmc(QfileFavPicFileTabView paramQfileFavPicFileTabView) {}
+  public atmc(ForwardFileOption paramForwardFileOption) {}
   
-  public View.OnClickListener a(TextView paramTextView)
+  public boolean onLongClick(View paramView)
   {
-    this.a.g();
-    return null;
-  }
-  
-  public boolean a()
-  {
-    return this.a.a();
-  }
-  
-  public boolean a(FavFileInfo paramFavFileInfo)
-  {
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return this.a.b();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atmc
  * JD-Core Version:    0.7.0.1
  */

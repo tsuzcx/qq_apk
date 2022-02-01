@@ -1,23 +1,18 @@
-import android.content.Context;
-import android.view.View;
+import UserGrowth.stPostFeedCommentV2Req;
+import UserGrowth.stPostFeedCommentV2Rsp;
+import UserGrowth.stSimpleMetaComment;
+import UserGrowth.stSimpleMetaFeed;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
 
 public class uwq
+  extends urg<stPostFeedCommentV2Rsp>
 {
-  protected final View a;
-  
-  protected uwq(View paramView)
+  public uwq(stSimpleMetaFeed paramstSimpleMetaFeed, stSimpleMetaComment paramstSimpleMetaComment)
   {
-    this.a = paramView;
-  }
-  
-  protected Context a()
-  {
-    return this.a.getContext();
-  }
-  
-  protected <T extends View> T a(int paramInt)
-  {
-    return this.a.findViewById(paramInt);
+    super("PostFeedCommentV2", 10003);
+    this.a = new stPostFeedCommentV2Req(paramstSimpleMetaFeed.id, paramstSimpleMetaComment, new ArrayList(), 0);
+    uya.c("WsCommentBusiness", "stPostFeedCommentV2Req:" + this.a.toString());
   }
 }
 

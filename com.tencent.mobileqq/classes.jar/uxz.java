@@ -1,12 +1,6 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
-import com.tencent.widget.GridView;
-
-public class uxz
+class uxz
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public VideoFeedsAlphaMaskView a;
-  GridView jdField_a_of_type_ComTencentWidgetGridView;
+  private static final uxx a = new uxx(null);
 }
 
 

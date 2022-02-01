@@ -1,20 +1,31 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aytu
-  extends aytv
+  implements View.OnClickListener
 {
-  public aytu(String paramString, ayud paramayud)
-  {
-    super(paramString, paramayud);
-  }
+  public aytu(AbsProfileHeaderView paramAbsProfileHeaderView, String paramString, int paramInt, View paramView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    super.a();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130839291);
-    this.jdField_a_of_type_Int = -1;
+    if ((baqi.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int >= 0))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("key_sign_topic_name", this.jdField_a_of_type_JavaLangString);
+      localBundle.putInt("key_sign_topic_id", this.jdField_a_of_type_Int);
+      localBundle.putInt("from_type", 2);
+      if ((this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+        SignTextEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, null, localBundle, -1);
+      }
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      aymz.a().c(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      bcef.b(null, "dc00898", "", "", "0X800A4D5", "0X800A4D5", 0, 0, "2", "0", "", "");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

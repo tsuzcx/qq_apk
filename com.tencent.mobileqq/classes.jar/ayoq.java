@@ -1,18 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.profile.like.PraiseManager;
 
-class ayoq
-  implements DialogInterface.OnClickListener
+public class ayoq
+  implements ayoo
 {
-  ayoq(aynp paramaynp, bhpc parambhpc) {}
+  public int a;
+  public ayoo a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ayoq(PraiseManager paramPraiseManager) {}
+  
+  public void a(int paramInt1, ayon paramayon, int paramInt2, String paramString)
   {
-    if (paramInt == 1) {
-      this.jdField_a_of_type_Bhpc.dismiss();
-    }
-    while (paramInt != 0) {
-      return;
+    paramInt1 = this.jdField_a_of_type_Int + 1;
+    this.jdField_a_of_type_Int = paramInt1;
+    if (paramInt1 == this.b)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.b(this);
+      if (this.jdField_a_of_type_Ayoo != null) {
+        this.jdField_a_of_type_Ayoo.a(0, null, 0, "");
+      }
     }
   }
 }

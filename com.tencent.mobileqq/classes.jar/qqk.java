@@ -1,56 +1,19 @@
-import android.os.Looper;
-import android.text.TextPaint;
-import android.widget.Button;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qqk
-  extends pfh
+class qqk
+  implements View.OnClickListener
 {
-  public qqk(ComponentHeaderUgc paramComponentHeaderUgc) {}
+  qqk(qqf paramqqf) {}
   
-  public void b(long paramLong, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    int i;
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      i = 1;
-      if (i != 0) {
-        break label32;
-      }
-      QLog.e("ComponentHeaderUgc", 2, "Please call this method in main thread!!!");
+    pet localpet = this.a.jdField_a_of_type_Slt.a().a();
+    if (localpet != null) {
+      localpet.a(null, ((pvc)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
     }
-    label32:
-    ArticleInfo localArticleInfo;
-    do
-    {
-      return;
-      i = 0;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("ComponentHeaderUgc", 2, "onUpdateAfterAccountFollow uin = " + paramLong + " isFollow = " + paramBoolean);
-      }
-      localArticleInfo = this.a.jdField_a_of_type_Qno.a.a();
-    } while (paramLong != localArticleInfo.mSocialFeedInfo.a.a);
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(anzj.a(2131701206));
-      this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(false);
-      localArticleInfo.mSocialFeedInfo.h = 2;
-      localArticleInfo.isNeedShowBtnWhenFollowed = true;
-    }
-    for (;;)
-    {
-      pfd.a().b();
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(anzj.a(2131701211));
-      this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(true);
-      localArticleInfo.mSocialFeedInfo.h = 1;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

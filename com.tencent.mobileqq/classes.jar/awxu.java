@@ -1,15 +1,24 @@
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+
 public class awxu
+  implements ampq
 {
-  public int a;
-  public long a;
-  public ahmg a;
-  public awxs a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
+  public awxu(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public awxu(awxo paramawxo) {}
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (paramInt == 2))
+    {
+      if ((NearbyPeopleProfileActivity.a(this.a) == null) || (this.a.e != 1)) {
+        break label41;
+      }
+      NearbyPeopleProfileActivity.a(this.a).d();
+    }
+    label41:
+    while (NearbyPeopleProfileActivity.a(this.a) == null) {
+      return;
+    }
+  }
 }
 
 

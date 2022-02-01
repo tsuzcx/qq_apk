@@ -1,29 +1,18 @@
-public class apkg
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class apkg
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public long[] a;
-  public long b;
-  public long c;
-  public long d;
-  public long e;
-  public long f;
+  apkg(apke paramapke, BaseActivity paramBaseActivity) {}
   
-  public apkg(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, double paramDouble, long[] paramArrayOfLong, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.c = paramLong3;
-    this.d = paramLong4;
-    this.e = paramLong5;
-    this.f = ((0.9D + paramDouble));
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
-  }
-  
-  public String toString()
-  {
-    return "70% :  " + this.c + " --------- 80% : " + this.b + " --------- 90% : " + this.jdField_a_of_type_Long + " --------- min : " + this.d + " --------- max : " + this.e + " --------- num : " + this.jdField_a_of_type_Int + "--------arr" + this.jdField_a_of_type_ArrayOfLong;
+    apke.a(this.jdField_a_of_type_Apke, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    bcef.a(this.jdField_a_of_type_Apke.a, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 23, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

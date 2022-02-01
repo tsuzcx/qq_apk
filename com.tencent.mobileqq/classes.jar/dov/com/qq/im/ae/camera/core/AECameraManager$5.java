@@ -1,28 +1,27 @@
 package dov.com.qq.im.ae.camera.core;
 
-import alxc;
+import akur;
 import android.graphics.SurfaceTexture;
-import boiw;
-import bpam;
+import bmbx;
 
-public class AECameraManager$5
+class AECameraManager$5
   implements Runnable
 {
-  public AECameraManager$5(boiw paramboiw, SurfaceTexture paramSurfaceTexture, alxc paramalxc) {}
+  AECameraManager$5(AECameraManager paramAECameraManager, SurfaceTexture paramSurfaceTexture, akur paramakur) {}
   
   public void run()
   {
-    if (!boiw.a(this.this$0))
+    if (!AECameraManager.access$500(this.this$0))
     {
-      bpam.d("AECameraManager", "startCameraPreview EXIT: camera NOT created");
+      bmbx.d("AECameraManager", "startCameraPreview EXIT: camera NOT created");
       return;
     }
-    if (boiw.b(this.this$0))
+    if (AECameraManager.access$600(this.this$0))
     {
-      bpam.d("AECameraManager", "startCameraPreview EXIT: camera is already previewing");
+      bmbx.d("AECameraManager", "startCameraPreview EXIT: camera is already previewing");
       return;
     }
-    boiw.a(this.this$0, this.jdField_a_of_type_AndroidGraphicsSurfaceTexture, this.jdField_a_of_type_Alxc);
+    AECameraManager.access$700(this.this$0, this.val$previewTexture, this.val$previewSize);
   }
 }
 

@@ -39,8 +39,10 @@ public class TPReportParams$LiveExParam
   int prePlayLengthInt;
   int reconnectCntInt;
   long reportTimeLong;
+  String spanId;
   int streamIdInt;
   int testSpeedInt;
+  String tuid;
   String userIpString;
   String userQQString;
   
@@ -88,6 +90,8 @@ public class TPReportParams$LiveExParam
     paramITPReportProperties.put("fullecode", this.fullErrCodeString);
     paramITPReportProperties.put("get_stream_data_duration", this.getStreamDurationInt);
     paramITPReportProperties.put("get_sync_frame_duration", this.getSyncFrameDurationInt);
+    paramITPReportProperties.put("spanId", this.spanId);
+    paramITPReportProperties.put("tuid", this.tuid);
   }
   
   public void reset() {}

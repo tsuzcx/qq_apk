@@ -1,59 +1,17 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment.4.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class ajvy
-  extends ajwa
+  implements akbj
 {
-  public ajvy(CommonRefreshLayout paramCommonRefreshLayout)
-  {
-    super(paramCommonRefreshLayout);
-  }
+  public ajvy(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
   
-  public void a()
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof ajwf)) && ((ajwb.a(CommonRefreshLayout.a(this.a))) || (ajwb.h(CommonRefreshLayout.a(this.a)))))
-    {
-      CommonRefreshLayout.a(this.a).setVisibility(0);
-      ((ajwf)CommonRefreshLayout.a(this.a)).a();
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof ajwf)) && (ajwb.c(CommonRefreshLayout.a(this.a))))
-    {
-      if (CommonRefreshLayout.a(this.a).getVisibility() != 0) {
-        CommonRefreshLayout.a(this.a).setVisibility(0);
-      }
-      ((ajwf)CommonRefreshLayout.a(this.a)).a(paramInt, paramBoolean1, paramBoolean2);
-    }
-  }
-  
-  public void b()
-  {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof ajwf)) && (ajwb.e(CommonRefreshLayout.a(this.a)))) {
-      ((ajwf)CommonRefreshLayout.a(this.a)).b();
-    }
-  }
-  
-  public void c()
-  {
-    if ((CommonRefreshLayout.a(this.a) != null) && (ajwb.b(CommonRefreshLayout.a(this.a))))
-    {
-      if ((CommonRefreshLayout.a(this.a) instanceof ajwe)) {
-        ((ajwe)CommonRefreshLayout.a(this.a)).c();
-      }
-      if (CommonRefreshLayout.a(this.a) != null) {
-        CommonRefreshLayout.a(this.a).a();
-      }
-    }
-  }
-  
-  public void d()
-  {
-    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof ajwf)) && ((ajwb.a(CommonRefreshLayout.a(this.a))) || (ajwb.h(CommonRefreshLayout.a(this.a))))) {
-      ((ajwf)CommonRefreshLayout.a(this.a)).d();
-    }
+    ThreadManager.getUIHandler().post(new RedPacketEmojiFragment.4.1(this, paramInt, paramPathResult));
   }
 }
 

@@ -49,10 +49,6 @@ public class TPAudioFrame
   public static final long TP_CH_TOP_FRONT_CENTER = 8192L;
   public static final long TP_CH_TOP_FRONT_LEFT = 4096L;
   public static final long TP_CH_TOP_FRONT_RIGHT = 16384L;
-  public static final int TP_SAMPLE_FMT_NONE = -1;
-  public static final int TP_SAMPLE_FMT_S16 = 1;
-  public static final int TP_SAMPLE_FMT_S32 = 2;
-  public static final int TP_SAMPLE_FMT_U8 = 0;
   public long channelLayout;
   public int channels;
   public byte[][] data;

@@ -1,10 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
 
-public abstract interface pql
+public class pql
+  implements View.OnTouchListener
 {
-  public abstract void onLoadUserInfoFailed(String paramString1, String paramString2);
+  public pql(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, GestureDetector paramGestureDetector) {}
   
-  public abstract void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    return true;
+  }
 }
 
 

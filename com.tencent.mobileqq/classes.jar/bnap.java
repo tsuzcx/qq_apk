@@ -1,25 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.QCirclePublishPictureTagInfo;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public final class bnap
-  implements Parcelable.Creator<QCirclePublishPictureTagInfo>
+final class bnap
+  implements EIPCResultCallback
 {
-  public QCirclePublishPictureTagInfo a(Parcel paramParcel)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    QCirclePublishPictureTagInfo localQCirclePublishPictureTagInfo = new QCirclePublishPictureTagInfo();
-    localQCirclePublishPictureTagInfo.picId = paramParcel.readString();
-    localQCirclePublishPictureTagInfo.picTags = paramParcel.readArrayList(String.class.getClassLoader());
-    localQCirclePublishPictureTagInfo.materialId = paramParcel.readString();
-    localQCirclePublishPictureTagInfo.filterId = paramParcel.readString();
-    localQCirclePublishPictureTagInfo.exif = ((HashMap)paramParcel.readSerializable());
-    return localQCirclePublishPictureTagInfo;
-  }
-  
-  public QCirclePublishPictureTagInfo[] a(int paramInt)
-  {
-    return new QCirclePublishPictureTagInfo[paramInt];
+    if (paramEIPCResult != null)
+    {
+      boolean bool = paramEIPCResult.data.getBoolean("key_result");
+      QLog.d("PeakIpcController", 2, "reSendMessage result:" + bool);
+    }
   }
 }
 

@@ -1,135 +1,251 @@
-import android.content.Context;
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.view.ViewStub;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoiSearch.1;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.XListView;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.List;
 
 public class xzw
-  extends BaseAdapter
+  extends xzb
+  implements View.OnClickListener, AdapterView.OnItemClickListener
 {
-  protected int a;
-  protected Context a;
-  View.OnTouchListener a;
-  protected QQStoryContext a;
-  protected List<QQUserUIItem> a;
-  protected yop a;
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new xzz(this);
+  View jdField_a_of_type_AndroidViewView;
+  ViewStub jdField_a_of_type_AndroidViewViewStub;
+  public EditText a;
+  TextView jdField_a_of_type_AndroidWidgetTextView = null;
+  XListView jdField_a_of_type_ComTencentWidgetXListView = null;
+  WeakReference<xzv> jdField_a_of_type_JavaLangRefWeakReference;
+  ArrayList<TroopBarPOI> jdField_a_of_type_JavaUtilArrayList = null;
+  vww jdField_a_of_type_Vww = vww.a();
+  yje jdField_a_of_type_Yje = null;
+  View b;
+  View c;
+  View d = null;
+  View e = null;
+  View f = null;
+  View g = null;
   
-  public xzw(Context paramContext, View.OnTouchListener paramOnTouchListener)
+  public xzw(@NonNull xzd paramxzd)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext = QQStoryContext.a();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = paramOnTouchListener;
+    super(paramxzd);
   }
   
-  public void a(int paramInt)
+  private void l()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(List<QQUserUIItem> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    super.notifyDataSetChanged();
-  }
-  
-  public void a(yop paramyop)
-  {
-    this.jdField_a_of_type_Yop = paramyop;
-  }
-  
-  public void b(List<QQUserUIItem> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    super.notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1;
-    int i;
-    label42:
-    QQUserUIItem localQQUserUIItem;
-    Object localObject2;
-    if (paramView == null)
+    xvv.b("Q.qqstory.publish.edit.EditVideoPoiSearch", "requestPoiList");
+    String str = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    this.jdField_a_of_type_Vww.a(str);
+    if (TextUtils.isEmpty(str))
     {
-      localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-      if (this.jdField_a_of_type_Int == -1)
-      {
-        i = 2131561923;
-        localObject1 = new yqw(((LayoutInflater)localObject1).inflate(i, null));
-        localQQUserUIItem = (QQUserUIItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        localObject2 = (TextView)((yqw)localObject1).a(2131371827);
-        String str = localQQUserUIItem.getUserIconUrl();
-        if (TextUtils.isEmpty(str)) {
-          break label286;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.w("zivonchen", 2, "fillFriendsData userIconUrl = " + str);
-        }
-        xiz.a(this.jdField_a_of_type_AndroidContentContext.getResources(), (TextView)localObject2, str, 13.0F, 2.0F);
-        label133:
-        ((TextView)localObject2).setText(xiz.a(localQQUserUIItem));
-        localObject2 = (ImageView)((yqw)localObject1).a(2131367946);
-        if ((!localQQUserUIItem.isVip) || (!nnr.a(localQQUserUIItem.headUrl))) {
-          break label304;
-        }
-        zps.a((ImageView)localObject2, localQQUserUIItem.headUrl, 38, 38, 1);
+      xvv.c("Q.qqstory.publish.edit.EditVideoPoiSearch", "requestPoiList text is null ignore");
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.jdField_a_of_type_Yje.notifyDataSetChanged();
+      k();
+      return;
+    }
+    vwq localvwq = (vwq)vux.a(9);
+    vwp localvwp = ypo.a(this.jdField_a_of_type_Xzd.a);
+    if (localvwp != null) {
+      localvwq.a(localvwp, this.jdField_a_of_type_Vww, new xzy(this, str));
+    }
+    if (this.jdField_a_of_type_Vww.b())
+    {
+      j();
+      this.d.setVisibility(4);
+      return;
+    }
+    this.d.setVisibility(0);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131374455));
+  }
+  
+  public void a(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
       }
+      return;
+    }
+    if ((paramObject instanceof xzv)) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((xzv)paramObject);
+    }
+    g();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    this.jdField_a_of_type_AndroidWidgetEditText.post(new EditVideoPoiSearch.1(this));
+    this.d.setVisibility(4);
+  }
+  
+  void a(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    this.e.setVisibility(0);
+    this.f.setVisibility(4);
+    this.g.setVisibility(0);
+    paramString = a().getString(2131698835, new Object[] { paramString });
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.d == null) {
+      return;
+    }
+    TextView localTextView = (TextView)this.d.findViewById(2131376212);
+    if (paramBoolean)
+    {
+      localTextView.setText(2131718611);
+      return;
+    }
+    localTextView.setText(2131718606);
+  }
+  
+  public boolean a()
+  {
+    return b();
+  }
+  
+  protected boolean b()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)
+      {
+        this.jdField_a_of_type_Xzd.a(0);
+        this.jdField_a_of_type_Xzd.a(3, this.jdField_a_of_type_JavaLangRefWeakReference.get());
+        bjmm.b(a().a());
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
+      this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+    }
+  }
+  
+  void g()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null)
+    {
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
+      this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131372807);
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131368779));
+      this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131364188);
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372806));
+      this.e = this.jdField_a_of_type_AndroidViewView.findViewById(2131372815);
+      this.f = this.jdField_a_of_type_AndroidViewView.findViewById(2131376961);
+      this.g = this.jdField_a_of_type_AndroidViewView.findViewById(2131376920);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376921));
+      this.b.setOnClickListener(this);
+      this.e.setOnClickListener(this);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(this);
+      this.jdField_a_of_type_Yje = new yje(a());
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      this.jdField_a_of_type_Yje.a(this.jdField_a_of_type_JavaUtilArrayList, null);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setEmptyView(this.e);
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new xzx(this));
+      i();
+      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Yje);
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+      this.c.setOnClickListener(this);
+    }
+  }
+  
+  protected void h()
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) {
+      this.jdField_a_of_type_Xzd.a(0);
+    }
+    bjmm.b(a().a());
+  }
+  
+  protected void i()
+  {
+    if (this.d == null)
+    {
+      this.d = LayoutInflater.from(a()).inflate(2131559654, null);
+      ImageView localImageView = (ImageView)this.d.findViewById(2131376210);
+      TextView localTextView1 = (TextView)this.d.findViewById(2131376212);
+      TextView localTextView2 = (TextView)this.d.findViewById(2131376218);
+      ProgressBar localProgressBar = (ProgressBar)this.d.findViewById(2131376213);
+      localTextView1.setTextColor(-8355712);
+      localTextView1.setText(2131718606);
+      localTextView2.setVisibility(8);
+      localImageView.setVisibility(8);
+      localProgressBar.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_ComTencentWidgetXListView.getFooterViewsCount() > 0) {
+      this.jdField_a_of_type_ComTencentWidgetXListView.removeFooterView(this.d);
+    }
+    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.d);
+  }
+  
+  void j()
+  {
+    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(4);
+    this.e.setVisibility(0);
+    this.f.setVisibility(0);
+    this.g.setVisibility(4);
+  }
+  
+  void k()
+  {
+    this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+    this.e.setVisibility(8);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
     }
     for (;;)
     {
-      ((yqw)localObject1).a = localQQUserUIItem;
-      if (this.jdField_a_of_type_AndroidViewView$OnTouchListener != null) {
-        ((yqw)localObject1).a().setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      }
-      ((yqw)localObject1).a().setOnClickListener((View.OnClickListener)localObject1);
-      if (this.jdField_a_of_type_Yop != null) {
-        ((yqw)localObject1).a(this.jdField_a_of_type_Yop);
-      }
-      localObject1 = ((yqw)localObject1).a();
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      i = this.jdField_a_of_type_Int;
-      break;
-      localObject1 = (yqw)paramView.getTag();
-      break label42;
-      label286:
-      ((TextView)localObject2).setCompoundDrawablePadding(0);
-      ((TextView)localObject2).setCompoundDrawables(null, null, null, null);
-      break label133;
-      label304:
-      if (!TextUtils.isEmpty(localQQUserUIItem.qq)) {
-        xiz.a((ImageView)localObject2, localQQUserUIItem.qq);
-      } else {
-        ((ImageView)localObject2).setImageDrawable(bhmq.a());
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bjmm.b(a().a());
+      continue;
+      b();
+    }
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      paramAdapterView = (TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      h();
+      paramView = (xzv)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramView != null) {
+        paramView.a(paramAdapterView);
       }
     }
   }

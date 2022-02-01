@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import asgq;
-import asgs;
+import arao;
+import araq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -13,9 +13,9 @@ class EmoticonGroupStoreFragment$5
   
   public void run()
   {
-    Object localObject = (asgq)EmoticonGroupStoreFragment.a(this.this$0).getManager(259);
+    Object localObject = (arao)EmoticonGroupStoreFragment.a(this.this$0).getManager(259);
     if (localObject != null) {
-      ((asgq)localObject).b();
+      ((arao)localObject).b();
     }
     localObject = new CopyOnWriteArrayList(EmoticonGroupStoreFragment.a(this.this$0).a());
     if ((localObject != null) && (!((List)localObject).isEmpty()))

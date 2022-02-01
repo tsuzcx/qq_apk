@@ -1,20 +1,87 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
 
 public class afst
-  implements nps
+  implements afrc
 {
-  public afst(TroopInfoActivity paramTroopInfoActivity) {}
+  private int jdField_a_of_type_Int = 0;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  
+  public afst(BaseChatPie paramBaseChatPie)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+  }
+  
+  public String a()
+  {
+    String str = null;
+    if (this.jdField_a_of_type_Int == 1) {
+      str = amtj.a(2131713348);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecWordEmotionThinkHelper", 2, " getSpecKeyWord:  mSpecWordType=" + this.jdField_a_of_type_Int);
+    }
+    return str;
+  }
   
   public void a()
   {
-    TroopInfoActivity.a(this.a, true, 0L, "", this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
+    b();
   }
   
-  public void a(String paramString)
+  public void a(int paramInt)
   {
-    this.a.l();
-    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    b();
+  }
+  
+  public void a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecWordEmotionThinkHelper", 2, " beforeTextChanged:  start=" + paramInt1 + " after=" + paramInt3 + " count=" + paramInt2);
+    }
+    if ((paramInt2 > paramInt3) || (paramInt3 == 0)) {
+      b();
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool = true;
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SpecWordEmotionThinkHelper", 2, " needSendMixMsg:  mSpecWordType=" + this.jdField_a_of_type_Int);
+      }
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 13, 18 };
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Int = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecWordEmotionThinkHelper", 2, " clearSpecWordType");
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecWordEmotionThinkHelper", 2, " setSpecWordType:  mSpecWordType=" + this.jdField_a_of_type_Int);
+    }
   }
 }
 

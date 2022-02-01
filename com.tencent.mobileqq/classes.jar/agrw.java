@@ -1,74 +1,13 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.widget.RelativeLayout;
 
 class agrw
-  implements bixm
+  extends aezf
 {
-  agrw(agrt paramagrt) {}
+  public long a;
+  public RelativeLayout a;
+  public String b;
   
-  public void a(int paramInt)
-  {
-    if ((!agrt.a(this.a)) && (paramInt == 1)) {
-      this.a.a();
-    }
-  }
-  
-  public void a(int paramInt, float paramFloat)
-  {
-    if (agrt.a(this.a)) {
-      this.a.a(paramInt, paramFloat);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    agrt.a(this.a);
-    if (agrt.a(this.a)) {
-      this.a.b(paramInt);
-    }
-  }
-  
-  public void f()
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.an();
-    }
-    if (agrt.a(this.a)) {
-      this.a.f();
-    }
-    if (!anfz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        anfz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", true);
-      }
-      return;
-    }
-  }
-  
-  public void g()
-  {
-    if (agrt.a(this.a)) {
-      this.a.g();
-    }
-  }
-  
-  public void h()
-  {
-    if (agrt.a(this.a)) {
-      this.a.h();
-    }
-  }
-  
-  public void i()
-  {
-    agrt.b(this.a);
-    if (agrt.a(this.a)) {
-      this.a.i();
-    }
-    if (anfz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      anfz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", false);
-    }
-  }
+  private agrw(agru paramagru) {}
 }
 
 

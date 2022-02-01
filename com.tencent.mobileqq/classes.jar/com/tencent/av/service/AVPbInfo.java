@@ -3,15 +3,14 @@ package com.tencent.av.service;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import lwj;
+import com.tencent.avcore.jni.data.AVCorePbInfo;
+import lvu;
 
 public class AVPbInfo
+  extends AVCorePbInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<AVPbInfo> CREATOR = new lwj();
-  public String bindId;
-  public int bindIdType;
-  public String phoneNum;
+  public static final Parcelable.Creator<AVPbInfo> CREATOR = new lvu();
   
   public AVPbInfo() {}
   

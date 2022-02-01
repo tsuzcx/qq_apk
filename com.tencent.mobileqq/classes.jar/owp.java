@@ -1,87 +1,99 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.FirstCommentCreateData;
-import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SimpleCommentData;
-import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SubCommentCreateData;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.CommentInfo;
-import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.ContentInfo;
-import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.ParamInfo;
-import tencent.im.oidb.cmd0xe16.oidb_cmd0xe16.ReqBody;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/helper/RIJBiuNetworkHelper;", "", "()V", "TAG", "", "getOnlyBiuReqBody", "Ltencent/im/oidb/cmd0xe16/oidb_cmd0xe16$ReqBody;", "commentData", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "requestBiuAfterComment", "", "onlyBiuCallback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isSuccess", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class owp
+class owp
+  implements BusinessObserver
 {
-  public static final owp a = new owp();
+  owp(owm paramowm, BaseCommentData paramBaseCommentData) {}
   
-  private final oidb_cmd0xe16.ReqBody a(SimpleCommentData paramSimpleCommentData)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    oidb_cmd0xe16.ContentInfo localContentInfo = new oidb_cmd0xe16.ContentInfo();
-    localContentInfo.uint32_src.set(paramSimpleCommentData.d());
-    Object localObject = "";
-    oidb_cmd0xe16.CommentInfo localCommentInfo;
-    if ((paramSimpleCommentData instanceof FirstCommentCreateData))
+    int i = 1;
+    String str = "";
+    if (paramBoolean) {}
+    for (;;)
     {
-      localContentInfo.str_rowkey.set(paramSimpleCommentData.b());
-      localContentInfo.str_article_id.set(paramSimpleCommentData.c());
-      localObject = ((FirstCommentCreateData)paramSimpleCommentData).a();
-      localCommentInfo = new oidb_cmd0xe16.CommentInfo();
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+      try
       {
-        localCommentInfo.str_comment.set((String)localObject);
-        if ((paramSimpleCommentData instanceof SubCommentCreateData))
+        byte[] arrayOfByte = paramBundle.getByteArray("data");
+        if (arrayOfByte == null) {
+          break label229;
+        }
+        paramBundle = new WebSsoBody.WebSsoResponseBody();
+        try
         {
-          if (((SubCommentCreateData)paramSimpleCommentData).b() != 0L) {
-            localCommentInfo.uint64_sub_author.set(((SubCommentCreateData)paramSimpleCommentData).b());
+          paramBundle.mergeFrom(arrayOfByte);
+          paramInt = paramBundle.ret.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("ReadInJoyCommentSSOModule", 2, "commentReport ret=" + paramBundle.data.get());
           }
-          localCommentInfo.str_sub_comment_id.set(((SubCommentCreateData)paramSimpleCommentData).f());
-          if (((CharSequence)((SubCommentCreateData)paramSimpleCommentData).a()).length() <= 0) {
-            break label313;
+          if (paramInt == 0) {
+            break label179;
+          }
+          try
+          {
+            paramBundle = new JSONObject(paramBundle.data.get()).optString("msg");
+            paramInt = 0;
+          }
+          catch (JSONException paramBundle)
+          {
+            paramBundle.printStackTrace();
+            paramInt = 0;
+            paramBundle = str;
+            continue;
+          }
+          if ((paramInt == 0) && (owm.a(this.jdField_a_of_type_Owm) != null)) {
+            owm.a(this.jdField_a_of_type_Owm).b(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, paramBundle);
+          }
+          return;
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          localInvalidProtocolBufferMicroException.printStackTrace();
+          continue;
+        }
+        paramBundle.printStackTrace();
+      }
+      catch (Exception paramBundle)
+      {
+        paramInt = 0;
+      }
+      for (;;)
+      {
+        for (;;)
+        {
+          paramBundle = str;
+          break;
+          label179:
+          paramBundle = str;
+          paramInt = i;
+          try
+          {
+            if (owm.a(this.jdField_a_of_type_Owm) == null) {
+              break;
+            }
+            owm.a(this.jdField_a_of_type_Owm).b(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
+            paramBundle = str;
+            paramInt = i;
+          }
+          catch (Exception paramBundle)
+          {
+            paramInt = 1;
           }
         }
       }
+      label229:
+      paramInt = 0;
+      paramBundle = str;
     }
-    label313:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        localCommentInfo.str_comment_id.set(((SubCommentCreateData)paramSimpleCommentData).a());
-      }
-      paramSimpleCommentData = new oidb_cmd0xe16.ParamInfo();
-      paramSimpleCommentData.bool_only_biu.set(true);
-      localObject = new oidb_cmd0xe16.ReqBody();
-      ((oidb_cmd0xe16.ReqBody)localObject).msg_comment_info.set((MessageMicro)localCommentInfo);
-      ((oidb_cmd0xe16.ReqBody)localObject).msg_content_info.set((MessageMicro)localContentInfo);
-      ((oidb_cmd0xe16.ReqBody)localObject).msg_param_info.set((MessageMicro)paramSimpleCommentData);
-      if (QLog.isColorLevel()) {
-        QLog.d("RIJBiuNetworkHelper", 2, "requestBiuAfterComment :" + localObject);
-      }
-      return localObject;
-      if (!(paramSimpleCommentData instanceof SubCommentCreateData)) {
-        break;
-      }
-      localContentInfo.str_rowkey.set(paramSimpleCommentData.b());
-      localContentInfo.str_article_id.set(paramSimpleCommentData.c());
-      localObject = ((SubCommentCreateData)paramSimpleCommentData).e();
-      break;
-    }
-  }
-  
-  public final void a(@NotNull SimpleCommentData paramSimpleCommentData, @NotNull Function1<? super Boolean, Unit> paramFunction1)
-  {
-    Intrinsics.checkParameterIsNotNull(paramSimpleCommentData, "commentData");
-    Intrinsics.checkParameterIsNotNull(paramFunction1, "onlyBiuCallback");
-    paramSimpleCommentData = a(paramSimpleCommentData);
-    nkm.a(ozs.a(), (nkq)new owq(paramFunction1), paramSimpleCommentData.toByteArray(), "OidbSvc.0xe16", 3606, 1);
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.webview;
 
 import android.os.SystemClock;
-import bimg;
+import bgsp;
 import com.tencent.qphone.base.util.QLog;
 
 public class AbsWebView$1
   implements Runnable
 {
-  public AbsWebView$1(bimg parambimg) {}
+  public AbsWebView$1(bgsp parambgsp) {}
   
   public void run()
   {

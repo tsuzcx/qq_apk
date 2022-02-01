@@ -1,30 +1,21 @@
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import org.json.JSONObject;
 
-class pzi
-  implements View.OnAttachStateChangeListener
+public class pzi
 {
-  pzi(pzh parampzh) {}
-  
-  public void onViewAttachedToWindow(View paramView) {}
-  
-  public void onViewDetachedFromWindow(View paramView)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    if (pzh.a(this.a) != null)
+    JSONObject localJSONObject2 = new JSONObject();
+    JSONObject localJSONObject1 = localJSONObject2;
+    if (paramBaseArticleInfo != null)
     {
-      pzh.a(this.a).b();
-      pzh.a(this.a, null);
+      localJSONObject1 = localJSONObject2;
+      if (!TextUtils.isEmpty(paramBaseArticleInfo.smallGameData)) {
+        localJSONObject1 = new JSONObject(paramBaseArticleInfo.smallGameData);
+      }
     }
-    if (pzh.a(this.a) != null)
-    {
-      pzh.a(this.a).a();
-      pzh.a(this.a, null);
-    }
-    if (pzh.a(this.a) != null)
-    {
-      pzh.a(this.a).a();
-      pzh.a(this.a, null);
-    }
+    return localJSONObject1;
   }
 }
 

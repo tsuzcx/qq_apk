@@ -1,13 +1,32 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class anpc
-  extends anph
+public class anpc
+  extends anpp
 {
-  anpc(anoz paramanoz) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  protected anpc(QQAppInterface paramQQAppInterface, anpt paramanpt)
   {
-    QLog.d("ApolloGameUtil", 2, " onFailure  the http retcode = " + paramInt);
+    super(paramQQAppInterface, paramanpt);
+  }
+  
+  public int a(QQMessageFacade.Message paramMessage)
+  {
+    return -113;
+  }
+  
+  public anpt a(QQMessageFacade.Message paramMessage)
+  {
+    Object localObject = bfsm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getDrawable(2130844622));
+    this.jdField_a_of_type_Anpt.a((Bitmap)localObject);
+    localObject = a() + ": ";
+    this.jdField_a_of_type_Anpt.b((String)localObject);
+    localObject = c();
+    this.jdField_a_of_type_Anpt.d((String)localObject);
+    b(paramMessage);
+    return this.jdField_a_of_type_Anpt;
   }
 }
 

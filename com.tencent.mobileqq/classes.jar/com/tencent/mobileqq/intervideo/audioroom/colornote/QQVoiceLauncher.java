@@ -3,16 +3,16 @@ package com.tencent.mobileqq.intervideo.audioroom.colornote;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Base64;
-import aqsi;
-import bhmr;
-import bhni;
+import aplr;
+import bfvp;
+import bfwg;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 
 public class QQVoiceLauncher
-  implements aqsi
+  implements aplr
 {
   public void launch(Context paramContext, ColorNote paramColorNote)
   {
@@ -26,7 +26,7 @@ public class QQVoiceLauncher
     if ((paramColorNote instanceof QQAppInterface))
     {
       str = String.format("mqqapi://now/openroom?src_type=app&version=1&bid=88&roomid=%s&fromid=10026&first=2&startsrc=10026&source=37&roomtype=10001&odgameid=100&first_jump_mode=plugin&is_record=2&enter_record_if_finish=0&nowplugin_ext=%s", new Object[] { str, new String(Base64.encode("from_vr=102".getBytes(), 0)) });
-      paramContext = bhni.a((QQAppInterface)paramColorNote, paramContext, str);
+      paramContext = bfwg.a((QQAppInterface)paramColorNote, paramContext, str);
       if (paramContext != null)
       {
         paramContext.a();

@@ -21,7 +21,7 @@ public class AccountDetailTopGestureLayout
   public AccountDetailTopGestureLayout(Context paramContext)
   {
     super(paramContext);
-    a(paramContext);
+    init(paramContext);
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   

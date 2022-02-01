@@ -1,38 +1,16 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
 
-class bnus
-  implements ModuleDownloadListener
+public class bnus
 {
-  bnus(bnuq parambnuq, bnuv parambnuv) {}
+  int jdField_a_of_type_Int = 0;
+  boolean jdField_a_of_type_Boolean = false;
+  int b;
+  public boolean b;
   
-  public void onDownloadCanceled(String paramString)
+  private bnus(RMVideoSwitchCameraPicMgr paramRMVideoSwitchCameraPicMgr)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
-  }
-  
-  public void onDownloadFailed(String paramString)
-  {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
-    bnuq.b(this.jdField_a_of_type_Bnuq, false);
-    this.jdField_a_of_type_Bnuv.a(false);
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("libTar.so")) {
-      return;
-    }
-    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bnuq.c(), " onDownloadSucceed = ", bnuq.d() });
-    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bnuq.d());
-    bnuq.b(this.jdField_a_of_type_Bnuq);
-    this.jdField_a_of_type_Bnuv.a(bnuq.b(this.jdField_a_of_type_Bnuq));
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = true;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.viewpager;
 
-import acys;
+import abvb;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -22,7 +22,7 @@ public class GdtVerticalViewPager
   
   private void a()
   {
-    setPageTransformer(true, new acys(null));
+    setPageTransformer(true, new abvb(null));
   }
 }
 

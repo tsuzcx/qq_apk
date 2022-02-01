@@ -1,8 +1,23 @@
-import com.tencent.gdtad.ipc.AppInstallerReceiver;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class acto
+public class acto
+  implements View.OnClickListener
 {
-  public static AppInstallerReceiver a = new AppInstallerReceiver(null);
+  public acto(AuthDevActivity paramAuthDevActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    AuthDevActivity.h(this.a);
+    Intent localIntent = new Intent(this.a, AuthDevOpenUgActivity.class);
+    localIntent.putExtra("DevlockInfo", AuthDevActivity.a(this.a));
+    this.a.startActivityForResult(localIntent, 0);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

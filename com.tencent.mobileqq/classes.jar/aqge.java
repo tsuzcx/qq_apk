@@ -1,21 +1,67 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.widget.ImageView;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class aqge
-  extends blgm
+public class aqge
+  extends aqgc<aqgd>
 {
-  aqge(aqgb paramaqgb) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  @NonNull
+  public aqgd a()
   {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomOnlineStatusManager", 2, "migrateDefaultContent");
+    }
+    return new aqgd();
+  }
+  
+  @NonNull
+  public aqgd a(@NonNull aptx[] paramArrayOfaptx)
+  {
+    boolean bool = false;
+    aqgd localaqgd = new aqgd();
+    try
+    {
+      if (paramArrayOfaptx[0].a != null)
+      {
+        if (new JSONObject(paramArrayOfaptx[0].a).optInt("show_custom_online_state", 1) == 1) {
+          bool = true;
+        }
+        localaqgd.a = bool;
+        if (QLog.isColorLevel()) {
+          QLog.d("CustomOnlineStatusManager", 2, "parsed showVipIcon: " + localaqgd.a);
+        }
+      }
+      return localaqgd;
+    }
+    catch (Exception paramArrayOfaptx)
+    {
+      QLog.e("CustomOnlineStatusManager", 1, "parsed failed: ", paramArrayOfaptx);
+    }
+    return localaqgd;
+  }
+  
+  @NonNull
+  public aqgd b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomOnlineStatusManager", 2, "migrateOldContent");
+    }
+    return new aqgd();
+  }
+  
+  public Class<aqgd> clazz()
+  {
+    return aqgd.class;
+  }
+  
+  public int type()
+  {
+    return 479;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqge
  * JD-Core Version:    0.7.0.1
  */

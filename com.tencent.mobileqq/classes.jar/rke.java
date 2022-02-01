@@ -1,85 +1,99 @@
-import android.os.Message;
-import com.tencent.mobileqq.mp.bigFileUpload.BigFileExtRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-class rke
-  extends beyf
+public class rke
+  extends bjwy<rgo>
 {
-  rke(rkd paramrkd) {}
+  public View a;
+  public ImageView a;
   
-  public void handleMessage(Message paramMessage)
+  public rke(rkd paramrkd, ViewGroup paramViewGroup, int paramInt)
   {
-    bete localbete = (bete)paramMessage.obj;
-    if ((localbete == null) || (localbete.jdField_b_of_type_Int != 24) || (localbete.c != 54)) {}
-    while ((rkd.a(this.a) == null) || (localbete.jdField_b_of_type_Long != rkd.a(this.a))) {
-      return;
-    }
-    switch (paramMessage.what)
+    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131369207));
+    this.jdField_a_of_type_AndroidViewView = a(2131370613);
+  }
+  
+  protected URL a(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("albumthumbpreview");
+    localStringBuilder.append("://");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("#");
+    localStringBuilder.append("FLOW_THUMB");
+    try
     {
-    case 1004: 
-    default: 
-      return;
-    case 1001: 
-      paramMessage = new JSONObject();
-      try
-      {
-        paramMessage.put("uniseq", rkd.a(this.a));
-        paramMessage.put("localPath", rkd.a(this.a));
-        rkd.a(this.a).a(paramMessage.toString());
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.e("RIJUGC.RIJUgcVideoUploader", 1, "uploadListener.onStart, e=" + QLog.getStackTraceString(localException));
-        }
-      }
-    case 1002: 
+      paramString = new URL(localStringBuilder.toString());
+      return paramString;
+    }
+    catch (MalformedURLException paramString)
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("RIJUGC.RIJUgcVideoUploader", 2, "mVideoTransProcessorHandler transfer=" + localException.e + ", total=" + localException.jdField_a_of_type_Long);
-      }
-      rkd.a(this.a).a((float)localException.e * 100.0F / (float)localException.jdField_a_of_type_Long);
-      return;
-    case 1003: 
-      QLog.i("RIJUGC.RIJUgcVideoUploader", 1, "mVideoTransProcessorHandler send finished!");
-      paramMessage = new bigFileUpload.BigFileExtRsp();
-      for (;;)
-      {
-        try
-        {
-          paramMessage.mergeFrom(localException.jdField_a_of_type_ArrayOfByte);
-          int i = paramMessage.int32_retcode.get();
-          QLog.d("RIJUGC.RIJUgcVideoUploader", 1, "mVideoTransProcessorHandler rsp.errorCode:" + i);
-          if (i != 0) {
-            continue;
-          }
-          if (!paramMessage.bytes_download_url.has()) {
-            continue;
-          }
-          paramMessage = paramMessage.bytes_download_url.get().toStringUtf8();
-          rkd.a(this.a).a(paramMessage);
-        }
-        catch (Exception paramMessage)
-        {
-          QLog.e("RIJUGC.RIJUgcVideoUploader", 1, "upload success but parse exception, e=" + QLog.getStackTraceString(paramMessage));
-          continue;
-          QLog.e("RIJUGC.RIJUgcVideoUploader", 1, "mVideoTransProcessorHandler rsp.error info:" + paramMessage.bytes_msg.get().toStringUtf8());
-          rkd.a(this.a).a(localException.g, paramMessage.bytes_msg.get().toStringUtf8());
-          continue;
-        }
-        rkd.a(this.a);
-        return;
-        rkd.a(this.a).a(-1, "not has download url");
+        QLog.d("SelectPhotoTrace", 2, paramString.getMessage(), paramString);
       }
     }
-    QLog.e("RIJUGC.RIJUgcVideoUploader", 1, "mVideoTransProcessorHandler send error:" + localException.g);
-    rkd.a(this.a).a(localException.g, "");
-    rkd.a(this.a);
+    return null;
+  }
+  
+  public void a(int paramInt, rgo paramrgo)
+  {
+    if (rkd.a(this.jdField_a_of_type_Rkd) == paramInt) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(bool);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new rkf(this, paramInt));
+      a(paramrgo);
+      return;
+    }
+  }
+  
+  protected void a(rgo paramrgo)
+  {
+    try
+    {
+      Object localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.jdField_a_of_type_AndroidWidgetImageView.getHeight();
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = rkd.a(this.jdField_a_of_type_Rkd);
+      ((URLDrawable.URLDrawableOptions)localObject).mPriority = 2;
+      String str = paramrgo.b;
+      if (TextUtils.isEmpty(str))
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(rkd.a(this.jdField_a_of_type_Rkd));
+        return;
+      }
+      localObject = URLDrawable.getDrawable(a(str), (URLDrawable.URLDrawableOptions)localObject);
+      if (paramrgo.a != null)
+      {
+        paramrgo.a.thumbWidth = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
+        paramrgo.a.thumbHeight = this.jdField_a_of_type_AndroidWidgetImageView.getHeight();
+        ((URLDrawable)localObject).setTag(paramrgo.a);
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      return;
+    }
+    catch (Throwable paramrgo)
+    {
+      QLog.e("RIJUGC.LocalMediaGridAdapter", 1, "load cover failed", paramrgo);
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 

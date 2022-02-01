@@ -1,16 +1,23 @@
-import java.util.List;
+import org.jetbrains.annotations.Nullable;
 
 class ovb
-  extends ovd
+  implements oxs
 {
-  ovb(otv paramotv, List paramList)
-  {
-    super(paramotv, null);
-  }
+  ovb(ouu paramouu) {}
   
-  void a(ovg paramovg)
+  public void a(long paramLong, boolean paramBoolean1, int paramInt1, int paramInt2, @Nullable String paramString1, @Nullable String paramString2, int paramInt3, boolean paramBoolean2)
   {
-    paramovg.onCommentListLoad(1, true, this.jdField_a_of_type_JavaUtilList, otv.b(this.jdField_a_of_type_Otv), 3, 3);
+    if (paramBoolean2) {
+      this.a.a(paramLong, paramBoolean1, paramInt2, paramString1, paramString2, paramInt3);
+    }
+    for (;;)
+    {
+      if (!paramBoolean1) {
+        oxr.a(paramInt1);
+      }
+      return;
+      this.a.a(paramLong, paramBoolean1, paramInt2, paramString1, paramInt3);
+    }
   }
 }
 

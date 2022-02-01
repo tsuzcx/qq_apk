@@ -1,19 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.widget.XEditTextEx;
+import android.support.annotation.IntRange;
 
-public class afgd
-  implements View.OnTouchListener
+public abstract interface afgd
 {
-  public afgd(QQLSActivity paramQQLSActivity) {}
+  @IntRange(from=0L, to=3L)
+  public abstract int a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    QQLSActivity.a(this.a).setCursorVisible(true);
-    return false;
-  }
+  public abstract void a();
+  
+  public abstract void a(afge paramafge);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

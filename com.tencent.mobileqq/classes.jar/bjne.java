@@ -1,15 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityFragment;
+import android.os.Handler;
+import android.os.Looper;
 
 public class bjne
-  implements DialogInterface.OnClickListener
 {
-  public bjne(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  private static Handler a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(Runnable paramRunnable)
   {
-    paramDialogInterface.dismiss();
+    try
+    {
+      if (a == null) {
+        a = new Handler(Looper.getMainLooper());
+      }
+      a.post(paramRunnable);
+      return;
+    }
+    finally {}
+  }
+  
+  public static void a(Runnable paramRunnable, long paramLong)
+  {
+    try
+    {
+      if (a == null) {
+        a = new Handler(Looper.getMainLooper());
+      }
+      a.postDelayed(paramRunnable, paramLong);
+      return;
+    }
+    finally {}
+  }
+  
+  public static boolean a()
+  {
+    return Looper.getMainLooper().getThread() == Thread.currentThread();
   }
 }
 

@@ -11,16 +11,16 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import bhsr;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.StringUtil;
 import java.util.Date;
-import ofu;
-import ofz;
-import zps;
+import ohh;
+import ohm;
 
 public class QggMinusOneViewTitleLayout
   extends FrameLayout
@@ -74,7 +74,7 @@ public class QggMinusOneViewTitleLayout
   
   private void a(String paramString, ImageView paramImageView, int paramInt)
   {
-    if ((bhsr.a(paramString)) || (paramImageView == null)) {
+    if ((StringUtil.isEmpty(paramString)) || (paramImageView == null)) {
       return;
     }
     for (;;)
@@ -82,10 +82,10 @@ public class QggMinusOneViewTitleLayout
       try
       {
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850680);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.height = zps.a(getContext(), 40.0F);
+        localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850605);
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.height = UIUtils.dip2px(getContext(), 40.0F);
         localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.height;
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = (localURLDrawableOptions.mRequestHeight * 3 + zps.a(getContext(), 10.0F));
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width = (localURLDrawableOptions.mRequestHeight * 3 + UIUtils.dip2px(getContext(), 10.0F));
         localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.width;
         paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
         if (paramString == null) {
@@ -113,37 +113,37 @@ public class QggMinusOneViewTitleLayout
   
   private void a(String paramString, TextView paramTextView)
   {
-    if ((bhsr.a(paramString)) || (paramTextView == null)) {
+    if ((StringUtil.isEmpty(paramString)) || (paramTextView == null)) {
       return;
     }
     paramTextView.setText(paramString);
   }
   
-  public void setMinusViewTitle(ofu paramofu)
+  public void setMinusViewTitle(ohh paramohh)
   {
-    if (paramofu == null) {
+    if (paramohh == null) {
       return;
     }
-    if (bhsr.a(paramofu.c)) {}
-    for (paramofu = "https://i.gtimg.cn/channel/imglib/202005/upload_0130d1d150ac825d9804c01c17955272.png";; paramofu = paramofu.c)
+    if (StringUtil.isEmpty(paramohh.c)) {}
+    for (paramohh = "https://i.gtimg.cn/channel/imglib/202005/upload_0130d1d150ac825d9804c01c17955272.png";; paramohh = paramohh.c)
     {
-      a(paramofu, this.jdField_a_of_type_AndroidWidgetImageView, 0);
-      paramofu = ofz.a(NetConnInfoCenter.getServerTimeMillis(), "M月d日");
-      String str = ofz.a(getContext(), new Date());
-      a(paramofu + "\n" + str, this.jdField_a_of_type_AndroidWidgetTextView);
+      a(paramohh, this.jdField_a_of_type_AndroidWidgetImageView, 0);
+      paramohh = ohm.a(NetConnInfoCenter.getServerTimeMillis(), "M月d日");
+      String str = ohm.a(getContext(), new Date());
+      a(paramohh + "\n" + str, this.jdField_a_of_type_AndroidWidgetTextView);
       return;
     }
   }
   
-  public void setQggTitle(ofu paramofu)
+  public void setQggTitle(ohh paramohh)
   {
-    if (paramofu == null) {
+    if (paramohh == null) {
       return;
     }
-    if (bhsr.a(paramofu.d)) {}
-    for (paramofu = "https://i.gtimg.cn/channel/imglib/202005/upload_d10f6014892e80a6195c5a965a6b8ac0.png";; paramofu = paramofu.d)
+    if (StringUtil.isEmpty(paramohh.d)) {}
+    for (paramohh = "https://i.gtimg.cn/channel/imglib/202005/upload_d10f6014892e80a6195c5a965a6b8ac0.png";; paramohh = paramohh.d)
     {
-      a(paramofu, this.jdField_a_of_type_AndroidWidgetImageView, 1);
+      a(paramohh, this.jdField_a_of_type_AndroidWidgetImageView, 1);
       return;
     }
   }

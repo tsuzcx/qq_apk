@@ -1,31 +1,33 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.widget.OCRBottomTabView;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipDiyView;
 
 public class ayyh
-  implements TextWatcher
+  extends ayyb
 {
-  public ayyh(OCRResultActivity paramOCRResultActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public ayyh(aysx paramaysx, aymg paramaymg)
   {
-    if (paramEditable.toString().trim().length() == 0)
-    {
-      this.a.c.setEnabled(false);
-      this.a.d.setEnabled(false);
-      this.a.b.setEnabled(false);
-      return;
-    }
-    this.a.c.setEnabled(true);
-    this.a.d.setEnabled(true);
-    this.a.b.setEnabled(true);
+    super(paramaysx, paramaymg);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public String a()
+  {
+    return "VasProfileHeaderDiyComponent";
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
+    {
+      VasProfileQVipDiyView localVasProfileQVipDiyView = new VasProfileQVipDiyView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (aymg)this.b);
+      localVasProfileQVipDiyView.setProfileArgs(this.jdField_a_of_type_AndroidViewViewGroup);
+      localVasProfileQVipDiyView.setClickListener(this);
+      localVasProfileQVipDiyView.a();
+      localVasProfileQVipDiyView.e();
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileQVipDiyView;
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
+    }
+  }
 }
 
 

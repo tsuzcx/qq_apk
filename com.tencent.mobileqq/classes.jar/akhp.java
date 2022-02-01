@@ -1,24 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class akhp
-  extends aogi
+  implements avsz
 {
-  akhp(akha paramakha) {}
+  akhp(akho paramakho) {}
   
-  public void a(boolean paramBoolean)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainAssistObserver", 2, "RedpointObserver, onUpdateSettingMe");
-    }
-    this.a.e();
+    akho.a(this.a).removeMessages(11);
+    akho.a(this.a).sendEmptyMessageDelayed(11, 1000L);
   }
   
-  public void b(boolean paramBoolean)
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainAssistObserver", 2, "RedpointObserver, onNotifyLebaRedTouch");
+    if ((paramInt & 0x1) != 0)
+    {
+      akho.a(this.a).removeMessages(11);
+      akho.a(this.a).sendEmptyMessageDelayed(11, 1000L);
     }
-    this.a.g();
   }
 }
 

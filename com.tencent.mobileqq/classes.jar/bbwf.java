@@ -1,89 +1,57 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.common.app.AppInterface;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager.2;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class bbwf
-  extends bbvz
+  extends bgod
 {
-  public bbwf(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
-  {
-    super(paramContext, paramAppInterface, paramView, paramString);
-    this.e = 0;
-  }
+  public bbwf(RedBagVideoManager.2 param2, String paramString1, String paramString2, String paramString3) {}
   
-  public View a(RichStatus paramRichStatus)
+  public void onDone(bgoe parambgoe)
   {
-    paramRichStatus = super.a(paramRichStatus);
-    l();
-    return paramRichStatus;
-  }
-  
-  protected CharSequence a(RichStatus paramRichStatus, bbwi parambbwi, int paramInt)
-  {
-    if (paramRichStatus == null) {
-      parambbwi = "";
-    }
-    do
+    int i = 0;
+    boolean bool = true;
+    try
     {
-      return parambbwi;
-      localObject1 = paramRichStatus.toSpannableStringWithoutAction(parambbwi);
-      parambbwi = (bbwi)localObject1;
-    } while (TextUtils.isEmpty(paramRichStatus.actionText));
-    Object localObject2 = paramRichStatus.actionText;
-    parambbwi = (bbwi)localObject2;
-    if (!TextUtils.isEmpty(paramRichStatus.dataText)) {
-      parambbwi = (String)localObject2 + paramRichStatus.dataText;
+      if (parambgoe.a() == 3)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RedBagVideoManager", 2, "checkAndDownloadRes : [onDone] download finished " + this.jdField_a_of_type_JavaLangString);
+        }
+        parambgoe = bbwb.a(this.b);
+        if (this.c.equalsIgnoreCase(parambgoe))
+        {
+          bbwb.b(this.b);
+          bbwb.a(bbwb.jdField_a_of_type_JavaLangString + "videoRedbagResInfo", this.c);
+          bfyz.e(BaseApplication.getContext(), false);
+          break label271;
+        }
+      }
+      for (;;)
+      {
+        parambgoe = new HashMap();
+        parambgoe.put("param_FailCode", String.valueOf(i));
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "videoRedbagResDownload", bool, 0L, 0L, parambgoe, "");
+        bbwb.jdField_a_of_type_Boolean = false;
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("RedBagVideoManager", 2, "[onDone] checkMd5 failed: " + this.b);
+        }
+        FileUtils.deleteFile(this.b);
+        bool = false;
+        i = 80704;
+        break label271;
+        if (QLog.isColorLevel()) {
+          QLog.d("RedBagVideoManager", 2, "checkAndDownloadRes : [onDone] downloadFile failed: " + parambgoe.b + " code=" + parambgoe.a);
+        }
+        i = parambgoe.a;
+        bool = false;
+      }
     }
-    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849593);
-    localObject2 = new SpannableStringBuilder((CharSequence)localObject1);
-    ((SpannableStringBuilder)localObject2).insert(0, "[S] ");
-    Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849586);
-    String str = bbux.a().a(paramRichStatus.actionId);
-    paramRichStatus = (RichStatus)localObject1;
-    if (!TextUtils.isEmpty(str))
-    {
-      paramRichStatus = URLDrawable.URLDrawableOptions.obtain();
-      paramRichStatus.mLoadingDrawable = ((Drawable)localObject1);
-      paramRichStatus.mFailedDrawable = ((Drawable)localObject1);
-      paramRichStatus.mRequestWidth = paramInt;
-      paramRichStatus.mRequestHeight = paramInt;
-      paramRichStatus = URLDrawable.getDrawable(str, paramRichStatus);
-      paramRichStatus.setCallback(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView);
-    }
-    paramRichStatus.setBounds(0, 0, paramInt, paramInt);
-    int i = Color.parseColor("#ffa8a8a8");
-    if ((Build.VERSION.SDK_INT >= 4) && (Build.VERSION.SDK_INT != 20)) {}
-    for (paramRichStatus = new bbtp(paramRichStatus, 1, parambbwi, i, localDrawable, paramInt);; paramRichStatus = new bbtp(paramRichStatus, 0, parambbwi, i, localDrawable, paramInt))
-    {
-      ((SpannableStringBuilder)localObject2).setSpan(paramRichStatus, 0, "[S]".length(), 17);
-      return localObject2;
-    }
-  }
-  
-  protected boolean b()
-  {
-    return false;
-  }
-  
-  protected boolean d()
-  {
-    return false;
-  }
-  
-  protected void e()
-  {
-    int i = jdField_a_of_type_ArrayOfInt[6];
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(i, i, i, i);
+    finally {}
   }
 }
 

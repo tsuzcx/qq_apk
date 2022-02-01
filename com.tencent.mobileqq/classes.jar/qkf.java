@@ -1,19 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.ProteusRecycleView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.SideBarView;
 
-class qkf
-  implements View.OnTouchListener
+public class qkf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  qkf(qkc paramqkc, LinearLayout paramLinearLayout) {}
+  public qkf(ProteusRecycleView paramProteusRecycleView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
-    }
-    return false;
+    this.a.setPadding(0, 0, (int)ProteusRecycleView.a(this.a).a(), 0);
   }
 }
 

@@ -1,11 +1,18 @@
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
 
-public class rdk
-  extends blsy<rdu>
+public final class rdk
+  implements Parcelable.Creator<MultiBiuSameContent>
 {
-  public rdk(rdj paramrdj, View paramView)
+  public MultiBiuSameContent a(Parcel paramParcel)
   {
-    super(paramView);
+    return new MultiBiuSameContent(paramParcel);
+  }
+  
+  public MultiBiuSameContent[] a(int paramInt)
+  {
+    return new MultiBiuSameContent[paramInt];
   }
 }
 

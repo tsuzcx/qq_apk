@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ark.browser;
 
-import adpb;
-import adqf;
+import aclu;
+import acmy;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aqdi;
-import aqdm;
-import bipn;
-import biqq;
-import birj;
+import aowt;
+import aowx;
+import bgvt;
+import bgww;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 
 public class ArkBrowserFragment
   extends WebViewFragment
@@ -24,7 +24,7 @@ public class ArkBrowserFragment
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     Object localObject = this.webView.getPluginEngine();
     String str = getCurrentUrl();
-    if (TextUtils.isEmpty(adqf.a(str))) {}
+    if (TextUtils.isEmpty(acmy.a(str))) {}
     do
     {
       do
@@ -32,9 +32,9 @@ public class ArkBrowserFragment
         return;
         localObject = ((WebViewPluginEngine)localObject).a(str);
       } while (localObject == null);
-      localObject = (aqdm)((adpb)localObject).a(aqdm.class, false);
+      localObject = (aowx)((aclu)localObject).a(aowx.class, false);
     } while (localObject == null);
-    ((aqdm)localObject).a(paramIntent, (byte)paramInt1, paramInt2);
+    ((aowx)localObject).a(paramIntent, (byte)paramInt1, paramInt2);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -45,11 +45,11 @@ public class ArkBrowserFragment
   
   public void showActionSheet()
   {
-    biqq localbiqq = (biqq)this.mComponentsProvider.a(4);
-    if (localbiqq != null)
+    bgww localbgww = (bgww)this.mComponentsProvider.a(4);
+    if (localbgww != null)
     {
-      localbiqq.a(new aqdi(this));
-      localbiqq.a(ensureShare(), this.mUIStyle.a);
+      localbgww.a(new aowt(this));
+      localbgww.a(ensureShare(), this.mUIStyle.mRulesFromUrl);
     }
   }
 }

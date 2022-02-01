@@ -1,53 +1,14 @@
-import android.app.Application;
-import com.tencent.mobileqq.videoplatform.SDKInitListener;
-import com.tencent.mobileqq.videoplatform.VideoPlaySDKManager;
-import com.tencent.mobileqq.videoplatform.util.LoadSoUtil;
-import com.tencent.mobileqq.videoplatform.util.LogUtil;
-import com.tencent.mobileqq.videoplatform.util.RegisterTVideoUtil;
-import com.tencent.mobileqq.videoplatform.util.ReportUtil;
-import com.tencent.mobileqq.videoplatform.util.ThreadUtil;
-
 public class bapg
 {
-  private static volatile boolean a;
+  public String a;
+  public String b;
   
-  static {}
+  public bapg() {}
   
-  public static void a()
+  public bapg(String paramString1, String paramString2)
   {
-    try
-    {
-      if (!a)
-      {
-        LogUtil.setLogImp(new bapm());
-        ThreadUtil.setThreadImp(new bapp());
-        LoadSoUtil.setLoadSoImp(new bapk());
-        ReportUtil.setReportImp(new bapo());
-        RegisterTVideoUtil.setRegisterTVideoImp(new bapn());
-        a = true;
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void a(Application paramApplication, SDKInitListener paramSDKInitListener)
-  {
-    VideoPlaySDKManager.getInstance().initSDKAsync(paramApplication, paramSDKInitListener);
-  }
-  
-  public static boolean a()
-  {
-    return VideoPlaySDKManager.getInstance().isSDKReady();
-  }
-  
-  public static boolean b()
-  {
-    return VideoPlaySDKManager.getInstance().isSoLoadSuc();
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

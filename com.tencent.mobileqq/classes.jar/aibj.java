@@ -1,12 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView;
 
 public class aibj
-  implements aasd
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aibj(AIOGalleryAdapter paramAIOGalleryAdapter) {}
+  public aibj(TroopView paramTroopView) {}
   
-  public void callback(Bundle paramBundle) {}
+  public void onGlobalLayout()
+  {
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
+    for (;;)
+    {
+      TroopView.a(this.a);
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+  }
 }
 
 

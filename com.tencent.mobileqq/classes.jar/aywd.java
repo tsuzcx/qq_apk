@@ -1,36 +1,18 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.now.message.MessageReceivingAdapter;
-import com.tencent.mobileqq.now.widget.DecoratorViewPager;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
+import com.tencent.mobileqq.app.CardObserver;
 
 class aywd
-  implements ViewPager.OnPageChangeListener
+  extends CardObserver
 {
-  private boolean jdField_a_of_type_Boolean;
-  
   aywd(aywc paramaywc) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void onGetQZonePhotoWall(boolean paramBoolean, String paramString1, mobile_sub_get_photo_wall_rsp parammobile_sub_get_photo_wall_rsp, String paramString2)
   {
-    if ((paramInt1 == 2) && (paramFloat > 0.4F))
+    if ((aywc.a(this.a)) && (!aywc.b(this.a)) && (!aywc.c(this.a)))
     {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Boolean = false;
-        aywc.a(this.jdField_a_of_type_Aywc);
-      }
-      aywc.a(this.jdField_a_of_type_Aywc).setCurrentItem(2);
+      aywc.a(this.a, true);
+      aywc.a(this.a);
     }
-    if (paramFloat == 0.0F) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    aywc.a(this.jdField_a_of_type_Aywc, paramInt);
-    aywc.a(this.jdField_a_of_type_Aywc, aywc.a(this.jdField_a_of_type_Aywc).a(paramInt));
   }
 }
 

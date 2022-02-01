@@ -19,6 +19,7 @@ import com.tencent.qqlive.module.videoreport.dtreport.stdevent.IEventParamsBuild
 import com.tencent.qqlive.module.videoreport.dtreport.stdevent.StdEventCode;
 import com.tencent.qqlive.module.videoreport.page.IScrollReader;
 import com.tencent.qqlive.module.videoreport.page.PageInfo;
+import com.tencent.qqlive.module.videoreport.utils.IDetectionInterceptor;
 import java.util.List;
 import java.util.Map;
 
@@ -54,6 +55,8 @@ public abstract interface IVideoReport
   
   @Nullable
   public abstract Map<String, Object> pageInfoForView(View paramView);
+  
+  public abstract void pageLogicDestroy(Object paramObject);
   
   @Nullable
   public abstract Map<String, Object> paramsForView(View paramView);
@@ -92,6 +95,8 @@ public abstract interface IVideoReport
   public abstract void setDataCollectEnable(boolean paramBoolean);
   
   public abstract void setDebugMode(boolean paramBoolean);
+  
+  public abstract void setDetectionInterceptor(IDetectionInterceptor paramIDetectionInterceptor);
   
   public abstract void setDetectionMode(@DetectionMode int paramInt);
   

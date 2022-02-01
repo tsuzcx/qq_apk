@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import bhnv;
-import bnrf;
+import bkwm;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import ozs;
+import pay;
 
 public final class ReadInJoyUtils$3
   implements Runnable
@@ -19,29 +19,34 @@ public final class ReadInJoyUtils$3
     if ((this.a == null) || (!this.a.isLogin())) {
       return;
     }
-    if (bhnv.a(this.a.getApp()))
+    if (NetworkUtil.isWifiEnabled(this.a.getApp()))
     {
-      ozs.e(this.a);
+      pay.e(this.a);
       if (QLog.isColorLevel()) {
         QLog.d("ReadInJoyUtils", 2, "handConversationToShow is wifi");
       }
     }
-    if (!bnrf.D(this.a))
+    if (!bkwm.E(this.a))
     {
-      ozs.b(this.a);
-      bnrf.f(this.a);
+      pay.b(this.a);
+      bkwm.f(this.a);
     }
-    if (bnrf.y(this.a))
+    KandianMergeManager localKandianMergeManager = (KandianMergeManager)this.a.getManager(162);
+    if (bkwm.z(this.a))
     {
-      bnrf.n(this.a, false);
-      ((KandianMergeManager)this.a.getManager(162)).k();
+      bkwm.n(this.a, false);
+      if (localKandianMergeManager != null) {
+        localKandianMergeManager.k();
+      }
     }
     for (;;)
     {
       ((KandianSubscribeManager)this.a.getManager(280)).a();
       ((KandianDailyManager)this.a.getManager(296)).a();
       return;
-      ((KandianMergeManager)this.a.getManager(162)).j();
+      if (localKandianMergeManager != null) {
+        localKandianMergeManager.j();
+      }
     }
   }
 }

@@ -1,10 +1,13 @@
-import com.qq.jce.wup.UniAttribute;
-import com.qq.taf.jce.JceInputStream;
-
 public class ukf
-  extends UniAttribute
 {
-  JceInputStream a = new JceInputStream();
+  public String a;
+  public String b;
+  
+  public ukf(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+  }
 }
 
 

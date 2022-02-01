@@ -1,19 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class agik
-  implements Parcelable.Creator<ForwardUtils.SectionText>
+final class agik
+  implements DialogInterface.OnClickListener
 {
-  public ForwardUtils.SectionText a(Parcel paramParcel)
-  {
-    return new ForwardUtils.SectionText(paramParcel);
-  }
-  
-  public ForwardUtils.SectionText[] a(int paramInt)
-  {
-    return new ForwardUtils.SectionText[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

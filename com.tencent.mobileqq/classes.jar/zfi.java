@@ -1,53 +1,16 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tribe.async.dispatch.Dispatcher;
 
-public abstract class zfi
-  implements zfh
+class zfi
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountWrite.StDoLikeRsp>
 {
-  private List<zff> a = new ArrayList();
+  zfi(zfb paramzfb) {}
   
-  public void a()
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((zff)localIterator.next()).a();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((zff)localIterator.next()).a(paramInt);
-    }
-  }
-  
-  public void a(zff paramzff)
-  {
-    if (paramzff == null) {
-      throw new IllegalArgumentException("the observer is null.");
-    }
-    if (this.a.contains(paramzff)) {
-      throw new IllegalStateException("Observer " + paramzff + " is already registered.");
-    }
-    this.a.add(paramzff);
-  }
-  
-  public void b(zff paramzff)
-  {
-    if (paramzff == null) {
-      throw new IllegalArgumentException("The observer is null.");
-    }
-    int i;
-    synchronized (this.a)
-    {
-      i = this.a.indexOf(paramzff);
-      if (i == -1) {
-        throw new IllegalStateException("Observer " + paramzff + " was not registered.");
-      }
-    }
-    this.a.remove(i);
+    vli.a().dispatch(this.a.a(new Object[] { Integer.valueOf(7), Long.valueOf(paramLong), paramString, paramStDoLikeRsp }));
   }
 }
 

@@ -1,28 +1,23 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.GlowCountRecyclerView;
 
-class aylc
-  implements View.OnClickListener
+public class aylc
 {
-  aylc(aykx paramaykx) {}
-  
-  public void onClick(View paramView)
-  {
-    axuc localaxuc = axuc.a(this.a.a, this.a.a.app.getAccount(), 2);
-    if (localaxuc != null)
-    {
-      localaxuc.f = "13";
-      localaxuc.g = aykx.a(this.a).uin;
-      aytz localaytz = new aytz(this.a.a);
-      localaytz.a(localaxuc);
-      localaytz.show();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public long a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public GlowCountRecyclerView a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  View c;
+  public ImageView c;
+  public View d;
+  public ImageView d;
+  View e;
 }
 
 

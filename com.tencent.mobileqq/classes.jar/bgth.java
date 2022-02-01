@@ -1,422 +1,394 @@
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import android.util.Base64;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.config.business.qvip.QVipGiftConfig;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.webview.WebViewAioShareMusicHelper.1;
+import com.tencent.mobileqq.webview.WebViewAioShareMusicHelper.2;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class bgth
 {
-  public static Intent a(Activity paramActivity, String paramString1, String paramString2)
+  private int jdField_a_of_type_Int;
+  private WebViewFragment jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment;
+  public String a;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  private int jdField_d_of_type_Int;
+  private String jdField_d_of_type_JavaLangString;
+  private boolean jdField_d_of_type_Boolean;
+  
+  public bgth(WebViewFragment paramWebViewFragment)
   {
-    paramString1 = TroopMemberListActivity.a(paramActivity, paramString1, 14);
-    paramString1.putExtra("custom_title_name", paramActivity.getString(2131697068));
-    paramString1.putExtra("troop_gift_from", paramString2);
-    return paramString1;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment = paramWebViewFragment;
   }
   
-  public static String a(int paramInt)
+  private void a(String paramString)
   {
-    return bigv.a(Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/MobileQQ/.troop/pic_effects/" + paramInt + ".mp4");
-  }
-  
-  public static String a(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
-  {
-    String str = b(paramMessageForDeliverGiftTips);
-    if (paramMessageForDeliverGiftTips.isInteract()) {
-      return a(str);
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null) {
+      QQToast.a(BaseApplicationImpl.getApplication(), paramString, 1).a();
     }
-    return a(str, paramMessageForDeliverGiftTips.animationType);
   }
   
-  public static String a(String paramString)
+  private boolean a()
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(antf.cx).append(paramString + "_NEW").append(File.separator);
-    return localStringBuffer.toString();
+    return (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.mApp.getAccount().equals(this.jdField_d_of_type_JavaLangString));
   }
   
-  public static String a(String paramString, int paramInt)
+  private boolean a(String paramString)
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (paramInt == 1) {
-      localStringBuffer.append(antf.cx).append(paramString + "_V").append(File.separator);
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
-    for (;;)
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.mApp.getEntityManagerFactory(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.mApp.getAccount()).createEntityManager();
+    paramString = (TroopInfo)localEntityManager.find(TroopInfo.class, paramString);
+    localEntityManager.close();
+    if (paramString != null)
     {
-      return localStringBuffer.toString();
-      localStringBuffer.append(antf.cx).append(paramString + "_HD").append(File.separator);
-    }
-  }
-  
-  public static String a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (paramBoolean) {
-      localStringBuffer.append(antf.cx).append(File.separator).append(paramString).append("_NEW.zip");
-    }
-    for (;;)
-    {
-      return localStringBuffer.toString();
-      if (paramInt == 1) {
-        localStringBuffer.append(antf.cx).append(File.separator).append(paramString).append("_V.zip");
-      } else {
-        localStringBuffer.append(antf.cx).append(File.separator).append(paramString).append("_HD.zip");
-      }
-    }
-  }
-  
-  public static List<String> a(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramMessageForDeliverGiftTips = new File(a(paramMessageForDeliverGiftTips));
-    if (paramMessageForDeliverGiftTips.exists())
-    {
-      paramMessageForDeliverGiftTips = paramMessageForDeliverGiftTips.listFiles();
-      int i = 0;
-      while (i < paramMessageForDeliverGiftTips.length)
-      {
-        if (paramMessageForDeliverGiftTips[i].getAbsolutePath().endsWith(".png")) {
-          localArrayList.add(paramMessageForDeliverGiftTips[i].getAbsolutePath());
-        }
-        i += 1;
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static JSONObject a(String paramString)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(antf.cx).append(paramString + "_NEW").append(File.separator).append("info.json");
-    paramString = bhmi.a(new File(localStringBuffer.toString()));
-    if (paramString == null) {
-      return null;
-    }
-    try
-    {
-      paramString = new JSONObject(paramString);
-      return paramString;
-    }
-    catch (JSONException paramString) {}
-    return null;
-  }
-  
-  public static void a(Activity paramActivity, Intent paramIntent, QQAppInterface paramQQAppInterface)
-  {
-    if (paramIntent == null) {
-      return;
-    }
-    a(paramActivity, paramIntent.getStringExtra("troop_uin"), paramIntent.getStringExtra("member_uin"), paramIntent.getStringExtra("member_display_name"), paramIntent.getStringExtra("troop_gift_from"), paramQQAppInterface);
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
-  {
-    TroopInfo localTroopInfo;
-    int i;
-    if (paramQQAppInterface != null)
-    {
-      localTroopInfo = ((TroopManager)paramQQAppInterface.getManager(52)).b(paramString1);
-      if (localTroopInfo != null)
-      {
-        if (!localTroopInfo.isTroopOwner(paramQQAppInterface.getCurrentAccountUin())) {
-          break label133;
-        }
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      bdll.b(paramQQAppInterface, "P_CliOper", "Grp_flower", "", "mber", "exp", 0, 0, paramString1, i + "", "", "");
       if (QLog.isColorLevel()) {
-        QLog.d("TroopUtils", 2, "startSendGiftActivity from:" + paramString2);
+        QLog.d("AioShareMusic.WebViewAioShareMusicHelper", 2, " isTroopAdminOrOwner() troopInfo = " + paramString.isAdmin());
       }
-      paramActivity.startActivityForResult(a(paramActivity, paramString1, paramString2), 12005);
-      paramActivity.overridePendingTransition(2130771997, 2130771990);
-      return;
-      label133:
-      if (localTroopInfo.isAdmin()) {
-        i = 1;
-      } else {
-        i = 2;
+      if ((paramString.isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.mApp.getAccount())) || (paramString.isAdmin())) {
+        return true;
       }
-    }
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, QQAppInterface paramQQAppInterface)
-  {
-    a(paramActivity, paramString1, paramString2, paramString3, paramString4, paramQQAppInterface, null);
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, QQAppInterface paramQQAppInterface, Map<String, String> paramMap)
-  {
-    if (paramActivity == null) {
-      return;
-    }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        str1 = Base64.encodeToString(paramString3.getBytes("UTF-8"), 0);
-        Object localObject = null;
-        if (paramQQAppInterface != null)
-        {
-          bgtj localbgtj = bgtj.a();
-          String str2 = arnf.a().troopGiftUrl;
-          localObject = str2;
-          if (!TextUtils.isEmpty(str2))
-          {
-            localObject = new bgtk();
-            ((bgtk)localObject).a = paramString1;
-            ((bgtk)localObject).c = paramString4;
-            ((bgtk)localObject).b = paramString2;
-            ((bgtk)localObject).e = paramString3;
-            localObject = localbgtj.a(str2, (bgtk)localObject);
-          }
-        }
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          break label444;
-        }
-        paramString3 = new Bundle();
-        paramString3.putString("troopUin", paramString1);
-        paramString3.putString("uin", paramString2);
-        paramString3.putString("name", str1);
-        paramString3.putString("from", paramString4);
-        paramString3.putString("_wv", "1031");
-        paramString3.putString("_bid", "2204");
-        paramString2 = "https://qun.qq.com/qunpay/gifts/index.html?" + nnr.a(paramString3);
-        paramString3 = new Intent(paramActivity, QQBrowserActivity.class);
-        paramString3.putExtra("url", paramString2);
-        if ((paramMap != null) && (paramMap.size() > 0))
-        {
-          paramString4 = paramMap.entrySet().iterator();
-          if (paramString4.hasNext())
-          {
-            paramMap = (Map.Entry)paramString4.next();
-            paramString3.putExtra((String)paramMap.getKey(), (String)paramMap.getValue());
-            continue;
-          }
-        }
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        localUnsupportedEncodingException.printStackTrace();
-        String str1 = paramString3;
-        continue;
-        paramActivity.startActivityForResult(paramString3, 13001);
-        if (paramQQAppInterface != null)
-        {
-          paramActivity = ((TroopManager)paramQQAppInterface.getManager(52)).b(paramString1);
-          if (paramActivity != null)
-          {
-            if (!paramActivity.isTroopOwner(paramQQAppInterface.getCurrentAccountUin())) {
-              break label425;
-            }
-            i = 0;
-            bdll.b(paramQQAppInterface, "P_CliOper", "Grp_flower", "", "mber", "send_page", 0, 0, paramString1, i + "", "", "");
-          }
-        }
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("TroopUtils", 2, "openSendTroopGiftUrl url:" + paramString2);
-      return;
-      label425:
-      if (paramActivity.isAdmin())
-      {
-        i = 1;
-      }
-      else
-      {
-        i = 2;
-        continue;
-        label444:
-        paramString2 = localUnsupportedEncodingException;
-      }
-    }
-  }
-  
-  public static void a(File paramFile, String paramString)
-  {
-    paramString = new File(paramString);
-    if (paramString.exists())
-    {
-      String[] arrayOfString = paramString.list();
-      int j = arrayOfString.length;
-      int i = 0;
-      if (i < j)
-      {
-        Object localObject = arrayOfString[i];
-        if (("__MACOSX".equalsIgnoreCase((String)localObject)) || (((String)localObject).endsWith("."))) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          String str = paramFile.getAbsolutePath().replace(".zip", "/");
-          localObject = new File(paramString, (String)localObject);
-          if (((File)localObject).exists())
-          {
-            bhmi.a(((File)localObject).getAbsolutePath(), str, true);
-            bhmi.a(paramString.getAbsolutePath());
-          }
-        }
-      }
-    }
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    if ((paramInt < 40003) || (paramInt > 40005)) {}
-    long l;
-    do
-    {
-      return true;
-      File localFile = new File(a(paramInt));
-      if (!localFile.exists()) {
-        break;
-      }
-      l = localFile.length();
-    } while (((paramInt == 40003) && (l == 827720L)) || ((paramInt == 40004) && (l == 355077L)) || ((paramInt == 40005) && (l == 796025L)));
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopUtils", 2, "isTroopPicEffectVideoValid = false, id:" + paramInt);
     }
     return false;
   }
   
-  public static boolean a(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
+  private void b(String paramString)
   {
-    return (paramMessageForDeliverGiftTips != null) && ((paramMessageForDeliverGiftTips.animationPackageId > 0) || (paramMessageForDeliverGiftTips.isToAll()));
+    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getActivity() != null)) {
+      bfur.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getActivity(), 230).setMessage(paramString).setPositiveButton(2131693521, new bgti(this)).show();
+    }
   }
   
-  public static boolean a(File paramFile)
+  private void c(Intent paramIntent)
   {
-    StringBuffer localStringBuffer;
-    Object localObject;
-    if (paramFile.exists())
-    {
-      localStringBuffer = new StringBuffer();
-      localStringBuffer.append(paramFile.getAbsolutePath()).append(File.separator).append("check.ini");
-      localObject = new File(localStringBuffer.toString());
-      if (((File)localObject).exists()) {}
-    }
-    else
-    {
-      return false;
-    }
+    int i = 2;
+    Object localObject1 = paramIntent.getStringExtra("forward_ark_app_meta");
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
     for (;;)
     {
-      int i;
       try
       {
-        localObject = bhmi.b((File)localObject);
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break;
+        localObject1 = new JSONObject((String)localObject1).getJSONObject("music");
+        Object localObject3 = paramIntent.getExtras();
+        if (this.jdField_a_of_type_Int == 0)
+        {
+          paramIntent = "friend_uin";
+          Object localObject2 = ((Bundle)localObject3).getString(paramIntent, "");
+          if (this.jdField_a_of_type_Int == 0)
+          {
+            paramIntent = "h5_ark_url_web_sender_uin";
+            paramIntent = ((Bundle)localObject3).getString(paramIntent);
+            int j = ((JSONObject)localObject1).getInt("appid");
+            Object localObject4 = ((JSONObject)localObject1).getString("title");
+            localObject3 = ((JSONObject)localObject1).getString("musicUrl");
+            localObject1 = ((JSONObject)localObject1).getString("desc");
+            JSONObject localJSONObject = new JSONObject();
+            if (this.jdField_a_of_type_Int == 0)
+            {
+              localJSONObject.put("enum_aio_type", i);
+              localJSONObject.put("uint64_id", localObject2);
+              localJSONObject.put("uint32_share_appid", j);
+              localJSONObject.put("bytes_song_name", localObject4);
+              localObject2 = new JSONArray();
+              localObject4 = new JSONObject();
+              ((JSONObject)localObject4).put("singer", localObject1);
+              ((JSONArray)localObject2).put(localObject4);
+              localJSONObject.put("rpt_bytes_singer", localObject2);
+              localJSONObject.put("bytes_song_url", localObject3);
+              localJSONObject.put("bool_cut_song", this.jdField_a_of_type_Boolean);
+              localJSONObject.put("str_song_id", this.jdField_c_of_type_JavaLangString);
+              localJSONObject.put("uint32_duration", this.jdField_b_of_type_Int);
+              localJSONObject.put("uint64_sharer_uin", paramIntent);
+              localJSONObject.put("bytes_cover", this.jdField_b_of_type_JavaLangString);
+              if (QLog.isColorLevel()) {
+                QLog.d("AioShareMusic.WebViewAioShareMusicHelper", 2, "realStartAioShareMusic() jsonObject = " + localJSONObject.toString());
+              }
+              lav.a(localJSONObject, "startListenAioShareMusic", null);
+            }
+          }
+          else
+          {
+            paramIntent = "friendUin";
+            continue;
+          }
+          i = 1;
+          continue;
+          return;
         }
-        localObject = ((String)localObject).split("&");
-        if (localObject == null) {
-          break;
-        }
-        i = 0;
-        if (i >= localObject.length) {
-          break label203;
-        }
-        localStringBuffer.setLength(0);
-        localStringBuffer.append(paramFile.getAbsolutePath()).append(File.separator).append(localObject[i].toString());
-        File localFile = new File(localStringBuffer.toString());
-        if (localFile.exists()) {
-          break label196;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e(".troop.send_giftTroopUtils", 2, "isAnimationPackageValid File not exist:" + localFile.getName());
-        return false;
       }
-      catch (IOException paramFile) {}
-      if (!QLog.isColorLevel()) {
-        break;
+      catch (JSONException paramIntent)
+      {
+        paramIntent.printStackTrace();
       }
-      QLog.e("TroopUtils", 2, "isAnimationPackageValid IOException");
-      return false;
-      label196:
-      i += 1;
-    }
-    label203:
-    return true;
-  }
-  
-  public static boolean a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (paramString = a(paramString);; paramString = a(paramString, paramInt)) {
-      return a(new File(paramString));
+      paramIntent = "groupUin";
     }
   }
   
-  public static boolean a(List<?> paramList)
+  public void a()
   {
-    return (paramList == null) || (paramList.size() == 0);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment = null;
   }
   
-  public static String b(int paramInt)
+  public void a(Intent paramIntent)
   {
-    return "https://pub.idqqimg.com/pc/misc/groupgift/troop_pic_effect_" + paramInt + ".mp4";
+    int i = 2;
+    if (paramIntent == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AioShareMusic.WebViewAioShareMusicHelper", 2, " checkAndShowAioShareMusic inten is null ");
+      }
+    }
+    String str;
+    do
+    {
+      do
+      {
+        return;
+        str = paramIntent.getStringExtra("forward_ark_app_view");
+        this.jdField_a_of_type_Int = paramIntent.getIntExtra("uinType", 0);
+        if (("music".equalsIgnoreCase(str)) && ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1))) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("AioShareMusic.WebViewAioShareMusicHelper", 2, " type is not music just return, ShareType = " + str + " mAioType = " + this.jdField_a_of_type_Int);
+      return;
+      str = paramIntent.getStringExtra("forward_ark_app_meta");
+    } while (TextUtils.isEmpty(str));
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(str).getJSONObject("music");
+        if (this.jdField_a_of_type_Int == 0)
+        {
+          str = "friend_uin";
+          Object localObject1 = paramIntent.getStringExtra(str);
+          int j = localJSONObject.getInt("appid");
+          Object localObject2 = localJSONObject.getString("title");
+          paramIntent = localJSONObject.getString("musicUrl");
+          str = localJSONObject.getString("desc");
+          this.jdField_b_of_type_JavaLangString = localJSONObject.getString("preview");
+          localJSONObject = new JSONObject();
+          if (this.jdField_a_of_type_Int != 0) {
+            break label390;
+          }
+          localJSONObject.put("enum_aio_type", i);
+          localJSONObject.put("uint64_id", localObject1);
+          localJSONObject.put("uint32_share_appid", j);
+          localJSONObject.put("bytes_song_name", localObject2);
+          localJSONObject.put("uint32_duration", 0);
+          localObject1 = new JSONArray();
+          localObject2 = new JSONObject();
+          ((JSONObject)localObject2).put("singer", str);
+          ((JSONArray)localObject1).put(localObject2);
+          localJSONObject.put("rpt_bytes_singer", localObject1);
+          localJSONObject.put("bytes_song_url", paramIntent);
+          if (QLog.isColorLevel()) {
+            QLog.d("AioShareMusic.WebViewAioShareMusicHelper", 2, " type is music jsonObject = " + localJSONObject.toString());
+          }
+          lav.a(localJSONObject, "checkAioShareMusic", null);
+          return;
+        }
+      }
+      catch (JSONException paramIntent)
+      {
+        paramIntent.printStackTrace();
+        return;
+      }
+      str = "groupUin";
+      continue;
+      label390:
+      i = 1;
+    }
   }
   
-  public static String b(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
+  public void a(JSONObject paramJSONObject)
   {
-    if (paramMessageForDeliverGiftTips == null) {
-      return null;
+    try
+    {
+      boolean bool = paramJSONObject.getBoolean("isSuccess");
+      if (QLog.isColorLevel()) {
+        QLog.d("AioShareMusic.WebViewAioShareMusicHelper", 2, "handleCheckAioShareMusic() isSuccess = " + bool + " data = " + paramJSONObject.toString());
+      }
+      if (bool)
+      {
+        bool = paramJSONObject.getBoolean("bool_show_icon");
+        this.jdField_c_of_type_Int = paramJSONObject.getInt("enum_aio_state");
+        this.jdField_d_of_type_Int = paramJSONObject.getInt("enum_media_type");
+        this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("str_song_id");
+        this.jdField_b_of_type_Int = paramJSONObject.getInt("uint32_duration");
+        this.jdField_d_of_type_JavaLangString = String.valueOf(paramJSONObject.getLong("uint64_create_uin"));
+        this.jdField_b_of_type_Boolean = paramJSONObject.getBoolean("bool_song_existed");
+        this.jdField_c_of_type_Boolean = paramJSONObject.getBoolean("bool_allow_member_start");
+        this.jdField_d_of_type_Boolean = paramJSONObject.getBoolean("bool_allow_member_add");
+        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("current_song_id");
+        if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getActivity() != null)) {
+          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getActivity().runOnUiThread(new WebViewAioShareMusicHelper.1(this, bool));
+        }
+      }
+      return;
     }
-    if (paramMessageForDeliverGiftTips.isToAll()) {
-      return String.valueOf(paramMessageForDeliverGiftTips.exflag);
+    catch (Exception paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
     }
-    return String.valueOf(paramMessageForDeliverGiftTips.animationPackageId);
   }
   
-  public static String c(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
+  public void b(Intent paramIntent)
   {
-    String str = b(paramMessageForDeliverGiftTips);
-    if ((arnf.a().isEnable()) && (!TextUtils.isEmpty(paramMessageForDeliverGiftTips.animationPackageUrl))) {
-      return paramMessageForDeliverGiftTips.animationPackageUrl;
+    if ((paramIntent == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AioShareMusic.WebViewAioShareMusicHelper", 2, " checkAndShowAioShareMusic inten is null ");
+      }
+      return;
     }
-    if (paramMessageForDeliverGiftTips.isInteract()) {
-      return "https://pub.idqqimg.com/pc/misc/groupgift/" + str + "_NEW.zip";
+    this.jdField_a_of_type_Boolean = true;
+    String str4 = paramIntent.getStringExtra("groupUin");
+    String str1;
+    String str2;
+    label64:
+    String str3;
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      str1 = "c2c_AIO";
+      if (this.jdField_a_of_type_Int != 0) {
+        break label168;
+      }
+      str2 = "clk_share_c2c";
+      if (this.jdField_a_of_type_Int != 0) {
+        break label176;
+      }
+      str3 = "";
+      label75:
+      bcef.b(null, "dc00899", str1, "", "music_tab", str2, 0, 0, str3, "", "", "");
+      if ((this.jdField_d_of_type_Int == 1) || (this.jdField_c_of_type_Int == 3)) {
+        break label197;
+      }
+      if (this.jdField_d_of_type_Int != 2) {
+        break label183;
+      }
     }
-    if (paramMessageForDeliverGiftTips.animationType == 1) {
-      return "https://pub.idqqimg.com/pc/misc/groupgift/" + str + "_V.zip";
+    label168:
+    label176:
+    label183:
+    for (paramIntent = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131697994);; paramIntent = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131697970))
+    {
+      a(String.format(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131693387), new Object[] { paramIntent }));
+      return;
+      str1 = "Grp_AIO";
+      break;
+      str2 = "clk_share_grp";
+      break label64;
+      str3 = str4;
+      break label75;
     }
-    return "https://pub.idqqimg.com/pc/misc/groupgift/" + str + "_HD.zip";
+    label197:
+    if ((this.jdField_c_of_type_Int != 3) && (this.jdField_a_of_type_JavaLangString.equals(this.jdField_c_of_type_JavaLangString)))
+    {
+      a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131693385));
+      return;
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      boolean bool = a(str4);
+      if ((this.jdField_c_of_type_Int == 3) && (!bool) && (!this.jdField_c_of_type_Boolean))
+      {
+        b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131693383));
+        return;
+      }
+      if ((this.jdField_c_of_type_Int == 3) && (!bool) && (this.jdField_c_of_type_Boolean) && (!this.jdField_d_of_type_Boolean))
+      {
+        b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131693384));
+        return;
+      }
+      if ((this.jdField_c_of_type_Int != 3) && (!bool) && (!this.jdField_d_of_type_Boolean))
+      {
+        b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131693382));
+        return;
+      }
+      if ((this.jdField_c_of_type_Int != 3) && (!a()) && (!bool) && (this.jdField_d_of_type_Boolean))
+      {
+        if (this.jdField_b_of_type_Boolean)
+        {
+          a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131693386));
+          return;
+        }
+        this.jdField_a_of_type_Boolean = false;
+      }
+    }
+    c(paramIntent);
   }
   
-  public static String d(MessageForDeliverGiftTips paramMessageForDeliverGiftTips)
+  public void b(JSONObject paramJSONObject)
   {
-    paramMessageForDeliverGiftTips = new File(a(paramMessageForDeliverGiftTips) + "/video.mp4");
-    if (paramMessageForDeliverGiftTips.exists()) {
-      return paramMessageForDeliverGiftTips.getAbsolutePath();
+    for (;;)
+    {
+      String str;
+      try
+      {
+        if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment == null) || (paramJSONObject == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getActivity() == null))
+        {
+          if (!QLog.isColorLevel()) {
+            break label339;
+          }
+          QLog.d("AioShareMusic.WebViewAioShareMusicHelper", 2, "handleCheckAioShareMusic()  data  = " + paramJSONObject + " mWebViewFragment = " + this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment);
+          return;
+        }
+        boolean bool = paramJSONObject.getBoolean("isSuccess");
+        if (bool) {
+          break label304;
+        }
+        int i = paramJSONObject.getInt("uint32_result");
+        str = paramJSONObject.getString("bytes_errmsg");
+        if (!TextUtils.isEmpty(str)) {}
+        switch (i)
+        {
+        case 0: 
+          if (!QLog.isColorLevel()) {
+            break label339;
+          }
+          QLog.d("AioShareMusic.WebViewAioShareMusicHelper", 2, "handleCheckAioShareMusic() isSuccess = " + bool + " data = " + paramJSONObject.toString());
+          return;
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return;
+      }
+      a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131694278));
+      continue;
+      a(String.format(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131693387), new Object[] { str }));
+      continue;
+      a(str);
+      continue;
+      b(str);
+      continue;
+      label304:
+      a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getString(2131693386));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getActivity().runOnUiThread(new WebViewAioShareMusicHelper.2(this));
+      continue;
+      label339:
+      return;
     }
-    return null;
   }
 }
 

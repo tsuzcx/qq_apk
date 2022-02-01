@@ -1,42 +1,12 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ahes
-  implements bliz
+  implements DialogInterface.OnClickListener
 {
-  ahes(aheq paramaheq, blir paramblir) {}
+  ahes(ahek paramahek) {}
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_Blir.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    String str;
-    if (this.jdField_a_of_type_Aheq.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006)
-    {
-      str = this.jdField_a_of_type_Aheq.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      paramView = null;
-    }
-    for (;;)
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_Aheq.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Aheq.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aheq.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramView, this.jdField_a_of_type_Aheq.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, str, true, this.jdField_a_of_type_Aheq.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, true, true, null, null);
-      str = ChatActivityUtils.a(this.jdField_a_of_type_Aheq.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-      paramView = str;
-      if (str == null) {
-        paramView = "";
-      }
-      bdll.b(this.jdField_a_of_type_Aheq.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "12", paramView, "", "");
-      bdll.b(this.jdField_a_of_type_Aheq.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
-      return;
-      paramView = this.jdField_a_of_type_Aheq.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      str = null;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

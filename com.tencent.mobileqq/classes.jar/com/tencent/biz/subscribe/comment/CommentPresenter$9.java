@@ -1,11 +1,11 @@
 package com.tencent.biz.subscribe.comment;
 
-import aaiu;
+import zfs;
 
 public class CommentPresenter$9
   implements Runnable
 {
-  public CommentPresenter$9(aaiu paramaaiu) {}
+  public CommentPresenter$9(zfs paramzfs) {}
   
   public void run()
   {

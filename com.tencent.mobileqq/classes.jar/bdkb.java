@@ -1,26 +1,35 @@
-import com.tencent.mobileqq.startup.step.UpdateSecureFileStrategy;
-import java.io.File;
-import java.io.FileFilter;
-import mqq.app.SecurityFileFrameworkManagerImpl;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.togetherui.writetogether.SavingAnimView;
 
 public class bdkb
-  implements FileFilter
+  implements Animator.AnimatorListener
 {
-  public bdkb(UpdateSecureFileStrategy paramUpdateSecureFileStrategy) {}
+  public bdkb(SavingAnimView paramSavingAnimView) {}
   
-  public boolean accept(File paramFile)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramFile.isDirectory()) && (paramFile.getName().startsWith("NoRename#")))
-    {
-      paramFile = paramFile.getName().replaceAll("NoRename#", "");
-      return (paramFile.length() == 9) && (paramFile.charAt(0) == SecurityFileFrameworkManagerImpl.generateVerifyChar(paramFile.substring(1)));
+    SavingAnimView.a(this.a).start();
+    SavingAnimView.b(this.a, 1);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    SavingAnimView.c(this.a, SavingAnimView.a(this.a));
+    SavingAnimView.d(this.a, SavingAnimView.d(this.a));
+    if (SavingAnimView.a(this.a) != null) {
+      SavingAnimView.a(this.a).c();
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdkb
  * JD-Core Version:    0.7.0.1
  */

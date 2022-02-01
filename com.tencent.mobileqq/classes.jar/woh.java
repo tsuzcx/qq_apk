@@ -1,76 +1,20 @@
-import java.util.concurrent.ConcurrentHashMap;
+import android.support.annotation.NonNull;
+import java.util.List;
 
-public class woh
+public abstract interface woh
 {
-  public static ConcurrentHashMap<Class<?>, Class<?>> a = new ConcurrentHashMap();
-  public static ConcurrentHashMap<Class<?>, Class<?>> b = new ConcurrentHashMap();
+  public abstract List<wok> a(List<wod> paramList);
   
-  static
-  {
-    a.put(yab.class, woe.class);
-    b.put(wsw.class, wof.class);
-  }
+  @NonNull
+  public abstract wog a();
   
-  public static <I> I a(Class<? extends I> paramClass, Class<I> paramClass1, Object... paramVarArgs)
-  {
-    try
-    {
-      if (paramClass.equals(yab.class))
-      {
-        Object localObject = paramClass1.cast(new woe());
-        return localObject;
-      }
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      yuk.e("ExtensionFactoryImplement", "parse int exception");
-      try
-      {
-        paramClass = (Class)a.get(paramClass);
-        if (paramClass != null)
-        {
-          if (wnt.class.isAssignableFrom(paramClass)) {
-            break label110;
-          }
-          throw new IllegalArgumentException("createExtendableObject class " + paramClass.getName() + " should have a KeepConstructor interface");
-        }
-      }
-      catch (Exception paramClass)
-      {
-        yuk.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
-      }
-      return woi.a(paramClass1);
-    }
-    label110:
-    paramClass = woi.a(paramClass, paramVarArgs);
-    return paramClass;
-  }
+  public abstract void a();
   
-  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
-  {
-    if (!wnt.class.isAssignableFrom(paramClass)) {
-      throw new IllegalArgumentException("createExtendableObject class " + paramClass.getName() + " should have a KeepConstructor interface");
-    }
-    try
-    {
-      Class localClass = (Class)b.get(paramClass);
-      if (localClass != null)
-      {
-        if (wnt.class.isAssignableFrom(localClass)) {
-          break label124;
-        }
-        throw new IllegalArgumentException("createExtendableObject class " + localClass.getName() + " should have a KeepConstructor interface");
-      }
-    }
-    catch (Exception localException)
-    {
-      yuk.c("ExtensionFactoryImplement", "createImplement Error", new Throwable());
-    }
-    return woi.a(paramClass, paramVarArgs);
-    label124:
-    Object localObject = woi.a(localException, paramVarArgs);
-    return localObject;
-  }
+  public abstract void a(int paramInt, woj paramwoj);
+  
+  public abstract boolean a(woe paramwoe);
+  
+  public abstract void b();
 }
 
 

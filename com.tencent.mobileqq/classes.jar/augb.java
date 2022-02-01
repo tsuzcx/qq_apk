@@ -1,28 +1,26 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.List;
+import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class augb
-  implements aauy
+public final class augb
+  extends bgod
 {
-  augb(auga paramauga, boolean paramBoolean, String paramString, short paramShort) {}
+  public augb(String paramString) {}
   
-  public void a(List<aujx> paramList)
+  public void onDone(bgoe parambgoe)
   {
-    if (this.jdField_a_of_type_Auga.a.jdField_a_of_type_Augq != null)
+    PayLikeFloatViewBuilder.a(false);
+    if (parambgoe.a == 0)
     {
-      if ((paramList != null) && (!paramList.isEmpty())) {
-        break label126;
+      parambgoe = new File(this.a + ".tmp");
+      if (parambgoe.exists()) {
+        parambgoe.renameTo(new File(this.a));
       }
-      this.jdField_a_of_type_Auga.a.jdField_a_of_type_Augq.a(-1000L);
     }
-    while (paramList != null)
-    {
-      bdll.b(this.jdField_a_of_type_Auga.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_suc", 0, 0, "" + this.jdField_a_of_type_Auga.a.jdField_a_of_type_Auei.a().TroopUin, "", aunj.f(this.jdField_a_of_type_Auga.a.c()), "1");
+    while (!QLog.isColorLevel()) {
       return;
-      label126:
-      this.jdField_a_of_type_Auga.a.jdField_a_of_type_Augq.a(paramList, this.jdField_a_of_type_Auga.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Auga.a.b, this.jdField_a_of_type_Auga.a.c, this.jdField_a_of_type_Auga.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
     }
-    bdll.b(this.jdField_a_of_type_Auga.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, "" + this.jdField_a_of_type_Auga.a.jdField_a_of_type_Auei.a().TroopUin, "-1", aunj.f(this.jdField_a_of_type_Auga.a.c()), "1");
+    QLog.d("PayLikeFloatViewBuilder", 2, "getPayZanAnimBitmap download failed");
   }
 }
 

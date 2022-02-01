@@ -1,83 +1,57 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
 
-public class arec
-  extends arac<areb>
+class arec
+  extends bgod
 {
-  @NonNull
-  public static areb a()
+  arec(areb paramareb, String paramString1, String paramString2)
   {
-    areb localareb2 = (areb)aran.a().a(455);
-    areb localareb1 = localareb2;
-    if (localareb2 == null) {
-      localareb1 = new areb();
-    }
-    return localareb1;
+    super(paramString1, paramString2);
   }
   
-  @NonNull
-  public areb a(int paramInt)
+  public void onDone(bgoe parambgoe)
   {
-    return new areb();
-  }
-  
-  @Nullable
-  public areb a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
+    Bundle localBundle;
+    EmoticonPackage localEmoticonPackage;
+    try
     {
-      areb localareb = areb.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
+      localBundle = parambgoe.a();
+      localEmoticonPackage = (EmoticonPackage)localBundle.getSerializable("emoticonPackage");
+      if (localEmoticonPackage == null) {
+        return;
       }
-      return localareb;
+      if ((QLog.isColorLevel()) && (localEmoticonPackage != null)) {
+        QLog.d(areb.a(), 2, "jsonDownloadListener : onDone epid = " + localEmoticonPackage.epId + ";task status = " + parambgoe.a());
+      }
+      if (parambgoe.a() != 3) {
+        break label177;
+      }
+      boolean bool = localBundle.getBoolean("isSmallEmotion");
+      String str = areq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, parambgoe, bool);
+      if (str != null)
+      {
+        QLog.e(areb.a(), 1, "jsonDownloadListener : parse json error : = " + str);
+        this.a.a(localEmoticonPackage, 11008, 0L, parambgoe.d);
+        return;
+      }
     }
-    return new areb();
-  }
-  
-  public void a(areb paramareb)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onUpdate newConf:" + paramareb);
+    catch (Exception parambgoe)
+    {
+      QLog.e(areb.a(), 1, "json download fail", parambgoe);
+      return;
     }
-  }
-  
-  public Class<areb> clazz()
-  {
-    return areb.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendIntimateRelationshipConfProcessor", 2, "onReqFailed failCode:" + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 455;
+    areb.jdField_a_of_type_Area.a(localEmoticonPackage, 0, localBundle);
+    return;
+    label177:
+    QLog.e(areb.a(), 1, "jsonDownloadListener : ondone error , reportCode = " + parambgoe.a);
+    areb.jdField_a_of_type_Area.a(localEmoticonPackage, -1, localBundle);
+    bggr.a("emotionType", "emotionActionDownload", "3", localEmoticonPackage.epId, "", "", parambgoe.a + "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arec
  * JD-Core Version:    0.7.0.1
  */

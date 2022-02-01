@@ -1,43 +1,13 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.activity.aio.item.WriteTogetherItemBuilder.1.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
 
 public class ahxn
-  implements View.OnClickListener
+  implements ampr
 {
-  ahxn(ahxm paramahxm) {}
+  public ahxn(AddContactsView paramAddContactsView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    Object localObject = agej.a(paramView);
-    if (!(localObject instanceof MessageForText)) {
-      if (QLog.isColorLevel()) {
-        QLog.w("WriteTogetherItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localObject = (MessageForText)localObject;
-      if (!this.a.a())
-      {
-        if ((paramView instanceof ETTextView)) {
-          ((ETTextView)paramView).startAnimation(true, false);
-        }
-        if (!ahxm.a(this.a))
-        {
-          ahxm.b(this.a, true);
-          ThreadManagerV2.getUIHandlerV2().postDelayed(new WriteTogetherItemBuilder.1.1(this, (MessageForText)localObject), 500L);
-        }
-      }
-    }
+    this.a.c = false;
   }
 }
 

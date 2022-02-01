@@ -1,81 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.35.1;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.35.3;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.35.4;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.35.5;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.35.6;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.35.8;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.net.Uri;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
-public class snx
-  extends pph
+final class snx
+  implements uie
 {
-  public snx(FastWebActivity paramFastWebActivity) {}
-  
-  public void a(int paramInt, String paramString)
+  public void a(Uri paramUri, String paramString, int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.a.a == null) || (!paramString.equals(this.a.a.innerUniqueID)) || (FastWebActivity.a(this.a) == null))
+    if (QLog.isColorLevel())
     {
-      QLog.d("FastWebActivity", 2, "handleLikeCntInfoResp fail, msg not match !");
-      return;
-    }
-    ThreadManager.getUIHandler().post(new FastWebActivity.35.4(this, paramInt));
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (this.a.a == null) || (!paramString.equals(this.a.a.innerUniqueID)) || (FastWebActivity.a(this.a) == null))
-    {
-      QLog.d("FastWebActivity", 2, "handleBiuCntInfoResp fail, msg not match !");
-      return;
-    }
-    ThreadManager.getUIHandler().post(new FastWebActivity.35.3(this, paramLong));
-  }
-  
-  public void a(FastWebArticleInfo paramFastWebArticleInfo, int paramInt, String paramString)
-  {
-    this.a.runOnUiThread(new FastWebActivity.35.8(this, paramInt, paramFastWebArticleInfo, paramString));
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.runOnUiThread(new FastWebActivity.35.6(this, paramString));
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, ssh paramssh)
-  {
-    super.a(paramBoolean, paramInt, paramssh);
-    String str;
-    if (this.a.a != null)
-    {
-      str = this.a.a.mArticleContentUrl;
-      if ((!paramBoolean) || (paramssh == null) || (TextUtils.isEmpty(paramssh.a(paramInt))) || (TextUtils.isEmpty(str))) {
-        break label86;
+      paramString = new StringBuilder().append("onDetectScreenshot() path=").append(paramString).append(", channelID=");
+      if (snw.a(snw.a()) != null) {
+        break label129;
+      }
+      paramUri = "null";
+      paramString = paramString.append(paramUri).append(", channelType=");
+      if (snw.b(snw.a()) != null) {
+        break label139;
       }
     }
-    label86:
-    for (paramBoolean = true;; paramBoolean = false)
+    label129:
+    label139:
+    for (paramUri = "null";; paramUri = snw.b(snw.a()))
     {
-      ThreadManager.getUIHandler().post(new FastWebActivity.35.1(this, paramBoolean, paramInt, str, paramssh));
+      QLog.d("ReadInJoyScreenShotReporter", 2, paramUri);
+      if (snw.a(snw.a()) != null) {
+        odq.b(null, "", "0X8008100", "0X8008100", 0, 0, String.valueOf(System.currentTimeMillis() / 1000L), String.valueOf(snw.b(snw.a())), String.valueOf(snw.a(snw.a())), null, false);
+      }
       return;
-      str = "";
+      paramUri = snw.a(snw.a());
       break;
     }
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (this.a.a == null) || (!paramString.equals(this.a.a.innerUniqueID)) || (FastWebActivity.a(this.a) == null))
-    {
-      QLog.d("FastWebActivity", 2, "handleLikeStateResp fail, msg not match !");
-      return;
-    }
-    ThreadManager.getUIHandler().post(new FastWebActivity.35.5(this, paramBoolean));
   }
 }
 

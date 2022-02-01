@@ -1,45 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.mobileqq.widget.QQToast;
 
-class atot
-  implements View.OnClickListener
+public class atot
+  extends Handler
 {
-  atot(atos paramatos) {}
+  public atot(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    aggl localaggl = (aggl)agej.a(paramView);
-    int i;
-    ChatMessage localChatMessage;
-    if (localaggl != null)
-    {
-      i = -1;
-      localChatMessage = aunj.a(localaggl.a);
-      if (!this.a.b(localChatMessage)) {
-        break label83;
-      }
-      i = 0;
+    if (paramMessage.what == 0) {
+      QQToast.a(this.a.a, amtj.a(2131703932), 0).a();
     }
-    for (;;)
-    {
-      this.a.a(paramView, localaggl, localChatMessage, i);
-      if (this.a.a != null) {
-        this.a.a.h(localaggl.a);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
+    while (1 != paramMessage.what) {
       return;
-      label83:
-      if (this.a.a(localChatMessage)) {
-        i = 1;
-      }
     }
+    this.a.a.setResult(-1);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atot
  * JD-Core Version:    0.7.0.1
  */

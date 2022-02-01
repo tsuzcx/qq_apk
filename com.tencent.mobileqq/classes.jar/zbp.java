@@ -1,17 +1,17 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
 import java.util.List;
 
 public class zbp
-  implements zbq
+  implements zbv
 {
-  public void a(List<zbn> paramList, DoodleView paramDoodleView)
+  public zbp(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
+  
+  public void a(boolean paramBoolean, int paramInt)
   {
-    zat localzat = new zat(paramDoodleView);
-    zbd localzbd = new zbd(paramDoodleView);
-    paramDoodleView = new zbh(paramDoodleView);
-    paramList.add(localzat);
-    paramList.add(localzbd);
-    paramList.add(paramDoodleView);
+    if ((paramBoolean) && ((FollowedRecommendBannerView.a(this.a) == null) || (FollowedRecommendBannerView.a(this.a).a() == null) || (paramInt >= FollowedRecommendBannerView.a(this.a).a().size()))) {
+      return;
+    }
+    zxp.a(FollowedRecommendBannerView.a(this.a), "auth_person", "reco_follow", 0, 0, new String[0]);
   }
 }
 

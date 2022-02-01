@@ -1,31 +1,63 @@
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-class qju
-  implements View.OnClickListener
+public class qju
+  extends BaseAdapter
 {
-  qju(qjt paramqjt, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2, LinearLayout paramLinearLayout3) {}
+  List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
+  List<sqw> b = new ArrayList();
   
-  public void onClick(View paramView)
+  public qju(NativeGridImageView paramNativeGridImageView) {}
+  
+  public List<URL> a()
   {
-    bnrf.f(ozs.a(), this.jdField_a_of_type_AndroidWidgetLinearLayout.getTop() + this.b.getTop() + this.c.getTop());
-    sgf localsgf = this.jdField_a_of_type_Qjt.jdField_a_of_type_Sel.a();
-    if (localsgf != null) {
-      localsgf.a(null, ((ppu)this.jdField_a_of_type_Qjt.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
-    if (QLog.isColorLevel())
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(qjv paramqjv)
+  {
+    this.b = paramqjv.a();
+    this.jdField_a_of_type_JavaUtilList = paramqjv.b();
+  }
+  
+  public int getCount()
+  {
+    return this.b.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.b.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Context localContext = paramViewGroup.getContext();
+    if (paramView == null)
     {
-      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "firstlayout top" + this.jdField_a_of_type_AndroidWidgetLinearLayout.getTop() });
-      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "firstlayout width" + this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth() });
-      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "thirdlayout top" + this.b.getTop() });
-      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "thirdlayout width" + this.b.getWidth() });
-      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "secondlayout top" + this.c.getTop() });
-      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "secondlayout width" + this.c.getWidth() });
+      paramView = new SquareCornerTextImageView(localContext);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      ((SquareCornerTextImageView)paramView).a((sqw)this.b.get(paramInt));
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
   }
 }
 

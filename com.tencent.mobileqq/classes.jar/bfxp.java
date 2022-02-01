@@ -1,12 +1,29 @@
-import android.os.Bundle;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
 
-public abstract interface bfxp
+public class bfxp
+  extends PipedInputStream
 {
-  public abstract void a(long paramLong1, long paramLong2);
+  private int a = 1024;
   
-  public abstract void a(long paramLong1, String paramString, long paramLong2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, Bundle paramBundle, int paramInt);
+  public bfxp(PipedOutputStream paramPipedOutputStream, int paramInt)
+  {
+    super(paramPipedOutputStream);
+    this.a = paramInt;
+  }
   
-  public abstract void b(long paramLong1, long paramLong2, long paramLong3);
+  protected void receive(int paramInt)
+  {
+    try
+    {
+      if (this.buffer.length != this.a) {
+        this.buffer = new byte[this.a];
+      }
+      super.receive(paramInt);
+      return;
+    }
+    finally {}
+  }
 }
 
 

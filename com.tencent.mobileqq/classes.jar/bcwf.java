@@ -1,19 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+import android.graphics.Bitmap;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
 
-public class bcwf
-  extends Handler
+class bcwf
+  extends bcwh
 {
-  public bcwf(BaseShortVideoOprerator paramBaseShortVideoOprerator, Looper paramLooper)
+  bcwf(bcwc parambcwc)
   {
-    super(paramLooper);
+    super(parambcwc);
   }
   
-  public void handleMessage(Message paramMessage)
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    this.a.a(paramMessage);
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  {
+    return a(paramWebView, paramString);
   }
 }
 

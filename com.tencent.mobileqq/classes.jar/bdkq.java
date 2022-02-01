@@ -1,37 +1,41 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.together.writetogether.data.OpenDocParam;
+import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class bdkq
+  extends bdgm
 {
-  int jdField_a_of_type_Int = 0;
-  bdkr jdField_a_of_type_Bdkr = new bdkr(this.jdField_a_of_type_Int, '&');
-  List<Object> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public bdkq(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
   
-  public bdkq()
+  public void a(int paramInt, boolean paramBoolean, bdhl parambdhl)
   {
-    this.jdField_a_of_type_Int += 1;
+    super.a(paramInt, paramBoolean, parambdhl);
+    WriteTogetherEditorFragment.a(this.a, paramBoolean, parambdhl);
   }
   
-  public void a(String paramString)
+  public void a(int paramInt, boolean paramBoolean, OpenDocParam paramOpenDocParam)
   {
-    Object localObject = this.jdField_a_of_type_Bdkr;
-    int i = 0;
-    if (i < paramString.length())
+    super.a(paramInt, paramBoolean, paramOpenDocParam);
+    WriteTogetherEditorFragment.a(this.a, paramBoolean, paramOpenDocParam);
+  }
+  
+  public void a(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    super.a(paramInt, paramBoolean, paramArrayOfObject);
+    WriteTogetherEditorFragment.a(this.a, false);
+    WriteTogetherEditorFragment.b(this.a, paramBoolean);
+    WriteTogetherEditorFragment.a(this.a);
+    if (!paramBoolean) {
+      QQToast.a(WriteTogetherEditorFragment.a(this.a), WriteTogetherEditorFragment.a(this.a).getResources().getString(2131719718), 0).a();
+    }
+    if (paramBoolean)
     {
-      char c = paramString.charAt(i);
-      bdkr localbdkr = ((bdkr)localObject).a(c);
-      if (localbdkr == null)
-      {
-        localbdkr = new bdkr(this.jdField_a_of_type_Int, c);
-        this.jdField_a_of_type_Int += 1;
-        ((bdkr)localObject).a(localbdkr);
-      }
-      for (localObject = localbdkr;; localObject = localbdkr)
-      {
-        i += 1;
-        break;
-        localbdkr.a();
-      }
+      this.a.getActivity().setResult(15);
+      this.a.getActivity().finish();
+      WriteTogetherEditorFragment.b(this.a);
     }
   }
 }

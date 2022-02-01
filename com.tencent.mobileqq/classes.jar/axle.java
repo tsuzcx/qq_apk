@@ -1,30 +1,21 @@
-import android.os.Build.VERSION;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.ocr.OCRPerformFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class axle
+  extends BroadcastReceiver
 {
-  public static void a()
+  public axle(OCRPerformFragment paramOCRPerformFragment) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (Build.VERSION.SDK_INT > 25)
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
     {
-      Runtime.getRuntime().gc();
-      Runtime.getRuntime().gc();
-      Runtime.getRuntime().runFinalization();
-    }
-    for (;;)
-    {
-      return;
-      int i = 0;
-      while (i < 2)
-      {
-        ArrayList localArrayList = new ArrayList();
-        do
-        {
-          localArrayList.add(new WeakReference(new byte[100]));
-        } while (((WeakReference)localArrayList.get((int)(Math.random() * localArrayList.size()))).get() != null);
-        i += 1;
-      }
+      QLog.d("OCRPerformFragment", 4, "receive videochat");
+      this.a.getActivity().finish();
     }
   }
 }

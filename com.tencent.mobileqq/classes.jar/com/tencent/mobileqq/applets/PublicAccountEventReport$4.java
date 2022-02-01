@@ -1,33 +1,35 @@
 package com.tencent.mobileqq.applets;
 
 import android.text.TextUtils;
-import apeg;
-import bnwq;
-import bnwr;
+import anxs;
+import blbw;
+import blbx;
 
 public final class PublicAccountEventReport$4
   implements Runnable
 {
-  public PublicAccountEventReport$4(String paramString1, String paramString2, int paramInt, boolean paramBoolean) {}
+  public PublicAccountEventReport$4(String paramString1, String paramString2, int paramInt, boolean paramBoolean, String paramString3, String paramString4) {}
   
   public void run()
   {
-    Object localObject = apeg.a(this.jdField_a_of_type_JavaLangString);
+    Object localObject = anxs.a(this.jdField_a_of_type_JavaLangString);
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       i = (int)(System.currentTimeMillis() / 1000L);
-      localObject = new bnwr(this.b + "_" + i, 1, this.jdField_a_of_type_Int, 1, "vab_push", "vab_push", (String)localObject, "vab_push", i);
-      ((bnwr)localObject).l = this.jdField_a_of_type_JavaLangString;
-      ((bnwr)localObject).jdField_f_of_type_JavaLangString = "vab_push";
+      localObject = new blbx(this.b + "_" + i, 1, this.jdField_a_of_type_Int, 1, "vab_push", "vab_push", (String)localObject, "vab_push", i);
+      ((blbx)localObject).l = this.jdField_a_of_type_JavaLangString;
+      ((blbx)localObject).jdField_f_of_type_JavaLangString = "vab_push";
       if (!this.jdField_a_of_type_Boolean) {
-        break label109;
+        break label125;
       }
     }
-    label109:
+    label125:
     for (int i = 6;; i = -1)
     {
-      ((bnwr)localObject).jdField_f_of_type_Int = i;
-      bnwq.a().a((bnwr)localObject);
+      ((blbx)localObject).jdField_f_of_type_Int = i;
+      ((blbx)localObject).m = this.c;
+      ((blbx)localObject).k = this.d;
+      blbw.a().a((blbx)localObject);
       return;
     }
   }

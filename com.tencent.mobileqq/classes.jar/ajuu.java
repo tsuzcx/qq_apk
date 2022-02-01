@@ -1,16 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.contacts.friend.FriendFragment;
-
 public class ajuu
-  implements bbst
 {
-  private ajuu(FriendFragment paramFriendFragment) {}
+  public int a;
+  public long a;
+  public long b;
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public boolean equals(Object paramObject)
   {
-    if ((FriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
-      FriendFragment.a(this.a, 1400L, false);
+    if ((paramObject instanceof ajuu))
+    {
+      paramObject = (ajuu)paramObject;
+      if ((paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_a_of_type_Long == this.jdField_a_of_type_Long)) {
+        return true;
+      }
     }
+    return false;
   }
 }
 

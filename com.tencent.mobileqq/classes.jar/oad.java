@@ -1,12 +1,39 @@
-import android.view.View;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import java.util.ArrayList;
 
-public abstract interface oad
+public class oad
+  implements ViewPager.OnPageChangeListener
 {
-  public abstract void a(View paramView);
+  public oad(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public abstract void d();
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public abstract void e();
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
+  {
+    ReadInJoyNativeAdFragment.a(this.a, Math.max(ReadInJoyNativeAdFragment.a(this.a), paramInt + 1));
+    ((oaj)ReadInJoyNativeAdFragment.a(this.a).get(paramInt)).a();
+    if (paramInt + 1 < ReadInJoyNativeAdFragment.a(this.a).size()) {
+      ((oaj)ReadInJoyNativeAdFragment.a(this.a).get(paramInt + 1)).b();
+    }
+    if ((ReadInJoyNativeAdFragment.a(this.a) != null) && (ReadInJoyNativeAdFragment.a(this.a).a == 1) && ((ReadInJoyNativeAdFragment.b(this.a) == 1) || (ReadInJoyNativeAdFragment.b(this.a) == 2)))
+    {
+      if (paramInt != ReadInJoyNativeAdFragment.a(this.a).size() - 1) {
+        break label155;
+      }
+      ReadInJoyNativeAdFragment.a(this.a).setVisibility(8);
+    }
+    for (;;)
+    {
+      ReadInJoyNativeAdFragment.a(this.a);
+      return;
+      label155:
+      ReadInJoyNativeAdFragment.a(this.a).setVisibility(0);
+    }
+  }
 }
 
 

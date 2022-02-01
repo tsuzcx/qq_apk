@@ -2,8 +2,6 @@ package com.tencent.biz.subscribe.account_folder.recommend_banner;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StImage;
-import aaej;
-import aafa;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -12,12 +10,14 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bhgr;
 import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import zps;
+import zbh;
+import zby;
 
 public class RecommendBannerEntryItemView
   extends RelativeLayout
@@ -51,19 +51,19 @@ public class RecommendBannerEntryItemView
   
   protected void a(Context paramContext)
   {
-    inflate(paramContext, 2131558792, this);
-    setMinimumHeight(bhgr.a(paramContext, 213.0F));
-    setPadding(bhgr.a(paramContext, 6.0F), bhgr.a(paramContext, 10.0F), bhgr.a(paramContext, 6.0F), bhgr.a(paramContext, 20.0F));
+    inflate(paramContext, 2131558800, this);
+    setMinimumHeight(DisplayUtil.dip2px(paramContext, 213.0F));
+    setPadding(DisplayUtil.dip2px(paramContext, 6.0F), DisplayUtil.dip2px(paramContext, 10.0F), DisplayUtil.dip2px(paramContext, 6.0F), DisplayUtil.dip2px(paramContext, 20.0F));
     setWillNotDraw(false);
     setLayerType(1, null);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131363109));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131363126));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(ImmersiveUtils.a(7.0F));
-    this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131363124));
+    this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131363141));
     this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(ImmersiveUtils.a(7.0F));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371813));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371777));
     this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131361947));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372765));
-    setOnClickListener(new aafa(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372733));
+    setOnClickListener(new zby(this));
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -82,10 +82,10 @@ public class RecommendBannerEntryItemView
     {
       if (!this.jdField_b_of_type_Boolean)
       {
-        i2 = bhgr.a(getContext(), 5.0F);
-        localPaint.setShadowLayer(bhgr.a(getContext(), 15.0F), 0, i2, 436207616);
+        i2 = DisplayUtil.dip2px(getContext(), 5.0F);
+        localPaint.setShadowLayer(DisplayUtil.dip2px(getContext(), 15.0F), 0, i2, 436207616);
       }
-      int i2 = bhgr.a(getContext(), 6.0F);
+      int i2 = DisplayUtil.dip2px(getContext(), 6.0F);
       paramCanvas.drawRoundRect(new RectF(i, j, k - m, n - i1), i2, i2, localPaint);
       super.onDraw(paramCanvas);
       return;
@@ -100,10 +100,10 @@ public class RecommendBannerEntryItemView
       return;
     }
     if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.cover != null) {
-      zps.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.cover.url.get(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getWidth(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getHeight(), null, "");
+      UIUtils.setViewByURL(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.cover.url.get(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getWidth(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getHeight(), null, "");
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.title.get());
-    if (aaej.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.type.get()))
+    if (zbh.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.type.get()))
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       return;

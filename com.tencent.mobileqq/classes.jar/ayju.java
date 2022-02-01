@@ -1,18 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.support.v4.app.FragmentActivity;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.profile.CoverDetailFragment;
 
-public final class ayju
-  implements Parcelable.Creator<PicInfo>
+public class ayju
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public PicInfo a(Parcel paramParcel)
-  {
-    return new PicInfo(paramParcel);
-  }
+  public ayju(CoverDetailFragment paramCoverDetailFragment) {}
   
-  public PicInfo[] a(int paramInt)
+  public void onGlobalLayout()
   {
-    return new PicInfo[paramInt];
+    if (Build.VERSION.SDK_INT >= 16) {
+      CoverDetailFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+    for (;;)
+    {
+      Object localObject = this.a.getActivity().getResources().getDrawable(2130850679);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestWidth = CoverDetailFragment.a(this.a).getWidth();
+      localURLDrawableOptions.mRequestHeight = CoverDetailFragment.a(this.a).getHeight();
+      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
+      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
+      localObject = URLDrawable.getDrawable(CoverDetailFragment.a(this.a).d, localURLDrawableOptions);
+      ((URLDrawable)localObject).setURLDrawableListener(CoverDetailFragment.a(this.a));
+      CoverDetailFragment.a(this.a).setImageDrawable((Drawable)localObject);
+      CoverDetailFragment.b(this.a).setImageDrawable(this.a.a((Drawable)localObject));
+      return;
+      CoverDetailFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
   }
 }
 

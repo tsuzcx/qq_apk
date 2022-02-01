@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ainh;
+import ahiu;
 
 public class PublicAccountChatPie$63
   implements Runnable
 {
-  public PublicAccountChatPie$63(ainh paramainh) {}
+  public PublicAccountChatPie$63(ahiu paramahiu) {}
   
   public void run()
   {
     boolean bool = false;
-    ainh localainh = this.this$0;
-    if ((this.this$0.b(true)) || (this.this$0.b(false))) {
+    ahiu localahiu = this.this$0;
+    if ((this.this$0.a(true)) || (this.this$0.a(false))) {
       bool = true;
     }
-    localainh.ar = bool;
+    localahiu.A = bool;
   }
 }
 

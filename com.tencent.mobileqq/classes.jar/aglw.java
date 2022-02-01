@@ -1,28 +1,24 @@
-import android.view.animation.Transformation;
-import android.view.animation.TranslateAnimation;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class aglw
-  extends TranslateAnimation
+  implements vmy
 {
-  public int a = 0;
+  long jdField_a_of_type_Long;
+  aglx jdField_a_of_type_Aglx;
+  String jdField_a_of_type_JavaLangString;
   
-  public aglw()
+  public void a(aglx paramaglx, String paramString, long paramLong)
   {
-    this(1, 0.0F, 1, -1.0F, 1, 0.0F, 1, 0.0F);
+    this.jdField_a_of_type_Aglx = paramaglx;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public aglw(int paramInt1, float paramFloat1, int paramInt2, float paramFloat2, int paramInt3, float paramFloat3, int paramInt4, float paramFloat4)
-  {
-    super(paramInt1, paramFloat1, paramInt2, paramFloat2, paramInt3, paramFloat3, paramInt4, paramFloat4);
-  }
+  public void a(String paramString1, String paramString2, int paramInt) {}
   
-  public boolean getTransformation(long paramLong, Transformation paramTransformation)
-  {
-    if (!agks.a) {
-      setStartTime(paramLong);
-    }
-    return super.getTransformation(paramLong, paramTransformation);
-  }
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
+  
+  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 

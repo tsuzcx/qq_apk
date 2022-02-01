@@ -1,40 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import java.util.ArrayList;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class bfkd
-  extends BroadcastReceiver
+class bfkd
+  extends bgod
 {
-  public bfkd(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  bfkd(bfkc parambfkc, File paramFile, bfke parambfke) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onDone(bgoe parambgoe)
   {
-    paramContext = paramIntent.getAction();
-    if ("key_photo_delete_action".equals(paramContext))
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupCatalogTool", 2, "getChoiceListFromServer download suc ");
+    }
+    if ((parambgoe.a == 0) && (this.jdField_a_of_type_JavaIoFile.exists()) && (this.jdField_a_of_type_Bfkc.a(BaseApplicationImpl.getContext())) && (this.jdField_a_of_type_Bfkc.b(BaseApplicationImpl.getContext())))
     {
-      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
-      if ((i >= 0) && (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())) {
-        this.a.jdField_a_of_type_JavaUtilArrayList.remove(i);
+      this.jdField_a_of_type_Bfkc.a(BaseApplicationImpl.getContext(), System.currentTimeMillis());
+      if (this.jdField_a_of_type_Bfke != null) {
+        this.jdField_a_of_type_Bfke.a(true);
       }
     }
-    do
+    for (int i = 1;; i = 0)
     {
-      do
+      if ((i == 0) && (this.jdField_a_of_type_Bfke != null))
       {
-        return;
-        if (!"key_audio_delete_action".equals(paramContext)) {
-          break;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-      } while (!this.a.k);
-      bgqv.a(this.a.m, this.a.n, "del_record", this.a.o, "", "", "");
+        QLog.e("GroupCatalogTool", 1, "getChoiceListFromServer failed!");
+        this.jdField_a_of_type_Bfke.a(false);
+      }
       return;
-    } while (!"key_photo_add_action".equals(paramContext));
-    this.a.h();
+    }
   }
 }
 

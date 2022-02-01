@@ -1,50 +1,83 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class arni
 {
-  private int a = 1;
+  private arnj jdField_a_of_type_Arnj;
+  private arnk jdField_a_of_type_Arnk;
+  private arnl jdField_a_of_type_Arnl;
+  private arnm jdField_a_of_type_Arnm;
   
-  @NonNull
-  public static arni a()
+  public arni(armn paramarmn)
   {
-    return new arni();
+    this.jdField_a_of_type_Arnm = new arnm(this, paramarmn);
+    this.jdField_a_of_type_Arnl = new arnl(this, paramarmn);
+    this.jdField_a_of_type_Arnk = new arnk(this, paramarmn);
+    this.jdField_a_of_type_Arnj = this.jdField_a_of_type_Arnm;
   }
   
-  @NonNull
-  public static arni a(@Nullable String paramString)
+  public int a()
   {
-    arni localarni = new arni();
-    try
+    return this.jdField_a_of_type_Arnj.a;
+  }
+  
+  public arnj a(int paramInt)
+  {
+    switch (paramInt)
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        localarni.a = new JSONObject(paramString).getInt("use_apm");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("QVIP.SDK.ConfigProcessor", 1, " : " + localarni.toString());
-      }
-      return localarni;
+    case 1: 
+    default: 
+      return this.jdField_a_of_type_Arnk;
+    case 0: 
+      return this.jdField_a_of_type_Arnm;
     }
-    catch (Exception paramString)
+    return this.jdField_a_of_type_Arnl;
+  }
+  
+  public void a(int paramInt)
+  {
+    b(paramInt, -1);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 != this.jdField_a_of_type_Arnj.a)
     {
-      for (;;)
+      arnj localarnj = a(paramInt1);
+      if (localarnj != null)
       {
-        QLog.e("QVIP.SDK.ConfigProcessor", 1, "json parse error:" + paramString);
+        this.jdField_a_of_type_Arnj.a();
+        this.jdField_a_of_type_Arnj = localarnj;
+        this.jdField_a_of_type_Arnj.a(paramInt2);
       }
     }
   }
   
-  public String toString()
+  public void b(int paramInt1, int paramInt2)
   {
-    return "QVipPerfLevelConfig{use_apm=" + this.a + '}';
+    c(paramInt1, paramInt2);
+    int i = this.jdField_a_of_type_Arnj.a;
+    if ((!this.jdField_a_of_type_Arnj.a(paramInt1, paramInt2)) && (QLog.isColorLevel())) {
+      QLog.e("LimitChatUiStateMachine", 2, "state " + i + " not handle event " + paramInt1 + ", subEvent " + paramInt2);
+    }
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    }
+    do
+    {
+      return;
+    } while (this.jdField_a_of_type_Arnj.a == 0);
+    this.jdField_a_of_type_Arnj.b();
+    this.jdField_a_of_type_Arnj = this.jdField_a_of_type_Arnm;
+    this.jdField_a_of_type_Arnj.a(-1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arni
  * JD-Core Version:    0.7.0.1
  */

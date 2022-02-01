@@ -1,28 +1,72 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aqcn
-  implements ArkAppCacheMgr.OnGetAppIcon
+public class aqcn
+  extends aptq<aqco>
 {
-  aqcn(aqcm paramaqcm, aqcq paramaqcq) {}
-  
-  public void callback(String paramString, Bitmap paramBitmap)
+  public static aqco a()
   {
-    if (paramBitmap != null)
-    {
-      this.jdField_a_of_type_Aqcq.b.setVisibility(0);
-      this.jdField_a_of_type_Aqcq.a.setVisibility(0);
-      this.jdField_a_of_type_Aqcq.a.setImageBitmap(paramBitmap);
-      return;
+    return (aqco)apub.a().a(647);
+  }
+  
+  @NonNull
+  public aqco a(int paramInt)
+  {
+    return new aqco();
+  }
+  
+  @Nullable
+  public aqco a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return aqco.a(paramArrayOfaptx);
     }
-    this.jdField_a_of_type_Aqcq.a.setVisibility(8);
+    return null;
+  }
+  
+  public void a(aqco paramaqco)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichmediaHttpsConfProcessor", 2, "RichmediaHttpsConfProcessor onUpdate");
+    }
+  }
+  
+  public Class<aqco> clazz()
+  {
+    return aqco.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 647;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqcn
  * JD-Core Version:    0.7.0.1
  */

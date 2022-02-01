@@ -1,31 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class xrk
-  implements View.OnClickListener
+public class xrk<T>
+  extends xrj
 {
-  public xrk(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public T a;
+  public String a;
+  public xrm<T> a;
   
-  public void onClick(View paramView)
+  public xrk(xrm<T> paramxrm)
   {
-    if (!bhnv.g(this.a.jdField_a_of_type_AndroidViewView.getContext())) {
-      QQToast.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131693963, 0).a();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      VideoViewVideoHolder.a(this.a, 2);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-      this.a.a();
+    this.jdField_a_of_type_JavaLangString = "GetResultSimpleStep";
+    this.jdField_a_of_type_Xrm = paramxrm;
+  }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Xrm != null) {
+      this.jdField_a_of_type_Xrm.a(this.jdField_a_of_type_JavaLangObject);
     }
   }
+  
+  public void a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

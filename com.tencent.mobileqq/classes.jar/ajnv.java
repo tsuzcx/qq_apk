@@ -1,23 +1,22 @@
-import android.widget.TextView;
-import com.tencent.widget.AbsListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajnv
-  implements blih
+public class ajnv
+  implements View.OnClickListener
 {
-  ajnv(ajnu paramajnu) {}
+  public ajnv(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  private boolean a(AbsListView paramAbsListView)
+  public void onClick(View paramView)
   {
-    return (paramAbsListView.getChildAt(paramAbsListView.getChildCount() - 1) == this.a.a) && (this.a.a.getBottom() == this.a.a.getBottom());
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) && (a(paramAbsListView))) {
-      this.a.f();
+    if (this.a.b) {
+      bcef.b(this.a.app, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
     }
+    this.a.finish();
+    AlbumUtil.anim(this.a, true, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

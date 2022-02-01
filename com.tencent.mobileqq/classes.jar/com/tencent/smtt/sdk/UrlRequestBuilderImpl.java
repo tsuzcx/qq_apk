@@ -57,11 +57,11 @@ public class UrlRequestBuilderImpl
   
   public UrlRequest build()
   {
-    Object localObject1 = v.a();
+    Object localObject1 = x.a();
     Object localObject2;
-    if ((localObject1 != null) && (((v)localObject1).b()))
+    if ((localObject1 != null) && (((x)localObject1).b()))
     {
-      DexLoader localDexLoader = ((v)localObject1).c().b();
+      DexLoader localDexLoader = ((x)localObject1).c().b();
       localObject1 = Integer.TYPE;
       localObject2 = Boolean.TYPE;
       String str1 = this.b;
@@ -148,6 +148,19 @@ public class UrlRequestBuilderImpl
     }
     this.k = paramString1;
     this.l = paramString2;
+    try
+    {
+      paramString1 = x.a();
+      if ((paramString1 != null) && (paramString1.b()))
+      {
+        paramString1 = paramString1.c().b();
+        paramString2 = this.k;
+        String str = this.l;
+        paramString1.invokeStaticMethod("com.tencent.smtt.net.X5UrlRequestProvider", "setDns", new Class[] { String.class, String.class }, new Object[] { paramString2, str });
+      }
+      return this;
+    }
+    catch (Exception paramString1) {}
     return this;
   }
   

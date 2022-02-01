@@ -1,75 +1,158 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchStoryPollData;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchStoryPollData;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidPollInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VidRateInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import feedcloud.FeedCloudMeta.StTagInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import qqcircle.QQCircleFeedBase.StMainPageBusiRspData;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class wcj
-  implements aabg<QCircleReportBean>
+  implements vqp<wdw<qqstory_service.ReqBatchStoryPollData>, wfu>
 {
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  protected QCircleReportBean a;
-  private List<FeedCloudMeta.StTagInfo> jdField_a_of_type_JavaUtilList;
-  private wcl jdField_a_of_type_Wcl;
+  public static final String a;
+  public ArrayList<String> a;
   
-  public QCircleReportBean a()
+  static
   {
-    return QCircleReportBean.getReportBean(a(), this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean);
+    jdField_a_of_type_JavaLangString = vpl.a("StorySvc.batch_poll_data");
   }
   
-  protected String a()
+  public wcj(List<String> paramList)
   {
-    return "QCircleTaglistView";
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
   }
   
-  public void a(View paramView)
+  public static void a(@NonNull List<String> paramList)
   {
-    if (paramView != null)
+    int j = paramList.size();
+    int i = 0;
+    while (i < j)
     {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131374080));
-      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131381114);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOverScrollMode(2);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
-      paramView = new LinearLayoutManager(paramView.getContext());
-      paramView.setOrientation(0);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramView);
-      this.jdField_a_of_type_Wcl = new wcl(this, null);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Wcl);
+      new wcj(paramList.subList(i, Math.min(i + 5, j))).a();
+      i += 5;
     }
   }
   
-  public void a(QCircleReportBean paramQCircleReportBean)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqcircleReportQCircleReportBean = QCircleReportBean.setReportBean(a(), paramQCircleReportBean);
+    Object localObject = new qqstory_service.ReqBatchStoryPollData();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      ((qqstory_service.ReqBatchStoryPollData)localObject).vid_list.add(ByteStringMicro.copyFromUtf8(str));
+    }
+    localObject = new wdw(jdField_a_of_type_JavaLangString, (MessageMicro)localObject, null);
+    vqn.a().a((vqr)localObject, this);
   }
   
-  public void a(Object paramObject)
+  public void a(@NonNull wdw<qqstory_service.ReqBatchStoryPollData> paramwdw, @Nullable wfu paramwfu, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((paramObject instanceof QQCircleFeedBase.StMainPageBusiRspData))
+    if ((paramErrorMessage.isFail()) || (paramwfu == null))
     {
-      this.jdField_a_of_type_JavaUtilList = ((QQCircleFeedBase.StMainPageBusiRspData)paramObject).recomTagList.get();
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
-        break label75;
-      }
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(0);
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
-      if (this.jdField_a_of_type_Wcl != null) {
-        this.jdField_a_of_type_Wcl.a(this.jdField_a_of_type_JavaUtilList);
-      }
-    }
-    label75:
-    do
-    {
+      xvv.c("Q.qqstory.pollData.GetVidPollInfoHandler", "Error onCmdRespond:%s", paramErrorMessage);
       return;
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
-    } while (this.jdField_a_of_type_AndroidViewView == null);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    paramwdw = new qqstory_service.RspBatchStoryPollData();
+    Object localObject;
+    StoryVideoItem localStoryVideoItem;
+    int j;
+    qqstory_struct.UserInfo localUserInfo;
+    QQUserUIItem localQQUserUIItem;
+    for (;;)
+    {
+      try
+      {
+        paramwdw.mergeFrom(paramwfu.a);
+        paramwfu = (vuu)vux.a(5);
+        paramErrorMessage = new wck();
+        i = 0;
+        if (i >= paramwdw.poll_info_list.size()) {
+          break;
+        }
+        localObject = (qqstory_struct.VidPollInfo)paramwdw.poll_info_list.get(i);
+        localStoryVideoItem = paramwfu.a(((qqstory_struct.VidPollInfo)localObject).vid.get().toStringUtf8());
+        if (localStoryVideoItem == null) {
+          break label271;
+        }
+        localStoryVideoItem.mPollUsers.clear();
+        localStoryVideoItem.mPollResult = ((qqstory_struct.VidPollInfo)localObject).self_poll_result.get();
+        int k = ((qqstory_struct.VidPollInfo)localObject).video_poll_result.size();
+        localStoryVideoItem.mPollNumbers = new int[k];
+        j = 0;
+        if (j < k)
+        {
+          localStoryVideoItem.mPollNumbers[j] = ((Integer)((qqstory_struct.VidPollInfo)localObject).video_poll_result.get(j)).intValue();
+          j += 1;
+          continue;
+        }
+        j = 0;
+      }
+      catch (InvalidProtocolBufferMicroException paramwdw)
+      {
+        xvv.c("Q.qqstory.pollData.GetVidPollInfoHandler", "onCmdRespond Request parse Error!", paramwdw);
+        return;
+      }
+      while (j < ((qqstory_struct.VidPollInfo)localObject).video_poll_users.size())
+      {
+        localUserInfo = (qqstory_struct.UserInfo)((qqstory_struct.VidPollInfo)localObject).video_poll_users.get(j);
+        localQQUserUIItem = new QQUserUIItem();
+        localQQUserUIItem.convertFrom(localUserInfo);
+        localStoryVideoItem.mPollUsers.add(localQQUserUIItem);
+        j += 1;
+      }
+      paramwfu.a(localStoryVideoItem);
+      label271:
+      paramErrorMessage.a.add(localObject);
+      i += 1;
+    }
+    int i = 0;
+    while (i < paramwdw.rate_info_list.size())
+    {
+      localObject = (qqstory_struct.VidRateInfo)paramwdw.rate_info_list.get(i);
+      xvv.b("Q.qqstory.pollData.GetVidPollInfoHandler", "onCmdRespond, VidRateInfo:[vid=%s, selfRateResult=%s, totalRateCount=%s, totalRateScore=%s]", ((qqstory_struct.VidRateInfo)localObject).vid.get().toStringUtf8(), Integer.valueOf(((qqstory_struct.VidRateInfo)localObject).self_rate_result.get()), Integer.valueOf(((qqstory_struct.VidRateInfo)localObject).total_rate_count.get()), Long.valueOf(((qqstory_struct.VidRateInfo)localObject).total_rate_score.get()));
+      localStoryVideoItem = paramwfu.a(((qqstory_struct.VidRateInfo)localObject).vid.get().toStringUtf8());
+      if (localStoryVideoItem != null)
+      {
+        localStoryVideoItem.mRateResult = ((qqstory_struct.VidRateInfo)localObject).self_rate_result.get();
+        localStoryVideoItem.mTotalRateCount = ((qqstory_struct.VidRateInfo)localObject).total_rate_count.get();
+        localStoryVideoItem.mTotalScore = ((qqstory_struct.VidRateInfo)localObject).total_rate_score.get();
+        localStoryVideoItem.mRateUsers.clear();
+        j = 0;
+        while (j < ((qqstory_struct.VidRateInfo)localObject).video_rate_users.size())
+        {
+          localUserInfo = (qqstory_struct.UserInfo)((qqstory_struct.VidRateInfo)localObject).video_rate_users.get(j);
+          localQQUserUIItem = new QQUserUIItem();
+          localQQUserUIItem.convertFrom(localUserInfo);
+          localStoryVideoItem.mRateUsers.add(localQQUserUIItem);
+          j += 1;
+        }
+        paramwfu.a(localStoryVideoItem);
+      }
+      paramErrorMessage.b.add(localObject);
+      i += 1;
+    }
+    vli.a().dispatch(paramErrorMessage);
+    yqh.a(QQStoryContext.a());
   }
 }
 

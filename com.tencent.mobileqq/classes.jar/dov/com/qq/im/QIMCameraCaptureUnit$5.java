@@ -1,30 +1,17 @@
 package dov.com.qq.im;
 
-import bocn;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import blhu;
+import com.tencent.qphone.base.util.QLog;
 
 public class QIMCameraCaptureUnit$5
   implements Runnable
 {
-  public QIMCameraCaptureUnit$5(bocn parambocn) {}
+  public QIMCameraCaptureUnit$5(blhu paramblhu) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), this.this$0.jdField_a_of_type_JavaLangString, 0).a();
-    if (this.this$0.h) {
-      this.this$0.J();
-    }
-    if (this.this$0.b == 5) {
-      this.this$0.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.this$0.L();
-      return;
-      this.this$0.g();
-    }
+    QLog.d("QIMCameraCaptureUnit", 2, "onVideoCaptured. mDanceRestartToRecord = true  restart to record.");
+    this.this$0.g();
   }
 }
 

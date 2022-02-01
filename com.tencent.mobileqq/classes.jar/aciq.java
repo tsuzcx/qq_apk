@@ -1,68 +1,13 @@
-import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
-import java.util.Map;
+import com.tencent.mfsdk.impls.memory.MemoryDumpHelper.5;
 
 public class aciq
-  implements avla
+  implements acht
 {
-  public aciq(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
+  public aciq(MemoryDumpHelper.5 param5) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void a()
   {
-    acis localacis;
-    if (paramInt1 == 3)
-    {
-      localacis = (acis)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
-      if (localacis != null) {
-        this.a.callJs(localacis.g + "(" + localacis.a() + ");");
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (paramInt1 != 5) {
-              break;
-            }
-            localacis = (acis)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
-          } while (localacis == null);
-          this.a.callJs(localacis.f + "(" + localacis.a() + ");");
-          return;
-          if (paramInt1 != 7) {
-            break;
-          }
-          localacis = (acis)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
-        } while (localacis == null);
-        this.a.callJs(localacis.h + "(" + localacis.a() + ");");
-        return;
-      } while (paramInt1 != 0);
-      localacis = (acis)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
-    } while (localacis == null);
-    this.a.callJs(localacis.i + "(" + localacis.a() + ");");
-  }
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    acis localacis = (acis)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt));
-    if (localacis != null)
-    {
-      localacis.c = paramBoolean;
-      this.a.callJs(localacis.d + "(" + localacis.a() + ");");
-    }
-  }
-  
-  public void b(boolean paramBoolean, int paramInt)
-  {
-    acis localacis = (acis)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt));
-    if (localacis != null)
-    {
-      localacis.a = paramBoolean;
-      this.a.callJs(localacis.e + "(" + localacis.a() + ");");
-    }
+    acin.c(this.a.this$0);
   }
 }
 

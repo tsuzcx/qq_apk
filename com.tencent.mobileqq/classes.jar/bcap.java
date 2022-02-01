@@ -1,19 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.BaseSearchActivity;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngSoLoader;
+import com.tencent.image.ProtocolDownloader;
+import com.tencent.image.URLDrawableParams;
+import com.tencent.mobileqq.transfile.HttpDownloader;
+import com.tencent.mobileqq.vas.VasApngIPCModule;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.app.MobileQQ;
 
 public class bcap
-  implements View.OnClickListener
+  extends URLDrawableParams
 {
-  public bcap(BaseSearchActivity paramBaseSearchActivity) {}
+  private ProtocolDownloader a;
   
-  public void onClick(View paramView)
+  public bcap(MobileQQ paramMobileQQ)
   {
-    BaseSearchActivity.b = 1;
-    this.a.a.setText("");
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramMobileQQ);
+  }
+  
+  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
+  {
+    if ((("http".equals(paramString)) || ("https".equals(paramString))) && (this.a == null)) {
+      this.a = new HttpDownloader();
+    }
+    return this.a;
+  }
+  
+  public String doGetLocalFilePath(String paramString)
+  {
+    return null;
+  }
+  
+  public ApngSoLoader getApngSoLoader()
+  {
+    return VasApngIPCModule.getInstance();
+  }
+  
+  public Drawable getDefaultLoadingDrawable()
+  {
+    return BaseApplicationImpl.getContext().getResources().getDrawable(2130847755);
+  }
+  
+  public Drawable getDefualtFailedDrawable()
+  {
+    return BaseApplicationImpl.getContext().getResources().getDrawable(2130847755);
   }
 }
 

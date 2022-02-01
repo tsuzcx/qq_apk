@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import android.view.View;
 
 public class bclo
-  extends bcmb
 {
-  public bclo(GroupSearchEngine paramGroupSearchEngine, bcmc parambcmc, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, parambcmc, paramString, paramInt);
-  }
-  
-  public bcfq a(List<bcfr> paramList, String paramString)
-  {
-    return new bcdj(paramList, paramString, GroupSearchEngine.a(this.a));
-  }
+  public View a;
+  public String a;
+  public View b;
+  public View c;
+  public View d;
 }
 
 

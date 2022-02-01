@@ -1,13 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-
-public class aqny
-  implements DialogInterface.OnClickListener
+public abstract interface aqny
 {
-  public aqny(CardPicGalleryActivity paramCardPicGalleryActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(aqoa paramaqoa);
 }
 
 

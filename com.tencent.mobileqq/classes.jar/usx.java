@@ -1,106 +1,305 @@
-import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stSimpleMetaGdtAdInfo;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import com.tencent.ad.tangram.util.AdExposureChecker;
-import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnCaptureImageListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnErrorListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnInfoListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnSeekCompleteListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnVideoPreparedListener;
+import com.tencent.superplayer.api.SuperPlayerVideoInfo;
+import com.tencent.superplayer.seamless.SPSeamlessHelper;
+import com.tencent.superplayer.view.ISPlayerVideoView;
+import com.tencent.thumbplayer.api.TPPlayerMsg.TPCDNURLInfo;
+import com.tencent.thumbplayer.api.TPPlayerMsg.TPDownLoadProgressInfo;
+import java.util.Properties;
 
 public class usx
-  extends uuy
+  implements ISuperPlayer.OnCaptureImageListener, ISuperPlayer.OnCompletionListener, ISuperPlayer.OnErrorListener, ISuperPlayer.OnInfoListener, ISuperPlayer.OnSeekCompleteListener, ISuperPlayer.OnVideoPreparedListener, usk<Object, SuperPlayerVideoInfo>
 {
-  public AdExposureChecker.ExposureCallback a;
-  public ArrayList<AdExposureChecker> a;
+  private ISuperPlayer jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+  private usm jdField_a_of_type_Usm;
+  private usr jdField_a_of_type_Usr;
   
-  public usx(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
+  public usx(ISuperPlayer paramISuperPlayer)
   {
-    super(paramViewGroup, 2131560017, paramInt, paramWSVerticalPageFragment);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = paramISuperPlayer;
   }
   
-  public FrameLayout a()
+  private int a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Uek instanceof uth))
+    switch (paramInt)
     {
-      utq localutq = (utq)this.jdField_a_of_type_Uek;
-      if ((localutq.a() instanceof uuo)) {
-        return ((uuo)localutq.a()).a();
-      }
+    default: 
+      return 0;
+    case 1: 
+      return 1;
+    case 2: 
+      return 2;
     }
-    return null;
+    return 3;
   }
   
-  public uek<usv> a(int paramInt)
+  private int b(int paramInt)
   {
-    return new uth(a(), this);
+    switch (paramInt)
+    {
+    default: 
+      return paramInt;
+    case 112: 
+      return 112;
+    }
+    return 113;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getVideoWidth();
+    }
+    return 0;
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs();
+    }
+    return 0L;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getStreamDumpInfo();
+    }
+    return "";
+  }
+  
+  public Properties a()
+  {
+    return null;
   }
   
   public void a()
   {
-    Object localObject;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((AdExposureChecker)((Iterator)localObject).next()).onActivityResume();
-      }
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.start();
     }
-    if (this.jdField_a_of_type_JavaLangObject != null)
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setXYaxis(a(paramInt));
+    }
+  }
+  
+  public void a(Context paramContext, long paramLong, int paramInt, usj<Object, SuperPlayerVideoInfo> paramusj)
+  {
+    if ((this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && (paramusj != null)) {
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.openMediaPlayer(paramContext, (SuperPlayerVideoInfo)paramusj.c(), paramLong);
+    }
+  }
+  
+  public void a(usm paramusm)
+  {
+    this.jdField_a_of_type_Usm = paramusm;
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null)
     {
-      localObject = (stSimpleMetaFeed)((usv)this.jdField_a_of_type_JavaLangObject).a();
-      if ((localObject != null) && (((stSimpleMetaFeed)localObject).gdt_ad_type == 1) && (((stSimpleMetaFeed)localObject).gdt_ad_info != null))
-      {
-        usw.a(BaseApplicationImpl.getContext(), (stSimpleMetaFeed)((usv)this.jdField_a_of_type_JavaLangObject).a());
-        ((usv)this.jdField_a_of_type_JavaLangObject).a().isGdtAdVidoReport = false;
-        this.jdField_a_of_type_Uek.a(this.jdField_a_of_type_JavaLangObject);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnVideoPreparedListener(this);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnCompletionListener(this);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnErrorListener(this);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnInfoListener(this);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnCaptureImageListener(this);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnSeekCompleteListener(this);
+    }
+  }
+  
+  public void a(usr paramusr)
+  {
+    this.jdField_a_of_type_Usr = paramusr;
+    if ((this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && (paramusr != null))
+    {
+      paramusr = paramusr.a();
+      if ((paramusr instanceof ISPlayerVideoView)) {
+        this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.updatePlayerVideoView((ISPlayerVideoView)paramusr);
       }
     }
   }
   
-  protected boolean a()
+  public void a(usr paramusr, ViewGroup paramViewGroup)
   {
-    return true;
+    if (paramusr != null)
+    {
+      paramusr = paramusr.a();
+      if ((paramusr instanceof ISPlayerVideoView)) {
+        SPSeamlessHelper.get().attachVideoView(paramViewGroup, (ISPlayerVideoView)paramusr, new ViewGroup.LayoutParams(-1, -1));
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setLoopback(paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying());
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getVideoHeight();
+    }
+    return 0;
+  }
+  
+  public long b()
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getCurrentPositionMs();
+    }
+    return 0L;
   }
   
   public void b()
   {
-    Object localObject;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
-    {
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((AdExposureChecker)((Iterator)localObject).next()).onActivityPause();
-      }
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.pause();
     }
-    if (this.jdField_a_of_type_JavaLangObject != null)
-    {
-      localObject = (stSimpleMetaFeed)((usv)this.jdField_a_of_type_JavaLangObject).a();
-      stSimpleMetaGdtAdInfo localstSimpleMetaGdtAdInfo = ((usv)this.jdField_a_of_type_JavaLangObject).a();
-      if ((localstSimpleMetaGdtAdInfo != null) && (localObject != null) && (((stSimpleMetaFeed)localObject).gdt_ad_type == 1) && (((stSimpleMetaFeed)localObject).gdt_ad_info != null) && (this.jdField_a_of_type_Ukz != null) && (this.jdField_a_of_type_Ukz.jdField_a_of_type_Ulc != null))
-      {
-        uvt.a((stSimpleMetaFeed)localObject, this.jdField_a_of_type_Ukz);
-        localstSimpleMetaGdtAdInfo.isGdtAdVidoReport = true;
-        this.jdField_a_of_type_Ukz.jdField_a_of_type_Long = this.jdField_a_of_type_Ukz.jdField_a_of_type_Ulc.a();
-      }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.seekTo(paramInt);
     }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOutputMute(paramBoolean);
+    }
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPausing());
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    if ((this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && (this.jdField_a_of_type_Usr != null))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      View localView = this.jdField_a_of_type_Usr.a();
+      if ((localView instanceof ISPlayerVideoView))
       {
-        AdExposureChecker localAdExposureChecker = (AdExposureChecker)localIterator.next();
-        localAdExposureChecker.onActivityDestroy();
-        localAdExposureChecker.setCallback(null);
+        this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.reset();
+        this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.updatePlayerVideoView((ISPlayerVideoView)localView);
       }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = null;
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null)
+    {
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.stop();
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.release();
+    }
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.pauseDownload();
+    }
+  }
+  
+  public void f()
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.resumeDownload();
+    }
+  }
+  
+  public void onCaptureImageFailed(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Usm != null) {
+      this.jdField_a_of_type_Usm.a(this, paramInt1, paramInt2);
+    }
+  }
+  
+  public void onCaptureImageSucceed(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
+  {
+    if (this.jdField_a_of_type_Usm != null) {
+      this.jdField_a_of_type_Usm.a(this, paramInt1, paramInt2, paramInt3, paramBitmap);
+    }
+  }
+  
+  public void onCompletion(ISuperPlayer paramISuperPlayer)
+  {
+    if (this.jdField_a_of_type_Usm != null) {
+      this.jdField_a_of_type_Usm.b(this);
+    }
+  }
+  
+  public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    if (this.jdField_a_of_type_Usm != null) {
+      return this.jdField_a_of_type_Usm.a(this, paramInt1, paramInt2, paramInt3, paramString);
+    }
+    return false;
+  }
+  
+  public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
+  {
+    uya.e("WS_VIDEO_SuperPlayerImpl", "[SuperPlayerImpl.java][onInfo] what:" + paramInt + ", arg1:" + paramLong1 + ", arg2:" + paramLong2 + ", extra:" + paramObject);
+    switch (paramInt)
+    {
+    }
+    while (this.jdField_a_of_type_Usm != null)
+    {
+      return this.jdField_a_of_type_Usm.a(this, b(paramInt), paramObject);
+      if ((paramObject instanceof TPPlayerMsg.TPDownLoadProgressInfo))
+      {
+        paramISuperPlayer = (TPPlayerMsg.TPDownLoadProgressInfo)paramObject;
+        if (this.jdField_a_of_type_Usm != null) {
+          this.jdField_a_of_type_Usm.a(paramISuperPlayer.downloadSpeedKBps, paramISuperPlayer.totalFileSize, paramISuperPlayer.extraInfo);
+        }
+        return true;
+        if ((paramObject instanceof TPPlayerMsg.TPCDNURLInfo))
+        {
+          paramISuperPlayer = (TPPlayerMsg.TPCDNURLInfo)paramObject;
+          uya.d("WS_VIDEO_SuperPlayerImpl", "[SuperPlayerImpl.java][onInfo] TPCDNURLInfo url:" + paramISuperPlayer.url + ", uIp:" + paramISuperPlayer.uIp + ", cdnIp:" + paramISuperPlayer.cdnIp + ", errorStr:" + paramISuperPlayer.errorStr);
+          continue;
+          uya.e("WS_VIDEO_SuperPlayerImpl", "[SuperPlayerImpl.java][onInfo] PLAYER_INFO_ALL_DOWNLOAD_FINISH!");
+        }
+      }
+    }
+    return false;
+  }
+  
+  public void onSeekComplete(ISuperPlayer paramISuperPlayer)
+  {
+    if (this.jdField_a_of_type_Usm != null) {
+      this.jdField_a_of_type_Usm.c(this);
+    }
+  }
+  
+  public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
+  {
+    if (this.jdField_a_of_type_Usm != null) {
+      this.jdField_a_of_type_Usm.a(this);
     }
   }
 }

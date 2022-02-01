@@ -1,77 +1,32 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 import java.util.List;
 
-public class xkj
-  extends BaseAdapter
+class xkj
+  extends JobSegment<Integer, xnm>
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  List<TroopInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private xnl a;
   
-  public xkj(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView, Context paramContext)
+  public xkj(@NonNull xnl paramxnl)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramxnl;
   }
   
-  public void a(List<TroopInfo> paramList)
+  protected void a(JobContext paramJobContext, Integer paramInteger)
   {
-    if (paramList != null)
+    Object localObject = this.a.a(paramInteger.intValue(), 5);
+    if ((((xnm)localObject).a.size() > 0) || (((xnm)localObject).b))
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      notifyDataSetChanged();
+      xvv.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
+      notifyResult(localObject);
+      return;
     }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    TroopInfo localTroopInfo = (TroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    View localView;
-    if (paramView == null)
-    {
-      paramView = new xkk(this);
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561920, null);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131367946));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371827));
-      localView.setTag(paramView);
-    }
-    for (;;)
-    {
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopInfo.getTroopName());
-      Object localObject = xiz.a().a(localTroopInfo.troopuin);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (xkk)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-    }
+    localObject = new weo();
+    ((weo)localObject).a = this.a.a();
+    ((weo)localObject).b = QQStoryContext.a().b();
+    vqn.a().a((vqr)localObject, new xkk(this, paramJobContext, paramInteger));
   }
 }
 

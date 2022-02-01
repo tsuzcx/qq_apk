@@ -1,28 +1,91 @@
-import android.os.Bundle;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
+import com.tencent.mobileqq.search.mostused.MostUsedSearchResultManager.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
-abstract class bbak<T>
-  extends nkq
+public class bbak
+  implements Manager
 {
-  protected T a;
-  private WeakReference<T> a;
+  private bbaf jdField_a_of_type_Bbaf = new bbaf("Cahce_");
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  bbak(T paramT)
+  public bbak(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramT);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public final void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public ArrayList<bbai> a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (this.jdField_a_of_type_JavaLangObject == null) {
+    if (this.jdField_a_of_type_Bbaf != null)
+    {
+      paramString = this.jdField_a_of_type_Bbaf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
+      if ((paramString != null) && (paramString.size() > 10))
+      {
+        ArrayList localArrayList = new ArrayList(paramString.subList(0, 10));
+        QLog.i("MostUsedSearchResultManager", 2, "tmpResult subList 10 ,orglist is " + paramString.size());
+        return localArrayList;
+      }
+      return paramString;
+    }
+    QLog.e("MostUsedSearchResultManager", 2, "Match with null cache");
+    return null;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bbaf != null)
+    {
+      this.jdField_a_of_type_Bbaf.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      QLog.d("MostUsedSearchResultManager", 2, "init");
       return;
     }
-    b(paramInt, paramArrayOfByte, paramBundle);
-    this.jdField_a_of_type_JavaLangObject = null;
+    QLog.e("MostUsedSearchResultManager", 2, "init with null cache ");
   }
   
-  abstract void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
+  public void a(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    if ((paramString1 == null) || (TextUtils.isEmpty(paramString1))) {
+      return;
+    }
+    if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2))) {}
+    for (String str = paramString2;; str = paramString1)
+    {
+      QLog.d("MostUsedSearchResultManager", 2, "UpdateItemUsed : key= " + paramString1 + " mostusedKey= " + paramString2);
+      int i = bbae.a(paramInt);
+      if (!a(i)) {
+        break;
+      }
+      paramString1 = new MostUsedSearchItem(str, NetConnInfoCenter.getServerTimeMillis(), paramString3, paramInt, i);
+      ThreadManager.getSubThreadHandler().post(new MostUsedSearchResultManager.1(this, paramString1));
+      return;
+      paramString2 = "";
+    }
+  }
+  
+  boolean a(int paramInt)
+  {
+    return (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Bbaf != null) {
+      this.jdField_a_of_type_Bbaf.a();
+    }
+  }
+  
+  public void onDestroy()
+  {
+    b();
+    this.jdField_a_of_type_Bbaf = null;
+    QLog.d("MostUsedSearchResultManager", 2, "onDestroy");
+  }
 }
 
 

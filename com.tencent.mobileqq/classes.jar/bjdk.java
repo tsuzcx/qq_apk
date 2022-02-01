@@ -1,40 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.SlideTabWidget;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
 
-public class bjdk
-  extends Handler
+class bjdk
+  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnPreparedListener
 {
-  public bjdk(SlideTabWidget paramSlideTabWidget) {}
+  bjdk(bjdj parambjdj, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnPreparedListener paramOnPreparedListener) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onPrepared(IMediaPlayer paramIMediaPlayer)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      SlideTabWidget.a(this.a, 0.0F);
-      SlideTabWidget.a(this.a, (float)(SlideTabWidget.a(this.a) + 0.1D));
-      this.a.invalidate();
-      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
-      return;
-    case 1: 
-      if (SlideTabWidget.a(this.a) < 1.0F)
-      {
-        SlideTabWidget.a(this.a, (float)(SlideTabWidget.a(this.a) + 0.1D));
-        if (SlideTabWidget.a(this.a) >= 1.0F) {
-          SlideTabWidget.a(this.a, false);
-        }
-        this.a.invalidate();
-        sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
-        return;
-      }
-      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(2), 10L);
-      return;
-    }
-    SlideTabWidget.a(this.a, 1.0F);
-    SlideTabWidget.a(this.a, SlideTabWidget.a(this.a));
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnPreparedListener.onPrepared(this.jdField_a_of_type_Bjdj);
   }
 }
 

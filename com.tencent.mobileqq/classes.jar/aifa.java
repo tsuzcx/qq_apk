@@ -1,19 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.activity.contact.connections.ThemeTabLayout;
 
-class aifa
-  implements View.OnClickListener
+public class aifa
 {
-  aifa(aiez paramaiez, int paramInt) {}
-  
-  public void onClick(View paramView)
-  {
-    ((PhotoListPanel)this.jdField_a_of_type_Aiez.a.get()).a(paramView, this.jdField_a_of_type_Int);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public ThemeTabLayout a;
 }
 
 

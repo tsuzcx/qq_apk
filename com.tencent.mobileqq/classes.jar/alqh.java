@@ -1,29 +1,15 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.apollo.GLTextureView;
 
 public class alqh
-  extends alqi
+  implements View.OnLayoutChangeListener
 {
-  public alqh(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = anzj.a(2131696569);
-    this.b = this.jdField_a_of_type_JavaLangString;
-  }
+  public alqh(GLTextureView paramGLTextureView) {}
   
-  public Object a(int paramInt, bfoy parambfoy, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if ((paramObject instanceof alqh))
-    {
-      paramObject = (alqh)paramObject;
-      paramObject.jdField_a_of_type_Bfoz.a(parambfoy.jdField_a_of_type_Bfoz);
-      return paramObject;
-    }
-    paramObject = new alqh(BaseApplication.getContext());
-    paramObject.a(paramMessageRecord.senderuin);
-    paramObject.jdField_a_of_type_Bfoz = new bfoz(parambfoy.jdField_a_of_type_Bfoz);
-    return paramObject;
+    this.a.surfaceChanged(this.a.getSurfaceTexture(), 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
   }
 }
 

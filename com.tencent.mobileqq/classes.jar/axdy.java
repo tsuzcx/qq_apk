@@ -1,59 +1,110 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
+import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.text.style.StyleSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class axdy
-  implements CompoundButton.OnCheckedChangeListener
+public class axdy
+  extends BaseAdapter
 {
-  axdy(axdx paramaxdx, NotifyPushSettingActivity paramNotifyPushSettingActivity, FormSwitchItem paramFormSwitchItem1, FormSwitchItem paramFormSwitchItem2) {}
+  private int jdField_a_of_type_Int;
+  private axea jdField_a_of_type_Axea;
+  private List<axfq> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(axea paramaxea)
   {
-    int j = 1;
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("NewMsgNotificationManager", 2, new Object[] { "NEW_MSG_NOTIFICATION_KEY::onCheckedChanged: invoked. ", " isChecked: ", Boolean.valueOf(paramBoolean) });
-    }
-    if (!this.jdField_a_of_type_Axdx.c())
+    this.jdField_a_of_type_Axea = paramaxea;
+  }
+  
+  public void a(List<axfq> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int j = 0;
+    TextView localTextView = (TextView)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561218, paramViewGroup, false);
+    axfq localaxfq = (axfq)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject2 = localaxfq.a;
+    Object localObject1 = localObject2;
+    if (localObject2 != null)
     {
-      this.jdField_a_of_type_Axdx.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-      localFormSwitchItem = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-      if (!this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) {
-        bool = true;
+      localObject1 = localObject2;
+      if (((String)localObject2).length() > 9) {
+        localObject1 = ((String)localObject2).substring(0, 8) + "...";
       }
-      localFormSwitchItem.setChecked(bool);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_Axdx.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
     }
-    FormSwitchItem localFormSwitchItem = this.b;
-    if (paramBoolean)
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder((CharSequence)localObject1);
+    localSpannableStringBuilder.setSpan(new StyleSpan(1), 0, localSpannableStringBuilder.length(), 33);
+    localObject2 = localaxfq.b;
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
-      i = 0;
-      label129:
-      localFormSwitchItem.setVisibility(i);
-      if (anxm.a(this.jdField_a_of_type_Axdx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).h()) {
-        this.b.setVisibility(8);
+      localSpannableStringBuilder.append(" 回复 ");
+      localObject1 = localObject2;
+      if (((String)localObject2).length() > 9) {
+        localObject1 = ((String)localObject2).substring(0, 8) + "...";
       }
-      SettingCloneUtil.writeValue(this.jdField_a_of_type_Axdx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_Axdx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), null, "new_msg_notification_key", paramBoolean);
-      if (!paramBoolean) {
-        break label227;
-      }
+      localSpannableStringBuilder.append((CharSequence)localObject1);
+      localSpannableStringBuilder.setSpan(new StyleSpan(1), localSpannableStringBuilder.length() - ((String)localObject1).length(), localSpannableStringBuilder.length(), 33);
     }
-    label227:
-    for (int i = j;; i = 2)
+    localSpannableStringBuilder.append("：").append(localaxfq.c);
+    localObject1 = localTextView.getPaint();
+    localObject2 = new ArrayList();
+    if (this.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Int = (UIUtils.getWindowScreenWidth(localTextView.getContext()) - UIUtils.dip2px(localTextView.getContext(), 85.0F));
+    }
+    int i = 0;
+    while (i < localSpannableStringBuilder.length())
     {
-      bdll.b(null, "dc00898", "", "", "0X800A511", "0X800A511", i, 0, "", "", "", "");
-      break;
-      i = 8;
-      break label129;
+      int k = j;
+      if (((TextPaint)localObject1).measureText(localSpannableStringBuilder.subSequence(j, i).toString()) > this.jdField_a_of_type_Int)
+      {
+        ((List)localObject2).add(Integer.valueOf(i - 1));
+        k = i;
+      }
+      i += 1;
+      j = k;
     }
+    localObject1 = ((List)localObject2).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (Integer)((Iterator)localObject1).next();
+      if (((Integer)localObject2).intValue() < localSpannableStringBuilder.length() - 1) {
+        localSpannableStringBuilder.insert(((Integer)localObject2).intValue(), "\n");
+      }
+    }
+    localTextView.setText(localSpannableStringBuilder);
+    localTextView.setMovementMethod(LinkMovementMethod.getInstance());
+    localTextView.setOnClickListener(new axdz(this, paramViewGroup));
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localTextView;
   }
 }
 

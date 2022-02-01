@@ -1,30 +1,6 @@
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Random;
-
-public class bdfc
+public abstract interface bdfc
 {
-  private static final SimpleDateFormat a = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.CHINESE);
-  
-  public static String a()
-  {
-    synchronized (a)
-    {
-      int i = new Random().nextInt(10000);
-      String str = a.format(new Date()) + "_" + i;
-      return str;
-    }
-  }
-  
-  public static String a(File paramFile)
-  {
-    if (paramFile == null) {
-      return null;
-    }
-    return paramFile.getName();
-  }
+  public abstract void a(bdfd parambdfd1, bdfd parambdfd2, bdfd parambdfd3);
 }
 
 

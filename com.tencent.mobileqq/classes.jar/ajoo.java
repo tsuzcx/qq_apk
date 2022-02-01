@@ -1,50 +1,23 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ajoo
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray;
-  private View jdField_a_of_type_AndroidViewView;
+  public ajoo(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
   
-  public ajoo(Context paramContext, View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  }
-  
-  public static ajoo a(Context paramContext, View paramView)
-  {
-    return new ajoo(paramContext, paramView);
-  }
-  
-  public static ajoo a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
-  {
-    return new ajoo(paramContext, LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false));
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public <T extends View> T a(int paramInt)
-  {
-    View localView2 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localView1);
-    }
-    return localView1;
+    Intent localIntent = this.a.getIntent();
+    String str = localIntent.getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
+    int i = localIntent.getIntExtra("PhotoConst.CLIP_WIDTH", 0);
+    PhotoUtils.startPhotoListEdit(localIntent, this.a, str, i, i, 1080, 1080, bfrj.a());
+    bcef.b(this.a.app, "dc00898", "", "", "0X800723F", "0X800723F", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

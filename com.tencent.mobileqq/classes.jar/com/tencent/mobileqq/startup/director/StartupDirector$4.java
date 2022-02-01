@@ -1,33 +1,16 @@
 package com.tencent.mobileqq.startup.director;
 
-import aodu;
-import com.tencent.qphone.base.util.QLog;
+import bcad;
+import com.tencent.mobileqq.splashad.SplashADView;
 
-public final class StartupDirector$4
-  extends Thread
+public class StartupDirector$4
+  implements Runnable
 {
+  public StartupDirector$4(bcad parambcad, SplashADView paramSplashADView) {}
+  
   public void run()
   {
-    long l2 = aodu.a("-1");
-    long l4 = System.currentTimeMillis();
-    long l1 = l2;
-    try
-    {
-      for (;;)
-      {
-        Thread.sleep(2000L);
-        long l3 = aodu.a("-1");
-        QLog.d("Perf", 1, new Object[] { "ProcCpu,proc;", Long.valueOf(System.currentTimeMillis() - l4), ";cost cpu;", Long.valueOf(l3 - l2), ";", Long.valueOf(l3 - l1) });
-        l1 = l3;
-      }
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
-    }
+    this.a.e();
   }
 }
 

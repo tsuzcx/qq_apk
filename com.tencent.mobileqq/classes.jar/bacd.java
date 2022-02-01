@@ -1,61 +1,24 @@
-import android.widget.ToggleButton;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import java.util.HashMap;
-import java.util.Map;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
 
 public class bacd
+  implements Animation.AnimationListener
 {
-  private Map<ProfileLabelInfo, ToggleButton> a = new HashMap();
+  public bacd(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager, View paramView, int paramInt) {}
   
-  public ToggleButton a(ProfileLabelInfo paramProfileLabelInfo)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return (ToggleButton)this.a.get(paramProfileLabelInfo);
-  }
-  
-  public Map<ProfileLabelInfo, ToggleButton> a()
-  {
-    return this.a;
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
-  {
-    if (!a(paramProfileLabelInfo)) {
-      this.a.put(paramProfileLabelInfo, paramToggleButton);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.jdField_a_of_type_Int == CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager)) {
+      CaptureVideoFilterViewPager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager, false);
     }
   }
   
-  public boolean a(ProfileLabelInfo paramProfileLabelInfo)
-  {
-    return this.a.get(paramProfileLabelInfo) != null;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void b(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
-  {
-    if (a(paramProfileLabelInfo)) {
-      this.a.remove(paramProfileLabelInfo);
-    }
-  }
-  
-  public void c(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton)
-  {
-    if (paramProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_NORMAL) {
-      a(paramProfileLabelInfo, paramToggleButton);
-    }
-    for (;;)
-    {
-      paramProfileLabelInfo.toggleStatus();
-      paramToggleButton.toggle();
-      return;
-      if (paramProfileLabelInfo.labelStatus == ProfileLabelInfo.STATUS_CHECKED) {
-        b(paramProfileLabelInfo, paramToggleButton);
-      }
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

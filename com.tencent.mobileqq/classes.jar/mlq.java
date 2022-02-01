@@ -1,16 +1,10 @@
-import com.tencent.av.ui.VideoLayerUI;
-
 public class mlq
-  implements lst
 {
-  public mlq(VideoLayerUI paramVideoLayerUI, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a[this.jdField_a_of_type_Int].c(this.b);
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, 0L);
-    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.c, this.jdField_a_of_type_Int);
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
 }
 
 

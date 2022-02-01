@@ -1,59 +1,22 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.vas.qvip.view.QQVipArkHeaderView;
+import com.tencent.mobileqq.vas.qvip.view.QvipArkView;
 
-class bgjp
-  implements Comparator<akfc>
+public class bgjp
+  implements View.OnLayoutChangeListener
 {
-  private final TroopInfo a;
+  public bgjp(QQVipArkHeaderView paramQQVipArkHeaderView) {}
   
-  bgjp(TroopInfo paramTroopInfo)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.a = paramTroopInfo;
-  }
-  
-  public int a(akfc paramakfc1, akfc paramakfc2)
-  {
-    int j = 5;
-    int i;
-    if (bgjl.b(paramakfc1.jdField_a_of_type_JavaLangString, this.a)) {
-      i = 5;
-    }
-    for (;;)
+    if (QQVipArkHeaderView.a(this.a).getHeight() > 0)
     {
-      if (bgjl.b(paramakfc2.jdField_a_of_type_JavaLangString, this.a)) {}
-      for (;;)
-      {
-        if (i != j)
-        {
-          return j - i;
-          if (bgjl.a(paramakfc1.jdField_a_of_type_JavaLangString, this.a))
-          {
-            i = 3;
-            break;
-          }
-          if (!paramakfc1.jdField_a_of_type_Boolean) {
-            break label134;
-          }
-          i = 1;
-          break;
-          if (bgjl.a(paramakfc2.jdField_a_of_type_JavaLangString, this.a))
-          {
-            j = 3;
-            continue;
-          }
-          if (!paramakfc2.jdField_a_of_type_Boolean) {
-            break label128;
-          }
-          j = 1;
-          continue;
-        }
-        return ChnToSpell.a(bgjl.c(paramakfc1), 1).compareToIgnoreCase(ChnToSpell.a(bgjl.c(paramakfc2), 1));
-        label128:
-        j = 0;
-      }
-      label134:
-      i = 0;
+      float f = (this.a.getHeight() * 1.0F - AIOUtils.dp2px(54.0F, this.a.getContext().getResources())) / QQVipArkHeaderView.a(this.a).getHeight();
+      QQVipArkHeaderView.a(this.a).setScaleY(f);
+      QQVipArkHeaderView.a(this.a).setScaleX(f);
     }
   }
 }

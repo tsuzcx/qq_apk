@@ -1,6 +1,14 @@
-class qiz
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+
+public class qiz
+  implements ViewBase.IBuilder
 {
-  private static final qiy a = new qiy();
+  public ViewBase build(VafContext paramVafContext)
+  {
+    return new qix(paramVafContext);
+  }
 }
 
 

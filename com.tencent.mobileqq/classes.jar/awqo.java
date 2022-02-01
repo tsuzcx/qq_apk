@@ -1,22 +1,97 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.11;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.FeedsProtocol.TopicCfg;
+import com.tencent.pb.now.ilive_feeds_read.TopicCfg;
+import java.util.List;
 
 public class awqo
-  implements DialogInterface.OnClickListener
 {
-  public awqo(LocationDialogUtil.11 param11) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
+  private String d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static axfs a(List<ilive_feeds_read.TopicCfg> paramList, axfs paramaxfs)
   {
-    paramDialogInterface = awpq.a((QQAppInterface)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppInterface());
-    paramDialogInterface.c(new awpk(this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString));
-    paramDialogInterface.a(true);
-    paramDialogInterface.a(this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString);
-    LocationShareFragment.b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_b_of_type_Int);
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      paramList = (ilive_feeds_read.TopicCfg)paramList.get(0);
+      paramaxfs.a = new awqo();
+      paramaxfs.a.d(paramList.jump_url.get());
+      paramaxfs.a.b(paramList.topic_name.get());
+      paramaxfs.a.a(paramList.topic_desc.get());
+      paramaxfs.a.b(paramList.topic_parti_num.get());
+      paramaxfs.a.c(paramList.topic_pic_url.get());
+      paramaxfs.a.a(paramList.topic_tag.get());
+      paramaxfs.a.c(paramList.topic_type.get());
+    }
+    return paramaxfs;
+  }
+  
+  public static VideoData a(List<FeedsProtocol.TopicCfg> paramList, VideoData paramVideoData)
+  {
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      paramList = (FeedsProtocol.TopicCfg)paramList.get(0);
+      paramVideoData.a = new awqo();
+      paramVideoData.a.d(paramList.jump_url.get());
+      paramVideoData.a.b(paramList.topic_name.get());
+      paramVideoData.a.a(paramList.topic_desc.get());
+      paramVideoData.a.b(paramList.topic_parti_num.get());
+      paramVideoData.a.c(paramList.topic_pic_url.get());
+      paramVideoData.a.a(paramList.topic_tag.get());
+      paramVideoData.a.c(paramList.topic_type.get());
+    }
+    return paramVideoData;
+  }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String b()
+  {
+    return this.d;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  public void d(String paramString)
+  {
+    this.d = paramString;
   }
 }
 

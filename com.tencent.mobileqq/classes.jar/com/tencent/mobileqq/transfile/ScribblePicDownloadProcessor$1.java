@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
-import bewu;
-
-public class ScribblePicDownloadProcessor$1
+class ScribblePicDownloadProcessor$1
   implements Runnable
 {
-  public ScribblePicDownloadProcessor$1(bewu parambewu) {}
+  ScribblePicDownloadProcessor$1(ScribblePicDownloadProcessor paramScribblePicDownloadProcessor) {}
   
   public void run()
   {
-    this.this$0.f();
+    this.this$0.recieveFile();
   }
 }
 

@@ -9,126 +9,122 @@ import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bhtq;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class PanoramaLoadingLayout
   extends RelativeLayout
 {
-  public static final int a;
-  public static boolean a;
-  public static final int b;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private PanoramaLoadingBackground jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground;
-  private PanoramaLoadingBall jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall;
-  private PanoramaLoadingBall b;
-  
-  static
-  {
-    jdField_a_of_type_Int = bhtq.b(55.0F);
-    jdField_b_of_type_Int = bhtq.b(55.0F);
-  }
+  public static final int ANIMATION_TIME = 300;
+  public static final int HEIGHT = ViewUtils.dpToPx(55.0F);
+  private static final String TAG = "PanoramaLoadingLayout";
+  public static final int WIDTH = ViewUtils.dpToPx(55.0F);
+  public static boolean isPanoramaLoading;
+  private Context context;
+  private PanoramaLoadingBall horizontalPanoramaLoadingBall;
+  private PanoramaLoadingBackground panoramaLoadingBackground;
+  private TextView tvToast;
+  private PanoramaLoadingBall verticalPanoramaLoadingBall;
   
   public PanoramaLoadingLayout(@NonNull Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.context = paramContext;
   }
   
   public PanoramaLoadingLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.context = paramContext;
   }
   
-  public void a()
+  public void onRecycled()
   {
-    if ((this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall != null) && (this.jdField_b_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall != null) && (this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground != null))
+    if (this.horizontalPanoramaLoadingBall != null)
     {
-      this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall.a(60.0F, 0, this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground);
-      this.jdField_b_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall.a(60.0F, 1, this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground);
+      this.horizontalPanoramaLoadingBall.stopTimer();
+      removeView(this.horizontalPanoramaLoadingBall);
     }
+    if (this.verticalPanoramaLoadingBall != null)
+    {
+      this.verticalPanoramaLoadingBall.stopTimer();
+      removeView(this.verticalPanoramaLoadingBall);
+    }
+    if (this.panoramaLoadingBackground != null) {
+      removeView(this.panoramaLoadingBackground);
+    }
+    this.panoramaLoadingBackground = null;
+    this.horizontalPanoramaLoadingBall = null;
+    this.verticalPanoramaLoadingBall = null;
   }
   
   @SuppressLint({"ResourceType"})
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void showLoading(boolean paramBoolean1, boolean paramBoolean2)
   {
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(jdField_a_of_type_Int, jdField_b_of_type_Int);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(WIDTH, HEIGHT);
     localLayoutParams.addRule(13);
-    if (this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground == null)
+    if (this.panoramaLoadingBackground == null)
     {
-      this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground = new PanoramaLoadingBackground(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground.setId(1);
-      addView(this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground, localLayoutParams);
+      this.panoramaLoadingBackground = new PanoramaLoadingBackground(this.context);
+      this.panoramaLoadingBackground.setId(1);
+      addView(this.panoramaLoadingBackground, localLayoutParams);
     }
-    if (this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall == null)
+    if (this.horizontalPanoramaLoadingBall == null)
     {
-      this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall = new PanoramaLoadingBall(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall.setRotationX(60.0F);
-      addView(this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall, localLayoutParams);
+      this.horizontalPanoramaLoadingBall = new PanoramaLoadingBall(this.context);
+      this.horizontalPanoramaLoadingBall.setRotationX(60.0F);
+      addView(this.horizontalPanoramaLoadingBall, localLayoutParams);
     }
-    if (this.jdField_b_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall == null)
+    if (this.verticalPanoramaLoadingBall == null)
     {
-      this.jdField_b_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall = new PanoramaLoadingBall(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_b_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall.setRotationY(60.0F);
-      addView(this.jdField_b_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall, localLayoutParams);
+      this.verticalPanoramaLoadingBall = new PanoramaLoadingBall(this.context);
+      this.verticalPanoramaLoadingBall.setRotationY(60.0F);
+      addView(this.verticalPanoramaLoadingBall, localLayoutParams);
     }
-    if (this.jdField_a_of_type_AndroidWidgetTextView == null)
+    if (this.tvToast == null)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131716667));
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(14.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(2.0F, 2.0F, 2.0F, -16777216);
+      this.tvToast = new TextView(this.context);
+      this.tvToast.setText(this.context.getResources().getString(2131716901));
+      this.tvToast.setTextColor(-1);
+      this.tvToast.setTextSize(14.0F);
+      this.tvToast.setShadowLayer(2.0F, 2.0F, 2.0F, -16777216);
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(14);
-      localLayoutParams.addRule(3, this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground.getId());
-      localLayoutParams.topMargin = (bhtq.a(10.0F) + jdField_a_of_type_Int / 5);
-      addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
+      localLayoutParams.addRule(3, this.panoramaLoadingBackground.getId());
+      localLayoutParams.topMargin = (ViewUtils.dip2px(10.0F) + WIDTH / 5);
+      addView(this.tvToast, localLayoutParams);
     }
     if (paramBoolean1) {
-      a();
+      startRotateAnimate();
     }
     if (paramBoolean2)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.tvToast.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.tvToast.setVisibility(8);
   }
   
-  public void b()
+  public void startRotateAnimate()
   {
-    if (this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall != null)
+    if ((this.horizontalPanoramaLoadingBall != null) && (this.verticalPanoramaLoadingBall != null) && (this.panoramaLoadingBackground != null))
     {
-      this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall.a();
-      this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall.setRotationX(60.0F);
-    }
-    if (this.jdField_b_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall != null)
-    {
-      this.jdField_b_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall.a();
-      this.jdField_b_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall.setRotationY(60.0F);
+      this.horizontalPanoramaLoadingBall.startRotate(60.0F, 0, this.panoramaLoadingBackground);
+      this.verticalPanoramaLoadingBall.startRotate(60.0F, 1, this.panoramaLoadingBackground);
     }
   }
   
-  public void c()
+  public void stopRotateAnimate()
   {
-    if (this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall != null)
+    if (this.horizontalPanoramaLoadingBall != null)
     {
-      this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall.a();
-      removeView(this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall);
+      this.horizontalPanoramaLoadingBall.stopTimer();
+      this.horizontalPanoramaLoadingBall.setRotationX(60.0F);
     }
-    if (this.jdField_b_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall != null)
+    if (this.verticalPanoramaLoadingBall != null)
     {
-      this.jdField_b_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall.a();
-      removeView(this.jdField_b_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall);
+      this.verticalPanoramaLoadingBall.stopTimer();
+      this.verticalPanoramaLoadingBall.setRotationY(60.0F);
     }
-    if (this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground != null) {
-      removeView(this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground);
-    }
-    this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBackground = null;
-    this.jdField_a_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall = null;
-    this.jdField_b_of_type_CooperationQzonePanoramaWidgetPanoramaLoadingBall = null;
   }
 }
 

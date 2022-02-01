@@ -1,9 +1,9 @@
 package com.tencent.avgame.gameresult;
 
 import android.graphics.Bitmap;
-import auog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.os.MqqHandler;
@@ -24,7 +24,7 @@ class GameResultFragment$4$1
       }
       try
       {
-        if (auog.a(this.jdField_a_of_type_AndroidGraphicsBitmap, str))
+        if (FileUtil.writeBitmapToFile(this.jdField_a_of_type_AndroidGraphicsBitmap, str))
         {
           ThreadManager.getUIHandler().post(new GameResultFragment.4.1.1(this, str));
           return;

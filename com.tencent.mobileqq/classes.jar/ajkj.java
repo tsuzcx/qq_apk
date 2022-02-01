@@ -1,17 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.10.1;
 
 public class ajkj
-  implements View.OnClickListener
+  extends ando
 {
-  public ajkj(NewFriendMoreSysMsgActivity paramNewFriendMoreSysMsgActivity) {}
+  public ajkj(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.runOnUiThread(new AvatarPendantActivity.10.1(this));
   }
 }
 

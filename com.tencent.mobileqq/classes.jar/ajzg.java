@@ -1,20 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
-class ajzg
-  implements DialogInterface.OnClickListener
+public class ajzg
+  implements View.OnClickListener
 {
-  ajzg(ajyt paramajyt, boolean paramBoolean, String paramString) {}
+  public ajzg(SendHbMainFragment paramSendHbMainFragment, JSONObject paramJSONObject) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    bdll.b(null, "dc00898", "", "", "0X8009DCA", "0X8009DCA", 0, 0, ajyt.a(this.jdField_a_of_type_Ajyt), "", "", "");
-    if (this.jdField_a_of_type_Boolean)
+    if (bkvx.a()) {}
+    for (;;)
     {
-      ajyt.a(this.jdField_a_of_type_Ajyt, ajyt.a(this.jdField_a_of_type_Ajyt), Long.valueOf(ajyt.a(this.jdField_a_of_type_Ajyt)).longValue(), false);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      String str = this.jdField_a_of_type_OrgJsonJSONObject.optString("url");
+      if (!TextUtils.isEmpty(str)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentSendHbMainFragment.openUrl(str);
+      }
     }
-    ajyt.a(this.jdField_a_of_type_Ajyt, ajyt.a(this.jdField_a_of_type_Ajyt), Long.valueOf(ajyt.a(this.jdField_a_of_type_Ajyt)).longValue(), false, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,9 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
-public abstract interface rbd
+class rbd
+  extends raj
 {
-  public abstract void a(List<ReadInJoyDraftboxItem> paramList);
+  rbd(rau paramrau, AppInterface paramAppInterface) {}
+  
+  public Drawable a()
+  {
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_video_selected");
+  }
 }
 
 

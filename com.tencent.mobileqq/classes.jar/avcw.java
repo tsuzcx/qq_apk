@@ -1,42 +1,93 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
+import android.app.Activity;
+import android.app.Notification;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.app.NotificationCompat.Builder;
+import android.util.Pair;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.forward.ForwardStatisticsReporter.1;
-import com.tencent.mobileqq.forward.ForwardStatisticsReporter.2;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
+import com.tencent.map.geolocation.TencentDirectionListener;
+import com.tencent.map.geolocation.TencentLocationListener;
+import com.tencent.map.geolocation.TencentLocationManager;
+import com.tencent.map.geolocation.TencentLocationRequest;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.location.data.LocationRoom;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.net.LocationHandler.3;
+import com.tencent.mobileqq.location.net.LocationHandler.7;
+import com.tencent.mobileqq.location.net.LocationHandler.8;
+import com.tencent.mobileqq.location.net.LocationHandler.9;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.lang.ref.SoftReference;
+import java.lang.reflect.Field;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class avcw
+  extends BusinessHandler
+  implements amrs
 {
-  private static Map<String, Long> a = new HashMap();
+  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+  public static LatLng a;
+  private double jdField_a_of_type_Double = 0.0D;
+  private int jdField_a_of_type_Int = -1;
+  private amsu jdField_a_of_type_Amsu;
+  private andd jdField_a_of_type_Andd;
+  private avcq jdField_a_of_type_Avcq;
+  private avcu jdField_a_of_type_Avcu;
+  private volatile avdc jdField_a_of_type_Avdc;
+  private avdd jdField_a_of_type_Avdd;
+  private avde jdField_a_of_type_Avde;
+  public avdg a;
+  public avdi a;
+  public avdj a;
+  private avdl jdField_a_of_type_Avdl;
+  private TencentDirectionListener jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener;
+  private TencentLocationListener jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener;
+  private TencentLocationManager jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private LatLng jdField_b_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
+  private volatile boolean jdField_b_of_type_Boolean;
   
-  static
+  public avcw(QQAppInterface paramQQAppInterface)
   {
-    aqfu localaqfu = new aqfu();
-    localaqfu.jdField_a_of_type_JavaLangString = "OpenShare";
-    localaqfu.b = "KEY_STAGE_1_TOTAL";
-    localaqfu.c = "KEY_STAGE_2_TOTAL";
-    localaqfu.jdField_a_of_type_Long = 30000L;
-    localaqfu.jdField_a_of_type_JavaUtilSet = new ForwardStatisticsReporter.1();
-    aqft.a("OpenShare", localaqfu);
-    localaqfu = new aqfu();
-    localaqfu.jdField_a_of_type_JavaLangString = "OpenLogin";
-    localaqfu.b = "KEY_LOGIN_STAGE_1_TOTAL";
-    localaqfu.c = "KEY_AUTHORITY_TOTAL";
-    localaqfu.jdField_a_of_type_Long = 30000L;
-    localaqfu.jdField_a_of_type_JavaUtilSet = new ForwardStatisticsReporter.2();
-    aqft.a("OpenLogin", localaqfu);
+    super(paramQQAppInterface);
+    d();
+    i();
   }
   
-  public static void a()
+  static int a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 3: 
+      return 1;
+    }
+    return 2;
+  }
+  
+  public static avcw a(QQAppInterface paramQQAppInterface)
+  {
+    return (avcw)paramQQAppInterface.getBusinessHandler(164);
+  }
+  
+  private void b(boolean paramBoolean)
   {
     try
     {
-      a.clear();
+      if (this.jdField_a_of_type_Avdc != null) {
+        this.jdField_a_of_type_Avdc.a(this.jdField_b_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, Double.valueOf(this.jdField_a_of_type_Double), paramBoolean);
+      }
       return;
     }
     finally
@@ -46,273 +97,473 @@ public class avcw
     }
   }
   
-  public static void a(String paramString)
+  private void d()
+  {
+    this.jdField_a_of_type_Avdi = new avdi(this.app, this);
+    this.jdField_a_of_type_Avdg = new avdg(this.app);
+    this.jdField_a_of_type_Avdj = new avdj(this.app);
+    this.jdField_a_of_type_Avdl = new avdl(this.app);
+    this.jdField_a_of_type_Avde = new avde(this.app, this);
+    e();
+    f();
+    h();
+    this.jdField_a_of_type_Avcu = new avcu(this.app.getCurrentUin());
+  }
+  
+  private void e()
+  {
+    this.jdField_a_of_type_Andd = new avcx(this);
+  }
+  
+  private void f()
+  {
+    this.jdField_a_of_type_Amsu = new avcy(this);
+    this.app.addObserver(this.jdField_a_of_type_Amsu);
+  }
+  
+  private void g()
   {
     try
     {
-      long l = System.currentTimeMillis();
-      a.put(paramString, Long.valueOf(l));
-      aqft.a(paramString, l);
+      Object localObject = this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.getClass().getDeclaredField("c");
+      ((Field)localObject).setAccessible(true);
+      localObject = ((Field)localObject).get(this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager);
+      Field localField = localObject.getClass().getDeclaredField("b");
+      localField.setAccessible(true);
+      localObject = localField.get(localObject);
+      localField = localObject.getClass().getDeclaredField("g");
+      localField.setAccessible(true);
+      localField.set(localObject, null);
       return;
     }
-    finally
+    catch (NoSuchFieldException localNoSuchFieldException)
     {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  /* Error */
-  public static void a(String paramString, long paramLong)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 91	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   6: invokevirtual 95	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   9: checkcast 97	com/tencent/common/app/AppInterface
-    //   12: astore_3
-    //   13: aload_3
-    //   14: ifnonnull +32 -> 46
-    //   17: ldc 99
-    //   19: iconst_1
-    //   20: new 101	java/lang/StringBuilder
-    //   23: dup
-    //   24: invokespecial 102	java/lang/StringBuilder:<init>	()V
-    //   27: ldc 104
-    //   29: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: aload_0
-    //   33: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   39: invokestatic 118	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   42: ldc 2
-    //   44: monitorexit
-    //   45: return
-    //   46: aload_3
-    //   47: invokevirtual 121	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   50: astore_3
-    //   51: ldc 99
-    //   53: iconst_1
-    //   54: iconst_5
-    //   55: anewarray 4	java/lang/Object
-    //   58: dup
-    //   59: iconst_0
-    //   60: aload_0
-    //   61: aastore
-    //   62: dup
-    //   63: iconst_1
-    //   64: ldc 123
-    //   66: aastore
-    //   67: dup
-    //   68: iconst_2
-    //   69: lload_1
-    //   70: invokestatic 78	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   73: aastore
-    //   74: dup
-    //   75: iconst_3
-    //   76: ldc 125
-    //   78: aastore
-    //   79: dup
-    //   80: iconst_4
-    //   81: aload_3
-    //   82: invokestatic 130	bjqq:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   85: aastore
-    //   86: invokestatic 133	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   89: invokestatic 137	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   92: invokestatic 142	bdmc:a	(Landroid/content/Context;)Lbdmc;
-    //   95: aload_3
-    //   96: aload_0
-    //   97: iconst_1
-    //   98: lload_1
-    //   99: lconst_0
-    //   100: aconst_null
-    //   101: ldc 144
-    //   103: iconst_0
-    //   104: invokevirtual 147	bdmc:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
-    //   107: aload_0
-    //   108: iconst_1
-    //   109: lload_1
-    //   110: aconst_null
-    //   111: invokestatic 150	aqft:a	(Ljava/lang/String;ZJLjava/util/HashMap;)V
-    //   114: goto -72 -> 42
-    //   117: astore_0
-    //   118: ldc 2
-    //   120: monitorexit
-    //   121: aload_0
-    //   122: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	123	0	paramString	String
-    //   0	123	1	paramLong	long
-    //   12	84	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	13	117	finally
-    //   17	42	117	finally
-    //   46	114	117	finally
-  }
-  
-  public static void a(String paramString, long paramLong, HashMap<String, String> paramHashMap, boolean paramBoolean)
-  {
-    String str = ((AppInterface)BaseApplicationImpl.sApplication.getRuntime()).getCurrentAccountUin();
-    QLog.d("ForwardStatisticsReporter", 1, new Object[] { "reportSaveImage key=", paramString, ",duration=", Long.valueOf(paramLong), ", uin=", bjqq.a(str) });
-    bdmc.a(BaseApplicationImpl.getApplication()).a(str, paramString, paramBoolean, paramLong, 0L, paramHashMap, "", false);
-    aqft.a(paramString, true, paramLong, paramHashMap);
-  }
-  
-  public static void a(String paramString, Bundle paramBundle, boolean paramBoolean)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("PARAM_ERROR_CODE", Integer.toString(paramBundle.getInt("code")));
-    localHashMap.put("param_error_ret", Integer.toString(paramBundle.getInt("ret")));
-    a(paramString, localHashMap, paramBoolean);
-  }
-  
-  public static void a(String paramString, bjzb parambjzb)
-  {
-    try
-    {
-      a(paramString, parambjzb, true);
+      localNoSuchFieldException.printStackTrace();
       return;
     }
-    finally
+    catch (IllegalAccessException localIllegalAccessException)
     {
-      paramString = finally;
-      throw paramString;
+      localIllegalAccessException.printStackTrace();
     }
   }
   
-  public static void a(String paramString, bjzb parambjzb, HashMap<String, String> paramHashMap, boolean paramBoolean)
+  private void h()
   {
-    if (parambjzb == null) {}
-    for (parambjzb = "";; parambjzb = parambjzb.jdField_a_of_type_JavaLangString)
-    {
-      a(paramString, parambjzb, paramHashMap, paramBoolean);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, new Object[] { "addRelationChainObservers: invoked. ", " TAG: ", "LocationHandler" });
     }
+    this.app.addObserver(this.jdField_a_of_type_Andd);
+    this.app.addObserver(this.jdField_a_of_type_Amsu);
   }
   
-  public static void a(String paramString, bjzb parambjzb, boolean paramBoolean)
+  private void i()
   {
-    try
-    {
-      a(paramString, parambjzb, null, paramBoolean);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    this.app.addObserver(this.jdField_a_of_type_Avde);
   }
   
-  public static void a(String paramString1, String paramString2, long paramLong, HashMap<String, String> paramHashMap, boolean paramBoolean)
+  private void j()
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, new Object[] { "removeRelationChainObservers: invoked. ", " TAG: ", "LocationHandler" });
+    }
+    this.app.removeObserver(this.jdField_a_of_type_Andd);
+    this.app.removeObserver(this.jdField_a_of_type_Amsu);
+  }
+  
+  private void k()
+  {
+    this.app.removeObserver(this.jdField_a_of_type_Avde);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public LocationRoom a(avcq paramavcq)
+  {
+    return this.jdField_a_of_type_Avcu.a(paramavcq);
+  }
+  
+  LatLng a()
+  {
+    if (this.jdField_b_of_type_ComTencentTencentmapMapsdkMapsModelLatLng == null) {
+      QLog.d("LocationHandler", 1, "[LocationManager] getSelfLatLng: invoked. location null detected");
+    }
+    return this.jdField_b_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, "[LocationManager] onAppForeground: invoked. ");
+    }
+    QQNotificationManager.getInstance().cancel("LocationHandler", 525);
+    this.jdField_b_of_type_Boolean = true;
+    jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, "[LocationManager] createOrJoinRoom: invoked.");
+    }
+    if (paramInt == 0) {
+      if (!avhg.a(this.app, paramString)) {}
+    }
     for (;;)
     {
-      Object localObject;
+      this.jdField_a_of_type_Avdi.a(i, paramInt, paramString);
+      return;
+      i = 1;
+      continue;
+      if (paramInt == 1)
+      {
+        if (!avhg.b(this.app, paramString)) {
+          i = 1;
+        }
+      }
+      else
+      {
+        QLog.d("LocationHandler", 1, new Object[] { "createOrJoinRoom: invoked. (进入已关闭的房间，需要兜底逻辑[弹窗、刷新本地标志等]) ", " operateType: ", Integer.valueOf(0), " mLocationShareFragment.sessionUinType: ", Integer.valueOf(paramInt) });
+        i = 0;
+      }
+    }
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  {
+    if (avhg.a(this.app, paramInt1, paramString))
+    {
+      bcef.b(null, "CliOper", "", "", "0X800A76C", "0X800A76C", a(paramInt2), 0, "" + paramInt3, "0", "0", "");
+      return;
+    }
+    bcef.b(null, "CliOper", "", "", "0X800A765", "0X800A765", paramInt3, 0, "", "0", "0", "");
+  }
+  
+  public void a(Activity paramActivity, LocationRoom paramLocationRoom)
+  {
+    if (b()) {
+      return;
+    }
+    this.jdField_a_of_type_Avcq = paramLocationRoom.a();
+    Object localObject = amrq.a();
+    if (!((amrq)localObject).a().contains(this)) {
+      ((amrq)localObject).a(this);
+    }
+    localObject = new LocationHandler.3(this, new SoftReference(paramActivity));
+    MqqHandler localMqqHandler = ThreadManager.getUIHandler();
+    boolean bool = this.jdField_a_of_type_Avdg.a(this.jdField_a_of_type_Avcq);
+    if (bool) {
+      a(this.jdField_a_of_type_Avcq.a(), this.jdField_a_of_type_Avcq.a());
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager = TencentLocationManager.getInstance(BaseApplicationImpl.context);
+      this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener = new avcz(this, bool, (Runnable)localObject, localMqqHandler, paramLocationRoom);
+      this.jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener = new avda(this);
+      paramLocationRoom = apua.a(BaseApplicationImpl.getApplication());
+      int i = this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.requestLocationUpdates(TencentLocationRequest.create().setInterval(paramLocationRoom.a()), this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener);
+      if (i != 0)
+      {
+        QLog.e("LocationHandler", 1, "[LocationManager] requestLocationUpdates: invoked. error: " + i);
+        QQToast.a(BaseApplicationImpl.context, "地图定位系统初始化失败，请稍后重试", 0).a();
+        if (paramActivity != null) {
+          paramActivity.finish();
+        }
+      }
+      i = this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.startDirectionUpdates(this.jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener, Looper.myLooper());
+      if (i == 0) {
+        break;
+      }
+      QLog.e("LocationHandler", 1, "[LocationManager] startDirectionUpdates: invoked. error: " + i);
+      QQToast.a(BaseApplicationImpl.context, 1, "方向箭头暂不可用", 0).a();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, "[LocationManager] startLocationUpdate: invoked.  add over time runnable");
+      }
+      localMqqHandler.postDelayed((Runnable)localObject, 15000L);
+    }
+  }
+  
+  void a(avcq paramavcq)
+  {
+    if (a(paramavcq).b()) {
+      QQToast.a(this.app.getApp(), 2131693527, 0).a();
+    }
+  }
+  
+  void a(avcq paramavcq, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, "notifyKickOff: invoked. roomKey: " + paramavcq + " clientType: " + paramInt);
+    }
+    a(paramavcq, true);
+    this.jdField_a_of_type_Avcu.b(paramavcq, paramInt);
+  }
+  
+  void a(avcq paramavcq, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Avcu.a(paramavcq, paramInt1, paramInt2);
+  }
+  
+  void a(avcq paramavcq, LocationRoom.Venue paramVenue, int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Avdd != null)
+    {
+      Pair localPair = this.jdField_a_of_type_Avdd.a();
+      if ((localPair != null) && (paramavcq.equals(localPair.first)) && (paramVenue.equals(localPair.second)))
+      {
+        this.jdField_a_of_type_Avdd.a(paramavcq, paramVenue, paramInt1, paramBoolean, paramInt2);
+        this.jdField_a_of_type_Avdd = null;
+      }
+    }
+  }
+  
+  public void a(avcq paramavcq, LocationRoom.Venue paramVenue, avdd paramavdd)
+  {
+    if ((paramavcq == null) || ((paramVenue == null) && (paramavdd != null)))
+    {
+      paramavdd.a(paramavcq, paramVenue, 1, false, -1);
+      return;
+    }
+    this.jdField_a_of_type_Avdd = paramavdd;
+    this.jdField_a_of_type_Avdl.a(paramavcq, paramVenue);
+  }
+  
+  void a(avcq paramavcq, LocationRoom.Venue paramVenue, List<avco> paramList)
+  {
+    this.jdField_a_of_type_Avcu.a(paramavcq, paramVenue, paramList);
+  }
+  
+  void a(avcq paramavcq, String paramString)
+  {
+    if ((a(paramavcq).b()) && (!this.app.getCurrentUin().equals(paramString))) {
+      QQToast.a(this.app.getApp(), 2131693525, 0).a();
+    }
+  }
+  
+  public void a(avcq paramavcq, boolean paramBoolean)
+  {
+    if ((!paramBoolean) && (paramavcq != null) && (!paramavcq.equals(this.jdField_a_of_type_Avcq))) {}
+    for (;;)
+    {
+      return;
+      if (Looper.getMainLooper() != Looper.myLooper())
+      {
+        ThreadManager.getUIHandler().post(new LocationHandler.7(this, paramavcq, paramBoolean));
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, "stopLocationSharing: invoked. roomKey: " + paramavcq);
+      }
+      this.jdField_a_of_type_Avcq = null;
+      amrq.a().b(this);
+      if (this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager != null)
+      {
+        this.jdField_a_of_type_ComTencentMapGeolocationTencentDirectionListener = null;
+        this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.removeUpdates(this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationListener);
+        this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager.stopDirectionUpdate();
+        g();
+        this.jdField_a_of_type_ComTencentMapGeolocationTencentLocationManager = null;
+      }
+      this.jdField_a_of_type_Avdg.a();
+      QQNotificationManager.getInstance().cancel("LocationHandler", 525);
       try
       {
-        localObject = (Long)a.get(paramString1);
-        if (localObject == null)
+        paramavcq = avhu.a(this.app);
+        if (paramavcq != null)
         {
-          QLog.e("ForwardStatisticsReporter", 1, new Object[] { "report invalid key =", paramString1 });
+          paramavcq.a(-1);
           return;
         }
-        a.remove(paramString1);
-        paramLong -= ((Long)localObject).longValue();
-        if ((paramHashMap == null) || (paramHashMap.isEmpty()))
-        {
-          QLog.d("ForwardStatisticsReporter", 1, new Object[] { paramString1, "=", Long.valueOf(paramLong), ", uin=", bjqq.a(paramString2) });
-          bdmc.a(BaseApplicationImpl.getApplication()).a(paramString2, paramString1, paramBoolean, paramLong, 0L, paramHashMap, "", false);
-          aqft.a(paramString1, paramBoolean, paramLong, paramHashMap);
-          if (!"KEY_STAGE_2_TOTAL".equals(paramString1)) {
-            continue;
-          }
-          a.clear();
-          continue;
-        }
-        localObject = new StringBuilder();
       }
-      finally {}
-      Iterator localIterator = paramHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      catch (Throwable paramavcq)
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        ((StringBuilder)localObject).append((String)localEntry.getKey()).append("=").append((String)localEntry.getValue()).append(" ");
+        QLog.e("LocationHandler", 1, "stopLocationSharing: failed. ", paramavcq);
       }
-      QLog.d("ForwardStatisticsReporter", 1, new Object[] { paramString1, "=", Long.valueOf(paramLong), ", uin=", bjqq.a(paramString2), ", params[", ((StringBuilder)localObject).toString(), "]" });
     }
   }
   
-  public static void a(String paramString1, String paramString2, HashMap<String, String> paramHashMap, boolean paramBoolean)
+  public void a(avcv paramavcv)
+  {
+    this.jdField_a_of_type_Avcu.b(paramavcv);
+  }
+  
+  public void a(avdc paramavdc)
   {
     try
     {
-      a(paramString1, paramString2, System.currentTimeMillis(), paramHashMap, paramBoolean);
+      this.jdField_a_of_type_Avdc = paramavdc;
       return;
     }
     finally
     {
-      paramString1 = finally;
-      throw paramString1;
+      paramavdc = finally;
+      throw paramavdc;
     }
   }
   
-  public static void a(String paramString1, String paramString2, boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
-    try
-    {
-      a(paramString1, paramString2, null, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, new Object[] { "setJoinOrCreateRoomNotReEntry: invoked. ", " joinOrCreateRoomNotReEntry: ", Boolean.valueOf(paramBoolean) });
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  boolean a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, new Object[] { "joinOrCreateRoomNotReEntry: invoked. ", " isJoinOrCreateRoomNotReEntry: ", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    }
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, "[LocationManager] onAppBackground: invoked. ");
+    }
+    Object localObject = apua.a(BaseApplicationImpl.getApplication());
+    this.jdField_b_of_type_Boolean = false;
+    jdField_a_of_type_AndroidOsHandler.postDelayed(new LocationHandler.8(this), ((aqaq)localObject).b());
+    if ((((aqaq)localObject).b() <= 0L) || (!b())) {
       return;
     }
-    finally
-    {
-      paramString1 = finally;
-      throw paramString1;
+    localObject = new NotificationCompat.Builder(this.app.getApp());
+    ((NotificationCompat.Builder)localObject).setContentText(this.app.getApp().getString(2131694148)).setWhen(System.currentTimeMillis()).setSmallIcon(2130841439).setAutoCancel(true);
+    localObject = ((NotificationCompat.Builder)localObject).build();
+    QQNotificationManager.addChannelIfNeed((Notification)localObject, "CHANNEL_ID_OTHER");
+    QQNotificationManager.getInstance().notify("LocationHandler", 525, (Notification)localObject);
+    jdField_a_of_type_AndroidOsHandler.postDelayed(new LocationHandler.9(this), 3000L);
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Avdg.a(paramString, new avdb(this, paramInt, paramString));
+  }
+  
+  void b(avcq paramavcq)
+  {
+    if (a(paramavcq).b()) {
+      QQToast.a(this.app.getApp(), 2131693526, 0).a();
     }
   }
   
-  public static void a(String paramString, HashMap<String, String> paramHashMap, boolean paramBoolean)
+  public void b(avcq paramavcq, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, "notifyRoomClosing: invoked. roomKey: " + paramavcq + " reason: " + paramInt);
+    }
+    a(paramavcq, false);
+    this.jdField_a_of_type_Avcu.a(paramavcq, paramInt);
+  }
+  
+  public void b(avcq paramavcq, LocationRoom.Venue paramVenue, avdd paramavdd)
+  {
+    if ((paramavcq == null) || ((paramVenue == null) && (paramavdd != null)))
+    {
+      paramavdd.a(paramavcq, paramVenue, 3, false, -1);
+      return;
+    }
+    this.jdField_a_of_type_Avdd = paramavdd;
+    this.jdField_a_of_type_Avdl.b(paramavcq, paramVenue);
+  }
+  
+  public void b(avcv paramavcv)
+  {
+    this.jdField_a_of_type_Avcu.a(paramavcv);
+  }
+  
+  public void b(avdc paramavdc)
   {
     try
     {
-      a(paramString, ((AppInterface)BaseApplicationImpl.sApplication.getRuntime()).getCurrentAccountUin(), paramHashMap, paramBoolean);
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, "removeLocationListener: invoked. listener: " + paramavdc + " mLocationListener: " + this.jdField_a_of_type_Avdc);
+      }
+      if (paramavdc == this.jdField_a_of_type_Avdc) {
+        this.jdField_a_of_type_Avdc = null;
+      }
       return;
     }
-    finally
+    finally {}
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Avcq != null;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void c(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Avcu.a(paramInt, paramString);
+  }
+  
+  public void c(avcq paramavcq)
+  {
+    avcq localavcq = new avcq(this.jdField_a_of_type_Avdg.a(), this.jdField_a_of_type_Avdg.a());
+    if (!localavcq.equals(paramavcq))
     {
-      paramString = finally;
-      throw paramString;
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, "notifyRoomChanging: invoked. new roomKey: " + paramavcq + " org roomKey: " + localavcq);
+      }
+      this.jdField_a_of_type_Avcu.a(localavcq);
     }
   }
   
-  public static void a(String paramString, boolean paramBoolean)
+  public Class<? extends BusinessObserver> observerClass()
   {
-    try
-    {
-      a(paramString, ((AppInterface)BaseApplicationImpl.sApplication.getRuntime()).getCurrentAccountUin(), paramBoolean);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    return avdf.class;
   }
   
-  public static void b(String paramString)
+  public void onDestroy()
   {
-    try
+    super.onDestroy();
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationHandler", 2, "onDestroy: invoked. ");
+    }
+    a(this.jdField_a_of_type_Avcq, true);
+    j();
+    k();
+    this.jdField_a_of_type_Avdj.b();
+    this.jdField_a_of_type_Avdg.a();
+    this.jdField_a_of_type_Avcu.a();
+    afrf.a();
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("QQLBSShareSvc.room_operation".equals(paramFromServiceMsg.getServiceCmd())) {
+      this.jdField_a_of_type_Avdi.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    do
     {
-      a(paramString, true);
       return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+      if ("QQLBSShareSvc.report_location".equals(paramFromServiceMsg.getServiceCmd()))
+      {
+        this.jdField_a_of_type_Avdg.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+      if ("QQLBSShareSvc.room_query".equals(paramFromServiceMsg.getServiceCmd()))
+      {
+        this.jdField_a_of_type_Avdj.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+    } while (!"QQLBSShareSvc.assembly_point_operation".equals(paramFromServiceMsg.getServiceCmd()));
+    this.jdField_a_of_type_Avdl.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

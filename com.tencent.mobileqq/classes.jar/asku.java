@@ -1,81 +1,53 @@
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.2;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.3;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.QfavPluginProxyService;
 
 public class asku
+  extends ashp
 {
-  private static asku jdField_a_of_type_Asku;
-  ArrayList<WeakReference<askt>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private bkpy jdField_a_of_type_Bkpy = new askv(this);
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int = 80;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
   
-  public static asku a()
+  public asku(Bundle paramBundle)
   {
-    if (jdField_a_of_type_Asku == null) {}
-    try
-    {
-      if (jdField_a_of_type_Asku == null) {
-        jdField_a_of_type_Asku = new asku();
-      }
-      return jdField_a_of_type_Asku;
-    }
-    finally {}
+    QfavPluginProxyService.a().a(3, this.jdField_a_of_type_Bkpy);
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QfavFilePreviewController.2(this), 300000L);
+  }
+  
+  public int a()
+  {
+    return 4;
   }
   
   public void a()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      return;
-    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    QfavPluginProxyService.a().b(3, this.jdField_a_of_type_Bkpy);
   }
   
-  public void a(int paramInt)
+  public boolean a()
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    if (3 != this.jdField_a_of_type_Int)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        askt localaskt = (askt)((WeakReference)localIterator.next()).get();
-        if (localaskt != null) {
-          localaskt.a(paramInt);
-        }
+      if (QLog.isDevelopLevel()) {
+        QLog.i("QfavFilePreviewController", 4, "sendCS: oldState = " + this.jdField_a_of_type_Int + ", newState = STATE_REQUESTING.");
       }
+      this.jdField_a_of_type_Int = 1;
+      return true;
     }
-  }
-  
-  public void a(askt paramaskt)
-  {
-    if (paramaskt == null) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        if (((WeakReference)localIterator.next()).get() == paramaskt) {
-          return;
-        }
-      }
-    }
-    paramaskt = new WeakReference(paramaskt);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramaskt);
-  }
-  
-  public void b(askt paramaskt)
-  {
-    if (paramaskt == null) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        if (((WeakReference)localIterator.next()).get() == paramaskt) {
-          localIterator.remove();
-        }
-      }
-    }
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QfavFilePreviewController.3(this), 2000L);
+    return true;
   }
 }
 

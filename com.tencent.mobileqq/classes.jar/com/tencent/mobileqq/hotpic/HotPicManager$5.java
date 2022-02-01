@@ -2,18 +2,18 @@ package com.tencent.mobileqq.hotpic;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import avtm;
+import augn;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.MobileQQ;
 
 public class HotPicManager$5
   implements Runnable
 {
-  public HotPicManager$5(avtm paramavtm, int paramInt) {}
+  public HotPicManager$5(augn paramaugn, int paramInt) {}
   
   public void run()
   {
-    this.this$0.a.getApplication().getSharedPreferences("sp_hotpic_" + this.this$0.a.c(), 0).edit().putInt("hot_pic_last_click", this.a).commit();
+    this.this$0.a.getApplication().getSharedPreferences("sp_hotpic_" + this.this$0.a.getCurrentUin(), 0).edit().putInt("hot_pic_last_click", this.a).commit();
   }
 }
 

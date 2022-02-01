@@ -1,17 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class avpa
-  implements View.OnClickListener
+public abstract interface avpa
 {
-  avpa(avoy paramavoy, avpc paramavpc) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    avoy.a(this.jdField_a_of_type_Avoy, this.jdField_a_of_type_Avpc.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 

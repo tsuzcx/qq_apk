@@ -1,43 +1,75 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.qzone.TranslucentActivity;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 public class apxi
-  implements apxf
+  extends aptq<apxh>
 {
-  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
+  @NonNull
+  public apxh a(int paramInt)
   {
-    if (paramLong != 0L) {}
-    do
+    return new apxh();
+  }
+  
+  @Nullable
+  public apxh a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
     {
-      return false;
-      paramJSONObject = BaseActivity.sTopActivity;
-    } while (paramJSONObject == null);
-    paramString3 = new Intent(paramJSONObject, TranslucentActivity.class);
-    paramString3.addFlags(268435456);
-    QzonePluginProxyActivity.a(paramString3, "com.qzone.misc.web.QZoneTranslucentActivity");
-    paramString3.setAction("action_js2qzone");
-    paramString3.putExtra("cmd", "Schema");
-    paramString2 = paramString1;
-    if (paramString1.startsWith("arouse/detailbyurl?base64url"))
-    {
-      paramString2 = paramString1;
-      if (!paramString1.contains("from")) {
-        paramString2 = paramString1 + "&from=aio";
+      apxh localapxh = apxh.a(paramArrayOfaptx[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("DonDisturbProcessor", 0, "onParsed don disturb" + paramArrayOfaptx[0].a);
       }
+      return localapxh;
     }
-    paramString3.putExtra("schema", "mqzone://" + paramString2);
-    paramString3.putExtra("from", 2);
-    paramJSONObject.startActivity(paramString3);
+    return new apxh();
+  }
+  
+  public void a(apxh paramapxh)
+  {
+    bfyz.a(BaseApplicationImpl.getContext(), "open_don_disturb", BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramapxh.a());
+    if (QLog.isColorLevel()) {
+      QLog.d("DonDisturbProcessor", 0, "onUpdate don disturb" + paramapxh);
+    }
+  }
+  
+  public Class<apxh> clazz()
+  {
+    return apxh.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
     return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 453;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apxi
  * JD-Core Version:    0.7.0.1
  */

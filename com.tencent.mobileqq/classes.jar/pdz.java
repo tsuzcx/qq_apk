@@ -1,15 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class pdz
+class pdz
+  implements opa
 {
-  public void a(int paramInt, List<DynamicChannelDataModel> paramList) {}
+  pdz(pdy parampdy, ArticleInfo paramArticleInfo) {}
   
-  public void a(int paramInt1, boolean paramBoolean, List<peg> paramList, int paramInt2) {}
-  
-  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList) {}
-  
-  public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList) {}
+  public void a(opd paramopd)
+  {
+    if (paramopd.a() == 0)
+    {
+      oto.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, new CommentInfo(), false);
+      QQToast.a(pdy.a(this.jdField_a_of_type_Pdy).a(), 2, pdy.a(this.jdField_a_of_type_Pdy).a().getString(2131717294), 0).a();
+    }
+    for (;;)
+    {
+      pdy.a(this.jdField_a_of_type_Pdy);
+      pdy.a(this.jdField_a_of_type_Pdy, null);
+      return;
+      QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131711999), 0).a();
+    }
+  }
 }
 
 

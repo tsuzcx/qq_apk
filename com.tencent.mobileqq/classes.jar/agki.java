@@ -1,17 +1,18 @@
-import android.graphics.drawable.Drawable;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 
-public class agki
+class agki
+  implements ImageAssetDelegate
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
+  agki(agkh paramagkh) {}
+  
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  {
+    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
+  }
 }
 
 

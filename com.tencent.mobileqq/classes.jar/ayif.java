@@ -1,53 +1,26 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.3.1;
-import com.tencent.mobileqq.nearby.now.view.widget.LikeAniView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class ayif
-  implements GestureDetector.OnDoubleTapListener
+class ayif
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ayif(ayhj paramayhj) {}
+  ayif(ayhx paramayhx, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (System.currentTimeMillis() - ayhj.a(this.a) >= 500L)
+    if (paramValueAnimator.getAnimatedValue() == null) {}
+    float f;
+    do
     {
-      int i = (int)paramMotionEvent.getRawX();
-      int j = (int)paramMotionEvent.getRawY();
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a != 6)) {
-        ((LikeAniView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369920)).a(i, j);
-      }
-      if (!ayhj.a(this.a)) {
-        break label98;
-      }
-    }
-    for (;;)
-    {
-      ayhj.a(this.a, System.currentTimeMillis());
-      return true;
-      label98:
-      if ((!ayhj.b(this.a)) && (this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369920).getVisibility() == 0))
-      {
-        ayhj.a(this.a, false);
-        this.a.c(null);
-        new ayek().h("video").i("playpage_double_click").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        ThreadManagerV2.excute(new PlayOperationViewModel.3.1(this, (axup)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)), 16, null, false);
-      }
-    }
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return false;
+      return;
+      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+      int i = (int)(-ayhx.a(this.jdField_a_of_type_Ayhx) * (1.0F - f));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    } while (!this.jdField_a_of_type_Ayhx.f);
+    this.b.setAlpha(f);
   }
 }
 

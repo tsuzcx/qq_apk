@@ -1,28 +1,17 @@
-import com.tencent.biz.qqcircle.events.QCircleCommentUpdateEvent;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudWrite.StDoCommentRsp;
-import java.util.Map;
+import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.12.1;
+import com.tencent.biz.qqstory.album.view.AlbumGalleryCapturePart.12.1.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class vkh
-  implements aaav<FeedCloudWrite.StDoCommentRsp>
+public class vkh
+  implements yli
 {
-  vkh(vjy paramvjy, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StFeed paramStFeed, int paramInt) {}
+  public vkh(AlbumGalleryCapturePart.12.1 param1) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoCommentRsp paramStDoCommentRsp)
+  public void a()
   {
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoCommentRsp == null))
-    {
-      QLog.e("QCircleCommentBusiness", 1, "deleteFeedComment error:" + paramLong + "  errorMsg:" + paramString);
-      return;
-    }
-    QLog.d("QCircleCommentBusiness", 1, "deleteFeedComment Success");
-    paramStDoCommentRsp.comment.id.set(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.id.get());
-    vjy.a(this.jdField_a_of_type_Vjy).put(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), Integer.valueOf(this.jdField_a_of_type_Vjy.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()) - 1 - this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment.vecReply.size()));
-    aaak.a().a(new QCircleCommentUpdateEvent(4, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Vjy.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get()), this.jdField_a_of_type_Int));
+    vkf.a(this.a.a.a, -1L);
+    ThreadManager.getUIHandler().post(new AlbumGalleryCapturePart.12.1.1.1(this));
   }
 }
 

@@ -1,38 +1,41 @@
-public class atri
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+
+final class atri
+  extends nmc
 {
-  public int a;
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b = "";
-  public short b;
-  public boolean b;
-  public byte[] b;
-  public int c;
-  public long c;
-  public String c;
-  public byte[] c;
-  public int d;
-  public String d = "";
-  public byte[] d;
-  public String e = "";
-  public byte[] e;
-  public String f = "";
+  atri(NearbyAppInterface paramNearbyAppInterface) {}
   
-  public atri(atrd paramatrd)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_JavaLangString = "";
+    boolean bool2 = false;
+    if (paramInt == 0) {
+      awka.b(this.a.getCurrentAccountUin(), false);
+    }
+    for (boolean bool1 = false;; bool1 = awka.b(this.a.getCurrentAccountUin()))
+    {
+      paramArrayOfByte = new HashMap();
+      paramArrayOfByte.put("param_reason", String.valueOf(paramInt));
+      paramBundle = StatisticCollector.getInstance(BaseApplicationImpl.getContext());
+      String str = this.a.getCurrentAccountUin();
+      if (paramInt == 0) {
+        bool2 = true;
+      }
+      paramBundle.collectPerformance(str, "oidb_0x91f", bool2, 0L, 0L, paramArrayOfByte, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.nearby", 2, "oidb_0x91f| visible:" + bool1 + "replyCode:" + paramInt);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atri
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,36 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoAdInfo;
+import android.os.AsyncTask;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
-public final class ocu
-  implements Parcelable.Creator<VideoAdInfo>
+public class ocu
+  extends AsyncTask<String, Integer, String>
 {
-  public VideoAdInfo a(Parcel paramParcel)
+  String jdField_a_of_type_JavaLangString;
+  
+  protected String a(String... paramVarArgs)
   {
-    return new VideoAdInfo(paramParcel);
+    if (super.isCancelled()) {
+      return null;
+    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(paramVarArgs[0], paramVarArgs[1]);
   }
   
-  public VideoAdInfo[] a(int paramInt)
+  protected void a(String paramString)
   {
-    return new VideoAdInfo[paramInt];
+    String str = paramString;
+    if (paramString == null) {
+      str = "{\"r\" : \"-100\"}";
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs("clientCallback", new String[] { npn.a(str), npn.a(this.jdField_a_of_type_JavaLangString) });
   }
+  
+  protected void a(Integer... paramVarArgs) {}
+  
+  protected void onCancelled()
+  {
+    super.onCancelled();
+  }
+  
+  protected void onPreExecute() {}
 }
 
 

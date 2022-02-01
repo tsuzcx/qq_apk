@@ -1,24 +1,18 @@
-import cooperation.qzone.util.QZLog;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class bnxc
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static int a = 2;
-  public static int b = 1;
-  public static int c = 4;
+  public bnxc(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public static void a(String paramString1, String paramString2)
+  public void onGlobalLayout()
   {
-    QZLog.d(paramString1, c, paramString2);
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    QZLog.d(paramString1, b, paramString2);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    QZLog.e(paramString1, paramString2, null);
+    ThreadManager.post(this.a, 8, null, false);
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

@@ -18,6 +18,13 @@ public class TPCapability
     return TPThumbplayerCapabilityHelper.addVCodecBlacklist(TPEnumUtils.convertDecoderType2Inner(paramInt1), TPEnumUtils.convertCodecType2Inner(paramInt2), localTPVCodecPropertyRange);
   }
   
+  public static boolean addVCodecWhitelist(int paramInt1, int paramInt2, TPVCodecCapabilityForSet paramTPVCodecCapabilityForSet)
+  {
+    TPCodecCapability.TPVCodecPropertyRange localTPVCodecPropertyRange = new TPCodecCapability.TPVCodecPropertyRange();
+    localTPVCodecPropertyRange.set(paramTPVCodecCapabilityForSet.getUpperboundWidth(), paramTPVCodecCapabilityForSet.getUpperboundHeight(), paramTPVCodecCapabilityForSet.getLowerboundWidth(), paramTPVCodecCapabilityForSet.getLowerboundHeight(), paramTPVCodecCapabilityForSet.getProfile(), paramTPVCodecCapabilityForSet.getLevel());
+    return TPThumbplayerCapabilityHelper.addVCodecWhitelist(TPEnumUtils.convertDecoderType2Inner(paramInt1), TPEnumUtils.convertCodecType2Inner(paramInt2), localTPVCodecPropertyRange);
+  }
+  
   public static int[] getDRMCapabilities()
   {
     return TPDrmCapability.getDRMCapabilities();

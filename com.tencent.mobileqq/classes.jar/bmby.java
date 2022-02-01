@@ -1,78 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import mqq.manager.Manager;
-import org.json.JSONObject;
-import tencent.im.cs.cmd0x388.cmd0x388.ExtensionCommPicTryUp;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class bmby
-  implements Manager
 {
-  private azrg jdField_a_of_type_Azrg = new bmbz(this);
-  private beyb jdField_a_of_type_Beyb;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public RemoteCommand.OnInvokeFinishLinstener a;
-  private String jdField_a_of_type_JavaLangString;
+  private static boolean a;
   
-  public bmby(QQAppInterface paramQQAppInterface)
+  public static void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Beyb = paramQQAppInterface.a();
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.c();
+    a = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
   }
   
-  public void a(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public static boolean a()
   {
-    if (paramBundle == null) {}
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener = paramOnInvokeFinishLinstener;
-      paramOnInvokeFinishLinstener = new beyg();
-      paramOnInvokeFinishLinstener.jdField_b_of_type_Int = 24;
-      paramOnInvokeFinishLinstener.jdField_c_of_type_Int = 20;
-      paramOnInvokeFinishLinstener.jdField_a_of_type_JavaLangString = "actQqComicPicUpload";
-      paramOnInvokeFinishLinstener.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      paramOnInvokeFinishLinstener.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      paramOnInvokeFinishLinstener.jdField_a_of_type_Boolean = true;
-      paramOnInvokeFinishLinstener.i = paramBundle.getString("localPath");
-      paramOnInvokeFinishLinstener.jdField_a_of_type_Azrg = this.jdField_a_of_type_Azrg;
-      Object localObject = paramBundle.getString("comicId");
-      String str1 = paramBundle.getString("picMd5");
-      String str2 = paramBundle.getString("actionData");
-      paramBundle = new JSONObject();
-      try
-      {
-        paramBundle.put("comicId", localObject);
-        paramBundle.put("picMd5", str1);
-        paramBundle.put("actionData", str2);
-        localObject = new cmd0x388.ExtensionCommPicTryUp();
-        ((cmd0x388.ExtensionCommPicTryUp)localObject).rpt_bytes_extinfo.add(ByteStringMicro.copyFrom(paramBundle.toString().getBytes()));
-        paramOnInvokeFinishLinstener.jdField_a_of_type_ArrayOfByte = ((cmd0x388.ExtensionCommPicTryUp)localObject).toByteArray();
-        if (this.jdField_a_of_type_Beyb == null) {
-          continue;
-        }
-        this.jdField_a_of_type_Beyb.a(paramOnInvokeFinishLinstener);
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      }
-    }
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_Beyb = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    return false;
   }
 }
 

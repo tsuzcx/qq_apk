@@ -1,9 +1,20 @@
-import com.tencent.image.URLImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class assb
-  extends asoz
+class assb
+  implements aszj
 {
-  public URLImageView[] a;
+  assb(assa paramassa) {}
+  
+  public void onNo() {}
+  
+  public void onYes()
+  {
+    ((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getFileManagerEngine().a(this.a.a.d());
+    if (this.a.a.a != null) {
+      this.a.a.a.d();
+    }
+  }
 }
 
 

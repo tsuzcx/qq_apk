@@ -1,46 +1,58 @@
 import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.JvmStatic;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.widget.AbsListView.LayoutParams;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/service/RIJAidlClient;", "", "()V", "TAG", "", "<set-?>", "Lcom/tencent/biz/pubaccount/readinjoy/service/IRIJAidlInterface;", "rijAidlInterface", "getRijAidlInterface", "()Lcom/tencent/biz/pubaccount/readinjoy/service/IRIJAidlInterface;", "rijServiceConnection", "Lcom/tencent/biz/pubaccount/readinjoy/service/RIJAidlClient$RIJServiceConnection;", "bindService", "", "context", "Landroid/content/Context;", "getInstance", "unbindService", "RIJServiceConnection", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qrw
+public class qrw
+  extends qpk
 {
-  @Nullable
-  private static qrt jdField_a_of_type_Qrt;
-  public static final qrw a;
-  private static final qrx jdField_a_of_type_Qrx = new qrx();
-  
-  static
+  public qrw(Context paramContext, FaceDecoder paramFaceDecoder, slt paramslt)
   {
-    jdField_a_of_type_Qrw = new qrw();
+    super(paramContext, paramFaceDecoder, paramslt);
   }
   
-  @JvmStatic
-  @NotNull
-  public static final qrw a()
+  public qpk a()
   {
-    return jdField_a_of_type_Qrw;
+    this.jdField_a_of_type_Boolean = true;
+    return g().h();
   }
   
-  public final void a(@NotNull Context paramContext)
+  public qpk d()
   {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    try
-    {
-      paramContext.bindService(new Intent(paramContext, KandianVideoUploadService.class), (ServiceConnection)jdField_a_of_type_Qrx, 1);
-      return;
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
-    catch (Exception paramContext)
-    {
-      QLog.e("RIJAidlClient", 1, QLog.getStackTraceString((Throwable)paramContext));
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pwe)) && (pay.s(((pwe)this.jdField_a_of_type_JavaLangObject).a()))) {
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(AIOUtils.dp2px(250.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
     }
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_Qpj != null) && ((this.jdField_a_of_type_Qpj instanceof ComponentContentBig))) {
+        localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Qpj);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+        localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
+      }
+      a(localLinearLayout);
+      return this;
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(AIOUtils.dp2px(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    }
+  }
+  
+  public qpk e()
+  {
+    return null;
+  }
+  
+  public qpk g()
+  {
+    this.jdField_a_of_type_Qpj = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

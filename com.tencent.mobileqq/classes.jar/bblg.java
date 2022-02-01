@@ -1,11 +1,12 @@
-import android.opengl.GLSurfaceView.EGLConfigChooser;
-import android.opengl.GLSurfaceView.EGLContextFactory;
+import java.util.Comparator;
 
-public abstract interface bblg
+final class bblg
+  implements Comparator<abyg>
 {
-  public abstract GLSurfaceView.EGLConfigChooser a();
-  
-  public abstract GLSurfaceView.EGLContextFactory a();
+  public int a(abyg paramabyg1, abyg paramabyg2)
+  {
+    return paramabyg2.a() - paramabyg1.a();
+  }
 }
 
 

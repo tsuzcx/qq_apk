@@ -1,19 +1,12 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class akdr
-  implements View.OnClickListener
 {
-  public akdr(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  float jdField_a_of_type_Float;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public akdr(String paramString, float paramFloat)
   {
-    ChatHistoryTroopMemberFragment.b(this.a);
-    new bdlq(this.a.getActivity().app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.c }).a();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat;
   }
 }
 

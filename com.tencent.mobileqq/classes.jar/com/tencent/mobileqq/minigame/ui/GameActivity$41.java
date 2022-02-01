@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.ui;
 
 import android.text.TextUtils;
-import bkxw;
+import bjds;
 import com.tencent.qphone.base.util.QLog;
 
 class GameActivity$41
@@ -18,7 +18,7 @@ class GameActivity$41
       for (str = this.val$url + "&" + str;; str = this.val$url)
       {
         GameActivity.reportAdByHttp(str);
-        bkxw.a(this.this$0, this.val$url, this.val$timestamp);
+        bjds.a(this.this$0, this.val$url, this.val$timestamp);
         return;
       }
       return;

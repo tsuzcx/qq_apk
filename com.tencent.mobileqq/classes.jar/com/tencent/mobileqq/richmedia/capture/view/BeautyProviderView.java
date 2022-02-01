@@ -2,20 +2,13 @@ package com.tencent.mobileqq.richmedia.capture.view;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anzj;
-import bbfg;
-import bbix;
+import bacv;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class BeautyProviderView
@@ -24,8 +17,7 @@ public class BeautyProviderView
 {
   private int jdField_a_of_type_Int = 6;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private int b;
+  private int d;
   
   public BeautyProviderView(Context paramContext)
   {
@@ -35,60 +27,20 @@ public class BeautyProviderView
   
   private void a(TextView paramTextView)
   {
-    paramTextView.setBackgroundResource(2130845925);
+    paramTextView.setBackgroundResource(2130845825);
     paramTextView.setTextColor(Color.parseColor("#12B7F5"));
   }
   
   private void b(TextView paramTextView)
   {
-    paramTextView.setBackgroundResource(2130845924);
+    paramTextView.setBackgroundResource(2130845824);
     paramTextView.setTextColor(Color.parseColor("#FFFFFF"));
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    setNeedTabBar(false);
-    super.a(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView);
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561505, this, false));
-    }
-    a(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363362));
-    int i = 0;
-    while (i < this.jdField_a_of_type_Int)
-    {
-      paramBundle = new RelativeLayout(getContext());
-      Object localObject = new LinearLayout.LayoutParams(-1, -1);
-      ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
-      paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      paramBundle.setGravity(17);
-      paramBundle.setOnClickListener(this);
-      paramBundle.setTag(Integer.valueOf(i));
-      localObject = new TextView(getContext());
-      ((TextView)localObject).setBackgroundResource(2130845924);
-      ((TextView)localObject).setText(i + "");
-      ((TextView)localObject).setTextSize(18.0F);
-      ((TextView)localObject).setGravity(17);
-      ((TextView)localObject).setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-      paramBundle.addView((View)localObject);
-      paramBundle.setContentDescription(anzj.a(2131699996) + i);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramBundle);
-      i += 1;
-    }
-    setBeautyLevel(this.b);
-  }
-  
-  public void aI_()
-  {
-    super.aI_();
-    bbfg.a().b(getContext());
   }
   
   public void onClick(View paramView)
   {
     setBeautyLevel(((Integer)paramView.getTag()).intValue());
-    this.jdField_a_of_type_Bbix.a(((Integer)paramView.getTag()).intValue());
+    this.jdField_a_of_type_Bacv.a(((Integer)paramView.getTag()).intValue());
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
@@ -104,7 +56,7 @@ public class BeautyProviderView
     do
     {
       return;
-      this.b = j;
+      this.d = j;
     } while (this.jdField_a_of_type_AndroidWidgetLinearLayout == null);
     int i = 0;
     while (i < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())

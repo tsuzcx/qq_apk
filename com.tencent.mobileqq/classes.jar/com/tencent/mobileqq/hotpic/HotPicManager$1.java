@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.hotpic;
 
-import avtm;
+import augn;
 import com.tencent.mobileqq.persistence.EntityManager;
 
 public class HotPicManager$1
   implements Runnable
 {
-  public HotPicManager$1(avtm paramavtm, HotPicSendData paramHotPicSendData1, HotPicSendData paramHotPicSendData2) {}
+  public HotPicManager$1(augn paramaugn, HotPicSendData paramHotPicSendData1, HotPicSendData paramHotPicSendData2) {}
   
   public void run()
   {
-    avtm.a(this.this$0).persistOrReplace(this.a);
+    augn.a(this.this$0).persistOrReplace(this.a);
     if (this.b != null) {
-      avtm.a(this.this$0).remove(this.b);
+      augn.a(this.this$0).remove(this.b);
     }
   }
 }

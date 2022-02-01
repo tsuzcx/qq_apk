@@ -1,12 +1,12 @@
 package cooperation.ilive.share;
 
-import anzj;
-import bjig;
+import amtj;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
 class IliveShareHelper$6
-  implements bjig
+  implements WXShareHelper.WXShareListener
 {
   IliveShareHelper$6(IliveShareHelper paramIliveShareHelper) {}
   
@@ -20,10 +20,10 @@ class IliveShareHelper$6
     case -2: 
     case -1: 
     default: 
-      QQToast.a(this.this$0.mHostActivity, 1, anzj.a(2131713449), 0).a();
+      QQToast.a(this.this$0.mHostActivity, 1, amtj.a(2131713681), 0).a();
       return;
     }
-    QQToast.a(this.this$0.mHostActivity, 2, anzj.a(2131713451), 0).a();
+    QQToast.a(this.this$0.mHostActivity, 2, amtj.a(2131713683), 0).a();
   }
 }
 

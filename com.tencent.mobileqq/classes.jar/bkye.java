@@ -1,16 +1,32 @@
-import android.os.Bundle;
-import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
-import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
-import com.tencent.qqmini.sdk.launcher.core.action.Action;
-import com.tencent.qqmini.sdk.launcher.shell.IAppBrandProxy;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
 
-final class bkye
-  implements Action<Object>
+public class bkye
+  extends Handler
 {
-  public Object perform(BaseRuntime paramBaseRuntime)
+  public bkye(TroopHWJsPlugin paramTroopHWJsPlugin) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    AppLoaderFactory.g().getAppBrandProxy().onAppDestroy(paramBaseRuntime.getMiniAppInfo(), (Bundle)null);
-    return null;
+    switch (paramMessage.what)
+    {
+    case 2: 
+    default: 
+      return;
+    case 0: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2131696899, 0).a();
+      return;
+    case 1: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2131696917, 0).a();
+      return;
+    case 3: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2131696897, 0).a();
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 2131696898, 0).a();
   }
 }
 

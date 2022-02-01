@@ -1,33 +1,26 @@
-import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.NearbyFakeActivity;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public final class awif
-  implements EIPCResultCallback
+public class awif
+  extends Handler
 {
-  public awif(JSONObject paramJSONObject, tfg paramtfg, String paramString) {}
+  public awif(NearbyFakeActivity paramNearbyFakeActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.data != null)) {}
-    for (boolean bool = paramEIPCResult.data.getBoolean("action_update_biu_and_comment_switch");; bool = false) {
-      try
-      {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("isGrayscaleUser", bool);
-        QLog.e("UiApiPlugin", 1, "webGetCommentAladdinConfig is " + bool);
-        this.jdField_a_of_type_Tfg.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
-        return;
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("NearbyFakeActivity", 2, "procPreload time out");
       }
-      catch (JSONException paramEIPCResult)
-      {
-        for (;;)
-        {
-          QLog.e("UiApiPlugin", 1, "webGetCommentAladdinConfig error " + paramEIPCResult.getMessage());
-        }
-      }
+      NearbyFakeActivity.a(this.a, 1);
     }
   }
 }

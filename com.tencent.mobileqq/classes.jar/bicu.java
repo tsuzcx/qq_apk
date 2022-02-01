@@ -1,27 +1,28 @@
-import android.text.TextUtils;
-import androidx.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 public class bicu
+  implements DialogInterface.OnClickListener
 {
-  String a;
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+  String jdField_a_of_type_JavaLangString;
   String b;
-  String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
   
-  public boolean equals(@Nullable Object paramObject)
+  public bicu(bicl parambicl, DialogInterface.OnClickListener paramOnClickListener, String paramString1, String paramString2)
   {
-    if ((paramObject instanceof bicu))
-    {
-      paramObject = (bicu)paramObject;
-      return (TextUtils.equals(paramObject.a, this.a)) && (TextUtils.equals(paramObject.b, this.b)) && (TextUtils.equals(paramObject.c, this.c));
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_JavaLangString = bias.a(paramString1, "NEWYYB");
+    this.b = paramString2;
+  }
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
     }
-    return super.equals(paramObject);
+    this.jdField_a_of_type_Bicl.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
+    this.jdField_a_of_type_Bicl.jdField_a_of_type_Bicw = null;
+    bias.a("710", this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

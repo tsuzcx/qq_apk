@@ -1,49 +1,21 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-
 public class amic
-  extends bmmh
 {
-  public amic(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public long a;
+  public String a;
+  public long b;
   
-  public int a()
+  public amic(String paramString, long paramLong1, long paramLong2)
   {
-    return ShortVideoPlayActivity.d(this.a);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
   
-  public void a(Bundle paramBundle)
+  public String toString()
   {
-    Intent localIntent = this.a.a();
-    localIntent.putExtras(paramBundle);
-    auxu.a((Activity)this.a.a, localIntent, ForwardRecentTranslucentActivity.class, 21, 100500, "biz_src_jc_shoucang");
-  }
-  
-  public void b()
-  {
-    ShortVideoPlayActivity.e(this.a);
-  }
-  
-  public void e()
-  {
-    this.a.v();
-  }
-  
-  public void f()
-  {
-    ShortVideoPlayActivity.g(this.a);
-  }
-  
-  public void g()
-  {
-    this.a.u();
-  }
-  
-  public void m()
-  {
-    ShortVideoPlayActivity.f(this.a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
+    return localStringBuilder.toString();
   }
 }
 

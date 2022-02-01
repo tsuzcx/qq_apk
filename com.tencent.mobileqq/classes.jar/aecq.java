@@ -1,26 +1,30 @@
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
 
 public class aecq
   extends Handler
 {
-  public aecq(ChatHistory paramChatHistory) {}
+  public aecq(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == 1)
+    switch (paramMessage.what)
     {
-      if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
-        this.a.a.dismiss();
+    default: 
+      return;
+    case 101: 
+      this.a.c();
+      String str = paramMessage.obj.toString();
+      paramMessage = str;
+      if (str == null) {
+        paramMessage = this.a.getString(2131719378);
       }
-      this.a.a = new bjbs(this.a, this.a.getTitleBarHeight());
-      this.a.a.setCancelable(false);
-      this.a.a.c(2131691342);
-      if (!this.a.isFinishing()) {
-        this.a.a.show();
-      }
+      this.a.a(paramMessage, 1);
+      return;
     }
+    this.a.c();
+    this.a.finish();
   }
 }
 

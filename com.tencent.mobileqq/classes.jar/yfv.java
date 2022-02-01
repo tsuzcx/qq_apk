@@ -1,28 +1,35 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import android.graphics.Matrix;
+import android.graphics.Path;
 
 public class yfv
-  extends SimpleObserver<yfw>
+  extends yfj
 {
-  public yfv(yfr paramyfr) {}
+  public Path a;
+  public int b;
+  public int c;
   
-  public void a(yfw paramyfw)
+  public yfv(Path paramPath, int paramInt1, int paramInt2, int paramInt3)
   {
-    super.onNext(paramyfw);
-    yfr.a(this.a, paramyfw, false, new ErrorMessage());
+    super(paramInt1);
+    this.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
   
-  public void onCancel()
+  public yfv(yfj paramyfj, float paramFloat)
   {
-    super.onCancel();
-    yuk.d("Q.qqstory.detail.DetailFeedAllInfoPuller", "refresh data cancel");
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    yfr.a(this.a, null, false, (ErrorMessage)paramError);
+    super(paramyfj.jdField_a_of_type_Int);
+    if ((paramyfj instanceof yfv))
+    {
+      paramyfj = (yfv)paramyfj;
+      Matrix localMatrix = new Matrix();
+      localMatrix.postScale(paramFloat, paramFloat);
+      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+      this.jdField_a_of_type_AndroidGraphicsPath.addPath(paramyfj.jdField_a_of_type_AndroidGraphicsPath, localMatrix);
+      this.jdField_a_of_type_Int = paramyfj.jdField_a_of_type_Int;
+      this.b = paramyfj.b;
+      this.c = ((int)(paramyfj.c * paramFloat));
+    }
   }
 }
 

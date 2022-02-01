@@ -1,30 +1,26 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.comic.VipComicJumpActivity;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.1;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.2;
 
 public class aqtz
-  implements aque
+  extends amsu
 {
-  public String a()
+  public aqtz(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
+  
+  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
   {
-    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131690548);
+    if (!this.a.a) {
+      return;
+    }
+    this.a.runOnUiThread(new BaseMsgBoxActivity.1.2(this, paramBoolean, paramString1, paramString2));
   }
   
-  public void a(View paramView, int paramInt)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject = new Intent("android.intent.action.MAIN");
-    paramView = paramView.getContext();
-    localObject = VipComicJumpActivity.a((Intent)localObject);
-    if (VipComicJumpActivity.a(localQQAppInterface, (Activity)paramView, (bmbn)localObject)) {
-      VipComicJumpActivity.a(localQQAppInterface, true);
+    if (!this.a.a) {
+      return;
     }
-    bdll.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", aqsd.b(paramInt), 0, "", "", "", "");
+    this.a.runOnUiThread(new BaseMsgBoxActivity.1.1(this, paramBoolean, paramString));
   }
 }
 

@@ -1,14 +1,16 @@
-import android.view.View;
-import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
-public abstract interface acpm
-  extends acou
+public class acpm
+  implements DialogInterface.OnDismissListener
 {
-  public static final AdAntiSpamForClick a = new AdAntiSpamForClick();
+  public acpm(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public abstract View b();
-  
-  public abstract void setSize(int paramInt1, int paramInt2);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a = null;
+  }
 }
 
 

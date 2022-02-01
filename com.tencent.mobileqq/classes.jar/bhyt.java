@@ -1,22 +1,37 @@
-import android.graphics.Bitmap;
-import com.tencent.commonsdk.cache.Sizeable;
-import com.tencent.image.Utils;
-import java.util.Collection;
-import java.util.HashMap;
+import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
+import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bhyt
-  implements Sizeable
+class bhyt
+  implements ITMAssistantExchangeURLListenner
 {
-  public int a;
-  public HashMap<Integer, Bitmap> a = new HashMap();
-  public int b;
+  bhyt(bhys parambhys) {}
   
-  public int getByteSize()
+  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
   {
-    Iterator localIterator = this.a.values().iterator();
-    for (int i = 0; localIterator.hasNext(); i = Utils.getBitmapSize((Bitmap)localIterator.next()) + i) {}
-    return i;
+    bhzm.b("DownloadResolver", "onExchangedURLSucceed --- ");
+    if ((paramBoolean) && (??? != null) && (???.size() > 0))
+    {
+      ??? = ???.iterator();
+      while (???.hasNext())
+      {
+        Object localObject1 = ???.next();
+        if ((localObject1 instanceof AppSimpleDetail))
+        {
+          int i = ((AppSimpleDetail)localObject1).versionCode;
+          if (i > 0) {
+            bhys.a(this.a).put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
+          }
+        }
+      }
+    }
+    synchronized (bhys.a(this.a))
+    {
+      bhys.a(this.a).notify();
+      return;
+    }
   }
 }
 

@@ -1,18 +1,16 @@
-import android.os.HandlerThread;
-import com.tencent.ark.ArkEnvironmentManager.ThreadCreater;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo;
 
-final class aqeu
-  implements ArkEnvironmentManager.ThreadCreater
+public abstract interface aqeu
 {
-  public HandlerThread createHanderThread(String paramString)
-  {
-    return ThreadManager.newFreeHandlerThread(paramString, -1);
-  }
+  public abstract long a();
+  
+  public abstract ExcitingTransferUploadChnConfigInfo a();
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqeu
  * JD-Core Version:    0.7.0.1
  */

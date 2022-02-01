@@ -1,19 +1,18 @@
-import android.content.res.Resources;
-import android.os.Handler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
-public abstract interface arto
+public class arto
+  implements DialogInterface.OnClickListener
 {
-  public abstract Resources a();
+  public arto(FMActivity paramFMActivity) {}
   
-  public abstract Handler a();
-  
-  public abstract Object a(Class<?> paramClass, String paramString, Object paramObject);
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    this.a.setResult(8001);
+    this.a.finish();
+  }
 }
 
 

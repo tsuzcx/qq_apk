@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.protocol;
 
 import android.os.Bundle;
-import bhvd;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
-import ozs;
-import qfo;
-import qfp;
+import pay;
+import qli;
+import qlj;
 
 public class ReadInJoyMSFService$2
   implements Runnable
 {
-  public ReadInJoyMSFService$2(qfo paramqfo, ToServiceMsg paramToServiceMsg) {}
+  public ReadInJoyMSFService$2(qli paramqli, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {
@@ -30,12 +30,12 @@ public class ReadInJoyMSFService$2
         if ((!this.a.extraData.getBoolean("req_pb_protocol_flag", false)) || (this.a.getWupBuffer() == null)) {
           break label441;
         }
-        if (!qfo.a(this.this$0, this.a))
+        if (!qli.a(this.this$0, this.a))
         {
           long l = this.a.getWupBuffer().length;
           localObject = new byte[(int)l + 4];
-          bhvd.a((byte[])localObject, 0, 4L + l);
-          bhvd.a((byte[])localObject, 4, this.a.getWupBuffer(), (int)l);
+          PkgTools.DWord2Byte((byte[])localObject, 0, 4L + l);
+          PkgTools.copyData((byte[])localObject, 4, this.a.getWupBuffer(), (int)l);
           this.a.putWupBuffer((byte[])localObject);
           i = j;
           if (QLog.isColorLevel())
@@ -46,7 +46,7 @@ public class ReadInJoyMSFService$2
           if (i == 0) {
             break;
           }
-          localObject = new NewIntent(ozs.a().getApplication(), qfp.class);
+          localObject = new NewIntent(pay.a().getApplication(), qlj.class);
           ((NewIntent)localObject).putExtra(ToServiceMsg.class.getSimpleName(), this.a);
           if (this.a.getAttributes().get("req_enable_msf_retry") != null)
           {
@@ -58,7 +58,7 @@ public class ReadInJoyMSFService$2
               ((NewIntent)localObject).putExtra("quickSendStrategy", 0);
               QLog.d("ReadInJoyMSFService", 2, "handleRequest | MSF retry enabled");
             }
-            ozs.a().startServlet((NewIntent)localObject);
+            pay.a().startServlet((NewIntent)localObject);
             l = System.currentTimeMillis();
             this.a.extraData.putLong("sendtimekey", l);
           }

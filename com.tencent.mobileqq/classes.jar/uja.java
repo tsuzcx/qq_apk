@@ -1,36 +1,15 @@
-class uja
-  implements upr
+import android.support.annotation.NonNull;
+
+public abstract interface uja<V extends uiz, P extends ujc<V>>
 {
-  uja(uiz paramuiz, uix paramuix, upr paramupr) {}
+  public abstract V a();
   
-  public void a()
-  {
-    uiz.a(this.jdField_a_of_type_Uiz, this.jdField_a_of_type_Uix);
-    if (this.jdField_a_of_type_Upr != null) {
-      this.jdField_a_of_type_Upr.a();
-    }
-  }
+  @NonNull
+  public abstract P a();
   
-  public void b()
-  {
-    if (this.jdField_a_of_type_Upr != null) {
-      this.jdField_a_of_type_Upr.b();
-    }
-  }
+  public abstract void a(P paramP);
   
-  public void c()
-  {
-    if (this.jdField_a_of_type_Upr != null) {
-      this.jdField_a_of_type_Upr.c();
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Upr != null) {
-      this.jdField_a_of_type_Upr.d();
-    }
-  }
+  public abstract P b();
 }
 
 

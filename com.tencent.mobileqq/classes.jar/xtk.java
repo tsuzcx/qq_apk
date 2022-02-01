@@ -1,6 +1,23 @@
-public abstract interface xtk
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class xtk
+  extends QQUIEventReceiver<xss, wci>
 {
-  public abstract boolean a(xtg paramxtg, int paramInt, Object paramObject);
+  public xtk(@NonNull xss paramxss)
+  {
+    super(paramxss);
+  }
+  
+  public void a(@NonNull xss paramxss, @NonNull wci paramwci)
+  {
+    paramxss.i();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wci.class;
+  }
 }
 
 

@@ -1,18 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
-class vbp
-  implements View.OnClickListener
+public class vbp
 {
-  vbp(vbo paramvbo) {}
-  
-  public void onClick(View paramView)
+  public static bjwy<vaq> a(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    if (vbo.a(this.a)) {
-      vbo.a(this.a);
+    switch (paramInt)
+    {
+    default: 
+      return new vbo(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+    case 1: 
+      return new vcr(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+    case 2: 
+      return new vcq(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+    case 1001: 
+      return new vas(paramViewGroup, paramInt, paramWSVerticalPageFragment);
+    case 1002: 
+      return new vbj(paramViewGroup, paramInt, paramWSVerticalPageFragment);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new vbm(paramViewGroup, paramInt, paramWSVerticalPageFragment);
   }
 }
 

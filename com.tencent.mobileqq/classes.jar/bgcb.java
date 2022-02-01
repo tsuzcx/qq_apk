@@ -1,19 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Comparator;
 
-public class bgcb
-  implements View.OnClickListener
+final class bgcb
+  implements Comparator<bgcc>
 {
-  public bgcb(ReciteFragment paramReciteFragment) {}
-  
-  public void onClick(View paramView)
+  public int a(bgcc parambgcc1, bgcc parambgcc2)
   {
-    this.a.m();
-    BeginnerGuideFragment.b(ReciteFragment.a(this.a), null, 4);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return parambgcc2.a() - parambgcc1.a();
   }
 }
 

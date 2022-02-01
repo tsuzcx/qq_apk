@@ -1,24 +1,24 @@
 package com.tencent.hippy.qq.adapter;
 
 import com.tencent.mtt.hippy.adapter.thirdparty.HippyThirdPartyAdapter;
+import org.json.JSONObject;
 
 public class HippyQQThirdPartyAdapter
   extends HippyThirdPartyAdapter
 {
+  protected JSONObject mExtraData;
   protected String mPageUrl;
-  
-  public HippyQQThirdPartyAdapter() {}
-  
-  public HippyQQThirdPartyAdapter(Object paramObject)
-  {
-    super(paramObject);
-  }
   
   public void SetHippyBridgeId(long paramLong) {}
   
   public String getAppVersion()
   {
-    return "8.4.5";
+    return "8.4.8";
+  }
+  
+  public JSONObject getExtraData()
+  {
+    return this.mExtraData;
   }
   
   public String getPackageName()
@@ -29,6 +29,11 @@ public class HippyQQThirdPartyAdapter
   public String getPageUrl()
   {
     return this.mPageUrl;
+  }
+  
+  public void setExtraData(JSONObject paramJSONObject)
+  {
+    this.mExtraData = paramJSONObject;
   }
   
   public void setPageUrl(String paramString)

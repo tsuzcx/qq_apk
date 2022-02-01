@@ -101,6 +101,9 @@ public class NativeViewContainer
     if (this.mWebviewContainer.isCustomNavibar())
     {
       paramInt3 = paramInt4 - (ViewUtils.dpToPx(44.0F) + DisplayUtil.getStatusBarHeight(this.mMiniAppContext.getContext()));
+      if (this.mWebviewContainer.getBrandPage() != null) {
+        this.mWebviewContainer.getBrandPage().updateViewStyle("default");
+      }
       paramInt2 = paramInt3;
       if (this.mWebviewContainer.getNaviBar() != null)
       {
@@ -967,6 +970,59 @@ public class NativeViewContainer
       return this.mWebviewContainer.isCustomNavibar();
     }
     return false;
+  }
+  
+  public boolean isTextAreaFocused()
+  {
+    boolean bool2 = false;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < this.appTextAreaSparseArray.size())
+      {
+        MiniAppTextArea localMiniAppTextArea = (MiniAppTextArea)this.appTextAreaSparseArray.valueAt(i);
+        if ((localMiniAppTextArea != null) && (localMiniAppTextArea.isTextAreaFocused())) {
+          bool1 = true;
+        }
+      }
+      else
+      {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  public boolean isVideoFullScreen()
+  {
+    boolean bool2 = false;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      CoverView localCoverView;
+      if (i < this.mCoverViewSparseArray.size())
+      {
+        localCoverView = (CoverView)this.mCoverViewSparseArray.valueAt(i);
+        if ((localCoverView instanceof CoverVideoView))
+        {
+          if (!((CoverVideoView)localCoverView).isFullScreen()) {
+            break label74;
+          }
+          bool1 = true;
+        }
+      }
+      else
+      {
+        return bool1;
+      }
+      if (((localCoverView instanceof CoverLiveView)) && (((CoverLiveView)localCoverView).isFullScreen())) {
+        return true;
+      }
+      label74:
+      i += 1;
+    }
   }
   
   public void notifyOnColorNoteAnimStart()

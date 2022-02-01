@@ -1,25 +1,25 @@
 package com.tencent.open.appstore.dl;
 
-import bjsz;
-import bjtx;
+import bhyo;
+import bhzm;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 public class DownloadManagerV2$24
   implements Runnable
 {
-  public DownloadManagerV2$24(bjsz parambjsz, String paramString, long paramLong1, long paramLong2) {}
+  public DownloadManagerV2$24(bhyo parambhyo, String paramString, long paramLong1, long paramLong2) {}
   
   public void run()
   {
-    DownloadInfo localDownloadInfo = bjsz.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
+    DownloadInfo localDownloadInfo = bhyo.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
     if (localDownloadInfo == null) {
-      bjtx.d("DownloadManagerV2", "OnDownloadSDKTaskProgressChanged info == null");
+      bhzm.d("DownloadManagerV2", "OnDownloadSDKTaskProgressChanged info == null");
     }
     for (;;)
     {
       this.this$0.a(2, localDownloadInfo);
       return;
-      bjtx.a("DownloadManagerV2", "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.f);
+      bhzm.a("DownloadManagerV2", "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.f);
     }
   }
 }

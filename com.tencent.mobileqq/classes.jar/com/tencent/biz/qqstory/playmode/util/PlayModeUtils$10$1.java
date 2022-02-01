@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.playmode.util;
 
-import xac;
-import xad;
-import xjb;
+import wbs;
+import wbt;
+import wkr;
 
 public class PlayModeUtils$10$1
   implements Runnable
 {
-  public PlayModeUtils$10$1(xjb paramxjb, xac paramxac) {}
+  public PlayModeUtils$10$1(wkr paramwkr, wbs paramwbs) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class PlayModeUtils$10$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.PlayModeUtils.10.1
  * JD-Core Version:    0.7.0.1
  */

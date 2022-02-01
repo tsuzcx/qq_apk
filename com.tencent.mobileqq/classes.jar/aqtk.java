@@ -1,6 +1,22 @@
-public abstract interface aqtk
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+
+class aqtk
+  implements Animation.AnimationListener
 {
-  public abstract void b();
+  aqtk(aqtj paramaqtj) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.a.setVisibility(8);
+    this.a.a.d();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

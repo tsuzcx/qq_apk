@@ -1,26 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.lang.ref.WeakReference;
+import java.lang.reflect.Field;
 
-public class ypn
-  implements woy<ypp, ypq>
+public final class ypn
 {
-  private WeakReference<ypm> a;
+  public final int a;
+  public final String a;
+  public final Field a;
   
-  public ypn(ypm paramypm)
+  public ypn(String paramString, int paramInt, Field paramField)
   {
-    this.a = new WeakReference(paramypm);
-  }
-  
-  public void a(@NonNull ypp paramypp, @Nullable ypq paramypq, @NonNull ErrorMessage paramErrorMessage)
-  {
-    yuk.d("Q.qqstory.home.GetUserGuideInfoStep", "onCmdRespond");
-    ypm localypm = (ypm)this.a.get();
-    if (localypm == null) {
-      return;
-    }
-    localypm.a(paramypp, paramypq, paramErrorMessage);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangReflectField = paramField;
+    paramField.setAccessible(true);
   }
 }
 

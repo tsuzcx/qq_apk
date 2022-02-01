@@ -1,27 +1,89 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakShow;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class bbbx
-  implements ValueAnimator.AnimatorUpdateListener
+  extends bbck
 {
-  public bbbx(AIOIceBreakShow paramAIOIceBreakShow) {}
+  private Drawable a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bbbx(FaceDecoder paramFaceDecoder)
   {
-    if (AIOIceBreakShow.a(this.a) == null) {
+    super(paramFaceDecoder);
+  }
+  
+  private void a(bbhb parambbhb, TextView paramTextView, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (this.a == null)
+      {
+        this.a = parambbhb.a().getContext().getResources().getDrawable(2130841793);
+        this.a.setBounds(0, 0, ImmersiveUtils.a(15.0F), ImmersiveUtils.a(15.0F));
+      }
+      paramTextView.setCompoundDrawables(null, null, this.a, null);
       return;
     }
-    int i = ((Integer)paramValueAnimator.getAnimatedValue("alpha")).intValue();
-    int j = ((Integer)paramValueAnimator.getAnimatedValue("height")).intValue();
-    AIOIceBreakShow.a(this.a).setAlpha(i / 100.0F);
-    paramValueAnimator = AIOIceBreakShow.a(this.a).a();
-    ((AbsListView.LayoutParams)paramValueAnimator.getLayoutParams()).height = j;
-    paramValueAnimator.requestLayout();
-    AIOIceBreakShow.a(this.a).scrollTo(0, j - AIOIceBreakShow.a());
+    paramTextView.setCompoundDrawables(null, null, null, null);
+  }
+  
+  private void b(bbhb parambbhb, bayt parambayt)
+  {
+    TextView localTextView = parambbhb.a();
+    Context localContext;
+    boolean bool;
+    if ((localTextView != null) && (parambayt != null))
+    {
+      localContext = localTextView.getContext();
+      if (!(parambayt instanceof bazx)) {
+        break label73;
+      }
+      parambayt = ((bazx)parambayt).a();
+      if ((parambayt != null) && (localContext != null))
+      {
+        if (parambayt.certifiedGrade <= 0L) {
+          break label68;
+        }
+        bool = true;
+        a(parambbhb, localTextView, bool);
+      }
+    }
+    label68:
+    label73:
+    do
+    {
+      do
+      {
+        return;
+        bool = false;
+        break;
+      } while (!(parambayt instanceof baxx));
+      parambayt = (baxx)parambayt;
+    } while ((parambayt == null) || (localContext == null));
+    a(parambbhb, localTextView, parambayt.b());
+  }
+  
+  protected void a(bbhb parambbhb, bayt parambayt)
+  {
+    super.a(parambbhb, parambayt);
+    if ((parambayt instanceof bazx))
+    {
+      Object localObject = (bazx)parambayt;
+      PublicAccountInfo localPublicAccountInfo = ((bazx)localObject).a();
+      if ((localPublicAccountInfo != null) && (localPublicAccountInfo.displayNumber != null) && (localPublicAccountInfo.displayNumber.equalsIgnoreCase(((bazx)localObject).a())))
+      {
+        localObject = new SpannableString(localPublicAccountInfo.name);
+        ((SpannableString)localObject).setSpan(new ForegroundColorSpan(-16734752), 0, localPublicAccountInfo.name.length(), 33);
+        parambbhb.a().setText((CharSequence)localObject);
+      }
+    }
+    b(parambbhb, parambayt);
   }
 }
 

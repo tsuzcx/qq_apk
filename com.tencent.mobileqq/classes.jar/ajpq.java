@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import java.util.HashMap;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajpq
-  implements ajpo
+final class ajpq
+  implements DialogInterface.OnClickListener
 {
-  public ajpq(TroopActivity paramTroopActivity) {}
+  ajpq(Activity paramActivity, String paramString1, String paramString2) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a.containsKey(paramString)) && (((Boolean)this.a.a.get(paramString)).booleanValue() != paramBoolean))
+    if (paramInt == 0)
     {
-      this.a.a.remove(paramString);
-      return;
+      ajpl.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
     }
-    this.a.a.put(paramString, Boolean.valueOf(paramBoolean));
   }
 }
 

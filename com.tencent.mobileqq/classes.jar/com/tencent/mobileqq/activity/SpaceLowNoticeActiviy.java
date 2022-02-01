@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import afos;
-import afot;
-import afou;
+import aehk;
+import aehl;
+import aehm;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,18 +13,18 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import bhlq;
-import bhpc;
+import bfur;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.manager.ServerConfigManager.ConfigType;
 
 public class SpaceLowNoticeActiviy
   extends BaseActivity
 {
-  private bhpc a;
+  private QQCustomDialog a;
   
   public static long a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
   {
@@ -34,7 +34,7 @@ public class SpaceLowNoticeActiviy
       return paramLong;
       try
       {
-        long l = Long.parseLong(paramQQAppInterface.a(ServerConfigManager.ConfigType.common, paramString));
+        long l = Long.parseLong(paramQQAppInterface.getServerConfigValue(ServerConfigManager.ConfigType.common, paramString));
         if (l > 0L) {
           return l;
         }
@@ -67,23 +67,24 @@ public class SpaceLowNoticeActiviy
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559521);
+    super.setContentView(2131559523);
     if ((this.a != null) && (this.a.isShowing())) {
       this.a.dismiss();
     }
     this.a = null;
-    this.a = bhlq.a(this, 230);
-    this.a.setContentView(2131558984);
-    this.a.setTitle(getString(2131697957)).setMessage(getString(2131697958)).setPositiveButton(2131698352, new afot(this)).setNegativeButton(2131690580, new afos(this));
-    this.a.setOnKeyListener(new afou(this));
+    this.a = bfur.a(this, 230);
+    this.a.setContentView(2131558992);
+    this.a.setTitle(getString(2131698114)).setMessage(getString(2131698115)).setPositiveButton(2131698521, new aehl(this)).setNegativeButton(2131690620, new aehk(this));
+    this.a.setOnKeyListener(new aehm(this));
     this.a.show();
     return false;
   }
@@ -108,7 +109,7 @@ public class SpaceLowNoticeActiviy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SpaceLowNoticeActiviy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.drawable.Drawable;
 
 public class aeyq
-  implements View.OnClickListener
 {
-  public void onClick(View paramView)
-  {
-    MainFragment.b(true);
-    ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-    if (!MainFragment.a()) {
-      localViewGroup.callOnClick();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public int a;
+  public Drawable a;
+  public String a;
+  public boolean a;
 }
 
 

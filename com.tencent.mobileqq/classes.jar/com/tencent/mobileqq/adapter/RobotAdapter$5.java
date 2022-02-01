@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.adapter;
 
-import amqh;
+import allb;
 import java.util.ArrayList;
 
 public class RobotAdapter$5
   implements Runnable
 {
-  public RobotAdapter$5(amqh paramamqh, String paramString, boolean paramBoolean, int paramInt) {}
+  public RobotAdapter$5(allb paramallb, String paramString, boolean paramBoolean, int paramInt) {}
   
   public void run()
   {
-    amqh.a(this.this$0).contains(this.jdField_a_of_type_JavaLangString);
-    amqh.a(this.this$0).remove(this.jdField_a_of_type_JavaLangString);
+    allb.a(this.this$0).contains(this.jdField_a_of_type_JavaLangString);
+    allb.a(this.this$0).remove(this.jdField_a_of_type_JavaLangString);
     this.this$0.notifyDataSetChanged();
     if (!this.jdField_a_of_type_Boolean) {
       this.this$0.a(this.jdField_a_of_type_Int);

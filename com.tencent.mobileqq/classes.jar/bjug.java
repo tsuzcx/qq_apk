@@ -1,8 +1,6 @@
 public abstract interface bjug
 {
-  public abstract void a();
-  
-  public abstract void a(String paramString, byte[] paramArrayOfByte);
+  public abstract String a(int paramInt);
 }
 
 

@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.statistics;
 
-import abiz;
-import bdmc;
+import aafi;
 
-public class StatisticCollector$4
+class StatisticCollector$4
   implements Runnable
 {
-  public StatisticCollector$4(bdmc parambdmc) {}
+  StatisticCollector$4(StatisticCollector paramStatisticCollector) {}
   
   public void run()
   {
-    abiz.a(bdmc.a(), 1);
+    aafi.a(StatisticCollector.access$1000(), 1);
   }
 }
 

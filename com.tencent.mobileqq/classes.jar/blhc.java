@@ -1,410 +1,143 @@
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.AssetManager;
-import android.content.res.Resources;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.provider.Settings.Secure;
-import android.provider.Settings.System;
-import android.telephony.TelephonyManager;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import android.util.Xml;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.QQDeviceInfo.1;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-import mqq.os.MqqHandler;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
 public class blhc
 {
-  private static final SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private static final Object jdField_a_of_type_JavaLangObject;
-  public static String a;
-  private static volatile Map<String, Integer> jdField_a_of_type_JavaUtilMap;
-  private static boolean jdField_a_of_type_Boolean;
-  private static String b;
-  private static String c;
-  private static String d;
-  
-  static
+  /* Error */
+  public static long a(java.lang.String paramString, long paramLong)
   {
-    jdField_a_of_type_JavaLangString = "QQDeviceInfo";
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  private static int a(String paramString)
-  {
-    if (jdField_a_of_type_JavaUtilMap == null) {}
-    do
-    {
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        if (jdField_a_of_type_JavaUtilMap == null) {
-          c();
-        }
-        if (jdField_a_of_type_JavaUtilMap == null) {
-          return 4;
-        }
-      }
-      if (jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-        break;
-      }
-    } while (!jdField_a_of_type_Boolean);
-    throw new IllegalArgumentException("busiId not registed ,please first regist");
-    paramString = (Integer)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (paramString == null) {}
-    for (int i = 4;; i = paramString.intValue()) {
-      return i;
-    }
-  }
-  
-  private static int a(String paramString, int paramInt)
-  {
-    try
-    {
-      int i = Integer.valueOf(paramString).intValue();
-      return i;
-    }
-    catch (NumberFormatException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return paramInt;
-  }
-  
-  public static blhe a(String paramString)
-  {
-    a(paramString);
-    return new blhe(f(), a(), e());
-  }
-  
-  public static String a()
-  {
-    return UserAction.getQIMEI();
-  }
-  
-  private static String a(int paramInt)
-  {
-    synchronized (jdField_a_of_type_AndroidUtilSparseArray)
-    {
-      if (jdField_a_of_type_AndroidUtilSparseArray.indexOfKey(paramInt) < 0) {
-        jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, e("device_id_cache_" + paramInt));
-      }
-      String str = (String)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-      return str;
-    }
-  }
-  
-  public static String a(String paramString)
-  {
-    return a(paramString, -1);
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    int j = a(paramString);
-    int i = paramInt;
-    if (paramInt == -1) {
-      i = j;
-    }
-    String str2 = a(i);
-    if (!TextUtils.isEmpty(str2))
-    {
-      paramString = str2;
-      return paramString;
-    }
-    b();
-    a(true);
-    if (((Build.VERSION.SDK_INT > 28) || ((Build.VERSION.SDK_INT >= 23) && (BaseApplicationImpl.getApplication().checkSelfPermission("android.permission.READ_PHONE_STATE") != 0))) && (TextUtils.isEmpty(d))) {
-      if (i >= 5) {
-        paramString = a();
-      }
-    }
-    for (;;)
-    {
-      String str1 = paramString;
-      if (paramString == null) {
-        str1 = "";
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "getIMEI, level = " + i + "; result = " + str1);
-      }
-      paramString = str1;
-      if (str1.equals(str2)) {
-        break;
-      }
-      b("device_id_cache_" + i, str1);
-      return str1;
-      if (("huawei".equalsIgnoreCase(Build.MANUFACTURER)) && (!TextUtils.isEmpty(b)))
-      {
-        paramString = b;
-      }
-      else
-      {
-        paramString = e();
-        continue;
-        paramString = f();
-      }
-    }
-  }
-  
-  public static void a()
-  {
-    a(false);
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if ((Build.VERSION.SDK_INT <= 28) || (!"huawei".equalsIgnoreCase(Build.MANUFACTURER))) {}
-    do
-    {
-      return;
-      b = e("huawei_oaid");
-    } while ((paramBoolean) || (!TextUtils.isEmpty(b)));
-    ThreadManager.getFileThreadHandler().post(new QQDeviceInfo.1());
-  }
-  
-  public static String b()
-  {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    String str2 = (String)bhsi.a(localBaseApplication, "0", "key_no_login_user_id", "");
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "";
-    }
-    try
-    {
-      str2 = Settings.Secure.getString(localBaseApplication.getContentResolver(), "android_id");
-      str1 = str2;
-    }
-    catch (Exception localException)
-    {
-      label42:
-      break label42;
-    }
-    str2 = UUID.randomUUID().toString();
-    str1 = MD5.toMD5(str1 + str2);
-    bhsi.a(localBaseApplication, "0", false, "key_no_login_user_id", str1);
-    return str1;
-  }
-  
-  public static String b(String paramString)
-  {
-    a(paramString);
-    paramString = (TelephonyManager)BaseApplicationImpl.getContext().getSystemService("phone");
-    try
-    {
-      paramString = paramString.getSubscriberId();
-      return paramString;
-    }
-    catch (SecurityException paramString)
-    {
-      return "";
-    }
-    catch (Throwable paramString) {}
-    return "";
-  }
-  
-  public static String b(String paramString, int paramInt)
-  {
-    return b(paramString);
-  }
-  
-  private static void b()
-  {
-    if (!TextUtils.isEmpty(d)) {
-      return;
-    }
-    d = e("imei");
-  }
-  
-  private static void b(String paramString1, String paramString2)
-  {
-    BaseApplicationImpl.getContext().getSharedPreferences("authority", 4).edit().putString(paramString1, paramString2).apply();
-  }
-  
-  @SuppressLint({"HardwareIds"})
-  public static String c()
-  {
-    if (Build.VERSION.SDK_INT < 26) {
-      return Build.SERIAL;
-    }
-    if (Build.VERSION.SDK_INT > 28) {}
-    Object localObject = BaseActivity.sTopActivity;
-    if (localObject == null) {
-      return "unknown";
-    }
-    if (((BaseActivity)localObject).checkSelfPermission("android.permission.READ_PHONE_STATE") != 0) {
-      ((BaseActivity)localObject).requestPermissions(new String[] { "android.permission.READ_PHONE_STATE" }, 1);
-    }
-    for (;;)
-    {
-      return "unknown";
-      try
-      {
-        localObject = Build.getSerial();
-        return localObject;
-      }
-      catch (SecurityException localSecurityException)
-      {
-        QLog.e(jdField_a_of_type_JavaLangString, 2, localSecurityException, new Object[0]);
-      }
-    }
-  }
-  
-  public static String c(String paramString)
-  {
-    a(paramString);
-    paramString = (WifiManager)BaseApplicationImpl.getContext().getSystemService("wifi");
-    try
-    {
-      paramString = paramString.getConnectionInfo().getMacAddress();
-      return paramString;
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        paramString = "";
-      } while (!QLog.isDevelopLevel());
-      QLog.d(jdField_a_of_type_JavaLangString, 2, " getMacAddr exception = " + localException);
-    }
-    return "";
-  }
-  
-  private static void c()
-  {
-    localHashMap = new HashMap();
-    Object localObject = BaseApplicationImpl.getContext();
-    for (;;)
-    {
-      try
-      {
-        localObject = ((Context)localObject).getResources().getAssets().open("SensiveAuthorityFile.xml");
-        localXmlPullParser = Xml.newPullParser();
-        localXmlPullParser.setInput((InputStream)localObject, "utf-8");
-        i = localXmlPullParser.getEventType();
-      }
-      catch (IOException localIOException)
-      {
-        XmlPullParser localXmlPullParser;
-        String str1;
-        String str2;
-        localIOException.printStackTrace();
-        jdField_a_of_type_JavaUtilMap = localHashMap;
-        return;
-        localIOException.close();
-        continue;
-      }
-      catch (XmlPullParserException localXmlPullParserException)
-      {
-        localXmlPullParserException.printStackTrace();
-        continue;
-        int i = 4;
-        continue;
-        if (i == 1) {
-          continue;
-        }
-        switch (i)
-        {
-        }
-        continue;
-      }
-      i = localXmlPullParser.next();
-      continue;
-      if (localXmlPullParser.getName().equalsIgnoreCase("business"))
-      {
-        str1 = localXmlPullParser.getAttributeValue(null, "id");
-        str2 = localXmlPullParser.getAttributeValue(null, "level");
-        if (TextUtils.isEmpty(str2)) {
-          continue;
-        }
-        i = a(str2, 4);
-        localHashMap.put(str1, Integer.valueOf(i));
-        if (QLog.isDevelopLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 4, "init sensitive au, busiId = " + str1 + "; level = " + i);
-        }
-      }
-    }
-  }
-  
-  private static String e()
-  {
-    if (!TextUtils.isEmpty(c)) {
-      return c;
-    }
-    c = e("android_id");
-    if (TextUtils.isEmpty(c))
-    {
-      c = Settings.System.getString(BaseApplicationImpl.getContext().getContentResolver(), "android_id");
-      b("android_id", c);
-    }
-    return c;
-  }
-  
-  private static String e(String paramString)
-  {
-    String str = BaseApplicationImpl.getContext().getSharedPreferences("authority", 4).getString(paramString, "");
-    paramString = str;
-    if (TextUtils.isEmpty(str)) {
-      paramString = "";
-    }
-    return paramString;
-  }
-  
-  private static String f()
-  {
-    
-    if (!TextUtils.isEmpty(d)) {
-      return d;
-    }
-    for (;;)
-    {
-      try
-      {
-        localTelephonyManager = (TelephonyManager)BaseApplicationImpl.getContext().getSystemService("phone");
-        if (Build.VERSION.SDK_INT >= 26) {
-          continue;
-        }
-        d = localTelephonyManager.getDeviceId();
-        b("imei", d);
-      }
-      catch (SecurityException localSecurityException)
-      {
-        TelephonyManager localTelephonyManager;
-        d = "";
-        continue;
-      }
-      catch (Throwable localThrowable)
-      {
-        d = "";
-        continue;
-      }
-      return d;
-      d = localTelephonyManager.getImei();
-    }
+    // Byte code:
+    //   0: lconst_0
+    //   1: lstore 9
+    //   3: sipush 8192
+    //   6: newarray byte
+    //   8: astore 13
+    //   10: new 10	java/util/zip/CRC32
+    //   13: dup
+    //   14: invokespecial 14	java/util/zip/CRC32:<init>	()V
+    //   17: astore 14
+    //   19: new 16	java/io/FileInputStream
+    //   22: dup
+    //   23: aload_0
+    //   24: invokespecial 19	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   27: astore_0
+    //   28: lload_1
+    //   29: lstore 5
+    //   31: lconst_0
+    //   32: lstore 7
+    //   34: aload_0
+    //   35: aload 13
+    //   37: invokevirtual 25	java/io/InputStream:read	([B)I
+    //   40: istore 4
+    //   42: iload 4
+    //   44: ifle +52 -> 96
+    //   47: iload 4
+    //   49: istore_3
+    //   50: lload 5
+    //   52: iload 4
+    //   54: i2l
+    //   55: lcmp
+    //   56: ifge +7 -> 63
+    //   59: lload 5
+    //   61: l2i
+    //   62: istore_3
+    //   63: aload 14
+    //   65: aload 13
+    //   67: iconst_0
+    //   68: iload_3
+    //   69: invokevirtual 29	java/util/zip/CRC32:update	([BII)V
+    //   72: lload 7
+    //   74: iload_3
+    //   75: i2l
+    //   76: ladd
+    //   77: lstore 7
+    //   79: lload_1
+    //   80: lload 7
+    //   82: lsub
+    //   83: lstore 11
+    //   85: lload 11
+    //   87: lstore 5
+    //   89: lload 11
+    //   91: lconst_0
+    //   92: lcmp
+    //   93: ifgt -59 -> 34
+    //   96: aload_0
+    //   97: invokevirtual 32	java/io/InputStream:close	()V
+    //   100: aload 14
+    //   102: invokevirtual 36	java/util/zip/CRC32:getValue	()J
+    //   105: lstore_1
+    //   106: lload_1
+    //   107: lstore 5
+    //   109: aload_0
+    //   110: ifnull +10 -> 120
+    //   113: aload_0
+    //   114: invokevirtual 32	java/io/InputStream:close	()V
+    //   117: lload_1
+    //   118: lstore 5
+    //   120: lload 5
+    //   122: lreturn
+    //   123: astore_0
+    //   124: aconst_null
+    //   125: astore_0
+    //   126: lload 9
+    //   128: lstore 5
+    //   130: aload_0
+    //   131: ifnull -11 -> 120
+    //   134: aload_0
+    //   135: invokevirtual 32	java/io/InputStream:close	()V
+    //   138: lconst_0
+    //   139: lreturn
+    //   140: astore_0
+    //   141: lconst_0
+    //   142: lreturn
+    //   143: astore 13
+    //   145: aconst_null
+    //   146: astore_0
+    //   147: aload_0
+    //   148: ifnull +7 -> 155
+    //   151: aload_0
+    //   152: invokevirtual 32	java/io/InputStream:close	()V
+    //   155: aload 13
+    //   157: athrow
+    //   158: astore_0
+    //   159: lload_1
+    //   160: lreturn
+    //   161: astore_0
+    //   162: goto -7 -> 155
+    //   165: astore 13
+    //   167: goto -20 -> 147
+    //   170: astore 13
+    //   172: goto -46 -> 126
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	175	0	paramString	java.lang.String
+    //   0	175	1	paramLong	long
+    //   49	26	3	i	int
+    //   40	13	4	j	int
+    //   29	100	5	l1	long
+    //   32	49	7	l2	long
+    //   1	126	9	l3	long
+    //   83	7	11	l4	long
+    //   8	58	13	arrayOfByte	byte[]
+    //   143	13	13	localObject1	Object
+    //   165	1	13	localObject2	Object
+    //   170	1	13	localIOException	java.io.IOException
+    //   17	84	14	localCRC32	java.util.zip.CRC32
+    // Exception table:
+    //   from	to	target	type
+    //   19	28	123	java/io/IOException
+    //   134	138	140	java/io/IOException
+    //   19	28	143	finally
+    //   113	117	158	java/io/IOException
+    //   151	155	161	java/io/IOException
+    //   34	42	165	finally
+    //   63	72	165	finally
+    //   96	106	165	finally
+    //   34	42	170	java/io/IOException
+    //   63	72	170	java/io/IOException
+    //   96	106	170	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blhc
  * JD-Core Version:    0.7.0.1
  */

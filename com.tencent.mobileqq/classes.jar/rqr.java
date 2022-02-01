@@ -1,14 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLazyLoadDelegate;
+import com.tencent.image.URLDrawable.DownloadListener;
 
-public class rqr
-  extends odq
+class rqr
+  implements URLDrawable.DownloadListener
 {
-  public rqr(VideoFeedsLazyLoadDelegate paramVideoFeedsLazyLoadDelegate) {}
+  rqr(rqj paramrqj) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public void onFileDownloadFailed(int paramInt)
   {
-    this.a.a(paramBoolean, paramBundle);
+    rqj.b(this.a);
+  }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    rqj.c(this.a);
   }
 }
 

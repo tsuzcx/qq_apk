@@ -1,27 +1,16 @@
-import com.tencent.av.business.handler.NetAddr;
-import java.util.List;
+import android.util.Log;
 
-public class lga
+class lga
 {
-  private static lga a;
-  public int a;
-  public long a;
-  public List<NetAddr> a;
-  public int b;
+  Class<?> jdField_a_of_type_JavaLangClass;
+  String jdField_a_of_type_JavaLangString;
+  Class<?> b;
   
-  static
+  void a(String paramString, long paramLong)
   {
-    jdField_a_of_type_Lga = new lga();
-  }
-  
-  public static lga a()
-  {
-    return jdField_a_of_type_Lga;
-  }
-  
-  public String toString()
-  {
-    return "mChannelType[" + this.jdField_a_of_type_Int + "], mSessionId[" + this.jdField_a_of_type_Long + "], mTransType[" + this.b + "]";
+    if ((this.b == null) || (this.jdField_a_of_type_JavaLangClass == null)) {
+      Log.d(paramString, "check ClassInfo, seq[" + paramLong + "], " + this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

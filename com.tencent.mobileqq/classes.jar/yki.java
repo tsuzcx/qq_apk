@@ -1,23 +1,18 @@
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import java.util.Comparator;
+import java.util.Observable;
 
 public class yki
-  implements Comparator<VideoCollectionItem>
+  extends Observable
 {
-  public int a(VideoCollectionItem paramVideoCollectionItem1, VideoCollectionItem paramVideoCollectionItem2)
+  public void notifyObservers()
   {
-    if ((paramVideoCollectionItem1.collectionType != paramVideoCollectionItem2.collectionType) && (zof.a(paramVideoCollectionItem1.collectionTime, paramVideoCollectionItem2.collectionTime))) {
-      if (VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem1.collectionType] >= VideoCollectionItem.TYPE_ORDER[paramVideoCollectionItem2.collectionType]) {}
-    }
-    do
-    {
-      return -1;
-      return 1;
-      if (paramVideoCollectionItem1.collectionTime < paramVideoCollectionItem2.collectionTime) {
-        return 1;
-      }
-    } while (paramVideoCollectionItem1.collectionTime > paramVideoCollectionItem2.collectionTime);
-    return 0;
+    setChanged();
+    super.notifyObservers();
+  }
+  
+  public void notifyObservers(Object paramObject)
+  {
+    setChanged();
+    super.notifyObservers(paramObject);
   }
 }
 

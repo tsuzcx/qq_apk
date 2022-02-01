@@ -1,106 +1,65 @@
-import android.app.Activity;
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Set;
 
-public abstract class pdh<K, D>
-  extends RecyclerView.Adapter<blsy>
+public class pdh
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  protected int a;
-  protected Context a;
-  protected VafContext a;
-  protected RecyclerViewWithHeaderFooter a;
-  protected List<D> a;
-  protected Map<Integer, String> a;
-  protected ConcurrentHashMap<K, D> a;
-  
-  public pdh(Activity paramActivity, RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter, int paramInt)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new qfg();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramActivity);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(paramActivity);
-    oyj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, a());
-    this.jdField_a_of_type_AndroidContentContext = paramActivity;
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter = paramRecyclerViewWithHeaderFooter;
-  }
-  
-  public VafContext a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  }
-  
-  protected D a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  protected String a()
-  {
-    return "dynamic_feeds_" + this.jdField_a_of_type_Int;
-  }
-  
-  public ConcurrentHashMap<K, D> a()
-  {
-    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty())) {
-      localConcurrentHashMap.putAll(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
-    }
-    return localConcurrentHashMap;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    }
-  }
-  
-  public void a(K paramK, D paramD)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramK, paramD);
-    }
-  }
-  
-  public void a(List<D> paramList)
-  {
-    if ((paramList != null) && (paramList.size() > 0))
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoColumnHandler", 1, "[onReceiveConfig] " + paramString);
+    for (;;)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      notifyDataSetChanged();
+      String str1;
+      String str2;
+      try
+      {
+        paramString = pbt.a(paramString);
+        Iterator localIterator = paramString.keySet().iterator();
+        if (localIterator.hasNext())
+        {
+          str1 = (String)localIterator.next();
+          str2 = (String)paramString.get(str1);
+          if (TextUtils.isEmpty(str2)) {
+            break label209;
+          }
+          QLog.d("VideoColumnHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+          if (TextUtils.equals(str1, "video_channel_feeds_type")) {
+            bkwm.a(Integer.parseInt(str2));
+          }
+        }
+        else
+        {
+          return true;
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoColumnHandler", 2, "error in parse video_feeds_Type config: " + paramString.getMessage());
+        }
+      }
+      if (TextUtils.equals(str1, "multi_video_feeds_type"))
+      {
+        bkwm.b(Integer.parseInt(str2));
+        continue;
+        label209:
+        QLog.d("VideoColumnHandler", 2, "key: " + str1 + " of value is null");
+      }
     }
   }
   
-  public void b(List<D> paramList)
+  public void onWipeConfig(int paramInt)
   {
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      int i = this.jdField_a_of_type_JavaUtilList.size();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      notifyItemRangeInserted(i, paramList.size());
-    }
-  }
-  
-  public int getItemCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
+    super.onWipeConfig(paramInt);
+    bkwm.a(1);
+    bkwm.b(1);
   }
 }
 

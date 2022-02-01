@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/nks" android:background="@drawable/bl2" android:layout_width="160.0dip" android:layout_height="64.0dip"
+<ScrollView android:background="@color/eb" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/mj8" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/csy" android:layout_alignParentLeft="true" />
-    <TextView android:textSize="14.0sp" android:textColor="#ff333333" android:ellipsize="end" android:id="@id/k9t" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="45.0dip" android:text="小哥哥来吧" android:maxLines="1" android:layout_toRightOf="@id/mj8" />
-    <TextView android:textSize="10.0sp" android:textColor="#ff9a9a9a" android:id="@id/kbp" android:layout_width="wrap_content" android:layout_height="21.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="12.0dip" android:text="上个月" android:layout_alignParentRight="true" />
-    <TextView android:textSize="12.0sp" android:textColor="#ff9a9a9a" android:ellipsize="end" android:id="@id/nu4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginRight="45.0dip" android:text="在吗？一起来玩吧" android:maxLines="1" android:layout_toRightOf="@id/mj8" android:layout_below="@id/k9t" />
-    <TextView android:textSize="10.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/nwg" android:background="@drawable/bw4" android:padding="1.0dip" android:layout_width="wrap_content" android:layout_height="16.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="12.0dip" android:text="99+" android:maxLines="1" android:layout_alignTop="@id/nu4" android:layout_alignParentRight="true" />
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RadioGroup android:orientation="vertical" android:background="@color/dd" android:padding="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip">
+            <RadioButton android:id="@id/ni3" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="文本" />
+            <RadioButton android:id="@id/nhz" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="单图" />
+            <RadioButton android:id="@id/ni5" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="网页" />
+            <RadioButton android:id="@id/ni1" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="多图" />
+            <RadioButton android:id="@id/ni8" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="视频" />
+            <RadioButton android:id="@id/nmf" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="web通用能力" />
+        </RadioGroup>
+        <LinearLayout android:orientation="vertical" android:background="@color/dd" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <EditText android:id="@id/ni2" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="8.0dip" android:hint="文本信息" />
+            <EditText android:id="@id/ni6" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="8.0dip" android:hint="标题" />
+            <EditText android:id="@id/ni4" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="8.0dip" android:hint="描述" />
+            <EditText android:id="@id/ni7" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="8.0dip" android:text="https://www.baidu.com" android:hint="url" />
+            <LinearLayout android:orientation="vertical" android:id="@id/k8y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+                <LinearLayout android:orientation="horizontal" android:id="@id/k94" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+                    <Button android:layout_gravity="center_vertical" android:id="@id/k8r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="添加图片" />
+                    <Button android:layout_gravity="center_vertical" android:id="@id/mkd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="清空图片" />
+                </LinearLayout>
+                <TextView android:textSize="10.0sp" android:id="@id/ni0" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="80.0dip" android:layout_marginLeft="4.0dip" android:hint="分享图片路径" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/k9q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+                <Button android:layout_gravity="center_vertical" android:id="@id/k9p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="添加视频" />
+                <TextView android:textSize="10.0sp" android:id="@id/ni9" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="80.0dip" android:layout_marginLeft="4.0dip" android:hint="视频路径" />
+            </LinearLayout>
+        </LinearLayout>
+        <Button android:id="@id/nvu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="15.0dip" android:text="开始分享" />
+    </LinearLayout>
+</ScrollView>

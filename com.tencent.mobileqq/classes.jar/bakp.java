@@ -1,39 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
+import com.tencent.richmediabrowser.listener.IGalleryImageListener;
+import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
 
-public class bakp
-  extends avhb
+class bakp
+  implements IGalleryImageListener
 {
-  public bakp(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  bakp(bakl parambakl, RichMediaBrowserInfo paramRichMediaBrowserInfo, String paramString, URLDrawable paramURLDrawable, AIOFilePictureData paramAIOFilePictureData) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void onLoadDrawable(int paramInt, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadSuccessed(int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onBandIntimateRelationship");
-    }
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
-      QLog.d("intimate_relationship", 1, String.format("onBandIntimateRelationship return, friendUin: %s", new Object[] { paramString }));
-    }
-    while (!paramBoolean) {
+    this.jdField_a_of_type_Bakl.b.setVisibility(8);
+    if (paramBoolean)
+    {
+      bakl.a(this.jdField_a_of_type_Bakl, this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
       return;
     }
-    ProfileCardMoreActivity.a(this.a);
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "ProfileCard onDisbandIntimateRelationship");
+    if ((!bakl.a(this.jdField_a_of_type_Bakl, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData, this.jdField_a_of_type_Bakl.a)) && (!bakl.b(this.jdField_a_of_type_Bakl, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData, this.jdField_a_of_type_Bakl.a))) {
+      bakl.a(this.jdField_a_of_type_Bakl, this.jdField_a_of_type_Bakl.a);
     }
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
-      QLog.d("intimate_relationship", 1, String.format("ProfileCard onDisbandIntimateRelationship, friendUin: %s", new Object[] { paramString }));
-    }
-    while (!paramBoolean1) {
-      return;
-    }
-    ProfileCardMoreActivity.a(this.a);
+    bakl.a(this.jdField_a_of_type_Bakl, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFilePictureData.jdField_a_of_type_Int, 18);
   }
 }
 

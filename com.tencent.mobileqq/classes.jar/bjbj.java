@@ -1,8 +1,16 @@
-public abstract interface bjbj
+import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnSeekCompleteListener;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnSeekCompleteListener;
+
+class bjbj
+  implements ISuperPlayer.OnSeekCompleteListener
 {
-  public abstract void a(bjbh parambjbh);
+  bjbj(bjbd parambjbd, AbsVideoPlayer.OnSeekCompleteListener paramOnSeekCompleteListener) {}
   
-  public abstract void a(bjbh parambjbh, int paramInt1, int paramInt2);
+  public void onSeekComplete(ISuperPlayer paramISuperPlayer)
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnSeekCompleteListener.onSeekComplete(this.jdField_a_of_type_Bjbd);
+  }
 }
 
 

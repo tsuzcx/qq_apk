@@ -1,12 +1,17 @@
-import java.io.File;
+import java.util.concurrent.CountDownLatch;
 
-public abstract interface bmgi
+final class bmgi
+  implements bmfg
 {
-  public abstract void a(File paramFile1, File paramFile2);
+  bmgi(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
   
-  public abstract void a(File paramFile1, File paramFile2, File paramFile3);
+  public void a(int paramInt) {}
   
-  public abstract void a(File paramFile1, File paramFile2, Throwable paramThrowable);
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ArrayOfBoolean[0] = paramBoolean;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+  }
 }
 
 

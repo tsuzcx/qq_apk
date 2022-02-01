@@ -1,68 +1,94 @@
-import NS_COMM.COMM.Entry;
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import android.app.Activity;
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.friends.intimate.MiniGamePlayTogetherHandler.2;
-import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.location.window.CanBackFrameLayout;
+import com.tencent.mobileqq.location.window.GlobalFloatDialogEventReceiver;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class avhj
 {
-  public static void a(Context paramContext, INTERFACE.StApiAppInfo paramStApiAppInfo, String paramString, int paramInt, boolean paramBoolean)
+  private final View jdField_a_of_type_AndroidViewView = View.inflate(BaseApplicationImpl.context, 2131558999, null);
+  private WindowManager jdField_a_of_type_AndroidViewWindowManager = (WindowManager)BaseApplicationImpl.context.getSystemService("window");
+  private final TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365541);
+  private CanBackFrameLayout jdField_a_of_type_ComTencentMobileqqLocationWindowCanBackFrameLayout = (CanBackFrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365574);
+  private GlobalFloatDialogEventReceiver jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver;
+  private final TextView b;
+  private final TextView c;
+  
+  public avhj()
   {
-    if ((paramContext != null) && (paramStApiAppInfo != null) && (!TextUtils.isEmpty(paramStApiAppInfo.appId.get()))) {
-      if (paramBoolean)
-      {
-        MiniAppCmdUtil.getInstance().createUpdatableMsg(paramStApiAppInfo.appId.get(), "657667B4D8C04B3F84E4AAA3D046A903", 1, 1, paramString, new avhk(paramContext, paramString));
-        paramContext = "page_view";
-        if (paramInt != 2064) {}
-      }
-    }
-    do
-    {
-      paramContext = "c2close";
-      for (;;)
-      {
-        paramStApiAppInfo = new MiniAppConfig(MiniAppInfo.from(paramStApiAppInfo));
-        paramStApiAppInfo.launchParam.scene = paramInt;
-        MiniProgramLpReportDC04239.reportAsync(paramStApiAppInfo, paramContext, "click", null, null);
-        return;
-        if (paramInt == 2062) {
-          paramContext = "id_card";
-        }
-      }
-      MiniAppLauncher.launchMiniAppById(paramContext, paramStApiAppInfo.appId.get(), null, null, null, null, paramInt);
-      return;
-      QLog.e("MiniGamePlayTogetherHandler", 1, new Object[] { "onPlayClick param error context:", paramContext, ", appInfo=", paramStApiAppInfo });
-    } while (paramContext == null);
-    paramContext = (Activity)paramContext;
-    paramContext.runOnUiThread(new MiniGamePlayTogetherHandler.2(paramContext));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new avhk(this));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365547));
+    this.b.setOnClickListener(new avhl(this));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365556));
+    this.c.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver = new GlobalFloatDialogEventReceiver();
   }
   
-  public static boolean a(INTERFACE.StApiAppInfo paramStApiAppInfo)
+  public void a()
   {
-    if ((paramStApiAppInfo == null) || (paramStApiAppInfo.extInfo == null) || (paramStApiAppInfo.extInfo.mapInfo == null)) {}
-    for (;;)
+    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
+    if (Build.VERSION.SDK_INT >= 26) {}
+    for (localLayoutParams.type = 2038;; localLayoutParams.type = 2002)
     {
-      return false;
-      int i = 0;
-      while (i < paramStApiAppInfo.extInfo.mapInfo.size())
-      {
-        COMM.Entry localEntry = (COMM.Entry)paramStApiAppInfo.extInfo.mapInfo.get(i);
-        if ((localEntry != null) && ("battle_attr".equals(localEntry.key.get()))) {
-          return "1".equals(localEntry.value.get());
-        }
-        i += 1;
-      }
+      localLayoutParams.format = -3;
+      localLayoutParams.height = ViewUtils.getScreenHeight();
+      localLayoutParams.width = ViewUtils.getScreenWidth();
+      this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
+      this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver.a(this);
+      return;
     }
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new avhm(this, paramOnClickListener));
+  }
+  
+  public void a(String paramString)
+  {
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365552)).setText(paramString);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowGlobalFloatDialogEventReceiver.a();
+  }
+  
+  public void b(View.OnClickListener paramOnClickListener)
+  {
+    this.b.setOnClickListener(new avhn(this, paramOnClickListener));
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public void c(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqLocationWindowCanBackFrameLayout.setBackKeyListener(new avho(this, paramOnClickListener));
+  }
+  
+  public void c(String paramString)
+  {
+    this.b.setText(paramString);
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
 }
 

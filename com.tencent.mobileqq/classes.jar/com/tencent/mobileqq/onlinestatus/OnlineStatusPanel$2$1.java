@@ -26,7 +26,7 @@ class OnlineStatusPanel$2$1
     if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPanel$2.this$0.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPagerAdapter.getCount() > 1) {}
     for (;;)
     {
-      localQQViewPager.b(bool);
+      localQQViewPager.disableGesture(bool);
       return;
       bool = false;
     }

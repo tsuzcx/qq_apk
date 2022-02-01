@@ -1,19 +1,33 @@
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.Comparator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-final class ajrk
-  implements Comparator<structmsg.StructMsg>
+class ajrk
+  implements View.OnClickListener
 {
-  public int a(structmsg.StructMsg paramStructMsg1, structmsg.StructMsg paramStructMsg2)
+  ajrk(ajrg paramajrg) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramStructMsg1.msg_time.get() < paramStructMsg2.msg_time.get()) {
-      return 1;
+    ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(false);
+    if (((NewPhotoPreviewActivity)this.a.mActivity).getIntent().getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false)) {
+      if (aszt.a()) {
+        aszg.a(this.a.mActivity, 2131692374, 2131692379, new ajrl(this));
+      }
     }
-    if (paramStructMsg1.msg_time.get() > paramStructMsg2.msg_time.get()) {
-      return -1;
+    for (;;)
+    {
+      LpReportInfo_pf00064.allReport(603, 1);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.d();
+      continue;
+      this.a.d();
     }
-    return 0;
   }
 }
 

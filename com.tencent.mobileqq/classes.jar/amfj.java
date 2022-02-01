@@ -1,93 +1,33 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.List;
 
-public class amfj
-  extends BaseAdapter
+class amfj
+  implements alpy
 {
-  public amfj(SelectMemberFromFriendGroup paramSelectMemberFromFriendGroup) {}
+  amfj(amez paramamez, String paramString, File paramFile, int paramInt) {}
   
-  public int getCount()
+  public void a(boolean paramBoolean, String paramString1, List<alpv> paramList, String paramString2)
   {
-    return SelectMemberFromFriendGroup.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return SelectMemberFromFriendGroup.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
+    QLog.i("ApolloPluginRscLoader", 1, "downloadApolloRes onDownLoadFinish success:" + paramBoolean);
+    paramString1 = amez.a(this.jdField_a_of_type_JavaLangString);
+    if (TextUtils.isEmpty(paramString1))
     {
-      localView = LayoutInflater.from(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity).inflate(2131560420, null);
-      paramView = new amfl(this);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131364511));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367691));
-      paramView.b = ((TextView)localView.findViewById(2131367692));
-      localView.setTag(paramView);
-      localView.setOnClickListener(new amfk(this));
-      paramView.jdField_a_of_type_Int = paramInt;
-      paramView.jdField_a_of_type_ComTencentMobileqqDataGroups = ((Groups)getItem(paramInt));
-      int i = paramView.jdField_a_of_type_ComTencentMobileqqDataGroups.group_friend_count;
-      paramView.b.setText("" + i);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups.group_name);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setTag(paramView);
-      if (!this.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups)) {
-        break label254;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-      label197:
-      if (SelectMemberFromFriendGroup.a(this.a).size() != 1) {
-        break label288;
-      }
-      localView.setBackgroundResource(2130839447);
+      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
+      return;
     }
-    for (;;)
+    if (paramBoolean)
     {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      amfl localamfl = (amfl)paramView.getTag();
-      localView = paramView;
-      paramView = localamfl;
-      break;
-      label254:
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.a.jdField_a_of_type_JavaUtilList.contains(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups));
-      break label197;
-      label288:
-      if (SelectMemberFromFriendGroup.a(this.a).size() == 2)
+      if (this.jdField_a_of_type_JavaIoFile.exists())
       {
-        if (paramInt == 0) {
-          localView.setBackgroundResource(2130839456);
-        } else {
-          localView.setBackgroundResource(2130839447);
-        }
+        this.jdField_a_of_type_Amez.a(paramString1, 0, this.jdField_a_of_type_Int + amtj.a(2131699645));
+        return;
       }
-      else if (paramInt == 0) {
-        localView.setBackgroundResource(2130839456);
-      } else if (paramInt == SelectMemberFromFriendGroup.a(this.a).size() - 1) {
-        localView.setBackgroundResource(2130839447);
-      } else {
-        localView.setBackgroundResource(2130839450);
-      }
+      this.jdField_a_of_type_Amez.a(paramString1, 2, this.jdField_a_of_type_Int + amtj.a(2131699644));
+      return;
     }
+    this.jdField_a_of_type_Amez.a(paramString1, 2, this.jdField_a_of_type_Int + amtj.a(2131699639));
   }
 }
 

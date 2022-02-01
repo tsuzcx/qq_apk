@@ -1,21 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
+import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 
-class aqei
-  implements DialogInterface.OnDismissListener
+public class aqei
 {
-  aqei(aqeg paramaqeg) {}
+  @SerializedName("templateArray")
+  public aqej[] a;
+  @SerializedName("templateConfig")
+  public aqek[] a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public aqei()
   {
-    aqeg.a(this.a, false);
-    QLog.d("ark.download.ctrl", 1, "ark.dctrl [showDownloadDialog] onDismiss");
+    this.jdField_a_of_type_ArrayOfAqek = new aqek[0];
+    this.jdField_a_of_type_ArrayOfAqej = new aqej[0];
+  }
+  
+  public static aqei a(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    return (aqei)new Gson().fromJson(paramString, aqei.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqei
  * JD-Core Version:    0.7.0.1
  */

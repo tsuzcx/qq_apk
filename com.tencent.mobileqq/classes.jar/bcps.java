@@ -1,10 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.studyroom.ui.StudyRoomLoadingFragment;
+
 public class bcps
+  implements DialogInterface.OnCancelListener
 {
-  private float jdField_a_of_type_Float;
-  private boolean jdField_a_of_type_Boolean;
-  private float b;
+  public bcps(StudyRoomLoadingFragment paramStudyRoomLoadingFragment) {}
   
-  public bcps(bcpr parambcpr) {}
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    this.a.a();
+  }
 }
 
 

@@ -1,21 +1,12 @@
-public class xtw
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
+public abstract interface xtw
 {
-  @zoq(a="clipNo")
-  int jdField_a_of_type_Int;
-  @zoq(a="fileSize")
-  long jdField_a_of_type_Long;
-  @zoq(a="errorMsg")
-  String jdField_a_of_type_JavaLangString;
-  @zoq(a="speedKBS")
-  int b;
-  @zoq(a="offset")
-  int c;
-  @zoq(a="callBackType")
-  int d;
-  @zoq(a="errorCode")
-  int e;
-  @zoq(a="errorDetailCode")
-  int f;
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage);
+  
+  public abstract void b(String paramString1, String paramString2);
 }
 
 

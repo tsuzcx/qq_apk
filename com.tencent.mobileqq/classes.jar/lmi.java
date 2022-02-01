@@ -1,63 +1,84 @@
-import com.tencent.av.gameplay.GPNativeSoLoader.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import mqq.os.MqqHandler;
 
-public class lmi
+class lmi
+  implements INetEngine.INetEngineListener
 {
-  public static boolean a;
-  private static boolean b;
+  lmi(lmh paramlmh, String paramString, lmb paramlmb, int paramInt) {}
   
-  public static byte a(String paramString)
+  public void onResp(NetResp paramNetResp)
   {
-    byte b1 = 0;
-    if (paramString == null) {
-      return -1;
+    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetResp.mReq;
+    if (this.jdField_a_of_type_Lmh.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq) {
+      this.jdField_a_of_type_Lmh.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
     }
-    lmj locallmj = lmj.a();
-    String str = lmr.a() + "lib" + paramString + ".so";
     if (QLog.isColorLevel()) {
-      QLog.i("Qav_GamePlayNativeSoLoader", 2, "start arNativeSo: " + str);
+      QLog.i("QavGPDownloadManager", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localHttpNetReq.mReqUrl, Integer.valueOf(paramNetResp.mResult), Integer.valueOf(paramNetResp.mHttpCode), this.jdField_a_of_type_JavaLangString }));
     }
-    Object localObject = new File(str);
-    if ((!a) && (((File)localObject).exists())) {}
+    int i;
+    if (paramNetResp.mResult == 0)
+    {
+      paramNetResp = new File(localHttpNetReq.mOutPath);
+      if (paramNetResp.exists())
+      {
+        try
+        {
+          String str = paramNetResp.getParent();
+          FileUtils.uncompressZip(localHttpNetReq.mOutPath, str, false);
+          QLog.d("QavGPDownloadManager", 1, String.format("downloadRes, 下载成功了. path[%s]", new Object[] { str }));
+          lmg.a(this.jdField_a_of_type_Lmb);
+          i = 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            localException.printStackTrace();
+            i = 0;
+          }
+          lmg.a(-1);
+          return;
+        }
+        paramNetResp.delete();
+      }
+    }
     for (;;)
     {
-      try
+      if (i != 0)
       {
-        System.load(str);
-        b = true;
-        localObject = "null";
-        if (locallmj != null) {
-          localObject = locallmj.b;
+        lmg.a(100 / this.jdField_a_of_type_Lmh.jdField_a_of_type_Int + this.jdField_a_of_type_Lmh.b);
+        paramNetResp = this.jdField_a_of_type_Lmh;
+        paramNetResp.b += 100 / this.jdField_a_of_type_Lmh.jdField_a_of_type_Int;
+        if (!this.jdField_a_of_type_Lmh.a(this.jdField_a_of_type_Lmb, this.jdField_a_of_type_Int - 1)) {
+          this.jdField_a_of_type_Lmh.jdField_a_of_type_Boolean = false;
         }
-        QLog.w("Qav_GamePlayNativeSoLoader", 1, "loadGamePlayNativeSo, libPath[" + str + "], libName[" + paramString + "], md5[" + (String)localObject + "], isLoadSo[" + b + "], result[" + b1 + "]");
-        return b1;
+        return;
       }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        b1 = -3;
-        QLog.i("Qav_GamePlayNativeSoLoader", 1, "loadGamePlayNativeSo load fail", localUnsatisfiedLinkError);
-        continue;
-      }
-      b1 = -2;
+      i = 0;
     }
   }
   
-  public static boolean a()
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    if (b) {}
-    do
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
+    }
+    for (;;)
     {
-      return true;
-      if (!lmk.a().b()) {
-        break;
+      lmg.a(i / this.jdField_a_of_type_Lmh.jdField_a_of_type_Int + this.jdField_a_of_type_Lmh.b);
+      return;
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
       }
-    } while (a("qavgameplayengine") == 0);
-    return false;
-    ThreadManager.getUIHandler().post(new GPNativeSoLoader.1());
-    return false;
+    }
   }
 }
 

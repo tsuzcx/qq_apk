@@ -1,52 +1,74 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class atmt
-  implements View.OnClickListener
+class atmt
+  implements ayeo
 {
-  public atmt(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  atmt(atms paramatms) {}
   
-  public void onClick(View paramView)
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
   {
-    if (paramView == null)
+    return null;
+  }
+  
+  public void onSend(ayep paramayep)
+  {
+    String str = atms.a(this.a).getString("uin");
+    HashMap localHashMap = new HashMap();
+    if (atms.a(this.a))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
+      localObject = "1";
+      localHashMap.put("param_time_out", localObject);
+      if (str != null) {
+        break label125;
       }
-      EventCollector.getInstance().onViewClicked(paramView);
+    }
+    label125:
+    for (Object localObject = "";; localObject = str)
+    {
+      atqa.a("KEY_STAGE_2_SEND_MSG_BY_SERVER", (String)localObject, localHashMap, ForwardUtils.isShareProcessorSuccess(paramayep));
+      QLog.d(atms.a(), 1, new Object[] { "requestNormalShare onSend result =", paramayep, ", isTimeOut=", Boolean.valueOf(atms.a(this.a)) });
+      if (!atms.a(this.a)) {
+        break label132;
+      }
+      return;
+      localObject = "0";
+      break;
+    }
+    label132:
+    if (ForwardUtils.isShareProcessorSuccess(paramayep))
+    {
+      paramayep = (String[])paramayep.jdField_a_of_type_JavaLangObject;
+      QLog.i(atms.a(), 1, "requestNormalShare onSend urls=" + paramayep[0] + " ," + paramayep[1]);
+      atms.a(this.a, paramayep[0], paramayep[1]);
       return;
     }
-    FileInfo localFileInfo = (FileInfo)paramView.getTag();
-    if (localFileInfo != null)
+    int i = paramayep.b;
+    boolean bool = ForwardUtils.hasSDPermission(atms.a(this.a));
+    localObject = (String[])paramayep.jdField_a_of_type_JavaLangObject;
+    QLog.e(atms.a(), 1, new Object[] { "requestNormalShare onSend error result.result : ", Integer.valueOf(paramayep.jdField_a_of_type_Int), ", errCode=" + i + ", hasSDPermission=" + bool });
+    if ((i == 9402) && (!bool) && (localObject != null) && (localObject.length == 2))
     {
-      if (this.a.jdField_a_of_type_Atjm != null) {
-        this.a.jdField_a_of_type_Atjm.a(null);
-      }
-      if (!auog.c(localFileInfo.c())) {
-        break label108;
-      }
-      this.a.a(localFileInfo);
+      atms.a(this.a, localObject[0], localObject[1]);
+      return;
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Atjm.a(Integer.valueOf(-1));
-      paramView.setVisibility(4);
-      this.a.f();
-      break;
-      label108:
-      String str = QfileBaseLocalFileTabView.a(this.a).getString(2131692078);
-      auna.a(aunj.d(localFileInfo.d()) + str);
+    atms.a(this.a);
+  }
+  
+  public void updateMsg(ayep paramayep)
+  {
+    if ((paramayep != null) && (QLog.isColorLevel())) {
+      QLog.d(atms.a(), 2, "requestNormalShare updateMsg info =" + paramayep);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atmt
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo;
 import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.DownloadListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.DownloaderProxy.DownloadListener.DownloadResult;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.report.MiniReportManager;
 import java.io.File;
@@ -33,27 +34,43 @@ class ApkgManager$5
   public void onDownloadSucceed(int paramInt, String paramString, DownloaderProxy.DownloadListener.DownloadResult paramDownloadResult)
   {
     MiniReportManager.reportEventType(this.val$appConfig, 614, this.val$url, null, null, 0, "0", 0L, null);
-    MiniReportManager.reportEventType(this.val$appConfig, 615, this.val$url, null, null, 0, "0", 0L, null);
     paramString = ApkgManager.getApkgFolderPath(this.val$appConfig);
     paramDownloadResult = new File(this.val$savePath);
     FileUtils.delete(paramString + File.separator + ApkgManager.access$200(this.this$0), false);
-    boolean bool = WxapkgUnpacker.unpackSync(paramDownloadResult.getAbsolutePath(), paramString, ApkgManager.access$200(this.this$0));
-    QMLog.d("ApkgManager", "downloadSubPack | getResPath :hasUnpack=" + bool + "; folderPath=" + paramString + "; subRoot=" + ApkgManager.access$200(this.this$0));
-    MiniReportManager.reportEventType(this.val$appConfig, 616, this.val$url, null, null, 0, "0", 0L, null);
-    if (bool) {
+    boolean bool2 = this.val$appConfig.launchParam.isFlutterMode;
+    boolean bool1 = false;
+    if (bool2)
+    {
+      MiniReportManager.reportEventType(this.val$appConfig, 615, this.val$url, null, null, 0, "0", 0L, null);
+      bool1 = WxapkgUnpacker.unpackSync(paramDownloadResult.getAbsolutePath(), paramString, ApkgManager.access$200(this.this$0));
+      QMLog.d("ApkgManager", "downloadSubPack | getResPath :hasUnpack=" + bool1 + "; folderPath=" + paramString + "; subRoot=" + ApkgManager.access$200(this.this$0));
+      MiniReportManager.reportEventType(this.val$appConfig, 1045, null, null, null, 0);
+      if ((!bool1) && (bool2)) {
+        break label343;
+      }
       if (this.val$listener != null) {
         this.val$listener.onInitApkgInfo(0, this.val$apkgInfo, null);
       }
     }
-    while (this.val$listener == null) {
+    label343:
+    while (this.val$listener == null)
+    {
       return;
+      String str = ApkgManager.access$200(this.this$0).replaceAll("/", "");
+      if (!FileUtils.copyFile(paramDownloadResult.getAbsolutePath(), paramString + File.separator + str + ".qapkg"))
+      {
+        QMLog.e("ApkgManager", "copyFile to " + paramString + File.separator + str + ".qapkg" + " err");
+        return;
+      }
+      FileUtils.deleteFile(paramDownloadResult.getAbsolutePath());
+      break;
     }
     this.val$listener.onInitApkgInfo(3, this.val$apkgInfo, "解包失败");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.ApkgManager.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,6 @@
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-
-final class upj
-  extends ClickableSpan
+abstract interface upj
 {
-  upj(upg paramupg, String paramString) {}
-  
-  public void onClick(@NonNull View paramView)
-  {
-    if (this.jdField_a_of_type_Upg != null) {
-      this.jdField_a_of_type_Upg.b(this.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
-  }
+  public abstract ukg a();
 }
 
 

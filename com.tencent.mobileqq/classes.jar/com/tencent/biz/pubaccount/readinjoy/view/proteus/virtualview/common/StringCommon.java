@@ -55,6 +55,7 @@ public class StringCommon
   public static final int STR_ID_POLYMERIC_CONTAINER_SET_CELL_ARRAY_REMOTE_ARRAY = 54;
   public static final int STR_ID_RIGHT_OF = 25;
   public static final int STR_ID_SET_ALPHA = 65;
+  public static final int STR_ID_SET_DT_ELEMENT_ID_AND_PARAMS = 72;
   public static final int STR_ID_SET_ENABLE_MARQUEE_TEXT = 67;
   public static final int STR_ID_SET_FONT_FILE_PATH = 64;
   public static final int STR_ID_SET_FRONT_SIZE_RATIO = 70;
@@ -159,6 +160,7 @@ public class StringCommon
     mString2Index.put("setLinkClickable", Integer.valueOf(68));
     mString2Index.put("setFontSizeString:ratio:", Integer.valueOf(70));
     mString2Index.put("setBoldFontSizeString:ratio:", Integer.valueOf(71));
+    mString2Index.put("setDTElementID:withParams:", Integer.valueOf(72));
   }
   
   public static int getStrIdFromString(String paramString)
@@ -182,7 +184,7 @@ public class StringCommon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon
  * JD-Core Version:    0.7.0.1
  */

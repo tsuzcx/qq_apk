@@ -1,6 +1,16 @@
-public abstract interface wiw<T>
+class wiw
+  extends whn
 {
-  public abstract T a();
+  wiw(wif paramwif, String paramString1, String paramString2, boolean paramBoolean, wjo paramwjo)
+  {
+    super(paramString1, paramString2, paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Wjo.d = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
+  }
 }
 
 

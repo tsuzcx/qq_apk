@@ -1,41 +1,23 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
+import MWIFI.SCGet3rdCloudCheck;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Hashtable;
 
-public class bhne
-  extends anyu
+final class bhne
+  implements anem
 {
-  private final bhmr b;
+  bhne(QQAppInterface paramQQAppInterface, anel paramanel) {}
   
-  public bhne(bhmr parambhmr1, bhmr parambhmr2)
+  public void a(int paramInt)
   {
-    this.b = parambhmr2;
+    if ((paramInt == 3) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anel);
+    }
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_JavaUtilHashtable == null) || (!this.a.jdField_a_of_type_JavaUtilHashtable.containsKey(paramString))) {}
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_JavaUtilHashtable.remove(paramString);
-      if (this.a.jdField_a_of_type_JavaUtilHashtable.size() == 0) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_Bhne);
-      }
-      Object localObject = Uri.parse(bhmr.a(this.a) + "&uin=" + paramString);
-      localObject = new Intent((String)this.a.jdField_a_of_type_JavaUtilHashMap.get("callback_name"), (Uri)localObject);
-      this.a.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
-    } while (!QLog.isColorLevel());
-    QLog.i("JumpAction", 2, "download head " + paramString + " success. Send broadcast to " + (String)this.a.jdField_a_of_type_JavaUtilHashMap.get("callback_name"));
-  }
+  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhne
  * JD-Core Version:    0.7.0.1
  */

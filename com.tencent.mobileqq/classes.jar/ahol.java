@@ -1,28 +1,42 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class ahol
-  extends agen
+public class ahol
+  extends ahny
 {
-  public long a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
   public String a;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  CornerImageView jdField_b_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
   public String b;
-  View jdField_c_of_type_AndroidViewView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  View jdField_d_of_type_AndroidViewView;
-  TextView jdField_d_of_type_AndroidWidgetTextView;
-  View e;
-  View f;
-  View g;
+  public String c;
+  public String d;
   
-  ahol(ahoi paramahoi) {}
+  public JSONObject a()
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    try
+    {
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("uin", this.a);
+      localJSONObject2.put("touin", this.b);
+      localJSONObject2.put("appid", this.e);
+      localJSONObject2.put("scene", this.c);
+      localJSONObject2.put("expose_md5s", this.f);
+      localJSONObject2.put("expose_urls", this.g);
+      localJSONObject2.put("click_md5", this.h);
+      localJSONObject2.put("click_url", this.i);
+      localJSONObject2.put("aio_type", this.d);
+      localJSONObject2.put("mobile_type", this.j);
+      localJSONObject2.put("passthough", this.k);
+      localJSONObject1.put("dcId", this.l);
+      localJSONObject1.put("data", localJSONObject2);
+      return localJSONObject1;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ScenesRecReportData", 2, "convert error:" + localException);
+    }
+    return localJSONObject1;
+  }
 }
 
 

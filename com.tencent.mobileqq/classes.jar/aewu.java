@@ -1,103 +1,216 @@
-import com.tencent.mobileqq.activity.LikeSettingActivity;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class aewu
-  extends anuw
+  implements Handler.Callback
 {
-  public aewu(LikeSettingActivity paramLikeSettingActivity) {}
+  public static int a;
+  public static long a;
+  private static aewu jdField_a_of_type_Aewu;
+  public static boolean a;
+  private static boolean b;
+  private Handler jdField_a_of_type_AndroidOsHandler = new bjng(Looper.getMainLooper(), this);
   
-  protected void onGetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onGetCardSwitch.isSuccess=" + paramBoolean1 + ",uin=" + paramString + ",voteAllowed=" + paramBoolean2 + ",praiseStatusAllowed=" + paramBoolean3);
-    }
-    if (!this.a.app.getCurrentAccountUin().equals(paramString)) {}
-    while (!paramBoolean1) {
-      return;
-    }
-    LikeSettingActivity.a(this.a, this.a.c.a(), paramBoolean2);
+    jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_Long = -1L;
+    jdField_a_of_type_Aewu = new aewu();
+    a();
   }
   
-  protected void onGetNotifyOnLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
+  public static aewu a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onGetNotifyOnLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
-    }
-    if (paramBoolean1)
+    try
     {
-      LikeSettingActivity.a(this.a, this.a.b.a(), paramBoolean2);
-      this.a.a.a(paramBoolean2);
+      aewu localaewu = jdField_a_of_type_Aewu;
+      return localaewu;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  protected void onGetPartakeLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
+  public static void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onGetPartakeLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
-    }
-    if (paramBoolean1)
+    boolean bool1 = true;
+    for (;;)
     {
-      LikeSettingActivity.a(this.a, this.a.d.a(), paramBoolean2);
-      this.a.a.b(paramBoolean2);
-      if (!paramBoolean2) {
-        this.a.b.setVisibility(8);
+      Object localObject1;
+      try
+      {
+        boolean bool2 = b;
+        if (bool2) {
+          return;
+        }
+      }
+      finally {}
+      try
+      {
+        localObject1 = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.aio_config.name(), "-1|1=0,2=0,3=0,4=0,5=1|1");
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.aio.AIOPreLoadEngine", 2, "initAIOPreloadFlagByDpc thumbConfig:" + (String)localObject1);
+        }
+        localObject1 = ((String)localObject1).split("\\|");
+        if (localObject1.length > 2)
+        {
+          if (!"1".equals(localObject1[2])) {
+            break label137;
+          }
+          jdField_a_of_type_Boolean = bool1;
+        }
+      }
+      catch (Exception localException)
+      {
+        label137:
+        jdField_a_of_type_Boolean = false;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("Q.aio.AIOPreLoadEngine", 2, "initAIOPreloadFlagByDpc error|" + jdField_a_of_type_Boolean);
+        continue;
+      }
+      b = true;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("Q.aio.AIOPreLoadEngine", 2, "initAIOPreloadFlagByDpc|" + jdField_a_of_type_Boolean);
+        continue;
+        bool1 = false;
       }
     }
-    else
-    {
-      return;
-    }
-    this.a.b.setVisibility(0);
   }
   
-  protected void onSetCardSwitch(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  @TargetApi(17)
+  private void a(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onSetCardSwitch.isSuccess=" + paramBoolean1 + ",uin=" + paramString + ",forNearPeople=" + paramBoolean2 + ",allowed=" + paramBoolean3);
+    SplashActivity localSplashActivity;
+    label122:
+    FragmentManager localFragmentManager;
+    Fragment localFragment;
+    if ((paramActivity != null) && ((paramActivity instanceof SplashActivity)))
+    {
+      if ((jdField_a_of_type_Int == 1) || (QQAppInterface.AIO_HAD_OPEN)) {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.aio.AIOPreLoadEngine", 2, "sPreloadedAIOType:" + jdField_a_of_type_Int + "|AIO_HAD_OPEN:" + QQAppInterface.AIO_HAD_OPEN);
+        }
+      }
+      do
+      {
+        return;
+        localSplashActivity = (SplashActivity)paramActivity;
+        if ((localSplashActivity.app != null) && (localSplashActivity.app.isRunning()) && (localSplashActivity.app.isLogin())) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("Q.aio.AIOPreLoadEngine", 2, "app is not valid");
+      return;
+      if (!QLog.isColorLevel())
+      {
+        localFragmentManager = localSplashActivity.getSupportFragmentManager();
+        localFragment = localFragmentManager.findFragmentByTag(ChatFragment.class.getName());
+        if (((Build.VERSION.SDK_INT <= 16) || (!paramActivity.isDestroyed())) && (!paramActivity.isFinishing())) {
+          break label296;
+        }
+      }
     }
-    if ((!this.a.app.getCurrentAccountUin().equals(paramString)) || (!paramBoolean2)) {}
-    while (paramBoolean1) {
+    label296:
+    for (boolean bool = false;; bool = true)
+    {
+      if ((localFragment == null) && (bool))
+      {
+        jdField_a_of_type_Long = SystemClock.uptimeMillis();
+        bfzg.a(null, "AIO_preLoad_Cost");
+        try
+        {
+          paramActivity = localFragmentManager.beginTransaction();
+          paramActivity.add(16908290, ChatFragment.a(), ChatFragment.class.getName());
+          localSplashActivity.setIntent(new Intent());
+          paramActivity.commitAllowingStateLoss();
+          jdField_a_of_type_Int = 1;
+          return;
+        }
+        catch (Exception paramActivity)
+        {
+          QLog.e("Q.aio.AIOPreLoadEngine", 1, "AIO preLoad:", paramActivity);
+          return;
+        }
+        QLog.d("Q.aio.AIOPreLoadEngine", 2, "doRealPreLoadAIO");
+        break label122;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("Q.aio.AIOPreLoadEngine", 2, "AIO cannot peload:" + bool);
+      return;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("Q.aio.AIOPreLoadEngine", 2, "activity is not splashActivity");
       return;
     }
-    QQToast.a(this.a, 1, 2131717966, 0).b(this.a.getTitleBarHeight());
-    LikeSettingActivity.a(this.a, this.a.c.a(), paramBoolean3);
   }
   
-  protected void onSetNotifyOnLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(BaseActivity paramBaseActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onSetNotifyOnLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    if (!jdField_a_of_type_Boolean) {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.aio.AIOPreLoadEngine", 2, "startPreLoadAIO return");
+      }
     }
-    if (!paramBoolean1)
+    for (;;)
     {
-      QQToast.a(this.a, 1, 2131717966, 0).b(this.a.getTitleBarHeight());
-      LikeSettingActivity.a(this.a, this.a.d.a(), this.a.a.a());
       return;
+      if (!QLog.isColorLevel()) {}
+      while (paramBaseActivity != null)
+      {
+        Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+        localMessage.what = 1;
+        localMessage.obj = paramBaseActivity;
+        this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+        return;
+        QLog.i("Q.aio.AIOPreLoadEngine", 2, "startPreLoadAIO");
+      }
     }
-    this.a.a.a(paramBoolean2);
   }
   
-  protected void onSetPartakeLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onSetPartakeLikeRankingList.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     }
-    if (!paramBoolean1)
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      QQToast.a(this.a, 1, 2131717966, 0).b(this.a.getTitleBarHeight());
-      LikeSettingActivity.a(this.a, this.a.d.a(), this.a.a.c());
-      return;
     }
-    this.a.a.b(paramBoolean2);
-    if (!paramBoolean2)
+    for (;;)
     {
-      this.a.b.setVisibility(8);
-      return;
+      return false;
+      if (paramMessage.obj != null) {
+        a((Activity)paramMessage.obj);
+      }
     }
-    this.a.b.setVisibility(0);
   }
 }
 

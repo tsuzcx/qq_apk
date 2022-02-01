@@ -1,9 +1,18 @@
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
-
-public class bgqb
+class bgqb
+  implements bgqn
 {
-  public RollangleImageView a;
-  public String a;
+  bgqb(bgpz parambgpz) {}
+  
+  public void a(int paramInt, String paramString) {}
+  
+  public void a(bgqe parambgqe)
+  {
+    if (parambgqe.a)
+    {
+      bgpz.a(this.a, parambgqe);
+      bgpz.a(this.a);
+    }
+  }
 }
 
 

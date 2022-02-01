@@ -1,65 +1,30 @@
-import android.content.Context;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyCutImageView;
 
-final class uaa
-  extends apee
+class uaa
+  implements View.OnTouchListener
 {
-  uaa(Object paramObject, QQAppInterface paramQQAppInterface, String paramString, aoeg paramaoeg, boolean paramBoolean, Context paramContext) {}
+  uaa(tzy paramtzy) {}
   
-  public int a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return 5;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (this.jdField_a_of_type_JavaLangObject != null)
+    if (paramMotionEvent.getAction() == 1) {
+      tzy.a(this.a).performClick();
+    }
+    if (tzy.a(this.a, paramMotionEvent.getX(), paramMotionEvent.getY()).booleanValue()) {}
+    for (int i = 101;; i = 102)
     {
-      paramObject = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-      if (paramObject != null) {
-        paramObject.a(this.jdField_a_of_type_JavaLangObject);
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Aoeg != null) {
-        this.jdField_a_of_type_Aoeg.onUpdate(102, true, this.jdField_a_of_type_JavaLangString);
-      }
-      return;
-      paramObject = (aody)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
-      paramObject.b(this.jdField_a_of_type_JavaLangString);
-      paramObject.a(this.jdField_a_of_type_JavaLangString);
-      StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, 1008);
-      twk.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObject.a());
-      tug.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-      paramObject = (oek)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(88);
-      if (paramObject != null) {
-        paramObject.a(this.jdField_a_of_type_JavaLangString, "unfollow");
-      }
+      int j = tzy.a(this.a, tzy.a(this.a));
+      tzy.a(this.a, i, j + 1);
+      return false;
     }
   }
-  
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
-  {
-    if (this.jdField_a_of_type_Aoeg != null) {
-      this.jdField_a_of_type_Aoeg.onUpdate(102, false, this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      tzq.a(this.jdField_a_of_type_AndroidContentContext, 2131694659);
-    }
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uaa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,30 @@
-import android.os.AsyncTask;
-import android.os.Handler;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
-class aecx
-  extends AsyncTask<MessageRecord, Object, Object>
+public class aecx
+  implements ActionMode.Callback
 {
-  aecx(aecw paramaecw) {}
+  public aecx(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  protected Object a(MessageRecord... paramVarArgs)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    if (this.a.a.d) {
-      if (this.a.a.jdField_a_of_type_Azor != null) {
-        this.a.a.jdField_a_of_type_Azor.a(paramVarArgs[0], true);
-      }
-    }
-    for (;;)
-    {
-      if ((paramVarArgs[0] instanceof MessageForApollo)) {
-        anfz.a(this.a.a.app, "chat_history_start_del_msg");
-      }
-      return null;
-      this.a.a.app.a().a(paramVarArgs[0], true);
-    }
+    return false;
   }
   
-  protected void onPostExecute(Object paramObject)
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    super.onPostExecute(paramObject);
-    this.a.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    if ((this.a.a.jdField_a_of_type_Bjbs != null) && (this.a.a.jdField_a_of_type_Bjbs.isShowing())) {
-      this.a.a.jdField_a_of_type_Bjbs.dismiss();
-    }
-    if (this.a.a.d) {
-      this.a.a.a(11, false);
-    }
+    paramMenu.clear();
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

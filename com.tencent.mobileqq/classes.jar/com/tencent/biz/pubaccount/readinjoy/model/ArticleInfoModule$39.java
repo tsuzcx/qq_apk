@@ -10,14 +10,14 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import pon;
+import ptv;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.FeedsInfo;
 import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.SocializeFeedsInfo;
 
 public class ArticleInfoModule$39
   implements Runnable
 {
-  public ArticleInfoModule$39(pon parampon, List paramList, ConcurrentHashMap paramConcurrentHashMap, boolean paramBoolean) {}
+  public ArticleInfoModule$39(ptv paramptv, List paramList, ConcurrentHashMap paramConcurrentHashMap, boolean paramBoolean) {}
   
   public void run()
   {
@@ -84,19 +84,19 @@ public class ArticleInfoModule$39
       QLog.d("ArticleInfoModule", 1, new Object[] { "handle 8c8, feedsId = ", Long.valueOf(l), ", feedsType = ", Integer.valueOf(j) });
       ArticleInfo localArticleInfo = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get((String)localObject + 0);
       if (localArticleInfo != null) {
-        pon.a(this.this$0, localArticleInfo, localException, 0);
+        ptv.a(this.this$0, localArticleInfo, localException, 0);
       }
       localArticleInfo = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get((String)localObject + 70);
       if (localArticleInfo != null) {
-        pon.a(this.this$0, localArticleInfo, localException, 70);
+        ptv.a(this.this$0, localArticleInfo, localException, 70);
       }
       localObject = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get((String)localObject + 41403);
       if (localObject != null) {
-        pon.a(this.this$0, (ArticleInfo)localObject, localException, 41403);
+        ptv.a(this.this$0, (ArticleInfo)localObject, localException, 41403);
       }
       if ((this.jdField_a_of_type_Boolean) && (localObject != null) && (((ArticleInfo)localObject).mSocialFeedInfo != null))
       {
-        boolean bool = pon.a(this.this$0, (ArticleInfo)localObject);
+        boolean bool = ptv.a(this.this$0, (ArticleInfo)localObject);
         if (!bool) {
           break;
         }

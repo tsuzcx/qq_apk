@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.os.Handler;
 import java.util.List;
-import prf;
+import pwz;
 
 public class VideoArticleModule$1
   implements Runnable
@@ -10,7 +10,7 @@ public class VideoArticleModule$1
   public void run()
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (List localList = prf.a(this.this$0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean); this.this$0.a == null; localList = this.jdField_a_of_type_JavaUtilList) {
+    for (List localList = pwz.a(this.this$0, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean); this.this$0.a == null; localList = this.jdField_a_of_type_JavaUtilList) {
       return;
     }
     this.this$0.a.post(new VideoArticleModule.1.1(this, localList));

@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import otv;
-import ovh;
+import ouu;
+import owh;
 
 public class ReadInJoyCommentDataManager$7
   implements Runnable
 {
-  public ReadInJoyCommentDataManager$7(otv paramotv, String paramString) {}
+  public ReadInJoyCommentDataManager$7(ouu paramouu, String paramString) {}
   
   public void run()
   {
-    otv.a(this.this$0).a(otv.a(this.this$0).innerUniqueID, otv.a(this.this$0), 10, otv.a(this.this$0), this.a, this.this$0.a);
+    ouu.a(this.this$0).a(ouu.a(this.this$0).innerUniqueID, ouu.a(this.this$0), 10, ouu.a(this.this$0), this.a, this.this$0.a);
   }
 }
 

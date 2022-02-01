@@ -1,20 +1,52 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.biz.qqstory.view.AnimationPoint;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
-class yro
-  extends SimpleJob<Object>
+public class yro
+  extends ReportDialog
 {
-  yro(yrn paramyrn, String paramString1, String paramString2)
+  protected TextView a;
+  protected AnimationPoint a;
+  
+  public yro(Context paramContext)
   {
-    super(paramString1);
+    super(paramContext, 2131755016);
+    View localView = LayoutInflater.from(paramContext).inflate(2131561670, null);
+    localView.setOnTouchListener(new yrp(this));
+    super.setContentView(localView);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131362697));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367832));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setRadius(UIUtils.dip2px(paramContext, 25.0F));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setLoopTime(2000L);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setDuration(4000L);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setOnAnimationListener(new yrq(this, paramContext));
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(String paramString)
   {
-    yrh.a(this.jdField_a_of_type_Yrn.a.a).a(this.jdField_a_of_type_JavaLangString);
-    return null;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setIsVertical(paramBoolean);
+  }
+  
+  public void dismiss()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.b();
+    super.dismiss();
+  }
+  
+  public void show()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.a();
+    super.show();
   }
 }
 

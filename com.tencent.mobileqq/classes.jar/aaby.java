@@ -1,22 +1,55 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-class aaby
-  extends RecyclerView.OnScrollListener
+public class aaby
+  extends WebViewPlugin
 {
-  aaby(aabx paramaabx) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public aaby()
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.mPluginNameSpace = "openToAppDetail";
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public void a(String paramString1, String paramString2)
   {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if (paramInt2 > 0) {
-      this.a.i();
+    a(paramString1, paramString2, null);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("uin", this.mRuntime.a().getCurrentAccountUin());
+    localBundle.putString("sid", this.mRuntime.a().getIntent().getStringExtra("vkey"));
+    localBundle.putString("via", "ANDROIDQQ.STORE.APPDETAIL.SHARE2QQ");
+    if ((paramString2 != null) && (paramString2.equals("true"))) {
+      localBundle.putBoolean("autoDownload", true);
     }
+    if (paramString3 != null) {
+      localBundle.putString("packageName", paramString3);
+    }
+    bhwo.a(this.mRuntime.a(), paramString1, 2470, localBundle);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"openToAppDetail".equals(paramString2)) {}
+    do
+    {
+      do
+      {
+        return false;
+      } while (!"openAppDetailPage".equals(paramString3));
+      if (paramVarArgs.length == 2)
+      {
+        a(paramVarArgs[0], paramVarArgs[1]);
+        return true;
+      }
+    } while (paramVarArgs.length != 3);
+    a(paramVarArgs[0], paramVarArgs[1], paramVarArgs[2]);
+    return true;
   }
 }
 

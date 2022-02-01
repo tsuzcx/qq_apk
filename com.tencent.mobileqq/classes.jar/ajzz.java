@@ -1,99 +1,91 @@
-import android.content.Context;
 import android.content.res.Resources;
-import android.util.TypedValue;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.widget.Scroller;
-import com.tencent.mobileqq.activity.fling.TopContentLayout;
-import com.tencent.mobileqq.activity.fling.TopContentLayout.OnOutScreenListener;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import com.tencent.mobileqq.utils.StringUtil;
+import org.json.JSONObject;
 
 public class ajzz
-  extends GestureDetector.SimpleOnGestureListener
 {
-  private float jdField_a_of_type_Float;
-  
-  public ajzz(TopContentLayout paramTopContentLayout, Context paramContext)
+  public static int a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Float = TypedValue.applyDimension(1, 50.0F, paramContext.getResources().getDisplayMetrics());
+    int i = 1;
+    if (paramInt1 == 1)
+    {
+      paramInt1 = i;
+      if (paramInt2 == 1) {
+        paramInt1 = 0;
+      }
+      return paramInt1;
+    }
+    return RedPacketManager.getEnterType(paramInt1);
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public static int a(String paramString)
   {
-    int i;
-    int j;
-    if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
-    {
-      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, false);
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getWidth();
-      j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
-      if (paramFloat1 <= 0.0F) {
-        break label96;
-      }
-      i -= j;
+    int i = 0;
+    if (!TextUtils.isEmpty(paramString)) {
+      i = paramString.replaceAll("[\\u4e00-\\u9fa5]", "aa").length() - paramString.length();
     }
-    for (;;)
-    {
-      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startScroll((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, i, 0, 350);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.invalidate();
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      label96:
-      i = -j;
-    }
+    return i;
   }
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public static String a(int paramInt, bkwf parambkwf, ajzx paramajzx, String paramString)
   {
-    float f1;
-    if (!TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout))
+    int i = 2;
+    if (parambkwf != null)
     {
-      f1 = Math.abs(paramFloat2 / paramFloat1);
-      float f2 = Math.abs(paramMotionEvent1.getX() - paramMotionEvent2.getX());
-      if ((paramFloat1 < 0.0F) && (f1 < 0.5F) && (f2 > this.jdField_a_of_type_Float))
-      {
-        TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout, true);
-        if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) != null) {
-          TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).startDrag();
+      int j = bkvx.a(parambkwf.bus_type, 2);
+      i = j;
+      if (!StringUtil.isEmpty(parambkwf.biz_params)) {
+        try
+        {
+          String str = new JSONObject(parambkwf.biz_params).optString("memo", "");
+          parambkwf = str;
+          if (a(str) >= 18) {
+            parambkwf = str.substring(0, 18) + "...";
+          }
+          boolean bool = StringUtil.isEmpty(parambkwf);
+          i = j;
+          if (!bool) {
+            return parambkwf;
+          }
         }
-        return true;
-      }
-      f1 = paramFloat1;
-      return super.onScroll(paramMotionEvent1, paramMotionEvent2, f1, paramFloat2);
-    }
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewWidth();
-    int j = Math.abs((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX());
-    if ((paramFloat1 < 0.0F) && (j < i)) {
-      if (Math.abs(paramFloat1) > i - j) {
-        paramFloat1 = i - j;
-      }
-    }
-    for (;;)
-    {
-      f1 = paramFloat1;
-      if (Math.abs(paramFloat1) <= 0.0F) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.movingViewTransBy((int)paramFloat1, 0.0F);
-      f1 = paramFloat1;
-      if (TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout) == null) {
-        break;
-      }
-      TopContentLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout).outing((int)this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout.getMovingViewTransX(), 0, this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopContentLayout);
-      f1 = paramFloat1;
-      break;
-      paramFloat1 = -paramFloat1;
-      continue;
-      if ((paramFloat1 > 0.0F) && (j > 0))
-      {
-        if (Math.abs(paramFloat1) > j) {
-          paramFloat1 = -j;
-        } else {
-          paramFloat1 = -paramFloat1;
+        catch (Exception parambkwf)
+        {
+          parambkwf.printStackTrace();
+          i = j;
         }
       }
-      else {
-        paramFloat1 = 0.0F;
+    }
+    return paramajzx.a(paramInt, i, paramString);
+  }
+  
+  public static String a(EditText paramEditText)
+  {
+    String str = paramEditText.getText().toString();
+    Object localObject = str;
+    if (TextUtils.isEmpty(str))
+    {
+      localObject = paramEditText.getHint();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        localObject = paramEditText.getResources().getString(2131696287);
       }
     }
+    else
+    {
+      return localObject;
+    }
+    return ((CharSequence)localObject).toString();
+  }
+  
+  public static String a(String paramString)
+  {
+    String str = "";
+    if (!TextUtils.isEmpty(paramString)) {
+      str = paramString.replaceAll("[\\u4e00-\\u9fa5,，。、 ]", "");
+    }
+    return str;
   }
 }
 

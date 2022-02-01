@@ -2,7 +2,7 @@ package com.tencent.mobileqq.minigame.ui;
 
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyRsp;
-import anzj;
+import amtj;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.qphone.base.util.QLog;
@@ -22,7 +22,7 @@ class MiniGamePayFragment$1
       try
       {
         localJSONObject.put("resultCode", -1);
-        localJSONObject.put("errMsg", anzj.a(2131705740));
+        localJSONObject.put("errMsg", amtj.a(2131705970));
         if (localJSONObject != null) {}
         for (paramJSONObject = localJSONObject.toString(); paramJSONObject != null; paramJSONObject = "")
         {
@@ -49,7 +49,7 @@ class MiniGamePayFragment$1
             try
             {
               localJSONObject.put("resultCode", -3);
-              localJSONObject.put("errMsg", anzj.a(2131705739));
+              localJSONObject.put("errMsg", amtj.a(2131705969));
             }
             catch (JSONException paramJSONObject)
             {
@@ -73,7 +73,7 @@ class MiniGamePayFragment$1
       MiniGamePayFragment.access$000(this.this$0, this.val$event, localJSONObject.toString(), this.val$seq);
       return;
       localJSONObject.put("resultCode", -3);
-      localJSONObject.put("errMsg", anzj.a(2131705741));
+      localJSONObject.put("errMsg", amtj.a(2131705971));
     }
   }
 }

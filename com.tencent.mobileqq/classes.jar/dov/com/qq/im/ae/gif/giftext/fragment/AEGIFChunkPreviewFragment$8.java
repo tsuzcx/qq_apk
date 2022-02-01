@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.gif.giftext.fragment;
 
 import android.content.Context;
-import botw;
+import blyb;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class AEGIFChunkPreviewFragment$8
   implements Runnable
 {
-  public AEGIFChunkPreviewFragment$8(botw parambotw, Context paramContext) {}
+  public AEGIFChunkPreviewFragment$8(blyb paramblyb, Context paramContext) {}
   
   public void run()
   {
-    QQToast.a(this.a, 2131689724, 1).a();
+    QQToast.a(this.a, 2131689734, 1).a();
   }
 }
 

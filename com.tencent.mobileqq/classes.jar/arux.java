@@ -1,6 +1,18 @@
-public abstract interface arux
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class arux
+  implements View.OnClickListener
 {
-  public abstract aruw a(int paramInt);
+  public arux(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    LocalFileBrowserActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

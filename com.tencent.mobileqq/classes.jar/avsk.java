@@ -1,29 +1,26 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+
 public class avsk
-  extends avsm
+  extends bgok
 {
-  public String a = "";
+  public avsk(ChatBackgroundManager paramChatBackgroundManager, String paramString, int paramInt1, int paramInt2) {}
   
-  public avsk(String paramString1, String paramString2, String paramString3)
+  public void a(long paramLong, int paramInt, Bundle paramBundle)
   {
-    super("plugin", paramString1, paramString2);
-    this.a = paramString3;
-  }
-  
-  @Deprecated
-  public void a()
-  {
-    super.a();
-  }
-  
-  @Deprecated
-  public void b()
-  {
-    super.b();
+    super.a(paramLong, paramInt, paramBundle);
+    paramBundle = ChatBackgroundManager.a(true, paramLong + "");
+    if (new File(paramBundle).exists()) {
+      aezp.a(this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager.a.getCurrentUin(), this.jdField_a_of_type_JavaLangString, paramBundle, this.jdField_a_of_type_Int, this.b);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     avsk
  * JD-Core Version:    0.7.0.1
  */

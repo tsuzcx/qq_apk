@@ -1,39 +1,116 @@
-import android.view.MotionEvent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
-class aphc
-  implements View.OnTouchListener
+public class aphc
+  extends BaseAdapter
 {
-  aphc(aphb paramaphb) {}
+  public aphc(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public String a(int paramInt)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt >= 0)) {
+      return (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
-    do
+    return null;
+  }
+  
+  public int getCount()
+  {
+    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    aphm localaphm;
+    Object localObject;
+    if (paramView == null)
     {
-      do
+      paramView = this.a.getLayoutInflater().inflate(2131560982, null);
+      localaphm = new aphm();
+      localaphm.a = ((URLImageView)paramView.findViewById(2131364265));
+      paramView.setTag(localaphm);
+      localObject = a(paramInt);
+      if ((this.a.jdField_a_of_type_Int != 0) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
+        this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.a.getResources().getDrawable(this.a.jdField_a_of_type_Int);
+      }
+      if (localObject == null) {}
+    }
+    else
+    {
+      try
       {
-        return true;
-        aphb.a(this.a).setAlpha(0.5F);
-        return true;
-        aphb.a(this.a).setAlpha(1.0F);
-        if (!aphb.a(this.a))
-        {
-          apgs.a(true);
-          aphb.a(this.a, true);
+        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+          break label210;
         }
-        aphb.a(this.a).setVisibility(8);
-        aphb.a(this.a).clearAnimation();
-      } while (aphb.a(this.a) == null);
-      aphb.a(this.a).g();
-    } while (!QLog.isColorLevel());
-    QLog.i("ARVideoRecordViewProxy", 2, "onMonitorUserOperation");
-    return true;
+        localObject = URLDrawable.getDrawable((String)localObject, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        label139:
+        localaphm.a.setImageDrawable((Drawable)localObject);
+      }
+      catch (Exception localException1)
+      {
+        for (;;)
+        {
+          URLDrawable.URLDrawableOptions localURLDrawableOptions;
+          localException1.printStackTrace();
+          continue;
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        }
+      }
+      if ((this.a.d == 1) && (!this.a.jdField_a_of_type_Boolean)) {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      localaphm = (aphm)paramView.getTag();
+      break;
+      label210:
+      localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
+      break label139;
+      try
+      {
+        if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+        {
+          localObject = URLDrawable.getDrawable("https://aaa", this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          localException1.a.setImageDrawable((Drawable)localObject);
+        }
+        for (;;)
+        {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          break;
+          localException1.a.setImageDrawable(null);
+        }
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          localException2.printStackTrace();
+        }
+      }
+    }
   }
 }
 

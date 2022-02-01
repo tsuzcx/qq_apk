@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.apollo.store;
 
+import amec;
 import android.app.Activity;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
-import anji;
 import com.tencent.common.app.AppInterface;
 
 public class ApolloViewController$3
   implements Runnable
 {
-  public ApolloViewController$3(anji paramanji, Activity paramActivity, AppInterface paramAppInterface, String paramString1, String paramString2) {}
+  public ApolloViewController$3(amec paramamec, Activity paramActivity, AppInterface paramAppInterface, String paramString1, String paramString2) {}
   
   public void run()
   {
-    if ((anji.a(this.this$0) == null) || (anji.a(this.this$0) == null)) {
+    if ((amec.a(this.this$0) == null) || (amec.a(this.this$0) == null)) {
       return;
     }
-    if (anji.a(this.this$0) == null)
+    if (amec.a(this.this$0) == null)
     {
-      anji.a(this.this$0, new ApolloImageShareLayout(this.jdField_a_of_type_AndroidAppActivity));
-      anji.a(this.this$0).a(anji.a(this.this$0).getWidth(), anji.a(this.this$0).getHeight(), this.jdField_a_of_type_ComTencentCommonAppAppInterface, anji.a(this.this$0).roleId, anji.a(this.this$0).dressIds, this.this$0.a);
-      anji.a(this.this$0).addView(anji.a(this.this$0), new FrameLayout.LayoutParams(-1, -1));
+      amec.a(this.this$0, new ApolloImageShareLayout(this.jdField_a_of_type_AndroidAppActivity));
+      amec.a(this.this$0).a(amec.a(this.this$0).getWidth(), amec.a(this.this$0).getHeight(), this.jdField_a_of_type_ComTencentCommonAppAppInterface, amec.a(this.this$0).roleId, amec.a(this.this$0).dressIds, this.this$0.a);
+      amec.a(this.this$0).addView(amec.a(this.this$0), new FrameLayout.LayoutParams(-1, -1));
     }
-    anji.a(this.this$0).bringToFront();
-    anji.a(this.this$0).a(anji.a(this.this$0).roleId, anji.a(this.this$0).dressIds, this.this$0.a, this.jdField_a_of_type_JavaLangString, this.b);
+    amec.a(this.this$0).bringToFront();
+    amec.a(this.this$0).a(amec.a(this.this$0).roleId, amec.a(this.this$0).dressIds, this.this$0.a, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

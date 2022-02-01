@@ -1,62 +1,35 @@
-import android.os.Bundle;
-import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class npw
-  implements anui
+final class npw
+  implements bjoe
 {
-  public npw(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
+  npw(bjnw parambjnw, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramObject == null) {
-      return;
-    }
-    paramObject = (Bundle)paramObject;
+    this.jdField_a_of_type_Bjnw.dismiss();
     switch (paramInt)
     {
-    default: 
-      return;
-    case 17: 
-      paramBoolean = paramObject.getBoolean("result");
-      StringBuilder localStringBuilder = new StringBuilder();
-      if (paramBoolean)
-      {
-        paramObject = this.a.getString(2131695383);
-        localStringBuilder.append(paramObject);
-        localStringBuilder.append(this.a.getString(2131695381));
-        localStringBuilder.append(this.a.c);
-        if (!paramBoolean) {
-          break label233;
-        }
-        paramInt = 2;
-        label104:
-        QQToast.a(this.a, paramInt, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
-        paramObject = this.a;
-        if (!paramBoolean) {
-          break label238;
-        }
-      }
-      break;
     }
-    label233:
-    label238:
-    for (paramInt = -1;; paramInt = 0)
+    do
     {
-      paramObject.setResult(paramInt);
       return;
-      this.a.a = paramObject.getBoolean("isOpen");
-      this.a.c = paramObject.getString("name");
-      if (this.a.c != null) {
-        this.a.b = this.a.getString(2131695389, new Object[] { this.a.c });
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004655", "0X8004655", 0, 0, "", "", "", "");
+      try
+      {
+        npt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "IvrAIOMessageEngineFalse");
+        return;
       }
-      LebaSearchMoreInfoActivity.a(this.a);
-      return;
-      paramObject = this.a.getString(2131695382);
-      break;
-      paramInt = 1;
-      break label104;
-    }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("CrmUtils", 2, "Start ivr audio error", paramView);
   }
 }
 

@@ -1,9 +1,91 @@
-class vgo
-  implements aaav
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.biz.qcircleshadow.lib.delegate.ILoadPluginDelegate;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import cooperation.qqcircle.report.QCirclePluginQualityReporter;
+import cooperation.qqcircle.report.QCirclePluginQualityReporter.ReportData;
+import java.io.File;
+
+public class vgo
+  implements bcpp
 {
-  vgo(vgm paramvgm) {}
+  private final DynamicPluginManager jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager;
+  private final String jdField_a_of_type_JavaLangString;
+  private vgs jdField_a_of_type_Vgs;
+  private vgv jdField_a_of_type_Vgv;
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  public void onReceive(boolean paramBoolean, long paramLong, String paramString, Object paramObject) {}
+  public vgo(String paramString, DynamicPluginManager paramDynamicPluginManager)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager = paramDynamicPluginManager;
+  }
+  
+  public vgv a()
+  {
+    return this.jdField_a_of_type_Vgv;
+  }
+  
+  public void a(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
+  {
+    try
+    {
+      QLog.i("QCIRCLE_PLUGIN", 1, "QCirclePluginEnterManger#preLoad():idle status " + this.jdField_a_of_type_Boolean);
+      enter(paramContext, paramLong, paramBundle, paramEnterCallback);
+      return;
+    }
+    finally
+    {
+      paramContext = finally;
+      throw paramContext;
+    }
+  }
+  
+  public void a(vgs paramvgs)
+  {
+    this.jdField_a_of_type_Vgs = paramvgs;
+  }
+  
+  public void a(vgv paramvgv)
+  {
+    this.jdField_a_of_type_Vgv = paramvgv;
+  }
+  
+  public void enter(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QCIRCLE_PLUGIN", 1, "QCirclePluginEnterManger#enter():enter formId:" + paramLong);
+    }
+    this.jdField_a_of_type_Boolean = true;
+    if ((this.jdField_a_of_type_Vgs != null) && (this.jdField_a_of_type_Vgs.getLatest().exists())) {
+      this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager.enter(paramContext, paramLong, paramBundle, paramEnterCallback);
+    }
+    do
+    {
+      return;
+      QLog.i("QCIRCLE_PLUGIN", 1, "QCirclePluginEnterManger#enter():plugin source file is deleted");
+    } while (paramLong != 1000L);
+    paramBundle = new QCirclePluginQualityReporter.ReportData().setEvent_id("qcircle_plugin_load_result");
+    if (this.jdField_a_of_type_Vgv != null)
+    {
+      paramContext = this.jdField_a_of_type_Vgv.c();
+      paramContext = paramBundle.setPluginType(paramContext);
+      if (this.jdField_a_of_type_Vgv == null) {
+        break label163;
+      }
+    }
+    label163:
+    for (paramLong = this.jdField_a_of_type_Vgv.a();; paramLong = -3L)
+    {
+      QCirclePluginQualityReporter.report(paramContext.setPluginVersion(paramLong).setRetCode(1L));
+      ILoadPluginDelegate.disPatchCallback(1, "file has delete");
+      return;
+      paramContext = "";
+      break;
+    }
+  }
 }
 
 

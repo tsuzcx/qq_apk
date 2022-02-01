@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.webview.swift;
 
-import aayn;
-import abgu;
-import admy;
-import adna;
-import adqf;
-import agdz;
-import agej;
-import akxe;
+import aadf;
+import acjr;
+import acjt;
+import acmy;
+import aewt;
+import ajuv;
+import amtj;
+import anbg;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -25,6 +25,7 @@ import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -43,79 +44,72 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anzj;
-import aohr;
-import aser;
-import asev;
-import asjw;
-import avpp;
-import avqh;
-import bdgb;
-import bdll;
-import bdmc;
-import bdmv;
-import bdmw;
-import bhin;
-import bhlq;
-import bhnh;
-import bhpc;
-import bhzh;
-import bilw;
-import binl;
-import binq;
-import bioe;
-import biof;
-import biog;
-import bioh;
-import bioi;
-import bioj;
-import biok;
-import biol;
-import biom;
-import bion;
-import bioo;
-import biop;
-import bioq;
-import bioy;
-import bioz;
-import bipd;
-import bipk;
-import bipn;
-import bips;
-import bipt;
-import bipy;
-import biqa;
-import biqg;
-import biql;
-import biqp;
-import biqq;
-import biqx;
-import biqz;
-import birb;
-import birg;
-import birj;
-import birn;
-import birp;
-import birt;
-import birw;
-import biry;
-import birz;
-import bish;
-import bitb;
-import bitf;
-import bitg;
-import bitj;
-import bitm;
-import bito;
-import bitp;
-import bitr;
-import bits;
-import bjef;
-import bjqh;
-import bmko;
-import bmky;
-import bmzn;
-import bngm;
+import aqyp;
+import aqyt;
+import ardu;
+import aucr;
+import audj;
+import bbyp;
+import bcef;
+import bcfg;
+import bcfh;
+import bfrx;
+import bfur;
+import bfwf;
+import bgfs;
+import bgsf;
+import bgtr;
+import bgtw;
+import bguk;
+import bgul;
+import bgum;
+import bgun;
+import bguo;
+import bgup;
+import bguq;
+import bgur;
+import bgus;
+import bgut;
+import bguu;
+import bguv;
+import bguw;
+import bgve;
+import bgvf;
+import bgvj;
+import bgvq;
+import bgvt;
+import bgvy;
+import bgvz;
+import bgwe;
+import bgwg;
+import bgwm;
+import bgwr;
+import bgwv;
+import bgww;
+import bgxd;
+import bgxf;
+import bgxh;
+import bgxp;
+import bgxr;
+import bgxv;
+import bgxy;
+import bgya;
+import bgyb;
+import bgyj;
+import bgzd;
+import bgzh;
+import bgzi;
+import bgzl;
+import bgzo;
+import bgzq;
+import bgzr;
+import bgzt;
+import bgzu;
+import bhkb;
+import bhvw;
+import bkov;
+import bkpf;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 import com.tencent.biz.ui.RefreshView;
@@ -125,9 +119,10 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.gamecenter.activities.SingleTaskQQBrowser;
 import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgIPCClient;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUser.IMiniMsgActionCallback;
@@ -143,12 +138,16 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pluginsdk.ActivityLifecycle;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.vaswebviewplugin.BuscardJsPlugin;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.WebViewTitleStyle;
 import com.tencent.mobileqq.webview.sonic.SonicClientImpl;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 import com.tencent.mobileqq.webview.webso.WebSoService;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -173,6 +172,8 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import cooperation.buscard.BuscardHelper;
 import cooperation.pluginbridge.BridgeHelper;
+import cooperation.qzone.mobilereport.MobileReportManager;
+import cooperation.qzone.report.QzoneOnlineTimeCollectRptService;
 import cooperation.qzone.report.lp.LpReportInfo_dc02216;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -184,22 +185,22 @@ import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
 import mqq.os.MqqHandler;
-import mvd;
-import niz;
-import nkl;
-import nnj;
-import nnr;
-import noe;
-import oej;
+import mum;
+import nko;
+import nma;
+import noy;
+import npn;
+import ofw;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.im.opengroup.AppUrlOpenGroup.ReqBody;
-import tzq;
+import ugf;
+import zva;
 
 public class WebViewFragment
   extends ReportV4Fragment
-  implements aayn, View.OnClickListener, View.OnTouchListener, bioe, bioz, bips, bipt, bipy, bitf, bitg, bitj, bitm, bito, bitp, bitr, bits
+  implements View.OnClickListener, View.OnTouchListener, bguk, bgvf, bgvy, bgvz, bgwe, bgzh, bgzi, bgzl, bgzo, bgzq, bgzr, bgzt, bgzu, zva
 {
   public static final String ACTION_SELECT_PICTURE = "actionSelectPicture";
   public static final String AIO_EXTRA_SCROLL_Y = "AIO_Scroll_Y";
@@ -225,7 +226,7 @@ public class WebViewFragment
   private static final String T_REPORT_WEB_OPEN_THIRD_APP = "0X800A86A";
   public static int sQQBrowserActivityCounter;
   public int appId;
-  protected niz authConfig;
+  protected nko authConfig;
   public BrowserAppInterface browserApp;
   public WebBrowserViewContainer contentView;
   ViewGroup contentViewWrapper;
@@ -240,17 +241,17 @@ public class WebViewFragment
   public boolean isInitView;
   protected volatile boolean isSendWebSoRequest;
   boolean isVideoPlaying;
-  private avpp jumpCancelable;
+  private aucr jumpCancelable;
   public boolean mActNeedImmersive = true;
   public volatile AppInterface mApp;
   String mArticalChannelExtralInfo = "";
   int mArticalChannelId = 0;
   public int mBusiID;
-  public final bipn mComponentsProvider = createComponentsProvider();
+  public final bgvt mComponentsProvider = createComponentsProvider();
   public int mCreateLoopNextStep = 1;
-  protected final birn mCreateLoopScheduler = new birn(new biof(this));
-  protected nnj mFileChooserHelper;
-  public aser mIpcObserver;
+  protected final bgxp mCreateLoopScheduler = new bgxp(new bgul(this));
+  protected noy mFileChooserHelper;
+  public aqyp mIpcObserver;
   public String mKeyWording;
   protected long mLastTouchTime;
   public MiniMsgUser mMiniMsgUser;
@@ -261,13 +262,13 @@ public class WebViewFragment
   protected boolean mPayActionSucc;
   protected volatile WebViewPluginEngine mPluginEngine;
   public String mRedirect302Url = "";
-  public biqp mSetting;
-  public biqx mStatistics;
+  public bgwv mSetting;
+  public bgxd mStatistics;
   public String mStyle;
-  public binq mSwiftTitleUI;
+  public bgtw mSwiftTitleUI;
   public View mSystemBarComp;
-  public birj mUIStyle;
-  public birg mUIStyleHandler;
+  public SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle mUIStyle;
+  public SwiftBrowserUIStyleHandler mUIStyleHandler;
   public String mUrl;
   public int mWhere;
   boolean mX5CoreActive = false;
@@ -275,11 +276,11 @@ public class WebViewFragment
   public String publicUin = "";
   boolean redirectCookie = true;
   protected final Object sInitEngineLock = new Object();
-  public abgu share;
+  public aadf share;
   protected SonicClientImpl sonicClient;
   public String sourcePuin = "";
   public RelativeLayout titleRoot;
-  View.OnTouchListener titleTouchListener = new bioj(this);
+  View.OnTouchListener titleTouchListener = new bgup(this);
   public String toUin = "";
   public String troopAppCompanyName;
   public String troopAppInfoUrl;
@@ -291,7 +292,7 @@ public class WebViewFragment
   View videoProgressView;
   public TouchWebView webView;
   public String webViewTitle = "";
-  bipd webViewWrapper;
+  bgvj webViewWrapper;
   
   private void collectPerformanceInfo()
   {
@@ -311,15 +312,15 @@ public class WebViewFragment
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("WebLog_WebViewFragment", 2, String.format("reportInitPerformance, initType: %d, webViewType: %d, TbsAccelerator.sCostTime: %d", new Object[] { Long.valueOf(l), Integer.valueOf(i), Long.valueOf(biry.jdField_a_of_type_Long) }));
+        QLog.i("WebLog_WebViewFragment", 2, String.format("reportInitPerformance, initType: %d, webViewType: %d, TbsAccelerator.sCostTime: %d", new Object[] { Long.valueOf(l), Integer.valueOf(i), Long.valueOf(bgya.jdField_a_of_type_Long) }));
       }
       System.currentTimeMillis();
-      JSONObject localJSONObject = this.webView.reportInitPerformance(l, i, this.mStatistics.jdField_c_of_type_Long, biry.jdField_a_of_type_Long);
+      JSONObject localJSONObject = this.webView.reportInitPerformance(l, i, this.mStatistics.jdField_c_of_type_Long, bgya.jdField_a_of_type_Long);
       this.mStatistics.a(localJSONObject);
       System.currentTimeMillis();
       this.mStatistics.G = SystemClock.elapsedRealtime();
       return;
-      if (biqx.s) {}
+      if (bgxd.s) {}
       for (i = 1;; i = 0)
       {
         l = i;
@@ -358,7 +359,18 @@ public class WebViewFragment
   
   private void dumpViewInError(ClassCastException paramClassCastException)
   {
-    throw new ClassCastException(paramClassCastException.toString());
+    QLog.e("WebLog_WebViewFragment", 1, Log.getStackTraceString(paramClassCastException.getCause()));
+    try
+    {
+      paramClassCastException = getActivity().getWindow().getDecorView();
+      visitViewFromField(paramClassCastException, "mStatusColorViewState");
+      visitViewFromField(paramClassCastException, "mNavigationColorViewState");
+      return;
+    }
+    catch (Throwable paramClassCastException)
+    {
+      QLog.e("WebLog_WebViewFragment", 1, "dumpViewInError ", paramClassCastException);
+    }
   }
   
   public static String httpRequest(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
@@ -373,7 +385,7 @@ public class WebViewFragment
     paramString2.putString("Cookie", paramString3);
     try
     {
-      paramContext = nnr.a(paramContext, paramString1, "POST", localBundle, paramString2);
+      paramContext = HttpUtil.openUrl(paramContext, paramString1, "POST", localBundle, paramString2);
       if (QLog.isColorLevel()) {
         QLog.i("gamecenter", 2, "httpRequest: result:" + paramContext);
       }
@@ -397,19 +409,19 @@ public class WebViewFragment
   
   private void initTitleColor()
   {
-    if (this.mUIStyle.jdField_a_of_type_ComTencentMobileqqWebviewWebViewTitleStyle == null)
+    if (this.mUIStyle.mTitleStyle == null)
     {
-      int i = this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.getPaddingTop();
-      int j = this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.getPaddingBottom();
-      int k = this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.getPaddingLeft();
-      int m = this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.getPaddingRight();
-      this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(super.getResources().getDrawable(2130850099));
-      this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.setPadding(k, i, m, j);
+      int i = this.mSwiftTitleUI.titleContainer.getPaddingTop();
+      int j = this.mSwiftTitleUI.titleContainer.getPaddingBottom();
+      int k = this.mSwiftTitleUI.titleContainer.getPaddingLeft();
+      int m = this.mSwiftTitleUI.titleContainer.getPaddingRight();
+      this.mSwiftTitleUI.titleContainer.setBackgroundDrawable(super.getResources().getDrawable(2130850016));
+      this.mSwiftTitleUI.titleContainer.setPadding(k, i, m, j);
       return;
     }
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(this.mUIStyle.jdField_a_of_type_ComTencentMobileqqWebviewWebViewTitleStyle.jdField_c_of_type_Int);
-    this.mSwiftTitleUI.d(this.mUIStyle.jdField_a_of_type_ComTencentMobileqqWebviewWebViewTitleStyle.jdField_d_of_type_Int);
-    this.mSwiftTitleUI.f(this.mUIStyle.jdField_a_of_type_ComTencentMobileqqWebviewWebViewTitleStyle.e);
+    this.mSwiftTitleUI.titleContainer.setBackgroundColor(this.mUIStyle.mTitleStyle.titleBgColor);
+    this.mSwiftTitleUI.setTitleBarTextColor(this.mUIStyle.mTitleStyle.titleColor);
+    this.mSwiftTitleUI.setTitleBarButtonColor(this.mUIStyle.mTitleStyle.leftAndRightBtnColor);
   }
   
   public static WebViewFragment newInstance(Intent paramIntent)
@@ -424,7 +436,7 @@ public class WebViewFragment
   private void showWarningDialog(Intent paramIntent)
   {
     Resources localResources = getResources();
-    bhlq.a(getActivity(), 230, null, localResources.getString(2131719302), localResources.getString(2131690580), localResources.getString(2131694098), new biok(this, paramIntent), new biol(this)).show();
+    bfur.a(getActivity(), 230, null, localResources.getString(2131719620), localResources.getString(2131690620), localResources.getString(2131694201), new bguq(this, paramIntent), new bgur(this)).show();
   }
   
   private void traverseViews(View paramView, StringBuilder paramStringBuilder)
@@ -518,19 +530,19 @@ public class WebViewFragment
       return;
     }
     String str = this.mApp.getCurrentAccountUin();
-    bmko.a(paramString).c(str).b(super.getActivity(), str, 2, null);
+    bkov.a(paramString).c(str).b(super.getActivity(), str, 2, null);
     paramString = this.mApp;
     if (paramBoolean) {}
     for (int i = 42;; i = 45)
     {
-      bmky.a(paramString, i, 2);
+      bkpf.a(paramString, i, 2);
       return;
     }
   }
   
   protected void adjustWebViewTopMargin(int paramInt1, int paramInt2)
   {
-    Object localObject1 = (TextView)this.mUIStyleHandler.d.findViewById(2131363682);
+    Object localObject1 = (TextView)this.mUIStyleHandler.mRootView.findViewById(2131363713);
     if (localObject1 != null)
     {
       localObject2 = (LinearLayout.LayoutParams)((TextView)localObject1).getLayoutParams();
@@ -540,7 +552,7 @@ public class WebViewFragment
         ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       }
     }
-    localObject1 = this.mUIStyleHandler.d.findViewById(2131381335);
+    localObject1 = this.mUIStyleHandler.mRootView.findViewById(2131381053);
     Object localObject2 = (FrameLayout.LayoutParams)((View)localObject1).getLayoutParams();
     if (localObject2 != null)
     {
@@ -565,7 +577,7 @@ public class WebViewFragment
       else
       {
         l = System.currentTimeMillis();
-        bool1 = akxe.a().a(paramString, this);
+        bool1 = ajuv.a().a(paramString, this);
         QLog.i("WebLog_WebViewFragment", 1, "TryPayIntercept result:" + bool1 + " cost:" + (System.currentTimeMillis() - l) + " ms.");
         if (!bool1) {
           break label132;
@@ -587,7 +599,7 @@ public class WebViewFragment
         if (localActivityInfo != null) {
           localObject1 = localActivityInfo.packageName;
         }
-        aohr.a("scheme", paramWebView.getUrl(), (String)localObject1, "1", "web", getActivity().getClass().getName());
+        anbg.a("scheme", paramWebView.getUrl(), (String)localObject1, "1", "web", getActivity().getClass().getName());
         paramWebView = getIntent();
         bool1 = paramWebView.getBooleanExtra("h5_ark_is_from_share", false);
         l = paramWebView.getLongExtra("appShareID", -1L);
@@ -620,8 +632,8 @@ public class WebViewFragment
     if ((this.isDestroyed) || (this.webView == null)) {
       return true;
     }
-    noe.a("urlInterceptManager");
-    paramWebView = birz.b(paramString);
+    npn.a("urlInterceptManager");
+    paramWebView = bgyb.b(paramString);
     if ((("http".equals(paramWebView)) || ("data".equals(paramWebView))) && ((super.getActivity() instanceof QQBrowserActivity))) {
       if ((this.browserApp != null) && (this.browserApp.a != null))
       {
@@ -640,7 +652,7 @@ public class WebViewFragment
         QLog.e("WebLog_WebViewFragment", 2, "URLInterceptManager = null");
       }
     }
-    noe.b("urlInterceptManager");
+    npn.b("urlInterceptManager");
     return false;
   }
   
@@ -670,7 +682,7 @@ public class WebViewFragment
   
   public void changeFullScreenCutoutMode()
   {
-    if ((Build.VERSION.SDK_INT >= 28) && (super.getActivity() != null) && (this.mUIStyle.jdField_a_of_type_Boolean))
+    if ((Build.VERSION.SDK_INT >= 28) && (super.getActivity() != null) && (this.mUIStyle.isFullScreen))
     {
       Window localWindow = getActivity().getWindow();
       WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
@@ -685,16 +697,16 @@ public class WebViewFragment
     localReqBody.uint32_appid.set(paramInt);
     localReqBody.bytes_url.set(ByteStringMicro.copyFromUtf8(this.mUrl));
     localReqBody.bytes_param.set(ByteStringMicro.copyFromUtf8(paramString));
-    paramString = new NewIntent(BaseApplicationImpl.getApplication(), nkl.class);
+    paramString = new NewIntent(BaseApplicationImpl.getApplication(), nma.class);
     paramString.putExtra("cmd", "GroupOpen.CheckAppUrl");
     paramString.putExtra("data", localReqBody.toByteArray());
     paramString.setObserver(paramBusinessObserver);
     this.mApp.startServlet(paramString);
   }
   
-  public bipn createComponentsProvider()
+  public bgvt createComponentsProvider()
   {
-    return new bipn(this, 127, null);
+    return new bgvt(this, 127, null);
   }
   
   public TouchWebView createCustomWebView()
@@ -702,12 +714,12 @@ public class WebViewFragment
     return null;
   }
   
-  public final bipd createWebViewWrapper(ViewGroup paramViewGroup)
+  public final bgvj createWebViewWrapper(ViewGroup paramViewGroup)
   {
     boolean bool2 = false;
     boolean bool1;
     TouchWebView localTouchWebView;
-    if ((this.mUIStyle.jdField_b_of_type_Long & 0x40) != 0L)
+    if ((this.mUIStyle.mWWVRulesFromUrl & 0x40) != 0L)
     {
       bool1 = true;
       localTouchWebView = createCustomWebView();
@@ -716,7 +728,7 @@ public class WebViewFragment
       }
     }
     label201:
-    for (this.webViewWrapper = new bipk(this.mApp, super.getActivity(), this, this.intent, bool1);; this.webViewWrapper = new bipk(this.mApp, super.getActivity(), this, this.intent, localTouchWebView))
+    for (this.webViewWrapper = new bgvq(this.mApp, super.getActivity(), this, this.intent, bool1);; this.webViewWrapper = new bgvq(this.mApp, super.getActivity(), this, this.intent, localTouchWebView))
     {
       this.webViewWrapper.a(this.sonicClient);
       localTouchWebView = this.webViewWrapper.a();
@@ -727,12 +739,12 @@ public class WebViewFragment
       localTouchWebView.setPluginEngine(this.mPluginEngine);
       if ((localTouchWebView instanceof SwiftReuseTouchWebView))
       {
-        biqx localbiqx = this.mStatistics;
+        bgxd localbgxd = this.mStatistics;
         bool1 = bool2;
         if (1 == ((SwiftReuseTouchWebView)localTouchWebView).b) {
           bool1 = true;
         }
-        localbiqx.jdField_u_of_type_Boolean = bool1;
+        localbgxd.jdField_u_of_type_Boolean = bool1;
       }
       if (localTouchWebView.getX5WebViewExtension() != null) {
         this.mX5CoreActive = true;
@@ -755,9 +767,9 @@ public class WebViewFragment
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewFragment", 2, "onDestroy");
     }
-    biqx localbiqx = this.mStatistics;
+    bgxd localbgxd = this.mStatistics;
     this.isDestroyed = true;
-    localbiqx.l = true;
+    localbgxd.l = true;
     if (this.webViewWrapper != null)
     {
       this.webViewWrapper.a();
@@ -781,22 +793,22 @@ public class WebViewFragment
   
   public int doCreateLoopStep_Final(Bundle paramBundle)
   {
-    noe.a("Web_qqbrowser_state_machine_init_FINAL");
-    noe.a("Web_IPCSetup");
-    if (!asjw.a().a()) {
-      asjw.a().a().doBindService(BaseApplicationImpl.getApplication());
+    npn.a("Web_qqbrowser_state_machine_init_FINAL");
+    npn.a("Web_IPCSetup");
+    if (!ardu.a().a()) {
+      ardu.a().a().doBindService(BaseApplicationImpl.getApplication());
     }
-    noe.b("Web_IPCSetup");
-    if ((this.mUIStyle.jdField_a_of_type_Long & 0x400000) > 0L)
+    npn.b("Web_IPCSetup");
+    if ((this.mUIStyle.mRulesFromUrl & 0x400000) > 0L)
     {
-      SosoInterface.a(new bioo(this, 0, false, false, 600000L, false, false, "webview"));
-      SosoInterface.a(new biop(this, 0, true, false, 600000L, false, false, "webview"));
+      SosoInterface.startLocation(new bguu(this, 0, false, false, 600000L, false, false, "webview"));
+      SosoInterface.startLocation(new bguv(this, 0, true, false, 600000L, false, false, "webview"));
     }
     ThreadManager.getUIHandler().postDelayed(new WebViewFragment.8(this), 3000L);
     ThreadManager.executeOnSubThread(new WebViewFragment.9(this));
-    birp.a().a(new biog(this, 2));
-    noe.b("Web_qqbrowser_state_machine_init_FINAL");
-    noe.b("Web_qqbrowser_state_machine_all");
+    bgxr.a().a(new bgum(this, 2));
+    npn.b("Web_qqbrowser_state_machine_init_FINAL");
+    npn.b("Web_qqbrowser_state_machine_all");
     this.mCreateLoopNextStep = 1;
     collectPerformanceInfo();
     return -1;
@@ -804,7 +816,7 @@ public class WebViewFragment
   
   public int doCreateLoopStep_InitAppAndWebVieEngine(Bundle paramBundle)
   {
-    noe.a("Web_qqbrowser_state_machine_init_app_and_webview_engine");
+    npn.a("Web_qqbrowser_state_machine_init_app_and_webview_engine");
     this.mApp = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
     if ((this.mApp instanceof BrowserAppInterface)) {
       this.browserApp = ((BrowserAppInterface)this.mApp);
@@ -816,7 +828,7 @@ public class WebViewFragment
     if (this.mApp.getLongAccountUin() != 0L)
     {
       paramBundle = this.mStatistics;
-      if (this.mApp.getLongAccountUin() % biqx.jdField_d_of_type_Int != 6L) {
+      if (this.mApp.getLongAccountUin() % bgxd.jdField_d_of_type_Int != 6L) {
         break label213;
       }
     }
@@ -831,21 +843,21 @@ public class WebViewFragment
         this.mPluginEngine.a(this.mUrl, 1L, null);
       }
       this.mCreateLoopNextStep = 16;
-      if (biqx.x) {
+      if (bgxd.x) {
         this.mStatistics.a("webview_init", System.currentTimeMillis() - this.mStatistics.jdField_c_of_type_Long, "0");
       }
-      noe.b("Web_qqbrowser_state_machine_init_app_and_webview_engine");
+      npn.b("Web_qqbrowser_state_machine_init_app_and_webview_engine");
       return 1;
     }
   }
   
   public int doCreateLoopStep_InitBottomBar(Bundle paramBundle)
   {
-    noe.a("Web_qqbrowser_state_machine_init_bottombar");
-    this.mUIStyleHandler.b(getIntent(), this.mUrl);
-    this.mUIStyleHandler.f();
+    npn.a("Web_qqbrowser_state_machine_init_bottombar");
+    this.mUIStyleHandler.initBottomBar(getIntent(), this.mUrl);
+    this.mUIStyleHandler.initAioShareMusicBottomView();
     this.mCreateLoopNextStep = 1024;
-    noe.b("Web_qqbrowser_state_machine_init_bottombar");
+    npn.b("Web_qqbrowser_state_machine_init_bottombar");
     if (this.webView == null)
     {
       if (QLog.isColorLevel()) {
@@ -858,8 +870,8 @@ public class WebViewFragment
   
   public int doCreateLoopStep_InitData(Bundle paramBundle)
   {
-    noe.a("Web_qqbrowser_state_machine_init_data");
-    QbSdk.setQQBuildNumber("4745");
+    npn.a("Web_qqbrowser_state_machine_init_data");
+    QbSdk.setQQBuildNumber("4810");
     paramBundle = this.intent.getStringExtra("options");
     if (paramBundle != null) {}
     try
@@ -902,26 +914,26 @@ public class WebViewFragment
     if (bool)
     {
       i = 1;
-      bdmv.a(paramBundle, j, i, this.mUrl);
+      bcfg.a(paramBundle, j, i, this.mUrl);
       if (this.intent.getBooleanExtra("vasUsePreWebview", false)) {
         break label476;
       }
       bool = true;
       this.mSetting.a("web_view_long_click", bool);
-      this.mStatistics.jdField_a_of_type_Biqz.b = this.intent.getIntExtra("individuation_url_type", -1);
+      this.mStatistics.jdField_a_of_type_Bgxf.b = this.intent.getIntExtra("individuation_url_type", -1);
       if (sQQBrowserActivityCounter == 1) {
-        biqz.jdField_d_of_type_Int = this.mStatistics.jdField_a_of_type_Biqz.b;
+        bgxf.jdField_d_of_type_Int = this.mStatistics.jdField_a_of_type_Bgxf.b;
       }
-      if ((this.mStatistics.jdField_a_of_type_Biqz.b == -1) && (biqz.jdField_d_of_type_Int != -1)) {
-        this.mStatistics.jdField_a_of_type_Biqz.b = biqz.jdField_d_of_type_Int;
+      if ((this.mStatistics.jdField_a_of_type_Bgxf.b == -1) && (bgxf.jdField_d_of_type_Int != -1)) {
+        this.mStatistics.jdField_a_of_type_Bgxf.b = bgxf.jdField_d_of_type_Int;
       }
       this.mStatistics.jdField_d_of_type_JavaLangString = this.mUrl;
       this.webViewTitle = this.intent.getStringExtra("title");
-      this.mUIStyleHandler.jdField_a_of_type_JavaLangString = this.webViewTitle;
-      if ((this.mUIStyle.jdField_a_of_type_Long & 0x4000000) == 0L) {
+      this.mUIStyleHandler.webViewTitle = this.webViewTitle;
+      if ((this.mUIStyle.mRulesFromUrl & 0x4000000) == 0L) {
         this.mSetting.a("image_long_click", true);
       }
-      noe.b("Web_qqbrowser_state_machine_init_data");
+      npn.b("Web_qqbrowser_state_machine_init_data");
       this.mCreateLoopNextStep = 4;
       return 0;
     }
@@ -930,9 +942,9 @@ public class WebViewFragment
   public int doCreateLoopStep_InitTitleBar(Bundle paramBundle)
   {
     long l = SystemClock.elapsedRealtime();
-    noe.a("Web_qqbrowser_state_machine_init_titlebar");
+    npn.a("Web_qqbrowser_state_machine_init_titlebar");
     initTitleBar(this.intent, this.mUrl);
-    this.mUIStyleHandler.g();
+    this.mUIStyleHandler.initFloatTitleBar();
     initTabBarView();
     paramBundle = this.intent.getExtras();
     if (paramBundle != null)
@@ -961,23 +973,23 @@ public class WebViewFragment
       }
       if (Boolean.valueOf(bool).booleanValue())
       {
-        if (birz.a()) {
+        if (bgyb.a()) {
           break label285;
         }
-        this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setText(super.getResources().getString(2131690728));
+        this.mSwiftTitleUI.leftView.setText(super.getResources().getString(2131690768));
       }
     }
     for (;;)
     {
-      checkAppUrl(this.appId, paramBundle, new bion(this));
+      checkAppUrl(this.appId, paramBundle, new bgut(this));
       this.mCreateLoopNextStep = 512;
-      ((biqq)getComponentProvider().a(4)).d();
-      noe.b("Web_qqbrowser_state_machine_init_titlebar");
+      ((bgww)getComponentProvider().a(4)).d();
+      npn.b("Web_qqbrowser_state_machine_init_titlebar");
       this.mStatistics.K = (SystemClock.elapsedRealtime() - l);
       return 1;
       label285:
-      if (this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.getBackground() == null) {
-        this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView.setText(super.getResources().getString(2131690728));
+      if (this.mSwiftTitleUI.leftView.getBackground() == null) {
+        this.mSwiftTitleUI.leftView.setText(super.getResources().getString(2131690768));
       }
     }
   }
@@ -985,95 +997,95 @@ public class WebViewFragment
   public int doCreateLoopStep_InitUIContent(Bundle paramBundle)
   {
     long l = SystemClock.elapsedRealtime();
-    noe.a("Web_qqbrowser_state_machine_init_ui_main_content");
-    noe.a("Web_qqbrowser_initView");
+    npn.a("Web_qqbrowser_state_machine_init_ui_main_content");
+    npn.a("Web_qqbrowser_initView");
     if (!this.isInitView)
     {
       this.isInitView = true;
-      this.mUIStyleHandler.a(this.contentView, this.intent, this.webView);
+      this.mUIStyleHandler.initContentView(this.contentView, this.intent, this.webView);
       if (this.webView.isPaused) {
         this.webView.onResume();
       }
-      if ((this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView)) {
-        ((RefreshView)this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup).setOnFlingGesture(this);
+      if ((this.mUIStyleHandler.webviewWrapper instanceof RefreshView)) {
+        ((RefreshView)this.mUIStyleHandler.webviewWrapper).setOnFlingGesture(this);
       }
     }
     for (;;)
     {
-      noe.b("Web_qqbrowser_initView");
-      noe.b("Web_qqbrowser_state_machine_init_ui_main_content");
+      npn.b("Web_qqbrowser_initView");
+      npn.b("Web_qqbrowser_state_machine_init_ui_main_content");
       this.mStatistics.L = (SystemClock.elapsedRealtime() - l);
       this.mCreateLoopNextStep = 256;
       return 1;
-      if ((this.mUIStyle.jdField_a_of_type_Boolean) && (this.mUIStyle.jdField_c_of_type_Long != 0L)) {
-        this.mUIStyleHandler.jdField_a_of_type_Binl.a(this.contentView);
+      if ((this.mUIStyle.isFullScreen) && (this.mUIStyle.mFloatBarRulesFromUrl != 0L)) {
+        this.mUIStyleHandler.mSwiftFloatUI.a(this.contentView);
       }
     }
   }
   
   public int doCreateLoopStep_InitUIFrame(Bundle paramBundle)
   {
-    noe.a("Web_qqbrowser_state_machine_init_ui_frame");
-    if (!this.mUIStyleHandler.jdField_c_of_type_Boolean)
+    npn.a("Web_qqbrowser_state_machine_init_ui_frame");
+    if (!this.mUIStyleHandler.mIsShownPreview)
     {
       long l = SystemClock.elapsedRealtime();
       showPreview();
       this.mStatistics.J = (SystemClock.elapsedRealtime() - l);
     }
     this.mCreateLoopNextStep = 128;
-    noe.b("Web_qqbrowser_state_machine_init_ui_frame");
+    npn.b("Web_qqbrowser_state_machine_init_ui_frame");
     return 1;
   }
   
   public int doCreateLoopStep_InitWebView(Bundle paramBundle)
   {
-    noe.a("Web_qqbrowser_state_machine_init_webview");
+    npn.a("Web_qqbrowser_state_machine_init_webview");
     this.mStatistics.c("state_webview_create");
     initWebView();
-    noe.b("Web_qqbrowser_state_machine_init_webview");
+    npn.b("Web_qqbrowser_state_machine_init_webview");
     this.mCreateLoopNextStep = 32;
     this.mStatistics.Q = System.currentTimeMillis();
     this.mStatistics.jdField_u_of_type_Long = (this.mStatistics.Q - this.mStatistics.P);
-    if (biqx.x) {
+    if (bgxd.x) {
       this.mStatistics.a("should_start_load", this.mStatistics.Q - this.mStatistics.jdField_c_of_type_Long, "0");
     }
-    bmzn.a().a(this.mUrl, 130, this.mStatistics.Q - this.mStatistics.jdField_c_of_type_Long, "0", this.mStatistics.e, this.mStatistics.g);
+    MobileReportManager.getInstance().reportH5Trace(this.mUrl, 130, this.mStatistics.Q - this.mStatistics.jdField_c_of_type_Long, "0", this.mStatistics.e, this.mStatistics.g);
     return 0;
   }
   
   public int doCreateLoopStep_InitX5Environment(Bundle paramBundle)
   {
-    noe.a("Web_qqbrowser_state_machine_init_x5_environment");
+    npn.a("Web_qqbrowser_state_machine_init_x5_environment");
     this.mStatistics.P = System.currentTimeMillis();
     this.mCreateLoopNextStep = 8;
-    if (biry.a())
+    if (bgya.a())
     {
-      noe.b("Web_qqbrowser_state_machine_init_x5_environment");
+      npn.b("Web_qqbrowser_state_machine_init_x5_environment");
       return 0;
     }
-    if (biry.b())
+    if (bgya.b())
     {
-      noe.b("Web_qqbrowser_state_machine_init_x5_environment");
+      npn.b("Web_qqbrowser_state_machine_init_x5_environment");
       return 0;
     }
-    noe.b("Web_qqbrowser_state_machine_init_x5_environment");
+    npn.b("Web_qqbrowser_state_machine_init_x5_environment");
     return 0;
   }
   
   public int doCreateLoopStep_LoadUrl(Bundle paramBundle)
   {
-    noe.a("Web_qqbrowser_state_machine_load_url");
+    npn.a("Web_qqbrowser_state_machine_load_url");
     this.mStatistics.c("state_load_url");
     long l1 = System.currentTimeMillis();
-    noe.a("Web_qqbrowser_init");
+    npn.a("Web_qqbrowser_init");
     startLoadUrl();
-    noe.b("Web_qqbrowser_init");
+    npn.b("Web_qqbrowser_init");
     long l2 = System.currentTimeMillis();
     this.mStatistics.o = (l2 - l1);
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewFragment", 2, "init param and load url, cost = " + this.mStatistics.o);
     }
-    noe.b("Web_qqbrowser_state_machine_load_url");
+    npn.b("Web_qqbrowser_state_machine_load_url");
     this.mCreateLoopNextStep = 64;
     return 0;
   }
@@ -1110,7 +1122,7 @@ public class WebViewFragment
               do
               {
                 return;
-                bmko.a(super.getActivity(), paramIntent);
+                bkov.a(super.getActivity(), paramIntent);
                 return;
                 localObject = paramIntent.getStringExtra("DELETE_BLOG");
                 if (this.webView != null) {
@@ -1125,12 +1137,12 @@ public class WebViewFragment
                   break;
                 }
                 QLog.d("WebLog_WebViewFragment", 1, "start screen long shot");
-                bhin.a(this.webView, new bioi(this));
+                bfrx.a(this.webView, new bguo(this));
                 break;
                 if (paramInt1 != 21) {
                   break label307;
                 }
-                localObject = agej.a(new Intent(super.getActivity(), SplashActivity.class), null);
+                localObject = AIOUtils.setOpenAIOIntent(new Intent(super.getActivity(), SplashActivity.class), null);
               } while (paramIntent == null);
               ((Intent)localObject).putExtras(new Bundle(paramIntent.getExtras()));
               super.startActivity((Intent)localObject);
@@ -1143,13 +1155,13 @@ public class WebViewFragment
               ((Map)localObject).put("resultCode", Integer.valueOf(paramInt2));
               ((Map)localObject).put("data", paramIntent);
             } while (dispatchPluginEvent(8589934600L, (Map)localObject));
-            if (bilw.a(paramIntent, paramInt1))
+            if (bgsf.a(paramIntent, paramInt1))
             {
               doActivityResultByWeiBo(paramIntent, paramInt1, paramInt2);
               return;
             }
-            int i = birz.a(paramInt1);
-            int j = birz.b(paramInt1);
+            int i = bgyb.a(paramInt1);
+            int j = bgyb.b(paramInt1);
             if (j <= 0) {
               break label548;
             }
@@ -1227,7 +1239,7 @@ public class WebViewFragment
     }
     this.mStatistics.b(getIntent(), this.mUrl);
     this.mStatistics.a(BaseApplicationImpl.getApplication(), this.mUrl, this.intent);
-    agdz.c(this.intent);
+    aewt.c(this.intent);
     if (this.isVideoPlaying) {
       onHideCustomView();
     }
@@ -1244,7 +1256,7 @@ public class WebViewFragment
         localHashMap = new HashMap(1);
         localHashMap.put("target", Integer.valueOf(3));
       } while (dispatchPluginEvent(8589934601L, localHashMap));
-      if ((this.mUIStyle.g) || ((this.mUIStyle.jdField_a_of_type_Long & 0x4) != 0L) || (this.webView == null) || (!this.webView.canGoBack())) {
+      if ((this.mUIStyle.isOnClickClose) || ((this.mUIStyle.mRulesFromUrl & 0x4) != 0L) || (this.webView == null) || (!this.webView.canGoBack())) {
         break;
       }
       this.webView.stopLoading();
@@ -1275,9 +1287,9 @@ public class WebViewFragment
   @TargetApi(11)
   protected boolean doOnCreate(Bundle paramBundle)
   {
-    agdz.a(this.intent);
-    Object localObject = (biqg)this.mComponentsProvider.a(1);
-    if ((localObject != null) && (!((biqg)localObject).a(this.intent)))
+    aewt.a(this.intent);
+    Object localObject = (bgwm)this.mComponentsProvider.a(1);
+    if ((localObject != null) && (!((bgwm)localObject).a(this.intent)))
     {
       super.getActivity().finish();
       return true;
@@ -1299,18 +1311,18 @@ public class WebViewFragment
       if (!bool) {
         ThreadManager.post(new WebViewFragment.2(this), 5, null, true);
       }
-      noe.a("Web_qqbrowser_dooncreate");
+      npn.a("Web_qqbrowser_dooncreate");
       this.mActNeedImmersive = false;
       this.mNeedStatusTrans = false;
-      bdmc.a(BaseApplicationImpl.getApplication(), 10000L);
+      StatisticCollector.getInstance(BaseApplicationImpl.getApplication(), 10000L);
       this.mStatistics.N = System.currentTimeMillis();
       this.mNightMode = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
-      this.authConfig = niz.a();
+      this.authConfig = nko.a();
       localObject = this.mStatistics;
       this.isDestroyed = false;
-      ((biqx)localObject).l = false;
+      ((bgxd)localObject).l = false;
       this.mStatistics.O = System.currentTimeMillis();
-      noe.a("Web_qqbrowser_state_machine_all");
+      npn.a("Web_qqbrowser_state_machine_all");
       this.mCreateLoopNextStep = 2;
       if ((WebAccelerateHelper.isWebViewCache) || (SwiftReuseTouchWebView.jdField_c_of_type_Int > 0)) {
         this.mCreateLoopScheduler.a();
@@ -1321,7 +1333,7 @@ public class WebViewFragment
       paramBundle.putString("url", this.mUrl);
       this.mComponentsProvider.a(5, paramBundle);
       this.mStatistics.r = (System.currentTimeMillis() - this.mStatistics.jdField_c_of_type_Long);
-      noe.b("Web_qqbrowser_dooncreate");
+      npn.b("Web_qqbrowser_dooncreate");
       this.mStatistics.S = System.currentTimeMillis();
       return true;
     }
@@ -1410,8 +1422,8 @@ public class WebViewFragment
           {
             paramIntent = new Bundle();
             paramIntent.putString("path", (String)localObject);
-            paramIntent = asev.a("ipc_update_avatar", "", 0, paramIntent);
-            asjw.a().b(paramIntent);
+            paramIntent = aqyt.a("ipc_update_avatar", "", 0, paramIntent);
+            ardu.a().b(paramIntent);
             return;
           }
         }
@@ -1435,11 +1447,11 @@ public class WebViewFragment
           }
           localObject = (String)((ArrayList)localObject).get(0);
           QLog.d("WebLog_WebViewFragment", 2, "editScreenShotBack:" + (String)localObject);
-          biql localbiql = (biql)this.mComponentsProvider.a(64);
-          if (localbiql == null) {
+          bgwr localbgwr = (bgwr)this.mComponentsProvider.a(64);
+          if (localbgwr == null) {
             break;
           }
-          localbiql.a((String)localObject, paramIntent.getStringExtra("image_path"), paramIntent.getIntExtra("EditPicType", 0));
+          localbgwr.a((String)localObject, paramIntent.getStringExtra("image_path"), paramIntent.getIntExtra("EditPicType", 0));
           return;
           this.intent = paramIntent;
           preInitData();
@@ -1458,7 +1470,7 @@ public class WebViewFragment
   
   public void doOnWindowFocusChanged(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.mUIStyleHandler.jdField_a_of_type_Birj.jdField_a_of_type_Boolean))
+    if ((paramBoolean) && (this.mUIStyleHandler.mUIStyle.isFullScreen))
     {
       hideVirtualNavBar();
       changeFullScreenCutoutMode();
@@ -1467,13 +1479,13 @@ public class WebViewFragment
   
   public void doShowTitleBar(boolean paramBoolean)
   {
-    ViewGroup localViewGroup = this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup;
+    ViewGroup localViewGroup = this.mSwiftTitleUI.titleContainer;
     if (localViewGroup == null) {}
     int j;
     do
     {
       return;
-      j = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131296599);
+      j = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131296654);
       if (paramBoolean) {
         break;
       }
@@ -1481,12 +1493,12 @@ public class WebViewFragment
       localViewGroup.setVisibility(8);
     } while (this.mSystemBarComp == null);
     this.mSystemBarComp.setVisibility(8);
-    this.mUIStyleHandler.d.findViewById(2131365074).setVisibility(8);
+    this.mUIStyleHandler.mRootView.findViewById(2131365102).setVisibility(8);
     return;
     if (ImmersiveUtils.isSupporImmersive() == 1) {}
     for (int i = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());; i = 0)
     {
-      if (this.mUIStyle.n) {
+      if (this.mUIStyle.isCurrentTitleTransparent) {
         j += i;
       }
       for (;;)
@@ -1497,10 +1509,10 @@ public class WebViewFragment
           break;
         }
         this.mSystemBarComp.setVisibility(0);
-        this.mUIStyleHandler.d.findViewById(2131365074).setVisibility(0);
+        this.mUIStyleHandler.mRootView.findViewById(2131365102).setVisibility(0);
         return;
         j += i * 2;
-        i += BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299018);
+        i += BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299083);
       }
     }
   }
@@ -1508,9 +1520,9 @@ public class WebViewFragment
   public void doTransparent(JSONObject paramJSONObject)
   {
     if (paramJSONObject != null) {
-      this.mUIStyleHandler.jdField_a_of_type_Birj.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+      this.mUIStyleHandler.mUIStyle.transparentTitlebarConfig = paramJSONObject;
     }
-    this.mUIStyleHandler.a(paramJSONObject, true);
+    this.mUIStyleHandler.doTransparent(paramJSONObject, true);
   }
   
   void doWebSoRequest()
@@ -1519,7 +1531,7 @@ public class WebViewFragment
     {
       this.isSendWebSoRequest = true;
       String str = this.intent.getStringExtra("url");
-      if (bitb.b(str)) {
+      if (bgzd.b(str)) {
         ThreadManager.postImmediately(new WebViewFragment.3(this, str), null, false);
       }
     }
@@ -1528,15 +1540,15 @@ public class WebViewFragment
   void doWebsoShowScreenshot()
   {
     String str = this.intent.getStringExtra("url");
-    if (bitb.b(str)) {
+    if (bgzd.b(str)) {
       WebSoService.a(getActivity(), str);
     }
   }
   
   public void enableSwipeBackForHost(boolean paramBoolean)
   {
-    if ((this.mUIStyleHandler != null) && ((this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView))) {
-      ((RefreshView)this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup).c(paramBoolean);
+    if ((this.mUIStyleHandler != null) && ((this.mUIStyleHandler.webviewWrapper instanceof RefreshView))) {
+      ((RefreshView)this.mUIStyleHandler.webviewWrapper).c(paramBoolean);
     }
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewFragment", 2, "enableSwipeBackForHost enable=" + paramBoolean);
@@ -1545,8 +1557,8 @@ public class WebViewFragment
   
   public void enableSwipeBackForJS(boolean paramBoolean)
   {
-    if ((this.mUIStyleHandler != null) && ((this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView))) {
-      ((RefreshView)this.mUIStyleHandler.jdField_c_of_type_AndroidViewViewGroup).b(paramBoolean);
+    if ((this.mUIStyleHandler != null) && ((this.mUIStyleHandler.webviewWrapper instanceof RefreshView))) {
+      ((RefreshView)this.mUIStyleHandler.webviewWrapper).b(paramBoolean);
     }
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewFragment", 2, "enableSwipeBackForJS enable=" + paramBoolean);
@@ -1566,7 +1578,7 @@ public class WebViewFragment
   
   protected void ensurePluginEngineCreated()
   {
-    synchronized (birw.a)
+    synchronized (bgxy.a)
     {
       if (WebViewPluginEngine.a != null)
       {
@@ -1589,10 +1601,10 @@ public class WebViewFragment
     WebAccelerateHelper.getInstance().bindFragment(this.mPluginEngine, this);
   }
   
-  protected abgu ensureShare()
+  protected aadf ensureShare()
   {
     if (this.share == null) {
-      this.share = new abgu(this.mApp, super.getActivity());
+      this.share = new aadf(this.mApp, super.getActivity());
     }
     return this.share;
   }
@@ -1619,7 +1631,7 @@ public class WebViewFragment
   
   public Intent generateConverationIntent()
   {
-    return generateGoToConversation(birz.a(this, this.intent));
+    return generateGoToConversation(bgyb.a(this, this.intent));
   }
   
   public Intent generateGoToConversation(Bundle paramBundle)
@@ -1681,7 +1693,7 @@ public class WebViewFragment
         {
           localObject = ((String)localObject).trim();
           label330:
-          String str = birz.b((String)localObject);
+          String str = bgyb.b((String)localObject);
           if ((!"http".equals(str)) && (!"https".equals(str)) && (!"data".equals(str)) && (!"file".equals(str)) && (!((String)localObject).startsWith("about")) && (!((String)localObject).startsWith("base64"))) {
             break label455;
           }
@@ -1692,13 +1704,13 @@ public class WebViewFragment
           if ((i != 0) || (((String)localObject).length() <= 1)) {
             break label460;
           }
-          localIntent.putExtra("banner_wording", String.format(anzj.a(2131715675), new Object[] { this.webView.getTitle() }));
+          localIntent.putExtra("banner_wording", String.format(amtj.a(2131715909), new Object[] { this.webView.getTitle() }));
           break;
           localObject = "";
           break label330;
         }
         label460:
-        localIntent.putExtra("banner_wording", anzj.a(2131715676));
+        localIntent.putExtra("banner_wording", amtj.a(2131715910));
         break label170;
         label478:
         if (TextUtils.isEmpty(this.mUrl)) {
@@ -1716,7 +1728,7 @@ public class WebViewFragment
     return null;
   }
   
-  public bipn getComponentProvider()
+  public bgvt getComponentProvider()
   {
     return this.mComponentsProvider;
   }
@@ -1768,7 +1780,7 @@ public class WebViewFragment
   
   protected MiniMsgUser.IMiniMsgActionCallback getMiniMsgActionCallback()
   {
-    return new biom(this);
+    return new bgus(this);
   }
   
   protected MiniMsgUserParam getMiniMsgUserParam()
@@ -1778,10 +1790,10 @@ public class WebViewFragment
     localMiniMsgUserParam.accessType = 1;
     localMiniMsgUserParam.filterMsgType = 1;
     localMiniMsgUserParam.requestCode = 200;
-    if (this.mSwiftTitleUI.a() != null)
+    if (this.mSwiftTitleUI.getMiniViewLayout() != null)
     {
-      localMiniMsgUserParam.entryView = this.mSwiftTitleUI.a();
-      localMiniMsgUserParam.unreadView = ((TextView)this.mSwiftTitleUI.a().findViewById(2131371183));
+      localMiniMsgUserParam.entryView = this.mSwiftTitleUI.getMiniViewLayout();
+      localMiniMsgUserParam.unreadView = ((TextView)this.mSwiftTitleUI.getMiniViewLayout().findViewById(2131371152));
     }
     localMiniMsgUserParam.actionCallback = getMiniMsgActionCallback();
     return localMiniMsgUserParam;
@@ -1818,10 +1830,10 @@ public class WebViewFragment
   
   public long getRulesFromUrl()
   {
-    return this.mUIStyle.jdField_a_of_type_Long;
+    return this.mUIStyle.mRulesFromUrl;
   }
   
-  public abgu getShare()
+  public aadf getShare()
   {
     return ensureShare();
   }
@@ -1847,17 +1859,17 @@ public class WebViewFragment
   
   public int getTitleBarAlpa()
   {
-    return this.mUIStyle.jdField_d_of_type_Int;
+    return this.mUIStyle.mCurrentAlpha;
   }
   
   public int getTitleBarHeight()
   {
-    return super.getResources().getDimensionPixelSize(2131299011);
+    return super.getResources().getDimensionPixelSize(2131299076);
   }
   
   public View getTitleBarView()
   {
-    return this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup;
+    return this.mSwiftTitleUI.titleContainer;
   }
   
   public Activity getTopActivity()
@@ -1888,7 +1900,7 @@ public class WebViewFragment
   public View getVideoLoadingProgressView()
   {
     if (this.videoProgressView == null) {
-      this.videoProgressView = LayoutInflater.from(super.getActivity()).inflate(2131563083, null);
+      this.videoProgressView = LayoutInflater.from(super.getActivity()).inflate(2131562965, null);
     }
     return this.videoProgressView;
   }
@@ -1900,12 +1912,12 @@ public class WebViewFragment
   
   public void goToConversation()
   {
-    goToConversation(birz.a(this, this.intent));
+    goToConversation(bgyb.a(this, this.intent));
   }
   
   public final void goToConversation(Bundle paramBundle)
   {
-    if ((this.mUIStyle.F) && (paramBundle != null))
+    if ((this.mUIStyle.isNeedSwitchAIO) && (paramBundle != null))
     {
       paramBundle = generateGoToConversation(paramBundle);
       if (paramBundle != null) {
@@ -1918,7 +1930,7 @@ public class WebViewFragment
   
   public final void gotoConversationForH5SDK()
   {
-    gotoConversationForH5SDK(anzj.a(2131715677), 2130838356, null, SingleTaskQQBrowser.class.getName());
+    gotoConversationForH5SDK(amtj.a(2131715911), 2130838381, null, SingleTaskQQBrowser.class.getName());
   }
   
   public final void gotoConversationForH5SDK(String paramString1, int paramInt, String paramString2, String paramString3)
@@ -1929,12 +1941,12 @@ public class WebViewFragment
       QLog.e("WebLog_WebViewFragment", 1, "WebViewSwitchAio gotoConversationForH5SDK call from normal activity, ignore.");
       return;
     }
-    Bundle localBundle1 = asev.a("ipc_qqbrowser_to_conversation", "", 0, null);
+    Bundle localBundle1 = aqyt.a("ipc_qqbrowser_to_conversation", "", 0, null);
     localBundle1.putInt("banner_msg", 1134049);
     Bundle localBundle2 = new Bundle();
     String str = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
-      str = anzj.a(2131715672);
+      str = amtj.a(2131715906);
     }
     localBundle2.putString("tips", str);
     localBundle2.putString("iconURL", paramString2);
@@ -1944,7 +1956,7 @@ public class WebViewFragment
     localBundle2.putString("activity", paramString3);
     localBundle2.putInt("flags", 335544320);
     localBundle1.putBundle("barInfo", localBundle2);
-    asjw.a().b(localBundle1);
+    ardu.a().b(localBundle1);
     paramString1 = new Intent();
     paramString1.setClass(getActivity(), SplashActivity.class);
     paramString1.setFlags(335544320);
@@ -1963,9 +1975,9 @@ public class WebViewFragment
   
   public void handlePreloadCallback(int paramInt, String paramString)
   {
-    birb localbirb = (birb)this.mComponentsProvider.a(16);
-    if (localbirb != null) {
-      localbirb.a(paramInt, paramString);
+    bgxh localbgxh = (bgxh)this.mComponentsProvider.a(16);
+    if (localbgxh != null) {
+      localbgxh.a(paramInt, paramString);
     }
   }
   
@@ -1973,14 +1985,14 @@ public class WebViewFragment
   {
     if ("handleImage".equals(paramString))
     {
-      localObject = (biqa)this.mComponentsProvider.a(8);
+      localObject = (bgwg)this.mComponentsProvider.a(8);
       if (localObject != null) {
-        return Boolean.valueOf(((biqa)localObject).a());
+        return Boolean.valueOf(((bgwg)localObject).a());
       }
     }
-    Object localObject = (birb)this.mComponentsProvider.a(16);
+    Object localObject = (bgxh)this.mComponentsProvider.a(16);
     if (localObject != null) {
-      return ((birb)localObject).a(paramString, paramBundle);
+      return ((bgxh)localObject).a(paramString, paramBundle);
     }
     return null;
   }
@@ -2094,23 +2106,23 @@ public class WebViewFragment
   
   public void initTabBarView()
   {
-    noe.a("Web_qqbrowser_createtabbar");
+    npn.a("Web_qqbrowser_createtabbar");
     Activity localActivity = getHostActivity();
     if ((localActivity instanceof QQBrowserActivity))
     {
       ((QQBrowserActivity)localActivity).h();
-      boolean bool1 = avqh.a().c();
+      boolean bool1 = audj.a().c();
       boolean bool2 = getIntent().getBooleanExtra("fromAio", false);
       if ((bool1) && (bool2)) {
-        this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.mSwiftTitleUI.rightViewImg.setVisibility(8);
       }
     }
-    noe.b("Web_qqbrowser_createtabbar");
+    npn.b("Web_qqbrowser_createtabbar");
   }
   
   public void initTitleBar(Intent paramIntent, String paramString)
   {
-    this.mUIStyleHandler.a(paramIntent, paramString);
+    this.mUIStyleHandler.initTitleBar(paramIntent, paramString);
   }
   
   protected void initWebView()
@@ -2123,9 +2135,9 @@ public class WebViewFragment
     {
       this.webView = createWebViewWrapper(null).a();
       this.webView.getView().setOnTouchListener(this);
-      this.webView.setOnLongClickListener(new bioq(this));
+      this.webView.setOnLongClickListener(new bguw(this));
       l1 = System.currentTimeMillis();
-      if ((this.mUIStyle.jdField_a_of_type_Long & 0x10000) == 0L) {
+      if ((this.mUIStyle.mRulesFromUrl & 0x10000) == 0L) {
         break label335;
       }
       i = 2;
@@ -2153,7 +2165,7 @@ public class WebViewFragment
       if (i == 0) {
         break label389;
       }
-      Bundle localBundle = birz.a();
+      Bundle localBundle = bgyb.a();
       if (localBundle != null) {
         localIX5WebViewExtension.invokeMiscMethod("setDomainsAndArgumentForImageRequest", localBundle);
       }
@@ -2196,7 +2208,7 @@ public class WebViewFragment
   
   public boolean isFullScreen()
   {
-    return this.mUIStyleHandler.jdField_a_of_type_Birj.jdField_a_of_type_Boolean;
+    return this.mUIStyleHandler.mUIStyle.isFullScreen;
   }
   
   protected boolean isNeedMiniMsg()
@@ -2206,18 +2218,18 @@ public class WebViewFragment
   
   public boolean isNotNeedLoadShareJs(String paramString)
   {
-    return ((biqq)this.mComponentsProvider.a(4)).a(paramString);
+    return ((bgww)this.mComponentsProvider.a(4)).a(paramString);
   }
   
   public boolean isTransparentTitle()
   {
-    return this.mUIStyleHandler.jdField_a_of_type_Birj.jdField_b_of_type_Boolean;
+    return this.mUIStyleHandler.mUIStyle.isTransparentTitle;
   }
   
   protected void listenKeyboardShowHide(View paramView)
   {
     if ((Build.VERSION.SDK_INT >= 11) && (paramView != null)) {
-      paramView.addOnLayoutChangeListener(new bioh(this));
+      paramView.addOnLayoutChangeListener(new bgun(this));
     }
   }
   
@@ -2268,38 +2280,38 @@ public class WebViewFragment
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if ((paramView == this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView) || (paramView == this.mSwiftTitleUI.jdField_a_of_type_ComTencentWidgetFadeIconImageView) || (paramView == this.mUIStyleHandler.jdField_a_of_type_AndroidViewView))
+      if ((paramView == this.mSwiftTitleUI.leftView) || (paramView == this.mSwiftTitleUI.leftCloseView) || (paramView == this.mUIStyleHandler.mFloatQuickBtn))
       {
         doOnBackEvent();
-        if (paramView == this.mSwiftTitleUI.jdField_a_of_type_ComTencentWidgetFadeIconImageView) {
-          bdll.a(null, "dc00898", "", "", "0X8009B1F", "0X8009B1F", 0, 0, "", "", "", "");
+        if (paramView == this.mSwiftTitleUI.leftCloseView) {
+          bcef.a(null, "dc00898", "", "", "0X8009B1F", "0X8009B1F", 0, 0, "", "", "", "");
         }
       }
       else
       {
         Object localObject;
-        if ((paramView == this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.mSwiftTitleUI.d))
+        if ((paramView == this.mSwiftTitleUI.rightViewImg) || (paramView == this.mSwiftTitleUI.rightHighLView))
         {
-          if (biqq.jdField_b_of_type_Long != -1L) {
-            biqq.jdField_b_of_type_Long = -1L;
+          if (bgww.b != -1L) {
+            bgww.b = -1L;
           }
           localObject = new Intent();
           ((Intent)localObject).setAction("SignInSbumited");
           BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject);
           if (!rightButtonCallBack())
           {
-            bjqh.a().a("", "", "", "1000", "100", "0", false);
+            bhvw.a().a("", "", "", "1000", "100", "0", false);
             showActionSheet();
           }
-          if (this.mUIStyleHandler.b != null)
+          if (this.mUIStyleHandler.mFavGuideView != null)
           {
-            localObject = this.mUIStyleHandler.b.getParent();
+            localObject = this.mUIStyleHandler.mFavGuideView.getParent();
             if ((localObject != null) && ((localObject instanceof ViewGroup))) {
-              ((ViewGroup)localObject).removeView(this.mUIStyleHandler.b);
+              ((ViewGroup)localObject).removeView(this.mUIStyleHandler.mFavGuideView);
             }
           }
         }
-        else if (paramView == this.mSwiftTitleUI.c)
+        else if (paramView == this.mSwiftTitleUI.rightViewText)
         {
           localObject = getCurrentUrl();
           if ((localObject != null) && (((String)localObject).contains("checkin/index")))
@@ -2310,33 +2322,33 @@ public class WebViewFragment
           }
           if (!rightButtonCallBack())
           {
-            if (!this.mUIStyle.l) {
+            if (!this.mUIStyle.mShowRightCloseButton) {
               break label359;
             }
             doOnBackEvent();
           }
           for (;;)
           {
-            if (this.mUIStyleHandler.b == null) {
+            if (this.mUIStyleHandler.mFavGuideView == null) {
               break label386;
             }
-            localObject = this.mUIStyleHandler.b.getParent();
+            localObject = this.mUIStyleHandler.mFavGuideView.getParent();
             if ((localObject == null) || (!(localObject instanceof ViewGroup))) {
               break;
             }
-            ((ViewGroup)localObject).removeView(this.mUIStyleHandler.b);
+            ((ViewGroup)localObject).removeView(this.mUIStyleHandler.mFavGuideView);
             break;
             label359:
-            bjqh.a().a("", "", "", "1000", "100", "0", false);
+            bhvw.a().a("", "", "", "1000", "100", "0", false);
             showActionSheet();
           }
         }
         else
         {
           label386:
-          if (paramView == this.mUIStyleHandler.jdField_a_of_type_Binl.d)
+          if (paramView == this.mUIStyleHandler.mSwiftFloatUI.d)
           {
-            if (this.mUIStyle.H)
+            if (this.mUIStyle.isFromQzoneGame)
             {
               LpReportInfo_dc02216.reportExit();
               if (getWebView() != null)
@@ -2344,51 +2356,51 @@ public class WebViewFragment
                 localObject = getWebView().getPluginEngine();
                 if ((localObject != null) && (((WebViewPluginEngine)localObject).a(getCurrentUrl(), 8589934615L, null)))
                 {
-                  this.mUIStyleHandler.jdField_a_of_type_Binl.b.setVisibility(8);
-                  this.mUIStyleHandler.jdField_a_of_type_Binl.a(this.mUIStyleHandler.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView, true);
-                  this.mUIStyleHandler.jdField_a_of_type_Binl.i.setVisibility(8);
+                  this.mUIStyleHandler.mSwiftFloatUI.b.setVisibility(8);
+                  this.mUIStyleHandler.mSwiftFloatUI.a(this.mUIStyleHandler.mSwiftFloatUI.a, true);
+                  this.mUIStyleHandler.mSwiftFloatUI.i.setVisibility(8);
                   continue;
                 }
               }
             }
-            this.mUIStyleHandler.jdField_a_of_type_Binl.b.setVisibility(8);
-            this.mUIStyleHandler.jdField_a_of_type_Binl.a(this.mUIStyleHandler.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView, true);
-            this.mUIStyleHandler.jdField_a_of_type_Binl.i.setVisibility(8);
+            this.mUIStyleHandler.mSwiftFloatUI.b.setVisibility(8);
+            this.mUIStyleHandler.mSwiftFloatUI.a(this.mUIStyleHandler.mSwiftFloatUI.a, true);
+            this.mUIStyleHandler.mSwiftFloatUI.i.setVisibility(8);
             super.getActivity().finish();
-            bdll.b(null, "P_CliOper", "BizTechReport", "", "web", "float_bar_click", 0, 1, 0, "exit", "", "", "");
+            bcef.b(null, "P_CliOper", "BizTechReport", "", "web", "float_bar_click", 0, 1, 0, "exit", "", "", "");
           }
-          else if (paramView == this.mUIStyleHandler.jdField_a_of_type_Binl.f)
+          else if (paramView == this.mUIStyleHandler.mSwiftFloatUI.f)
           {
-            if (biqq.jdField_b_of_type_Long != -1L) {
-              biqq.jdField_b_of_type_Long = -1L;
+            if (bgww.b != -1L) {
+              bgww.b = -1L;
             }
-            this.mUIStyleHandler.jdField_a_of_type_Binl.b.setVisibility(8);
-            this.mUIStyleHandler.jdField_a_of_type_Binl.a(this.mUIStyleHandler.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView, true);
-            this.mUIStyleHandler.jdField_a_of_type_Binl.i.setVisibility(8);
+            this.mUIStyleHandler.mSwiftFloatUI.b.setVisibility(8);
+            this.mUIStyleHandler.mSwiftFloatUI.a(this.mUIStyleHandler.mSwiftFloatUI.a, true);
+            this.mUIStyleHandler.mSwiftFloatUI.i.setVisibility(8);
             showActionSheet();
-            bjqh.a().a("", "", "", "1000", "100", "0", false);
-            bdll.b(null, "P_CliOper", "BizTechReport", "", "web", "float_bar_click", 0, 1, 0, "share", "", "", "");
-            if (this.mUIStyle.H) {
+            bhvw.a().a("", "", "", "1000", "100", "0", false);
+            bcef.b(null, "P_CliOper", "BizTechReport", "", "web", "float_bar_click", 0, 1, 0, "share", "", "", "");
+            if (this.mUIStyle.isFromQzoneGame) {
               LpReportInfo_dc02216.reportShare();
             }
           }
-          else if (paramView == this.mUIStyleHandler.jdField_a_of_type_Binl.h)
+          else if (paramView == this.mUIStyleHandler.mSwiftFloatUI.h)
           {
             localObject = new Intent(super.getActivity(), QQBrowserActivity.class);
             ((Intent)localObject).putExtra("key_isReadModeEnabled", true);
             ((Intent)localObject).putExtra("url", "https://h5.qzone.qq.com/wanba/index?_bid=2044&_wv=2097155");
             super.startActivity((Intent)localObject);
             super.getActivity().finish();
-            bdll.b(null, "P_CliOper", "BizTechReport", "", "web", "float_bar_click", 0, 1, 0, "mUIStyleHandler.moreGame", "https://h5.qzone.qq.com/wanba/index?_bid=2044&_wv=2097155", "", "");
+            bcef.b(null, "P_CliOper", "BizTechReport", "", "web", "float_bar_click", 0, 1, 0, "mUIStyleHandler.moreGame", "https://h5.qzone.qq.com/wanba/index?_bid=2044&_wv=2097155", "", "");
             if (QLog.isColorLevel()) {
               QLog.d("zivonchen", 2, "QQBrowserActivity 1 loadUrl = https://h5.qzone.qq.com/wanba/index?_bid=2044&_wv=2097155");
             }
           }
-          else if (paramView == this.mUIStyleHandler.jdField_a_of_type_Binl.g)
+          else if (paramView == this.mUIStyleHandler.mSwiftFloatUI.g)
           {
-            this.mUIStyleHandler.jdField_a_of_type_Binl.b.setVisibility(8);
-            this.mUIStyleHandler.jdField_a_of_type_Binl.a(this.mUIStyleHandler.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView, true);
-            this.mUIStyleHandler.jdField_a_of_type_Binl.i.setVisibility(8);
+            this.mUIStyleHandler.mSwiftFloatUI.b.setVisibility(8);
+            this.mUIStyleHandler.mSwiftFloatUI.a(this.mUIStyleHandler.mSwiftFloatUI.a, true);
+            this.mUIStyleHandler.mSwiftFloatUI.i.setVisibility(8);
             if (!TextUtils.isEmpty(getShare().v))
             {
               this.webView.callJs(getShare().v, new String[] { "" });
@@ -2396,31 +2408,31 @@ public class WebViewFragment
                 QLog.d("WebLog_WebViewFragment", 2, "call js function getShare().mOnShareHandler");
               }
             }
-            bdll.b(null, "P_CliOper", "BizTechReport", "", "web", "float_bar_click", 0, 1, 0, "senddesk", "", "", "");
-            if (this.mUIStyle.H) {
+            bcef.b(null, "P_CliOper", "BizTechReport", "", "web", "float_bar_click", 0, 1, 0, "senddesk", "", "", "");
+            if (this.mUIStyle.isFromQzoneGame) {
               LpReportInfo_dc02216.reportExit();
             }
           }
-          else if (paramView == this.mUIStyleHandler.jdField_a_of_type_Binl.e)
+          else if (paramView == this.mUIStyleHandler.mSwiftFloatUI.e)
           {
-            this.mUIStyleHandler.jdField_a_of_type_Binl.b.setVisibility(8);
-            this.mUIStyleHandler.jdField_a_of_type_Binl.a(this.mUIStyleHandler.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView, true);
-            this.mUIStyleHandler.jdField_a_of_type_Binl.i.setVisibility(8);
-            if (this.mUIStyle.G)
+            this.mUIStyleHandler.mSwiftFloatUI.b.setVisibility(8);
+            this.mUIStyleHandler.mSwiftFloatUI.a(this.mUIStyleHandler.mSwiftFloatUI.a, true);
+            this.mUIStyleHandler.mSwiftFloatUI.i.setVisibility(8);
+            if (this.mUIStyle.isNeedSwitchAIOForH5Game)
             {
               if (TextUtils.isEmpty(this.webView.getTitle())) {}
-              for (localObject = anzj.a(2131715678);; localObject = this.webView.getTitle())
+              for (localObject = amtj.a(2131715912);; localObject = this.webView.getTitle())
               {
-                gotoConversationForH5SDK(String.format(anzj.a(2131715673), new Object[] { localObject }), 2130838356, null, SingleTaskQQBrowser.class.getName());
-                bdll.b(null, "P_CliOper", "BizTechReport", "", "web", "float_bar_click", 0, 1, 0, "fold", "", "", "");
+                gotoConversationForH5SDK(String.format(amtj.a(2131715907), new Object[] { localObject }), 2130838381, null, SingleTaskQQBrowser.class.getName());
+                bcef.b(null, "P_CliOper", "BizTechReport", "", "web", "float_bar_click", 0, 1, 0, "fold", "", "", "");
                 break;
               }
             }
-            if (this.mUIStyle.F) {
+            if (this.mUIStyle.isNeedSwitchAIO) {
               getHostFragment().goToConversation();
             }
           }
-          else if (paramView == this.mUIStyleHandler.jdField_a_of_type_AndroidWidgetTextView)
+          else if (paramView == this.mUIStyleHandler.mTvShareMusic)
           {
             localObject = new HashMap();
             ((Map)localObject).put("intent", this.intent);
@@ -2434,13 +2446,13 @@ public class WebViewFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.mUIStyleHandler = ((birg)this.mComponentsProvider.a(2));
-    this.mUIStyleHandler.c();
-    this.mUIStyle = this.mUIStyleHandler.jdField_a_of_type_Birj;
-    this.mSwiftTitleUI = this.mUIStyleHandler.jdField_a_of_type_Binq;
-    this.mSetting = ((biqp)this.mComponentsProvider.a(-1));
-    this.mStatistics = ((biqx)this.mComponentsProvider.a(-2));
-    this.mUIStyleHandler.a(this);
+    this.mUIStyleHandler = ((SwiftBrowserUIStyleHandler)this.mComponentsProvider.a(2));
+    this.mUIStyleHandler.createUI();
+    this.mUIStyle = this.mUIStyleHandler.mUIStyle;
+    this.mSwiftTitleUI = this.mUIStyleHandler.mSwiftTitleUI;
+    this.mSetting = ((bgwv)this.mComponentsProvider.a(-1));
+    this.mStatistics = ((bgxd)this.mComponentsProvider.a(-2));
+    this.mUIStyleHandler.setOnClickListener(this);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -2486,11 +2498,11 @@ public class WebViewFragment
     {
       Bundle localBundle = new Bundle();
       localBundle.putLong("Gif_msg_uniseq_key", ((Long)localObject).longValue());
-      localObject = asev.a("close_annimate", null, -1, localBundle);
-      asjw.a().a((Bundle)localObject);
+      localObject = aqyt.a("close_annimate", null, -1, localBundle);
+      ardu.a().a((Bundle)localObject);
     }
     if (this.mIpcObserver != null) {
-      asjw.a().b(this.mIpcObserver);
+      ardu.a().b(this.mIpcObserver);
     }
     if (this.webView != null) {}
     for (localObject = this.webView.getPluginEngine();; localObject = null)
@@ -2504,20 +2516,20 @@ public class WebViewFragment
       destroyWebView();
       if (QQBrowserActivity.jdField_d_of_type_Int == 0)
       {
-        asjw.a().a().doUnbindService(BaseApplicationImpl.getApplication());
-        biqz.jdField_d_of_type_Int = -1;
+        ardu.a().a().doUnbindService(BaseApplicationImpl.getApplication());
+        bgxf.jdField_d_of_type_Int = -1;
       }
       if (this.share != null) {
         this.share.c();
       }
-      localObject = bdmv.a(getClass(), hashCode());
+      localObject = bcfg.a(getClass(), hashCode());
       if (localObject != null) {
-        bdll.b(null, "CliOper", "", "", ((bdmw)localObject).jdField_a_of_type_JavaLangString, ((bdmw)localObject).jdField_a_of_type_JavaLangString, ((bdmw)localObject).jdField_a_of_type_Int, 0, Long.toString(SystemClock.elapsedRealtime() - ((bdmw)localObject).jdField_b_of_type_Long), "", "", "");
+        bcef.b(null, "CliOper", "", "", ((bcfh)localObject).jdField_a_of_type_JavaLangString, ((bcfh)localObject).jdField_a_of_type_JavaLangString, ((bcfh)localObject).jdField_a_of_type_Int, 0, Long.toString(SystemClock.elapsedRealtime() - ((bcfh)localObject).b), "", "", "");
       }
-      birp.a().a(2);
-      this.mSwiftTitleUI.i();
-      agdz.d(super.getActivity().getIntent());
-      bmzn.a().a(this.mUrl, 133, System.currentTimeMillis() - this.mStatistics.T, "0", this.mStatistics.e, this.mStatistics.g);
+      bgxr.a().a(2);
+      this.mSwiftTitleUI.recycle();
+      aewt.d(super.getActivity().getIntent());
+      MobileReportManager.getInstance().reportH5Trace(this.mUrl, 133, System.currentTimeMillis() - this.mStatistics.T, "0", this.mStatistics.e, this.mStatistics.g);
       super.onDestroy();
       return;
     }
@@ -2562,7 +2574,7 @@ public class WebViewFragment
     boolean bool2 = this.authConfig.a(str, "publicAccount.getLocation");
     paramString = "";
     if (this.webView != null) {
-      paramString = noe.a(this.webView.getUrl(), 2);
+      paramString = npn.a(this.webView.getUrl(), 2);
     }
     boolean bool3 = PublicAccountJavascriptInterface.getLocationPermissionGrant(this.uin, paramString);
     if ((bool3) && (bool2)) {}
@@ -2602,7 +2614,7 @@ public class WebViewFragment
     {
       this.customContainer.removeAllViews();
       label56:
-      if (!this.mUIStyle.A) {
+      if (!this.mUIStyle.mIsDisableFullScreen) {
         super.getActivity().getWindow().setFlags(this.mOriginFullscreenFlag, 1024);
       }
       super.getActivity().setRequestedOrientation(this.mOriginOrientation);
@@ -2627,8 +2639,8 @@ public class WebViewFragment
   {
     try
     {
-      if ((biqx.x) && (this.mStatistics != null) && (this.mStatistics.jdField_c_of_type_Long > 0L)) {
-        bdll.b(null, "dc00899", "WV_Analysis", "", "memory_consumption", biqx.a(this.mUrl), this.mStatistics.e, 0, "", this.mStatistics.g, this.mStatistics.f, "");
+      if ((bgxd.x) && (this.mStatistics != null) && (this.mStatistics.jdField_c_of_type_Long > 0L)) {
+        bcef.b(null, "dc00899", "WV_Analysis", "", "memory_consumption", bgxd.a(this.mUrl), this.mStatistics.e, 0, "", this.mStatistics.g, this.mStatistics.f, "");
       }
       label73:
       super.onLowMemory();
@@ -2647,16 +2659,16 @@ public class WebViewFragment
     }
     this.mStatistics.c("state_page_finished");
     ensureCreateLoopFinished();
-    if ((!"about:blank".equalsIgnoreCase(paramString)) && (this.mStatistics.jdField_a_of_type_Biqz.jdField_a_of_type_Int == 2))
+    if ((!"about:blank".equalsIgnoreCase(paramString)) && (this.mStatistics.jdField_a_of_type_Bgxf.jdField_a_of_type_Int == 2))
     {
-      this.mStatistics.jdField_a_of_type_Biqz.jdField_a_of_type_Int = 8;
-      this.mStatistics.jdField_a_of_type_Biqz.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.mStatistics.jdField_a_of_type_Bgxf.jdField_a_of_type_Int = 8;
+      this.mStatistics.jdField_a_of_type_Bgxf.jdField_a_of_type_Long = System.currentTimeMillis();
     }
     this.isArticalChannelReported = true;
     this.mArticalChannelId = 100;
-    Object localObject = (biqx)this.mComponentsProvider.a(-2);
+    Object localObject = (bgxd)this.mComponentsProvider.a(-2);
     if ((localObject != null) && (this.sonicClient != null)) {
-      ((biqx)localObject).jdField_a_of_type_Int = this.sonicClient.getSession().getFinalResultCode();
+      ((bgxd)localObject).jdField_a_of_type_Int = this.sonicClient.getSession().getFinalResultCode();
     }
     localObject = new Bundle();
     ((Bundle)localObject).putString("url", paramString);
@@ -2666,7 +2678,7 @@ public class WebViewFragment
       this.mStatistics.jdField_k_of_type_Boolean = false;
       this.redirectCookie = false;
       ensureShare();
-      birp.a().a(new birt(1));
+      bgxr.a().a(new bgxv(1));
       if (this.intent.getBooleanExtra("banner_fromBanner", false))
       {
         localObject = this.intent.getBundleExtra("banner_webview_extra");
@@ -2679,11 +2691,11 @@ public class WebViewFragment
         }
       }
       this.mStatistics.T = System.currentTimeMillis();
-      if (biqx.x) {
+      if (bgxd.x) {
         this.mStatistics.a("web_loaded_url", System.currentTimeMillis() - this.mStatistics.jdField_c_of_type_Long, "0");
       }
-      bmzn.a().a(paramString, 131, this.mStatistics.T - this.mStatistics.Q, "0", this.mStatistics.e, this.mStatistics.g);
-      bmzn.a().a(paramString, 129, this.mStatistics.T - this.mStatistics.jdField_c_of_type_Long, "0", this.mStatistics.e, this.mStatistics.g);
+      MobileReportManager.getInstance().reportH5Trace(paramString, 131, this.mStatistics.T - this.mStatistics.Q, "0", this.mStatistics.e, this.mStatistics.g);
+      MobileReportManager.getInstance().reportH5Trace(paramString, 129, this.mStatistics.T - this.mStatistics.jdField_c_of_type_Long, "0", this.mStatistics.e, this.mStatistics.g);
     }
     if (this.sonicClient != null) {
       this.sonicClient.pageFinish(paramString);
@@ -2696,7 +2708,7 @@ public class WebViewFragment
       ((QQBrowserActivity)localObject).a(paramWebView, paramString);
     }
     if ((paramWebView instanceof CustomWebView)) {
-      oej.a((CustomWebView)paramWebView);
+      ofw.a((CustomWebView)paramWebView);
     }
     this.mStatistics.c("state_final");
   }
@@ -2712,8 +2724,8 @@ public class WebViewFragment
       paramWebView.putString("url", paramString);
       this.mComponentsProvider.a(6, paramWebView);
     } while (!this.mStatistics.j);
-    bdll.b(null, "P_CliOper", "BizTechReport", "", "web", "float_bar_fv", 0, 1, 0, this.mUIStyle.jdField_c_of_type_Long + "", this.mUrl, nnr.a() + "", this.uin);
-    if (biqx.x) {
+    bcef.b(null, "P_CliOper", "BizTechReport", "", "web", "float_bar_fv", 0, 1, 0, this.mUIStyle.mFloatBarRulesFromUrl + "", this.mUrl, HttpUtil.getNetWorkType() + "", this.uin);
+    if (bgxd.x) {
       this.mStatistics.a("web_start_load_url", System.currentTimeMillis() - this.mStatistics.jdField_c_of_type_Long, "0");
     }
     this.mStatistics.j = false;
@@ -2733,8 +2745,8 @@ public class WebViewFragment
     }
     this.mComponentsProvider.a(1, null);
     dispatchPluginEvent(8589934597L, null);
-    if ((this.isFromQzone) && (bdgb.c())) {
-      bngm.a().a();
+    if ((this.isFromQzone) && (bbyp.c())) {
+      QzoneOnlineTimeCollectRptService.getInstance().closeTrace();
     }
     super.onPause();
   }
@@ -2746,26 +2758,26 @@ public class WebViewFragment
       this.mNightMode = ThemeUtil.isInNightMode(this.mApp);
       dispatchPluginEvent(8589934604L, null);
     }
-    if ((this.mSystemBarComp != null) && (!this.mUIStyle.i))
+    if ((this.mSystemBarComp != null) && (!this.mUIStyle.mUsingCustomTitleBarColor))
     {
       if (ThemeUtil.isDefaultOrDIYTheme(false)) {
-        this.mSystemBarComp.setBackgroundResource(2130850100);
+        this.mSystemBarComp.setBackgroundResource(2130850017);
       }
     }
     else {
       return;
     }
-    this.mSystemBarComp.setBackgroundColor(getResources().getColor(2131167048));
-    bdgb.a(false, getResources().getColor(2131167048), getHostActivity().getWindow());
+    this.mSystemBarComp.setBackgroundColor(getResources().getColor(2131167070));
+    bbyp.a(false, getResources().getColor(2131167070), getHostActivity().getWindow());
   }
   
   public void onProgressChanged(WebView paramWebView, int paramInt)
   {
-    if ((this.mUIStyleHandler.jdField_a_of_type_Bjef != null) && (this.mUIStyleHandler.jdField_a_of_type_Bjef.b() == 0)) {
-      this.mUIStyleHandler.jdField_a_of_type_Bjef.a((byte)1);
+    if ((this.mUIStyleHandler.mProgressBarController != null) && (this.mUIStyleHandler.mProgressBarController.b() == 0)) {
+      this.mUIStyleHandler.mProgressBarController.a((byte)1);
     }
     if (paramInt == 100) {
-      this.mUIStyleHandler.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.mUIStyleHandler.waitting.setVisibility(8);
     }
   }
   
@@ -2775,35 +2787,35 @@ public class WebViewFragment
       return;
     }
     ensureCreateLoopFinished();
-    this.mUIStyleHandler.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    QLog.e("WebLog_WebViewFragment", 1, "errorCode=" + paramInt + "descrip=" + paramString1 + "failingUrl" + noe.b(paramString2, new String[0]));
+    this.mUIStyleHandler.waitting.setVisibility(8);
+    QLog.e("WebLog_WebViewFragment", 1, "errorCode=" + paramInt + "descrip=" + paramString1 + "failingUrl" + npn.b(paramString2, new String[0]));
     this.mStatistics.a(this.webView, paramInt, paramString1, paramString2);
-    if (biqx.x) {
+    if (bgxd.x) {
       this.mStatistics.a("web_loaded_url_err", System.currentTimeMillis() - this.mStatistics.jdField_c_of_type_Long, String.valueOf(paramInt));
     }
-    bmzn.a().a(this.mUrl, 132, System.currentTimeMillis() - this.mStatistics.jdField_c_of_type_Long, String.valueOf(paramInt), this.mStatistics.e, this.mStatistics.g);
+    MobileReportManager.getInstance().reportH5Trace(this.mUrl, 132, System.currentTimeMillis() - this.mStatistics.jdField_c_of_type_Long, String.valueOf(paramInt), this.mStatistics.e, this.mStatistics.g);
   }
   
   public void onReceivedSslError(WebView paramWebView, SslError paramSslError)
   {
-    if (biqx.x) {
+    if (bgxd.x) {
       this.mStatistics.a("web_loaded_url_err", System.currentTimeMillis() - this.mStatistics.jdField_c_of_type_Long, String.valueOf(paramSslError.getPrimaryError()));
     }
-    bmzn.a().a(this.mUrl, 132, System.currentTimeMillis() - this.mStatistics.jdField_c_of_type_Long, String.valueOf(paramSslError.getPrimaryError()), this.mStatistics.e, this.mStatistics.g);
+    MobileReportManager.getInstance().reportH5Trace(this.mUrl, 132, System.currentTimeMillis() - this.mStatistics.jdField_c_of_type_Long, String.valueOf(paramSslError.getPrimaryError()), this.mStatistics.e, this.mStatistics.g);
   }
   
   public void onReceivedTitle(WebView paramWebView, String paramString)
   {
     if ((this.isDestroyed) || (this.webView == null)) {}
-    while ((!TextUtils.isEmpty(this.webViewTitle)) || ((this.mUIStyle.jdField_b_of_type_Long & 0x8) > 0L) || (bish.a(paramString)) || (paramString == null)) {
+    while ((!TextUtils.isEmpty(this.webViewTitle)) || ((this.mUIStyle.mWWVRulesFromUrl & 0x8) > 0L) || (bgyj.a(paramString)) || (paramString == null)) {
       return;
     }
-    this.mSwiftTitleUI.a(paramWebView, paramString, this.isDelaySetTitle);
+    this.mSwiftTitleUI.onReceivedTitle(paramWebView, paramString, this.isDelaySetTitle);
   }
   
   public void onResume()
   {
-    noe.a("Web_qqbrowser_doonresume");
+    npn.a("Web_qqbrowser_doonresume");
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewFragment", 2, "onResume");
     }
@@ -2840,15 +2852,15 @@ public class WebViewFragment
         dispatchPluginEvent(2L, null);
       }
       ThreadManager.executeOnSubThread(new WebViewFragment.4(this, (Activity)localObject));
-      if ((this.isFromQzone) && (bdgb.c())) {
-        bngm.a().b(1);
+      if ((this.isFromQzone) && (bbyp.c())) {
+        QzoneOnlineTimeCollectRptService.getInstance().beginTrace(1);
       }
-      if (this.mUIStyleHandler.jdField_a_of_type_Birj.jdField_a_of_type_Boolean)
+      if (this.mUIStyleHandler.mUIStyle.isFullScreen)
       {
         hideVirtualNavBar();
         changeFullScreenCutoutMode();
       }
-      noe.b("Web_qqbrowser_doonresume");
+      npn.b("Web_qqbrowser_doonresume");
       super.onResume();
       if (this.mMiniMsgUser != null) {
         this.mMiniMsgUser.onForeground();
@@ -2870,14 +2882,14 @@ public class WebViewFragment
   public boolean onShowFileChooser(ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
   {
     if (this.mFileChooserHelper == null) {
-      this.mFileChooserHelper = new nnj();
+      this.mFileChooserHelper = new noy();
     }
     return this.mFileChooserHelper.a(super.getActivity(), 0, paramValueCallback, paramFileChooserParams);
   }
   
   public void onStop()
   {
-    if ((this.mUIStyle.jdField_a_of_type_Long & 0x2000000) != 0L)
+    if ((this.mUIStyle.mRulesFromUrl & 0x2000000) != 0L)
     {
       if (QLog.isColorLevel()) {
         QLog.d("WebLog_WebViewFragment", 2, "close on hide by wv param");
@@ -2888,8 +2900,8 @@ public class WebViewFragment
       this.mMiniMsgUser.onBackground();
     }
     super.onStop();
-    biqx.c();
-    if ((this.mSwiftTitleUI != null) && (this.mSwiftTitleUI.a() != null) && (this.mSwiftTitleUI.c())) {
+    bgxd.b();
+    if ((this.mSwiftTitleUI != null) && (this.mSwiftTitleUI.getMiniViewLayout() != null) && (this.mSwiftTitleUI.isConversationBtnVisible())) {
       MiniMsgIPCClient.getInstance().clearBusiness(this.mBusiID);
     }
   }
@@ -2899,7 +2911,7 @@ public class WebViewFragment
     if ((paramMotionEvent.getAction() & 0xFF) == 0)
     {
       this.mLastTouchTime = System.currentTimeMillis();
-      if (paramView.getId() == 2131366309)
+      if (paramView.getId() == 2131366336)
       {
         paramMotionEvent = paramView.getParent();
         if ((paramMotionEvent != null) && ((paramMotionEvent instanceof ViewGroup))) {
@@ -2923,7 +2935,7 @@ public class WebViewFragment
   
   public void onWebViewClientImplPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    if ((!this.isArticalChannelReported) && (tzq.a(paramString, this.mArticalChannelId, this.mArticalChannelExtralInfo))) {
+    if ((!this.isArticalChannelReported) && (ugf.a(paramString, this.mArticalChannelId, this.mArticalChannelExtralInfo))) {
       this.isArticalChannelReported = true;
     }
   }
@@ -2931,7 +2943,7 @@ public class WebViewFragment
   public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
   {
     if (this.mFileChooserHelper == null) {
-      this.mFileChooserHelper = new nnj();
+      this.mFileChooserHelper = new noy();
     }
     this.mFileChooserHelper.a(super.getActivity(), 0, paramValueCallback, paramString1, paramString2);
   }
@@ -2953,16 +2965,16 @@ public class WebViewFragment
   void preInitData()
   {
     this.mUrl = getUrlFromIntent();
-    this.mUIStyleHandler.a(this.mUrl);
-    if (this.mUIStyle.jdField_a_of_type_Long != 4L)
+    this.mUIStyleHandler.parseUrlParam(this.mUrl);
+    if (this.mUIStyle.mRulesFromUrl != 4L)
     {
-      if ((this.mUIStyle.jdField_a_of_type_Long & 0x2) != 0L) {
+      if ((this.mUIStyle.mRulesFromUrl & 0x2) != 0L) {
         this.intent.putExtra("hide_more_button", true);
       }
-      if ((this.mUIStyle.jdField_a_of_type_Long & 1L) != 0L) {
+      if ((this.mUIStyle.mRulesFromUrl & 1L) != 0L) {
         this.intent.putExtra("webStyle", "noBottomBar");
       }
-      if ((this.mUIStyle.jdField_a_of_type_Long & 0x100000) > 0L) {
+      if ((this.mUIStyle.mRulesFromUrl & 0x100000) > 0L) {
         this.intent.putExtra("ignoreLoginWeb", true);
       }
     }
@@ -2975,26 +2987,26 @@ public class WebViewFragment
   
   public void resetTitleBarTextColor()
   {
-    this.mSwiftTitleUI.g();
+    this.mSwiftTitleUI.resetTitleBarTextColor();
   }
   
   protected boolean rightButtonCallBack()
   {
     if (this.webView != null)
     {
-      if ((this.mSwiftTitleUI.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener != null) && (this.mSwiftTitleUI.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener.jdField_a_of_type_Boolean))
+      if ((this.mSwiftTitleUI.mRightButtonListener != null) && (this.mSwiftTitleUI.mRightButtonListener.a))
       {
-        this.webView.callJs4OpenApi(this.mSwiftTitleUI.jdField_a_of_type_ComTencentMobileqqWebviewSwiftJsBridgeListener, 0, new String[] { "" });
+        this.webView.callJs4OpenApi(this.mSwiftTitleUI.mRightButtonListener, 0, new String[] { "" });
         return true;
       }
-      if (!TextUtils.isEmpty(this.mSwiftTitleUI.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(this.mSwiftTitleUI.mRightButtonCallback))
       {
-        this.webView.callJs(this.mSwiftTitleUI.jdField_a_of_type_JavaLangString, new String[] { "" });
+        this.webView.callJs(this.mSwiftTitleUI.mRightButtonCallback, new String[] { "" });
         return true;
       }
-      if (this.mSwiftTitleUI.jdField_a_of_type_Admy != null)
+      if (this.mSwiftTitleUI.mRightButtonCallback2 != null)
       {
-        adqf.b(this.mSwiftTitleUI.jdField_a_of_type_Admy, adna.jdField_a_of_type_OrgJsonJSONObject);
+        acmy.b(this.mSwiftTitleUI.mRightButtonCallback2, acjt.a);
         return true;
       }
     }
@@ -3022,11 +3034,11 @@ public class WebViewFragment
         if (this.mSystemBarComp == null)
         {
           this.mSystemBarComp = new View(super.getActivity());
-          if (this.mUIStyle.jdField_a_of_type_ComTencentMobileqqWebviewWebViewTitleStyle == null) {
+          if (this.mUIStyle.mTitleStyle == null) {
             break label216;
           }
-          this.mSystemBarComp.setBackgroundColor(this.mUIStyle.jdField_a_of_type_ComTencentMobileqqWebviewWebViewTitleStyle.b);
-          bdgb.a(true, this.mUIStyle.jdField_a_of_type_ComTencentMobileqqWebviewWebViewTitleStyle.b, getHostActivity().getWindow());
+          this.mSystemBarComp.setBackgroundColor(this.mUIStyle.mTitleStyle.statusBarColor);
+          bbyp.a(true, this.mUIStyle.mTitleStyle.statusBarColor, getHostActivity().getWindow());
         }
       }
     }
@@ -3037,26 +3049,26 @@ public class WebViewFragment
         if (paramBoolean)
         {
           localObject = new View(super.getActivity());
-          ((View)localObject).setId(2131365074);
+          ((View)localObject).setId(2131365102);
           ((View)localObject).setBackgroundColor(-16777216);
           RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication()));
           localLayoutParams.addRule(10, -1);
-          this.mUIStyleHandler.d.addView((View)localObject, localLayoutParams);
+          this.mUIStyleHandler.mRootView.addView((View)localObject, localLayoutParams);
         }
         Object localObject = new RelativeLayout.LayoutParams(-1, ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication()));
         ((RelativeLayout.LayoutParams)localObject).addRule(10, -1);
-        this.mUIStyleHandler.d.addView(this.mSystemBarComp, (ViewGroup.LayoutParams)localObject);
+        this.mUIStyleHandler.mRootView.addView(this.mSystemBarComp, (ViewGroup.LayoutParams)localObject);
       }
       return;
       label216:
       if (ThemeUtil.isDefaultOrDIYTheme(false))
       {
-        this.mSystemBarComp.setBackgroundResource(2130850100);
+        this.mSystemBarComp.setBackgroundResource(2130850017);
       }
       else
       {
-        this.mSystemBarComp.setBackgroundColor(getResources().getColor(2131167048));
-        bdgb.a(false, getResources().getColor(2131167048), getHostActivity().getWindow());
+        this.mSystemBarComp.setBackgroundColor(getResources().getColor(2131167070));
+        bbyp.a(false, getResources().getColor(2131167070), getHostActivity().getWindow());
       }
     }
   }
@@ -3070,20 +3082,20 @@ public class WebViewFragment
   {
     int i;
     View localView;
-    if (this.mSwiftTitleUI.a() != null)
+    if (this.mSwiftTitleUI.getMiniViewLayout() != null)
     {
       if (!paramBoolean) {
         break label87;
       }
       i = 0;
-      this.mSwiftTitleUI.a().setVisibility(i);
-      localView = this.mSwiftTitleUI.a().findViewById(2131371182);
+      this.mSwiftTitleUI.getMiniViewLayout().setVisibility(i);
+      localView = this.mSwiftTitleUI.getMiniViewLayout().findViewById(2131371151);
       if (this.mStyle != null)
       {
         if (!this.mStyle.equals("white")) {
           break label93;
         }
-        localView.setBackgroundResource(2130841027);
+        localView.setBackgroundResource(2130841063);
       }
     }
     for (;;)
@@ -3097,7 +3109,7 @@ public class WebViewFragment
       break;
       label93:
       if (this.mStyle.equals("black")) {
-        localView.setBackgroundResource(2130841026);
+        localView.setBackgroundResource(2130841062);
       }
     }
   }
@@ -3107,23 +3119,23 @@ public class WebViewFragment
     this.mNeedStatusTrans = paramBoolean;
   }
   
-  public void setRightButton(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, admy paramadmy)
+  public void setRightButton(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, acjr paramacjr)
   {
-    this.mSwiftTitleUI.a(paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramInt2, null, paramOnClickListener, paramadmy);
-    ((biqq)this.mComponentsProvider.a(4)).d();
-    this.mUIStyleHandler.l();
+    this.mSwiftTitleUI.setRightButton(paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramInt2, null, paramOnClickListener, paramacjr);
+    ((bgww)this.mComponentsProvider.a(4)).d();
+    this.mUIStyleHandler.updateScreenOrientation();
   }
   
   public void setRightButton(boolean paramBoolean)
   {
-    this.mSwiftTitleUI.b(paramBoolean);
-    ((biqq)this.mComponentsProvider.a(4)).d();
-    this.mUIStyleHandler.l();
+    this.mSwiftTitleUI.setRightButton(paramBoolean);
+    ((bgww)this.mComponentsProvider.a(4)).d();
+    this.mUIStyleHandler.updateScreenOrientation();
   }
   
   public void setRulesFromUrl(long paramLong)
   {
-    this.mUIStyle.jdField_a_of_type_Long = paramLong;
+    this.mUIStyle.mRulesFromUrl = paramLong;
   }
   
   public boolean setShareUrl(String paramString)
@@ -3138,28 +3150,28 @@ public class WebViewFragment
   
   public void setTitle(String paramString)
   {
-    this.mSwiftTitleUI.c(paramString);
+    this.mSwiftTitleUI.setTitle(paramString);
   }
   
   public void setTitleBarButtonColor(int paramInt)
   {
-    this.mSwiftTitleUI.f(paramInt);
+    this.mSwiftTitleUI.setTitleBarButtonColor(paramInt);
   }
   
   public void setTitleBarTextColor(int paramInt)
   {
-    this.mSwiftTitleUI.d(paramInt);
+    this.mSwiftTitleUI.setTitleBarTextColor(paramInt);
   }
   
   public void setUsingCustomTitleBarColor(boolean paramBoolean)
   {
-    this.mUIStyle.i = paramBoolean;
+    this.mUIStyle.mUsingCustomTitleBarColor = paramBoolean;
   }
   
   public void setWarnToastVisible(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if ((this.mUIStyleHandler != null) && (this.mUIStyleHandler.jdField_a_of_type_Binq != null)) {
-      this.mUIStyleHandler.jdField_a_of_type_Binq.a(paramBoolean, paramInt1, paramInt2);
+    if ((this.mUIStyleHandler != null) && (this.mUIStyleHandler.mSwiftTitleUI != null)) {
+      this.mUIStyleHandler.mSwiftTitleUI.setWarnToastVisible(paramBoolean, paramInt1, paramInt2);
     }
   }
   
@@ -3182,20 +3194,20 @@ public class WebViewFragment
       if ((paramString.startsWith("http://")) || (paramString.startsWith("https://")))
       {
         this.mUrl = paramString;
-        localObject = (biqq)this.mComponentsProvider.a(4);
+        localObject = (bgww)this.mComponentsProvider.a(4);
         if (localObject != null) {
-          ((biqq)localObject).a(this.mUrl);
+          ((bgww)localObject).a(this.mUrl);
         }
-        localObject = (biql)this.mComponentsProvider.a(64);
+        localObject = (bgwr)this.mComponentsProvider.a(64);
         if (localObject != null) {
-          ((biql)localObject).a(this.mUrl);
+          ((bgwr)localObject).a(this.mUrl);
         }
       }
     }
     if (super.getActivity().isFinishing()) {
-      this.mUIStyleHandler.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      this.mUIStyleHandler.waitting.setVisibility(8);
     }
-    Object localObject = birz.b(paramString);
+    Object localObject = bgyb.b(paramString);
     if (("http".equals(localObject)) || ("https".equals(localObject)))
     {
       paramWebView = paramWebView.getHitTestResult();
@@ -3214,9 +3226,9 @@ public class WebViewFragment
   
   public void showActionSheet()
   {
-    biqq localbiqq = (biqq)this.mComponentsProvider.a(4);
-    if (localbiqq != null) {
-      localbiqq.a(ensureShare(), this.mUIStyle.jdField_a_of_type_Long);
+    bgww localbgww = (bgww)this.mComponentsProvider.a(4);
+    if (localbgww != null) {
+      localbgww.a(ensureShare(), this.mUIStyle.mRulesFromUrl);
     }
   }
   
@@ -3238,7 +3250,7 @@ public class WebViewFragment
       this.customContainer.setBackgroundColor(-16777216);
       ((ViewGroup)super.getActivity().getWindow().getDecorView()).addView(this.customContainer, new ViewGroup.LayoutParams(-1, -1));
     }
-    if (!this.mUIStyle.A) {
+    if (!this.mUIStyle.mIsDisableFullScreen) {
       super.getActivity().getWindow().setFlags(1024, 1024);
     }
     super.getActivity().setRequestedOrientation(paramInt);
@@ -3253,13 +3265,13 @@ public class WebViewFragment
   public boolean showPreview()
   {
     boolean bool1 = false;
-    noe.a("Web_qqbrowser_ShowPreview");
+    npn.a("Web_qqbrowser_ShowPreview");
     long l = System.nanoTime();
-    this.mUIStyleHandler.a(this.intent);
-    this.mUIStyleHandler.b(this.intent);
-    this.contentView.a(this.mUIStyleHandler.jdField_a_of_type_Birj.D);
+    this.mUIStyleHandler.initUIStyle(this.intent);
+    this.mUIStyleHandler.initTitleStyle(this.intent);
+    this.contentView.a(this.mUIStyleHandler.mUIStyle.mIsDisableRefreshView);
     doWebsoShowScreenshot();
-    if (this.mUIStyleHandler.jdField_a_of_type_Birj.jdField_a_of_type_Boolean)
+    if (this.mUIStyleHandler.mUIStyle.isFullScreen)
     {
       super.getActivity().getWindow().setFlags(1024, 1024);
       hideVirtualNavBar();
@@ -3267,19 +3279,19 @@ public class WebViewFragment
       if (QLog.isColorLevel()) {
         QLog.d("WebLog_WebViewFragment", 2, "init view 1, cost = " + (System.nanoTime() - l) / 1000000L);
       }
-      this.mUIStyleHandler.jdField_c_of_type_Boolean = true;
-      this.mUIStyleHandler.jdField_a_of_type_AndroidWidgetProgressBar = this.contentView.jdField_a_of_type_AndroidWidgetProgressBar;
+      this.mUIStyleHandler.mIsShownPreview = true;
+      this.mUIStyleHandler.waitting = this.contentView.jdField_a_of_type_AndroidWidgetProgressBar;
       this.contentView.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-      this.mUIStyleHandler.a(this.mUrl);
-      this.mUIStyleHandler.e();
-      noe.b("Web_qqbrowser_ShowPreview");
+      this.mUIStyleHandler.needTitlebarTransparent(this.mUrl);
+      this.mUIStyleHandler.tryMoveWebViewToTitlebar();
+      npn.b("Web_qqbrowser_ShowPreview");
       return true;
     }
-    this.mUIStyleHandler.d = this.contentView;
-    this.mSwiftTitleUI.a(this.intent, this);
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(this.titleTouchListener);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    float f = mvd.a(BaseApplicationImpl.getApplication(), 50.0F);
+    this.mUIStyleHandler.mRootView = this.contentView;
+    this.mSwiftTitleUI.init(this.intent, this);
+    this.mSwiftTitleUI.titleContainer.setOnTouchListener(this.titleTouchListener);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.mSwiftTitleUI.titleContainer.getLayoutParams();
+    float f = mum.a(BaseApplicationImpl.getApplication(), 50.0F);
     int i;
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
@@ -3288,71 +3300,62 @@ public class WebViewFragment
     }
     for (;;)
     {
-      for (;;)
+      localLayoutParams.height = ((int)f);
+      this.mUIStyle.isNeedSetBrowserTipsPadding = true;
+      int j = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131296654);
+      if ((this.mUIStyleHandler.mUIStyle.isTransparentTitle) || (this.mUIStyle.isTransparentTitleAndClickable))
       {
-        localLayoutParams.height = ((int)f);
-        this.mUIStyle.C = true;
-        int j = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131296599);
-        boolean bool2;
-        if ((this.mUIStyleHandler.jdField_a_of_type_Birj.jdField_b_of_type_Boolean) || (this.mUIStyle.m))
+        this.mUIStyle.isCurrentTitleTransparent = true;
+        this.mSwiftTitleUI.titleContainer.setBackgroundDrawable(super.getResources().getDrawable(2130850605));
+        this.mSwiftTitleUI.setTitleBarTextColor(-1);
+        this.mSwiftTitleUI.setTitleBarButtonColor(-1);
+        if (this.mUIStyle.isDisableImmersive)
         {
-          this.mUIStyle.n = true;
-          this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(super.getResources().getDrawable(2130850680));
-          this.mSwiftTitleUI.d(-1);
-          this.mSwiftTitleUI.f(-1);
-          if (this.mUIStyle.o)
-          {
-            adjustWebViewTopMargin(j + i, i);
-            bool1 = true;
-          }
-          bool2 = bool1;
-          if (this.mUIStyle.m)
-          {
-            this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(null);
-            bool2 = bool1;
-          }
+          adjustWebViewTopMargin(j + i, i);
+          bool1 = true;
         }
-        try
+        bool2 = bool1;
+        if (this.mUIStyle.isTransparentTitleAndClickable) {
+          this.mSwiftTitleUI.titleContainer.setOnTouchListener(null);
+        }
+      }
+      for (boolean bool2 = bool1;; bool2 = true)
+      {
+        for (;;)
         {
-          for (;;)
+          try
           {
-            for (;;)
+            if (ImmersiveUtils.isSupporImmersive() == 1)
             {
-              if (ImmersiveUtils.isSupporImmersive() == 1)
-              {
-                this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup.setPadding(0, ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication()), 0, 0);
-                super.getActivity().getWindow().addFlags(67108864);
-              }
-              setImmersiveStatus(bool2);
-              if ((!this.mUIStyleHandler.jdField_a_of_type_Birj.jdField_b_of_type_Boolean) && (!this.mUIStyle.m)) {
-                initTitleColor();
-              }
-              if (!"2105".equals(ThemeUtil.curThemeId)) {
-                break;
-              }
-              try
-              {
-                this.mSwiftTitleUI.f(Color.parseColor("#03081A"));
-              }
-              catch (Exception localException)
-              {
-                QLog.d("WebLog_WebViewFragment", 2, "there may be some views not be initialized, should not do this UI adjust");
-              }
+              this.mSwiftTitleUI.titleContainer.setPadding(0, ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication()), 0, 0);
+              super.getActivity().getWindow().addFlags(67108864);
             }
-            break;
-            this.mNeedStatusTrans = true;
-            this.mActNeedImmersive = true;
-            adjustWebViewTopMargin(j + i * 2, i + BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299018));
-            bool2 = true;
+            setImmersiveStatus(bool2);
           }
-        }
-        catch (ClassCastException localClassCastException)
-        {
-          for (;;)
+          catch (ClassCastException localClassCastException)
           {
             dumpViewInError(localClassCastException);
+            continue;
+          }
+          if ((!this.mUIStyleHandler.mUIStyle.isTransparentTitle) && (!this.mUIStyle.isTransparentTitleAndClickable)) {
+            initTitleColor();
+          }
+          if (!"2105".equals(ThemeUtil.curThemeId)) {
+            break;
+          }
+          try
+          {
+            this.mSwiftTitleUI.setTitleBarButtonColor(Color.parseColor("#03081A"));
+          }
+          catch (Exception localException)
+          {
+            QLog.d("WebLog_WebViewFragment", 2, "there may be some views not be initialized, should not do this UI adjust");
           }
         }
+        break;
+        this.mNeedStatusTrans = true;
+        this.mActNeedImmersive = true;
+        adjustWebViewTopMargin(j + i * 2, i + BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299083));
       }
       i = 0;
     }
@@ -3368,27 +3371,27 @@ public class WebViewFragment
   
   public void startLoadUrl()
   {
-    noe.a("Web_readyToLoadUrl");
+    npn.a("Web_readyToLoadUrl");
     if (this.webView == null) {
       return;
     }
     initFinish();
     if ((this.mStatistics.i) && (this.mStatistics.jdField_k_of_type_Long > 0L))
     {
-      bdll.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.mStatistics.jdField_k_of_type_Long) / 1000000L), "", "", "", "" + this.mStatistics.jdField_c_of_type_Int);
+      bcef.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.mStatistics.jdField_k_of_type_Long) / 1000000L), "", "", "", "" + this.mStatistics.jdField_c_of_type_Int);
       this.mStatistics.jdField_k_of_type_Long = 0L;
     }
     this.mStatistics.q = System.currentTimeMillis();
     long l = this.mStatistics.q;
-    l = this.mStatistics.jdField_b_of_type_Long;
-    if (bhnh.a().a(this.mUrl))
+    l = this.mStatistics.b;
+    if (bfwf.a().a(this.mUrl))
     {
       this.webView.loadUrl("file:///android_asset/error.html");
       QLog.d("WebLog_WebViewFragment", 1, new Object[] { "url:", this.mUrl, "in black" });
     }
     for (;;)
     {
-      noe.b("Web_readyToLoadUrl");
+      npn.b("Web_readyToLoadUrl");
       this.mStatistics.a(this.webView, this.mUrl, 0, 0, 0, 0, 0, null);
       return;
       if (!TextUtils.isEmpty(this.mUrl)) {

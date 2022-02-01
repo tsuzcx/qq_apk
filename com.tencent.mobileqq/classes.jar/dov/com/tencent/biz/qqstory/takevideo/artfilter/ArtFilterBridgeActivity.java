@@ -1,12 +1,12 @@
 package dov.com.tencent.biz.qqstory.takevideo.artfilter;
 
 import Override;
+import amtj;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.MotionEvent;
-import anzj;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -36,23 +36,23 @@ public class ArtFilterBridgeActivity
     {
       int i = localIntent.getIntExtra("EDIT_BUSI", 2);
       int j = localIntent.getIntExtra("sub_business_id", 0);
-      int k = localIntent.getIntExtra("entrance_type", 99);
-      int m = localIntent.getIntExtra("camera_mode", 0);
+      int m = localIntent.getIntExtra("entrance_type", 99);
+      int k = localIntent.getIntExtra("camera_mode", 0);
       String str = localIntent.getStringExtra("PATH");
       Bundle localBundle = EditVideoParams.a(j);
       if (localBundle == null) {
         localBundle = new Bundle();
       }
-      label620:
+      label613:
       for (;;)
       {
         localBundle.putAll(getIntent().getExtras());
         localBundle.putString("mCurrentTemplatePath", localIntent.getStringExtra("mCurrentTemplatePath"));
-        localBundle.putInt("entrance_type", k);
+        localBundle.putInt("entrance_type", m);
         localBundle.putInt("pic_entrance_type", localIntent.getIntExtra("pic_entrance_type", 0));
         boolean bool2 = localIntent.getBooleanExtra("go_publish_activity", false);
         if (bool2) {
-          localBundle.putString("extra_publish_text", anzj.a(2131699667));
+          localBundle.putString("extra_publish_text", amtj.a(2131699902));
         }
         if (localIntent.hasExtra("troop_uin")) {
           localBundle.putString("troop_uin", localIntent.getStringExtra("troop_uin"));
@@ -83,7 +83,7 @@ public class ArtFilterBridgeActivity
             }
           }
           if (localObject1 != null) {
-            break label620;
+            break label613;
           }
           localObject1 = new LocalMediaInfo();
         }
@@ -96,14 +96,14 @@ public class ArtFilterBridgeActivity
             Object localObject2 = null;
           }
         }
+        m = (int)l;
         if (bool1) {}
         for (localObject1 = new EditTakePhotoSource(str, 2, 0, 0, d2, d1);; localObject1 = new EditLocalPhotoSource(str, (LocalMediaInfo)localObject1))
         {
-          localObject1 = new EditVideoParams(i, l, (EditVideoParams.EditSource)localObject1, localBundle);
+          localObject1 = new EditVideoParams(i, m, (EditVideoParams.EditSource)localObject1, localBundle);
           if (localObject1 != null)
           {
-            ((EditVideoParams)localObject1).b = m;
-            ((EditVideoParams)localObject1).e = localBundle.getInt("extra_edit_video_from");
+            ((EditVideoParams)localObject1).b = k;
             localIntent.putExtra(EditVideoParams.class.getName(), (Parcelable)localObject1);
           }
           if (!bool2) {
@@ -123,8 +123,9 @@ public class ArtFilterBridgeActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   

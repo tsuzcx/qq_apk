@@ -1,20 +1,14 @@
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.6;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.5;
 
 public class bfiy
-  extends AnimatorListenerAdapter
+  implements bcsd
 {
-  public bfiy(TroopBarPublishActivity.6 param6) {}
+  public bfiy(TroopGiftAnimationController.5.5 param5) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(bcsi parambcsi)
   {
-    if (this.a.a) {
-      this.a.this$0.s();
-    }
-    this.a.this$0.b.requestFocus();
+    this.a.a.this$0.a();
   }
 }
 

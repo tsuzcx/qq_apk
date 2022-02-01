@@ -1,41 +1,43 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
-
-final class tzx
-  extends apee
+public class tzx
 {
-  tzx(aoeg paramaoeg, String paramString, AppInterface paramAppInterface, Context paramContext, int paramInt, boolean paramBoolean) {}
+  public float a;
+  public float b;
+  public float c;
+  public float d;
   
-  public int a()
+  public tzx(float paramFloat1, float paramFloat2)
   {
-    return 4;
+    this.a = paramFloat1;
+    this.b = paramFloat2;
   }
   
-  public void a(Object paramObject)
+  public tzx(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    if (this.jdField_a_of_type_Aoeg != null) {
-      this.jdField_a_of_type_Aoeg.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
-    }
-    tzq.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.d = paramFloat4;
   }
   
-  public void a(boolean paramBoolean, Object paramObject) {}
-  
-  public void b(Object paramObject)
+  public tzx(tzx paramtzx)
   {
-    if (this.jdField_a_of_type_Aoeg != null) {
-      this.jdField_a_of_type_Aoeg.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      tzq.a(this.jdField_a_of_type_AndroidContentContext, 2131694659);
-    }
+    this.a = paramtzx.a;
+    this.b = paramtzx.b;
   }
   
-  public void b(boolean paramBoolean, Object paramObject) {}
+  public void a(tzx paramtzx)
+  {
+    float f = this.a;
+    this.a = paramtzx.a;
+    paramtzx.a = f;
+    f = this.b;
+    this.b = paramtzx.b;
+    paramtzx.b = f;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tzx
  * JD-Core Version:    0.7.0.1
  */

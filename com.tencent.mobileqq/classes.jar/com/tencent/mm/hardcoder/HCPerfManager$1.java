@@ -1,15 +1,15 @@
 package com.tencent.mm.hardcoder;
 
-import adms;
+import acjl;
 
 public class HCPerfManager$1
   implements Runnable
 {
-  public HCPerfManager$1(adms paramadms) {}
+  public HCPerfManager$1(acjl paramacjl) {}
   
   public void run()
   {
-    adms.a(this.this$0);
+    acjl.a(this.this$0);
   }
 }
 

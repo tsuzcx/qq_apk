@@ -1,23 +1,20 @@
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.av.ui.guide.GuideHelper.LottieDrawableHelper.2;
-import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.qphone.base.util.QLog;
 
-public class mpi
+class mpi
+  implements mpo
 {
-  public void a(long paramLong, Context paramContext, String paramString, mpl parammpl)
+  mpi(mpe parammpe) {}
+  
+  public void a(mpn parammpn)
   {
-    try
+    if (parammpn == this.a.jdField_a_of_type_Mpn)
     {
-      LottieComposition.Factory.fromAssetFileName(paramContext, paramString, new mpj(this, paramContext, paramLong, parammpl));
+      this.a.jdField_a_of_type_Mpn = null;
+      this.a.jdField_a_of_type_Mpo = null;
+      this.a.a("onGetRedBagResult", mpe.d(this.a), parammpn.a);
       return;
     }
-    catch (Exception paramContext)
-    {
-      QLog.e("GuideHelper", 1, "fromAssetFileName fail, seq[" + paramLong + "]", paramContext);
-      bkdz.a().post(new GuideHelper.LottieDrawableHelper.2(this, parammpl));
-    }
+    QLog.w("AVRedBag", 1, "onGetRedBagResult,  GetRedBag不一致，callback[" + parammpn + "], src[" + this.a.jdField_a_of_type_Mpn + "]");
   }
 }
 

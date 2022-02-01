@@ -1,16 +1,6 @@
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.List;
-
-class aios
-  implements oft
+public abstract interface aios
 {
-  aios(ainh paramainh, CharSequence paramCharSequence, int paramInt) {}
-  
-  public void a(List<ChatMessage> paramList)
-  {
-    this.jdField_a_of_type_Ainh.g(false);
-    ainh.a(this.jdField_a_of_type_Ainh, paramList, this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_Int);
-  }
+  public abstract int a(int paramInt, boolean paramBoolean);
 }
 
 

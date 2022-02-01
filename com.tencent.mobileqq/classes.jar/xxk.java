@@ -1,30 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
 
-public class xxk
-  extends wjm<xxj, xag>
+public final class xxk
+  implements Parcelable.Creator<EditTakePhotoSource>
 {
-  public xxk(xxj paramxxj)
+  public EditTakePhotoSource a(Parcel paramParcel)
   {
-    super(paramxxj);
+    return new EditTakePhotoSource(paramParcel);
   }
   
-  public void a(@NonNull xxj paramxxj, @NonNull xag paramxag)
+  public EditTakePhotoSource[] a(int paramInt)
   {
-    if ((xxj.a(paramxxj) != null) && (paramxag.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramxag.jdField_a_of_type_JavaUtilList.contains(xxj.a(paramxxj).a)))
-    {
-      yuk.a("CaptureTogetherBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramxag.b.toString());
-      paramxxj.a.i();
-    }
+    return new EditTakePhotoSource[paramInt];
   }
-  
-  public Class acceptEventClass()
-  {
-    return xag.class;
-  }
-  
-  public void b(@NonNull xxj paramxxj, @NonNull xag paramxag) {}
 }
 
 

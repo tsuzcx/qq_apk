@@ -1,9 +1,9 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.HorizontalRefreshLayout;
 
 public abstract interface sgf
 {
-  public abstract void a(View paramView, ArticleInfo paramArticleInfo, int paramInt);
+  public abstract void a(float paramFloat, View paramView, HorizontalRefreshLayout paramHorizontalRefreshLayout);
 }
 
 

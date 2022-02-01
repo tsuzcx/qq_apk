@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
-import noe;
+import npn;
 import oicq.wlogin_sdk.request.Ticket;
 
 final class SwiftBrowserCookieMonster$3
@@ -29,7 +29,7 @@ final class SwiftBrowserCookieMonster$3
         if (TextUtils.isEmpty(SwiftBrowserCookieMonster.jdField_a_of_type_JavaLangString)) {
           break label361;
         }
-        QLog.i("SwiftBrowserCookieMonster", 1, noe.c("skey=" + SwiftBrowserCookieMonster.jdField_a_of_type_JavaLangString, new String[0]));
+        QLog.i("SwiftBrowserCookieMonster", 1, npn.c("skey=" + SwiftBrowserCookieMonster.jdField_a_of_type_JavaLangString, new String[0]));
       }
     }
     for (;;)
@@ -47,7 +47,7 @@ final class SwiftBrowserCookieMonster$3
         if (TextUtils.isEmpty(SwiftBrowserCookieMonster.d)) {
           break label372;
         }
-        QLog.i("SwiftBrowserCookieMonster", 1, noe.c("sTwxWeb=" + SwiftBrowserCookieMonster.d, new String[0]));
+        QLog.i("SwiftBrowserCookieMonster", 1, npn.c("sTwxWeb=" + SwiftBrowserCookieMonster.d, new String[0]));
         label270:
         localTicket = ((TicketManager)???).getLocalTicket(str, 32);
         if (localTicket != null) {

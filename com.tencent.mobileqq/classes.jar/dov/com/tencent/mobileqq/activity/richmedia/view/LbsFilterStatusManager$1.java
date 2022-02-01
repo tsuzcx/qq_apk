@@ -1,15 +1,15 @@
 package dov.com.tencent.mobileqq.activity.richmedia.view;
 
-import brbw;
+import bnvx;
 
 public class LbsFilterStatusManager$1
   implements Runnable
 {
-  public LbsFilterStatusManager$1(brbw parambrbw, int paramInt, boolean paramBoolean) {}
+  public LbsFilterStatusManager$1(bnvx parambnvx, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    brbw.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    bnvx.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
   }
 }
 

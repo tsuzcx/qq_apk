@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class ahkb
-  implements ahky
+class ahkb
+  implements View.OnClickListener
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  ahkb(ahiu paramahiu, RelativeLayout paramRelativeLayout, LinearLayout paramLinearLayout) {}
+  
+  public void onClick(View paramView)
   {
-    if ((((MessageForStructing)paramChatMessage).structingMsg instanceof StructMsgSubImageVideo)) {
-      return 111;
-    }
-    return 5;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

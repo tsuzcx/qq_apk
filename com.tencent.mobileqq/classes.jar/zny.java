@@ -1,36 +1,31 @@
-import android.content.Context;
-import android.os.Handler;
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.view.ISPlayerVideoView.IVideoViewCallBack;
 
-public final class zny
+public class zny
+  implements ISPlayerVideoView.IVideoViewCallBack
 {
-  private final znz a;
+  public zny(TribeVideoPlugin paramTribeVideoPlugin) {}
   
-  public zny(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
+  public void onSurfaceChanged(Object paramObject)
   {
-    this(paramContext, paramOnGestureListener, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
+    }
   }
   
-  public zny(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
+  public void onSurfaceCreated(Object paramObject)
   {
-    this.a = new zoa(paramContext, paramOnGestureListener, paramHandler);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceCreated");
+    }
   }
   
-  public void a(int paramInt)
+  public void onSurfaceDestroy(Object paramObject)
   {
-    zoa.a(paramInt);
-  }
-  
-  public void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener)
-  {
-    this.a.a(paramOnDoubleTapListener);
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return this.a.a(paramMotionEvent);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
+    }
   }
 }
 

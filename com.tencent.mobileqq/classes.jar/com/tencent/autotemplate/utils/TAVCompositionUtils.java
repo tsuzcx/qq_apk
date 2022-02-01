@@ -63,11 +63,11 @@ public class TAVCompositionUtils
   {
     int m = (int)(WIDTH * 0.9F);
     int n = (WIDTH - m) / 2;
-    Object localObject1 = paramTAVComposition.getVideoChannels();
-    int i1 = ((List)localObject1).size();
-    paramTAVComposition = getStickers(paramTAVComposition);
-    if ((paramTAVComposition != null) && (!paramTAVComposition.isEmpty())) {}
-    for (int i = paramTAVComposition.size();; i = 0)
+    Object localObject = paramTAVComposition.getVideoChannels();
+    int i1 = ((List)localObject).size();
+    List localList = getStickers(paramTAVComposition);
+    if ((localList != null) && (!localList.isEmpty())) {}
+    for (int i = localList.size();; i = 0)
     {
       int j = (int)((i1 + i + 2) * 150 * 1.5F);
       Bitmap localBitmap = Bitmap.createBitmap(WIDTH, j, Bitmap.Config.ARGB_8888);
@@ -79,22 +79,21 @@ public class TAVCompositionUtils
       localPaint2.setTextSize(TEXT_SIZE);
       localPaint2.setTextAlign(Paint.Align.CENTER);
       j = 0;
-      Object localObject2;
       long l1;
       int k;
       long l2;
       int i2;
       int i3;
-      while (j < ((List)localObject1).size())
+      while (j < ((List)localObject).size())
       {
-        localObject2 = (List)((List)localObject1).get(j);
-        if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
+        paramTAVComposition = (List)((List)localObject).get(j);
+        if ((paramTAVComposition != null) && (!paramTAVComposition.isEmpty()))
         {
           l1 = 0L;
           k = 0;
-          if (k < ((List)localObject2).size())
+          if (k < paramTAVComposition.size())
           {
-            TAVClip localTAVClip = (TAVClip)((List)localObject2).get(k);
+            TAVClip localTAVClip = (TAVClip)paramTAVComposition.get(k);
             l2 = localTAVClip.getResource().getScaledDuration().getTimeUs() / 1000L;
             i2 = (int)((float)l1 / (float)paramLong * m) + n;
             i3 = j * 150;
@@ -120,12 +119,12 @@ public class TAVCompositionUtils
         localPaint1.setColor(getRandomColor());
         localCanvas.drawRect(new Rect(0, i1 * 150, WIDTH, i1 * 150 + 10), localPaint1);
         j = 0;
-        while (j < i)
+        if (j < i)
         {
-          localObject1 = (TAVSticker)paramTAVComposition.get(j);
-          localObject2 = ((TAVSticker)localObject1).getTimeRange();
-          l1 = ((CMTimeRange)localObject2).getStart().getTimeUs() / 1000L;
-          l2 = ((CMTimeRange)localObject2).getDuration().getTimeUs() / 1000L;
+          paramTAVComposition = (TAVSticker)localList.get(j);
+          localObject = paramTAVComposition.getTimeRange();
+          l1 = ((CMTimeRange)localObject).getStart().getTimeUs() / 1000L;
+          l2 = ((CMTimeRange)localObject).getDuration().getTimeUs() / 1000L;
           k = (int)((float)l1 / (float)paramLong * m) + n;
           i2 = (i1 + 1 + j) * 150;
           i3 = (int)((float)l2 / (float)paramLong * m);
@@ -135,8 +134,15 @@ public class TAVCompositionUtils
           localCanvas.drawRect(new Rect(k - 2, 0, k, i2), localPaint1);
           localPaint1.setColor(getRandomColor());
           localCanvas.drawRect(new Rect(k + i3, 0, k + i3 + 2, i2), localPaint1);
-          localCanvas.drawText(getStickerName(((TAVSticker)localObject1).getFilePath()), k + i3 / 2, i2 + 50, localPaint2);
-          j += 1;
+          paramTAVComposition = getStickerName(paramTAVComposition.getFilePath());
+          if (paramTAVComposition != null) {}
+          for (;;)
+          {
+            localCanvas.drawText(paramTAVComposition, k + i3 / 2, i2 + 50, localPaint2);
+            j += 1;
+            break;
+            paramTAVComposition = String.valueOf(j);
+          }
         }
       }
       return localBitmap;

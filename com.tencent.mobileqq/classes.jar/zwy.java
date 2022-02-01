@@ -1,81 +1,74 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.videostory.config.VSConfigManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class zwy
-  implements View.OnTouchListener
+  extends aptq<zwx>
 {
-  private zwy(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  @NonNull
+  public zwx a(int paramInt)
   {
-    if (this.a.jdField_c_of_type_Int == 1) {
-      switch (paramMotionEvent.getAction())
-      {
-      }
-    }
-    for (;;)
+    return new zwx();
+  }
+  
+  @Nullable
+  public zwx a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
     {
-      return false;
-      if ((2131374796 == paramView.getId()) && (this.a.jdField_b_of_type_AndroidWidgetImageView != null) && (this.a.a != null))
-      {
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setAlpha(0.5F);
-        this.a.a.setAlpha(0.5F);
-      }
-      else if ((2131374811 == paramView.getId()) && (this.a.jdField_c_of_type_AndroidWidgetImageView != null) && (this.a.jdField_b_of_type_AndroidWidgetTextView != null))
-      {
-        this.a.jdField_c_of_type_AndroidWidgetImageView.setAlpha(0.5F);
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-        continue;
-        if ((2131374796 == paramView.getId()) && (this.a.jdField_b_of_type_AndroidWidgetImageView != null) && (this.a.a != null))
-        {
-          this.a.jdField_b_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-          this.a.a.setAlpha(1.0F);
-        }
-        else if ((2131374811 == paramView.getId()) && (this.a.jdField_c_of_type_AndroidWidgetImageView != null) && (this.a.jdField_b_of_type_AndroidWidgetTextView != null))
-        {
-          this.a.jdField_c_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-          this.a.jdField_b_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-          continue;
-          if (this.a.jdField_c_of_type_Int == 2) {
-            switch (paramMotionEvent.getAction())
-            {
-            case 2: 
-            default: 
-              break;
-            case 0: 
-              if ((2131374819 == paramView.getId()) && (this.a.d != null) && (this.a.jdField_c_of_type_AndroidWidgetTextView != null))
-              {
-                this.a.d.setAlpha(0.5F);
-                this.a.jdField_c_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-              }
-              else if ((2131374799 == paramView.getId()) && (this.a.jdField_b_of_type_AndroidWidgetImageView != null) && (this.a.a != null))
-              {
-                this.a.jdField_b_of_type_AndroidWidgetImageView.setAlpha(0.5F);
-                this.a.a.setAlpha(0.5F);
-              }
-              break;
-            case 1: 
-            case 3: 
-              if ((2131374819 == paramView.getId()) && (this.a.d != null) && (this.a.jdField_c_of_type_AndroidWidgetTextView != null))
-              {
-                this.a.d.setAlpha(1.0F);
-                this.a.jdField_c_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-              }
-              else if ((2131374799 == paramView.getId()) && (this.a.jdField_b_of_type_AndroidWidgetImageView != null) && (this.a.a != null))
-              {
-                this.a.jdField_b_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-                this.a.a.setAlpha(1.0F);
-              }
-              break;
-            }
-          }
-        }
-      }
+      zwx localzwx = zwx.a(paramArrayOfaptx[0].a);
+      a(localzwx);
+      QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
+      return localzwx;
     }
+    return null;
+  }
+  
+  public void a(zwx paramzwx)
+  {
+    QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onUpdate ");
+    if (paramzwx != null)
+    {
+      QLog.i("Q.videostory.config.VSSubscribeProcessor", 2, "onUpdate " + paramzwx.toString());
+      VSConfigManager.getInstance().setValue("subscribe_entrance_enable", paramzwx.a());
+      VSConfigManager.getInstance().setValue("is_open_sharing", paramzwx.b());
+      VSConfigManager.getInstance().setValue("subscribe_account_title", paramzwx.c());
+      VSConfigManager.getInstance().setValue("newfollowlist", paramzwx.d());
+      VSConfigManager.getInstance().setValue("subscribe_publish_entrance_enable", paramzwx.e());
+    }
+  }
+  
+  public Class<zwx> clazz()
+  {
+    return zwx.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 463;
   }
 }
 

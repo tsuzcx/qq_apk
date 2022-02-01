@@ -1,141 +1,105 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Random;
-import mqq.app.AppRuntime;
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
 
-public final class achd
+public class achd
 {
-  protected static achd a;
-  private static String b = "smartdevice::smartdevicereport";
-  public int a;
-  public long a;
-  public String a;
+  private String jdField_a_of_type_JavaLangString = "";
+  private FileChannel jdField_a_of_type_JavaNioChannelsFileChannel;
+  private FileLock jdField_a_of_type_JavaNioChannelsFileLock;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  protected achd()
+  public achd(String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public static achd a()
-  {
+    this.jdField_a_of_type_JavaLangString = paramString;
     try
     {
-      if (jdField_a_of_type_Achd == null) {
-        jdField_a_of_type_Achd = new achd();
-      }
-      achd localachd = jdField_a_of_type_Achd;
-      return localachd;
-    }
-    finally {}
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, long paramLong, String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDReport", 2, "action:" + paramString + " fromType:" + paramInt1 + " result:" + paramInt2 + " din:" + paramLong + " ext2:" + paramInt3);
-    }
-    a(paramAppRuntime, paramString, "" + paramLong, paramInt1, paramInt2, paramInt3, 0, "", "");
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SDReport", 2, "action:" + paramString + " fromType:" + paramInt1 + " result:" + paramInt2 + " ext2:" + paramInt3);
-    }
-    a(paramAppRuntime, paramString, "", paramInt1, paramInt2, paramInt3, 0, "", "");
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString3, String paramString4)
-  {
-    QQAppInterface localQQAppInterface = null;
-    if ((paramAppRuntime instanceof QQAppInterface)) {
-      localQQAppInterface = (QQAppInterface)paramAppRuntime;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(b, 2, "smartdevice datareport, actionname:" + paramString1 + ", fromType:" + paramInt1 + ", actionResult = " + paramInt2 + ", ext2:" + paramInt3 + ", ext3:" + paramInt4 + ", ext4:" + paramString3 + ", ext5:" + paramString4);
-    }
-    String str1 = "" + paramInt3;
-    String str2 = "" + paramInt4;
-    if (paramString3 == null)
-    {
-      paramAppRuntime = "";
-      if (paramString4 != null) {
-        break label198;
-      }
-    }
-    label198:
-    for (paramString3 = "";; paramString3 = paramString4)
-    {
-      bdll.b(localQQAppInterface, "CliOper", "", paramString2, "SmartDevice", paramString1, paramInt1, paramInt2, str1, str2, paramAppRuntime, paramString3);
+      this.jdField_a_of_type_Boolean = true;
       return;
-      paramAppRuntime = paramString3;
-      break;
+    }
+    catch (Exception paramString)
+    {
+      acgp.a("KingKongUtils", "Initial FileChannel exception : " + paramString);
+      this.jdField_a_of_type_Boolean = false;
     }
   }
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (0L == this.jdField_a_of_type_Long) {}
-    for (this.jdField_a_of_type_Long = (new Random().nextInt() & 0xFFFFFFFF);; this.jdField_a_of_type_Long += 1L) {
-      switch (paramInt)
+    if (!this.b) {
+      return;
+    }
+    acgp.a("KingKongUtils", "Release Inter-Process Lock " + this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_JavaNioChannelsFileLock != null) {}
+    try
+    {
+      this.jdField_a_of_type_JavaNioChannelsFileLock.release();
+      if (this.jdField_a_of_type_JavaNioChannelsFileChannel == null) {}
+    }
+    catch (IOException localIOException1)
+    {
+      try
       {
-      default: 
-        this.jdField_a_of_type_Long %= 1431655765L;
-        if (0L == this.jdField_a_of_type_Long) {
-          this.jdField_a_of_type_Long += 1L;
-        }
+        this.jdField_a_of_type_JavaNioChannelsFileChannel.close();
+        this.b = false;
         return;
+        localIOException1 = localIOException1;
+        acgp.a("KingKongUtils", "Release Inter-Process Lock " + this.jdField_a_of_type_JavaLangString + " exception : " + localIOException1);
+        localIOException1.printStackTrace();
+      }
+      catch (IOException localIOException2)
+      {
+        for (;;)
+        {
+          acgp.a("KingKongUtils", "Release Inter-Process Lock " + this.jdField_a_of_type_JavaLangString + " exception : " + localIOException2);
+        }
       }
     }
-    this.jdField_a_of_type_Long = (this.jdField_a_of_type_Long % 1431655765L + 1431655765L);
-    return;
-    this.jdField_a_of_type_Long = (this.jdField_a_of_type_Long % 1431655765L + 2863311530L);
   }
   
-  public void a(AppRuntime paramAppRuntime, String paramString, int paramInt)
+  public boolean a()
   {
-    b(paramAppRuntime, paramString, paramInt);
-  }
-  
-  public void a(AppRuntime paramAppRuntime, String paramString1, int paramInt1, int paramInt2, String paramString2, long paramLong)
-  {
-    QQAppInterface localQQAppInterface = null;
-    if ((paramAppRuntime instanceof QQAppInterface)) {
-      localQQAppInterface = (QQAppInterface)paramAppRuntime;
+    if ((!this.jdField_a_of_type_Boolean) || (this.b)) {
+      return false;
     }
-    if (paramString2 == null) {}
-    for (paramAppRuntime = "";; paramAppRuntime = paramString2)
+    acgp.a("KingKongUtils", "Do Inter-Process Lock " + this.jdField_a_of_type_JavaLangString);
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(b, 2, "smartdevice datareport2, actionname:" + paramString1 + ",result:" + paramInt1 + ", pid:" + paramInt2 + ",sn:" + paramAppRuntime);
-      }
-      bdll.b(localQQAppInterface, "CliOper", "", "" + paramLong, "SmartDevice", paramString1, paramInt1, 0, Long.toString(paramInt2), "", paramAppRuntime, "");
-      return;
+      this.jdField_a_of_type_JavaNioChannelsFileChannel = new RandomAccessFile(new File(this.jdField_a_of_type_JavaLangString), "rw").getChannel();
+      this.jdField_a_of_type_JavaNioChannelsFileLock = this.jdField_a_of_type_JavaNioChannelsFileChannel.lock();
+      this.b = true;
+      acgp.a("KingKongUtils", "Do Inter-Process Lock OK " + this.jdField_a_of_type_JavaLangString);
+      return true;
     }
-  }
-  
-  public void b(AppRuntime paramAppRuntime, String paramString, int paramInt)
-  {
-    QQAppInterface localQQAppInterface = null;
-    if ((paramAppRuntime instanceof QQAppInterface)) {
-      localQQAppInterface = (QQAppInterface)paramAppRuntime;
-    }
-    long l = this.jdField_a_of_type_Long & 0xFFFFFFFF;
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (paramAppRuntime = "";; paramAppRuntime = this.jdField_a_of_type_JavaLangString)
+    catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(b, 2, "smartdevice datareport, actionname:" + paramString + ",result:" + paramInt + ", pid:" + Long.toString(this.jdField_a_of_type_Int) + ",sn:" + paramAppRuntime + ",seq:" + Long.toString(l));
-      }
-      if ((!"Net_Wifi_Config_Time_Used".equals(paramString)) && (!"Net_Wifi_Config_Ack_Time_Used".equals(paramString))) {
-        break;
-      }
-      bdll.b(localQQAppInterface, "CliOper", "", "0", "SmartDevice", paramString, 0, paramInt, Long.toString(this.jdField_a_of_type_Int), Long.toString(l), paramAppRuntime, "");
-      return;
+      acgp.a("KingKongUtils", "Do Inter-Process Lock " + this.jdField_a_of_type_JavaLangString + " exception : " + localException);
+      if (this.jdField_a_of_type_JavaNioChannelsFileLock == null) {}
     }
-    bdll.b(localQQAppInterface, "CliOper", "", "0", "SmartDevice", paramString, paramInt, 0, Long.toString(this.jdField_a_of_type_Int), Long.toString(l), paramAppRuntime, "");
+    try
+    {
+      this.jdField_a_of_type_JavaNioChannelsFileLock.release();
+      label166:
+      if (this.jdField_a_of_type_JavaNioChannelsFileChannel != null) {}
+      try
+      {
+        this.jdField_a_of_type_JavaNioChannelsFileChannel.close();
+        label180:
+        acgp.a("KingKongUtils", "Do Inter-Process Lock failed " + this.jdField_a_of_type_JavaLangString);
+        return false;
+      }
+      catch (IOException localIOException1)
+      {
+        break label180;
+      }
+    }
+    catch (IOException localIOException2)
+    {
+      break label166;
+    }
   }
 }
 

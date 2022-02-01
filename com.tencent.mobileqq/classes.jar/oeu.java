@@ -1,34 +1,18 @@
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.LikeActionDownloadBar;
 
-public class oeu
+public final class oeu
+  implements Parcelable.Creator<VideoInfo.LikeActionDownloadBar>
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public String l;
-  
-  public String toString()
+  public VideoInfo.LikeActionDownloadBar a(Parcel paramParcel)
   {
-    return bhhq.a(this).toString();
+    return new VideoInfo.LikeActionDownloadBar(paramParcel);
+  }
+  
+  public VideoInfo.LikeActionDownloadBar[] a(int paramInt)
+  {
+    return new VideoInfo.LikeActionDownloadBar[paramInt];
   }
 }
 

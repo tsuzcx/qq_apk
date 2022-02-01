@@ -1,32 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class scy
-  implements View.OnClickListener
 {
-  long jdField_a_of_type_Long = 0L;
+  int jdField_a_of_type_Int;
+  rsd jdField_a_of_type_Rsd;
   
-  public scy(BaseTabbar paramBaseTabbar, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public scy(rsd paramrsd, int paramInt)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 300L)
-    {
-      this.jdField_a_of_type_Long = 0L;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a.a(this.jdField_a_of_type_Int);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.setSelectedTab(this.jdField_a_of_type_Int, true);
-    }
+    this.jdField_a_of_type_Rsd = paramrsd;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

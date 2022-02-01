@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atup;
-import atur;
-import aunj;
-import bcrg;
+import asgz;
+import ashb;
+import aszt;
+import bbko;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 public class FileManagerNotifyCenter$2
   implements Runnable
 {
-  public FileManagerNotifyCenter$2(atur paramatur, FileManagerEntity paramFileManagerEntity, int paramInt) {}
+  public FileManagerNotifyCenter$2(ashb paramashb, FileManagerEntity paramFileManagerEntity, int paramInt) {}
   
   public void run()
   {
@@ -29,7 +29,7 @@ public class FileManagerNotifyCenter$2
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress >= 0.95F)
       {
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = 1.0F;
-        this.this$0.a.a().a(true, 3, null);
+        this.this$0.a.getFileManagerNotifyCenter().a(true, 3, null);
       }
       try
       {
@@ -45,10 +45,10 @@ public class FileManagerNotifyCenter$2
         switch (this.jdField_a_of_type_Int)
         {
         default: 
-          this.this$0.a.a().a(true, 3, null);
-          aunj.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastSuccessTime = bcrg.a();
-          this.this$0.a.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+          this.this$0.a.getFileManagerNotifyCenter().a(true, 3, null);
+          aszt.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastSuccessTime = bbko.a();
+          this.this$0.a.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
           return;
           FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
           localFileManagerEntity.fProgress = ((float)(localFileManagerEntity.fProgress + 0.05D));
@@ -66,11 +66,11 @@ public class FileManagerNotifyCenter$2
           continue;
           this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 14, new Object[] { this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath(), Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize), Boolean.valueOf(true), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strServerPath }, 0, null);
           continue;
-          this.this$0.a.a().a(true, 34, new Object[] { this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) });
+          this.this$0.a.getFileManagerNotifyCenter().a(true, 34, new Object[] { this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) });
           continue;
-          this.this$0.a.a().a(true, 33, new Object[] { this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid });
+          this.this$0.a.getFileManagerNotifyCenter().a(true, 33, new Object[] { this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid });
           continue;
-          this.this$0.a.a().a(true, 53, new Object[] { this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid });
+          this.this$0.a.getFileManagerNotifyCenter().a(true, 53, new Object[] { this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid });
         }
       }
     }

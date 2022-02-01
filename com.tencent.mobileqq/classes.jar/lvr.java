@@ -1,37 +1,40 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import com.tencent.qphone.base.util.QLog;
 
 public class lvr
 {
-  public Bitmap a;
-  public Rect a;
+  public int a;
+  public final mwf a;
+  public int b;
+  public int c;
+  private int d;
   
-  public lvr(Bitmap paramBitmap)
+  lvr()
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    this.jdField_a_of_type_Mwf = new mwf();
+  }
+  
+  public void a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, mwf parammwf)
+  {
+    this.d += 1;
+    StringBuilder localStringBuilder;
+    if ((this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (!this.jdField_a_of_type_Mwf.equals(parammwf)) || (this.c != paramInt3)) {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append("updateFrame, frameIndex[").append(this.d).append("], data[");
+        if (paramArrayOfByte != null) {
+          break label198;
+        }
+      }
+    }
+    label198:
+    for (paramArrayOfByte = "null";; paramArrayOfByte = Integer.valueOf(paramArrayOfByte.length))
     {
-      this.jdField_a_of_type_AndroidGraphicsRect.right = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      this.jdField_a_of_type_AndroidGraphicsRect.bottom = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    }
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_AndroidGraphicsRect = null;
-  }
-  
-  public void a(Canvas paramCanvas, Rect paramRect, Paint paramPaint)
-  {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, paramRect, paramPaint);
+      QLog.i("AVShare", 2, paramArrayOfByte + "], imgFormat[" + this.b + "-->" + paramInt2 + "], recordParam[" + this.jdField_a_of_type_Mwf + "--->" + parammwf + "], angle[" + this.c + "-->" + paramInt3 + "]");
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      this.jdField_a_of_type_Mwf.a(parammwf);
+      this.c = paramInt3;
+      return;
     }
   }
 }

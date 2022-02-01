@@ -1,23 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
-class akwb
-  implements View.OnClickListener
+public class akwb
+  implements MediaPlayer.OnCompletionListener
 {
-  akwb(akwa paramakwa) {}
+  public akwb(FixedSizeVideoView paramFixedSizeVideoView) {}
   
-  public void onClick(View paramView)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (akwa.a(this.a) == null)
+    if (this.a.a != null)
     {
-      akwa.a(this.a, bhlq.a(this.a.mActivity, 0, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131717100), null, ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131717098), ((NewPhotoPreviewActivity)this.a.mActivity).getString(2131717099), new akwc(this), new akwd(this)));
-      akwa.a(this.a).setCanceledOnTouchOutside(false);
+      if (FixedSizeVideoView.a(this.a) != null) {
+        FixedSizeVideoView.a(this.a).removeMessages(0);
+      }
+      this.a.a.a(paramMediaPlayer);
     }
-    akwa.a(this.a).show();
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

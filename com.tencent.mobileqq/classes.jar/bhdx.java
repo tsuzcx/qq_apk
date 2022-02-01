@@ -1,6 +1,6 @@
 public abstract interface bhdx
 {
-  public abstract void a(int paramInt, bhdu parambhdu);
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

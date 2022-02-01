@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aimx;
-import aing;
-import axup;
-import bdlq;
+import ahik;
+import ahit;
+import awhw;
+import bcek;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 public class NearbyChatPieObserver$1
   implements Runnable
 {
-  public NearbyChatPieObserver$1(aing paramaing, boolean paramBoolean, String paramString, axup paramaxup) {}
+  public NearbyChatPieObserver$1(ahit paramahit, boolean paramBoolean, String paramString, awhw paramawhw) {}
   
   public void run()
   {
-    bdlq localbdlq = new bdlq(aing.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("grp_lbs").c("data_card");
+    bcek localbcek = new bcek(ahit.a(this.this$0).app).a("dc00899").b("grp_lbs").c("data_card");
     if (this.jdField_a_of_type_Boolean) {}
     for (String str = "msg_suc";; str = "msg_fail")
     {
-      localbdlq.d(str).e(aing.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).a(new String[] { this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Axup.b()) }).a();
+      localbcek.d(str).e(ahit.a(this.this$0).sessionInfo.curFriendUin).a(new String[] { this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Awhw.b()) }).a();
       return;
     }
   }

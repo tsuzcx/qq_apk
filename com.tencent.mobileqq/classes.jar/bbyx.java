@@ -1,25 +1,28 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.soload.LoadParam.LoadItem;
+import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
+import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
 
 class bbyx
-  implements View.OnClickListener
+  implements bbzt
 {
-  bbyx(bbyl parambbyl) {}
+  bbyx(bbyv parambbyv, String paramString, bbzj parambbzj, LoadParam.LoadItem paramLoadItem) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, SoConfig.SoInfo paramSoInfo)
   {
-    if (bbyl.a(this.a).getCurrentItem() != 1)
+    if (!this.jdField_a_of_type_Bbyv.a(paramSoInfo))
     {
-      bbyl.a(this.a).setCurrentItem(1, bbyl.a(this.a));
-      this.a.c();
-      this.a.a(1);
-      this.a.a(this.a.a.getResources().getString(2131708953));
+      bbyv.a(this.jdField_a_of_type_Bbyv, 2);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((TextUtils.equals(this.jdField_a_of_type_Bbyv.a.ver, this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Bbzj.b()))
+    {
+      this.jdField_a_of_type_Bbyv.c = "runcrash";
+      bbyv.a(this.jdField_a_of_type_Bbyv, 8);
+      return;
+    }
+    bbzk.b(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name);
+    bbyv.a(this.jdField_a_of_type_Bbyv, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem);
   }
 }
 

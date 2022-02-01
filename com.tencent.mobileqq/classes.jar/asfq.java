@@ -1,33 +1,10 @@
-import android.os.Handler;
-import android.os.Message;
-import java.util.List;
-
-class asfq
-  extends anxe
+abstract class asfq
 {
-  asfq(asfn paramasfn) {}
+  asfq(ases paramases) {}
   
-  public void a(boolean paramBoolean)
-  {
-    asfn.a(this.a).clear();
-  }
+  abstract void a(String paramString, int paramInt);
   
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.e();
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject != null) && ((paramObject instanceof Integer)) && (asfn.a(this.a) != null)) {
-      asfn.a(this.a).obtainMessage(208, paramObject).sendToTarget();
-    }
-    if ((this.a.a != null) && (paramBoolean)) {
-      this.a.a.e();
-    }
-  }
+  abstract void a(String paramString, int paramInt, asfo paramasfo);
 }
 
 

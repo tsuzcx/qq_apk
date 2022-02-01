@@ -1,22 +1,34 @@
-import com.tencent.ad.tangram.AdError;
-import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter;
-import com.tencent.ad.tangram.videoceiling.AdVideoSpliceAdapter.Params;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.views.videoimax.TransitionContext;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
 
 public class acof
-  implements AdVideoSpliceAdapter
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  public AdError show(AdVideoSpliceAdapter.Params paramParams)
+  public acof(AccountManageActivity paramAccountManageActivity) {}
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
+    String str;
+    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
     {
-      acvc.d("GdtVideoSpliceAdapter", "show error");
-      return new AdError(4);
+      Object localObject = this.a.app;
+      paramBitmap = QQAppInterface.getRoundFaceBitmap(paramBitmap);
+      localObject = (String)AccountManageActivity.a(this.a).getTag();
+      str = (String)AccountManageActivity.b(this.a).getTag();
+      if (!paramString.equals(localObject)) {
+        break label80;
+      }
+      AccountManageActivity.a(this.a).setImageBitmap(paramBitmap);
     }
-    acvc.b("GdtVideoSpliceAdapter", "show");
-    new TransitionContext(paramParams).b();
-    return new AdError(0);
+    label80:
+    while (!paramString.equals(str)) {
+      return;
+    }
+    AccountManageActivity.b(this.a).setImageBitmap(paramBitmap);
   }
 }
 

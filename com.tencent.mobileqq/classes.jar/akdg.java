@@ -1,22 +1,64 @@
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.9.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView;
 
-public class akdg
-  extends aavi
+public abstract class akdg
 {
-  public akdg(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
+  protected Context a;
+  protected Rect a;
+  protected DoodleView a;
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt)
+  public akdg(DoodleView paramDoodleView)
   {
-    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
-    while (!paramBoolean) {
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    if (paramDoodleView == null) {
+      throw new IllegalStateException("DoodleView can not be null.");
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView = paramDoodleView;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDoodleView.invalidate();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
       return;
     }
-    ThreadManagerV2.getUIHandlerV2().post(new ChatHistoryTroopFileFragment.9.1(this, paramLong1, paramLong2));
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
   }
+  
+  public final void a(Canvas paramCanvas)
+  {
+    b(paramCanvas);
+  }
+  
+  public boolean a()
+  {
+    return b();
+  }
+  
+  public final boolean a(MotionEvent paramMotionEvent)
+  {
+    a();
+    return b(paramMotionEvent);
+  }
+  
+  protected abstract void b(Canvas paramCanvas);
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  protected abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

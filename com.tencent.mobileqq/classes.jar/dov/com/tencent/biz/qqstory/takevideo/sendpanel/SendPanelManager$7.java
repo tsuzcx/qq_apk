@@ -1,17 +1,17 @@
 package dov.com.tencent.biz.qqstory.takevideo.sendpanel;
 
-import bqvc;
-import bqvl;
-import bqvm;
+import bnpq;
+import bnpz;
+import bnqa;
 
 public class SendPanelManager$7
   implements Runnable
 {
-  public SendPanelManager$7(bqvm parambqvm, int paramInt, bqvl parambqvl) {}
+  public SendPanelManager$7(bnqa parambnqa, int paramInt, bnpz parambnpz) {}
   
   public void run()
   {
-    bqvm.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Bqvl);
+    bnqa.a(this.this$0).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Bnpz);
   }
 }
 

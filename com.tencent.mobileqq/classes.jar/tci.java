@@ -1,146 +1,50 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class tci
+class tci
+  implements tcn
 {
-  private aqre jdField_a_of_type_Aqre;
-  private ColorNote jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote;
-  private String jdField_a_of_type_JavaLangString;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
+  tci(tch paramtch) {}
   
-  public tci(String paramString)
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.b = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote = new aqrv().a(16908290).a("viola:" + paramString).b("defaultTitle").c("defaultSubTitle").d("https://default").a();
-  }
-  
-  public static JSONObject a(ColorNote paramColorNote)
-  {
-    if (paramColorNote == null) {
-      return new JSONObject();
-    }
-    try
+    if (paramBoolean)
     {
-      paramColorNote = new JSONObject(new String(paramColorNote.getReserve()));
-      return paramColorNote;
-    }
-    catch (Exception paramColorNote)
-    {
-      QLog.d("ViolaColorNote", 1, "[getViolaColorNoteData]: " + paramColorNote.getMessage());
-    }
-    return new JSONObject();
-  }
-  
-  public static JSONObject b(ColorNote paramColorNote)
-  {
-    return a(paramColorNote).optJSONObject("report");
-  }
-  
-  private void b()
-  {
-    if ((this.jdField_a_of_type_OrgJsonJSONObject == null) || (this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote == null)) {
-      return;
-    }
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.mMainTitle = this.jdField_a_of_type_OrgJsonJSONObject.optString("title");
-      this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.mSubTitle = this.jdField_a_of_type_OrgJsonJSONObject.optString("subTitle");
-      this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.mPicUrl = this.jdField_a_of_type_OrgJsonJSONObject.optString("imageUrl");
-      this.jdField_a_of_type_OrgJsonJSONObject.put("param", this.jdField_a_of_type_JavaLangString).put("url", this.b).put("useTransParentFragment", this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.mReserve = this.jdField_a_of_type_OrgJsonJSONObject.toString().getBytes();
-      this.jdField_a_of_type_Aqre.a(this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ViolaColorNote", 1, "[setColorBallData]: " + localException.getMessage());
-    }
-  }
-  
-  private void c(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {}
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
-        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-      }
-      Iterator localIterator = paramJSONObject.keys();
-      while (localIterator.hasNext())
+      if (tch.a(this.a) != null)
       {
-        String str = (String)localIterator.next();
-        try
-        {
-          this.jdField_a_of_type_OrgJsonJSONObject.put(str, paramJSONObject.opt(str));
-        }
-        catch (JSONException localJSONException)
-        {
-          QLog.e("ViolaColorNote", 1, localJSONException.getMessage());
-        }
+        paramString = (Animation)tch.a(this.a).getTag(2131369487);
+        paramString.setAnimationListener(new tcj(this));
+        tch.a(this.a).startAnimation(paramString);
       }
-    }
-  }
-  
-  public ColorNote a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote;
-  }
-  
-  public tci a(aqre paramaqre)
-  {
-    this.jdField_a_of_type_Aqre = paramaqre;
-    return this;
-  }
-  
-  public tci a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public tci a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Aqre == null) {}
-    while (!this.jdField_a_of_type_Aqre.c()) {
       return;
     }
-    b();
+    QQToast.a(this.a.a, 1, 2131717376, 0).a();
   }
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    if ((this.jdField_a_of_type_Aqre == null) || (1 != paramInt)) {
-      return;
-    }
-    b();
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {}
-    do
+    if (paramBoolean)
     {
+      tch.a(this.a).a(tch.a(this.a), tch.a(this.a, paramInt), this.a.a, "", "", paramString2, "", 0, "");
       return;
-      c(paramJSONObject);
-    } while (this.jdField_a_of_type_Aqre == null);
-    this.jdField_a_of_type_Aqre.k();
+    }
+    QQToast.a(this.a.a, 1, 2131717380, 0).a();
   }
   
-  public void b(JSONObject paramJSONObject)
+  public void b(boolean paramBoolean, String paramString)
   {
-    c(paramJSONObject);
+    if (paramBoolean)
+    {
+      if (tch.a(this.a) != null)
+      {
+        paramString = (Animation)tch.a(this.a).getTag(2131369487);
+        paramString.setAnimationListener(new tck(this));
+        tch.a(this.a).startAnimation(paramString);
+      }
+      return;
+    }
+    QQToast.a(this.a.a, 1, 2131717382, 0).a();
   }
 }
 

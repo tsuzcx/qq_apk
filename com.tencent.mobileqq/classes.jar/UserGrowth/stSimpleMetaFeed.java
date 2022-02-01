@@ -60,6 +60,7 @@ public final class stSimpleMetaFeed
   public String id = "";
   public ArrayList<stMetaUgcImage> images;
   public ArrayList<stImgReplacement> imgReplacements;
+  public boolean isLoop;
   public int is_ding;
   public stMagicBrand magicBrand;
   public Map<String, String> map_ext;
@@ -139,7 +140,7 @@ public final class stSimpleMetaFeed
   
   public stSimpleMetaFeed() {}
   
-  public stSimpleMetaFeed(String paramString1, String paramString2, String paramString3, stSimpleMetaPerson paramstSimpleMetaPerson, stMetaUgcVideoSeg paramstMetaUgcVideoSeg, ArrayList<stMetaUgcImage> paramArrayList, int paramInt1, int paramInt2, ArrayList<stMetaComment> paramArrayList1, String paramString4, String paramString5, int paramInt3, int paramInt4, String paramString6, String paramString7, stShareInfo paramstShareInfo, String paramString8, long paramLong1, long paramLong2, stMusicFullInfo paramstMusicFullInfo, String paramString9, ArrayList<stMetaTag> paramArrayList2, Map<Integer, byte[]> paramMap, int paramInt5, String paramString10, stMetaTag paramstMetaTag, stH5OpInfo paramstH5OpInfo, int paramInt6, Map<String, String> paramMap1, String paramString11, String paramString12, stNewIconStyle paramstNewIconStyle, String paramString13, stWaterFallItemStrategy paramstWaterFallItemStrategy, stWaterFallCardStyle paramstWaterFallCardStyle, int paramInt7, ArrayList<stImgReplacement> paramArrayList3, stOpVideo paramstOpVideo, String paramString14, stMetaGeoInfo paramstMetaGeoInfo, stMagicBrand paramstMagicBrand, ArrayList<stSimpleComment> paramArrayList4, int paramInt8, stVideoTag paramstVideoTag, stFloatingLayerCardStyle paramstFloatingLayerCardStyle, stCollection paramstCollection, stFriendLikes paramstFriendLikes, ArrayList<stMagicBrand> paramArrayList5, ArrayList<stQQGroupInfo> paramArrayList6)
+  public stSimpleMetaFeed(String paramString1, String paramString2, String paramString3, stSimpleMetaPerson paramstSimpleMetaPerson, stMetaUgcVideoSeg paramstMetaUgcVideoSeg, ArrayList<stMetaUgcImage> paramArrayList, int paramInt1, int paramInt2, ArrayList<stMetaComment> paramArrayList1, String paramString4, String paramString5, int paramInt3, int paramInt4, String paramString6, String paramString7, stShareInfo paramstShareInfo, String paramString8, long paramLong1, long paramLong2, stMusicFullInfo paramstMusicFullInfo, String paramString9, ArrayList<stMetaTag> paramArrayList2, Map<Integer, byte[]> paramMap, int paramInt5, String paramString10, stMetaTag paramstMetaTag, stH5OpInfo paramstH5OpInfo, int paramInt6, Map<String, String> paramMap1, String paramString11, String paramString12, stNewIconStyle paramstNewIconStyle, String paramString13, stWaterFallItemStrategy paramstWaterFallItemStrategy, stWaterFallCardStyle paramstWaterFallCardStyle, int paramInt7, ArrayList<stImgReplacement> paramArrayList3, stOpVideo paramstOpVideo, String paramString14, stMetaGeoInfo paramstMetaGeoInfo, stMagicBrand paramstMagicBrand, ArrayList<stSimpleComment> paramArrayList4, int paramInt8, stVideoTag paramstVideoTag, stFloatingLayerCardStyle paramstFloatingLayerCardStyle, stCollection paramstCollection, stFriendLikes paramstFriendLikes, ArrayList<stMagicBrand> paramArrayList5, ArrayList<stQQGroupInfo> paramArrayList6, boolean paramBoolean)
   {
     this.id = paramString1;
     this.wording = paramString2;
@@ -190,6 +191,7 @@ public final class stSimpleMetaFeed
     this.friendLikes = paramstFriendLikes;
     this.brands = paramArrayList5;
     this.qqGroups = paramArrayList6;
+    this.isLoop = paramBoolean;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -243,6 +245,7 @@ public final class stSimpleMetaFeed
     this.friendLikes = ((stFriendLikes)paramJceInputStream.read(cache_friendLikes, 46, false));
     this.brands = ((ArrayList)paramJceInputStream.read(cache_brands, 47, false));
     this.qqGroups = ((ArrayList)paramJceInputStream.read(cache_qqGroups, 48, false));
+    this.isLoop = paramJceInputStream.read(this.isLoop, 49, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -374,6 +377,7 @@ public final class stSimpleMetaFeed
     if (this.qqGroups != null) {
       paramJceOutputStream.write(this.qqGroups, 48);
     }
+    paramJceOutputStream.write(this.isLoop, 49);
   }
 }
 

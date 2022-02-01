@@ -1,26 +1,14 @@
-import com.tencent.mobileqq.widget.QQToast;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnInfoListener;
 
 class wxq
-  extends wjd
+  implements MediaPlayer.OnInfoListener
 {
-  wxq(wxp paramwxp) {}
+  wxq(wxj paramwxj, wxd paramwxd) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
-    if ((paramBoolean1) && (paramBoolean2)) {
-      QQToast.a(this.a.a.a, 2, anzj.a(2131705851), 0).a();
-    }
-    do
-    {
-      return;
-      if ((!paramBoolean1) && (paramBoolean2))
-      {
-        QQToast.a(this.a.a.a, 1, anzj.a(2131705856), 0).a();
-        return;
-      }
-    } while ((paramBoolean1) || (paramBoolean2));
-    QQToast.a(this.a.a.a, 1, anzj.a(2131705852), 0).a();
+    return this.jdField_a_of_type_Wxd.a_(this.jdField_a_of_type_Wxj, paramInt1, paramInt2);
   }
 }
 

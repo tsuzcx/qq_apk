@@ -1,126 +1,163 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.SystemClock;
+import android.util.Printer;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadSetting;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
-public class anbw
-  implements aoog
+class anbw
+  implements Printer
 {
-  anyu jdField_a_of_type_Anyu = new anbx(this);
-  private aoof jdField_a_of_type_Aoof;
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Map<String, Integer> b = new HashMap();
+  public static int a;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private int jdField_c_of_type_Int = 0;
+  private long jdField_c_of_type_Long;
   
-  public anbw(QQAppInterface paramQQAppInterface)
+  static
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_Aoof = new aoof(paramQQAppInterface);
-    this.jdField_a_of_type_Aoof.a(this);
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_Anyu);
+    jdField_a_of_type_Int = 200;
   }
   
-  public void a()
+  anbw(int paramInt, String paramString)
   {
-    QLog.i("apollochannel_CmGameAccountHandler", 1, "onDestroy");
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.b.clear();
-    this.jdField_a_of_type_JavaUtilMap = null;
-    this.b = null;
-    if (this.jdField_a_of_type_Aoof != null)
-    {
-      this.jdField_a_of_type_Aoof.d();
-      this.jdField_a_of_type_Aoof = null;
+    this.jdField_c_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  private static String a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0) || (!paramString.startsWith(">>>"))) {
+      return null;
     }
+    int i = paramString.indexOf('(');
+    if (i == -1) {
+      return null;
+    }
+    int j = paramString.indexOf(')', i);
+    if (j == -1) {
+      return null;
+    }
+    String str1 = paramString.substring(i + 1, j);
+    int k = paramString.indexOf("} ", j);
+    if (k == -1) {
+      return null;
+    }
+    j = paramString.indexOf('@', k + 2);
+    i = j;
+    if (j == -1)
+    {
+      j = paramString.indexOf(':', k + 2);
+      i = j;
+      if (j == -1)
+      {
+        i = paramString.indexOf(' ', k + 2);
+        if (i == -1) {
+          break label150;
+        }
+      }
+    }
+    String str2 = paramString.substring(k + 2, i);
+    i = paramString.indexOf(": ", i);
+    if (i == -1)
+    {
+      return null;
+      label150:
+      return null;
+    }
+    return String.format("%s|%s|%s", new Object[] { str1, str2, paramString.substring(i + 2) });
   }
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  void a(int paramInt, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {}
-    do
-    {
-      return;
-      switch (paramInt2)
-      {
-      default: 
-        return;
-      case 1: 
-        localObject = bhlg.c((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString, true);
-        if ((!bgpj.b((String)localObject)) || (!((String)localObject).equals(paramString))) {
-          break label147;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("apollochannel_CmGameAccountHandler", 2, "nickName.equals(uin):" + paramString);
-        }
-        break;
-      }
-    } while (this.jdField_a_of_type_JavaUtilMap == null);
-    this.jdField_a_of_type_JavaUtilMap.put(paramString + "nick", Integer.valueOf(paramInt1));
-    return;
-    label147:
     if (QLog.isColorLevel()) {
-      QLog.d("apollochannel_CmGameAccountHandler", 2, "nickName != null:" + paramString);
+      QLog.d("TM.global.LooperPrinter", 2, "setting threshold, threshold=" + paramInt);
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 1);
-    localBundle.putString("uin", paramString);
-    localBundle.putString("nickName", (String)localObject);
-    paramString = EIPCResult.createResult(0, localBundle);
-    anav.a().callbackResult(paramInt1, paramString);
-    return;
-    Object localObject = this.jdField_a_of_type_Aoof.a(1, String.valueOf(paramString), 0, (byte)1);
-    if (localObject != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("qwe", 2, "bm != null:" + paramString);
-      }
-      localObject = ((Bitmap)localObject).copy(Bitmap.Config.ARGB_8888, true);
-      localBundle = new Bundle();
-      localBundle.putInt("type", 2);
-      localBundle.putString("uin", paramString);
-      localBundle.putParcelable("head", (Parcelable)localObject);
-      paramString = EIPCResult.createResult(0, localBundle);
-      anav.a().callbackResult(paramInt1, paramString);
-      return;
-    }
-    if (this.b != null) {
-      this.b.put(paramString + "head", Integer.valueOf(paramInt1));
-    }
-    this.jdField_a_of_type_Aoof.a(paramString, 200, false, 1, true, (byte)0, 1);
+    jdField_a_of_type_Int = paramInt;
   }
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void println(String paramString)
   {
-    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
+    if (paramString.startsWith(">>"))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("qwe", 2, "onDecodeTaskCompleted:" + paramString);
-      }
-      paramBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
-      if ((this.b != null) && (this.b.get(paramString + "head") != null))
-      {
-        paramInt1 = ((Integer)this.b.remove(paramString + "head")).intValue();
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("type", 2);
-        localBundle.putString("uin", paramString);
-        localBundle.putParcelable("head", paramBitmap);
-        paramString = EIPCResult.createResult(0, localBundle);
-        anav.a().callbackResult(paramInt1, paramString);
+      this.jdField_c_of_type_Long = SystemClock.uptimeMillis();
+      this.jdField_a_of_type_JavaLangString = paramString;
+      if (UnifiedMonitor.a().whetherStackEnabled(this.jdField_c_of_type_Int)) {
+        UnifiedMonitor.a().reportStackIfTimeout(this.jdField_c_of_type_Int);
       }
     }
+    while ((this.jdField_c_of_type_Long == 0L) || (!paramString.startsWith("<<"))) {
+      return;
+    }
+    this.jdField_a_of_type_Long += 1L;
+    long l = SystemClock.uptimeMillis() - this.jdField_c_of_type_Long;
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_b_of_type_Long += l;
+    Object localObject = null;
+    paramString = (String)localObject;
+    if (QLog.isColorLevel())
+    {
+      if (!ThreadSetting.logcatBgTaskMonitor) {
+        break label192;
+      }
+      paramString = a(this.jdField_a_of_type_JavaLangString);
+      QLog.d("AutoMonitor", 2, this.jdField_b_of_type_JavaLangString + ", cost=" + l + ", " + paramString);
+    }
+    while (l > jdField_a_of_type_Int) {
+      if (!UnifiedMonitor.a().whetherReportThisTime(this.jdField_c_of_type_Int))
+      {
+        this.jdField_b_of_type_Int = 0;
+        return;
+        label192:
+        paramString = (String)localObject;
+        if (l >= 200L)
+        {
+          paramString = a(this.jdField_a_of_type_JavaLangString);
+          QLog.e("AutoMonitor", 2, this.jdField_b_of_type_JavaLangString + " OOT cost=" + l + ", " + paramString);
+        }
+      }
+      else
+      {
+        HashMap localHashMap;
+        if (paramString == null)
+        {
+          paramString = a(this.jdField_a_of_type_JavaLangString);
+          localHashMap = new HashMap(8);
+          localObject = BaseActivity.sTopActivity;
+          if (localObject == null) {
+            break label338;
+          }
+        }
+        label338:
+        for (localObject = localObject.getClass().getName();; localObject = "")
+        {
+          localHashMap.put("act", localObject);
+          UnifiedMonitor.a().addEvent(this.jdField_c_of_type_Int, paramString, (int)l, this.jdField_b_of_type_Int, localHashMap);
+          this.jdField_b_of_type_Int = 0;
+          return;
+          break;
+        }
+      }
+    }
+    if (UnifiedMonitor.a().whetherStackEnabled(this.jdField_c_of_type_Int)) {
+      UnifiedMonitor.a().notifyNotTimeout(this.jdField_c_of_type_Int);
+    }
+    this.jdField_b_of_type_Int += 1;
+  }
+  
+  public String toString()
+  {
+    return super.toString() + "(msgCount = " + this.jdField_a_of_type_Long + ", totalCost = " + this.jdField_b_of_type_Long + ")";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anbw
  * JD-Core Version:    0.7.0.1
  */

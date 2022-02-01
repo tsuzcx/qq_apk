@@ -1,39 +1,139 @@
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
+import android.graphics.drawable.Drawable;
+import android.text.Spannable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForWantGiftMsg;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.widget.ColorNickTextView;
+import com.tencent.mobileqq.widget.datepicker.CalendarDay;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.LinkedList;
+import java.util.List;
 
-class ahwu
-  implements View.OnClickListener
+public class ahwu
+  extends BaseAdapter
 {
-  ahwu(ahwt paramahwt, ChatMessage paramChatMessage, MessageForWantGiftMsg paramMessageForWantGiftMsg) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<ahwt> jdField_a_of_type_JavaUtilList = new LinkedList();
   
-  public void onClick(View paramView)
+  public ahwu(TroopMemberHistoryFragment paramTroopMemberHistoryFragment, Context paramContext)
   {
-    String str;
-    if (paramView.getId() == 2131373879)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  boolean a(long paramLong1, long paramLong2)
+  {
+    CalendarDay localCalendarDay1 = new CalendarDay(paramLong1 * 1000L);
+    CalendarDay localCalendarDay2 = new CalendarDay(paramLong2 * 1000L);
+    return (localCalendarDay1.year == localCalendarDay2.year) && (localCalendarDay1.month == localCalendarDay2.month) && (localCalendarDay1.day == localCalendarDay2.day);
+  }
+  
+  boolean a(List<ahwt> paramList)
+  {
+    int j = paramList.size();
+    int i = 0;
+    long l2;
+    for (long l1 = 0L; i < j; l1 = l2)
     {
-      new bdlq(this.jdField_a_of_type_Ahwt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_flower").c("grp_aio").d("clk_send_him").a(0).a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + "", "29" }).a();
-      str = bhsi.i(this.jdField_a_of_type_Ahwt.jdField_a_of_type_AndroidContentContext, "url");
-      if (TextUtils.isEmpty(str)) {
-        break label223;
+      ahwt localahwt = (ahwt)paramList.get(i);
+      l2 = localahwt.jdField_a_of_type_Long;
+      if ((l1 == 0L) || (!a(l1, l2))) {
+        localahwt.jdField_a_of_type_Boolean = true;
       }
+      this.jdField_a_of_type_JavaUtilList.add(localahwt);
+      i += 1;
     }
-    for (;;)
+    return true;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    ahws localahws;
+    ahwt localahwt;
+    Object localObject;
+    RelativeLayout.LayoutParams localLayoutParams;
+    int i;
+    if (paramView == null)
     {
-      str = str.replace("{troopUin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.frienduin).replace("{uin}", "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForWantGiftMsg.senderuin).replace("{from}", "29");
-      Intent localIntent = new Intent(this.jdField_a_of_type_Ahwt.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      localIntent.putExtra("url", str);
-      this.jdField_a_of_type_Ahwt.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label223:
-      str = "https://qun.qq.com/qunpay/gifts/index.html?_bid=2204&troopUin={troopUin}&uin={uin}&from={from}&_wv=1031";
+      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559346, null);
+      localahws = new ahws();
+      localahws.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)paramView.findViewById(2131378368));
+      localahws.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378370));
+      localahws.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368236));
+      localahws.b = ((TextView)paramView.findViewById(2131369605));
+      localahws.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370021);
+      localahws.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131379227));
+      paramView.setTag(localahws);
+      localahwt = (ahwt)getItem(paramInt);
+      localahws.jdField_a_of_type_AndroidWidgetTextView.setText(localahwt.jdField_a_of_type_JavaLangCharSequence);
+      localahws.b.setText(localahwt.a());
+      localObject = new bczs(ContactUtils.getTroopMemberName(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.b, localahwt.jdField_a_of_type_JavaLangString), 16).a();
+      localahws.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText((CharSequence)localObject);
+      bgdk.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localahws.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView, (Spannable)localObject);
+      localObject = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, localahwt.jdField_a_of_type_JavaLangString);
+      localahws.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      localObject = (RelativeLayout.LayoutParams)localahws.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      localLayoutParams = (RelativeLayout.LayoutParams)localahws.b.getLayoutParams();
+      if (!localahwt.jdField_a_of_type_Boolean) {
+        break label456;
+      }
+      localahws.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      localahws.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      if (paramInt != 0) {
+        break label436;
+      }
+      i = ViewUtils.dip2px(3.0F);
+      label301:
+      ((RelativeLayout.LayoutParams)localObject).topMargin = i;
+      if (paramInt != 0) {
+        break label446;
+      }
+      i = ViewUtils.dip2px(3.0F);
+    }
+    label319:
+    for (localLayoutParams.topMargin = i;; localLayoutParams.topMargin = 0)
+    {
+      localahws.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localahws.b.setLayoutParams(localLayoutParams);
+      localahws.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(Integer.valueOf(paramInt));
+      localahws.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_AndroidViewView$OnClickListener);
+      paramView.setContentDescription(localahwt.jdField_a_of_type_JavaLangCharSequence + " " + localahwt.a());
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+      localahws = (ahws)paramView.getTag();
+      break;
+      i = ViewUtils.dip2px(9.0F);
+      break label301;
+      i = ViewUtils.dip2px(9.0F);
+      break label319;
+      label456:
+      localahws.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      localahws.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      ((RelativeLayout.LayoutParams)localObject).topMargin = 0;
     }
   }
 }

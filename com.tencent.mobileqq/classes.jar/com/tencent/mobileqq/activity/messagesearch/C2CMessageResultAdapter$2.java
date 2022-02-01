@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.messagesearch;
 
-import akip;
-import akjl;
+import ajgo;
+import ajhk;
 import android.os.Message;
-import blha;
+import bjmp;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -17,12 +17,12 @@ import java.util.Set;
 public class C2CMessageResultAdapter$2
   implements Runnable
 {
-  public C2CMessageResultAdapter$2(akip paramakip, String paramString, long paramLong) {}
+  public C2CMessageResultAdapter$2(ajgo paramajgo, String paramString, long paramLong) {}
   
   public void run()
   {
     int j = 0;
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
+    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryAllHistroyByKey(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
     int i;
     MessageRecord localMessageRecord;
     if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null) && (!((ChatHistorySearchData)localObject).mSearchData1.isEmpty()))
@@ -33,7 +33,7 @@ public class C2CMessageResultAdapter$2
         localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
         if (this.this$0.a(localMessageRecord))
         {
-          this.this$0.jdField_a_of_type_JavaUtilList.add(new akjl(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
+          this.this$0.jdField_a_of_type_JavaUtilList.add(new ajhk(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
           this.this$0.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(localMessageRecord.shmsgseq));
         }
         i += 1;
@@ -41,7 +41,7 @@ public class C2CMessageResultAdapter$2
     }
     if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData2 != null) && (!((ChatHistorySearchData)localObject).mSearchData2.isEmpty()))
     {
-      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, ((ChatHistorySearchData)localObject).mSearchData2);
+      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgListByID(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType, ((ChatHistorySearchData)localObject).mSearchData2);
       if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null))
       {
         i = j;
@@ -50,7 +50,7 @@ public class C2CMessageResultAdapter$2
           localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
           if (this.this$0.a(localMessageRecord))
           {
-            this.this$0.jdField_a_of_type_JavaUtilList.add(new akjl(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
+            this.this$0.jdField_a_of_type_JavaUtilList.add(new ajhk(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
             this.this$0.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(localMessageRecord.shmsgseq));
           }
           i += 1;
@@ -63,7 +63,7 @@ public class C2CMessageResultAdapter$2
     localObject = new HashMap();
     ((HashMap)localObject).put("keyword", this.jdField_a_of_type_JavaLangString);
     ((HashMap)localObject).put("sequence", Long.valueOf(this.jdField_a_of_type_Long));
-    this.this$0.jdField_a_of_type_Blha.obtainMessage(8, localObject).sendToTarget();
+    this.this$0.jdField_a_of_type_Bjmp.obtainMessage(8, localObject).sendToTarget();
   }
 }
 

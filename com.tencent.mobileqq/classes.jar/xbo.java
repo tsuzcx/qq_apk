@@ -1,17 +1,26 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollectionID;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class xbo
+class xbo
+  extends nmf
 {
-  public int a;
-  public int b;
+  xbo(xbm paramxbm, boolean paramBoolean) {}
   
-  public qqstory_struct.DateVideoCollectionID a()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    qqstory_struct.DateVideoCollectionID localDateVideoCollectionID = new qqstory_struct.DateVideoCollectionID();
-    localDateVideoCollectionID.collection_id.set(this.a);
-    localDateVideoCollectionID.collection_type.set(this.b);
-    return localDateVideoCollectionID;
+    if (paramInt != 0)
+    {
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramArrayOfByte.a(2, bool);
+        this.a.a(0, this.a.a.getString(2131719238));
+        return;
+      }
+    }
+    ((vla)this.a.a.app.getManager(181)).a(this.b);
   }
 }
 

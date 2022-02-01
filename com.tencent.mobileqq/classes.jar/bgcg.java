@@ -1,17 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-
-public class bgcg
-  implements DialogInterface.OnClickListener
+final class bgcg
+  implements bgci
 {
-  public bgcg(ReciteFragment paramReciteFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private boolean a(float[] paramArrayOfFloat)
   {
-    paramDialogInterface.dismiss();
-    this.a.a(false);
-    this.a.c();
+    return paramArrayOfFloat[2] <= 0.05F;
+  }
+  
+  private boolean b(float[] paramArrayOfFloat)
+  {
+    return paramArrayOfFloat[2] >= 0.95F;
+  }
+  
+  private boolean c(float[] paramArrayOfFloat)
+  {
+    return (paramArrayOfFloat[0] >= 10.0F) && (paramArrayOfFloat[0] <= 37.0F) && (paramArrayOfFloat[1] <= 0.82F);
+  }
+  
+  public boolean a(int paramInt, float[] paramArrayOfFloat)
+  {
+    return (!b(paramArrayOfFloat)) && (!a(paramArrayOfFloat)) && (!c(paramArrayOfFloat));
   }
 }
 

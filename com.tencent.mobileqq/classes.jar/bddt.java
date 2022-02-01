@@ -1,20 +1,25 @@
-import android.opengl.EGLContext;
+import com.tencent.beacon.event.UserAction;
+import com.tencent.beacon.upload.TunnelInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class bddt
 {
-  int jdField_a_of_type_Int;
-  EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  int b;
-  
-  public void a(EGLContext paramEGLContext, int paramInt1, int paramInt2)
+  static
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    UserAction.registerTunnel(new TunnelInfo("0AND07OPTZ3OVEUJ"));
+  }
+  
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    try
     {
-      this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.b = paramInt2;
+      UserAction.onUserActionToTunnel("0AND07OPTZ3OVEUJ", paramString, true, -1L, -1L, paramHashMap, true, true);
       return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("ClockReportUtil", 1, paramString, new Object[0]);
     }
   }
 }

@@ -1,16 +1,14 @@
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+
 public class adce
-  implements adcd
+  implements avtc<Void, bgjx>
 {
-  private adbd<Integer, adcc> a = new adbe();
+  public adce(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public adcc a(Integer paramInteger)
+  public bgjx a(Void paramVoid)
   {
-    return (adcc)this.a.a(paramInteger);
-  }
-  
-  public void a(Integer paramInteger, Class<? extends adcc> paramClass)
-  {
-    this.a.a(paramInteger, paramClass);
+    return bgjy.a(this.a.app).a(this.a.a.troopUin);
   }
 }
 

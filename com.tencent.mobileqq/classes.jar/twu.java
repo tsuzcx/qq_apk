@@ -1,363 +1,378 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.Adapter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import android.os.SystemClock;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyPatchAdUtils.1;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyPatchAdUtils.2;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyPatchAdView;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.json.JSONObject;
 
 public class twu
 {
-  private final int jdField_a_of_type_Int;
-  private final List<twx> jdField_a_of_type_JavaUtilList;
-  private final twt jdField_a_of_type_Twt;
-  private final boolean jdField_a_of_type_Boolean;
-  private final int[] jdField_a_of_type_ArrayOfInt;
-  private final int jdField_b_of_type_Int;
-  private final int[] jdField_b_of_type_ArrayOfInt;
+  public static int a;
+  public static long a;
+  public static String a;
+  private static ArrayBlockingQueue<AdvertisementInfo> a;
+  public static boolean a;
+  public static int b;
+  public static long b;
+  private static ArrayBlockingQueue<AdvertisementInfo> b;
+  public static boolean b;
+  public static boolean c;
   
-  twu(twt paramtwt, List<twx> paramList, int[] paramArrayOfInt1, int[] paramArrayOfInt2, boolean paramBoolean)
+  static
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt1;
-    this.jdField_b_of_type_ArrayOfInt = paramArrayOfInt2;
-    Arrays.fill(this.jdField_a_of_type_ArrayOfInt, 0);
-    Arrays.fill(this.jdField_b_of_type_ArrayOfInt, 0);
-    this.jdField_a_of_type_Twt = paramtwt;
-    this.jdField_a_of_type_Int = paramtwt.a();
-    this.jdField_b_of_type_Int = paramtwt.b();
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    a();
-    b();
+    jdField_a_of_type_JavaLangString = "ReadInJoyPatchAdUtils";
+    jdField_b_of_type_Int = 3;
+    jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue = new ArrayBlockingQueue(10);
+    jdField_b_of_type_JavaUtilConcurrentArrayBlockingQueue = new ArrayBlockingQueue(10);
   }
   
-  private static twv a(List<twv> paramList, int paramInt, boolean paramBoolean)
+  public static int a(JSONObject paramJSONObject)
   {
-    int i = paramList.size() - 1;
-    while (i >= 0)
+    return paramJSONObject.optInt("patchAdDisplaySeconds");
+  }
+  
+  public static AdvertisementInfo a(int paramInt)
+  {
+    ArrayBlockingQueue localArrayBlockingQueue2;
+    ArrayBlockingQueue localArrayBlockingQueue1;
+    if (paramInt == 1)
     {
-      twv localtwv2 = (twv)paramList.get(i);
-      if ((localtwv2.jdField_a_of_type_Int == paramInt) && (localtwv2.jdField_a_of_type_Boolean == paramBoolean))
+      localArrayBlockingQueue2 = jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue;
+      localArrayBlockingQueue1 = localArrayBlockingQueue2;
+      if (localArrayBlockingQueue2.size() <= 2)
       {
-        paramList.remove(i);
-        paramInt = i;
-        localtwv1 = localtwv2;
-        if (paramInt >= paramList.size()) {
-          break label123;
-        }
-        localtwv1 = (twv)paramList.get(paramInt);
-        int j = localtwv1.jdField_b_of_type_Int;
-        if (paramBoolean) {}
-        for (i = 1;; i = -1)
-        {
-          localtwv1.jdField_b_of_type_Int = (i + j);
-          paramInt += 1;
-          break;
-        }
+        a(1);
+        localArrayBlockingQueue1 = localArrayBlockingQueue2;
       }
-      i -= 1;
     }
-    twv localtwv1 = null;
-    label123:
-    return localtwv1;
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {}
-    for (twx localtwx = null;; localtwx = (twx)this.jdField_a_of_type_JavaUtilList.get(0))
+    while (localArrayBlockingQueue1.size() <= 0)
     {
-      if ((localtwx == null) || (localtwx.jdField_a_of_type_Int != 0) || (localtwx.jdField_b_of_type_Int != 0))
+      return null;
+      localArrayBlockingQueue2 = jdField_b_of_type_JavaUtilConcurrentArrayBlockingQueue;
+      localArrayBlockingQueue1 = localArrayBlockingQueue2;
+      if (localArrayBlockingQueue2.size() <= 2)
       {
-        localtwx = new twx();
-        localtwx.jdField_a_of_type_Int = 0;
-        localtwx.jdField_b_of_type_Int = 0;
-        localtwx.jdField_a_of_type_Boolean = false;
-        localtwx.c = 0;
-        localtwx.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_JavaUtilList.add(0, localtwx);
+        a(2);
+        localArrayBlockingQueue1 = localArrayBlockingQueue2;
       }
-      return;
     }
+    return (AdvertisementInfo)localArrayBlockingQueue1.poll();
   }
   
-  private void a(int paramInt1, int paramInt2, int paramInt3)
+  public static void a()
   {
-    if (this.jdField_a_of_type_ArrayOfInt[(paramInt1 - 1)] != 0) {
-      return;
-    }
-    a(paramInt1, paramInt2, paramInt3, false);
+    jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.clear();
+    jdField_b_of_type_JavaUtilConcurrentArrayBlockingQueue.clear();
   }
   
-  private void a(List<twv> paramList, txi paramtxi, int paramInt1, int paramInt2, int paramInt3)
+  public static void a(int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      paramtxi.a(paramInt1, paramInt2);
-    }
-    do
+    oaa localoaa = new oaa();
+    localoaa.d = 1;
+    if (paramInt == 1)
     {
-      return;
-      paramInt2 -= 1;
-    } while (paramInt2 < 0);
-    int i = this.jdField_b_of_type_ArrayOfInt[(paramInt3 + paramInt2)] & 0x1F;
-    Iterator localIterator;
-    switch (i)
-    {
-    default: 
-      throw new IllegalStateException("unknown flag for pos " + (paramInt2 + paramInt3) + " " + Long.toBinaryString(i));
-    case 0: 
-      paramtxi.a(paramInt1, 1);
-      localIterator = paramList.iterator();
-    case 4: 
-    case 8: 
-      while (localIterator.hasNext())
-      {
-        twv localtwv = (twv)localIterator.next();
-        localtwv.jdField_b_of_type_Int += 1;
-        continue;
-        int j = this.jdField_b_of_type_ArrayOfInt[(paramInt3 + paramInt2)] >> 5;
-        paramtxi.c(a(paramList, j, true).jdField_b_of_type_Int, paramInt1);
-        if (i == 4) {
-          paramtxi.a(paramInt1, 1, this.jdField_a_of_type_Twt.a(j, paramInt3 + paramInt2));
-        }
-      }
+      localoaa.e = 3;
+      localoaa.f = 0;
     }
     for (;;)
     {
-      paramInt2 -= 1;
-      break;
-      paramList.add(new twv(paramInt3 + paramInt2, paramInt1, false));
+      ThreadManager.executeOnSubThread(new ReadInJoyPatchAdUtils.2(localoaa));
+      return;
+      localoaa.f = 3;
+      localoaa.e = 0;
     }
   }
   
-  private boolean a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public static void a(Activity paramActivity, sdy paramsdy, sdc paramsdc, scw paramscw, see paramsee, tww paramtww)
   {
-    int m = 8;
-    int j;
-    int k;
-    int i;
-    if (paramBoolean)
-    {
-      j = paramInt2 - 1;
-      k = paramInt2 - 1;
-      i = paramInt1;
-      paramInt2 = j;
-      j = k;
-      k = i;
-      i = paramInt2;
-      paramInt2 = k;
-    }
-    for (;;)
-    {
-      if (paramInt3 < 0) {
-        break label289;
-      }
-      twx localtwx = (twx)this.jdField_a_of_type_JavaUtilList.get(paramInt3);
-      k = localtwx.jdField_a_of_type_Int;
-      int n = localtwx.c;
-      int i1 = localtwx.jdField_b_of_type_Int;
-      int i2 = localtwx.c;
-      if (paramBoolean)
-      {
-        paramInt2 -= 1;
-        for (;;)
-        {
-          if (paramInt2 < k + n) {
-            break label269;
-          }
-          if (this.jdField_a_of_type_Twt.a(paramInt2, j))
-          {
-            if (this.jdField_a_of_type_Twt.b(paramInt2, j)) {}
-            for (paramInt1 = 8;; paramInt1 = 4)
-            {
-              this.jdField_b_of_type_ArrayOfInt[j] = (paramInt2 << 5 | 0x10);
-              this.jdField_a_of_type_ArrayOfInt[paramInt2] = (paramInt1 | j << 5);
-              return true;
-              j = paramInt1 - 1;
-              i = paramInt1 - 1;
-              break;
-            }
-          }
-          paramInt2 -= 1;
-        }
-      }
-      paramInt2 = i - 1;
-      while (paramInt2 >= i1 + i2)
-      {
-        if (this.jdField_a_of_type_Twt.a(j, paramInt2))
-        {
-          if (this.jdField_a_of_type_Twt.b(j, paramInt2)) {}
-          for (paramInt3 = m;; paramInt3 = 4)
-          {
-            this.jdField_a_of_type_ArrayOfInt[(paramInt1 - 1)] = (paramInt2 << 5 | 0x10);
-            this.jdField_b_of_type_ArrayOfInt[paramInt2] = (paramInt1 - 1 << 5 | paramInt3);
-            return true;
-          }
-        }
-        paramInt2 -= 1;
-      }
-      label269:
-      paramInt2 = localtwx.jdField_a_of_type_Int;
-      i = localtwx.jdField_b_of_type_Int;
-      paramInt3 -= 1;
-    }
-    label289:
-    return false;
-  }
-  
-  private void b()
-  {
-    int j = this.jdField_a_of_type_Int;
-    int i = this.jdField_b_of_type_Int;
-    int k = this.jdField_a_of_type_JavaUtilList.size() - 1;
-    while (k >= 0)
-    {
-      twx localtwx = (twx)this.jdField_a_of_type_JavaUtilList.get(k);
-      int i2 = localtwx.jdField_a_of_type_Int;
-      int i3 = localtwx.c;
-      int n = localtwx.jdField_b_of_type_Int;
-      int i1 = localtwx.c;
-      int m;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        for (;;)
-        {
-          m = i;
-          if (j <= i2 + i3) {
-            break;
-          }
-          a(j, i, k);
-          j -= 1;
-        }
-        while (m > n + i1)
-        {
-          b(j, m, k);
-          m -= 1;
-        }
-      }
-      i = 0;
-      if (i < localtwx.c)
-      {
-        m = localtwx.jdField_a_of_type_Int + i;
-        n = localtwx.jdField_b_of_type_Int + i;
-        if (this.jdField_a_of_type_Twt.b(m, n)) {}
-        for (j = 1;; j = 2)
-        {
-          this.jdField_a_of_type_ArrayOfInt[m] = (n << 5 | j);
-          this.jdField_b_of_type_ArrayOfInt[n] = (j | m << 5);
-          i += 1;
-          break;
-        }
-      }
-      j = localtwx.jdField_a_of_type_Int;
-      i = localtwx.jdField_b_of_type_Int;
-      k -= 1;
-    }
-  }
-  
-  private void b(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.jdField_b_of_type_ArrayOfInt[(paramInt2 - 1)] != 0) {
+    ReadInJoyPatchAdView localReadInJoyPatchAdView = paramsdy.a();
+    if (localReadInJoyPatchAdView == null) {
       return;
     }
-    a(paramInt1, paramInt2, paramInt3, true);
+    localReadInJoyPatchAdView.setOnPatchAdListener(new twv(localReadInJoyPatchAdView, paramActivity, paramsdy, paramsdc, paramsee, paramscw, paramtww));
   }
   
-  private void b(List<twv> paramList, txi paramtxi, int paramInt1, int paramInt2, int paramInt3)
+  public static void a(sdg paramsdg, int paramInt1, int paramInt2)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      paramtxi.b(paramInt1, paramInt2);
-    }
-    do
+    if (paramInt1 == 1)
     {
+      paramsdg.a.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt2);
       return;
-      paramInt2 -= 1;
-    } while (paramInt2 < 0);
-    int i = this.jdField_a_of_type_ArrayOfInt[(paramInt3 + paramInt2)] & 0x1F;
-    Object localObject;
-    switch (i)
+    }
+    paramsdg.a.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt2);
+  }
+  
+  public static void a(sdg paramsdg, sdy paramsdy, boolean paramBoolean, tww paramtww)
+  {
+    int j = 0;
+    sdy localsdy = null;
+    if (!b(paramsdg, paramsdy)) {}
+    for (int i = 0;; i = 1)
     {
-    default: 
-      throw new IllegalStateException("unknown flag for pos " + (paramInt2 + paramInt3) + " " + Long.toBinaryString(i));
-    case 0: 
-      paramtxi.b(paramInt1 + paramInt2, 1);
-      localObject = paramList.iterator();
-    case 4: 
-    case 8: 
-      while (((Iterator)localObject).hasNext())
-      {
-        twv localtwv = (twv)((Iterator)localObject).next();
-        localtwv.jdField_b_of_type_Int -= 1;
-        continue;
-        int j = this.jdField_a_of_type_ArrayOfInt[(paramInt3 + paramInt2)] >> 5;
-        localObject = a(paramList, j, false);
-        paramtxi.c(paramInt1 + paramInt2, ((twv)localObject).jdField_b_of_type_Int - 1);
-        if (i == 4) {
-          paramtxi.a(((twv)localObject).jdField_b_of_type_Int - 1, 1, this.jdField_a_of_type_Twt.a(paramInt3 + paramInt2, j));
+      if (i != 0) {
+        if (paramBoolean)
+        {
+          paramsdy = paramsdy.a().a;
+          localsdy = paramsdy;
+          if (paramsdy != null) {
+            break label71;
+          }
+          i = j;
         }
       }
-    }
-    for (;;)
-    {
-      paramInt2 -= 1;
-      break;
-      paramList.add(new twv(paramInt3 + paramInt2, paramInt1 + paramInt2, true));
-    }
-  }
-  
-  public void a(@NonNull RecyclerView.Adapter paramAdapter)
-  {
-    a(new twp(paramAdapter));
-  }
-  
-  public void a(@NonNull txi paramtxi)
-  {
-    ArrayList localArrayList;
-    int j;
-    int k;
-    int i;
-    if ((paramtxi instanceof twq))
-    {
-      paramtxi = (twq)paramtxi;
-      localArrayList = new ArrayList();
-      j = this.jdField_a_of_type_Int;
-      k = this.jdField_b_of_type_Int;
-      i = this.jdField_a_of_type_JavaUtilList.size() - 1;
-    }
-    for (;;)
-    {
-      if (i < 0) {
-        break label234;
-      }
-      twx localtwx = (twx)this.jdField_a_of_type_JavaUtilList.get(i);
-      int m = localtwx.c;
-      int n = localtwx.jdField_a_of_type_Int + m;
-      int i1 = localtwx.jdField_b_of_type_Int + m;
-      if (n < j) {
-        b(localArrayList, paramtxi, n, j - n, n);
-      }
-      if (i1 < k) {
-        a(localArrayList, paramtxi, n, k - i1, i1);
-      }
-      j = m - 1;
       for (;;)
       {
-        if (j >= 0)
+        if ((i != 0) && (paramtww != null)) {
+          paramtww.a(paramsdg, paramsdy);
+        }
+        return;
+        paramsdy = a(1);
+        break;
+        label71:
+        paramsdy = localsdy;
+      }
+    }
+  }
+  
+  public static void a(sdg paramsdg, sdy paramsdy, boolean paramBoolean1, boolean paramBoolean2, see paramsee, scw paramscw, tww paramtww)
+  {
+    int j = 1;
+    Object localObject = null;
+    if (!a(paramsdg, paramsdy)) {
+      j = 0;
+    }
+    int i = j;
+    if (paramBoolean1)
+    {
+      i = j;
+      if (c) {
+        i = 0;
+      }
+    }
+    j = i;
+    AdvertisementInfo localAdvertisementInfo;
+    if (i != 0)
+    {
+      if (!paramBoolean2) {
+        break label116;
+      }
+      localAdvertisementInfo = paramsdy.a().a;
+      if ((localAdvertisementInfo != null) && (localAdvertisementInfo.mAdExtInfo != null))
+      {
+        localObject = localAdvertisementInfo;
+        j = i;
+        if (a(localAdvertisementInfo.mAdExtInfo, 2)) {}
+      }
+      else
+      {
+        j = 0;
+        localObject = localAdvertisementInfo;
+      }
+    }
+    if (j != 0) {
+      paramtww.b(paramsdg, localObject);
+    }
+    label116:
+    while (paramsee == null)
+    {
+      return;
+      localAdvertisementInfo = a(2);
+      break;
+    }
+    paramsee.a(paramsdy.a());
+    paramscw.c();
+  }
+  
+  public static void a(sdy paramsdy)
+  {
+    if (paramsdy.a() != null)
+    {
+      paramsdy.a().setVisibility(8);
+      paramsdy.a().a();
+    }
+  }
+  
+  public static boolean a(AdvertisementInfo paramAdvertisementInfo)
+  {
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramAdvertisementInfo.mAdExtInfo);
+        if (localJSONObject.has("patchAdType"))
         {
-          if ((this.jdField_a_of_type_ArrayOfInt[(localtwx.jdField_a_of_type_Int + j)] & 0x1F) == 2) {
-            paramtxi.a(localtwx.jdField_a_of_type_Int + j, 1, this.jdField_a_of_type_Twt.a(localtwx.jdField_a_of_type_Int + j, localtwx.jdField_b_of_type_Int + j));
+          if (localJSONObject.optInt("patchAdType") == 1)
+          {
+            jdField_a_of_type_Boolean = true;
+            jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.offer(paramAdvertisementInfo);
+            if (localJSONObject.optInt("postPatchAdNoFirst") == 1)
+            {
+              bool = true;
+              c = bool;
+              jdField_a_of_type_Int = localJSONObject.optInt("patchAdLimitMinutes");
+              jdField_b_of_type_Int = localJSONObject.optInt("patchAdDisplaySeconds");
+              return true;
+            }
           }
-          j -= 1;
-          continue;
-          paramtxi = new twq(paramtxi);
-          break;
+          else
+          {
+            if (localJSONObject.optInt("patchAdType") != 2) {
+              continue;
+            }
+            jdField_b_of_type_Boolean = true;
+            jdField_b_of_type_JavaUtilConcurrentArrayBlockingQueue.offer(paramAdvertisementInfo);
+            continue;
+          }
+        }
+        else {
+          return false;
         }
       }
-      j = localtwx.jdField_a_of_type_Int;
-      k = localtwx.jdField_b_of_type_Int;
-      i -= 1;
+      catch (Exception paramAdvertisementInfo)
+      {
+        paramAdvertisementInfo.printStackTrace();
+      }
+      boolean bool = false;
     }
-    label234:
-    paramtxi.a();
+  }
+  
+  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (paramBaseArticleInfo == null) {}
+    while ((!paramBaseArticleInfo.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (paramBaseArticleInfo.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 3) || (paramBaseArticleInfo.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 0)) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean a(String paramString, int paramInt)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (paramString == null) {
+        return false;
+      }
+    }
+    catch (Exception paramString)
+    {
+      do
+      {
+        do
+        {
+          for (;;)
+          {
+            paramString.printStackTrace();
+            paramString = null;
+          }
+        } while (paramString.optInt("patchAdType") != paramInt);
+        paramInt = paramString.optInt("patchAdLimitMinutes");
+      } while (SystemClock.elapsedRealtime() - jdField_b_of_type_Long < paramInt * 60000);
+    }
+    return true;
+  }
+  
+  public static boolean a(sdg paramsdg)
+  {
+    if ((paramsdg == null) || (paramsdg.a == null)) {}
+    while (paramsdg.jdField_b_of_type_Long != 56L) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean a(sdg paramsdg, sdy paramsdy)
+  {
+    int i = paramsdg.a.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    if ((i != 0) && (i != 2)) {
+      return false;
+    }
+    return c(paramsdg, paramsdy);
+  }
+  
+  public static boolean a(sdy paramsdy)
+  {
+    if ((paramsdy == null) || (paramsdy.a() == null)) {}
+    while ((paramsdy.a() == null) || (paramsdy.a().getVisibility() != 0)) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static void b()
+  {
+    jdField_a_of_type_Long = jdField_b_of_type_Long;
+    jdField_b_of_type_Long = SystemClock.elapsedRealtime();
+  }
+  
+  public static boolean b(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (paramBaseArticleInfo == null) {}
+    while ((!paramBaseArticleInfo.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (paramBaseArticleInfo.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 3)) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean b(sdg paramsdg, sdy paramsdy)
+  {
+    int i = paramsdg.a.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    if ((i != 0) && (i != 2)) {
+      return false;
+    }
+    return c(paramsdg, paramsdy);
+  }
+  
+  public static void c()
+  {
+    jdField_b_of_type_Long = jdField_a_of_type_Long;
+  }
+  
+  public static boolean c(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (paramBaseArticleInfo == null) {}
+    while ((paramBaseArticleInfo.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (paramBaseArticleInfo.patchStatus.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 2) || (paramBaseArticleInfo.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 0)) {
+      return false;
+    }
+    return true;
+  }
+  
+  private static boolean c(sdg paramsdg, sdy paramsdy)
+  {
+    if (paramsdg.jdField_b_of_type_Int <= 30) {}
+    while ((paramsdg.a.mChannelID != 56L) || (paramsdg.jdField_b_of_type_Boolean) || ((paramsdy != null) && (paramsdy.a()))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static void d()
+  {
+    Object localObject = jdField_b_of_type_JavaUtilConcurrentArrayBlockingQueue;
+    ArrayBlockingQueue localArrayBlockingQueue = jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue;
+    if ((((ArrayBlockingQueue)localObject).size() <= 2) || (localArrayBlockingQueue.size() <= 2))
+    {
+      localObject = new oaa();
+      ((oaa)localObject).d = 1;
+      ((oaa)localObject).e = 3;
+      ((oaa)localObject).f = 3;
+      ThreadManager.executeOnSubThread(new ReadInJoyPatchAdUtils.1((oaa)localObject));
+    }
+  }
+  
+  public static boolean d(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (paramBaseArticleInfo == null) {}
+    while ((paramBaseArticleInfo.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (paramBaseArticleInfo.patchStatus.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 2)) {
+      return false;
+    }
+    return true;
   }
 }
 

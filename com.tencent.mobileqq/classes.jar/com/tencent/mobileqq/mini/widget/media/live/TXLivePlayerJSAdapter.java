@@ -4,8 +4,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Surface;
-import bnjq;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.JarReflectUtil;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 import java.util.Iterator;
@@ -89,12 +89,12 @@ public class TXLivePlayerJSAdapter
   public TXLivePlayerJSAdapter(Context paramContext)
   {
     this.mContext = paramContext;
-    this.txLivePlayConfig = bnjq.a("com.tencent.rtmp.WXLivePlayConfig", null, new Object[0]);
-    this.txLivePlayer = bnjq.a("com.tencent.rtmp.WXLivePlayer", bnjq.a(new Class[] { Context.class }), new Object[] { this.mContext });
+    this.txLivePlayConfig = JarReflectUtil.creatSpecifiedObject("com.tencent.rtmp.WXLivePlayConfig", null, new Object[0]);
+    this.txLivePlayer = JarReflectUtil.creatSpecifiedObject("com.tencent.rtmp.WXLivePlayer", JarReflectUtil.getParamsClass(new Class[] { Context.class }), new Object[] { this.mContext });
     txLivePlayer_enableHardwareDecode(Boolean.valueOf(true));
     try
     {
-      bnjq.a(this.txLivePlayer, "setConfig", false, bnjq.a(new Class[] { Class.forName("com.tencent.rtmp.WXLivePlayConfig") }), new Object[] { this.txLivePlayConfig });
+      JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setConfig", false, JarReflectUtil.getParamsClass(new Class[] { Class.forName("com.tencent.rtmp.WXLivePlayConfig") }), new Object[] { this.txLivePlayConfig });
       paramContext = Class.forName("com.tencent.rtmp.ITXLivePlayListener");
       Object localObject = new TXLivePlayerJSAdapter.InnerTXLivePlayListenerImpl(this);
       txLivePlayer_setPlayListener(Proxy.newProxyInstance(TXLivePlayerJSAdapter.class.getClassLoader(), new Class[] { paramContext }, (InvocationHandler)localObject));
@@ -257,44 +257,44 @@ public class TXLivePlayerJSAdapter
   
   private void txCloudVideoView_disableLog(Boolean paramBoolean)
   {
-    bnjq.a(this.txCloudVideoView, "disableLog", false, bnjq.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    JarReflectUtil.callSpecifiedMethod(this.txCloudVideoView, "disableLog", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txCloudVideoView_showLog(Boolean paramBoolean)
   {
-    bnjq.a(this.txCloudVideoView, "showLog", false, bnjq.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    JarReflectUtil.callSpecifiedMethod(this.txCloudVideoView, "showLog", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txLivePlayConfig_setAutoAdjustCacheTime(Boolean paramBoolean)
   {
-    bnjq.a(this.txLivePlayConfig, "setAutoAdjustCacheTime", false, bnjq.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    JarReflectUtil.callSpecifiedMethod(this.txLivePlayConfig, "setAutoAdjustCacheTime", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txLivePlayConfig_setCacheTime(float paramFloat)
   {
-    bnjq.a(this.txLivePlayConfig, "setCacheTime", false, bnjq.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
+    JarReflectUtil.callSpecifiedMethod(this.txLivePlayConfig, "setCacheTime", false, JarReflectUtil.getParamsClass(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
   }
   
   private void txLivePlayConfig_setEnableMetaData(Boolean paramBoolean)
   {
-    bnjq.a(this.txLivePlayConfig, "setEnableMetaData", false, bnjq.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    JarReflectUtil.callSpecifiedMethod(this.txLivePlayConfig, "setEnableMetaData", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txLivePlayConfig_setMaxAutoAdjustCacheTime(float paramFloat)
   {
-    bnjq.a(this.txLivePlayConfig, "setMaxAutoAdjustCacheTime", false, bnjq.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
+    JarReflectUtil.callSpecifiedMethod(this.txLivePlayConfig, "setMaxAutoAdjustCacheTime", false, JarReflectUtil.getParamsClass(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
   }
   
   private void txLivePlayConfig_setMinAutoAdjustCacheTime(float paramFloat)
   {
-    bnjq.a(this.txLivePlayConfig, "setMinAutoAdjustCacheTime", false, bnjq.a(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
+    JarReflectUtil.callSpecifiedMethod(this.txLivePlayConfig, "setMinAutoAdjustCacheTime", false, JarReflectUtil.getParamsClass(new Class[] { Float.TYPE }), new Object[] { Float.valueOf(paramFloat) });
   }
   
   private void txLivePlay_snapshot(Object paramObject)
   {
     try
     {
-      bnjq.a(this.txLivePlayer, "snapshot", false, bnjq.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePlayer$ITXSnapshotListener") }), new Object[] { paramObject });
+      JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "snapshot", false, JarReflectUtil.getParamsClass(new Class[] { Class.forName("com.tencent.rtmp.TXLivePlayer$ITXSnapshotListener") }), new Object[] { paramObject });
       return;
     }
     catch (ClassNotFoundException paramObject)
@@ -305,17 +305,17 @@ public class TXLivePlayerJSAdapter
   
   private void txLivePlayer_enableAudioVolumeEvaluation(int paramInt)
   {
-    bnjq.a(this.txLivePlayer, "enableAudioVolumeEvaluation", false, bnjq.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "enableAudioVolumeEvaluation", false, JarReflectUtil.getParamsClass(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   private void txLivePlayer_enableHardwareDecode(Boolean paramBoolean)
   {
-    bnjq.a(this.txLivePlayer, "enableHardwareDecode", false, bnjq.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "enableHardwareDecode", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private boolean txLivePlayer_isPlaying()
   {
-    Object localObject = bnjq.a(this.txLivePlayer, "isPlaying", false, null, new Object[0]);
+    Object localObject = JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "isPlaying", false, null, new Object[0]);
     if (localObject != null) {
       return ((Boolean)localObject).booleanValue();
     }
@@ -324,34 +324,34 @@ public class TXLivePlayerJSAdapter
   
   private void txLivePlayer_muteAudio(Boolean paramBoolean)
   {
-    bnjq.a(this.txLivePlayer, "muteAudio", false, bnjq.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "muteAudio", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txLivePlayer_muteVideo(Boolean paramBoolean)
   {
-    bnjq.a(this.txLivePlayer, "muteVideo", false, bnjq.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "muteVideo", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private void txLivePlayer_pause()
   {
-    bnjq.a(this.txLivePlayer, "pause", false, null, new Object[0]);
+    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "pause", false, null, new Object[0]);
   }
   
   private void txLivePlayer_resume()
   {
-    bnjq.a(this.txLivePlayer, "resume", false, null, new Object[0]);
+    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "resume", false, null, new Object[0]);
   }
   
   private void txLivePlayer_setAudioRoute(int paramInt)
   {
-    bnjq.a(this.txLivePlayer, "setAudioRoute", false, bnjq.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setAudioRoute", false, JarReflectUtil.getParamsClass(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   private void txLivePlayer_setAudioVolumeEvaluationListener(Object paramObject)
   {
     try
     {
-      bnjq.a(this.txLivePlayer, "setAudioVolumeEvaluationListener", false, bnjq.a(new Class[] { Class.forName("com.tencent.rtmp.TXLivePlayer$ITXAudioVolumeEvaluationListener") }), new Object[] { paramObject });
+      JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setAudioVolumeEvaluationListener", false, JarReflectUtil.getParamsClass(new Class[] { Class.forName("com.tencent.rtmp.TXLivePlayer$ITXAudioVolumeEvaluationListener") }), new Object[] { paramObject });
       return;
     }
     catch (ClassNotFoundException paramObject)
@@ -364,7 +364,7 @@ public class TXLivePlayerJSAdapter
   {
     try
     {
-      bnjq.a(this.txLivePlayer, "setConfig", false, bnjq.a(new Class[] { Class.forName("com.tencent.rtmp.WXLivePlayConfig") }), new Object[] { paramObject });
+      JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setConfig", false, JarReflectUtil.getParamsClass(new Class[] { Class.forName("com.tencent.rtmp.WXLivePlayConfig") }), new Object[] { paramObject });
       return;
     }
     catch (ClassNotFoundException paramObject)
@@ -377,7 +377,7 @@ public class TXLivePlayerJSAdapter
   {
     try
     {
-      bnjq.a(this.txLivePlayer, "setPlayListener", false, bnjq.a(new Class[] { Class.forName("com.tencent.rtmp.ITXLivePlayListener") }), new Object[] { paramObject });
+      JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setPlayListener", false, JarReflectUtil.getParamsClass(new Class[] { Class.forName("com.tencent.rtmp.ITXLivePlayListener") }), new Object[] { paramObject });
       return;
     }
     catch (ClassNotFoundException paramObject)
@@ -390,7 +390,7 @@ public class TXLivePlayerJSAdapter
   {
     try
     {
-      bnjq.a(this.txLivePlayer, "setPlayerView", false, bnjq.a(new Class[] { Class.forName("com.tencent.rtmp.ui.TXCloudVideoView") }), new Object[] { paramObject });
+      JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setPlayerView", false, JarReflectUtil.getParamsClass(new Class[] { Class.forName("com.tencent.rtmp.ui.TXCloudVideoView") }), new Object[] { paramObject });
       return;
     }
     catch (ClassNotFoundException paramObject)
@@ -401,32 +401,32 @@ public class TXLivePlayerJSAdapter
   
   private void txLivePlayer_setRenderMode(int paramInt)
   {
-    bnjq.a(this.txLivePlayer, "setRenderMode", false, bnjq.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setRenderMode", false, JarReflectUtil.getParamsClass(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   private void txLivePlayer_setRenderRotation(int paramInt)
   {
-    bnjq.a(this.txLivePlayer, "setRenderRotation", false, bnjq.a(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
+    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setRenderRotation", false, JarReflectUtil.getParamsClass(new Class[] { Integer.TYPE }), new Object[] { Integer.valueOf(paramInt) });
   }
   
   private void txLivePlayer_setSurface(Surface paramSurface)
   {
-    bnjq.a(this.txLivePlayer, "setSurface", false, bnjq.a(new Class[] { Surface.class }), new Object[] { paramSurface });
+    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setSurface", false, JarReflectUtil.getParamsClass(new Class[] { Surface.class }), new Object[] { paramSurface });
   }
   
   private void txLivePlayer_setSurfaceSize(int paramInt1, int paramInt2)
   {
-    bnjq.a(this.txLivePlayer, "setSurfaceSize", false, bnjq.a(new Class[] { Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "setSurfaceSize", false, JarReflectUtil.getParamsClass(new Class[] { Integer.TYPE, Integer.TYPE }), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
   }
   
   private void txLivePlayer_showDebugLog(Boolean paramBoolean)
   {
-    bnjq.a(this.txLivePlayer, "showDebugLog", false, bnjq.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "showDebugLog", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   private int txLivePlayer_startPlay(String paramString, int paramInt)
   {
-    paramString = bnjq.a(this.txLivePlayer, "startPlay", false, bnjq.a(new Class[] { String.class, Integer.TYPE }), new Object[] { paramString, Integer.valueOf(paramInt) });
+    paramString = JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "startPlay", false, JarReflectUtil.getParamsClass(new Class[] { String.class, Integer.TYPE }), new Object[] { paramString, Integer.valueOf(paramInt) });
     if (paramString != null) {
       return ((Integer)paramString).intValue();
     }
@@ -435,7 +435,7 @@ public class TXLivePlayerJSAdapter
   
   private int txLivePlayer_stopPlay(Boolean paramBoolean)
   {
-    paramBoolean = bnjq.a(this.txLivePlayer, "stopPlay", false, bnjq.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    paramBoolean = JarReflectUtil.callSpecifiedMethod(this.txLivePlayer, "stopPlay", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
     if (paramBoolean != null) {
       return ((Integer)paramBoolean).intValue();
     }
@@ -444,7 +444,7 @@ public class TXLivePlayerJSAdapter
   
   private void txPlayConfig_setEnableMessage(Boolean paramBoolean)
   {
-    bnjq.a(this.txLivePlayConfig, "setEnableMessage", false, bnjq.a(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
+    JarReflectUtil.callSpecifiedMethod(this.txLivePlayConfig, "setEnableMessage", false, JarReflectUtil.getParamsClass(new Class[] { Boolean.TYPE }), new Object[] { paramBoolean });
   }
   
   public Bundle createBundleFromJsonObject(JSONObject paramJSONObject)

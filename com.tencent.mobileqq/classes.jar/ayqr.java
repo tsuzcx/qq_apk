@@ -1,20 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ToggleButton;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
 
-class ayqr
-  implements View.OnClickListener
+public abstract interface ayqr
 {
-  ayqr(ayqq paramayqq, ViewGroup paramViewGroup) {}
-  
-  public void onClick(View paramView)
-  {
-    if (ayqq.a(this.jdField_a_of_type_Ayqq) != null) {
-      ayqq.a(this.jdField_a_of_type_Ayqq).a(this.jdField_a_of_type_AndroidViewViewGroup);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton, Boolean paramBoolean);
 }
 
 

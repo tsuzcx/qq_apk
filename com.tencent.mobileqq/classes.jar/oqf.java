@@ -1,16 +1,85 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.channelbanner.RIJChannelBannerReport.reportAllData.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 import kotlin.Metadata;
+import kotlin.collections.MapsKt;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class oqf
-  implements ViewBase.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerReport;", "", "()V", "avatarCardClickMap", "Ljava/util/HashMap;", "", "Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerReport$R5Builder;", "Lkotlin/collections/HashMap;", "getAvatarCardClickMap", "()Ljava/util/HashMap;", "avatarCardExposureMap", "getAvatarCardExposureMap", "avatarItemClickMap", "getAvatarItemClickMap", "avatarItemExposureMap", "getAvatarItemExposureMap", "getBaseR5Builder", "channelBannerInfo", "Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerModule$ChannelBannerInfo;", "Lcom/tencent/biz/pubaccount/readinjoy/channelbanner/RIJChannelBannerModule;", "reportAllData", "", "reportDataImp", "actionName", "r5Builder", "Companion", "R5Builder", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oqf
 {
-  oqf(otd paramotd, otp paramotp) {}
+  public static final oqg a;
+  @NotNull
+  private final HashMap<String, oqh> a;
+  @NotNull
+  private final HashMap<String, oqh> b = new HashMap();
+  @NotNull
+  private final HashMap<String, oqh> c = new HashMap();
+  @NotNull
+  private final HashMap<String, oqh> d = new HashMap();
   
-  public final void onClick(ViewBase paramViewBase)
+  static
   {
-    oqy.a(this.jdField_a_of_type_Otd, this.jdField_a_of_type_Otp);
+    jdField_a_of_type_Oqg = new oqg(null);
+  }
+  
+  public oqf()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  private final void a(String paramString, oqh paramoqh)
+  {
+    paramoqh = paramoqh.a();
+    QLog.i("RIJChannelBannerReport", 1, "[reportDataImp], actionName = " + paramString + ", r5 = " + paramoqh);
+    odq.a(null, "", paramString, paramString, 0, 0, "", "", "", paramoqh, false);
+  }
+  
+  @NotNull
+  public final HashMap<String, oqh> a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  @NotNull
+  public final oqh a(@NotNull oqd paramoqd)
+  {
+    Intrinsics.checkParameterIsNotNull(paramoqd, "channelBannerInfo");
+    return new oqh().a("channel_id", String.valueOf(paramoqd.a())).a(paramoqd.d());
+  }
+  
+  public final void a()
+  {
+    Map localMap1 = MapsKt.toMutableMap((Map)this.jdField_a_of_type_JavaUtilHashMap);
+    Map localMap2 = MapsKt.toMutableMap((Map)this.b);
+    Map localMap3 = MapsKt.toMutableMap((Map)this.c);
+    Map localMap4 = MapsKt.toMutableMap((Map)this.d);
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.b.clear();
+    this.c.clear();
+    this.d.clear();
+    ThreadManager.executeOnSubThread((Runnable)new RIJChannelBannerReport.reportAllData.1(this, localMap1, localMap2, localMap3, localMap4));
+  }
+  
+  @NotNull
+  public final HashMap<String, oqh> b()
+  {
+    return this.b;
+  }
+  
+  @NotNull
+  public final HashMap<String, oqh> c()
+  {
+    return this.c;
+  }
+  
+  @NotNull
+  public final HashMap<String, oqh> d()
+  {
+    return this.d;
   }
 }
 

@@ -489,7 +489,9 @@ public class GameLaunchStrategy
     for (;;)
     {
       paramRunningProcessInfo = (ActivityManager.AppTask)paramRunningProcessInfo;
-      if (paramRunningProcessInfo != null) {
+      if (paramRunningProcessInfo != null)
+      {
+        QMLog.i("GameLaunchStrategy", "performFinishTaskForOldGameInProcess " + paramRunningProcessInfo.getTaskInfo().baseIntent);
         paramRunningProcessInfo.finishAndRemoveTask();
       }
       return;
@@ -516,13 +518,13 @@ public class GameLaunchStrategy
     //   9: aload_0
     //   10: getfield 181	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy:runningProcess	Ljava/util/LinkedList;
     //   13: checkcast 197	java/util/List
-    //   16: invokevirtual 529	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$Companion:findProcessToPreload$lib_miniserver_internalRelease	(Ljava/util/List;Ljava/util/List;)Lcom/tencent/qqmini/sdk/launcher/MiniProcessorConfig;
+    //   16: invokevirtual 531	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$Companion:findProcessToPreload$lib_miniserver_internalRelease	(Ljava/util/List;Ljava/util/List;)Lcom/tencent/qqmini/sdk/launcher/MiniProcessorConfig;
     //   19: astore_1
     //   20: aload_1
     //   21: ifnull +22 -> 43
     //   24: aload_0
     //   25: aload_1
-    //   26: invokespecial 530	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy:performPreloadProcess	(Lcom/tencent/qqmini/sdk/launcher/MiniProcessorConfig;)V
+    //   26: invokespecial 532	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy:performPreloadProcess	(Lcom/tencent/qqmini/sdk/launcher/MiniProcessorConfig;)V
     //   29: aload_0
     //   30: invokespecial 435	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy:cleanOldGameIfNeed	()V
     //   33: aload_1
@@ -586,7 +588,7 @@ public class GameLaunchStrategy
     //   3: ldc_w 389
     //   6: invokestatic 116	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
     //   9: aload_2
-    //   10: ldc_w 538
+    //   10: ldc_w 540
     //   13: invokestatic 116	kotlin/jvm/internal/Intrinsics:checkParameterIsNotNull	(Ljava/lang/Object;Ljava/lang/String;)V
     //   16: getstatic 108	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy:Companion	Lcom/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$Companion;
     //   19: aload_1
@@ -615,13 +617,13 @@ public class GameLaunchStrategy
     //   75: aload_1
     //   76: ifnull +17 -> 93
     //   79: aload_1
-    //   80: invokevirtual 542	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$RunningProcessInfo:getMessenger	()Landroid/os/Messenger;
+    //   80: invokevirtual 544	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$RunningProcessInfo:getMessenger	()Landroid/os/Messenger;
     //   83: astore_1
     //   84: aload_1
     //   85: ifnull +8 -> 93
     //   88: aload_1
     //   89: aload_2
-    //   90: invokevirtual 548	android/os/Messenger:send	(Landroid/os/Message;)V
+    //   90: invokevirtual 550	android/os/Messenger:send	(Landroid/os/Message;)V
     //   93: aload_0
     //   94: monitorexit
     //   95: return
@@ -669,7 +671,7 @@ public class GameLaunchStrategy
     //   26: aload_0
     //   27: getfield 181	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy:runningProcess	Ljava/util/LinkedList;
     //   30: checkcast 197	java/util/List
-    //   33: invokevirtual 553	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$Companion:findExistedProcessForGame$lib_miniserver_internalRelease	(Lcom/tencent/qqmini/sdk/server/launch/AppIdentity;Ljava/util/List;)Lcom/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$RunningProcessInfo;
+    //   33: invokevirtual 555	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$Companion:findExistedProcessForGame$lib_miniserver_internalRelease	(Lcom/tencent/qqmini/sdk/server/launch/AppIdentity;Ljava/util/List;)Lcom/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$RunningProcessInfo;
     //   36: astore_2
     //   37: aload_2
     //   38: ifnonnull +314 -> 352
@@ -679,7 +681,7 @@ public class GameLaunchStrategy
     //   48: aload_0
     //   49: getfield 181	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy:runningProcess	Ljava/util/LinkedList;
     //   52: checkcast 197	java/util/List
-    //   55: invokevirtual 556	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$Companion:findProcessForLaunch$lib_miniserver_internalRelease	(Ljava/util/List;Ljava/util/List;)Lcom/tencent/qqmini/sdk/launcher/MiniProcessorConfig;
+    //   55: invokevirtual 558	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$Companion:findProcessForLaunch$lib_miniserver_internalRelease	(Ljava/util/List;Ljava/util/List;)Lcom/tencent/qqmini/sdk/launcher/MiniProcessorConfig;
     //   58: astore_3
     //   59: getstatic 108	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy:Companion	Lcom/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$Companion;
     //   62: astore_2
@@ -731,7 +733,7 @@ public class GameLaunchStrategy
     //   167: new 249	java/lang/StringBuilder
     //   170: dup
     //   171: invokespecial 250	java/lang/StringBuilder:<init>	()V
-    //   174: ldc_w 558
+    //   174: ldc_w 560
     //   177: invokevirtual 256	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   180: getstatic 108	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy:Companion	Lcom/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$Companion;
     //   183: aload_1
@@ -750,20 +752,20 @@ public class GameLaunchStrategy
     //   214: aload_1
     //   215: checkcast 391	com/tencent/qqmini/sdk/launcher/model/MiniAppBaseInfo
     //   218: invokevirtual 395	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$Companion:toId$lib_miniserver_internalRelease	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppBaseInfo;)Lcom/tencent/qqmini/sdk/server/launch/AppIdentity;
-    //   221: invokevirtual 562	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$Companion:createLaunchIntent$lib_miniserver_internalRelease	(Landroid/content/Context;Lcom/tencent/qqmini/sdk/server/launch/GameLaunchConfig;Lcom/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$RunningProcessInfo;Lcom/tencent/qqmini/sdk/server/launch/AppIdentity;)Landroid/content/Intent;
+    //   221: invokevirtual 564	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$Companion:createLaunchIntent$lib_miniserver_internalRelease	(Landroid/content/Context;Lcom/tencent/qqmini/sdk/server/launch/GameLaunchConfig;Lcom/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$RunningProcessInfo;Lcom/tencent/qqmini/sdk/server/launch/AppIdentity;)Landroid/content/Intent;
     //   224: astore_3
     //   225: aload_2
-    //   226: invokevirtual 566	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$RunningProcessInfo:getState	()Lcom/tencent/qqmini/sdk/server/launch/RunningProcessState;
+    //   226: invokevirtual 568	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$RunningProcessInfo:getState	()Lcom/tencent/qqmini/sdk/server/launch/RunningProcessState;
     //   229: astore_1
-    //   230: getstatic 572	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$WhenMappings:$EnumSwitchMapping$0	[I
+    //   230: getstatic 574	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$WhenMappings:$EnumSwitchMapping$0	[I
     //   233: aload_1
-    //   234: invokevirtual 577	com/tencent/qqmini/sdk/server/launch/RunningProcessState:ordinal	()I
+    //   234: invokevirtual 579	com/tencent/qqmini/sdk/server/launch/RunningProcessState:ordinal	()I
     //   237: iaload
     //   238: tableswitch	default:+124 -> 362, 1:+82->320, 2:+100->338, 3:+107->345
     //   265: iconst_m1
-    //   266: fstore_0
+    //   266: fstore_2
     //   267: dup
-    //   268: invokespecial 580	kotlin/NoWhenBranchMatchedException:<init>	()V
+    //   268: invokespecial 582	kotlin/NoWhenBranchMatchedException:<init>	()V
     //   271: athrow
     //   272: astore_1
     //   273: aload_0
@@ -774,7 +776,7 @@ public class GameLaunchStrategy
     //   278: aload_0
     //   279: getfield 181	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy:runningProcess	Ljava/util/LinkedList;
     //   282: checkcast 197	java/util/List
-    //   285: invokestatic 584	kotlin/collections/CollectionsKt:last	(Ljava/util/List;)Ljava/lang/Object;
+    //   285: invokestatic 586	kotlin/collections/CollectionsKt:last	(Ljava/util/List;)Ljava/lang/Object;
     //   288: checkcast 223	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$RunningProcessInfo
     //   291: invokevirtual 227	com/tencent/qqmini/sdk/server/launch/GameLaunchStrategy$RunningProcessInfo:getConfig	()Lcom/tencent/qqmini/sdk/launcher/MiniProcessorConfig;
     //   294: astore_3
@@ -790,22 +792,22 @@ public class GameLaunchStrategy
     //   311: aload_2
     //   312: invokeinterface 240 3 0
     //   317: goto -198 -> 119
-    //   320: getstatic 590	com/tencent/qqmini/sdk/server/launch/ProcessState:EMPTY	Lcom/tencent/qqmini/sdk/server/launch/ProcessState;
+    //   320: getstatic 592	com/tencent/qqmini/sdk/server/launch/ProcessState:EMPTY	Lcom/tencent/qqmini/sdk/server/launch/ProcessState;
     //   323: astore_1
-    //   324: new 592	com/tencent/qqmini/sdk/server/launch/LaunchStrategy$LaunchData
+    //   324: new 594	com/tencent/qqmini/sdk/server/launch/LaunchStrategy$LaunchData
     //   327: dup
     //   328: aload_3
     //   329: aload_1
-    //   330: invokespecial 595	com/tencent/qqmini/sdk/server/launch/LaunchStrategy$LaunchData:<init>	(Landroid/content/Intent;Lcom/tencent/qqmini/sdk/server/launch/ProcessState;)V
+    //   330: invokespecial 597	com/tencent/qqmini/sdk/server/launch/LaunchStrategy$LaunchData:<init>	(Landroid/content/Intent;Lcom/tencent/qqmini/sdk/server/launch/ProcessState;)V
     //   333: astore_1
     //   334: aload_0
     //   335: monitorexit
     //   336: aload_1
     //   337: areturn
-    //   338: getstatic 598	com/tencent/qqmini/sdk/server/launch/ProcessState:REUSE	Lcom/tencent/qqmini/sdk/server/launch/ProcessState;
+    //   338: getstatic 600	com/tencent/qqmini/sdk/server/launch/ProcessState:REUSE	Lcom/tencent/qqmini/sdk/server/launch/ProcessState;
     //   341: astore_1
     //   342: goto -18 -> 324
-    //   345: getstatic 601	com/tencent/qqmini/sdk/server/launch/ProcessState:PRELOADED	Lcom/tencent/qqmini/sdk/server/launch/ProcessState;
+    //   345: getstatic 603	com/tencent/qqmini/sdk/server/launch/ProcessState:PRELOADED	Lcom/tencent/qqmini/sdk/server/launch/ProcessState;
     //   348: astore_1
     //   349: goto -25 -> 324
     //   352: goto -186 -> 166

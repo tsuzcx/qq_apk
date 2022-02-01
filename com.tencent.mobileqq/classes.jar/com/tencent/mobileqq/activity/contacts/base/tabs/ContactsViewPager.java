@@ -7,9 +7,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
-import bdep;
 import com.tencent.mobileqq.activity.contacts.base.HeaderScrollView;
 import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class ContactsViewPager
   extends ViewPager
@@ -93,7 +93,7 @@ public class ContactsViewPager
       if ((!this.jdField_a_of_type_Boolean) || (k <= m)) {
         break label259;
       }
-      if ((k * 0.5F <= i) || (this.jdField_a_of_type_Int <= (int)(bdep.jdField_a_of_type_Int * 0.1F))) {
+      if ((k * 0.5F <= i) || (this.jdField_a_of_type_Int <= (int)(ScreenUtil.SCREEN_WIDTH * 0.1F))) {
         break label254;
       }
       j = 1;

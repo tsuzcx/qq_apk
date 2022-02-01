@@ -1,135 +1,81 @@
-import android.content.Intent;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.util.StateSet;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class bhby
-  implements AdapterView.OnItemClickListener
+public class bhby
+  extends bhfp
 {
-  bhby(bhbx parambhbx) {}
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 16842919 };
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private bhbz jdField_a_of_type_Bhbz;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public bhby(Drawable paramDrawable1, Drawable paramDrawable2)
   {
-    int j = 0;
-    Object localObject = paramView.getTag();
-    if ((localObject == null) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null))
-    {
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
-    switch (((bhsc)localObject).a.action)
-    {
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Int = ((int)paramLong);
-      if (paramLong != 7L) {
-        break label255;
-      }
-      localObject = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, Face2FaceAddFriendActivity.class);
-      ((Intent)localObject).putExtra("activity_from_type", 1);
-      ((Intent)localObject).putExtra("activity_troop_uin", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity((Intent)localObject);
-      break;
-      paramLong = 0L;
-      continue;
-      paramLong = 1L;
-      continue;
-      paramLong = 3L;
-      continue;
-      paramLong = 2L;
-      continue;
-      paramLong = 4L;
-      continue;
-      paramLong = 5L;
-      continue;
-      paramLong = 7L;
-    }
-    label255:
+    super(null, 0);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(jdField_a_of_type_ArrayOfInt, paramDrawable2);
+    localStateListDrawable.addState(StateSet.WILD_CARD, paramDrawable1);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, paramDrawable2.getBounds().right, paramDrawable2.getBounds().bottom);
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(StateSet.WILD_CARD);
+    paramView.invalidate();
+  }
+  
+  public void a(bhbz parambhbz)
+  {
+    this.jdField_a_of_type_Bhbz = parambhbz;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
     int i;
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        i = 2131719399;
-      }
+    do
+    {
+      return false;
+      i = paramMotionEvent.getAction();
+    } while (i == 2);
+    if (i == 0) {
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(jdField_a_of_type_ArrayOfInt);
     }
     for (;;)
     {
-      if (i != -1)
-      {
-        this.a.b(false);
-        QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(i), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-        this.a.jdField_a_of_type_Int = -1;
-        this.a.b = -1;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-          ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-        }
-        break;
-        if (WXShareHelper.a().b()) {
-          break label711;
-        }
-        i = 2131719400;
-        continue;
+      if ((i == 1) && (this.jdField_a_of_type_Bhbz != null)) {
+        this.jdField_a_of_type_Bhbz.a(this);
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopShareUtility", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
-      }
-      if ((this.a.jdField_a_of_type_Int == 5) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember))
-      {
-        this.a.f();
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-          ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-        }
-      }
-      for (;;)
-      {
-        break;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim()) && (!TroopInfo.isQidianPrivateTroop((QQAppInterface)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime(), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin)))
-        {
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-            this.a.jdField_a_of_type_Boolean = true;
-          }
-          if ((TroopInfo.hasPayPrivilege(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopPrivilegeFlag, 512))) {}
-          for (i = 1;; i = 0)
-          {
-            if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.cGroupOption == 1) {
-              j = 1;
-            }
-            if ((i | j) == 0) {
-              break label654;
-            }
-            this.a.b(true);
-            this.a.c();
-            break;
-          }
-          label654:
-          bhbx.a(this.a);
-        }
-        else
-        {
-          this.a.b(true);
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-            this.a.jdField_a_of_type_Boolean = false;
-          }
-          this.a.b = 0;
-          bhbx.b(this.a);
-        }
-      }
-      label711:
-      i = -1;
+      paramView.invalidate();
+      return true;
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(StateSet.WILD_CARD);
     }
+  }
+  
+  public void b(View paramView)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(jdField_a_of_type_ArrayOfInt);
+    paramView.invalidate();
+  }
+  
+  public Drawable getDrawable()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
 }
 

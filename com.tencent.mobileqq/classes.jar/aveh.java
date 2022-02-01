@@ -1,42 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.fragment.MineFragment.2;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import tencent.im.oidb.cmd0x91f.oidb_0x91f.ReqBody;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.8;
 
 public class aveh
+  implements DialogInterface.OnClickListener
 {
-  public static void a(NearbyAppInterface paramNearbyAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby", 2, "clearLbsInfoAndExit");
-    }
-    axws.a(paramNearbyAppInterface.getAccount(), "nearby_enter_time", Long.valueOf(0L));
-    if ((aodb)paramNearbyAppInterface.a(3) != null)
-    {
-      oidb_0x91f.ReqBody localReqBody = new oidb_0x91f.ReqBody();
-      localReqBody.uint32_state.set(0);
-      nkm.a(paramNearbyAppInterface, new avei(paramNearbyAppInterface), localReqBody.toByteArray(), "OidbSvc.0x91f", 2335, 5, null, 0L);
-    }
-    axws.a(paramNearbyAppInterface.getAccount(), false);
-    axws.a(paramNearbyAppInterface.getAccount(), "nearby_people_disclaimer_ok_5.8.0", Boolean.valueOf(false));
-    paramNearbyAppInterface.c = false;
-    ThreadManager.post(new MineFragment.2(paramNearbyAppInterface), 10, null, true);
-  }
+  public aveh(LocationDialogUtil.8 param8) {}
   
-  public static void b(NearbyAppInterface paramNearbyAppInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    File localFile = BaseApplicationImpl.getContext().getFileStreamPath(paramNearbyAppInterface.getCurrentAccountUin() + "v5.3.nb");
-    if (localFile.exists())
-    {
-      localFile.delete();
-      axxb.a("Q.nearby", "clearNearbyCache", new Object[0]);
-    }
-    axws.a(paramNearbyAppInterface.getAccount(), "history_valid", Boolean.valueOf(false));
+    this.a.a.finish();
   }
 }
 

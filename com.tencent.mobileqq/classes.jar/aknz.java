@@ -1,50 +1,77 @@
-import android.os.Handler;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aknz
-  extends azov
+  extends akns
 {
-  public aknz(BindVerifyActivity paramBindVerifyActivity) {}
+  private String d;
   
-  protected void f(boolean paramBoolean, int paramInt)
+  public aknz a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BindVerifyActivity", 2, "onVerifyBindSms [" + paramBoolean + ", " + paramInt + "]");
-    }
-    BindVerifyActivity.a(this.a, false);
-    BindVerifyActivity.a(this.a).removeMessages(4);
-    this.a.b();
-    if (!paramBoolean)
+    this.d = paramString;
+    return this;
+  }
+  
+  public Object a(int paramInt, bdyi parambdyi, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.d;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = new String(paramArrayOfByte);
+    try
     {
-      this.a.a("dc00898", "0X8009F19", 0);
-      this.a.a(1, this.a.getString(2131717454));
-    }
-    for (;;)
-    {
-      this.a.app.unRegistObserver(BindVerifyActivity.b(this.a));
-      BindVerifyActivity.b(this.a, null);
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_Long = paramArrayOfByte.getLong("uniseq");
+      this.jdField_b_of_type_Long = paramArrayOfByte.getLong("shmsgseq");
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      this.d = paramArrayOfByte.getString("senderUin");
+      if (this.jdField_a_of_type_Bdyj == null) {
+        this.jdField_a_of_type_Bdyj = new bdyj();
+      }
+      this.jdField_a_of_type_Bdyj.a(paramArrayOfByte.getString("messageNavInfo"));
       return;
-      if ((paramInt == 0) || (paramInt == 106))
-      {
-        this.a.a();
+    }
+    catch (JSONException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("uniseq", this.jdField_a_of_type_Long);
+      localJSONObject.put("shmsgseq", this.jdField_b_of_type_Long);
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      localJSONObject.put("senderUin", this.d);
+      if (this.jdField_a_of_type_Bdyj != null) {
+        localJSONObject.put("messageNavInfo", this.jdField_a_of_type_Bdyj.a());
       }
-      else if (paramInt == 213)
+      return localJSONObject.toString().getBytes();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        this.a.a("dc00898", "0X8009F19", 0);
-        this.a.a(1, anzj.a(2131700059));
-        BindVerifyActivity.a(this.a).setEnabled(true);
-      }
-      else
-      {
-        this.a.a("dc00898", "0X8009F19", 0);
-        String str = anzj.a(2131700054);
-        if (paramInt == 107) {
-          str = anzj.a(2131700056);
-        }
-        this.a.a(anzj.a(2131700060), str);
+        localJSONException.printStackTrace();
       }
     }
   }

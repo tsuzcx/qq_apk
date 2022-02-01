@@ -1,20 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-class qlb
-  implements View.OnClickListener
+public abstract interface qlb
 {
-  qlb(qkv paramqkv) {}
-  
-  public void onClick(View paramView)
-  {
-    sgf localsgf = this.a.jdField_a_of_type_Sel.a();
-    if (localsgf != null) {
-      localsgf.a(null, ((ppu)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean);
 }
 
 

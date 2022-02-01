@@ -1,21 +1,19 @@
-import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aytv
+  implements View.OnClickListener
 {
-  public int a;
-  public Drawable a;
-  public ayud a;
-  public String a;
+  public aytv(AbsProfileHeaderView paramAbsProfileHeaderView, View paramView) {}
   
-  public aytv(String paramString, ayud paramayud)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Ayud = paramayud;
-    a();
+    aymz.a().c(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView.a);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a() {}
 }
 
 

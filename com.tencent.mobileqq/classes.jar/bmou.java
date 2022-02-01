@@ -1,49 +1,30 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import cooperation.qwallet.plugin.QWalletHelper;
-import mqq.app.AppRuntime;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
 public class bmou
-  extends RemoteCommand
+  extends RecyclerView.ItemDecoration
 {
-  public bmou()
+  private int a;
+  
+  public bmou(int paramInt)
   {
-    super("qqreader_plugin_asyn_cmd");
+    this.a = paramInt;
   }
   
-  private QQAppInterface a()
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
+    paramRect.left = this.a;
+    int i = 0;
+    if (paramRecyclerView.getAdapter() != null) {
+      i = paramRecyclerView.getAdapter().getItemCount();
     }
-    return null;
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    switch (paramBundle.getInt("CommondType"))
-    {
+    if ((i != 0) && (paramRecyclerView.getChildLayoutPosition(paramView) == i - 1)) {
+      paramRect.right = this.a;
     }
-    for (;;)
-    {
-      return null;
-      if (a() != null)
-      {
-        paramBundle = paramBundle.getString("publicaccount_uin");
-        tzq.a(a(), a().getApp(), paramBundle, new bmov(this, paramOnInvokeFinishLinstener));
-        continue;
-        QWalletHelper.preloadQWallet(a());
-      }
-    }
-  }
-  
-  public boolean isSynchronized()
-  {
-    return false;
   }
 }
 

@@ -1,24 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.ShieldOperationItem;
-
-public final class aohj
-  implements Parcelable.Creator<ShieldOperationItem>
+public class aohj
 {
-  public ShieldOperationItem a(Parcel paramParcel)
-  {
-    ShieldOperationItem localShieldOperationItem = new ShieldOperationItem();
-    localShieldOperationItem.jdField_a_of_type_Int = paramParcel.readInt();
-    localShieldOperationItem.b = paramParcel.readInt();
-    localShieldOperationItem.c = paramParcel.readInt();
-    localShieldOperationItem.jdField_a_of_type_ArrayOfLong = paramParcel.createLongArray();
-    localShieldOperationItem.d = paramParcel.readInt();
-    return localShieldOperationItem;
-  }
+  public float a;
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public ShieldOperationItem[] a(int paramInt)
+  public String toString()
   {
-    return null;
+    return "StarInfo{faceID=" + this.jdField_a_of_type_Int + ", uin=" + this.jdField_a_of_type_Long + ", name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", pinyin_name='" + this.b + '\'' + ", wiki='" + this.c + '\'' + ", wikiTitle='" + this.d + '\'' + ", wikiURL='" + this.e + '\'' + ", confidence='" + this.jdField_a_of_type_Float + '\'' + '}';
   }
 }
 

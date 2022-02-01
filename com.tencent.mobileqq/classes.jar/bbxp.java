@@ -1,52 +1,25 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
+import com.tencent.mobileqq.shortvideo.util.ShortVideoGuideUtil.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class bbxp
-  extends Handler
+  implements TVK_SDKMgr.InstallListener
 {
-  public bbxp(ScribbleResMgr paramScribbleResMgr, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public bbxp(ShortVideoGuideUtil.1 param1) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ScribbleResMgr", 2, "handleMessage  status: " + paramMessage.what + " type: " + paramMessage.arg1);
+      QLog.d(bbxo.a, 2, "installSDK onInstalledFailed arg0=" + paramInt);
     }
-    if (paramMessage.what == 1001) {
-      ScribbleResMgr.a(this.a, paramMessage.arg1, paramMessage.arg2, true);
-    }
-    for (;;)
-    {
-      return;
-      if (paramMessage.what == 1002)
-      {
-        ScribbleResMgr.a(this.a, paramMessage.arg1, paramMessage.arg2, false);
-        return;
-      }
-      Iterator localIterator = ScribbleResMgr.a(this.a).iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (bbxt)localIterator.next();
-        if (localObject != null)
-        {
-          View localView = ((bbxt)localObject).a();
-          localObject = ((bbxt)localObject).a();
-          if ((localView != null) && (localObject != null)) {
-            ((bbxu)localObject).a(localView, paramMessage.arg1, (ScribbleResMgr.ResInfo)paramMessage.obj, paramMessage.what);
-          } else {
-            localIterator.remove();
-          }
-        }
-      }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(bbxo.a, 2, "installSDK onInstalledSuccessed=");
     }
   }
 }

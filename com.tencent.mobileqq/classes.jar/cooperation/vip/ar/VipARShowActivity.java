@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import bnud;
-import bnuq;
+import bkzk;
+import bkzx;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.app.AppActivity;
@@ -21,7 +21,7 @@ public class VipARShowActivity
   implements QQPermissionCallback
 {
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private bnud jdField_a_of_type_Bnud;
+  private bkzk jdField_a_of_type_Bkzk;
   
   private void a()
   {
@@ -43,29 +43,30 @@ public class VipARShowActivity
   private void b()
   {
     if ("value_refer_aio".equalsIgnoreCase(getIntent().getStringExtra("key_refer"))) {
-      bnuq.a("ar_aio_click", "1");
+      bkzx.a("ar_aio_click", "1");
     }
   }
   
   private void c()
   {
-    this.jdField_a_of_type_Bnud = new bnud(this, this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_Bnud.a();
+    this.jdField_a_of_type_Bkzk = new bkzk(this, this.jdField_a_of_type_AndroidViewViewGroup);
+    this.jdField_a_of_type_Bkzk.a();
     Intent localIntent = getIntent();
-    this.jdField_a_of_type_Bnud.a(localIntent.getStringExtra("modelResUrl"), localIntent.getStringExtra("modelResMd5"));
+    this.jdField_a_of_type_Bkzk.a(localIntent.getStringExtra("modelResUrl"), localIntent.getStringExtra("modelResMd5"));
   }
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Toast.makeText(this, 2131695037, 0).show();
+    Toast.makeText(this, 2131695175, 0).show();
     ThreadManager.getUIHandler().postDelayed(new VipARShowActivity.1(this), 2000L);
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -74,8 +75,8 @@ public class VipARShowActivity
     super.doOnCreate(paramBundle);
     a();
     b();
-    setContentView(2131558465);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131362876));
+    setContentView(2131558464);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131362887));
     c();
     return true;
   }
@@ -83,38 +84,38 @@ public class VipARShowActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bnud != null) {
-      this.jdField_a_of_type_Bnud.f();
+    if (this.jdField_a_of_type_Bkzk != null) {
+      this.jdField_a_of_type_Bkzk.f();
     }
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Bnud != null) {
-      this.jdField_a_of_type_Bnud.c();
+    if (this.jdField_a_of_type_Bkzk != null) {
+      this.jdField_a_of_type_Bkzk.c();
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_Bnud != null) {
-      this.jdField_a_of_type_Bnud.d();
+    if (this.jdField_a_of_type_Bkzk != null) {
+      this.jdField_a_of_type_Bkzk.d();
     }
   }
   
   public void doOnStop()
   {
     super.doOnStop();
-    if (this.jdField_a_of_type_Bnud != null) {
-      this.jdField_a_of_type_Bnud.e();
+    if (this.jdField_a_of_type_Bkzk != null) {
+      this.jdField_a_of_type_Bkzk.e();
     }
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Bnud.b();
+    this.jdField_a_of_type_Bkzk.b();
   }
   
   @Override

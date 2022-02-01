@@ -1,55 +1,59 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
+import java.util.Comparator;
 
-final class xpi
-  implements ValueAnimator.AnimatorUpdateListener
+public class xpi
+  implements Comparator<xpe>
 {
-  xpi(ViewGroup paramViewGroup, ImageView paramImageView1, ImageView paramImageView2) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int a(xpe paramxpe1, xpe paramxpe2)
   {
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue("scaleX")).floatValue();
-    float f2 = ((Float)paramValueAnimator.getAnimatedValue("scaleY")).floatValue();
-    this.jdField_a_of_type_AndroidViewViewGroup.setPivotX(0.5F);
-    this.jdField_a_of_type_AndroidViewViewGroup.setScaleX(f1);
-    this.jdField_a_of_type_AndroidViewViewGroup.setPivotY(0.5F);
-    this.jdField_a_of_type_AndroidViewViewGroup.setScaleY(f2);
-    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(((Float)paramValueAnimator.getAnimatedValue("translateX")).floatValue());
-    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationY(((Float)paramValueAnimator.getAnimatedValue("translateY")).floatValue());
-    int i = this.jdField_a_of_type_AndroidViewViewGroup.getWidth();
-    int j = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
-    float f3;
-    if (f1 < f2)
+    int k = 1;
+    int i;
+    int j;
+    if (((paramxpe1 instanceof xpa)) && (((HotRecommendFeedItem)((xpa)paramxpe1).a()).mIsTopLocation))
     {
-      f1 = f2 / f1;
-      f2 = i;
-      f3 = i;
-      this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(f1);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX((f2 - f3 * f1) * 0.5F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(1.0F);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY(0.0F);
-    }
-    for (;;)
-    {
-      this.b.setAlpha(((Float)paramValueAnimator.getAnimatedValue("backgroundAlpha")).floatValue());
-      return;
-      if (f2 < f1)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(1.0F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
-        f1 /= f2;
-        f2 = j;
-        f3 = j;
-        this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
-        this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(f1);
-        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY((f2 - f3 * f1) * 0.5F);
+      i = 1;
+      if ((!(paramxpe2 instanceof xpa)) || (!((HotRecommendFeedItem)((xpa)paramxpe2).a()).mIsTopLocation)) {
+        break label80;
+      }
+      j = 1;
+      label54:
+      if ((j ^ i) == 0) {
+        break label86;
+      }
+      j = k;
+      if (i != 0) {
+        j = -1;
       }
     }
+    label80:
+    label86:
+    do
+    {
+      do
+      {
+        return j;
+        i = 0;
+        break;
+        j = 0;
+        break label54;
+        if (paramxpe1.a.dateTimeMillis != paramxpe2.a.dateTimeMillis) {
+          break label146;
+        }
+        if (((paramxpe1 instanceof xpg)) && (xpg.a((xpg)paramxpe1))) {
+          return -1;
+        }
+        if (!(paramxpe2 instanceof xpg)) {
+          break label144;
+        }
+        j = k;
+      } while (xpg.a((xpg)paramxpe2));
+      return 0;
+      j = k;
+    } while (paramxpe1.a.dateTimeMillis <= paramxpe2.a.dateTimeMillis);
+    label144:
+    label146:
+    return -1;
   }
 }
 

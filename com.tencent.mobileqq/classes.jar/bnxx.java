@@ -1,6 +1,6 @@
 public abstract interface bnxx
 {
-  public abstract void a();
+  public abstract void a(int paramInt);
 }
 
 

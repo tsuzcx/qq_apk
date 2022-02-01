@@ -6,9 +6,11 @@ import com.tencent.mobileqq.widget.QQToast;
 class AETemplateInfoFragment$6
   implements Runnable
 {
+  AETemplateInfoFragment$6(AETemplateInfoFragment paramAETemplateInfoFragment, String paramString) {}
+  
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), this.a, 1).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), this.val$msg, 1).a();
   }
 }
 

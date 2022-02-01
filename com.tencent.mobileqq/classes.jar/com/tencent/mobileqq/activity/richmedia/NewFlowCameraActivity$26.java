@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.richmedia;
 
 import android.content.Intent;
-import bbeb;
-import bbeh;
-import bbem;
-import yen;
+import azzd;
+import azzj;
+import azzo;
+import xfy;
 
 class NewFlowCameraActivity$26
   implements Runnable
@@ -13,9 +13,9 @@ class NewFlowCameraActivity$26
   
   public void run()
   {
-    Object localObject = bbeh.a().a().a(this.this$0.d);
+    Object localObject = azzj.a().a().a(this.this$0.d);
     if (localObject != null) {
-      ((bbeb)localObject).a(103);
+      ((azzd)localObject).a(103);
     }
     for (;;)
     {
@@ -25,7 +25,7 @@ class NewFlowCameraActivity$26
       this.this$0.a.b();
       this.this$0.finish();
       return;
-      this.this$0.l();
+      this.this$0.g();
     }
   }
 }

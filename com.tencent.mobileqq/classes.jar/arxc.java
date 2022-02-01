@@ -1,7 +1,32 @@
-public final class arxc
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+
+public class arxc
+  implements arxi
 {
-  public String a;
-  public String b;
+  public arxc(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  
+  public View.OnClickListener a(TextView paramTextView)
+  {
+    this.a.a = paramTextView;
+    return new arxd(this);
+  }
+  
+  public boolean a()
+  {
+    return this.a.c;
+  }
+  
+  public boolean b()
+  {
+    return this.a.b;
+  }
+  
+  public boolean c()
+  {
+    return QfileCloudFileTabView.a(this.a);
+  }
 }
 
 

@@ -1,22 +1,29 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ogy
-  implements QQPermissionCallback
+public class ogy
+  implements View.OnClickListener
 {
-  ogy(ogx paramogx, BaseActivity paramBaseActivity) {}
+  public ogy(ShopWebViewFragment paramShopWebViewFragment) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(View paramView)
   {
-    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
-    bhlq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
-    ogs.a(this.jdField_a_of_type_Ogx.a, 5);
+    if (this.a.jdField_a_of_type_Ogn != null) {
+      this.a.jdField_a_of_type_Ogn.b(this.a.getActivity(), this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    }
+    try
+    {
+      this.a.jdField_a_of_type_Ogn.a.a(134248548, null, null, null, null, 0L, false);
+      label57:
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label57;
+    }
   }
 }
 

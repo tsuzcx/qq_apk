@@ -1,27 +1,23 @@
-import android.animation.ObjectAnimator;
-import android.view.View;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
 
-public class uer
+public final class uer
+  implements Parcelable.Creator<ProfileParams.CurLoginUsr>
 {
-  public static void a(View paramView, uex paramuex)
+  public ProfileParams.CurLoginUsr a(Parcel paramParcel)
   {
-    paramView = ObjectAnimator.ofFloat(paramView, "translationY", new float[] { paramView.getHeight(), 0.0F });
-    paramView.addListener(paramuex);
-    paramView.setDuration(200L);
-    paramView.start();
+    return new ProfileParams.CurLoginUsr(paramParcel.readString(), paramParcel.readString());
   }
   
-  public static void b(View paramView, uex paramuex)
+  public ProfileParams.CurLoginUsr[] a(int paramInt)
   {
-    paramView = ObjectAnimator.ofFloat(paramView, "translationY", new float[] { 0.0F, paramView.getHeight() });
-    paramView.addListener(paramuex);
-    paramView.setDuration(200L);
-    paramView.start();
+    return new ProfileParams.CurLoginUsr[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     uer
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.biz.eqq;
 
 import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import nok;
+import npt;
 
 public final class CrmIvrText$1
   implements Runnable
@@ -11,7 +11,7 @@ public final class CrmIvrText$1
   
   public void run()
   {
-    nok.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidViewView.getContext(), this.jdField_a_of_type_JavaLangString, nok.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString));
+    npt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidViewView.getContext(), this.jdField_a_of_type_JavaLangString, npt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString));
   }
 }
 

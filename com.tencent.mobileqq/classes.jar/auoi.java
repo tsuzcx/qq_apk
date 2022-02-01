@@ -1,16 +1,6 @@
-public abstract class auoi
+abstract interface auoi
 {
-  public void a() {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
+  public abstract void a(int paramInt, Object... paramVarArgs);
 }
 
 

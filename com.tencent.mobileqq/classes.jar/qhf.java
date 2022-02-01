@@ -1,24 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.pts.nativemodule.IPTSLoadFeeds;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class qhf
-  implements IPTSLoadFeeds
+  implements ViewBase.IBuilder
 {
-  private qfy a = new qhg(this);
-  
-  public qhf()
+  public ViewBase build(VafContext paramVafContext)
   {
-    qfx.a().a(this.a);
-  }
-  
-  public void loadFeeds(long paramLong1, long paramLong2, int paramInt, long paramLong3)
-  {
-    pfg localpfg = (pfg)((QQAppInterface)ozs.a()).getManager(163);
-    QLog.i("PTSLoadFeedsModule", 1, "[loadFeeds], channelID = " + paramLong1 + ", limitCount = " + paramInt);
-    if (localpfg != null) {
-      localpfg.a().a((int)paramLong1, paramInt, 9223372036854775807L, true, paramLong3);
-    }
+    return new qhd(paramVafContext);
   }
 }
 

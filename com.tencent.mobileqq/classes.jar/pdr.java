@@ -1,159 +1,139 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Set;
 
 public class pdr
-  extends pde<BaseArticleInfo>
+  implements AladdinConfigHandler
 {
-  private pwg a;
+  private static final Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private static boolean jdField_a_of_type_Boolean = ((Boolean)bkwm.a("readinjjoy_feeds_card_whitelist", Boolean.valueOf(false))).booleanValue();
   
-  public int a(BaseArticleInfo paramBaseArticleInfo)
+  static
   {
-    if (paramBaseArticleInfo == null) {
-      return b;
-    }
-    TemplateBean localTemplateBean = a(paramBaseArticleInfo);
-    Integer localInteger = null;
-    if (localTemplateBean != null) {
-      localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localTemplateBean.getStyleName());
-    }
-    if (localInteger == null)
-    {
-      QLog.d("DynamicItemViewHelperCompat", 2, "getType: templateBean : " + localTemplateBean + " data: " + paramBaseArticleInfo.proteusItemsData);
-      return b;
-    }
-    if ((localInteger.intValue() < b) || (localInteger.intValue() >= this.d))
-    {
-      agej.a("DynamicItemViewHelperCompat", "", new IllegalArgumentException(anzj.a(2131702469)));
-      return b;
-    }
-    return localInteger.intValue();
+    a();
   }
   
-  protected TemplateBean a(BaseArticleInfo paramBaseArticleInfo)
+  private static void a()
   {
-    TemplateBean localTemplateBean2 = null;
-    int i = b;
-    if (QLog.isColorLevel()) {
-      QLog.d("DynamicItemViewHelperCompat", 2, "getTemplateBean : " + paramBaseArticleInfo);
-    }
-    TemplateBean localTemplateBean1 = localTemplateBean2;
-    try
+    a(1, 6);
+    a(10, 11);
+    a(19, 26);
+    a(28, 32);
+    a(28, 32);
+    a(36, 40);
+    a(43, 43);
+    a(48, 48);
+    a(51, 52);
+    a(60, 60);
+    a(67, 69);
+    a(71, 72);
+    a(78, 79);
+    a(81, 81);
+    a(84, 84);
+    a(102, 102);
+    a(1001, 1004);
+    a(1001, 1004);
+    a(1008, 1008);
+    a(1019, 1020);
+    a(1023, 1027);
+    a(1029, 1037);
+    a(1038, 1042);
+    a(2001, 2006);
+  }
+  
+  private static void a(int paramInt1, int paramInt2)
+  {
+    while (paramInt1 <= paramInt2)
     {
-      if (this.jdField_a_of_type_Pwg == null) {
-        return null;
-      }
-      localTemplateBean1 = localTemplateBean2;
-      JSONObject localJSONObject = this.jdField_a_of_type_Pwg.a(i, paramBaseArticleInfo);
-      localTemplateBean1 = localTemplateBean2;
-      localTemplateBean2 = this.jdField_a_of_type_Pwg.a(i, localJSONObject);
-      localTemplateBean1 = localTemplateBean2;
-      paramBaseArticleInfo.mProteusTemplateBean = localTemplateBean2;
-      paramBaseArticleInfo = localTemplateBean2;
-      if (localTemplateBean2 != null)
+      jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt1));
+      paramInt1 += 1;
+    }
+  }
+  
+  public static boolean a(ArticleInfo paramArticleInfo)
+  {
+    boolean bool = false;
+    if (!jdField_a_of_type_Boolean) {
+      QLog.d("WhiteListBidConfigHandler", 1, "isWhiteListCardAndShow: close");
+    }
+    do
+    {
+      do
       {
-        localTemplateBean1 = localTemplateBean2;
-        paramBaseArticleInfo = localTemplateBean2;
-        if (localTemplateBean2.getViewBean() != null)
+        return true;
+        if (paramArticleInfo == null) {
+          return false;
+        }
+      } while (((paramArticleInfo.mChannelID != 0L) && (paramArticleInfo.mChannelID != 70L) && (!pcl.c((int)paramArticleInfo.mChannelID))) || ((paramArticleInfo instanceof AdvertisementInfo)) || (paramArticleInfo.mFeedType == 29));
+      i = pay.a(paramArticleInfo);
+      if (!jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(i))) {
+        break;
+      }
+    } while (!pay.s(paramArticleInfo));
+    int i = qcv.a(paramArticleInfo);
+    if ((i == 1) || (i == 2)) {
+      bool = true;
+    }
+    return bool;
+    QLog.d("WhiteListBidConfigHandler", 1, "isWhiteListCardAndShow: " + i + " is not white list card: " + paramArticleInfo);
+    return false;
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("WhiteListBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    Map localMap = pbt.a(paramString);
+    Object localObject2 = localMap.keySet();
+    paramString = "";
+    Object localObject1 = "";
+    Iterator localIterator = ((Set)localObject2).iterator();
+    String str;
+    boolean bool;
+    if (localIterator.hasNext())
+    {
+      str = (String)localIterator.next();
+      localObject2 = (String)localMap.get(str);
+      QLog.d("WhiteListBidConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
+      if (TextUtils.equals(str, "kandian_feeds_card_whitelist")) {
+        if (Integer.valueOf((String)localObject2).intValue() == 1)
         {
-          paramBaseArticleInfo = localTemplateBean2;
-          if (localJSONObject != null)
-          {
-            localTemplateBean1 = localTemplateBean2;
-            paramBaseArticleInfo = localTemplateBean2;
-            if (localJSONObject.has("report_feeds_type"))
-            {
-              localTemplateBean1 = localTemplateBean2;
-              localTemplateBean2.getViewBean().putDynamicValue("report_feeds_type", localJSONObject.getString("report_feeds_type"));
-              return localTemplateBean2;
-            }
-          }
+          bool = true;
+          label153:
+          jdField_a_of_type_Boolean = bool;
+          bkwm.a("readinjjoy_feeds_card_whitelist", Boolean.valueOf(bool));
         }
       }
     }
-    catch (JSONException paramBaseArticleInfo)
+    for (;;)
     {
-      QLog.d("DynamicItemViewHelperCompat", 1, paramBaseArticleInfo, new Object[] { "getView" });
-      paramBaseArticleInfo = localTemplateBean1;
-    }
-    return paramBaseArticleInfo;
-  }
-  
-  public void a(ProteusItemView paramProteusItemView, int paramInt1, BaseArticleInfo paramBaseArticleInfo, VafContext paramVafContext, int paramInt2)
-  {
-    blqm.a("bindData");
-    if ((paramProteusItemView == null) || (paramProteusItemView.a() == null))
-    {
-      blqm.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("DynamicItemViewHelperCompat", 2, new Object[] { "bindData, adapterViewType = ", Integer.valueOf(paramInt1), ", articleInfo = ", paramBaseArticleInfo });
-      }
-      if (paramProteusItemView != null) {
-        paramProteusItemView.setVisibility(8);
-      }
-      return;
-    }
-    if (paramInt1 == b)
-    {
-      paramProteusItemView.setVisibility(8);
-      return;
-    }
-    QLog.d("DynamicItemViewHelperCompat", 1, new Object[] { "bindData, adapterViewType = ", Integer.valueOf(paramInt1), ", articleInfo = ", paramBaseArticleInfo });
-    TemplateBean localTemplateBean1 = paramProteusItemView.a();
-    TemplateBean localTemplateBean2 = a(paramBaseArticleInfo);
-    Object localObject = localTemplateBean1;
-    if (localTemplateBean1 != null)
-    {
-      localObject = localTemplateBean1;
-      if (localTemplateBean2 != null)
+      break;
+      bool = false;
+      break label153;
+      if (TextUtils.equals(str, "kandian_feeds_card_whitelist_bid"))
       {
-        localObject = localTemplateBean1;
-        if (!localTemplateBean2.equals(localTemplateBean1))
-        {
-          localObject = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean2);
-          if (localObject != null)
-          {
-            ((Container)localObject).setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841693));
-            paramProteusItemView.d();
-            paramProteusItemView.a((Container)localObject);
-          }
-          paramBaseArticleInfo.mProteusTemplateBean = localTemplateBean2;
-          localObject = null;
-        }
+        bkwm.a("default_feeds_proteus_offline_bid", (String)localObject2);
+        new szc().a("default_feeds");
+        localObject1 = localObject2;
+      }
+      else if (TextUtils.equals(str, "kandian_feeds_card_cdn_url"))
+      {
+        paramString = (String)localObject2;
+        continue;
+        szu.a((String)localObject1, paramString);
+        return true;
       }
     }
-    paramBaseArticleInfo = paramProteusItemView.a();
-    paramProteusItemView.setTemplateBean(localTemplateBean2);
-    if (localTemplateBean2 != null) {
-      oyj.a(paramBaseArticleInfo, (TemplateBean)localObject, localTemplateBean2);
-    }
-    oyj.a(paramBaseArticleInfo, paramVafContext, localTemplateBean2);
-    blqm.a();
   }
   
-  public void a(VafContext paramVafContext, int paramInt)
+  public void onWipeConfig(int paramInt)
   {
-    super.a(paramVafContext, paramInt);
-    this.jdField_a_of_type_Pwg = new pwg(paramVafContext);
-  }
-  
-  public boolean a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    if (paramBaseArticleInfo == null) {}
-    while (paramBaseArticleInfo.mFeedType != 29) {
-      return false;
-    }
-    return true;
+    QLog.d("WhiteListBidConfigHandler", 1, "[onWipeConfig]");
   }
 }
 

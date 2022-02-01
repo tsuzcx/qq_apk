@@ -1,21 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 
 public class albb
-  implements View.OnClickListener
+  extends aliz
 {
-  public albb(LingHbFragment paramLingHbFragment) {}
+  public int a;
+  public ImageView a;
+  public TextView a;
+  public DiscussionInfo a;
+  public TroopInfo a;
+  public ImageView b;
+  public TextView b;
   
-  public void onClick(View paramView)
-  {
-    this.a.c.clearFocus();
-    LingHbFragment.a(this.a).a();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public albb(alay paramalay) {}
 }
 
 

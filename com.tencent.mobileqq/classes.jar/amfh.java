@@ -1,72 +1,38 @@
-import android.content.Context;
-import android.graphics.Bitmap;
+import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 class amfh
-  implements aoog
+  implements alqd
 {
-  protected aoof a;
-  boolean jdField_a_of_type_Boolean = true;
+  amfh(amez paramamez, int paramInt, String paramString, AppInterface paramAppInterface, File paramFile) {}
   
-  public amfh(amez paramamez, Context paramContext, AppInterface paramAppInterface)
+  public void a(boolean paramBoolean, alqc paramalqc)
   {
-    this.jdField_a_of_type_Aoof = new aoof(paramContext, paramAppInterface);
-    this.jdField_a_of_type_Aoof.a(this);
-  }
-  
-  private Bitmap a(String paramString, int paramInt1, byte paramByte, int paramInt2)
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_Aoof == null) {
-      localObject = null;
-    }
-    Bitmap localBitmap;
-    do
+    paramalqc = alpu.a().a(8, this.jdField_a_of_type_Int);
+    Object localObject = new StringBuilder().append("downloadApolloRes onCheckFinish success:").append(paramBoolean).append(" downloadItem:");
+    if (paramalqc == null) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      return localObject;
-      localBitmap = this.jdField_a_of_type_Aoof.b(paramInt1, paramString, paramInt2);
-      localObject = localBitmap;
-    } while (localBitmap != null);
-    QLog.w("FriendTeamListInnerFrameBuddyListAdapter", 1, "requestDecodeFace, uin[" + paramString + "]");
-    this.jdField_a_of_type_Aoof.a(paramString, paramInt1, true, paramByte);
-    return bhmq.a();
-  }
-  
-  public Bitmap a(TroopMemberInfo paramTroopMemberInfo)
-  {
-    return a(paramTroopMemberInfo.memberuin, 1, (byte)0, 0);
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_Aoof != null)
-      {
-        this.jdField_a_of_type_Aoof.d();
-        this.jdField_a_of_type_Aoof = null;
+      QLog.i("ApolloPluginRscLoader", 1, paramBoolean);
+      localObject = amez.a(this.jdField_a_of_type_JavaLangString);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        break;
       }
-      this.jdField_a_of_type_Boolean = true;
+      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
       return;
     }
-    catch (Exception localException)
+    if (paramalqc == null)
     {
-      for (;;)
-      {
-        this.jdField_a_of_type_Aoof = null;
-      }
-    }
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    QLog.w("FriendTeamListInnerFrameBuddyListAdapter", 1, "onDecodeTaskCompleted, uin[" + paramString + "]");
-    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Amez.a((String)localObject, 2, this.jdField_a_of_type_Int + " json里无此id");
       return;
     }
-    amez.a(this.jdField_a_of_type_Amez, paramString, paramBitmap);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramalqc);
+    alpw.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "", new amfi(this, (String)localObject), localArrayList, false, null);
   }
 }
 

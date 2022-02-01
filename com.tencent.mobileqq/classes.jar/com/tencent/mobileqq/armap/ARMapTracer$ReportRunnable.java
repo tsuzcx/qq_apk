@@ -4,7 +4,7 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.os.Debug.MemoryInfo;
 import android.os.Process;
-import bdmc;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -52,7 +52,7 @@ public class ARMapTracer$ReportRunnable
           ((HashMap)localObject).put("pss", String.valueOf(i));
           ((HashMap)localObject).put("level", String.valueOf(this.jdField_a_of_type_Int));
           ((HashMap)localObject).put("devType", String.valueOf(ARMapTracer.a()));
-          bdmc.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, "actARMapTrace", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, i, (HashMap)localObject, null);
+          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_JavaLangString, "actARMapTrace", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, i, (HashMap)localObject, null);
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder(200);

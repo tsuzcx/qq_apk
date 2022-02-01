@@ -1,11 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public abstract interface aggk
+class aggk
+  extends aghj
 {
-  public abstract void a(View paramView, MotionEvent paramMotionEvent);
+  aggk(agcw paramagcw)
+  {
+    super(paramagcw, null);
+  }
   
-  public abstract void a(View paramView, boolean paramBoolean);
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new ApolloItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+  }
 }
 
 

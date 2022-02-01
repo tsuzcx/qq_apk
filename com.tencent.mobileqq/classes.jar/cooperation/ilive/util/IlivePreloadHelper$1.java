@@ -2,10 +2,10 @@ package cooperation.ilive.util;
 
 import android.content.Context;
 import android.content.Intent;
-import arnz;
-import aroa;
-import bilz;
-import bmfy;
+import aqhx;
+import aqhy;
+import bgsi;
+import bkkf;
 import com.tencent.mobileqq.activity.PreloadWebService;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,18 +16,18 @@ public final class IlivePreloadHelper$1
   
   public void run()
   {
-    if (!aroa.c().d()) {}
+    if (!aqhy.c().d()) {}
     do
     {
       return;
-      if ((this.jdField_a_of_type_Int == 1) && (!bmfy.a()))
+      if ((this.jdField_a_of_type_Int == 1) && (!bkkf.a()))
       {
         QLog.e("IlivePreloadHelper", 1, "preloadLiveShopping checkDrawerSwitchEnable = false");
         return;
       }
-      bmfy.b();
+      bkkf.b();
       QLog.e("IlivePreloadHelper", 1, "ilive start preloadLiveShopping , source = " + this.jdField_a_of_type_Int);
-      bilz.b(-1);
+      bgsi.b(-1);
       Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, PreloadWebService.class);
       localIntent.putExtra("isPreloadLiveShopping", true);
       localIntent.putExtra("source", this.jdField_a_of_type_Int);

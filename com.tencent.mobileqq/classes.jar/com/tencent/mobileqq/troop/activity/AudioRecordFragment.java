@@ -13,8 +13,8 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
-import bffp;
-import bffq;
+import bdod;
+import bdoe;
 import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -43,12 +43,12 @@ public class AudioRecordFragment
   
   public AudioRecordFragment()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new bffq(this);
+    this.jdField_a_of_type_AndroidOsHandler = new bdoe(this);
   }
   
   protected void a(Resources paramResources, View paramView)
   {
-    paramResources = paramResources.getDrawable(2130850268);
+    paramResources = paramResources.getDrawable(2130850189);
     if ((paramResources instanceof BitmapDrawable)) {
       paramResources = ((BitmapDrawable)paramResources).getBitmap();
     }
@@ -93,9 +93,9 @@ public class AudioRecordFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559912, null);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131559914, null);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376925));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131376679));
     this.jdField_a_of_type_Int = getArguments().getInt("audio_max_length", 60000);
     boolean bool = getArguments().getBoolean("auto_start", false);
     this.jdField_a_of_type_JavaLangString = getArguments().getString("from");
@@ -104,17 +104,17 @@ public class AudioRecordFragment
       this.jdField_b_of_type_JavaLangString = getArguments().getString("bid");
       this.c = getArguments().getString("fromflag");
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363016));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131363033));
     a(getResources(), this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel = ((CommonRecordSoundPanel)paramLayoutInflater.inflate(2131559856, null));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel = ((CommonRecordSoundPanel)paramLayoutInflater.inflate(2131559858, null));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity(), this.jdField_a_of_type_AndroidOsHandler, 1, bool);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.d();
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setTimeOutTime(this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379259);
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131379029);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
     paramLayoutInflater = AnimationUtils.loadAnimation(getActivity(), 2130771979);
-    paramLayoutInflater.setAnimationListener(new bffp(this));
+    paramLayoutInflater.setAnimationListener(new bdod(this));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.startAnimation(paramLayoutInflater);
     paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);

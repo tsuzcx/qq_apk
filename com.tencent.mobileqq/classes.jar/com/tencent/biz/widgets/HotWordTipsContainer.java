@@ -1,6 +1,6 @@
 package com.tencent.biz.widgets;
 
-import abhm;
+import aadx;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -17,7 +17,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bbyy;
+import basg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -36,7 +36,7 @@ public class HotWordTipsContainer
   extends LinearLayout
   implements View.OnClickListener
 {
-  abhm jdField_a_of_type_Abhm;
+  aadx jdField_a_of_type_Aadx;
   protected Context a;
   private HotWordSearchEntryDataModel jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel;
   
@@ -91,22 +91,22 @@ public class HotWordTipsContainer
           HotWordSearchEntryDataModel.HotSearchItem localHotSearchItem = (HotWordSearchEntryDataModel.HotSearchItem)this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.b().get(j);
           String str1 = a(localHotSearchItem.indexTextColor, "#777777");
           String str2 = a(localHotSearchItem.indexBgColor, "#00000000");
-          RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561011, null);
+          RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560881, null);
           Object localObject1 = new LinearLayout.LayoutParams(0, -2);
           ((LinearLayout.LayoutParams)localObject1).weight = 1.0F;
           localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject1);
           paramHotWordSearchEntryDataModel.addView(localRelativeLayout);
-          Object localObject3 = (LinearLayout)localRelativeLayout.findViewById(2131368160);
+          Object localObject3 = (LinearLayout)localRelativeLayout.findViewById(2131368189);
           ((LinearLayout)localObject3).setVisibility(0);
-          localObject1 = (TextView)((LinearLayout)localObject3).findViewById(2131379003);
-          TextView localTextView = (TextView)((LinearLayout)localObject3).findViewById(2131368621);
-          Object localObject2 = (URLImageView)((LinearLayout)localObject3).findViewById(2131376675);
-          Object localObject4 = (URLImageView)localRelativeLayout.findViewById(2131363397);
+          localObject1 = (TextView)((LinearLayout)localObject3).findViewById(2131378772);
+          TextView localTextView = (TextView)((LinearLayout)localObject3).findViewById(2131368645);
+          Object localObject2 = (URLImageView)((LinearLayout)localObject3).findViewById(2131376441);
+          Object localObject4 = (URLImageView)localRelativeLayout.findViewById(2131363425);
           ((URLImageView)localObject4).setVisibility(8);
-          if ((paramInt == 10) && (UniteSearchActivity.a != null) && (TextUtils.equals(UniteSearchActivity.a.title, localHotSearchItem.title)) && (!bbyy.a(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.hotWordGifUrl))) {
-            bbyy.a(getContext(), (URLImageView)localObject4, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.hotWordGifUrl, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.hotWordGifUrlNight, null);
+          if ((paramInt == 10) && (UniteSearchActivity.a != null) && (TextUtils.equals(UniteSearchActivity.a.title, localHotSearchItem.title)) && (!basg.a(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.hotWordGifUrl))) {
+            basg.a(getContext(), (URLImageView)localObject4, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.hotWordGifUrl, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.hotWordGifUrlNight, null);
           }
-          localObject3 = ((LinearLayout)localObject3).findViewById(2131368618);
+          localObject3 = ((LinearLayout)localObject3).findViewById(2131368643);
           ((TextView)localObject1).setText(localHotSearchItem.title);
           if (!TextUtils.isEmpty(localHotSearchItem.titleTextColor)) {
             ((TextView)localObject1).setTextColor(Color.parseColor(localHotSearchItem.titleTextColor));
@@ -116,7 +116,7 @@ public class HotWordTipsContainer
             localObject4 = new ColorDrawable();
             if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
             {
-              ((ColorDrawable)localObject4).setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167277));
+              ((ColorDrawable)localObject4).setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167308));
               label491:
               URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
               localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject4);
@@ -155,7 +155,7 @@ public class HotWordTipsContainer
             localRelativeLayout.setOnClickListener(this);
             i += 1;
             break;
-            ((ColorDrawable)localObject4).setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167276));
+            ((ColorDrawable)localObject4).setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167307));
             break label491;
             label691:
             localTextView.setTextColor(Color.parseColor(str1));
@@ -167,15 +167,15 @@ public class HotWordTipsContainer
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Abhm != null) {
-      this.jdField_a_of_type_Abhm.a((HotWordSearchEntryDataModel.HotSearchItem)paramView.getTag());
+    if (this.jdField_a_of_type_Aadx != null) {
+      this.jdField_a_of_type_Aadx.a((HotWordSearchEntryDataModel.HotSearchItem)paramView.getTag());
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void setOnTipsClickListener(abhm paramabhm)
+  public void setOnTipsClickListener(aadx paramaadx)
   {
-    this.jdField_a_of_type_Abhm = paramabhm;
+    this.jdField_a_of_type_Aadx = paramaadx;
   }
 }
 

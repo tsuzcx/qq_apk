@@ -1,7 +1,6 @@
 package com.tencent.gdtad.api.interstitial;
 
-import acqd;
-import acqg;
+import abmp;
 import android.content.Context;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.settings.AdSettingsUtil;
@@ -10,32 +9,19 @@ import java.lang.ref.WeakReference;
 public class GdtInterstitialPreDownloader$1
   implements Runnable
 {
-  public GdtInterstitialPreDownloader$1(acqg paramacqg, WeakReference paramWeakReference) {}
+  public GdtInterstitialPreDownloader$1(abmp paramabmp, WeakReference paramWeakReference) {}
   
   public void run()
   {
     long l = System.currentTimeMillis();
-    Object localObject = AdSettingsUtil.INSTANCE;
-    if (this.a != null)
-    {
-      localContext = (Context)this.a.get();
-      ((AdSettingsUtil)localObject).update(localContext);
-      localObject = acqd.a();
-      if (this.a == null) {
-        break label121;
-      }
-    }
-    label121:
+    AdSettingsUtil localAdSettingsUtil = AdSettingsUtil.INSTANCE;
+    if (this.a != null) {}
     for (Context localContext = (Context)this.a.get();; localContext = null)
     {
-      boolean bool = ((acqd)localObject).a(localContext);
-      if (bool) {
-        acqg.a().a();
-      }
-      AdLog.i("GdtInterstitialPreDownloader", "preDownloadAfterToolProcessStartup enabled:" + bool + " durationMillis:" + (System.currentTimeMillis() - l));
+      localAdSettingsUtil.update(localContext);
+      abmp.a().a();
+      AdLog.i("GdtInterstitialPreDownloader", "preDownloadAfterToolProcessStartup durationMillis:" + (System.currentTimeMillis() - l));
       return;
-      localContext = null;
-      break;
     }
   }
 }

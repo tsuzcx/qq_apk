@@ -1,254 +1,134 @@
-import android.content.Context;
+import android.app.Activity;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View.OnClickListener;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
+import com.tencent.open.base.MD5Utils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
+import cooperation.smartdevice.SmartDevicePluginProxyActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class afza
-  extends amoe
+class afza
+  implements View.OnClickListener
 {
-  protected LayoutInflater a;
-  public ArrayList<afyz> a;
+  afza(afyz paramafyz) {}
   
-  public afza(Context paramContext, ArrayList<String> paramArrayList)
+  public void onClick(View paramView)
   {
-    super(paramArrayList, paramContext.app, paramContext.a, 1, true);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramArrayList.getSystemService("layout_inflater"));
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    afyz localafyz;
-    int i;
-    ArrayList localArrayList;
-    int j;
-    label71:
-    Object localObject;
-    if (localafyz == null)
+    localMessageForDeviceSingleStruct = (MessageForDeviceSingleStruct)AIOUtils.getMessage(paramView);
+    if (localMessageForDeviceSingleStruct == null) {}
+    do
     {
-      i = 0;
-      localArrayList = new ArrayList();
-      paramArrayList = new ArrayList();
-      j = 0;
-      if (j >= i) {
-        break label272;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((TextUtils.isEmpty(localMessageForDeviceSingleStruct.strMediaFileName)) && (localMessageForDeviceSingleStruct.nMediaChannelType == 2) && (!TextUtils.isEmpty(localMessageForDeviceSingleStruct.strMediaKey))) {
+        localMessageForDeviceSingleStruct.strMediaFileName = (MD5Utils.toMD5(localMessageForDeviceSingleStruct.strMediaKey) + localMessageForDeviceSingleStruct.strMediaKey.substring(localMessageForDeviceSingleStruct.strMediaKey.lastIndexOf(".")));
       }
-      localObject = (String)localafyz.get(j);
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (Pattern.matches("\\d{5,}+\\|+\\d{1,}", (CharSequence)localObject))) {
-        break label125;
-      }
+      localDeviceInfo = ((aara)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(51)).a(Long.parseLong(localMessageForDeviceSingleStruct.senderuin));
+    } while (localDeviceInfo == null);
+    if (localDeviceInfo.isAdmin == 1) {
+      i = 1;
     }
     for (;;)
     {
-      j += 1;
-      break label71;
-      i = localafyz.size();
-      break;
-      label125:
-      int k = ((String)localObject).indexOf('|');
-      String str = ((String)localObject).substring(0, k);
-      k = Integer.parseInt(((String)localObject).substring(k + 1));
-      if ((!TextUtils.isEmpty(str)) && ((k & 0x1) == 1))
+      try
       {
-        localObject = new afyz();
-        ((afyz)localObject).jdField_a_of_type_Int = 1;
-        ((afyz)localObject).jdField_a_of_type_JavaLangString = str;
-        ((afyz)localObject).jdField_b_of_type_Int = k;
-        localArrayList.add(localObject);
-      }
-      else if ((!TextUtils.isEmpty(str)) && ((k & 0x1) == 0))
-      {
-        localObject = new afyz();
-        ((afyz)localObject).jdField_a_of_type_Int = 1;
-        ((afyz)localObject).jdField_a_of_type_JavaLangString = str;
-        ((afyz)localObject).jdField_b_of_type_Int = k;
-        paramArrayList.add(localObject);
-      }
-    }
-    label272:
-    if (localArrayList.size() > 0)
-    {
-      localafyz = new afyz();
-      localafyz.jdField_a_of_type_Int = 0;
-      localafyz.jdField_b_of_type_Int = 1;
-      this.jdField_a_of_type_JavaUtilArrayList.add(0, localafyz);
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
-    }
-    if (paramArrayList.size() > 0)
-    {
-      localafyz = new afyz();
-      localafyz.jdField_a_of_type_Int = 0;
-      localafyz.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localafyz);
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    }
-    ThreadManager.post(new TroopTransferActivity.TroopMemberListAdapter.1(this, paramContext), 8, null, false);
-  }
-  
-  public afyz a(String paramString)
-  {
-    Object localObject = null;
-    int i = 0;
-    if ((localObject == null) && (i < this.jdField_a_of_type_JavaUtilArrayList.size()))
-    {
-      afyz localafyz = (afyz)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if ((localafyz == null) || (!bhjx.a(localafyz.jdField_a_of_type_JavaLangString, paramString))) {
-        break label61;
-      }
-      localObject = localafyz;
-    }
-    label61:
-    for (;;)
-    {
-      i += 1;
-      break;
-      return localObject;
-    }
-  }
-  
-  public List<afyz> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt >= 0)
-    {
-      localObject1 = localObject2;
-      if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        localObject1 = (afyz)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      }
-    }
-    return localObject1;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    afyz localafyz = (afyz)getItem(paramInt);
-    if ((localafyz != null) && (localafyz.jdField_a_of_type_Int == 0)) {
-      return 0;
-    }
-    if ((localafyz != null) && (localafyz.jdField_a_of_type_Int == 1)) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int i = getItemViewType(paramInt);
-    afyz localafyz = (afyz)getItem(paramInt);
-    Object localObject1;
-    if (i == 0) {
-      if (paramView == null)
-      {
-        localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559317, paramViewGroup, false);
-        paramView = new afzb(null);
-        paramView.c = null;
-        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject1);
-        ((View)localObject1).setTag(paramView);
-        paramView.jdField_a_of_type_Afyz = localafyz;
-        if ((localafyz == null) || (localafyz.jdField_b_of_type_Int != 1)) {
-          break label156;
+        localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("title", localMessageForDeviceSingleStruct.strTitle);
+        ((JSONObject)localObject2).put("digest", localMessageForDeviceSingleStruct.strDigest);
+        if (localMessageForDeviceSingleStruct.nMediaFileStatus != 5) {
+          continue;
         }
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131693476);
+        localObject1 = localMessageForDeviceSingleStruct.strMediaPath;
+        ((JSONObject)localObject2).put("file_path_url", localObject1);
+        ((JSONObject)localObject2).put("thumb_path_url", localMessageForDeviceSingleStruct.strCoverPath);
+        ((JSONObject)localObject2).put("guide_words", localMessageForDeviceSingleStruct.strGuideWords);
+        ((JSONObject)localObject2).put("appear_time", localMessageForDeviceSingleStruct.nAppearTime);
+        ((JSONObject)localObject2).put("data_type", localMessageForDeviceSingleStruct.nDataType);
+        ((JSONObject)localObject2).put("face", localMessageForDeviceSingleStruct.faceRect);
+        ((JSONObject)localObject2).put("cover_session_id", localMessageForDeviceSingleStruct.nCoverSessionID);
+        ((JSONObject)localObject2).put("media_session_id", localMessageForDeviceSingleStruct.nMediaSessionID);
+        if (localMessageForDeviceSingleStruct.nCoverChannelType != 1) {
+          continue;
+        }
+        ((JSONObject)localObject2).put("cover_key", localMessageForDeviceSingleStruct.strCoverKey);
       }
-    }
-    label281:
-    label410:
-    for (;;)
-    {
-      if ((paramView != null) && (paramView.jdField_a_of_type_AndroidWidgetTextView != null)) {
-        ((View)localObject1).setContentDescription(paramView.jdField_a_of_type_AndroidWidgetTextView.getText());
-      }
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      Object localObject2 = (afzb)paramView.getTag();
-      localObject1 = paramView;
-      paramView = (View)localObject2;
-      break;
-      label156:
-      if ((localafyz != null) && (localafyz.jdField_b_of_type_Int == 0))
+      catch (JSONException localJSONException)
       {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(2131718866);
-      }
-      else
-      {
-        paramView.jdField_a_of_type_AndroidWidgetTextView.setText("");
+        Object localObject1;
+        long l;
+        int j;
+        localJSONException.printStackTrace();
+        String str = null;
         continue;
-        if (i == 1)
-        {
-          if (paramView == null)
-          {
-            paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131563046, paramViewGroup, false);
-            paramView.findViewById(2131379676).setVisibility(8);
-            paramView.findViewById(2131363842).setVisibility(8);
-            localObject1 = new afzb(null);
-            ((afzb)localObject1).c = ((ImageView)paramView.findViewById(2131369234));
-            ((afzb)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379958));
-            paramView.setTag(localObject1);
-            ((afzb)localObject1).jdField_a_of_type_Afyz = localafyz;
-            if (localafyz == null) {
-              break label376;
-            }
-            localObject2 = localafyz.jdField_a_of_type_JavaLangString;
-            label300:
-            if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!((String)localObject2).equals("0"))) {
-              break label382;
-            }
-            ((afzb)localObject1).c.setImageDrawable(bhmq.b());
-            label329:
-            if (localafyz == null) {
-              break label410;
-            }
-          }
-          for (localObject2 = localafyz.jdField_b_of_type_JavaLangString;; localObject2 = "")
-          {
-            ((afzb)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-            localObject2 = paramView;
-            paramView = (View)localObject1;
-            localObject1 = localObject2;
-            break;
-            localObject1 = (afzb)paramView.getTag();
-            break label281;
-            label376:
-            localObject2 = null;
-            break label300;
-            label382:
-            ((afzb)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject2);
-            ((afzb)localObject1).c.setImageBitmap(a(1, localafyz.jdField_a_of_type_JavaLangString));
-            break label329;
-          }
+        ((JSONObject)localObject2).put("cover_url", localMessageForDeviceSingleStruct.strCoverKey);
+        continue;
+        if (localMessageForDeviceSingleStruct.nMediaChannelType != 3) {
+          continue;
         }
-        localObject2 = null;
-        localObject1 = paramView;
-        paramView = (View)localObject2;
+        ((JSONObject)localObject2).put("media_mini", localMessageForDeviceSingleStruct.strMediaKey);
+        ((JSONObject)localObject2).put("fkey2", localMessageForDeviceSingleStruct.strCoverKey2);
+        continue;
+        ((JSONObject)localObject2).put("media_url", localMessageForDeviceSingleStruct.strMediaKey);
+        continue;
+        if ((i == 0) || (TextUtils.isEmpty(localMessageForDeviceSingleStruct.faceRect)) || (!afyz.a(this.a, localMessageForDeviceSingleStruct.faceRect)) || (TextUtils.isEmpty(localMessageForDeviceSingleStruct.strCoverPath))) {
+          continue;
+        }
+        Object localObject2 = new Intent();
+        ((Intent)localObject2).putExtra("device_id", localDeviceInfo.din + "");
+        if (localMessageForDeviceSingleStruct.nMediaFileStatus != 5) {
+          continue;
+        }
+        str = localMessageForDeviceSingleStruct.strMediaPath;
+        ((Intent)localObject2).putExtra("filepath", str);
+        ((Intent)localObject2).putExtra("rect", localMessageForDeviceSingleStruct.faceRect);
+        ((Intent)localObject2).putExtra("from", 0);
+        bkxa.a().a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (Intent)localObject2, "com.tencent.device.face.FaceRegisterActivity", -1, null, SmartDevicePluginProxyActivity.class);
+        continue;
+        str = localMessageForDeviceSingleStruct.strCoverPath;
+        continue;
+        afyz.a(this.a, localMessageForDeviceSingleStruct);
+        continue;
+        i = 3;
+        continue;
       }
+      if (localMessageForDeviceSingleStruct.nMediaChannelType != 1) {
+        continue;
+      }
+      ((JSONObject)localObject2).put("media_key", localMessageForDeviceSingleStruct.strMediaKey);
+      ((JSONObject)localObject2).put("jump_url", localMessageForDeviceSingleStruct.url);
+      ((JSONObject)localObject2).put("msg_time", localMessageForDeviceSingleStruct.time);
+      ((JSONObject)localObject2).put("ext", localMessageForDeviceSingleStruct.ext);
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("struct_msg", localObject2);
+      localObject1 = ((JSONObject)localObject1).toString();
+      if (TextUtils.isEmpty(localMessageForDeviceSingleStruct.url)) {
+        continue;
+      }
+      afyz.a(this.a, localMessageForDeviceSingleStruct, localDeviceInfo, (String)localObject1);
+      if (localMessageForDeviceSingleStruct.nDataType != 2) {
+        continue;
+      }
+      i = 4;
+      l = Long.parseLong(localMessageForDeviceSingleStruct.senderuin);
+      j = localDeviceInfo.productId;
+      abdm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l, "Usr_AIO_ReceiveMsg_Click", i, 0, j);
+      break;
+      i = 0;
+      continue;
+      localObject1 = localMessageForDeviceSingleStruct.strCoverPath;
+      continue;
+      if (localMessageForDeviceSingleStruct.nCoverChannelType != 3) {
+        continue;
+      }
+      ((JSONObject)localObject2).put("cover_mini", localMessageForDeviceSingleStruct.strCoverKey);
+      ((JSONObject)localObject2).put("ckey2", localMessageForDeviceSingleStruct.strCoverKey2);
     }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 2;
   }
 }
 

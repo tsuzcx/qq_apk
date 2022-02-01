@@ -1,63 +1,71 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bjjn
-  extends QIPCModule
+class bjjn
+  extends bjjs
 {
-  private static volatile bjjn a;
+  private boolean b;
   
-  private bjjn(String paramString)
+  bjjn(bjjk parambjjk)
   {
-    super(paramString);
+    super(parambjjk, null);
   }
   
-  public static bjjn a()
+  public void a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new bjjn("open_sdk_qipc_module");
-      }
-      return a;
+    if (this.jdField_a_of_type_Boolean) {
+      bjjk.a(this.jdField_a_of_type_Bjjk).a();
     }
-    finally {}
+    if (this.b) {
+      bjjk.d(this.jdField_a_of_type_Bjjk);
+    }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    QLog.i("Q.quicklogin.OpenSdkQIPCModule", 1, "onCall main proc action : " + paramString);
-    if ("action_get_accountInfo".equals(paramString))
+    if (TextUtils.isEmpty(paramString2)) {}
+    do
     {
-      paramString = new Bundle();
-      EIPCResult localEIPCResult = EIPCResult.createResult(0, paramString);
-      paramBundle = paramBundle.getString("key_uin");
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((!TextUtils.isEmpty(paramBundle)) && ((localAppRuntime instanceof QQAppInterface))) {
-        paramString.putString("key_nickname", bhlg.i((QQAppInterface)localAppRuntime, paramBundle));
+      return;
+      if ((paramInt4 == 1) || (paramInt4 == 2)) {
+        break;
       }
-      callbackResult(paramInt, localEIPCResult);
+    } while (!QLog.isColorLevel());
+    QLog.d("QQProtect.QSec", 2, String.format("Invalid mode: %d", new Object[] { Integer.valueOf(paramInt4) }));
+    return;
+    bjjd localbjjd = bjjk.a(this.jdField_a_of_type_Bjjk).a(paramInt1);
+    if (localbjjd != null) {
+      bjjk.a(this.jdField_a_of_type_Bjjk).a(localbjjd.jdField_a_of_type_Int, false);
     }
     for (;;)
     {
-      return null;
-      if ("action_ptlogin_cancel".equals(paramString))
-      {
-        paramString = BaseActivity.sTopActivity;
-        QLog.i("Q.quicklogin.OpenSdkQIPCModule", 1, "onCall ptlogin cancel activity=" + paramString);
-        if ((paramString instanceof SplashActivity)) {
-          paramString.doOnBackPressed();
-        }
+      localbjjd.jdField_a_of_type_Int = paramInt1;
+      localbjjd.jdField_b_of_type_Int = paramInt2;
+      localbjjd.c = paramInt3;
+      localbjjd.jdField_b_of_type_JavaLangString = paramString1;
+      localbjjd.jdField_a_of_type_JavaLangString = paramString2;
+      bjjk.a(this.jdField_a_of_type_Bjjk).a(localbjjd, false);
+      this.jdField_a_of_type_Boolean = true;
+      if ((paramInt4 != 1) || (bjjk.a(this.jdField_a_of_type_Bjjk).a(paramInt1) != 1)) {
+        break;
       }
+      this.b = true;
+      bjjp localbjjp = (bjjp)bjjk.a(this.jdField_a_of_type_Bjjk).get(Integer.valueOf(paramInt1));
+      if (localbjjp == null) {
+        break label236;
+      }
+      bjjk.a(this.jdField_a_of_type_Bjjk, localbjjp, paramString2, paramString1);
+      if (localbjjp.d == 0) {
+        break;
+      }
+      bjjk.a(this.jdField_a_of_type_Bjjk).remove(Integer.valueOf(localbjjp.jdField_a_of_type_Int));
+      return;
+      localbjjd = new bjjd();
     }
+    label236:
+    paramString1 = bjjk.a(this.jdField_a_of_type_Bjjk, localbjjd);
+    bjjk.a(this.jdField_a_of_type_Bjjk, paramString1);
   }
 }
 

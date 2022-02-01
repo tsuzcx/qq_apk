@@ -1,9 +1,34 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class amah
+class amah
+  implements View.OnClickListener
 {
-  public int a;
-  public Bitmap a;
+  amah(amad paramamad) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((amad.a(this.a).d()) || (amad.b(this.a)))
+    {
+      amad.b(this.a, false);
+      amad.a(this.a).a();
+      amad.c(this.a).setVisibility(8);
+      amad.b(this.a).setVisibility(8);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (amad.a(this.a).c())
+      {
+        amad.b(this.a, true);
+        amad.a(this.a).b();
+        amad.b(this.a).setVisibility(0);
+      }
+    }
+  }
 }
 
 

@@ -2,7 +2,7 @@ package dov.com.tencent.mobileqq.shortvideo.multisender;
 
 import android.database.Cursor;
 import android.text.TextUtils;
-import brjk;
+import bocv;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
@@ -18,13 +18,13 @@ public class MultiSendEntry
   public String fakeVid;
   public String md5;
   @notColumn
-  List<brjk> messageDataList;
+  List<bocv> messageDataList;
   public String messageInfos;
   public int syncToStory;
   public long time;
   public String uploadInfo;
   @notColumn
-  brjk uploadMessageData;
+  bocv uploadMessageData;
   public String uuid;
   public String videoPath;
   
@@ -41,7 +41,7 @@ public class MultiSendEntry
     if (!TextUtils.isEmpty(this.uploadInfo)) {}
     try
     {
-      this.uploadMessageData = new brjk();
+      this.uploadMessageData = new bocv();
       this.uploadMessageData.a(this.uploadInfo);
       if (TextUtils.isEmpty(this.messageInfos)) {}
     }
@@ -51,7 +51,7 @@ public class MultiSendEntry
       {
         try
         {
-          this.messageDataList = brjk.a(this.messageInfos);
+          this.messageDataList = bocv.a(this.messageInfos);
           return true;
           paramCursor = paramCursor;
           paramCursor.printStackTrace();
@@ -73,23 +73,23 @@ public class MultiSendEntry
     }
     Iterator localIterator = this.messageDataList.iterator();
     while (localIterator.hasNext()) {
-      if (((brjk)localIterator.next()).a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq)) {
+      if (((bocv)localIterator.next()).a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq)) {
         localIterator.remove();
       }
     }
-    this.messageInfos = brjk.a(this.messageDataList);
+    this.messageInfos = bocv.a(this.messageDataList);
   }
   
-  public void setMessageDataList(List<brjk> paramList)
+  public void setMessageDataList(List<bocv> paramList)
   {
     this.messageDataList = paramList;
-    this.messageInfos = brjk.a(paramList);
+    this.messageInfos = bocv.a(paramList);
   }
   
-  public void setUploadMessageData(brjk parambrjk)
+  public void setUploadMessageData(bocv parambocv)
   {
-    this.uploadMessageData = parambrjk;
-    this.uploadInfo = parambrjk.a();
+    this.uploadMessageData = parambocv;
+    this.uploadInfo = parambocv.a();
   }
 }
 

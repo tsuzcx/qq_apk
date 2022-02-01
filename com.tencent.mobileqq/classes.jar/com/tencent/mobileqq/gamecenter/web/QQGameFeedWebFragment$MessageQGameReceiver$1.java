@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import avnw;
+import auaw;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import java.util.ArrayList;
 
 public class QQGameFeedWebFragment$MessageQGameReceiver$1
   implements Runnable
 {
-  public QQGameFeedWebFragment$MessageQGameReceiver$1(avnw paramavnw, ArrayList paramArrayList) {}
+  public QQGameFeedWebFragment$MessageQGameReceiver$1(auaw paramauaw, ArrayList paramArrayList) {}
   
   public void run()
   {
     try
     {
-      QQGameFeedWebFragment.a(this.jdField_a_of_type_Avnw.a, this.jdField_a_of_type_JavaUtilArrayList);
+      QQGameFeedWebFragment.a(this.jdField_a_of_type_Auaw.a, this.jdField_a_of_type_JavaUtilArrayList);
       QIPCClientHelper.getInstance().callServer("QQGameIPCModule", "clearUnreadMsg", null);
       return;
     }

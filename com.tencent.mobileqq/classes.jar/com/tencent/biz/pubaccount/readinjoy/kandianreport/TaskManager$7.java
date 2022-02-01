@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
-import bhmi;
-import bnrf;
+import bkwm;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class TaskManager$7
@@ -13,9 +13,9 @@ class TaskManager$7
   {
     QLog.d("kandianreport.taskmanager", 1, "reset");
     this.this$0.stopAllTasks();
-    bhmi.a(TaskManager.access$700());
-    bhmi.a(KandianReportSoLoader.getSoLoadDir());
-    bnrf.a("kandianreport_ON", Integer.valueOf(0));
+    FileUtils.deleteDirectory(TaskManager.access$700());
+    FileUtils.deleteDirectory(KandianReportSoLoader.getSoLoadDir());
+    bkwm.a("kandianreport_ON", Integer.valueOf(0));
   }
 }
 

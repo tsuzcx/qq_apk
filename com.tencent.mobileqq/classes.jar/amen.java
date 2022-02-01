@@ -1,17 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import java.util.ArrayList;
+import android.text.TextUtils;
 
 public class amen
-  implements DialogInterface.OnClickListener
+  implements Comparable<amen>
 {
-  public amen(SelectMemberActivity paramSelectMemberActivity, ArrayList paramArrayList) {}
+  public int a;
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public short b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public long d;
+  public String d;
+  public int e = -1;
+  public long e;
+  public String e;
+  public int f;
+  public String f;
+  public int g = 0;
+  public String g;
+  public int h;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(amen paramamen)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(this.jdField_a_of_type_JavaUtilArrayList);
-    paramDialogInterface.dismiss();
+    if (paramamen == null) {}
+    do
+    {
+      return -1;
+      if (this.jdField_a_of_type_Boolean == paramamen.jdField_a_of_type_Boolean) {
+        return -(int)(this.c - paramamen.c);
+      }
+    } while (this.jdField_a_of_type_Boolean);
+    return 0;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (this.jdField_a_of_type_Long == this.b) || ((!TextUtils.isEmpty(paramString)) && (paramString.equals(String.valueOf(this.jdField_a_of_type_Long))));
   }
 }
 

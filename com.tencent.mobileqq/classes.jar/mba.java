@@ -1,20 +1,36 @@
-public abstract interface mba
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.guide.GuideHelper;
+import com.tencent.mobileqq.utils.AudioHelper;
+
+public class mba
+  extends ldz
 {
-  public abstract void a();
+  public mba(AVActivity paramAVActivity) {}
   
-  public abstract boolean a();
+  protected void a(long paramLong1, long paramLong2)
+  {
+    if (this.a.isDestroyed()) {
+      return;
+    }
+    this.a.a.a(paramLong1, this.a, 4, 0);
+  }
   
-  public abstract boolean a(mbd parammbd);
+  protected void b(long paramLong, int paramInt1, int paramInt2)
+  {
+    if (this.a.isDestroyed()) {
+      return;
+    }
+    paramLong = AudioHelper.b();
+    this.a.a.a(paramLong, this.a, 3, 2);
+  }
   
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract boolean b(mbd parammbd);
-  
-  public abstract void c();
-  
-  public abstract void d();
+  protected void b(long paramLong1, long paramLong2)
+  {
+    if (this.a.isDestroyed()) {
+      return;
+    }
+    this.a.a.a(paramLong1, this.a, 4, 0);
+  }
 }
 
 

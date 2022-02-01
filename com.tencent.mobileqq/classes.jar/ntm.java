@@ -1,37 +1,19 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class ntm
-  extends apee
+public class ntm
 {
-  ntm(ntl paramntl) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public ImageView b;
+  TextView b;
+  public ImageView c;
+  TextView c;
+  public ImageView d;
   
-  public int a()
-  {
-    return 7;
-  }
-  
-  public void a(Object paramObject)
-  {
-    ntc.b(this.a.a, this.a.a.jdField_a_of_type_Int);
-    if (this.a.a.jdField_a_of_type_AndroidContentSharedPreferences != null) {
-      this.a.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("setting_status_" + this.a.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.a.jdField_a_of_type_Int).apply();
-    }
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailGroupListContainer", 2, "New 0xc76 onGetRecvMsgState isSuccess = " + paramBoolean);
-    }
-  }
-  
-  public void b(Object paramObject) {}
-  
-  public void b(boolean paramBoolean, Object paramObject) {}
+  ntm(nst paramnst) {}
 }
 
 

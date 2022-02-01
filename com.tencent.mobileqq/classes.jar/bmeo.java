@@ -1,6 +1,23 @@
-public abstract interface bmeo
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Log;
+import dov.com.qq.im.aeeditor.lyric.widget.LyricViewInternalBase;
+
+public class bmeo
+  extends Handler
 {
-  public abstract void a(bmen parambmen);
+  public bmeo(LyricViewInternalBase paramLyricViewInternalBase, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Log.d("ModuleLyricViewInternal", "mRefreshHandler -> handleMessage begin, mState:" + this.a.l);
+    this.a.requestLayout();
+    this.a.invalidate();
+  }
 }
 
 

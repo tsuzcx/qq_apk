@@ -1,10 +1,8 @@
 public abstract interface apbf
 {
-  public abstract void a();
+  public abstract void a(String paramString, int paramInt);
   
-  public abstract boolean a();
-  
-  public abstract boolean b();
+  public abstract void a(String paramString, boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

@@ -1,36 +1,25 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
+import java.util.Comparator;
+import java.util.Map;
 
-public class bbem
+public final class bbem
+  implements Comparator<bbfd>
 {
-  public ConcurrentHashMap<String, bbeb> a = new ConcurrentHashMap(10);
-  
-  public bbeb a(SVHwEncoder paramSVHwEncoder, SessionInfo paramSessionInfo, int paramInt)
+  public int a(bbfd parambbfd1, bbfd parambbfd2)
   {
-    paramSVHwEncoder = new bbeb(paramSVHwEncoder, paramSessionInfo, paramInt);
-    this.a.put(paramSVHwEncoder.a, paramSVHwEncoder);
-    bbeg.a("VideoCompoundController", "newProcessor, key = " + paramSVHwEncoder.a);
-    return paramSVHwEncoder;
-  }
-  
-  public bbeb a(String paramString)
-  {
-    bbeg.a("VideoCompoundController", "findProcessor, key = " + paramString);
-    if ((!this.a.isEmpty()) && (paramString != null) && (this.a.containsKey(paramString))) {
-      return (bbeb)this.a.get(paramString);
+    parambbfd2 = (Integer)SearchConfigManager.searchEngineOrder.get(parambbfd2.a);
+    if (parambbfd2 == null) {
+      parambbfd2 = Integer.valueOf(0);
     }
-    return null;
-  }
-  
-  public boolean a(String paramString)
-  {
-    bbeg.a("VideoCompoundController", "removeProcessor, key = " + paramString);
-    if (paramString == null) {}
-    while (this.a.remove(paramString) == null) {
-      return false;
+    for (;;)
+    {
+      Integer localInteger = (Integer)SearchConfigManager.searchEngineOrder.get(parambbfd1.a);
+      parambbfd1 = localInteger;
+      if (localInteger == null) {
+        parambbfd1 = Integer.valueOf(0);
+      }
+      return Integer.signum(parambbfd2.intValue() - parambbfd1.intValue());
     }
-    return true;
   }
 }
 

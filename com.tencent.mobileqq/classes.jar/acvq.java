@@ -1,23 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.ad.tangram.Ad;
-import com.tencent.gdtad.statistics.GdtReporter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class acvq
+final class acvq
+  implements DialogInterface.OnCancelListener
 {
-  public static void a(int paramInt, String paramString1, String paramString2)
-  {
-    GdtReporter.doCgiReport("https://t.gdt.qq.com/conv/src/50/conv?" + "click_id={$clickid$}&product_id={$appid$}&conv_type={$convtype$}&conv_time={$convtime$}".replace("{$clickid$}", paramString1).replace("{$appid$}", paramString2).replace("{$convtype$}", new StringBuilder().append(paramInt).append("").toString()).replace("{$convtime$}", new StringBuilder().append(System.currentTimeMillis() / 1000L).append("").toString()));
-  }
+  acvq(acxb paramacxb, acxa paramacxa) {}
   
-  public static void a(Ad paramAd, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (TextUtils.isEmpty(paramAd.getUrlForEffect()))
-    {
-      acvc.d("GdtTraceReporter", String.format("report %d error", new Object[] { Integer.valueOf(paramInt) }));
-      return;
+    if (this.jdField_a_of_type_Acxb.a) {
+      bcef.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
     }
-    acvc.b("GdtTraceReporter", String.format("report %d", new Object[] { Integer.valueOf(paramInt) }));
-    GdtReporter.doCgiReport(paramAd.getUrlForEffect().replaceAll("__CLICK_ID__", paramAd.getTraceId()).replaceAll("__ACTION_ID__", String.valueOf(paramInt)));
+    if (this.jdField_a_of_type_Acxa != null) {
+      this.jdField_a_of_type_Acxa.onCancel();
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

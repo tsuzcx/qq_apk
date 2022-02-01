@@ -1,21 +1,49 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.support.annotation.NonNull;
+import android.util.SparseArray;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initAdItemClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class opj
-  implements opd
+public class opj
+  extends bndj
 {
-  public void a(int paramInt, @NotNull Container paramContainer, @NotNull otd paramotd, @NotNull otp paramotp, @NotNull ViewBase paramViewBase)
+  public opj(@NonNull bnee parambnee, int paramInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
-    Intrinsics.checkParameterIsNotNull(paramotd, "adapter");
-    Intrinsics.checkParameterIsNotNull(paramotp, "commentViewItem");
-    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
-    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new opk(paramotp, paramotd, paramContainer));
+    super(parambnee, paramInt);
+  }
+  
+  private void d()
+  {
+    a(2131378952).setVisibility(8);
+    ((TextView)a(2131365136)).setText(amtj.a(2131711972));
+  }
+  
+  public void a()
+  {
+    super.a();
+    d();
+  }
+  
+  public void onClick(View paramView)
+  {
+    super.onClick(paramView);
+    int i = paramView.getId();
+    Long localLong = (Long)this.a.get(i);
+    if (localLong != null) {
+      switch ((int)localLong.longValue())
+      {
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      odq.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "3", "", "", "", false);
+      continue;
+      odq.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "1", "", "", "", false);
+      continue;
+      odq.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "2", "", "", "", false);
+    }
   }
 }
 

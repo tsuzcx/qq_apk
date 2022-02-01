@@ -1,28 +1,25 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class wbe
-  implements Animator.AnimatorListener
+class wbe
+  extends SimpleJob<Object>
 {
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  wbe(wbd paramwbd, String paramString)
   {
-    if (paramAnimator != null) {}
-    try
-    {
-      paramAnimator.start();
-      return;
-    }
-    catch (Exception paramAnimator)
-    {
-      paramAnimator.printStackTrace();
-    }
+    super(paramString);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    if (this.a.jdField_a_of_type_Wbg == null) {
+      this.a.jdField_a_of_type_Wbg = new wbg(this.a, this.a.d);
+    }
+    this.a.jdField_a_of_type_JavaLangString = "";
+    wbd.a(this.a);
+    return null;
+  }
 }
 
 

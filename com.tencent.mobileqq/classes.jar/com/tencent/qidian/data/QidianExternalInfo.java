@@ -1,9 +1,9 @@
 package com.tencent.qidian.data;
 
 import android.text.TextUtils;
-import bkie;
-import bkif;
-import bkig;
+import binj;
+import bink;
+import binl;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -33,9 +33,9 @@ public class QidianExternalInfo
   public int isShowCall;
   public int isShowVideoCall;
   public String job = "";
-  public List<bkie> mCompanyShowCaseInfos;
-  public List<bkif> mGroupItems;
-  public List<bkig> mPubAccItems;
+  public List<binj> mCompanyShowCaseInfos;
+  public List<bink> mGroupItems;
+  public List<binl> mPubAccItems;
   public String mail = "";
   public String masterUin = "";
   public String mobile = "";
@@ -65,7 +65,7 @@ public class QidianExternalInfo
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (mobileqq_qidian.PubAccItem)((Iterator)localObject1).next();
-            this.mPubAccItems.add(new bkig((mobileqq_qidian.PubAccItem)localObject2));
+            this.mPubAccItems.add(new binl((mobileqq_qidian.PubAccItem)localObject2));
           }
         }
       }
@@ -87,7 +87,7 @@ public class QidianExternalInfo
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (mobileqq_qidian.GroupItem)((Iterator)localObject1).next();
-          this.mGroupItems.add(new bkif((mobileqq_qidian.GroupItem)localObject2));
+          this.mGroupItems.add(new bink((mobileqq_qidian.GroupItem)localObject2));
         }
       }
       if (localException.rpt_msg_company_show_case_info.has())
@@ -97,7 +97,7 @@ public class QidianExternalInfo
         while (localIterator.hasNext())
         {
           localObject1 = (mobileqq_qidian.CompanyShowCaseInfo)localIterator.next();
-          this.mCompanyShowCaseInfos.add(new bkie((mobileqq_qidian.CompanyShowCaseInfo)localObject1));
+          this.mCompanyShowCaseInfos.add(new binj((mobileqq_qidian.CompanyShowCaseInfo)localObject1));
         }
       }
     }
@@ -180,7 +180,7 @@ public class QidianExternalInfo
     }
   }
   
-  public List<bkie> getCompanyShowCaseInfos()
+  public List<binj> getCompanyShowCaseInfos()
   {
     if (this.mCompanyShowCaseInfos == null)
     {
@@ -192,7 +192,7 @@ public class QidianExternalInfo
     return this.mCompanyShowCaseInfos;
   }
   
-  public List<bkif> getGroupItems()
+  public List<bink> getGroupItems()
   {
     if (this.mGroupItems == null)
     {
@@ -204,7 +204,7 @@ public class QidianExternalInfo
     return this.mGroupItems;
   }
   
-  public List<bkig> getPublicAccountItems()
+  public List<binl> getPublicAccountItems()
   {
     if (this.mPubAccItems == null)
     {
@@ -244,8 +244,8 @@ public class QidianExternalInfo
       localIterator = this.mPubAccItems.iterator();
       while (localIterator.hasNext())
       {
-        localObject = (bkig)localIterator.next();
-        localExternalInfo.rpt_msg_pubacc_item.add(((bkig)localObject).a());
+        localObject = (binl)localIterator.next();
+        localExternalInfo.rpt_msg_pubacc_item.add(((binl)localObject).a());
       }
     }
     if (this.mGroupItems != null)
@@ -253,8 +253,8 @@ public class QidianExternalInfo
       localIterator = this.mGroupItems.iterator();
       while (localIterator.hasNext())
       {
-        localObject = (bkif)localIterator.next();
-        localExternalInfo.rpt_msg_group_item.add(((bkif)localObject).a());
+        localObject = (bink)localIterator.next();
+        localExternalInfo.rpt_msg_group_item.add(((bink)localObject).a());
       }
     }
     if (this.mCompanyShowCaseInfos != null)
@@ -262,8 +262,8 @@ public class QidianExternalInfo
       localIterator = this.mCompanyShowCaseInfos.iterator();
       while (localIterator.hasNext())
       {
-        localObject = (bkie)localIterator.next();
-        localExternalInfo.rpt_msg_company_show_case_info.add(((bkie)localObject).a());
+        localObject = (binj)localIterator.next();
+        localExternalInfo.rpt_msg_company_show_case_info.add(((binj)localObject).a());
       }
     }
     localExternalInfo.uint64_master_uin.set(Long.parseLong(this.masterUin));

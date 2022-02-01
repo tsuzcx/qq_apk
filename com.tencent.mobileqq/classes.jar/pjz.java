@@ -1,13 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class pjz
-  implements pks
+  extends amsu
 {
-  public pjz(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public pjz(KandianMergeManager paramKandianMergeManager) {}
   
-  public void a()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    ReadInJoySelfFragment.i(this.a);
+    if ((paramBoolean) && (TextUtils.equals(KandianMergeManager.b(this.a), paramString)) && (!TextUtils.equals(paramString, AppConstants.KANDIAN_MERGE_UIN))) {
+      KandianMergeManager.a(this.a).getBusinessHandler(1).notifyUI(4, true, new Object[] { AppConstants.KANDIAN_MERGE_UIN });
+    }
   }
 }
 

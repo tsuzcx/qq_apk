@@ -1,12 +1,8 @@
-public abstract interface yuc
+public class yuc
 {
-  public abstract void Q_();
-  
-  public abstract void a(zll paramzll);
-  
-  public abstract void f();
-  
-  public abstract void h();
+  protected float a;
+  protected int a;
+  protected boolean a;
 }
 
 

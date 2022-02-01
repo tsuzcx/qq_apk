@@ -1,60 +1,80 @@
-import android.content.res.Resources;
-import android.util.TypedValue;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.remind.widget.WheelTextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.VerticalGallery.LayoutParams;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QQDingdongSoundData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqxx
-  extends BaseAdapter
+  extends aqxl
 {
-  private int jdField_a_of_type_Int = 25;
-  private int b;
-  
-  public aqxx(IphonePickerView paramIphonePickerView, int paramInt1, int paramInt2)
+  public aqxx(QQAppInterface paramQQAppInterface)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramIphonePickerView.getResources().getDisplayMetrics()));
+    super("qq.android.dingdong.ring", paramQQAppInterface);
   }
   
-  public int getCount()
+  public int a()
   {
-    return IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.b);
+    return 10050;
   }
   
-  public Object getItem(int paramInt)
+  public Class<? extends XmlData> a()
   {
-    return Integer.valueOf(paramInt);
+    return QQDingdongSoundData.class;
   }
   
-  public long getItemId(int paramInt)
+  public String a()
   {
-    return paramInt;
+    return "dingdongDownloadAudioSoundDuration";
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void a(String paramString)
   {
-    if (paramView == null)
-    {
-      paramView = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.getContext());
-      paramView.setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQDingdongSoundHandler", 2, "download success: " + paramString);
     }
-    for (;;)
+    try
     {
-      String str = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).a(this.b, paramInt);
-      WheelTextView localWheelTextView = (WheelTextView)paramView;
-      localWheelTextView.setTextSize(20.0F);
-      localWheelTextView.setTextColor(IphonePickerView.jdField_a_of_type_Int);
-      localWheelTextView.setGravity(17);
-      localWheelTextView.setText(str);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
+      FileUtils.uncompressZip(paramString, mrh.a(), false);
+      super.a(paramString);
+      return;
     }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)a();
+    if ((localQQDingdongSoundData != null) && (!localQQDingdongSoundData.autoDownload))
+    {
+      localQQDingdongSoundData.autoDownload = true;
+      aqxb.a(localQQDingdongSoundData, new String[] { "autoDownload" });
+    }
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean h()
+  {
+    QQDingdongSoundData localQQDingdongSoundData = (QQDingdongSoundData)a();
+    if (localQQDingdongSoundData == null) {
+      return super.h();
+    }
+    return localQQDingdongSoundData.autoDownload;
   }
 }
 

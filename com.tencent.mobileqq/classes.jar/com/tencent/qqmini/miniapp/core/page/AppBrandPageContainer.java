@@ -22,6 +22,7 @@ import com.tencent.qqmini.miniapp.core.page.pool.AppBrandPagePool;
 import com.tencent.qqmini.miniapp.plugin.EmbeddedWidgetClientFactory;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
 import com.tencent.qqmini.sdk.core.Preloadable;
+import com.tencent.qqmini.sdk.core.utils.AppBrandUtil;
 import com.tencent.qqmini.sdk.core.utils.SoftKeyboardStateHelper;
 import com.tencent.qqmini.sdk.core.utils.SoftKeyboardStateHelper.SoftKeyboardStateListener;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
@@ -294,63 +295,181 @@ public class AppBrandPageContainer
     this.mActivity.registerReceiver(this.mBroadcastReceiver, localIntentFilter);
   }
   
+  /* Error */
   private boolean isIndexHtmlValid(String paramString)
   {
-    boolean bool2 = true;
-    bool1 = bool2;
-    String str1;
-    if (this.mApkgInfo != null)
-    {
-      str1 = paramString;
-      try
-      {
-        paramString = com.tencent.qqmini.sdk.launcher.utils.AppBrandUtil.getUrlWithoutParams(paramString);
-        str1 = paramString;
-        Object localObject = FileUtils.readFileToStr(new File(this.mApkgInfo.getChildFileAbsolutePath(paramString)));
-        str1 = paramString;
-        bool1 = bool2;
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          str1 = paramString;
-          if (((String)localObject).indexOf("<script>") >= 0)
-          {
-            str1 = paramString;
-            if (((String)localObject).indexOf("</script>") < 0) {}
-          }
-          for (int i = 1;; i = 0)
-          {
-            bool1 = bool2;
-            if (i != 0) {
-              break;
-            }
-            str1 = paramString;
-            QMLog.e("minisdk-start-AppBrandPageContainer", "url file cache invalid! content: " + (String)localObject);
-            return false;
-          }
-        }
-        try
-        {
-          str1 = com.tencent.qqmini.sdk.launcher.utils.AppBrandUtil.getUrlWithoutParams(str1);
-          localObject = new File(this.mApkgInfo.getChildFileAbsolutePath(str1));
-          String str2 = FileUtils.readFileToStr((File)localObject);
-          QMLog.e("minisdk-start-AppBrandPageContainer", "isUrlLocalFileValid exception! url= " + str1 + " filePath=" + ((File)localObject).getAbsolutePath() + " htmlContent=" + str2, paramString);
-          bool1 = false;
-        }
-        catch (Throwable paramString)
-        {
-          for (;;)
-          {
-            QMLog.e("minisdk-start-AppBrandPageContainer", "", paramString);
-            bool1 = false;
-          }
-        }
-      }
-      catch (Throwable paramString) {}
-    }
-    else
-    {
-      return bool1;
-    }
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore 4
+    //   3: aload_0
+    //   4: getfield 474	com/tencent/qqmini/miniapp/core/page/AppBrandPageContainer:mMiniAppInfo	Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;
+    //   7: getfield 478	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:launchParam	Lcom/tencent/qqmini/sdk/launcher/model/LaunchParam;
+    //   10: getfield 483	com/tencent/qqmini/sdk/launcher/model/LaunchParam:isFlutterMode	Z
+    //   13: istore 5
+    //   15: iload 4
+    //   17: istore_3
+    //   18: aload_0
+    //   19: getfield 166	com/tencent/qqmini/miniapp/core/page/AppBrandPageContainer:mApkgInfo	Lcom/tencent/qqmini/sdk/launcher/core/model/ApkgInfo;
+    //   22: ifnull +286 -> 308
+    //   25: aload_1
+    //   26: astore 6
+    //   28: aload_1
+    //   29: invokestatic 489	com/tencent/qqmini/sdk/launcher/utils/AppBrandUtil:getUrlWithoutParams	(Ljava/lang/String;)Ljava/lang/String;
+    //   32: astore 7
+    //   34: iload 5
+    //   36: ifeq +109 -> 145
+    //   39: aload 7
+    //   41: astore 6
+    //   43: new 491	java/io/File
+    //   46: dup
+    //   47: aload_0
+    //   48: getfield 166	com/tencent/qqmini/miniapp/core/page/AppBrandPageContainer:mApkgInfo	Lcom/tencent/qqmini/sdk/launcher/core/model/ApkgInfo;
+    //   51: aload 7
+    //   53: invokevirtual 496	com/tencent/qqmini/sdk/launcher/core/model/ApkgInfo:getChildFileAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   56: invokespecial 497	java/io/File:<init>	(Ljava/lang/String;)V
+    //   59: invokestatic 503	com/tencent/qqmini/sdk/launcher/utils/FileUtils:readFileToStr	(Ljava/io/File;)Ljava/lang/String;
+    //   62: astore_1
+    //   63: aload 7
+    //   65: astore 6
+    //   67: iload 4
+    //   69: istore_3
+    //   70: aload_1
+    //   71: invokestatic 509	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   74: ifne +234 -> 308
+    //   77: aload 7
+    //   79: astore 6
+    //   81: aload_1
+    //   82: ldc_w 511
+    //   85: invokevirtual 515	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   88: iflt +74 -> 162
+    //   91: aload 7
+    //   93: astore 6
+    //   95: aload_1
+    //   96: ldc_w 517
+    //   99: invokevirtual 515	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   102: iflt +60 -> 162
+    //   105: iconst_1
+    //   106: istore_2
+    //   107: iload 4
+    //   109: istore_3
+    //   110: iload_2
+    //   111: ifne +197 -> 308
+    //   114: aload 7
+    //   116: astore 6
+    //   118: ldc 33
+    //   120: new 281	java/lang/StringBuilder
+    //   123: dup
+    //   124: invokespecial 282	java/lang/StringBuilder:<init>	()V
+    //   127: ldc_w 519
+    //   130: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   133: aload_1
+    //   134: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   140: invokestatic 312	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   143: iconst_0
+    //   144: ireturn
+    //   145: aload 7
+    //   147: astore 6
+    //   149: aload_0
+    //   150: getfield 166	com/tencent/qqmini/miniapp/core/page/AppBrandPageContainer:mApkgInfo	Lcom/tencent/qqmini/sdk/launcher/core/model/ApkgInfo;
+    //   153: aload 7
+    //   155: invokevirtual 522	com/tencent/qqmini/sdk/launcher/core/model/ApkgInfo:readApkgToString	(Ljava/lang/String;)Ljava/lang/String;
+    //   158: astore_1
+    //   159: goto -96 -> 63
+    //   162: iconst_0
+    //   163: istore_2
+    //   164: goto -57 -> 107
+    //   167: astore 7
+    //   169: aload 6
+    //   171: invokestatic 489	com/tencent/qqmini/sdk/launcher/utils/AppBrandUtil:getUrlWithoutParams	(Ljava/lang/String;)Ljava/lang/String;
+    //   174: astore 8
+    //   176: iload 5
+    //   178: ifeq +88 -> 266
+    //   181: new 491	java/io/File
+    //   184: dup
+    //   185: aload_0
+    //   186: getfield 166	com/tencent/qqmini/miniapp/core/page/AppBrandPageContainer:mApkgInfo	Lcom/tencent/qqmini/sdk/launcher/core/model/ApkgInfo;
+    //   189: aload 8
+    //   191: invokevirtual 496	com/tencent/qqmini/sdk/launcher/core/model/ApkgInfo:getChildFileAbsolutePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   194: invokespecial 497	java/io/File:<init>	(Ljava/lang/String;)V
+    //   197: astore_1
+    //   198: iload 5
+    //   200: ifeq +79 -> 279
+    //   203: aload_1
+    //   204: invokestatic 503	com/tencent/qqmini/sdk/launcher/utils/FileUtils:readFileToStr	(Ljava/io/File;)Ljava/lang/String;
+    //   207: astore 6
+    //   209: ldc 33
+    //   211: new 281	java/lang/StringBuilder
+    //   214: dup
+    //   215: invokespecial 282	java/lang/StringBuilder:<init>	()V
+    //   218: ldc_w 524
+    //   221: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   224: aload 8
+    //   226: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   229: ldc_w 526
+    //   232: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   235: aload_1
+    //   236: invokevirtual 529	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   239: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: ldc_w 531
+    //   245: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   248: aload 6
+    //   250: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   253: invokevirtual 292	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   256: aload 7
+    //   258: invokestatic 306	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   261: iconst_0
+    //   262: istore_3
+    //   263: goto +45 -> 308
+    //   266: aload_0
+    //   267: getfield 166	com/tencent/qqmini/miniapp/core/page/AppBrandPageContainer:mApkgInfo	Lcom/tencent/qqmini/sdk/launcher/core/model/ApkgInfo;
+    //   270: aload 8
+    //   272: invokevirtual 535	com/tencent/qqmini/sdk/launcher/core/model/ApkgInfo:getApkgFile	(Ljava/lang/String;)Ljava/io/File;
+    //   275: astore_1
+    //   276: goto -78 -> 198
+    //   279: aload_0
+    //   280: getfield 166	com/tencent/qqmini/miniapp/core/page/AppBrandPageContainer:mApkgInfo	Lcom/tencent/qqmini/sdk/launcher/core/model/ApkgInfo;
+    //   283: aload 8
+    //   285: invokevirtual 522	com/tencent/qqmini/sdk/launcher/core/model/ApkgInfo:readApkgToString	(Ljava/lang/String;)Ljava/lang/String;
+    //   288: astore 6
+    //   290: goto -81 -> 209
+    //   293: astore_1
+    //   294: ldc 33
+    //   296: ldc_w 308
+    //   299: aload_1
+    //   300: invokestatic 306	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   303: iconst_0
+    //   304: istore_3
+    //   305: goto +3 -> 308
+    //   308: iload_3
+    //   309: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	310	0	this	AppBrandPageContainer
+    //   0	310	1	paramString	String
+    //   106	58	2	i	int
+    //   17	292	3	bool1	boolean
+    //   1	107	4	bool2	boolean
+    //   13	186	5	bool3	boolean
+    //   26	263	6	localObject	Object
+    //   32	122	7	str1	String
+    //   167	90	7	localThrowable	Throwable
+    //   174	110	8	str2	String
+    // Exception table:
+    //   from	to	target	type
+    //   28	34	167	java/lang/Throwable
+    //   43	63	167	java/lang/Throwable
+    //   70	77	167	java/lang/Throwable
+    //   81	91	167	java/lang/Throwable
+    //   95	105	167	java/lang/Throwable
+    //   118	143	167	java/lang/Throwable
+    //   149	159	167	java/lang/Throwable
+    //   169	176	293	java/lang/Throwable
+    //   181	198	293	java/lang/Throwable
+    //   203	209	293	java/lang/Throwable
+    //   209	261	293	java/lang/Throwable
+    //   266	276	293	java/lang/Throwable
+    //   279	290	293	java/lang/Throwable
   }
   
   private boolean isMonitorViewShowing()
@@ -361,30 +480,34 @@ public class AppBrandPageContainer
   private boolean isSubFileCacheValid(String paramString1, String paramString2)
   {
     boolean bool2 = true;
-    boolean bool1 = bool2;
+    bool1 = bool2;
     if (this.mApkgInfo != null) {
       try
       {
-        paramString1 = this.mApkgInfo.getRootPath(paramString1);
+        String str = this.mApkgInfo.getRootPath(paramString1);
         bool1 = bool2;
-        if (!TextUtils.isEmpty(paramString1))
+        if (!TextUtils.isEmpty(str))
         {
-          paramString1 = new File(com.tencent.qqmini.sdk.launcher.core.model.ApkgManager.getApkgFolderPath(this.mMiniAppInfo), paramString1).getAbsolutePath();
-          if (TextUtils.isEmpty(paramString1)) {
+          str = new File(com.tencent.qqmini.sdk.launcher.core.model.ApkgManager.getApkgFolderPath(this.mMiniAppInfo), str).getAbsolutePath();
+          if (TextUtils.isEmpty(str)) {
             return true;
           }
-          paramString1 = FileUtils.readFileToStr(new File(paramString1 + File.separator + paramString2));
-          bool1 = bool2;
-          if (!TextUtils.isEmpty(paramString1))
+          if (this.mMiniAppInfo.launchParam.isFlutterMode) {}
+          for (paramString1 = FileUtils.readFileToStr(new File(str + File.separator + paramString2));; paramString1 = this.mApkgInfo.readApkgToString(paramString1))
           {
             bool1 = bool2;
-            if (paramString1.contains(new String(new byte[20])))
-            {
-              QMLog.e("minisdk-start-AppBrandPageContainer", paramString2 + " file invalid! ");
-              return false;
+            if (TextUtils.isEmpty(paramString1)) {
+              break;
             }
+            bool1 = bool2;
+            if (!paramString1.contains(new String(new byte[20]))) {
+              break;
+            }
+            QMLog.e("minisdk-start-AppBrandPageContainer", paramString2 + " file invalid! ");
+            return false;
           }
         }
+        return bool1;
       }
       catch (Throwable paramString1)
       {
@@ -392,7 +515,6 @@ public class AppBrandPageContainer
         bool1 = false;
       }
     }
-    return bool1;
   }
   
   private boolean isUrlLocalFileValid(String paramString)
@@ -537,7 +659,7 @@ public class AppBrandPageContainer
           }
         }
         if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          localObject1 = com.tencent.qqmini.sdk.core.utils.AppBrandUtil.getAppLaunchInfo((String)localObject2, this.mMiniAppInfo);
+          localObject1 = AppBrandUtil.getAppLaunchInfo((String)localObject2, this.mMiniAppInfo);
         }
       }
       try
@@ -566,7 +688,7 @@ public class AppBrandPageContainer
       {
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("path", paramString);
-        localJSONObject.put("query", com.tencent.qqmini.sdk.core.utils.AppBrandUtil.getQueryJson(paramString));
+        localJSONObject.put("query", AppBrandUtil.getQueryJson(paramString));
         if ((this.appBrandPages != null) && (this.appBrandPages.size() > 0))
         {
           localJSONObject.put("isEntryPage", bool);

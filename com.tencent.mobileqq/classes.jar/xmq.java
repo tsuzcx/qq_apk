@@ -1,24 +1,14 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
 
 public class xmq
+  implements bjoy
 {
-  public ErrorMessage a;
-  public List<xmt> a;
-  public boolean a;
-  public ErrorMessage b;
-  public boolean b;
-  public boolean c;
+  public xmq(StoryMessageListActivity paramStoryMessageListActivity, View paramView) {}
   
-  public xmq()
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String toString()
-  {
-    return "Data{upErrorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", isUpEnd=" + this.jdField_a_of_type_Boolean + ", mGroupInfoList=" + this.jdField_a_of_type_JavaUtilList + ", isDownEnd=" + this.jdField_b_of_type_Boolean + ", isFastData=" + this.c + ", downErrorMessage=" + this.jdField_b_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

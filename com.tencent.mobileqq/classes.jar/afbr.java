@@ -1,26 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-public class afbr
-  implements CompoundButton.OnCheckedChangeListener
+class afbr
+  implements View.OnClickListener
 {
-  public afbr(NotifyPushSettingActivity paramNotifyPushSettingActivity, BubbleManager paramBubbleManager) {}
+  afbr(afbj paramafbj) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramBoolean);
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getCurrentAccountUin();
-    if (paramBoolean) {}
-    for (String str1 = "1";; str1 = "0")
+    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.isEmpty())) {}
+    for (;;)
     {
-      VasWebviewUtil.reportCommercialDrainage(str2, "bubble_new", "change", "0", 0, 0, 0, "", "", str1, "", "", "", "", 0, 0, 0, 0);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      TroopWithCommonFriendsFragment.a(this.a.jdField_a_of_type_JavaLangString);
+      TroopWithCommonFriendsFragment.a(paramView.getContext(), 2);
+      bcef.b(null, "dc00898", "", "", "0X800AD22", "0X800AD22", 0, 0, "0", "0", "", "");
     }
   }
 }

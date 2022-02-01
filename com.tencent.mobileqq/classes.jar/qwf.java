@@ -1,30 +1,23 @@
-import java.net.URL;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
 
-public abstract interface qwf
+public class qwf
+  implements bjoe
 {
-  public abstract int getCommentCount();
+  public qwf(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  public abstract String getInnerUniqueID();
-  
-  public abstract String getShareUrl();
-  
-  public abstract String getSubscribeName();
-  
-  public abstract String getSubscribeUin();
-  
-  public abstract URL getVideoCoverURL();
-  
-  public abstract URL getVideoCoverUrlWithSmartCut(boolean paramBoolean);
-  
-  public abstract URL getVideoCoverWithSmartCut(int paramInt1, int paramInt2);
-  
-  public abstract int getVideoDuration();
-  
-  public abstract int getVideoHeight();
-  
-  public abstract String getVideoVid();
-  
-  public abstract int getVideoWidth();
+  public void OnClick(View paramView, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ComponentHeaderTopicRecommend.a(this.a).dismiss();
+      return;
+      ComponentHeaderTopicRecommend.a(this.a, false);
+    }
+  }
 }
 
 

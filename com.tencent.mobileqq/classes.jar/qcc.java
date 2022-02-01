@@ -1,13 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import org.json.JSONObject;
 
 public class qcc
-  implements ViewBase.IBuilder
+  implements qdy
 {
-  public ViewBase build(VafContext paramVafContext)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    return new qcb(paramVafContext);
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    paramBaseArticleInfo = new pzf().L(paramBaseArticleInfo).B(paramBaseArticleInfo);
+    switch (paramInt)
+    {
+    default: 
+      paramBaseArticleInfo.a("ReadInjoy_small_cell");
+    }
+    for (;;)
+    {
+      return paramBaseArticleInfo.a();
+      paramBaseArticleInfo.a("ReadInjoy_large_cell");
+    }
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2) {}
+  
+  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

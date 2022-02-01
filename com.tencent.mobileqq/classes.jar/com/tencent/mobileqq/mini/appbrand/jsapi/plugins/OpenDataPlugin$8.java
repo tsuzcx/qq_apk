@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
-import bhpc;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.app.MiniAppStateManager;
 import com.tencent.mobileqq.mini.util.ColorUtils;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
 import com.tencent.mobileqq.minigame.utils.GameLog;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class OpenDataPlugin$8
   implements Runnable
@@ -21,19 +21,19 @@ class OpenDataPlugin$8
     if ((this.this$0.jsPluginEngine.getActivityContext() != null) && (this.this$0.jsPluginEngine.getActivityContext().getActivity() != null) && (!this.this$0.jsPluginEngine.getActivityContext().getActivity().isFinishing())) {
       try
       {
-        bhpc localbhpc = new bhpc(this.this$0.jsPluginEngine.getActivityContext(), 2131755824);
-        localbhpc.setContentView(2131559383);
+        QQCustomDialog localQQCustomDialog = new QQCustomDialog(this.this$0.jsPluginEngine.getActivityContext(), 2131755826);
+        localQQCustomDialog.setContentView(2131559385);
         if (TextUtils.isEmpty(this.val$title)) {}
         for (String str = null;; str = this.val$title)
         {
-          localbhpc.setTitle(str).setMessage(this.val$content);
-          localbhpc.setPositiveButton(this.val$positiveButtonText, ColorUtils.parseColor("#3CC51F"), this.val$positiveButtonListener);
+          localQQCustomDialog.setTitle(str).setMessage(this.val$content);
+          localQQCustomDialog.setPositiveButton(this.val$positiveButtonText, ColorUtils.parseColor("#3CC51F"), this.val$positiveButtonListener);
           if (this.val$showCancel.booleanValue()) {
-            localbhpc.setNegativeButton(this.val$cancelButtonText, ColorUtils.parseColor("#000000"), this.val$negativeButtonListener);
+            localQQCustomDialog.setNegativeButton(this.val$cancelButtonText, ColorUtils.parseColor("#000000"), this.val$negativeButtonListener);
           }
-          localbhpc.setCanceledOnTouchOutside(true);
-          localbhpc.setOnCancelListener(this.val$onCancelListener);
-          localbhpc.show();
+          localQQCustomDialog.setCanceledOnTouchOutside(true);
+          localQQCustomDialog.setOnCancelListener(this.val$onCancelListener);
+          localQQCustomDialog.show();
           if (!(this.this$0.jsPluginEngine.getActivityContext().getActivity() instanceof GameActivity)) {
             break;
           }

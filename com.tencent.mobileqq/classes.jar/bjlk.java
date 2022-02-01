@@ -1,18 +1,53 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.BindGroupFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.sharp.jni.TraeAudioManager;
 
 public class bjlk
-  implements View.OnClickListener
 {
-  public bjlk(BindGroupFragment paramBindGroupFragment) {}
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = "DEVICE_NONE";
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
   
-  public void onClick(View paramView)
+  public bjlk(bjlj parambjlj) {}
+  
+  public int a()
   {
-    BindGroupFragment.a(this.a).finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    if ((paramString == null) || (paramString.length() <= 0)) {}
+    while (!TraeAudioManager.a(paramString)) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    return true;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
   }
 }
 

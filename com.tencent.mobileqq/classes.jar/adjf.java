@@ -1,42 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import msf.msgsvc.msg_svc.CommTmp;
-import msf.msgsvc.msg_svc.RoutingHead;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class adjf
-  implements adbw
+class adjf
+  implements ajms
 {
-  public int a()
-  {
-    return 1045;
-  }
+  adjf(adja paramadja) {}
   
-  public boolean a()
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    return false;
-  }
-  
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
-    localCommTmp.c2c_type.set(1);
-    localCommTmp.svr_type.set(166);
-    localCommTmp.to_uin.set(Long.valueOf(paramMessageRecord.frienduin).longValue());
-    paramMessageRecord = paramQQAppInterface.a().a(paramMessageRecord.frienduin, paramMessageRecord.selfuin, false);
-    if (paramMessageRecord != null) {
-      localCommTmp.sig.set(ByteStringMicro.copyFrom(paramMessageRecord));
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.a.getApplicationContext(), 1, amtj.a(2131704018), 0).a();
+      return;
     }
-    paramRoutingHead.comm_tmp.set(localCommTmp);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 8041;
+    paramContext = new Intent(this.a.a, GuideBindPhoneActivity.class);
+    paramContext.putExtra("fromKeyForContactBind", 5);
+    paramContext.putExtra("key_contact_name", this.a.a.a.a.k);
+    paramContext.putExtra("key_contact_phone", this.a.a.a.a.a);
+    this.a.a.startActivity(paramContext);
   }
 }
 

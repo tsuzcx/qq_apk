@@ -1,56 +1,33 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.togetherui.writetogether.SavingAnimView;
 
 public class bdkc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public static String a = "";
+  public bdkc(SavingAnimView paramSavingAnimView) {}
   
-  private static String a(String paramString1, String paramString2, String paramString3, bdkd parambdkd, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    QLog.e("AVShortVideoReportController", 1, "getReportingDetail");
-    paramString1 = new StringBuilder(64);
-    paramString1.append(paramString2).append('|');
-    paramString1.append(paramString3).append('|');
-    paramString1.append("${count_unknown}").append('|');
-    paramString1.append(parambdkd.a).append('|');
-    paramString1.append(parambdkd.b).append('|');
-    paramString1.append(parambdkd.c).append('|');
-    paramString1.append(parambdkd.d).append('|');
-    paramString1.append(parambdkd.e).append('|');
-    paramString1.append(parambdkd.f).append('|');
-    paramString1.append(parambdkd.g).append('|');
-    paramString1.append(parambdkd.h).append('|');
-    paramString1.append(parambdkd.i).append('|');
-    paramString1.append(parambdkd.j).append('|');
-    paramString1.append(parambdkd.k).append('|');
-    paramString1.append(parambdkd.l).append('|');
-    paramString1.append(parambdkd.m).append('|');
-    paramString1.append(parambdkd.n).append('|');
-    paramString1.append(parambdkd.o).append('|');
-    paramString1.append(parambdkd.p).append('|');
-    paramString1.append(parambdkd.q).append('|');
-    paramString1.append(parambdkd.r).append('|');
-    paramString1.append(parambdkd.s).append('|');
-    paramString1.append(parambdkd.t).append('|');
-    paramString1.append(parambdkd.u).append('|');
-    paramString1.append(parambdkd.v).append('|');
-    return paramString1.toString();
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, bdkd parambdkd)
-  {
-    paramString1 = a(paramString2, paramString1, paramString3, parambdkd, 1);
-    if (QLog.isColorLevel()) {
-      QLog.i("AVShortVideoReportController", 2, "POST getReportingDetail=" + paramString1);
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    float f2 = SavingAnimView.b(this.a) + f1;
+    float f3 = f1 + SavingAnimView.c(this.a);
+    f1 = f2;
+    if (f2 + 1.0E-005F >= 1.0F)
+    {
+      f1 = 0.0F;
+      SavingAnimView.a(this.a, 0.0F);
+      SavingAnimView.a(this.a, true);
     }
-    paramString3 = new Intent();
-    paramString3.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-    paramString3.putExtra("reporting_tag", paramString2);
-    paramString3.putExtra("reporting_detail", paramString1);
-    paramString3.putExtra("reporting_count", 1);
-    paramString3.putExtra("is_runtime", 0);
-    BaseApplicationImpl.getApplication().sendBroadcast(paramString3);
+    f2 = f3;
+    if (f3 + 1.0E-005F >= 1.0F) {
+      f2 = 1.0F;
+    }
+    if (!SavingAnimView.a(this.a)) {
+      SavingAnimView.a(this.a, f1);
+    }
+    SavingAnimView.b(this.a, f2);
+    this.a.invalidate();
   }
 }
 

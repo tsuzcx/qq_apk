@@ -1,72 +1,14 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bntp
+class bntp
+  implements DialogInterface.OnClickListener
 {
-  public static List<bnwo> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    bnwo localbnwo = new bnwo();
-    localbnwo.b = 1;
-    localbnwo.jdField_a_of_type_Int = 339;
-    localArrayList.add(localbnwo);
-    localbnwo = new bnwo();
-    localbnwo.b = 1;
-    localbnwo.jdField_a_of_type_Int = 340;
-    localArrayList.add(localbnwo);
-    localbnwo = new bnwo();
-    localbnwo.b = 1;
-    localbnwo.jdField_a_of_type_Int = 341;
-    localArrayList.add(localbnwo);
-    return localArrayList;
-  }
+  bntp(bntl parambntl) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bnwr localbnwr = new bnwr();
-    long l = System.currentTimeMillis() / 1000L;
-    localbnwr.b = (String.valueOf(paramQQAppInterface.getCurrentAccountUin()) + '_' + l);
-    localbnwr.d = paramInt;
-    localbnwr.jdField_e_of_type_Int = 1;
-    localbnwr.g = String.valueOf(paramString1);
-    localbnwr.jdField_a_of_type_Long = l;
-    localbnwr.jdField_a_of_type_Int = 1;
-    localbnwr.jdField_e_of_type_JavaLangString = "tianshu.31";
-    localbnwr.i = "";
-    localbnwr.l = paramString2;
-    bnwq.a().a(localbnwr);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("TianshuAdUtils", 2, "url empty");
-    }
-    do
-    {
-      return;
-      if (MiniAppLauncher.isMiniAppUrl(paramString))
-      {
-        MiniAppLauncher.startMiniApp(paramContext, paramString, paramInt, null);
-        return;
-      }
-      if ((!paramString.startsWith("mqqapi://")) || (paramQQAppInterface == null)) {
-        break;
-      }
-      paramQQAppInterface = bhni.a(paramQQAppInterface, paramContext, paramString);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.a();
-    return;
-    paramQQAppInterface = new Intent(paramContext, QQBrowserActivity.class);
-    paramQQAppInterface.putExtra("url", paramString);
-    paramContext.startActivity(paramQQAppInterface);
+    paramDialogInterface.dismiss();
   }
 }
 

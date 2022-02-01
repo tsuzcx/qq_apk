@@ -1,17 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyPrivacyListView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import java.io.File;
+import java.io.OutputStream;
 
 public class rbn
-  implements View.OnClickListener
+  extends AbsDownloader
 {
-  public rbn(ReadInJoyPrivacyListView paramReadInJoyPrivacyListView) {}
-  
-  public void onClick(View paramView)
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    ReadInJoyPrivacyListView.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new rbo(this, paramFile, false, false, 0, 0, 0.0F);
+  }
+  
+  public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramDownloadParams = paramDownloadParams.urlStr;
+    if (paramDownloadParams.startsWith("readinjoy_skin_gif://")) {
+      paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif://", "");
+    }
+    for (;;)
+    {
+      paramOutputStream = new File(paramOutputStream);
+      if (!paramOutputStream.exists()) {
+        break;
+      }
+      return paramOutputStream;
+      paramOutputStream = paramDownloadParams;
+      if (paramDownloadParams.startsWith("readinjoy_skin_gif:")) {
+        paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif:", "");
+      }
+    }
+    return null;
   }
 }
 

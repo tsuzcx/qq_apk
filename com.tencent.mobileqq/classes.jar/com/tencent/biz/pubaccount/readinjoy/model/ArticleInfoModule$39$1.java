@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pfd;
+import pkp;
 
 class ArticleInfoModule$39$1
   implements Runnable
@@ -9,7 +9,7 @@ class ArticleInfoModule$39$1
   
   public void run()
   {
-    pfd.a().b();
+    pkp.a().b();
   }
 }
 

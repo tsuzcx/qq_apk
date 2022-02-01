@@ -1,29 +1,17 @@
-import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class adxv
-  implements View.OnClickListener
+class adxv
+  implements View.OnLongClickListener
 {
-  public adxv(AutoRemarkActivity paramAutoRemarkActivity) {}
+  adxv(adxu paramadxu, long paramLong) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()) && (this.a.a.getWindow() != null)) {}
-    try
-    {
-      this.a.a.dismiss();
-      label46:
-      this.a.a = null;
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      break label46;
-    }
+    bfur.a(this.jdField_a_of_type_Adxu.a, 230).setTitle(this.jdField_a_of_type_Adxu.a.getString(2131718750)).setItems(2130968613, new adxw(this)).show();
+    return true;
   }
 }
 

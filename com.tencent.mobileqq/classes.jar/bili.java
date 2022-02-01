@@ -1,13 +1,30 @@
-import com.tencent.mobileqq.voicechange.QQVoiceChangerThread;
+import android.util.Log;
+import com.tencent.qg.qq.GameDemoFragment;
+import com.tencent.qg.sdk.QGGLSurfaceView;
+import com.tencent.qg.sdk.QGRenderer.QGEventListener;
+import com.tencent.qg.sdk.doraemon.DoraemonApiWrapper;
 
 public class bili
+  implements QGRenderer.QGEventListener
 {
-  int jdField_a_of_type_Int;
-  bilb jdField_a_of_type_Bilb;
-  bilg jdField_a_of_type_Bilg;
-  bilj jdField_a_of_type_Bilj;
-  QQVoiceChangerThread jdField_a_of_type_ComTencentMobileqqVoicechangeQQVoiceChangerThread;
-  boolean jdField_a_of_type_Boolean;
+  public bili(GameDemoFragment paramGameDemoFragment) {}
+  
+  public void onCanvasCreated()
+  {
+    Log.d("ejecta", "Event: Canvas was created");
+    this.a.a.init();
+    String[] arrayOfString = GameDemoFragment.a(this.a);
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = arrayOfString[i];
+      GameDemoFragment.a(this.a).loadJavaScriptFileFromSDCard(str);
+      i += 1;
+    }
+  }
+  
+  public void onDrawFrame() {}
 }
 
 

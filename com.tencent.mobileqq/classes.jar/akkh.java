@@ -1,42 +1,61 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.DownloadResult.Status;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
+import cooperation.qzone.qboss.QbossReportManager;
+import java.lang.ref.WeakReference;
 
 class akkh
-  implements TextWatcher
+  implements Downloader.DownloadListener
 {
-  akkh(akkg paramakkg) {}
+  private volatile int jdField_a_of_type_Int;
+  private akke jdField_a_of_type_Akke;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private volatile int b;
+  private int c;
   
-  public void afterTextChanged(Editable paramEditable)
+  public akkh(akkg paramakkg, QQAppInterface paramQQAppInterface, akke paramakke, int paramInt)
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if (paramEditable.length() == 0)
-    {
-      this.a.jdField_b_of_type_JavaLangString = "";
-      this.a.findViewById(2131368209).setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.a.jdField_a_of_type_Akge.a();
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    }
-    while (this.a.jdField_b_of_type_JavaLangString.equals(paramEditable)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "afterTextChanged, lastChangedKeyword = " + this.a.jdField_b_of_type_JavaLangString + ",lastKeyWord:" + paramEditable);
-    }
-    this.a.jdField_b_of_type_JavaLangString = paramEditable;
-    this.a.findViewById(2131368209).setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    this.a.a();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Akke = paramakke;
+    this.c = paramInt;
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onDownloadCanceled(String paramString) {}
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QbossADBannerConfigManager", 2, "diy data download fail url = " + paramString);
+    }
+    this.b += 1;
+    akkg.a(this.jdField_a_of_type_Akkg, this.jdField_a_of_type_Akke, paramString, false);
+    if (this.jdField_a_of_type_Akke != null) {
+      QbossReportManager.getInstance().sendErrorReport(2741, this.jdField_a_of_type_Akke.c, 101, "qboss download resources fail mErrCode = " + paramDownloadResult.getStatus().httpStatus + " resUrl = " + paramString);
+    }
+    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (this.b + this.jdField_a_of_type_Int == this.c) {
+      akkg.a(this.jdField_a_of_type_Akkg, paramString);
+    }
+  }
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QbossADBannerConfigManager", 2, "banner resources download success url = " + paramString);
+    }
+    this.jdField_a_of_type_Int += 1;
+    akkg.a(this.jdField_a_of_type_Akkg, this.jdField_a_of_type_Akke, paramString, true);
+    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (this.jdField_a_of_type_Int == this.c) {
+      akkg.b(this.jdField_a_of_type_Akkg, paramString);
+    }
+  }
 }
 
 

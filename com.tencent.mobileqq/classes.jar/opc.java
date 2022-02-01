@@ -1,9 +1,9 @@
-import kotlin.Metadata;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil;", "", "()V", "CommentProteusOnClickListener", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class opc
+public abstract interface opc
 {
-  public static final ope a = new ope(null);
+  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
 }
 
 

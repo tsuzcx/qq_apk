@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import agej;
+import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,25 +9,25 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Pair;
-import anzj;
-import aser;
-import asev;
-import asfa;
-import asjw;
-import auxu;
-import bdll;
-import bhjx;
-import bhlq;
-import bhnv;
-import bhpr;
-import bioy;
-import bjbs;
+import aqyp;
+import aqyt;
+import aqyy;
+import ardu;
+import atky;
+import bcef;
+import bftf;
+import bfur;
+import bgve;
+import bhht;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.emosm.Client;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.widget.QQToast;
@@ -65,7 +65,7 @@ public class EmojiJsPlugin
   protected String mSelfUin;
   protected int mSrcFromType = 1;
   private EmojiJsPlugin.MakeDynamicEmojiInfo makeInfo;
-  bjbs progressDialog;
+  bhht progressDialog;
   
   static
   {
@@ -93,7 +93,7 @@ public class EmojiJsPlugin
         if (TextUtils.isEmpty(paramString4)) {
           break label125;
         }
-        if (bhnv.d(this.mRuntime.a().getApplicationContext())) {
+        if (NetworkUtil.isNetSupport(this.mRuntime.a().getApplicationContext())) {
           break label98;
         }
         onPayResultCallback("net unsupport", 4, 0, -1, -1, -1, paramString1);
@@ -143,8 +143,8 @@ public class EmojiJsPlugin
     localEmoticon.eId = paramJSONWrapper.getString("itemId");
     paramJSONWrapper = new Bundle();
     paramJSONWrapper.putSerializable("emoticon", localEmoticon);
-    paramJSONWrapper = asev.a("collectEmoji", paramString, this.mOnRemoteResp.key, paramJSONWrapper);
-    asjw.a().a(paramJSONWrapper);
+    paramJSONWrapper = aqyt.a("collectEmoji", paramString, this.mOnRemoteResp.key, paramJSONWrapper);
+    ardu.a().a(paramJSONWrapper);
   }
   
   private void dismissProgressDialog()
@@ -160,8 +160,8 @@ public class EmojiJsPlugin
     {
       Bundle localBundle = new Bundle();
       localBundle.putString("messageSeq", paramString1);
-      paramString1 = asev.a("emojiStickerAddFavorites", paramString2, this.mOnRemoteResp.key, localBundle);
-      asjw.a().a(paramString1);
+      paramString1 = aqyt.a("emojiStickerAddFavorites", paramString2, this.mOnRemoteResp.key, localBundle);
+      ardu.a().a(paramString1);
       showProgressDialog();
     }
   }
@@ -174,8 +174,8 @@ public class EmojiJsPlugin
       localBundle.putString("messageSeq", paramString1);
       localBundle.putString("recallCallbackId", paramString2);
       localBundle.putInt("reCallKey", this.mOnRemoteResp.key);
-      paramString1 = asev.a("emojiStickerRecall", paramString2, this.mOnRemoteResp.key, localBundle);
-      asjw.a().a(paramString1);
+      paramString1 = aqyt.a("emojiStickerRecall", paramString2, this.mOnRemoteResp.key, localBundle);
+      ardu.a().a(paramString1);
       showProgressDialog();
     }
   }
@@ -187,13 +187,13 @@ public class EmojiJsPlugin
     localEmoticon.eId = paramJSONWrapper.getString("itemId");
     paramJSONWrapper = new Bundle();
     paramJSONWrapper.putSerializable("emoticon", localEmoticon);
-    paramJSONWrapper = asev.a("getCollectEmojiStatus", paramString, this.mOnRemoteResp.key, paramJSONWrapper);
-    asjw.a().a(paramJSONWrapper);
+    paramJSONWrapper = aqyt.a("getCollectEmojiStatus", paramString, this.mOnRemoteResp.key, paramJSONWrapper);
+    ardu.a().a(paramJSONWrapper);
   }
   
   private void getNetwork(String paramString)
   {
-    int i = bhnv.a(this.mRuntime.a().getApplicationContext());
+    int i = NetworkUtil.getSystemNetwork(this.mRuntime.a().getApplicationContext());
     JSONObject localJSONObject1 = new JSONObject();
     try
     {
@@ -257,7 +257,7 @@ public class EmojiJsPlugin
   
   private void makeToast(String paramString)
   {
-    QQToast.a(this.mRuntime.a(), paramString, 0).b(this.mRuntime.a().getResources().getDimensionPixelSize(2131299011));
+    QQToast.a(this.mRuntime.a(), paramString, 0).b(this.mRuntime.a().getResources().getDimensionPixelSize(2131299076));
   }
   
   private void onPayResultCallback(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString2)
@@ -367,23 +367,23 @@ public class EmojiJsPlugin
     localBundle.putString("id", paramString2);
     localBundle.putInt("businessType", paramInt1);
     localBundle.putInt("sceneType", paramInt2);
-    paramString1 = asev.a("queryEmojiInfo", paramString1, this.mOnRemoteResp.key, localBundle);
-    asjw.a().a(paramString1);
+    paramString1 = aqyt.a("queryEmojiInfo", paramString1, this.mOnRemoteResp.key, localBundle);
+    ardu.a().a(paramString1);
   }
   
   private void queryEmojiInfos(String paramString, int paramInt)
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("sceneType", paramInt);
-    paramString = asev.a("queryEmojiInfos", paramString, this.mOnRemoteResp.key, localBundle);
-    asjw.a().a(paramString);
+    paramString = aqyt.a("queryEmojiInfos", paramString, this.mOnRemoteResp.key, localBundle);
+    ardu.a().a(paramString);
   }
   
   private void queryEmojiStickerInfos(String paramString)
   {
     Bundle localBundle = new Bundle();
-    paramString = asev.a("queryEmojiStickerInfos", paramString, this.mOnRemoteResp.key, localBundle);
-    asjw.a().a(paramString);
+    paramString = aqyt.a("queryEmojiStickerInfos", paramString, this.mOnRemoteResp.key, localBundle);
+    ardu.a().a(paramString);
   }
   
   private void rechargeGameCurrency(String paramString1, String paramString2)
@@ -424,8 +424,8 @@ public class EmojiJsPlugin
     localEmoticon.name = paramJSONWrapper.getString("itemName");
     paramJSONWrapper = new Bundle();
     paramJSONWrapper.putSerializable("emoticon", localEmoticon);
-    paramJSONWrapper = asev.a("sendEmojiToAIO", paramString, this.mOnRemoteResp.key, paramJSONWrapper);
-    asjw.a().a(paramJSONWrapper);
+    paramJSONWrapper = aqyt.a("sendEmojiToAIO", paramString, this.mOnRemoteResp.key, paramJSONWrapper);
+    ardu.a().a(paramJSONWrapper);
   }
   
   private void sendEmojiToFriend(int paramInt)
@@ -434,7 +434,7 @@ public class EmojiJsPlugin
     {
       Object localObject = getInfoIntent().getExtras().getString("key_emojimall_detail_chat_uin");
       int i = getInfoIntent().getExtras().getInt("key_emojimall_detail_chat_type");
-      bdll.a(null, "CliOper", "", "", "ep_mall", "Clk_send_detail", 0, 0, "", "", "", paramInt + "");
+      bcef.a(null, "CliOper", "", "", "ep_mall", "Clk_send_detail", 0, 0, "", "", "", paramInt + "");
       if (((this.mSrcFromType == 1) || (this.mSrcFromType == 8)) && (localObject != null))
       {
         localBundle = new Bundle();
@@ -442,7 +442,7 @@ public class EmojiJsPlugin
         localBundle.putInt("uintype", i);
         localBundle.putInt("FORWARD_EMOPGK_ID", paramInt);
         localBundle.putBoolean("isBack2Root", true);
-        localObject = agej.a(new Intent(this.mRuntime.a().getApplicationContext(), SplashActivity.class), new int[] { 2 });
+        localObject = AIOUtils.setOpenAIOIntent(new Intent(this.mRuntime.a().getApplicationContext(), SplashActivity.class), new int[] { 2 });
         this.mRuntime.a().getSharedPreferences("mobileQQ", 4).edit().putBoolean("FORWARD_EMOPGK_ID", true).commit();
         ((Intent)localObject).putExtras(localBundle);
         this.mRuntime.a().startActivity((Intent)localObject);
@@ -471,12 +471,12 @@ public class EmojiJsPlugin
     paramString4 = paramString4.split("\t");
     if (paramString4.length >= 1)
     {
-      paramString2 = bhlq.a(this.mRuntime.a(), 230).a(paramString3).b(paramString2).a(paramString4[0], new EmojiJsPlugin.1(this, paramString1));
+      paramString2 = bfur.a(this.mRuntime.a(), 230).setTitle(paramString3).setMessage(paramString2).setLeftButton(paramString4[0], new EmojiJsPlugin.1(this, paramString1));
       if (paramString4.length >= 2) {
-        paramString2.b(paramString4[1], new EmojiJsPlugin.2(this, paramString1));
+        paramString2.setMiddleButton(paramString4[1], new EmojiJsPlugin.2(this, paramString1));
       }
       if (paramString4.length >= 3) {
-        paramString2.c(paramString4[2], new EmojiJsPlugin.3(this, paramString1));
+        paramString2.setRightButton(paramString4[2], new EmojiJsPlugin.3(this, paramString1));
       }
       paramString2.setCanceledOnTouchOutside(false);
       paramString2.setOnKeyListener(new EmojiJsPlugin.4(this, paramString2, paramString1));
@@ -496,7 +496,7 @@ public class EmojiJsPlugin
     try
     {
       JSONObject localJSONObject;
-      if (!bhjx.a())
+      if (!bftf.a())
       {
         if (QLog.isColorLevel()) {
           QLog.d(TAG, 2, "SDCard not available.");
@@ -507,7 +507,7 @@ public class EmojiJsPlugin
         onAppResponse(paramString, localJSONObject.toString());
         return;
       }
-      long l = bhjx.b();
+      long l = bftf.b();
       if (l < 5242880)
       {
         if (QLog.isColorLevel()) {
@@ -524,16 +524,16 @@ public class EmojiJsPlugin
     {
       localJSONException1.printStackTrace();
       Object localObject;
-      if (bhnv.d(this.mRuntime.a().getApplicationContext())) {
-        if ((!paramBoolean) || (bhnv.b(this.mRuntime.a().getApplicationContext()) == 1))
+      if (NetworkUtil.isNetSupport(this.mRuntime.a().getApplicationContext())) {
+        if ((!paramBoolean) || (NetworkUtil.getNetworkType(this.mRuntime.a().getApplicationContext()) == 1))
         {
           localObject = new Bundle();
           ((Bundle)localObject).putInt("id", paramInt1);
           ((Bundle)localObject).putInt("businessType", paramInt2);
           ((Bundle)localObject).putInt("sceneType", paramInt3);
-          localObject = asev.a("startDownloadEmoji", paramString, this.mOnRemoteResp.key, (Bundle)localObject);
+          localObject = aqyt.a("startDownloadEmoji", paramString, this.mOnRemoteResp.key, (Bundle)localObject);
           addDownloadingStateObserver(new Pair(Integer.valueOf(paramInt1), paramString));
-          asjw.a().b((Bundle)localObject);
+          ardu.a().b((Bundle)localObject);
         }
       }
       for (;;)
@@ -546,10 +546,10 @@ public class EmojiJsPlugin
         if (QLog.isColorLevel()) {
           QLog.i(TAG, 2, "startDownloadEmoji non wifi net");
         }
-        localObject = bhlq.a(this.mRuntime.a(), 230).a(this.mRuntime.a().getString(2131691741)).b(this.mRuntime.a().getString(2131691740)).a(this.mRuntime.a().getString(2131691738), new EmojiJsPlugin.6(this, paramString)).c(this.mRuntime.a().getString(2131691739), new EmojiJsPlugin.5(this, paramInt1, paramInt2, paramInt3, paramString));
-        ((bhpr)localObject).setOnKeyListener(new EmojiJsPlugin.7(this, (bhpr)localObject, paramString));
-        ((bhpr)localObject).setCanceledOnTouchOutside(false);
-        ((bhpr)localObject).show();
+        localObject = bfur.a(this.mRuntime.a(), 230).setTitle(this.mRuntime.a().getString(2131691787)).setMessage(this.mRuntime.a().getString(2131691786)).setLeftButton(this.mRuntime.a().getString(2131691784), new EmojiJsPlugin.6(this, paramString)).setRightButton(this.mRuntime.a().getString(2131691785), new EmojiJsPlugin.5(this, paramInt1, paramInt2, paramInt3, paramString));
+        ((QQCustomDialogThreeBtns)localObject).setOnKeyListener(new EmojiJsPlugin.7(this, (QQCustomDialogThreeBtns)localObject, paramString));
+        ((QQCustomDialogThreeBtns)localObject).setCanceledOnTouchOutside(false);
+        ((QQCustomDialogThreeBtns)localObject).show();
         continue;
         localObject = new JSONObject();
         try
@@ -568,7 +568,7 @@ public class EmojiJsPlugin
             localJSONException2.printStackTrace();
           }
         }
-        asfa.a(this.mRuntime.a());
+        aqyy.a(this.mRuntime.a());
       }
     }
   }
@@ -578,8 +578,8 @@ public class EmojiJsPlugin
     Bundle localBundle = new Bundle();
     localBundle.putInt("id", paramInt1);
     localBundle.putInt("sceneType", paramInt2);
-    paramString = asev.a("stopDownloadEmoji", paramString, this.mOnRemoteResp.key, localBundle);
-    asjw.a().a(paramString);
+    paramString = aqyt.a("stopDownloadEmoji", paramString, this.mOnRemoteResp.key, localBundle);
+    ardu.a().a(paramString);
   }
   
   protected void OnActivityCreate()
@@ -682,8 +682,8 @@ public class EmojiJsPlugin
   public void invoke(String paramString1, String paramString2, String paramString3)
   {
     boolean bool2 = true;
-    if (!asjw.a().a()) {
-      asjw.a().a().doBindService(this.mRuntime.a().getApplicationContext());
+    if (!ardu.a().a()) {
+      ardu.a().a().doBindService(this.mRuntime.a().getApplicationContext());
     }
     JSONObject localJSONObject;
     EmojiJsPlugin.JSONWrapper localJSONWrapper;
@@ -1130,13 +1130,13 @@ public class EmojiJsPlugin
                 onAppResponse(str, paramBundle.toString());
                 VasWebviewUtil.reportCommercialDrainage((String)localObject2, "Stick", "Recall", String.valueOf(k), 0, i, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
                 return;
-                paramBundle = anzj.a(2131702912);
+                paramBundle = amtj.a(2131703142);
                 i = 0;
                 continue;
-                paramBundle = anzj.a(2131702909);
+                paramBundle = amtj.a(2131703139);
                 i = 1;
                 continue;
-                paramBundle = anzj.a(2131702910);
+                paramBundle = amtj.a(2131703140);
                 i = 1;
               }
               catch (JSONException paramBundle)
@@ -1174,11 +1174,11 @@ public class EmojiJsPlugin
                 paramBundle.printStackTrace();
                 return;
               }
-              paramBundle = anzj.a(2131702913);
+              paramBundle = amtj.a(2131703143);
               continue;
-              paramBundle = anzj.a(2131702914);
+              paramBundle = amtj.a(2131703144);
               continue;
-              paramBundle = anzj.a(2131702911);
+              paramBundle = amtj.a(2131703141);
             }
           }
         }
@@ -1340,7 +1340,7 @@ public class EmojiJsPlugin
         paramBundle.putBoolean("direct_send_emoji", true);
         localObject1 = new Intent();
         ((Intent)localObject1).putExtras(paramBundle);
-        auxu.a(this.mRuntime.a(), (Intent)localObject1, 21);
+        atky.a(this.mRuntime.a(), (Intent)localObject1, 21);
         paramBundle = new JSONObject();
         try
         {

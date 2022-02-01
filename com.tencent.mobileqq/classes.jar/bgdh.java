@@ -1,50 +1,41 @@
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.ColorSelectView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
 
 public class bgdh
   extends BaseAdapter
 {
-  protected SearchReciteArticleFragment a;
-  protected String a;
-  protected List<bgdg> a;
+  public static final int[] a;
+  public int a;
   
-  public bgdh(SearchReciteArticleFragment paramSearchReciteArticleFragment)
+  static
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment = paramSearchReciteArticleFragment;
+    jdField_a_of_type_ArrayOfInt = new int[] { 0, -16777216, -51904, -41579, -2992688, -15808515, -16268201, -12464 };
   }
   
-  public bgdg a(int paramInt)
+  public bgdh()
   {
-    return (bgdg)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public void a()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void a(bgdg parambgdg)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(parambgdg);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return jdField_a_of_type_ArrayOfInt.length;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(jdField_a_of_type_ArrayOfInt[paramInt]);
   }
   
   public long getItemId(int paramInt)
@@ -54,26 +45,34 @@ public class bgdh
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560644, null, false);
-      paramView = new bgdi(this);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131380141));
-      paramView.b = ((TextView)localView.findViewById(2131379761));
-      localView.setTag(paramView);
+    if (paramView == null) {
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561845, paramViewGroup, false);
     }
     for (;;)
     {
-      paramView.jdField_a_of_type_Int = paramInt;
-      Object localObject = a(paramInt);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(SearchReciteArticleFragment.a(this.jdField_a_of_type_JavaLangString, ((bgdg)localObject).jdField_a_of_type_JavaLangString, Color.parseColor("#00B6F9")));
-      paramView.b.setText(((bgdg)localObject).b);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (bgdi)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
+      ColorSelectView localColorSelectView = (ColorSelectView)paramView.findViewById(2131364742);
+      ImageView localImageView = (ImageView)paramView.findViewById(2131364740);
+      if (paramInt == 0)
+      {
+        localColorSelectView.setVisibility(8);
+        localImageView.setVisibility(0);
+        if (this.jdField_a_of_type_Int == paramInt) {}
+        for (int i = 2130846984;; i = 2130846983)
+        {
+          localImageView.setImageResource(i);
+          EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+          return paramView;
+        }
+      }
+      localColorSelectView.setVisibility(0);
+      localImageView.setVisibility(8);
+      localColorSelectView.setColor(jdField_a_of_type_ArrayOfInt[paramInt]);
+      if (this.jdField_a_of_type_Int == paramInt) {}
+      for (boolean bool = true;; bool = false)
+      {
+        localColorSelectView.setSelect(bool);
+        break;
+      }
     }
   }
 }

@@ -1,43 +1,27 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.text.TextUtils;
-import android.text.style.ReplacementSpan;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.mobileqq.activity.AgeSelectionActivity;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/GdtMotiveBrowsingTitle$GdtMotiveBrowsingCenterFixWidthSpan;", "Landroid/text/style/ReplacementSpan;", "fixWidth", "", "(I)V", "draw", "", "canvas", "Landroid/graphics/Canvas;", "text", "", "start", "end", "x", "", "top", "y", "bottom", "paint", "Landroid/graphics/Paint;", "getSize", "fm", "Landroid/graphics/Paint$FontMetricsInt;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class acrd
-  extends ReplacementSpan
+public class acrd
+  implements acva
 {
-  private final int a;
+  public acrd(AgeSelectionActivity paramAgeSelectionActivity) {}
   
-  public acrd(int paramInt)
+  public void a()
   {
-    this.a = paramInt;
-  }
-  
-  public void draw(@NotNull Canvas paramCanvas, @Nullable CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NotNull Paint paramPaint)
-  {
-    Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
-    Intrinsics.checkParameterIsNotNull(paramPaint, "paint");
-    if (!TextUtils.isEmpty(paramCharSequence))
-    {
-      float f = paramPaint.measureText(paramCharSequence, paramInt1, paramInt2);
-      f = Math.max(0.0F, (this.a - f) / 2);
-      if (paramCharSequence == null) {
-        Intrinsics.throwNpe();
-      }
-      paramCanvas.drawText(paramCharSequence, paramInt1, paramInt2, paramFloat + f, paramInt4, paramPaint);
+    if ((AgeSelectionActivity.a(this.a) != null) && (AgeSelectionActivity.a(this.a).isShowing())) {
+      AgeSelectionActivity.a(this.a).dismiss();
     }
   }
   
-  public int getSize(@NotNull Paint paramPaint, @Nullable CharSequence paramCharSequence, int paramInt1, int paramInt2, @Nullable Paint.FontMetricsInt paramFontMetricsInt)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    Intrinsics.checkParameterIsNotNull(paramPaint, "paint");
-    return this.a;
+    this.a.b = paramInt1;
+    this.a.c = paramInt2;
+    this.a.d = paramInt3;
+    if (QLog.isColorLevel()) {
+      QLog.d("AgeSelectionActivity", 2, String.format("onBirthdayChange newBirthdayYear:%s,newBirthdayMonth:%s,newBirthdayDay:%s", new Object[] { Integer.valueOf(this.a.b), Integer.valueOf(this.a.c), Integer.valueOf(this.a.d) }));
+    }
+    AgeSelectionActivity.a(this.a, this.a.b, this.a.c, this.a.d);
   }
 }
 

@@ -1,21 +1,90 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.ipc.AdIPCManager;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Handler;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
+import com.tencent.ad.tangram.process.AdProcessManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
 
-class abjw
-  implements View.OnClickListener
+public final class abjw
+  extends QIPCModule
 {
-  abjw(abju paramabju) {}
+  private static volatile abjw a;
   
-  public void onClick(View paramView)
+  private abjw(String paramString)
   {
-    this.a.e();
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramString);
+  }
+  
+  public static abjw a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new abjw("gdt_ipc_sync_module_client_to_server");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    Object localObject2 = null;
+    AdIPCManager.Params localParams = new AdIPCManager.Params(paramBundle);
+    if (localParams != null)
+    {
+      paramBundle = localParams.getAction();
+      if (localParams == null) {
+        break label73;
+      }
+      localObject1 = localParams.getToProcessName();
+      label36:
+      abrl.b("GdtIPCAdapter", String.format("ClientToServerIPCSyncModule.onCall action:%s to:%s", new Object[] { paramBundle, localObject1 }));
+      if (!TextUtils.isEmpty(paramString)) {
+        break label79;
+      }
+    }
+    label73:
+    label79:
+    do
+    {
+      do
+      {
+        do
+        {
+          return null;
+          paramBundle = null;
+          break;
+          localObject1 = null;
+          break label36;
+        } while ((!localParams.isValid()) || (!TextUtils.equals(localParams.getAction(), paramString)));
+        paramBundle = AdProcessManager.INSTANCE.isOnMainProcess();
+      } while ((paramBundle == null) || (!paramBundle.booleanValue()) || (!TextUtils.equals(AdProcessManager.INSTANCE.getCurrentProcessName(BaseApplicationImpl.getContext()), localParams.getToProcessName())));
+      paramString = AdIPCManager.INSTANCE.getHandler(paramString);
+    } while (paramString == null);
+    Object localObject1 = paramString.handle(localParams);
+    paramBundle = new EIPCResult();
+    if ((localObject1 != null) && (((AdIPCManager.Result)localObject1).success)) {}
+    for (paramInt = 0;; paramInt = -102)
+    {
+      paramBundle.code = paramInt;
+      paramString = localObject2;
+      if (localObject1 != null) {
+        paramString = ((AdIPCManager.Result)localObject1).bundle;
+      }
+      paramBundle.data = paramString;
+      return paramBundle;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abjw
  * JD-Core Version:    0.7.0.1
  */

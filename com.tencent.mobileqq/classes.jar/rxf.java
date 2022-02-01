@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import tencent.im.msg.im_msg_body.RichText;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-class rxf
-  implements azrg
+final class rxf
+  extends AnimatorListenerAdapter
 {
-  rxf(rxd paramrxd) {}
+  rxf(View paramView) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return null;
+    this.a.setLayerType(0, null);
+    this.a.setVisibility(8);
+    this.a.setTranslationY(0.0F);
   }
-  
-  public void a(azrh paramazrh) {}
-  
-  public void b(azrh paramazrh) {}
 }
 
 

@@ -1,29 +1,19 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.capture.text.TextParcelData;
 
-public abstract interface bmxd
+public final class bmxd
+  implements Parcelable.Creator<TextParcelData>
 {
-  public abstract void attachQQContext(Activity paramActivity, QQAppInterface paramQQAppInterface);
+  public TextParcelData a(Parcel paramParcel)
+  {
+    return new TextParcelData(paramParcel);
+  }
   
-  public abstract void clearCache();
-  
-  public abstract void forceRefresh();
-  
-  public abstract void onSwitchOutofQzone();
-  
-  public abstract void resetReportFlag();
-  
-  public abstract void setQzoneSwitchlistener(akgu paramakgu);
-  
-  public abstract void setRightButtonType(int paramInt);
-  
-  public abstract int setTitleAlphaAndGetLastValue(int paramInt);
-  
-  public abstract void setTitleView(ViewGroup paramViewGroup);
-  
-  public abstract void updatePublishBox(Intent paramIntent);
+  public TextParcelData[] a(int paramInt)
+  {
+    return new TextParcelData[paramInt];
+  }
 }
 
 

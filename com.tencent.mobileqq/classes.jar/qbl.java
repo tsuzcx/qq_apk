@@ -1,13 +1,36 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class qbl
-  implements ViewBase.IBuilder
+class qbl
+  implements ViewBase.OnClickListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  qbl(qbf paramqbf, rdl paramrdl, ArticleInfo paramArticleInfo) {}
+  
+  public void onClick(ViewBase paramViewBase)
   {
-    return new qbk(paramVafContext);
+    boolean bool = true;
+    int i;
+    ArticleInfo localArticleInfo;
+    if (this.jdField_a_of_type_Rdl.a)
+    {
+      i = 2;
+      qbf.a(this.jdField_a_of_type_Qbf, this.jdField_a_of_type_Rdl, i);
+      paramViewBase = this.jdField_a_of_type_Qbf;
+      localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+      if (this.jdField_a_of_type_Rdl.a) {
+        break label60;
+      }
+    }
+    for (;;)
+    {
+      qbf.a(paramViewBase, localArticleInfo, bool);
+      return;
+      i = 1;
+      break;
+      label60:
+      bool = false;
+    }
   }
 }
 

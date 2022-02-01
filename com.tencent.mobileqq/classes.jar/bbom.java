@@ -1,151 +1,33 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
 import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
+import mqq.app.Packet;
 
 public class bbom
+  extends MSFServlet
 {
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private Map<String, int[]> jdField_a_of_type_JavaUtilMap;
-  
-  public bbom(AppInterface paramAppInterface)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    a("TransInfoCreate.CreateSession", new int[] { 0 });
-    a("TransInfo.JoinSession", new int[] { 0 });
-    a("TransInfo.ExitSession", new int[] { 0 });
-    a("TransInfo.ChangeSession", new int[] { 0 });
-    a("TransInfo.RawData", new int[] { 0 });
-  }
-  
-  public AppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, aqwp paramaqwp, Class<? extends MSFServlet> paramClass)
-  {
-    if (paramToServiceMsg.getWupBuffer() != null)
+    paramIntent = (QQAppInterface)getAppRuntime();
+    if ("ConfigPushSvc.GetIpDirect".equals(paramFromServiceMsg.getServiceCmd()))
     {
-      long l = paramToServiceMsg.getWupBuffer().length;
-      byte[] arrayOfByte = new byte[(int)l + 4];
-      bhvd.a(arrayOfByte, 0, 4L + l);
-      bhvd.a(arrayOfByte, 4, paramToServiceMsg.getWupBuffer(), (int)l);
-      paramToServiceMsg.putWupBuffer(arrayOfByte);
+      InnerDns.getInstance().onReceivePush(paramFromServiceMsg);
       if (QLog.isColorLevel()) {
-        QLog.d("PeakMsfServletProxy", 2, "PB cmd: req cmd: " + paramToServiceMsg.getServiceCmd());
+        QLog.i("IPDomainGet", 2, "onReceive response resultCode:" + paramFromServiceMsg.getResultCode() + " log:" + paramFromServiceMsg.getStringForLog());
       }
-      paramToServiceMsg.actionListener = paramaqwp;
-      paramaqwp = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramClass);
-      paramaqwp.putExtra(ToServiceMsg.class.getSimpleName(), paramToServiceMsg);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramaqwp);
-      l = System.currentTimeMillis();
-      paramToServiceMsg.extraData.putLong("sendtimekey", l);
     }
   }
   
-  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Exception paramException)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    AppInterface localAppInterface = a();
-    float f = (float)(System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey")) / 1000.0F;
-    Object localObject;
-    int i;
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PeakMsfServletProxy", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + " app seq:" + paramFromServiceMsg.getAppSeq() + "sec." + f);
-      }
-      boolean bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
-      if ((!paramBoolean) || (!bool)) {
-        break label501;
-      }
-      localObject = paramFromServiceMsg.getServiceCmd();
-      if (QLog.isColorLevel()) {
-        QLog.d("PeakMsfServletProxy", 2, "PB cmd: recv cmd: " + (String)localObject);
-      }
-      if (paramFromServiceMsg.getWupBuffer() == null) {
-        break label502;
-      }
-      i = paramFromServiceMsg.getWupBuffer().length - 4;
-      paramException = new byte[i];
-      bhvd.a(paramException, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-      paramFromServiceMsg.putWupBuffer(paramException);
+    if (QLog.isColorLevel()) {
+      QLog.i("IPDomainGet", 2, "IPDomainGet onSend() ");
     }
-    label226:
-    label501:
-    label502:
-    for (paramException = paramFromServiceMsg.getWupBuffer();; paramException = null)
-    {
-      for (;;)
-      {
-        int[] arrayOfInt = (int[])this.jdField_a_of_type_JavaUtilMap.get(localObject);
-        if ((arrayOfInt != null) && (arrayOfInt.length > 0))
-        {
-          int j = arrayOfInt.length;
-          i = 0;
-          if (i >= j) {
-            break label501;
-          }
-          localObject = (anud)localAppInterface.getBusinessHandler(arrayOfInt[i]);
-          if (localObject != null) {}
-          try
-          {
-            ((anud)localObject).onReceive(paramToServiceMsg, paramFromServiceMsg, paramException);
-            i += 1;
-            break label226;
-            if (paramException != null)
-            {
-              localObject = new ByteArrayOutputStream();
-              paramException.printStackTrace(new PrintStream((OutputStream)localObject));
-              paramException = new String(((ByteArrayOutputStream)localObject).toByteArray());
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("PeakMsfServletProxy", 2, "[NOT SEND]cmd=" + paramFromServiceMsg.getServiceCmd() + ", " + paramException);
-              break;
-            }
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.w("PeakMsfServletProxy", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + ",CODE=" + paramFromServiceMsg.getResultCode() + "sec." + f);
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              localException.printStackTrace();
-              if (QLog.isColorLevel()) {
-                QLog.w("PeakMsfServletProxy", 2, localObject.getClass().getSimpleName() + " onReceive error,", localException);
-              }
-            }
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("PeakMsfServletProxy", 2, " handlerIds no map " + (String)localObject);
-      }
-      return;
-    }
-  }
-  
-  protected boolean a(String paramString, int[] paramArrayOfInt)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, paramArrayOfInt);
-      return true;
-    }
-    return false;
+    paramPacket.setSSOCommand("ConfigPushSvc.GetIpDirect");
+    paramPacket.setTimeout(15000L);
   }
 }
 

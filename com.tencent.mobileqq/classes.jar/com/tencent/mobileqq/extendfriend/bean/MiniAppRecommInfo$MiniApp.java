@@ -3,13 +3,13 @@ package com.tencent.mobileqq.extendfriend.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aswy;
+import arjb;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 
 public class MiniAppRecommInfo$MiniApp
   implements Parcelable
 {
-  public static final Parcelable.Creator<MiniApp> CREATOR = new aswy();
+  public static final Parcelable.Creator<MiniApp> CREATOR = new arjb();
   public int a;
   public MiniAppInfo a;
   public String a;
@@ -41,7 +41,7 @@ public class MiniAppRecommInfo$MiniApp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp
  * JD-Core Version:    0.7.0.1
  */

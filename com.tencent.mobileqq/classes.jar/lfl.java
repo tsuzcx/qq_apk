@@ -1,462 +1,294 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.av.VideoConstants.EmShareState;
-import com.tencent.av.app.VideoObserver.1;
-import com.tencent.av.service.RecvGVideoLevelInfo;
-import com.tencent.av.service.RecvMsg;
+import android.content.Context;
+import android.util.SparseArray;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
 
 public class lfl
-  implements Observer
+  extends BusinessHandler
 {
-  Handler a = null;
+  lfn jdField_a_of_type_Lfn = null;
+  lfp jdField_a_of_type_Lfp = null;
+  private lfm[] jdField_a_of_type_ArrayOfLfm;
+  private lfo[] jdField_a_of_type_ArrayOfLfo;
   
-  private void a(Object[] paramArrayOfObject)
+  public lfl(VideoAppInterface paramVideoAppInterface)
   {
-    int j = -1;
-    try
-    {
-      i = Integer.parseInt(String.valueOf(paramArrayOfObject[1]));
-      int k = Integer.parseInt(String.valueOf(paramArrayOfObject[2]));
-      j = k;
-    }
-    catch (NumberFormatException paramArrayOfObject)
-    {
-      for (;;)
-      {
-        paramArrayOfObject.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.e("VideoObserver", 2, "Data transfer error", paramArrayOfObject);
-        }
-        int i = -5;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoObserver", 2, String.format("Before send, ivrRequestSeq = %d", new Object[] { Integer.valueOf(j) }));
-    }
-    b(i, j);
+    super(paramVideoAppInterface);
   }
   
-  private void b(Object[] paramArrayOfObject)
+  private int a(int paramInt, boolean paramBoolean)
   {
-    int i = -1;
-    str = "";
-    try
+    int i;
+    if (this.jdField_a_of_type_Lfp != null)
     {
-      j = Integer.parseInt(String.valueOf(paramArrayOfObject[1]));
-      i = j;
-      int k = Integer.parseInt(String.valueOf(paramArrayOfObject[2]));
-      i = j;
-      paramArrayOfObject = String.valueOf(paramArrayOfObject[3]);
-      i = j;
-      j = k;
-    }
-    catch (NumberFormatException paramArrayOfObject)
-    {
-      for (;;)
+      i = 0;
+      int j = -1;
+      while (i < this.jdField_a_of_type_Lfp.a.length)
       {
-        paramArrayOfObject.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.e("VideoObserver", 2, "Data transfer error", paramArrayOfObject);
+        if (this.jdField_a_of_type_Lfp.a[i] == paramInt) {
+          j = i;
         }
-        int j = -4;
-        paramArrayOfObject = str;
+        i += 1;
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoObserver", 2, String.format("Receive request ivrRequestSeq = %d, errorCode = %d, errorMsg = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), paramArrayOfObject }));
-    }
-    a(i, j, paramArrayOfObject);
-  }
-  
-  private void c(Object[] paramArrayOfObject)
-  {
-    j = -1;
-    long l1 = -1L;
-    String str3 = "";
-    String str4 = "";
-    int i = j;
-    String str2 = str3;
-    String str1 = str4;
-    try
-    {
-      int k = Integer.parseInt(String.valueOf(paramArrayOfObject[1]));
       i = j;
-      str2 = str3;
-      str1 = str4;
-      j = Integer.parseInt(String.valueOf(paramArrayOfObject[2]));
-      i = j;
-      str2 = str3;
-      str1 = str4;
-      str3 = String.valueOf(paramArrayOfObject[3]);
-      i = j;
-      str2 = str3;
-      str1 = str4;
-      str4 = String.valueOf(paramArrayOfObject[4]);
-      i = j;
-      str2 = str3;
-      str1 = str4;
-      long l2 = Long.parseLong(String.valueOf(paramArrayOfObject[5]));
-      l1 = l2;
-      str1 = str4;
-      str2 = str3;
-      i = j;
-      j = k;
-    }
-    catch (NumberFormatException paramArrayOfObject)
-    {
-      for (;;)
+      if (paramBoolean)
       {
-        paramArrayOfObject.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.e("VideoObserver", 2, "Data transfer error", paramArrayOfObject);
-        }
-        j = -3;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoObserver", 2, String.format("Get data from VideoController, errorCode = %d, seq = %d, url = %s, str = %s, roomId = %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), str2, str1, Long.valueOf(l1) }));
-    }
-    a(j, i, str2, str1, l1);
-  }
-  
-  protected void a() {}
-  
-  protected void a(int paramInt) {}
-  
-  protected void a(int paramInt1, int paramInt2) {}
-  
-  protected void a(int paramInt1, int paramInt2, String paramString) {}
-  
-  protected void a(int paramInt1, int paramInt2, String paramString1, String paramString2, long paramLong) {}
-  
-  public void a(int paramInt1, long paramLong, int paramInt2) {}
-  
-  protected void a(int paramInt, String paramString) {}
-  
-  protected void a(long paramLong) {}
-  
-  protected void a(long paramLong, int paramInt) {}
-  
-  protected void a(long paramLong, int paramInt1, int paramInt2) {}
-  
-  protected void a(long paramLong, int paramInt, String paramString) {}
-  
-  protected void a(long paramLong1, long paramLong2, long paramLong3) {}
-  
-  protected void a(long paramLong, String paramString, boolean paramBoolean) {}
-  
-  protected void a(long paramLong, boolean paramBoolean) {}
-  
-  public void a(VideoConstants.EmShareState paramEmShareState, int paramInt1, int paramInt2, long paramLong, int paramInt3) {}
-  
-  protected void a(RecvMsg paramRecvMsg) {}
-  
-  public void a(Object paramObject)
-  {
-    int j = -1;
-    if (paramObject == null) {
-      return;
-    }
-    Object[] arrayOfObject = (Object[])paramObject;
-    switch (((Integer)arrayOfObject[0]).intValue())
-    {
-    case 0: 
-    default: 
-      return;
-    case 10: 
-      a();
-      return;
-    case 32: 
-      if (arrayOfObject.length > 2) {
-        j = ((Integer)arrayOfObject[1]).intValue();
-      }
-      break;
-    }
-    for (int i = ((Integer)arrayOfObject[2]).intValue();; i = -1)
-    {
-      a(muk.a(arrayOfObject, 3), j, i);
-      return;
-      b();
-      return;
-      a((RecvMsg)arrayOfObject[1]);
-      return;
-      a(muk.a(arrayOfObject, 1));
-      return;
-      i = ((Integer)arrayOfObject[1]).intValue();
-      paramObject = null;
-      if (arrayOfObject.length > 2) {
-        paramObject = (String)arrayOfObject[2];
-      }
-      a(muk.a(arrayOfObject, 3), i, paramObject);
-      return;
-      c();
-      return;
-      b(muk.a(arrayOfObject, 1));
-      return;
-      d();
-      return;
-      e();
-      return;
-      a((String)arrayOfObject[1]);
-      return;
-      a(((Long)arrayOfObject[1]).longValue(), ((Long)arrayOfObject[2]).longValue(), ((Long)arrayOfObject[3]).longValue());
-      return;
-      a(((Boolean)arrayOfObject[1]).booleanValue(), ((Integer)arrayOfObject[2]).intValue(), (String)arrayOfObject[3], ((Integer)arrayOfObject[4]).intValue());
-      return;
-      b(((Long)arrayOfObject[1]).longValue(), ((Long)arrayOfObject[2]).longValue(), ((Long)arrayOfObject[3]).longValue());
-      return;
-      f();
-      return;
-      b(((Integer)arrayOfObject[1]).intValue());
-      return;
-      c(((Integer)arrayOfObject[1]).intValue());
-      return;
-      a(true, ((Boolean)arrayOfObject[1]).booleanValue());
-      return;
-      a(false, ((Boolean)arrayOfObject[1]).booleanValue());
-      return;
-      a(((Boolean)arrayOfObject[1]).booleanValue());
-      return;
-      boolean bool = ((Boolean)arrayOfObject[1]).booleanValue();
-      a(muk.a(arrayOfObject, 2), bool);
-      return;
-      b((String)arrayOfObject[1]);
-      return;
-      c((String)arrayOfObject[1]);
-      return;
-      String str = (String)arrayOfObject[1];
-      bool = ((Boolean)arrayOfObject[2]).booleanValue();
-      paramObject = str;
-      if (TextUtils.isEmpty(str)) {
-        paramObject = "";
-      }
-      a(paramObject, bool);
-      return;
-      h();
-      return;
-      str = (String)arrayOfObject[1];
-      for (;;)
-      {
-        for (;;)
+        i = j;
+        if (j == -1)
         {
-          try
-          {
-            if ((arrayOfObject.length <= 2) || (arrayOfObject[2] == null) || (!(arrayOfObject[2] instanceof String))) {
-              break label1803;
-            }
-            paramObject = (String)arrayOfObject[2];
-          }
-          catch (Exception paramObject)
-          {
-            paramObject = null;
-            continue;
-          }
-          a(str, paramObject);
-          return;
-          try
-          {
-            if ((arrayOfObject.length <= 1) || (arrayOfObject[1] == null) || (!(arrayOfObject[1] instanceof String))) {
-              break;
-            }
-            paramObject = (String)arrayOfObject[1];
-            a(muk.a(arrayOfObject, 2), paramObject, true);
-            return;
-          }
-          catch (Exception paramObject)
-          {
-            return;
-          }
+          String str = amtj.a(2131700036) + paramInt + "]，需要在FrameDataHandlerArray中添加";
+          QLog.d("AVDataSender", 1, str);
+          throw new IllegalArgumentException(str);
         }
-        a(((Integer)arrayOfObject[1]).intValue(), (String)arrayOfObject[2]);
-        return;
-        c(arrayOfObject);
-        return;
-        a(arrayOfObject);
-        return;
-        b(arrayOfObject);
-        return;
-        bool = ((Boolean)arrayOfObject[2]).booleanValue();
-        c((String)arrayOfObject[1], bool);
-        return;
-        c(((Integer)arrayOfObject[1]).intValue(), ((Integer)arrayOfObject[2]).intValue());
-        return;
-        i();
-        return;
-        j();
-        return;
-        i = ((Integer)arrayOfObject[1]).intValue();
-        a(muk.a(arrayOfObject, 2), i);
-        return;
-        b((String)arrayOfObject[1], ((Boolean)arrayOfObject[2]).booleanValue());
-        return;
-        a(((Boolean)arrayOfObject[1]).booleanValue(), ((Long)arrayOfObject[2]).longValue(), ((Integer)arrayOfObject[3]).intValue(), ((Integer)arrayOfObject[4]).intValue(), ((Integer)arrayOfObject[5]).intValue(), (String)arrayOfObject[6]);
-        return;
-        c(((Long)arrayOfObject[1]).longValue());
-        return;
-        a((String)arrayOfObject[1], (Bitmap)arrayOfObject[2]);
-        return;
-        paramObject = (String)arrayOfObject[1];
-        bool = ((Boolean)arrayOfObject[2]).booleanValue();
-        b(muk.a(arrayOfObject, 3), paramObject, bool);
-        return;
-        g();
-        return;
-        e((String)arrayOfObject[1]);
-        return;
-        f((String)arrayOfObject[1]);
-        return;
-        g((String)arrayOfObject[1]);
-        return;
-        h((String)arrayOfObject[1]);
-        return;
-        a((String)arrayOfObject[1], ((Long)arrayOfObject[2]).longValue(), (byte[])arrayOfObject[3]);
-        return;
-        a((RecvGVideoLevelInfo[])arrayOfObject[1]);
-        return;
-        d((String)arrayOfObject[1]);
-        return;
-        a((String)arrayOfObject[1], ((Integer)arrayOfObject[2]).intValue());
-        return;
-        b((String)arrayOfObject[1], ((Integer)arrayOfObject[2]).intValue());
-        return;
-        b(paramObject);
-        return;
-        a(((Boolean)arrayOfObject[1]).booleanValue(), (String)arrayOfObject[2], (String)arrayOfObject[3], (String)arrayOfObject[4]);
-        return;
-        b(((Boolean)arrayOfObject[1]).booleanValue());
-        return;
-        c(((Boolean)arrayOfObject[1]).booleanValue());
-        return;
-        k();
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoObserver", 1, "WL_DEBUG VideoConstants.TYPE_NOTIFY_REDPACKET_FLOATWINDOW_ANIMATION");
+      }
+    }
+    else
+    {
+      i = -1;
+    }
+    return i;
+  }
+  
+  public static lfl a(VideoAppInterface paramVideoAppInterface)
+  {
+    if (paramVideoAppInterface == null) {
+      return null;
+    }
+    return (lfl)paramVideoAppInterface.a(3);
+  }
+  
+  private lfm[] a()
+  {
+    if (this.jdField_a_of_type_ArrayOfLfm == null) {}
+    try
+    {
+      if (this.jdField_a_of_type_ArrayOfLfm == null)
+      {
+        this.jdField_a_of_type_Lfn = new lfn();
+        this.jdField_a_of_type_ArrayOfLfm = new lfm[this.jdField_a_of_type_Lfn.a.length];
+      }
+      return this.jdField_a_of_type_ArrayOfLfm;
+    }
+    finally {}
+  }
+  
+  private lfo[] a()
+  {
+    if (this.jdField_a_of_type_ArrayOfLfo == null) {}
+    try
+    {
+      if (this.jdField_a_of_type_ArrayOfLfo == null)
+      {
+        this.jdField_a_of_type_Lfp = new lfp();
+        this.jdField_a_of_type_ArrayOfLfo = new lfo[this.jdField_a_of_type_Lfp.a.length];
+      }
+      return this.jdField_a_of_type_ArrayOfLfo;
+    }
+    finally {}
+  }
+  
+  private int b(int paramInt, boolean paramBoolean)
+  {
+    int i;
+    if (this.jdField_a_of_type_Lfn != null)
+    {
+      i = 0;
+      int j = -1;
+      while (i < this.jdField_a_of_type_Lfn.a.length)
+      {
+        if (this.jdField_a_of_type_Lfn.a[i] == paramInt) {
+          j = i;
         }
-        b(((Boolean)arrayOfObject[1]).booleanValue(), ((Boolean)arrayOfObject[2]).booleanValue());
-        return;
-        a((byte[])arrayOfObject[2], ((Integer)arrayOfObject[3]).intValue(), ((Integer)arrayOfObject[4]).intValue());
-        return;
-        a(((Integer)arrayOfObject[1]).intValue());
-        return;
-        a(((Integer)arrayOfObject[1]).intValue(), ((Integer)arrayOfObject[2]).intValue());
-        return;
-        a((VideoConstants.EmShareState)arrayOfObject[1], ((Integer)arrayOfObject[2]).intValue(), ((Integer)arrayOfObject[3]).intValue(), ((Long)arrayOfObject[4]).longValue(), ((Integer)arrayOfObject[5]).intValue());
-        return;
-        a(((Integer)arrayOfObject[1]).intValue(), ((Long)arrayOfObject[2]).longValue(), ((Integer)arrayOfObject[3]).intValue());
-        return;
-        label1803:
-        paramObject = null;
+        i += 1;
+      }
+      i = j;
+      if (paramBoolean)
+      {
+        i = j;
+        if (j == -1)
+        {
+          String str = amtj.a(2131700038) + paramInt + "]，需要在C2CDataHandlerArray中添加";
+          QLog.d("AVDataSender", 1, str);
+          throw new IllegalArgumentException(str);
+        }
+      }
+    }
+    else
+    {
+      i = -1;
+    }
+    return i;
+  }
+  
+  public int a(ArrayList<lnw> paramArrayList)
+  {
+    int i = 0;
+    lfo[] arrayOflfo = this.jdField_a_of_type_ArrayOfLfo;
+    if (arrayOflfo == null) {
+      return 0;
+    }
+    int k;
+    for (int j = 0; i < arrayOflfo.length; j = k)
+    {
+      Object localObject = arrayOflfo[i];
+      k = j;
+      if (localObject != null)
+      {
+        localObject = ((lfo)localObject).a();
+        k = j;
+        if (localObject != null)
+        {
+          paramArrayList.add(localObject);
+          k = j + ((lnw)localObject).a();
+        }
+      }
+      i += 1;
+    }
+    return j;
+  }
+  
+  public void a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {}
+    for (int i = 0;; i = paramArrayOfByte.length)
+    {
+      ByteBuffer localByteBuffer = ByteBuffer.allocate(i + 4);
+      localByteBuffer.putInt(paramInt2);
+      if (i > 0) {
+        localByteBuffer.put(paramArrayOfByte);
+      }
+      VideoController.a().a(paramInt1, localByteBuffer.array());
+      return;
+    }
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte)
+  {
+    lfo[] arrayOflfo;
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
+    {
+      arrayOflfo = this.jdField_a_of_type_ArrayOfLfo;
+      if (arrayOflfo != null) {}
+    }
+    else
+    {
+      return;
+    }
+    paramArrayOfByte = lnx.a(paramArrayOfByte);
+    int i = 0;
+    label28:
+    int j;
+    if (i < paramArrayOfByte.size())
+    {
+      j = paramArrayOfByte.keyAt(i);
+      int k = a(j, false);
+      if (k < 0) {
+        break label92;
+      }
+      lfo locallfo = arrayOflfo[k];
+      if (locallfo != null) {
+        locallfo.a(paramString, (lnw)paramArrayOfByte.valueAt(i));
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label28;
+      break;
+      label92:
+      if (AudioHelper.e()) {
+        QLog.d("AVDataSender", 1, "notifyFrameDataCome, msgType[" + j + "], i[" + i + "]");
       }
     }
   }
   
-  protected void a(String paramString) {}
-  
-  protected void a(String paramString, int paramInt) {}
-  
-  protected void a(String paramString, long paramLong, byte[] paramArrayOfByte) {}
-  
-  protected void a(String paramString, Bitmap paramBitmap) {}
-  
-  protected void a(String paramString1, String paramString2) {}
-  
-  protected void a(String paramString, boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2) {}
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
-  
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  protected void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2) {}
-  
-  protected void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo) {}
-  
-  protected void b() {}
-  
-  protected void b(int paramInt) {}
-  
-  protected void b(int paramInt1, int paramInt2) {}
-  
-  protected void b(long paramLong) {}
-  
-  protected void b(long paramLong1, long paramLong2, long paramLong3) {}
-  
-  protected void b(long paramLong, String paramString, boolean paramBoolean) {}
-  
-  protected void b(Object paramObject) {}
-  
-  protected void b(String paramString) {}
-  
-  protected void b(String paramString, int paramInt) {}
-  
-  protected void b(String paramString, boolean paramBoolean) {}
-  
-  protected void b(boolean paramBoolean) {}
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  protected void c() {}
-  
-  protected void c(int paramInt) {}
-  
-  protected void c(int paramInt1, int paramInt2) {}
-  
-  protected void c(long paramLong) {}
-  
-  protected void c(String paramString) {}
-  
-  protected void c(String paramString, boolean paramBoolean) {}
-  
-  protected void c(boolean paramBoolean) {}
-  
-  protected void d() {}
-  
-  protected void d(String paramString) {}
-  
-  protected void e() {}
-  
-  protected void e(String paramString) {}
-  
-  protected void f() {}
-  
-  protected void f(String paramString) {}
-  
-  protected void g() {}
-  
-  protected void g(String paramString) {}
-  
-  protected void h() {}
-  
-  protected void h(String paramString) {}
-  
-  protected void i() {}
-  
-  protected void j() {}
-  
-  protected void k() {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public boolean a(int paramInt, lfm paramlfm)
   {
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
+    lfm[] arrayOflfm = a();
+    paramInt = b(paramInt, true);
+    if (arrayOflfm[paramInt] == null)
     {
-      if (this.a == null) {
-        this.a = new Handler(paramObservable);
-      }
-      this.a.post(new VideoObserver.1(this, paramObject));
-      return;
+      arrayOflfm[paramInt] = paramlfm;
+      return true;
     }
-    a(paramObject);
+    lzb.a("registerC2CDataHandler重复注册");
+    return false;
+  }
+  
+  public boolean a(int paramInt, lfo paramlfo)
+  {
+    Object localObject = BaseApplicationImpl.getContext();
+    localObject = VideoController.a().a((Context)localObject);
+    if (localObject == null)
+    {
+      lzb.a("registerFrameDataHandler, EffectController为空");
+      return false;
+    }
+    ((lor)localObject).a(4);
+    localObject = a();
+    paramInt = a(paramInt, true);
+    if (localObject[paramInt] == null)
+    {
+      localObject[paramInt] = paramlfo;
+      return true;
+    }
+    lzb.a("registerFrameDataHandler重复注册");
+    return false;
+  }
+  
+  public boolean a(int paramInt, byte[] paramArrayOfByte)
+  {
+    Object localObject = this.jdField_a_of_type_ArrayOfLfm;
+    if (localObject == null) {}
+    do
+    {
+      int i;
+      do
+      {
+        return false;
+        i = b(paramInt, false);
+      } while (i < 0);
+      localObject = localObject[i];
+    } while (localObject == null);
+    return ((lfm)localObject).a(paramInt, ByteBuffer.wrap(paramArrayOfByte).getInt(), lnx.a(paramArrayOfByte, 4, paramArrayOfByte.length - 4));
+  }
+  
+  public boolean b(int paramInt, lfo paramlfo)
+  {
+    paramInt = a(paramInt, true);
+    lfo[] arrayOflfo = this.jdField_a_of_type_ArrayOfLfo;
+    if ((arrayOflfo != null) && (arrayOflfo[paramInt] != null) && (paramlfo.equals(arrayOflfo[paramInt])))
+    {
+      arrayOflfo[paramInt] = null;
+      return true;
+    }
+    lzb.a("unregisterFrameDataHandler取消注册失败");
+    return false;
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    long l = 0L;
+    if (paramToServiceMsg != null) {
+      l = mtt.a(paramToServiceMsg);
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.w("AVDataSender", 1, "onReceive, serviceCmd[" + "null" + "], seq[" + l + "]");
+    }
   }
 }
 

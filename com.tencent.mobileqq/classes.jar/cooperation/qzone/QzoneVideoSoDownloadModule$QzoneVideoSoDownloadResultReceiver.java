@@ -2,23 +2,22 @@ package cooperation.qzone;
 
 import android.os.Bundle;
 import android.os.ResultReceiver;
-import bmvx;
 
 public class QzoneVideoSoDownloadModule$QzoneVideoSoDownloadResultReceiver
   extends ResultReceiver
 {
-  private bmvx a;
+  private QzoneVideoSoDownloadModule.DownloadResultCallback mCallback;
   
-  public QzoneVideoSoDownloadModule$QzoneVideoSoDownloadResultReceiver(bmvx parambmvx)
+  public QzoneVideoSoDownloadModule$QzoneVideoSoDownloadResultReceiver(QzoneVideoSoDownloadModule.DownloadResultCallback paramDownloadResultCallback)
   {
     super(null);
-    this.a = parambmvx;
+    this.mCallback = paramDownloadResultCallback;
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    if (this.a != null) {
-      this.a.callback(paramInt, paramBundle);
+    if (this.mCallback != null) {
+      this.mCallback.callback(paramInt, paramBundle);
     }
   }
 }

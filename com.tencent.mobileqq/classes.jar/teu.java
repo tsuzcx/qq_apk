@@ -1,16 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
+import android.graphics.Canvas;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
-class teu
-  implements rgw
+public class teu
+  implements Function1<Canvas, Unit>
 {
-  teu(tet paramtet, String paramString) {}
+  public teu(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
   
-  public void a(@NotNull List<UgcVideo> paramList)
+  public Unit a(Canvas paramCanvas)
   {
-    BridgeModule.access$1700(this.jdField_a_of_type_Tet.a, 0L, paramList, this.jdField_a_of_type_JavaLangString, 0, "", true);
+    ColorBandVideoEntranceButton.b(this.a, paramCanvas);
+    return null;
   }
 }
 

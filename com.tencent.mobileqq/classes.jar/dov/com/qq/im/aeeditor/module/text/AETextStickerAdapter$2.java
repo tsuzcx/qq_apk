@@ -1,17 +1,17 @@
 package dov.com.qq.im.aeeditor.module.text;
 
-import bpkf;
+import bmnb;
 import java.util.List;
 
 public class AETextStickerAdapter$2
   implements Runnable
 {
-  public AETextStickerAdapter$2(bpkf parambpkf, AEEditorTextBean paramAEEditorTextBean, int paramInt) {}
+  public AETextStickerAdapter$2(bmnb parambmnb, AEEditorTextBean paramAEEditorTextBean, int paramInt) {}
   
   public void run()
   {
     this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean.progress = this.jdField_a_of_type_Int;
-    int i = bpkf.a(this.this$0).indexOf(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean);
+    int i = bmnb.a(this.this$0).indexOf(this.jdField_a_of_type_DovComQqImAeeditorModuleTextAEEditorTextBean);
     if (i >= 0) {
       this.this$0.notifyItemChanged(i, Integer.valueOf(1));
     }

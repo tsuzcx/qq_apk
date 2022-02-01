@@ -1,37 +1,72 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.RecyclerViewCompat;
 
 class bjxi
-  implements DialogInterface.OnClickListener
+  extends RecyclerView.AdapterDataObserver
 {
-  bjxi(bjxd parambjxd, Bundle paramBundle, boolean paramBoolean, Activity paramActivity, String paramString1, DialogInterface.OnClickListener paramOnClickListener, String paramString2) {}
+  bjxi(bjxh parambjxh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private void a(int paramInt1, int paramInt2)
   {
-    bjtx.c("MyAppApi", "---onConfirm--onClick");
-    if (!this.jdField_a_of_type_Bjxd.b())
+    View localView = this.a.a(bjxh.a(this.a));
+    if (localView != null) {}
+    for (int i = bjxh.a(this.a).getPosition(localView);; i = -1)
     {
-      this.jdField_a_of_type_Bjxd.a = new bjxo(this.jdField_a_of_type_Bjxd);
-      this.jdField_a_of_type_Bjxd.a.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Bjxd.a.b = true;
-      this.jdField_a_of_type_Bjxd.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-      this.jdField_a_of_type_Bjxd.a.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_AndroidOsBundle;
-      this.jdField_a_of_type_Bjxd.a.jdField_a_of_type_Int = 2;
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Bjxd.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("PagerSnapHelper", 2, "onPagerDataChanged: positionStart=" + paramInt1 + ", itemCount=" + paramInt2 + ", centerPosition=" + bjxh.b(this.a) + ", currentPosition=" + i);
       }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjxd.c = true;
-      bjvg.a("201", bjvg.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
+      if ((paramInt1 <= i) && (paramInt1 + paramInt2 - 1 >= i))
+      {
+        bjxk.a(bjxh.a(this.a), true);
+        bjxh.a(this.a).addOnLayoutChangeListener(bjxh.a(this.a));
+        bjxh.a(this.a).requestLayout();
+      }
       return;
-      new bjxn(this.jdField_a_of_type_Bjxd, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bjxd.a).execute(new Void[0]);
-      continue;
-      this.jdField_a_of_type_Bjxd.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
     }
+  }
+  
+  public void onChanged()
+  {
+    a(0, bjxh.a(this.a).getItemCount());
+  }
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2)
+  {
+    a(paramInt1, paramInt2);
+  }
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
+  {
+    if (paramObject == null) {
+      onItemRangeChanged(paramInt1, paramInt2);
+    }
+  }
+  
+  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 <= bjxh.b(this.a)) {
+      bjxh.b(this.a, bjxh.b(this.a) + paramInt2);
+    }
+    a(paramInt1, paramInt2);
+  }
+  
+  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt1 == bjxh.b(this.a)) {
+      bjxh.b(this.a, paramInt2);
+    }
+    a(paramInt1, paramInt3);
+  }
+  
+  public void onItemRangeRemoved(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 <= bjxh.b(this.a)) {
+      bjxh.b(this.a, bjxh.b(this.a) - paramInt2);
+    }
+    a(paramInt1, paramInt2);
   }
 }
 

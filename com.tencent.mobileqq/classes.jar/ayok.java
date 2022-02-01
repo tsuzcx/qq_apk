@@ -1,11 +1,14 @@
-class ayok
-  implements bljb
+import android.view.animation.Interpolator;
+
+final class ayok
+  implements Interpolator
 {
-  ayok(aynp paramaynp) {}
-  
-  public void onDismiss()
+  public float getInterpolation(float paramFloat)
   {
-    aynp.a(this.a, this.a.c, false);
+    if (paramFloat <= 0.3333333F) {
+      return 0.0F;
+    }
+    return (paramFloat - 0.3333333F) * 1.5F;
   }
 }
 

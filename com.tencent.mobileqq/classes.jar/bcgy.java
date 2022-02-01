@@ -1,305 +1,700 @@
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.mobileqq.search.model.SearchEntryDataModel.1;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import pb.unify.search.UnifySearchDiscovery.HotSearchItem;
-import pb.unify.search.UnifySearchDiscovery.Result;
-import pb.unite.search.DynamicDiscovery.HotSearchItem;
-import pb.unite.search.DynamicDiscovery.Result;
+import android.content.Context;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.text.Html;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle.TitleTextView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import com.tencent.mobileqq.utils.StringUtil;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import org.xmlpull.v1.XmlSerializer;
 
 public abstract class bcgy
-  implements bcfp
+  extends bcgw
+  implements View.OnClickListener
 {
-  public final Object a;
-  public boolean a;
-  public byte[] a;
-  public int c;
-  public int d;
+  private static int o = 11;
+  protected boolean a;
+  protected String ac;
+  protected String ad;
+  protected String ae;
+  protected String af;
+  protected String ag;
+  protected String ah;
+  public String ai;
+  protected String aj;
+  protected String ak;
+  protected String al;
+  public String am;
+  protected boolean b;
   
-  public bcgy(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, boolean paramBoolean)
+  public bcgy()
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = o;
   }
   
-  public bcgy(QQAppInterface paramQQAppInterface, int paramInt1, byte[] paramArrayOfByte, int paramInt2, boolean paramBoolean)
+  public bcgy(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.c = paramInt1;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.d = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = o;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.ai = paramString1;
   }
   
-  public static List<bcgy> a(QQAppInterface paramQQAppInterface, List<DynamicDiscovery.Result> paramList, int paramInt)
+  protected TextUtils.TruncateAt a()
   {
-    QLog.d("SearchEntryDataModel818searchProto_old", 2, "convertPbDataToModel");
-    int i = 0;
-    Object localObject1 = Aladdin.getConfig(313);
-    if (localObject1 != null)
+    return TextUtils.TruncateAt.END;
+  }
+  
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    boolean bool = false;
+    if ((paramView != null) && (a().isInstance(paramView)))
     {
-      bbzo.b = ((AladdinConfig)localObject1).getString("SBWord_Source", "Hot_word");
-      i = ((AladdinConfig)localObject1).getIntegerFromString("SearchPage_UIType", 0);
-      bbzo.a = ((AladdinConfig)localObject1).getIntegerFromString("SearchPage_RwordNum", 8);
-    }
-    ArrayList localArrayList = new ArrayList();
-    int[] arrayOfInt = new int[paramList.size()];
-    Object localObject3;
-    Object localObject2;
-    if (paramList.size() > 0)
-    {
-      int j = 0;
-      localObject1 = null;
-      localObject3 = null;
-      localObject2 = null;
-      if (j < paramList.size())
-      {
-        Object localObject4 = (DynamicDiscovery.Result)paramList.get(j);
-        Object localObject5 = null;
-        int m = ((DynamicDiscovery.Result)localObject4).type.get();
-        switch (m)
-        {
-        default: 
-          localObject4 = localObject3;
-          localObject3 = localObject2;
-          localObject2 = localObject4;
-          localObject4 = localObject5;
-        case 1: 
-        case 3: 
-          for (;;)
-          {
-            if (localObject4 != null) {
-              ((bcgy)localObject4).b();
-            }
-            j += 1;
-            localObject4 = localObject3;
-            localObject3 = localObject2;
-            localObject2 = localObject4;
-            break;
-            localObject2 = ((DynamicDiscovery.Result)localObject4).hot_search_items.get();
-            if (((List)localObject2).size() < 6) {}
-            for (localObject4 = null;; localObject4 = new HotWordSearchEntryDataModel(paramQQAppInterface, m, ((DynamicDiscovery.Result)localObject4).toByteArray(), paramInt, false))
-            {
-              if (i == 2) {
-                localObject4 = null;
-              }
-              localObject2 = localObject3;
-              localObject3 = localObject4;
-              break;
-              if (bbzo.b.contentEquals("Hot_word"))
-              {
-                localObject5 = new String[((List)localObject2).size()];
-                int k = 0;
-                while (k < ((List)localObject2).size())
-                {
-                  localObject5[k] = ((DynamicDiscovery.HotSearchItem)((List)localObject2).get(k)).title.get().toStringUtf8();
-                  k += 1;
-                }
-                bhsi.a(paramQQAppInterface.getCurrentAccountUin(), (String[])localObject5);
-              }
-            }
-            localObject4 = new bcdw(paramQQAppInterface, m, ((DynamicDiscovery.Result)localObject4).toByteArray(), paramInt, false);
-            localObject1 = localObject4;
-            localObject5 = localObject2;
-            localObject2 = localObject3;
-            localObject3 = localObject5;
-          }
-        }
-        if (((DynamicDiscovery.Result)localObject4).hot_search_items.get().size() < 6) {}
-        for (localObject4 = null;; localObject4 = new HotWordSearchEntryDataModel(paramQQAppInterface, m, ((DynamicDiscovery.Result)localObject4).toByteArray(), paramInt, false))
-        {
-          if (i == 1) {
-            localObject4 = null;
-          }
-          localObject3 = localObject4;
-          localObject5 = localObject2;
-          localObject2 = localObject3;
-          localObject3 = localObject5;
-          break;
-        }
+      paramView = (TextView)paramView;
+      paramView.setTag(this);
+      if (!this.jdField_b_of_type_Boolean) {
+        break label263;
       }
-      switch (i)
-      {
-      }
+      paramView.setSingleLine(true);
     }
     for (;;)
     {
-      boolean bool = a(arrayOfInt, bbzo.a(paramQQAppInterface, paramInt, false));
-      bbzo.a(paramQQAppInterface, paramInt, bool, false);
-      if (bool) {
-        bbzo.a(paramQQAppInterface, paramInt, arrayOfInt, false);
+      if ((this.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Boolean)) {
+        paramView.setEllipsize(a());
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchEntryDataModel", 2, "convertPbDataToModel, modelList = " + localArrayList.size());
+      paramContext = a(paramContext.getResources());
+      if (paramContext == null) {
+        break label291;
       }
-      return localArrayList;
-      if (localObject1 != null) {
-        localArrayList.add(localObject1);
+      paramView.setTextColor(paramContext.jdField_a_of_type_Int);
+      paramView.requestLayout();
+      paramView.setTypeface(Typeface.DEFAULT, paramContext.jdField_b_of_type_Int);
+      paramView.setTextSize(paramContext.c);
+      paramView.setLineSpacing(AIOUtils.dp2px(d() * 1.0F / 2.0F, paramView.getResources()), 1.0F);
+      if (paramContext.jdField_a_of_type_Boolean == true) {
+        paramView.getPaint().setFlags(8);
       }
-      arrayOfInt[0] = 3;
-      if (localObject2 != null) {
-        localArrayList.add(localObject2);
+      if (paramContext.jdField_b_of_type_Boolean == true) {
+        paramView.getPaint().setFlags(16);
       }
-      arrayOfInt[1] = 1;
-      continue;
-      if (localObject2 != null) {
-        localArrayList.add(localObject2);
+      if (paramBundle != null) {
+        bool = paramBundle.getBoolean("pre_dialog", false);
       }
-      arrayOfInt[0] = 1;
-      continue;
-      if (localObject3 != null) {
-        localArrayList.add(localObject3);
+      if ((bool) && (!TextUtils.isEmpty(this.am))) {
+        paramContext.jdField_a_of_type_JavaLangString = this.am;
       }
-      arrayOfInt[0] = 7;
-      continue;
-      if (localObject2 != null) {
-        localArrayList.add(localObject2);
+      if ((paramContext.jdField_b_of_type_JavaLangString == null) || (paramContext.jdField_b_of_type_JavaLangString.equals("")) || (!paramContext.jdField_b_of_type_JavaLangString.trim().equals("1"))) {
+        break label281;
       }
-      arrayOfInt[0] = 1;
-      if (localObject3 != null) {
-        localArrayList.add(localObject3);
+      paramView.setText(Html.fromHtml(paramContext.jdField_a_of_type_JavaLangString));
+      return paramView;
+      paramView = a(paramContext);
+      paramView.setId(c());
+      break;
+      label263:
+      if (!this.jdField_a_of_type_Boolean) {
+        paramView.setMaxLines(b());
       }
-      arrayOfInt[1] = 7;
-      continue;
-      if (localObject3 != null) {
-        localArrayList.add(localObject3);
-      }
-      arrayOfInt[0] = 7;
-      if (localObject2 != null) {
-        localArrayList.add(localObject2);
-      }
-      arrayOfInt[1] = 1;
     }
+    label281:
+    paramView.setText(paramContext.jdField_a_of_type_JavaLangString);
+    return paramView;
+    label291:
+    paramView.setText("");
+    return paramView;
   }
   
-  private static boolean a(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
+  public TextView a(Context paramContext)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramArrayOfInt1 == null) || (paramArrayOfInt2 == null))
-    {
-      bool1 = true;
-      return bool1;
+    if (StructMsgItemTitle.TitleTextView.class.isAssignableFrom(a())) {
+      return new StructMsgItemTitle.TitleTextView(paramContext);
     }
-    if (paramArrayOfInt1.length != paramArrayOfInt2.length) {
-      return true;
-    }
-    int i = 0;
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i >= paramArrayOfInt1.length) {
-        break;
-      }
-      if (paramArrayOfInt1[i] != paramArrayOfInt2[i]) {
-        return true;
-      }
-      i += 1;
-    }
+    return new EllipsizingTextView(paramContext, null);
   }
   
-  public static List<bcgy> b(QQAppInterface paramQQAppInterface, List<UnifySearchDiscovery.Result> paramList, int paramInt)
+  /* Error */
+  public bcgz a(android.content.res.Resources paramResources)
   {
-    QLog.d("SearchEntryDataModel818searchProto_new", 2, "convertUnifyPbDataToModel");
-    ArrayList localArrayList = new ArrayList();
-    int[] arrayOfInt = new int[paramList.size()];
-    if (paramList.size() > 0)
-    {
-      int i = 0;
-      if (i < paramList.size())
-      {
-        Object localObject = (UnifySearchDiscovery.Result)paramList.get(i);
-        arrayOfInt[i] = ((UnifySearchDiscovery.Result)paramList.get(i)).type.get();
-        int k = ((UnifySearchDiscovery.Result)localObject).type.get();
-        switch (k)
-        {
-        case 2: 
-        default: 
-          localObject = null;
-        }
-        for (;;)
-        {
-          if (localObject != null)
-          {
-            ((bcgy)localObject).b();
-            localArrayList.add(localObject);
-          }
-          i += 1;
-          break;
-          List localList = ((UnifySearchDiscovery.Result)localObject).hot_search_items.get();
-          if (localList.size() < 6)
-          {
-            localObject = null;
-          }
-          else
-          {
-            String[] arrayOfString = new String[localList.size()];
-            int j = 0;
-            while (j < localList.size())
-            {
-              arrayOfString[j] = ((UnifySearchDiscovery.HotSearchItem)localList.get(j)).title.get().toStringUtf8();
-              j += 1;
-            }
-            bhsi.b(paramQQAppInterface.getCurrentAccountUin(), arrayOfString);
-            localObject = new HotWordSearchEntryDataModel(paramQQAppInterface, k, ((UnifySearchDiscovery.Result)localObject).toByteArray(), paramInt, true);
-            continue;
-            localObject = new bcdw(paramQQAppInterface, k, ((UnifySearchDiscovery.Result)localObject).toByteArray(), paramInt, true);
-          }
-        }
-      }
-      boolean bool = a(arrayOfInt, bbzo.a(paramQQAppInterface, paramInt, true));
-      bbzo.a(paramQQAppInterface, paramInt, bool, true);
-      if (bool) {
-        bbzo.a(paramQQAppInterface, paramInt, arrayOfInt, true);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchEntryDataModel", 2, "convertPbDataToModel, modelList = " + localArrayList.size());
-    }
-    return localArrayList;
+    // Byte code:
+    //   0: new 86	bcgz
+    //   3: dup
+    //   4: invokespecial 211	bcgz:<init>	()V
+    //   7: astore_1
+    //   8: aload_0
+    //   9: getfield 213	bcgy:ad	Ljava/lang/String;
+    //   12: invokestatic 155	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   15: ifne +151 -> 166
+    //   18: aload_1
+    //   19: aload_0
+    //   20: getfield 213	bcgy:ad	Ljava/lang/String;
+    //   23: invokestatic 219	android/graphics/Color:parseColor	(Ljava/lang/String;)I
+    //   26: putfield 87	bcgz:jdField_a_of_type_Int	I
+    //   29: aload_0
+    //   30: getfield 221	bcgy:ae	Ljava/lang/String;
+    //   33: invokestatic 155	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   36: ifeq +176 -> 212
+    //   39: aload_0
+    //   40: invokevirtual 224	bcgy:g	()I
+    //   43: istore_2
+    //   44: aload_1
+    //   45: iload_2
+    //   46: putfield 102	bcgz:jdField_b_of_type_Int	I
+    //   49: aload_0
+    //   50: getfield 226	bcgy:aj	Ljava/lang/String;
+    //   53: invokestatic 155	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   56: ifeq +167 -> 223
+    //   59: iconst_0
+    //   60: istore_2
+    //   61: aload_1
+    //   62: iload_2
+    //   63: putfield 228	bcgz:d	I
+    //   66: aload_1
+    //   67: iconst_0
+    //   68: putfield 129	bcgz:jdField_a_of_type_Boolean	Z
+    //   71: aload_1
+    //   72: getfield 102	bcgz:jdField_b_of_type_Int	I
+    //   75: iflt +11 -> 86
+    //   78: aload_1
+    //   79: getfield 102	bcgz:jdField_b_of_type_Int	I
+    //   82: iconst_4
+    //   83: if_icmplt +24 -> 107
+    //   86: aload_1
+    //   87: getfield 102	bcgz:jdField_b_of_type_Int	I
+    //   90: iconst_4
+    //   91: if_icmpne +152 -> 243
+    //   94: aload_1
+    //   95: iconst_1
+    //   96: putfield 129	bcgz:jdField_a_of_type_Boolean	Z
+    //   99: aload_1
+    //   100: aload_0
+    //   101: invokevirtual 224	bcgy:g	()I
+    //   104: putfield 102	bcgz:jdField_b_of_type_Int	I
+    //   107: aload_0
+    //   108: getfield 230	bcgy:ag	Ljava/lang/String;
+    //   111: invokestatic 155	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   114: ifne +145 -> 259
+    //   117: aload_1
+    //   118: aload_0
+    //   119: getfield 230	bcgy:ag	Ljava/lang/String;
+    //   122: invokestatic 235	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   125: putfield 109	bcgz:c	I
+    //   128: aload_1
+    //   129: getfield 109	bcgz:c	I
+    //   132: iconst_1
+    //   133: if_icmpge +11 -> 144
+    //   136: aload_1
+    //   137: aload_0
+    //   138: invokevirtual 238	bcgy:f	()I
+    //   141: putfield 109	bcgz:c	I
+    //   144: aload_1
+    //   145: aload_1
+    //   146: getfield 109	bcgz:c	I
+    //   149: iconst_2
+    //   150: idiv
+    //   151: putfield 109	bcgz:c	I
+    //   154: aload_0
+    //   155: invokevirtual 240	bcgy:b	()Ljava/lang/String;
+    //   158: invokestatic 155	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   161: ifeq +132 -> 293
+    //   164: aconst_null
+    //   165: areturn
+    //   166: aload_0
+    //   167: getfield 242	bcgy:ac	Ljava/lang/String;
+    //   170: invokestatic 155	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   173: ifeq +28 -> 201
+    //   176: aload_0
+    //   177: invokevirtual 245	bcgy:e	()I
+    //   180: istore_2
+    //   181: aload_1
+    //   182: iload_2
+    //   183: putfield 87	bcgz:jdField_a_of_type_Int	I
+    //   186: goto -157 -> 29
+    //   189: astore_3
+    //   190: aload_1
+    //   191: aload_0
+    //   192: invokevirtual 245	bcgy:e	()I
+    //   195: putfield 87	bcgz:jdField_a_of_type_Int	I
+    //   198: goto -169 -> 29
+    //   201: aload_0
+    //   202: getfield 242	bcgy:ac	Ljava/lang/String;
+    //   205: invokestatic 219	android/graphics/Color:parseColor	(Ljava/lang/String;)I
+    //   208: istore_2
+    //   209: goto -28 -> 181
+    //   212: aload_0
+    //   213: getfield 221	bcgy:ae	Ljava/lang/String;
+    //   216: invokestatic 235	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   219: istore_2
+    //   220: goto -176 -> 44
+    //   223: aload_0
+    //   224: getfield 226	bcgy:aj	Ljava/lang/String;
+    //   227: invokestatic 235	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   230: istore_2
+    //   231: goto -170 -> 61
+    //   234: astore_3
+    //   235: aload_1
+    //   236: iconst_0
+    //   237: putfield 228	bcgz:d	I
+    //   240: goto -174 -> 66
+    //   243: aload_1
+    //   244: getfield 102	bcgz:jdField_b_of_type_Int	I
+    //   247: iconst_5
+    //   248: if_icmpne -149 -> 99
+    //   251: aload_1
+    //   252: iconst_1
+    //   253: putfield 139	bcgz:jdField_b_of_type_Boolean	Z
+    //   256: goto -157 -> 99
+    //   259: aload_0
+    //   260: getfield 247	bcgy:af	Ljava/lang/String;
+    //   263: invokestatic 155	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   266: ifeq +16 -> 282
+    //   269: aload_0
+    //   270: invokevirtual 238	bcgy:f	()I
+    //   273: istore_2
+    //   274: aload_1
+    //   275: iload_2
+    //   276: putfield 109	bcgz:c	I
+    //   279: goto -151 -> 128
+    //   282: aload_0
+    //   283: getfield 247	bcgy:af	Ljava/lang/String;
+    //   286: invokestatic 235	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   289: istore_2
+    //   290: goto -16 -> 274
+    //   293: aload_1
+    //   294: aload_0
+    //   295: invokevirtual 240	bcgy:b	()Ljava/lang/String;
+    //   298: putfield 156	bcgz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   301: aload_1
+    //   302: aload_0
+    //   303: getfield 249	bcgy:ah	Ljava/lang/String;
+    //   306: putfield 158	bcgz:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   309: aload_1
+    //   310: areturn
+    //   311: astore_3
+    //   312: goto -263 -> 49
+    //   315: astore_3
+    //   316: goto -188 -> 128
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	319	0	this	bcgy
+    //   0	319	1	paramResources	android.content.res.Resources
+    //   43	247	2	i	int
+    //   189	1	3	localException1	Exception
+    //   234	1	3	localException2	Exception
+    //   311	1	3	localException3	Exception
+    //   315	1	3	localException4	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   8	29	189	java/lang/Exception
+    //   166	181	189	java/lang/Exception
+    //   181	186	189	java/lang/Exception
+    //   201	209	189	java/lang/Exception
+    //   49	59	234	java/lang/Exception
+    //   61	66	234	java/lang/Exception
+    //   223	231	234	java/lang/Exception
+    //   29	44	311	java/lang/Exception
+    //   44	49	311	java/lang/Exception
+    //   212	220	311	java/lang/Exception
+    //   107	128	315	java/lang/Exception
+    //   259	274	315	java/lang/Exception
+    //   274	279	315	java/lang/Exception
+    //   282	290	315	java/lang/Exception
+  }
+  
+  protected Class<? extends TextView> a()
+  {
+    return TextView.class;
   }
   
   public void a()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    if (this.jdField_a_of_type_Int == 1) {
+      this.ai = bblk.a(paramObjectInput.readUTF(), false);
+    }
+    do
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (!this.jdField_a_of_type_Boolean)
+      do
       {
-        this.jdField_a_of_type_ArrayOfByte = bhmi.a(BaseApplication.getContext().getFileStreamPath("search_discovery_sp_prefixpref_search_model_data" + localQQAppInterface.getCurrentAccountUin() + "_" + this.c + "_" + this.d));
-        a(this.jdField_a_of_type_ArrayOfByte);
         return;
+        if (this.jdField_a_of_type_Int == 2)
+        {
+          this.ac = bblk.a(paramObjectInput.readUTF(), false);
+          this.ae = bblk.a(paramObjectInput.readUTF(), false);
+          this.af = bblk.a(paramObjectInput.readUTF(), false);
+          this.ai = bblk.a(paramObjectInput.readUTF(), false);
+          return;
+        }
+        if (this.jdField_a_of_type_Int == 3)
+        {
+          this.ac = bblk.a(paramObjectInput.readUTF(), false);
+          this.ae = bblk.a(paramObjectInput.readUTF(), false);
+          this.af = bblk.a(paramObjectInput.readUTF(), false);
+          this.ai = bblk.a(paramObjectInput.readUTF(), false);
+          this.ah = bblk.a(paramObjectInput.readUTF(), false);
+          return;
+        }
+      } while (this.jdField_a_of_type_Int < 4);
+      this.ac = bblk.a(paramObjectInput.readUTF(), false);
+      this.ae = bblk.a(paramObjectInput.readUTF(), false);
+      this.af = bblk.a(paramObjectInput.readUTF(), false);
+      this.ai = bblk.a(paramObjectInput.readUTF(), false);
+      this.ah = bblk.a(paramObjectInput.readUTF(), false);
+      this.aj = bblk.a(paramObjectInput.readUTF(), false);
+    } while (this.jdField_a_of_type_Int < 11);
+    this.ak = bblk.a(paramObjectInput.readUTF(), false);
+    this.al = bblk.a(paramObjectInput.readUTF(), false);
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    if (this.jdField_a_of_type_Int == 1) {
+      if (this.ai == null)
+      {
+        str = "";
+        paramObjectOutput.writeUTF(str);
       }
-      this.jdField_a_of_type_ArrayOfByte = bhmi.a(BaseApplication.getContext().getFileStreamPath("search_discovery_sp_prefix_unifypref_search_model_data" + localQQAppInterface.getCurrentAccountUin() + "_" + this.c + "_" + this.d));
-      a(this.jdField_a_of_type_ArrayOfByte);
+    }
+    label78:
+    label95:
+    label225:
+    label363:
+    label380:
+    do
+    {
+      do
+      {
+        return;
+        str = bblk.a(this.ai, false);
+        break;
+        if (this.jdField_a_of_type_Int == 2)
+        {
+          if (this.ac == null)
+          {
+            str = "";
+            paramObjectOutput.writeUTF(str);
+            if (this.ae != null) {
+              break label128;
+            }
+            str = "";
+            paramObjectOutput.writeUTF(str);
+            if (this.af != null) {
+              break label136;
+            }
+            str = "";
+            paramObjectOutput.writeUTF(str);
+            if (this.ai != null) {
+              break label144;
+            }
+          }
+          for (str = "";; str = bblk.a(this.ai, false))
+          {
+            paramObjectOutput.writeUTF(str);
+            return;
+            str = this.ac;
+            break;
+            str = this.ae;
+            break label78;
+            str = this.af;
+            break label95;
+          }
+        }
+        if (this.jdField_a_of_type_Int == 3)
+        {
+          if (this.ac == null)
+          {
+            str = "";
+            paramObjectOutput.writeUTF(str);
+            if (this.ae != null) {
+              break label258;
+            }
+            str = "";
+            paramObjectOutput.writeUTF(str);
+            if (this.af != null) {
+              break label266;
+            }
+            str = "";
+            paramObjectOutput.writeUTF(str);
+            if (this.ai != null) {
+              break label274;
+            }
+            str = "";
+            paramObjectOutput.writeUTF(str);
+            if (this.ah != null) {
+              break label286;
+            }
+          }
+          for (str = "";; str = this.ah)
+          {
+            paramObjectOutput.writeUTF(str);
+            return;
+            str = this.ac;
+            break;
+            str = this.ae;
+            break label191;
+            str = this.af;
+            break label208;
+            str = bblk.a(this.ai, false);
+            break label225;
+          }
+        }
+      } while (this.jdField_a_of_type_Int < 4);
+      if (this.ac != null) {
+        break label448;
+      }
+      str = "";
+      paramObjectOutput.writeUTF(str);
+      if (this.ae != null) {
+        break label456;
+      }
+      str = "";
+      paramObjectOutput.writeUTF(str);
+      if (this.af != null) {
+        break label464;
+      }
+      str = "";
+      paramObjectOutput.writeUTF(str);
+      if (this.ai != null) {
+        break label472;
+      }
+      str = "";
+      paramObjectOutput.writeUTF(str);
+      if (this.ah != null) {
+        break label484;
+      }
+      str = "";
+      paramObjectOutput.writeUTF(str);
+      if (this.aj != null) {
+        break label492;
+      }
+      str = "";
+      paramObjectOutput.writeUTF(str);
+    } while (this.jdField_a_of_type_Int < 11);
+    label128:
+    label136:
+    label144:
+    label191:
+    label208:
+    label346:
+    if (this.ak == null)
+    {
+      str = "";
+      paramObjectOutput.writeUTF(str);
+      if (this.al != null) {
+        break label508;
+      }
+    }
+    label258:
+    label266:
+    label274:
+    label286:
+    label329:
+    label464:
+    label472:
+    label484:
+    label492:
+    label508:
+    for (String str = "";; str = this.al)
+    {
+      paramObjectOutput.writeUTF(str);
+      return;
+      str = this.ac;
+      break;
+      str = this.ae;
+      break label329;
+      str = this.af;
+      break label346;
+      str = bblk.a(this.ai, false);
+      break label363;
+      str = this.ah;
+      break label380;
+      str = this.aj;
+      break label397;
+      str = this.ak;
+      break label423;
     }
   }
   
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  protected void b()
+  public void a(String paramString)
   {
-    if (this.jdField_a_of_type_ArrayOfByte == null)
+    if ((paramString == null) || (paramString.equals("")))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("SearchEntryDataModel", 2, "saveDataToLocal, mRawData is null");
-      }
+      this.ai = paramString;
       return;
     }
-    ThreadManager.post(new SearchEntryDataModel.1(this), 5, null, true);
+    this.ai = StringUtil.ToDBC(paramString);
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, this.jdField_a_of_type_JavaLangString);
+    if (this.ai != null)
+    {
+      if (!TextUtils.isEmpty(this.af)) {
+        paramXmlSerializer.attribute(null, "size", this.af);
+      }
+      if (!TextUtils.isEmpty(this.ac)) {
+        paramXmlSerializer.attribute(null, "color", this.ac);
+      }
+      if (!TextUtils.isEmpty(this.ae)) {
+        paramXmlSerializer.attribute(null, "style", this.ae);
+      }
+      if (!TextUtils.isEmpty(this.ah)) {
+        paramXmlSerializer.attribute(null, "html", this.ah);
+      }
+      if (!TextUtils.isEmpty(this.aj)) {
+        paramXmlSerializer.attribute(null, "type", this.aj);
+      }
+      if (!TextUtils.isEmpty(this.ak)) {
+        paramXmlSerializer.attribute(null, "maxLines", this.ak);
+      }
+      if (!TextUtils.isEmpty(this.al)) {
+        paramXmlSerializer.attribute(null, "lineSpace", this.al);
+      }
+      paramXmlSerializer.text(this.ai);
+    }
+    paramXmlSerializer.endTag(null, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a(bcin parambcin)
+  {
+    if (parambcin == null) {
+      return true;
+    }
+    this.ac = parambcin.a("color");
+    this.ae = parambcin.a("style");
+    this.af = parambcin.a("size");
+    this.ai = bblk.a(bchh.a(parambcin), false);
+    this.ah = parambcin.a("html");
+    this.aj = parambcin.a("type");
+    this.ak = parambcin.a("maxLines");
+    this.al = parambcin.a("lineSpace");
+    return true;
+  }
+  
+  public int b()
+  {
+    if (!TextUtils.isEmpty(this.ak)) {
+      try
+      {
+        int i = Integer.parseInt(this.ak);
+        return i;
+      }
+      catch (Exception localException) {}
+    }
+    return 2;
+  }
+  
+  public String b()
+  {
+    if (this.ai == null) {}
+    for (String str = "";; str = this.ai)
+    {
+      this.ai = str;
+      return this.ai;
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    this.ad = paramString;
+  }
+  
+  protected abstract int c();
+  
+  public String c()
+  {
+    return this.af;
+  }
+  
+  public void c(String paramString)
+  {
+    this.ag = paramString;
+  }
+  
+  protected int d()
+  {
+    if (!TextUtils.isEmpty(this.al)) {
+      try
+      {
+        int i = Integer.parseInt(this.al);
+        return i;
+      }
+      catch (Exception localException) {}
+    }
+    return 0;
+  }
+  
+  public String d()
+  {
+    return this.ac;
+  }
+  
+  public void d(String paramString)
+  {
+    this.am = paramString;
+  }
+  
+  public int e()
+  {
+    return -16777216;
+  }
+  
+  public String e()
+  {
+    return this.ae;
+  }
+  
+  public void e(String paramString)
+  {
+    this.ac = paramString;
+  }
+  
+  public int f()
+  {
+    return 26;
+  }
+  
+  public String f()
+  {
+    return this.aj;
+  }
+  
+  public void f(String paramString)
+  {
+    this.af = paramString;
+  }
+  
+  public int g()
+  {
+    return 0;
+  }
+  
+  public void g(String paramString)
+  {
+    this.al = paramString;
+  }
+  
+  public void h(String paramString)
+  {
+    this.ak = paramString;
   }
 }
 

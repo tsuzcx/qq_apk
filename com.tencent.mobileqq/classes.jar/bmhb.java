@@ -1,15 +1,15 @@
+import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tav.coremedia.CMTimeRange;
+
 public abstract interface bmhb
-  extends bmhi
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  public abstract void a();
   
-  public abstract void a(boolean paramBoolean, String paramString);
+  public abstract void a(CMTime paramCMTime);
   
-  public abstract void b(String paramString);
+  public abstract void a(CMTimeRange paramCMTimeRange);
   
-  public abstract void c(String paramString);
-  
-  public abstract void d(String paramString);
+  public abstract void a(boolean paramBoolean);
 }
 
 

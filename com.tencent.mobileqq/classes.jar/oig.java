@@ -1,9 +1,17 @@
-public class oig
-  extends bnrp
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class oig
+  implements View.OnClickListener
 {
-  protected void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
+  oig(oif paramoif) {}
+  
+  public void onClick(View paramView)
   {
-    oid.a().a(paramString, paramLong1, paramArrayOfLong, paramLong2);
+    ((Activity)paramView.getContext()).onBackPressed();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

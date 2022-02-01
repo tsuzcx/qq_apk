@@ -1,16 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.mqsafeedit.libsafeedit;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class acoy
-  implements DialogInterface.OnDismissListener
+public class acoy
+  implements View.OnClickListener
 {
-  acoy(acox paramacox) {}
+  public acoy(AddAccountActivity paramAddAccountActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    acox.a(this.a).a();
-    this.a.jdField_a_of_type_Acpg.d();
-    this.a.jdField_a_of_type_Acov.c();
+    if ((this.a.jdField_a_of_type_AndroidWidgetImageView != null) && (this.a.jdField_a_of_type_AndroidWidgetImageView.isShown())) {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText("");
+    libsafeedit.clearPassBuffer();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

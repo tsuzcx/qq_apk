@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.gamecenter.fragment;
 
-import acik;
-import anbd;
+import abet;
+import alvx;
 import android.os.Handler;
 import android.widget.RelativeLayout;
-import avkv;
-import avmd;
-import avmq;
-import avnc;
+import atxw;
+import atzc;
+import atzp;
+import auab;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.gamecenter.view.QQGameIndicator;
 import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
@@ -24,8 +24,8 @@ class QQGamePubAccountFragment$10
     synchronized (QQGamePubAccountFragment.a)
     {
       QQGamePubAccountFragment.a(this.this$0).add(0, this.a);
-      avmq localavmq = avnc.a(this.a, this.this$0.getActivity());
-      QQGamePubAccountFragment.a(this.this$0).add(0, localavmq);
+      atzp localatzp = auab.a(this.a, this.this$0.getActivity());
+      QQGamePubAccountFragment.a(this.this$0).add(0, localatzp);
       if (QQGamePubAccountFragment.a(this.this$0) != null) {
         QQGamePubAccountFragment.a(this.this$0).notifyDataSetChanged();
       }
@@ -39,9 +39,9 @@ class QQGamePubAccountFragment$10
       this.this$0.c();
       QQGamePubAccountFragment.a(this.this$0).setVisibility(0);
       QQGamePubAccountFragment.a(this.this$0).sendEmptyMessageDelayed(0, 3000L);
-      QQGamePubAccountFragment.a(this.this$0).setTag(avmd.a(this.a));
-      ??? = avmd.a(this.a, 0);
-      acik.a(anbd.a(), "769", "205030", (String)???, "76901", "1", "160", new String[] { avmd.a(this.a), "", "8" });
+      QQGamePubAccountFragment.a(this.this$0).setTag(atzc.a(this.a));
+      ??? = atzc.a(this.a, 0);
+      abet.a(alvx.a(), "769", "205030", (String)???, "76901", "1", "160", new String[] { atzc.a(this.a), "", "8" });
       return;
     }
   }

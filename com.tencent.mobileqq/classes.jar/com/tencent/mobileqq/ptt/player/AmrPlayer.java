@@ -10,23 +10,23 @@ import android.os.Build.VERSION;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import bamh;
-import bami;
-import bdmc;
-import blhq;
+import azch;
+import azci;
+import bjng;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class AmrPlayer
-  implements MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, MediaPlayer.OnPreparedListener, Handler.Callback, bamh
+  implements MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, MediaPlayer.OnPreparedListener, Handler.Callback, azch
 {
   private int jdField_a_of_type_Int = -1;
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private bami jdField_a_of_type_Bami;
-  private blhq jdField_a_of_type_Blhq;
+  private azci jdField_a_of_type_Azci;
+  private bjng jdField_a_of_type_Bjng;
   private AmrPlayer.AmrPlayerThread jdField_a_of_type_ComTencentMobileqqPttPlayerAmrPlayer$AmrPlayerThread;
   Runnable jdField_a_of_type_JavaLangRunnable = new AmrPlayer.1(this);
   private String jdField_a_of_type_JavaLangString;
@@ -35,13 +35,13 @@ public final class AmrPlayer
   public AmrPlayer()
   {
     this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-    this.jdField_a_of_type_Blhq = new blhq(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Bjng = new bjng(Looper.getMainLooper(), this);
   }
   
   public AmrPlayer(Context paramContext, int paramInt)
   {
     this.jdField_a_of_type_AndroidMediaMediaPlayer = MediaPlayer.create(paramContext, paramInt);
-    this.jdField_a_of_type_Blhq = new blhq(this);
+    this.jdField_a_of_type_Bjng = new bjng(this);
   }
   
   public int a()
@@ -79,9 +79,9 @@ public final class AmrPlayer
   
   public void a(int paramInt, byte paramByte) {}
   
-  public void a(bami parambami)
+  public void a(azci paramazci)
   {
-    this.jdField_a_of_type_Bami = parambami;
+    this.jdField_a_of_type_Azci = paramazci;
   }
   
   public void a(String paramString)
@@ -172,21 +172,21 @@ public final class AmrPlayer
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 1) {
-      if (this.jdField_a_of_type_Bami != null)
+      if (this.jdField_a_of_type_Azci != null)
       {
-        this.jdField_a_of_type_Bami.a(this, 0, 0);
+        this.jdField_a_of_type_Azci.a(this, 0, 0);
         paramMessage = new HashMap();
         paramMessage.put("param_succ_flag", "0");
         paramMessage.put("errCode", "0");
         paramMessage.put("param_version", Build.VERSION.SDK_INT + "");
         paramMessage.put("param_deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
-        bdmc.a(BaseApplication.getContext()).a(null, "PttAmrPlaryerError", true, 0L, 0L, paramMessage, null);
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "PttAmrPlaryerError", true, 0L, 0L, paramMessage, null);
       }
     }
-    while ((paramMessage.what != 2) || (this.jdField_a_of_type_Bami == null)) {
+    while ((paramMessage.what != 2) || (this.jdField_a_of_type_Azci == null)) {
       return true;
     }
-    this.jdField_a_of_type_Bami.a();
+    this.jdField_a_of_type_Azci.a();
     return true;
   }
   
@@ -196,8 +196,8 @@ public final class AmrPlayer
       QLog.d("AmrPlayer", 2, "playAmr onCompletion");
     }
     this.jdField_a_of_type_ComTencentMobileqqPttPlayerAmrPlayer$AmrPlayerThread = null;
-    if (this.jdField_a_of_type_Bami != null) {
-      this.jdField_a_of_type_Bami.a();
+    if (this.jdField_a_of_type_Azci != null) {
+      this.jdField_a_of_type_Azci.a();
     }
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
   }
@@ -208,15 +208,15 @@ public final class AmrPlayer
       QLog.d("AmrPlayer", 2, "playAmr onError");
     }
     this.jdField_a_of_type_ComTencentMobileqqPttPlayerAmrPlayer$AmrPlayerThread = null;
-    if (this.jdField_a_of_type_Bami != null) {
-      this.jdField_a_of_type_Bami.a(this, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Azci != null) {
+      this.jdField_a_of_type_Azci.a(this, paramInt1, paramInt2);
     }
     paramMediaPlayer = new HashMap();
     paramMediaPlayer.put("param_succ_flag", "0");
     paramMediaPlayer.put("errCode", paramInt1 + "");
     paramMediaPlayer.put("param_version", Build.VERSION.SDK_INT + "");
     paramMediaPlayer.put("param_deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
-    bdmc.a(BaseApplication.getContext()).a(null, "PttAmrPlaryerError", true, 0L, 0L, paramMediaPlayer, null);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "PttAmrPlaryerError", true, 0L, 0L, paramMediaPlayer, null);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
     return true;
   }

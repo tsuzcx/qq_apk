@@ -1,16 +1,28 @@
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import dov.com.qq.im.capture.control.CaptureAsyncStep.BindTroopMemberClient;
 
-class bmrj
-  implements RadioGroup.OnCheckedChangeListener
+public class bmrj
+  implements zop
 {
-  bmrj(bmrh parambmrh) {}
+  public bmrj(CaptureAsyncStep.BindTroopMemberClient paramBindTroopMemberClient) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    bmrh.a(this.a, paramInt);
-    EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+    paramBundle = paramBundle.getString("nickName");
+    if (paramBundle == null) {
+      paramBundle = "";
+    }
+    for (;;)
+    {
+      AppInterface localAppInterface = bmql.a();
+      if ((localAppInterface instanceof PeakAppInterface)) {
+        ((PeakAppInterface)localAppInterface).a(paramBundle);
+      }
+      this.a.a.b();
+      return;
+    }
   }
 }
 

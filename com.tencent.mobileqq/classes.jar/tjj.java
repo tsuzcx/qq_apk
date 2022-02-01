@@ -1,19 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.viola.core.ViolaEnvironment;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
-public class tjj
-  implements tjn
+final class tjj
+  implements nnv
 {
-  public tjj(ViolaBaseView paramViolaBaseView, boolean paramBoolean, long paramLong) {}
+  tjj(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void a() {}
-  
-  public void a(String paramString)
+  public void loaded(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_MAIN_JS_OFFLINE, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, null);
+      return;
     }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeErrorCallJS(this.jdField_a_of_type_JavaLangString, paramString);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

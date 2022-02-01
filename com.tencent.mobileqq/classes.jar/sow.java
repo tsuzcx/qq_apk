@@ -1,7 +1,23 @@
-import kotlin.Metadata;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.view.MotionEvent;
+import android.widget.TextView;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/data/PtsData$Companion;", "", "()V", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class sow {}
+public class sow
+  extends LinkMovementMethod
+{
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    boolean bool = super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0)) {
+      Selection.removeSelection(paramSpannable);
+    }
+    paramTextView.setPressed(false);
+    paramTextView.setFocusable(false);
+    return bool;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -14,7 +14,6 @@ import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bhkd;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -29,6 +28,7 @@ import com.tencent.mobileqq.mini.util.ImageUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -44,7 +44,7 @@ import java.util.Set;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import zom;
+import ypi;
 
 public class ImageJsPlugin
   extends BaseJsPlugin
@@ -618,7 +618,7 @@ public class ImageJsPlugin
     localIntent.putExtra("PhotoConst.IS_FINISH_RESTART_INIT_ACTIVITY", true);
     localIntent.putExtra("PhotoConst.original_button", paramBoolean);
     paramActivity.startActivity(localIntent);
-    bhkd.anim(paramActivity, false, true);
+    AlbumUtil.anim(paramActivity, false, true);
   }
   
   private void openNativeCamera(Activity paramActivity, JsRuntime paramJsRuntime, int paramInt)
@@ -644,15 +644,15 @@ public class ImageJsPlugin
     this.mShowOriBtn = false;
     this.mJsRunTime = paramJsRuntime;
     this.mCallBackId = paramInt;
-    if ("chooseImage".equals(paramString1)) {}
-    for (;;)
+    Object localObject1;
+    int j;
+    int i;
+    int m;
+    Object localObject2;
+    int n;
+    int k;
+    if ("chooseImage".equals(paramString1))
     {
-      Object localObject1;
-      int i;
-      int m;
-      Object localObject2;
-      int n;
-      int k;
       try
       {
         if (!this.mHasRegisterChooseImageReceiver)
@@ -668,22 +668,25 @@ public class ImageJsPlugin
         localObject1 = ((JSONObject)localObject1).optJSONArray("sourceType");
         i = j;
         if (j <= 9) {
-          break label1329;
+          break label1441;
         }
         i = 9;
       }
       catch (Throwable paramString2)
       {
-        QLog.e("ImageJsPlugin", 1, paramString1 + " error,", paramString2);
-        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
-        continue;
-        if (!"camera".equals(((JSONArray)localObject1).optString(0))) {
+        for (;;)
+        {
+          label268:
+          label297:
+          QLog.e("ImageJsPlugin", 1, paramString1 + " error,", paramString2);
+          this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
           continue;
+          if ("camera".equals(((JSONArray)localObject1).optString(0))) {
+            openCamera(this.jsPluginEngine.getActivityContext(), paramJsRuntime, paramInt);
+          } else {
+            openChoosePhotoActivity(this.jsPluginEngine.getActivityContext(), i, this.mShowOriBtn);
+          }
         }
-        openCamera(this.jsPluginEngine.getActivityContext(), paramJsRuntime, paramInt);
-        continue;
-        openChoosePhotoActivity(this.jsPluginEngine.getActivityContext(), i, this.mShowOriBtn);
-        continue;
       }
       if (m < paramString2.length())
       {
@@ -691,203 +694,229 @@ public class ImageJsPlugin
         if (TextUtils.isEmpty((CharSequence)localObject2))
         {
           n = j;
+          break label1466;
         }
-        else if (((String)localObject2).equals("original"))
+        if (((String)localObject2).equals("original"))
         {
           n = 1;
+          break label1466;
         }
-        else
-        {
-          n = j;
-          if (((String)localObject2).equals("compressed"))
-          {
-            k = 1;
-            n = j;
-          }
+        n = j;
+        if (!((String)localObject2).equals("compressed")) {
+          break label1466;
         }
+        k = 1;
+        n = j;
+        break label1466;
       }
-      else
+      if (k != 0)
       {
-        if (k != 0)
-        {
-          if (j != 0) {
-            this.mShowOriBtn = true;
-          }
+        if (j == 0) {
+          break label297;
         }
-        else
-        {
-          if (((JSONArray)localObject1).length() != 2) {
-            continue;
-          }
-          AppBrandTask.runTaskOnUiThread(new ImageJsPlugin.2(this, paramJsRuntime, paramInt, i));
-          return "";
-        }
+        this.mShowOriBtn = true;
+      }
+      while (((JSONArray)localObject1).length() == 2)
+      {
+        AppBrandTask.runTaskOnUiThread(new ImageJsPlugin.2(this, paramJsRuntime, paramInt, i));
+        return "";
         this.mNeedCompress = true;
-        continue;
-        if ("previewImage".equals(paramString1))
+      }
+    }
+    else
+    {
+      if ("previewImage".equals(paramString1))
+      {
+        try
         {
-          try
+          paramString2 = new JSONObject(paramString2);
+          localObject1 = paramString2.optString("current", "");
+          localObject2 = paramString2.optJSONArray("urls");
+          paramString2 = new ArrayList();
+          j = 0;
+          i = 0;
+          while (i < ((JSONArray)localObject2).length())
           {
-            paramString2 = new JSONObject(paramString2);
-            localObject1 = paramString2.optString("current", "");
-            localObject2 = paramString2.optJSONArray("urls");
-            paramString2 = new ArrayList();
-            j = 0;
-            i = 0;
-            while (i < ((JSONArray)localObject2).length())
-            {
-              String str1 = ((JSONArray)localObject2).optString(i);
-              if (str1.equals(localObject1)) {
-                j = i;
-              }
-              String str2 = MiniAppFileManager.getInstance().getAbsolutePath(str1);
-              paramString2.add(str2);
-              QLog.d("ImageJsPlugin", 1, "previewImage wxFilePath=" + str1 + ",localFilePath=" + str2);
-              i += 1;
+            String str1 = ((JSONArray)localObject2).optString(i);
+            if (str1.equals(localObject1)) {
+              j = i;
             }
-            if (paramString2 != null)
-            {
-              localObject1 = new Intent(this.jsPluginEngine.getActivityContext(), TroopAvatarWallPreviewActivity.class);
-              localObject2 = new Bundle();
-              ((Bundle)localObject2).putInt("index", j);
-              ((Bundle)localObject2).putStringArrayList("seqNum", paramString2);
-              ((Bundle)localObject2).putBoolean("needBottomBar", false);
-              ((Bundle)localObject2).putBoolean("is_show_action", true);
-              ((Bundle)localObject2).putBoolean("is_not_show_index", true);
-              ((Bundle)localObject2).putBoolean("is_need_to_aio", false);
-              ((Bundle)localObject2).putBoolean("is_from_plugin", true);
-              ((Intent)localObject1).putExtras((Bundle)localObject2);
-              ((Intent)localObject1).addFlags(603979776);
-              this.jsPluginEngine.getActivityContext().startActivity((Intent)localObject1);
-            }
-            this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
+            String str2 = MiniAppFileManager.getInstance().getAbsolutePath(str1);
+            paramString2.add(str2);
+            QLog.d("ImageJsPlugin", 1, "previewImage wxFilePath=" + str1 + ",localFilePath=" + str2);
+            i += 1;
           }
-          catch (Exception paramString2)
+          if (paramString2 != null)
           {
-            for (;;)
-            {
-              QLog.e("ImageJsPlugin", 2, paramString1 + " error,", paramString2);
-              this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
-            }
+            localObject1 = new Intent(this.jsPluginEngine.getActivityContext(), TroopAvatarWallPreviewActivity.class);
+            localObject2 = new Bundle();
+            ((Bundle)localObject2).putInt("index", j);
+            ((Bundle)localObject2).putStringArrayList("seqNum", paramString2);
+            ((Bundle)localObject2).putBoolean("needBottomBar", false);
+            ((Bundle)localObject2).putBoolean("is_show_action", true);
+            ((Bundle)localObject2).putBoolean("is_not_show_index", true);
+            ((Bundle)localObject2).putBoolean("is_need_to_aio", false);
+            ((Bundle)localObject2).putBoolean("is_from_plugin", true);
+            ((Intent)localObject1).putExtras((Bundle)localObject2);
+            ((Intent)localObject1).addFlags(603979776);
+            this.jsPluginEngine.getActivityContext().startActivity((Intent)localObject1);
           }
-          return "";
+          this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
         }
-        if ("getImageInfo".equals(paramString1)) {
+        catch (Exception paramString2)
+        {
           for (;;)
           {
-            try
-            {
-              paramString2 = new JSONObject(paramString2).optString("src", "");
-              if (TextUtils.isEmpty(paramString2)) {
-                continue;
-              }
-              paramString2 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
-              if (TextUtils.isEmpty(paramString2)) {
-                continue;
-              }
-              callbackGetImageInfo(paramString2, paramJsRuntime, paramInt);
-            }
-            catch (Exception paramString2)
-            {
-              QLog.e("ImageJsPlugin", 2, paramString1 + " error.", paramString2);
-              this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
-              continue;
-            }
-            return "";
-            paramString2 = null;
-            continue;
-            this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "image path error.", paramInt);
+            QLog.e("ImageJsPlugin", 2, paramString1 + " error,", paramString2);
+            this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
           }
         }
-        if ("saveImageToPhotosAlbum".equals(paramString1)) {
-          try
-          {
-            paramString2 = new JSONObject(paramString2).optString("filePath", "");
-            if (!TextUtils.isEmpty(paramString2))
-            {
-              paramString2 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
-              localObject1 = new File(paramString2);
-              localObject1 = ShortVideoUtils.d() + System.currentTimeMillis() / 1000L + "_" + ((File)localObject1).getName();
-              if (zom.a(this.jsPluginEngine.getActivityContext(), paramString2, (String)localObject1)) {
-                this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
-              }
-              for (;;)
-              {
-                return "";
-                this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "save failed.", paramInt);
-              }
-            }
-          }
-          catch (Exception paramString2)
-          {
-            for (;;)
-            {
-              QLog.e("ImageJsPlugin", 1, paramString1 + " error", paramString2);
-              this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
-              continue;
-              this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "save failed.", paramInt);
-            }
-          }
-        }
-        if ("compressImage".equals(paramString1)) {}
+        return "";
+      }
+      if ("getImageInfo".equals(paramString1)) {
         for (;;)
         {
           try
           {
-            paramString2 = new JSONObject(paramString2);
-            localObject1 = paramString2.optString("src");
-            i = paramString2.optInt("quality");
-            j = paramString2.optInt("destWidth");
-            k = paramString2.optInt("destHeight");
-            if (TextUtils.isEmpty((CharSequence)localObject1)) {
-              continue;
-            }
-            paramString2 = MiniAppFileManager.getInstance().getAbsolutePath((String)localObject1);
+            paramString2 = new JSONObject(paramString2).optString("src", "");
             if (TextUtils.isEmpty(paramString2)) {
               continue;
             }
-            if ((k > 0) && (j > 0)) {
+            paramString2 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
+            if (TextUtils.isEmpty(paramString2)) {
               continue;
             }
-            compressImage(paramString2, i, paramJsRuntime, paramInt);
+            callbackGetImageInfo(paramString2, paramJsRuntime, paramInt);
           }
           catch (Exception paramString2)
           {
-            QLog.e("ImageJsPlugin", 1, paramString1 + " error", paramString2);
-            this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
-            continue;
-            compressImage(paramString2, i, j, k, paramJsRuntime, paramInt);
-            continue;
+            QLog.e("ImageJsPlugin", 2, paramString1 + " error.", paramString2);
             this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
             continue;
           }
           return "";
           paramString2 = null;
           continue;
-          if (((k <= 0) || (j > 0)) && ((k > 0) || (j <= 0))) {
-            continue;
-          }
-          paramString2 = "destSize invalid(" + j + "," + k + ")";
-          this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramString2, paramInt);
+          this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "image path error.", paramInt);
         }
-        for (;;)
-        {
-          break;
-          label1329:
-          if (i < 1) {
-            i = 1;
-          }
-        }
-        if (paramString2 == null) {
+      }
+      if (!"saveImageToPhotosAlbum".equals(paramString1)) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        paramString2 = new JSONObject(paramString2).optString("filePath", "");
+        if (TextUtils.isEmpty(paramString2)) {
           continue;
         }
-        j = 0;
-        k = 0;
-        m = 0;
+        localObject2 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
+        localObject1 = "";
+        paramString2 = (String)localObject1;
+        if (!ImageUtil.isJpgFile((String)localObject2))
+        {
+          paramString2 = (String)localObject1;
+          if (!ImageUtil.isPngFile((String)localObject2))
+          {
+            paramString2 = (String)localObject1;
+            if (!ImageUtil.isWebpFile((String)localObject2))
+            {
+              paramString2 = new BitmapFactory.Options();
+              paramString2.inJustDecodeBounds = true;
+              SafeBitmapFactory.decodeFile((String)localObject2, paramString2);
+              paramString2 = ImageUtil.getType(paramString2);
+              if (TextUtils.isEmpty(paramString2)) {
+                break label1479;
+              }
+              if (!paramString2.equals("unknown")) {
+                continue;
+              }
+              break label1479;
+            }
+          }
+        }
+        localObject1 = new File((String)localObject2);
+        paramString2 = ShortVideoUtils.getCameraPath() + System.currentTimeMillis() / 1000L + "_" + ((File)localObject1).getName() + paramString2;
+        if (!ypi.a(this.jsPluginEngine.getActivityContext(), (String)localObject2, paramString2)) {
+          continue;
+        }
+        this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, null, paramInt);
+      }
+      catch (Exception paramString2)
+      {
+        QLog.e("ImageJsPlugin", 1, paramString1 + " error", paramString2);
+        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
+        continue;
+        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "save failed.", paramInt);
         continue;
       }
+      return "";
+      paramString2 = "." + paramString2;
+      continue;
+      this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, "save failed.", paramInt);
+      continue;
+      if ("compressImage".equals(paramString1)) {}
+      for (;;)
+      {
+        try
+        {
+          paramString2 = new JSONObject(paramString2);
+          localObject1 = paramString2.optString("src");
+          i = paramString2.optInt("quality");
+          j = paramString2.optInt("destWidth");
+          k = paramString2.optInt("destHeight");
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {
+            continue;
+          }
+          paramString2 = MiniAppFileManager.getInstance().getAbsolutePath((String)localObject1);
+          if (TextUtils.isEmpty(paramString2)) {
+            continue;
+          }
+          if ((k > 0) && (j > 0)) {
+            continue;
+          }
+          compressImage(paramString2, i, paramJsRuntime, paramInt);
+        }
+        catch (Exception paramString2)
+        {
+          QLog.e("ImageJsPlugin", 1, paramString1 + " error", paramString2);
+          this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
+          continue;
+          compressImage(paramString2, i, j, k, paramJsRuntime, paramInt);
+          continue;
+          this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramInt);
+          continue;
+        }
+        return "";
+        paramString2 = null;
+        continue;
+        if (((k <= 0) || (j > 0)) && ((k > 0) || (j <= 0))) {
+          continue;
+        }
+        paramString2 = "destSize invalid(" + j + "," + k + ")";
+        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString1, null, paramString2, paramInt);
+      }
+      for (;;)
+      {
+        break;
+        label1441:
+        if (i < 1) {
+          i = 1;
+        }
+      }
+      if (paramString2 == null) {
+        break label268;
+      }
+      j = 0;
+      k = 0;
+      m = 0;
+      break;
+      label1466:
       m += 1;
-      int j = n;
+      j = n;
+      break;
+      label1479:
+      paramString2 = "";
     }
   }
   

@@ -1,26 +1,39 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.qwallet.fragment.WordChainHbFragment;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
+import cooperation.qzone.mobilereport.MobileReportManager;
 
 public class albx
-  implements View.OnFocusChangeListener
+  implements alcd
 {
-  public albx(WordChainHbFragment paramWordChainHbFragment) {}
+  public albx(ShoppingFragment paramShoppingFragment) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void a()
   {
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_Nkr = new nkr(this.a.jdField_a_of_type_AndroidViewView, new alby(this), ImmersiveUtils.getStatusBarHeight(this.a.getActivity()) + 160);
-      WordChainHbFragment.a(this.a, 8);
-    }
-    do
-    {
-      return;
-      WordChainHbFragment.a(this.a, 0);
-    } while (this.a.jdField_a_of_type_Nkr == null);
-    this.a.jdField_a_of_type_Nkr.a();
+    ShoppingFragment.a(this.a, 1, 0);
+    MobileReportManager.getInstance().reportActionLive("paying", "4", "qq_live", "shopcart_page", "order_paying_btn", 102, 1, System.currentTimeMillis(), "");
+  }
+  
+  public void b()
+  {
+    ShoppingFragment.a(this.a, 1, 1);
+    MobileReportManager.getInstance().reportActionLive("inqueue", "4", "qq_live", "shopcart_page", "order_inqueue_btn", 102, 1, System.currentTimeMillis(), "");
+  }
+  
+  public void c()
+  {
+    ShoppingFragment.a(this.a, 1, 2);
+    MobileReportManager.getInstance().reportActionLive("ship", "4", "qq_live", "shopcart_page", "order_ship_btn", 102, 1, System.currentTimeMillis(), "");
+  }
+  
+  public void d()
+  {
+    ShoppingFragment.a(this.a, 1, 4);
+    MobileReportManager.getInstance().reportActionLive("service", "4", "qq_live", "shopcart_page", "order_service_btn", 102, 1, System.currentTimeMillis(), "");
+  }
+  
+  public void e()
+  {
+    ShoppingFragment.a(this.a, 0, 0);
+    MobileReportManager.getInstance().reportActionLive("all", "4", "qq_live", "shopcart_page", "order_all_btn", 102, 1, System.currentTimeMillis(), "");
   }
 }
 

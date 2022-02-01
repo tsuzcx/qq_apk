@@ -1,12 +1,15 @@
-import com.tencent.biz.qqstory.msgTabNode.view.DotAnimationView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
 
-public class wxn
+class wxn
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  public float a;
-  public float b;
-  public float c;
+  wxn(wxj paramwxj, wxf paramwxf) {}
   
-  private wxn(DotAnimationView paramDotAnimationView) {}
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  {
+    this.jdField_a_of_type_Wxf.a(this.jdField_a_of_type_Wxj);
+  }
 }
 
 

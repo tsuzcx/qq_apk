@@ -1,21 +1,13 @@
-import com.tencent.pts.nativemodule.PTSNativeModuleRegistry.IPTSMarkArticleRead;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class qhh
-  implements PTSNativeModuleRegistry.IPTSMarkArticleRead
+  implements ViewBase.IBuilder
 {
-  public void markArticleRead(long paramLong1, long paramLong2)
+  public ViewBase build(VafContext paramVafContext)
   {
-    QLog.i("PTSMarkArticleReadModule", 1, "[markArticleRead], articleID = " + paramLong1 + ", channelID = " + paramLong2);
-    try
-    {
-      pfa.a().a(paramLong1, System.currentTimeMillis());
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("PTSMarkArticleReadModule", 1, "[markArticleRead], e = " + localException);
-    }
+    return new qhg(paramVafContext);
   }
 }
 

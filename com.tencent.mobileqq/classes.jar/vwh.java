@@ -1,255 +1,100 @@
-import com.tencent.biz.qqcircle.beans.Friend;
-import com.tencent.biz.qqcircle.requests.QCircleGetFollowListRequest;
-import com.tencent.biz.qqcircle.utils.QCircleDoubleFollowUserHepler.2;
-import com.tencent.biz.qqcircle.utils.QCircleDoubleFollowUserHepler.3;
-import com.tencent.biz.qqcircle.utils.QCircleDoubleFollowUserHepler.4;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
+import android.support.annotation.Nullable;
+import java.util.Arrays;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class vwh
 {
-  private static vwh jdField_a_of_type_Vwh;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private ArrayList<Friend> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private List<Friend> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public final int a;
+  private final String a;
+  public final String[] a;
+  public final int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public final int i;
   
-  private vwh()
+  private vwh(JSONObject paramJSONObject)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (localAppRuntime == null) {}
-    while (!(localAppRuntime instanceof QQAppInterface)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)localAppRuntime);
-  }
-  
-  private ArrayList<RecentUser> a(List<Friend> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      paramList = (Friend)localIterator.next();
-      if (paramList != null)
-      {
-        if (uzg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(paramList.mUin))) {}
-        for (paramList = new RecentUser(String.valueOf(paramList.mUin), 0);; paramList = new RecentUser(String.valueOf(paramList.mUin), 10008))
-        {
-          localArrayList.add(paramList);
-          break;
-        }
-      }
-    }
-    if (localArrayList.size() > 0) {
-      return localArrayList;
-    }
-    return null;
-  }
-  
-  public static vwh a()
-  {
-    if (jdField_a_of_type_Vwh == null) {}
+    int k;
     try
     {
-      if (jdField_a_of_type_Vwh == null) {
-        jdField_a_of_type_Vwh = new vwh();
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
+      this.jdField_a_of_type_Int = paramJSONObject.getInt("v");
+      this.b = paramJSONObject.getInt("id");
+      this.i = paramJSONObject.getJSONObject("a").getInt("r");
+      JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
+      this.c = localJSONArray.getInt(0);
+      this.d = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
+      this.e = localJSONArray.getInt(0);
+      this.f = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("lp");
+      this.g = localJSONArray.getInt(0);
+      this.h = localJSONArray.getInt(1);
+      paramJSONObject = paramJSONObject.getJSONObject("a").getJSONArray("c");
+      k = paramJSONObject.length();
+      if (k < 1) {
+        throw new IllegalArgumentException("content length should more than 1");
       }
-      return jdField_a_of_type_Vwh;
     }
-    finally {}
-  }
-  
-  private void a(String paramString, long paramLong)
-  {
-    VSNetworkHelper.a().a(new QCircleGetFollowListRequest(paramString, paramLong), new vwi(this));
-  }
-  
-  private ArrayList<Entity> b(List<Friend> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    catch (JSONException paramJSONObject)
     {
-      Friend localFriend = (Friend)paramList.next();
-      if (localFriend != null)
-      {
-        Friends localFriends = new Friends();
-        localFriends.uin = String.valueOf(localFriend.mUin);
-        localFriends.name = localFriend.mName;
-        localFriends.remark = localFriend.mName;
-        localArrayList.add(localFriends);
-      }
+      throw new IllegalArgumentException(paramJSONObject);
     }
-    if (localArrayList.size() > 0) {
-      return localArrayList;
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[k];
+    while (j < k)
+    {
+      this.jdField_a_of_type_ArrayOfJavaLangString[j] = paramJSONObject.optString(j, "(NULL)");
+      j += 1;
+    }
+  }
+  
+  public static vwh a(@Nullable String paramString)
+  {
+    try
+    {
+      paramString = a(new JSONObject(paramString));
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      xvv.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+      return null;
+    }
+    catch (NullPointerException paramString)
+    {
+      xvv.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
     }
     return null;
   }
   
-  public static void b()
+  public static vwh a(JSONObject paramJSONObject)
   {
-    if (jdField_a_of_type_Vwh != null) {
-      try
-      {
-        if (jdField_a_of_type_Vwh != null) {
-          jdField_a_of_type_Vwh = null;
-        }
-        return;
-      }
-      finally {}
-    }
-  }
-  
-  public ArrayList<RecentUser> a()
-  {
-    Object localObject2 = null;
-    Object localObject1;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      localObject1 = a(this.jdField_a_of_type_JavaUtilList);
-    }
-    do
+    try
     {
-      do
-      {
-        return localObject1;
-        localObject1 = localObject2;
-      } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
-      if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-      }
-      this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(Friend.class);
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      localObject1 = localObject2;
-    } while (!QLog.isColorLevel());
-    QLog.i("QCircleDoubleFollowUserHepler", 2, "there has no double friends");
+      paramJSONObject = new vwh(paramJSONObject);
+      return paramJSONObject;
+    }
+    catch (IllegalArgumentException paramJSONObject)
+    {
+      xvv.a("StoryVideoItem.PollLayout", "fromJson()", paramJSONObject);
+    }
     return null;
-    return a(this.jdField_a_of_type_JavaUtilList);
   }
   
-  public void a()
+  public String a()
   {
-    if (System.currentTimeMillis() - uyk.a().b() > QzoneConfig.getQQCircleGetFollowUserInternal())
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      a(null, 0L);
-    }
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a(String paramString1, String paramString2, boolean paramBoolean)
+  public String toString()
   {
-    label89:
-    label127:
-    do
-    {
-      long l;
-      Friend localFriend;
-      try
-      {
-        l = Long.parseLong(paramString1);
-        if (paramBoolean) {
-          break label127;
-        }
-        paramString2 = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramString2.hasNext())
-        {
-          localFriend = (Friend)paramString2.next();
-          if ((localFriend != null) && (localFriend.mUin == l))
-          {
-            this.jdField_a_of_type_JavaUtilList.remove(localFriend);
-            if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-              break label89;
-            }
-          }
-        }
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        QLog.e("QCircleDoubleFollowUserHepler", 1, paramString1, new Object[0]);
-        return;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-      }
-      ThreadManagerV2.excute(new QCircleDoubleFollowUserHepler.3(this, paramString1), 32, null, true);
-      return;
-      paramString1 = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramString1.hasNext())
-      {
-        localFriend = (Friend)paramString1.next();
-        if ((localFriend != null) && (localFriend.mUin == l)) {
-          return;
-        }
-      }
-      paramString1 = new Friend(l, paramString2);
-      this.jdField_a_of_type_JavaUtilList.add(paramString1);
-    } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-    }
-    ThreadManagerV2.excute(new QCircleDoubleFollowUserHepler.4(this, paramString1), 32, null, true);
-  }
-  
-  public void a(List<Friend> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QCircleDoubleFollowUserHepler", 2, "updateRenameList");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-      }
-    } while ((paramList == null) || (paramList.size() == 0));
-    ThreadManagerV2.excute(new QCircleDoubleFollowUserHepler.2(this, paramList), 32, null, true);
-  }
-  
-  public ArrayList<Entity> b()
-  {
-    Object localObject2 = null;
-    Object localObject1;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      localObject1 = b(this.jdField_a_of_type_JavaUtilList);
-    }
-    do
-    {
-      do
-      {
-        return localObject1;
-        localObject1 = localObject2;
-      } while (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
-      if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-      }
-      this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(Friend.class);
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      localObject1 = localObject2;
-    } while (!QLog.isColorLevel());
-    QLog.i("QCircleDoubleFollowUserHepler", 2, "there has no double friends");
-    return null;
-    return b(this.jdField_a_of_type_JavaUtilList);
+    return "PollLayout{version=" + this.jdField_a_of_type_Int + ", id=" + this.b + ", screenWidth=" + this.c + ", screenHeight=" + this.d + ", layoutWidth=" + this.e + ", layoutHeight=" + this.f + ", layoutCenterX=" + this.g + ", layoutCenterY=" + this.h + ", rotation=" + this.i + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
   }
 }
 

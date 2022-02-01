@@ -1,24 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-class pgx
-  implements View.OnClickListener
+public class pgx
 {
-  pgx(pgw parampgw, FrameLayout paramFrameLayout, int paramInt, QQAppInterface paramQQAppInterface) {}
+  private anav jdField_a_of_type_Anav = new pgy(this);
+  private ped jdField_a_of_type_Ped;
   
-  public void onClick(View paramView)
+  public pgx(ped paramped)
   {
-    pgw.a(this.jdField_a_of_type_Pgw).a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(pgw.a(this.jdField_a_of_type_Pgw));
-    pgw.a(this.jdField_a_of_type_Pgw, null);
-    if (261 == this.jdField_a_of_type_Int) {
-      bhsi.s(pgw.a(this.jdField_a_of_type_Pgw), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null);
+    this.jdField_a_of_type_Ped = paramped;
+  }
+  
+  public void a()
+  {
+    int i = 2;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    anav localanav;
+    Sensor localSensor;
+    if ((pxs.a() == 2) && (pxs.b(this.jdField_a_of_type_Ped.a().a(), (String)localObject) > 0))
+    {
+      localObject = (SensorManager)this.jdField_a_of_type_Ped.a().a().getSystemService("sensor");
+      localanav = this.jdField_a_of_type_Anav;
+      localSensor = ((SensorManager)localObject).getDefaultSensor(1);
+      if (!bcfj.a().a()) {
+        break label86;
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      ((SensorManager)localObject).registerListener(localanav, localSensor, i);
+      return;
+      label86:
+      i = 0;
+    }
+  }
+  
+  public void b()
+  {
+    ((SensorManager)this.jdField_a_of_type_Ped.a().a().getSystemService("sensor")).unregisterListener(this.jdField_a_of_type_Anav);
   }
 }
 

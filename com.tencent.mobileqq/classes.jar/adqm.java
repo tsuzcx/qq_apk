@@ -1,23 +1,33 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
-import com.tencent.mobileqq.upgrade.activity.UpgradeDetailActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import mqq.os.MqqHandler;
 
 public class adqm
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public adqm(AboutActivity paramAboutActivity) {}
+  public adqm(LoginInfoActivity paramLoginInfoActivity, boolean paramBoolean, FrameLayout paramFrameLayout) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).a != null))
+    if (this.jdField_a_of_type_Boolean)
     {
-      bdll.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", bhdu.a(), "");
-      UpgradeDetailActivity.a(this.a, bhdu.a().a(), false, false, true);
+      LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+      paramView = LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label57;
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    label57:
+    for (int i = 20200313;; i = 20200720)
+    {
+      paramView.removeMessages(i);
+      return false;
+      LoginInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+      break;
+    }
   }
 }
 

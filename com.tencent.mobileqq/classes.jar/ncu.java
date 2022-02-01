@@ -1,212 +1,118 @@
+import android.app.Dialog;
 import android.content.Context;
-import android.view.LayoutInflater;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.util.LruCache;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.avgame.gameroom.seat.AddMemberItemView;
-import com.tencent.avgame.gameroom.seat.EmptyMemberItemView;
-import com.tencent.avgame.gameroom.seat.MemberItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class ncu
-  extends BaseAdapter
-  implements View.OnClickListener
+  extends ReportDialog
 {
-  protected Context a;
-  protected LayoutInflater a;
-  protected ArrayList<ncr> a;
-  protected mxo a;
-  protected nco a;
-  protected ncv a;
-  protected boolean a;
+  protected static final LruCache<String, URLDrawable> a;
+  private View.OnClickListener a;
   
-  public ncu(Context paramContext, nco paramnco)
+  static
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Nco = paramnco;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_Mxo = ((mxo)myk.a().a().a(2));
+    jdField_a_of_type_AndroidUtilLruCache = new LruCache(20);
   }
   
-  private View a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public ncu(Context paramContext, nak paramnak)
   {
-    if (paramView != null)
-    {
-      paramViewGroup = paramView;
-      if ((paramView instanceof AddMemberItemView)) {}
+    super(paramContext, 2131755826);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ncv(this);
+    if (QLog.isColorLevel()) {
+      QLog.i("GameListDescriptionDialog", 2, "GameListDescriptionDialog show");
     }
-    else
-    {
-      paramViewGroup = (AddMemberItemView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558737, null);
-      paramViewGroup.setOnClickListener(this);
-      paramViewGroup.a();
-    }
-    return paramViewGroup;
+    a(paramnak);
   }
   
-  private View b(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public static Dialog a(Context paramContext, nak paramnak)
   {
-    paramViewGroup = this.jdField_a_of_type_JavaUtilArrayList;
-    if (paramInt >= 0) {}
-    for (;;)
+    paramContext = new ncu(paramContext, paramnak);
+    paramContext.show();
+    return paramContext;
+  }
+  
+  private void a(nak paramnak)
+  {
+    setContentView(2131558729);
+    getWindow().setLayout(-1, -1);
+    View localView = findViewById(2131364222);
+    localView.setOnClickListener(new ncw(this));
+    Object localObject1 = (TextView)findViewById(2131371615);
+    TextView localTextView = (TextView)findViewById(2131365445);
+    Object localObject2 = findViewById(2131369566);
+    ((View)localObject2).setOnTouchListener(new ncx(this));
+    ((View)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    findViewById(2131376679).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    localObject2 = findViewById(2131364615);
+    ((View)localObject2).setBackgroundDrawable(njh.a(getContext().getResources(), "avgame_guide_close_nor@2x.png", "avgame_guide_close_press@2x.png"));
+    ((View)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    if (paramnak != null)
     {
-      try
+      if (TextUtils.isEmpty(paramnak.l)) {
+        break label284;
+      }
+      ((TextView)localObject1).setBackgroundDrawable(URLDrawable.getDrawable(paramnak.l, URLDrawableHelper.TRANSPARENT, URLDrawableHelper.TRANSPARENT));
+      localObject1 = njh.a("avgame_list_card_bg@3x.png");
+      if (localObject1 == null) {
+        break label302;
+      }
+      localObject2 = new BitmapDrawable((Bitmap)localObject1);
+      label180:
+      if (TextUtils.isEmpty(paramnak.c)) {
+        break label309;
+      }
+      localObject1 = null;
+      if (jdField_a_of_type_AndroidUtilLruCache != null) {
+        localObject1 = (URLDrawable)jdField_a_of_type_AndroidUtilLruCache.get(paramnak.c);
+      }
+      Object localObject3 = localObject1;
+      if (localObject1 == null)
       {
-        if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-          return paramView;
-        }
-        ncr localncr = (ncr)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-        if ((paramView == null) || (!(paramView instanceof MemberItemView)))
+        localObject1 = URLDrawable.getDrawable(paramnak.c, (Drawable)localObject2, (Drawable)localObject2);
+        ((URLDrawable)localObject1).startDownload();
+        localObject3 = localObject1;
+        if (jdField_a_of_type_AndroidUtilLruCache != null)
         {
-          paramView = (MemberItemView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558739, null);
-          paramView.a();
-          paramView.setOnClickListener(this);
-          localView = paramView;
-          paramViewGroup = paramView;
-          paramViewGroup.a(this.jdField_a_of_type_Mxo, localncr, this.jdField_a_of_type_Nco);
-          return localView;
+          jdField_a_of_type_AndroidUtilLruCache.put(paramnak.c, localObject1);
+          localObject3 = localObject1;
         }
       }
-      finally {}
-      paramViewGroup = (MemberItemView)paramView;
-      View localView = paramView;
-    }
-  }
-  
-  private View c(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (!(paramView instanceof EmptyMemberItemView))
-    {
-      paramView = (EmptyMemberItemView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558738, null);
-      paramView.a();
-      return paramView;
-    }
-    return paramView;
-  }
-  
-  public void a(List<ncr> paramList, boolean paramBoolean)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      if (paramList != null) {
-        this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      }
-      return;
-    }
-  }
-  
-  public void a(ncv paramncv)
-  {
-    this.jdField_a_of_type_Ncv = paramncv;
-  }
-  
-  public int getCount()
-  {
-    return 8;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (paramInt >= 0) {}
-    try
-    {
-      Object localObject1;
-      if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        localObject1 = this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-        return localObject1;
-      }
-      if ((this.jdField_a_of_type_Boolean) && (paramInt == this.jdField_a_of_type_JavaUtilArrayList.size()))
-      {
-        localObject1 = new Object();
-        return localObject1;
-      }
-    }
-    finally {}
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (paramInt >= 0) {}
-    try
-    {
-      if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        return 1;
-      }
-      if ((paramInt == this.jdField_a_of_type_JavaUtilArrayList.size()) && (this.jdField_a_of_type_Boolean)) {
-        return 0;
-      }
-    }
-    finally {}
-    return 2;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int i = getItemViewType(paramInt);
-    View localView;
-    if (i == 1) {
-      localView = b(paramInt, paramView, paramViewGroup);
+      localView.setBackgroundDrawable(localObject3);
     }
     for (;;)
     {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      if (i == 0) {
-        localView = a(paramInt, paramView, paramViewGroup);
-      } else {
-        localView = c(paramInt, paramView, paramViewGroup);
+      if (!TextUtils.isEmpty(paramnak.b)) {
+        localTextView.setText(paramnak.b);
       }
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 3;
-  }
-  
-  public boolean isEmpty()
-  {
-    return false;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((paramView instanceof MemberItemView))
-    {
-      MemberItemView localMemberItemView = (MemberItemView)paramView;
-      if (this.jdField_a_of_type_Ncv != null) {
-        this.jdField_a_of_type_Ncv.a(localMemberItemView.a);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (((paramView instanceof AddMemberItemView)) && (this.jdField_a_of_type_Ncv != null)) {
-        this.jdField_a_of_type_Ncv.a();
+      label284:
+      if (paramnak.a == null) {
+        break;
       }
+      ((TextView)localObject1).setText(paramnak.a);
+      break;
+      label302:
+      localObject2 = URLDrawableHelper.TRANSPARENT;
+      break label180;
+      label309:
+      localView.setBackgroundDrawable((Drawable)localObject2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ncu
  * JD-Core Version:    0.7.0.1
  */

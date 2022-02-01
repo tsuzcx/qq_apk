@@ -1,25 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class amdl
-  extends Handler
+  implements alqv
 {
-  public amdl(FriendListInnerFrame paramFriendListInnerFrame) {}
+  public amdl(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt1, int paramInt2, String paramString)
   {
-    switch (paramMessage.what)
+    if (this.a.a != null)
     {
-    default: 
-      return;
-    case 1: 
-      this.a.a.setPadding(0, 0, 40, 0);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsStateActivity", 2, "apolloguestActivity stop loop");
+      }
+      this.a.a.getRenderImpl().a(0L);
     }
-    this.a.a.setPadding(0, 0, 0, 0);
   }
+  
+  public void a(int paramInt, String paramString) {}
 }
 
 

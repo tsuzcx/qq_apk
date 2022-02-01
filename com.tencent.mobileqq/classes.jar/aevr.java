@@ -1,30 +1,14 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.5.1;
 
 public class aevr
-  extends ayxo
+  implements aewj
 {
-  public aevr(Leba paramLeba) {}
+  public aevr(ReminderListFragment.5.1 param1) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.Q.lebatab.leba", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
-    }
-    if (QLog.isColorLevel())
-    {
-      if ((paramLong >>> 17 & 1L) != 0L) {
-        QLog.d("UndealCount.ZebraAlbum.", 2, "Leba onGetQZoneFeedCountFin Zebra album and then call Leba freshEntryItemUI");
-      }
-      QLog.d("UndealCount.", 2, "Leba onGetQZoneFeedCountFin type: " + paramLong + " and then call Leba freshEntryItemUI");
-    }
-    if (paramBoolean1)
-    {
-      Leba.c(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.lebatab.leba", 2, "onGetQZoneFeedCountFin. notifyData.");
-      }
-    }
+    ReminderListFragment.a(this.a.a.a, amtj.a(2131712497));
   }
 }
 

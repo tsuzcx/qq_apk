@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import ayot;
+import axcb;
 
 class NearbyProfileEditTribePanel$16$1
   implements Runnable
@@ -9,7 +9,7 @@ class NearbyProfileEditTribePanel$16$1
   
   public void run()
   {
-    ayot.a(this.a.this$0);
+    axcb.a(this.a.this$0);
   }
 }
 

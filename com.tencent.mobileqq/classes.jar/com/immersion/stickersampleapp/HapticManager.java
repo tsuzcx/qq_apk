@@ -1,24 +1,24 @@
 package com.immersion.stickersampleapp;
 
-import ahnt;
+import agkg;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Looper;
 import android.text.TextUtils;
-import asdd;
-import asde;
-import asdv;
-import bdmc;
-import bleb;
+import aqxb;
+import aqxc;
+import aqxt;
+import bjkf;
 import com.immersion.touchsensesdk.HapticMediaPlayer;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.util.QLog;
-import hm;
-import hn;
+import hk;
+import hl;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,15 +30,15 @@ import mqq.os.MqqHandler;
 public class HapticManager
 {
   private static HapticManager jdField_a_of_type_ComImmersionStickersampleappHapticManager = new HapticManager(BaseApplicationImpl.sApplication);
-  private static final String jdField_a_of_type_JavaLangString = ahnt.a() + "poke/immersion_source/libTouchSenseSDK.so";
+  private static final String jdField_a_of_type_JavaLangString = agkg.a() + "poke/immersion_source/libTouchSenseSDK.so";
   private Context jdField_a_of_type_AndroidContentContext;
   private HapticManager.ClockTask jdField_a_of_type_ComImmersionStickersampleappHapticManager$ClockTask = new HapticManager.ClockTask(this);
   private HapticManager.DisposeTask jdField_a_of_type_ComImmersionStickersampleappHapticManager$DisposeTask = new HapticManager.DisposeTask(this);
   private HapticManager.InitHMPRunnable jdField_a_of_type_ComImmersionStickersampleappHapticManager$InitHMPRunnable;
   private HapticMediaPlayer jdField_a_of_type_ComImmersionTouchsensesdkHapticMediaPlayer;
-  private hn jdField_a_of_type_Hn;
+  private hl jdField_a_of_type_Hl;
   private HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap;
-  private final List<hm> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final List<hk> jdField_a_of_type_JavaUtilList = new ArrayList();
   boolean jdField_a_of_type_Boolean = false;
   private boolean b;
   private boolean c;
@@ -46,7 +46,7 @@ public class HapticManager
   private HapticManager(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Hn = new hn();
+    this.jdField_a_of_type_Hl = new hl();
     this.jdField_a_of_type_ComImmersionStickersampleappHapticManager$InitHMPRunnable = new HapticManager.InitHMPRunnable(this);
   }
   
@@ -64,16 +64,16 @@ public class HapticManager
     }
   }
   
-  private hm a(String paramString)
+  private hk a(String paramString)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        hm localhm = (hm)localIterator.next();
-        if (hm.a(localhm).equals(paramString)) {
-          return localhm;
+        hk localhk = (hk)localIterator.next();
+        if (hk.a(localhk).equals(paramString)) {
+          return localhk;
         }
       }
       return null;
@@ -448,19 +448,19 @@ public class HapticManager
     }
     if (BaseApplicationImpl.sProcessId == 1)
     {
-      Object localObject = (asde)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(77);
+      Object localObject = (aqxc)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(77);
       if (localObject != null)
       {
-        localObject = (asdv)((asde)localObject).a("qq.android.poke.res_0625");
+        localObject = (aqxt)((aqxc)localObject).a("qq.android.poke.res_0625");
         if (localObject != null)
         {
           if (paramBoolean)
           {
-            XmlData localXmlData = ((asdv)localObject).a();
+            XmlData localXmlData = ((aqxt)localObject).a();
             localXmlData.loadState = 0;
-            asdd.a(localXmlData, new String[0]);
+            aqxb.a(localXmlData, new String[0]);
           }
-          ((asdv)localObject).a(false);
+          ((aqxt)localObject).a(false);
         }
       }
     }
@@ -512,7 +512,7 @@ public class HapticManager
       localIOException.printStackTrace();
       a(true);
       return false;
-      if ((!((String)localObject3).equals(bleb.a((File)localObject2))) || (((File)localObject2).length() != l))
+      if ((!((String)localObject3).equals(bjkf.a((File)localObject2))) || (((File)localObject2).length() != l))
       {
         a(true);
         ((File)localObject2).delete();
@@ -568,7 +568,7 @@ public class HapticManager
     //   29: ldc_w 353
     //   32: ldc_w 355
     //   35: aload_0
-    //   36: getfield 82	com/immersion/stickersampleapp/HapticManager:jdField_a_of_type_Hn	Lhn;
+    //   36: getfield 82	com/immersion/stickersampleapp/HapticManager:jdField_a_of_type_Hl	Lhl;
     //   39: invokestatic 361	com/immersion/touchsensesdk/HapticMediaPlayer:create	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/immersion/touchsensesdk/AsyncConnectionProxy;)Lcom/immersion/touchsensesdk/HapticMediaPlayer;
     //   42: putfield 363	com/immersion/stickersampleapp/HapticManager:jdField_a_of_type_ComImmersionTouchsensesdkHapticMediaPlayer	Lcom/immersion/touchsensesdk/HapticMediaPlayer;
     //   45: aload_0
@@ -717,7 +717,7 @@ public class HapticManager
       int j = this.jdField_a_of_type_ComImmersionTouchsensesdkHapticMediaPlayer.addResource((String)???, 1);
       synchronized (this.jdField_a_of_type_JavaUtilList)
       {
-        this.jdField_a_of_type_JavaUtilList.add(new hm(this, arrayOfString[i], j));
+        this.jdField_a_of_type_JavaUtilList.add(new hk(this, arrayOfString[i], j));
         i += 1;
       }
     }
@@ -753,7 +753,7 @@ public class HapticManager
     HashMap localHashMap = new HashMap();
     localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
     localHashMap.put("effectName", paramString);
-    bdmc.a(com.tencent.mobileqq.mqsafeedit.BaseApplication.getContext()).a(null, "pokeEffectSucessRate", bool, 0L, 0L, localHashMap, "");
+    StatisticCollector.getInstance(com.tencent.mobileqq.mqsafeedit.BaseApplication.getContext()).collectPerformance(null, "pokeEffectSucessRate", bool, 0L, 0L, localHashMap, "");
     ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_ComImmersionStickersampleappHapticManager$ClockTask);
     ThreadManager.getSubThreadHandler().postDelayed(this.jdField_a_of_type_ComImmersionStickersampleappHapticManager$ClockTask, 60000L);
     return paramInt;
@@ -768,8 +768,8 @@ public class HapticManager
       return -1;
     }
     a();
-    hm localhm = a(paramString);
-    if (localhm == null)
+    hk localhk = a(paramString);
+    if (localhk == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("HapticManager", 2, "No effect added with name " + paramString);
@@ -777,7 +777,7 @@ public class HapticManager
       return -1;
     }
     b();
-    int i = hm.a(localhm);
+    int i = hk.a(localhk);
     if (i < 0)
     {
       if (QLog.isColorLevel()) {
@@ -797,9 +797,9 @@ public class HapticManager
     for (;;)
     {
       return paramInt;
-      hm.a(localhm, paramInt);
+      hk.a(localhk, paramInt);
       if (QLog.isColorLevel()) {
-        QLog.d("TouchEffect", 2, "effect id:" + hm.b(localhm));
+        QLog.d("TouchEffect", 2, "effect id:" + hk.b(localhk));
       }
     }
   }
@@ -851,7 +851,7 @@ public class HapticManager
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        if (hm.a((hm)localIterator.next()).equals(paramString1)) {
+        if (hk.a((hk)localIterator.next()).equals(paramString1)) {
           return;
         }
       }
@@ -861,7 +861,7 @@ public class HapticManager
       int i = this.jdField_a_of_type_ComImmersionTouchsensesdkHapticMediaPlayer.addResource(???, 1);
       synchronized (this.jdField_a_of_type_JavaUtilList)
       {
-        this.jdField_a_of_type_JavaUtilList.add(new hm(this, paramString1, i));
+        this.jdField_a_of_type_JavaUtilList.add(new hk(this, paramString1, i));
         QLog.i("HapticManager", 1, "vas poke shock file " + paramString1 + " load success.");
         return;
       }
@@ -923,24 +923,24 @@ public class HapticManager
     //   6: iconst_0
     //   7: istore 5
     //   9: aload_2
-    //   10: invokevirtual 612	java/io/File:createNewFile	()Z
+    //   10: invokevirtual 614	java/io/File:createNewFile	()Z
     //   13: pop
-    //   14: new 614	java/io/FileInputStream
+    //   14: new 616	java/io/FileInputStream
     //   17: dup
     //   18: aload_1
-    //   19: invokespecial 617	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   19: invokespecial 619	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   22: astore 6
     //   24: new 154	java/io/FileOutputStream
     //   27: dup
     //   28: aload_2
-    //   29: invokespecial 618	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   29: invokespecial 620	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   32: astore_1
     //   33: sipush 1024
     //   36: newarray byte
     //   38: astore_2
     //   39: aload 6
     //   41: aload_2
-    //   42: invokevirtual 619	java/io/FileInputStream:read	([B)I
+    //   42: invokevirtual 621	java/io/FileInputStream:read	([B)I
     //   45: istore_3
     //   46: iload_3
     //   47: ifle +54 -> 101
@@ -960,7 +960,7 @@ public class HapticManager
     //   74: aload_2
     //   75: ifnull +7 -> 82
     //   78: aload_2
-    //   79: invokevirtual 620	java/io/FileInputStream:close	()V
+    //   79: invokevirtual 622	java/io/FileInputStream:close	()V
     //   82: iload 5
     //   84: istore 4
     //   86: aload_1
@@ -976,7 +976,7 @@ public class HapticManager
     //   104: aload 6
     //   106: ifnull +8 -> 114
     //   109: aload 6
-    //   111: invokevirtual 620	java/io/FileInputStream:close	()V
+    //   111: invokevirtual 622	java/io/FileInputStream:close	()V
     //   114: aload_1
     //   115: ifnull -17 -> 98
     //   118: aload_1
@@ -1009,7 +1009,7 @@ public class HapticManager
     //   161: aload 6
     //   163: ifnull +8 -> 171
     //   166: aload 6
-    //   168: invokevirtual 620	java/io/FileInputStream:close	()V
+    //   168: invokevirtual 622	java/io/FileInputStream:close	()V
     //   171: aload_2
     //   172: ifnull +7 -> 179
     //   175: aload_2
@@ -1109,7 +1109,7 @@ public class HapticManager
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        int i = hm.b((hm)localIterator.next());
+        int i = hk.b((hk)localIterator.next());
         if ((i > 0) && (a(i))) {
           c(i);
         }
@@ -1129,7 +1129,7 @@ public class HapticManager
   {
     try
     {
-      this.jdField_a_of_type_Hn.setConnection(null);
+      this.jdField_a_of_type_Hl.setConnection(null);
       e();
       return;
     }
@@ -1153,7 +1153,7 @@ public class HapticManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.immersion.stickersampleapp.HapticManager
  * JD-Core Version:    0.7.0.1
  */

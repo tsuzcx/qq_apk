@@ -1,88 +1,70 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import mqq.app.MobileQQ;
-import tencent.im.oidb.cmd0xe61.oidb_0xe61.BeancurdCubeInfo;
-import tencent.im.oidb.cmd0xe61.oidb_0xe61.ReqBody;
-import tencent.im.oidb.cmd0xe61.oidb_0xe61.RspBody;
 
 public class bejm
-  extends anud
+  extends andd
 {
-  public bejm(QQAppInterface paramQQAppInterface)
+  public bejm(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  
+  public void onAssignHomework(boolean paramBoolean, long paramLong, int paramInt)
   {
-    super(paramQQAppInterface);
+    super.onAssignHomework(paramBoolean, paramLong, paramInt);
+    this.a.o();
+    this.a.a(paramBoolean, paramInt);
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void onGetHomeworkInfo(boolean paramBoolean, behv parambehv)
   {
-    String str1 = paramToServiceMsg.extraData.getString("selfUin", "");
-    String str2 = paramToServiceMsg.extraData.getString("frdUin", "");
-    paramToServiceMsg = new oidb_0xe61.RspBody();
-    int i = parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
-    if (i == 0) {
-      if (paramToServiceMsg.rpt_beancurd_cube_info_result.has())
-      {
-        paramToServiceMsg = paramToServiceMsg.rpt_beancurd_cube_info_result.get();
-        if ((paramToServiceMsg == null) || (paramToServiceMsg.size() <= 0)) {
-          break label190;
-        }
-        notifyUI(0, true, new Object[] { str1, str2, paramToServiceMsg });
+    super.onGetHomeworkInfo(paramBoolean, parambehv);
+    this.a.o();
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("获取作业信息");
+      if (!paramBoolean) {
+        break label79;
       }
     }
-    label190:
-    for (boolean bool = true;; bool = false)
+    label79:
+    for (String str = "成功";; str = "失败")
     {
-      if (!bool) {
-        notifyUI(0, false, new Object[] { str1, str2, null });
+      QLog.d("PublishHomeWorkFragment", 2, str);
+      if ((!paramBoolean) || (parambehv == null) || (parambehv.b == null)) {
+        break;
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("Tofu_TofuHandler", 2, String.format("handlePullTofuData result=%d suc=%b selfUin=%s frdUin=%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), str1, MobileQQ.getShortUinStr(str2) }));
-      }
+      this.a.a(parambehv);
       return;
-      paramToServiceMsg = null;
-      break;
     }
+    this.a.getActivity().finish();
   }
   
-  public void a(String paramString, List<oidb_0xe61.BeancurdCubeInfo> paramList)
+  protected void onGetHomeworkTroopIdentity(boolean paramBoolean, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
   {
+    super.onGetHomeworkTroopIdentity(paramBoolean, paramString1, paramString2, paramInt, paramString3, paramString4);
     if (QLog.isColorLevel()) {
-      QLog.i("Tofu_TofuHandler", 2, String.format("pullTofuData frdUin=%s reqSize=%s", new Object[] { MobileQQ.getShortUinStr(paramString), Integer.valueOf(paramList.size()) }));
+      QLog.d("PublishHomeWorkFragment", 2, "onGetHomeworkTroopIdentity: isSuccess:" + paramBoolean + ", identity:" + paramInt + ", course:" + paramString3);
     }
-    oidb_0xe61.ReqBody localReqBody = new oidb_0xe61.ReqBody();
-    localReqBody.rpt_beancurd_cube_info.set(paramList);
-    paramList = makeOIDBPkg("OidbSvc.0x6e1_1", 3681, 1, localReqBody.toByteArray());
-    paramList.extraData.putString("frdUin", paramString);
-    paramList.extraData.putString("selfUin", this.app.getCurrentAccountUin());
-    sendPbReq(paramList);
-  }
-  
-  protected boolean msgCmdFilter(String paramString)
-  {
-    if (this.allowCmdSet == null)
+    if (!this.a.j)
     {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("OidbSvc.0x6e1_1");
+      if (!this.a.h) {
+        this.a.b(paramString3);
+      }
+      this.a.a(paramInt, paramString3, paramString4);
+      if (!paramBoolean) {
+        break label142;
+      }
+      this.a.a = paramString3;
+      this.a.b();
     }
-    return !this.allowCmdSet.contains(paramString);
-  }
-  
-  protected Class<? extends anui> observerClass()
-  {
-    return bejr.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("OidbSvc.0x6e1_1".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    for (;;)
+    {
+      QLog.i("PublishHomeWorkFragment", 1, "init data success");
+      this.a.f();
+      return;
+      label142:
+      QQToast.a(this.a.getActivity(), amtj.a(2131707938), 0).a();
     }
   }
 }

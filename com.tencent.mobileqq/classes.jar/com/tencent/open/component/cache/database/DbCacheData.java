@@ -1,0 +1,14 @@
+package com.tencent.open.component.cache.database;
+
+import android.content.ContentValues;
+
+public abstract class DbCacheData
+{
+  public abstract void writeTo(ContentValues paramContentValues);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.open.component.cache.database.DbCacheData
+ * JD-Core Version:    0.7.0.1
+ */

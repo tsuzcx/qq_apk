@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import bhjr;
+import com.tencent.mobileqq.util.SystemUtil;
 
 class ReadInJoyNewFeedsActivity$13
   implements Runnable
@@ -9,7 +9,7 @@ class ReadInJoyNewFeedsActivity$13
   
   public void run()
   {
-    bhjr.b();
+    SystemUtil.isMIUI();
     this.this$0.runOnUiThread(new ReadInJoyNewFeedsActivity.13.1(this));
   }
 }

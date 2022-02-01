@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import bdmc;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -23,7 +23,7 @@ public final class ReadInJoyUtils$7
         String str = localIterator.next().toString();
         localHashMap.put(str, this.jdField_a_of_type_OrgJsonJSONObject.optString(str));
       }
-      bdmc.a(this.jdField_a_of_type_MqqAppAppRuntime.getApplication()).a(null, "actKanDianViolaPageDataNew", this.jdField_a_of_type_Boolean, -1L, -1L, localException, null, true);
+      StatisticCollector.getInstance(this.jdField_a_of_type_MqqAppAppRuntime.getApplication()).collectPerformance(null, "actKanDianViolaPageDataNew", this.jdField_a_of_type_Boolean, -1L, -1L, localException, null, true);
     }
     catch (Exception localException)
     {

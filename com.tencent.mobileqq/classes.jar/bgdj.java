@@ -1,24 +1,19 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SelectReciteParagraphFragment;
-import com.tencent.widget.AdapterView;
-import java.util.Set;
+import android.widget.TextView;
 
 public class bgdj
-  implements bljm
+  extends RecyclerView.ViewHolder
 {
-  public bgdj(SelectReciteParagraphFragment paramSelectReciteParagraphFragment) {}
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public bgdj(View paramView, int paramInt)
   {
-    if (this.a.jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt))) {
-      this.a.jdField_a_of_type_JavaUtilSet.remove(Integer.valueOf(paramInt));
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Bgdl.notifyDataSetChanged();
-      this.a.e();
-      return;
-      this.a.jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
+    super(paramView);
+    this.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 1) {
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364743));
     }
   }
 }

@@ -1,25 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adtt
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adtt(AddRequestActivity paramAddRequestActivity) {}
+  public adtt(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (bhnv.d(BaseApplication.getContext()))
-    {
-      long l = Long.valueOf(this.a.app.getCurrentAccountUin()).longValue();
-      this.a.showDialog(2);
-      this.a.jdField_a_of_type_Anum.a(l, Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue(), 1);
-      return;
+    if (AppSetting.c) {
+      NotifyPushSettingActivity.f(this.a).setContentDescription(amtj.a(2131706759));
     }
-    QQToast.a(this.a, 2131693965, 0).b(this.a.getTitleBarHeight());
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131717612), "qqsetting_receivemsg_whenexit_key", paramBoolean);
+    SyncService.a(this.a, paramBoolean);
+    QQAppInterface localQQAppInterface = this.a.app;
+    int i;
+    if (paramBoolean)
+    {
+      i = 1;
+      if (!paramBoolean) {
+        break label117;
+      }
+    }
+    label117:
+    for (String str = "1";; str = "0")
+    {
+      bcef.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Logout_msg", 0, i, str, "", "", "");
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      i = 0;
+      break;
+    }
   }
 }
 

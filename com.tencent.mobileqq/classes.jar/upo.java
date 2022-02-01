@@ -1,18 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
+import UserGrowth.stH5OpInfo;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
-public class upo
-  implements DialogInterface.OnClickListener
+class upo
+  implements uyv
 {
-  public upo(OuterInterceptManager.1 param1) {}
+  upo(upn paramupn, Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.c();
-    }
+    upn.a(this.jdField_a_of_type_Upn, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, paramString, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 501);
+    uvr.a(114, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.type, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
+    WSPublicAccReport.getInstance().reportOperationCard("gzh_click", 1000003, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
   }
+  
+  public void b(String paramString, int paramInt)
+  {
+    upn.a(this.jdField_a_of_type_Upn, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+  }
+  
+  public void c(String paramString, int paramInt)
+  {
+    upn.a(this.jdField_a_of_type_Upn, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    uvr.a(115, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.type, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
+    WSPublicAccReport.getInstance().reportOperationCard("gzh_click", 1000002, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+  }
+  
+  public void d(String paramString, int paramInt) {}
 }
 
 

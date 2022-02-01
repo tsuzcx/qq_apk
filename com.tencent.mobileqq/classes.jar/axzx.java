@@ -1,29 +1,21 @@
-public class axzx
+import com.tencent.mobileqq.onlinestatus.OnlineStatusPermissionChecker.OnlineStatusPermissionItem;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
+
+class axzx
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
+  axzx(axzu paramaxzu, OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem) {}
   
-  public axzx(axzv paramaxzv) {}
-  
-  public boolean equals(Object paramObject)
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof axzx))
-    {
-      paramObject = (axzx)paramObject;
-      bool1 = bool2;
-      if (paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
-      {
-        bool1 = bool2;
-        if (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
+    bfur.a(axzu.b(this.jdField_a_of_type_Axzu), 2131697857, 2131697858);
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    this.jdField_a_of_type_Axzu.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem);
   }
 }
 

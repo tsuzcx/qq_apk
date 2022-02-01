@@ -1,28 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqprotect.qsec.IRuntimeInterface;
+import com.tencent.qqprotect.qsec.QSecFramework;
+import mqq.app.MobileQQ;
 
-final class bjhp
-  implements DialogInterface.OnClickListener
+public class bjhp
+  implements bjip, IRuntimeInterface
 {
-  bjhp(bjhv parambjhv, int paramInt) {}
+  private static volatile bjhp a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private bjhp()
   {
-    this.jdField_a_of_type_Bjhv.a(2);
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Int == 1) {
-      bjhk.a("0X80094F8");
-    }
-    do
+    QSecFramework.a(4L, new bjhq(this));
+  }
+  
+  public static bjhp a()
+  {
+    if (a == null) {}
+    try
     {
-      return;
-      if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 4) || (this.jdField_a_of_type_Int == 5))
+      if (a == null) {
+        a = new bjhp();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte, bjiq parambjiq)
+  {
+    try
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if (parambjiq != null)
       {
-        bjhk.a("0X80094F7");
+        nmb.a(localQQAppInterface, new bjhs(paramArrayOfByte, parambjiq), paramArrayOfByte, paramString);
         return;
       }
-    } while (this.jdField_a_of_type_Int != 3);
-    bjhk.a("0X80094F9");
+      nmb.a(localQQAppInterface, new bjhr(this), paramArrayOfByte, paramString);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public String getInterfaceName()
+  {
+    return "CSP";
   }
 }
 

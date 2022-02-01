@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.statistics;
 
 import android.content.Intent;
-import apcg;
-import bcjy;
-import bdkg;
-import bdll;
-import bnyy;
+import anwj;
+import bbda;
+import bcda;
+import bcef;
+import blec;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.report.ReportModel;
@@ -35,7 +35,7 @@ class ReportReceiver$ReportRunner
         i = localIntent.getIntExtra("is_runtime", -1);
         if (i == 1001)
         {
-          ((apcg)((QQAppInterface)localObject).getManager(126)).a(localIntent);
+          ((anwj)((QQAppInterface)localObject).getManager(126)).a(localIntent);
           return;
         }
         str1 = localIntent.getStringExtra("reporting_tag");
@@ -56,36 +56,36 @@ class ReportReceiver$ReportRunner
             if ((i == 0) || (i != 1)) {
               continue;
             }
-            bcjy.a(str1, (QQAppInterface)localObject, (ReportModel)localIntent.getSerializableExtra("reporting_detail"));
+            bbda.a(str1, (QQAppInterface)localObject, (ReportModel)localIntent.getSerializableExtra("reporting_detail"));
             return;
           }
           if ("dc02181".equals(str1))
           {
             if (i == 0)
             {
-              bdkg.b(str1, (QQAppInterface)localObject, str2);
+              bcda.b(str1, (QQAppInterface)localObject, str2);
               return;
             }
             if (i != 1) {
               continue;
             }
-            bdkg.a(str1, (QQAppInterface)localObject, str2);
+            bcda.a(str1, (QQAppInterface)localObject, str2);
             return;
           }
           if ("dc_qqgame".equals(str1))
           {
-            bnyy.a().a((AppRuntime)localObject, str1, str2);
+            blec.a().a((AppRuntime)localObject, str1, str2);
             return;
           }
           if (i == 0)
           {
-            bdll.b((QQAppInterface)localObject, str1, str2, j);
+            bcef.b((QQAppInterface)localObject, str1, str2, j);
             return;
           }
           if (i != 1) {
             continue;
           }
-          bdll.a((QQAppInterface)localObject, str1, str2, j);
+          bcef.a((QQAppInterface)localObject, str1, str2, j);
           return;
         }
         catch (OutOfMemoryError localOutOfMemoryError) {}
@@ -107,7 +107,7 @@ class ReportReceiver$ReportRunner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.ReportReceiver.ReportRunner
  * JD-Core Version:    0.7.0.1
  */

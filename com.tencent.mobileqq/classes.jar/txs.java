@@ -1,133 +1,84 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.pubaccount.util.PAReportInfo;
-import com.tencent.biz.pubaccount.util.PAReportManager.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.manager.Manager;
+import kotlin.Metadata;
 
-public class txs
-  implements Handler.Callback, Manager
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/video/VideoAdReportData;", "", "()V", "autoPlay", "", "getAutoPlay", "()I", "setAutoPlay", "(I)V", "endPos", "getEndPos", "setEndPos", "isFirstPlay", "setFirstPlay", "isPlayOnFirstFrame", "setPlayOnFirstFrame", "isPlayOnLastFrame", "setPlayOnLastFrame", "startPos", "getStartPos", "setStartPos", "videoDuration", "getVideoDuration", "setVideoDuration", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class txs
 {
-  private volatile int jdField_a_of_type_Int = -1;
-  private blha jdField_a_of_type_Blha;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private List<PAReportInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private int a;
+  private int b;
+  private int c = 1;
+  private int d;
+  private int e = 1;
+  private int f = 1;
+  private int g;
   
-  public txs(QQAppInterface paramQQAppInterface)
+  public final int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-    this.jdField_a_of_type_Blha = new blha(ThreadManager.getSubThreadLooper(), this);
+    return this.a;
   }
   
-  public void a()
+  public final void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "scheduleReport ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
-    }
-    if ((this.jdField_a_of_type_JavaUtilList.size() == 0) && (this.jdField_a_of_type_Int == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("PAReport", 2, "scheduleReport ... No need query DB");
-      }
-    }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_JavaUtilList.size() != 0) {
-        break;
-      }
-    } while (this.jdField_a_of_type_Blha.hasMessages(100001));
-    this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(100001, 3000L);
-    return;
-    this.jdField_a_of_type_Blha.sendEmptyMessage(100002);
+    this.a = paramInt;
   }
   
-  public void a(PAReportInfo paramPAReportInfo)
+  public final int b()
   {
-    this.jdField_a_of_type_Blha.post(new PAReportManager.1(this, paramPAReportInfo));
+    return this.b;
   }
   
-  public void b()
+  public final void b(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "queryDatabases ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Int == -1) {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().getCount(PAReportInfo.class.getSimpleName());
-    }
-    List localList2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(PAReportInfo.class, true, null, (String[])null, null, null, null, String.valueOf(20));
-    if (localList2 != null) {}
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.addAll(localList2);
-      this.jdField_a_of_type_Blha.sendEmptyMessage(100002);
-      return;
-    }
+    this.b = paramInt;
   }
   
-  public void c()
+  public final int c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "reporting ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {}
-    for (;;)
-    {
-      return;
-      Object localObject1 = (PAReportInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-      if (!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove((Entity)localObject1)) {
-        continue;
-      }
-      this.jdField_a_of_type_Int -= 1;
-      synchronized (this.jdField_a_of_type_JavaUtilList)
-      {
-        this.jdField_a_of_type_JavaUtilList.remove(0);
-        ??? = new ArrayList();
-        localObject1 = ((PAReportInfo)localObject1).msgIds.split("\\|");
-        int j = localObject1.length;
-        int i = 0;
-        if (i >= j) {
-          continue;
-        }
-        ((List)???).add(localObject1[i]);
-        i += 1;
-      }
-    }
+    return this.c;
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public final void c(int paramInt)
   {
-    if (paramMessage.what == 100001)
-    {
-      b();
-      return true;
-    }
-    if (paramMessage.what == 100002)
-    {
-      c();
-      return true;
-    }
-    return false;
+    this.c = paramInt;
   }
   
-  public void onDestroy()
+  public final int d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_Int = -1;
-      return;
-    }
+    return this.d;
+  }
+  
+  public final void d(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  public final int e()
+  {
+    return this.e;
+  }
+  
+  public final void e(int paramInt)
+  {
+    this.e = paramInt;
+  }
+  
+  public final int f()
+  {
+    return this.f;
+  }
+  
+  public final void f(int paramInt)
+  {
+    this.f = paramInt;
+  }
+  
+  public final int g()
+  {
+    return this.g;
+  }
+  
+  public final void g(int paramInt)
+  {
+    this.g = paramInt;
   }
 }
 

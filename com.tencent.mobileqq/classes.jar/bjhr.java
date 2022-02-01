@@ -1,12 +1,11 @@
-import com.tencent.wifisdk.TMSDKCustomConfig.ICustomReporter;
+import android.os.Bundle;
 
-final class bjhr
-  implements TMSDKCustomConfig.ICustomReporter
+class bjhr
+  extends nmf
 {
-  public void reportAction(String paramString, int paramInt)
-  {
-    bjhk.a(paramString);
-  }
+  bjhr(bjhp parambjhp) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle) {}
 }
 
 

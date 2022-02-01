@@ -1,9 +1,14 @@
-import java.util.HashMap;
+import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment;
 
 public class bdkp
+  implements bdgq
 {
-  HashMap<String, Object> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = { "socket", "pipe", "anon_inode", "/dev/null", "/dev/ashmem" };
+  public bdkp(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
+  
+  public void a(int paramInt)
+  {
+    WriteTogetherEditorFragment.h(this.a);
+  }
 }
 
 

@@ -1,114 +1,180 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.Comment;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.CommentMsg;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.CommentMsgBody;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.GetCommentListResp;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.UserInfo;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.AioQzonePicOperator.1;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-class aycn
-  extends nkp
+public class aycn
+  extends ayck
 {
-  aycn(aycm paramaycm, ayck paramayck) {}
+  public aycn() {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public aycn(QQAppInterface paramQQAppInterface)
   {
-    boolean bool = false;
-    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    super(paramQQAppInterface);
+  }
+  
+  private boolean a(PhotoSendParams paramPhotoSendParams)
+  {
+    if ((paramPhotoSendParams == null) || (TextUtils.isEmpty(paramPhotoSendParams.rawMd5)) || (TextUtils.isEmpty(paramPhotoSendParams.thumbPath)) || (!FileUtils.fileExistsAndNotEmpty(paramPhotoSendParams.thumbPath)) || (TextUtils.isEmpty(paramPhotoSendParams.rawDownloadUrl)))
     {
-      paramBundle = new oidb_0xada.RspBody();
-      try
+      String str;
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        QLog.i("CommentsDataSource", 1, "err_msg:" + paramBundle.err_msg.get());
-        if (!paramBundle.busi_buf.has())
-        {
-          QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
-          this.jdField_a_of_type_Ayck.a();
-          return;
-        }
-        paramArrayOfByte = new NowNearbyVideoCommentProto.GetCommentListResp();
-        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        if (paramArrayOfByte.result.get() != 0L)
-        {
-          QLog.i("CommentsDataSource", 1, "error code :" + paramArrayOfByte.result.get());
-          this.jdField_a_of_type_Ayck.a();
-          return;
+        str = this.b;
+        localStringBuilder = new StringBuilder().append("AioQzonePicOperator checkParams:");
+        if (paramPhotoSendParams == null) {
+          break label92;
         }
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      label92:
+      for (paramPhotoSendParams = paramPhotoSendParams.toString();; paramPhotoSendParams = "")
       {
-        QLog.i("CommentsDataSource", 1, "merge data error " + paramArrayOfByte);
-        this.jdField_a_of_type_Ayck.a();
-        return;
+        QLog.e(str, 2, paramPhotoSendParams);
+        return false;
       }
-      paramBundle = new Comments();
-      paramBundle.jdField_a_of_type_Long = paramArrayOfByte.total_num.get();
-      QLog.i("CommentsDataSource", 1, "all comments count is: " + paramBundle.jdField_a_of_type_Long);
-      if (paramArrayOfByte.end_flag.get() == 1L) {
+    }
+    return true;
+  }
+  
+  public ayeb a(Intent paramIntent)
+  {
+    if (paramIntent != null)
+    {
+      Object localObject = paramIntent.getStringExtra("uin");
+      String str = paramIntent.getStringExtra("troop_uin");
+      int i = paramIntent.getIntExtra("uintype", 1003);
+      int j = paramIntent.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
+      int k = paramIntent.getIntExtra("PhotoConst.SEND_BUSINESS_TYPE", -1);
+      int m = paramIntent.getIntExtra("entrance", 0);
+      int n = paramIntent.getIntExtra("key_confess_topicid", 0);
+      boolean bool = paramIntent.getBooleanExtra("video_sync_to_story", false);
+      paramIntent = (PhotoSendParams)paramIntent.getParcelableExtra("PhotoConst.photo_send_qzone_pic_file_params");
+      if (!a(paramIntent)) {
+        return null;
+      }
+      ayec localayec = new ayec();
+      localayec.d((String)localObject);
+      localayec.e(i);
+      localayec.e(str);
+      localayec.d(k);
+      localayec.f(j);
+      localayec.l(n);
+      localayec.k(m);
+      localayec.a(bool);
+      localayec.f(paramIntent.rawMd5);
+      localayec.a(paramIntent.fileSize);
+      localObject = localayec.a();
+      ((ayeb)localObject).jdField_i_of_type_Boolean = true;
+      ((ayeb)localObject).jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams = paramIntent;
+      ayde.a(this.b, this.jdField_a_of_type_JavaLangString, "createPicUploadInfo", "");
+      return localObject;
+    }
+    ayde.a(this.b, this.jdField_a_of_type_JavaLangString, "createPicUploadInfo", "unknow obj");
+    return null;
+  }
+  
+  public MessageRecord a(ayeb paramayeb)
+  {
+    long l = System.currentTimeMillis();
+    if ((paramayeb != null) && (a(paramayeb.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams)))
+    {
+      MessageForPic localMessageForPic = bbli.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramayeb.c, paramayeb.d, paramayeb.jdField_b_of_type_Int);
+      localMessageForPic.busiType = paramayeb.jdField_a_of_type_Int;
+      localMessageForPic.path = paramayeb.jdField_g_of_type_JavaLangString;
+      localMessageForPic.size = 0L;
+      localMessageForPic.type = 1;
+      localMessageForPic.isRead = true;
+      localMessageForPic.extraflag = 32772;
+      if (paramayeb.jdField_g_of_type_Int == 1) {
+        localMessageForPic.fileSizeFlag = 1;
+      }
+      boolean bool;
+      label228:
+      String str2;
+      if (paramayeb.jdField_a_of_type_Ayed != null)
+      {
         bool = true;
-      }
-      paramBundle.jdField_a_of_type_Boolean = bool;
-      paramBundle.jdField_a_of_type_JavaUtilList = new ArrayList();
-      if (paramArrayOfByte.lists.has())
-      {
-        Iterator localIterator = paramArrayOfByte.lists.get().iterator();
-        while (localIterator.hasNext())
+        if (bool)
         {
-          NowNearbyVideoCommentProto.Comment localComment = (NowNearbyVideoCommentProto.Comment)localIterator.next();
-          Comments.Comment localComment1 = new Comments.Comment();
-          localComment1.jdField_a_of_type_Long = localComment.comment_id.get();
-          localComment1.jdField_b_of_type_Long = localComment.create_time.get();
-          localComment1.jdField_a_of_type_Int = localComment.type.get();
-          if (localComment.publish_info.has())
-          {
-            localComment1.jdField_c_of_type_Long = localComment.publish_info.uid.get();
-            localComment1.jdField_b_of_type_JavaLangString = localComment.publish_info.anchor_name.get().toStringUtf8();
-            localComment1.jdField_c_of_type_JavaLangString = localComment.publish_info.head_img_url.get().toStringUtf8();
-            localComment1.jdField_b_of_type_Int = localComment.publish_info.user_type.get();
-            localComment1.jdField_d_of_type_Long = localComment.publish_info.now_id.get();
-            if (localComment.reply_info.has())
-            {
-              localComment1.jdField_e_of_type_Long = localComment.reply_info.uid.get();
-              localComment1.jdField_d_of_type_JavaLangString = localComment.reply_info.anchor_name.get().toStringUtf8();
-              localComment1.jdField_e_of_type_JavaLangString = localComment.reply_info.head_img_url.get().toStringUtf8();
-              localComment1.jdField_c_of_type_Int = localComment.reply_info.user_type.get();
-              localComment1.f = localComment.reply_info.now_id.get();
-            }
-          }
-          if ((localComment.content.has()) && (localComment.content.msgs.has())) {
-            localComment1.jdField_a_of_type_JavaLangString = ((NowNearbyVideoCommentProto.CommentMsg)localComment.content.msgs.get(0)).msg.get().toStringUtf8();
-          }
-          if (!aycm.a(this.jdField_a_of_type_Aycm).contains(Long.valueOf(localComment.comment_id.get()))) {
-            aycm.a(this.jdField_a_of_type_Aycm).add(Long.valueOf(localComment.comment_id.get()));
-          }
-          if (localComment1.jdField_a_of_type_Int == 2) {
-            paramBundle.b.add(localComment1);
-          }
-          paramBundle.jdField_a_of_type_JavaUtilList.add(localComment1);
+          localMessageForPic.msgseq = paramayeb.jdField_a_of_type_Ayed.jdField_a_of_type_Long;
+          localMessageForPic.shmsgseq = paramayeb.jdField_a_of_type_Ayed.jdField_b_of_type_Long;
+          localMessageForPic.msgUid = paramayeb.jdField_a_of_type_Ayed.c;
+        }
+        localMessageForPic.localUUID = paramayeb.jdField_a_of_type_JavaLangString;
+        ayde.a(this.b, this.jdField_a_of_type_JavaLangString, "bindUrlKeyAndUniseq", localMessageForPic.localUUID + "|" + localMessageForPic.uniseq);
+        localMessageForPic.md5 = paramayeb.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawMd5;
+        if (!bcdo.a()) {
+          break label509;
+        }
+        localMessageForPic.bigThumbMsgUrl = paramayeb.jdField_h_of_type_JavaLangString;
+        localMessageForPic.thumbWidth = paramayeb.e;
+        localMessageForPic.thumbHeight = paramayeb.f;
+        localMessageForPic.width = paramayeb.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawWidth;
+        localMessageForPic.height = paramayeb.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawHeight;
+        localMessageForPic.extLong = paramayeb.jdField_i_of_type_Int;
+        localMessageForPic.extStr = paramayeb.jdField_i_of_type_JavaLangString;
+        localMessageForPic.msgVia = paramayeb.n;
+        localMessageForPic.sync2Story = paramayeb.jdField_h_of_type_Boolean;
+        localMessageForPic.isQzonePic = paramayeb.jdField_i_of_type_Boolean;
+        str2 = bbkv.r;
+        if (!localMessageForPic.isQzonePic) {
+          break label521;
         }
       }
-      QLog.i("CommentsDataSource", 1, "total:" + paramArrayOfByte.total_num.get() + ", ret:" + paramArrayOfByte.result.get());
-      this.jdField_a_of_type_Ayck.a(paramBundle);
+      label521:
+      for (String str1 = "1";; str1 = "0")
+      {
+        localMessageForPic.saveExtInfoToExtStr(str2, str1);
+        localMessageForPic.saveExtInfoToExtStr(bbkv.s, paramayeb.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.rawDownloadUrl);
+        localMessageForPic.saveExtInfoToExtStr(bbkv.t, String.valueOf(paramayeb.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoSendParams.fileSize));
+        localMessageForPic.imageType = 1000;
+        localMessageForPic.serial();
+        paramayeb.jdField_a_of_type_Long = localMessageForPic.uniseq;
+        ayde.a(this.b, this.jdField_a_of_type_JavaLangString, "packmsg", "cost:" + (System.currentTimeMillis() - l));
+        a(localMessageForPic);
+        localMessageForPic.DSKey = paramayeb.jdField_b_of_type_Long;
+        ayde.a(this.b, this.jdField_a_of_type_JavaLangString, "packMsg", "retry:" + bool + " info.DLSendKey:" + paramayeb.jdField_b_of_type_Long);
+        return localMessageForPic;
+        bool = false;
+        break;
+        label509:
+        localMessageForPic.thumbMsgUrl = paramayeb.jdField_h_of_type_JavaLangString;
+        break label228;
+      }
+    }
+    return null;
+  }
+  
+  public void a(ayds paramayds)
+  {
+    ayde.a(this.b, this.jdField_a_of_type_JavaLangString, "sendPic.start", "");
+    if (a(paramayds.a))
+    {
+      b(paramayds);
       return;
     }
-    QLog.i("CommentsDataSource", 1, "getComments failed");
-    this.jdField_a_of_type_Ayck.a();
+    a(3, paramayds.a.jdField_a_of_type_Aydp);
+  }
+  
+  protected void a(MessageForPic paramMessageForPic)
+  {
+    long l = System.currentTimeMillis();
+    URLDrawableHelper.getDrawable(paramMessageForPic, 65537, null, null).downloadImediatly();
+    ayde.a(this.b, this.jdField_a_of_type_JavaLangString, "preload thumb", "cost:" + (System.currentTimeMillis() - l));
+  }
+  
+  protected void b(ayds paramayds)
+  {
+    ThreadManager.post(new AioQzonePicOperator.1(this, paramayds.a, paramayds), 8, null, false);
   }
 }
 

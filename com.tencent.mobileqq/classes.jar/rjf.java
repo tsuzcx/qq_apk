@@ -1,14 +1,21 @@
-import java.util.List;
+import android.database.DataSetObserver;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
 
-public abstract interface rjf
+public class rjf
+  extends DataSetObserver
 {
-  public abstract int a();
+  public rjf(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public abstract qzp a(int paramInt);
-  
-  public abstract void a(List<qzp> paramList, boolean paramBoolean);
-  
-  public abstract void b(int paramInt);
+  public void onChanged()
+  {
+    if (ReadInJoyVideoTagSelectionFragment.a(this.a).getCount() > 0)
+    {
+      ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(0);
+      return;
+    }
+    ReadInJoyVideoTagSelectionFragment.b(this.a).setVisibility(8);
+  }
 }
 
 

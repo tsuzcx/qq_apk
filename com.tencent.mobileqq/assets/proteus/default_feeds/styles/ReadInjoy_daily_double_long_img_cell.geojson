@@ -26,7 +26,7 @@
             {
                 "view_type":"container",
                 "direction":"horizontal",
-                "margin_top":"8",
+                "margin_top":"14",
                 "height":{
                     "type":"wrap_content"
                 },
@@ -38,14 +38,14 @@
                     {
                         "view_type":"container",
                         "layout_type":"layout_relative",
-                        "margin_left":"6",
+                        "margin_left":"12",
                         "height":{
                             "type":"relative",
-                            "value":"237"
+                            "value":"230"
                         },
                         "width":{
                             "type":"relative",
-                            "value":"180.5"
+                            "value":"174"
                         },
                         "subviews":[
                             {
@@ -81,6 +81,74 @@
                                 },
                                 "attributes": {
                                     "loadImageWithPath:":"ReadInJoy/Mask.png"
+                                }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_top_left_mask_1",
+                                "default_visible": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "left_top_round_corner"
+                                }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_bottom_left_mask_1",
+                                "default_visible": "YES",
+                                "align_parent_bottom": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "left_bottom_round_corner"
+                                }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_top_right_mask_1",
+                                "default_visible": "YES",
+                                "align_parent_right": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "right_top_round_corner"
+                                }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_bottom_right_mask_1",
+                                "default_visible": "YES",
+                                "align_parent_right": "YES",
+                                "align_parent_bottom": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "right_bottom_round_corner"
                                 }
                             },
                             {
@@ -134,7 +202,7 @@
                                     "value":"13"
                                 },
                                 "attributes":{
-                                    "setImageWithURLString:lineup:":["http://pub.idqqimg.com/pc/misc/files/20190330/a0bcb3959fc545eaa79b2008cc4fd63d.png","0"]
+                                    "setImageWithURLString:lineup:":["http://pub.idqqimg.com/pc/misc/files/20190731/352c67d8f1b4401bb7e6b3a2aacb769f.png","0"]
                                 }
                             },
                             {
@@ -221,14 +289,14 @@
                     {
                         "view_type":"container",
                         "layout_type":"layout_relative",
-                        "margin_left":"2",
+                        "margin_left":"3",
                         "height":{
                             "type":"relative",
-                            "value":"237"
+                            "value":"230"
                         },
                         "width":{
                             "type":"relative",
-                            "value":"180.5"
+                            "value":"174"
                         },
                         "subviews":[
                             {
@@ -236,10 +304,10 @@
                                 "view_id":"cover_image_2",
                                 "event_type": "cmd_url_click_card_report",
                                 "height":{
-                                    "type":"match_parent"
+                                    "type": "match_parent"
                                 },
                                 "width":{
-                                    "type":"match_parent"
+                                    "type": "match_parent"
                                 },
                                 "data_attributes":{
                                     "setLocalInfo:": {
@@ -264,6 +332,74 @@
                                 },
                                 "attributes": {
                                     "loadImageWithPath:":"ReadInJoy/Mask.png"
+                                }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_top_left_mask_2",
+                                "default_visible": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "left_top_round_corner"
+                                }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_bottom_left_mask_2",
+                                "default_visible": "YES",
+                                "align_parent_bottom": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "left_bottom_round_corner"
+                                }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_top_right_mask_2",
+                                "default_visible": "YES",
+                                "align_parent_right": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "right_top_round_corner"
+                                }
+                            },
+                            {
+                                "view_type": "UIImageView",
+                                "view_id": "id_bottom_right_mask_2",
+                                "default_visible": "YES",
+                                "align_parent_right": "YES",
+                                "align_parent_bottom": "YES",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "width": {
+                                    "type": "absolutely",
+                                    "value": "6"
+                                },
+                                "attributes": {
+                                    "loadImageWithPath:": "right_bottom_round_corner"
                                 }
                             },
                             {
@@ -316,7 +452,7 @@
                                     "value":"13"
                                 },
                                 "attributes":{
-                                    "setImageWithURLString:lineup:":["http://pub.idqqimg.com/pc/misc/files/20190330/a0bcb3959fc545eaa79b2008cc4fd63d.png","0"]
+                                    "setImageWithURLString:lineup:":["http://pub.idqqimg.com/pc/misc/files/20190731/352c67d8f1b4401bb7e6b3a2aacb769f.png","0"]
                                 }
                             },
                             {
@@ -391,22 +527,20 @@
                 
             },
             {
-                "view_type":"UIView",
-                "view_id":"id_separator",
-                "default_visible":"YES",
-                "margin_left": "6",
-                "margin_top":"8",
-                "height":{
-                    "type":"absolutely",
-                    "value":"0.5"
+                "view_type": "container",
+                "margin_top": "4",
+                "height": {
+                    "type": "wrap_content"
                 },
-                "width":{
-                    "type":"relative",
-                    "value":"363"
+                "width": {
+                    "type": "relative",
+                    "value": "375"
                 },
-                "attributes":{
-                    "setBackgroundColorString:":"#F2F2F2"
-                }
+                "subviews": [
+                    {
+                        "$includeComponet": "componet/separator_normal_bottom.geojson"
+                    }
+                ]
             }
         ]
     }

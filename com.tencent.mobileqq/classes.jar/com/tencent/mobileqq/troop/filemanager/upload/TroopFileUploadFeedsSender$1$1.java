@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
 import android.text.TextUtils;
-import bedb;
-import bfrs;
-import bfvp;
-import bfvr;
-import bfxq;
-import bfxr;
+import bcws;
+import bebc;
+import befa;
+import befc;
+import behb;
+import behc;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForTroopFile;
@@ -15,27 +15,27 @@ import com.tencent.mobileqq.data.MessageRecord;
 public class TroopFileUploadFeedsSender$1$1
   implements Runnable
 {
-  public TroopFileUploadFeedsSender$1$1(bfxr parambfxr, String paramString, bfrs parambfrs) {}
+  public TroopFileUploadFeedsSender$1$1(behc parambehc, String paramString, bebc parambebc) {}
   
   public void run()
   {
     Object localObject = this.jdField_a_of_type_JavaLangString;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bfrs.b)) {
-      localObject = this.jdField_a_of_type_Bfrs.b;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bebc.b)) {
+      localObject = this.jdField_a_of_type_Bebc.b;
     }
-    QQAppInterface localQQAppInterface = bfvp.a();
+    QQAppInterface localQQAppInterface = befa.a();
     if (localQQAppInterface == null)
     {
-      bfvr.a("TroopFileUploadFeedsSender", bfvr.a, "[" + this.jdField_a_of_type_Bfxr.a.jdField_a_of_type_JavaLangString + "] addToSendCache app=null");
+      befc.a("TroopFileUploadFeedsSender", befc.a, "[" + this.jdField_a_of_type_Behc.a.jdField_a_of_type_JavaLangString + "] addToSendCache app=null");
       return;
     }
-    localObject = (MessageForTroopFile)localQQAppInterface.a().a(String.valueOf(this.jdField_a_of_type_Bfxr.a.d), 1, (String)localObject);
+    localObject = (MessageForTroopFile)localQQAppInterface.getMessageFacade().queryMsgItemByFilePath(String.valueOf(this.jdField_a_of_type_Behc.a.d), 1, (String)localObject);
     if (localObject != null)
     {
-      ((bedb)localQQAppInterface.getManager(272)).a((MessageRecord)localObject);
+      ((bcws)localQQAppInterface.getManager(272)).a((MessageRecord)localObject);
       return;
     }
-    bfvr.a("TroopFileUploadFeedsSender", bfvr.a, "[" + this.jdField_a_of_type_Bfxr.a.jdField_a_of_type_JavaLangString + "] addToSendCache can't find troopFile Msg, troop[" + this.jdField_a_of_type_Bfxr.a.d + "], id:" + this.jdField_a_of_type_Bfrs.b);
+    befc.a("TroopFileUploadFeedsSender", befc.a, "[" + this.jdField_a_of_type_Behc.a.jdField_a_of_type_JavaLangString + "] addToSendCache can't find troopFile Msg, troop[" + this.jdField_a_of_type_Behc.a.d + "], id:" + this.jdField_a_of_type_Bebc.b);
   }
 }
 

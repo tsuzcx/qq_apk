@@ -1,83 +1,93 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.redbag.OtherBtnController.2;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class mqo
-  extends mrc
 {
-  int jdField_a_of_type_Int = 2130841967;
-  Runnable jdField_a_of_type_JavaLangRunnable = null;
-  WeakReference<AVActivity> jdField_a_of_type_JavaLangRefWeakReference = null;
-  public mct a;
+  public int a;
+  ArrayList<mqm> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  boolean jdField_a_of_type_Boolean = false;
   
-  mqo(mpv parammpv)
+  public mqo()
   {
-    super(parammpv);
-    this.jdField_a_of_type_Mct = null;
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public void a()
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    int i = 0;
+    int k;
+    for (int j = 0; i < this.jdField_a_of_type_JavaUtilArrayList.size(); j = k)
+    {
+      k = j;
+      if (((mqm)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c()) {
+        k = j + 1;
+      }
+      i += 1;
+    }
+    return j;
+  }
+  
+  public ArrayList<mqm> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public mqm a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      mqm localmqm = (mqm)localIterator.next();
+      if (localmqm.a() == paramInt) {
+        return localmqm;
+      }
+    }
+    return null;
+  }
+  
+  public void a(int paramInt)
+  {
+    b(a(paramInt));
+  }
+  
+  public void a(mqm parammqm)
+  {
+    if (parammqm == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(parammqm);
   }
   
   public void a(boolean paramBoolean)
   {
-    AVActivity localAVActivity = a();
-    QLog.w(this.i, 1, "setBtnsStyle, lightStyle[" + paramBoolean + "], avActivity[" + localAVActivity + "]");
-    if (localAVActivity == null) {}
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-    for (AVActivity localAVActivity = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(); localAVActivity == null; localAVActivity = null) {
-      return false;
-    }
-    if (localAVActivity == a()) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return this.jdField_a_of_type_Boolean;
   }
   
-  void b()
+  public ArrayList<mqm> b()
   {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {}
-    boolean bool;
-    do
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      return;
-      if (this.jdField_a_of_type_Mct == null) {
-        this.jdField_a_of_type_Mct = new mqp(this);
+      if (((mqm)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c()) {
+        localArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
       }
-      if (this.jdField_a_of_type_JavaLangRunnable != null)
-      {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        this.jdField_a_of_type_JavaLangRunnable = null;
-      }
-      bool = a();
-      QLog.w(this.i, 1, "hook, mHook[" + bool + "]");
-      if (!bool) {
-        this.jdField_a_of_type_Int = 2130841967;
-      }
-      a(false);
-    } while (bool);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(a());
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Mct);
+      i += 1;
+    }
+    return localArrayList;
   }
   
-  void c()
+  public void b(mqm parammqm)
   {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+    if (parammqm == null) {
       return;
     }
-    if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new OtherBtnController.2(this);
-    }
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(this.jdField_a_of_type_JavaLangRunnable);
+    this.jdField_a_of_type_JavaUtilArrayList.remove(parammqm);
   }
 }
 

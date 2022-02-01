@@ -1,8 +1,19 @@
-public abstract interface rxb
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
+
+final class rxb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(rwc paramrwc1, rwc paramrwc2);
+  rxb(int paramInt1, ViewGroup.MarginLayoutParams paramMarginLayoutParams, int paramInt2, View paramView) {}
   
-  public abstract void l();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = (int)(paramValueAnimator.getAnimatedFraction() * this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.bottomMargin = (i + this.b);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams);
+  }
 }
 
 

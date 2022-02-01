@@ -1,16 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextEditScrollerView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchActivity;
 
 public class aiyb
-  implements ValueAnimator.AnimatorUpdateListener
+  extends atbh
 {
-  public aiyb(VoiceTextEditScrollerView paramVoiceTextEditScrollerView, int paramInt1, int paramInt2, View paramView) {}
+  public aiyb(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(View paramView)
   {
-    VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView, paramValueAnimator, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidViewView);
+    bcef.b(this.a.a, "dc00898", "", "", "0X800A0BF", "0X800A0BF", 2, 0, "", "", "", "");
+    FileSearchActivity.a(this.a.getActivity(), 13, this.a.a());
   }
 }
 

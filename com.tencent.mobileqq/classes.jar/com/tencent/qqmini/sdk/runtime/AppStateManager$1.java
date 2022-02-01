@@ -31,19 +31,22 @@ class AppStateManager$1
         {
           str = ScreenShotUtil.bitmapTobase64((Bitmap)localObject, WnsConfig.getConfig("qqminiapp", "mini_app_white_screen_shot_max_width", 500), WnsConfig.getConfig("qqminiapp", "mini_app_white_screen_shot_max_height", 500));
           if (str.length() >= 5120) {
-            break label164;
+            break label183;
           }
           QMLog.i("minisdk-start_RuntimeState", "--- report white_screen appid:" + this.val$miniAppInfo.appId + " img:" + str);
         }
         for (;;)
         {
           MiniReportManager.reportEventType(this.val$miniAppInfo, 150, MiniReportManager.getAppType(this.val$miniAppInfo), "dom_ready", String.valueOf(str.length()), "", "");
+          if (WnsConfig.getConfig("qqminiapp", "mini_app_enable_show_clean_detect_whitescreen", 1) > 0) {
+            AppStateManager.access$100(this.this$0, 2);
+          }
           if (localObject == null) {
             break;
           }
           ((Bitmap)localObject).recycle();
           return;
-          label164:
+          label183:
           QMLog.i("minisdk-start_RuntimeState", "--- report white_screen appid:" + this.val$miniAppInfo.appId + " base64 length:" + str.length());
         }
       }

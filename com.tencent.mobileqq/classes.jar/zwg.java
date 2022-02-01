@@ -1,25 +1,18 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.animation.AnimatorSet;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 
-public class zwg
-  implements bjig
+class zwg
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public zwg(QRDisplayActivity paramQRDisplayActivity) {}
+  zwg(zwd paramzwd) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public boolean onPreDraw()
   {
-    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
-    {
-    case -2: 
-    case -1: 
-    default: 
-      zyx.a(1, 2131718139);
-      return;
-    }
-    zyx.a(2, 2131718157);
+    zwd.a(this.a).start();
+    zwd.a(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
+    return false;
   }
 }
 

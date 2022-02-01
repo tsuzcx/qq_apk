@@ -1,38 +1,23 @@
-import com.tencent.mobileqq.activity.shopping.ShoppingFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public class amgq
-  implements amgw
+class amgq
+  implements amgz
 {
-  public amgq(ShoppingFragment paramShoppingFragment) {}
+  amgq(amgo paramamgo) {}
   
-  public void a()
+  public void a(int paramInt, String paramString)
   {
-    ShoppingFragment.a(this.a, 1, 0);
-    bmzn.a().a("paying", "4", "qq_live", "shopcart_page", "order_paying_btn", 102, 1, System.currentTimeMillis(), "");
-  }
-  
-  public void b()
-  {
-    ShoppingFragment.a(this.a, 1, 1);
-    bmzn.a().a("inqueue", "4", "qq_live", "shopcart_page", "order_inqueue_btn", 102, 1, System.currentTimeMillis(), "");
-  }
-  
-  public void c()
-  {
-    ShoppingFragment.a(this.a, 1, 2);
-    bmzn.a().a("ship", "4", "qq_live", "shopcart_page", "order_ship_btn", 102, 1, System.currentTimeMillis(), "");
-  }
-  
-  public void d()
-  {
-    ShoppingFragment.a(this.a, 1, 4);
-    bmzn.a().a("service", "4", "qq_live", "shopcart_page", "order_service_btn", 102, 1, System.currentTimeMillis(), "");
-  }
-  
-  public void e()
-  {
-    ShoppingFragment.a(this.a, 0, 0);
-    bmzn.a().a("all", "4", "qq_live", "shopcart_page", "order_all_btn", 102, 1, System.currentTimeMillis(), "");
+    if (paramInt == 0) {
+      QLog.e("AVEngineWalper", 1, "EnterRoom successfully!!!");
+    }
+    for (;;)
+    {
+      if (this.a.a != null) {
+        this.a.a.b(paramInt, paramString);
+      }
+      return;
+      QLog.e("AVEngineWalper", 1, "enter room failed. result=" + paramInt + ", errorInfo=" + paramString);
+    }
   }
 }
 

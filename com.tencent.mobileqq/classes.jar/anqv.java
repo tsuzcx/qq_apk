@@ -1,25 +1,45 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2.1.1;
+import android.app.Activity;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class anqv
-  implements Animation.AnimationListener
+  extends anrh
 {
-  public anqv(ApolloGameViewBinder.GameListAdapter.2.1.1 param1) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public anqv(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.a.a.a.jdField_a_of_type_AndroidViewViewGroup.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.a.a.a.jdField_a_of_type_Anqw.a = null;
+    super(paramQQAppInterface, paramContext);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = a(b("gc"));
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("HomeWorkTroopPublishAction", 1, "doAction error: " + localException.getMessage());
+      a("HomeWorkTroopPublishAction");
+    }
+    return false;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    if ((this.a instanceof Activity))
+    {
+      PublishHomeWorkFragment.a((Activity)this.a, null, paramString);
+      ((Activity)this.a).overridePendingTransition(2130772300, 2130771990);
+    }
+    return true;
+  }
 }
 
 

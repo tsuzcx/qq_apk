@@ -1,49 +1,22 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import friendlist.GetOnlineInfoResp;
 
-public class ajju
-  extends ajjr
-  implements View.OnClickListener
+class ajju
+  extends amsu
 {
-  public ajju(Context paramContext, QQAppInterface paramQQAppInterface, ajln paramajln, ajmf paramajmf)
+  ajju(ajjs paramajjs) {}
+  
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    super(paramContext, paramQQAppInterface, paramajln, paramajmf);
+    if (TextUtils.equals(paramString, this.a.a.curFriendUin)) {
+      this.a.f();
+    }
   }
   
-  public View a(int paramInt, View paramView)
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
   {
-    View localView;
-    if (paramView != null)
-    {
-      localView = paramView;
-      if ((paramView.getTag() instanceof ajjv)) {}
-    }
-    else
-    {
-      localView = LayoutInflater.from(this.a).inflate(2131561607, null);
-    }
-    localView.setOnClickListener(this);
-    localView.setTag(new ajjv());
-    return localView;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendBindContactGuideBuilder", 2, "start PhoneLaunchActivity");
-    }
-    Intent localIntent = new Intent(paramView.getContext(), BindNumberActivity.class);
-    localIntent.putExtra("kSrouce", 15);
-    ((Activity)paramView.getContext()).startActivityForResult(localIntent, 230);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.f();
   }
 }
 

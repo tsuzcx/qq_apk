@@ -1,8 +1,8 @@
 package dov.com.qq.im.ae.gif;
 
-import bory;
-import bpam;
-import bphr;
+import blwd;
+import bmbx;
+import bmkn;
 import dov.com.qq.im.aeeditor.data.AEEditorDownloadResBean;
 import java.util.Collection;
 import java.util.Iterator;
@@ -11,17 +11,17 @@ import java.util.Map;
 public class AEGIFStickerListPart$9
   implements Runnable
 {
-  public AEGIFStickerListPart$9(bory parambory) {}
+  public AEGIFStickerListPart$9(blwd paramblwd) {}
   
   public void run()
   {
-    bpam.b("AEGIFStickerListPart", "[preDownloadGifFonts] run");
-    Iterator localIterator = bphr.a().a().values().iterator();
+    bmbx.b("AEGIFStickerListPart", "[preDownloadGifFonts] run");
+    Iterator localIterator = bmkn.a().a().values().iterator();
     while (localIterator.hasNext())
     {
       AEEditorDownloadResBean localAEEditorDownloadResBean = (AEEditorDownloadResBean)localIterator.next();
-      if ((localAEEditorDownloadResBean.getPreDownload() == 1) && (!bphr.a().a(localAEEditorDownloadResBean))) {
-        bphr.a().a(localAEEditorDownloadResBean, null);
+      if ((localAEEditorDownloadResBean.getPreDownload() == 1) && (!bmkn.a().a(localAEEditorDownloadResBean))) {
+        bmkn.a().a(localAEEditorDownloadResBean, null);
       }
     }
   }

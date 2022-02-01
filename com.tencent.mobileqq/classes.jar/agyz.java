@@ -1,8 +1,17 @@
-public abstract interface agyz
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class agyz
+  implements DialogInterface.OnClickListener
 {
-  public abstract boolean a(agyw paramagyw);
+  agyz(agyh paramagyh) {}
   
-  public abstract boolean a(agyw paramagyw, String paramString1, String paramString2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if ((this.a.a != null) && (!this.a.a.c())) {
+      this.a.a.f();
+    }
+  }
 }
 
 

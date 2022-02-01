@@ -1,23 +1,12 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 
-public class aolx
-  implements Comparator<File>
+public abstract interface aolx
 {
-  public aolx(CleanCache paramCleanCache) {}
-  
-  public int a(File paramFile1, File paramFile2)
-  {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract void a(ARCommonConfigInfo paramARCommonConfigInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aolx
  * JD-Core Version:    0.7.0.1
  */

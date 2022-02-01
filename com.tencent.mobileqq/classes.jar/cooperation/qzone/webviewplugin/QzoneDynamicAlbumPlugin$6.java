@@ -2,36 +2,35 @@ package cooperation.qzone.webviewplugin;
 
 import android.os.Handler;
 import android.os.Message;
-import bngf;
-import bngi;
-import bnni;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class QzoneDynamicAlbumPlugin$6
+class QzoneDynamicAlbumPlugin$6
   implements Runnable
 {
-  public QzoneDynamicAlbumPlugin$6(bnni parambnni, ArrayList paramArrayList, int paramInt) {}
+  QzoneDynamicAlbumPlugin$6(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin, ArrayList paramArrayList, int paramInt) {}
   
   public void run()
   {
     int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    if (i < this.val$selectedLocalImages.size())
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.get(i) == null) {}
+      if (this.val$selectedLocalImages.get(i) == null) {}
       for (;;)
       {
         i += 1;
         break;
-        String str1 = bnni.jdField_a_of_type_JavaLangString + (new Date().getTime() + i);
-        String str2 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        boolean bool = bnni.a(BaseApplicationImpl.getContext(), str2, str1, bnni.b()[0], bnni.b()[1]);
-        if ((bool) && (i == 0) && (!bnni.b(this.this$0)))
+        String str1 = QzoneDynamicAlbumPlugin.PHOTO_TMPFILE_PATH_DYNAMIC_ALBUM + (new Date().getTime() + i);
+        String str2 = (String)this.val$selectedLocalImages.get(i);
+        boolean bool = QzoneDynamicAlbumPlugin.compressDynamicAlbumImage(BaseApplicationImpl.getContext(), str2, str1, QzoneDynamicAlbumPlugin.access$000()[0], QzoneDynamicAlbumPlugin.access$000()[1]);
+        if ((bool) && (i == 0) && (!QzoneDynamicAlbumPlugin.access$400(this.this$0)))
         {
           QLog.d("QzoneDynamicAlbumPlugin", 4, "pickDynamicAlbumImage uploadFirstDynamicPhoto:" + str1);
-          bngf.a().a().a(str1, this.jdField_a_of_type_JavaUtilArrayList.size());
+          RemoteHandleManager.getInstance().getSender().uploadFirstDynamicPhoto(str1, this.val$selectedLocalImages.size());
         }
         for (;;)
         {
@@ -41,9 +40,9 @@ public class QzoneDynamicAlbumPlugin$6
           QLog.d("QzoneDynamicAlbumPlugin", 2, "pickDynamicAlbumImage sendMsg: MSG_PICK_PHOTO_COMPRESS_FINISH");
           Message localMessage = Message.obtain();
           localMessage.what = 2;
-          localMessage.arg1 = this.jdField_a_of_type_Int;
+          localMessage.arg1 = this.val$totalGetPhotosNum;
           localMessage.obj = new String[] { str2, str1 };
-          this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+          this.this$0.handler.sendMessage(localMessage);
           break;
           QLog.d("QzoneDynamicAlbumPlugin", 4, "no launch uploadFirstDynamicPhoto;");
         }

@@ -1,17 +1,19 @@
+import android.view.View;
+import android.view.View.OnLongClickListener;
+
 class aiiu
-  implements bdhy
+  implements View.OnLongClickListener
 {
-  aiiu(aiit paramaiit) {}
+  aiiu(aiir paramaiir, aiix paramaiix) {}
   
-  public void a()
+  public boolean onLongClick(View paramView)
   {
-    aiit.a(this.a);
-    this.a.I();
-  }
-  
-  public void b()
-  {
-    this.a.I();
+    if (this.jdField_a_of_type_Aiir.a != null)
+    {
+      int i = this.jdField_a_of_type_Aiix.getAdapterPosition();
+      return this.jdField_a_of_type_Aiir.a.a(paramView, this.jdField_a_of_type_Aiix, i);
+    }
+    return false;
   }
 }
 

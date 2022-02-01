@@ -1,10 +1,29 @@
-public abstract interface avla
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
+final class avla
+  extends Handler
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  java.lang.ref.WeakReference<avkq> a;
   
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public avla(avkq paramavkq)
+  {
+    super(Looper.getMainLooper());
+    this.a = new mqq.util.WeakReference(paramavkq);
+  }
   
-  public abstract void b(boolean paramBoolean, int paramInt);
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.a == null) {}
+    avkq localavkq;
+    do
+    {
+      return;
+      localavkq = (avkq)this.a.get();
+    } while (localavkq == null);
+    localavkq.a(paramMessage);
+  }
 }
 
 

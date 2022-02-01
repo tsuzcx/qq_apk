@@ -1,27 +1,47 @@
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.qphone.base.util.QLog;
 
-public class bcmi
-  implements bcmd
+class bcmi
+  extends URLDrawableDownListener.Adapter
 {
-  public bcmi(NetSearchEngine paramNetSearchEngine, List paramList) {}
+  bcmi(bcme parambcme) {}
   
-  public void a(List paramList) {}
-  
-  public void a(List paramList, int paramInt)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadCancelled");
     }
-    bcni.a();
-    NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).a.countDown();
   }
   
-  public void a(List paramList, bcmr parambcmr)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    a(paramList, parambcmr.a);
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadFailed ,cause = " + paramThrowable);
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  {
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    int i = paramView.getLayoutParams().height * paramURLDrawable.getIntrinsicWidth() / paramURLDrawable.getIntrinsicHeight();
+    paramView.getLayoutParams().width = i;
+    paramView.setBackgroundDrawable(paramURLDrawable);
+    paramView.requestLayout();
+    if (QLog.isColorLevel()) {
+      QLog.d("structmsg.StructMsgItemVideo", 2, "onLoadSuccessed");
+    }
   }
 }
 

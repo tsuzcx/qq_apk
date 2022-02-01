@@ -1,17 +1,25 @@
-import kotlin.Lazy;
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule$Companion;", "", "()V", "TAG", "", "instance", "Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule;", "getInstance", "()Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushNotifyModule;", "instance$delegate", "Lkotlin/Lazy;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qik
+class qik
+  implements Animator.AnimatorListener
 {
-  @NotNull
-  public final qij a()
+  qik(qid paramqid, boolean paramBoolean) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Lazy localLazy = qij.a();
-    qik localqik = qij.a;
-    return (qij)localLazy.getValue();
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      qid.a(this.jdField_a_of_type_Qid).isShowRecommendList = false;
+      qid.a(this.jdField_a_of_type_Qid);
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

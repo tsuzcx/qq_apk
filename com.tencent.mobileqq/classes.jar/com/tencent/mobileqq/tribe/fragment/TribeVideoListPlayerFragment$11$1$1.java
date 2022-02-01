@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.tribe.fragment;
 
-import anzj;
-import bfcw;
+import amtj;
+import bdlk;
 import com.tencent.mobileqq.widget.QQToast;
 
 class TribeVideoListPlayerFragment$11$1$1
@@ -11,7 +11,7 @@ class TribeVideoListPlayerFragment$11$1$1
   
   public void run()
   {
-    QQToast.a(this.a.a.a.getActivity(), 2, anzj.a(2131713901), 1).a();
+    QQToast.a(this.a.a.a.getActivity(), 2, amtj.a(2131714133), 1).a();
   }
 }
 

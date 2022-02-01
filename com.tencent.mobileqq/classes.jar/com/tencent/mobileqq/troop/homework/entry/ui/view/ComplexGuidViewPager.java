@@ -10,9 +10,9 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bfzl;
-import bgbi;
-import bgbj;
+import beit;
+import bekq;
+import bekr;
 import com.tencent.biz.troopgift.RadioButtonIndicator;
 import com.tencent.image.AbstractGifImage;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class ComplexGuidViewPager
   protected HorizontalScrollView a;
   protected ImageView a;
   protected TextView a;
-  public bgbj a;
+  public bekr a;
   protected RadioButtonIndicator a;
   protected GuideViewPager a;
   protected String a;
@@ -47,18 +47,18 @@ public class ComplexGuidViewPager
   public ComplexGuidViewPager(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(getContext()).inflate(2131561620, this, true);
-    this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator = ((RadioButtonIndicator)findViewById(2131376063));
+    LayoutInflater.from(getContext()).inflate(2131561499, this, true);
+    this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator = ((RadioButtonIndicator)findViewById(2131375831));
     this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator.setOrientation(0);
-    this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator.setButtonResourceId(2130846199);
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131377118));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363948));
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewGuideViewPager = ((GuideViewPager)findViewById(2131367803));
+    this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator.setButtonResourceId(2130846092);
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131376870));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363974));
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewGuideViewPager = ((GuideViewPager)findViewById(2131367835));
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewGuideViewPager.setOnPagerSizeChangeListener(this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator);
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewGuideViewPager.setOnPageChangeListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377123));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376875));
     this.jdField_a_of_type_Int = getResources().getDisplayMetrics().widthPixels;
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bgbi(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new bekq(this));
   }
   
   public float a()
@@ -85,10 +85,10 @@ public class ComplexGuidViewPager
   public void onPageSelected(int paramInt)
   {
     AbstractGifImage.resumeAll();
-    bfzl localbfzl = (bfzl)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    beit localbeit = (beit)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator.onPageSelected(paramInt);
     RadioButtonIndicator localRadioButtonIndicator = this.jdField_a_of_type_ComTencentBizTroopgiftRadioButtonIndicator;
-    if (localbfzl.b) {}
+    if (localbeit.b) {}
     for (paramInt = 0;; paramInt = 8)
     {
       localRadioButtonIndicator.setVisibility(paramInt);
@@ -104,10 +104,10 @@ public class ComplexGuidViewPager
     GuideViewPager.setBitmapByPath(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString);
   }
   
-  public void setOnActionBtnClickListener(bgbj parambgbj)
+  public void setOnActionBtnClickListener(bekr parambekr)
   {
-    this.jdField_a_of_type_Bgbj = parambgbj;
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewGuideViewPager.setOnActionBtnClickListener(parambgbj);
+    this.jdField_a_of_type_Bekr = parambekr;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewGuideViewPager.setOnActionBtnClickListener(parambekr);
   }
 }
 

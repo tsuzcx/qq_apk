@@ -1,37 +1,23 @@
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.PAMessage;
-
 public class agkq
 {
-  public static LruCache<String, PAMessage> a = new LruCache(50);
+  public static float a;
+  public static long a;
+  public static String a;
+  public static boolean a;
+  public static float[] a;
+  public static boolean b;
+  public static boolean c;
+  public static volatile boolean d;
+  public static boolean e;
+  public static boolean f;
+  public static boolean g;
+  public static boolean h;
   
-  public static PAMessage a(MessageRecord paramMessageRecord)
+  static
   {
-    return a(paramMessageRecord.frienduin, paramMessageRecord.shmsgseq, paramMessageRecord.msgUid, paramMessageRecord.msgData);
-  }
-  
-  public static PAMessage a(String paramString, long paramLong1, long paramLong2, byte[] paramArrayOfByte)
-  {
-    String str = a(paramString, paramLong1, paramLong2);
-    PAMessage localPAMessage = (PAMessage)a.get(str);
-    paramString = localPAMessage;
-    if (localPAMessage == null)
-    {
-      paramArrayOfByte = txr.a(paramArrayOfByte);
-      paramString = paramArrayOfByte;
-      if (paramArrayOfByte != null)
-      {
-        a.put(str, paramArrayOfByte);
-        paramString = paramArrayOfByte;
-      }
-    }
-    return paramString;
-  }
-  
-  private static String a(String paramString, long paramLong1, long paramLong2)
-  {
-    return paramString + "&" + paramLong1 + "&" + paramLong2;
+    jdField_a_of_type_Float = 1.0F;
+    jdField_a_of_type_ArrayOfFloat = new float[] { 0.5F, 1.0F, 1.5F, 2.0F, 2.5F, 3.0F };
+    jdField_a_of_type_JavaLangString = "ptt_uin";
   }
 }
 

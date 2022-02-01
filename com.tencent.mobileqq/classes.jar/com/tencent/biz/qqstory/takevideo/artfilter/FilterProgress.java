@@ -4,13 +4,13 @@ import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import blot;
+import bjtd;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ProgressPieView;
 
 public class FilterProgress
   extends RelativeLayout
-  implements blot
+  implements bjtd
 {
   public Context a;
   public Handler a;

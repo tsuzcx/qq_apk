@@ -10,17 +10,17 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
-import blqm;
+import bjun;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
-import pnj;
-import pnk;
-import sul;
-import suo;
-import suv;
-import sux;
-import suy;
-import uyg;
+import psp;
+import psq;
+import syl;
+import syo;
+import syv;
+import syx;
+import syy;
+import vgd;
 
 public class ZImageView
   extends ImageView
@@ -30,7 +30,7 @@ public class ZImageView
   private boolean isRound;
   private ValueAnimator mAlphaAnimator;
   private Drawable mBackgroundDrawableTemp;
-  public sul mController;
+  public syl mController;
   private URL mUrl;
   private Drawable sColorDrawable = new ColorDrawable(-1);
   private boolean startAplhaOnce;
@@ -56,12 +56,12 @@ public class ZImageView
   
   private void init()
   {
-    this.mController = new sul(this.sColorDrawable, this);
+    this.mController = new syl(this.sColorDrawable, this);
     this.mAlphaAnimator = ValueAnimator.ofInt(new int[] { 0, 255 });
     this.mAlphaAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
     this.mAlphaAnimator.setDuration(FADE_DURATION);
-    this.mAlphaAnimator.addListener(new sux(this));
-    this.mAlphaAnimator.addUpdateListener(new suy(this));
+    this.mAlphaAnimator.addListener(new syx(this));
+    this.mAlphaAnimator.addUpdateListener(new syy(this));
   }
   
   private void resetBgDrawable()
@@ -71,7 +71,7 @@ public class ZImageView
       setBackgroundDrawable(this.mBackgroundDrawableTemp);
       this.hasSetAlphaBgDrawable = false;
       if (QLog.isColorLevel()) {
-        suv.a(this.tag, "cancel alpha bg drawable !");
+        syv.a(this.tag, "cancel alpha bg drawable !");
       }
     }
   }
@@ -84,7 +84,7 @@ public class ZImageView
       setBackgroundDrawable(this.mController.a);
       this.hasSetAlphaBgDrawable = true;
       if (QLog.isColorLevel()) {
-        suv.a(this.tag, "set alpha bg drawable !");
+        syv.a(this.tag, "set alpha bg drawable !");
       }
     }
   }
@@ -114,7 +114,7 @@ public class ZImageView
     label63:
     for (Object localObject = localObject.getClass().getName();; localObject = null)
     {
-      suv.a(this.tag, "onAttachedToWindow, parent: " + (String)localObject);
+      syv.a(this.tag, "onAttachedToWindow, parent: " + (String)localObject);
       this.mController.b("onAttachedToWindow");
       return;
     }
@@ -124,7 +124,7 @@ public class ZImageView
   {
     super.onDetachedFromWindow();
     if (QLog.isColorLevel()) {
-      suv.a(this.tag, "onDetachedFromWindow");
+      syv.a(this.tag, "onDetachedFromWindow");
     }
     this.mController.a("onDetachedFromWindow");
   }
@@ -134,13 +134,13 @@ public class ZImageView
     if (this.mUrl != null)
     {
       if (QLog.isColorLevel()) {
-        suv.a(this.tag, "onDraw dispatch load image");
+        syv.a(this.tag, "onDraw dispatch load image");
       }
-      suo localsuo = new suo();
-      pnk.a.a(localsuo, this.mUrl.toString());
-      localsuo.jdField_a_of_type_Int = getWidth();
-      localsuo.b = getHeight();
-      this.mController.a(localsuo);
+      syo localsyo = new syo();
+      psq.a.a(localsyo, this.mUrl.toString());
+      localsyo.jdField_a_of_type_Int = getWidth();
+      localsyo.b = getHeight();
+      this.mController.a(localsyo);
       this.mUrl = null;
     }
     super.onDraw(paramCanvas);
@@ -150,7 +150,7 @@ public class ZImageView
   {
     super.onFinishTemporaryDetach();
     if (QLog.isColorLevel()) {
-      suv.a(this.tag, "onFinishTemporaryDetach");
+      syv.a(this.tag, "onFinishTemporaryDetach");
     }
     this.mController.b("onFinishTemporaryDetach");
   }
@@ -168,7 +168,7 @@ public class ZImageView
     label63:
     for (Object localObject = localObject.getClass().getName();; localObject = null)
     {
-      suv.a(this.tag, "onStartTemporaryDetach, parent: " + (String)localObject);
+      syv.a(this.tag, "onStartTemporaryDetach, parent: " + (String)localObject);
       this.mController.a("onStartTemporaryDetach");
       return;
     }
@@ -176,10 +176,10 @@ public class ZImageView
   
   public ZImageView setImage(URL paramURL)
   {
-    blqm.a("ZImageView.setImage");
+    bjun.a("ZImageView.setImage");
     if (paramURL == null)
     {
-      blqm.a();
+      bjun.a();
       return this;
     }
     if ((this.mUrl != null) && (this.mUrl.getPath().equals(paramURL.getPath()))) {
@@ -192,22 +192,22 @@ public class ZImageView
       if (Build.VERSION.SDK_INT >= 19) {
         bool = isAttachedToWindow();
       }
-      suv.a(this.tag, "setImage " + paramURL + " width " + getWidth() + " isAttach " + bool);
+      syv.a(this.tag, "setImage " + paramURL + " width " + getWidth() + " isAttach " + bool);
     }
     if (getWidth() > 0)
     {
-      blqm.a("ZImageView.newImageRequest");
-      suo localsuo = new suo();
-      pnk.a.a(localsuo, paramURL.toString());
-      localsuo.jdField_a_of_type_Int = getWidth();
-      localsuo.b = getHeight();
-      pnj.a(1, localsuo);
-      this.mController.a(localsuo);
-      blqm.a();
+      bjun.a("ZImageView.newImageRequest");
+      syo localsyo = new syo();
+      psq.a.a(localsyo, paramURL.toString());
+      localsyo.jdField_a_of_type_Int = getWidth();
+      localsyo.b = getHeight();
+      psp.a(1, localsyo);
+      this.mController.a(localsyo);
+      bjun.a();
     }
     for (;;)
     {
-      blqm.a();
+      bjun.a();
       return this;
       this.mUrl = paramURL;
     }
@@ -231,20 +231,20 @@ public class ZImageView
     setImageDrawable(paramDrawable);
   }
   
-  public ZImageView setImageForImageCollection(suo paramsuo, uyg paramuyg)
+  public ZImageView setImageForImageCollection(syo paramsyo, vgd paramvgd)
   {
-    if ((paramsuo == null) || (paramsuo.jdField_a_of_type_JavaNetURL == null)) {
+    if ((paramsyo == null) || (paramsyo.jdField_a_of_type_JavaNetURL == null)) {
       return this;
     }
-    pnk.a.a(paramsuo, paramsuo.jdField_a_of_type_JavaNetURL.toString());
-    if (paramuyg != null) {
-      this.mController.a(paramuyg);
+    psq.a.a(paramsyo, paramsyo.jdField_a_of_type_JavaNetURL.toString());
+    if (paramvgd != null) {
+      this.mController.a(paramvgd);
     }
     this.mUrl = null;
     if (QLog.isColorLevel()) {
-      QLog.d(this.tag, 2, "setImageForImageCollection url = " + paramsuo.jdField_a_of_type_JavaNetURL + " reqWidth = " + paramsuo.jdField_a_of_type_Int + " reqHeight = " + paramsuo.b);
+      QLog.d(this.tag, 2, "setImageForImageCollection url = " + paramsyo.jdField_a_of_type_JavaNetURL + " reqWidth = " + paramsyo.jdField_a_of_type_Int + " reqHeight = " + paramsyo.b);
     }
-    this.mController.a(paramsuo);
+    this.mController.a(paramsyo);
     return this;
   }
   
@@ -255,10 +255,10 @@ public class ZImageView
     return this;
   }
   
-  public void setPublicAccountImageDownListener(uyg paramuyg)
+  public void setPublicAccountImageDownListener(vgd paramvgd)
   {
-    if (paramuyg != null) {
-      this.mController.a(paramuyg);
+    if (paramvgd != null) {
+      this.mController.a(paramvgd);
     }
   }
   
@@ -270,7 +270,7 @@ public class ZImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView
  * JD-Core Version:    0.7.0.1
  */

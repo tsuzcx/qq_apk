@@ -1,31 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-class obn
-  extends BroadcastReceiver
+public class obn
+  implements aszj
 {
-  obn(obj paramobj) {}
+  public obn(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    if (this.a.a == 2)
+    abrl.a("ReadInJoyNativeAdAppVideoView", "tips onYes mVideoState " + ReadInJoyNativeAdAppVideoView.a(this.a));
+    if (ReadInJoyNativeAdAppVideoView.a(this.a) == 6)
     {
-      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
-      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
-      this.a.a(null, 0, 14, i, paramIntent);
-    }
-    try
-    {
-      paramContext.unregisterReceiver(this.a.b);
-      label50:
-      this.a.b = null;
-      this.a.a = 0;
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      break label50;
+      ReadInJoyNativeAdAppVideoView.a(this.a).start();
+      ReadInJoyNativeAdAppVideoView.e(this.a, 5);
+      ReadInJoyNativeAdAppVideoView.a(this.a);
+      ReadInJoyNativeAdAppVideoView.f(this.a, 2);
     }
   }
 }

@@ -1,32 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.ark.ark.Application;
+import com.qq.android.dexposed.XC_MethodHook;
+import com.qq.android.dexposed.XC_MethodHook.MethodHookParam;
+import com.tencent.mobileqq.config.QConfigureException;
 import com.tencent.qphone.base.util.QLog;
 
-public class apuj
+final class apuj
+  extends XC_MethodHook
 {
-  public static boolean a(String paramString1, long paramLong, ark.Application paramApplication, String paramString2)
+  public void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
   {
-    boolean bool;
-    if (paramLong == 0L) {
-      bool = true;
-    }
-    for (;;)
+    try
     {
-      if (!bool) {
-        QLog.i("ArkApp.ArkAPIPermission", 1, String.format("ModuleCheckPermission.denied:Name:%s,Permission:%s.", new Object[] { paramString1, paramString2 }));
+      paramMethodHookParam = apue.a();
+      if ((!paramMethodHookParam.contains("QConfigManager.readSync")) && (!paramMethodHookParam.contains("QConfigManager.loadConObj")) && (!paramMethodHookParam.contains("QConfigManager.save")) && (!paramMethodHookParam.contains("android.app.SharedPreferencesImpl"))) {
+        apue.a(new QConfigureException(paramMethodHookParam), "Can not parse xml beyond QConfigManager when app starting.", "QConfigWatchDog_Xml");
       }
-      return bool;
-      if ((paramApplication != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-        bool = paramApplication.CheckPermissions(paramString2);
-      } else {
-        bool = false;
-      }
+      return;
+    }
+    catch (Exception paramMethodHookParam)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QConfigWatchDog", 2, "hook xml exception.", paramMethodHookParam);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apuj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,20 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ahze
-  implements ahyf
+  implements aibx
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public ahze(SearchContactsFragment paramSearchContactsFragment) {}
+  
+  public Activity a()
   {
-    paramahed.a(paramahfq.b);
+    return this.a.a();
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.a;
   }
 }
 

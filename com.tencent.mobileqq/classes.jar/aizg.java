@@ -1,41 +1,32 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aizg
-  implements beuq
+  implements View.OnClickListener
 {
-  private Handler a;
+  aizg(aizf paramaizf) {}
   
-  aizg(Handler paramHandler)
+  public void onClick(View paramView)
   {
-    this.a = paramHandler;
+    this.a.a.g = false;
+    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.a.jdField_d_of_type_Int != 22) {
+      this.a.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    }
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)ChatHistoryTroopMemberFragment.a(this.a.a, 2131369068));
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_b_of_type_AndroidViewView$OnClickListener);
+    if (this.a.a.jdField_a_of_type_Ajae != null) {
+      this.a.a.jdField_a_of_type_Ajae.a();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onResp(bevm parambevm)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituManager", 2, "FontDownloadListener onResp: " + parambevm);
-    }
-    if (parambevm.jdField_a_of_type_Int == 3) {
-      return;
-    }
-    if (parambevm.jdField_a_of_type_Int == 0)
-    {
-      if ("f832939458e5e54f73b1702bc4edb7e8".equalsIgnoreCase(aiyz.a(parambevm.jdField_a_of_type_Bevl.c)))
-      {
-        this.a.sendEmptyMessage(100);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, "font download but md5 is not matched");
-      }
-      this.a.sendEmptyMessage(101);
-      return;
-    }
-    this.a.sendEmptyMessage(101);
-  }
-  
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

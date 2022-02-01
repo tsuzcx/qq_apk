@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.portal.PortalManager.ComboNumber;
+import java.util.Comparator;
 
-class ayik
-  implements View.OnClickListener
+public class ayik
+  implements Comparator<PortalManager.ComboNumber>
 {
-  ayik(ayhj paramayhj) {}
-  
-  public void onClick(View paramView)
+  public int a(PortalManager.ComboNumber paramComboNumber1, PortalManager.ComboNumber paramComboNumber2)
   {
-    this.a.j(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramComboNumber1.number > paramComboNumber2.number) {
+      return 1;
+    }
+    if (paramComboNumber1.number < paramComboNumber2.number) {
+      return -1;
+    }
+    return 0;
   }
 }
 

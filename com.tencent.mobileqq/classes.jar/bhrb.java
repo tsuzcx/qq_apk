@@ -1,26 +1,24 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.open.agent.BindGroupFragment;
 
-class bhrb
-  implements View.OnClickListener
+public class bhrb
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int;
+  public bhrb(BindGroupFragment paramBindGroupFragment, String paramString) {}
   
-  public bhrb(bhqw parambhqw, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Bhqw.a != null)
+    if (paramInt == 1)
     {
-      this.jdField_a_of_type_Bhqw.a.onClick(this.jdField_a_of_type_Bhqw, this.jdField_a_of_type_Bhqw.a(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_Bhqw.dismiss();
+      BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment, amtj.a(2131700265));
+      ((anca)BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment).getBusinessHandler(20)).a(Integer.valueOf(BindGroupFragment.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment)).intValue(), Integer.valueOf(BindGroupFragment.b(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment)).intValue(), Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), BindGroupFragment.c(this.jdField_a_of_type_ComTencentOpenAgentBindGroupFragment));
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    while (paramInt != 0) {
+      return;
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

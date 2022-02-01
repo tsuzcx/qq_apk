@@ -1,68 +1,17 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetEmoticonPackList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetEmoticonPackList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.Stream;
+import java.util.List;
 
-public class xcn
-  extends wpa<xel>
+class xcn
+  implements xch<Bitmap>
 {
-  public final String a;
-  public final int c;
-  public final int d;
-  public final int e;
+  xcn(xck paramxck, List paramList, String paramString) {}
   
-  public xcn(String paramString, int paramInt)
+  @NonNull
+  public Stream<Bitmap> a(xcd paramxcd)
   {
-    this(paramString, paramInt, 0, 0);
-  }
-  
-  public xcn(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramString == null) {
-      throw new IllegalArgumentException("mCookie should not be null");
-    }
-    if (paramInt1 <= 0) {
-      throw new IllegalArgumentException("mCount should not be less than 0 : " + paramInt1);
-    }
-    this.a = paramString;
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
-  }
-  
-  public String a()
-  {
-    return wnu.a("StorySvc.video_emoticon_get");
-  }
-  
-  public wov a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetEmoticonPackList localRspGetEmoticonPackList = new qqstory_service.RspGetEmoticonPackList();
-    try
-    {
-      localRspGetEmoticonPackList.mergeFrom(paramArrayOfByte);
-      return new xel(localRspGetEmoticonPackList, paramArrayOfByte, System.currentTimeMillis());
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      yuk.e("GetEmojiPackInfoListRequest", "GetEmojiPackInfoListRequest error : " + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetEmoticonPackList localReqGetEmoticonPackList = new qqstory_service.ReqGetEmoticonPackList();
-    localReqGetEmoticonPackList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
-    localReqGetEmoticonPackList.count.set(this.c);
-    return localReqGetEmoticonPackList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetEmojiPackInfoListRequest{mCookie='" + this.a + '\'' + ", mCount=" + this.c + ", latitude=" + this.d + ", longitude=" + this.e + '}';
+    return xck.a(this.jdField_a_of_type_Xck, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
   }
 }
 

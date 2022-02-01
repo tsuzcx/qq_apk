@@ -1,9 +1,21 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface wnl
+class wnl
+  implements View.OnClickListener
 {
-  public abstract void a(BasePublishTask paramBasePublishTask, ErrorMessage paramErrorMessage);
+  wnl(wnk paramwnk, wnj paramwnj) {}
+  
+  public void onClick(View paramView)
+  {
+    if (VideoCoverListBar.a(this.jdField_a_of_type_Wnk.jdField_a_of_type_Wnj.a) != null) {
+      VideoCoverListBar.a(this.jdField_a_of_type_Wnk.jdField_a_of_type_Wnj.a).a(wnk.a(this.jdField_a_of_type_Wnk));
+    }
+    xwa.a("play_video", "clk_mini", 0, 0, new String[] { "2", "", "", wnk.a(this.jdField_a_of_type_Wnk) });
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

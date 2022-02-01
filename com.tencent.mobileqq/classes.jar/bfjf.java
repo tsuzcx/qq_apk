@@ -1,21 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
 
 public class bfjf
-  extends Handler
+  implements bcrf
 {
-  public bfjf(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
+  public bfjf(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a.springBackOverScrollHeaderView();
+    this.a.b(TroopGiftToAllSurfaceView.a(this.a));
   }
 }
 

@@ -1,12 +1,24 @@
-public abstract interface beun
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+
+class beun
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void a();
+  beun(beuj parambeuj) {}
   
-  public abstract byte[] a(byte[] paramArrayOfByte);
+  public void onGlobalLayout()
+  {
+    beuj.a(this.a, this.a.jdField_a_of_type_JavaUtilArrayList);
+    if ((beuj.a(this.a) != null) && (beuj.a(this.a).getViewTreeObserver() != null) && (Build.VERSION.SDK_INT > 16) && (this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener != null)) {
+      beuj.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     beun
  * JD-Core Version:    0.7.0.1
  */

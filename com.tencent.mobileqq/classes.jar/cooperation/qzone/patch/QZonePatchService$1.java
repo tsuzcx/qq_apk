@@ -1,19 +1,18 @@
 package cooperation.qzone.patch;
 
-import anzj;
-import bndj;
+import amtj;
 
-public class QZonePatchService$1
+class QZonePatchService$1
   implements Runnable
 {
-  public QZonePatchService$1(bndj parambndj, String paramString1, String paramString2) {}
+  QZonePatchService$1(QZonePatchService paramQZonePatchService, String paramString1, String paramString2) {}
   
   public void run()
   {
-    bndj.b(anzj.a(2131710953));
-    bndj.b(anzj.a(2131710954));
-    bndj.a();
-    bndj.b(this.a, this.b);
+    QZonePatchService.log(amtj.a(2131711185));
+    QZonePatchService.log(amtj.a(2131711186));
+    QZonePatchService.access$000();
+    QZonePatchService.access$100(this.val$patchMd5, this.val$patchUrl);
   }
 }
 

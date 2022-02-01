@@ -1,29 +1,32 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
 
-public class bgho
-  implements Comparable<bgho>
+class bgho
+  implements Observer
 {
-  public int a;
-  public TroopInfo a;
-  public String a;
-  public int b;
+  bgho(bghn parambghn) {}
   
-  public int a(@NonNull bgho parambgho)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    if (this.b != parambgho.b) {
-      return this.b - parambgho.b;
+    if (QLog.isColorLevel()) {
+      QLog.d("SignatureFontAdapter", 2, "SignatureFontAdapter type = " + paramObject);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime != parambgho.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime) {
-      return (int)(parambgho.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime);
+    if ((paramObject instanceof Integer))
+    {
+      switch (((Integer)paramObject).intValue())
+      {
+      default: 
+        return;
+      case 1: 
+        this.a.a.a().sendEmptyMessage(10003);
+        return;
+      }
+      this.a.a.a().sendEmptyMessage(10002);
+      return;
     }
-    if (parambgho.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime != this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime) {
-      return (int)(parambgho.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime);
-    }
-    if (this.jdField_a_of_type_Int != parambgho.jdField_a_of_type_Int) {
-      return this.jdField_a_of_type_Int - parambgho.jdField_a_of_type_Int;
-    }
-    return this.jdField_a_of_type_JavaLangString.compareTo(parambgho.jdField_a_of_type_JavaLangString);
+    this.a.a.a().sendEmptyMessage(10003);
   }
 }
 

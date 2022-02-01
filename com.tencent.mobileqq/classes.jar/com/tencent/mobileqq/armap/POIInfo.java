@@ -3,7 +3,7 @@ package com.tencent.mobileqq.armap;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aqgn;
+import aozy;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class POIInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<POIInfo> CREATOR = new aqgn();
+  public static final Parcelable.Creator<POIInfo> CREATOR = new aozy();
   public double a;
   public int a;
   public long a;

@@ -1,26 +1,34 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.articlesummary.articlesummary.PartnerAccountInfo;
 
 public class qga
-  implements View.OnClickListener
 {
-  public qga(PTSFragment paramPTSFragment) {}
-  
-  public void onClick(View paramView)
+  public static void a(Container paramContainer, pvc parampvc)
   {
-    Context localContext = paramView.getContext();
-    Intent localIntent = new Intent(localContext, AccountDetailActivity.class);
-    localIntent.putExtra("uin", String.valueOf(3434959637L));
-    localIntent.putExtra("uintype", 1008);
-    localIntent.putExtra("source", 121);
-    localContext.startActivity(localIntent);
-    ocd.a(null, "", "0X8009941", "0X8009941", 0, 0, "", "", "", "", false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    a(paramContainer, parampvc, "id_nickname");
+  }
+  
+  public static void a(Container paramContainer, pvc parampvc, String paramString)
+  {
+    ArticleInfo localArticleInfo = parampvc.a();
+    paramContainer = paramContainer.getVirtualView();
+    qgt localqgt = (qgt)paramContainer.findViewBaseByName("id_partner_info_avator");
+    if (localqgt != null) {
+      localqgt.a(parampvc);
+    }
+    paramContainer = (qja)paramContainer.findViewBaseByName(paramString);
+    if (paramContainer != null)
+    {
+      long l = 0L;
+      if (localArticleInfo.mPartnerAccountInfo != null) {
+        l = localArticleInfo.mPartnerAccountInfo.uint64_uin.get();
+      }
+      paramContainer.a(l);
+    }
   }
 }
 

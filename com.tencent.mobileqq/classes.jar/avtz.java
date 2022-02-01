@@ -1,32 +1,140 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.hotpic.HotVideoData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForMarketFace;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-class avtz
-  implements avus
+public class avtz
+  implements avtl
 {
-  avtz(avty paramavty, HotVideoData paramHotVideoData, avub paramavub, URLDrawable paramURLDrawable) {}
+  public avtz() {}
   
-  public void a(avut paramavut)
+  public avtz(QQAppInterface paramQQAppInterface)
   {
-    if (paramavut.jdField_a_of_type_Boolean)
+    this();
+  }
+  
+  public static avvz a(MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    switch (paramMsgBackupResEntity.msgType)
     {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.url = paramavut.a();
-      if (this.jdField_a_of_type_Avub.a() == this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData)
+    default: 
+      return null;
+    case 1: 
+      return new avwc(paramMsgBackupResEntity);
+    case 2: 
+      return new avwh(paramMsgBackupResEntity);
+    }
+    return new avwe(paramMsgBackupResEntity);
+  }
+  
+  public static avwf a(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForPic)) {
+      return new avwb((MessageForPic)paramMessageRecord);
+    }
+    if ((paramMessageRecord instanceof MessageForShortVideo)) {
+      return new avwg((MessageForShortVideo)paramMessageRecord);
+    }
+    if ((paramMessageRecord instanceof MessageForPtt)) {
+      return new avwd((MessageForPtt)paramMessageRecord);
+    }
+    if ((paramMessageRecord instanceof MessageForMarketFace)) {
+      return new avvx(paramMessageRecord);
+    }
+    if ((paramMessageRecord instanceof MessageForMixedMsg)) {
+      return new avwa((MessageForMixedMsg)paramMessageRecord);
+    }
+    return null;
+  }
+  
+  public avty a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    paramMessageRecord = a(paramMsgBackupResEntity);
+    if (paramMessageRecord != null) {
+      return paramMessageRecord.a();
+    }
+    return new avty();
+  }
+  
+  public String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    return null;
+  }
+  
+  public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  {
+    paramMessageRecord = a(paramMessageRecord);
+    if (paramMessageRecord != null)
+    {
+      paramMessageRecord.a();
+      Object localObject = paramMessageRecord.a();
+      if (QLog.isColorLevel()) {
+        paramMessageRecord.a("onExport");
+      }
+      if (localObject != null)
       {
-        this.jdField_a_of_type_Avub.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setAutoDownload(true);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+        paramList.addAll((Collection)localObject);
+        if (QLog.isColorLevel())
+        {
+          paramList = paramList.iterator();
+          while (paramList.hasNext())
+          {
+            localObject = (MsgBackupResEntity)paramList.next();
+            if (QLog.isColorLevel()) {
+              paramMessageRecord.a("export resEntity:" + ((MsgBackupResEntity)localObject).toLogString());
+            }
+          }
+        }
       }
     }
-    do
+  }
+  
+  public boolean a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord != null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManagerHotPicPageView", 2, "onFileDownloadFailed:" + this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData.picIndex + " GetUrlFailed msg:" + paramavut.jdField_a_of_type_JavaLangString);
+      paramMessageRecord = a(paramMessageRecord);
+      if (paramMessageRecord != null) {
+        return paramMessageRecord.a();
       }
-    } while (this.jdField_a_of_type_Avub.a() != this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData);
-    this.jdField_a_of_type_Avub.a(-10);
+    }
+    return false;
+  }
+  
+  public boolean a(MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    return (paramMsgBackupResEntity.msgType == 1) || (paramMsgBackupResEntity.msgType == 2) || (paramMsgBackupResEntity.msgType == 3);
+  }
+  
+  public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
+  {
+    avwf localavwf = a(paramMessageRecord);
+    if (localavwf != null)
+    {
+      if (QLog.isColorLevel()) {
+        localavwf.a("onImport,uniseq:" + paramMessageRecord.uniseq + " msg:" + paramMessageRecord);
+      }
+      localavwf.b();
+      if (paramList != null)
+      {
+        paramMessageRecord = paramList.iterator();
+        while (paramMessageRecord.hasNext())
+        {
+          paramList = a((MsgBackupResEntity)paramMessageRecord.next());
+          if (paramList != null) {
+            paramList.a();
+          }
+        }
+      }
+    }
   }
 }
 

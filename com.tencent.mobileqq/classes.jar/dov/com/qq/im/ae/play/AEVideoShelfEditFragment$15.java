@@ -9,16 +9,16 @@ class AEVideoShelfEditFragment$15
   
   public void run()
   {
-    if ((int)AEVideoShelfEditFragment.a(this.this$0) < 100)
+    if ((int)AEVideoShelfEditFragment.access$2700(this.this$0) < 100)
     {
-      AEVideoShelfEditFragment.b(this.this$0, 100);
+      AEVideoShelfEditFragment.access$2800(this.this$0, 100);
       new Timer().schedule(new AEVideoShelfEditFragment.15.1(this), 500L);
     }
     for (;;)
     {
-      AEVideoShelfEditFragment.a(this.this$0.getActivity(), false);
+      AEVideoShelfEditFragment.keepScreenOn(this.this$0.getActivity(), false);
       return;
-      AEVideoShelfEditFragment.g(this.this$0);
+      AEVideoShelfEditFragment.access$2900(this.this$0);
     }
   }
 }

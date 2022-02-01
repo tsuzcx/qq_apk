@@ -1,74 +1,175 @@
+import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerVideoItemData;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyArticleBottomVideoView;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.hippy.TkdAdModuleImpl.1;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.hippy.TkdAdModuleImpl.2;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.hippy.TkdAdModuleImpl.3;
+import com.tencent.cmsdk.hippy.api.ITKDAdModule;
+import com.tencent.hippy.qq.module.tkd.TKDAccountModule;
+import com.tencent.hippy.qq.module.tkd.TKDDeviceModule;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mtt.hippy.HippyEngineContext;
+import com.tencent.mtt.hippy.HippyGlobalConfigs;
+import com.tencent.mtt.hippy.common.HippyMap;
+import com.tencent.mtt.hippy.modules.Promise;
+import com.tencent.mtt.hippy.utils.ContextHolder;
+import com.tencent.mtt.hippy.utils.UIThreadUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class tst
-  implements tss
+  implements ITKDAdModule
 {
-  public tst(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView) {}
+  public static String a;
+  public HippyEngineContext a;
   
-  public void a(View paramView, int paramInt)
+  static
   {
-    if ((paramInt == nzq.aA) && (tpp.g(ReadInJoyArticleBottomVideoView.a(this.a))))
+    jdField_a_of_type_JavaLangString = "TkdAdModuleImpl";
+  }
+  
+  private int a(String paramString)
+  {
+    int i = 9999;
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
     {
-      tpp.a((Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), ReadInJoyArticleBottomVideoView.a(this.a), paramInt);
+      i = Integer.parseInt(paramString);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return 9999;
+  }
+  
+  public void MMAOnExpose(String paramString, int paramInt) {}
+  
+  public void getAccountInfo(Promise paramPromise)
+  {
+    try
+    {
+      paramPromise.resolve(TKDAccountModule.convertAccountInfo2HippyMap(TKDAccountModule.getCurAccountInfo()));
       return;
     }
-    if (paramInt == nzq.aB)
-    {
-      nzq.a(new tlx().a(ReadInJoyArticleBottomVideoView.a(this.a)).a(ReadInJoyArticleBottomVideoView.a(this.a)).a(nzq.a).b(ReadInJoyArticleBottomVideoView.a(this.a)).a(ReadInJoyArticleBottomVideoView.a(this.a)).d(paramInt).a());
-      ReadInJoyArticleBottomVideoView.a(this.a);
+    catch (Exception paramPromise) {}
+  }
+  
+  public void getAppPkgInfo(String paramString, Promise paramPromise)
+  {
+    paramPromise.resolve("null");
+  }
+  
+  public void getDeviceInfo(Promise paramPromise)
+  {
+    paramPromise.resolve(TKDDeviceModule.getDeviceInfo());
+  }
+  
+  public void getEnv(Promise paramPromise)
+  {
+    paramPromise.resolve("test");
+  }
+  
+  public void goBack(String paramString, Promise paramPromise)
+  {
+    if ((this.jdField_a_of_type_ComTencentMttHippyHippyEngineContext != null) && (this.jdField_a_of_type_ComTencentMttHippyHippyEngineContext.getGlobalConfigs() != null) && ((this.jdField_a_of_type_ComTencentMttHippyHippyEngineContext.getGlobalConfigs().getContext() instanceof Activity))) {
+      UIThreadUtils.runOnUiThread(new TkdAdModuleImpl.2(this));
+    }
+  }
+  
+  public void init(HippyEngineContext paramHippyEngineContext)
+  {
+    this.jdField_a_of_type_ComTencentMttHippyHippyEngineContext = paramHippyEngineContext;
+  }
+  
+  public void isSupportQQMiniGame(Promise paramPromise)
+  {
+    if (paramPromise == null) {
       return;
     }
-    Object localObject;
-    boolean bool1;
-    boolean bool2;
-    if (ReadInJoyArticleBottomVideoView.a(this.a) != null) {
-      if (ReadInJoyArticleBottomVideoView.a(this.a).v != null)
-      {
-        localObject = ReadInJoyArticleBottomVideoView.a(this.a).v;
-        bool1 = bhny.a((Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), (String)localObject);
-        long l = ReadInJoyArticleBottomVideoView.a(this.a).b;
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          bool2 = nzj.a((Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), (String)localObject);
-        }
-      }
+    HippyMap localHippyMap = new HippyMap();
+    localHippyMap.pushInt("ret", 0);
+    paramPromise.resolve(localHippyMap);
+  }
+  
+  public void loadUrl(String paramString, HippyMap paramHippyMap)
+  {
+    if (this.jdField_a_of_type_ComTencentMttHippyHippyEngineContext == null) {
+      return;
+    }
+    if (tgc.b(paramString)) {
+      tgc.a(this.jdField_a_of_type_ComTencentMttHippyHippyEngineContext.getGlobalConfigs().getContext(), "小游戏", tgc.b(paramString), null);
     }
     for (;;)
     {
-      if ((bool1) || (bool2)) {
-        if (bool1) {
-          break label325;
-        }
-      }
-      label325:
-      for (localObject = new tlt(false);; localObject = null)
-      {
-        AdvertisementInfo localAdvertisementInfo = tqb.a(ReadInJoyArticleBottomVideoView.a(this.a));
-        if (localAdvertisementInfo != null) {
-          localAdvertisementInfo.setClickPos(paramInt);
-        }
-        ubd.c(paramView.getContext(), localAdvertisementInfo, null, 2, true, (tlt)localObject);
-        if (localAdvertisementInfo != null) {
-          localAdvertisementInfo.setClickPos(paramInt);
-        }
-        tku.a(true, (Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), localAdvertisementInfo, 2, nzq.a, 3);
-        return;
-        ReadInJoyArticleBottomVideoView.a(this.a, paramView, true, paramInt);
-        return;
-      }
-      bool2 = false;
-      continue;
-      bool1 = false;
-      localObject = "";
-      break;
-      bool2 = false;
-      bool1 = false;
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "loadUrl url:" + paramString);
+      return;
+      pay.d(this.jdField_a_of_type_ComTencentMttHippyHippyEngineContext.getGlobalConfigs().getContext(), paramString);
     }
+  }
+  
+  public void openQQMiniGameByLink(HippyMap paramHippyMap, Promise paramPromise)
+  {
+    if ((paramPromise == null) || (this.jdField_a_of_type_ComTencentMttHippyHippyEngineContext == null)) {
+      return;
+    }
+    try
+    {
+      paramPromise = paramHippyMap.getString("link");
+      int i = a(paramHippyMap.getString("refer"));
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "openQQMiniGameByLink link:" + paramPromise + " refer:" + i);
+      MiniAppLauncher.startMiniApp(this.jdField_a_of_type_ComTencentMttHippyHippyEngineContext.getGlobalConfigs().getContext(), paramPromise, i, null);
+      return;
+    }
+    catch (Exception paramHippyMap)
+    {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "openQQMiniGameByLink error : " + paramHippyMap.getMessage());
+    }
+  }
+  
+  public void runApp(String paramString)
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "run app params:" + paramString);
+    if (this.jdField_a_of_type_ComTencentMttHippyHippyEngineContext == null) {}
+    for (;;)
+    {
+      return;
+      if ((!TextUtils.isEmpty(paramString)) && (paramString.contains(":")))
+      {
+        tqg.a(paramString, (Activity)this.jdField_a_of_type_ComTencentMttHippyHippyEngineContext.getGlobalConfigs().getContext());
+        return;
+      }
+      try
+      {
+        if (!TextUtils.isEmpty(paramString))
+        {
+          Context localContext = ContextHolder.getAppContext();
+          paramString = localContext.getPackageManager().getLaunchIntentForPackage(paramString);
+          if (paramString != null)
+          {
+            localContext.startActivity(paramString);
+            return;
+          }
+        }
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public void sendWupRequest(HippyMap paramHippyMap, Promise paramPromise) {}
+  
+  public void setTitle(HippyMap paramHippyMap, Promise paramPromise)
+  {
+    UIThreadUtils.runOnUiThread(new TkdAdModuleImpl.3(this, paramHippyMap));
+  }
+  
+  public void showToast(String paramString1, String paramString2, int paramInt, String paramString3, Promise paramPromise)
+  {
+    UIThreadUtils.runOnUiThread(new TkdAdModuleImpl.1(this, paramString1, paramInt, paramPromise));
   }
 }
 

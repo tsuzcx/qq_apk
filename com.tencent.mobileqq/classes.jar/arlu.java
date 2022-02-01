@@ -1,107 +1,157 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchHistoryManager.1;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class arlu
-  extends arac<arlt>
+  implements Handler.Callback
 {
-  @NonNull
-  public arlt a(int paramInt)
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private int jdField_a_of_type_Int;
+  private bjmp jdField_a_of_type_Bjmp = new bjmp(ThreadManager.getFileThreadLooper(), this);
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  WeakReference<arlv> b;
+  
+  public arlu(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    return new arlt();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Int = paramInt;
+    ThreadManager.postImmediately(new ExtendFriendSearchHistoryManager.1(this), null, true);
   }
   
-  @Nullable
-  public arlt a(araj[] paramArrayOfaraj)
+  private void b()
   {
-    QLog.i("QFileExcitingGroupUploadConfigProcessor<FileAssistant>", 1, "onParsed");
-    if (paramArrayOfaraj != null) {
-      try
+    ??? = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (??? == null) {}
+    do
+    {
+      return;
+      ??? = FileUtils.readObject(String.format("%s_%s_%s", new Object[] { "extend_frd_search_history", Integer.valueOf(this.jdField_a_of_type_Int), ((QQAppInterface)???).getCurrentAccountUin() }));
+    } while (this.jdField_a_of_type_Boolean);
+    if ((??? != null) && ((??? instanceof List))) {}
+    for (??? = (List)???;; ??? = null)
+    {
+      Object localObject2 = ???;
+      if (??? == null) {
+        localObject2 = new ArrayList();
+      }
+      synchronized (jdField_a_of_type_JavaLangObject)
       {
-        if (paramArrayOfaraj.length > 0)
-        {
-          paramArrayOfaraj = (arlt)arax.a(paramArrayOfaraj[0].a, arlt.class);
-          return paramArrayOfaraj;
+        if (this.jdField_a_of_type_Boolean) {
+          break label201;
+        }
+        this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject2);
+        if (this.jdField_a_of_type_JavaUtilList.size() > 10) {
+          this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
         }
       }
-      catch (QStorageInstantiateException paramArrayOfaraj)
+      this.jdField_a_of_type_Boolean = true;
+      label201:
+      for (int i = 1;; i = 0)
       {
-        QLog.e("QFileExcitingGroupUploadConfigProcessor<FileAssistant>", 1, "onParsed : error " + paramArrayOfaraj.getMessage());
+        if ((i == 0) || (this.b == null) || (this.b.get() == null)) {
+          break;
+        }
+        ((arlv)this.b.get()).b();
+        return;
       }
     }
-    return null;
   }
   
-  public void a(arlt paramarlt)
+  private void c()
   {
-    if (paramarlt != null)
-    {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label152;
-      }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {
+      return;
     }
-    label152:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    FileUtils.writeObject(String.format("%s_%s_%s", new Object[] { "extend_frd_search_history", Integer.valueOf(this.jdField_a_of_type_Int), localQQAppInterface.getCurrentAccountUin() }), this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public List<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a()
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (localObject != null)
-      {
-        if (TextUtils.isEmpty(paramarlt.a)) {
-          paramarlt.a = "{}";
-        }
-        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("groupfile_excitingupload_" + ((QQAppInterface)localObject).c(), 0).edit();
-        localEditor.putString("qfile_groupfile_excitingupload", paramarlt.a);
-        localEditor.apply();
-        QLog.i("QFileExcitingGroupUploadConfigProcessor<FileAssistant>", 1, "save Exciting-Group-Upload config [" + paramarlt.a + "]");
-        localObject = (atsh)((QQAppInterface)localObject).getManager(317);
-        if (localObject != null) {
-          ((atsh)localObject).a(paramarlt);
-        }
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_Boolean = true;
+      if ((this.b != null) && (this.b.get() != null)) {
+        ((arlv)this.b.get()).b();
+      }
+      if (!this.jdField_a_of_type_Bjmp.hasMessages(0)) {
+        this.jdField_a_of_type_Bjmp.sendEmptyMessageDelayed(0, 300L);
       }
       return;
     }
   }
   
-  public Class<arlt> clazz()
+  public void a(arlv paramarlv)
   {
-    return arlt.class;
+    if (paramarlv != null)
+    {
+      this.b = new WeakReference(paramarlv);
+      return;
+    }
+    this.b = null;
   }
   
-  public boolean isNeedCompressed()
+  public void a(String paramString)
   {
-    return true;
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return;
+      if (!this.jdField_a_of_type_Boolean) {
+        b();
+      }
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_JavaUtilList.contains(paramString)) {
+          this.jdField_a_of_type_JavaUtilList.remove(paramString);
+        }
+        this.jdField_a_of_type_JavaUtilList.add(0, paramString);
+        if (this.jdField_a_of_type_JavaUtilList.size() > 10) {
+          this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+        }
+        if ((this.b != null) && (this.b.get() != null)) {
+          ((arlv)this.b.get()).b();
+        }
+        if (this.jdField_a_of_type_Bjmp.hasMessages(0)) {
+          continue;
+        }
+        this.jdField_a_of_type_Bjmp.sendEmptyMessageDelayed(0, 300L);
+        return;
+      }
+    }
   }
   
-  public boolean isNeedStoreLargeFile()
+  public boolean handleMessage(Message paramMessage)
   {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    QLog.i("QFileExcitingGroupUploadConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
-  }
-  
-  public int type()
-  {
-    return 554;
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arlu
  * JD-Core Version:    0.7.0.1
  */

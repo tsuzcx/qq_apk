@@ -1,11 +1,11 @@
 package com.tencent.av.doodle;
 
-import lln;
+import llf;
 
 public class DoodleLogic$1
   implements Runnable
 {
-  public DoodleLogic$1(lln paramlln) {}
+  public DoodleLogic$1(llf paramllf) {}
   
   public void run()
   {

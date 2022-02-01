@@ -1,84 +1,80 @@
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
+import android.os.SystemClock;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
 
 public class svz
-  extends svv
 {
-  public svz(Context paramContext)
+  public static long a;
+  public static GdtHandler.Params a;
+  
+  static
   {
-    super(paramContext);
+    jdField_a_of_type_Long = -2147483648L;
   }
   
-  public int a()
+  public static void a(Context paramContext, AdvertisementInfo paramAdvertisementInfo, boolean paramBoolean, int paramInt)
   {
-    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298761);
-  }
-  
-  public View a(ViewGroup paramViewGroup)
-  {
-    if (this.jdField_a_of_type_Aayo == null) {
-      this.jdField_a_of_type_Aayo = ((PullRefreshHeader)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559652, paramViewGroup, false));
+    if (!(paramContext instanceof Activity)) {
+      return;
     }
-    return (View)this.jdField_a_of_type_Aayo;
+    a(paramContext, paramAdvertisementInfo, false, paramBoolean, paramInt);
+  }
+  
+  public static void a(Context paramContext, AdvertisementInfo paramAdvertisementInfo, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    if (((paramContext instanceof Activity)) && (paramAdvertisementInfo != null))
+    {
+      paramAdvertisementInfo.setClickPos(paramInt);
+      tqh localtqh = new tqh();
+      localtqh.d = paramBoolean1;
+      localtqh.b = paramBoolean2;
+      tpx.a(paramAdvertisementInfo, (Activity)paramContext, obb.M, obb.a, 3, localtqh);
+      if (twh.a(paramAdvertisementInfo)) {}
+      do
+      {
+        do
+        {
+          return;
+        } while ((paramAdvertisementInfo.isSoftAd()) && (paramAdvertisementInfo.mAdvertisementSoftInfo.c != 0));
+        paramAdvertisementInfo.setClickPos(paramInt);
+        paramContext = tqe.a(paramAdvertisementInfo, (Activity)paramContext, localtqh);
+      } while (paramContext == null);
+      paramContext.f = twq.b(paramAdvertisementInfo);
+      jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = paramContext;
+      jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      return;
+    }
+    twp.a("FastWebRecommendAdHelper", "onAdJump error: advertisementInfo is null or context is not activity");
+  }
+  
+  public static void a(Context paramContext, BaseData paramBaseData, boolean paramBoolean, int paramInt)
+  {
+    if ((!(paramContext instanceof Activity)) || (!(paramBaseData instanceof AdData))) {
+      return;
+    }
+    AdvertisementInfo localAdvertisementInfo2 = ((AdData)paramBaseData).a;
+    AdvertisementInfo localAdvertisementInfo1 = localAdvertisementInfo2;
+    if (localAdvertisementInfo2 == null) {
+      localAdvertisementInfo1 = tws.a((AdData)paramBaseData);
+    }
+    a(paramContext, localAdvertisementInfo1, false, paramBoolean, paramInt);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Aayo == null) {
-      return;
-    }
-    this.jdField_a_of_type_Aayo.a(0L);
-    this.jdField_a_of_type_Aayo.aq_();
+    uhs.a(2, jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params, jdField_a_of_type_Long);
+    jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = null;
+    jdField_a_of_type_Long = -2147483648L;
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void b()
   {
-    super.a(paramInt, paramBoolean);
-    if (this.jdField_a_of_type_Aayo == null) {
-      return;
-    }
-    if (paramInt == 100)
-    {
-      this.jdField_a_of_type_Aayo.b(0L);
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Aayo.aq_();
-      return;
-    }
-    this.jdField_a_of_type_Aayo.c(0L);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Aayo == null) {
-      return;
-    }
-    this.jdField_a_of_type_Aayo.a(0L);
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (this.jdField_a_of_type_Aayo == null) {
-      return;
-    }
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
-    {
-      this.jdField_a_of_type_Aayo.a(0, paramString);
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Aayo.a(0);
-      return;
-    }
-    this.jdField_a_of_type_Aayo.a(2);
+    jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = null;
+    jdField_a_of_type_Long = -2147483648L;
   }
 }
 

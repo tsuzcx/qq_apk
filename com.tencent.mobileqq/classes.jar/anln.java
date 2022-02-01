@@ -1,38 +1,69 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.apollo.task.ApolloAudioPlayer;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.BaseConstants;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class anln
-  implements MediaPlayer.OnCompletionListener
 {
-  public anln(ApolloAudioPlayer paramApolloAudioPlayer, int paramInt, String paramString) {}
+  private static boolean a;
+  private static boolean b;
   
-  public void onCompletion(MediaPlayer arg1)
+  public static void a(MessageRecord paramMessageRecord)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloAudioPlayer", 2, "[onCompletion]");
-    }
-    int i = this.jdField_a_of_type_Int - 1;
-    if (i == 0) {}
-    do
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
+    localHashMap.put("param_FailCode", String.valueOf(paramMessageRecord.istroop));
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actInvalidMessageRecord", false, 0L, 0L, localHashMap, "");
+  }
+  
+  public static void a(String paramString)
+  {
+    if (!a)
     {
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer.jdField_a_of_type_JavaLangObject)
-      {
-        ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer, null);
-        if (ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer) != null) {
-          ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer).a();
-        }
-        return;
+      a = true;
+      c("reportSaveInvalidUserError");
+      bcdb.a(new RuntimeException(), paramString);
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    if ((paramInt == 1008) && (paramQQAppInterface != null))
+    {
+      paramQQAppInterface = ((amsw)paramQQAppInterface.getManager(51)).c(paramString);
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.isFriend())) {
+        return true;
       }
-      if (!this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer.jdField_a_of_type_Boolean)
-      {
-        QLog.d("ApolloAudioPlayer", 2, "[repeat play]");
-        ApolloAudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer, this.jdField_a_of_type_JavaLangString, i);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloAudioPlayer", 2, "Paused. NOT play");
+    }
+    return false;
+  }
+  
+  public static void b(String paramString)
+  {
+    if (!b)
+    {
+      b = true;
+      c("reportInvalidRefredshLastMsg");
+      bcdb.a(new RuntimeException(), paramString);
+    }
+  }
+  
+  public static void c(String paramString)
+  {
+    StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
+    StringBuilder localStringBuilder = new StringBuilder(512);
+    int j = arrayOfStackTraceElement.length;
+    int i = 0;
+    while (i < j)
+    {
+      localStringBuilder.append(arrayOfStackTraceElement[i].toString()).append("\n");
+      i += 1;
+    }
+    QLog.i(paramString, 1, localStringBuilder.toString());
   }
 }
 

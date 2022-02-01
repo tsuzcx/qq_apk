@@ -1,15 +1,9 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.EmoticonPackage;
-
-class axfq
-  implements axfv<Pair<String, Integer>, EmoticonPackage>
+public class axfq
 {
-  axfq(axfj paramaxfj) {}
-  
-  public EmoticonPackage a(Pair<String, Integer> paramPair)
-  {
-    return this.a.a((String)paramPair.first, ((Integer)paramPair.second).intValue());
-  }
+  public long a;
+  public String a;
+  public String b;
+  public String c;
 }
 
 

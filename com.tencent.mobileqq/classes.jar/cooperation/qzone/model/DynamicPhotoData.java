@@ -3,41 +3,40 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnaf;
 
 public class DynamicPhotoData
   implements Parcelable
 {
-  public static final Parcelable.Creator<DynamicPhotoData> CREATOR = new bnaf();
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
+  public static final Parcelable.Creator<DynamicPhotoData> CREATOR = new DynamicPhotoData.1();
+  public String mAlbumid = "";
+  public String mDesc = "";
+  public String mPhotoid = "";
+  public String mTitle = "";
+  public String mUrl = "";
   
   public DynamicPhotoData(Parcel paramParcel)
   {
-    this.a = paramParcel.readString();
-    this.b = paramParcel.readString();
-    this.c = paramParcel.readString();
-    this.d = paramParcel.readString();
-    this.e = paramParcel.readString();
+    this.mUrl = paramParcel.readString();
+    this.mTitle = paramParcel.readString();
+    this.mDesc = paramParcel.readString();
+    this.mAlbumid = paramParcel.readString();
+    this.mPhotoid = paramParcel.readString();
   }
   
   public DynamicPhotoData(String paramString1, String paramString2, String paramString3)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    this.mUrl = paramString1;
+    this.mTitle = paramString2;
+    this.mDesc = paramString3;
   }
   
   public DynamicPhotoData(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
+    this.mUrl = paramString1;
+    this.mTitle = paramString2;
+    this.mDesc = paramString3;
+    this.mAlbumid = paramString4;
+    this.mPhotoid = paramString5;
   }
   
   public int describeContents()
@@ -47,11 +46,11 @@ public class DynamicPhotoData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.a);
-    paramParcel.writeString(this.b);
-    paramParcel.writeString(this.c);
-    paramParcel.writeString(this.d);
-    paramParcel.writeString(this.e);
+    paramParcel.writeString(this.mUrl);
+    paramParcel.writeString(this.mTitle);
+    paramParcel.writeString(this.mDesc);
+    paramParcel.writeString(this.mAlbumid);
+    paramParcel.writeString(this.mPhotoid);
   }
 }
 

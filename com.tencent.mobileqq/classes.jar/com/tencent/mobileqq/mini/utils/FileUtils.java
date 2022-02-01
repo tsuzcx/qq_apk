@@ -3,7 +3,6 @@ package com.tencent.mobileqq.mini.utils;
 import android.os.Build.VERSION;
 import android.system.Os;
 import android.system.StructStat;
-import bhmi;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -108,7 +107,7 @@ public class FileUtils
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("/", getStats(paramString));
-      Object localObject = bhmi.a(paramString, true);
+      Object localObject = com.tencent.mobileqq.utils.FileUtils.getChildFiles(paramString, true);
       paramString = new File(paramString);
       paramString = paramString.getCanonicalPath() + "/";
       localObject = ((ArrayList)localObject).iterator();

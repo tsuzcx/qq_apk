@@ -1,16 +1,16 @@
-class oht
-  implements pgb
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.qphone.base.util.QLog;
+
+public class oht
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  oht(ohp paramohp) {}
+  public oht(CustomTabView paramCustomTabView) {}
   
-  public void l()
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    ohp.d(this.a);
-  }
-  
-  public void m()
-  {
-    ohp.e(this.a);
+    QLog.i("EcshopCustomTabView", 2, "onLaunchResult" + paramBoolean);
   }
 }
 

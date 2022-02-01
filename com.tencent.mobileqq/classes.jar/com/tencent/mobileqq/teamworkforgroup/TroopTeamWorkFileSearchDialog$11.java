@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
 import android.view.View;
-import befl;
+import bczc;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopTeamWorkFileSearchDialog$11
   implements Runnable
 {
-  public TroopTeamWorkFileSearchDialog$11(befl parambefl, View paramView, boolean paramBoolean) {}
+  public TroopTeamWorkFileSearchDialog$11(bczc parambczc, View paramView, boolean paramBoolean) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class TroopTeamWorkFileSearchDialog$11
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder().append("mBlurBackground == null :");
-      if (befl.a(this.this$0) != null) {
+      if (bczc.a(this.this$0) != null) {
         break label64;
       }
     }
@@ -32,7 +32,7 @@ public class TroopTeamWorkFileSearchDialog$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.TroopTeamWorkFileSearchDialog.11
  * JD-Core Version:    0.7.0.1
  */

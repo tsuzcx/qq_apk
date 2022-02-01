@@ -1,6 +1,19 @@
-public abstract interface srm
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+
+public class srm
+  implements tga
 {
-  public abstract void a(srn paramsrn);
+  public srm(FastWebActivity paramFastWebActivity) {}
+  
+  public int a()
+  {
+    return FastWebActivity.a(this.a);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
 }
 
 

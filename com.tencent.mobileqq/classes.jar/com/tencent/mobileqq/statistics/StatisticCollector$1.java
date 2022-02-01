@@ -4,19 +4,18 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import bdmc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.feedback.eup.CrashReport;
 import com.tencent.qphone.base.util.QLog;
 
-public class StatisticCollector$1
+class StatisticCollector$1
   implements Runnable
 {
-  public StatisticCollector$1(bdmc parambdmc) {}
+  StatisticCollector$1(StatisticCollector paramStatisticCollector) {}
   
   public void run()
   {
-    int i = bdmc.a();
+    int i = StatisticCollector.getQzonePatchTag();
     Object localObject1;
     if (i > 0)
     {

@@ -1,23 +1,32 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideotab.SelectVideoTabFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.CoverSelectTabFragment;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 public class rju
-  extends pfh
+  extends FragmentPagerAdapter
 {
-  public rju(SelectVideoTabFragment paramSelectVideoTabFragment) {}
-  
-  public void i(int paramInt)
+  public rju(CoverSelectTabFragment paramCoverSelectTabFragment, FragmentManager paramFragmentManager)
   {
-    super.i(paramInt);
-    if ((SelectVideoTabFragment.a(this.a) != null) && (paramInt != 0) && (!SelectVideoTabFragment.a(this.a).isEmpty()))
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_column_id", paramInt);
-      localIntent.putExtra("arg_callback", SelectVideoTabFragment.a(this.a));
-      SelectVideoTabFragment.a(this.a).setResult(3, localIntent);
-      SelectVideoTabFragment.a(this.a).finish();
-    }
+    super(paramFragmentManager);
+  }
+  
+  public int getCount()
+  {
+    return CoverSelectTabFragment.a(this.a).size();
+  }
+  
+  @NotNull
+  public Fragment getItem(int paramInt)
+  {
+    return (Fragment)CoverSelectTabFragment.a(this.a).get(paramInt);
+  }
+  
+  public CharSequence getPageTitle(int paramInt)
+  {
+    return CoverSelectTabFragment.a()[paramInt];
   }
 }
 

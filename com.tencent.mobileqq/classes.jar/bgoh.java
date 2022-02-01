@@ -1,10 +1,15 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class bgoh
+final class bgoh
+  extends bgod
 {
-  public ImageView a;
-  public TextView a;
+  public void onDone(bgoe parambgoe)
+  {
+    super.onDone(parambgoe);
+  }
+  
+  public boolean onStart(bgoe parambgoe)
+  {
+    return true;
+  }
 }
 
 

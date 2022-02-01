@@ -1,91 +1,19 @@
-import android.content.Context;
-import android.content.MutableContextWrapper;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.ecshopassit.view.EcshopWebview;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class ogm
+  implements BusinessObserver
 {
-  private static volatile ogm jdField_a_of_type_Ogm;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private HashMap<String, EcshopWebview> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  public void a(Object paramObject) {}
   
-  public static ogm a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (jdField_a_of_type_Ogm == null) {}
-    try
+    switch (paramInt)
     {
-      if (jdField_a_of_type_Ogm == null) {
-        jdField_a_of_type_Ogm = new ogm();
-      }
-      return jdField_a_of_type_Ogm;
+    case 2: 
+    default: 
+      return;
     }
-    finally {}
-  }
-  
-  public EcshopWebview a(Context paramContext, String paramString)
-  {
-    for (;;)
-    {
-      try
-      {
-        synchronized (this.jdField_a_of_type_ArrayOfByte)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("Ecshop_EcshopWebviewPool", 2, "【getWebView】= " + this.jdField_a_of_type_JavaUtilHashMap.size() + " preLoadUrl: " + paramString);
-          }
-          if (this.jdField_a_of_type_JavaUtilHashMap.size() > 0)
-          {
-            localObject = (EcshopWebview)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-            if (localObject != null)
-            {
-              paramString = (ViewGroup)((EcshopWebview)localObject).getParent();
-              if (paramString != null) {
-                paramString.removeView((View)localObject);
-              }
-              ((MutableContextWrapper)((EcshopWebview)localObject).getContext()).setBaseContext(paramContext);
-              return localObject;
-            }
-          }
-          else
-          {
-            EcshopWebview localEcshopWebview = EcshopWebview.a(paramContext);
-            localObject = localEcshopWebview;
-            if (bhsr.a(paramString)) {
-              continue;
-            }
-            this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localEcshopWebview);
-            localObject = localEcshopWebview;
-          }
-        }
-        Object localObject = EcshopWebview.a(paramContext);
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("Ecshop_EcshopWebviewPool", 1, QLog.getStackTraceString(paramString));
-        return EcshopWebview.a(paramContext);
-      }
-    }
-  }
-  
-  public void a(TouchWebView paramTouchWebView, String paramString)
-  {
-    QLog.i("Ecshop_EcshopWebviewPool", 2, "ecshop recycleWebView  ");
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (!bhsr.a(paramString)) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString));
+    a(paramObject);
   }
 }
 

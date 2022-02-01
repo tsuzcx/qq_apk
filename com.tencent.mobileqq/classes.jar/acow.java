@@ -1,36 +1,51 @@
-import android.content.Context;
-import com.tencent.gdtad.api.adbox.GdtAdBoxData;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.widget.PastablePwdEditText;
 
 public class acow
+  implements TextWatcher
 {
-  private acpe jdField_a_of_type_Acpe;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private GdtAdBoxData jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData;
+  public acow(AddAccountActivity paramAddAccountActivity) {}
   
-  acow(Context paramContext)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    AddAccountActivity.a(this.a, null);
   }
   
-  public acov a()
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    acov localacov = new acov();
-    localacov.a(this.jdField_a_of_type_AndroidContentContext);
-    localacov.a(this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData);
-    localacov.a(this.jdField_a_of_type_Acpe);
-    return localacov;
+    AddAccountActivity.a(this.a, paramCharSequence.toString());
   }
   
-  public acow a(acpe paramacpe)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Acpe = paramacpe;
-    return this;
-  }
-  
-  public acow a(GdtAdBoxData paramGdtAdBoxData)
-  {
-    this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBoxData = paramGdtAdBoxData;
-    return this;
+    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null)
+    {
+      paramCharSequence = paramCharSequence.toString();
+      if ((paramCharSequence != null) && (AddAccountActivity.a(this.a) != null) && (AddAccountActivity.a(this.a).length() != paramCharSequence.length()) && (paramInt3 != 0)) {
+        BaseApplicationImpl.sApplication.refreAccountList();
+      }
+      AddAccountActivity.a(this.a, null);
+      if ((AddAccountActivity.a(this.a) == null) || (AddAccountActivity.a(this.a).length() == 0)) {}
+      do
+      {
+        return;
+        if ((paramCharSequence == null) || (paramCharSequence.length() == 0) || (paramCharSequence.length() != AddAccountActivity.a(this.a).length() + 1))
+        {
+          BaseApplicationImpl.sApplication.refreAccountList();
+          return;
+        }
+        if ((!paramCharSequence.substring(0, AddAccountActivity.a(this.a).length()).equals(AddAccountActivity.a(this.a))) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText == null)) {
+          break;
+        }
+        paramCharSequence = paramCharSequence.substring(AddAccountActivity.a(this.a).length());
+      } while ((paramCharSequence == null) || (paramCharSequence.length() != 1));
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText(paramCharSequence);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setSelection(1);
+    }
+    AddAccountActivity.a(this.a, null);
   }
 }
 

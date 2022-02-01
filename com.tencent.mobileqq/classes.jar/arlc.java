@@ -1,53 +1,47 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.v4.app.Fragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
+import com.tencent.widget.XEditTextEx;
 
 public class arlc
-  implements arae<String>
+  implements arqk
 {
-  public boolean a;
+  public arlc(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  public void a(String paramString)
+  public void a()
   {
-    QLog.i("QFileApkCheckConfigBean", 1, "configID:663 onParse apkcheckConfig:" + paramString);
-    String str = "";
-    if (!TextUtils.isEmpty(paramString)) {
-      str = paramString.toLowerCase();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.a()) {
+      this.a.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetExtendFriendVoiceView.b();
     }
-    if (TextUtils.isEmpty(str))
+    this.a.b = "";
+    ExtendFriendProfileEditFragment.b(this.a, 0);
+    Fragment localFragment = this.a.getParentFragment();
+    if ((localFragment != null) && ((localFragment instanceof ExtendFriendEditFragment))) {
+      ((ExtendFriendEditFragment)localFragment).a = null;
+    }
+    ExtendFriendProfileEditFragment.a(this.a, null);
+    ExtendFriendProfileEditFragment.c(this.a);
+    if (ExtendFriendProfileEditFragment.b(this.a))
     {
-      QLog.w("QFileApkCheckConfigBean", 1, "apkcheckConfig is empty, configID:663 use default value");
-      this.a = false;
+      ExtendFriendProfileEditFragment.a(this.a, true);
+      ExtendFriendProfileEditFragment.b(this.a);
+    }
+    for (;;)
+    {
+      this.a.c = true;
+      ExtendFriendProfileEditFragment.b(this.a);
       return;
-    }
-    try
-    {
-      paramString = new JSONObject(str).getJSONObject("apkcheckconfig");
-      if (paramString == null) {
-        break label118;
-      }
-      if (paramString.has("enable"))
-      {
-        this.a = paramString.getBoolean("enable");
-        return;
+      ExtendFriendProfileEditFragment.a(this.a, false);
+      if ((this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString()))) {
+        ExtendFriendProfileEditFragment.a(this.a);
       }
     }
-    catch (JSONException paramString)
-    {
-      QLog.e("QFileApkCheckConfigBean", 1, paramString, new Object[0]);
-      return;
-    }
-    this.a = false;
-    return;
-    label118:
-    QLog.w("QFileApkCheckConfigBean", 1, "apkcheckConfig is no enable. use default value");
-    this.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arlc
  * JD-Core Version:    0.7.0.1
  */

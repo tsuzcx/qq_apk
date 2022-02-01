@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.contact.phonecontact;
 
-import ajng;
+import aihp;
 
 public class PhoneUnityManager$1
   implements Runnable
 {
-  public PhoneUnityManager$1(ajng paramajng) {}
+  public PhoneUnityManager$1(aihp paramaihp) {}
   
   public void run()
   {
-    ajng.a(this.this$0);
+    aihp.a(this.this$0);
   }
 }
 

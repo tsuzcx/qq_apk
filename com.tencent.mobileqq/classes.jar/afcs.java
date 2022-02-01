@@ -1,12 +1,9 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-public class afcs
+final class afcs
   implements DialogInterface.OnClickListener
 {
-  public afcs(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
-  
   public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 

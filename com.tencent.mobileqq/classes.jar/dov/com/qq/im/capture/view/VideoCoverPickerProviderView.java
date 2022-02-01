@@ -6,22 +6,22 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
-import bpwv;
-import bpww;
-import bpwx;
-import bqtg;
+import bmzx;
+import bmzy;
+import bmzz;
+import bnoo;
 import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoCoverSegmentPicker;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class VideoCoverPickerProviderView
   extends ProviderView
-  implements bqtg
+  implements bnoo
 {
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
   private VideoCoverSegmentPicker jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoCoverSegmentPicker;
-  private WeakReference<bpwx> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<bmzz> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
   private long b;
   private long c;
@@ -35,7 +35,7 @@ public class VideoCoverPickerProviderView
   
   protected int a()
   {
-    return 2131561003;
+    return 2131560873;
   }
   
   public void a()
@@ -61,36 +61,36 @@ public class VideoCoverPickerProviderView
       }
     }
     label38:
-    bpwx localbpwx;
+    bmzz localbmzz;
     do
     {
       return;
       l = 90L;
       break;
       this.e = paramLong;
-      localbpwx = null;
+      localbmzz = null;
       if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-        localbpwx = (bpwx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        localbmzz = (bmzz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       }
-    } while (localbpwx == null);
-    localbpwx.a(paramLong);
+    } while (localbmzz == null);
+    localbmzz.a(paramLong);
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131561003, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560873, this, false);
     }
     a(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoCoverSegmentPicker = ((VideoCoverSegmentPicker)this.jdField_a_of_type_AndroidViewView.findViewById(2131365889));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoCoverSegmentPicker = ((VideoCoverSegmentPicker)this.jdField_a_of_type_AndroidViewView.findViewById(2131365919));
     setPlayMode(this.jdField_a_of_type_Int);
-    paramBundle = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364159);
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366676)).setOnClickListener(new bpwv(this));
-    paramBundle.setOnClickListener(new bpww(this));
+    paramBundle = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364181);
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366703)).setOnClickListener(new bmzx(this));
+    paramBundle.setOnClickListener(new bmzy(this));
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      paramBundle = (bpwx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramBundle = (bmzz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       if (paramBundle != null) {
         paramBundle.a();
       }
@@ -99,12 +99,12 @@ public class VideoCoverPickerProviderView
   
   public void a(List<Long> paramList)
   {
-    bpwx localbpwx = null;
+    bmzz localbmzz = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbpwx = (bpwx)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbmzz = (bmzz)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbpwx != null) {
-      localbpwx.a(paramList);
+    if (localbmzz != null) {
+      localbmzz.a(paramList);
     }
   }
   
@@ -134,9 +134,9 @@ public class VideoCoverPickerProviderView
     }
   }
   
-  public void setListener(bpwx parambpwx)
+  public void setListener(bmzz parambmzz)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambpwx);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambmzz);
   }
   
   public void setPlayMode(int paramInt)

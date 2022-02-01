@@ -1,53 +1,61 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.widget.ThemeImageView;
 
 public class atuo
+  extends RecyclerView.ViewHolder
 {
-  public int a;
-  public List<atun> a;
+  private View jdField_a_of_type_AndroidViewView;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private ThemeImageView jdField_a_of_type_ComTencentWidgetThemeImageView;
+  private TextView b;
+  private TextView c;
   
-  public atuo()
+  atuo(View paramView)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    super(paramView);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368810));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368812));
+    this.b = ((TextView)paramView.findViewById(2131368815));
+    this.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131368808));
+    this.c = ((TextView)paramView.findViewById(2131368814));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131368813));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368809);
   }
   
-  public boolean a()
+  View a()
   {
-    return (this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0);
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
-  public String toString()
+  Button a()
   {
-    if (a()) {
-      localObject = "TPType:" + this.jdField_a_of_type_Int + "IPList:";
-    }
-    String str;
-    Iterator localIterator;
-    do
-    {
-      return localObject;
-      str = "TPType:" + this.jdField_a_of_type_Int + "IPList:";
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      localObject = str;
-    } while (!localIterator.hasNext());
-    Object localObject = (atun)localIterator.next();
-    if (localObject != null) {
-      if (!TextUtils.isEmpty(((atun)localObject).jdField_a_of_type_JavaLangString))
-      {
-        localObject = ((atun)localObject).jdField_a_of_type_JavaLangString + ":" + ((atun)localObject).jdField_a_of_type_Int + " ";
-        label145:
-        str = str + (String)localObject;
-      }
-    }
-    for (;;)
-    {
-      break;
-      localObject = ":" + ((atun)localObject).jdField_a_of_type_Int + " ";
-      break label145;
-    }
+    return this.jdField_a_of_type_AndroidWidgetButton;
+  }
+  
+  TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  URLImageView a()
+  {
+    return this.jdField_a_of_type_ComTencentImageURLImageView;
+  }
+  
+  public ThemeImageView a()
+  {
+    return this.jdField_a_of_type_ComTencentWidgetThemeImageView;
+  }
+  
+  TextView b()
+  {
+    return this.c;
   }
 }
 

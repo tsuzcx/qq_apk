@@ -1,49 +1,89 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.concurrent.ConcurrentHashMap;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aqdo
-  implements View.OnClickListener
+public class aqdo
+  extends aptq<aqdn>
 {
-  aqdo(aqdm paramaqdm) {}
-  
-  public void onClick(View paramView)
+  @NonNull
+  public static aqdn a()
   {
-    aqdm.a(this.a).put(aqdm.a(this.a).a, Integer.valueOf(1));
-    Activity localActivity = aqdm.a(this.a).a();
-    if (!bhny.a(localActivity, aqdm.a(this.a).c))
+    aqdn localaqdn2 = (aqdn)apub.a().a(435);
+    aqdn localaqdn1 = localaqdn2;
+    if (localaqdn2 == null) {
+      localaqdn1 = new aqdn();
+    }
+    return localaqdn1;
+  }
+  
+  @NonNull
+  public aqdn a(int paramInt)
+  {
+    return new aqdn();
+  }
+  
+  @Nullable
+  public aqdn a(aptx[] paramArrayOfaptx)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaptx != null)
     {
-      if (!TextUtils.isEmpty(aqdm.a(this.a).g))
-      {
-        Intent localIntent = new Intent(localActivity, QQBrowserActivity.class);
-        localIntent.putExtra("url", aqdm.a(this.a).g);
-        localIntent.putExtra("fromArkAppDownload", true);
-        localActivity.startActivity(localIntent);
+      localObject1 = localObject2;
+      if (paramArrayOfaptx.length > 0) {
+        localObject1 = aqdn.a(paramArrayOfaptx);
       }
-      adqf.a(aqdm.a(this.a), -4, "need to download");
     }
-    for (;;)
-    {
-      aqdm.a(this.a).a();
-      aqdm.a(this.a).dismiss();
-      aqdm.a(this.a, null);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      aqdm.a(this.a, aqdm.a(this.a).a, aqdm.a(this.a).b, aqdm.a(this.a).c, aqdm.a(this.a).d, aqdm.a(this.a).e, aqdm.a(this.a).f);
-      adqf.a(aqdm.a(this.a), adna.a);
+    return localObject1;
+  }
+  
+  public void a(aqdn paramaqdn)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopUrlConfProcessor", 2, "onUpdate " + paramaqdn.toString());
     }
+  }
+  
+  public Class<aqdn> clazz()
+  {
+    return aqdn.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopUrlConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 435;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqdo
  * JD-Core Version:    0.7.0.1
  */

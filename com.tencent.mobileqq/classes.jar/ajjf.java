@@ -1,29 +1,41 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.newfriend.AddRequestSuspiciousMsgFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SysSuspiciousMsg;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.data.BaseRecentUser;
+import java.util.Comparator;
 
-public class ajjf
-  implements bliz
+class ajjf
+  implements Comparator<RecentBaseData>
 {
-  public ajjf(AddRequestSuspiciousMsgFragment paramAddRequestSuspiciousMsgFragment, blir paramblir) {}
+  ajjf(ajje paramajje) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
   {
-    switch (paramInt)
+    int j = 0;
+    int i = j;
+    long l1;
+    long l2;
+    if ((paramRecentBaseData1 instanceof RecentUserBaseData))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      if (bhnv.d(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment.getActivity())) {
-        aber.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment.getActivity(), AddRequestSuspiciousMsgFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment).uin + "", null, AddRequestSuspiciousMsgFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment).getCurrentAccountUin(), 20010, null);
-      } else {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendAddRequestSuspiciousMsgFragment.getActivity(), 2131693965, 0).a();
+      i = j;
+      if ((paramRecentBaseData2 instanceof RecentUserBaseData))
+      {
+        paramRecentBaseData1 = (RecentUserBaseData)paramRecentBaseData1;
+        paramRecentBaseData2 = (RecentUserBaseData)paramRecentBaseData2;
+        l1 = Math.max(paramRecentBaseData1.mUser.lastmsgtime, paramRecentBaseData1.mUser.lastmsgdrafttime);
+        l2 = Math.max(paramRecentBaseData2.mUser.lastmsgtime, paramRecentBaseData2.mUser.lastmsgdrafttime);
+        if (l1 <= l2) {
+          break label83;
+        }
+        i = -1;
       }
     }
+    label83:
+    do
+    {
+      return i;
+      i = j;
+    } while (l1 >= l2);
+    return 1;
   }
 }
 

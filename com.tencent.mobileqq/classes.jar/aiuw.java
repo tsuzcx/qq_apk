@@ -1,192 +1,363 @@
 import android.app.Activity;
-import android.content.SharedPreferences;
+import android.content.Intent;
+import android.hardware.Camera.Size;
+import android.media.MediaRecorder;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
-import android.text.format.Time;
-import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.1;
+import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.2;
+import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.3;
+import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.4;
+import com.tencent.mobileqq.activity.faceunlock.QFaceUnlockCameraCaptureUnit.5;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayoutNew;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class aiuw
-  implements aiwf
+  extends blhu
+  implements View.OnClickListener
 {
-  private aggs jdField_a_of_type_Aggs;
-  private aiwh jdField_a_of_type_Aiwh;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Time jdField_a_of_type_AndroidTextFormatTime;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MediaRecorder jdField_a_of_type_AndroidMediaMediaRecorder;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private bhdt jdField_a_of_type_Bhdt;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new QFaceUnlockCameraCaptureUnit.1(this);
+  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private int jdField_c_of_type_Int;
+  private RelativeLayout jdField_c_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  private String jdField_c_of_type_JavaLangString;
+  private int jdField_d_of_type_Int;
+  private Button jdField_d_of_type_AndroidWidgetButton;
+  private RelativeLayout jdField_d_of_type_AndroidWidgetRelativeLayout;
+  private String jdField_d_of_type_JavaLangString;
+  private int e = 155;
+  private int f = 211;
   
-  public aiuw(QQAppInterface paramQQAppInterface, aiwh paramaiwh, Activity paramActivity, SessionInfo paramSessionInfo, aggs paramaggs)
+  public aiuw(bnbp parambnbp, bnbo parambnbo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aiwh = paramaiwh;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_Aggs = paramaggs;
+    super(parambnbp, parambnbo);
   }
   
-  public int a()
+  private void G()
   {
-    return 40;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_AndroidWidgetButton.setText(2131698269);
+    this.jdField_d_of_type_AndroidWidgetButton.setVisibility(0);
+    this.jdField_d_of_type_AndroidWidgetButton.setEnabled(false);
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
   }
   
-  public View a(Object... paramVarArgs)
+  private void H()
   {
-    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131561064, null);
-    ((TextView)paramVarArgs.findViewById(2131374291)).setText(2131691601);
-    ((ImageView)paramVarArgs.findViewById(2131374289)).setImageResource(2130849853);
-    paramVarArgs.findViewById(2131374288).setOnClickListener(new aiux(this));
-    return paramVarArgs;
+    ThreadManager.getSubThreadHandler().post(new QFaceUnlockCameraCaptureUnit.3(this));
   }
   
-  public void a(int paramInt, Object... paramVarArgs)
+  private Camera.Size a(List<Camera.Size> paramList1, List<Camera.Size> paramList2)
   {
-    if (paramInt != 1001) {
-      return;
+    if ((paramList1 == null) || (paramList2 == null))
+    {
+      paramList2 = null;
+      return paramList2;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DiscActiveTipsBar", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV =====>");
+    HashSet localHashSet = new HashSet(paramList1);
+    Iterator localIterator = paramList2.iterator();
+    paramList1 = null;
+    int i = -1;
+    for (;;)
+    {
+      paramList2 = paramList1;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      paramList2 = (Camera.Size)localIterator.next();
+      if (localHashSet.contains(paramList2))
+      {
+        int j = paramList2.width * paramList2.height;
+        if (j > i)
+        {
+          i = j;
+          paramList1 = paramList2;
+        }
+      }
+    }
+  }
+  
+  private void h(boolean paramBoolean)
+  {
+    ThreadManager.getSubThreadHandler().post(new QFaceUnlockCameraCaptureUnit.4(this, paramBoolean));
+  }
+  
+  private void i(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaRecorder != null)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.setPreviewDisplay(null);
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.setOnErrorListener(null);
+    }
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QFaceUnlockCameraCaptureUnit", 0, "releaseRecord begin");
+      }
+      this.jdField_a_of_type_AndroidMediaMediaRecorder.release();
+      if (paramBoolean) {
+        this.jdField_a_of_type_AndroidOsHandler.post(new QFaceUnlockCameraCaptureUnit.5(this));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QFaceUnlockCameraCaptureUnit", 0, "releaseRecord end");
+      }
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      for (;;)
+      {
+        QLog.e("QFaceUnlockCameraCaptureUnit", 1, "releaseRecord failed, IllegalStateException: " + localIllegalStateException.getMessage());
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("QFaceUnlockCameraCaptureUnit", 1, "releaseRecord failed, Exception: " + localException.getMessage());
+      }
+    }
+    this.jdField_a_of_type_AndroidMediaMediaRecorder = null;
+  }
+  
+  protected int a()
+  {
+    return 2131559177;
+  }
+  
+  public View a()
+  {
+    View localView = super.a();
+    ((TextView)localView.findViewById(2131364175)).setOnClickListener(this);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayoutNew.setFunctionFlag(3);
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayoutNew.f();
+    this.jdField_d_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131373839));
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_d_of_type_AndroidWidgetButton.setEnabled(false);
+    this.jdField_d_of_type_AndroidWidgetButton.setText(2131698269);
+    this.jdField_d_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131366861));
+    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131366299));
+    int i = AIOUtils.dp2px(this.e, a().getResources());
+    this.jdField_a_of_type_Bhdt = new bhdt();
+    this.jdField_a_of_type_Bhdt.a(AIOUtils.dp2px(this.e + this.f, a().getResources()));
+    this.jdField_a_of_type_Bhdt.a(i);
+    this.jdField_a_of_type_Bhdt.b(1);
+    if (Build.VERSION.SDK_INT > 15) {
+      this.jdField_d_of_type_AndroidWidgetRelativeLayout.setBackground(this.jdField_a_of_type_Bhdt);
     }
     for (;;)
     {
-      int i;
-      int j;
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000) {
-          return;
-        }
-        if (arrs.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 1)) {
-          return;
-        }
-        paramVarArgs = this.jdField_a_of_type_Aggs.a();
-        if (paramVarArgs == null) {
-          return;
-        }
-        if (paramVarArgs.size() < 10)
-        {
-          paramVarArgs = "msgList size < 10, size = " + paramVarArgs.size();
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("DiscActiveTipsBar", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + paramVarArgs);
-          return;
-        }
-        long l1 = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
-        paramInt = mvd.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramInt, l1)) {
-          return;
-        }
-        Object localObject2 = "voice_disc_chat_freq_bar_show_count" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-        Object localObject1 = BaseApplication.getContext().getSharedPreferences("free_call", 0);
-        paramInt = ((SharedPreferences)localObject1).getInt((String)localObject2, 0);
-        if (paramInt >= 3) {
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("DiscActiveTipsBar", 2, "discChatFreqBarShowCount : " + paramInt);
-        }
-        l1 = bcrg.a() * 1000L;
-        if (this.jdField_a_of_type_AndroidTextFormatTime == null) {
-          this.jdField_a_of_type_AndroidTextFormatTime = new Time();
-        }
-        this.jdField_a_of_type_AndroidTextFormatTime.set(l1);
-        paramInt = this.jdField_a_of_type_AndroidTextFormatTime.year;
-        i = this.jdField_a_of_type_AndroidTextFormatTime.month;
-        j = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
-        this.jdField_a_of_type_AndroidTextFormatTime.set(0, 0, 20, j, i, paramInt);
-        long l2 = this.jdField_a_of_type_AndroidTextFormatTime.toMillis(false);
-        this.jdField_a_of_type_AndroidTextFormatTime.set(0, 0, 23, j, i, paramInt);
-        long l3 = this.jdField_a_of_type_AndroidTextFormatTime.toMillis(false);
-        if ((l1 < l2) || (l1 > l3))
-        {
-          paramVarArgs = "current time not in " + 20 + "-" + 23;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("DiscActiveTipsBar", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + paramVarArgs);
-          return;
-        }
-        localObject2 = ((SharedPreferences)localObject1).getString("voice_disc_chat_freq_bar_show_time" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null);
-        if (QLog.isColorLevel())
-        {
-          String str = paramInt + "-" + i + "-" + j;
-          QLog.d("DiscActiveTipsBar", 2, "currDate is:" + str + ",curr hour is:" + this.jdField_a_of_type_AndroidTextFormatTime.hour + ",discPttFreqTipMsgInsertTime is:" + (String)localObject2);
-        }
-        if (!TextUtils.isEmpty((CharSequence)localObject2))
-        {
-          this.jdField_a_of_type_AndroidTextFormatTime.set(Long.parseLong((String)localObject2));
-          int k = this.jdField_a_of_type_AndroidTextFormatTime.year;
-          int m = this.jdField_a_of_type_AndroidTextFormatTime.month;
-          int n = this.jdField_a_of_type_AndroidTextFormatTime.monthDay;
-          if ((paramInt == k) && (i == m) && (j == n)) {
-            return;
-          }
-        }
-        localObject1 = ((SharedPreferences)localObject1).getString("start_group_audio_time" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null);
-        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (l1 - Long.parseLong((String)localObject1) <= 600000L)) {
-          return;
-        }
-        l1 = (l1 - 600000L) / 1000L;
-        i = paramVarArgs.size();
-        paramInt = 0;
-        localObject1 = new HashSet();
-        j = i - 1;
-        if (j >= 0)
-        {
-          localObject2 = (ChatMessage)paramVarArgs.get(j);
-          i = paramInt;
-          if (((ChatMessage)localObject2).time >= l1)
-          {
-            i = paramInt;
-            if (adak.p(((ChatMessage)localObject2).msgtype))
-            {
-              i = paramInt;
-              if (((ChatMessage)localObject2).extraflag == 0)
-              {
-                i = paramInt + 1;
-                ((HashSet)localObject1).add(((ChatMessage)localObject2).senderuin);
-              }
-            }
-          }
-        }
-        else
-        {
-          i = ((HashSet)localObject1).size();
-          if (QLog.isColorLevel()) {
-            QLog.d("DiscActiveTipsBar", 2, "basicMsgNum : " + paramInt + ", msgUinNum : " + i);
-          }
-          return;
-        }
-      }
-      finally
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("DiscActiveTipsBar", 2, "onAIOEvent() : TYPE_ON_MSG_SENT_RECV <=====, step is:" + "");
-        }
-      }
-      j -= 1;
-      paramInt = i;
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377724));
+      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131376193));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366302));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_c_of_type_JavaLangString);
+      return localView;
+      this.jdField_d_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(this.jdField_a_of_type_Bhdt);
     }
   }
   
-  public int[] a()
+  protected babz a()
   {
-    return new int[] { 2000 };
+    babz localbabz = super.a();
+    localbabz.j(3);
+    localbabz.g(1);
+    localbabz.a(false);
+    return localbabz;
   }
   
-  public int b()
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    return 4;
+    super.a(paramInt1, paramInt2, paramIntent);
+    if (QLog.isColorLevel()) {
+      QLog.i("QFaceUnlockCameraCaptureUnit", 0, "onActivityResult");
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    a().getWindow().setFlags(1024, 1024);
+    a().requestWindowFeature(1);
+    super.a(paramBundle);
+    this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_Bnbp.a().getIntent().getStringExtra("key_face_unlock_code");
+    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
+    {
+      this.jdField_c_of_type_JavaLangString = "6978";
+      QLog.e("QFaceUnlockCameraCaptureUnit", 1, "verification code is null, use default code");
+    }
+  }
+  
+  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult)
+  {
+    super.a(paramVideoCaptureResult);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    ThreadManager.getUIHandler().post(new QFaceUnlockCameraCaptureUnit.2(this));
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    super.a(paramBoolean, paramString);
+    if (paramBoolean)
+    {
+      this.jdField_d_of_type_AndroidWidgetButton.setEnabled(true);
+      return;
+    }
+    QLog.e("QFaceUnlockCameraCaptureUnit", 1, "Camera start fail!");
+  }
+  
+  public boolean a()
+  {
+    return super.a();
+  }
+  
+  public void c()
+  {
+    super.c();
+  }
+  
+  public void d()
+  {
+    super.d();
+    if (QLog.isColorLevel()) {
+      QLog.i("QFaceUnlockCameraCaptureUnit", 0, "onActivityPause");
+    }
+    h(false);
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public void e()
+  {
+    super.e();
+    if (QLog.isColorLevel()) {
+      QLog.i("QFaceUnlockCameraCaptureUnit", 0, "onDestroy");
+    }
+  }
+  
+  public void f()
+  {
+    super.f();
+    if (QLog.isColorLevel()) {
+      QLog.i("QFaceUnlockCameraCaptureUnit", 0, "onActivityResume");
+    }
+  }
+  
+  public void g()
+  {
+    int i = 0;
+    G();
+    if (apju.d()) {
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+    }
+    for (;;)
+    {
+      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayoutNew.setVisibility(8);
+      if (this.jdField_a_of_type_AndroidViewViewGroup != null)
+      {
+        ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+        if (this.jdField_b_of_type_Boolean) {
+          i = 8;
+        }
+        localViewGroup.setVisibility(i);
+      }
+      this.jdField_c_of_type_AndroidWidgetButton.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      }
+      if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+        this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+      }
+      this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      return;
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+    }
+  }
+  
+  public void h()
+  {
+    super.h();
+  }
+  
+  protected void i()
+  {
+    super.i();
+  }
+  
+  public void j() {}
+  
+  public void k() {}
+  
+  public void onClick(View paramView)
+  {
+    if (paramView.getId() == 2131364175)
+    {
+      a().finish();
+      a().overridePendingTransition(2130772039, 2130772241);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      super.onClick(paramView);
+      switch (paramView.getId())
+      {
+      default: 
+        break;
+      case 2131373839: 
+        if (this.jdField_c_of_type_Int == 0)
+        {
+          this.jdField_c_of_type_Int = 1;
+          this.jdField_d_of_type_AndroidWidgetButton.setText(2131698271);
+          this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+          this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+          this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+          H();
+        }
+        else if (this.jdField_c_of_type_Int == 1)
+        {
+          this.jdField_d_of_type_AndroidWidgetButton.setEnabled(false);
+          this.jdField_c_of_type_Int = 2;
+          h(true);
+        }
+        break;
+      }
+    }
   }
 }
 

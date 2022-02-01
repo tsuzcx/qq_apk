@@ -1,32 +1,66 @@
-import android.opengl.GLSurfaceView.EGLConfigChooser;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.app.IndividualRedPacketManager.VIPHBStrategy.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class amus
-  implements GLSurfaceView.EGLConfigChooser
+  implements afae
 {
-  private int a;
+  private QQAppInterface a;
   
-  public amus(int paramInt)
+  public amus(QQAppInterface paramQQAppInterface)
   {
-    QLog.i("ApolloSurfaceView", 1, "[ApolloConfigChooser], multiValue:" + paramInt);
-    this.a = paramInt;
+    this.a = paramQQAppInterface;
   }
   
-  public EGLConfig chooseConfig(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
+  public void a() {}
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    int i = this.a;
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
-    int[] arrayOfInt = new int[1];
-    paramEGL10.eglChooseConfig(paramEGLDisplay, new int[] { 12329, 0, 12352, 4, 12351, 12430, 12324, 8, 12323, 8, 12322, 8, 12325, 16, 12321, 8, 12326, 0, 12338, 1, 12337, i, 12344 }, arrayOfEGLConfig, 1, arrayOfInt);
-    if (arrayOfInt[0] == 0)
-    {
-      QLog.e("ApolloSurfaceView", 1, "[ApolloConfigChooser], fail to set config");
-      return null;
+    if ((paramRedPacketInfo == null) || (TextUtils.isEmpty(paramRedPacketInfo.templateId))) {
+      return;
     }
-    return arrayOfEGLConfig[0];
+    if (QLog.isColorLevel()) {
+      QLog.d(amuo.b(), 2, "VIPHBStrategy.get Id = " + paramRedPacketInfo.templateId + "content = " + paramRedPacketInfo.jdField_a_of_type_JavaLangString);
+    }
+    Object localObject = (amuo)this.a.getManager(131);
+    if ((localObject == null) || (!((amuo)localObject).c()) || (((amuo)localObject).c.get()))
+    {
+      String str;
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        str = amuo.b();
+        localStringBuilder = new StringBuilder().append("VIPHBStrategy get fail! Redpacket Disable or no TemplateInfo! ");
+        if (localObject != null) {
+          break label150;
+        }
+      }
+      label150:
+      for (localObject = "redPacketManager == null";; localObject = "isShowRedpacket:" + ((amuo)localObject).a().jdField_a_of_type_Boolean + ", PacketEnable:" + ((amuo)localObject).b() + ", mIsSDCardError:" + ((amuo)localObject).c.get())
+      {
+        QLog.d(str, 2, (String)localObject);
+        CustomizeStrategyFactory.a().a(paramRedPacketInfo);
+        return;
+      }
+    }
+    ThreadManager.post(new IndividualRedPacketManager.VIPHBStrategy.1(this, (amuo)localObject, paramRedPacketInfo), 8, null, true);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, ahdi paramahdi)
+  {
+    if ((paramRedPacketInfo != null) && ((paramahdi instanceof ahdo)))
+    {
+      paramahdi = (ahdo)paramahdi;
+      paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap = paramahdi.jdField_a_of_type_AndroidGraphicsBitmap;
+      paramRedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramahdi.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+      paramRedPacketInfo.jdField_a_of_type_Afad = paramahdi.jdField_a_of_type_Afad;
+      paramRedPacketInfo.b = paramahdi.jdField_a_of_type_Boolean;
+    }
   }
 }
 

@@ -1,25 +1,82 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SimpleCommentData;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "()V", "RIJ_SHANGHAI_PHP", "", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "(I)[Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class own
-  implements Parcelable.Creator<SimpleCommentData>
+class own
+  implements BusinessObserver
 {
-  @NotNull
-  public SimpleCommentData a(@NotNull Parcel paramParcel)
-  {
-    Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
-    return new SimpleCommentData(paramParcel);
-  }
+  own(owm paramowm, BaseCommentData paramBaseCommentData) {}
   
-  @NotNull
-  public SimpleCommentData[] a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    return new SimpleCommentData[paramInt];
+    int i = 1;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          break label253;
+        }
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        paramInt = localWebSsoResponseBody.ret.get();
+        paramBundle = localWebSsoResponseBody.data.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyCommentSSOModule", 2, "deleteComment ret=" + paramBundle);
+        }
+        paramBundle = new JSONObject(paramBundle);
+        if (paramInt != 0)
+        {
+          paramBundle.optString("msg");
+          paramInt = 0;
+          i = paramInt;
+          if ((i == 0) && (owm.a(this.jdField_a_of_type_Owm) != null)) {
+            owm.a(this.jdField_a_of_type_Owm).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
+          }
+          return;
+        }
+        paramInt = paramBundle.optInt("ret");
+        if (paramInt != 0) {
+          break label253;
+        }
+        paramInt = i;
+        try
+        {
+          if (owm.a(this.jdField_a_of_type_Owm) == null) {
+            continue;
+          }
+          owm.a(this.jdField_a_of_type_Owm).a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, "");
+          paramInt = i;
+        }
+        catch (Exception paramBundle)
+        {
+          paramInt = 1;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramInt = 0;
+        continue;
+      }
+      paramBundle.getLocalizedMessage();
+      paramBundle.printStackTrace();
+      i = paramInt;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ReadInJoyCommentSSOModule", 2, "fetchCommentList error info:" + paramBundle.getLocalizedMessage());
+        i = paramInt;
+        continue;
+        label253:
+        paramInt = 0;
+      }
+    }
   }
 }
 

@@ -1,20 +1,58 @@
-import android.view.animation.Transformation;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.cmd0x985.oidb_0x985.GetReadListRsp;
+import tencent.im.oidb.cmd0x985.oidb_0x985.RspBody;
 
-class aztx
-  implements bhtj<Float>
+public class aztx
+  extends azuw<ReceiptMessageDetailFragment>
 {
-  aztx(aztw paramaztw) {}
-  
-  public void a(bhtd<Float> parambhtd, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public aztx(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    this.a.b = paramFloat1.floatValue();
-    this.a.jdField_a_of_type_Float = (1.1F - (paramFloat1.floatValue() - 1.0F));
-    if (this.a.jdField_a_of_type_Azuc != null)
+    super(paramReceiptMessageDetailFragment);
+  }
+  
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      this.a.jdField_a_of_type_Azuc.b = paramFloat1.floatValue();
-      this.a.jdField_a_of_type_Azuc.jdField_a_of_type_Float = this.a.jdField_a_of_type_Float;
+      QLog.d("ReceiptMessageDetailFragment", 1, "mDiscussionFetchReadStatusCallback request error on code: " + paramInt);
+      return;
     }
-    this.a.a((int)(this.a.jdField_a_of_type_Int * paramFloat1.floatValue()));
+    try
+    {
+      paramBundle = new oidb_0x985.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramInt = paramBundle.uint32_code.get();
+      if (paramInt == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ReceiptMessageDetailFragment", 2, "mDiscussionFetchReadStatusCallback succ");
+        }
+        paramBundle = (oidb_0x985.GetReadListRsp)paramBundle.msg_get_read_list_rsp.get();
+        paramArrayOfByte = paramBundle.rpt_msg_read_list.get();
+        paramBundle = paramBundle.rpt_msg_unread_list.get();
+        ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a;
+        paramInt = paramArrayOfByte.size();
+        int i = paramArrayOfByte.size();
+        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, paramInt, paramBundle.size() + i, true);
+        paramInt = paramArrayOfByte.size();
+        ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, true);
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      QLog.d("ReceiptMessageDetailFragment", 2, "fetch read member fail on invalid data");
+      return;
+    }
+    QLog.d("ReceiptMessageDetailFragment", 1, "mDiscussionFetchReadStatusCallback fail on code: " + paramInt);
+    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
   }
 }
 

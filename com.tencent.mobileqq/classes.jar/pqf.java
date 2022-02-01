@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
-public final class pqf
-  implements Parcelable.Creator<ReadInJoyDraftboxItem>
+public class pqf
 {
-  public ReadInJoyDraftboxItem a(Parcel paramParcel)
-  {
-    return new ReadInJoyDraftboxItem(paramParcel);
-  }
+  public RelativeLayout a;
+  public URLImageView a;
+  public DragTextView a;
+  public DragTextView b;
   
-  public ReadInJoyDraftboxItem[] a(int paramInt)
+  public pqf(DragTextView paramDragTextView1, RelativeLayout paramRelativeLayout, URLImageView paramURLImageView, DragTextView paramDragTextView2)
   {
-    return new ReadInJoyDraftboxItem[paramInt];
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = paramDragTextView1;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
+    this.jdField_a_of_type_ComTencentImageURLImageView = paramURLImageView;
+    this.b = paramDragTextView2;
   }
 }
 

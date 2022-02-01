@@ -11,14 +11,14 @@ class dd
 {
   dd(dc paramdc, ArrayList paramArrayList, int paramInt) {}
   
-  DataLineMsgRecord a(anvu paramanvu, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  DataLineMsgRecord a(amqd paramamqd, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
     int i = paramInt1;
     if (paramInt1 == 0) {
-      switch (aunj.a(paramString))
+      switch (aszt.a(paramString))
       {
       default: 
         i = 0;
@@ -27,8 +27,8 @@ class dd
     for (;;)
     {
       DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-      localDataLineMsgRecord.msgtype = anvu.a(i);
-      localDataLineMsgRecord.sessionid = paramanvu.a(0, this.jdField_a_of_type_Int).longValue();
+      localDataLineMsgRecord.msgtype = amqd.a(i);
+      localDataLineMsgRecord.sessionid = paramamqd.a(0, this.jdField_a_of_type_Int).longValue();
       localDataLineMsgRecord.path = paramString;
       localDataLineMsgRecord.thumbPath = null;
       localDataLineMsgRecord.groupId = paramInt2;
@@ -51,14 +51,14 @@ class dd
   void a(List<String> paramList, int paramInt)
   {
     if (paramList == null) {}
-    anvu localanvu;
+    amqd localamqd;
     int j;
     int i;
     Object localObject;
     for (;;)
     {
       return;
-      localanvu = (anvu)this.jdField_a_of_type_Dc.a.a(8);
+      localamqd = (amqd)this.jdField_a_of_type_Dc.a.getBusinessHandler(8);
       j = paramList.size();
       if (j > 3) {
         break;
@@ -66,9 +66,9 @@ class dd
       i = 0;
       while (i < j)
       {
-        localObject = a(localanvu, (String)paramList.get(i), paramInt, 0, 0, 0);
+        localObject = a(localamqd, (String)paramList.get(i), paramInt, 0, 0, 0);
         if (localObject != null) {
-          localanvu.a((DataLineMsgRecord)localObject, false);
+          localamqd.a((DataLineMsgRecord)localObject, false);
         }
         i += 1;
       }
@@ -78,11 +78,11 @@ class dd
     if ((j > 3) && (j < 50))
     {
       localObject = new ArrayList();
-      int k = localanvu.a();
+      int k = localamqd.a();
       i = 0;
       if (i < j)
       {
-        localDataLineMsgRecord = a(localanvu, (String)paramList.get(i), paramInt, k, j, i);
+        localDataLineMsgRecord = a(localamqd, (String)paramList.get(i), paramInt, k, j, i);
         if (localDataLineMsgRecord != null) {
           ((ArrayList)localObject).add(localDataLineMsgRecord);
         }
@@ -96,7 +96,7 @@ class dd
           localDataLineMsgRecord.groupSize = 0;
         }
         if (((ArrayList)localObject).size() > 0) {
-          localanvu.a((ArrayList)localObject, false);
+          localamqd.a((ArrayList)localObject, false);
         }
         localObject = new ArrayList();
       }
@@ -111,14 +111,14 @@ class dd
       if (((ArrayList)localObject).size() <= 0) {
         break;
       }
-      localanvu.a((ArrayList)localObject, false);
+      localamqd.a((ArrayList)localObject, false);
       return;
       localObject = new ArrayList();
-      j = localanvu.a();
+      j = localamqd.a();
       i = 0;
       if (i < 50)
       {
-        localDataLineMsgRecord = a(localanvu, (String)paramList.get(i), paramInt, j, 50, i);
+        localDataLineMsgRecord = a(localamqd, (String)paramList.get(i), paramInt, j, 50, i);
         if (localDataLineMsgRecord != null) {
           ((ArrayList)localObject).add(localDataLineMsgRecord);
         }
@@ -132,7 +132,7 @@ class dd
           localDataLineMsgRecord.groupSize = 0;
         }
         if (((ArrayList)localObject).size() > 0) {
-          localanvu.a((ArrayList)localObject, false);
+          localamqd.a((ArrayList)localObject, false);
         }
         localObject = new ArrayList();
       }
@@ -141,7 +141,7 @@ class dd
         i += 1;
         break label259;
         if (((ArrayList)localObject).size() > 0) {
-          localanvu.a((ArrayList)localObject, false);
+          localamqd.a((ArrayList)localObject, false);
         }
         i = 0;
         while (i < 50)

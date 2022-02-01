@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Comparator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.forward.ForwardPhotoOption.3;
 
 public class atnl
-  implements Comparator<FileManagerEntity>
+  implements View.OnTouchListener
 {
-  public atnl(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  public atnl(ForwardPhotoOption.3 param3) {}
   
-  public int a(FileManagerEntity paramFileManagerEntity1, FileManagerEntity paramFileManagerEntity2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramFileManagerEntity2.srvTime > paramFileManagerEntity1.srvTime) {
-      return 1;
-    }
-    if (paramFileManagerEntity2.srvTime < paramFileManagerEntity1.srvTime) {
-      return -1;
-    }
-    return 0;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atnl
  * JD-Core Version:    0.7.0.1
  */

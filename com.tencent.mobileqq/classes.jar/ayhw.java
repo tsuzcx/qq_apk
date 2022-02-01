@@ -1,24 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.widget.QQToast;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.portal.BreathEffectView;
 
-class ayhw
-  implements DialogInterface.OnClickListener
+public class ayhw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ayhw(ayhv paramayhv) {}
+  public ayhw(BreathEffectView paramBreathEffectView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (!bhnv.g(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
-    {
-      QQToast.a(this.a.a.jdField_a_of_type_AndroidViewView.getContext(), 1, anzj.a(2131707134), 0).a();
-      return;
-    }
-    ((ayrf)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263)).a(this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.e, this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.j, new ayhx(this));
-  }
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator) {}
 }
 
 

@@ -1,123 +1,36 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsResourceLoader.1;
-import com.tencent.biz.pubaccount.readinjoy.view.LayoutInflateProcessor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-
-public class rsr
+public abstract interface rsr
 {
-  private static int jdField_a_of_type_Int;
-  private static LayoutInflateProcessor jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor;
-  private static HashMap<Integer, Drawable> jdField_a_of_type_JavaUtilHashMap;
-  private Handler jdField_a_of_type_AndroidOsHandler;
+  public abstract void a(ryo paramryo);
   
-  public rsr(Context paramContext)
-  {
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor = new LayoutInflateProcessor(paramContext.getApplicationContext());
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    jdField_a_of_type_Int += 1;
-    a(paramContext);
-  }
+  public abstract void a(ryo paramryo, int paramInt1, int paramInt2, String paramString);
   
-  public static Drawable a(Context paramContext, int paramInt)
-  {
-    if (jdField_a_of_type_JavaUtilHashMap == null) {}
-    do
-    {
-      return null;
-      if (jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
-        return (Drawable)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-      }
-      try
-      {
-        paramContext = paramContext.getResources().getDrawable(paramInt);
-        jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramContext);
-        return paramContext;
-      }
-      catch (OutOfMemoryError paramContext) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoFeedsResourceLoader", 2, "innerGetDrawableFromCache() OutOfMemoryError e=" + paramContext.getMessage());
-    return null;
-  }
+  public abstract void a(ryo paramryo, int paramInt, boolean paramBoolean);
   
-  public static View a(int paramInt, boolean paramBoolean, ViewGroup.LayoutParams paramLayoutParams)
-  {
-    View localView = null;
-    if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor != null) {
-      localView = jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor.a(paramInt, paramBoolean, paramLayoutParams);
-    }
-    while (!paramBoolean) {
-      return localView;
-    }
-    localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(paramInt, null, false);
-    localView.setLayoutParams(paramLayoutParams);
-    return localView;
-  }
+  public abstract void a(ryo paramryo, long paramLong1, long paramLong2);
   
-  public static LayoutInflateProcessor a()
-  {
-    return jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor;
-  }
+  public abstract void a(ryo paramryo, boolean paramBoolean);
   
-  private sef a()
-  {
-    return new sef(2131560317, null, new rss(this));
-  }
+  public abstract void a(ryo paramryo, boolean paramBoolean1, boolean paramBoolean2);
   
-  private sef a(int paramInt)
-  {
-    if (bnrf.d()) {
-      return new sef(2131560336, paramInt, null, new rst(this));
-    }
-    return new sef(2131560321, paramInt, null, new rsu(this));
-  }
+  public abstract boolean a(ryo paramryo);
   
-  private void a(Context paramContext)
-  {
-    ThreadManager.excute(new VideoFeedsResourceLoader.1(this, new WeakReference(paramContext)), 16, null, true);
-  }
+  public abstract void b(ryo paramryo);
   
-  public void a()
-  {
-    if (jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor != null) {
-      jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor.a();
-    }
-    if (jdField_a_of_type_JavaUtilHashMap != null) {
-      jdField_a_of_type_JavaUtilHashMap.clear();
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    jdField_a_of_type_Int -= 1;
-    if (jdField_a_of_type_Int <= 0)
-    {
-      jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor = null;
-      jdField_a_of_type_JavaUtilHashMap = null;
-    }
-  }
+  public abstract void b(ryo paramryo, boolean paramBoolean);
   
-  public void a(int paramInt)
-  {
-    if (paramInt == 0) {}
-    for (sef localsef1 = new sef(2131560352, null, null);; localsef1 = null)
-    {
-      sef localsef2 = new sef(2131560096, null, null);
-      sef localsef3 = new sef(2131560256, null, null);
-      sef localsef4 = a(1);
-      sef localsef5 = a();
-      sef localsef6 = a(2);
-      jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewLayoutInflateProcessor.a(new sef[] { localsef1, localsef2, localsef3, localsef4, localsef5, localsef6 });
-      return;
-    }
-  }
+  public abstract void c(ryo paramryo);
+  
+  public abstract void d(ryo paramryo);
+  
+  public abstract void e(ryo paramryo);
+  
+  public abstract void f(ryo paramryo);
+  
+  public abstract void g(ryo paramryo);
+  
+  public abstract void h(ryo paramryo);
+  
+  public abstract void i(ryo paramryo);
 }
 
 

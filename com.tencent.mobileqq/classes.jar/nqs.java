@@ -1,28 +1,41 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.now.NowVideoView;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class nqs
-  extends Handler
+  implements SensorEventListener
 {
-  public nqs(NowVideoView paramNowVideoView) {}
+  protected byte a;
+  protected String a;
   
-  public void handleMessage(Message paramMessage)
+  public nqs(SensorAPIJavaScript paramSensorAPIJavaScript, byte paramByte, String paramString)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Byte = paramByte;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    switch (this.jdField_a_of_type_Byte)
     {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.a.jdField_a_of_type_Nql == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null));
-      this.a.jdField_a_of_type_Nql.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, true);
+    default: 
       return;
-    } while ((this.a.jdField_a_of_type_Nql == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (this.a.jdField_a_of_type_Boolean) || (this.a.d != 2));
-    this.a.jdField_a_of_type_Nql.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, false);
+    case 0: 
+      f1 = paramSensorEvent.values[0];
+      float f2 = paramSensorEvent.values[1];
+      float f3 = paramSensorEvent.values[2];
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1), String.valueOf(f2), String.valueOf(f3) });
+      return;
+    case 1: 
+      f1 = paramSensorEvent.values[0];
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1) });
+      return;
+    }
+    float f1 = paramSensorEvent.values[0];
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1) });
   }
 }
 

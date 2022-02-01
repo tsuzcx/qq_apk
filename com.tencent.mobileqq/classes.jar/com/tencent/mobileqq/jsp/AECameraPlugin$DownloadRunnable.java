@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.jsp;
 
-import beuq;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
 
 class AECameraPlugin$DownloadRunnable
   implements Runnable
 {
-  beuq jdField_a_of_type_Beuq;
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  INetEngine.INetEngineListener jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener;
   String jdField_a_of_type_JavaLangString;
   String b;
   String c;
   
   public void run()
   {
-    AECameraPlugin.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Beuq);
+    AECameraPlugin.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener);
   }
 }
 

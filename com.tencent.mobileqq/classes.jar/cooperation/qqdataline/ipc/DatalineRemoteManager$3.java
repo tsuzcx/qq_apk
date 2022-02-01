@@ -1,15 +1,15 @@
 package cooperation.qqdataline.ipc;
 
-import bmkd;
+import bkok;
 
 public class DatalineRemoteManager$3
   implements Runnable
 {
-  public DatalineRemoteManager$3(bmkd parambmkd) {}
+  public DatalineRemoteManager$3(bkok parambkok) {}
   
   public void run()
   {
-    bmkd.c(this.this$0);
+    bkok.c(this.this$0);
   }
 }
 

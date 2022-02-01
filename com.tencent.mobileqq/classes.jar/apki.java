@@ -1,10 +1,31 @@
-public abstract interface apki
+import com.tencent.mobileqq.chat.ui.MessageNotificationSettingFragment;
+import com.tencent.qphone.base.util.QLog;
+
+public class apki
+  extends amsu
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public apki(MessageNotificationSettingFragment paramMessageNotificationSettingFragment) {}
   
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void k_(int paramInt);
+  protected void onSetMessageNotification(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MessageNotificationSettingFragment", 2, new Object[] { "onSetMessageNotification: invoked. ", " isSuccess: ", Boolean.valueOf(paramBoolean), " data: " + paramArrayOfObject });
+    }
+    boolean[] arrayOfBoolean;
+    if ((paramBoolean) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 3))
+    {
+      localObject = (String[])paramArrayOfObject[0];
+      arrayOfBoolean = (boolean[])paramArrayOfObject[1];
+      if ((localObject != null) && (localObject.length >= 1) && (arrayOfBoolean != null) && (arrayOfBoolean.length >= 1)) {}
+    }
+    else
+    {
+      return;
+    }
+    Object localObject = localObject[0];
+    paramBoolean = arrayOfBoolean[0];
+    ((Integer)paramArrayOfObject[2]).intValue();
+  }
 }
 
 

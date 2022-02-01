@@ -1,17 +1,14 @@
-import android.os.Handler;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
 
-class nir
-  extends niy
+public class nir
+  extends aliz
 {
-  nir(niq paramniq) {}
-  
-  public boolean a(int paramInt, String paramString, mze parammze)
-  {
-    bkdp.c(this.a.a, "onRoomSelfExit " + paramInt + " " + paramString);
-    niq.a(this.a).removeCallbacksAndMessages(null);
-    niq.a(this.a).sendEmptyMessage(2);
-    return true;
-  }
+  public LinearLayout a;
+  public TextView a;
+  public RoomInfo a;
+  public TextView b;
 }
 
 

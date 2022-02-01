@@ -1,290 +1,171 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import android.hardware.Camera;
-import android.hardware.Camera.Size;
-import android.os.AsyncTask;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeSwitcher;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
 
 public class bdbd
-  extends AsyncTask<Void, Void, String>
 {
-  bdbc jdField_a_of_type_Bdbc;
+  Handler jdField_a_of_type_AndroidOsHandler = new bdbf(this, Looper.getMainLooper());
+  bdbm jdField_a_of_type_Bdbm;
+  bdbp jdField_a_of_type_Bdbp = new bdbe(this);
+  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  ArrayList<bdbg> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   
-  public bdbd(bday parambday, bdbc parambdbc)
+  public bdbd(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_Bdbc = parambdbc;
-    bhnn.a();
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_Bdbm = ((bdbm)paramAppRuntime.getManager(185));
   }
   
-  private String a()
+  public int a()
   {
-    boolean bool2 = false;
-    Object localObject4 = this.jdField_a_of_type_Bdbc.jdField_a_of_type_ArrayOfByte;
-    Object localObject1 = this.jdField_a_of_type_Bdbc.jdField_a_of_type_JavaIoFile;
-    bhnn.a();
-    if (localObject1 == null) {
-      return null;
-    }
-    int i;
-    if (localObject4 != null)
+    int i = 2;
+    if (a())
     {
-      i = aqql.a(this.jdField_a_of_type_Bday.jdField_a_of_type_Aqpp, this.jdField_a_of_type_Bday.jdField_a_of_type_Int, this.jdField_a_of_type_Bdbc.jdField_a_of_type_Int);
       if (QLog.isColorLevel()) {
-        QLog.i(bday.b, 2, "[onPictureTaken] mirror=" + this.jdField_a_of_type_Bdbc.jdField_a_of_type_Boolean + " frontFlip=" + this.jdField_a_of_type_Bday.jdField_a_of_type_Aqpp.a().b() + " jpegRotation=" + i);
+        QLog.i("NightModeLogic", 2, "switchRightViewImage status: juhua");
       }
+      i = 0;
     }
-    for (;;)
-    {
-      try
-      {
-        boolean bool3 = bday.a(this.jdField_a_of_type_Bday, this.jdField_a_of_type_Bdbc.jdField_a_of_type_AndroidHardwareCamera$Size.width, this.jdField_a_of_type_Bdbc.jdField_a_of_type_AndroidHardwareCamera$Size.height, this.jdField_a_of_type_Bdbc.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_Bdbc.jdField_a_of_type_AndroidGraphicsRect.height());
-        boolean bool1 = bool2;
-        if (this.jdField_a_of_type_Bdbc.jdField_a_of_type_Boolean)
-        {
-          bool1 = bool2;
-          if (!this.jdField_a_of_type_Bday.jdField_a_of_type_Aqpp.a().b()) {
-            bool1 = true;
-          }
-        }
-        localObject4 = aqql.b((byte[])localObject4, this.jdField_a_of_type_Bdbc.jdField_a_of_type_AndroidGraphicsRect, bool1, i);
-        alwe.a("clip_rotate;");
-        bhmq.b((Bitmap)localObject4, this.jdField_a_of_type_Bdbc.c, (File)localObject1);
-        alwe.a(false, this.jdField_a_of_type_Bdbc.jdField_a_of_type_AndroidHardwareCamera$Size.width, this.jdField_a_of_type_Bdbc.jdField_a_of_type_AndroidHardwareCamera$Size.height, this.jdField_a_of_type_Bdbc.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_Bdbc.jdField_a_of_type_AndroidGraphicsRect.height(), bool3, i, bool1);
-        alwe.a("save jpg;");
-        if (0 == 0) {}
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        QLog.e(bday.b, 2, "[onPictureTaken] createBitmap failed orientation:" + this.jdField_a_of_type_Bdbc.jdField_a_of_type_Int + ", " + localOutOfMemoryError.getMessage(), localOutOfMemoryError);
-        aqql.a(null);
-        if (0 == 0) {
-          continue;
-        }
-        try
-        {
-          throw new NullPointerException();
-        }
-        catch (IOException localIOException2)
-        {
-          localIOException2.printStackTrace();
-        }
-        continue;
-      }
-      catch (IOException localIOException3)
-      {
-        localIOException3.printStackTrace();
-        aqql.a(null);
-        if (0 == 0) {
-          continue;
-        }
-        try
-        {
-          throw new NullPointerException();
-        }
-        catch (IOException localIOException4)
-        {
-          localIOException4.printStackTrace();
-        }
-        continue;
-      }
-      finally
-      {
-        if (0 == 0) {
-          continue;
-        }
-        try
-        {
-          throw new NullPointerException();
-          throw localObject2;
-        }
-        catch (IOException localIOException5)
-        {
-          localIOException5.printStackTrace();
-          continue;
-        }
-        aqql.a(null);
-        continue;
-      }
-      try
-      {
-        throw new NullPointerException();
-        if ((localObject1 != null) && (0 != 0)) {}
-        try
-        {
-          bhmq.a(BaseApplicationImpl.getContext(), ((File)localObject1).getAbsolutePath());
-          if (QLog.isColorLevel()) {
-            QLog.i(bday.b, 2, "[onPictureTaken] saveBitmapFileAsJPEG to " + ((File)localObject1).getPath());
-          }
-          if (!((File)localObject1).exists()) {
-            continue;
-          }
-          BaseApplicationImpl.sImageCache.put(((File)localObject1).getAbsolutePath() + "#short_video_camera_preview_cache", null);
-        }
-        catch (Exception localException)
-        {
-          QLog.e(bday.b, 2, "[onPictureTaken] saveBitmapFileAsJPEG failed: " + localException.getMessage());
-          if (!localObject2.exists()) {
-            break label660;
-          }
-          BaseApplicationImpl.sImageCache.put(localObject2.getAbsolutePath() + "#short_video_camera_preview_cache", null);
-          continue;
-          aqql.a(null);
-          continue;
-        }
-        finally
-        {
-          if (!localObject2.exists()) {
-            break label712;
-          }
-          BaseApplicationImpl.sImageCache.put(localObject2.getAbsolutePath() + "#short_video_camera_preview_cache", null);
-          for (;;)
-          {
-            throw localObject5;
-            aqql.a(null);
-          }
-          Object localObject3 = null;
-          continue;
-        }
-        bhnn.a(bday.b, "TakePictureTask_writeTmpFile_needClip");
-        if (((File)localObject1).exists())
-        {
-          localObject1 = ((File)localObject1).getAbsolutePath();
-          return localObject1;
-        }
-      }
-      catch (IOException localIOException1)
-      {
-        localIOException1.printStackTrace();
-      }
-    }
-  }
-  
-  private void a(File paramFile, byte[] paramArrayOfByte)
-  {
     do
     {
-      try
+      return i;
+      if (ThemeUtil.isInNightMode(this.jdField_a_of_type_MqqAppAppRuntime))
       {
-        localFileOutputStream = new FileOutputStream(paramFile);
-        paramFile.printStackTrace();
-      }
-      catch (Exception paramFile)
-      {
-        try
-        {
-          localFileOutputStream.write(paramArrayOfByte);
-          localFileOutputStream.flush();
-          localFileOutputStream.close();
-          return;
+        if (QLog.isColorLevel()) {
+          QLog.i("NightModeLogic", 2, "switchRightViewImage status: sun");
         }
-        catch (Exception paramFile)
-        {
-          FileOutputStream localFileOutputStream;
-          paramArrayOfByte = localFileOutputStream;
-          continue;
-        }
-        paramFile = paramFile;
-        paramArrayOfByte = null;
+        return 1;
       }
-    } while (paramArrayOfByte == null);
-    try
+    } while (!QLog.isColorLevel());
+    QLog.i("NightModeLogic", 2, "switchRightViewImage status: moon");
+    return 2;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_MqqAppAppRuntime = null;
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      paramArrayOfByte.close();
+      bdbg localbdbg = (bdbg)localIterator.next();
+      if (1 == paramInt) {
+        localbdbg.b(paramBundle);
+      } else if (-2 == paramInt) {
+        localbdbg.a(paramBundle);
+      }
+    }
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    if (this.jdField_a_of_type_MqqAppAppRuntime == null) {
+      QLog.e("NightModeLogic", 1, "startNightMode Err mRuntime == null");
+    }
+    boolean bool;
+    do
+    {
       return;
-    }
-    catch (IOException paramFile)
-    {
-      paramFile.printStackTrace();
-      return;
-    }
-  }
-  
-  private String b()
-  {
-    int j = 0;
-    byte[] arrayOfByte = this.jdField_a_of_type_Bdbc.jdField_a_of_type_ArrayOfByte;
-    Object localObject = this.jdField_a_of_type_Bdbc.jdField_a_of_type_AndroidGraphicsRect;
-    localObject = this.jdField_a_of_type_Bdbc.jdField_a_of_type_JavaIoFile;
-    if (QLog.isColorLevel()) {
-      QLog.i(bday.b, 2, "Do not clip photo");
-    }
-    bhnn.a();
-    a((File)localObject, arrayOfByte);
-    if (bdax.d(bdax.j)) {
-      bhmq.a(((File)localObject).getAbsolutePath(), "Orientation", String.valueOf(6));
-    }
-    while (!bdax.d(bdax.k))
-    {
-      bhnn.a(bday.b, "TakePictureTask_writePhotoFile");
-      if (!((File)localObject).exists()) {
-        break;
-      }
-      return ((File)localObject).getAbsolutePath();
-    }
-    int i = j;
-    switch (this.jdField_a_of_type_Bdbc.jdField_a_of_type_Int % 360)
-    {
-    default: 
-      i = j;
-    }
-    for (;;)
-    {
-      bhmq.a(((File)localObject).getAbsolutePath(), "Orientation", String.valueOf(i));
-      break;
-      i = 6;
-      continue;
-      i = 3;
-      continue;
-      i = 8;
-    }
-    return null;
-  }
-  
-  protected String a(Void... paramVarArgs)
-  {
-    if (this.jdField_a_of_type_Bdbc.d == 0) {
-      return b();
-    }
-    if (this.jdField_a_of_type_Bdbc.d == 1) {
-      return a();
-    }
-    return null;
-  }
-  
-  protected void a(String paramString)
-  {
-    
-    if (this.jdField_a_of_type_Bdbc.jdField_a_of_type_Amap != null)
-    {
-      this.jdField_a_of_type_Bdbc.jdField_a_of_type_Amap.a_(paramString);
-      if ((paramString == null) && (QLog.isColorLevel())) {
-        QLog.i(bday.b, 2, "Picture bitmap data error or output file not exist");
-      }
-    }
-    bhnn.a(bday.b, "TakePictureTask_onPictureTokenCb");
-    if (this.jdField_a_of_type_Bday.jdField_a_of_type_AndroidHardwareCamera != null) {}
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_Bday.jdField_a_of_type_AndroidHardwareCamera.startPreview();
-        this.jdField_a_of_type_Bday.jdField_a_of_type_Boolean = true;
-        bhnn.a(bday.b, "TakePictureTask");
-        return;
-      }
-      catch (RuntimeException paramString)
-      {
-        paramString.printStackTrace();
-        continue;
-      }
       if (QLog.isColorLevel()) {
-        QLog.i(bday.b, 2, "[onPostExecute]mCamera is " + null);
+        QLog.d("NightModeLogic", 2, "startNightMode, isNightMode=" + ThemeUtil.isInNightMode(this.jdField_a_of_type_MqqAppAppRuntime) + ", nowThemeId=" + ThemeUtil.getCurrentThemeId() + ", userThemeId=" + ThemeUtil.getUserCurrentThemeId(this.jdField_a_of_type_MqqAppAppRuntime) + ", mRuntime=" + this.jdField_a_of_type_MqqAppAppRuntime);
       }
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+      bool = b();
+    } while (!QLog.isColorLevel());
+    QLog.i("NightModeLogic", 2, "startNightMode result=" + bool);
+  }
+  
+  public void a(bdbg parambdbg, boolean paramBoolean)
+  {
+    if (parambdbg != null)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(parambdbg);
+      if (paramBoolean) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(parambdbg);
+      }
+    }
+  }
+  
+  public void a(AppRuntime paramAppRuntime)
+  {
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+  }
+  
+  public boolean a()
+  {
+    boolean bool = ThemeSwitcher.a();
+    QLog.e("NightModeLogic", 1, "isDownloadOrSwtich: " + bool);
+    return bool;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Bdbm.c();
+    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
+      ((bbyj)((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getBusinessHandler(154)).c();
+    }
+  }
+  
+  public boolean b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NightModeLogic", 2, "setupNightTheme");
+    }
+    if (this.jdField_a_of_type_MqqAppAppRuntime == null)
+    {
+      QLog.e("NightModeLogic", 1, "setupNightTheme Err mRuntime == null");
+      return false;
+    }
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("start_status", 1);
+    a(1, (Bundle)localObject);
+    boolean bool1 = ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_MqqAppAppRuntime, false, null);
+    boolean bool2 = bbyp.b();
+    if (!bool1) {
+      if (bool2)
+      {
+        localObject = "2920";
+        bcef.b((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "Setting_tab", "Night_mode", 0, 0, "1", "", "", "");
+        VasWebviewUtil.reportVasStatus("Setting_tab", "Night_mode", "0", 0, 0);
+      }
+    }
+    for (;;)
+    {
+      QLog.d("NightModeLogic", 1, "setupNightTheme themeID=" + (String)localObject);
+      ThemeSwitcher.a((String)localObject, "202", this.jdField_a_of_type_Bdbp);
+      return true;
+      localObject = "1103";
+      break;
+      if (!bool2) {
+        break label176;
+      }
+      localObject = bbyp.a(bbyp.d());
+    }
+    label176:
+    Bundle localBundle = bdbo.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime);
+    localObject = localBundle.getString("themeID");
+    QLog.d("NightModeLogic", 1, "setupNightTheme, pre themeID=" + (String)localObject + ",version=" + localBundle.getString("version"));
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+    for (;;)
+    {
+      bcef.b((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "Setting_tab", "Night_mode", 0, 0, "0", "", "", "");
+      break;
+      localObject = "1000";
     }
   }
 }

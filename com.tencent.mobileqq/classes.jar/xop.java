@@ -1,53 +1,45 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
 import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
 import java.util.List;
 
 public class xop
-  extends JobSegment<String, yfw>
+  extends vll<xoi, xhv>
 {
-  public xop(xoj paramxoj) {}
-  
-  protected void a(JobContext paramJobContext, String paramString)
+  public xop(xoi paramxoi)
   {
-    if ((xoj.a(this.a).a != null) && (TextUtils.equals(xoj.a(this.a).a.feedId, paramString)))
-    {
-      yuk.d("Q.qqstory.player.CommentFloatDialogController", "feed item already exist , no need to pull again");
-      notifyError(new ErrorMessage(2223, "feed item already exist"));
-      return;
-    }
-    paramString = new yfw();
-    Object localObject1 = (CommentLikeFeedItem)((yme)wth.a(11)).a(xoj.a(this.a));
-    if (localObject1 != null)
-    {
-      if ((localObject1 instanceof VideoListFeedItem))
-      {
-        paramJobContext = (VideoListFeedItem)localObject1;
-        localObject2 = ((ymk)wth.a(12)).a(xoj.a(this.a), paramJobContext.mVideoPullType);
-        if (localObject2 != null)
-        {
-          paramJobContext.mVideoNextCookie = ((FeedVideoInfo)localObject2).mVideoNextCookie;
-          paramJobContext.mIsVideoEnd = ((FeedVideoInfo)localObject2).mIsVideoEnd;
-          paramJobContext.mVideoPullType = ((FeedVideoInfo)localObject2).mVideoPullType;
-          paramJobContext.mVideoSeq = ((FeedVideoInfo)localObject2).mVideoSeq;
-          paramString.a(((FeedVideoInfo)localObject2).mVideoItemList, true);
-        }
-      }
-      paramString.a = ((CommentLikeFeedItem)localObject1);
-      notifyResult(paramString);
-      return;
-    }
-    localObject1 = new xce();
-    ((xce)localObject1).a = new ArrayList();
-    Object localObject2 = new ylw(xoj.a(this.a), 0, "", "");
-    ((xce)localObject1).a.add(localObject2);
-    wow.a().a((wpa)localObject1, new xoq(this, paramJobContext, paramString));
+    super(paramxoi);
   }
+  
+  public void a(@NonNull xoi paramxoi, @NonNull xhv paramxhv)
+  {
+    Object localObject = paramxoi.a(paramxhv.jdField_a_of_type_JavaLangString);
+    if (localObject == null)
+    {
+      xvv.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramxhv.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    if (!(localObject instanceof xpg))
+    {
+      xvv.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not general type!! feedId:%s", new Object[] { paramxhv.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    localObject = (xpg)localObject;
+    if (paramxhv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      ((xpg)localObject).c(paramxhv.jdField_a_of_type_JavaUtilList, false);
+      ((VideoListFeedItem)((xpg)localObject).a).updateVideoInfo(paramxhv.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
+      xvv.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s video update after count:%d", paramxhv.jdField_a_of_type_JavaLangString, Integer.valueOf(((xpg)localObject).a().size()));
+    }
+    xoi.a(paramxoi).a((xpg)localObject);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xhv.class;
+  }
+  
+  public void b(@NonNull xoi paramxoi, @NonNull xhv paramxhv) {}
 }
 
 

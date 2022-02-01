@@ -1,40 +1,17 @@
-import java.util.ArrayList;
-import java.util.Comparator;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
 
-class aqzj
-  implements Comparator<aqzk>
+public class aqzj
 {
-  aqzj(aqzf paramaqzf, boolean paramBoolean, ArrayList paramArrayList) {}
+  public View a;
+  public ImageView a;
+  public URLImageView a;
+  public View b;
+  public ImageView b;
+  public View c;
   
-  public int a(aqzk paramaqzk1, aqzk paramaqzk2)
-  {
-    int i = -1;
-    if (paramaqzk1.jdField_a_of_type_Int > paramaqzk2.jdField_a_of_type_Int) {}
-    do
-    {
-      return 1;
-      if (paramaqzk1.jdField_a_of_type_Int < paramaqzk2.jdField_a_of_type_Int) {
-        return -1;
-      }
-      if ((paramaqzk1.jdField_a_of_type_Boolean) && (!paramaqzk2.jdField_a_of_type_Boolean))
-      {
-        if (this.jdField_a_of_type_Boolean) {}
-        for (;;)
-        {
-          return i;
-          i = 1;
-        }
-      }
-      if ((paramaqzk1.jdField_a_of_type_Boolean) || (!paramaqzk2.jdField_a_of_type_Boolean)) {
-        break;
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    return -1;
-    if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 3) && (Math.abs(paramaqzk1.jdField_a_of_type_Float - paramaqzk2.jdField_a_of_type_Float) > 3.0F)) {
-      return Float.compare(paramaqzk1.jdField_a_of_type_Float, paramaqzk2.jdField_a_of_type_Float);
-    }
-    return 0;
-  }
+  public aqzj(aqzb paramaqzb) {}
 }
 
 

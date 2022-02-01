@@ -1,24 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class awsv
+public class awsv
   implements View.OnClickListener
 {
-  awsv(awsu paramawsu, awsk paramawsk) {}
+  public awsv(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Awsu.jdField_a_of_type_Awsk.a()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      awsk.a(this.jdField_a_of_type_Awsu.jdField_a_of_type_Awsk).c(true);
-      awsk.a(this.jdField_a_of_type_Awsu.jdField_a_of_type_Awsk);
-      bdll.b(null, "CliOper", "", "", "0X800A973", "0X800A973", 0, 0, "0", "0", "0", "");
-    }
+    this.a.j();
+    ShortVideoCommentsView.a(this.a).setVisibility(8);
+    ShortVideoCommentsView.a(this.a, 2);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

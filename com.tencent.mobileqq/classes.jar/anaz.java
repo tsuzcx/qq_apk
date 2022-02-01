@@ -1,32 +1,25 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import java.util.List;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-class anaz
-  implements anjf
+public class anaz
+  implements BusinessObserver
 {
-  anaz(anav paramanav, int paramInt) {}
+  public static final int OBSERVER_TYPE_CHECK_REALNAME = 1;
   
-  public void a(boolean paramBoolean, String paramString, List<anjd> paramList)
-  {
-    if (paramBoolean) {}
-    for (int i = 0;; i = -1)
-    {
-      paramString = EIPCResult.createResult(i, null);
-      this.jdField_a_of_type_Anav.callbackResult(this.jdField_a_of_type_Int, paramString);
-      QLog.i("cmgame_process.CmGameServerQIPCModule", 2, "onDownLoadFinish onDownLoadFinish sucess:" + paramBoolean);
-      return;
-    }
-  }
+  public void onCheckRealNameRsp(boolean paramBoolean, int paramInt) {}
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramBoolean) {}
-    for (paramInt1 = 0;; paramInt1 = -1)
+    if ((paramObject != null) && ((paramObject instanceof Object[]))) {}
+    for (paramObject = (Object[])paramObject;; paramObject = null)
     {
-      paramString = EIPCResult.createResult(paramInt1, null);
-      this.jdField_a_of_type_Anav.callbackResult(this.jdField_a_of_type_Int, paramString);
-      QLog.i("cmgame_process.CmGameServerQIPCModule", 2, "onDownLoadFinish onDownLoadFinish sucess:" + paramBoolean);
+      switch (paramInt)
+      {
+      }
+      do
+      {
+        return;
+      } while (paramObject == null);
+      onCheckRealNameRsp(paramBoolean, ((Integer)paramObject[0]).intValue());
       return;
     }
   }

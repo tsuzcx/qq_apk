@@ -1,19 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.RotateableView;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import org.json.JSONObject;
 
-public class bjcr
-  extends Handler
+final class bjcr
+  implements MiniAppCmdInterface
 {
-  public bjcr(RotateableView paramRotateableView) {}
+  bjcr(AsyncResult paramAsyncResult) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    RotateableView.a(this.a, RotateableView.a(this.a) + 8.0F);
-    if (RotateableView.a(this.a) >= 360.0F) {
-      RotateableView.a(this.a, RotateableView.a(this.a) - 360.0F);
+    if (this.a != null) {
+      this.a.onReceiveResult(paramBoolean, paramJSONObject);
     }
-    this.a.invalidate();
   }
 }
 

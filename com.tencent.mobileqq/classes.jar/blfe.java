@@ -1,122 +1,64 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
+import com.tencent.biz.common.util.NetworkUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import cooperation.weiyun.channel.pb.WeiyunPB.MsgHead;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
 
-public abstract class blfe
+final class blfe
 {
-  blfe(TraeAudioManager paramTraeAudioManager) {}
+  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private final WeiyunPB.MsgHead jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead;
+  private final byte[] jdField_a_of_type_ArrayOfByte;
   
-  public abstract String a();
-  
-  String a(int paramInt)
+  blfe(int paramInt, byte[] paramArrayOfByte)
   {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "unknow";
-    }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "STATE_OFF";
-      continue;
-      str = "STATE_TURNING_ON";
-      continue;
-      str = "STATE_ON";
-      continue;
-      str = "STATE_TURNING_OFF";
-    }
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead = a(paramInt);
   }
   
-  public abstract void a();
-  
-  abstract void a(Context paramContext, Intent paramIntent);
-  
-  public void a(Context paramContext, Intent paramIntent, blff paramblff)
+  blfe(WeiyunPB.MsgHead paramMsgHead, byte[] paramArrayOfByte)
   {
-    if ("android.bluetooth.adapter.action.STATE_CHANGED".equals(paramIntent.getAction()))
-    {
-      int i = paramIntent.getIntExtra("android.bluetooth.adapter.extra.STATE", -1);
-      int j = paramIntent.getIntExtra("android.bluetooth.adapter.extra.PREVIOUS_STATE", -1);
-      if (QLog.isColorLevel()) {
-        QLog.w("TraeAudioManager", 2, "BT ACTION_STATE_CHANGED|   EXTRA_STATE " + a(i));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("TraeAudioManager", 2, "BT ACTION_STATE_CHANGED|   EXTRA_PREVIOUS_STATE " + a(j));
-      }
-      if (i == 10)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("TraeAudioManager", 2, "    BT off");
-        }
-        paramblff.a("DEVICE_BLUETOOTHHEADSET", false);
-      }
-      while ((i != 12) || (!QLog.isColorLevel())) {
-        return;
-      }
-      QLog.w("TraeAudioManager", 2, "BT OFF-->ON,Visiable it...");
-      return;
-    }
-    a(paramContext, paramIntent);
+    this.jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead = paramMsgHead;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
   
-  abstract void a(IntentFilter paramIntentFilter);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(Context paramContext, blff paramblff);
-  
-  String b(int paramInt)
+  private WeiyunPB.MsgHead a(int paramInt)
   {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "unknow";
-    }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "SCO_AUDIO_STATE_DISCONNECTED";
-      continue;
-      str = "SCO_AUDIO_STATE_CONNECTED";
-      continue;
-      str = "SCO_AUDIO_STATE_CONNECTING";
-      continue;
-      str = "SCO_AUDIO_STATE_ERROR";
-    }
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    WeiyunPB.MsgHead localMsgHead = new WeiyunPB.MsgHead();
+    localMsgHead.uin.set(localAppRuntime.getLongAccountUin());
+    localMsgHead.seq.set(a());
+    localMsgHead.type.set(1);
+    localMsgHead.cmd.set(paramInt);
+    localMsgHead.emulator_flag.set(0);
+    localMsgHead.appid.set(31532);
+    localMsgHead.encrypt.set(0);
+    localMsgHead.zip_flag.set(0);
+    localMsgHead.version.set(blhd.c());
+    localMsgHead.fix_version.set(blhd.d());
+    localMsgHead.nettype.set(NetworkUtil.getNetworkType(localAppRuntime.getApplication()));
+    localMsgHead.major_version.set(blhd.a());
+    localMsgHead.minor_version.set(blhd.b());
+    return localMsgHead;
   }
   
-  public void b(IntentFilter paramIntentFilter)
+  public int a()
   {
-    paramIntentFilter.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
-    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_CONNECTED");
-    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_DISCONNECTED");
-    a(paramIntentFilter);
+    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
   }
   
-  String c(int paramInt)
+  public WeiyunPB.MsgHead a()
   {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "unknow";
-    }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "STATE_DISCONNECTED";
-      continue;
-      str = "STATE_CONNECTING";
-      continue;
-      str = "STATE_CONNECTED";
-      continue;
-      str = "STATE_DISCONNECTING";
-    }
+    return this.jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfByte;
   }
 }
 

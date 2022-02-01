@@ -1,27 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment.2.1;
+import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class albc
-  implements View.OnClickListener
+  extends amnw
 {
-  public albc(LingHbFragment paramLingHbFragment) {}
+  public albc(TroopDiscussionTroop paramTroopDiscussionTroop) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt)
   {
-    if ((paramView instanceof TextView))
+    switch (paramInt)
     {
-      String str = ((TextView)paramView).getText().toString();
-      QLog.i("LingHbFragment", 2, "choice: " + str);
-      this.a.c.setText(str);
-      this.a.a.post(new LingHbFragment.2.1(this));
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopDiscussionTroop", 2, "onCacheInited " + paramInt);
+      }
+    } while (TroopDiscussionTroop.a(this.a) == null);
+    TroopDiscussionTroop.a(this.a).c();
   }
 }
 

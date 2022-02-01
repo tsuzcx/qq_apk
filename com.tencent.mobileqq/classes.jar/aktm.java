@@ -1,34 +1,27 @@
-import NS_MOBILE_OPERATION.PicInfo;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.activity.photo.album.OtherCommonData;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
-import java.util.HashMap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class aktm
-  implements OtherCommonData
+  implements Animation.AnimationListener
 {
-  public int a = (int)bezh.a();
-  public long a;
-  public HashMap<String, PicInfo> a;
-  public boolean a;
-  private boolean b;
+  public aktm(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a(boolean paramBoolean, PhotoCommonBaseData<aktm> paramPhotoCommonBaseData)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.b = paramBoolean;
-    if (paramBoolean)
-    {
-      paramPhotoCommonBaseData.needMediaInfo = true;
-      blfp.a();
-    }
+    NewFlowCameraActivity.a(this.a).setVisibility(4);
+    NewFlowCameraActivity.a(this.a).setEnabled(false);
+    this.a.e.setVisibility(4);
+    akrx.a("", "0X8007C05", this.a.c + "", "", "", "");
   }
   
-  public boolean a()
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (Build.VERSION.SDK_INT < 17) {
-      return false;
-    }
-    return this.b;
+    NewFlowCameraActivity.a(this.a).setEnabled(false);
   }
 }
 

@@ -1,17 +1,6 @@
-import java.util.List;
-
-class sfi
-  extends pmr
+abstract interface sfi
 {
-  sfi(sel paramsel, String paramString, List paramList)
-  {
-    super(paramString);
-  }
-  
-  public void a(pmk parampmk)
-  {
-    parampmk.a(this.jdField_a_of_type_JavaUtilList);
-  }
+  public abstract long a();
 }
 
 

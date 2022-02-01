@@ -1,24 +1,34 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import mqq.app.Foreground;
 
 public class amxy
-  implements AdapterView.OnItemClickListener
 {
-  public amxy(CmGameDebugView paramCmGameDebugView) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static String a()
   {
-    CmGameDebugView.a(this.a, paramInt);
-    this.a.a(paramInt);
-    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    Activity localActivity = Foreground.getTopActivity();
+    String str;
+    if (localActivity != null)
+    {
+      str = localActivity.getClass().getName();
+      if ((localActivity instanceof SplashActivity))
+      {
+        if (SplashActivity.a == 1) {
+          return str + "_" + ((SplashActivity)localActivity).a();
+        }
+        return str + "_ChatFragment";
+      }
+    }
+    else
+    {
+      return "Null";
+    }
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amxy
  * JD-Core Version:    0.7.0.1
  */

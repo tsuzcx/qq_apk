@@ -1,35 +1,60 @@
-public class bguk
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.export.external.interfaces.SslError;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
+import com.tencent.smtt.sdk.WebView;
+
+public abstract interface bguk
 {
-  public static int A = -99;
-  public static int B = -98;
-  public static int C = -97;
-  public static int D = -36;
-  public static int a;
-  public static int b = 1;
-  public static int c = 2;
-  public static int d = 3;
-  public static int e = 1;
-  public static int f = 2;
-  public static int g = 3;
-  public static int h = 4;
-  public static int i = 5;
-  public static int j = 6;
-  public static int k = 7;
-  public static int l = 8;
-  public static int m = 101;
-  public static int n = 102;
-  public static int o = 103;
-  public static int p = 104;
-  public static int q = 105;
-  public static int r = 106;
-  public static int s = 107;
-  public static int t = 108;
-  public static int u = 109;
-  public static int v = 111;
-  public static int w = 112;
-  public static int x = 113;
-  public static int y = 114;
-  public static int z = 100;
+  public abstract boolean afterWebViewEngineHandleOverrideUrl(WebView paramWebView, String paramString);
+  
+  public abstract boolean beforeWebViewEngineHandleOverrideUrl(WebView paramWebView, String paramString);
+  
+  public abstract String getUAMark();
+  
+  public abstract View getVideoLoadingProgressView();
+  
+  public abstract void handlePreloadCallback(int paramInt, String paramString);
+  
+  public abstract Object handlerMiscCallback(String paramString, Bundle paramBundle);
+  
+  public abstract void onDetectedBlankScreen(String paramString, int paramInt);
+  
+  public abstract void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback);
+  
+  public abstract void onHideCustomView();
+  
+  public abstract boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult);
+  
+  public abstract void onPageFinished(WebView paramWebView, String paramString);
+  
+  public abstract void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap);
+  
+  public abstract void onProgressChanged(WebView paramWebView, int paramInt);
+  
+  public abstract void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2);
+  
+  public abstract void onReceivedSslError(WebView paramWebView, SslError paramSslError);
+  
+  public abstract void onReceivedTitle(WebView paramWebView, String paramString);
+  
+  public abstract boolean onShowFileChooser(ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams);
+  
+  public abstract void onUrlChange(String paramString1, String paramString2);
+  
+  public abstract void onWebViewClientImplPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap);
+  
+  public abstract void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2);
+  
+  public abstract boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString);
+  
+  public abstract void showCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback);
 }
 
 

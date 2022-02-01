@@ -1,16 +1,17 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
-class tit
-  implements View.OnLayoutChangeListener
+public class tit
+  extends tjd
 {
-  tit(tis paramtis) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public tit(BridgeModule paramBridgeModule)
   {
-    paramView.removeOnLayoutChangeListener(this);
-    paramView.setTranslationX(tis.a(this.a)[0]);
-    paramView.setTranslationY(tis.a(this.a)[1]);
+    super(paramBridgeModule);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    BridgeModule.access$400(this.a, paramInt2, paramIntent);
   }
 }
 

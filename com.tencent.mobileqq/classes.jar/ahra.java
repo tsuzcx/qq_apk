@@ -1,30 +1,85 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.customviews.VideoProgressView;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ahra
-  implements axqa
+public class ahra
+  implements ahqq, View.OnClickListener
 {
-  ahra(ahqw paramahqw, String paramString, ahrh paramahrh) {}
+  public static String a;
+  private ahqs jdField_a_of_type_Ahqs;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String b;
   
-  public void a()
+  static
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Ahrh.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ahrh.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Ahrh.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
+    jdField_a_of_type_JavaLangString = "https://imgcache.qq.com/club/client/group/release/index.html?_bid=199&groupId=";
+  }
+  
+  public ahra(QQAppInterface paramQQAppInterface, Context paramContext, ahqs paramahqs)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Ahqs = paramahqs;
+  }
+  
+  public int a()
+  {
+    return 25;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558658, null);
+    paramVarArgs.setOnClickListener(this);
+    return paramVarArgs;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public void a(String paramString)
+  {
+    this.b = paramString;
+  }
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 21;
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("UpgradeBigTroopTipsBar", 2, "click tips, jump");
+      }
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", jdField_a_of_type_JavaLangString + this.b + "&from=aio");
+      localIntent.putExtra("hide_operation_bar", true);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.b, 3);
+      this.jdField_a_of_type_Ahqs.a();
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_up", "", "Grp_AIO", "clk", 0, 0, this.b, "", "", "");
     }
   }
-  
-  public void a(axpx paramaxpx)
-  {
-    ahqw.a(this.jdField_a_of_type_Ahqw, paramaxpx, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Ahrh, this);
-  }
-  
-  public void a(axpx paramaxpx, int paramInt)
-  {
-    this.jdField_a_of_type_Ahqw.a(this.jdField_a_of_type_Ahrh, paramInt, false);
-  }
-  
-  public void b(axpx paramaxpx) {}
 }
 
 

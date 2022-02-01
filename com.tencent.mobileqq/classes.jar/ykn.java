@@ -1,8 +1,33 @@
-import android.view.View;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import java.util.ArrayList;
 
-public abstract interface ykn
+public class ykn
 {
-  public abstract void a(String paramString1, int paramInt, View paramView, String paramString2);
+  TroopInfo a;
+  public boolean a;
+  
+  public ykn(boolean paramBoolean, TroopInfo paramTroopInfo)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = paramTroopInfo;
+  }
+  
+  public static ArrayList<ykn> a(ArrayList<TroopInfo> paramArrayList, ArrayList<String> paramArrayList1)
+  {
+    ArrayList localArrayList = new ArrayList(paramArrayList.size());
+    int i = 0;
+    while (i < paramArrayList.size())
+    {
+      TroopInfo localTroopInfo = (TroopInfo)paramArrayList.get(i);
+      ykn localykn = new ykn(false, localTroopInfo);
+      if ((paramArrayList1 != null) && (paramArrayList1.contains(localTroopInfo.troopuin))) {
+        localykn.jdField_a_of_type_Boolean = true;
+      }
+      localArrayList.add(localykn);
+      i += 1;
+    }
+    return localArrayList;
+  }
 }
 
 

@@ -1,14 +1,44 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import org.json.JSONObject;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import java.util.Iterator;
+import java.util.List;
 
 public class teg
-  implements tfg
+  implements ViewPager.OnPageChangeListener
 {
-  public teg(BridgeModule paramBridgeModule) {}
+  private teg(ViewPagerCompat paramViewPagerCompat) {}
   
-  public void a(String paramString, JSONObject paramJSONObject)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    this.a.invokeCallJS(paramString, paramJSONObject);
+    if (ViewPagerCompat.a(this.a) != null)
+    {
+      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
+      }
+    }
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (ViewPagerCompat.a(this.a) != null)
+    {
+      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
+      }
+    }
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    if (ViewPagerCompat.a(this.a) != null)
+    {
+      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
+      }
+    }
   }
 }
 

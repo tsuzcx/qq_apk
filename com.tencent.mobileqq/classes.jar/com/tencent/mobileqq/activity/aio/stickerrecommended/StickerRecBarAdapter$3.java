@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import aiss;
-import aiti;
+import ahnc;
+import ahns;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import java.util.List;
 
 public class StickerRecBarAdapter$3
   implements Runnable
 {
-  public StickerRecBarAdapter$3(aiss paramaiss, List paramList1, List paramList2) {}
+  public StickerRecBarAdapter$3(ahnc paramahnc, List paramList1, List paramList2) {}
   
   public void run()
   {
-    aiti localaiti = aiti.a(aiss.a(this.this$0));
-    if (aiss.a(this.this$0) == null) {
-      localaiti.a(this.a, false, 0, null);
+    ahns localahns = ahns.a(ahnc.a(this.this$0));
+    if (ahnc.a(this.this$0) == null) {
+      localahns.a(this.a, false, 0, null);
     }
     for (;;)
     {
-      localaiti.b(this.a);
-      aiss.a(this.this$0).a(this.b);
+      localahns.b(this.a);
+      ahnc.a(this.this$0).a(this.b);
       return;
-      localaiti.a(this.a, true, aiss.a(this.this$0).jdField_a_of_type_Int, aiss.a(this.this$0).jdField_a_of_type_JavaLangString);
+      localahns.a(this.a, true, ahnc.a(this.this$0).curType, ahnc.a(this.this$0).curFriendUin);
     }
   }
 }

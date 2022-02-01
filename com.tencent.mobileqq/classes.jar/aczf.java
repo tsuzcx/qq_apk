@@ -1,93 +1,42 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.os.MqqHandler;
 
 public class aczf
-  extends aczc
+  extends asbj
 {
-  private ArrayList<String> a;
+  private aczf(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
   
-  public aczf(JSONObject paramJSONObject)
+  protected void onFileTransferEnd(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    a(paramJSONObject);
-  }
-  
-  public String a()
-  {
-    String str1 = super.a();
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(str1);
-      localJSONObject.put("patchName", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("patchUrl", this.b);
-      localJSONObject.put("patchSize", this.jdField_a_of_type_Int);
-      StringBuilder localStringBuilder = new StringBuilder("");
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (localIterator.hasNext())
-        {
-          String str3 = (String)localIterator.next();
-          if (!TextUtils.isEmpty(str3)) {
-            localStringBuilder.append(str3).append(";");
-          }
-        }
-      }
-      localJSONException.put("classIdList", localStringBuilder.toString());
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryFIleActivity", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
     }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik writeToJsonString", localJSONException);
-      return str1;
-    }
-    String str2 = localJSONException.toString();
-    return str2;
-  }
-  
-  public ArrayList<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  protected void a(JSONObject paramJSONObject)
-  {
-    int i = 0;
-    super.a(paramJSONObject);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
-    this.b = paramJSONObject.optString("patchUrl", null);
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
-    paramJSONObject = paramJSONObject.optString("classIdList", "").split(";");
-    if ((paramJSONObject != null) && (paramJSONObject.length > 0))
-    {
-      int j = paramJSONObject.length;
-      while (i < j)
-      {
-        CharSequence localCharSequence = paramJSONObject[i];
-        if (!TextUtils.isEmpty(localCharSequence)) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(localCharSequence);
-        }
-        i += 1;
-      }
+    paramString1 = this.a.app.getFileManagerDataCenter().a(paramLong2);
+    if ((paramString1 != null) && (paramString1.nOpType == 6) && (bleg.a(paramInt2)) && (this.a.a != null)) {
+      this.a.a.sendEmptyMessage(102);
     }
   }
   
-  public boolean a(String paramString)
+  protected void onOfflineSendToWeiYunFaild(int paramInt, long paramLong, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)
-    {
-      QLog.d("PatchLogTag", 1, "DexPatchItemConfigDalvik isValidConfig classIdList is empty");
-      return false;
+    if ((bleg.a(paramInt)) && (this.a.a != null)) {
+      this.a.a.sendEmptyMessage(102);
     }
-    return super.a(paramString);
+  }
+  
+  protected void onOfflineSendToWeiYunSuccess(long paramLong, String paramString1, int paramInt, String paramString2)
+  {
+    if ((bleg.a(paramInt)) && (this.a.a != null)) {
+      this.a.a.sendEmptyMessage(102);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aczf
  * JD-Core Version:    0.7.0.1
  */

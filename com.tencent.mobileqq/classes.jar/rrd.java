@@ -1,41 +1,107 @@
-import android.content.ContentResolver;
-import android.content.Context;
-import android.database.ContentObserver;
-import android.os.Handler;
-import android.provider.Settings.System;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import android.annotation.SuppressLint;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.BDHCommonUploadProcessor;
+import com.tencent.mobileqq.transfile.BaseTransProcessor;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class rrd
-  extends ContentObserver
+  implements rra
 {
-  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
+  private long jdField_a_of_type_Long;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  @SuppressLint({"HandlerLeak"})
+  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new rre(this);
+  private String jdField_a_of_type_JavaLangString;
+  private rqz<String> jdField_a_of_type_Rqz;
   
-  public rrd(VideoFeedsListView paramVideoFeedsListView, Handler paramHandler)
+  public rrd(QQAppInterface paramQQAppInterface)
   {
-    super(paramHandler);
-    this.jdField_a_of_type_AndroidContentContentResolver = VideoFeedsListView.a(paramVideoFeedsListView).getContentResolver();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().removeHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
+    QLog.i("RIJUGC.RIJUgcVideoUploader", 1, "pause, path=" + this.jdField_a_of_type_JavaLangString + ",uniSeq=" + this.jdField_a_of_type_Long);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController();
+    if (localObject != null)
+    {
+      localObject = (BaseTransProcessor)((TransFileController)localObject).findProcessor("0", this.jdField_a_of_type_Long);
+      if (localObject != null) {
+        ((BaseTransProcessor)localObject).pause();
+      }
+    }
+    b();
   }
   
-  public void onChange(boolean paramBoolean)
+  public void a(String paramString)
   {
-    boolean bool = true;
-    super.onChange(paramBoolean);
-    int i = Settings.System.getInt(VideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsListView).getContentResolver(), "accelerometer_rotation", -1);
-    VideoFeedsListView localVideoFeedsListView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsListView;
-    if (i == 1) {}
-    for (paramBoolean = bool;; paramBoolean = false)
+    TransFileController localTransFileController = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController();
+    if (this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.getFilter().size() == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.addFilter(new Class[] { BDHCommonUploadProcessor.class });
+    }
+    localTransFileController.addHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
+    TransferRequest localTransferRequest = new TransferRequest();
+    localTransferRequest.mIsUp = true;
+    localTransferRequest.mCommandId = 54;
+    localTransferRequest.mLocalPath = paramString;
+    localTransferRequest.mUniseq = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+    localTransferRequest.mPeerUin = "0";
+    localTransferRequest.mSelfUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    localTransferRequest.mFileType = 24;
+    localTransferRequest.mRichTag = "KandianUGCVideoUpload";
+    localTransFileController.transferAsync(localTransferRequest);
+    this.jdField_a_of_type_Long = localTransferRequest.mUniseq;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    QLog.i("RIJUGC.RIJUgcVideoUploader", 1, "upload, path=" + paramString + ",uniSeq=" + this.jdField_a_of_type_Long);
+  }
+  
+  public void a(rqz<String> paramrqz)
+  {
+    this.jdField_a_of_type_Rqz = paramrqz;
+  }
+  
+  public void b(String paramString)
+  {
+    QLog.i("RIJUGC.RIJUgcVideoUploader", 1, "resume, uploadKey=" + paramString);
+    if (this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.getFilter().isEmpty()) {
+      this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.addFilter(new Class[] { BDHCommonUploadProcessor.class });
+    }
+    TransFileController localTransFileController = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController();
+    localTransFileController.addHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
+    try
     {
-      VideoFeedsListView.b(localVideoFeedsListView, paramBoolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.pubaccount.video.feeds.VideoFeedsListView", 2, "RotationObserver.onChange() : rotateState=" + i);
+      paramString = new JSONObject(paramString);
+      if (this.jdField_a_of_type_Long == 0L)
+      {
+        this.jdField_a_of_type_Long = paramString.optInt("uniseq", 0);
+        this.jdField_a_of_type_JavaLangString = paramString.optString("localPath", "");
+        QLog.i("RIJUGC.RIJUgcVideoUploader", 1, "resume from app reboot");
       }
-      return;
+      paramString = (BaseTransProcessor)localTransFileController.findProcessor("0", this.jdField_a_of_type_Long);
+      if (paramString != null)
+      {
+        paramString.resume();
+        return;
+      }
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        QLog.e("RIJUGC.RIJUgcVideoUploader", 1, "resume, e=" + QLog.getStackTraceString(paramString));
+      }
+      a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

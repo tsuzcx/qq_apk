@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import com.etrump.mixlayout.ETFont;
 import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.text.QQText.EmoticonSpan;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -175,17 +176,17 @@ public class h
             i1 = 1;
             label565:
             if ((i4 > paramInt1) && (i2 > i4)) {
-              a(null, fo.a(paramCharSequence, paramInt1, i4), paramInt1, (int)f2, 0, this.jdField_l_of_type_Int);
+              a(null, fn.a(paramCharSequence, paramInt1, i4), paramInt1, (int)f2, 0, this.jdField_l_of_type_Int);
             }
             if (!(localCharacterStyle instanceof ClickableSpan)) {
               break label694;
             }
-            a(null, fo.a(paramCharSequence, i4, i2), i4, (int)f2, 1, this.jdField_l_of_type_Int);
+            a(null, fn.a(paramCharSequence, i4, i2), i4, (int)f2, 1, this.jdField_l_of_type_Int);
           }
           for (;;)
           {
             if ((n == arrayOfCharacterStyle.length - 1) && (i1 == 0)) {
-              a(null, fo.a(paramCharSequence, i2, ((Spanned)localObject).length()), i2, (int)f2, 0, this.jdField_l_of_type_Int);
+              a(null, fn.a(paramCharSequence, i2, ((Spanned)localObject).length()), i2, (int)f2, 0, this.jdField_l_of_type_Int);
             }
             n += 1;
             paramInt1 = i2;
@@ -193,10 +194,10 @@ public class h
             i1 = 0;
             break label565;
             label694:
-            if (((localCharacterStyle instanceof begw)) || ((localCharacterStyle instanceof bbtp))) {
+            if (((localCharacterStyle instanceof QQText.EmoticonSpan)) || ((localCharacterStyle instanceof bank))) {
               a(localCharacterStyle);
             } else if ((localCharacterStyle instanceof RelativeSizeSpan)) {
-              a((RelativeSizeSpan)localCharacterStyle, fo.a(paramCharSequence, i4, i2), i4, (int)f2, 3, this.jdField_l_of_type_Int);
+              a((RelativeSizeSpan)localCharacterStyle, fn.a(paramCharSequence, i4, i2), i4, (int)f2, 3, this.jdField_l_of_type_Int);
             } else {
               n.b(a(), "Un Know CharacterStyle   start:" + i4 + "  end:" + i2);
             }
@@ -268,9 +269,9 @@ public class h
     Object localObject;
     int i1;
     int n;
-    if ((paramCharacterStyle instanceof begw))
+    if ((paramCharacterStyle instanceof QQText.EmoticonSpan))
     {
-      localObject = ((begw)paramCharacterStyle).a().getBounds();
+      localObject = ((QQText.EmoticonSpan)paramCharacterStyle).getDrawable().getBounds();
       i1 = ((Rect)localObject).width();
       n = ((Rect)localObject).height();
     }
@@ -285,11 +286,11 @@ public class h
       ((w)localObject).jdField_a_of_type_Int = 2;
       this.jdField_c_of_type_JavaUtilList.add(localObject);
       return true;
-      if ((paramCharacterStyle instanceof bbtp))
+      if ((paramCharacterStyle instanceof bank))
       {
-        localObject = (bbtp)paramCharacterStyle;
-        i1 = ((bbtp)localObject).a();
-        n = ((bbtp)localObject).b();
+        localObject = (bank)paramCharacterStyle;
+        i1 = ((bank)localObject).a();
+        n = ((bank)localObject).b();
       }
       else
       {
@@ -558,15 +559,15 @@ public class h
       localObject = a(i3, i1);
       this.jdField_b_of_type_AndroidGraphicsCanvas.drawBitmap((Bitmap)localObject, i5, i4 + i6 - i1, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       continue;
-      if ((((w)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof begw))
+      if ((((w)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof QQText.EmoticonSpan))
       {
-        ((begw)((w)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6 + i4, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+        ((QQText.EmoticonSpan)((w)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6 + i4, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       }
-      else if ((((w)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bbtp))
+      else if ((((w)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bank))
       {
-        localObject = (bbtp)((w)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        ((bbtp)localObject).jdField_a_of_type_Boolean = false;
-        ((bbtp)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+        localObject = (bank)((w)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
+        ((bank)localObject).jdField_a_of_type_Boolean = false;
+        ((bank)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       }
     }
   }
@@ -651,16 +652,16 @@ public class h
     }
   }
   
-  public int a(int paramInt1, int paramInt2, gl paramgl)
+  public int a(int paramInt1, int paramInt2, gj paramgj)
   {
     int n = 0;
     while (n < this.jdField_b_of_type_JavaUtilList.size())
     {
-      paramgl = (w)this.jdField_b_of_type_JavaUtilList.get(n);
-      if ((paramInt1 >= paramgl.jdField_d_of_type_Int) && (paramInt1 <= paramgl.jdField_d_of_type_Int + paramgl.jdField_b_of_type_Int) && (paramInt2 >= paramgl.jdField_e_of_type_Int))
+      paramgj = (w)this.jdField_b_of_type_JavaUtilList.get(n);
+      if ((paramInt1 >= paramgj.jdField_d_of_type_Int) && (paramInt1 <= paramgj.jdField_d_of_type_Int + paramgj.jdField_b_of_type_Int) && (paramInt2 >= paramgj.jdField_e_of_type_Int))
       {
-        int i1 = paramgl.jdField_e_of_type_Int;
-        if (paramInt2 <= paramgl.jdField_c_of_type_Int + i1) {
+        int i1 = paramgj.jdField_e_of_type_Int;
+        if (paramInt2 <= paramgj.jdField_c_of_type_Int + i1) {
           return n;
         }
       }

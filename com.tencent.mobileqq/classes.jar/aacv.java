@@ -1,23 +1,51 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
-public class aacv
-  extends RecyclerView.ViewHolder
+class aacv
+  extends Handler
 {
-  public aacv(BaseWidgetView paramBaseWidgetView)
+  aacv(aacu paramaacu, Looper paramLooper)
   {
-    super(paramBaseWidgetView);
+    super(paramLooper);
   }
   
-  public void a(Object paramObject, int paramInt, ExtraTypeInfo paramExtraTypeInfo)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.itemView instanceof BaseWidgetView))
+    Object localObject;
+    int i;
+    if ((paramMessage.what == 203) && ((paramMessage.obj instanceof Bundle)))
     {
-      this.itemView.setTag(this);
-      ((BaseWidgetView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
-      ((BaseWidgetView)this.itemView).setData(paramObject, paramInt);
+      paramMessage = (Bundle)paramMessage.obj;
+      localObject = paramMessage.getString("url");
+      if ((paramMessage.getInt("req_state", 0) == 2) && (!TextUtils.isEmpty(aacu.a(this.a))) && (!TextUtils.isEmpty(aacu.b(this.a))) && (aacu.b(this.a).equals(localObject)))
+      {
+        i = paramMessage.getInt("result_code");
+        localObject = new JSONObject();
+        if (i != 0) {
+          break label158;
+        }
+      }
+    }
+    try
+    {
+      ((JSONObject)localObject).put("code", 0);
+      for (;;)
+      {
+        label113:
+        this.a.callJs(aacu.a(this.a) + "(" + ((JSONObject)localObject).toString() + ");");
+        return;
+        label158:
+        ((JSONObject)localObject).put("code", i);
+        ((JSONObject)localObject).put("msg", paramMessage.getString("error_message"));
+      }
+    }
+    catch (Exception paramMessage)
+    {
+      break label113;
     }
   }
 }

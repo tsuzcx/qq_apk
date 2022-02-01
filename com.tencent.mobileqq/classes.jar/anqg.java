@@ -1,17 +1,33 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class anqg
-  implements bjey
+  extends anri
 {
-  public anqg(ApolloGameInfoFragment paramApolloGameInfoFragment) {}
-  
-  public void onItemSelect(View paramView, int paramInt)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    if (paramInt == 1) {
-      this.a.getActivity().finish();
+    paramQQAppInterface = new anqf(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "asyncmsg";
+    paramQQAppInterface.c = "open_async_detail";
+    paramContext = paramString.split("\\?");
+    if (paramContext.length != 2) {
+      return paramQQAppInterface;
     }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
   }
 }
 

@@ -1,25 +1,7 @@
-import java.util.Comparator;
-
-public final class aopj
-  implements Comparator<String>
+public abstract interface aopj
+  extends aoph
 {
-  public int a(String paramString1, String paramString2)
-  {
-    try
-    {
-      long l1 = Long.parseLong(paramString1);
-      long l2 = Long.parseLong(paramString2);
-      if (l1 == l2) {
-        return 0;
-      }
-      if (l1 > l2) {
-        return 2;
-      }
-      return -1;
-    }
-    catch (Exception paramString1) {}
-    return 0;
-  }
+  public abstract void a(boolean paramBoolean, double paramDouble1, double paramDouble2);
 }
 
 

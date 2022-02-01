@@ -1,27 +1,23 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import mqq.observer.AccountObserver;
 
-public class ajpx
-  extends ajoo
+class ajpx
+  extends AccountObserver
 {
-  public int a;
-  public long a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public String a;
-  public LinearLayout b;
-  public TextView b;
-  public String b;
+  ajpx(ajpw paramajpw) {}
   
-  public ajpx(Context paramContext, View paramView)
+  public void onUpdateSKey(String paramString1, String paramString2)
   {
-    super(paramContext, paramView);
+    if (paramString1 == null)
+    {
+      ajpw.b(this.a, null);
+      ajpw.a(this.a, null);
+      this.a.notifyDataSetChanged();
+      return;
+    }
+    this.a.startUpload(ajpw.a(this.a), this.a.mTroopInfo.troopcode, paramString1, this.a.mApp.getCurrentAccountUin());
+    ajpw.a(this.a, null);
   }
 }
 

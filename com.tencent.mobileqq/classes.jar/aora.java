@@ -1,24 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.1.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class aora
-  extends aojs
+  implements aorf
 {
-  public aora(HiddenChatFragment paramHiddenChatFragment) {}
+  aora(aoqz paramaoqz) {}
   
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public void a(String paramString)
   {
-    if ((paramInt2 == 512) && (paramBoolean))
-    {
-      paramString2 = ((TroopManager)HiddenChatFragment.a(this.a).getManager(52)).b(paramString1);
-      aorg.a(HiddenChatFragment.a(this.a), paramString2);
-      this.a.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("tag_hidden_chat", 2, "onSetHiddenChatSwitch troopUin=" + paramString1);
-      }
-    }
+    ArkAppCenter.a().post(this.a.a, new ArkAppYYBDownloadModule.1.1(this, paramString));
   }
 }
 

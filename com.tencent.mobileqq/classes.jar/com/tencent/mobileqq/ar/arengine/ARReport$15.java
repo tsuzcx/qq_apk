@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.arengine;
 
 import android.os.Build;
-import bdmc;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -14,7 +14,7 @@ public class ARReport$15
     localHashMap.put("ar_model", Build.MODEL);
     localHashMap.put("result", this.jdField_a_of_type_Int + "");
     localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    bdmc.a(BaseApplication.getContext()).a("", "AREngine_openCamera", true, 0L, 0L, localHashMap, "", true);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "AREngine_openCamera", true, 0L, 0L, localHashMap, "", true);
   }
 }
 

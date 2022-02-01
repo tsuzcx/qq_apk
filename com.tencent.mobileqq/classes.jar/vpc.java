@@ -1,14 +1,9 @@
-class vpc
-  implements aakg
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
+
+public abstract interface vpc
 {
-  vpc(vow paramvow) {}
-  
-  public void a()
-  {
-    vow.a(this.a, 0);
-  }
-  
-  public void a(int paramInt) {}
+  public abstract void a(BasePublishTask paramBasePublishTask, ErrorMessage paramErrorMessage);
 }
 
 

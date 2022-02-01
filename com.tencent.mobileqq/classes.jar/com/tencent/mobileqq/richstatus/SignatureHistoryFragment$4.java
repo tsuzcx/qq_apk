@@ -49,7 +49,7 @@ class SignatureHistoryFragment$4
     //   85: invokestatic 85	com/tencent/mobileqq/richstatus/SignatureHistoryFragment:a	(Lcom/tencent/mobileqq/richstatus/SignatureHistoryFragment;)Ljava/lang/String;
     //   88: invokevirtual 91	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   91: ifeq +165 -> 256
-    //   94: invokestatic 96	bhhz:b	()Ljava/lang/String;
+    //   94: invokestatic 96	bfrj:b	()Ljava/lang/String;
     //   97: astore_3
     //   98: new 98	java/io/File
     //   101: dup
@@ -69,14 +69,14 @@ class SignatureHistoryFragment$4
     //   130: aload 6
     //   132: iload_1
     //   133: iload_1
-    //   134: invokestatic 114	bhmq:a	(Ljava/io/InputStream;II)D
+    //   134: invokestatic 114	bfvo:a	(Ljava/io/InputStream;II)D
     //   137: d2i
     //   138: putfield 118	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   141: aload 6
     //   143: invokevirtual 123	java/io/InputStream:close	()V
     //   146: aload_3
     //   147: aload 4
-    //   149: invokestatic 128	bhgm:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   149: invokestatic 128	bfpx:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   152: astore_3
     //   153: aload_3
     //   154: astore_2
@@ -87,7 +87,7 @@ class SignatureHistoryFragment$4
     //   161: invokevirtual 134	android/graphics/Bitmap:getWidth	()I
     //   164: aload_3
     //   165: invokevirtual 137	android/graphics/Bitmap:getHeight	()I
-    //   168: invokestatic 140	com/tencent/mobileqq/app/QQAppInterface:a	(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
+    //   168: invokestatic 141	com/tencent/mobileqq/app/QQAppInterface:getCircleFaceBitmap	(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
     //   171: astore_2
     //   172: aload_2
     //   173: astore_3
@@ -98,33 +98,33 @@ class SignatureHistoryFragment$4
     //   181: getfield 12	com/tencent/mobileqq/richstatus/SignatureHistoryFragment$4:this$0	Lcom/tencent/mobileqq/richstatus/SignatureHistoryFragment;
     //   184: invokestatic 85	com/tencent/mobileqq/richstatus/SignatureHistoryFragment:a	(Lcom/tencent/mobileqq/richstatus/SignatureHistoryFragment;)Ljava/lang/String;
     //   187: iconst_1
-    //   188: invokevirtual 143	com/tencent/mobileqq/app/QQAppInterface:a	(Ljava/lang/String;Z)Landroid/graphics/Bitmap;
+    //   188: invokevirtual 145	com/tencent/mobileqq/app/QQAppInterface:getFaceBitmap	(Ljava/lang/String;Z)Landroid/graphics/Bitmap;
     //   191: astore_3
     //   192: aload_3
     //   193: ifnull -148 -> 45
     //   196: aload_0
     //   197: getfield 12	com/tencent/mobileqq/richstatus/SignatureHistoryFragment$4:this$0	Lcom/tencent/mobileqq/richstatus/SignatureHistoryFragment;
-    //   200: invokestatic 146	com/tencent/mobileqq/richstatus/SignatureHistoryFragment:a	(Lcom/tencent/mobileqq/richstatus/SignatureHistoryFragment;)Landroid/os/Handler;
+    //   200: invokestatic 148	com/tencent/mobileqq/richstatus/SignatureHistoryFragment:a	(Lcom/tencent/mobileqq/richstatus/SignatureHistoryFragment;)Landroid/os/Handler;
     //   203: iconst_2
-    //   204: invokevirtual 152	android/os/Handler:obtainMessage	(I)Landroid/os/Message;
+    //   204: invokevirtual 154	android/os/Handler:obtainMessage	(I)Landroid/os/Message;
     //   207: astore_2
     //   208: aload_2
     //   209: aload_3
-    //   210: putfield 158	android/os/Message:obj	Ljava/lang/Object;
+    //   210: putfield 160	android/os/Message:obj	Ljava/lang/Object;
     //   213: aload_0
     //   214: getfield 12	com/tencent/mobileqq/richstatus/SignatureHistoryFragment$4:this$0	Lcom/tencent/mobileqq/richstatus/SignatureHistoryFragment;
-    //   217: invokestatic 146	com/tencent/mobileqq/richstatus/SignatureHistoryFragment:a	(Lcom/tencent/mobileqq/richstatus/SignatureHistoryFragment;)Landroid/os/Handler;
+    //   217: invokestatic 148	com/tencent/mobileqq/richstatus/SignatureHistoryFragment:a	(Lcom/tencent/mobileqq/richstatus/SignatureHistoryFragment;)Landroid/os/Handler;
     //   220: aload_2
-    //   221: invokevirtual 162	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
+    //   221: invokevirtual 164	android/os/Handler:sendMessage	(Landroid/os/Message;)Z
     //   224: pop
     //   225: return
     //   226: astore_3
     //   227: invokestatic 25	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   230: ifeq +13 -> 243
-    //   233: ldc 164
+    //   233: ldc 166
     //   235: iconst_2
     //   236: aload_3
-    //   237: invokevirtual 165	java/lang/Exception:toString	()Ljava/lang/String;
+    //   237: invokevirtual 167	java/lang/Exception:toString	()Ljava/lang/String;
     //   240: invokestatic 53	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   243: goto -71 -> 172
     //   246: astore 4
@@ -156,7 +156,7 @@ class SignatureHistoryFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.4
  * JD-Core Version:    0.7.0.1
  */

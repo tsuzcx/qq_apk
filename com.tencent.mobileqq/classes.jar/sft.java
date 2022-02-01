@@ -1,23 +1,41 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.app.AppRuntime;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.video.column.VideoColumnGuideManager.fetchGuideBgImg.1;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-class sft
-  extends aohg
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$fetchGuideBgImg$1$1", "Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/IBitmapCallback;", "onFail", "", "request", "Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/ImageRequest;", "exception", "", "onProgress", "progress", "", "onSuccess", "bitmap", "Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/CloseableBitmap;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sft
+  implements sym
 {
-  sft(sel paramsel) {}
+  public void a(@Nullable syo paramsyo, int paramInt) {}
   
-  protected void a()
+  public void a(@Nullable syo paramsyo, @Nullable Throwable paramThrowable)
   {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    if (prz.a(this.a.a(), str) < qxc.d)
+    StringBuilder localStringBuilder = new StringBuilder().append("fetch guide bg img fail: ");
+    if (paramThrowable != null) {}
+    for (paramsyo = paramThrowable.getMessage();; paramsyo = null)
     {
-      this.a.a.c(6);
+      QLog.e("VideoColumnGuideManager", 1, paramsyo);
       return;
     }
-    QQToast.a(this.a.a(), 0, this.a.a().getString(2131717314), 0).a();
+  }
+  
+  public void a(@Nullable syo paramsyo, @Nullable syk paramsyk)
+  {
+    sfq localsfq = this.a.this$0;
+    if (paramsyk != null) {}
+    for (paramsyo = paramsyk.a();; paramsyo = null)
+    {
+      sfq.a(localsfq, paramsyo);
+      sfq.a(this.a.this$0, true);
+      paramsyo = sfq.a(this.a.this$0);
+      if (paramsyo != null) {
+        paramsyo.setImageBitmap(sfq.a(this.a.this$0));
+      }
+      sfq.b(this.a.this$0);
+      return;
+    }
   }
 }
 

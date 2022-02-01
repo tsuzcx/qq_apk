@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Comparator;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class aimh
-  implements DialogInterface.OnClickListener
+final class aimh
+  implements Comparator<structmsg.StructMsg>
 {
-  aimh(aimd paramaimd) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(structmsg.StructMsg paramStructMsg1, structmsg.StructMsg paramStructMsg2)
   {
-    agej.n = true;
-    agju.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, null);
-    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800ADC9", "0X800ADC9", 0, 0, "", "", "", "");
+    if (paramStructMsg1.msg_time.get() < paramStructMsg2.msg_time.get()) {
+      return 1;
+    }
+    if (paramStructMsg1.msg_time.get() > paramStructMsg2.msg_time.get()) {
+      return -1;
+    }
+    return 0;
   }
 }
 

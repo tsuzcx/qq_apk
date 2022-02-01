@@ -106,7 +106,7 @@ public class TAVCutImageSession
       MediaModel localMediaModel = (MediaModel)this.mediaModels.get(paramInt);
       CGSize localCGSize = calculateRenderSize(localMediaModel, (String)this.imagePaths.get(paramInt));
       ((VideoRenderChainConfigure)localObject2).setRenderSize(localCGSize);
-      MediaBuilderFactory.mediaBuilderAsync(localMediaModel, (VideoRenderChainManager.IStickerContextInterface)localObject1, (VideoRenderChainConfigure)localObject2, new TAVCutImageSession.3(this, paramInt, localCGSize));
+      MediaBuilderFactory.mediaBuilderAsync(localMediaModel, this.context, (VideoRenderChainManager.IStickerContextInterface)localObject1, (VideoRenderChainConfigure)localObject2, new TAVCutImageSession.3(this, paramInt, localCGSize));
       runOnMainThread(new TAVCutImageSession.4(this, paramInt, (StickerController)localObject1), true);
       return;
     }

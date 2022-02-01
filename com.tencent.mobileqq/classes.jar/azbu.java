@@ -1,101 +1,147 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.ocr.view.TDCircleProgressView;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class azbu
-  extends ReportDialog
+public final class azbu
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TDCircleProgressView jdField_a_of_type_ComTencentMobileqqOcrViewTDCircleProgressView;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private static int jdField_a_of_type_Int = 4000;
+  private static final Map<String, azbv> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap(2);
   
-  public azbu(Context paramContext)
+  private static void a(azbv paramazbv, boolean paramBoolean)
   {
-    super(paramContext, 2131755824);
-    a(paramContext);
-  }
-  
-  private void a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559539, null);
-    setCancelable(false);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewTDCircleProgressView = ((TDCircleProgressView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364539));
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewTDCircleProgressView.setCurrent(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379761));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131380599);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379719));
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewTDCircleProgressView.setCurrent(paramInt);
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
-    }
-  }
-  
-  public void a(CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
+    if ((paramazbv != null) && (paramazbv.jdField_a_of_type_JavaIoByteArrayOutputStream != null))
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(i);
-      return;
-    }
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    paramBundle = getWindow();
-    paramBundle.setContentView(this.jdField_a_of_type_AndroidViewView);
-    int i;
-    WindowManager.LayoutParams localLayoutParams;
-    float f;
-    if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0)
-    {
-      i = 1;
-      localLayoutParams = paramBundle.getAttributes();
-      f = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-      localLayoutParams.width = ((int)(320.0F * f + 0.5F));
-      if (i != 0) {
-        break label97;
+      File localFile;
+      if (paramazbv.jdField_a_of_type_JavaIoByteArrayOutputStream.size() > 0)
+      {
+        if (paramazbv.jdField_a_of_type_JavaIoFile == null)
+        {
+          localFile = new File(paramazbv.jdField_a_of_type_JavaLangString + "~tmp");
+          if (!localFile.exists()) {
+            localFile.createNewFile();
+          }
+          paramazbv.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
+          paramazbv.jdField_a_of_type_JavaIoFile = localFile;
+        }
+        paramazbv.jdField_a_of_type_JavaIoByteArrayOutputStream.writeTo(paramazbv.jdField_a_of_type_JavaIoFileOutputStream);
+      }
+      if (paramBoolean)
+      {
+        if (paramazbv.jdField_a_of_type_JavaIoFileOutputStream != null)
+        {
+          paramazbv.jdField_a_of_type_JavaIoFileOutputStream.flush();
+          paramazbv.jdField_a_of_type_JavaIoFileOutputStream.close();
+          paramazbv.jdField_a_of_type_JavaIoFileOutputStream = null;
+        }
+        if (paramazbv.jdField_a_of_type_JavaIoFile != null)
+        {
+          localFile = new File(paramazbv.jdField_a_of_type_JavaLangString);
+          if (localFile.exists()) {
+            localFile.delete();
+          }
+          if (!paramazbv.jdField_a_of_type_JavaIoFile.renameTo(localFile))
+          {
+            FileUtils.copyFile(paramazbv.jdField_a_of_type_JavaIoFile, localFile);
+            paramazbv.jdField_a_of_type_JavaIoFile.delete();
+          }
+          paramazbv.jdField_a_of_type_JavaIoFile = null;
+        }
       }
     }
-    label97:
-    for (localLayoutParams.height = ((int)(145.0F * f + 0.5F));; localLayoutParams.height = ((int)(200.0F * f + 0.5F)))
+  }
+  
+  public static void a(String paramString)
+  {
+    a(paramString, true);
+  }
+  
+  private static void a(String paramString, boolean paramBoolean)
+  {
+    azbv localazbv = (azbv)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if ((localazbv == null) || (localazbv.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
+    try
     {
-      paramBundle.setAttributes(localLayoutParams);
-      setCanceledOnTouchOutside(false);
-      return;
-      i = 0;
-      break;
+      localazbv.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
+      label31:
+      if (localazbv.jdField_a_of_type_JavaIoFileOutputStream != null) {}
+      try
+      {
+        localazbv.jdField_a_of_type_JavaIoFileOutputStream.close();
+        label45:
+        localazbv.jdField_a_of_type_JavaIoFileOutputStream = null;
+        if ((paramBoolean) && (localazbv.jdField_a_of_type_JavaIoFile != null))
+        {
+          localazbv.jdField_a_of_type_JavaIoFile.delete();
+          localazbv.jdField_a_of_type_JavaIoFile = null;
+        }
+        jdField_a_of_type_JavaUtilMap.remove(paramString);
+        return;
+      }
+      catch (Exception localException1)
+      {
+        break label45;
+      }
+    }
+    catch (Exception localException2)
+    {
+      break label31;
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if ((azbv)jdField_a_of_type_JavaUtilMap.get(paramString) == null)
+    {
+      azbv localazbv = new azbv();
+      localazbv.jdField_a_of_type_JavaLangString = paramString;
+      jdField_a_of_type_JavaUtilMap.put(paramString, localazbv);
+    }
+    return true;
+  }
+  
+  public static boolean a(String paramString, byte[] paramArrayOfByte, int paramInt)
+  {
+    paramString = (azbv)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null)
+    {
+      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream == null) {
+        paramString.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream(paramInt << 1);
+      }
+      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.write(paramArrayOfByte, 0, paramInt);
+      if (paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.size() < jdField_a_of_type_Int) {}
+    }
+    try
+    {
+      a(paramString, false);
+      label66:
+      paramString.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
+      return true;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      break label66;
+    }
+  }
+  
+  public static boolean b(String paramString)
+  {
+    azbv localazbv = (azbv)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if ((localazbv != null) && (localazbv.jdField_a_of_type_JavaIoByteArrayOutputStream != null)) {}
+    try
+    {
+      a(localazbv, true);
+      label29:
+      localazbv.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
+      a(paramString, true);
+      return true;
+    }
+    catch (IOException localIOException)
+    {
+      break label29;
     }
   }
 }

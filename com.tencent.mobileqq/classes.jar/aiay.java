@@ -1,164 +1,50 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment;
+import com.tencent.widget.XListView;
 
 public class aiay
-  implements Manager
+  implements aiao
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ConcurrentHashMap<String, Boolean> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private boolean jdField_a_of_type_Boolean;
+  public aiay(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
   
-  public aiay(QQAppInterface paramQQAppInterface)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  public static aiay a(QQAppInterface paramQQAppInterface)
-  {
-    return (aiay)paramQQAppInterface.getManager(327);
-  }
-  
-  private void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("AioPanelMiniAppManager", 2, "fetchDrawable: invoked.  url: " + paramString);
+    if ((this.a.jdField_b_of_type_Boolean) && (AddContactViewPagerTroopFragment.a(this.a) != null)) {
+      AddContactViewPagerTroopFragment.b(this.a).a(this.a.b(), paramBoolean, null);
     }
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    try
+    if (paramBoolean)
     {
-      localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-      if (localObject != null)
-      {
-        ((URLDrawable)localObject).setURLDrawableListener(new aiaz(this, paramString));
-        ((URLDrawable)localObject).downloadImediatly();
+      if (paramInt <= 0) {
+        break label73;
       }
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    }
+    label73:
+    Object localObject;
+    do
+    {
       return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("AioPanelMiniAppManager", 1, "fetchDrawable: failed. ", paramString);
-    }
-  }
-  
-  private boolean a(String paramString)
-  {
-    paramString = (Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    if (paramString != null) {
-      return paramString.booleanValue();
-    }
-    return false;
-  }
-  
-  public Drawable a()
-  {
-    Object localObject = arfd.a();
-    boolean bool1 = bdgb.b();
-    boolean bool2 = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
-    if (bool1) {
-      if (bool2) {
-        localObject = ((arfc)localObject).f();
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+      localObject = URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20191206115411_QbbYvjs7gs.png", null);
+      if ((localObject != null) && (1 != ((URLDrawable)localObject).getStatus())) {
+        ((URLDrawable)localObject).restartDownload();
       }
-    }
-    Drawable localDrawable;
-    for (;;)
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841270);
-      localURLDrawableOptions.mLoadingDrawable = localDrawable;
-      localURLDrawableOptions.mFailedDrawable = localDrawable;
-      try
-      {
-        localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
-        return localObject;
-      }
-      catch (Exception localException) {}
-      localObject = ((arfc)localObject).e();
-      continue;
-      if (bool2) {
-        localObject = ((arfc)localObject).d();
-      } else {
-        localObject = ((arfc)localObject).c();
-      }
-    }
-    return localDrawable;
-  }
-  
-  public void a()
-  {
-    arfc localarfc = arfd.a();
-    boolean bool = TextUtils.isEmpty(localarfc.b());
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if ((localObject != null) && (!bool)) {
-        a((QQAppInterface)localObject, localarfc);
-      }
-      return;
-    }
-  }
-  
-  public void a(Context paramContext, BaseChatPie paramBaseChatPie)
-  {
-    MiniAppLauncher.startMiniApp(paramContext, arfd.a().b(), 2053, paramBaseChatPie.a(), null);
-    paramContext = (bbav)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36);
-    paramContext.a(paramContext.a("110000"), "");
-    this.jdField_a_of_type_Boolean = true;
-    bdll.b(null, "dc00898", "", "", "0X800A120", "0X800A120", 0, 0, "", "", "", "");
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, arfc paramarfc)
-  {
-    a(paramQQAppInterface).a(paramarfc.c());
-    a(paramQQAppInterface).a(paramarfc.d());
-    a(paramQQAppInterface).a(paramarfc.e());
-    a(paramQQAppInterface).a(paramarfc.f());
-  }
-  
-  public boolean a()
-  {
-    arfc localarfc = arfd.a();
-    boolean bool1 = TextUtils.isEmpty(localarfc.b());
-    boolean bool2 = a(localarfc.c());
-    boolean bool3 = a(localarfc.d());
-    boolean bool4 = a(localarfc.e());
-    boolean bool5 = a(localarfc.f());
-    if (bool1) {}
-    while ((!bool2) || (!bool3) || (!bool4) || (!bool5)) {
-      return false;
-    }
-    return true;
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return false;
-    }
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((bbav)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(36)).a("110000");
-    return (localAppInfo != null) && (localAppInfo.iNewFlag.get() == 1);
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131689621);
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131689625);
+      this.a.c.setText(2131689622);
+      this.a.c.setOnTouchListener(this.a.jdField_a_of_type_AndroidViewView$OnTouchListener);
+      this.a.c.setOnClickListener(new aiaz(this));
+      localObject = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getParent();
+    } while ((localObject == null) || (!(localObject instanceof ViewGroup)));
+    ((ViewGroup)localObject).setBackgroundResource(2130839437);
   }
 }
 

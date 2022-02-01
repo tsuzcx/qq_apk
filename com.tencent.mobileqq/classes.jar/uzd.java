@@ -1,38 +1,52 @@
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.util.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
-class uzd
-  implements View.OnClickListener
+public class uzd
+  extends LinearLayoutManager
 {
-  uzd(uyy paramuyy) {}
+  private VideoFeedsRecyclerView a;
   
-  public void onClick(View paramView)
+  public uzd(Context paramContext, VideoFeedsRecyclerView paramVideoFeedsRecyclerView, int paramInt, boolean paramBoolean)
   {
-    uze localuze;
-    if (uyy.a(this.a) != null)
+    super(paramContext, paramInt, paramBoolean);
+    this.a = paramVideoFeedsRecyclerView;
+  }
+  
+  private boolean a(View paramView)
+  {
+    if (paramView == null) {}
+    int i;
+    int j;
+    do
     {
-      localuze = (uze)uyy.a(this.a).get();
-      if (localuze != null) {
-        switch (paramView.getId())
-        {
-        }
-      }
+      return false;
+      i = this.a.getChildViewHolder(paramView).getLayoutPosition();
+      j = this.a.b();
+    } while ((j < 0) || ((i != j + 1) && (i != j - 1)));
+    return true;
+  }
+  
+  public int getExtraLayoutSpace(RecyclerView.State paramState)
+  {
+    return super.getExtraLayoutSpace(paramState) + 200;
+  }
+  
+  public void removeAndRecycleView(View paramView, RecyclerView.Recycler paramRecycler)
+  {
+    if (!a(paramView)) {
+      super.removeAndRecycleView(paramView, paramRecycler);
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localuze.a(uzf.a);
-      continue;
-      localuze.a(uzf.b);
-      continue;
-      localuze.a(uzf.c);
-      continue;
-      localuze.a(uzf.d);
-      continue;
-      localuze.a(uzf.e);
+  }
+  
+  public void removeAndRecycleViewAt(int paramInt, RecyclerView.Recycler paramRecycler)
+  {
+    if (!a(getChildAt(paramInt))) {
+      super.removeAndRecycleViewAt(paramInt, paramRecycler);
     }
   }
 }

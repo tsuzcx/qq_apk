@@ -1,52 +1,98 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.HashMap;
 
 public class anrs
-  implements View.OnClickListener
+  extends anrh
 {
-  public anrs(ApolloPanel paramApolloPanel, Bundle paramBundle, ApolloActionData paramApolloActionData, int paramInt, String paramString1, String paramString2) {}
-  
-  public void onClick(View paramView)
+  public anrs(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null))
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  public boolean a()
+  {
+    try
     {
-      Object localObject1 = null;
-      if (this.jdField_a_of_type_AndroidOsBundle != null) {
-        localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString("activityUrl");
-      }
-      Object localObject2 = localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.url;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloPanel", 2, new Object[] { "[realshowNewActionFloatView] btn click, activityUrl=", localObject2 });
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject2))
-      {
-        localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
-        ((Intent)localObject1).putExtra("url", (String)localObject2);
-        this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity((Intent)localObject1);
-      }
-      ApolloPanel.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel);
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "action_flame_clickgain", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId) });
-      }
-      amsx.a(125, String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.b);
+      boolean bool = e();
+      return bool;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (Exception localException)
+    {
+      QLog.e("OnlineDatingAction", 1, "doAction error: " + localException.getMessage());
+      a("OnlineDatingAction");
+    }
+    return false;
+  }
+  
+  public boolean e()
+  {
+    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("roomid");
+    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromid");
+    Object localObject3 = "";
+    Object localObject1 = localObject3;
+    if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("vasname"))) {}
+    try
+    {
+      localObject1 = URLDecoder.decode((String)this.jdField_a_of_type_JavaUtilHashMap.get("vasname"), "utf-8");
+      str1 = "";
+      localObject3 = str1;
+      if (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("userdata"))) {}
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException1)
+    {
+      try
+      {
+        localObject3 = URLDecoder.decode((String)this.jdField_a_of_type_JavaUtilHashMap.get("vasname"), "utf-8");
+        long l1 = 0L;
+        try
+        {
+          long l2 = Long.parseLong(str3);
+          l1 = l2;
+        }
+        catch (NumberFormatException localNumberFormatException1)
+        {
+          for (;;)
+          {
+            int i;
+            localNumberFormatException1.printStackTrace();
+          }
+        }
+        i = 0;
+        try
+        {
+          int j = Integer.parseInt(str2);
+          i = j;
+        }
+        catch (NumberFormatException localNumberFormatException2)
+        {
+          for (;;)
+          {
+            Object localObject2;
+            Object localObject4;
+            localNumberFormatException2.printStackTrace();
+          }
+        }
+        ((auqu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(108)).a(this.jdField_a_of_type_AndroidContentContext, l1, "launcher", (String)localObject1, (String)localObject3, i);
+        return true;
+        localUnsupportedEncodingException1 = localUnsupportedEncodingException1;
+        localUnsupportedEncodingException1.printStackTrace();
+        localObject2 = localObject3;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException2)
+      {
+        for (;;)
+        {
+          String str1;
+          localUnsupportedEncodingException2.printStackTrace();
+          localObject4 = str1;
+        }
+      }
+    }
   }
 }
 

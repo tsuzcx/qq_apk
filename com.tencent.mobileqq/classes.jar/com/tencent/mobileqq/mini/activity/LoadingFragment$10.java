@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.activity;
 
+import amtj;
 import android.os.Handler;
 import android.os.Message;
-import anzj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -32,7 +32,7 @@ class LoadingFragment$10
       str = null;
       break;
       label68:
-      str = anzj.a(2131705154);
+      str = amtj.a(2131705384);
     }
   }
 }

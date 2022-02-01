@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.AbsSpinner.SavedState;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import dov.com.qq.im.ae.camera.core.AECameraManager.CameraOpenCallback;
 
-public final class blip
-  implements Parcelable.Creator<AbsSpinner.SavedState>
+class blip
+  implements AECameraManager.CameraOpenCallback
 {
-  public AbsSpinner.SavedState a(Parcel paramParcel)
-  {
-    return new AbsSpinner.SavedState(paramParcel, null);
-  }
+  blip(blio paramblio) {}
   
-  public AbsSpinner.SavedState[] a(int paramInt)
+  public void onOpenResult(int paramInt, boolean paramBoolean)
   {
-    return new AbsSpinner.SavedState[paramInt];
+    if (paramBoolean)
+    {
+      this.a.a.onChangeCamera(paramInt);
+      if (this.a.b()) {
+        babb.a(paramInt);
+      }
+      this.a.c();
+      this.a.l();
+    }
   }
 }
 

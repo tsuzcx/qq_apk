@@ -1,47 +1,26 @@
-import android.content.Context;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialStatus;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-final class acqm
-  implements ArkViewImplement.LoadCallback
+public class acqm
+  implements DialogInterface.OnClickListener
 {
-  acqm(long paramLong, String paramString, WeakReference paramWeakReference1, WeakReference paramWeakReference2, GdtInterstitialParams paramGdtInterstitialParams) {}
+  public acqm(AddRequestActivity paramAddRequestActivity) {}
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = acpz.a(paramInt2);
-    if (i == 0) {
-      i = 1;
-    }
-    for (;;)
+    if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      acvc.b("GdtInterstitialView", String.format("onLoadFailed state:%d duration:%d errCode:%d msg:%s canRetry:%b error:%d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(paramBoolean), Integer.valueOf(i) }));
-      acql.a(i, paramInt2, this.jdField_a_of_type_JavaLangString);
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (!((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d))
-      {
-        ((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d = true;
-        acvp.b((Context)this.b.get(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, (GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get(), i, paramInt2);
-      }
+      long l = Long.valueOf(this.a.app.getCurrentAccountUin()).longValue();
+      this.a.showDialog(2);
+      this.a.jdField_a_of_type_Amov.a(l, Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue(), 1);
       return;
     }
-  }
-  
-  public void onLoadState(int paramInt)
-  {
-    acvc.b("GdtInterstitialView", String.format("onLoadState state:%d duration:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) }));
-    if (paramInt == 1) {
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (!((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d))
-      {
-        ((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d = true;
-        ((GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get()).c = true;
-        acvp.b((Context)this.b.get(), this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams, (GdtInterstitialStatus)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 0, -2147483648);
-      }
-    }
-    while (paramInt != -1) {
-      return;
-    }
+    QQToast.a(this.a, 2131694064, 0).b(this.a.getTitleBarHeight());
   }
 }
 

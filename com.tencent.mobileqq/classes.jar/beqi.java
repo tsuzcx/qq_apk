@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.together.writetogether.view.WriteTogetherEditorFragment;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class beqi
-  implements benf
+final class beqi
+  implements DialogInterface.OnClickListener
 {
-  public beqi(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
+  beqi(Context paramContext, String paramString) {}
   
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramString == null) || (paramString.length() == 0) || (!WriteTogetherEditorFragment.a(this.a)) || (WriteTogetherEditorFragment.b(this.a)))
-    {
-      this.a.setRightButtonEnable(false);
-      return;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    this.a.setRightButtonEnable(true);
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setClass(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
   }
 }
 

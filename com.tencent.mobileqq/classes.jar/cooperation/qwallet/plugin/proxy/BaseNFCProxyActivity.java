@@ -1,6 +1,7 @@
 package cooperation.qwallet.plugin.proxy;
 
 import Override;
+import amtj;
 import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -10,10 +11,9 @@ import android.nfc.NfcAdapter;
 import android.nfc.NfcAdapter.ReaderCallback;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import anzj;
-import bhlq;
-import bhpc;
+import bfur;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.buscard.BuscardHelper;
@@ -31,14 +31,15 @@ public class BaseNFCProxyActivity
   
   private void showNoNfcDialog(String paramString1, String paramString2)
   {
-    bhlq.a(this, 0, paramString1, paramString2, anzj.a(2131699957), anzj.a(2131699958), new BaseNFCProxyActivity.1(this), new BaseNFCProxyActivity.2(this)).show();
+    bfur.a(this, 0, paramString1, paramString2, amtj.a(2131700192), amtj.a(2131700193), new BaseNFCProxyActivity.1(this), new BaseNFCProxyActivity.2(this)).show();
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   

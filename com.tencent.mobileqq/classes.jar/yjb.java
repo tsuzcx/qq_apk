@@ -1,26 +1,6 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import friendlist.GetOnlineInfoResp;
-
-class yjb
-  extends anyu
+public abstract interface yjb
 {
-  yjb(yja paramyja) {}
-  
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
-  {
-    if ((!paramBoolean) || (this.a.a == null) || (paramGetOnlineInfoResp == null) || (!TextUtils.equals(paramString, this.a.a.qq))) {}
-    while (yja.a(this.a) == null) {
-      return;
-    }
-    paramString = yja.a(this.a);
-    if (paramGetOnlineInfoResp.eIconType == 11) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramString.b(paramBoolean);
-      return;
-    }
-  }
+  public abstract void a(yja paramyja);
 }
 
 

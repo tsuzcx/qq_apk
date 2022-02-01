@@ -1,12 +1,33 @@
-public abstract interface mjr
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoControlUI;
+
+public class mjr
+  extends mcc
 {
-  public abstract void a(int paramInt);
+  public mjr(VideoControlUI paramVideoControlUI) {}
   
-  public abstract void a(long paramLong);
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  {
+    if (this.a.h()) {}
+    do
+    {
+      return;
+      if (this.a.i()) {
+        break;
+      }
+    } while (!paramBoolean);
+    this.a.b.update(null, new Object[] { Integer.valueOf(110), Long.valueOf(paramLong) });
+    this.a.a.a(paramLong, paramInt);
+  }
   
-  public abstract void a(lwf paramlwf, int paramInt1, int paramInt2);
-  
-  public abstract void b(int paramInt);
+  protected void g(long paramLong)
+  {
+    if (this.a.h()) {}
+    while ((!this.a.i()) || (!this.a.a.b(0))) {
+      return;
+    }
+    this.a.a.a(paramLong, 0, true);
+  }
 }
 
 

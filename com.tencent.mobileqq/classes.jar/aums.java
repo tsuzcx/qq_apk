@@ -1,21 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5;
+import java.util.List;
 
-public class aums
-  implements DialogInterface.OnClickListener
+public abstract interface aums
 {
-  public aums(FMSettings.5 param5) {}
-  
-  public void onClick(DialogInterface arg1, int paramInt)
-  {
-    synchronized ()
-    {
-      this.a.this$0.b = false;
-      return;
-    }
-  }
+  public abstract void a(List<aunm> paramList);
 }
 
 

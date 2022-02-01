@@ -1,55 +1,37 @@
-import UserGrowth.stFollowFeedsRsp;
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
 
-class ugm
-  implements ukd
+final class ugm
+  extends anxq
 {
-  ugm(ugl paramugl, boolean paramBoolean1, boolean paramBoolean2, ugo paramugo, int paramInt) {}
+  ugm(amyh paramamyh, String paramString, AppInterface paramAppInterface, Context paramContext, int paramInt, boolean paramBoolean) {}
   
-  public void a(uko paramuko)
+  public int a()
   {
-    if ((this.jdField_a_of_type_Boolean) || (this.b)) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      boolean bool2 = paramuko.a();
-      if (this.jdField_a_of_type_Ugo != null) {
-        this.jdField_a_of_type_Ugo.a(this.jdField_a_of_type_Boolean, this.b, bool2, paramuko.jdField_a_of_type_JavaLangObject);
-      }
-      if (bool2) {
-        break;
-      }
-      uqf.d("FollowRequest", "[WSFeedDataManager.java][onTaskResponse] task fail, code: " + paramuko.jdField_a_of_type_Int + ", msg: " + paramuko.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    if (!(paramuko.jdField_a_of_type_JavaLangObject instanceof stFollowFeedsRsp))
-    {
-      uqf.d("FollowRequest", "[WSFeedDataManager.java][onTaskResponse] data error: " + paramuko.jdField_a_of_type_JavaLangObject);
-      return;
-    }
-    stFollowFeedsRsp localstFollowFeedsRsp = (stFollowFeedsRsp)paramuko.jdField_a_of_type_JavaLangObject;
-    this.jdField_a_of_type_Ugl.jdField_a_of_type_JavaLangString = localstFollowFeedsRsp.attatch_info;
-    this.jdField_a_of_type_Ugl.jdField_a_of_type_Int = localstFollowFeedsRsp.cache_size;
-    if (paramuko.jdField_a_of_type_Uke != null) {
-      unu.a().a(localstFollowFeedsRsp.trace_id, paramuko.jdField_a_of_type_Uke.a);
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Ugl.b = localstFollowFeedsRsp.feeds_source;
-      uns.a(this.jdField_a_of_type_Ugl.b);
-    }
-    if (upw.a(localstFollowFeedsRsp.feeds))
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("[WSFeedDataManager.java][onTaskResponse] data empty: ");
-      if (localstFollowFeedsRsp.feeds == null) {}
-      for (paramuko = "null";; paramuko = "size = 0")
-      {
-        uqf.e("FollowRequest", paramuko);
-        return;
-      }
-    }
-    uqf.e("FollowRequest", "[WSFeedDataManager.java][onTaskResponse] data received, size: " + localstFollowFeedsRsp.feeds.size());
-    ugl.a(this.jdField_a_of_type_Ugl, localstFollowFeedsRsp.feeds, bool1, this.jdField_a_of_type_Int, localstFollowFeedsRsp.is_finished, this.jdField_a_of_type_Ugo);
+    return 4;
   }
+  
+  public void a(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Amyh != null) {
+      this.jdField_a_of_type_Amyh.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+    }
+    ugf.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Amyh != null) {
+      this.jdField_a_of_type_Amyh.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      ugf.a(this.jdField_a_of_type_AndroidContentContext, 2131694775);
+    }
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

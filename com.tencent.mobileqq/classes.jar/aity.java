@@ -1,72 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
 
-public class aity
-  extends aisj
+class aity
+  implements DialogInterface.OnClickListener
 {
-  public aity(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  aity(aitt paramaitt, ArrayList paramArrayList, int paramInt) {}
   
-  private static boolean a(List<String> paramList, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramList != null) && (paramList.size() > 0) && (!TextUtils.isEmpty(paramString)))
+    aitt.a(this.jdField_a_of_type_Aitt, true);
+    aitt.a(this.jdField_a_of_type_Aitt).a(1);
+    aitt.a(this.jdField_a_of_type_Aitt, this.jdField_a_of_type_JavaUtilArrayList.size(), 0.0F);
+    if (NetworkUtil.isNetSupport(BaseApplicationImpl.getContext()))
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        if (((String)paramList.next()).equals(paramString)) {
-          return true;
-        }
-      }
+      paramInt = (int)(90.0F / this.jdField_a_of_type_Int);
+      aitt.a(this.jdField_a_of_type_Aitt).b(paramInt);
     }
-    return false;
-  }
-  
-  public List<aitx> a(String paramString, aitq paramaitq, SessionInfo paramSessionInfo)
-  {
-    if ((paramaitq == null) || (!paramaitq.jdField_a_of_type_Boolean)) {}
-    do
-    {
-      return null;
-      localObject1 = paramaitq.jdField_a_of_type_JavaUtilList;
-    } while ((localObject1 == null) || (((List)localObject1).size() == 0));
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      Object localObject2 = (aitw)((Iterator)localObject1).next();
-      if (a(((aitw)localObject2).jdField_a_of_type_JavaUtilList, paramString))
-      {
-        new aitv().a(this.a, paramSessionInfo, paramString);
-        if ((((aitw)localObject2).b != null) && (((aitw)localObject2).b.size() > 0))
-        {
-          localObject2 = ((aitw)localObject2).b.iterator();
-          while (((Iterator)localObject2).hasNext()) {
-            localArrayList.add(new aitx((aitu)((Iterator)localObject2).next(), paramSessionInfo, paramString));
-          }
-        }
-      }
-    }
-    if (paramaitq.jdField_a_of_type_Int == 1) {
-      Collections.shuffle(localArrayList);
-    }
-    return localArrayList;
-  }
-  
-  public List<aitx> a(String paramString, SessionInfo paramSessionInfo)
-  {
-    return a(paramString, aitr.a(this.a.getApp(), this.a.c()), paramSessionInfo);
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    return true;
+    aitt.a(this.jdField_a_of_type_Aitt, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

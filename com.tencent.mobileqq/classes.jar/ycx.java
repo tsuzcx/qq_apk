@@ -1,98 +1,17 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
 
 public class ycx
-  extends yck
+  implements ycy
 {
-  public Context a;
-  public View a;
-  public TextView a;
-  protected final ycq a;
-  public TextView b;
-  public TextView c;
-  
-  public ycx(View paramView, ycq paramycq)
+  public void a(List<ycv> paramList, DoodleView paramDoodleView)
   {
-    this.jdField_a_of_type_Ycq = paramycq;
-    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381559));
-    this.b = ((TextView)paramView.findViewById(2131380793));
-    this.c = ((TextView)paramView.findViewById(2131380956));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369952);
-    QQStoryContext.a();
-    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))
-    {
-      if (this.b != null) {
-        this.b.setTextColor(Color.parseColor("#44608a"));
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991b8"));
-      this.c.setTextColor(Color.parseColor("#6991b8"));
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#0c284e"));
-      }
-    }
-    this.c.setOnClickListener(new ycy(this));
-  }
-  
-  public void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt)
-  {
-    int i = 0;
-    if (this.jdField_a_of_type_Ycq.a)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131712812));
-      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(zps.a(this.jdField_a_of_type_AndroidContentContext, 3.0F), 0, 0, 0);
-      this.b.setText("");
-      if (paramInt != 1) {
-        break label174;
-      }
-      this.c.setVisibility(0);
-      a(this.jdField_a_of_type_Ycq.a);
-    }
-    for (;;)
-    {
-      paramVideoCollectionItem = this.jdField_a_of_type_AndroidViewView;
-      if (paramInt == 1) {
-        i = 4;
-      }
-      paramVideoCollectionItem.setVisibility(i);
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(zof.c(paramVideoCollectionItem.collectionTime));
-      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, 0, 0, 0);
-      if (paramVideoCollectionItem.collectionCount <= 0)
-      {
-        this.b.setText("");
-        break;
-      }
-      this.b.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131698463, new Object[] { Integer.valueOf(paramVideoCollectionItem.collectionCount) }));
-      break;
-      label174:
-      this.c.setVisibility(8);
-    }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    int i = zps.a(this.jdField_a_of_type_AndroidContentContext, 17.0F);
-    if (paramBoolean)
-    {
-      this.c.setText(anzj.a(2131712791));
-      localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846901);
-      localDrawable.setBounds(0, 0, i, i);
-      this.c.setCompoundDrawables(localDrawable, null, null, null);
-      return;
-    }
-    this.c.setText(anzj.a(2131712802));
-    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846900);
-    localDrawable.setBounds(0, 0, i, i);
-    this.c.setCompoundDrawables(localDrawable, null, null, null);
+    ycc localycc = new ycc(paramDoodleView);
+    ycl localycl = new ycl(paramDoodleView);
+    paramDoodleView = new ycp(paramDoodleView);
+    paramList.add(localycc);
+    paramList.add(localycl);
+    paramList.add(paramDoodleView);
   }
 }
 

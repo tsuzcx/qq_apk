@@ -1,18 +1,18 @@
-import android.content.Context;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akin
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  akin(akih paramakih) {}
+  akin(akho paramakho, axyc paramaxyc) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    axwc.a(akho.a(this.jdField_a_of_type_Akho).app, this.jdField_a_of_type_Axyc.a, false, "br_switch");
+    axvz.a("0X800AFA0", (int)this.jdField_a_of_type_Axyc.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

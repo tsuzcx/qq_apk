@@ -1,30 +1,12 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class algb
-  implements alha
+class algb
+  implements DialogInterface.OnClickListener
 {
-  public algb(DoodleView paramDoodleView) {}
+  algb(alfz paramalfz) {}
   
-  public void a()
-  {
-    if (DoodleView.a(this.a) != null) {
-      DoodleView.a(this.a).a();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (DoodleView.a(this.a) != null) {
-      DoodleView.a(this.a).a(paramInt1, paramInt2);
-    }
-  }
-  
-  public void b()
-  {
-    if (DoodleView.a(this.a) != null) {
-      DoodleView.a(this.a).b();
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

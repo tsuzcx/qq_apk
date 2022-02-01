@@ -1,30 +1,53 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.3.1;
+import com.tencent.mobileqq.nearby.now.view.widget.LikeAniView;
 
 public class awvn
-  extends apck
+  implements GestureDetector.OnDoubleTapListener
 {
-  public int a;
-  public boolean a;
-  public int b;
+  awvn(awur paramawur) {}
   
-  public awvn(String paramString)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    super(paramString);
+    if (System.currentTimeMillis() - awur.a(this.a) >= 500L)
+    {
+      int i = (int)paramMotionEvent.getRawX();
+      int j = (int)paramMotionEvent.getRawY();
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a != 6)) {
+        ((LikeAniView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369914)).a(i, j);
+      }
+      if (!awur.a(this.a)) {
+        break label98;
+      }
+    }
+    for (;;)
+    {
+      awur.a(this.a, System.currentTimeMillis());
+      return true;
+      label98:
+      if ((!awur.b(this.a)) && (this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369914).getVisibility() == 0))
+      {
+        awur.a(this.a, false);
+        this.a.c(null);
+        new awrs().h("video").i("playpage_double_click").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        ThreadManagerV2.excute(new PlayOperationViewModel.3.1(this, (awhw)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)), 16, null, false);
+      }
+    }
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = ((int)(paramSosoLbsInfo.a.b * 1000000.0D));
-      this.b = ((int)(paramSosoLbsInfo.a.a * 1000000.0D));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("LoginUserGuideHelper", 2, String.format("onLocationFinish [%s, %s, %s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b) }));
-    }
+    return false;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

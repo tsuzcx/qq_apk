@@ -3,18 +3,21 @@ package cooperation.qzone.widget;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnqn;
 
 public class RedTouchExtendButton$RedInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<RedInfo> CREATOR = new bnqn();
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
+  public static final Parcelable.Creator<RedInfo> CREATOR = new RedTouchExtendButton.RedInfo.1();
+  public static final int RED_TOUCH_IMAGE = 3;
+  public static final int RED_TOUCH_NONE = 100;
+  public static final int RED_TOUCH_RED_POINT = 0;
+  public static final int RED_TOUCH_TEXT = 4;
+  public String desc;
+  public boolean isNew;
+  public String redText;
+  public int redType;
+  public int resId;
+  public String resUrl;
   
   public RedTouchExtendButton$RedInfo() {}
   
@@ -23,18 +26,31 @@ public class RedTouchExtendButton$RedInfo
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Int = paramParcel.readInt();
-      this.jdField_b_of_type_Int = paramParcel.readInt();
-      this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      this.c = paramParcel.readString();
+      this.isNew = bool;
+      this.redType = paramParcel.readInt();
+      this.resId = paramParcel.readInt();
+      this.redText = paramParcel.readString();
+      this.resUrl = paramParcel.readString();
+      this.desc = paramParcel.readString();
       return;
       bool = false;
     }
   }
   
-  private boolean a(Object paramObject1, Object paramObject2)
+  public RedTouchExtendButton$RedInfo(RedInfo paramRedInfo)
+  {
+    if (paramRedInfo != null)
+    {
+      this.isNew = paramRedInfo.isNew;
+      this.redType = paramRedInfo.redType;
+      this.resId = paramRedInfo.resId;
+      this.redText = paramRedInfo.redText;
+      this.resUrl = paramRedInfo.resUrl;
+      this.desc = paramRedInfo.desc;
+    }
+  }
+  
+  private boolean equals(Object paramObject1, Object paramObject2)
   {
     if ((paramObject1 == null) && (paramObject2 == null)) {}
     while ((paramObject1 != null) && (paramObject1.equals(paramObject2))) {
@@ -58,21 +74,21 @@ public class RedTouchExtendButton$RedInfo
         return false;
       } while (!(paramObject instanceof RedInfo));
       paramObject = (RedInfo)paramObject;
-    } while ((!a(Boolean.valueOf(paramObject.jdField_a_of_type_Boolean), Boolean.valueOf(this.jdField_a_of_type_Boolean))) || (!a(paramObject.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)) || (!a(Integer.valueOf(paramObject.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Int))) || (!a(paramObject.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString)) || (!a(paramObject.c, this.c)) || (!a(Integer.valueOf(paramObject.jdField_b_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int))));
+    } while ((!equals(Boolean.valueOf(paramObject.isNew), Boolean.valueOf(this.isNew))) || (!equals(paramObject.redText, this.redText)) || (!equals(Integer.valueOf(paramObject.redType), Integer.valueOf(this.redType))) || (!equals(paramObject.resUrl, this.resUrl)) || (!equals(paramObject.desc, this.desc)) || (!equals(Integer.valueOf(paramObject.resId), Integer.valueOf(this.resId))));
     return true;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {}
+    if (this.isNew) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.jdField_a_of_type_Int);
-      paramParcel.writeInt(this.jdField_b_of_type_Int);
-      paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-      paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-      paramParcel.writeString(this.c);
+      paramParcel.writeInt(this.redType);
+      paramParcel.writeInt(this.resId);
+      paramParcel.writeString(this.redText);
+      paramParcel.writeString(this.resUrl);
+      paramParcel.writeString(this.desc);
       return;
     }
   }

@@ -1,91 +1,33 @@
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
-import java.util.ArrayList;
+import android.util.SparseArray;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.2;
 import java.util.Iterator;
 import java.util.List;
 
 public class bdzc
-  extends bdzd
-  implements bdxj<bdzd>
+  extends anck
 {
-  public List<bdxf> b = new ArrayList();
+  public bdzc(TroopAioKeywordTipManager.2 param2) {}
   
-  public bdzc(SpriteNativeView paramSpriteNativeView)
+  protected void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList)
   {
-    this.a = paramSpriteNativeView;
-  }
-  
-  public <N extends bdxf> N a(String paramString)
-  {
-    int i = 0;
-    while (i < this.b.size())
+    SparseArray localSparseArray;
+    if (paramBoolean)
     {
-      bdzd localbdzd = (bdzd)this.b.get(i);
-      if (paramString.equals(localbdzd.jdField_a_of_type_JavaLangString)) {
-        return localbdzd;
+      localSparseArray = this.a.this$0.b;
+      if (paramList != null) {
+        try
+        {
+          paramList = paramList.iterator();
+          while (paramList.hasNext())
+          {
+            TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = (TroopAioKeywordTipInfo)paramList.next();
+            this.a.this$0.b.put(localTroopAioKeywordTipInfo.ruleId, localTroopAioKeywordTipInfo);
+          }
+        }
+        finally {}
       }
-      if ((localbdzd instanceof bdzc)) {
-        return ((bdzc)localbdzd).a(paramString);
-      }
-      i += 1;
     }
-    return null;
-  }
-  
-  public List<bdxf> a()
-  {
-    return this.b;
-  }
-  
-  public void a()
-  {
-    super.a();
-    int i = 0;
-    while (i < this.b.size())
-    {
-      ((bdzd)this.b.get(i)).a();
-      i += 1;
-    }
-    this.b.clear();
-  }
-  
-  public void a(bdzd parambdzd)
-  {
-    if (parambdzd.jdField_a_of_type_Bdxj == null)
-    {
-      this.b.add(parambdzd);
-      parambdzd.jdField_a_of_type_Bdxj = this;
-      parambdzd.d();
-      return;
-    }
-    new RuntimeException("the node had another parent");
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      ((bdxf)localIterator.next()).b();
-    }
-  }
-  
-  public void c()
-  {
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      ((bdxf)localIterator.next()).c();
-    }
-  }
-  
-  public boolean c()
-  {
-    boolean bool = super.c();
-    int i = 0;
-    while (i < this.b.size())
-    {
-      bool |= ((bdzd)this.b.get(i)).c();
-      i += 1;
-    }
-    return bool;
   }
 }
 

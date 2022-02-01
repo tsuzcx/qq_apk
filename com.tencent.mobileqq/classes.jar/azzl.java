@@ -1,29 +1,122 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.lifeachivement.LayerImageView;
-import com.tencent.widget.AlphaClickableRelativeLayout;
-import com.tencent.widget.AlphaClickableTextView;
+import android.os.Bundle;
+import android.os.Messenger;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.pic.PresendPicMgr;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.BinderWarpper;
+import java.util.Arrays;
 
 class azzl
-  extends RecyclerView.ViewHolder
+  extends azzg
 {
-  public TextView a;
-  public LayerImageView a;
-  public AlphaClickableRelativeLayout a;
-  public AlphaClickableTextView a;
-  public TextView b;
+  azzl(azzj paramazzj) {}
   
-  public azzl(View paramView)
+  public Bundle a(int paramInt, Bundle paramBundle)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout = ((AlphaClickableRelativeLayout)paramView.findViewById(2131368438));
-    this.jdField_a_of_type_ComTencentMobileqqProfileLifeachivementLayerImageView = ((LayerImageView)paramView.findViewById(2131361931));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361932));
-    this.b = ((TextView)paramView.findViewById(2131361930));
-    this.jdField_a_of_type_ComTencentWidgetAlphaClickableTextView = ((AlphaClickableTextView)paramView.findViewById(2131361933));
-    this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout.a(false);
-    this.jdField_a_of_type_ComTencentWidgetAlphaClickableTextView.setEnabled(true);
+    Bundle localBundle = new Bundle();
+    PresendPicMgr localPresendPicMgr;
+    if (paramInt == 16)
+    {
+      azzi.a("PTV.RichmediaClient", "ICallBack.Stub() getData start. ICALLBACK_CMD_GET_PRESEND_MGR_HANDLER");
+      localPresendPicMgr = PresendPicMgr.a();
+      Object localObject = null;
+      if ((localPresendPicMgr != null) && (localPresendPicMgr.jdField_a_of_type_Boolean)) {
+        break label113;
+      }
+      paramBundle = localObject;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("PTV.RichmediaClient", 2, "ICALLBACK_CMD_GET_PRESEND_MGR_HANDLER failed, presendMgr is null or disable preCompress,presendMgr = " + localPresendPicMgr);
+        paramBundle = localObject;
+      }
+    }
+    for (;;)
+    {
+      if (paramBundle != null)
+      {
+        localBundle.putParcelable("key_presend_mgr_handler", new BinderWarpper(paramBundle));
+        localBundle.putInt("PhotoConst.PHOTO_COUNT", localPresendPicMgr.a());
+      }
+      return localBundle;
+      label113:
+      paramBundle = new Messenger(localPresendPicMgr.jdField_a_of_type_Ayef).getBinder();
+      azzi.a("PTV.RichmediaClient", "ICallBack.Stub() getData. ICALLBACK_CMD_GET_PRESEND_MGR_HANDLER , b = " + paramBundle);
+    }
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    azzi.a("PTV.RichmediaClient", "sendRequest. cmd = " + paramInt + ",data = " + paramBundle);
+    if (paramBundle != null)
+    {
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      switch (paramInt)
+      {
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          Object localObject;
+          do
+          {
+            do
+            {
+              return;
+              paramBundle = (BinderWarpper)paramBundle.getParcelable("binder_presendService");
+              if (paramBundle != null)
+              {
+                localObject = PresendPicMgr.a();
+                if (localObject != null) {
+                  ((PresendPicMgr)localObject).b();
+                }
+                paramBundle = PresendPicMgr.b(aydb.a(paramBundle.a));
+                azzi.a("PTV.RichmediaClient", "ICALLBACK_CMD_INIT_PRESEND_PIC_MGR  presendMgr = " + paramBundle);
+                return;
+              }
+              azzi.a("PTV.RichmediaClient", "ICALLBACK_CMD_INIT_PRESEND_PIC_MGR  failed, bw is null ! ");
+              return;
+              localObject = paramBundle.getString("key_presend_path");
+              paramInt = paramBundle.getInt("entrance", 0);
+              paramBundle = PresendPicMgr.a();
+            } while ((localObject == null) || (paramBundle == null));
+            paramBundle.a((String)localObject, 1052, paramInt);
+            return;
+            localObject = paramBundle.getString("key_presend_path");
+            paramInt = paramBundle.getInt("key_presend_cancel_type");
+            paramBundle = PresendPicMgr.a();
+          } while ((localObject == null) || (paramBundle == null));
+          paramBundle.b((String)localObject, paramInt);
+          return;
+          paramInt = paramBundle.getInt("key_presend_cancel_type");
+          paramBundle = PresendPicMgr.a();
+        } while (paramBundle == null);
+        paramBundle.a(paramInt);
+        paramBundle.b();
+        return;
+        paramBundle = paramBundle.getIntArray("key_compress_config");
+      } while ((paramBundle == null) || (paramBundle.length < 9));
+      ayew.e = paramBundle[0];
+      ayew.f = paramBundle[1];
+      ayew.g = paramBundle[2];
+      ayew.h = paramBundle[3];
+      ayew.i = paramBundle[4];
+      ayew.j = paramBundle[5];
+      ayew.a = paramBundle[6];
+      ayew.b = paramBundle[7];
+      ayew.c = paramBundle[8];
+    } while (!QLog.isColorLevel());
+    QLog.d("PTV.RichmediaClient", 2, "ICALLBACK_CMD_INIT_COMPRESS_CONFIG, compressConfig = " + Arrays.toString(paramBundle));
+  }
+  
+  public void a(CompressInfo paramCompressInfo)
+  {
+    azzi.a("PTV.RichmediaClient", "ICallBack.Stub() compress start. info.src = " + paramCompressInfo.c + ",uuid = " + paramCompressInfo.a);
+    ayeu.a(paramCompressInfo);
+    azzi.a("PTV.RichmediaClient", "ICallBack.Stub() compress finish. info = " + paramCompressInfo);
   }
 }
 

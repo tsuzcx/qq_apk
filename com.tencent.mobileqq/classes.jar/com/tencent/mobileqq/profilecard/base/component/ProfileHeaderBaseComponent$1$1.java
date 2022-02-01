@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.profilecard.base.component;
 
-import anyw;
-import azxr;
-import badm;
-import badn;
+import amsw;
+import aymg;
+import aysb;
+import aysc;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ProfileHeaderBaseComponent$1$1
   implements Runnable
 {
-  public ProfileHeaderBaseComponent$1$1(badn parambadn) {}
+  public ProfileHeaderBaseComponent$1$1(aysc paramaysc) {}
   
   public void run()
   {
     try
     {
-      ((anyw)badm.a(this.a.a).getManager(51)).a(((azxr)badm.h(this.a.a)).a);
+      ((amsw)aysb.a(this.a.a).getManager(51)).a(((aymg)aysb.h(this.a.a)).a);
       return;
     }
     catch (Throwable localThrowable) {}

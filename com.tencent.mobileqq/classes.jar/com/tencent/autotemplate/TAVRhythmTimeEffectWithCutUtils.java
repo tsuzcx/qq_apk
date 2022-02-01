@@ -101,7 +101,7 @@ public class TAVRhythmTimeEffectWithCutUtils
         localObject2 = localObject1;
         break;
         localObject1 = localObject2;
-        if (((CMTimeRange)localObject4).getStart().equals(localObject2))
+        if (((CMTimeRange)localObject4).getStart().equalsTo((CMTime)localObject2))
         {
           localArrayList.add(localObject3);
           localObject1 = ((CMTimeRange)localObject4).getEnd();

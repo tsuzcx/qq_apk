@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
 import android.text.TextUtils;
-import aubf;
-import bhjr;
+import asnp;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -13,15 +13,15 @@ public class ExcitingTransferNativeCallMe
 {
   public static boolean getConfigFromServer()
   {
-    return aubf.a().e();
+    return asnp.a().e();
   }
   
   public static long getFreeSpaceForFile(String paramString)
   {
-    if (bhjr.a()) {
-      return bhjr.a() * 1024L;
+    if (SystemUtil.isExistSDCard()) {
+      return SystemUtil.getSDCardAvailableSize() * 1024L;
     }
-    return bhjr.b() * 1024L;
+    return SystemUtil.getSystemAvailableSize() * 1024L;
   }
   
   public static long getLastModifyTime(String paramString)
@@ -46,7 +46,7 @@ public class ExcitingTransferNativeCallMe
   
   public static long getSelfUin()
   {
-    return aubf.a().e();
+    return asnp.a().e();
   }
   
   public static String getVersion()
@@ -102,7 +102,7 @@ public class ExcitingTransferNativeCallMe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferNativeCallMe
  * JD-Core Version:    0.7.0.1
  */

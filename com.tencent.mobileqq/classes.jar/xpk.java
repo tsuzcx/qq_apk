@@ -1,21 +1,80 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.os.Build.VERSION;
-import android.widget.ImageView;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.view.View;
 
-class xpk
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract class xpk
+  implements xpl
 {
-  xpk(xpj paramxpj) {}
+  protected Activity a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public Activity a()
   {
-    if (Build.VERSION.SDK_INT >= 16)
+    return this.a;
+  }
+  
+  public View a(int paramInt)
+  {
+    Activity localActivity = this.a;
+    if (localActivity != null) {
+      return localActivity.findViewById(paramInt);
+    }
+    xvv.e(getClass().getSimpleName(), "findViewById can not access after detach");
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt)
+  {
+    Activity localActivity = this.a;
+    if (localActivity != null)
     {
-      this.a.a.setImageAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+      localActivity.setContentView(paramInt);
       return;
     }
-    this.a.a.setImageResource(2130850680);
+    xvv.e(getClass().getSimpleName(), "setContentView can not access after detach");
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(int paramInt, Intent paramIntent)
+  {
+    Activity localActivity = this.a;
+    if (localActivity != null)
+    {
+      localActivity.setResult(paramInt, paramIntent);
+      return;
+    }
+    xvv.e(getClass().getSimpleName(), "finish can not access after detach");
+  }
+  
+  public void a(@NonNull Activity paramActivity)
+  {
+    this.a = paramActivity;
+  }
+  
+  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
+  {
+    this.a = null;
+  }
+  
+  public void e()
+  {
+    Activity localActivity = this.a;
+    if (localActivity != null)
+    {
+      localActivity.finish();
+      return;
+    }
+    xvv.e(getClass().getSimpleName(), "finish can not access after detach");
   }
 }
 

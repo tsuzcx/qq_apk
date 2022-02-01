@@ -1,30 +1,55 @@
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class zsi
-  implements URLDrawable.URLDrawableListener
+  extends nnt
 {
-  private final WeakReference<TextView> a;
+  public boolean a;
   
-  public zsi(TextView paramTextView)
+  public zsi(Context paramContext, String paramString)
   {
-    this.a = new WeakReference(paramTextView);
+    super(paramContext, paramString);
   }
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public String a()
   {
-    paramURLDrawable = (TextView)this.a.get();
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setVisibility(8);
+    return "key_for_troop_config_for_all_cfg";
+  }
+  
+  public void a(String paramString)
+  {
+    boolean bool = true;
+    this.a = true;
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
+    for (;;)
+    {
+      try
+      {
+        if (new JSONObject(paramString).optInt("isShow3kTroopTips") != 1) {
+          break label56;
+        }
+        this.a = bool;
+        return;
+      }
+      catch (JSONException paramString) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("TroopConfigForAllUser", 2, paramString.getMessage());
+      return;
+      label56:
+      bool = false;
+    }
+  }
+  
+  public String b()
+  {
+    return "key_for_troop_config_for_all_cfg_version";
   }
 }
 

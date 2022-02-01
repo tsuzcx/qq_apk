@@ -1,6 +1,9 @@
 package com.tencent.mobileqq.fragment;
 
-import amqh;
+import allb;
+import amtj;
+import anca;
+import andd;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -11,14 +14,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import anzj;
-import aoip;
-import aojs;
-import avgk;
-import bdll;
-import bgtw;
-import bgtx;
-import bgty;
+import attq;
+import bcef;
+import bfdk;
+import bfdl;
+import bfdm;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.widget.AddedRobotView;
@@ -29,8 +29,8 @@ import java.util.ArrayList;
 public class TroopRobotFragment
   extends IphoneTitleBarFragment
 {
-  amqh jdField_a_of_type_Amqh;
-  aojs jdField_a_of_type_Aojs = new avgk(this);
+  allb jdField_a_of_type_Allb;
+  andd jdField_a_of_type_Andd = new attq(this);
   private AddedRobotView jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   private String jdField_a_of_type_JavaLangString;
@@ -52,9 +52,9 @@ public class TroopRobotFragment
         return;
         localObject = getActivity().app;
       } while (localObject == null);
-      localObject = ((bgty)((QQAppInterface)localObject).getManager(203)).a(paramLong);
+      localObject = ((bfdm)((QQAppInterface)localObject).getManager(203)).a(paramLong);
     } while (getActivity() == null);
-    getActivity().runOnUiThread(new TroopRobotFragment.2(this, (bgtw)localObject));
+    getActivity().runOnUiThread(new TroopRobotFragment.2(this, (bfdk)localObject));
   }
   
   public void a()
@@ -63,7 +63,7 @@ public class TroopRobotFragment
     try
     {
       l = Long.parseLong(this.jdField_a_of_type_JavaLangString);
-      ((aoip)getActivity().app.a(20)).h(l);
+      ((anca)getActivity().app.getBusinessHandler(20)).h(l);
       return;
     }
     catch (Exception localException)
@@ -78,13 +78,13 @@ public class TroopRobotFragment
     }
   }
   
-  public void a(ArrayList<bgtx> paramArrayList1, ArrayList<bgtx> paramArrayList2, int paramInt)
+  public void a(ArrayList<bfdl> paramArrayList1, ArrayList<bfdl> paramArrayList2, int paramInt)
   {
     if ((this.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.jdField_a_of_type_ComTencentWidgetXListView.getVisibility() != 0)) {
       this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
     }
-    if (this.jdField_a_of_type_Amqh != null) {
-      this.jdField_a_of_type_Amqh.a(paramArrayList2);
+    if (this.jdField_a_of_type_Allb != null) {
+      this.jdField_a_of_type_Allb.a(paramArrayList2);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView != null) {
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView.setAddList(paramArrayList1, paramInt, this.jdField_a_of_type_JavaLangString);
@@ -96,41 +96,41 @@ public class TroopRobotFragment
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.jdField_a_of_type_JavaLangString = a(getActivity()).getStringExtra("uin");
     this.jdField_a_of_type_Boolean = a(getActivity()).getBooleanExtra("be_admin_in_the_troop", false);
-    paramLayoutInflater = getActivity().getResources().getString(2131719002);
+    paramLayoutInflater = getActivity().getResources().getString(2131719268);
     setTitle(paramLayoutInflater, paramLayoutInflater);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.mContentView.findViewById(2131376938));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.mContentView.findViewById(2131376692));
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView = new AddedRobotView(getActivity());
     this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(getResources().getDrawable(2130850427));
-    this.jdField_a_of_type_Amqh = new amqh(getActivity().app, getActivity(), this.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Amqh);
-    getActivity().addObserver(this.jdField_a_of_type_Aojs);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(getResources().getDrawable(2130850348));
+    this.jdField_a_of_type_Allb = new allb(getActivity().app, getActivity(), this.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Allb);
+    getActivity().addObserver(this.jdField_a_of_type_Andd);
     if ((AppSetting.c) && (this.leftView != null)) {
-      this.leftView.setContentDescription(anzj.a(2131714532));
+      this.leftView.setContentDescription(amtj.a(2131714764));
     }
-    bdll.b(getActivity().app, "dc00898", "", "", "", "0X8009F9D", 0, 0, "", "", "", "");
+    bcef.b(getActivity().app, "dc00898", "", "", "", "0X8009F9D", 0, 0, "", "", "", "");
   }
   
   protected int getContentLayoutId()
   {
-    return 2131560668;
+    return 2131560679;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Amqh != null)
+    if (this.jdField_a_of_type_Allb != null)
     {
-      this.jdField_a_of_type_Amqh.a();
-      this.jdField_a_of_type_Amqh = null;
+      this.jdField_a_of_type_Allb.a();
+      this.jdField_a_of_type_Allb = null;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView.a();
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAddedRobotView = null;
     }
-    getActivity().removeObserver(this.jdField_a_of_type_Aojs);
+    getActivity().removeObserver(this.jdField_a_of_type_Andd);
   }
   
   public void onResume()

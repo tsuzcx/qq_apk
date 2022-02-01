@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.model;
 
 import android.text.TextUtils;
-import axfj;
+import avsq;
 import com.tencent.mobileqq.data.RecentEmotion;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class EmoticonManager$19
   implements Runnable
 {
-  public EmoticonManager$19(axfj paramaxfj, RecentEmotion paramRecentEmotion) {}
+  public EmoticonManager$19(avsq paramavsq, RecentEmotion paramRecentEmotion) {}
   
   public void run()
   {
@@ -28,7 +28,7 @@ public class EmoticonManager$19
       return;
     }
     RecentEmotion localRecentEmotion = this.a;
-    CopyOnWriteArrayList localCopyOnWriteArrayList = axfj.a(this.this$0, str);
+    CopyOnWriteArrayList localCopyOnWriteArrayList = avsq.a(this.this$0, str);
     if (localCopyOnWriteArrayList != null)
     {
       int i = localCopyOnWriteArrayList.indexOf(this.a);

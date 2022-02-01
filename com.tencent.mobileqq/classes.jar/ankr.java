@@ -1,27 +1,62 @@
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.security.InvalidKeyException;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
+import java.security.PublicKey;
+import java.security.Signature;
+import java.security.SignatureException;
 
-class ankr
-  implements anje
+public class ankr
 {
-  ankr(ankf paramankf, int paramInt, File paramFile, String paramString) {}
-  
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  private Signature a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc onDownLoadFinish:" + this.jdField_a_of_type_Int + " sucess:" + paramBoolean);
-    }
-    if (paramBoolean)
+    try
     {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
-      {
-        this.jdField_a_of_type_Ankf.a(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_Int + anzj.a(2131699406));
-        return;
-      }
-      this.jdField_a_of_type_Ankf.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Int + anzj.a(2131699405));
-      return;
+      Signature localSignature = Signature.getInstance("SHA256withRSA");
+      return localSignature;
     }
-    this.jdField_a_of_type_Ankf.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Int + anzj.a(2131699427));
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
+    {
+      QLog.e("RsaUsingShaAlgorithm", 1, new Object[] { "getSignature error : ", localNoSuchAlgorithmException.getMessage() });
+    }
+    return null;
+  }
+  
+  private boolean a(Signature paramSignature, Key paramKey)
+  {
+    try
+    {
+      paramSignature.initVerify((PublicKey)paramKey);
+      return true;
+    }
+    catch (InvalidKeyException paramSignature)
+    {
+      QLog.e("RsaUsingShaAlgorithm", 1, new Object[] { "initForVerify error : ", paramSignature.getMessage() });
+    }
+    return false;
+  }
+  
+  public boolean a(byte[] paramArrayOfByte1, Key paramKey, byte[] paramArrayOfByte2)
+  {
+    Signature localSignature = a();
+    if (localSignature == null)
+    {
+      QLog.e("RsaUsingShaAlgorithm", 1, "verifySignature fail");
+      return false;
+    }
+    if (!a(localSignature, paramKey))
+    {
+      QLog.e("RsaUsingShaAlgorithm", 1, "initForVerify fail");
+      return false;
+    }
+    try
+    {
+      localSignature.update(paramArrayOfByte2);
+      boolean bool = localSignature.verify(paramArrayOfByte1);
+      return bool;
+    }
+    catch (SignatureException paramArrayOfByte1) {}
+    return false;
   }
 }
 

@@ -2,11 +2,11 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import qwu;
-import rlr;
-import rrm;
-import rro;
-import rwf;
+import rds;
+import rsr;
+import ryo;
+import ryq;
+import sdj;
 
 class VideoFeedsPlayManager$6
   implements Runnable
@@ -18,18 +18,18 @@ class VideoFeedsPlayManager$6
     if ((VideoFeedsPlayManager.a(this.this$0) != null) && ((VideoFeedsPlayManager.a(this.this$0).b() == 5) || (VideoFeedsPlayManager.a(this.this$0).b() == 2)))
     {
       VideoFeedsPlayManager.a(this.this$0).e();
-      if (VideoFeedsPlayManager.a(this.this$0).jdField_a_of_type_Rlr != null) {
-        VideoFeedsPlayManager.a(this.this$0).jdField_a_of_type_Rlr.e(VideoFeedsPlayManager.a(this.this$0));
+      if (VideoFeedsPlayManager.a(this.this$0).jdField_a_of_type_Rsr != null) {
+        VideoFeedsPlayManager.a(this.this$0).jdField_a_of_type_Rsr.e(VideoFeedsPlayManager.a(this.this$0));
       }
       if (VideoFeedsPlayManager.a(this.this$0) != null)
       {
         Iterator localIterator = VideoFeedsPlayManager.a(this.this$0).iterator();
         while (localIterator.hasNext()) {
-          ((rro)localIterator.next()).e(VideoFeedsPlayManager.a(this.this$0));
+          ((ryq)localIterator.next()).a(VideoFeedsPlayManager.a(this.this$0));
         }
       }
       if (VideoFeedsPlayManager.c(this.this$0)) {
-        VideoFeedsPlayManager.a(this.this$0).jdField_a_of_type_Qwu.f = qwu.b;
+        VideoFeedsPlayManager.a(this.this$0).jdField_a_of_type_Rds.f = rds.b;
       }
     }
   }

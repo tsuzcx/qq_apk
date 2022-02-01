@@ -1,6 +1,11 @@
-public abstract interface bmcz
+import java.io.File;
+
+public class bmcz
 {
-  public abstract void a(int paramInt, String paramString);
+  public static final String a = bljv.b + File.separator + "ae_editor";
+  public static final String b = a + File.separator + "compress";
+  public static final String c = a + File.separator + "bgm";
+  public static final String d = a + File.separator + "comic";
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.gdtad.api.banner;
 
-import acpi;
-import acpj;
-import acpk;
-import acpl;
-import acpm;
-import acpn;
-import acvc;
+import ablr;
+import abls;
+import ablt;
+import ablu;
+import ablv;
+import ablw;
+import abrl;
 import android.content.Context;
 import android.view.View;
 import com.tencent.gdtad.aditem.GdtHandler.Params;
@@ -14,25 +14,25 @@ import com.tencent.gdtad.aditem.GdtHandler.Params;
 public final class GdtBannerAd
   extends com.tencent.gdtad.api.GdtAd
 {
-  private acpl params;
+  private ablu params;
   private boolean rendered;
   private float touchUpX;
   private float touchUpY;
   
-  public GdtBannerAd(acpl paramacpl)
+  public GdtBannerAd(ablu paramablu)
   {
-    super(paramacpl);
-    this.params = paramacpl;
+    super(paramablu);
+    this.params = paramablu;
     init();
   }
   
   private boolean a()
   {
     long l = this.params.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a.getMinIntervalMillisBetweenExposureAndClick();
-    acvc.b("GdtBannerAd", "getView().onClick exp time :" + l);
+    abrl.b("GdtBannerAd", "getView().onClick exp time :" + l);
     l = Math.min(Math.max(l, 0L), 1000L);
     if (l > System.currentTimeMillis() - this.params.jdField_a_of_type_Long) {
-      acvc.d("GdtBannerAd", "getView().onClick return cause click unless than exp time :" + l);
+      abrl.d("GdtBannerAd", "getView().onClick return cause click unless than exp time :" + l);
     }
     int i;
     do
@@ -41,11 +41,11 @@ public final class GdtBannerAd
       {
         return false;
         i = this.params.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a.getBannerInvalidClickXPercent();
-        acvc.b("GdtBannerAd", "getView().onClick exp leftRightPercent :" + i);
+        abrl.b("GdtBannerAd", "getView().onClick exp leftRightPercent :" + i);
         i = Math.min(Math.max(i, 0), 100);
       } while ((this.touchUpX < this.params.b * i * 1.0D / 100.0D) || (this.touchUpX > (100 - i) * this.params.b * 1.0D / 100.0D));
       i = this.params.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a.getBannerInvalidClickYPercent();
-      acvc.b("GdtBannerAd", "getView().onClick exp upDownPercent :" + i);
+      abrl.b("GdtBannerAd", "getView().onClick exp upDownPercent :" + i);
       i = Math.min(Math.max(i, 0), 100);
     } while ((this.touchUpY < this.params.c * i * 1.0D / 100.0D) || (this.touchUpY > (100 - i) * this.params.c * 1.0D / 100.0D));
     return true;
@@ -59,7 +59,7 @@ public final class GdtBannerAd
     }
     if ((paramGdtAd == null) || (!isValid()) || (getParams().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet == null))
     {
-      acvc.d("GdtBannerAd", "getErrorCode error");
+      abrl.d("GdtBannerAd", "getErrorCode error");
       return 1;
     }
     paramInt1 = paramGdtAd.getCreativeSize();
@@ -69,7 +69,7 @@ public final class GdtBannerAd
     return 7;
   }
   
-  protected acpl getParams()
+  protected ablu getParams()
   {
     return this.params;
   }
@@ -81,25 +81,25 @@ public final class GdtBannerAd
     }
   }
   
-  public acpm render(Context paramContext, int paramInt1, int paramInt2)
+  public ablv render(Context paramContext, int paramInt1, int paramInt2)
   {
     if ((paramContext == null) || (paramInt1 < 0) || (paramInt2 < 0) || (!isLoaded()) || (this.rendered))
     {
-      acvc.d("GdtBannerAd", "render error");
+      abrl.d("GdtBannerAd", "render error");
       return null;
     }
     this.params.b = paramInt1;
     this.params.c = paramInt2;
-    paramContext = acpn.a(this.params);
-    if ((paramContext == null) || (paramContext.a() == null) || (acpm.a == null))
+    paramContext = ablw.a(this.params);
+    if ((paramContext == null) || (paramContext.a() == null) || (ablv.a == null))
     {
-      acvc.d("GdtBannerAd", "render error");
+      abrl.d("GdtBannerAd", "render error");
       return null;
     }
-    paramContext.a().setOnTouchListener(new acpi(this, paramContext));
-    paramContext.a().setOnClickListener(new acpj(this, paramContext));
+    paramContext.a().setOnTouchListener(new ablr(this, paramContext));
+    paramContext.a().setOnClickListener(new abls(this, paramContext));
     if (paramContext.b() != null) {
-      paramContext.b().setOnClickListener(new acpk(this, paramContext));
+      paramContext.b().setOnClickListener(new ablt(this, paramContext));
     }
     this.rendered = true;
     return paramContext;

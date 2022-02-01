@@ -1,18 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.RichTitleInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import mqq.os.MqqHandler;
 
-public final class odi
-  implements Parcelable.Creator<VideoInfo.RichTitleInfo>
+class odi
+  extends BroadcastReceiver
 {
-  public VideoInfo.RichTitleInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.RichTitleInfo(paramParcel);
-  }
+  odi(ocw paramocw, boolean paramBoolean, MqqHandler paramMqqHandler) {}
   
-  public VideoInfo.RichTitleInfo[] a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new VideoInfo.RichTitleInfo[paramInt];
+    String str = paramIntent.getStringExtra("com.tencent.biz.pubaccount.scanResultData");
+    int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.scanResultType", 0);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Ocw.a(str, i, 12, -1, null);
+      if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(19);
+      }
+    }
+    try
+    {
+      for (;;)
+      {
+        paramContext.unregisterReceiver(this.jdField_a_of_type_Ocw.a);
+        label65:
+        this.jdField_a_of_type_Ocw.a = null;
+        return;
+        this.jdField_a_of_type_Ocw.a(str, i, 11, -1, null);
+      }
+    }
+    catch (Exception paramContext)
+    {
+      break label65;
+    }
   }
 }
 

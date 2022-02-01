@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
-import agej;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -23,9 +22,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.FrameLayout;
-import atcj;
-import atcv;
+import aror;
+import arpd;
 import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
@@ -66,13 +66,13 @@ public class ExtendFriendFeedView
   public ExtendFriendFeedView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2131561210, this, true);
-    this.jdField_a_of_type_Float = agej.a(4.0F, getResources());
+    LayoutInflater.from(paramContext).inflate(2131561084, this, true);
+    this.jdField_a_of_type_Float = AIOUtils.dp2px(4.0F, getResources());
   }
   
   private Bitmap a(String paramString)
   {
-    Object localObject1 = atcj.c;
+    Object localObject1 = aror.c;
     if ((localObject1 != null) && (localObject1.length > 0)) {
       for (;;)
       {
@@ -92,7 +92,7 @@ public class ExtendFriendFeedView
           i = paramString.toUpperCase().charAt(0) % localObject1.length;
           if (i == -1)
           {
-            str = atcj.a("expand_feed_bg_default.png");
+            str = aror.a("expand_feed_bg_default.png");
             paramString = (WeakReference)jdField_a_of_type_JavaUtilMap.get(str);
             if (paramString == null) {
               break label207;
@@ -124,7 +124,7 @@ public class ExtendFriendFeedView
             localObject1 = paramString;
             ((BitmapFactory.Options)localObject2).inSampleSize = 2;
             localObject1 = paramString;
-            localObject2 = atcj.a(str, (BitmapFactory.Options)localObject2);
+            localObject2 = aror.a(str, (BitmapFactory.Options)localObject2);
             localObject1 = localObject2;
             jdField_a_of_type_JavaUtilMap.put(str, new WeakReference(localObject2));
           }
@@ -134,7 +134,7 @@ public class ExtendFriendFeedView
         {
           continue;
         }
-        str = atcj.a(localObject1[i]);
+        str = aror.a(localObject1[i]);
         continue;
         label207:
         paramString = null;
@@ -151,7 +151,7 @@ public class ExtendFriendFeedView
     int i = jdField_a_of_type_ArrayOfInt.length;
     paramInt = jdField_a_of_type_ArrayOfInt[(paramInt % i)];
     if (this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = atcv.a(paramInt, 0.0F, 0.0F, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float);
+      this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable = arpd.a(paramInt, 0.0F, 0.0F, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float);
     }
     for (;;)
     {
@@ -208,7 +208,7 @@ public class ExtendFriendFeedView
       this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, this.c, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       if (this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable != null)
       {
-        i = agej.a(5.0F, getResources());
+        i = AIOUtils.dp2px(5.0F, getResources());
         this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setBounds(0, this.jdField_b_of_type_Int - i, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       }
       return;
@@ -292,7 +292,7 @@ public class ExtendFriendFeedView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.ExtendFriendFeedView
  * JD-Core Version:    0.7.0.1
  */

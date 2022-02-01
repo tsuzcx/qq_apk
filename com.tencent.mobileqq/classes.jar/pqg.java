@@ -1,19 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.PicData;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoChannelFragment;
 
-public final class pqg
-  implements Parcelable.Creator<ReadInJoyDraftboxItem.PicData>
+public class pqg
+  implements tsw
 {
-  public ReadInJoyDraftboxItem.PicData a(Parcel paramParcel)
+  public pqg(ReadInJoyVideoChannelFragment paramReadInJoyVideoChannelFragment) {}
+  
+  public void a()
   {
-    return new ReadInJoyDraftboxItem.PicData(paramParcel);
+    sdc localsdc = this.a.a();
+    if ((localsdc != null) && (localsdc.a() != null))
+    {
+      if (localsdc.a().a()) {
+        localsdc.a().j();
+      }
+      localsdc.a().d();
+    }
   }
   
-  public ReadInJoyDraftboxItem.PicData[] a(int paramInt)
-  {
-    return new ReadInJoyDraftboxItem.PicData[paramInt];
-  }
+  public void b() {}
 }
 
 

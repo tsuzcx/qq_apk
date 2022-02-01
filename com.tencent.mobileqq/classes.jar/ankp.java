@@ -1,33 +1,60 @@
-import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
+import java.security.Key;
 
-class ankp
-  implements amve
+public class ankp
 {
-  ankp(ankf paramankf, String paramString, File paramFile, int paramInt) {}
+  private anks a;
   
-  public void a(boolean paramBoolean, String paramString1, List<amvb> paramList, String paramString2)
+  public ankp(anks paramanks)
   {
-    QLog.i("ApolloPluginRscLoader", 1, "downloadApolloRes onDownLoadFinish success:" + paramBoolean);
-    paramString1 = ankf.a(this.jdField_a_of_type_JavaLangString);
-    if (TextUtils.isEmpty(paramString1))
+    this.a = paramanks;
+  }
+  
+  private ankq a(String paramString)
+  {
+    anko localanko = anko.a(paramString);
+    if (localanko == null)
     {
-      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
-      return;
+      QLog.e("JwtConsumer", 1, "format jwt token error");
+      return null;
     }
-    if (paramBoolean)
+    paramString = new ankq(paramString, localanko);
+    if (a(paramString)) {}
+    for (;;)
     {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
-      {
-        this.jdField_a_of_type_Ankf.a(paramString1, 0, this.jdField_a_of_type_Int + anzj.a(2131699410));
-        return;
-      }
-      this.jdField_a_of_type_Ankf.a(paramString1, 2, this.jdField_a_of_type_Int + anzj.a(2131699409));
-      return;
+      return paramString;
+      paramString = null;
     }
-    this.jdField_a_of_type_Ankf.a(paramString1, 2, this.jdField_a_of_type_Int + anzj.a(2131699404));
+  }
+  
+  private boolean a(ankq paramankq)
+  {
+    paramankq = paramankq.a();
+    Key localKey = this.a.a();
+    if (localKey == null)
+    {
+      QLog.e("JwtConsumer", 1, "verificationKeyResolver.resolveKey() is null");
+      return false;
+    }
+    paramankq.a(localKey);
+    return paramankq.a();
+  }
+  
+  public String a(String paramString)
+  {
+    paramString = a(paramString);
+    if (paramString == null)
+    {
+      QLog.e("JwtConsumer", 1, "process jwt token error, process is null");
+      return null;
+    }
+    paramString = paramString.a();
+    if (paramString == null)
+    {
+      QLog.e("JwtConsumer", 1, "process jwt token error, joseObject is null");
+      return null;
+    }
+    return paramString.a();
   }
 }
 

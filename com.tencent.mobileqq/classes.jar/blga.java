@@ -1,60 +1,17 @@
-import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
-import com.tencent.mobileqq.shortvideo.resource.ArtFilterResource;
-import com.tencent.mobileqq.shortvideo.resource.BeautyResource;
-import com.tencent.mobileqq.shortvideo.resource.GestureGameResource;
-import com.tencent.mobileqq.shortvideo.resource.GestureResource;
-import com.tencent.mobileqq.shortvideo.resource.LowLightResource;
-import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
-import com.tencent.mobileqq.shortvideo.resource.Resources;
-import com.tencent.mobileqq.shortvideo.resource.SensorResource;
-import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
 
-public class blga
-  implements Resources
+class blga
+  implements ThreadPool.Job<Void>
 {
-  public SpecialAVFilterResource getAVFilterResource()
-  {
-    return new blgc();
-  }
+  blga(blfu paramblfu, HttpNetReq paramHttpNetReq) {}
   
-  public ArtFilterResource getArtFilterResource()
+  public Void a(ThreadPool.JobContext paramJobContext)
   {
-    return new blfr();
-  }
-  
-  public AVFilterResource getAvFilterResource()
-  {
-    return new blfq();
-  }
-  
-  public BeautyResource getBeautyResource()
-  {
-    return new blfs();
-  }
-  
-  public GestureResource getGestureResource()
-  {
-    return new blfv();
-  }
-  
-  public LowLightResource getLowLightResource()
-  {
-    return new blfx();
-  }
-  
-  public PtuFilterResource getPtuFilterResource()
-  {
-    return new blfy();
-  }
-  
-  public SensorResource getSensorResource()
-  {
-    return new blgb();
-  }
-  
-  public GestureGameResource geteGestureGameResource()
-  {
-    return new blfu();
+    blfu.a(this.jdField_a_of_type_Blfu).sendReq(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+    return null;
   }
 }
 

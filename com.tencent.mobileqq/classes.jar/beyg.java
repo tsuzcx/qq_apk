@@ -1,133 +1,16 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.PhotoSendParams;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.wx.voice.vad.WXVadSeg;
-import java.io.OutputStream;
+import java.util.ArrayList;
 
-public class beyg
+class beyg
 {
-  public int a;
   public long a;
-  public azpp a;
-  public azrg a;
-  public beyn a;
-  public URLDrawableHandler a;
-  public PhotoSendParams a;
-  public MessageRecord a;
-  public WXVadSeg a;
-  public OutputStream a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public Object b;
-  public String b;
-  public boolean b;
-  public byte[] b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
-  public long d;
-  public String d;
-  public boolean d;
-  public int e;
-  public long e;
-  public String e;
-  public boolean e;
-  public int f;
-  public String f;
-  public boolean f;
-  public int g;
-  public String g;
-  public boolean g = true;
-  public int h;
-  public String h;
-  public boolean h;
-  public int i;
-  public String i;
-  public boolean i;
-  public int j;
-  public String j;
-  public boolean j;
-  public int k;
-  public String k;
-  public boolean k;
-  public int l;
-  public String l;
-  public boolean l;
-  public int m;
-  public String m;
-  public boolean m;
-  public int n;
-  public String n;
-  public boolean n;
-  public int o;
-  private String o;
-  public boolean o;
-  public int p;
-  public boolean p;
-  public int q;
-  public boolean q;
-  public int r;
-  public boolean r;
+  public ArrayList<beyd> a;
+  public ArrayList<beyd> b;
   
-  public beyg()
+  public beyg(long paramLong, ArrayList<beyd> paramArrayList1, ArrayList<beyd> paramArrayList2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_d_of_type_Boolean = true;
-    this.jdField_d_of_type_Int = 5;
-    this.jdField_f_of_type_Boolean = true;
-    this.jdField_f_of_type_Int = 1;
-  }
-  
-  public String a()
-  {
-    return this.jdField_c_of_type_JavaLangString + this.jdField_a_of_type_Long;
-  }
-  
-  public String b()
-  {
-    if (this.o == null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-      localStringBuilder.append("_");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
-      localStringBuilder.append("_");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
-      localStringBuilder.append("_");
-      localStringBuilder.append(this.jdField_b_of_type_Long);
-      return localStringBuilder.toString();
-    }
-    return this.o;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("TransferRequest\n");
-    localStringBuilder.append("mUniseq=" + this.jdField_a_of_type_Long);
-    localStringBuilder.append(",mMd5=" + this.jdField_f_of_type_JavaLangString);
-    localStringBuilder.append(",mIsIp=" + this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(",mUinType=" + this.jdField_a_of_type_Int);
-    localStringBuilder.append(",mFileType=" + this.jdField_b_of_type_Int);
-    localStringBuilder.append(",mSelfUin=" + this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(",mPeerUin=" + this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(",mSecondId=" + this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append(",mServerPath=" + this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append(",mLocalPath=" + this.i);
-    localStringBuilder.append(",mBusiType=" + this.jdField_e_of_type_Int);
-    localStringBuilder.append(",mGroupFileID=" + this.jdField_c_of_type_Long);
-    localStringBuilder.append(",mExtraObj={" + this.jdField_a_of_type_JavaLangObject + "}");
-    localStringBuilder.append(",mPrioty=" + this.jdField_f_of_type_Int);
-    localStringBuilder.append(",mLogicCallBack=" + this.jdField_a_of_type_Azrg);
-    localStringBuilder.append(",bEnableEnc=" + this.jdField_n_of_type_Boolean);
-    localStringBuilder.append(",isQzonePic=" + this.q);
-    localStringBuilder.append(",pcmForVadPath=" + this.jdField_n_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList1;
+    this.b = paramArrayList2;
   }
 }
 

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.ViewGroup;
-import bhsr;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPlugin;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
@@ -16,6 +15,7 @@ import com.tencent.mobileqq.mini.widget.media.CoverVideoView;
 import com.tencent.mobileqq.minigame.jsapi.manager.GameVideoPlayerManager;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
 import com.tencent.mobileqq.minigame.utils.GameLog;
+import com.tencent.mobileqq.utils.StringUtil;
 import java.lang.ref.WeakReference;
 import java.util.Set;
 import org.json.JSONArray;
@@ -108,7 +108,7 @@ public class VideoPlugin
         ((CoverVideoView)localCoverView).setVisibility(0);
       }
       paramJSONObject = paramJSONObject.optString("src");
-      if (!bhsr.a(paramJSONObject)) {
+      if (!StringUtil.isEmpty(paramJSONObject)) {
         ((CoverVideoView)localCoverView).setVideoPath(paramJSONObject);
       }
     }

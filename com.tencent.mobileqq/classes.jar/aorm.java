@@ -1,17 +1,22 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
-class aorm
-  implements DialogInterface.OnDismissListener
+final class aorm
+  extends aoss
 {
-  aorm(aori paramaori, Activity paramActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  aorm(String paramString, aosb paramaosb)
   {
-    QLog.d("AccountIdentityManager", 1, "dialog dismiss");
-    aori.a(this.jdField_a_of_type_Aori, this.jdField_a_of_type_AndroidAppActivity);
+    super(paramString);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    String str = null;
+    if (paramBoolean) {
+      str = paramBundle.getString("pskey", null);
+    }
+    if (this.a != null) {
+      this.a.a(str);
+    }
   }
 }
 

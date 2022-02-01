@@ -1,26 +1,24 @@
+import android.text.TextUtils;
+import java.util.Collections;
+import java.util.concurrent.ConcurrentHashMap;
+
 public class wnv
 {
-  public static int a;
-  public static boolean a;
-  public static boolean b;
-  public static boolean c;
+  public static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
   
-  static
+  public static void a(String paramString)
   {
-    jdField_a_of_type_Boolean = false;
-    b = false;
-    c = false;
-    jdField_a_of_type_Int = 725;
-  }
-  
-  public static boolean a()
-  {
-    return false;
-  }
-  
-  public static boolean b()
-  {
-    return true;
+    if (TextUtils.isEmpty(paramString)) {}
+    long l;
+    Long localLong;
+    do
+    {
+      return;
+      l = System.currentTimeMillis();
+      localLong = (Long)a.get(paramString);
+    } while ((localLong != null) && (Math.abs(l - localLong.longValue()) <= 120000L));
+    a.put(paramString, Long.valueOf(l));
+    wcj.a(Collections.singletonList(paramString));
   }
 }
 

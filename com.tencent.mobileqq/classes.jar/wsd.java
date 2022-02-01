@@ -1,21 +1,28 @@
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.io.File;
 
-public class wsd
-  implements wsp
+class wsd
+  implements wty
 {
-  protected AtomicBoolean c = new AtomicBoolean(false);
+  private wsd(wsa paramwsa) {}
   
-  public void a() {}
+  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean) {}
   
-  public void b()
+  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, wur paramwur) {}
+  
+  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, wur paramwur, int paramInt, Object paramObject)
   {
-    this.c.set(true);
+    return false;
   }
   
-  public boolean b()
+  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, wur paramwur, boolean paramBoolean)
   {
-    return this.c.get();
+    return this.a.a.a(paramVideoViewVideoHolder, paramwur, paramBoolean);
   }
+  
+  public void b(VideoViewVideoHolder paramVideoViewVideoHolder, wur paramwur) {}
+  
+  public void c(VideoViewVideoHolder paramVideoViewVideoHolder, wur paramwur) {}
 }
 
 

@@ -1,6 +1,7 @@
 package com.tencent.biz.qqstory.playvideo;
 
 import Override;
+import amtj;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -16,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
-import anzj;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -25,28 +25,28 @@ import com.tencent.widget.immersive.SystemBarCompact;
 import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.IEventReceiver;
 import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
-import wjj;
-import xkr;
-import xkt;
-import xkv;
-import xla;
-import xli;
-import xpf;
-import yme;
-import yuk;
-import yup;
+import vli;
+import wmc;
+import wme;
+import wmg;
+import wml;
+import wmt;
+import wqq;
+import xnp;
+import xvv;
+import xwa;
 
 public class StoryPlayerActivity
   extends FragmentActivity
-  implements IEventReceiver, xli
+  implements IEventReceiver, wmt
 {
   public static int a;
   private static int b;
   private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
   protected Handler a;
   public AnimationParam a;
-  private xkv jdField_a_of_type_Xkv = new xkv(this);
-  protected xla a;
+  private wmg jdField_a_of_type_Wmg = new wmg(this);
+  protected wml a;
   public boolean a;
   public AnimationParam b;
   
@@ -70,28 +70,29 @@ public class StoryPlayerActivity
   protected void attachBaseContext(Context paramContext)
   {
     super.attachBaseContext(paramContext);
-    this.jdField_a_of_type_Xla = new xla();
-    this.jdField_a_of_type_Xla.a(this);
+    this.jdField_a_of_type_Wml = new wml();
+    this.jdField_a_of_type_Wml.a(this);
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
-    this.jdField_a_of_type_Xla.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Wml.a(paramInt1, paramInt2, paramIntent);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     jdField_b_of_type_Int += 1;
-    yuk.a("Q.qqstory.playernew.StoryPlayerActivity", "doOnCreate, instance count = %d", Integer.valueOf(jdField_b_of_type_Int));
+    xvv.a("Q.qqstory.playernew.StoryPlayerActivity", "doOnCreate, instance count = %d", Integer.valueOf(jdField_b_of_type_Int));
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
     LiuHaiUtils.a(this);
@@ -105,23 +106,23 @@ public class StoryPlayerActivity
     super.doOnCreate(paramBundle);
     if (isInMultiWindow())
     {
-      QQToast.a(this, anzj.a(2131713350), 0).a();
+      QQToast.a(this, amtj.a(2131713582), 0).a();
       finish();
       return false;
     }
     super.getWindow().addFlags(128);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam = ((AnimationParam)getIntent().getParcelableExtra("AnimationParam"));
-    yuk.b("Q.qqstory.playernew.StoryPlayerActivity", "doOnCreate = > StoryPlayerActivity doOnCreate");
-    setContentView(2131561809);
+    xvv.b("Q.qqstory.playernew.StoryPlayerActivity", "doOnCreate = > StoryPlayerActivity doOnCreate");
+    setContentView(2131561687);
     this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)getSystemService("audio"));
-    this.jdField_a_of_type_Xla.a(paramBundle, getIntent().getExtras());
+    this.jdField_a_of_type_Wml.a(paramBundle, getIntent().getExtras());
     if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam != null) && (!this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = true;
       paramBundle = findViewById(16908290);
-      paramBundle.getViewTreeObserver().addOnPreDrawListener(new xkr(this, paramBundle));
+      paramBundle.getViewTreeObserver().addOnPreDrawListener(new wmc(this, paramBundle));
     }
-    wjj.a().registerSubscriber(this.jdField_a_of_type_Xkv);
+    vli.a().registerSubscriber(this.jdField_a_of_type_Wmg);
     return true;
   }
   
@@ -129,10 +130,10 @@ public class StoryPlayerActivity
   {
     super.doOnDestroy();
     jdField_b_of_type_Int -= 1;
-    yuk.a("Q.qqstory.playernew.StoryPlayerActivity", "doOnDestroy, instance count = %d", Integer.valueOf(jdField_b_of_type_Int));
-    this.jdField_a_of_type_Xla.g();
-    wjj.a().unRegisterSubscriber(this.jdField_a_of_type_Xkv);
-    yme.d();
+    xvv.a("Q.qqstory.playernew.StoryPlayerActivity", "doOnDestroy, instance count = %d", Integer.valueOf(jdField_b_of_type_Int));
+    this.jdField_a_of_type_Wml.g();
+    vli.a().unRegisterSubscriber(this.jdField_a_of_type_Wmg);
+    xnp.d();
     if (jdField_b_of_type_Int == 0) {
       this.jdField_a_of_type_AndroidOsHandler.post(new StoryPlayerActivity.2(this));
     }
@@ -141,26 +142,26 @@ public class StoryPlayerActivity
   public void doOnPause()
   {
     super.doOnPause();
-    this.jdField_a_of_type_Xla.e();
-    yup.a(2, this.currentActivityStayTime);
+    this.jdField_a_of_type_Wml.e();
+    xwa.a(2, this.currentActivityStayTime);
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_Xla.d();
+    this.jdField_a_of_type_Wml.d();
   }
   
   public void doOnStart()
   {
     super.doOnStart();
-    this.jdField_a_of_type_Xla.c();
+    this.jdField_a_of_type_Wml.c();
   }
   
   public void doOnStop()
   {
     super.doOnStop();
-    this.jdField_a_of_type_Xla.f();
+    this.jdField_a_of_type_Wml.f();
   }
   
   public void doOnWindowFocusChanged(boolean paramBoolean)
@@ -175,14 +176,14 @@ public class StoryPlayerActivity
     if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam != null)
     {
       bool = true;
-      yuk.a("Q.qqstory.playernew.StoryPlayerActivity", "finish with animation = %s", Boolean.valueOf(bool));
+      xvv.a("Q.qqstory.playernew.StoryPlayerActivity", "finish with animation = %s", Boolean.valueOf(bool));
       if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam == null) {
         break label94;
       }
       if (!this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Xla.b();
+        this.jdField_a_of_type_Wml.b();
         localViewGroup = (ViewGroup)a();
         if (this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam == null) {
           break label86;
@@ -192,13 +193,13 @@ public class StoryPlayerActivity
     label86:
     for (AnimationParam localAnimationParam = this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam;; localAnimationParam = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam)
     {
-      xpf.a(localViewGroup, localAnimationParam, new xkt(this));
+      wqq.a(localViewGroup, localAnimationParam, new wme(this));
       return;
       bool = false;
       break;
     }
     label94:
-    this.jdField_a_of_type_Xla.b();
+    this.jdField_a_of_type_Wml.b();
     super.finish();
     overridePendingTransition(2130771988, 2130771989);
   }
@@ -210,7 +211,7 @@ public class StoryPlayerActivity
   
   public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_Xla.a()) {
+    if (this.jdField_a_of_type_Wml.a()) {
       return true;
     }
     return super.onBackEvent();
@@ -233,7 +234,7 @@ public class StoryPlayerActivity
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       getWindow().addFlags(67108864);
-      int i = getResources().getColor(2131167247);
+      int i = getResources().getColor(2131167276);
       if (this.mSystemBarComp == null)
       {
         this.mSystemBarComp = new SystemBarCompact(this, true, i);
@@ -247,7 +248,7 @@ public class StoryPlayerActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerActivity
  * JD-Core Version:    0.7.0.1
  */

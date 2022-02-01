@@ -1,37 +1,39 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.MediaFileFilter;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.data.QQAlbumInfo;
 
 public class ajrq
-  extends ajoe<ajoq>
+  extends ajqk
 {
-  public ajrq(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment, Context paramContext, int paramInt)
+  protected ajrq(AlbumListFragment paramAlbumListFragment)
   {
-    super(paramContext, paramInt);
+    super(paramAlbumListFragment);
   }
   
-  protected ajoo a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  public void initData(Intent paramIntent)
   {
-    paramViewGroup = LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false);
-    paramContext = new ajpx(paramContext, paramViewGroup);
-    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131373680));
-    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131373670));
-    paramContext.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131373677));
-    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131373675));
-    paramContext.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131373681));
-    paramContext.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131373679));
-    return paramContext;
+    super.initData(paramIntent);
+    this.mPhotoCommonData.filter.setSupportWebp(true);
   }
   
-  protected void a(ajoo paramajoo, ajoq paramajoq, int paramInt)
+  public boolean onItemClick(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
   {
-    TroopWithCommonFriendsFragment.a(this.a, paramajoo, paramajoq, paramInt);
+    int i;
+    if (paramQQAlbumInfo._id.equals("$RecentAlbumId")) {
+      i = 1;
+    }
+    for (;;)
+    {
+      bcef.b(null, "CliOper", "", this.mPhotoCommonData.myUin, "0X800A917", "0X800A917", i, 0, "", "", "", "");
+      return super.onItemClick(paramQQAlbumInfo, paramInt, paramIntent);
+      if (paramQQAlbumInfo._id.equals("qzone_album")) {
+        i = 2;
+      } else {
+        i = 3;
+      }
+    }
   }
 }
 

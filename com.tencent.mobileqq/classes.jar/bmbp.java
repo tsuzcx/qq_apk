@@ -1,63 +1,21 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.VipComicJumpActivity;
+import android.media.AudioManager;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class bmbp
-  extends BroadcastReceiver
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  private AudioManager a;
   
-  public bmbp(VipComicJumpActivity paramVipComicJumpActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("pluginsdk_pluginLocation");
-    paramContext = paramIntent.getStringExtra("pluginsdk_launchReceiver");
-    String str = paramIntent.getAction();
-    if (((!TextUtils.isEmpty(str)) && ("com.tencent.mobileqq.PreLoadComicProcess".equals(str))) || ((paramContext != null) && (paramContext.equals("com.qqcomic.app.VipPreloadComicProcess")))) {
-      if (!this.jdField_a_of_type_CooperationComicVipComicJumpActivity.b)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQComicDebug", 2, "do handle launch activity in receiver.");
-        }
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Blhq.removeMessages(1000);
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.b = true;
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.c = false;
-        this.jdField_a_of_type_CooperationComicVipComicJumpActivity.c(this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Bmbn);
-      }
-    }
-    while ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("comic_plugin.apk")))
-    {
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("QQComicDebug", 2, "skip handle launch activity in receiver.");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("VipComicJumpActivity", 2, "LaunchCompletedObserver.onReceive: " + this.jdField_a_of_type_JavaLangString);
-    }
-    this.b = paramIntent.getStringExtra("pluginsdk_extraInfo");
-    if ((this.b != null) && ("success".equals(this.b))) {
-      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.a(this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Bmbn, 0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.finish();
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("QQComicDebug", 2, "launch activity finish, leave jump activity.");
-      return;
-      this.jdField_a_of_type_CooperationComicVipComicJumpActivity.a(this.jdField_a_of_type_CooperationComicVipComicJumpActivity.jdField_a_of_type_Bmbn, -2);
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicJumpActivity", 2, "LaunchCompletedObserver.onReceive mExtraInfo: " + this.b);
-      }
+    this.a = ((AudioManager)BaseApplicationImpl.getContext().getSystemService("audio"));
+    this.a.requestAudioFocus(null, 3, 2);
+  }
+  
+  public void b()
+  {
+    if (this.a != null) {
+      this.a.abandonAudioFocus(null);
     }
   }
 }

@@ -3,7 +3,7 @@ package com.tencent.qqmini.miniapp.core.service;
 import android.text.TextUtils;
 import com.tencent.qqmini.miniapp.core.fsm.JsStatMachine.JsState;
 import com.tencent.qqmini.miniapp.core.fsm.JsStatMachine.JsStateListener;
-import com.tencent.tissue.v8rt.engine.SpeedUtil;
+import com.tencent.qqmini.v8rt.engine.SpeedUtil;
 
 class AppV8JsService$1
   implements JsStatMachine.JsStateListener

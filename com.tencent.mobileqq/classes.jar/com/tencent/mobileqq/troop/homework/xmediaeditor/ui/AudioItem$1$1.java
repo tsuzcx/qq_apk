@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
-import bgex;
+import beof;
 
 class AudioItem$1$1
   implements Runnable
@@ -9,7 +9,7 @@ class AudioItem$1$1
   
   public void run()
   {
-    bgex.a(this.a.this$0, this.a.a);
+    beof.a(this.a.this$0, this.a.a);
   }
 }
 

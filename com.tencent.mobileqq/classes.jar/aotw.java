@@ -1,117 +1,55 @@
-import OnlinePushPack.MsgInfo;
-import OnlinePushPack.SvcReqPushMsg;
-import android.content.Intent;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody;
-import tencent.im.s2c.msgtype0x211.submsgtype0xb.C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.1;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.1.1.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.lang.ref.WeakReference;
 
 public class aotw
-  extends aczo
+  implements aouh
 {
-  public aotw(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
-  {
-    super(paramQQAppInterface, paramMessageHandler);
-  }
+  public aotw(ArkAiDictUpdateMgr.1 param1, apwo paramapwo, aouj paramaouj, apwc paramapwc) {}
   
-  private void a(byte[] paramArrayOfByte)
+  public void a(boolean paramBoolean)
   {
-    if (paramArrayOfByte == null) {}
-    do
+    if (!paramBoolean)
     {
-      for (;;)
-      {
-        return;
-        C2CType0x211_SubC2CType0xb.MsgBody localMsgBody = new C2CType0x211_SubC2CType0xb.MsgBody();
-        try
-        {
-          paramArrayOfByte = (C2CType0x211_SubC2CType0xb.MsgBody)localMsgBody.mergeFrom(paramArrayOfByte);
-          paramArrayOfByte = (C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader)paramArrayOfByte.msg_msg_header.get();
-          if (paramArrayOfByte != null) {
-            break label71;
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.e("Q.msg.BaseMessageProcessor", 2, "<VideoMessageProcessor><---handle0x2110xbMsg : subMsgType[0xb] MsgHeader failed");
-            return;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.msg.BaseMessageProcessor", 2, "<VideoMessageProcessor><---handle0x2110xbMsg : subMsgType[0xb] MsgBody failed", paramArrayOfByte);
-    return;
-    label71:
-    long l1 = paramArrayOfByte.uint64_to_uin.get();
-    long l2 = paramArrayOfByte.uint64_room_id.get();
-    paramArrayOfByte = new Intent();
-    paramArrayOfByte.setAction("tencent.video.q2v.AudioEngineReady");
-    paramArrayOfByte.putExtra("uin", String.valueOf(l1));
-    paramArrayOfByte.putExtra("c2cuin", l1);
-    paramArrayOfByte.putExtra("c2croomid", l2);
-    this.a.getApp().sendBroadcast(paramArrayOfByte);
-    QLog.d("svenxu", 1, "ACTION_OPPOSITE_AUDIO_ENGINE_READY Send video c2c broadcast: selfUin = " + l1 + " roomid = " + l2);
-  }
-  
-  private void a(byte[] paramArrayOfByte, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramArrayOfByte);
-  }
-  
-  public adau a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
-  {
-    switch (paramInt)
-    {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateWordDict, one task failed, dict-id=%s", new Object[] { aotv.a(this.jdField_a_of_type_Apwo) }));
+      this.jdField_a_of_type_Aouj.jdField_a_of_type_Boolean = false;
     }
     for (;;)
     {
-      return new adau(null, true);
-      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null))
+      synchronized (this.jdField_a_of_type_Aouj)
       {
-        a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime);
-      }
-      else
-      {
-        a(getClass().getName(), paramInt);
-        continue;
-        if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null))
-        {
-          boolean bool = lla.a(paramMsgInfo.vMsg);
-          this.a.a().a(paramSvcReqPushMsg.lUin, paramMsgInfo.vMsg, paramMsgInfo.lFromUin, (int)paramMsgInfo.uMsgTime, bool);
+        aouj localaouj2 = this.jdField_a_of_type_Aouj;
+        int i = localaouj2.jdField_a_of_type_Int - 1;
+        localaouj2.jdField_a_of_type_Int = i;
+        if (i != 0) {
+          return;
         }
-        else
+        if (this.jdField_a_of_type_Aouj.jdField_a_of_type_Boolean)
         {
-          a(getClass().getName(), paramInt);
+          ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, all success");
+          aotv.a(this.jdField_a_of_type_Apwc);
+          aotv.b(this.jdField_a_of_type_Apwc);
+          aots.b((AppInterface)aotv.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0).get());
+          try
+          {
+            aotv.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0, false);
+            if (aotv.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0))
+            {
+              aotv.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0, false);
+              ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, pending update task exists, wait 5 second and update");
+              ArkAppCenter.a().postToMainThreadDelayed(new ArkAiDictUpdateMgr.1.1.1(this), 5000L);
+            }
+            return;
+          }
+          finally {}
         }
       }
+      ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, one or more tasks failed.");
     }
   }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    if ((paramVarArgs != null) && (paramVarArgs.length == 3))
-    {
-      a((byte[])paramVarArgs[2], 11);
-      return;
-    }
-    a(getClass().getName(), paramInt);
-  }
-  
-  public void a(long paramLong1, byte[] paramArrayOfByte, long paramLong2, int paramInt) {}
 }
 
 

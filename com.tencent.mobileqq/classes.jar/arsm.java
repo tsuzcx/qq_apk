@@ -1,6 +1,16 @@
-public class arsm
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+
+class arsm
+  implements DialogInterface.OnClickListener
 {
-  public static String a = "true";
+  arsm(arsl paramarsl) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    Face2FaceAddFriendActivity.e(this.a.a);
+  }
 }
 
 

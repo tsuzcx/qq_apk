@@ -1,15 +1,13 @@
 package cooperation.qzone.share;
 
-import bnhd;
-
-public class QZoneShareActivity$22$1
+class QZoneShareActivity$22$1
   implements Runnable
 {
-  public QZoneShareActivity$22$1(bnhd parambnhd) {}
+  QZoneShareActivity$22$1(QZoneShareActivity.22 param22) {}
   
   public void run()
   {
-    QZoneShareActivity.b(this.a.a);
+    QZoneShareActivity.access$100(this.this$1.this$0);
   }
 }
 

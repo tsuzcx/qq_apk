@@ -1,17 +1,16 @@
 package cooperation.qzone.webviewplugin;
 
-import bngf;
-import bngi;
-import bnog;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
-public class QzoneRecommedPhotoJsPlugin$1
+class QzoneRecommedPhotoJsPlugin$1
   implements Runnable
 {
-  public QzoneRecommedPhotoJsPlugin$1(bnog parambnog) {}
+  QzoneRecommedPhotoJsPlugin$1(QzoneRecommedPhotoJsPlugin paramQzoneRecommedPhotoJsPlugin) {}
   
   public void run()
   {
-    bngf.a().a().q();
+    RemoteHandleManager.getInstance().getSender().getEventVideoAlbumState();
   }
 }
 

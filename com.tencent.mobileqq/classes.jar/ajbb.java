@@ -1,24 +1,12 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
+import java.util.List;
 
-public class ajbb
-  implements View.OnClickListener
+public abstract interface ajbb
 {
-  public ajbb(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  public abstract void a(boolean paramBoolean, @NonNull List<TroopLinkElement> paramList);
   
-  public void onClick(View paramView)
-  {
-    if (BlessSelectMemberActivity.a() != null) {
-      BlessSelectMemberActivity.a().sendEmptyMessage(1);
-    }
-    if (this.a.a.isShowing()) {
-      this.a.a.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void r();
 }
 
 

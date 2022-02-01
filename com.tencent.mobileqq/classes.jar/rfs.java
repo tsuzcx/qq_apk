@@ -1,16 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.EditColumnFragment;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.AdReport;
 
 public class rfs
-  implements DialogInterface.OnClickListener
 {
-  public rfs(EditColumnFragment paramEditColumnFragment) {}
+  public String a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static rfs a(oidb_cmd0xbc9.AdReport paramAdReport)
   {
-    this.a.a(false);
-    this.a.i();
+    rfs localrfs = new rfs();
+    localrfs.a = paramAdReport.bytes_report_url.get().toStringUtf8();
+    return localrfs;
+  }
+  
+  public oidb_cmd0xbc9.AdReport a()
+  {
+    oidb_cmd0xbc9.AdReport localAdReport = new oidb_cmd0xbc9.AdReport();
+    localAdReport.bytes_report_url.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localAdReport;
   }
 }
 

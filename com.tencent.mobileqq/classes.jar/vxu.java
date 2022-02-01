@@ -1,61 +1,64 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeVideoList;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
-public class vxu
-  extends blji
+class vxu
+  implements vqp<vyj, vyk>
 {
-  public static vxt a(Context paramContext, View paramView)
-  {
-    paramContext = vxt.a(paramContext);
-    paramContext.a(paramView, new LinearLayout.LayoutParams(-1, -1));
-    return paramContext;
-  }
+  vxu(vxt paramvxt, vxd paramvxd) {}
   
-  public static vxt a(Context paramContext, List<bliq> paramList, bliz parambliz)
+  public void a(@NonNull vyj paramvyj, @Nullable vyk paramvyk, @NonNull ErrorMessage paramErrorMessage)
   {
-    return a(paramContext, null, paramList, parambliz);
-  }
-  
-  public static vxt a(Context paramContext, vxt paramvxt, List<bliq> paramList, bliz parambliz)
-  {
-    if ((paramContext == null) || (paramList == null) || (paramList.size() <= 0)) {
-      return null;
-    }
-    int i;
-    if (paramvxt == null)
+    if ((paramvyk == null) || (paramErrorMessage.isFail()))
     {
-      paramvxt = a(paramContext, null);
-      i = 0;
-      label32:
-      if (i >= paramList.size()) {
-        break label113;
-      }
-      paramContext = (bliq)paramList.get(i);
-      if (paramContext.d == 0)
+      xvv.e("Q.qqstory.msgTab.jobPullVidList", "pull failed, err=" + paramErrorMessage.getErrorMessage() + " node:" + this.jdField_a_of_type_Vxd);
+      vxt.a(this.jdField_a_of_type_Vxt, paramErrorMessage);
+      return;
+    }
+    if (paramvyk.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.video_list.size() == 0)
+    {
+      if (this.jdField_a_of_type_Vxd.jdField_a_of_type_Int != 5)
       {
-        if (paramContext.a != 1) {
-          break label96;
+        xvv.e("Q.qqstory.msgTab.jobPullVidList", "pull failed, ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, info=" + this.jdField_a_of_type_Vxd + ", err=ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, " + paramErrorMessage.getErrorMessage());
+        vxt.b(this.jdField_a_of_type_Vxt, new ErrorMessage(103, paramErrorMessage.getErrorMessage()));
+        return;
+      }
+      vxt.a(this.jdField_a_of_type_Vxt, vxt.a(paramvyk.jdField_a_of_type_JavaUtilList));
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, "pull succeed, info=" + this.jdField_a_of_type_Vxd);
+    }
+    vxw.a(this.jdField_a_of_type_Vxd, paramvyk.jdField_a_of_type_ArrayOfByte);
+    paramvyj = vxt.a(paramvyk.jdField_a_of_type_JavaUtilList);
+    if (this.jdField_a_of_type_Vxd.jdField_a_of_type_Int == 12) {}
+    vxt.b(this.jdField_a_of_type_Vxt, paramvyj);
+    if (this.jdField_a_of_type_Vxd.jdField_a_of_type_Int == 12) {
+      if (this.jdField_a_of_type_Vxt.a != null)
+      {
+        this.jdField_a_of_type_Vxt.a.c = paramvyk.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.cookie.get();
+        paramvyj = this.jdField_a_of_type_Vxt.a;
+        if (paramvyk.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.is_end.get() <= 0) {
+          break label345;
         }
-        paramvxt.a(paramContext, 1);
       }
     }
-    for (;;)
+    label345:
+    for (boolean bool = true;; bool = false)
     {
-      i += 1;
-      break label32;
-      paramvxt.c();
-      paramvxt.a();
-      break;
-      label96:
-      if (paramContext.a == 2) {
-        paramvxt.a(paramContext, 3);
+      paramvyj.a = bool;
+      this.jdField_a_of_type_Vxd.i = paramvyk.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.cookie.get();
+      if (!QLog.isColorLevel()) {
+        break;
       }
+      xvv.a("Q.qqstory.msgTab.jobPullVidList", "MsgTabNodeVidListPullSegment::runSegment() use net resp %s, %s", this.jdField_a_of_type_Vxd.jdField_a_of_type_JavaLangString, paramvyk.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList);
+      return;
     }
-    label113:
-    paramvxt.a(parambliz);
-    return paramvxt;
   }
 }
 

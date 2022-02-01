@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import ajln;
+import aifw;
 
 public class SystemMsgListAdapter$2
   implements Runnable
 {
-  public SystemMsgListAdapter$2(ajln paramajln) {}
+  public SystemMsgListAdapter$2(aifw paramaifw) {}
   
   public void run()
   {

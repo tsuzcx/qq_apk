@@ -1,17 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager;
 
 class vdk
-  implements View.OnClickListener
+  implements uso
 {
-  vdk(vdj paramvdj) {}
+  private WSVideoPreDownloadManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  vdk(WSVideoPreDownloadManager paramWSVideoPreDownloadManager, String paramString)
   {
-    vdj.a(this.a).d();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager = paramWSVideoPreDownloadManager;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    uya.a("WSVerticalForHomePresenter", "onPreloadFailed");
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager.a();
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    uya.a("WSVerticalForHomePresenter", "onPreloadSuccess");
+    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.equals(paramString1, urv.a(this.jdField_a_of_type_JavaLangString))))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoPreDownloadManager.a();
+      uya.a("WSVerticalForHomePresenter", "videoPreDownloadManager destroy");
+    }
   }
 }
 

@@ -1,72 +1,98 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.qcall.QCallCardInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/onlinestatus/TimePair;", "", "interval", "", "updateTimeSec", "(JJ)V", "getInterval", "()J", "setInterval", "(J)V", "getUpdateTimeSec", "setUpdateTimeSec", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class azis
+public class azis
+  implements Manager
 {
-  private long a;
-  private long b;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ProxyManager jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager;
+  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private ConcurrentHashMap<String, QCallCardInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public azis()
+  public azis(QQAppInterface paramQQAppInterface)
   {
-    this(0L, 0L, 3, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramQQAppInterface.getProxyManager();
   }
   
-  public azis(long paramLong1, long paramLong2)
+  private EntityManager a()
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
-  }
-  
-  public final long a()
-  {
-    return this.a;
-  }
-  
-  public final void a(long paramLong)
-  {
-    this.a = paramLong;
-  }
-  
-  public final long b()
-  {
-    return this.b;
-  }
-  
-  public final void b(long paramLong)
-  {
-    this.b = paramLong;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if (this != paramObject)
+    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {}
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      if ((paramObject instanceof azis))
-      {
-        paramObject = (azis)paramObject;
-        if ((this.a != paramObject.a) || (this.b != paramObject.b)) {}
+      if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) || (!this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
       }
+      return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
     }
-    else {
-      return true;
-    }
-    return false;
   }
   
-  public int hashCode()
+  private void a()
   {
-    long l = this.a;
-    int i = (int)(l ^ l >>> 32);
-    l = this.b;
-    return i * 31 + (int)(l ^ l >>> 32);
+    if ((this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) && (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())) {
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    }
   }
   
-  @NotNull
-  public String toString()
+  public QCallCardInfo a(String paramString)
   {
-    return "TimePair(interval=" + this.a + ", updateTimeSec=" + this.b + ")";
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
+      return (QCallCardInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    }
+    paramString = a().query(QCallCardInfo.class, false, "uin = ?", new String[] { paramString }, null, null, null, null);
+    if (paramString != null) {
+      return (QCallCardInfo)paramString.get(0);
+    }
+    return null;
+  }
+  
+  public void a(QCallCardInfo paramQCallCardInfo)
+  {
+    if (paramQCallCardInfo == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QCallCardManager", 2, "saveQcallCard null ");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QCallCardManager", 2, "CardManager saveQcallCard");
+    }
+    b(paramQCallCardInfo);
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.addMsgQueueAndNotify(paramQCallCardInfo.uin, 0, paramQCallCardInfo.getTableName(), paramQCallCardInfo, 3, null);
+  }
+  
+  public void b(QCallCardInfo paramQCallCardInfo)
+  {
+    if (paramQCallCardInfo == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramQCallCardInfo.uin))
+        {
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.replace(paramQCallCardInfo.uin, paramQCallCardInfo);
+          continue;
+        }
+      }
+      finally {}
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramQCallCardInfo.uin, paramQCallCardInfo);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    a();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
 }
 

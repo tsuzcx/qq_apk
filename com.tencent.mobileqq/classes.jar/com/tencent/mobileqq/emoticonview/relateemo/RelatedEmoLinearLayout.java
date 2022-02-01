@@ -11,9 +11,9 @@ import androidx.annotation.Nullable;
 public class RelatedEmoLinearLayout
   extends LinearLayout
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private RelatedEmoLinearLayout.CheckForLongPress jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoLinearLayout$CheckForLongPress;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean mHasPerformedLongPress;
+  private RelatedEmoLinearLayout.CheckForLongPress mPendingCheckForLongPress;
+  private View mPointView;
   
   public RelatedEmoLinearLayout(Context paramContext)
   {
@@ -30,7 +30,7 @@ public class RelatedEmoLinearLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  View a(float paramFloat1, float paramFloat2)
+  View findPointChild(float paramFloat1, float paramFloat2)
   {
     int i = super.getChildCount() - 1;
     while (i >= 0)
@@ -59,43 +59,43 @@ public class RelatedEmoLinearLayout
     for (;;)
     {
       return true;
-      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoLinearLayout$CheckForLongPress != null)) {
-        removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoLinearLayout$CheckForLongPress);
+      if ((!this.mHasPerformedLongPress) && (this.mPendingCheckForLongPress != null)) {
+        removeCallbacks(this.mPendingCheckForLongPress);
       }
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+      if (this.mPointView != null) {
+        this.mPointView.setAlpha(1.0F);
       }
-      if ((this.jdField_a_of_type_AndroidViewView != null) && (!this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_AndroidViewView.performClick();
+      if ((this.mPointView != null) && (!this.mHasPerformedLongPress)) {
+        this.mPointView.performClick();
       }
-      this.jdField_a_of_type_AndroidViewView = null;
+      this.mPointView = null;
       continue;
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidViewView = a(paramMotionEvent.getX(), paramMotionEvent.getY());
-      if (this.jdField_a_of_type_AndroidViewView != null)
+      this.mHasPerformedLongPress = false;
+      this.mPointView = findPointChild(paramMotionEvent.getX(), paramMotionEvent.getY());
+      if (this.mPointView != null)
       {
-        this.jdField_a_of_type_AndroidViewView.setAlpha(0.2F);
-        if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoLinearLayout$CheckForLongPress == null) {
-          this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoLinearLayout$CheckForLongPress = new RelatedEmoLinearLayout.CheckForLongPress(this, paramMotionEvent);
+        this.mPointView.setAlpha(0.2F);
+        if (this.mPendingCheckForLongPress == null) {
+          this.mPendingCheckForLongPress = new RelatedEmoLinearLayout.CheckForLongPress(this, paramMotionEvent);
         }
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoLinearLayout$CheckForLongPress.a();
-        postDelayed(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoLinearLayout$CheckForLongPress, ViewConfiguration.getLongPressTimeout());
+        this.mPendingCheckForLongPress.rememberWindowAttachCount();
+        postDelayed(this.mPendingCheckForLongPress, ViewConfiguration.getLongPressTimeout());
         continue;
         super.setPressed(false);
-        if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoLinearLayout$CheckForLongPress != null) {
-          removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewRelateemoRelatedEmoLinearLayout$CheckForLongPress);
+        if (this.mPendingCheckForLongPress != null) {
+          removeCallbacks(this.mPendingCheckForLongPress);
         }
-        if (this.jdField_a_of_type_AndroidViewView != null) {
-          this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+        if (this.mPointView != null) {
+          this.mPointView.setAlpha(1.0F);
         }
-        this.jdField_a_of_type_AndroidViewView = null;
+        this.mPointView = null;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoLinearLayout
  * JD-Core Version:    0.7.0.1
  */

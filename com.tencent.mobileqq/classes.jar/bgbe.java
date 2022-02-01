@@ -1,12 +1,14 @@
-class bgbe
-  implements bljd
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
+
+public class bgbe
+  implements bjpb
 {
-  bgbe(bgbc parambgbc) {}
+  public bgbe(QQCustomMenuNoIconLayout paramQQCustomMenuNoIconLayout) {}
   
-  public void ak_()
+  public void a()
   {
-    if (bgbc.a(this.a) != null) {
-      bgbc.a(this.a).a();
+    if (akxv.a().c()) {
+      akxv.a().d();
     }
   }
 }

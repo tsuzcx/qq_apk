@@ -1,48 +1,25 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeWatched;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.os.Build.VERSION;
 
 public class wwv
-  extends wpa<www>
 {
-  static final String a = wnu.a("StorySvc.msgtab_node_watched");
-  public long b;
-  public String b;
-  public int c;
-  public int d;
-  
-  public String a()
+  public static boolean a(int paramInt)
   {
-    return a;
-  }
-  
-  public wov a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspMsgTabNodeWatched localRspMsgTabNodeWatched = new qqstory_service.RspMsgTabNodeWatched();
-    try
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    switch (paramInt)
     {
-      localRspMsgTabNodeWatched.mergeFrom(paramArrayOfByte);
-      return new www(localRspMsgTabNodeWatched);
+    default: 
+      bool1 = false;
+    case 3: 
+    case 1: 
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (Build.VERSION.SDK_INT >= 21);
+      return false;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      yuk.d("Q.qqstory.msgTab:ReqMsgTabNodeWatched", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqMsgTabNodeWatched localReqMsgTabNodeWatched = new qqstory_service.ReqMsgTabNodeWatched();
-    localReqMsgTabNodeWatched.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    localReqMsgTabNodeWatched.node_type.set(this.c);
-    localReqMsgTabNodeWatched.operation.set(this.d);
-    localReqMsgTabNodeWatched.recommend_id.set(this.jdField_b_of_type_Long);
-    return localReqMsgTabNodeWatched.toByteArray();
+    return false;
   }
 }
 

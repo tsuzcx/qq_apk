@@ -1,6 +1,18 @@
-public abstract interface vvm
+class vvm
+  implements vwt
 {
-  public abstract float a();
+  vvm(vvl paramvvl) {}
+  
+  public void a(boolean paramBoolean, vwp paramvwp)
+  {
+    xvv.b("WeatherDataProvider", "WeatherLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramvwp != null))
+    {
+      this.a.a(paramvwp.b, paramvwp.a);
+      return;
+    }
+    this.a.a(false, null);
+  }
 }
 
 

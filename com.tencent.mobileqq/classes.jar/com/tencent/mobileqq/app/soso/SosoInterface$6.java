@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.app.soso;
 
-import apcq;
-
 final class SosoInterface$6
   implements Runnable
 {
-  SosoInterface$6(apcq paramapcq, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
+  SosoInterface$6(SosoInterface.OnLocationListener paramOnLocationListener, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Apcq.onLocationFinish(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo);
+    this.val$lis.onLocationFinish(this.val$err, this.val$info);
   }
 }
 

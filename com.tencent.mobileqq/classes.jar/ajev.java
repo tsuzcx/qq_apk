@@ -1,21 +1,15 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 public class ajev
-  implements ajho
+  implements akjy
 {
-  public ajev(SearchContactsFragment paramSearchContactsFragment) {}
+  public void a(int paramInt) {}
   
-  public Activity a()
-  {
-    return this.a.a();
-  }
+  public void a(int paramInt, float paramFloat) {}
   
-  public QQAppInterface a()
-  {
-    return this.a.a;
-  }
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt1, int paramInt2) {}
 }
 
 

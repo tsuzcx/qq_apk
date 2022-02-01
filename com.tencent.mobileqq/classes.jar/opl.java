@@ -1,21 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initAdNameClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class opl
-  implements opd
+public class opl
 {
-  public void a(int paramInt, @NotNull Container paramContainer, @NotNull otd paramotd, @NotNull otp paramotp, @NotNull ViewBase paramViewBase)
+  private VideoCompositeHelper jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper = new VideoCompositeHelper();
+  private opn jdField_a_of_type_Opn;
+  
+  private void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString)
   {
-    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
-    Intrinsics.checkParameterIsNotNull(paramotd, "adapter");
-    Intrinsics.checkParameterIsNotNull(paramotp, "commentViewItem");
-    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
-    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new opm(paramotp, paramotd, paramContainer));
+    if (this.jdField_a_of_type_Opn != null) {
+      this.jdField_a_of_type_Opn.a(paramPublishVideoEntry, paramInt, paramString);
+    }
+  }
+  
+  private void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  {
+    if (this.jdField_a_of_type_Opn != null) {
+      this.jdField_a_of_type_Opn.a(paramPublishVideoEntry, paramString);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    VideoCompositeHelper.deleteVideoCache(VideoCompositeHelper.getPublishVideoEntry(paramString));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    paramString1 = VideoCompositeHelper.getPublishVideoEntry(paramString1);
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper.composite(paramString1, paramString2 + ".tmp.mp4", false, true, new opm(this, l, paramString1));
+  }
+  
+  public void a(opn paramopn)
+  {
+    this.jdField_a_of_type_Opn = paramopn;
   }
 }
 

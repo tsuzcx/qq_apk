@@ -1,24 +1,35 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.video.click.RIJVideoHandleClick.8.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class phw
-  extends BroadcastReceiver
+  implements pen
 {
-  public phw(ReadInJoyDailyFragment paramReadInJoyDailyFragment) {}
+  phw(phl paramphl) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (this.a.getActivity() != null)
-    {
-      if (ReadInJoyDailyFragment.a(this.a) != null) {
-        ReadInJoyDailyFragment.a(this.a).i();
-      }
-      ReadInJoyDailyFragment.a(this.a, true);
-      this.a.getActivity().finish();
+    sjy localsjy = (sjy)paramView.getTag();
+    BaseArticleInfo localBaseArticleInfo = phl.a(this.a).a(localsjy.jdField_a_of_type_Int);
+    if (localBaseArticleInfo == null) {
+      return;
     }
+    if (!rwv.a(localBaseArticleInfo, phl.a(this.a).a().a()))
+    {
+      if (AdvertisementInfo.isAdvertisementInfo(localBaseArticleInfo))
+      {
+        uhs.a(phl.a(this.a).a().a(), (ArticleInfo)localBaseArticleInfo, phl.a(this.a).a().a(), 56);
+        uhs.a((Activity)phl.a(this.a).a().a(), (ArticleInfo)localBaseArticleInfo, phl.a(this.a).a().a(), 56, true, null);
+        return;
+      }
+      phl.a(this.a).a().a().a(localsjy.jdField_a_of_type_Sdg, localBaseArticleInfo, false, true);
+    }
+    ThreadManager.executeOnSubThread(new RIJVideoHandleClick.8.1(this, localBaseArticleInfo));
+    psf.a(paramView);
   }
 }
 

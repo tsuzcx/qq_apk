@@ -1,33 +1,95 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class apzc
-  implements apyu
+public class apzc
+  extends aptq<apza>
 {
-  private final String a;
-  
-  public apzc(String paramString)
+  @NonNull
+  public static apza a()
   {
-    this.a = paramString;
-  }
-  
-  public Bundle a()
-  {
-    Bundle localBundle = new Bundle();
-    if (!TextUtils.isEmpty(this.a)) {
-      localBundle.putString("Uin", this.a);
+    apza localapza2 = (apza)apub.a().a(458);
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendContactGuideConfProcessor", 2, "loadConfig bean: " + localapza2);
     }
-    return localBundle;
+    apza localapza1 = localapza2;
+    if (localapza2 == null) {
+      localapza1 = new apza();
+    }
+    return localapza1;
   }
   
-  public String a()
+  @NonNull
+  public apza a(int paramInt)
   {
-    return "QQ.GetNickname";
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendContactGuideConfProcessor", 2, "migrateOldOrDefaultContent " + paramInt);
+    }
+    return new apza();
+  }
+  
+  @Nullable
+  public apza a(aptx[] paramArrayOfaptx)
+  {
+    return apza.a(paramArrayOfaptx);
+  }
+  
+  public void a(apza paramapza)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendContactGuideConfProcessor", 2, "onUpdate " + paramapza.toString());
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      if (((QQAppInterface)localObject).isCreateManager(34))
+      {
+        ((aiej)((QQAppInterface)localObject).getManager(34)).a = paramapza;
+        if (QLog.isColorLevel()) {
+          QLog.d("NewFriendContactGuideConfProcessor", 2, "onUpdate bean");
+        }
+      }
+    }
+  }
+  
+  public Class<apza> clazz()
+  {
+    return apza.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendContactGuideConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 458;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apzc
  * JD-Core Version:    0.7.0.1
  */

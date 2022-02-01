@@ -1,16 +1,6 @@
-import android.graphics.Bitmap;
-
-public class beza
+public abstract interface beza
 {
-  beyz a;
-  
-  protected Bitmap b(Bitmap paramBitmap)
-  {
-    if (this.a == null) {
-      return paramBitmap;
-    }
-    return this.a.a(paramBitmap);
-  }
+  public abstract void a(int paramInt);
 }
 
 

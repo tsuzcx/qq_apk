@@ -47,7 +47,7 @@ public class AppRuntimeLoaderManager
   {
     initProcessConfig(null);
     this.mMaxLoaderCount = WnsConfig.getConfig("qqminiapp", "MiniAppRuntimeCacheMax", 3);
-    this.mGameMaxLoaderCount = WnsConfig.getConfig("qqminiapp", "mini_game_multi_instance", 5);
+    this.mGameMaxLoaderCount = WnsConfig.getConfig("qqminiapp", "mini_game_multi_instance", 1);
     this.mRuntimeLoaderRecycleTime = WnsConfig.getConfig("qqminiapp", "mini_app_runtime_recycle_time", 900000L);
     QMLog.i("minisdk-start_AppRuntimeLoaderManager", "RuntimeLoaderConfig:" + this.mRuntimeConfiguration.toString() + " ProcessType=" + this.mProcessType + " maxRuntime=" + this.mMaxLoaderCount);
   }

@@ -1,21 +1,26 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class adgv
-  implements adci
+  implements DialogInterface.OnClickListener
 {
-  public static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, int paramInt)
-  {
-    ((avya)paramQQAppInterface.getManager(268)).a(paramArrayOfByte, paramInt);
-  }
+  public adgv(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a(paramadan.a(), paramMsgType0x210.vProtobuf, 1);
-    bcrw.a(paramadan.a().a(), paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
-    return null;
+    paramDialogInterface = ForwardFriendListActivity.a(this.a).getInputValue();
+    if (!TextUtils.isEmpty(paramDialogInterface))
+    {
+      ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
+      Intent localIntent = new Intent();
+      localIntent.putExtras(this.a.getIntent().getExtras());
+      localIntent.putExtra("extra_choose_friend_name", paramDialogInterface);
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
+    }
   }
 }
 

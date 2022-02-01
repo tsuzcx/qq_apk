@@ -1,24 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.Conversation;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 
 public class aeis
-  extends BroadcastReceiver
+  implements bjoe
 {
-  public aeis(Conversation paramConversation) {}
+  public aeis(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment, bjnw parambjnw) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ("login".equals(paramIntent.getStringExtra("status")))
+    switch (paramInt)
     {
-      this.a.a.a(29, 2);
-      this.a.a.b = paramIntent.getStringExtra("loginInfo");
-      this.a.a.a = paramIntent.getLongExtra("subappid", 1L);
-      this.a.a.a(-1, null);
+    default: 
+      return;
+    case 0: 
+      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment, true);
+      this.jdField_a_of_type_Bjnw.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.getShareUrl());
       return;
     }
-    this.a.a.k();
+    this.jdField_a_of_type_Bjnw.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.getActivity().finish();
   }
 }
 

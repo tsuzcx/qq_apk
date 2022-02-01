@@ -1,19 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class afoe
-  implements View.OnClickListener
+public abstract interface afoe
 {
-  public afoe(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    SoundAndVibrateActivity.a(this.a, "CHANNEL_ID_GROUP_MSG");
-    bdll.b(null, "CliOper", "", "", "0X800AC8A", "0X800AC8A", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void b();
 }
 
 

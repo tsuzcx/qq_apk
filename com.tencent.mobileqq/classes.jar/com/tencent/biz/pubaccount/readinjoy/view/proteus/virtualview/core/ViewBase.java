@@ -10,9 +10,12 @@ import android.support.v4.util.SimpleArrayMap;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.Proteus;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ValueBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.expand.IProteusDtReporter;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.JsonUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.QLog;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.VirtualViewUtils;
@@ -558,17 +561,39 @@ public abstract class ViewBase
   
   protected boolean setAttribute(int paramInt, Object paramObject)
   {
-    boolean bool = true;
     switch (paramInt)
     {
     default: 
-      bool = false;
+      return false;
+    case 63: 
+      if ((paramObject instanceof JSONArray))
+      {
+        setBorderRadiusArray((JSONArray)paramObject);
+        return true;
+      }
+      break;
+    case 72: 
+      IProteusDtReporter localIProteusDtReporter = Proteus.getInstance().getDtReporter();
+      if (localIProteusDtReporter == null) {
+        return true;
+      }
+      String str = (String)JsonUtils.getObjectFromJsonArray(paramObject, 0);
+      if (TextUtils.isEmpty(str))
+      {
+        if (LogUtil.QLog.isColorLevel())
+        {
+          LogUtil.QLog.i("ViewBase", 2, "setDtElement fail, id can't empty! viewID: " + getViewId());
+          return true;
+        }
+      }
+      else
+      {
+        paramObject = JsonUtils.getObjectFromJsonArray(paramObject, 1);
+        localIProteusDtReporter.setDtElementIdWithParams(getNativeView(), str, JsonUtils.covertJsonObjectToMap(paramObject));
+        return true;
+      }
+      break;
     }
-    do
-    {
-      return bool;
-    } while (!(paramObject instanceof JSONArray));
-    setBorderRadiusArray((JSONArray)paramObject);
     return true;
   }
   
@@ -821,7 +846,7 @@ public abstract class ViewBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase
  * JD-Core Version:    0.7.0.1
  */

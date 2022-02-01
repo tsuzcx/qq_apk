@@ -1,55 +1,37 @@
-import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
+import com.tencent.robolectric.ShadowParcel;
+import java.util.Arrays;
 
-public class anmz
+class anmz
+  implements PermissionMonitor.Listener
 {
-  public static void a(String paramString, Bundle paramBundle)
+  static
   {
-    if (paramBundle == null) {}
-    int i;
-    do
+    if (!anmw.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-      String str;
-      for (;;)
-      {
-        return;
-        try
-        {
-          if (anmu.a())
-          {
-            i = paramBundle.getInt("featureId");
-            str = paramBundle.getString("featureKey");
-            if ("action_begin_trace".equals(paramString))
-            {
-              anmu.a().a(i, str, paramBundle);
-              return;
-            }
-          }
-        }
-        catch (Exception paramString)
-        {
-          QLog.e("TraceReport", 1, paramString, new Object[0]);
-          return;
-        }
-      }
-      if ("action_end_trace".equals(paramString))
-      {
-        anmu.a().b(i, str, paramBundle);
-        return;
-      }
-      if ("action_report_span".equals(paramString))
-      {
-        anmu.a().c(i, str, paramBundle);
-        return;
-      }
-      if ("action_update_trace".equals(paramString))
-      {
-        anmu.a().a(i, paramBundle);
-        return;
-      }
-    } while (!"action_enable_trace".equals(paramString));
-    boolean bool = paramBundle.getBoolean("enable");
-    anmu.a().a(i, bool);
+      jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
+  anmz(anmw paramanmw) {}
+  
+  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
+  {
+    if (anmw.a(this.jdField_a_of_type_Anmw) != Thread.currentThread()) {}
+    while ((!anmw.a(this.jdField_a_of_type_Anmw)) || (paramArrayOfObject.length != 2)) {
+      return;
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != anmw.a(this.jdField_a_of_type_Anmw))) {
+      throw new AssertionError();
+    }
+    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[1].getClass() != Float.class)) {
+      throw new AssertionError();
+    }
+    ShadowParcel.a((int)anmw.a(this.jdField_a_of_type_Anmw), ((Float)paramArrayOfObject[1]).floatValue());
+    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
   }
 }
 

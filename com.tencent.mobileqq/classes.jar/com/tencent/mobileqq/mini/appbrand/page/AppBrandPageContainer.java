@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
+import amtj;
 import android.app.Activity;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -10,8 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.Toast;
-import anzj;
-import bjbs;
+import bhht;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.WindowInfo;
@@ -96,11 +96,11 @@ public final class AppBrandPageContainer
       QLog.e("AppBrandPageContainer", 1, "executeDownSubPack return, activity is null or finishing.");
       return;
     }
-    bjbs localbjbs = new bjbs(this.appBrandRuntime.activity);
-    localbjbs.a(anzj.a(2131699512));
-    localbjbs.setCancelable(false);
-    localbjbs.show();
-    this.appBrandRuntime.apkgInfo.downloadSubPack(paramString1, new AppBrandPageContainer.1(this, paramString1, localWeakReference, paramString2, localbjbs));
+    bhht localbhht = new bhht(this.appBrandRuntime.activity);
+    localbhht.a(amtj.a(2131699747));
+    localbhht.setCancelable(false);
+    localbhht.show();
+    this.appBrandRuntime.apkgInfo.downloadSubPack(paramString1, new AppBrandPageContainer.1(this, paramString1, localWeakReference, paramString2, localbhht));
   }
   
   private AbsAppBrandPage getBrandPage()
@@ -383,7 +383,7 @@ public final class AppBrandPageContainer
       {
         localObject2 = (AbsAppBrandPage)((Iterator)localObject1).next();
         QLog.d("AppBrandPageContainer", 4, "navigateBack clearPage=" + localObject2);
-        Animation localAnimation = AnimationUtils.loadAnimation(AppLoaderFactory.getAppLoaderManager().getContext(), 2130772281);
+        Animation localAnimation = AnimationUtils.loadAnimation(AppLoaderFactory.getAppLoaderManager().getContext(), 2130772279);
         localAnimation.setDuration(200L);
         localAnimation.setAnimationListener(new AppBrandPageContainer.3(this, (AbsAppBrandPage)localObject2));
         ((AbsAppBrandPage)localObject2).startAnimation(localAnimation);
@@ -405,7 +405,7 @@ public final class AppBrandPageContainer
     QLog.i("miniapp-start", 1, "navigateTo url=" + paramString + "; aliveWebViewCount : " + BaseAppBrandWebview.aliveWebViewCount);
     if (BaseAppBrandWebview.aliveWebViewCount > 11)
     {
-      Toast.makeText(getContext(), anzj.a(2131699510), 0).show();
+      Toast.makeText(getContext(), amtj.a(2131699745), 0).show();
       QLog.e("AppBrandPageContainer", 1, "打开WebView数量超过上限");
       return;
     }

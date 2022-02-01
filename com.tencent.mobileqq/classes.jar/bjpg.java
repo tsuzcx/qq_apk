@@ -1,37 +1,242 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.open.agent.SocialFriendChooser;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class bjpg
-  extends Handler
 {
-  public bjpg(SocialFriendChooser paramSocialFriendChooser) {}
-  
-  public void handleMessage(Message paramMessage)
+  public static void a(Context paramContext, TextView paramTextView, int paramInt, boolean paramBoolean)
   {
-    switch (paramMessage.what)
+    if ((paramTextView == null) || (paramInt == 0)) {}
+    do
+    {
+      return;
+      int i = paramContext.getResources().getDimensionPixelSize(2131297115);
+      int j = paramContext.getResources().getDimensionPixelSize(2131297113);
+      switch (paramInt)
+      {
+      case 4: 
+      case 6: 
+      default: 
+        paramInt = j;
+      case 1: 
+      case 7: 
+      case 3: 
+      case 9: 
+      case 8: 
+      case 2: 
+      case 5: 
+        for (;;)
+        {
+          paramContext = (ViewGroup.MarginLayoutParams)paramTextView.getLayoutParams();
+          if ((paramContext == null) || ((paramContext.leftMargin == i) && (paramContext.bottomMargin == paramInt))) {
+            break;
+          }
+          paramContext.setMargins(i, 0, 0, paramInt);
+          return;
+          i = paramContext.getResources().getDimensionPixelSize(2131297115);
+          paramInt = paramContext.getResources().getDimensionPixelSize(2131297113);
+          paramTextView.measure(0, 0);
+          int k = paramTextView.getMeasuredWidth();
+          j = paramTextView.getMeasuredHeight();
+          k /= 2;
+          j /= 2;
+          i -= k;
+          paramInt -= j;
+          continue;
+          i = paramContext.getResources().getDimensionPixelSize(2131297115);
+          paramInt = paramContext.getResources().getDimensionPixelSize(2131297113);
+          paramTextView.measure(0, 0);
+          k = paramTextView.getMeasuredWidth();
+          j = paramTextView.getMeasuredHeight();
+          k /= 2;
+          j /= 2;
+          i -= k;
+          paramInt -= j;
+          continue;
+          i = paramContext.getResources().getDimensionPixelSize(2131297118);
+          paramInt = paramContext.getResources().getDimensionPixelSize(2131297116);
+          continue;
+          i = paramContext.getResources().getDimensionPixelSize(2131297119);
+          paramInt = paramContext.getResources().getDimensionPixelSize(2131297117);
+          continue;
+          k = paramContext.getResources().getDimensionPixelSize(2131297115);
+          i = paramContext.getResources().getDimensionPixelSize(2131297114);
+          paramInt = i;
+          if (paramBoolean) {
+            paramInt = i + ViewUtils.dip2px(8.0F);
+          }
+          paramTextView.measure(0, 0);
+          i = paramTextView.getMeasuredWidth();
+          j = paramTextView.getMeasuredHeight();
+          if (i > j) {
+            j = i;
+          }
+          for (;;)
+          {
+            paramTextView.setWidth(j);
+            paramTextView.setHeight(i);
+            j = k - j / 2;
+            paramInt -= i / 2;
+            i = j;
+            break;
+            i = j;
+          }
+          i = paramContext.getResources().getDimensionPixelSize(2131297118);
+          paramInt = paramContext.getResources().getDimensionPixelSize(2131297116);
+          continue;
+          i = paramContext.getResources().getDimensionPixelSize(2131297118);
+          paramInt = paramContext.getResources().getDimensionPixelSize(2131297116);
+        }
+      }
+    } while (!(paramTextView.getLayoutParams() instanceof RelativeLayout.LayoutParams));
+    paramTextView = (RelativeLayout.LayoutParams)paramTextView.getLayoutParams();
+    paramTextView.addRule(15, -1);
+    paramTextView.setMargins(0, 0, paramContext.getResources().getDimensionPixelSize(2131297120), 0);
+  }
+  
+  public static void a(TextView paramTextView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    a(paramTextView, paramInt1, paramInt2, paramInt3, 99, null);
+  }
+  
+  public static void a(TextView paramTextView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
+  {
+    if (paramTextView == null) {
+      return;
+    }
+    switch (paramInt1)
     {
     default: 
-      return;
-    case 10001: 
-      paramMessage = new Bundle(this.a.jdField_a_of_type_AndroidOsBundle);
-      paramMessage.putString("agentversion", bjjo.a().e());
-      paramMessage.putString("facetype", "mqqface");
-      String str = bjzn.a().a("https://fusion.qq.com/cgi-bin/appstage/get_image_update");
-      bjoi.a().a(str, paramMessage, new bjph(this));
-      return;
+      paramString = "";
+      paramInt2 = 0;
+      paramInt1 = 0;
+      if (paramString == null) {
+        paramString = "";
+      }
+      break;
     }
-    if ((this.a.jdField_a_of_type_Bjus != null) && (!this.a.jdField_a_of_type_Bjus.isCancelled())) {
-      this.a.jdField_a_of_type_Bjus.cancel(true);
+    for (;;)
+    {
+      if ((TextUtils.isEmpty(paramString)) && (paramInt1 == 0) && (paramInt2 == 0))
+      {
+        paramTextView.setVisibility(8);
+        return;
+        if (paramInt3 > 0)
+        {
+          paramString = "";
+          paramInt1 = paramInt3;
+          paramInt2 = 0;
+          break;
+        }
+        paramString = "";
+        paramInt1 = 2130850321;
+        paramInt2 = 0;
+        break;
+        if (paramInt3 > 0) {}
+        for (paramInt2 = paramInt3;; paramInt2 = 2130850325)
+        {
+          paramString = "NEW";
+          paramInt1 = 0;
+          break;
+        }
+        if (paramInt3 > 0)
+        {
+          paramString = "";
+          paramInt1 = paramInt3;
+          paramInt2 = 0;
+          break;
+        }
+        paramString = "";
+        paramInt1 = 2130850324;
+        paramInt2 = 0;
+        break;
+        if (paramInt3 > 0) {}
+        for (;;)
+        {
+          if (paramInt2 <= paramInt4) {
+            break label219;
+          }
+          paramString = String.valueOf(paramInt4) + "+";
+          paramInt1 = 0;
+          paramInt2 = paramInt3;
+          break;
+          paramInt3 = 2130850325;
+        }
+        label219:
+        paramString = String.valueOf(paramInt2);
+        paramInt1 = 0;
+        paramInt2 = paramInt3;
+        break;
+        if (paramInt3 > 0) {}
+        for (;;)
+        {
+          if (paramInt2 <= 99) {
+            break label259;
+          }
+          paramString = "";
+          paramInt1 = 0;
+          paramInt2 = paramInt3;
+          break;
+          paramInt3 = 2130850325;
+        }
+        label259:
+        paramString = String.valueOf(paramInt2);
+        paramInt1 = 0;
+        paramInt2 = paramInt3;
+        break;
+        if (paramInt3 > 0) {}
+        for (;;)
+        {
+          if (paramInt2 <= paramInt4) {
+            break label320;
+          }
+          paramString = String.valueOf(paramInt4) + "+";
+          paramInt1 = 0;
+          paramInt2 = paramInt3;
+          break;
+          paramInt3 = 2130850325;
+        }
+        label320:
+        paramString = String.valueOf(paramInt2);
+        paramInt1 = 0;
+        paramInt2 = paramInt3;
+        break;
+        if (paramInt3 > 0) {}
+        for (paramInt2 = paramInt3;; paramInt2 = 2130850325)
+        {
+          if (!TextUtils.isEmpty(paramString)) {
+            break label362;
+          }
+          paramString = "";
+          paramInt1 = 0;
+          break;
+        }
+        label362:
+        paramInt1 = 0;
+        break;
+      }
+      Object localObject = paramTextView.getTag(2131380166);
+      if (((localObject == null) && (paramInt1 == 0)) || (((localObject instanceof Integer)) && (((Integer)localObject).intValue() == paramInt1))) {}
+      for (;;)
+      {
+        paramTextView.setBackgroundResource(paramInt2);
+        if (!bftf.a(paramTextView.getText().toString(), paramString))
+        {
+          paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+          paramTextView.setText(paramString);
+        }
+        paramTextView.setVisibility(0);
+        return;
+        paramTextView.setCompoundDrawablesWithIntrinsicBounds(paramInt1, 0, 0, 0);
+        paramTextView.setTag(2131380166, Integer.valueOf(paramInt1));
+        paramTextView.setText(paramString);
+        paramTextView.setPadding(0, 0, 0, 0);
+      }
     }
-    this.a.l();
-    paramMessage = new Intent();
-    paramMessage.putExtra("key_error_code", -7);
-    paramMessage.putExtra("key_error_msg", bjvb.e);
-    this.a.setResult(-1, paramMessage);
-    this.a.finish();
   }
 }
 

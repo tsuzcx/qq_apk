@@ -1,16 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class tsn
-  implements View.OnClickListener
+  implements szw
 {
-  tsn(tsl paramtsl) {}
+  tsn(tsm paramtsm, slt paramslt) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (pem.a() != null)
+    {
+      ttq localttq = (ttq)pem.a().getManager(307);
+      if (localttq != null) {
+        localttq.a(this.jdField_a_of_type_Slt, this.jdField_a_of_type_Slt.a(), true, paramInt1);
+      }
+    }
   }
 }
 

@@ -1,25 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
-class nrq
-  implements View.OnClickListener
+public final class nrq
+  implements DialogInterface.OnClickListener
 {
-  nrq(nrk paramnrk) {}
+  public nrq(int paramInt, QQAppInterface paramQQAppInterface, long paramLong, Handler paramHandler) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((AccountDetailActivity)this.a.jdField_a_of_type_AndroidAppActivity).E();
-    String str2 = this.a.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) {}
-    for (String str1 = "02";; str1 = "01")
+    if (this.jdField_a_of_type_Int == 1)
     {
-      ocd.a(null, str2, "0X8007CA4", "0X8007CA4", 0, 0, str1, String.valueOf(nrk.a(this.a)), "", "", false);
-      EventCollector.getInstance().onViewClicked(paramView);
+      ajek.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      l = NetConnInfoCenter.getServerTimeMillis();
+      ((amzs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(31)).a(String.valueOf(this.jdField_a_of_type_Long), true, l);
       return;
     }
+    ajek.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, false, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    ((amzs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(31)).a(String.valueOf(this.jdField_a_of_type_Long), false, l);
   }
 }
 

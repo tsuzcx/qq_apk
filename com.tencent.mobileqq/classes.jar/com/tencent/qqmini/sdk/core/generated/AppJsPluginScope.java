@@ -39,9 +39,6 @@ public final class AppJsPluginScope
     EVENT_HANDLERS.put("removeCanvas", CanvasJsPlugin.class);
     EVENT_HANDLERS.put("measureText", CanvasJsPlugin.class);
     EVENT_HANDLERS.put("openDocument", MiniAppFileJsPlugin.class);
-    EVENT_HANDLERS.put("insertImageView", ImageViewJsPlugin.class);
-    EVENT_HANDLERS.put("updateImageView", ImageViewJsPlugin.class);
-    EVENT_HANDLERS.put("removeImageView", ImageViewJsPlugin.class);
     EVENT_HANDLERS.put("insertXWebLivePlayer", EmbeddedLivePlayerJsPlugin.class);
     EVENT_HANDLERS.put("updateXWebLivePlayer", EmbeddedLivePlayerJsPlugin.class);
     EVENT_HANDLERS.put("operateXWebLivePlayer", EmbeddedLivePlayerJsPlugin.class);
@@ -51,6 +48,9 @@ public final class AppJsPluginScope
     EVENT_HANDLERS.put("showVirtualBottomNavigationBar", EmbeddedLivePlayerJsPlugin.class);
     EVENT_HANDLERS.put("hideVirtualBottomNavigationBar", EmbeddedLivePlayerJsPlugin.class);
     EVENT_HANDLERS.put("setDisplayOrientation", EmbeddedLivePlayerJsPlugin.class);
+    EVENT_HANDLERS.put("insertImageView", ImageViewJsPlugin.class);
+    EVENT_HANDLERS.put("updateImageView", ImageViewJsPlugin.class);
+    EVENT_HANDLERS.put("removeImageView", ImageViewJsPlugin.class);
     EVENT_HANDLERS.put("startRecord", AudioJsPlugin.class);
     EVENT_HANDLERS.put("stopRecord", AudioJsPlugin.class);
     EVENT_HANDLERS.put("playVoice", AudioJsPlugin.class);

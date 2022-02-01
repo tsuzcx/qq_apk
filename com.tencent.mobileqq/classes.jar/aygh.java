@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.pluspanel.appinfo.ShareScreenAppInfo;
 
-class aygh
-  implements aygp
+public class aygh
+  implements DialogInterface.OnClickListener
 {
-  aygh(aygb paramaygb, VideoData paramVideoData) {}
+  public aygh(ShareScreenAppInfo paramShareScreenAppInfo) {}
   
-  public boolean a(aygm paramaygm, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Aygb.a != null) {
-      this.jdField_a_of_type_Aygb.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, paramInt1, paramInt2, "use sdk play error");
-    }
-    return true;
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,32 +1,15 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.freshnews.BlockableEditTextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class avgl
-  implements ActionMode.Callback
+class avgl
+  implements DialogInterface.OnDismissListener
 {
-  public avgl(BlockableEditTextView paramBlockableEditTextView) {}
+  avgl(avgk paramavgk) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    if (BlockableEditTextView.a(this.a) == 0) {
-      return true;
-    }
-    return BlockableEditTextView.a(this.a);
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    this.a.a.finish();
   }
 }
 

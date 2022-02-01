@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-
-public class ajeo
-  extends anyu
+public abstract class ajeo
+  implements ajep
 {
-  public ajeo(SearchBaseFragment paramSearchBaseFragment) {}
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public String a(String paramString)
   {
-    if ((paramBoolean) && (paramObject != null) && (SearchBaseFragment.a(this.a) != null) && (SearchBaseFragment.a(this.a).uin.get() == ((Long)paramObject).longValue())) {
-      SearchBaseFragment.a(this.a).relation.set(SearchBaseFragment.a(this.a).relation.get() & 0x10);
+    String str = paramString;
+    if (a(paramString)) {
+      str = paramString + a();
     }
+    return str;
   }
 }
 

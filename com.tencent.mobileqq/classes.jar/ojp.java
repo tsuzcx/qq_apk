@@ -1,90 +1,34 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.hotpic.PublicAccountHotPicPanel;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class ojp
-  implements blrn
+  implements AladdinConfigHandler
 {
-  public ojp(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
-  
-  public View a(int paramInt)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    EmoticonMainPanel localEmoticonMainPanel = null;
-    if (paramInt == 3)
+    paramString = pbt.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      if (ReadInJoyBaseDeliverActivity.a(this.a) == null)
-      {
-        ReadInJoyBaseDeliverActivity.a(this.a, (EmoticonMainPanel)View.inflate(this.a, 2131559123, null));
-        ReadInJoyBaseDeliverActivity.a(this.a).setCallBack(ReadInJoyBaseDeliverActivity.a(this.a));
-        ReadInJoyBaseDeliverActivity.a(this.a).b = true;
-        bool = this.a instanceof ReadInJoyDeliverBiuActivity;
-        ReadInJoyBaseDeliverActivity.a(this.a).a(this.a.app, 99999, this.a, this.a.getTitleBarHeight(), null, null, bool);
-        ReadInJoyBaseDeliverActivity.a(this.a).k();
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "key = ", str1, ", value = ", str2 });
+      if (TextUtils.equals("readinjoy_drop_frame_monitor", str1)) {
+        bkwm.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
       }
-      localEmoticonMainPanel = ReadInJoyBaseDeliverActivity.a(this.a);
     }
-    while (paramInt != 24)
-    {
-      boolean bool;
-      return localEmoticonMainPanel;
-    }
-    if (ReadInJoyBaseDeliverActivity.a(this.a) == null)
-    {
-      ReadInJoyBaseDeliverActivity.a(this.a, (PublicAccountHotPicPanel)View.inflate(this.a, 2131559615, null));
-      ReadInJoyBaseDeliverActivity.a(this.a).a(this.a.app, this.a, null, this.a.a);
-      ReadInJoyBaseDeliverActivity.a(this.a).setPublicAccountGifListener(ReadInJoyBaseDeliverActivity.a(this.a));
-    }
-    return ReadInJoyBaseDeliverActivity.a(this.a);
+    return true;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void onWipeConfig(int paramInt)
   {
-    boolean bool;
-    if ((paramInt1 == 24) && (ReadInJoyBaseDeliverActivity.a(this.a) != null)) {
-      if (paramInt2 == 1)
-      {
-        bool = true;
-        ReadInJoyBaseDeliverActivity.a(this.a).a(bool);
-        label34:
-        if (paramInt2 != 1) {
-          break label82;
-        }
-        this.a.b(1);
-      }
-    }
-    label82:
-    do
-    {
-      return;
-      bool = false;
-      break;
-      if ((paramInt2 != 24) || (ReadInJoyBaseDeliverActivity.a(this.a) == null)) {
-        break label34;
-      }
-      ReadInJoyBaseDeliverActivity.a(this.a).f();
-      break label34;
-      if (paramInt2 == 3)
-      {
-        this.a.b(2);
-        return;
-      }
-      if (paramInt2 == 0)
-      {
-        this.a.b(0);
-        return;
-      }
-    } while (paramInt2 != 24);
-    this.a.b(3);
+    QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "onWipeConfig, id = ", Integer.valueOf(paramInt) });
+    bkwm.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(false));
   }
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public void s() {}
 }
 
 

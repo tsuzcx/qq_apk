@@ -1,31 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tav.player.IPlayer.PlayerListener;
+import com.tencent.tav.player.IPlayer.PlayerStatus;
+import com.tencent.tavcut.player.MoviePlayer;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
 
 public class bmjs
-  implements DialogInterface.OnClickListener
+  implements IPlayer.PlayerListener
 {
-  public bmjs(QlinkStandardDialogActivity paramQlinkStandardDialogActivity, boolean paramBoolean1, boolean paramBoolean2) {}
+  public bmjs(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onPositionChanged(CMTime paramCMTime)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      if (this.b) {
-        aunj.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 777, false, 0);
-      }
-    }
-    for (;;)
+    Object localObject = AEEditorMultiCutEditFragment.a(this.a).getDuration();
+    localObject = bmnt.a(paramCMTime.getTimeUs() / 1000L) + "/" + bmnt.a(((CMTime)localObject).getTimeUs() / 1000L);
+    AEEditorMultiCutEditFragment.a(this.a).setText((CharSequence)localObject);
+    AEEditorMultiCutEditFragment.b(this.a, paramCMTime.getTimeUs());
+  }
+  
+  public void onStatusChanged(IPlayer.PlayerStatus paramPlayerStatus)
+  {
+    if ((paramPlayerStatus == IPlayer.PlayerStatus.PLAYING) || (paramPlayerStatus == IPlayer.PlayerStatus.REPLAY))
     {
-      this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.finish();
+      AEEditorMultiCutEditFragment.a(this.a).setSelected(true);
       return;
-      aunj.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 888, false, 0);
-      continue;
-      paramDialogInterface = new Intent(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, ScannerActivity.class);
-      paramDialogInterface.putExtra("from", "qlink");
-      this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.startActivity(paramDialogInterface);
     }
+    AEEditorMultiCutEditFragment.a(this.a).setSelected(false);
   }
 }
 

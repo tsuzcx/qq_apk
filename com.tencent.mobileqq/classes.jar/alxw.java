@@ -1,19 +1,45 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.apollo.process.data.CmGameCommonShare.4;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class alxw
-  extends alxy
+  implements WXShareHelper.WXShareListener
 {
-  public void a()
-  {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.q();
-    }
-  }
+  public alxw(CmGameCommonShare.4 param4) {}
   
-  public void b()
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    RMVideoStateMgr.a().a(2);
+    if (paramBaseResp == null) {
+      return;
+    }
+    QLog.i("apollo_cmGame_CmGameCommonShare", 1, "[shareResult2WXFriendOrCircle], resp.errCode:" + paramBaseResp.errCode);
+    if (paramBaseResp.errCode == 0) {
+      if (this.a.a == 0) {
+        alxu.a(this.a.this$0, 0, 2);
+      }
+    }
+    for (;;)
+    {
+      WXShareHelper.getInstance().removeObserver(this);
+      return;
+      alxu.a(this.a.this$0, 0, 3);
+      continue;
+      if (paramBaseResp.errCode == -2)
+      {
+        if (this.a.a == 0) {
+          alxu.a(this.a.this$0, 2, 2);
+        } else {
+          alxu.a(this.a.this$0, 2, 3);
+        }
+      }
+      else if (this.a.a == 0) {
+        alxu.a(this.a.this$0, 1, 2);
+      } else {
+        alxu.a(this.a.this$0, 1, 3);
+      }
+    }
   }
 }
 

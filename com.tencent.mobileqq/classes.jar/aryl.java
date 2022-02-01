@@ -1,21 +1,32 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavPicFileTabView;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
 
 public class aryl
-  implements CompoundButton.OnCheckedChangeListener
+  implements aryk
 {
-  public aryl(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
+  public aryl(QfileFavPicFileTabView paramQfileFavPicFileTabView) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public View.OnClickListener a(TextView paramTextView)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(aove.a, 0).edit().putBoolean(aove.c, paramBoolean).commit();
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    this.a.g();
+    return null;
+  }
+  
+  public boolean a()
+  {
+    return this.a.a();
+  }
+  
+  public boolean a(FavFileInfo paramFavFileInfo)
+  {
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return this.a.b();
   }
 }
 

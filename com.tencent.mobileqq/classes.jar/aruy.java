@@ -1,6 +1,6 @@
 public abstract interface aruy
 {
-  public abstract arvb a();
+  public abstract void a(long paramLong);
 }
 
 

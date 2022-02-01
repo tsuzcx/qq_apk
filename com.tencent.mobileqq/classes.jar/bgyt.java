@@ -1,87 +1,73 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCModule;
+import android.text.TextUtils;
+import com.qq.taf.jce.JceStruct;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
+import cooperation.qzone.QzoneExternalRequest;
+import wns_proxy.HttpReq;
+import wns_proxy.HttpRsp;
 
 public class bgyt
-  extends QIPCModule
+  extends QzoneExternalRequest
 {
-  public static bgyt a;
-  private bgyv a;
+  private JceStruct jdField_a_of_type_ComQqTafJceJceStruct;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  private bgyt()
+  public bgyt() {}
+  
+  public bgyt(String paramString1, long paramLong, HttpReq paramHttpReq, String paramString2)
   {
-    super("Module_CheckInServer");
+    super.setRefer(paramString2);
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    this.jdField_a_of_type_ComQqTafJceJceStruct = paramHttpReq;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.needCompress = false;
+    this.b = a(paramString1);
   }
   
-  public static bgyt a()
+  public static String a(String paramString)
   {
-    if (jdField_a_of_type_Bgyt == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bgyt == null) {
-        jdField_a_of_type_Bgyt = new bgyt();
-      }
-      return jdField_a_of_type_Bgyt;
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.w("WebSoRequest", 1, "cmd is EMPTY OR NULL !!!");
     }
-    finally {}
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_Bgyv != null)
-    {
-      this.jdField_a_of_type_Bgyv.d();
-      this.jdField_a_of_type_Bgyv = null;
-    }
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Module_CheckInServer", 2, "notifyUploadResult callbackId" + paramInt + ", data = " + paramBundle.toString());
-    }
-    paramBundle = EIPCResult.createResult(0, paramBundle);
-    a();
-    callbackResult(paramInt, paramBundle);
-  }
-  
-  public void onAccountChange()
-  {
-    super.onAccountChange();
-    a();
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Module_CheckInServer", 2, "action = " + paramString + ", params = " + paramBundle + ",callbackId=" + paramInt);
-    }
-    a();
-    bgys localbgys;
-    if (("ACTION_UPLOAD_PIC".equals(paramString)) || ("ACTION_UPLOAD_VIDEO".equals(paramString)))
-    {
-      localbgys = new bgys();
-      if ("ACTION_UPLOAD_PIC".equals(paramString))
-      {
-        localbgys.jdField_a_of_type_JavaLangString = paramBundle.getString("BUNDLE_NAME_FILEPATH");
-        paramString = new bgyu(localbgys, paramInt);
-        this.jdField_a_of_type_Bgyv = paramString;
-        paramString.a();
-      }
-    }
-    for (;;)
+    do
     {
       return null;
-      localbgys.jdField_a_of_type_JavaLangString = paramBundle.getString("BUNDLE_NAME_FILEPATH");
-      localbgys.b = paramBundle.getString("BUNDLE_NAME_COVER");
-      localbgys.jdField_a_of_type_Long = paramBundle.getLong("BUNDLE_NAME_VIDEOTIME");
-      paramString = new bgyx(localbgys, paramInt);
-      break;
-      if ("ACTION_CANCEL".equals(paramString)) {
-        a();
-      }
+      paramString = paramString.split("\\.");
+    } while ((paramString == null) || (paramString.length <= 0));
+    return paramString[(paramString.length - 1)];
+  }
+  
+  public static HttpRsp a(byte[] paramArrayOfByte, String paramString)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
     }
+    try
+    {
+      paramArrayOfByte = (HttpRsp)decode(paramArrayOfByte, paramString);
+      return paramArrayOfByte;
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      QLog.e("WebSoRequest", 1, "onResponse error:", paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  public String getCmdString()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.jdField_a_of_type_ComQqTafJceJceStruct;
+  }
+  
+  public String uniKey()
+  {
+    return this.b;
   }
 }
 

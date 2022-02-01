@@ -1,47 +1,31 @@
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
+import android.app.Activity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideotab.SelectVideoTabFragment;
+import java.util.ArrayList;
 
 public class rqv
-  extends rqw
+  extends FragmentPagerAdapter
 {
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private int c;
-  private int d;
-  
-  public rqv(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView, Drawable paramDrawable, int paramInt1, int paramInt2)
+  public rqv(SelectVideoTabFragment paramSelectVideoTabFragment, FragmentManager paramFragmentManager)
   {
-    super(paramLikeExplosionView);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_c_of_type_Int = paramInt1;
-    this.jdField_d_of_type_Int = paramInt2;
+    super(paramFragmentManager);
   }
   
-  public rqv(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView, Drawable paramDrawable, int paramInt1, int paramInt2, int paramInt3)
+  public int getCount()
   {
-    super(paramLikeExplosionView);
-    double d1 = Math.toRadians(paramInt3);
-    this.e = ((float)Math.cos(d1));
-    this.f = ((float)Math.sin(d1));
-    a();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_c_of_type_Int = paramInt1;
-    this.jdField_d_of_type_Int = paramInt2;
+    return SelectVideoTabFragment.a(this.a).size();
   }
   
-  public void a(Canvas paramCanvas)
+  public Fragment getItem(int paramInt)
   {
-    int i = (int)(this.jdField_c_of_type_Float - this.jdField_c_of_type_Int / 2);
-    int j = (int)(this.jdField_d_of_type_Float - this.jdField_c_of_type_Int / 2);
-    int k = this.jdField_c_of_type_Int;
-    int m = this.jdField_c_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i, j, k + i, m + j);
-    VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView).reset();
-    VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView).setRotate(this.jdField_d_of_type_Int, VideoFeedsLikeAnimate.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a), VideoFeedsLikeAnimate.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a));
-    paramCanvas.setMatrix(VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    return (Fragment)SelectVideoTabFragment.a(this.a).get(paramInt);
+  }
+  
+  public CharSequence getPageTitle(int paramInt)
+  {
+    return SelectVideoTabFragment.a(this.a).getString(SelectVideoTabFragment.a()[paramInt]);
   }
 }
 

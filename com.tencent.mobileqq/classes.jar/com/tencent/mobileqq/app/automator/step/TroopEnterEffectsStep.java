@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import bftr;
-import bftt;
-import bfui;
-import bhsi;
+import bedc;
+import bede;
+import bedt;
+import bfyz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -18,11 +18,11 @@ public class TroopEnterEffectsStep
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "TroopEnterEffectsStep: doStep");
     }
-    long l = bhsi.f(this.a.app.getApplication(), this.a.app.getCurrentAccountUin());
-    bftr localbftr = ((bfui)this.a.app.getManager(231)).a();
-    if ((l == 0L) || (localbftr.a == null) || ((System.currentTimeMillis() - l) / 1000L > localbftr.a.a))
+    long l = bfyz.f(this.a.app.getApplication(), this.a.app.getCurrentAccountUin());
+    bedc localbedc = ((bedt)this.a.app.getManager(231)).a();
+    if ((l == 0L) || (localbedc.a == null) || ((System.currentTimeMillis() - l) / 1000L > localbedc.a.a))
     {
-      ((VasExtensionHandler)this.a.app.a(71)).a(2L, 0L);
+      ((VasExtensionHandler)this.a.app.getBusinessHandler(71)).a(2L, 0L);
       return 2;
     }
     return 7;

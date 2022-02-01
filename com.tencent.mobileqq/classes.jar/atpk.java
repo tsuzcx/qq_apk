@@ -1,16 +1,22 @@
-class atpk
-  implements atqq
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardSendHongBaoOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+
+public class atpk
+  implements DialogInterface.OnClickListener
 {
-  atpk(atpa paramatpa) {}
+  public atpk(ForwardSendHongBaoOption paramForwardSendHongBaoOption, QQCustomDialog paramQQCustomDialog) {}
   
-  public void a(Object[] paramArrayOfObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    atpa.g(this.a, paramArrayOfObject);
+    this.jdField_a_of_type_ComTencentMobileqqForwardForwardSendHongBaoOption.c();
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atpk
  * JD-Core Version:    0.7.0.1
  */

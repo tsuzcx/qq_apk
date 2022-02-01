@@ -1,29 +1,18 @@
-public class bbkh
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.lbs.BusinessBuff;
+
+public final class bbkh
+  implements Parcelable.Creator<BusinessBuff>
 {
-  public static int a(long paramLong1, long paramLong2)
+  public BusinessBuff a(Parcel paramParcel)
   {
-    if ((paramLong1 <= 0L) || (paramLong2 <= 0L)) {
-      return -1;
-    }
-    long l = Math.max(paramLong1, paramLong2);
-    if ((l > 500L) && (l <= 960L)) {
-      return 3;
-    }
-    if ((l > 200L) && (l <= 500L)) {
-      return 2;
-    }
-    if (l <= 200L) {
-      return 1;
-    }
-    if (a(paramLong1, paramLong2)) {
-      return 0;
-    }
-    return 4;
+    return new BusinessBuff(paramParcel);
   }
   
-  public static boolean a(long paramLong1, long paramLong2)
+  public BusinessBuff[] a(int paramInt)
   {
-    return (paramLong1 >= 3L * paramLong2) || (paramLong2 >= 3L * paramLong1);
+    return new BusinessBuff[paramInt];
   }
 }
 

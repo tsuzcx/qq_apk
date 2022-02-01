@@ -1,35 +1,87 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.connections.OverlappingImgLayout;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ThemeImageView;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ajjc
-  implements aoog
 {
-  public ajjc(OverlappingImgLayout paramOverlappingImgLayout) {}
+  public Map<Integer, Boolean> a;
+  public boolean a;
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public ajjc()
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    do
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public static ajjc a(aptx[] paramArrayOfaptx)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfaptx[0].a);
+    }
+    localajjc = new ajjc();
+    try
     {
-      return;
-      paramInt1 = 0;
-      while (paramInt1 < OverlappingImgLayout.a(this.a).length)
+      paramArrayOfaptx = new JSONObject(paramArrayOfaptx[0].a);
+      int i;
+      label93:
+      int k;
+      if (paramArrayOfaptx.optInt("allSwitch") == 1)
       {
-        if ((paramInt1 < 3) && (paramString.equals(OverlappingImgLayout.a(this.a)[paramInt1])))
-        {
-          ((ThemeImageView)OverlappingImgLayout.a(this.a).get(paramInt1)).setImageBitmap(paramBitmap);
-          if (QLog.isColorLevel()) {
-            QLog.d("OverlappingImgLayout", 2, "mDecodeTaskCompletionListener update");
-          }
+        bool = true;
+        localajjc.jdField_a_of_type_Boolean = bool;
+        paramArrayOfaptx = paramArrayOfaptx.optJSONArray("business");
+        int j = paramArrayOfaptx.length();
+        i = 0;
+        if (i >= j) {
+          break label174;
         }
-        paramInt1 += 1;
+        JSONObject localJSONObject = (JSONObject)paramArrayOfaptx.get(i);
+        k = localJSONObject.optInt("id");
+        if (localJSONObject.optInt("switch") != 1) {
+          break label163;
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("OverlappingImgLayout", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
+      label163:
+      for (boolean bool = true;; bool = false)
+      {
+        localajjc.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(k), Boolean.valueOf(bool));
+        i += 1;
+        break label93;
+        bool = false;
+        break;
+      }
+      return localajjc;
+    }
+    catch (Exception paramArrayOfaptx)
+    {
+      paramArrayOfaptx.printStackTrace();
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("allSwitch = ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",businessSwitch: ");
+    if (this.jdField_a_of_type_JavaUtilMap.size() > 0)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Integer localInteger = (Integer)localIterator.next();
+        boolean bool = ((Boolean)this.jdField_a_of_type_JavaUtilMap.get(localInteger)).booleanValue();
+        localStringBuilder.append(localInteger);
+        localStringBuilder.append("=");
+        localStringBuilder.append(bool);
+        localStringBuilder.append(",");
+      }
+    }
+    return localStringBuilder.toString();
   }
 }
 

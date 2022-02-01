@@ -1,87 +1,31 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.qphone.base.util.QLog;
 
-public class arff
-  extends arac<arfe>
+class arff
+  implements avtb<Emoticon>
 {
-  public static arfe a()
-  {
-    return (arfe)aran.a().a(489);
-  }
+  arff(arfd paramarfd, int paramInt, String paramString) {}
   
-  @NonNull
-  public arfe a(int paramInt)
+  public void a(Emoticon paramEmoticon)
   {
-    return new arfe();
-  }
-  
-  @Nullable
-  public arfe a(araj[] paramArrayOfaraj)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgTabCameraSwitchProcessor", 2, "onParsed ");
+    if ((paramEmoticon == null) || (!paramEmoticon.hasEncryptKey()))
+    {
+      this.jdField_a_of_type_Arfd.a(Integer.toString(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, true);
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func trySend ends, emotion has invalid key. Call func pullSingleEmojiKey");
+      }
     }
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arfe.a(paramArrayOfaraj);
-    }
-    return null;
-  }
-  
-  public void a(arfe paramarfe)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgTabCameraSwitchProcessor", 2, "onUpdate " + paramarfe.toString());
-    }
-  }
-  
-  public Class<arfe> clazz()
-  {
-    return arfe.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgTabCameraSwitchProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void onReqNoReceive()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgTabCameraSwitchProcessor", 2, "onReqNoReceive ");
-    }
-  }
-  
-  public int type()
-  {
-    return 489;
+    do
+    {
+      return;
+      this.jdField_a_of_type_Arfd.a(paramEmoticon);
+    } while (!QLog.isColorLevel());
+    QLog.d("SogouEmoji", 2, "func trySend ends, everything is ok.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arff
  * JD-Core Version:    0.7.0.1
  */

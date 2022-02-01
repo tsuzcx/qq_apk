@@ -1,25 +1,15 @@
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.portal.ImageAlphaSwitchView;
+import android.view.View;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 
-public class azua
-  implements bhtj<Float>
+class azua
+  implements bjoe
 {
-  public azua(ImageAlphaSwitchView paramImageAlphaSwitchView) {}
+  azua(aztz paramaztz, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment, bjnw parambjnw) {}
   
-  public void a(bhtd<Float> parambhtd, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.jdField_a_of_type_Float = paramFloat1.floatValue();
-    if (paramFloat1.floatValue() >= 255.0F)
-    {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.b;
-      this.a.b = null;
-      this.a.jdField_a_of_type_Float = 0.0F;
-      if (this.a.jdField_a_of_type_Bhtd != null)
-      {
-        this.a.jdField_a_of_type_Bhtd.cancel();
-        this.a.jdField_a_of_type_Bhtd = null;
-      }
-    }
+    ReceiptMessageDetailFragment.g(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment);
+    this.jdField_a_of_type_Bjnw.dismiss();
   }
 }
 

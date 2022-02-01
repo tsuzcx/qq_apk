@@ -1,23 +1,36 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
 
 public class aeni
-  extends askq
+  implements View.OnClickListener
 {
-  public aeni(EmosmActivity paramEmosmActivity) {}
+  public aeni(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if ((paramEmoticonPackage == null) || (paramInt1 != 2) || (paramInt2 != 0)) {}
-    while (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
+    if ((this.a.d == 15) && (TroopMemberListActivity.a(this.a).size() > 0))
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("param_deleted_uins", TroopMemberListActivity.a(this.a));
+      this.a.setResult(-1, localIntent);
+      if ((this.a.e == null) || (!this.a.e.equals(this.a.app.getCurrentAccountUin()))) {
+        break label166;
+      }
+    }
+    label166:
+    for (int i = 0;; i = 1)
+    {
+      bcef.b(this.a.app, "dc00899", "Grp_mber", "", "mber_list", "del_inacmem", 0, 0, this.a.b, "" + i, "1", TroopMemberListActivity.a(this.a).toString());
+      this.a.finish();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
   }
-  
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
 }
 
 

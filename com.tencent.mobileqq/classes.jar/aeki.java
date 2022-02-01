@@ -1,19 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aeki
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aeki(DialogActivity paramDialogActivity) {}
+  public aeki(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = this.a.app.a();
-    paramDialogInterface.d();
-    paramDialogInterface.c();
-    this.a.finish();
+    TroopAssistantActivity.a(this.a);
+    bcef.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_close", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

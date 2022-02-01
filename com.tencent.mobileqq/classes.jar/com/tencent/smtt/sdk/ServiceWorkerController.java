@@ -11,11 +11,11 @@ public abstract class ServiceWorkerController
   public static ServiceWorkerController getInstance(Context paramContext)
   {
     Object localObject1 = null;
-    Object localObject2 = v.a();
-    ((v)localObject2).a(paramContext, null);
-    if (((v)localObject2).b())
+    Object localObject2 = x.a();
+    ((x)localObject2).a(paramContext, null);
+    if (((x)localObject2).b())
     {
-      localObject2 = v.a().c().p();
+      localObject2 = x.a().c().p();
       paramContext = localObject1;
       if (localObject2 != null) {
         paramContext = new ServiceWorkerController.1((IX5CoreServiceWorkerController)localObject2);
@@ -26,7 +26,7 @@ public abstract class ServiceWorkerController
       return paramContext;
       paramContext = localObject1;
     } while (Build.VERSION.SDK_INT < 24);
-    return new i();
+    return new k();
   }
   
   public abstract ServiceWorkerWebSettings getServiceWorkerWebSettings();

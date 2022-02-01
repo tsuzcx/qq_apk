@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.face;
 
+import amqx;
 import android.util.Pair;
-import anwo;
-import aopk;
+import anhu;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,56 +17,56 @@ class GroupIconHelper$CheckDisIconThread
   
   private GroupIconHelper$CheckDisIconThread(GroupIconHelper paramGroupIconHelper) {}
   
-  private int a(int paramInt, long paramLong, ArrayList<Pair<String, aopk>> paramArrayList, ArrayList<String> paramArrayList1)
+  private int a(int paramInt, long paramLong, ArrayList<Pair<String, anhu>> paramArrayList, ArrayList<String> paramArrayList1)
   {
     Iterator localIterator = GroupIconHelper.a(this.this$0).keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      aopk localaopk = (aopk)GroupIconHelper.a(this.this$0).get(str);
-      if ((localaopk != null) && (localaopk.jdField_b_of_type_Int >= 8))
+      anhu localanhu = (anhu)GroupIconHelper.a(this.this$0).get(str);
+      if ((localanhu != null) && (localanhu.jdField_b_of_type_Int >= 8))
       {
-        if ((GroupIconHelper.a(this.this$0) instanceof anwo)) {
-          ((anwo)GroupIconHelper.a(this.this$0)).a(false, true, str);
+        if ((GroupIconHelper.a(this.this$0) instanceof amqx)) {
+          ((amqx)GroupIconHelper.a(this.this$0)).a(false, true, str);
         }
         if (QLog.isColorLevel()) {
-          QLog.d("Q.qqhead.dih", 2, "CheckDisIcon, maxCreateCnt: " + str + ",crateIconCount=" + localaopk.jdField_b_of_type_Int);
+          QLog.d("Q.qqhead.dih", 2, "CheckDisIcon, maxCreateCnt: " + str + ",crateIconCount=" + localanhu.jdField_b_of_type_Int);
         }
       }
-      else if ((localaopk != null) && (!localaopk.e))
+      else if ((localanhu != null) && (!localanhu.e))
       {
         if (QLog.isColorLevel()) {
           QLog.d("Q.qqhead.dih", 2, "CheckDisIcon isFromCreate: " + str + ",fromCreate is false");
         }
       }
-      else if ((localaopk != null) && (localaopk.jdField_a_of_type_JavaLangString != null) && (localaopk.jdField_a_of_type_Byte != 3))
+      else if ((localanhu != null) && (localanhu.jdField_a_of_type_JavaLangString != null) && (localanhu.jdField_a_of_type_Byte != 3))
       {
-        paramInt = a(paramInt, paramLong, paramArrayList, paramArrayList1, str, localaopk);
+        paramInt = a(paramInt, paramLong, paramArrayList, paramArrayList1, str, localanhu);
       }
     }
     return paramInt;
   }
   
-  private int a(int paramInt, long paramLong, ArrayList<Pair<String, aopk>> paramArrayList, ArrayList<String> paramArrayList1, String paramString, aopk paramaopk)
+  private int a(int paramInt, long paramLong, ArrayList<Pair<String, anhu>> paramArrayList, ArrayList<String> paramArrayList1, String paramString, anhu paramanhu)
   {
     boolean bool2 = false;
     boolean bool1 = false;
     int i;
-    if ((paramaopk.jdField_a_of_type_Byte == 1) && (paramLong - paramaopk.jdField_a_of_type_Long >= GroupIconHelper.a(this.this$0)))
+    if ((paramanhu.jdField_a_of_type_Byte == 1) && (paramLong - paramanhu.jdField_a_of_type_Long >= GroupIconHelper.a(this.this$0)))
     {
       paramArrayList1 = paramString;
       if (GroupIconHelper.a(paramString)) {
         paramArrayList1 = GroupIconHelper.b(paramString);
       }
-      i = paramaopk.jdField_a_of_type_JavaUtilArrayList.size();
-      paramaopk.jdField_a_of_type_Byte = 2;
+      i = paramanhu.jdField_a_of_type_JavaUtilArrayList.size();
+      paramanhu.jdField_a_of_type_Byte = 2;
       if (i > 0)
       {
-        if (paramaopk.jdField_b_of_type_JavaLangString == null) {
+        if (paramanhu.jdField_b_of_type_JavaLangString == null) {
           break label299;
         }
-        paramString = GroupIconHelper.a(paramaopk.jdField_a_of_type_JavaUtilArrayList, false);
-        if (!paramaopk.jdField_b_of_type_JavaLangString.equals(paramString)) {
+        paramString = GroupIconHelper.a(paramanhu.jdField_a_of_type_JavaUtilArrayList, false);
+        if (!paramanhu.jdField_b_of_type_JavaLangString.equals(paramString)) {
           break label299;
         }
       }
@@ -76,27 +76,27 @@ class GroupIconHelper$CheckDisIconThread
       bool2 = bool1;
       if (bool1)
       {
-        paramArrayList.add(Pair.create(paramArrayList1, paramaopk));
+        paramArrayList.add(Pair.create(paramArrayList1, paramanhu));
         GroupIconHelper.a(this.this$0).remove(paramArrayList1);
         bool2 = bool1;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.dih", 2, "CheckDisIcon expired: " + paramArrayList1 + ", isTryCreate: " + bool2 + paramaopk.toString());
+        QLog.d("Q.qqhead.dih", 2, "CheckDisIcon expired: " + paramArrayList1 + ", isTryCreate: " + bool2 + paramanhu.toString());
       }
       i = paramInt + 1;
       do
       {
         return i;
-        if ((paramaopk.jdField_a_of_type_Byte == 2) && (paramLong - paramaopk.jdField_a_of_type_Long >= GroupIconHelper.b(this.this$0)))
+        if ((paramanhu.jdField_a_of_type_Byte == 2) && (paramLong - paramanhu.jdField_a_of_type_Long >= GroupIconHelper.b(this.this$0)))
         {
           if (QLog.isColorLevel()) {
-            QLog.d("Q.qqhead.dih", 2, "CheckDisIcon timeout: " + paramString + paramaopk.toString());
+            QLog.d("Q.qqhead.dih", 2, "CheckDisIcon timeout: " + paramString + paramanhu.toString());
           }
           paramArrayList1.add(paramString);
           return paramInt + 1;
         }
         i = paramInt;
-      } while (paramaopk.jdField_a_of_type_Byte == 3);
+      } while (paramanhu.jdField_a_of_type_Byte == 3);
       return paramInt + 1;
       label299:
       bool1 = true;
@@ -126,7 +126,7 @@ class GroupIconHelper$CheckDisIconThread
             if ((i < ((ArrayList)localObject3).size()) && (this.a))
             {
               ??? = (Pair)((ArrayList)localObject3).get(i);
-              GroupIconHelper.a(this.this$0, (String)((Pair)???).first, (aopk)((Pair)???).second, true);
+              GroupIconHelper.a(this.this$0, (String)((Pair)???).first, (anhu)((Pair)???).second, true);
               i += 1;
             }
           }

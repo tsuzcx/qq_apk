@@ -1,19 +1,35 @@
-public class whc
+class whc
+  implements wjt
 {
-  public static int a(int paramInt)
+  whc(wgz paramwgz) {}
+  
+  public void a()
   {
-    switch (paramInt)
-    {
-    case 1: 
-    case 2: 
-    case 5: 
-    case 6: 
-    default: 
-      return 6;
-    case 4: 
-      return 10;
+    if (wgz.a(this.a) != null) {
+      wgz.a(this.a).c();
     }
-    return 10;
+  }
+  
+  public void a(int paramInt)
+  {
+    wgz.a(this.a).a(paramInt);
+    if (wgz.a(this.a) != null) {
+      wgz.a(this.a).b(paramInt);
+    }
+  }
+  
+  public void b()
+  {
+    if (wgz.a(this.a) != null) {
+      wgz.a(this.a).d();
+    }
+  }
+  
+  public void c()
+  {
+    if (wgz.a(this.a) != null) {
+      wgz.a(this.a).d(-1);
+    }
   }
 }
 

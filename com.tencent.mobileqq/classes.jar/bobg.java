@@ -1,52 +1,88 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.weiyun.transmission.utils.handler.ReleaseLooperHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
 public class bobg
-  implements Handler.Callback
 {
-  private bobb jdField_a_of_type_Bobb;
-  private final bobi jdField_a_of_type_Bobi;
-  private final ReleaseLooperHandler jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler;
+  public static long a;
+  public static boolean a;
   
-  public bobg(bobi parambobi, bobb parambobb, ReleaseLooperHandler paramReleaseLooperHandler)
+  public static bobn a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Bobi = parambobi;
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler = paramReleaseLooperHandler;
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler.addCallback(this);
-    this.jdField_a_of_type_Bobb = parambobb;
+    bobn localbobn = new bobn();
+    localbobn.jdField_a_of_type_Int = paramInt1;
+    localbobn.jdField_b_of_type_Int = paramInt2;
+    return localbobn;
   }
   
-  private void b(boak paramboak, int paramInt)
+  public static bobn a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo, int paramInt)
   {
-    if (paramboak == null) {}
-    long l;
-    String str;
-    do
+    if (paramMessageForShortVideo.videoFileStatus == 5002)
     {
-      return;
-      l = paramboak.a();
-      str = paramboak.a().a;
-    } while (paramboak.d());
-    this.jdField_a_of_type_Bobb.a(paramboak.a().a(), cooperation.weiyun.sdk.download.DownloadType.values()[paramInt], new bobh(this, str, l, paramboak, paramInt));
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoBusiManager", 2, "createShortVideoReqByMsg expired");
+      }
+      return null;
+    }
+    paramQQAppInterface = a(2, paramMessageForShortVideo.busiType);
+    paramQQAppInterface.a(paramMessageForShortVideo);
+    return paramQQAppInterface;
   }
   
-  public void a(boak paramboak, int paramInt)
+  static BaseShortVideoOprerator a(int paramInt, QQAppInterface paramQQAppInterface)
   {
-    if (paramboak == null) {
+    switch (paramInt)
+    {
+    case 1: 
+    case 4: 
+    default: 
+      return null;
+    }
+    return new boas(paramQQAppInterface);
+  }
+  
+  public static void a(bobn parambobn, QQAppInterface paramQQAppInterface)
+  {
+    if (parambobn == null)
+    {
+      ayde.b("ShortVideoBusiManager", "launch", "error,req == null");
       return;
     }
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler.sendMessage(Message.obtain(null, 21, paramInt, 0, paramboak));
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 21)
+    BaseShortVideoOprerator localBaseShortVideoOprerator = a(parambobn.jdField_b_of_type_Int, paramQQAppInterface);
+    if (localBaseShortVideoOprerator == null)
     {
-      b((boak)paramMessage.obj, paramMessage.arg1);
-      return true;
+      ayde.b("ShortVideoBusiManager", "launch", "error,busiInterface == null,req.busiType:" + parambobn.jdField_b_of_type_Int);
+      return;
     }
-    return false;
+    localBaseShortVideoOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    localBaseShortVideoOprerator.jdField_a_of_type_Bobn = parambobn;
+    localBaseShortVideoOprerator.jdField_a_of_type_JavaLangString = parambobn.jdField_a_of_type_JavaLangString;
+    localBaseShortVideoOprerator.jdField_b_of_type_JavaLangString = parambobn.jdField_b_of_type_JavaLangString;
+    localBaseShortVideoOprerator.a(parambobn.jdField_a_of_type_Bobt);
+    ayde.a("ShortVideoBusiManager", "launch", "cmd:" + ShortVideoUtils.c(parambobn.jdField_a_of_type_Int) + ", reqBusiType" + parambobn.jdField_b_of_type_Int + ", uuid:" + parambobn.jdField_a_of_type_JavaLangString);
+    switch (parambobn.jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    case 0: 
+      localBaseShortVideoOprerator.a(parambobn.jdField_a_of_type_Bobp);
+      return;
+    case 2: 
+      localBaseShortVideoOprerator.a(parambobn.jdField_a_of_type_Bobh);
+      return;
+    case 1: 
+      localBaseShortVideoOprerator.a(parambobn.jdField_a_of_type_Bobp);
+      return;
+    case 3: 
+      localBaseShortVideoOprerator.a(parambobn.jdField_a_of_type_Bobi);
+      return;
+    case 4: 
+      localBaseShortVideoOprerator.a(parambobn.jdField_a_of_type_Bobi);
+      return;
+    }
+    localBaseShortVideoOprerator.a(parambobn.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

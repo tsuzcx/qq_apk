@@ -11,7 +11,7 @@ class TPThumbPlayer$1
   
   public void onASyncCallResult(int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
-    TPLogUtil.i(TPThumbPlayer.access$000(), "onASyncCallResult, callType:" + paramInt1 + ", opaque:" + paramLong + ", errorType:" + paramInt2 + ", errorCode:" + paramInt3);
+    TPLogUtil.i(TPThumbPlayer.access$000(this.this$0), "onASyncCallResult, callType:" + paramInt1 + ", opaque:" + paramLong + ", errorType:" + paramInt2 + ", errorCode:" + paramInt3);
     TPThumbPlayer.OnASyncCallResultInfo localOnASyncCallResultInfo = new TPThumbPlayer.OnASyncCallResultInfo();
     localOnASyncCallResultInfo.callType = paramInt1;
     localOnASyncCallResultInfo.opaque = paramLong;
@@ -22,7 +22,7 @@ class TPThumbPlayer$1
   
   public void onError(int paramInt1, int paramInt2)
   {
-    TPLogUtil.i(TPThumbPlayer.access$000(), "onError, msgType:" + paramInt1 + ", errorCode:" + paramInt2);
+    TPLogUtil.i(TPThumbPlayer.access$000(this.this$0), "onError, msgType:" + paramInt1 + ", errorCode:" + paramInt2);
     TPThumbPlayer.OnErrorInfo localOnErrorInfo = new TPThumbPlayer.OnErrorInfo();
     localOnErrorInfo.msgType = paramInt1;
     localOnErrorInfo.errorCode = paramInt2;
@@ -31,7 +31,7 @@ class TPThumbPlayer$1
   
   public void onInfoLong(int paramInt, long paramLong1, long paramLong2)
   {
-    TPLogUtil.i(TPThumbPlayer.access$000(), "onInfoLong, infoType:" + paramInt + ", lParam1:" + paramLong1 + ", lParam2:" + paramLong2);
+    TPLogUtil.i(TPThumbPlayer.access$000(this.this$0), "onInfoLong, infoType:" + paramInt + ", lParam1:" + paramLong1 + ", lParam2:" + paramLong2);
     TPThumbPlayer.OnInfoLongInfo localOnInfoLongInfo = new TPThumbPlayer.OnInfoLongInfo();
     localOnInfoLongInfo.infoType = paramInt;
     localOnInfoLongInfo.lParam1 = paramLong1;
@@ -41,7 +41,7 @@ class TPThumbPlayer$1
   
   public void onInfoObject(int paramInt, Object paramObject)
   {
-    TPLogUtil.i(TPThumbPlayer.access$000(), "onInfoObject, infoType:" + paramInt + ", objParam:" + paramObject);
+    TPLogUtil.i(TPThumbPlayer.access$000(this.this$0), "onInfoObject, infoType:" + paramInt + ", objParam:" + paramObject);
     TPThumbPlayer.OnInfoObjectInfo localOnInfoObjectInfo = new TPThumbPlayer.OnInfoObjectInfo();
     localOnInfoObjectInfo.infoType = paramInt;
     localOnInfoObjectInfo.objParam = paramObject;

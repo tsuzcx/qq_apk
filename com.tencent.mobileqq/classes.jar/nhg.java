@@ -1,24 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.avgame.ui.AvGameLoadingActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class nhg
-  extends BroadcastReceiver
+public abstract interface nhg
 {
-  public nhg(AvGameLoadingActivity paramAvGameLoadingActivity) {}
+  public abstract void a(String paramString);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    QLog.d("AvGameManagerAvGameLoadingActivity", 2, "receive broadcast");
-    if ("com.tencent.avgame.ui.AvGameLoadingActivity.ACTION_LOADING_FINISH".equals(paramContext))
-    {
-      nhp.a().a("param_StepLoading", 0);
-      AvGameLoadingActivity.a(this.a, true, 0);
-    }
-  }
+  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long paramLong);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void c(String paramString);
+  
+  public abstract void d(String paramString);
 }
 
 

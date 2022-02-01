@@ -1,6 +1,18 @@
-public abstract interface ajwc
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class ajwc
+  implements View.OnClickListener
 {
-  public abstract long a();
+  public ajwc(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a();
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

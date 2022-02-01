@@ -1,8 +1,25 @@
-public class bmaj
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.qphone.base.util.QLog;
+
+class bmaj
+  implements ViewPager.OnPageChangeListener
 {
-  public int a;
-  public long a;
-  public byte[] a;
+  bmaj(bmai parambmai) {}
+  
+  public void onPageScrollStateChanged(int paramInt)
+  {
+    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageScrollStateChanged");
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageScrolled");
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageSelected");
+  }
 }
 
 

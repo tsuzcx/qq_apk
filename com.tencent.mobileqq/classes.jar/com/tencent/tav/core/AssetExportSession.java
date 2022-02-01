@@ -10,6 +10,7 @@ import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.decoder.EncoderWriter.OutputConfig;
 import com.tencent.tav.decoder.RenderContextParams;
+import com.tencent.tav.decoder.logger.Logger;
 import java.util.List;
 
 public class AssetExportSession
@@ -20,11 +21,12 @@ public class AssetExportSession
   AssetExtension assetExtension;
   @Nullable
   private AudioMix audioMix;
+  @NonNull
+  private final ExportConfig exportConfig;
   @Nullable
   ExportErrorStatus exportErrorStatus;
   private AssetExportThread exportThread;
   private List<MetadataItem> metadata;
-  EncoderWriter.OutputConfig outputConfig;
   String outputFilePath;
   String outputFileType = "mp4";
   private String presetName;
@@ -38,23 +40,32 @@ public class AssetExportSession
   @Nullable
   VideoComposition videoComposition;
   
-  public AssetExportSession(@NonNull Asset paramAsset, @Nullable EncoderWriter.OutputConfig paramOutputConfig)
+  public AssetExportSession(@NonNull Asset paramAsset, ExportConfig paramExportConfig)
   {
-    this(paramAsset, paramOutputConfig, new AssetExtension("export"));
+    this(paramAsset, paramExportConfig, new AssetExtension("export"));
   }
   
-  public AssetExportSession(@NonNull Asset paramAsset, @Nullable EncoderWriter.OutputConfig paramOutputConfig, AssetExtension paramAssetExtension)
+  public AssetExportSession(@NonNull Asset paramAsset, ExportConfig paramExportConfig, AssetExtension paramAssetExtension)
   {
     this.asset = paramAsset;
     this.assetExtension = paramAssetExtension;
-    paramAssetExtension = paramOutputConfig;
-    if (paramOutputConfig == null)
+    if (paramExportConfig != null)
     {
-      paramAssetExtension = new EncoderWriter.OutputConfig();
-      paramAssetExtension.VIDEO_TARGET_HEIGHT = ((int)paramAsset.getNaturalSize().height);
-      paramAssetExtension.VIDEO_TARGET_WIDTH = ((int)paramAsset.getNaturalSize().width);
+      paramAssetExtension = paramExportConfig;
+      if (paramExportConfig.available()) {}
     }
-    this.outputConfig = paramAssetExtension;
+    else
+    {
+      Logger.e("AssetExportSession", "AssetExportSession: encodeOption 不合法");
+      paramAssetExtension = new ExportConfig((int)paramAsset.getNaturalSize().width, (int)paramAsset.getNaturalSize().height);
+    }
+    this.exportConfig = paramAssetExtension;
+  }
+  
+  @Deprecated
+  public AssetExportSession(@NonNull Asset paramAsset, EncoderWriter.OutputConfig paramOutputConfig)
+  {
+    this(paramAsset, new ExportConfig(paramOutputConfig), new AssetExtension("export"));
   }
   
   public void cancelExport()
@@ -66,7 +77,7 @@ public class AssetExportSession
   
   public void exportAsynchronouslyWithCompletionHandler(AssetExportSession.ExportCallbackHandler paramExportCallbackHandler)
   {
-    this.exportThread = new AssetExportThread(this, paramExportCallbackHandler, this.audioMix);
+    this.exportThread = new AssetExportThread(this, paramExportCallbackHandler, this.audioMix, this.exportConfig);
     this.exportThread.setRenderContextParams(this.renderContextParams);
     this.exportThread.startExport();
   }
@@ -88,6 +99,12 @@ public class AssetExportSession
       return this.exportErrorStatus.code;
     }
     return 0;
+  }
+  
+  @NonNull
+  public ExportConfig getExportConfig()
+  {
+    return this.exportConfig;
   }
   
   @Nullable
@@ -134,6 +151,14 @@ public class AssetExportSession
   public List<String> getSupportedFileTypes()
   {
     return this.supportedFileTypes;
+  }
+  
+  public Throwable getThrowable()
+  {
+    if (this.exportErrorStatus != null) {
+      return this.exportErrorStatus.throwable;
+    }
+    return null;
   }
   
   public CMTimeRange getTimeRange()

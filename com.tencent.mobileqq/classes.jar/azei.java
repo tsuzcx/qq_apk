@@ -1,8 +1,19 @@
-public abstract interface azei
+public class azei
+  implements azeb
 {
-  public abstract apfz a();
+  private azfa a;
   
-  public abstract boolean a();
+  public azei(azfa paramazfa)
+  {
+    this.a = paramazfa;
+  }
+  
+  public void a(azfk paramazfk)
+  {
+    if (this.a != null) {
+      this.a.e(paramazfk);
+    }
+  }
 }
 
 

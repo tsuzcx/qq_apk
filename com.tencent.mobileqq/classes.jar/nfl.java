@@ -1,16 +1,23 @@
-import com.qq.jce.wup.UniPacket;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.avgame.gameroom.video.AVGameControlUIImpl;
 
-public abstract interface nfl
+public class nfl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg);
+  public nfl(AVGameControlUIImpl paramAVGameControlUIImpl) {}
   
-  public abstract boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket);
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if ((AVGameControlUIImpl.a(this.a)) && (this.a.a != null)) {
+      this.a.a.a(i);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nfl
  * JD-Core Version:    0.7.0.1
  */

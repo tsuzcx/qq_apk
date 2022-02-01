@@ -1,26 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class adxi
-  extends Handler
 {
-  public adxi(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  public PublicAccountInfo a;
+  public String a;
+  public String b = "";
   
-  public void handleMessage(Message paramMessage)
+  public adxi(PublicAccountInfo paramPublicAccountInfo)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    this.a.c();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131719093);
+    this.jdField_a_of_type_JavaLangString = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    this.a.a(paramMessage, 1);
+    this.b = str;
   }
 }
 

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.qqmini.sdk.action.FavoritesAction;
 import com.tencent.qqmini.sdk.action.GetShareState;
 import com.tencent.qqmini.sdk.action.PageAction;
 import com.tencent.qqmini.sdk.action.RestartAction;
@@ -137,12 +138,12 @@ public class DefaultMoreItemSelectedListener
         localMiniAppInfo.topType = paramInt;
         sChannelProxy.setUserAppTop(localMiniAppInfo, null);
         if (localMiniAppInfo.topType != 1) {
-          break label369;
+          break label373;
         }
         localObject = "settop_on";
         break;
       }
-      label369:
+      label373:
       localObject = "settop_off";
       continue;
       sMiniAppProxy.addShortcut(localActivity, localMiniAppInfo, null);
@@ -151,6 +152,9 @@ public class DefaultMoreItemSelectedListener
       localObject = "cancel";
       continue;
       localObject = "cancel_system";
+      continue;
+      paramIMiniAppContext.performAction(FavoritesAction.obtain(1));
+      localObject = "qq_favorites";
     }
   }
 }

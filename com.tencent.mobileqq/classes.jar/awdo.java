@@ -1,73 +1,42 @@
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.JvmStatic;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/intervideo/now/webplugin/AudioRoomSettingHandler;", "", "()V", "ACT_GET_TMP_MSG_PUSH_SETTING", "", "ACT_SET_TMP_MSG_PUSH_SETTING", "TAG", "", "handleGetTmpMsgPushSetting", "", "plugin", "Lcom/tencent/mobileqq/intervideo/now/NowWebViewPlugin;", "reqJson", "Lorg/json/JSONObject;", "callback", "handleRequest", "args", "", "(Lcom/tencent/mobileqq/intervideo/now/NowWebViewPlugin;[Ljava/lang/String;)V", "handleSetTmpMsgPushSetting", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class awdo
+class awdo
+  implements aycx
 {
-  public static final awdo a = new awdo();
+  awdo(awdi paramawdi, awdd paramawdd) {}
   
-  private final void a(awby paramawby, JSONObject paramJSONObject, String paramString)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    paramawby.a().a((short)-23161, (aasd)new awdp(paramawby, paramString));
+    awdi.a(this.jdField_a_of_type_Awdi, this.jdField_a_of_type_Awdd, paramInt);
   }
   
-  @JvmStatic
-  public static final void a(@NotNull awby paramawby, @NotNull String[] paramArrayOfString)
+  public void a(aycy paramaycy)
   {
-    Intrinsics.checkParameterIsNotNull(paramawby, "plugin");
-    Intrinsics.checkParameterIsNotNull(paramArrayOfString, "args");
+    int j;
+    int i;
+    if (paramaycy != null)
+    {
+      j = paramaycy.jdField_a_of_type_Int;
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiRichMediaSaveManager", 2, "isFilePreDownload picReq result = " + j);
+      }
+      if (paramaycy.jdField_a_of_type_Aydp != null)
+      {
+        i = paramaycy.jdField_a_of_type_Aydp.jdField_a_of_type_Int;
+        paramaycy = paramaycy.jdField_a_of_type_Aydp.b;
+      }
+    }
     for (;;)
     {
-      String str;
-      try
-      {
-        paramArrayOfString = new JSONObject(paramArrayOfString[0]);
-        str = paramArrayOfString.optString("callback");
-        int i = paramArrayOfString.optInt("act", -1);
-        switch (i)
-        {
-        case 1: 
-          QLog.w("AudioRoomSettingHandler", 1, "unknown action: " + i);
-          return;
-        }
-      }
-      catch (Exception paramawby)
-      {
-        QLog.w("AudioRoomSettingHandler", 1, "handleRequest catch: " + paramawby);
-        return;
-      }
-      awdo localawdo = a;
-      Intrinsics.checkExpressionValueIsNotNull(str, "callback");
-      localawdo.a(paramawby, paramArrayOfString, str);
+      awdi.a(this.jdField_a_of_type_Awdi, this.jdField_a_of_type_Awdd, j, i, paramaycy);
       return;
-      localawdo = a;
-      Intrinsics.checkExpressionValueIsNotNull(str, "callback");
-      localawdo.b(paramawby, paramArrayOfString, str);
-      return;
+      i = 0;
+      paramaycy = "";
+      continue;
+      j = 0;
+      i = 0;
+      paramaycy = "";
     }
-  }
-  
-  private final void b(awby paramawby, JSONObject paramJSONObject, String paramString)
-  {
-    boolean bool = false;
-    int i = paramJSONObject.optInt("pushSwitch", -1);
-    QLog.i("AudioRoomSettingHandler", 1, "handleSetTmpMsgPushSetting request: toStatus=" + i);
-    if ((i != 0) && (i != 1))
-    {
-      paramJSONObject = new JSONObject();
-      paramJSONObject.put("result", "fail");
-      paramawby.callJs(paramString, new String[] { paramJSONObject.toString() });
-      return;
-    }
-    paramJSONObject = paramawby.a();
-    if (i == 1) {
-      bool = true;
-    }
-    paramJSONObject.a((short)-23161, bool, (aasd)new awdq(i, paramawby, paramString));
   }
 }
 

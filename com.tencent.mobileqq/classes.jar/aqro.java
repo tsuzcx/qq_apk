@@ -1,54 +1,88 @@
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.view.View;
+import com.tencent.mobileqq.data.MessageForStarLeague;
+import com.tencent.qphone.base.util.QLog;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
 public class aqro
+  extends DefaultHandler
 {
-  private float jdField_a_of_type_Float;
-  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  private View jdField_a_of_type_AndroidViewView;
-  private float b;
+  MessageForStarLeague a;
+  public String a;
   
-  public aqro(View paramView)
+  public aqro()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague = ((MessageForStarLeague)bbli.a(-2069));
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  private void b()
+  public MessageForStarLeague a()
   {
-    this.jdField_a_of_type_AndroidViewView.setPivotX(this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_AndroidViewView.setPivotY(this.b);
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleX", new float[] { 1.0F, 0.0F });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "scaleY", new float[] { 1.0F, 0.0F });
-    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
+    if (paramArrayOfChar.equals("\n")) {}
+    do
     {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.setDuration(500L);
+      return;
+      if (this.jdField_a_of_type_JavaLangString.equals("title"))
+      {
+        localMessageForStarLeague = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
+        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName == null) {}
+        for (;;)
+        {
+          localMessageForStarLeague.starName = paramArrayOfChar;
+          this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName.trim();
+          return;
+          paramArrayOfChar = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName.concat(paramArrayOfChar);
+        }
+      }
+    } while (!this.jdField_a_of_type_JavaLangString.equals("summary"));
+    MessageForStarLeague localMessageForStarLeague = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle == null) {}
+    for (;;)
+    {
+      localMessageForStarLeague.subTitle = paramArrayOfChar;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle.trim();
+      return;
+      paramArrayOfChar = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle.concat(paramArrayOfChar);
     }
   }
   
-  public void a()
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
   {
-    b();
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-  }
-  
-  public void a(aqvd paramaqvd, boolean paramBoolean, int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
-    {
-      Animator localAnimator = zvi.a(this.jdField_a_of_type_AndroidViewView, (int)this.jdField_a_of_type_Float + paramInt, (int)this.b, this.jdField_a_of_type_AndroidViewView.getHeight() / 2, 1.0F);
-      localAnimator.addListener(new aqrp(this, paramaqvd, paramBoolean));
-      localAnimator.setDuration(300L);
-      localAnimator.start();
+    if (paramString3.equals("msg")) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.actionUrl = paramAttributes.getValue("url");
     }
+    do
+    {
+      try
+      {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.levelStatus = Integer.parseInt(paramAttributes.getValue("levelStatus"));
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.brief = paramAttributes.getValue("brief");
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        for (;;)
+        {
+          QLog.e("StructMsg", 1, "levelStatus parse failed!", paramString1);
+        }
+      }
+      if (paramString3.equals("picture"))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starAvatar = paramAttributes.getValue("cover");
+        return;
+      }
+      if (paramString3.equals("title"))
+      {
+        this.jdField_a_of_type_JavaLangString = "title";
+        return;
+      }
+    } while (!paramString3.equals("summary"));
+    this.jdField_a_of_type_JavaLangString = "summary";
   }
 }
 

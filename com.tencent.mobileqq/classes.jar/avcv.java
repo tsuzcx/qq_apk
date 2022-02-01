@@ -1,35 +1,15 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.forward.ForwardShortVideoOption.PressDarkImageView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import java.util.List;
 
-public class avcv
+public abstract interface avcv
 {
-  public ImageView a;
-  public ForwardShortVideoOption.PressDarkImageView a;
+  public abstract void a(avcq paramavcq, int paramInt);
   
-  public void a(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption$PressDarkImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (paramDrawable == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardShortVideoOption", 2, "setPreviewImage null");
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838073);
-      return;
-    }
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(13);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
-    this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bhtq.a(140.0F));
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
-  }
+  public abstract void a(avcq paramavcq, int paramInt1, int paramInt2);
+  
+  public abstract void a(avcq paramavcq, LocationRoom.Venue paramVenue, List<avco> paramList);
+  
+  public abstract void b(avcq paramavcq, int paramInt);
 }
 
 

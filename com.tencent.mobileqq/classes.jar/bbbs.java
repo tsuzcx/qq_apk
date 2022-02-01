@@ -1,123 +1,128 @@
-import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
 
 public class bbbs
+  extends bbch
 {
-  static final String jdField_a_of_type_JavaLangString = bbbs.class.getSimpleName();
-  private final ConcurrentHashMap<String, byte[]> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
-  
-  public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  public bbbs(FaceDecoder paramFaceDecoder)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
-    for (;;)
+    super(paramFaceDecoder);
+  }
+  
+  protected bbbm<bayt, bbhb> a(FaceDecoder paramFaceDecoder)
+  {
+    return new bbbt(paramFaceDecoder);
+  }
+  
+  public void a(bayr parambayr, bbha parambbha)
+  {
+    parambayr = (bays)parambayr;
+    LinearLayout localLinearLayout = ((bbhf)parambbha).a();
+    List localList;
+    int k;
+    int i;
+    bayp localbayp;
+    Object localObject2;
+    Object localObject1;
+    if (localLinearLayout != null)
     {
-      return;
-      if (!TextUtils.isEmpty(paramString)) {
-        try
+      localList = parambayr.a();
+      if (localList != null)
+      {
+        localLinearLayout.removeAllViews();
+        k = Math.min(localList.size(), 3);
+        i = 0;
+        if (i < k)
         {
-          paramString = String.format("%s_%s_%s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramArrayOfByte);
-          if (QLog.isColorLevel())
+          parambayr = (bayt)localList.get(i);
+          if ((parambayr instanceof bayp))
           {
-            QLog.i(jdField_a_of_type_JavaLangString, 2, String.format("cacheToken key: %s, token_len: %s", new Object[] { paramString, Integer.valueOf(paramArrayOfByte.length) }));
-            return;
+            localbayp = (bayp)parambayr;
+            localObject2 = null;
+            if (bbae.a(localbayp.e()) == 1)
+            {
+              localObject2 = LayoutInflater.from(parambbha.a().getContext()).inflate(2131562755, null);
+              parambayr = ((View)localObject2).findViewById(2131368891);
+              localObject1 = new bbgv((View)localObject2);
+            }
           }
-        }
-        catch (Throwable paramString)
-        {
-          paramString.printStackTrace();
         }
       }
     }
-  }
-  
-  /* Error */
-  public byte[] a(String paramString, int paramInt1, int paramInt2)
-  {
-    // Byte code:
-    //   0: ldc 40
-    //   2: iconst_3
-    //   3: anewarray 4	java/lang/Object
-    //   6: dup
-    //   7: iconst_0
-    //   8: aload_1
-    //   9: aastore
-    //   10: dup
-    //   11: iconst_1
-    //   12: iload_2
-    //   13: invokestatic 46	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   16: aastore
-    //   17: dup
-    //   18: iconst_2
-    //   19: iload_3
-    //   20: invokestatic 46	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   23: aastore
-    //   24: invokestatic 52	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   27: astore 4
-    //   29: aload_0
-    //   30: getfield 29	bbbs:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   33: aload 4
-    //   35: invokevirtual 76	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   38: checkcast 78	[B
-    //   41: astore_1
-    //   42: invokestatic 62	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   45: ifeq +65 -> 110
-    //   48: getstatic 18	bbbs:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   51: astore 5
-    //   53: aload_1
-    //   54: ifnonnull +34 -> 88
-    //   57: iconst_0
-    //   58: istore_2
-    //   59: aload 5
-    //   61: iconst_2
-    //   62: ldc 80
-    //   64: iconst_2
-    //   65: anewarray 4	java/lang/Object
-    //   68: dup
-    //   69: iconst_0
-    //   70: aload 4
-    //   72: aastore
-    //   73: dup
-    //   74: iconst_1
-    //   75: iload_2
-    //   76: invokestatic 46	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   79: aastore
-    //   80: invokestatic 52	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   83: invokestatic 68	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   86: aload_1
-    //   87: areturn
-    //   88: aload_1
-    //   89: arraylength
-    //   90: istore_2
-    //   91: goto -32 -> 59
-    //   94: astore 4
-    //   96: aconst_null
-    //   97: astore_1
-    //   98: aload 4
-    //   100: invokevirtual 71	java/lang/Throwable:printStackTrace	()V
-    //   103: aload_1
-    //   104: areturn
-    //   105: astore 4
-    //   107: goto -9 -> 98
-    //   110: aload_1
-    //   111: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	112	0	this	bbbs
-    //   0	112	1	paramString	String
-    //   0	112	2	paramInt1	int
-    //   0	112	3	paramInt2	int
-    //   27	44	4	str1	String
-    //   94	5	4	localThrowable1	Throwable
-    //   105	1	4	localThrowable2	Throwable
-    //   51	9	5	str2	String
-    // Exception table:
-    //   from	to	target	type
-    //   0	42	94	java/lang/Throwable
-    //   42	53	105	java/lang/Throwable
-    //   59	86	105	java/lang/Throwable
-    //   88	91	105	java/lang/Throwable
+    for (;;)
+    {
+      label137:
+      int j;
+      if ((localObject2 != null) && (parambayr != null))
+      {
+        ((View)localObject2).setTag(2131380831, localbayp);
+        ((View)localObject2).setTag(2131380836, localObject1);
+        ((View)localObject2).setTag(2131380832, Integer.valueOf(i));
+        ((View)localObject2).setTag(2131380830, Integer.valueOf(localList.size()));
+        ((View)localObject2).setTag(2131380833, this.a);
+        bdvp.a((View)localObject2, localbayp.d(), localbayp.b(), 1);
+        bbgn.a(localbayp, k, i);
+        int m = localbayp.a();
+        int n = localbayp.b();
+        if ((localbayp instanceof bayu))
+        {
+          j = localbayp.u;
+          label256:
+          bbgn.a(m, n, (View)localObject2, j);
+          localLinearLayout.addView((View)localObject2);
+          this.a.a(localbayp, (bbhc)localObject1);
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if (bbae.a(localbayp.e()) != 2) {
+          break label554;
+        }
+        localObject2 = LayoutInflater.from(parambbha.a().getContext()).inflate(2131562762, null);
+        parambayr = ((View)localObject2).findViewById(2131368891);
+        localObject1 = new bbhe((View)localObject2);
+        break label137;
+        j = 0;
+        break label256;
+        QLog.e("MostUseResultGroupPresenter", 2, "unresolved id type" + localbayp.e());
+        continue;
+        if ((parambayr instanceof baxr))
+        {
+          parambayr = (baxr)parambayr;
+          localObject1 = new bbij(localLinearLayout, parambayr.d());
+          localObject2 = ((bbij)localObject1).a();
+          ((View)localObject2).setTag(2131380831, parambayr);
+          ((View)localObject2).setTag(2131380836, localObject1);
+          ((View)localObject2).setTag(2131380832, Integer.valueOf(i));
+          ((View)localObject2).setTag(2131380830, Integer.valueOf(localList.size()));
+          ((View)localObject2).setTag(2131380833, this.a);
+          bbgn.a(parambayr, k, i);
+          localObject2 = new LinearLayout.LayoutParams(-1, -2);
+          localLinearLayout.addView(((bbij)localObject1).a(), (ViewGroup.LayoutParams)localObject2);
+          this.a.a(parambayr, (bbhc)localObject1);
+        }
+        else
+        {
+          QLog.e("MostUseResultGroupPresenter", 2, "unknown type in MOST USED GROUP P");
+        }
+      }
+      if (parambbha.b() != null) {
+        parambbha.b().setVisibility(8);
+      }
+      return;
+      label554:
+      parambayr = null;
+      localObject1 = null;
+    }
   }
 }
 

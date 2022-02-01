@@ -1,96 +1,128 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.widget.ImageSwitcher;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.image.URLDrawable;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.managers.CUOpenCardGuideMng.GuideConfigData.1;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
 public class avmz
-  implements Handler.Callback
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private WeakReference<ImageSwitcher> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int = 1;
-  private WeakReference<ImageSwitcher> jdField_b_of_type_JavaLangRefWeakReference;
+  public long a;
+  public final String a;
+  public final ArrayList<Integer> a;
+  public boolean a;
+  public avna[] a;
+  public String b;
+  public boolean b;
   
-  public avmz(ImageSwitcher paramImageSwitcher1, ImageSwitcher paramImageSwitcher2)
+  public avmz(String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageSwitcher1);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramImageSwitcher2);
-    paramImageSwitcher1.setAnimateFirstView(false);
-    paramImageSwitcher1.setAnimateFirstView(false);
-    AlphaAnimation localAlphaAnimation1 = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation1.setDuration(1400L);
-    AlphaAnimation localAlphaAnimation2 = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation2.setDuration(1400L);
-    paramImageSwitcher1.setInAnimation(localAlphaAnimation1);
-    paramImageSwitcher2.setInAnimation(localAlphaAnimation2);
-    localAlphaAnimation1 = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation1.setDuration(1400L);
-    paramImageSwitcher1.setOutAnimation(localAlphaAnimation1);
-    paramImageSwitcher2.setOutAnimation(localAlphaAnimation1);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_ArrayOfAvna = new avna[6];
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfAvna.length)
+    {
+      this.jdField_a_of_type_ArrayOfAvna[i] = null;
+      i += 1;
+    }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaUtilArrayList = DeviceInfoUtil.getCarrierList();
+    ThreadManager.post(new CUOpenCardGuideMng.GuideConfigData.1(this), 5, null, false);
   }
   
-  public void a(List<String> paramList)
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQGameImagePlayHelper", 0, "[startPlay] set next image :" + this);
-    }
+    if (this.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      a(BaseApplicationImpl.getApplication().getSharedPreferences("ChinaUnicomPhoneCard" + this.jdField_a_of_type_JavaLangString, 4).getString("config_content", ""));
+    } while (!QLog.isColorLevel());
+    QLog.i("CUOpenCardGuideMng", 2, "init");
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(String paramString)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    try
-    {
+    int j = 0;
+    int i = 0;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    if ((this.jdField_b_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString.equals(paramString))) {
       if (QLog.isColorLevel()) {
-        QLog.d("QQGameImagePlayHelper", 0, "[handleMessage] set next image");
+        QLog.i("CUOpenCardGuideMng", 2, "parseConfig config not change");
       }
-      int i;
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
-      {
-        paramMessage = (ImageSwitcher)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        i = this.jdField_a_of_type_Int + 1;
-        this.jdField_a_of_type_Int = i;
-        if (i == this.jdField_a_of_type_JavaUtilList.size()) {
-          this.jdField_a_of_type_Int = 0;
-        }
-        paramMessage.setImageDrawable(URLDrawable.getDrawable((String)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int)));
-      }
-      if ((this.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() != null))
-      {
-        paramMessage = (ImageSwitcher)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-        i = this.jdField_b_of_type_Int + 1;
-        this.jdField_b_of_type_Int = i;
-        if (i == this.jdField_a_of_type_JavaUtilList.size()) {
-          this.jdField_b_of_type_Int = 0;
-        }
-        paramMessage.setImageDrawable(URLDrawable.getDrawable((String)this.jdField_a_of_type_JavaUtilList.get(this.jdField_b_of_type_Int)));
-      }
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
-      return false;
     }
-    catch (Exception paramMessage)
+    do
     {
-      QLog.e("QQGameImagePlayHelper", 1, "[handleMessage] ");
+      return;
+      if (!TextUtils.isEmpty(paramString)) {
+        break;
+      }
+      this.jdField_b_of_type_Boolean = false;
+      while (i < this.jdField_a_of_type_ArrayOfAvna.length)
+      {
+        this.jdField_a_of_type_ArrayOfAvna[i] = null;
+        i += 1;
+      }
+      this.jdField_b_of_type_JavaLangString = "";
+    } while (!QLog.isColorLevel());
+    QLog.i("CUOpenCardGuideMng", 2, "parseConfig config is empty");
+    return;
+    for (;;)
+    {
+      Object localObject;
+      try
+      {
+        localObject = new JSONObject(paramString);
+        if (!((JSONObject)localObject).has("isNeedShowGuide")) {
+          break label359;
+        }
+        this.jdField_b_of_type_Boolean = ((JSONObject)localObject).getBoolean("isNeedShowGuide");
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      finally {}
+      if ((i < this.jdField_a_of_type_ArrayOfAvna.length) && (i < avmx.a.length))
+      {
+        if (((JSONObject)localObject).has(avmx.a[i])) {
+          this.jdField_a_of_type_ArrayOfAvna[i] = avna.a(((JSONObject)localObject).getJSONObject(avmx.a[i]));
+        } else {
+          this.jdField_a_of_type_ArrayOfAvna[i] = null;
+        }
+      }
+      else
+      {
+        this.jdField_b_of_type_JavaLangString = paramString;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        localObject = new StringBuilder(300);
+        ((StringBuilder)localObject).append("parseConfig:").append("\n");
+        ((StringBuilder)localObject).append("config: ").append(paramString).append("\n");
+        ((StringBuilder)localObject).append("mIsShowGuide: ").append(this.jdField_b_of_type_Boolean).append("\n");
+        i = j;
+        while ((i < this.jdField_a_of_type_ArrayOfAvna.length) && (i < avmx.a.length))
+        {
+          ((StringBuilder)localObject).append(avmx.a[i]).append(": ").append(this.jdField_a_of_type_ArrayOfAvna[i]).append("\n");
+          i += 1;
+        }
+        QLog.i("CUOpenCardGuideMng", 2, ((StringBuilder)localObject).toString());
+        continue;
+        label359:
+        i = 0;
+        continue;
+      }
+      i += 1;
     }
-    return false;
   }
 }
 

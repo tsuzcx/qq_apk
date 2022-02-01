@@ -1,40 +1,13 @@
-public class ppj<T>
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+
+public class ppj
+  implements pqe
 {
-  private long jdField_a_of_type_Long;
-  T jdField_a_of_type_JavaLangObject;
-  public boolean a;
-  private long b;
+  public ppj(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public ppj(T paramT)
+  public void a()
   {
-    this(paramT, localObject, 600000L);
-    if (localObject == null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public ppj(T paramT, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramLong;
-    this.b = System.currentTimeMillis();
-    Object localObject;
-    this.jdField_a_of_type_Long = localObject;
-  }
-  
-  public T a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public void a(T paramT)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    this.b = System.currentTimeMillis();
-  }
-  
-  public boolean a()
-  {
-    return System.currentTimeMillis() - this.b >= this.jdField_a_of_type_Long;
+    ReadInJoySelfFragment.h(this.a);
   }
 }
 

@@ -1,29 +1,78 @@
-import android.util.SparseArray;
+import android.content.Context;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class azim
+  extends BaseAdapter
 {
-  private SparseArray<View> a = new SparseArray();
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<PhoneContact> jdField_a_of_type_JavaUtilList;
   
-  public View a(int paramInt)
+  public azim(Context paramContext, List<PhoneContact> paramList)
   {
-    if (this.a.size() > 0)
-    {
-      View localView = (View)this.a.get(paramInt);
-      if (localView != null) {
-        this.a.remove(paramInt);
-      }
-      return localView;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  private View a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560989, null);
+    azio localazio = new azio(null);
+    localazio.a = ((TextView)paramViewGroup.findViewById(2131374105));
+    localazio.b = ((TextView)paramViewGroup.findViewById(2131374104));
+    paramViewGroup.setTag(localazio);
+    return paramViewGroup;
+  }
+  
+  private void a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (azio)paramView.getTag();
+    PhoneContact localPhoneContact = (PhoneContact)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramInt = localPhoneContact.type;
+    paramView = null;
+    if (paramInt == 0) {
+      paramView = localPhoneContact.label;
     }
+    paramView = (String)ContactsContract.CommonDataKinds.Phone.getTypeLabel(this.jdField_a_of_type_AndroidContentContext.getResources(), paramInt, paramView);
+    paramViewGroup.a.setText(paramView);
+    paramViewGroup.b.setText(localPhoneContact.mobileNo);
+  }
+  
+  public int getCount()
+  {
+    int i = this.jdField_a_of_type_JavaUtilList.size();
+    if (i > 20) {
+      return 20;
+    }
+    return i;
+  }
+  
+  public Object getItem(int paramInt)
+  {
     return null;
   }
   
-  public void a(int paramInt, View paramView)
+  public long getItemId(int paramInt)
   {
-    if (this.a.size() >= 3) {
-      return;
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {}
+    for (View localView = a(paramInt, paramViewGroup);; localView = paramView)
+    {
+      a(paramInt, localView, paramViewGroup);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localView;
     }
-    this.a.put(paramInt, paramView);
   }
 }
 

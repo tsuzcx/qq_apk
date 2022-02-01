@@ -1,210 +1,63 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.mobileqq.loginwelcome.LoginwelcomeHelper.2;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ThemeImageView;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
+import com.tencent.mobileqq.nearby.now.view.widget.TopicViewItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
 public class awwb
+  extends BaseAdapter
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private awvn jdField_a_of_type_Awvn;
-  awvz jdField_a_of_type_Awvz = new awwc(this);
-  public Conversation a;
-  boolean jdField_a_of_type_Boolean = true;
-  private ViewGroup b;
+  public awwb(StartLiveTopicLabelListView paramStartLiveTopicLabelListView) {}
   
-  public awwb(Conversation paramConversation, ViewGroup paramViewGroup)
+  public int getCount()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityConversation = paramConversation;
-    this.b = paramViewGroup;
+    if ((StartLiveTopicLabelListView.a(this.a) == null) || (StartLiveTopicLabelListView.a(this.a).size() == 0)) {
+      return 0;
+    }
+    return StartLiveTopicLabelListView.a(this.a).size();
   }
   
-  private void a(Context paramContext)
+  public Object getItem(int paramInt)
   {
-    boolean bool2 = false;
-    if ((Build.VERSION.SDK_INT >= 23) && (paramContext.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)) {}
-    for (boolean bool1 = true;; bool1 = false)
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView == null)
     {
-      if (QLog.isColorLevel())
-      {
-        if (Build.VERSION.SDK_INT >= 23) {
-          bool2 = true;
-        }
-        QLog.i("LoginUserGuideHelper", 2, String.format("requestLocation [%s, %s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+      paramView = new awwe(this.a, null);
+      localObject = new TopicViewItem(StartLiveTopicLabelListView.a(this.a));
+      ((View)localObject).setTag(paramView);
+      paramView.a = ((String)StartLiveTopicLabelListView.a(this.a).get(paramInt));
+      if (!amtj.a(2131713383).equals(paramView.a)) {
+        break label162;
       }
-      if (this.jdField_a_of_type_Awvn == null)
-      {
-        this.jdField_a_of_type_Awvn = new awvn("Login.Guide");
-        this.jdField_a_of_type_Awvn.observerOnUiThread = true;
-      }
-      if (!bool1) {
-        apch.a(this.jdField_a_of_type_Awvn);
-      }
-      return;
+      ((View)localObject).setBackgroundResource(StartLiveTopicLabelListView.a(this.a));
+      ((TopicViewItem)localObject).setTextColor(StartLiveTopicLabelListView.b(this.a));
     }
-  }
-  
-  private void a(awvw paramawvw)
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityConversation.h_()) {
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginWelcomeManager", 2, "mConversation is not Foreground");
-      }
-    }
-    do
+    for (;;)
     {
-      return;
-      if (!TextUtils.isEmpty(paramawvw.jdField_a_of_type_JavaLangString)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("LoginWelcomeManager", 2, "Bad url: " + paramawvw.jdField_a_of_type_JavaLangString);
-    return;
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "show common guide web");
+      ((View)localObject).setOnClickListener(new awwc(this));
+      ((TopicViewItem)localObject).setText(paramView.a);
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
+      return localObject;
+      awwe localawwe = (awwe)paramView.getTag();
+      localObject = paramView;
+      paramView = localawwe;
+      break;
+      label162:
+      ((View)localObject).setBackgroundResource(StartLiveTopicLabelListView.c(this.a));
+      ((TopicViewItem)localObject).setTextColor(StartLiveTopicLabelListView.d(this.a));
     }
-    Object localObject = BaseActivity.sTopActivity;
-    Intent localIntent = new Intent((Context)localObject, QQTranslucentBrowserActivity.class);
-    localIntent.putExtra("url", paramawvw.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("flag_show_loading_dialog", false);
-    localIntent.putExtra("hide_left_button", true);
-    localIntent.setData(Uri.parse(paramawvw.jdField_a_of_type_JavaLangString));
-    ((Activity)localObject).startActivity(localIntent);
-    localObject = LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a);
-    ((LoginWelcomeManager)localObject).c = false;
-    ((LoginWelcomeManager)localObject).jdField_a_of_type_Boolean = true;
-    LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, paramawvw.jdField_a_of_type_Int);
-  }
-  
-  private void a(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "realShowContactsGuideLayer");
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityConversation.h_()) {
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginWelcomeManager", 2, "mConversation is not Foreground");
-      }
-    }
-    do
-    {
-      return;
-      if ((this.b != null) && (this.b.findViewById(2131364997) == null) && (paramURLDrawable != null) && (paramURLDrawable.getStatus() == 1) && (this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("LoginWelcomeManager", 2, "view repeat or mDragHost==null or drawable status wrong");
-    return;
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null)
-    {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.b.getContext()).inflate(2131558970, null));
-      Object localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364606);
-      ((ImageView)localObject1).setContentDescription(anzj.a(2131705255));
-      ((ImageView)localObject1).setOnClickListener(new awwd(this));
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a();
-      Object localObject2 = (Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366669);
-      ((Button)localObject2).setContentDescription(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a().getString(2131697927));
-      ((Button)localObject2).setOnClickListener(new awwe(this, (Activity)localObject1));
-      localObject2 = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365658);
-      ((TextView)localObject2).setContentDescription(((Activity)localObject1).getString(2131697926));
-      ((TextView)localObject2).setOnClickListener(new awwf(this, (Activity)localObject1));
-      localObject1 = (ThemeImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131365047);
-      ((ThemeImageView)localObject1).setMaskShape(blqj.b);
-      ((ThemeImageView)localObject1).setImageDrawable(paramURLDrawable);
-    }
-    this.b.removeView(this.jdField_a_of_type_AndroidViewViewGroup);
-    this.b.addView(this.jdField_a_of_type_AndroidViewViewGroup);
-    LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a);
-    paramURLDrawable = LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a);
-    paramURLDrawable.b = false;
-    paramURLDrawable.jdField_a_of_type_Boolean = true;
-    a(this.b.getContext());
-  }
-  
-  private boolean a()
-  {
-    LoginWelcomeManager localLoginWelcomeManager = LoginWelcomeManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a);
-    return (localLoginWelcomeManager.b) || (localLoginWelcomeManager.c);
-  }
-  
-  private void h()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, String.format("isFirstLoginEnter=%s, shouldCheckOnResume=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(a()) }));
-    }
-    if ((!this.jdField_a_of_type_Boolean) && (a())) {
-      ThreadManagerV2.postImmediately(new LoginwelcomeHelper.2(this), null, true);
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a()
-  {
-    h();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a != null) {
-      ((LoginWelcomeManager)this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(146)).a(this.jdField_a_of_type_Awvz);
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a != null) {
-      ((LoginWelcomeManager)this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(146)).a(null);
-    }
-    if (this.jdField_a_of_type_Awvn != null)
-    {
-      apch.b(this.jdField_a_of_type_Awvn);
-      this.jdField_a_of_type_Awvn = null;
-    }
-  }
-  
-  public void d()
-  {
-    g();
-    c();
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void e()
-  {
-    LoginWelcomeManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a);
-  }
-  
-  public void f()
-  {
-    g();
-    c();
-  }
-  
-  public void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "removeContactsGuidelayer");
-    }
-    if ((this.b != null) && (this.jdField_a_of_type_AndroidViewViewGroup != null)) {
-      this.b.removeView(this.jdField_a_of_type_AndroidViewViewGroup);
-    }
-    this.jdField_a_of_type_AndroidViewViewGroup = null;
   }
 }
 

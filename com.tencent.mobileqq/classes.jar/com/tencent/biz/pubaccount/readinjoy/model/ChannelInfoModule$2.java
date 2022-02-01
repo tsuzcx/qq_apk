@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
-import pfd;
-import poz;
+import pkp;
+import puh;
 
 public class ChannelInfoModule$2
   implements Runnable
 {
-  public ChannelInfoModule$2(poz parampoz, List paramList) {}
+  public ChannelInfoModule$2(puh parampuh, List paramList) {}
   
   public void run()
   {
-    pfd.a().c(true, this.a);
+    pkp.a().c(true, this.a);
   }
 }
 

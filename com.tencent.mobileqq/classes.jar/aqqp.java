@@ -1,27 +1,32 @@
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.campuscircle.CampusCircleReplyActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Video;
 
-public class aqqp
-  implements CompoundButton.OnCheckedChangeListener
+public final class aqqp
+  implements Parcelable.Creator
 {
-  public aqqp(CampusCircleReplyActivity paramCampusCircleReplyActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public IPSiteModel.Video a(Parcel paramParcel)
   {
-    Object localObject = this.a.getResources();
-    TextView localTextView = CampusCircleReplyActivity.a(this.a);
-    if (paramBoolean) {}
-    for (localObject = ((Resources)localObject).getColorStateList(2131166331);; localObject = ((Resources)localObject).getColorStateList(2131166333))
-    {
-      localTextView.setTextColor((ColorStateList)localObject);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-    }
+    IPSiteModel.Video localVideo = new IPSiteModel.Video();
+    localVideo.id = paramParcel.readString();
+    localVideo.buttonDesc = paramParcel.readString();
+    localVideo.content = paramParcel.readString();
+    localVideo.cover = paramParcel.readString();
+    localVideo.desc = paramParcel.readString();
+    localVideo.name = paramParcel.readString();
+    localVideo.endTime = paramParcel.readString();
+    localVideo.isShow = paramParcel.readInt();
+    localVideo.newStartTime = paramParcel.readLong();
+    localVideo.newEndTime = paramParcel.readLong();
+    localVideo.redirectUrl = paramParcel.readString();
+    localVideo.videoSource = paramParcel.readString();
+    localVideo.showDate = paramParcel.readString();
+    return localVideo;
+  }
+  
+  public IPSiteModel.Video[] a(int paramInt)
+  {
+    return new IPSiteModel.Video[paramInt];
   }
 }
 

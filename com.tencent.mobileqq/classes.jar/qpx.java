@@ -1,22 +1,31 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class qpx
-  extends ClickableSpan
+class qpx
+  implements View.OnClickListener
 {
-  public qpx(ComponentHeaderRecommend paramComponentHeaderRecommend) {}
+  qpx(qpw paramqpw, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2, LinearLayout paramLinearLayout3) {}
   
   public void onClick(View paramView)
   {
-    ozs.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(agej.a(2, 14, this.a.getResources()));
+    bkwm.f(pay.a(), this.jdField_a_of_type_AndroidWidgetLinearLayout.getTop() + this.b.getTop() + this.c.getTop());
+    pet localpet = this.jdField_a_of_type_Qpw.jdField_a_of_type_Slt.a().a();
+    if (localpet != null) {
+      localpet.a(null, ((pvc)this.jdField_a_of_type_Qpw.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "firstlayout top" + this.jdField_a_of_type_AndroidWidgetLinearLayout.getTop() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "firstlayout width" + this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "thirdlayout top" + this.b.getTop() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "thirdlayout width" + this.b.getWidth() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "secondlayout top" + this.c.getTop() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "secondlayout width" + this.c.getWidth() });
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

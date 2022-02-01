@@ -1,16 +1,25 @@
-import android.graphics.Canvas;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
-public abstract interface blsr
+public class blsr
+  implements Animator.AnimatorListener
 {
-  public abstract void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean);
+  public blsr(AEProviderContainerView paramAEProviderContainerView) {}
   
-  public abstract void a(View paramView);
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public abstract void b(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean);
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AEProviderContainerView", 2, "panel closed");
+    }
+  }
   
-  public abstract void b(View paramView);
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

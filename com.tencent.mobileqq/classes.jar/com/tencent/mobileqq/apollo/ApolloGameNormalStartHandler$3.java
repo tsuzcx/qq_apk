@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo;
 
-import amsv;
-import amsw;
-import anql;
+import alnp;
+import alnq;
+import amlf;
 
 public class ApolloGameNormalStartHandler$3
   implements Runnable
 {
   public void run()
   {
-    if (amsv.a(this.this$0) == null) {
-      amsv.a(this.this$0, new anql(this.a));
+    if (alnp.a(this.this$0) == null) {
+      alnp.a(this.this$0, new amlf(this.a));
     }
-    amsv.a(this.this$0).a(new amsw(this));
-    amsv.a(this.this$0).show();
+    alnp.a(this.this$0).a(new alnq(this));
+    alnp.a(this.this$0).show();
   }
 }
 

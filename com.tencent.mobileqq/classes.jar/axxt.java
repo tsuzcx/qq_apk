@@ -1,34 +1,29 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import java.lang.ref.WeakReference;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.lbssearch.TencentSearch;
+import com.tencent.lbssearch.object.param.Geo2AddressParam;
+import com.tencent.lbssearch.object.param.Geo2AddressParam.PoiOptions;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-public class axxt
-  implements ServiceConnection
+class axxt
+  extends axxq
 {
-  private WeakReference<axxs> jdField_a_of_type_JavaLangRefWeakReference;
+  private TencentSearch a;
   
-  public axxt(axxr paramaxxr, axxs paramaxxs)
+  axxt(String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaxxs);
+    super(paramString);
+    jdField_a_of_type_JavaLangString = "NetworkLoader";
+    this.jdField_a_of_type_ComTencentLbssearchTencentSearch = new TencentSearch(BaseApplicationImpl.getContext());
   }
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public boolean a(LatLng paramLatLng, int paramInt, axxz paramaxxz)
   {
-    axxr.a(this.jdField_a_of_type_Axxr, lwv.a(paramIBinder));
-    paramComponentName = (axxs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramComponentName != null) {
-      paramComponentName.bt();
+    if (QLog.isColorLevel()) {
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "[status][poiLoader][" + this.b + "] netGet. latLng: " + paramLatLng);
     }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    axxr.a(this.jdField_a_of_type_Axxr, null);
-    paramComponentName = (axxs)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramComponentName != null) {
-      paramComponentName.bu();
-    }
+    this.jdField_a_of_type_ComTencentLbssearchTencentSearch.geo2address(new Geo2AddressParam(paramLatLng).getPoi(true).setPoiOptions(new Geo2AddressParam.PoiOptions().setPolicy(1).setPageSize(axwj.d).setPageIndex(0)), new axxu(this, paramLatLng, paramaxxz));
+    return true;
   }
 }
 

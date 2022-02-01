@@ -1,28 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.7;
 
-class aveg
-  implements View.OnClickListener
+public class aveg
+  implements DialogInterface.OnClickListener
 {
-  aveg(avef paramavef, int paramInt) {}
+  public aveg(LocationDialogUtil.7 param7) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (avef.a(this.jdField_a_of_type_Avef, this.jdField_a_of_type_Int))
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface != null) {
-        bdll.b(localQQAppInterface, "dc00898", "", "", "0X800A612", "0X800A612", 0, 0, "", "", "", "");
-      }
-    }
-    if (LangSettingFragment.a(this.jdField_a_of_type_Avef.a) != ((Integer)paramView.getTag()).intValue()) {
-      LangSettingFragment.a(this.jdField_a_of_type_Avef.a, ((Integer)paramView.getTag()).intValue());
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.finish();
   }
 }
 

@@ -16,9 +16,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ozo;
-import phy;
-import smg;
+import pau;
+import pnk;
+import sqh;
 
 public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
   extends PagerAdapter
@@ -28,7 +28,7 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
   private FragmentTransaction jdField_a_of_type_AndroidSupportV4AppFragmentTransaction;
   private ArrayList<Fragment.SavedState> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private List<TabChannelCoverInfo> jdField_a_of_type_JavaUtilList;
-  smg jdField_a_of_type_Smg;
+  sqh jdField_a_of_type_Sqh;
   private ArrayList<Fragment> b = new ArrayList();
   
   public ReadInJoyChannelViewPager$CustomFragmentPagerAdapter(FragmentManager paramFragmentManager)
@@ -41,9 +41,9 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
   {
     if ((paramFragment instanceof ReadInJoyBaseFragment))
     {
-      ozo.a().a();
+      pau.a().a();
       paramFragment = (ReadInJoyBaseFragment)paramFragment;
-      ozo.a().a(String.valueOf(paramFragment.a()));
+      pau.a().a(String.valueOf(paramFragment.a()));
     }
   }
   
@@ -59,11 +59,11 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
     {
       return localObject;
       localTabChannelCoverInfo = (TabChannelCoverInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      localFragment = phy.a().a(localTabChannelCoverInfo);
+      localFragment = pnk.a().a(localTabChannelCoverInfo);
       localObject = localFragment;
     } while (!(localFragment instanceof ReadInJoyBaseFragment));
     ((ReadInJoyBaseFragment)localFragment).c(paramInt);
-    ((ReadInJoyBaseFragment)localFragment).a(this.jdField_a_of_type_Smg, localTabChannelCoverInfo.mChannelCoverId);
+    ((ReadInJoyBaseFragment)localFragment).a(this.jdField_a_of_type_Sqh, localTabChannelCoverInfo.mChannelCoverId);
     return localFragment;
   }
   
@@ -110,9 +110,9 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
     notifyDataSetChanged();
   }
   
-  public void a(smg paramsmg)
+  public void a(sqh paramsqh)
   {
-    this.jdField_a_of_type_Smg = paramsmg;
+    this.jdField_a_of_type_Sqh = paramsqh;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -313,7 +313,7 @@ public class ReadInJoyChannelViewPager$CustomFragmentPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyChannelViewPager.CustomFragmentPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

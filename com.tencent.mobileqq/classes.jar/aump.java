@@ -1,50 +1,28 @@
-import com.tencent.mobileqq.filemanager.settings.FMSettings.4;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import com.tencent.qphone.base.util.QLog;
 
-public class aump
-  implements aumn
+class aump
+  implements aurg
 {
-  public aump(FMSettings.4 param4) {}
+  aump(aumo paramaumo) {}
   
-  public void a()
+  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    synchronized (this.a.this$0)
-    {
-      aumo localaumo2 = this.a.this$0;
-      localaumo2.jdField_a_of_type_Int += 1;
-      aumo.a(1, "onMovedOver,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
-      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
-      {
-        aumo.a(1, "moveFileToDefaultPath,move over!");
-        this.a.jdField_a_of_type_Aumn.a();
-      }
-      return;
-    }
+    QLog.i("GroupVideoManager|Communicate", 2, "receive startWatchTogether: " + paramNewTogetherRoomMessageData.toString());
+    aumo.a(this.a, paramNewTogetherRoomMessageData, 1);
   }
   
-  public void a(int paramInt)
+  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    synchronized (this.a.this$0)
-    {
-      aumo localaumo2 = this.a.this$0;
-      localaumo2.jdField_a_of_type_Int += 1;
-      aumo.a(1, "onMoveFail,count[" + this.a.this$0.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
-      if (this.a.this$0.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
-      {
-        aumo.a(1, "moveFileToDefaultPath,move over!");
-        this.a.jdField_a_of_type_Aumn.a(16);
-      }
-      return;
-    }
+    QLog.i("GroupVideoManager|Communicate", 2, "receive switchWatchTogether: " + paramNewTogetherRoomMessageData.toString());
+    aumo.a(this.a, paramNewTogetherRoomMessageData, 3);
   }
   
-  public void a(long paramLong1, long paramLong2)
+  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    aumo localaumo = this.a.this$0;
-    localaumo.jdField_a_of_type_Long += paramLong1;
-    this.a.jdField_a_of_type_Aumn.a(this.a.this$0.jdField_a_of_type_Long, this.a.this$0.b);
+    QLog.i("GroupVideoManager|Communicate", 2, "receive closeWatchTogether: " + paramNewTogetherRoomMessageData.toString());
+    aumo.a(this.a, paramNewTogetherRoomMessageData, 2);
   }
-  
-  public void a(String paramString1, String paramString2) {}
 }
 
 

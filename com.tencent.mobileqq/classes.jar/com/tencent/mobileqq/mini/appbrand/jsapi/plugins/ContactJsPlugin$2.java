@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import anzj;
-import blir;
+import amtj;
+import bjnw;
 
 class ContactJsPlugin$2
   implements Runnable
@@ -10,11 +10,11 @@ class ContactJsPlugin$2
   
   public void run()
   {
-    blir localblir = blir.a(this.this$0.jsPluginEngine.getActivityContext());
-    localblir.a(anzj.a(2131701384), 7);
-    localblir.a(anzj.a(2131701380), 7);
-    localblir.a(new ContactJsPlugin.2.1(this, localblir));
-    localblir.show();
+    bjnw localbjnw = bjnw.a(this.this$0.jsPluginEngine.getActivityContext());
+    localbjnw.a(amtj.a(2131701619), 7);
+    localbjnw.a(amtj.a(2131701615), 7);
+    localbjnw.a(new ContactJsPlugin.2.1(this, localbjnw));
+    localbjnw.show();
   }
 }
 

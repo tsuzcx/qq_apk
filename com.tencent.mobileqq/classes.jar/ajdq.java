@@ -1,22 +1,16 @@
-import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.home.MainFragment;
 
 public class ajdq
-  extends nqf
+  implements DialogInterface.OnDismissListener
 {
-  public ajdq(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public ajdq(MainFragment paramMainFragment) {}
   
-  public void a(int paramInt, List<SearchProtocol.WordItem> paramList)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramInt == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ClassificationSearchActivity", 2, "hot words size: " + paramList.size());
-      }
-      this.a.b = paramList;
-      ClassificationSearchActivity.a(this.a, true);
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
   }
 }

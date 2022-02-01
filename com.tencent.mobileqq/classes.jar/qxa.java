@@ -1,13 +1,17 @@
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
 
 public class qxa
-  implements Cloneable
+  implements Animation.AnimationListener
 {
-  public int a;
-  public long a;
-  public List<Long> a;
-  public int b;
-  public long b;
+  public qxa(ComponentSocialOperation paramComponentSocialOperation) {}
+  
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

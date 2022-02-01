@@ -1,49 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeVideoView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ValueBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import java.util.List;
 
 class pxr
-  implements ViewBase.OnClickListener
+  implements pxi<BEAN>
 {
-  pxr(pxl parampxl, ViewBase paramViewBase, ppu paramppu) {}
+  pxr(pxp parampxp) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(boolean paramBoolean, List<BEAN> paramList, int paramInt, String paramString)
   {
-    boolean bool = true;
-    paramViewBase = (qcr)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getParent().findViewBaseByName("id_pgc_short_content_video_view");
-    Object localObject = this.jdField_a_of_type_Ppu.a();
-    if (((ArticleInfo)localObject).mProteusTemplateBean == null) {
-      QLog.e("PgcShortContentProteusItem", 1, "articleInfo.mProteusTemplateBean is null");
-    }
-    ViewBase localViewBase;
-    do
+    if (pxp.a(this.a) != null)
     {
-      return;
-      localObject = ((ArticleInfo)localObject).mProteusTemplateBean.getViewBean().findViewFromChild("id_pgc_short_content_video_audio_icon");
-      localViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getParent().findViewBaseByName("id_pgc_short_content_video_audio_icon");
-    } while ((localViewBase == null) || (paramViewBase == null) || (localObject == null));
-    if (!"video_audio_mute".equals(((ViewBean)localObject).valueBean.dynamicValue.get("loadImageWithPath:")))
-    {
-      paramViewBase.a().setMute(bool);
-      if (!bool) {
-        break label140;
+      if (!paramBoolean) {
+        break label69;
+      }
+      pxp.a(this.a).setListData(paramList, true);
+      if (pxp.a(this.a).a()) {
+        pxp.a(this.a).setFooterHasMore();
       }
     }
-    label140:
-    for (paramViewBase = "video_audio_mute";; paramViewBase = "video_audio_speak")
+    else
     {
-      ((ViewBean)localObject).putMapValue("pgc_video_content_audio_icon", paramViewBase);
-      localViewBase.bindDynamicValue((ViewBean)localObject);
       return;
-      bool = false;
-      break;
     }
+    pxp.a(this.a).setFooterNoMore();
+    return;
+    label69:
+    QLog.i("ListPresenter", 2, "loadNextPage error, errorCode=" + paramInt + ", errorMsg= " + paramString);
+    pxp.a(this.a).setFooterError(paramInt, paramString);
   }
 }
 

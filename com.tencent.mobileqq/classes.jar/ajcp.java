@@ -1,30 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class ajcp
-  implements Animator.AnimatorListener
+public class ajcp
+  extends BroadcastReceiver
 {
-  ajcp(ajcn paramajcn) {}
+  public ajcp(Conversation paramConversation) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.a = true;
-    paramAnimator = new Intent(this.a.a, SearchContactsActivity.class);
-    paramAnimator.putExtra("from_key", this.a.a.a());
-    paramAnimator.putExtra("fromType", 13);
-    this.a.a.startActivity(paramAnimator);
-    this.a.a.overridePendingTransition(0, 0);
-    bhjs.a(false);
+    paramContext = paramIntent.getAction();
+    if (("android.intent.action.TIME_SET".equals(paramContext)) || ("android.intent.action.TIMEZONE_CHANGED".equals(paramContext)) || ("android.intent.action.DATE_CHANGED".equals(paramContext))) {
+      ThreadManager.getSubThreadHandler().post(Conversation.a(this.a));
+    }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

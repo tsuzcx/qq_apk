@@ -1,19 +1,19 @@
 package cooperation.qzone.util;
 
-import bnlf;
-import bnlh;
 import cooperation.qzone.networkedmodule.QzoneModuleManager;
 
-public class XMPCoreUtil$2
+class XMPCoreUtil$2
   implements Runnable
 {
+  XMPCoreUtil$2(XMPCoreUtil paramXMPCoreUtil) {}
+  
   public void run()
   {
-    if ((bnlf.b(this.this$0)) || (!bnlf.c(this.this$0))) {}
+    if ((XMPCoreUtil.access$400(this.this$0)) || (!XMPCoreUtil.access$500(this.this$0))) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        QzoneModuleManager.getInstance().downloadModule("xmpcore.jar", new bnlh(this));
+        QzoneModuleManager.getInstance().downloadModule("xmpcore.jar", new XMPCoreUtil.2.1(this));
       }
       return;
     }

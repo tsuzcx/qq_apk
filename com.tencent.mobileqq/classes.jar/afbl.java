@@ -1,43 +1,31 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
-public class afbl
-  implements Handler.Callback
+class afbl
+  implements DialogInterface.OnClickListener
 {
-  public afbl(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  afbl(afbj paramafbj) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        int i = paramMessage.what;
-        switch (i)
-        {
-        default: 
-          bool = false;
-          return bool;
-        }
+      if ((afbj.a(this.a) != null) && (afbj.a(this.a).isShowing())) {
+        afbj.a(this.a).dismiss();
       }
-      finally {}
-      boolean bool = ((Boolean)paramMessage.obj).booleanValue();
-      NotifyPushSettingActivity.g(this.a).setChecked(bool);
-      break label163;
-      paramMessage = (String)paramMessage.obj;
-      NotifyPushSettingActivity.a(this.a, paramMessage);
-      break label163;
-      paramMessage = (String)paramMessage.obj;
-      NotifyPushSettingActivity.b(this.a, paramMessage);
-      break label163;
-      bool = ((Boolean)paramMessage.obj).booleanValue();
-      NotifyPushSettingActivity.h(this.a).setChecked(bool);
-      break label163;
-      NotifyPushSettingActivity.i(this.a).setChecked(((Boolean)paramMessage.obj).booleanValue());
-      label163:
-      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("intimate_relationship", 2, "disband cancel");
+      }
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
     }
   }
 }

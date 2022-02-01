@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.recent;
 
 import android.text.TextUtils;
-import bdll;
+import bcef;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -17,7 +17,7 @@ public final class RecentUtil$6
   
   public void run()
   {
-    QQMessageFacade.Message localMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, 1008);
+    QQMessageFacade.Message localMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMessage(this.jdField_a_of_type_JavaLangString, 1008);
     String str1 = "0";
     if (localMessage != null)
     {
@@ -48,7 +48,7 @@ public final class RecentUtil$6
     if (this.jdField_a_of_type_Int == 1)
     {
       localObject = "0X8005C36";
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "" + localMessage.frienduin, (String)localObject, (String)localObject, 0, 1, 0, str3, String.valueOf(NetConnInfoCenter.getServerTime() * 1000L), "", str1);
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "" + localMessage.frienduin, (String)localObject, (String)localObject, 0, 1, 0, str3, String.valueOf(NetConnInfoCenter.getServerTime() * 1000L), "", str1);
       return;
     }
   }

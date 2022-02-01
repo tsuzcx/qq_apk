@@ -1,13 +1,8 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.mini.sdk.LaunchParam;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
-import com.tencent.mobileqq.mini.sdk.MiniAppException;
-import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
 
@@ -19,34 +14,17 @@ class MiniAppDesktopAdapter$ModuleViewHolder$1
   public void onClick(View paramView)
   {
     Activity localActivity = (Activity)MiniAppDesktopAdapter.ModuleViewHolder.access$2700(this.this$0).get();
-    LaunchParam localLaunchParam;
-    int i;
-    if ((localActivity != null) && (MiniAppDesktopAdapter.ModuleViewHolder.access$2800(this.this$0) != null))
-    {
-      localLaunchParam = new LaunchParam();
+    if ((localActivity != null) && (MiniAppDesktopAdapter.ModuleViewHolder.access$2800(this.this$0) != null)) {
       if (this.val$moduleType != 1) {
-        break label76;
+        break label60;
       }
-      i = 3005;
     }
-    for (;;)
+    label60:
+    for (int i = 3005;; i = 3004)
     {
-      localLaunchParam.scene = i;
-      try
-      {
-        MiniAppController.launchMiniAppByAppInfo(localActivity, MiniAppDesktopAdapter.ModuleViewHolder.access$2800(this.this$0), localLaunchParam);
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        label76:
-        i = 3004;
-      }
-      catch (MiniAppException localMiniAppException)
-      {
-        for (;;)
-        {
-          QLog.e("MiniAppDesktopAdapter", 1, "desktop start app store exception: " + Log.getStackTraceString(localMiniAppException));
-        }
-      }
+      MiniAppDesktopAdapter.startMiniApp(localActivity, MiniAppDesktopAdapter.ModuleViewHolder.access$2800(this.this$0), i);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
   }
 }

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdRsp;
 import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import acoo;
+import abkw;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -41,14 +41,13 @@ class DataJsPlugin$29
         this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, localJSONObject1, this.val$callBackId);
         DataJsPlugin.access$600(this.this$0, paramJSONObject, this.val$adType);
         paramJSONObject = new GdtAd(DataJsPlugin.access$700(this.this$0, paramJSONObject));
-        acoo.a().a(paramJSONObject);
-        if (localStGetAdRsp == null) {}
+        abkw.a().a(paramJSONObject);
       }
       catch (JSONException localJSONException)
       {
         try
         {
-          if ((localStGetAdRsp.vecAppInfo != null) && (localStGetAdRsp.vecAppInfo.size() > 0) && (localStGetAdRsp.iPreLoadLevel.get() == 2L))
+          if ((localStGetAdRsp.vecAppInfo.size() > 0) && (localStGetAdRsp.iPreLoadLevel.get() == 2L))
           {
             int i = 0;
             while (i < localStGetAdRsp.vecAppInfo.size())

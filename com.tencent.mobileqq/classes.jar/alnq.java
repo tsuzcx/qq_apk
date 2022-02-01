@@ -1,20 +1,19 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.apollo.ApolloGameNormalStartHandler.3;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class alnq
-  implements Animation.AnimationListener
+public class alnq
+  implements View.OnClickListener
 {
-  alnq(View paramView, Animation paramAnimation) {}
+  public alnq(ApolloGameNormalStartHandler.3 param3) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    alnp.a(this.a.this$0).dismiss();
+    alnp.a(this.a.this$0, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

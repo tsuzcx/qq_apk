@@ -1,16 +1,6 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-
-public class snz
-  implements MessageQueue.IdleHandler
+public abstract interface snz
 {
-  public snz(FastWebActivity paramFastWebActivity) {}
-  
-  public boolean queueIdle()
-  {
-    FastWebActivity.e(this.a);
-    return false;
-  }
+  public abstract void a(String paramString);
 }
 
 

@@ -1,11 +1,7 @@
-import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
-
-public class ahga
+class ahga
 {
-  public int a;
-  public String a;
-  
-  public ahga(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
+  String a;
+  String b;
 }
 
 

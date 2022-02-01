@@ -93,13 +93,14 @@ public class CoverVideoView
   
   public void onPageForeground()
   {
-    if (this.videoPlayer != null) {
-      this.videoPlayer.isPageOnBackground = false;
-    }
-    if (this.isPageBackground)
+    if (this.videoPlayer != null)
     {
-      changeState();
-      this.isPageBackground = false;
+      this.videoPlayer.isPageOnBackground = false;
+      if (this.isPageBackground)
+      {
+        changeState();
+        this.isPageBackground = false;
+      }
     }
   }
   

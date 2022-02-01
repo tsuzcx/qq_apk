@@ -1,37 +1,24 @@
-import android.app.Activity;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.1;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.2;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.3;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew.7.4;
-import mqq.os.MqqHandler;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView;
 
 public class ayza
-  extends becg
+  extends AnimatorListenerAdapter
 {
-  public ayza(OCRResultFragmentNew paramOCRResultFragmentNew, Activity paramActivity)
-  {
-    super(paramActivity);
-  }
+  public ayza(VasProfileTagView paramVasProfileTagView, View paramView) {}
   
-  public void a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.1(this));
-  }
-  
-  public void a(int paramInt)
-  {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.4(this, paramInt));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.3(this));
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    OCRResultFragmentNew.a(this.a).post(new OCRResultFragmentNew.7.2(this, paramString));
+    VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    this.jdField_a_of_type_AndroidViewView.setTranslationX(0.0F);
+    this.jdField_a_of_type_AndroidViewView.setTranslationY(0.0F);
+    VasProfileTagView.b(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView, false);
+    if (VasProfileTagView.c(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView) == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView.b();
+    }
+    VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView, VasProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardVasViewVasProfileTagView));
   }
 }
 

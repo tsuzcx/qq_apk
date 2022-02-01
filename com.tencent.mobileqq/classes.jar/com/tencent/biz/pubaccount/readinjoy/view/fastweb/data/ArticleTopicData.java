@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb.data;
 
 import java.util.List;
-import sos;
+import sst;
 
 public class ArticleTopicData
   extends BaseData
 {
-  public List<sos> a;
+  public List<sst> a;
   public boolean a;
   
   public ArticleTopicData()
@@ -16,7 +16,7 @@ public class ArticleTopicData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ArticleTopicData
  * JD-Core Version:    0.7.0.1
  */

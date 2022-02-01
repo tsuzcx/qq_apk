@@ -1,13 +1,66 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
-class rts
-  implements bljd
+public class rts
 {
-  rts(rtr paramrtr) {}
+  public int a;
+  public ArrayList<Integer> a;
+  public boolean a;
   
-  public void ak_()
+  private String a(ArrayList<Integer> paramArrayList)
   {
-    rsx.a(this.a.a).c();
+    if (paramArrayList == null) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder(paramArrayList.size() * 2);
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      Integer localInteger = (Integer)paramArrayList.next();
+      if (localInteger != null) {
+        localStringBuilder.append(localInteger);
+      }
+      if (paramArrayList.hasNext()) {
+        localStringBuilder.append(",");
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public HashMap<String, String> a()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_sceneType", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("param_indexList", a(this.jdField_a_of_type_JavaUtilArrayList));
+    localHashMap.put("param_isAutoPlay", String.valueOf(this.jdField_a_of_type_Boolean));
+    return localHashMap;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList.isEmpty();
+    }
+    return true;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{");
+    localStringBuilder.append("mSceneType: ").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mIsAutoPlay: ").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", mIndexList: ").append(a(this.jdField_a_of_type_JavaUtilArrayList));
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

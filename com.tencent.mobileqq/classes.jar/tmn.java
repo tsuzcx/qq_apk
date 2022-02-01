@@ -1,27 +1,10 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
-
-class tmn
-  implements DialogInterface.OnClickListener
+public abstract interface tmn
 {
-  tmn(tmk paramtmk, boolean paramBoolean) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      if (!tmk.a(this.jdField_a_of_type_Tmk)) {}
-    }
-    while (!(tmk.a(this.jdField_a_of_type_Tmk) instanceof Activity))
-    {
-      return;
-      this.jdField_a_of_type_Tmk.b();
-      return;
-    }
-    tqa.b(tmk.a(this.jdField_a_of_type_Tmk));
-    tpp.a(tmk.a(this.jdField_a_of_type_Tmk), tmk.a(this.jdField_a_of_type_Tmk).p, tmk.a(this.jdField_a_of_type_Tmk).q, "");
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

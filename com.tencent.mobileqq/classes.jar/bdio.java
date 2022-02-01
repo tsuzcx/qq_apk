@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.ContactUtilsProxy.Proxy;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import java.util.List;
 
-public final class bdio
-  implements RecentRoute.ContactUtilsProxy.Proxy
+class bdio
+  extends bdit
 {
-  public String getBuddyName(IMCoreAppRuntime paramIMCoreAppRuntime, String paramString, boolean paramBoolean)
+  public bdio(EditorState paramEditorState, List<EditorState> paramList)
   {
-    String str = paramString;
-    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
-      str = bhlg.b((QQAppInterface)paramIMCoreAppRuntime, paramString, true);
-    }
-    return str;
+    super(paramEditorState, paramList, localList);
   }
   
-  public String getTroopName(IMCoreAppRuntime paramIMCoreAppRuntime, String paramString, boolean paramBoolean)
+  public void a(EditorState paramEditorState)
   {
-    String str = paramString;
-    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
-      str = bhlg.a((QQAppInterface)paramIMCoreAppRuntime, paramString, true);
-    }
-    return str;
+    super.a(paramEditorState);
+    bfur.a(bdid.a(this.jdField_a_of_type_Bdid), 233, null, this.jdField_a_of_type_JavaLangString, new bdip(this), null).show();
   }
 }
 

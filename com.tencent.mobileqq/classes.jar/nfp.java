@@ -1,21 +1,14 @@
+import com.tencent.qphone.base.util.QLog;
+
 class nfp
-  implements bkdj
+  implements yxp
 {
-  nfp(nfm paramnfm) {}
+  nfp(nfn paramnfn, Runnable paramRunnable, long paramLong) {}
   
-  public boolean isMultiVideoMsgSupport(int paramInt)
+  public void a()
   {
-    if (paramInt - 32 == 2) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bkdp.c("AVGameBusinessCtrl", String.format("isMultiVideoMsgSupport type=0x%X support=%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) }));
-      return bool;
-    }
-  }
-  
-  public boolean isSharpVideoMsgSupport(int paramInt)
-  {
-    return false;
+    nfn.a(this.jdField_a_of_type_Nfn, this.jdField_a_of_type_JavaLangRunnable);
+    QLog.d("AVGameLaunchWebHelper", 2, "preLoadToolProcAndExecuteCallable time end: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
   }
 }
 

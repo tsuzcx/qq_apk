@@ -1,75 +1,59 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.ISecurityFileHelper;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class apdj
-  extends apdh
-  implements ISecurityFileHelper
+  extends aptq<apdk>
 {
-  public apdj()
+  @NonNull
+  public apdk a(int paramInt)
   {
-    super(null);
+    return new apdk();
   }
   
-  protected String a()
+  @Nullable
+  public apdk a(aptx[] paramArrayOfaptx)
   {
-    return "QQFavoriteMigration";
-  }
-  
-  public String declareBusinessFileName()
-  {
-    return "QQ_Favorite";
-  }
-  
-  public boolean doMigrate(File paramFile)
-  {
-    QLog.d("ISecurityFileHelper", 1, "Move QQFavorite file start");
-    File localFile = new File(antf.bl);
-    if ((localFile.exists()) && (paramFile.isDirectory()))
-    {
-      paramFile = apdf.a(localFile);
-      int j = paramFile.length;
-      int i = 0;
-      while (i < j)
-      {
-        localFile = paramFile[i];
-        String str = localFile.getName();
-        if ((str.length() > 4) && (str.matches("[0-9]{5}.*"))) {
-          bhmi.a(localFile.getAbsolutePath(), antf.bl + apdf.a(str));
-        }
-        i += 1;
-      }
+    apdk localapdk = new apdk();
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null)) {
+      apdk.a(localapdk, paramArrayOfaptx[0].a);
     }
-    a();
+    return localapdk;
+  }
+  
+  public void a(apdk paramapdk) {}
+  
+  public Class<apdk> clazz()
+  {
+    return apdk.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
     return true;
   }
   
-  public boolean needMigration()
-  {
-    if (a())
-    {
-      File localFile = new File(antf.bl);
-      if ((localFile.exists()) && (localFile.isDirectory())) {
-        return true;
-      }
-      a();
-    }
-    return false;
-  }
-  
-  public File oldBusinessDir(String paramString)
-  {
-    return null;
-  }
-  
-  public boolean oldBusinessDirExist(String paramString)
+  public boolean isNeedStoreLargeFile()
   {
     return false;
   }
   
-  public String[] reportHistoryFileInfo()
+  public int migrateOldVersion()
   {
-    return new String[] { "0", "0" };
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public void onReqNoReceive() {}
+  
+  public int type()
+  {
+    return 416;
   }
 }
 

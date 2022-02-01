@@ -12,14 +12,15 @@ public class HotChatManager$HotChatStateWrapper
   public static final HotChatStateWrapper STATE_HOT_CHAT_IS_DISBANDED = wrap(7, -1);
   public static final HotChatStateWrapper STATE_HOT_CHAT_LEFT_OVERCOUNT = wrap(9, 3);
   public static final HotChatStateWrapper STATE_KICK_OUT;
+  public static final HotChatStateWrapper STATE_LEFT_LONG_TIME_NOT_SAY;
   public static final HotChatStateWrapper STATE_LEFT_NORMAL = wrap(4, -1);
-  public static final HotChatStateWrapper STATE_LEFT_NORMAL__ACTION_DELETE_SHELL = wrap(4, 3);
-  public static final HotChatStateWrapper STATE_LEFT__LONG_TIME_NOT_SAY = wrap(1, -1);
+  public static final HotChatStateWrapper STATE_LEFT_NORMAL_ACTION_DELETE_SHELL = wrap(4, 3);
   public int action = -1;
   public int targetState;
   
   static
   {
+    STATE_LEFT_LONG_TIME_NOT_SAY = wrap(1, -1);
     STATE_KICK_OUT = wrap(6, -1);
   }
   

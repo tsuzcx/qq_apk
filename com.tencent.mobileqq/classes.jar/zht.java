@@ -1,25 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
 
-class zht
-  implements View.OnClickListener
+public class zht
+  implements apom
 {
-  zht(zhs paramzhs, zhv paramzhv) {}
+  public zht(SubscribeBaseFragment paramSubscribeBaseFragment) {}
   
-  public void onClick(View paramView)
+  public void onColorNoteAnimFinish()
   {
-    if (!this.jdField_a_of_type_Zhv.a()) {
-      this.jdField_a_of_type_Zhv.b();
-    }
-    for (;;)
+    if (this.a.getActivity() != null)
     {
-      if (this.jdField_a_of_type_Zhs.a != null) {
-        this.jdField_a_of_type_Zhs.a.a(this.jdField_a_of_type_Zhs);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_Zhv.c();
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
   }
 }

@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class aerd
-  implements DialogInterface.OnDismissListener
+  implements View.OnTouchListener
 {
-  public aerd(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public aerd(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a(FriendProfileMoreInfoActivity.a(this.a), false);
+    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
+    if (paramMotionEvent != null) {
+      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    }
+    return false;
   }
 }
 

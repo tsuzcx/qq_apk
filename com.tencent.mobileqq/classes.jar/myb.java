@@ -1,29 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import com.tencent.avgame.gamelogic.data.RoomInfo;
+import java.util.List;
 
-class myb
-  implements DialogInterface.OnClickListener
+public class myb
 {
-  myb(mya parammya, Activity paramActivity) {}
+  public int a;
+  public String a;
+  public List<RoomInfo> a;
+  public int b;
+  public int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = BaseApplicationImpl.getContext();
-    bdll.b(null, "dc00898", "", "", "0X800B038", "0X800B038", 0, 0, "", "", "", "");
-    if (FloatingScreenPermission.requestPermission(paramDialogInterface))
-    {
-      this.jdField_a_of_type_Mya.c = true;
-      return;
-    }
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-  }
+  public myb(mya parammya) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     myb
  * JD-Core Version:    0.7.0.1
  */

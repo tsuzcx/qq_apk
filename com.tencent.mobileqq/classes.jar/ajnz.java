@@ -1,29 +1,75 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
 
 public class ajnz
-  extends RecyclerView.OnScrollListener
+  extends BaseAdapter
 {
-  public ajnz(TroopRecommendFriendFragment paramTroopRecommendFriendFragment) {}
+  public ajnz(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public String a(int paramInt)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    TroopRecommendFriendFragment.a(this.a, paramInt);
-    if (paramInt == 0)
-    {
-      paramRecyclerView = paramRecyclerView.getLayoutManager();
-      if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopRecommendFriendFragment.a(this.a).getItemCount())) {
-        TroopRecommendFriendFragment.a(this.a);
-      }
+    if ((CameraPreviewActivity.a(this.a) != null) && (paramInt < CameraPreviewActivity.a(this.a).size()) && (paramInt >= 0)) {
+      return (String)CameraPreviewActivity.a(this.a).get(paramInt);
     }
+    return null;
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public int getCount()
   {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (CameraPreviewActivity.a(this.a) != null) {
+      return CameraPreviewActivity.a(this.a).size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    ajoa localajoa;
+    Object localObject;
+    if (paramView == null)
+    {
+      paramView = this.a.getLayoutInflater().inflate(2131559571, null);
+      localajoa = new ajoa();
+      localajoa.a = ((URLImageView)paramView.findViewById(2131372929));
+      paramView.setTag(localajoa);
+      localObject = a(paramInt);
+      if (localObject == null) {
+        break label155;
+      }
+      localObject = new File((String)localObject);
+      if (!((File)localObject).exists()) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        localajoa.a.setImageDrawable(URLDrawable.getDrawable(((File)localObject).toURL(), CameraPreviewActivity.a(this.a), CameraPreviewActivity.b(this.a), CameraPreviewActivity.a(this.a), null, true));
+        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+        return paramView;
+        localajoa = (ajoa)paramView.getTag();
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        localMalformedURLException.printStackTrace();
+        continue;
+      }
+      label155:
+      localMalformedURLException.a.setImageDrawable(null);
+    }
   }
 }
 

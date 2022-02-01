@@ -1,15 +1,22 @@
-import android.net.Network;
-import mqq.os.MqqHandler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class awvi
-  implements awvl
+  implements View.OnTouchListener
 {
-  awvi(awvg paramawvg, String paramString, awvj paramawvj) {}
+  awvi(awur paramawur) {}
   
-  public void a(Network paramNetwork)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    awvg.a(this.jdField_a_of_type_Awvg).removeCallbacksAndMessages(null);
-    awvg.a(this.jdField_a_of_type_Awvg, this.jdField_a_of_type_JavaLangString, paramNetwork, new awvk(this.jdField_a_of_type_Awvj, paramNetwork));
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      this.a.a.findViewById(2131364832).setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.findViewById(2131364832).setAlpha(1.0F);
+    }
   }
 }
 

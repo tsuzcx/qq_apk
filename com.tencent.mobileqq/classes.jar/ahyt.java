@@ -1,13 +1,14 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
-
-public class ahyt
-  implements ahyf
+public final class ahyt
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public static String a(int paramInt)
   {
-    paramahed.a(paramMessageRecord, paramahfq);
+    if (paramInt == 0) {
+      return "1";
+    }
+    if (paramInt == 1) {
+      return "2";
+    }
+    return "";
   }
 }
 

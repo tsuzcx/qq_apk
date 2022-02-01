@@ -1,21 +1,55 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagRequset;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
 
-class ntv
-  implements View.OnClickListener
+public class ntv
 {
-  ntv(ntc paramntc, String paramString) {}
-  
-  public void onClick(View paramView)
+  public static void a(QQAppInterface paramQQAppInterface, AccountDetail paramAccountDetail)
   {
-    Intent localIntent = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    ((BaseActivity)this.jdField_a_of_type_Ntc.a.get()).startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseInfoModel", 2, "saveAccountDetailToDBAndCache");
+    }
+    EntityManager localEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    if ((paramAccountDetail != null) && (paramAccountDetail.getId() != -1L)) {
+      if (!localEntityManager.update(paramAccountDetail)) {
+        localEntityManager.drop(AccountDetail.class);
+      }
+    }
+    for (;;)
+    {
+      localEntityManager.close();
+      paramQQAppInterface = (amxz)paramQQAppInterface.getManager(56);
+      if ((paramQQAppInterface != null) && (paramAccountDetail != null))
+      {
+        paramQQAppInterface.a(paramAccountDetail);
+        if (paramAccountDetail.followType == 1) {
+          paramQQAppInterface.a(PublicAccountInfo.createPublicAccount(paramAccountDetail, 0L));
+        }
+      }
+      return;
+      localEntityManager.persist(paramAccountDetail);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, obr paramobr, int paramInt)
+  {
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), odw.class);
+    localNewIntent.putExtra("cmd", "set_function_flag");
+    mobileqq_mp.SetFunctionFlagRequset localSetFunctionFlagRequset = new mobileqq_mp.SetFunctionFlagRequset();
+    localSetFunctionFlagRequset.version.set(1);
+    localSetFunctionFlagRequset.uin.set((int)Long.parseLong(paramString));
+    localSetFunctionFlagRequset.type.set(paramobr.e);
+    localSetFunctionFlagRequset.value.set(paramInt);
+    localSetFunctionFlagRequset.account_type.set(1);
+    localNewIntent.putExtra("data", localSetFunctionFlagRequset.toByteArray());
+    localNewIntent.setObserver(new ntw(paramQQAppInterface, paramobr, paramInt, paramString));
+    paramQQAppInterface.startServlet(localNewIntent);
   }
 }
 

@@ -1,50 +1,31 @@
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aenz
-  implements afmf
+class aenz
+  implements View.OnClickListener
 {
-  public aenz(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  aenz(aeny paramaeny) {}
   
-  public void a(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    paramEditable = paramEditable.toString();
-    if (TextUtils.isEmpty(paramEditable)) {
-      ForwardFriendListActivity.a(this.a).setVisibility(8);
+    this.a.a.jdField_d_of_type_Boolean = false;
+    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.a.jdField_d_of_type_Int != 22) {
+      this.a.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
     }
-    for (;;)
-    {
-      if (ForwardFriendListActivity.a(this.a) != null) {
-        ForwardFriendListActivity.a(this.a).a(paramEditable);
-      }
-      return;
-      ForwardFriendListActivity.a(this.a).setVisibility(0);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.a.findViewById(2131369068));
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_b_of_type_AndroidViewView$OnClickListener);
+    if (this.a.a.jdField_a_of_type_Aeoz != null) {
+      this.a.a.jdField_a_of_type_Aeoz.a();
     }
-  }
-  
-  public void a(ResultRecord paramResultRecord)
-  {
-    if (paramResultRecord != null) {
-      ForwardFriendListActivity.a(this.a, paramResultRecord.a, paramResultRecord.a());
-    }
-    ForwardFriendListActivity.a(this.a).notifyDataSetChanged();
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (ForwardFriendListActivity.a(this.a) == null))
-    {
-      ForwardFriendListActivity.a(this.a, ContactSearchFragment.a(6, 1, null, null, ForwardFriendListActivity.a(this.a)));
-      FragmentTransaction localFragmentTransaction = this.a.getSupportFragmentManager().beginTransaction();
-      localFragmentTransaction.add(2131376581, ForwardFriendListActivity.a(this.a));
-      localFragmentTransaction.commitAllowingStateLoss();
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

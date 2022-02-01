@@ -1,35 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
-public class put
-  implements pye
+public abstract interface put
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  public abstract ArrayList<BaseArticleInfo> a(int paramInt);
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    return ptw.a(paramBaseArticleInfo);
-  }
+  public abstract void a(int paramInt);
   
-  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2)
-  {
-    ArticleInfo localArticleInfo = paramppu.a();
-    if ((localArticleInfo != null) && (localArticleInfo.isAccountShown)) {
-      qag.a(paramContainer, paramppu);
-    }
-  }
+  public abstract void a(int paramInt, puu parampuu);
   
-  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
-  {
-    return false;
-  }
+  public abstract int[] a(int paramInt);
 }
 
 

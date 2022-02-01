@@ -1,21 +1,23 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.os.Build.VERSION;
-import com.tencent.av.gaudio.GaInviteActivity;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.ui.QavPanel;
 
 public class lnh
   implements DialogInterface.OnClickListener
 {
-  public lnh(GaInviteActivity paramGaInviteActivity) {}
+  public lnh(GaInviteLockActivity paramGaInviteLockActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.isFinishing()) {}
-    while (((Build.VERSION.SDK_INT >= 17) && (this.a.isDestroyed())) || (paramInt == 1)) {
-      return;
+    mrd.e(false, false);
+    if (paramDialogInterface != null)
+    {
+      paramDialogInterface.dismiss();
+      if ((this.a.a != null) && (this.a.a.a != null)) {
+        this.a.a.a.b();
+      }
     }
-    ChatActivityUtils.a(this.a, true, new lni(this));
   }
 }
 

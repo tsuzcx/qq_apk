@@ -1,255 +1,367 @@
-import android.app.Activity;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.report.ReportModel;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URLEncoder;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class bbda
-  extends WebViewPlugin
-  implements binj
 {
-  private static String a;
-  protected Activity a;
+  public static final String a = bbda.class.getSimpleName();
+  public static String b = "";
   
-  static
+  public static String a()
   {
-    jdField_a_of_type_JavaLangString = "remind";
+    return "old_search";
   }
   
-  public void a(String paramString)
+  public static String a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    if (paramInt == 1) {
+      return "message";
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "remindSuccess : " + paramString);
+    if (paramInt == 2) {
+      return "contact";
     }
-    boolean bool1 = bbcx.a(bbcx.a(paramString, "isNew"));
-    boolean bool2 = bbcx.a(bbcx.a(paramString, "isInsert"));
-    bbcx.a(paramString, "title");
-    bbcx.a(bbcx.a(paramString, "startDate")).longValue();
-    bbcx.a(bbcx.a(paramString, "endDate")).longValue();
-    if (bool1)
-    {
-      paramString = "0";
-      if (!bool2) {
-        break label180;
-      }
+    if ((paramInt == 21) || (paramInt == 3)) {
+      return "dongtai";
     }
-    label180:
-    for (String str = "0";; str = "1")
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "createAndAddReport  r2: " + str + " r3: " + paramString);
-      }
-      bdll.b(null, "CliOper", "", "", "Time_reminder", "Updata_clock", 0, 0, str, paramString, "", "");
-      return;
-      paramString = "1";
-      break;
+    if ((paramInt == 25) || (paramInt == 10)) {
+      return "kandian";
     }
+    return "unknown";
   }
   
-  public void a(String paramString, JsBridgeListener paramJsBridgeListener)
+  public static void a(int paramInt1, int paramInt2, baya parambaya)
   {
-    long l = bbcx.a(bbcx.a(paramString, "currentDate")).longValue();
-    bbcx.a(this.jdField_a_of_type_AndroidAppActivity, l * 1000L, new bbdb(this), paramJsBridgeListener);
-  }
-  
-  public void b(String paramString)
-  {
-    Object localObject2 = this.mRuntime.a();
-    Object localObject1 = "";
-    String str3 = "";
-    Object localObject3 = new StringBuilder();
-    if (localObject2 != null) {
-      localObject1 = ((CustomWebView)localObject2).getUrl();
-    }
-    try
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        localObject2 = URLEncoder.encode((String)localObject1, "utf-8");
-        localObject1 = localObject2;
-      }
-      String str1;
-      long l1;
-      long l2;
-      long l3;
-      String str2;
-      int i;
-      label408:
-      for (;;)
-      {
-        str1 = str3;
-        localObject2 = localObject1;
-      }
-    }
-    catch (Exception localException1)
+    if ((parambaya == null) || (parambaya.a() == null)) {}
+    do
     {
       do
       {
-        for (;;)
+        return;
+      } while (!parambaya.a());
+      if (parambaya.a().equals(bayg.a)) {
+        a(null, 0, paramInt2, "0X8009D4E", 0, 0, null, null);
+      }
+      if (parambaya.a().equals(bayd.a)) {
+        a(null, 0, paramInt2, "0X8009D38", 0, 0, null, null);
+      }
+      if (parambaya.a().equals(bayf.a)) {
+        a(null, 0, paramInt2, "0X8009D3C", 0, 0, null, null);
+      }
+    } while (!parambaya.a().equals(amtj.a(2131714918)));
+    a(null, 0, paramInt2, "0X8009D52", 0, 0, null, null);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2)
+  {
+    if (paramQQAppInterface == null)
+    {
+      paramQQAppInterface = BaseApplicationImpl.getApplication().getRuntime();
+      if (!(paramQQAppInterface instanceof QQAppInterface))
+      {
+        QLog.e(a, 1, "app is null");
+        return;
+      }
+      paramQQAppInterface = (QQAppInterface)paramQQAppInterface;
+    }
+    for (;;)
+    {
+      int i = 0;
+      if (paramInt1 != 0) {
+        switch (paramInt1)
         {
-          try
-          {
-            if (!TextUtils.isEmpty(paramString))
-            {
-              str1 = URLEncoder.encode(paramString, "utf-8");
-              localObject2 = localObject1;
-            }
-            ((StringBuilder)localObject3).append("p=").append(str1);
-            ((StringBuilder)localObject3).append("&j=").append((String)localObject2);
-            l1 = VACDReportUtil.a(null, "qqwallet", "insertCalendar", "invoke", ((StringBuilder)localObject3).toString(), 0, null);
-            if (!TextUtils.isEmpty(paramString)) {
-              continue;
-            }
-            VACDReportUtil.endReport(l1, "parseUrl", null, -1, "json is empty");
-            return;
-          }
-          catch (Exception localException2)
-          {
-            continue;
-          }
-          localException1 = localException1;
-          str1 = str3;
-          localObject2 = localObject1;
-          if (QLog.isDevelopLevel())
-          {
-            localException1.printStackTrace();
-            str1 = str3;
-            localObject2 = localObject1;
-          }
+        default: 
+          paramInt1 = i;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "createCalendar : " + paramString);
-        }
-        localObject1 = null;
+      }
+      for (;;)
+      {
+        String str2 = "" + paramInt3;
+        String str1 = "" + paramInt4;
         try
         {
-          paramString = new JSONObject(paramString);
-          localObject2 = paramString.optString("title");
-          l2 = paramString.optLong("startDate");
-          l3 = paramString.optLong("endDate");
-          str1 = paramString.optString("remark");
-          str2 = paramString.optString("address");
-          str3 = paramString.optString("callback");
-          localObject3 = paramString.optJSONArray("reminds");
-          paramString = (String)localObject1;
-          if (localObject3 != null)
-          {
-            paramString = (String)localObject1;
-            if (((JSONArray)localObject3).length() > 0)
-            {
-              localObject1 = new int[((JSONArray)localObject3).length()];
-              i = 0;
-              for (;;)
-              {
-                paramString = (String)localObject1;
-                if (i >= ((JSONArray)localObject3).length()) {
-                  break;
-                }
-                localObject1[i] = ((JSONArray)localObject3).getInt(i);
-                i += 1;
-              }
-            }
-          }
-          if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label408;
-          }
-        }
-        catch (JSONException paramString)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "JSONException " + paramString.getMessage());
-          }
-          VACDReportUtil.endReport(l1, "parseUrl", null, -1, "JsonException");
+          Integer.valueOf(str2);
+          bcef.b(paramQQAppInterface, "dc00898", "", "", "qqsearch", paramString1, paramInt1, 0, str2, str1, paramString2, "");
           return;
         }
-        if ((l2 < 1L) || (l3 < 1L))
+        catch (Exception localException)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "params error.");
-          }
-          VACDReportUtil.endReport(l1, "parseUrl", null, -1, "params error.");
+          bcef.b(paramQQAppInterface, "dc00898", "", "", "qqsearch", paramString1, paramInt1, 0, "0", str1, paramString2, "");
           return;
         }
-        VACDReportUtil.a(l1, null, "parseUrl", null, 0, null);
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "startTime : " + bbdc.a(1000L * l2) + " endTime : " + bbdc.a(1000L * l3));
+        paramInt1 = 1;
+        continue;
+        paramInt1 = 2;
+        continue;
+        paramInt1 = 3;
+        continue;
+        switch (paramInt2)
+        {
+        default: 
+          paramInt1 = 0;
+          break;
+        case 1: 
+          paramInt1 = 1;
+          break;
+        case 2: 
+          paramInt1 = 2;
+          break;
+        case 21: 
+          paramInt1 = 3;
         }
-        i = bbcx.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject2, 1000L * l2, 1000L * l3, str1, str2, paramString);
-        VACDReportUtil.endReport(l1, "insert", null, i, null);
-        if (!TextUtils.isEmpty(str3)) {
-          super.callJs(str3, new String[] { "{\"retCode\":" + i + "}" });
-        }
-      } while (i != 0);
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "addByRecevierReport");
       }
-      bdll.b(null, "CliOper", "", "", "Time_reminder", "Rec_ckl_add", 0, 0, "", "", "", "");
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2, String paramString3)
+  {
+    int i = 0;
+    if (paramInt1 != 0) {
+      switch (paramInt1)
+      {
+      default: 
+        if (paramString2 == null) {
+          paramString2 = "";
+        }
+        break;
+      }
+    }
+    for (;;)
+    {
+      if (paramString3 == null) {
+        paramString3 = "";
+      }
+      for (;;)
+      {
+        bcef.b(paramQQAppInterface, "dc00898", "", "", "qqsearch", paramString1, i, 0, paramInt3 + "", paramInt4 + "", paramString2, paramString3);
+        QLog.d("searchReportClick898", 2, " source: " + paramInt1 + " from: " + paramInt2 + "  sopName: " + paramString1 + " r1: " + paramInt3 + " r2: " + paramInt4 + " r3: " + paramString2 + " r4: " + paramString3);
+        return;
+        i = 1;
+        break;
+        i = 2;
+        break;
+        i = 3;
+        break;
+        if (paramInt2 != 0) {}
+        switch (paramInt2)
+        {
+        default: 
+          i = 0;
+          break;
+        case 1: 
+          i = 1;
+          break;
+        case 2: 
+          i = 2;
+          break;
+        case 21: 
+          i = 3;
+          break;
+        case 25: 
+          i = 4;
+          break;
+        }
+      }
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, ReportModelDC02528 paramReportModelDC02528)
+  {
+    a("dc02528", paramQQAppInterface, paramReportModelDC02528);
+    if (QLog.isColorLevel()) {}
+  }
+  
+  public static void a(Object paramObject, String paramString, int paramInt)
+  {
+    if ((paramObject instanceof baya)) {
+      a(0, paramInt, (baya)paramObject);
+    }
+    if ((paramObject instanceof bayj)) {
+      a(null, 0, paramInt, "0X8009D30", 0, 0, null, null);
+    }
+    Object localObject;
+    int i;
+    label137:
+    label270:
+    label533:
+    if ((paramObject instanceof bayd))
+    {
+      localObject = (bayd)paramObject;
+      if (((bayd)localObject).a() == null) {
+        break label611;
+      }
+      i = ((bayd)localObject).a().size();
+      if (i > ((bayd)localObject).a())
+      {
+        i = ((bayd)localObject).a();
+        bbgk.a("all_result", "exp_contact", new String[] { "" + paramString, "" + i });
+        a(null, 0, paramInt, "0X8009D36", 0, 0, null, null);
+      }
+    }
+    else
+    {
+      if ((paramObject instanceof bayf)) {
+        a(null, 0, paramInt, "0X8009D3A", 0, 0, null, null);
+      }
+      if ((paramObject instanceof bawl))
+      {
+        localObject = (bawl)paramObject;
+        if (((bawl)localObject).a() == null) {
+          break label655;
+        }
+        i = ((bawl)localObject).a().size();
+        if (i <= ((bawl)localObject).a()) {
+          break label652;
+        }
+        i = ((bawl)localObject).a();
+        label215:
+        bbgk.a("all_result", "exp_talk", new String[] { "" + paramString, "" + i });
+        a(null, 0, paramInt, "0X8009D4C", 0, 0, null, null);
+      }
+      if ((paramObject instanceof bkpw))
+      {
+        localObject = (bkpw)paramObject;
+        if (((bkpw)localObject).a() == null) {
+          break label699;
+        }
+        i = ((bkpw)localObject).a().size();
+        if (i <= ((bkpw)localObject).a()) {
+          break label696;
+        }
+        i = ((bkpw)localObject).a();
+        label329:
+        bbgk.a("all_result", "exp_collect", new String[] { "" + paramString, "" + i });
+      }
+      if ((paramObject instanceof asmk))
+      {
+        localObject = (asmk)paramObject;
+        if (((asmk)localObject).a() == null) {
+          break label743;
+        }
+        i = ((asmk)localObject).a().size();
+        if (i <= ((asmk)localObject).a()) {
+          break label740;
+        }
+        i = ((asmk)localObject).a();
+        label431:
+        bbgk.a("all_result", "exp_file", new String[] { "" + paramString, "" + i });
+      }
+      label486:
+      if ((paramObject instanceof bayk))
+      {
+        localObject = (bayk)paramObject;
+        if (((bayk)localObject).a() == null) {
+          break label787;
+        }
+        i = ((bayk)localObject).a().size();
+        if (i <= ((bayk)localObject).a()) {
+          break label784;
+        }
+        i = ((bayk)localObject).a();
+        bbgk.a("all_result", "exp_discuss", new String[] { "" + paramString, "" + i });
+      }
+    }
+    for (;;)
+    {
+      label384:
+      if ((paramObject instanceof bayl)) {
+        a(null, 0, paramInt, "0X8009D50", 0, 0, null, null);
+      }
+      return;
+      break;
+      label611:
+      bbgk.a("all_result", "exp_contact", new String[] { "" + paramString, "0" });
+      break label137;
+      label652:
+      break label215;
+      label655:
+      bbgk.a("all_result", "exp_talk", new String[] { "" + paramString, "0" });
+      break label270;
+      label696:
+      break label329;
+      label699:
+      bbgk.a("all_result", "exp_collect", new String[] { "" + paramString, "0" });
+      break label384;
+      label740:
+      break label431;
+      label743:
+      bbgk.a("all_result", "exp_file", new String[] { "" + paramString, "0" });
+      break label486;
+      label784:
+      break label533;
+      label787:
+      bbgk.a("all_result", "exp_discuss", new String[] { "" + paramString, "0" });
+    }
+  }
+  
+  public static void a(String paramString, QQAppInterface paramQQAppInterface, ReportModel paramReportModel)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      if (!QLog.isColorLevel()) {}
+    }
+    do
+    {
+      return;
+      if (paramReportModel != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    return;
+    QQAppInterface localQQAppInterface = paramQQAppInterface;
+    if (paramQQAppInterface == null)
+    {
+      localQQAppInterface = paramQQAppInterface;
+      if (BaseApplicationImpl.sProcessId == 1)
+      {
+        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+        localQQAppInterface = paramQQAppInterface;
+        if (localAppRuntime != null)
+        {
+          localQQAppInterface = paramQQAppInterface;
+          if ((localAppRuntime instanceof QQAppInterface)) {
+            localQQAppInterface = (QQAppInterface)localAppRuntime;
+          }
+        }
+      }
+    }
+    if (localQQAppInterface == null)
+    {
+      paramQQAppInterface = new Intent();
+      paramQQAppInterface.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      paramQQAppInterface.putExtra("reporting_tag", paramString);
+      paramQQAppInterface.putExtra("reporting_detail", paramReportModel);
+      paramQQAppInterface.putExtra("reporting_count", paramReportModel.report_count);
+      paramQQAppInterface.putExtra("is_runtime", 1);
+      BaseApplicationImpl.getApplication().sendBroadcast(paramQQAppInterface);
       return;
     }
+    b(paramString, localQQAppInterface, paramReportModel);
   }
   
-  public String[] getMultiNameSpace()
+  protected static void b(String paramString, QQAppInterface paramQQAppInterface, ReportModel paramReportModel)
   {
-    return new String[] { "REMIND", "calendar" };
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (("REMIND".equals(paramString2)) && ("createTimePicker".equals(paramString3)))
-    {
-      a(paramVarArgs[0], paramJsBridgeListener);
-      return true;
+    if ((paramReportModel == null) || (paramQQAppInterface == null)) {
+      if (!QLog.isColorLevel()) {}
     }
-    if (("calendar".equals(paramString2)) && ("addEvent".equals(paramString3)))
+    do
     {
-      b(paramVarArgs[0]);
-      return true;
-    }
-    if (("calendar".equals(paramString2)) && ("remindSuccess".equals(paramString3)))
-    {
-      a(paramVarArgs[0]);
-      return true;
-    }
-    if (("calendar".equals(paramString2)) && ("remindDelete".equals(paramString3)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "deleteRemindSuccess");
-      }
-      bdll.b(null, "CliOper", "", "", "Time_reminder", "Delete_clock", 0, 0, "", "", "", "");
-      return true;
-    }
-    if (("calendar".equals(paramString2)) && ("remindMsgReport".equals(paramString3)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "remindMsgReport : " + paramVarArgs[0]);
-      }
-      bdll.b(null, "CliOper", "", "", "Time_reminder", "Obj_clock", 0, 0, bbcx.a(paramVarArgs[0], "entranceType"), bbcx.a(paramVarArgs[0], "role"), "", "");
-      return true;
-    }
-    if (("calendar".equals(paramString2)) && ("remindAioReport".equals(paramString3)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "remindAioReport");
-      }
-      bdll.b(null, "CliOper", "", "", "Time_reminder", "Clock_card_clk", 0, 0, "", "", "", "");
-      return true;
-    }
-    return false;
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    this.jdField_a_of_type_AndroidAppActivity = this.mRuntime.a();
+      return;
+      paramReportModel.uin = paramQQAppInterface.getCurrentAccountUin();
+      paramReportModel.version = "8.4.8";
+      NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), bbpj.class);
+      localNewIntent.putExtra("sendType", 2);
+      localNewIntent.putExtra("tag", paramString);
+      localNewIntent.putExtra("content", paramReportModel.toReportString());
+      localNewIntent.setWithouLogin(true);
+      paramQQAppInterface.startServlet(localNewIntent);
+    } while (!QLog.isColorLevel());
+    QLog.d(a, 2, "reportEventRuntime, tag = " + paramString + ", model = " + paramReportModel);
   }
 }
 

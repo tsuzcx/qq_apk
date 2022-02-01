@@ -1,24 +1,23 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.2;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class oil
-  implements Animation.AnimationListener
+class oil
+  implements QQPermissionCallback
 {
-  public oil(ReadInJoyNaviController.2 param2) {}
+  oil(oik paramoik, BaseActivity paramBaseActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    oii.a(this.a.this$0, true);
-    oii.a(this.a.this$0).setAlpha(0.0F);
-    oii.a(this.a.this$0).removeView(oii.a(this.a.this$0));
+    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
+    bfur.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
+    oif.a(this.jdField_a_of_type_Oik.a, 5);
+  }
 }
 
 

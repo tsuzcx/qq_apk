@@ -1,19 +1,6 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
-
-public class ahrz
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface ahrz
 {
-  public ahrz(SixCombolEffectView paramSixCombolEffectView, ahso paramahso) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.jdField_a_of_type_Ahso.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if ((!this.jdField_a_of_type_Ahso.b) && (this.jdField_a_of_type_Ahso.a < 0.52F)) {
-      this.jdField_a_of_type_Ahso.b = true;
-    }
-  }
+  public abstract void a();
 }
 
 

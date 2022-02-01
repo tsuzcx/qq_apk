@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
-final class ahhl
-  implements ahky
+class ahhl
+  implements bjsd
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  ahhl(ahgz paramahgz) {}
+  
+  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    if (paramChatMessage.senderuin.equals(paramQQAppInterface.getCurrentAccountUin())) {
-      return 59;
-    }
-    return 60;
+    ahgz.a(this.a).setPullType(0);
+    ahgz.a(this.a).c(ahgz.c);
+    ahgz.a(this.a, 0, this.a.a.a());
   }
+  
+  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView) {}
+  
+  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
+  {
+    return false;
+  }
+  
+  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

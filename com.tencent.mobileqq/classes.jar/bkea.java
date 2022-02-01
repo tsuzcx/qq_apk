@@ -1,77 +1,231 @@
-import com.tencent.qbar.QbarNative;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.common.app.BaseApplicationImpl;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.QUA;
+import cooperation.qzone.util.QZLog;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import mqq.app.AppRuntime;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bkea
 {
-  public static int a(int paramInt, byte[] paramArrayOfByte, int[] paramArrayOfInt)
+  private static bkea jdField_a_of_type_Bkea;
+  private Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("(\\d+)\\.(\\d+).(\\d+)_(\\d+)");
+  
+  public static bkea a()
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfInt == null)) {
-      return -1;
+    if (jdField_a_of_type_Bkea == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bkea == null) {
+        jdField_a_of_type_Bkea = new bkea();
+      }
+      return jdField_a_of_type_Bkea;
     }
-    return QbarNative.nativeArrayConvert(paramInt, paramArrayOfByte.length, paramArrayOfByte, paramArrayOfInt);
+    finally {}
   }
   
-  public static int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private boolean a(String paramString)
   {
-    if (paramArrayOfByte == null) {
-      return -1;
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return false;
+      try
+      {
+        Object localObject = paramString.split(",");
+        if (localObject.length >= 2)
+        {
+          paramString = a(localObject[0].trim());
+          localObject = a(localObject[1].trim());
+          if ((paramString != null) && (localObject != null) && (paramString.length >= 4) && (localObject.length >= 4))
+          {
+            long l1 = paramString[0];
+            long l2 = paramString[1] << 24;
+            long l3 = paramString[2] << 16;
+            long l4 = paramString[3];
+            long l5 = localObject[0];
+            long l6 = localObject[1] << 24;
+            long l7 = localObject[2] << 16;
+            long l8 = localObject[3];
+            paramString = this.jdField_a_of_type_JavaUtilRegexPattern.matcher(QUA.getQUA3());
+            if (paramString.find())
+            {
+              long l9 = Long.parseLong(paramString.group(1));
+              long l10 = Long.parseLong(paramString.group(2));
+              long l11 = Long.parseLong(paramString.group(3));
+              long l12 = Long.parseLong(paramString.group(4));
+              l9 = l12 + ((l9 << 32) + (l10 << 24) + (l11 << 16));
+              if ((l9 < (l1 << 32) + l2 + l3 + l4) || (l9 > l8 + ((l5 << 32) + l6 + l7))) {}
+            }
+            else
+            {
+              return true;
+            }
+          }
+        }
+      }
+      catch (Throwable paramString) {}
     }
-    return QbarNative.nativeYUVrotateLess(paramArrayOfByte, paramInt1, paramInt2);
+    return false;
   }
   
-  public static int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2)
+  private boolean a(JSONObject paramJSONObject)
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
-      return -1;
-    }
-    return QbarNative.nativeYUVrotate(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2);
+    if (paramJSONObject == null) {}
+    int i;
+    int j;
+    int k;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return false;
+            localObject = paramJSONObject.optString("appVersionRange");
+          } while ((!TextUtils.isEmpty((CharSequence)localObject)) && (!a((String)localObject)));
+          Object localObject = paramJSONObject.optString("osVersionRange");
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            break;
+          }
+          localObject = ((String)localObject).split(",");
+          i = Integer.parseInt(localObject[0].trim());
+          j = Integer.parseInt(localObject[1].trim());
+        } while ((Build.VERSION.SDK_INT < i) || (Build.VERSION.SDK_INT > j));
+        paramJSONObject = paramJSONObject.optString("uinRange");
+        if (TextUtils.isEmpty(paramJSONObject)) {
+          break;
+        }
+        paramJSONObject = paramJSONObject.split(",");
+        k = paramJSONObject[0].length();
+      } while (k != paramJSONObject[1].length());
+      i = Integer.parseInt(paramJSONObject[0]);
+      j = Integer.parseInt(paramJSONObject[1]);
+      k = (int)Math.pow(10.0D, k);
+      k = (int)(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin() % k);
+    } while ((k < i) || (k > j));
+    return true;
   }
   
-  public static int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3)
+  private int[] a(String paramString)
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
-      return -1;
+    int i = 0;
+    try
+    {
+      paramString = paramString.split("_");
+      if (paramString.length < 2) {
+        return null;
+      }
+      String[] arrayOfString = paramString[0].split("\\.");
+      if (arrayOfString.length >= 3)
+      {
+        int[] arrayOfInt = new int[4];
+        while (i < 3)
+        {
+          arrayOfInt[i] = Integer.parseInt(arrayOfString[i]);
+          i += 1;
+        }
+        arrayOfInt[3] = Integer.parseInt(paramString[1]);
+        return arrayOfInt;
+      }
     }
-    return QbarNative.nativeCropGray2(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2, paramInt3);
+    catch (Throwable paramString) {}
+    return null;
   }
   
-  public static int a(byte[] paramArrayOfByte, int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public float a(String paramString1, String paramString2, float paramFloat)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfInt == null)) {
-      return -1;
+    paramString1 = a(paramString1, paramString2);
+    if (paramString1 == null) {
+      return paramFloat;
     }
-    return QbarNative.nativeYuvToCropIntArray(paramArrayOfByte, paramArrayOfInt, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
+    try
+    {
+      float f = Float.valueOf(paramString1).floatValue();
+      return f;
+    }
+    catch (Exception paramString1) {}
+    return paramFloat;
   }
   
-  public static int a(byte[] paramArrayOfByte1, int[] paramArrayOfInt, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public int a(String paramString1, String paramString2, int paramInt)
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
-      return -1;
+    paramString1 = a(paramString1, paramString2);
+    if (paramString1 == null) {
+      return paramInt;
     }
-    return QbarNative.nativeGrayRotateCropSub(paramArrayOfByte2, paramInt1, paramInt2, 0, 0, paramInt1, paramInt2, paramArrayOfByte1, paramArrayOfInt, paramInt3, paramInt4);
+    try
+    {
+      int i = Integer.valueOf(paramString1).intValue();
+      return i;
+    }
+    catch (Exception paramString1) {}
+    return paramInt;
   }
   
-  public static int a(byte[] paramArrayOfByte1, int[] paramArrayOfInt, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public long a(String paramString1, String paramString2, long paramLong)
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
-      return -1;
+    paramString1 = a(paramString1, paramString2);
+    if (paramString1 == null) {
+      return paramLong;
     }
-    return QbarNative.nativeGrayRotateCropSub(paramArrayOfByte2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramArrayOfByte1, paramArrayOfInt, paramInt7, paramInt8);
+    try
+    {
+      long l = Long.valueOf(paramString1).longValue();
+      return l;
+    }
+    catch (Exception paramString1) {}
+    return paramLong;
   }
   
-  public static int a(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public String a(String paramString1, String paramString2)
   {
-    if ((paramArrayOfInt == null) || (paramArrayOfByte == null)) {
-      return -1;
+    paramString1 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
+    if (paramString1 == null) {}
+    for (;;)
+    {
+      return null;
+      try
+      {
+        paramString2 = new JSONArray(paramString1);
+        int j = paramString2.length();
+        int i = 0;
+        while (i < j)
+        {
+          JSONObject localJSONObject = paramString2.getJSONObject(i);
+          String str1 = localJSONObject.optString("configId");
+          String str2 = localJSONObject.optString("value");
+          Log.d("QzoneAlphaConfig", "configId=" + str1 + " value=" + str2);
+          boolean bool = a(localJSONObject);
+          if (bool) {
+            return str2;
+          }
+          i += 1;
+        }
+        return null;
+      }
+      catch (JSONException paramString2)
+      {
+        QZLog.e("QzoneAlphaConfig", "failed parsing config:" + paramString1);
+      }
     }
-    return QbarNative.nativeTransPixels(paramArrayOfInt, paramArrayOfByte, paramInt1, paramInt2);
   }
   
-  public static int b(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public String a(String paramString1, String paramString2, String paramString3)
   {
-    if ((paramArrayOfInt == null) || (paramArrayOfByte == null)) {
-      return -1;
+    paramString1 = a(paramString1, paramString2);
+    if (TextUtils.isEmpty(paramString1)) {
+      return paramString3;
     }
-    return QbarNative.nativeTransBytes(paramArrayOfInt, paramArrayOfByte, paramInt1, paramInt2);
+    return paramString1;
   }
 }
 

@@ -1,18 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.animation.Transformation;
+import android.view.animation.TranslateAnimation;
 
 public class afep
-  implements View.OnClickListener
+  extends TranslateAnimation
 {
-  public afep(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public int a = 0;
   
-  public void onClick(View paramView)
+  public afep()
   {
-    this.a.a.setText("");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this(1, 0.0F, 1, -1.0F, 1, 0.0F, 1, 0.0F);
+  }
+  
+  public afep(int paramInt1, float paramFloat1, int paramInt2, float paramFloat2, int paramInt3, float paramFloat3, int paramInt4, float paramFloat4)
+  {
+    super(paramInt1, paramFloat1, paramInt2, paramFloat2, paramInt3, paramFloat3, paramInt4, paramFloat4);
+  }
+  
+  public boolean getTransformation(long paramLong, Transformation paramTransformation)
+  {
+    if (!afdl.a) {
+      setStartTime(paramLong);
+    }
+    return super.getTransformation(paramLong, paramTransformation);
   }
 }
 

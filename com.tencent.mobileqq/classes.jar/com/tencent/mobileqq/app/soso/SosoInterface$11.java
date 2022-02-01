@@ -7,10 +7,12 @@ import com.tencent.mobileqq.widget.QQToast;
 final class SosoInterface$11
   implements Runnable
 {
+  SosoInterface$11(String paramString) {}
+  
   public void run()
   {
-    if (!TextUtils.isEmpty(this.a)) {
-      QQToast.a(BaseApplicationImpl.getContext(), this.a, 1).a();
+    if (!TextUtils.isEmpty(this.val$content)) {
+      QQToast.a(BaseApplicationImpl.getContext(), this.val$content, 1).a();
     }
   }
 }

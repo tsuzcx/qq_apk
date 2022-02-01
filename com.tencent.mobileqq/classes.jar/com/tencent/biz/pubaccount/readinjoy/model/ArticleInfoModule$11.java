@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.persistence.EntityManager;
-import pon;
+import ptv;
 
 public class ArticleInfoModule$11
   implements Runnable
 {
-  public ArticleInfoModule$11(pon parampon, int paramInt) {}
+  public ArticleInfoModule$11(ptv paramptv, int paramInt) {}
   
   public void run()
   {

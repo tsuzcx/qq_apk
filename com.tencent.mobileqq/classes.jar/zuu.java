@@ -1,14 +1,23 @@
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView.BorderStyle;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout.LayoutParams;
 
-public final class zuu
-  extends SparseArray<RotateCircleImageView.BorderStyle>
+class zuu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public zuu(int paramInt)
+  zuu(zur paramzur, View paramView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramInt);
-    append(0, RotateCircleImageView.BorderStyle.STILL);
-    append(1, RotateCircleImageView.BorderStyle.ROTATE);
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    if ((localLayoutParams instanceof LinearLayout.LayoutParams))
+    {
+      ((LinearLayout.LayoutParams)localLayoutParams).topMargin = paramValueAnimator.intValue();
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    }
   }
 }
 

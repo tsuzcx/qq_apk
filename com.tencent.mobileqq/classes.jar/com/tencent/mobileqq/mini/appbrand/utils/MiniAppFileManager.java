@@ -4,14 +4,14 @@ import android.app.Activity;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import bhmi;
-import bjtz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ApkgBaseInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
 import com.tencent.mobileqq.minigame.manager.MiniGameStorageExceedManager;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
@@ -164,7 +164,7 @@ public class MiniAppFileManager
   
   private void deleteTmpFolder()
   {
-    bhmi.a(getMiniFolderPath(0), false);
+    FileUtils.delete(getMiniFolderPath(0), false);
   }
   
   private String getCurAppSdcardDir()
@@ -178,7 +178,7 @@ public class MiniAppFileManager
       QLog.e("MiniAppFileManager", 1, "getCurAppSdcardDir error. uin : " + str + "; curMiniAppId : " + this.curMiniAppId);
       return MINI_FILE_SAVE_PATH;
     }
-    return MINI_FILE_SAVE_PATH + bjtz.d(this.curMiniAppId) + "/" + bjtz.d(str);
+    return MINI_FILE_SAVE_PATH + MD5Utils.toMD5(this.curMiniAppId) + "/" + MD5Utils.toMD5(str);
   }
   
   private static String getCurAppSdcardDir(String paramString)
@@ -194,7 +194,7 @@ public class MiniAppFileManager
     }
     currentAppId = paramString;
     currentUin = str;
-    currentAppSdcardDir = MINI_FILE_SAVE_PATH + bjtz.d(paramString) + "/" + bjtz.d(str);
+    currentAppSdcardDir = MINI_FILE_SAVE_PATH + MD5Utils.toMD5(paramString) + "/" + MD5Utils.toMD5(str);
     return currentAppSdcardDir;
   }
   
@@ -277,7 +277,7 @@ public class MiniAppFileManager
   
   public static String getLoadingAdCacheFilePath(String paramString1, String paramString2)
   {
-    return getLoadingAdCacheFolder() + bjtz.d(paramString1) + "_" + bjtz.d(paramString2);
+    return getLoadingAdCacheFolder() + MD5Utils.toMD5(paramString1) + "_" + MD5Utils.toMD5(paramString2);
   }
   
   public static String getLoadingAdCacheFolder()
@@ -448,13 +448,13 @@ public class MiniAppFileManager
   {
     String str1 = getMiniFolderPath(0);
     String str2 = str1 + "_del_";
-    bhmi.c(str1, str2);
+    FileUtils.rename(str1, str2);
     this.mTmpFileNeed2DeleteAsync.add(str2);
   }
   
   public void clearAllCache()
   {
-    bhmi.a(MiniAppGlobal.getMiniCacheFilePath(), false);
+    FileUtils.delete(MiniAppGlobal.getMiniCacheFilePath(), false);
     this.usrFolderSize.set(0L);
     this.storeFolderSize.set(0L);
     hasCheckUsrDir = false;
@@ -465,7 +465,7 @@ public class MiniAppFileManager
     paramString = MiniAppGlobal.getMiniCacheFilePath() + MD5.toMD5(paramString);
     if (new File(paramString).exists())
     {
-      bhmi.a(paramString, false);
+      FileUtils.delete(paramString, false);
       this.usrFolderSize.set(0L);
       this.storeFolderSize.set(0L);
     }
@@ -504,7 +504,7 @@ public class MiniAppFileManager
     //   51: new 90	java/lang/StringBuilder
     //   54: dup
     //   55: invokespecial 93	java/lang/StringBuilder:<init>	()V
-    //   58: ldc_w 484
+    //   58: ldc_w 482
     //   61: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   64: aload_1
     //   65: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -516,28 +516,28 @@ public class MiniAppFileManager
     //   79: dup
     //   80: aload_0
     //   81: aload 4
-    //   83: invokestatic 486	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getFileSuffix	(Ljava/io/File;)Ljava/lang/String;
-    //   86: invokevirtual 489	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
+    //   83: invokestatic 484	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getFileSuffix	(Ljava/io/File;)Ljava/lang/String;
+    //   86: invokevirtual 487	com/tencent/mobileqq/mini/appbrand/utils/MiniAppFileManager:getTmpPath	(Ljava/lang/String;)Ljava/lang/String;
     //   89: invokespecial 178	java/io/File:<init>	(Ljava/lang/String;)V
     //   92: astore 9
     //   94: sipush 8192
     //   97: newarray byte
     //   99: astore 7
-    //   101: new 491	java/io/BufferedInputStream
+    //   101: new 489	java/io/BufferedInputStream
     //   104: dup
-    //   105: new 493	java/io/FileInputStream
+    //   105: new 491	java/io/FileInputStream
     //   108: dup
     //   109: aload 4
-    //   111: invokespecial 496	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   114: invokespecial 499	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   111: invokespecial 494	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   114: invokespecial 497	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   117: astore 4
-    //   119: new 501	java/io/BufferedOutputStream
+    //   119: new 499	java/io/BufferedOutputStream
     //   122: dup
-    //   123: new 503	java/io/FileOutputStream
+    //   123: new 501	java/io/FileOutputStream
     //   126: dup
     //   127: aload 9
-    //   129: invokespecial 504	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   132: invokespecial 507	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   129: invokespecial 502	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   132: invokespecial 505	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   135: astore_1
     //   136: aload_1
     //   137: astore 6
@@ -545,7 +545,7 @@ public class MiniAppFileManager
     //   141: astore 5
     //   143: aload 4
     //   145: aload 7
-    //   147: invokevirtual 513	java/io/InputStream:read	([B)I
+    //   147: invokevirtual 511	java/io/InputStream:read	([B)I
     //   150: istore_2
     //   151: iload_2
     //   152: iconst_m1
@@ -558,7 +558,7 @@ public class MiniAppFileManager
     //   164: aload 7
     //   166: iconst_0
     //   167: iload_2
-    //   168: invokevirtual 519	java/io/OutputStream:write	([BII)V
+    //   168: invokevirtual 517	java/io/OutputStream:write	([BII)V
     //   171: goto -35 -> 136
     //   174: astore 7
     //   176: aload_1
@@ -566,18 +566,18 @@ public class MiniAppFileManager
     //   179: aload 4
     //   181: astore 5
     //   183: ldc 52
-    //   185: ldc_w 521
+    //   185: ldc_w 519
     //   188: aload 7
-    //   190: invokestatic 526	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   190: invokestatic 524	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   193: pop
     //   194: aload_1
     //   195: ifnull +7 -> 202
     //   198: aload_1
-    //   199: invokevirtual 529	java/io/OutputStream:close	()V
+    //   199: invokevirtual 527	java/io/OutputStream:close	()V
     //   202: aload 4
     //   204: ifnull +152 -> 356
     //   207: aload 4
-    //   209: invokevirtual 530	java/io/InputStream:close	()V
+    //   209: invokevirtual 528	java/io/InputStream:close	()V
     //   212: iconst_0
     //   213: istore_2
     //   214: aload 8
@@ -594,17 +594,17 @@ public class MiniAppFileManager
     //   232: aload 4
     //   234: astore 5
     //   236: aload_1
-    //   237: invokevirtual 533	java/io/OutputStream:flush	()V
+    //   237: invokevirtual 531	java/io/OutputStream:flush	()V
     //   240: aload_1
     //   241: ifnull +7 -> 248
     //   244: aload_1
-    //   245: invokevirtual 529	java/io/OutputStream:close	()V
+    //   245: invokevirtual 527	java/io/OutputStream:close	()V
     //   248: iload_3
     //   249: istore_2
     //   250: aload 4
     //   252: ifnull -38 -> 214
     //   255: aload 4
-    //   257: invokevirtual 530	java/io/InputStream:close	()V
+    //   257: invokevirtual 528	java/io/InputStream:close	()V
     //   260: iload_3
     //   261: istore_2
     //   262: goto -48 -> 214
@@ -624,11 +624,11 @@ public class MiniAppFileManager
     //   284: aload 6
     //   286: ifnull +8 -> 294
     //   289: aload 6
-    //   291: invokevirtual 529	java/io/OutputStream:close	()V
+    //   291: invokevirtual 527	java/io/OutputStream:close	()V
     //   294: aload 4
     //   296: ifnull +8 -> 304
     //   299: aload 4
-    //   301: invokevirtual 530	java/io/InputStream:close	()V
+    //   301: invokevirtual 528	java/io/InputStream:close	()V
     //   304: aload_1
     //   305: athrow
     //   306: astore_1
@@ -713,7 +713,7 @@ public class MiniAppFileManager
         {
           if (localArrayList2.get(i) != null)
           {
-            bhmi.a((String)localArrayList2.get(i), false);
+            FileUtils.delete((String)localArrayList2.get(i), false);
             localArrayList2.remove(i);
           }
           i -= 1;
@@ -1119,7 +1119,7 @@ public class MiniAppFileManager
       if (TextUtils.isEmpty(paramString)) {
         return null;
       }
-      if (bhmi.d(str, new File(getMiniFolderPath(1), paramString).getAbsolutePath())) {
+      if (FileUtils.copyFile(str, new File(getMiniFolderPath(1), paramString).getAbsolutePath())) {
         return MiniAppGlobal.STR_WXFILE + "store" + "_" + paramString;
       }
     }
@@ -1153,7 +1153,7 @@ public class MiniAppFileManager
         this.initStoreCountDown.await();
         if (this.storeUpdateCount.incrementAndGet() % 100 == 0)
         {
-          paramLong = bhmi.b(getMiniFolderPath(1));
+          paramLong = FileUtils.getFileOrFolderSize(getMiniFolderPath(1));
           this.storeFolderSize.set(paramLong);
           QLog.i("MiniAppFileManager", 1, "updateFolderSize fileType=store realSize=" + paramLong);
           return;
@@ -1176,7 +1176,7 @@ public class MiniAppFileManager
       this.initUsrCountDown.await();
       if (this.usrUpdateCount.incrementAndGet() % 100 == 0)
       {
-        paramLong = bhmi.b(getMiniFolderPath(2));
+        paramLong = FileUtils.getFileOrFolderSize(getMiniFolderPath(2));
         this.usrFolderSize.set(paramLong);
         QLog.i("MiniAppFileManager", 1, "updateFolderSize fileType=usr realSize=" + paramLong);
         return;

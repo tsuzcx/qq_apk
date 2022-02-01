@@ -1,18 +1,25 @@
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aluu
-  implements View.OnLayoutChangeListener
+  implements View.OnClickListener
 {
-  public aluu(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt) {}
+  public aluu(CmGameLoadingView.1 param1) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.removeOnLayoutChangeListener(this);
-    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, this.jdField_a_of_type_Int, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e.addOnLayoutChangeListener(new aluv(this));
+    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131701231));
+    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.this$0.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+    this.a.this$0.setProgressViewVisibility(true);
+    this.a.a.a(2);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

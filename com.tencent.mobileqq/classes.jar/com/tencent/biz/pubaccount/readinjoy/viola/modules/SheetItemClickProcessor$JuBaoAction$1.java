@@ -4,20 +4,20 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.net.URLEncoder;
-import ozs;
-import tgg;
+import pay;
+import tkk;
 
 public class SheetItemClickProcessor$JuBaoAction$1
   implements Runnable
 {
-  public SheetItemClickProcessor$JuBaoAction$1(tgg paramtgg, String paramString) {}
+  public SheetItemClickProcessor$JuBaoAction$1(tkk paramtkk, String paramString) {}
   
   public void run()
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
     try
     {
-      localObject = (QQAppInterface)ozs.a();
+      localObject = (QQAppInterface)pay.a();
       if (localObject == null) {
         break label87;
       }
@@ -34,13 +34,13 @@ public class SheetItemClickProcessor$JuBaoAction$1
       }
     }
     if (BaseActivity.sTopActivity != null) {
-      ozs.a(BaseActivity.sTopActivity, (String)localObject);
+      pay.a(BaseActivity.sTopActivity, (String)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.SheetItemClickProcessor.JuBaoAction.1
  * JD-Core Version:    0.7.0.1
  */

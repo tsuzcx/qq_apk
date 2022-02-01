@@ -1,10 +1,35 @@
-import MConch.SCPullConchs;
-import MWIFI.SCGet3rdCloudCheck;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class bjic
+class bjic
+  extends Handler
 {
-  public SCPullConchs a;
-  public SCGet3rdCloudCheck a;
+  public bjic(bjhu parambjhu, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      bjhu.a(this.a, bjhu.a(this.a, paramMessage.obj));
+      return;
+    case 2: 
+      bjhu.a(this.a, true);
+      bjhu.a(this.a);
+      bjhu.a(this.a, false);
+      return;
+    case 3: 
+      bjhu.a(this.a, paramMessage.obj);
+      return;
+    }
+    bjhu.b(this.a, paramMessage.obj);
+  }
 }
 
 

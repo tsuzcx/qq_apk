@@ -1,44 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
 
-public class yed
+class yed
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  private yed(ydv paramydv) {}
   
-  public yed(String paramString)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_Int = 3;
-    paramString = (String)((wta)wth.a(10)).b(paramString, "");
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
+    int i = this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom();
+    if (this.a.c < 0)
     {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Int = paramString.optInt("show", 3);
-      if (this.jdField_a_of_type_Int >= 0)
-      {
-        this.c = paramString.optString("url");
-        this.jdField_a_of_type_JavaLangString = paramString.optString("icon");
-        this.b = paramString.optString("text");
-      }
-      return;
+      this.a.c = i;
+      this.a.jdField_a_of_type_Yec.a();
     }
-    catch (Exception paramString)
+    do
     {
       do
       {
-        this.jdField_a_of_type_Int = 3;
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "ButtonConfig exc: " + QLog.getStackTraceString(paramString));
-    }
-  }
-  
-  public String toString()
-  {
-    return "ButtonConfig: show = " + this.jdField_a_of_type_Int + ", iconText = " + this.b + ", iconUrl = " + this.jdField_a_of_type_JavaLangString + ", jumpUrl = " + this.c;
+        return;
+      } while (this.a.c - i <= this.a.b);
+      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+      this.a.c = i;
+      this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
+    } while (this.a.jdField_a_of_type_Yec == null);
+    this.a.jdField_a_of_type_Yec.a(true, null);
+    this.a.jdField_a_of_type_Yec.a(this.a.a());
   }
 }
 

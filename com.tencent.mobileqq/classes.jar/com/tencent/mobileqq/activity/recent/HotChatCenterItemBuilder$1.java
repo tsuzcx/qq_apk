@@ -15,7 +15,7 @@ class HotChatCenterItemBuilder$1
   
   public void run()
   {
-    ??? = ((QQAppInterface)HotChatCenterItemBuilder.a(this.this$0).get()).a().createEntityManager();
+    ??? = ((QQAppInterface)HotChatCenterItemBuilder.a(this.this$0).get()).getEntityManagerFactory().createEntityManager();
     HotChatCenterItemBuilder.a(this.this$0, ApolloGameUtil.a((EntityManager)???));
     if ((HotChatCenterItemBuilder.a(this.this$0) != null) && (HotChatCenterItemBuilder.a(this.this$0).size() > 0))
     {

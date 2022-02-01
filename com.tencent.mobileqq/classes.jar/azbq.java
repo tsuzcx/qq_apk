@@ -1,19 +1,36 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.animation.Animation;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.ptt.LSRecordPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class azbq
-  extends AnimatorListenerAdapter
+  extends azbj
 {
-  public azbq(ScanOcrView paramScanOcrView, int paramInt) {}
+  public azbq(LSRecordPanel paramLSRecordPanel) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.b) {
-      ScanOcrView.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView, this.jdField_a_of_type_Int + 1);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS startCloseAnimation onAnimationEnd");
     }
-    if (this.jdField_a_of_type_Int == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.c();
+    if (LSRecordPanel.a(this.a))
+    {
+      if (paramAnimation == this.a.b) {
+        LSRecordPanel.a(this.a);
+      }
+      this.a.a = null;
+      this.a.b = null;
+      paramAnimation = (RelativeLayout.LayoutParams)LSRecordPanel.a(this.a).getLayoutParams();
+      int i = (int)(this.a.getResources().getDisplayMetrics().density * 4.0F);
+      paramAnimation.height -= i;
+      paramAnimation.width -= i;
+      int j = paramAnimation.rightMargin;
+      paramAnimation.rightMargin = (i / 2 + j);
+      LSRecordPanel.a(this.a, false);
+      LSRecordPanel.a(this.a).setLayoutParams(paramAnimation);
     }
   }
 }

@@ -1,17 +1,10 @@
-import com.tencent.biz.qqcircle.comment.QCircleReplyItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StReply;
-import feedcloud.FeedCloudMeta.StUser;
-
-public class vku
-  implements vya
+public abstract interface vku<T>
 {
-  public vku(QCircleReplyItemView paramQCircleReplyItemView, FeedCloudMeta.StReply paramStReply) {}
+  public abstract void a();
   
-  public void a()
-  {
-    QCircleReplyItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleCommentQCircleReplyItemView, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.targetUser.id.get());
-  }
+  public abstract void a(vkv<T> paramvkv);
+  
+  public abstract void c();
 }
 
 

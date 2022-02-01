@@ -1,17 +1,24 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.teamworkforgroup.GroupPadTemplateInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class beeb
+class beeb
+  implements beef
 {
-  public int a;
-  public ImageView a;
-  public TextView a;
-  public AsyncImageView a;
-  public GroupPadTemplateInfo a;
+  beeb(bedz parambedz, bedw parambedw) {}
   
-  public beeb(bedz parambedz) {}
+  public void a(long paramLong, HashMap<bedw, bedx> paramHashMap)
+  {
+    if (paramHashMap == null) {}
+    do
+    {
+      return;
+      paramHashMap = (bedx)paramHashMap.get(this.jdField_a_of_type_Bedw);
+    } while ((paramHashMap == null) || (paramHashMap.a != 1));
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopEssenceMsgManager", 2, "isEssenceMsg refreshAio key:" + paramLong);
+    }
+    bedz.a(this.jdField_a_of_type_Bedz, paramLong);
+  }
 }
 
 

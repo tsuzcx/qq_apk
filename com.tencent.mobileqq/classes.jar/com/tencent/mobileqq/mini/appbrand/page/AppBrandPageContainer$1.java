@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import bjbs;
+import bhht;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.ApkgManager.OnInitApkgListener;
@@ -11,7 +11,7 @@ import mqq.os.MqqHandler;
 class AppBrandPageContainer$1
   implements ApkgManager.OnInitApkgListener
 {
-  AppBrandPageContainer$1(AppBrandPageContainer paramAppBrandPageContainer, String paramString1, WeakReference paramWeakReference, String paramString2, bjbs parambjbs) {}
+  AppBrandPageContainer$1(AppBrandPageContainer paramAppBrandPageContainer, String paramString1, WeakReference paramWeakReference, String paramString2, bhht parambhht) {}
   
   public void onInitApkgInfo(int paramInt, ApkgInfo paramApkgInfo, String paramString)
   {

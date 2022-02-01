@@ -1,206 +1,109 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import android.hardware.Camera.Parameters;
-import android.os.SystemClock;
-import com.tencent.av.core.VcControllerImpl;
-import com.tencent.av.gaudio.QQGAudioCtrl;
-import com.tencent.av.opengl.GraphicRenderMgr;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.av.chatroom.ChatRoomInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.av.chatroom.chatroom_sso.Msg;
 
 public class ljv
-  extends lje
-  implements lon
 {
-  private Camera.AutoFocusCallback a;
+  public static int a;
+  public static int b;
+  public static int c;
+  public static int d;
+  private static long e;
+  public final long a;
+  public ChatRoomInfo a;
+  public final String a;
+  public final long b;
+  public long c;
+  public long d;
+  public int e;
+  private int f;
   
-  public ljv(Context paramContext)
+  static
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback = new ljw(this);
+    jdField_a_of_type_Int = 1;
+    jdField_b_of_type_Int = 2;
+    jdField_c_of_type_Int = 3;
+    jdField_d_of_type_Int = 4;
   }
   
-  @TargetApi(9)
-  private void a(Camera.Parameters paramParameters, boolean paramBoolean)
+  public ljv(ChatRoomInfo paramChatRoomInfo, long paramLong1, String paramString, long paramLong2, long paramLong3, int paramInt)
   {
-    if (paramParameters == null)
+    this.jdField_b_of_type_Long = a();
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo = paramChatRoomInfo;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_c_of_type_Long = paramLong2;
+    this.jdField_d_of_type_Long = paramLong3;
+    this.jdField_e_of_type_Int = paramInt;
+    if (this.jdField_e_of_type_Int == jdField_a_of_type_Int)
     {
-      lbj.c("AndroidCamera", "parameters null, do nothing about focus config");
-      return;
+      paramChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
+      paramChatRoomInfo.jdField_b_of_type_Int += 1;
     }
-    List localList = paramParameters.getSupportedFocusModes();
-    if (localList == null)
+    this.f = 0;
+  }
+  
+  private static long a()
+  {
+    long l = jdField_e_of_type_Long + 1L;
+    jdField_e_of_type_Long = l;
+    return l;
+  }
+  
+  public void a()
+  {
+    this.f += 1;
+  }
+  
+  public void a(int paramInt)
+  {
+    ChatRoomInfo localChatRoomInfo;
+    if (paramInt == jdField_c_of_type_Int)
     {
-      lbj.c("AndroidCamera", "getSupportedFocusModes empty");
-      return;
+      localChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
+      localChatRoomInfo.jdField_d_of_type_Int += 1;
     }
-    lor locallor = lor.a();
-    if ((locallor != null) && (locallor.g())) {}
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      lbj.c("AndroidCamera", String.format("enableAutoFocus, isUserSelfFocusDev[%s], enable[%s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) }));
-      if (!bool) {
-        break;
+      if ((this.jdField_d_of_type_Long == -9223372036854775808L) || (this.jdField_e_of_type_Int != jdField_d_of_type_Int)) {
+        this.jdField_e_of_type_Int = paramInt;
       }
-      a(paramBoolean, localList);
       return;
-    }
-    a(paramBoolean, localList, paramParameters);
-  }
-  
-  private void a(boolean paramBoolean, List<String> paramList)
-  {
-    if (!paramList.contains("auto")) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      GraphicRenderMgr.getInstance().setFocusDetectCallback(this);
-      GraphicRenderMgr.getInstance().setFocusConfig(true, SystemClock.elapsedRealtime(), 111, 3000);
-      return;
-    }
-    GraphicRenderMgr.getInstance().setFocusDetectCallback(null);
-    GraphicRenderMgr.getInstance().setFocusConfig(false, SystemClock.elapsedRealtime(), 111, 3000);
-  }
-  
-  private void a(boolean paramBoolean, List<String> paramList, Camera.Parameters paramParameters)
-  {
-    if ((paramBoolean) && (this.h >= 9) && (paramList.contains("continuous-video"))) {
-      paramParameters.setFocusMode("continuous-video");
-    }
-    try
-    {
-      this.jdField_a_of_type_AndroidHardwareCamera.setParameters(paramParameters);
-      return;
-    }
-    catch (Exception paramList) {}
-  }
-  
-  protected void a(long paramLong, int paramInt1, int paramInt2)
-  {
-    super.a(paramLong, paramInt1, paramInt2);
-    if (this.jdField_a_of_type_AndroidHardwareCamera != null)
-    {
-      Object localObject1 = null;
-      try
+      if (paramInt == jdField_b_of_type_Int)
       {
-        localObject2 = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
-        localObject1 = localObject2;
-      }
-      catch (Exception localException)
-      {
-        do
-        {
-          for (;;)
-          {
-            Object localObject2;
-            QLog.d("AndroidCamera", 2, "setCameraPara exception", localException);
-            continue;
-            boolean bool = false;
-          }
-        } while (!QLog.isDevelopLevel());
-        QLog.w("AndroidCamera", 1, "setCameraPara, parameters[null]");
-        return;
-      }
-      if (localObject1 != null)
-      {
-        bool = VcControllerImpl.setCameraParameters(localObject1.flatten());
-        localObject2 = localObject1.flatten();
-        if (!bool)
-        {
-          bool = true;
-          QQGAudioCtrl.setCameraParameters((String)localObject2, bool);
-          a(localObject1, true);
-        }
+        localChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
+        localChatRoomInfo.jdField_c_of_type_Int += 1;
       }
     }
-    while (!QLog.isDevelopLevel()) {
-      return;
-    }
-    QLog.w("AndroidCamera", 1, "setCameraPara, camera[false]");
   }
   
-  public void a(boolean paramBoolean)
+  public boolean a()
   {
-    if (paramBoolean)
-    {
-      if (this.jdField_a_of_type_AndroidHardwareCamera == null) {
-        lbj.c("AndroidCamera", "camera null, return");
-      }
-    }
-    else {
-      return;
-    }
-    GraphicRenderMgr.getInstance().setIsFocusing(true);
-    this.jdField_a_of_type_AndroidHardwareCamera.autoFocus(this.jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback);
+    return this.jdField_d_of_type_Long != -9223372036854775808L;
   }
   
-  /* Error */
-  public boolean c(long paramLong)
+  public boolean a(chatroom_sso.Msg paramMsg)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: getstatic 183	ljv:jdField_a_of_type_Boolean	Z
-    //   5: istore_3
-    //   6: iload_3
-    //   7: ifeq +19 -> 26
-    //   10: aload_0
-    //   11: getfield 119	ljv:jdField_a_of_type_AndroidHardwareCamera	Landroid/hardware/Camera;
-    //   14: invokevirtual 133	android/hardware/Camera:getParameters	()Landroid/hardware/Camera$Parameters;
-    //   17: astore 4
-    //   19: aload_0
-    //   20: aload 4
-    //   22: iconst_0
-    //   23: invokespecial 150	ljv:a	(Landroid/hardware/Camera$Parameters;Z)V
-    //   26: aload_0
-    //   27: lload_1
-    //   28: invokespecial 185	lje:c	(J)Z
-    //   31: istore_3
-    //   32: aload_0
-    //   33: monitorexit
-    //   34: iload_3
-    //   35: ireturn
-    //   36: astore 4
-    //   38: invokestatic 188	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   41: ifeq +13 -> 54
-    //   44: ldc 26
-    //   46: iconst_2
-    //   47: ldc 190
-    //   49: aload 4
-    //   51: invokestatic 193	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   54: aconst_null
-    //   55: astore 4
-    //   57: goto -38 -> 19
-    //   60: astore 4
-    //   62: aload_0
-    //   63: monitorexit
-    //   64: aload 4
-    //   66: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	67	0	this	ljv
-    //   0	67	1	paramLong	long
-    //   5	30	3	bool	boolean
-    //   17	4	4	localParameters	Camera.Parameters
-    //   36	14	4	localException	Exception
-    //   55	1	4	localObject1	Object
-    //   60	5	4	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   10	19	36	java/lang/Exception
-    //   2	6	60	finally
-    //   10	19	60	finally
-    //   19	26	60	finally
-    //   26	32	60	finally
-    //   38	54	60	finally
+    if (paramMsg == null) {}
+    while ((this.jdField_d_of_type_Long != paramMsg.msg_id.get()) || (this.jdField_a_of_type_Long != paramMsg.uin.get()) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramMsg.msg.get()))) {
+      return false;
+    }
+    return true;
   }
   
-  public int i()
+  public boolean b()
   {
-    return a(this.i, this.jdField_a_of_type_AndroidHardwareCamera).c;
+    return (this.jdField_e_of_type_Int == jdField_b_of_type_Int) && (this.f < 3) && (this.jdField_d_of_type_Long == -9223372036854775808L);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(60);
+    localStringBuilder.append("ChatRoomMsg{senderUin: ").append(this.jdField_a_of_type_Long).append(", serverSeq: ").append(this.jdField_d_of_type_Long).append(", localSeq: ").append(this.jdField_b_of_type_Long).append(", state: ").append(this.jdField_e_of_type_Int).append("}");
+    return localStringBuilder.toString();
   }
 }
 

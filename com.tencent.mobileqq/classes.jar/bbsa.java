@@ -1,28 +1,29 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.qphone.base.util.QLog;
 
-public class bbsa
+class bbsa
+  implements bbsc
 {
-  public int a;
-  public String a;
-  public ArrayList<bbsa> a;
-  public boolean a;
-  public int b = 1;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
+  bbsa(bbrz parambbrz) {}
   
-  public bbsa(int paramInt)
+  public void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
+    if (bbrz.a(this.a) != null) {
+      bbrz.a(this.a).a(this.a.a, paramFloat);
+    }
   }
+  
+  public void a(MessageForShortVideo paramMessageForShortVideo, int paramInt)
+  {
+    QLog.d("VideoCompressProcessor", 1, "hardware compress finish code: " + paramInt);
+    if (bbrz.a(this.a) != null)
+    {
+      bbrz.a(this.a).a(this.a.a, 1.0F);
+      bbrz.a(this.a).a(this.a.a, 3);
+    }
+  }
+  
+  public void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean) {}
 }
 
 

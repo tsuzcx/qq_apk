@@ -1,80 +1,34 @@
 import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.biz.pubaccount.weishi_new.net.WeishiRequestException;
+import java.util.ArrayList;
+import rx.Subscriber;
 
-public class uub
-  extends uej<usv>
+class uub
+  extends Subscriber<ArrayList<stSimpleMetaFeed>>
 {
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  private uuy jdField_a_of_type_Uuy;
-  private View b;
+  uub(utx paramutx, WSRecommendFragment paramWSRecommendFragment, boolean paramBoolean1, boolean paramBoolean2, urj paramurj, long paramLong, boolean paramBoolean3) {}
   
-  public uub(Context paramContext, uuy paramuuy)
+  public void a(ArrayList<stSimpleMetaFeed> paramArrayList)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Uuy = paramuuy;
-    if (paramuuy != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramuuy.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendFragment.a(paramArrayList, this.jdField_a_of_type_Boolean, this.b, true, this.c);
   }
   
-  private void a(int paramInt1, int paramInt2)
+  public void onCompleted() {}
+  
+  public void onError(Throwable paramThrowable)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a != null))
+    if ((paramThrowable instanceof WeishiRequestException))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a.a(uvv.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a()), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b());
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a.a(a());
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a.a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a.a(paramInt1, paramInt2, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b());
+      paramThrowable = (WeishiRequestException)paramThrowable;
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendFragment.a(paramThrowable.code, paramThrowable.msg, this.jdField_a_of_type_Boolean, this.b);
     }
-  }
-  
-  private void f()
-  {
-    a(0, 4);
-  }
-  
-  private void g()
-  {
-    a(1, 7);
-  }
-  
-  protected void a()
-  {
-    if ((a() != null) && ((((usv)a()).a() instanceof stSimpleMetaFeed))) {
-      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((stSimpleMetaFeed)((usv)a()).a());
+    for (;;)
+    {
+      utx.a(this.jdField_a_of_type_Utx, this.jdField_a_of_type_Urj, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long);
+      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendFragment.a(-1, paramThrowable.getMessage(), this.jdField_a_of_type_Boolean, this.b);
     }
-  }
-  
-  protected int b()
-  {
-    return 2131560023;
-  }
-  
-  protected void b()
-  {
-    String str = ugd.a().f();
-    if (!TextUtils.isEmpty(str)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-    }
-  }
-  
-  protected void c() {}
-  
-  protected void e()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379749));
-    this.b = a(2131372126);
-    this.b.setOnClickListener(new uuc(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131369151));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new uud(this));
   }
 }
 

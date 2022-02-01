@@ -1,24 +1,20 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.biz.qqcircle.comment.QCircleCommentItemView;
-import feedcloud.FeedCloudMeta.StFeed;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class uzm
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  private uzm(uzl paramuzl, View paramView)
-  {
-    super(paramView);
-  }
+  uzm(uzl paramuzl) {}
   
-  public void a(int paramInt, FeedCloudMeta.StFeed paramStFeed, vat paramvat, aakb paramaakb)
+  public void onClick(View paramView)
   {
-    if ((this.itemView instanceof QCircleCommentItemView))
-    {
-      ((QCircleCommentItemView)this.itemView).setFeed(paramStFeed);
-      ((QCircleCommentItemView)this.itemView).setOnCommentElementClickListener(paramaakb);
-      ((QCircleCommentItemView)this.itemView).a(paramvat, paramInt);
+    if (uzl.a(this.a).getActivity() != null) {
+      uzl.a(this.a).getActivity().doOnBackPressed();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

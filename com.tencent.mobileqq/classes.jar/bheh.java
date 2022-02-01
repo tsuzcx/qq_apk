@@ -1,15 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.upgrade.activity.UpgradeActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.GifAnimationDrawable;
+import java.lang.ref.WeakReference;
 
 public class bheh
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public bheh(UpgradeActivity paramUpgradeActivity) {}
+  private final WeakReference<GifAnimationDrawable> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bheh(GifAnimationDrawable paramGifAnimationDrawable)
   {
-    this.a.finish();
+    super(Looper.getMainLooper());
+    this.a = new WeakReference(paramGifAnimationDrawable);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    GifAnimationDrawable localGifAnimationDrawable;
+    do
+    {
+      return;
+      localGifAnimationDrawable = (GifAnimationDrawable)this.a.get();
+    } while (localGifAnimationDrawable == null);
+    GifAnimationDrawable.a(localGifAnimationDrawable, (bheg)paramMessage.obj);
   }
 }
 

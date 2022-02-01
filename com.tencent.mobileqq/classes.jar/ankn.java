@@ -1,38 +1,41 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import java.security.KeyFactory;
+import java.security.NoSuchAlgorithmException;
+import java.security.PublicKey;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.X509EncodedKeySpec;
 
-class ankn
-  implements amvj
+public class ankn
 {
-  ankn(ankf paramankf, int paramInt, String paramString, AppInterface paramAppInterface, File paramFile) {}
-  
-  public void a(boolean paramBoolean, amvi paramamvi)
+  public static String a(String paramString1, String paramString2)
   {
-    paramamvi = amva.a().a(8, this.jdField_a_of_type_Int);
-    Object localObject = new StringBuilder().append("downloadApolloRes onCheckFinish success:").append(paramBoolean).append(" downloadItem:");
-    if (paramamvi == null) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    paramString2 = a(paramString2);
+    if (paramString2 == null) {
+      return null;
+    }
+    return new ankp(new anks(paramString2)).a(paramString1);
+  }
+  
+  private static PublicKey a(String paramString)
+  {
+    try
     {
-      QLog.i("ApolloPluginRscLoader", 1, paramBoolean);
-      localObject = ankf.a(this.jdField_a_of_type_JavaLangString);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break;
+      paramString = new X509EncodedKeySpec(ankk.a(paramString.replaceAll("\\-*BEGIN.*KEY\\-*", "").replaceAll("\\-*END.*KEY\\-*", "")));
+      paramString = KeyFactory.getInstance("RSA").generatePublic(paramString);
+      return paramString;
+    }
+    catch (NoSuchAlgorithmException paramString)
+    {
+      QLog.e("JWTUtil", 1, new Object[] { "getPublicKey NoSuchAlgorithmException : ", paramString.getMessage() });
+      return null;
+    }
+    catch (InvalidKeySpecException paramString)
+    {
+      for (;;)
+      {
+        QLog.e("JWTUtil", 1, new Object[] { "getPublicKey InvalidKeySpecException : ", paramString.getMessage() });
       }
-      QLog.e("ApolloPluginRscLoader", 1, "getApolloRsc error callbackId is null resourceUrl:" + this.jdField_a_of_type_JavaLangString);
-      return;
     }
-    if (paramamvi == null)
-    {
-      this.jdField_a_of_type_Ankf.a((String)localObject, 2, this.jdField_a_of_type_Int + " json里无此id");
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramamvi);
-    amvc.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "", new anko(this, (String)localObject), localArrayList, false, null);
   }
 }
 

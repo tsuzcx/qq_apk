@@ -1,27 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.ImageView;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
 
-class anfl
-  implements DialogInterface.OnClickListener
+public class anfl
+  implements Comparator<File>
 {
-  anfl(anfj paramanfj) {}
+  public anfl(CleanCache paramCleanCache) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(File paramFile1, File paramFile2)
   {
-    if (anfj.a(this.a) != null)
-    {
-      anfj.b(this.a).setVisibility(8);
-      anfj.c(this.a).setVisibility(8);
-      anfj.b(this.a, false);
-      anfj.a(this.a).a();
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
     }
-    this.a.a(6, 3, true);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anfl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy;
 
 import android.view.View;
-import ohp;
+import ojc;
 
 public class ReadInJoyChannelViewPagerController$8
   implements Runnable
 {
-  public ReadInJoyChannelViewPagerController$8(ohp paramohp, View paramView1, View paramView2) {}
+  public ReadInJoyChannelViewPagerController$8(ojc paramojc, View paramView1, View paramView2) {}
   
   public void run()
   {
     if (this.this$0.a() != 0)
     {
       if (this.a != null) {
-        this.a.findViewById(2131368931).setVisibility(4);
+        this.a.findViewById(2131368957).setVisibility(4);
       }
       if (this.b != null) {
         this.b.setVisibility(0);

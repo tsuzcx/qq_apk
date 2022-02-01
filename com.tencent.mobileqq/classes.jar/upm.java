@@ -1,14 +1,16 @@
 public class upm
 {
-  public String a;
-  public String b;
+  public int a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
   
-  public upm() {}
-  
-  public upm(String paramString1, String paramString2)
+  public String toString()
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    return "Type{cardType=" + this.jdField_a_of_type_Int + ", isOuterDescStyle=" + this.jdField_a_of_type_Boolean + ", isInnerInfoStyle=" + this.b + ", isPlayAndLikeStyle=" + this.c + ", isOnlyInnerStyle=" + this.d + ", isOnlyOuterStyle=" + this.e + ", isPlayCountStyle=" + this.f + '}';
   }
 }
 

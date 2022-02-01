@@ -5,13 +5,13 @@ import android.hardware.Camera;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import bbip;
+import bacu;
 import javax.microedition.khronos.opengles.GL10;
 
 public class IdentifierCameraCaptureView
   extends CameraCaptureView
 {
-  public bbip a;
+  public bacu a;
   
   public IdentifierCameraCaptureView(@NonNull Context paramContext)
   {
@@ -23,22 +23,22 @@ public class IdentifierCameraCaptureView
     super(paramContext, paramAttributeSet);
   }
   
-  public void a(byte[] paramArrayOfByte, Camera paramCamera)
-  {
-    super.a(paramArrayOfByte, paramCamera);
-    if (this.a != null) {
-      this.a.a(paramArrayOfByte, paramCamera);
-    }
-  }
-  
   public void onDrawFrame(GL10 paramGL10)
   {
     super.onDrawFrame(paramGL10);
   }
   
-  public void setPreviewCallback(bbip parambbip)
+  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    this.a = parambbip;
+    super.onPreviewFrame(paramArrayOfByte, paramCamera);
+    if (this.a != null) {
+      this.a.a(paramArrayOfByte, paramCamera);
+    }
+  }
+  
+  public void setPreviewCallback(bacu parambacu)
+  {
+    this.a = parambacu;
   }
 }
 

@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.apollo;
 
-import amsx;
-import amvk;
-import anke;
-import annv;
+import alnr;
+import alqe;
+import amey;
+import amip;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class EnginePreLoader$2
   implements Runnable
 {
-  public EnginePreLoader$2(amvk paramamvk) {}
+  public EnginePreLoader$2(alqe paramalqe) {}
   
   public void run()
   {
     QLog.i("Apollo_EnginePreLoader", 1, "sava exePreloadJsAsync start");
     long l = System.currentTimeMillis();
-    if (amvk.a(this.this$0) != null)
+    if (alqe.a(this.this$0) != null)
     {
-      amvk.a(this.this$0).a(amsx.g);
-      amvk.a(this.this$0).a(amsx.f);
-      String str = anke.a(new File(annv.s + "preload.js"));
-      amvk.a(this.this$0).a(str);
+      alqe.a(this.this$0).a(alnr.g);
+      alqe.a(this.this$0).a(alnr.f);
+      String str = amey.a(new File(amip.s + "preload.js"));
+      alqe.a(this.this$0).a(str);
     }
     QLog.i("Apollo_EnginePreLoader", 1, "inner sava use time:" + (System.currentTimeMillis() - l));
   }

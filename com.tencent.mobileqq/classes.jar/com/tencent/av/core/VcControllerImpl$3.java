@@ -1,26 +1,26 @@
 package com.tencent.av.core;
 
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-
 class VcControllerImpl$3
   implements Runnable
 {
-  VcControllerImpl$3(VcControllerImpl paramVcControllerImpl, long paramLong, int paramInt) {}
+  VcControllerImpl$3(VcControllerImpl paramVcControllerImpl, boolean paramBoolean) {}
   
   public void run()
   {
-    QLog.d("VcControllerImpl", 1, "closeVideo start.");
-    VcControllerImpl.access$002(this.this$0, this.this$0.close(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int));
-    ThreadManager.getUIHandler().removeCallbacks(VcControllerImpl.access$400(this.this$0));
-    VcControllerImpl.access$202(this.this$0, -1);
-    VcControllerImpl.access$102(this.this$0, null);
-    QLog.d("VcControllerImpl", 1, "closeVideo end. mCloseResult = " + VcControllerImpl.access$000(this.this$0));
-    synchronized (VcControllerImpl.access$500(this.this$0))
+    ??? = this.this$0;
+    int i;
+    if (this.a) {
+      i = this.this$0.stopAudioSend();
+    }
+    for (;;)
     {
-      VcControllerImpl.access$500(this.this$0).notify();
-      return;
+      VcControllerImpl.access$502((VcControllerImpl)???, i);
+      synchronized (VcControllerImpl.access$600(this.this$0))
+      {
+        VcControllerImpl.access$600(this.this$0).notify();
+        return;
+        i = this.this$0.startAudioSend();
+      }
     }
   }
 }

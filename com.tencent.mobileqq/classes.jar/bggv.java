@@ -1,28 +1,16 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.troop.honor.widget.TroopHonorView;
+import android.annotation.TargetApi;
+import android.os.Handler;
 
-public class bggv
-  implements URLDrawable.URLDrawableListener
+class bggv
+  extends bgod
 {
-  public bggv(TroopHonorView paramTroopHonorView, ImageView paramImageView) {}
+  bggv(bggu parambggu) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  @TargetApi(9)
+  public void onDone(bgoe parambgoe)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    super.onDone(parambgoe);
+    bggu.a(this.a).sendMessage(bggu.a(this.a).obtainMessage(10002, parambgoe.a(), 0, parambgoe.a()));
   }
 }
 

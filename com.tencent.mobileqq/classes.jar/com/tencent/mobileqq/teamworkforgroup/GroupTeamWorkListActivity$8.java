@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
 import android.os.Message;
-import beev;
+import bcym;
 import java.util.Collections;
 import java.util.List;
 import mqq.os.MqqHandler;
@@ -14,12 +14,12 @@ class GroupTeamWorkListActivity$8
   public void run()
   {
     List localList;
-    if (this.this$0.jdField_a_of_type_Beev != null)
+    if (this.this$0.jdField_a_of_type_Bcym != null)
     {
       if (this.a == 1) {
-        this.this$0.jdField_a_of_type_Beev.a(this.this$0.jdField_a_of_type_Long);
+        this.this$0.jdField_a_of_type_Bcym.a(this.this$0.jdField_a_of_type_Long);
       }
-      localList = this.this$0.jdField_a_of_type_Beev.a();
+      localList = this.this$0.jdField_a_of_type_Bcym.a();
       if (localList == null) {}
     }
     synchronized (this.this$0.jdField_a_of_type_JavaUtilList)
@@ -37,7 +37,7 @@ class GroupTeamWorkListActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.8
  * JD-Core Version:    0.7.0.1
  */

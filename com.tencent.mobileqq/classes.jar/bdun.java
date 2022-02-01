@@ -1,9 +1,18 @@
-import kotlin.Metadata;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.activity.TroopNickRuleFragment;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/ModeRadioGroup$OnCheckChangeListener;", "", "onModeCheckedChanged", "", "curType", "", "oldType", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface bdun
+public class bdun
+  implements View.OnTouchListener
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public bdun(TroopNickRuleFragment paramTroopNickRuleFragment) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.a.a(paramMotionEvent.getX(), paramMotionEvent.getY());
+    return false;
+  }
 }
 
 

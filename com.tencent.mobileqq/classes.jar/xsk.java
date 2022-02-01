@@ -1,23 +1,31 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class xsk
-  implements xth
+public class xsk
+  extends QQUIEventReceiver<MystoryListView, vnz>
 {
-  xsk(xsg paramxsg, StoryVideoItem paramStoryVideoItem) {}
-  
-  public void a(xtg paramxtg)
+  public xsk(@NonNull MystoryListView paramMystoryListView)
   {
-    if (this.jdField_a_of_type_Xsg.isCanceled()) {}
-    do
-    {
-      return;
-      yuk.a(this.jdField_a_of_type_Xsg.a.jdField_a_of_type_JavaLangString, "onCompletion, [videoView], current state = %s", VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Xsg.a.c]);
-    } while (!VideoViewVideoHolder.b(this.jdField_a_of_type_Xsg.a, 12));
-    VideoViewVideoHolder.a(this.jdField_a_of_type_Xsg.a, 12);
-    this.jdField_a_of_type_Xsg.a.d = 1;
-    VideoViewVideoHolder.a(this.jdField_a_of_type_Xsg.a).a(this.jdField_a_of_type_Xsg.a, paramxtg, VideoViewVideoHolder.b(this.jdField_a_of_type_Xsg.a));
-    yup.c("video_ope", "play_finish", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid, "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    super(paramMystoryListView);
+  }
+  
+  public void a(@NonNull MystoryListView paramMystoryListView, @NonNull vnz paramvnz)
+  {
+    paramMystoryListView.q();
+    paramvnz = (xss)paramMystoryListView.a("FeedSegment");
+    if (paramvnz != null) {
+      paramvnz.j();
+    }
+    paramMystoryListView = (xuh)paramMystoryListView.a("NewMyStorySegment");
+    if (paramMystoryListView != null) {
+      paramMystoryListView.a(false);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vnz.class;
   }
 }
 

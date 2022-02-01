@@ -1,36 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Calendar;
+import com.tencent.mobileqq.activity.home.Conversation;
 
 public class ajcj
+  extends axkt
 {
-  long jdField_a_of_type_Long;
-  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  CharSequence jdField_a_of_type_JavaLangCharSequence;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  long jdField_b_of_type_Long;
-  CharSequence jdField_b_of_type_JavaLangCharSequence;
+  public ajcj(Conversation paramConversation) {}
   
-  public ajcj(TroopMemberHistoryFragment paramTroopMemberHistoryFragment, String paramString, long paramLong1, CharSequence paramCharSequence, long paramLong2, MessageRecord paramMessageRecord)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public CharSequence a()
-  {
-    if (this.jdField_b_of_type_JavaLangCharSequence == null)
-    {
-      Calendar.getInstance().setTimeInMillis(this.jdField_a_of_type_Long * 1000L);
-      this.jdField_b_of_type_JavaLangCharSequence = bhsw.a(BaseApplicationImpl.getApplication().getApplicationContext(), 3, this.jdField_a_of_type_Long * 1000L);
+    super.a(paramBoolean1, paramBoolean2, paramInt);
+    if ((paramBoolean1) && (paramInt != 2) && (Conversation.b(this.a))) {
+      azvn.a(this.a);
     }
-    return this.jdField_b_of_type_JavaLangCharSequence;
   }
 }
 

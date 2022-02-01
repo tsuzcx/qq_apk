@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import appv;
-import bdmc;
+import aoji;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ARReport$16
   implements Runnable
 {
-  public ARReport$16(appv paramappv, long paramLong, int paramInt) {}
+  public ARReport$16(aoji paramaoji, long paramLong, int paramInt) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
     localHashMap.put("result", this.jdField_a_of_type_Int + "");
-    bdmc.a(BaseApplication.getContext()).a("", "AREngineinitAR", true, 0L, 0L, localHashMap, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "AREngineinitAR", true, 0L, 0L, localHashMap, "");
   }
 }
 

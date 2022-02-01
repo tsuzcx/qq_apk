@@ -1,18 +1,12 @@
-import java.util.Observable;
+import android.animation.TypeEvaluator;
+import android.graphics.Matrix;
 
-public class zji
-  extends Observable
+final class zji
+  implements TypeEvaluator<Matrix>
 {
-  public void notifyObservers()
+  public Matrix a(float paramFloat, Matrix paramMatrix1, Matrix paramMatrix2)
   {
-    setChanged();
-    super.notifyObservers();
-  }
-  
-  public void notifyObservers(Object paramObject)
-  {
-    setChanged();
-    super.notifyObservers(paramObject);
+    return null;
   }
 }
 

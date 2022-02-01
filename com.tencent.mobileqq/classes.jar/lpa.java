@@ -1,290 +1,579 @@
-import android.text.TextUtils;
-import com.tencent.av.opengl.effects.AEFilterSupport;
+import android.annotation.TargetApi;
+import android.opengl.GLES20;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.nio.ByteBuffer;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Locale;
 
 public class lpa
 {
-  private final LinkedHashMap<String, lpb> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(12);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b = true;
+  private static final String jdField_a_of_type_JavaLangString = AppConstants.SDCARD_ROOT + "/avdebug/";
+  private static final StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(500);
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "10.AV_SRC", "20.AV_PRE_RENDER", "30.AV_FILTER_NEW", "40.AV_FILTER", "50.AV_POST_RENDER", "60.AV_RETURN", "appleVideoDenoise", "appleLowLightEnhance", "applyBeauty30", "mInputTextureFbo", "applyBeauty20", "mirrorTextureIn", "mirrorTextureOut" };
+  private static boolean jdField_b_of_type_Boolean;
+  private int jdField_a_of_type_Int;
+  public boolean a;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private lpb[] jdField_a_of_type_ArrayOfLpb;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean c;
   
-  public lpa()
+  static String a(int paramInt)
   {
-    d();
+    if (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length) {
+      return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+    }
+    return "unknown";
   }
   
-  private void d()
+  public static String a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (AEFilterSupport.a() >= 7) {
-      this.b = false;
-    }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("BEAUTY_SKIN", new lpb(null, 1, 50, 0));
-    if (this.b)
+    String str = "UnKnown";
+    switch (paramInt3)
     {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("COLOR_TONE", new lpb(BeautyRealConfig.TYPE.COLOR_TONE, 2, 50, 50));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("EYE_LIGHTEN", new lpb(BeautyRealConfig.TYPE.EYE_LIGHTEN, 2, 0, 0));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("TOOTH_WHITEN", new lpb(BeautyRealConfig.TYPE.TOOTH_WHITEN, 2, 0, 0));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("ENLARGE_EYE", new lpb(BeautyRealConfig.TYPE.EYE, 3, 0, 0));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("MOUTH_SHAPE", new lpb(BeautyRealConfig.TYPE.MOUTH_SHAPE, 3, 50, 50));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("CHIN", new lpb(BeautyRealConfig.TYPE.CHIN, 3, 50, 50));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_THIN", new lpb(BeautyRealConfig.TYPE.FACE_THIN, 3, 0, 0));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_V", new lpb(BeautyRealConfig.TYPE.FACE_V, 3, 0, 0));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_SHAPE_4", new lpb(BeautyRealConfig.TYPE.BASIC4, 3, 0, 0));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_SHORTEN", new lpb(BeautyRealConfig.TYPE.FACE_SHORTEN, 3, 0, 0));
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put("NOSE_THIN", new lpb(BeautyRealConfig.TYPE.NOSE, 3, 0, 0));
-      return;
     }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("COLOR_TONE", new lpb(BeautyRealConfig.TYPE.COLOR_TONE, 2, 50, 50));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("EYE_LIGHTEN", new lpb(BeautyRealConfig.TYPE.EYE_LIGHTEN, 2, 0, 0));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("TOOTH_WHITEN", new lpb(BeautyRealConfig.TYPE.TOOTH_WHITEN, 2, 0, 0));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("ENLARGE_EYE", new lpb(BeautyRealConfig.TYPE.EYE, 3, 0, 0));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("MOUTH_SHAPE", new lpb(BeautyRealConfig.TYPE.MOUTH_SHAPE, 3, 50, 50));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("CHIN", new lpb(BeautyRealConfig.TYPE.CHIN, 3, 50, 50));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_THIN", new lpb(BeautyRealConfig.TYPE.FACE_THIN, 3, 0, 0));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_V", new lpb(BeautyRealConfig.TYPE.FACE_V, 3, 0, 0));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_SHAPE_4", new lpb(BeautyRealConfig.TYPE.BASIC4, 3, 40, 0));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_SHORTEN", new lpb(BeautyRealConfig.TYPE.FACE_SHORTEN, 3, 0, 0));
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("NOSE_THIN", new lpb(BeautyRealConfig.TYPE.NOSE, 3, 0, 0));
-  }
-  
-  public int a(String paramString)
-  {
-    paramString = (lpb)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
-    if (paramString != null) {
-      return paramString.d;
-    }
-    return 0;
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet());
-    Collections.sort(localArrayList);
-    localStringBuilder.append("VERSION").append(":").append(1);
-    int i = 0;
-    if (i < localArrayList.size())
+    for (;;)
     {
-      String str = (String)localArrayList.get(i);
-      lpb locallpb = (lpb)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str);
-      if (locallpb == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (locallpb.d != locallpb.b) {
-          localStringBuilder.append(",").append(str).append(":").append(locallpb.d);
-        }
+      return "[w" + paramInt1 + "h" + paramInt2 + "f" + str + "]";
+      str = "RGB32";
+      continue;
+      str = "NV21";
+      continue;
+      str = "YUV420";
+      continue;
+      str = "NV16";
+    }
+  }
+  
+  private lpb a(int paramInt)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_ArrayOfLpb != null)
+    {
+      localObject1 = localObject2;
+      if (paramInt < this.jdField_a_of_type_ArrayOfLpb.length) {
+        localObject1 = this.jdField_a_of_type_ArrayOfLpb[paramInt];
       }
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("BeautyConfig", 4, "getConfigStr, config[" + localStringBuilder.toString() + "]");
+    return localObject1;
+  }
+  
+  private void a(int paramInt1, int paramInt2)
+  {
+    paramInt1 = paramInt2 * paramInt1 * 4;
+    if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length != paramInt1))
+    {
+      this.jdField_a_of_type_ArrayOfByte = new byte[paramInt1];
+      return;
     }
-    return localStringBuilder.toString();
+    Arrays.fill(this.jdField_a_of_type_ArrayOfByte, (byte)0);
+  }
+  
+  private static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte)
+  {
+    int[] arrayOfInt = new int[1];
+    GLES20.glGenFramebuffers(1, arrayOfInt, 0);
+    GLES20.glBindFramebuffer(36160, arrayOfInt[0]);
+    GLES20.glFramebufferTexture2D(36160, paramInt2, 3553, paramInt1, 0);
+    GLES20.glReadPixels(0, 0, paramInt3, paramInt4, 6408, 5121, ByteBuffer.wrap(paramArrayOfByte));
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glDeleteFramebuffers(1, arrayOfInt, 0);
+  }
+  
+  /* Error */
+  private static void a(byte[] paramArrayOfByte, String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: ifnull +10 -> 11
+    //   4: aload_1
+    //   5: invokestatic 151	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   8: ifeq +4 -> 12
+    //   11: return
+    //   12: new 153	java/io/FileOutputStream
+    //   15: dup
+    //   16: aload_1
+    //   17: invokespecial 156	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   20: astore_2
+    //   21: aload_2
+    //   22: astore_1
+    //   23: aload_2
+    //   24: aload_0
+    //   25: invokestatic 142	lpa:b	(Ljava/io/FileOutputStream;[B)V
+    //   28: aload_2
+    //   29: astore_1
+    //   30: aload_2
+    //   31: invokevirtual 159	java/io/FileOutputStream:flush	()V
+    //   34: aload_2
+    //   35: astore_1
+    //   36: aload_2
+    //   37: invokevirtual 162	java/io/FileOutputStream:close	()V
+    //   40: aload_2
+    //   41: ifnull -30 -> 11
+    //   44: aload_2
+    //   45: invokevirtual 162	java/io/FileOutputStream:close	()V
+    //   48: return
+    //   49: astore_0
+    //   50: aload_0
+    //   51: invokevirtual 165	java/lang/Exception:printStackTrace	()V
+    //   54: return
+    //   55: astore_3
+    //   56: aconst_null
+    //   57: astore_0
+    //   58: aload_0
+    //   59: astore_1
+    //   60: aload_3
+    //   61: invokevirtual 165	java/lang/Exception:printStackTrace	()V
+    //   64: aload_0
+    //   65: ifnull -54 -> 11
+    //   68: aload_0
+    //   69: invokevirtual 162	java/io/FileOutputStream:close	()V
+    //   72: return
+    //   73: astore_0
+    //   74: aload_0
+    //   75: invokevirtual 165	java/lang/Exception:printStackTrace	()V
+    //   78: return
+    //   79: astore_0
+    //   80: aconst_null
+    //   81: astore_1
+    //   82: aload_1
+    //   83: ifnull +7 -> 90
+    //   86: aload_1
+    //   87: invokevirtual 162	java/io/FileOutputStream:close	()V
+    //   90: aload_0
+    //   91: athrow
+    //   92: astore_1
+    //   93: aload_1
+    //   94: invokevirtual 165	java/lang/Exception:printStackTrace	()V
+    //   97: goto -7 -> 90
+    //   100: astore_0
+    //   101: goto -19 -> 82
+    //   104: astore_3
+    //   105: aload_2
+    //   106: astore_0
+    //   107: goto -49 -> 58
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	110	0	paramArrayOfByte	byte[]
+    //   0	110	1	paramString	String
+    //   20	86	2	localFileOutputStream	FileOutputStream
+    //   55	6	3	localException1	java.lang.Exception
+    //   104	1	3	localException2	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   44	48	49	java/lang/Exception
+    //   12	21	55	java/lang/Exception
+    //   68	72	73	java/lang/Exception
+    //   12	21	79	finally
+    //   86	90	92	java/lang/Exception
+    //   23	28	100	finally
+    //   30	34	100	finally
+    //   36	40	100	finally
+    //   60	64	100	finally
+    //   23	28	104	java/lang/Exception
+    //   30	34	104	java/lang/Exception
+    //   36	40	104	java/lang/Exception
+  }
+  
+  private static void b(FileOutputStream paramFileOutputStream, byte[] paramArrayOfByte)
+  {
+    if ((paramFileOutputStream == null) || (paramArrayOfByte == null)) {
+      return;
+    }
+    try
+    {
+      paramFileOutputStream.write(paramArrayOfByte);
+      paramFileOutputStream.flush();
+      return;
+    }
+    catch (Throwable paramFileOutputStream)
+    {
+      paramFileOutputStream.printStackTrace();
+    }
+  }
+  
+  private void b(loy paramloy, int paramInt, lok paramlok, lpf paramlpf)
+  {
+    int n = 17;
+    lpb locallpb = a(paramInt);
+    int k;
+    int m;
+    int i;
+    int j;
+    if (locallpb != null)
+    {
+      k = paramloy.jdField_a_of_type_Int;
+      m = paramloy.b;
+      if (paramInt != 0) {
+        break label97;
+      }
+      i = m;
+      j = k;
+      if (paramlok == null) {
+        break label525;
+      }
+      i = m;
+      j = k;
+      if (!paramlok.b()) {
+        break label525;
+      }
+      paramlok = paramlok.jdField_a_of_type_ArrayOfByte;
+      j = paramloy.b;
+      i = paramloy.jdField_a_of_type_Int;
+      paramloy = paramlok;
+      paramInt = n;
+    }
+    for (;;)
+    {
+      if (paramloy != null) {
+        locallpb.a(paramloy, paramInt, j, i);
+      }
+      return;
+      label97:
+      if (paramInt == 5)
+      {
+        i = m;
+        j = k;
+        if (paramlok != null)
+        {
+          i = m;
+          j = k;
+          if (paramlok.b())
+          {
+            paramlok = paramlok.jdField_a_of_type_ArrayOfByte;
+            j = paramloy.b;
+            i = paramloy.jdField_a_of_type_Int;
+            paramInt = n;
+            paramloy = paramlok;
+          }
+        }
+      }
+      else if (paramInt == 3)
+      {
+        i = m;
+        j = k;
+        if (paramlpf != null)
+        {
+          i = m;
+          j = k;
+          if (paramlpf.b != -1)
+          {
+            a(k, m);
+            a(paramlpf.b, 36064, k, m, this.jdField_a_of_type_ArrayOfByte);
+            paramloy = this.jdField_a_of_type_ArrayOfByte;
+            paramInt = 42;
+            i = m;
+            j = k;
+          }
+        }
+      }
+      else if (paramInt == 2)
+      {
+        i = m;
+        j = k;
+        if (paramlpf != null)
+        {
+          i = m;
+          j = k;
+          if (paramlpf.b != -1)
+          {
+            a(k, m);
+            a(paramlpf.b, 36064, k, m, this.jdField_a_of_type_ArrayOfByte);
+            paramloy = this.jdField_a_of_type_ArrayOfByte;
+            paramInt = 42;
+            i = m;
+            j = k;
+          }
+        }
+      }
+      else if (paramInt == 4)
+      {
+        paramInt = paramloy.b;
+        k = paramloy.jdField_a_of_type_Int;
+        i = k;
+        j = paramInt;
+        if (paramloy.jdField_a_of_type_Lpj != null)
+        {
+          paramlok = paramloy.jdField_a_of_type_Lpj.a();
+          m = paramloy.jdField_a_of_type_Lpj.a();
+          i = k;
+          j = paramInt;
+          paramInt = m;
+          paramloy = paramlok;
+        }
+      }
+      else
+      {
+        i = m;
+        j = k;
+        if (paramInt == 1)
+        {
+          if ((paramlpf != null) && (paramlpf.b != -1))
+          {
+            a(k, m);
+            a(paramlpf.b, 36064, k, m, this.jdField_a_of_type_ArrayOfByte);
+            paramloy = this.jdField_a_of_type_ArrayOfByte;
+            paramInt = 42;
+            i = m;
+            j = k;
+            continue;
+          }
+          i = m;
+          j = k;
+          if (paramlpf != null)
+          {
+            i = m;
+            j = k;
+            if (paramlpf.jdField_a_of_type_Int != -1)
+            {
+              a(k, m);
+              lpw.a(paramlpf.jdField_a_of_type_Int, k, m, this.jdField_a_of_type_ArrayOfByte);
+              paramloy = this.jdField_a_of_type_ArrayOfByte;
+              paramInt = 42;
+              i = m;
+              j = k;
+              continue;
+            }
+          }
+        }
+      }
+      label525:
+      paramInt = 0;
+      paramloy = null;
+    }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  void a(int paramInt, List<lpb> paramList)
-  {
-    if (paramList == null) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        lpb locallpb = (lpb)((Map.Entry)localIterator.next()).getValue();
-        if ((locallpb != null) && ((paramInt == 0) || (locallpb.jdField_a_of_type_Int == paramInt))) {
-          paramList.add(locallpb);
-        }
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return;
-    }
-    int i = -1;
-    Object localObject1 = paramString.split(",");
-    int m = localObject1.length;
     int j = 0;
-    label29:
-    Object localObject2;
-    int k;
-    if (j < m)
-    {
-      localObject2 = localObject1[j];
-      if (localObject2 == null) {
-        k = i;
+    if (AudioHelper.a(24) == 1) {
+      if (this.jdField_a_of_type_Boolean) {
+        return;
       }
     }
-    for (;;)
+    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
     {
-      j += 1;
-      i = k;
-      break label29;
-      localObject2 = ((String)localObject2).split(":");
-      k = i;
-      if (localObject2.length == 2)
+      if (QLog.isColorLevel()) {
+        QLog.i("FilterProcessTest", 2, "startOneChat debug[" + this.jdField_a_of_type_Boolean + "]");
+      }
+      Object localObject1 = null;
+      Object localObject2;
+      if (this.jdField_a_of_type_Boolean)
       {
-        CharSequence localCharSequence = localObject2[0];
-        try
+        localObject1 = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss/", Locale.getDefault());
+        localObject2 = new Date(System.currentTimeMillis());
+        localObject2 = jdField_a_of_type_JavaLangString + ((SimpleDateFormat)localObject1).format((Date)localObject2);
+        File localFile = new File((String)localObject2);
+        if (localFile.exists())
         {
-          k = Integer.parseInt(localObject2[1]);
-          if (TextUtils.equals(localCharSequence, "VERSION"))
+          localObject1 = localObject2;
+          if (localFile.isDirectory()) {}
+        }
+        else
+        {
+          localObject1 = localObject2;
+          if (!localFile.mkdirs())
           {
-            i = k;
-          }
-          else
-          {
-            localObject2 = (lpb)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localCharSequence);
-            if (localObject2 != null) {
-              ((lpb)localObject2).d = k;
+            this.jdField_a_of_type_Boolean = false;
+            localObject1 = localObject2;
+            if (QLog.isDevelopLevel())
+            {
+              QLog.i("FilterProcessTest", 4, "startOneChat mkdir fail path: " + (String)localObject2);
+              localObject1 = localObject2;
             }
           }
         }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          localNumberFormatException.printStackTrace();
-          k = i;
-        }
-        continue;
-        if ((i < 1) && (this.b))
-        {
-          localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-          for (i = 1; ((Iterator)localObject1).hasNext(); i = 0)
-          {
-            label179:
-            lpb locallpb = (lpb)((Map.Entry)((Iterator)localObject1).next()).getValue();
-            if ((locallpb == null) || (locallpb.jdField_a_of_type_Int == 1) || (locallpb.jdField_a_of_type_ComTencentTtpicOpenapiConfigBeautyRealConfig$TYPE == BeautyRealConfig.TYPE.BASIC4)) {
-              break label179;
-            }
-            if (locallpb.d == locallpb.b) {
-              break label321;
-            }
-          }
-        }
-        label321:
-        for (;;)
-        {
-          break label179;
-          j = i;
-          if (i != 0)
-          {
-            j = i;
-            if (a("FACE_SHAPE_4") != 40) {
-              j = 0;
-            }
-          }
-          if (j != 0) {
-            a("FACE_SHAPE_4", 0);
-          }
-          if (!QLog.isDevelopLevel()) {
-            break;
-          }
-          QLog.i("BeautyConfig", 4, "parseConfig, config[" + paramString + "]");
-          return;
-        }
-        k = i;
       }
+      if (!this.jdField_a_of_type_Boolean) {
+        break;
+      }
+      int i = j;
+      if (this.jdField_a_of_type_ArrayOfLpb == null)
+      {
+        this.jdField_a_of_type_ArrayOfLpb = new lpb[6];
+        i = j;
+      }
+      while (i < this.jdField_a_of_type_ArrayOfLpb.length)
+      {
+        localObject2 = (String)localObject1 + jdField_a_of_type_ArrayOfJavaLangString[i];
+        if (this.jdField_a_of_type_ArrayOfLpb[i] != null) {
+          this.jdField_a_of_type_ArrayOfLpb[i].a();
+        }
+        this.jdField_a_of_type_ArrayOfLpb[i] = new lpb((String)localObject2);
+        i += 1;
+      }
+      break;
+      if (!this.jdField_a_of_type_Boolean) {
+        break;
+      }
+      b();
     }
   }
   
-  public void a(String paramString, int paramInt)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    paramString = (lpb)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
-    if ((paramString != null) && (paramString.d != paramInt))
-    {
-      paramString.d = paramInt;
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public void a(lpa paramlpa)
-  {
-    if (paramlpa == null) {}
-    for (;;)
-    {
+    if (!this.c) {}
+    while (!QLog.isColorLevel()) {
       return;
-      Iterator localIterator = paramlpa.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-      while (localIterator.hasNext())
+    }
+    int[] arrayOfInt = new int[1];
+    GLES20.glBindFramebuffer(36160, paramInt2);
+    GLES20.glGetFramebufferAttachmentParameteriv(36160, 36064, 36048, arrayOfInt, 0);
+    GLES20.glGetFramebufferAttachmentParameteriv(36160, 36064, 36049, arrayOfInt, 0);
+    GLES20.glBindFramebuffer(36160, 0);
+    QLog.w("FilterProcessRender", 1, "logFrameBuffer, action[" + a(paramInt1) + "], fbo[" + paramInt2 + "], textureid[" + paramInt3 + "], check[" + arrayOfInt[0] + "]");
+  }
+  
+  @TargetApi(23)
+  void a(loy paramloy, int paramInt, lok paramlok, lpf paramlpf)
+  {
+    int i = 0;
+    if (this.jdField_a_of_type_Boolean) {
+      b(paramloy, paramInt, paramlok, paramlpf);
+    }
+    if (!this.c) {
+      return;
+    }
+    String str = this.jdField_b_of_type_JavaLangString + this.jdField_a_of_type_Int + "_" + a(paramInt);
+    int j = paramloy.b * paramloy.jdField_a_of_type_Int * 4;
+    switch (paramInt)
+    {
+    default: 
+      if ((paramlpf != null) && (paramlpf.b != -1))
       {
-        String str = (String)localIterator.next();
-        lpb locallpb = (lpb)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str);
-        if (locallpb != null) {
-          locallpb.d = paramlpa.a(str);
+        paramlok = str + "_text_" + a(paramloy.jdField_a_of_type_Int, paramloy.b, 0) + ".jpg";
+        lpr.a(paramlpf.b, paramloy.jdField_a_of_type_Int, paramloy.b, paramlok);
+      }
+      break;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int += 1;
+      return;
+      if ((paramlok != null) && (paramlok.b()))
+      {
+        paramloy = str + "_yuvData_" + a(paramloy.b, paramloy.jdField_a_of_type_Int, 17) + ".yuv";
+        a(paramlok.jdField_a_of_type_ArrayOfByte, paramloy);
+        continue;
+        if ((paramlok != null) && (paramlok.b()))
+        {
+          paramloy = str + "_beauty2D_" + a(paramloy.b, paramloy.jdField_a_of_type_Int, 17) + ".yuv";
+          a(paramlok.jdField_a_of_type_ArrayOfByte, paramloy);
+          continue;
+          if ((paramlok != null) && (paramlok.b()))
+          {
+            paramloy = str + "_directReturn_" + a(paramloy.b, paramloy.jdField_a_of_type_Int, 17) + ".yuv";
+            a(paramlok.jdField_a_of_type_ArrayOfByte, paramloy);
+            continue;
+            if ((paramlpf != null) && (paramlpf.jdField_a_of_type_Int != -1))
+            {
+              if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length != j)) {
+                this.jdField_a_of_type_ArrayOfByte = new byte[j];
+              }
+              paramlok = str + "_rgbRotateCenterTextureFbo_" + paramlpf.jdField_a_of_type_Int + "_" + a(paramloy.b, paramloy.jdField_a_of_type_Int, 42) + ".yuv";
+              lpw.a(paramlpf.jdField_a_of_type_Int, paramloy.b, paramloy.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
+              a(this.jdField_a_of_type_ArrayOfByte, paramlok);
+            }
+            if ((paramlpf != null) && (paramlpf.b != -1))
+            {
+              paramlok = str + "_rgbRotateCenterTextureId_" + a(paramloy.b, paramloy.jdField_a_of_type_Int, 0) + ".jpg";
+              lpr.a(paramlpf.b, paramloy.b, paramloy.jdField_a_of_type_Int, paramlok);
+            }
+            paramlok = null;
+            paramInt = i;
+            if (paramloy.jdField_a_of_type_Lpj != null)
+            {
+              paramlok = paramloy.jdField_a_of_type_Lpj.a();
+              paramInt = paramloy.jdField_a_of_type_Lpj.a();
+            }
+            if ((paramlok != null) && (paramInt == 35))
+            {
+              a(paramlok, str + "_i420Data_" + a(paramloy.b, paramloy.jdField_a_of_type_Int, 17) + ".yuv");
+            }
+            else if ((paramlok != null) && (paramInt == 42))
+            {
+              a(paramlok, str + "_rgbaData_" + a(paramloy.b, paramloy.jdField_a_of_type_Int, 42) + ".yuv");
+              continue;
+              if ((paramlpf != null) && (paramlpf.jdField_a_of_type_Int != -1))
+              {
+                if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length != j)) {
+                  this.jdField_a_of_type_ArrayOfByte = new byte[j];
+                }
+                paramlok = str + "_fbo_" + a(paramloy.jdField_a_of_type_Int, paramloy.b, 42) + ".yuv";
+                lpw.a(paramlpf.jdField_a_of_type_Int, paramloy.jdField_a_of_type_Int, paramloy.b, this.jdField_a_of_type_ArrayOfByte);
+                a(this.jdField_a_of_type_ArrayOfByte, paramlok);
+              }
+              else if ((paramlok != null) && (paramlok.b()))
+              {
+                paramloy = str + "_data_" + a(paramloy.b, paramloy.jdField_a_of_type_Int, 17) + ".yuv";
+                a(paramlok.jdField_a_of_type_ArrayOfByte, paramloy);
+              }
+            }
+          }
         }
       }
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b(String paramString)
-  {
-    paramString = (lpb)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
-    if (paramString != null) {
-      return paramString.c;
-    }
-    return 0;
   }
   
   public void b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    if (QLog.isColorLevel()) {
+      QLog.i("FilterProcessTest", 2, "endOfOneChat");
+    }
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (;;)
     {
-      lpb locallpb = (lpb)((Map.Entry)localIterator.next()).getValue();
-      if ((locallpb != null) && (locallpb.d != locallpb.b))
+      return;
+      if ((this.jdField_a_of_type_ArrayOfLpb != null) && (this.jdField_a_of_type_ArrayOfLpb.length > 0))
       {
-        locallpb.d = locallpb.b;
-        this.jdField_a_of_type_Boolean = true;
+        int i = 0;
+        while (i < this.jdField_a_of_type_ArrayOfLpb.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLpb[i] != null)
+          {
+            this.jdField_a_of_type_ArrayOfLpb[i].a();
+            this.jdField_a_of_type_ArrayOfLpb[i] = null;
+          }
+          i += 1;
+        }
       }
     }
-  }
-  
-  public boolean b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      lpb locallpb = (lpb)((Map.Entry)localIterator.next()).getValue();
-      if ((locallpb != null) && (locallpb.d != locallpb.c)) {
-        return true;
-      }
-    }
-    return false;
   }
   
   public void c()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    this.c = jdField_b_of_type_Boolean;
+    if (this.c)
     {
-      lpb locallpb = (lpb)((Map.Entry)localIterator.next()).getValue();
-      if ((locallpb != null) && (locallpb.d != locallpb.c))
+      this.jdField_a_of_type_Int = 0;
+      Object localObject = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss/", Locale.getDefault());
+      Date localDate = new Date(System.currentTimeMillis());
+      this.jdField_b_of_type_JavaLangString = (jdField_a_of_type_JavaLangString + ((SimpleDateFormat)localObject).format(localDate));
+      localObject = new File(this.jdField_b_of_type_JavaLangString);
+      if (((!((File)localObject).exists()) || (!((File)localObject).isDirectory())) && (!((File)localObject).mkdirs()))
       {
-        locallpb.d = locallpb.c;
-        this.jdField_a_of_type_Boolean = true;
+        this.c = false;
+        if (QLog.isDevelopLevel()) {
+          QLog.i("FilterProcessTest", 2, "beginTestSaveData mkdir fail path: " + this.jdField_b_of_type_JavaLangString);
+        }
       }
+      if (QLog.isColorLevel()) {
+        QLog.i("FilterProcessTest", 2, "beginTestSaveData path: " + this.jdField_b_of_type_JavaLangString);
+      }
+    }
+  }
+  
+  public void d()
+  {
+    if (this.c) {
+      AudioHelper.c("图片已经保存在日志目录下\n" + this.jdField_b_of_type_JavaLangString);
     }
   }
 }

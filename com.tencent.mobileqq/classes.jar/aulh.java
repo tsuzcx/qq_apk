@@ -1,25 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.util.List;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
 class aulh
-  implements DialogInterface.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  aulh(aulf paramaulf, List paramList, aule paramaule) {}
+  aulh(aulg paramaulg, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (paramInt == 1)
-    {
-      aulf.a(this.jdField_a_of_type_Aulf, this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_Aule != null) {
-        this.jdField_a_of_type_Aule.a(1, 0);
-      }
-    }
-    while (this.jdField_a_of_type_Aule == null) {
-      return;
-    }
-    this.jdField_a_of_type_Aule.a(1, 1);
+    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap onLoadCanceled");
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap FAILED, no more action ...");
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable = awrc.a(paramURLDrawable);
+    aulg.a(this.jdField_a_of_type_Aulg, this.jdField_a_of_type_JavaLangString, this.b, this.c, paramURLDrawable, this.d, this.jdField_a_of_type_Int);
   }
 }
 

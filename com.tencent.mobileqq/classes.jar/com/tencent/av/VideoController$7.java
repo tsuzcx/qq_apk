@@ -1,13 +1,21 @@
 package com.tencent.av;
 
+import com.tencent.av.core.VcControllerImpl;
+import lez;
+
 class VideoController$7
   implements Runnable
 {
-  VideoController$7(VideoController paramVideoController, long paramLong, String paramString1, int paramInt1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, int paramInt2) {}
+  VideoController$7(VideoController paramVideoController, long paramLong) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Boolean, false, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int);
+    lez locallez = this.this$0.a();
+    if ((locallez.e) && (locallez.n) && (locallez.jdField_d_of_type_Int == 2))
+    {
+      locallez.a(this.a, false);
+      this.this$0.a.pauseVideo(locallez.jdField_d_of_type_JavaLangString);
+    }
   }
 }
 

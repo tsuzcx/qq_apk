@@ -1,20 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import java.util.Comparator;
 
-public final class arya
-  implements Parcelable.Creator<Setting>
+class arya
+  implements Comparator<FavFileInfo>
 {
-  public Setting a(Parcel paramParcel)
-  {
-    Setting localSetting = new Setting();
-    localSetting.readFromParcel(paramParcel);
-    return localSetting;
-  }
+  arya(arxz paramarxz) {}
   
-  public Setting[] a(int paramInt)
+  public int a(FavFileInfo paramFavFileInfo1, FavFileInfo paramFavFileInfo2)
   {
-    return new Setting[paramInt];
+    if (paramFavFileInfo2.c > paramFavFileInfo1.c) {
+      return 1;
+    }
+    if (paramFavFileInfo2.c < paramFavFileInfo1.c) {
+      return -1;
+    }
+    return 0;
   }
 }
 

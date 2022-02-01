@@ -1,8 +1,8 @@
-import android.view.MotionEvent;
+import java.util.List;
 
-public abstract interface zbo<T extends zbn>
+public abstract interface zbo
 {
-  public abstract boolean a(T paramT, MotionEvent paramMotionEvent);
+  public abstract void a(List<zcz> paramList, boolean paramBoolean);
 }
 
 

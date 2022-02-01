@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import anho;
-import anhp;
+import amci;
+import amcj;
 
 public class CmShowTest$1$1
   implements Runnable
 {
-  public CmShowTest$1$1(anhp paramanhp) {}
+  public CmShowTest$1$1(amcj paramamcj) {}
   
   public void run()
   {
-    anho.a(this.this$0.a);
+    amci.a(this.this$0.a);
   }
 }
 

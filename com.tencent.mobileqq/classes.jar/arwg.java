@@ -1,25 +1,8 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkBabyqCardInfo;
-import com.tencent.mobileqq.data.MessageForArkBabyqReply;
-import java.lang.ref.WeakReference;
+import android.view.View;
 
-public class arwg
-  implements ahaa
+class arwg
 {
-  public arwg(ArkBabyqCardInfo paramArkBabyqCardInfo) {}
-  
-  public void a()
-  {
-    if ((this.a.mBabyQReplyMsg != null) && (this.a.mBabyQReplyMsg.get() != null))
-    {
-      Object localObject = (MessageForArkBabyqReply)this.a.mBabyQReplyMsg.get();
-      localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      if (localObject != null) {
-        localObject = (aqcd)((QQAppInterface)localObject).a(95);
-      }
-    }
-  }
+  View[] a = new View[12];
 }
 
 

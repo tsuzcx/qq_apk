@@ -1,18 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkChangeReceiver.1;
-import org.jetbrains.annotations.NotNull;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-public final class ryb
-  extends BroadcastReceiver
+public class ryb
+  implements BusinessObserver
 {
-  private ryb(rxy paramrxy) {}
+  public ryb(rya paramrya) {}
   
-  public void onReceive(@NotNull Context paramContext, @NotNull Intent paramIntent)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    rxy.a(this.a).post(new BandwidthPredictor.NetworkChangeReceiver.1(this));
+    if ((paramObject == null) || (!(paramObject instanceof Bundle))) {}
+    while (!paramBoolean) {
+      return;
+    }
+    paramObject = (Bundle)paramObject;
+    rya.a(this.a, (LikeAnimationInfo)paramObject.getParcelable("key_like_animation_info"));
+    bkwm.a();
+    bkwm.a(rya.a(this.a));
+    rya.a(this.a, rya.a(this.a));
   }
 }
 

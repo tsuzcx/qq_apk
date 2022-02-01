@@ -1,13 +1,13 @@
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-
 class bkxt
-  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnErrorListener
+  implements amqq
 {
-  bkxt(bkxn parambkxn, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnErrorListener paramOnErrorListener) {}
+  bkxt(bkxs parambkxs) {}
   
-  public boolean onError(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void onDpcPullFinished(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnErrorListener.onError(this.jdField_a_of_type_Bkxn, paramInt1, paramInt2);
+    if (paramBoolean) {
+      this.a.a();
+    }
   }
 }
 

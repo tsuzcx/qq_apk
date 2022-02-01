@@ -1,25 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.mobileqq.pb.PBEnumField;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class aima
-  implements nmg
+public class aima
+  implements aiiv
 {
-  aima(ailn paramailn) {}
+  public aima(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a + "Q.hotchat.aio_post_list_plugin", 2, "checkUpByBusinessId:2586|param:" + paramString + "|code:" + paramInt);
-    }
-    paramString = this.a;
-    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {}
-    for (boolean bool = true;; bool = false)
+    if (!(paramViewHolder instanceof aikf)) {}
+    do
     {
-      ailn.b(paramString, bool);
       return;
-    }
+      paramView = (aikf)paramViewHolder;
+    } while (paramView.a.msg_type.get() != 2);
+    TroopSuspiciousFragment.a(this.a, paramView);
   }
   
-  public void progress(int paramInt) {}
+  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    return false;
+  }
 }
 
 
